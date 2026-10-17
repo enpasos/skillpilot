@@ -176,11 +176,6 @@ try {
         contentRequests.push(path)
         return json({ status: 404, body: { error: 'Optional content pilot disabled' } })
       }
-      // Setup also reads preparation options when no supplement is available.
-      if (/^\/api\/ui\/learners\/fixture-learner-[ab]\/composition-supplement-options$/u.test(path)
-          && request.method() === 'GET') {
-        return json({ body: { options: [], problemCode: null } })
-      }
       const match = /^\/api\/ui\/learners\/(fixture-learner-[ab])(?:\/(state|learning-plans|resume))?$/u.exec(path)
       if (match && (request.method() === 'GET' || (match[2] === 'resume' && request.method() === 'POST'))) {
         if (match[2] === 'resume') return json({ body: {

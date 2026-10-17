@@ -371,8 +371,6 @@ jobs:
         run: npm run test:curriculum-quality-ui
       - name: Test personal curriculum editor
         run: npm run test:personal-curriculum-editor
-      - name: Test explicit Mathematics preparation and native executable policy
-        run: npm run test:composition-supplements
       - name: Lint
         run: npm run lint
       - name: Build application without regenerating curriculum assets
@@ -486,12 +484,6 @@ jobs:
         run: npm run check:m6-duration-policy-readiness
       - name: Check Gymnasium Duration Offerings
         run: npm run check:gymnasium-duration-offerings
-      - name: Setup required read-only supplement QA runtime when artifacts exist
-        if: ${{ hashFiles('curricula/DE/Gymnasium/composition-supplements/mathematik/**/*.supplement.json') != '' }}
-        uses: actions/setup-java@v5
-        with:
-          distribution: corretto
-          java-version-file: .java-version
       - name: Check Curriculum Source Coverage
         run: npm run quality:source-coverage-audit:check
       - name: Check Goal Source Rationale Runtime Index
@@ -518,8 +510,6 @@ jobs:
         run: npm run validate:composition-views
       - name: Test Composition Projection Roles
         run: npm run test:composition-projection-roles
-      - name: Test Composition Visible Overlap
-        run: npm run test:composition-visible-overlap
       - name: Test Course-Level Mapping Consistency
         run: npm run test:course-level-mapping-consistency
       - name: Test Physics Source Method Routes
@@ -609,9 +599,6 @@ jobs:
           python -B scripts/run_package_consumer_smoke.py --self-test
           SKILLPILOT_FULL_PACKAGE_CONFORMANCE=false \
             bash scripts/run_curriculum_release_model_conformance.sh
-      - name: Reject unsupported Mathematics preparation in package v1
-        working-directory: .
-        run: python -B scripts/test_composition_supplement_package_guard.py
       - name: Test portable curriculum symlinks
         working-directory: .
         run: python -B scripts/test_validate_schemas_symlinks.py -v
@@ -658,9 +645,6 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version-file: .nvmrc
-      - name: Install application dependencies for native acceptance tests
-        working-directory: app
-        run: npm ci
       - name: Use production Corretto build
         run: |
           set -euo pipefail

@@ -1,0 +1,29 @@
+{
+  "role": "Honest own verifier attempt history and final schema checks",
+  "attempt1": {
+    "result": "failed_own_key_order_assertion",
+    "actualChangedKeySet": [
+      "extendedData",
+      "applicability"
+    ],
+    "expectedSameSetInDifferentOrder": [
+      "applicability",
+      "extendedData"
+    ],
+    "candidateDefect": false,
+    "correction": "Compare sorted key sets; preserve whole candidate exactly."
+  },
+  "actualRerun": {
+    "sixCAS": 6,
+    "views": 8,
+    "additionalLabViews": 4,
+    "stockSRSSelections": 5,
+    "errors": 0
+  },
+  "currentP4RawSchemaErrors": 0,
+  "currentP4StockSemanticErrors": 0,
+  "nativeD4StockValidator": "Goal-description review batch valid: 4",
+  "originalOwnFIRST70ccExact": true,
+  "HumanApproval": false,
+  "HumanTrial": false
+}

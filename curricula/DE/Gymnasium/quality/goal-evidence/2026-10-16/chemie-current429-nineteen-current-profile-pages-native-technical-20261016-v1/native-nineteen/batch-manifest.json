@@ -1,0 +1,72 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "chemie-current429-nineteen-current-profile-pages-20261016-v1",
+  "subject": "chemie",
+  "subjectLabel": "Chemie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/native-nineteen.prerequisite-ordered.stock.config.json",
+  "configDigest": "sha256:f74fa296ba273110c537d3623b4f2a40f11616bd5e2fe8136b0ba46432437cc1",
+  "goalIds": [
+    "4961130b-1ee8-58f2-a319-dff0a864db6a",
+    "f1ed86f0-534d-57d7-8952-a004a331cc54",
+    "b4777001-f4ed-5fe9-9d98-02319abdea09",
+    "cd9ec99b-b694-5673-863c-55528e31250a",
+    "a25a19ed-aec3-59cc-ae28-31d98746cb9d",
+    "48115ff7-7aca-5d0b-a9e7-7fc6c78434ef",
+    "28c90c6a-3020-5c51-ac40-d802f3f12d2d",
+    "a449e874-6fec-502b-9667-6f078adc4d64",
+    "07879ea2-b6a1-5eb3-b548-15d45bbcb227",
+    "acdfc7d7-6d6b-5a1f-837c-79449c29a305",
+    "edcfc5f0-900d-5819-830f-3b14af2bc369",
+    "29742d91-732f-5da5-bc46-e963885f9a4a",
+    "dc0470f1-0676-5949-a5cc-02783d478406",
+    "e0944fbb-0761-5f9c-afaa-3d4713ed1bed",
+    "9fef5c29-62bc-5ada-b96b-6885bcb049cb",
+    "5a58126e-0c51-5808-be9e-8faa9dae0c32",
+    "13877340-1370-5278-bb80-31cf382dd6f5",
+    "c61b2a7a-fb0f-5a76-92e9-771c789fa816",
+    "7c0b944d-3f1f-5d26-84b0-2a359f689cf0"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 429,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-nineteen-current-profile-pages-native-technical-20261016-v1/base-full429-P19-only.stock.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "baseBookDigest": "sha256:d0a0a308bba8005652f5cbc1beecefa36fe33cf062f4346b778abb6c4036dd6e"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:40a06c159eda8a8c45a6b925b48d047324ea0341039fc1ae51e04398a4a6bf49",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:a87377725da07637ee0a3c8759e3dd1d522743bd934a89338e39987af3f5d387",
+    "reviewInputFingerprint": "sha256:08de8c5889722860926413cdeabf4035fb25bfdb9157bbc388b6bf9b31f962e1",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "chemie-current429-nineteen-current-profile-pages-20261016-v1-a",
+        "campaignDigest": "sha256:edec2ebcf564948c6647352935310b6ed3e5b3068f7725756b64548ee9d50467",
+        "roundId": "chemie-current429-nineteen-current-profile-pages-20261016-v1-first-pass-a",
+        "independenceGroupId": "chemie-current429-nineteen-current-profile-pages-20261016-v1-independent-a",
+        "batchId": "chemie-current429-nineteen-current-profile-pages-20261016-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:1980c15ff937b044ffbbdbb9376d7df6d936c8a5815432dbaa44f5fb413f5edc"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "chemie-current429-nineteen-current-profile-pages-20261016-v1-b",
+        "campaignDigest": "sha256:ad204e4a5dec27170548cb5a454d3e24d88566e0ac10273dab4f1baa1089abdc",
+        "roundId": "chemie-current429-nineteen-current-profile-pages-20261016-v1-first-pass-b",
+        "independenceGroupId": "chemie-current429-nineteen-current-profile-pages-20261016-v1-independent-b",
+        "batchId": "chemie-current429-nineteen-current-profile-pages-20261016-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:8777fcf80cfe2c2ee5bbf58939ea7d6e5b87bb2784e764f1f0e02dd88c06da29"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

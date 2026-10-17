@@ -1,0 +1,24 @@
+# Lernzielvisualisierung: Viskose und Cellulosederivate als Textilfasern erklären
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `f57d53b0-5bdf-5998-81f4-8bfb2fc5bde7`
+- Titel: Viskose und Cellulosederivate als Textilfasern erklären
+- Beschreibung: Die lernende Person kann Viskose als regenerierte Cellulose von chemisch modifizierten Cellulosederivaten unterscheiden und deren Herstellungskonzepte sowie gegebene Eigenschaften und Verwendung als Textilfasern strukturbezogen erläutern.
+
+## Generator
+
+- Provider: OpenAI / Codex built-in image_gen (model not exposed)
+- Status: pilot
+- Quellbild: `f57d53b0-5bdf-5998-81f4-8bfb2fc5bde7.png`
+- Public Asset: `/assets/goal-visualizations/chemie/f57d53b0-5bdf-5998-81f4-8bfb2fc5bde7/f57d53b0-5bdf-5998-81f4-8bfb2fc5bde7.png`
+
+## Prompt
+
+```text
+Use case: scientific-educational. Create one original school chemistry PNG infographic about viscose and cellulose derivatives as textile fibres. Friendly abstract comic style, soft approachable palette, bold clear outlines, wide landscape about16:9 near1600x900. Main relationship legible at360px wide, only large sparse labels. At the top centre a simple plant/cotton fibre icon leads to a clear symbolic cellulose chain made of linked hexagonal units with a few large 'OH' tags, labelled 'Cellulose'. Split into TWO clearly separated large branches. LEFT branch uses a curved processing arrow leading to an output fibre and a symbolic chain with OH groups STILL PRESENT, labelled 'Viskose' and under it 'regenerierte Cellulose'. The original cellulose backbone and OH identity are restored, so no new permanent side groups in this left output. RIGHT branch uses a straightforward processing arrow and leads to a different output fibre plus the SAME backbone with only SOME OH badges replaced by large coloured 'OAc' badges, labelled 'Celluloseacetat' and under it 'chemisch modifiziert'. Keep at least one OH badge on the right to show partial substitution. Show both outputs as textile threads with small cloth swatches to convey use without claims of universally superior ecology. Add one large lower caption 'Struktur prägt Eigenschaften'. Crucial: do not call viscose a permanently modified derivative, do not retain xanthate or sulphur as the final viscose fibre, do not break the cellulose backbone, do not claim acetate groups replace the backbone itself. Hexagons and badges are an explicitly schematic polymer representation; no detailed bond/valence formulas, reaction conditions, numeric degree-of-substitution examples, tiny chemical captions, technical IDs or humans.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

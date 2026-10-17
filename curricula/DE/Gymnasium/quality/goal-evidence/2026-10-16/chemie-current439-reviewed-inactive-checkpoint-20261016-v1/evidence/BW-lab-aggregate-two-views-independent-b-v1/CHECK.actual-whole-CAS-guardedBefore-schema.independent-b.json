@@ -1,0 +1,97 @@
+{
+  "documentType": "independent-b-actually-executed-finite-CAS-schema-check",
+  "atUTC": "2026-10-16T21:13:00.949195+00:00",
+  "firstSealed": {
+    "path": "tmp/chemie-m7-resumed-20261016/BW-lab-aggregate-two-views-independent-b-v1/FIRST.scientific-source-role-acquisition.independent-b.sealed.json",
+    "sha256": "42927e8e3c86a97814391229a6aeeed8c78ff639ba9a8d93e409205683abc144",
+    "bytes": 5107
+  },
+  "authorSelector": {
+    "path": "tmp/chemie-m7-resumed-20261016/BW-lab-aggregate-existing-child-acquisition-author-v1/OUTPUTS.finite-two-BW-views.AUTHOR.inactive.selector.json",
+    "sha256": "f56548f16d1e3d497285991fde36959205bdc7b1a5e8d5567e2c9dc82aa8e60d",
+    "bytes": 2852
+  },
+  "CAS": {
+    "path": "tmp/chemie-m7-resumed-20261016/BW-lab-aggregate-existing-child-acquisition-author-v1/CAS.two-whole-BW-views.existing-lab-aggregate-only.AUTHOR.inactive.json",
+    "sha256": "8196f4d7dcb25976f0d45704df719ebf8795ac4e27df14775e8fb56952ac6bfb",
+    "bytes": 3045
+  },
+  "canonical": {
+    "path": "tmp/chemie-m7-resumed-20261016/chemie-shared640-recycling-native-author-capsule-L6-v1/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "sha256": "ae53884b26285d9483b315f030216566b74fb7067e9fc962610e493aadeb3fb2",
+    "bytes": 2667824
+  },
+  "semanticKinds": {
+    "path": "tmp/chemie-m7-resumed-20261016/chemie-shared640-recycling-native-author-capsule-L6-v1/curricula/DE/Gymnasium/quality/goal-book-publication/chemie.semantic-kinds.json",
+    "sha256": "23347dac27ae2d616a2334b5c30c5465c031ae177a034d6d1f7df18e2585295a",
+    "bytes": 205511
+  },
+  "schema": {
+    "path": "tmp/chemie-m7-resumed-20261016/chemie-shared640-recycling-native-author-capsule-L6-v1/contracts/curriculum-package/v1/composition-view.schema.json",
+    "sha256": "a90e68ba07e141e54789d5dbd3de862a6d98f9fff513e57465efbb02c9fc57a6",
+    "bytes": 4608
+  },
+  "checker": "jsonschema.Draft202012Validator actual stock complete schema; exactly four whole documents",
+  "views": [
+    {
+      "targetPath": "curricula/DE/Gymnasium/composition-views/chemie/de-bw-gk.view.json",
+      "guardedCurrent": {
+        "path": "tmp/chemie-m7-resumed-20261016/chemie-shared640-recycling-native-author-capsule-L6-v1/curricula/DE/Gymnasium/composition-views/chemie/de-bw-gk.view.json",
+        "sha256": "b721ab3f68c366ce2376cda532f30ca6135ede02cc6efea6a82cd393de5f0953",
+        "bytes": 31837
+      },
+      "before": {
+        "path": "tmp/chemie-m7-resumed-20261016/BW-lab-aggregate-existing-child-acquisition-author-v1/before/de-bw-gk.view.json",
+        "sha256": "b721ab3f68c366ce2376cda532f30ca6135ede02cc6efea6a82cd393de5f0953",
+        "bytes": 31837
+      },
+      "after": {
+        "path": "tmp/chemie-m7-resumed-20261016/BW-lab-aggregate-existing-child-acquisition-author-v1/after/de-bw-gk.view.json",
+        "sha256": "a95b8595d8d613faf4a80ac2182016a4a7a54ed00c0b91fb155eb0fc24999332",
+        "bytes": 32003
+      },
+      "guardedBeforeExact": true,
+      "soleAppendedNode": {
+        "kind": "canonicalSubtree",
+        "goalId": "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+        "projectionRole": "prerequisiteOnly"
+      },
+      "recoveredWholeBeforeExact": true,
+      "schemaErrors": {
+        "before": [],
+        "after": []
+      }
+    },
+    {
+      "targetPath": "curricula/DE/Gymnasium/composition-views/chemie/de-bw-lk.view.json",
+      "guardedCurrent": {
+        "path": "tmp/chemie-m7-resumed-20261016/chemie-shared640-recycling-native-author-capsule-L6-v1/curricula/DE/Gymnasium/composition-views/chemie/de-bw-lk.view.json",
+        "sha256": "a2e0046418264c365349c70caf94b1408c6dfbd78a61dc1f739d9f543363d0e7",
+        "bytes": 33896
+      },
+      "before": {
+        "path": "tmp/chemie-m7-resumed-20261016/BW-lab-aggregate-existing-child-acquisition-author-v1/before/de-bw-lk.view.json",
+        "sha256": "a2e0046418264c365349c70caf94b1408c6dfbd78a61dc1f739d9f543363d0e7",
+        "bytes": 33896
+      },
+      "after": {
+        "path": "tmp/chemie-m7-resumed-20261016/BW-lab-aggregate-existing-child-acquisition-author-v1/after/de-bw-lk.view.json",
+        "sha256": "b7723f82362cf4e08117843e2dd963e6cf04f28aa30f85bd75c8563af441ed76",
+        "bytes": 34062
+      },
+      "guardedBeforeExact": true,
+      "soleAppendedNode": {
+        "kind": "canonicalSubtree",
+        "goalId": "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+        "projectionRole": "prerequisiteOnly"
+      },
+      "recoveredWholeBeforeExact": true,
+      "schemaErrors": {
+        "before": [],
+        "after": []
+      }
+    }
+  ],
+  "PASS": true,
+  "writesToBaselineOrNormal": false
+}

@@ -1,0 +1,28 @@
+{
+  "role": "Actual existing stock validator execution; no source or normal alias mutation",
+  "cwd": "app",
+  "argv": [
+    "node",
+    "node_modules/tsx/dist/cli.mjs",
+    "scripts/validateGoalDescriptionReviewCampaign.ts",
+    "--bundle",
+    "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current435-seventeen-pending-description-native-technical-20261016-v1/native-seventeen/round-a/review-bundle-manifest.json",
+    "--input",
+    "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current435-seventeen-pending-description-native-technical-20261016-v1/native-seventeen/round-a/description-review-input.json",
+    "--campaign",
+    "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current435-seventeen-pending-description-native-technical-20261016-v1/native-seventeen/round-a/description-review-campaign.json",
+    "--run",
+    "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-native17-current435-fresh-independent-a-20261016-v1/run-manifest.round-a.actual-agent.json",
+    "--batch-input",
+    "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current435-seventeen-pending-description-native-technical-20261016-v1/native-seventeen/round-a/batches/chemie-current435-seventeen-pending-descriptions-20261016-v1-first-pass-a.batch-001.input.jsonl",
+    "--records",
+    "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-native17-current435-fresh-independent-a-20261016-v1/description-records.round-a.actual-independent.jsonl"
+  ],
+  "exitCode": 0,
+  "stdout": "Goal-description review batch valid: 17\n",
+  "stderr": "",
+  "validationModule": "app/scripts/validateGoalDescriptionReviewCampaign.ts",
+  "moduleSha256": "sha256:3a99d98a69c60c8e24cfcf40d5f6fe27748715651933176d5f7e6c667b7e1bf9",
+  "recordCount": 17,
+  "scope": "Exactly own round-a campaign, current input, bundle, run manifest and actual17 records; no dual-round synthesis, old D validation or central run."
+}

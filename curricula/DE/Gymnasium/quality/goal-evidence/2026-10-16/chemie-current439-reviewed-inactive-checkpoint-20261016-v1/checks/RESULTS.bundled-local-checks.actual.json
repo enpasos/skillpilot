@@ -1,0 +1,63 @@
+[
+  {
+    "name": "checkpoint",
+    "argv": [
+      "python3",
+      "-B",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current439-reviewed-inactive-checkpoint-20261016-v1/verify_checkpoint.py"
+    ],
+    "startedAtUTC": "2026-10-16T21:31:54.240760+00:00",
+    "elapsedSeconds": 1.4791708500124514,
+    "exitCode": 0
+  },
+  {
+    "name": "schemas",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/validate_schemas.py"
+    ],
+    "startedAtUTC": "2026-10-16T21:31:54.241598+00:00",
+    "elapsedSeconds": 197.6983240209811,
+    "exitCode": 0
+  },
+  {
+    "name": "docs-links",
+    "argv": [
+      "npm",
+      "--prefix",
+      "app",
+      "run",
+      "check:docs-links"
+    ],
+    "startedAtUTC": "2026-10-16T21:31:54.242706+00:00",
+    "elapsedSeconds": 0.6077808509871829,
+    "exitCode": 0
+  },
+  {
+    "name": "docs-indexes",
+    "argv": [
+      "npm",
+      "--prefix",
+      "app",
+      "run",
+      "check:docs-indexes"
+    ],
+    "startedAtUTC": "2026-10-16T21:31:54.243443+00:00",
+    "elapsedSeconds": 0.48410015500849113,
+    "exitCode": 0
+  },
+  {
+    "name": "terminology",
+    "argv": [
+      "npm",
+      "--prefix",
+      "app",
+      "run",
+      "check:terminology"
+    ],
+    "startedAtUTC": "2026-10-16T21:31:54.243734+00:00",
+    "elapsedSeconds": 131.64907058500103,
+    "exitCode": 1
+  }
+]

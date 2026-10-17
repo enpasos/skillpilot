@@ -1,0 +1,24 @@
+{
+  "argv": [
+    "tsx",
+    "scripts/reportDeepUnderstandingRollout.ts",
+    "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-D15-P5-two-images-reviewed-inactive-integration-technical-20261016-v1/stock-directory-discovery-physical-host-successor/central.current429.same-reviewed-inputs.regular-canonical-host.config.json",
+    "--mode=check",
+    "--format=json"
+  ],
+  "cwd": "tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1/app",
+  "startedAtUTC": "2026-10-16T08:47:50.843090+00:00",
+  "elapsedSeconds": 54.95530214998871,
+  "exitCode": 0,
+  "stdout": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-D15-P5-two-images-reviewed-inactive-integration-technical-20261016-v1/stock-directory-discovery-physical-host-successor/stdout.actual.txt",
+    "sha256": "sha256:5cf404fe12f99ed2715ab8142543ad3e73616812bc2e3c01d215b0df7fc24486",
+    "bytes": 42218
+  },
+  "stderr": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-D15-P5-two-images-reviewed-inactive-integration-technical-20261016-v1/stock-directory-discovery-physical-host-successor/stderr.actual.txt",
+    "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "reasonForTargetedRepeat": "Preceding full V freshness check discovered no normal catalog because its unchanged scanner ignores file symlinks. Exact current source bytes now exist as the required regular file. Scoped unchanged V freshness check actually passed before this execution."
+}

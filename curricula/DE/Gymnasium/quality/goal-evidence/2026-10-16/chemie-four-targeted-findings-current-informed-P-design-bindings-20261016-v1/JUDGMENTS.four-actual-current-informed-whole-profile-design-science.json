@@ -1,0 +1,540 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "chemie-four-targeted-findings-own-informed-p-design-20261016-v1",
+  "reviewer": "Codex actual informed scientific artifact inspection; team task /root/chemie_four_targeted_p_20261016; model version not exposed",
+  "reviewedAt": "2026-10-16T03:43:59.076835+00:00",
+  "role": "Genuine bounded current scientific P followup after disclosed D19 findings; not a blind description review or a mere fingerprint update",
+  "rows": [
+    {
+      "goalId": "b4777001-f4ed-5fe9-9d98-02319abdea09",
+      "wholeGoalObjectSha256": "sha256:49803c199d81f380ae54704d6a7fee76b311282ee992790cb886e67c8c7119f3",
+      "wholeProfileObjectSha256": "sha256:1167cd1b1824ebfa3fe624ae40e6807ec44704a2ba62b833b9cbdeaaf24bd987",
+      "profilePayloadChangedFields": [],
+      "wholeCaseInputs": [
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-foundation-source-operator-whole-remediation-author-successor-20261016-v1/materials/retained/TWO.qualitative-pair-whole-successors.exact.json",
+            "sha256": "sha256:2c756e9b23c6f7b8417f0ff686f9c2a35557dde63be9d1b0aeccfce3d28aa973",
+            "bytes": 33909
+          },
+          "jsonPointer": "/caseSuccessors/0/after",
+          "caseIds": [
+            "pair-1"
+          ],
+          "wholePointedMaterialObjectSha256": "sha256:622c0de1427b93564e0376e0dc0a38bc16eaaa458edd73bec34c9dc805df44be",
+          "completeBilingualMaterialTasksModelAndRubricInspected": true,
+          "actualPerformanceObserved": false
+        },
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-foundation-source-operator-whole-remediation-author-successor-20261016-v1/materials/retained/TWO.qualitative-pair-whole-successors.exact.json",
+            "sha256": "sha256:2c756e9b23c6f7b8417f0ff686f9c2a35557dde63be9d1b0aeccfce3d28aa973",
+            "bytes": 33909
+          },
+          "jsonPointer": "/caseSuccessors/1/after",
+          "caseIds": [
+            "pair-2"
+          ],
+          "wholePointedMaterialObjectSha256": "sha256:561197d15f12346289b338e1931b002886716b1b7b6dca1a56b895a67295cbd8",
+          "completeBilingualMaterialTasksModelAndRubricInspected": true,
+          "actualPerformanceObserved": false
+        }
+      ],
+      "decision": "support_current_profile_with_corrected_actual_image_alt",
+      "judgmentDe": "Die tatsächlich betrachtete Grafik zeigt HCl/Wasser und Ethansäure/Wasser mit korrespondierenden Paaren und relativen Stärken; sie zeigt keinen experimentellen Ionennachweis. Der neue Alternativtext beschreibt diesen qualitativen Kontext sachgerecht. Die unveränderten vollständigen pair-1/pair-2-Fälle prüfen die Partnerrollen, Atom-/Ladungsbilanzen und die Richtung aus ausdrücklich gegebenen Stärken. HCO3− wechselt im H3O+/OH−-Vergleich seine Rolle. CO2-Verlust wird korrekt als Bestandsänderung begrenzt.",
+      "counterexampleDe": "Eine Produktpräferenz liefert weder eine Zahlenkonstante noch eine Reaktionsgeschwindigkeit oder garantierte vollständige Umsetzung; der aktuelle Fallpool fordert diese Abgrenzung ausdrücklich.",
+      "criterionAnchors": [
+        "p-pairs",
+        "p-direction",
+        "p-limits"
+      ],
+      "boundaryDe": "Nur qualitative Reaktionsrichtung und partnerabhängige Rollen. Keine experimentelle Nachweisleistung, keine neue Bildfreigabe und keine aktuelle quantitative Zusammensetzung behauptet.",
+      "unresolvedScientificBlockers": [],
+      "genuineCurrentInformedJudgment": true,
+      "blindReviewClaimed": false,
+      "candidateProfile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "p-pairs",
+            "essentialUnderstandingDe": "Korrespondierende Paare unterscheiden sich um H+; Rollen hängen vom Partner ab und stützen denselben Richtungsvergleich.",
+            "essentialUnderstandingEn": "Conjugate pairs differ by H+; roles depend on the partner and support the same direction comparison.",
+            "observablePerformanceDe": "Formuliert und prüft die im vorgelegten Fall benötigten Protonenübertragungen und erläutert die wechselnde Rolle im Ampholytfall.",
+            "observablePerformanceEn": "Constructs and checks the proton transfers needed for the supplied case and explains the changing role in an amphiprotic transfer."
+          },
+          {
+            "id": "p-direction",
+            "essentialUnderstandingDe": "Eine ausdrücklich vorgegebene relative Stärkenordnung ermöglicht eine qualitative Begründung der bevorzugten Gleichgewichtsseite.",
+            "essentialUnderstandingEn": "An explicitly supplied relative-strength order supports qualitative justification of the favored equilibrium side.",
+            "observablePerformanceDe": "Verknüpft die angegebenen Donator-/Akzeptorstärken mit der Produkt-/Eduktpräferenz, ohne eine ungestützte Konstante herzuleiten.",
+            "observablePerformanceEn": "Links the supplied donor/acceptor strengths to product/reactant preference without deriving an unsupported constant."
+          },
+          {
+            "id": "p-limits",
+            "essentialUnderstandingDe": "Qualitative Bevorzugung ist keine quantitative Zusammensetzung, vollständige Umsetzung oder Geschwindigkeitsvorhersage; Systemgrenzen sind Teil der Modellannahmen.",
+            "essentialUnderstandingEn": "Qualitative preference gives neither quantitative composition, completion nor rate; system boundaries form part of the model assumptions.",
+            "observablePerformanceDe": "Begrenzt die Folgerungen und benennt im CO2-Fall die Bestandsänderung beim Öffnen ohne neue Zahl.",
+            "observablePerformanceEn": "Bounds the conclusions and identifies inventory change on opening the CO2system without giving a new number."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "p-pairs",
+            "p-direction",
+            "p-limits"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "partner-role",
+            "textDe": "Säure/Ammoniak gegenüber partnerabhängigem HCO3−.",
+            "textEn": "Acid/ammonia versus partner-dependent HCO3−."
+          },
+          {
+            "id": "system-limit",
+            "textDe": "Geschlossene Modellannahme und mögliche Bestandsänderung bei CO2-Verlust.",
+            "textEn": "Closed-model assumption versus possible inventory change through CO2 loss."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "pair-1",
+            "taskDemandDe": "Formuliere die reversible Protonenübertragung, benenne beide korrespondierenden Paare und die beteiligten Donator-/Akzeptorrollen und prüfe Atome sowie Ladung.\nBegründe aus der ausdrücklich gegebenen relativen Stärkenordnung die bevorzugte Seite. Erläutere, weshalb die Begründung über Protonendonator und Protonenakzeptor zusammenpassen muss. Eine K-Herleitung ist nicht verlangt.\nErkläre, warum aus dieser qualitativen Angabe weder eine Zahlenkonstante oder genaue Zusammensetzung noch Geschwindigkeit, Stoffidentität oder garantiert vollständige Umsetzung folgen.",
+            "taskDemandEn": "Write the reversible proton transfer, identify both conjugate pairs and donor/acceptor roles, and check atoms and charge.\nUse the explicitly supplied relative-strength order to justify the favored side. Explain why the proton-donor and proton-acceptor comparisons must agree. Deriving K is not required.\nExplain why this qualitative information gives neither a numerical constant or exact composition nor rate, substance identity or guaranteed complete conversion.",
+            "expectedPerformanceDe": "CH3COOH+NH3⇌CH3COO−+NH4+. CH3COOH ist hier Donator, NH3 Akzeptor; die Paare CH3COOH/CH3COO− und NH4+/NH3 unterscheiden sich jeweils um H+. Ladung 0 auf beiden Seiten; alle Atome bleiben erhalten. Nach den vorgegebenen relativen Stärken steht links die stärkere Säure mit der stärkeren Base, rechts das schwächere Paar; die Produktseite ist im angegebenen Modell bevorzugt. Rollen und Stärkevergleiche sind auf diese Partner bezogen. Die qualitative Ordnung legt weder einen Zahlenwert für K noch die Gleichgewichtszusammensetzung fest; dafür wären weitere Gleichgewichts-/Mengen-/Aktivitätsdaten nötig. Bevorzugung ist keine Garantie irreversibler vollständiger Umsetzung und sagt nichts über Geschwindigkeit oder Stoffidentität.",
+            "expectedPerformanceEn": "CH3COOH+NH3⇌CH3COO−+NH4+. Here CH3COOH donates and NH3 accepts a proton; the pairs CH3COOH/CH3COO− and NH4+/NH3 each differ by H+. Both sides have charge 0 and conserve all atoms. The supplied strengths place the stronger acid and stronger base on the left and the weaker pair on the right, so products are favored in the stated model. Roles and strength comparisons concern these partners. The qualitative order determines neither numerical K nor equilibrium composition; further equilibrium/amount/activity data would be needed. Preference does not establish irreversible completion, a reaction rate, or substance identity.",
+            "understandingFocusDe": "Partnerbezogene Rollen, Richtung aus der gegebenen Stärkenordnung und begrenzte qualitative Schlussfolgerung.",
+            "understandingFocusEn": "Partner-dependent roles, direction from supplied relative strengths and bounded qualitative inference."
+          },
+          {
+            "id": "pair-2",
+            "taskDemandDe": "Formuliere die Reaktionen von HCO3− mit H3O+ und mit OH−; prüfe Atome/Ladungen und begründe die jeweils wechselnde Rolle anhand aller korrespondierenden Paare.\nBegründe die bevorzugte Seite der OH−-Reaktion allein aus der gegebenen relativen Donator-/Akzeptorstärke. Trenne die partnerabhängige Rolle von einem festen Stoffetikett. Eine Berechnung aus Ka2/Kw ist nicht verlangt.\nBegrenze die Aussage zu Gleichgewichtszusammensetzung, vollständiger Umsetzung und Geschwindigkeit. Erkläre, weshalb möglicher CO2-Verlust nach Öffnen eine andere Systemgrenze erzeugt, ohne einen neuen Zahlenwert zu behaupten.",
+            "taskDemandEn": "Write the reactions of HCO3− with H3O+ and OH−; check atoms/charges and justify its changing role using all conjugate pairs.\nJustify the favored side of the OH− reaction using only the supplied relative donor/acceptor strengths. Distinguish the partner-dependent role from a fixed substance label. Calculation from Ka2/Kw is not required.\nBound the conclusions about equilibrium composition, completion and rate. Explain why possible CO2 loss after opening changes the system boundary without claiming a new numerical value.",
+            "expectedPerformanceDe": "HCO3−+H3O+⇌H2CO3+H2O: HCO3− nimmt H+ auf; Paare H2CO3/HCO3− und H3O+/H2O. Beide Seiten C1, H4, O4, Ladung 0. HCO3−+OH−⇌CO3²−+H2O: HCO3− gibt H+ ab; Paare HCO3−/CO3²− und H2O/OH−. Beide Seiten C1, H2, O4, Ladung −2. Dasselbe Teilchen wirkt abhängig vom Partner als Akzeptor oder Donator. Aus der gegebenen relativen Stärke ist für die OH−-Reaktion die Produktseite mit schwächerem Donator und Akzeptor bevorzugt. Es folgt keine numerische Konstante, exakte Verteilung, Geschwindigkeits- oder Vollständigkeitsgarantie. CO2-Verlust verändert den Stoffbestand und verlässt die geschlossene Systemannahme; ohne neue Bestandsdaten ist kein neuer Zahlenzustand bestimmt.",
+            "expectedPerformanceEn": "HCO3−+H3O+⇌H2CO3+H2O: HCO3− accepts H+; pairs H2CO3/HCO3− and H3O+/H2O. Both sides have C1, H4, O4, charge 0. HCO3−+OH−⇌CO3²−+H2O: HCO3− donates H+; pairs HCO3−/CO3²− and H2O/OH−. Both sides have C1, H2, O4, charge −2. The same species acts as acceptor or donor depending on its partner. The supplied relative strengths favor products with the weaker donor and acceptor in the OH− reaction. No numerical constant, exact distribution, rate or completion guarantee follows. CO2 loss changes the material inventory and leaves the closed-system assumption; no new numerical state is determined without new inventory data.",
+            "understandingFocusDe": "Ampholytrolle und geänderte Systemgrenze bei CO2-Verlust ohne ungestützte Zahlenkonstante.",
+            "understandingFocusEn": "Amphiprotic roles and a changed system boundary under CO2 loss without an unsupported numerical constant."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "5a58126e-0c51-5808-be9e-8faa9dae0c32",
+      "wholeGoalObjectSha256": "sha256:e72d2b677a1265be1551d56ab9f3cc56bc5758c8066e422ce230b252b68fe725",
+      "wholeProfileObjectSha256": "sha256:e3e2085b6d68669d801474bd37ba8266cdc1c4cd952c92040c0ea7cd0717bbcf",
+      "profilePayloadChangedFields": [],
+      "wholeCaseInputs": [
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-acid-source-course-eight-findings-whole-author-successor-20261016-v1/materials/NINE.complete-additional-cases-and-practical-rubrics.author.json",
+            "sha256": "sha256:86069f0847c0c8f8658e7a9e80bd362fb722fb1ef24b1e587da2ef8e3e9128e2",
+            "bytes": 68298
+          },
+          "jsonPointer": "/cases/4",
+          "caseIds": [
+            "OPEN-BUFFER-C1"
+          ],
+          "wholePointedMaterialObjectSha256": "sha256:a254bdae3fefcbb4e63763f2d8c6c37bd7a5373f4a002c123fc1c30e72fefff8",
+          "completeBilingualMaterialTasksModelAndRubricInspected": true,
+          "actualPerformanceObserved": false
+        }
+      ],
+      "decision": "support_current_profile_after_explicit_open_system_description",
+      "judgmentDe": "Die präzisierte Beschreibung benennt die beiden vollständigen Pufferpaare und die kausale Beziehung vom Stoffaustausch zu Bestand, gekoppelten Gleichgewichten und pH. OPEN-BUFFER-C1 enthält die vollständige CO2(g)/CO2(aq)/H2CO3/HCO3−-Folge sowie NH4+/NH3. Die gegenübergestellten Fälle prüfen echte chemische Variation: Zufuhr bzw. Abfuhr einer sauren Gaskomponente und Verlust der basischen Komponente NH3. Die Aussagen zur pH-Richtung sind auf sonst gleiche geeignete Bedingungen begrenzt.",
+      "counterexampleDe": "Bei unbekanntem NH3-Verlust ist das alte Stoffmengenverhältnis keine neue Bilanz. Eine gültige Aktivitätsbeziehung wird dadurch nicht widerlegt; ohne aktuelle Bestands-/Gasgleichgewichtsdaten folgt kein neuer Zahlen-pH.",
+      "criterionAnchors": [
+        "open-buffer-c1-r1",
+        "open-buffer-c1-r2",
+        "open-buffer-c1-r3"
+      ],
+      "boundaryDe": "Qualitative Modell- und Systemgrenzenkompetenz; keine medizinische Wirksamkeits-, Regulations- oder Handlungsfreigabe, keine Messung und keine unendliche Pufferreserve.",
+      "unresolvedScientificBlockers": [],
+      "genuineCurrentInformedJudgment": true,
+      "blindReviewClaimed": false,
+      "candidateProfile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "open-buffer-c1-r1",
+            "essentialUnderstandingDe": "Stoffaustausch verändert offene Puffer",
+            "essentialUnderstandingEn": "Matter exchange changes open buffers",
+            "observablePerformanceDe": "Die gekoppelte CO₂-Gleichgewichtsfolge und beide qualitative Änderungen sind korrekt.",
+            "observablePerformanceEn": "Correct coupled CO₂ equilibria and both qualitative directions."
+          },
+          {
+            "id": "open-buffer-c1-r2",
+            "essentialUnderstandingDe": "Stoffaustausch verändert offene Puffer",
+            "essentialUnderstandingEn": "Matter exchange changes open buffers",
+            "observablePerformanceDe": "NH₃-Verlust wird als Bilanzänderung und Grenze einer unveränderten HH-Eingabe erklärt.",
+            "observablePerformanceEn": "Explain NH₃ loss as a balance change invalidating unchanged HH inputs."
+          },
+          {
+            "id": "open-buffer-c1-r3",
+            "essentialUnderstandingDe": "Stoffaustausch verändert offene Puffer",
+            "essentialUnderstandingEn": "Matter exchange changes open buffers",
+            "observablePerformanceDe": "Systemgrenzen und fehlende quantitative Daten werden präzise benannt.",
+            "observablePerformanceEn": "Specify system boundaries and missing quantitative data."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "open-buffer-c1-r1",
+            "open-buffer-c1-r2",
+            "open-buffer-c1-r3"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "gas-species-and-direction",
+            "textDe": "CO2-Zufuhr/-Entfernung mit Verlust der basischen Komponente NH3 vergleichen.",
+            "textEn": "Compare CO2 supply/removal with loss of the basic component NH3."
+          },
+          {
+            "id": "open-closed",
+            "textDe": "Erhaltenen Bestand im geschlossenen Gefäß von Stoffströmen und fehlenden quantitativen Angaben unterscheiden.",
+            "textEn": "Distinguish conserved closed-vessel inventory from flows and missing quantitative inputs."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "open-carbonate",
+            "taskDemandDe": "Stelle Gaslösung, Hydratation und Protolyse des offenen CO2/H2CO3/HCO3−-Systems dar und begründe CO2-Zufuhr sowie Abfuhr qualitativ.",
+            "taskDemandEn": "Represent gas dissolution, hydration and protolysis in the open CO2/H2CO3/HCO3− system and explain supply/removal qualitatively.",
+            "expectedPerformanceDe": "CO2(g)⇌CO2(aq), CO2(aq)+H2O⇌H2CO3 und H2CO3+H2O⇌HCO3−+H3O+ sind gekoppelt. Mehr CO2 senkt unter sonst passenden Bedingungen tendenziell den pH, Abfuhr wirkt umgekehrt; ohne Austausch-/Bestandsdaten folgt keine Zahl.",
+            "expectedPerformanceEn": "CO2(g)⇌CO2(aq), CO2(aq)+H2O⇌H2CO3 and H2CO3+H2O⇌HCO3−+H3O+ are coupled. More CO2 tends to lower pH under otherwise suitable conditions; removal reverses this, with no numerical prediction absent flow/inventory data.",
+            "understandingFocusDe": "Gekoppelte Gleichgewichte und veränderter Stoffbestand.",
+            "understandingFocusEn": "Coupled equilibria and changed inventory."
+          },
+          {
+            "id": "open-ammonia",
+            "taskDemandDe": "Vergleiche NH4+/NH3 im geschlossenen Gefäß mit unbekanntem NH3-Verlust und prüfe die Weiterverwendung des alten Verhältnisses.",
+            "taskDemandEn": "Compare closed NH4+/NH3 with unknown NH3 loss and assess reuse of the original ratio.",
+            "expectedPerformanceDe": "NH3-Verlust entfernt die basische Komponente und ändert Bilanz/Verhältnis; tendenziell sinkt der pH. Die Aktivitätsbeziehung bleibt mit neuen tatsächlichen Anteilen möglich, aber alte Stoffmengen liefern keinen neuen Zahlenwert. Reale Regulation ist ein offenes System mit endlicher Reserve.",
+            "expectedPerformanceEn": "NH3 loss removes the basic component, changing balance/ratio and tending to lower pH. The activity relation may still hold for actual new species, but old amounts do not determine a new value. Real regulation is an open system with finite reserve.",
+            "understandingFocusDe": "Kein unverändertes HH-Einsetzen bei unbekanntem Austausch.",
+            "understandingFocusEn": "No unchanged HH substitution under unknown exchange."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "dc0470f1-0676-5949-a5cc-02783d478406",
+      "wholeGoalObjectSha256": "sha256:ac2fe262ad1ff2806b161ae9019c2f345c4284ce0a024457a3bf318b33208c03",
+      "wholeProfileObjectSha256": "sha256:21e7f90eba4c1e926e22a45c6cbfcacf0fb882a18420fcc945a70046b61cae6c",
+      "profilePayloadChangedFields": [
+        "expectations/0/essentialUnderstandingDe",
+        "expectations/0/essentialUnderstandingEn",
+        "expectations/1/essentialUnderstandingDe",
+        "expectations/1/essentialUnderstandingEn",
+        "expectations/2/essentialUnderstandingDe",
+        "expectations/2/essentialUnderstandingEn",
+        "expectations/3/essentialUnderstandingDe",
+        "expectations/3/essentialUnderstandingEn"
+      ],
+      "wholeCaseInputs": [
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-acid-source-course-eight-findings-whole-author-successor-20261016-v1/materials/NINE.complete-additional-cases-and-practical-rubrics.author.json",
+            "sha256": "sha256:86069f0847c0c8f8658e7a9e80bd362fb722fb1ef24b1e587da2ef8e3e9128e2",
+            "bytes": 68298
+          },
+          "jsonPointer": "/cases/2",
+          "caseIds": [
+            "POLY-AMINO-C1"
+          ],
+          "wholePointedMaterialObjectSha256": "sha256:fac39609af307bfbab613c8b6684231c222a18bac9e65c33624a0e24312409de",
+          "completeBilingualMaterialTasksModelAndRubricInspected": true,
+          "actualPerformanceObserved": false
+        }
+      ],
+      "decision": "support_targeted_four_relationship_expectations_and_calculable_pH_operator",
+      "judgmentDe": "Der aktuelle pH-Operator verbindet die sukzessiven Gleichgewichte mit begründeten Näherungen und dem tatsächlichen Bestand korrespondierender Paare. Alle acht neuen DE/EN-Essential-Strings beschreiben nun die jeweilige fachliche Beziehung, statt viermal den Falltitel zu wiederholen. r1 bindet Protonenäquivalente an Bilanzen; r2 bindet die Näherungswahl an Spezies und endliche Konzentration; r3 trennt formales Halbvolumen vom echten 1:1-Verhältnis; r4 bindet Pufferung an Partnerbestand und begrenzt Identifizierbarkeit. Das vollständige Glycinmaterial enthält beide Konstanten, Gegenionen, Aufgaben, Rubrik und die synthetische Tabelle. Die eigene Bilanzrechnung reproduziert sämtliche 13 Tabellenwerte auf deren letzte Dezimalstelle.",
+      "counterexampleDe": "Bei 12,50 mL ergibt die vollständige Bilanz pH=2,435896 statt pKa1=2,34. Freies H+ ist merklich; das reale Verhältnis HG±/H2G+ ist nicht 1. Die HH-Aktivitätsidentität bleibt gültig. Am Ampholytpunkt um pH6 dominiert HG±, während beide benachbarten Paarpartner nur kleine Anteile besitzen.",
+      "criterionAnchors": [
+        "poly-amino-c1-r1",
+        "poly-amino-c1-r2",
+        "poly-amino-c1-r3",
+        "poly-amino-c1-r4"
+      ],
+      "boundaryDe": "Glycin ist der explizite ideale Zweistufenfall mit Chlorid-/Natriumgegenionen. Keine allgemeine Zahl sichtbarer Stufen und keine Identifikation beliebiger polyprotischer Stoffe aus zwei Äquivalenten behauptet.",
+      "unresolvedScientificBlockers": [],
+      "genuineCurrentInformedJudgment": true,
+      "blindReviewClaimed": false,
+      "candidateProfile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "poly-amino-c1-r1",
+            "essentialUnderstandingDe": "Die aufeinanderfolgenden Protonierungsstufen eines mehrprotonigen Systems sind über Stoffmengen- und Ladungsbilanzen verknüpft; im Glycinmodell entsprechen ihnen zwei Protonenäquivalente.",
+            "essentialUnderstandingEn": "Successive protonation stages of a polyprotic system are linked by material and charge balances; in the glycine model they correspond to two proton equivalents.",
+            "observablePerformanceDe": "Zwei Äquivalenzen, Spezies und eine vollständige beschriftete Modellkurve werden mit Stoffmengen begründet.",
+            "observablePerformanceEn": "Justify two equivalences, species and a fully labelled model plot using amounts."
+          },
+          {
+            "id": "poly-amino-c1-r2",
+            "essentialUnderstandingDe": "Die vorherrschenden Spezies und ihre Gleichgewichte bestimmen, welche pH-Näherung an Anfang, Ampholytpunkt oder Halbpunkt gilt; endliche Konzentration und Bilanzanteile begrenzen die Näherung.",
+            "essentialUnderstandingEn": "Dominant species and their equilibria determine which pH approximation applies initially, at the ampholyte point or at a halfpoint; finite concentration and balance contributions limit the approximation.",
+            "observablePerformanceDe": "Drei berechnete pH-Bereiche und ihre Näherungen werden zahlenmäßig mit der vollständigen Tabelle verglichen.",
+            "observablePerformanceEn": "Numerically compare three calculated pH regions and their approximations with the full table."
+          },
+          {
+            "id": "poly-amino-c1-r3",
+            "essentialUnderstandingDe": "Ein formales halbes Äquivalenzvolumen garantiert kein tatsächliches 1:1-Verhältnis des korrespondierenden Paares, wenn freie Wasserstoffionen merklich zur Bilanz beitragen; die Henderson-Hasselbalch-Beziehung für Aktivitäten bleibt gültig.",
+            "essentialUnderstandingEn": "A formal half-equivalence volume does not guarantee an actual 1:1 conjugate-pair ratio when free hydrogen ions contribute appreciably to the balances; the Henderson–Hasselbalch relation for activities remains valid.",
+            "observablePerformanceDe": "Die erste Halbpunktabweichung wird durch echte Bilanzanteile und nicht durch eine falsche neue pK-Konstante erklärt.",
+            "observablePerformanceEn": "Explain the first-halfpoint deviation with balance contributions, not a false new pKa."
+          },
+          {
+            "id": "poly-amino-c1-r4",
+            "essentialUnderstandingDe": "Wirksame Pufferung erfordert einen ausreichenden Bestand beider Partner eines korrespondierenden Paares; zwei verbrauchte Protonenäquivalente oder zwei sichtbare Stufen identifizieren eine Substanz nicht eindeutig.",
+            "essentialUnderstandingEn": "Effective buffering requires appreciable inventories of both conjugate partners; consumption of two proton equivalents or two visible stages does not uniquely identify a substance.",
+            "observablePerformanceDe": "Pufferbereiche, Zweiäquivalentverbrauch und begrenzte Identifizierbarkeit werden fachlich bewertet.",
+            "observablePerformanceEn": "Evaluate buffer regions, two-equivalent consumption and limited identification."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "poly-amino-c1-r1",
+            "poly-amino-c1-r2",
+            "poly-amino-c1-r3",
+            "poly-amino-c1-r4"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "protonation-stage",
+            "textDe": "Erste und zweite Glycinstufe sowie mono-/diprotischen Äquivalentverbrauch vergleichen.",
+            "textEn": "Compare first/second glycine stages and mono-/diprotic equivalent consumption."
+          },
+          {
+            "id": "formal-halfpoint",
+            "textDe": "Formales Halbvolumen und tatsächliches Gleichgewichtsverhältnis mit freiem H+ trennen.",
+            "textEn": "Distinguish formal half-volume from equilibrium species ratio with free H+."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "glycine-stage-calculations",
+            "taskDemandDe": "Nutze den vollständigen idealen Glycinfall mit 2,500 mmol, pKa1=2,34 und pKa2=9,60. Begründe beide Äquivalenzvolumina und berechne Anfang, erste Äquivalenz und zweiten Halbpunkt; vergleiche mit der Tabelle.",
+            "taskDemandEn": "Use the complete ideal glycine case with 2.500 mmol, pKa1=2.34 and pKa2=9.60. Justify both equivalence volumes and calculate initial, first-equivalence and second-halfpoint pH against the table.",
+            "expectedPerformanceDe": "Veq=25/50 mL. Die erste quadratische Protolyse gibt pH≈1,716; Ampholytnäherung 5,97 gegenüber 5,9888 in der Tabelle, zweiter Halbpunkt≈9,60 gegenüber 9,5983. Die Gleichgewichtsformen und endliche Konzentration erklären die Modellgrenzen.",
+            "expectedPerformanceEn": "Veq=25/50 mL. First-protolysis quadratic gives pH≈1.716; ampholyte approximation 5.97 versus table 5.9888; second halfpoint≈9.60 versus 9.5983. Equilibrium species and finite concentration explain model limits.",
+            "understandingFocusDe": "Stufenbezogene Bilanz und begründete Näherung statt pauschaler Halbpunktregel.",
+            "understandingFocusEn": "Stage-specific balance and justified approximation rather than a blanket halfpoint rule."
+          },
+          {
+            "id": "glycine-first-halfpoint-counterexample",
+            "taskDemandDe": "Prüfe am vollständigen Material die Behauptung pH=2,34 bei 12,50 mL und bewerte Pufferbereiche sowie den monoprotischen Vergleich.",
+            "taskDemandEn": "Assess pH=2.34 at 12.50 mL using the complete material and evaluate buffer regions and the monoprotic comparison.",
+            "expectedPerformanceDe": "Die volle Bilanz ergibt 2,4359: freies H+ verändert die Spezies gegenüber den formalen Restmengen. HH als Aktivitätsidentität ist nicht widerlegt. Um pH≈6 fehlt ein ausgeprägter Nachbarpaarbestand; zwei Äquivalente und zwei sichtbare Stufen beweisen keine eindeutige Identität jeder polyprotischen Säure.",
+            "expectedPerformanceEn": "The full balance gives 2.4359: free H+ changes species relative to formal residual amounts. This does not refute the HH activity identity. Near pH≈6 the neighbouring-pair inventory is small; two equivalents/two visible stages do not uniquely identify every polyprotic acid.",
+            "understandingFocusDe": "Gegenbeispiel zur exakten 1:1-Formalbilanz und begrenzte Pufferbewertung.",
+            "understandingFocusEn": "Counterexample to exact formal 1:1 accounting and a bounded buffering assessment."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "edcfc5f0-900d-5819-830f-3b14af2bc369",
+      "wholeGoalObjectSha256": "sha256:89a7bc2a4d2be9c6cf0a58151f3b80a51e98ddac1a611058771590761c85a5dc",
+      "wholeProfileObjectSha256": "sha256:9a77787a1f142a76b682cd7eec61b3ed61781abe8ba5b7d4c478286ff5a6a88e",
+      "profilePayloadChangedFields": [],
+      "wholeCaseInputs": [
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-acid-source-course-eight-findings-whole-author-successor-20261016-v1/materials/NINE.complete-additional-cases-and-practical-rubrics.author.json",
+            "sha256": "sha256:86069f0847c0c8f8658e7a9e80bd362fb722fb1ef24b1e587da2ef8e3e9128e2",
+            "bytes": 68298
+          },
+          "jsonPointer": "/cases/0",
+          "caseIds": [
+            "WEAK-MODEL-C1"
+          ],
+          "wholePointedMaterialObjectSha256": "sha256:6c53e5eb4ff603297cd878e104b2bc09be40ffb534229e9057227516feff649f",
+          "completeBilingualMaterialTasksModelAndRubricInspected": true,
+          "actualPerformanceObserved": false
+        },
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-acid-source-course-eight-findings-whole-author-successor-20261016-v1/materials/BASE.complete-four-point-case.precise-assumptions.author.json",
+            "sha256": "sha256:08b4d8fa1d4b287ae661fb30f4ec480fe8c052ce47d6ef428d3eaa8528196f52",
+            "bytes": 13228
+          },
+          "jsonPointer": "/wholeCase",
+          "caseIds": [
+            "strong-and-weak-bases-four-characteristic-points"
+          ],
+          "wholePointedMaterialObjectSha256": "sha256:ec5b804b6cfb1016d7d9c72af621ede3a17a404eebfb47b667894fbcc9ead1b2",
+          "completeBilingualMaterialTasksModelAndRubricInspected": true,
+          "actualPerformanceObserved": false
+        },
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-acid-source-course-eight-findings-whole-author-successor-20261016-v1/materials/EIGHT.complete-retained-cases-and-rubrics.exact.json",
+            "sha256": "sha256:7bdbae11b429003bbf3a8b3689c8463eb650f502289ea34394c8c26d3082cea6",
+            "bytes": 60556
+          },
+          "jsonPointer": "/cases/0/wholeCase",
+          "caseIds": [
+            "T05-C1"
+          ],
+          "wholePointedMaterialObjectSha256": "sha256:28c354ca4a12ce9e44180ed7c6dacf6a296048b6fdb2c646a19be4c1f627acc1",
+          "completeBilingualMaterialTasksModelAndRubricInspected": true,
+          "actualPerformanceObserved": false
+        }
+      ],
+      "decision": "support_explicit_dissociation_vs_weak_base_protolysis_and_MWG_scope",
+      "judgmentDe": "Die korrigierte Beschreibung trennt die vollständige Dissoziation des löslichen Hydroxids NaOH von der unvollständigen Protolyse der schwachen Base mit Wasser. Die selbstständige MWG-Herleitung und Näherungsprüfung ist ausdrücklich der schwachen Base zugeordnet; eine fiktive NaOH-Protolyse wird nicht verlangt. Der aktuelle Profilkern prüft genau diesen Anfangs-pH. Das vollständige WEAK-MODEL-Material und der V=0-Ausschnitt des vollständigen BASE-Falls tragen die Herleitung und den unabhängigen Vergleich. Die eigene Rechnung ergibt für 0,0100 M B x=4,1290e-4 M, pH≈10,616 und 4,13% Umsetzung sowie für 0,100 M NH3 pH≈11,122.",
+      "counterexampleDe": "Ein gleicher formaler Gehalt macht NaOH und NH3 nicht gleich stark. pH=pKw−pOH verlangt die gegebene Temperatur; bei extremer Verdünnung dürfen Wasser und Ladungsbilanz nicht entfallen.",
+      "criterionAnchors": [
+        "base-model",
+        "base-derivation"
+      ],
+      "boundaryDe": "Nur die Anfangs-pH-Rechenkompetenz des Basenatoms. Halb-, Salz-, Indikator- und Überschusspunktpflichten des ganzen BASE-Falls werden nicht unzulässig auf dieses Atom übertragen.",
+      "unresolvedScientificBlockers": [],
+      "genuineCurrentInformedJudgment": true,
+      "blindReviewClaimed": false,
+      "candidateProfile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "base-model",
+            "essentialUnderstandingDe": "Starke Dissoziation und schwache Base/Wasser-Protolyse liefern verschiedene Hydroxidkonzentrationen bei gleichem Gehalt.",
+            "essentialUnderstandingEn": "Strong dissociation and weak-base/water protolysis give different hydroxide concentrations at equal content.",
+            "observablePerformanceDe": "Begründe vollständige oder unvollständige Umsetzung und berechne Anfangs-[OH−],pOH undpH mit dem temperaturgebundenenpKw.",
+            "observablePerformanceEn": "Justify complete or incomplete conversion and calculate initial[OH−],pOH andpH using temperature-boundpKw."
+          },
+          {
+            "id": "base-derivation",
+            "essentialUnderstandingDe": "Die schwache Base erfordert ihr eigenes Kb-MWG und Stoffbilanz; kleine Umsetzung und Wasservernachlässigung sind zu prüfen.",
+            "essentialUnderstandingEn": "The weak base requires its own Kb mass action/balance, checking small conversion and neglected water.",
+            "observablePerformanceDe": "Leite positive quadratische Lösung und Wurzelnäherung selbst her, prüfe Umsetzungsgrad/Fehler und benenne Temperatur- und Extremverdünnungsgrenzen.",
+            "observablePerformanceEn": "Independently derive the positive quadratic and square-root approximations, check conversion/error and state temperature/extreme-dilution limits."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "base-model",
+            "base-derivation"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "strong-weak-base",
+            "textDe": "NaOH und NH3 beziehungsweise B bei gleichem formalen Gehalt vergleichen.",
+            "textEn": "Compare NaOH and NH3 or B at equal formal content."
+          },
+          {
+            "id": "temperature-and-water",
+            "textDe": "pOH→pH nur mit gegebenem temperaturabhängigem pKw verwenden und den Wasserbeitrag prüfen.",
+            "textEn": "ConvertpOH→pH with the supplied temperature-dependentpKw and check water contribution."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "weak-base-derivation",
+            "taskDemandDe": "Bearbeite nur den B-Zweig von WEAK-MODEL-C1:0,0100 M,pKb4,75 bei25°C. Leite B+H2O⇌BH++OH−, MWG und positive Lösung her und prüfe die Wurzelnäherung.",
+            "taskDemandEn": "Work only the B branch of WEAK-MODEL-C1:0.0100 M,pKb4.75 at25°C. Derive B+H2O⇌BH++OH−, mass action and positive solution, checking the square-root approximation.",
+            "expectedPerformanceDe": "Kb=x²/(c0−x),x≈4,1290·10−4 M,pH≈10,616 nachpOH; Wurzel≈10,625. Rund4,13% Umsetzung und der kleine Wasserbeitrag begründen die Rechnung.",
+            "expectedPerformanceEn": "Kb=x²/(c0−x),x≈4.1290·10−4 M,pH≈10.616 viapOH; square-root≈10.625. About4.13% conversion and small water contribution justify the calculation.",
+            "understandingFocusDe": "Eigener Basenzweig statt automatischer Übernahme der Säurerechnung.",
+            "understandingFocusEn": "A distinct base branch rather than automatic reuse of acid calculation."
+          },
+          {
+            "id": "initial-base-comparison",
+            "taskDemandDe": "Nutze im vollständigen BASE-Fall ausschließlichV=0 für0,100 M NaOH/NH3 und vergleiche die Modelle bei gleichem Gehalt. Erkläre, welche Angaben bei anderer Temperatur/extremer Verdünnung neu gebraucht würden.",
+            "taskDemandEn": "Use onlyV=0 of the complete BASE case for0.100 M NaOH/NH3 and compare models at equal content. Explain inputs needed at another temperature/extreme dilution.",
+            "expectedPerformanceDe": "NaOH ergibtpH13,00; NH3 mit eigenemKb-Gleichgewicht≈11,12–11,13. Stärke ist nicht Gehalt. pH=pKw−pOH; Wasser darf nahe neutralen Konzentrationen nicht einfach entfallen. Keine Halb-, Salz- oder Überschusspunktrechnung ist für diesen Anfangs-pH-Atom zusätzlich Pflicht.",
+            "expectedPerformanceEn": "NaOH givespH13.00; NH3 with its ownKb equilibrium≈11.12–11.13. Strength is not content.pH=pKw−pOH; water cannot simply be omitted near neutral concentrations. Half-, salt- and excess-point calculations are not added requirements of this initial-pH atom.",
+            "understandingFocusDe": "Unabhängiger Modellvergleich und klar begrenzter Anfangsoperator.",
+            "understandingFocusEn": "Independent model comparison and a bounded initial-pH operator."
+          }
+        ]
+      }
+    }
+  ],
+  "inputFilesActuallyInspected": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-acid-source-course-eight-findings-whole-author-successor-20261016-v1/materials/BASE.complete-four-point-case.precise-assumptions.author.json",
+      "sha256": "sha256:08b4d8fa1d4b287ae661fb30f4ec480fe8c052ce47d6ef428d3eaa8528196f52",
+      "bytes": 13228
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-acid-source-course-eight-findings-whole-author-successor-20261016-v1/materials/EIGHT.complete-retained-cases-and-rubrics.exact.json",
+      "sha256": "sha256:7bdbae11b429003bbf3a8b3689c8463eb650f502289ea34394c8c26d3082cea6",
+      "bytes": 60556
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-acid-source-course-eight-findings-whole-author-successor-20261016-v1/materials/NINE.complete-additional-cases-and-practical-rubrics.author.json",
+      "sha256": "sha256:86069f0847c0c8f8658e7a9e80bd362fb722fb1ef24b1e587da2ef8e3e9128e2",
+      "bytes": 68298
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-foundation-source-operator-whole-remediation-author-successor-20261016-v1/materials/retained/TWO.qualitative-pair-whole-successors.exact.json",
+      "sha256": "sha256:2c756e9b23c6f7b8417f0ff686f9c2a35557dde63be9d1b0aeccfce3d28aa973",
+      "bytes": 33909
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-four-native19-findings-targeted-text-and-P-understanding-author-successor-20261016-v1/CANONICAL.current578.four-targeted-native19-findings.author.json",
+      "sha256": "sha256:d8e712c93d08b7b0720919348f2fb4d62c0cf9665a1e132452efea871938ad82",
+      "bytes": 1980141
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-four-native19-findings-targeted-text-and-P-understanding-author-successor-20261016-v1/P4.prospective-profile-bodies.one-targeted-essential-understanding-correction.author.json",
+      "sha256": "sha256:15fd51003a42ac335e241b03a6a0be84ebc57afee1722da5e8b1fb137c3c20f0",
+      "bytes": 26313
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-native19-current-material-locations-neutral-technical-20261016-v1/INDEX.neutral-current-whole-case-material-locations.no-review.json",
+      "sha256": "sha256:9016a2142c71f1ad943cd79fe0b573bae7881dd5608df503ae4bfa7bc107fbb3",
+      "bytes": 17062
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-nineteen-current-normal-P-bindings-technical-20261016-v1/P19.current-resource-bound.normal.jsonl",
+      "sha256": "sha256:10f7cba532ee07f2236b904f2a4caa695daaa04ba9464c6596fa5095817f013d",
+      "bytes": 139423
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/prompts/chemistry-positive-understanding-evidence-profile-criteria-v1.md",
+      "sha256": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "bytes": 2137
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/chemie/b4777001-f4ed-5fe9-9d98-02319abdea09/b4777001-f4ed-5fe9-9d98-02319abdea09.jpg",
+      "sha256": "sha256:2acefe63cdd0fd4a23919410d825d67445bd6ed61ebad4ce3fae7887b8fd9be5",
+      "bytes": 2202586
+    }
+  ],
+  "actualOwnNumericalRecalculation": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-four-targeted-findings-current-informed-P-design-bindings-20261016-v1/CHECK.actual-own-independent-base-and-glycine-artifact-calculations.json",
+    "sha256": "sha256:80885a9cfe87aac1a9ac1a0f9c981a856070e471a0dc12d8a54c972eb535d8e2",
+    "bytes": 8019
+  },
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "evidenceMeaning": "Actual scientific inspection of identified current assessment-design artifacts only. Underlying cases retain E0/G0 author-design status; numerical artifact validation is not case execution, learner work, practical performance or efficacy.",
+  "minimumIndependentDemonstrationsMeaning": "Two content-distinct self-contained evidential performances, such as model derivation and genuine changed-condition transfer, may occur within one rich task. Case labels are not a quota and no extra task follows once every aspect is adequately evidenced.",
+  "scopeBoundary": "Source and whole-course approval, all other P profiles, V/D/A/M gates, current strict count and Central remain outside this bounded P judgment.",
+  "reviewRunIds": [],
+  "externalModelRunClaimed": false,
+  "actualLearnerExecutions": 0,
+  "actualPracticalExecutions": 0,
+  "HumanApproval": false,
+  "HumanTrial": false
+}

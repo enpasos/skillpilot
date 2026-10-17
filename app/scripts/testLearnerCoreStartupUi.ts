@@ -3,7 +3,6 @@ import { fileURLToPath } from 'node:url'
 import { chromium, type Browser } from 'playwright'
 import { CANONICAL_GYMNASIUM_ROOT_ID } from '../src/utils/curriculumDisplay'
 import { startViteTestServer } from './viteTestServer'
-import { assertExactScopeTargetTrees } from './assertExactScopeTargetsUi'
 
 const rootId = CANONICAL_GYMNASIUM_ROOT_ID
 const mathId = '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
@@ -180,7 +179,6 @@ try {
   assert.equal(packageCounts.get('/api/ui/composition-views/match') ?? 0, 0)
   for (const id of ids) assert.equal(packageCounts.get(`/api/ui/composition-views/offerings/offering-${id}`), 1)
   assert.deepEqual(errors, [])
-  await assertExactScopeTargetTrees(browser)
   console.log('Learner core startup: scoped-only, bounded requests, stable mounting and fail-closed scope passed.')
 } finally {
   profileGate.release(); scopedGate.release(); compositionGate.release(); switchedScopeGate.release()

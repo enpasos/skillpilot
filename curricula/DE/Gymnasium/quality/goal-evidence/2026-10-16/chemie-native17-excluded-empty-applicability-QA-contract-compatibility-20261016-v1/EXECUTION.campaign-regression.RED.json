@@ -1,0 +1,23 @@
+{
+  "role": "Actual targeted campaign test before schema correction, regression must fail on empty excluded applicability",
+  "startedAtUtc": "2026-10-16T11:28:16.050705+00:00",
+  "command": [
+    "npm",
+    "--prefix",
+    "app",
+    "run",
+    "test:goal-description-review-contracts"
+  ],
+  "workingDirectory": "/home/enpasos/projects/skillpilot",
+  "exitCode": 1,
+  "elapsedSeconds": 0.974,
+  "stdout": "EXECUTION.campaign-regression.RED.stdout.txt",
+  "stderr": "EXECUTION.campaign-regression.RED.stderr.txt",
+  "schemaSHA256": "sha256:45333995445f1727c966aea0a3b210379c927329167bd58585264c175ec927c4",
+  "regressionTestSourceBoundAtEvidenceSealing": {
+    "path": "app/scripts/testGoalDescriptionReviewCampaign.ts",
+    "sha256": "sha256:66b877e7c2bb2edd2cbce759229406f4655cdbdbe10cb92a54e8bed1f253db8b",
+    "bytes": 55583
+  },
+  "testSourceHistory": "Same inserted regression source in actual RED and GREEN; only schema changed between runs."
+}

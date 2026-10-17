@@ -1,0 +1,76 @@
+{
+  "role": "Additive read-only implementation-scope evidence, NOT a new scientific vote or change to FIRST",
+  "createdAtUtc": "2026-10-16T13:38:26.914152+00:00",
+  "goalId": "3eb2a06c-d283-57aa-9eb4-088940c4801a",
+  "firstSha256Expected": "sha256:75778913b6e735bae8b8729d2a0adeccafc764b7b2262a3bbc592bc884ee24be",
+  "firstExact": true,
+  "actualInspectedFiles": [
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-sh-gk.view.json",
+      "sha256": "sha256:43375c07fdd6b447e967f58ac686d33a52cc4eba1e959b9763c650c9b650e073",
+      "actualScope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SH",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "newGoalIdPresent": false,
+      "themeSelectorInScope": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-sh-lk.view.json",
+      "sha256": "sha256:139989e1b39fe2b5062aaa0655d63e3e60ff5eb12f771b250260d395afd0dfb9",
+      "actualScope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SH",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "newGoalIdPresent": false,
+      "themeSelectorInScope": false
+    },
+    {
+      "path": "app/src/utils/learnerCompositionScopeMatching.ts",
+      "sha256": "sha256:9aaf7a2da264244faa993f8e58c6dc1a4e12b61b5e23c3beeded1bb97fcc71a8"
+    },
+    {
+      "path": "app/src/utils/authoring/compositionViewAuthoring.ts",
+      "sha256": "sha256:d7ee9ab670d2d73a3ed82700c2bca2dee3f2da6c8e9517120c5c45acac0d84a7"
+    },
+    {
+      "path": "app/src/landscapeTypes.ts",
+      "sha256": "sha256:448f9107929ccf9ebac985faed0a12bcb109fb4e6cded8752da7d26c223aa838"
+    },
+    {
+      "path": "contracts/curriculum-package/v1/composition-view.schema.json",
+      "sha256": "sha256:a90e68ba07e141e54789d5dbd3de862a6d98f9fff513e57465efbb02c9fc57a6",
+      "closedScopeProperties": [
+        "schoolForm",
+        "jurisdiction",
+        "stage",
+        "courseProfile",
+        "durationModel"
+      ],
+      "scopeAdditionalProperties": false
+    }
+  ],
+  "concreteLimit": [
+    "Current authored SH GK/LK scope objects contain schoolForm,jurisdiction,stage,courseProfile only. They contain no medication-theme selection and do not reference the new032goal.",
+    "Current learnerCompositionScopeMatching.ts explicitly enumerates only schoolForm,jurisdiction,stage,durationModel,courseProfile. isConstrainedLearnerCompositionScope rejects unknown requested dimensions.",
+    "The compiled composition-view schema closes scope with additionalProperties:false and exactly those five properties. The broad TypeScript GoalPlacementContext index signature is authoring flexibility, not proof of a runtime theme selector.",
+    "A read-only invocation of the current scoreLearnerCompositionScope gives a valid normal self-match {scopeSize:4,courseFallbackCount:0,coursePreferenceRank:0}, but returns null when requestedScope additionally contains selectedTheme=Chemie und Medikamente.",
+    "Goal authorProposal.themeSelectionRequired and selectedThemeOnly source notes are metadata assertions; they do not persist or activate a learner selection. A view label alone does not create that learner state."
+  ],
+  "existingActivatableSelectedThemeEvidenceFound": false,
+  "status": "HOLD on active selected-theme placement and resulting whole-M7/source-scope completion; underlying one-goal A/M/P/V science KEEP remains exact.",
+  "permittedFutureDataRouteWithoutClaimingImplementation": "A separately authored and reviewed composition view or program context could name the selected medication theme, provided an existing supported entry/persistence route actually selects and stores that view/context, with GK/LK and source032 obligations faithfully bounded. No such authored selected-theme entry, persisted selection or host evidence has been established by this read-only addendum. A label or custom state key is insufficient.",
+  "unchangedBoundaries": [
+    "Keep current SH default views unchanged for the new032goal until supported placement evidence exists.",
+    "No blanket DE-SH+GK/LK target obligation; no runtime change requested or made.",
+    "No new native D vote and no review of the separate assessment endpoint.",
+    "This syntax-level scope inspection makes no changed central-denominator or default39view-goal count claim."
+  ],
+  "normalActiveWrites": 0,
+  "HumanApproval": false,
+  "HumanTrial": false
+}

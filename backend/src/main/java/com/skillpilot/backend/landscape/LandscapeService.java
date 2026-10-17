@@ -7,7 +7,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.skillpilot.backend.curriculumpackage.PackageCurriculumDomainState;
 import com.skillpilot.backend.util.BundeslandCodeNormalizer;
-import com.skillpilot.backend.util.ApplicabilityContexts;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -33,6 +32,7 @@ public class LandscapeService {
     private static final int SUPPORTED_SOURCE_REGISTRY_VERSION = 1;
     private static final Path SOURCE_LANDSCAPE_REGISTRY_PATH = Path.of(
             "DE", "Gymnasium", "provenance", "source-landscape-registry.json");
+    private static final Path QUALITY_REVIEW_ARTIFACTS_PATH = Path.of("DE", "Gymnasium", "quality");
     private static final int SUPPORTED_SOURCE_GOAL_CLOSURE_REGISTRY_VERSION = 1;
     private static final Path SOURCE_GOAL_CLOSURE_REGISTRY_PATH = Path.of(
             "DE", "Gymnasium", "provenance", "source-goal-closure-registry.json");
@@ -306,7 +306,7 @@ public class LandscapeService {
                 gc.setRequires(g.getRequires());
                 gc.setContains(g.getContains());
                 gc.setExamples(g.getExamples());
-                gc.setApplicability(ApplicabilityContexts.isPresent(g) ? null : packageBacked
+                gc.setApplicability(packageBacked
                         ? g.getApplicability()
                         : mergeApplicability(
                                 resolveGoalApplicability(g),
@@ -724,7 +724,7 @@ public class LandscapeService {
 
         try {
             List<Path> files = PrunedFileTree.files(dir,
-                            path -> isQualityReviewDirectory(dir, path)).stream()
+                            path -> path.startsWith(dir.resolve(QUALITY_REVIEW_ARTIFACTS_PATH))).stream()
                     .filter(p -> isRuntimeLandscapeJson(dir, p))
                     .sorted()
                     .collect(Collectors.toList());
@@ -754,7 +754,6 @@ public class LandscapeService {
                     }
 
                     SkillLandscape landscape = objectMapper.treeToValue(root, SkillLandscape.class);
-                    if (landscape.getGoals() != null) landscape.getGoals().forEach(ApplicabilityContexts::validate);
                     if (!StringUtils.hasText(landscape.getLandscapeId())) {
                         log.warn("Skipping landscape without id: {}", file);
                         continue;
@@ -860,17 +859,7 @@ public class LandscapeService {
                 && StringUtils.hasText(file.getFileName().toString())
                 && file.getFileName().toString().endsWith(".json")
                 // Review candidates may contain real landscape IDs but are not runtime curricula.
-                && !isQualityReviewDirectory(dir, file.getParent());
-    }
-
-    private boolean isQualityReviewDirectory(Path dir, Path directory) {
-        // Only relative directory components count; the configured root may itself be named quality.
-        for (Path segment : dir.relativize(directory)) {
-            if ("quality".equals(segment.toString())) {
-                return true;
-            }
-        }
-        return false;
+                && !file.startsWith(dir.resolve(QUALITY_REVIEW_ARTIFACTS_PATH));
     }
 
     private long loadArchivedSourceLandscapes(Path dir, List<SkillLandscape> loaded) {
@@ -1859,7 +1848,7 @@ public class LandscapeService {
         }
         try {
             return PrunedFileTree.files(dir,
-                            path -> isQualityReviewDirectory(dir, path)).stream()
+                            path -> path.startsWith(dir.resolve(QUALITY_REVIEW_ARTIFACTS_PATH))).stream()
                     .filter(p -> isRuntimeLandscapeJson(dir, p))
                     .mapToLong(p -> {
                         try {

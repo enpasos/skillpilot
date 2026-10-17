@@ -1,0 +1,26 @@
+{
+  "validator": "app/scripts/validateGoalDescriptionReviewCampaignResults.ts",
+  "command": [
+    "npm",
+    "--prefix",
+    "app",
+    "run",
+    "validate:goal-description-review-campaign",
+    "--",
+    "--bundle",
+    "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current435-five-supported-description-normal-H-and-native5-technical-20261016-v1/native-five/round-b/review-bundle-manifest.json",
+    "--input",
+    "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current435-five-supported-description-normal-H-and-native5-technical-20261016-v1/native-five/round-b/description-review-input.json",
+    "--campaign",
+    "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current435-five-supported-description-normal-H-and-native5-technical-20261016-v1/native-five/round-b/description-review-campaign.json",
+    "--batches-dir",
+    "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current435-five-supported-description-normal-H-and-native5-technical-20261016-v1/native-five/round-b/batches",
+    "--results-dir",
+    "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-native5-contentonly-fresh-independent-b2-20261016-v1/results"
+  ],
+  "exitCode": 0,
+  "rawOutput": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-native5-contentonly-fresh-independent-b2-20261016-v1/VALIDATE.stock-campaign.actual.txt",
+  "rawOutputSha256": "sha256:4405a83c185d2cf9e8b872449139dec640d6f041cfff2235aa6d86be2ac8e290",
+  "completedAt": "2026-10-16T12:23:31.447470+00:00",
+  "claims": "Stock schema/campaign/batch/output binding validation only; candidate science, no human approval."
+}

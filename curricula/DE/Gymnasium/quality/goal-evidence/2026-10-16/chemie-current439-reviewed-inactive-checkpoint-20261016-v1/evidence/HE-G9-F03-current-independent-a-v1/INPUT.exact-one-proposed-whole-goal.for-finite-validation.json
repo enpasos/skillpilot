@@ -1,0 +1,134 @@
+{
+  "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+  "locale": "de-DE",
+  "country": "DE",
+  "region": "DEU",
+  "schoolType": "Gymnasium",
+  "subject": "Chemie",
+  "frameworkId": "canonical-gymnasium-chemistry",
+  "title": "Chemie (Gymnasium, DE)",
+  "titleEn": "Chemistry (Gymnasium, DE)",
+  "description": "Chemie fuer das Gymnasium in Deutschland. Die aktuelle Baseline sichert die hessische Oberstufe vollstaendig als Ausgangspunkt fuer spaetere bundeslaenderuebergreifende Angleichung und verankert Hessen-Sek-I-Brueckenschnitte fuer Stoff-, Reaktions-, Symbol-, Atom-, Bindungs-, Ionen-, Elektrolyse-, Sicherheits-, Trenn-, Loesungs-, Stoechiometrie-, Gas-, Elementgruppen-, Salz- und Kohlenwasserstoffgrundlagen.",
+  "descriptionEn": "Chemistry for Gymnasium in Germany. The current baseline fully secures the Hessian upper-secondary curriculum as the starting point for later cross-state alignment and anchors Hessian lower-secondary bridge slices for substance, reaction, symbolic-language, atomic, bonding, ion, electrolysis, safety, separation, solution, stoichiometry, gas, element-group, salt, and hydrocarbon foundations.",
+  "filters": [
+    {
+      "id": "GK",
+      "label": "Grundkurs"
+    },
+    {
+      "id": "LK",
+      "label": "Leistungskurs"
+    }
+  ],
+  "goals": [
+    {
+      "id": "8b2d351e-e44f-5385-9b89-13ef54b5918f",
+      "shortKey": "canonical_chemistry_sek1_temperature_solubility_crystallisation_investigation",
+      "title": "Temperaturabhängige Löslichkeit und Kristallbildung untersuchen",
+      "titleEn": "Investigate temperature-dependent solubility and crystallisation",
+      "description": "Die lernende Person kann in einer freigegebenen und betreuten Untersuchung die Löslichkeit eines Feststoffs bei verschiedenen Temperaturen näherungsweise bestimmen, eigene Mess- und Beobachtungsdaten in einem Löslichkeitsdiagramm darstellen und damit Kristallbildung beim Abkühlen beziehungsweise bei Lösungsmittelverlust begründen; sie unterscheidet Sättigung von einer höheren oder geringeren Stoffkonzentration und benennt Grenzen der Messung.",
+      "descriptionEn": "The learner can estimate a solid’s solubility at different temperatures in an authorised, supervised investigation, present their own measurements and observations in a solubility graph, and use it to explain crystallisation on cooling or solvent loss; they distinguish saturation from higher or lower solute concentration and state limitations of the measurement.",
+      "type": "atomic",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "413040cd-ba74-5227-948c-a778b0bd0f56",
+        "13d4f336-ab16-54a7-9479-c920b458f385"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK3_MATHEMATISIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU"
+        ],
+        "phase": "GLOBAL",
+        "area": "Grundlagen",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.HE.G9.F03.SOLUBILITY_TEMPERATURE_INVESTIGATION"
+      },
+      "phase": "GLOBAL",
+      "area": "Grundlagen",
+      "level": 2,
+      "core": false,
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "examples": [
+        "f03-a-temperature-capacity-and-cooling",
+        "f03-b-flat-curve-and-solvent-loss-controls"
+      ],
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "8b2d351e-e44f-5385-9b89-13ef54b5918f",
+          "title": "Visualisierung: Temperaturabhängige Löslichkeit und Kristallbildung untersuchen",
+          "url": "/assets/goal-visualizations/chemie/8b2d351e-e44f-5385-9b89-13ef54b5918f/8b2d351e-e44f-5385-9b89-13ef54b5918f.png",
+          "provider": "OpenAI / Codex built-in image_gen (model not exposed)",
+          "description": "Schematischer Beispielstoff: Beim Abkühlen derselben Lösung entstehen Kristalle, weil bei dieser niedrigeren Temperatur weniger Feststoff löslich ist. Die Beispielkurve zeigt diese Stoffabhängigkeit ohne Messdaten zu behaupten.",
+          "altText": "Comicartige Gegenüberstellung derselben abgedeckten Lösung: warm klar, nach Abkühlen mit Kristallen am Boden und weiterhin klarer Lösung darüber. Es geht kein Wasser verloren. Ein schematisches Löslichkeitsdiagramm zeigt für diesen Beispielstoff eine mit der Temperatur steigende Löslichkeit und den Abkühlungsweg von rechts oben nach links unten. Keine allgemeine Regel für alle Feststoffe und keine tatsächlichen Messdaten.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ],
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "provenance": {
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_CHEMIE_SEKI_G9.source-extraction.json",
+          "sourceGoalId": "he-chem-seki-8-1-f03-a01-e8972452",
+          "sourceSpan": "8.1#F03A01",
+          "sourcePrintedPage": 12,
+          "sourceURL": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-06/g9-chemie.pdf",
+          "officialOptional": true,
+          "officialSourceStage": "SekI",
+          "officialCourseLevel": "unspecified"
+        },
+        "authorProposal": {
+          "status": "draft-inactive-unreviewed",
+          "role": "AUTHOR, no independent vote",
+          "science": {
+            "path": "tmp/chemie-m7-resumed-20261016/HE-G9-F03-one-coherent-solubility-crystallisation-investigation-author-candidate-v1/FIRST.AUTHOR.one-coherent-F03-experiment-source-and-atomicity-design.frozen.json",
+            "sha256": "sha256:19d63f3995f17d6538c9ebad8d3a7eed7b365793a1adc43351e034e205922b9f",
+            "bytes": 5473
+          },
+          "proposedSemanticKind": "curricularAtomic",
+          "canonicalParentId": "6b6bceca-e1d9-56f7-ae6c-d7f7c2fa9338",
+          "officialScope": "Facultative HEG9 SekI F03 row; no universal official GK/LK/SekII duty. SkillPilot interim all-authored applicable CrossStage targets include this authored component in both technicalGK/LK projections.",
+          "oneExperimentalCausalCompetence": true,
+          "AFB2IsAuthorOperationalization": true,
+          "practicalAcquisitionRequiresActualFuturePerformance": true,
+          "machineMaterialDesignIsNotActualPerformance": true,
+          "memoryRequirementProposal": "none",
+          "imageGenerationPendingRoot": false,
+          "HumanApproval": false,
+          "HumanTrial": false,
+          "imageReviewPending": true,
+          "actualImageAuthorInput": {
+            "path": "tmp/chemie-m7-resumed-20261016/F03-image-author-v1/8b2d351e-e44f-5385-9b89-13ef54b5918f.png",
+            "sha256": "sha256:5ab0d74e268f86c8adffe1385fbf20e62f84099bab9877a501f66e29e502adeb",
+            "bytes": 1654499
+          },
+          "historicalImagePrepareGoal": {
+            "path": "tmp/chemie-m7-resumed-20261016/HE-G9-F03-one-coherent-solubility-crystallisation-investigation-author-candidate-v1/NEW.WHOLE-goal.8b2d351e.AUTHOR.inactive.json",
+            "sha256": "sha256:16cffac828fdd36cbfa0ae39d842b5b09278404a64a7a6d1c83a3b0341a332a9",
+            "bytes": 3851
+          }
+        }
+      }
+    }
+  ]
+}

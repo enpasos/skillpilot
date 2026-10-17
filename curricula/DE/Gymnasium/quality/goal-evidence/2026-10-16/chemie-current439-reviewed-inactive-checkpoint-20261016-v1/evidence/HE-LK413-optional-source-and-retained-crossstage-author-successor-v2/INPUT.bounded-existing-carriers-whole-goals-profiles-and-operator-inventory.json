@@ -1,0 +1,1263 @@
+{
+  "canonical": {
+    "path": "tmp/chemie-m7-resumed-20261016/chemie-shared640-recycling-native-author-capsule-L6-v1/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "sha256": "sha256:67174768b375fffa851e4fa23b27d64065aadd7fa7641734896fffe39451ea36",
+    "bytes": 2597060
+  },
+  "currentPVector": {
+    "path": "tmp/chemie-m7-resumed-20261016/chemie-shared640-recycling-native-author-capsule-L6-v1/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current438-HE-BY-reviewed-P6-private-L6-technical-20261016-v1/P438.selected-whole-current-records.for-native-model.jsonl",
+    "sha256": "sha256:84435735cc0db9a45e143a0ec1701f0270339fe9ad6ca2d013b41d1a48bc9acf",
+    "bytes": 4324867
+  },
+  "wholeCurrentPProfilesScanned": 438,
+  "operatorPatterns": {
+    "solubilityGraph": "Löslichkeits(?:graph|kurv|diagram)|Graphen? zur Löslichkeit|solubility (?:graph|curve|diagram)",
+    "crystalExperiment": "Kristallbildungs?|Kristallisationsversuch|Versuch.{0,30}Kristall|crystal (?:growth|formation)|crystallisation experiment",
+    "temperatureSolubility": "Temperaturabhängigkeit.{0,30}Löslichkeit|Löslichkeit.{0,30}Temperaturabhängigkeit|temperature.dependent solubility"
+  },
+  "actualPatternHits": {
+    "solubilityGraph": [],
+    "crystalExperiment": [
+      {
+        "goalId": "3aef6d91-04ff-5ec7-b92e-ccf330d9816a",
+        "profileFingerprint": "sha256:2bd868aa90916e7dc3e3f2cb68921587c7299defb23087a855c4c06df8e2ded5"
+      }
+    ],
+    "temperatureSolubility": []
+  },
+  "wholePotentiallyRelevantExistingGoals": [
+    {
+      "id": "3d3231f9-039d-5ce5-9e8e-af219c7fee08",
+      "title": "Eigenschaften über Wechselwirkungen erklären",
+      "titleEn": "Explain properties via interactions",
+      "description": "Die lernende Person kann den Einfluss von Van-der-Waals-Kräften und Wasserstoffbrücken auf Schmelz- und Siedetemperaturen sowie Löslichkeiten ausgewählter Stoffe begründen.",
+      "descriptionEn": "The learner can justify the influence of Van der Waals forces and hydrogen bonds on melting and boiling temperatures as well as solubilities of selected substances.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "BC_AUFBAU"
+        ],
+        "phase": "E"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+          "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+          "sourceGoalId": "f5492148-ed03-47a5-a642-4ec24de1eb60"
+        }
+      },
+      "type": "atomic",
+      "examples": [],
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "3d3231f9-039d-5ce5-9e8e-af219c7fee08",
+          "title": "Visualisierung: Eigenschaften über Wechselwirkungen erklären",
+          "url": "/assets/goal-visualizations/chemie/3d3231f9-039d-5ce5-9e8e-af219c7fee08/3d3231f9-039d-5ce5-9e8e-af219c7fee08.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "description": "Visualisierung zum Lernziel: Eigenschaften über Wechselwirkungen erklären.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Eigenschaften über Wechselwirkungen erklären\". Die lernende Person kann den Einfluss von Van-der-Waals-Kräften und Wasserstoffbrücken auf Schmelz- und Siedetemperaturen sowie Löslichkeiten ausgewählter Stoffe begründen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "accepted"
+        }
+      ]
+    },
+    {
+      "id": "5a30273a-98d5-5163-bb16-c250b7ed4e7f",
+      "title": "Struktur-Eigenschafts-Zusammenhänge ableiten",
+      "titleEn": "Derive structure-property relationships",
+      "description": "Die lernende Person kann Schmelz- und Siedetemperaturen, Löslichkeiten sowie die Auswahl geeigneter Lösemittel für molekulare Stoffe mithilfe zwischenmolekularer Wechselwirkungen begründen und vorhersagen.",
+      "descriptionEn": "The learner can justify and predict melting and boiling temperatures, solubilities, and the choice of suitable solvents for molecular substances using intermolecular interactions.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "eb7537dd-d11b-50e9-a6d7-51a78e96fc4e"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "BC_AUFBAU"
+        ],
+        "phase": "Q1"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+          "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+          "sourceGoalId": "964729f6-5239-4b7d-b21f-161a8d3a8f2b"
+        }
+      },
+      "type": "atomic",
+      "examples": [],
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "5a30273a-98d5-5163-bb16-c250b7ed4e7f",
+          "title": "Visualisierung: Struktur-Eigenschafts-Zusammenhänge ableiten",
+          "url": "/assets/goal-visualizations/chemie/5a30273a-98d5-5163-bb16-c250b7ed4e7f/5a30273a-98d5-5163-bb16-c250b7ed4e7f.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "description": "Visualisierung zum Lernziel: Struktur-Eigenschafts-Zusammenhänge ableiten.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Struktur-Eigenschafts-Zusammenhänge ableiten\". Die lernende Person kann Schmelz- und Siedetemperaturen, Löslichkeiten sowie die Auswahl geeigneter Lösemittel für molekulare Stoffe mithilfe zwischenmolekularer Wechselwirkungen begründen und vorhersagen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "accepted"
+        }
+      ]
+    },
+    {
+      "id": "91cd4728-b811-562a-970b-18b81dfb4bdf",
+      "title": "Polare Eigenschaften erklären",
+      "titleEn": "Explain polar properties",
+      "description": "Die lernende Person kann Dipol-Dipol-Wechselwirkungen und Wasserstoffbrücken zur Deutung von Löslichkeit und Siedetemperatur heranziehen.",
+      "descriptionEn": "The learner can use dipole-dipole interactions and hydrogen bonds to interpret solubility and boiling temperature.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "e9b61d96-a271-5e69-b872-8c463f822be1"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "BC_AUFBAU"
+        ],
+        "phase": "Q1"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+          "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+          "sourceGoalId": "8daad975-4282-4091-982f-98b77e62e47e"
+        }
+      },
+      "type": "atomic",
+      "examples": [],
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "91cd4728-b811-562a-970b-18b81dfb4bdf",
+          "title": "Visualisierung: Polare Eigenschaften erklären",
+          "url": "/assets/goal-visualizations/chemie/91cd4728-b811-562a-970b-18b81dfb4bdf/91cd4728-b811-562a-970b-18b81dfb4bdf.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "description": "Visualisierung zum Lernziel: Polare Eigenschaften erklären.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Polare Eigenschaften erklären\". Die lernende Person kann Dipol-Dipol-Wechselwirkungen und Wasserstoffbrücken zur Deutung von Löslichkeit und Siedetemperatur heranziehen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "accepted"
+        }
+      ]
+    },
+    {
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU",
+          "BC_REAKTION"
+        ],
+        "phase": "GLOBAL",
+        "area": "Grundlagen",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.B007.PREPARATION"
+      },
+      "title": "Lösungen nach Arbeitsanweisung herstellen",
+      "titleEn": "Prepare solutions from a working instruction",
+      "description": "Die lernende Person kann mit zugelassenen Stoffen und einer bereitgestellten Arbeitsanweisung eine homogene Lösung herstellen und die ausgeführten Arbeitsschritte sowie das Ergebnis dokumentieren.",
+      "descriptionEn": "Using permitted substances and a supplied working instruction, the learner can prepare a homogeneous solution and document the performed steps and result.",
+      "id": "1351706f-4ea6-56e9-951b-87b24cbcdee8",
+      "shortKey": "canonical_chemistry_sek1_b007_preparation",
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "contains": [],
+      "requires": [
+        "13d4f336-ab16-54a7-9479-c920b458f385"
+      ],
+      "phase": "GLOBAL",
+      "area": "Grundlagen",
+      "level": 2,
+      "core": true,
+      "examples": [],
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "1351706f-4ea6-56e9-951b-87b24cbcdee8",
+          "title": "Visualisierung: Lösungen nach Arbeitsanweisung herstellen",
+          "url": "/assets/goal-visualizations/chemie/1351706f-4ea6-56e9-951b-87b24cbcdee8/1351706f-4ea6-56e9-951b-87b24cbcdee8.png",
+          "provider": "OpenAI / Codex built-in image_gen",
+          "description": "Drei comicartige Schritte zeigen Messen, Rühren und Dokumentieren nach bereitgestellter Arbeitsanweisung.",
+          "altText": "Eine vorgegebene Arbeitsanweisung führt vom Abmessen zugelassener Stoffe über das Rühren einer homogenen Lösung zum Dokumentieren der Arbeitsschritte und der klaren Lösung im eigenen Heft.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ],
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "provenance": {
+          "splitFromCanonicalGoalId": "53fd1bfd-facb-54ae-b2dc-f667ed1414fc",
+          "authorCandidatePackage": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b007-two-current206-targeted-author-successor-20261010-v1",
+          "routineLocalKey": "preparation",
+          "sourceBindingStatus": "prospective_only_no_national_clearance"
+        }
+      }
+    },
+    {
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU",
+          "BC_REAKTION"
+        ],
+        "phase": "GLOBAL",
+        "area": "Grundlagen",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.B007.MASS_FRACTION"
+      },
+      "title": "Massenanteile berechnen und deuten",
+      "titleEn": "Calculate and interpret mass fractions",
+      "description": "Die lernende Person kann aus den Massen der Bestandteile den Massenanteil eines Stoffes berechnen und als Anteil an der Gesamtmasse des Gemisches deuten.",
+      "descriptionEn": "The learner can calculate a substance mass fraction from the constituent masses and interpret it as a share of the total mixture mass.",
+      "id": "4aeced1e-15cd-58df-83f7-68e2531c2d32",
+      "shortKey": "canonical_chemistry_sek1_b007_mass_fraction",
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "type": "atomic",
+      "contains": [],
+      "requires": [],
+      "phase": "GLOBAL",
+      "area": "Grundlagen",
+      "level": 2,
+      "core": true,
+      "examples": [],
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "4aeced1e-15cd-58df-83f7-68e2531c2d32",
+          "title": "Visualisierung: Massenanteile berechnen und deuten",
+          "url": "/assets/goal-visualizations/chemie/4aeced1e-15cd-58df-83f7-68e2531c2d32/4aeced1e-15cd-58df-83f7-68e2531c2d32.png",
+          "provider": "OpenAI / Codex built-in image_gen",
+          "description": "Ein korrekt proportionierter Massenbalken zeigt 20 Gramm Salz und 80 Gramm Wasser als insgesamt 100 Gramm Gemisch.",
+          "altText": "Ein Balken aus fünf gleich großen Massenabschnitten enthält einen Abschnitt Salz mit 20 Gramm und vier Abschnitte Wasser mit zusammen 80 Gramm. Der gesamte Balken umfasst 100 Gramm; der Salzanteil an dieser Gesamtmasse beträgt 20 Prozent.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ],
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "provenance": {
+          "splitFromCanonicalGoalId": "53fd1bfd-facb-54ae-b2dc-f667ed1414fc",
+          "authorCandidatePackage": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b007-two-current206-targeted-author-successor-20261010-v1",
+          "routineLocalKey": "mass_fraction",
+          "sourceBindingStatus": "prospective_only_no_national_clearance"
+        }
+      }
+    },
+    {
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU",
+          "BC_REAKTION"
+        ],
+        "phase": "GLOBAL",
+        "area": "Grundlagen",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.B007.VOLUME_FRACTION"
+      },
+      "title": "Volumenanteile berechnen und deuten",
+      "titleEn": "Calculate and interpret volume fractions",
+      "description": "Die lernende Person kann aus den Volumina der Bestandteile vor dem Mischen deren Volumenanteile berechnen und die Bezugsgröße korrekt benennen.",
+      "descriptionEn": "The learner can calculate volume fractions from constituent volumes before mixing and name the reference quantity correctly.",
+      "id": "49d42c38-419c-5048-b7e9-860645dd122d",
+      "shortKey": "canonical_chemistry_sek1_b007_volume_fraction",
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "type": "atomic",
+      "contains": [],
+      "requires": [],
+      "phase": "GLOBAL",
+      "area": "Grundlagen",
+      "level": 2,
+      "core": true,
+      "examples": [],
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "49d42c38-419c-5048-b7e9-860645dd122d",
+          "title": "Visualisierung: Volumenanteile berechnen und deuten",
+          "url": "/assets/goal-visualizations/chemie/49d42c38-419c-5048-b7e9-860645dd122d/49d42c38-419c-5048-b7e9-860645dd122d.png",
+          "provider": "OpenAI / Codex built-in image_gen",
+          "description": "Fünf gleiche Ausgangsvolumina zeigen vor dem Mischen ein Volumenteil A und vier Volumenteile B.",
+          "altText": "Vor dem Mischen enthalten fünf gleiche getrennte Gefäße jeweils 20 Milliliter. Ein violettes Gefäß bildet 20 Milliliter A; vier blaue Gefäße bilden zusammen 80 Milliliter B. Alle fünf Ausgangsvolumina ergeben 100 Milliliter als Bezugsgröße. Der Ausgangsvolumenanteil von A beträgt 20 Prozent; ein Endvolumen der Mischung wird nicht behauptet.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ],
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "provenance": {
+          "splitFromCanonicalGoalId": "53fd1bfd-facb-54ae-b2dc-f667ed1414fc",
+          "authorCandidatePackage": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b007-two-current206-targeted-author-successor-20261010-v1",
+          "routineLocalKey": "volume_fraction",
+          "sourceBindingStatus": "prospective_only_no_national_clearance"
+        }
+      }
+    },
+    {
+      "id": "5a709938-e0f5-42b7-94f0-cfded08963a2",
+      "shortKey": "canonical_chemistry_sek1_separation_methods",
+      "title": "Stoffgemische mit Trennverfahren trennen",
+      "titleEn": "Separate mixtures using separation methods",
+      "description": "Die lernende Person kann Stoffgemische mit Verfahren wie Filtration, Destillation und Extraktion trennen und die Verfahrenswahl begründen.",
+      "descriptionEn": "The learner can separate mixtures using methods such as filtration, distillation, and extraction and justify the choice of method.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "fcc73fb5-7413-557f-aea3-b9692a66ee75"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU"
+        ],
+        "phase": "GLOBAL",
+        "area": "Grundlagen",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.SEPARATION"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+          "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+          "sourceGoalId": "474c73d9-d8bf-4fa3-9fbf-ee21207c2aab"
+        }
+      },
+      "type": "atomic",
+      "examples": [],
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "5a709938-e0f5-42b7-94f0-cfded08963a2",
+          "title": "Visualisierung: Stoffgemische mit Trennverfahren trennen",
+          "url": "/assets/goal-visualizations/chemie/5a709938-e0f5-42b7-94f0-cfded08963a2/5a709938-e0f5-42b7-94f0-cfded08963a2.png",
+          "provider": "OpenAI / ChatGPT-Codex image_gen",
+          "description": "Schematische Beispiele: Sand-Wasser-Filtration, Salzlösung-Destillation und Tee-Extraktion.",
+          "altText": "Drei Comicbilder: Sand bleibt im Papierfilter, Wasser läuft durch. Aus erhitzter Salzlösung kondensiert Wasser im Kühler und sammelt sich, Salz bleibt im Kolben. Beim Teebeutel färben gelöste Stoffe das Wasser, Blätter bleiben zurück.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "3aef6d91-04ff-5ec7-b92e-ccf330d9816a",
+      "title": "Thermisches Verhalten von Kunststoffen erklären",
+      "titleEn": "Explain thermal behavior of plastics",
+      "description": "Die lernende Person kann das thermische Verhalten von Kunststoffen, Glasübergang und Schmelzpunkt aus räumlichem Bau der Makromoleküle und zwischenmolekularen Wechselwirkungen deuten.",
+      "descriptionEn": "The learner can interpret the thermal behavior of plastics, glass transition, and melting point from macromolecular spatial structure and intermolecular interactions.",
+      "weight": 1.1,
+      "tags": [
+        "LK",
+        "GK"
+      ],
+      "contains": [],
+      "requires": [
+        "6eb14e47-187c-5ba1-8b08-a0ee95ad88a9"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-chemistry",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "BC_AUFBAU"
+        ],
+        "phase": "Q2"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+          "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+          "sourceGoalId": "9994dd5a-cbf8-47a4-9c84-617163dfc57f"
+        },
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "type": "atomic",
+      "examples": [],
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "3aef6d91-04ff-5ec7-b92e-ccf330d9816a",
+          "title": "Visualisierung: Thermisches Verhalten von Kunststoffen erklären",
+          "url": "/assets/goal-visualizations/chemie/3aef6d91-04ff-5ec7-b92e-ccf330d9816a/3aef6d91-04ff-5ec7-b92e-ccf330d9816a.png",
+          "provider": "OpenAI imagegen built-in; exact model not exposed",
+          "description": "Visualisierung zum Lernziel: Thermisches Verhalten von Kunststoffen erklären.",
+          "altText": "Amorphes Polymer mit Tg ohne kristallinen Tm; teilkristallines Polymer mit Tg der amorphen Bereiche und Kristallschmelzen bei Tm; dauerhaft kovalent vernetztes Material ohne freien Schmelzfluss und mit Zersetzung bei hoher Temperatur. Vernetzung wird nicht mit universellem Fehlen kristalliner Schmelzübergänge gleichgesetzt.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "draft"
+        }
+      ]
+    }
+  ],
+  "wholeCurrentExistingPRecords": [
+    {
+      "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "schemaVersion": 2,
+      "reviewId": "canonical-chemistry-positive-evidence-b002-q1-organic-current-9-v2",
+      "goalFingerprintRuleVersion": "goal-evidence-v1",
+      "profileRuleVersion": "positive-understanding-evidence-v2",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+      "goalId": "91cd4728-b811-562a-970b-18b81dfb4bdf",
+      "goalFingerprint": "sha256:a13ea12c7c844f97972eca0447b82a6c7a63503e1afd8fc262ea6d1fcc6c2280",
+      "reviewInputFingerprint": "sha256:d3e46300fb2c50792081f28320bced40d8c52fe8b3c4d8254416efacbf82e70b",
+      "profileFingerprint": "sha256:6336bee080cb3b2b4360ed6170f696ff5f955b3a6b581fb1a815c04bc21701e2",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-09-30T16:15:46Z",
+      "reviewer": "codex-gpt-6-chemistry-b002-positive-profile-author-after-independent-qa",
+      "reason": "Ein Struktur-Wechselwirkungs-Modell trägt die beiden Eigenschaften; die aktuelle Formulierung behauptet keine universelle Zahlenordnung. Zwei vom Bild unabhängige Anwendungsfälle prüfen frischen Transfer. Dieser KI-Kandidat bleibt needs_human_review und ersetzt keine menschliche Freigabe. Unabhängige P-Gegenprüfung hielt den v1-Fall wegen falscher Massenähnlichkeit von Methan und Methanol an; v2 vergleicht nun Ethan (30 g/mol) mit Methanol (32 g/mol) und prüft dieselbe Wechselwirkungsdeutung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewRunIds": [],
+      "dissent": [],
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "b002-91cd4728-core",
+            "essentialUnderstandingDe": "Die OH-Gruppe ermöglicht Wasserstoffbrücken, während Alkylreste unpolar wirken; daraus folgen Trends statt ausnahmsloser Aussagen zu Löslichkeit und Siedepunkt.",
+            "essentialUnderstandingEn": "The OH group allows hydrogen bonding while alkyl groups are nonpolar; this supports trends rather than exception-free claims about solubility and boiling point.",
+            "observablePerformanceDe": "Die lernende Person vergleicht zwei kleine organische Moleküle anhand von Struktur, zwischenmolekularen Kräften und beobachteter Wasserlöslichkeit oder Siedetemperatur.",
+            "observablePerformanceEn": "The learner compares two small organic molecules through structure, intermolecular forces, and observed water solubility or boiling temperature."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "b002-91cd4728-core"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "interaction",
+            "textDe": "Wasserstoffbrücken werden mit vorwiegenden London-Kräften verglichen.",
+            "textEn": "Hydrogen bonding is compared with mainly London forces."
+          },
+          {
+            "id": "chain-length",
+            "textDe": "Die Alkylkette wird in einem frischen Fall verlängert.",
+            "textEn": "The alkyl chain is lengthened in a fresh case."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "methanol-ethane-mass-controlled",
+            "taskDemandDe": "Methanol (M≈32 g/mol) und Ethan (M≈30 g/mol) besitzen ähnliche molare Massen, aber stark verschiedene Siedetemperaturen; Methanol ist mit Wasser mischbar, Ethan kaum löslich. Erkläre diese Unterschiede aus den Molekülstrukturen.",
+            "taskDemandEn": "Methanol (M≈32 g/mol) and ethane (M≈30 g/mol) have similar molar masses but very different boiling points; methanol mixes with water, whereas ethane is poorly soluble. Explain the differences from molecular structure.",
+            "expectedPerformanceDe": "Die lernende Person erkennt Methanols OH-Gruppe und Wasserstoffbrücken zu Methanol und Wasser, während Ethan nur unpolare Wechselwirkungen bietet. Sie erklärt den Siede- und Löslichkeitstrend trotz ähnlicher molarer Massen.",
+            "expectedPerformanceEn": "The learner identifies methanol’s OH group and hydrogen bonding among methanol molecules and with water, whereas ethane offers only nonpolar interactions. They explain boiling and solubility trends despite similar molar masses.",
+            "understandingFocusDe": "Struktur-Wirkungs-Beziehung erklärt zwei beobachtete Eigenschaften.",
+            "understandingFocusEn": "A structure-interaction link explains two observed properties."
+          },
+          {
+            "id": "fresh-longer-alcohol-solubility",
+            "taskDemandDe": "Ein unbekanntes unverzweigtes Alkanol hat sechs statt zwei C-Atome. Vergleiche seine Wasserlöslichkeit qualitativ mit Ethanol und begrenze die Aussage.",
+            "taskDemandEn": "An unknown straight-chain alkanol has six instead of two carbons. Compare its water solubility qualitatively with ethanol and qualify the claim.",
+            "expectedPerformanceDe": "Die lernende Person erwartet geringere Wasserlöslichkeit wegen des größeren unpolaren Restes trotz gleicher OH-Funktion und behauptet keine exakte Löslichkeitszahl.",
+            "expectedPerformanceEn": "The learner expects lower water solubility due to the larger nonpolar part despite the same OH group and gives no invented numerical solubility.",
+            "understandingFocusDe": "Ein veränderter Alkylrest prüft das Modell, nicht einen Merksatz.",
+            "understandingFocusEn": "A changed alkyl group tests the model rather than a memorized slogan."
+          }
+        ]
+      }
+    },
+    {
+      "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "schemaVersion": 2,
+      "reviewId": "canonical-chemistry-positive-evidence-b007s-5a-current-png-v2",
+      "goalFingerprintRuleVersion": "goal-evidence-v1",
+      "profileRuleVersion": "positive-understanding-evidence-v2",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+      "goalId": "5a709938-e0f5-42b7-94f0-cfded08963a2",
+      "goalFingerprint": "sha256:75730bb9a4cf8a4a523f0c7565b2b6656194ba67756b799de52ac926334f607c",
+      "reviewInputFingerprint": "sha256:4ce546317a7589090debfa1b29aadc66c9bb9d91d1859d1ef5b7f495d43a8a94",
+      "profileFingerprint": "sha256:700708c9f78d38dcfe73a715b20bb8e8f00f6734a35e870482aceab44c1ec95d",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-09-30T19:38:00Z",
+      "reviewer": "codex-gpt-6-chemistry-b007s-5a-p-v2",
+      "reason": "Die drei inhaltlich unabhängig geprüften P-v1-Fälle bleiben unverändert: tatsächliche ungefährliche Sand-Wasser-Filtration unter Lehrkraftaufsicht und neue Daten-/Demonstrationsfälle für Destillation, Extraktion und Trennfolge. Die frühere positive Bildaussage war nach unabhängiger Sichtung falsch: das aktive Alt-JPG zeigte zwei widersprüchliche Thermometer-Messkugeln. Es wurde als historischer Befund archiviert. Aktuelles PNG SHA256 bd0c0ee87fa3929a90a9768d59e085536f594792bb2d19cfbd3467a4df0540d1 wurde in Original-, 680- und 360-px-Ansicht fachlich geprüft und unabhängig als Kandidat bestanden: kontinuierliche Dampf-/Kondensatstrecke, Kühlwasser rechts unten hinein und links oben heraus, klare Filtration und Tee-Extraktion. Neuer P-v2-Nachweis bindet Ziel, Seite, direkte HE-Herkunft und aktuelles Bild; KI-Kandidat mit needs_human_review, kein menschlicher Abschluss.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewRunIds": [],
+      "dissent": [],
+      "profile": {
+        "archetype": "experiment",
+        "expectations": [
+          {
+            "id": "b007-5a709938-core",
+            "essentialUnderstandingDe": "Filtration trennt einen unlöslichen Feststoff aufgrund von Teilchengröße und Phasenzustand von einer Flüssigkeit, aber keine gelösten Stoffe. Destillation nutzt geeignetes Siedeverhalten und Kondensation; Extraktion nutzt unterschiedliche Löslichkeit in einem gewählten Lösungsmittel. Die Wahl hängt vom Gemisch und dem gewünschten zurückgewonnenen Stoff ab.",
+            "essentialUnderstandingEn": "Filtration separates an insoluble solid from a liquid by particle size and phase, but does not remove dissolved substances. Distillation uses suitable boiling behavior and condensation; extraction uses differing solubility in a chosen solvent. The choice depends on the mixture and the material to be recovered.",
+            "observablePerformanceDe": "Die lernende Person führt an einer lehrkraftbetreuten ungefährlichen Sand-Wasser-Probe eine Filtration aus, dokumentiert Rückstand und Filtrat und wählt anhand neuer Stoffdaten für weitere Gemische begründet ein anderes Verfahren.",
+            "observablePerformanceEn": "The learner filters a harmless sand-water sample under teacher supervision, records residue and filtrate, and uses fresh material data to justify another method for other mixtures."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "b007-5a709938-core"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "separating-property",
+            "textDe": "Teilchengröße/Unlöslichkeit, Siedeverhalten und Löslichkeit sind unterschiedliche Trennursachen.",
+            "textEn": "Particle size/insolubility, boiling behavior and solubility provide different separation mechanisms."
+          },
+          {
+            "id": "target-material",
+            "textDe": "Zu gewinnender Rückstand, Filtrat, Destillat und Extrakt wechseln.",
+            "textEn": "The desired residue, filtrate, distillate and extract vary."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "supervised-sand-water-filter",
+            "taskDemandDe": "Eine ungefährliche Sand-Wasser-Probe soll unter Lehrkraftaufsicht getrennt werden. Wähle und führe mit bereitgestelltem Filtertrichter/Papier die geeignete Trennung aus; protokolliere, was im Papier und im Auffanggefäß landet und warum.",
+            "taskDemandEn": "A harmless sand-water sample is to be separated under teacher supervision. Choose and use the supplied filter funnel and paper; record what remains on the paper and what reaches the receiver, and why.",
+            "expectedPerformanceDe": "Die lernende Person filtriert sicher, benennt Sand als Rückstand und Wasser als Filtrat und erklärt, dass die unlöslichen Sandkörner zurückgehalten werden. Sie nennt Filtration nicht als Verfahren für in Wasser gelöstes Salz.",
+            "expectedPerformanceEn": "The learner filters safely, names sand as the residue and water as the filtrate, and explains retention of insoluble sand grains. They do not claim filtration removes salt dissolved in water.",
+            "understandingFocusDe": "Tatsächliche sichere Trennung und begründete Filtergrenze.",
+            "understandingFocusEn": "Actual safe separation and a justified limit of filtration."
+          },
+          {
+            "id": "fresh-saltwater-tea-choice",
+            "taskDemandDe": "Zwei neue Datensätze liegen vor: (A) Salz ist vollständig in Wasser gelöst; eine Lehrkraftdemonstration liefert beim Erhitzen einen Kondensatstrom und einen salzhaltigen Rückstand. (B) Aus getrockneten Teeblättern gehen Farbstoffe in Wasser über, die Blätter bleiben zurück. Entscheide, welches Verfahren bei A Wasser zurückgewinnt und welches bei B Farbstoffe herauslöst; begründe jeweils mit der Stoffeigenschaft. Nur Daten-/Demonstrationsauswertung, keine eigene Erhitzung.",
+            "taskDemandEn": "Two fresh data sets are supplied: (A) salt is fully dissolved in water; a teacher demonstration yields condensate and a salty residue upon heating. (B) pigments move from dried tea leaves into water while leaves remain. Decide which method recovers water in A and which extracts pigments in B, justifying each by the relevant property. Interpret data/demonstrations only; do not heat anything yourself.",
+            "expectedPerformanceDe": "Die lernende Person wählt Destillation für A, deutet Wasserdampf/Kondensation als Destillat und Salz als Rückstand; einfache Filtration entfernt gelöstes Salz nicht. Für B benennt sie Wasser als Extraktionsmittel für lösliche Blattbestandteile und trennt die verbliebenen Blätter bei Bedarf danach mechanisch.",
+            "expectedPerformanceEn": "The learner selects distillation for A, interprets condensed vapor as the water distillate and salt as residue; simple filtration does not remove dissolved salt. For B, they identify water as the extraction solvent for soluble leaf components and may then mechanically remove the remaining leaves.",
+            "understandingFocusDe": "Eigenschaftsbasierte Wahl zwischen Destillation und Extraktion, getrennt vom bloßen Apparatenamen.",
+            "understandingFocusEn": "Property-based choice between distillation and extraction, beyond apparatus names."
+          },
+          {
+            "id": "fresh-salt-sand-water-sequence",
+            "taskDemandDe": "Ein neues Papierprotokoll enthält Sand, gelöstes Salz und Wasser. Gesucht sind getrenntes Sandmaterial, Salz und möglichst zurückgewonnenes Wasser. Plane die Reihenfolge der Trennschritte und erkläre, weshalb nur ein Filter nicht genügt. Keine reale Destillation.",
+            "taskDemandEn": "A fresh paper protocol contains sand, dissolved salt and water. The aim is to recover sand, salt and as much water as possible separately. Plan the order of separation steps and explain why a filter alone is insufficient. No actual distillation.",
+            "expectedPerformanceDe": "Die lernende Person plant zuerst Filtration für Sand, danach eine betreute Destillation der Salzlösung für Wasser als Destillat und Salz als Rückstand. Sie begründet jeden Schritt mit der jeweils genutzten Eigenschaft und vermischt Filtration nicht mit dem Entfernen gelöster Teilchen.",
+            "expectedPerformanceEn": "The learner first filters out sand, then proposes teacher-run distillation of the salt solution to collect water as distillate and salt as residue. They justify each step by the relevant property and do not confuse filtration with removing dissolved particles.",
+            "understandingFocusDe": "Neue Gemischkombination prüft das Übertragen und Kombinieren geeigneter Verfahren.",
+            "understandingFocusEn": "A new mixture tests transfer and combination of appropriate methods."
+          }
+        ]
+      }
+    },
+    {
+      "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "schemaVersion": 2,
+      "reviewId": "chemie-current-eight-native-positive-independent-a-20261006-v3",
+      "goalFingerprintRuleVersion": "goal-evidence-v1",
+      "profileRuleVersion": "positive-understanding-evidence-v2",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+      "goalId": "3d3231f9-039d-5ce5-9e8e-af219c7fee08",
+      "goalFingerprint": "sha256:4723ce2f2cc438602bce3221479a8d2e0379e77231caceab889cb44e9b45bbbd",
+      "reviewInputFingerprint": "sha256:27348129e447ea90a5fdd3143448fdf5209db511e5750ef5c7d648fc5b77c20b",
+      "profileFingerprint": "sha256:17cadb7a07f964e791ccf1d8dec02d3ba0fa4a20ab085356445c525bae5901f4",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-10-06T19:19:13.142Z",
+      "reviewer": "codex-independent-targeted-positive-review-a",
+      "reason": "Eigene aktuelle P-A-Fachprüfung aller vollständigen Profil-/Fallfelder: P-A-002 wird durch eine positive begrenzte Schmelzmodell-Erklärung behoben: n-Pentan/Neopentan, gerundet 143/255 K, gegebene qualitative Packung, intakte Moleküle und fortbestehende London-Anziehung in der Schmelze. Sieden und Wassermischbarkeit sind weiterhin positiv begründet. Keine universelle Verzweigungsregel und keine gemessene neue Kristallstruktur behauptet. Keine menschliche Freigabe, keine heutige Lernendenleistung, keine aktive D/P/A/M/V-Integration.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewRunIds": [],
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "structure-model-reasoning",
+            "essentialUnderstandingDe": "Zwischenmolekulare Anziehung erklärt zusammen mit Molekülgröße/-form Siedeverhalten und Mischbarkeit; alle betrachteten Moleküle besitzen London-Wechselwirkungen.",
+            "essentialUnderstandingEn": "Intermolecular attraction together with molecular size/shape explains boiling behaviour and miscibility; all molecules considered have London interactions.",
+            "observablePerformanceDe": "Die Person identifiziert Wasserstoffbrücken-Donor/-Akzeptor und London-Beiträge und verbindet sie mit dem Trennen/Mischen von Molekülen.",
+            "observablePerformanceEn": "The learner identifies hydrogen-bond donors/acceptors and London contributions and connects them to separating/mixing molecules."
+          },
+          {
+            "id": "fresh-application-and-boundary",
+            "essentialUnderstandingDe": "Die Stärke einer einzelnen Wechselwirkung ersetzt nicht die Betrachtung aller Beiträge; Schmelztemperaturen hängen zusätzlich von Kristallpackung ab.",
+            "essentialUnderstandingEn": "The strength of an individual interaction does not replace considering all contributions; melting also depends on crystal packing.",
+            "observablePerformanceDe": "Die größere Kohlenwasserstoffoberfläche erhöht polarisierbare Kontaktmöglichkeiten; der hydrophobe Anteil wächst relativ zur einen OH-Gruppe. Beide können Wasserstoffbrücken bilden, dennoch ist Hexan-1-ol viel schlechter mit Wasser mischbar. Eine sichere Schmelzrangfolge braucht Packungs-/Messinformationen. Beim Schmelzen wird die geordnete Festkörperpackung aufgehoben und die Anordnung der zwischenmolekularen Kontakte verändert; die Moleküle bleiben in der Flüssigkeit intakt und üben weiter London-Anziehung aus. Die vorgegebene günstigere symmetrische Packung stabilisiert im Modell die feste Phase und begründet zusammen mit den Fusionsdaten den höheren Schmelzwert des kompakten Isomers; dies ist keine direkte Folgerung aus einer Siedetemperatur oder eine allgemeine Verzweigungsregel. Eine OH-Gruppe macht nicht jedes Molekül vollständig wasserlöslich; höhere Siedetemperatur impliziert keine zwingend höhere Schmelztemperatur.",
+            "observablePerformanceEn": "The larger hydrocarbon surface increases polarizable contact possibilities; the hydrophobic fraction grows relative to the single OH group. Both can hydrogen-bond, yet hexan-1-ol mixes much less well with water. A reliable melting order needs packing or measurement information. Melting disrupts ordered solid packing and changes the arrangement of intermolecular contacts; the molecules remain intact in the liquid and still exert London attraction. In the given model, favourable symmetrical packing stabilises the solid phase and, together with the fusion data, accounts for the compact isomer melting higher; this is not inferred directly from boiling temperature or a universal branching rule. One OH group does not make every molecule fully water-soluble; a higher boiling point does not imply a necessarily higher melting point."
+          },
+          {
+            "id": "positive-melting-model-explanation",
+            "essentialUnderstandingDe": "Schmelzen verändert die geordnete Packung und zwischenmolekulare Kontakte einer festen Phase; Moleküle bleiben intakt. London-Anziehung zusammen mit vorgegebenen Form-/Packungsinformationen und Fusionsdaten ermöglicht eine begründete Schmelzerklärung, ohne eine allgemeine Siede-Schmelz-Rangfolge zu behaupten.",
+            "essentialUnderstandingEn": "Melting changes ordered packing and intermolecular contacts in a solid phase; molecules remain intact. London attraction together with supplied shape/packing information and fusion data supports a justified melting explanation without claiming a universal boiling-to-melting ranking.",
+            "observablePerformanceDe": "Die Person erklärt am gegebenen n-Pentan/2,2-Dimethylpropan-Modell den höheren Fusionswert des symmetrischen kompakten Isomers mit der im Modell günstigeren Festkörperpackung; sie unterscheidet das Aufheben geordneter Packung von Molekültrennung beim Sieden und von kovalenter Bindungsspaltung.",
+            "observablePerformanceEn": "Using the given n-pentane/2,2-dimethylpropane model, the learner accounts for the symmetrical compact isomer having the higher fusion value through favourable solid packing in that model, and distinguishes loss of ordered packing from molecular separation in boiling and from covalent-bond cleavage."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "structure-model-reasoning",
+            "fresh-application-and-boundary",
+            "positive-melting-model-explanation"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "material-variation",
+            "textDe": "Hydroxygruppe, Kettenlänge, Molekülform und Wahl eines polaren oder unpolaren Lösemittels.",
+            "textEn": "Hydroxyl group, chain length, molecular shape and choice of polar or nonpolar solvent."
+          },
+          {
+            "id": "counterexample",
+            "textDe": "Die Stärke einer einzelnen Wechselwirkung ersetzt nicht die Betrachtung aller Beiträge; Schmelztemperaturen hängen zusätzlich von Kristallpackung ab.",
+            "textEn": "The strength of an individual interaction does not replace considering all contributions; melting also depends on crystal packing."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "chem-current15-3d3231f9-case-1",
+            "taskDemandDe": "Strukturen: Ethanol CH3CH2OH, Propan CH3CH2CH3, Wasser H2O. Ethanol und Propan besitzen ähnliche molare Masse; es werden keine Messwerte vorgegeben. Begründe den deutlich höheren Siedepunkt von Ethanol gegenüber Propan und die gute Mischbarkeit von Ethanol mit Wasser anhand der Strukturen.",
+            "taskDemandEn": "Structures: ethanol CH3CH2OH, propane CH3CH2CH3, water H2O. Ethanol and propane have similar molar mass; no measurements are supplied. Explain ethanol boiling much higher than propane and mixing well with water using their structures.",
+            "expectedPerformanceDe": "Beide besitzen London-Kräfte; Ethanol bietet zusätzlich polare O-H/C-O-Bindungen und Wasserstoffbrücken zwischen Molekülen sowie mit Wasser. Beim Sieden werden intermolekulare Wechselwirkungen überwunden, nicht C-C-Bindungen zerlegt.",
+            "expectedPerformanceEn": "Both have London interactions; ethanol additionally offers polar O-H/C-O bonds and hydrogen bonding between molecules and with water. Boiling overcomes intermolecular interactions rather than breaking C-C bonds.",
+            "understandingFocusDe": "Ein Wasserstoff an einem Kohlenstoff ist in diesen Stoffen kein gleichwertiger Wasserstoffbrücken-Donor.",
+            "understandingFocusEn": "A hydrogen bonded to carbon in these substances is not an equivalent hydrogen-bond donor."
+          },
+          {
+            "id": "chem-current15-3d3231f9-case-2",
+            "taskDemandDe": "Frischer Vergleich: Ethanol CH3CH2OH und Hexan-1-ol CH3(CH2)5OH; beide enthalten genau eine Hydroxygruppe. Zusätzlich gegeben: n-Pentan CH3(CH2)3CH3 und 2,2-Dimethylpropan C(CH3)4 sind unpolare C5H12-Isomere; gerundete NIST-Fusionswerte sind 143 K beziehungsweise 255 K. Vorgegebenes qualitatives Packungsmodell: Beide Feststoffe werden durch London-Anziehung zusammengehalten; die kompakte, hochsymmetrische Form des 2,2-Dimethylpropans begünstigt im Modell eine regelmäßigere Packung und Stabilisierung der festen Phase. Dieses vereinfachte Modell ist kein neuer gemessener Kristallstrukturbeleg. Begründe, warum die längere Kette zugleich den London-Beitrag erhöht und die Mischbarkeit mit Wasser vermindert. Sage, welche Schmelzrangfolge aus diesen Angaben noch nicht sicher folgt. Erkläre anhand der gegebenen Packungs- und Fusionsangaben positiv den höheren Schmelzwert von 2,2-Dimethylpropan und was sich beim Schmelzen gegenüber dem Sieden ändert.",
+            "taskDemandEn": "Fresh comparison: ethanol CH3CH2OH and hexan-1-ol CH3(CH2)5OH; each contains exactly one hydroxyl group. Additionally supplied: n-pentane CH3(CH2)3CH3 and 2,2-dimethylpropane C(CH3)4 are nonpolar C5H12 isomers; rounded NIST fusion values are 143 K and 255 K, respectively. Given qualitative packing model: London attraction holds both solids together; in the model the compact, highly symmetrical shape of 2,2-dimethylpropane favours more regular packing and stabilisation of the solid phase. This simplified model is not new measured crystal-structure evidence. Explain why the longer chain increases the London contribution while reducing water miscibility. State which melting order cannot yet be established. Using the supplied packing and fusion information, explain positively the higher melting value of 2,2-dimethylpropane and what changes in melting compared with boiling.",
+            "expectedPerformanceDe": "Die größere Kohlenwasserstoffoberfläche erhöht polarisierbare Kontaktmöglichkeiten; der hydrophobe Anteil wächst relativ zur einen OH-Gruppe. Beide können Wasserstoffbrücken bilden, dennoch ist Hexan-1-ol viel schlechter mit Wasser mischbar. Eine sichere Schmelzrangfolge braucht Packungs-/Messinformationen. Beim Schmelzen wird die geordnete Festkörperpackung aufgehoben und die Anordnung der zwischenmolekularen Kontakte verändert; die Moleküle bleiben in der Flüssigkeit intakt und üben weiter London-Anziehung aus. Die vorgegebene günstigere symmetrische Packung stabilisiert im Modell die feste Phase und begründet zusammen mit den Fusionsdaten den höheren Schmelzwert des kompakten Isomers; dies ist keine direkte Folgerung aus einer Siedetemperatur oder eine allgemeine Verzweigungsregel.",
+            "expectedPerformanceEn": "The larger hydrocarbon surface increases polarizable contact possibilities; the hydrophobic fraction grows relative to the single OH group. Both can hydrogen-bond, yet hexan-1-ol mixes much less well with water. A reliable melting order needs packing or measurement information. Melting disrupts ordered solid packing and changes the arrangement of intermolecular contacts; the molecules remain intact in the liquid and still exert London attraction. In the given model, favourable symmetrical packing stabilises the solid phase and, together with the fusion data, accounts for the compact isomer melting higher; this is not inferred directly from boiling temperature or a universal branching rule.",
+            "understandingFocusDe": "Eine OH-Gruppe macht nicht jedes Molekül vollständig wasserlöslich; höhere Siedetemperatur impliziert keine zwingend höhere Schmelztemperatur.",
+            "understandingFocusEn": "One OH group does not make every molecule fully water-soluble; a higher boiling point does not imply a necessarily higher melting point."
+          }
+        ]
+      }
+    },
+    {
+      "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "schemaVersion": 2,
+      "reviewId": "chemie-b008-current517-whole38-paired-reviewed-inactive-v1",
+      "goalFingerprintRuleVersion": "goal-evidence-v1",
+      "profileRuleVersion": "positive-understanding-evidence-v2",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+      "goalId": "5a30273a-98d5-5163-bb16-c250b7ed4e7f",
+      "goalFingerprint": "sha256:b5a9ae9a7990243a2edea745deea87bdeafa6c961abb1c94664d872f576c1097",
+      "reviewInputFingerprint": "sha256:6d60805870acfbeebd252e06dac44a4399f84e01adf2c07c73cff7481b91102c",
+      "profileFingerprint": "sha256:5db20646941f07fb691263b3ba8b1a1ab802bec3ac5da7a2849b35b86f03e480",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-10-10T11:53:56.152224+00:00",
+      "reviewer": "Codex post-seal technical synthesis of genuine current independent A/B and explicitly inherited historical whole science; no third scientific review",
+      "reason": "Original complete scientific profile retained exactly. Current paired independent native/source/context A/B reviewed after both FIRST seals. A benennt ausdrücklich Schmelzen, Sieden, Löslichkeit UND Lösemittelwahl. B ergänzt Packung und begrenzte Faustregeln; Isomere sind geeigneter Transfer, keine Universalliste zusätzlicher Aufgaben.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewRunIds": [],
+      "dissent": [
+        "E1/G1 needs_human_review ai_candidate; no human approval, trial or observed learner performance.",
+        "Whole-source/course/placement HOLDs remain separate and unchanged."
+      ],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "structure-model-reasoning",
+            "essentialUnderstandingDe": "Für molekulare Stoffe verbinden Polarität, Wasserstoffbrücken, Polarisierbarkeit und Form Struktur mit Sieden und Lösemittelwahl; Schmelzen benötigt zusätzlich Packungsinformationen.",
+            "essentialUnderstandingEn": "For molecular substances polarity, hydrogen bonding, polarizability and shape connect structure with boiling and solvent choice; melting also needs packing information.",
+            "observablePerformanceDe": "Die Person begründet eine Auswahl aus gegebenen Strukturen, formuliert eine überprüfbare Vorhersage und erkennt, wann für das Schmelzverhalten Evidenz fehlt.",
+            "observablePerformanceEn": "The learner justifies a choice using supplied structures, formulates a testable prediction and recognizes missing evidence for melting behaviour."
+          },
+          {
+            "id": "fresh-application-and-boundary",
+            "essentialUnderstandingDe": "Ähnlich löst ähnlich ist eine begründete Faustregel, kein pauschales Versprechen; Schmelz- und Siederangfolgen sind nicht notwendig gleich.",
+            "essentialUnderstandingEn": "Like dissolves like is a reasoned rule of thumb, not a universal guarantee; melting and boiling orders need not match.",
+            "observablePerformanceDe": "Die größere Kontaktfläche der unverzweigten Form begünstigt London-Anziehung und den höheren Siedepunkt gegenüber der kompakten Form. Die gegebenen Fusionsdaten zeigen dagegen den höheren Schmelzwert des symmetrischen kompakten Isomers. Im vorgegebenen Modell stabilisiert die günstigere regelmäßige Packung dessen feste Phase. Beim Schmelzen wird die geordnete Packung aufgehoben und zwischenmolekulare Kontakte ändern sich; die C5H12-Moleküle bleiben erhalten und London-Anziehung wirkt auch in der Flüssigkeit weiter. Sieden betrifft den Übergang in die Gasphase, nicht die Schmelzrangfolge. Eine quantitative Schmelzvorhersage oder eine allgemeine Verzweigungsregel folgt aus dem qualitativen Modell nicht. Größere molare Masse kann diesen Vergleich nicht erklären, weil beide Isomere dieselbe molare Masse besitzen.",
+            "observablePerformanceEn": "The extended structure offers greater contact area and stronger London attraction, supporting a higher boiling point than the compact form. The supplied fusion data instead show the symmetrical compact isomer melting higher. In the given model its favourable regular packing stabilises the solid phase. Melting disrupts ordered packing and changes intermolecular contacts; the C5H12 molecules remain intact and London attraction persists in the liquid. Boiling concerns transition into the gas phase, not the melting order. The qualitative model gives neither a quantitative melting prediction nor a universal branching rule. Greater molar mass cannot explain this comparison because the isomers have the same molar mass."
+          },
+          {
+            "id": "positive-melting-model-explanation",
+            "essentialUnderstandingDe": "Schmelzen verändert die geordnete Packung und zwischenmolekulare Kontakte einer festen Phase; Moleküle bleiben intakt. London-Anziehung zusammen mit vorgegebenen Form-/Packungsinformationen und Fusionsdaten ermöglicht eine begründete Schmelzerklärung, ohne eine allgemeine Siede-Schmelz-Rangfolge zu behaupten.",
+            "essentialUnderstandingEn": "Melting changes ordered packing and intermolecular contacts in a solid phase; molecules remain intact. London attraction together with supplied shape/packing information and fusion data supports a justified melting explanation without claiming a universal boiling-to-melting ranking.",
+            "observablePerformanceDe": "Die Person erklärt am gegebenen n-Pentan/2,2-Dimethylpropan-Modell den höheren Fusionswert des symmetrischen kompakten Isomers mit der im Modell günstigeren Festkörperpackung; sie unterscheidet das Aufheben geordneter Packung von Molekültrennung beim Sieden und von kovalenter Bindungsspaltung.",
+            "observablePerformanceEn": "Using the given n-pentane/2,2-dimethylpropane model, the learner accounts for the symmetrical compact isomer having the higher fusion value through favourable solid packing in that model, and distinguishes loss of ordered packing from molecular separation in boiling and from covalent-bond cleavage."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "structure-model-reasoning",
+            "fresh-application-and-boundary",
+            "positive-melting-model-explanation"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "material-variation",
+            "textDe": "Molekülform, Hydroxygruppe, polare/unpolare Lösemittel und fehlende Kristallpackung.",
+            "textEn": "Molecular shape, hydroxyl group, polar/nonpolar solvents and missing crystal packing."
+          },
+          {
+            "id": "counterexample",
+            "textDe": "Ähnlich löst ähnlich ist eine begründete Faustregel, kein pauschales Versprechen; Schmelz- und Siederangfolgen sind nicht notwendig gleich.",
+            "textEn": "Like dissolves like is a reasoned rule of thumb, not a universal guarantee; melting and boiling orders need not match."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "chem-current15-5a30273a-case-1",
+            "taskDemandDe": "Zur Auswahl stehen Wasser, Ethanol und Hexan als Lösemittel; der zu lösende molekulare Stoff ist ein unpolarer Kohlenwasserstoff. Eine zweite Probe ist die kleine polare Carbonsäure Ethansäure CH3COOH. Es wird keine praktische Durchführung verlangt. Begründe die passende erste Lösemittelwahl für beide Proben und erkläre die beteiligten Wechselwirkungen; gib die Grenze ohne Löslichkeitsmessung an.",
+            "taskDemandEn": "Solvent choices are water, ethanol and hexane; the first molecular solute is a nonpolar hydrocarbon. A second sample is the small polar carboxylic acid ethanoic acid CH3COOH. No practical execution is requested. Justify an appropriate initial solvent choice for each sample and explain the interactions; state the limit without solubility measurements.",
+            "expectedPerformanceDe": "Hexan ist für den unpolaren Kohlenwasserstoff naheliegend, Wasser für die kleine polare/wasserstoffbrückenfähige Ethansäure. Ethansäure kann mit Wasser wechselwirken; in Wasser kann zusätzlich Protolyse stattfinden. Die Struktur begründet Auswahl und qualitative Erwartung, keine beliebige quantitative Löslichkeit.",
+            "expectedPerformanceEn": "Hexane is a reasonable choice for the nonpolar hydrocarbon, water for small polar hydrogen-bonding ethanoic acid. Ethanoic acid interacts with water and may additionally undergo acid dissociation. Structure supports a choice and qualitative expectation, not arbitrary quantitative solubility.",
+            "understandingFocusDe": "Die Carboxygruppe wird nicht als reine unpolare Kohlenwasserstoffgruppe behandelt; quantitative Angaben werden nicht erfunden.",
+            "understandingFocusEn": "The carboxyl group is not treated as purely nonpolar hydrocarbon; quantitative values are not invented."
+          },
+          {
+            "id": "chem-current15-5a30273a-case-2",
+            "taskDemandDe": "Frischer Strukturvergleich: n-Pentan CH3(CH2)3CH3 und 2,2-Dimethylpropan C(CH3)4 haben dieselbe Summenformel C5H12 und keine OH-Gruppe. Das zweite Molekül ist kompakter und hochsymmetrisch. Gegeben sind gerundete NIST-Fusionswerte von 143 K beziehungsweise 255 K sowie ein vereinfachtes eigenes Packungsmodell: London-Anziehung hält beide molekularen Feststoffe zusammen; die symmetrische kompakte Form begünstigt im Modell eine regelmäßigere Packung und Stabilisierung der festen Phase. Dieser qualitative Modellhinweis ist kein neuer gemessener Kristallstrukturbeleg. Begründe eine qualitative Siedevorhersage und erkläre anhand der gegebenen Daten und des Packungsmodells positiv die Schmelzrangfolge. Unterscheide das Aufheben fester Packung vom Sieden und von einer Bindungsspaltung innerhalb der Moleküle.",
+            "taskDemandEn": "Fresh comparison: n-pentane CH3(CH2)3CH3 and 2,2-dimethylpropane C(CH3)4 have the same molecular formula C5H12 and no OH group. The second molecule is more compact and highly symmetrical. Supplied are rounded NIST fusion values of 143 K and 255 K, respectively, and a simplified own packing model: London attraction holds both molecular solids together; in the model the symmetrical compact shape favours more regular packing and stabilisation of the solid phase. This qualitative model information is not new measured crystal-structure evidence. Justify a qualitative boiling prediction and use the supplied data and packing model to explain positively the melting order. Distinguish disrupting solid packing from boiling and from breaking bonds within molecules.",
+            "expectedPerformanceDe": "Die größere Kontaktfläche der unverzweigten Form begünstigt London-Anziehung und den höheren Siedepunkt gegenüber der kompakten Form. Die gegebenen Fusionsdaten zeigen dagegen den höheren Schmelzwert des symmetrischen kompakten Isomers. Im vorgegebenen Modell stabilisiert die günstigere regelmäßige Packung dessen feste Phase. Beim Schmelzen wird die geordnete Packung aufgehoben und zwischenmolekulare Kontakte ändern sich; die C5H12-Moleküle bleiben erhalten und London-Anziehung wirkt auch in der Flüssigkeit weiter. Sieden betrifft den Übergang in die Gasphase, nicht die Schmelzrangfolge. Eine quantitative Schmelzvorhersage oder eine allgemeine Verzweigungsregel folgt aus dem qualitativen Modell nicht.",
+            "expectedPerformanceEn": "The extended structure offers greater contact area and stronger London attraction, supporting a higher boiling point than the compact form. The supplied fusion data instead show the symmetrical compact isomer melting higher. In the given model its favourable regular packing stabilises the solid phase. Melting disrupts ordered packing and changes intermolecular contacts; the C5H12 molecules remain intact and London attraction persists in the liquid. Boiling concerns transition into the gas phase, not the melting order. The qualitative model gives neither a quantitative melting prediction nor a universal branching rule.",
+            "understandingFocusDe": "Größere molare Masse kann diesen Vergleich nicht erklären, weil beide Isomere dieselbe molare Masse besitzen.",
+            "understandingFocusEn": "Greater molar mass cannot explain this comparison because the isomers have the same molar mass."
+          }
+        ]
+      }
+    },
+    {
+      "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "schemaVersion": 2,
+      "reviewId": "chemie-b007-six-scoring-binding-author-v7",
+      "goalFingerprintRuleVersion": "goal-evidence-v1",
+      "profileRuleVersion": "positive-understanding-evidence-v2",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+      "goalId": "1351706f-4ea6-56e9-951b-87b24cbcdee8",
+      "goalFingerprint": "sha256:75bfaba547c9270be76a5d8a2e73ade591fc020850b85f831966658b5cc293bb",
+      "reviewInputFingerprint": "sha256:fd3dd406cf85a3fde9595a39408abf46184d8c383afc9e71b6b12856628239e8",
+      "profileFingerprint": "sha256:62942d5f1df3669c8b0fa7c043af3a1b2e7f22c7d14f1192f9af96c9efab7f40",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-10-11T01:29:41.501680+00:00",
+      "reviewer": "Codex AUTHOR v7 source/scoring correction; new independent reviewers pending",
+      "reason": "All six scientific profile bodies are exactly retained from frozen v6; one external whole-case criterion identity is corrected. This is an author candidate, with current independent v7 review pending.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewRunIds": [],
+      "dissent": [],
+      "profile": {
+        "archetype": "experiment",
+        "expectations": [
+          {
+            "id": "understanding",
+            "essentialUnderstandingDe": "Herstellen ist eine beobachtbare Arbeitsroutine. Sie ist vom Erklären der Löslichkeitsgrenze und vom Berechnen eines Mischungsanteils unabhängig prüfbar.",
+            "essentialUnderstandingEn": "Preparation is an observable working routine, assessed separately from explaining a solubility limit or calculating a mixture fraction.",
+            "observablePerformanceDe": "Ein vollständiger betreuter Aktionslog zeigt getrenntes Tarieren und Abwiegen, vollständiges Übertragen, Rühren, bestätigte Endbeobachtung und Beschriftung nach der bereitgestellten Arbeitsanweisung. Die lernende Person dokumentiert beim alternativen Modul dessen freigegebenes Lösungsmittel und die jeweiligen Schritte; ein Plan ohne durchgeführten Log wird nicht als Ausführung ausgegeben.",
+            "observablePerformanceEn": "A complete supervised action log shows separate taring and weighing, complete transfer, stirring, a confirmed final observation and labelling under the supplied instruction. For the alternative module the learner records its permitted solvent and each specified step; a plan without an executed log is not represented as performance."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "changed-conditions",
+            "textDe": "In S wählst du versehentlich Wasser statt des freigegebenen ethanolischen Lösungsmittels. Darfst du den erfolgreichen S-Endbefund aus der Vorlage übernehmen?",
+            "textEn": "In S you accidentally choose water instead of its permitted ethanolic solvent. May you copy the successful S endpoint from the example?"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "preparation-salt-water-performed-log",
+            "taskDemandDe": "Führe P-1 unter Aufsicht aus oder führe die Simulatoraktionen tatsächlich in der angegebenen Reihenfolge aus. Gib das ausgefüllte Ausführungsprotokoll ab. Eine geplante Schrittfolge oder die Aussage „Salz löst sich“ reicht ohne Durchführung beziehungsweise Simulatorlog nicht aus.",
+            "taskDemandEn": "Execute P-1 under supervision or actually issue the simulator actions in sequence. Submit the completed execution log. A planned sequence or “salt dissolves” without execution or a simulator log is insufficient.",
+            "expectedPerformanceDe": "Erwartetes erfolgreiches Protokoll: Freigabe geprüft; trockenes Gefäß tariert; 48,0 g Wasser angezeigt; Wasser-Becherglas sicher abgestellt; leere Wägeschale tariert; darin mit sauberem Spatel separat 2,0 g Salz abgewogen und aus der Wägeschale vollständig ins Wasser übertragen; gerührt; Rückmeldung/Beobachtung: keine sichtbaren Kristalle, einheitliche Flüssigkeit ohne getrennte Phase; mit Kochsalzlösung und Datum beschriftet; keine Abweichung. Das ist eine hergestellte Lösung im begrenzten Fall, keine allgemeine Behauptung über beliebige Salz-/Lösungsmittelkombinationen.",
+            "expectedPerformanceEn": "Expected successful log: permission checked; dry vessel tared; 48.0 g water displayed; water beaker placed securely; empty weighing dish tared; 2.0 g salt weighed separately in that dish with the clean spatula and transferred completely from the dish into the water; stirred; feedback/observation: no visible crystals, uniform liquid without a separate phase; labelled salt solution and date; no deviation. This documents preparation in the bounded case, not a claim about arbitrary salt/solvent combinations.",
+            "understandingFocusDe": "Herstellen ist eine beobachtbare Arbeitsroutine. Sie ist vom Erklären der Löslichkeitsgrenze und vom Berechnen eines Mischungsanteils unabhängig prüfbar.",
+            "understandingFocusEn": "Preparation is an observable working routine, assessed separately from explaining a solubility limit or calculating a mixture fraction."
+          },
+          {
+            "id": "preparation-bound-phase-solvent-transfer",
+            "taskDemandDe": "Führe die angegebenen Aktionen für L, S und G im moderierten Simulator aus und gib für jedes Modul den vollständigen Aktions-/Rückmeldungslog mit Endbeobachtung und Beschriftung ab. Benenne die jeweils andere Ausgangsphase und das vorgegebene Lösungsmittel. Ersetze keinen Log durch die bloße Behauptung „das ist löslich“.",
+            "taskDemandEn": "Execute the specified L, S and G actions in the facilitator-mediated simulator and submit each complete action/feedback log, final observation and label. Identify each changed starting phase and specified solvent. Do not replace a log with the assertion “it is soluble.”",
+            "expectedPerformanceDe": "Erwartet werden drei getrennte Logs mit jeweils geprüftem Modul/Freigabe, dem modulspezifischen Lösungsmittel und der vorgeschriebenen Zugabe. L dokumentiert flüssigen Ausgangsstoff in Wasser, danach keine Schlieren; S festen Ausgangsstoff im ethanolischen Lösungsmittel, danach keine Partikel; G gasförmigen Ausgangsstoff in Wasser unter festgehaltenen Modellbedingungen, Kontakt/Mischen/Warten und bestätigte Aufnahme. Alle enden mit inspect und richtiger Beschriftung. Die L-Mengen und Mischhandlung dürfen nicht ungeprüft auf S oder G übertragen werden.",
+            "expectedPerformanceEn": "Three separate logs are expected, each with module/permission checked, its specific solvent and prescribed addition. L records a liquid starting substance in water followed by no streaks; S a solid in ethanolic solvent followed by no particles; G a gas in water under fixed model conditions, contact/mixing/waiting and confirmed absorption. Each ends with inspect and its correct label. L’s quantities and mixing action cannot be copied to S or G without using that module’s instruction.",
+            "understandingFocusDe": "Herstellen ist eine beobachtbare Arbeitsroutine. Sie ist vom Erklären der Löslichkeitsgrenze und vom Berechnen eines Mischungsanteils unabhängig prüfbar.",
+            "understandingFocusEn": "Preparation is an observable working routine, assessed separately from explaining a solubility limit or calculating a mixture fraction."
+          }
+        ]
+      }
+    },
+    {
+      "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "schemaVersion": 2,
+      "reviewId": "chemie-b007-six-scoring-binding-author-v7",
+      "goalFingerprintRuleVersion": "goal-evidence-v1",
+      "profileRuleVersion": "positive-understanding-evidence-v2",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+      "goalId": "4aeced1e-15cd-58df-83f7-68e2531c2d32",
+      "goalFingerprint": "sha256:56d0dad1bf9f19c4c7a96e777939f3369991646507dc02765218383b458d092c",
+      "reviewInputFingerprint": "sha256:bb645252cf67ecaa846bcf87744ad56f8b3627856ef87265e09803d1ec1b9b46",
+      "profileFingerprint": "sha256:fba8ca76b49b53696e0d779da61c1566cbd235cd4726e34fb8ac461cb780ec1c",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-10-11T01:29:41.501680+00:00",
+      "reviewer": "Codex AUTHOR v7 source/scoring correction; new independent reviewers pending",
+      "reason": "All six scientific profile bodies are exactly retained from frozen v6; one external whole-case criterion identity is corrected. This is an author candidate, with current independent v7 review pending.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewRunIds": [],
+      "dissent": [],
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "understanding",
+            "essentialUnderstandingDe": "Der Nenner ist die Gesamtmasse, einschließlich gelöstem Stoff, nicht nur die Masse des Lösungsmittels. Prozent ist eine dimensionslose Anteilangabe.",
+            "essentialUnderstandingEn": "The denominator is the total mass, including solute, rather than solvent mass alone. A percentage expresses a dimensionless fraction.",
+            "observablePerformanceDe": "Die lernende Person berechnet 12/(12+108)=0,10 und nach 30 g Wasserzugabe 12/150=0,08, benennt die Gesamtmasse einschließlich des betrachteten Bestandteils und deutet beide Werte als Prozentanteile. Beim belegten Verlust von ausschließlich Wasser berechnet sie 25/175≈0,143; bei unbekannter Restzusammensetzung erklärt sie, weshalb dieselbe Endmasse den Zähler nicht festlegt.",
+            "observablePerformanceEn": "The learner calculates 12/(12+108)=0.10 and, after adding 30 g water, 12/150=0.08, identifies total mass including the constituent and interprets both values as percentages. For documented water-only loss they calculate 25/175≈0.143; for unknown residue composition they explain why the same final mass does not determine the numerator."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "changed-conditions",
+            "textDe": "Statt Wasserverlust werden zum ursprünglichen Ansatz weitere 50,0 g Wasser ohne Verlust hinzugefügt. Wie groß ist der Zuckeranteil?",
+            "textEn": "Instead of water loss, another 50.0 g water is added to the initial batch without loss. What is the sugar fraction?"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "mass-fraction-total-mass-and-dilution",
+            "taskDemandDe": "Berechne den Massenanteil des Salzes im ursprünglichen Ansatz und deute die Prozentangabe. Erkläre den Fehler im Vergleichsvorschlag. Bestimme den neuen Massenanteil nach Wasserzugabe.",
+            "taskDemandEn": "Calculate the salt mass fraction of the original batch and interpret the percentage. Explain the proposed solution’s mistake. Determine the new mass fraction after water addition.",
+            "expectedPerformanceDe": "Gesamtmasse = 12,0 + 108,0 = 120,0 g. w(Salz) = 12,0/120,0 = 0,100 = 10,0 %: In 100 g dieses Gemisches sind 10 g Salz enthalten. 12,0/108,0 ist das Salz/Wasser-Massenverhältnis, kein Anteil an der gesamten Lösung. Nach Zugabe: Gesamtmasse 150,0 g, Salz weiterhin 12,0 g; w = 12,0/150,0 = 0,080 = 8,0 %. Der Anteil sinkt durch die größere Gesamtmasse.",
+            "expectedPerformanceEn": "Total mass = 12.0 + 108.0 = 120.0 g. w(salt) = 12.0/120.0 = 0.100 = 10.0%: 100 g of this mixture contains 10 g salt. 12.0/108.0 is a salt/water mass ratio, not a fraction of the whole solution. After addition: total mass 150.0 g, with salt still 12.0 g; w = 12.0/150.0 = 0.080 = 8.0%. The fraction decreases because total mass increases.",
+            "understandingFocusDe": "Der Nenner ist die Gesamtmasse, einschließlich gelöstem Stoff, nicht nur die Masse des Lösungsmittels. Prozent ist eine dimensionslose Anteilangabe.",
+            "understandingFocusEn": "The denominator is the total mass, including solute, rather than solvent mass alone. A percentage expresses a dimensionless fraction."
+          },
+          {
+            "id": "mass-fraction-documented-solvent-loss",
+            "taskDemandDe": "Berechne und deute den Massenanteil vorher und nachher. Widerlege die Behauptung mithilfe des Nenners. Kannst du für das andere Gefäß allein aus der Endgesamtmasse denselben Zuckeranteil sichern?",
+            "taskDemandEn": "Calculate and interpret mass fraction before and after. Refute the claim using the denominator. Can the other vessel’s final total mass alone establish the same sugar fraction?",
+            "expectedPerformanceDe": "Vorher: Gesamtmasse 200,0 g; w = 25,0/200,0 = 0,125 = 12,5 %. Nachher: Wasser 150,0 g und Zucker 25,0 g; Gesamtmasse 175,0 g; w = 25,0/175,0 = 1/7 ≈ 0,142857 = 14,3 % gerundet. Die gleiche Zuckermasse macht bei kleinerem Gesamtmassennenner einen größeren Anteil. Das andere Gefäß benötigt eine belegte verbleibende Zuckermasse beziehungsweise einen vollständigen Verlustbericht; Endgesamtmasse allein genügt nicht.",
+            "expectedPerformanceEn": "Initially: total mass 200.0 g; w = 25.0/200.0 = 0.125 = 12.5%. Afterwards: 150.0 g water and 25.0 g sugar; total mass 175.0 g; w = 25.0/175.0 = 1/7 ≈ 0.142857 = 14.3% rounded. The same sugar mass gives a larger fraction with a smaller total-mass denominator. The other vessel needs documented remaining sugar mass or a complete loss record; final total mass alone is insufficient.",
+            "understandingFocusDe": "Der Nenner ist die Gesamtmasse, einschließlich gelöstem Stoff, nicht nur die Masse des Lösungsmittels. Prozent ist eine dimensionslose Anteilangabe.",
+            "understandingFocusEn": "The denominator is the total mass, including solute, rather than solvent mass alone. A percentage expresses a dimensionless fraction."
+          }
+        ]
+      }
+    },
+    {
+      "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "schemaVersion": 2,
+      "reviewId": "chemie-b007-six-scoring-binding-author-v7",
+      "goalFingerprintRuleVersion": "goal-evidence-v1",
+      "profileRuleVersion": "positive-understanding-evidence-v2",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+      "goalId": "49d42c38-419c-5048-b7e9-860645dd122d",
+      "goalFingerprint": "sha256:bc565f82804328ccb63bcd32259be67f7329ca11fd2a8bbf53b12fda18c502ac",
+      "reviewInputFingerprint": "sha256:f3d0c9c447064b97eb6fd273950a231fefa159db1688c62f228e7226734e40c7",
+      "profileFingerprint": "sha256:1ba52c40012090013d0dfe5181c46201ec50cc555991285f6b8af478b89f4322",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-10-11T01:29:41.501680+00:00",
+      "reviewer": "Codex AUTHOR v7 source/scoring correction; new independent reviewers pending",
+      "reason": "All six scientific profile bodies are exactly retained from frozen v6; one external whole-case criterion identity is corrected. This is an author candidate, with current independent v7 review pending.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewRunIds": [],
+      "dissent": [],
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "understanding",
+            "essentialUnderstandingDe": "Der Volumenanteil verwendet die Summe der Bestandteilsvolumina vor dem Mischen. Das gemessene Endvolumen ist bei nicht additiven Volumina eine andere Bezugsgröße.",
+            "essentialUnderstandingEn": "A volume fraction uses the sum of constituent volumes before mixing. For non-additive volumes, measured final volume is a different reference quantity.",
+            "observablePerformanceDe": "Die lernende Person berechnet den definierten Anteil aus der Summe aller getrennten Ausgangsvolumina unter gleichen Bedingungen und erläutert, weshalb ein kontrahiertes Endvolumen diese Summe nicht ersetzt. Sie unterscheidet 40/(40+60)=40 % von 40/96≈41,7 % und von der unzutreffenden Vorstellung eines abgetrennten 40-mL-Bereichs. Bei einem unvollständigen Bericht benennt sie die fehlenden Ausgangsvolumina und berechnet den Anteil erst nach deren Ergänzung.",
+            "observablePerformanceEn": "The learner calculates the defined fraction from the sum of all separately measured input volumes at common conditions and explains why a contracted final volume does not replace that sum. They distinguish 40/(40+60)=40% from 40/96≈41.7% and from an incorrect separate 40 mL region. For an incomplete record they identify missing input volumes and calculate the fraction only after those are supplied."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "missing-input-reference-quantity",
+            "textDe": "Ein neuer Bericht nennt 20,0 mL des Bestandteils A vor dem Mischen und 40,0 mL Endvolumen bei 25 °C und 100 kPa. Das Ausgangsvolumen von B fehlt; Volumenadditivität ist nicht vorgegeben. Prüfe die Aussage φ(A)=50 %, benenne die fehlende Information und berechne φ(A), wenn anschließend 30,0 mL Ausgangsvolumen B unter denselben Bedingungen nachgereicht werden.",
+            "textEn": "A new record gives 20.0 mL of constituent A before mixing and a final volume of 40.0 mL at 25 °C and 100 kPa. The input volume of B is missing; volume additivity is not supplied. Evaluate the claim φ(A)=50%, identify the missing information, and calculate φ(A) once B’s input volume of 30.0 mL at the same conditions is subsequently supplied."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "volume-fraction-input-sum-and-scaling",
+            "taskDemandDe": "Berechne und deute φ(A) im ersten Ansatz. Prüfe, ob der kleinere Vergleichsansatz denselben Anteil hat. Benenne den Nenner ausdrücklich als Eingangsvolumensumme, auch wenn er hier mit dem Endvolumen übereinstimmt.",
+            "taskDemandEn": "Calculate and interpret φ(A) for the first batch. Check whether the smaller comparison batch has the same fraction. Explicitly identify the denominator as the sum of input volumes, even though it equals final volume here.",
+            "expectedPerformanceDe": "φ(A) = 25,0/(25,0 + 75,0) = 0,250 = 25,0 %. A macht ein Viertel der Summe der getrennt gemessenen Eingangsvolumina aus. Beim kleineren Ansatz: 10,0/(10,0 + 30,0) = 0,250 = 25,0 %. Die Gesamtmenge ist kleiner, das Mischungsverhältnis gleich. Der Nenner ist in beiden Fällen die Eingangsvolumensumme; das gleiche Endvolumen im additiven Modell ist keine allgemeine Regel.",
+            "expectedPerformanceEn": "φ(A) = 25.0/(25.0 + 75.0) = 0.250 = 25.0%. A accounts for one quarter of the sum of separately measured input volumes. The smaller batch gives 10.0/(10.0 + 30.0) = 0.250 = 25.0%. Total quantity is smaller but the mixing ratio is the same. Both denominators are sums of input volumes; matching final volume in this additive model is not a universal rule.",
+            "understandingFocusDe": "Der Volumenanteil verwendet die Summe der Bestandteilsvolumina vor dem Mischen. Das gemessene Endvolumen ist bei nicht additiven Volumina eine andere Bezugsgröße.",
+            "understandingFocusEn": "A volume fraction uses the sum of constituent volumes before mixing. For non-additive volumes, measured final volume is a different reference quantity."
+          },
+          {
+            "id": "volume-fraction-contraction-no-denominator-swap",
+            "taskDemandDe": "Berechne φ(Ethanol) für den ersten Bericht. Erkläre, warum das gemessene Endvolumen von 96,0 mL nicht der Nenner dieser gesuchten Größe ist. Rechne den fiktiven Vorschlag aus und benenne seine abweichende Bezugsgröße, ohne ihn als Volumenanteil zu akzeptieren. Folgt aus φ(Ethanol), dass Ethanol in der homogenen fertigen Mischung einen abgetrennten 40,0-mL-Bereich einnimmt? Begründe.",
+            "taskDemandEn": "Calculate φ(ethanol) for the first record. Explain why measured final volume 96.0 mL is not this quantity’s denominator. Evaluate the fictional calculation and identify its different reference without accepting it as the requested volume fraction. Does φ(ethanol) mean that ethanol occupies a separate 40.0 mL region within the final homogeneous mixture? Explain.",
+            "expectedPerformanceDe": "φ(Ethanol) = 40,0/(40,0 + 60,0) = 0,400 = 40,0 %. Der Nenner 100,0 mL ist die Summe der Eingangsvolumina. 40,0/96,0 ≈ 0,416667 = 41,7 % vergleicht das Ethanol-Eingangsvolumen mit dem Endvolumen der Mischung und ist eine andere Verhältnisgröße. Kontraktion rechtfertigt keinen Austausch der ausdrücklich gesuchten Bezugsgröße. Aus φ folgt auch nicht, dass Ethanol im fertigen Gemisch einen abgetrennten 40,0-mL-Bereich belegt.",
+            "expectedPerformanceEn": "φ(ethanol) = 40.0/(40.0 + 60.0) = 0.400 = 40.0%. The 100.0 mL denominator is the sum of input volumes. 40.0/96.0 ≈ 0.416667 = 41.7% compares ethanol input volume with final mixture volume and is a different ratio. Contraction does not justify replacing the explicitly requested reference. Nor does φ imply that ethanol occupies a separate 40.0 mL region within the mixed liquid.",
+            "understandingFocusDe": "Der Volumenanteil verwendet die Summe der Bestandteilsvolumina vor dem Mischen. Das gemessene Endvolumen ist bei nicht additiven Volumina eine andere Bezugsgröße.",
+            "understandingFocusEn": "A volume fraction uses the sum of constituent volumes before mixing. For non-additive volumes, measured final volume is a different reference quantity."
+          }
+        ]
+      }
+    },
+    {
+      "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "schemaVersion": 2,
+      "reviewId": "chemie-polymers-six-visual40-rubric-author-successor-20261013-v3",
+      "goalFingerprintRuleVersion": "goal-evidence-v1",
+      "profileRuleVersion": "positive-understanding-evidence-v2",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+      "goalId": "3aef6d91-04ff-5ec7-b92e-ccf330d9816a",
+      "goalFingerprint": "sha256:e45d3ac2112e94fc231f90bc73815c84ae2d6a116878fb4cf2a193f02fc22045",
+      "reviewInputFingerprint": "sha256:bb50f470df171416a072383f17a4314bfe587ff218f91101b6cc3534f111b5ca",
+      "profileFingerprint": "sha256:2bd868aa90916e7dc3e3f2cb68921587c7299defb23087a855c4c06df8e2ded5",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-10-12T22:56:51.749Z",
+      "reviewer": "Codex scientific author /root/chemistry_five_stable_dependency_qs/checkpoint_dependencies_readonly",
+      "reason": "Additive bilingual author successor with corrected images where evidenced and actual case-specific rubric joins. Await fresh independent whole-goal review.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewRunIds": [],
+      "dissent": [],
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Tg betrifft kooperative Segmentbeweglichkeit amorpher Anteile; Tm das Schmelzen kristalliner Bereiche.",
+            "essentialUnderstandingEn": "Tg concerns cooperative segment mobility in amorphous fractions; Tm concerns melting crystalline regions.",
+            "observablePerformanceDe": "Ordnet Übergänge aus Daten und erklärt den Unterschied ohne Gleichsetzung von Tg und Tm.",
+            "observablePerformanceEn": "Identifies transitions from data and explains the difference without equating Tg and Tm."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Packung, intermolekulare Kräfte und kovalente Vernetzung beeinflussen thermische und mechanische Reaktionen.",
+            "essentialUnderstandingEn": "Packing, intermolecular forces and covalent crosslinks affect thermal and mechanical responses.",
+            "observablePerformanceDe": "Erklärt Unterschiede eines amorphen, teilkristallinen und vernetzten Materials.",
+            "observablePerformanceEn": "Explains differences between amorphous, semicrystalline and crosslinked materials."
+          },
+          {
+            "id": "e3",
+            "essentialUnderstandingDe": "Nutzungstemperaturen müssen zu Materialzustand, Belastung und Zersetzungsgrenzen passen.",
+            "essentialUnderstandingEn": "Service temperatures must match material state, loading and decomposition limits.",
+            "observablePerformanceDe": "Überträgt die Zustandsanalyse auf einen neuen Temperaturzyklus mit begründeter Einsatzgrenze.",
+            "observablePerformanceEn": "Transfers state analysis to a new temperature cycle with a justified service limit."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2",
+            "e3"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "v1",
+            "textDe": "Amorph oder teilkristallin",
+            "textEn": "Amorphous or semicrystalline"
+          },
+          {
+            "id": "v2",
+            "textDe": "Übergang oder Zersetzung",
+            "textEn": "Transition or decomposition"
+          },
+          {
+            "id": "v3",
+            "textDe": "Temperaturzyklus",
+            "textEn": "Temperature cycle"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "3aef6d91-case-1",
+            "taskDemandDe": "Erkläre Beobachtungen und unterscheide Tg/Tm/Zersetzung. Wähle für wiederholtes thermisches Umformen und beurteile C bei 100°C. Ist B oberhalb Tg automatisch flüssig?",
+            "taskDemandEn": "Explain observations and distinguish Tg, Tm and decomposition. Select for repeated thermal reshaping and assess C at 100°C. Is B automatically liquid above Tg?",
+            "expectedPerformanceDe": "A über Tg segmentbeweglicher, kein Tm weil amorph; Umformen möglich, aber tatsächliche Viskosität/Belastung prüfen. B bleibt durch Kristallite bis Tm formfest, oberhalb Tg daher nicht automatisch flüssig. C über Tg kann gummiartig weicher sein, Netz verhindert Schmelzfluss; oberhalb 250°C Zersetzung. A/B thermoplastisch wiederverarbeitbar unter passendem Prozessfenster, C nicht einschmelzbar.",
+            "expectedPerformanceEn": "A has greater segment mobility above Tg, with no Tm because it is amorphous; reshaping may be possible but requires viscosity/load data. B retains crystalline reinforcement until Tm and is not automatically liquid above Tg. C may soften rubber-like above Tg but its network prevents melt flow; above 250°C it decomposes. A/B may be reprocessed within appropriate windows; C cannot be remelted.",
+            "understandingFocusDe": "Fallbezogene Aspekte: Tg Segmentbeweglichkeit, Tm Kristallschmelzen, Zersetzung chemischer Abbau klar unterscheiden. / A amorph ohne Tm; B-Kristallite halten oberhalb Tg bis 130°C; C-Netz verhindert Fluss trotz Tg 40°C. / A/B nur im passenden Prozessfenster umformbar; C bei 100°C eventuell weicher, nicht einschmelzbar, Belastung prüfen. Die Verknüpfung zu Erwartungs-IDs behauptet keine vollständige Erfüllung jeder Gesamtprofilerwartung in diesem Einzelfall.",
+            "understandingFocusEn": "Case-specific aspects: Clearly distinguish Tg segment mobility, Tm crystal melting and chemical decomposition. / A amorphous without Tm; B crystals support above Tg to 130°C; C network prevents flow despite Tg 40°C. / A/B formable only in suitable process window; C at 100°C may soften, cannot remelt, test loading. Links to expectation IDs do not assert complete fulfilment of every whole-profile expectation in this one case."
+          },
+          {
+            "id": "3aef6d91-case-2",
+            "taskDemandDe": "Erkläre den Einfluss der Abkühlung. Wähle für den Zyklus und prognostiziere Verhalten bei 180°C im idealen Modell. Warum reicht gleicher Tg weder für gleiche Formstabilität noch für einen sicheren Prozess bei 210°C?",
+            "taskDemandEn": "Explain cooling effects. Select for the cycle and predict behaviour at 180°C in the ideal model. Why does equal Tg prove neither equal shape stability nor a safe process at 210°C?",
+            "expectedPerformanceDe": "Langsames Abkühlen erlaubt Kristallbildung; Q-Kristallite tragen bei 90°C, P ist oberhalb Tg stärker weich. Q vorläufig günstiger unter Last; Kriechen/Zyklen prüfen. Bei 180°C sind Q-Kristallite geschmolzen; beide brauchen Viskositätsdaten. Gleicher Tg beschreibt amorphe Segmente, nicht Kristallanteil; Zersetzung bei 210°C und Prozessdauer sind unbekannt.",
+            "expectedPerformanceEn": "Slow cooling permits crystallisation; Q crystallites support load at 90°C while P softens more above Tg. Q is provisionally preferable, subject to creep/cycle tests. At 180°C Q crystallites have melted; both require viscosity data. Equal Tg describes amorphous segments, not crystal fraction; decomposition at 210°C and process duration are unknown.",
+            "understandingFocusDe": "Fallbezogene Aspekte: Gleiche Tg 60°C beweist nicht gleiche Kristallinität; Q-Kristalle schmelzen bei 170°C. / Langsame Abkühlung erlaubt Q-Kristallbildung; Stützung 90°C trotz beweglicher amorpher Segmente. / Q für 20→90→20 vorläufig; bei 180°C Kristalle weg, Kriechen/Viskosität und 210°C-Zersetzung ungetestet. Die Verknüpfung zu Erwartungs-IDs behauptet keine vollständige Erfüllung jeder Gesamtprofilerwartung in diesem Einzelfall.",
+            "understandingFocusEn": "Case-specific aspects: Same Tg 60°C does not establish equal crystallinity; Q crystals melt at 170°C. / Slow cooling permits Q crystallisation; support at 90°C despite mobile amorphous segments. / Q provisionally for 20→90→20; at 180°C crystals gone, creep/viscosity and 210°C decomposition untested. Links to expectation IDs do not assert complete fulfilment of every whole-profile expectation in this one case."
+          }
+        ]
+      }
+    }
+  ],
+  "actualJudgment": "No current canonical whole ordinary goal or inspected relevant P promises aqueous solubility-temperature graph interpretation or a crystallisation experiment. The sole crystallisation wording hit is3aef polymer cooling/semicrystalline structure, a different performance;5a709 practical performance is sand-water filtration, with distillation/extraction data-transfer, not crystal growth.4aec legitimately teaches concentration decrease on dilution and is a complementary existing quantitative carrier; it does not supply temperature-graph/crystal operations. This finite inventory does not certify every generic process skill or a complete optional source union."
+}

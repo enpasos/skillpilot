@@ -5,7 +5,7 @@
   "inputs": {
     "canonical": {
       "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
-      "sha256": "ff3e209fbeae96e55f087e51f679b1691778a93c41b1207a334a15fe17e18acf"
+      "sha256": "76047cec422c555aacd1e04bff597c4f8a70d8ffed5f214ed7412c828bc34898"
     },
     "parentDerivativeReceipt": {
       "path": "curricula/DE/Gymnasium/quality/goal-description-review/canonical-math-structural-split-composition-view-follow-up-2026-08-16.receipt.json",
@@ -88,8 +88,7 @@
       "Assert actualAfter equals (flatBefore minus the union of removeAtomicGoalIds) union the atomic closure of every filtered replacementNode; additionally assert each non-excluded preservedReusedGoalId was visible before, is never removed, and remains visible after. Then compile and reject CPV-004/005/006/007/009.",
       "Use the transformed Sek-I node as the standalone output and as the authoritative replacement node for both GK and LK cross-stage outputs.",
       "Apply each template's explicitly reviewed prerequisiteOnlyOverrideGoalIds to direct target references after Sek-I assembly, adding a direct override for inherited references; block route-closure promotion and derive assessment visibility from the resulting curricular target set.",
-      "Seed each template's reviewed additionalTargetGoalIds as ordinary canonical-year bucket targets before prerequisite closure, independently of assessment visibility; retain explicit prerequisite-only overrides.",
-      "Append only the individually authored reviewedTargetPlacements in the named cross-stage output template, at its exact existing structure path. These retain already adopted source-backed targets; requires never supplies this target authority. Preserve the83 original split placements and explicit prerequisite-only overrides."
+      "Seed each template's reviewed additionalTargetGoalIds as ordinary canonical-year bucket targets before prerequisite closure, independently of assessment visibility; retain explicit prerequisite-only overrides."
     ],
     "j6StructuralSplitContract": {
       "adjudicationPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-26/batch-003b-j6-structural-splits/source-edge-adjudication.json",
@@ -135,162 +134,6 @@
         ],
         "humanApproval": false
       }
-    },
-    "checkpointReview20261015": {
-      "status": "PROPOSED_EXACT_CURRENT_ADOPTION_REPRODUCTION_REQUIRES_INDEPENDENT_REVIEW",
-      "previousCanonicalSha256": "76047cec422c555aacd1e04bff597c4f8a70d8ffed5f214ed7412c828bc34898",
-      "intermediateCanonicalSha256": "61742f50b76efbb63e5fee4212b1d1b0452bb23cff4bcf8c2ce7268038828ec4",
-      "currentCanonicalSha256": "893a43d06900708643a33bf490820db6444078ec8284a1aa7086a8ecc30ce2ae",
-      "canonicalAdoptionReceipts": [
-        {
-          "path": "tmp/cross-subject-requires/caf5-three-atomic-exact-main-adoption-root-20261014-v1/adoption.actual.json",
-          "bytes": 349245,
-          "sha256": "cde8e19839d5c905057449812f1c31d8b897a7f45cb68f822ce0e7605543795f"
-        },
-        {
-          "path": "tmp/cross-subject-requires/released87-exact-main-adoption-root-20261015-v1/adoption.actual.json",
-          "bytes": 27082,
-          "sha256": "def229bb59979654b5119b5efba7134540248746cb08f9f37dc7e9f58bd5a827"
-        }
-      ],
-      "sourcePlacementEvidence": [
-        {
-          "path": "tmp/cross-subject-requires/eighteen-existing-Math-views-exact-main-adoption-root-20261015-v1/adoption.actual.json",
-          "bytes": 10199,
-          "sha256": "777173e951d5f7fecd1b859ea9b81a60c3c969ce628c51d06a91a0ee8ed8cae1"
-        },
-        {
-          "path": "curricula/quality/cross-subject-requires/2026-10-13/existing-eighteen-Math-views-source-repair-root-20261015-v1/exact-eighteen-existing-view-candidate.actual.json",
-          "bytes": 32856,
-          "sha256": "78ff6953bfe8928a9fd5bc26aae0e5b2f2df298a2256b1bac1e66452a3717b02"
-        },
-        {
-          "path": "curricula/quality/cross-subject-requires/2026-10-13/eighteen-existing-math-view-source-repair-independent-peer-20261015-v1/HANDOFF.actual.json",
-          "bytes": 4279,
-          "sha256": "88959e7961cc55a378b671e23023044faff3e5ea3aa2cce52da3e38bfa175c27"
-        }
-      ],
-      "sourceIndependentDecisions": {
-        "path": "tmp/cross-subject-requires/eighteen-existing-math-view-source-repair-independent-peer-20261015-v1/exact35-current-whole-source-P-cohort-scope-decisions.independent.json",
-        "sha256": "e46b78de0a29151ea49cafeb65c97bb00fcad411bf6feaf412beb5924e756a58"
-      },
-      "evidencePathsAreHistoricalProvenanceNotRuntimeDependencies": true,
-      "original83SplitPlacementsAnd303CanonicalPlacementsUnchanged": true,
-      "historicalTemplateAndOutputHashesRetainedAsLayoutOrigins": true,
-      "historicalRpTargetRetention": {
-        "goalId": "b5de0574-93ed-409c-80ee-312211420cd6",
-        "baseMain": "cd297c280c611f52a31ef535ee9224c0f1c7ee98",
-        "views": [
-          {
-            "fileName": "de-rp-seki-g8.view.json",
-            "baseMainSHA256": "e32ef68f3f53fda913d631b5fb0a8d0be3cb434c3b174b4e51e27436c2fb0648",
-            "baseMainAndCurrentReferenceExact": true,
-            "historicalReference": {
-              "structurePath": [
-                "rp-sek1-g8",
-                "rp-orientierungsstufe-g8",
-                "rp-orientierungsstufe-g8-kompetenzen"
-              ],
-              "reference": {
-                "kind": "goalEntry",
-                "goalId": "b5de0574-93ed-409c-80ee-312211420cd6"
-              }
-            }
-          },
-          {
-            "fileName": "de-rp-seki-g9.view.json",
-            "baseMainSHA256": "ee6b5174b46a697a413d311b2df3939eaa2b7b918ea0fe5e0038efcb5fa1c64a",
-            "baseMainAndCurrentReferenceExact": true,
-            "historicalReference": {
-              "structurePath": [
-                "rp-sek1-g9",
-                "rp-orientierungsstufe-g9",
-                "rp-orientierungsstufe-g9-kompetenzen"
-              ],
-              "reference": {
-                "kind": "goalEntry",
-                "goalId": "b5de0574-93ed-409c-80ee-312211420cd6"
-              }
-            }
-          },
-          {
-            "fileName": "de-rp-gk-g8.view.json",
-            "baseMainSHA256": "3c583ac50023bc1388f1eb95a99b41a2e25ee715a6822517a22475aabe375df3",
-            "baseMainAndCurrentReferenceExact": true,
-            "historicalReference": {
-              "structurePath": [
-                "math-root",
-                "rp-sek1-g8",
-                "rp-orientierungsstufe-g8",
-                "rp-orientierungsstufe-g8-kompetenzen"
-              ],
-              "reference": {
-                "kind": "goalEntry",
-                "goalId": "b5de0574-93ed-409c-80ee-312211420cd6"
-              }
-            }
-          },
-          {
-            "fileName": "de-rp-gk-g9.view.json",
-            "baseMainSHA256": "91737984ff49111d32f3d7b27449816888c7d7b304c54e2f2e3c97821a7c0194",
-            "baseMainAndCurrentReferenceExact": true,
-            "historicalReference": {
-              "structurePath": [
-                "math-root",
-                "rp-sek1-g9",
-                "rp-orientierungsstufe-g9",
-                "rp-orientierungsstufe-g9-kompetenzen"
-              ],
-              "reference": {
-                "kind": "goalEntry",
-                "goalId": "b5de0574-93ed-409c-80ee-312211420cd6"
-              }
-            }
-          },
-          {
-            "fileName": "de-rp-lk-g8.view.json",
-            "baseMainSHA256": "90ddde1f7607cecdf7473080b101e18a4d48600e1ca0be55632702889c87bc03",
-            "baseMainAndCurrentReferenceExact": true,
-            "historicalReference": {
-              "structurePath": [
-                "math-root",
-                "rp-sek1-g8",
-                "rp-orientierungsstufe-g8",
-                "rp-orientierungsstufe-g8-kompetenzen"
-              ],
-              "reference": {
-                "kind": "goalEntry",
-                "goalId": "b5de0574-93ed-409c-80ee-312211420cd6"
-              }
-            }
-          },
-          {
-            "fileName": "de-rp-lk-g9.view.json",
-            "baseMainSHA256": "97a08caaa9b136b2d01273e97bb8e4f55eca651018227cf6b4f992e93d3cdc36",
-            "baseMainAndCurrentReferenceExact": true,
-            "historicalReference": {
-              "structurePath": [
-                "math-root",
-                "rp-sek1-g9",
-                "rp-orientierungsstufe-g9",
-                "rp-orientierungsstufe-g9-kompetenzen"
-              ],
-              "reference": {
-                "kind": "goalEntry",
-                "goalId": "b5de0574-93ed-409c-80ee-312211420cd6"
-              }
-            }
-          }
-        ],
-        "reason": "The accepted f2e42 prerequisite minimality repair removes f2e42→b5. This changes route closure, not previously authored target enrollment. Explicitly retain the old six RP view targets; do not infer new source authority from requires."
-      },
-      "decisions": [
-        "Rebind only after the complete reviewed76047→61742→893a43 canonical/Kind delta and unchanged placements were traced to actual adoptions.",
-        "The existing RP target b5de0574 remains explicitly enrolled after removal of the f2e42→b5 prerequisite edge; no new source review is claimed for historical retention. Its assessment visibility continues using the existing separately reviewed assessment filter.",
-        "Replay exactly10 existing source35 target placements in3 named cross-stage outputs. The remaining25 source35 cells, BYLK addition and RP Physics30 are retained by leaving their actual views unchanged.",
-        "No new ordinary Math goals, source18, unsupported HB/TH/MV views, fallback policy, requires, semantic-kind decisions or quality gates are adopted here."
-      ],
-      "newScientificSourceHumanOrHostAuthority": false
     }
   },
   "counts": {
@@ -1107,8 +950,7 @@
       ],
       "additionalTargetGoalIds": [
         "f242a3e8-55a3-492e-8354-b81b24cdbb78",
-        "d1352ce0-9502-5039-9af6-318fe385b6fd",
-        "b5de0574-93ed-409c-80ee-312211420cd6"
+        "d1352ce0-9502-5039-9af6-318fe385b6fd"
       ],
       "excludedGoalIds": [
         "5518ceb3-f668-5b52-a9b1-57653b16ca98",
@@ -1282,8 +1124,7 @@
         "0190e463-51a7-4860-9b35-d875530a85ba",
         "f76d00dc-6b31-59cd-b01a-3610eadc9908",
         "15ce2a7e-a5dc-44f7-8a5e-6d04dd81db12",
-        "6a4716bd-8038-46bb-b647-0db4a254fee7",
-        "b5de0574-93ed-409c-80ee-312211420cd6"
+        "6a4716bd-8038-46bb-b647-0db4a254fee7"
       ],
       "excludedGoalIds": [
         "5518ceb3-f668-5b52-a9b1-57653b16ca98",
@@ -1818,129 +1659,7 @@
       "outputFileName": "de-he-gk-g8.view.json",
       "outputSha256": "e8a0b2ec8c304127c90524111160922d5739cd3130c9fe5f4b9d33dbfd189972",
       "sek1TemplateFileName": "de-he-seki-g8.view.json",
-      "baseViewFileName": "de-he-gk.view.json",
-      "reviewedTargetPlacements": [
-        {
-          "structurePath": [
-            "math-root",
-            "sek2-gk",
-            "whole-source-successor-27b63e2e"
-          ],
-          "sourceDecisionId": "informed-current35-cell-005",
-          "node": {
-            "kind": "structure",
-            "id": "whole-source-successor-27b63e2e",
-            "label": "Exponentielle Modelle aufstellen und bewerten",
-            "children": [
-              {
-                "kind": "goalEntry",
-                "goalId": "27b63e2e-6a34-483e-8e5a-fe0f49670d1d",
-                "projectionRole": "target"
-              }
-            ]
-          }
-        },
-        {
-          "structurePath": [
-            "math-root",
-            "sek2-gk",
-            "whole-source-successor-3010d965"
-          ],
-          "sourceDecisionId": "informed-current35-cell-009",
-          "node": {
-            "kind": "structure",
-            "id": "whole-source-successor-3010d965",
-            "label": "Lineare und exponentielle Änderungen unterscheiden",
-            "children": [
-              {
-                "kind": "goalEntry",
-                "goalId": "3010d965-b9b9-4dc5-9d04-d706725e9a30",
-                "projectionRole": "target"
-              }
-            ]
-          }
-        },
-        {
-          "structurePath": [
-            "math-root",
-            "sek2-gk",
-            "whole-source-successor-3c1d6ce7"
-          ],
-          "sourceDecisionId": "informed-current35-cell-011",
-          "node": {
-            "kind": "structure",
-            "id": "whole-source-successor-3c1d6ce7",
-            "label": "Logarithmen als Umkehrung des Potenzierens verstehen",
-            "children": [
-              {
-                "kind": "goalEntry",
-                "goalId": "3c1d6ce7-099e-4267-9ff2-3d1526209a89",
-                "projectionRole": "target"
-              }
-            ]
-          }
-        },
-        {
-          "structurePath": [
-            "math-root",
-            "sek2-gk",
-            "whole-source-successor-42e19186"
-          ],
-          "sourceDecisionId": "informed-current35-cell-026",
-          "node": {
-            "kind": "structure",
-            "id": "whole-source-successor-42e19186",
-            "label": "Exponentielle Zusammenhänge darstellen und deuten",
-            "children": [
-              {
-                "kind": "goalEntry",
-                "goalId": "42e19186-6769-41ac-a7bf-ab39bdb50661",
-                "projectionRole": "target"
-              }
-            ]
-          }
-        },
-        {
-          "structurePath": [
-            "math-root",
-            "sek2-gk",
-            "whole-source-successor-7156558c"
-          ],
-          "sourceDecisionId": "informed-current35-cell-027",
-          "node": {
-            "kind": "structure",
-            "id": "whole-source-successor-7156558c",
-            "label": "Änderungsraten und Ableitung verstehen",
-            "children": [
-              {
-                "kind": "goalEntry",
-                "goalId": "7156558c-57f1-4372-9ba7-0640c3f7cb3a",
-                "projectionRole": "target"
-              }
-            ]
-          }
-        },
-        {
-          "structurePath": [
-            "math-root",
-            "sek2-gk",
-            "whole-source-successor-9f2fc0d1"
-          ],
-          "sourceDecisionId": "informed-current35-cell-053",
-          "node": {
-            "kind": "structure",
-            "id": "whole-source-successor-9f2fc0d1",
-            "label": "Elementare Ableitungsregeln anwenden",
-            "children": [
-              {
-                "kind": "goalEntry",
-                "goalId": "9f2fc0d1-e1e7-4051-ba70-87ba1dd8dd1c",
-                "projectionRole": "target"
-              }
-            ]
-          }
-        }
-      ]
+      "baseViewFileName": "de-he-gk.view.json"
     },
     {
       "outputFileName": "de-he-gk-g9.view.json",
@@ -1964,97 +1683,13 @@
       "outputFileName": "de-rp-gk-g8.view.json",
       "outputSha256": "368ce5ec93d64689b62c0b1b7ba48c99be845385106cc840e9e6e6be5a722167",
       "sek1TemplateFileName": "de-rp-seki-g8.view.json",
-      "baseViewFileName": "de-rp-gk.view.json",
-      "reviewedTargetPlacements": [
-        {
-          "structurePath": [
-            "math-root",
-            "sek2-gk",
-            "whole-source-successor-27b63e2e"
-          ],
-          "sourceDecisionId": "informed-current35-cell-006",
-          "node": {
-            "kind": "structure",
-            "id": "whole-source-successor-27b63e2e",
-            "label": "Exponentielle Modelle aufstellen und bewerten",
-            "children": [
-              {
-                "kind": "goalEntry",
-                "goalId": "27b63e2e-6a34-483e-8e5a-fe0f49670d1d",
-                "projectionRole": "target"
-              }
-            ]
-          }
-        },
-        {
-          "structurePath": [
-            "math-root",
-            "sek2-gk",
-            "whole-source-successor-7156558c"
-          ],
-          "sourceDecisionId": "informed-current35-cell-028",
-          "node": {
-            "kind": "structure",
-            "id": "whole-source-successor-7156558c",
-            "label": "Änderungsraten und Ableitung verstehen",
-            "children": [
-              {
-                "kind": "goalEntry",
-                "goalId": "7156558c-57f1-4372-9ba7-0640c3f7cb3a",
-                "projectionRole": "target"
-              }
-            ]
-          }
-        },
-        {
-          "structurePath": [
-            "math-root",
-            "sek2-gk",
-            "whole-source-successor-9f2fc0d1"
-          ],
-          "sourceDecisionId": "informed-current35-cell-054",
-          "node": {
-            "kind": "structure",
-            "id": "whole-source-successor-9f2fc0d1",
-            "label": "Elementare Ableitungsregeln anwenden",
-            "children": [
-              {
-                "kind": "goalEntry",
-                "goalId": "9f2fc0d1-e1e7-4051-ba70-87ba1dd8dd1c",
-                "projectionRole": "target"
-              }
-            ]
-          }
-        }
-      ]
+      "baseViewFileName": "de-rp-gk.view.json"
     },
     {
       "outputFileName": "de-rp-gk-g9.view.json",
       "outputSha256": "05245556fdb5245be6b174988a7c21393db0224fb2db8534a09178e1eb24247c",
       "sek1TemplateFileName": "de-rp-seki-g9.view.json",
-      "baseViewFileName": "de-rp-gk.view.json",
-      "reviewedTargetPlacements": [
-        {
-          "structurePath": [
-            "math-root",
-            "sek2-gk",
-            "whole-source-successor-27b63e2e"
-          ],
-          "sourceDecisionId": "informed-current35-cell-007",
-          "node": {
-            "kind": "structure",
-            "id": "whole-source-successor-27b63e2e",
-            "label": "Exponentielle Modelle aufstellen und bewerten",
-            "children": [
-              {
-                "kind": "goalEntry",
-                "goalId": "27b63e2e-6a34-483e-8e5a-fe0f49670d1d",
-                "projectionRole": "target"
-              }
-            ]
-          }
-        }
-      ]
+      "baseViewFileName": "de-rp-gk.view.json"
     },
     {
       "outputFileName": "de-rp-lk-g8.view.json",

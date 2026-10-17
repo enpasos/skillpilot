@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "role": "Actual inactive current429 integration; strictly partial unless real report proves all429 and all required gates",
+  "baseline": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-current426-eight-reviewed-inactive-integration-technical-20261016-v1/central/config/central.current426.eight-genuine-current-D8-P402-A406.inactive.config.json",
+    "sha256": "sha256:07896478f9f266efa7575d1b58d54adcaef578d5b4d3be8515a5d67d108ee53e",
+    "bytes": 145320
+  },
+  "config": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-reviewed-native19-and-profile-successors-inactive-integration-technical-20261016-v1/central.current429.actual-reviewed-inputs.inactive.config.json",
+    "sha256": "sha256:0047403fdd27a7cbb62ec3707514a89daa0004207b618aba6989af96f8379f90",
+    "bytes": 157676
+  },
+  "central": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-reviewed-native19-and-profile-successors-inactive-integration-technical-20261016-v1/CENTRAL.actual-current429-reviewed-candidate.json",
+    "sha256": "sha256:c13f063e7efabc5c90540a4f7e893013a39d83ff4b8932b97308315dcaa695ef",
+    "bytes": 22297
+  },
+  "actualExecution": {
+    "argv": [
+      "tsx",
+      "scripts/reportDeepUnderstandingRollout.ts",
+      "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-reviewed-native19-and-profile-successors-inactive-integration-technical-20261016-v1/central.current429.actual-reviewed-inputs.inactive.config.json",
+      "--mode=check",
+      "--format=json"
+    ],
+    "cwd": "tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1/app",
+    "startedAt": "2026-10-16T04:17:02.186919+00:00",
+    "elapsedSeconds": 54.211849656989216,
+    "exitCode": 1,
+    "stderr": "",
+    "actualCentralCallsInThisRoot": 1
+  },
+  "gates": {
+    "currentDescriptionResolutions": 399,
+    "currentPositiveEvidenceProfiles": 418,
+    "currentSemanticAtomicityDecisions": 417,
+    "currentMemoryReviewDecisions": 429,
+    "currentVisualizationQaRecords": 0
+  },
+  "strictComplete": 0,
+  "denominator": 429,
+  "issues": [
+    "chemie: visualization-QA freshness check failed: Goal visualization QA ledger(s) are stale: | - curricula/DE/Gymnasium/quality/goal-visualization-qa/chemie.qa.json"
+  ],
+  "requiredChecks": [
+    {
+      "id": "semantic-kind-scope",
+      "status": "pass"
+    },
+    {
+      "id": "description-review-validation",
+      "status": "pass"
+    },
+    {
+      "id": "positive-evidence-validation",
+      "status": "pass"
+    },
+    {
+      "id": "semantic-atomicity-check",
+      "status": "pass"
+    },
+    {
+      "id": "memory-card-check",
+      "status": "pass"
+    },
+    {
+      "id": "visualization-freshness-and-approval-check",
+      "status": "fail"
+    }
+  ],
+  "strictCompletionReady": false,
+  "activeAdoption": false,
+  "HumanApproval": false,
+  "HumanTrial": false
+}

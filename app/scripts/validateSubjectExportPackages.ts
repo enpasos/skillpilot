@@ -3,7 +3,6 @@ import { createHash } from 'node:crypto'
 import { existsSync, lstatSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs'
 import { basename, dirname, isAbsolute, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { goalVisualizationAssetSegments } from '../../scripts/goal_visualization_paths.mjs'
 
 type JsonValue =
   | null
@@ -680,11 +679,21 @@ type CanonicalGoalVisualizationRecord = Pick<GoalVisualizationAssetRecord,
   | 'reviewStatus'
 >
 
+const expectedGoalVisualizationPath = (subjectSlug: string, goalId: string, extension: string) => (
+  `assets/goal-visualizations/${subjectSlug}/${goalId}/${goalId}${extension}`
+)
+
 const safeGoalVisualizationPackagePath = (value: string) => {
-  return goalVisualizationAssetSegments(`/${value}`) !== null
+  const segments = value.split('/')
+  return value.startsWith('assets/goal-visualizations/')
+    && !value.includes('\\')
+    && !value.includes('?')
+    && !value.includes('#')
+    && !value.includes('\0')
+    && segments.every((segment) => segment.length > 0 && segment !== '.' && segment !== '..')
 }
 
-export const collectCanonicalGoalVisualizations = (canonicalData: JsonValue, subjectSlug: string) => {
+const collectCanonicalGoalVisualizations = (canonicalData: JsonValue, subjectSlug: string) => {
   const data = jsonObject(canonicalData, 'canonical landscape')
   const goals = Array.isArray(data.goals) ? data.goals : []
   const records: CanonicalGoalVisualizationRecord[] = []
@@ -744,10 +753,9 @@ export const collectCanonicalGoalVisualizations = (canonicalData: JsonValue, sub
         issues.push(`${context}: unsafe or unsupported visualization URL ${publicUrl}`)
         return
       }
-      const segments = goalVisualizationAssetSegments(publicUrl)!
-      if (segments[0] !== subjectSlug || segments[1] !== goalId
-        || segments.at(-1) !== `${goalId}${extension}`) {
-        issues.push(`${context}: expected owner ${subjectSlug}/${goalId} and filename ${goalId}${extension}, got ${publicUrl}`)
+      const expectedPath = expectedGoalVisualizationPath(subjectSlug, goalId, extension)
+      if (packagePath !== expectedPath) {
+        issues.push(`${context}: expected /${expectedPath}, got ${publicUrl}`)
         return
       }
       records.push({
@@ -878,31 +886,6 @@ const collectGoalIdsFromView = (value: JsonValue): string[] => {
     ...(typeof data.goalId === 'string' ? [data.goalId] : []),
     ...Object.values(data).flatMap(collectGoalIdsFromView),
   ]
-}
-
-const hasAuthoredSupportReference = (value: JsonValue, goalId: string): boolean => {
-  const roles = (node: JsonValue): JsonValue[] => {
-    if (Array.isArray(node)) return node.flatMap(roles)
-    if (!node || typeof node !== 'object') return []
-    return [...(node.goalId === goalId ? [node.projectionRole ?? 'target'] : []), ...Object.values(node).flatMap(roles)]
-  }
-  const matchingRoles = roles(value)
-  return matchingRoles.length > 0 && matchingRoles.every((role) => role === 'prerequisiteOnly')
-}
-
-export const declaredCanonicalExternalGoalIds = (references: JsonValue[]): Set<string> => new Set(references.flatMap((reference) => {
-  const data = jsonObject(reference, 'external goal reference')
-  return (data.relation === 'contains' || data.relation === 'requires') && typeof data.targetGoalId === 'string' ? [data.targetGoalId] : []
-}))
-
-export const declaredExternalGoalIdsForView = (view: JsonValue, references: JsonValue[]): Set<string> => {
-  const viewData = jsonObject(view, 'composition view')
-  return new Set([...declaredCanonicalExternalGoalIds(references), ...references.flatMap((reference) => {
-    const data = jsonObject(reference, 'external goal reference')
-    return data.relation === 'composition-view' && data.fromViewId === viewData.viewId
-      && data.projectionRole === 'prerequisiteOnly' && typeof data.targetGoalId === 'string'
-      && hasAuthoredSupportReference(viewData.rootNodes ?? [], data.targetGoalId) ? [data.targetGoalId] : []
-  })])
 }
 
 export const unresolvedCompositionGoalReferences = (
@@ -1270,15 +1253,17 @@ const validatePackage = (zipPath: string, readinessDir: string): PackageValidati
       const targetSubject = referenceData.targetSubject
       const targetLandscapeId = referenceData.targetLandscapeId
       return typeof targetGoalId === 'string'
-        && (((relation === 'contains' || relation === 'requires') && typeof fromGoalId === 'string')
-          || (relation === 'composition-view' && referenceData.projectionRole === 'prerequisiteOnly'
-            && typeof referenceData.fromViewId === 'string' && referenceData.fromViewId.trim().length > 0))
+        && typeof fromGoalId === 'string'
+        && (relation === 'contains' || relation === 'requires')
         && typeof targetSubject === 'string'
         && typeof targetLandscapeId === 'string'
         ? []
         : [`Malformed external reference: ${JSON.stringify(referenceData)}`]
     })
-    const canonicalExternalGoalIds = declaredCanonicalExternalGoalIds(externalReferences)
+    const declaredExternalGoalIds = new Set(externalReferences.flatMap((reference) => {
+      const referenceData = jsonObject(reference, 'external goal reference')
+      return typeof referenceData.targetGoalId === 'string' ? [referenceData.targetGoalId] : []
+    }))
     counts.externalGoalReferences = externalReferences.length
     check(
       checks,
@@ -1458,9 +1443,7 @@ const validatePackage = (zipPath: string, readinessDir: string): PackageValidati
         issues.push(`${visualizationKey(record)}: unsafe packagePath/publicUrl`)
       }
       const extension = record.mediaType === 'image/jpeg' ? '.jpg' : '.png'
-      const assetSegments = goalVisualizationAssetSegments(record.publicUrl)
-      if (!assetSegments || assetSegments[0] !== subjectSlug || assetSegments[1] !== record.goalId
-        || assetSegments.at(-1) !== `${record.goalId}${extension}`) {
+      if (record.packagePath !== expectedGoalVisualizationPath(subjectSlug, record.goalId, extension)) {
         issues.push(`${visualizationKey(record)}: unexpected package path`)
       }
       if (record.skillpilotId !== record.goalId || record.role !== 'primary') {
@@ -1524,8 +1507,8 @@ const validatePackage = (zipPath: string, readinessDir: string): PackageValidati
 
     const containsUnknown = unknownReferences(goals, 'contains')
     const requiresUnknown = unknownReferences(goals, 'requires')
-    const undeclaredContainsUnknown = containsUnknown.filter((reference) => !canonicalExternalGoalIds.has(reference.targetGoalId))
-    const undeclaredRequiresUnknown = requiresUnknown.filter((reference) => !canonicalExternalGoalIds.has(reference.targetGoalId))
+    const undeclaredContainsUnknown = containsUnknown.filter((reference) => !declaredExternalGoalIds.has(reference.targetGoalId))
+    const undeclaredRequiresUnknown = requiresUnknown.filter((reference) => !declaredExternalGoalIds.has(reference.targetGoalId))
     check(
       checks,
       'canonical-contains-references-resolve',
@@ -1543,25 +1526,10 @@ const validatePackage = (zipPath: string, readinessDir: string): PackageValidati
 
     const goalIdSet = new Set(goalIds)
     const viewEntries = entries.filter((entry) => entry.startsWith(`${archiveRoot}/data/views/`) && entry.endsWith('.json'))
-    const viewsById = new Map(viewEntries.map((entry) => {
-      const view = jsonObject(readZipEntryJson(zipPath, entry), 'composition view')
-      return [view.viewId, view] as const
-    }))
-    const invalidViewDeclarations = externalReferences.flatMap((reference) => {
-      const data = jsonObject(reference, 'external goal reference')
-      if (data.relation !== 'composition-view') return []
-      const view = viewsById.get(data.fromViewId)
-      return view && typeof data.targetGoalId === 'string' && !goalIdSet.has(data.targetGoalId)
-        && hasAuthoredSupportReference(view.rootNodes ?? [], data.targetGoalId) ? [] : [JSON.stringify(data)]
-    })
-    check(checks, 'composition-external-declarations-match-support-references', invalidViewDeclarations.length === 0,
-      invalidViewDeclarations.slice(0, 3).join(' | ') || 'ok')
-    const viewUnknownRefs = viewEntries.flatMap((entry) => {
-      const view = jsonObject(readZipEntryJson(zipPath, entry), 'composition view')
-      const declaredForView = declaredExternalGoalIdsForView(view, externalReferences)
-      return unresolvedCompositionGoalReferences(view, goalIdSet, declaredForView)
-        .map((goalId) => `${entry}: ${goalId}`)
-    })
+    const viewUnknownRefs = viewEntries.flatMap((entry) => unresolvedCompositionGoalReferences(
+      readZipEntryJson(zipPath, entry), goalIdSet, declaredExternalGoalIds,
+    )
+      .map((goalId) => `${entry}: ${goalId}`))
     counts.compositionViews = viewEntries.length
     check(checks, 'composition-views-present', viewEntries.length > 0, `${viewEntries.length} view file(s)`)
     check(checks, 'composition-view-goal-references-resolve', viewUnknownRefs.length === 0, viewUnknownRefs.slice(0, 5).join(' | ') || 'ok')

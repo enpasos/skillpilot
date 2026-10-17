@@ -1,0 +1,47 @@
+# Sieben gezielte Autoren-Nachfolger nach Native11
+
+Dies ist **informierte Aufgaben- und Inhaltsentwicklung**, kein neuer unabhängiger Vote. Derselbe Agent hat zuerst Runde A abgeschlossen und versiegelt und anschließend auf ausdrücklichen Auftrag in die Autorenrolle gewechselt. Er hat dann die beiden D-Runden sowie die ausgewählten aktuellen A-/M-/SemanticKind-Entscheidungen gelesen. Er wird die zwei frischen Nachfolgerrunden nicht prüfen. Es werden **0 neue D-Abschlüsse und 0 strict gain** beansprucht. Die sieben Ziele bleiben bis zu den späteren Gates offen.
+
+Die operative Ausgangsdatei ist der vorhandene aktuelle 578-Ziel-Autorenstand mit SHA256 `b60881489f399dacd38bf6c48a14d6284e4f672c781855eb61ace34bc4590b20`. Der ältere aktive Hauptcheckout wurde wegen seines anderen Hashes nicht als Baseline verwendet. Hier wurden nur sieben ganze Zielobjekte gespeichert; keine weitere vollständige Canonical-Kopie wurde erzeugt.
+
+## Fester inhaltlicher Stand
+
+`SCIENCE.FROZEN.before-normal-binding.json` bindet den vollständigen Science-, Material-, Profil- und A/M/Kind-Entwurf **vor** der späteren Normal-Fingerprintserialisierung. Es wurden keine neuen Goal-, P-, A-, M- oder SemanticKind-Fingerprints berechnet, keine normalen Ledgerzeilen mit alten Fingerprints als neue Bewertung ausgegeben und keine H-/Registry-/Canonicaldateien verändert.
+
+`GOALS7.before.exact-values.json` und `GOALS7.after.author.json` enthalten die sieben vollständigen Before-/After-Objekte. Bei f0ba30a8, 5a24dae0, b8c8f70f, c245d5fd und e62c6c58 ändern sich genau `description` und `descriptionEn`. Bei 545a2e56 und d8bdf486 bleiben beide Beschreibungen identisch. Alle IDs, Titel, Gewichte, Tags, Voraussetzungen, Applicability, Provenienz und ResourceLinks bleiben erhalten. Der RFC6902-Patch enthält nur die fünf Textpaare und vorausgehende Tests.
+
+Die Beschreibung von f0ba30a8 nennt Wellenlängenbereiche, Maxima, Absorptionsstärke und Messbedingungen. Le Chatelier bezieht sich auf die Gleichgewichtslage; die Fälle unterscheiden diese weiter ausdrücklich von absoluter Konzentration. Faraday verknüpft Elektronen, Ladung und Stoffumsatz. Michaelis-Menten nennt das einfache Anfangsratenmodell, [S], Sättigung, Vmax und Km; Hemmungsarten und Affinitätsbestimmung werden nicht eingeführt. Arrhenius benennt k(T) und Modellannahmen. Beide sprachlichen Fassungen geben jeweils dieselbe begrenzte Kompetenz wieder.
+
+## Vollständige Profile und Fälle
+
+`P7.before.exact-whole-lines.jsonl` enthält genau die sieben ursprünglichen vollständigen P-Zeilen als unveränderte Bytezeilen aus dem gelieferten P11. `P7.after.complete-profile-author-drafts.json` enthält sämtliche sieben vollständigen Profil-Payloads. Sie sind bewusst **ungebundene Autorentwürfe** und noch keine schemafertigen neuen Reviewrecords mit aktuellen technischen Hashes.
+
+Die zwei f0-Fälle und die zwei Le-Chatelier-Fälle bleiben inhaltlich erhalten. Bei 545a2e56 wird die universelle Musterzahl 2/3 in den essentiellen Erwartungen durch MWG, Stoffbilanz, Q/K und physikalische Wurzelauswahl ersetzt. Bei Faraday werden Q=It, n(e)=Q/F und n(e)=z·n(M) allgemein gefasst. Die Zahlen und vollständigen Cu-/Al-/Ag-Fälle bleiben erhalten. Michaelis-Menten erhält konkrete Modellbeziehungen und explizite Konzentrations- und Rateneinheiten; 20/50/80 bleiben Fallantworten. Arrhenius benennt allgemeine Beziehung, Einheiten, Achsen und Modellgrenzen; ln4 und 55,32 kJ/mol bleiben in den vollständigen Fallrubriken. Alle ursprünglichen Coverage-IDs, erforderlichen Fallaspekte und Variationspflichten bleiben erhalten. Genügend zusammenhängende unabhängige Fachleistung samt sinnvollem Transfer kann in einer einzigen Aufgabe entstehen; aus den Metadaten folgt keine zusätzliche Aufgabenquote.
+
+`MATERIALS15.complete-whole-cases.author.json` enthält alle 15 betroffenen ganzen Fallobjekte mit vollständigem Material, Aufgaben, Modellantworten und Rubriken beziehungsweise ergänzten Rubriken der vier zuvor nur eingebetteten Fälle. Elf externe Originalobjekte behalten alle wissenschaftlichen Daten, Aufgaben, Lösungen, Punkte und Transferteile; ihr Ganzzielkontext wird ausdrücklich an den Nachfolger gebunden. Die Quellen der ursprünglichen Objekte bleiben über exakte Locator und Pins erhalten. Die acht Fälle der anderen vier Native11-Ziele bleiben im ursprünglichen 23-Fall-Locator unverändert; sie werden hier nicht neu bewertet oder dupliziert.
+
+## d8: konkrete synthetische Daten, keine erfundene Messung
+
+Der erste Fall enthält jetzt die tatsächlich auszuwertende Tabelle im DE/EN-Auftrag: dieselbe Probe durchläuft Säure–Base–Säure; die Stoffmengen des benannten Paars und pH-Werte stehen sichtbar im Material. Eine Kontrolle ohne Acetat und eine getrennte Verdünnungskontrolle sind vollständig gegeben. Volumina und Zugabemengen sind ausgewiesen. Die Mischung behält die Gesamtmenge des Acetat-/Essigsäure-Paars; die Partner verschieben sich in beiden Richtungen. Der gleiche Anteil nach dem Rückwechsel bedeutet bei anderem Volumen nicht gleiche Konzentration.
+
+Die Zahlen sind ein eigens entwickeltes **ideales stöchiometrisches/Henderson-Hasselbalch-Modell bei pKa 4,76 und 25 °C**. Freie H+- und OH−-Korrekturen der Puffer-Stoffbilanz, Aktivitäten und Indikatorverbrauch werden ausdrücklich vernachlässigt. Die drei pH-Nachkommastellen sind Rechenausgaben dieses definierten Modells und keine behauptete Messgenauigkeit. Die Stoffanteile sind aus demselben Modell erzeugt; sie sind **keine pH-unabhängigen artspezifischen Messungen**. Die Leerprobe wird aus dem überschüssigen starken Säure-/Baseanteil modelliert. Es fand weder ein Lehrkraftversuch noch eine echte Akquisition statt. Es wurden keine beobachteten Daten, Personen, Geräte oder Unsicherheiten erfunden. Der Lernauftrag verlangt keine pKa-Rechnung und keine Durchführung.
+
+Damit lässt sich die Interpretation einer angenommenen Befundfolge üben. Eine echte experimentelle Ableitung ist dadurch weiterhin offen. Dafür wären die reale dokumentierte Untersuchung derselben Probe, ein unabhängig von pH und HH-Gleichung kalibriertes artspezifisches Signal, Stoff- und Volumenkontrolle, pH-/Temperaturprotokoll, Leer-/Verdünnungsbefunde und eine angemessene Unsicherheits- und Alternativenprüfung erforderlich. Bei einer späteren realen Durchführung sind Lehrkraftaufsicht und die zu den tatsächlich gewählten Stoffen passende Sicherheit nötig. Dieses Paket behauptet keine Durchführung, kein praktisches Gate und keine Lernendenbeherrschung.
+
+Der zweite d8-Fall bleibt in seinen vollständigen Aufgaben-, Lösungs- und Fokusfeldern exakt erhalten. Seine qualitative HIn/In−-Spektralfolge und die Verdünnungskontrolle reichen für die dort geforderte qualitative Interpretation; unnötige Zahlen wurden nicht hinzugefügt.
+
+## A, M, SemanticKind und Bilder
+
+`A-M-SemanticKind7.informed-author-judgments.json` enthält neue begründete Autorenbewertungen auf den ganzen Nachfolgezielen und die vollständig gelesenen aktuellen Ursprungszeilen. Alle sieben bleiben intrinsisch `atomic` und `curricularAtomic`: Ein zusammenhängendes chemisches Interpretations- oder Modellierungsziel bleibt jeweils der Gegenstand. Die fünf geänderten Texte stellen keine neuen Programme, Memorierknoten oder Praktikumsziele her. Die beiden unveränderten Ziele sind zusätzlich mit erfasst, ohne ihren bisherigen Status automatisch in eine neue unabhängige Stimme umzuwandeln.
+
+Für f0, Michaelis-Menten, 545a2e56 und d8 wird `no_memory_needed` fachlich begründet. Für Le Chatelier, Faraday und Arrhenius bleiben die bestehenden Memorypflichten und Ursprungsbindungen erhalten. Die drei vollständigen Originalkarten wurden gelesen: `chem_eq_q3_002`, `_008` und `_010`. Es gab keine Karten-, Deck- oder Sichtbarkeitsänderung. Die BW-Auswahl 045efaa4 enthält 002, aber weder 008 noch 010; diese Auswahl darf deshalb keine Deckung der beiden anderen Karten vortäuschen. Alle zehn ursprünglichen Sichtbarkeitszwecke sind im Material erhalten. Ihre tatsächliche Projektion und Kartenberechtigung bleiben für den gezielten technischen Nachweis offen; es wird kein neuer Kurs-/Bundesland-PASS behauptet.
+
+Die aktuellen sieben Bilddateien wurden nur gehasht und ihre vorhandenen ResourceLinks, Alttexte, Provenienz und alten Approvaldaten unverändert übernommen. Die fit-Begründungen in `VISUALS7.retained-byte-pins-and-author-fit.json` sind **Autorenbegründungen zur späteren Prüfung**, keine neue V-Freigabe. Es wurde kein Bild erzeugt oder bearbeitet. Bei f0 bleibt insbesondere die schematische Farbzuordnung als begrenzte Darstellungsfrage sichtbar.
+
+Die im Inputpin-Verzeichnis aufgeführten H-Pfade dokumentieren nur den tatsächlichen physischen Leseort der Normalmodule. Die relevanten ganzen A-/M-/Kind-Zeilen und die drei ganzen Karten sind hier als portable JSON-Werte vorhanden; sie sind keine neu auf H zeigenden Laufzeitlinks. Baseline und originale P11-/Ganzfallquellen bleiben über vorhandene Repositorypfade gebunden. Root übernimmt die spätere technische Materialisierung und die frischen unabhängigen Reviews.
+
+Gezielter, ausschließlich lesender Patchnachweis:
+
+```bash
+python curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-seven-native11-findings-whole-author-successor-20261016-v1/replay_verify_targeted_patch.py --baseline curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-two-native19-mobile-formula-clarity-PNG-author-successor-20261016-v1/CANONICAL.current578.four-reviewed-text-fixes-two-mobile-PNGs.author.json
+```

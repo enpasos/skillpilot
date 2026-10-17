@@ -3,7 +3,6 @@ import { Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-
 
 import { SessionSetup } from './components/SessionSetup'
 import { ToastHost } from './components/ToastHost'
-import { CompositionSupplementRecovery } from './components/CompositionSupplementRecovery'
 import { useAppCore } from './hooks/useAppCore'
 import { useLandscapes } from './hooks/useLandscapes'
 import { consumeQueuedToast, useToast } from './hooks/useToast'
@@ -779,17 +778,6 @@ const App: React.FC = () => {
     return sessionSetupElement
   }
 
-  if (role === 'learner' && sanitizedSkillpilotId
-    && core.hasSelectedMathPreparation && core.landscapeError) {
-    return (
-      <CompositionSupplementRecovery
-        key={sanitizedSkillpilotId}
-        skillpilotId={sanitizedSkillpilotId}
-        onReload={core.refreshLearnerGraphData}
-      />
-    )
-  }
-
   if (core.runtimeCatalogState.mode === 'unavailable' && role !== 'trainer') {
     return (
       <div
@@ -881,7 +869,6 @@ const App: React.FC = () => {
               landscapeId={core.selectedLandscapeId}
               landscapeSubject={currentLandscapeEntry?.meta.subject}
               currentLandscapeHasMatchedCompositionView={core.currentLandscapeHasMatchedCompositionView}
-              compositionTargetGoalIdsByLandscapeId={core.compositionTargetGoalIdsByLandscapeId}
               activeFilter={core.activeFilter}
               onNotify={handleNotify}
               onLogout={handleLogout}

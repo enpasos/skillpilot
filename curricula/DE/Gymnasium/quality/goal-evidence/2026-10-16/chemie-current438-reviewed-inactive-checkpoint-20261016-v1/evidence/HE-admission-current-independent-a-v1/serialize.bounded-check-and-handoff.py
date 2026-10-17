@@ -1,0 +1,55 @@
+import json,pathlib,hashlib,subprocess,datetime
+R=pathlib.Path('/home/enpasos/projects/skillpilot');B=R/'tmp/chemie-m7-resumed-20261016';O=pathlib.Path(__file__).parent;C=B/'HE-admission-author-candidate-v1';L=B/'chemie-combined639-two-GK-priors-final-review-capsule-v1'
+def pin(p):
+ p=pathlib.Path(p);return {'path':str(p.relative_to(R)),'sha256':'sha256:'+hashlib.sha256(p.read_bytes()).hexdigest(),'bytes':p.stat().st_size}
+def fp(j):return 'sha256:'+hashlib.sha256(json.dumps(j,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+def dump(name,j):p=O/name;p.write_text(json.dumps(j,ensure_ascii=False,indent=2)+'\n');return pin(p)
+f=O/'FIRST.exact-HE-seven-wholes-four-views-source-and-admission.independent-a.science.frozen.json';assert pin(f)['sha256']=='sha256:6a7f4dc40b4639ceb61849724b88a8cc644ea8dd1f7f163e148ddc47cc04b2ed'
+cp=L/'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json';assert pin(cp)['sha256']=='sha256:62f13c6ae943186ddcb60ae4af1b075c6bd6ad3c48ac766d21cc583cac6c1746';j=json.loads(cp.read_text());gi={g['id']:g for g in j['goals']}
+gc=json.loads((C/'CAS.seven-selected-WHOLE-goals.AUTHOR.inactive.json').read_text());vc=json.loads((C/'CAS.four-WHOLE-HE-views.AUTHOR.inactive.json').read_text());sc=json.loads((C/'CAS.seven-aliases-ONE-common-aromatic-WHOLE-source-cell.AUTHOR.inactive.json').read_text());m=json.loads((C/'AUTHOR.two-admission-final-requires-source-family-and-operator-matrix.json').read_text());pres=[]
+for o in gc['operations']:
+ assert gi[o['goalId']]==o['before'];assert fp(o['after'])==o['afterWholeObjectFingerprint'];before=o['before'];after=o['after'];changes=[k for k in set(before)|set(after) if before.get(k)!=after.get(k)]
+ if 'examData' in after:assert after['examData']==before['examData'];assert changes==['requires','extendedData'] or set(changes)=={'requires','extendedData'}
+ if after['id'].startswith(('17ab','9fef','b8d3')):
+  for k in ('title','titleEn','description','descriptionEn','resourceLinks','contains','examples'):assert after.get(k)==before.get(k)
+ if after.get('nodeKind')=='memory':
+  for k in ('title','titleEn','description','descriptionEn','tags','contains','requires'):assert after.get(k)==before.get(k)
+  assert after['extendedData']['memorySupportSelection']==before['extendedData']['memorySupportSelection']
+ pres.append({'goalId':o['goalId'],'beforeWholeFP':fp(before),'afterWholeFP':fp(after),'changedTopFields':changes,'examDataWholeExact':before.get('examData')==after.get('examData')})
+for o in vc['operations']:
+ assert json.loads((L/o['path']).read_text())==o['before'];assert fp(o['after'])==o['afterWholeObjectFingerprint']
+sourcechecks=[]
+for o in sc['operations']:
+ p=R/o['mapping']['path'];actual=json.loads(p.read_text());sid=sc['sourceGoalId'];rows=[x for x in actual['mappings'] if x['legacyGoalId']==sid];dec=next((x for x in actual.get('decisions',[]) if x['sourceGoalId']==sid),None)
+ assert rows==o['before']['mappings'];assert dec==o['before']['decision'];assert fp(o['before'])==o['beforeWholeCellFingerprint'];assert fp(o['after'])==o['afterWholeCellFingerprint'];assert o['after']['mappings'][1]==o['before']['mappings'][1]
+ sourcechecks.append({'path':str(p.relative_to(R)),'actualWholeInput':pin(p),'beforeCellFP':fp(o['before']),'afterCellFP':fp(o['after']),'retained3dbdPartialExact':True})
+for interface in m['interfaces']:
+ op=next(x for x in gc['operations'] if x['goalId']==interface['assessmentGoalId']);assert [x['goalId'] for x in interface['rows']]==op['after']['requires']
+raw=subprocess.check_output([str(R/'app/node_modules/.bin/tsx'),str(O/'read.four-view-and-two-memory-facts.mts')],cwd=R,text=True);facts=[json.loads(x) for x in raw.splitlines()]
+viewfacts=facts[:4];memfacts=facts[4:];assert len(viewfacts)==4 and len(memfacts)==2;assert [x['id'] for x in memfacts[0]['actualCards']]==['chem_nat_q2_001','chem_nat_q2_002','chem_nat_q2_003'];assert [x['id'] for x in memfacts[1]['actualCards']]==['chem_nat_q2_003','chem_nat_q2_004']
+roles=dump('FACTS.actual-four-view-course-filter-and-two-memory-selections.independent-a.json',{'role':'Read-only bounded stock helper facts after own frozen science; not source approval','scienceFIRST':pin(f),'viewFacts':viewfacts,'memoryFacts':memfacts,'stockHelpers':[pin(R/'app/src/utils/authoring/compositionViewAuthoring.ts'),pin(R/'app/src/utils/goalFilters.ts'),pin(R/'app/src/utils/srsTags.ts'),pin(R/'app/src/hooks/useFlashcardSetStatus.ts')],'exitCode':0,'compilerRuns':0,'normalWrites':0})
+pins=[]
+for p in [
+'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-nineteen-current-normal-P-bindings-technical-20261016-v1/P19.current-resource-bound.normal.jsonl',
+'curricula/DE/Gymnasium/quality/goal-evidence/canonical-chemistry-positive-understanding-evidence-b003-q1-bonding-current-11-v2.review.jsonl',
+'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P25-protected12-source24-inactive-integration-technical-20261010-v1/positive/27-protected-residual.exact.jsonl',
+'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-eleven-final-frozen-V-source-native-root-20261012-v10/positive/P9.final-native-bound.original-author.exact.jsonl',
+'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy-four-context-satisfied-current422-positive-and-atomic-informed-20261015-v1/normal/P4.final-current.image-bound.candidates.jsonl',
+'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy-eleven-kept-current422-positive-and-atomic-informed-20261015-v1/normal/P11.final-current.image-bound.candidates.jsonl',
+'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy20-four-defects-targeted-material-author-successor-20261015-v1/materials/forty-two-whole-DE-EN-cases.four-defects-successor.author.json',
+'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-naturstoffe-seven-paired-resolution-existing274-integration-technical-20261014-v1/P/P6.a.exact-original-lines-except-held682.jsonl',
+'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-joint-P5-native-D6-existing281-integration-technical-20261014-v1/positive/P5.actual-independent-a.byte-exact.jsonl',
+'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-f7-475-original-D11-D15-whole-container-current-selection-retention-technical-20261014-v1/records/P1-f7.exact-original.jsonl',
+'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-current407-Q3-four-plus2652-PE-shared-native5-first-pass-technical-20261014-v1/positive/current-valid-retained-2.exact-except-selected2652.inactive.jsonl',
+'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-polymers-three-visual-Pscope-atomicity-author-successor-20261013-v3/whole40.expanded-cases.author-successor.json',
+'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-HE145-327-current-admission-informed-independent-a-20261016-v1/FIRST.two-current-whole-HE-admissions.independent-a.science.frozen.json',
+ 'tmp/chemie-m7-resumed-20261016/HE-admission-next-author-preparation-v1/INPUT.four-FULL-buffer-cases-materials-solutions-rubrics.readonly.json']:
+ pins.append(pin(R/p))
+pins += [pin(L/'curricula/DE/Gymnasium/memory-decks/de_gymnasium_chemistry_flashcards_natural_q2.de.json'),pin(L/'curricula/DE/Gymnasium/quality/memory-card-review/canonical-chemistry-full.review.jsonl'),pin(L/'curricula/DE/Gymnasium/quality/memory-card-review/canonical-chemistry-full.cards.review.jsonl'),pin(L/'curricula/DE/Gymnasium/input/HE/upper-secondary/kcgo_chemie_21.04.2026.pdf')]
+inputs=dump('INPUTPINS.actual-whole-profiles-materials-cards-and-primary.independent-a.json',{'role':'Actual independent reading input pins; no duplicate639snapshot','inputs':pins,'canonical':pin(cp),'wholeGoalAfterFPs':pres})
+check=dump('CHECK.bounded-seven-wholes-four-views-seven-cells-exactness.independent-a.json',{'role':'Technical boundary facts after sealed actual science; no new vote','scienceFIRST':pin(f),'sevenGoalBeforeActualL4Exact':True,'sevenGoalPreservation':pres,'fourWholeViewBeforeActualL4Exact':True,'sevenSourceSelectedBeforeActualL4Exact':sourcechecks,'twoMatrixMembershipsActualCASExact':True,'wholeTwo44PointExamDataExact':True,'copiedCanonicalSnapshots':0,'newFormalDPAMVRecords':0,'fullCompilerRuns':0,'globalDPMCentralRuns':0,'L4CanonicalStillExact':pin(cp),'RorL4Writes':False})
+(O/'HANDOFF.independent-a.current-HE-admission.md').write_text('''# Unabhängige HE-A-Prüfung am exakten b72a-Kandidaten\n\n**REVISE für beide aktuelle Whole-Admissions und vier HE-Views.** Der unveränderte44/27-Inhalt behält seinen früheren tatsächlichen Content-KEEP. Keine231/155-Gesamtfreigabe.\n\nBestätigte begrenzte Restgrenzen: GKdc5173 fordert im ganzenP2.Hauptsatz/Kelvin-Planck/Entropierechnungen; GK5c8f fordert tatsächlich Ninhydrin zusätzlichBiuret (HE42: NinhydrinLK); LK6eba fordert vier industrielle Formgebungsverfahren, deren Schritte in den beiden ganzen Materialien nicht vorgegeben sind und deren Whole-Provenienz BW3.4.6(7) ist. Echter gemeinsamer Stoff bleibt über bereits vorhandene engere Ziele erhalten.8721-GK und die bekannten historischen Rückeinträge bleiben offen.\n\nBegrenzte positive Entscheidungen:17ab/9fef/b8d3-Prerequisite-/Quellenkontext; sieben gemeinsameEAS-Sourcealiaszellen; d92-Recall in allen vier HE-Kontexten.428-Karten003/004 und memory-Kind korrekt; LK-Erwerbskontexte passend, GK-Wholeorigin5c8f bleibt zu korrigieren/begründen. Keine Karte oder Ordinary-Semantik wurde verändert.\n\nNach ganzen Energie-Materialien ist die frühere Wort-Hypothese VarT/Photokatalyse präzisiert: a338 hältT298,15K und liefert beidepH-Potenzialformeln;7dc liefert Pfad-/Effizienz-/Speicherdaten. Daraus keine neue VarT-/empirischePhotokatalysepflicht ableiten.1051-Photosynthese als universellerPrior ist gesondert nicht positivbegründet.\n\nFIRST ist unverändert versiegelt, bevor dieser Handoff/technische Fakten geschrieben wurden. Drei aktuelle Ordinary-Kontexte benötigen für einen späteren formalenNativeD-Claim echte aktuelleSeiten; hier0NativeD-Votes. Keine neuen globalenChecks, keineR/L4-Writes, keine menschlicheFreigabe/Erprobung/M7-Behauptung.\n''')
+handoff=pin(O/'HANDOFF.independent-a.current-HE-admission.md')
+selector={'role':'Sealed nonauthor informed independent A evidence, bounded exact HE candidate; not author approval','candidateSelector':pin(C/'OUTPUTS.finite-HE-admission-author-candidate.selector.json'),'FIRST':pin(f),'handoff':handoff,'actualBoundedFacts':roles,'inputPins':inputs,'exactnessCheck':check,'outcome':'REVISE both current whole admissions and four course views; positive bounded context/source/memory subdecisions are enumerated in FIRST','wholeMachineContentReleaseReadiness':False,'old44BEContentKEEPExact':True,'currentPeerBReviewOpinionsRead':False,'newNativeDCount':0,'newOrdinaryCompletionCount':0,'HumanApproval':False,'HumanTrial':False,'M7Claim':False,'RorL4Writes':False}
+print(json.dumps(dump('OUTPUTS.current-HE-admission-independent-a.sealed.selector.json',selector)))
+assert pin(f)['sha256']=='sha256:6a7f4dc40b4639ceb61849724b88a8cc644ea8dd1f7f163e148ddc47cc04b2ed'

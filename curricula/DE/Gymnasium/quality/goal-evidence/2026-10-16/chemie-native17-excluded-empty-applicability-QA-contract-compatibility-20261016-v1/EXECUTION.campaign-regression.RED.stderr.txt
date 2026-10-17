@@ -1,0 +1,22 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: empty excluded applicability
++ actual - expected
+
++ [
++   'Input: data/goals/0/canonicalContext/applicability must NOT have fewer than 1 properties, data/goals/0/canonicalContext/applicability must be null, data/goals/0/canonicalContext/applicability must match exactly one schema in oneOf'
++ ]
+- []
+    at <anonymous> (/home/enpasos/projects/skillpilot/app/scripts/testGoalDescriptionReviewCampaign.ts:612:21) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: [
+    'Input: data/goals/0/canonicalContext/applicability must NOT have fewer than 1 properties, data/goals/0/canonicalContext/applicability must be null, data/goals/0/canonicalContext/applicability must match exactly one schema in oneOf'
+  ],
+  expected: [],
+  operator: 'deepStrictEqual'
+}
+
+Node.js v20.20.2

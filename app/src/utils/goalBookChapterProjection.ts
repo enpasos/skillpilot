@@ -153,7 +153,7 @@ export const compileGoalBookChapterProjection = (
     }),
   })
   const landscape = withExplicitExternalPrerequisiteStubs(view, baseLandscape)
-  const compilation = compileCompositionView(view, baseLandscape, landscape, null, { purpose: 'quality-review' })
+  const compilation = compileCompositionView(view, baseLandscape, landscape)
   const findings = [...compilation.findings]
 
   if (findings.some(({ severity }) => severity === 'error')) {

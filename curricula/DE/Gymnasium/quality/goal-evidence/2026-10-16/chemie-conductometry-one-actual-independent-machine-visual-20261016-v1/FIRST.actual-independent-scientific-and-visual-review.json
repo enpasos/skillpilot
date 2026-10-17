@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "reviewedAtUTC": "2026-10-16T00:03:00.545658+00:00",
+  "goalId": "7c0b944d-3f1f-5d26-84b0-2a359f689cf0",
+  "role": "Standalone independent machine scientific/visual FIRST, no normal V authority and no D vote",
+  "image": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-conductometry-one-necessary-PNG-author-20261016-v1/assets/7c0b944d-3f1f-5d26-84b0-2a359f689cf0/7c0b944d-3f1f-5d26-84b0-2a359f689cf0.png",
+    "sha256": "sha256:9ce148083c7bfe1226d9956d8300cb8da0340f996c309df6cb84294dbfee6245",
+    "bytes": 1387970
+  },
+  "verdict": "REVISE_TARGETED_CURVE",
+  "machineVisualApproval": false,
+  "HumanApproval": false,
+  "HumanTrial": false,
+  "actualExperimentExecutionClaim": false,
+  "observations": [
+    {
+      "check": "Apparatus",
+      "result": "SUPPORTED",
+      "observationDe": "Bürette steht im Stativ und gibt sichtbar tropfenweise in das Becherglas ab. Leitfähigkeitssonde taucht in die Flüssigkeit ein und ist per Kabel mit einem Messgerät verbunden. Magnetrührer und Rührfisch sind erkennbar. Die Darstellung behauptet keinen tatsächlich ausgeführten Versuch und keinen gemessenen Zahlenwert."
+    },
+    {
+      "check": "Precipitation rather than EDTA endpoint",
+      "result": "SUPPORTED",
+      "observationDe": "Weißer Niederschlag in farbloser Flüssigkeit passt zum AgCl-Beispiel. Kein roter/blauer Indikatorfarbumschlag und keine EDTA-Beschriftung verfälschen den Verfahrensvergleich."
+    },
+    {
+      "check": "Qualitative endpoint",
+      "result": "PARTLY_SUPPORTED",
+      "observationDe": "Knick und gestrichelte senkrechte Zuordnung zur Zugabe sind klar. Der Knick liegt sichtbar über null. Der Anstieg nach dem Knick ist steiler als der erste Ast; die Zeichnung zeigt jedoch einen viel zu großen anfänglichen relativen Abfall für das volumenbereinigte K1-Modell."
+    },
+    {
+      "check": "Language",
+      "result": "SUPPORTED",
+      "observationDe": "Leitfähigkeit, Knick und Zugabe sind korrekt geschrieben. Es gibt keine lesepflichtige Kleinschrift und keine ungelesene feine Bürettenskala als Lernvoraussetzung."
+    },
+    {
+      "check": "Actual 360 pixel display",
+      "result": "SUPPORTED",
+      "observationDe": "In der tatsächlich angezeigten 360×203-Pixel-Datei bleiben Bürette, Becher, Sonde/Messgerät, Rührer sowie Diagramm und alle drei Hauptbeschriftungen erkennbar. Kleine Niederschlagsflocken sind nur als helle strukturierte Zone erkennbar; die Interpretation hängt nicht von einzelnen Flocken ab."
+    },
+    {
+      "check": "Actual 680 pixel display",
+      "result": "SUPPORTED",
+      "observationDe": "In der tatsächlich angezeigten 680×383-Pixel-Datei sind Aufbau, Niederschlag, Signalverlauf und Schrift gut erkennbar."
+    },
+    {
+      "check": "Style and orientation",
+      "result": "SUPPORTED",
+      "observationDe": "Freundliche abstrahierte Schul-Laborillustration mit klaren Konturen und ruhigen Farben; keine Personen und damit kein umgekehrter Personenblickwinkel. Das Querformat trennt Aufbau und Diagramm nachvollziehbar."
+    }
+  ],
+  "findings": [
+    {
+      "id": "CONDUCTO-V1",
+      "severity": "required-targeted-scientific-correction",
+      "status": "OPEN",
+      "location": "Right-hand conductivity diagram, initial descending branch",
+      "findingDe": "Der erste Ast fällt optisch stark vom Anfangswert zum Minimum. Am Original liegt der Astanfang ungefähr bei y=453, der Knick bei y=655 und die Nullachse bei y=768: optisch etwa (315−113)/315 ≈ 64 % Abfall. Das ist eine visuelle Schätzung, keine Bildmessung oder dargestellte Messskala. Im vollständig gelesenen K1-Modell fällt die volumenbereinigte Leitfähigkeit nur von 1264,0 auf 1216,0 µS/cm, also um 3,80 %. Die Modellsteigungen betragen −1,92 und +53,36 pro mL. Da das Bild einen geringen Anfangsabfall und den stärkeren Anstieg veranschaulichen soll, lenkt der ausgeprägte V-förmige Eindruck auf eine falsche Größenordnung und schwächt gerade die Erklärung über die ähnlichen Ionenleitfähigkeiten von Cl− und NO3−.",
+      "requiredCorrectionDe": "Den Anfangsast nahezu waagerecht mit kleiner klarer Absenkung bis zu einem deutlich über null liegenden Knick darstellen; den anschließenden steilen Anstieg beibehalten. Aufbau, vorhandene gute Beschriftungen und ruhige Gestaltung können erhalten bleiben. Keine numerischen Werte oder zusätzliche Kleinschrift sind erforderlich.",
+      "acceptanceDe": "Native PNG und beide tatsächlichen Vorschauen erneut ansehen. Ein geringer relativer Anfangsabfall muss erkennbar sein, nicht nur ein etwas kleinerer Winkel als beim Anstieg. Die neue Bildfassung ist erneut unabhängig zu prüfen; dieser FIRST gibt keinen späteren Nachfolger frei."
+    }
+  ],
+  "sourceOfScientificComparison": {
+    "wholeK1K2Material": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-edta-conductometry-whole-source-author-successor-20261016-v1/materials/ONE.complete-bilingual-conductometric-method-and-changed-transfer.author.json",
+      "sha256": "sha256:69aa360aeb1504c8dafefedc512615e9d1576ccfc52a74b28fd3a13e2c046b77",
+      "bytes": 12286
+    },
+    "wholeE0G0Profile": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-edta-conductometry-whole-source-author-successor-20261016-v1/profiles/ONE.whole-conductometric-method.raw-E0G0.author.json",
+      "sha256": "sha256:328707e873cf10517e644aa484c2f57f270ff765b35f7277c5657a5e151643aa",
+      "bytes": 2882
+    },
+    "arithmetic": {
+      "start": 1264.0,
+      "equivalence": 1216.0,
+      "relativeDrop": 0.0379746835443038,
+      "initialSlope": -1.92,
+      "followingSlope": 53.36
+    },
+    "scope": "Comparison to the explicitly supplied authored volume-corrected K1 model; not a claim about all conductometric titrations."
+  },
+  "effectOnCompletion": {
+    "normalV": "NOT_RUN",
+    "D": "NO_VOTE",
+    "strictCentralCount": "UNCHANGED_NOT_MEASURED",
+    "currentProtectedMilestones": "NOT_TOUCHED"
+  }
+}

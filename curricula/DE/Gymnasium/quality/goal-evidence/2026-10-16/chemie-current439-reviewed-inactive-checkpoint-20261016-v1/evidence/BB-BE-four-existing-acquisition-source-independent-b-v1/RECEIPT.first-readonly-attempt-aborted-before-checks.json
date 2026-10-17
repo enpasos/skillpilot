@@ -1,0 +1,13 @@
+{
+  "role": "Truthful failed first readonly check; protected original global canonical pin rejected before stock imports or schema/compile execution",
+  "recordedUTC": "2026-10-16T21:02:19.197624+00:00",
+  "command": "TSX_DISABLE_CACHE=1 ./app/node_modules/.bin/tsx tmp/chemie-m7-resumed-20261016/BB-BE-four-existing-acquisition-source-independent-b-v1/check-four-readonly.mts",
+  "exitCode": 1,
+  "expectedCanonicalSHA256": "sha256:37e092408007e0c8c675beda79b667e8dced936c7ec33742082340fcc77fdc80",
+  "observedCanonicalSHA256": "sha256:ae53884b26285d9483b315f030216566b74fb7067e9fc962610e493aadeb3fb2",
+  "error": "AssertionError: actual canonical SHA differs from expected at check-four-readonly.mts:26:8",
+  "schemasExecuted": 0,
+  "compilesExecuted": 0,
+  "rootFollowup": "Root reported separate paired two-requires delta and routed exact digest-matched old canonical snapshot; subsequent script uses the snapshot for original four checks and separates current-basis addendum. FIRST is immutable.",
+  "writesOutsideOwnRoot": 0
+}

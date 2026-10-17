@@ -53,7 +53,6 @@ This is the single source of truth for algorithmic graph validation in CI.
 | `GVR-014` | Motivation/orientation nodes are pure, prerequisite-free atomic entry anchors and must not carry exam, memory, example, or assessment metadata. | All loaded landscapes | unconditional `error` |
 | `GVR-015` | Reviewed orientation outlooks have bounded bilingual paths with in-stage `curricularArea` roots plus atomic `curricularAtomic` entry goals and milestones. Every entry directly requires the `orientation` anchor; `contains` proves path membership, while a direct, stage-scoped atomic `requires` route proves downstream sequencing. | Canonical DE Gymnasium mathematics, independently for Sek I and Sek II | unconditional `error` |
 | `GVR-016` | Table-like blocks in learner-facing exam Markdown must use a valid GFM delimiter row and a consistent column count. | All `examData.taskContent*` and `examData.solutionContent*` fields | unconditional `error` |
-| `GVR-017` | Resolve cross-landscape references and reject global direct `requires`, `contains`, and effective prerequisite cycles, including inherited origins. Unknown or ambiguous references fail; retained local compatibility-copy relationship drift remains visible warning debt. | All loaded landscapes | unconditional `error`, except `inconsistent_graph_definition` warnings |
 
 ## Core validator checks (always active, fail CI)
 

@@ -200,7 +200,6 @@ run_application_frontend_ci() {
   echo "--> Testing Goal Visualization QA Approval Model"
   npm run test:goal-visualization-qa-status
   npm run test:goal-visualization-qa-model
-  npm run test:goal-visualization-paths
 
   echo "--> Running Learner Goal Selection Validation"
   npm run validate:learner-goal-selection
@@ -210,9 +209,6 @@ run_application_frontend_ci() {
 
   echo "--> Testing Coach Variant Selection"
   npm run test:coach-variants
-
-  echo "--> Testing Required Prerequisite Notices"
-  npm run test:prerequisite-blocker-notice
 
   echo "--> Testing Deterministic ZIP32 Writer"
   npm run test:deterministic-zip32
@@ -230,10 +226,6 @@ run_curriculum_frontend_ci() {
 
   echo "--> Running Graph Validation"
   npm run validate:graph
-
-  echo "--> Testing Cross-Subject Prerequisite Graphs and Review Bindings"
-  npm run test:cross-subject-requires
-  npm run check:cross-subject-requires
 
   echo "--> Testing Exam Markdown Conventions"
   npm run test:exam-markdown
@@ -309,9 +301,6 @@ run_curriculum_frontend_ci() {
 
   echo "--> Testing Composition Projection Roles"
   npm run test:composition-projection-roles
-
-  echo "--> Testing Composition Visible Overlap"
-  npm run test:composition-visible-overlap
 
   echo "--> Running Memory-Card Review Check"
   npm run quality:memory-card-review:check:all

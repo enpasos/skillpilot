@@ -5,59 +5,20 @@ import { fileURLToPath } from 'node:url'
 import {
   SKILLPILOT_DATA_LICENSE_CATEGORY,
   SKILLPILOT_LICENSE_SCOPE_PATH,
-  GOAL_VISUALIZATION_INDEX_SCHEMA,
-  selectGoalVisualizationAssets,
   buildPackageLicense,
-  collectExternalGoalReferences,
   buildSubjectExportLicensePolicy,
   licenseCategoryForRepoSource,
   sanitizeJsonForPackage,
   subjectExportLicenseEntries,
 } from './buildSkillpilotExportPackage'
 import {
-  declaredCanonicalExternalGoalIds,
-  declaredExternalGoalIdsForView,
   isKnownSubjectExportLicenseCategory,
   subjectExportLicenseIssues,
   unresolvedCompositionGoalReferences,
-  collectCanonicalGoalVisualizations,
 } from './validateSubjectExportPackages'
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const readJson = (path: string) => JSON.parse(readFileSync(resolve(repoRoot, path), 'utf8'))
-
-const trafficId = '4a2bf015-052b-4af0-aed7-324259fa1a8a'
-const trafficGoal = readJson('curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json')
-  .goals.find((goal: { id: string }) => goal.id === trafficId)
-const trafficUrl = `/assets/goal-visualizations/physik/${trafficId}/model-boundaries-v2/${trafficId}.png`
-const nestedGoal = structuredClone(trafficGoal)
-nestedGoal.resourceLinks.find((link: { type: string }) => link.type === 'goal-visualization').url = trafficUrl
-const nestedCanonical = { goals: [nestedGoal] }
-const packageErrors: string[] = []
-const selectedAssets = selectGoalVisualizationAssets(nestedCanonical, 'physik', packageErrors)
-assert.deepEqual(packageErrors, [], 'versioned actual asset passes export selection and file-signature/hash inspection')
-assert.equal(selectedAssets.length, 1)
-assert.equal(selectedAssets[0].record.packagePath, trafficUrl.slice(1))
-assert.equal(selectedAssets[0].record.publicUrl, trafficUrl)
-assert.equal(selectedAssets[0].record.mediaType, 'image/png')
-assert.equal(selectedAssets[0].record.sha256, 'b61d17e625e12d1a28108c92baa63743b223f5947b02fc7b5ad4ed03b52c6dd0')
-assert.deepEqual(collectCanonicalGoalVisualizations(nestedCanonical, 'physik').issues, [])
-const schemaProperties = GOAL_VISUALIZATION_INDEX_SCHEMA.properties.assets.items.properties
-for (const [property, value] of [['packagePath', trafficUrl.slice(1)], ['publicUrl', trafficUrl]] as const) {
-  const pattern = new RegExp(schemaProperties[property].pattern, 'u')
-  assert(pattern.test(value), 'export index schema accepts the same nested path')
-  for (const unsafe of [value + '\n', value + '?x=1', value + '#x', value.replace('/model-boundaries-v2/', '/../'), value.replace('/model-boundaries-v2/', '/%2e%2e/')]) {
-    assert.equal(pattern.test(unsafe), false, `index schema rejects ${JSON.stringify(unsafe)}`)
-  }
-}
-for (const badUrl of [trafficUrl.replace('/physik/', '/mathematik/'), trafficUrl.replace(`/${trafficId}/`, '/wrong-owner/'), trafficUrl.replace(`${trafficId}.png`, 'wrong-name.png'), trafficUrl.replace('/model-boundaries-v2/', '/%252e%252e/'), trafficUrl + '\n']) {
-  const badGoal = structuredClone(nestedGoal)
-  badGoal.resourceLinks.find((link: { type: string }) => link.type === 'goal-visualization').url = badUrl
-  const errors: string[] = []
-  assert.equal(selectGoalVisualizationAssets({ goals: [badGoal] }, 'physik', errors).length, 0)
-  assert(errors.length > 0, 'export builder preserves path safety/subject/goal/filename ownership')
-  assert(collectCanonicalGoalVisualizations({ goals: [badGoal] }, 'physik').issues.length > 0, 'package validator uses the same safe path and owner boundaries')
-}
 
 const licensePolicy = buildSubjectExportLicensePolicy()
 assert.equal(licensePolicy.defaultSkillpilotDataLicense, 'CC-BY-4.0')
@@ -177,47 +138,20 @@ const sanitizedPhysics = JSON.stringify(sanitizeJsonForPackage(
 ))
 assert(!sanitizedPhysics.includes('curricula/DE/Gymnasium/'), 'Exported Physics must not contain repository-local paths')
 const physicsIds = new Set(physics.goals.map((goal) => goal.id))
-const physicsViewDir = 'curricula/DE/Gymnasium/composition-views/physik'
-const physicsViewFiles = readdirSync(resolve(repoRoot, physicsViewDir)).filter((file) => file.endsWith('.view.json'))
-const dependencyErrors: string[] = []
-const declaredRecords = collectExternalGoalReferences(
-  resolve(repoRoot, canonicalDir, 'DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json'), physics, dependencyErrors,
-  physicsViewFiles.map((file) => readJson(`${physicsViewDir}/${file}`)),
-) as Array<{ relation: string, fromGoalId?: string, fromViewId?: string, targetGoalId: string }>
-assert.deepEqual(dependencyErrors, [])
-const declaredPhysicsDependencies = new Set(declaredRecords.map((record) => record.targetGoalId))
-const viewOnlyRecord = declaredRecords.find((record) => record.relation === 'composition-view' && record.targetGoalId === 'e4f3a846-d2b8-4ee5-b0a2-4dc2833b2ecb')
-assert(viewOnlyRecord?.fromViewId, 'View-only external definitions must be explicitly declared')
-assert(!viewOnlyRecord.fromGoalId, 'A composition declaration must not invent a canonical edge')
-assert(!declaredCanonicalExternalGoalIds([viewOnlyRecord]).has(viewOnlyRecord.targetGoalId), 'View declaration cannot authorize a canonical edge')
-const supportView = { viewId: viewOnlyRecord.fromViewId, rootNodes: [{ kind: 'goalEntry', goalId: viewOnlyRecord.targetGoalId, projectionRole: 'prerequisiteOnly' }] }
-assert(declaredExternalGoalIdsForView(supportView, [viewOnlyRecord]).has(viewOnlyRecord.targetGoalId))
-assert(!declaredExternalGoalIdsForView({ ...supportView, viewId: 'another-view' }, [viewOnlyRecord]).has(viewOnlyRecord.targetGoalId))
-assert(!declaredExternalGoalIdsForView({ ...supportView, rootNodes: [{ kind: 'goalEntry', goalId: viewOnlyRecord.targetGoalId }] }, [viewOnlyRecord]).has(viewOnlyRecord.targetGoalId))
-assert(!declaredExternalGoalIdsForView(supportView, [{ ...viewOnlyRecord, projectionRole: 'target' }]).has(viewOnlyRecord.targetGoalId))
-assert(!declaredExternalGoalIdsForView({ ...supportView, rootNodes: [...supportView.rootNodes, { kind: 'goalEntry', goalId: viewOnlyRecord.targetGoalId }] }, [viewOnlyRecord]).has(viewOnlyRecord.targetGoalId), 'A support declaration must not authorize a second target occurrence')
-const unknownErrors: string[] = []
-collectExternalGoalReferences(resolve(repoRoot, canonicalDir, 'DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json'), physics, unknownErrors,
-  [{ viewId: 'negative-view', rootNodes: [{ kind: 'goalEntry', goalId: 'unknown-definition', projectionRole: 'prerequisiteOnly' }] }])
-assert(unknownErrors.some((error) => error.includes('Unresolved external composition-view reference')))
-const targetErrors: string[] = []
-const forbiddenTargetRecords = collectExternalGoalReferences(resolve(repoRoot, canonicalDir, 'DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json'), physics, targetErrors,
-  [{ viewId: 'foreign-target-negative', rootNodes: [{ kind: 'goalEntry', goalId: 'e4f3a846-d2b8-4ee5-b0a2-4dc2833b2ecb' }] }]) as Array<{ relation: string }>
-assert(targetErrors.some((error) => error.includes('External composition-view target is unsupported')))
-assert(!forbiddenTargetRecords.some((record) => record.relation === 'composition-view'))
-const missingIdErrors: string[] = []
-collectExternalGoalReferences(resolve(repoRoot, canonicalDir, 'DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json'), physics, missingIdErrors, [{ rootNodes: [] }])
-assert(missingIdErrors.some((error) => error.includes('missing its viewId')))
+const declaredPhysicsDependencies = new Set(physics.goals.flatMap((goal) => [
+  ...(goal.contains ?? []), ...(goal.requires ?? []),
+]).filter((id) => !physicsIds.has(id)))
 const foreignGoalIds = new Set(readdirSync(resolve(repoRoot, canonicalDir))
   .filter((file) => file.endsWith('.json') && file !== 'DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json')
   .flatMap((file) => (readJson(`${canonicalDir}/${file}`).goals as Goal[]).map((goal) => goal.id)))
 for (const id of declaredPhysicsDependencies) {
   assert(foreignGoalIds.has(id), `External Physics dependency must have a canonical owner: ${id}`)
 }
+const physicsViewDir = 'curricula/DE/Gymnasium/composition-views/physik'
 let checkedViews = 0
 for (const file of readdirSync(resolve(repoRoot, physicsViewDir)).filter((file) => file.endsWith('.view.json'))) {
   assert.deepEqual(unresolvedCompositionGoalReferences(
-    readJson(`${physicsViewDir}/${file}`), physicsIds, declaredExternalGoalIdsForView(readJson(`${physicsViewDir}/${file}`), declaredRecords),
+    readJson(`${physicsViewDir}/${file}`), physicsIds, declaredPhysicsDependencies,
   ), [], `${file}: every composition reference must be local or declared external`)
   checkedViews += 1
 }

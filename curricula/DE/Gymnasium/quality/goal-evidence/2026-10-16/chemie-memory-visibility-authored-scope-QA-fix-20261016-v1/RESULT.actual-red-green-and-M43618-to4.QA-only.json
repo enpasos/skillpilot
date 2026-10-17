@@ -1,0 +1,336 @@
+{
+  "schemaVersion": 1,
+  "role": "QA implementation and actual regression evidence; no independent curriculum-content review or M7 approval",
+  "createdAt": "2026-10-16T14:51:26.310983+00:00",
+  "agentId": "/root/chemie_memory_course_filter_qa_fix_20261016",
+  "scope": "Only Memory QA course-profile visibility and focused regression tests; canonical/content/source/view/card records unchanged",
+  "productionSemanticsInspected": [
+    {
+      "path": "app/src/utils/goalFilters.ts",
+      "sha256": "sha256:49e4896fba8d946ce9cc0de30230f73770a29db61486fc3a6dc53f099a4bc89f"
+    },
+    {
+      "path": "app/src/utils/treeProjectionRuntime.ts",
+      "sha256": "sha256:6983e0b7d616c5d05796576226872ece218dac79b3a9cd1e9b4f312a71a9f38f"
+    },
+    {
+      "path": "app/src/utils/authoring/compositionViewAuthoring.ts",
+      "sha256": "sha256:d7ee9ab670d2d73a3ed82700c2bca2dee3f2da6c8e9517120c5c45acac0d84a7"
+    }
+  ],
+  "implementation": {
+    "change": "Resolve target/prerequisiteOnly specificity first, then apply existing goalMatchesFilters to authored view.scope.courseProfile for both origin and Memory nodes",
+    "stage": "Not filtered as a generic goal tag; retained authored tree membership",
+    "jurisdictionAndDuration": "Not changed by this fix. Raw canonical jurisdiction does not include compiled source/Memory-origin additions. No inferred filtering or origin-to-acquisition role conversion.",
+    "files": [
+      {
+        "path": "app/scripts/memoryCardReview.ts",
+        "beforeSha256": "sha256:f7a7f2fdcb798fcd92a71fc7968232dea107b25f47214a9e8210eba7af53e0f9",
+        "afterSha256": "sha256:e42b154d8557e4ccff249c7cb41ac26b7c40560dd150dbd3255923cd038446f5"
+      },
+      {
+        "path": "app/scripts/testCompositionProjectionRoles.ts",
+        "beforeSha256": "sha256:1e0e84949f7f9fcd719e303e5d087dbe21bb9d173ae0450907f809cb43ff729a",
+        "afterSha256": "sha256:387606feb5d83ca7908322b8df12443767f86cc8c93b04148e4bc6b41586dda8"
+      }
+    ]
+  },
+  "actualChecks": {
+    "regressionBefore": {
+      "command": "npm --prefix app run test:composition-projection-roles",
+      "exitCode": 1,
+      "artifact": "TEST.red.before-fix.stdout.txt",
+      "assertion": "GK broad subtree counted 2 required content goals instead of 1"
+    },
+    "regressionAfter": {
+      "command": "npm --prefix app run test:composition-projection-roles",
+      "exitCode": 0,
+      "artifact": "TEST.green.after-fix.stdout.txt",
+      "cases": [
+        "LK-only origin excluded from GK acquisition",
+        "same missing LK Memory still blocks actual LK origin",
+        "absent course retains both origins",
+        "stage does not act as generic tag filter",
+        "LK-only Memory cannot discharge GK origin",
+        "specific prerequisiteOnly overrides preserved in both node orders",
+        "existing target override and prerequisite-only Memory tests remain passing",
+        "existing Hessian Physics tree and HE Mathematics Q2.1 scope checks remain passing"
+      ]
+    },
+    "actualFullM436Before": {
+      "exitCode": 1,
+      "artifact": "M436.before-fix.full-check.stdout.txt",
+      "counts": {
+        "Ordinary atomic goals in scope": 436,
+        "Current no-memory decisions": 370,
+        "Current memory-required decisions": 66,
+        "Current needs developer review": 0,
+        "Memory goals in scope": 58,
+        "Traced memory goals": 58,
+        "Known deck IDs": 7,
+        "Deck files": 59,
+        "Card rows": 661,
+        "Primary cards in scope": 643,
+        "Kept primary cards": 643,
+        "Cards marked remove": 0,
+        "Cards needing developer review": 0,
+        "Missing review records": 0,
+        "Stale review records": 0,
+        "Obsolete review records": 0,
+        "Missing card review records": 0,
+        "Stale card review records": 0,
+        "Obsolete card review records": 0,
+        "Composition visibility scopes": 39,
+        "Memory-required goals checked in views": 1456,
+        "Memory-required goals without visible memory node": 18
+      }
+    },
+    "actualFullM436After": {
+      "exitCode": 1,
+      "artifact": "M436.after-fix.full-check.stdout.txt",
+      "counts": {
+        "Ordinary atomic goals in scope": 436,
+        "Current no-memory decisions": 370,
+        "Current memory-required decisions": 66,
+        "Current needs developer review": 0,
+        "Memory goals in scope": 58,
+        "Traced memory goals": 58,
+        "Known deck IDs": 7,
+        "Deck files": 59,
+        "Card rows": 661,
+        "Primary cards in scope": 643,
+        "Kept primary cards": 643,
+        "Cards marked remove": 0,
+        "Cards needing developer review": 0,
+        "Missing review records": 0,
+        "Stale review records": 0,
+        "Obsolete review records": 0,
+        "Missing card review records": 0,
+        "Stale card review records": 0,
+        "Obsolete card review records": 0,
+        "Composition visibility scopes": 39,
+        "Memory-required goals checked in views": 1408,
+        "Memory-required goals without visible memory node": 4
+      }
+    },
+    "falseLKInGKIssuesRemoved": [
+      "purpose13 de-he-gym-chemistry-gk [current acquisition candidate; machine QA only]: Arrhenius-Beziehung anwenden [e62c6c58-b688-59c3-8ac5-2cfc26ac22d7] is visible, but none of its referenced memoryGoalIds is visible in curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+      "purpose13 de-he-gym-chemistry-gk [current acquisition candidate; machine QA only]: Grundlagen Spektroskopie [466bd2e9-39a5-5221-b620-945934adce00] is visible, but none of its referenced memoryGoalIds is visible in curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+      "purpose13 de-he-gym-chemistry-gk [current acquisition candidate; machine QA only]: Konfiguration und Konformation unterscheiden [85342c52-9722-54b0-8fbb-513d9d648363] is visible, but none of its referenced memoryGoalIds is visible in curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+      "purpose13 de-he-gym-chemistry-gk [current acquisition candidate; machine QA only]: Nernst-Gleichung auf galvanische Zellen anwenden (LK) [b7521ac7-4ad1-5e63-96ca-4c6c9b2b1e0b] is visible, but none of its referenced memoryGoalIds is visible in curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+      "purpose13 de-he-gym-chemistry-gk [current acquisition candidate; machine QA only]: Puffer-pH mit der Henderson-Hasselbalch-Gleichung berechnen [a449e874-6fec-502b-9667-6f078adc4d64] is visible, but none of its referenced memoryGoalIds is visible in curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+      "purpose13 de-he-gym-chemistry-gk [current acquisition candidate; machine QA only]: Stereoisomerietypen zuordnen [9decc36b-a69a-5599-a9f0-fcebdf0203d8] is visible, but none of its referenced memoryGoalIds is visible in curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+      "purpose13 de-he-gym-chemistry-gk [current acquisition candidate; machine QA only]: Stereozentren erkennen [b92bfa45-b500-5647-8fd2-a14b708aaf59] is visible, but none of its referenced memoryGoalIds is visible in curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+      "purpose15 de-he-gym-sekii-chemistry-gk [current acquisition candidate; machine QA only]: Arrhenius-Beziehung anwenden [e62c6c58-b688-59c3-8ac5-2cfc26ac22d7] is visible, but none of its referenced memoryGoalIds is visible in curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk.view.json",
+      "purpose15 de-he-gym-sekii-chemistry-gk [current acquisition candidate; machine QA only]: Grundlagen Spektroskopie [466bd2e9-39a5-5221-b620-945934adce00] is visible, but none of its referenced memoryGoalIds is visible in curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk.view.json",
+      "purpose15 de-he-gym-sekii-chemistry-gk [current acquisition candidate; machine QA only]: Konfiguration und Konformation unterscheiden [85342c52-9722-54b0-8fbb-513d9d648363] is visible, but none of its referenced memoryGoalIds is visible in curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk.view.json",
+      "purpose15 de-he-gym-sekii-chemistry-gk [current acquisition candidate; machine QA only]: Nernst-Gleichung auf galvanische Zellen anwenden (LK) [b7521ac7-4ad1-5e63-96ca-4c6c9b2b1e0b] is visible, but none of its referenced memoryGoalIds is visible in curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk.view.json",
+      "purpose15 de-he-gym-sekii-chemistry-gk [current acquisition candidate; machine QA only]: Puffer-pH mit der Henderson-Hasselbalch-Gleichung berechnen [a449e874-6fec-502b-9667-6f078adc4d64] is visible, but none of its referenced memoryGoalIds is visible in curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk.view.json",
+      "purpose15 de-he-gym-sekii-chemistry-gk [current acquisition candidate; machine QA only]: Stereoisomerietypen zuordnen [9decc36b-a69a-5599-a9f0-fcebdf0203d8] is visible, but none of its referenced memoryGoalIds is visible in curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk.view.json",
+      "purpose15 de-he-gym-sekii-chemistry-gk [current acquisition candidate; machine QA only]: Stereozentren erkennen [b92bfa45-b500-5647-8fd2-a14b708aaf59] is visible, but none of its referenced memoryGoalIds is visible in curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk.view.json"
+    ],
+    "remainingRealIssuesUnchanged": [
+      "purpose13 de-he-gym-chemistry-gk [current acquisition candidate; machine QA only]: Löslichkeitsgleichgewichte interpretieren [ac1bcf34-169c-5339-92ba-efe8c3022560] is visible, but none of its referenced memoryGoalIds is visible in curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+      "purpose14 de-he-gym-chemistry-lk [current acquisition candidate; machine QA only]: Arrhenius-Beziehung anwenden [e62c6c58-b688-59c3-8ac5-2cfc26ac22d7] is visible, but none of its referenced memoryGoalIds is visible in curricula/DE/Gymnasium/composition-views/chemie/de-he-lk.view.json",
+      "purpose15 de-he-gym-sekii-chemistry-gk [current acquisition candidate; machine QA only]: Löslichkeitsgleichgewichte interpretieren [ac1bcf34-169c-5339-92ba-efe8c3022560] is visible, but none of its referenced memoryGoalIds is visible in curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk.view.json",
+      "purpose16 de-he-gym-sekii-chemistry-lk [current acquisition candidate; machine QA only]: Arrhenius-Beziehung anwenden [e62c6c58-b688-59c3-8ac5-2cfc26ac22d7] is visible, but none of its referenced memoryGoalIds is visible in curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-lk.view.json"
+    ],
+    "newIssuesIntroduced": [],
+    "rejectedAttempt": {
+      "role": "Failed approach retained transparently, not the implementation",
+      "attempt": "Filter course/jurisdiction/duration against raw canonical metadata",
+      "fullCheckExitCode": 1,
+      "missingVisibleMemoryGoals": 56,
+      "artifact": "ATTEMPT1.rejected-raw-all-dimensions.M43656.full-check.stdout.txt",
+      "reason": "Raw historical Memory applicability excludes DE-HE until stock memory-review-origin compilation adds it; blindly applying it removes legitimate existing recall units."
+    }
+  },
+  "unchangedCandidateInputs": {
+    "capsule": "tmp/chemie-m7-resumed-20261016/he-transitive-course-stock-capsule",
+    "canonical": {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "sha256": "sha256:8ee85c5a6e6cc9de4a65cea2583dcfba6764f25f2febdf68162a188d9083d974",
+      "matchesAuthorSealedManifest": true
+    },
+    "config": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-HE-transitive-course-prerequisites-targeted-author-successor-20261016-v1/author-prospective-M436/M436.author-candidate.config.json",
+      "sha256": "sha256:f7d2fe6587f33774ce1685dab61120143cafc7141f8b0e3dcbe4c3beef8d97f5"
+    },
+    "reviewRecords": [
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-HE-transitive-course-prerequisites-targeted-author-successor-20261016-v1/author-prospective-M436/M436.author-candidate.review.jsonl",
+        "sha256": "sha256:6c15903e70567df88785a8c14ef53ef489a97a9973c03f9fad63cde49662ec25"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-HE-transitive-course-prerequisites-targeted-author-successor-20261016-v1/author-prospective-M436/cards79.author-candidate.review.jsonl",
+        "sha256": "sha256:96dd2cbe5e79c83cc3f04dc4de3de1a8f0e26e71366cec2f08e68cb95d1985aa"
+      }
+    ],
+    "views": [
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-bb-gk.view.json",
+        "sha256": "sha256:178e61a43435a3fe7ce9062dc0e4182cd417d7e5471f24bd55d2e97c65395710"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-bb-lk.view.json",
+        "sha256": "sha256:a7f48f2d957d4a7011f7ccd76f2d3bf6e62017b4043417586cc69cb270ad9680"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-be-gk.view.json",
+        "sha256": "sha256:18080e879f3a048ccb996f5d02f2bf3d346b1fbb25b32a2ea95bfb1a2a245f56"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-be-lk.view.json",
+        "sha256": "sha256:386000ed732027cf747b4244d948d223990f265aa13f0f8ee1c16706962d1280"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-bw-gk.view.json",
+        "sha256": "sha256:b721ab3f68c366ce2376cda532f30ca6135ede02cc6efea6a82cd393de5f0953"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-bw-lk.view.json",
+        "sha256": "sha256:a2e0046418264c365349c70caf94b1408c6dfbd78a61dc1f739d9f543363d0e7"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-gk.view.json",
+        "sha256": "sha256:3c72053ddd225d03043a348d02a1587aeb0c47c99769586f9724e3a4fa528a9e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-lk.view.json",
+        "sha256": "sha256:e97e695632df8974fd255c5b0353a159a7f9903feb4237b9eacbb9aa7a608343"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-seki-chemistry.view.json",
+        "sha256": "sha256:bd14e86c1ccc5382e4502dc9fbdeb091ecb38e13cf7e3fe07e09d85af0d0a372"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-gk.view.json",
+        "sha256": "sha256:b7dc846a456b4938ed749b4a2f9ebbf91d30d36f0f9751e012b3b2c323ed1a2a"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-lk.view.json",
+        "sha256": "sha256:0a483426423a2b628f1dea76ebd69dc775ba9d6d9413c08c129fbf5e77f213e4"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-hb-gk.view.json",
+        "sha256": "sha256:f774479abc2e6d51a02cd71f6ac16961b0e4e12e1ea47d01e91da724bca02e46"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-hb-lk.view.json",
+        "sha256": "sha256:8b5f5df8223b5174ee2816d7ea7ebcd43dfa6dc83abfeb96a646ea8c5fa9af7f"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+        "sha256": "sha256:71292355fe3ca8e1dd9404a3f0419989c4180453b16fbda05630103134d92d48"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-he-lk.view.json",
+        "sha256": "sha256:60cbfffa531676cc524239377bb615e55967b83ebf5739ef35d1541af5999944"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk.view.json",
+        "sha256": "sha256:9ed90ea71efae21a48ccd223221b057e69fc9cb6374f0cbeba2ddc92741537fc"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-lk.view.json",
+        "sha256": "sha256:418293a5561d0470b0d8516215b3d65f6f17948ae8d9e1a34cd453742602edc1"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-hh-gk.view.json",
+        "sha256": "sha256:66c01f93edb0bda3b8fcac80e04d3bfa8d66d7a1002eb690e614254f4d7f4f54"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-hh-lk.view.json",
+        "sha256": "sha256:0c1a059bc5ca218b93b220b7fdd2709ff4f585cd25ad4fb3a66c37932251003d"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-mv-gk.view.json",
+        "sha256": "sha256:881640fd4f75022bfe18670bfcdfa4f05f553a2db5dab590cefae78bb3a9a4e7"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-mv-lk.view.json",
+        "sha256": "sha256:0e2017c42f025e4a7e28517e41cdf76bcdb75563a6f6ed07895ee4f7de2584a6"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-ni-gk.view.json",
+        "sha256": "sha256:4792409467840f00b52ed4d0a66d3b7d3e3f6dcca9001270f1011ae1ed9415f7"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-ni-lk.view.json",
+        "sha256": "sha256:616d0ecb53c797e035b67be462c85dbe8759f72438b6c0e8b92aafae5a442aa2"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-nw-gk.view.json",
+        "sha256": "sha256:b1ad0b9ede3a9598ba93bbd2b371e0a8a22168a4e55b691d977ed6107c18df19"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-nw-lk.view.json",
+        "sha256": "sha256:7de2622e60e5ec77e2b9cc3df010100364acb460ab642e49f6a2ba0df6c08433"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-rp-gk.view.json",
+        "sha256": "sha256:5244ed2c72de71a22cfc398703734c5174ab32a5d7d565b3f536b5eab26fa656"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-rp-lk.view.json",
+        "sha256": "sha256:cdde690b336f5c1cf7afa60a488b5d2284be3f0cbf793d693239a0ac5791756d"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-sh-gk.view.json",
+        "sha256": "sha256:758c0fc586a40d46d05a5af89dfefef8d35cd5ab3cf1b1ff871ccce1eaed2fe9"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-sh-lk.view.json",
+        "sha256": "sha256:650ed3cddb15112134f0b33d30fe85ba6a4a4a9adaeed245a62e94de1f887796"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-sl-gk.view.json",
+        "sha256": "sha256:8cdb1f3c959709b7e63adcf95e1d19eea474f1b3ca930cab2a00b99aef9cc41c"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-sl-lk.view.json",
+        "sha256": "sha256:6b642647413b8b65c59a692228cf580420289a2d5ad9014768bb11eb2a155124"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-sn-gk.view.json",
+        "sha256": "sha256:02517a9f447420aab5fd47ae31779902932dd10e3fb0653157ea044a0de64875"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-sn-lk.view.json",
+        "sha256": "sha256:e2bc9abdc0daeef5d5a7500ce880781ece9053289fe05df1b931a45d212f3636"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-st-gk.view.json",
+        "sha256": "sha256:fa2ada80217f21e42cba6198a24eb86140ed07335e692742eb5f8c1be915e6b9"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-st-lk.view.json",
+        "sha256": "sha256:3cb030fdfc6c075d1d60c0f2b5e63e7f1f1afd8fac06325821ae25479bf51dfb"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-th-gk.view.json",
+        "sha256": "sha256:f394d48b1168db63d64172a113359e6c7e87a4a02b9beb103dbc19c906191f24"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-th-lk.view.json",
+        "sha256": "sha256:14ac42e8c2ada625a5946861649bb2e3725e031130b311ea8d7045c25a4d6736"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-by-lk.current-pilot.view.json",
+        "sha256": "sha256:4ed11753d1a8af4e4caa9c64a4ad53e89a36a8371bade2b3685beda676a7947d"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-by-c10-ethanol-risk-unit.current-pilot.view.json",
+        "sha256": "sha256:a1ad2b4e5beba4a81b6da47b5840cf7ad7d22a92ce8ee616e14243c945a5151d"
+      }
+    ],
+    "normalCanonicalUnchanged": {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "sha256": "sha256:9a68501347031f266572dea551e71c3507b66fb5ed94142a1a99f6a282708960"
+    }
+  },
+  "executionIsolation": "Full M checks used a private overlay with exact baseline/final module bytes; read-only symlinks to author636 inputs and existing production helpers. No --write-report or --write-fingerprints. No author capsule or normal canonical writes.",
+  "MachineM7Pass": false,
+  "HumanApproval": false,
+  "HumanTrial": false
+}

@@ -1,0 +1,11 @@
+The first execution of reproduce_review_a.py returned exit code 1 before writing technical JSON:
+
+Traceback (most recent call last):
+  File "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-global145-fresh-independent-exam-a-20261016-v1/reproduce_review_a.py", line 53, in <module>
+    assert sha(H) == H_PIN, 'H has changed since the scientific review; do not rebind automatically'
+           ^^^^^^^^^^^^^^^
+AssertionError: H has changed since the scientific review; do not rebind automatically
+
+Read-only follow-up found H at sha256:6bed948af8d0ba47d722fb6205bacba6f8792e233f58c1772366395dd8450d8e.
+The immutable author-specified canonical snapshot still has sha256:2974f50212c692811f432fc9ba026c28115507cb384fe4e5e44c451481156bb7 and629 goals, exactly matching H when the science was read and frozen.
+The script now checks that immutable file, preserves the frozen science bytes and candidate pins, and records mutable H drift explicitly.

@@ -445,45 +445,6 @@
               "type": "array",
               "uniqueItems": true
             },
-            "prerequisiteBlockers": {
-              "items": {
-                "additionalProperties": false,
-                "properties": {
-                  "goalId": {
-                    "minLength": 1,
-                    "type": "string"
-                  },
-                  "goalTitle": {
-                    "maxLength": 240,
-                    "type": "string"
-                  },
-                  "prerequisiteId": {
-                    "minLength": 1,
-                    "type": "string"
-                  },
-                  "prerequisiteTitle": {
-                    "maxLength": 240,
-                    "type": "string"
-                  },
-                  "reason": {
-                    "enum": [
-                      "EXTERNAL_PREREQUISITE_UNMASTERED",
-                      "PREREQUISITE_OUTSIDE_FOCUS",
-                      "PREREQUISITE_NOT_PROJECTED",
-                      "UNKNOWN_PREREQUISITE"
-                    ],
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "goalId",
-                  "reason"
-                ],
-                "type": "object"
-              },
-              "maxItems": 20,
-              "type": "array"
-            },
             "progress": {
               "additionalProperties": false,
               "properties": {
@@ -1481,45 +1442,6 @@
                   "type": "array",
                   "uniqueItems": true
                 },
-                "prerequisiteBlockers": {
-                  "items": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "goalId": {
-                        "minLength": 1,
-                        "type": "string"
-                      },
-                      "goalTitle": {
-                        "maxLength": 240,
-                        "type": "string"
-                      },
-                      "prerequisiteId": {
-                        "minLength": 1,
-                        "type": "string"
-                      },
-                      "prerequisiteTitle": {
-                        "maxLength": 240,
-                        "type": "string"
-                      },
-                      "reason": {
-                        "enum": [
-                          "EXTERNAL_PREREQUISITE_UNMASTERED",
-                          "PREREQUISITE_OUTSIDE_FOCUS",
-                          "PREREQUISITE_NOT_PROJECTED",
-                          "UNKNOWN_PREREQUISITE"
-                        ],
-                        "type": "string"
-                      }
-                    },
-                    "required": [
-                      "goalId",
-                      "reason"
-                    ],
-                    "type": "object"
-                  },
-                  "maxItems": 20,
-                  "type": "array"
-                },
                 "progress": {
                   "additionalProperties": false,
                   "properties": {
@@ -2404,45 +2326,6 @@
                   "type": "array",
                   "uniqueItems": true
                 },
-                "prerequisiteBlockers": {
-                  "items": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "goalId": {
-                        "minLength": 1,
-                        "type": "string"
-                      },
-                      "goalTitle": {
-                        "maxLength": 240,
-                        "type": "string"
-                      },
-                      "prerequisiteId": {
-                        "minLength": 1,
-                        "type": "string"
-                      },
-                      "prerequisiteTitle": {
-                        "maxLength": 240,
-                        "type": "string"
-                      },
-                      "reason": {
-                        "enum": [
-                          "EXTERNAL_PREREQUISITE_UNMASTERED",
-                          "PREREQUISITE_OUTSIDE_FOCUS",
-                          "PREREQUISITE_NOT_PROJECTED",
-                          "UNKNOWN_PREREQUISITE"
-                        ],
-                        "type": "string"
-                      }
-                    },
-                    "required": [
-                      "goalId",
-                      "reason"
-                    ],
-                    "type": "object"
-                  },
-                  "maxItems": 20,
-                  "type": "array"
-                },
                 "progress": {
                   "additionalProperties": false,
                   "properties": {
@@ -3235,45 +3118,6 @@
               "type": "array",
               "uniqueItems": true
             },
-            "prerequisiteBlockers": {
-              "items": {
-                "additionalProperties": false,
-                "properties": {
-                  "goalId": {
-                    "minLength": 1,
-                    "type": "string"
-                  },
-                  "goalTitle": {
-                    "maxLength": 240,
-                    "type": "string"
-                  },
-                  "prerequisiteId": {
-                    "minLength": 1,
-                    "type": "string"
-                  },
-                  "prerequisiteTitle": {
-                    "maxLength": 240,
-                    "type": "string"
-                  },
-                  "reason": {
-                    "enum": [
-                      "EXTERNAL_PREREQUISITE_UNMASTERED",
-                      "PREREQUISITE_OUTSIDE_FOCUS",
-                      "PREREQUISITE_NOT_PROJECTED",
-                      "UNKNOWN_PREREQUISITE"
-                    ],
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "goalId",
-                  "reason"
-                ],
-                "type": "object"
-              },
-              "maxItems": 20,
-              "type": "array"
-            },
             "progress": {
               "additionalProperties": false,
               "properties": {
@@ -3914,45 +3758,6 @@
                   "type": "array",
                   "uniqueItems": true
                 },
-                "prerequisiteBlockers": {
-                  "items": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "goalId": {
-                        "minLength": 1,
-                        "type": "string"
-                      },
-                      "goalTitle": {
-                        "maxLength": 240,
-                        "type": "string"
-                      },
-                      "prerequisiteId": {
-                        "minLength": 1,
-                        "type": "string"
-                      },
-                      "prerequisiteTitle": {
-                        "maxLength": 240,
-                        "type": "string"
-                      },
-                      "reason": {
-                        "enum": [
-                          "EXTERNAL_PREREQUISITE_UNMASTERED",
-                          "PREREQUISITE_OUTSIDE_FOCUS",
-                          "PREREQUISITE_NOT_PROJECTED",
-                          "UNKNOWN_PREREQUISITE"
-                        ],
-                        "type": "string"
-                      }
-                    },
-                    "required": [
-                      "goalId",
-                      "reason"
-                    ],
-                    "type": "object"
-                  },
-                  "maxItems": 20,
-                  "type": "array"
-                },
                 "progress": {
                   "additionalProperties": false,
                   "properties": {
@@ -4587,45 +4392,6 @@
               "minItems": 0,
               "type": "array",
               "uniqueItems": true
-            },
-            "prerequisiteBlockers": {
-              "items": {
-                "additionalProperties": false,
-                "properties": {
-                  "goalId": {
-                    "minLength": 1,
-                    "type": "string"
-                  },
-                  "goalTitle": {
-                    "maxLength": 240,
-                    "type": "string"
-                  },
-                  "prerequisiteId": {
-                    "minLength": 1,
-                    "type": "string"
-                  },
-                  "prerequisiteTitle": {
-                    "maxLength": 240,
-                    "type": "string"
-                  },
-                  "reason": {
-                    "enum": [
-                      "EXTERNAL_PREREQUISITE_UNMASTERED",
-                      "PREREQUISITE_OUTSIDE_FOCUS",
-                      "PREREQUISITE_NOT_PROJECTED",
-                      "UNKNOWN_PREREQUISITE"
-                    ],
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "goalId",
-                  "reason"
-                ],
-                "type": "object"
-              },
-              "maxItems": 20,
-              "type": "array"
             },
             "progress": {
               "additionalProperties": false,
@@ -5490,45 +5256,6 @@
                   "type": "array",
                   "uniqueItems": true
                 },
-                "prerequisiteBlockers": {
-                  "items": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "goalId": {
-                        "minLength": 1,
-                        "type": "string"
-                      },
-                      "goalTitle": {
-                        "maxLength": 240,
-                        "type": "string"
-                      },
-                      "prerequisiteId": {
-                        "minLength": 1,
-                        "type": "string"
-                      },
-                      "prerequisiteTitle": {
-                        "maxLength": 240,
-                        "type": "string"
-                      },
-                      "reason": {
-                        "enum": [
-                          "EXTERNAL_PREREQUISITE_UNMASTERED",
-                          "PREREQUISITE_OUTSIDE_FOCUS",
-                          "PREREQUISITE_NOT_PROJECTED",
-                          "UNKNOWN_PREREQUISITE"
-                        ],
-                        "type": "string"
-                      }
-                    },
-                    "required": [
-                      "goalId",
-                      "reason"
-                    ],
-                    "type": "object"
-                  },
-                  "maxItems": 20,
-                  "type": "array"
-                },
                 "progress": {
                   "additionalProperties": false,
                   "properties": {
@@ -6142,45 +5869,6 @@
             "minItems": 0,
             "type": "array",
             "uniqueItems": true
-          },
-          "prerequisiteBlockers": {
-            "items": {
-              "additionalProperties": false,
-              "properties": {
-                "goalId": {
-                  "minLength": 1,
-                  "type": "string"
-                },
-                "goalTitle": {
-                  "maxLength": 240,
-                  "type": "string"
-                },
-                "prerequisiteId": {
-                  "minLength": 1,
-                  "type": "string"
-                },
-                "prerequisiteTitle": {
-                  "maxLength": 240,
-                  "type": "string"
-                },
-                "reason": {
-                  "enum": [
-                    "EXTERNAL_PREREQUISITE_UNMASTERED",
-                    "PREREQUISITE_OUTSIDE_FOCUS",
-                    "PREREQUISITE_NOT_PROJECTED",
-                    "UNKNOWN_PREREQUISITE"
-                  ],
-                  "type": "string"
-                }
-              },
-              "required": [
-                "goalId",
-                "reason"
-              ],
-              "type": "object"
-            },
-            "maxItems": 20,
-            "type": "array"
           },
           "progress": {
             "additionalProperties": false,
@@ -7179,45 +6867,6 @@
                 "type": "array",
                 "uniqueItems": true
               },
-              "prerequisiteBlockers": {
-                "items": {
-                  "additionalProperties": false,
-                  "properties": {
-                    "goalId": {
-                      "minLength": 1,
-                      "type": "string"
-                    },
-                    "goalTitle": {
-                      "maxLength": 240,
-                      "type": "string"
-                    },
-                    "prerequisiteId": {
-                      "minLength": 1,
-                      "type": "string"
-                    },
-                    "prerequisiteTitle": {
-                      "maxLength": 240,
-                      "type": "string"
-                    },
-                    "reason": {
-                      "enum": [
-                        "EXTERNAL_PREREQUISITE_UNMASTERED",
-                        "PREREQUISITE_OUTSIDE_FOCUS",
-                        "PREREQUISITE_NOT_PROJECTED",
-                        "UNKNOWN_PREREQUISITE"
-                      ],
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "goalId",
-                    "reason"
-                  ],
-                  "type": "object"
-                },
-                "maxItems": 20,
-                "type": "array"
-              },
               "progress": {
                 "additionalProperties": false,
                 "properties": {
@@ -8102,45 +7751,6 @@
                 "type": "array",
                 "uniqueItems": true
               },
-              "prerequisiteBlockers": {
-                "items": {
-                  "additionalProperties": false,
-                  "properties": {
-                    "goalId": {
-                      "minLength": 1,
-                      "type": "string"
-                    },
-                    "goalTitle": {
-                      "maxLength": 240,
-                      "type": "string"
-                    },
-                    "prerequisiteId": {
-                      "minLength": 1,
-                      "type": "string"
-                    },
-                    "prerequisiteTitle": {
-                      "maxLength": 240,
-                      "type": "string"
-                    },
-                    "reason": {
-                      "enum": [
-                        "EXTERNAL_PREREQUISITE_UNMASTERED",
-                        "PREREQUISITE_OUTSIDE_FOCUS",
-                        "PREREQUISITE_NOT_PROJECTED",
-                        "UNKNOWN_PREREQUISITE"
-                      ],
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "goalId",
-                    "reason"
-                  ],
-                  "type": "object"
-                },
-                "maxItems": 20,
-                "type": "array"
-              },
               "progress": {
                 "additionalProperties": false,
                 "properties": {
@@ -8933,45 +8543,6 @@
             "type": "array",
             "uniqueItems": true
           },
-          "prerequisiteBlockers": {
-            "items": {
-              "additionalProperties": false,
-              "properties": {
-                "goalId": {
-                  "minLength": 1,
-                  "type": "string"
-                },
-                "goalTitle": {
-                  "maxLength": 240,
-                  "type": "string"
-                },
-                "prerequisiteId": {
-                  "minLength": 1,
-                  "type": "string"
-                },
-                "prerequisiteTitle": {
-                  "maxLength": 240,
-                  "type": "string"
-                },
-                "reason": {
-                  "enum": [
-                    "EXTERNAL_PREREQUISITE_UNMASTERED",
-                    "PREREQUISITE_OUTSIDE_FOCUS",
-                    "PREREQUISITE_NOT_PROJECTED",
-                    "UNKNOWN_PREREQUISITE"
-                  ],
-                  "type": "string"
-                }
-              },
-              "required": [
-                "goalId",
-                "reason"
-              ],
-              "type": "object"
-            },
-            "maxItems": 20,
-            "type": "array"
-          },
           "progress": {
             "additionalProperties": false,
             "properties": {
@@ -9612,45 +9183,6 @@
                 "type": "array",
                 "uniqueItems": true
               },
-              "prerequisiteBlockers": {
-                "items": {
-                  "additionalProperties": false,
-                  "properties": {
-                    "goalId": {
-                      "minLength": 1,
-                      "type": "string"
-                    },
-                    "goalTitle": {
-                      "maxLength": 240,
-                      "type": "string"
-                    },
-                    "prerequisiteId": {
-                      "minLength": 1,
-                      "type": "string"
-                    },
-                    "prerequisiteTitle": {
-                      "maxLength": 240,
-                      "type": "string"
-                    },
-                    "reason": {
-                      "enum": [
-                        "EXTERNAL_PREREQUISITE_UNMASTERED",
-                        "PREREQUISITE_OUTSIDE_FOCUS",
-                        "PREREQUISITE_NOT_PROJECTED",
-                        "UNKNOWN_PREREQUISITE"
-                      ],
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "goalId",
-                    "reason"
-                  ],
-                  "type": "object"
-                },
-                "maxItems": 20,
-                "type": "array"
-              },
               "progress": {
                 "additionalProperties": false,
                 "properties": {
@@ -10285,45 +9817,6 @@
             "minItems": 0,
             "type": "array",
             "uniqueItems": true
-          },
-          "prerequisiteBlockers": {
-            "items": {
-              "additionalProperties": false,
-              "properties": {
-                "goalId": {
-                  "minLength": 1,
-                  "type": "string"
-                },
-                "goalTitle": {
-                  "maxLength": 240,
-                  "type": "string"
-                },
-                "prerequisiteId": {
-                  "minLength": 1,
-                  "type": "string"
-                },
-                "prerequisiteTitle": {
-                  "maxLength": 240,
-                  "type": "string"
-                },
-                "reason": {
-                  "enum": [
-                    "EXTERNAL_PREREQUISITE_UNMASTERED",
-                    "PREREQUISITE_OUTSIDE_FOCUS",
-                    "PREREQUISITE_NOT_PROJECTED",
-                    "UNKNOWN_PREREQUISITE"
-                  ],
-                  "type": "string"
-                }
-              },
-              "required": [
-                "goalId",
-                "reason"
-              ],
-              "type": "object"
-            },
-            "maxItems": 20,
-            "type": "array"
           },
           "progress": {
             "additionalProperties": false,
@@ -11187,45 +10680,6 @@
                 "minItems": 0,
                 "type": "array",
                 "uniqueItems": true
-              },
-              "prerequisiteBlockers": {
-                "items": {
-                  "additionalProperties": false,
-                  "properties": {
-                    "goalId": {
-                      "minLength": 1,
-                      "type": "string"
-                    },
-                    "goalTitle": {
-                      "maxLength": 240,
-                      "type": "string"
-                    },
-                    "prerequisiteId": {
-                      "minLength": 1,
-                      "type": "string"
-                    },
-                    "prerequisiteTitle": {
-                      "maxLength": 240,
-                      "type": "string"
-                    },
-                    "reason": {
-                      "enum": [
-                        "EXTERNAL_PREREQUISITE_UNMASTERED",
-                        "PREREQUISITE_OUTSIDE_FOCUS",
-                        "PREREQUISITE_NOT_PROJECTED",
-                        "UNKNOWN_PREREQUISITE"
-                      ],
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "goalId",
-                    "reason"
-                  ],
-                  "type": "object"
-                },
-                "maxItems": 20,
-                "type": "array"
               },
               "progress": {
                 "additionalProperties": false,

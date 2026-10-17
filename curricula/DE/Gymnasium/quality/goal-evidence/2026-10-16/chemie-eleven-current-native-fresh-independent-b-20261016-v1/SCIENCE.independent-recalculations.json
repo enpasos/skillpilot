@@ -1,0 +1,302 @@
+{
+  "role": "Reviewer B independent arithmetic checks of supplied synthetic material; no learner evidence",
+  "checkedAtUtc": "2026-10-16T06:00:44.923413+00:00",
+  "checks": [
+    {
+      "label": "Energy 2.48 eV to wavelength nm",
+      "formula": "1240/E",
+      "recomputed": 500.0,
+      "sourceRoundedValue": 500,
+      "tolerance": 0.5,
+      "passed": true
+    },
+    {
+      "label": "Energy 4.13 eV to wavelength nm",
+      "formula": "1240/E",
+      "recomputed": 300.2421307506053,
+      "sourceRoundedValue": 300,
+      "tolerance": 0.5,
+      "passed": true
+    },
+    {
+      "label": "Energy 2.0 eV to wavelength nm",
+      "formula": "1240/E",
+      "recomputed": 620.0,
+      "sourceRoundedValue": 620,
+      "tolerance": 0.5,
+      "passed": true
+    },
+    {
+      "label": "Energy 3.1 eV to wavelength nm",
+      "formula": "1240/E",
+      "recomputed": 400.0,
+      "sourceRoundedValue": 400,
+      "tolerance": 0.5,
+      "passed": true
+    },
+    {
+      "label": "Normal equilibrium extent mol/L",
+      "formula": "x/(1-x)=2",
+      "recomputed": 0.6666666666666666,
+      "sourceRoundedValue": 0.6666666666666666,
+      "tolerance": 1e-10,
+      "passed": true
+    },
+    {
+      "label": "Added-feed physical extent mol/L",
+      "formula": "(10-sqrt(28))/6",
+      "recomputed": 0.7847495629784698,
+      "sourceRoundedValue": 0.7847,
+      "tolerance": 5e-05,
+      "passed": true
+    },
+    {
+      "label": "Added-feed K residual",
+      "formula": "x^2/((1.5-x)*(1-x))",
+      "recomputed": 3.9999999999999987,
+      "sourceRoundedValue": 4,
+      "tolerance": 1e-10,
+      "passed": true
+    },
+    {
+      "label": "Compressed physical extent mol/L",
+      "formula": "(5-sqrt(17))/4",
+      "recomputed": 0.21922359359558485,
+      "sourceRoundedValue": 0.2192,
+      "tolerance": 5e-05,
+      "passed": true
+    },
+    {
+      "label": "Compressed B mol/L",
+      "formula": "2-2x",
+      "recomputed": 1.5615528128088303,
+      "sourceRoundedValue": 1.5616,
+      "tolerance": 0.0001,
+      "passed": true
+    },
+    {
+      "label": "Compressed K residual",
+      "formula": "(2-2x)^2/(1+x)",
+      "recomputed": 2.0,
+      "sourceRoundedValue": 2,
+      "tolerance": 1e-10,
+      "passed": true
+    },
+    {
+      "label": "Compressed B mole fraction",
+      "formula": "(2-2x)/(3-x)",
+      "recomputed": 0.5615528128088302,
+      "sourceRoundedValue": 0.562,
+      "tolerance": 0.0005,
+      "passed": true
+    },
+    {
+      "label": "Haber immediate Qp factor",
+      "formula": "2^2/(2*2^3)",
+      "recomputed": 0.25,
+      "sourceRoundedValue": 0.25,
+      "tolerance": 1e-10,
+      "passed": true
+    },
+    {
+      "label": "Phosphate pH after 1 mmol/L acid",
+      "formula": "7.2+log10((base-1)/(acid+1))",
+      "recomputed": 6.9630065553529175,
+      "sourceRoundedValue": 6.96,
+      "tolerance": 0.005,
+      "passed": true
+    },
+    {
+      "label": "Cu charge C",
+      "formula": "2*965",
+      "recomputed": 1930,
+      "sourceRoundedValue": 1930,
+      "tolerance": 1e-10,
+      "passed": true
+    },
+    {
+      "label": "Cu electron amount mol",
+      "formula": "1930/F",
+      "recomputed": 0.020003109291599732,
+      "sourceRoundedValue": 0.020003,
+      "tolerance": 5e-07,
+      "passed": true
+    },
+    {
+      "label": "Cu deposited amount mol",
+      "formula": "1930/(2F)",
+      "recomputed": 0.010001554645799866,
+      "sourceRoundedValue": 0.0100016,
+      "tolerance": 5e-08,
+      "passed": true
+    },
+    {
+      "label": "Cu mass g",
+      "formula": "n*63.55",
+      "recomputed": 0.6355987977405815,
+      "sourceRoundedValue": 0.6356,
+      "tolerance": 5e-06,
+      "passed": true
+    },
+    {
+      "label": "Cu conversion percent",
+      "formula": "100*n/.05",
+      "recomputed": 20.00310929159973,
+      "sourceRoundedValue": 20.003,
+      "tolerance": 0.0005,
+      "passed": true
+    },
+    {
+      "label": "Cu inverse time s",
+      "formula": "2F*.02/2",
+      "recomputed": 1929.7,
+      "sourceRoundedValue": 1929.7,
+      "tolerance": 1e-05,
+      "passed": true
+    },
+    {
+      "label": "Cu efficiency-transfer amount mol",
+      "formula": ".8*n",
+      "recomputed": 0.008001243716639893,
+      "sourceRoundedValue": 0.0080012,
+      "tolerance": 5e-08,
+      "passed": true
+    },
+    {
+      "label": "Cu efficiency-transfer mass g",
+      "formula": ".8*n*63.55",
+      "recomputed": 0.5084790381924652,
+      "sourceRoundedValue": 0.50848,
+      "tolerance": 5e-06,
+      "passed": true
+    },
+    {
+      "label": "Al charge C",
+      "formula": "3F*.1",
+      "recomputed": 28945.5,
+      "sourceRoundedValue": 28945.5,
+      "tolerance": 1e-05,
+      "passed": true
+    },
+    {
+      "label": "Al time s",
+      "formula": "28945.5/5",
+      "recomputed": 5789.1,
+      "sourceRoundedValue": 5789.1,
+      "tolerance": 1e-05,
+      "passed": true
+    },
+    {
+      "label": "Al time min",
+      "formula": "5789.1/60",
+      "recomputed": 96.485,
+      "sourceRoundedValue": 96.485,
+      "tolerance": 1e-05,
+      "passed": true
+    },
+    {
+      "label": "Ag comparison mass g",
+      "formula": ".3*107.87",
+      "recomputed": 32.361,
+      "sourceRoundedValue": 32.361,
+      "tolerance": 1e-05,
+      "passed": true
+    },
+    {
+      "label": "Al inverse current A",
+      "formula": "28945.5/3600",
+      "recomputed": 8.040416666666667,
+      "sourceRoundedValue": 8.0404,
+      "tolerance": 5e-05,
+      "passed": true
+    },
+    {
+      "label": "Faraday changed-ion current A",
+      "formula": ".03*2F/1200",
+      "recomputed": 4.824249999999999,
+      "sourceRoundedValue": 4.82425,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "label": "Ag image amount mol",
+      "formula": "7200/F",
+      "recomputed": 0.07462299839353267,
+      "sourceRoundedValue": 0.0746,
+      "tolerance": 5e-05,
+      "passed": true
+    },
+    {
+      "label": "Ag image mass g",
+      "formula": "7200/F*107.9",
+      "recomputed": 8.051821526662176,
+      "sourceRoundedValue": 8.05,
+      "tolerance": 0.005,
+      "passed": true
+    },
+    {
+      "label": "Michaelis rate at S=0.5",
+      "formula": "100*S/(2+S)",
+      "recomputed": 20.0,
+      "sourceRoundedValue": 20,
+      "tolerance": 1e-10,
+      "passed": true
+    },
+    {
+      "label": "Michaelis rate at S=2",
+      "formula": "100*S/(2+S)",
+      "recomputed": 50.0,
+      "sourceRoundedValue": 50,
+      "tolerance": 1e-10,
+      "passed": true
+    },
+    {
+      "label": "Michaelis rate at S=8",
+      "formula": "100*S/(2+S)",
+      "recomputed": 80.0,
+      "sourceRoundedValue": 80,
+      "tolerance": 1e-10,
+      "passed": true
+    },
+    {
+      "label": "Arrhenius two-point J/mol",
+      "formula": "8.314*ln4/(1/300-1/320)",
+      "recomputed": 55323.12632808369,
+      "sourceRoundedValue": 55323.1,
+      "tolerance": 0.05,
+      "passed": true
+    },
+    {
+      "label": "Arrhenius ratio2 transfer kJ/mol",
+      "formula": "8.314*ln2/(1/300-1/320)/1000",
+      "recomputed": 27.661563164041844,
+      "sourceRoundedValue": 27.66,
+      "tolerance": 0.005,
+      "passed": true
+    },
+    {
+      "label": "Arrhenius fit kJ/mol",
+      "formula": "6000*8.314/1000",
+      "recomputed": 49.884,
+      "sourceRoundedValue": 49.884,
+      "tolerance": 1e-05,
+      "passed": true
+    },
+    {
+      "label": "Arrhenius axis transfer kJ/mol",
+      "formula": "4500*8.314/1000",
+      "recomputed": 37.413,
+      "sourceRoundedValue": 37.413,
+      "tolerance": 1e-05,
+      "passed": true
+    },
+    {
+      "label": "Arrhenius k300 s^-1",
+      "formula": "exp(18-6000/300)",
+      "recomputed": 0.1353352832366127,
+      "sourceRoundedValue": 0.13534,
+      "tolerance": 5e-06,
+      "passed": true
+    }
+  ]
+}

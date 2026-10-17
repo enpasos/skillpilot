@@ -105,12 +105,6 @@ interface SplitLayoutTemplate {
   placements: SplitLayoutPlacement[]
 }
 
-interface ReviewedOutputTargetPlacement {
-  structurePath: string[]
-  sourceDecisionId: string
-  node: CompositionNode
-}
-
 interface SplitLayoutPlan {
   schemaVersion: number
   status: string
@@ -133,10 +127,6 @@ interface SplitLayoutPlan {
     totalOutputCount: number
   }
   sek1Templates: SplitLayoutTemplate[]
-  crossStageTemplates: Array<{
-    outputFileName: string
-    reviewedTargetPlacements?: ReviewedOutputTargetPlacement[]
-  }>
 }
 
 const scriptDir = dirname(fileURLToPath(import.meta.url))
@@ -1608,63 +1598,6 @@ const sek1StructureIdForView = (view: CompositionView): string | null => {
   return null
 }
 
-/** Later source reviews may add an explicit target at a duration-specific
- * upper-stage parent without changing the shared base view or Sek-I layout.
- * Replay only those individually authored placements from this output's
- * reviewed plan; neither contains nor requires donates enrollment here. */
-const applyReviewedOutputTargetPlacements = (
-  fileName: string,
-  view: CompositionView,
-): CompositionView => {
-  const templates = splitLayoutPlan.crossStageTemplates.filter((template) => template.outputFileName === fileName)
-  if (templates.length > 1) throw new Error(`Duplicate reviewed output template ${fileName}`)
-  const placements = templates[0]?.reviewedTargetPlacements ?? []
-  if (placements.length === 0) return view
-  if (view.scope.stage !== 'CrossStage') throw new Error(`${fileName}: target placements require a cross-stage view`)
-  const result = clone(view)
-  const sek1Template = splitLayoutTemplateByFileName.get(
-    `${view.scope.jurisdiction.toLowerCase()}-seki-${view.scope.durationModel.toLowerCase()}.view.json`,
-  )
-  const nonTargetOverrides = new Set(sek1Template?.prerequisiteOnlyOverrideGoalIds ?? [])
-  const targetGoalIds = collectProjectedTargetGoalIds(result.rootNodes)
-  for (const placement of placements) {
-    const node = placement.node
-    const reference = node.kind === 'structure' && node.children.length === 1 ? node.children[0] : null
-    if (
-      !placement.sourceDecisionId?.trim()
-      || placement.structurePath.length < 2
-      || node.kind !== 'structure'
-      || node.id !== placement.structurePath.at(-1)
-      || !node.label.trim()
-      || reference?.kind !== 'goalEntry'
-      || reference.projectionRole !== 'target'
-    ) throw new Error(`${fileName}: invalid reviewed output target placement`)
-    const goal = goalById.get(reference.goalId)
-    if (
-      !goal
-      || (goal.contains?.length ?? 0) > 0
-      || semanticKindByGoalId.get(reference.goalId) !== 'curricularAtomic'
-      || !isGoalApplicableToJurisdiction(reference.goalId, view.scope.jurisdiction)
-      || nonTargetOverrides.has(reference.goalId)
-      || targetGoalIds.has(reference.goalId)
-    ) throw new Error(`${fileName}: invalid or duplicate reviewed output target ${reference.goalId}`)
-    let siblings = result.rootNodes
-    for (const structureId of placement.structurePath.slice(0, -1)) {
-      const parents = siblings.filter((candidate) => candidate.kind === 'structure' && candidate.id === structureId)
-      if (parents.length !== 1 || parents[0].kind !== 'structure') {
-        throw new Error(`${fileName}: missing or ambiguous reviewed parent ${structureId}`)
-      }
-      siblings = parents[0].children
-    }
-    if (siblings.some((candidate) => candidate.kind === 'structure' && candidate.id === node.id)) {
-      throw new Error(`${fileName}: duplicate reviewed structure ${node.id}`)
-    }
-    siblings.push(clone(node))
-    targetGoalIds.add(reference.goalId)
-  }
-  return result
-}
-
 const excludedAssessmentIdsByViewId = new Map<string, string[]>()
 
 const applyDirectPrerequisiteOnlyOverrides = (
@@ -1937,8 +1870,8 @@ const restoreSek1ExternalPrerequisites = (view: CompositionView): CompositionVie
 const generatedViews = new Map(
   [...unfilteredGeneratedViews].map(([fileName, view]) => [
     fileName,
-    applyReviewedOutputTargetPlacements(fileName, restoreSek1ExternalPrerequisites(restoreRightPrismFolder(
-      filterAssessmentsWithoutTargetPrerequisites(applyReviewedPrerequisiteOnlyOverrides(view)),
+    restoreSek1ExternalPrerequisites(restoreRightPrismFolder(filterAssessmentsWithoutTargetPrerequisites(
+      applyReviewedPrerequisiteOnlyOverrides(view),
     ))),
   ]),
 )

@@ -1,0 +1,1463 @@
+{
+  "recordKind": "FINITE_READONLY_EXISTING_EVIDENCE_SELECTION_NOT_A_NEW_SCIENCE_VOTE",
+  "createdAt": "2026-10-16T16:09:57.199685+00:00",
+  "canonical": {
+    "path": "tmp/chemie-m7-resumed-20261016/chemie-combined639-shared-and-seven-final-review-capsule-v1/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "sha256": "sha256:b3c50a6a0782247375dbad00a76a4ef5d5035030c12cbc2e9b190865e1ed33e1",
+    "bytes": 2557241
+  },
+  "summary": {
+    "exactCurrentExamData": 42,
+    "released": 21,
+    "notReleased": 21,
+    "notReleasedStatusCounts": {
+      "draft": 10,
+      "None": 8,
+      "needs_review": 3
+    },
+    "all42ActualTargetUnique": 28,
+    "all42ActualTargetViewOccurrences": 223,
+    "notReleasedActualTargetUnique": 10,
+    "notReleasedActualTargetViewOccurrences": 66,
+    "notReleasedNoTargetNoSupportNoDependentTarget": 11,
+    "wholeCurrentPairedMachineContentReleaseEligible": 8,
+    "existingFullAssessedContentPairButCurrentWholeAdmissionEvidenceGap": 2,
+    "unplacedLegacyNoReviewStatus": 8,
+    "unplacedRecyclingNeedsReviewWithExistingPositiveHistory": 3,
+    "newReviewsPerformed": 0,
+    "releaseWrites": 0,
+    "newD_P_A_M_VVotes": 0
+  },
+  "technical": {
+    "actualCurrentAPV": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current-L3-twenty-one-unreleased-assessments-existing-content-evidence-readonly-20261016-v1/APV.actual-current-L3.Chemistry-report.json",
+      "sha256": "sha256:6254672ab308d5b97982b52aefd5ce7fe3c04461124b16115cc94472adc99891",
+      "bytes": 7837123
+    },
+    "summary": {
+      "goals": 639,
+      "errors": 0,
+      "warnings": 154,
+      "diagnostics": 2189
+    },
+    "warningCodeBreakdown": {
+      "APV-201": 2,
+      "APV-203": 152
+    },
+    "all39CompilerErrors": 0,
+    "warningsAdjudicatedOrCQR501AcceptedByThisAudit": false,
+    "freshAllGatesPass": false,
+    "m4CurrentInput": {
+      "path": "tmp/chemie-m7-resumed-20261016/chemie-combined639-shared-and-seven-final-review-capsule-v1/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current437-four-current-contexts-root-native-resolution-synthesis-technical-20261016-v1/M437.retained433-whole-lines-plus-four-actual-paired-informed-A.review.jsonl",
+      "sha256": "sha256:feae37069c220893d32df8c25a0ff686461b023b7327d2567c7a7183c717db44"
+    },
+    "priorAttempt": "One attempt begun before the M4-ready notification was interrupted with SIGINT/exit130; no completed old stale-M APV result was used. Exactly one successful fresh stock run occurred after the legitimate M4 binding.",
+    "noFullBuildOrRuntimeSession": true
+  },
+  "policyAndActualCodeSemantics": {
+    "machineReleaseNotHuman": "docs/qa-ci/math-m7-commit-checkpoint-2026-09-29.md:21 explicitly distinguishes released machine-reviewed assessment content from human release.",
+    "CQR202203": "generateCurriculumQualityStatus.ts:2715 selects only immediate atomic children of six configured Chemistry terminal clusters; CQR202 at2811 checks concrete readiness including nonblank nonreleased status; CQR203 at2825 separately requires released plus coveredGoalIds/coveredStrands/demandLevels. This does not select every42examData object automatically.",
+    "configuredTerminalClusters": [
+      "9abac0f3-308d-536d-8454-56ed4fd98312",
+      "4beeb141-2a59-5093-b599-e513403221b0",
+      "e0f19114-9609-500d-8194-da7ee9bff72e",
+      "8ee41a31-2b8e-5dd5-9496-86aab61cdf27",
+      "b5f0201a-bc5b-5159-a36c-0925f198c32f",
+      "5964272f-e835-5a24-b2b1-c162be6b75cb"
+    ],
+    "hardCheck": "LearnerService.java:8612 and CoachStateProjection.java:344 reject nonblank reviewStatus other than released. An absent/blank status is not blocked by that status guard; task/solution/scoring/placeholder checks still apply. Source interpretation only; no Java session is claimed.",
+    "UI": "GoalCard.tsx:95 accepts absent/blank or released examData for rendering. This fallback does not establish content QA.",
+    "targetSemantics": "Current role/tag/APV-qualifiedtarget views are measured, prerequisiteOnly support and direct-dependent TARGET use are listed separately. Missing reviewStatus alone is not a new review quota for unplaced proposals.",
+    "preservedBoundaries": "No ordinary prerequisite/mastery rewrite, denominator reduction, hidden optional-topic selection, source-duty promotion, human release or M7 claim."
+  },
+  "sourceCodeAndPolicyPins": [
+    {
+      "path": "app/scripts/generateCurriculumQualityStatus.ts",
+      "sha256": "sha256:514bab03b7c041655e0063a4bf6ecb7ac4cd51edda9581e76182e980aa384957",
+      "bytes": 274591
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "sha256": "sha256:6feb500671761d9bf4d90e36aefb4517009d278a2b2193bee3307aafdd180bab",
+      "bytes": 529427
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/ai/CoachStateProjection.java",
+      "sha256": "sha256:46e62cc60b6d33083127f9143df37464e946dc211969643cfad7018fe16e2fd9",
+      "bytes": 20657
+    },
+    {
+      "path": "app/src/components/GoalCard.tsx",
+      "sha256": "sha256:9c062f02aa098ce688dbfe2ba5559d8475db610b21124d54f8ce9e272290d731",
+      "bytes": 44075
+    },
+    {
+      "path": "docs/qa-ci/math-m7-commit-checkpoint-2026-09-29.md",
+      "sha256": "sha256:6ecabb4d3850025e3ddbba572c9b988626f438d5b5c2871da0cfb5890a2a0b16",
+      "bytes": 6512
+    }
+  ],
+  "rows": [
+    {
+      "goalId": "e6cb2efa-0fd5-518d-9df2-c75aa71fa4c6",
+      "title": "Biokunststoff aus Milchsäure",
+      "reviewStatus": "draft",
+      "reviewStatusFieldPresent": true,
+      "wholeGoalBodyFingerprint": "sha256:4c9c6b75b9b86cc4b792f2962fe0d87478aca333a6a8e786f2379b17ff51f3e0",
+      "examBodyFingerprint": "sha256:a6fba1ecf53a22223a43181c336d01ac0229aa3d7fe9848f9605d5f68f3e6f84",
+      "assessedContentFingerprint": "sha256:bce44513d4b380aefad2c6444451ae1a2c3556549e15d3bc844f21d31346a3b1",
+      "scoring": {
+        "maxPoints": 30,
+        "passingPoints": 18,
+        "stepPointSum": 30
+      },
+      "actual39Usage": {
+        "goalId": "e6cb2efa-0fd5-518d-9df2-c75aa71fa4c6",
+        "authoredTargetViews": [
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-lk.view.json"
+        ],
+        "prerequisiteOnlyViews": [],
+        "actualTargetViews": [
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-lk.view.json"
+        ],
+        "actualDependentTargetOccurrences": [],
+        "canonicalDirectDependents": []
+      },
+      "inConfiguredCQR202203TerminalSet": true,
+      "existingReviews": [
+        {
+          "authority": "independent nonauthor A full tasks/materials/solutions/rubrics/source/course/interface",
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-seven-HE-historical-exams-fresh-independent-a-20261016-v1/FIRST.seven-whole-exam-science-and-interface.independent-a.frozen.json",
+            "sha256": "sha256:1c680b291f8184fb14e14bcd5b1512e20960427aa5793147fc0340c12e55e78c",
+            "bytes": 17962
+          },
+          "goalRow": "e6cb2efa-0fd5-518d-9df2-c75aa71fa4c6",
+          "decision": "KEEP",
+          "reviewedWholeBodyFingerprint": "sha256:4c9c6b75b9b86cc4b792f2962fe0d87478aca333a6a8e786f2379b17ff51f3e0",
+          "seal": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-seven-HE-historical-exams-fresh-independent-a-20261016-v1/HANDOFF.seven-full-exams-and-bounded-interfaces.independent-a.sealed.json",
+            "sha256": "sha256:7efd821ca6b1a90e1a2e29cf7ae7144562b3b234a249116361d772e10c76815d",
+            "bytes": 7249
+          }
+        },
+        {
+          "authority": "independent nonauthor B full tasks/materials/solutions/rubrics/source/course/interface",
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-seven-HE-historical-exam-science-interface-independent-b-20261016-v1/science.FIRST.seven-complete-exams.independent-b.json",
+            "sha256": "sha256:517c76b27b8468548db4c6bc451d5f0b6fce9fb9ae7899e3181370f423c1abab",
+            "bytes": 12319
+          },
+          "goalRow": "e6cb2efa-0fd5-518d-9df2-c75aa71fa4c6",
+          "decision": "KEEP",
+          "wholeCASBinding": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-seven-HE-historical-exam-atomic-interface-and-material-author-successor-20261016-v1/CAS.seven-WHOLE-exams.current639.AUTHOR.inactive.json",
+            "sha256": "sha256:d80ff21215ed5699b8b37cb8dfc6085c3ccd7ef2385f243b3fc20c06aa6a4675",
+            "bytes": 105297
+          },
+          "seal": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-seven-HE-historical-exam-science-interface-independent-b-20261016-v1/science.FIRST.seven-complete-exams.independent-b.seal.json",
+            "sha256": "sha256:e2dd7c468072e56cfd5ed05461fb170c8018a1a4ee7bf51cdc83255907245d39",
+            "bytes": 335
+          }
+        }
+      ],
+      "currentScienceVoteProduced": false,
+      "releaseWritePerformed": false,
+      "HumanApproval": false,
+      "HumanTrial": false,
+      "evidenceDisposition": "ELIGIBLE_CURRENT_WHOLE_BYTE_BOUND_MACHINE_CONTENT_RELEASE_ONLY",
+      "pairedFullCurrentWholeContentReview": true,
+      "assessedContentByteIdentityVerified": true,
+      "currentWholeByteIdentityVerified": true,
+      "negativeFindingsForCurrentSelectedCandidate": [],
+      "minimumNextStep": "Root may prepare truthful machine-content release metadata after its integration gates. Retain existing draft until that separate operation. No human or full-route claim."
+    },
+    {
+      "goalId": "35b76ced-abb8-558b-8e05-29aa3c587e75",
+      "title": "Ammoniaksynthese im Containerlabor",
+      "reviewStatus": "draft",
+      "reviewStatusFieldPresent": true,
+      "wholeGoalBodyFingerprint": "sha256:6bc0d76e06382b77404a550d0c0d0361b35e889d7282cf0834f8513738554d79",
+      "examBodyFingerprint": "sha256:d2ef303fb4de3f9daaee32add7ec842c6873f883b8672c5fae50b43c4f46ec8a",
+      "assessedContentFingerprint": "sha256:063eea695d5d6af1bad849a4e28804278972202f56782693a68a3b2c2ac43975",
+      "scoring": {
+        "maxPoints": 30,
+        "passingPoints": 18,
+        "stepPointSum": 30
+      },
+      "actual39Usage": {
+        "goalId": "35b76ced-abb8-558b-8e05-29aa3c587e75",
+        "authoredTargetViews": [
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-lk.view.json"
+        ],
+        "prerequisiteOnlyViews": [],
+        "actualTargetViews": [
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-lk.view.json"
+        ],
+        "actualDependentTargetOccurrences": [],
+        "canonicalDirectDependents": []
+      },
+      "inConfiguredCQR202203TerminalSet": true,
+      "existingReviews": [
+        {
+          "authority": "independent nonauthor A full tasks/materials/solutions/rubrics/source/course/interface",
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-seven-HE-historical-exams-fresh-independent-a-20261016-v1/FIRST.seven-whole-exam-science-and-interface.independent-a.frozen.json",
+            "sha256": "sha256:1c680b291f8184fb14e14bcd5b1512e20960427aa5793147fc0340c12e55e78c",
+            "bytes": 17962
+          },
+          "goalRow": "35b76ced-abb8-558b-8e05-29aa3c587e75",
+          "decision": "KEEP",
+          "reviewedWholeBodyFingerprint": "sha256:6bc0d76e06382b77404a550d0c0d0361b35e889d7282cf0834f8513738554d79",
+          "seal": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-seven-HE-historical-exams-fresh-independent-a-20261016-v1/HANDOFF.seven-full-exams-and-bounded-interfaces.independent-a.sealed.json",
+            "sha256": "sha256:7efd821ca6b1a90e1a2e29cf7ae7144562b3b234a249116361d772e10c76815d",
+            "bytes": 7249
+          }
+        },
+        {
+          "authority": "independent nonauthor B full tasks/materials/solutions/rubrics/source/course/interface",
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-seven-HE-historical-exam-science-interface-independent-b-20261016-v1/science.FIRST.seven-complete-exams.independent-b.json",
+            "sha256": "sha256:517c76b27b8468548db4c6bc451d5f0b6fce9fb9ae7899e3181370f423c1abab",
+            "bytes": 12319
+          },
+          "goalRow": "35b76ced-abb8-558b-8e05-29aa3c587e75",
+          "decision": "KEEP genuine limited MWG subcase replacement",
+          "wholeCASBinding": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-seven-HE-historical-exam-atomic-interface-and-material-author-successor-20261016-v1/CAS.seven-WHOLE-exams.current639.AUTHOR.inactive.json",
+            "sha256": "sha256:d80ff21215ed5699b8b37cb8dfc6085c3ccd7ef2385f243b3fc20c06aa6a4675",
+            "bytes": 105297
+          },
+          "seal": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-seven-HE-historical-exam-science-interface-independent-b-20261016-v1/science.FIRST.seven-complete-exams.independent-b.seal.json",
+            "sha256": "sha256:e2dd7c468072e56cfd5ed05461fb170c8018a1a4ee7bf51cdc83255907245d39",
+            "bytes": 335
+          }
+        }
+      ],
+      "currentScienceVoteProduced": false,
+      "releaseWritePerformed": false,
+      "HumanApproval": false,
+      "HumanTrial": false,
+      "evidenceDisposition": "ELIGIBLE_CURRENT_WHOLE_BYTE_BOUND_MACHINE_CONTENT_RELEASE_ONLY",
+      "pairedFullCurrentWholeContentReview": true,
+      "assessedContentByteIdentityVerified": true,
+      "currentWholeByteIdentityVerified": true,
+      "negativeFindingsForCurrentSelectedCandidate": [],
+      "minimumNextStep": "Root may prepare truthful machine-content release metadata after its integration gates. Retain existing draft until that separate operation. No human or full-route claim."
+    },
+    {
+      "goalId": "8872d828-a025-5e45-af74-3d84caedfb73",
+      "title": "Proteinshake und Denaturierung",
+      "reviewStatus": "draft",
+      "reviewStatusFieldPresent": true,
+      "wholeGoalBodyFingerprint": "sha256:8c5e865bc9e659fcbefef627d82ea88f41174b993cc635bc54efe7f3401a421a",
+      "examBodyFingerprint": "sha256:7e3db857c6baa8019df783ddfcfbd74a1c405255727bd2ab4f3568c217faa54b",
+      "assessedContentFingerprint": "sha256:46904e985dffcf6c264713d380f4e414ac89c529db79b60b67ae19112b301631",
+      "scoring": {
+        "maxPoints": 30,
+        "passingPoints": 18,
+        "stepPointSum": 30
+      },
+      "actual39Usage": {
+        "goalId": "8872d828-a025-5e45-af74-3d84caedfb73",
+        "authoredTargetViews": [
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-lk.view.json"
+        ],
+        "prerequisiteOnlyViews": [],
+        "actualTargetViews": [
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-lk.view.json"
+        ],
+        "actualDependentTargetOccurrences": [],
+        "canonicalDirectDependents": []
+      },
+      "inConfiguredCQR202203TerminalSet": true,
+      "existingReviews": [
+        {
+          "authority": "independent nonauthor A full tasks/materials/solutions/rubrics/source/course/interface",
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-seven-HE-historical-exams-fresh-independent-a-20261016-v1/FIRST.seven-whole-exam-science-and-interface.independent-a.frozen.json",
+            "sha256": "sha256:1c680b291f8184fb14e14bcd5b1512e20960427aa5793147fc0340c12e55e78c",
+            "bytes": 17962
+          },
+          "goalRow": "8872d828-a025-5e45-af74-3d84caedfb73",
+          "decision": "KEEP",
+          "reviewedWholeBodyFingerprint": "sha256:8c5e865bc9e659fcbefef627d82ea88f41174b993cc635bc54efe7f3401a421a",
+          "seal": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-seven-HE-historical-exams-fresh-independent-a-20261016-v1/HANDOFF.seven-full-exams-and-bounded-interfaces.independent-a.sealed.json",
+            "sha256": "sha256:7efd821ca6b1a90e1a2e29cf7ae7144562b3b234a249116361d772e10c76815d",
+            "bytes": 7249
+          }
+        },
+        {
+          "authority": "independent nonauthor B full tasks/materials/solutions/rubrics/source/course/interface",
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-seven-HE-historical-exam-science-interface-independent-b-20261016-v1/science.FIRST.seven-complete-exams.independent-b.json",
+            "sha256": "sha256:517c76b27b8468548db4c6bc451d5f0b6fce9fb9ae7899e3181370f423c1abab",
+            "bytes": 12319
+          },
+          "goalRow": "8872d828-a025-5e45-af74-3d84caedfb73",
+          "decision": "KEEP",
+          "wholeCASBinding": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-seven-HE-historical-exam-atomic-interface-and-material-author-successor-20261016-v1/CAS.seven-WHOLE-exams.current639.AUTHOR.inactive.json",
+            "sha256": "sha256:d80ff21215ed5699b8b37cb8dfc6085c3ccd7ef2385f243b3fc20c06aa6a4675",
+            "bytes": 105297
+          },
+          "seal": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-seven-HE-historical-exam-science-interface-independent-b-20261016-v1/science.FIRST.seven-complete-exams.independent-b.seal.json",
+            "sha256": "sha256:e2dd7c468072e56cfd5ed05461fb170c8018a1a4ee7bf51cdc83255907245d39",
+            "bytes": 335
+          }
+        }
+      ],
+      "currentScienceVoteProduced": false,
+      "releaseWritePerformed": false,
+      "HumanApproval": false,
+      "HumanTrial": false,
+      "evidenceDisposition": "ELIGIBLE_CURRENT_WHOLE_BYTE_BOUND_MACHINE_CONTENT_RELEASE_ONLY",
+      "pairedFullCurrentWholeContentReview": true,
+      "assessedContentByteIdentityVerified": true,
+      "currentWholeByteIdentityVerified": true,
+      "negativeFindingsForCurrentSelectedCandidate": [],
+      "minimumNextStep": "Root may prepare truthful machine-content release metadata after its integration gates. Retain existing draft until that separate operation. No human or full-route claim."
+    },
+    {
+      "goalId": "954b55d6-8a2b-533d-8aff-dadaf6306916",
+      "title": "ABS-Gehäuse im Recyclinglabor",
+      "reviewStatus": "draft",
+      "reviewStatusFieldPresent": true,
+      "wholeGoalBodyFingerprint": "sha256:6b050a0d34284a6c0db3d7747749a6e8d076f120dcc16ad0a10eb7624e3c1224",
+      "examBodyFingerprint": "sha256:9fd7bdd1a746e4bfeced7693be402e31519a8727cdf4f51531116092f73374ad",
+      "assessedContentFingerprint": "sha256:a8b27a3ba786e3629a1201823976ca5ad366664cdd318c27097b5066b5db6f35",
+      "scoring": {
+        "maxPoints": 30,
+        "passingPoints": 18,
+        "stepPointSum": 30
+      },
+      "actual39Usage": {
+        "goalId": "954b55d6-8a2b-533d-8aff-dadaf6306916",
+        "authoredTargetViews": [
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-lk.view.json"
+        ],
+        "prerequisiteOnlyViews": [],
+        "actualTargetViews": [
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-lk.view.json"
+        ],
+        "actualDependentTargetOccurrences": [],
+        "canonicalDirectDependents": []
+      },
+      "inConfiguredCQR202203TerminalSet": true,
+      "existingReviews": [
+        {
+          "authority": "independent nonauthor A full tasks/materials/solutions/rubrics/source/course/interface",
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-seven-HE-historical-exams-fresh-independent-a-20261016-v1/FIRST.seven-whole-exam-science-and-interface.independent-a.frozen.json",
+            "sha256": "sha256:1c680b291f8184fb14e14bcd5b1512e20960427aa5793147fc0340c12e55e78c",
+            "bytes": 17962
+          },
+          "goalRow": "954b55d6-8a2b-533d-8aff-dadaf6306916",
+          "decision": "KEEP",
+          "reviewedWholeBodyFingerprint": "sha256:6b050a0d34284a6c0db3d7747749a6e8d076f120dcc16ad0a10eb7624e3c1224",
+          "seal": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-seven-HE-historical-exams-fresh-independent-a-20261016-v1/HANDOFF.seven-full-exams-and-bounded-interfaces.independent-a.sealed.json",
+            "sha256": "sha256:7efd821ca6b1a90e1a2e29cf7ae7144562b3b234a249116361d772e10c76815d",
+            "bytes": 7249
+          }
+        },
+        {
+          "authority": "independent nonauthor B full tasks/materials/solutions/rubrics/source/course/interface",
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-seven-HE-historical-exam-science-interface-independent-b-20261016-v1/science.FIRST.seven-complete-exams.independent-b.json",
+            "sha256": "sha256:517c76b27b8468548db4c6bc451d5f0b6fce9fb9ae7899e3181370f423c1abab",
+            "bytes": 12319
+          },
+          "goalRow": "954b55d6-8a2b-533d-8aff-dadaf6306916",
+          "decision": "KEEP",
+          "wholeCASBinding": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-seven-HE-historical-exam-atomic-interface-and-material-author-successor-20261016-v1/CAS.seven-WHOLE-exams.current639.AUTHOR.inactive.json",
+            "sha256": "sha256:d80ff21215ed5699b8b37cb8dfc6085c3ccd7ef2385f243b3fc20c06aa6a4675",
+            "bytes": 105297
+          },
+          "seal": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-seven-HE-historical-exam-science-interface-independent-b-20261016-v1/science.FIRST.seven-complete-exams.independent-b.seal.json",
+            "sha256": "sha256:e2dd7c468072e56cfd5ed05461fb170c8018a1a4ee7bf51cdc83255907245d39",
+            "bytes": 335
+          }
+        }
+      ],
+      "currentScienceVoteProduced": false,
+      "releaseWritePerformed": false,
+      "HumanApproval": false,
+      "HumanTrial": false,
+      "evidenceDisposition": "ELIGIBLE_CURRENT_WHOLE_BYTE_BOUND_MACHINE_CONTENT_RELEASE_ONLY",
+      "pairedFullCurrentWholeContentReview": true,
+      "assessedContentByteIdentityVerified": true,
+      "currentWholeByteIdentityVerified": true,
+      "negativeFindingsForCurrentSelectedCandidate": [],
+      "minimumNextStep": "Root may prepare truthful machine-content release metadata after its integration gates. Retain existing draft until that separate operation. No human or full-route claim."
+    },
+    {
+      "goalId": "bacf2568-03bc-5655-8798-cda078c897e3",
+      "title": "Starke Referenzsäure für die Getränkekontrolle titrieren",
+      "reviewStatus": "draft",
+      "reviewStatusFieldPresent": true,
+      "wholeGoalBodyFingerprint": "sha256:1680f81097b692da65df8cec711e4837e5cc174dc75a51c0af239cd7ef42d7ab",
+      "examBodyFingerprint": "sha256:c03e59ee1d227498a4de7c264c89d9a7b579f9b4fabedb476189b3a5453f9c11",
+      "assessedContentFingerprint": "sha256:c69e55220450d586db7ba1bbd0f52beba97e1397f9239d50a3d6bbc71b70ce45",
+      "scoring": {
+        "maxPoints": 30,
+        "passingPoints": 18,
+        "stepPointSum": 30
+      },
+      "actual39Usage": {
+        "goalId": "bacf2568-03bc-5655-8798-cda078c897e3",
+        "authoredTargetViews": [
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-lk.view.json"
+        ],
+        "prerequisiteOnlyViews": [],
+        "actualTargetViews": [
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-lk.view.json"
+        ],
+        "actualDependentTargetOccurrences": [],
+        "canonicalDirectDependents": []
+      },
+      "inConfiguredCQR202203TerminalSet": true,
+      "existingReviews": [
+        {
+          "authority": "independent nonauthor A full tasks/materials/solutions/rubrics/source/course/interface",
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-seven-HE-historical-exams-fresh-independent-a-20261016-v1/FIRST.seven-whole-exam-science-and-interface.independent-a.frozen.json",
+            "sha256": "sha256:1c680b291f8184fb14e14bcd5b1512e20960427aa5793147fc0340c12e55e78c",
+            "bytes": 17962
+          },
+          "goalRow": "bacf2568-03bc-5655-8798-cda078c897e3",
+          "decision": "KEEP",
+          "reviewedWholeBodyFingerprint": "sha256:1680f81097b692da65df8cec711e4837e5cc174dc75a51c0af239cd7ef42d7ab",
+          "seal": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-seven-HE-historical-exams-fresh-independent-a-20261016-v1/HANDOFF.seven-full-exams-and-bounded-interfaces.independent-a.sealed.json",
+            "sha256": "sha256:7efd821ca6b1a90e1a2e29cf7ae7144562b3b234a249116361d772e10c76815d",
+            "bytes": 7249
+          }
+        },
+        {
+          "authority": "independent nonauthor B full tasks/materials/solutions/rubrics/source/course/interface",
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-seven-HE-historical-exam-science-interface-independent-b-20261016-v1/science.FIRST.seven-complete-exams.independent-b.json",
+            "sha256": "sha256:517c76b27b8468548db4c6bc451d5f0b6fce9fb9ae7899e3181370f423c1abab",
+            "bytes": 12319
+          },
+          "goalRow": "bacf2568-03bc-5655-8798-cda078c897e3",
+          "decision": "KEEP genuine common-course material replacement",
+          "wholeCASBinding": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-seven-HE-historical-exam-atomic-interface-and-material-author-successor-20261016-v1/CAS.seven-WHOLE-exams.current639.AUTHOR.inactive.json",
+            "sha256": "sha256:d80ff21215ed5699b8b37cb8dfc6085c3ccd7ef2385f243b3fc20c06aa6a4675",
+            "bytes": 105297
+          },
+          "seal": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-seven-HE-historical-exam-science-interface-independent-b-20261016-v1/science.FIRST.seven-complete-exams.independent-b.seal.json",
+            "sha256": "sha256:e2dd7c468072e56cfd5ed05461fb170c8018a1a4ee7bf51cdc83255907245d39",
+            "bytes": 335
+          }
+        }
+      ],
+      "currentScienceVoteProduced": false,
+      "releaseWritePerformed": false,
+      "HumanApproval": false,
+      "HumanTrial": false,
+      "evidenceDisposition": "ELIGIBLE_CURRENT_WHOLE_BYTE_BOUND_MACHINE_CONTENT_RELEASE_ONLY",
+      "pairedFullCurrentWholeContentReview": true,
+      "assessedContentByteIdentityVerified": true,
+      "currentWholeByteIdentityVerified": true,
+      "negativeFindingsForCurrentSelectedCandidate": [],
+      "minimumNextStep": "Root may prepare truthful machine-content release metadata after its integration gates. Retain existing draft until that separate operation. No human or full-route claim."
+    },
+    {
+      "goalId": "c31fa777-89c0-52f5-a6d9-d054027aabf5",
+      "title": "Korrosionsschutz an einer Schiffsschraube",
+      "reviewStatus": "draft",
+      "reviewStatusFieldPresent": true,
+      "wholeGoalBodyFingerprint": "sha256:ac3d98da12700821ad4af4539729f036d0e58f93a3adaec42c54fb1cc8c55293",
+      "examBodyFingerprint": "sha256:e602360b9569168f8d3a381caf56ec95617837b7e2e07c3532aff5c7b812caad",
+      "assessedContentFingerprint": "sha256:84b1fcab370fd749ce81b1717bd0b16d85a578799c8f854600c5a92397565c75",
+      "scoring": {
+        "maxPoints": 30,
+        "passingPoints": 18,
+        "stepPointSum": 30
+      },
+      "actual39Usage": {
+        "goalId": "c31fa777-89c0-52f5-a6d9-d054027aabf5",
+        "authoredTargetViews": [
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-lk.view.json"
+        ],
+        "prerequisiteOnlyViews": [],
+        "actualTargetViews": [
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-lk.view.json"
+        ],
+        "actualDependentTargetOccurrences": [],
+        "canonicalDirectDependents": []
+      },
+      "inConfiguredCQR202203TerminalSet": true,
+      "existingReviews": [
+        {
+          "authority": "independent nonauthor A full tasks/materials/solutions/rubrics/source/course/interface",
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-seven-HE-historical-exams-fresh-independent-a-20261016-v1/FIRST.seven-whole-exam-science-and-interface.independent-a.frozen.json",
+            "sha256": "sha256:1c680b291f8184fb14e14bcd5b1512e20960427aa5793147fc0340c12e55e78c",
+            "bytes": 17962
+          },
+          "goalRow": "c31fa777-89c0-52f5-a6d9-d054027aabf5",
+          "decision": "KEEP",
+          "reviewedWholeBodyFingerprint": "sha256:ac3d98da12700821ad4af4539729f036d0e58f93a3adaec42c54fb1cc8c55293",
+          "seal": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-seven-HE-historical-exams-fresh-independent-a-20261016-v1/HANDOFF.seven-full-exams-and-bounded-interfaces.independent-a.sealed.json",
+            "sha256": "sha256:7efd821ca6b1a90e1a2e29cf7ae7144562b3b234a249116361d772e10c76815d",
+            "bytes": 7249
+          }
+        },
+        {
+          "authority": "independent nonauthor B full tasks/materials/solutions/rubrics/source/course/interface",
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-seven-HE-historical-exam-science-interface-independent-b-20261016-v1/science.FIRST.seven-complete-exams.independent-b.json",
+            "sha256": "sha256:517c76b27b8468548db4c6bc451d5f0b6fce9fb9ae7899e3181370f423c1abab",
+            "bytes": 12319
+          },
+          "goalRow": "c31fa777-89c0-52f5-a6d9-d054027aabf5",
+          "decision": "KEEP",
+          "wholeCASBinding": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-seven-HE-historical-exam-atomic-interface-and-material-author-successor-20261016-v1/CAS.seven-WHOLE-exams.current639.AUTHOR.inactive.json",
+            "sha256": "sha256:d80ff21215ed5699b8b37cb8dfc6085c3ccd7ef2385f243b3fc20c06aa6a4675",
+            "bytes": 105297
+          },
+          "seal": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-seven-HE-historical-exam-science-interface-independent-b-20261016-v1/science.FIRST.seven-complete-exams.independent-b.seal.json",
+            "sha256": "sha256:e2dd7c468072e56cfd5ed05461fb170c8018a1a4ee7bf51cdc83255907245d39",
+            "bytes": 335
+          }
+        }
+      ],
+      "currentScienceVoteProduced": false,
+      "releaseWritePerformed": false,
+      "HumanApproval": false,
+      "HumanTrial": false,
+      "evidenceDisposition": "ELIGIBLE_CURRENT_WHOLE_BYTE_BOUND_MACHINE_CONTENT_RELEASE_ONLY",
+      "pairedFullCurrentWholeContentReview": true,
+      "assessedContentByteIdentityVerified": true,
+      "currentWholeByteIdentityVerified": true,
+      "negativeFindingsForCurrentSelectedCandidate": [],
+      "minimumNextStep": "Root may prepare truthful machine-content release metadata after its integration gates. Retain existing draft until that separate operation. No human or full-route claim."
+    },
+    {
+      "goalId": "4a2477e3-3bae-5452-8058-58e6ed9cc3e3",
+      "title": "Waschmittelkonzentrat und Temperaturwahl",
+      "reviewStatus": "draft",
+      "reviewStatusFieldPresent": true,
+      "wholeGoalBodyFingerprint": "sha256:893d8d80240ea56448eed0825c062a941a8b0cb6b0be820bfe46e3f794a9c344",
+      "examBodyFingerprint": "sha256:49bd9894b93fe441c0903bfb8fca764f2cf6e867bafcc5cdea7d7c11ae0fc5d1",
+      "assessedContentFingerprint": "sha256:0199b7c56038bb78e781a1c8de13686c37006a8b0a6f6b1f0b3ebb4a28e6d074",
+      "scoring": {
+        "maxPoints": 30,
+        "passingPoints": 18,
+        "stepPointSum": 30
+      },
+      "actual39Usage": {
+        "goalId": "4a2477e3-3bae-5452-8058-58e6ed9cc3e3",
+        "authoredTargetViews": [
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-lk.view.json"
+        ],
+        "prerequisiteOnlyViews": [],
+        "actualTargetViews": [
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-lk.view.json"
+        ],
+        "actualDependentTargetOccurrences": [],
+        "canonicalDirectDependents": []
+      },
+      "inConfiguredCQR202203TerminalSet": true,
+      "existingReviews": [
+        {
+          "authority": "independent nonauthor A full tasks/materials/solutions/rubrics/source/course/interface",
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-seven-HE-historical-exams-fresh-independent-a-20261016-v1/FIRST.seven-whole-exam-science-and-interface.independent-a.frozen.json",
+            "sha256": "sha256:1c680b291f8184fb14e14bcd5b1512e20960427aa5793147fc0340c12e55e78c",
+            "bytes": 17962
+          },
+          "goalRow": "4a2477e3-3bae-5452-8058-58e6ed9cc3e3",
+          "decision": "KEEP",
+          "reviewedWholeBodyFingerprint": "sha256:893d8d80240ea56448eed0825c062a941a8b0cb6b0be820bfe46e3f794a9c344",
+          "seal": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-seven-HE-historical-exams-fresh-independent-a-20261016-v1/HANDOFF.seven-full-exams-and-bounded-interfaces.independent-a.sealed.json",
+            "sha256": "sha256:7efd821ca6b1a90e1a2e29cf7ae7144562b3b234a249116361d772e10c76815d",
+            "bytes": 7249
+          }
+        },
+        {
+          "authority": "independent nonauthor B full tasks/materials/solutions/rubrics/source/course/interface",
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-seven-HE-historical-exam-science-interface-independent-b-20261016-v1/science.FIRST.seven-complete-exams.independent-b.json",
+            "sha256": "sha256:517c76b27b8468548db4c6bc451d5f0b6fce9fb9ae7899e3181370f423c1abab",
+            "bytes": 12319
+          },
+          "goalRow": "4a2477e3-3bae-5452-8058-58e6ed9cc3e3",
+          "decision": "KEEP",
+          "wholeCASBinding": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-seven-HE-historical-exam-atomic-interface-and-material-author-successor-20261016-v1/CAS.seven-WHOLE-exams.current639.AUTHOR.inactive.json",
+            "sha256": "sha256:d80ff21215ed5699b8b37cb8dfc6085c3ccd7ef2385f243b3fc20c06aa6a4675",
+            "bytes": 105297
+          },
+          "seal": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-seven-HE-historical-exam-science-interface-independent-b-20261016-v1/science.FIRST.seven-complete-exams.independent-b.seal.json",
+            "sha256": "sha256:e2dd7c468072e56cfd5ed05461fb170c8018a1a4ee7bf51cdc83255907245d39",
+            "bytes": 335
+          }
+        }
+      ],
+      "currentScienceVoteProduced": false,
+      "releaseWritePerformed": false,
+      "HumanApproval": false,
+      "HumanTrial": false,
+      "evidenceDisposition": "ELIGIBLE_CURRENT_WHOLE_BYTE_BOUND_MACHINE_CONTENT_RELEASE_ONLY",
+      "pairedFullCurrentWholeContentReview": true,
+      "assessedContentByteIdentityVerified": true,
+      "currentWholeByteIdentityVerified": true,
+      "negativeFindingsForCurrentSelectedCandidate": [],
+      "minimumNextStep": "Root may prepare truthful machine-content release metadata after its integration gates. Retain existing draft until that separate operation. No human or full-route claim."
+    },
+    {
+      "goalId": "7982e338-79bd-554a-badf-21d9a72ed7f0",
+      "title": "Vorschlag A (GK) - Duftstoff aus Restalkohol und Fruchtsäure",
+      "reviewStatus": null,
+      "reviewStatusFieldPresent": false,
+      "wholeGoalBodyFingerprint": "sha256:e1dde09a8bcea6a421e19c9346b7bcd9a1a11ce443044201825267d05fb9343a",
+      "examBodyFingerprint": "sha256:330a1dd7ee5bea39c141790c26fb837f834e19525208c0a8957c05c100003aea",
+      "assessedContentFingerprint": "sha256:330a1dd7ee5bea39c141790c26fb837f834e19525208c0a8957c05c100003aea",
+      "scoring": {
+        "maxPoints": 25,
+        "passingPoints": 15,
+        "stepPointSum": 25
+      },
+      "actual39Usage": {
+        "goalId": "7982e338-79bd-554a-badf-21d9a72ed7f0",
+        "authoredTargetViews": [],
+        "prerequisiteOnlyViews": [],
+        "actualTargetViews": [],
+        "actualDependentTargetOccurrences": [],
+        "canonicalDirectDependents": []
+      },
+      "inConfiguredCQR202203TerminalSet": false,
+      "existingReviews": [],
+      "currentScienceVoteProduced": false,
+      "releaseWritePerformed": false,
+      "HumanApproval": false,
+      "HumanTrial": false,
+      "evidenceDisposition": "UNPLACED_LEGACY_PROPOSAL_NO_ACTIVE_LAYER_A_RELEASE_WORK_INFERRED",
+      "pairedFullCurrentWholeContentReview": false,
+      "reviewSearch": "SEARCH.eight-status-absent-legacy-proposals.bounded-existing-review-history.json",
+      "searchConclusion": "No actual full-content pair found in the stated bounded existing-review search. Semantic-kind metadata and view diagnostics are not full-content reviews. This is not a universal claim that no review ever existed.",
+      "negativeContentOrRubricDecision": "NONE_PRODUCED: no new science assessment was authorized.",
+      "minimumNextStep": "Preserve absent authoring reviewStatus and existing body. With0target/0support/0dependent-target use, no current LayerA review or release quota is inferred."
+    },
+    {
+      "goalId": "37672991-f784-5223-a616-70e79b4cbcea",
+      "title": "Vorschlag B (GK) - PLA-Becher mit Vanillinbeschichtung",
+      "reviewStatus": null,
+      "reviewStatusFieldPresent": false,
+      "wholeGoalBodyFingerprint": "sha256:c4e8a8d662af781f1d95626cfd5166585a14af23a968ed5ca5fe08ff6c0276fd",
+      "examBodyFingerprint": "sha256:c0b5bc627e853149595545921cc3f07f7f709a06cc63369f6606fe5b2c55af9a",
+      "assessedContentFingerprint": "sha256:c0b5bc627e853149595545921cc3f07f7f709a06cc63369f6606fe5b2c55af9a",
+      "scoring": {
+        "maxPoints": 25,
+        "passingPoints": 15,
+        "stepPointSum": 25
+      },
+      "actual39Usage": {
+        "goalId": "37672991-f784-5223-a616-70e79b4cbcea",
+        "authoredTargetViews": [],
+        "prerequisiteOnlyViews": [],
+        "actualTargetViews": [],
+        "actualDependentTargetOccurrences": [],
+        "canonicalDirectDependents": []
+      },
+      "inConfiguredCQR202203TerminalSet": false,
+      "existingReviews": [],
+      "currentScienceVoteProduced": false,
+      "releaseWritePerformed": false,
+      "HumanApproval": false,
+      "HumanTrial": false,
+      "evidenceDisposition": "UNPLACED_LEGACY_PROPOSAL_NO_ACTIVE_LAYER_A_RELEASE_WORK_INFERRED",
+      "pairedFullCurrentWholeContentReview": false,
+      "reviewSearch": "SEARCH.eight-status-absent-legacy-proposals.bounded-existing-review-history.json",
+      "searchConclusion": "No actual full-content pair found in the stated bounded existing-review search. Semantic-kind metadata and view diagnostics are not full-content reviews. This is not a universal claim that no review ever existed.",
+      "negativeContentOrRubricDecision": "NONE_PRODUCED: no new science assessment was authorized.",
+      "minimumNextStep": "Preserve absent authoring reviewStatus and existing body. With0target/0support/0dependent-target use, no current LayerA review or release quota is inferred."
+    },
+    {
+      "goalId": "0091a271-9103-549b-85e4-775412331a71",
+      "title": "Vorschlag C (GK) - Essigreiniger im Kalktest",
+      "reviewStatus": null,
+      "reviewStatusFieldPresent": false,
+      "wholeGoalBodyFingerprint": "sha256:aa6865fc0217f34163cd660a3de95e9dd2f34cd30b72d211aa5229919c50103b",
+      "examBodyFingerprint": "sha256:2405831fc7f0d98d6ca1c701eb6f1ac2d8a70f055aa23b03b6609f8d7cd1f045",
+      "assessedContentFingerprint": "sha256:2405831fc7f0d98d6ca1c701eb6f1ac2d8a70f055aa23b03b6609f8d7cd1f045",
+      "scoring": {
+        "maxPoints": 25,
+        "passingPoints": 15,
+        "stepPointSum": 25
+      },
+      "actual39Usage": {
+        "goalId": "0091a271-9103-549b-85e4-775412331a71",
+        "authoredTargetViews": [],
+        "prerequisiteOnlyViews": [],
+        "actualTargetViews": [],
+        "actualDependentTargetOccurrences": [],
+        "canonicalDirectDependents": []
+      },
+      "inConfiguredCQR202203TerminalSet": false,
+      "existingReviews": [],
+      "currentScienceVoteProduced": false,
+      "releaseWritePerformed": false,
+      "HumanApproval": false,
+      "HumanTrial": false,
+      "evidenceDisposition": "UNPLACED_LEGACY_PROPOSAL_NO_ACTIVE_LAYER_A_RELEASE_WORK_INFERRED",
+      "pairedFullCurrentWholeContentReview": false,
+      "reviewSearch": "SEARCH.eight-status-absent-legacy-proposals.bounded-existing-review-history.json",
+      "searchConclusion": "No actual full-content pair found in the stated bounded existing-review search. Semantic-kind metadata and view diagnostics are not full-content reviews. This is not a universal claim that no review ever existed.",
+      "negativeContentOrRubricDecision": "NONE_PRODUCED: no new science assessment was authorized.",
+      "minimumNextStep": "Preserve absent authoring reviewStatus and existing body. With0target/0support/0dependent-target use, no current LayerA review or release quota is inferred."
+    },
+    {
+      "goalId": "a2ea5606-4ab6-5962-a510-32d205459dd5",
+      "title": "Vorschlag D (GK) - Puffer für einen Fermenter",
+      "reviewStatus": null,
+      "reviewStatusFieldPresent": false,
+      "wholeGoalBodyFingerprint": "sha256:813d985dcc55f5ae4620ad6cc9fd9707a8392f57b4d95b75e780bf739b4b9ac9",
+      "examBodyFingerprint": "sha256:4c49c505f19d48e247db15d596399c02bec0105fab9c861953a2c9eb56e903cf",
+      "assessedContentFingerprint": "sha256:4c49c505f19d48e247db15d596399c02bec0105fab9c861953a2c9eb56e903cf",
+      "scoring": {
+        "maxPoints": 25,
+        "passingPoints": 15,
+        "stepPointSum": 25
+      },
+      "actual39Usage": {
+        "goalId": "a2ea5606-4ab6-5962-a510-32d205459dd5",
+        "authoredTargetViews": [],
+        "prerequisiteOnlyViews": [],
+        "actualTargetViews": [],
+        "actualDependentTargetOccurrences": [],
+        "canonicalDirectDependents": []
+      },
+      "inConfiguredCQR202203TerminalSet": false,
+      "existingReviews": [],
+      "currentScienceVoteProduced": false,
+      "releaseWritePerformed": false,
+      "HumanApproval": false,
+      "HumanTrial": false,
+      "evidenceDisposition": "UNPLACED_LEGACY_PROPOSAL_NO_ACTIVE_LAYER_A_RELEASE_WORK_INFERRED",
+      "pairedFullCurrentWholeContentReview": false,
+      "reviewSearch": "SEARCH.eight-status-absent-legacy-proposals.bounded-existing-review-history.json",
+      "searchConclusion": "No actual full-content pair found in the stated bounded existing-review search. Semantic-kind metadata and view diagnostics are not full-content reviews. This is not a universal claim that no review ever existed.",
+      "negativeContentOrRubricDecision": "NONE_PRODUCED: no new science assessment was authorized.",
+      "minimumNextStep": "Preserve absent authoring reviewStatus and existing body. With0target/0support/0dependent-target use, no current LayerA review or release quota is inferred."
+    },
+    {
+      "goalId": "0ff2e679-cfcd-5fbf-bc87-e74859cfdac1",
+      "title": "Vorschlag A (LK) - Duftstoffsynthese mit Mechanismus und Gleichgewichtssteuerung",
+      "reviewStatus": null,
+      "reviewStatusFieldPresent": false,
+      "wholeGoalBodyFingerprint": "sha256:7244fbfdcde31fc80877ed32dfe8d57e684732b81741c6e5bc5224e489befe20",
+      "examBodyFingerprint": "sha256:a8ec7288d93f3fa6bf8aba6735b03022f42274cc07bc3ed31052da4ccdacc685",
+      "assessedContentFingerprint": "sha256:a8ec7288d93f3fa6bf8aba6735b03022f42274cc07bc3ed31052da4ccdacc685",
+      "scoring": {
+        "maxPoints": 25,
+        "passingPoints": 15,
+        "stepPointSum": 25
+      },
+      "actual39Usage": {
+        "goalId": "0ff2e679-cfcd-5fbf-bc87-e74859cfdac1",
+        "authoredTargetViews": [],
+        "prerequisiteOnlyViews": [],
+        "actualTargetViews": [],
+        "actualDependentTargetOccurrences": [],
+        "canonicalDirectDependents": []
+      },
+      "inConfiguredCQR202203TerminalSet": false,
+      "existingReviews": [],
+      "currentScienceVoteProduced": false,
+      "releaseWritePerformed": false,
+      "HumanApproval": false,
+      "HumanTrial": false,
+      "evidenceDisposition": "UNPLACED_LEGACY_PROPOSAL_NO_ACTIVE_LAYER_A_RELEASE_WORK_INFERRED",
+      "pairedFullCurrentWholeContentReview": false,
+      "reviewSearch": "SEARCH.eight-status-absent-legacy-proposals.bounded-existing-review-history.json",
+      "searchConclusion": "No actual full-content pair found in the stated bounded existing-review search. Semantic-kind metadata and view diagnostics are not full-content reviews. This is not a universal claim that no review ever existed.",
+      "negativeContentOrRubricDecision": "NONE_PRODUCED: no new science assessment was authorized.",
+      "minimumNextStep": "Preserve absent authoring reviewStatus and existing body. With0target/0support/0dependent-target use, no current LayerA review or release quota is inferred."
+    },
+    {
+      "goalId": "30dbd316-41c7-514b-85b4-7a77a4bc8b2c",
+      "title": "Vorschlag B (LK) - Vanillinbasierte Barrierefolie",
+      "reviewStatus": null,
+      "reviewStatusFieldPresent": false,
+      "wholeGoalBodyFingerprint": "sha256:2755503f9524ae898592a4835293993b931dbdf4e6d97f52502b1f7ff1371851",
+      "examBodyFingerprint": "sha256:06ffed8291bdb46921139afe44d5776d27764d3ba20545eadc845486bf186a06",
+      "assessedContentFingerprint": "sha256:06ffed8291bdb46921139afe44d5776d27764d3ba20545eadc845486bf186a06",
+      "scoring": {
+        "maxPoints": 25,
+        "passingPoints": 15,
+        "stepPointSum": 25
+      },
+      "actual39Usage": {
+        "goalId": "30dbd316-41c7-514b-85b4-7a77a4bc8b2c",
+        "authoredTargetViews": [],
+        "prerequisiteOnlyViews": [],
+        "actualTargetViews": [],
+        "actualDependentTargetOccurrences": [],
+        "canonicalDirectDependents": []
+      },
+      "inConfiguredCQR202203TerminalSet": false,
+      "existingReviews": [],
+      "currentScienceVoteProduced": false,
+      "releaseWritePerformed": false,
+      "HumanApproval": false,
+      "HumanTrial": false,
+      "evidenceDisposition": "UNPLACED_LEGACY_PROPOSAL_NO_ACTIVE_LAYER_A_RELEASE_WORK_INFERRED",
+      "pairedFullCurrentWholeContentReview": false,
+      "reviewSearch": "SEARCH.eight-status-absent-legacy-proposals.bounded-existing-review-history.json",
+      "searchConclusion": "No actual full-content pair found in the stated bounded existing-review search. Semantic-kind metadata and view diagnostics are not full-content reviews. This is not a universal claim that no review ever existed.",
+      "negativeContentOrRubricDecision": "NONE_PRODUCED: no new science assessment was authorized.",
+      "minimumNextStep": "Preserve absent authoring reviewStatus and existing body. With0target/0support/0dependent-target use, no current LayerA review or release quota is inferred."
+    },
+    {
+      "goalId": "fc3d6ef9-7c0c-5b53-aade-23f20ac8a5cd",
+      "title": "Vorschlag C (LK) - Rauchgaswaesche mit Ammoniak",
+      "reviewStatus": null,
+      "reviewStatusFieldPresent": false,
+      "wholeGoalBodyFingerprint": "sha256:3d879c5481c9b61bd069b2a765bc85d9e555b90fba2a6f2568eb58fd31793f68",
+      "examBodyFingerprint": "sha256:153d11d27400da28af69bbed0a29e68b2e89229ae9f32ff5f2dfc909412bc488",
+      "assessedContentFingerprint": "sha256:153d11d27400da28af69bbed0a29e68b2e89229ae9f32ff5f2dfc909412bc488",
+      "scoring": {
+        "maxPoints": 25,
+        "passingPoints": 15,
+        "stepPointSum": 25
+      },
+      "actual39Usage": {
+        "goalId": "fc3d6ef9-7c0c-5b53-aade-23f20ac8a5cd",
+        "authoredTargetViews": [],
+        "prerequisiteOnlyViews": [],
+        "actualTargetViews": [],
+        "actualDependentTargetOccurrences": [],
+        "canonicalDirectDependents": []
+      },
+      "inConfiguredCQR202203TerminalSet": false,
+      "existingReviews": [],
+      "currentScienceVoteProduced": false,
+      "releaseWritePerformed": false,
+      "HumanApproval": false,
+      "HumanTrial": false,
+      "evidenceDisposition": "UNPLACED_LEGACY_PROPOSAL_NO_ACTIVE_LAYER_A_RELEASE_WORK_INFERRED",
+      "pairedFullCurrentWholeContentReview": false,
+      "reviewSearch": "SEARCH.eight-status-absent-legacy-proposals.bounded-existing-review-history.json",
+      "searchConclusion": "No actual full-content pair found in the stated bounded existing-review search. Semantic-kind metadata and view diagnostics are not full-content reviews. This is not a universal claim that no review ever existed.",
+      "negativeContentOrRubricDecision": "NONE_PRODUCED: no new science assessment was authorized.",
+      "minimumNextStep": "Preserve absent authoring reviewStatus and existing body. With0target/0support/0dependent-target use, no current LayerA review or release quota is inferred."
+    },
+    {
+      "goalId": "ff33692b-c42a-5d27-b222-08a96b878954",
+      "title": "Vorschlag D (LK) - Pufferstrategie für eine Fermentationsanlage",
+      "reviewStatus": null,
+      "reviewStatusFieldPresent": false,
+      "wholeGoalBodyFingerprint": "sha256:0d42c5366e4d1a1bbf96fe0bfd81bd5b70bd48b5e4f2da6ffe9878df76ed235b",
+      "examBodyFingerprint": "sha256:7a9922201c924c0d2df55811dea6a0eb16098801390e8d58795030f32a1814c0",
+      "assessedContentFingerprint": "sha256:7a9922201c924c0d2df55811dea6a0eb16098801390e8d58795030f32a1814c0",
+      "scoring": {
+        "maxPoints": 25,
+        "passingPoints": 15,
+        "stepPointSum": 25
+      },
+      "actual39Usage": {
+        "goalId": "ff33692b-c42a-5d27-b222-08a96b878954",
+        "authoredTargetViews": [],
+        "prerequisiteOnlyViews": [],
+        "actualTargetViews": [],
+        "actualDependentTargetOccurrences": [],
+        "canonicalDirectDependents": []
+      },
+      "inConfiguredCQR202203TerminalSet": false,
+      "existingReviews": [],
+      "currentScienceVoteProduced": false,
+      "releaseWritePerformed": false,
+      "HumanApproval": false,
+      "HumanTrial": false,
+      "evidenceDisposition": "UNPLACED_LEGACY_PROPOSAL_NO_ACTIVE_LAYER_A_RELEASE_WORK_INFERRED",
+      "pairedFullCurrentWholeContentReview": false,
+      "reviewSearch": "SEARCH.eight-status-absent-legacy-proposals.bounded-existing-review-history.json",
+      "searchConclusion": "No actual full-content pair found in the stated bounded existing-review search. Semantic-kind metadata and view diagnostics are not full-content reviews. This is not a universal claim that no review ever existed.",
+      "negativeContentOrRubricDecision": "NONE_PRODUCED: no new science assessment was authorized.",
+      "minimumNextStep": "Preserve absent authoring reviewStatus and existing body. With0target/0support/0dependent-target use, no current LayerA review or release quota is inferred."
+    },
+    {
+      "goalId": "14577339-9e0c-5b44-8e47-91e1a4947367",
+      "title": "HE-GK: Materialgestützte Chemie-Abschlussaufgabe bearbeiten",
+      "reviewStatus": "draft",
+      "reviewStatusFieldPresent": true,
+      "wholeGoalBodyFingerprint": "sha256:ffb6bc4bc706ec4f62b0382ba0a503238c593a5ee00e142a4f5078ff5dec5db6",
+      "examBodyFingerprint": "sha256:1c869fac0f27495dd4b6a80e285ca9da5dfcca30b5180120f9bd5576deeee908",
+      "assessedContentFingerprint": "sha256:26d1dc4b6dc4efcbbd76c3cf64f019901a5b88a78a24d169b9dcbe60cad2837f",
+      "scoring": {
+        "maxPoints": 44,
+        "passingPoints": 27,
+        "stepPointSum": 44
+      },
+      "actual39Usage": {
+        "goalId": "14577339-9e0c-5b44-8e47-91e1a4947367",
+        "authoredTargetViews": [
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-lk.view.json"
+        ],
+        "prerequisiteOnlyViews": [],
+        "actualTargetViews": [
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk.view.json"
+        ],
+        "actualDependentTargetOccurrences": [],
+        "canonicalDirectDependents": []
+      },
+      "inConfiguredCQR202203TerminalSet": true,
+      "existingReviews": [
+        {
+          "authority": "independent nonauthor A full German paper and then187/259 admission context",
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-route13-fresh-independent-a-20261016-v1/FIRST.science.frozen.json",
+            "sha256": "sha256:0728ce0a86c294b4baf6d1151e7c66252d560191717446a4a019f1e711d0fcf8",
+            "bytes": 43245
+          },
+          "goalRow": "14577339-9e0c-5b44-8e47-91e1a4947367",
+          "decision": "KEEP",
+          "reviewedWholeGoal": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current435-course-terminal-route-and-practical-author-remediation-20261016-v1/author-course-and-chromatography/GOAL.14577339-9e0c-5b44-8e47-91e1a4947367.after.author-draft.json",
+            "sha256": "sha256:41331681ed070d0afeaa40626659db3f4b68d67b248a1393ea5bc290c6db4110",
+            "bytes": 75041
+          }
+        },
+        {
+          "authority": "independent nonauthor B full German paper and then187/259 admission context",
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-route13-fresh-independent-b-20261016-v1/FIRST.science.frozen.json",
+            "sha256": "sha256:3f2ba9e97cccea5795dfda4f8fc822f12ad69fe377ebe5cb6011c89900a2cd36",
+            "bytes": 29796
+          },
+          "goalRow": "14577339-9e0c-5b44-8e47-91e1a4947367",
+          "decision": "KEEP",
+          "reviewedWholeGoal": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current435-course-terminal-route-and-practical-author-remediation-20261016-v1/author-course-and-chromatography/GOAL.14577339-9e0c-5b44-8e47-91e1a4947367.after.author-draft.json",
+            "sha256": "sha256:41331681ed070d0afeaa40626659db3f4b68d67b248a1393ea5bc290c6db4110",
+            "bytes": 75041
+          }
+        }
+      ],
+      "currentScienceVoteProduced": false,
+      "releaseWritePerformed": false,
+      "HumanApproval": false,
+      "HumanTrial": false,
+      "evidenceDisposition": "CURRENT_TARGET_EXISTING_FULL_CONTENT_PAIR_EXACT_CONTENT_READY_BUT_CURRENT_WHOLE_ADMISSION_BINDING_NOT_YET_ESTABLISHED",
+      "pairedFullCurrentWholeContentReview": false,
+      "pairedFullUnchangedAssessedContentReview": true,
+      "assessedContentByteIdentityVerified": true,
+      "currentWholeByteIdentityVerified": false,
+      "negativeFindingsForCurrentSelectedContent": [],
+      "provenanceGap": "Selected full-content pair binds predecessor wholegoal; present requires and extendedData changed later. Identity of task/material/solution/rubric/coverage is proved, but does not fabricate a current whole interface pair.",
+      "minimumNextStep": "Original independent route13 A and B informed followup on these two current whole objects and actual source/course admission deltas; explicitly preserve their full unchanged44BE German-content KEEP. No fresh ordinary/native20 campaign and no re-authoring is implied. Followups must address actual185/265 current requires and current source/course/scopes, not merely repeat schema/closure PASS.",
+      "fullCourseAssessmentNotClaimed": true,
+      "EnglishPaperReviewed": false
+    },
+    {
+      "goalId": "c5394fb8-9411-5533-b2af-831c4c67b4be",
+      "title": "Übung: Entsorgung und Recycling von Batterien und Akkumulatoren bewerten",
+      "reviewStatus": "needs_review",
+      "reviewStatusFieldPresent": true,
+      "wholeGoalBodyFingerprint": "sha256:3e6bbf2fb50cbb34af03329946686db581a38a19dc8f328e0fa445276b495dae",
+      "examBodyFingerprint": "sha256:9028832e9ca1a08152a48d6f65aa3c3aafaf5902d18bd0835d7aff0e525a91e9",
+      "assessedContentFingerprint": "sha256:2edea3bdc39fb185df615dee46e56252d2c712ac3b5a629344068dd03bb0739c",
+      "scoring": {
+        "maxPoints": 6,
+        "passingPoints": 6,
+        "stepPointSum": 6
+      },
+      "actual39Usage": {
+        "goalId": "c5394fb8-9411-5533-b2af-831c4c67b4be",
+        "authoredTargetViews": [],
+        "prerequisiteOnlyViews": [],
+        "actualTargetViews": [],
+        "actualDependentTargetOccurrences": [],
+        "canonicalDirectDependents": []
+      },
+      "inConfiguredCQR202203TerminalSet": false,
+      "existingReviews": [
+        {
+          "authority": "independent A full bilingual default-case scientific design",
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-three-recycling-duty-positive-profile-independent-a-20261013-v1/DECISION.six-full-bilingual-case-designs.independent-a.actual.json",
+            "sha256": "sha256:c85728e85fd7f51ab835ab6dbe5be473fd4b269bb1d3ee4a2aee23008f18f494",
+            "bytes": 11888
+          },
+          "caseId": "f9e6d689-case-1",
+          "decision": "accept_exact_inactive_case_design"
+        },
+        {
+          "authority": "independent B full bilingual default-case scientific design",
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-three-recycling-duty-positive-profile-independent-b-20261013-v1/DECISIONS.three-profile-designs-six-cases-and-three-M-concepts.independent-b.actual.json",
+            "sha256": "sha256:c633348d409b8bc00db470a5ee5505bb8c10b68b4c49c0c868f38b13fbc08189",
+            "bytes": 21175
+          },
+          "caseId": "f9e6d689-case-1",
+          "decision": "ACCEPT_BOUNDED_CASE_DESIGN"
+        },
+        {
+          "authority": "independent graph/source-scope reviewer actual whole endpoint incl tasks/solutions/rubrics and6/6 gate",
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-three-recycling-current406-graph-scope-independent-20261013-v1/DECISIONS.independent-graph-scope-assessment-and-three-AM.actual.json",
+            "sha256": "sha256:9099382c180f442d8e9156532c1877fb860ddfa58aa6d0be566e9500621e68f4",
+            "bytes": 46032
+          },
+          "section": "assessmentDecisions",
+          "goalId": "c5394fb8-9411-5533-b2af-831c4c67b4be",
+          "decision": "ACCEPT_EXACT_CURRENT_MACHINE_ASSESSMENT_DESIGN",
+          "wholeCurrentGoalExact": true
+        }
+      ],
+      "currentScienceVoteProduced": false,
+      "releaseWritePerformed": false,
+      "HumanApproval": false,
+      "HumanTrial": false,
+      "evidenceDisposition": "UNPLACED_IN_CURRENT39_NO_ACTIVE_LAYER_A_RELEASE_WORK_INFERRED",
+      "pairedFullCurrentWholeContentReview": false,
+      "oneIndependentExactWholeEndpointReview": true,
+      "pairedFullEmbeddedDefaultCaseDesignReview": true,
+      "currentWholeByteIdentityVerified": true,
+      "defaultCaseId": "f9e6d689-case-1",
+      "wholeDefaultCaseFingerprint": "sha256:1938adc203ffca992aef374f5660b1da002d65f0973ddb24520581508a92266e",
+      "negativeFindingsForCurrentDefaultCase": [],
+      "provenanceBoundary": "Paired embedded-case design reviews plus one exact whole-endpoint review are preserved as their actual scopes. This audit does not relabel them as two independent full-current-whole endpoint reviews. No automatic review or release request is generated for this currently unused endpoint.",
+      "minimumNextStep": "Keep needs_review and existing historical positive content/design evidence exact. Reconsider endpoint release/placement only in an explicitly authorized relevant scope; no new science duty from status alone."
+    },
+    {
+      "goalId": "4238e88b-7d6c-5eef-b94f-d6d87659649e",
+      "title": "Übung: Gewinnung seltener Metalle für Spannungsquellen diskutieren",
+      "reviewStatus": "needs_review",
+      "reviewStatusFieldPresent": true,
+      "wholeGoalBodyFingerprint": "sha256:6fe68842c80b857571ceaccec059b79cb87630d3b4fc44975278acc77c8e2799",
+      "examBodyFingerprint": "sha256:8db53e5014297e0498614256ae4d81710c6cfe7ce7f1ef34c14c7d99a560f2ce",
+      "assessedContentFingerprint": "sha256:fb409a77e80e0b2ba1b488f90aab13bb0eb350ceb99af4301b268a1685e7ab3c",
+      "scoring": {
+        "maxPoints": 6,
+        "passingPoints": 6,
+        "stepPointSum": 6
+      },
+      "actual39Usage": {
+        "goalId": "4238e88b-7d6c-5eef-b94f-d6d87659649e",
+        "authoredTargetViews": [],
+        "prerequisiteOnlyViews": [],
+        "actualTargetViews": [],
+        "actualDependentTargetOccurrences": [],
+        "canonicalDirectDependents": []
+      },
+      "inConfiguredCQR202203TerminalSet": false,
+      "existingReviews": [
+        {
+          "authority": "independent A full bilingual default-case scientific design",
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-three-recycling-duty-positive-profile-independent-a-20261013-v1/DECISION.six-full-bilingual-case-designs.independent-a.actual.json",
+            "sha256": "sha256:c85728e85fd7f51ab835ab6dbe5be473fd4b269bb1d3ee4a2aee23008f18f494",
+            "bytes": 11888
+          },
+          "caseId": "f54b2c33-case-1",
+          "decision": "accept_exact_inactive_case_design"
+        },
+        {
+          "authority": "independent B full bilingual default-case scientific design",
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-three-recycling-duty-positive-profile-independent-b-20261013-v1/DECISIONS.three-profile-designs-six-cases-and-three-M-concepts.independent-b.actual.json",
+            "sha256": "sha256:c633348d409b8bc00db470a5ee5505bb8c10b68b4c49c0c868f38b13fbc08189",
+            "bytes": 21175
+          },
+          "caseId": "f54b2c33-case-1",
+          "decision": "ACCEPT_BOUNDED_CASE_DESIGN"
+        },
+        {
+          "authority": "independent graph/source-scope reviewer actual whole endpoint incl tasks/solutions/rubrics and6/6 gate",
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-three-recycling-current406-graph-scope-independent-20261013-v1/DECISIONS.independent-graph-scope-assessment-and-three-AM.actual.json",
+            "sha256": "sha256:9099382c180f442d8e9156532c1877fb860ddfa58aa6d0be566e9500621e68f4",
+            "bytes": 46032
+          },
+          "section": "assessmentDecisions",
+          "goalId": "4238e88b-7d6c-5eef-b94f-d6d87659649e",
+          "decision": "ACCEPT_EXACT_CURRENT_MACHINE_ASSESSMENT_DESIGN",
+          "wholeCurrentGoalExact": true
+        }
+      ],
+      "currentScienceVoteProduced": false,
+      "releaseWritePerformed": false,
+      "HumanApproval": false,
+      "HumanTrial": false,
+      "evidenceDisposition": "UNPLACED_IN_CURRENT39_NO_ACTIVE_LAYER_A_RELEASE_WORK_INFERRED",
+      "pairedFullCurrentWholeContentReview": false,
+      "oneIndependentExactWholeEndpointReview": true,
+      "pairedFullEmbeddedDefaultCaseDesignReview": true,
+      "currentWholeByteIdentityVerified": true,
+      "defaultCaseId": "f54b2c33-case-1",
+      "wholeDefaultCaseFingerprint": "sha256:f6e6c90d01bad3aeefa7dd5a5ebef1125c89d5011985f62a13e296ad6fbbd6b1",
+      "negativeFindingsForCurrentDefaultCase": [],
+      "provenanceBoundary": "Paired embedded-case design reviews plus one exact whole-endpoint review are preserved as their actual scopes. This audit does not relabel them as two independent full-current-whole endpoint reviews. No automatic review or release request is generated for this currently unused endpoint.",
+      "minimumNextStep": "Keep needs_review and existing historical positive content/design evidence exact. Reconsider endpoint release/placement only in an explicitly authorized relevant scope; no new science duty from status alone."
+    },
+    {
+      "goalId": "ee494d08-9514-54f2-ac5e-eebc20ca8725",
+      "title": "Übung: Metallrecycling für Konsum- und Entsorgungsentscheidungen nutzen",
+      "reviewStatus": "needs_review",
+      "reviewStatusFieldPresent": true,
+      "wholeGoalBodyFingerprint": "sha256:72ebb7ec716d08dc76c940a6d98689b062730a32582c836db2c0d7ec10f3cb39",
+      "examBodyFingerprint": "sha256:12b8c8ed6a7284540bb9d4f8b7fc9f006402bf1eafec546c58fb064dd10ac51f",
+      "assessedContentFingerprint": "sha256:871b3c1e32164feb68948090729bf0e6ea8e33e6fec592986e57a0778860df58",
+      "scoring": {
+        "maxPoints": 6,
+        "passingPoints": 6,
+        "stepPointSum": 6
+      },
+      "actual39Usage": {
+        "goalId": "ee494d08-9514-54f2-ac5e-eebc20ca8725",
+        "authoredTargetViews": [],
+        "prerequisiteOnlyViews": [],
+        "actualTargetViews": [],
+        "actualDependentTargetOccurrences": [],
+        "canonicalDirectDependents": []
+      },
+      "inConfiguredCQR202203TerminalSet": false,
+      "existingReviews": [
+        {
+          "authority": "independent A full bilingual default-case scientific design",
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-three-recycling-duty-positive-profile-independent-a-20261013-v1/DECISION.six-full-bilingual-case-designs.independent-a.actual.json",
+            "sha256": "sha256:c85728e85fd7f51ab835ab6dbe5be473fd4b269bb1d3ee4a2aee23008f18f494",
+            "bytes": 11888
+          },
+          "caseId": "b7ae47da-case-1",
+          "decision": "accept_exact_inactive_case_design"
+        },
+        {
+          "authority": "independent B full bilingual default-case scientific design",
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-three-recycling-duty-positive-profile-independent-b-20261013-v1/DECISIONS.three-profile-designs-six-cases-and-three-M-concepts.independent-b.actual.json",
+            "sha256": "sha256:c633348d409b8bc00db470a5ee5505bb8c10b68b4c49c0c868f38b13fbc08189",
+            "bytes": 21175
+          },
+          "caseId": "b7ae47da-case-1",
+          "decision": "ACCEPT_BOUNDED_CASE_DESIGN"
+        },
+        {
+          "authority": "independent graph/source-scope reviewer actual whole endpoint incl tasks/solutions/rubrics and6/6 gate",
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-three-recycling-current406-graph-scope-independent-20261013-v1/DECISIONS.independent-graph-scope-assessment-and-three-AM.actual.json",
+            "sha256": "sha256:9099382c180f442d8e9156532c1877fb860ddfa58aa6d0be566e9500621e68f4",
+            "bytes": 46032
+          },
+          "section": "assessmentDecisions",
+          "goalId": "ee494d08-9514-54f2-ac5e-eebc20ca8725",
+          "decision": "ACCEPT_EXACT_CURRENT_MACHINE_ASSESSMENT_DESIGN",
+          "wholeCurrentGoalExact": true
+        }
+      ],
+      "currentScienceVoteProduced": false,
+      "releaseWritePerformed": false,
+      "HumanApproval": false,
+      "HumanTrial": false,
+      "evidenceDisposition": "UNPLACED_IN_CURRENT39_NO_ACTIVE_LAYER_A_RELEASE_WORK_INFERRED",
+      "pairedFullCurrentWholeContentReview": false,
+      "oneIndependentExactWholeEndpointReview": true,
+      "pairedFullEmbeddedDefaultCaseDesignReview": true,
+      "currentWholeByteIdentityVerified": true,
+      "defaultCaseId": "b7ae47da-case-1",
+      "wholeDefaultCaseFingerprint": "sha256:a565dbfe1d0a88f9a12f508286bf2bca25fdd9e31ccc7e3dd15d5976d4e085e8",
+      "negativeFindingsForCurrentDefaultCase": [],
+      "provenanceBoundary": "Paired embedded-case design reviews plus one exact whole-endpoint review are preserved as their actual scopes. This audit does not relabel them as two independent full-current-whole endpoint reviews. No automatic review or release request is generated for this currently unused endpoint.",
+      "minimumNextStep": "Keep needs_review and existing historical positive content/design evidence exact. Reconsider endpoint release/placement only in an explicitly authorized relevant scope; no new science duty from status alone."
+    },
+    {
+      "goalId": "32705a3a-9b7f-5cc0-ba41-881d13d0c45b",
+      "title": "HE-LK: Materialgestützte Chemie-Abschlussaufgabe bearbeiten",
+      "reviewStatus": "draft",
+      "reviewStatusFieldPresent": true,
+      "wholeGoalBodyFingerprint": "sha256:dc0ae43fe811ccfa6d92c217f9425da2164aef124e2b6066b81658c7dafeec50",
+      "examBodyFingerprint": "sha256:de886bb7fcce97898aec79f93a1626daa0c3323ba7d51148196f670eacbb70d0",
+      "assessedContentFingerprint": "sha256:26d1dc4b6dc4efcbbd76c3cf64f019901a5b88a78a24d169b9dcbe60cad2837f",
+      "scoring": {
+        "maxPoints": 44,
+        "passingPoints": 27,
+        "stepPointSum": 44
+      },
+      "actual39Usage": {
+        "goalId": "32705a3a-9b7f-5cc0-ba41-881d13d0c45b",
+        "authoredTargetViews": [
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-lk.view.json"
+        ],
+        "prerequisiteOnlyViews": [],
+        "actualTargetViews": [
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-lk.view.json"
+        ],
+        "actualDependentTargetOccurrences": [],
+        "canonicalDirectDependents": []
+      },
+      "inConfiguredCQR202203TerminalSet": true,
+      "existingReviews": [
+        {
+          "authority": "independent nonauthor A full German paper and then187/259 admission context",
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-route13-fresh-independent-a-20261016-v1/FIRST.science.frozen.json",
+            "sha256": "sha256:0728ce0a86c294b4baf6d1151e7c66252d560191717446a4a019f1e711d0fcf8",
+            "bytes": 43245
+          },
+          "goalRow": "32705a3a-9b7f-5cc0-ba41-881d13d0c45b",
+          "decision": "KEEP",
+          "reviewedWholeGoal": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current435-course-terminal-route-and-practical-author-remediation-20261016-v1/author-course-and-chromatography/GOAL.32705a3a-9b7f-5cc0-ba41-881d13d0c45b.after.author-draft.json",
+            "sha256": "sha256:81f8ca231a23efd2bb9ec733cee6c2a531f1c03077ae6cd7e86348459fd7edcd",
+            "bytes": 78248
+          }
+        },
+        {
+          "authority": "independent nonauthor B full German paper and then187/259 admission context",
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-route13-fresh-independent-b-20261016-v1/FIRST.science.frozen.json",
+            "sha256": "sha256:3f2ba9e97cccea5795dfda4f8fc822f12ad69fe377ebe5cb6011c89900a2cd36",
+            "bytes": 29796
+          },
+          "goalRow": "32705a3a-9b7f-5cc0-ba41-881d13d0c45b",
+          "decision": "KEEP",
+          "reviewedWholeGoal": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current435-course-terminal-route-and-practical-author-remediation-20261016-v1/author-course-and-chromatography/GOAL.32705a3a-9b7f-5cc0-ba41-881d13d0c45b.after.author-draft.json",
+            "sha256": "sha256:81f8ca231a23efd2bb9ec733cee6c2a531f1c03077ae6cd7e86348459fd7edcd",
+            "bytes": 78248
+          }
+        }
+      ],
+      "currentScienceVoteProduced": false,
+      "releaseWritePerformed": false,
+      "HumanApproval": false,
+      "HumanTrial": false,
+      "evidenceDisposition": "CURRENT_TARGET_EXISTING_FULL_CONTENT_PAIR_EXACT_CONTENT_READY_BUT_CURRENT_WHOLE_ADMISSION_BINDING_NOT_YET_ESTABLISHED",
+      "pairedFullCurrentWholeContentReview": false,
+      "pairedFullUnchangedAssessedContentReview": true,
+      "assessedContentByteIdentityVerified": true,
+      "currentWholeByteIdentityVerified": false,
+      "negativeFindingsForCurrentSelectedContent": [],
+      "provenanceGap": "Selected full-content pair binds predecessor wholegoal; present requires and extendedData changed later. Identity of task/material/solution/rubric/coverage is proved, but does not fabricate a current whole interface pair.",
+      "minimumNextStep": "Original independent route13 A and B informed followup on these two current whole objects and actual source/course admission deltas; explicitly preserve their full unchanged44BE German-content KEEP. No fresh ordinary/native20 campaign and no re-authoring is implied. Followups must address actual185/265 current requires and current source/course/scopes, not merely repeat schema/closure PASS.",
+      "fullCourseAssessmentNotClaimed": true,
+      "EnglishPaperReviewed": false
+    },
+    {
+      "goalId": "69928892-ac71-553d-a35c-4f96f16b6d6e",
+      "title": "Prüfungsaufgabe: ein Salicylatprojekt durchgängig beurteilen",
+      "reviewStatus": "draft",
+      "reviewStatusFieldPresent": true,
+      "wholeGoalBodyFingerprint": "sha256:9fc02ff0d114dede6086b22fb9120202eeffbc244165fedab30a4542971bd1ee",
+      "examBodyFingerprint": "sha256:7b02d060799e81a573a591fd7e111b2eba2d0e46f90e92c3c458a8ed306fcd66",
+      "assessedContentFingerprint": "sha256:db6fa75bbfd18320384bcaf16749ab1ee48753c02820ce855e590c6fc3b7a9d9",
+      "scoring": {
+        "maxPoints": 16,
+        "passingPoints": 16,
+        "stepPointSum": 16
+      },
+      "actual39Usage": {
+        "goalId": "69928892-ac71-553d-a35c-4f96f16b6d6e",
+        "authoredTargetViews": [
+          "curricula/DE/Gymnasium/composition-views/chemie/de-sh-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-sh-lk.view.json"
+        ],
+        "prerequisiteOnlyViews": [],
+        "actualTargetViews": [
+          "curricula/DE/Gymnasium/composition-views/chemie/de-sh-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/chemie/de-sh-lk.view.json"
+        ],
+        "actualDependentTargetOccurrences": [],
+        "canonicalDirectDependents": []
+      },
+      "inConfiguredCQR202203TerminalSet": true,
+      "existingReviews": [
+        {
+          "authority": "independent nonauthor A separate full699 assessment lane",
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-native9-current437-fresh-independent-a-20261016-v1/FIRST.independent-current-nine-science-and-separate699.frozen.json",
+            "sha256": "sha256:dbdbefe4b37fa1dc2d314b647d1a275d81715783a9c2b6c76ef17ce846d97d4a",
+            "bytes": 25808
+          },
+          "section": "endpointReview",
+          "wholeCanonicalBinding": {
+            "path": "tmp/chemie-m7-resumed-20261016/chemie-combined639-current-native-review-capsule-v1/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+            "sha256": "sha256:0c4277b9bc9ec90740dbe5b885e35cbbde777c488518252d623ce09b044b3cf9",
+            "bytes": 2527655
+          },
+          "seal": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-native9-current437-fresh-independent-a-20261016-v1/HANDOFF.final-independent-a.seal.json",
+            "sha256": "sha256:c19b93362253da1c25527c7d442669b1b3f5224e64411da0ea36c56399977903",
+            "bytes": 15569
+          }
+        },
+        {
+          "authority": "independent nonauthor B separate full699 assessment lane",
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-native9-current437-fresh-independent-b-20261016-v1/science.first.independent-b.json",
+            "sha256": "sha256:70cc3fe9a98d1bd1738f00cf8183d51b37a865373b4ee3e14f3cf2b55b665fc3",
+            "bytes": 30582
+          },
+          "section": "separateAssessmentJudgment",
+          "wholeCanonicalBinding": {
+            "path": "tmp/chemie-m7-resumed-20261016/chemie-combined639-current-native-review-capsule-v1/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+            "sha256": "sha256:0c4277b9bc9ec90740dbe5b885e35cbbde777c488518252d623ce09b044b3cf9",
+            "bytes": 2527655
+          },
+          "seal": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-native9-current437-fresh-independent-b-20261016-v1/MANIFEST.final-independent-b.sealed.json",
+            "sha256": "sha256:6e715dd4dbd0f6596179fd9595eebe8f41432df3c3e5f73165a4986c68cd853e",
+            "bytes": 4162
+          }
+        }
+      ],
+      "currentScienceVoteProduced": false,
+      "releaseWritePerformed": false,
+      "HumanApproval": false,
+      "HumanTrial": false,
+      "evidenceDisposition": "ELIGIBLE_CURRENT_WHOLE_BYTE_BOUND_MACHINE_CONTENT_RELEASE_ONLY",
+      "pairedFullCurrentWholeContentReview": true,
+      "assessedContentByteIdentityVerified": true,
+      "currentWholeByteIdentityVerified": true,
+      "negativeFindingsForCurrentSelectedCandidate": [],
+      "minimumNextStep": "Root may prepare machine-content release metadata after its integration gates. Official medication theme remains optional; owner interim all-authored target is a separate product policy. No source coverage inferred from699."
+    }
+  ],
+  "inputDrift": [],
+  "current21WholeObjects": "INPUT.twenty-one-exact-whole-current-goals.json",
+  "finiteHEFollowupEvidence": "HE145-327.existing-full-content-pairs-and-finite-current-admission-evidence-gap.json",
+  "normalWrites": 0,
+  "candidateOrReleaseWrites": 0,
+  "HumanApproval": false,
+  "HumanTrial": false,
+  "M7Claim": false
+}

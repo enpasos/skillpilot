@@ -1,0 +1,54 @@
+{
+  "role": "Actual bounded executable read-only guard check, not application/approval",
+  "at": "2026-10-16T20:36:35.037126+00:00",
+  "command": [
+    "python",
+    "tmp/chemie-m7-resumed-20261016/generic-SekI-fourteen-interface-author-candidate-v1/guard-and-simulate-final-CAS.py"
+  ],
+  "exitCode": 0,
+  "stdout": {
+    "role": "Read-only guarded CAS simulation, no approval/application",
+    "capsule": "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/chemie-shared640-recycling-native-author-capsule-L6-v1",
+    "canonicalBefore": "sha256:37e092408007e0c8c675beda79b667e8dced936c7ec33742082340fcc77fdc80",
+    "SEMBefore": "sha256:8ae8d21eb7a4714309eb1a215e14663d85d40917d4b9e1829a5de559e85bc62b",
+    "wholeGoalBeforeGuards": 2,
+    "wholeSEMBeforeGuards": 2,
+    "wholeViewBeforeGuards": 3,
+    "other639GoalsAndDecisionsExact": true,
+    "preserveSEMCounts": true,
+    "sourceOperations": 0,
+    "newAtoms": 0,
+    "viewChanges": [
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-seki-chemistry.view.json",
+        "targetAdditions": 10
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-ni-gk.view.json",
+        "targetAdditions": 1
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-ni-lk.view.json",
+        "targetAdditions": 1
+      }
+    ],
+    "changedGoalIds": [
+      "1f30d81c-8a26-5675-8c0a-1cb82e96d3ba",
+      "1c1420c2-a8e2-520f-8015-6df637a973bd"
+    ],
+    "APVDependencies": "requires changes affect real compiler dependency; a later actual source-state compilation is required before source synchronization. View-only role additions alone are ignored by that compiler. No APV performed here.",
+    "filesWritten": 0,
+    "applied": false,
+    "independentVotes": 0,
+    "HumanApproval": false,
+    "HumanTrial": false,
+    "M7Claim": false
+  },
+  "stderr": "",
+  "sourceAndStockInputGuards": {
+    "path": "tmp/chemie-m7-resumed-20261016/generic-SekI-fourteen-interface-author-candidate-v1/INPUTPINS.source-current-P-M-and-stock-contracts.unchanged.json",
+    "sha256": "sha256:249e274a98f13716e72450b5250ec7d164235f5c03e82ef43e68672100831686",
+    "bytes": 3404
+  },
+  "schemaAnnotationNote": "Strict Ajv2020 validation registers only the schema documentary extension x-skillpilot-listSemantics as always valid. Stock compiles independently validate actual view structure/relationships. No validation disabled for real schema fields."
+}

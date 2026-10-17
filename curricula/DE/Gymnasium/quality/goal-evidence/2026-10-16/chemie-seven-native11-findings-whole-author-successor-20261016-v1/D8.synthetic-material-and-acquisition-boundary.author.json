@@ -1,0 +1,137 @@
+{
+  "goalId": "d8bdf486-7295-5393-b6f7-54f6e485c848",
+  "material": {
+    "origin": "Original synthetic author model; no real specimen, instrument reading, teacher experiment or independent measurement exists. Generated amounts use stoichiometric bookkeeping; pH uses ideal Henderson-Hasselbalch with pKa=4.76 at 25 C and dilute ideal activities. Strong-acid/base blank uses stoichiometric excess and pKw=14.00. Small dissociation corrections, activity changes and indicator consumption are omitted. The column called species amount is a model output, not pH-independent analytical evidence.",
+    "units": {
+      "volume": "mL",
+      "nCH3COOH": "mmol",
+      "nCH3COOminus": "mmol",
+      "pH": "dimensionless"
+    },
+    "mainSample": [
+      {
+        "stage": "start",
+        "volume": 100,
+        "nCH3COOH": 0.5,
+        "nCH3COOminus": 0.5,
+        "fractionCH3COOH": 0.5,
+        "fractionCH3COOminus": 0.5,
+        "pH": 4.76
+      },
+      {
+        "stage": "after-acid-1",
+        "volume": 101,
+        "nCH3COOH": 0.8,
+        "nCH3COOminus": 0.2,
+        "fractionCH3COOH": 0.8,
+        "fractionCH3COOminus": 0.2,
+        "pH": 4.158
+      },
+      {
+        "stage": "after-base",
+        "volume": 103,
+        "nCH3COOH": 0.2,
+        "nCH3COOminus": 0.8,
+        "fractionCH3COOH": 0.2,
+        "fractionCH3COOminus": 0.8,
+        "pH": 5.362
+      },
+      {
+        "stage": "after-acid-2",
+        "volume": 105,
+        "nCH3COOH": 0.8,
+        "nCH3COOminus": 0.2,
+        "fractionCH3COOH": 0.8,
+        "fractionCH3COOminus": 0.2,
+        "pH": 4.158
+      }
+    ],
+    "additions": [
+      {
+        "step": "acid-1",
+        "addedHCl_mmol": 0.3,
+        "addedVolume_mL": 1
+      },
+      {
+        "step": "base",
+        "addedNaOH_mmol": 0.6,
+        "addedVolume_mL": 2
+      },
+      {
+        "step": "acid-2",
+        "addedHCl_mmol": 0.6,
+        "addedVolume_mL": 2
+      }
+    ],
+    "noAcetateControl": [
+      {
+        "stage": "start",
+        "volume": 100,
+        "acetatePresent": false,
+        "pH": 4.76
+      },
+      {
+        "stage": "after-acid-1",
+        "volume": 101,
+        "acetatePresent": false,
+        "pH": 2.525
+      },
+      {
+        "stage": "after-base",
+        "volume": 103,
+        "acetatePresent": false,
+        "pH": 11.462
+      },
+      {
+        "stage": "after-acid-2",
+        "volume": 105,
+        "acetatePresent": false,
+        "pH": 2.542
+      }
+    ],
+    "dilutionOnlyControl": [
+      {
+        "stage": "start",
+        "volume": 100,
+        "nCH3COOH": 0.5,
+        "nCH3COOminus": 0.5,
+        "pH": 4.76
+      },
+      {
+        "stage": "after-acid-1",
+        "volume": 101,
+        "nCH3COOH": 0.5,
+        "nCH3COOminus": 0.5,
+        "pH": 4.76
+      },
+      {
+        "stage": "after-base",
+        "volume": 103,
+        "nCH3COOH": 0.5,
+        "nCH3COOminus": 0.5,
+        "pH": 4.76
+      },
+      {
+        "stage": "after-acid-2",
+        "volume": 105,
+        "nCH3COOH": 0.5,
+        "nCH3COOminus": 0.5,
+        "pH": 4.76
+      }
+    ],
+    "noAcetateControlStart": "Initially 100 mL water adjusted with a trace of HCl to pH 4.760; the same stated acid/base amounts and volumes are then added. These too are modeled values, not measured controls.",
+    "dilutionOnlyControlStart": "A separate identical initial acetate/acetic acid sample receives only water to the same successive volumes. These too are modeled values, not measured controls."
+  },
+  "materialDe": "Modellmaterial, 25 °C, dieselbe Probe: Schritt | Volumen mL | n(Essigsäure) mmol | n(Acetat) mmol | pH\nStart | 100 | 0,50 | 0,50 | 4,760\n+0,30 mmol HCl (1 mL) | 101 | 0,80 | 0,20 | 4,158\n+0,60 mmol NaOH (2 mL) | 103 | 0,20 | 0,80 | 5,362\n+0,60 mmol HCl (2 mL) | 105 | 0,80 | 0,20 | 4,158\nVerdünnungskontrolle: dieselbe Anfangszusammensetzung erhält nur Wasser auf 100/101/103/105 mL; beide Stoffmengen bleiben 0,50 mmol, pH jeweils 4,760. Kontrolle ohne Acetat: anfangs 100 mL Wasser mit einer Spur HCl auf pH 4,760; nach denselben Säure/Base-Zugaben modellierte pH-Werte 2,525 / 11,462 / 2,542, keine Acetat-Spezies. Auch diese Kontrolle kann also starke Indikatoränderungen zeigen. Alle Zahlen sind eigens erzeugte ideale Modellwerte, keine Messungen; Stoffanteile wurden nicht unabhängig vom Modell bestimmt. Im Lernauftrag sind keine pKa- oder pH-Rechnungen verlangt und keine Chemikalien zu handhaben.",
+  "materialEn": "Model material, 25 °C, the same sample: step | volume mL | n(acetic acid) mmol | n(acetate) mmol | pH\nStart | 100 | 0.50 | 0.50 | 4.760\n+0.30 mmol HCl (1 mL) | 101 | 0.80 | 0.20 | 4.158\n+0.60 mmol NaOH (2 mL) | 103 | 0.20 | 0.80 | 5.362\n+0.60 mmol HCl (2 mL) | 105 | 0.80 | 0.20 | 4.158\nDilution control: the same initial composition receives only water to 100/101/103/105 mL; both amounts remain 0.50 mmol and pH is 4.760 throughout. No-acetate control: initially 100 mL water adjusted to pH 4.760 with a trace of HCl; the same acid/base additions give modeled pH 2.525 / 11.462 / 2.542 with no acetate species. Thus this control can also produce strong indicator changes. All numbers are invented ideal model values, not measurements; species fractions were not determined independently of the model. The learner is asked neither to calculate pKa or pH nor to handle chemicals.",
+  "realExperimentalInferenceStillNeeded": [
+    "Actual teacher-supervised acquisition with appropriate safety, known composition and calibrated pH/temperature/volume records.",
+    "Species-specific measurement calibrated independently of pH and of the Henderson-Hasselbalch relation, with validated selectivity and material recovery.",
+    "The same tracked sample must show the named species changing in both directions; blank and dilution controls must support the inference, with uncertainties and alternatives documented.",
+    "Model-generated fractions, synthetic spectra, a model answer or a returning indicator color do not meet these experimental evidence requirements."
+  ],
+  "practicalExecutionRequiredByThisTask": false,
+  "performedExperiment": false,
+  "actualObservationRecords": [],
+  "humanTrial": false
+}

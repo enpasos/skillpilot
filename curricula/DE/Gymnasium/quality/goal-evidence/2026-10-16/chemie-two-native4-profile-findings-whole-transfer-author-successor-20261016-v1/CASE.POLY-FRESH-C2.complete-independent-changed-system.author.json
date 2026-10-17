@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 1,
+  "caseId": "POLY-FRESH-C2",
+  "goalId": "dc0470f1-0676-5949-a5cc-02783d478406",
+  "status": "author_candidate_E0_G0",
+  "materialProvenance": "Entirely authored ideal synthetic generic diprotic-acid model. pKa values are stipulated parameters, not measured constants for an identified substance. Actual numerical solution below is an author calculation, not learner performance.",
+  "assumptionsDe": [
+    "25 °C, pKw=14,00; ideale Aktivitäten und additive Volumina werden für dieses Modell ausdrücklich vorausgesetzt.",
+    "25,00 mL einer 0,0500 mol/L Lösung einer generischen ungeladenen zweiprotonigen Säure H₂A; pKa1=4,00 und pKa2=5,00.",
+    "Titrant: 0,1000 mol/L NaOH, vollständig dissoziiert. Anfangs keine Na+- oder anderen Gegenionen in der H₂A-Probe."
+  ],
+  "assumptionsEn": [
+    "25 °C, pKw=14.00; ideal activities and additive volumes are explicitly stipulated for this model.",
+    "25.00 mL of 0.0500 mol/L generic neutral diprotic acid H2A; pKa1=4.00 and pKa2=5.00.",
+    "Titrant: fully dissociated 0.1000 mol/L NaOH. Initially no Na+ or other counterions in the H2A sample."
+  ],
+  "learnerTasksDe": [
+    "Leite die formalen Äquivalenzvolumina aus der anfänglichen Stoffmenge ab. Stelle Stoff- und Ladungsbilanz für H₂A, HA−, A²− und Wasser auf; übernimm nicht unverändert die Gegenionenbilanz des Glycinfalls.",
+    "Berechne Anfangs-pH und pH bei 12,50 mL mit begründeten Näherungen. Prüfe, wie weit pH≈(pKa1+pKa2)/2 hier trägt.",
+    "Prüfe an 6,25 mL und 18,75 mL, ob das formale Halbvolumen pH=pKa und genau gleiche Partnerbestände garantiert. Nutze gegebenenfalls die vollständige gekoppelte Bilanz.",
+    "Beurteile aus dem geringen pKa-Abstand und den tatsächlichen Speziesanteilen, ob zwei deutlich getrennte Stufen und isolierte Pufferbereiche zu erwarten sind. Erkläre, warum das schematische Bild keine unveränderte Zahlenkurve für diesen Fall liefert."
+  ],
+  "learnerTasksEn": [
+    "Derive formal equivalence volumes from initial amount. Establish material and charge balances for H2A, HA−, A²− and water; do not copy the glycine counterion balance unchanged.",
+    "Calculate initial pH and pH at 12.50 mL using justified approximations; test the ampholyte estimate (pKa1+pKa2)/2.",
+    "At 6.25 and18.75mL test whether formal half-volume guarantees pH=pKa and equal conjugate inventories; use coupled balances where necessary.",
+    "Use small pKa separation and actual species fractions to judge whether distinct stages and isolated buffer regions are expected. Explain why the schematic illustration supplies no unchanged numerical curve."
+  ],
+  "authorSolutionAndRubric": {
+    "formalEquivalenceVolumesMl": [
+      12.5,
+      25.0
+    ],
+    "fullBalanceModel": [
+      "C_T=[H2A]+[HA−]+[A²−]",
+      "[H+]+[Na+]=[HA−]+2[A²−]+[OH−]",
+      "D=h²+Ka1*h+Ka1*Ka2; fractions=(h²,Ka1*h,Ka1*Ka2)/D",
+      "[Na+]=c_base*V_base/V_total; [OH−]=Kw/h"
+    ],
+    "numericalReferenceTableNotLearnerMeasurements": [
+      {
+        "baseVolumeMl": 0,
+        "pH": 2.658257196134615,
+        "cTotalMolar": 0.049999999999999996,
+        "cNaMolar": 0.0,
+        "cH2AMolar": 0.04781335112419672,
+        "cHAMinusMolar": 0.0021767391057845556,
+        "cAMinus2Molar": 9.909770018721626e-06,
+        "cHPlusMolar": 0.0021965586503745705,
+        "cOHMinusMolar": 4.552575911549068e-12,
+        "chargeBalanceResidualMolar": -4.2401239110337494e-18
+      },
+      {
+        "baseVolumeMl": 3.125,
+        "pH": 3.507345029899054,
+        "cTotalMolar": 0.044444444444444446,
+        "cNaMolar": 0.011111111111111113,
+        "cH2AMolar": 0.03336756416113858,
+        "cHAMinusMolar": 0.010731724969412043,
+        "cAMinus2Molar": 0.00034515531389382677,
+        "cHPlusMolar": 0.00031092451825073824,
+        "cOHMinusMolar": 3.21621468009664e-11,
+        "chargeBalanceResidualMolar": 7.54070723279032e-18
+      },
+      {
+        "baseVolumeMl": 6.25,
+        "pH": 3.910185534382574,
+        "cTotalMolar": 0.04,
+        "cNaMolar": 0.020000000000000004,
+        "cH2AMolar": 0.021284479398767413,
+        "cHAMinusMolar": 0.01730806695362933,
+        "cAMinus2Molar": 0.0014074536476032567,
+        "cHPlusMolar": 0.00012297433015362973,
+        "cOHMinusMolar": 8.131778386194234e-11,
+        "chargeBalanceResidualMolar": 5.879493992456696e-18
+      },
+      {
+        "baseVolumeMl": 9.375,
+        "pH": 4.218299394600633,
+        "cTotalMolar": 0.03636363636363636,
+        "cNaMolar": 0.027272727272727268,
+        "cH2AMolar": 0.012426169702198508,
+        "cHAMinusMolar": 0.020541713844684825,
+        "cAMinus2Molar": 0.00339575281675302,
+        "cHPlusMolar": 6.0492370773696586e-05,
+        "cOHMinusMolar": 1.653101022839763e-10,
+        "chargeBalanceResidualMolar": -4.20839900695627e-18
+      },
+      {
+        "baseVolumeMl": 12.5,
+        "pH": 4.501060844652448,
+        "cTotalMolar": 0.033333333333333326,
+        "cNaMolar": 0.03333333333333333,
+        "cH2AMolar": 0.0064413372578640245,
+        "cHAMinusMolar": 0.020419113508224205,
+        "cAMinus2Molar": 0.006472882567245104,
+        "cHPlusMolar": 3.154562638221119e-05,
+        "cOHMinusMolar": 3.1700115505200657e-10,
+        "chargeBalanceResidualMolar": -2.4845288850787097e-17
+      },
+      {
+        "baseVolumeMl": 15.625,
+        "pH": 4.784257311575182,
+        "cTotalMolar": 0.030769230769230767,
+        "cNaMolar": 0.038461538461538464,
+        "cH2AMolar": 0.0028522721618770013,
+        "cHAMinusMolar": 0.01735594538414988,
+        "cAMinus2Molar": 0.010561013223203885,
+        "cHPlusMolar": 1.643397751459743e-05,
+        "cOHMinusMolar": 6.084954169565786e-10,
+        "chargeBalanceResidualMolar": -3.1779693904003942e-18
+      },
+      {
+        "baseVolumeMl": 18.75,
+        "pH": 5.09437163610955,
+        "cTotalMolar": 0.028571428571428574,
+        "cNaMolar": 0.04285714285714286,
+        "cH2AMolar": 0.0009896386967666775,
+        "cHAMinusMolar": 0.012298391239351046,
+        "cAMinus2Molar": 0.015283398635310854,
+        "cHPlusMolar": 8.046895545168056e-06,
+        "cOHMinusMolar": 1.242715273718786e-09,
+        "chargeBalanceResidualMolar": 7.166382634429724e-19
+      },
+      {
+        "baseVolumeMl": 21.875,
+        "pH": 5.5077762239972134,
+        "cTotalMolar": 0.02666666666666667,
+        "cNaMolar": 0.04666666666666666,
+        "cH2AMolar": 0.00019487469069858287,
+        "cHAMinusMolar": 0.006273814345013122,
+        "cAMinus2Molar": 0.02019797763095496,
+        "cHPlusMolar": 3.1061596659053716e-06,
+        "cOHMinusMolar": 3.2194095203039852e-09,
+        "chargeBalanceResidualMolar": 3.387500236619517e-18
+      },
+      {
+        "baseVolumeMl": 25,
+        "pH": 8.699022123665795,
+        "cTotalMolar": 0.024999999999999998,
+        "cNaMolar": 0.05000000000000001,
+        "cH2AMolar": 9.995601183873903e-11,
+        "cHAMinusMolar": 4.998400409937884e-06,
+        "cAMinus2Molar": 0.024995001499634052,
+        "cHPlusMolar": 1.99975999601803e-09,
+        "cOHMinusMolar": 5.000600081965955e-06,
+        "chargeBalanceResidualMolar": -4.6070122001161395e-18
+      },
+      {
+        "baseVolumeMl": 27.5,
+        "pH": 11.677781161466015,
+        "cTotalMolar": 0.023809523809523808,
+        "cNaMolar": 0.05238095238095238,
+        "cH2AMolar": 1.0499975735807994e-16,
+        "cHAMinusMolar": 4.9999936978093194e-09,
+        "cAMinus2Molar": 0.023809518809530004,
+        "cHPlusMolar": 2.0999977940789045e-12,
+        "cOHMinusMolar": 0.004761909763998668,
+        "chargeBalanceResidualMolar": 1.0408340855860843e-17
+      }
+    ],
+    "reasoningDe": [
+      "Anfangsnäherung: erste Protolyse quadratisch behandeln und den kleineren Anteil der zweiten Stufe sowie Wasser prüfen; keine universelle Halbpunktregel.",
+      "Die Ampholytnäherung 4,50 ist mit der vollständigen Bilanz zu vergleichen. Am formalen Halbvolumen liegen zusätzliche Protonierungsformen und freie Ionen vor; die Henderson-Hasselbalch-Aktivitätsbeziehung selbst bleibt gültig.",
+      "Bei nur einer pKa-Einheit Abstand überlappen Stufen und Paarbestände deutlich; sichtbare getrennte Äquivalenzsprünge sind nicht aus der formalen Zweiprotonigkeit garantiert.",
+      "Glycin und generische neutrale H₂A haben unterschiedliche Ladungs-/Gegenionenbilanzen. Der neue Fall ist eine unabhängig gestellte Modellwahl- und Pufferaufgabe, kein weiterer Abschnitt derselben Glycintabelle."
+    ]
+  },
+  "HumanApproval": false,
+  "HumanTrial": false
+}

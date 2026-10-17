@@ -1,6 +1,55 @@
 # Mathematik/Physik: Wiederaufnahme- und Effizienzreview vom 5. September 2026
 
-## Aktuelle Chemie-Fortsetzung: 386/426 – 15. Oktober 2026
+Neuester [Chemie-Paketstand nach der 418er-Messung](chemie-current418-next-package-progress-2026-10-16.md):
+sechs tatsächlich unabhängig geprüfte Kinderbilder einschließlich gezielter
+Kautschukkorrektur, unterstützte HB-Faktenkorrektur und gemeinsame Quellen-/
+Memory-Kandidaten. Kein neuer zentral gemessener Abschluss und kein M7.
+
+## Aktuelle Chemie-Fortsetzung: 418/429 – 16. Oktober 2026
+
+Der [aktuelle inaktive QS-Kandidat](chemie-native15-current429-progress-2026-10-16.md)
+erreicht **418/429 (97,4 %)** bei **elf offenen Zielen**. Alle sechs zentralen
+Pflichtprüfungen bestehen ohne Befund; D/P/A/M/V stehen bei
+**418/422/422/429/429**. Netto **15** zusätzliche strenge Abschlüsse beruhen
+auf aktuellen unabhängigen fachlichen Prüfungen und gezielten Korrekturen;
+alle bisherigen Abschlüsse bleiben erhalten. 20 technische Bild-/Profilbindungen
+zählen getrennt und erzeugen keine weiteren fachlichen Abschlüsse. Die beiden
+korrigierten Bilder sind tatsächlich nativ und bei 360/680 Pixeln sowie in zwei
+unabhängigen aktuellen Seitenprüfungen bestätigt. Quellen-/Kurs-/Sichtbarkeits-
+und Layer-A-Grenzen bleiben offen. Der Stand ist lokal; aktive Registry und
+geschützte M7-Fächer sind unverändert. Der gesicherte Vorgänger `edfe0016` hat
+GitHub-CI bestanden; ein CI-Nachweis für die neuen Änderungen steht noch aus.
+
+## Vorherige Chemie-Fortsetzung: 403/429 – 16. Oktober 2026
+
+Der [aktuelle inaktive QS-Kandidat](chemie-native11-current429-progress-2026-10-16.md)
+erreicht **403/429 (93,9 %)** bei **26 offenen Zielen**. Der tatsächliche
+Zentrallauf besteht alle sechs Pflichtprüfungen ohne technische Befunde;
+D/P/A/M/V stehen bei **405/420/422/429/429**. Ein fachlicher Erstabschluss
+und drei wiederhergestellte Kontextbindungen bringen netto vier strenge
+Abschlüsse gegenüber 399/429. Zwei neu erkannte P-Befunde bleiben ausdrücklich
+unselektiert; fünf Beschreibungsrevisionen werden als ganze Nachfolger geprüft.
+Aktive Registry und geschützte M7-Fächer bleiben unverändert. Der gesicherte
+399er-Commit `edfe0016` hat seinen eigenen vollständigen GitHub-CI-Lauf bestanden;
+der neue lokale Arbeitsstand benötigt später einen eigenen Nachweis.
+
+## Vorherige Chemie-Fortsetzung: 399/429 – 16. Oktober 2026
+
+Der [aktuelle geprüfte Zwischenstand](chemie-native19-current429-checkpoint-2026-10-16.md)
+erreicht im inaktiven zentralen Bericht **399/429 (93,0 %)**, sechs
+Pflichtprüfungen PASS und **30 offene Ziele**. Gegenüber 392/426 sind 15
+fachliche Erstabschlüsse und vier erneuerte Bestandsbindungen nachgewiesen.
+Drei geprüfte nichtatomare Kontexte verlassen die atomare Abschlusszahl;
+fünf veraltete Geltungsbindungen bleiben offen. Netto kommen sieben strenge
+Abschlüsse hinzu. D/P/A/M/V stehen bei **399/418/417/429/429**.
+Der abschließende reale Zentralbericht lief in 66,422 Sekunden ohne Befunde.
+Quellen-/Kurs- und weitere Routenprüfungen bleiben offen; M7 wird nicht behauptet.
+Aktiv bleiben Chemie **231/402, M6** und die drei geschützten M7-Fächer
+unverändert. Der Vorgänger `122d4eaf` hat GitHub-CI bestanden; der neue
+Zwischenstand erhält vor neuer fachlicher Arbeit seinen eigenen Commit und Lauf.
+Die nachstehenden Zahlen sind historische Zwischenstände.
+
+## Vorherige Chemie-Fortsetzung: 386/426 – 15. Oktober 2026
 
 Der [Praktikums-Folgecheckpoint](chemie-bcp-current426-checkpoint-2026-10-15.md)
 erreicht im inaktiven zentralen Bericht **386/426 (90,6 %)**:

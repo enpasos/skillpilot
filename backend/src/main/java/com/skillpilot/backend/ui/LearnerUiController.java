@@ -140,33 +140,6 @@ public class LearnerUiController {
                 .build();
     }
 
-    @GetMapping("/{skillpilotId}/composition-supplement-options")
-    public ResponseEntity<com.skillpilot.backend.api.CompositionSupplementOptions> getCompositionSupplementOptions(
-            @PathVariable String skillpilotId) {
-        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
-        return ResponseEntity.ok().cacheControl(CacheControl.noStore())
-                .body(learnerService.getCompositionSupplementOptions(skillpilotId));
-    }
-
-    @PostMapping("/{skillpilotId}/composition-supplement-options")
-    public ResponseEntity<com.skillpilot.backend.api.CompositionSupplementOptions> applyCompositionSupplementOption(
-            @PathVariable String skillpilotId,
-            @RequestBody com.skillpilot.backend.api.CompositionSupplementOptionRequest request) {
-        return learnerLifecycle.withActivity(skillpilotId, () -> {
-            learnerService.assertWritableLearningSession(skillpilotId);
-            return ResponseEntity.ok().cacheControl(CacheControl.noStore()).body(
-                    learnerService.applyCompositionSupplementOption(skillpilotId, request == null ? null : request.optionId()));
-        });
-    }
-
-    @GetMapping("/{skillpilotId}/selected-composition-views")
-    public ResponseEntity<java.util.List<java.util.Map<String, Object>>> getSelectedCompositionDocuments(
-            @PathVariable String skillpilotId, @RequestParam String landscapeId) {
-        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
-        return ResponseEntity.ok().cacheControl(CacheControl.noStore()).body(
-                learnerService.getSelectedCompositionDocuments(skillpilotId, landscapeId));
-    }
-
     @GetMapping("/{skillpilotId}/personalization-plan")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public PersonalizationPlan getPersonalizationPlan(@PathVariable String skillpilotId) {

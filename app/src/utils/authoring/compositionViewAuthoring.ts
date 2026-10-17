@@ -1,5 +1,4 @@
 import type { GoalPlacementContext } from '../../landscapeTypes'
-import { goalMatchesApplicabilityContext, parseApplicabilityContexts, toSelectedApplicabilityScope, resolveApplicabilityBranchScope } from '../applicabilityContexts'
 import {
   STATE_LOOKING_TITLE_PATTERN,
   asRecord,
@@ -68,8 +67,6 @@ export interface CompiledCompositionPreviewNode {
 }
 
 export interface CompositionCompileResult {
-  projectionPurpose?: 'runtime' | 'quality-review'
-  runtimeAdmissible?: boolean
   compiledRootNodes: CompiledCompositionPreviewNode[]
   findings: CompositionViewFinding[]
 }
@@ -275,12 +272,21 @@ const stringifyNodePath = (path: number[]): string => (
   path.length === 0 ? 'root' : path.join('.')
 )
 
+const expandCanonicalSubtree = (
+  goalId: string,
+  landscape: CanonicalAuthoringLandscape,
+): Set<string> => {
+  const index = buildCanonicalGraphIndex(landscape)
+  const expanded = new Set<string>([goalId])
+  index.descendantsById.get(goalId)?.forEach((descendantId) => expanded.add(descendantId))
+  return expanded
+}
+
 export const compileCompositionView = (
   view: CompositionView,
   landscape: CanonicalAuthoringLandscape | null,
   goalUniverse: CanonicalAuthoringLandscape | null = null,
   landscapeUniverseById: Map<string, CanonicalAuthoringLandscape> | null = null,
-  options: { purpose?: 'runtime' | 'quality-review', selectedScope?: unknown } = {},
 ): CompositionCompileResult => {
   const findings: CompositionViewFinding[] = []
   const hasScopeDiscriminator = ['jurisdiction', 'stage', 'courseProfile', 'durationModel']
@@ -309,7 +315,7 @@ export const compileCompositionView = (
   const canonicalLandscape = landscape ? normalizeCanonicalLandscape(landscape) : null
   if (!canonicalLandscape) {
     findings.push({ code: 'CPV-001', severity: 'error', message: 'Kein kanonischer Graph geladen.' })
-    return { compiledRootNodes: [], findings, projectionPurpose: options.purpose ?? 'runtime', runtimeAdmissible: false }
+    return { compiledRootNodes: [], findings }
   }
 
   const canonicalGoalUniverse = goalUniverse ? normalizeCanonicalLandscape(goalUniverse) : canonicalLandscape
@@ -337,27 +343,9 @@ export const compileCompositionView = (
     index.goalById,
     rootGoalIdByLandscapeId,
   )
-  const selectedScope = toSelectedApplicabilityScope(options.selectedScope ?? view.scope)
-  // Review inventory enumerates canonical bodies; it is never a runtime projection.
-  effectiveTargetGoalIds.forEach((goalId) => {
-    const goal = index.goalById.get(goalId)
-    if (!goal) return
-    const parsed = parseApplicabilityContexts(goal)
-    if (parsed.errors.length) findings.push({ code: 'CPV-216', severity: 'error', goalId,
-      message: parsed.errors.join(' ') })
-    else if (options.purpose !== 'quality-review' && !(Array.isArray(view.resolvedCourseProfileViews)
-      && Array.isArray(view.mergedFromViewIds) && String(view.viewId).startsWith('merged:')
-      ? view.resolvedCourseProfileViews.map(normalizeCompositionView).some((source) =>
-        (view.mergedFromViewIds as unknown[]).includes(source.viewId)
-        && collectCompositionProjectionRoleGoalIds(source.rootNodes, index.goalById, rootGoalIdByLandscapeId).targetGoalIds.has(goalId)
-        && goalMatchesApplicabilityContext(goal, resolveApplicabilityBranchScope(selectedScope, source.scope)))
-      : goalMatchesApplicabilityContext(goal, resolveApplicabilityBranchScope(selectedScope, view.scope)))) {
-      findings.push({ code: 'CPV-216', severity: 'error', goalId,
-        message: 'Target has no exact applicability context for this complete selected scope.' })
-    }
-  })
   const structureIds = new Set<string>()
-  const subtreeRootsByPath = new Map<string, { goalId: string, visibleGoalIds: Set<string> }>()
+  const subtreeRootsByPath = new Map<string, { goalId: string, expandedGoalIds: Set<string> }>()
+  const referencedRootIds = new Map<string, string>()
   const goalOccurrenceCount = new Map<string, number>()
   const goalParentKeys = new Map<string, Set<string>>()
 
@@ -500,13 +488,42 @@ export const compileCompositionView = (
       return
     }
 
+    const previousPathForSameRoot = referencedRootIds.get(node.goalId)
+    if (previousPathForSameRoot) {
+      findings.push({
+        code: 'CPV-004',
+        severity: 'error',
+        nodePath: pathKey,
+        goalId: node.goalId,
+        message: `Derselbe kanonische Root (${node.goalId}) ist bereits unter ${previousPathForSameRoot} referenziert.`,
+      })
+    } else {
+      referencedRootIds.set(node.goalId, pathKey)
+    }
+
     subtreeRootsByPath.set(pathKey, {
       goalId: node.goalId,
-      visibleGoalIds: new Set<string>(),
+      expandedGoalIds: expandCanonicalSubtree(node.goalId, canonicalGoalUniverse),
     })
   }
 
   view.rootNodes.forEach((node, indexOfNode) => validateNode(node, [indexOfNode]))
+
+  const subtreeEntries = Array.from(subtreeRootsByPath.entries())
+  for (let leftIndex = 0; leftIndex < subtreeEntries.length; leftIndex += 1) {
+    const [leftPath, leftEntry] = subtreeEntries[leftIndex]
+    for (let rightIndex = leftIndex + 1; rightIndex < subtreeEntries.length; rightIndex += 1) {
+      const [rightPath, rightEntry] = subtreeEntries[rightIndex]
+      const overlap = Array.from(leftEntry.expandedGoalIds).filter((goalId) => rightEntry.expandedGoalIds.has(goalId))
+      if (overlap.length === 0) continue
+      findings.push({
+        code: 'CPV-004',
+        severity: 'error',
+        nodePath: `${leftPath} <> ${rightPath}`,
+        message: `Überlappende kanonische Teilbäume (${leftEntry.goalId} / ${rightEntry.goalId}); gemeinsame Ziele: ${overlap.slice(0, 5).join(', ')}${overlap.length > 5 ? ' ...' : ''}`,
+      })
+    }
+  }
 
   const compileGoalSubtree = (
     goalId: string,
@@ -579,39 +596,12 @@ export const compileCompositionView = (
     }
 
     if (getCompositionProjectionRole(node) === 'prerequisiteOnly') return null
-    const compiledSubtree = compileGoalSubtree(node.goalId, parentKey, pathKey, node.displayLabel)
-    const reference = subtreeRootsByPath.get(pathKey)
-    if (reference && compiledSubtree) {
-      const collectVisibleGoals = (compiled: CompiledCompositionPreviewNode): void => {
-        if (compiled.sourceGoalId) reference.visibleGoalIds.add(compiled.sourceGoalId)
-        compiled.children.forEach(collectVisibleGoals)
-      }
-      collectVisibleGoals(compiledSubtree)
-    }
-    return compiledSubtree
+    return compileGoalSubtree(node.goalId, parentKey, pathKey, node.displayLabel)
   }
 
   const compiledRootNodes = view.rootNodes
     .map((node, indexOfNode) => compileNode(node, null, [indexOfNode]))
     .filter((node): node is CompiledCompositionPreviewNode => node !== null)
-
-  // Diagnose reference overlap from the actual projected subtree. Hidden
-  // prerequisite-only goals do not create a visible occurrence or parent.
-  const subtreeEntries = Array.from(subtreeRootsByPath.entries())
-  for (let leftIndex = 0; leftIndex < subtreeEntries.length; leftIndex += 1) {
-    const [leftPath, leftEntry] = subtreeEntries[leftIndex]
-    for (let rightIndex = leftIndex + 1; rightIndex < subtreeEntries.length; rightIndex += 1) {
-      const [rightPath, rightEntry] = subtreeEntries[rightIndex]
-      const overlap = Array.from(leftEntry.visibleGoalIds).filter((goalId) => rightEntry.visibleGoalIds.has(goalId))
-      if (overlap.length === 0) continue
-      findings.push({
-        code: 'CPV-004',
-        severity: 'error',
-        nodePath: `${leftPath} <> ${rightPath}`,
-        message: `Überlappende kanonische Teilbäume (${leftEntry.goalId} / ${rightEntry.goalId}); gemeinsame Ziele: ${overlap.slice(0, 5).join(', ')}${overlap.length > 5 ? ' ...' : ''}`,
-      })
-    }
-  }
 
   goalOccurrenceCount.forEach((count, goalId) => {
     if (count > 1) {
@@ -637,8 +627,6 @@ export const compileCompositionView = (
 
   return {
     compiledRootNodes,
-    projectionPurpose: options.purpose ?? 'runtime',
-    runtimeAdmissible: options.purpose !== 'quality-review' && !findings.some((item) => item.severity === 'error'),
     findings: findings.sort((left, right) => {
       const leftKey = `${left.severity}:${left.code}:${left.nodePath ?? ''}:${left.goalId ?? ''}:${left.message}`
       const rightKey = `${right.severity}:${right.code}:${right.nodePath ?? ''}:${right.goalId ?? ''}:${right.message}`

@@ -59,10 +59,7 @@ public final class CoachStateProjection {
                         prepareSelectableGoals(rewriteGoals(stateMachine.goalOptions())),
                         stateMachine.curriculumOptions(),
                         stateMachineActiveGoal,
-                        stateMachine.modeOptions(),
-                        stateMachine.prerequisiteBlockers().stream()
-                                .map(com.skillpilot.backend.api.PrerequisiteBlocker::forCoach)
-                                .toList());
+                        stateMachine.modeOptions());
 
         return new UnifiedLearnerStateResponse(
                 null,
@@ -106,38 +103,6 @@ public final class CoachStateProjection {
 
     public List<FrontierGoal> projectNavigationGoals(List<FrontierGoal> goals) {
         return prepareSelectableGoals(rewriteGoals(goals));
-    }
-
-    /** Compact, localized curricular facts without a Level-2 editing action. */
-    public List<com.skillpilot.backend.api.PrerequisiteBlocker> projectPrerequisiteBlockers(
-            StateMachineInfo machine, String communicationLocale) {
-        if (machine == null) {
-            return List.of();
-        }
-        boolean english = communicationLocale != null
-                && communicationLocale.toLowerCase(java.util.Locale.ROOT).startsWith("en");
-        return machine.prerequisiteBlockers().stream().limit(20)
-                .map(blocker -> new com.skillpilot.backend.api.PrerequisiteBlocker(
-                        blocker.goalId(),
-                        english && blocker.goalTitleEn() != null ? blocker.goalTitleEn() : blocker.goalTitle(), null,
-                        blocker.prerequisiteId(),
-                        english && blocker.prerequisiteTitleEn() != null
-                                ? blocker.prerequisiteTitleEn() : blocker.prerequisiteTitle(), null,
-                        blocker.reason(), null))
-                .toList();
-    }
-
-    public String prerequisiteBlockerInstruction(String communicationLocale) {
-        boolean english = communicationLocale != null
-                && communicationLocale.toLowerCase(java.util.Locale.ROOT).startsWith("en");
-        return english
-                ? "Explain the supplied missing prerequisite using its title. No next learning goal is available "
-                        + "in the current focus. Wait for the learner's reply. Do not claim completion, invent goal "
-                        + "choices, change the curriculum or focus, or automatically reload the same context."
-                : "Erkläre die veröffentlichte fehlende Voraussetzung mit ihrem Titel. Im aktuellen Fokus ist "
-                        + "kein nächstes Lernziel verfügbar. Warte auf die Antwort der lernenden Person. Behaupte "
-                        + "keinen Abschluss, erfinde keine Zielauswahl, ändere weder Lehrplan noch Fokus und lade "
-                        + "denselben Kontext nicht automatisch erneut.";
     }
 
     public boolean isExamReadyForHardCheck(FrontierGoal goal) {

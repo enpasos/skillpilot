@@ -1,0 +1,262 @@
+{
+  "role": "Existing normal source-extraction ID aggregation only, not scientific acceptance. Preserve source2 whole HB unreviewed decision/status separately. No summary field invented for HB/RP/SN.",
+  "normalRuleFile": {
+    "path": "app/scripts/generateCurriculumQualityStatus.ts",
+    "sha256": "sha256:514bab03b7c041655e0063a4bf6ecb7ac4cd51edda9581e76182e980aa384957",
+    "bytes": 274591
+  },
+  "exactRelevantCode": "          .map((sourceGoal) => sourceGoal.id)\n          .filter((sourceGoalId): sourceGoalId is string => typeof sourceGoalId === 'string' && sourceGoalId.trim().length > 0),\n      )\n      const repoPath = toRepoPath(file)\n      const mappingFilesForExtraction = mappingFilesBySourceExtractionPath.get(repoPath) ?? []\n      const mappingEntries = mappingFilesForExtraction\n        .flatMap((mappingFile) => mappingFile.mappings ?? [])\n        .filter((mapping): mapping is GoalMappingEntry & { legacyGoalId: string } =>\n          typeof mapping.legacyGoalId === 'string' && mapping.legacyGoalId.trim().length > 0)\n      const decisionEntries = mappingFilesForExtraction\n        .flatMap((mappingFile) => mappingFile.decisions ?? [])\n        .filter((decision): decision is SourceMappingReviewDecision & { sourceGoalId: string; decision: string } =>\n          typeof decision.sourceGoalId === 'string'\n          && decision.sourceGoalId.trim().length > 0\n          && typeof decision.decision === 'string'\n          && decision.decision.trim().length > 0)\n      const mappedSourceGoalIds = new Set(mappingEntries.map((mapping) => mapping.legacyGoalId))\n      const validMappedSourceGoalIds = new Set(Array.from(mappedSourceGoalIds).filter((sourceGoalId) => sourceGoalIds.has(sourceGoalId)))\n      const extraMappedGoalIds = Array.from(mappedSourceGoalIds).filter((sourceGoalId) => !sourceGoalIds.has(sourceGoalId))\n      const extraDecisionGoalIds = decisionEntries\n        .map((decision) => decision.sourceGoalId)\n        .filter((sourceGoalId) => !sourceGoalIds.has(sourceGoalId))\n      const invalidMappedTargetGoalIds = mappingEntries\n        .map((mapping) => mapping.canonicalGoalId)\n        .filter((canonicalGoalId): canonicalGoalId is string => typeof canonicalGoalId === 'string' && canonicalGoalId.trim().length > 0)\n        .filter((canonicalGoalId) => !knownCanonicalGoalIds.has(canonicalGoalId))\n      const matchTypesBySourceGoalId = new Map<string, Set<string>>()\n      mappingEntries.forEach((mapping) => {\n        if (!sourceGoalIds.has(mapping.legacyGoalId)) return\n        const matchTypes = matchTypesBySourceGoalId.get(mapping.legacyGoalId) ?? new Set<string>()\n        if (typeof mapping.matchType === 'string' && mapping.matchType.trim().length > 0) {\n          matchTypes.add(mapping.matchType)\n        }\n        matchTypesBySourceGoalId.set(mapping.legacyGoalId, matchTypes)\n      })\n      const exactMappings = Array.from(validMappedSourceGoalIds).filter((sourceGoalId) =>\n        matchTypesBySourceGoalId.get(sourceGoalId)?.has('exact')).length\n      const partialMappings = Array.from(validMappedSourceGoalIds).filter((sourceGoalId) => {\n        const matchTypes = matchTypesBySourceGoalId.get(sourceGoalId)\n        return !matchTypes?.has('exact') && matchTypes?.has('partial')\n      }).length\n      const otherMappings = Math.max(0, validMappedSourceGoalIds.size - exactMappings - partialMappings)\n      const unmappedSourceGoals = Math.max(0, sourceGoalIds.size - validMappedSourceGoalIds.size)\n      const reviewedSourceGoalIds = new Set(\n        decisionEntries\n          .map((decision) => decision.sourceGoalId)\n          .filter((sourceGoalId) => sourceGoalIds.has(sourceGoalId)),\n      )\n      const reviewedMappedSourceGoalIds = new Set(\n        Array.from(reviewedSourceGoalIds).filter((sourceGoalId) => validMappedSourceGoalIds.has(sourceGoalId)),\n      )\n      const explicitNeedsCanonicalGoal = decisionEntries.filter((decision) =>\n        sourceGoalIds.has(decision.sourceGoalId)\n        && decision.decision === 'needsCanonicalGoal'\n        && !validMappedSourceGoalIds.has(decision.sourceGoalId)).length\n      const unreviewedSourceGoals = Math.max(0, sourceGoalIds.size - reviewedSourceGoalIds.size)\n",
+  "existingSummaryHeaders": [
+    {
+      "normalPath": "curricula/DE/Gymnasium/mapping/DE-BB/upper-secondary/bb_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "wholeBeforeSummary": {
+        "sourceGoals": 205,
+        "mappedSourceGoals": 205,
+        "needsCanonicalGoal": 0,
+        "exactMappings": 97,
+        "partialMappings": 108
+      },
+      "wholeAfterSummary": {
+        "sourceGoals": 205,
+        "mappedSourceGoals": 205,
+        "needsCanonicalGoal": 0,
+        "exactMappings": 97,
+        "partialMappings": 108
+      },
+      "changed": false,
+      "actualNormalRuleFile": {
+        "path": "app/scripts/generateCurriculumQualityStatus.ts",
+        "sha256": "sha256:514bab03b7c041655e0063a4bf6ecb7ac4cd51edda9581e76182e980aa384957",
+        "bytes": 274591
+      },
+      "noNonSummaryFieldChangedByRefresh": true
+    },
+    {
+      "normalPath": "curricula/DE/Gymnasium/mapping/DE-BE/upper-secondary/be_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "wholeBeforeSummary": {
+        "sourceGoals": 205,
+        "mappedSourceGoals": 205,
+        "needsCanonicalGoal": 0,
+        "exactMappings": 97,
+        "partialMappings": 108
+      },
+      "wholeAfterSummary": {
+        "sourceGoals": 205,
+        "mappedSourceGoals": 205,
+        "needsCanonicalGoal": 0,
+        "exactMappings": 97,
+        "partialMappings": 108
+      },
+      "changed": false,
+      "actualNormalRuleFile": {
+        "path": "app/scripts/generateCurriculumQualityStatus.ts",
+        "sha256": "sha256:514bab03b7c041655e0063a4bf6ecb7ac4cd51edda9581e76182e980aa384957",
+        "bytes": 274591
+      },
+      "noNonSummaryFieldChangedByRefresh": true
+    },
+    {
+      "normalPath": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_chemistry_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.json",
+      "wholeBeforeSummary": {
+        "sourceGoals": 332,
+        "originalSourceGoalsBeforeDeduplication": 559,
+        "duplicateTextGroups": 163,
+        "reviewedSourceGoals": 332,
+        "mappedSourceGoals": 332,
+        "needsCanonicalGoal": 0,
+        "exactMappings": 277,
+        "partialMappings": 55
+      },
+      "wholeAfterSummary": {
+        "sourceGoals": 332,
+        "originalSourceGoalsBeforeDeduplication": 559,
+        "duplicateTextGroups": 163,
+        "reviewedSourceGoals": 332,
+        "mappedSourceGoals": 332,
+        "needsCanonicalGoal": 0,
+        "exactMappings": 276,
+        "partialMappings": 56
+      },
+      "changed": true,
+      "actualNormalRuleFile": {
+        "path": "app/scripts/generateCurriculumQualityStatus.ts",
+        "sha256": "sha256:514bab03b7c041655e0063a4bf6ecb7ac4cd51edda9581e76182e980aa384957",
+        "bytes": 274591
+      },
+      "noNonSummaryFieldChangedByRefresh": true
+    },
+    {
+      "normalPath": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.q1-atomic-split-author-proposal-20261005-v1.q4-four-bounded-reviewed-20261013-v1.review.json",
+      "wholeBeforeSummary": {
+        "sourceGoals": 202,
+        "mappedSourceGoals": 202,
+        "needsCanonicalGoal": 0,
+        "exactMappings": 125,
+        "partialMappings": 77
+      },
+      "wholeAfterSummary": {
+        "sourceGoals": 202,
+        "mappedSourceGoals": 202,
+        "needsCanonicalGoal": 0,
+        "exactMappings": 125,
+        "partialMappings": 77
+      },
+      "changed": false,
+      "actualNormalRuleFile": {
+        "path": "app/scripts/generateCurriculumQualityStatus.ts",
+        "sha256": "sha256:514bab03b7c041655e0063a4bf6ecb7ac4cd51edda9581e76182e980aa384957",
+        "bytes": 274591
+      },
+      "noNonSummaryFieldChangedByRefresh": true
+    },
+    {
+      "normalPath": "curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.m7-manganometry-three-route-corrections-20261012-v1.review.json",
+      "wholeBeforeSummary": {
+        "sourceGoals": 333,
+        "mappedSourceGoals": 333,
+        "needsCanonicalGoal": 0,
+        "exactMappings": 79,
+        "partialMappings": 254
+      },
+      "wholeAfterSummary": {
+        "sourceGoals": 333,
+        "mappedSourceGoals": 333,
+        "needsCanonicalGoal": 0,
+        "exactMappings": 79,
+        "partialMappings": 254
+      },
+      "changed": false,
+      "actualNormalRuleFile": {
+        "path": "app/scripts/generateCurriculumQualityStatus.ts",
+        "sha256": "sha256:514bab03b7c041655e0063a4bf6ecb7ac4cd51edda9581e76182e980aa384957",
+        "bytes": 274591
+      },
+      "noNonSummaryFieldChangedByRefresh": true
+    }
+  ],
+  "allMappingFileCounters": [
+    {
+      "normalPath": "curricula/DE/Gymnasium/mapping/DE-BB/upper-secondary/bb_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "normalDerivedUniqueIdCounters": {
+        "sourceGoals": 205,
+        "mappedSourceGoals": 205,
+        "reviewedSourceGoals": 205,
+        "needsCanonicalGoal": 0,
+        "exactMappings": 97,
+        "partialMappings": 108
+      },
+      "semanticExplicitUnreviewedDecisionIds": [],
+      "normalPresenceCountIsNotScientificAcceptance": true,
+      "existingSummaryPresent": true,
+      "authorStatusUnmodifiedByDerivedCounterRefresh": true
+    },
+    {
+      "normalPath": "curricula/DE/Gymnasium/mapping/DE-BE/upper-secondary/be_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "normalDerivedUniqueIdCounters": {
+        "sourceGoals": 205,
+        "mappedSourceGoals": 205,
+        "reviewedSourceGoals": 205,
+        "needsCanonicalGoal": 0,
+        "exactMappings": 97,
+        "partialMappings": 108
+      },
+      "semanticExplicitUnreviewedDecisionIds": [],
+      "normalPresenceCountIsNotScientificAcceptance": true,
+      "existingSummaryPresent": true,
+      "authorStatusUnmodifiedByDerivedCounterRefresh": true
+    },
+    {
+      "normalPath": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_chemistry_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.json",
+      "normalDerivedUniqueIdCounters": {
+        "sourceGoals": 332,
+        "mappedSourceGoals": 332,
+        "reviewedSourceGoals": 332,
+        "needsCanonicalGoal": 0,
+        "exactMappings": 276,
+        "partialMappings": 56
+      },
+      "semanticExplicitUnreviewedDecisionIds": [],
+      "normalPresenceCountIsNotScientificAcceptance": true,
+      "existingSummaryPresent": true,
+      "authorStatusUnmodifiedByDerivedCounterRefresh": true
+    },
+    {
+      "normalPath": "curricula/DE/Gymnasium/mapping/DE-HB/upper-secondary/hb_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "normalDerivedUniqueIdCounters": {
+        "sourceGoals": 95,
+        "mappedSourceGoals": 95,
+        "reviewedSourceGoals": 95,
+        "needsCanonicalGoal": 0,
+        "exactMappings": 4,
+        "partialMappings": 91
+      },
+      "semanticExplicitUnreviewedDecisionIds": [
+        "hb-chemistry-sekii-gyo2022-3-3-2-2-aminosaeuren-proteine-056-9091e6b6"
+      ],
+      "normalPresenceCountIsNotScientificAcceptance": true,
+      "existingSummaryPresent": false,
+      "authorStatusUnmodifiedByDerivedCounterRefresh": true
+    },
+    {
+      "normalPath": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.q1-atomic-split-author-proposal-20261005-v1.q4-four-bounded-reviewed-20261013-v1.review.json",
+      "normalDerivedUniqueIdCounters": {
+        "sourceGoals": 202,
+        "mappedSourceGoals": 202,
+        "reviewedSourceGoals": 202,
+        "needsCanonicalGoal": 0,
+        "exactMappings": 125,
+        "partialMappings": 77
+      },
+      "semanticExplicitUnreviewedDecisionIds": [],
+      "normalPresenceCountIsNotScientificAcceptance": true,
+      "existingSummaryPresent": true,
+      "authorStatusUnmodifiedByDerivedCounterRefresh": true
+    },
+    {
+      "normalPath": "curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.m7-manganometry-three-route-corrections-20261012-v1.review.json",
+      "normalDerivedUniqueIdCounters": {
+        "sourceGoals": 333,
+        "mappedSourceGoals": 333,
+        "reviewedSourceGoals": 333,
+        "needsCanonicalGoal": 0,
+        "exactMappings": 79,
+        "partialMappings": 254
+      },
+      "semanticExplicitUnreviewedDecisionIds": [],
+      "normalPresenceCountIsNotScientificAcceptance": true,
+      "existingSummaryPresent": true,
+      "authorStatusUnmodifiedByDerivedCounterRefresh": true
+    },
+    {
+      "normalPath": "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "normalDerivedUniqueIdCounters": {
+        "sourceGoals": 325,
+        "mappedSourceGoals": 325,
+        "reviewedSourceGoals": 325,
+        "needsCanonicalGoal": 0,
+        "exactMappings": 97,
+        "partialMappings": 228
+      },
+      "semanticExplicitUnreviewedDecisionIds": [],
+      "normalPresenceCountIsNotScientificAcceptance": true,
+      "existingSummaryPresent": false,
+      "authorStatusUnmodifiedByDerivedCounterRefresh": true
+    },
+    {
+      "normalPath": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "normalDerivedUniqueIdCounters": {
+        "sourceGoals": 302,
+        "mappedSourceGoals": 302,
+        "reviewedSourceGoals": 302,
+        "needsCanonicalGoal": 0,
+        "exactMappings": 38,
+        "partialMappings": 264
+      },
+      "semanticExplicitUnreviewedDecisionIds": [],
+      "normalPresenceCountIsNotScientificAcceptance": true,
+      "existingSummaryPresent": false,
+      "authorStatusUnmodifiedByDerivedCounterRefresh": true
+    }
+  ],
+  "wholeSourceApproval": false
+}

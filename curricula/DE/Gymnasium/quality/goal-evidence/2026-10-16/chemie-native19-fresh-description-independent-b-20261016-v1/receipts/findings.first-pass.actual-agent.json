@@ -1,0 +1,52 @@
+{
+  "authority": "ai_candidate",
+  "reviewPass": "blind independent first pass",
+  "recordCount": 19,
+  "decisions": { "keep": 17, "revise": 2, "split_review": 0, "block": 0 },
+  "findings": [
+    {
+      "findingId": "D-B-11-DISSOCIATION",
+      "goalId": "edcfc5f0-900d-5819-830f-3b14af2bc369",
+      "severity": "medium",
+      "lane": "description",
+      "location": "PDF Lernzielseite 11 (physical page 13), DE/EN description: 'vollständigen oder unvollständigen Protolysemodells' / 'complete or incomplete protolysis model'",
+      "problem": "The supplied NaOH example releases hydroxide by dissociation. Calling both strong and weak branches complete/incomplete protolysis blurs a chemical distinction that the current P-profile itself states correctly. The MWG approximation derivation also belongs explicitly to the weak-base branch.",
+      "recommendation": "Use the complete bilingual local replacement already supplied in stock record 11; preserve the correct dissociation/protolysis distinction in the existing profile.",
+      "canonicalChanged": false
+    },
+    {
+      "findingId": "D-B-13-CALCULATED-QUANTITY",
+      "goalId": "dc0470f1-0676-5949-a5cc-02783d478406",
+      "severity": "medium",
+      "lane": "description",
+      "location": "PDF Lernzielseite 13 (physical page 15), whole DE/EN description: 'mehrprotonige Säure-Base-Systeme berechnen' / 'calculate polyprotic acid-base systems'",
+      "problem": "The expression does not name what is calculated or how this relates to the jointly claimed buffer evaluation. The whole current case supplies the intended pH, successive-protolysis and conjugate-pair relationship, so a bounded wording correction is possible without a new competence.",
+      "recommendation": "Use the complete bilingual local replacement supplied in stock record 13.",
+      "canonicalChanged": false
+    },
+    {
+      "findingId": "P-B-13-ESSENTIAL-RELATIONSHIP",
+      "goalId": "dc0470f1-0676-5949-a5cc-02783d478406",
+      "severity": "medium",
+      "lane": "supplied-profile alignment recommendation only",
+      "location": "round-b/description-review-input.json, goal dc0470f1-0676-5949-a5cc-02783d478406, evidenceProfile.profile.expectations[0..3].essentialUnderstandingDe/En",
+      "problem": "All four essential-understanding fields repeat only the case title about two glycine stages and halfpoint limits. The performances are concrete, but the central chemical relationship between successive equilibria, available conjugate pairs, finite concentrations, pH and buffer regions is not expressed in those fields.",
+      "recommendation": "Revise the supplied V2 profile's essential-understanding statements to express the relationships. The present review recommends this change and does not create or approve a P-profile.",
+      "canonicalChanged": false
+    },
+    {
+      "findingId": "PAGE-B-03-ALT-SCOPE",
+      "goalId": "b4777001-f4ed-5fe9-9d98-02319abdea09",
+      "severity": "medium",
+      "lane": "HTML accessibility and bound page companion text",
+      "location": "bundle/book.html article#goal-b4777001-f4ed-5fe9-9d98-02319abdea09 img[alt]; same page.visualization.altText in round-b input",
+      "problem": "The actual alt text says the learner can 'Oxonium- und Hydroxidionen nachweisen'. The current description and qualitative pair-1/pair-2 successors contain no such experimental identification competence. The visible image itself contains conjugate-pair comparison, not an ion-detection procedure.",
+      "recommendation": "Replace the obsolete alt text with an accurate account of the actual conjugate-pair image and current qualitative scope. Keep the scientifically adequate canonical description; its stock D decision is keep.",
+      "canonicalChanged": false
+    }
+  ],
+  "interpretationBoundary": "A keep decision concerns the current canonical description, not automatic approval of the entire page, all supplied P materials, the whole source mapping, the full429, or M7. The supporting alt-text and profile findings remain open candidate findings.",
+  "HumanApproval": false,
+  "HumanTrial": false,
+  "actualLearnerOrLaboratoryObservations": false
+}

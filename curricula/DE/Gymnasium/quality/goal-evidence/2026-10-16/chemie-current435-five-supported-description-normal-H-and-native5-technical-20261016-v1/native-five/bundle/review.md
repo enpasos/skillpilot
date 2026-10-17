@@ -1,0 +1,494 @@
+# AI review input: Chemie – fünf gezielt korrigierte aktuelle Lernzielseiten
+
+- Book ID: `chemie-current435-final-five-descriptions-20261016-v1`
+- Book edition: `curricular-atomic-v1`
+- Publication mode: `review`
+- BookModel digest: `sha256:227e215e61394c6bcf88b6746ff542c2164ac01e82a278c9ad818497a85089ed`
+- Selected goals: 5
+
+The PDF and this Markdown are parallel review surfaces. The normalized JSON is authoritative for exact IDs, relationships, fingerprints, and evidence-profile fields.
+
+## Page 1: Planare chromatografische Trennungen durchführen und auswerten
+
+- Full learning-goal ID: `978a6f25-0601-5457-9211-aab206c95603`
+- Goal fingerprint: `sha256:be80de5224ab1f97537ff50dd413de3ca95f1ce80de0ce213deefbd1a9b2897e`
+- Page fingerprint: `sha256:ceae262c378a05b09e7ec6a98082bff50a843c5d03d60065a71bbee958796ea0`
+- Topic path: Chemie – kanonische M7-Prüfsicht > Chemie > Naturstoffe und Synthesechemie > Q2.1 Naturstoffe
+
+### Canonical description
+
+Die lernende Person kann eine geeignete planare chromatografische Trennung durchführen, stationäre Phase und Laufmittel begründet auswählen, Startlinie, Laufmittelfront und eigene Rohdaten dokumentieren sowie Chromatogramme und Rf-Werte unter gleichen Methodenbedingungen mit Referenzen vergleichen, um Gemischbestandteile vorläufig zuzuordnen und die Grenzen dieser Zuordnung zu erläutern.
+
+### Visualization
+
+/assets/goal-visualizations/chemie/978a6f25-0601-5457-9211-aab206c95603/978a6f25-0601-5457-9211-aab206c95603.jpg
+
+- original digest: `sha256:5c359891410519b1e91f5aaefb4006b86a3c27696c65545c4a63161eba2de179`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- None
+
+### Direct reverse prerequisites
+
+- None
+
+### Prerequisites outside this book
+
+- Lösungen und Löslichkeit beschreiben — `53fd1bfd-facb-54ae-b2dc-f667ed1414fc` (outside this book)
+- Elemente, Verbindungen und Gemische unterscheiden — `42a84bca-d27e-581f-a43a-eee424f0504d` (outside this book)
+
+### Direct reverse prerequisites outside this book
+
+- Sek-II-Abschlussaufgaben Chemie bearbeiten — `14577339-9e0c-5b44-8e47-91e1a4947367` (outside this book)
+
+### Evidence-profile candidate
+
+Status: `needs_human_review`; profile fingerprint: `sha256:3c34aeac6fc4b42e0dfeb88c53684e4891831fbd0a076775a67dfa60c984aa95`
+Contract: `positive-understanding-evidence-v2`; authority: `ai_candidate`; evidence level: `E0`; maximum claim scope: `G0`
+Archetype: `experiment`
+
+**Positive understanding expectations**
+
+- `978a6f25-whole-1`
+  - Essential understanding (DE): Eine geeignete planare Trennung verbindet Phasenwahl, echte Durchführung und nachvollziehbare eigene Dokumentation.
+  - Essential understanding (EN): Appropriate planar separation connects phase choice, actual execution and traceable own documentation.
+  - Observable performance (DE): Wähle die tatsächlich geltende Quellenvariante(Papier/Pigment, Lebensmittel-, Indikator- oder Aminosäure-DC), begründe Phasen/Laufmittel und führe genau diese geeignete Trennung aus. Dokumentiere tatsächliche Handlungen, Start, Laufmittelstand, Front, Referenzen/Blank und eigene Rohstrecken. Die hier leeren Eigenfelder belegen keine Durchführung. Pigment und Aminosäuren sind Alternativen aus verschiedenen Quellenrouten, keine universelle kumulierte Pflicht.
+  - Observable performance (EN): Choose the actually applicable source route(paper/pigment, food, indicator or amino-acidTLC), justify phases/solvent and actually perform that appropriate separation. Document own actions, origin, solvent level, front, references/blank and raw distances. Blank own fields here demonstrate no execution. Pigment and amino-acid routes are source-specific alternatives, not universally cumulative duties.
+- `978a6f25-whole-2`
+  - Essential understanding (DE): VerfahrensabhängigeRf-Auswertung und bedingter Referenzvergleich begrenzen die Identifizierung; frische Randbedingungen verlangen neue passende Belege.
+  - Essential understanding (EN): Method-dependentRf interpretation and conditional reference comparison bound identification; fresh conditions require appropriate new evidence.
+  - Observable performance (DE): Werte die gewählte planare Trennung mit eigenen dokumentierten Strecken aus:Rf=Stoffweg/Frontweg. Beurteile Referenzen, Blank und Identitätsgrenzen. Bearbeite innerhalb desselben Auftrags einen frischen Methodenwechsel und begründe benötigte neue Kontrollen. Die synthetischen Zusatzkarten liefern nur0,25/0,70 beziehungsweise0,18/0,64, keine Ausführung. Beide Pflichtaspekte können in einer vollständigen Aufgabe unabhängig sichtbar werden; minimumIndependentDemonstrations2 ist keine Zwei-Aufgaben- oder Zwei-Stoffbereiche-Quote. GC-Retentionszeiten und Geräteausführung gehören nicht zu diesem planaren P-Vertrag.
+  - Observable performance (EN): Interpret the selected planar separation using own documented distances:Rf=analyte distance/front distance. Assess references, blank and identity limits. Within the same whole task solve a fresh method change and justify new controls. Synthetic extra cards give only0.25/0.70 or0.18/0.64, not execution. Both required aspects can be independently visible in one complete task; minimumIndependentDemonstrations2 is no two-task or two-domain quota. GC retention times and instrument execution are not part of this planar P contract.
+
+**Coverage expectations**
+
+- required expectations: `978a6f25-whole-1`, `978a6f25-whole-2`
+- alternative expectation groups: None
+- minimum independent demonstrations: 2
+- fresh variation required: true
+- independent transfer required: true
+
+**Variation axes**
+
+- `changed-material-or-source`: Stoff, Methodenbedingung oder Quelle unabhängig variieren. / Independently vary substance, method condition or source.
+- `genuine-transfer-and-limit`: Frischen Transfer und tatsächliche Aussagegrenzen erklären; Modellwerte sind keine Eigenleistung. / Explain fresh transfer and actual inference limits; model values are not own performance.
+
+**Application cases**
+
+- `chromatography-pigments-execution`
+  - Task demand (DE): Wähle und begründe eine örtlich freigegebene Phase-/Laufmittelkombination und führe die Trennung tatsächlich aus. Dokumentiere eigene Handlungen, Front und Rohstrecken in den leeren Eigenfeldern. Werte Referenzen, Leerprobe und eigene Rf-Werte aus. Bearbeite danach die getrennte Rechenkarte und benenne, welche Ausführungsteile sie nicht belegt. Material: Prospektive Pigmentroute für Sek I beziehungsweise allgemeine Chromatografie: Zugelassene wässrige Lebensmittelfarbstoffe, bekannte Referenzen R/S, Leerprobe, geeignetes Papier oder freigegebene DC-Schicht und örtliche Arbeitsanweisung stehen bereit. Eigene Durchführung, Rohdaten und Frontmarkierung fehlen noch. Planprinzipien: geeignete Startlinie, kleine getrocknete Aufträge, anfänglicher Laufmittelstand unter der Startlinie, getrennte Referenzen und unmittelbar am Ende markierte Front. Nur örtlich freigegebene Stoffe und Methoden verwenden. Getrennte synthetische Rechenkarte: Front 8,0 cm, R 2,0 cm, S 5,6 cm, U 2,0/5,6 cm. Diese Zahlen sind keine Versuchsdaten.
+  - Task demand (EN): Select and justify a locally approved phase/solvent combination and actually perform the separation. Document your own actions, front and raw distances in the blank fields. Evaluate references, blank and your own Rf values. Then use the separate calculation card and state which execution parts it does not demonstrate. Material: Prospective lower-stage/general pigment route: Authorised aqueous food colours, known references R/S, a blank, suitable paper or approved TLC material and local instructions are available. Own execution, raw data and front marking are still absent. Planning principles: appropriate origin, small dried spots, initial solvent below the origin, separate references and a front marked immediately at the end. Use only locally approved substances and methods. Separate synthetic calculation card: front 8.0 cm, R 2.0 cm, S 5.6 cm, U 2.0/5.6 cm. These are not experimental measurements.
+  - Expected performance (DE): Eine vollständige Ausführungsantwort enthält tatsächlich ausgefüllte Eigenfelder, geeigneten Aufbau, Frontmarkierung, Referenzen und nachvollziehbare Messung; diese Autorenakte enthält keine solche Durchführung. Die Rechenkarte ergibt Rf(R)=2/8=0,25 und Rf(S)=5,6/8=0,70. U ist mit beiden Referenzen vereinbar; Ko-Migration allein beweist keine eindeutige Identität. Rf gehört zum konkreten System. Eingetauchte Startlinie, fehlende Front oder anders behandelte Referenzen machen den Vergleich unzureichend. Frischer Transfer: Das neue System braucht passende Referenzen und tatsächlich dokumentierte Front- und Stoffstrecken. Rf ist keine unveränderliche Stoffkonstante. Alte Werte identifizieren U im neuen System nicht; praktische Handlungen bleiben separat nachzuweisen.
+  - Expected performance (EN): A complete execution answer requires actually filled own fields, a suitable setup, front marking, references and traceable measurement; this author packet contains no such execution. The calculation card gives Rf(R)=2/8=0.25 and Rf(S)=5.6/8=0.70. U is compatible with both references; co-migration alone proves no unique identity. Rf belongs to the particular system. An immersed origin, missing front or differently treated references undermines comparison. Fresh transfer: The new system needs suitable references and actually documented front and analyte distances. Rf is not an invariant substance constant. Old values do not identify U in the new system; practical actions still need separate evidence.
+  - Understanding focus (DE): Ganzer benannter E0/G0-Entwurf, vollständige Aufgabe/Lösung/Transfer/Rubrik im Materialobjekt chromatography-pigments-execution. Kein beobachteter Lernerfolg.
+  - Understanding focus (EN): Whole named E0/G0 design, full task/answer/transfer/rubric in material object chromatography-pigments-execution. No observed learner performance.
+- `chromatography-amino-acids-execution`
+  - Task demand (DE): Wähle eine geeignete örtlich freigegebene DC und führe sie mit getrennten Standards, Leerprobe und U tatsächlich aus. Erläutere Startlinie, Laufmittelwahl, Frontmarkierung und Sichtbarmachung. Dokumentiere eigene Strecken und werte das Chromatogramm begrenzt aus. Die synthetische Referenz ist ein zusätzlicher Rechenauftrag und ersetzt keine Durchführung. In der TH-Variante erläutere ausdrücklich die Ninhydrin-Sichtbarmachung und dokumentiere sie bei einer späteren tatsächlichen Ausführung. Material: Prospektive Sek-II-Aminosäureroute: Freigegebene DC-Methode für bekannte Aminosäurereferenzen A/B und U. Anfärbung und Abfallbehandlung folgen ausschließlich der örtlichen Arbeitsanweisung; diese Akte gibt keine Chemikalienfreigabe. Eigene Verfahrens- und Messfelder sind leer. Getrennte synthetische Referenz unter gleicher Schicht, Laufmittel, Temperatur und Behandlung: Front 10,0 cm, A 1,8 cm, B 6,4 cm, U 1,8/6,4 cm; Leerprobe ohne Signale. Die Zahlen stammen nicht aus einem tatsächlichen Versuch. Die TH-Quellenroute verlangt Sichtbarmachen mit Ninhydrin nach der örtlich freigegebenen Arbeitsanweisung. Tatsächliche Behandlung, Sichtbarmachung und Abfallweg werden persönlich dokumentiert; diese Akte erteilt keine Stoff-/Versuchsfreigabe.
+  - Task demand (EN): Select a suitable locally approved TLC and actually perform it with separate standards, blank and U. Explain origin, solvent choice, front marking and visualisation. Record your own distances and bound the chromatogram interpretation. The synthetic reference is an additional calculation task and replaces no execution. For the TH variant explicitly explain ninhydrin visualisation and document it in any later actual execution. Material: Prospective upper-stage amino-acid route: An approved TLC method for known amino-acid references A/B and U. Visualisation and waste handling follow local instructions only; this packet grants no chemical authorisation. Own method and measurement fields are blank. Separate synthetic reference with matched layer, solvent, temperature and treatment: front 10.0 cm, A 1.8 cm, B 6.4 cm, U 1.8/6.4 cm, with a signal-free blank. These are not actual experimental measurements. The TH source route requires visualisation with ninhydrin under locally approved instructions. Actual treatment, visualisation and disposal must be personally documented; this packet grants no chemical or experimental authorisation.
+  - Expected performance (DE): Ausführungspunkte brauchen persönlich dokumentierte tatsächliche Handlungen und Rohdaten. Die Rechenreferenz ergibt Rf(A)=0,18 und Rf(B)=0,64; U ist vereinbar, aber eindeutige Strukturidentität ist nicht bewiesen. Geeignete Wechselwirkungen zwischen Stoff, Schicht und Laufmittel erklären die Trennung; gleiche Bedingungen und Referenzen begrenzen den Vergleich. Dieses Stoffbereichsbeispiel erzeugt keine universelle Aminosäurepflicht für die Pigmentroute der Sek I. Ninhydrin macht geeignete Aminosäuresignale sichtbar; Kontrollen und passende Behandlung der Referenzen bleiben erforderlich. Ohne eigenen Versuch bleiben diese Ausführungsteile offen. Frischer Transfer: Nein. B muss unter denselben neuen Bedingungen mit geeigneten Kontrollen verglichen werden. Selbst gleiche Rf-Werte allein beweisen Identität nicht. Eine neue praktische Durchführung bleibt als solche nachzuweisen.
+  - Expected performance (EN): Execution credit requires personally documented actual actions and raw data. The reference gives Rf(A)=0.18 and Rf(B)=0.64; U is compatible, but unique structural identity is not proved. Suitable analyte, layer and solvent interactions explain separation; matched conditions and references limit comparison. This substance-domain example creates no universal amino-acid prerequisite for lower-stage pigment work. Ninhydrin visualises suitable amino-acid signals; controls and matched reference treatment remain necessary. Without an own experiment these execution aspects remain open. Fresh transfer: No. Compare B under the same new conditions with suitable controls. Even matching Rf values alone do not prove identity. A new practical execution still needs evidence as such.
+  - Understanding focus (DE): Ganzer benannter E0/G0-Entwurf, vollständige Aufgabe/Lösung/Transfer/Rubrik im Materialobjekt chromatography-amino-acids-execution. Kein beobachteter Lernerfolg.
+  - Understanding focus (EN): Whole named E0/G0 design, full task/answer/transfer/rubric in material object chromatography-amino-acids-execution. No observed learner performance.
+- `planar-universal-indicator-selected-tlc-execution`
+  - Task demand (DE): Wähle begründet eine geeignete DC für das Indikatorgemisch, führe sie nach örtlicher Vorgabe tatsächlich aus und dokumentiere Start, Front, Referenzen und eigene Daten. Werte begrenzt aus; trenne davon die synthetische Rechenkarte. Material: Prospektive BB/BE-LK- beziehungsweise BW-LF-Route: Ein örtlich freigegebenes Universalindikator-Farbstoffgemisch U, bekannte geeignete Farbstoffstandards und Leerprobe sowie zugelassene DC-Schicht/Laufmittel und örtliche Durchführungsvorgaben sind verfügbar. Leere persönliche Felder: Datum __; tatsächliche Probe/Standards __; Schicht/Laufmittel und Begründung __; Startlinie __; Laufmittelstand __; eigene Handlungsschritte __; Frontstrecke __; Stoffstrecken/Farben __; Blank __; Fehler/Abweichungen __. Diese Felder sind nicht ausgefüllt. Zusätzliche synthetische Rechenkarte: Front8,0cm, StandardI2,0cm, J5,6cm, U beideStrecken. Keine realen Messwerte.
+  - Task demand (EN): Justify suitable TLC for the indicator mixture, actually perform it under local instructions and document origin, front, references and own data. Bound the interpretation and distinguish the synthetic calculation card. Material: Prospective BB/BE advanced or BW Leistungsfach route: locally approved universal-indicator dye mixture U, suitable known dye standards and blank, approved TLC layer/solvent and local instructions are available. Blank personal fields: date __; actual sample/standards __; layer/solvent and justification __; origin __; solvent level __; own action sequence __; front distance __; analyte distances/colours __; blank __; errors/deviations __. These are unfilled. Separate synthetic calculation card: front8.0cm, standardI2.0cm, J5.6cm, U bothdistances. No real measurements.
+  - Expected performance (DE): Passende Phasen erlauben verschiedene Wechselwirkungen. Start oberhalb des anfänglichen Laufmittels, kleine getrennte Aufträge, passende Standards/Blank und rechtzeitige Frontmarkierung ermöglichen dokumentierte eigene Rf-Auswertung. Die unbefüllte Akte beweist dies nicht. Nur synthetisch:0,25/0,70; U ist kompatibel mitI/J, nicht strukturell eindeutig. Das Gemisch enthält Indikatorfarbstoffe; Trennung allein bestimmt weder alle pKs-Werte noch den pH einer beliebigen Probe. Frischer Transfer: Nein. Protonierungszustand kann Farbe und Wechselwirkungen verändern. Die Bedingungen und passende Standards müssen kontrolliert werden. Eine neue Farbe allein beweist keine neue Struktur; unter geänderten Bedingungen sind alte Vergleichswerte nicht ohne Weiteres übertragbar.
+  - Expected performance (EN): Suitable phases allow different interactions. An origin above initial solvent, small separate spots, matched standards/blank and timely front marking permit documented own Rf interpretation. This unfilled packet proves none of that. Synthetic results only:0.25/0.70; U is compatible withI/J, not structurally unique. This is an indicator-dye mixture; separation alone determines neither all pKa values nor the pH of an arbitrary sample. Fresh transfer: No. Protonation can change colour and interactions. Conditions and matched standards must be controlled. A new colour alone proves no new structure; old comparison values do not automatically transfer to changed conditions.
+  - Understanding focus (DE): Ganzer benannter E0/G0-Entwurf, vollständige Aufgabe/Lösung/Transfer/Rubrik im Materialobjekt planar-universal-indicator-selected-tlc-execution. Kein beobachteter Lernerfolg.
+  - Understanding focus (EN): Whole named E0/G0 design, full task/answer/transfer/rubric in material object planar-universal-indicator-selected-tlc-execution. No observed learner performance.
+## Page 2: Grignard-Synthesen deuten
+
+- Full learning-goal ID: `8edee6b6-9ead-515e-93f5-feada64522b2`
+- Goal fingerprint: `sha256:66422b4a3834c03d52e867a2c4f22e892f83545889520d8c389088f04d9f7477`
+- Page fingerprint: `sha256:d71bb59e2f4b251570829a58ceb95a3540c8d1788ae7059b40537dac42f8bfaa`
+- Topic path: Chemie – kanonische M7-Prüfsicht > Freiwillige Erweiterung – reine M7-Prüfsicht
+
+### Canonical description
+
+Die lernende Person kann Grignard-Reagenzien unter fachlicher Aufsicht und geeigneten wasserfreien Bedingungen zur Addition an Carbonylverbindungen einsetzen sowie die C–C-Bindungsbildung, die Alkoxid-Zwischenstufe und die anschließende Protonierung in Reaktionsschritten darstellen.
+
+### Visualization
+
+/assets/goal-visualizations/chemie/8edee6b6-9ead-515e-93f5-feada64522b2/8edee6b6-9ead-515e-93f5-feada64522b2.jpg
+
+- original digest: `sha256:4fb44587a539d2e20103a08c2c9c5bb8ec612435f0d8b54737394c9b21a1e641`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- None
+
+### Direct reverse prerequisites
+
+- None
+
+### Prerequisites outside this book
+
+- Carbonylreaktivität bewerten — `6d3a2bad-8c67-5964-a720-375f138adaba` (outside this book)
+
+### Direct reverse prerequisites outside this book
+
+- None
+
+### Evidence-profile candidate
+
+Status: `needs_human_review`; profile fingerprint: `sha256:b225c13fed521c9f42815dfac79aa5d49283402f226fdbef73702f19327d1f19`
+Contract: `positive-understanding-evidence-v2`; authority: `ai_candidate`; evidence level: `E0`; maximum claim scope: `G0`
+Archetype: `modeling`
+
+**Positive understanding expectations**
+
+- `e1`
+  - Essential understanding (DE): Grignard-Rest reagiert nucleophil mit Carbonyl-C und bildet eine neue C–C-Bindung.
+  - Essential understanding (EN): A Grignard carbon group attacks carbonyl C and forms a new C–C bond.
+  - Observable performance (DE): Wählt Reagenz/Carbonyl passend zum Zielalkohol und formuliert Addition/Alkoxid.
+  - Observable performance (EN): Selects reagent/carbonyl for a target alcohol and writes addition/alkoxide.
+- `e2`
+  - Essential understanding (DE): Die Protonierung folgt erst nach der wasserfreien Addition; protische Gruppen verbrauchen Reagenz.
+  - Essential understanding (EN): Protonation follows anhydrous addition; protic groups consume reagent.
+  - Observable performance (DE): Erklärt Reihenfolge und bilanziert einen gegebenen Wasser-/OH-Störfall.
+  - Observable performance (EN): Explains sequence and balances a supplied water/OH interference case.
+- `e3`
+  - Essential understanding (DE): Reagenzien einsetzen verlangt einen wirklichen geeigneten Operationenkanal.
+  - Essential understanding (EN): Using reagents requires an actual suitable operational channel.
+  - Observable performance (DE): Setzt das freigegebene Reagenz im entsprechend ausgestatteten betreuten Labor ein; schriftliche Planung beweist keine Ausführung.
+  - Observable performance (EN): Uses the authorized reagent in an appropriately equipped supervised lab; a written plan does not prove execution.
+
+**Coverage expectations**
+
+- required expectations: `e1`, `e2`, `e3`
+- alternative expectation groups: None
+- minimum independent demonstrations: 2
+- fresh variation required: true
+- independent transfer required: true
+
+**Variation axes**
+
+- `v1`: Aldehyd oder Keton als Carbonyl / Aldehyde or ketone carbonyl
+- `v2`: Wasserfreiheit und protische Gruppe / Anhydrous conditions and protic group
+
+**Application cases**
+
+- `8edee6b6-case-1`
+  - Task demand (DE): Daten und Bedingungen:
+Papierziel Butan-2-ol CH₃CH(OH)CH₂CH₃. Bausteine CH₃CHO und C₂H₅MgBr in geeignetem trockenem Ether; Schulmodell stellt organisches R als Rδ−/Mgδ+ dar, kein freies isoliertes Carbanion in Lösung.30.0 mmol Ethanal,35.0 mmol Ethylmagnesiumbromid;1.00 mmol unbeabsichtigtes Wasser verbraucht1.00 mmol Reagenz zu Ethan. Erst nach Carbonyladdition folgt getrennte autorisierte saure Aufarbeitung. Reale Operation nur im von Fachpersonal freigegebenen Chemielabor mit Abzug, trockenem/inertem Aufbau, kommerziell standardisierter Reagenzlösung, gasdichter Dosierspritze und lokaler schriftlicher Reaktions-/Notfall-/Quenchmethode. Diese Freigabe ist keine Voraussetzung der curricularen KI-QS; derzeit erfolgte kein Versuch. Keine eigenständige Schülersynthese oder erfundene Beobachtung.
+Aufgaben:
+1. Leite die neue C–C-Bindung her, formuliere das Mg-Alkoxid und den Zielalkohol und berechne die maximale Stoffmenge.
+2. Bilanziere Wasserstörung und erkläre, warum saure Aufarbeitung nicht vor der Addition erfolgen darf.
+3. Setze nur nach Fachfreigabe unter unmittelbarer Aufsicht die standardisierte Reagenzlösung am trocken/inert vorbereiteten Carbonylansatz gemäß lokaler Methode ein. Dokumentiere Identitäts-/Konzentrationsprüfung, tatsächliche Dosierung und Bedingungen; Aufarbeitung führt freigegebenes Fachpersonal aus. Ohne reale Beobachtung kein Ausführungskredit.
+  - Task demand (EN): Data and conditions:
+Paper target butan-2-ol CH₃CH(OH)CH₂CH₃. Building blocks CH₃CHO and C₂H₅MgBr in suitable dry ether. School model depicts Rδ−/Mgδ+ rather than a free isolated carbanion in solution.30.0 mmol ethanal/35.0 mmol ethylmagnesium bromide;1.00 mmol accidental water consumes1.00 mmol reagent to ethane. Separate authorized acidic workup follows carbonyl addition only. Real operation requires a specialist-authorized chemistry lab, hood, dry/inert apparatus, commercial standardized reagent solution, gas-tight dosing syringe and local written reaction/emergency/quench method. Authorization is not a prerequisite for curricular AI QA; no experiment occurred. No independent student synthesis or invented observation.
+Tasks:
+1. Infer the new C–C bond, write Mg alkoxide/target alcohol and calculate maximal amount.
+2. Balance water interference and explain why acid workup cannot precede addition.
+3. Only after specialist authorization and under direct supervision, use standardized reagent in the dry/inert prepared carbonyl setup according to the local method. Record identity/concentration checks, actual dosing and conditions; authorized specialists perform workup. No execution credit without real observation.
+  - Expected performance (DE): 1. Ethylrest greift Ethanal-Carbonyl-C an, π-Paar geht zu O: CH₃CH(OMgBr)CH₂CH₃ im vereinfachten Aggregatmodell. Protonierung liefert CH₃CH(OH)CH₂CH₃. Nach Wasserverlust34.0 mmol Reagenz verfügbar;30.0 mmol Ethanal limitiert, maximal30.0 mmol Alkohol.
+2. C₂H₅MgBr +H₂O → C₂H₆ +MgBrOH. Das protische Wasser protoniert den nucleophilen Rest und verbraucht Reagenz, ohne Ziel-C–C-Bindung. Säure/Wasser vor Addition würde denselben Zweck vereiteln; die Protonierung des bereits gebildeten Alkoxids folgt getrennt danach.
+3. Ein reales Protokoll muss korrekte Reagenzidentität, wasserfreie/inert vorbereitete Geräte, tatsächlich methodengerechte Dosierung und zeitliche Trennung von Addition/Quench beobachten. Ein Papiermechanismus oder erfundene30.0 mmol sind kein Beleg. Dieser Kanal ist definiert, aber aktuell nicht durchgeführt oder menschlich freigegeben.
+  - Expected performance (EN): 1. Ethyl attacks ethanal carbonyl C, π pair moves to O, giving CH₃CH(OMgBr)CH₂CH₃ in the simplified aggregate model. Protonation gives butan-2-ol.34.0 mmol reagent remains after water loss;30.0 mmol ethanal limits maximal alcohol to30.0 mmol.
+2. C₂H₅MgBr +H₂O → C₂H₆ +MgBrOH. Protic water protonates/consumes the nucleophilic group without making the target C–C bond. Acid/water before addition would defeat that purpose; protonation of formed alkoxide follows separately.
+3. A real log must observe correct reagent identity, dry/inert equipment, actual method-compliant dosing and separation of addition/quench. A paper mechanism or invented30.0 mmol is not evidence. The channel is defined but has not been performed or human-approved.
+  - Understanding focus (DE): Ein Grignard-Kohlenstoffrest knüpft am Carbonyl eine C–C-Bindung; protische Zusätze verbrauchen Reagenz. Transfer: Aldehyd- auf Ketonroute übertragen und die Alkoholklasse sowie limitierende Stoffmenge neu bestimmen. Zwei unabhängige Nachweisschritte können in einer integrierten Leistung auftreten; die zwei Fallvarianten sind keine Pflichtaufgabenquote. Sobald alle Aspekte und selbstständiger Transfer hinreichend gezeigt sind, endet die Prüfung.
+  - Understanding focus (EN): A Grignard carbon group forms a C–C bond at a carbonyl; protic additions consume reagent. Transfer: Transfer aldehyde to ketone routes and redetermine alcohol class and limiting amount. Two independent demonstration steps can occur in one integrated performance; the two case variants are not a mandatory task quota. Stop assessment once all aspects and independent transfer are sufficiently shown.
+- `8edee6b6-case-2`
+  - Task demand (DE): Daten und Bedingungen:
+Papierziel2-Methylbutan-2-ol (CH₃)₂C(OH)CH₂CH₃ aus Propanon(CH₃)₂CO und C₂H₅MgBr.20.0 mmol Propanon,25.0 mmol Reagenz; zusätzlich6.00 mmol Ethanol-Verunreinigung. Gegeben: je OH-Proton verbraucht ein Grignard-Äquivalent zu Ethan und Magnesiumalkoxid, bevor Carbonyladdition verfügbar ist. Wasserfreie/inert betreute reale Methode, Laborvoraussetzungen und Fachpersonal-Aufarbeitung wie Fall1 werden vollständig als notwendiger getrennter Kanal vorausgesetzt: Abzug, trocken/inert vorbereitetes Gefäß, standardisierte Lösung, gasdichte Dosierspritze, örtlich schriftlich freigegebene Reaktions-/Quenchmethode. Kein tatsächlicher Versuch.
+Aufgaben:
+1. Formuliere Addition, Mg-Alkoxid und protoniertes Produkt und berechne den maximalen Zielumsatz.
+2. Bilanziere die Ethanolstörung und erkläre, warum „mehr Carbonyl“ den Nebenverbrauch nicht rückgängig macht.
+3. Setze nach Fachfreigabe unter Aufsicht das geprüfte Grignard-Reagenz in einem tatsächlich trockenen/inerten Ansatz gemäß freigegebener Methode ein; protokolliere Reagenz-/Ansatzidentität, reale Dosierung und Ausschluss protischer Zusätze während der Addition. Kein Kredit aus dem Papierfall.
+  - Task demand (EN): Data and conditions:
+Paper target2-methylbutan-2-ol (CH₃)₂C(OH)CH₂CH₃ from propanone(CH₃)₂CO and C₂H₅MgBr.20.0 mmol ketone/25.0 mmol reagent with6.00 mmol ethanol contamination. Supplied rule: each OH proton consumes one Grignard equivalent to ethane/Mg alkoxide before carbonyl addition. A separate real channel requires a supervised anhydrous/inert method: hood, dry/inert prepared vessel, standardized solution, gas-tight dosing syringe, locally authorized written reaction/quench procedure and specialist workup. No experiment occurred.
+Tasks:
+1. Write addition, Mg alkoxide/protonated product and calculate maximal target conversion.
+2. Balance ethanol interference and explain why more carbonyl does not undo the side consumption.
+3. After specialist authorization, use the checked Grignard reagent under supervision in an actually dry/inert setup using the authorized method; record reagent/setup identity, actual dosing and exclusion of protic additions during addition. The paper case earns no execution credit.
+  - Expected performance (DE): 1. Ethyl addiert an Propanon: (CH₃)₂C(OMgBr)CH₂CH₃, danach (CH₃)₂C(OH)CH₂CH₃, tertiärer Alkohol.25−6=19.0 mmol Reagenz bleibt;19.0 mmol ist kleiner als20.0 mmol Carbonyl, also maximal19.0 mmol Produkt bzw.95.0% Carbonylumsatz.
+2. C₂H₅MgBr +C₂H₅OH → C₂H₆ +C₂H₅OMgBr. Das protische OH liefert H an den Grignard-Rest;6.00 mmol wurden chemisch verbraucht. Mehr Carbonyl regeneriert kein Reagenz. Erst nach trockener Addition wird das Produktalkoxid im getrennten Aufarbeitungsschritt protoniert.
+3. Nur beobachteter methodengerechter Reagenzeinsatz mit tatsächlichem Geräte-/Dosier-/Bedingungsprotokoll ist Ausführungsbeleg. Die fiktive Ethanolstörung wird nicht absichtlich als unsicheres Schülerexperiment erzeugt. Kein reales Protokoll liegt hier vor; das beaufsichtigte Fachlabor ist ein späterer Leistungskanal, kein vorausgesetzter Human-Trial-Status.
+  - Expected performance (EN): 1. Ethyl adds to propanone, giving (CH₃)₂C(OMgBr)CH₂CH₃ then tertiary alcohol (CH₃)₂C(OH)CH₂CH₃.25−6=19.0 mmol reagent remains, below20.0 mmol carbonyl: maximal19.0 mmol product or95.0% carbonyl conversion.
+2. C₂H₅MgBr +C₂H₅OH → C₂H₆ +C₂H₅OMgBr. Protic OH transfers H to the Grignard group;6.00 mmol is chemically consumed. More carbonyl cannot regenerate reagent. Product alkoxide is protonated only after dry addition in separate workup.
+3. Only observed method-compliant reagent use with actual equipment/dosing/condition log is execution evidence. Fictional ethanol contamination is not deliberately created as an unsafe student experiment. No real log exists; the specialist supervised lab is a later performance channel, not an assumed Human Trial status.
+  - Understanding focus (DE): Ein Grignard-Kohlenstoffrest knüpft am Carbonyl eine C–C-Bindung; protische Zusätze verbrauchen Reagenz. Transfer: Aldehyd- auf Ketonroute übertragen und die Alkoholklasse sowie limitierende Stoffmenge neu bestimmen. Zwei unabhängige Nachweisschritte können in einer integrierten Leistung auftreten; die zwei Fallvarianten sind keine Pflichtaufgabenquote. Sobald alle Aspekte und selbstständiger Transfer hinreichend gezeigt sind, endet die Prüfung.
+  - Understanding focus (EN): A Grignard carbon group forms a C–C bond at a carbonyl; protic additions consume reagent. Transfer: Transfer aldehyde to ketone routes and redetermine alcohol class and limiting amount. Two independent demonstration steps can occur in one integrated performance; the two case variants are not a mandatory task quota. Stop assessment once all aspects and independent transfer are sufficiently shown.
+## Page 3: Friedel-Crafts-Reaktionen
+
+- Full learning-goal ID: `b7b5df21-78f3-5408-89f1-36deed450695`
+- Goal fingerprint: `sha256:a96265aa87dbfebf1a25bbcb90c9e771d0795c27079491567a800638d59bc8b7`
+- Page fingerprint: `sha256:634b82a9851a4706c8d2a8d0c0d2d0c3d84af34e6d8ebaa1c23dbb2c11958e65`
+- Topic path: Chemie – kanonische M7-Prüfsicht > Chemie > Naturstoffe und Synthesechemie > Q2.3 Chemie der Aromaten
+
+### Canonical description
+
+Die lernende Person kann Friedel-Crafts-Alkylierungen und -Acylierungen mechanistisch begründet planen und Einflüsse von Substrat und Reaktionsbedingungen auf Umlagerungen, Mehrfachsubstitution und Produktselektivität beurteilen.
+
+### Visualization
+
+/assets/goal-visualizations/chemie/b7b5df21-78f3-5408-89f1-36deed450695/b7b5df21-78f3-5408-89f1-36deed450695.jpg
+
+- original digest: `sha256:3b01df98f2b4450b6dac3d5e334ab6a193a73b81c1036eef4966f0cbe0410587`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- None
+
+### Direct reverse prerequisites
+
+- None
+
+### Prerequisites outside this book
+
+- σ-Komplex-Mechanismus — `3dbd84de-51cb-5ff7-801b-077a54520fed` (outside this book)
+
+### Direct reverse prerequisites outside this book
+
+- Sek-II-Abschlussaufgaben Chemie bearbeiten — `14577339-9e0c-5b44-8e47-91e1a4947367` (outside this book)
+
+### Evidence-profile candidate
+
+Status: `needs_human_review`; profile fingerprint: `sha256:c3c9d48c649323c4a7cfe427846589c0474f3a2eb59b75e2d1a044466ef9f767`
+Contract: `positive-understanding-evidence-v2`; authority: `ai_candidate`; evidence level: `E0`; maximum claim scope: `G0`
+Archetype: `modeling`
+
+**Positive understanding expectations**
+
+- `b7b5df21-whole-1`
+  - Essential understanding (DE): Alkylierung und Acylierung sind EAS-Routen mit unterschiedlichen Folgen für Umlagerung, Aktivierung und Mehrfachsubstitution.
+  - Essential understanding (EN): Alkylation and acylation are EAS routes with different consequences for rearrangement, activation and multiple substitution.
+  - Observable performance (DE): 1. Vergleiche beide Routen hinsichtlich Kohlenstoffgerüst und Umlagerung; plane die passende Route mit Zwischenprodukt und Elektronenpaarwegen der elektrophilen Ringstufe.
+2. Erkläre die Gefahr der Mehrfachalkylierung in A sowie die geringere Zweitacylierung in B; begründe Lewis-Säure-Bedarf und die Rolle der Nachbehandlung. Erwartet: 1. B ist kontrollierbarer: CH₃CH₂CO⁺ (Acylium, R–C≡O⁺↔R–C⁺=O) wird ohne Alkylumlagerung am Ring angegriffen; Ring-π→Acyl-C, ein C≡O-π-Paar→O, positiver σ-Komplex, dann Protonenabgabe. Ph–COCH₂CH₃ wird anschließend zu Ph–CH₂CH₂CH₃ reduziert. A kann durch Umlagerung Isopropylbenzol ergeben.
+2. Ein Alkylrest aktiviert den Ring, sodass weitere Alkylierung möglich ist. Der Acylrest desaktiviert und vermindert weitere elektrophile Substitution. AlCl₃ aktiviert das Chlorid und komplexiert das Ketonprodukt; deshalb ist Acylierung nicht pauschal nur katalytisch im AlCl₃-Bedarf. Die Nachbehandlung löst den Produktkomplex; Reduktion ist ein getrennter Schritt.
+  - Observable performance (EN): 1. Compare both routes in carbon framework and rearrangement; plan the suitable route with intermediate product and electron-pair movement in the electrophilic ring step.
+2. Explain multiple-alkylation risk in A and reduced second acylation in B; justify Lewis-acid demand and the role of workup. Expected: 1. B is more controllable: CH₃CH₂CO⁺ (acylium, R–C≡O⁺↔R–C⁺=O) undergoes ring attack without alkyl rearrangement; ring pi→acyl C, one C≡O pi pair→O, positive sigma complex, then proton loss. Ph–COCH₂CH₃ is subsequently reduced to Ph–CH₂CH₂CH₃. A may rearrange to give isopropylbenzene.
+2. An alkyl group activates the ring, allowing further alkylation. An acyl group deactivates and reduces further electrophilic substitution. AlCl₃ activates the chloride and complexes the ketone product, so acylation must not be assumed universally catalytic in AlCl₃ demand. Workup releases the product complex; reduction is a separate step.
+- `b7b5df21-whole-2`
+  - Essential understanding (DE): Die Routenplanung verbindet Gerüst, Elektrophil, Regioselektivität, Komplexierung und gegebenenfalls eine getrennte Carbonylreduktion.
+  - Essential understanding (EN): Route planning connects skeleton, electrophile, regioselectivity, complexation and, where appropriate, a separate carbonyl reduction.
+  - Observable performance (DE): 1. Entscheide, welches Substrat eine plausible klassische Friedel-Crafts-Acylierung erlaubt; plane Elektrophilbildung, σ-Komplex und Rearomatisierung sowie plausible Positionsisomere.
+2. Begründe das Hindernis bei Nitrobenzol und erläutere, wie Acylierung gegenüber Alkylierung Umlagerung und Mehrfachsubstitution begrenzt; nenne eine Grenze exakter Selektivitätsplanung. Erwartet: 1. Anisol ist der plausible Kandidat. CH₃COCl+AlCl₃ liefert formal CH₃CO⁺+AlCl₄⁻; Ring-π greift Acyl-C an, bei Dreifachbindungsdarstellung geht ein C≡O-Paar zu O. Positiver σ-Komplex wird deprotoniert, AlCl₄⁻ liefert HCl/AlCl₃. ortho-/para-Methoxyacetophenon sind plausible Produkte; exakte Anteile sind offen.
+2. Nitrobenzol ist für klassische Friedel-Crafts stark zu wenig reaktiv. Acylium besitzt keine gewöhnliche Alkylkation-Umlagerung; das gebildete Acylprodukt deaktiviert gegenüber weiteren Substitutionen. Ohne konkrete Temperatur, Komplexierungs- und Produktdaten ist keine exakte ortho/para-Ausbeute festgelegt.
+  - Observable performance (EN): 1. Decide which substrate permits plausible classical Friedel-Crafts acylation; plan electrophile generation, sigma complex and rearomatization with plausible positional isomers.
+2. Explain the obstacle for nitrobenzene and how acylation limits rearrangement and multiple substitution compared with alkylation; state one limit to exact selectivity planning. Expected: 1. Anisole is plausible. CH₃COCl+AlCl₃ formally gives CH₃CO⁺+AlCl₄⁻; ring pi attacks acyl C and, in the triple-bond contributor, one C≡O pair moves to O. The positive sigma complex deprotonates; AlCl₄⁻ gives HCl/AlCl₃. ortho-/para-methoxyacetophenone are plausible products; exact proportions remain open.
+2. Nitrobenzene is too strongly deactivated for classical Friedel-Crafts. Acylium does not undergo ordinary alkyl-cation rearrangement; the acyl product deactivates further substitution. Without specific temperature, complexation and product data no exact ortho/para yield is fixed.
+
+**Coverage expectations**
+
+- required expectations: `b7b5df21-whole-1`, `b7b5df21-whole-2`
+- alternative expectation groups: None
+- minimum independent demonstrations: 2
+- fresh variation required: true
+- independent transfer required: true
+
+**Variation axes**
+
+- `changed-material-or-source`: Stoff, Methodenbedingung oder Quelle unabhängig variieren. / Independently vary substance, method condition or source.
+- `genuine-transfer-and-limit`: Frischen Transfer und tatsächliche Aussagegrenzen erklären; Modellwerte sind keine Eigenleistung. / Explain fresh transfer and actual inference limits; model values are not own performance.
+
+**Application cases**
+
+- `b7b5df21-case-1-current-whole`
+  - Task demand (DE): Papier-Syntheseplanung; keine Ausführung. Ziel Ph–CH₂CH₂CH₃ aus Benzol. Optionen: A 1-Chlorpropan/AlCl₃; B Propanoylchlorid CH₃CH₂COCl/AlCl₃ mit anschließender geeigneter Carbonylreduktion zum CH₂. Im Modell kann primäres Alkyl-Elektrophil zu sekundärem umlagern; Arylketone deaktivieren den Ring. 1. Vergleiche beide Routen hinsichtlich Kohlenstoffgerüst und Umlagerung; plane die passende Route mit Zwischenprodukt und Elektronenpaarwegen der elektrophilen Ringstufe.
+2. Erkläre die Gefahr der Mehrfachalkylierung in A sowie die geringere Zweitacylierung in B; begründe Lewis-Säure-Bedarf und die Rolle der Nachbehandlung. Transfer: Frisches Ziel ist n-Butylbenzol. Gegeben sind 1-Chlorbutan oder Butanoylchlorid mit nachfolgender geeigneter Carbonylreduktion. Plane den kontrollierbareren Gerüstaufbau.
+  - Task demand (EN): Paper synthesis planning; no execution. Target Ph–CH₂CH₂CH₃ from benzene. Options: A 1-chloropropane/AlCl₃; B propanoyl chloride CH₃CH₂COCl/AlCl₃ followed by suitable carbonyl reduction to CH₂. In the model a primary alkyl electrophile can rearrange to secondary; aryl ketones deactivate the ring. 1. Compare both routes in carbon framework and rearrangement; plan the suitable route with intermediate product and electron-pair movement in the electrophilic ring step.
+2. Explain multiple-alkylation risk in A and reduced second acylation in B; justify Lewis-acid demand and the role of workup. Transfer: The fresh target is n-butylbenzene. Given 1-chlorobutane or butanoyl chloride followed by suitable carbonyl reduction, plan the more controllable skeleton construction.
+  - Expected performance (DE): 1. B ist kontrollierbarer: CH₃CH₂CO⁺ (Acylium, R–C≡O⁺↔R–C⁺=O) wird ohne Alkylumlagerung am Ring angegriffen; Ring-π→Acyl-C, ein C≡O-π-Paar→O, positiver σ-Komplex, dann Protonenabgabe. Ph–COCH₂CH₃ wird anschließend zu Ph–CH₂CH₂CH₃ reduziert. A kann durch Umlagerung Isopropylbenzol ergeben.
+2. Ein Alkylrest aktiviert den Ring, sodass weitere Alkylierung möglich ist. Der Acylrest desaktiviert und vermindert weitere elektrophile Substitution. AlCl₃ aktiviert das Chlorid und komplexiert das Ketonprodukt; deshalb ist Acylierung nicht pauschal nur katalytisch im AlCl₃-Bedarf. Die Nachbehandlung löst den Produktkomplex; Reduktion ist ein getrennter Schritt. Transfer: Butanoylchlorid liefert Ph–CO–CH₂CH₂CH₃ und nach der gegebenen Reduktion Ph–CH₂CH₂CH₂CH₃. Vier Seitenketten-C bleiben erhalten. Direkte primäre Alkylierung kann umlagern und mehrfach substituieren. Es wird keine reine Produktbildung oder Laborausbeute garantiert.
+  - Expected performance (EN): 1. B is more controllable: CH₃CH₂CO⁺ (acylium, R–C≡O⁺↔R–C⁺=O) undergoes ring attack without alkyl rearrangement; ring pi→acyl C, one C≡O pi pair→O, positive sigma complex, then proton loss. Ph–COCH₂CH₃ is subsequently reduced to Ph–CH₂CH₂CH₃. A may rearrange to give isopropylbenzene.
+2. An alkyl group activates the ring, allowing further alkylation. An acyl group deactivates and reduces further electrophilic substitution. AlCl₃ activates the chloride and complexes the ketone product, so acylation must not be assumed universally catalytic in AlCl₃ demand. Workup releases the product complex; reduction is a separate step. Transfer: Butanoyl chloride gives Ph–CO–CH₂CH₂CH₃ and, under the stipulated reduction, Ph–CH₂CH₂CH₂CH₃. All four side-chain carbons remain. Direct primary alkylation may rearrange and multiply substitute. No pure product or laboratory yield is guaranteed.
+  - Understanding focus (DE): Ganzes aktuelles oder gezielt korrigiertes Ziel; prospektiver Entwurf ohne beobachtete Leistung oder Quellen-/Kurs-/Humanfreigabe.
+  - Understanding focus (EN): Whole current or specifically corrected goal; prospective design without observed performance or source, course or human approval.
+- `b7b5df21-case-2-current-whole`
+  - Task demand (DE): Papiervergleich: Anisol und Nitrobenzol sollen mit CH₃COCl/AlCl₃ zu Ring-Acetylprodukten umgesetzt werden. Anisol ist ortho/para-aktiviert; Nitrobenzol ist stark desaktiviert. Lewis-Säure-Komplexierung kann die Selektivität beeinflussen; konkrete Ausbeuten sind nicht gegeben. 1. Entscheide, welches Substrat eine plausible klassische Friedel-Crafts-Acylierung erlaubt; plane Elektrophilbildung, σ-Komplex und Rearomatisierung sowie plausible Positionsisomere.
+2. Begründe das Hindernis bei Nitrobenzol und erläutere, wie Acylierung gegenüber Alkylierung Umlagerung und Mehrfachsubstitution begrenzt; nenne eine Grenze exakter Selektivitätsplanung. Transfer: Für Anisol ist ein fiktives ortho/para-Verhältnis 65:35 unter Bedingung A gegeben. Unter veränderter Lewis-Säure-Menge B fehlen Daten. Begründe die Grenze einer exakten Selektivitätsvorhersage.
+  - Task demand (EN): Paper comparison: anisole and nitrobenzene are proposed for ring acetylation with CH₃COCl/AlCl₃. Anisole is ortho/para-activated; nitrobenzene is strongly deactivated. Lewis-acid complexation can affect selectivity; actual yields are not given. 1. Decide which substrate permits plausible classical Friedel-Crafts acylation; plan electrophile generation, sigma complex and rearomatization with plausible positional isomers.
+2. Explain the obstacle for nitrobenzene and how acylation limits rearrangement and multiple substitution compared with alkylation; state one limit to exact selectivity planning. Transfer: For anisole, a fictional ortho/para ratio of 65:35 is given under condition A. Data are absent at changed Lewis-acid amount B. Explain the limit of an exact selectivity prediction.
+  - Expected performance (DE): 1. Anisol ist der plausible Kandidat. CH₃COCl+AlCl₃ liefert formal CH₃CO⁺+AlCl₄⁻; Ring-π greift Acyl-C an, bei Dreifachbindungsdarstellung geht ein C≡O-Paar zu O. Positiver σ-Komplex wird deprotoniert, AlCl₄⁻ liefert HCl/AlCl₃. ortho-/para-Methoxyacetophenon sind plausible Produkte; exakte Anteile sind offen.
+2. Nitrobenzol ist für klassische Friedel-Crafts stark zu wenig reaktiv. Acylium besitzt keine gewöhnliche Alkylkation-Umlagerung; das gebildete Acylprodukt deaktiviert gegenüber weiteren Substitutionen. Ohne konkrete Temperatur, Komplexierungs- und Produktdaten ist keine exakte ortho/para-Ausbeute festgelegt. Transfer: Methoxyaktivierung und mögliche Komplexierung bleiben relevant; die Änderung kann Selektivität beeinflussen. 65:35 ist kein unveränderlicher Stoffwert. B benötigt geeignete neue Produkt- und Bedingungsdaten. Eine begründete Routenwahl bestimmt nicht automatisch ein exaktes Isomerenverhältnis.
+  - Expected performance (EN): 1. Anisole is plausible. CH₃COCl+AlCl₃ formally gives CH₃CO⁺+AlCl₄⁻; ring pi attacks acyl C and, in the triple-bond contributor, one C≡O pair moves to O. The positive sigma complex deprotonates; AlCl₄⁻ gives HCl/AlCl₃. ortho-/para-methoxyacetophenone are plausible products; exact proportions remain open.
+2. Nitrobenzene is too strongly deactivated for classical Friedel-Crafts. Acylium does not undergo ordinary alkyl-cation rearrangement; the acyl product deactivates further substitution. Without specific temperature, complexation and product data no exact ortho/para yield is fixed. Transfer: Methoxy activation and possible complexation remain relevant; the change may affect selectivity. 65:35 is not an invariant substance value. B needs suitable new product and condition data. A reasoned route choice does not automatically determine an exact isomer ratio.
+  - Understanding focus (DE): Ganzes aktuelles oder gezielt korrigiertes Ziel; prospektiver Entwurf ohne beobachtete Leistung oder Quellen-/Kurs-/Humanfreigabe.
+  - Understanding focus (EN): Whole current or specifically corrected goal; prospective design without observed performance or source, course or human approval.
+## Page 4: Halbtitration zur pK-Bestimmung nutzen
+
+- Full learning-goal ID: `059acb11-29b3-5645-ac4c-b4214dc41a2d`
+- Goal fingerprint: `sha256:58836619dbd564293bfe8a2e8a9ed2dae150faa0a8742c59542f5b650d685941`
+- Page fingerprint: `sha256:10864bef5342903286e9f4d0fdb36f113fa426787ca01fcbc5e42665f8fc87be`
+- Topic path: Chemie – kanonische M7-Prüfsicht > Chemie > Chemisches Gleichgewicht > Q3.2 Protolysegleichgewichte
+
+### Canonical description
+
+Die lernende Person kann das Prinzip der Halbtitration für geeignete schwache Säuren oder Basen anhand des konjugierten Säure-Base-Paares erläutern und deren pKS- beziehungsweise pKB-Werte aus pH- beziehungsweise pOH-Daten am Halbäquivalenzpunkt bestimmen.
+
+### Visualization
+
+/assets/goal-visualizations/chemie/059acb11-29b3-5645-ac4c-b4214dc41a2d/059acb11-29b3-5645-ac4c-b4214dc41a2d.jpg
+
+- original digest: `sha256:fc7728d4c1903cac0c4036e4b22d65c1520f3f19cb528f39de7d3171bb1add6e`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- None
+
+### Direct reverse prerequisites
+
+- None
+
+### Prerequisites outside this book
+
+- Titrationskurven datengestützt deuten — `28c90c6a-3020-5c51-ac40-d802f3f12d2d` (outside this book)
+
+### Direct reverse prerequisites outside this book
+
+- Sek-II-Abschlussaufgaben Chemie bearbeiten — `14577339-9e0c-5b44-8e47-91e1a4947367` (outside this book)
+
+### Evidence-profile candidate
+
+Status: `needs_human_review`; profile fingerprint: `sha256:1dc6f6df8d781543a4b0059fb6735f0818202274991ce202a87aa4b38d7e75e8`
+Contract: `positive-understanding-evidence-v2`; authority: `ai_candidate`; evidence level: `E0`; maximum claim scope: `G0`
+Archetype: `data`
+
+**Positive understanding expectations**
+
+- `stoichiometric-half-point`
+  - Essential understanding (DE): Der Halbpunkt liegt bei der Hälfte des stöchiometrischen Äquivalenzvolumens; dort sind die formalen Mengen des schwachen Partners und seines Konjugierten gleich.
+  - Essential understanding (EN): The half point is half the stoichiometric equivalence volume; there, formal amounts of the weak species and its conjugate are equal.
+  - Observable performance (DE): Die lernende Person bilanziert 2.000 mmol HA bzw. 1.000 mmol B und begründet die Halbvolumina 10.00 bzw. 5.00 mL anhand der umgesetzten Stoffmengen.
+  - Observable performance (EN): The learner balances 2.000 mmol HA or 1.000 mmol B and justifies half volumes of 10.00 or 5.00 mL using amounts reacted.
+- `equal-ratio-equilibrium`
+  - Essential understanding (DE): Das gemeinsame Volumen macht aus gleichen Puffermengen ein Konzentrationsverhältnis eins; daraus folgt die passende pH/pKS- oder pOH/pKB-Beziehung.
+  - Essential understanding (EN): Shared volume turns equal buffer amounts into a concentration ratio of one, yielding the appropriate pH/pKa or pOH/pKb relation.
+  - Observable performance (DE): Sie leitet für HA/A− pH≈pKS aus dem MWG ab und erklärt mit 0.500/1.500 mmol, weshalb das Viertelvolumen pH≈4.323 statt pKS liefert.
+  - Observable performance (EN): The learner derives pH≈pKa for HA/A− from mass action and uses 0.500/1.500 mmol to explain why the quarter volume gives pH≈4.323 rather than pKa.
+- `base-half-point-conversion`
+  - Essential understanding (DE): Bei einer schwachen Base liefert der Halbpunkt pOH≈pKB; pH und pKB sind nicht dieselbe Größe.
+  - Essential understanding (EN): For a weak base, the half point gives pOH≈pKb; pH and pKb are different quantities.
+  - Observable performance (DE): Sie nutzt pH 9.20 und pKw 14.00 zu pKB(B)=4.80 und pKS(BH+)=9.20 und begründet beide Werte über Kb und die konjugierte Säure.
+  - Observable performance (EN): The learner uses pH 9.20 and pKw 14.00 to obtain pKb(B)=4.80 and pKa(BH+)=9.20, justifying both through Kb and the conjugate acid.
+- `half-point-domain`
+  - Essential understanding (DE): Das Pufferargument gilt für ein geeignetes schwaches konjugiertes Paar; weder Äquivalenz noch der Mittelwert von pH-Daten noch halbe Neutralisation starker HCl ersetzt diese Bedingung.
+  - Essential understanding (EN): The buffer argument requires a suitable weak conjugate pair; equivalence, an average of pH data or half-neutralizing strong HCl does not replace that condition.
+  - Observable performance (DE): Sie unterscheidet Halb- und Äquivalenzpunkt und erklärt beim HCl-Gegenbeispiel den starken Säureüberschuss und das fehlende vergleichbar konzentrierte schwache Pufferpaar.
+  - Observable performance (EN): The learner distinguishes half-equivalence from equivalence and explains the strong-acid excess and absence of a comparably concentrated weak buffer pair in the HCl counterexample.
+
+**Coverage expectations**
+
+- required expectations: `stoichiometric-half-point`, `equal-ratio-equilibrium`, `base-half-point-conversion`, `half-point-domain`
+- alternative expectation groups: None
+- minimum independent demonstrations: 2
+- fresh variation required: true
+- independent transfer required: true
+
+**Variation axes**
+
+- `weak-acid-to-weak-base`: Von der schwachen Säure zur schwachen Base wechseln und die auszuwertende Größe pH oder pOH begründen. / Switch from a weak acid to a weak base and justify whether pH or pOH is evaluated.
+- `half-quarter-equivalence`: Halbes und viertel Äquivalenzvolumen sowie Äquivalenz anhand chemischer Mengenverhältnisse vergleichen. / Compare half and quarter equivalence volumes and equivalence using chemical amount ratios.
+- `valid-buffer-to-strong-acid`: Die Halbpunktargumentation an starker HCl auf ihre fehlende Pufferbedingung prüfen. / Test half-point reasoning against strong HCl and identify its missing buffer condition.
+
+**Application cases**
+
+- `g6-c1`
+  - Task demand (DE): Nutze 20.00 mL 0.1000 M HA, 0.1000 M NaOH und die vollständigen 5/10/20-mL-Daten; begründe pKS. Vollständiges Material, Auftrag, Lösung und vier Kriterien: inputs/fourteen-full-cases.bound.exact.json, Fall G6-C1.
+  - Task demand (EN): Use 20.00 mL 0.1000 M HA, 0.1000 M NaOH and the full 5/10/20 mL data to justify pKa. Complete material, task, solution and four criteria: inputs/fourteen-full-cases.bound.exact.json, case G6-C1.
+  - Expected performance (DE): Bei 10.00 mL liegen näherungsweise je 1.000 mmol HA/A− vor: pKS≈4.80. Bei 5.00 mL ist das Verhältnis 1/3 und pH≈4.323. Äquivalenz und arithmetischer pH-Mittelwert definieren den Halbpunkt nicht.
+  - Expected performance (EN): At 10.00 mL, HA/A− are approximately 1.000 mmol each: pKa≈4.80. At 5.00 mL, the ratio is 1/3 and pH≈4.323. Equivalence and an arithmetic pH midpoint do not define the half point.
+  - Understanding focus (DE): Stöchiometrisches Volumen, Gleichgewichtsverhältnis und Messgröße zu einer begründeten Auswertung verbinden.
+  - Understanding focus (EN): Connect stoichiometric volume, equilibrium ratio and measured quantity in a justified interpretation.
+- `g6-c2`
+  - Task demand (DE): Nutze 20.00 mL 0.05000 M B, 0.1000 M HCl und pH 9.20 bei 5.00 mL; prüfe pKB=9.20 und die Übertragung auf starke HCl. Vollständiges Material, Auftrag, Lösung und vier Kriterien: inputs/fourteen-full-cases.bound.exact.json, Fall G6-C2.
+  - Task demand (EN): Use 20.00 mL 0.05000 M B, 0.1000 M HCl and pH 9.20 at 5.00 mL; assess pKb=9.20 and transfer to strong HCl. Complete material, task, solution and four criteria: inputs/fourteen-full-cases.bound.exact.json, case G6-C2.
+  - Expected performance (DE): Je etwa 0.500 mmol B/BH+ begründen pOH≈pKB=4.80; konjugierter pKS=9.20. Halbneutralisierte starke HCl besitzt starken Überschuss statt des vorausgesetzten schwachen Pufferpaares.
+  - Expected performance (EN): Approximately 0.500 mmol each of B/BH+ justify pOH≈pKb=4.80; conjugate pKa=9.20. Half-neutralized strong HCl has a strong-acid excess rather than the required weak buffer pair.
+  - Understanding focus (DE): Der Wechsel zur Base und das starke Gegenbeispiel prüfen die chemische Bedingung statt eine pH-Ableseregel.
+  - Understanding focus (EN): Switching to a base and the strong-acid counterexample test the chemical condition rather than a pH-reading rule.
+## Page 5: Pflanzenölkraftstoffe strukturbezogen einordnen
+
+- Full learning-goal ID: `0959eef2-3c7d-5b33-a109-ddf332a5dbd9`
+- Goal fingerprint: `sha256:2b01b9ca06ef18a54852b872dc430bdc53f6ebbcbc56409e342f0ec6644e046b`
+- Page fingerprint: `sha256:2474c116350a5457a26713327e90506deb14da0039b842b3580f8bc0b90a1986`
+- Topic path: Chemie – kanonische M7-Prüfsicht > Chemie > Energie und Nachhaltigkeit > Q4.2 Nachhaltige Chemie & Energieumwandlung > Pflanzenölkraftstoffe einordnen
+
+### Canonical description
+
+Die lernende Person kann Pflanzenöle als Gemische von Triglyceriden strukturell beschreiben und ihre Verwendung als Pflanzenölkraftstoffe anhand von Eigenschaften, Rohstoffherkunft und ökologischen Folgen begründet einordnen.
+
+### Visualization
+
+/assets/goal-visualizations/chemie/0959eef2-3c7d-5b33-a109-ddf332a5dbd9/0959eef2-3c7d-5b33-a109-ddf332a5dbd9.png
+
+- original digest: `sha256:4b32f44729317e6e9c00a5b9c563d94b2ac06e3d53f3a4f7de175b1fd4f08b38`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- None
+
+### Direct reverse prerequisites
+
+- None
+
+### Prerequisites outside this book
+
+- Fette über Struktur und Eigenschaften erklären — `2f3cdec5-f845-5b0f-841e-8b1d47de0281` (outside this book)
+- Fettverwendung kriteriengeleitet bewerten — `7371c82e-6668-5ddc-ba78-347113fcddf8` (outside this book)
+
+### Direct reverse prerequisites outside this book
+
+- Biodieselgewinnung durch Umesterung erklären — `4d9defde-d3bc-5c43-83ff-9cf6f2930643` (outside this book)
+
+### Evidence-profile candidate
+
+Status: `needs_human_review`; profile fingerprint: `sha256:34f48ee535939952be1d1390edb35443408c4cbc2edfc57389553200a5c0a769`
+Contract: `positive-understanding-evidence-v2`; authority: `ai_candidate`; evidence level: `E0`; maximum claim scope: `G0`
+Archetype: `concept`
+
+**Positive understanding expectations**
+
+- `oil-understanding-1`
+  - Essential understanding (DE): Pflanzenöl ist ein Gemisch von Triglyceriden mit struktur- und bedingungsabhängigen Eigenschaften.
+  - Essential understanding (EN): Vegetable oil is a triglyceride mixture with structure-/condition-dependent properties.
+  - Observable performance (DE): Beschreibe den allgemeinen Molekülbau und begründe den Gemischcharakter. Beurteile die direkte Pflanzenölnutzung in beiden Modellmotoren und die Aussage „nachwachsend ist automatisch umweltfreundlich“. Die zusätzliche Umesterungsreaktion ist hier kein Pflichtauftrag. Erwartet:Drei Fettsäurereste sind an Glycerin verestert; verschiedene Reste und TG-Zusammensetzungen ergeben ein Gemisch. Nur A besitzt die gegebene Pflanzenölfreigabe; aus Viskosität oder dem Oberbegriff Biokraftstoff folgt keine Freigabe für B. Anbauroute P umfasst hier Rodungsfolgen; auch R benötigt Dünger-, Transport- und Flächenbilanz. Erneuerbarkeit beschreibt die Rohstofferneuerung, keine vollständige Umweltbilanz.
+  - Observable performance (EN): Describe the general molecule and explain mixture character. Evaluate direct vegetable-oil use in both model engines and “renewable is automatically environmentally friendly”. The additional transesterification reaction is not a required task here. Expected:Three acyl residues are esterified to glycerol; varying residues and TG compositions produce a mixture. Only A has the stated vegetable-oil approval; viscosity or the biofuel label grants no approval for B. P includes clearance impacts, while R still needs fertiliser, transport and land accounting. Renewability concerns feedstock renewal, not a full environmental balance.
+- `oil-understanding-2`
+  - Essential understanding (DE): Rohstofferneuerung, Motorfreigabe und ökologische Vorkettenbilanz sind verschiedene Bedingungen der Nutzung.
+  - Essential understanding (EN): Feedstock renewal, engine approval and upstream environmental accounting are different conditions of use.
+  - Observable performance (DE): Erläutere, warum weder eine reine Triglyceridformel noch hoher TG-Anteil einen universell geeigneten oder nachhaltigen Pflanzenölkraftstoff beweist. Begründe eine vorläufige Herkunftsbewertung und nenne die fehlenden Stoff-/Anwendungsdaten. Erwartet:U und P sind Gemische; freie Säure ist kein Triglycerid. Höherer TG-Anteil ersetzt keine Motoreignung oder Wasser-/Schmutzprüfung. Die dokumentierte Sammlungsroute U vermeidet im gegebenen Vergleich neue Rodung, beweist aber ohne Sammlung/Aufbereitung/Transport/Ertrag keine universell bessere CO2-Bilanz. Beide erfordern stoff- und anwendungsbezogene Nachweise; kein konkreter Motorbetrieb wird freigegeben.
+  - Observable performance (EN): Explain why neither one pure triglyceride formula nor high TG content proves a universally suitable or sustainable vegetable-oil fuel. Justify a provisional provenance assessment and name missing substance/application data. Expected:U and P are mixtures and free acid is not a triglyceride. Higher TG content replaces neither engine suitability nor water/impurity checks. Documented collection of U avoids new clearing in this comparison but gives no universal CO2 ranking absent collection, treatment, transport and yield data. Both require substance/application evidence; no real engine operation is authorised.
+
+**Coverage expectations**
+
+- required expectations: `oil-understanding-1`, `oil-understanding-2`
+- alternative expectation groups: None
+- minimum independent demonstrations: 2
+- fresh variation required: true
+- independent transfer required: true
+
+**Variation axes**
+
+- `changed-composition-or-condition`: Geänderte Stoff-/Struktur- oder Einsatzbedingungen selbst deuten. / Independently interpret changed composition, structure or operating conditions.
+- `genuine-new-transfer`: Begründung an frischer Variation und tatsächlicher Aussagegrenze prüfen. / Test reasoning on fresh variation and actual inference limits.
+
+**Application cases**
+
+- `energy20-03-a-oil-current`
+  - Task demand (DE): Aus dem bestehenden Fall: Pflanzenöl enthält unterschiedliche Triglyceride mit Glycerinrückgrat und drei Estergruppen −O−C(=O)−R. Die drei Fettsäurereste dürfen verschieden sein. Modellmotor A ist für ein vorgegebenes Pflanzenöl freigegeben, Motor B nur für Fettsäuremethylester; Öl hat bei 20 °C im Modell höhere Viskosität als Biodiesel. Lieferkarte R nennt Raps aus bestehender Anbaufläche, Karte P Palmöl aus neu gerodeter Fläche. Keine echten Produkt-/Emissionsdaten. Beschreibe den allgemeinen Molekülbau und begründe den Gemischcharakter. Beurteile die direkte Pflanzenölnutzung in beiden Modellmotoren und die Aussage „nachwachsend ist automatisch umweltfreundlich“. Die zusätzliche Umesterungsreaktion ist hier kein Pflichtauftrag. Frischer Transfer:Die nachweisbare Herkunft von P wird durch ein anonymes Label „nachhaltiges Palmöl“ ersetzt. Was ist danach belegt?
+  - Task demand (EN): Retained case inputs: vegetable oil contains different triglycerides with a glycerol backbone and three −O−C(=O)−R ester groups; acyl residues may differ. Model engine A is authorised for a specified vegetable oil, B only for fatty-acid methyl ester; oil is more viscous at 20°C in the model. Provenance card R assigns rapeseed to existing cropland, P palm oil to newly cleared land. No real product/emission data. Describe the general molecule and explain mixture character. Evaluate direct vegetable-oil use in both model engines and “renewable is automatically environmentally friendly”. The additional transesterification reaction is not a required task here. Freshtransfer:P’s documented origin is replaced by an anonymous “sustainable palm oil” label. What remains established?
+  - Expected performance (DE): Drei Fettsäurereste sind an Glycerin verestert; verschiedene Reste und TG-Zusammensetzungen ergeben ein Gemisch. Nur A besitzt die gegebene Pflanzenölfreigabe; aus Viskosität oder dem Oberbegriff Biokraftstoff folgt keine Freigabe für B. Anbauroute P umfasst hier Rodungsfolgen; auch R benötigt Dünger-, Transport- und Flächenbilanz. Erneuerbarkeit beschreibt die Rohstofferneuerung, keine vollständige Umweltbilanz. Transfer:Der Stoff bleibt ein Triglyceridgemisch; bekannte Motordaten bleiben. Eine konkrete Rodungs- oder Nachhaltigkeitsbilanz folgt nun nicht mehr aus dem anonymen Label. Verifizierbare Herkunft und gleiche Systemgrenzen werden benötigt.
+  - Expected performance (EN): Three acyl residues are esterified to glycerol; varying residues and TG compositions produce a mixture. Only A has the stated vegetable-oil approval; viscosity or the biofuel label grants no approval for B. P includes clearance impacts, while R still needs fertiliser, transport and land accounting. Renewability concerns feedstock renewal, not a full environmental balance. Transfer:It remains a triglyceride mixture, and known engine data remain. An anonymous label establishes no specific clearance or sustainability balance. Verifiable origin and matched boundaries are needed.
+  - Understanding focus (DE): Ein ganzes vorgeschlagenes Kindziel, wahre prospektive Evidenz und unabhängiger Transfer; keine menschliche oder praktische Freigabe.
+  - Understanding focus (EN): One whole proposed child, true prospective evidence and independent transfer; no human or practical approval.
+- `energy20-03-b-oil-current`
+  - Task demand (DE): Aus dem alten Fall bleiben zwei rein fiktive Rohstoffkarten erhalten: U=90 mol% Triglyceride und 10 mol% freie Fettsäure, P=99 mol% Triglyceride und 1 mol% freie Fettsäure; dieselben vereinfachten Komponenten. U ist dokumentiert aus Sammlung, P von neu gerodeter Fläche. Eine Freigabe für direkten Motorbetrieb, Wasser-/Schmutzgehalt und vollständige Vorkettenbilanz fehlen. Erläutere, warum weder eine reine Triglyceridformel noch hoher TG-Anteil einen universell geeigneten oder nachhaltigen Pflanzenölkraftstoff beweist. Begründe eine vorläufige Herkunftsbewertung und nenne die fehlenden Stoff-/Anwendungsdaten. Frischer Transfer:Eine neue Karte beschreibt U als von neuer Fläche gewonnen und P als dokumentiertes Reststofföl. Welche Schlussfolgerung muss sich ändern und welche bleibt?
+  - Task demand (EN): Retained fictional feedstock cards: U=90mol% triglycerides/10mol% free fatty acid and P=99mol% triglycerides/1mol% free fatty acid, using the same simplified components. U has documented collection origin and P newly cleared-land origin. Direct engine approval, water/impurity content and full upstream balances are absent. Explain why neither one pure triglyceride formula nor high TG content proves a universally suitable or sustainable vegetable-oil fuel. Justify a provisional provenance assessment and name missing substance/application data. Freshtransfer:A new card describes U as newly grown and P as documented waste oil. Which conclusion changes and which stays?
+  - Expected performance (DE): U und P sind Gemische; freie Säure ist kein Triglycerid. Höherer TG-Anteil ersetzt keine Motoreignung oder Wasser-/Schmutzprüfung. Die dokumentierte Sammlungsroute U vermeidet im gegebenen Vergleich neue Rodung, beweist aber ohne Sammlung/Aufbereitung/Transport/Ertrag keine universell bessere CO2-Bilanz. Beide erfordern stoff- und anwendungsbezogene Nachweise; kein konkreter Motorbetrieb wird freigegeben. Transfer:Die Herkunftsbewertung muss den vertauschten Belegen folgen; die chemisch gegebenen TG-/Säureanteile ändern sich dadurch nicht. Zusammensetzung und Herkunft sind verschiedene Begründungsgrößen.
+  - Expected performance (EN): U and P are mixtures and free acid is not a triglyceride. Higher TG content replaces neither engine suitability nor water/impurity checks. Documented collection of U avoids new clearing in this comparison but gives no universal CO2 ranking absent collection, treatment, transport and yield data. Both require substance/application evidence; no real engine operation is authorised. Transfer:Provenance assessment must follow the swapped evidence; stipulated TG/acid fractions do not change. Composition and origin are different grounds of judgment.
+  - Understanding focus (DE): Ein ganzes vorgeschlagenes Kindziel, wahre prospektive Evidenz und unabhängiger Transfer; keine menschliche oder praktische Freigabe.
+  - Understanding focus (EN): One whole proposed child, true prospective evidence and independent transfer; no human or practical approval.

@@ -1,0 +1,152 @@
+[
+  {
+    "goalId": "d1244f5d-9a12-5b74-97fe-ae974f40af26",
+    "role": "Raw authored P successor; no normal review record, no vote, no reviewed status",
+    "evidenceLevel": "E0",
+    "maximumClaimScope": "G0",
+    "profile": {
+      "archetype": "data",
+      "expectations": [
+        {
+          "id": "charge-direction",
+          "essentialUnderstandingDe": "Der pH-Wert relativ zum isoelektrischen Punkt bestimmt im vereinfachten Modell das Vorzeichen der mittleren Nettoladung und damit die Wanderungsrichtung.",
+          "essentialUnderstandingEn": "In the simplified model, pH relative to the isoelectric point determines the sign of mean net charge and hence migration direction.",
+          "observablePerformanceDe": "Die lernende Person begründet Referenz- und Probenlagen aus pH/pI und korrekter Elektrodenzuordnung.",
+          "observablePerformanceEn": "The learner explains reference/sample positions using pH/pI and correct electrode identity."
+        },
+        {
+          "id": "side-chain-protonation",
+          "essentialUnderstandingDe": "Unterschiedlich protonierbare Seitenketten beeinflussen pI und Gesamtladung; die Gesamtladung kann beim pH-Wechsel ihr Vorzeichen ändern.",
+          "essentialUnderstandingEn": "Differently protonatable side chains affect pI and total charge; total charge can reverse sign as pH changes.",
+          "observablePerformanceDe": "Sie erklärt eine neue Richtungsänderung mit Protonierung statt einem dauerhaften Stoffetikett.",
+          "observablePerformanceEn": "The learner explains a new directional reversal through protonation rather than a permanent substance label."
+        },
+        {
+          "id": "interpretation-limit",
+          "essentialUnderstandingDe": "Übereinstimmende Wanderung stützt Vereinbarkeit; Mobilität und Versuchsbedingungen beeinflussen die Strecke, sodass pI weder Strecke noch eindeutige Identität festlegt.",
+          "essentialUnderstandingEn": "Matching migration supports compatibility; mobility and experimental conditions affect distance, so pI determines neither distance nor unique identity.",
+          "observablePerformanceDe": "Sie begrenzt die Identifikation und trennt vorgegebene Strecken vom Ladungsmodell.",
+          "observablePerformanceEn": "The learner limits identification and separates supplied distances from the charge model."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "charge-direction",
+          "side-chain-protonation",
+          "interpretation-limit"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "protonation-and-comparison",
+          "textDe": "pH, Aminocarbonsäurezusammensetzung und Vergleichsbedingung variieren; nötige Stoff- und Geräteangaben werden im jeweiligen Fall neu bereitgestellt.",
+          "textEn": "Vary pH, amino-acid composition and comparison conditions; provide the required substance and instrument information afresh in each case."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "EVAL-1",
+          "taskDemandDe": "Werte die vorgegebenen Referenz- und U-Ergebnisse aus. Begründe Ladung und Wanderungsrichtung über pH/pI und den Einfluss unterschiedlicher Seitenketten. Beurteile, ob U damit eindeutig identifiziert ist und ob sich die Wanderstrecken aus pI berechnen lassen.",
+          "taskDemandEn": "Evaluate the supplied reference and U results. Explain charge and migration direction using pH/pI and the role of different side chains. Assess whether U is uniquely identified and whether pI determines the migration distances.",
+          "expectedPerformanceDe": "Bei pH 7 liegen Glycin und Glutamat oberhalb ihres pI und sind im Mittel negativ, Lysin unterhalb seines pI und positiv. Deshalb ist die positive Anode für Glycin/Glutamat und die negative Kathode für Lysin die erwartete Richtung. Protonierbare basische bzw. saure Seitenketten verschieben den pI und die mittlere Ladung. Die drei U-Lagen sind mit den Referenzen vereinbar; andere Teilchen können ko-migrieren. pI bestimmt hier die Vorzeichenbeziehung, weder Ladungsbetrag noch konkrete Strecke. Diese sind vorgegebene Daten und hängen auch von Mobilität, Matrix, Feld und Zeit ab.",
+          "expectedPerformanceEn": "At pH 7, glycine and glutamate are above their pI and have negative mean charge; lysine is below its pI and positive. Glycine/glutamate therefore move toward the positive anode and lysine toward the negative cathode. Acidic/basic protonatable side chains shift pI and mean charge. U agrees with the three references, but other species may co-migrate. Here pI supplies the sign relation, not charge magnitude or distance; distances are supplied data and also depend on mobility, matrix, field and time.",
+          "understandingFocusDe": "Die zugeordneten allgemeinen Fachbeziehungen in einer neuen gegebenen Bedingung fachlich begründen.",
+          "understandingFocusEn": "Justify the assigned general chemical relationships in a new supplied condition."
+        },
+        {
+          "id": "EVAL-2-PH-TRANSFER",
+          "taskDemandDe": "Erkläre die veränderten Referenz- und V-Lagen beim pH-Wechsel. Prüfe die Behauptung, Lysin müsse als basische Aminocarbonsäure immer zur Kathode wandern. Begründe die Aussagekraft beider V-Vergleiche und die Grenzen der pI-Werte.",
+          "taskDemandEn": "Explain the changed reference and V positions after changing pH. Assess the claim that lysine, as a basic amino acid, must always migrate toward the cathode. Explain the strength of the two V comparisons and the limits of pI.",
+          "expectedPerformanceDe": "Lysin liegt bei pH 8 unter pI 9,7: positive mittlere Ladung, Kathode. Bei pH 11 liegt es darüber: negative mittlere Ladung, Anode. Die Protonierungsanteile der funktionellen Gruppen einschließlich der basischen Seitenkette ändern sich mit pH; „basische Seitenkette“ bedeutet keine stets positive Gesamtladung. Glutamat liegt bei beiden pH-Werten oberhalb pI und wandert im Modell zur Anode. V passt in beiden Läufen zu Lysin; das ist stärkere Vereinbarkeit als ein einzelner Vergleich, aber kein eindeutiger Strukturbeweis. Aus den pI-Werten allein folgen weder die Strecken noch deren Unterschied.",
+          "expectedPerformanceEn": "At pH 8, lysine is below pI 9.7: positive mean charge and migration to the cathode. At pH 11 it is above pI: negative mean charge and migration to the anode. Protonation fractions of the functional groups, including the basic side chain, change with pH; a basic side chain does not imply an always positive total charge. Glutamate is above pI in both runs and migrates to the anode in the model. V matches lysine in both runs, providing greater compatibility than one comparison but no unique structural proof. pI alone gives neither distances nor the distance change.",
+          "understandingFocusDe": "Die zugeordneten allgemeinen Fachbeziehungen in einer neuen gegebenen Bedingung fachlich begründen.",
+          "understandingFocusEn": "Justify the assigned general chemical relationships in a new supplied condition."
+        }
+      ]
+    },
+    "wholeCaseIds": [
+      "EVAL-1",
+      "EVAL-2-PH-TRANSFER"
+    ],
+    "independentReviewPending": true
+  },
+  {
+    "goalId": "37374918-78c9-577f-9827-695d111ab22d",
+    "role": "Raw authored P successor; no normal review record, no vote, no reviewed status",
+    "evidenceLevel": "E0",
+    "maximumClaimScope": "G0",
+    "profile": {
+      "archetype": "concept",
+      "expectations": [
+        {
+          "id": "separation-condition",
+          "essentialUnderstandingDe": "Die Wahl des Puffer-pH verändert die mittleren Ladungen und muss zusammen mit der Polung eine begründete Trennprognose ermöglichen.",
+          "essentialUnderstandingEn": "Buffer pH changes mean charges and, together with polarity, must permit a justified separation prediction.",
+          "observablePerformanceDe": "Die lernende Person begründet eine geeignete Bedingung aus den Moleküleigenschaften und benennt Auflösungsgrenzen.",
+          "observablePerformanceEn": "The learner justifies suitable conditions from molecular properties and identifies resolution limits."
+        },
+        {
+          "id": "controlled-comparison",
+          "essentialUnderstandingDe": "Vergleichbare Bedingungen, getrennte Referenzen und Leerproben machen eine spätere Auswertung der unbekannten Probe überprüfbar.",
+          "essentialUnderstandingEn": "Comparable conditions, separate references and blanks make a later interpretation of the unknown sample testable.",
+          "observablePerformanceDe": "Sie legt kontrollierte Größen, Probenanordnung, Referenzlauf und Auswertungsgrenzen für einen neuen Vergleich fest.",
+          "observablePerformanceEn": "The learner specifies controlled factors, sample arrangement, a reference run and interpretation limits for a new comparison."
+        },
+        {
+          "id": "feasible-plan",
+          "essentialUnderstandingDe": "Ein brauchbarer Versuchsplan berücksichtigt tatsächliche Elektrodenzuordnung sowie belegte Puffer- und Geräteeignung; der Plan allein belegt keine Ausführung.",
+          "essentialUnderstandingEn": "A usable experimental plan accounts for actual electrode identity and verified buffer/instrument suitability; a plan alone provides no evidence of execution.",
+          "observablePerformanceDe": "Sie benennt erforderliche Vorprüfungen, sichere Gerätebedingungen und Aufsicht, ohne Durchführung oder Messergebnisse zu behaupten.",
+          "observablePerformanceEn": "The learner identifies prior checks, safe operating conditions and supervision without claiming execution or measured results."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "separation-condition",
+          "controlled-comparison",
+          "feasible-plan"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "protonation-and-comparison",
+          "textDe": "pH, Aminocarbonsäurezusammensetzung und Vergleichsbedingung variieren; nötige Stoff- und Geräteangaben werden im jeweiligen Fall neu bereitgestellt.",
+          "textEn": "Vary pH, amino-acid composition and comparison conditions; provide the required substance and instrument information afresh in each case."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "PLAN-1",
+          "taskDemandDe": "Plane eine elektrophoretische Trennung von Glycin, Lysin und Glutamat mit den verfügbaren Mitteln. Begründe die pH-Wahl und Richtungsprognosen. Lege Referenzen, Startpositionen, Vergleichsbedingungen, Polungsprüfung und sichere gerätespezifische Betriebsbedingungen fest. Begründe, welche Beobachtung einen brauchbaren Vergleich mit U erlaubt. Es wird ein Plan verlangt; kein Versuch wird ausgeführt.",
+          "taskDemandEn": "Plan an electrophoretic separation of glycine, lysine and glutamate using the available resources. Justify buffer pH and predicted directions. Specify references, origins, comparison conditions, polarity checks and safe instrument-specific operation. Explain which observations would allow a useful comparison with U. A plan is required; no experiment is performed.",
+          "expectedPerformanceDe": "Ein begründeter Plan kann pH 7 wählen: Glycin und Glutamat im Mittel negativ, Lysin positiv; alternativ pH 6 mit Glycin nahe dem Start ist fachlich möglich, wenn begründet und mit erwartbaren Auflösungsgrenzen geprüft. Der Puffer wird passend gewählt und pH kontrolliert. Referenzen und U werden getrennt an definierten Startpositionen mit gleichen Volumina aufgetragen; eine Leerprobe prüft Hintergrund. Matrix, Feldstärke, Laufzeit, Ionenstärke und Temperatur bleiben vergleichbar. Polung und reale Elektrodenzuordnung werden geprüft; nur zugelassene gerätespezifische Bedingungen, Arbeiten am ausgeschalteten Aufbau und fachliche Aufsicht werden vorgesehen. Erst getrennte Referenzlagen erlauben eine begrenzte Zuordnung zu U; die Auflösung ist durch einen Referenzlauf zu prüfen, nicht aus pI-Streckenvorhersagen zu behaupten.",
+          "expectedPerformanceEn": "A justified plan may choose pH 7: glycine/glutamate negative on average and lysine positive. pH 6 with glycine near the origin is also defensible if justified and checked for resolution limits. Select a suitable buffer and verify pH. Apply references and U separately at defined origins with matched volumes; a blank checks background. Keep matrix, field strength, duration, ionic strength and temperature comparable. Check actual polarity/electrode identity; plan permitted instrument-specific settings, setup with power off and subject-qualified supervision. Distinct reference positions support only bounded comparison with U; resolution requires a reference run, not distances predicted from pI.",
+          "understandingFocusDe": "Die zugeordneten allgemeinen Fachbeziehungen in einer neuen gegebenen Bedingung fachlich begründen.",
+          "understandingFocusEn": "Justify the assigned general chemical relationships in a new supplied condition."
+        },
+        {
+          "id": "PLAN-2-PH-TRANSFER",
+          "taskDemandDe": "Plane einen aussagekräftigen Vergleich der Lysin-, Glutamat- und V-Proben bei pH 8 und 11. Begründe erwartete Richtungsänderungen, die unabhängige Variable und nötige Kontrollen. Erkläre den Umgang mit ungeprüften Elektrodenetiketten und der Geräte-/Puffereignung. Formuliere eine begrenzte spätere Auswertung. Keine reale Durchführung und keine frei erfundenen Laufdaten.",
+          "taskDemandEn": "Plan an informative comparison of lysine, glutamate and V at pH 8 and 11. Justify predicted direction changes, the independent variable and controls. Explain how to handle unverified electrode labels and instrument/buffer suitability. Define a bounded later evaluation. No actual execution and no invented migration results.",
+          "expectedPerformanceDe": "pH ist die gezielt variierte Größe. Lysin soll unter pI zur Kathode und oberhalb pI zur Anode wandern; Glutamat bleibt bei beiden pH-Werten im Mittel negativ. Für jeden pH-Wert sind geeigneter Puffer, pH-Kontrolle, separate Standards, V und Leerprobe unter vergleichbaren Matrix-/Volumen-/Feld-/Zeit-/Temperaturbedingungen vorzusehen. Tatsächliche Potentiale und Anschlüsse werden unabhängig von Etiketten geprüft, bevor ein unter fachlicher Aufsicht zulässiger Betrieb geplant wird. Ohne bestätigte pH-11-Eignung darf der Versuch so nicht freigegeben werden; ein begründeter Plan benennt den Klärungsbedarf oder eine zulässige Alternative. Spätere Übereinstimmung an zwei pH-Werten stützt Vereinbarkeit, aber keine eindeutige Identität. Die Strecken werden gemessen und nicht aus pI errechnet.",
+          "expectedPerformanceEn": "pH is the deliberately varied factor. Lysine is predicted to migrate to the cathode below pI and to the anode above pI; glutamate remains negative on average in both runs. For each pH, specify suitable buffer, pH verification, separate references, V and blank with comparable matrix/volume/field/time/temperature. Verify actual potentials and connections independently of labels before planning permitted operation under qualified supervision. Without confirmed pH-11 suitability, the experiment cannot be cleared as stated; a justified plan identifies the missing check or a permitted alternative. Later agreement at two pH values supports compatibility, not unique identity. Distances are measured rather than calculated from pI.",
+          "understandingFocusDe": "Die zugeordneten allgemeinen Fachbeziehungen in einer neuen gegebenen Bedingung fachlich begründen.",
+          "understandingFocusEn": "Justify the assigned general chemical relationships in a new supplied condition."
+        }
+      ]
+    },
+    "wholeCaseIds": [
+      "PLAN-1",
+      "PLAN-2-PH-TRANSFER"
+    ],
+    "independentReviewPending": true
+  }
+]

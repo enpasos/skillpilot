@@ -3,7 +3,10 @@ import { access, mkdir, mkdtemp, readFile, readdir, rename, rm, writeFile } from
 import { dirname, join, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import Ajv2020 from 'ajv/dist/2020.js'
-import type { GoalBookReviewBundleManifest } from './exportGoalBookReviewBundle'
+import {
+  buildGoalBookReviewBundle,
+  type GoalBookReviewBundleManifest,
+} from './exportGoalBookReviewBundle'
 import {
   GOAL_BOOK_EDITION,
   GOAL_BOOK_MODEL_SCHEMA_VERSION,
@@ -11,12 +14,16 @@ import {
   parseAndValidateGoalBookModel,
   stableGoalBookJson,
   writeGoalBookModel,
-  type GoalBookBuildConfig,
   type GoalBookExternalReference,
   type GoalBookModel,
   type GoalBookPage,
 } from './goalBookModel'
-import type { GoalBookPrintDerivativeProfile } from './goalBookRenderer'
+import {
+  writeGoalBookHtml,
+  writeGoalBookPdf,
+  writeGoalBookRenderManifest,
+  type GoalBookPrintDerivativeProfile,
+} from './goalBookRenderer'
 import {
   createGoalDescriptionReviewCampaignArtifacts,
   verifyGoalBookReviewBundleArtifactBytes,
@@ -36,7 +43,6 @@ import {
   validateGoalDescriptionReviewCampaign,
   type GoalDescriptionReviewCampaign,
   type GoalDescriptionReviewInput,
-  type GoalDescriptionReviewInputGoal,
 } from './validateGoalDescriptionReviewCampaign'
 import { loadGoalDescriptionReviewCampaignResultDirectories } from './validateGoalDescriptionReviewCampaignResults'
 import {
@@ -47,12 +53,6 @@ import {
   generateDeepUnderstandingRollout,
   loadDeepUnderstandingRolloutConfig,
 } from './reportDeepUnderstandingRollout'
-import { parseGoalBookEvidenceReviewRecord } from './goalBookEvidenceReviewLoader'
-import {
-  isCanonicalMathPhysicsEvidenceSource,
-  loadCurrentPositiveEvidenceOwners,
-  validateDescriptionPositiveEvidenceBinding,
-} from './currentPositiveEvidenceOwners'
 
 const REPOSITORY_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const DEFAULT_PUBLIC_ROOT = 'app/public'
@@ -562,7 +562,6 @@ const writeBundleDirectory = async ({
   promptPath: string
   criteriaPath: string
 }) => {
-  const { buildGoalBookReviewBundle } = await import('./exportGoalBookReviewBundle')
   const built = await buildGoalBookReviewBundle(model, {
     modelPath,
     htmlPath,
@@ -649,120 +648,6 @@ const assertCurrentFullAtomicBase = async (
   return atomicGoalIds.length
 }
 
-type BatchEvidenceSourceConfig = Pick<
-  GoalBookBuildConfig,
-  'landscapePath' | 'semanticKindLedgerPath' | 'evidenceReviewPaths'
->
-
-type BatchEvidenceInputGoal = Pick<GoalDescriptionReviewInputGoal, 'goalId' | 'reviewContext'>
-
-/** An explicit evidence source makes this a P-bound batch. The historical
- * empty-source, null-profile/null-summary contract remains profile-independent.
- * This boundary uses the registered whole subject source, without generating a
- * report or rebuilding historical review pages. */
-export const assertGoalDescriptionRolloutCurrentPositiveEvidence = async ({
-  subject,
-  model,
-  baseConfig,
-  preparedInputGoals = [],
-}: {
-  subject: string
-  model: GoalBookModel
-  baseConfig: BatchEvidenceSourceConfig
-  preparedInputGoals?: readonly BatchEvidenceInputGoal[]
-}): Promise<void> => {
-  if (!isCanonicalMathPhysicsEvidenceSource({
-    landscapePath: model.source.landscapePath,
-    landscapeId: model.book.landscapeId,
-  })) return
-  const bound = baseConfig.evidenceReviewPaths.length > 0
-    || model.pages.some(({ evidenceReview }) => evidenceReview !== null)
-    || preparedInputGoals.some(({ reviewContext }) => (
-      reviewContext.evidenceProfile !== null || reviewContext.page.evidenceReview !== null
-    ))
-  if (!bound) return
-  if (
-    baseConfig.landscapePath !== model.source.landscapePath
-    || baseConfig.semanticKindLedgerPath !== model.source.semanticKindLedgerPath
-  ) {
-    throw new Error('P-bound batch base configuration is bound to another canonical landscape or semantic-kind source')
-  }
-  const subjects = loadDeepUnderstandingRolloutConfig().subjects.filter((candidate) => (
-    candidate.subject === subject
-    && candidate.landscapePath === model.source.landscapePath
-    && candidate.semanticKindLedgerPath === model.source.semanticKindLedgerPath
-  ))
-  if (subjects.length !== 1) {
-    throw new Error(`P-bound batch requires exactly one registered current subject source for ${subject}`)
-  }
-  const ledgerPath = repositoryPath(model.source.semanticKindLedgerPath, 'semantic-kind ledger')
-  const ledger = parseJson<{
-    counts?: { curricularAtomic?: number }
-    decisions?: Array<{ goalId: string; semanticKind: string; decisionStatus: string }>
-  }>(await readFile(ledgerPath), ledgerPath)
-  const atomicGoalIds = (ledger.decisions ?? [])
-    .filter(({ semanticKind, decisionStatus }) => (
-      semanticKind === 'curricularAtomic' && decisionStatus === 'authoritative'
-    ))
-    .map(({ goalId }) => goalId)
-  if (
-    atomicGoalIds.length === 0
-    || duplicateValues(atomicGoalIds).length > 0
-    || ledger.counts?.curricularAtomic !== atomicGoalIds.length
-  ) {
-    throw new Error('P-bound batch requires the exact current authoritative curricularAtomic scope')
-  }
-  const current = loadCurrentPositiveEvidenceOwners({
-    ...subjects[0],
-    landscapeId: model.book.landscapeId,
-    atomicGoalIds: new Set(atomicGoalIds),
-  })
-  if (current.issues.length > 0) {
-    throw new Error(`P-bound batch current owner validation failed: ${current.issues.join(' | ')}`)
-  }
-  const recordsByGoalId = new Map<string, ReturnType<typeof parseGoalBookEvidenceReviewRecord>>()
-  for (const configuredPath of baseConfig.evidenceReviewPaths) {
-    const path = repositoryPath(configuredPath, 'configured evidence-review source')
-    const text = await readFile(path, 'utf8')
-    for (const [index, rawLine] of text.split(/\r?\n/u).entries()) {
-      const line = rawLine.trim()
-      if (!line) continue
-      const label = `${configuredPath}:${index + 1}`
-      const record = parseGoalBookEvidenceReviewRecord(parseJson<unknown>(line, label), label)
-      if (recordsByGoalId.has(record.goalId)) {
-        throw new Error(`P-bound batch has duplicate configured evidence records for ${record.goalId}`)
-      }
-      recordsByGoalId.set(record.goalId, record)
-    }
-  }
-  const configuredGoals: BatchEvidenceInputGoal[] = model.pages.map((page) => ({
-    goalId: page.goalId,
-    reviewContext: { page, evidenceProfile: recordsByGoalId.get(page.goalId) ?? null },
-  }))
-  for (const inputGoal of [...configuredGoals, ...preparedInputGoals]) {
-    const binding = validateDescriptionPositiveEvidenceBinding(inputGoal, current.owners.get(inputGoal.goalId))
-    if (binding.status !== 'current') {
-      throw new Error(binding.errors.join(' | ')
-        || `${inputGoal.goalId}: explicitly P-bound batch is missing its configured current positive-evidence profile`)
-    }
-  }
-}
-
-const loadBatchEvidenceSourceConfig = async (configuredPath: string): Promise<BatchEvidenceSourceConfig> => {
-  const path = repositoryPath(configuredPath, 'base GoalBook config')
-  const config = parseJson<BatchEvidenceSourceConfig>(await readFile(path), path)
-  if (
-    typeof config.landscapePath !== 'string'
-    || typeof config.semanticKindLedgerPath !== 'string'
-    || !Array.isArray(config.evidenceReviewPaths)
-    || config.evidenceReviewPaths.some((value) => typeof value !== 'string' || value.trim() === '')
-    || duplicateValues(config.evidenceReviewPaths).length > 0
-  ) {
-    throw new Error('P-bound batch base GoalBook configuration has invalid evidence source paths')
-  }
-  return config
-}
-
 export const prepareGoalDescriptionRolloutBatch = async (configuredPath: string) => {
   const loaded = await loadGoalDescriptionRolloutBatchConfig(configuredPath)
   try {
@@ -790,12 +675,6 @@ export const prepareGoalDescriptionRolloutBatch = async (configuredPath: string)
     bookId: loaded.config.bookId,
     title: loaded.config.title,
   })
-  await assertGoalDescriptionRolloutCurrentPositiveEvidence({
-    subject: loaded.config.subject,
-    model,
-    baseConfig: base.config,
-  })
-  const { writeGoalBookHtml, writeGoalBookPdf, writeGoalBookRenderManifest } = await import('./goalBookRenderer')
   await mkdir(dirname(loaded.outputDirectory), { recursive: true })
   const temporaryDirectory = await mkdtemp(join(dirname(loaded.outputDirectory), '.goal-description-rollout-batch-'))
   try {
@@ -1014,17 +893,6 @@ export const validatePreparedGoalDescriptionRolloutBatch = async (
     || first.campaign.independenceGroupId === second.campaign.independenceGroupId
   ) {
     throw new Error('Prepared rounds are not two distinct blind campaigns over the identical exact input')
-  }
-  if (isCanonicalMathPhysicsEvidenceSource({
-    landscapePath: model.source.landscapePath,
-    landscapeId: model.book.landscapeId,
-  })) {
-    await assertGoalDescriptionRolloutCurrentPositiveEvidence({
-      subject: loaded.config.subject,
-      model,
-      baseConfig: await loadBatchEvidenceSourceConfig(loaded.config.baseGoalBookConfigPath),
-      preparedInputGoals: [...first.input.goals, ...second.input.goals],
-    })
   }
   return {
     config: loaded.config,

@@ -1,0 +1,73 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "chemie-current439-stable-jurisdiction-only-first20-20261016-v1",
+  "subject": "chemie",
+  "subjectLabel": "Chemie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current439-stable-jurisdiction-only-first20-private-L6-technical-20261016-v1/native-twenty.stock.config.json",
+  "configDigest": "sha256:05a0b7ea54d87bd23e384513b3e758559a986bf90f0c1f6dae2ac0d7df4d523b",
+  "goalIds": [
+    "9fc800d1-92d1-5ef6-81c1-33960ae034dd",
+    "7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6",
+    "4aa3a130-b517-5ac5-87b2-147fe432cadd",
+    "c441d9e8-d9d9-5e55-a189-a37345541321",
+    "fcaf8c9b-bd81-552e-9d91-43649895471e",
+    "79db6d68-b402-5563-a348-f2784fed8867",
+    "7964cb36-e9b1-5176-9426-a82041a5b72f",
+    "965ca297-5dbf-5e58-b5f0-6559a4433646",
+    "b4777001-f4ed-5fe9-9d98-02319abdea09",
+    "cd9ec99b-b694-5673-863c-55528e31250a",
+    "f0f67a7a-b06a-50b9-8edc-1f2a0d97520d",
+    "41396457-d97b-55f3-9804-2af1bb188e79",
+    "bd36dc58-c93e-5247-9e82-da2f9e4e2bed",
+    "4da0839d-ab6d-53c1-ac21-c9872555ae16",
+    "6765f741-42a6-55c5-a218-81b883b1f5ae",
+    "6966df95-f125-5ecc-af8e-0442545d9f17",
+    "f71a2c0a-3a6a-5b23-9fb4-1b57cfb68528",
+    "f947cd04-952a-5a9d-9445-3ffc70e02c3c",
+    "0278a515-8990-5a1c-8a1b-a03382a144a3",
+    "7f8c990a-c207-5b86-a60f-860af295c0a9"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 439,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current439-paired-generic-SekI-and-NI-private-L6-technical-20261016-v1/base.full439.current-native-inputs.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "baseBookDigest": "sha256:1bce0619e07fe5d957de64f305e7c483efc34e6f4d92b3aabdbefa4c880d39ac"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:a0661184c3dd3474e8ae006337739db0be22983cdbc94aeff7798e343d9221c6",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:a9a163349c8f76db10215928c717ccc9480ff037b95a7a37c1ce4c16b133a65e",
+    "reviewInputFingerprint": "sha256:977629c061ebe9ffb8f164dbdcc5ca656644e5defa81648f395f583b2e63b34c",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "chemie-current439-stable-jurisdiction-only-first20-20261016-v1-a",
+        "campaignDigest": "sha256:d50e3cd567afb160e2e35e38a1fc440df4ea229e92cd498a574861f66ee50b51",
+        "roundId": "chemie-current439-stable-jurisdiction-only-first20-20261016-v1-first-pass-a",
+        "independenceGroupId": "chemie-current439-stable-jurisdiction-only-first20-20261016-v1-independent-a",
+        "batchId": "chemie-current439-stable-jurisdiction-only-first20-20261016-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:d2df77dcc77001a549c893f27a97546304ae6ca2369862e309c90625342719c2"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "chemie-current439-stable-jurisdiction-only-first20-20261016-v1-b",
+        "campaignDigest": "sha256:5f77b76961e7d155eee78b9400cf2efc4df73244864e12800f7c3cbd07d18ba8",
+        "roundId": "chemie-current439-stable-jurisdiction-only-first20-20261016-v1-first-pass-b",
+        "independenceGroupId": "chemie-current439-stable-jurisdiction-only-first20-20261016-v1-independent-b",
+        "batchId": "chemie-current439-stable-jurisdiction-only-first20-20261016-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:c50af812167ea273a717a9ce7498793c2a79c051271b86665b8eb4bf1fffc841"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

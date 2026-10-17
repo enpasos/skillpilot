@@ -25,15 +25,6 @@ import java.util.regex.Pattern;
 
 /** Builds one immutable runtime-discovery snapshot from an exact active package lock. */
 public final class JsonCurriculumPackageLoader {
-    /** Explicit v1 admission boundary: unknown extendedData must never erase authoritative semantics. */
-    public static void assertSupportedGoalContexts(JsonNode document) {
-        for (JsonNode goal : document.path("goals")) {
-            if (goal.path("extendedData").has("applicabilityContexts")) {
-                throw failure("Package-v1 cannot admit applicabilityContexts without a supported successor runtime contract.");
-            }
-        }
-    }
-
 
     private static final String MANIFEST_SCHEMA_ID =
             "https://skillpilot.com/schemas/curriculum-package/v1/package-manifest.schema.json";
@@ -512,7 +503,6 @@ public final class JsonCurriculumPackageLoader {
             byte[] bytes = readArtifactBytes(installedPackage, file, verifiedPaths);
             JsonNode document = parseJson(bytes, "landscape " + id);
             requireExactText(document, "landscapeId", id, "landscape " + id);
-            assertSupportedGoalContexts(document);
             String defaultOfferingId = optionalText(entry, "defaultOfferingId");
             CurriculumRuntimeSnapshot.Artifact artifact = artifact(installedPackage, file);
             CurriculumRuntimeSnapshot.LandscapeDescriptor descriptor =

@@ -9,22 +9,7 @@ public record StateMachineInfo(
         List<FrontierGoal> goalOptions,
         List<LandscapeSummary> curriculumOptions,
         FrontierGoal activeGoal,
-        List<LearningModeOption> modeOptions,
-        List<PrerequisiteBlocker> prerequisiteBlockers) {
-
-    public StateMachineInfo {
-        prerequisiteBlockers = prerequisiteBlockers == null ? List.of() : List.copyOf(prerequisiteBlockers);
-    }
-
-    public StateMachineInfo(
-            String state,
-            String requiredAction,
-            List<FrontierGoal> goalOptions,
-            List<LandscapeSummary> curriculumOptions,
-            FrontierGoal activeGoal,
-            List<LearningModeOption> modeOptions) {
-        this(state, requiredAction, goalOptions, curriculumOptions, activeGoal, modeOptions, List.of());
-    }
+        List<LearningModeOption> modeOptions) {
 
     public StateMachineInfo(
             String state,

@@ -1,0 +1,589 @@
+{
+  "role": "Eight complete retained effective cases, full rubrics; no quota or assessment award",
+  "cases": [
+    {
+      "caseId": "T05-C1",
+      "wholeCase": {
+        "id": "T05-C1",
+        "goalId": "28c90c6a-3020-5c51-ac40-d802f3f12d2d",
+        "titleDe": "Unbekannte Säurekurve X: Daten zuerst deuten",
+        "materialDe": "Vollständig synthetische Lehrdaten bei 25 °C, keine Labor- oder Lernendenmessung. Das Modell setzt γ=1, Kᵥ=10⁻¹⁴ und additive Volumina voraus. 25.00 mL einer formal einprotonigen Säure mit c=0.100 mol/L werden mit NaOH, c=0.100 mol/L, titriert. Probenkennung X; Säurestärke und Molekülidentität werden nicht mitgeteilt. Unter den erlaubten Modellalternativen stehen eine starke oder eine schwache einprotonige Säure zur Wahl; Gemische und weitere Protolyse-Stufen sind ausgeschlossen. Vorgelegte Kurvendaten (pH auf drei Nachkommastellen gerundet):\n\n| V(NaOH) / mL | pH |\n| --- | --- |\n| 0.00 | 1.000 |\n| 6.25 | 1.222 |\n| 12.50 | 1.477 |\n| 18.75 | 1.845 |\n| 24.50 | 2.996 |\n| 24.90 | 3.698 |\n| 24.98 | 4.398 |\n| 25.00 | 7.000 |\n| 25.02 | 9.602 |\n| 25.10 | 10.300 |\n| 25.50 | 10.996 |\n| 30.00 | 11.959 |\n\nIndikatorbereiche: Methylorange 3.1–4.4, BTB 6.0–7.6, Phenolphthalein 8.2–10.0. Kein Farbkriterium und keine zulässige Volumenabweichung sind festgelegt. Die Tabelle bestimmt daher keinen exakten Indikatorfehler. Berechne die Modellwerte für 0, 12.50, 25.00 und 30.00 mL. Separater hypothetischer Temperaturvergleich, unabhängig von der Identifizierung von X: Eine starke Säure wird mit einer starken Base neutralisiert, die Gegenionen hydrolysieren nicht und es gilt pKᵥ=13.20.",
+        "materialEn": "Entirely synthetic teaching data at 25 °C, not laboratory or learner measurements. The model assumes γ=1, Kᵥ=10⁻¹⁴ and additive volumes. Titrate 25.00 mL of a formally monoprotic acid, c=0.100 mol/L, with 0.100 mol/L NaOH. Sample label X; acid strength and molecular identity are not supplied. The allowed alternatives are a strong or a weak monoprotic acid; mixtures and further dissociation stages are excluded. Supplied curve data (pH rounded to three decimal places):\n\n| V(NaOH) / mL | pH |\n| --- | --- |\n| 0.00 | 1.000 |\n| 6.25 | 1.222 |\n| 12.50 | 1.477 |\n| 18.75 | 1.845 |\n| 24.50 | 2.996 |\n| 24.90 | 3.698 |\n| 24.98 | 4.398 |\n| 25.00 | 7.000 |\n| 25.02 | 9.602 |\n| 25.10 | 10.300 |\n| 25.50 | 10.996 |\n| 30.00 | 11.959 |\n\nIndicator ranges: methyl orange 3.1–4.4, BTB 6.0–7.6, phenolphthalein 8.2–10.0. No colour criterion or allowed volume deviation is specified, so the table supplies no exact indicator error. Calculate model values at 0, 12.50, 25.00 and 30.00 mL. Separate hypothetical temperature comparison, independent of identifying X: neutralise a strong acid with a strong base, with non-hydrolysing counterions and pKᵥ=13.20.",
+        "taskDemandDe": "1. Deute die vorgelegte Kurve X: Ordne stark oder schwach zu und belege dies an Anfangs-pH, Bereich um 12.50 mL und dem steilen Sprung zwischen 24.98 und 25.02 mL. Lies den Äquivalenzbereich ab, prüfe ihn stöchiometrisch und benenne die maßgeblichen Spezies vor, bei und nach Äquivalenz.\n2. Berechne die vier verlangten pH-Werte mit dem Gesamtvolumen und vergleiche sie mit der gerundeten Tabelle. Erkläre, ob der formale Halbpunkt einen pKₐ liefert.\n3. Leite die durch die Daten gestützte Stoffklasse ab und wähle einen passenden Indikatorkandidaten. Begründe mit dem tatsächlich vorgelegten Sprung, weshalb ein ungefähres Passungsurteil keinen exakten Endpunktfehler oder eine eindeutige Molekülidentität liefert.\n4. Bestimme den neutralen Äquivalenz-pH im separaten Temperaturvergleich und korrigiere die Regel, der Äquivalenzpunkt liege immer bei pH 7.",
+        "taskDemandEn": "1. Interpret supplied curve X: classify it as strong or weak using initial pH, the region around 12.50 mL, and the steep jump between 24.98 and 25.02 mL. Read the equivalence region, check it stoichiometrically, and identify the controlling species before, at and after equivalence.\n2. Calculate the four requested pH values with total volume and compare them with the rounded table. Explain whether the formal halfpoint yields a pKₐ.\n3. Infer the supported substance class and select an indicator candidate. Use the actually supplied jump to explain why approximate suitability supplies neither an exact endpoint error nor unique molecular identity.\n4. Find neutral equivalence pH in the separate temperature comparison and correct the claim that equivalence is always at pH 7.",
+        "modelAnswerDe": "1. X passt im vorgegebenen Modell zur starken einprotonigen Säure: pH 1.000 bei 0.100 mol/L, bei halber Titrantmenge nur pH 1.477 und kein schwacher HA/A⁻-Pufferbereich. Der Sprung von 4.398 auf 9.602 liegt um 25.00 mL; bei 25.00 mL ist pH 7.000. n=2.500 mmol bestätigt Vₑq=25.00 mL. Vorher bestimmt H₃O⁺-Überschuss den pH, bei Äquivalenz Wasser mit nicht hydrolysierenden Gegenionen, danach OH⁻-Überschuss. 2. Die berechneten pH-Werte sind 1.000, 1.477, 7.000 und 11.959. Bei 12.50 mL gilt [H₃O⁺]=1.250 mmol/37.50 mL=0.03333 mol/L; bei 30.00 mL [OH⁻]=0.500 mmol/55.00 mL=0.009091 mol/L. Die Werte stimmen auf die Tabellenrundung; der Halbpunkt liefert hier keinen pKₐ. 3. BTB liegt um den neutralen Äquivalenzbereich. Auch Methylorange oder Phenolphthalein können je nach Toleranz im steilen Bereich passen: die zusätzliche Tabelle stützt einen schmalen Volumenbereich, aber ohne festgelegtes Farbkriterium und feinere Auflösung keinen exakten Volumenfehler. Die Kurve belegt unter den Modellannahmen die Klasse, nicht eine eindeutige Säureidentität. 4. Gleiche Hydronium- und Hydroxidaktivitäten bedeuten pH=pKᵥ/2=6.60. Der ursprüngliche neutrale Wert 7 war an pKᵥ=14 gebunden; Äquivalenz ist stöchiometrisch definiert.",
+        "modelAnswerEn": "1. Within the supplied alternatives X is a strong monoprotic acid: pH 1.000 at 0.100 mol/L, only 1.477 at half titrant amount and no weak HA/A⁻ buffer region. The jump from 4.398 to 9.602 lies around 25.00 mL, where pH is 7.000. The 2.500 mmol amount confirms Vₑq=25.00 mL. Before equivalence H₃O⁺ excess controls pH; at equivalence water and non-hydrolysing counterions do; afterwards OH⁻ excess does. 2. Calculated values are 1.000, 1.477, 7.000 and 11.959. At 12.50 mL, [H₃O⁺]=1.250 mmol/37.50 mL=0.03333 mol/L; at 30.00 mL, [OH⁻]=0.500 mmol/55.00 mL=0.009091 mol/L. These agree with table rounding; this halfpoint does not yield pKₐ. 3. BTB lies around neutral equivalence. Methyl orange or phenolphthalein may also fit the steep region depending on tolerance. The additional table supports a narrow volume interval but supplies no exact volume error without a colour criterion and finer resolution. The curve supports the class under the model, not unique molecular identity. 4. Equal hydronium and hydroxide activities give pH=pKᵥ/2=6.60. Neutral pH 7 depended on pKᵥ=14; equivalence is defined stoichiometrically.",
+        "rubric": [
+          {
+            "expectationId": "e1",
+            "maximumPoints": 3,
+            "fullCreditDe": "Ordnet X stark zu und nennt konkrete Daten: Anfang 1.000, Halbpunkt 1.477 ohne schwachen Pufferbereich und Sprung 4.398→9.602 um 25.00 mL. Verknüpft diesen mit 2.500 mmol und den wechselnden pH-bestimmenden Spezies.",
+            "fullCreditEn": "Classifies X as strong using actual values: initial 1.000, halfpoint 1.477 without weak buffering and jump 4.398→9.602 around 25.00 mL. Relates it to 2.500 mmol and the changing pH-controlling species.",
+            "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch.",
+            "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong.",
+            "creditBasis": "written-explicit-task",
+            "actualPointsAwarded": null
+          },
+          {
+            "expectationId": "e2",
+            "maximumPoints": 3,
+            "fullCreditDe": "pH1.000,1.477,7.000,11.959;HalbpunktkeinHA/A⁻ Puffer,pHnichtpKa.",
+            "fullCreditEn": "pH 1.000,1.477,7.000,11.959; halfpoint not HA/A⁻ buffer, pH not pKa.",
+            "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch.",
+            "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong.",
+            "creditBasis": "written-explicit-task",
+            "actualPointsAwarded": null
+          },
+          {
+            "expectationId": "e3",
+            "maximumPoints": 3,
+            "fullCreditDe": "Begründet die Indikatorpassung am tatsächlichen schmalen Sprungbereich; BTB ist passend, andere sind toleranzabhängig. Nennt fehlendes Farbkriterium/Volumenfehler und die Grenze der Molekülidentifikation.",
+            "fullCreditEn": "Uses the actual narrow jump to justify BTB and tolerance-dependent alternatives. States missing colour criterion/exact volume error and the limit on molecular identification.",
+            "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch.",
+            "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong.",
+            "creditBasis": "written-explicit-task",
+            "actualPointsAwarded": null
+          },
+          {
+            "expectationId": "e4",
+            "maximumPoints": 3,
+            "fullCreditDe": "Neutral bedeutet gleiche Aktivitäten von H₃O⁺ und OH⁻; daher pH=pKw/2=6.60. Der ursprüngliche Wert 7 beruhte auf pKw=14 und nicht hydrolysierenden Gegenionen.",
+            "fullCreditEn": "Neutrality means equal hydronium and hydroxide activities: pH=pKw/2=6.60. The original value 7 depended on pKw=14 and non-hydrolysing counterions.",
+            "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch.",
+            "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong.",
+            "creditBasis": "written-design",
+            "actualPointsAwarded": null
+          }
+        ],
+        "maximumPoints": 12,
+        "fullCreditRequiresAllFourExpectations": true,
+        "evidenceLevel": "E0",
+        "maximumClaimScope": "G0",
+        "authorOnly": true,
+        "executed": false,
+        "learnerWorkPresent": false,
+        "practicalExecutionRequired": false,
+        "actualObservationRecords": [],
+        "actualPointsAwarded": null,
+        "wholeGoalScope": {
+          "tags": [
+            "GK",
+            "LK"
+          ],
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          }
+        },
+        "sourceAuthorCase": {
+          "caseId": "28c90c6a-case-1",
+          "inputPath": "inputs/history/twenty-selected-old-cases.whole-exact.json",
+          "wholeOldCaseObjectSha256": "sha256:45af8c3d7a5b46305ff8ecf15053de283a5f643e13794ad8eb6f138303a44b63"
+        },
+        "newIndependentReviewStatus": "pending; author material only",
+        "authorRemediation": {
+          "inputWholeCaseSha256": "sha256:8c88b4400194e5e41404912f5fd5fd4259b8d4d06381a0f89bd9acd577110775",
+          "findingId": "A-P-T05-OBSERVABLE",
+          "independentRecheck": "pending",
+          "dataAreActualMeasurements": false
+        }
+      },
+      "wholeObjectSha256": "sha256:28c354ca4a12ce9e44180ed7c6dacf6a296048b6fdb2c646a19be4c1f627acc1",
+      "retention": "complete v2-effective body preserved; no new positive vote"
+    },
+    {
+      "caseId": "T05-C2",
+      "wholeCase": {
+        "id": "T05-C2",
+        "goalId": "28c90c6a-3020-5c51-ac40-d802f3f12d2d",
+        "titleDe": "Unbekannte Säurekurve Y: Daten zuerst deuten",
+        "materialDe": "Vollständig synthetische Lehrdaten bei 25 °C, keine Labor- oder Lernendenmessung. Das Modell setzt γ=1, Kᵥ=10⁻¹⁴ und additive Volumina voraus. 25.00 mL einer formal einprotonigen Säure mit c=0.100 mol/L werden mit NaOH, c=0.100 mol/L, titriert. Probenkennung Y; Säurestärke und Molekülidentität werden nicht mitgeteilt. Unter den erlaubten Modellalternativen stehen eine starke oder eine schwache einprotonige Säure zur Wahl; Gemische und weitere Protolyse-Stufen sind ausgeschlossen. Vorgelegte Kurvendaten (pH auf drei Nachkommastellen gerundet):\n\n| V(NaOH) / mL | pH |\n| --- | --- |\n| 0.00 | 2.883 |\n| 6.25 | 4.284 |\n| 12.50 | 4.760 |\n| 18.75 | 5.237 |\n| 24.50 | 6.450 |\n| 24.90 | 7.156 |\n| 24.98 | 7.849 |\n| 25.00 | 8.730 |\n| 25.02 | 9.609 |\n| 25.10 | 10.300 |\n| 25.50 | 10.996 |\n| 30.00 | 11.959 |\n\nIndikatoren: BTB 6.0–7.6, Phenolphthalein 8.2–10.0; kein spezifisches Farbkriterium oder exakter Volumenfehler vorgegeben. Nach der Dateninterpretation darf der aus dem Halbpunkt selbst ermittelte pKₐ für die weitere Rechnung verwendet werden. Anfangsnäherung [H₃O⁺]≈√(Kₐc), am Äquivalenzpunkt [OH⁻]≈√(Kᵦc(Salz)), Kᵦ=Kᵥ/Kₐ. Berechne 0, 12.50, 25.00 und 30.00 mL. Diese Näherungen müssen nicht die dritte Dezimalstelle der vollständig gelösten Modelltabellen reproduzieren; begründe die Näherung und prüfe eine Abweichung bis 0.01 pH-Einheiten.",
+        "materialEn": "Entirely synthetic teaching data at 25 °C, not laboratory or learner measurements. The model assumes γ=1, Kᵥ=10⁻¹⁴ and additive volumes. Titrate 25.00 mL of a formally monoprotic acid, c=0.100 mol/L, with 0.100 mol/L NaOH. Sample label Y; acid strength and molecular identity are not supplied. The allowed alternatives are a strong or a weak monoprotic acid; mixtures and further dissociation stages are excluded. Supplied curve data (pH rounded to three decimal places):\n\n| V(NaOH) / mL | pH |\n| --- | --- |\n| 0.00 | 2.883 |\n| 6.25 | 4.284 |\n| 12.50 | 4.760 |\n| 18.75 | 5.237 |\n| 24.50 | 6.450 |\n| 24.90 | 7.156 |\n| 24.98 | 7.849 |\n| 25.00 | 8.730 |\n| 25.02 | 9.609 |\n| 25.10 | 10.300 |\n| 25.50 | 10.996 |\n| 30.00 | 11.959 |\n\nIndicators: BTB 6.0–7.6, phenolphthalein 8.2–10.0; no specific colour criterion or exact volume error supplied. After interpreting the data, use the pKₐ independently inferred from the halfpoint for subsequent calculation. Initial approximation [H₃O⁺]≈√(Kₐc); at equivalence [OH⁻]≈√(Kᵦc(salt)), Kᵦ=Kᵥ/Kₐ. Calculate 0, 12.50, 25.00 and 30.00 mL. These approximations need not reproduce the third decimal of the fully solved model table; justify them and check a difference up to 0.01 pH units.",
+        "taskDemandDe": "1. Deute zuerst die vorgelegte Kurve Y: Ordne stark oder schwach zu, belege den Pufferbereich und den basischen Sprung mit mindestens drei konkreten Tabellenwerten. Lies den Äquivalenzbereich und den Halbpunkt ab und ermittle den näherungsweisen pKₐ; prüfe Vₑq mit der Stoffmenge.\n2. Berechne die vier verlangten pH-Werte und begründe Anfangs- und Salz-Näherung. Vergleiche Rechnungen und Tabelle mit der genannten Näherungstoleranz.\n3. Erkläre die Information des Halbpunktes und wähle einen geeigneten Indikatorkandidaten anhand des vorgelegten Sprungs. Begrenze Endpunkt- und Stoffidentitätsaussagen.\n4. Vergleiche mit einer gleich konzentrierten starken einprotonigen Säure: Welche Punkte bleiben gleich, welche ändern sich infolge des schwachen Säuregleichgewichts?",
+        "taskDemandEn": "1. First interpret supplied curve Y: classify strong or weak and support its buffer region and basic jump using at least three actual table values. Read equivalence and half-equivalence, infer approximate pKₐ, and check Vₑq using the amount.\n2. Calculate the four requested pH values and justify initial and salt approximations. Compare calculations with the table using the stated approximation tolerance.\n3. Explain the halfpoint information and select an indicator candidate using the supplied jump. Limit endpoint and substance-identity claims.\n4. Compare an equally concentrated strong monoprotic acid: which points remain equal and which change because of the weak-acid equilibrium?",
+        "modelAnswerDe": "1. Y ist im vorgegebenen Modell schwach: Anfang pH 2.883 statt etwa 1, vor Äquivalenz ein flacherer HA/A⁻-Bereich (6.25 mL: 4.284; 12.50 mL: 4.760; 18.75 mL: 5.237), bei 25.00 mL laut Tabelle basisch 8.730. Der starke Anstieg liegt bei 25.00 mL. 2.500 mmol Säure bestätigen dieses Äquivalenzvolumen; der Halbpunkt liegt bei 12.50 mL und liefert näherungsweise pKₐ=4.76. 2. Kₐ=1.738·10⁻⁵ ergibt näherungsweise Anfangs-pH 2.880 mit 1.32 % Umsetzung; vollständig gelöst ist es 2.883, eine Abweichung von etwa 0.003. Am Halbpunkt ist pH≈4.760. Bei Äquivalenz gilt c(Salz)=0.0500 mol/L, Kᵦ=5.754·10⁻¹⁰, [OH⁻]≈5.363·10⁻⁶ mol/L, pH≈8.729 und nur etwa 0.011 % Hydrolyse. Bei 30.00 mL bestimmt der starke Baseüberschuss pH 11.959. Die Abweichungen bleiben unter 0.01. 3. Phenolphthalein passt zum basischen Äquivalenzbereich. BTB verändert die Farbe früher; das belegt allein keinen exakt berechneten Volumenfehler. Farbumschlag und chemische Äquivalenz bleiben verschieden, und pKₐ 4.76 identifiziert keine bestimmte Molekülstruktur. 4. Äquivalenzvolumen und pH bei gleichem starkem Baseüberschuss bleiben gleich; Anfangs-pH, Voräquivalenz-Pufferung und Äquivalenz-pH ändern sich.",
+        "modelAnswerEn": "1. Y is weak within the supplied model: initial pH 2.883 rather than about 1, a flatter HA/A⁻ region before equivalence (6.25 mL: 4.284; 12.50 mL: 4.760; 18.75 mL: 5.237), and table pH 8.730 at 25.00 mL. The steep rise lies around 25.00 mL. The 2.500 mmol acid amount confirms this equivalence volume. Half-equivalence is 12.50 mL, yielding approximate pKₐ=4.76. 2. Kₐ=1.738·10⁻⁵ gives approximate initial pH 2.880 and 1.32% conversion; the complete solution gives 2.883, differing by about 0.003. At half-equivalence pH≈4.760. At equivalence c(salt)=0.0500 mol/L, Kᵦ=5.754·10⁻¹⁰, [OH⁻]≈5.363·10⁻⁶ mol/L, pH≈8.729 and about 0.011% hydrolysis. At 30.00 mL strong base excess gives pH 11.959. Differences are below 0.01. 3. Phenolphthalein fits basic equivalence. BTB changes earlier, which alone supplies no exact calculated volume error. Colour endpoint and chemical equivalence remain distinct; pKₐ 4.76 identifies no unique molecular structure. 4. Equivalence volume and pH at the same strong-base excess remain equal; initial pH, pre-equivalence buffering and equivalence pH change.",
+        "rubric": [
+          {
+            "expectationId": "e1",
+            "maximumPoints": 3,
+            "fullCreditDe": "Ordnet Y aufgrund konkreter Kurvendaten schwach zu; erläutert HA/A⁻-Bereich, pH≈4.760 am Halbpunkt und basischen Tabellen-Äquivalenz-pH 8.730, statt die nicht genannte Stärke zu wiederholen. Verknüpft 25.00 mL mit 2.500 mmol und den relevanten Spezies.",
+            "fullCreditEn": "Classifies Y as weak from actual curve data; explains HA/A⁻ buffering, halfpoint pH≈4.760 and basic table equivalence pH 8.730 rather than repeating an assigned strength. Relates 25.00 mL to 2.500 mmol and relevant species.",
+            "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch.",
+            "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong.",
+            "creditBasis": "written-explicit-task",
+            "actualPointsAwarded": null
+          },
+          {
+            "expectationId": "e2",
+            "maximumPoints": 3,
+            "fullCreditDe": "Berechnet näherungsweise pH 2.880, 4.760, 8.729, 11.959, begründet kleine Umsetzungs-/Hydrolyseanteile und erklärt die Anfangsabweichung 0.003 gegenüber Tabelle 2.883 als Näherung, nicht Messfehler.",
+            "fullCreditEn": "Calculates approximate pH 2.880, 4.760, 8.729, 11.959, justifies small conversion/hydrolysis fractions and explains the 0.003 initial difference from table 2.883 as approximation rather than measurement error.",
+            "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch.",
+            "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong.",
+            "creditBasis": "written-explicit-task",
+            "actualPointsAwarded": null
+          },
+          {
+            "expectationId": "e3",
+            "maximumPoints": 3,
+            "fullCreditDe": "Liest näherungsweise pKₐ=4.76 aus dem tatsächlichen Halbpunkt; begründet Phenolphthalein am basischen Sprung, trennt Farbe/Äquivalenz und behauptet weder exakten Endpunktfehler noch eindeutige Molekülidentität.",
+            "fullCreditEn": "Reads approximate pKₐ=4.76 from the actual halfpoint; justifies phenolphthalein at the basic jump and distinguishes colour/equivalence without claiming exact endpoint error or unique identity.",
+            "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch.",
+            "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong.",
+            "creditBasis": "written-explicit-task",
+            "actualPointsAwarded": null
+          },
+          {
+            "expectationId": "e4",
+            "maximumPoints": 3,
+            "fullCreditDe": "Äquivalenzvolumen und pH bei gleichem starkem Baseüberschuss bleiben gleich. Anfangs-pH, Voräquivalenz-Pufferbereich und Äquivalenz-pH unterscheiden sich; ein Halbpunkt liefert bei der starken Säure keinen pKa.",
+            "fullCreditEn": "Equivalence volume and pH at the same strong-base excess remain equal. Initial pH, pre-equivalence buffer region and equivalence pH differ; a strong-acid halfpoint does not give a pKa.",
+            "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch.",
+            "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong.",
+            "creditBasis": "written-design",
+            "actualPointsAwarded": null
+          }
+        ],
+        "maximumPoints": 12,
+        "fullCreditRequiresAllFourExpectations": true,
+        "evidenceLevel": "E0",
+        "maximumClaimScope": "G0",
+        "authorOnly": true,
+        "executed": false,
+        "learnerWorkPresent": false,
+        "practicalExecutionRequired": false,
+        "actualObservationRecords": [],
+        "actualPointsAwarded": null,
+        "wholeGoalScope": {
+          "tags": [
+            "GK",
+            "LK"
+          ],
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          }
+        },
+        "sourceAuthorCase": {
+          "caseId": "28c90c6a-case-2",
+          "inputPath": "inputs/history/twenty-selected-old-cases.whole-exact.json",
+          "wholeOldCaseObjectSha256": "sha256:b38fa611e3a895361c7d97df0848c54e3505006c3d0a300048ce2402d194b1f5"
+        },
+        "newIndependentReviewStatus": "pending; author material only",
+        "authorRemediation": {
+          "inputWholeCaseSha256": "sha256:3cfa18db2dfefcc5574e0d78470a4284115d25a38ac59db7ccc1103dcd66075c",
+          "findingId": "A-P-T05-OBSERVABLE",
+          "independentRecheck": "pending",
+          "dataAreActualMeasurements": false
+        }
+      },
+      "wholeObjectSha256": "sha256:eb199ef9ae89659c07827ac5dbe7cb5722ec4f349c68288b42d7a3d2aaa25b70",
+      "retention": "complete v2-effective body preserved; no new positive vote"
+    },
+    {
+      "caseId": "T06-C1",
+      "wholeCase": {
+        "id": "T06-C1",
+        "goalId": "a449e874-6fec-502b-9667-6f078adc4d64",
+        "titleDe": "Acetat mit Säurelast",
+        "materialDe": "25°C;idealesγ=1-Modell,pKa4.76;100.0mL enthalten10.0mmolHA und40.0mmolA⁻. Zugabe5.00mmolHCl,Volumenänderung vernachlässigbar. Separater Vergleich:zehnfache Verdünnung beider Anfangskomponenten;Wasserbeitrag bleibtklein.",
+        "materialEn": "25°C, idealγ=1 model, pKa 4.76;100.0 mL contains 10.0 mmol HA/40.0 mmol A⁻.Add 5.00 mmol HCl, negligible volume change. Separate comparison: tenfold dilution of both initial components; water remains negligible.",
+        "taskDemandDe": "1. Leite pH=pKa+log(a A/aHA) aus Ka her und berechne den Anfangs-pH.\n2. Berechne nachHCl-Zugabe die Partnerstoffmengen undpH.\n3. Vergleiche vor Säurezugabe diezehnfache Verdünnung hinsichtlichpH und Kapazitätje Liter.\n4. Prüfe die Aussagen „zehnfache Verdünnung erniedrigt den Puffer-pH um 1“ und „die HCl-Menge darf direkt als freie Oxoniumkonzentration eingesetzt werden“.",
+        "taskDemandEn": "1. Derive pH=pKa+log(aA/aHA)from Ka and calculate initial pH.\n2. Calculate partner amounts and pH after HCl.\n3. Compare tenfold dilution before acid addition for pH and capacity per liter.\n4. Test “tenfold dilution lowers buffer pH by 1” and “the HCl dose can be used directly as free hydronium concentration”.",
+        "modelAnswerDe": "1. Aus Kₐ=a(H)·a(A⁻)/a(HA) folgt pH=pKₐ+log(a(A⁻)/a(HA)). Im Modell γ=1 kürzt sich dasselbe Volumen. Anfangs ist pH 5.362. 2. A⁻ + H₃O⁺ → HA + H₂O lässt 35.0 mmol A⁻ und 15.0 mmol HA zurück; pH 5.128. 3. Zehnfache Verdünnung erhält den Quotienten und näherungsweise den pH. Konzentrationen und lokale Kapazität je Liter fallen auf ein Zehntel; die gesamten Partnerstoffmengen des verdünnten Ansatzes bleiben erhalten. Gleicher pH bedeutet keine gleiche Belastbarkeit je Liter. Weitere Verdünnung erfordert neue Wasser-/Aktivitätsprüfungen. 4. Beide Behauptungen sind im gegebenen Bereich falsch: Verdünnung erhält den Quotienten, und HCl wird zunächst von A⁻ aufgenommen, statt vollständig frei zu bleiben. Reserven und Modellgrenzen bleiben endlich.",
+        "modelAnswerEn": "1. Ka=aH·aA/aHA yields pH=pKa+log(aA/aHA). Common volume cancels in theγ=1 model. Initial pH 5.362. 2. A⁻+H₃O⁺→HA+H₂O leaves 35.0 mmol A⁻/15.0 mmol HA, pH 5.128. 3. Tenfold dilution preserves the ratio and approximately pH under stated conditions. Total buffer concentration and local capacity per litre fall tenfold; the total partner amounts in the diluted whole preparation are unchanged. Same pH does not mean equal load tolerance; further dilution requires new water/activity checks.\n4. Both statements are false within the supplied buffer regime: dilution preserves the common ratio, while HCl is first consumed by A⁻. Finite reserves and limits of the ideal assumption remain relevant.",
+        "rubric": [
+          {
+            "expectationId": "e1",
+            "maximumPoints": 3,
+            "fullCreditDe": "Ka=a H·a A/aHA⇒pH=pKa+logratio;4.76+log4=5.362.",
+            "fullCreditEn": "Correct derivation and initial pH 5.362.",
+            "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch.",
+            "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong.",
+            "creditBasis": "written-explicit-task",
+            "actualPointsAwarded": null
+          },
+          {
+            "expectationId": "e2",
+            "maximumPoints": 3,
+            "fullCreditDe": "A⁻35.0,HA15.0mmol;pH4.76+log(35/15)=5.128.",
+            "fullCreditEn": "A⁻35.0, HA 15.0 mmol; pH 5.128.",
+            "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch.",
+            "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong.",
+            "creditBasis": "written-explicit-task",
+            "actualPointsAwarded": null
+          },
+          {
+            "expectationId": "e3",
+            "maximumPoints": 3,
+            "fullCreditDe": "Gleiches Verhältnis⇒annäherndgleicherpH;absolute Reserveje Literzehnfachkleiner,nicht gleichbelastbar.",
+            "fullCreditEn": "Same ratio gives approximately same pH; reserve per liter is tenfold lower, not same load tolerance.",
+            "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch.",
+            "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong.",
+            "creditBasis": "written-explicit-task",
+            "actualPointsAwarded": null
+          },
+          {
+            "expectationId": "e4",
+            "maximumPoints": 3,
+            "fullCreditDe": "Beide Aussagen sind im gegebenen Pufferbereich falsch: das gemeinsame Verhältnis bleibt bei Verdünnung gleich; HCl wird zuerst mit A⁻ verrechnet. Die endlichen Reserven und Grenzen der Idealannahme bleiben zu beachten.",
+            "fullCreditEn": "Both statements are false within the supplied buffer regime: dilution preserves the common ratio, while HCl is first consumed by A⁻. Finite reserves and limits of the ideal assumption remain relevant.",
+            "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch.",
+            "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong.",
+            "creditBasis": "written-design",
+            "actualPointsAwarded": null
+          }
+        ],
+        "maximumPoints": 12,
+        "fullCreditRequiresAllFourExpectations": true,
+        "evidenceLevel": "E0",
+        "maximumClaimScope": "G0",
+        "authorOnly": true,
+        "executed": false,
+        "learnerWorkPresent": false,
+        "practicalExecutionRequired": false,
+        "actualObservationRecords": [],
+        "actualPointsAwarded": null,
+        "wholeGoalScope": {
+          "tags": [
+            "LK"
+          ],
+          "applicability": {
+            "jurisdiction": [
+              "DE-BY",
+              "DE-HE",
+              "DE-NI"
+            ]
+          }
+        },
+        "sourceAuthorCase": {
+          "caseId": "a449e874-case-1",
+          "inputPath": "inputs/history/twenty-selected-old-cases.whole-exact.json",
+          "wholeOldCaseObjectSha256": "sha256:b50975ab44853ed1e0bc1b8a2bf6518e9d384fae4381b6868211516059bcec9f"
+        },
+        "newIndependentReviewStatus": "pending; author material only"
+      },
+      "wholeObjectSha256": "sha256:6486efd8a09ddcabfadc171ad852e3863f936dbb6767884649aaafcf40bd732b",
+      "retention": "complete v2-effective body preserved; no new positive vote"
+    },
+    {
+      "caseId": "T06-C2",
+      "wholeCase": {
+        "id": "T06-C2",
+        "goalId": "a449e874-6fec-502b-9667-6f078adc4d64",
+        "titleDe": "Ammonium mit Baselast",
+        "materialDe": "25°C;γ=1,pKa(NH₄⁺)=9.25.500.0mL enthalten50.0mmolNH₄⁺ und25.0mmolNH₃. Geschlossener Behälter,keinNH₃-Verlust. Zugabe10.0mmolNaOH,Volumenänderungvernachlässigbar. Alternativ wird gefragt,ob60mmolOH⁻ nochmit derselben Pufferformel ausgewertetwerden dürfen. Ein zusätzlicher qualitativer Vergleich öffnet den Behälter für NH₃-Verlust; der konkrete Verlust ist unbekannt.",
+        "materialEn": "25°C,γ=1, pKa(NH₄⁺)=9.25.500.0 mL contains 50.0 mmol NH₄⁺/25.0 mmol NH₃.Closed vessel, no NH₃ loss. Add 10.0 mmol NaOH, negligible volume change. Alternative: can 60 mmol OH⁻ still be evaluated using the same buffer formula? An additional qualitative comparison opens the vessel to NH₃ loss; its amount is unknown.",
+        "taskDemandDe": "1. Bestimme die korrespondierenden Partner und berechne den Anfangs-pH mit der richtigen Quotientenrichtung.\n2. Berechne denpH nach10.0mmolOH⁻ mithilfe einer vorgeschalteten Stoffmengenbilanz.\n3. Beurteile die60mmol-Alternative und erkläre,warum ein negatives Säuremengenresultat kein HH-Eingabewertist.\n4. Dürfen im offenen Vergleich unverändert die ursprünglichen NH₃-Mengen in die Gleichung eingesetzt werden? Begründe Richtung und quantitative Grenze der Aussage.",
+        "taskDemandEn": "1. Identify conjugate partners and calculate initial pH with correct ratio orientation.\n2. Calculate pH after 10.0 mmol OH⁻ using mole balance first.\n3. Assess 60 mmol alternative and explain why negative acid amount is not a valid HH input.\n4. Can the original NH₃ amounts be used unchanged in the open comparison? Explain the direction and quantitative limitation.",
+        "modelAnswerDe": "1. Das Paar ist NH₄⁺/NH₃; anfangs ist pH 8.949. 2. NH₄⁺ + OH⁻ → NH₃ + H₂O verbraucht 10 mmol Säure und bildet 10 mmol Base: 40/35 mmol und pH 9.192. 3. 60 mmol OH⁻ überschreiten den 50-mmol-Säurevorrat. Eine formal negative NH₄⁺-Menge zeigt Erschöpfung und ist kein Logarithmusargument. 10 mmol formale zusätzliche Baselast verlangen eine neue Bilanz mit Wasser, NH₃ und starkem Baseüberschuss. Im geschlossenen Gefäß ist kein zusätzlicher NH₃-Verlust gegeben. 4. Bei unbekanntem NH₃-Verlust darf das alte Verhältnis nicht übernommen werden; der pH kann sinken. Für eine neue Zahl sind verbleibende Mengen oder Austausch-/Gleichgewichtsdaten nötig.",
+        "modelAnswerEn": "1. NH₄⁺/NH₃ is the pair; pH 8.949. 2. NH₄⁺+OH⁻→NH₃+H₂O consumes 10 mmol acid and forms 10 mmol base:40/35 mmol, pH 9.192. 3. 60 mmol OH⁻ exceeds 50 mmol acid reserve. A formal negative NH₄⁺ amount signals depletion, not the input of a logarithm.10 mmol is the formal stoichiometric OH⁻ excess, not a determined free-ion amount; new balance including excess base/water and NH₃ is required. Closed-vessel conditions exclude additional open-system change.\n4. No: unknown NH₃ loss changes the base/acid ratio and can lower pH. Remaining amounts or flow/equilibrium data are needed for a new numerical pH.",
+        "rubric": [
+          {
+            "expectationId": "e1",
+            "maximumPoints": 3,
+            "fullCreditDe": "SäureNH₄⁺,BaseNH₃;pH9.25+log(25/50)=8.949.",
+            "fullCreditEn": "Acid NH₄⁺, base NH₃; initial pH 8.949.",
+            "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch.",
+            "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong.",
+            "creditBasis": "written-explicit-task",
+            "actualPointsAwarded": null
+          },
+          {
+            "expectationId": "e2",
+            "maximumPoints": 3,
+            "fullCreditDe": "NH₄⁺40,NH₃35mmol;pH9.25+log(35/40)=9.192.",
+            "fullCreditEn": "NH₄⁺40, NH₃35 mmol; pH 9.192.",
+            "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch.",
+            "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong.",
+            "creditBasis": "written-explicit-task",
+            "actualPointsAwarded": null
+          },
+          {
+            "expectationId": "e3",
+            "maximumPoints": 3,
+            "fullCreditDe": "50mmolSäurereserveerschöpft,10mmolOH⁻ Überschuss;Restbasen-/Wassergleichgewichtstatt lognegativer Zahl.",
+            "fullCreditEn": "50 mmol formal acid reserve is exhausted, with 10 mmol formal stoichiometric OH⁻ excess; a new excess-base/water equilibrium is required, not a logarithm of a negative amount or a claim of exact free hydroxide.",
+            "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch.",
+            "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong.",
+            "creditBasis": "written-explicit-task",
+            "actualPointsAwarded": null
+          },
+          {
+            "expectationId": "e4",
+            "maximumPoints": 3,
+            "fullCreditDe": "Nein: unbekannter NH₃-Verlust verändert das Basen-/Säureverhältnis und kann den pH senken. Ohne verbleibende Mengen bzw. Fluss-/Gleichgewichtsangaben gibt es keinen neuen Zahlen-pH aus den ursprünglichen Mengen.",
+            "fullCreditEn": "No: unknown NH₃ loss changes the base/acid ratio and can lower pH. Remaining amounts or flow/equilibrium data are needed for a new numerical pH.",
+            "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch.",
+            "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong.",
+            "creditBasis": "written-design",
+            "actualPointsAwarded": null
+          }
+        ],
+        "maximumPoints": 12,
+        "fullCreditRequiresAllFourExpectations": true,
+        "evidenceLevel": "E0",
+        "maximumClaimScope": "G0",
+        "authorOnly": true,
+        "executed": false,
+        "learnerWorkPresent": false,
+        "practicalExecutionRequired": false,
+        "actualObservationRecords": [],
+        "actualPointsAwarded": null,
+        "wholeGoalScope": {
+          "tags": [
+            "LK"
+          ],
+          "applicability": {
+            "jurisdiction": [
+              "DE-BY",
+              "DE-HE",
+              "DE-NI"
+            ]
+          }
+        },
+        "sourceAuthorCase": {
+          "caseId": "a449e874-case-2",
+          "inputPath": "inputs/history/twenty-selected-old-cases.whole-exact.json",
+          "wholeOldCaseObjectSha256": "sha256:ae773252ba3f710028041461c3ef3b5b3e4e996460909d7d9cd88751171f318c"
+        },
+        "newIndependentReviewStatus": "pending; v2 wording precision only, no learner evidence or scientific acceptance"
+      },
+      "wholeObjectSha256": "sha256:4b8bee2d8a94dbfb2f23aaf015ec7ea8c55822cb33986822865271589e1ff113",
+      "retention": "complete v2-effective body preserved; no new positive vote"
+    },
+    {
+      "caseId": "T08-C1",
+      "wholeCase": {
+        "id": "T08-C1",
+        "goalId": "29742d91-732f-5da5-bc46-e963885f9a4a",
+        "titleDe": "Zwei Säuren mit Natronlauge",
+        "materialDe": "25°C;γ=1,Kw=10⁻¹⁴;je25.00mL Probe,.100mol/LNaOH. Synthetische Punkte(V/mL,pH):S=(0,1.00),(12.50,1.48),(25.00,7.00),(30.00,11.96);W=(0,2.88),(12.50,4.76),(25.00,8.73),(30.00,11.96). Beide formal einprotonig und c=.100mol/L; Stoffidentitäten absichtlich unbekannt. Zusätzlich gegeben: BTB 6.0–7.6 und Phenolphthalein 8.2–10.0. Feinere Kurvenpunkte um den Äquivalenzbereich fehlen.",
+        "materialEn": "25°C,γ=1, Kw=10⁻¹⁴;25.00 mL samples,.100 mol/L NaOH.Synthetic(V/mL, pH): S=(0,1.00),(12.50,1.48),(25.00,7.00),(30.00,11.96); W=(0,2.88),(12.50,4.76),(25.00,8.73),(30.00,11.96).Both formally monoprotic, c=.100 mol/L, identities unknown. Additional indicator ranges: BTB 6.0–7.6 and phenolphthalein 8.2–10.0. Fine near-equivalence points are absent.",
+        "taskDemandDe": "1. Ordne S/W starker oder schwacher Säure zu und begründe Richtung/Anfangsbereich.\n2. Erkläre Halb-/Äquivalenzbereich jeder Kurve mit den vorhandenen Spezies.\n3. Erkläre gleicheVeq/End-pH und prüfe, ob W dadurch eindeutig Essigsäure ist.\n4. Begründe passende Indikatorkandidaten für S und W und erkläre, weshalb die grobe Punktetabelle keinen exakten Indikator-Volumenfehler liefert.",
+        "taskDemandEn": "1. Classify S/W as strong or weak acid and justify direction/initial region.\n2. Explain half/equivalence regions of each curve using present species.\n3. Explain equal Veq/final pH and whether W must be acetic acid.\n4. Justify indicator candidates for S and W and explain why the coarse point table gives no exact indicator volume error.",
+        "modelAnswerDe": "1. Beide Kurven steigen bei NaOH-Zugabe; unter gleichen Gehaltsbedingungen ist S stark und W schwach. 2. W bildet HA/A⁻; am Halbpunkt ist pH≈pKₐ=4.76. A⁻-Hydrolyse erzeugt bei Äquivalenz OH⁻ und pH 8.73. S hat keinen vergleichbaren schwachen Pufferbereich und bei 25 °C eine neutrale Äquivalenz. 3. Gleiches Äquivalenzvolumen bedeutet gleiche formale titrierbare Stoffmenge. Bei 30 mL ergibt derselbe starke Baseüberschuss denselben pH. pKₐ 4.76 passt zu Essigsäure, identifiziert sie aber nicht eindeutig; dafür sind weitere Analysen nötig. 4. BTB passt zum neutralen Bereich von S, Phenolphthalein zum basischen von W. Exakte Volumenfehler benötigen ein Farbkriterium und feinere Kurvendaten.",
+        "modelAnswerEn": "1. Both curves rise under NaOH addition; S is strong and W weak under equal content conditions. 2. W forms HA/A⁻ buffer, pH≈pKa 4.76 at half-equivalence. A⁻ hydrolysis produces OH⁻ at equivalence, pH 8.73.S lacks a comparable weak-acid buffer and has neutral 25°C equivalence. 3. Equal Veq reflects equal formal titratable acid amount; at 30 mL the same strong base excess gives same pH.pKa 4.76 is compatible with acetic acid but does not uniquely identify it; structure/further analysis is needed.\n4. BTB fits S’s neutral equivalence region, phenolphthalein W’s basic region. Exact volume errors require a defined colour criterion and finer jump data.",
+        "rubric": [
+          {
+            "expectationId": "e1",
+            "maximumPoints": 3,
+            "fullCreditDe": "NaOHführtsteigendepH;Sstark,Wschwachbeigleichem Gehaltundanderem Anfangs-pH.",
+            "fullCreditEn": "NaOH produces rising pH; S strong, W weak at equal content and different initial pH.",
+            "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch.",
+            "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong.",
+            "creditBasis": "written-explicit-task",
+            "actualPointsAwarded": null
+          },
+          {
+            "expectationId": "e2",
+            "maximumPoints": 3,
+            "fullCreditDe": "W:HA/A⁻ Puffer,pKa≈4.76,A⁻ Hydrolyse ÄP>7;Skeinanaloger Puffer,ÄPneutral25°C.",
+            "fullCreditEn": "W: HA/A⁻ buffer, pKa≈4.76, A⁻ hydrolysis give sE q>7; S no comparable buffer, neu t ra lE q at 25°C.",
+            "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch.",
+            "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong.",
+            "creditBasis": "written-explicit-task",
+            "actualPointsAwarded": null
+          },
+          {
+            "expectationId": "e3",
+            "maximumPoints": 3,
+            "fullCreditDe": "Gleiche Säuremenge und OH⁻ Überschuss;ähnliches pKanicht Molekülidentität,weitere Struktur-/Analysedatenfehlen.",
+            "fullCreditEn": "Equal acid amount an dOH⁻ excess; pKa similarity does not prove identity; structure/analytical data missing.",
+            "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch.",
+            "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong.",
+            "creditBasis": "written-explicit-task",
+            "actualPointsAwarded": null
+          },
+          {
+            "expectationId": "e4",
+            "maximumPoints": 3,
+            "fullCreditDe": "BTB passt zum neutralen S-Äquivalenzbereich, Phenolphthalein zum basischen W-Bereich. Daraus folgt keine genaue Volumenabweichung; Umschlagkriterium und feinere Sprungdaten fehlen.",
+            "fullCreditEn": "BTB fits S’s neutral equivalence region, phenolphthalein W’s basic region. Exact volume errors require a defined colour criterion and finer jump data.",
+            "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch.",
+            "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong.",
+            "creditBasis": "written-design",
+            "actualPointsAwarded": null
+          }
+        ],
+        "maximumPoints": 12,
+        "fullCreditRequiresAllFourExpectations": true,
+        "evidenceLevel": "E0",
+        "maximumClaimScope": "G0",
+        "authorOnly": true,
+        "executed": false,
+        "learnerWorkPresent": false,
+        "practicalExecutionRequired": false,
+        "actualObservationRecords": [],
+        "actualPointsAwarded": null,
+        "wholeGoalScope": {
+          "tags": [
+            "LK"
+          ],
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BY",
+              "DE-HE",
+              "DE-NI"
+            ]
+          }
+        },
+        "sourceAuthorCase": {
+          "caseId": "29742d91-case-1",
+          "inputPath": "inputs/history/twenty-selected-old-cases.whole-exact.json",
+          "wholeOldCaseObjectSha256": "sha256:94b3d5bc7fb0677378e715685608400e182d3a90d1b3f84ec2be2ffecc95cde3"
+        },
+        "newIndependentReviewStatus": "pending; author material only"
+      },
+      "wholeObjectSha256": "sha256:8833757825247c913a3ee69388941fb1c312ca52792a2df9f530f82a5847b8d2",
+      "retention": "complete v2-effective body preserved; no new positive vote"
+    },
+    {
+      "caseId": "T08-C2",
+      "wholeCase": {
+        "id": "T08-C2",
+        "goalId": "29742d91-732f-5da5-bc46-e963885f9a4a",
+        "titleDe": "Zwei Basen mit Salzsäure",
+        "materialDe": "25°C;γ=1,Kw=10⁻¹⁴;je25.00mL Probe,.100mol/LHCl. Synthetische Punkte(V/mL,pH):S=(0,13.00),(12.50,12.52),(25.00,7.00),(30.00,2.04);W=(0,11.13),(12.50,9.25),(25.00,5.28),(30.00,2.04). Beide formal einprotonig und c=.100mol/L. Indikatorbereiche:Methylrot4.4–6.2,Phenolphthalein8.2–10.0.",
+        "materialEn": "25°C,γ=1, Kw=10⁻¹⁴;25.00 mL samples,.100 mol/L HCl. Synthetic(V/mL, pH): S=(0,13.00),(12.50,12.52),(25.00,7.00),(30.00,2.04); W=(0,11.13),(12.50,9.25),(25.00,5.28),(30.00,2.04).Both formally monoprotic, c=.100 mol/L.Indicators: methyl red 4.4–6.2, phenolphthalein 8.2–10.0.",
+        "taskDemandDe": "1. Ordne die Basen zu und erkläre die fallende Kurvenrichtung unterHCl-Zugabe.\n2. Erkläre W-Halbpunkt und sauren ÄP über B/BH⁺; bestimme aus dem HalbpunktpKb.\n3. Vergleiche Indikatoren für W und begrenze die Stoffidentifikation aus der Kurve.\n4. Vergleiche die Ursachen des sauren W-Äquivalenzpunkts mit dem basischen Äquivalenzpunkt einer schwachen Säure unter starker Base.",
+        "taskDemandEn": "1. Classify the bases and explain falling pH with HCl addition.\n2. Explain W’s halfpoint/acidic equivalence using B/BH⁺; find pKb from halfpoint.\n3. Compare indicators for W and limit the curve-based identity claim.\n4. Compare the cause of W’s acidic equivalence point with the basic equivalence point of a weak acid titrated with strong base.",
+        "modelAnswerDe": "1. HCl senkt den pH; S ist stark, W schwach. 2. W enthält vor Äquivalenz B/BH⁺. Am Halbpunkt sind die Mengen näherungsweise gleich: pH≈pKₐ(BH⁺)=9.25 und pKᵦ=4.75. Bei Äquivalenz bildet BH⁺ durch Protolyse Hydronium: pH 5.28. 3. Methylrot umfasst den sauren Äquivalenzbereich. Phenolphthalein schlägt im früheren Pufferbereich um und passt nicht zur Äquivalenz von W. Die Daten passen zu einem Ammoniakmodell, identifizieren die Substanz aber nicht eindeutig. 4. Eine schwache Base hinterlässt BH⁺, das Hydronium erzeugt; eine schwache Säure hinterlässt A⁻, das Hydroxid erzeugt. Ein starker Titrant allein macht den Äquivalenzpunkt nicht neutral.",
+        "modelAnswerEn": "1. HCl lowers pH; S is strong, W weak. 2. W retains B/BH⁺ before equivalence; at halfpoint amounts are approximately equal, pH≈pKa(BH⁺)=9.25, and pKb=4.75.At equivalence BH⁺ protolyses and produces hydronium, pH 5.28. 3. Methyl red covers acidic equivalence. Phenolphthalein changes in the earlier buffer region and is unsuitable for W equivalence. These data fit an ammonia model but do not uniquely identify the substance.\n4. A weak base leaves BH⁺ producing hydronium; a weak acid leaves A⁻ producing hydroxide. Titrant strength alone does not make equivalence neutral or equally acidic/basic.",
+        "rubric": [
+          {
+            "expectationId": "e1",
+            "maximumPoints": 3,
+            "fullCreditDe": "Sstark,Wschwach;Säureverbrauchsenktfreien Basenanteil/OH⁻.",
+            "fullCreditEn": "S strong, W weak; acid addition consumes free base/OH⁻.",
+            "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch.",
+            "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong.",
+            "creditBasis": "written-explicit-task",
+            "actualPointsAwarded": null
+          },
+          {
+            "expectationId": "e2",
+            "maximumPoints": 3,
+            "fullCreditDe": "Halbpunkt B≈BH⁺,pKaBH≈9.25,pKb≈4.75;BH⁺ protolysiertam ÄP.",
+            "fullCreditEn": "Halfpoint B≈BH⁺, pKaBH≈9.25, pKb≈4.75; BH⁺ protolyses at equivalence.",
+            "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch.",
+            "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong.",
+            "creditBasis": "written-explicit-task",
+            "actualPointsAwarded": null
+          },
+          {
+            "expectationId": "e3",
+            "maximumPoints": 3,
+            "fullCreditDe": "Methylrotumfasst5.28,Phenolphthaleinliegtimfrüheren Pufferbereich;Kurvebelegtnur Klasse/p K,nicht eindeutigeNH₃-Identität.",
+            "fullCreditEn": "Methyl red covers 5.28, phenolphthalein is in the earlier buffer region; curve gives class/p K, not unique NH₃ identity.",
+            "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch.",
+            "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong.",
+            "creditBasis": "written-explicit-task",
+            "actualPointsAwarded": null
+          },
+          {
+            "expectationId": "e4",
+            "maximumPoints": 3,
+            "fullCreditDe": "Die schwache Base hinterlässt BH⁺, das H₃O⁺ bildet; die schwache Säure hinterlässt A⁻, das OH⁻ bildet. Die Stärke des Titranten allein macht den Äquivalenzpunkt weder neutral noch gleich sauer oder basisch.",
+            "fullCreditEn": "A weak base leaves BH⁺ producing hydronium; a weak acid leaves A⁻ producing hydroxide. Titrant strength alone does not make equivalence neutral or equally acidic/basic.",
+            "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch.",
+            "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong.",
+            "creditBasis": "written-design",
+            "actualPointsAwarded": null
+          }
+        ],
+        "maximumPoints": 12,
+        "fullCreditRequiresAllFourExpectations": true,
+        "evidenceLevel": "E0",
+        "maximumClaimScope": "G0",
+        "authorOnly": true,
+        "executed": false,
+        "learnerWorkPresent": false,
+        "practicalExecutionRequired": false,
+        "actualObservationRecords": [],
+        "actualPointsAwarded": null,
+        "wholeGoalScope": {
+          "tags": [
+            "LK"
+          ],
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BY",
+              "DE-HE",
+              "DE-NI"
+            ]
+          }
+        },
+        "sourceAuthorCase": {
+          "caseId": "29742d91-case-2",
+          "inputPath": "inputs/history/twenty-selected-old-cases.whole-exact.json",
+          "wholeOldCaseObjectSha256": "sha256:6452815c86f7ceaedc27046aa0cba570cfa4803291968a7a533879a1616ce115"
+        },
+        "newIndependentReviewStatus": "pending; author material only"
+      },
+      "wholeObjectSha256": "sha256:312e3635d92c02b5cd5a523d932447d0f021ad7577b5387f0345d35eac741a08",
+      "retention": "complete v2-effective body preserved; no new positive vote"
+    },
+    {
+      "caseId": "G7-C1",
+      "wholeOriginalMarkdownSection": "### G7-C1 — Neutralize first, then use the equilibrium ratio\n\n**Material DE.** Idealer HA/A−-Puffer: 0.0100 mol HA und 0.0200 mol A−\nin insgesamt 1.000 L, pKS=4.80. Im Gedankenmodell werden 0.00500 mol starke\nHCl zugegeben; die Volumenänderung wird vernachlässigt. Anschließend wird\nmit Wasser auf 2.000 L verdünnt. Die beiden Pufferkomponenten bleiben gegenüber\nden durch ihre Dissoziation entstehenden Ionenkonzentrationen hinreichend groß.\n\n**Auftrag DE.** Begründe die logarithmische Pufferbeziehung aus dem MWG,\nberechne Anfangs- und End-pH und erkläre die Rolle der vorgelagerten\nStoffmengenbilanz. Beurteile: „Doppeltes Volumen halbiert den pH“ und\nunterscheide die pH-Näherung von Pufferkapazität je Liter.\n\n**Erwartung DE.** pH≈pKS+log([A−]/[HA]); beide Konzentrationen teilen\ndasselbe Volumen, daher darf hier das Stoffmengenverhältnis eingesetzt werden.\nAnfangs pH≈4.80+log2=5.101. HCl setzt 0.00500 mol A− zu HA um: danach\nje 0.0150 mol, Verhältnis 1 und pH≈4.80. Die weitere Verdünnung ändert das\nVerhältnis nicht und damit den pH in der vorgegebenen Näherung nicht.\nSie halbiert die Pufferstoffmengen je Liter, nicht den logarithmischen pH.\nDas ist keine Aussage über beliebig große Verdünnungen oder Kapazität ohne\nAngabe eines Bezugsvolumens.\n\n**Material EN.** Ideal HA/A− buffer: 0.0100 mol HA and 0.0200 mol A− in\n1.000 L; pKa=4.80. Add 0.00500 mol strong HCl in a thought model, neglecting\nvolume change, then dilute to 2.000 L. Buffer components remain sufficiently\nlarge relative to ions generated by their dissociation.\n\n**Task EN.** Derive the logarithmic buffer relation from mass action,\ncalculate initial and final pH and explain why the amount balance comes first.\nAssess “doubling volume halves pH”; distinguish approximate pH from buffer\ncapacity per litre.\n\n**Expected EN.** pH≈pKa+log([A−]/[HA]); shared volume allows an amount\nratio. Initially pH≈4.80+log2=5.101. HCl converts 0.00500 mol A− to HA,\ngiving 0.0150 mol each, ratio 1 and pH≈4.80. Dilution preserves the ratio\nand hence approximate pH, while halving buffer amounts per litre, not pH.\nThis is not a claim for unlimited dilution or capacity without a volume basis.\n\n**Rubric.** (1) Log relation justified from MWG and common volume.\n(2) Initial pH calculated. (3) Neutralization balance gives final ratio/pH.\n(4) Dilution transfer distinguishes logarithmic pH and capacity per litre.\n",
+      "sectionSha256": "sha256:8a042cadda8f7b92754758d6bc12521ce2ffc0726298263c18800fde94fbcd83",
+      "source": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-acid-base-seven-existing-whole-goals-fourteen-material-cases-author-20261014-v1/materials.fourteen-complete-cases.de-en.author.md",
+        "sha256": "sha256:90b61ae30095ba8487fa82e2a566362952f149a909a9dced8cd54bd17d833861",
+        "bytes": 35588
+      },
+      "retention": "all bilingual material/tasks/model solution/rubric unchanged"
+    },
+    {
+      "caseId": "G7-C2",
+      "wholeOriginalMarkdownSection": "### G7-C2 — A base buffer and exhaustion of its reserve\n\n**Material DE.** Idealer B/BH+-Puffer: 0.0200 mol B und 0.0100 mol BH+\nin 1.000 L; pKS(BH+)=9.20. Vergleiche getrennte Gedankenproben: Probe A\nerhält 0.0150 mol HCl, Probe B 0.0250 mol HCl. Volumenänderungen werden\nvernachlässigt. Probe A bleibt im Pufferbereich der angegebenen Näherung.\nProbe B wird nicht als weiterbestehender B/BH+-Puffer vorausgesetzt.\n\n**Auftrag DE.** Berechne den Anfangs-pH und den pH von Probe A über eine\nbegründete Stoffmengenbilanz. Prüfe bei Probe B, ob dieselbe Pufferrechnung\nweiter zulässig ist. Korrigiere einen Ansatz mit einer negativen B-Menge im\nLogarithmus. Eine genaue Nachrechnung des überschüssig sauren Systems ist\nnicht verlangt.\n\n**Erwartung DE.** Mit BH+ als schwacher Säure gilt\npH≈9.20+log(n(B)/n(BH+)). Anfangs pH≈9.501. In A bleiben 0.00500 mol B,\nBH+ steigt auf 0.0250 mol: pH≈9.20+log0.2=8.501. In B wird die formale\nB-Reserve 0.0200 mol vollständig verbraucht; 0.00500 mol starke Säure\nbleiben stöchiometrisch übrig. Eine negative B-Menge ist unphysikalisch und\nkein gültiges Argument des Logarithmus. Das vorgegebene Puffermodell ist\nverlassen; eine andere Gleichgewichts-/Überschussrechnung wäre erforderlich.\n\n**Material EN.** Ideal B/BH+ buffer: 0.0200 mol B and 0.0100 mol BH+ in\n1.000 L; pKa(BH+)=9.20. Separate thought samples receive 0.0150 mol HCl\n(A) or 0.0250 mol HCl (B), with volume change neglected. A remains within\nthe stipulated buffer approximation; B is not assumed to remain a buffer.\n\n**Task EN.** Calculate initial pH and A's pH using a justified amount balance.\nCheck whether the same buffer calculation remains valid for B. Correct a\nlogarithm using a negative amount of B. No exact calculation of the resulting\nacid-excess system is required.\n\n**Expected EN.** Taking BH+ as the weak acid gives\npH≈9.20+log(n(B)/n(BH+)). Initially pH≈9.501. A retains 0.00500 mol B and\ncontains 0.0250 mol BH+, so pH≈9.20+log0.2=8.501. In B the formal 0.0200-mol\nbase reserve is consumed and 0.00500 mol strong acid remains stoichiometrically.\nA negative amount is unphysical and cannot enter the logarithm. The specified\nbuffer model no longer applies; a different equilibrium/excess calculation\nwould be needed.\n\n**Rubric.** (1) Correct weak-acid/conjugate-base orientation and initial pH.\n(2) A's balanced amounts and pH. (3) B's exhausted reserve and positive acid\nexcess. (4) Approximation-domain reasoning rejects negative-log substitution.\n",
+      "sectionSha256": "sha256:4fe94b2a9d11cb37cee0b1156b285fbac22b8ed11387f6b4dd5d1a82489e0afc",
+      "source": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-acid-base-seven-existing-whole-goals-fourteen-material-cases-author-20261014-v1/materials.fourteen-complete-cases.de-en.author.md",
+        "sha256": "sha256:90b61ae30095ba8487fa82e2a566362952f149a909a9dced8cd54bd17d833861",
+        "bytes": 35588
+      },
+      "retention": "all bilingual material/tasks/model solution/rubric unchanged"
+    }
+  ],
+  "actualLearnerWorkPresent": false,
+  "executed": false
+}

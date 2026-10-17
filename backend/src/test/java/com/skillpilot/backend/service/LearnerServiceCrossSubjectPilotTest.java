@@ -1024,9 +1024,7 @@ class LearnerServiceCrossSubjectPilotTest {
     @Test
     void canonicalPhysicsPilotFrontierBlocksDiagramGoalUntilMathPrerequisitesAreMastered() {
         when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
-                .thenReturn(List.of(
-                        new Mastery(learner, LEGACY_PHYSICS_WHY_ID, 1.0),
-                        new Mastery(learner, CANONICAL_PHYSICS_SEK1_MOTION_ID, 1.0)));
+                .thenReturn(List.of(new Mastery(learner, LEGACY_PHYSICS_WHY_ID, 1.0)));
         learner.setPersonalCurriculum(CANONICAL_PHYSICS_GK_PERSONAL_CONFIG);
 
         List<FrontierGoal> frontier = compositionAwareLearnerService().getRichFrontier(LEARNER_ID);
@@ -1041,7 +1039,6 @@ class LearnerServiceCrossSubjectPilotTest {
         when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
                 .thenReturn(List.of(
                         new Mastery(learner, LEGACY_PHYSICS_WHY_ID, 1.0),
-                        new Mastery(learner, CANONICAL_PHYSICS_SEK1_MOTION_ID, 1.0),
                         new Mastery(learner, CANONICAL_MATH_FUNCTION_CONCEPT_ID, 1.0),
                         new Mastery(learner, CANONICAL_MATH_READ_VALUES_ID, 1.0)));
         learner.setPersonalCurriculum(CANONICAL_PHYSICS_GK_PERSONAL_CONFIG);

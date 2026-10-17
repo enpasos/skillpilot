@@ -1,0 +1,105 @@
+{
+  "createdAtUTC": "2026-10-16T01:11:50.057735+00:00",
+  "overallDisposition": "SUPPORTED_32_BOUNDED_SOURCE_IDENTITY_CHOICES; HOLD_LITERAL_PLAN_TRANSLATION_UNTIL_FOUR_PASSAGE_REPAIRS",
+  "findings": [
+    {
+      "id": "ID-F01",
+      "severity": "blocking-verbatim-translation",
+      "scope": [
+        "hb-chemistry-sekii:3.2-E-REDOX",
+        "hb-chemistry-sekii:3.2-E-SAEURE-BASE"
+      ],
+      "fact": "After removing the five broad current IDs, the two E20 passage proposals still contain three removed IDs and omit all four new HB20 cell IDs. The old row025 titration is Q23; its ID must leave the E passage current membership.",
+      "requiredRepair": "Recompute current passage.sourceGoalIds from actual surviving sourceGoals with exactly that passageId. Keep removed IDs solely in immutable history and explicitly labelled historical lineage. Add the four new HB20 IDs to their actual E20 passages.",
+      "affectedPlanRows": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "ID-F02",
+      "severity": "blocking-verbatim-translation",
+      "scope": [
+        "hb-chemistry-sekii:3.3-1-2-PROTOLYSE"
+      ],
+      "fact": "The three Q23 proposals are whole-object identical and include the seven new Q cells, but exclude four sourceGoals still current in the same extraction: rows035,038,039,040. Replacing the passage literally therefore loses current membership for unchanged neighbours.",
+      "omittedSurvivingIds": [
+        "hb-chemistry-sekii-gyo2022-3-3-1-2-protolyse-035-e7b08724",
+        "hb-chemistry-sekii-gyo2022-3-3-1-2-protolyse-038-f36b6ab8",
+        "hb-chemistry-sekii-gyo2022-3-3-1-2-protolyse-039-ce8ebe81",
+        "hb-chemistry-sekii-gyo2022-3-3-1-2-protolyse-040-306e5739"
+      ],
+      "requiredRepair": "Recompute membership as seven new cells plus the four unchanged Q23 source IDs. Preserve those four neighbour bodies/decisions unchanged and do not treat retaining their membership as a new scientific endorsement. Revise the row025 lineage note so it clearly describes history only.",
+      "affectedPlanRows": [
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "id": "ID-F03",
+      "severity": "blocking-document-provenance",
+      "scope": [
+        "he-chem-sekii:E.2"
+      ],
+      "fact": "The current extraction sourceDocument is KC2024 at kcgo_chemie_21.04.2026.pdf, while the proposed whole passage.sourcePath still names kerncurriculum_gymnasiale_oberstufe-chemie.pdf. The two local PDF files have different bytes and SHA256. The selected physical page35 was checked in the current 21.04.2026 PDF.",
+      "requiredRepair": "Bind the current passage.sourcePath to the exact current extraction sourceDocument.path and preserve the former whole passage unchanged in its pinned extraction history. Do not rename stable cell IDs.",
+      "affectedPlanRows": [
+        6,
+        7
+      ]
+    },
+    {
+      "id": "ID-F04",
+      "severity": "blocking-primary-vs-authored-representation",
+      "scope": [
+        "hb-chemistry-sekii:3.2-E-REDOX",
+        "hb-chemistry-sekii:3.2-E-SAEURE-BASE",
+        "mv-chemistry-sekii:q-saeure-base-loeslichkeit",
+        "sn-chemistry-seki:sn-ch-klassenstufe-8-lb5",
+        "sn-chemistry-seki:sn-ch-klassenstufe-9-lb1",
+        "sn-chemistry-sekii:sn-ch-jahrgangsstufe-11-grundkurs-lb4",
+        "sn-chemistry-sekii:sn-ch-jahrgangsstufe-11-leistungskurs-lb5"
+      ],
+      "fact": "HB20 passages contain authored broad operations rather than the official competency sentences; MV text supplies authored verbs to noun-list content; SN passages flatten left-column duties and right-column guidance and retain historical truncation (for example various acids and without Basen). No representation/lineage marker identifies these whole text bodies as authored historical normalisations. These bodies cannot acquire literal-primary authority from the newly corrected cells.",
+      "requiredRepair": "Keep every complete original passage object immutable at its pinned extraction pointer. In the current successor explicitly identify retained summary text as authored/legacy normalisation, not an official quote; preferably give official sections/fragments separate structure with mandatory content, guidance and examples separated. Preserve official mandatory terms such as HB20 Oxidationszahl/Neutralisation in honest source context without inventing an apply operator. Keep selected cells and their separate literal/context fields unchanged.",
+      "affectedPlanRows": [
+        1,
+        2,
+        11,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ]
+    }
+  ],
+  "unreviewedNeighbourPolicy": "Retaining a pre-existing neighbour ID in passage membership leaves its body and prior decision unchanged; it creates no fresh scientific approval.",
+  "readerContract": {
+    "sourceAtlasInput": "decisions sourceGoalId owns current joins; exactly one decision per current sourceGoal; no unknown/duplicate source goal; complete decision coverage required",
+    "compatibilityMapping": "mappings compatibility rows must be translated consistently but do not own reviewed target edges",
+    "documentSelection": "goal/passage sourceDocumentKey or sourceDocument tag must resolve to exactly one extraction sourceDocument; document official and exact bytes pinned",
+    "scope": "source facets come from goal/passage/document/extraction metadata; no canonical/view inference; retain SekI without GK/LK and the actual common-vs-LK cell distinction",
+    "partialBoundary": "matchType partial and explicit rationale must survive translation; reader scope witnesses are not full scientific equivalence"
+  },
+  "freshBlindReview": false,
+  "informedReview": true,
+  "additionalDPVote": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "normalRecordsWritten": 0,
+  "adapterFilesWritten": 0,
+  "runtimeActions": false,
+  "GitActions": false,
+  "strictM7CountMeasuredOrChanged": false,
+  "reportedInactiveBaseline": "392/426; parent routing context only, not remeasured here"
+}

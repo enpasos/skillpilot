@@ -210,18 +210,6 @@ try {
   assert.equal(hasQaEvidence({ publicAssetPath: `app/public/assets/goal-visualizations/mathematik/${goalId}/other.png` }), false, 'QA must name the current public path')
   assert.equal(hasQaEvidence({ subject: 'physik' }), false, 'QA must belong to the current subject')
   assert.equal(hasCurrentExactByteAiQaEvidence(linked, undefined, 'mathematik', qaRoot), false, 'missing QA evidence does not count')
-  const nestedUrl = url.replace(`/${goalId}.png`, `/model-boundaries-v2/${goalId}.png`)
-  const nestedPublic = `app/public${nestedUrl}`
-  const nestedCanonical = canonicalAssetPath.replace(`/${goalId}.png`, `/model-boundaries-v2/${goalId}.png`)
-  mkdirSync(join(qaRoot, nestedPublic, '..'), { recursive: true })
-  mkdirSync(join(qaRoot, nestedCanonical, '..'), { recursive: true })
-  writeFileSync(join(qaRoot, nestedPublic), imageBytes)
-  writeFileSync(join(qaRoot, nestedCanonical), imageBytes)
-  const nestedRecord = { ...record, imageUrl: nestedUrl, publicAssetPath: nestedPublic, canonicalAssetPath: nestedCanonical }
-  assert.equal(hasCurrentExactByteAiQaEvidence({ goalId, url: nestedUrl }, nestedRecord, 'mathematik', qaRoot), true, 'a safe version path preserves exact-byte AI evidence')
-  for (const badUrl of [nestedUrl + '\n', nestedUrl + '?x=1', nestedUrl.replace('/model-boundaries-v2/', '/%2e%2e/'), nestedUrl.replace(`/${goalId}.png`, '/wrong-name.png')]) {
-    assert.equal(hasCurrentExactByteAiQaEvidence({ goalId, url: badUrl }, { ...nestedRecord, imageUrl: badUrl }, 'mathematik', qaRoot), false, 'unsafe or incorrectly owned version paths cannot count')
-  }
   writeFileSync(join(qaRoot, publicAssetPath), Buffer.from('different-public-image'))
   assert.equal(hasQaEvidence(), false, 'a changed public asset invalidates exact-byte evidence')
   writeFileSync(join(qaRoot, publicAssetPath), imageBytes)

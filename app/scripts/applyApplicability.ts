@@ -1,4 +1,3 @@
-import { hasApplicabilityContexts, parseApplicabilityContexts } from '../src/utils/applicabilityContexts'
 import { readFileSync, writeFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -68,11 +67,6 @@ function stringifyApplicability(applicability: ApplicabilityMap | undefined): st
 }
 
 function applyCompiledApplicability(goal: LearningGoal, compiledApplicability: ApplicabilityMap): LearningGoal {
-  if (hasApplicabilityContexts(goal)) {
-    const parsed = parseApplicabilityContexts(goal)
-    if (parsed.errors.length) throw new Error(parsed.errors.join(' '))
-    return goal // Exact [] and complete disjunction survive; no country cache is added.
-  }
   const orderedGoal: Record<string, unknown> = {}
   const includeApplicability = hasApplicability(compiledApplicability)
   let inserted = false

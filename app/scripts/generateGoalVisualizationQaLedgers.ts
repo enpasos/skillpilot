@@ -2,7 +2,6 @@ import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { goalVisualizationAssetSegments } from '../../scripts/goal_visualization_paths.mjs'
 import {
   emptyGoalVisualizationAiReview,
   normalizeGoalVisualizationAiReview,
@@ -187,13 +186,14 @@ const subjectFromImageUrl = (url: string): string => {
 }
 
 const publicAssetPathFromUrl = (url: string): string => {
-  const segments = goalVisualizationAssetSegments(url)
-  return segments ? path.join(repoRoot, 'app/public/assets/goal-visualizations', ...segments) : ''
+  const relativeUrl = url.replace(/^\/+/, '')
+  return path.join(repoRoot, 'app/public', relativeUrl.replace(/^assets\//u, 'assets/'))
 }
 
 const canonicalAssetPathFromUrl = (url: string): string => {
-  const segments = goalVisualizationAssetSegments(url)
-  return segments ? path.join(canonicalAssetRoot, ...segments) : ''
+  const match = url.match(/^\/assets\/goal-visualizations\/([^/]+)\/([^/]+)\/([^/]+)$/u)
+  if (!match) return ''
+  return path.join(canonicalAssetRoot, match[1] ?? '', match[2] ?? '', match[3] ?? '')
 }
 
 const readExistingLedger = (subject: string): GoalVisualizationQaLedger | null => {

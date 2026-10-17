@@ -1,4 +1,3 @@
-import { hasApplicabilityContexts } from '../utils/applicabilityContexts'
 import React, { useState, useMemo, useCallback, useRef, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useLearnerUpdates } from '../hooks/useLearnerUpdates'
@@ -6,7 +5,6 @@ import { useTranslation } from '../hooks/useTranslation'
 import { CompetenceTree } from '../components/CompetenceTree'
 import type { TreeStructureMode } from '../components/CompetenceTree'
 import { PersonalCurriculumSetup } from '../components/PersonalCurriculumSetup'
-import { PrerequisiteBlockerNotice } from '../components/PrerequisiteBlockerNotice'
 import { LearnerPlanTodayOverview } from '../components/LearnerPlanTodayOverview'
 import { LearnerActiveGoalBanner } from '../components/LearnerActiveGoalBanner'
 import { Settings, Database, Menu, X, Target, Send, Check, MoveRight, BookOpen, ClipboardCheck, PanelLeftClose, PanelLeftOpen } from 'lucide-react'
@@ -26,7 +24,6 @@ import { useSrsMastery } from '../hooks/useSrsMastery'
 import { useFlashcardSetStatus } from '../hooks/useFlashcardSetStatus'
 import { getSrsFilterTagsForGoal } from '../utils/srsTags'
 import { interpolateTemplate } from '../utils/interpolateTemplate'
-import { deriveRuntimeApplicabilityScope } from '../utils/compositionViewRuntime'
 import { goalMatchesFilter, isWildcardFilter, splitFilterIds } from '../utils/goalFilters'
 import { normalizeJurisdictionCode } from '../utils/jurisdictionMetadata'
 import { CANONICAL_GYMNASIUM_ROOT_ID } from '../utils/curriculumDisplay'
@@ -108,7 +105,7 @@ import {
 } from '../utils/treeProjectionRuntime'
 
 import type { UiGoal } from '../goalTypes'
-import type { Learner, FrontierGoal, PrerequisiteBlocker } from '../learnerTypes'
+import type { Learner, FrontierGoal } from '../learnerTypes'
 import type { LearnerLearningPlansResponse } from '../learnerLearningPlanTypes'
 import type { ResourceLink } from '../landscapeTypes'
 
@@ -124,7 +121,6 @@ interface LearnerViewProps {
   landscapeId: string
   landscapeSubject?: string
   currentLandscapeHasMatchedCompositionView: boolean
-  compositionTargetGoalIdsByLandscapeId?: ReadonlyMap<string, ReadonlySet<string>>
   activeFilter?: string
   onLogout?: () => void
   onNotify?: (kind: ToastKind, message: string) => void
@@ -171,7 +167,6 @@ type LearnerStatePayload = {
     activeGoal?: { id?: string } | null
     goalOptions?: FrontierGoal[]
     requiredAction?: string | null
-    prerequisiteBlockers?: PrerequisiteBlocker[]
   } | null
   goals?: {
     planned?: Array<{ id?: string }>
@@ -378,7 +373,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   landscapeId,
   landscapeSubject,
   currentLandscapeHasMatchedCompositionView,
-  compositionTargetGoalIdsByLandscapeId,
   activeFilter = 'all',
   onLogout,
   onNotify,
@@ -396,7 +390,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const [materialSelectionRefresh, setMaterialSelectionRefresh] = useState(0)
   const [materialSelectionSaving, setMaterialSelectionSaving] = useState(false)
   const [frontierOptions, setFrontierOptions] = useState<FrontierGoal[]>([])
-  const [prerequisiteBlockers, setPrerequisiteBlockers] = useState<PrerequisiteBlocker[]>([])
   const [stateActiveGoalId, setStateActiveGoalId] = useState<string | null>(null)
   const [stateRequiredAction, setStateRequiredAction] = useState<string | null>(null)
   const [learnerStateLoadState, setLearnerStateLoadState] = useState<{
@@ -815,14 +808,11 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         personalConfig,
         learnerStructureMode,
         rootLandscapeId,
-        undefined,
-        compositionTargetGoalIdsByLandscapeId,
       )
       return normalizeLearnerVisibleChildrenMap(goalIndexAll, baseVisibleChildren)
     },
     [
       currentLandscapeHasMatchedCompositionView,
-      compositionTargetGoalIdsByLandscapeId,
       effectiveActiveFilter,
       goalIndexAll,
       learnerStructureMode,
@@ -1418,14 +1408,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
       // 1. If Atomic
       if (!g.contains || g.contains.length === 0) {
-        const completeScope = deriveRuntimeApplicabilityScope({ landscapeId: g.landscapeId ?? landscapeId,
-          activeLandscapeId: landscapeId, rootLandscapeId, scopeEnabled: true, activeFilter: effectiveActiveFilter,
-          learnerPersonalCurriculum: JSON.stringify(personalConfig) })
-        const admittedTargets = compositionTargetGoalIdsByLandscapeId?.get(g.landscapeId ?? landscapeId)
-        if (hasApplicabilityContexts(g) && admittedTargets) {
-          if (!admittedTargets.has(g.id)) return false
-        } else if (!(bavarianMathCompositionView && !hasApplicabilityContexts(g))
-          && !goalMatchesFilter(g, effectiveActiveFilter, completeScope)) {
+        if (!bavarianMathCompositionView && !goalMatchesFilter(g, effectiveActiveFilter)) {
           return false
         }
 
@@ -1457,7 +1440,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     visibleRootGoals.forEach(r => check(r.id))
 
     return ids
-  }, [visibleRootGoals, goalIndexAll, getEffectiveMastery, visibleGoals, effectiveActiveFilter, bavarianMathCompositionView, landscapeId, rootLandscapeId, personalConfig, compositionTargetGoalIdsByLandscapeId])
+  }, [visibleRootGoals, goalIndexAll, getEffectiveMastery, visibleGoals, effectiveActiveFilter, bavarianMathCompositionView])
 
   const atomicFrontierOptions = useMemo(() => {
     const atomic = frontierOptions.filter((candidate) => candidate.type === 'atomic')
@@ -1553,7 +1536,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     invalidateLatestRequest(learningPlansRequestSequenceRef)
     invalidateLatestRequest(learningPlanContinueRequestSequenceRef)
     setStateRequiredAction(null)
-    setPrerequisiteBlockers([])
     learningPlanTransitionInFlightRef.current = createSynchronousInFlightGuard()
     learningPlanReconcileAttemptedKeyRef.current = null
     pendingPlanGoalFocusRef.current = null
@@ -1611,7 +1593,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     setStateActiveGoalId(backendActiveGoalId)
     setLearnerData(prev => prev ? { ...prev, activeGoalId: backendActiveGoalId ?? undefined } : prev)
     setStateRequiredAction(data.stateMachine?.requiredAction ?? null)
-    setPrerequisiteBlockers(data.stateMachine?.prerequisiteBlockers ?? [])
     // Store backend-computed stats for consistency with GPT
     if (data.goals) {
       setBackendStats({
@@ -1869,12 +1850,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     handleGuidedPersonalizationPlanChanged,
   ])
 
-  const applyGuidedSupplementOption = useCallback(async (optionId: string) => {
-    const nextPlan = await personalCurriculumEditor.applySupplementOption(optionId)
-    if (nextPlan) await handleGuidedPersonalizationPlanChanged()
-    return nextPlan
-  }, [personalCurriculumEditor.applySupplementOption, handleGuidedPersonalizationPlanChanged])
-
   const reopenGuidedPersonalization = useCallback(async () => {
     claimAbi26PersonalizationOwnership()
     const nextPlan = await reopenPersonalCurriculum()
@@ -2046,7 +2021,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         setLearnerData((prev) => (prev ? { ...prev, activeGoalId: targetId } : prev))
         setStateActiveGoalId(targetId)
         setStateRequiredAction(data.stateMachine?.requiredAction ?? null)
-        setPrerequisiteBlockers(data.stateMachine?.prerequisiteBlockers ?? [])
         if (parentMap) {
           setExpandedGoalIds(buildCollapsedFocusPath(targetId))
         }
@@ -3392,15 +3366,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
               </button>
             </div>
           ) : (
-            <>
-            {learnerStateLoadStatus === 'ready' && (
-              <PrerequisiteBlockerNotice
-                blockers={prerequisiteBlockers}
-                language={localizedLanguage}
-                onOpenPersonalCurriculum={() => setIsSetupOpen(true)}
-                onReviewPrerequisite={onSelectGoal}
-              />
-            )}
             <CompetenceTree
               key={learnerTreeScopeKey}
               rootGoals={visibleRootGoals}
@@ -3426,7 +3391,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
               visibleChildrenByParentOverride={learnerVisibleChildrenByParent}
               useRawGoalTitles={currentLandscapeHasMatchedCompositionView}
             />
-            </>
           )}
         </div>
         <div className="flex items-center justify-between gap-2 border-t border-border-color p-2">
@@ -3896,7 +3860,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             ...personalCurriculumEditor,
             busy: personalCurriculumEditor.busy || guidedPersonalizationRefreshing,
             applyOption: applyGuidedPersonalizationOption,
-            applySupplementOption: applyGuidedSupplementOption,
             reopen: reopenGuidedPersonalization,
             rewind: rewindGuidedPersonalization,
           }

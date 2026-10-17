@@ -136,6 +136,39 @@
             }
           }
         },
+        "resolutionSemanticRetirements": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "goalId",
+              "currentSemanticKind",
+              "currentSourceFingerprint",
+              "historicalResolutions",
+              "reason"
+            ],
+            "properties": {
+              "goalId": { "type": "string", "minLength": 1 },
+              "currentSemanticKind": { "const": "curricularArea" },
+              "currentSourceFingerprint": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+              "reason": { "type": "string", "minLength": 1 },
+              "historicalResolutions": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["indexPath", "historicalResolutionDigest"],
+                  "properties": {
+                    "indexPath": { "$ref": "#/$defs/repoPath" },
+                    "historicalResolutionDigest": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" }
+                  }
+                }
+              }
+            }
+          }
+        },
         "positiveEvidenceConfigPaths": {
           "type": "array",
           "uniqueItems": true,

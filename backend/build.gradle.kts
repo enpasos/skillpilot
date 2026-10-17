@@ -211,12 +211,3 @@ tasks.register("prepareOpenAiDialogReplay") {
         }
     }
 }
-
-tasks.register<JavaExec>("exportCompositionSupplementQa") {
-    group = "verification"
-    description = "Validate current authored Math supplements and export exact source-QA inputs"
-    dependsOn(tasks.named("compileJava"))
-    classpath = sourceSets.main.get().runtimeClasspath
-    mainClass.set("com.skillpilot.backend.service.CompositionSupplementQaExporter")
-    workingDir(layout.projectDirectory)
-}

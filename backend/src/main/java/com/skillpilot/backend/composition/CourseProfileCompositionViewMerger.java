@@ -96,9 +96,9 @@ public final class CourseProfileCompositionViewMerger {
                     + missing + ", added=" + added);
         }
         List<Map<String, Object>> result = removeRedundantSubtrees
-                ? removeRedundantFullViewReferences(merged,
+                ? removeRedundantNestedReferences(merged,
                         (kind, id) -> "canonicalSubtree".equals(kind)
-                                ? graph.descendants(id) : Set.of(ProjectionGraph.localId(id)), expectedTargets)
+                                ? graph.descendants(id) : Set.of(ProjectionGraph.localId(id)))
                 : merged;
         if (!graph.targets(result).equals(expectedTargets)) {
             throw new IllegalStateException("Subtree deduplication changes resolved course-profile target union");
@@ -287,94 +287,9 @@ public final class CourseProfileCompositionViewMerger {
                 .toList();
     }
 
-    /** Combined views retain the broadest already-authored occurrence of
-     * equivalent references, even when source profiles placed them in different
-     * branches. Only complete same-role containment and identical presentation
-     * qualify. No goal or parent is synthesized; the caller checks target union. */
-    private static List<Map<String, Object>> removeRedundantFullViewReferences(
-            List<Map<String, Object>> nodes,
-            BiFunction<String, String, Set<String>> resolver,
-            Set<String> expectedTargets) {
-        List<GoalReference> references = new ArrayList<>();
-        collectFullViewReferences(nodes, resolver, references);
-        // nodeMaps makes fresh defensive copies while traversing each branch;
-        // equality, rather than object identity, binds those exact references.
-        Set<Map<String, Object>> redundant = new HashSet<>();
-        for (GoalReference narrower : references) {
-            for (GoalReference broader : references) {
-                if (broader != narrower && "canonicalSubtree".equals(broader.kind())
-                        && broader.projectionRole().equals(narrower.projectionRole())
-                        && broader.presentationMetadata().equals(narrower.presentationMetadata())
-                        && broader.goalIds().size() > narrower.goalIds().size()
-                        && broader.goalIds().containsAll(narrower.goalIds())) {
-                    redundant.add(narrower.node());
-                    break;
-                }
-            }
-        }
-        List<Map<String, Object>> result = removeRedundantNestedReferences(
-                pruneRedundantReferences(nodes, redundant), resolver, true);
-        List<GoalReference> remaining = new ArrayList<>();
-        collectFullViewReferences(result, resolver, remaining);
-        for (int leftIndex = 0; leftIndex < remaining.size(); leftIndex++) {
-            GoalReference left = remaining.get(leftIndex);
-            if (!"target".equals(left.projectionRole())) continue;
-            for (int rightIndex = leftIndex + 1; rightIndex < remaining.size(); rightIndex++) {
-                GoalReference right = remaining.get(rightIndex);
-                if (!"target".equals(right.projectionRole())) continue;
-                Set<String> overlap = new LinkedHashSet<>(left.goalIds());
-                overlap.retainAll(right.goalIds());
-                overlap.retainAll(expectedTargets);
-                if (!overlap.isEmpty()) throw overlapConflict(left, right);
-            }
-        }
-        return result;
-    }
-
-    private static void collectFullViewReferences(
-            List<Map<String, Object>> nodes,
-            BiFunction<String, String, Set<String>> resolver,
-            List<GoalReference> references) {
-        for (Map<String, Object> node : nodes) {
-            if (supportsProjectionRole(text(node.get("kind")))) {
-                references.add(goalReference(node, resolver));
-            } else if ("structure".equals(node.get("kind"))) {
-                collectFullViewReferences(nodeMaps(node.get("children")), resolver, references);
-            }
-        }
-    }
-
-    private static List<Map<String, Object>> pruneRedundantReferences(
-            List<Map<String, Object>> nodes, Set<Map<String, Object>> redundant) {
-        List<Map<String, Object>> retained = new ArrayList<>();
-        for (Map<String, Object> node : nodes) {
-            if (redundant.contains(node)) continue;
-            if ("structure".equals(node.get("kind"))) {
-                List<Map<String, Object>> children = pruneRedundantReferences(nodeMaps(node.get("children")), redundant);
-                if (children.isEmpty()) continue;
-                Map<String, Object> copy = new LinkedHashMap<>(node);
-                copy.put("children", List.copyOf(children));
-                retained.add(copy);
-            } else {
-                retained.add(node);
-            }
-        }
-        return retained;
-    }
-
     private static List<Map<String, Object>> removeRedundantNestedReferences(
             List<Map<String, Object>> nodes,
             BiFunction<String, String, Set<String>> goalCoverageResolver) {
-        return removeRedundantNestedReferences(nodes, goalCoverageResolver, false);
-    }
-
-    /** The full-view merge also removes same-role, same-metadata leaf references
-     * already covered by a broader sibling subtree. Its resolved target union is
-     * verified before returning. The generic merge retains its stricter contract. */
-    private static List<Map<String, Object>> removeRedundantNestedReferences(
-            List<Map<String, Object>> nodes,
-            BiFunction<String, String, Set<String>> goalCoverageResolver,
-            boolean allowRedundantDirectLeaf) {
         List<GoalReference> references = new ArrayList<>();
         for (Map<String, Object> node : nodes) {
             String kind = text(node.get("kind"));
@@ -407,8 +322,7 @@ public final class CourseProfileCompositionViewMerger {
                 GoalReference broader = leftStrictlyContainsRight ? left : right;
                 GoalReference narrower = leftStrictlyContainsRight ? right : left;
                 if (!"canonicalSubtree".equals(broader.kind())
-                        || !("canonicalSubtree".equals(narrower.kind())
-                            || allowRedundantDirectLeaf && "goalEntry".equals(narrower.kind()))
+                        || !"canonicalSubtree".equals(narrower.kind())
                         || !broader.presentationMetadata().equals(narrower.presentationMetadata())) {
                     throw overlapConflict(left, right);
                 }
@@ -427,8 +341,7 @@ public final class CourseProfileCompositionViewMerger {
                 copy.put(
                         "children",
                         List.copyOf(removeRedundantNestedReferences(
-                                nodeMaps(node.get("children")), goalCoverageResolver,
-                                allowRedundantDirectLeaf)));
+                                nodeMaps(node.get("children")), goalCoverageResolver)));
                 retained.add(copy);
             } else {
                 retained.add(node);

@@ -1,4 +1,3 @@
-import { readCompositionSupplementAssessment, SUPPLEMENT_MATH, type CompositionSupplementCoverage } from './compositionSupplementSourceCoverage'
 import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readdirSync, readFileSync, realpathSync, statSync, writeFileSync } from 'node:fs'
 import { dirname, isAbsolute, join, relative, resolve } from 'node:path'
@@ -20,7 +19,7 @@ import {
   defaultMemoryCardReviewConfigDir,
   discoverMemoryCardReviewConfigs,
 } from './memoryCardReviewConfigDiscovery'
-import { generateDeepUnderstandingRollout, loadDeepUnderstandingRolloutConfig, type DeepUnderstandingRolloutReport } from './reportDeepUnderstandingRollout'
+import { generateDeepUnderstandingRollout, type DeepUnderstandingRolloutReport } from './reportDeepUnderstandingRollout'
 import { createReviewedRequiresClosureCoverageChecker } from './sourceCoverageEvidence'
 import { shouldRequireCanonicalMathSek1AssessmentEndpoint } from './lib/canonicalMathSek1ReviewedExamRoutes'
 import { createRepositorySourceAvailability } from './repositorySourceAvailability'
@@ -617,7 +616,6 @@ interface CurriculumStatus {
   atomicGoals: number
   clusterGoals: number
   jurisdictionCoverage?: JurisdictionCoverage
-  selectedMathematicsPreparation?: CompositionSupplementCoverage
   mappingPipeline?: MappingPipelineStatus
   scopes: ScopeStatus[]
   rules: RuleResult[]
@@ -625,7 +623,7 @@ interface CurriculumStatus {
 
 interface StatusDocument {
   schemaVersion: 1
-  rulesVersion: 'curriculum-quality-v5' | 'curriculum-quality-v7-selected-preparation-orientation'
+  rulesVersion: 'curriculum-quality-v5'
   generatedAt: string
   generatedBy: string
   sources: {
@@ -2130,20 +2128,12 @@ function evaluateRouteEndpointCompositionVisibility(
         enforceProjectionLocalRoutes ? profile.compositionViewStage : undefined,
         enforceProjectionLocalRoutes ? profile.motivationAnchorGoalIds : [],
       )
-      const explicitVisibleAtomicGoalIds = collectRenderedAtomicGoalIdsFromCompositionView(
-        landscape, file, scopeFilters, true,
-        enforceProjectionLocalRoutes ? profile.compositionViewStage : undefined,
-        enforceProjectionLocalRoutes ? profile.motivationAnchorGoalIds : [],
-        undefined, false,
-      )
       if (useCompiledJurisdiction && jurisdiction) {
         removeGoalsOutsideCompiledProjection(visibleTargetAtomicGoalIds)
         removeGoalsOutsideCompiledProjection(visibleAtomicGoalIds)
-        removeGoalsOutsideCompiledProjection(explicitVisibleAtomicGoalIds)
       }
       let jurisdictionStageTargetAuthorityGoalIds: Set<string> | null = null
       let jurisdictionStageVisibleAuthorityGoalIds: Set<string> | null = null
-      let jurisdictionStageExplicitVisibleAuthorityGoalIds: Set<string> | null = null
       if (useCompiledJurisdiction && enforceProjectionLocalRoutes && !viewJurisdiction && jurisdiction) {
         // A jurisdiction-resolved national view gets its stage boundary and explicit
         // prerequisite-only support from the matching state view. State targets that
@@ -2160,9 +2150,6 @@ function evaluateRouteEndpointCompositionVisibility(
           ) return false
           return true
         })
-        // Derived support must also have an actual target or explicit support
-        // definition in this complete national view. The pre-existing explicit
-        // state support policy remains separate from these derived additions.
         const authorityProjectionSets = jurisdictionViewEntries.map(({ file: authorityFile, view: authorityView }) => {
           const authorityScopeFilters = [authorityView.scope.courseProfile, authorityView.scope.durationModel]
             .filter((value): value is string => typeof value === 'string' && value.trim().length > 0)
@@ -2174,24 +2161,17 @@ function evaluateRouteEndpointCompositionVisibility(
             profile.compositionViewStage,
             profile.motivationAnchorGoalIds,
           )
-          const visibleGoalIds = collectNationalViewBoundStageAtomicGoalIds(
+          const visibleGoalIds = collectRenderedAtomicGoalIdsFromCompositionView(
             landscape,
-            file,
             authorityFile,
-            scopeFilters,
             authorityScopeFilters,
-            profile.compositionViewStage!,
+            true,
+            profile.compositionViewStage,
             profile.motivationAnchorGoalIds,
-          )
-          const explicitVisibleGoalIds = collectRenderedAtomicGoalIdsFromCompositionView(
-            landscape, authorityFile, authorityScopeFilters, true,
-            profile.compositionViewStage, profile.motivationAnchorGoalIds,
-            undefined, false,
           )
           removeGoalsOutsideCompiledProjection(targetGoalIds)
           removeGoalsOutsideCompiledProjection(visibleGoalIds)
-          removeGoalsOutsideCompiledProjection(explicitVisibleGoalIds)
-          return { file: authorityFile, targetGoalIds, visibleGoalIds, explicitVisibleGoalIds }
+          return { file: authorityFile, targetGoalIds, visibleGoalIds }
         })
 
         if (authorityProjectionSets.length === 0) {
@@ -2200,34 +2180,27 @@ function evaluateRouteEndpointCompositionVisibility(
           nationalProjectionScopesUsingJurisdictionStageAuthority += 1
           const jurisdictionStageTargetGoalIds = new Set(authorityProjectionSets[0].targetGoalIds)
           const jurisdictionStageVisibleGoalIds = new Set(authorityProjectionSets[0].visibleGoalIds)
-          const jurisdictionStageExplicitVisibleGoalIds = new Set(authorityProjectionSets[0].explicitVisibleGoalIds)
-          const authoritySetsAgree = authorityProjectionSets.every(({ targetGoalIds, visibleGoalIds, explicitVisibleGoalIds }) => (
+          const authoritySetsAgree = authorityProjectionSets.every(({ targetGoalIds, visibleGoalIds }) => (
             targetGoalIds.size === jurisdictionStageTargetGoalIds.size
             && Array.from(targetGoalIds).every((goalId) => jurisdictionStageTargetGoalIds.has(goalId))
             && visibleGoalIds.size === jurisdictionStageVisibleGoalIds.size
             && Array.from(visibleGoalIds).every((goalId) => jurisdictionStageVisibleGoalIds.has(goalId))
-            && explicitVisibleGoalIds.size === jurisdictionStageExplicitVisibleGoalIds.size
-            && Array.from(explicitVisibleGoalIds).every((goalId) => jurisdictionStageExplicitVisibleGoalIds.has(goalId))
           ))
           if (!authoritySetsAgree) {
             ambiguousJurisdictionStageAuthorityScopes.push(
               `${scopeLabel}: ${authorityProjectionSets.map(({ file: authorityFile }) => toRepoPath(authorityFile)).join(', ')}`,
             )
-            authorityProjectionSets.slice(1).forEach(({ targetGoalIds, visibleGoalIds, explicitVisibleGoalIds }) => {
+            authorityProjectionSets.slice(1).forEach(({ targetGoalIds, visibleGoalIds }) => {
               Array.from(jurisdictionStageTargetGoalIds).forEach((goalId) => {
                 if (!targetGoalIds.has(goalId)) jurisdictionStageTargetGoalIds.delete(goalId)
               })
               Array.from(jurisdictionStageVisibleGoalIds).forEach((goalId) => {
                 if (!visibleGoalIds.has(goalId)) jurisdictionStageVisibleGoalIds.delete(goalId)
               })
-              Array.from(jurisdictionStageExplicitVisibleGoalIds).forEach((goalId) => {
-                if (!explicitVisibleGoalIds.has(goalId)) jurisdictionStageExplicitVisibleGoalIds.delete(goalId)
-              })
             })
           }
           jurisdictionStageTargetAuthorityGoalIds = new Set(jurisdictionStageTargetGoalIds)
           jurisdictionStageVisibleAuthorityGoalIds = new Set(jurisdictionStageVisibleGoalIds)
-          jurisdictionStageExplicitVisibleAuthorityGoalIds = new Set(jurisdictionStageExplicitVisibleGoalIds)
 
           const prerequisiteOnlySupportGoalIds = new Set(
             Array.from(visibleAtomicGoalIds)
@@ -2288,12 +2261,8 @@ function evaluateRouteEndpointCompositionVisibility(
             !enforceProjectionLocalAssessmentRequires
             || extendedData?.applicabilityFromRequires !== true
           ) return true
-          const authoritativeSupportGoalIds = stageEndpointPrerequisiteAvailability(
-            goal.id,
-            visibleTargetAtomicGoalIds,
-            jurisdictionStageExplicitVisibleAuthorityGoalIds ?? explicitVisibleAtomicGoalIds,
-            jurisdictionStageVisibleAuthorityGoalIds ?? visibleAtomicGoalIds,
-          )
+          const authoritativeSupportGoalIds = jurisdictionStageVisibleAuthorityGoalIds
+            ?? visibleAtomicGoalIds
           return (goal.requires ?? [])
             .map((rawRef) => parseReference(rawRef, landscape.landscapeId))
             .filter((ref) => ref.landscapeId === landscape.landscapeId)
@@ -4188,169 +4157,14 @@ function collectCompositionStageStructures(
   return matches
 }
 
-/** Stage-only QA may use a required competency taught elsewhere in the same
- * complete CrossStage view as support. This does not make it a stage target.
- * An optional limit preserves the national view's own target boundary when a
- * jurisdiction view supplies stage authority. Its own explicit definitions
- * qualify alongside its targets. Existing explicit state support is
- * handled separately and is never removed by this limit. */
-export function collectSameViewStagePrerequisiteSupport(
-  landscape: SkillLandscape,
-  stageTargetAtomicGoalIds: ReadonlySet<string>,
-  explicitStageSupportGoalIds: ReadonlySet<string>,
-  fullViewTargetAtomicGoalIds: ReadonlySet<string>,
-  sameViewSupportAvailabilityLimitGoalIds?: ReadonlySet<string>,
-  declarations?: {
-    fullViewGoalIds: ReadonlySet<string>
-    explicitStageSupportGoalIds?: ReadonlySet<string>
-  },
-): { addedSupportGoalIds: Set<string>; unavailablePrerequisiteGoalIds: Set<string> } {
-  const sourceGoalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
-  const effectiveRequires = buildEffectiveRequiresEdges(landscape)
-  const addedSupportGoalIds = new Set<string>()
-  const unavailablePrerequisiteGoalIds = new Set<string>()
-  const availableStageGoalIds = new Set([
-    ...stageTargetAtomicGoalIds,
-    ...explicitStageSupportGoalIds,
-  ])
-  const pending = [...availableStageGoalIds]
-  const processed = new Set<string>()
-
-  const includeRequiredGoal = (goalId: string, expanding: Set<string>): void => {
-    const goal = sourceGoalById.get(goalId)
-    if (!goal) {
-      unavailablePrerequisiteGoalIds.add(goalId)
-      return
-    }
-    if (expanding.has(goalId)) return
-    const nextExpanding = new Set(expanding).add(goalId)
-    if ((goal.contains?.length ?? 0) > 0) {
-      // Atomic children cannot authorize a missing prerequisite root. When a
-      // caller only has atomic IDs, this is deliberately fail-closed. A
-      // national limit must prove the root too, except for the existing
-      // explicitly authored state-support policy.
-      if (
-        !declarations?.fullViewGoalIds.has(goalId)
-        || (sameViewSupportAvailabilityLimitGoalIds
-          && !sameViewSupportAvailabilityLimitGoalIds.has(goalId)
-          && !declarations.explicitStageSupportGoalIds?.has(goalId))
-      ) {
-        unavailablePrerequisiteGoalIds.add(goalId)
-        return
-      }
-      // A declared cluster prerequisite requires its actual atomic descendants;
-      // its own inherited hard prerequisites remain required as well.
-      for (const rawChildId of goal.contains ?? []) {
-        const child = parseReference(rawChildId, landscape.landscapeId)
-        if (child.landscapeId === landscape.landscapeId) {
-          includeRequiredGoal(child.goalId, nextExpanding)
-        }
-      }
-      for (const requiredId of effectiveRequires.get(goalId) ?? []) {
-        includeRequiredGoal(requiredId, nextExpanding)
-      }
-      return
-    }
-    if (availableStageGoalIds.has(goalId)) return
-    if (
-      !fullViewTargetAtomicGoalIds.has(goalId)
-      || (sameViewSupportAvailabilityLimitGoalIds
-        && !sameViewSupportAvailabilityLimitGoalIds.has(goalId))
-    ) {
-      unavailablePrerequisiteGoalIds.add(goalId)
-      return
-    }
-    availableStageGoalIds.add(goalId)
-    addedSupportGoalIds.add(goalId)
-    pending.push(goalId)
-  }
-
-  for (let index = 0; index < pending.length; index += 1) {
-    const goalId = pending[index]
-    if (processed.has(goalId)) continue
-    processed.add(goalId)
-    for (const requiredId of effectiveRequires.get(goalId) ?? []) {
-      includeRequiredGoal(requiredId, new Set())
-    }
-  }
-  return { addedSupportGoalIds, unavailablePrerequisiteGoalIds }
-}
-
-/** Derived availability belongs to an already declared stage route. It must
- * never create a new expected assessment solely because another route needs
- * the same competency. For undeclared endpoints, retain the exact original
- * explicit availability, so every former missing-endpoint check remains. */
-export function stageEndpointPrerequisiteAvailability(
-  endpointGoalId: string,
-  actualStageTargetGoalIds: ReadonlySet<string>,
-  explicitAvailabilityGoalIds: ReadonlySet<string>,
-  routeAvailabilityGoalIds: ReadonlySet<string>,
-): ReadonlySet<string> {
-  return actualStageTargetGoalIds.has(endpointGoalId)
-    ? routeAvailabilityGoalIds
-    : explicitAvailabilityGoalIds
-}
-
-/** Atomic scope contract retained for target and route checks. */
-export function collectRenderedAtomicGoalIdsFromCompositionView(
+function collectRenderedAtomicGoalIdsFromCompositionView(
   landscape: SkillLandscape,
   viewFile: string,
   scopeFilters: string[] = [],
   includePrerequisiteOnly = false,
   compositionStage?: CompositionRouteStage,
   additionalVisibleGoalIds: string[] = [],
-  sameViewSupportAvailabilityLimitGoalIds?: ReadonlySet<string>,
-  includeSameViewPrerequisiteSupport = true,
 ): Set<string> {
-  return collectRenderedCompositionViewGoalIds(
-    landscape, viewFile, scopeFilters, includePrerequisiteOnly, compositionStage,
-    additionalVisibleGoalIds, sameViewSupportAvailabilityLimitGoalIds, includeSameViewPrerequisiteSupport,
-  ).atomicGoalIds
-}
-
-/** Actual complete-view definitions, including projected target cluster roots
- * and authored explicit support. No dependency-derived definition is invented. */
-export function collectFullViewAvailableGoalDefinitionIds(
-  landscape: SkillLandscape,
-  viewFile: string,
-  scopeFilters: string[] = [],
-): Set<string> {
-  return collectRenderedCompositionViewGoalIds(
-    landscape, viewFile, scopeFilters, true, undefined, [], undefined, false,
-  ).availableGoalDefinitionIds
-}
-
-/** The national CQR-104 caller uses this same path: jurisdiction stage scope,
- * bounded by the national view's own full target/support definitions. Existing
- * explicit jurisdiction support remains governed by its authored policy. */
-export function collectNationalViewBoundStageAtomicGoalIds(
-  landscape: SkillLandscape,
-  nationalViewFile: string,
-  jurisdictionViewFile: string,
-  nationalScopeFilters: string[],
-  jurisdictionScopeFilters: string[],
-  compositionStage: CompositionRouteStage,
-  additionalVisibleGoalIds: string[] = [],
-): Set<string> {
-  const nationalFullViewAvailableGoalDefinitionIds = collectFullViewAvailableGoalDefinitionIds(
-    landscape, nationalViewFile, nationalScopeFilters,
-  )
-  return collectRenderedAtomicGoalIdsFromCompositionView(
-    landscape, jurisdictionViewFile, jurisdictionScopeFilters, true, compositionStage,
-    additionalVisibleGoalIds, nationalFullViewAvailableGoalDefinitionIds,
-  )
-}
-
-function collectRenderedCompositionViewGoalIds(
-  landscape: SkillLandscape,
-  viewFile: string,
-  scopeFilters: string[] = [],
-  includePrerequisiteOnly = false,
-  compositionStage?: CompositionRouteStage,
-  additionalVisibleGoalIds: string[] = [],
-  sameViewSupportAvailabilityLimitGoalIds?: ReadonlySet<string>,
-  includeSameViewPrerequisiteSupport = true,
-): { atomicGoalIds: Set<string>; availableGoalDefinitionIds: Set<string> } {
   const entry = {
     meta: landscape,
     goals: landscape.goals.map((goal) => convertLearningGoal(goal, { landscapeId: landscape.landscapeId })),
@@ -4358,7 +4172,7 @@ function collectRenderedCompositionViewGoalIds(
   const rawView = loadJson<unknown>(viewFile)
   const normalizedView = normalizeCompositionView(rawView)
   const projectedEntry = applyCompositionViewProjection([entry], normalizedView)[0]
-  if (!projectedEntry) return { atomicGoalIds: new Set(), availableGoalDefinitionIds: new Set() }
+  if (!projectedEntry) return new Set<string>()
 
   const goalById = new Map(projectedEntry.goals.map((goal) => [goal.id, goal]))
   const directChildrenByParent = buildDirectChildrenMap(goalById)
@@ -4398,12 +4212,6 @@ function collectRenderedCompositionViewGoalIds(
     ? collectVisibleGoalIds(stageStructureGoalIds)
     : fullVisibleGoalIds
 
-  // Full definition IDs preserve actual projected canonical cluster roots.
-  // Atomic output remains separate; visible children never imply their root.
-  const sourceGoalIds = new Set(landscape.goals.map((goal) => goal.id))
-  const availableGoalDefinitionIds = new Set(
-    [...visibleGoalIds].filter((goalId) => sourceGoalIds.has(goalId)),
-  )
   const atomicGoalIds = new Set<string>()
   const addRenderedAtomicGoal = (goalId: string) => {
     if (goalId.startsWith('composition:')) return
@@ -4415,8 +4223,6 @@ function collectRenderedCompositionViewGoalIds(
     .filter((goalId) => fullVisibleGoalIds.has(goalId))
     .forEach(addRenderedAtomicGoal)
   if (includePrerequisiteOnly) {
-    const stageTargetAtomicGoalIds = new Set(atomicGoalIds)
-    const explicitStageSupportDeclaredGoalIds = new Set<string>()
     const sourceGoalById = new Map(entry.goals.map((goal) => [goal.id, goal]))
     const addAtomicIfIncluded = (goalId: string) => {
       const goal = sourceGoalById.get(goalId)
@@ -4437,9 +4243,6 @@ function collectRenderedCompositionViewGoalIds(
         seen.add(goalId)
         const goal = sourceGoalById.get(goalId)
         if (!goal) continue
-        if (scopeFilters.length === 0 || goalMatchesFilters(goal, scopeFilters)) {
-          explicitStageSupportDeclaredGoalIds.add(goalId)
-        }
         if ((goal.contains?.length ?? 0) === 0) {
           addAtomicIfIncluded(goalId)
         } else {
@@ -4459,42 +4262,13 @@ function collectRenderedCompositionViewGoalIds(
         if (node.kind === 'canonicalSubtree') {
           addAtomicSubtree(node.goalId)
         } else if (node.kind === 'goalEntry') {
-          const goal = sourceGoalById.get(node.goalId)
-          if (goal && (scopeFilters.length === 0 || goalMatchesFilters(goal, scopeFilters))) {
-            explicitStageSupportDeclaredGoalIds.add(node.goalId)
-          }
           addAtomicIfIncluded(node.goalId)
         }
       })
     }
     collectPrerequisiteOnly(normalizedView.rootNodes)
-    explicitStageSupportDeclaredGoalIds.forEach((goalId) => availableGoalDefinitionIds.add(goalId))
-    if (includeSameViewPrerequisiteSupport && restrictToSingleStage && normalizedView.scope.stage === 'CrossStage') {
-      const fullViewTargetAtomicGoalIds = new Set(
-        [...fullVisibleGoalIds].filter((goalId) => {
-          const goal = sourceGoalById.get(goalId)
-          return !!goal && (goal.contains?.length ?? 0) === 0
-            && (scopeFilters.length === 0 || goalMatchesFilters(goal, scopeFilters))
-        }),
-      )
-      const explicitStageSupportGoalIds = new Set(
-        [...atomicGoalIds].filter((goalId) => !stageTargetAtomicGoalIds.has(goalId)),
-      )
-      const { addedSupportGoalIds } = collectSameViewStagePrerequisiteSupport(
-        landscape,
-        stageTargetAtomicGoalIds,
-        explicitStageSupportGoalIds,
-        fullViewTargetAtomicGoalIds,
-        sameViewSupportAvailabilityLimitGoalIds,
-        {
-          fullViewGoalIds: new Set([...fullVisibleGoalIds, ...explicitStageSupportDeclaredGoalIds]),
-          explicitStageSupportGoalIds: explicitStageSupportDeclaredGoalIds,
-        },
-      )
-      addedSupportGoalIds.forEach((goalId) => atomicGoalIds.add(goalId))
-    }
   }
-  return { atomicGoalIds, availableGoalDefinitionIds }
+  return atomicGoalIds
 }
 
 function readCompositionViewAtomicGoalIds(report: CoverageReport): {
@@ -6080,20 +5854,6 @@ function evaluateSourceSnapshotIngestion(
   )
 }
 
-/** Add selected preparation accounting to the existing official-source rule.
- * Inference can authorize preparation, but never discharges official source duties. */
-export function evaluateSelectedPreparationCoverage(ordinary: RuleResult, supplemental: CompositionSupplementCoverage | undefined): RuleResult {
-  if (!supplemental) return ordinary
-  const failed = supplemental.configurations.filter(config => config.targetAuthorizationStatus !== 'pass')
-  return {
-    ...ordinary,
-    status: failed.length ? 'fail' : ordinary.status,
-    summary: ordinary.summary + ` Selected Math preparation: ${supplemental.configurations.length - failed.length}/${supplemental.configurations.length} exact configurations have complete target authorization; reviewed inference does not count as official Math source coverage.`,
-    metrics: { ...ordinary.metrics, selectedPreparationConfigurations: supplemental.configurations.length, unresolvedPreparationConfigurations: failed.length, officialSourceObligationsSatisfiedByPreparationInference: 0, officialReverseMappingsAddedByPreparationInference: 0 },
-    details: [ ...(ordinary.details ?? []), ...failed.map(config => `${config.configurationId}: ${config.unresolvedTargetAtomicGoals} unresolved target(s); ${config.ordinaryTargetSourceObligationMissingGoalIds.length} missing ordinary source duty/duties`) ],
-  }
-}
-
 function evaluateJurisdictionCoverage(coverage: JurisdictionCoverage | undefined): RuleResult {
   if (!coverage) {
     return makeRule('CQR-003', 'not_configured', 'No Bundesland coverage projection is available for this curriculum.')
@@ -6343,16 +6103,6 @@ function renderMarkdown(status: StatusDocument): string {
     lines.push(`| ${curriculum.title} | ${coverage.sourceCompleteJurisdictions}/${coverage.totalJurisdictions} | ${coverage.totalAtomicGoals} | ${coverage.rawAtomicGoals} | ${coverage.sourceBackedJurisdictions} | ${coverage.sourceExtractedGoals} | ${coverage.sourceOriginalGoals} | ${coverage.sourceFullyCoveredOriginalGoals} | ${coverage.sourceUnregisteredGoals} | ${coverage.sourceExtractedAtomicGoals} | ${coverage.sourceUnregisteredAtomicGoals} | ${coverage.unsupportedAssignedAtomicGoals} | ${coverage.unmappedSourceAtomicGoals} | ${coverage.partialJurisdictions} | ${coverage.errorJurisdictions} | ${coverage.maxSourceBackedAtomicGoals} (${coverage.maxSourceBackedCoveragePercent}%) |`)
   })
   lines.push('')
-  for (const curriculum of status.curricula) if (curriculum.selectedMathematicsPreparation) {
-    lines.push('## Explicitly selected Mathematics preparation')
-    lines.push('')
-    lines.push('Ordinary official-source denominators and reverse mappings are unchanged. Reviewed didactic inference authorizes bounded preparation only.')
-    lines.push('')
-    lines.push('| Configuration | Math base | Unique targets | Regular Math source | Reviewed preparation inference | Orientation | Ordinary non-curricular | Unresolved |')
-    lines.push('| --- | --- | --- | --- | --- | --- | --- | --- |')
-    for (const config of curriculum.selectedMathematicsPreparation.configurations) lines.push(`| ${config.configurationId} | ${config.mathBaseSelected} | ${config.totalAuthoredTargetAtomicGoals} | ${config.regularSourceBackedAtomicGoals} | ${config.reviewedDidacticSupplementAtomicGoals} | ${config.orientationTargetGoals} | ${config.ordinaryNonCurricularTargetGoals} | ${config.unresolvedTargetAtomicGoals} |`)
-    lines.push('')
-  }
   lines.push('## Rule Catalog')
   lines.push('')
   lines.push('| Rule | Target | Category | Description |')
@@ -6364,43 +6114,13 @@ function renderMarkdown(status: StatusDocument): string {
   return `${lines.join('\n')}\n`
 }
 
-/** Reuse only the genuinely admitted Math/Physics result. Other registered
- * subjects retain their ordinary native checks and original report ordering. */
-export async function generateQualityNativeReport(
-  admitted?: DeepUnderstandingRolloutReport,
-  generate: typeof generateDeepUnderstandingRollout = generateDeepUnderstandingRollout,
-): Promise<DeepUnderstandingRolloutReport> {
-  if (!admitted) return generate()
-  const config = loadDeepUnderstandingRolloutConfig()
-  const admittedSubjects = new Map(admitted.subjects.map(subject => [subject.subject, subject]))
-  if (admittedSubjects.size !== 2 || !admittedSubjects.has('mathematik') || !admittedSubjects.has('physik')
-      || admitted.subjects.length !== 2 || admitted.reportId !== config.reportId) {
-    throw new Error('Current selected-preparation native result must bind exactly registered Math and Physics')
-  }
-  const remaining = new Set(config.subjects.filter(subject => !admittedSubjects.has(subject.subject)).map(subject => subject.subject))
-  const ordinary = remaining.size ? await generate(undefined, undefined, remaining) : undefined
-  if (ordinary && (ordinary.reportId !== config.reportId || ordinary.schemaVersion !== admitted.schemaVersion)) {
-    throw new Error('Registered native report context changed during selected-preparation quality accounting')
-  }
-  const bySubject = new Map([...admitted.subjects, ...(ordinary?.subjects ?? [])].map(subject => [subject.subject, subject]))
-  if (bySubject.size !== config.subjects.length || bySubject.size !== admitted.subjects.length + (ordinary?.subjects.length ?? 0)
-      || config.subjects.some(subject => !bySubject.has(subject.subject))) {
-    throw new Error('Selected-preparation accounting cannot omit or duplicate another registered native subject')
-  }
-  const subjects = config.subjects.map(subject => bySubject.get(subject.subject)!)
-  return { schemaVersion: admitted.schemaVersion, reportId: config.reportId, subjects,
-    blockingIssueCount: subjects.reduce((sum, subject) => sum + subject.issues.length, 0) }
-}
-
 async function main() {
   const shouldCheck = process.argv.includes('--check')
   const applicabilityCompilation = buildApplicabilityCompilation()
-  const supplementalAssessment = await readCompositionSupplementAssessment(repoRoot, applicabilityCompilation)
-  const supplementalCoverage = supplementalAssessment?.coverage
   const semanticConfigsByLandscapeId = readSemanticConfigs()
   const memoryCardReviewConfigsByLandscapeId = readMemoryCardReviewConfigs()
   const goalVisualizationQaLedgers = readGoalVisualizationQaLedgers()
-  const deepUnderstandingReport = await generateQualityNativeReport(supplementalAssessment?.nativeReport)
+  const deepUnderstandingReport = await generateDeepUnderstandingRollout()
   const compositionViewCountsByLandscapeId = readCompositionViewCountsByLandscapeId()
   const applicabilityWarningMetricsByLandscapeId = readApplicabilityWarningMetricsByLandscapeId(applicabilityCompilation)
   const jurisdictionCoverageByLandscapeId = readJurisdictionCoverageByLandscapeId(applicabilityCompilation)
@@ -6423,7 +6143,7 @@ async function main() {
         evaluateGraphIntegrity(landscape, globalGoalIds),
         evaluateTypeConsistency(landscape),
         evaluateSourceSnapshotIngestion(jurisdictionCoverage, mappingPipeline),
-        evaluateSelectedPreparationCoverage(evaluateJurisdictionCoverage(jurisdictionCoverage), landscape.landscapeId === SUPPLEMENT_MATH ? supplementalCoverage : undefined),
+        evaluateJurisdictionCoverage(jurisdictionCoverage),
         evaluateCourseLevelMappingConsistency(landscape),
         evaluateSourceGoalCountPlausibility(mappingPipeline),
         evaluateSemanticAtomicity(landscape, semanticConfigsByLandscapeId.get(landscape.landscapeId) ?? []),
@@ -6460,7 +6180,6 @@ async function main() {
         atomicGoals,
         clusterGoals: landscape.goals.length - atomicGoals,
         jurisdictionCoverage: jurisdictionCoverageByLandscapeId.get(landscape.landscapeId),
-        ...(landscape.landscapeId === SUPPLEMENT_MATH && supplementalCoverage ? { selectedMathematicsPreparation: supplementalCoverage } : {}),
         mappingPipeline,
         scopes,
         rules: curriculumRules,
@@ -6483,7 +6202,7 @@ async function main() {
 
   const statusDraft: StatusDocument = {
     schemaVersion: 1,
-    rulesVersion: supplementalCoverage ? 'curriculum-quality-v7-selected-preparation-orientation' : 'curriculum-quality-v5',
+    rulesVersion: 'curriculum-quality-v5',
     generatedAt: new Date().toISOString(),
     generatedBy: 'app/scripts/generateCurriculumQualityStatus.ts',
     sources: {

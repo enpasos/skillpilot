@@ -145,8 +145,6 @@ public class LearnerControllerIntegrationTest {
     private static final String CANONICAL_PHYSICS_UNIFORM_MOTION_ID = "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd";
     private static final String CANONICAL_PHYSICS_SUPERPOSITION_ID = "68c90ba6-c438-463c-9a53-cf61062d416a";
     private static final String CANONICAL_PHYSICS_FIRST_LAW_ID = "31a2ef52-114b-4d2c-a720-6ef5a390b6dc";
-    private static final String CANONICAL_PHYSICS_ACCELERATED_MOTION_ID = "e4b38061-1f28-43ad-8371-a3e7c0e81856";
-    private static final String CANONICAL_PHYSICS_FORCES_AND_INERTIA_ID = "5ea765ac-c279-551a-8a94-a07da2381e5b";
     private static final String CANONICAL_PHYSICS_SIMPLE_COLLISIONS_ID = "2eecd0e2-a7ca-4568-9b12-3d47706c65fb";
     private static final String CANONICAL_PHYSICS_INELASTIC_COLLISIONS_ID = "0da13365-02c2-44f1-8a81-d524ca0ac3ae";
     private static final String CANONICAL_CHEMISTRY_E_PHASE_CLUSTER_ID = "323a222e-5db8-53c5-b2dc-6f9c1d0d277c";
@@ -828,10 +826,7 @@ public class LearnerControllerIntegrationTest {
     void getLearnerStateHttpExposesAuthoredNewtonAtomsInsteadOfCurricularAreaCluster() throws Exception {
         String responseBody = getLearnerStateBody(
                 List.of(CANONICAL_PHYSICS_NEWTON_AXIOMS_CLUSTER_ID),
-                List.of(
-                        LEGACY_PHYSICS_ACCELERATED_ID,
-                        CANONICAL_PHYSICS_ACCELERATED_MOTION_ID,
-                        CANONICAL_PHYSICS_FORCES_AND_INERTIA_ID),
+                List.of(LEGACY_PHYSICS_ACCELERATED_ID),
                 CANONICAL_PHYSICS_CROSS_STAGE_GK_PERSONAL_CONFIG);
 
         JsonNode root = objectMapper.readTree(responseBody);
@@ -1345,26 +1340,25 @@ public class LearnerControllerIntegrationTest {
     void learnerStateUsesReviewedMathSekIDurationProjectionForAtomicTotals() throws Exception {
         // Current canonical leaves were enumerated from each matched Sek-I view,
         // applying projection-role precedence and jurisdiction applicability.
-        // Totals include the two reviewed common assessments and the reviewed BW target repairs.
-        // Excluded and prerequisite-only goals
+        // Totals include local assessments; excluded and prerequisite-only goals
         // do not count. The view-specific HE/RP/SH G8/G9 split remains explicit.
         String[][] scopes = {
-                { "DE-BB", "243", "243" },
-                { "DE-BE", "239", "239" },
-                { "DE-BW", "285", "285" },
-                { "DE-BY", "229", "229" },
-                { "DE-HB", "217", "217" },
-                { "DE-HE", "327", "354" },
-                { "DE-HH", "239", "239" },
-                { "DE-MV", "238", "238" },
-                { "DE-NI", "238", "238" },
-                { "DE-NW", "238", "238" },
-                { "DE-RP", "269", "281" },
-                { "DE-SH", "262", "268" },
-                { "DE-SL", "241", "241" },
-                { "DE-SN", "238", "238" },
-                { "DE-ST", "238", "238" },
-                { "DE-TH", "239", "239" }
+                { "DE-BB", "241", "241" },
+                { "DE-BE", "237", "237" },
+                { "DE-BW", "267", "267" },
+                { "DE-BY", "227", "227" },
+                { "DE-HB", "215", "215" },
+                { "DE-HE", "325", "352" },
+                { "DE-HH", "237", "237" },
+                { "DE-MV", "236", "236" },
+                { "DE-NI", "236", "236" },
+                { "DE-NW", "236", "236" },
+                { "DE-RP", "267", "279" },
+                { "DE-SH", "260", "266" },
+                { "DE-SL", "239", "239" },
+                { "DE-SN", "236", "236" },
+                { "DE-ST", "236", "236" },
+                { "DE-TH", "237", "237" }
         };
         SoftAssertions softly = new SoftAssertions();
 
@@ -1380,7 +1374,6 @@ public class LearnerControllerIntegrationTest {
             JsonNode g8State = objectMapper.readTree(getRequest(
                     "/api/ui/learners/" + learner.getSkillpilotId() + "/state").body());
             int g8Total = g8State.path("goals").path("personalized").path("total_atomic").asInt();
-            assertReviewedCommonMathAssessmentTargets(learner);
 
             learner.setPersonalCurriculum(canonicalGymnasiumSubjectPersonalCurriculum(
                     CANONICAL_MATH_ID, jurisdiction, "G9", "GK", true, false));
@@ -1389,7 +1382,6 @@ public class LearnerControllerIntegrationTest {
             JsonNode g9State = objectMapper.readTree(getRequest(
                     "/api/ui/learners/" + learner.getSkillpilotId() + "/state").body());
             int g9Total = g9State.path("goals").path("personalized").path("total_atomic").asInt();
-            assertReviewedCommonMathAssessmentTargets(learner);
 
             assertThat(jsonTextValues(g8State.path("activeFilters"))).contains(jurisdiction, "G8", "GK");
             assertThat(jsonTextValues(g9State.path("activeFilters"))).contains(jurisdiction, "G9", "GK");
@@ -1398,7 +1390,6 @@ public class LearnerControllerIntegrationTest {
                         CANONICAL_GYMNASIUM_ROOT_ID, learner.getPersonalCurriculum(), CANONICAL_MATH_ROOT_ID, false);
                 if ("DE-BW".equals(jurisdiction)) {
                     assertThat(g9Targets).contains(
-                            "57fbbf31-9b8c-5408-9af5-fbc73acd12bb", // BW classes5/6 volume-unit target
                             "ad66009f-55fb-563f-ace0-dbfeae7c76c3", // BW Sek-I derivative target
                             "5f6496ef-e4d2-5341-8a2c-3293b2e4e25a", // BW J9 assessment
                             "ea664a30-98be-508e-90ac-5304679814ee"); // BW J10 assessment
@@ -1421,15 +1412,14 @@ public class LearnerControllerIntegrationTest {
     void learnerStateUsesMathCrossStageDurationCompositionViewsForAtomicTotals() throws Exception {
         // Current cross-stage target leaves were counted from each matched view
         // with projection roles, jurisdiction, course tags and G8/G9 applicability.
-        // Include the two reviewed common assessments and the source-backed HE/RP additions.
         // Keep exact counts and selected membership checks to catch scope drift.
         String[][] scopes = {
-                { "DE-HE", "GK", "759", "763" },
-                { "DE-HE", "LK", "891", "901" },
-                { "DE-RP", "GK", "693", "702" },
-                { "DE-RP", "LK", "804", "815" },
-                { "DE-SH", "GK", "669", "676" },
-                { "DE-SH", "LK", "766", "774" }
+                { "DE-HE", "GK", "751", "761" },
+                { "DE-HE", "LK", "889", "899" },
+                { "DE-RP", "GK", "688", "699" },
+                { "DE-RP", "LK", "802", "813" },
+                { "DE-SH", "GK", "667", "674" },
+                { "DE-SH", "LK", "764", "772" }
         };
         SoftAssertions softly = new SoftAssertions();
 
@@ -1449,7 +1439,6 @@ public class LearnerControllerIntegrationTest {
             assertThat(g8Response.statusCode()).isEqualTo(HttpStatus.OK.value());
             JsonNode g8State = objectMapper.readTree(g8Response.body());
             int g8Total = g8State.path("goals").path("personalized").path("total_atomic").asInt();
-            assertReviewedCommonMathAssessmentTargets(learner);
             if ("DE-RP".equals(jurisdiction) && "LK".equals(courseProfile)) {
                 assertThat(learnerService.getFilteredAtomicGoalIds(
                         CANONICAL_GYMNASIUM_ROOT_ID, learner.getPersonalCurriculum(), CANONICAL_MATH_ROOT_ID, false))
@@ -1471,7 +1460,6 @@ public class LearnerControllerIntegrationTest {
             assertThat(g9Response.statusCode()).isEqualTo(HttpStatus.OK.value());
             JsonNode g9State = objectMapper.readTree(g9Response.body());
             int g9Total = g9State.path("goals").path("personalized").path("total_atomic").asInt();
-            assertReviewedCommonMathAssessmentTargets(learner);
             if ("DE-RP".equals(jurisdiction) && "LK".equals(courseProfile)) {
                 assertThat(learnerService.getFilteredAtomicGoalIds(
                         CANONICAL_GYMNASIUM_ROOT_ID, learner.getPersonalCurriculum(), CANONICAL_MATH_ROOT_ID, false))
@@ -1875,15 +1863,6 @@ public class LearnerControllerIntegrationTest {
                   "%s": {"selected": true, "filterId": "%s", "durationModel": "%s"}
                 }
                 """.formatted(jurisdiction, sek1Selected, sek2Selected, subjectLandscapeId, courseProfile, durationModel);
-    }
-
-    private void assertReviewedCommonMathAssessmentTargets(Learner learner) {
-        assertThat(learnerService.getFilteredAtomicGoalIds(
-                CANONICAL_GYMNASIUM_ROOT_ID, learner.getPersonalCurriculum(), CANONICAL_MATH_ROOT_ID, false))
-                .as("reviewed common terminal targets remain in the selected Mathematics scope")
-                .contains(
-                        "8167dfc7-d7f1-5417-b365-32ff10f7dd26", // structured integer problems
-                        "287ce86a-bbd1-54c9-806b-b4340809b015"); // coordinate-figure transfer
     }
 
     private void completeCanonicalSekTwoPersonalization(String subjectLandscapeId) {

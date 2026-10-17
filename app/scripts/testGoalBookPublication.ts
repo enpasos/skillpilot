@@ -175,29 +175,6 @@ assert.doesNotThrow(
   () => assertCanonicalRelationUrls(verified.model),
   'the current publication binds every external relation to its atlas and edition',
 )
-const physicsPublication = verifiedBooks.find(({ model }) => model.book.id === 'de-gym-physik-bundesweit')
-assert.ok(physicsPublication, 'the publication includes Physics with external Mathematics prerequisites')
-const foreignPrerequisite = physicsPublication.model.pages
-  .flatMap((page) => page.externalPrerequisites)
-  .find((reference) => reference.landscapeId && reference.landscapeId !== physicsPublication.model.book.landscapeId)
-assert.ok(foreignPrerequisite?.canonicalUrl, 'the real Physics publication exercises a foreign prerequisite owner')
-assert.equal(new URL(foreignPrerequisite.canonicalUrl).searchParams.get('landscape'), foreignPrerequisite.landscapeId)
-assert.doesNotThrow(
-  () => assertCanonicalRelationUrls(physicsPublication.model),
-  'a foreign prerequisite opens its owning subject atlas',
-)
-const misroutedPhysicsPublication = structuredClone(physicsPublication.model)
-const misroutedPrerequisite = misroutedPhysicsPublication.pages
-  .flatMap((page) => page.externalPrerequisites)
-  .find((reference) => reference.goalId === foreignPrerequisite.goalId)!
-const misroutedUrl = new URL(misroutedPrerequisite.canonicalUrl!)
-misroutedUrl.searchParams.set('landscape', misroutedPhysicsPublication.book.landscapeId)
-misroutedPrerequisite.canonicalUrl = misroutedUrl.toString()
-assert.throws(
-  () => assertCanonicalRelationUrls(misroutedPhysicsPublication),
-  /unsafe canonical URL/u,
-  'a foreign prerequisite cannot silently open the dependent subject atlas',
-)
 assert.throws(
   () => assertCanonicalRelationUrls(tamperedRelationModel((url) => url.searchParams.append('debug', '1'))),
   /unsafe canonical URL/u,

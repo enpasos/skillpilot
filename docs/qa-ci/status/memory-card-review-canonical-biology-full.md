@@ -39,7 +39,7 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 
 | Scope | View | Visible goals | Visible memory goals | Checked memory-required goals | Missing visible memory goals |
 | --- | --- | --- | --- | --- | --- |
-| Biologie Gymnasium GK (DE) | `curricula/DE/Gymnasium/composition-views/biologie/de-de-gym-biology-gk.view.json` | 451 | 3 | 10 | 0 |
+| Biologie Gymnasium GK (DE) | `curricula/DE/Gymnasium/composition-views/biologie/de-de-gym-biology-gk.view.json` | 351 | 3 | 10 | 0 |
 | Biologie Gymnasium SekI (DE) | `curricula/DE/Gymnasium/composition-views/biologie/de-de-gym-seki-biology.view.json` | 182 | 3 | 7 | 0 |
 | de-mv-gym-seki-biology.view.json | `curricula/DE/Gymnasium/composition-views/biologie/de-mv-gym-seki-biology.view.json` | 169 | 1 | 5 | 0 |
 | de-sn-gym-seki-biology.view.json | `curricula/DE/Gymnasium/composition-views/biologie/de-sn-gym-seki-biology.view.json` | 184 | 1 | 5 | 0 |

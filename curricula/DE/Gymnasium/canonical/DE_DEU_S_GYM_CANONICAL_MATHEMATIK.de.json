@@ -3260,7 +3260,7 @@
       "description": "Gemeinsame Wurzel für Mathematik am Gymnasium in Deutschland. Die Baseline bündelt einen kanonischen Mathematik-Graphen über Sekundarstufe I und II mit Jahrgangsankern, fachlichen Korridoren und anschlussfähigen Oberstufenzielen.",
       "descriptionEn": "Shared root for mathematics at Gymnasium in Germany. The baseline bundles one canonical mathematics graph across lower and upper secondary with year anchors, content corridors, and upper-secondary continuation goals.",
       "core": true,
-      "weight": 980,
+      "weight": 977,
       "tags": [
         "root",
         "canonical",
@@ -3353,7 +3353,7 @@
       "description": "Kanonischer Jahrgangsstufenanker für J5 der gymnasialen Sekundarstufe I in Mathematik. Hier hängen frühe Zahl-, Geometrie-, Größen- und Flächengrundlagen an.",
       "descriptionEn": "Canonical year anchor for year 5 in lower-secondary Gymnasium mathematics. Early number, geometry, quantity, and area foundations attach here.",
       "core": true,
-      "weight": 41,
+      "weight": 40,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -4320,6 +4320,7 @@
       },
       "contains": [],
       "requires": [
+        "121e3fdf-54d2-4d46-bc2d-f6e725f10f41",
         "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
         "65365dce-f33f-49d8-9516-42f75883aa86"
       ],
@@ -4876,11 +4877,14 @@
       "requires": [
         "e82d8d3a-9012-5482-afe6-ab0d727a49bb",
         "fe07241a-b779-5f35-a82d-7aa51ae74f42",
+        "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+        "8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
         "191c67db-44a8-4f63-994a-d85e8e301194",
         "11e3cf89-9224-5894-8e4a-ae8ff5af0119",
         "54148506-c23f-41b8-959b-068dd194cf15",
         "5d1decb2-b01b-5c85-88fc-9fc255ff9776",
         "2ae76eae-799c-463e-9ec9-82327f8209a8",
+        "b5de0574-93ed-409c-80ee-312211420cd6",
         "65365dce-f33f-49d8-9516-42f75883aa86"
       ],
       "applicability": {
@@ -4927,8 +4931,8 @@
       "shortKey": "canonical_math_sek1_j5_integer_mult_div",
       "title": "Multiplikation und ganzzahlige Division als Umkehroperationen nutzen",
       "titleEn": "Use multiplication and integer division as inverse operations",
-      "description": "Die lernende Person kann natürliche und ganze Zahlen multiplizieren, eine zulässige ganzzahlige Division als zugehörige Umkehraufgabe deuten und berechnen, dabei Vorzeichen sowie die Bedingungen „Divisor ungleich null“ und „ganzzahliger Quotient“ begründen und das Ergebnis durch den Wechsel zur Umkehroperation prüfen, sofern diese definiert ist.",
-      "descriptionEn": "The learner can multiply natural numbers and integers, interpret and calculate an admissible integer division as the corresponding inverse problem, justify signs and the conditions ‘divisor nonzero’ and ‘integer quotient’, and check the result by switching to the inverse operation when that operation is defined.",
+      "description": "Die lernende Person kann natürliche und ganze Zahlen multiplizieren, eine zulässige ganzzahlige Division als zugehörige Umkehraufgabe deuten und berechnen, dabei Vorzeichen sowie die Bedingungen „Divisor ungleich null“ und „ganzzahliger Quotient“ begründen und das Ergebnis durch den Wechsel zur Umkehroperation prüfen.",
+      "descriptionEn": "The learner can multiply natural numbers and integers, interpret and calculate an admissible integer division as the corresponding inverse problem, justify signs and the conditions ‘divisor nonzero’ and ‘integer quotient’, and check the result by switching to the inverse operation.",
       "core": true,
       "weight": 1,
       "tags": [
@@ -4950,7 +4954,15 @@
       },
       "contains": [],
       "requires": [
-        "4b67bed9-06da-40b2-a306-24e9e7dfd390"
+        "e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+        "fe07241a-b779-5f35-a82d-7aa51ae74f42",
+        "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+        "8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
+        "191c67db-44a8-4f63-994a-d85e8e301194",
+        "11e3cf89-9224-5894-8e4a-ae8ff5af0119",
+        "4b67bed9-06da-40b2-a306-24e9e7dfd390",
+        "65365dce-f33f-49d8-9516-42f75883aa86",
+        "3fde4db5-9e92-5f3a-98e1-d386a42b9e01"
       ],
       "applicability": {
         "jurisdiction": [
@@ -4980,13 +4992,13 @@
           "role": "primary",
           "skillpilotId": "cafd6520-c4af-4109-9863-cc49ba6fad4d",
           "title": "Visualisierung: Multiplikation und ganzzahlige Division als Umkehroperationen nutzen",
-          "url": "/assets/goal-visualizations/mathematik/cafd6520-c4af-4109-9863-cc49ba6fad4d/cafd6520-c4af-4109-9863-cc49ba6fad4d.png",
-          "provider": "OpenAI / Codex built-in imagegen (actual model unobserved)",
+          "url": "/assets/goal-visualizations/mathematik/cafd6520-c4af-4109-9863-cc49ba6fad4d/cafd6520-c4af-4109-9863-cc49ba6fad4d.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
           "description": "Visualisierung zum Lernziel: Multiplikation und ganzzahlige Division als Umkehroperationen nutzen.",
-          "altText": "Didaktische Visualisierung zum Lernziel \"Multiplikation und ganzzahlige Division als Umkehroperationen nutzen\". Die lernende Person kann natürliche und ganze Zahlen multiplizieren, eine zulässige ganzzahlige Division als zugehörige Umkehraufgabe deuten und berechnen, dabei Vorzeichen sowie die Bedingungen „Divisor ungleich null“ und „ganzzahliger Quotient“ begründen und das Ergebnis durch den Wechsel zur Umkehroperation prüfen, sofern diese definiert ist.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Multiplikation und ganzzahlige Division als Umkehroperationen nutzen\". Die lernende Person kann natürliche und ganze Zahlen multiplizieren, eine zulässige ganzzahlige Division als zugehörige Umkehraufgabe deuten und berechnen, dabei Vorzeichen sowie die Bedingungen „Divisor ungleich null“ und „ganzzahliger Quotient“ begründen und das Ergebnis durch den Wechsel zur Umkehroperation prüfen.",
           "lang": "de",
-          "license": "CC-BY-4.0",
-          "reviewStatus": "candidate"
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
         }
       ]
     },
@@ -5295,8 +5307,7 @@
       "requires": [
         "4b67bed9-06da-40b2-a306-24e9e7dfd390",
         "65365dce-f33f-49d8-9516-42f75883aa86",
-        "3fde4db5-9e92-5f3a-98e1-d386a42b9e01",
-        "cafd6520-c4af-4109-9863-cc49ba6fad4d"
+        "3fde4db5-9e92-5f3a-98e1-d386a42b9e01"
       ],
       "applicability": {
         "jurisdiction": [
@@ -15677,6 +15688,8 @@
       "requires": [
         "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
         "e09072f9-67d9-412c-b872-24ecbf329232",
+        "2f598bc7-c117-47d7-bb81-0f08ad679b91",
+        "eb28b403-f9fc-57ea-a793-b4555596fdd7",
         "88abc886-cce8-55cf-b86c-eb4ba45a92d7",
         "65365dce-f33f-49d8-9516-42f75883aa86"
       ],
@@ -15712,6 +15725,7 @@
       },
       "contains": [],
       "requires": [
+        "eb28b403-f9fc-57ea-a793-b4555596fdd7",
         "88abc886-cce8-55cf-b86c-eb4ba45a92d7",
         "65365dce-f33f-49d8-9516-42f75883aa86"
       ],
@@ -15785,6 +15799,8 @@
       "requires": [
         "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
         "e09072f9-67d9-412c-b872-24ecbf329232",
+        "2f598bc7-c117-47d7-bb81-0f08ad679b91",
+        "eb28b403-f9fc-57ea-a793-b4555596fdd7",
         "88abc886-cce8-55cf-b86c-eb4ba45a92d7",
         "65365dce-f33f-49d8-9516-42f75883aa86"
       ],
@@ -16031,8 +16047,9 @@
       },
       "contains": [],
       "requires": [
-        "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
-        "ee48e811-4c9c-5080-9836-8403fc9f0810",
+        "fc047e6e-5d6d-460f-99fc-ade3a23b9a8e",
+        "8a691345-3216-522c-a898-d65e8e94db28",
+        "71a483ba-9680-4654-bb5e-5ab5427f0919",
         "65365dce-f33f-49d8-9516-42f75883aa86"
       ],
       "applicability": {
@@ -17636,6 +17653,7 @@
       "contains": [],
       "requires": [
         "a1c79897-6ded-57f8-bee1-2d365a5083c9",
+        "7bff61c1-1a69-4991-97de-0cff764f507e",
         "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
         "65365dce-f33f-49d8-9516-42f75883aa86"
       ],
@@ -18496,7 +18514,7 @@
       "description": "Kanonischer Jahrgangsstufenanker für J7 der gymnasialen Sekundarstufe I in Mathematik. Er bindet hier vorbereitende Zuordnungs- und Proportionalitätsziele sowie erste algebraische, geometrische und datenbezogene Anker an.",
       "descriptionEn": "Canonical year anchor for year 7 in lower-secondary Gymnasium mathematics. It attaches preparatory mapping and proportionality goals as well as first algebraic, geometric, and data anchors here.",
       "core": true,
-      "weight": 33,
+      "weight": 32,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -19117,7 +19135,8 @@
       "contains": [],
       "requires": [
         "3e53a39b-1c75-4034-a647-8de85719e1fb",
-        "65365dce-f33f-49d8-9516-42f75883aa86"
+        "65365dce-f33f-49d8-9516-42f75883aa86",
+        "c31d3a7a-778b-5ae3-9aa4-7b5674047f83"
       ],
       "applicability": {
         "jurisdiction": [
@@ -37373,7 +37392,7 @@
       "id": "bfc4fe23-bfa4-4836-9bd2-793f4305d682",
       "title": "Sek-I-Prüfungen und Lernkarten",
       "description": "Kompatibilitätscluster für Sek-I-Prüfungsordner und den schmalen Lernkartenknoten. Standard-Views platzieren Jahrgangsprüfungen innerhalb der jeweiligen Jahrgangsstufe.",
-      "weight": 61,
+      "weight": 57,
       "tags": [
         "GK",
         "LK",
@@ -37502,7 +37521,7 @@
       "id": "81c8da58-9258-488e-9ab8-48500ab31652",
       "title": "Prüfungen Jahrgangsstufe 5",
       "description": "Bündelt freigegebene Prüfungsaufgaben zur Jahrgangsstufe 5. Die einzelnen Aufgaben sind als eigene Exam-Knoten modelliert, damit Lernpfade sichtbar in passenden Prüfungsaufgaben enden.",
-      "weight": 6,
+      "weight": 5,
       "tags": [
         "GK",
         "LK",
@@ -37517,7 +37536,6 @@
           "DE-BE",
           "DE-BW",
           "DE-BY",
-          "DE-HB",
           "DE-HE",
           "DE-HH",
           "DE-MV",
@@ -37558,8 +37576,7 @@
         "306d5ced-cad9-5462-85fd-5a64221b3a21",
         "b48c65fd-6519-5e96-9721-1c5841227007",
         "0fdb553b-9712-504f-8c45-cc00df28762d",
-        "c43cbab4-18f6-5079-bc82-389df9f7ea5e",
-        "8167dfc7-d7f1-5417-b365-32ff10f7dd26"
+        "c43cbab4-18f6-5079-bc82-389df9f7ea5e"
       ],
       "requires": [],
       "phase": "J5",
@@ -38730,7 +38747,7 @@
       "id": "811d6d09-130e-47b2-aba8-a5c401fe3251",
       "title": "Prüfungen Jahrgangsstufe 7",
       "description": "Bündelt freigegebene Prüfungsaufgaben zur Jahrgangsstufe 7. Die einzelnen Aufgaben sind als eigene Exam-Knoten modelliert, damit Lernpfade sichtbar in passenden Prüfungsaufgaben enden.",
-      "weight": 10,
+      "weight": 9,
       "tags": [
         "GK",
         "LK",
@@ -38790,8 +38807,7 @@
         "bb736def-061a-5371-b5c9-cc695f85cd3a",
         "c82e4a0a-0af8-54a3-99f1-2789ec4dc3ea",
         "2c97548a-77d2-57ef-98f7-a6d06aab48c9",
-        "92b246e4-8abc-5c6b-add2-367044181be0",
-        "287ce86a-bbd1-54c9-806b-b4340809b015"
+        "92b246e4-8abc-5c6b-add2-367044181be0"
       ],
       "requires": [],
       "phase": "J7",
@@ -93354,278 +93370,6 @@
       "phase": "Q2",
       "type": "atomic",
       "nodeKind": "exam"
-    },
-    {
-      "id": "8167dfc7-d7f1-5417-b365-32ff10f7dd26",
-      "shortKey": "canonical_math_cross_subject_route_follow_up_j5_integer_problem_strategy",
-      "title": "Ganzzahlige Probleme strukturiert lösen und prüfen",
-      "titleEn": "Solve and check integer problems systematically",
-      "description": "Die lernende Person kann in einer Abschlussaufgabe ein Rückwärtsproblem und eine ganzzahlige Bedingungssuche strukturieren, eine geeignete Heuristik begründen, ihre Rechenschritte dokumentieren und die Lösungen an allen Bedingungen prüfen.",
-      "descriptionEn": "In a terminal task, the learner can structure a backwards problem and an integer constraint search, justify a suitable heuristic, document the calculation steps, and check solutions against every constraint.",
-      "core": true,
-      "weight": 1,
-      "tags": [
-        "GK",
-        "LK",
-        "Practice",
-        "Assessment",
-        "canonical",
-        "phase:SekI",
-        "ExamTask"
-      ],
-      "applicability": {
-        "jurisdiction": [
-          "DE-BB",
-          "DE-BE",
-          "DE-BW",
-          "DE-BY",
-          "DE-HB",
-          "DE-HE",
-          "DE-HH",
-          "DE-MV",
-          "DE-NI",
-          "DE-NW",
-          "DE-RP",
-          "DE-SH",
-          "DE-SL",
-          "DE-SN",
-          "DE-ST",
-          "DE-TH"
-        ]
-      },
-      "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/cross-subject-route-follow-up-2026-10-15/j5-integer-problem-strategy/reviewed_release_v1.md#aufgabe",
-      "dimensionTags": {
-        "framework": "canonical-gymnasium-math",
-        "demandLevel": "AB3",
-        "processCompetencies": [
-          "K1.1",
-          "K2.1",
-          "K3.1",
-          "K4.1"
-        ],
-        "guidingIdeas": [
-          "L1"
-        ],
-        "phase": "J5",
-        "area": "Mathematik",
-        "topicCode": "CANONICAL.MATH.SEK1.PRACTICE.CROSS_SUBJECT_ROUTE.J5_INTEGER_PROBLEM_STRATEGY"
-      },
-      "contains": [],
-      "requires": [
-        "b5de0574-93ed-409c-80ee-312211420cd6"
-      ],
-      "phase": "J5",
-      "type": "atomic",
-      "nodeKind": "exam",
-      "extendedData": {
-        "applicabilityFromRequires": true,
-        "applicabilityMappingInheritance": "boundary"
-      },
-      "examData": {
-        "reviewStatus": "released",
-        "coveredGoalIds": [
-          "b5de0574-93ed-409c-80ee-312211420cd6"
-        ],
-        "coveredStrands": [
-          "L1"
-        ],
-        "demandLevels": [
-          "AB1",
-          "AB2",
-          "AB3"
-        ],
-        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/cross-subject-route-follow-up-2026-10-15/j5-integer-problem-strategy/reviewed_release_v1.md",
-        "taskContent": "Bearbeite beide Probleme ohne vorgegebene Rechenstrategie. Notiere jeweils Gegebenes, Gesuchtes und Bedingungen. Begründe, warum deine gewählte Darstellung oder Heuristik passt; eine Tabelle, systematisches Probieren, Rückwärtsarbeiten oder ein anderer nachvollziehbarer Weg sind zulässig.\n\n1. Vier gleich große Gruppen erhalten zusammen mit fünf einzelnen Eintrittskarten insgesamt 57 Karten. Wie viele Karten erhält jede Gruppe? Dokumentiere jeden Rechenschritt und prüfe deine Antwort im ursprünglichen Zusammenhang. (4 BE)\n2. Gesucht sind **alle ganzen Zahlen von 15 bis 70 einschließlich**, die beim Teilen durch 5 den Rest 2 und beim Teilen durch 7 den Rest 3 lassen. Organisiere deine Suche so, dass erkennbar keine Möglichkeit fehlt. Prüfe für jeden gefundenen Wert beide Restbedingungen und den Bereich. (6 BE)",
-        "solutionContent": "1. Gegeben sind 57 Karten insgesamt, fünf Einzelkarten und vier gleiche Gruppen; gesucht ist eine nichtnegative ganze Gruppengröße. Rückwärtsarbeiten entfernt zuerst den Einzelanteil:57−5=52. Danach werden 52 Karten gleichmäßig auf vier Gruppen verteilt:52÷4=13. Die Kontrolle 4·13+5=57 bestätigt sämtliche Angaben. Eine passende Tabelle oder ein anderer vollständiger begründeter Weg ist gleichwertig. Punkte: Struktur und passende begründete Heuristik 1 BE, zwei sinnentsprechende Rechenschritte 2 BE, Kontextprüfung einschließlich Ganzzahligkeit 1 BE.\n2. Die Rest 2-Bedingung beim Teilen durch 5 liefert im Bereich die geordnete Liste 17,22,27,32,37,42,47,52,57,62,67. Aufeinanderfolgende Kandidaten unterscheiden sich um 5; der vorige Wert 12 und der nächste 72 liegen außerhalb. Unter diesen Kandidaten erfüllen 17=2·7+3 und 52=7·7+3 die zweite Restbedingung. Zugleich 17=3·5+2 und 52=10·5+2; beide liegen zwischen 15 und 70. Die vollständige Lösungsmenge ist{17,52}. Eine Suche über die andere Restfolge oder eine nachvollziehbare vollständige Kongruenzüberlegung ist ebenfalls zulässig. Punkte: alle Bedingungen und der eingeschlossene Bereich korrekt erfasst 1 BE, geeignete begründete systematische Suche 2 BE, beide Werte 1 BE, Prüfung beider Restbedingungen und des Bereichs 1 BE, nachvollziehbare Vollständigkeit 1 BE.",
-        "scoring": {
-          "maxPoints": 10,
-          "passingPoints": 8,
-          "steps": [
-            {
-              "id": "backward-structure",
-              "points": 1,
-              "description": "Erstes Problem mit Ganzzahligkeitsbedingung strukturiert und passende Heuristik begründet"
-            },
-            {
-              "id": "backward-calculation",
-              "points": 2,
-              "description": "Einzelanteil entfernt und Gruppengröße sinnentsprechend bestimmt"
-            },
-            {
-              "id": "backward-check",
-              "points": 1,
-              "description": "Gruppengröße im ursprünglichen Kontext geprüft"
-            },
-            {
-              "id": "search-conditions",
-              "points": 1,
-              "description": "Zweiten Suchbereich und beide Restbedingungen erfasst"
-            },
-            {
-              "id": "search-strategy",
-              "points": 2,
-              "description": "Vollständige systematische Kandidatensuche organisiert und begründet"
-            },
-            {
-              "id": "search-solutions",
-              "points": 1,
-              "description": "Beide zulässigen Werte 17 und 52 bestimmt"
-            },
-            {
-              "id": "search-check",
-              "points": 1,
-              "description": "Beide Restbedingungen und den Bereich für beide Werte geprüft"
-            },
-            {
-              "id": "search-completeness",
-              "points": 1,
-              "description": "Begründet, weshalb keine zulässige ganze Zahl fehlt"
-            }
-          ]
-        },
-        "reviewNote": "Machine-only assessment release successor 2026-10-15 following the actual fresh independent whole-task/whole-predecessor-P, scope and Kind review by /root/two_terminal_assessments_and_current68_fresh_peer. Exact review: curricula/quality/cross-subject-requires/2026-10-13/two-local-assessments-and-current68-fresh-independent-peer-20261015-v1/two-local-assessments.independent-content-review.actual.json (sha256:287ccbdcb098d83b3d78d3a3e965db3b12756f9ed71512dd924330e071f55700). Technical promotion operator is the same agent in a separately assigned author/operator role; no second independent review is claimed. Task, solution, scoring, covered goals and prerequisites are unchanged. No human, official source, runtime/host or learner acceptance is created."
-      }
-    },
-    {
-      "id": "287ce86a-bbd1-54c9-806b-b4340809b015",
-      "shortKey": "canonical_math_cross_subject_route_follow_up_j7_coordinate_figure_translation",
-      "title": "Koordinatenfiguren zeichnen, zurücklesen und geometrisch prüfen",
-      "titleEn": "Draw and read coordinate figures and check their geometry",
-      "description": "Die lernende Person kann eine Koordinatenfigur in vier Quadranten darstellen, eine geometrische Beschreibung in Koordinaten übersetzen und eine digitale Darstellung mit begründeter Fenster- und Maßstabswahl zurücklesen und unabhängig prüfen.",
-      "descriptionEn": "The learner can represent a coordinate figure in four quadrants, translate a geometric description into coordinates, and read back and independently check a digital representation using a justified viewing window and scale.",
-      "core": true,
-      "weight": 1,
-      "tags": [
-        "GK",
-        "LK",
-        "Practice",
-        "Assessment",
-        "canonical",
-        "phase:SekI",
-        "ExamTask"
-      ],
-      "applicability": {
-        "jurisdiction": [
-          "DE-BB",
-          "DE-BE",
-          "DE-BW",
-          "DE-BY",
-          "DE-HB",
-          "DE-HE",
-          "DE-HH",
-          "DE-MV",
-          "DE-NI",
-          "DE-NW",
-          "DE-RP",
-          "DE-SH",
-          "DE-SL",
-          "DE-SN",
-          "DE-ST",
-          "DE-TH"
-        ]
-      },
-      "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/cross-subject-route-follow-up-2026-10-15/j7-coordinate-figure-translation/reviewed_release_v1.md#aufgabe",
-      "dimensionTags": {
-        "framework": "canonical-gymnasium-math",
-        "demandLevel": "AB3",
-        "processCompetencies": [
-          "K1.1",
-          "K2.1",
-          "K3.1",
-          "K4.1"
-        ],
-        "guidingIdeas": [
-          "L2"
-        ],
-        "phase": "J7",
-        "area": "Mathematik",
-        "topicCode": "CANONICAL.MATH.SEK1.PRACTICE.CROSS_SUBJECT_ROUTE.J7_COORDINATE_FIGURE_TRANSLATION"
-      },
-      "contains": [],
-      "requires": [
-        "121e3fdf-54d2-4d46-bc2d-f6e725f10f41"
-      ],
-      "phase": "J7",
-      "type": "atomic",
-      "nodeKind": "exam",
-      "extendedData": {
-        "applicabilityFromRequires": true,
-        "applicabilityMappingInheritance": "boundary"
-      },
-      "examData": {
-        "reviewStatus": "released",
-        "coveredGoalIds": [
-          "121e3fdf-54d2-4d46-bc2d-f6e725f10f41"
-        ],
-        "coveredStrands": [
-          "L2"
-        ],
-        "demandLevels": [
-          "AB1",
-          "AB2",
-          "AB3"
-        ],
-        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/cross-subject-route-follow-up-2026-10-15/j7-coordinate-figure-translation/reviewed_release_v1.md",
-        "taskContent": "Ein Gartenplan verwendet Meter als Koordinateneinheit. Begründe deine Fenster- und Maßstabswahl; eine automatische Zeichnung ersetzt keine mathematische Kontrolle.\n\n1. Zeichne A(−3|−2), B(3|−2), C(3|2), D(−3|2) in einem Koordinatensystem mit allen vier Quadranten und verbinde A–B–C–D–A. Beschrifte Punkte und Achsen. Begründe **an Koordinaten und Koordinatendifferenzen**, welche gegenüberliegenden Seiten parallel und gleich lang sind. (4 BE)\n2. Ein zweiter Plan legt P(−5|−1) fest. Q liegt sechs Meter rechts von P; R liegt vier Meter senkrecht über dem Mittelpunkt von PQ. Bestimme Q, den Mittelpunkt M und R. Zeichne das Dreieck und prüfe anhand der Koordinaten zwei der beschriebenen Lagebeziehungen. (4 BE)\n3. Verwende ein digitales Koordinatenwerkzeug für E(−12|8), F(6|8), G(6|−10), H(−12|−10). Dokumentiere Eingaben, Achsenfenster und Skalierung. Exportiere oder skizziere die Darstellung **ohne Koordinatenetiketten**, lies die vier Koordinaten aus der Darstellung zurück und kontrolliere rechnerisch zwei gegenüberliegende Seiten. Erkläre, weshalb eine verzerrte Bildschirmansicht die koordinatenbegründete Aussage nicht ändert. (4 BE)",
-        "solutionContent": "1. Ein Fenster etwa−4≤x≤4 und−3≤y≤3 zeigt beide Achsen und die vollständige Figur. Auch jedes andere gut lesbare ausreichend große Fenster mit dokumentiertem Maßstab ist richtig. A,B,C,Dliegen imIII.,IV.,I.bzw.II.Quadranten. AB und CD sind horizontal, weil auf jeder dieser Seiten die y-Koordinate konstant ist; ihre Länge beträgt|3−(−3)|=6 m. BC und AD sind vertikal und jeweils|2−(−2)|=4 m lang. Damit sind jeweils gegenüberliegende Seiten parallel und gleich lang. Die Figur ist ein Rechteck; ein bloßer Hinweis auf ihr Aussehen genügt nicht. Je 1 BEfür Fenster/Maßstab, korrekte beschriftete Darstellung, horizontales Seitenpaar mit Länge und vertikales Seitenpaar mit Länge.\n2. Q=(1|−1),M=(−2|−1),R=(−2|3). Gleiche y-Koordinaten machen PQ horizontal. M liegt drei Meter rechts von Pund drei Meter links von Q. Die gleiche x-Koordinate von R und Mund die y-Differenz 4 belegen die senkrechte Lage von Rvier Meter überM. Je 1 BEfür Q, M und R, die passende Zeichnung, horizontalen Nachweis und Mittelpunkt-/Senkrechtbeziehung; die drei Koordinaten gehören zusammen zum ersten Punkt.\n3. Beispielsweise−14≤x≤8 und−12≤y≤10 zeigt die ganze Figur und beide Achsen. Eingabe und Export beziehungsweise dokumentierte Skizze müssen die gewählten Grenzen und die Achsenskalierung erkennen lassen. Zurückgelesen werden E(−12|8), F(6|8), G(6|−10), H(−12|−10). EF und GH haben konstante y-Koordinaten und Länge 18 m; FG und EH haben konstante x-Koordinaten und ebenfalls Länge 18 m. Die Figur ist daher im mathematischen Metermaß ein Quadrat. Ungleiche Pixelmaßstäbe der Bildschirmachsen können das Bild optisch strecken; Koordinaten und Metermaß bleiben davon unberührt. Je 1 BEfür begründete digitale Einstellungen/Dokumentation, richtige Rückablesung ohne eingeblendete Koordinatenetiketten, zwei Koordinatenprüfungen mit Längen, und Erklärung der möglichen Bildverzerrung.",
-        "scoring": {
-          "maxPoints": 12,
-          "passingPoints": 10,
-          "steps": [
-            {
-              "id": "four-quadrant-window",
-              "points": 1,
-              "description": "Für vier Quadranten geeignetes Fenster und Maßstab begründet"
-            },
-            {
-              "id": "four-quadrant-plot",
-              "points": 1,
-              "description": "Alle vier Gartenpunkte mit richtigen Achsen, Vorzeichen und Beschriftungen dargestellt"
-            },
-            {
-              "id": "opposite-sides",
-              "points": 2,
-              "description": "Beide gegenüberliegenden Seitenpaare mit Koordinaten und Längen geprüft"
-            },
-            {
-              "id": "reverse-coordinates",
-              "points": 1,
-              "description": "Q, M und Raus der geometrischen Beschreibung gewonnen"
-            },
-            {
-              "id": "reverse-plot",
-              "points": 1,
-              "description": "Passendes Dreieck dargestellt"
-            },
-            {
-              "id": "reverse-check",
-              "points": 2,
-              "description": "Horizontale Lage und Mittelpunkt-/Senkrechtbeziehung koordinatengebunden geprüft"
-            },
-            {
-              "id": "digital-settings",
-              "points": 1,
-              "description": "Sinnvolle digitale Fenster-/Maßstabswahl und Eingaben dokumentiert"
-            },
-            {
-              "id": "digital-readback",
-              "points": 1,
-              "description": "Vier Koordinaten ohne Koordinatenetiketten korrekt zurückgelesen"
-            },
-            {
-              "id": "digital-relations",
-              "points": 1,
-              "description": "Gegenüberliegende digitale Seiten mit Koordinaten und Längen geprüft"
-            },
-            {
-              "id": "digital-distortion",
-              "points": 1,
-              "description": "Bildverzerrung von unveränderten Koordinatenbeziehungen unterschieden"
-            }
-          ]
-        },
-        "reviewNote": "Machine-only assessment release successor 2026-10-15 following the actual fresh independent whole-task/whole-predecessor-P, scope and Kind review by /root/two_terminal_assessments_and_current68_fresh_peer. Exact review: curricula/quality/cross-subject-requires/2026-10-13/two-local-assessments-and-current68-fresh-independent-peer-20261015-v1/two-local-assessments.independent-content-review.actual.json (sha256:287ccbdcb098d83b3d78d3a3e965db3b12756f9ed71512dd924330e071f55700). Technical promotion operator is the same agent in a separately assigned author/operator role; no second independent review is claimed. Task, solution, scoring, covered goals and prerequisites are unchanged. No human, official source, runtime/host or learner acceptance is created."
-      }
     }
   ]
 }

@@ -1,0 +1,3 @@
+# Vier eigene aktuelle intrinsische A-Urteile
+
+5a24,545,b8,e62: eigene genuine Beurteilung der ganzen DE/EN-Ziele und vollständigen bilingualen Materialien, keine Umbenennung alter P-Stimmen. Jedes Ziel bildet eine zusammenhängende fachliche Routine; konkrete Begründungen und Grenzen stehen in FIRST.own-four-intrinsic-atomicity-judgments.actual.json. Die JPG-Fehler und Quellen-/Kursfragen werden getrennt erhalten und bestimmen die intrinsische Atomarität nicht. Tatsächlicher Stock-A4-Check im bestehenden Sparse-Host: Exit0, atomic4, missing/stale/obsolete0. HumanApproval/HumanTrialfalse, keine Ausführung beobachtet.

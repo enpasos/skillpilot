@@ -2,7 +2,6 @@ import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs'
 import { basename, dirname, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { goalVisualizationAssetSegments } from '../../scripts/goal_visualization_paths.mjs'
 import type { SkillLandscape } from '../src/landscapeTypes'
 import { isOrdinaryAtomicGoalForVisualization } from '../../scripts/goal_visualization_scope.mjs'
 import { assertQualityDeferralEvidence } from './goalVisualizationQualityDeferral'
@@ -321,13 +320,12 @@ export function hasCurrentExactByteAiQaEvidence(
   if (!/^sha256:[0-9a-f]{64}$/u.test(record.assetSha256)
     || record.aiApprovedAssetSha256 !== record.assetSha256) return false
 
-  const urlParts = goalVisualizationAssetSegments(linked.url)
-  if (!urlParts || urlParts[0] !== subject || urlParts[1] !== linked.goalId) return false
-  const fileName = urlParts.at(-1)!
-  const extension = fileName.slice(fileName.lastIndexOf('.'))
-  if (!/^\.(?:png|jpe?g|webp)$/iu.test(extension) || fileName !== `${linked.goalId}${extension}`) return false
+  const urlParts = linked.url.match(/^\/assets\/goal-visualizations\/([a-z0-9-]+)\/([0-9a-f-]+)\/([0-9a-f-]+\.(?:png|jpe?g|webp))$/iu)
+  if (!urlParts || urlParts[1] !== subject || urlParts[2] !== linked.goalId) return false
+  const [, , , fileName] = urlParts
+  if (!fileName.startsWith(`${linked.goalId}.`)) return false
   const publicAssetPath = `app/public${linked.url}`
-  const canonicalAssetPath = `curricula/DE/Gymnasium/visualizations/${urlParts.join('/')}`
+  const canonicalAssetPath = `curricula/DE/Gymnasium/visualizations/${subject}/${linked.goalId}/${fileName}`
   if (record.publicAssetPath !== publicAssetPath || record.canonicalAssetPath !== canonicalAssetPath) return false
 
   return [publicAssetPath, canonicalAssetPath].every((path) => {

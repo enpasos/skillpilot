@@ -1,0 +1,106 @@
+{
+  "scope": "In-memory bounded model probes, not an implementation or curriculum review.",
+  "compositionViewSchema": [
+    {
+      "addedScopeKey": null,
+      "valid": true,
+      "errors": []
+    },
+    {
+      "addedScopeKey": "selectedTheme",
+      "valid": false,
+      "errors": [
+        {
+          "path": [
+            "scope"
+          ],
+          "validator": "additionalProperties",
+          "message": "Additional properties are not allowed ('selectedTheme' was unexpected)"
+        }
+      ]
+    },
+    {
+      "addedScopeKey": "canonicalView",
+      "valid": false,
+      "errors": [
+        {
+          "path": [
+            "scope"
+          ],
+          "validator": "additionalProperties",
+          "message": "Additional properties are not allowed ('canonicalView' was unexpected)"
+        }
+      ]
+    },
+    {
+      "addedScopeKey": "viewId",
+      "valid": false,
+      "errors": [
+        {
+          "path": [
+            "scope"
+          ],
+          "validator": "additionalProperties",
+          "message": "Additional properties are not allowed ('viewId' was unexpected)"
+        }
+      ]
+    },
+    {
+      "addedScopeKey": "programUnitId",
+      "valid": false,
+      "errors": [
+        {
+          "path": [
+            "scope"
+          ],
+          "validator": "additionalProperties",
+          "message": "Additional properties are not allowed ('programUnitId' was unexpected)"
+        }
+      ]
+    }
+  ],
+  "originalFrontendLearnerScopeMatcher": [
+    {
+      "addedScopeKey": null,
+      "constrained": true,
+      "score": {
+        "scopeSize": 4,
+        "courseFallbackCount": 0,
+        "coursePreferenceRank": 0
+      }
+    },
+    {
+      "addedScopeKey": "selectedTheme",
+      "constrained": false,
+      "score": null
+    },
+    {
+      "addedScopeKey": "canonicalView",
+      "constrained": false,
+      "score": null
+    },
+    {
+      "addedScopeKey": "viewId",
+      "constrained": false,
+      "score": null
+    },
+    {
+      "addedScopeKey": "programUnitId",
+      "constrained": false,
+      "score": null
+    }
+  ],
+  "duplicateCatalogScopeDiagnostics": [
+    {
+      "code": "DUPLICATE_OFFERED_SCOPE",
+      "location": "/offeredScopes[0,2]",
+      "message": "Duplicate identity ('68a8ac50-f5f5-4e24-8aa9-5e408ca01ced', (('courseProfile', 'GK'), ('jurisdiction', 'DE-HE'), ('schoolForm', 'Gymnasium'), ('stage', 'SekII')))"
+    },
+    {
+      "code": "DUPLICATE_VIEW_SCOPE",
+      "location": "/views[0,2]",
+      "message": "Duplicate identity ('68a8ac50-f5f5-4e24-8aa9-5e408ca01ced', (('courseProfile', 'GK'), ('jurisdiction', 'DE-HE'), ('schoolForm', 'Gymnasium'), ('stage', 'SekII')))"
+    }
+  ],
+  "fixtureUse": "Existing minimal catalog is used solely as structural validator input; no Mathematics goal or QA evidence is edited/reviewed."
+}

@@ -3,7 +3,6 @@ import { dirname, join, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import type { ApplicabilityMap, LearningGoal, SkillLandscape } from '../src/landscapeTypes'
 import { normalizeJurisdictionCode, type KnownJurisdiction } from '../src/utils/jurisdictionMetadata'
-import { parseApplicabilityContexts, type ApplicabilityContext } from '../src/utils/applicabilityContexts'
 import { discoverActiveMemoryCardReviewConfigs } from './memoryCardReviewConfigDiscovery'
 
 const scriptDir = dirname(fileURLToPath(import.meta.url))
@@ -157,8 +156,6 @@ interface GoalApplicabilityReport {
   title: string
   goalType: 'atomic' | 'cluster'
   compiledApplicability: ApplicabilityMap
-  compiledApplicabilityContexts?: ApplicabilityContext[]
-  sourceEvidenceApplicability?: ApplicabilityMap
   evidence: ApplicabilityEvidence[]
 }
 
@@ -1491,30 +1488,11 @@ export function buildApplicabilityCompilation(): ApplicabilityCompilationResult 
     }
 
     for (const goal of canonical.landscape.goals) {
-      const exactContexts = parseApplicabilityContexts(goal)
-      if (exactContexts.present) {
-        if (canonicalGoalApplicabilityOverrideRegistry.entriesByGoalId.has(goal.id)) {
-          exactContexts.errors.push('Exact contexts cannot coexist with a registry country override.')
-        }
-        try {
-          if (!goal.sourceRef?.startsWith('curricula/') || goal.sourceRef.split('/').includes('..')) throw new Error('sourceRef must name an owned committable curriculum report.')
-          const report = JSON.parse(readFileSync(resolve(repoRoot, goal.sourceRef), 'utf8')) as Record<string, unknown>
-          if (report.goalId !== goal.id || JSON.stringify(report.applicabilityContexts) !== JSON.stringify(exactContexts.contexts)) {
-            throw new Error('Exact context values differ from their separately retained source-context report.')
-          }
-        } catch (error) { exactContexts.errors.push(String(error)) }
-      }
-      for (const message of exactContexts.errors) findings.push({
-        code: 'APV-001', severity: 'error', landscapeId: canonical.landscape.landscapeId,
-        goalId: goal.id, title: goal.title, message,
-      })
       reportGoals.push({
-        ...(exactContexts.present ? { compiledApplicabilityContexts: exactContexts.errors.length ? [] : exactContexts.contexts,
-          sourceEvidenceApplicability: compiledByGoalId.get(goalKey(canonical.landscape.landscapeId, goal.id)) ?? {} } : {}),
         goalId: goal.id,
         title: goal.title,
         goalType: goalTypeById.get(goal.id) ?? 'atomic',
-        compiledApplicability: exactContexts.present ? {} : compiledByGoalId.get(goalKey(canonical.landscape.landscapeId, goal.id)) ?? {},
+        compiledApplicability: compiledByGoalId.get(goalKey(canonical.landscape.landscapeId, goal.id)) ?? {},
         evidence: evidenceByGoalId.get(goalKey(canonical.landscape.landscapeId, goal.id)) ?? evidenceByGoalId.get(goal.id) ?? [],
       })
     }

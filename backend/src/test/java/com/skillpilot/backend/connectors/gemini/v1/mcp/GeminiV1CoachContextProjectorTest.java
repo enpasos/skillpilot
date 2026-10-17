@@ -34,39 +34,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 class GeminiV1CoachContextProjectorTest {
 
-    @ParameterizedTest
-    @CsvSource({"EXTERNAL_PREREQUISITE_UNMASTERED,OPEN_PERSONAL_CURRICULUM", "PREREQUISITE_OUTSIDE_FOCUS,REVIEW_FOCUS"})
-    void stalledPrerequisiteContextPublishesLocalizedFactsAndWaitsWithoutLevelTwoChoices(String reason, String remediation) throws Exception {
-        CoachToolFacade facade = mock(CoachToolFacade.class);
-        var blocker = new com.skillpilot.backend.api.PrerequisiteBlocker(
-                "physics-target", "Diagramme", "Diagrams", "math-support", "Werte ablesen", "Read values",
-                reason, remediation);
-        var blocked = new UnifiedLearnerStateResponse("private-learner", curriculum(), List.of(),
-                new LearnerGoals(List.of(), 0, 1, null, null, false), List.of(), List.of(), Set.of(), "FRONTIER", null,
-                new StateMachineInfo("FRONTIER", "getFrontier", List.of(), List.of(), null, List.of(), List.of(blocker)));
-        when(facade.getLearnerState("private-learner")).thenReturn(blocked);
-        when(facade.getPersonalizationPlan("private-learner")).thenReturn(PersonalizationPlan.complete(List.of()));
-        var projector = new GeminiV1CoachContextProjector(new CoachStateProjection("https://skillpilot.test"), facade);
-        for (String language : List.of("de-DE", "en-US")) {
-            var context = projector.projectContext("private-learner", 17, language);
-            assertEquals(17L, context.get("stateVersion"));
-            assertEquals(List.of(), context.get("frontier"));
-            assertNull(context.get("activeGoal"));
-            assertFalse(context.containsKey("goalVisualization"));
-            assertFalse(context.containsKey("options"));
-            assertEquals("getFrontier", ((Map<?, ?>) context.get("stateMachine")).get("requiredAction"));
-            assertTrue(context.get("prerequisiteInstruction").toString().contains(language.startsWith("en") ? "Wait for" : "Warte auf"));
-            assertTrue(context.get("prerequisiteInstruction").toString().contains(language.startsWith("en") ? "or automatically reload" : "nicht automatisch erneut"));
-            String json = new com.fasterxml.jackson.databind.ObjectMapper().writeValueAsString(context);
-            assertTrue(json.contains(language.startsWith("en") ? "Read values" : "Werte ablesen"));
-            assertFalse(json.contains("private-learner"));
-            assertFalse(json.contains("OPEN_PERSONAL_CURRICULUM"));
-            assertFalse(json.contains("REVIEW_FOCUS"));
-            assertFalse(json.contains("remediation"));
-            assertFalse(json.contains("personalCurriculum"));
-        }
-    }
-
     @Test
     void optionalMaterialsAreActiveGoalOnlyAndDisappearImmediatelyAfterDeactivation() {
         CoachStateProjection projection = new CoachStateProjection("https://skillpilot.com");

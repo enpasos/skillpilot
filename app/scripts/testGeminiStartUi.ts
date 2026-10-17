@@ -93,9 +93,6 @@ try {
       body = { stage: 'COMPLETE', options: [], displayOptions: [], navigationOptions: [],
         currentSelectedOptions: [], completedDecisions: [], preservedDecisions: [], pendingDecisions: [],
         minSelections: 0, maxSelections: 0, selectedCount: 0 }
-    } else if (pathname === `/api/ui/learners/${learnerId}/composition-supplement-options`) {
-      assert.equal(route.request().method(), 'GET')
-      body = { options: [], problemCode: null }
     } else if (pathname === `/api/ui/learners/${learnerId}`) {
       body = { selectedCurriculum: CANONICAL_GYMNASIUM_ROOT_ID }
     } else if (pathname.endsWith('/resume') || pathname.endsWith('/retention')) {

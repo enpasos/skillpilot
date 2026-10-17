@@ -1,0 +1,83 @@
+{
+  "role": "Author checks, not independent scientific validation",
+  "polyprotic": {
+    "table": [
+      {
+        "addedNaOH_mL": 0,
+        "idealModelPH": 1.716337
+      },
+      {
+        "addedNaOH_mL": 6.25,
+        "idealModelPH": 2.079117
+      },
+      {
+        "addedNaOH_mL": 12.5,
+        "idealModelPH": 2.435896
+      },
+      {
+        "addedNaOH_mL": 18.75,
+        "idealModelPH": 2.873224
+      },
+      {
+        "addedNaOH_mL": 24,
+        "idealModelPH": 3.760349
+      },
+      {
+        "addedNaOH_mL": 25,
+        "idealModelPH": 5.988831
+      },
+      {
+        "addedNaOH_mL": 26,
+        "idealModelPH": 8.219423
+      },
+      {
+        "addedNaOH_mL": 31.25,
+        "idealModelPH": 9.122188
+      },
+      {
+        "addedNaOH_mL": 37.5,
+        "idealModelPH": 9.598278
+      },
+      {
+        "addedNaOH_mL": 43.75,
+        "idealModelPH": 10.069675
+      },
+      {
+        "addedNaOH_mL": 49,
+        "idealModelPH": 10.80394
+      },
+      {
+        "addedNaOH_mL": 50,
+        "idealModelPH": 11.053935
+      },
+      {
+        "addedNaOH_mL": 55,
+        "idealModelPH": 11.809016
+      }
+    ],
+    "model": {
+      "equations": [
+        "Ct=[H2G+]+[HG±]+[G−]",
+        "D=h²+K1 h+K1 K2",
+        "[H2G+]=Ct h²/D",
+        "[G−]=Ct K1 K2/D",
+        "h+[Na+]+[H2G+]=Kw/h+[Cl−]+[G−]"
+      ],
+      "rootVariable": "pH in [0,14], bisection100",
+      "constants": {
+        "K1": 0.004570881896148752,
+        "K2": 2.511886431509582e-10,
+        "Kw": 1e-14
+      },
+      "counterions": "Na+ from titrant, Cl− from the specified initial glycine hydrochloride balance",
+      "notIndependentValidation": true
+    }
+  },
+  "design": {
+    "acid_mol": 0.003923389358731801,
+    "base_mol": 0.006076610641268199,
+    "beta_mol_per_L_pH": 0.05489572288053879
+  },
+  "practicalSyntheticResultsCreated": false,
+  "actualPracticalExecutions": 0
+}

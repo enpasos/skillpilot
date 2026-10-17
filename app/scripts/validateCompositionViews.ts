@@ -2,7 +2,6 @@ import { readdirSync, readFileSync, type Dirent } from 'node:fs'
 import { dirname, extname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import {
-  collectCompositionProjectionRoleGoalIds,
   compileCompositionView,
   normalizeCompositionView,
   type CompiledCompositionPreviewNode,
@@ -18,7 +17,7 @@ import {
 } from './lib/learnerFacingCompositionLabels'
 import {
   collectCanonicalMathSek1ReviewedExamRouteFindings,
-  shouldRequireCanonicalMathSek1AssessmentEndpoint,
+  hasUnavailableCurricularAtomicAssessmentPrerequisite,
   isAssessmentExplicitlyOutsideJurisdiction,
 } from './lib/canonicalMathSek1ReviewedExamRoutes'
 
@@ -696,13 +695,6 @@ const collectCanonicalMathSek1ExamVisibilityFindings = (
 
   const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
   const visibleGoalIds = collectSourceGoalIds(rootNodes)
-  const { prerequisiteOnlyGoalIds } = collectCompositionProjectionRoleGoalIds(
-    view.rootNodes,
-    goalById,
-  )
-  // Compiled nodes contain targets only. Preserve explicitly authored support
-  // roles when deciding whether an absent exam is a required endpoint.
-  const availableGoalIds = new Set([...visibleGoalIds, ...prerequisiteOnlyGoalIds])
   const curricularAtomicGoalIds = new Set(landscape.goals
     .filter((goal) => goal.semanticKind === 'curricularAtomic')
     .map((goal) => goal.id))
@@ -747,15 +739,11 @@ const collectCanonicalMathSek1ExamVisibilityFindings = (
       .filter((taskId) => !isAssessmentExplicitlyOutsideJurisdiction(
         goalById.get(taskId), view.scope.jurisdiction,
       ))
-      .filter((taskId) => {
-        const task = goalById.get(taskId)
-        return !task || shouldRequireCanonicalMathSek1AssessmentEndpoint(
-          task,
-          curricularAtomicGoalIds,
-          availableGoalIds,
-          visibleGoalIds,
-        )
-      })
+      .filter((taskId) => !hasUnavailableCurricularAtomicAssessmentPrerequisite(
+        goalById.get(taskId),
+        curricularAtomicGoalIds,
+        visibleGoalIds,
+      ))
     if (missingTaskGoalIds.length > 0) {
       findings.push({
         code: 'CPV-211',

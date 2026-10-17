@@ -1,0 +1,81 @@
+{
+  "receipts": [
+    {
+      "name": "P2-write",
+      "command": [
+        "node",
+        "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1/app/node_modules/tsx/dist/cli.mjs",
+        "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1/app/scripts/materializePositiveGoalEvidenceCandidates.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-two-native4-profile-findings-current-informed-P-bindings-20261016-v1/P2.current-profile-findings.config.json",
+        "--candidates",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-two-native4-profile-findings-current-informed-P-bindings-20261016-v1/P2.genuine-own-informed.closed-candidates.json",
+        "--write"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot",
+      "startedAtUTC": "2026-10-16T04:08:23.583898+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 0.6443886000051862,
+      "stdout": {
+        "path": "tmp/chemie-m7-resumed-20261016/chemie-two-native4-profile-findings-own-P/actual-stock-v1/P2-write.stdout.actual.txt",
+        "sha256": "sha256:37ba83a58f11724ae98e33b1aedaae3a076f1782e0c05df0b2ddb2b43a6f6f45",
+        "bytes": 215
+      },
+      "stderr": {
+        "path": "tmp/chemie-m7-resumed-20261016/chemie-two-native4-profile-findings-own-P/actual-stock-v1/P2-write.stderr.actual.txt",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "P2-check",
+      "command": [
+        "node",
+        "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1/app/node_modules/tsx/dist/cli.mjs",
+        "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1/app/scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-two-native4-profile-findings-current-informed-P-bindings-20261016-v1/P2.current-profile-findings.config.json",
+        "--mode=check"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot",
+      "startedAtUTC": "2026-10-16T04:08:24.229084+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 0.7206221470114542,
+      "stdout": {
+        "path": "tmp/chemie-m7-resumed-20261016/chemie-two-native4-profile-findings-own-P/actual-stock-v1/P2-check.stdout.actual.txt",
+        "sha256": "sha256:8b888d7be836c99ba822855f67af317d80c9edd61d8fc3a1a86edf04b4a6ba9c",
+        "bytes": 312
+      },
+      "stderr": {
+        "path": "tmp/chemie-m7-resumed-20261016/chemie-two-native4-profile-findings-own-P/actual-stock-v1/P2-check.stderr.actual.txt",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "retained-original-P2-check",
+      "command": [
+        "node",
+        "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1/app/node_modules/tsx/dist/cli.mjs",
+        "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1/app/scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-two-native4-profile-findings-current-informed-P-bindings-20261016-v1/P2.original-P4-identity.exact-retention.config.json",
+        "--mode=check"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot",
+      "startedAtUTC": "2026-10-16T04:08:24.950490+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 0.6087560969899641,
+      "stdout": {
+        "path": "tmp/chemie-m7-resumed-20261016/chemie-two-native4-profile-findings-own-P/actual-stock-v1/retained-original-P2-check.stdout.actual.txt",
+        "sha256": "sha256:5c3efbb5327fae46901d1f166d5e0c275468212cb18adf521fb91a85f9443f12",
+        "bytes": 295
+      },
+      "stderr": {
+        "path": "tmp/chemie-m7-resumed-20261016/chemie-two-native4-profile-findings-own-P/actual-stock-v1/retained-original-P2-check.stderr.actual.txt",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    }
+  ],
+  "allScheduledCommandsCompleted": true,
+  "allPassed": true
+}

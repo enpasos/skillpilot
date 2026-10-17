@@ -12,17 +12,15 @@ import {
   stableGoalBookJson,
 } from './goalBookModel'
 import {
-  isCanonicalMathPhysicsEvidenceSource,
-  loadCurrentPositiveEvidenceOwners,
-  validateDescriptionPositiveEvidenceBinding,
-  type CurrentPositiveEvidenceOwner,
-  type CurrentPositiveEvidenceObserver,
-} from './currentPositiveEvidenceOwners'
+  reviewPositiveGoalEvidenceConfig,
+  type PositiveGoalEvidenceReviewConfig,
+} from './positiveGoalEvidenceReview'
 import {
   loadGoalDescriptionReviewCampaignResultDirectories,
 } from './validateGoalDescriptionReviewCampaignResults'
 import {
   validateGoalDescriptionDualRoundResolution,
+  validateHistoricalGoalDescriptionDualRoundResolution,
   type GoalDescriptionDualRoundResolution,
 } from './validateGoalDescriptionDualRoundResolution'
 import type {
@@ -84,6 +82,16 @@ export interface DeepUnderstandingSubjectConfig {
     goalId: string
     indexPath: string
     historicalResolutionDigest: string
+    reason: string
+  }>
+  resolutionSemanticRetirements?: Array<{
+    goalId: string
+    currentSemanticKind: 'curricularArea'
+    currentSourceFingerprint: string
+    historicalResolutions: Array<{
+      indexPath: string
+      historicalResolutionDigest: string
+    }>
     reason: string
   }>
   positiveEvidenceConfigPaths: string[]
@@ -266,6 +274,22 @@ export interface StandaloneBatchResolutionIndex extends ResolutionIndexBase {
 }
 
 type ResolutionIndex = AggregateResolutionIndex | StandaloneBatchResolutionIndex
+
+const semanticRetirementProof = Symbol('validated-resolution-semantic-retirements')
+
+export interface ValidatedResolutionSemanticRetirements {
+  readonly [semanticRetirementProof]: true
+  readonly digestsByIndex: ReadonlyMap<string, ReadonlyMap<string, string>>
+  readonly issues: readonly string[]
+}
+
+const retiredResolutionDigest = (
+  proof: ValidatedResolutionSemanticRetirements | undefined,
+  indexPath: string,
+  goalId: string,
+): string | undefined => proof?.[semanticRetirementProof] === true
+  ? proof.digestsByIndex.get(indexPath)?.get(goalId)
+  : undefined
 
 interface AuthoritativeScope {
   landscape: SkillLandscape
@@ -496,6 +520,10 @@ export const hasExactCurrentOpenDescriptionDeferral = (
 export const validateStandaloneResolutionIndexStructure = (
   index: StandaloneBatchResolutionIndex,
   currentAtomicGoalIds: ReadonlySet<string>,
+  historicalRetirement?: {
+    indexPath: string
+    proof: ValidatedResolutionSemanticRetirements
+  },
 ): string[] => {
   const errors: string[] = []
   const duplicateBatchGoalIds = duplicateValues(index.batchGoalIds)
@@ -527,7 +555,12 @@ export const validateStandaloneResolutionIndexStructure = (
     if (!batchGoalIdSet.has(entry.goalId)) {
       errors.push(`resolution goal ${entry.goalId} is outside batchGoalIds`)
     }
-    if (!currentAtomicGoalIds.has(entry.goalId)) {
+    if (
+      !currentAtomicGoalIds.has(entry.goalId)
+      && retiredResolutionDigest(
+        historicalRetirement?.proof, historicalRetirement?.indexPath ?? '', entry.goalId,
+      ) !== entry.resolutionDigest
+    ) {
       errors.push(`resolution goal ${entry.goalId} is not current curricularAtomic`)
     }
     if (entry.groupId !== group.groupId) {
@@ -549,6 +582,143 @@ export const validateStandaloneResolutionIndexStructure = (
     errors.push('standalone batch must explicitly list every unresolved goal as deferred in configured order')
   }
   return errors
+}
+
+/** A semantic retirement preserves exact historical claims, never current D
+ * readiness. Only complete, fingerprint-bound evidence creates its proof. */
+export const validateResolutionSemanticRetirements = ({
+  config,
+  landscape,
+  semanticKindLedger,
+  indices,
+  scopeIssues = [],
+}: {
+  config: Pick<DeepUnderstandingSubjectConfig,
+    'landscapePath' | 'resolutionIndexPaths' | 'resolutionSemanticRetirements' | 'resolutionWithdrawals'>
+  landscape: JsonObject
+  semanticKindLedger: SemanticKindLedger
+  indices: readonly { path: string; index: unknown }[]
+  scopeIssues?: readonly string[]
+}): ValidatedResolutionSemanticRetirements => {
+  const issues: string[] = []
+  const digestsByIndex = new Map<string, Map<string, string>>()
+  const finish = (): ValidatedResolutionSemanticRetirements => ({
+    [semanticRetirementProof]: true,
+    digestsByIndex: issues.length === 0 ? digestsByIndex : new Map(),
+    issues,
+  })
+  const retirements = config.resolutionSemanticRetirements ?? []
+  if (retirements.length === 0) return finish()
+  if (scopeIssues.length > 0) issues.push('semantic retirement requires a valid complete current semantic scope')
+  if (
+    semanticKindLedger.sourceLandscapeId !== landscape.landscapeId
+    || semanticKindLedger.sourceLandscapePath !== config.landscapePath
+    || semanticKindLedger.sourceFingerprintContractId !== 'semantic-kind-source-fingerprint-v1'
+  ) issues.push('semantic retirement ledger source binding is invalid')
+  const registered = new Set(config.resolutionIndexPaths)
+  if (
+    registered.size !== config.resolutionIndexPaths.length
+    || indices.length !== registered.size
+    || new Set(indices.map(({ path }) => path)).size !== indices.length
+    || indices.some(({ path, index }) => !registered.has(path) || !isResolutionIndex(index))
+  ) issues.push('semantic retirement requires every registered historical index exactly once')
+  if (issues.length > 0) return finish()
+  const goals = Array.isArray(landscape.goals) ? landscape.goals as JsonObject[] : []
+  const decisions = Array.isArray(semanticKindLedger.decisions) ? semanticKindLedger.decisions : []
+  if (
+    goals.length === 0 || decisions.length !== goals.length
+    || goals.some((goal) => !isRecord(goal) || typeof goal.id !== 'string')
+    || duplicateValues(goals.map((goal) => String(goal.id))).length > 0
+    || duplicateValues(decisions.map(({ goalId }) => goalId)).length > 0
+  ) issues.push('semantic retirement requires complete unique current semantic coverage')
+  for (const decision of decisions) {
+    const goal = goals.find((candidate) => candidate?.id === decision.goalId)
+    try {
+      if (
+        !goal || !semanticKinds.includes(decision.semanticKind as typeof semanticKinds[number])
+        || decision.decisionStatus !== 'authoritative'
+        || decision.sourceFingerprint !== fingerprintSemanticKindSourceGoal(goal)
+      ) issues.push(`semantic retirement requires a current authoritative semantic source for ${decision.goalId}`)
+    } catch {
+      issues.push(`semantic retirement cannot verify semantic source for ${decision.goalId}`)
+    }
+  }
+  if (issues.length > 0) return finish()
+  const duplicateGoalIds = new Set(duplicateValues(retirements.map(({ goalId }) => goalId)))
+  const withdrawnGoalIds = new Set((config.resolutionWithdrawals ?? []).map(({ goalId }) => goalId))
+  for (const retirement of retirements) {
+    const { goalId, currentSourceFingerprint, historicalResolutions } = retirement
+    const fail = (message: string) => issues.push(`semantic retirement ${goalId}: ${message}`)
+    const matches = goals.filter((goal) => goal?.id === goalId)
+    const matchingDecisions = decisions.filter((decision) => decision.goalId === goalId)
+    const goal = matches[0]
+    const decision = matchingDecisions[0]
+    if (
+      !goalId || duplicateGoalIds.has(goalId) || withdrawnGoalIds.has(goalId)
+      || typeof retirement.reason !== 'string' || retirement.reason.trim().length === 0
+    ) fail('duplicate, withdrawn or unexplained retirement')
+    if (
+      matches.length !== 1 || goal?.type !== 'cluster'
+      || !Array.isArray(goal.contains) || goal.contains.length === 0
+      || new Set(goal.contains).size !== goal.contains.length
+      || goal.contains.some((childId) => (
+        typeof childId !== 'string' || childId === goalId
+        || goals.filter((candidate) => candidate?.id === childId).length !== 1
+      ))
+    ) fail('current canonical goal must be one real nonleaf cluster with existing children')
+    if (
+      retirement.currentSemanticKind !== 'curricularArea'
+      || matchingDecisions.length !== 1
+      || decision?.semanticKind !== 'curricularArea'
+      || decision?.decisionStatus !== 'authoritative'
+      || !/^sha256:[0-9a-f]{64}$/u.test(currentSourceFingerprint)
+    ) fail('current authoritative curricularArea classification is required')
+    if (matches.length === 1 && matchingDecisions.length === 1) {
+      try {
+        const actual = fingerprintSemanticKindSourceGoal(goal)
+        if (actual !== currentSourceFingerprint || actual !== decision.sourceFingerprint) {
+          fail('current semantic source fingerprint is stale')
+        }
+      } catch (error) {
+        fail(`cannot fingerprint current canonical goal: ${error instanceof Error ? error.message : String(error)}`)
+      }
+    }
+    const actualHistory = indices.flatMap(({ path, index }) => (
+      (index as ResolutionIndex).resolutions
+        .filter((entry) => entry.goalId === goalId)
+        .map((entry) => ({ indexPath: path, historicalResolutionDigest: entry.resolutionDigest }))
+    ))
+    if (
+      !Array.isArray(historicalResolutions) || historicalResolutions.length === 0
+      || actualHistory.length === 0
+      || new Set(actualHistory.map(({ indexPath }) => indexPath)).size !== actualHistory.length
+      || new Set(historicalResolutions.map(({ indexPath }) => indexPath)).size !== historicalResolutions.length
+      || historicalResolutions.some(({ indexPath, historicalResolutionDigest }) => (
+        !registered.has(indexPath) || !/^sha256:[0-9a-f]{64}$/u.test(historicalResolutionDigest)
+      ))
+      || stableGoalBookJson([...actualHistory].sort((a, b) => a.indexPath.localeCompare(b.indexPath)))
+        !== stableGoalBookJson([...historicalResolutions].sort((a, b) => a.indexPath.localeCompare(b.indexPath)))
+    ) {
+      fail('historical bindings must exactly enumerate every registered resolution and digest')
+      continue
+    }
+    for (const { indexPath, historicalResolutionDigest } of historicalResolutions) {
+      const bindings = digestsByIndex.get(indexPath) ?? new Map<string, string>()
+      bindings.set(goalId, historicalResolutionDigest)
+      digestsByIndex.set(indexPath, bindings)
+    }
+  }
+  return finish()
+}
+
+export const hasIntactRetiredResolutionDigest = (
+  proof: ValidatedResolutionSemanticRetirements,
+  indexPath: string,
+  entry: Pick<ResolutionIndexEntry, 'goalId' | 'resolutionDigest'>,
+  resolutionBytes: Buffer,
+): boolean => {
+  const expected = retiredResolutionDigest(proof, indexPath, entry.goalId)
+  return expected !== undefined && expected === entry.resolutionDigest && expected === sha256(resolutionBytes)
 }
 
 export const validateLegacyResolutionIndexSnapshot = (
@@ -1030,13 +1200,13 @@ const loadRound = async (groupDirectory: string, roundDirectory: string): Promis
   }
 }
 
-const validateResolutionIndex = async (
+export const validateResolutionIndex = async (
   indexPath: string,
   config: DeepUnderstandingSubjectConfig,
   scope: AuthoritativeScope,
   supersededGoalIds: ReadonlySet<string> = new Set(),
   withdrawnResolutionDigests: ReadonlyMap<string, string> = new Map(),
-  currentEvidenceOwners?: ReadonlyMap<string, CurrentPositiveEvidenceOwner>,
+  semanticRetirements?: ValidatedResolutionSemanticRetirements,
 ): Promise<{
   ready: Set<string>
   claimedGoalIds: Set<string>
@@ -1078,6 +1248,7 @@ const validateResolutionIndex = async (
   const historicalClaimedGoalIds = new Set(index.resolutions.map(({ goalId }) => goalId))
   const claimedGoalIds = new Set([...historicalClaimedGoalIds].filter((goalId) => (
     !supersededGoalIds.has(goalId) && !withdrawnResolutionDigests.has(goalId)
+    && retiredResolutionDigest(semanticRetirements, indexPath, goalId) === undefined
   )))
   const indexScope = `${config.subject}:${index.artifactSetId || indexPath}`
   const indexGoalDuplicates = duplicateValues(index.resolutions?.map(({ goalId }) => goalId) ?? [])
@@ -1093,7 +1264,9 @@ const validateResolutionIndex = async (
       addIssue(issues, indexScope, error)
     })
   } else {
-    validateStandaloneResolutionIndexStructure(index, scope.atomicGoalIds).forEach((error) => {
+    validateStandaloneResolutionIndexStructure(index, scope.atomicGoalIds, semanticRetirements
+      ? { indexPath, proof: semanticRetirements }
+      : undefined).forEach((error) => {
       addIssue(issues, indexScope, error)
     })
   }
@@ -1107,7 +1280,10 @@ const validateResolutionIndex = async (
     const entries = groupGoals.get(entry.groupId) ?? []
     entries.push(entry)
     groupGoals.set(entry.groupId, entries)
-    if (!scope.atomicGoalIds.has(entry.goalId)) {
+    if (
+      !scope.atomicGoalIds.has(entry.goalId)
+      && retiredResolutionDigest(semanticRetirements, indexPath, entry.goalId) !== entry.resolutionDigest
+    ) {
       addIssue(issues, indexScope, `resolution goal ${entry.goalId} is not current curricularAtomic`)
     }
     if (!groupById.has(entry.groupId)) {
@@ -1204,9 +1380,22 @@ const validateResolutionIndex = async (
       // Keep the historical index and its review chain intact. A separately
       // configured, current replacement owns this goal after an image/text
       // change; the old resolution digest is still checked above.
-      if (supersededGoalIds.has(entry.goalId)) continue
+      const retired = retiredResolutionDigest(semanticRetirements, indexPath, entry.goalId) !== undefined
+      if (retired) {
+        if (
+          !semanticRetirements
+          || !hasIntactRetiredResolutionDigest(semanticRetirements, indexPath, entry, resolutionBytes)
+          || resolution.goal.effectiveSemanticKind !== 'curricularAtomic'
+          || resolution.status !== 'resolved'
+          || entry.strictDescriptionComplete !== true
+        ) {
+          addIssue(issues, indexScope, `${entry.goalId}: semantically retired historical resolution binding changed`)
+          continue
+        }
+      }
+      if (!retired && supersededGoalIds.has(entry.goalId)) continue
       const withdrawnDigest = withdrawnResolutionDigests.get(entry.goalId)
-      if (withdrawnDigest) {
+      if (!retired && withdrawnDigest) {
         if (withdrawnDigest !== entry.resolutionDigest) {
           addIssue(issues, indexScope, `${entry.goalId}: withdrawn historical resolution digest changed`)
         }
@@ -1256,6 +1445,24 @@ const validateResolutionIndex = async (
           continue
         }
       }
+      if (retired) {
+        const historicalValidation = await validateHistoricalGoalDescriptionDualRoundResolution({
+          resolution,
+          dualSummary: group.dualSummary,
+          dualSummaryBytes: group.dualSummaryBytes,
+          currentInput: group.first.input,
+          first: group.first,
+          second: group.second,
+          synthesisDecisionManifestArtifact,
+          humanAttestationBytes,
+        })
+        historicalValidation.errors.forEach((error) => addIssue(issues, indexScope, `${entry.goalId}: ${error}`))
+        if (historicalValidation.historicalDescriptionComplete !== entry.strictDescriptionComplete) {
+          addIssue(issues, indexScope, `${entry.goalId}: retired strictDescriptionComplete conflicts with historical validation`)
+        }
+        // Historical completeness never grants current canonical readiness.
+        continue
+      }
       const validation = await validateGoalDescriptionDualRoundResolution({
         resolution,
         dualSummary: group.dualSummary,
@@ -1275,17 +1482,6 @@ const validateResolutionIndex = async (
         addIssue(issues, indexScope, `${entry.goalId}: strictDescriptionComplete conflicts with fresh validation`)
         continue
       }
-      if (validation.strictDescriptionComplete && currentEvidenceOwners) {
-        const bindingErrors = [group.first, group.second].flatMap((round, index) => {
-          const inputGoal = round.input.goals.find(({ goalId }) => goalId === entry.goalId)
-          if (!inputGoal) return [`${entry.goalId}: round-${index === 0 ? 'a' : 'b'} lacks bound input goal`]
-          return validateDescriptionPositiveEvidenceBinding(inputGoal, currentEvidenceOwners.get(entry.goalId)).errors
-        })
-        if (bindingErrors.length) {
-          [...new Set(bindingErrors)].forEach((error) => addIssue(issues, indexScope, error))
-          continue
-        }
-      }
       if (validation.strictDescriptionComplete) ready.add(entry.goalId)
     } catch (error) {
       addIssue(issues, indexScope, `${entry.goalId}: ${error instanceof Error ? error.message : String(error)}`)
@@ -1302,6 +1498,7 @@ export const buildResolutionSupersessionChains = (
   supersessions: NonNullable<DeepUnderstandingSubjectConfig['resolutionSupersessions']>,
   indexPaths: readonly string[],
   currentGoalIds: ReadonlySet<string>,
+  semanticRetirements?: ValidatedResolutionSemanticRetirements,
 ): { chains: ResolutionSupersessionChain[]; invalidGoalIds: Set<string>; issues: string[] } => {
   const grouped = new Map<string, typeof supersessions>()
   supersessions.forEach((edge) => {
@@ -1317,7 +1514,7 @@ export const buildResolutionSupersessionChains = (
     const next = new Map<string, string>()
     const previous = new Map<string, string>()
     const nodes = new Set<string>()
-    let invalid = !currentGoalIds.has(goalId)
+    let invalid = false
     for (const { supersededIndexPath: from, replacementIndexPath: to } of edges) {
       if (
         from === to || !registered.has(from) || !registered.has(to)
@@ -1328,6 +1525,10 @@ export const buildResolutionSupersessionChains = (
       nodes.add(from)
       nodes.add(to)
     }
+    if (
+      !currentGoalIds.has(goalId)
+      && ![...nodes].every((path) => retiredResolutionDigest(semanticRetirements, path, goalId) !== undefined)
+    ) invalid = true
     const starts = [...nodes].filter((node) => !previous.has(node))
     const terminals = [...nodes].filter((node) => !next.has(node))
     const ordered: string[] = []
@@ -1361,13 +1562,19 @@ type ResolutionIndexValidation = {
 export const hasIntactResolutionSupersessionChain = (
   chain: ResolutionSupersessionChain,
   validatedIndices: readonly ResolutionIndexValidation[],
+  semanticRetirements?: ValidatedResolutionSemanticRetirements,
 ): boolean => {
   if (chain.indexPaths.length < 2 || new Set(chain.indexPaths).size !== chain.indexPaths.length) return false
+  const retired = retiredResolutionDigest(semanticRetirements, chain.indexPaths.at(-1)!, chain.goalId) !== undefined
   return chain.indexPaths.every((path, position) => {
     const matching = validatedIndices.filter((index) => index.path === path)
     if (matching.length !== 1) return false
     const index = matching[0]
     if (index.issues.length > 0 || !index.historicalClaimedGoalIds.has(chain.goalId)) return false
+    if (retired) return (
+      retiredResolutionDigest(semanticRetirements, path, chain.goalId) !== undefined
+      && !index.claimedGoalIds.has(chain.goalId) && !index.ready.has(chain.goalId)
+    )
     return position === chain.indexPaths.length - 1
       ? index.claimedGoalIds.has(chain.goalId) && index.ready.has(chain.goalId)
       : !index.claimedGoalIds.has(chain.goalId)
@@ -1378,17 +1585,31 @@ const loadDescriptionReadyGoals = async (
   config: DeepUnderstandingSubjectConfig,
   scope: AuthoritativeScope,
   issues: string[],
-  currentEvidenceOwners?: ReadonlyMap<string, CurrentPositiveEvidenceOwner>,
 ): Promise<Set<string>> => {
   const validationResults: ResolutionIndexValidation[] = []
   const ownerByGoalId = new Map<string, string>()
   const uniqueClaims = new Set<string>()
   const supersededByIndex = new Map<string, Set<string>>()
   const withdrawnByIndex = new Map<string, Map<string, string>>()
+  let semanticRetirements: ValidatedResolutionSemanticRetirements | undefined
+  if (config.resolutionSemanticRetirements?.length) {
+    try {
+      semanticRetirements = validateResolutionSemanticRetirements({
+        config,
+        landscape: scope.rawLandscape,
+        semanticKindLedger: loadJson<SemanticKindLedger>(config.semanticKindLedgerPath),
+        indices: config.resolutionIndexPaths.map((path) => ({ path, index: loadJson<unknown>(path) })),
+        scopeIssues: scope.issues,
+      })
+      semanticRetirements.issues.forEach((issue) => addIssue(issues, config.subject, issue))
+    } catch (error) {
+      addIssue(issues, config.subject, `cannot validate semantic retirements: ${error instanceof Error ? error.message : String(error)}`)
+    }
+  }
   const supersessions = config.resolutionSupersessions ?? []
   const supersededGoalOwners = new Set(supersessions.map(({ goalId }) => goalId))
   const { chains, invalidGoalIds, issues: chainIssues } = buildResolutionSupersessionChains(
-    supersessions, config.resolutionIndexPaths, scope.atomicGoalIds,
+    supersessions, config.resolutionIndexPaths, scope.atomicGoalIds, semanticRetirements,
   )
   chainIssues.forEach((issue) => addIssue(issues, config.subject, issue))
   for (const { goalId, indexPaths } of chains) {
@@ -1419,7 +1640,8 @@ const loadDescriptionReadyGoals = async (
   }
   for (const indexPath of config.resolutionIndexPaths) {
     const result = await validateResolutionIndex(
-      indexPath, config, scope, supersededByIndex.get(indexPath), withdrawnByIndex.get(indexPath), currentEvidenceOwners,
+      indexPath, config, scope, supersededByIndex.get(indexPath), withdrawnByIndex.get(indexPath),
+      semanticRetirements,
     )
     result.issues.forEach((issue) => issues.push(issue))
     validationResults.push({ path: indexPath, ...result })
@@ -1431,7 +1653,7 @@ const loadDescriptionReadyGoals = async (
     })
   }
   for (const chain of chains) {
-    if (!hasIntactResolutionSupersessionChain(chain, validationResults)) {
+    if (!hasIntactResolutionSupersessionChain(chain, validationResults, semanticRetirements)) {
       invalidGoalIds.add(chain.goalId)
       addIssue(issues, config.subject, `description-resolution supersession lacks an intact old claim and current replacement for ${chain.goalId}`)
     }
@@ -1561,24 +1783,76 @@ const validateCurrentCanonicalBindingAudits = (
   })
 }
 
-/** Bounded native D/P stage used by the report and focused regression checks.
- * It still loads and validates actual owner configs, complete D rounds and
- * resolutions; it accepts no caller-supplied readiness receipts. */
-export const loadCurrentDescriptionEvidenceGates = async (
+const loadEvidenceReadyGoals = (
   config: DeepUnderstandingSubjectConfig,
-  observer?: CurrentPositiveEvidenceObserver,
-) => {
-  const scope = loadAuthoritativeScope(config)
-  const evidence = loadCurrentPositiveEvidenceOwners({
-    ...config, landscapeId: scope.landscape.landscapeId ?? '', atomicGoalIds: scope.atomicGoalIds,
-  }, observer)
-  const descriptionIssues: string[] = []
-  const currentOwners = isCanonicalMathPhysicsEvidenceSource({
-    landscapePath: config.landscapePath, landscapeId: scope.landscape.landscapeId,
-  }) ? evidence.owners : undefined
-  const descriptionReady = await loadDescriptionReadyGoals(config, scope, descriptionIssues, currentOwners)
-  return { scope, evidenceReady: evidence.ready, evidenceOwners: evidence.owners,
-    evidenceIssues: evidence.issues, descriptionReady, descriptionIssues }
+  scope: AuthoritativeScope,
+  issues: string[],
+): Set<string> => {
+  const validatedByConfig = new Map<string, Set<string>>()
+  const ownerByGoalId = new Map<string, string>()
+  const uniqueClaims = new Set<string>()
+  for (const configPath of config.positiveEvidenceConfigPaths) {
+    let rawEvidenceConfig: PositiveGoalEvidenceReviewConfig
+    try {
+      rawEvidenceConfig = loadJson<PositiveGoalEvidenceReviewConfig>(configPath)
+      const rawGoalIds = Array.isArray(rawEvidenceConfig.scope?.goalIds)
+        ? rawEvidenceConfig.scope.goalIds
+        : []
+      rawGoalIds.forEach((goalId) => {
+        const previousOwner = claimUniqueGoal(goalId, configPath, ownerByGoalId, uniqueClaims)
+        if (previousOwner) {
+          addIssue(issues, config.subject, `positive-evidence overlap for ${goalId}: ${previousOwner} and ${configPath}`)
+        }
+      })
+    } catch (error) {
+      addIssue(issues, config.subject, `${configPath}: ${error instanceof Error ? error.message : String(error)}`)
+      continue
+    }
+    let result: ReturnType<typeof reviewPositiveGoalEvidenceConfig>
+    try {
+      result = reviewPositiveGoalEvidenceConfig(configPath)
+    } catch (error) {
+      addIssue(issues, config.subject, `${configPath}: ${error instanceof Error ? error.message : String(error)}`)
+      continue
+    }
+    const evidenceConfig: PositiveGoalEvidenceReviewConfig = result.config
+    const duplicateScopeGoalIds = duplicateValues(evidenceConfig.scope.goalIds)
+    duplicateScopeGoalIds.forEach((goalId) => {
+      addIssue(issues, config.subject, `${configPath}: duplicate configured evidence goal ${goalId}`)
+    })
+    if (
+      evidenceConfig.landscapeId !== scope.landscape.landscapeId
+      || evidenceConfig.landscapePath !== config.landscapePath
+      || evidenceConfig.semanticKindLedgerPath !== config.semanticKindLedgerPath
+    ) {
+      addIssue(issues, config.subject, `${configPath}: evidence config is bound to another subject source`)
+      continue
+    }
+    if (result.errors.length > 0 || duplicateScopeGoalIds.length > 0) {
+      result.errors.forEach((error) => addIssue(issues, config.subject, `${configPath}: ${error}`))
+      continue
+    }
+    const configReady = new Set<string>()
+    result.records.forEach((record) => {
+      if (!scope.atomicGoalIds.has(record.goalId)) {
+        addIssue(issues, config.subject, `${configPath}: evidence goal ${record.goalId} is not current curricularAtomic`)
+        return
+      }
+      const acceptedCandidate = (
+        (record.status === 'needs_human_review' && record.reviewAuthority === 'ai_candidate')
+        || (record.status === 'approved' && record.reviewAuthority === 'human')
+      )
+      if (acceptedCandidate) configReady.add(record.goalId)
+    })
+    validatedByConfig.set(configPath, configReady)
+  }
+  const ready = new Set<string>()
+  validatedByConfig.forEach((goalIds) => {
+    goalIds.forEach((goalId) => {
+      if (uniqueClaims.has(goalId)) ready.add(goalId)
+    })
+  })
+  return ready
 }
 
 const validateConfig = (raw: unknown): DeepUnderstandingRolloutConfig => {
@@ -1601,90 +1875,69 @@ export const loadDeepUnderstandingRolloutConfig = (
   configuredPath = defaultConfigPath,
 ): DeepUnderstandingRolloutConfig => validateConfig(loadJson<unknown>(configuredPath))
 
-/** Shared report projection. Production readiness always comes from the native
- * loaders above; this pure projection grants no producer or acceptance receipt. */
-export const projectDeepUnderstandingSubjectReport = (
-  config: DeepUnderstandingSubjectConfig,
-  state: Omit<Awaited<ReturnType<typeof loadCurrentDescriptionEvidenceGates>>, 'evidenceOwners'> & {
-    atomicityReady: ReadonlySet<string>; atomicityIssues: string[]
-    memoryReady: ReadonlySet<string>; memoryIssues: string[]
-    visualizationReady: ReadonlySet<string>; visualizationIssues: string[]
-    deferredVisualizationGoalIds: ReadonlySet<string>
-  },
-): DeepUnderstandingSubjectReport => {
-  const { scope, descriptionReady, descriptionIssues, evidenceReady, evidenceIssues,
-    atomicityReady, atomicityIssues, memoryReady, memoryIssues,
-    visualizationReady, visualizationIssues, deferredVisualizationGoalIds } = state
-  const strictCompleteGoalIds = scope.denominator === null
-    ? []
-    : intersectStrictGoalGates(scope.atomicGoalIds, [
-      descriptionReady,
-      evidenceReady,
-      atomicityReady,
-      memoryReady,
-      visualizationReady,
-    ])
-  const scopeIssues = [...scope.issues]
-  if (scope.denominator === 0) addIssue(scopeIssues, config.subject, 'current curricularAtomic scope is empty')
-  const checkIssues = [
-    scopeIssues, descriptionIssues, evidenceIssues, atomicityIssues, memoryIssues, visualizationIssues,
-  ]
-  const uniqueIssues = [...new Set(checkIssues.flat())].sort()
-  const requiredChecks = deepUnderstandingCompletionCheckIds.map((id, index): DeepUnderstandingCompletionCheck => ({
-    id,
-    status: checkIssues[index].length === 0 ? 'pass' : 'fail',
-  }))
-  const subjectReport: DeepUnderstandingSubjectReport = {
-    subject: config.subject,
-    label: config.label,
-    landscapeId: scope.landscape.landscapeId ?? '',
-    landscapePath: config.landscapePath,
-    currentGoalIds: [...scope.atomicGoalIds].sort(),
-    denominator: scope.denominator,
-    strictComplete: strictCompleteGoalIds.length,
-    percentage: formatRolloutPercentage(strictCompleteGoalIds.length, scope.denominator),
-    remaining: scope.denominator === null ? null : scope.denominator - strictCompleteGoalIds.length,
-    gates: {
-      currentDescriptionResolutions: descriptionReady.size,
-      currentPositiveEvidenceProfiles: evidenceReady.size,
-      currentSemanticAtomicityDecisions: atomicityReady.size,
-      currentMemoryReviewDecisions: memoryReady.size,
-      currentVisualizationQaRecords: visualizationReady.size,
-    },
-    strictCompleteGoalIds,
-    deferredVisualizationGoalIds: [...deferredVisualizationGoalIds].sort(),
-    requiredChecks,
-    strictCompletionReady: false,
-    issues: uniqueIssues,
-  }
-  subjectReport.strictCompletionReady = hasStrictDeepUnderstandingCompletion(subjectReport)
-  return subjectReport
-}
-
 export const generateDeepUnderstandingRollout = async (
   configuredPath = defaultConfigPath,
-  positiveEvidenceObserver?: CurrentPositiveEvidenceObserver,
-  subjectIds?: ReadonlySet<string>,
 ): Promise<DeepUnderstandingRolloutReport> => {
   const config = loadDeepUnderstandingRolloutConfig(configuredPath)
   const subjects: DeepUnderstandingSubjectReport[] = []
-  for (const subjectConfig of config.subjects.filter(subject => !subjectIds || subjectIds.has(subject.subject))) {
-    const { scope, descriptionReady, descriptionIssues, evidenceReady, evidenceIssues } =
-      await loadCurrentDescriptionEvidenceGates(subjectConfig, positiveEvidenceObserver)
+  for (const subjectConfig of config.subjects) {
+    const scope = loadAuthoritativeScope(subjectConfig)
+    const descriptionIssues: string[] = []
+    const evidenceIssues: string[] = []
     const atomicityIssues: string[] = []
     const memoryIssues: string[] = []
     const visualizationIssues: string[] = []
     const deferredVisualizationGoalIds = new Set<string>()
-    const [atomicityReady, memoryReady, visualizationReady] = await Promise.all([
+    const [descriptionReady, atomicityReady, memoryReady, visualizationReady] = await Promise.all([
+      loadDescriptionReadyGoals(subjectConfig, scope, descriptionIssues),
       Promise.resolve(loadAtomicityReadyGoals(subjectConfig, scope, atomicityIssues)),
       Promise.resolve(loadMemoryReadyGoals(subjectConfig, scope, memoryIssues)),
       Promise.resolve(loadVisualizationReadyGoals(subjectConfig, scope, visualizationIssues, deferredVisualizationGoalIds)),
     ])
-    const subjectReport = projectDeepUnderstandingSubjectReport(subjectConfig, {
-      scope, descriptionReady, descriptionIssues, evidenceReady, evidenceIssues,
-      atomicityReady, atomicityIssues, memoryReady, memoryIssues,
-      visualizationReady, visualizationIssues, deferredVisualizationGoalIds,
-    })
+    const evidenceReady = loadEvidenceReadyGoals(subjectConfig, scope, evidenceIssues)
+    const strictCompleteGoalIds = scope.denominator === null
+      ? []
+      : intersectStrictGoalGates(scope.atomicGoalIds, [
+        descriptionReady,
+        evidenceReady,
+        atomicityReady,
+        memoryReady,
+        visualizationReady,
+      ])
+    const scopeIssues = [...scope.issues]
+    if (scope.denominator === 0) addIssue(scopeIssues, subjectConfig.subject, 'current curricularAtomic scope is empty')
+    const checkIssues = [
+      scopeIssues, descriptionIssues, evidenceIssues, atomicityIssues, memoryIssues, visualizationIssues,
+    ]
+    const uniqueIssues = [...new Set(checkIssues.flat())].sort()
+    const requiredChecks = deepUnderstandingCompletionCheckIds.map((id, index): DeepUnderstandingCompletionCheck => ({
+      id,
+      status: checkIssues[index].length === 0 ? 'pass' : 'fail',
+    }))
+    const subjectReport: DeepUnderstandingSubjectReport = {
+      subject: subjectConfig.subject,
+      label: subjectConfig.label,
+      landscapeId: scope.landscape.landscapeId ?? '',
+      landscapePath: subjectConfig.landscapePath,
+      currentGoalIds: [...scope.atomicGoalIds].sort(),
+      denominator: scope.denominator,
+      strictComplete: strictCompleteGoalIds.length,
+      percentage: formatRolloutPercentage(strictCompleteGoalIds.length, scope.denominator),
+      remaining: scope.denominator === null ? null : scope.denominator - strictCompleteGoalIds.length,
+      gates: {
+        currentDescriptionResolutions: descriptionReady.size,
+        currentPositiveEvidenceProfiles: evidenceReady.size,
+        currentSemanticAtomicityDecisions: atomicityReady.size,
+        currentMemoryReviewDecisions: memoryReady.size,
+        currentVisualizationQaRecords: visualizationReady.size,
+      },
+      strictCompleteGoalIds,
+      deferredVisualizationGoalIds: [...deferredVisualizationGoalIds].sort(),
+      requiredChecks,
+      strictCompletionReady: false,
+      issues: uniqueIssues,
+    }
+    subjectReport.strictCompletionReady = hasStrictDeepUnderstandingCompletion(subjectReport)
     subjects.push(subjectReport)
   }
   return {
@@ -1692,16 +1945,6 @@ export const generateDeepUnderstandingRollout = async (
     reportId: config.reportId,
     subjects,
     blockingIssueCount: subjects.reduce((sum, subject) => sum + subject.issues.length, 0),
-  }
-}
-
-/** Existing fixed native producer boundary, shared only to exercise it without
- * invoking the whole-source executable. It consumes the central report as-is. */
-export const assertRegisteredMathPhysicsNativeAcceptanceComplete = (report: DeepUnderstandingRolloutReport): void => {
-  if (report.blockingIssueCount !== 0 || report.subjects.length !== 2 || report.subjects.some((subject) => !subject.strictCompletionReady)) {
-    throw new Error('Current registered native Kind/D/P/A/M/V acceptance is incomplete: '
-      + JSON.stringify(report.subjects.map((subject) => ({ subject: subject.subject,
-        strict: subject.strictComplete, denominator: subject.denominator, issues: subject.issues }))))
   }
 }
 

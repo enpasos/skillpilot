@@ -1,4 +1,3 @@
-import { normalizeCompleteApplicabilityContext, toSelectedApplicabilityScope } from '../src/utils/applicabilityContexts'
 import { readdirSync, readFileSync } from 'node:fs'
 import { dirname, join, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -84,17 +83,15 @@ function buildStageScopeConfig(scope: 'both' | 'sek1' | 'sek2'): PersonalCurricu
   }
 }
 
-export function collectTreeProjectionFindingsForLandscape(
+function collectTreeProjectionFindingsForLandscape(
   landscape: SkillLandscape,
   activeFilter: string | undefined,
   stageScope: 'both' | 'sek1' | 'sek2',
-  selectedScope?: unknown,
 ): TreeProjectionFinding[] {
   const uiGoals = landscape.goals.map((goal) => convertLearningGoal(goal, { landscapeId: landscape.landscapeId }))
   const [projectedEntry] = applyGoalPlacementProjection(
     [{ meta: landscape, goals: uiGoals }],
     activeFilter,
-    selectedScope,
   )
 
   if (!projectedEntry) return []
@@ -102,9 +99,8 @@ export function collectTreeProjectionFindingsForLandscape(
   const allGoals = new Map(projectedEntry.goals.map((goal) => [goal.id, goal]))
   const personalConfig = buildStageScopeConfig(stageScope)
   const { globalRootGoals } = buildGoalIndex(projectedEntry.goals)
-  const visibleChildrenByParent = buildVisibleChildrenMap(allGoals, activeFilter, personalConfig, 'all', undefined,
-    new Map([[landscape.landscapeId, selectedScope]]))
-  const scopeLabel = `filter=${activeFilter ?? 'all'};stage=${stageScope};audience=learner${selectedScope ? `;selectedScope=${JSON.stringify(selectedScope)}` : ''}`
+  const visibleChildrenByParent = buildVisibleChildrenMap(allGoals, activeFilter, personalConfig, 'all', 'learner')
+  const scopeLabel = `filter=${activeFilter ?? 'all'};stage=${stageScope};audience=learner`
 
   const occurrenceCountByGoalId = new Map<string, number>()
   const visibleParentIdsByGoalId = new Map<string, Set<string>>()
@@ -198,18 +194,6 @@ export function buildTreeProjectionValidationFindings(): TreeProjectionFinding[]
       }
     }
 
-    // Exact-context goals need a complete actual authoring scope. Enumerate
-    // declared placement contexts; eligibility declarations never invent scope.
-    const placementScopes = new Map((landscape.goalPlacements ?? []).flatMap((placement) => {
-      const scope = normalizeCompleteApplicabilityContext(toSelectedApplicabilityScope(placement.context))
-      return scope ? [[JSON.stringify(scope), scope] as const] : []
-    }))
-    for (const scope of placementScopes.values()) {
-      const filters = [scope.jurisdiction, scope.durationModel, scope.courseProfile]
-        .filter((value): value is string => typeof value === 'string').join(',')
-      findings.push(...collectTreeProjectionFindingsForLandscape(landscape, filters,
-        scope.stage === 'SekI' ? 'sek1' : 'sek2', scope))
-    }
     if (findings.length === 0) {
       void repoRelative(file)
     }

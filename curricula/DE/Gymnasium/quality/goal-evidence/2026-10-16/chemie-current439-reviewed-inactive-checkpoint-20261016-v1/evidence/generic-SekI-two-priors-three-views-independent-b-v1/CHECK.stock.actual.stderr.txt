@@ -1,0 +1,31 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
++ [
++   {
++     consumerId: '5abc5961-6368-52bb-88b9-6a846c3c37a8',
++     priorId: '5338b54c-68bc-5892-907c-e025351ffde6'
++   }
++ ]
+- []
+    at <anonymous> (/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/generic-SekI-two-priors-three-views-independent-b-v1/check-after-FIRST.independent-b.mts:74:44)
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: [
+    {
+      consumerId: '5abc5961-6368-52bb-88b9-6a846c3c37a8',
+      priorId: '5338b54c-68bc-5892-907c-e025351ffde6'
+    }
+  ],
+  expected: [],
+  operator: 'deepStrictEqual'
+}
+
+Node.js v20.20.2

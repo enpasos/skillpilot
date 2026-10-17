@@ -1,0 +1,157 @@
+{
+  "goalId": "d8bdf486-7295-5393-b6f7-54f6e485c848",
+  "material": {
+    "origin": "Original synthetic author model; no real specimen, instrument reading, teacher experiment or independent measurement exists. Generated amounts use stoichiometric bookkeeping; pH uses ideal Henderson-Hasselbalch with pKa=4.76 at 25 C and dilute ideal activities. Strong-acid/base blank uses stoichiometric excess and pKw=14.00. Small dissociation corrections, activity changes and indicator consumption are omitted. The column called species amount is a model output, not pH-independent analytical evidence.",
+    "units": {
+      "volume": "mL",
+      "nCH3COOH": "mmol",
+      "nCH3COOminus": "mmol",
+      "pH": "dimensionless"
+    },
+    "mainSample": [
+      {
+        "stage": "start",
+        "volume": 100,
+        "nCH3COOH": 0.5,
+        "nCH3COOminus": 0.5,
+        "fractionCH3COOH": 0.5,
+        "fractionCH3COOminus": 0.5,
+        "pH": 4.76
+      },
+      {
+        "stage": "after-acid-1",
+        "volume": 101,
+        "nCH3COOH": 0.8,
+        "nCH3COOminus": 0.2,
+        "fractionCH3COOH": 0.8,
+        "fractionCH3COOminus": 0.2,
+        "pH": 4.158
+      },
+      {
+        "stage": "after-base",
+        "volume": 103,
+        "nCH3COOH": 0.2,
+        "nCH3COOminus": 0.8,
+        "fractionCH3COOH": 0.2,
+        "fractionCH3COOminus": 0.8,
+        "pH": 5.362
+      },
+      {
+        "stage": "after-acid-2",
+        "volume": 105,
+        "nCH3COOH": 0.8,
+        "nCH3COOminus": 0.2,
+        "fractionCH3COOH": 0.8,
+        "fractionCH3COOminus": 0.2,
+        "pH": 4.158
+      }
+    ],
+    "additions": [
+      {
+        "step": "acid-1",
+        "addedHCl_mmol": 0.3,
+        "addedVolume_mL": 1
+      },
+      {
+        "step": "base",
+        "addedNaOH_mmol": 0.6,
+        "addedVolume_mL": 2
+      },
+      {
+        "step": "acid-2",
+        "addedHCl_mmol": 0.6,
+        "addedVolume_mL": 2
+      }
+    ],
+    "noAcetateControl": [
+      {
+        "stage": "start",
+        "volume": 100,
+        "acetatePresent": false,
+        "pH": 4.76
+      },
+      {
+        "stage": "after-acid-1",
+        "volume": 101,
+        "acetatePresent": false,
+        "pH": 2.525
+      },
+      {
+        "stage": "after-base",
+        "volume": 103,
+        "acetatePresent": false,
+        "pH": 11.462
+      },
+      {
+        "stage": "after-acid-2",
+        "volume": 105,
+        "acetatePresent": false,
+        "pH": 2.542
+      }
+    ],
+    "dilutionOnlyControl": [
+      {
+        "stage": "start",
+        "volume": 100,
+        "nCH3COOH": 0.5,
+        "nCH3COOminus": 0.5,
+        "pH": 4.76
+      },
+      {
+        "stage": "after-acid-1",
+        "volume": 101,
+        "nCH3COOH": 0.5,
+        "nCH3COOminus": 0.5,
+        "pH": 4.76
+      },
+      {
+        "stage": "after-base",
+        "volume": 103,
+        "nCH3COOH": 0.5,
+        "nCH3COOminus": 0.5,
+        "pH": 4.76
+      },
+      {
+        "stage": "after-acid-2",
+        "volume": 105,
+        "nCH3COOH": 0.5,
+        "nCH3COOminus": 0.5,
+        "pH": 4.76
+      }
+    ],
+    "noAcetateControlStart": "Initially 100 mL water adjusted with a trace of HCl to pH 4.760; the same stated acid/base amounts and volumes are then added. These too are modeled values, not measured controls.",
+    "dilutionOnlyControlStart": "A separate identical initial acetate/acetic acid sample receives only water to the same successive volumes. These too are modeled values, not measured controls."
+  },
+  "materialDe": "Teil M – ausschließlich vorgegebenes ideales Stöchiometrie-/HH-Modell bei 25 °C, keine Messwerte. Jede Volumenangabe ist ein definierter Modellparameter; jede Stoffmenge und jeder Stoffanteil ist eine Ausgabe der definierten Stöchiometrie. Der Paar-pH stammt aus dem HH-Modell, der pH der Leerkontrolle aus dem idealen Säure-/Baseüberschussmodell.\nSchritt | definiertes Modellvolumen mL | modelliertes n(Essigsäure) mmol | modelliertes n(Acetat) mmol | HH-Modell-pH\nStart | 100 | 0,50 | 0,50 | 4,760\n+0,30 mmol HCl (1 mL) | 101 | 0,80 | 0,20 | 4,158\n+0,60 mmol NaOH (2 mL) | 103 | 0,20 | 0,80 | 5,362\n+0,60 mmol HCl (2 mL) | 105 | 0,80 | 0,20 | 4,158\nDie modellierten Stoffanteile von Essigsäure/Acetat sind entsprechend 0,50/0,50; 0,80/0,20; 0,20/0,80; 0,80/0,20. Es sind keine unabhängig bestimmten Anteile.\nModell-Verdünnungskontrolle: dieselbe Anfangszusammensetzung erhält nur Wasser auf 100/101/103/105 mL; beide modellierten Stoffmengen bleiben 0,50 mmol, der HH-Modell-pH ist jeweils 4,760. Modell-Leerkontrolle ohne Acetat: anfangs 100 mL Wasser mit einer Spur HCl auf Modell-pH 4,760; nach denselben Säure/Base-Zugaben modellierte pH-Werte 2,525 / 11,462 / 2,542, keine Acetat-Spezies. Damit können auch ohne Acetat starke Indikatoränderungen auftreten. Alle Zahlen sind eigens erzeugte ideale Modellwerte. Kleine Dissoziationskorrekturen, Aktivitätsänderungen und Indikatorverbrauch sind im Modell vernachlässigt. Es sind keine pKa-/pH-Rechnung und keine Handhabung von Chemikalien verlangt.",
+  "materialEn": "Part M – supplied ideal stoichiometric/HH model at 25 °C only, not measurements. Every volume is a defined model parameter; every amount and fraction is an output of the defined stoichiometry. Pair pH comes from the HH model, while blank pH comes from the ideal excess acid/base model.\nStep | defined model volume mL | modeled n(acetic acid) mmol | modeled n(acetate) mmol | HH model pH\nStart | 100 | 0.50 | 0.50 | 4.760\n+0.30 mmol HCl (1 mL) | 101 | 0.80 | 0.20 | 4.158\n+0.60 mmol NaOH (2 mL) | 103 | 0.20 | 0.80 | 5.362\n+0.60 mmol HCl (2 mL) | 105 | 0.80 | 0.20 | 4.158\nThe modeled acetic-acid/acetate fractions are respectively 0.50/0.50; 0.80/0.20; 0.20/0.80; 0.80/0.20. These are not independently determined fractions.\nModel dilution control: the same initial composition receives only water to 100/101/103/105 mL; both modeled amounts remain 0.50 mmol and the HH model pH is 4.760 throughout. Model blank without acetate: initially 100 mL water adjusted with a trace of HCl to model pH 4.760; the same acid/base additions give modeled pH 2.525 / 11.462 / 2.542 with no acetate species. Thus strong indicator changes are possible without acetate as well. All numbers are invented ideal model values. Small dissociation corrections, activity changes and indicator consumption are neglected. Neither pKa/pH calculations nor handling chemicals is requested.",
+  "realExperimentalInferenceStillNeeded": [
+    "Conditional boundary only: a later claim that an investigation actually occurred requires genuine corresponding records, appropriate controls, known sample identity, conditions, safety and uncertainties.",
+    "The goal assesses inference from supplied observations; it does not require the learner to acquire observations, calculate HH values, calibrate a method or independently assay acetate.",
+    "An independently determined species-specific signal or quantitative fraction is one possible stronger investigation, not a universal minimum required by the unchanged goal.",
+    "Neither HH model outputs nor the fictional qualitative report are actual experimental records. No real experiment or Human Trial is newly required for machine M7."
+  ],
+  "practicalExecutionRequiredByThisTask": false,
+  "performedExperiment": false,
+  "actualObservationRecords": [],
+  "humanTrial": false,
+  "modelColumnSemantics": {
+    "volume": "Defined model parameter, not an acquired reading.",
+    "nCH3COOH": "Stoichiometric model output, not a measured amount.",
+    "nCH3COOminus": "Stoichiometric model output, not a measured amount.",
+    "fractionCH3COOH": "Stoichiometric model output, not an independently determined fraction.",
+    "fractionCH3COOminus": "Stoichiometric model output, not an independently determined fraction.",
+    "pH": "HH model prediction for the pair, or ideal excess acid/base model for the blank; not a measurement."
+  },
+  "hypotheticalObservationReport": {
+    "origin": "Explicitly fictional qualitative investigation report for interpretation only; not an actual experiment or independent measurement.",
+    "reportDe": "Teil B – vollständiger fiktiver Untersuchungsbericht, eigens erfunden und nur für diese Auswertung als Beobachtungsbericht angenommen. Niemand hat diesen Versuch hier durchgeführt oder die folgenden Signale tatsächlich erhoben. Der Bericht enthält qualitative Annahmen und übernimmt keine berechneten Stoffanteile als Messung.\nBekannte Zusammensetzung: Probe A enthält anfangs Essigsäure und Acetat, je 0,50 mmol in 100 mL Wasser; Natrium- und Chloridionen werden als Zuschauerionen behandelt. Die Probe bleibt im selben gekennzeichneten Gefäß und wird bei ungefähr 25 °C jeweils vermischt. In der Reihenfolge werden 0,30 mmol HCl in 1 mL, 0,60 mmol NaOH in 2 mL und 0,60 mmol HCl in 2 mL zugegeben. Ein gleichartiger Breitbereichsindikator und eine pH-Sonde werden für alle Vergleichsproben angenommen.\nAngenommene Befunde derselben Probe A: Anfangs orange Farblage und Ausgangssignal der pH-Sonde; nach erster Säurezugabe rötliche Farblage und niedrigeres pH-Signal; nach Base gelborange Farblage und höheres pH-Signal als zu Beginn; nach erneuter Säure wieder rötliche Farblage und niedrigeres Signal als nach Base. Es werden keine quantitativen Stoffanteile oder direkten Teilchenbilder beobachtet.\nAngenommene Leerkontrolle L ohne Essigsäure/Acetat: 100 mL Wasser, mit einer Spur HCl auf dieselbe anfängliche orange Farblage eingestellt, erhält dieselben drei Zugaben. Nach Säure rot, nach Base blau, nach erneuter Säure rot; die pH-Sonde wechselt in dieselben Richtungen mit stärkeren Ausschlägen. Auch ohne das Paar gibt es also Gegenwechsel des Indikators. Die Farbe identifiziert nicht Essigsäure oder Acetat.\nAngenommene Verdünnungskontrolle V: Eine eigene Probe mit derselben Anfangszusammensetzung wie A erhält nur Wasser bis 101/103/105 mL, dieselbe Mischung und Beobachtungsfolge. Die orange Farblage bleibt; die Sonde zeigt keinen aufgelösten systematischen pH-Trend. Damit erklärt Verdünnung allein im angenommenen Bericht den Gegenwechsel von A nicht. Die Kontrolle beweist keine unveränderte Konzentration; beide Stoffe werden durch Wasser verdünnt.\nAlle Signale und Farben in Teil B sind qualitative, ausdrücklich hypothetische Befunde, keine tatsächlichen Messwerte und keine aus der HH-Tabelle abgeleiteten unabhängigen Stoffnachweise. Die bekannte Paarzusammensetzung, die Zugaben und die Kontrollen erlauben eine begrenzte Modellinferenz; sie liefern keine eindeutige Teilchenidentifikation aus Farbe allein.",
+    "reportEn": "Part B – complete fictional investigation report, invented for this task and assumed as an observation report for interpretation only. Nobody performed this investigation here or actually acquired the signals below. The report contains qualitative assumptions and does not relabel calculated fractions as measurements.\nKnown composition: sample A initially contains 0.50 mmol each of acetic acid and acetate in 100 mL water; sodium and chloride ions are treated as spectator ions. The sample stays in the same labeled vessel and is mixed at approximately 25 °C after each addition. The sequence is 0.30 mmol HCl in 1 mL, 0.60 mmol NaOH in 2 mL, then 0.60 mmol HCl in 2 mL. The same kind of broad-range indicator and a pH probe are assumed for all comparison samples.\nAssumed findings in that same sample A: initially an orange hue and the initial pH-probe signal; after the first acid addition a reddish hue and a lower pH signal; after base a yellow-orange hue and a pH signal higher than initially; after renewed acid a reddish hue again and a signal lower than after base. No quantitative species fractions or direct particle images are observed.\nAssumed blank L without acetic acid/acetate: 100 mL water, adjusted with a trace of HCl to the same initial orange hue, receives the same three additions. After acid it is red, after base blue, and after renewed acid red; the pH probe changes in the same directions with larger excursions. Thus opposing indicator changes occur without the pair too. Color does not identify acetic acid or acetate.\nAssumed dilution control V: a separate sample with the same initial composition as A receives only water to 101/103/105 mL with the same mixing and observation sequence. Its orange hue remains and the probe resolves no systematic pH trend. Dilution alone therefore does not explain the opposing changes in A in this assumed report. This control does not prove unchanged concentrations; water dilutes both substances.\nAll signals and colors in Part B are qualitative, explicitly hypothetical findings, not actual measurements or independent species evidence derived from the HH table. Known pair composition, additions and controls permit a limited model inference; they do not provide unique species identification from color alone.",
+    "performedExperiment": false,
+    "actualObservationRecords": []
+  },
+  "designStatus": "designed_not_learner_observed",
+  "evidenceLevel": "E0",
+  "generalizationLevel": "G0",
+  "humanApproval": false,
+  "actualExperimentRequiredForM7": false
+}

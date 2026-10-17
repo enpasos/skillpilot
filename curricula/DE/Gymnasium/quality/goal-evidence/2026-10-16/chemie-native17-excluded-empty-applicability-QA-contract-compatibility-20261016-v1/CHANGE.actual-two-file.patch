@@ -1,0 +1,115 @@
+diff --git a/app/scripts/testGoalDescriptionReviewCampaign.ts b/app/scripts/testGoalDescriptionReviewCampaign.ts
+index 9e308983f..a3c64a6f2 100644
+--- a/app/scripts/testGoalDescriptionReviewCampaign.ts
++++ b/app/scripts/testGoalDescriptionReviewCampaign.ts
+@@ -10,6 +10,7 @@ import {
+   writeVerifiedGoalDescriptionReviewCampaignGuidanceArtifacts,
+ } from './createGoalDescriptionReviewCampaign'
+ import {
++  buildGoalDescriptionCanonicalContext,
+   buildGoalDescriptionReviewCampaign,
+   buildGoalDescriptionReviewInput,
+   fingerprintGoalBookReviewBundleManifest,
+@@ -566,6 +567,52 @@ assert.deepEqual(
+   [],
+ )
+ 
++const excludedFixtureContext = buildGoalDescriptionCanonicalContext({
++  ...builtInput.goals[0].canonicalContext,
++  applicability: {},
++  extendedData: {
++    applicabilityProjection: 'excluded',
++    applicabilityMappingInheritance: 'boundary',
++  },
++})
++assert.deepEqual(excludedFixtureContext.applicability, {})
++assert.equal(excludedFixtureContext.applicabilitySemantics.projection, 'excluded')
++assert.equal(excludedFixtureContext.applicabilitySemantics.mappingInheritance, 'boundary')
++
++for (const { label, applicability, projection, valid } of [
++  { label: 'empty excluded applicability', applicability: {}, projection: 'excluded', valid: true },
++  { label: 'empty unspecified applicability', applicability: {}, projection: null, valid: false },
++  { label: 'empty target applicability', applicability: {}, projection: 'target', valid: false },
++  { label: 'empty applicability with wrong exclusion case', applicability: {}, projection: 'Excluded', valid: false },
++  { label: 'array applicability despite exclusion', applicability: [], projection: 'excluded', valid: false },
++  { label: 'wrong-typed applicability despite exclusion', applicability: { jurisdiction: 4 }, projection: 'excluded', valid: false },
++  { label: 'null applicability retained', applicability: null, projection: null, valid: true },
++  { label: 'nonempty applicability retained', applicability: { jurisdiction: ['DE-HE'] }, projection: null, valid: true },
++]) {
++  const applicabilityInput = structuredClone(builtInput)
++  applicabilityInput.goals[0].canonicalContext = structuredClone(excludedFixtureContext)
++  const context = applicabilityInput.goals[0].canonicalContext as unknown as Record<string, unknown>
++  context.applicability = applicability
++  context.applicabilitySemantics = {
++    ...excludedFixtureContext.applicabilitySemantics,
++    projection,
++  }
++  applicabilityInput.reviewInputFingerprint = fingerprintGoalDescriptionReviewInput(applicabilityInput)
++  const applicabilityCampaign = buildGoalDescriptionReviewCampaign({
++    ...v3Campaign,
++    bundle,
++    input: applicabilityInput,
++    batchSize: 20,
++  })
++  const result = await validateGoalDescriptionReviewCampaign({
++    bundle,
++    input: applicabilityInput,
++    campaign: applicabilityCampaign,
++  })
++  if (valid) assert.deepEqual(result.errors, [], label)
++  else assert.match(result.errors.join('\n'), /applicability/u, label)
++}
++
+ const staleCanonicalContextInput = structuredClone(builtInput)
+ staleCanonicalContextInput.goals[0].canonicalContext!.weight = 2
+ assert.match(
+diff --git a/contracts/goal-description-review/v3/goal-description-review-input.schema.json b/contracts/goal-description-review/v3/goal-description-review-input.schema.json
+index 16fe00d32..e23fe6793 100644
+--- a/contracts/goal-description-review/v3/goal-description-review-input.schema.json
++++ b/contracts/goal-description-review/v3/goal-description-review-input.schema.json
+@@ -147,7 +147,11 @@
+         },
+         "dimensionTags": { "$ref": "#/$defs/dimensionTags" },
+         "applicability": {
+-          "oneOf": [{ "$ref": "#/$defs/applicability" }, { "type": "null" }]
++          "oneOf": [
++            { "$ref": "#/$defs/applicability" },
++            { "type": "null" },
++            { "type": "object", "maxProperties": 0 }
++          ]
+         },
+         "type": {
+           "oneOf": [{ "enum": ["atomic", "cluster"] }, { "type": "null" }]
+@@ -193,7 +197,31 @@
+         "requires": { "$ref": "#/$defs/idArray" },
+         "contains": { "$ref": "#/$defs/idArray" },
+         "examples": { "$ref": "#/$defs/stringArray" }
+-      }
++      },
++      "allOf": [
++        {
++          "if": {
++            "type": "object",
++            "required": ["applicability"],
++            "properties": {
++              "applicability": { "type": "object", "maxProperties": 0 }
++            }
++          },
++          "then": {
++            "type": "object",
++            "required": ["applicabilitySemantics"],
++            "properties": {
++              "applicabilitySemantics": {
++                "type": "object",
++                "required": ["projection"],
++                "properties": {
++                  "projection": { "const": "excluded" }
++                }
++              }
++            }
++          }
++        }
++      ]
+     },
+     "dimensionTags": {
+       "type": "object",

@@ -1,0 +1,34 @@
+{
+  "role": "Actual independent targeted stock function execution, not full M/CQR gate",
+  "checkedAtUtc": "2026-10-16T09:29:53.691543+00:00",
+  "attempts": [
+    {
+      "command": "app/node_modules/.bin/tsx tmp/chemie-split3-memory6-independent-b-bounded-science-20261016-v1/check_memory6.ts",
+      "exitCode": 1,
+      "failure": "Top-level await is currently not supported with cjs output format; no check assertions executed."
+    },
+    {
+      "command": "app/node_modules/.bin/tsx tmp/chemie-split3-memory6-independent-b-bounded-science-20261016-v1/check_memory6.mts",
+      "exitCode": 0,
+      "result": "PASS finite structural assertions; original scientific definition HOLD retained"
+    }
+  ],
+  "stockSourceUnmodified": true,
+  "stockFingerprintScratchAdapter": "Only terminal main() removed and fingerprint exports appended; function bodies unchanged. Stock paths and source hashes are pinned in CHECK.",
+  "actualChecks": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-split3-memory6-independent-b-bounded-science-20261016-v1/CHECK.independent-actual47-purpose142-card-bindings-and-preservation.json",
+    "sha256": "sha256:7a53784aa5534eb9b096389162c69d5fd634e5b8fe3c3a5eda8cdd1b3c947695",
+    "bytes": 298843
+  },
+  "FIRSTStillExact": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-split3-memory6-independent-b-bounded-science-20261016-v1/FIRST.Memory6.independent-B.science.json",
+    "sha256": "sha256:7b10778605f7aea54410134872e1015e9f3fa45eac8c8482355e784de8975899",
+    "bytes": 18887
+  },
+  "curriculumSymlinkErrors": 0,
+  "ownCurriculumSymlinkErrors": 0,
+  "normalRowsSerialized": 0,
+  "fullGateExecuted": false,
+  "HumanApproval": false,
+  "HumanTrial": false
+}

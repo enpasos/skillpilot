@@ -1,0 +1,66 @@
+{
+  "role": "Actual stock prepare/import of one isolated pending goal image; no independent science or release",
+  "createdAtUTC": "2026-10-16T18:12:49.774771+00:00",
+  "priorSparseCapsulePreparationFailure": "Clone lacked helper scripts; first preparation stopped after actual640 author canonical and physical destination parents, before helper execution. Recovery verified that exact state and copied3 byte-exact current stock scripts; canonical append was not repeated.",
+  "actualStages": [
+    {
+      "stage": 1,
+      "command": [
+        "node",
+        "--preserve-symlinks",
+        "--preserve-symlinks-main",
+        "scripts/prepare_goal_visualization.mjs",
+        "459724db-9f9a-5967-8d9a-2b6277415275",
+        "--landscape",
+        "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+        "--subject",
+        "chemie",
+        "--provider",
+        "OpenAI / ChatGPT-Codex built-in image_gen.imagegen",
+        "--review-status",
+        "pilot"
+      ],
+      "cwd": "tmp/chemie-m7-resumed-20261016/chemie-shared640-recycling-native-author-capsule-L6-v1",
+      "exitCode": 0
+    },
+    {
+      "stage": 2,
+      "command": [
+        "node",
+        "--preserve-symlinks",
+        "--preserve-symlinks-main",
+        "scripts/import_goal_visualization.mjs",
+        "459724db-9f9a-5967-8d9a-2b6277415275",
+        "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/common-recycling-image-author-v1/459724db-9f9a-5967-8d9a-2b6277415275.png",
+        "--landscape",
+        "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+        "--subject",
+        "chemie",
+        "--provider",
+        "OpenAI / ChatGPT-Codex built-in image_gen.imagegen",
+        "--review-status",
+        "pilot",
+        "--license",
+        "CC-BY-4.0",
+        "--prompt",
+        "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/common-recycling-image-author-v1/prompt.image_gen.new-candidate.txt",
+        "--description",
+        "Zwei PMMA-Recyclingwege: lange Ketten beim Umschmelzen und getrennte MMA-Bausteine vor erneuter Polymerisation; Qualität, Ausbeute, Energie und Kosten gemeinsam beurteilen.",
+        "--alt-text",
+        "Zwei comicartige PMMA-Wege: Links werden Kunststoffstücke erhitzt und umgeformt, lange symbolische Ketten bleiben weitgehend verbunden. Rechts führt Zerlegen und Aufreinigen zu getrennten MMA-Symbolen; ein eigener Polymerisationspfeil führt zu neuen PMMA-Ketten. Beide Wege zeigen Reststoffe. Qualität, Ausbeute, Energie und Kosten werden gegenübergestellt, ohne einen immer besseren Weg zu behaupten."
+      ],
+      "cwd": "tmp/chemie-m7-resumed-20261016/chemie-shared640-recycling-native-author-capsule-L6-v1",
+      "exitCode": 0
+    }
+  ],
+  "generationBeforeStockPrepareTruth": "Original image was generated as unbound candidate before stock prep; these actual stock prep/import stages are before canonical resource/public binding, not before generation.",
+  "ordinaryCountPending": 438,
+  "wholeGoal640AfterImportSHA256": "sha256:a915d088f93133b04e073421ec6abd0b62aaebf4abdef391ca784feb79a26178",
+  "newGoalResourceOnlyChange": true,
+  "allOther639GoalObjectsExactSinceAuthorAppend": true,
+  "L5Baseline639Unchanged": true,
+  "normalSourcePublicBackendAssetsAbsent": true,
+  "sourceNativePNG": "sha256:d21e3880923a65975d05b8d205a5be09949d9ea9f7fcf51aeb861e92608e7497",
+  "HumanApproval": false,
+  "M7Claim": false
+}

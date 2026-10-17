@@ -2,7 +2,6 @@ import fs from 'node:fs'
 import path from 'node:path'
 import crypto from 'node:crypto'
 import { fileURLToPath } from 'node:url'
-import { goalVisualizationAssetSegments } from './goal_visualization_paths.mjs'
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url))
 const repoRoot = path.resolve(scriptDir, '..')
@@ -156,18 +155,19 @@ for (const landscapePath of landscapePaths) {
         fail(`${prefix}: image filename must be ${expectedFileName}.`)
       }
 
-      const assetSegments = goalVisualizationAssetSegments(link.url)
-      const subjectSegment = assetSegments?.[0] ?? ''
+      const assetRelativePath = link.url.replace('/assets/goal-visualizations/', '')
+      const assetSegments = assetRelativePath.split('/')
+      const subjectSegment = assetSegments[0] ?? ''
       if (
-        !assetSegments
+        assetSegments.length !== 3
         || !/^[a-z0-9][a-z0-9-]*$/u.test(subjectSegment)
         || assetSegments[1] !== goal.id
-        || assetSegments.at(-1) !== expectedFileName
+        || assetSegments[2] !== expectedFileName
+        || assetSegments.some((segment) => segment === '.' || segment === '..' || segment.includes('\\'))
       ) {
-        fail(`${prefix}: url must use safe path segments <subject>/${goal.id}/[version/...]${expectedFileName}.`)
+        fail(`${prefix}: url must use the exact path schema <subject>/${goal.id}/${expectedFileName}.`)
         continue
       }
-      const assetRelativePath = assetSegments.join('/')
       const previousOwner = assetOwners.get(assetRelativePath)
       if (previousOwner && previousOwner !== prefix) {
         fail(`${prefix}: asset ${assetRelativePath} is already owned by ${previousOwner}.`)

@@ -134,9 +134,7 @@ public final class OpenAiDeCoachContextProjector {
                 progress(state.goals()),
                 completion,
                 policies(interactionMode, examHasImage, orientation, communicationLocale),
-                state.stateMachine() != null && !state.stateMachine().prerequisiteBlockers().isEmpty()
-                        ? stateProjection.prerequisiteBlockerInstruction(communicationLocale)
-                        : instruction(
+                instruction(
                         requiredAction,
                         activeGoal,
                         options,
@@ -145,8 +143,7 @@ public final class OpenAiDeCoachContextProjector {
                         completion,
                         examHasImage,
                         communicationLocale),
-                null,
-                stateProjection.projectPrerequisiteBlockers(state.stateMachine(), communicationLocale));
+                null);
     }
 
     private OpenAiDeCoachContext.CurriculumCatalog curriculumCatalog(

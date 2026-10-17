@@ -13,7 +13,6 @@ import {
 } from 'node:fs'
 import { basename, dirname, extname, isAbsolute, join, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { goalVisualizationAssetSegments } from '../../scripts/goal_visualization_paths.mjs'
 import { crc32 } from 'node:zlib'
 import {
   defaultMemoryCardReviewConfigDir,
@@ -474,7 +473,7 @@ const FLASHCARD_DECK_SCHEMA = {
   },
 }
 
-export const GOAL_VISUALIZATION_INDEX_SCHEMA = {
+const GOAL_VISUALIZATION_INDEX_SCHEMA = {
   $schema: 'https://json-schema.org/draft/2020-12/schema',
   $id: 'https://skillpilot.local/schema/goal-visualization-index.schema.json',
   title: 'SkillPilot goal visualization asset index',
@@ -511,11 +510,11 @@ export const GOAL_VISUALIZATION_INDEX_SCHEMA = {
           order: { type: 'integer', minimum: 0 },
           packagePath: {
             type: 'string',
-            pattern: '^assets/goal-visualizations/(?:(?!\\.{1,2}/)[A-Za-z0-9_.-]+/){2,}[A-Za-z0-9_.-]+\\.(?:jpg|png)(?![\\s\\S])',
+            pattern: '^assets/goal-visualizations/[^/]+/[^/]+/[^/]+\\.(?:jpg|png)$',
           },
           publicUrl: {
             type: 'string',
-            pattern: '^/assets/goal-visualizations/(?:(?!\\.{1,2}/)[A-Za-z0-9_.-]+/){2,}[A-Za-z0-9_.-]+\\.(?:jpg|png)(?![\\s\\S])',
+            pattern: '^/assets/goal-visualizations/[^/]+/[^/]+/[^/]+\\.(?:jpg|png)$',
           },
           mediaType: { enum: ['image/jpeg', 'image/png'] },
           bytes: { type: 'integer', minimum: 0 },
@@ -1486,7 +1485,7 @@ const goalVisualizationMediaType = (extension: string, content: Buffer) => {
   return null
 }
 
-export const selectGoalVisualizationAssets = (
+const selectGoalVisualizationAssets = (
   canonicalData: Record<string, JsonValue>,
   subjectSlug: string,
   errors: string[],
@@ -1530,8 +1529,16 @@ export const selectGoalVisualizationAssets = (
       }
 
       const packagePath = publicUrl.startsWith('/') ? publicUrl.slice(1) : ''
-      const pathSegments = goalVisualizationAssetSegments(publicUrl)
-      if (!pathSegments) {
+      const pathSegments = packagePath.split('/')
+      const pathIsSafe = publicUrl.startsWith('/')
+        && !publicUrl.startsWith('//')
+        && !publicUrl.includes('\\')
+        && !publicUrl.includes('?')
+        && !publicUrl.includes('#')
+        && !publicUrl.includes('\0')
+        && pathSegments.length > 0
+        && pathSegments.every((segment) => segment.length > 0 && segment !== '.' && segment !== '..')
+      if (!pathIsSafe) {
         errors.push(`${context}: url must be a safe root-relative asset path.`)
         return
       }
@@ -1541,9 +1548,9 @@ export const selectGoalVisualizationAssets = (
         errors.push(`${context}: only .jpg and .png assets are supported.`)
         return
       }
-      if (pathSegments[0] !== subjectSlug || pathSegments[1] !== goalId
-        || pathSegments.at(-1) !== `${goalId}${extension}`) {
-        errors.push(`${context}: url must belong to ${subjectSlug}/${goalId} and end in ${goalId}${extension}.`)
+      const expectedPackagePath = `assets/goal-visualizations/${subjectSlug}/${goalId}/${goalId}${extension}`
+      if (packagePath !== expectedPackagePath) {
+        errors.push(`${context}: url must be /${expectedPackagePath}.`)
         return
       }
       if (basename(packagePath) !== `${goalId}${extension}`) {
@@ -1790,11 +1797,10 @@ const canonicalGoalIndex = (currentCanonicalPath: string) => {
   return index
 }
 
-export const collectExternalGoalReferences = (
+const collectExternalGoalReferences = (
   currentCanonicalPath: string,
   canonicalData: Record<string, JsonValue>,
   errors: string[],
-  compositionViews: JsonValue[] = [],
 ) => {
   const goals = Array.isArray(canonicalData.goals) ? canonicalData.goals : []
   const localGoalIds = new Set(goals
@@ -1833,45 +1839,9 @@ export const collectExternalGoalReferences = (
     })
   })
 
-  // View-only support definitions remain external even when no canonical
-  // requires edge names them. Declaring them does not create a runtime guard,
-  // teachable target, embedded definition, or standalone-readiness claim.
-  const goalRefsInView = (value: JsonValue): Array<{ goalId: string, projectionRole: JsonValue }> => {
-    if (Array.isArray(value)) return value.flatMap(goalRefsInView)
-    if (!isJsonObject(value)) return []
-    return [...(typeof value.goalId === 'string' ? [{ goalId: value.goalId, projectionRole: value.projectionRole ?? 'target' }] : []),
-      ...Object.values(value).flatMap(goalRefsInView)]
-  }
-  const canonicalExternalIds = new Set([...references.values()].flatMap((reference) => isJsonObject(reference) && typeof reference.targetGoalId === 'string' ? [reference.targetGoalId] : []))
-  for (const view of compositionViews) {
-    if (!isJsonObject(view) || typeof view.viewId !== 'string' || !view.viewId.trim()) {
-      errors.push('Composition view is missing its viewId for external-reference declaration')
-      continue
-    }
-    for (const { goalId: targetGoalId, projectionRole } of goalRefsInView(view.rootNodes ?? [])) {
-      if (localGoalIds.has(targetGoalId) || canonicalExternalIds.has(targetGoalId)) continue
-      if (projectionRole !== 'prerequisiteOnly') {
-        errors.push(`External composition-view target is unsupported in a single-subject package: ${view.viewId} to ${targetGoalId}`)
-        continue
-      }
-      const target = externalIndex.get(targetGoalId)
-      if (!target) errors.push(`Unresolved external composition-view reference from ${view.viewId} to ${targetGoalId}`)
-      references.set(`${view.viewId}|composition-view|${targetGoalId}`, {
-        fromViewId: view.viewId,
-        relation: 'composition-view',
-        projectionRole: 'prerequisiteOnly',
-        targetGoalId,
-        targetLandscapeId: target?.targetLandscapeId ?? null,
-        targetFrameworkId: target?.targetFrameworkId ?? null,
-        targetSubject: target?.targetSubject ?? null,
-        targetTitle: target?.targetTitle ?? null,
-      })
-    }
-  }
-
   return [...references.values()].sort((left, right) => {
-    const leftKey = isJsonObject(left) ? `${left.fromGoalId ?? left.fromViewId ?? ''}|${left.relation ?? ''}|${left.targetGoalId ?? ''}` : ''
-    const rightKey = isJsonObject(right) ? `${right.fromGoalId ?? right.fromViewId ?? ''}|${right.relation ?? ''}|${right.targetGoalId ?? ''}` : ''
+    const leftKey = isJsonObject(left) ? `${left.fromGoalId ?? ''}|${left.relation ?? ''}|${left.targetGoalId ?? ''}` : ''
+    const rightKey = isJsonObject(right) ? `${right.fromGoalId ?? ''}|${right.relation ?? ''}|${right.targetGoalId ?? ''}` : ''
     return compareCodeUnits(leftKey, rightKey)
   })
 }
@@ -2306,7 +2276,7 @@ const main = () => {
     errors.push(`Goal visualizations exceed ${MAX_GOAL_VISUALIZATION_TOTAL_BYTES} total bytes.`)
   }
   const memoryCardReviewAudits = selectMemoryCardReviewAudits(canonicalLandscapeId, errors)
-  const externalGoalReferences = collectExternalGoalReferences(canonicalPath, canonicalData, errors, compositionFiles.map(readJson))
+  const externalGoalReferences = collectExternalGoalReferences(canonicalPath, canonicalData, errors)
   const sourceOriginalUrlIssues = sourceExtractionJsonFiles.flatMap(sourceExtractionOriginalUrlIssues)
   errors.push(...sourceOriginalUrlIssues)
   const sourceGoalReferences = sourceGoalReferenceIndex(sourceExtractionJsonFiles)
@@ -2388,7 +2358,7 @@ const main = () => {
     archiveRoot,
     'data/dependencies/external-goal-references.json',
     {
-      note: 'Cross-subject canonical edges and composition-view definition references used by this subject package. View references do not create requires edges or targets; target metadata points outside this legacy package and does not establish standalone readiness.',
+      note: 'Cross-subject goal references used by this subject landscape. Target metadata is informational and points outside this subject package.',
       references: externalGoalReferences,
     },
     'external-dependencies',

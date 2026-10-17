@@ -1,0 +1,289 @@
+{
+  "role": "Author case design E0/G0 only",
+  "materialLineage": "Existing whole d124 P three cases were read and preserved before. EVAL and PLAN variants split operators using explicitly synthetic chemistry contexts; these are newly authored successors, not unchanged evidence or learner trials.",
+  "cases": [
+    {
+      "caseId": "EVAL-1",
+      "goalId": "d1244f5d-9a12-5b74-97fe-ae974f40af26",
+      "caseRole": "main-application",
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "material": {
+        "dataOrigin": "Invented task values; no actual experiment or learner observation. Migration values are stipulated, not calculated from pI.",
+        "modelConditionsDe": "Wässriger Puffer, gleiche Trägermatrix, Elektroosmose im Modell vernachlässigt; pI-Werte gerundet. Positive Anode rechts, negative Kathode links, definierter Start bei 0 mm.",
+        "modelConditionsEn": "Aqueous buffer, matched support matrix, electroosmosis neglected in the model; rounded pI. Positive anode on the right, negative cathode on the left, defined origin at 0 mm.",
+        "aminoAcids": [
+          {
+            "nameDe": "Glycin",
+            "nameEn": "glycine",
+            "pI": 6.0,
+            "sideChain": "H"
+          },
+          {
+            "nameDe": "Lysin",
+            "nameEn": "lysine",
+            "pI": 9.7,
+            "sideChain": "(CH2)4NH2; basic protonatable side chain"
+          },
+          {
+            "nameDe": "Glutaminsäure/Glutamat",
+            "nameEn": "glutamic acid/glutamate",
+            "pI": 3.2,
+            "sideChain": "CH2CH2COOH; acidic protonatable side chain"
+          }
+        ],
+        "run": {
+          "pH": 7.0,
+          "timeMinutes": 10,
+          "migrationMm": {
+            "glycine": 1,
+            "lysine": -6,
+            "glutamate": 7,
+            "unknownU": [
+              1,
+              -6,
+              7
+            ]
+          }
+        }
+      },
+      "taskDe": "Werte die vorgegebenen Referenz- und U-Ergebnisse aus. Begründe Ladung und Wanderungsrichtung über pH/pI und den Einfluss unterschiedlicher Seitenketten. Beurteile, ob U damit eindeutig identifiziert ist und ob sich die Wanderstrecken aus pI berechnen lassen.",
+      "taskEn": "Evaluate the supplied reference and U results. Explain charge and migration direction using pH/pI and the role of different side chains. Assess whether U is uniquely identified and whether pI determines the migration distances.",
+      "workedSolutionDe": "Bei pH 7 liegen Glycin und Glutamat oberhalb ihres pI und sind im Mittel negativ, Lysin unterhalb seines pI und positiv. Deshalb ist die positive Anode für Glycin/Glutamat und die negative Kathode für Lysin die erwartete Richtung. Protonierbare basische bzw. saure Seitenketten verschieben den pI und die mittlere Ladung. Die drei U-Lagen sind mit den Referenzen vereinbar; andere Teilchen können ko-migrieren. pI bestimmt hier die Vorzeichenbeziehung, weder Ladungsbetrag noch konkrete Strecke. Diese sind vorgegebene Daten und hängen auch von Mobilität, Matrix, Feld und Zeit ab.",
+      "workedSolutionEn": "At pH 7, glycine and glutamate are above their pI and have negative mean charge; lysine is below its pI and positive. Glycine/glutamate therefore move toward the positive anode and lysine toward the negative cathode. Acidic/basic protonatable side chains shift pI and mean charge. U agrees with the three references, but other species may co-migrate. Here pI supplies the sign relation, not charge magnitude or distance; distances are supplied data and also depend on mobility, matrix, field and time.",
+      "rubric": [
+        {
+          "criterionDe": "Alle drei Vorzeichen und Richtungen schlüssig aus pH/pI begründet.",
+          "criterionEn": "Justifies all three charge signs and directions from pH/pI.",
+          "points": 1
+        },
+        {
+          "criterionDe": "Seitenketten-Protonierbarkeit mit pI-/Ladungsunterschieden verbunden.",
+          "criterionEn": "Connects protonatable side chains to pI/charge differences.",
+          "points": 1
+        },
+        {
+          "criterionDe": "U nur als vereinbar eingeordnet; Ko-Migration als Grenze erkannt.",
+          "criterionEn": "Treats U as compatible, recognising the limit of co-migration.",
+          "points": 1
+        },
+        {
+          "criterionDe": "Keine Strecke oder Ladungsgröße aus pI behauptet; Einfluss anderer Bedingungen erkannt.",
+          "criterionEn": "Does not derive distance or charge magnitude from pI; recognises other conditions.",
+          "points": 1
+        }
+      ],
+      "totalPoints": 4,
+      "actualPracticalExecutionRequired": false,
+      "learnerEvidenceObserved": false
+    },
+    {
+      "caseId": "EVAL-2-PH-TRANSFER",
+      "goalId": "d1244f5d-9a12-5b74-97fe-ae974f40af26",
+      "caseRole": "fresh-independent-transfer",
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "material": {
+        "dataOrigin": "Invented task values; no actual experiment or learner observation. Migration values are stipulated, not calculated from pI.",
+        "modelConditionsDe": "Wässriger Puffer, gleiche Trägermatrix, Elektroosmose im Modell vernachlässigt; pI-Werte gerundet. Positive Anode rechts, negative Kathode links, definierter Start bei 0 mm.",
+        "modelConditionsEn": "Aqueous buffer, matched support matrix, electroosmosis neglected in the model; rounded pI. Positive anode on the right, negative cathode on the left, defined origin at 0 mm.",
+        "aminoAcids": [
+          {
+            "nameDe": "Glycin",
+            "nameEn": "glycine",
+            "pI": 6.0,
+            "sideChain": "H"
+          },
+          {
+            "nameDe": "Lysin",
+            "nameEn": "lysine",
+            "pI": 9.7,
+            "sideChain": "(CH2)4NH2; basic protonatable side chain"
+          },
+          {
+            "nameDe": "Glutaminsäure/Glutamat",
+            "nameEn": "glutamic acid/glutamate",
+            "pI": 3.2,
+            "sideChain": "CH2CH2COOH; acidic protonatable side chain"
+          }
+        ],
+        "runs": [
+          {
+            "pH": 8.0,
+            "timeMinutes": 10,
+            "migrationMm": {
+              "lysine": -4,
+              "glutamate": 7,
+              "unknownV": -4
+            }
+          },
+          {
+            "pH": 11.0,
+            "timeMinutes": 10,
+            "migrationMm": {
+              "lysine": 3,
+              "glutamate": 8,
+              "unknownV": 3
+            }
+          }
+        ],
+        "instrumentSuitability": "Both supplied results assume suitable buffer and an instrument approved for these conditions; the learner does not operate it."
+      },
+      "taskDe": "Erkläre die veränderten Referenz- und V-Lagen beim pH-Wechsel. Prüfe die Behauptung, Lysin müsse als basische Aminocarbonsäure immer zur Kathode wandern. Begründe die Aussagekraft beider V-Vergleiche und die Grenzen der pI-Werte.",
+      "taskEn": "Explain the changed reference and V positions after changing pH. Assess the claim that lysine, as a basic amino acid, must always migrate toward the cathode. Explain the strength of the two V comparisons and the limits of pI.",
+      "workedSolutionDe": "Lysin liegt bei pH 8 unter pI 9,7: positive mittlere Ladung, Kathode. Bei pH 11 liegt es darüber: negative mittlere Ladung, Anode. Die Protonierungsanteile der funktionellen Gruppen einschließlich der basischen Seitenkette ändern sich mit pH; „basische Seitenkette“ bedeutet keine stets positive Gesamtladung. Glutamat liegt bei beiden pH-Werten oberhalb pI und wandert im Modell zur Anode. V passt in beiden Läufen zu Lysin; das ist stärkere Vereinbarkeit als ein einzelner Vergleich, aber kein eindeutiger Strukturbeweis. Aus den pI-Werten allein folgen weder die Strecken noch deren Unterschied.",
+      "workedSolutionEn": "At pH 8, lysine is below pI 9.7: positive mean charge and migration to the cathode. At pH 11 it is above pI: negative mean charge and migration to the anode. Protonation fractions of the functional groups, including the basic side chain, change with pH; a basic side chain does not imply an always positive total charge. Glutamate is above pI in both runs and migrates to the anode in the model. V matches lysine in both runs, providing greater compatibility than one comparison but no unique structural proof. pI alone gives neither distances nor the distance change.",
+      "rubric": [
+        {
+          "criterionDe": "Lysin-Richtungsumkehr und Glutamat-Richtung korrekt erklärt.",
+          "criterionEn": "Correctly explains lysine reversal and glutamate directions.",
+          "points": 1
+        },
+        {
+          "criterionDe": "pH-abhängige Protonierung statt unveränderlicher Stoffetiketten verwendet.",
+          "criterionEn": "Uses pH-dependent protonation rather than fixed substance labels.",
+          "points": 1
+        },
+        {
+          "criterionDe": "Zweifache Ko-Migration als begrenzt aussagekräftig beurteilt.",
+          "criterionEn": "Assesses the bounded value of matching migration in two runs.",
+          "points": 1
+        },
+        {
+          "criterionDe": "pI nicht in Ladungsbetrag oder Strecke umgedeutet.",
+          "criterionEn": "Does not reinterpret pI as charge magnitude or distance.",
+          "points": 1
+        }
+      ],
+      "totalPoints": 4,
+      "actualPracticalExecutionRequired": false,
+      "learnerEvidenceObserved": false
+    },
+    {
+      "caseId": "PLAN-1",
+      "goalId": "37374918-78c9-577f-9827-695d111ab22d",
+      "caseRole": "main-application",
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "material": {
+        "dataOrigin": "Invented task values; no actual experiment or learner observation. Migration values are stipulated, not calculated from pI.",
+        "modelConditionsDe": "Wässriger Puffer, gleiche Trägermatrix, Elektroosmose im Modell vernachlässigt; pI-Werte gerundet. Positive Anode rechts, negative Kathode links, definierter Start bei 0 mm.",
+        "modelConditionsEn": "Aqueous buffer, matched support matrix, electroosmosis neglected in the model; rounded pI. Positive anode on the right, negative cathode on the left, defined origin at 0 mm.",
+        "aminoAcids": [
+          {
+            "nameDe": "Glycin",
+            "nameEn": "glycine",
+            "pI": 6.0,
+            "sideChain": "H"
+          },
+          {
+            "nameDe": "Lysin",
+            "nameEn": "lysine",
+            "pI": 9.7,
+            "sideChain": "(CH2)4NH2; basic protonatable side chain"
+          },
+          {
+            "nameDe": "Glutaminsäure/Glutamat",
+            "nameEn": "glutamic acid/glutamate",
+            "pI": 3.2,
+            "sideChain": "CH2CH2COOH; acidic protonatable side chain"
+          }
+        ],
+        "availableDe": "Geprüftes Schulgerät mit dokumentierten zulässigen Spannungen und Betriebsbedingungen, geeignete Puffer für pH 6 oder 7, pH-Meter, gleiche Trägermatrix, gleiche Probenvolumina, drei getrennte Referenzlösungen, U und Pufferleerprobe. Es liegen noch keine Laufdaten vor.",
+        "availableEn": "Checked school instrument with documented permitted voltages and operating conditions; suitable pH 6 or 7 buffers, pH meter, matched support matrix and sample volumes; three separate reference solutions, U and buffer blank. No migration data have yet been obtained."
+      },
+      "taskDe": "Plane eine elektrophoretische Trennung von Glycin, Lysin und Glutamat mit den verfügbaren Mitteln. Begründe die pH-Wahl und Richtungsprognosen. Lege Referenzen, Startpositionen, Vergleichsbedingungen, Polungsprüfung und sichere gerätespezifische Betriebsbedingungen fest. Begründe, welche Beobachtung einen brauchbaren Vergleich mit U erlaubt. Es wird ein Plan verlangt; kein Versuch wird ausgeführt.",
+      "taskEn": "Plan an electrophoretic separation of glycine, lysine and glutamate using the available resources. Justify buffer pH and predicted directions. Specify references, origins, comparison conditions, polarity checks and safe instrument-specific operation. Explain which observations would allow a useful comparison with U. A plan is required; no experiment is performed.",
+      "workedSolutionDe": "Ein begründeter Plan kann pH 7 wählen: Glycin und Glutamat im Mittel negativ, Lysin positiv; alternativ pH 6 mit Glycin nahe dem Start ist fachlich möglich, wenn begründet und mit erwartbaren Auflösungsgrenzen geprüft. Der Puffer wird passend gewählt und pH kontrolliert. Referenzen und U werden getrennt an definierten Startpositionen mit gleichen Volumina aufgetragen; eine Leerprobe prüft Hintergrund. Matrix, Feldstärke, Laufzeit, Ionenstärke und Temperatur bleiben vergleichbar. Polung und reale Elektrodenzuordnung werden geprüft; nur zugelassene gerätespezifische Bedingungen, Arbeiten am ausgeschalteten Aufbau und fachliche Aufsicht werden vorgesehen. Erst getrennte Referenzlagen erlauben eine begrenzte Zuordnung zu U; die Auflösung ist durch einen Referenzlauf zu prüfen, nicht aus pI-Streckenvorhersagen zu behaupten.",
+      "workedSolutionEn": "A justified plan may choose pH 7: glycine/glutamate negative on average and lysine positive. pH 6 with glycine near the origin is also defensible if justified and checked for resolution limits. Select a suitable buffer and verify pH. Apply references and U separately at defined origins with matched volumes; a blank checks background. Keep matrix, field strength, duration, ionic strength and temperature comparable. Check actual polarity/electrode identity; plan permitted instrument-specific settings, setup with power off and subject-qualified supervision. Distinct reference positions support only bounded comparison with U; resolution requires a reference run, not distances predicted from pI.",
+      "rubric": [
+        {
+          "criterionDe": "pH-Wahl mit Ladungs-/Richtungsprognosen fachlich begründet; begründete Alternativen erlaubt.",
+          "criterionEn": "Justifies pH with charge/direction predictions; defensible alternatives accepted.",
+          "points": 1
+        },
+        {
+          "criterionDe": "Getrennte Standards/U/Leerprobe und definierte Starts geplant.",
+          "criterionEn": "Plans separate references/U/blank and defined origins.",
+          "points": 1
+        },
+        {
+          "criterionDe": "Vergleichsgrößen und Auflösungsprüfung kontrolliert statt pI-Strecken erfunden.",
+          "criterionEn": "Controls comparison conditions and resolution instead of inventing pI-based distances.",
+          "points": 1
+        },
+        {
+          "criterionDe": "Polung, zulässige Gerätebedingungen und fachliche Aufsicht geplant; keine Durchführung behauptet.",
+          "criterionEn": "Plans polarity, permitted operating conditions and supervision; makes no execution claim.",
+          "points": 1
+        }
+      ],
+      "totalPoints": 4,
+      "actualPracticalExecutionRequired": false,
+      "learnerEvidenceObserved": false
+    },
+    {
+      "caseId": "PLAN-2-PH-TRANSFER",
+      "goalId": "37374918-78c9-577f-9827-695d111ab22d",
+      "caseRole": "fresh-independent-transfer",
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "material": {
+        "dataOrigin": "Invented task values; no actual experiment or learner observation. Migration values are stipulated, not calculated from pI.",
+        "modelConditionsDe": "Wässriger Puffer, gleiche Trägermatrix, Elektroosmose im Modell vernachlässigt; pI-Werte gerundet. Positive Anode rechts, negative Kathode links, definierter Start bei 0 mm.",
+        "modelConditionsEn": "Aqueous buffer, matched support matrix, electroosmosis neglected in the model; rounded pI. Positive anode on the right, negative cathode on the left, defined origin at 0 mm.",
+        "aminoAcids": [
+          {
+            "nameDe": "Glycin",
+            "nameEn": "glycine",
+            "pI": 6.0,
+            "sideChain": "H"
+          },
+          {
+            "nameDe": "Lysin",
+            "nameEn": "lysine",
+            "pI": 9.7,
+            "sideChain": "(CH2)4NH2; basic protonatable side chain"
+          },
+          {
+            "nameDe": "Glutaminsäure/Glutamat",
+            "nameEn": "glutamic acid/glutamate",
+            "pI": 3.2,
+            "sideChain": "CH2CH2COOH; acidic protonatable side chain"
+          }
+        ],
+        "availableDe": "Zugelassene Schulelektrophorese mit zu prüfender Eignung für pH 8 und 11; Lysin- und Glutamatstandards, V, Leerprobe, geeignete Puffer, pH-Meter. Bisher keine Laufdaten für V. Ein früherer Aufbau trug lediglich (+)/(−)-Etiketten, ohne Prüfung der tatsächlichen Potentiale.",
+        "availableEn": "Approved school electrophoresis apparatus whose suitability for pH 8 and 11 must be checked; lysine and glutamate references, V, blank, suitable buffers and pH meter. No V migration data yet. A previous setup had only (+)/(−) labels without checking actual potentials."
+      },
+      "taskDe": "Plane einen aussagekräftigen Vergleich der Lysin-, Glutamat- und V-Proben bei pH 8 und 11. Begründe erwartete Richtungsänderungen, die unabhängige Variable und nötige Kontrollen. Erkläre den Umgang mit ungeprüften Elektrodenetiketten und der Geräte-/Puffereignung. Formuliere eine begrenzte spätere Auswertung. Keine reale Durchführung und keine frei erfundenen Laufdaten.",
+      "taskEn": "Plan an informative comparison of lysine, glutamate and V at pH 8 and 11. Justify predicted direction changes, the independent variable and controls. Explain how to handle unverified electrode labels and instrument/buffer suitability. Define a bounded later evaluation. No actual execution and no invented migration results.",
+      "workedSolutionDe": "pH ist die gezielt variierte Größe. Lysin soll unter pI zur Kathode und oberhalb pI zur Anode wandern; Glutamat bleibt bei beiden pH-Werten im Mittel negativ. Für jeden pH-Wert sind geeigneter Puffer, pH-Kontrolle, separate Standards, V und Leerprobe unter vergleichbaren Matrix-/Volumen-/Feld-/Zeit-/Temperaturbedingungen vorzusehen. Tatsächliche Potentiale und Anschlüsse werden unabhängig von Etiketten geprüft, bevor ein unter fachlicher Aufsicht zulässiger Betrieb geplant wird. Ohne bestätigte pH-11-Eignung darf der Versuch so nicht freigegeben werden; ein begründeter Plan benennt den Klärungsbedarf oder eine zulässige Alternative. Spätere Übereinstimmung an zwei pH-Werten stützt Vereinbarkeit, aber keine eindeutige Identität. Die Strecken werden gemessen und nicht aus pI errechnet.",
+      "workedSolutionEn": "pH is the deliberately varied factor. Lysine is predicted to migrate to the cathode below pI and to the anode above pI; glutamate remains negative on average in both runs. For each pH, specify suitable buffer, pH verification, separate references, V and blank with comparable matrix/volume/field/time/temperature. Verify actual potentials and connections independently of labels before planning permitted operation under qualified supervision. Without confirmed pH-11 suitability, the experiment cannot be cleared as stated; a justified plan identifies the missing check or a permitted alternative. Later agreement at two pH values supports compatibility, not unique identity. Distances are measured rather than calculated from pI.",
+      "rubric": [
+        {
+          "criterionDe": "pH als Variable mit zutreffender Richtungsprognose und Protonierungsbegründung verwendet.",
+          "criterionEn": "Uses pH as the variable with correct directional predictions and protonation reasoning.",
+          "points": 1
+        },
+        {
+          "criterionDe": "Zwei kontrollierte Vergleichsläufe mit Referenzen, V und Leerproben spezifiziert.",
+          "criterionEn": "Specifies two controlled comparison runs with references, V and blanks.",
+          "points": 1
+        },
+        {
+          "criterionDe": "Ungeprüfte Etiketten sowie pH-11-Eignung als vorab zu klärende Bedingungen behandelt.",
+          "criterionEn": "Treats unchecked labels and pH-11 suitability as conditions needing prior verification.",
+          "points": 1
+        },
+        {
+          "criterionDe": "Spätere Datenauswertung begrenzt; weder Identität noch reale Durchführung oder Strecken erfunden.",
+          "criterionEn": "Bounds later interpretation; invents no identity, execution or migration distances.",
+          "points": 1
+        }
+      ],
+      "totalPoints": 4,
+      "actualPracticalExecutionRequired": false,
+      "learnerEvidenceObserved": false
+    }
+  ]
+}

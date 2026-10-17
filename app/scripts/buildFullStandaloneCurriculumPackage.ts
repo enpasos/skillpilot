@@ -1048,16 +1048,6 @@ const schemaBindingId = (document: JsonObject, bindingName: typeof EXPECTED_SEMA
   return stringValue(document.profileId, `${bindingName} profileId`)
 }
 
-/** Explicit package-v1 boundary, also used before any canonical artifact is emitted. */
-export const assertPackageV1LandscapeSupported = (raw: JsonObject): void => {
-  const goals = Array.isArray(raw.goals) ? raw.goals : []
-  if (goals.some((goal) => goal && typeof goal === 'object' && !Array.isArray(goal)
-    && (goal as JsonObject).extendedData && typeof (goal as JsonObject).extendedData === 'object'
-    && Object.prototype.hasOwnProperty.call((goal as JsonObject).extendedData, 'applicabilityContexts'))) {
-    fail('Package-v1 cannot export applicabilityContexts without a supported successor runtime contract.')
-  }
-}
-
 export const createFullStandalonePackagePlan = (
   options: FullStandalonePackagePlanOptions,
 ): FullStandalonePackagePlan => {
@@ -1279,8 +1269,6 @@ export const createFullStandalonePackagePlan = (
   if (assessmentByPath.size !== buildInputs.assessmentSources.length) fail('Build inputs contain duplicate assessment artifact paths.')
 
   releaseFiles.forEach((path) => {
-    if (releaseRoleFromPath(path) === 'canonical-landscape') assertPackageV1LandscapeSupported(
-      readJson<JsonObject>(resolve(releaseRoot, path), 'package landscape'))
     const entry = sourceEntry(path, resolve(releaseRoot, path))
     const logical = logicalPaths.get(path)
     if (logical) {

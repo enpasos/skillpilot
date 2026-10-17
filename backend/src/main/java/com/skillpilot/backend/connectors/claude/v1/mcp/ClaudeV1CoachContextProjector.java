@@ -159,11 +159,6 @@ public class ClaudeV1CoachContextProjector {
             }
             context.put("stateMachine", stateMachineContext);
         }
-        var prerequisiteBlockers = coachStateProjection.projectPrerequisiteBlockers(stateMachine, language);
-        if (!prerequisiteBlockers.isEmpty()) {
-            context.put("prerequisiteBlockers", prerequisiteBlockers);
-            context.put("prerequisiteInstruction", coachStateProjection.prerequisiteBlockerInstruction(language));
-        }
 
         // Generic focus/frontier choices are not today's assignment. In plan mode the
         // backend's daily guidance is the next action; explicit navigation still has

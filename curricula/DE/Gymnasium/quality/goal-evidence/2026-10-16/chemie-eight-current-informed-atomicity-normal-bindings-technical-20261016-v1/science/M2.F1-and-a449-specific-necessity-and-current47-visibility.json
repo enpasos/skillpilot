@@ -1,0 +1,1766 @@
+{
+  "reviewType": "Specific original-informed scientific memory necessity; no NormalM rows",
+  "F1": {
+    "goalId": "f1ed86f0-534d-57d7-8952-a004a331cc54",
+    "scientificMemoryDecision": "memory_required",
+    "wholeOldM426Row": {
+      "schemaVersion": 1,
+      "reviewId": "canonical-chemistry-full",
+      "ruleVersion": "memory-card-review-v1",
+      "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+      "goalId": "f1ed86f0-534d-57d7-8952-a004a331cc54",
+      "fingerprint": "sha256:4f26f567dcde074abce06c821b9faddb79fc17123dd7037d753ce9da13c0dd86",
+      "status": "no_memory_needed",
+      "memoryUseful": false,
+      "reviewedAt": "2026-05-17",
+      "reviewer": "codex-chemistry-memory-review",
+      "reason": "Konservative Chemie-Entscheidung: Dieses Lernziel wird primär über Modellverständnis, Experimente, Auswertung, Argumentation oder Aufgabenpraxis verankert; eine eigene Memorycard ist hier nicht notwendig."
+    },
+    "reason": "The actual whole F1 routine repeatedly converts hydronium/hydroxide concentration into pH/pOH when calculating and validating the same strong-acid/base preparation. The compact negative-log definitions and the explicit dilute25°C pH+pOH14 relation are useful recall content. They are distinct from amount/stoichiometric reasoning and from actual preparation/calibrated measurement. The generic old no_memory_needed explanation overlooked this small recall component; the decision here follows the actual whole competence/profile, not the new goal tag or a stock origin-consistency requirement.",
+    "exactRecallCard": "chem_eq_q3_004",
+    "appropriateMemoryGoalIdsWhereActuallyTarget": [
+      "076cb333-3b61-5025-8f32-32afc16f9987",
+      "1f2021c0-c633-5240-ae97-e58ecc9d48ca",
+      "045efaa4-a91a-5a91-add9-bff49cbed324"
+    ],
+    "deckId": "de_gymnasium_chemistry_equilibria_q3",
+    "limits": "Only pH/pOH negative logarithms and the stated temperature/dilute relation. No copied preparation instructions, safety procedure, given measured value or empirical apparatus skill is memorization evidence. Stoichiometry, water-limit/model checks and real execution remain necessary ordinary performance. M004 requires28bb, not F1; it neither creates a new F1 prerequisite for acdf/edcf nor masters F1.",
+    "currentWholeProfile": {
+      "goalId": "f1ed86f0-534d-57d7-8952-a004a331cc54",
+      "wholeGoal": {
+        "id": "f1ed86f0-534d-57d7-8952-a004a331cc54",
+        "title": "Lösungen berechnen und pH bestimmen",
+        "titleEn": "Calculate solutions and determine pH",
+        "description": "Die lernende Person kann Stoffmengen, Konzentrationen und pH-Werte starker Säuren und Basen berechnen, saure oder basische Lösungen definierter Stoffmengenkonzentration herstellen und Messergebnisse plausibilisieren.",
+        "descriptionEn": "The learner can calculate amounts of substance, molar concentrations, and pH values for strong acids and bases, prepare acidic or alkaline solutions of a specified molar concentration, and check measurements for plausibility.",
+        "weight": 0.9,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "28bb9d15-f865-5843-a035-6066580fea64",
+          "1351706f-4ea6-56e9-951b-87b24cbcdee8",
+          "d2ccd1d5-56f7-583f-9724-e97441367f91"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-chemistry",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BC_REAKTION"
+          ],
+          "phase": "E"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+            "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "14590470-b074-4fe0-b661-ea19e0e5a80b"
+          }
+        },
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "f1ed86f0-534d-57d7-8952-a004a331cc54",
+            "title": "Visualisierung: Lösungen berechnen und pH bestimmen",
+            "url": "/assets/goal-visualizations/chemie/f1ed86f0-534d-57d7-8952-a004a331cc54/f1ed86f0-534d-57d7-8952-a004a331cc54.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Lösungen berechnen und pH bestimmen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Lösungen berechnen und pH bestimmen\". Die lernende Person kann Stoffmengen, Konzentrationen und pH-Werte starker Säuren und Basen berechnen, saure oder basische Lösungen definierter Stoffmengenkonzentration herstellen und Messergebnisse plausibilisieren.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "g1",
+            "essentialUnderstandingDe": "Verdünnung erhält die gelöste Stoffmenge; definiertes Endvolumen bestimmt die Konzentration.",
+            "essentialUnderstandingEn": "Dilution conserves dissolved amount; final volume determines concentration.",
+            "observablePerformanceDe": "Berechne Stoffmengen/Stockvolumina für starke Säure und mehrwertige Base, begründe Stöchiometrie und Geräte.",
+            "observablePerformanceEn": "Calculate acid/divalent-base amounts and stock volumes, justifying stoichiometry/apparatus.",
+            "actualCriterionReferences": [
+              "solution-1/s1-1",
+              "solution-1/s1-2",
+              "solution-2/s2-1",
+              "solution-2/s2-2"
+            ],
+            "exactCriterionBindings": [
+              {
+                "caseId": "solution-1",
+                "criterionId": "s1-1",
+                "criterionComponent": "whole criterion, limited to the named goal",
+                "wholeMaterialFile": {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-foundation-source-operator-whole-remediation-author-successor-20261016-v1/materials/retained/SIX.original-whole-cases.DEEN.exact.json",
+                  "sha256": "sha256:4115370f373b01cb0a74a6ffd851dde1bd13801e5a45e203bde56513ac436176",
+                  "bytes": 54142
+                },
+                "sameMultiGoalTotalNotTransferred": true
+              },
+              {
+                "caseId": "solution-1",
+                "criterionId": "s1-2",
+                "criterionComponent": "whole criterion, limited to the named goal",
+                "wholeMaterialFile": {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-foundation-source-operator-whole-remediation-author-successor-20261016-v1/materials/retained/SIX.original-whole-cases.DEEN.exact.json",
+                  "sha256": "sha256:4115370f373b01cb0a74a6ffd851dde1bd13801e5a45e203bde56513ac436176",
+                  "bytes": 54142
+                },
+                "sameMultiGoalTotalNotTransferred": true
+              },
+              {
+                "caseId": "solution-2",
+                "criterionId": "s2-1",
+                "criterionComponent": "whole criterion, limited to the named goal",
+                "wholeMaterialFile": {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-foundation-source-operator-whole-remediation-author-successor-20261016-v1/materials/retained/SIX.original-whole-cases.DEEN.exact.json",
+                  "sha256": "sha256:4115370f373b01cb0a74a6ffd851dde1bd13801e5a45e203bde56513ac436176",
+                  "bytes": 54142
+                },
+                "sameMultiGoalTotalNotTransferred": true
+              },
+              {
+                "caseId": "solution-2",
+                "criterionId": "s2-2",
+                "criterionComponent": "whole criterion, limited to the named goal",
+                "wholeMaterialFile": {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-foundation-source-operator-whole-remediation-author-successor-20261016-v1/materials/retained/SIX.original-whole-cases.DEEN.exact.json",
+                  "sha256": "sha256:4115370f373b01cb0a74a6ffd851dde1bd13801e5a45e203bde56513ac436176",
+                  "bytes": 54142
+                },
+                "sameMultiGoalTotalNotTransferred": true
+              }
+            ]
+          },
+          {
+            "id": "g2",
+            "essentialUnderstandingDe": "Eine hergestellte Lösung und ihr pH brauchen eigene beobachtete Herstellung und kalibrierte Messung.",
+            "essentialUnderstandingEn": "Prepared solution and pH require observed personal preparation/calibrated measurement.",
+            "observablePerformanceDe": "Führe die freigegebene Herstellung/Messung tatsächlich durch und plausibilisiere eigene Werte einschließlich Wassergrenze und Fehlerprüfung.",
+            "observablePerformanceEn": "Actually prepare/measure and assess personal values including water-limit/error checks.",
+            "actualCriterionReferences": [
+              "solution-1/s1-3",
+              "solution-1/s1-4",
+              "solution-1/s1-5",
+              "solution-2/s2-3",
+              "solution-2/s2-4",
+              "solution-2/s2-5"
+            ],
+            "exactCriterionBindings": [
+              {
+                "caseId": "solution-1",
+                "criterionId": "s1-3",
+                "criterionComponent": "whole criterion, limited to the named goal",
+                "wholeMaterialFile": {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-foundation-source-operator-whole-remediation-author-successor-20261016-v1/materials/retained/SIX.original-whole-cases.DEEN.exact.json",
+                  "sha256": "sha256:4115370f373b01cb0a74a6ffd851dde1bd13801e5a45e203bde56513ac436176",
+                  "bytes": 54142
+                },
+                "sameMultiGoalTotalNotTransferred": true
+              },
+              {
+                "caseId": "solution-1",
+                "criterionId": "s1-4",
+                "criterionComponent": "whole criterion, limited to the named goal",
+                "wholeMaterialFile": {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-foundation-source-operator-whole-remediation-author-successor-20261016-v1/materials/retained/SIX.original-whole-cases.DEEN.exact.json",
+                  "sha256": "sha256:4115370f373b01cb0a74a6ffd851dde1bd13801e5a45e203bde56513ac436176",
+                  "bytes": 54142
+                },
+                "sameMultiGoalTotalNotTransferred": true
+              },
+              {
+                "caseId": "solution-1",
+                "criterionId": "s1-5",
+                "criterionComponent": "whole criterion, limited to the named goal",
+                "wholeMaterialFile": {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-foundation-source-operator-whole-remediation-author-successor-20261016-v1/materials/retained/SIX.original-whole-cases.DEEN.exact.json",
+                  "sha256": "sha256:4115370f373b01cb0a74a6ffd851dde1bd13801e5a45e203bde56513ac436176",
+                  "bytes": 54142
+                },
+                "sameMultiGoalTotalNotTransferred": true
+              },
+              {
+                "caseId": "solution-2",
+                "criterionId": "s2-3",
+                "criterionComponent": "whole criterion, limited to the named goal",
+                "wholeMaterialFile": {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-foundation-source-operator-whole-remediation-author-successor-20261016-v1/materials/retained/SIX.original-whole-cases.DEEN.exact.json",
+                  "sha256": "sha256:4115370f373b01cb0a74a6ffd851dde1bd13801e5a45e203bde56513ac436176",
+                  "bytes": 54142
+                },
+                "sameMultiGoalTotalNotTransferred": true
+              },
+              {
+                "caseId": "solution-2",
+                "criterionId": "s2-4",
+                "criterionComponent": "whole criterion, limited to the named goal",
+                "wholeMaterialFile": {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-foundation-source-operator-whole-remediation-author-successor-20261016-v1/materials/retained/SIX.original-whole-cases.DEEN.exact.json",
+                  "sha256": "sha256:4115370f373b01cb0a74a6ffd851dde1bd13801e5a45e203bde56513ac436176",
+                  "bytes": 54142
+                },
+                "sameMultiGoalTotalNotTransferred": true
+              },
+              {
+                "caseId": "solution-2",
+                "criterionId": "s2-5",
+                "criterionComponent": "whole criterion, limited to the named goal",
+                "wholeMaterialFile": {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-foundation-source-operator-whole-remediation-author-successor-20261016-v1/materials/retained/SIX.original-whole-cases.DEEN.exact.json",
+                  "sha256": "sha256:4115370f373b01cb0a74a6ffd851dde1bd13801e5a45e203bde56513ac436176",
+                  "bytes": 54142
+                },
+                "sameMultiGoalTotalNotTransferred": true
+              }
+            ]
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "g1",
+            "g2"
+          ],
+          "minimumCaseCount": null,
+          "masteryDecisionBoundary": "Require sufficient independent evidence for every target-specific indispensable aspect, including practical execution where stated; no fixed task quota and no aggregate multi-goal compensation."
+        },
+        "variationAxes": [
+          {
+            "id": "acid-base-stoichiometry",
+            "textDe": "Starke einprotonige Säure gegenüber zweiwertigem Hydroxid und NaOH-Vergleich.",
+            "textEn": "Strong monoprotic acid versus divalent hydroxide and NaOH comparison."
+          },
+          {
+            "id": "concentration-regime",
+            "textDe": "Normale Verdünnung gegenüber idealer Extremverdünnung mit Autoprotolyse.",
+            "textEn": "Ordinary dilution versus ideal extreme dilution including autoprotolysis."
+          },
+          {
+            "id": "actual-data",
+            "textDe": "Beobachtete Herstellung/Messung gegenüber vorgegebenen Daten und Fehlersuche.",
+            "textEn": "Observed preparation/measurement versus supplied data and troubleshooting."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "solution-1",
+            "wholeMaterialFile": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-foundation-source-operator-whole-remediation-author-successor-20261016-v1/materials/retained/SIX.original-whole-cases.DEEN.exact.json",
+              "sha256": "sha256:4115370f373b01cb0a74a6ffd851dde1bd13801e5a45e203bde56513ac436176",
+              "bytes": 54142
+            },
+            "caseId": "solution-1",
+            "onlyTargetSpecificCriteriaMandatory": true
+          },
+          {
+            "id": "solution-2",
+            "wholeMaterialFile": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-foundation-source-operator-whole-remediation-author-successor-20261016-v1/materials/retained/SIX.original-whole-cases.DEEN.exact.json",
+              "sha256": "sha256:4115370f373b01cb0a74a6ffd851dde1bd13801e5a45e203bde56513ac436176",
+              "bytes": 54142
+            },
+            "caseId": "solution-2",
+            "onlyTargetSpecificCriteriaMandatory": true
+          }
+        ]
+      },
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "wholeSourceAcceptance": false,
+      "normalReviewRecord": false,
+      "wholeGoalObjectSha256": "sha256:c31d05e22bdd6ef6184e10f1ff2f906d2f2220dd73b8b2df0897b819d6132893"
+    }
+  },
+  "a449": {
+    "goalId": "a449e874-6fec-502b-9667-6f078adc4d64",
+    "scientificMemoryDecision": "memory_required",
+    "wholeOldM426Row": {
+      "schemaVersion": 1,
+      "reviewId": "canonical-chemistry-full",
+      "ruleVersion": "memory-card-review-v1",
+      "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+      "goalId": "a449e874-6fec-502b-9667-6f078adc4d64",
+      "fingerprint": "sha256:d1d91ef5eb10fb971114ecf4d07e0da56dcc2b5df3c0a00eeb3e31aeb13ed837",
+      "status": "memory_required",
+      "memoryUseful": true,
+      "memoryGoalIds": [
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca"
+      ],
+      "deckIds": [
+        "de_gymnasium_chemistry_equilibria_q3"
+      ],
+      "reviewedAt": "2026-05-17",
+      "reviewer": "codex-chemistry-memory-review",
+      "reason": "Memory-Anteil streng begrenzt auf kompakte Chemie-Begriffe, Symbol-/Formelregeln, Nachweise oder Gleichungen; Verstehen, Experimentieren und Aufgabenpraxis bleiben führend."
+    },
+    "reason": "The actual merged calculation-only body still repeatedly uses the HH pH/pKa/conjugate-ratio relationship. Its compact equation and quotient direction merit existing006 recall support. Balancing additions first, checking positive rest amounts, approximation validity and unknown NH3 loss are reasoning/model controls, not a list of new formulas to memorize. Current d746 no longer duplicates a449 as an atom; narrow006 still requires whole a449.",
+    "exactRecallCard": "chem_eq_q3_006",
+    "appropriateMemoryGoalIdsWhereActuallyTarget": [
+      "c8bf3178-383d-570f-825d-d2d7b9507e6e",
+      "1f2021c0-c633-5240-ae97-e58ecc9d48ca",
+      "045efaa4-a91a-5a91-add9-bff49cbed324"
+    ],
+    "deckId": "de_gymnasium_chemistry_equilibria_q3",
+    "limits": "No new006 origin is created for the experimental curve/buffer goals; no practical performance or design mastery follows from the equation. The full existing75-card review scope and all11 deck origins stay intact.",
+    "currentWholeProfile": {
+      "goalId": "a449e874-6fec-502b-9667-6f078adc4d64",
+      "goalTitleDe": "Puffer-pH mit der Henderson-Hasselbalch-Gleichung berechnen",
+      "wholeGoalObjectSha256": "sha256:0cf2f9be9fb2287aab86638ca628338b8be10f17ec8e2aa5c1c7d6102775e4cd",
+      "wholeGoalObjectDigestRule": "UTF-8 JSON, recursively sorted keys, no spaces, ensure_ascii=false; not a production goal fingerprint",
+      "authorStatus": "complete informed AUTHOR successor, whole independent review pending",
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "fullCaseReferences": [
+        {
+          "caseId": "T06-C1",
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-acid-analytics-ten-current419-bounded-author-remediation-20261015-v1/materials/twenty-complete-DEEN-cases.author.json",
+          "jsonPointer": "/cases/10",
+          "wholeCaseObjectSha256": "sha256:6486efd8a09ddcabfadc171ad852e3863f936dbb6767884649aaafcf40bd732b",
+          "coveredExpectationIds": [],
+          "partialExpectationContributions": [
+            {
+              "actualLocalTaskRubric": "e1",
+              "semanticComponentId": "pair-initial-ratio",
+              "meaning": "Konjugierte Säure/Base, Quotientenrichtung und Anfangs-pH",
+              "maximumClaim": "task/rubric design only; no learner evidence, full e coverage or transferred points"
+            },
+            {
+              "actualLocalTaskRubric": "e1",
+              "semanticComponentId": "MWG-common-volume-domain",
+              "meaning": "HH aus MWG, gemeinsame Volumen-/Aktivitäts-/Näherungsannahmen",
+              "maximumClaim": "task/rubric design only; no learner evidence, full e coverage or transferred points"
+            },
+            {
+              "actualLocalTaskRubric": "e2",
+              "semanticComponentId": "acid-addition-balance",
+              "meaning": "HCl zuerst bilanzieren, dann positive Restmengen und neuerpH",
+              "maximumClaim": "task/rubric design only; no learner evidence, full e coverage or transferred points"
+            },
+            {
+              "actualLocalTaskRubric": "e3/e4",
+              "semanticComponentId": "dilution-reserve-per-litre",
+              "meaning": "Gemeinsame Verdünnung erhält Modellquotienten; Reserve jeLiter sinkt, nicht beliebig verdünnungsfest",
+              "maximumClaim": "task/rubric design only; no learner evidence, full e coverage or transferred points"
+            },
+            {
+              "actualLocalTaskRubric": "e4",
+              "semanticComponentId": "dose-not-free-hydronium",
+              "meaning": "Zugegebene starke Säure ist vor Reaktion kein unveränderter freier Oxoniumwert",
+              "maximumClaim": "task/rubric design only; no learner evidence, full e coverage or transferred points"
+            }
+          ]
+        },
+        {
+          "caseId": "T06-C2",
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-acid-two-overlap-pairs-source-and-case-boundary-author-successor-20261015-v2/materials/ONE.whole-T06-C2-formal-excess-wording-successor.author.json",
+          "jsonPointer": "/after",
+          "wholeCaseObjectSha256": "sha256:4b8bee2d8a94dbfb2f23aaf015ec7ea8c55822cb33986822865271589e1ff113",
+          "coveredExpectationIds": [],
+          "partialExpectationContributions": [
+            {
+              "actualLocalTaskRubric": "e1",
+              "semanticComponentId": "pair-initial-ratio",
+              "meaning": "Konjugierte Säure/Base, Quotientenrichtung und Anfangs-pH",
+              "maximumClaim": "task/rubric design only; no learner evidence, full e coverage or transferred points"
+            },
+            {
+              "actualLocalTaskRubric": "e2",
+              "semanticComponentId": "base-addition-balance",
+              "meaning": "OH− zuerst bilanzieren, dann positive Restmengen und neuerpH",
+              "maximumClaim": "task/rubric design only; no learner evidence, full e coverage or transferred points"
+            },
+            {
+              "actualLocalTaskRubric": "e3",
+              "semanticComponentId": "reserve-exhaustion",
+              "meaning": "Verbrauchte Partnerreserve, formaler stöchiometrischer Überschuss, kein negativer Logarithmus",
+              "maximumClaim": "task/rubric design only; no learner evidence, full e coverage or transferred points"
+            },
+            {
+              "actualLocalTaskRubric": "e4",
+              "semanticComponentId": "unknown-ammonia-exchange",
+              "meaning": "Unbekannter NH3-Verlust ändert Bilanz; ohne verbleibende Mengen kein ZahlenpH",
+              "maximumClaim": "task/rubric design only; no learner evidence, full e coverage or transferred points"
+            }
+          ],
+          "originalImmutableWholeCase": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-acid-analytics-ten-current419-bounded-author-remediation-20261015-v1/materials/twenty-complete-DEEN-cases.author.json",
+            "jsonPointer": "/cases/11",
+            "wholeCaseObjectSha256": "sha256:5429e4c2ed2cf18d31b967df27fc52c2d7b923c73c4dc86b4c74dfde9f58d112"
+          }
+        },
+        {
+          "caseId": "G7-C1",
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-acid-base-seven-existing-whole-goals-fourteen-material-cases-author-20261014-v1/materials.fourteen-complete-cases.de-en.author.md",
+          "sectionHeading": "### G7-C1",
+          "completeBilingualBodyRetained": true,
+          "coveredExpectationIds": [],
+          "partialExpectationContributions": [
+            {
+              "actualLocalTaskRubric": "rubric1",
+              "semanticComponentId": "MWG-common-volume-domain",
+              "meaning": "HH aus MWG, gemeinsame Volumen-/Aktivitäts-/Näherungsannahmen",
+              "maximumClaim": "task/rubric design only; no learner evidence, full e coverage or transferred points"
+            },
+            {
+              "actualLocalTaskRubric": "rubric2",
+              "semanticComponentId": "pair-initial-ratio",
+              "meaning": "Konjugierte Säure/Base, Quotientenrichtung und Anfangs-pH",
+              "maximumClaim": "task/rubric design only; no learner evidence, full e coverage or transferred points"
+            },
+            {
+              "actualLocalTaskRubric": "rubric3",
+              "semanticComponentId": "acid-addition-balance",
+              "meaning": "HCl zuerst bilanzieren, dann positive Restmengen und neuerpH",
+              "maximumClaim": "task/rubric design only; no learner evidence, full e coverage or transferred points"
+            },
+            {
+              "actualLocalTaskRubric": "rubric4",
+              "semanticComponentId": "dilution-reserve-per-litre",
+              "meaning": "Gemeinsame Verdünnung erhält Modellquotienten; Reserve jeLiter sinkt, nicht beliebig verdünnungsfest",
+              "maximumClaim": "task/rubric design only; no learner evidence, full e coverage or transferred points"
+            }
+          ]
+        },
+        {
+          "caseId": "G7-C2",
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-acid-base-seven-existing-whole-goals-fourteen-material-cases-author-20261014-v1/materials.fourteen-complete-cases.de-en.author.md",
+          "sectionHeading": "### G7-C2",
+          "completeBilingualBodyRetained": true,
+          "coveredExpectationIds": [],
+          "partialExpectationContributions": [
+            {
+              "actualLocalTaskRubric": "rubric1",
+              "semanticComponentId": "pair-initial-ratio",
+              "meaning": "Konjugierte Säure/Base, Quotientenrichtung und Anfangs-pH",
+              "maximumClaim": "task/rubric design only; no learner evidence, full e coverage or transferred points"
+            },
+            {
+              "actualLocalTaskRubric": "rubric2",
+              "semanticComponentId": "acid-addition-balance",
+              "meaning": "HCl zuerst bilanzieren, dann positive Restmengen und neuerpH",
+              "maximumClaim": "task/rubric design only; no learner evidence, full e coverage or transferred points"
+            },
+            {
+              "actualLocalTaskRubric": "rubric3/rubric4",
+              "semanticComponentId": "reserve-exhaustion",
+              "meaning": "Verbrauchte Partnerreserve, formaler stöchiometrischer Überschuss, kein negativer Logarithmus",
+              "maximumClaim": "task/rubric design only; no learner evidence, full e coverage or transferred points"
+            }
+          ]
+        }
+      ],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Die Henderson-Hasselbalch-Gleichung verbindet im geeigneten Modell den pH mit pKₐ und dem Verhältnis des korrespondierenden Paares.",
+            "essentialUnderstandingEn": "In an appropriate model, the Henderson–Hasselbalch equation relates pH to pKₐ and the conjugate-pair ratio.",
+            "observablePerformanceDe": "Die lernende Person ordnet im vorgelegten System Säure und Base zu, bildet den Quotienten in der richtigen Richtung und berechnet den Ausgangs-pH; die ausreichende fachliche Variation wird nach tatsächlich noch offenen Aspekten bestimmt.",
+            "observablePerformanceEn": "The learner identifies acid and base in the supplied system, forms the ratio in the correct direction and calculates initial pH; sufficient subject variation is chosen according to aspects still unshown."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Eine starke Säure- oder Basezugabe verändert zuerst die Partnerstoffmengen; erst danach wird das Gleichgewichtsmodell angewendet.",
+            "essentialUnderstandingEn": "Added strong acid or base first changes the partner amounts; only then is the equilibrium model applied.",
+            "observablePerformanceDe": "Sie bilanziert HCl beziehungsweise OH⁻ mit dem passenden Partner und berechnet den neuen pH aus den positiven Restmengen.",
+            "observablePerformanceEn": "The learner balances HCl or OH⁻ against its reacting partner and calculates the new pH from positive remaining amounts."
+          },
+          {
+            "id": "e3",
+            "essentialUnderstandingDe": "Konstantes Partnerverhältnis bedeutet im idealen Modell gleichen pH, aber nicht gleiche Pufferreserve je Liter; vollständiger Partnerverbrauch beendet die einfache Pufferrechnung.",
+            "essentialUnderstandingEn": "A constant partner ratio implies equal pH in the ideal model but not equal reserve per litre; complete consumption of a partner ends the simple buffer calculation.",
+            "observablePerformanceDe": "Sie erklärt im passenden vorgelegten Fall gemeinsame Verdünnung und Reserve je Liter beziehungsweise erkennt den vollständigen Verbrauch eines Partners und verwirft den Logarithmus negativer Restmengen. Die Fallbindungen weisen diese Teilbeiträge getrennt aus.",
+            "observablePerformanceEn": "In the appropriate supplied case, the learner explains common dilution and reserve per litre or recognises complete consumption of a partner and rejects a logarithm of negative amounts. The case bindings identify these contributions separately."
+          },
+          {
+            "id": "e4",
+            "essentialUnderstandingDe": "Verdünnung, freie starke Säure und Stoffaustausch dürfen nicht durch ein unverändert übernommenes Verhältnis verwechselt werden.",
+            "essentialUnderstandingEn": "Dilution, free strong acid and matter exchange cannot be handled by blindly retaining the original ratio.",
+            "observablePerformanceDe": "Sie widerlegt eine pH-Abnahme um genau eins bei idealer Pufferverdünnung und begründet, warum unbekannter NH₃-Verlust eine neue Mengenbilanz verlangt.",
+            "observablePerformanceEn": "The learner refutes an exact one-unit pH fall on ideal buffer dilution and explains why unknown NH₃ loss requires a new amount balance."
+          },
+          {
+            "id": "e5",
+            "essentialUnderstandingDe": "Die Aktivitätsform der HH-Beziehung folgt aus dem Protolyse-MWG. Stoffmengenverhältnisse stehen nur unter den angegebenen gemeinsamen Volumen- und Näherungsannahmen für das tatsächliche konjugierte Verhältnis; eine erschöpfte Reserve oder unbekannter Stoffaustausch hebt diese Rechenbasis auf.",
+            "essentialUnderstandingEn": "The activity form of the HH relation follows from acid-dissociation mass action. Amount ratios stand for the actual conjugate ratio only under the specified common-volume and approximation assumptions; depleted reserves or unknown exchange invalidate that calculation basis.",
+            "observablePerformanceDe": "Die lernende Person begründet MWG, Quotientenrichtung, Bilanz vor Rechnung und Modellbereich anhand des dafür tatsächlich vorgelegten Materials. Sie unterscheidet gemeinsame Verdünnung, Reserve je Liter, erschöpfte Partner und unbekannten Stoffaustausch. G7-C1 trägt MWG/Verdünnung, G7-C2 Erschöpfung, T06-C2 unbekannten NH3-Verlust bei; kein einzelner G7-Fall fordert alle Teile.",
+            "observablePerformanceEn": "The learner justifies mass action, ratio orientation, balance before calculation and model domain using the material actually supplied for that aspect. They distinguish common dilution, reserve per litre, depleted partners and unknown exchange. G7-C1 contributes mass action/dilution, G7-C2 depletion and T06-C2 unknown NH3 loss; no individual G7 case asks all parts."
+          }
+        ],
+        "variationAxes": [
+          {
+            "id": "acid-versus-base-dose",
+            "textDe": "Vom Acetatpuffer mit Säurelast zum Ammoniumpuffer mit Baselast wechseln und den jeweils verbrauchten Partner bestimmen.",
+            "textEn": "Change from acetate under acid load to ammonium under base load, identifying the consumed partner."
+          },
+          {
+            "id": "ratio-and-reserve",
+            "textDe": "Gleiches Verhältnis nach Verdünnung mit veränderter Reserve und mit erschöpftem Partner vergleichen.",
+            "textEn": "Compare an unchanged dilution ratio with altered reserve and an exhausted partner."
+          },
+          {
+            "id": "closed-to-open",
+            "textDe": "Die geschlossene Mengenbilanz mit unbekanntem NH₃-Verlust konfrontieren, ohne ungestützte Zahlen zu erzeugen.",
+            "textEn": "Challenge the closed amount balance with unknown NH₃ loss without inventing numerical results."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "t06-c1",
+            "taskDemandDe": "Acetatpuffer vor und nach HCl berechnen und die zehnfache Verdünnung prüfen. Vollständiges Material, Auftrag, Lösung und vier Kriterien: materials/EIGHT.complete-retained-cases-and-rubrics.exact.json, Fall T06-C1.",
+            "taskDemandEn": "Calculate acetate buffer pH before and after HCl and assess tenfold dilution. Complete material, task, solution and four criteria: materials/EIGHT.complete-retained-cases-and-rubrics.exact.json, case T06-C1.",
+            "expectedPerformanceDe": "1. Aus Kₐ=a(H)·a(A⁻)/a(HA) folgt pH=pKₐ+log(a(A⁻)/a(HA)). Im Modell γ=1 kürzt sich dasselbe Volumen. Anfangs ist pH 5.362. 2. A⁻ + H₃O⁺ → HA + H₂O lässt 35.0 mmol A⁻ und 15.0 mmol HA zurück; pH 5.128. 3. Zehnfache Verdünnung erhält den Quotienten und näherungsweise den pH. Konzentrationen und lokale Kapazität je Liter fallen auf ein Zehntel; die gesamten Partnerstoffmengen des verdünnten Ansatzes bleiben erhalten. Gleicher pH bedeutet keine gleiche Belastbarkeit je Liter. Weitere Verdünnung erfordert neue Wasser-/Aktivitätsprüfungen. 4. Beide Behauptungen sind im gegebenen Bereich falsch: Verdünnung erhält den Quotienten, und HCl wird zunächst von A⁻ aufgenommen, statt vollständig frei zu bleiben. Reserven und Modellgrenzen bleiben endlich.",
+            "expectedPerformanceEn": "1. Ka=aH·aA/aHA yields pH=pKa+log(aA/aHA). Common volume cancels in theγ=1 model. Initial pH 5.362. 2. A⁻+H₃O⁺→HA+H₂O leaves 35.0 mmol A⁻/15.0 mmol HA, pH 5.128. 3. Tenfold dilution preserves the ratio and approximately pH under stated conditions. Total buffer concentration and local capacity per litre fall tenfold; the total partner amounts in the diluted whole preparation are unchanged. Same pH does not mean equal load tolerance; further dilution requires new water/activity checks.\n4. Both statements are false within the supplied buffer regime: dilution preserves the common ratio, while HCl is first consumed by A⁻. Finite reserves and limits of the ideal assumption remain relevant.",
+            "understandingFocusDe": "Reaktion kommt vor Logarithmus; pH-Verhältnis und Reserve sind getrennt zu beurteilen.",
+            "understandingFocusEn": "Reaction precedes the logarithm; assess the pH ratio and reserve separately."
+          },
+          {
+            "id": "t06-c2",
+            "taskDemandDe": "NH₄⁺/NH₃ mit kleiner und übergroßer OH⁻-Last sowie mit unbekanntem NH₃-Verlust beurteilen. Vollständiges Material, Auftrag, Lösung und vier Kriterien: materials/EIGHT.complete-retained-cases-and-rubrics.exact.json, Fall T06-C2.",
+            "taskDemandEn": "Assess NH₄⁺/NH₃ under small and excessive OH⁻ loads and unknown NH₃ loss. Complete material, task, solution and four criteria: materials/EIGHT.complete-retained-cases-and-rubrics.exact.json, case T06-C2.",
+            "expectedPerformanceDe": "1. Das Paar ist NH₄⁺/NH₃; anfangs ist pH 8.949. 2. NH₄⁺ + OH⁻ → NH₃ + H₂O verbraucht 10 mmol Säure und bildet 10 mmol Base: 40/35 mmol und pH 9.192. 3. 60 mmol OH⁻ überschreiten den 50-mmol-Säurevorrat. Eine formal negative NH₄⁺-Menge zeigt Erschöpfung und ist kein Logarithmusargument. 10 mmol formale zusätzliche Baselast verlangen eine neue Bilanz mit Wasser, NH₃ und starkem Baseüberschuss. Im geschlossenen Gefäß ist kein zusätzlicher NH₃-Verlust gegeben. 4. Bei unbekanntem NH₃-Verlust darf das alte Verhältnis nicht übernommen werden; der pH kann sinken. Für eine neue Zahl sind verbleibende Mengen oder Austausch-/Gleichgewichtsdaten nötig.",
+            "expectedPerformanceEn": "1. NH₄⁺/NH₃ is the pair; pH 8.949. 2. NH₄⁺+OH⁻→NH₃+H₂O consumes 10 mmol acid and forms 10 mmol base:40/35 mmol, pH 9.192. 3. 60 mmol OH⁻ exceeds 50 mmol acid reserve. A formal negative NH₄⁺ amount signals depletion, not the input of a logarithm.10 mmol is the formal stoichiometric OH⁻ excess, not a determined free-ion amount; new balance including excess base/water and NH₃ is required. Closed-vessel conditions exclude additional open-system change.\n4. No: unknown NH₃ loss changes the base/acid ratio and can lower pH. Remaining amounts or flow/equilibrium data are needed for a new numerical pH.",
+            "understandingFocusDe": "Partnererschöpfung und Stoffaustausch verlangen ein anderes oder ergänztes Modell.",
+            "understandingFocusEn": "Partner exhaustion and matter exchange require a different or augmented model."
+          },
+          {
+            "id": "retained-G7-1",
+            "taskDemandDe": "Nutze 0.0100 mol HA/0.0200 mol A− in 1.000 L, pKS 4.80, 0.00500 mol HCl und anschließende Verdünnung auf 2.000 L. Vollständiges Material, Auftrag, Lösung und vier Kriterien: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-acid-base-seven-existing-whole-goals-fourteen-material-cases-author-20261014-v1/materials.fourteen-complete-cases.de-en.author.md, Fall G7-C1.",
+            "taskDemandEn": "Use 0.0100 mol HA/0.0200 mol A− in 1.000 L, pKa 4.80, 0.00500 mol HCl and subsequent dilution to 2.000 L. Complete material, task, solution and four criteria: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-acid-base-seven-existing-whole-goals-fourteen-material-cases-author-20261014-v1/materials.fourteen-complete-cases.de-en.author.md, case G7-C1.",
+            "expectedPerformanceDe": "Anfang pH≈5.101. HCl macht je 0.0150 mol; pH≈4.80. Verdünnung erhält dieses Verhältnis und den Näherungs-pH, halbiert aber die Puffermengen je Liter. Die Aussage gilt im angegebenen Modellbereich.",
+            "expectedPerformanceEn": "Initial pH≈5.101. HCl leaves 0.0150 mol each; pH≈4.80. Dilution preserves this ratio and approximate pH but halves buffer amounts per litre. The claim is limited to the stipulated model domain.",
+            "understandingFocusDe": "Stöchiometrie vor MWG und logarithmischen pH vom Kapazitätsbezug je Liter unterscheiden.",
+            "understandingFocusEn": "Apply stoichiometry before mass action and distinguish logarithmic pH from capacity per litre."
+          },
+          {
+            "id": "retained-G7-2",
+            "taskDemandDe": "Nutze 0.0200 mol B/0.0100 mol BH+ und pKS 9.20; vergleiche die getrennten Zugaben 0.0150 und 0.0250 mol HCl. Vollständiges Material, Auftrag, Lösung und vier Kriterien: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-acid-base-seven-existing-whole-goals-fourteen-material-cases-author-20261014-v1/materials.fourteen-complete-cases.de-en.author.md, Fall G7-C2.",
+            "taskDemandEn": "Use 0.0200 mol B/0.0100 mol BH+ and pKa 9.20; compare separate additions of 0.0150 and 0.0250 mol HCl. Complete material, task, solution and four criteria: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-14/chemie-acid-base-seven-existing-whole-goals-fourteen-material-cases-author-20261014-v1/materials.fourteen-complete-cases.de-en.author.md, case G7-C2.",
+            "expectedPerformanceDe": "Anfang pH≈9.501; Probe A enthält 0.00500/0.0250 mol B/BH+, pH≈8.501. Probe B verbraucht die 0.0200-mol-Reserve und lässt 0.00500 mol starke Säure übrig; der negative-Mengen-Logarithmus ist unzulässig.",
+            "expectedPerformanceEn": "Initial pH≈9.501; sample A has 0.00500/0.0250 mol B/BH+, pH≈8.501. Sample B consumes the 0.0200 mol reserve and leaves 0.00500 mol strong acid; a logarithm of a negative amount is invalid.",
+            "understandingFocusDe": "Die zweite Probe verlangt eine Modellgrenzenentscheidung, keine weitere mechanische Pufferformeleinsetzung.",
+            "understandingFocusEn": "The second sample requires a model-domain decision rather than another mechanical buffer-formula substitution."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2",
+            "e3",
+            "e4",
+            "e5"
+          ],
+          "alternativeExpectationGroups": [],
+          "freshVariationRequired": "Only where needed to establish an unshown aspect; no extra-task quota",
+          "independentTransferRequired": "Substantive independent transfer, including within one sufficiently rich task; no mandatory case count",
+          "masteryDecisionBoundaryDe": "Keine feste Zahl von Aufgaben oder Falllabels. Ausschlaggebend ist ausreichende selbstständige Evidenz für alle tatsächlich geforderten Aspekte; echter mehrschrittiger Transfer innerhalb einer Aufgabe kann genügen. Weitere Aufgaben nur für noch nicht belegte Aspekte. Diese E0/G0-Entwürfe sind kein Lernernachweis.",
+          "masteryDecisionBoundaryEn": "No fixed quota of tasks or case labels. Sufficient independent evidence for the required aspects decides; genuine multi-step transfer in one task may suffice. Request further work only for unshown aspects. These E0/G0 designs are not learner evidence."
+        }
+      },
+      "normalReviewStatusCreated": false,
+      "semanticComponentInventory": [
+        {
+          "id": "pair-initial-ratio",
+          "mergedExpectationContext": "e1",
+          "meaningDe": "Konjugierte Säure/Base, Quotientenrichtung und Anfangs-pH"
+        },
+        {
+          "id": "acid-addition-balance",
+          "mergedExpectationContext": "e2",
+          "meaningDe": "HCl zuerst bilanzieren, dann positive Restmengen und neuerpH"
+        },
+        {
+          "id": "base-addition-balance",
+          "mergedExpectationContext": "e2",
+          "meaningDe": "OH− zuerst bilanzieren, dann positive Restmengen und neuerpH"
+        },
+        {
+          "id": "dilution-reserve-per-litre",
+          "mergedExpectationContext": "e3/e4/e5",
+          "meaningDe": "Gemeinsame Verdünnung erhält Modellquotienten; Reserve jeLiter sinkt, nicht beliebig verdünnungsfest"
+        },
+        {
+          "id": "reserve-exhaustion",
+          "mergedExpectationContext": "e3/e5",
+          "meaningDe": "Verbrauchte Partnerreserve, formaler stöchiometrischer Überschuss, kein negativer Logarithmus"
+        },
+        {
+          "id": "unknown-ammonia-exchange",
+          "mergedExpectationContext": "e4/e5",
+          "meaningDe": "Unbekannter NH3-Verlust ändert Bilanz; ohne verbleibende Mengen kein ZahlenpH"
+        },
+        {
+          "id": "MWG-common-volume-domain",
+          "mergedExpectationContext": "e5",
+          "meaningDe": "HH aus MWG, gemeinsame Volumen-/Aktivitäts-/Näherungsannahmen"
+        },
+        {
+          "id": "dose-not-free-hydronium",
+          "mergedExpectationContext": "e4/e5",
+          "meaningDe": "Zugegebene starke Säure ist vor Reaktion kein unveränderter freier Oxoniumwert"
+        }
+      ],
+      "poolComponentCoverage": [
+        {
+          "semanticComponentId": "pair-initial-ratio",
+          "actualCaseDesigns": [
+            "G7-C1",
+            "G7-C2",
+            "T06-C1",
+            "T06-C2"
+          ],
+          "status": "bounded author design contribution; independent whole P and learner evidence absent"
+        },
+        {
+          "semanticComponentId": "acid-addition-balance",
+          "actualCaseDesigns": [
+            "G7-C1",
+            "G7-C2",
+            "T06-C1"
+          ],
+          "status": "bounded author design contribution; independent whole P and learner evidence absent"
+        },
+        {
+          "semanticComponentId": "base-addition-balance",
+          "actualCaseDesigns": [
+            "T06-C2"
+          ],
+          "status": "bounded author design contribution; independent whole P and learner evidence absent"
+        },
+        {
+          "semanticComponentId": "dilution-reserve-per-litre",
+          "actualCaseDesigns": [
+            "G7-C1",
+            "T06-C1"
+          ],
+          "status": "bounded author design contribution; independent whole P and learner evidence absent"
+        },
+        {
+          "semanticComponentId": "reserve-exhaustion",
+          "actualCaseDesigns": [
+            "G7-C2",
+            "T06-C2"
+          ],
+          "status": "bounded author design contribution; independent whole P and learner evidence absent"
+        },
+        {
+          "semanticComponentId": "unknown-ammonia-exchange",
+          "actualCaseDesigns": [
+            "T06-C2"
+          ],
+          "status": "bounded author design contribution; independent whole P and learner evidence absent"
+        },
+        {
+          "semanticComponentId": "MWG-common-volume-domain",
+          "actualCaseDesigns": [
+            "G7-C1",
+            "T06-C1"
+          ],
+          "status": "bounded author design contribution; independent whole P and learner evidence absent"
+        },
+        {
+          "semanticComponentId": "dose-not-free-hydronium",
+          "actualCaseDesigns": [
+            "T06-C1"
+          ],
+          "status": "bounded author design contribution; independent whole P and learner evidence absent"
+        }
+      ],
+      "wholeProfileStatus": "HOLD-new-whole-independent-P-and-current-source-context",
+      "wholeGoal": {
+        "id": "a449e874-6fec-502b-9667-6f078adc4d64",
+        "title": "Puffer-pH mit der Henderson-Hasselbalch-Gleichung berechnen",
+        "titleEn": "Calculate buffer pH using the Henderson–Hasselbalch equation",
+        "description": "Die lernende Person kann Pufferlösungen mit der Henderson-Hasselbalch-Gleichung quantitativ beschreiben, den pH-Wert aus dem Verhältnis der korrespondierenden Säure-Base-Komponenten berechnen, vorgegebene Säure- oder Basenzugaben in der Stoffmengenbilanz berücksichtigen und die Gültigkeit der verwendeten Näherung einschließlich ihrer Grenzen bei erschöpfter Pufferkomponente begründen.",
+        "descriptionEn": "The learner can quantitatively describe buffer solutions using the Henderson–Hasselbalch equation, calculate pH from the ratio of the conjugate acid–base components, account for specified acid or base additions in the amount-of-substance balance, and justify the validity of the approximation used, including its limits when a buffer component is exhausted.",
+        "weight": 1.1,
+        "tags": [
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "28c90c6a-3020-5c51-ac40-d802f3f12d2d"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-chemistry",
+          "demandLevel": "AB3",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BC_REAKTION"
+          ],
+          "phase": "Q3"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-NI"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+            "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "873f7f36-308a-4f01-94b6-452580dbd8dd"
+          }
+        },
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "a449e874-6fec-502b-9667-6f078adc4d64",
+            "title": "Visualisierung: Puffergleichungen anwenden (LK)",
+            "url": "/assets/goal-visualizations/chemie/a449e874-6fec-502b-9667-6f078adc4d64/a449e874-6fec-502b-9667-6f078adc4d64.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Puffergleichungen anwenden (LK).",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Puffergleichungen anwenden (LK)\". Die lernende Person kann Pufferlösungen mithilfe der Henderson-Hasselbalch-Gleichung quantitativ beschreiben.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "accepted"
+          }
+        ]
+      }
+    }
+  },
+  "M2SelectionPlacementProof": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-ph-two-memory-and-twelve-ion-bridges-informed-independent-followup-20261016-v1/OUTPUTS.informed-two-memory-and-twelve-ion-bridge-review.final-selector.json",
+    "sha256": "sha256:b2c2072d2f5435014602ef9ec0d328b80fd6c4fffd914b9fa2764495abe6566c",
+    "bytes": 2482
+  },
+  "actual47Visibility": [
+    {
+      "viewId": "de-bb-gym-chemistry-gk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BB",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "classification": "common45-alias-group",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-four-package-joint576-portable-technical-context-20261016-v1/views/00-de-bb-gk.view.json",
+        "sha256": "sha256:d06f599ddea7c101472f0c8c249a395f102e74bdc666df3f323304e654251466",
+        "bytes": 26621
+      },
+      "F1Role": "target",
+      "a449Role": null,
+      "F1Card004MemoryTargets": [
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca"
+      ],
+      "a449Card006MemoryTargets": [
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca"
+      ]
+    },
+    {
+      "viewId": "de-bb-gym-chemistry-lk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BB",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "classification": "common45-alias-group",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-four-package-joint576-portable-technical-context-20261016-v1/views/01-de-bb-lk.view.json",
+        "sha256": "sha256:2fe63e97a3a1d7acc0f015e1ecb76ee811ab8ac3360b4cd0255ef7b12570ba3c",
+        "bytes": 32946
+      },
+      "F1Role": "target",
+      "a449Role": null,
+      "F1Card004MemoryTargets": [
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca"
+      ],
+      "a449Card006MemoryTargets": [
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca"
+      ]
+    },
+    {
+      "viewId": "de-be-gym-chemistry-gk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BE",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "classification": "common45-alias-group",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-four-package-joint576-portable-technical-context-20261016-v1/views/02-de-be-gk.view.json",
+        "sha256": "sha256:25fba16591ada327e2d064cea21b85b784e3651971d7d5b09ba8cbde63ae7392",
+        "bytes": 26621
+      },
+      "F1Role": "target",
+      "a449Role": null,
+      "F1Card004MemoryTargets": [
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca"
+      ],
+      "a449Card006MemoryTargets": [
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca"
+      ]
+    },
+    {
+      "viewId": "de-be-gym-chemistry-lk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BE",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "classification": "common45-alias-group",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-four-package-joint576-portable-technical-context-20261016-v1/views/03-de-be-lk.view.json",
+        "sha256": "sha256:f397bf33ee5fec56d44b713d0d51337e2751e3133dd4910b156c62b144ecb0d5",
+        "bytes": 32946
+      },
+      "F1Role": "target",
+      "a449Role": null,
+      "F1Card004MemoryTargets": [
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca"
+      ],
+      "a449Card006MemoryTargets": [
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca"
+      ]
+    },
+    {
+      "viewId": "de-bw-gym-chemistry-gk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BW",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "classification": "common45-alias-group",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-ph-two-narrow-memory-selections-and-explicit-course-placements-author-20261016-v1/views/04-de-bw-gk.view.json",
+        "sha256": "sha256:02c977e68012e82606c02b6aef5012584a27dfaf11e67a794168445744f78fda",
+        "bytes": 27676
+      },
+      "F1Role": "target",
+      "a449Role": null,
+      "F1Card004MemoryTargets": [
+        "076cb333-3b61-5025-8f32-32afc16f9987"
+      ],
+      "a449Card006MemoryTargets": []
+    },
+    {
+      "viewId": "de-bw-gym-chemistry-lk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BW",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "classification": "common45-alias-group",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-four-package-joint576-portable-technical-context-20261016-v1/views/05-de-bw-lk.view.json",
+        "sha256": "sha256:00aaf007bd6412358f60245d94176f59527f9cf2b6635e686bb3221afc4bb08d",
+        "bytes": 33328
+      },
+      "F1Role": "target",
+      "a449Role": "target",
+      "F1Card004MemoryTargets": [
+        "045efaa4-a91a-5a91-add9-bff49cbed324"
+      ],
+      "a449Card006MemoryTargets": [
+        "045efaa4-a91a-5a91-add9-bff49cbed324"
+      ]
+    },
+    {
+      "viewId": "de-de-gym-chemistry-gk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "classification": "common45-alias-group",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-four-package-joint576-portable-technical-context-20261016-v1/views/06-de-de-gym-chemistry-gk.view.json",
+        "sha256": "sha256:69a75694466a6cc90fb1b7de6fd51fa8cc1171687ce8bbd3555a996de9f4abc0",
+        "bytes": 3904
+      },
+      "F1Role": "target",
+      "a449Role": "target",
+      "F1Card004MemoryTargets": [
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca"
+      ],
+      "a449Card006MemoryTargets": [
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca"
+      ]
+    },
+    {
+      "viewId": "de-de-gym-chemistry-lk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "classification": "common45-alias-group",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-four-package-joint576-portable-technical-context-20261016-v1/views/07-de-de-gym-chemistry-lk.view.json",
+        "sha256": "sha256:1d5c9522255912f06d9eb083d2553b69d001b5f329669d977e02cf52ea43747b",
+        "bytes": 3904
+      },
+      "F1Role": "target",
+      "a449Role": "target",
+      "F1Card004MemoryTargets": [
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca"
+      ],
+      "a449Card006MemoryTargets": [
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca"
+      ]
+    },
+    {
+      "viewId": "de-de-gym-seki-chemistry",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "SekI"
+      },
+      "classification": "common45-alias-group",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-four-package-joint576-portable-technical-context-20261016-v1/views/08-de-de-gym-seki-chemistry.view.json",
+        "sha256": "sha256:bd14e86c1ccc5382e4502dc9fbdeb091ecb38e13cf7e3fe07e09d85af0d0a372",
+        "bytes": 1982
+      },
+      "F1Role": null,
+      "a449Role": null,
+      "F1Card004MemoryTargets": [],
+      "a449Card006MemoryTargets": []
+    },
+    {
+      "viewId": "de-de-gym-sekii-chemistry-gk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "classification": "common45-alias-group",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-four-package-joint576-portable-technical-context-20261016-v1/views/09-de-de-gym-sekii-chemistry-gk.view.json",
+        "sha256": "sha256:cedd8306f86b88de5a5d7362e8988cad435dfdf2c242536a3844aac83b0dc3d6",
+        "bytes": 2540
+      },
+      "F1Role": "target",
+      "a449Role": "target",
+      "F1Card004MemoryTargets": [
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca"
+      ],
+      "a449Card006MemoryTargets": [
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca"
+      ]
+    },
+    {
+      "viewId": "de-de-gym-sekii-chemistry-lk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "classification": "common45-alias-group",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-four-package-joint576-portable-technical-context-20261016-v1/views/10-de-de-gym-sekii-chemistry-lk.view.json",
+        "sha256": "sha256:2894435036564b447fe584350150829ba5138ce616936fd5fdabf0c689cfc93c",
+        "bytes": 2540
+      },
+      "F1Role": "target",
+      "a449Role": "target",
+      "F1Card004MemoryTargets": [
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca"
+      ],
+      "a449Card006MemoryTargets": [
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca"
+      ]
+    },
+    {
+      "viewId": "de-hb-gym-chemistry-gk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HB",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "classification": "common45-alias-group",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-ph-two-narrow-memory-selections-and-explicit-course-placements-author-20261016-v1/views/11-de-hb-gk.view.json",
+        "sha256": "sha256:2fdca890e6127d4902e4b2a199807c41fc8f3cbfcc58840d696f4abbce57b186",
+        "bytes": 33411
+      },
+      "F1Role": "target",
+      "a449Role": null,
+      "F1Card004MemoryTargets": [
+        "076cb333-3b61-5025-8f32-32afc16f9987"
+      ],
+      "a449Card006MemoryTargets": []
+    },
+    {
+      "viewId": "de-hb-gym-chemistry-lk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HB",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "classification": "common45-alias-group",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-ph-two-narrow-memory-selections-and-explicit-course-placements-author-20261016-v1/views/12-de-hb-lk.view.json",
+        "sha256": "sha256:b643e419996ca683066986d22b2c2668eae9bd6545dea7c64b742fe4123ddb8d",
+        "bytes": 38883
+      },
+      "F1Role": "target",
+      "a449Role": null,
+      "F1Card004MemoryTargets": [
+        "076cb333-3b61-5025-8f32-32afc16f9987"
+      ],
+      "a449Card006MemoryTargets": []
+    },
+    {
+      "viewId": "de-he-gym-chemistry-gk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "classification": "common45-alias-group",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-four-package-joint576-portable-technical-context-20261016-v1/views/13-de-he-gk.view.json",
+        "sha256": "sha256:992f259ea22c968254b4a8a5da4bb962d790e1913da00f6c77adf3e65dcc3004",
+        "bytes": 7782
+      },
+      "F1Role": "target",
+      "a449Role": "target",
+      "F1Card004MemoryTargets": [
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca"
+      ],
+      "a449Card006MemoryTargets": [
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca"
+      ]
+    },
+    {
+      "viewId": "de-he-gym-chemistry-lk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "classification": "common45-alias-group",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-four-package-joint576-portable-technical-context-20261016-v1/views/14-de-he-lk.view.json",
+        "sha256": "sha256:f91188d5da738b2b1954442905acea5fb91118a9cdb58076439d4adfc435b44f",
+        "bytes": 7782
+      },
+      "F1Role": "target",
+      "a449Role": "target",
+      "F1Card004MemoryTargets": [
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca"
+      ],
+      "a449Card006MemoryTargets": [
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca"
+      ]
+    },
+    {
+      "viewId": "de-he-gym-sekii-chemistry-gk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "classification": "common45-alias-group",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-four-package-joint576-portable-technical-context-20261016-v1/views/15-de-he-sekii-gk.view.json",
+        "sha256": "sha256:9a3a38a4d41dbcf16e902e879505caf98a059ac9af8fb3217a66768424ff2bd0",
+        "bytes": 2995
+      },
+      "F1Role": "target",
+      "a449Role": "target",
+      "F1Card004MemoryTargets": [
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca"
+      ],
+      "a449Card006MemoryTargets": [
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca"
+      ]
+    },
+    {
+      "viewId": "de-he-gym-sekii-chemistry-lk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "classification": "common45-alias-group",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-four-package-joint576-portable-technical-context-20261016-v1/views/16-de-he-sekii-lk.view.json",
+        "sha256": "sha256:548c33c730cf0e324db67410d6935fb74c9fd1e86226d7997d31bdaf74fdb978",
+        "bytes": 2995
+      },
+      "F1Role": "target",
+      "a449Role": "target",
+      "F1Card004MemoryTargets": [
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca"
+      ],
+      "a449Card006MemoryTargets": [
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca"
+      ]
+    },
+    {
+      "viewId": "de-hh-gym-chemistry-gk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HH",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "classification": "common45-alias-group",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-ph-two-narrow-memory-selections-and-explicit-course-placements-author-20261016-v1/views/17-de-hh-gk.view.json",
+        "sha256": "sha256:1265cb626cd0796ee693cfdf1180402d61c7fbafc59cc5396660c827f3eafcbe",
+        "bytes": 22538
+      },
+      "F1Role": null,
+      "a449Role": null,
+      "F1Card004MemoryTargets": [
+        "076cb333-3b61-5025-8f32-32afc16f9987"
+      ],
+      "a449Card006MemoryTargets": []
+    },
+    {
+      "viewId": "de-hh-gym-chemistry-lk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HH",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "classification": "common45-alias-group",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-ph-two-narrow-memory-selections-and-explicit-course-placements-author-20261016-v1/views/18-de-hh-lk.view.json",
+        "sha256": "sha256:a9f4e9960df9d235ef1673d3f9af7635e0300d6cc9e88ebd32902f561f0fe580",
+        "bytes": 25605
+      },
+      "F1Role": null,
+      "a449Role": null,
+      "F1Card004MemoryTargets": [
+        "076cb333-3b61-5025-8f32-32afc16f9987"
+      ],
+      "a449Card006MemoryTargets": []
+    },
+    {
+      "viewId": "de-mv-gym-chemistry-gk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-MV",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "classification": "common45-alias-group",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-ph-two-narrow-memory-selections-and-explicit-course-placements-author-20261016-v1/views/19-de-mv-gk.view.json",
+        "sha256": "sha256:cb16af7f82de685f8cf2cd9b20cce00e3e8b6d99093c01b50c719ca9d80c4d55",
+        "bytes": 26804
+      },
+      "F1Role": null,
+      "a449Role": null,
+      "F1Card004MemoryTargets": [
+        "076cb333-3b61-5025-8f32-32afc16f9987"
+      ],
+      "a449Card006MemoryTargets": []
+    },
+    {
+      "viewId": "de-mv-gym-chemistry-lk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-MV",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "classification": "common45-alias-group",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-ph-two-narrow-memory-selections-and-explicit-course-placements-author-20261016-v1/views/20-de-mv-lk.view.json",
+        "sha256": "sha256:a6fbc86e76ef950bf8872b23a160aac5b2c2994afdd9384c7c730c86c5bfa039",
+        "bytes": 30014
+      },
+      "F1Role": null,
+      "a449Role": null,
+      "F1Card004MemoryTargets": [
+        "076cb333-3b61-5025-8f32-32afc16f9987"
+      ],
+      "a449Card006MemoryTargets": []
+    },
+    {
+      "viewId": "de-ni-gym-chemistry-gk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NI",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "classification": "common45-alias-group",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-ph-two-narrow-memory-selections-and-explicit-course-placements-author-20261016-v1/views/21-de-ni-gk.view.json",
+        "sha256": "sha256:6011ee90b7e64beb723d03079289e8ab952865fdf671e798276f22fc6bacacca",
+        "bytes": 34439
+      },
+      "F1Role": "target",
+      "a449Role": null,
+      "F1Card004MemoryTargets": [
+        "076cb333-3b61-5025-8f32-32afc16f9987"
+      ],
+      "a449Card006MemoryTargets": []
+    },
+    {
+      "viewId": "de-ni-gym-chemistry-lk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NI",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "classification": "common45-alias-group",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-ph-two-narrow-memory-selections-and-explicit-course-placements-author-20261016-v1/views/22-de-ni-lk.view.json",
+        "sha256": "sha256:6a35f5b8ec18be5cfdc4596934793480950304ce899e319905cea1a97cd066a8",
+        "bytes": 38898
+      },
+      "F1Role": "target",
+      "a449Role": "target",
+      "F1Card004MemoryTargets": [
+        "076cb333-3b61-5025-8f32-32afc16f9987"
+      ],
+      "a449Card006MemoryTargets": [
+        "c8bf3178-383d-570f-825d-d2d7b9507e6e"
+      ]
+    },
+    {
+      "viewId": "de-nw-gym-chemistry-gk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NW",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "classification": "common45-alias-group",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-ph-two-narrow-memory-selections-and-explicit-course-placements-author-20261016-v1/views/23-de-nw-gk.view.json",
+        "sha256": "sha256:9c37d0f14d9130c22bbbd68174815e25a47af2f9e180bfcd4916f59a3faf3bb3",
+        "bytes": 22174
+      },
+      "F1Role": "target",
+      "a449Role": null,
+      "F1Card004MemoryTargets": [
+        "076cb333-3b61-5025-8f32-32afc16f9987"
+      ],
+      "a449Card006MemoryTargets": []
+    },
+    {
+      "viewId": "de-nw-gym-chemistry-lk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NW",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "classification": "common45-alias-group",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-ph-two-narrow-memory-selections-and-explicit-course-placements-author-20261016-v1/views/24-de-nw-lk.view.json",
+        "sha256": "sha256:65fd654c106c5c8f53ca0dc2a0d2536dc0d6556a98e435373a800b5725e9e526",
+        "bytes": 23881
+      },
+      "F1Role": "target",
+      "a449Role": null,
+      "F1Card004MemoryTargets": [
+        "076cb333-3b61-5025-8f32-32afc16f9987"
+      ],
+      "a449Card006MemoryTargets": []
+    },
+    {
+      "viewId": "de-rp-gym-chemistry-gk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-RP",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "classification": "common45-alias-group",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-ph-two-narrow-memory-selections-and-explicit-course-placements-author-20261016-v1/views/25-de-rp-gk.view.json",
+        "sha256": "sha256:f1a44b99e7c18a1d6e5a86427693a8027edf8da813f4905766777c99b3f1fe84",
+        "bytes": 29250
+      },
+      "F1Role": null,
+      "a449Role": null,
+      "F1Card004MemoryTargets": [
+        "076cb333-3b61-5025-8f32-32afc16f9987"
+      ],
+      "a449Card006MemoryTargets": []
+    },
+    {
+      "viewId": "de-rp-gym-chemistry-lk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-RP",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "classification": "common45-alias-group",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-ph-two-narrow-memory-selections-and-explicit-course-placements-author-20261016-v1/views/26-de-rp-lk.view.json",
+        "sha256": "sha256:d08ec30787bc0ab803fd38950bb9b3471dafd6d2ba14e5856c793c50051663fb",
+        "bytes": 33511
+      },
+      "F1Role": null,
+      "a449Role": null,
+      "F1Card004MemoryTargets": [
+        "076cb333-3b61-5025-8f32-32afc16f9987"
+      ],
+      "a449Card006MemoryTargets": []
+    },
+    {
+      "viewId": "de-sh-gym-chemistry-gk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SH",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "classification": "common45-alias-group",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-four-package-joint576-portable-technical-context-20261016-v1/views/27-de-sh-gk.view.json",
+        "sha256": "sha256:6787fa05dcc32a1219a4414ab014666b0e84ca98bbd4603133c2de4b53f11523",
+        "bytes": 26458
+      },
+      "F1Role": null,
+      "a449Role": null,
+      "F1Card004MemoryTargets": [],
+      "a449Card006MemoryTargets": []
+    },
+    {
+      "viewId": "de-sh-gym-chemistry-lk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SH",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "classification": "common45-alias-group",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-four-package-joint576-portable-technical-context-20261016-v1/views/28-de-sh-lk.view.json",
+        "sha256": "sha256:6ac02962a7ee816ed9eeb1314f79a905dfe733c01cd6054bf3a3d294f1cba4dc",
+        "bytes": 30319
+      },
+      "F1Role": null,
+      "a449Role": null,
+      "F1Card004MemoryTargets": [],
+      "a449Card006MemoryTargets": []
+    },
+    {
+      "viewId": "de-sl-gym-chemistry-gk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SL",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "classification": "common45-alias-group",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-ph-two-narrow-memory-selections-and-explicit-course-placements-author-20261016-v1/views/29-de-sl-gk.view.json",
+        "sha256": "sha256:ac70054f916bb0c365761c53d1308054aa36ed991c3b753146fee794b9499637",
+        "bytes": 29157
+      },
+      "F1Role": null,
+      "a449Role": null,
+      "F1Card004MemoryTargets": [
+        "076cb333-3b61-5025-8f32-32afc16f9987"
+      ],
+      "a449Card006MemoryTargets": []
+    },
+    {
+      "viewId": "de-sl-gym-chemistry-lk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SL",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "classification": "common45-alias-group",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-ph-two-narrow-memory-selections-and-explicit-course-placements-author-20261016-v1/views/30-de-sl-lk.view.json",
+        "sha256": "sha256:01487d1c9ad2a1e0e6669c7c9e18ccedbe00484c1345a8d0b1e346c2f3f90909",
+        "bytes": 32224
+      },
+      "F1Role": null,
+      "a449Role": null,
+      "F1Card004MemoryTargets": [
+        "076cb333-3b61-5025-8f32-32afc16f9987"
+      ],
+      "a449Card006MemoryTargets": []
+    },
+    {
+      "viewId": "de-sn-gym-chemistry-gk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SN",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "classification": "common45-alias-group",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-ph-two-narrow-memory-selections-and-explicit-course-placements-author-20261016-v1/views/31-de-sn-gk.view.json",
+        "sha256": "sha256:cee69b153cfbb33d2c04537ec1372231bc02994b7b8c917fb5fbe069eff519b9",
+        "bytes": 32784
+      },
+      "F1Role": "target",
+      "a449Role": null,
+      "F1Card004MemoryTargets": [
+        "076cb333-3b61-5025-8f32-32afc16f9987"
+      ],
+      "a449Card006MemoryTargets": []
+    },
+    {
+      "viewId": "de-sn-gym-chemistry-lk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SN",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "classification": "common45-alias-group",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-ph-two-narrow-memory-selections-and-explicit-course-placements-author-20261016-v1/views/32-de-sn-lk.view.json",
+        "sha256": "sha256:6338c5daf7888f575f26ba543b76c75bbb460433808340ef5b1fa88aa4149028",
+        "bytes": 36502
+      },
+      "F1Role": "target",
+      "a449Role": null,
+      "F1Card004MemoryTargets": [
+        "076cb333-3b61-5025-8f32-32afc16f9987"
+      ],
+      "a449Card006MemoryTargets": []
+    },
+    {
+      "viewId": "de-st-gym-chemistry-gk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-ST",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "classification": "common45-alias-group",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-ph-two-narrow-memory-selections-and-explicit-course-placements-author-20261016-v1/views/33-de-st-gk.view.json",
+        "sha256": "sha256:01edd3f29419fee771a24dd73f6e0a65d5f0692150cc3c987629273a560fce01",
+        "bytes": 27726
+      },
+      "F1Role": null,
+      "a449Role": null,
+      "F1Card004MemoryTargets": [
+        "076cb333-3b61-5025-8f32-32afc16f9987"
+      ],
+      "a449Card006MemoryTargets": []
+    },
+    {
+      "viewId": "de-st-gym-chemistry-lk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-ST",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "classification": "common45-alias-group",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-ph-two-narrow-memory-selections-and-explicit-course-placements-author-20261016-v1/views/34-de-st-lk.view.json",
+        "sha256": "sha256:23659bd7a124523aec873b18da8c346c53c9c38e1fd00039753a32ebaca0949a",
+        "bytes": 31301
+      },
+      "F1Role": null,
+      "a449Role": null,
+      "F1Card004MemoryTargets": [
+        "076cb333-3b61-5025-8f32-32afc16f9987"
+      ],
+      "a449Card006MemoryTargets": []
+    },
+    {
+      "viewId": "de-th-gym-chemistry-gk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-TH",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "classification": "common45-alias-group",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-ph-two-narrow-memory-selections-and-explicit-course-placements-author-20261016-v1/views/35-de-th-gk.view.json",
+        "sha256": "sha256:d86afecb2fd0c3af109b16faf2ec477a4e506164451643529a0daec48f4d941a",
+        "bytes": 28105
+      },
+      "F1Role": null,
+      "a449Role": null,
+      "F1Card004MemoryTargets": [
+        "076cb333-3b61-5025-8f32-32afc16f9987"
+      ],
+      "a449Card006MemoryTargets": []
+    },
+    {
+      "viewId": "de-th-gym-chemistry-lk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-TH",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "classification": "common45-alias-group",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-ph-two-narrow-memory-selections-and-explicit-course-placements-author-20261016-v1/views/36-de-th-lk.view.json",
+        "sha256": "sha256:cb29cdee9516d951ea554d00d4df482b1b7feb5c1838d2519dc932503ec9f59c",
+        "bytes": 31172
+      },
+      "F1Role": null,
+      "a449Role": null,
+      "F1Card004MemoryTargets": [
+        "076cb333-3b61-5025-8f32-32afc16f9987"
+      ],
+      "a449Card006MemoryTargets": []
+    },
+    {
+      "viewId": "b007-v7-inactive-source-atlas",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE",
+        "stage": "CrossStage"
+      },
+      "classification": "common45-alias-group",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-four-package-joint576-portable-technical-context-20261016-v1/views/37-navigation.current-source-union.view.json",
+        "sha256": "sha256:bb88edca8c056d2ef361b1a442607ce6de73355f6f6e4aa82265adccb0802135",
+        "bytes": 72172
+      },
+      "F1Role": "target",
+      "a449Role": "target",
+      "F1Card004MemoryTargets": [
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca"
+      ],
+      "a449Card006MemoryTargets": [
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca"
+      ]
+    },
+    {
+      "viewId": "de-gym-chemie-bundesweit-source-de-he-seki",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "SekI"
+      },
+      "classification": "common45-alias-group",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-four-package-joint576-portable-technical-context-20261016-v1/views/38-de-gym-chemie-bundesweit-source-de-he-seki.view.json",
+        "sha256": "sha256:1f53bf6a8974ef09bd39c49d4661a273e237e50f5f13f0a628896e5291f90107",
+        "bytes": 9910
+      },
+      "F1Role": "target",
+      "a449Role": null,
+      "F1Card004MemoryTargets": [],
+      "a449Card006MemoryTargets": []
+    },
+    {
+      "viewId": "chemie-m7-full426-single-shared-process-placement-inactive-qs-author-20261015",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage"
+      },
+      "classification": "common45-alias-group",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-four-package-joint576-portable-technical-context-20261016-v1/views/39-full426.single-visible-placement.inactive-QS.author.view.json",
+        "sha256": "sha256:e8a3123db2aa19c26256cbbea009e3c3f57c1d177b1bc3741528204f9c47c109",
+        "bytes": 8815
+      },
+      "F1Role": "target",
+      "a449Role": "target",
+      "F1Card004MemoryTargets": [
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca",
+        "045efaa4-a91a-5a91-add9-bff49cbed324"
+      ],
+      "a449Card006MemoryTargets": [
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca",
+        "045efaa4-a91a-5a91-add9-bff49cbed324"
+      ]
+    },
+    {
+      "viewId": "de-by-gym-chemistry-lk-explicit-source-union-author",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BY",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "classification": "additional-BY-full-CrossStage",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-ph-two-narrow-memory-selections-and-explicit-course-placements-author-20261016-v1/views/extra-00-whole-crossstage-by-lk-source-stage-union.final-author.json",
+        "sha256": "sha256:18e0371a0b16edc76d35b4f8eaf9232538fdaa6b783d1c3f5ec4ffdcce170ced",
+        "bytes": 28069
+      },
+      "F1Role": "target",
+      "a449Role": null,
+      "F1Card004MemoryTargets": [
+        "076cb333-3b61-5025-8f32-32afc16f9987"
+      ],
+      "a449Card006MemoryTargets": []
+    },
+    {
+      "viewId": "de-gym-chemie-bundesweit-source-de-bb-sekii-lk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BB",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "classification": "sourceBOOK-outside-prerequisites-not-full-acquisition",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-four-package-joint576-portable-technical-context-20261016-v1/views/extra-01-whole-book-bb-sekii-lk.final-author.json",
+        "sha256": "sha256:264421a27bdfff89b22beee3959ea0d4867f6c5c32e65e09acbf978b48b52cd6",
+        "bytes": 20614
+      },
+      "F1Role": "target",
+      "a449Role": null,
+      "F1Card004MemoryTargets": [],
+      "a449Card006MemoryTargets": []
+    },
+    {
+      "viewId": "de-gym-chemie-bundesweit-source-de-be-sekii-lk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BE",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "classification": "sourceBOOK-outside-prerequisites-not-full-acquisition",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-four-package-joint576-portable-technical-context-20261016-v1/views/extra-02-whole-book-be-sekii-lk.final-author.json",
+        "sha256": "sha256:7efa9280765462c2d28f4fa726da83c160ee61e4267a17fbb350e972df34599f",
+        "bytes": 20614
+      },
+      "F1Role": "target",
+      "a449Role": null,
+      "F1Card004MemoryTargets": [],
+      "a449Card006MemoryTargets": []
+    },
+    {
+      "viewId": "de-gym-chemie-bundesweit-source-de-bw-sekii-lk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BW",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "classification": "sourceBOOK-outside-prerequisites-not-full-acquisition",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-four-package-joint576-portable-technical-context-20261016-v1/views/extra-03-whole-book-bw-sekii-lk.final-author.json",
+        "sha256": "sha256:8ae77d9b04836ddd62a910316211e07a49d97e5aa5160d9085654ec0f4e54a6c",
+        "bytes": 12719
+      },
+      "F1Role": null,
+      "a449Role": null,
+      "F1Card004MemoryTargets": [],
+      "a449Card006MemoryTargets": []
+    },
+    {
+      "viewId": "de-gym-chemie-bundesweit-source-de-by-sekii-lk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BY",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "classification": "sourceBOOK-outside-prerequisites-not-full-acquisition",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-four-package-joint576-portable-technical-context-20261016-v1/views/extra-04-whole-book-by-sekii-lk.final-author.json",
+        "sha256": "sha256:5496ea15ade63628ad88d52c068b3b0f6f2deee31686e4998fc7a8902ddce113",
+        "bytes": 22674
+      },
+      "F1Role": "prerequisiteOnly",
+      "a449Role": null,
+      "F1Card004MemoryTargets": [],
+      "a449Card006MemoryTargets": []
+    },
+    {
+      "viewId": "de-gym-chemie-bundesweit-source-de-rp-sekii-lk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-RP",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "classification": "sourceBOOK-outside-prerequisites-not-full-acquisition",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-four-package-joint576-portable-technical-context-20261016-v1/views/extra-05-whole-book-rp-sekii-lk.final-author.json",
+        "sha256": "sha256:25907dd2ce2d72bc5a343a95dbc4fd5fb5703e4b3ae40da18d3c43f8f03fb00e",
+        "bytes": 20600
+      },
+      "F1Role": null,
+      "a449Role": null,
+      "F1Card004MemoryTargets": [],
+      "a449Card006MemoryTargets": []
+    },
+    {
+      "viewId": "de-by-gym-chemistry-c10-ethanol-risk-unit-author",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BY",
+        "stage": "SekI"
+      },
+      "classification": "additional-BY-unit",
+      "wholeView": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-four-package-joint576-portable-technical-context-20261016-v1/views/extra-06-de-by-c10-ethanol-risk-unit.author.view.json",
+        "sha256": "sha256:a1ad2b4e5beba4a81b6da47b5840cf7ad7d22a92ce8ee616e14243c945a5151d",
+        "bytes": 1155
+      },
+      "F1Role": null,
+      "a449Role": null,
+      "F1Card004MemoryTargets": [],
+      "a449Card006MemoryTargets": []
+    }
+  ],
+  "explicitVisibilityHolds": [
+    "de-gym-chemie-bundesweit-source-de-he-seki",
+    "de-gym-chemie-bundesweit-source-de-bb-sekii-lk",
+    "de-gym-chemie-bundesweit-source-de-be-sekii-lk"
+  ],
+  "visibilityMeaning": "These are actual selected whole author views, not a NormalM gate. The three previously identified source-publication purposes remain backmatter-only proposals, not complete learner M6/M7 routes. Baseline configured scopes are not narrowed here and no placement is edited. All unchanged valid old M/card/origin evidence remains full integration scope.",
+  "NormalRecordsCreated": false,
+  "HumanApproval": false,
+  "HumanTrial": false
+}

@@ -1,0 +1,3 @@
+# Separater SN-Autoren-Nachtrag
+
+Abhängigkeit: versiegelter Source8-v2-Nachzustand. Nur zwei Mapping-Dateien; beide SN-Views enthalten D2cc bereits als echtes Target. Die fünf alten Partner und E5 bleiben exakt partial. D2cc trägt die indikatorbezogene Beobachtung/Auswertung bei. Seine beiden unveränderten P-Fälle sind bereitgestellte Beobachtungen und beweisen keine eigene Versuchsdurchführung. Deshalb keine Vollfreigabe der experimentellen Komponente, der zusammengesetzten Quellzelle oder der fünf alten Partner. Kein neuer Ordinary-Inhalt, kein D/P-Neustart, kein eigener unabhängiger Vote. Nur in einen separat autorisierten privaten TMP-Klon nach v2 integrieren; R/L4 und alte Selector/FIRST-Dateien bleiben unverändert.

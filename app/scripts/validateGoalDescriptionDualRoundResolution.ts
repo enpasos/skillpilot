@@ -672,7 +672,7 @@ const validateCurrentGoalBindings = ({
 }: {
   resolution: GoalDescriptionDualRoundResolution
   currentInput: GoalDescriptionReviewInput
-  canonicalGoal: Record<string, unknown>
+  canonicalGoal?: Record<string, unknown>
 }) => {
   const errors: string[] = []
   if (currentInput.schemaVersion !== 3) {
@@ -702,21 +702,23 @@ const validateCurrentGoalBindings = ({
     return { errors }
   }
   const currentGoal = matches[0]
-  const canonicalGoalId = String(canonicalGoal.id ?? '')
-  if (canonicalGoalId !== resolution.goal.goalId) {
-    errors.push(`Canonical goal id ${canonicalGoalId || '(missing)'} does not match resolution goal ${resolution.goal.goalId}`)
-  }
-  const expectedCanonicalContext = buildGoalDescriptionCanonicalContext(canonicalGoal)
-  if (stableGoalBookJson(currentGoal.canonicalContext) !== stableGoalBookJson(expectedCanonicalContext)) {
-    errors.push(`Current V3 context for ${resolution.goal.goalId} disagrees with the canonical goal`)
-  }
-  const expectedGoalFingerprint = fingerprintGoalForEvidence(
-    canonicalGoal as unknown as LearningGoal,
-    GOAL_BOOK_GOAL_FINGERPRINT_RULE_VERSION,
-    resolution.goal.effectiveSemanticKind,
-  )
-  if (currentGoal.goalFingerprint !== expectedGoalFingerprint) {
-    errors.push(`Current V3 goalFingerprint for ${resolution.goal.goalId} disagrees with the canonical goal and effective semantic kind`)
+  if (canonicalGoal) {
+    const canonicalGoalId = String(canonicalGoal.id ?? '')
+    if (canonicalGoalId !== resolution.goal.goalId) {
+      errors.push(`Canonical goal id ${canonicalGoalId || '(missing)'} does not match resolution goal ${resolution.goal.goalId}`)
+    }
+    const expectedCanonicalContext = buildGoalDescriptionCanonicalContext(canonicalGoal)
+    if (stableGoalBookJson(currentGoal.canonicalContext) !== stableGoalBookJson(expectedCanonicalContext)) {
+      errors.push(`Current V3 context for ${resolution.goal.goalId} disagrees with the canonical goal`)
+    }
+    const expectedGoalFingerprint = fingerprintGoalForEvidence(
+      canonicalGoal as unknown as LearningGoal,
+      GOAL_BOOK_GOAL_FINGERPRINT_RULE_VERSION,
+      resolution.goal.effectiveSemanticKind,
+    )
+    if (currentGoal.goalFingerprint !== expectedGoalFingerprint) {
+      errors.push(`Current V3 goalFingerprint for ${resolution.goal.goalId} disagrees with the canonical goal and effective semantic kind`)
+    }
   }
   if (fingerprintGoalDescriptionReviewPage(currentGoal.reviewContext.page) !== currentGoal.pageFingerprint) {
     errors.push(`Current V3 pageFingerprint for ${resolution.goal.goalId} is stale or foreign`)
@@ -748,26 +750,30 @@ const validateCurrentGoalBindings = ({
   ) {
     errors.push(`Current V3 evidence profile for ${resolution.goal.goalId} disagrees with its GoalBook page`)
   }
-  const canonicalText = {
-    titleDe: String(canonicalGoal.title ?? ''),
-    titleEn: String(canonicalGoal.titleEn ?? ''),
-    descriptionDe: String(canonicalGoal.description ?? ''),
-    descriptionEn: String(canonicalGoal.descriptionEn ?? ''),
-  }
-  if (Object.values(canonicalText).some((value) => value === '')) {
-    errors.push(`Canonical goal ${resolution.goal.goalId} is missing final bilingual title or description text`)
-  }
   const currentText = {
     titleDe: currentGoal.currentTitleDe,
     titleEn: currentGoal.currentTitleEn,
     descriptionDe: currentGoal.currentDescriptionDe,
     descriptionEn: currentGoal.currentDescriptionEn,
   }
-  if (stableGoalBookJson(currentText) !== stableGoalBookJson(canonicalText)) {
-    errors.push(`Current V3 bilingual text for ${resolution.goal.goalId} disagrees with the canonical goal`)
-  }
-  if (stableGoalBookJson(resolution.goal.finalText) !== stableGoalBookJson(canonicalText)) {
-    errors.push(`Resolution final bilingual text for ${resolution.goal.goalId} does not exactly match the current canonical goal`)
+  if (canonicalGoal) {
+    const canonicalText = {
+      titleDe: String(canonicalGoal.title ?? ''),
+      titleEn: String(canonicalGoal.titleEn ?? ''),
+      descriptionDe: String(canonicalGoal.description ?? ''),
+      descriptionEn: String(canonicalGoal.descriptionEn ?? ''),
+    }
+    if (Object.values(canonicalText).some((value) => value === '')) {
+      errors.push(`Canonical goal ${resolution.goal.goalId} is missing final bilingual title or description text`)
+    }
+    if (stableGoalBookJson(currentText) !== stableGoalBookJson(canonicalText)) {
+      errors.push(`Current V3 bilingual text for ${resolution.goal.goalId} disagrees with the canonical goal`)
+    }
+    if (stableGoalBookJson(resolution.goal.finalText) !== stableGoalBookJson(canonicalText)) {
+      errors.push(`Resolution final bilingual text for ${resolution.goal.goalId} does not exactly match the current canonical goal`)
+    }
+  } else if (stableGoalBookJson(resolution.goal.finalText) !== stableGoalBookJson(currentText)) {
+    errors.push(`Historical resolution final bilingual text for ${resolution.goal.goalId} disagrees with its bound review input`)
   }
   const currentContextFingerprint = fingerprintGoalDescriptionReviewContext(currentGoal)
   if (
@@ -780,7 +786,7 @@ const validateCurrentGoalBindings = ({
   return { errors, currentGoal, currentContextFingerprint }
 }
 
-export const validateGoalDescriptionDualRoundResolutionBindings = async ({
+const validateGoalDescriptionDualRoundResolutionBindingsInternal = async ({
   resolution,
   dualSummary,
   dualSummaryBytes,
@@ -790,7 +796,9 @@ export const validateGoalDescriptionDualRoundResolutionBindings = async ({
   secondSource,
   synthesisDecisionManifestArtifact,
   humanAttestationBytes,
-}: GoalDescriptionDualRoundResolutionBindingArtifacts) => {
+}: Omit<GoalDescriptionDualRoundResolutionBindingArtifacts, 'canonicalGoal'> & {
+  canonicalGoal?: Record<string, unknown>
+}) => {
   const { ajv, validateResolution, validateInputV3 } = await loadValidators()
   const errors: string[] = []
   if (!validateResolution(resolution)) {
@@ -951,7 +959,16 @@ export const validateGoalDescriptionDualRoundResolutionBindings = async ({
   return { errors, strictDescriptionComplete }
 }
 
-export const validateGoalDescriptionDualRoundResolution = async ({
+export const validateGoalDescriptionDualRoundResolutionBindings = (
+  artifacts: GoalDescriptionDualRoundResolutionBindingArtifacts,
+) => {
+  if (!artifacts.canonicalGoal || typeof artifacts.canonicalGoal !== 'object' || Array.isArray(artifacts.canonicalGoal)) {
+    return Promise.resolve({ errors: ['Current resolution validation requires a canonical goal'], strictDescriptionComplete: false })
+  }
+  return validateGoalDescriptionDualRoundResolutionBindingsInternal(artifacts)
+}
+
+const validateGoalDescriptionDualRoundResolutionInternal = async ({
   resolution,
   dualSummary,
   dualSummaryBytes,
@@ -971,7 +988,7 @@ export const validateGoalDescriptionDualRoundResolution = async ({
   second: GoalDescriptionReviewRoundArtifacts
   synthesisDecisionManifestArtifact?: GoalDescriptionDualRoundResolutionBindingArtifacts['synthesisDecisionManifestArtifact']
   humanAttestationBytes?: Buffer
-}) => {
+}, historicalOnly = false) => {
   const errors: string[] = []
   const { ajv, validateResolution, validateInputV3 } = await loadValidators()
   if (!validateResolution(resolution)) {
@@ -1005,14 +1022,14 @@ export const validateGoalDescriptionDualRoundResolution = async ({
   if (stableGoalBookJson(dualSummary) !== stableGoalBookJson(dualValidation.summary)) {
     errors.push('Persisted dual summary does not exactly match a fresh validation of the supplied rounds')
   }
-  const landscapeGoals = (landscape as { goals?: unknown }).goals
+  const landscapeGoals = (landscape as { goals?: unknown } | null)?.goals
   const canonicalMatches = Array.isArray(landscapeGoals)
     ? landscapeGoals.filter((candidate) => (
       candidate && typeof candidate === 'object'
       && (candidate as Record<string, unknown>).id === resolution.goal.goalId
     )) as Record<string, unknown>[]
     : []
-  if (canonicalMatches.length !== 1) {
+  if (!historicalOnly && canonicalMatches.length !== 1) {
     errors.push(`Canonical landscape must contain exactly one goal ${resolution.goal.goalId}; found ${canonicalMatches.length}`)
   }
   const firstSourceResult = extractGoalDescriptionDualRoundResolutionSource({
@@ -1028,18 +1045,18 @@ export const validateGoalDescriptionDualRoundResolution = async ({
   errors.push(...firstSourceResult.errors, ...secondSourceResult.errors)
   if (
     errors.length > 0
-    || canonicalMatches.length !== 1
+    || (!historicalOnly && canonicalMatches.length !== 1)
     || !firstSourceResult.source
     || !secondSourceResult.source
   ) {
     return { errors, strictDescriptionComplete: false }
   }
-  const bindingResult = await validateGoalDescriptionDualRoundResolutionBindings({
+  const bindingResult = await validateGoalDescriptionDualRoundResolutionBindingsInternal({
     resolution,
     dualSummary,
     dualSummaryBytes,
     currentInput,
-    canonicalGoal: canonicalMatches[0],
+    canonicalGoal: historicalOnly ? undefined : canonicalMatches[0],
     firstSource: firstSourceResult.source,
     secondSource: secondSourceResult.source,
     synthesisDecisionManifestArtifact,
@@ -1049,6 +1066,20 @@ export const validateGoalDescriptionDualRoundResolution = async ({
     errors: [...errors, ...bindingResult.errors],
     strictDescriptionComplete: bindingResult.strictDescriptionComplete,
   }
+}
+
+export const validateGoalDescriptionDualRoundResolution = (
+  artifacts: Parameters<typeof validateGoalDescriptionDualRoundResolutionInternal>[0],
+) => validateGoalDescriptionDualRoundResolutionInternal(artifacts)
+
+/** Validate retained review evidence against its original bound V3 input.
+ * This never verifies current canonical readiness and must only be used after
+ * the caller has proved that the current goal is a retired non-atomic context. */
+export const validateHistoricalGoalDescriptionDualRoundResolution = async (
+  artifacts: Omit<Parameters<typeof validateGoalDescriptionDualRoundResolutionInternal>[0], 'landscape'>,
+) => {
+  const validation = await validateGoalDescriptionDualRoundResolutionInternal({ ...artifacts, landscape: null }, true)
+  return { errors: validation.errors, historicalDescriptionComplete: validation.strictDescriptionComplete }
 }
 
 const parseArgs = (args: string[]) => {

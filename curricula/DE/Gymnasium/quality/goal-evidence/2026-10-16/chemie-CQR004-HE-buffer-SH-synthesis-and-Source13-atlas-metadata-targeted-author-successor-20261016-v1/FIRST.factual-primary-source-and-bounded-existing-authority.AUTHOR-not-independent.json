@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "role": "AUTHOR factual decision, frozen before candidate mapping/extraction/view serialization; not independent review",
+  "createdAt": "2026-10-16T12:03:44.702242+00:00",
+  "author": "/root/chemie_mobile2_current_independent_a_20261016",
+  "inputs": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-CQR004-HE-buffer-SH-synthesis-and-Source13-atlas-metadata-targeted-author-successor-20261016-v1/INPUTS.finite-whole-two-primary-cells-and-current-target-contexts.author.json",
+    "sha256": "sha256:a7a1b4edfb796b0ee281105cebda6c09b640fee86ee27b717565fe92fe3c2c56",
+    "bytes": 53684
+  },
+  "metadataAudit": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-CQR004-HE-buffer-SH-synthesis-and-Source13-atlas-metadata-targeted-author-successor-20261016-v1/AUDIT.actual-selected-Source13-all2000-decision-metadata-and-bounded-authority-not-full-review.json",
+    "sha256": "sha256:5ab3bb49f3d0de7700c89652306ff6d33260e5d5a5af23322f364df6240c366d",
+    "bytes": 640323
+  },
+  "actualPrimaryReadMethod": {
+    "HE2024": "pdftotext -layout complete physical/printed48; same course-labelled passage as2026",
+    "HE2026": "pdftotext -layout and actual rendered full physical/printed48 seen via view_image",
+    "SH2022": "Complete physical/printed68–71 layout text; actual69 table heading and71 two-column continuation seen via view_image",
+    "privateCaptures": [
+      {
+        "path": "tmp/chemie-m7-resumed-20261016/source-cqr004-author-private-20261016/he.png",
+        "sha256": "sha256:873202594c7126be5fc225b0b0c231a93bde31f730d4b0c12256a748ae0ff41f",
+        "bytes": 156627,
+        "notNewCurriculumAsset": true
+      },
+      {
+        "path": "tmp/chemie-m7-resumed-20261016/source-cqr004-author-private-20261016/sh69.png",
+        "sha256": "sha256:288a029828a310456e806687f4cebe8db269ce0b56f678861d244cb12fefa491",
+        "bytes": 275990,
+        "notNewCurriculumAsset": true
+      },
+      {
+        "path": "tmp/chemie-m7-resumed-20261016/source-cqr004-author-private-20261016/sh71.png",
+        "sha256": "sha256:1a1923a3c66836404884c788777f62cb2b7687d428961531c27d02c48f6b84c7",
+        "bytes": 55923,
+        "notNewCurriculumAsset": true
+      }
+    ]
+  },
+  "decisions": [
+    {
+      "id": "HE-B02-ALIASES",
+      "sourceGoalId": "he-chem-sekii-q3-4-b02-a01-f1f960ea",
+      "factualFinding": "Both official HE editions on48 place biological buffer significance in basic GK+LK and specifically open bicarbonate/ammonium buffers in a separate advanced LK bullet. Existing source course GK_LK is correct.",
+      "cause": "Six stale alias mapping edges retain a historical specific open-buffer target, unlike the already supported current bounded alias.",
+      "authorProposal": "Reuse exact existing independently informed9fef+25729 partial decision/edges from the current Q4-bounded alias in six stale aliases. Keep source cells, GK/LK tags, canonical scopes and the separate B03 open-buffer edge unchanged.",
+      "existingScienceOnly": true,
+      "newFachlicheClosures": 0
+    },
+    {
+      "id": "SH-035-SYNTHESIS",
+      "sourceGoalId": "de-sh-chemie-sekii-fachanforderungen-2022-3-2-chemie-der-funktionalen-stoffe-und-materialien-035-a76e9a63",
+      "factualFinding": "On printed69 the right table column is Additional compulsory content for elevated level; Syntheseplanung occurs on right continuation71 under Chemie und Medikamente. The whole medicine theme is a selectable context, not a universal SH GK obligation. The extraction GK_LK is factually too broad for this cell.",
+      "cause": "Both wrong source-course extraction and incorrect mapping to the BY-only selected biologisch-chemisches Praktikum cluster.",
+      "authorProposal": "Correct only this complete source-goal courseLevel and matching courseLevel tag GK_LK→LK, preserving source ID/text/locator/raw body and all source cells. Replace only its mapping by existing SH-applicable539476ee active-ingredient retrosynthetic planning contribution. It derives possible reactants/reaction type from a target structure and directly instantiates a bounded synthesis-planning task. Use partial, not a claim of all synthesis routes/conditions/practical execution. No new canonical competence or jurisdiction/course widening.",
+      "viewProposal": "Both current SH GK/LK views already retain539476ee. Remove only each isolated structure containing the wrong BY-only cf2631 goalEntry, preserve all ordinary/memory roles and every other node. Do not remove539 from GK: its existing broader SH source paths remain, and no new GK medicine obligation is inferred from the corrected cell.",
+      "independentApproval": "PENDING fresh other reviewer; author only",
+      "uncertainty": "The one-word official cell does not define exhaustive planning detail. This is a bounded source contribution, not whole SH medicine/unit coverage."
+    },
+    {
+      "id": "SOURCE13-18-METADATA",
+      "factualFinding": "All2000 current decisions in8 mapping files scanned once:18 missing reviewer/date pairs acrossBB2 BE2 BY1 NI7 RP1 SN5. Exact foreign Source48 rows exist for all18 and current partner sets match.17 complete source-goal bodies are exact; SN061 current normalized source body is supported by the later exact original-independent normalized-fields v2 follow-up.",
+      "authorProposal": "Restore factual reviewer/date and bounded rationale authority pins from that actual independent science, retaining exact all18 partner/edge arrays. For SN061 bind both original row and v2 resolution. Preserve optional BY GC, RP/SN operative-selection holds and all whole-source/course limits. This is evidence metadata restoration, not new source science.",
+      "newFachlicheClosures": 0
+    },
+    {
+      "id": "SOURCE2-CURRENT-FOUR",
+      "factualFinding": "Four current Source2-v3 decisions remain explicitly unreviewed: BY19ac and6348, HB050 and056. Existing Source48 covers older planning/theory contributions only and does not establish the changed current whole allocations.",
+      "authorProposal": "Preserve those whole decisions unchanged and explicitly report HOLD. Do not borrow older Source48 dates/votes. Later root-directed independent current Source2 source/course review is required if closing these decisions.",
+      "newApproval": false
+    },
+    {
+      "id": "BY-HISTORICAL-56-BOUNDARIES",
+      "factualFinding": "56 older current BY decisions carry authorCandidateBoundary pending markers with reviewer/date already present. This audit has not located precise current foreign authority for those markers.",
+      "authorProposal": "List exact IDs/whole decisions in finite audit; no rewrite or implicit approval and no historical scientific re-review. Treat as targeted authority/status clarification, not proof all56 are scientifically unreviewed."
+    }
+  ],
+  "technicalCourseCheckBoundary": "Stock CQR004 skips partial edges. Any candidate course PASS alone therefore is not source scientific approval; explicitly check current target accepts the corrected course and source cells remain unchanged except the one proven SH course field/tag.",
+  "remainingScopeLimits": [
+    "No whole Source13/country/course/exam/LayerA release",
+    "No Source2 practical operator rebound to old planning statements",
+    "No D/P/A/M/V vote created here; no HumanApproval/HumanTrial",
+    "No denominator reduction: all435 ordinary current IDs and every source cell retained",
+    "All normal H/R files and active Registry unchanged"
+  ],
+  "newOrdinaryGoals": 0,
+  "newFachlicheStrictClosures": 0,
+  "netStrictGain": 0,
+  "independentApprovalPending": true
+}

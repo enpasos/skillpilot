@@ -1,0 +1,1 @@
+Own didactic illustration and prompt: CC-BY-4.0. Attribution: SkillPilot; AI-generated using built-in OpenAI image generation, SkillPilot-curated. Input is our own previous generated image, not third-party imagery.

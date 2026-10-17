@@ -1,6 +1,5 @@
 import fs from 'node:fs'
 import path from 'node:path'
-import { goalVisualizationAssetSegments } from './goal_visualization_paths.mjs'
 
 import {
   ROOT_DIR,
@@ -193,20 +192,20 @@ function visualizationAssetLocation(goalId, url) {
   if (!url.startsWith(prefix)) {
     throw new Error(`Goal ${goalId} has a primary visualization URL outside ${prefix}.`)
   }
-  const segments = goalVisualizationAssetSegments(url)
-  const subject = segments?.[0] ?? ''
-  const extension = path.extname(segments?.at(-1) ?? '').toLowerCase()
+  const assetRelativePath = url.slice(prefix.length)
+  const segments = assetRelativePath.split('/')
+  const subject = segments[0] ?? ''
+  const extension = path.extname(segments[2] ?? '').toLowerCase()
   if (
-    !segments
+    segments.length !== 3
     || !/^[a-z0-9][a-z0-9-]*$/u.test(subject)
     || segments[1] !== goalId
-    || segments.at(-1) !== `${goalId}${extension}`
+    || segments[2] !== `${goalId}${extension}`
     || !allowedImageExtensions.has(extension)
+    || segments.some((segment) => segment === '.' || segment === '..' || segment.includes('\\'))
   ) {
     throw new Error(`Goal ${goalId} has an invalid goal-visualization URL schema.`)
   }
-
-  const assetRelativePath = segments.join('/')
 
   const imagePath = path.resolve(CANONICAL_VISUALIZATION_ROOT, assetRelativePath)
   if (!imagePath.startsWith(`${CANONICAL_VISUALIZATION_ROOT}${path.sep}`)) {

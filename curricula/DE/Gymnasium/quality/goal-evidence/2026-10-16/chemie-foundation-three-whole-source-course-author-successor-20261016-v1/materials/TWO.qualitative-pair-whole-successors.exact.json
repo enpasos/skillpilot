@@ -1,0 +1,354 @@
+{
+  "role": "Exactly two whole pair case successors; originals retained in before, no other four cases changed",
+  "caseSuccessors": [
+    {
+      "sourceWholeCase": {
+        "input": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-b014-foundation-three-current231-scientific-author-20261013-v1/whole3.CASES.DEEN.author.json",
+          "sha256": "sha256:4115370f373b01cb0a74a6ffd851dde1bd13801e5a45e203bde56513ac436176",
+          "bytes": 54142
+        },
+        "jsonPointer": "/goals/2/cases/0",
+        "wholeObjectSha256": "sha256:a67afd7f6a9f04ad9d3c4b757c9cc9b4caac4b69b71d08bee2d4d73dfd4922b6"
+      },
+      "before": {
+        "id": "pair-1",
+        "title": {
+          "de": "Essigsäure, Ammoniak und die Grenzen eines Indikatorbefunds",
+          "en": "Acetic acid, ammonia, and limitations of indicator evidence"
+        },
+        "givenMaterials": {
+          "de": "In Wasser bei 25 °C werden CH3COOH und NH3 ohne Gasverlust gemischt. Gegeben: pKa(CH3COOH)=4,76, pKa(NH4+)=9,25; verdünnte ideale Lösungen, Aktivitäten≈c/(1 mol/L). Drei getrennte unbekannte, farblose Proben X/Y/Z liefern mit Universalindikatorpapier die konstruierten Befunde orange/blau/grün. Die zugehörige Hersteller-Farbskala weist diesen Farben pH≈3/10/7 zu (nur grobe Bereiche). Für einen tatsächlichen Nachweis stehen im beaufsichtigten Labor getrennte, von der Lehrkraft vorbereitete verdünnte Proben sowie saure, basische und neutrale Referenzlösungen, saubere Tropfpipetten, Papier und Schutzbrille bereit. Die unbekannten Proben dürfen nicht als die obige Reaktionsmischung identifiziert werden.",
+          "en": "In water at 25 °C, mix CH3COOH and NH3 without gas loss. Given: pKa(CH3COOH)=4.76 and pKa(NH4+)=9.25; dilute ideal solutions, activities≈c/(1 mol/L). Three separate unknown colorless samples X/Y/Z give constructed universal-indicator-paper colors orange/blue/green. The manufacturer scale assigns approximate pH 3/10/7 to these colors (broad ranges only). For actual detection, a supervised laboratory supplies separate dilute teacher-prepared samples, acidic, alkaline, and neutral reference solutions, clean dropping pipettes, paper, and goggles. Do not identify the unknown samples as the above reaction mixture."
+        },
+        "demands": [
+          {
+            "id": "a1-a",
+            "de": "Stelle die reversible Protonenübertragungsreaktion auf; kennzeichne Donator, Akzeptor und beide korrespondierenden Paare und prüfe Atome/Ladung. Vergleiche die Säure- und Basenstärken anhand der pKa-Werte; leite K≈10^[pKa(Produkt-Säure)−pKa(Edukt-Säure)] her und schätze die bevorzugte Gleichgewichtsseite ab.",
+            "en": "Write the reversible proton-transfer reaction; identify donor, acceptor, and both conjugate pairs, and check atoms/charge. Compare acid and base strengths using the pKa values; derive K≈10^[pKa(product acid)−pKa(reactant acid)] and estimate the favored equilibrium side."
+          },
+          {
+            "id": "a1-b",
+            "de": "Deute X/Y/Z im Brønsted-Modell. Entscheide, was die Farben über einen Überschuss an H3O+ bzw. OH−, über die Anwesenheit der jeweils anderen Ionensorte und über die Identität der gelösten Säure aussagen. Erkläre, warum das Brønsted-Modell allein keine Zahlen für die Gleichgewichtslage liefert.",
+            "en": "Interpret X/Y/Z in the Brønsted model. Decide what the colors say about excess H3O+ or OH−, the presence of the other ion, and the identity of the dissolved acid. Explain why the Brønsted model alone does not provide numerical equilibrium positions."
+          },
+          {
+            "id": "a1-c",
+            "de": "Plane den Indikatornachweis mit getrennten Referenzen, identischem Papier und Vermeidung von Verschleppung. Führe ihn nach Freigabe der Aufsicht tatsächlich durch, protokolliere deine eigenen Probenfarben und Vergleichsbefunde und leite daraus die saure/basische Reaktion ab. Benenne die begrenzte Aussagekraft; ein vorgelesener Farbwert oder eine Planung ersetzt diese Durchführung nicht.",
+            "en": "Plan indicator detection with separate references, identical paper, and prevention of cross-contamination. After supervisor authorization, actually perform it, record your own sample colors and reference findings, and infer acidic or alkaline behavior. State the limited conclusion; reading out a supplied color or writing a plan does not demonstrate execution."
+          }
+        ],
+        "fullModelAnswer": {
+          "de": "CH3COOH(aq)+NH3(aq)⇌CH3COO−(aq)+NH4+(aq). Essigsäure gibt ein Proton ab, NH3 nimmt es auf. Paare: CH3COOH/CH3COO− und NH4+/NH3, jeweils Unterschied H+; Ladung 0 links und −1+1=0 rechts, Atome erhalten. Essigsäure ist die stärkere der beiden Säuren (kleinerer pKa); NH3 ist die stärkere der beiden Basen als CH3COO−. Aus Ka(CH3COOH)/Ka(NH4+) folgt K≈10^(9,25−4,76)=10^4,49≈3,09·10^4; die Produkte mit der schwächeren Säure und Base werden bevorzugt. K ist endlich, also keine ausnahmslos vollständige oder irreversible Umsetzung; Mengen und Aktivitäten bestimmen den konkreten Zustand. X (pH≈3) zeigt im verdünnten wässrigen Modell mehr H3O+ als OH−, Y (≈10) mehr OH− als H3O+, Z (≈7) bei 25 °C ungefähr gleiche Konzentrationen. Beide Ionensorten kommen durch die Autoprotolyse in allen drei Proben vor. Ein orangefarbener Befund beweist weder HCl noch CH3COOH als Stoffidentität; Indikatorfarbe zeigt einen pH-Bereich, keinen ionenspezifischen Molekülnachweis und keine exakte Konzentration. Das Brønsted-Modell beschreibt Protonenübertragung; Stärke/K, Temperatur und Aktivitäten müssen zusätzlich bekannt sein. Im beaufsichtigten Nachweis zuerst getrennte Referenzen und Proben mit frischen Papierstücken unter gleichen Bedingungen prüfen, je Probe saubere Pipette benutzen und keine Restprobe zurückgeben; Farben zeitnah mit derselben Skala vergleichen. Eigene Beobachtungen und Referenzen unabhängig notieren; die konkrete Durchführung muss beobachtet werden. Die vorgegebenen Farbdaten begründen nur die schriftliche Deutung, keinen ausgeführten Nachweis.",
+          "en": "CH3COOH(aq)+NH3(aq)⇌CH3COO−(aq)+NH4+(aq). Acetic acid donates a proton and NH3 accepts it. Pairs: CH3COOH/CH3COO− and NH4+/NH3, differing by H+; charge is 0 on the left and −1+1=0 on the right, with atoms conserved. Acetic acid is the stronger acid (lower pKa); NH3 is the stronger base compared with CH3COO−. Ka(CH3COOH)/Ka(NH4+) gives K≈10^(9.25−4.76)=10^4.49≈3.09·10^4; products containing the weaker acid and base are favored. K is finite, so reaction is neither invariably complete nor irreversible; amounts and activities determine the actual state. X (pH≈3) has more H3O+ than OH− in the dilute aqueous model; Y (≈10) has more OH− than H3O+; Z (≈7) has approximately equal concentrations at 25 °C. Water autoprotolysis produces both ions in all three samples. Orange does not identify HCl or CH3COOH as the dissolved substance; indicator color gives a pH range, not an ion-specific molecular test or exact concentration. The Brønsted model describes proton transfer; strength/K, temperature, and activities are additional information. In supervised detection, test separate references and samples with fresh paper under identical conditions, use a clean pipette for each sample, and return no used sample to its source; promptly compare colors with the same scale. Independently record actual observations and references; execution must be observed. The supplied color data support written interpretation only, not a performed test."
+        },
+        "caseSpecificCreditRubric": [
+          {
+            "id": "a1-1",
+            "points": 3,
+            "askedDemandIds": [
+              "a1-a"
+            ],
+            "creditDe": "Reversible Gleichung, beide korrespondierenden Paare, Donator/Akzeptor und atom-/ladungserhaltende Protonenübertragung.",
+            "creditEn": "Reversible equation, both conjugate pairs, donor/acceptor, and atom/charge conservation in proton transfer."
+          },
+          {
+            "id": "a1-2",
+            "points": 3,
+            "askedDemandIds": [
+              "a1-a"
+            ],
+            "creditDe": "Säure-/Basenvergleich, K aus zwei Ka und Produktschwerpunkt begründen; Endlichkeit und Zustandsabhängigkeit beachten.",
+            "creditEn": "Justify acid/base comparison, K from two Ka values, and product preference; retain finite K and dependence on state."
+          },
+          {
+            "id": "a1-3",
+            "points": 3,
+            "askedDemandIds": [
+              "a1-b"
+            ],
+            "creditDe": "X/Y/Z korrekt deuten, beide Ionen überall und fehlende Stoffidentität/exakte Konzentration erklären; Zusatzdaten für quantitative Modellvorhersage nennen.",
+            "creditEn": "Interpret X/Y/Z, explain both ions in every sample and lack of substance identity/exact concentration; identify extra data required for quantitative model prediction."
+          },
+          {
+            "id": "a1-4",
+            "points": 2,
+            "askedDemandIds": [
+              "a1-c"
+            ],
+            "creditDe": "Getrennte Referenzen, gleiche Vergleichsbedingungen und Verschleppungsschutz fachlich begründen.",
+            "creditEn": "Justify separate references, equal comparison conditions, and prevention of contamination."
+          },
+          {
+            "id": "a1-5",
+            "points": 3,
+            "askedDemandIds": [
+              "a1-c"
+            ],
+            "creditDe": "Durchführungspunkte nur bei beobachtetem sachgerechtem Test und eigenen nachvollziehbaren Farb-/Referenzaufzeichnungen; gelieferte Daten bekommen hierfür keine Punkte.",
+            "creditEn": "Execution credit requires an observed competent test and independent traceable color/reference records; supplied data receive no execution credit."
+          }
+        ],
+        "maximumPoints": 14,
+        "assessmentChannels": [
+          "independent equilibrium comparison",
+          "constructed-data interpretation",
+          "supervised observed operational indicator test required for detection execution"
+        ],
+        "actualLearnerOrLabEvidenceClaimed": false,
+        "visualizationNeeded": false,
+        "provenance": "Original SkillPilot-authored assessment specification; supplied measurements are constructed task data."
+      },
+      "after": {
+        "id": "pair-1",
+        "goalId": "b4777001-f4ed-5fe9-9d98-02319abdea09",
+        "title": {
+          "de": "Essigsäure und Ammoniak: Richtung aus relativen Stärken",
+          "en": "Acetic acid and ammonia: direction from relative strengths"
+        },
+        "givenMaterials": {
+          "de": "In verdünntem Wasser bei 25 °C werden CH3COOH und NH3 ohne Gasverlust betrachtet. Für den qualitativen Vergleich ist gegeben: CH3COOH ist die stärkere Säure als NH4+; NH3 ist die stärkere Base als CH3COO−. Untersuche die mögliche Protonenübertragung. Die Stärkenordnung ist Material, kein auswendig zu prüfender Fakt. Keine Ka-, pKa- oder K-Zahl und keine Reaktionsgeschwindigkeit sind vorgegeben.",
+          "en": "Consider CH3COOH and NH3 in dilute water at 25 °C without gas loss. For this qualitative comparison, CH3COOH is given as the stronger acid than NH4+, and NH3 as the stronger base than CH3COO−. Examine the possible proton transfer. The relative-strength order is supplied material, not a recall requirement. No values of Ka, pKa or K and no reaction rate are supplied."
+        },
+        "demands": [
+          {
+            "id": "core-pairs",
+            "de": "Formuliere die reversible Protonenübertragung, benenne beide korrespondierenden Paare und die beteiligten Donator-/Akzeptorrollen und prüfe Atome sowie Ladung.",
+            "en": "Write the reversible proton transfer, identify both conjugate pairs and donor/acceptor roles, and check atoms and charge."
+          },
+          {
+            "id": "core-direction",
+            "de": "Begründe aus der ausdrücklich gegebenen relativen Stärkenordnung die bevorzugte Seite. Erläutere, weshalb die Begründung über Protonendonator und Protonenakzeptor zusammenpassen muss. Eine K-Herleitung ist nicht verlangt.",
+            "en": "Use the explicitly supplied relative-strength order to justify the favored side. Explain why the proton-donor and proton-acceptor comparisons must agree. Deriving K is not required."
+          },
+          {
+            "id": "core-limits",
+            "de": "Erkläre, warum aus dieser qualitativen Angabe weder eine Zahlenkonstante oder genaue Zusammensetzung noch Geschwindigkeit, Stoffidentität oder garantiert vollständige Umsetzung folgen.",
+            "en": "Explain why this qualitative information gives neither a numerical constant or exact composition nor rate, substance identity or guaranteed complete conversion."
+          }
+        ],
+        "fullModelAnswer": {
+          "de": "CH3COOH+NH3⇌CH3COO−+NH4+. CH3COOH ist hier Donator, NH3 Akzeptor; die Paare CH3COOH/CH3COO− und NH4+/NH3 unterscheiden sich jeweils um H+. Ladung 0 auf beiden Seiten; alle Atome bleiben erhalten. Nach den vorgegebenen relativen Stärken steht links die stärkere Säure mit der stärkeren Base, rechts das schwächere Paar; die Produktseite ist im angegebenen Modell bevorzugt. Rollen und Stärkevergleiche sind auf diese Partner bezogen. Die qualitative Ordnung legt weder einen Zahlenwert für K noch die Gleichgewichtszusammensetzung fest; dafür wären weitere Gleichgewichts-/Mengen-/Aktivitätsdaten nötig. Bevorzugung ist keine Garantie irreversibler vollständiger Umsetzung und sagt nichts über Geschwindigkeit oder Stoffidentität.",
+          "en": "CH3COOH+NH3⇌CH3COO−+NH4+. Here CH3COOH donates and NH3 accepts a proton; the pairs CH3COOH/CH3COO− and NH4+/NH3 each differ by H+. Both sides have charge 0 and conserve all atoms. The supplied strengths place the stronger acid and stronger base on the left and the weaker pair on the right, so products are favored in the stated model. Roles and strength comparisons concern these partners. The qualitative order determines neither numerical K nor equilibrium composition; further equilibrium/amount/activity data would be needed. Preference does not establish irreversible completion, a reaction rate, or substance identity."
+        },
+        "caseSpecificCreditRubric": [
+          {
+            "id": "pair-1-core-pairs",
+            "points": 3,
+            "askedDemandIds": [
+              "core-pairs"
+            ],
+            "creditDe": "Korrekte reversible Gleichung(en), Paare, partnerbezogene Rollen und Atom-/Ladungsprüfung.",
+            "creditEn": "Correct reversible equation(s), pairs, partner-relative roles and atom/charge checks.",
+            "actualPointsAwarded": null
+          },
+          {
+            "id": "pair-1-core-direction",
+            "points": 3,
+            "askedDemandIds": [
+              "core-direction"
+            ],
+            "creditDe": "Bevorzugung aus ausdrücklich gegebener Stärkenordnung chemisch begründen; keine auswendig verlangte Konstante oder bloße Pfeilbehauptung.",
+            "creditEn": "Chemically justify preference from supplied strengths; no recalled numerical constant or unsupported arrow assertion.",
+            "actualPointsAwarded": null
+          },
+          {
+            "id": "pair-1-core-limits",
+            "points": 2,
+            "askedDemandIds": [
+              "core-limits"
+            ],
+            "creditDe": "Qualitative Vorhersage von Zahlenzustand, vollständiger Umsetzung und Geschwindigkeit trennen.",
+            "creditEn": "Distinguish qualitative prediction from numerical state, completion and rate.",
+            "actualPointsAwarded": null
+          }
+        ],
+        "maximumPoints": 8,
+        "allRequiredAspectsMustBeEvidenced": true,
+        "pointsDoNotCompensateForMissingExpectation": true,
+        "assessmentChannels": [
+          "independent written qualitative pair and reaction-direction reasoning"
+        ],
+        "actualLearnerOrLabEvidenceClaimed": false,
+        "evidenceLevel": "E0",
+        "maximumClaimScope": "G0",
+        "visualizationNeeded": false,
+        "provenance": "Original SkillPilot author scope successor, informed by prior cases; old quantitative and practical parts retained separately without new acceptance."
+      },
+      "changedAuthority": "Author material only, no new Pdesign vote",
+      "old14PointTotalNotTransported": true,
+      "remainingOperators": "See complete retained practical/quantitative partner parts; they are not dropped or scored under B477core."
+    },
+    {
+      "sourceWholeCase": {
+        "input": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-b014-foundation-three-current231-scientific-author-20261013-v1/whole3.CASES.DEEN.author.json",
+          "sha256": "sha256:4115370f373b01cb0a74a6ffd851dde1bd13801e5a45e203bde56513ac436176",
+          "bytes": 54142
+        },
+        "jsonPointer": "/goals/2/cases/1",
+        "wholeObjectSha256": "sha256:42627ea1aadb073f3b781248f58a90a142eabd3ac6ca0b706b421f97ced31534"
+      },
+      "before": {
+        "id": "pair-2",
+        "title": {
+          "de": "Hydrogencarbonat als Donator und Akzeptor",
+          "en": "Hydrogen carbonate as donor and acceptor"
+        },
+        "givenMaterials": {
+          "de": "Geschlossenes, CO2-haltiges wässriges System bei 25 °C: H2CO3* steht für CO2(aq)+H2CO3 als formalen gemeinsamen Säurebestand; pKa1*=6,35 (H2CO3*/HCO3−), pKa2=10,33 (HCO3−/CO3^2−), pKw=14,00. Für die symbolischen Protonenübertragungen darf molekulares H2CO3 verwendet werden; pKa1* ist ausdrücklich die apparente Konstante des gemeinsamen Bestands, nicht die intrinsische Konstante reiner H2CO3. Aktivitäten≈c/(1 mol/L), Wasseraktivität≈1. Drei getrennte Datenproben haben mit einem bei 25 °C kalibrierten pH-Meter die konstruierten pH-Werte 4,0, 9,0 und 7,0. Im beaufsichtigten Nachweisteil stehen separate, von der Lehrkraft vorbereitete verdünnte saure/basische/neutrale Proben und Referenzen bereit; ihr Inhalt wird nicht aus einem pH-Wert identifiziert.",
+          "en": "Closed CO2-containing aqueous system at 25 °C: H2CO3* denotes CO2(aq)+H2CO3 as a formal common acid pool; apparent pKa1*=6.35 (H2CO3*/HCO3−), pKa2=10.33 (HCO3−/CO3^2−), and pKw=14.00. Molecular H2CO3 may be used for symbolic proton transfers; pKa1* is explicitly the apparent constant of the combined pool, not the intrinsic constant of pure H2CO3. Activities≈c/(1 mol/L), water activity≈1. Three separate data samples have constructed pH-meter readings 4.0, 9.0, and 7.0 from a meter calibrated at 25 °C. For supervised detection, separate dilute acidic/alkaline/neutral teacher-prepared samples and references are available; their substance identity cannot be inferred from pH."
+        },
+        "demands": [
+          {
+            "id": "a2-a",
+            "de": "Formuliere mit HCO3− je eine ladungs- und atomerhaltende Reaktion mit H3O+ und mit OH−. Benenne seine Rolle und alle korrespondierenden Paare. Vergleiche seine Protonendonator- und Protonenakzeptor-Funktion, ohne die Rollen als feste Stoffetiketten zu behandeln.",
+            "en": "Write atom- and charge-balanced reactions of HCO3− with H3O+ and with OH−. Name its role and all conjugate pairs. Compare its proton-donor and proton-acceptor functions without treating the roles as fixed substance labels."
+          },
+          {
+            "id": "a2-b",
+            "de": "Nutze die angegebenen Konstanten, um die bevorzugte Seite der Reaktion HCO3−+OH−⇌CO3^2−+H2O zu begründen. Leite K aus Ka2 und Kw ab. Erkläre, warum diese Aussage keine Stoffidentifizierung, Reaktionsgeschwindigkeit oder Garantie vollständiger Umsetzung ergibt und warum Öffnen und CO2-Verlust die Modellgrenze ändert. Erläutere den Stern in H2CO3* und warum pKa1* keine intrinsische Konstante reiner H2CO3 ist.",
+            "en": "Use the given constants to justify the favored side of HCO3−+OH−⇌CO3^2−+H2O. Derive K from Ka2 and Kw. Explain why this gives neither substance identification, reaction rate, nor guaranteed complete conversion, and why opening the vessel and losing CO2 changes the model boundary. Explain the asterisk in H2CO3* and why pKa1* is not the intrinsic constant of pure H2CO3."
+          },
+          {
+            "id": "a2-c",
+            "de": "Deute die drei pH-Daten hinsichtlich des Überschusses von H3O+ bzw. OH−; berechne beide Ionenkonzentrationen im idealen Modell. Führe nach Freigabe der Aufsicht an den getrennten Laborproben einen kontrollierten Indikatornachweis mit eigenen Farb-/Referenzaufzeichnungen durch und erläutere, was er gegenüber einer pH-Messung zusätzlich oder nicht zusätzlich aussagt. Planung und gelieferte Zahlen sind keine ausgeführte Nachweisleistung.",
+            "en": "Interpret all three pH readings regarding excess H3O+ or OH−; calculate both ion concentrations in the ideal model. After supervisor authorization, perform controlled indicator detection on the separate laboratory samples with your own color/reference records and explain what it adds, or does not add, to a pH measurement. Planning and supplied numbers are not performed detection."
+          }
+        ],
+        "fullModelAnswer": {
+          "de": "Mit Oxonium: HCO3−(aq)+H3O+(aq)⇌H2CO3(aq)+H2O(l); HCO3− ist Protonenakzeptor, Paare H2CO3/HCO3− und H3O+/H2O. Beide Seiten C1, H4, O4, Ladung 0. Mit Hydroxid: HCO3−(aq)+OH−(aq)⇌CO3^2−(aq)+H2O(l); HCO3− ist Donator, Paare HCO3−/CO3^2− und H2O/OH−. Beide Seiten C1, H2, O4, Ladung −2. HCO3− ist amphiprotisch; seine Rolle hängt vom Partner ab. Die kleineren/größeren pKa-Werte unterscheiden den apparenten Säurebestand H2CO3* von der deutlich schwächeren Säure HCO3−; der Stern darf nicht unterschlagen werden. Für HCO3−+OH− ist K=Ka2/Kw=10^(14,00−10,33)=10^3,67≈4,68·10^3 (Wasseraktivität≈1), Produkte bevorzugt. Diese Ableitung benutzt das Ionenprodukt mit lösungsmittelbezogenem Wasserstandard und nicht unvereinbar pKa(H2O)=15,7. Die Zahlen beschreiben Gleichgewichte, keine Geschwindigkeit oder vollständige Umsetzung für alle Mengen. CO2-Verlust in einem offenen System entfernt einen Teil des Säurebestands; das geschlossene Stoffmengenmodell gilt dann nicht weiter. Bei pH 4: [H3O+]≈10−4, [OH−]≈10−10 mol/L; bei pH 9: 10−9 und 10−5; bei pH 7: beide 10−7 mol/L. Somit sauer/basisch/neutral bei 25 °C; keine der beiden Ionensorten ist vollständig abwesend. Ein kontrollierter Indikatortest an den getrennten realen Proben nutzt Referenzen, getrennte saubere Pipetten und frisches Papier; eigene Farb- und Kontrollbefunde sind zu protokollieren und die Durchführung zu beobachten. Der Test stützt einen groben pH-Bereich und den Säure-/Basenbefund, liefert aber keine spezifische Identifizierung von Carbonat oder einer Säure und keine genauere Zahl als das pH-Meter. Die gegebenen pH-Daten belegen nur die Dateninterpretation.",
+          "en": "With hydronium: HCO3−(aq)+H3O+(aq)⇌H2CO3(aq)+H2O(l); HCO3− accepts a proton, with pairs H2CO3/HCO3− and H3O+/H2O. Both sides have C1, H4, O4, and charge 0. With hydroxide: HCO3−(aq)+OH−(aq)⇌CO3^2−(aq)+H2O(l); HCO3− donates a proton, with pairs HCO3−/CO3^2− and H2O/OH−. Both sides have C1, H2, O4, and charge −2. HCO3− is amphiprotic; its role depends on its partner. The pKa values distinguish the apparent H2CO3* acid pool from the substantially weaker acid HCO3−; the asterisk must be retained. For HCO3−+OH−, K=Ka2/Kw=10^(14.00−10.33)=10^3.67≈4.68·10^3 (water activity≈1), so products are favored. This derivation uses the ion product with the solvent water standard, not an incompatible pKa(H2O)=15.7. These numbers describe equilibrium, not speed or complete conversion for arbitrary amounts. CO2 loss in an open system removes some of the acid pool, so the closed amount model no longer applies. At pH 4: [H3O+]≈10−4 and [OH−]≈10−10 mol/L; at pH 9: 10−9 and 10−5; at pH 7: both 10−7 mol/L. Hence acidic/alkaline/neutral at 25 °C; neither ion is entirely absent. A controlled indicator test on the separate actual samples uses references, separate clean pipettes, and fresh paper; record your own color/control findings and have execution observed. It supports a broad pH range and acid/base behavior, but does not specifically identify carbonate or a particular acid and provides no more precise number than the pH meter. The supplied pH data demonstrate data interpretation only."
+        },
+        "caseSpecificCreditRubric": [
+          {
+            "id": "a2-1",
+            "points": 4,
+            "askedDemandIds": [
+              "a2-a"
+            ],
+            "creditDe": "Beide ausgeglichenen Reaktionen, wechselnde Rolle und vier Paare korrekt mit H+/Ladungsunterschied erläutern.",
+            "creditEn": "Explain both balanced reactions, changing role, and four pairs correctly, with H+/charge differences."
+          },
+          {
+            "id": "a2-2",
+            "points": 4,
+            "askedDemandIds": [
+              "a2-b"
+            ],
+            "creditDe": "K=Ka2/Kw≈4,68·10^3, Produktschwerpunkt und Grenzen Geschwindigkeit/Stoffidentität/CO2-Öffnung begründen; apparenten H2CO3*-Wert nicht als intrinsischen ausgeben.",
+            "creditEn": "Justify K=Ka2/Kw≈4.68·10^3, product preference, and limits concerning rate, substance identity, and opening to CO2 loss; do not present apparent H2CO3* pKa as intrinsic."
+          },
+          {
+            "id": "a2-3",
+            "points": 3,
+            "askedDemandIds": [
+              "a2-c"
+            ],
+            "creditDe": "Alle sechs Ionenkonzentrationen mit Einheiten korrekt; beide Ionen stets vorhanden, Neutralität bei 25 °C.",
+            "creditEn": "All six ion concentrations with units; both ions always present and neutrality at 25 °C."
+          },
+          {
+            "id": "a2-4",
+            "points": 3,
+            "askedDemandIds": [
+              "a2-c"
+            ],
+            "creditDe": "Durchführungspunkte nur für beobachteten sachgerechten Test mit eigenen Farb-/Referenzaufzeichnungen; Mess- und Indikatorgrenzen erläutern. Vorgegebene pH-Daten oder eine Planung beweisen keine Durchführung.",
+            "creditEn": "Execution credit requires an observed competent test and independent color/reference records; explain meter/indicator limitations. Supplied pH data or planning do not prove execution."
+          }
+        ],
+        "maximumPoints": 14,
+        "assessmentChannels": [
+          "independent transfer to an amphiprotic particle",
+          "constructed-data interpretation",
+          "supervised observed operational indicator test required for detection execution"
+        ],
+        "actualLearnerOrLabEvidenceClaimed": false,
+        "visualizationNeeded": false,
+        "provenance": "Original SkillPilot-authored assessment specification; supplied measurements are constructed task data."
+      },
+      "after": {
+        "id": "pair-2",
+        "goalId": "b4777001-f4ed-5fe9-9d98-02319abdea09",
+        "title": {
+          "de": "Hydrogencarbonat: Partnerrolle und qualitative Richtung",
+          "en": "Hydrogen carbonate: partner role and qualitative direction"
+        },
+        "givenMaterials": {
+          "de": "Betrachte HCO3− in einem geschlossenen wässrigen System bei 25 °C mit H3O+ beziehungsweise mit OH−. Für den qualitativen Vergleich der zweiten Reaktion ist gegeben: HCO3− ist der stärkere Protonendonator als H2O, OH− der stärkere Protonenakzeptor als CO3²−. Molekulares H2CO3 darf für die symbolische Protonenübertragung verwendet werden. Es wird keine quantitative Konstante des CO2(aq)/H2CO3-Pools vorgegeben. Ein Öffnen des Gefäßes kann CO2-Verlust ermöglichen.",
+          "en": "Consider HCO3− in a closed aqueous system at 25 °C with H3O+ and with OH−. For the qualitative comparison of the second reaction, HCO3− is given as a stronger proton donor than H2O and OH− as a stronger proton acceptor than CO3²−. Molecular H2CO3 may be used for symbolic proton transfer. No numerical constant of the CO2(aq)/H2CO3 pool is supplied. Opening the vessel may allow CO2 loss."
+        },
+        "demands": [
+          {
+            "id": "core-pairs",
+            "de": "Formuliere die Reaktionen von HCO3− mit H3O+ und mit OH−; prüfe Atome/Ladungen und begründe die jeweils wechselnde Rolle anhand aller korrespondierenden Paare.",
+            "en": "Write the reactions of HCO3− with H3O+ and OH−; check atoms/charges and justify its changing role using all conjugate pairs."
+          },
+          {
+            "id": "core-direction",
+            "de": "Begründe die bevorzugte Seite der OH−-Reaktion allein aus der gegebenen relativen Donator-/Akzeptorstärke. Trenne die partnerabhängige Rolle von einem festen Stoffetikett. Eine Berechnung aus Ka2/Kw ist nicht verlangt.",
+            "en": "Justify the favored side of the OH− reaction using only the supplied relative donor/acceptor strengths. Distinguish the partner-dependent role from a fixed substance label. Calculation from Ka2/Kw is not required."
+          },
+          {
+            "id": "core-limits",
+            "de": "Begrenze die Aussage zu Gleichgewichtszusammensetzung, vollständiger Umsetzung und Geschwindigkeit. Erkläre, weshalb möglicher CO2-Verlust nach Öffnen eine andere Systemgrenze erzeugt, ohne einen neuen Zahlenwert zu behaupten.",
+            "en": "Bound the conclusions about equilibrium composition, completion and rate. Explain why possible CO2 loss after opening changes the system boundary without claiming a new numerical value."
+          }
+        ],
+        "fullModelAnswer": {
+          "de": "HCO3−+H3O+⇌H2CO3+H2O: HCO3− nimmt H+ auf; Paare H2CO3/HCO3− und H3O+/H2O. Beide Seiten C1, H4, O4, Ladung 0. HCO3−+OH−⇌CO3²−+H2O: HCO3− gibt H+ ab; Paare HCO3−/CO3²− und H2O/OH−. Beide Seiten C1, H2, O4, Ladung −2. Dasselbe Teilchen wirkt abhängig vom Partner als Akzeptor oder Donator. Aus der gegebenen relativen Stärke ist für die OH−-Reaktion die Produktseite mit schwächerem Donator und Akzeptor bevorzugt. Es folgt keine numerische Konstante, exakte Verteilung, Geschwindigkeits- oder Vollständigkeitsgarantie. CO2-Verlust verändert den Stoffbestand und verlässt die geschlossene Systemannahme; ohne neue Bestandsdaten ist kein neuer Zahlenzustand bestimmt.",
+          "en": "HCO3−+H3O+⇌H2CO3+H2O: HCO3− accepts H+; pairs H2CO3/HCO3− and H3O+/H2O. Both sides have C1, H4, O4, charge 0. HCO3−+OH−⇌CO3²−+H2O: HCO3− donates H+; pairs HCO3−/CO3²− and H2O/OH−. Both sides have C1, H2, O4, charge −2. The same species acts as acceptor or donor depending on its partner. The supplied relative strengths favor products with the weaker donor and acceptor in the OH− reaction. No numerical constant, exact distribution, rate or completion guarantee follows. CO2 loss changes the material inventory and leaves the closed-system assumption; no new numerical state is determined without new inventory data."
+        },
+        "caseSpecificCreditRubric": [
+          {
+            "id": "pair-2-core-pairs",
+            "points": 3,
+            "askedDemandIds": [
+              "core-pairs"
+            ],
+            "creditDe": "Korrekte reversible Gleichung(en), Paare, partnerbezogene Rollen und Atom-/Ladungsprüfung.",
+            "creditEn": "Correct reversible equation(s), pairs, partner-relative roles and atom/charge checks.",
+            "actualPointsAwarded": null
+          },
+          {
+            "id": "pair-2-core-direction",
+            "points": 3,
+            "askedDemandIds": [
+              "core-direction"
+            ],
+            "creditDe": "Bevorzugung aus ausdrücklich gegebener Stärkenordnung chemisch begründen; keine auswendig verlangte Konstante oder bloße Pfeilbehauptung.",
+            "creditEn": "Chemically justify preference from supplied strengths; no recalled numerical constant or unsupported arrow assertion.",
+            "actualPointsAwarded": null
+          },
+          {
+            "id": "pair-2-core-limits",
+            "points": 2,
+            "askedDemandIds": [
+              "core-limits"
+            ],
+            "creditDe": "Qualitative Vorhersage von Zahlenzustand, vollständiger Umsetzung und Geschwindigkeit trennen. Geänderten CO2-Stoffbestand beim Öffnen berücksichtigen.",
+            "creditEn": "Distinguish qualitative prediction from numerical state, completion and rate. Account for changed CO2 inventory on opening.",
+            "actualPointsAwarded": null
+          }
+        ],
+        "maximumPoints": 8,
+        "allRequiredAspectsMustBeEvidenced": true,
+        "pointsDoNotCompensateForMissingExpectation": true,
+        "assessmentChannels": [
+          "independent written qualitative pair and reaction-direction reasoning"
+        ],
+        "actualLearnerOrLabEvidenceClaimed": false,
+        "evidenceLevel": "E0",
+        "maximumClaimScope": "G0",
+        "visualizationNeeded": false,
+        "provenance": "Original SkillPilot author scope successor, informed by prior cases; old quantitative and practical parts retained separately without new acceptance."
+      },
+      "changedAuthority": "Author material only, no new Pdesign vote",
+      "old14PointTotalNotTransported": true,
+      "remainingOperators": "See complete retained practical/quantitative partner parts; they are not dropped or scored under B477core."
+    }
+  ],
+  "newLearnerEvidence": false,
+  "E1AcceptanceTransported": false
+}

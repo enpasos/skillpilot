@@ -147,7 +147,11 @@
         },
         "dimensionTags": { "$ref": "#/$defs/dimensionTags" },
         "applicability": {
-          "oneOf": [{ "$ref": "#/$defs/applicability" }, { "type": "null" }]
+          "oneOf": [
+            { "$ref": "#/$defs/applicability" },
+            { "type": "null" },
+            { "type": "object", "maxProperties": 0 }
+          ]
         },
         "type": {
           "oneOf": [{ "enum": ["atomic", "cluster"] }, { "type": "null" }]
@@ -193,7 +197,31 @@
         "requires": { "$ref": "#/$defs/idArray" },
         "contains": { "$ref": "#/$defs/idArray" },
         "examples": { "$ref": "#/$defs/stringArray" }
-      }
+      },
+      "allOf": [
+        {
+          "if": {
+            "type": "object",
+            "required": ["applicability"],
+            "properties": {
+              "applicability": { "type": "object", "maxProperties": 0 }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": ["applicabilitySemantics"],
+            "properties": {
+              "applicabilitySemantics": {
+                "type": "object",
+                "required": ["projection"],
+                "properties": {
+                  "projection": { "const": "excluded" }
+                }
+              }
+            }
+          }
+        }
+      ]
     },
     "dimensionTags": {
       "type": "object",

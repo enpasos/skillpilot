@@ -1,0 +1,11 @@
+# EDTA-five: complete bounded source-adapter author candidate
+
+The neutral selector chooses five complete normal-shaped extraction files and five complete mapping files. They are actual JSON artifacts, not source-row wrappers. Mapping sourceExtractionPath values intentionally retain their normal logical aliases; the explicit candidate alias map is required to read the candidate bytes. No host or active alias has been changed.
+
+Original-A informed science554992... is the bounded source basis; this adapter is not a new independent vote. Four existing official-fragment UUIDs are completed as SourceGoals in BB/BE, with the same3.2.5 passage/document, actual42/LK locator and transparent authored description. Both original whole passages/rawText are retained; only sourceGoalIds append two each. Existing BB/BE cell13 uses the exact proposed partial edge set. BY extraction and mapping are wholly byte-exact. RP/BW remove only the unsupported EDTA edge; RP applies the accepted optional/page36 metadata repair. All other source wording, whole goals, decisions and edges remain exact unchanged objects.
+
+Changed/new decisions are informed-author candidates with ai_candidate authority and explicit partial-source/wholeUnion limits. Historical top-level status/pipeline fields are retained history, not a new whole-course acceptance or human approval. RP/BW complete retained source-partner unions remain HOLD. Future joint source integration and original-A informed review of these serialized bytes are required.
+
+Bounded checks cover strict original file/object before-equality, unique source IDs, one decision perSourceGoal, complete legacy-edge/decision consistency, no dangling passage/document/target, local normal-reader structural schemas, affected target-object runtime schema, and actual imported stock sourceAtlasFacet reads over the five complete candidate pairs. No Atlas build, Native, NormalP/A/M/V, Central, active writes or Git occurred. All original ten files are pinned again unchanged. Existing unresolved source-course facets are reported and not silently repaired or approved.
+
+Own technical adapter code and this technical documentation are Apache-2.0. Original official source text retains its original rights; the adapter does not relicense third-party material. No private learner or session data is present.

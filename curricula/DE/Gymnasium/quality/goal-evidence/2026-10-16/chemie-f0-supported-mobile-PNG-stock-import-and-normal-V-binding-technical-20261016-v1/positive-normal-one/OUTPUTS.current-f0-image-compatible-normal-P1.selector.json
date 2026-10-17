@@ -1,0 +1,86 @@
+{
+  "role": "Unchanged whole f0 P-profile and actual new image resource current binding; no new full P review",
+  "config": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-f0-supported-mobile-PNG-stock-import-and-normal-V-binding-technical-20261016-v1/positive-normal-one/P1.current-f0-mobile-image.normal.config.json",
+    "sha256": "sha256:7c97862597bc437faa911bff9a7e0c2438b5c9a58d6b4c3d995e84a1c0376c3f",
+    "bytes": 1360
+  },
+  "records": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-f0-supported-mobile-PNG-stock-import-and-normal-V-binding-technical-20261016-v1/positive-normal-one/P1.current-f0-mobile-image.normal.review.jsonl",
+    "sha256": "sha256:8a1338245d0152cb6cec40e10ed2eec7672ef554100899f35a2718b56f4c0975",
+    "bytes": 8213
+  },
+  "wholeBeforeP": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-f0-mobile-spectrum-original-independent-V-informed-followup-20261016-v1/P1.whole-current-original.exact-context.jsonl",
+    "sha256": "sha256:7d44edb40d9ee94f26b7577cd0e228549a20d9894f23c0c94e7e787c3609e500",
+    "bytes": 8502
+  },
+  "scientificImageCompatibility": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-f0-mobile-spectrum-original-independent-V-informed-followup-20261016-v1/OUTPUTS.informed-f0-mobile-PNG-V-science.finite.selector.json",
+    "sha256": "sha256:269835a0e9eb11ae3859ffc3aed9b685e0e34dc2ecbdd459ed3d17604dfde215",
+    "bytes": 3716
+  },
+  "currentCanonical": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-f0-supported-mobile-PNG-stock-import-and-normal-V-binding-technical-20261016-v1/CANONICAL.current578.same-five-texts-and-two-supported-mobile-images.json",
+    "sha256": "sha256:1e515c907de34430525512da2faa5b7657dd1b12feda338cfb0b8455dc50353f",
+    "bytes": 1981554
+  },
+  "currentQA": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-f0-supported-mobile-PNG-stock-import-and-normal-V-binding-technical-20261016-v1/QA449.f0-supported-current-mobile-image.other448-records-exact.json",
+    "sha256": "sha256:cfb9e6c5f2ba2385ace23e64852dec85d278defe018a8556fbf1918082589049",
+    "bytes": 1275067
+  },
+  "actualChecks": [
+    {
+      "argv": [
+        "tsx",
+        "scripts/materializePositiveGoalEvidenceCandidates.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-f0-supported-mobile-PNG-stock-import-and-normal-V-binding-technical-20261016-v1/positive-normal-one/P1.current-f0-mobile-image.normal.config.json",
+        "--candidates",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-f0-supported-mobile-PNG-stock-import-and-normal-V-binding-technical-20261016-v1/positive-normal-one/P1.exact-supported-profile.current-image.candidates.json",
+        "--write"
+      ],
+      "startedAtUTC": "2026-10-16T08:23:45.753989+00:00",
+      "elapsedSeconds": 0.5676527940086089,
+      "exitCode": 0,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-f0-supported-mobile-PNG-stock-import-and-normal-V-binding-technical-20261016-v1/positive-normal-one/01.stdout.actual.txt",
+        "sha256": "sha256:de2895d3e7fcda8f1083eb40360c9513d9bc0a373154d2494d14610a3f3f7e48",
+        "bytes": 252
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-f0-supported-mobile-PNG-stock-import-and-normal-V-binding-technical-20261016-v1/positive-normal-one/01.stderr.actual.txt",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "argv": [
+        "tsx",
+        "scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-f0-supported-mobile-PNG-stock-import-and-normal-V-binding-technical-20261016-v1/positive-normal-one/P1.current-f0-mobile-image.normal.config.json",
+        "--mode=check"
+      ],
+      "startedAtUTC": "2026-10-16T08:23:46.322198+00:00",
+      "elapsedSeconds": 0.5074381229933351,
+      "exitCode": 0,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-f0-supported-mobile-PNG-stock-import-and-normal-V-binding-technical-20261016-v1/positive-normal-one/02.stdout.actual.txt",
+        "sha256": "sha256:8091da185339faf149f451cf61878822b8b85b25833b918493e7a2163b95b304",
+        "bytes": 330
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-f0-supported-mobile-PNG-stock-import-and-normal-V-binding-technical-20261016-v1/positive-normal-one/02.stderr.actual.txt",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    }
+  ],
+  "wholeProfileUnchanged": true,
+  "evidenceLevel": "E0",
+  "maximumClaimScope": "G0",
+  "HumanApproval": false,
+  "HumanTrial": false,
+  "strictGainClaimed": false
+}

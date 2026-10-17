@@ -1,0 +1,89 @@
+{
+  "sourcePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next25-reviewed-integration-preparation-root-v1/positive24.exact-independent-b.review.jsonl",
+  "sourceFileSHA256": "sha256:2818408e6f8459c41aea8a34912e31ab3e494445f5a7e91c2a374f368d0a40a6",
+  "wholeRecord": {
+    "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "schemaVersion": 2,
+    "reviewId": "chemie-next25-current-positive-independent-b-v2",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "goalId": "49235cbe-6658-5e7e-8bd4-398416bcebdc",
+    "goalFingerprint": "sha256:617c3d042534b25c18ecf445a3adac6d119f0b5b2f1a4d6605aec7c68f4e70dd",
+    "reviewInputFingerprint": "sha256:4589936ca5210f65b936b1c54440f72565909dff47044c6e10bb73356d8e8089",
+    "profileFingerprint": "sha256:f00eb1e299f1217859fcfb3816642a5138e17589577884ebcd9e887102b1b677",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "reviewedAt": "2026-10-06T22:41:42.060434+00:00",
+    "reviewer": "Codex independent chemistry P-B",
+    "reason": "Eigenständige ganze DE/EN-Profil- und Materialprüfung an aktuellen nativen Seiten. Li520 Be900 B801 C1086 N1402 O1314 F1681 Ne2081kJ/mol; Be/B and N/O decrease, O still above C/Be. n2,l0/1 and fresh n3,l0/1. N/O pairing and Mg/Al subshell exceptions are different explanations; flame colour alone is insufficient.",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": [
+      "chemie-next25-final-native-independent-p-b-v2"
+    ],
+    "dissent": [],
+    "profile": {
+      "archetype": "data",
+      "expectations": [
+        {
+          "id": "content-specific-understanding",
+          "essentialUnderstandingDe": "Diskrete Spektrallinien und nichtmonotone Änderungen ersterIonisierungsenergien liefern Hinweise auf aufgespalteneUnterstufen; n unterscheidet Hauptschalen,l innerhalb einerHauptschale s/p-Typen.",
+          "essentialUnderstandingEn": "Discrete spectral lines and nonmonotonic first-ionisation trends indicate split subshells;n distinguishes principal shells andl s/p types within a shell.",
+          "observablePerformanceDe": "Linien stehen für bestimmteEnergiedifferenzen. Be/B zeigt trotz höhererKernladung leichtereEntfernung desB-2p-Elektrons alsBe-2s:Hinweis auf2s/2p-Energiedifferenz. Beide n2,s l0,p l1. GelbeFarbe allein legt weder vollständigeKonfiguration noch alleQuantenzahlen fest.",
+          "observablePerformanceEn": "Lines correspond to specific energy differences.Despite greater nuclear charge,removingB’s2p electron costs less thanBe’s2s:an indication of2s/2p energy differences.Bothn2;s l0,p l1.Yellow colour alone identifies neither the full configuration nor all quantum numbers."
+        },
+        {
+          "id": "fresh-transfer-and-model-boundary",
+          "essentialUnderstandingDe": "Paarung ist ein Beitrag zurGesamtenergie,keine Behauptung,dass derN/O-Abfall dieExistenz einer neuenHauptschale beweist.",
+          "essentialUnderstandingEn": "Pairing contributes to total energy;theN/O drop does not establish a new principal shell.",
+          "observablePerformanceDe": "O-Entfernung aus einemgepaarten2p-Orbital ist gegenüberN-dreiEinzelbesetzungen begünstigt;O bleibt numerisch überC1086/Be900. Al-3p wird leichter entfernt alsMg-3s;beide n3,s l0,p l1. Die Person begründet zwei verschiedeneAbweichungen undhält numerischeRangfolgen ein.",
+          "observablePerformanceEn": "RemovingO’s paired2p electron is favoured relative toN’s three single occupancies;O remains numerically aboveC1086/Be900.Al3p is easier to remove thanMg3s;bothn3,s l0,p l1.The learner explains two distinct departures and preserves numerical order."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "content-specific-understanding",
+          "fresh-transfer-and-model-boundary"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "specific-material-variation",
+          "textDe": "Linien-/Flammenbefund undBe/B gegenüberN/O;modellbezogeneInterpretation statt glatterTrendbehauptung.",
+          "textEn": "Line/flame observations andBe/B versusN/O;model-based interpretation rather than an assumed smooth trend."
+        },
+        {
+          "id": "specific-model-limit",
+          "textDe": "Paarung ist ein Beitrag zurGesamtenergie,keine Behauptung,dass derN/O-Abfall dieExistenz einer neuenHauptschale beweist.",
+          "textEn": "Pairing contributes to total energy;theN/O drop does not establish a new principal shell."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "chem-next25-49235cbe-case-1",
+          "taskDemandDe": "Gerundete ersteIonisierungsenergien(kJ/mol):Li520,Be900,B801,C1086,N1402,O1314,F1681,Ne2081. GegebeneKonfigurationen:Be2s²,B2s²2p¹,N2p³,O2p⁴;innere1s² bei allen. EinEmissionsspektrum zeigt getrennteLinien,eineNa-Flamme gelbesLicht. Deute diskreteLinien undBe/B-Abfall mitUnterstufen. Ordne2s/2p n,l zu und erkläre,welcheAussage eine bloßeFlammenfarbe noch nicht liefert.",
+          "taskDemandEn": "Rounded first-ionisation energies(kJ/mol):Li520,Be900,B801,C1086,N1402,O1314,F1681,Ne2081.Given configurations:Be2s²,B2s²2p¹,N2p³,O2p⁴;all include core1s².An emission spectrum shows distinct lines,aNa flame yellow light. Interpret discrete lines and theBe/B drop using subshells.Assignn,l to2s/2p and explain what flame colour alone does not establish.",
+          "expectedPerformanceDe": "Linien stehen für bestimmteEnergiedifferenzen. Be/B zeigt trotz höhererKernladung leichtereEntfernung desB-2p-Elektrons alsBe-2s:Hinweis auf2s/2p-Energiedifferenz. Beide n2,s l0,p l1. GelbeFarbe allein legt weder vollständigeKonfiguration noch alleQuantenzahlen fest.",
+          "expectedPerformanceEn": "Lines correspond to specific energy differences.Despite greater nuclear charge,removingB’s2p electron costs less thanBe’s2s:an indication of2s/2p energy differences.Bothn2;s l0,p l1.Yellow colour alone identifies neither the full configuration nor all quantum numbers.",
+          "understandingFocusDe": "EinSprung zwischen Linien ist keine kontinuierlicheElektronenbahn;firstIonisation bezeichnet genau ein entferntesElektron aus demgasförmigen neutralenAtom.",
+          "understandingFocusEn": "A separation between lines is not a continuous electron orbit;first ionisation removes precisely one electron from a neutral gaseous atom."
+        },
+        {
+          "id": "chem-next25-49235cbe-case-2",
+          "taskDemandDe": "Frischer Vergleich:N1402,O1314 kJ/mol,N2p↑/↑/↑,O2p↑↓/↑/↑. Zusätzliche Daten:Na496,Mg738,Al578;Na3s¹,Mg3s²,Al3s²3p¹. ErkläreN/O mitPaarung undMg/Al mitUnterstufen;zeichne qualitativ richtigePunkthöhen undordne3s/3p n,l zu.",
+          "taskDemandEn": "Fresh comparison:N1402,O1314kJ/mol,N2p↑/↑/↑,O2p↑↓/↑/↑.Extra data:Na496,Mg738,Al578;Na3s¹,Mg3s²,Al3s²3p¹. ExplainN/O using pairing andMg/Al using subshells;draw correctly ordered qualitative point heights and assignn,l to3s/3p.",
+          "expectedPerformanceDe": "O-Entfernung aus einemgepaarten2p-Orbital ist gegenüberN-dreiEinzelbesetzungen begünstigt;O bleibt numerisch überC1086/Be900. Al-3p wird leichter entfernt alsMg-3s;beide n3,s l0,p l1. Die Person begründet zwei verschiedeneAbweichungen undhält numerischeRangfolgen ein.",
+          "expectedPerformanceEn": "RemovingO’s paired2p electron is favoured relative toN’s three single occupancies;O remains numerically aboveC1086/Be900.Al3p is easier to remove thanMg3s;bothn3,s l0,p l1.The learner explains two distinct departures and preserves numerical order.",
+          "understandingFocusDe": "Paarung ist ein Beitrag zurGesamtenergie,keine Behauptung,dass derN/O-Abfall dieExistenz einer neuenHauptschale beweist.",
+          "understandingFocusEn": "Pairing contributes to total energy;theN/O drop does not establish a new principal shell."
+        }
+      ]
+    }
+  }
+}

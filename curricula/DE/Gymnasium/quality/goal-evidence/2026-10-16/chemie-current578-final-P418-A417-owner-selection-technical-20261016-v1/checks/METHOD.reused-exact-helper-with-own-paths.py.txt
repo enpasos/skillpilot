@@ -1,0 +1,37 @@
+# SPDX-License-Identifier: Apache-2.0
+from pathlib import Path
+from datetime import datetime, timezone
+from concurrent.futures import ThreadPoolExecutor
+import hashlib, json, subprocess, time
+
+R=Path.cwd();T=R/'tmp/chemie-final-P-A-selection-20261016-v1/actual-stock-checks'
+H=R/'tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1'
+O=R/'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current578-final-P418-A417-owner-selection-technical-20261016-v1'
+S=O/'SELECTION.final-current578-P418-A417-normal-owners-and-open-gaps.json'
+T.mkdir(parents=True,exist_ok=False); sel=json.loads(S.read_text())
+tsx=H/'app/node_modules/tsx/dist/cli.mjs'
+def pin(p):
+ b=p.read_bytes();return {'path':p.relative_to(R).as_posix(),'sha256':'sha256:'+hashlib.sha256(b).hexdigest(),'bytes':len(b)}
+def put(p,d):
+ assert not p.exists();p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')
+# One actual process calls the unmodified exported Stock P checker for all
+# selected configs. Repeated Node startups do not provide extra evidence.
+runner=T/'run_all_selected_P_actual_exported_stock.ts'
+runner.write_text("import { reviewPositiveGoalEvidenceConfig } from "+json.dumps(str(H/'app/scripts/positiveGoalEvidenceReview.ts'))+";\n"+
+ "import {readFileSync,writeFileSync} from 'node:fs';\n"+
+ "const s=JSON.parse(readFileSync("+json.dumps(str(S))+",'utf8'));const results=[];let failed=false;\n"+
+ "for(const config of s.PConfigPaths){try{const r=reviewPositiveGoalEvidenceConfig(config);results.push({config,goalIds:r.config.scope.goalIds,counts:r.counts,errors:r.errors});if(r.errors.length)failed=true}catch(e){results.push({config,errors:[String(e)]});failed=true}}\n"+
+ "writeFileSync("+json.dumps(str(T/'P.actual-exported-stock-results.json'))+",JSON.stringify({stockFunction:'reviewPositiveGoalEvidenceConfig',results,allPassed:!failed},null,2)+'\\n');process.exitCode=failed?1:0;\n")
+def run(name,cmd):
+ started=datetime.now(timezone.utc).isoformat();clock=time.monotonic()
+ out=T/(name+'.stdout.actual.txt');err=T/(name+'.stderr.actual.txt')
+ with out.open('wb') as so,err.open('wb') as se:r=subprocess.run(cmd,cwd=R,stdout=so,stderr=se)
+ return {'name':name,'startedAtUTC':started,'exitCode':r.returncode,'elapsedSeconds':round(time.monotonic()-clock,6),'stdout':pin(out),'stderr':pin(err)}
+pr=run('P98-one-process-exported-stock',['node',str(tsx),str(runner)])
+def a_check(item):
+ i,cf=item
+ row=run(f'A{i+1:03d}',['node',str(tsx),str(H/'app/scripts/semanticAtomicityReview.ts'),'--config='+cf,'--mode=check'])
+ row['config']=cf;return row
+with ThreadPoolExecutor(max_workers=4) as pool: ars=list(pool.map(a_check,enumerate(sel['AConfigPaths'])))
+put(T/'RECEIPTS.actual-full-selected-current-P-A.json',{'selection':pin(S),'P':pr,'A':ars,'allSelectedConfigChecksPassed':pr['exitCode']==0 and all(r['exitCode']==0 for r in ars),'Native':0,'Central':0,'newScienceVotes':0,'maxConcurrentAProcesses':4})
+print(json.dumps({'PExitCode':pr['exitCode'],'PSeconds':pr['elapsedSeconds'],'AConfigs':len(ars),'AFailed':[r for r in ars if r['exitCode']!=0],'receipt':pin(T/'RECEIPTS.actual-full-selected-current-P-A.json')},indent=2))

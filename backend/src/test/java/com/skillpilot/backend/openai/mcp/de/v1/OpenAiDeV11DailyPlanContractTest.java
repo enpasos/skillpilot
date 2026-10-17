@@ -92,49 +92,6 @@ class OpenAiDeV11DailyPlanContractTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"de-DE,false", "en-US,false", "de-DE,true", "en-US,true"})
-    void actualBlockedContextPreservesReadVersionAndOnlyExposesAllowlistedFacts(String locale, boolean dailyPlanEnabled) {
-        sessionLocale = locale;
-        var original = noActiveGoalState();
-        var blocker = new com.skillpilot.backend.api.PrerequisiteBlocker(
-                "physics-target", "Diagramme", "Diagrams", "math-support", "Werte ablesen", "Read values",
-                "EXTERNAL_PREREQUISITE_UNMASTERED", "OPEN_PERSONAL_CURRICULUM");
-        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(new UnifiedLearnerStateResponse(
-                LEARNER_ID, original.curriculum(), List.of(),
-                new LearnerGoals(List.of(), 0, 1, new GoalStats(0, 1), new GoalStats(0, 1), false),
-                List.of("setScope", "getFrontier"), List.of(), Set.of(), "FRONTIER", null,
-                new StateMachineInfo("FRONTIER", "getFrontier", List.of(), List.of(), null, List.of(), List.of(blocker))));
-        when(coachTools.getLearningPlanTodayStatus(LEARNER_ID, locale))
-                .thenReturn(LearnerPlanTodayStatusFixtures.status(LocalDate.parse("2026-10-13"), false, false));
-        var adapter = contract(dailyPlanEnabled);
-
-        var response = call(adapter, OpenAiDeV1McpContractAdapter.GET_CONTEXT, readArguments());
-
-        assertThat(response.isError()).isFalse();
-        JsonNode context = objectMapper.valueToTree(response.structuredContent());
-        assertThat(context.path("stateVersion").asLong()).isEqualTo(7L);
-        assertThat(context.path("requiredAction").asText()).isEqualTo("getFrontier");
-        assertThat(context.path("options")).isEmpty();
-        assertThat(context.path("frontier")).isEmpty();
-        assertThat(context.path("nextAllowedTools")).hasSize(1);
-        assertThat(context.path("nextAllowedTools").get(0).asText()).isEqualTo(OpenAiDeV1McpContractAdapter.GET_CONTEXT);
-        assertThat(context.path("prerequisiteBlockers")).hasSize(1);
-        assertThat(context.path("prerequisiteBlockers").get(0).path("prerequisiteTitle").asText())
-                .isEqualTo(locale.startsWith("en") ? "Read values" : "Werte ablesen");
-        assertThat(context.path("instruction").asText()).contains(locale.startsWith("en") ? "Wait for" : "Warte auf");
-        assertThat(context.toString()).doesNotContain(LEARNER_ID, "OPEN_PERSONAL_CURRICULUM", "remediation", "personalCurriculum");
-        JsonNode schema = objectMapper.valueToTree(spec(adapter, OpenAiDeV1McpContractAdapter.GET_CONTEXT).tool().outputSchema());
-        assertThat(schema.path("properties").path("prerequisiteBlockers").path("maxItems").asInt()).isEqualTo(20);
-        assertThat(schema.path("properties").path("prerequisiteBlockers").path("items").path("properties").has("remediation")).isFalse();
-        verify(sessionCoordinator, times(1)).read(any(), any());
-        verify(sessionCoordinator, never()).write(any(), any(), anyLong(), any(), any(), any());
-        verify(identityResolver, never()).requireWriteAccess(any());
-        verify(coachTools, never()).setMastery(any(), any());
-        verify(coachTools, never()).setScope(any(), any());
-        verify(coachTools, never()).setPersonalization(any(), any());
-    }
-
-    @ParameterizedTest
     @CsvSource({"de-DE,DAY", "de-DE,WEEK", "en-US,DAY", "en-US,WEEK"})
     void actualContextPayloadPreservesBackendStatusAndSeparateAnnouncement(String locale, PeriodBasis basis) {
         sessionLocale = locale;

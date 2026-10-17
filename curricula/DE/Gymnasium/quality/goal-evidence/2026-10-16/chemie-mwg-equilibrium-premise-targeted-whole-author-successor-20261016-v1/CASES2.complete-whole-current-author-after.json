@@ -1,0 +1,328 @@
+{
+  "role": "Two whole material cases; old nested wholeCurrentGoal is retained historical material context, authoritative current goal is separately pinned",
+  "cases": [
+    {
+      "caseId": "q3-02-a",
+      "goalId": "20f92ba0-f7f4-5407-bb96-07e30da9002f",
+      "title": {
+        "de": "Homogenes Estermodell",
+        "en": "Homogeneous ester model"
+      },
+      "wholeCurrentGoal": {
+        "id": "20f92ba0-f7f4-5407-bb96-07e30da9002f",
+        "title": "Massenwirkungsgesetz anwenden",
+        "titleEn": "Apply Law of Mass Action",
+        "description": "Die lernende Person kann das Massenwirkungsgesetz auf homogene Gleichgewichte anwenden, Gleichgewichtskonstanten vereinfachter Systeme berechnen und den Zahlenwert zur Aussage über die Lage des Gleichgewichts interpretieren.",
+        "descriptionEn": "The learner can apply the law of mass action to homogeneous equilibria, calculate equilibrium constants for simplified systems, and interpret the numerical value to infer the position of equilibrium.",
+        "weight": 1.1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "81373fb7-2a4a-5b2c-acd0-b4e775acaa65"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-chemistry",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BC_REAKTION",
+            "BC_ENERGIE"
+          ],
+          "phase": "Q3"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+            "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "6ee8f696-95e4-4bd7-b923-6222e70a8449"
+          }
+        },
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "20f92ba0-f7f4-5407-bb96-07e30da9002f",
+            "title": "Visualisierung: Massenwirkungsgesetz anwenden",
+            "url": "/assets/goal-visualizations/chemie/20f92ba0-f7f4-5407-bb96-07e30da9002f/20f92ba0-f7f4-5407-bb96-07e30da9002f.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Massenwirkungsgesetz anwenden.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Massenwirkungsgesetz anwenden\". Die lernende Person kann das Massenwirkungsgesetz auf homogene Gleichgewichte anwenden, Gleichgewichtskonstanten vereinfachter Systeme berechnen und den Zahlenwert zur Aussage über die Lage des Gleichgewichts interpretieren.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "material": {
+        "de": "Idealisierte homogene Lösung: Säure + Alkohol ⇌ Ester + Wasser, stöchiometrisch 1:1:1:1. Gleichgewicht bei T: c(Säure)=c(Alkohol)=0,20 mol/L, c(Ester)=c(Wasser)=0,40 mol/L; Aktivitäten werden durch c/c° mit c°=1 mol/L angenähert.",
+        "en": "Idealized homogeneous solution: acid + alcohol ⇌ ester + water, stoichiometry 1:1:1:1. At equilibrium at T: c(acid)=c(alcohol)=0.20 mol/L and c(ester)=c(water)=0.40 mol/L; activities are approximated by c/c° with c°=1 mol/L."
+      },
+      "task": {
+        "de": "Formuliere das MWG, berechne K und interpretiere die Lage. Berechne den Quotienten unmittelbar nach Verdopplung der Säurekonzentration. Unterscheide ihn von K.",
+        "en": "Write the mass action expression, calculate K and interpret equilibrium position. Calculate the quotient immediately after doubling acid concentration. Distinguish it from K."
+      },
+      "modelResponse": {
+        "de": "K=(cE/c°)(cW/c°)/[(cS/c°)(cA/c°)]=0,40²/0,20²=4. Produkte sind im Verhältnis des MWG begünstigt, nicht quantitativ vollständig gebildet. Unmittelbar nach Säurezugabe ist Q=0,16/(0,40·0,20)=2<K; der Nettoverlauf geht nach rechts, bis Q wieder 4 ist. Bei unverändertem T bleibt K=4.",
+        "en": "K=(cE/c°)(cW/c°)/[(cS/c°)(cA/c°)]=0.40²/0.20²=4. Products are favoured in the mass action ratio, not formed completely. Immediately after acid addition Q=0.16/(0.40·0.20)=2<K; net reaction proceeds right until Q returns to 4. At unchanged T, K stays 4."
+      },
+      "scoring": {
+        "maximumPoints": 10,
+        "criteria": [
+          {
+            "id": "c1",
+            "points": 2,
+            "criterion": {
+              "de": "Alle vier Stoffe mit richtigen Potenzen einbeziehen.",
+              "en": "Include all four species with correct powers."
+            }
+          },
+          {
+            "id": "c2",
+            "points": 2,
+            "criterion": {
+              "de": "K=4 aus Gleichgewichtsdaten berechnen.",
+              "en": "Calculate K=4 from equilibrium data."
+            }
+          },
+          {
+            "id": "c3",
+            "points": 2,
+            "criterion": {
+              "de": "Zahlenwert ohne vollständigen Umsatz oder Geschwindigkeitsaussage deuten.",
+              "en": "Interpret the number without claiming complete conversion or a rate."
+            }
+          },
+          {
+            "id": "c4",
+            "points": 2,
+            "criterion": {
+              "de": "Q=2 und konstantes K=4 unterscheiden.",
+              "en": "Distinguish Q=2 and constant K=4."
+            }
+          },
+          {
+            "id": "fresh-transfer",
+            "points": 2,
+            "criterion": {
+              "de": "K=25; für die Rückgleichung 1/25=0,04. Die Interpretation gehört immer zur angegebenen Reaktionsgleichung.",
+              "en": "K=25; for the reverse equation 1/25=0.04. Interpretation always belongs to the specified reaction equation."
+            }
+          }
+        ],
+        "rule": {
+          "de": "Punkte ausschließlich für ausdrücklich gezeigte Fachleistung. Volle Punkte pro Kriterium nur bei Begründung und korrekter Darstellung; ein richtiger Fachbegriff allein genügt nicht. Modellantworten sind Autorenbeispiele, keine Lernendenleistung.",
+          "en": "Award points only for explicitly demonstrated scientific performance. Full credit per criterion requires reasoning and correct representation; a correct term alone is insufficient. Model responses are author examples, not learner performance."
+        }
+      },
+      "freshTransfer": {
+        "task": {
+          "de": "Frisches homogenes 1:1:1:1-System bei fester Temperatur mit den im Gleichgewicht gemessenen Konzentrationen cP=cQ=0,10 und cR=cS=0,50 mol/L: bestimme K für P+Q⇌R+S und für die umgekehrte Gleichung.",
+          "en": "Fresh homogeneous 1:1:1:1 system at a fixed temperature with measured equilibrium concentrations cP=cQ=0.10 and cR=cS=0.50 mol/L: determine K for P+Q⇌R+S and its reverse."
+        },
+        "modelResponse": {
+          "de": "K=25; für die Rückgleichung 1/25=0,04. Die Interpretation gehört immer zur angegebenen Reaktionsgleichung.",
+          "en": "K=25; for the reverse equation 1/25=0.04. Interpretation always belongs to the specified reaction equation."
+        },
+        "independentAdministration": true,
+        "releaseModelOnlyAfterSubmission": true
+      },
+      "evidence": {
+        "level": "E1",
+        "maximumClaimScope": "G1",
+        "kind": "synthetic-author-witness",
+        "humanTrial": false,
+        "performedExperiment": false,
+        "actualLearnerPerformance": false
+      }
+    },
+    {
+      "caseId": "q3-02-b",
+      "goalId": "20f92ba0-f7f4-5407-bb96-07e30da9002f",
+      "title": {
+        "de": "Gleichgewichtskonzentration aus Stoffbilanz",
+        "en": "Equilibrium concentration from balance"
+      },
+      "wholeCurrentGoal": {
+        "id": "20f92ba0-f7f4-5407-bb96-07e30da9002f",
+        "title": "Massenwirkungsgesetz anwenden",
+        "titleEn": "Apply Law of Mass Action",
+        "description": "Die lernende Person kann das Massenwirkungsgesetz auf homogene Gleichgewichte anwenden, Gleichgewichtskonstanten vereinfachter Systeme berechnen und den Zahlenwert zur Aussage über die Lage des Gleichgewichts interpretieren.",
+        "descriptionEn": "The learner can apply the law of mass action to homogeneous equilibria, calculate equilibrium constants for simplified systems, and interpret the numerical value to infer the position of equilibrium.",
+        "weight": 1.1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "81373fb7-2a4a-5b2c-acd0-b4e775acaa65"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-chemistry",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BC_REAKTION",
+            "BC_ENERGIE"
+          ],
+          "phase": "Q3"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+            "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "6ee8f696-95e4-4bd7-b923-6222e70a8449"
+          }
+        },
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "20f92ba0-f7f4-5407-bb96-07e30da9002f",
+            "title": "Visualisierung: Massenwirkungsgesetz anwenden",
+            "url": "/assets/goal-visualizations/chemie/20f92ba0-f7f4-5407-bb96-07e30da9002f/20f92ba0-f7f4-5407-bb96-07e30da9002f.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Massenwirkungsgesetz anwenden.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Massenwirkungsgesetz anwenden\". Die lernende Person kann das Massenwirkungsgesetz auf homogene Gleichgewichte anwenden, Gleichgewichtskonstanten vereinfachter Systeme berechnen und den Zahlenwert zur Aussage über die Lage des Gleichgewichts interpretieren.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "material": {
+        "de": "Homogenes Modell A+B⇌C+D bei T, K=9. Anfang: je 1,00 mol/L A und B, kein C oder D; gleichbleibendes Volumen. Zulässiger Umsatz x liegt zwischen 0 und 1,00 mol/L.",
+        "en": "Homogeneous model A+B⇌C+D at T, K=9. Initially A and B are each 1.00 mol/L, with no C or D; constant volume. Allowed conversion x lies between 0 and 1.00 mol/L."
+      },
+      "task": {
+        "de": "Berechne alle Gleichgewichtskonzentrationen mit MWG und Bilanz. Prüfe deine Lösung durch Einsetzen und interpretiere K. Eine andere Probe bei gleichem T hat Q=18; deute sie.",
+        "en": "Calculate all equilibrium concentrations using mass action and balance. Check by substitution and interpret K. Another sample at the same T has Q=18; interpret it."
+      },
+      "modelResponse": {
+        "de": "cA=cB=1−x, cC=cD=x. 9=x²/(1−x)²; für nichtnegative Konzentrationen x/(1−x)=3, also x=0,75 mol/L. A/B je 0,25, C/D je 0,75; 0,75²/0,25²=9. Das produktbegünstigte Gleichgewicht enthält trotzdem A/B. Q=18>K bedeutet Nettoverlauf nach links; es ist kein neues K.",
+        "en": "cA=cB=1−x and cC=cD=x. 9=x²/(1−x)²; for nonnegative concentrations x/(1−x)=3, so x=0.75 mol/L. A/B are each 0.25 and C/D each 0.75; 0.75²/0.25²=9. Product-favoured equilibrium still contains A/B. Q=18>K means net reaction left; it is not a new K."
+      },
+      "scoring": {
+        "maximumPoints": 10,
+        "criteria": [
+          {
+            "id": "c1",
+            "points": 2,
+            "criterion": {
+              "de": "Bilanz und zulässigen Bereich angeben.",
+              "en": "State balance and allowed range."
+            }
+          },
+          {
+            "id": "c2",
+            "points": 2,
+            "criterion": {
+              "de": "MWG korrekt lösen und alle Konzentrationen nennen.",
+              "en": "Solve mass action correctly and state all concentrations."
+            }
+          },
+          {
+            "id": "c3",
+            "points": 2,
+            "criterion": {
+              "de": "Einsetzprobe und begrenzte K-Interpretation leisten.",
+              "en": "Check by substitution and give bounded interpretation of K."
+            }
+          },
+          {
+            "id": "c4",
+            "points": 2,
+            "criterion": {
+              "de": "Q>K als Rückverschiebung bei unverändertem K deuten.",
+              "en": "Interpret Q>K as reverse shift at unchanged K."
+            }
+          },
+          {
+            "id": "fresh-transfer",
+            "points": 2,
+            "criterion": {
+              "de": "x/(0,60−x)=2, x=0,40; Edukte je0,20 und Produkte je0,40 mol/L. K bleibt trotz anderer Startmengen4.",
+              "en": "x/(0.60−x)=2, x=0.40; reactants each0.20 and products each0.40 mol/L. K remains4 despite different initial amounts."
+            }
+          }
+        ],
+        "rule": {
+          "de": "Punkte ausschließlich für ausdrücklich gezeigte Fachleistung. Volle Punkte pro Kriterium nur bei Begründung und korrekter Darstellung; ein richtiger Fachbegriff allein genügt nicht. Modellantworten sind Autorenbeispiele, keine Lernendenleistung.",
+          "en": "Award points only for explicitly demonstrated scientific performance. Full credit per criterion requires reasoning and correct representation; a correct term alone is insufficient. Model responses are author examples, not learner performance."
+        }
+      },
+      "freshTransfer": {
+        "task": {
+          "de": "Frisch: Start je 0,60 mol/L, K=4, gleiche Reaktion.",
+          "en": "Fresh: initial concentrations each 0.60 mol/L, K=4, same reaction."
+        },
+        "modelResponse": {
+          "de": "x/(0,60−x)=2, x=0,40; Edukte je0,20 und Produkte je0,40 mol/L. K bleibt trotz anderer Startmengen4.",
+          "en": "x/(0.60−x)=2, x=0.40; reactants each0.20 and products each0.40 mol/L. K remains4 despite different initial amounts."
+        },
+        "independentAdministration": true,
+        "releaseModelOnlyAfterSubmission": true
+      },
+      "evidence": {
+        "level": "E1",
+        "maximumClaimScope": "G1",
+        "kind": "synthetic-author-witness",
+        "humanTrial": false,
+        "performedExperiment": false,
+        "actualLearnerPerformance": false
+      }
+    }
+  ],
+  "caseCount": 2,
+  "HumanApproval": false,
+  "HumanTrial": false
+}

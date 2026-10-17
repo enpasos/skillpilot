@@ -346,28 +346,4 @@ assert.match(
   /approved profiles require human reviewAuthority/,
 )
 
-
-// Required assessment stimuli must be bound even when no visualization is reviewed.
-const taskDigestA = '1'.repeat(64)
-const taskDigestB = '2'.repeat(64)
-const taskGoal = (digest: string): LearningGoal => ({
-  ...goal,
-  resourceLinks: [{ type: 'task-material', resourceType: 'image', role: 'assessment-stimulus',
-    skillpilotId: goal.id, title: 'Signed coordinate stimulus',
-    url: `/assets/task-material/mathematik/signed-points-${digest}.svg`,
-    lang: 'de', license: 'CC-BY-4.0' }],
-})
-const taskA = taskGoal(taskDigestA)
-const taskB = taskGoal(taskDigestB)
-const taskMapA = { [taskA.resourceLinks![0].url]: `sha256:${taskDigestA}` }
-const taskMapB = { [taskB.resourceLinks![0].url]: `sha256:${taskDigestB}` }
-const inputA = fingerprintPositiveGoalEvidenceReviewInput(taskA, reviewCriteriaFingerprint, taskMapA, effectiveSemanticKind)
-assert.notEqual(inputA, fingerprintPositiveGoalEvidenceReviewInput(taskB, reviewCriteriaFingerprint, taskMapB, effectiveSemanticKind), 'replacing a mandatory stimulus must stale its actual native review input')
-assert.throws(() => fingerprintPositiveGoalEvidenceReviewInput(taskA, reviewCriteriaFingerprint, {}, effectiveSemanticKind), /required task-material digest is missing/)
-const taskRecord = { ...record, goalFingerprint: fingerprintGoalForPositiveEvidence(taskA, effectiveSemanticKind), reviewInputFingerprint: inputA }
-assert.deepEqual(validatePositiveGoalEvidenceRecordSemantics(taskRecord, taskA, taskMapA, effectiveSemanticKind), [])
-assert.match(validatePositiveGoalEvidenceRecordSemantics(taskRecord, taskA, {}, effectiveSemanticKind).join('\n'), /required task-material/)
-const unrelated = { ...goal, resourceLinks: [...goal.resourceLinks!, { type: 'reference', title: 'Unrelated external reference', url: 'https://example.invalid/reference' }] }
-assert.equal(fingerprintPositiveGoalEvidenceReviewInput(unrelated, reviewCriteriaFingerprint, {}, effectiveSemanticKind), fingerprintPositiveGoalEvidenceReviewInput(goal, reviewCriteriaFingerprint, {}, effectiveSemanticKind))
-
 console.log('Positive goal evidence profile V2 tests passed.')

@@ -1,0 +1,113 @@
+{
+  "role": "Actual stock Native4 dual-round synthesis and strict current resolution finalization; machine QA only",
+  "inputCanonicalSHA256": "sha256:b3c50a6a0782247375dbad00a76a4ef5d5035030c12cbc2e9b190865e1ed33e1",
+  "independentRoundSources": [
+    {
+      "sourcePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-shared-three-and-faraday-kind-current437-independent-a-20261016-v1/native-four-description-results-stock-contract-v2/chemie-current437-l3-native-four-current-inputs-20261016-v1-first-pass-a.batch-001.records.jsonl",
+      "sha256": "sha256:cffeaf67fc48e728a2a5be313e6b14a0cd83b1d070872bbc8585faaffff55281",
+      "selectedRound": "a",
+      "target": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-combined639-shared-six-exam-seven-native-four-private-L3-technical-20261016-v1/native-four/round-a/results/chemie-current437-l3-native-four-current-inputs-20261016-v1-first-pass-a.batch-001.records.jsonl",
+      "wholeSourceBytesExact": true
+    },
+    {
+      "sourcePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-shared-three-and-faraday-kind-current437-independent-a-20261016-v1/native-four-description-results-stock-contract-v2/chemie-current437-l3-native-four-current-inputs-20261016-v1-first-pass-a.batch-001.run.json",
+      "sha256": "sha256:d0b9ade78009a6232b1dd65d42ad10f60c9ce15535d362b57d18519e44c97364",
+      "selectedRound": "a",
+      "target": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-combined639-shared-six-exam-seven-native-four-private-L3-technical-20261016-v1/native-four/round-a/results/chemie-current437-l3-native-four-current-inputs-20261016-v1-first-pass-a.batch-001.run.json",
+      "wholeSourceBytesExact": true
+    },
+    {
+      "sourcePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-shared-three-and-faraday-kind-current437-independent-b-20261016-v1/native-d-results/chemie-current437-l3-native-four-current-inputs-20261016-v1-first-pass-b.batch-001.records.jsonl",
+      "sha256": "sha256:f32ca577e539146e18a51324f0da1a0870284076ee3a0b4d7cb5e9aaa21a3a28",
+      "selectedRound": "b",
+      "target": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-combined639-shared-six-exam-seven-native-four-private-L3-technical-20261016-v1/native-four/round-b/results/chemie-current437-l3-native-four-current-inputs-20261016-v1-first-pass-b.batch-001.records.jsonl",
+      "wholeSourceBytesExact": true
+    },
+    {
+      "sourcePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-shared-three-and-faraday-kind-current437-independent-b-20261016-v1/native-d-results/chemie-current437-l3-native-four-current-inputs-20261016-v1-first-pass-b.batch-001.run.json",
+      "sha256": "sha256:51c5f071be76e483582e4644a7577b01e2dd3b2451e5e0f0378cece8b98dcb57",
+      "selectedRound": "b",
+      "target": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-combined639-shared-six-exam-seven-native-four-private-L3-technical-20261016-v1/native-four/round-b/results/chemie-current437-l3-native-four-current-inputs-20261016-v1-first-pass-b.batch-001.run.json",
+      "wholeSourceBytesExact": true
+    }
+  ],
+  "actualRuns": [
+    {
+      "command": [
+        "node",
+        "--preserve-symlinks",
+        "--preserve-symlinks-main",
+        "node_modules/tsx/dist/cli.mjs",
+        "scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "summarize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-combined639-shared-six-exam-seven-native-four-private-L3-technical-20261016-v1/native-four.current-L3.valid-stock.config.json",
+        "--write"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/chemie-combined639-shared-and-seven-final-review-capsule-v1/app",
+      "exitCode": 0,
+      "elapsedSeconds": 1.0942641900037415
+    },
+    {
+      "command": [
+        "node",
+        "--preserve-symlinks",
+        "--preserve-symlinks-main",
+        "node_modules/tsx/dist/cli.mjs",
+        "scripts/materializeGoalDescriptionRolloutSynthesisManifest.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-combined639-shared-six-exam-seven-native-four-private-L3-technical-20261016-v1/native-four.current-L3.valid-stock.config.json",
+        "--authoring",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-combined639-shared-six-exam-seven-native-four-private-L3-technical-20261016-v1/native-four/synthesis-authoring.actual-root.four-paired-keep.json",
+        "--write"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/chemie-combined639-shared-and-seven-final-review-capsule-v1/app",
+      "exitCode": 0,
+      "elapsedSeconds": 1.299221666995436
+    },
+    {
+      "command": [
+        "node",
+        "--preserve-symlinks",
+        "--preserve-symlinks-main",
+        "node_modules/tsx/dist/cli.mjs",
+        "scripts/materializeGoalDescriptionRolloutResolutions.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-combined639-shared-six-exam-seven-native-four-private-L3-technical-20261016-v1/native-four.current-L3.valid-stock.config.json",
+        "--synthesis-manifest",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-combined639-shared-six-exam-seven-native-four-private-L3-technical-20261016-v1/native-four/synthesis-decisions.json",
+        "--write"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/chemie-combined639-shared-and-seven-final-review-capsule-v1/app",
+      "exitCode": 0,
+      "elapsedSeconds": 1.4279510639898945
+    },
+    {
+      "command": [
+        "node",
+        "--preserve-symlinks",
+        "--preserve-symlinks-main",
+        "node_modules/tsx/dist/cli.mjs",
+        "scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-combined639-shared-six-exam-seven-native-four-private-L3-technical-20261016-v1/native-four.current-L3.valid-stock.config.json",
+        "--write"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/chemie-combined639-shared-and-seven-final-review-capsule-v1/app",
+      "exitCode": 0,
+      "elapsedSeconds": 1.2654008679965045
+    }
+  ],
+  "resolutionIndex": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-combined639-shared-six-exam-seven-native-four-private-L3-technical-20261016-v1/native-four/resolution-index.json",
+    "sha256": "sha256:09cee15599ad7039a44bd2f0577187f57f8d7eceded15826ec3fdd7fb2876418"
+  },
+  "strictCurrentResolutions": 4,
+  "denominatorOwnedByCentralReport": true,
+  "central437NotRerunHere": true,
+  "normalWrites": 0,
+  "HumanApproval": false,
+  "HumanTrial": false,
+  "M7Claim": false
+}

@@ -1,0 +1,57 @@
+{
+  "role": "Actual isolated H stock CLI checks after frozen science; launcher correction is technical only",
+  "observedAtUtc": "2026-10-16 12:05:31 UTC",
+  "workingDirectory": "tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1",
+  "failedLauncherAttempts": [
+    {
+      "lane": "P5",
+      "status": "fulfilled",
+      "value": {
+        "chunk_id": "93bf63",
+        "wall_time_seconds": 0.000013601,
+        "exit_code": 1,
+        "original_token_count": 301,
+        "output": "node:internal/modules/esm/resolve:283\n    throw new ERR_MODULE_NOT_FOUND(\n          ^\n\nError [ERR_MODULE_NOT_FOUND]: Cannot find module '/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1/app/node_modules/.bin/package-CeBgXWuR.mjs' imported from /home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1/app/node_modules/.bin/tsx\n    at finalizeResolution (node:internal/modules/esm/resolve:283:11)\n    at moduleResolve (node:internal/modules/esm/resolve:952:10)\n    at defaultResolve (node:internal/modules/esm/resolve:1188:11)\n    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)\n    at ModuleLoader.resolve (node:internal/modules/esm/loader:640:38)\n    at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:264:38)\n    at ModuleJob._link (node:internal/modules/esm/module_job:168:49) {\n  code: 'ERR_MODULE_NOT_FOUND',\n  url: 'file:///home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1/app/node_modules/.bin/package-CeBgXWuR.mjs'\n}\n\nNode.js v20.20.2\n"
+      }
+    },
+    {
+      "lane": "A5",
+      "status": "fulfilled",
+      "value": {
+        "chunk_id": "1501f1",
+        "wall_time_seconds": 0.000015301,
+        "exit_code": 1,
+        "original_token_count": 301,
+        "output": "node:internal/modules/esm/resolve:283\n    throw new ERR_MODULE_NOT_FOUND(\n          ^\n\nError [ERR_MODULE_NOT_FOUND]: Cannot find module '/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1/app/node_modules/.bin/package-CeBgXWuR.mjs' imported from /home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1/app/node_modules/.bin/tsx\n    at finalizeResolution (node:internal/modules/esm/resolve:283:11)\n    at moduleResolve (node:internal/modules/esm/resolve:952:10)\n    at defaultResolve (node:internal/modules/esm/resolve:1188:11)\n    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)\n    at ModuleLoader.resolve (node:internal/modules/esm/loader:640:38)\n    at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:264:38)\n    at ModuleJob._link (node:internal/modules/esm/module_job:168:49) {\n  code: 'ERR_MODULE_NOT_FOUND',\n  url: 'file:///home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1/app/node_modules/.bin/package-CeBgXWuR.mjs'\n}\n\nNode.js v20.20.2\n"
+      }
+    }
+  ],
+  "successfulChecks": [
+    {
+      "lane": "P5",
+      "status": "fulfilled",
+      "value": {
+        "chunk_id": "d7822b",
+        "wall_time_seconds": 0.41427109,
+        "exit_code": 0,
+        "original_token_count": 78,
+        "output": "# Positive Goal Evidence Review: chemie-five-description-compatibility-independent-b-20261016-v1\nScope: Exactly five current DE/EN description successors; independent bounded compatibility science, prospective AI material only\nConfigured goals: 5\nApproved: 0\nNeeds human review: 5\nRejected: 0\nBlocking issues: 0\n"
+      }
+    },
+    {
+      "lane": "A5",
+      "status": "fulfilled",
+      "value": {
+        "chunk_id": "4d2fe7",
+        "wall_time_seconds": 0.197897778,
+        "exit_code": 0,
+        "original_token_count": 111,
+        "output": "# Semantic Atomicity Review: chemie-five-description-compatibility-independent-b-20261016-v1\nScope: Exactly five current DE/EN description successors; independent bounded compatibility science, prospective AI material only\nRule: semantic-atomicity-v1\nContent leaf goals in scope: 5\nCurrent reviewed atomic: 5\nCurrent needs developer review: 0\nCurrent non-atomic: 0\nMissing review records: 0\nStale review records: 0\nObsolete review records: 0\n"
+      }
+    }
+  ],
+  "successfulCommandPrefix": "NODE_OPTIONS='--preserve-symlinks --preserve-symlinks-main' node app/node_modules/tsx/dist/cli.mjs",
+  "resourceRoutingOrShim": false,
+  "normalAliasMutations": 0,
+  "boundedM5": "Checked separately using actual unchanged stock fingerprint/shape functions and exported memory visibility report; full435 card-origin CLI not claimed"
+}

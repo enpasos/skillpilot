@@ -1,4 +1,3 @@
-import { readCompositionSupplementCoverage, SUPPLEMENT_MATH, type CompositionSupplementCoverage } from './compositionSupplementSourceCoverage'
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -64,7 +63,6 @@ interface CurriculumAudit {
   totalAtomicGoals: number
   summary: CurriculumAuditSummary
   jurisdictions: JurisdictionAudit[]
-  selectedMathematicsPreparation?: CompositionSupplementCoverage
 }
 
 interface CurriculumAuditSummary {
@@ -266,7 +264,7 @@ function pushGeneratedMarkdownNotice(lines: string[]): void {
   lines.push('')
 }
 
-export function renderMarkdown(audit: SourceCoverageAudit): string {
+function renderMarkdown(audit: SourceCoverageAudit): string {
   const lines: string[] = []
   lines.push('# Curriculum Source Coverage Audit')
   lines.push('')
@@ -303,22 +301,11 @@ export function renderMarkdown(audit: SourceCoverageAudit): string {
     lines.push('')
   }
 
-  for (const curriculum of audit.curricula) if (curriculum.selectedMathematicsPreparation) {
-    lines.push('## Explicitly selected Mathematics preparation')
-    lines.push('')
-    lines.push('Official Math source obligations and reverse mappings exclude reviewed didactic inference, orientation and other non-curricular targets. Targets are counted once per exact selected configuration, including any independently selected ordinary base.')
-    lines.push('')
-    lines.push('| Configuration | Math base | Unique targets | Regular Math source | Reviewed preparation inference | Orientation | Ordinary non-curricular | Unresolved |')
-    lines.push('| --- | --- | --- | --- | --- | --- | --- | --- |')
-    for (const config of curriculum.selectedMathematicsPreparation.configurations) lines.push(`| ${config.configurationId} | ${config.mathBaseSelected} | ${config.totalAuthoredTargetAtomicGoals} | ${config.regularSourceBackedAtomicGoals} | ${config.reviewedDidacticSupplementAtomicGoals} | ${config.orientationTargetGoals} | ${config.ordinaryNonCurricularTargetGoals} | ${config.unresolvedTargetAtomicGoals} |`)
-    lines.push('')
-  }
   return `${lines.join('\n')}\n`
 }
 
-export async function buildAudit(): Promise<SourceCoverageAudit> {
+function buildAudit(): SourceCoverageAudit {
   const compilation = buildApplicabilityCompilation()
-  const supplementalCoverage = await readCompositionSupplementCoverage(repoRoot, compilation)
   const targetIds = new Set(TARGET_LANDSCAPE_IDS)
   const surrogateEntriesByKey = readAcceptedSurrogateEvidenceByKey()
   const curricula: CurriculumAudit[] = []
@@ -408,7 +395,6 @@ export async function buildAudit(): Promise<SourceCoverageAudit> {
       title: report.title,
       file: report.file,
       totalAtomicGoals: atomicGoals.length,
-      ...(report.landscapeId === SUPPLEMENT_MATH && supplementalCoverage ? { selectedMathematicsPreparation: supplementalCoverage } : {}),
       summary: buildCurriculumAuditSummary(jurisdictions),
       jurisdictions,
     })
@@ -427,6 +413,7 @@ export async function buildAudit(): Promise<SourceCoverageAudit> {
   }
 }
 
+const audit = buildAudit()
 
 function formatGoalExamples(goals: GoalReference[], limit = 5): string {
   const examples = goals.slice(0, limit).map((goal) => `${goal.goalId} (${goal.title})`)
@@ -434,13 +421,10 @@ function formatGoalExamples(goals: GoalReference[], limit = 5): string {
   return examples.join(', ')
 }
 
-export function collectAuditProblems(auditToCheck: SourceCoverageAudit): string[] {
+function collectAuditProblems(auditToCheck: SourceCoverageAudit): string[] {
   const problems: string[] = []
 
   for (const curriculum of auditToCheck.curricula) {
-    for (const config of curriculum.selectedMathematicsPreparation?.configurations ?? []) {
-      if (config.targetAuthorizationStatus !== 'pass') problems.push(`Selected preparation ${config.configurationId}: ${config.unresolvedTargetAtomicGoals} target(s) lack current authorization; ordinary official-source duties remain separate.`)
-    }
     if (curriculum.totalAtomicGoals === 0) {
       problems.push(`${curriculum.title}: no source-coverage atomic goals found.`)
     }
@@ -482,9 +466,7 @@ function writeAudit(auditToWrite: SourceCoverageAudit): void {
   console.log(`Wrote ${auditMarkdownPath}`)
 }
 
-async function main() {
-  const audit = await buildAudit()
-  if (process.argv.includes('--check')) {
+if (process.argv.includes('--check')) {
   const problems = collectAuditProblems(audit)
   if (problems.length > 0) {
     console.error('Curriculum source coverage audit check failed:')
@@ -497,9 +479,4 @@ async function main() {
   console.log('Curriculum source coverage audit check passed.')
 } else {
   writeAudit(audit)
-}
-
-}
-if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  main().catch(error => { console.error(error instanceof Error ? error.message : String(error)); process.exitCode = 1 })
 }

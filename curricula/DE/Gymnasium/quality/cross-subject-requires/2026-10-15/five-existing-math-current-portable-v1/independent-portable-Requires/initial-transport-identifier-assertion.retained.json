@@ -1,7 +1,0 @@
-{
-  "initialScript": "review_portable_requires_transport.mts",
-  "exitCode": 1,
-  "reason": "Initial comparison incorrectly required literal old decisionId and rationale equality. Actual new author uses the exact portable suffix on decisionId plus a disclosed transport-only rationale suffix. This is not a substantive science/proposal change.",
-  "newPeerEmittedBeforeFailure": false,
-  "successor": "review_portable_requires_transport_v2.mts explicitly checks those exact suffixes and retains all other semantic/native equality assertions."
-}

@@ -27,7 +27,6 @@ import com.skillpilot.backend.landscape.LearningGoal;
 import com.skillpilot.backend.landscape.ResolvedGoalMapping;
 import com.skillpilot.backend.events.LearnerStateChangedEvent;
 import com.skillpilot.backend.util.BundeslandCodeNormalizer;
-import com.skillpilot.backend.util.ApplicabilityContexts;
 import org.springframework.context.ApplicationEventPublisher;
 import com.skillpilot.backend.landscape.SkillLandscape;
 import java.util.ArrayList;
@@ -88,7 +87,6 @@ import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.api.PlannedGoalsMutationResponse;
 import com.skillpilot.backend.api.SignedLearnerDataDTO;
 import com.skillpilot.backend.api.StateMachineInfo;
-import com.skillpilot.backend.api.PrerequisiteBlocker;
 import com.skillpilot.backend.api.VerifiedRecallAnswerRequest;
 import com.skillpilot.backend.api.VerifiedRecallAnswerResponse;
 import com.skillpilot.backend.api.VerifiedRecallBatchAnswerCard;
@@ -4182,12 +4180,7 @@ public class LearnerService {
     @Transactional(readOnly = true)
     public List<SkillLandscape> getLearnerLandscapeClosure(String skillpilotId, String landscapeId, String lang) {
         Learner learner = getLearner(skillpilotId);
-        List<SkillLandscape> localizedClosure = new ArrayList<>(landscapeService.getClosure(landscapeId, lang));
-        var selectedSupplements = validatedSelectedSupplements(parsePersonalCurriculumConfig(learner.getPersonalCurriculum()));
-        if (!selectedSupplements.isEmpty() && localizedClosure.stream().noneMatch(l -> CompositionSupplementService.MATH.equals(l.getLandscapeId()))) {
-            SkillLandscape math = landscapeService.getById(CompositionSupplementService.MATH);
-            if (math != null) localizedClosure.add(math);
-        }
+        List<SkillLandscape> localizedClosure = landscapeService.getClosure(landscapeId, lang);
         Map<String, LearningGoal> visibleGoals = getFilteredGoals(landscapeId, learner.getPersonalCurriculum());
         if (localizedClosure == null || localizedClosure.isEmpty()) {
             return Collections.emptyList();
@@ -4237,170 +4230,6 @@ public class LearnerService {
                 && landscapeService.isCompatibilityOnlyLandscape(curriculumId);
     }
 
-    private List<CompositionSupplementService.Supplement> validatedSelectedSupplements(
-            Map<String, Map<String, Object>> config) {
-        if (compositionViewService == null) {
-            if (config.values().stream().anyMatch(v -> v.containsKey(CompositionSupplementService.SELECTIONS)))
-                throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT, "Mathematics preparation is not supported by this curriculum source");
-            return List.of();
-        }
-        try {
-            List<CompositionSupplementService.Supplement> selected = compositionViewService.selectedSupplements(config);
-            if (selected == null) return List.of(); // compatibility with older test doubles
-            for (var supplement : selected) compositionViewService.validateSupplementContext(supplement,
-                    deriveCompositionScope(CompositionSupplementService.MATH, config),
-                    deriveCompositionScope(CompositionSupplementService.PHYSICS, config),
-                    readSelectedFlag(config, CompositionSupplementService.PHYSICS, false));
-            return selected;
-        } catch (IllegalStateException exception) {
-            throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
-                    "Selected Mathematics preparation is stale or incompatible; remove it explicitly or review your curriculum scope", exception);
-        }
-    }
-
-    @Transactional(readOnly = true)
-    public com.skillpilot.backend.api.CompositionSupplementOptions getCompositionSupplementOptions(String skillpilotId) {
-        Learner learner = getLearner(skillpilotId);
-        assertWritableLearningSession(learner);
-        return buildCompositionSupplementOptions(learner);
-    }
-
-    private record SupplementalAction(com.skillpilot.backend.api.CompositionSupplementOptions.Option option,
-            CompositionSupplementService.Supplement supplement, String supplementId) {}
-
-    private com.skillpilot.backend.api.CompositionSupplementOptions buildCompositionSupplementOptions(Learner learner) {
-        List<String> unavailable = new ArrayList<>();
-        List<SupplementalAction> actions = supplementalActions(learner, unavailable);
-        return new com.skillpilot.backend.api.CompositionSupplementOptions(
-                actions.stream().map(SupplementalAction::option).toList(),
-                compositionViewService != null && !compositionViewService.supportsCompositionSupplements()
-                        ? "COMPOSITION_SUPPLEMENT_V1_UNSUPPORTED_BY_CURRICULUM_SOURCE"
-                        : unavailable.isEmpty() ? null : unavailable.getFirst());
-    }
-
-    private List<SupplementalAction> supplementalActions(Learner learner) {
-        return supplementalActions(learner, new ArrayList<>());
-    }
-
-    private List<SupplementalAction> supplementalActions(Learner learner, List<String> unavailable) {
-        if (compositionViewService == null || !CANONICAL_GYMNASIUM_ROOT_ID.equals(learner.getSelectedCurriculum())) return List.of();
-        Map<String, Map<String, Object>> config = parsePersonalCurriculumConfig(learner.getPersonalCurriculum());
-        // Removal stays possible even if evidence or a selected scope becomes stale.
-        List<SupplementalAction> result = new ArrayList<>();
-        Object stored = config.getOrDefault(CompositionSupplementService.MATH, Map.of()).get(CompositionSupplementService.SELECTIONS);
-        Set<String> selectedIds = new LinkedHashSet<>();
-        if (stored instanceof List<?> entries) for (Object entry : entries) {
-            if (!(entry instanceof Map<?, ?> selection) || !(selection.get("supplementId") instanceof String id))
-                throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT, "Invalid Mathematics preparation selection");
-            selectedIds.add(id);
-            String token = supplementalOptionToken(learner, "REMOVE", id, String.valueOf(selection.get("authorizationSha256")));
-            result.add(new SupplementalAction(new com.skillpilot.backend.api.CompositionSupplementOptions.Option(
-                    token, id, id, "REMOVE", null, List.of(), 0, null), null, id));
-        }
-        if (buildPersonalizationPlan(learner).stage() != PersonalizationPlan.Stage.COMPLETE) return result;
-        List<CompositionSupplementService.Supplement> available;
-        try { available = compositionViewService.availableSupplements(); }
-        catch (IllegalStateException exception) { unavailable.add("COMPOSITION_SUPPLEMENT_CURRENT_AUTHORIZATION_UNAVAILABLE"); return result; } // invalid artifacts never become offers
-        if (available == null) return result;
-        Set<String> existingTargets;
-        try { existingTargets = getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum()).targetGoalIds(); }
-        catch (ResponseStatusException exception) { unavailable.add("COMPOSITION_SUPPLEMENT_SELECTED_SCOPE_INCOMPATIBLE"); return result; }
-        for (var supplement : available) {
-            if (selectedIds.contains(supplement.id())) continue;
-            Map<String, Map<String, Object>> proposed = supplementSelectionConfig(config, supplement);
-            try { compositionViewService.validateSupplementContext(supplement,
-                    deriveCompositionScope(CompositionSupplementService.MATH, proposed),
-                    deriveCompositionScope(CompositionSupplementService.PHYSICS, proposed),
-                    readSelectedFlag(proposed, CompositionSupplementService.PHYSICS, false)); }
-            catch (IllegalStateException exception) { continue; }
-            var targets = supplement.targetGoalIds().stream().map(id -> {
-                LearningGoal goal = landscapeService.getGoalDefinition(id);
-                return new com.skillpilot.backend.api.CompositionSupplementOptions.Target(id, goal.getTitle(), goal.getTitleEn());
-            }).toList();
-            int additional = (int) supplement.targetGoalIds().stream().filter(id -> !existingTargets.contains(id)).count();
-            result.add(new SupplementalAction(new com.skillpilot.backend.api.CompositionSupplementOptions.Option(
-                    supplementalOptionToken(learner, "ADD", supplement.id(), supplement.authorizationSha256()),
-                    supplement.label(), supplement.labelEn(), "ADD", supplement.scope().get("courseProfile"), targets,
-                    additional, supplement.authorizationAccounting()), supplement, supplement.id()));
-        }
-        return List.copyOf(result);
-    }
-
-    private Map<String, Map<String, Object>> supplementSelectionConfig(Map<String, Map<String, Object>> config,
-            CompositionSupplementService.Supplement supplement) {
-        Map<String, Map<String, Object>> result = new LinkedHashMap<>(config);
-        Map<String, Object> math = new LinkedHashMap<>(config.getOrDefault(CompositionSupplementService.MATH, Map.of()));
-        String authoredProfile = supplement.scope().get("courseProfile");
-        // This is an explicit, labelled Math profile choice in the offered option.
-        // An independently selected ordinary Math profile may never be replaced here.
-        if (!Boolean.TRUE.equals(math.get("selected")) && authoredProfile != null) math.put("filterId", authoredProfile);
-        result.put(CompositionSupplementService.MATH, math);
-        return result;
-    }
-
-    private String supplementalOptionToken(Learner learner, String action, String id, String authorization) {
-        try {
-            Mac mac = Mac.getInstance("HmacSHA256");
-            mac.init(new SecretKeySpec(signingSecret.getBytes(StandardCharsets.UTF_8), "HmacSHA256"));
-            byte[] payload = objectMapper.writeValueAsBytes(List.of("composition-supplement-v1", learner.getSkillpilotId(),
-                    learner.getCoachStateRevision(), learner.getSelectedCurriculum(),
-                    Objects.toString(learner.getPersonalCurriculum(), ""), action, id, authorization));
-            return "supplement-option:" + java.util.HexFormat.of().formatHex(mac.doFinal(payload));
-        } catch (Exception exception) { throw new IllegalStateException("Cannot bind preparation option", exception); }
-    }
-
-    /** Only the first-party controller calls this; no coach adapter exposes Level-2 supplements. */
-    @Transactional
-    public com.skillpilot.backend.api.CompositionSupplementOptions applyCompositionSupplementOption(String skillpilotId, String optionId) {
-        Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
-                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
-        assertWritableLearningSession(learner);
-        if (optionId == null || optionId.isBlank()) throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST, "A current opaque preparation option is required");
-        SupplementalAction selected = supplementalActions(learner).stream()
-                .filter(action -> action.option().optionId().equals(optionId)).findFirst()
-                .orElseThrow(() -> new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT, "Preparation option is stale; reload your curriculum choices"));
-        Map<String, Object> config = mutablePersonalCurriculumPayload(learner.getPersonalCurriculum());
-        Map<String, Object> math = new LinkedHashMap<>(parsePersonalCurriculumConfig(learner.getPersonalCurriculum())
-                .getOrDefault(CompositionSupplementService.MATH, Map.of()));
-        List<Map<String, Object>> selections = new ArrayList<>();
-        if (math.get(CompositionSupplementService.SELECTIONS) instanceof List<?> entries)
-            for (Object entry : entries) selections.add(new LinkedHashMap<>((Map<String, Object>) entry));
-        if ("ADD".equals(selected.option().action())) {
-            var supplement = selected.supplement();
-            math = supplementSelectionConfig(parsePersonalCurriculumConfig(learner.getPersonalCurriculum()), supplement)
-                    .get(CompositionSupplementService.MATH);
-            selections.add(Map.of("supplementId", supplement.id(), "authorizationSha256", supplement.authorizationSha256()));
-        } else {
-            String removeId = selected.supplementId();
-            selections.removeIf(selection -> removeId.equals(selection.get("supplementId")));
-        }
-        if (selections.isEmpty()) math.remove(CompositionSupplementService.SELECTIONS);
-        else math.put(CompositionSupplementService.SELECTIONS, List.copyOf(selections));
-        config.put(CompositionSupplementService.MATH, math);
-        // Revalidate before persisting. Focus remains independent; this call prunes
-        // only focus invalidated by an explicit removal, and never touches mastery.
-        if ("ADD".equals(selected.option().action())) revalidatePlannedGoalsForProjectedScope(learner, config);
-        else {
-            try { validatedSelectedSupplements(parsePersonalCurriculumConfig(writePersonalCurriculumConfig(config)));
-                revalidatePlannedGoalsForProjectedScope(learner, config);
-            } catch (ResponseStatusException exception) {
-                if (exception.getStatusCode().value() != 409) throw exception;
-                // Other stale selections remain actionable. No fallback projection or
-                // unrelated focus/mastery rewrite is allowed while configuration is invalid.
-            }
-        }
-        persistPersonalCurriculum(learner, config);
-        return buildCompositionSupplementOptions(learner);
-    }
-
-    @Transactional(readOnly = true)
-    public List<Map<String, Object>> getSelectedCompositionDocuments(String skillpilotId, String landscapeId) {
-        Learner learner = getLearner(skillpilotId);
-        GoalProjection projection = getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
-        return projection.compositionViewIds().stream().map(compositionViewService::findViewById)
-                .filter(Objects::nonNull).filter(view -> landscapeId.equals(view.get("landscapeId"))).toList();
-    }
-
     @Transactional
     public void setCurriculum(String skillpilotId, String curriculumId) {
         Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
@@ -4433,14 +4262,6 @@ public class LearnerService {
         applyCurriculumSelection(learner, effectiveCurriculumId);
     }
 
-    private void requireNoCommittedSupplementsForScopeReset(Learner learner) {
-        if (parsePersonalCurriculumConfig(learner.getPersonalCurriculum()).values().stream()
-                .anyMatch(settings -> settings.get(CompositionSupplementService.SELECTIONS) instanceof List<?> selections && !selections.isEmpty())) {
-            throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
-                    "Remove selected Mathematics preparation explicitly in your curriculum choices before resetting or reopening scope; your committed curriculum is unchanged");
-        }
-    }
-
     private void applyCurriculumSelection(Learner learner, String curriculumId) {
         String effectiveCurriculumId = curriculumId == null ? null : curriculumId.trim();
         if (effectiveCurriculumId == null || effectiveCurriculumId.isBlank()) {
@@ -4456,7 +4277,6 @@ public class LearnerService {
                     buildCompatibilityOnlyRetirementMessage(effectiveCurriculumId));
         }
         boolean curriculumChanged = !Objects.equals(learner.getSelectedCurriculum(), effectiveCurriculumId);
-        if (curriculumChanged) requireNoCommittedSupplementsForScopeReset(learner);
         learner.setSelectedCurriculum(effectiveCurriculumId);
         if (curriculumChanged) {
             // Level 2 and Level 3a belong to the selected root. Level 4 mastery
@@ -4491,22 +4311,6 @@ public class LearnerService {
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
 
         Map<String, Object> finalConfig = normalizePersonalCurriculumPayload(config);
-        if (objectMapper.valueToTree(finalConfig).findValue(CompositionSupplementService.SELECTIONS) != null) {
-            throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
-                    "Mathematics preparation requires explicit acceptance of a current first-party option");
-        }
-        // Ordinary first-party edits do not implicitly remove an independently
-        // accepted preparation. Removal has its own current opaque option.
-        Map<String, Object> oldMath = parsePersonalCurriculumConfig(learner.getPersonalCurriculum())
-                .get(CompositionSupplementService.MATH);
-        if (oldMath != null && oldMath.containsKey(CompositionSupplementService.SELECTIONS)) {
-            Map<String, Object> math = new LinkedHashMap<>(oldMath);
-            math.put("selected", false);
-            if (finalConfig.get(CompositionSupplementService.MATH) instanceof Map<?, ?> submittedMath)
-                submittedMath.forEach((key, value) -> math.put(String.valueOf(key), value));
-            math.put(CompositionSupplementService.SELECTIONS, oldMath.get(CompositionSupplementService.SELECTIONS));
-            finalConfig.put(CompositionSupplementService.MATH, math);
-        }
         if (finalConfig.containsKey(CurriculumPersonalizationPlanner.FLOW_STATE_CONFIG_KEY)) {
             throw new ResponseStatusException(
                     org.springframework.http.HttpStatus.BAD_REQUEST,
@@ -4545,7 +4349,6 @@ public class LearnerService {
 
         Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
-        requireNoCommittedSupplementsForScopeReset(learner);
         migrateCanonicalGymnasiumPreFlowPersonalizationIfNeeded(learner);
 
         PersonalizationPlan currentPlan = buildPersonalizationPlan(learner);
@@ -4578,7 +4381,6 @@ public class LearnerService {
     public PersonalizationPlan restartPersonalization(String skillpilotId) {
         Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
-        requireNoCommittedSupplementsForScopeReset(learner);
         String rootLandscapeId = learner.getSelectedCurriculum();
         if (rootLandscapeId == null || rootLandscapeId.isBlank()) {
             throw new ResponseStatusException(
@@ -4658,7 +4460,6 @@ public class LearnerService {
     public PersonalizationPlan reopenMigratedPersonalization(String skillpilotId) {
         Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
-        requireNoCommittedSupplementsForScopeReset(learner);
         migrateCanonicalGymnasiumPreFlowPersonalizationIfNeeded(learner);
         String rootLandscapeId = learner.getSelectedCurriculum();
         if (rootLandscapeId == null || rootLandscapeId.isBlank()) {
@@ -4748,7 +4549,6 @@ public class LearnerService {
             String rewindId) {
         Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
-        requireNoCommittedSupplementsForScopeReset(learner);
         migrateCanonicalGymnasiumPreFlowPersonalizationIfNeeded(learner);
         String rootLandscapeId = learner.getSelectedCurriculum();
         if (rootLandscapeId == null || rootLandscapeId.isBlank()) {
@@ -6021,7 +5821,6 @@ public class LearnerService {
         Map<String, Double> effectiveMastery = computeEffectiveMastery(allGoals, masteryMap);
         Map<String, Double> effectivePrereqMastery =
                 computeEffectivePrereqMastery(prerequisiteLookupGoals, masteryMap);
-        boolean strictMode = Boolean.TRUE.equals(learner.getStrictMode());
 
         List<String> projectedFocusIds = resolveEffectiveProjectedFocusIds(
                 learner,
@@ -6029,6 +5828,7 @@ public class LearnerService {
         List<String> plannedIds = resolveProjectedTargetScopeIds(projectedFocusIds, projection);
         Set<String> scope = Collections.emptySet();
         if (!plannedIds.isEmpty()) {
+            boolean strictMode = Boolean.TRUE.equals(learner.getStrictMode());
             Map<String, List<String>> scopeRequires = strictMode
                     ? computeEffectiveRequires(projection.structuralGoals())
                     : computeEffectiveRequires(allGoals);
@@ -6079,8 +5879,30 @@ public class LearnerService {
             List<String> requires = effectiveRequires.getOrDefault(goal.getId(), goal.getRequires());
             if (requires != null) {
                 for (String reqId : requires) {
-                    if (!checkPrerequisite(goal, reqId, projection, prerequisiteLookupGoals,
-                            effectivePrereqMastery, strictMode, null).met()) {
+                    String resolvedReqId = resolveGoalRef(reqId, prerequisiteLookupGoals);
+                    if (resolvedReqId == null) {
+                        // Preserve the existing optimistic behavior for prerequisites that are
+                        // unknown in the applicable lookup. A matched composition view expands
+                        // that lookup to its structural graph, where prerequisite-only goals are
+                        // known and therefore evaluated.
+                        continue;
+                    }
+                    if (projection.compositionViewApplied()
+                            && !projection.targetGoalIds().contains(resolvedReqId)
+                            && !projection.prerequisiteOnlyGoalIds().contains(resolvedReqId)) {
+                        if (isDirectRequirement(goal, resolvedReqId, prerequisiteLookupGoals)) {
+                            prerequisitesMet = false;
+                            break;
+                        }
+                        // A matched composition view distinguishes selectable targets from
+                        // intentional prerequisite-only support goals. Do not reintroduce
+                        // unrelated requirements inherited from legacy clusters through the
+                        // structural compatibility graph. Direct canonical requirements fail
+                        // closed when the authored view omits them.
+                        continue;
+                    }
+                    Double reqMastery = effectivePrereqMastery.getOrDefault(resolvedReqId, 0.0);
+                    if (reqMastery < 0.9) {
                         prerequisitesMet = false;
                         break;
                     }
@@ -6247,10 +6069,47 @@ public class LearnerService {
                 for (String reqId : requires) {
                     Map<String, LearningGoal> prerequisiteLookupGoals =
                             useStructuralPrerequisiteLookup ? allStructuralGoals : allFilteredGoals;
-                    Map<String, Double> prerequisiteMastery = useStructuralPrerequisiteLookup
-                            ? globalEffectivePrereqMastery : effectivePrereqMastery;
-                    if (!checkPrerequisite(goal, reqId, projection, prerequisiteLookupGoals,
-                            prerequisiteMastery, strictMode, plannedIds.isEmpty() ? null : scope).met()) {
+                    String resolvedReqId = resolveGoalRef(reqId, prerequisiteLookupGoals);
+                    if (resolvedReqId == null) {
+                        if (strictMode) {
+                            // In strict mode, unknown prerequisite means blocked
+                            prerequisitesMet = false;
+                            break;
+                        }
+                        // Optimistic mode only ignores truly unknown prerequisites. A known
+                        // prerequisite remains effective even when it is prerequisite-only.
+                        continue;
+                    }
+                    if (projection.compositionViewApplied()
+                            && !projection.targetGoalIds().contains(resolvedReqId)
+                            && !projection.prerequisiteOnlyGoalIds().contains(resolvedReqId)) {
+                        if (isDirectRequirement(goal, resolvedReqId, prerequisiteLookupGoals)) {
+                            prerequisitesMet = false;
+                            break;
+                        }
+                        // Only explicitly reached prerequisite-only goals participate in a
+                        // composition projection. Broad inherited requirements from legacy
+                        // cluster structure must not become hidden blockers. Direct canonical
+                        // requirements fail closed when the authored view omits them.
+                        continue;
+                    }
+
+                    if (!strictMode
+                            && !plannedIds.isEmpty()
+                            && !scope.contains(resolvedReqId)) {
+                        if (!projection.compositionViewApplied()
+                                || !projection.prerequisiteOnlyGoalIds().contains(resolvedReqId)) {
+                            // Preserve optimistic scope behavior. The only out-of-scope goals
+                            // that a composition view deliberately keeps active are its
+                            // prerequisite-only support goals.
+                            continue;
+                        }
+                    }
+
+                    Double reqMastery = useStructuralPrerequisiteLookup
+                            ? globalEffectivePrereqMastery.getOrDefault(resolvedReqId, 0.0)
+                            : effectivePrereqMastery.getOrDefault(resolvedReqId, 0.0);
+                    if (reqMastery < 0.9) {
                         prerequisitesMet = false;
                         break;
                     }
@@ -7520,12 +7379,8 @@ public class LearnerService {
                     mastery);
         }
 
-        List<PrerequisiteBlocker> prerequisiteBlockers = !personalizationRequired && activeGoal == null
-                && frontierAtomic.isEmpty() && !scopeCompleted && !plannedScopeIds.isEmpty()
-                ? collectPrerequisiteBlockers(learner, goalProjection, plannedIds, mastery)
-                : List.of();
         StateMachineInfo stateMachine = buildStateMachineInfo(curriculumId, frontierAtomic, activeGoal,
-                activeGoalMastered, learningState, personalizationRequired, scopeExpansionOptions, prerequisiteBlockers);
+                activeGoalMastered, learningState, personalizationRequired, scopeExpansionOptions);
 
         /*
          * An unresolved entry-scope decision (for example G8 versus G9) is a
@@ -8051,121 +7906,6 @@ public class LearnerService {
         return null;
     }
 
-    private record PrerequisiteCheck(boolean met, PrerequisiteBlocker blocker) { }
-
-    /**
-     * Checks only the effective direct/contains-inherited requirement. Mastery
-     * of a dependent goal never asserts mastery of its prerequisites; nor does
-     * this check invent a transitive requirement for its successors.
-     */
-    private PrerequisiteCheck checkPrerequisite(
-            LearningGoal goal,
-            String requirement,
-            GoalProjection projection,
-            Map<String, LearningGoal> lookup,
-            Map<String, Double> prerequisiteMastery,
-            boolean strictMode,
-            Set<String> optimisticScope) {
-        String prerequisiteId = resolveGoalRef(requirement, lookup);
-        boolean direct = goal.getRequires() != null && goal.getRequires().contains(requirement);
-        boolean authoredView = !projection.compositionViewIds().isEmpty();
-        if (prerequisiteId == null) {
-            // A compatibility fallback may carry compositionViewApplied=true
-            // without a matched authored view. Preserve its optimistic policy.
-            if (!strictMode && !(authoredView && direct)) {
-                return new PrerequisiteCheck(true, null);
-            }
-            // Definitions outside the authored projection may explain the
-            // fault; they cannot silently become authorized support goals.
-            LearningGoal definition = authoredView && direct
-                    ? resolveCompositionStructuralGoal(requirement, lookup) : null;
-            return new PrerequisiteCheck(false, prerequisiteBlocker(goal, definition,
-                    definition == null ? "UNKNOWN_PREREQUISITE" : "PREREQUISITE_NOT_PROJECTED", null));
-        }
-        if (projection.compositionViewApplied()
-                && !projection.targetGoalIds().contains(prerequisiteId)
-                && !projection.prerequisiteOnlyGoalIds().contains(prerequisiteId)) {
-            return direct || isDirectRequirement(goal, prerequisiteId, lookup)
-                    ? new PrerequisiteCheck(false, prerequisiteBlocker(goal, lookup.get(prerequisiteId),
-                            "PREREQUISITE_NOT_PROJECTED", null))
-                    : new PrerequisiteCheck(true, null);
-        }
-        boolean supportOnly = projection.compositionViewApplied()
-                && projection.prerequisiteOnlyGoalIds().contains(prerequisiteId)
-                && !projection.targetGoalIds().contains(prerequisiteId);
-        boolean outsideFocus = optimisticScope != null && !optimisticScope.contains(prerequisiteId);
-        // An explicitly projected prerequisite remains authoritative when
-        // inherited from a cluster, even outside the current learner focus.
-        if (!strictMode && outsideFocus && !supportOnly && !authoredView) {
-            return new PrerequisiteCheck(true, null);
-        }
-        if (prerequisiteMastery.getOrDefault(prerequisiteId, 0.0) >= 0.9) {
-            return new PrerequisiteCheck(true, null);
-        }
-        return new PrerequisiteCheck(false, supportOnly
-                ? prerequisiteBlocker(goal, lookup.get(prerequisiteId),
-                        "EXTERNAL_PREREQUISITE_UNMASTERED", "OPEN_PERSONAL_CURRICULUM")
-                : outsideFocus && projection.targetGoalIds().contains(prerequisiteId)
-                        ? prerequisiteBlocker(goal, lookup.get(prerequisiteId),
-                                "PREREQUISITE_OUTSIDE_FOCUS", "REVIEW_FOCUS")
-                        : null);
-    }
-
-    private PrerequisiteBlocker prerequisiteBlocker(
-            LearningGoal goal, LearningGoal prerequisite, String reason, String remediation) {
-        return new PrerequisiteBlocker(goal.getId(), boundedBlockerTitle(goal.getTitle()),
-                boundedBlockerTitle(goal.getTitleEn()), prerequisite == null ? null : prerequisite.getId(),
-                prerequisite == null ? null : boundedBlockerTitle(prerequisite.getTitle()),
-                prerequisite == null ? null : boundedBlockerTitle(prerequisite.getTitleEn()), reason, remediation);
-    }
-
-    private String boundedBlockerTitle(String title) {
-        return title == null ? null : title.substring(0, Math.min(title.length(), 240));
-    }
-
-    /** Publishes at most twenty deterministic facts about a stalled focus. */
-    private List<PrerequisiteBlocker> collectPrerequisiteBlockers(
-            Learner learner, GoalProjection projection, List<String> focusIds, Map<String, Double> mastery) {
-        if (projection == null || focusIds.isEmpty()) {
-            return List.of();
-        }
-        boolean strictMode = Boolean.TRUE.equals(learner.getStrictMode());
-        Map<String, LearningGoal> visible = projection.visibleGoals();
-        Map<String, LearningGoal> lookup = strictMode || projection.compositionViewApplied()
-                ? projection.structuralGoals() : visible;
-        Map<String, List<String>> requirements = computeEffectiveRequires(lookup);
-        Map<String, Double> effectiveMastery = computeEffectiveMastery(visible, mastery);
-        Map<String, Double> prerequisiteMastery = computeEffectivePrereqMastery(lookup, mastery);
-        List<String> scopeIds = resolveProjectedTargetScopeIds(focusIds, projection);
-        Set<String> scope = computeScope(scopeIds, projection.structuralGoals(),
-                strictMode ? requirements : computeEffectiveRequires(visible));
-        GlobalAssessmentFocus assessmentFocus = resolveGlobalAssessmentFocus(projection.structuralGoals(), focusIds);
-        LinkedHashSet<PrerequisiteBlocker> blockers = new LinkedHashSet<>();
-        for (LearningGoal goal : visible.values().stream().sorted(Comparator.comparing(LearningGoal::getId)).toList()) {
-            if (!projection.targetGoalIds().contains(goal.getId())
-                    || !isAtomicGoal(goal) || !scope.contains(goal.getId())
-                    || effectiveMastery.getOrDefault(goal.getId(), 0.0) >= 0.9
-                    || isExamGoalUnavailableForHardCheck(goal)
-                    || isNonGlobalExamWithoutDirectPrerequisite(goal, assessmentFocus.allGoalIds().contains(goal.getId()))
-                    || (assessmentFocus.allGoalIds().contains(goal.getId())
-                            && !assessmentFocus.explicitlyFocusedGoalIds().contains(goal.getId()))) {
-                continue;
-            }
-            for (String requirement : requirements.getOrDefault(goal.getId(), List.of()).stream()
-                    .distinct().sorted().toList()) {
-                PrerequisiteBlocker blocker = checkPrerequisite(goal, requirement, projection, lookup,
-                        prerequisiteMastery, strictMode, scope).blocker();
-                if (blocker != null) {
-                    blockers.add(blocker);
-                    if (blockers.size() == 20) {
-                        return List.copyOf(blockers);
-                    }
-                }
-            }
-        }
-        return List.copyOf(blockers);
-    }
-
     private List<FrontierGoal> filterAtomicFrontier(List<FrontierGoal> frontier) {
         return frontier.stream()
                 .filter(goal -> "atomic".equals(goal.type()))
@@ -8174,8 +7914,7 @@ public class LearnerService {
 
     private StateMachineInfo buildStateMachineInfo(String curriculumId, List<FrontierGoal> frontierAtomic,
             FrontierGoal activeGoal, boolean activeGoalMastered,
-            LearningState learningState, boolean personalizationRequired, List<FrontierGoal> scopeExpansionOptions,
-            List<PrerequisiteBlocker> prerequisiteBlockers) {
+            LearningState learningState, boolean personalizationRequired, List<FrontierGoal> scopeExpansionOptions) {
         String state = curriculumId == null
                 ? "SETUP"
                 : personalizationRequired ? "PERSONALIZATION" : learningState.name();
@@ -8208,8 +7947,7 @@ public class LearnerService {
         List<LearningModeOption> modeOptions = activeGoal != null && !activeGoalMastered && isMemoryFrontierGoal(activeGoal)
                 ? buildMemoryModeOptions(activeGoal)
                 : Collections.emptyList();
-        return new StateMachineInfo(state, requiredAction, goalOptions, curriculumOptions, activeGoal, modeOptions,
-                prerequisiteBlockers);
+        return new StateMachineInfo(state, requiredAction, goalOptions, curriculumOptions, activeGoal, modeOptions);
     }
 
     private List<LearningModeOption> buildMemoryModeOptions(FrontierGoal activeGoal) {
@@ -9743,12 +9481,8 @@ public class LearnerService {
             boolean ignoreCourseFilters) {
         SkillLandscape root = landscapeService.getById(curriculumId);
         Map<String, Map<String, Object>> config = parsePersonalCurriculumConfig(personalCurriculumJson);
-        List<CompositionSupplementService.Supplement> selectedSupplements = validatedSelectedSupplements(config);
-        List<SkillLandscape> runtimeLandscapes = new ArrayList<>(
-                resolveRuntimeLandscapes(curriculumId, root, config, personalCurriculumJson));
-        if (!selectedSupplements.isEmpty() && runtimeLandscapes.stream().noneMatch(l -> CompositionSupplementService.MATH.equals(l.getLandscapeId()))) {
-            runtimeLandscapes.add(landscapeService.getById(CompositionSupplementService.MATH));
-        }
+        List<SkillLandscape> runtimeLandscapes =
+                resolveRuntimeLandscapes(curriculumId, root, config, personalCurriculumJson);
 
         String rootFilterId = null;
         String rootDurationModel = null;
@@ -9771,12 +9505,6 @@ public class LearnerService {
         Map<String, Boolean> canonicalStateCoverageCache = new HashMap<>();
         Map<String, LearningGoal> allGoals = new LinkedHashMap<>();
         Map<String, LearningGoal> structuralGoals = new LinkedHashMap<>();
-        Map<String, LearningGoal> canonicalTargetDefinitions = new LinkedHashMap<>();
-        for (SkillLandscape landscape : runtimeLandscapes) {
-            if (landscape != null && landscape.getGoals() != null) {
-                landscape.getGoals().forEach(goal -> canonicalTargetDefinitions.put(goal.getId(), goal));
-            }
-        }
         for (SkillLandscape l : runtimeLandscapes) {
             // Filter by landscape selection
             // With a sparse personalization configuration, descendants are active
@@ -9805,9 +9533,7 @@ public class LearnerService {
                 }
             }
 
-            boolean supplementalOwner = !selectedSupplements.isEmpty()
-                    && CompositionSupplementService.MATH.equals(l.getLandscapeId());
-            if (!isSelected && !supplementalOwner) {
+            if (!isSelected) {
                 continue;
             }
 
@@ -9850,16 +9576,6 @@ public class LearnerService {
             if (l.getGoals() != null) {
                 for (LearningGoal g : l.getGoals()) {
                     structuralGoals.put(g.getId(), g);
-                    if (!isSelected) continue;
-                    // Exact eligibility is final; legacy tags/provenance cannot revive a denial.
-                    if (ApplicabilityContexts.isPresent(g)) {
-                        Map<String, String> requestedScope = deriveCompositionScope(l.getLandscapeId(), config);
-                        Map<String, Object> matchedView = compositionViewService == null ? null
-                                : compositionViewService.findLearnerScopeView(l.getLandscapeId(), requestedScope);
-                        if (!hasExactSelectedTargetAuthority(g, l, requestedScope, matchedView, canonicalTargetDefinitions)) continue;
-                        allGoals.put(g.getId(), g);
-                        continue;
-                    }
                     if (!matchesAllEffectiveFilters(g, l, effectiveFilterIds, ignoreCourseFilters, mappedCanonicalGoalIdsByState,
                             canonicalStateCoverageCache)) {
                         continue;
@@ -9868,19 +9584,7 @@ public class LearnerService {
                 }
             }
         }
-        for (CompositionSupplementService.Supplement supplement : selectedSupplements) {
-            for (String targetId : supplement.targetGoalIds()) {
-                LearningGoal goal = structuralGoals.get(targetId);
-                if (goal == null) throw new IllegalStateException("Selected Mathematics preparation owner is unavailable");
-                // The authorized supplement owns this branch's scope. Do not inject
-                // a target first and attempt to repair an exact denial afterward.
-                if (ApplicabilityContexts.matches(goal,
-                        exactCompositionScope(supplement.scope(), supplement.document()))) {
-                    allGoals.put(targetId, goal);
-                }
-            }
-        }
-        if (!ignoreCourseFilters || !selectedSupplements.isEmpty()) {
+        if (!ignoreCourseFilters) {
             return applyCompositionViewProjection(
                     curriculumId,
                     allGoals,
@@ -10009,8 +9713,6 @@ public class LearnerService {
                 config == null ? Collections.emptyMap() : config;
 
         LinkedHashMap<String, CompositionGoalReference> referencedGoals = new LinkedHashMap<>();
-        List<Map<String, CompositionGoalReference>> selectedViewReferences = new ArrayList<>();
-        Map<Map<String, CompositionGoalReference>, Map<String,Object>> selectedViewScopes = new java.util.IdentityHashMap<>();
         LinkedHashSet<String> fallbackGoalIds = new LinkedHashSet<>();
         LinkedHashSet<String> compositionViewIds = new LinkedHashSet<>();
         LinkedHashSet<String> presentationRootGoalIds = new LinkedHashSet<>();
@@ -10024,12 +9726,7 @@ public class LearnerService {
                         defaultView,
                         landscapeService.getById(readString(defaultView.get("landscapeId"))),
                         presentationRootGoalIds);
-                LinkedHashMap<String, CompositionGoalReference> defaultReferences = new LinkedHashMap<>();
-                collectCompositionViewGoalReferences(defaultView.get("rootNodes"), defaultReferences);
-                selectedViewReferences.add(defaultReferences);
-                selectedViewScopes.put(defaultReferences, exactCompositionScope(Collections.emptyMap(), defaultView));
-                defaultReferences.forEach((goalId, reference) ->
-                        referencedGoals.merge(goalId, reference, this::mergeCompositionGoalReferences));
+                collectCompositionViewGoalReferences(defaultView.get("rootNodes"), referencedGoals);
             }
             authoritativeCandidateSeen = true;
         }
@@ -10071,50 +9768,9 @@ public class LearnerService {
                     addFilteredLandscapeGoalIds(landscape, allGoals, fallbackGoalIds);
                 }
             } else {
-                if (matchedView.get("resolvedCourseProfileViews") instanceof List<?> branches) {
-                    for (Object item : branches) if (item instanceof Map<?,?> branch && branch.get("scope") instanceof Map<?,?> branchScope) {
-                        LinkedHashMap<String, CompositionGoalReference> branchReferences = new LinkedHashMap<>();
-                        collectCompositionViewGoalReferences(branch.get("rootNodes"), branchReferences);
-                        Map<String,Object> exactScope = exactCompositionScope(requestedScope, branch);
-                        selectedViewReferences.add(branchReferences);
-                        selectedViewScopes.put(branchReferences, exactScope);
-                    }
-                } else {
-                    Map<String,Object> exactScope = exactCompositionScope(requestedScope, matchedView);
-                    selectedViewReferences.add(landscapeReferencedGoals);
-                    selectedViewScopes.put(landscapeReferencedGoals, exactScope);
-                }
                 landscapeReferencedGoals.forEach((goalId, reference) ->
                         referencedGoals.merge(goalId, reference, this::mergeCompositionGoalReferences));
             }
-        }
-
-        // Supplemental selection is explicit owner loading, never foreign-target hydration.
-        // Resolve base target roles first so ordinary Math parents win all overlaps.
-        List<CompositionSupplementService.Supplement> supplements = validatedSelectedSupplements(effectiveConfig);
-        LinkedHashSet<String> occupiedTargets = new LinkedHashSet<>();
-        for (Map<String, CompositionGoalReference> refs : selectedViewReferences) {
-            resolveCompositionProjectionAssignments(refs, structuralGoals).forEach((id, assignment) -> {
-                LearningGoal definition = structuralGoals.get(id);
-                if (assignment.role() == ProjectionRole.TARGET && definition != null
-                        && ApplicabilityContexts.matches(definition, selectedViewScopes.get(refs))) occupiedTargets.add(id);
-            });
-        }
-        for (CompositionSupplementService.Supplement supplement : supplements) {
-            Map<String, Object> supplementalView = compositionViewService.registerSelectedSupplement(supplement, occupiedTargets);
-            Map<String, Object> supplementScope = exactCompositionScope(supplement.scope(), supplement.document());
-            supplement.targetGoalIds().stream()
-                    .filter(id -> ApplicabilityContexts.matches(structuralGoals.get(id), supplementScope))
-                    .forEach(occupiedTargets::add);
-            if (supplementalView == null) continue;
-            addCompositionViewId(supplementalView, compositionViewIds);
-            addCompositionPresentationRootGoalId(supplementalView,
-                    landscapeService.getById(CompositionSupplementService.MATH), presentationRootGoalIds);
-            LinkedHashMap<String, CompositionGoalReference> refs = new LinkedHashMap<>();
-            collectCompositionViewGoalReferences(supplementalView.get("rootNodes"), refs);
-            selectedViewReferences.add(refs);
-            selectedViewScopes.put(refs, supplementScope);
-            refs.forEach((id, ref) -> referencedGoals.merge(id, ref, this::mergeCompositionGoalReferences));
         }
 
         if (referencedGoals.isEmpty() && fallbackGoalIds.isEmpty()) {
@@ -10127,22 +9783,10 @@ public class LearnerService {
                 hydrateExternalPrerequisiteOnlyStructuralGoals(
                         referencedGoals,
                         structuralGoals);
-        Map<String, CompositionProjectionAssignment> projectionAssignments = new LinkedHashMap<>();
-        // Authored specificity applies within each selected subject view. The
-        // Personal Curriculum then includes the union of those resolved targets:
-        // another subject's support-only reference cannot exclude a selected target.
-        for (Map<String, CompositionGoalReference> viewReferences : selectedViewReferences) {
-            resolveCompositionProjectionAssignments(viewReferences, compositionStructuralGoals)
-                    .forEach((goalId, assignment) -> {
-                        LearningGoal definition = compositionStructuralGoals.get(goalId);
-                        if (assignment.role() == ProjectionRole.TARGET && definition != null
-                                && !ApplicabilityContexts.matches(definition, selectedViewScopes.get(viewReferences))) return;
-                        projectionAssignments.merge(goalId, assignment, (current, incoming) -> {
-                            if (current.role() != incoming.role()) return current.role() == ProjectionRole.TARGET ? current : incoming;
-                            return preferSpecificCompositionProjectionAssignment(current, incoming);
-                        });
-                    });
-        }
+        Map<String, CompositionProjectionAssignment> projectionAssignments =
+                resolveCompositionProjectionAssignments(
+                        referencedGoals,
+                        compositionStructuralGoals);
         LinkedHashSet<String> targetGoalIds = projectionAssignments.entrySet().stream()
                 .filter(entry -> entry.getValue().role() == ProjectionRole.TARGET)
                 .map(Map.Entry::getKey)
@@ -10366,107 +10010,6 @@ public class LearnerService {
             return false;
         }
         return readSelectedFlag(config, landscapeId);
-    }
-
-    /**
-     * Bind exact eligibility to the resolved source branch, retaining the actual
-     * learner dimensions when an authored view is intentionally broader. Missing
-     * duration remains unresolved. Only an explicit null in the resolved offering
-     * document establishes that the offering has no duration selector.
-     */
-    private Map<String, Object> exactCompositionScope(Map<String, String> requestedScope, Map<?, ?> resolvedView) {
-        Map<String, Object> scope = new LinkedHashMap<>();
-        if (requestedScope != null) scope.putAll(requestedScope);
-        Map<?, ?> authoredScope = resolvedView != null && resolvedView.get("scope") instanceof Map<?, ?> rawScope
-                ? rawScope : Collections.emptyMap();
-        // A default offering is itself the selected source, rather than a partial
-        // request from which absent dimensions could be inferred.
-        if (scope.isEmpty()) {
-            for (String key : List.of("schoolForm", "jurisdiction", "stage", "durationModel", "courseProfile")) {
-                if (authoredScope.containsKey(key)) scope.put(key, authoredScope.get(key));
-            }
-        } else {
-            if (("GK+LK".equals(scope.get("courseProfile")) || "ALL".equals(scope.get("courseProfile")))
-                    && ("GK".equals(authoredScope.get("courseProfile")) || "LK".equals(authoredScope.get("courseProfile")))) {
-                scope.put("courseProfile", authoredScope.get("courseProfile"));
-            }
-            if ("CrossStage".equals(scope.get("stage"))
-                    && ("SekI".equals(authoredScope.get("stage")) || "SekII".equals(authoredScope.get("stage")))) {
-                scope.put("stage", authoredScope.get("stage"));
-            }
-            if (!scope.containsKey("durationModel") && authoredScope.containsKey("durationModel")
-                    && authoredScope.get("durationModel") == null) {
-                scope.put("durationModel", null);
-            }
-        }
-        if ("SekI".equals(scope.get("stage"))) scope.put("courseProfile", null);
-        return Collections.unmodifiableMap(scope);
-    }
-
-    /** Eligibility never enrolls a canonical definition. Build allGoals only
-     * from an actual selected target branch or, for repository fallback, an
-     * explicitly authored matching primary placement. Every later identity and
-     * no-view fallback therefore receives only authorized opted targets. */
-    private boolean hasExactSelectedTargetAuthority(LearningGoal goal, SkillLandscape landscape,
-            Map<String, String> requestedScope, Map<String, Object> resolvedView,
-            Map<String, LearningGoal> canonicalDefinitions) {
-        if (resolvedView != null) {
-            if (resolvedView.get("resolvedCourseProfileViews") instanceof List<?> branches) {
-                for (Object item : branches) {
-                    if (item instanceof Map<?, ?> branch
-                            && ApplicabilityContexts.matches(goal, exactCompositionScope(requestedScope, branch))
-                            && isExactSourceTarget(goal.getId(), branch, canonicalDefinitions)) {
-                        return true;
-                    }
-                }
-            } else if (ApplicabilityContexts.matches(goal, exactCompositionScope(requestedScope, resolvedView))
-                    && isExactSourceTarget(goal.getId(), resolvedView, canonicalDefinitions)) {
-                return true;
-            }
-            LinkedHashMap<String, CompositionGoalReference> references = new LinkedHashMap<>();
-            collectCompositionViewGoalReferences(resolvedView.get("rootNodes"), references);
-            // A nonempty selected view owns its target boundary, including an
-            // explicit prerequisite-only assignment. Placements cannot reopen it.
-            if (!references.isEmpty()) return false;
-        }
-        return hasExactPrimaryPlacementAuthority(goal, landscape, requestedScope);
-    }
-
-    private boolean isExactSourceTarget(String goalId, Map<?, ?> sourceView,
-            Map<String, LearningGoal> canonicalDefinitions) {
-        LinkedHashMap<String, CompositionGoalReference> references = new LinkedHashMap<>();
-        collectCompositionViewGoalReferences(sourceView.get("rootNodes"), references);
-        CompositionProjectionAssignment assignment =
-                resolveCompositionProjectionAssignments(references, canonicalDefinitions).get(goalId);
-        return assignment != null && assignment.role() == ProjectionRole.TARGET;
-    }
-
-    private boolean hasExactPrimaryPlacementAuthority(LearningGoal goal, SkillLandscape landscape,
-            Map<String, String> requestedScope) {
-        if (landscape == null || landscape.getGoalPlacements() == null || landscape.getProgramUnits() == null) return false;
-        for (var placement : landscape.getGoalPlacements()) {
-            if (placement == null || !"primary".equals(placement.getRelation())
-                    || !Objects.equals(goal.getId(), placement.getGoalId())
-                    || placement.getUnitId() == null
-                    || landscape.getProgramUnits().stream().noneMatch(unit -> unit != null
-                            && Objects.equals(unit.getId(), placement.getUnitId()))) continue;
-            Map<String, String> context = placement.getContext() == null ? Collections.emptyMap() : placement.getContext();
-            // A placement is a source branch, not a no-duration offering resolver.
-            // It cannot supply any omitted learner duration through a null value.
-            if (context.values().stream().anyMatch(value -> value == null || value.isBlank())) continue;
-            Map<String, Object> scope = exactCompositionScope(requestedScope, Collections.singletonMap("scope", context));
-            if (!ApplicabilityContexts.matches(goal, scope)) continue;
-            boolean matches = context.entrySet().stream().allMatch(entry -> {
-                String key = entry.getKey();
-                if (!List.of("schoolForm", "jurisdiction", "stage", "durationModel", "courseProfile").contains(key)) return false;
-                if ("courseProfile".equals(key) && "GK+LK".equals(entry.getValue())) {
-                    return "GK".equals(scope.get(key)) || "LK".equals(scope.get(key));
-                }
-                return Objects.equals(entry.getValue(), scope.get(key));
-            });
-            if (matches) return true;
-        }
-        return false;
     }
 
     private Map<String, String> deriveCompositionScope(String landscapeId, Map<String, Map<String, Object>> config) {
@@ -10850,28 +10393,24 @@ public class LearnerService {
             String goalId,
             CompositionProjectionAssignment candidate,
             Map<String, CompositionProjectionAssignment> assignments) {
-        assignments.merge(goalId, candidate, this::preferSpecificCompositionProjectionAssignment);
-    }
-
-    private CompositionProjectionAssignment preferSpecificCompositionProjectionAssignment(
-            CompositionProjectionAssignment current,
-            CompositionProjectionAssignment incoming) {
-        if (current.direct() != incoming.direct()) {
-            return incoming.direct() ? incoming : current;
-        }
-        if (!current.direct() && current.distance() != incoming.distance()) {
-            return incoming.distance() < current.distance()
-                    ? incoming
-                    : current;
-        }
-        if (current.role() == ProjectionRole.TARGET
-                || incoming.role() == ProjectionRole.TARGET) {
-            return new CompositionProjectionAssignment(
-                    ProjectionRole.TARGET,
-                    current.direct(),
-                    Math.min(current.distance(), incoming.distance()));
-        }
-        return current;
+        assignments.merge(goalId, candidate, (current, incoming) -> {
+            if (current.direct() != incoming.direct()) {
+                return incoming.direct() ? incoming : current;
+            }
+            if (!current.direct() && current.distance() != incoming.distance()) {
+                return incoming.distance() < current.distance()
+                        ? incoming
+                        : current;
+            }
+            if (current.role() == ProjectionRole.TARGET
+                    || incoming.role() == ProjectionRole.TARGET) {
+                return new CompositionProjectionAssignment(
+                        ProjectionRole.TARGET,
+                        current.direct(),
+                        Math.min(current.distance(), incoming.distance()));
+            }
+            return current;
+        });
     }
 
     @SuppressWarnings("unchecked")
@@ -10991,7 +10530,6 @@ public class LearnerService {
     private boolean matchesFilter(LearningGoal goal, SkillLandscape landscape, String filterId,
             boolean ignoreCourseFilters,
             Map<String, Set<String>> mappedCanonicalGoalIdsByState, Map<String, Boolean> canonicalStateCoverageCache) {
-        if (ApplicabilityContexts.isPresent(goal)) return false;
         String authoredFilterId = filterId == null ? null : filterId.trim();
         String normalizedFilterId = normalizeFilterId(filterId);
         if (normalizedFilterId == null || normalizedFilterId.isBlank()) {
@@ -11896,22 +11434,7 @@ public class LearnerService {
         LearnerDataDTO data = signedData.data();
         Learner existing = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
-        // Imports may not remove an independently committed preparation implicitly.
-        Object previousSelections = parsePersonalCurriculumConfig(existing.getPersonalCurriculum())
-                .getOrDefault(CompositionSupplementService.MATH, Map.of()).get(CompositionSupplementService.SELECTIONS);
-        Object importedSelections = data.learner() == null ? null : parsePersonalCurriculumConfig(data.learner().getPersonalCurriculum())
-                .getOrDefault(CompositionSupplementService.MATH, Map.of()).get(CompositionSupplementService.SELECTIONS);
-        boolean hasPreviousSupplement = previousSelections instanceof List<?> previous && !previous.isEmpty();
-        boolean hasImportedSupplement = importedSelections instanceof List<?> imported && !imported.isEmpty();
-        if ((hasPreviousSupplement || hasImportedSupplement) && (!Objects.equals(previousSelections, importedSelections)
-                || data.learner() == null || !Objects.equals(existing.getSelectedCurriculum(), data.learner().getSelectedCurriculum())
-                || !CANONICAL_GYMNASIUM_ROOT_ID.equals(data.learner().getSelectedCurriculum()))) {
-            throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
-                    "Import cannot add, remove or move Mathematics preparation; use current first-party curriculum choices explicitly");
-        }
-        if (data.learner() != null) {
-            validatedSelectedSupplements(parsePersonalCurriculumConfig(data.learner().getPersonalCurriculum()));
-        }
+        // ... rest of logic
 
         // Provenance / Chain of Custody
         Map<String, CopySource> candidateCopySources = new LinkedHashMap<>();

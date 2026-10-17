@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "role": "Actual inactive current429 integration; strictly partial unless real report proves all429 and all required gates",
+  "baseline": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-reviewed-native19-and-profile-successors-inactive-integration-technical-20261016-v1/central.current429.actual-reviewed-inputs.inactive.config.json",
+    "sha256": "sha256:0047403fdd27a7cbb62ec3707514a89daa0004207b618aba6989af96f8379f90",
+    "bytes": 157676
+  },
+  "config": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-reviewed-native19-and-profile-successors-inactive-integration-technical-20261016-v4/central.current429.actual-reviewed-inputs.inactive.config.json",
+    "sha256": "sha256:3d1bf8acdeb6fa26ba3eacba467cbf7e55a8babddacdb3c0d7aed526f7d61009",
+    "bytes": 157676
+  },
+  "central": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-reviewed-native19-and-profile-successors-inactive-integration-technical-20261016-v4/CENTRAL.actual-current429-reviewed-candidate.json",
+    "sha256": "sha256:724cf399557dc802a1407e722bea15ebaa62eff4e12f7b03d3bfd678eaf6563b",
+    "bytes": 41278
+  },
+  "actualExecution": {
+    "argv": [
+      "tsx",
+      "scripts/reportDeepUnderstandingRollout.ts",
+      "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current429-reviewed-native19-and-profile-successors-inactive-integration-technical-20261016-v4/central.current429.actual-reviewed-inputs.inactive.config.json",
+      "--mode=check",
+      "--format=json"
+    ],
+    "cwd": "tmp/chemie-m7-resumed-20261016/current578-one-sparse-own-host-v1/app",
+    "startedAt": "2026-10-16T04:34:02.345501+00:00",
+    "elapsedSeconds": 66.42203671499738,
+    "exitCode": 0,
+    "stderr": "",
+    "actualCentralCallsInThisRoot": 1
+  },
+  "gates": {
+    "currentDescriptionResolutions": 399,
+    "currentPositiveEvidenceProfiles": 418,
+    "currentSemanticAtomicityDecisions": 417,
+    "currentMemoryReviewDecisions": 429,
+    "currentVisualizationQaRecords": 429
+  },
+  "strictComplete": 399,
+  "denominator": 429,
+  "issues": [],
+  "requiredChecks": [
+    {
+      "id": "semantic-kind-scope",
+      "status": "pass"
+    },
+    {
+      "id": "description-review-validation",
+      "status": "pass"
+    },
+    {
+      "id": "positive-evidence-validation",
+      "status": "pass"
+    },
+    {
+      "id": "semantic-atomicity-check",
+      "status": "pass"
+    },
+    {
+      "id": "memory-card-check",
+      "status": "pass"
+    },
+    {
+      "id": "visualization-freshness-and-approval-check",
+      "status": "pass"
+    }
+  ],
+  "strictCompletionReady": false,
+  "activeAdoption": false,
+  "HumanApproval": false,
+  "HumanTrial": false
+}

@@ -1,0 +1,164 @@
+{
+  "role": "Actual unchanged stock function declarations extracted by TypeScript AST and transpiled; no stock main/check or fingerprint rewrite invoked",
+  "stockScript": {
+    "path": "app/scripts/semanticAtomicityReview.ts",
+    "sha256": "sha256:b3052145387d8fd9414af100e0aa61f2ec083875d852c9c87ea4aa2ed91f56d9",
+    "bytes": 12015
+  },
+  "exactFunctionDeclarations": [
+    {
+      "name": "normalizeText",
+      "source": "\n\nfunction normalizeText(value: unknown): string {\n  return String(value ?? '')\n    .normalize('NFKC')\n    .replace(/\\s+/g, ' ')\n    .trim()\n}"
+    },
+    {
+      "name": "stableJson",
+      "source": "\n\nfunction stableJson(value: unknown): string {\n  if (Array.isArray(value)) {\n    return `[${value.map(stableJson).join(',')}]`\n  }\n  if (value && typeof value === 'object') {\n    return `{${Object.entries(value as Record<string, unknown>)\n      .sort(([left], [right]) => left.localeCompare(right))\n      .map(([key, nested]) => `${JSON.stringify(key)}:${stableJson(nested)}`)\n      .join(',')}}`\n  }\n  return JSON.stringify(value)\n}"
+    },
+    {
+      "name": "getSemanticPayload",
+      "source": "\n\nfunction getSemanticPayload(goal: LearningGoal, ruleVersion: string) {\n  return {\n    ruleVersion,\n    goalId: goal.id,\n    shortKey: goal.shortKey ?? '',\n    title: normalizeText(goal.title),\n    titleEn: normalizeText((goal as { titleEn?: string }).titleEn),\n    description: normalizeText(goal.description),\n    descriptionEn: normalizeText((goal as { descriptionEn?: string }).descriptionEn),\n    phase: normalizeText(goal.dimensionTags?.phase),\n    area: normalizeText(goal.dimensionTags?.area),\n    topicCode: normalizeText(goal.dimensionTags?.topicCode),\n    nodeKind: normalizeText((goal as { nodeKind?: string }).nodeKind),\n  }\n}"
+    },
+    {
+      "name": "fingerprintGoal",
+      "source": "\n\nfunction fingerprintGoal(goal: LearningGoal, ruleVersion: string): string {\n  const payload = stableJson(getSemanticPayload(goal, ruleVersion))\n  return `sha256:${createHash('sha256').update(payload).digest('hex')}`\n}"
+    }
+  ],
+  "rows": [
+    {
+      "goalId": "4961130b-1ee8-58f2-a319-dff0a864db6a",
+      "exactStockSemanticPayload": {
+        "ruleVersion": "semantic-atomicity-v1",
+        "goalId": "4961130b-1ee8-58f2-a319-dff0a864db6a",
+        "shortKey": "",
+        "title": "Oxidationszahlen bestimmen und bilanzieren",
+        "titleEn": "Determine and balance oxidation numbers",
+        "description": "Die lernende Person kann Oxidationszahlen für Atome in anorganischen und organischen Teilchen herleiten, Redoxreaktionen identifizieren und Redoxgleichungen mithilfe von Oxidationszahlen ausgleichen.",
+        "descriptionEn": "The learner can derive oxidation numbers for atoms in inorganic and organic particles, identify redox reactions, and balance redox equations using oxidation numbers.",
+        "phase": "E",
+        "area": "",
+        "topicCode": "",
+        "nodeKind": ""
+      },
+      "fingerprint": "sha256:f7ecf7d281bfe5eaa78ee31af1eb87f0d888ce84c30835692e3bb3557ed1fe9d"
+    },
+    {
+      "goalId": "f1ed86f0-534d-57d7-8952-a004a331cc54",
+      "exactStockSemanticPayload": {
+        "ruleVersion": "semantic-atomicity-v1",
+        "goalId": "f1ed86f0-534d-57d7-8952-a004a331cc54",
+        "shortKey": "",
+        "title": "Lösungen berechnen und pH bestimmen",
+        "titleEn": "Calculate solutions and determine pH",
+        "description": "Die lernende Person kann Stoffmengen, Konzentrationen und pH-Werte starker Säuren und Basen berechnen, saure oder basische Lösungen definierter Stoffmengenkonzentration herstellen und Messergebnisse plausibilisieren.",
+        "descriptionEn": "The learner can calculate amounts of substance, molar concentrations, and pH values for strong acids and bases, prepare acidic or alkaline solutions of a specified molar concentration, and check measurements for plausibility.",
+        "phase": "E",
+        "area": "",
+        "topicCode": "",
+        "nodeKind": ""
+      },
+      "fingerprint": "sha256:7bae042a575d53e74462215127f2fb9db9fa9d1a8374e4d7cb907354902cd4e7"
+    },
+    {
+      "goalId": "b4777001-f4ed-5fe9-9d98-02319abdea09",
+      "exactStockSemanticPayload": {
+        "ruleVersion": "semantic-atomicity-v1",
+        "goalId": "b4777001-f4ed-5fe9-9d98-02319abdea09",
+        "shortKey": "",
+        "title": "Säure-Base-Paare vergleichen",
+        "titleEn": "Compare acid-base pairs",
+        "description": "Die lernende Person kann die bevorzugte Richtung einer Protonenübertragung für vorgegebene korrespondierende Säure-Base-Paare anhand angegebener relativer Säure- und Basenstärken begründen, die partnerabhängigen Protonendonator- und Protonenakzeptorrollen auch bei Ampholyten vergleichen und die Grenzen dieser qualitativen Modellvorhersage erläutern.",
+        "descriptionEn": "The learner can justify the favored direction of a proton transfer for supplied conjugate acid-base pairs using stated relative acid and base strengths, compare partner-dependent proton-donor and proton-acceptor roles including amphiprotic species, and explain the limits of this qualitative model prediction.",
+        "phase": "E",
+        "area": "",
+        "topicCode": "",
+        "nodeKind": ""
+      },
+      "fingerprint": "sha256:3ff25ce65720991c55e943eed6455afa9d633c4dbe1dbe18a8d443c36213021b"
+    },
+    {
+      "goalId": "cd9ec99b-b694-5673-863c-55528e31250a",
+      "exactStockSemanticPayload": {
+        "ruleVersion": "semantic-atomicity-v1",
+        "goalId": "cd9ec99b-b694-5673-863c-55528e31250a",
+        "shortKey": "canonical_chemistry_ephase_alcohol_health_social_risks",
+        "title": "Gesundheitliche und gesellschaftliche Alkoholrisiken beurteilen",
+        "titleEn": "Assess health and social risks of alcohol",
+        "description": "Die lernende Person kann körperliche Schädigungen durch alkoholhaltige Getränke, Gefährdungen unter Alkoholeinfluss und Ursachen von Abhängigkeit beschreiben sowie Risiken im Alltag beurteilen.",
+        "descriptionEn": "The learner can describe physical harms from alcoholic beverages, dangers under alcohol influence, and causes of addiction, and assess everyday risks.",
+        "phase": "SekI",
+        "area": "",
+        "topicCode": "",
+        "nodeKind": ""
+      },
+      "fingerprint": "sha256:e888c558bc148a9c4353a4ef117b86f81036b5e4c253be3ecf8dbfc7bcda27cf"
+    },
+    {
+      "goalId": "28c90c6a-3020-5c51-ac40-d802f3f12d2d",
+      "exactStockSemanticPayload": {
+        "ruleVersion": "semantic-atomicity-v1",
+        "goalId": "28c90c6a-3020-5c51-ac40-d802f3f12d2d",
+        "shortKey": "",
+        "title": "Titrationskurven datengestützt deuten",
+        "titleEn": "Interpret titration curves using data",
+        "description": "Die lernende Person kann aus bereitgestellten Titrationsdaten den Verlauf einer Titrationskurve, den Äquivalenzbereich und vorhandene Halbäquivalenz- oder Pufferbereiche erkennen, mit den jeweils pH-bestimmenden Teilchen erklären und daraus begrenzte Aussagen zu Stoffklasse und geeigneten Indikatoren ableiten.",
+        "descriptionEn": "The learner can use supplied titration data to identify curve behaviour, the equivalence region and any half-equivalence or buffer regions, explain them using the pH-controlling species, and derive bounded conclusions about substance class and suitable indicators.",
+        "phase": "Q3",
+        "area": "",
+        "topicCode": "",
+        "nodeKind": ""
+      },
+      "fingerprint": "sha256:eb42dcb4cc8176ec3003ddfe99a5d661290115c909b9ad36f600f792bc192480"
+    },
+    {
+      "goalId": "a449e874-6fec-502b-9667-6f078adc4d64",
+      "exactStockSemanticPayload": {
+        "ruleVersion": "semantic-atomicity-v1",
+        "goalId": "a449e874-6fec-502b-9667-6f078adc4d64",
+        "shortKey": "",
+        "title": "Puffer-pH mit der Henderson-Hasselbalch-Gleichung berechnen",
+        "titleEn": "Calculate buffer pH using the Henderson–Hasselbalch equation",
+        "description": "Die lernende Person kann Pufferlösungen mit der Henderson-Hasselbalch-Gleichung quantitativ beschreiben, den pH-Wert aus dem Verhältnis der korrespondierenden Säure-Base-Komponenten berechnen, vorgegebene Säure- oder Basenzugaben in der Stoffmengenbilanz berücksichtigen und die Gültigkeit der verwendeten Näherung einschließlich ihrer Grenzen bei erschöpfter Pufferkomponente begründen.",
+        "descriptionEn": "The learner can quantitatively describe buffer solutions using the Henderson–Hasselbalch equation, calculate pH from the ratio of the conjugate acid–base components, account for specified acid or base additions in the amount-of-substance balance, and justify the validity of the approximation used, including its limits when a buffer component is exhausted.",
+        "phase": "Q3",
+        "area": "",
+        "topicCode": "",
+        "nodeKind": ""
+      },
+      "fingerprint": "sha256:c4370e8a6b5970ddfd49fd420fc74340973e44ebdcbdd41c7d4f91b794a6430b"
+    },
+    {
+      "goalId": "29742d91-732f-5da5-bc46-e963885f9a4a",
+      "exactStockSemanticPayload": {
+        "ruleVersion": "semantic-atomicity-v1",
+        "goalId": "29742d91-732f-5da5-bc46-e963885f9a4a",
+        "shortKey": "",
+        "title": "Charakteristische pH-Werte von Titrationskurven berechnen",
+        "titleEn": "Calculate characteristic pH values of titration curves",
+        "description": "Die lernende Person kann für vorgegebene Stellen der Titration einer einprotonigen Säure oder Base das passende stöchiometrische und chemische Gleichgewichtsmodell auswählen, den pH-Wert unter Berücksichtigung des Gesamtvolumens berechnen und die verwendeten Näherungen anhand der Stoffmengen und Gleichgewichtsanteile begründen.",
+        "descriptionEn": "The learner can select an appropriate stoichiometric and chemical-equilibrium model for specified points in a monoprotic acid or base titration, calculate pH using the total volume, and justify approximations using amounts and equilibrium contributions.",
+        "phase": "Q3",
+        "area": "",
+        "topicCode": "",
+        "nodeKind": ""
+      },
+      "fingerprint": "sha256:18b77030fc73e670d302818af35d2d69cbc35314461fd88a0b2dbef6aa018960"
+    },
+    {
+      "goalId": "13877340-1370-5278-bb80-31cf382dd6f5",
+      "exactStockSemanticPayload": {
+        "ruleVersion": "semantic-atomicity-v1",
+        "goalId": "13877340-1370-5278-bb80-31cf382dd6f5",
+        "shortKey": "",
+        "title": "Puffer gezielt designen",
+        "titleEn": "Design buffers specifically",
+        "description": "Die lernende Person kann für einen festgelegten pH-Bereich ein konsistentes Pufferrezept bestimmen und die zulässigen endlichen Säure- und Basenbelastungen aus positiven Reststoffmengen und dem zulässigen Komponentenverhältnis berechnen.",
+        "descriptionEn": "The learner can determine a consistent buffer recipe for a specified pH range and calculate admissible finite acid and base loads from positive remaining amounts and the permitted component ratio.",
+        "phase": "Q3",
+        "area": "",
+        "topicCode": "",
+        "nodeKind": ""
+      },
+      "fingerprint": "sha256:1b2304a193082f3225d233859caa16f18d7607c6d94b0a2cc995daf70c4888c3"
+    }
+  ]
+}
