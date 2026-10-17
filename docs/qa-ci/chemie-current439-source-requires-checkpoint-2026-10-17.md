@@ -2,11 +2,29 @@
 
 ## GitHub-Sicherung und sichtbare Fortsetzung
 
-Commit `f50e7117662060a1c4db8b7baa6e1ace7f660185` ist auf `main`
-veröffentlicht; alle **17 Checks** sind erfolgreich
-([GitHub-CI](https://github.com/enpasos/skillpilot/actions/runs/39031216526)).
-Dieser Nachweis gilt für die bisherige Sicherung. Die folgenden Änderungen
-erhalten einen eigenen Commit und einen eigenen CI-Nachweis.
+Commit `d94a910333d4d7831d6aaaaa993cc89bfc60d047` ist auf `main`
+veröffentlicht; alle **14 Checks** sind erfolgreich
+([GitHub-CI](https://github.com/enpasos/skillpilot/actions/runs/39039275661)).
+Der GitHub-Status und der exakte Remote-Head wurden am 17. Oktober erneut
+geprüft. Die unten beschriebene lokale Fortsetzung erhält einen eigenen
+Commit und einen eigenen CI-Nachweis.
+
+### Jetzt im normalen Curriculum übernommen
+
+Beim bestehenden Lernziel `7dc80ee2-64e3-50c1-8aaa-0fef0ed0919d`
+(künstliche Photosynthese und Wasserstoffspeicherung) ist die bereits
+unabhängig geprüfte Bildkorrektur jetzt in der **aktiven kanonischen Datei**,
+im normalen Bildquellordner und in der normalen KI-Bildprüfung übernommen.
+Die korrigierte Elektrodenpolung und Wasserstoffdarstellung sind durch die
+tatsächliche Sichtprüfung belegt; die PNG-Bytes stimmen mit ihr überein.
+Zieltext und Vorbedingungen bleiben unverändert. Die bisherigen JPG-Bytes
+und sämtliche menschlichen Prüffelder bleiben erhalten.
+
+Für dieses Ziel bestehen keine aktiven D-/P-Abschlussnachweise. Sie werden
+durch die Bildkorrektur nicht erfunden oder mechanisch als erledigt markiert.
+Das ist eine tatsächlich übernommene fachliche Bildkorrektur, noch kein neuer
+strenger Fünf-Gate-Abschluss. Die folgenden größeren Pakete bleiben als
+sichtbare, teilweise geprüfte Kandidaten im selben Main-Arbeitsverzeichnis.
 
 Die Fortsetzung liegt direkt unter `quality/goal-evidence/2026-10-17/`:
 
@@ -41,6 +59,81 @@ aktuellen Eingabepaket unabhängig geprüft; die fünf offenen Teilpflichten
 werden erst nach aktueller Quellenbindung der Nachfolger als geschlossen gezählt.
 
 ## Aktiver Stand und Arbeitsstand
+
+### Lokale Fortsetzung nach Commit d94a91033
+
+Die anschließenden drei Autorenpakete und ihre unabhängigen Folgeprüfungen
+liegen vollständig im geöffneten Repository:
+
+| Korrekturpaket | Fertige fachliche Kandidaten | Stand |
+| --- | --- | --- |
+| Biomoleküle | 15 vollständige DE/EN-Fälle, elf ganze bestehende Profilnachfolger | Beide unabhängigen Fachprüfungen akzeptieren die elf Nachfolger. Technische Auswahl gesichert; normale Quellen-/Kontextintegration offen. |
+| Labor und physikalische Chemie | 13 vollständige DE/EN-Materialien, elf ganze bestehende Profilnachfolger | Beide Fachprüfungen akzeptieren die Nachfolger einschließlich korrigierter Ansäuerung und Carbonatkontrolle beim Chloridnachweis. Bremer GK-Zuordnung der digitalen Titration und normale Integration offen. |
+| Materialien und Rohstoffe | 15 bestehende Profilnachfolger; zwei neue Zielvorschläge zu Treibhauseffekt und BTL; vier begründete Änderungen bestehender Zielumfänge | Zwei unabhängige Erst-/Folgeprüfungen akzeptieren die fachlichen Nachfolger. Recherche, Maßnahmenbewertung und Präsentation sind je Ziel getrennt; Stoffbilanzfehler korrigiert. Gesamte Quellenbindung 92 und finale Integration offen. |
+
+Die Pakete heißen `chemie-current439-HB-biomolecules-material-author-20261017-v1`,
+`chemie-current439-HB-lab-physical-material-author-20261017-v1` und
+`chemie-current439-HB-materials-resources-material-author-20261017-v1`.
+Die technischen Auswahlen heißen `chemie-current439-HB-biomolecules-paired-scientific-integration-20261017-v1`,
+`chemie-current439-HB-lab-physical-paired-selection-20261017-v1` und
+`chemie-current441-HB-materials-resources-paired-selection-20261017-v1`.
+Sie verweisen auf die tatsächlichen unabhängigen Erst- und Folgeurteile,
+ersetzen aber keine normale aktuelle D-/P-/Quellenbindung.
+
+**Paketfortschritt:** 37 bestehende ganze Profilnachfolger fachlich paarweise
+akzeptiert; zwei neue fachlich geprüfte Zielkandidaten, vier geprüfte
+Zielumfangsänderungen. Keine zusätzliche globale Abschlusszählung und keine
+menschliche Freigabe. Es handelt sich um fachliche Materialkorrekturen;
+bloße Bindungswiederherstellungen werden darin nicht als neue Fachprüfung
+gezählt.
+
+Im Paket `chemie-current439-existing-visual-assets-portable-integration-20261017-v1`
+sind außerdem vier schon unabhängig geprüfte Bildkorrekturen mit ihren
+unveränderten tatsächlichen FIRST-Nachweisen in einen inaktiven QA-Nachfolger
+übernommen. Vier weitere bereits geprüfte PNG-Dateien sind nun bytegenau aus
+der alten Ausführungsumgebung im Repository gesichert. Die Bilddateien aller
+439 bisherigen fachlichen Kandidaten sind aus dem Repository auflösbar;
+Bytevergleich und unveränderter normaler KI-Freigabeprüfer bestehen.
+Die vier abweichenden Beschreibungsmetadaten haben inzwischen eine echte
+gezielte Sichtprüfung mit KEEP bestanden. Für die zwei neuen Zielkandidaten
+sind zwei tatsächliche PNGs im Format 1672 × 941 erzeugt und unabhängig bei
+360 und 680 Pixel Breite mit KEEP geprüft. Bei den vier geänderten
+Zielumfängen bestehen drei aktuelle KEEP-Urteile; beim Recyclingbild
+`8721d943-8368-5304-bd3c-7d7944099662` bleibt ein konkreter HOLD wegen
+unlesbarer Kleinschrift bei 360 Pixeln. Seine Korrektur und die normale
+abschließende Bindung bleiben offen. Keine menschliche Freigabe und kein
+zusätzlicher globaler Lernzielabschluss.
+
+Der sichtbare Nachfolger
+`chemie-current439-HB-seven-current-source-bindings-paired-synthesis-20261017-v2`
+führt zwei tatsächlich abgeschlossene informierte Quellen-Folgeprüfungen
+zusammen. Beide Prüfer bestätigen die fünf zuvor offenen Klauseln
+23/53/65/67/70 und zusätzlich die beiden Polarimetriepflichten 147/149
+gegen den exakten P5-v2-/C54-Stand. Klausel 149 bleibt LK; Themenwahl und
+Kursgrenzen bleiben erhalten. Die anderen 65 Erstentscheidungen wurden
+nicht erneut geprüft.
+
+**Paketfortschritt:** sieben gezielte fachliche Quellenbindungen bestätigt,
+davon fünf durch die bereits gezählten Materialkorrekturen wiederhergestellt.
+Keine zusätzliche Materialkorrektur, kein neuer zentraler Lernzielabschluss
+und kein aktiver strenger Nettozuwachs. Normale Quellenaktivierung und
+abschließende D-/Kontextintegration bleiben offen. Die noch nicht geprüften
+Klauseln und Begriffssätze werden vor einer finalen Kontextprüfung gebündelt.
+
+Der anschließende vollständige, deduplizierte Quellenabgleich und die gezielte
+Klärung von zwölf Klauseln und sechs Begriffen sind abgeschlossen. Der lokale
+aktuelle Ledger
+`chemie-current439-HB232-current-binding-ledger-paired-20261017-v2`
+führt **193 positiv bestätigte Quellenbeziehungen, 37 HOLDs und zwei offene
+Unterschiede (92/142)** zusammen. Bei den 247 Begriffsverwendungen sind
+**224 belegt und 23 offen**. Jede Zeile verweist auf die tatsächlichen
+versiegelten Erst- und Folgeurteile; unveränderte Urteile bleiben erhalten.
+
+Diese Zahlen sind fachliche Quellenbindungsstände im inaktiven Kandidaten,
+keine zusätzlichen abgeschlossenen Lernziele. **Aktiver strenger Nettozuwachs
+weiterhin 0.** Als nächstes werden die verbliebenen konkreten Pflicht- und
+Begriffslücken in gebündelten Korrekturpaketen bearbeitet; die endgültigen
+Kontexte werden erst danach neu gebunden.
 
 Aktiv bleibt **Chemie M6 mit 231/402 streng abgeschlossenen fachlichen
 Lernzielen**. Mathematik 807, Physik 478, Biologie 397 und
@@ -108,6 +201,12 @@ Dokumentlinks werden gegen die veröffentlichbare Dokumentstruktur geprüft;
 das Manifest ist deshalb über seinen Repository-Link erreichbar.
 
 ## Nächste Integration
+
+Unabhängig fertig geprüfte Korrekturen an bestehenden Zielen werden als
+abgegrenzte normale Integrationspakete übernommen. Die noch offene gesamte
+439er-Erweiterung darf ihre Übernahme nicht pauschal aufhalten. Betroffene
+Bindungen und Prüfungen bleiben verbindlich; ungeprüfte Umfangsänderungen
+bleiben Kandidaten.
 
 1. Quellenzuordnungen und den endlichen Vorbedingungskandidaten fertigstellen.
 2. Die konkret betroffenen Aufgaben-, Seiten- und Kontextnachweise prüfen.

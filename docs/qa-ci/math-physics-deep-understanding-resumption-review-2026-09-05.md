@@ -3,23 +3,27 @@
 ## Aktuelle Fortsetzung: sichtbarer 439er-Arbeitsstand – 17. Oktober 2026
 
 Der [aktuelle Quellen-/Vorbedingungscheckpoint](chemie-current439-source-requires-checkpoint-2026-10-17.md)
-ist mit Commit `f50e7117662060a1c4db8b7baa6e1ace7f660185` auf `main`
-gesichert. Alle **17 GitHub-Checks** dieses Commits sind bestanden
-([CI-Lauf](https://github.com/enpasos/skillpilot/actions/runs/39031216526)).
+ist mit Commit `d94a910333d4d7831d6aaaaa993cc89bfc60d047` auf `main`
+gesichert. Alle **14 GitHub-Checks** dieses Commits sind bestanden
+([CI-Lauf](https://github.com/enpasos/skillpilot/actions/runs/39039275661)).
 Aktiv bleibt Chemie **231/402, M6**. Der inaktive Arbeitsstand umfasst
 439 fachliche Atome; Quellen-, Aufgaben- und Kontextintegration bleiben offen.
 Die folgenden Messungen sind historische Zwischenstände.
 
-Neue fachliche Arbeit liegt unmittelbar im geöffneten Repository: vollständige
-Bremer Zuordnungskandidaten mit ausdrücklichen Lücken, ein von beiden Prüfern
-bestätigter Vorbedingungskandidat und sechs unabhängig geprüfte vollständige
-Materialkorrekturen. Normale P-Bindung, Bytevergleich und P-Prüfung bestehen
-für diese sechs Nachfolger. Die ersten 70 Bremer Quellenzuordnungen ergeben
-übereinstimmend 65 bestätigte Zuordnungen und fünf konkrete HOLDs; die
-aktuelle Quellenbindung ihrer Materialnachfolger ist noch offen. Autorenarbeit
-und unabhängige Prüfung bleiben getrennt; daraus wird kein neuer zentraler
-Abschluss abgeleitet. Die unveränderten Mathematik-, Physik- und Biologie-M7-
-Untergrenzen bleiben geschützt.
+Die lokale Fortsetzung liegt unmittelbar im geöffneten Main-Arbeitsverzeichnis.
+Die geprüfte Bildkorrektur zur Wasserspaltung/Wasserstoffspeicherung ist jetzt
+in das normale aktive Curriculum und die normale Bild-QS übernommen;
+Zieltext, Voraussetzungen und menschliche Prüffelder sind erhalten.
+Offene D-/P-Gates werden dadurch nicht als abgeschlossen gezählt.
+
+Darüber hinaus sind 37 ganze bestehende Profilnachfolger, zwei neue
+Zielkandidaten und vier Zielumfangsänderungen unabhängig fachlich geprüft.
+Sie bleiben bis zur normalen Quellen- und Kontextintegration Kandidaten.
+Ein Recyclingbild hat einen konkreten Handy-Lesbarkeitsbefund. Die genaue
+Auswahl der Erst-/Folgeurteile und die übrigen offenen Quellen-/Kursgrenzen
+stehen im verlinkten aktuellen Checkpoint. Kein neuer strenger globaler
+Abschluss wird daraus abgeleitet. Die unveränderten Mathematik-, Physik-,
+Biologie- und Wirtschaftswissenschaften-M7-Untergrenzen bleiben geschützt.
 
 Vorheriger [Chemie-Paketstand nach der 418er-Messung](chemie-current418-next-package-progress-2026-10-16.md):
 sechs tatsächlich unabhängig geprüfte Kinderbilder einschließlich gezielter

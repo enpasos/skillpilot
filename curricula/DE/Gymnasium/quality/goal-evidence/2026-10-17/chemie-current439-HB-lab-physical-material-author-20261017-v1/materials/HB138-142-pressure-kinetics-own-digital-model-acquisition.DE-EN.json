@@ -1,0 +1,82 @@
+{
+  "materialId": "HB138-142-pressure-kinetics-own-digital-model-acquisition",
+  "goalIds": [
+    "9e3fae29-84d5-5600-bfb3-82d49ea3f1b5"
+  ],
+  "sourceOrdinals": [
+    138,
+    142
+  ],
+  "status": "needs_human_review",
+  "reviewAuthority": "ai_candidate",
+  "authorDecision": "pending_independent_review",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "materialOrigin": {
+    "de": "Vollständiges eigenes Autorenmaterial. Zahlen/Referenzmuster sind ausdrücklich Aufgabenmodelle, keine tatsächlichen Lernendenmessungen oder Herstellerzertifikate.",
+    "en": "Complete own author material. Numbers/reference patterns are stipulated teaching models, not actual learner measurements or manufacturer certificates."
+  },
+  "scope": {
+    "de": "Nur die angegebenen HB-Quellenkomponenten im jeweiligen Kurs-/Themenscope; offizielle Wahlthemen und optionale Experimente bleiben qualifiziert. Alle bisherigen ganzen Ziele/Fälle gelten weiter.",
+    "en": "Only named HB source components within their course/topic scope; official choices and optional experiments remain qualified. Every previous whole goal/case remains required."
+  },
+  "performanceMode": "actual_digital_simulation_acquisition_not_physical_experiment",
+  "suppliedMaterial": {
+    "de": "Vollständiges digitales Simulationsmaterial, kein physischer Druckversuch: ideale Gasreaktion A(g) → B(g) bei konstanter Temperatur und Stoffart. Vorgegebenes Modell: −dcA/dt = k cA mit k = 0,0500 min−1, also cA(t) = cA,0 exp(−kt). Fall L startet mit cA,0 = 0,100 mol/L. Fall H komprimiert dieselbe Stoffmenge A isotherm auf halbes Volumen: cA,0 = 0,200 mol/L und doppelter A-Partialdruck. Hier gilt pA = cA RT; ein universelles Druck-Ratengesetz wird nicht vorausgesetzt. Inertgaszugabe bei gleichem V und T erhöht den Gesamtdruck, lässt aber pA und cA gleich. Gegeben sind nur Modell, Formel, Parameter und eine leere Datei. Eine fertige Serie darf nicht als eigene Aufnahme ausgegeben werden. Ein Tabellenwerkzeug mit EXP, LN und XY-Plot genügt. Lernende wählen und begründen die Abtastzeiten selbst; Startwert und ein auswertbarer Verlauf müssen erkennbar sein.",
+    "en": "Complete digital simulation material, no physical-pressure experiment: ideal gas reaction A(g)→B(g) at fixed temperature and substance identity under explicitly stipulated first-order model −dcA/dt=k cA,k=0.0500min−1. Hence cA(t)=cA,0 exp(−kt). Case L begins at cA,0=0.100mol/L. Case H isothermally compresses the same amount A to half-volume: cA,0=0.200mol/L and ideally doubled A partial pressure. Here pA=cA RT connects pressure and concentration; no universal pressure-rate law is asserted. Adding inert gas at fixed volume/temperature increases total pressure but leavespA/cA unchanged. Learners receive model/formula/parameters and a blank file, not a finished measurement series to claim as own acquisition. Spreadsheet EXP/LN and an XY plot suffice. Choose suitable sampling times personally; show starting value and enough trajectory for evaluation."
+  },
+  "learnerTask": {
+    "de": "Prüfe im vorgegebenen Modell die zweiteilige Hypothese: Doppelter A-Partialdruck verdoppelt die Anfangsrate und halbiert die Halbwertszeit. Erzeuge tatsächlich selbst digitale c(t)-Modellausgaben für L und H, wähle geeignete Abtastzeiten und zeichne die Ausgaben zeitlich zugeordnet in einer Datei auf. Kennzeichne Herkunft als eigene Simulation aus vorgegebenem Modell, Parameter, Einheiten und Änderungen. Stelle deine Serien als XY-Diagramm dar und werte −Δc/Δt sowie den Momentanansatz aus. Vergleiche Druck und Konzentration quantitativ und erkläre den Teilchenbezug bei gleicher Temperatur. Eine fremde fertige Kurve oder umetikettierte Altdaten sind keine eigene Aufnahme. Kein Sensor, automatischer Export, Logging oder physischer Versuch ist vorgeschrieben. Die bisherigen Kalibrier- und Kinetikfälle bleiben erforderlich.",
+    "en": "Within the stipulated model test the two-part hypothesis: doubling the A partial pressure doubles initial rate and halves half-life. Actually generate own digital c(t) model series for L/H: choose and justify sampling times, implement unit-correct formulas and record calculated outputs as time-associated series in a file. Label provenance “own simulation from supplied model”, parameters,time unit and every change. Plot own series with XY axes and evaluate −Δc/Δt and the stipulated instantaneous rate. Quantitatively compare pressure/concentration and explain what changes at particle level with equal T. Reading finished curves or relabelling old data is not own acquisition. No sensor,export,automatic logging or physical execution requirement. Existing calibration/kinetics cases remain required."
+  },
+  "expectedReasoning": {
+    "de": "Nur Referenzkontrolle, keine Messung: Bei t = 20 min ist cL = 0,0367879 mol/L und cH = 0,0735759 mol/L. Anfangsraten: 0,00500 bzw. 0,0100 mol/(L min). In diesem linearen Modell verdoppeln sich Konzentration und volumenspezifische Rate, während t1/2 = ln(2)/k ≈ 13,8629 min gleich bleibt. Die erste Teilhypothese gilt; die zweite wird im Modell widerlegt. Bei gleicher Temperatur wird aus Druck allein keine höhere mittlere Teilchengeschwindigkeit abgeleitet. Größere Dichte geeigneter Stoßpartner kann Zusammenstöße häufen; nicht jeder Stoß ist wirksam, und das jeweilige Geschwindigkeitsgesetz begrenzt die quantitative Aussage. Hier bedeutet mehr A pro Volumen mehr Umsetzungsereignisse pro Volumen bei festem k. Andere Mechanismen können andere Druckabhängigkeit zeigen. ln(c/c0) ist dimensionslos und hat Steigung −k. Eine endliche Intervallrate ist gemittelt, nicht automatisch die Anfangsrate. Modellgenerierte Daten bestätigen kein empirisches Naturgesetz.",
+    "en": "Independent reference check, not own measurement: at20min,L=0.0367879mol/L,H=0.0735759mol/L; initial rates0.00500 and0.0100mol/(Lmin). In the stipulated linear modelc(t) and rate per volume double while half-life ln2/k≈13.8629min stays equal. Equal T means pressure alone does not imply greater mean molecular speed; more A per volume means more events per volume in this model. Multi-reactant mechanisms may give other pressure exponents; a rate alone does not identify mechanism. ln(c/c0) is dimensionless with slope−k. A finite interval rate is an interval average, not automatically exact initial rate. Synthetic acquisition is not experimental validation. The first prediction holds in this model; the second is refuted within the model. Generated data establish no empirical law. Greater density of suitable collision partners can increase collision frequency; not every collision is effective, and the applicable rate law limits the quantitative inference."
+  },
+  "freshTransfer": {
+    "task": {
+      "de": "Frisch: Erhöhe durch Inertgas nur den Gesamtdruck bei festem V und T. Ändere danach in einer getrennten, gekennzeichneten Variante k auf 0,100 min−1. Erzeuge die betroffenen Serien erneut und ordne die Änderungen den Parametern zu.",
+      "en": "Fresh: increase only total pressure by inert gas at fixed V/T, then in a separately labelled variant changek to0.100min−1. Actually regenerate/recalculate affected series and determine which change concerns pressure/concentration or the kinetic parameter."
+    },
+    "expected": {
+      "de": "Inertgas ändert cA, pA und diesen Modellverlauf nicht. Doppeltes k halbiert t1/2 auf etwa 6,9315 min und verdoppelt die Anfangsrate bei gleichem c0. Dies ist keine gemessene Temperaturwirkung. Neue Version, Parameter und Modellherkunft bleiben nachvollziehbar; keine universelle Druck- oder RGT-Regel behaupten.",
+      "en": "Inert gas changes neither cA/pA nor this model trajectory. Doublingk halves half-life to≈6.9315min and doubles initial rate at equalc0; this is not a measured temperature effect. Retain model provenance,new parameters and file version; claim no universal RGT/pressure rule."
+    }
+  },
+  "rubric": {
+    "de": [
+      "Eigene digitale Modellausgaben tatsächlich erzeugen, aufnehmen, darstellen und auswerten.",
+      "Druck, Partialdruck, Konzentration und Raten quantitativ korrekt verbinden.",
+      "Frische Inertgas-/k-Variante und synthetische Aussagegrenze erklären."
+    ],
+    "en": [
+      "Actually generate/acquire,plot and evaluate own digital model outputs.",
+      "Correctly connect pressure,partial pressure,concentration and quantitative rates.",
+      "Independently explain fresh inert-gas/k variant and synthetic limit."
+    ]
+  },
+  "blankLearnerRecord": {
+    "actualProductOrActions": null,
+    "actualObservations": null,
+    "ownReasoning": null,
+    "freshTransfer": null,
+    "unresolvedEvidence": null
+  },
+  "actualLearnerPerformanceRecorded": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "active": false,
+  "M7Claim": false,
+  "ownMaterialLicense": "CC-BY-4.0",
+  "externalSourceRightsUnchanged": true,
+  "structuredGivenData": {
+    "reaction": "A(g) -> B(g)",
+    "kPerMin": 0.05,
+    "c0LmolPerL": 0.1,
+    "c0HmolPerL": 0.2,
+    "referenceOnlyTimeMin": 20,
+    "referenceOnlyL": 0.036787944117144235,
+    "referenceOnlyH": 0.07357588823428847,
+    "halfLifeMin": 13.862943611198904
+  }
+}

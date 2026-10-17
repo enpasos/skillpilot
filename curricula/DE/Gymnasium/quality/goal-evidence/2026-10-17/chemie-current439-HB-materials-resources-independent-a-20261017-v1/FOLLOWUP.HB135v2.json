@@ -1,0 +1,144 @@
+{
+  "reviewId": "chemie-current439-HB-materials-resources-independent-a-20261017-v1-HB135v2-targeted-followup",
+  "role": "Independent reviewer A, informed targeted follow-up; no author role",
+  "atUTC": "2026-10-17T15:48:28.898653+00:00",
+  "scope": "Only German HB135 conservation sentence, exact one-field material successor, two mandatory material bindings and direct Source98/205 whole-union consequences. No re-audit of other science.",
+  "reviewAuthority": "ai_candidate",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "status": "needs_human_review",
+  "active": false,
+  "humanApproval": false,
+  "actualLearnerPerformanceRecorded": false,
+  "normalSourceActivation": false,
+  "wholeGraphApproval": false,
+  "M7Claim": false,
+  "previousFirstPreserved": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-independent-a-20261017-v1/FIRST.json",
+    "sha256": "9b051fd6eba77ffbeb267f60bd98ae73f7cd326b8b6f8fb3d027b189945af2e3",
+    "bytes": 69729
+  },
+  "previousSealPreserved": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-independent-a-20261017-v1/SEAL.json",
+    "sha256": "a34ee531228b4eb11feecc68a613bca92a4d0ad59a74d3b41374b61b3c488c89",
+    "bytes": 783
+  },
+  "inputs": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-lab-physical-material-author-20261017-v1/materials/HB135_acid-base-everyday-research-presentation.DE-EN.json",
+      "sha256": "78f498e45e18ee2eee6b111977dc573fb8de2fd8edbc56730e06b9664bfd4321",
+      "bytes": 10729
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB135-conservation-one-field-author-successor-20261017-v2/HB135_acid-base-everyday-research-presentation.DE-EN.json",
+      "sha256": "b618ee60426418aaef0ed075dfa272ace46c453947db42cff3c9f513ad658791",
+      "bytes": 10770
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-material-author-20261017-v1/AUTHOR.whole-profile-successors.pending.json",
+      "sha256": "8d28175c347caf1ff09e88b3f378d8aa7fffbe582afc3392ac7e7d4c406904dd",
+      "bytes": 337317
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB135-conservation-one-field-author-successor-20261017-v2/AUTHOR.fourteen-whole-profiles.HB135-material-v2.pending.json",
+      "sha256": "e2c4ec24f13e445ef82337ceac52937ef65f3523b1aaac04942110a8fed9d145",
+      "bytes": 339635
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB135-conservation-one-field-author-successor-20261017-v2/AUTHOR.delta-and-retention.json",
+      "sha256": "22263f6774d8a3486a8998c53af71360f166045eaedc4350a9d89a3f98bbda6d",
+      "bytes": 1909
+    }
+  ],
+  "materialDecision": {
+    "decision": "ACCEPT",
+    "actualSemanticDiff": [
+      "/completePrintReadyArchive/0/de"
+    ],
+    "correctedConservedQuantities": "Anzahl der Atome jedes Elements und elektrische Ladung",
+    "independentEquationCheck": {
+      "atomsLeftAndRight": {
+        "Ca": 1,
+        "C": 1,
+        "O": 5,
+        "H": 6
+      },
+      "chargeLeftAndRight": "+2",
+      "coefficientSumsNotEqual": {
+        "left": 3,
+        "right": 5
+      }
+    },
+    "reasonDe": "Die korrigierte deutsche Wortlautfassung ist chemisch richtig und passt zur unveränderten englischen Aussage atoms and charge. Die Reaktionsgleichung und alle übrigen Materialfelder einschließlich EN sind exakt. Die zuvor falsche Behauptung zur Gesamtstoffmenge ist entfernt.",
+    "allOtherMaterialFieldsExact": true,
+    "reactionUnchanged": true,
+    "englishExact": true
+  },
+  "retention": {
+    "all14GoalExactUnchanged": true,
+    "all14InnerProfilesExact": true,
+    "changedRecordsCount": 2,
+    "changedFieldsWithinRecords": "Exactly path/sha256/bytes of materialBindings[1].materialPin in records11 and12; all other record fields exact.",
+    "topLevelChanges": "Author provenance fields and role only; unchanged E1/G1, inactive, no-human, no-M7 boundaries.",
+    "noOtherScientificJudgmentsReopened": true
+  },
+  "affectedWholeProfiles": [
+    {
+      "goalId": "ac8b6c0f-98b2-5092-806d-d9498efbfa35",
+      "decision": "ACCEPT",
+      "previousDecision": "HOLD",
+      "resolvedFinding": "A-HB135-CONSERVATION",
+      "wholeCurrentProfileScienceDecision": "ACCEPT",
+      "goalSha256": "097b9d35f24c03ef75f4808b225178ddcae7835d7ede6dca2b6cddedf89deeb8",
+      "innerProfileSha256": "aadf6ee45d6796cc1b9fdc0256b06e793974b2b4a7d956831dd16fe4ff64a5c8",
+      "recordPosition": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB135-conservation-one-field-author-successor-20261017-v2/AUTHOR.fourteen-whole-profiles.HB135-material-v2.pending.json",
+        "jsonPointer": "/records/11"
+      },
+      "materialPin": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB135-conservation-one-field-author-successor-20261017-v2/HB135_acid-base-everyday-research-presentation.DE-EN.json",
+        "sha256": "b618ee60426418aaef0ed075dfa272ace46c453947db42cff3c9f513ad658791",
+        "bytes": 10770
+      },
+      "reasonDe": "Nur der operative HB135-Materialpin wurde auf die fachlich korrigierte deutsche Fassung umgebunden; sämtliche inneren Profilpflichten, GoalExact-Felder und anderen Fallbindungen sind exakt. Die einzige in FIRST A genannte Sperre dieses ganzen Nachfolgers ist damit behoben."
+    },
+    {
+      "goalId": "38e30bb9-6145-5da0-80b8-36e3c45e15d0",
+      "decision": "ACCEPT",
+      "previousDecision": "HOLD",
+      "resolvedFinding": "A-HB135-CONSERVATION",
+      "wholeCurrentProfileScienceDecision": "ACCEPT",
+      "goalSha256": "4495c234a00c83d7de83d45906c964e8d26621fdd98c7e3303ac39ad0e74e11e",
+      "innerProfileSha256": "8f075f4423557b4efc627cb08a6fb4e868059455a14bd119b71ca9822b28aeff",
+      "recordPosition": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB135-conservation-one-field-author-successor-20261017-v2/AUTHOR.fourteen-whole-profiles.HB135-material-v2.pending.json",
+        "jsonPointer": "/records/12"
+      },
+      "materialPin": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB135-conservation-one-field-author-successor-20261017-v2/HB135_acid-base-everyday-research-presentation.DE-EN.json",
+        "sha256": "b618ee60426418aaef0ed075dfa272ace46c453947db42cff3c9f513ad658791",
+        "bytes": 10770
+      },
+      "reasonDe": "Nur der operative HB135-Materialpin wurde auf die fachlich korrigierte deutsche Fassung umgebunden; sämtliche inneren Profilpflichten, GoalExact-Felder und anderen Fallbindungen sind exakt. Die einzige in FIRST A genannte Sperre dieses ganzen Nachfolgers ist damit behoben."
+    }
+  ],
+  "sourceWholeUnionConsequences": [
+    {
+      "ordinal": 98,
+      "sourceSpecificScienceDecisionFromFirst": "ACCEPT",
+      "previousWholeUnionHold": "A-HB135-CONSERVATION through mandatory ac8/38e cases",
+      "decision": "ACCEPT",
+      "reasonDe": "Der allein von FIRST A abgeleitete wissenschaftliche Whole-Union-HOLD ist mit beiden exakten Materialnachfolgebindungen behoben; inhaltliche Quellprüfung und ursprüngliche Themen-/Kursgeltung bleiben unverändert. Keine normale Aktivierung oder fremde Prüferentscheidung behauptet."
+    },
+    {
+      "ordinal": 205,
+      "sourceSpecificScienceDecisionFromFirst": "ACCEPT",
+      "previousWholeUnionHold": "A-HB135-CONSERVATION through mandatory ac8 case",
+      "decision": "ACCEPT",
+      "reasonDe": "Der allein von FIRST A abgeleitete wissenschaftliche Whole-Union-HOLD ist mit dem exakten ac8-Materialnachfolger behoben; analoge/digitale tatsächliche Recherchepflicht und Klima-/Rohstoffbezug bleiben erhalten. Keine normale Aktivierung behauptet."
+    }
+  ],
+  "source92Boundary": "Unchanged: climate material is only a partial contribution. No whole-source92 approval until a merged complete union is independently reviewed.",
+  "unchangedOpenGates": "All native fingerprint/context integration, other reviewers, missing new-atom V images and real performance/human gates remain governed by FIRST and current repository rules. This follow-up grants none of them.",
+  "result": "The two limited scientific HOLDs from FIRST A are resolved for this exactly pinned v2 material successor. The historical FIRST remains unchanged."
+}

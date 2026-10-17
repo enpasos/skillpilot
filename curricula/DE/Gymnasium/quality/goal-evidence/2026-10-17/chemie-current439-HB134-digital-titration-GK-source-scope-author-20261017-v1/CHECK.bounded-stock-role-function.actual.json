@@ -1,0 +1,110 @@
+{
+  "role": "Targeted actual existing role/filter function evaluation only; not full compiler, runtime acceptance or science approval",
+  "status": "PASS_WITH_EXPLICIT_RAW_FILTER_LIMIT",
+  "sixViews": [
+    {
+      "candidate": "CANDIDATE.de-de-gym-chemistry-gk.view.json",
+      "viewId": "de-de-gym-chemistry-gk",
+      "e094Target": false,
+      "e094PrerequisiteOnly": true,
+      "roleTargetAdded": [],
+      "roleTargetRemoved": [
+        "e0944fbb-0761-5f9c-afaa-3d4713ed1bed"
+      ],
+      "note": "Removed inherited e094 target assignment was previously course-filtered out by LK-only; observed role exclusion maintains GK learner target boundary."
+    },
+    {
+      "candidate": "CANDIDATE.de-de-gym-sekii-chemistry-gk.view.json",
+      "viewId": "de-de-gym-sekii-chemistry-gk",
+      "e094Target": false,
+      "e094PrerequisiteOnly": true,
+      "roleTargetAdded": [],
+      "roleTargetRemoved": [
+        "e0944fbb-0761-5f9c-afaa-3d4713ed1bed"
+      ],
+      "note": "Removed inherited e094 target assignment was previously course-filtered out by LK-only; observed role exclusion maintains GK learner target boundary."
+    },
+    {
+      "candidate": "CANDIDATE.de-hb-gk.view.json",
+      "viewId": "de-hb-gym-chemistry-gk",
+      "e094Target": true,
+      "e094PrerequisiteOnly": false,
+      "roleTargetAdded": [
+        "f79f15c0-e848-5e17-9eb5-26753d35c93b",
+        "e0944fbb-0761-5f9c-afaa-3d4713ed1bed",
+        "9e3fae29-84d5-5600-bfb3-82d49ea3f1b5"
+      ],
+      "roleTargetRemoved": [],
+      "note": "HB existing source-union carriers placed once."
+    },
+    {
+      "candidate": "CANDIDATE.de-hb-lk.view.json",
+      "viewId": "de-hb-gym-chemistry-lk",
+      "e094Target": true,
+      "e094PrerequisiteOnly": false,
+      "roleTargetAdded": [
+        "f79f15c0-e848-5e17-9eb5-26753d35c93b",
+        "e0944fbb-0761-5f9c-afaa-3d4713ed1bed",
+        "9e3fae29-84d5-5600-bfb3-82d49ea3f1b5"
+      ],
+      "roleTargetRemoved": [],
+      "note": "HB existing source-union carriers placed once."
+    },
+    {
+      "candidate": "CANDIDATE.de-he-gk.view.json",
+      "viewId": "de-he-gym-chemistry-gk",
+      "e094Target": false,
+      "e094PrerequisiteOnly": true,
+      "roleTargetAdded": [],
+      "roleTargetRemoved": [
+        "e0944fbb-0761-5f9c-afaa-3d4713ed1bed"
+      ],
+      "note": "Removed inherited e094 target assignment was previously course-filtered out by LK-only; observed role exclusion maintains GK learner target boundary."
+    },
+    {
+      "candidate": "CANDIDATE.de-he-sekii-gk.view.json",
+      "viewId": "de-he-gym-sekii-chemistry-gk",
+      "e094Target": false,
+      "e094PrerequisiteOnly": true,
+      "roleTargetAdded": [],
+      "roleTargetRemoved": [
+        "e0944fbb-0761-5f9c-afaa-3d4713ed1bed"
+      ],
+      "note": "Removed inherited e094 target assignment was previously course-filtered out by LK-only; observed role exclusion maintains GK learner target boundary."
+    }
+  ],
+  "rawFilterDisclosure": [
+    {
+      "jurisdiction": "DE-BY",
+      "oldGK": false,
+      "proposedRawGK": true
+    },
+    {
+      "jurisdiction": "DE-HE",
+      "oldGK": false,
+      "proposedRawGK": true
+    },
+    {
+      "jurisdiction": "DE-NI",
+      "oldGK": false,
+      "proposedRawGK": true
+    },
+    {
+      "jurisdiction": "DE-HB",
+      "oldGK": false,
+      "proposedRawGK": true
+    }
+  ],
+  "inputJurisdictionUsedForFilter": "Hypothetical normal-compiler HB union result; compiler itself not executed in this check.",
+  "notExecuted": [
+    "full quality",
+    "build",
+    "full applicability compiler",
+    "backend selected-view request",
+    "independent source/course/D review"
+  ],
+  "E1": true,
+  "G1": true,
+  "humanApproval": false,
+  "M7Claim": false
+}

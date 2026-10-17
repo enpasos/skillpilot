@@ -1,0 +1,140 @@
+{
+  "role": "Independent scientific reviewer A informed targeted followup to frozen laboratory FIRST v1",
+  "atUTC": "2026-10-17T15:49:01.238377+00:00",
+  "reviewerKind": "AI",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "status": "ai_candidate; needs_human_review",
+  "active": false,
+  "humanApproval": false,
+  "humanTrialClaim": false,
+  "M7Claim": false,
+  "previousFIRST": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-lab-physical-independent-p-a-20261017-v1/FIRST.json",
+    "sha256": "469e35251793d472c5d2605a889e0a44c4472101aa85f37e2a53a41091f019cc",
+    "bytes": 72999
+  },
+  "previousSeal": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-lab-physical-independent-p-a-20261017-v1/SEAL.json",
+    "sha256": "15cb8b89a92708cc6cc977581a49015e4aac46b2eedac826bb6ae97de32c787e",
+    "bytes": 11685
+  },
+  "decision": "ACCEPT",
+  "decisionScope": "Only the named HB078 chloride-acidification/carbonate-control scientific defect in the exactly pinned v2 successor; no new full review of other science",
+  "resolvedFindingId": "LAB-A-HB078-CHLORIDE-ACIDIFICATION-01",
+  "goalId": "a44af1fa-5988-5b7d-b206-691c6bbf7dd4",
+  "sourceOrdinal": 78,
+  "materialId": "HB078-four-ion-detection-supervised-practice",
+  "materialInput": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB078-acidified-chloride-carbonate-control-author-successor-20261017-v2/HB078-four-ion-detection-supervised-practice.DE-EN.json",
+    "sha256": "1c78f2f104ad65aca94bc9558aa7fcd379ea54a47760a7b76ec764074db8aae4",
+    "bytes": 13347
+  },
+  "wholeProfileSuccessorInput": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB078-acidified-chloride-carbonate-control-author-successor-20261017-v2/AUTHOR.eleven-whole-profiles.HB078-material-v2.pending.json",
+    "sha256": "4d342a4afd008e210502ed56d0e83d0589648ba59c981810b5ac208b8696a437",
+    "bytes": 239798
+  },
+  "findings": [
+    {
+      "kind": "independent_stoichiometry",
+      "decision": "ACCEPT",
+      "findingDe": "0,50mL×0,01mol/L enthalten5µmol Carbonat und brauchen10µmolH+ bis zur CO2/H2O-Bilanz. Die tatsächliche Obergrenze0,20mL×0,10mol/L liefert20µmolH+. Sie lässt damit für diese begrenzte Probenmatrix einen Säureüberschuss zu. Der Entwurf fordert ausdrücklich nicht das Ausschöpfen der Obergrenze: pH2–3 muss tatsächlich bestätigt sein. Bei pH<2 oder unerreichtem Endpunkt wird mit frischem Aliquot durch die Lehrkraft korrigiert. Die im Aufgabentext zunächst versehentlich genannten2mL wurden nicht als Prüfinput verwendet.",
+      "position": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB078-acidified-chloride-carbonate-control-author-successor-20261017-v2/HB078-four-ion-detection-supervised-practice.DE-EN.json",
+        "jsonPointers": [
+          "/suppliedMaterial/de",
+          "/suppliedMaterial/en",
+          "/expectedReasoning/de",
+          "/expectedReasoning/en"
+        ]
+      }
+    },
+    {
+      "kind": "endpoint_and_control",
+      "decision": "ACCEPT",
+      "findingDe": "Kleine volumetrisch protokollierte Zugaben unter Mischen, Abklingen des Carbonatumsatzes und getrennte pH-Prüfung vor AgNO3 verhindern die bisher unbestimmte Ein-Tropfen-Vorbereitung. Frische Wasser-/NaCl-/Carbonataliquote werden bis zum selben geprüften sauren Bereich vorbehandelt; die Säuremengen dürfen wegen unterschiedlicher Säurebedarfe variieren. Niederschlag in der Carbonat-Negativkontrolle macht die Chloridzuordnung ausdrücklich ungültig. Der Kontrollfehler bleibt wahrheitsgemäß erhalten und wird nicht als Chloridfarbe umgedeutet.",
+      "position": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB078-acidified-chloride-carbonate-control-author-successor-20261017-v2/HB078-four-ion-detection-supervised-practice.DE-EN.json",
+        "jsonPointers": [
+          "/suppliedMaterial/de",
+          "/suppliedMaterial/en",
+          "/freshTransfer/expected/de",
+          "/freshTransfer/expected/en"
+        ]
+      }
+    },
+    {
+      "kind": "prospective_safe_procedure",
+      "decision": "ACCEPT",
+      "findingDe": "Offenes Gefäß, lokale Lehrkraftprüfung von Mikropipette/pH-Papier/Ausführbarkeit, maximal0,20mL bereitgestellte0,10M-HNO3 und Stopps für fehlenden Endpunkt, pH<2, unklare Dosierung oder anhaltende Gasentwicklung bilden eine nachvollziehbare prospektive Grenze. Sauberer Glasstab überträgt nur einen Tropfen auf separates Papier; Papier kommt nicht in die Analysenprobe. Lernende neutralisieren nicht nachträglich. Die vorhandenen Schutz-, Aufsichts-, Entsorgungs- und übrigen Nachweisweggrenzen bleiben erhalten. Weder ein erfolgreicher Mikroversuch noch seine lokale praktische Zulässigkeit wird behauptet.",
+      "position": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB078-acidified-chloride-carbonate-control-author-successor-20261017-v2/HB078-four-ion-detection-supervised-practice.DE-EN.json",
+        "jsonPointers": [
+          "/suppliedMaterial/de",
+          "/suppliedMaterial/en"
+        ]
+      }
+    },
+    {
+      "kind": "bilingual_delta",
+      "decision": "ACCEPT",
+      "findingDe": "Die sechs geänderten DE-/EN-Felder stimmen in Proben-/Säuremengen, pH-Bereich, Reihenfolge, drei Kontrolltypen, Stopps und zulässiger Schlussfolgerung überein. Alle anderen Materialfelder sind exakt unverändert.",
+      "changedFields": [
+        "/suppliedMaterial/de",
+        "/suppliedMaterial/en",
+        "/expectedReasoning/de",
+        "/expectedReasoning/en",
+        "/freshTransfer/expected/de",
+        "/freshTransfer/expected/en"
+      ]
+    },
+    {
+      "kind": "retained_whole_contract_and_operative_reference",
+      "decision": "ACCEPT",
+      "findingDe": "Alle11goalExact- und profile-Körper sind exakt unverändert; die übrige Wissenschaft wurde nicht erneut gelesen oder neu genehmigt. Am betroffenen Record7 wurde genau die operative Materialzuordnung newAdditions[0].materialPath aufv2 aktualisiert und um den entsprechenden exakten materialPin ergänzt. Die unveränderte innere Profilprosa enthält weiterhin den historischen v1-Locator; die endgültige Integration muss diesen Bezug eindeutig durch den ausdrücklich gepinnten v2-Nachfolger auflösen. Dieser Followup akzeptiert ausschließlichv2, keine Wiederverwendung des fehlerhaftenv1-Protokolls.",
+      "position": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB078-acidified-chloride-carbonate-control-author-successor-20261017-v2/AUTHOR.eleven-whole-profiles.HB078-material-v2.pending.json",
+        "jsonPointers": [
+          "/records/7/newAdditions/0/materialPath",
+          "/records/7/newAdditions/0/materialPin",
+          "/records/7/profile/applicationCaseBriefs/2/understandingFocusDe",
+          "/records/7/profile/applicationCaseBriefs/2/understandingFocusEn"
+        ]
+      }
+    }
+  ],
+  "ownArithmetic": {
+    "carbonateMicroMol": 5.0,
+    "stoichiometricHPlusMicroMol": 10.0,
+    "acidCapMicroMol": 20.0,
+    "maxAcidVolumeML": 0.2,
+    "maxAcidMolPerL": 0.1,
+    "illustrationOnly": {
+      "acidVolumeML": 0.125,
+      "idealResidualAcidPHAfterCompletedCarbonateReaction": 2.3979400086720375,
+      "boundary": "Nur unabhängiger idealisierter Plausibilitätscheck für vorhandenen Dosierungsspielraum, kein gemessener pH und keine feste neue Dosieranweisung. Maßgeblich bleibt der geprüfte tatsächliche Endpunkt."
+    }
+  },
+  "primarySource": {
+    "title": "Canadian Conservation Institute Notes4/5",
+    "url": "https://www.canada.ca/en/conservation-institute/services/conservation-preservation-publications/canadian-conservation-institute-notes/test-chloride-ions-iron-treatment-silver-nitrate.html",
+    "access": "Actual full primary page read earlier in this same reviewer session; no new external fetch claimed in this bounded followup",
+    "locators": [
+      "Chloride ion analysis,step5",
+      "Why sample solutions are acidified"
+    ],
+    "use": "Supports checking acidic endpoint and eliminating carbonate interference. Its different-scale concentrations/volumes provide no automatic practical approval of this micro-adaptation."
+  },
+  "carryForward": {
+    "unmodifiedFIRST": true,
+    "unmodifiedOriginalSeal": true,
+    "otherLaboratoryScientificJudgments": "Carry forward exactly from FIRST; no restart or additional approval.",
+    "source78ScientificComponent": "The single named scientific defect is resolved for this v2 only; actual safe own four-route performance and ordinary final source/course/native binding remain separate.",
+    "source135": "Still open for the exclusive C whole-carrier review; this followup makes no Source135 closure.",
+    "humanAndM7": "No HumanApproval,HumanTrial,actual learner execution or M7 total claim."
+  },
+  "blockingFindingsInTargetedDelta": [],
+  "license": "CC-BY-4.0",
+  "attribution": "SkillPilot,2026; independent AI-assisted scientific reviewer A"
+}

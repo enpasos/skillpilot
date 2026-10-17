@@ -1,0 +1,71 @@
+{
+  "materialId": "HB134-own-digital-titration-curve-evaluation",
+  "goalIds": [
+    "e0944fbb-0761-5f9c-afaa-3d4713ed1bed"
+  ],
+  "sourceOrdinals": [
+    134
+  ],
+  "status": "needs_human_review",
+  "reviewAuthority": "ai_candidate",
+  "authorDecision": "pending_independent_review",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "materialOrigin": {
+    "de": "Vollständiges eigenes Autorenmaterial. Zahlen/Referenzmuster sind ausdrücklich Aufgabenmodelle, keine tatsächlichen Lernendenmessungen oder Herstellerzertifikate.",
+    "en": "Complete own author material. Numbers/reference patterns are stipulated teaching models, not actual learner measurements or manufacturer certificates."
+  },
+  "scope": {
+    "de": "Nur die angegebenen HB-Quellenkomponenten im jeweiligen Kurs-/Themenscope; offizielle Wahlthemen und optionale Experimente bleiben qualifiziert. Alle bisherigen ganzen Ziele/Fälle gelten weiter.",
+    "en": "Only named HB source components within their course/topic scope; official choices and optional experiments remain qualified. Every previous whole goal/case remains required."
+  },
+  "performanceMode": "actual_digital_processing_of_existing_supervised_measurements",
+  "suppliedMaterial": {
+    "de": "Digitale Fortsetzung der beiden vollständig vorhandenen, selbst gemessenen pH-Kurvenfälle; kein neuer Versuch und keine Ersatzmessung. Benötigt werden die tatsächlichen eigenen Volumen-/pH-Paare samt Kalibrierung, Temperatur, Probenvolumen, Maßlösung und Volumenunsicherheit aus dem freigegebenen Originalfall. Ohne eigene Messung bleibt die praktische Pflicht offen. Ein Tabellen-/Plotwerkzeug und leere Spalten für V in mL, pH, ΔV, ΔpH/ΔV in mL−1 sowie die jeweilige Intervallmitte stehen bereit. Geprüfte manuelle Übertragung ist erlaubt; automatischer Export oder Sensoranschluss ist nicht vorgeschrieben. Keine Sollkurve als Messung eintragen.",
+    "en": "This digitally continues both existing personally measured pH-curve cases, not a new experiment or substitute measurement. Requires actual own volume/pH pairs, calibration, temperature, sample volume, actual titrant and raw-volume uncertainty from the released original case; without own measurement the practical duty remains open. Supply a digital table/plot tool with blank V(mL),pH,ΔV,ΔpH/ΔV(mL−1) and midpoint columns. Checked manual transcription is allowed; no automatic export or sensor link is required. Use data after proper release/acquisition, never fill an expected curve as measurements."
+  },
+  "learnerTask": {
+    "de": "Erstelle aus den eigenen Messpaaren tatsächlich eine digitale Datei für starke und schwache einprotonige Säure. Bewahre die Rohdaten, dokumentiere Korrekturen und zeichne beschriftete XY-Kurven V → pH. Berechne aus echten Nachbarpunkten ΔpH/ΔV und trage die Werte an den Intervallmitten auf. Begrenze den Äquivalenzbereich aus Messauflösung und Steigungsmaximum. Leite den experimentellen Halbäquivalenzpunkt der schwachen Säure aus demselben Veq-Befund ab; ermittle seinen pH aus eigenen Messpunkten oder begründeter Interpolation mit Unsicherheit. Es geht nicht um den halben pH-Wert.",
+    "en": "Actually create a digital file from own measurement pairs for strong and weak monoprotic acid. Preserve raw data, document every correction, make labelled XY V→pH plots and calculate neighbouring ΔpH/ΔV at interval midpoints. Bound equivalence from measurement resolution/slope maximum; derive weak-acid experimental half-equivalence from that same Veq finding. ObtainpH there from actual measurements or justified interpolation with uncertainty. It is not half thepH."
+  },
+  "expectedReasoning": {
+    "de": "Die digitale Datei zeigt überprüfbare Formeln, Zellbezüge und reale Herkunft. Die größte endliche Steigung begrenzt die Äquivalenzlage; sie liefert keine mathematisch exakte Stelle. Ungleiche Volumenschritte müssen im Nenner stehen. Vhalb ≈ Veq/2 gilt bei passender Stöchiometrie; pHhalb ≈ pKa nur unter der geprüften schwach-einprotonigen Näherung. Punktabstände und Kalibrierung begrenzen die Schätzung. Alle bisherigen Pflichten zu Planung, tatsächlicher Durchführung, starker und schwacher Kurve sowie Unsicherheit bleiben erhalten.",
+    "en": "The digital file shows checkable formulas/references and genuine provenance. Maximum finite slope localises a bounded equivalence region, not an exact point; unequal volume steps belong in the denominator. Vhalf≈Veq/2 under appropriate stoichiometry;pHhalf≈pKa only under the checked weak-monoprotic approximation. Coarse spacing/calibration limit the estimate. Old planning, actual execution, both strong/weak curves and uncertainty duties remain."
+  },
+  "freshTransfer": {
+    "task": {
+      "de": "Frisch: Im steilen Bereich wurde ein Schritt von 0,20 mL als 0,02 mL übertragen. Bewahre die Rohquelle, prüfe den Eintrag und berechne Darstellung, Steigung und Halbpunkt erneut.",
+      "en": "Fresh: a0.20mL step near the steep region was entered as0.02mL. Retain original record, check transcription and recompute plot/slope/halfpoint."
+    },
+    "expected": {
+      "de": "Der falsche Nenner verzehnfacht diese endliche Steigung. Korrigiere anhand der echten Quelle, nicht anhand eines gewünschten Veq, und bewahre die begründete neue Version auf. Äquivalenzbereich, Halbpunkt und Unsicherheit müssen erneut beurteilt werden.",
+      "en": "The denominator error multiplies that finite slope by10. Correct against the actual source, not desired Veq; retain a reasoned new version. Equivalence region/halfpoint may change, requiring renewed uncertainty assessment."
+    }
+  },
+  "rubric": {
+    "de": [
+      "Tatsächliche eigene digitale Auswertung der Titrationsmessdaten vorlegen.",
+      "Kurve, Steigung und Halbpunkt mit Einheiten und Unsicherheit begründen.",
+      "Frischen Übertragungsfehler bearbeiten, ohne Rohdaten zu erfinden."
+    ],
+    "en": [
+      "Show actual own digital evaluation of titration measurements.",
+      "Explain curves/slopes/halfpoint with correct units and uncertainty.",
+      "Handle fresh transcription error without inventing data."
+    ]
+  },
+  "blankLearnerRecord": {
+    "actualProductOrActions": null,
+    "actualObservations": null,
+    "ownReasoning": null,
+    "freshTransfer": null,
+    "unresolvedEvidence": null
+  },
+  "actualLearnerPerformanceRecorded": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "active": false,
+  "M7Claim": false,
+  "ownMaterialLicense": "CC-BY-4.0",
+  "externalSourceRightsUnchanged": true
+}

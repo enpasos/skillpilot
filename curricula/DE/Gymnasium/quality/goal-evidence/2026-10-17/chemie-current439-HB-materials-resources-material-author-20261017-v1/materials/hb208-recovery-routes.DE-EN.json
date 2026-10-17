@@ -1,0 +1,55 @@
+{
+  "materialId": "hb208-recovery-routes",
+  "sourceOrdinals": [
+    208
+  ],
+  "title": {
+    "de": "Stoffliche und energetische Verwertung",
+    "en": "Material and energy recovery"
+  },
+  "status": "needs_human_review",
+  "reviewAuthority": "ai_candidate",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "active": false,
+  "humanApproval": false,
+  "actualLearnerPerformanceRecorded": false,
+  "M7Claim": false,
+  "ownMaterialLicense": "CC-BY-4.0",
+  "modelAndDataOrigin": {
+    "de": "Alle fiktiven Zahlen und Befunde sind eigene Unterrichtsmodelle, keine beobachtete Lernendenleistung, Produktprüfung oder Zulassung. Reale Quellen sind separat verzeichnet.",
+    "en": "All fictional numbers and findings are own teaching models, not observed learner performance, product testing or approval. Genuine sources are listed separately."
+  },
+  "givens": {
+    "de": "Reiner PE-Modellstrom100 kg, vereinfacht(CH2)n. M:Sortieren/Reinigen/Aufschmelzen→80 kg Granulat+20 kg Rest. C:chemisch Spalten/Aufarbeiten→70 kg gemischte organische Rohstoffe+30 kg Rest, kein fertiger Kunststoff. E:vollständige kontrollierte industrielle Verbrennung; Heizwert44 MJ/kg,20% Strom und40% tatsächlich genutzte Wärme, Rest Verluste. Inputs M/C, Emissionen, Qualität und Restbehandlung fehlen.1 kWh=3,6 MJ; M(CH2)=14 g/mol,M(CO2)=44 g/mol. Nur Papieranalyse, keine Verbrennung.",
+    "en": "Pure PE model100 kg, simplified(CH2)n. M:sorting/cleaning/remelting→80 kg granulate+20 kg residue. C:chemical cleavage/work-up→70 kg mixed organic feedstock+30 kg residue, not finished polymer. E:complete controlled industrial combustion;44 MJ/kg heating value,20% electricity and40% actually useful heat, rest losses. M/C inputs, emissions, quality and residue treatment absent.1 kWh=3.6 MJ;M(CH2)=14 g/mol,M(CO2)=44 g/mol. Paper analysis only, no burning."
+  },
+  "learnerTask": {
+    "de": "Beschreibe werkstoffliche, rohstoffliche und energetische Wege. Bilanziere E-Energie und idealen direkten CO2-Ausstoß. Erkläre, weshalb kg Granulat/Rohstoff und Strom keine gleiche Funktion liefern. Formuliere ein bedingtes Urteil und fehlende LCA-Daten.",
+    "en": "Describe mechanical, feedstock and energy routes. Balance E energy and ideal direct CO2. Explain why kg granulate/feedstock and electricity do not supply equal functions. Give a conditional judgment and missing LCA data."
+  },
+  "modelSolution": {
+    "de": "M erhält Polymerketten weitgehend; C erzeugt kleinere Rohstoffe; E verbraucht Polymer durch Oxidation zur Energienutzung, kein stoffliches Recycling.4400 MJ Einsatz,880 MJ=244,4 kWh Strom,1760 MJ=488,9 kWh Wärme. CH2+1,5O2→CO2+H2O;100·44/14=314,3 kg direktes CO2 ideal. Keine Lebenszyklusrangliste ohne gleiche Funktion/Systemgrenze.",
+    "en": "M largely retains chains; C makes smaller feedstocks; E consumes polymer by oxidation for useful energy, not material recycling.4400 MJ input,880 MJ=244.4 kWh electricity,1760 MJ=488.9 kWh heat. CH2+1.5O2→CO2+H2O;100·44/14=314.3 kg ideal direct CO2. No LCA ranking without equal function/boundary."
+  },
+  "freshTransfer": {
+    "task": {
+      "de": "Neuer Abfall hat unbekannte PVC-/PE-Anteile, verschmutzte Mehrschichten und keinen Abnehmer für M-Granulat. Welche Rechnung/Folgerung bleibt tragfähig?",
+      "en": "New waste has unknown PVC/PE fractions, dirty multilayers and no buyer for M granulate. Which calculation/inference remains justified?"
+    },
+    "expected": {
+      "de": "PE-Reinbilanz/Heizwert nicht übernehmen. Zusammensetzung, Sortierbarkeit, Abgasreinigung und reale Produktsubstitution klären. Stoff-/Energieunterscheidung bleibt gültig.",
+      "en": "Do not transfer pure-PE balance/heating value. Resolve composition, sortability, flue-gas treatment and actual product substitution. Material/energy distinction remains valid."
+    }
+  },
+  "rubric": {
+    "de": "Drei Pfade; korrekte Einheiten/Bilanz; Funktionsvergleich; ehrlicher Gemischtransfer.",
+    "en": "Three routes; correct units/balance; functional comparison; honest mixture transfer."
+  },
+  "blankLearnerRecord": {
+    "ownWork": null,
+    "actualActionTrace": null,
+    "sourcesActuallyRead": null,
+    "freshTransfer": null
+  }
+}

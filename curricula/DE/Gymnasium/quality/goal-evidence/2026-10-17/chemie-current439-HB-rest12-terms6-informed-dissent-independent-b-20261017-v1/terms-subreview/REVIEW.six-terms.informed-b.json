@@ -1,0 +1,571 @@
+{
+  "role": "Independent B informed follow-up of exactly six term disagreements; frozen FIRSTs preserved",
+  "createdAtUTC": "2026-10-17T15:02:12.651436+00:00",
+  "inputPin": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-rest12-terms6-informed-dissent-input-20261017-v1/INPUT.informed-twelve-clause-six-term-disagreements.json",
+    "sha256": "7798aad012ad3c50567f3a573fb03cfa3e653616edbe0a8f85c20a963b437001",
+    "bytes": 177421
+  },
+  "scope": "Only termDisagreements[0..5]; clauseDisagreements were not read for judgments. No other previous disagreements or agreements reconsidered.",
+  "sourceScopeRules": {
+    "HB15-HB21-frames": {
+      "thick": "Mandatory content, terminology and process competencies within applicable course/topic",
+      "thin": "Optional contexts, Vertiefungen and experiment suggestions; a separately mandatory process may still require practical activity without mandating every listed example."
+    },
+    "HB37-all-courses": [
+      "1.1",
+      "1.2",
+      "1.3",
+      "3.1",
+      "3.2",
+      "3.3",
+      "4.1"
+    ],
+    "HB37-LK-additional": [
+      "4.3"
+    ],
+    "HB37-choice": {
+      "from": [
+        "2.1",
+        "2.2",
+        "2.3",
+        "4.2"
+      ],
+      "GK": 1,
+      "LK": 2,
+      "authority": "Official topic choices fixed in advance by Abitur-year Schwerpunktkatalog; school subject conference determines sequence within rules. No learner selection or current Schwerpunkt inferred."
+    },
+    "skillpilotTargetPolicy": "PO may include all authored applicable topics in broader target. This does not convert official choices or thin-frame suggestions into universal curriculum duties, and does not establish persisted learner selection.",
+    "courseDimensions": "Original in-table LK markers and overall p37 topic applicability are independent. Introductory topics precede GK/LK; compatibility GK_LK means shared introductory requirement. Topic4.3 unlabelled rows are within-topic common, but p37 requires that topic only for LK."
+  },
+  "decisions": [
+    {
+      "termSetId": "HB2022-p17-E-ATOME-terms-GK_LK",
+      "term": "unpolare und polare Elektronenpaarbindung",
+      "sourceScope": {
+        "physicalPage": 17,
+        "topic": "E-ATOME",
+        "courseLevel": "GK_LK",
+        "originalCourseQualifier": "GK_LK",
+        "frame": "thick",
+        "officialTopicStatus": "mandatory_introductory_phase",
+        "selectionRule": null,
+        "selectedByLearner": null,
+        "universalOfficialRequirement": true
+      },
+      "originalRequiredOperators": [],
+      "sourceInterpretation": "Mandatory vocabulary within the applicable topic and course; does not add an unprinted performance command or mandate optional experiments.",
+      "firstA": "ACCEPT",
+      "firstB": "HOLD",
+      "informed": true,
+      "newExperimentOrPerformanceOperatorAdded": false,
+      "decision": "HOLD",
+      "changedFromFirstB": false,
+      "actualConceptUse": {
+        "polarBond": true,
+        "nonpolarBond": false
+      },
+      "fullSourceTermUseComplete": false,
+      "rationaleDe": "Der Originaleintrag verlangt beide Bindungsbegriffe, aber keinen neuen Versuchsoperator. 747c verlangt EN-Differenzen/Partialladungen fuer HCl, C-O und O-H. Das explizite CO2-Beispiel trennt ein unpolares Gesamtmolekuel von seinen polaren C-O-Bindungen. 2353 verlangt Lewis/Mesomerie fuer H2O/CO2/Nitrat/Carbonat. Keiner dieser konkreten Faelle verwendet eine unpolare Elektronenpaarbindung. Die breite A-Begruendung zur Atombau-/Bindungsmodellierung schliesst diese besondere Luecke nicht.",
+      "witnesses": [
+        {
+          "goalId": "747c5777-07d7-51a9-9be3-7d0d6f51d4e2",
+          "goalTitle": "Bindungs- und Molekülpolarität ableiten",
+          "goalDescription": "Die lernende Person kann Elektronegativitätsunterschiede zur Erklärung von Bindungspolaritäten nutzen, daraus mit der Molekülgeometrie die Molekülpolarität ableiten und Elektronendichte- sowie ladungscodierte Oberflächendarstellungen interpretieren.",
+          "expectations": [
+            {
+              "id": "content-specific-understanding",
+              "essentialUnderstandingDe": "Bindungspolarität folgt ungleicher Anziehung der Bindungselektronen; der Moleküldipol hängt zusätzlich von Geometrie und vektorieller Überlagerung ab. Farbige Oberflächen benötigen eine ausdrückliche Legende.",
+              "essentialUnderstandingEn": "Bond polarity follows unequal attraction of bonding electrons; a molecular dipole additionally depends on geometry and vector combination. Coloured surfaces require an explicit legend.",
+              "observablePerformanceDe": "HClΔEN1,0:Hδ+/Clδ− und Nettodipol. C–OΔEN0,8:Cδ+/Oδ−; im linearenCO2 heben zwei gleichgroße entgegengesetzte Bindungsdipole einander auf. Farben kodieren gemäß Legende lokale Verteilung, nicht die Gesamtladung oder eine absolute Elektronenzahl.",
+              "observablePerformanceEn": "HClΔEN1.0:Hδ+/Clδ− and net dipole. C–OΔEN0.8:Cδ+/Oδ−; two equal opposite bond dipoles cancel in linearCO2. Colours encode local distribution according to the legend, not total charge or absolute electron count."
+            }
+          ],
+          "applicationCases": [
+            {
+              "id": "chem-next25-747c5777-case-1",
+              "taskDemandDe": "Gegeben EN:H2,2;C2,6;O3,4;Cl3,2. HCl ist zweiatomig, CO2 linear180°. Schematische Oberflächenkarte CO2:[rot O]—[blau C]—[rot O]; Legende rot=elektronenreicher/δ−,blau=elektronenärmer/δ+. Eine separate Dichtekarte für HCl zeigt stärkere Dichte auf der Cl-Seite. BerechneΔEN, markiere Partialladungen und deute beide Darstellungsarten. Begründe unterschiedliche Nettodipole trotz polarer Bindungen.",
+              "taskDemandEn": "Given EN:H2.2;C2.6;O3.4;Cl3.2. HCl is diatomic, CO2 linear180°. Schematic CO2 surface card:[red O]—[blue C]—[red O]; legend red=electron-rich/δ−,blue=electron-poor/δ+. A separate HCl density card shows greater density on the Cl side. CalculateΔEN, mark partial charges and interpret both representations. Explain different net dipoles despite polar bonds.",
+              "expectedPerformanceDe": "HClΔEN1,0:Hδ+/Clδ− und Nettodipol. C–OΔEN0,8:Cδ+/Oδ−; im linearenCO2 heben zwei gleichgroße entgegengesetzte Bindungsdipole einander auf. Farben kodieren gemäß Legende lokale Verteilung, nicht die Gesamtladung oder eine absolute Elektronenzahl.",
+              "expectedPerformanceEn": "HClΔEN1.0:Hδ+/Clδ− and net dipole. C–OΔEN0.8:Cδ+/Oδ−; two equal opposite bond dipoles cancel in linearCO2. Colours encode local distribution according to the legend, not total charge or absolute electron count.",
+              "understandingFocusDe": "Unpolar als Gesamtmolekül bedeutet nicht, dass die einzelneC–O-Bindung unpolar ist.",
+              "understandingFocusEn": "A nonpolar overall molecule does not mean that eachC–O bond is nonpolar."
+            }
+          ],
+          "wholeGoalBodySHA256": "4aee6a838b53c3277411be9cdfafd3fc041481026b8a36ccd26f432aa2306225",
+          "wholeProfileBodySHA256": "a00f07a298886d45019274ffb4dca6d0d9f1af57d937817e1f69f1d9162a4e78"
+        },
+        {
+          "goalId": "23533087-89ea-5f29-8ec1-9f2e01197bb6",
+          "goalTitle": "Valenzstrichformeln und Mesomerie aufstellen",
+          "goalDescription": "Die lernende Person kann mithilfe der Edelgasregel die Bindigkeit von Nichtmetall-Atomen vorhersagen und Valenzstrichformeln von Molekülen sowie ausgewählten Molekül-Ionen unter Einbezug mesomerer Grenzstrukturen aufstellen.",
+          "expectations": [
+            {
+              "id": "content-specific-understanding",
+              "essentialUnderstandingDe": "Die Edelgasregel begründet einfache Nichtmetall-Bindigkeit; Lewis-Strukturen erhalten Valenzelektronen und Ladung. Mesomere Grenzstrukturen unterscheiden Elektronenverteilung, nicht Atomverknüpfung und nicht wechselnde Molekülsorten.",
+              "essentialUnderstandingEn": "The noble-gas rule explains simple nonmetal valence; Lewis structures conserve valence electrons and charge. Resonance contributors change electron distribution, not connectivity or alternating molecular species.",
+              "observablePerformanceDe": "H2O:zweiO–H-Bindungen,zwei freieO-Paare. CO2:O=C=O,jedesO zwei freiePaare. Nitrat:je eineN=O,zweiN–O−; N+, Doppelbindungs-O mit zwei freienPaaren,einfacheO mit je drei. Gesamt−1/24Elektronen, dreiLagen derDoppelbindung. Der realeHybrid besitzt gleichwertigeN–O-Bindungen.",
+              "observablePerformanceEn": "H2O:twoO–H bonds,twoO lone pairs. CO2:O=C=O,eachO two lone pairs. Nitrate:oneN=O,twoN–O−;N+,double-bondedO with two lone pairs,single-bondedO with three each. Total−1/24 electrons,three double-bond positions. The real hybrid has equivalentN–O bonds."
+            },
+            {
+              "id": "fresh-transfer-and-model-boundary",
+              "essentialUnderstandingDe": "Oktett-/Bindigkeitsregeln sind auf die angegebenen einfachen Beispiele begrenzt; sie ersetzen nicht die Prüfung von Radikalen, Elektronenmangel oder erweiterten Modellen.",
+              "essentialUnderstandingEn": "Octet/valence rules are bounded to these simple examples; they do not replace checking radicals,electron deficiency or expanded models.",
+              "observablePerformanceDe": "Drei äquivalenteStrukturen:je eineC=O mit zwei freienO-Paaren,zweiC–O− mit je dreiPaaren;C formal0,Gesamt−2. AlleAtome Oktett,24Elektronen. GleichwertigerHybrid statt dauerhaft ausgewählterC=O; mittlere Bindungsordnung im Modell4/3.",
+              "observablePerformanceEn": "Three equivalent contributors:oneC=O with twoO lone pairs,twoC–O− with three each;C formal0,total−2. Every atom has an octet,24 electrons. An equivalent hybrid replaces a permanently selectedC=O; model average bond order4/3."
+            }
+          ],
+          "applicationCases": [
+            {
+              "id": "chem-next25-23533087-case-1",
+              "taskDemandDe": "Valenzelektronen:H1,C4,N5,O6. Gegeben:H2O,CO2 undNO3− mit N als Zentralatom. Die Gesamtzahl fürNO3− ist5+3×6+1=24. Atomgerüst N mit dreiO bleibt fest. Stelle vollständige Lewis-Strukturen auf; leite einfacheO-/C-Bindigkeit her und zeichne drei äquivalenteNitrat-Grenzstrukturen mit freienPaaren und Formalladungen.",
+              "taskDemandEn": "Valence electrons:H1,C4,N5,O6. Given:H2O,CO2 andNO3− with centralN. NO3− total is5+3×6+1=24. The skeletonN with threeO remains fixed. Draw complete Lewis structures; derive simpleO/C valence and draw three equivalent nitrate contributors with lone pairs and formal charges.",
+              "expectedPerformanceDe": "H2O:zweiO–H-Bindungen,zwei freieO-Paare. CO2:O=C=O,jedesO zwei freiePaare. Nitrat:je eineN=O,zweiN–O−; N+, Doppelbindungs-O mit zwei freienPaaren,einfacheO mit je drei. Gesamt−1/24Elektronen, dreiLagen derDoppelbindung. Der realeHybrid besitzt gleichwertigeN–O-Bindungen.",
+              "expectedPerformanceEn": "H2O:twoO–H bonds,twoO lone pairs. CO2:O=C=O,eachO two lone pairs. Nitrate:oneN=O,twoN–O−;N+,double-bondedO with two lone pairs,single-bondedO with three each. Total−1/24 electrons,three double-bond positions. The real hybrid has equivalentN–O bonds.",
+              "understandingFocusDe": "Mesomeriepfeile bedeuten keine reale zeitliche Wanderung einzelner O-Atome oder ein Gleichgewicht zwischen drei unterscheidbaren Nitrat-Ionen.",
+              "understandingFocusEn": "Resonance arrows imply neitherO atoms physically moving over time nor an equilibrium of three distinguishable nitrate ions."
+            },
+            {
+              "id": "chem-next25-23533087-case-2",
+              "taskDemandDe": "Frischer Fall:CO3²−,C-Zentralatom,4+3×6+2=24 Valenzelektronen. Ein Entwurf zeichnet eineC=O und zweiC–O, aber keine Ladungen oder freienPaare und behauptet „einO bindet dauernd stärker“. Vervollständige alle Grenzstrukturen und korrigiere die Deutung mit Elektronen-/Ladungsbilanz.",
+              "taskDemandEn": "Fresh case:CO3²−,centralC,4+3×6+2=24 valence electrons. A draft shows oneC=O and twoC–O,but no charges or lone pairs,and claims“oneO is permanently more strongly bonded”. Complete all contributors and correct the interpretation using electron/charge accounting.",
+              "expectedPerformanceDe": "Drei äquivalenteStrukturen:je eineC=O mit zwei freienO-Paaren,zweiC–O− mit je dreiPaaren;C formal0,Gesamt−2. AlleAtome Oktett,24Elektronen. GleichwertigerHybrid statt dauerhaft ausgewählterC=O; mittlere Bindungsordnung im Modell4/3.",
+              "expectedPerformanceEn": "Three equivalent contributors:oneC=O with twoO lone pairs,twoC–O− with three each;C formal0,total−2. Every atom has an octet,24 electrons. An equivalent hybrid replaces a permanently selectedC=O; model average bond order4/3.",
+              "understandingFocusDe": "Oktett-/Bindigkeitsregeln sind auf die angegebenen einfachen Beispiele begrenzt; sie ersetzen nicht die Prüfung von Radikalen, Elektronenmangel oder erweiterten Modellen.",
+              "understandingFocusEn": "Octet/valence rules are bounded to these simple examples; they do not replace checking radicals,electron deficiency or expanded models."
+            }
+          ],
+          "wholeGoalBodySHA256": "3cbf464943f0dc4a73d9f07c51967619ac9ac7a6d01bbd5b97206546baf7354d",
+          "wholeProfileBodySHA256": "d439344f83799a30606c8ca3717756ff0c85e424097f4a608b6aa3a23028657c"
+        }
+      ]
+    },
+    {
+      "termSetId": "HB2022-p27-2.2-terms-GK_LK",
+      "term": "Primär-, Sekundär-, Tertiär- und Quartärstruktur",
+      "sourceScope": {
+        "physicalPage": 27,
+        "topic": "2.2",
+        "courseLevel": "GK_LK",
+        "originalCourseQualifier": "GK_LK",
+        "frame": "thick",
+        "officialTopicStatus": "selected_topic_requirement",
+        "selectionRule": "HB37-GK-one-LK-two-from-2.1-2.2-2.3-4.2",
+        "selectedByLearner": null,
+        "universalOfficialRequirement": false
+      },
+      "originalRequiredOperators": [],
+      "sourceInterpretation": "Mandatory vocabulary within the applicable topic and course; does not add an unprinted performance command or mandate optional experiments.",
+      "firstA": "ACCEPT",
+      "firstB": "HOLD",
+      "informed": true,
+      "newExperimentOrPerformanceOperatorAdded": false,
+      "decision": "ACCEPT",
+      "changedFromFirstB": true,
+      "actualConceptUse": true,
+      "fullSourceTermUseComplete": true,
+      "rationaleDe": "Auf dem hier gefragten Terminologieniveau traegt die aktuelle Union065d+197b den zusammengesetzten Begriff. 065d ordnet Peptidrueckgrat-Helices, Seitenkettenkontakte und Untereinheitenkontakte konkret den hoeheren Strukturebenen zu. C197b benennt die Peptidbindung ausdruecklich als Verknuepfungsprinzip der Primaerstruktur. Sein Pflichtfall case-a verlangt nicht nur einen Namen: gerichtetes Gly-Ala wird mit Carboxyl-Gly/Amino-Ala-Verknuepfung und erhaltenen Amino-/Carboxyltermini formuliert. Damit ist eine geordnete Aminosaeureverknuepfung positiv pruefbar. Eine ganze Proteinsequenz, Sequenzvergleich oder zusaetzliche Darstellungsleistung waere aus dieser reinen Fachbegriffsliste ein staerkerer ungedruckter Operator. Das korrigiert den engen B-Term-HOLD; die gesonderte Bewertung der vollstaendigen leistungsbezogenen Quellenklausel165 bleibt Aufgabe des Elternreviews und wird hier nicht vorweggenommen.",
+      "qualification": "ACCEPT only for terminology/concept use by the current two-carrier union; not approval of the complete four-level source performance clause, full P science, beta-sheet coverage or a new task quota.",
+      "actualWitnessCarrierIds": [
+        "065d764c-daec-5d35-95da-3e922d2029c7",
+        "197bc2c5-835e-59e7-9263-5684e89799cc"
+      ],
+      "authorProposalCorrectedByCurrentSupplementalWitness": true,
+      "witnesses": [
+        {
+          "goalId": "065d764c-daec-5d35-95da-3e922d2029c7",
+          "goalTitle": "Proteinstruktur und Faltung",
+          "goalDescription": "Die lernende Person kann Sekundär-, Tertiär- und Quartärstrukturen von Proteinen über Wechselwirkungen zwischen Peptidgruppen beziehungsweise Seitenketten erklären und daraus Eigenschaften ableiten.",
+          "expectations": [
+            {
+              "id": "aspect-1",
+              "essentialUnderstandingDe": "Strukturebenenundkonkrete Kontakte zuordnen.",
+              "essentialUnderstandingEn": "Assign structure levels and specific contacts.",
+              "observablePerformanceDe": "Helices: H-Brücken des Peptidrückgrats. Tertiär: Seitenketten-H-Brücken, Ionenpaare, van-der-Waals/hydrophober Effekt, ggf Disulfide. Quartär: vergleichbare Kontakte zwischen Untereinheiten, ggf Interketten-Disulfide; mehrere Ketten allein istkeine Wechselwirkung.",
+              "observablePerformanceEn": "Helices: backbone H-bonds. Tertiary: sidechain H-bonds, ion pairs, van der Waals/hydrophobic effect, possible disulfides. Quaternary: interactions between subunits, possible interchain disulfides; multiple chains alone is an arrangement, not an interaction."
+            },
+            {
+              "id": "aspect-2",
+              "essentialUnderstandingDe": "Kontakte aufeinenneuen Strukturfallübertragen.",
+              "essentialUnderstandingEn": "Transfer contacts to another structural case.",
+              "observablePerformanceDe": "Erster Fallkann Quartärverbandverändern, zweiter Tertiärfaltung; beidekönnen Funktionbeeinflussen, müssenaberkeine Primärstrukturhydrolysieren. Umgebungsbedingungen/Kompensationverhindernsichere Allgemeinprognose.",
+              "observablePerformanceEn": "First may affect quaternary assembly, second tertiary folding; both can change function without primary hydrolysis. Environment/compensation limit predictions."
+            }
+          ],
+          "applicationCases": [
+            {
+              "id": "case-1",
+              "taskDemandDe": "Ein Tetramer besitzt Helices, gefaltete Untereinheiten und Kontaktflächen. Erkläre stabilisierende Wechselwirkungen auf Sekundär-, Tertiär- und Quartärebene; beziehe H-Brücken, Ionenpaare, van-der-Waals-Kontakte, hydrophoben Effekt und mögliche Disulfidbrücken passend ein.",
+              "taskDemandEn": "A tet ramer has helice s, folded subunits and inteRfaces. Explain stabilising interactions at secondary, tertiary, quaternary level, using H-bonds, ion pairs, van der Waals, hydrophobic effect and possible disulfides appropriately.",
+              "expectedPerformanceDe": "Helices: H-Brücken des Peptidrückgrats. Tertiär: Seitenketten-H-Brücken, Ionenpaare, van-der-Waals/hydrophober Effekt, ggf Disulfide. Quartär: vergleichbare Kontakte zwischen Untereinheiten, ggf Interketten-Disulfide; mehrere Ketten allein istkeine Wechselwirkung.",
+              "expectedPerformanceEn": "Helices: backbone H-bonds. Tertiary: sidechain H-bonds, ion pairs, van der Waals/hydrophobic effect, possible disulfides. Quaternary: interactions between subunits, possible interchain disulfides; multiple chains alone is an arrangement, not an interaction.",
+              "understandingFocusDe": "Strukturebenenundkonkrete Kontakte zuordnen.",
+              "understandingFocusEn": "Assign structure levels and specific contacts."
+            },
+            {
+              "id": "case-2",
+              "taskDemandDe": "Ein Ionenpaar zwischen Untereinheiten wirddurch Seitenkettenaustausch aufgelöst; in einemanderen Modellwird einhydrophober Tertiärkern destabilisiert. Vergleiche mögliche Folgenfür Untereinheitenverbund, Faltung und Funktion; benenne Vorhersagegrenzen.",
+              "taskDemandEn": "Compare breaking an inter-subunit ion pair with destabilising a hydrophobic tertiary core. Predict bounded effects on assembly, folding and function.",
+              "expectedPerformanceDe": "Erster Fallkann Quartärverbandverändern, zweiter Tertiärfaltung; beidekönnen Funktionbeeinflussen, müssenaberkeine Primärstrukturhydrolysieren. Umgebungsbedingungen/Kompensationverhindernsichere Allgemeinprognose.",
+              "expectedPerformanceEn": "First may affect quaternary assembly, second tertiary folding; both can change function without primary hydrolysis. Environment/compensation limit predictions.",
+              "understandingFocusDe": "Kontakte aufeinenneuen Strukturfallübertragen.",
+              "understandingFocusEn": "Transfer contacts to another structural case."
+            }
+          ],
+          "wholeGoalBodySHA256": "00f0a39575ee19b224cf7d9d5bf91e7c4c9dd91dd4b4539d92e1068662153d26",
+          "wholeProfileBodySHA256": "e151f690aca37953636cd22e516aeab713209c888ac2495a6be99be6413eb812"
+        },
+        {
+          "goalId": "197bc2c5-835e-59e7-9263-5684e89799cc",
+          "goalTitle": "Peptidbindungen erklären",
+          "goalDescription": "Die lernende Person kann Kondensationsreaktionen zwischen Aminosäuren formulieren, Peptidbindungen als Verknüpfungsprinzip der Primärstruktur erklären und deren räumlichen Bau sowie Stabilität mit Mesomerie deuten.",
+          "expectations": [
+            {
+              "id": "structure-and-evidence",
+              "essentialUnderstandingDe": "Die Peptidbindung ist eine mesomeriestabilisierte Amidbindung und bestimmt lokale Geometrie.",
+              "essentialUnderstandingEn": "The peptide bond is a resonance-stabilised amide determining local geometry.",
+              "observablePerformanceDe": "Die Carboxygruppe des Glycins und Aminogruppe des Alanins bilden -CO-NH- plus H2O; Amino- und Carboxyterminus bleiben. Das ist eine Bilanz, keine spontane Reaktion in Wasser.",
+              "observablePerformanceEn": "Glycine carboxyl and alanine amino groups form -CO-NH- plus H2O, retaining amino and carboxyl termini. This is formal balance, not spontaneous reaction in water."
+            }
+          ],
+          "applicationCases": [
+            {
+              "id": "case-a",
+              "taskDemandDe": "Formuliere formal die Kondensation von Glycin und Alanin zum Dipeptid Gly-Ala. Markiere die abgegebene Wassergruppe, Amidbindung und freien Enden.",
+              "taskDemandEn": "Formally write condensation of glycine and alanine to Gly-Ala. Mark eliminated water, amide linkage and free termini.",
+              "expectedPerformanceDe": "Die Carboxygruppe des Glycins und Aminogruppe des Alanins bilden -CO-NH- plus H2O; Amino- und Carboxyterminus bleiben. Das ist eine Bilanz, keine spontane Reaktion in Wasser.",
+              "expectedPerformanceEn": "Glycine carboxyl and alanine amino groups form -CO-NH- plus H2O, retaining amino and carboxyl termini. This is formal balance, not spontaneous reaction in water.",
+              "understandingFocusDe": "Die Peptidbindung ist eine mesomeriestabilisierte Amidbindung und bestimmt lokale Geometrie.",
+              "understandingFocusEn": "The peptide bond is a resonance-stabilised amide determining local geometry."
+            }
+          ],
+          "wholeGoalBodySHA256": "47c3f1cdd98a87be708f9cc5fb42575829f1ac39a479cb6ca17b112218736c07",
+          "wholeProfileBodySHA256": "288545b49d8df746cb35f55bb88326ec06a0ff0a93d203aea5a5713497761fdb"
+        }
+      ]
+    },
+    {
+      "termSetId": "HB2022-p34-4.1-terms-GK_LK",
+      "term": "Additiv",
+      "sourceScope": {
+        "physicalPage": 34,
+        "topic": "4.1",
+        "courseLevel": "GK_LK",
+        "originalCourseQualifier": "GK_LK",
+        "frame": "thick",
+        "officialTopicStatus": "mandatory_all_Q_courses_topic",
+        "selectionRule": null,
+        "selectedByLearner": null,
+        "universalOfficialRequirement": true
+      },
+      "originalRequiredOperators": [],
+      "sourceInterpretation": "Mandatory vocabulary within the applicable topic and course; does not add an unprinted performance command or mandate optional experiments.",
+      "firstA": "HOLD",
+      "firstB": "ACCEPT",
+      "informed": true,
+      "newExperimentOrPerformanceOperatorAdded": false,
+      "decision": "HOLD",
+      "changedFromFirstB": true,
+      "actualConceptUse": false,
+      "fullSourceTermUseComplete": false,
+      "rationaleDe": "Die A-Einwendung ist am aktuellen P begruendet. 0278-case-2 nennt Dicke, Morphologie, Additive und Kompostbedingungen gemeinsam als Grenzen der Uebertragung eines PLA-Foliennachweises. Weder Aufgabe noch Erwartung bestimmen ein Additiv als zusaetzlich eingebrachte Komponente mit einer konkreten Funktion oder einem zu erklaerenden Eigenschaftsbeitrag. Das vorhandene Wort in einer offenen Einflussliste war fuer den ersten B-ACCEPT ein zu schwacher Zeuge. Ein Experiment wird nicht nachgefordert; ein konkreter Begriffsgebrauch als zugesetzte Funktions-/Eigenschaftskomponente fehlt.",
+      "witnesses": [
+        {
+          "goalId": "0278a515-8990-5a1c-8a1b-a03382a144a3",
+          "goalTitle": "Biokunststoffe erläutern",
+          "goalDescription": "Die lernende Person kann Synthese und Eigenschaften von Polymilchsäure (PLA) beschreiben und Einsatzfelder nennen.",
+          "expectations": [
+            {
+              "id": "e2",
+              "essentialUnderstandingDe": "PLA-Eigenschaften hängen von Molmasse, Stereochemie, Morphologie und Temperatur ab.",
+              "essentialUnderstandingEn": "PLA properties depend on molar mass, stereochemistry, morphology and temperature.",
+              "observablePerformanceDe": "Verknüpft gegebene Eigenschaftsdaten mit einem geeigneten Einsatzfeld.",
+              "observablePerformanceEn": "Links supplied property data to a suitable application."
+            },
+            {
+              "id": "e3",
+              "essentialUnderstandingDe": "Biobasierte Herkunft und biologischer Abbau sind verschiedene Eigenschaften; Abbau ist umgebungsabhängig.",
+              "essentialUnderstandingEn": "Biobased origin and biodegradation are distinct properties; degradation depends on environment.",
+              "observablePerformanceDe": "Überträgt die Verwendung auf neue Temperatur-/Entsorgungsbedingungen ohne allgemeines Umweltversprechen.",
+              "observablePerformanceEn": "Transfers use to new thermal/end-of-life conditions without general environmental promises."
+            }
+          ],
+          "applicationCases": [
+            {
+              "id": "0278a515-case-2",
+              "taskDemandDe": "Vergleiche Synthesemodelle und Repetiermotiv. Wähle vorläufig für eine 80°C-Anwendung und erkläre warum der Foliennachweis nicht auf jedes B-Formteil übergeht. Nenne einen weiteren PLA-Einsatz mit passender Bedingung.",
+              "taskDemandEn": "Compare production models and repeat motif. Select provisionally for 80°C service and explain why film testing does not transfer to every B component. Give another PLA application with a suitable condition.",
+              "expectedPerformanceDe": "Beide Wege bilden das PLA-Estergerüst; direkte Kondensation setzt Wasser frei, Lactid-Ringöffnung nicht je Ringschritt. B-Kristallite können oberhalb Tg stützen, B daher vorläufig besser, Dauer-/Temperaturdaten fehlen. Dicke, Morphologie, Additive und Kompostbedingungen verändern Abbau; A-Foliennachweis gilt nicht pauschal für B. Beispielsweise 3 D-Druck eines wenig thermisch belasteten Innenraumteils nach Festigkeitsprüfung.",
+              "expectedPerformanceEn": "Both routes form the PLA ester backbone; direct condensation releases water while lactide ring opening does not per ring step. B crystallites can reinforce above Tg, making B provisionally preferable, with time/temperature evidence still needed. Thickness, morphology, additives and compost conditions alter degradation; A-film evidence does not automatically cover B. An example is a 3 D-printed low-temperature indoor part after strength testing.",
+              "understandingFocusDe": "Fallbezogene Aspekte: Kondensation setzt Wasser frei, Lactid-Ringöffnung nicht pro Ringschritt; beide PLA-Estergerüst. / Teilkristallines B bei 80°C vorläufig günstiger durch Kristallstützung; Dauer-/Temperaturdaten fehlen. / A-Folien-Kompostbefund nicht auf B-Formteil übertragen: Dicke/Morphologie/Additive; neuer 3D-Druckeinsatz bedingt prüfen. Die Verknüpfung zu Erwartungs-IDs behauptet keine vollständige Erfüllung jeder Gesamtprofilerwartung in diesem Einzelfall.",
+              "understandingFocusEn": "Case-specific aspects: Condensation eliminates water, lactide ring-opening not per ring step; both form PLA ester backbone. / Semicrystalline B provisionally preferable at 80°C through crystal support; duration/temperature data missing. / Do not transfer A film compost result to B moulding: thickness/morphology/additives; conditionally test new 3D-print use. Links to expectation IDs do not assert complete fulfilment of every whole-profile expectation in this one case."
+            }
+          ],
+          "wholeGoalBodySHA256": "e2dafce40b6687400c33a89c5f19c281f27ab538f7c32e99b796a447c3ef1819",
+          "wholeProfileBodySHA256": "c8804cf9aaa90de694a6ddc36fad1c55bec66e734b0234674df691c7a4ff7dd9"
+        }
+      ]
+    },
+    {
+      "termSetId": "HB2022-p35-4.2-terms-GK_LK",
+      "term": "Antiauxochrom",
+      "sourceScope": {
+        "physicalPage": 35,
+        "topic": "4.2",
+        "courseLevel": "GK_LK",
+        "originalCourseQualifier": "GK_LK",
+        "frame": "thick",
+        "officialTopicStatus": "selected_topic_requirement",
+        "selectionRule": "HB37-GK-one-LK-two-from-2.1-2.2-2.3-4.2",
+        "selectedByLearner": null,
+        "universalOfficialRequirement": false
+      },
+      "originalRequiredOperators": [],
+      "sourceInterpretation": "Mandatory vocabulary within the applicable topic and course; does not add an unprinted performance command or mandate optional experiments.",
+      "firstA": "ACCEPT",
+      "firstB": "HOLD",
+      "informed": true,
+      "newExperimentOrPerformanceOperatorAdded": false,
+      "decision": "HOLD",
+      "changedFromFirstB": false,
+      "actualConceptUse": true,
+      "fullSourceTermUseComplete": false,
+      "terminologyLabelQualification": "The conceptual role is assessable, but this exact curriculum label is not an explicit named answer in the current P; bind the label transparently without adding an experiment.",
+      "rationaleDe": "A und B stimmen zum konkreten Konzeptzeugen ueberein: Nitrogruppe als -M-Akzeptor wird in64b03eff-case-1 am planaren Donor-pi-Akzeptor-System mit510→430nm-Verschiebung erlaeutert. A qualifiziert seinen ACCEPT selbst: der Quellenname Antiauxochrom ist kein ausdruecklicher Antwortbestandteil des aktuellen P. Fuer den verlangten vollstaendigen Quellen-Fachbegriffsgebrauch bleibt deshalb die Zuordnung des Begriffs zur nachgewiesenen Gruppenfunktion offen. Das ist eine begrenzte Namens-/Begriffsbindungsluecke, keine fehlende Donator-Akzeptor-Wissenschaft und kein Anlass fuer einen neuen Versuch.",
+      "witnesses": [
+        {
+          "goalId": "64b03eff-a967-54a1-ace3-89cb7650a65c",
+          "goalTitle": "Substituenteneffekte in Farbstoff-Molekülen erklären",
+          "goalDescription": "Die lernende Person kann das Donator-Akzeptor-Konzept auf Farbstoff-Moleküle anwenden und den Einfluss funktioneller Gruppen auf die Farbigkeit der zugehörigen Stoffe erklären.",
+          "expectations": [
+            {
+              "id": "e1",
+              "essentialUnderstandingDe": "Donor und Akzeptor beeinflussen ein gekoppeltes π-System; der Effekt hängt von Stellung und Kopplung ab.",
+              "essentialUnderstandingEn": "Donor and acceptor groups affect a coupled pi system; the effect depends on position and coupling.",
+              "observablePerformanceDe": "Identifiziert Gruppen und verknüpft elektronischen Effekt mit Spektren.",
+              "observablePerformanceEn": "Identifies groups and connects electronic effects to spectra."
+            },
+            {
+              "id": "e2",
+              "essentialUnderstandingDe": "Protonierung oder unterbrochene Konjugation kann einen Donoreffekt verändern; eine Rotverschiebung ist keine universelle Gruppenregel.",
+              "essentialUnderstandingEn": "Protonation or interrupted conjugation can alter donation; a red shift is not a universal group rule.",
+              "observablePerformanceDe": "Begründet einen veränderten Übergang anhand konkreter Bedingungen.",
+              "observablePerformanceEn": "Explains a changed transition under specific conditions."
+            }
+          ],
+          "applicationCases": [
+            {
+              "id": "64b03eff-case-1",
+              "taskDemandDe": "Papiermodell eines planaren Donor–π–Akzeptor-Farbstoffs: para-(CH₃)₂N–C₆H₄–CH=CH–C₆H₄–NO₂. Gleicher Lösungsmittelzustand; λmax neutral 510 nm, nach Protonierung des Aminostickstoffs 430 nm. Die Nitrogruppe bleibt unverändert.\n1. Kennzeichne Donor und Akzeptor im neutralen Molekül und begründe die Kopplung über das π-System.\n2. Erkläre die Änderung des Aminodonors bei Protonierung und ordne die angegebene Verschiebungsrichtung sowie die Änderung der Übergangsenergie zu.",
+              "taskDemandEn": "Paper model of a planar donor–pi–acceptor dye: para-(CH₃)₂N–C₆H₄–CH=CH–C₆H₄–NO₂. Same solvent conditions; neutral λmax 510 nm and 430 nm after protonation at the amino nitrogen. The nitro group remains unchanged.\n1. Identify donor and acceptor in the neutral molecule and explain coupling through the pi system.\n2. Explain the amino donor change on protonation and identify the stated shift direction and transition-energy change.",
+              "expectedPerformanceDe": "1. –N(CH₃)₂ kann sein freies Elektronenpaar in das gekoppelte π-System einspeisen (+M); –NO₂ zieht über Mesomerie Elektronendichte ab (−M). Die sp²-Brücke ermöglicht Kopplung der beiden Enden.\n2. Nach H⁺-Bindung ist das Paar in einer N–H-Bindung gebunden; der neutrale +M-Donor steht nicht mehr so zur Verfügung. 510→430 nm ist hypsochrom; nach ΔE=hc/λ steigt die Übergangsenergie. Das erklärt diesen angegebenen Fall, keine universelle Regel für alle protonierten Farbstoffe.",
+              "expectedPerformanceEn": "1. –N(CH₃)₂ can donate its lone pair into the coupled pi system (+M); –NO₂ withdraws electron density through resonance (−M). The sp² bridge couples the two ends.\n2. After H⁺ bonding the pair forms the N–H bond, so the neutral +M donor is no longer available in the same way. 510→430 nm is hypsochromic; ΔE=hc/λ increases. This explains the supplied case rather than a universal rule for all protonated dyes.",
+              "understandingFocusDe": "–N(CH₃)₂ kann sein freies Elektronenpaar in das gekoppelte π-System einspeisen (+M); –NO₂ zieht über Mesomerie Elektronendichte ab (−M). Die sp²-Brücke ermöglicht Kopplung der beiden Enden. / Nach H⁺-Bindung ist das Paar in einer N–H-Bindung gebunden; der neutrale +M-Donor steht nicht mehr so zur Verfügung. 510→430 nm ist hypsochrom; nach ΔE=hc/λ steigt die Übergangsenergie.",
+              "understandingFocusEn": "–N(CH₃)₂ can donate its lone pair into the coupled pi system (+M); –NO₂ withdraws electron density through resonance (−M). The sp² bridge couples the two ends. / After H⁺ bonding the pair forms the N–H bond, so the neutral +M donor is no longer available in the same way. 510→430 nm is hypsochromic; ΔE=hc/λ increases."
+            },
+            {
+              "id": "64b03eff-case-2",
+              "taskDemandDe": "Zwei idealisierte Moleküle besitzen dieselben Amino-Donor- und Nitro-Akzeptor-Endgruppen. A hat eine planare –CH=CH–Brücke und λmax 500 nm. B hat –CH₂–CH₂– als Brücke und λmax 330 nm; Konzentration und Lösungsmittel sind gleich.\n1. Erkläre, welche Brücke Donor und Akzeptor mesomer koppelt, und begründe die Unterbrechung bei der anderen.\n2. Verknüpfe die zwei Absorptionsmaxima mit Übergangsenergie und sichtbarer Farbigkeit; beurteile die Aussage „Eine Nitrogruppe macht jedes Molekül farbig“.",
+              "taskDemandEn": "Two idealized molecules have the same amino donor and nitro acceptor end groups. A has a planar –CH=CH– bridge and λmax 500 nm. B has a –CH₂–CH₂– bridge and λmax 330 nm; concentration and solvent are equal.\n1. Explain which bridge couples donor and acceptor by resonance and why the other interrupts it.\n2. Connect both absorption maxima to transition energy and visible color; assess the claim “A nitro group makes every molecule colored”.",
+              "expectedPerformanceDe": "1. A besitzt benachbarte p-Orbitale über die sp²-Brücke. Bei B unterbrechen sp³-C die durchgehende Konjugation; die Endgruppen allein bilden kein langes gekoppeltes π-System.\n2. 500 nm liegt im sichtbaren Bereich und entspricht einer kleineren ΔE als 330 nm im UV. A kann durch sichtbare Absorption farbig sein; B wäre im gegebenen Modell ohne weitere sichtbare Banden farblos. Die Nitrogruppe allein garantiert keine sichtbare Absorption.",
+              "expectedPerformanceEn": "1. A has adjacent p orbitals through its sp² bridge. In B sp³ carbons interrupt continuous conjugation; end groups alone do not make a long coupled pi system.\n2. 500 nm is visible and corresponds to a smaller ΔE than ultraviolet 330 nm. A can be colored by visible absorption; B would be colorless in the given model without other visible bands. A nitro group alone does not guarantee visible absorption.",
+              "understandingFocusDe": "A besitzt benachbarte p-Orbitale über die sp²-Brücke. Bei B unterbrechen sp³-C die durchgehende Konjugation; die Endgruppen allein bilden kein langes gekoppeltes π-System. / 500 nm liegt im sichtbaren Bereich und entspricht einer kleineren ΔE als 330 nm im UV. A kann durch sichtbare Absorption farbig sein; B wäre im gegebenen Modell ohne weitere sichtbare Banden farblos. Die Nitrogruppe allein garantiert keine sichtbare Absorption.",
+              "understandingFocusEn": "A has adjacent p orbitals through its sp² bridge. In B sp³ carbons interrupt continuous conjugation; end groups alone do not make a long coupled pi system. / 500 nm is visible and corresponds to a smaller ΔE than ultraviolet 330 nm. A can be colored by visible absorption; B would be colorless in the given model without other visible bands. A nitro group alone does not guarantee visible absorption."
+            }
+          ],
+          "wholeGoalBodySHA256": "ba8c54af60087305a32aec281091f289a7845a2af95e671d21d2994b0bdc2ad6",
+          "wholeProfileBodySHA256": "8936fbf46566533a49755dd39a9da948a3786a2772183177b6ab522650dd1efb"
+        }
+      ]
+    },
+    {
+      "termSetId": "HB2022-p35-4.2-terms-GK_LK",
+      "term": "Auxochrom",
+      "sourceScope": {
+        "physicalPage": 35,
+        "topic": "4.2",
+        "courseLevel": "GK_LK",
+        "originalCourseQualifier": "GK_LK",
+        "frame": "thick",
+        "officialTopicStatus": "selected_topic_requirement",
+        "selectionRule": "HB37-GK-one-LK-two-from-2.1-2.2-2.3-4.2",
+        "selectedByLearner": null,
+        "universalOfficialRequirement": false
+      },
+      "originalRequiredOperators": [],
+      "sourceInterpretation": "Mandatory vocabulary within the applicable topic and course; does not add an unprinted performance command or mandate optional experiments.",
+      "firstA": "ACCEPT",
+      "firstB": "HOLD",
+      "informed": true,
+      "newExperimentOrPerformanceOperatorAdded": false,
+      "decision": "HOLD",
+      "changedFromFirstB": false,
+      "actualConceptUse": true,
+      "fullSourceTermUseComplete": false,
+      "terminologyLabelQualification": "The conceptual role is assessable, but this exact curriculum label is not an explicit named answer in the current P; bind the label transparently without adding an experiment.",
+      "rationaleDe": "A und B stimmen zum konkreten Konzeptzeugen ueberein: Dimethylaminogruppe als +M-Donator mit freiem Elektronenpaar und dessen Protonierung wird in64b03eff-case-1 am planaren Donor-pi-Akzeptor-System mit510→430nm-Verschiebung erlaeutert. A qualifiziert seinen ACCEPT selbst: der Quellenname Auxochrom ist kein ausdruecklicher Antwortbestandteil des aktuellen P. Fuer den verlangten vollstaendigen Quellen-Fachbegriffsgebrauch bleibt deshalb die Zuordnung des Begriffs zur nachgewiesenen Gruppenfunktion offen. Das ist eine begrenzte Namens-/Begriffsbindungsluecke, keine fehlende Donator-Akzeptor-Wissenschaft und kein Anlass fuer einen neuen Versuch.",
+      "witnesses": [
+        {
+          "goalId": "64b03eff-a967-54a1-ace3-89cb7650a65c",
+          "goalTitle": "Substituenteneffekte in Farbstoff-Molekülen erklären",
+          "goalDescription": "Die lernende Person kann das Donator-Akzeptor-Konzept auf Farbstoff-Moleküle anwenden und den Einfluss funktioneller Gruppen auf die Farbigkeit der zugehörigen Stoffe erklären.",
+          "expectations": [
+            {
+              "id": "e1",
+              "essentialUnderstandingDe": "Donor und Akzeptor beeinflussen ein gekoppeltes π-System; der Effekt hängt von Stellung und Kopplung ab.",
+              "essentialUnderstandingEn": "Donor and acceptor groups affect a coupled pi system; the effect depends on position and coupling.",
+              "observablePerformanceDe": "Identifiziert Gruppen und verknüpft elektronischen Effekt mit Spektren.",
+              "observablePerformanceEn": "Identifies groups and connects electronic effects to spectra."
+            },
+            {
+              "id": "e2",
+              "essentialUnderstandingDe": "Protonierung oder unterbrochene Konjugation kann einen Donoreffekt verändern; eine Rotverschiebung ist keine universelle Gruppenregel.",
+              "essentialUnderstandingEn": "Protonation or interrupted conjugation can alter donation; a red shift is not a universal group rule.",
+              "observablePerformanceDe": "Begründet einen veränderten Übergang anhand konkreter Bedingungen.",
+              "observablePerformanceEn": "Explains a changed transition under specific conditions."
+            }
+          ],
+          "applicationCases": [
+            {
+              "id": "64b03eff-case-1",
+              "taskDemandDe": "Papiermodell eines planaren Donor–π–Akzeptor-Farbstoffs: para-(CH₃)₂N–C₆H₄–CH=CH–C₆H₄–NO₂. Gleicher Lösungsmittelzustand; λmax neutral 510 nm, nach Protonierung des Aminostickstoffs 430 nm. Die Nitrogruppe bleibt unverändert.\n1. Kennzeichne Donor und Akzeptor im neutralen Molekül und begründe die Kopplung über das π-System.\n2. Erkläre die Änderung des Aminodonors bei Protonierung und ordne die angegebene Verschiebungsrichtung sowie die Änderung der Übergangsenergie zu.",
+              "taskDemandEn": "Paper model of a planar donor–pi–acceptor dye: para-(CH₃)₂N–C₆H₄–CH=CH–C₆H₄–NO₂. Same solvent conditions; neutral λmax 510 nm and 430 nm after protonation at the amino nitrogen. The nitro group remains unchanged.\n1. Identify donor and acceptor in the neutral molecule and explain coupling through the pi system.\n2. Explain the amino donor change on protonation and identify the stated shift direction and transition-energy change.",
+              "expectedPerformanceDe": "1. –N(CH₃)₂ kann sein freies Elektronenpaar in das gekoppelte π-System einspeisen (+M); –NO₂ zieht über Mesomerie Elektronendichte ab (−M). Die sp²-Brücke ermöglicht Kopplung der beiden Enden.\n2. Nach H⁺-Bindung ist das Paar in einer N–H-Bindung gebunden; der neutrale +M-Donor steht nicht mehr so zur Verfügung. 510→430 nm ist hypsochrom; nach ΔE=hc/λ steigt die Übergangsenergie. Das erklärt diesen angegebenen Fall, keine universelle Regel für alle protonierten Farbstoffe.",
+              "expectedPerformanceEn": "1. –N(CH₃)₂ can donate its lone pair into the coupled pi system (+M); –NO₂ withdraws electron density through resonance (−M). The sp² bridge couples the two ends.\n2. After H⁺ bonding the pair forms the N–H bond, so the neutral +M donor is no longer available in the same way. 510→430 nm is hypsochromic; ΔE=hc/λ increases. This explains the supplied case rather than a universal rule for all protonated dyes.",
+              "understandingFocusDe": "–N(CH₃)₂ kann sein freies Elektronenpaar in das gekoppelte π-System einspeisen (+M); –NO₂ zieht über Mesomerie Elektronendichte ab (−M). Die sp²-Brücke ermöglicht Kopplung der beiden Enden. / Nach H⁺-Bindung ist das Paar in einer N–H-Bindung gebunden; der neutrale +M-Donor steht nicht mehr so zur Verfügung. 510→430 nm ist hypsochrom; nach ΔE=hc/λ steigt die Übergangsenergie.",
+              "understandingFocusEn": "–N(CH₃)₂ can donate its lone pair into the coupled pi system (+M); –NO₂ withdraws electron density through resonance (−M). The sp² bridge couples the two ends. / After H⁺ bonding the pair forms the N–H bond, so the neutral +M donor is no longer available in the same way. 510→430 nm is hypsochromic; ΔE=hc/λ increases."
+            },
+            {
+              "id": "64b03eff-case-2",
+              "taskDemandDe": "Zwei idealisierte Moleküle besitzen dieselben Amino-Donor- und Nitro-Akzeptor-Endgruppen. A hat eine planare –CH=CH–Brücke und λmax 500 nm. B hat –CH₂–CH₂– als Brücke und λmax 330 nm; Konzentration und Lösungsmittel sind gleich.\n1. Erkläre, welche Brücke Donor und Akzeptor mesomer koppelt, und begründe die Unterbrechung bei der anderen.\n2. Verknüpfe die zwei Absorptionsmaxima mit Übergangsenergie und sichtbarer Farbigkeit; beurteile die Aussage „Eine Nitrogruppe macht jedes Molekül farbig“.",
+              "taskDemandEn": "Two idealized molecules have the same amino donor and nitro acceptor end groups. A has a planar –CH=CH– bridge and λmax 500 nm. B has a –CH₂–CH₂– bridge and λmax 330 nm; concentration and solvent are equal.\n1. Explain which bridge couples donor and acceptor by resonance and why the other interrupts it.\n2. Connect both absorption maxima to transition energy and visible color; assess the claim “A nitro group makes every molecule colored”.",
+              "expectedPerformanceDe": "1. A besitzt benachbarte p-Orbitale über die sp²-Brücke. Bei B unterbrechen sp³-C die durchgehende Konjugation; die Endgruppen allein bilden kein langes gekoppeltes π-System.\n2. 500 nm liegt im sichtbaren Bereich und entspricht einer kleineren ΔE als 330 nm im UV. A kann durch sichtbare Absorption farbig sein; B wäre im gegebenen Modell ohne weitere sichtbare Banden farblos. Die Nitrogruppe allein garantiert keine sichtbare Absorption.",
+              "expectedPerformanceEn": "1. A has adjacent p orbitals through its sp² bridge. In B sp³ carbons interrupt continuous conjugation; end groups alone do not make a long coupled pi system.\n2. 500 nm is visible and corresponds to a smaller ΔE than ultraviolet 330 nm. A can be colored by visible absorption; B would be colorless in the given model without other visible bands. A nitro group alone does not guarantee visible absorption.",
+              "understandingFocusDe": "A besitzt benachbarte p-Orbitale über die sp²-Brücke. Bei B unterbrechen sp³-C die durchgehende Konjugation; die Endgruppen allein bilden kein langes gekoppeltes π-System. / 500 nm liegt im sichtbaren Bereich und entspricht einer kleineren ΔE als 330 nm im UV. A kann durch sichtbare Absorption farbig sein; B wäre im gegebenen Modell ohne weitere sichtbare Banden farblos. Die Nitrogruppe allein garantiert keine sichtbare Absorption.",
+              "understandingFocusEn": "A has adjacent p orbitals through its sp² bridge. In B sp³ carbons interrupt continuous conjugation; end groups alone do not make a long coupled pi system. / 500 nm is visible and corresponds to a smaller ΔE than ultraviolet 330 nm. A can be colored by visible absorption; B would be colorless in the given model without other visible bands. A nitro group alone does not guarantee visible absorption."
+            }
+          ],
+          "wholeGoalBodySHA256": "ba8c54af60087305a32aec281091f289a7845a2af95e671d21d2994b0bdc2ad6",
+          "wholeProfileBodySHA256": "8936fbf46566533a49755dd39a9da948a3786a2772183177b6ab522650dd1efb"
+        }
+      ]
+    },
+    {
+      "termSetId": "HB2022-p35-4.2-terms-GK_LK",
+      "term": "Chromophor",
+      "sourceScope": {
+        "physicalPage": 35,
+        "topic": "4.2",
+        "courseLevel": "GK_LK",
+        "originalCourseQualifier": "GK_LK",
+        "frame": "thick",
+        "officialTopicStatus": "selected_topic_requirement",
+        "selectionRule": "HB37-GK-one-LK-two-from-2.1-2.2-2.3-4.2",
+        "selectedByLearner": null,
+        "universalOfficialRequirement": false
+      },
+      "originalRequiredOperators": [],
+      "sourceInterpretation": "Mandatory vocabulary within the applicable topic and course; does not add an unprinted performance command or mandate optional experiments.",
+      "firstA": "ACCEPT",
+      "firstB": "HOLD",
+      "informed": true,
+      "newExperimentOrPerformanceOperatorAdded": false,
+      "decision": "HOLD",
+      "changedFromFirstB": false,
+      "actualConceptUse": true,
+      "fullSourceTermUseComplete": false,
+      "terminologyLabelQualification": "The conceptual role is assessable, but this exact curriculum label is not an explicit named answer in the current P; bind the label transparently without adding an experiment.",
+      "rationaleDe": "87d8 prueft Absorption am delokalisierten Elektronensystem, ΔE=hc/lambda und den Konjugationswechsel;64b0 prueft das konkrete gekoppelte Molekuelsystem. Dieser Konzeptanteil ist vorhanden. Die A-Formulierung, Unterbrechung lasse die sichtbare Bande verschwinden, ist fuer87d8-case-2 zu stark:620→400nm liegt nach dem eigenen400–700nm-Modell weiterhin am sichtbaren Rand; die UV/Farblos-Grenze ist stattdessen im tatsaechlichen64b0-case-2 mit500→330nm gegeben. Keiner dieser aktuellen Vertraege benennt bzw ordnet den absorbierenden Molekuelteil als Chromophor zu. A kennzeichnet dieses fehlende Terminologielabel ausdruecklich. Konzeptzeugen werden anerkannt, voller Quellen-Fachbegriffsgebrauch bleibt HOLD; kein zusaetzlicher Versuchsoperator.",
+      "witnesses": [
+        {
+          "goalId": "87d8cc68-fe82-5273-9e43-c18b566ecb6c",
+          "goalTitle": "Farbigkeit durch delokalisierte Elektronen erklären",
+          "goalDescription": "Die lernende Person kann die Absorption bestimmter Lichtwellenlängen als Anregung delokalisierter Elektronen erklären und Farbigkeit mithilfe eines Energiestufenschemas begründen.",
+          "expectations": [
+            {
+              "id": "e1",
+              "essentialUnderstandingDe": "Absorption hebt Elektronen um eine erlaubte Energiedifferenz an; ΔE=hc/λ verbindet Übergang und Spektrum.",
+              "essentialUnderstandingEn": "Absorption excites electrons across an allowed energy difference; ΔE=hc/λ connects transition and spectrum.",
+              "observablePerformanceDe": "Zeichnet Energieniveaus und ordnet absorbierte Photonen zu.",
+              "observablePerformanceEn": "Draws energy levels and assigns absorbed photons."
+            },
+            {
+              "id": "e2",
+              "essentialUnderstandingDe": "Sichtbare Farbigkeit verlangt passende Absorption im sichtbaren Bereich und austretendes Restlicht.",
+              "essentialUnderstandingEn": "Visible color requires suitable visible absorption and outgoing residual light.",
+              "observablePerformanceDe": "Überträgt einen geänderten Energieabstand auf Farbe und Modellgrenze.",
+              "observablePerformanceEn": "Transfers a changed energy gap to color and a model limit."
+            }
+          ],
+          "applicationCases": [
+            {
+              "id": "87d8cc68-case-1",
+              "taskDemandDe": "Modellfarbstoff A hat einen erlaubten Übergang von 2,48 eV, B einen von 4,13 eV. hc=1240 eV·nm. Beide haben im Modell nur diese Bande; A ist nicht fluoreszierend. Sichtbarer Bereich hier 400–700 nm.\n1. Zeichne für A und B ein Energienstufenschema mit aufwärts gerichtetem Absorptionspfeil und berechne jeweils die absorbierte Wellenlänge.\n2. Begründe, welches System durch diese Bande unter Weißlicht sichtbar farbig sein kann; erkläre, warum die absorbierte Wellenlänge nicht direkt seine Durchsichtfarbe ist.",
+              "taskDemandEn": "Model dye A has an allowed transition of 2.48 eV, B one of 4.13 eV. hc=1240 eV·nm. Each has only this band in the model; A is nonfluorescent. The visible range is 400–700 nm here.\n1. Draw energy-level schemes for A and B with upward absorption arrows and calculate each absorbed wavelength.\n2. Explain which system can be visibly colored by this band under white light; explain why the absorbed wavelength is not its transmitted color.",
+              "expectedPerformanceDe": "1. Je zwei Niveaus mit Abstand ΔE und Pfeil vom unteren zum oberen. A: 1240/2,48=500 nm; B: 1240/4,13≈300 nm. Der Pfeil beschreibt Energieaufnahme des delokalisierten Elektronensystems.\n2. A absorbiert sichtbar, B nach dem Modell nur UV. A kann durch Entzug von 500-nm-Licht farbig erscheinen; die Farbe stammt aus dem übrigen durchgelassenen Spektrum, nicht aus dem absorbierten Photon. Ohne weitere sichtbare Banden ist B durchsichtig farblos.",
+              "expectedPerformanceEn": "1. Each diagram has two levels separated by ΔE and an arrow from lower to upper. A: 1240/2.48=500 nm; B: 1240/4.13≈300 nm. The arrow represents energy uptake by the delocalized electron system.\n2. A absorbs visibly; B absorbs only ultraviolet in the model. A can appear colored by removing 500 nm light; color comes from the remaining transmitted spectrum, not the absorbed photon. Without other visible bands B is colorless in transmission.",
+              "understandingFocusDe": "Je zwei Niveaus mit Abstand ΔE und Pfeil vom unteren zum oberen. A: 1240/2,48=500 nm; B: 1240/4,13≈300 nm. Der Pfeil beschreibt Energieaufnahme des delokalisierten Elektronensystems. / A absorbiert sichtbar, B nach dem Modell nur UV. A kann durch Entzug von 500-nm-Licht farbig erscheinen; die Farbe stammt aus dem übrigen durchgelassenen Spektrum, nicht aus dem absorbierten Photon. Ohne weitere sichtbare Banden ist B durchsichtig farblos.",
+              "understandingFocusEn": "Each diagram has two levels separated by ΔE and an arrow from lower to upper. A: 1240/2.48=500 nm; B: 1240/4.13≈300 nm. The arrow represents energy uptake by the delocalized electron system. / A absorbs visibly; B absorbs only ultraviolet in the model. A can appear colored by removing 500 nm light; color comes from the remaining transmitted spectrum, not the absorbed photon. Without other visible bands B is colorless in transmission."
+            },
+            {
+              "id": "87d8cc68-case-2",
+              "taskDemandDe": "Zwei idealisierte Farbstoffformen mit gleicher Konzentration: lange planare Konjugation ΔE=2,00 eV; nach sp³-Unterbrechung ΔE=3,10 eV. hc=1240 eV·nm. Nur die angegebene Bande wird betrachtet; reale Moleküle besitzen weitere Übergänge.\n1. Stelle beide Energieabstände dar, berechne die Wellenlängen und ordne die Richtung der Spektralverschiebung zu.\n2. Erkläre die Beziehung zwischen unterbrochener Delokalisierung und den gegebenen Energieabständen; nenne eine Grenze der Vorhersage der tatsächlichen Farbe aus einem einzigen Übergang.",
+              "taskDemandEn": "Two idealized dye forms at equal concentration: long planar conjugation ΔE=2.00 eV; after sp³ interruption ΔE=3.10 eV. hc=1240 eV·nm. Only the stated band is considered; real molecules have additional transitions.\n1. Represent both energy gaps, calculate wavelengths and identify the direction of spectral shift.\n2. Explain the relation between interrupted delocalization and the supplied energy gaps; state one limit of predicting actual color from a single transition.",
+              "expectedPerformanceDe": "1. 2,00 eV→620 nm, 3,10 eV→400 nm. Der größere Abstand benötigt ein energiereicheres Photon und verschiebt die Bande zu kürzeren Wellenlängen, also hypsochrom. Beide Schemata haben aufwärts gerichtete Absorptionspfeile.\n2. Im angegebenen Vergleich erhöht die sp³-Unterbrechung den erlaubten Übergangsabstand gegenüber der langen Konjugation. Die tatsächliche Farbe hängt auch von Bandenbreite, weiteren Übergängen und Beleuchtung ab; ein ΔE-Wert liefert allein keine exakte Farbe.",
+              "expectedPerformanceEn": "1. 2.00 eV→620 nm and 3.10 eV→400 nm. The larger gap requires a higher-energy photon and shifts the band to shorter wavelengths, a hypsochromic shift. Both schemes have upward absorption arrows.\n2. In the supplied comparison sp³ interruption increases the allowed transition gap relative to long conjugation. Actual color also depends on bandwidth, other transitions and illumination; one ΔE alone does not determine an exact color.",
+              "understandingFocusDe": "2,00 eV→620 nm, 3,10 eV→400 nm. Der größere Abstand benötigt ein energiereicheres Photon und verschiebt die Bande zu kürzeren Wellenlängen, also hypsochrom. Beide Schemata haben aufwärts gerichtete Absorptionspfeile. / Im angegebenen Vergleich erhöht die sp³-Unterbrechung den erlaubten Übergangsabstand gegenüber der langen Konjugation. Die tatsächliche Farbe hängt auch von Bandenbreite, weiteren Übergängen und Beleuchtung ab; ein ΔE-Wert liefert allein keine exakte Farbe.",
+              "understandingFocusEn": "2.00 eV→620 nm and 3.10 eV→400 nm. The larger gap requires a higher-energy photon and shifts the band to shorter wavelengths, a hypsochromic shift. Both schemes have upward absorption arrows. / In the supplied comparison sp³ interruption increases the allowed transition gap relative to long conjugation. Actual color also depends on bandwidth, other transitions and illumination; one ΔE alone does not determine an exact color."
+            }
+          ],
+          "wholeGoalBodySHA256": "257c559f390483380d187286382a54a649e3db581c817ec2b872fa0ae2bdbad0",
+          "wholeProfileBodySHA256": "561e31d4486b71c21c694eb72729768c01040adaf65adff34ea33a19d9452919"
+        },
+        {
+          "goalId": "64b03eff-a967-54a1-ace3-89cb7650a65c",
+          "goalTitle": "Substituenteneffekte in Farbstoff-Molekülen erklären",
+          "goalDescription": "Die lernende Person kann das Donator-Akzeptor-Konzept auf Farbstoff-Moleküle anwenden und den Einfluss funktioneller Gruppen auf die Farbigkeit der zugehörigen Stoffe erklären.",
+          "expectations": [
+            {
+              "id": "e1",
+              "essentialUnderstandingDe": "Donor und Akzeptor beeinflussen ein gekoppeltes π-System; der Effekt hängt von Stellung und Kopplung ab.",
+              "essentialUnderstandingEn": "Donor and acceptor groups affect a coupled pi system; the effect depends on position and coupling.",
+              "observablePerformanceDe": "Identifiziert Gruppen und verknüpft elektronischen Effekt mit Spektren.",
+              "observablePerformanceEn": "Identifies groups and connects electronic effects to spectra."
+            },
+            {
+              "id": "e2",
+              "essentialUnderstandingDe": "Protonierung oder unterbrochene Konjugation kann einen Donoreffekt verändern; eine Rotverschiebung ist keine universelle Gruppenregel.",
+              "essentialUnderstandingEn": "Protonation or interrupted conjugation can alter donation; a red shift is not a universal group rule.",
+              "observablePerformanceDe": "Begründet einen veränderten Übergang anhand konkreter Bedingungen.",
+              "observablePerformanceEn": "Explains a changed transition under specific conditions."
+            }
+          ],
+          "applicationCases": [
+            {
+              "id": "64b03eff-case-2",
+              "taskDemandDe": "Zwei idealisierte Moleküle besitzen dieselben Amino-Donor- und Nitro-Akzeptor-Endgruppen. A hat eine planare –CH=CH–Brücke und λmax 500 nm. B hat –CH₂–CH₂– als Brücke und λmax 330 nm; Konzentration und Lösungsmittel sind gleich.\n1. Erkläre, welche Brücke Donor und Akzeptor mesomer koppelt, und begründe die Unterbrechung bei der anderen.\n2. Verknüpfe die zwei Absorptionsmaxima mit Übergangsenergie und sichtbarer Farbigkeit; beurteile die Aussage „Eine Nitrogruppe macht jedes Molekül farbig“.",
+              "taskDemandEn": "Two idealized molecules have the same amino donor and nitro acceptor end groups. A has a planar –CH=CH– bridge and λmax 500 nm. B has a –CH₂–CH₂– bridge and λmax 330 nm; concentration and solvent are equal.\n1. Explain which bridge couples donor and acceptor by resonance and why the other interrupts it.\n2. Connect both absorption maxima to transition energy and visible color; assess the claim “A nitro group makes every molecule colored”.",
+              "expectedPerformanceDe": "1. A besitzt benachbarte p-Orbitale über die sp²-Brücke. Bei B unterbrechen sp³-C die durchgehende Konjugation; die Endgruppen allein bilden kein langes gekoppeltes π-System.\n2. 500 nm liegt im sichtbaren Bereich und entspricht einer kleineren ΔE als 330 nm im UV. A kann durch sichtbare Absorption farbig sein; B wäre im gegebenen Modell ohne weitere sichtbare Banden farblos. Die Nitrogruppe allein garantiert keine sichtbare Absorption.",
+              "expectedPerformanceEn": "1. A has adjacent p orbitals through its sp² bridge. In B sp³ carbons interrupt continuous conjugation; end groups alone do not make a long coupled pi system.\n2. 500 nm is visible and corresponds to a smaller ΔE than ultraviolet 330 nm. A can be colored by visible absorption; B would be colorless in the given model without other visible bands. A nitro group alone does not guarantee visible absorption.",
+              "understandingFocusDe": "A besitzt benachbarte p-Orbitale über die sp²-Brücke. Bei B unterbrechen sp³-C die durchgehende Konjugation; die Endgruppen allein bilden kein langes gekoppeltes π-System. / 500 nm liegt im sichtbaren Bereich und entspricht einer kleineren ΔE als 330 nm im UV. A kann durch sichtbare Absorption farbig sein; B wäre im gegebenen Modell ohne weitere sichtbare Banden farblos. Die Nitrogruppe allein garantiert keine sichtbare Absorption.",
+              "understandingFocusEn": "A has adjacent p orbitals through its sp² bridge. In B sp³ carbons interrupt continuous conjugation; end groups alone do not make a long coupled pi system. / 500 nm is visible and corresponds to a smaller ΔE than ultraviolet 330 nm. A can be colored by visible absorption; B would be colorless in the given model without other visible bands. A nitro group alone does not guarantee visible absorption."
+            }
+          ],
+          "wholeGoalBodySHA256": "ba8c54af60087305a32aec281091f289a7845a2af95e671d21d2994b0bdc2ad6",
+          "wholeProfileBodySHA256": "8936fbf46566533a49755dd39a9da948a3786a2772183177b6ab522650dd1efb"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "termCases": 6,
+    "ACCEPT": 1,
+    "HOLD": 5,
+    "firstBRevisions": 2
+  },
+  "limits": [
+    "No new P/D scientific review, source activation or learner-scope integration.",
+    "No full-source-clause, native, M7 or Human Approval/Trial conclusion.",
+    "Three color terminology qualifications remain explicit; conceptual role alone is not falsely reported as complete current source-label use."
+  ]
+}

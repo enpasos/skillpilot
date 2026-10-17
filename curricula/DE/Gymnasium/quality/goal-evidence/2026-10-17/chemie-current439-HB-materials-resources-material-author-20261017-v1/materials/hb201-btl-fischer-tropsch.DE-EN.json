@@ -1,0 +1,55 @@
+{
+  "materialId": "hb201-btl-fischer-tropsch",
+  "sourceOrdinals": [
+    201
+  ],
+  "title": {
+    "de": "BTL über Fischer–Tropsch",
+    "en": "BTL through Fischer–Tropsch"
+  },
+  "status": "needs_human_review",
+  "reviewAuthority": "ai_candidate",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "active": false,
+  "humanApproval": false,
+  "actualLearnerPerformanceRecorded": false,
+  "M7Claim": false,
+  "ownMaterialLicense": "CC-BY-4.0",
+  "modelAndDataOrigin": {
+    "de": "Alle fiktiven Zahlen und Befunde sind eigene Unterrichtsmodelle, keine beobachtete Lernendenleistung, Produktprüfung oder Zulassung. Reale Quellen sind separat verzeichnet.",
+    "en": "All fictional numbers and findings are own teaching models, not observed learner performance, product testing or approval. Genuine sources are listed separately."
+  },
+  "givens": {
+    "de": "Ausschließlich industrielles Papierschema: lignocellulosische Biomasse wie Restholz→Vergasung→rohes Synthesegas (wesentlich CO/H2 plus Verunreinigungen)→Reinigung und Einstellung H2/CO→katalytische Fischer–Tropsch-Synthese→Gemisch verschiedener Kohlenwasserstoffketten und Wasser→Abtrennung, gegebenenfalls Hydrocracken/Isomerisieren→Kraftstofffraktionen. Keine Anlage nachbauen, kein CO/H2 erzeugen. Ideales Alkanmodell n CO+(2n+1)H2→CnH2n+2+n H2O; keine gesamte Vergasungsbilanz oder Behauptung reinen FT-Produkts. Rechenfall n=8, 20 mol CO+44 mol H2, nur ideale Reaktion und vollständiger limitierender Umsatz. BTL=Biomass-to-Liquid; Kohleweg CTL, Erdgasweg GTL. BTL ist weder gepresstes Triglyceridöl noch FAME-Biodiesel. Hier Gen2-Kontext lignocellulosischer Reststoff; erste Generation meint hier Zucker/Stärke/Speiseöl geeigneter Nahrungspflanzen. LCA braucht Regeneration, Transport, Prozessenergie, Landnutzungs-/Opportunitätseffekte, Nebenprodukte und Systemgrenze.",
+    "en": "Industrial paper scheme only: lignocellulosic biomass such as waste wood→gasification→raw syngas (mainly CO/H2 plus contaminants)→cleanup and H2/CO adjustment→catalytic Fischer–Tropsch synthesis→mixture of hydrocarbon chain lengths and water→separation, where needed hydrocracking/isomerization→fuel fractions. Build no plant and produce no CO/H2. Ideal alkane model n CO+(2n+1)H2→CnH2n+2+n H2O; not the complete gasification balance or a claim of pure FT product. Calculate n=8, 20 mol CO+44 mol H2, only this ideal reaction and complete limiting conversion. BTL=Biomass-to-Liquid; coal gives CTL, natural gas GTL. BTL is neither pressed triglyceride oil nor FAME biodiesel. Generation 2 here means lignocellulosic residue; first generation here means sugar/starch/edible oils of suitable food crops. LCA needs regrowth, transport, process energy, land-use/opportunity effects, coproducts and boundary."
+  },
+  "learnerTask": {
+    "de": "Erkläre jeden Schritt und seine Funktion. Prüfe C/H/O-Bilanz des Octanmodells, bestimme limitierenden Stoff, ideale Produkt-/Wassermenge und H2-Rest. Begründe Gemisch/Aufarbeitung, grenze BTL von Pflanzenöl/Biodiesel und Generation1 ab. Prüfe: zweite Generation ist immer CO2-neutral.",
+    "en": "Explain every step and purpose. Check C/H/O balance for ideal octane; determine limiting reactant, ideal product/water and residual H2. Explain mixture/upgrading, distinguish BTL from plant oil/biodiesel and generation 1. Assess: second generation is always carbon-neutral."
+  },
+  "modelSolution": {
+    "de": "8 CO+17 H2→C8H18+8 H2O erhält 8 C,8 O,34 H. CO limitiert:2,5 mol ideales Octan,20 mol Wasser,42,5 mol H2 verbraucht,1,5 mol übrig. Real entstehen mehrere Kettenlängen/Nebenprodukte; selektive Ausbeute folgt daraus nicht. Reinigung schützt Katalysator; Verhältnissteuerung und Aufarbeitung liefern nutzbare Fraktionen. Nachwachsende Biomasse kann CO2 wieder aufnehmen, aber Verbrennung emittiert CO2; Gesamtneutralität ist LCA-/zeitabhängig.",
+    "en": "8 CO+17 H2→C8H18+8 H2O conserves 8 C,8 O,34 H. CO limits:2.5 mol ideal octane,20 mol water,42.5 mol H2 consumed,1.5 mol left. Actual products contain several chain lengths/byproducts; selective yield does not follow. Cleanup protects catalysts; ratio adjustment/upgrading give useful fractions. Regrowing biomass can take up CO2 but combustion emits CO2; overall neutrality depends on LCA/time."
+  },
+  "freshTransfer": {
+    "task": {
+      "de": "Neuer Anbieter verwendet Kohle statt Holz, nennt FT-Gemisch BTL-Diesel und klimaneutral. Eingang nun 20 mol CO+34 mol H2. Prüfe Name, ideale Bilanz und Klimafazit.",
+      "en": "New producer uses coal instead of wood, calls its FT mixture BTL diesel and carbon-neutral. Feed is now 20 mol CO+34 mol H2. Check naming, ideal balance and climate conclusion."
+    },
+    "expected": {
+      "de": "Kohle bedeutet CTL, nicht BTL. H2 limitiert:2 mol ideales Octan,16 mol Wasser,4 mol CO bleiben. Reales Gemisch bleibt offen. FT macht weder Rohstoff erneuerbar noch LCA automatisch neutral.",
+      "en": "Coal means CTL, not BTL. H2 limits:2 mol ideal octane,16 mol water,4 mol CO remain. Actual mixture is unresolved. FT makes neither feedstock renewable nor LCA automatically neutral."
+    }
+  },
+  "rubric": {
+    "de": "Vollständige Biomasse-/Synthesegas-/FT-/Aufarbeitungskette; korrekte Bilanz und Grenzen; BTL/FAME/CTL und Generationen; neuer limitierender Stoff; bedingte LCA.",
+    "en": "Complete biomass/syngas/FT/upgrading chain; correct balance/limits; BTL/FAME/CTL and generations; new limiting reactant; conditional LCA."
+  },
+  "blankLearnerRecord": {
+    "ownWork": null,
+    "actualActionTrace": null,
+    "sourcesActuallyRead": null,
+    "freshTransfer": null
+  }
+}

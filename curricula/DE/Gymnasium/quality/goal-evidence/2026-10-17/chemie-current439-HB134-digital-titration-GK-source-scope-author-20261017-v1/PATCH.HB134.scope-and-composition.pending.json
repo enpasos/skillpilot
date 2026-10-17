@@ -1,0 +1,283 @@
+{
+  "metadata": {
+    "role": "AUTHOR pending independent course/source/D-context review; inactive proposal only",
+    "reviewAuthority": "ai_candidate",
+    "status": "needs_human_review",
+    "authorDecision": "pending_independent_review",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "activeWrite": false,
+    "runtimePatch": false,
+    "humanApproval": false,
+    "humanTrial": false,
+    "M7Claim": false,
+    "actualLearnerPerformanceRecorded": false
+  },
+  "sourceOrdinal": 134,
+  "sourceGoalId": "HB23-Q-process-plan-conduct-evaluate",
+  "sourceClauseIds": [
+    "HB2022-p23-1.2-process-GK_LK-01"
+  ],
+  "goalMetadataPatch": {
+    "basePin": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-requires54-six-narrow-foundations-paired-successor-20261017-v1/C650.requires54-six-narrow-foundations.science-paired.PENDING-final-context.json.snapshot",
+      "sha256": "e15dd15e977e4a6eb8ee01f022bff68cbd233dceb09ba3b296584012cc070139",
+      "bytes": 2916854
+    },
+    "selectGoalId": "e0944fbb-0761-5f9c-afaa-3d4713ed1bed",
+    "op": "replace",
+    "path": "/tags",
+    "oldValue": [
+      "LK",
+      "canonical",
+      "SekII"
+    ],
+    "value": [
+      "LK",
+      "canonical",
+      "SekII",
+      "GK"
+    ],
+    "allOtherGoalFieldsUnchanged": true
+  },
+  "mappingPatch": {
+    "file": "curricula/DE/Gymnasium/mapping/DE-HB/upper-secondary/hb_chemistry_upper_secondary_to_canonical_chemistry.json",
+    "basePin": {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HB/upper-secondary/hb_chemistry_upper_secondary_to_canonical_chemistry.json",
+      "sha256": "b05f9b3067a313b6927787f2bf8fcdf3da347bd52e13e608acbd8a282c3b2c82",
+      "bytes": 70607
+    },
+    "op": "append missing mappings to /mappings; preserve existing mappings and exact source/target IDs",
+    "records": [
+      {
+        "legacyGoalId": "HB23-Q-process-plan-conduct-evaluate",
+        "canonicalGoalId": "f79f15c0-e848-5e17-9eb5-26753d35c93b",
+        "matchType": "partial",
+        "reviewDecisionId": "HB23-Q-process-plan-conduct-evaluate"
+      },
+      {
+        "legacyGoalId": "HB23-Q-process-plan-conduct-evaluate",
+        "canonicalGoalId": "02634fdd-c8ba-591a-b240-77129b1bebb8",
+        "matchType": "partial",
+        "reviewDecisionId": "HB23-Q-process-plan-conduct-evaluate"
+      },
+      {
+        "legacyGoalId": "HB23-Q-process-plan-conduct-evaluate",
+        "canonicalGoalId": "e0944fbb-0761-5f9c-afaa-3d4713ed1bed",
+        "matchType": "partial",
+        "reviewDecisionId": "HB23-Q-process-plan-conduct-evaluate"
+      },
+      {
+        "legacyGoalId": "HB23-Q-process-plan-conduct-evaluate",
+        "canonicalGoalId": "9e3fae29-84d5-5600-bfb3-82d49ea3f1b5",
+        "matchType": "partial",
+        "reviewDecisionId": "HB23-Q-process-plan-conduct-evaluate"
+      }
+    ],
+    "fidelity": "partial component mappings, not four exact whole-source approvals",
+    "reviewAction": "Merge with reviewed final C HB232 union mapping rather than overwrite or duplicate final C."
+  },
+  "compositionPatches": [
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/chemie/de-hb-gk.view.json",
+      "basePin": {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-hb-gk.view.json",
+        "sha256": "f852417ae6cb629632f4584dccff8de46b1b4e8ac9a1bad480791079968254f5",
+        "bytes": 31286
+      },
+      "viewId": "de-hb-gym-chemistry-gk",
+      "scopeExact": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HB",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "parentStructureId": "chemistry-de-hb-gk-upper-3-3-1-2-protolyse",
+      "jsonPointer": "/rootNodes/0/children/1/children/17/children/-",
+      "operation": "append absent goalEntry by goalId; preserve all current ordered children",
+      "nodes": [
+        {
+          "kind": "goalEntry",
+          "goalId": "f79f15c0-e848-5e17-9eb5-26753d35c93b",
+          "projectionRole": "target"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "02634fdd-c8ba-591a-b240-77129b1bebb8",
+          "projectionRole": "target"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "e0944fbb-0761-5f9c-afaa-3d4713ed1bed",
+          "projectionRole": "target"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "9e3fae29-84d5-5600-bfb3-82d49ea3f1b5",
+          "projectionRole": "target"
+        }
+      ],
+      "mergeAfterFinalC": "If final C already inserts a target occurrence, reuse that one and omit this duplicate; retain one visible parent only."
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/chemie/de-hb-lk.view.json",
+      "basePin": {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-hb-lk.view.json",
+        "sha256": "a409d1898512ca56c6c033bab69de853fa6352585e6dfb9912cacad93c34937f",
+        "bytes": 35687
+      },
+      "viewId": "de-hb-gym-chemistry-lk",
+      "scopeExact": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HB",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "parentStructureId": "chemistry-de-hb-lk-upper-3-3-1-2-protolyse",
+      "jsonPointer": "/rootNodes/0/children/1/children/17/children/-",
+      "operation": "append absent goalEntry by goalId; preserve all current ordered children",
+      "nodes": [
+        {
+          "kind": "goalEntry",
+          "goalId": "f79f15c0-e848-5e17-9eb5-26753d35c93b",
+          "projectionRole": "target"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "02634fdd-c8ba-591a-b240-77129b1bebb8",
+          "projectionRole": "target"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "e0944fbb-0761-5f9c-afaa-3d4713ed1bed",
+          "projectionRole": "target"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "9e3fae29-84d5-5600-bfb3-82d49ea3f1b5",
+          "projectionRole": "target"
+        }
+      ],
+      "mergeAfterFinalC": "If final C already inserts a target occurrence, reuse that one and omit this duplicate; retain one visible parent only."
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+      "basePin": {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+        "sha256": "3ad4b599c9c98667a64725d61f084d0a13710360cccf5cbf3c5b7e28ec3b0b4c",
+        "bytes": 7211
+      },
+      "viewId": "de-he-gym-chemistry-gk",
+      "scopeExact": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "jsonPointer": "/rootNodes/0/children/-",
+      "operation": "append direct role override; keeps this existing broad GK view from acquiring a new target",
+      "nodes": [
+        {
+          "kind": "goalEntry",
+          "goalId": "e0944fbb-0761-5f9c-afaa-3d4713ed1bed",
+          "projectionRole": "prerequisiteOnly"
+        }
+      ],
+      "boundary": "Direct goalEntry prerequisiteOnly overrides inherited target canonicalSubtree. It is not an invented official requirement or new prerequisite edge."
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk.view.json",
+      "basePin": {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk.view.json",
+        "sha256": "db629d8607b747977fd32fedaa394682e54a73261af16007ca091f3e8ef1d18d",
+        "bytes": 1856
+      },
+      "viewId": "de-he-gym-sekii-chemistry-gk",
+      "scopeExact": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "jsonPointer": "/rootNodes/0/children/-",
+      "operation": "append direct role override; keeps this existing broad GK view from acquiring a new target",
+      "nodes": [
+        {
+          "kind": "goalEntry",
+          "goalId": "e0944fbb-0761-5f9c-afaa-3d4713ed1bed",
+          "projectionRole": "prerequisiteOnly"
+        }
+      ],
+      "boundary": "Direct goalEntry prerequisiteOnly overrides inherited target canonicalSubtree. It is not an invented official requirement or new prerequisite edge."
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-gk.view.json",
+      "basePin": {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-gk.view.json",
+        "sha256": "42c8949bfa163a0d5e66e395493e0ea7f9ad222222d3a16b7756dcfc9546eb06",
+        "bytes": 3753
+      },
+      "viewId": "de-de-gym-chemistry-gk",
+      "scopeExact": {
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "jsonPointer": "/rootNodes/0/children/-",
+      "operation": "append direct role override; keeps this existing broad GK view from acquiring a new target",
+      "nodes": [
+        {
+          "kind": "goalEntry",
+          "goalId": "e0944fbb-0761-5f9c-afaa-3d4713ed1bed",
+          "projectionRole": "prerequisiteOnly"
+        }
+      ],
+      "boundary": "Direct goalEntry prerequisiteOnly overrides inherited target canonicalSubtree. It is not an invented official requirement or new prerequisite edge."
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-gk.view.json",
+      "basePin": {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-gk.view.json",
+        "sha256": "557120ec43bac903cf3c072bc563401b0f266a5ba407acab8687fb4cdd94648d",
+        "bytes": 1827
+      },
+      "viewId": "de-de-gym-sekii-chemistry-gk",
+      "scopeExact": {
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "jsonPointer": "/rootNodes/0/children/-",
+      "operation": "append direct role override; keeps this existing broad GK view from acquiring a new target",
+      "nodes": [
+        {
+          "kind": "goalEntry",
+          "goalId": "e0944fbb-0761-5f9c-afaa-3d4713ed1bed",
+          "projectionRole": "prerequisiteOnly"
+        }
+      ],
+      "boundary": "Direct goalEntry prerequisiteOnly overrides inherited target canonicalSubtree. It is not an invented official requirement or new prerequisite edge."
+    }
+  ],
+  "goalPlacementProposal": {
+    "mechanism": "The six scope-specific composition files above are the supported placement mechanism. No extra programUnits/goalPlacements invented for C54, which currently has none.",
+    "HBscope": "Existing CrossStage HB GK/LK views; goal SekII tag and Q protolyse parent identify intended upper stage without pretending a new stage selector exists.",
+    "nationalAndHEBoundary": "Four explicit prerequisiteOnly overrides retain existing non-HB target boundary despite global course tag; state-specific explicit goalEntry views lacking this goal remain unchanged."
+  },
+  "scopeLimit": "Global GK is a capability-routing value, not a jurisdiction-course official source matrix. Unprojected raw goalMatchesFilters admits GK in existing BY/HE/NI applicability. Only supported resolved composition routes with the four safeguards are proposed; raw canonical filtering is not source clearance. Root must verify all selected view/fallback paths after final C merge; do not ship the tag alone.",
+  "integrationSequence": [
+    "Merge final C direct source bindings including all four source134 carriers.",
+    "Apply this atomic goal tag-only delta, without changing description, requirements or operative-v3 P body.",
+    "Apply the HB target placements and all four non-HB/national prerequisiteOnly boundaries together.",
+    "Run normal targeted compiler, scope/view/course/role/frontier tests on merged C54 successor; independently check course/source/D context.",
+    "Only after these checks may root materialize reviewed candidates; this author package performs no active/native write."
+  ],
+  "viewCandidateFiles": [
+    "CANDIDATE.de-hb-gk.view.json",
+    "CANDIDATE.de-hb-lk.view.json",
+    "CANDIDATE.de-he-gk.view.json",
+    "CANDIDATE.de-he-sekii-gk.view.json",
+    "CANDIDATE.de-de-gym-chemistry-gk.view.json",
+    "CANDIDATE.de-de-gym-sekii-chemistry-gk.view.json"
+  ]
+}

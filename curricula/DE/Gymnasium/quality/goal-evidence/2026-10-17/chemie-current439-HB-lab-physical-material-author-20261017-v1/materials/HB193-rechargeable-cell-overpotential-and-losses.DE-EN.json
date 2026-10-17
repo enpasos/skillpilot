@@ -1,0 +1,71 @@
+{
+  "materialId": "HB193-rechargeable-cell-overpotential-and-losses",
+  "goalIds": [
+    "16b24dc5-0e48-5e3b-8307-01289db8d1a9"
+  ],
+  "sourceOrdinals": [
+    193
+  ],
+  "status": "needs_human_review",
+  "reviewAuthority": "ai_candidate",
+  "authorDecision": "pending_independent_review",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "materialOrigin": {
+    "de": "Vollständiges eigenes Autorenmaterial. Zahlen/Referenzmuster sind ausdrücklich Aufgabenmodelle, keine tatsächlichen Lernendenmessungen oder Herstellerzertifikate.",
+    "en": "Complete own author material. Numbers/reference patterns are stipulated teaching models, not actual learner measurements or manufacturer certificates."
+  },
+  "scope": {
+    "de": "HB Thema 3.2, LK: ergänzt den Akkumulator-Kontext, ohne vorhandene Elektrolysefälle zu ersetzen.",
+    "en": "HB topic 3.2, advanced course: adds the rechargeable-cell context without replacing existing electrolysis cases."
+  },
+  "performanceMode": "paper",
+  "suppliedMaterial": {
+    "de": "LK-Papiermodell bei festem Ladezustand und Temperatur: reversible Ruhezellspannung Ueq = 2,00 V. Bei I = 0,500 A beträgt der rein ohmsche Widerstand R = 0,200 Ω. Summierte Beträge kinetischer Elektrodenüberspannungen: beim Laden 0,150 V, beim Entladen 0,100 V. Ohne zusätzliche Stofftransportbegrenzung gilt hier ULaden = Ueq + ηLaden + IR und UEntladen = Ueq − ηEntladen − IR. η bezeichnet kinetische Elektrodenpolarisation gegenüber demselben reversiblen Zustand, nicht den ohmschen Spannungsfall. Reale Zellen können weitere Transport-/Polarisationsbeiträge zeigen. Die Zahlen sind Modellwerte, keine Ladevorschrift. Vorhandene Elektrolyse-Überspannungsfälle bleiben Quellenbeiträge.",
+    "en": "Advanced-course paper model at a fixed state of charge and temperature: reversible open-circuit cell voltage Ueq = 2.00 V. At current I = 0.500 A, the purely ohmic resistance is R = 0.200 Ω. Sums of magnitudes of kinetic electrode overpotentials are 0.150 V during charging and 0.100 V during discharge. With no additional mass-transport limitation in this model: Ucharge = Ueq + ηcharge + IR; Udischarge = Ueq − ηdischarge − IR. Here η denotes kinetic electrode polarisation relative to the same reversible state, not ohmic voltage drop. Real cells may have additional transport/polarisation contributions. These are teaching model values, not charging instructions. Existing electrolysis overpotential cases remain source contributions."
+  },
+  "learnerTask": {
+    "de": "Erkläre die kinetische Elektrodenüberspannung am Akkumulator beim Laden UND Entladen. Berechne beide Klemmenspannungen und trenne den ohmschen Anteil. Verbinde Reaktionsrichtung mit Energie und prüfe, ob jede Abweichung von 2,00 V Überspannung heißen darf.",
+    "en": "Explain kinetic electrode overpotential in a rechargeable cell during BOTH charging and discharge. Calculate both terminal voltages and separate the ohmic contribution. Connect reaction direction with energy and assess whether every departure from 2.00 V may be called overpotential."
+  },
+  "expectedReasoning": {
+    "de": "IR = 0,100 V, also ULaden = 2,250 V und UEntladen = 1,800 V. Endliche Elektrodenreaktionsraten brauchen kinetischen Antrieb. Laden benötigt Zufuhr oberhalb der reversiblen Spannung; Entladung liefert wegen Polarisation und ohmscher Verluste weniger Klemmenspannung. Der Vergleich gilt bei gleichem Ladezustand und Temperatur. Ein anderer Ladezustand kann Ueq ändern, ohne Überspannung zu sein. Der ohmsche Spannungsfall ist nicht η. Verluste begrenzen Energieeffizienz; zwei Momentanwerte liefern aber keine exakte gesamte Zykleneffizienz.",
+    "en": "IR = 0.100 V, so Ucharge = 2.250 V and Udischarge = 1.800 V. Finite electrode reaction rates need kinetic driving force. Charging needs input above reversible voltage; discharge delivers a lower terminal voltage because of polarisation and ohmic losses. These comparisons hold at the same state of charge and temperature. A changed state of charge may change Ueq without being overpotential. Ohmic drop is not η. Losses limit energy efficiency, but two instantaneous voltages do not establish exact whole-cycle efficiency."
+  },
+  "freshTransfer": {
+    "task": {
+      "de": "Frisch: Ein anderes Elektrodenmaterial halbiert nur ηLaden auf 0,075 V, R bleibt gleich. Ein getrennter Fall halbiert nur R auf 0,100 Ω. Rechne und unterscheide die Ursachen. Für die Ruhegrenze I → 0 gelte auch η → 0.",
+      "en": "Fresh cases: changing electrode material halves only ηcharge to 0.075 V while R stays fixed; separately halve only R to 0.100 Ω. Calculate and distinguish the causes. For a rest limit I → 0, also stipulate η → 0."
+    },
+    "expected": {
+      "de": "Die η-Änderung ergibt ULaden = 2,175 V, die reine R-Änderung 2,200 V. Es sind verschiedene Verlustursachen. In der idealisierten Ruhegrenze nähert sich die Klemmenspannung Ueq; daraus folgt weder eine Aussage zur gesamten Batteriegesundheit noch eine reale Ladefreigabe.",
+      "en": "Changing η gives Ucharge = 2.175 V; changing only R gives 2.200 V. These are different loss mechanisms. In the ideal rest limit the terminal voltage approaches Ueq; that alone establishes neither battery health nor permission for actual charging."
+    }
+  },
+  "rubric": {
+    "de": [
+      "Überspannung beim Laden und Entladen kausal erklären.",
+      "η, IR, reversible Spannung und Ladezustand getrennt rechnen und deuten.",
+      "Frische Parameteränderungen und Aussagegrenzen begründen."
+    ],
+    "en": [
+      "Explain charge/discharge overpotential causally.",
+      "Correctly separate and calculate η, IR, reversible voltage and state of charge.",
+      "Justify the fresh parameter changes and limits."
+    ]
+  },
+  "blankLearnerRecord": {
+    "actualProductOrActions": null,
+    "actualObservations": null,
+    "ownReasoning": null,
+    "freshTransfer": null,
+    "unresolvedEvidence": null
+  },
+  "actualLearnerPerformanceRecorded": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "active": false,
+  "M7Claim": false,
+  "ownMaterialLicense": "CC-BY-4.0",
+  "externalSourceRightsUnchanged": true
+}
