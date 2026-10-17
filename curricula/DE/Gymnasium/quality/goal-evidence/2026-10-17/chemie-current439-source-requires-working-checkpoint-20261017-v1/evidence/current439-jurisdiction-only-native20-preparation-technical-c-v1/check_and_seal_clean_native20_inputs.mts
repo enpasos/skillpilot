@@ -1,0 +1,40 @@
+import {readFileSync,writeFileSync,existsSync} from 'node:fs'
+import {resolve,dirname} from 'node:path'
+import {fileURLToPath} from 'node:url'
+import {createHash} from 'node:crypto'
+import assert from 'node:assert/strict'
+const O=dirname(fileURLToPath(import.meta.url)),C=resolve(O,'capsule'),read=(p:string):any=>JSON.parse(readFileSync(p,'utf8'))
+const s=read(resolve(O,'SELECTION.actual-open-pure-jurisdiction-first20-and-ownership-plan.json')),h=read(resolve(O,'HANDOFF.private-administrative-ledger-20-and-future-union.json')),execution=read(resolve(O,'EXECUTION.single-stock-native20-prepare.completed.json'))
+assert.equal(execution.exitCode,0);assert.equal(execution.stockPrepareInvocation,1)
+const hash=(b:any)=>createHash('sha256').update(b).digest('hex'),pin=(p:string)=>{const b=readFileSync(p);return {path:p,sha256:hash(b),bytes:b.length}},write=(name:string,obj:any)=>{const p=resolve(O,name);assert(!existsSync(p));const b=JSON.stringify(obj,null,2)+'\n';JSON.parse(b);writeFileSync(p,b)}
+const native=await import('/mnt/e/skillpilot-chemie-L7-20261017/current439-jurisdiction-only-native20-preparation-technical-c-v1/capsule/app/scripts/materializeGoalDescriptionRolloutBatch.ts')
+const {stableGoalBookJson}=await import('/mnt/e/skillpilot-chemie-L7-20261017/current439-jurisdiction-only-native20-preparation-technical-c-v1/capsule/app/scripts/goalBookModel.ts')
+const {buildGoalDescriptionCanonicalContext}=await import('/mnt/e/skillpilot-chemie-L7-20261017/current439-jurisdiction-only-native20-preparation-technical-c-v1/capsule/app/scripts/validateGoalDescriptionReviewCampaign.ts')
+const eq=(a:any,b:any)=>stableGoalBookJson(a??null)===stableGoalBookJson(b??null)
+const t=performance.now(),prepared=await native.validatePreparedGoalDescriptionRolloutBatch(h.newBatchConfigPath)
+assert.deepEqual(prepared.manifest.goalIds,s.selectedGoalIds);assert.equal(prepared.manifest.curriculumAtomicDenominatorAtPreparation,439)
+const oldModel=read(s.currentModel.path),oldSource=structuredClone(oldModel.source),newSource=structuredClone(prepared.model.source)
+const sourceDiffFields=[...new Set([...Object.keys(oldSource),...Object.keys(newSource)])].filter(k=>!eq(oldSource[k],newSource[k]));assert(sourceDiffFields.every(k=>k==='goalVisualizationQaDigest'))
+const landscape=read(s.canonicalPin.path),goals=new Map(landscape.goals.map((g:any)=>[g.id,g])),P=new Map(readFileSync(s.P439Pin.path,'utf8').split(/\r?\n/).filter(Boolean).map(line=>{const r=JSON.parse(line);return[r.goalId,r]}))
+const inputChecks=prepared.first.input.goals.map((g:any)=>{const goal:any=goals.get(g.goalId),p:any=P.get(g.goalId),v=g.reviewContext.page.visualization;assert(eq(g.canonicalContext,buildGoalDescriptionCanonicalContext(goal)));assert(eq(g.reviewContext.evidenceProfile.profile,p.profile));assert(eq({titleDe:g.currentTitleDe,titleEn:g.currentTitleEn,descriptionDe:g.currentDescriptionDe,descriptionEn:g.currentDescriptionEn},{titleDe:goal.title,titleEn:goal.titleEn,descriptionDe:goal.description,descriptionEn:goal.descriptionEn}));assert.equal('sha256:'+pin(resolve(C,'app/public'+v.url)).sha256,v.originalDigest);return {goalId:g.goalId,actualCanonicalContextExact:true,wholeCurrentPProfileExact:true,bilingualCurrentTextExact:true,assetDigestExact:true}})
+for(const p of [...h.immutableSourcePins,...s.observedOriginalSourcePins]){const actual=pin(p.path);assert.equal(actual.sha256,p.sha256.replace(/^sha256:/,''));assert.equal(actual.bytes,p.bytes)}
+for(const old of h.source15OriginalConfigs)assert.deepEqual(pin(old.originalPin.path),old.originalPin)
+assert.deepEqual(pin(h.beforeLedgerPin.path),h.beforeLedgerPin)
+const loaded=await native.loadGoalDescriptionRolloutInFlightLedger(),claims=new Map<string,string>();for(const b of loaded.activeBatches)for(const id of b.config.goalIds){assert(!claims.has(id));claims.set(id,b.configPath)};assert.equal(claims.size,182);assert.equal(loaded.activeBatches.length,16)
+const check={schemaVersion:1,role:'Actual unchanged stock prepared-batch validator and technical current source/input checks',atUTC:new Date().toISOString(),exitCode:0,stockPrepareExecutions:1,stockPreparedValidationCalls:1,validationElapsedMilliseconds:performance.now()-t,selected20GoalIds:s.selectedGoalIds,curriculumAtomicDenominatorAtPreparation:439,inputChecks,
+ originalCachedFull439Model:s.currentModel,originalCachedBaseBookDigest:s.currentModelDigest,actualPreparedBaseBookDigest:prepared.manifest.source.baseBookDigest,baseSourceDifferenceFields:sourceDiffFields,
+ currentPreparedQASourceDigest:prepared.model.source.goalVisualizationQaDigest,sourceQAByteExact:pin(resolve(C,'curricula/DE/Gymnasium/quality/goal-visualization-qa/chemie.qa.json')),
+ baseModelNote:'The original a04d full439 model remains byte-exact. Stock prepare necessarily loads the same full439 base inputs in memory; updated QA bc2e changes the source QA digest. No separate full439 compiler/model/PDF command or output was created.',
+ sourceCanonicalPSEMAllAssetsAndOriginal15AndLedgerUnchanged:true,privateLedgerActiveConfigs:16,privateLedgerClaims:182,globalDuplicateClaims:0,roundsIdenticalExactInput:true,roundsDistinctBlindCampaigns:true,bundleAllDeclaredArtifactBytesVerifiedByStock:true,
+ actualPrepareExecution:execution,manifestPin:pin(resolve(prepared.outputDirectory,'batch-manifest.json')),newScienceVotes:0,reviewOutcomesPredetermined:false,applied:false}
+write('CHECK.actual-stock-native20-and-current-source-integrity.json',check)
+const commonFiles=['batch-manifest.json','bundle/manifest.json','bundle/book-model.json','bundle/book.html','bundle/book.pdf','bundle/review-input.json'].map(p=>resolve(prepared.outputDirectory,p))
+const rounds=['round-a','round-b'].map(name=>{const root=resolve(prepared.outputDirectory,name),campaign=read(resolve(root,'description-review-campaign.json'));return {round:name,reviewerAssignment:'Independent first pass; assess exact current inputs before reading any peer findings. No expected outcome is provided.',campaignId:campaign.campaignId,roundId:campaign.roundId,independenceGroupId:campaign.independenceGroupId,
+ inputPins:['review-bundle-manifest.json','description-review-input.json','description-review-campaign.json',...campaign.batches.map((b:any)=>'batches/'+b.batchId+'.input.jsonl')].map(p=>pin(resolve(root,p)))}})
+const bundle=read(resolve(prepared.outputDirectory,'bundle/manifest.json')),artifactPins=bundle.artifacts.map((a:any)=>pin(resolve(prepared.outputDirectory,'bundle',a.path)))
+const reviewer={schemaVersion:1,role:'Clean exact current native20 reviewer input selector; no historical verdicts or expected outcomes',status:'REVIEW_INPUTS_PREPARED_NOT_REVIEWED',createdAtUTC:new Date().toISOString(),capsule:C,nativeRoot:prepared.outputDirectory,configPin:pin(resolve(C,h.newBatchConfigPath)),goalIds:s.selectedGoalIds,scope:20,currentAtomicDenominator:439,reviewPolicy:prepared.manifest.reviewPolicy,batchManifestPin:check.manifestPin,bookDigest:prepared.model.digest,baseBookDigest:prepared.manifest.source.baseBookDigest,bundleFingerprint:prepared.bundle.bundleFingerprint,reviewInputFingerprint:prepared.first.input.reviewInputFingerprint,
+ commonInputPins:commonFiles.map(pin),bundleArtifactPins:artifactPins,rounds,
+ reviewerBoundary:'Review the complete current20 goal/page/context/P/image inputs under the supplied stock prompt and chemistry criteria; keep any proposed correction explicit and do not infer approval from preparation or prior artifacts. Do not read selection/ownership diagnostics as review evidence. No results exist yet.',
+ technicalValidationPin:pin(resolve(O,'CHECK.actual-stock-native20-and-current-source-integrity.json')),humanApprovalClaim:false,newScientificVotes:0,reviewResultsCreated:false,applied:false}
+write('SELECTOR.clean-current-native20-reviewer-inputs.sealed.json',reviewer)
+console.log(JSON.stringify({selector:pin(resolve(O,'SELECTOR.clean-current-native20-reviewer-inputs.sealed.json')),nativeRoot:prepared.outputDirectory,baseDigest:prepared.manifest.source.baseBookDigest,sourceDiffFields,scope:20,rounds:2,exitCode:0,scienceVotes:0},null,2))

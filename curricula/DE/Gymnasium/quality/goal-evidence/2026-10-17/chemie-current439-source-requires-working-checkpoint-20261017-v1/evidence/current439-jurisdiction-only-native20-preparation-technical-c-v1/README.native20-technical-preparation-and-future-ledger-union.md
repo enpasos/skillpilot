@@ -1,0 +1,13 @@
+# Current439 jurisdiction-only native20 preparation
+
+Twenty goals selected from 34 actually open, structurally unique D owners by exact current central-context issues, in the existing full439 topological order. The only raw canonical-context change is `applicability.jurisdiction`; DE/EN, requires, the complete previously embedded P profile, and public/canonical image bytes match. Two historical P=null cases in the remaining pool are explicitly annotated and are not treated as substantive profile changes. The native6 scope and all36 newer owners are excluded.
+
+One unchanged stock prepare succeeded (23.024s); the stock prepared-batch validator also succeeded. Two separate blind campaigns bind identical exact current20 inputs. The clean input selector was sealed before any reviewer result and remains unchanged. No outcome is proposed. No new science vote, review result, D/M7 completion, human approval or activation is asserted.
+
+Only this new private capsule received administrative ledger changes. All15 old configs and the old ledger are archived byte-exact. Nine old unmaterialized claims were removed: polymers20 ->17 and aromatics20 ->14. All other config fields and remaining ID order are exact. A new20 config was added:16 active refs/182 globally unique claims. Stock loader and stronger global ownership checks pass. Fresh roster observations found no matching old writer; observations do not constitute a lock.
+
+The exact QA file is bc2e35e0db01b675e1e1ab13f29e1819f40a715a17a5a96763dffd5848fb780f. The original a04d cached439 model is unchanged. Stock prepare performs its required in-memory loading of the same439 base; only the source QA digest changes, yielding base digest4b97c2a295643d56546e38c394caa60f622eeeb0c2ea997dace1e6da12808a54. No separate full439 compiler/model/PDF or central command ran.
+
+The unapplied future26 CAS includes the complete original ledger, complete future17-ref ledger, and four exact rest config objects. Import both native packages/configs into the future private root, compare the supplied old pins, materialize the four rests and CAS the whole ledger; then use the stock loader plus global duplicate validation. Expected union:17 refs/185 claims; the shared aromatics remainder is13. No sequential overwrite of independent ledgers/rests is safe.
+
+All seven active withdrawals remain exact. In particular the selected54bc/87d8/64b0 withdrawals are not retired by preparation; root retains their separate legitimate historical-chain/current-review decision. Source science and archived history remain untouched. A pre-prepare guard-wrapper syntax error was corrected before any stock function ran, and its raw script/error note is retained. The single stock prepare was not repeated.

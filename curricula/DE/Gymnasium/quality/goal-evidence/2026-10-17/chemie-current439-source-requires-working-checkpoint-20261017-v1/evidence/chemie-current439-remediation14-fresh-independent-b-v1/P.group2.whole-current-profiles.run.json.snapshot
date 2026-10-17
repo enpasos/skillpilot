@@ -1,0 +1,40 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-remediation14-fresh-independent-b-20261017-v1-native-P-group2",
+  "bundleFingerprint": "sha256:237f4a4840f6c3de63213573b0280df07be4be54a318531d285cb5913e0966af",
+  "bookDigest": "sha256:8a7493371017ffb4dae58393923c633e54012fe2cc9f1c3c42621cec2357a3c2",
+  "provider": "OpenAI",
+  "model": "Codex based on GPT-6; exact deployment identifier not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "positive-understanding-evidence-v2-whole-profile-independent-review",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:6acf1e50c18f35a419233aebaddb0876ce0e949ef973e8817224023ddcc453db",
+  "independenceGroupId": "chemie-current439-remediation14-author-candidate-20261017-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "cf270aaf-235a-55a7-94a2-c4d9d7570a6b",
+    "5c8f0bbb-103a-579f-87fc-c997afe4fd18",
+    "64a5bb87-358d-5a22-958a-f66ba5521cd5"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:8eba4ae6e6cd1fa081bf490251ab37b9b8b3763ecdc7266acefac87ce107a5a3"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    }
+  ],
+  "startedAt": "2026-10-17T08:39:33Z",
+  "completedAt": "2026-10-17T08:45:02Z",
+  "status": "completed",
+  "outputDigest": "sha256:ebc2ef721026ffde5636e3474c87a6782f9735c740ece7f2f2ae447482a79d9c",
+  "toolchainVersion": "skillpilot-native-description-v1-sealed-first-serialization"
+}

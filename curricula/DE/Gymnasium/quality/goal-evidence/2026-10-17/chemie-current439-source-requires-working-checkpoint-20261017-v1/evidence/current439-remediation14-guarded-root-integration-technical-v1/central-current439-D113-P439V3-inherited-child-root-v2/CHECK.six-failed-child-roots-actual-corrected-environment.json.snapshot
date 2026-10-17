@@ -1,0 +1,61 @@
+{
+  "atUTC": "2026-10-17T09:22:18.595936+00:00",
+  "role": "Actual six previously failing child checks with correct inherited capsule module resolution; no source or evidence repair",
+  "cause": "Parent-only node flags were not inherited by stock spawnSync child. NODE_OPTIONS is now inherited, binding child modules to K instead of frozen older F.",
+  "oldFailureReceipt": "/mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/central-current439-D113-P439V3-actual-v1/RESULT.actual-current439-D113-P439V3.json",
+  "changesToSourceEvidenceInputs": 0,
+  "NODE_OPTIONS": "--preserve-symlinks --preserve-symlinks-main",
+  "actualChecks": [
+    {
+      "script": "semanticAtomicityReview.ts",
+      "args": [
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-9b-current-angle-atomicity-independent-c-v1/config/A-retained-009.rest24.original-review-identity.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0
+    },
+    {
+      "script": "semanticAtomicityReview.ts",
+      "args": [
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-9b-current-angle-atomicity-independent-c-v1/config/A1.9b-current-angle.independent-c.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0
+    },
+    {
+      "script": "semanticAtomicityReview.ts",
+      "args": [
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-remediation14-guarded-root-integration-technical-v1/config/A006.same-identity-exact-rest.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0
+    },
+    {
+      "script": "semanticAtomicityReview.ts",
+      "args": [
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-remediation14-guarded-root-integration-technical-v1/config/A052.same-identity-exact-rest.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0
+    },
+    {
+      "script": "semanticAtomicityReview.ts",
+      "args": [
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-remediation14-guarded-root-integration-technical-v1/config/A4.actual-independent.relative-canonical.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0
+    },
+    {
+      "script": "generateGoalVisualizationQaLedgers.ts",
+      "args": [
+        "--subjects=chemie",
+        "--check"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "allPassed": true,
+  "newScientificVotes": 0,
+  "humanApproval": false
+}

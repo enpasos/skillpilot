@@ -53,6 +53,7 @@ Use this page by role: start with the overview documents, then jump to a review 
 
 ## Chemie/Biologie M7: datierte Arbeitsstände
 
+- [Chemie: sichtbarer Quellen- und Vorbedingungscheckpoint mit 439 fachlichen Zielen (17.10.2026)](chemie-current439-source-requires-checkpoint-2026-10-17.md)
 - [Chemie: inaktiver Arbeitsstand mit 439 fachlichen Zielen und zwei neuen Beschreibungsabschlüssen (16.10.2026)](chemie-current439-reviewed-working-checkpoint-2026-10-16.md)
 - [Chemie: Themenumfang, sechs aktuelle Seitenbindungen und offene Geltungsintegration (16.10.2026)](chemie-current437-source-scope-integration-checkpoint-2026-10-16.md)
 - [Chemie: geprüfter inaktiver Arbeitsstand mit 438 fachlichen Zielen (16.10.2026)](chemie-current438-reviewed-working-checkpoint-2026-10-16.md)

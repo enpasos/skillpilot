@@ -1,0 +1,88 @@
+[
+  {
+    "caseKey": "data-validity-test-not-proof",
+    "materialOrigin": "SkillPilot-authored teaching scenario; numbers are supplied model/reference data, not learner measurements",
+    "suppliedMaterial": {
+      "de": "Fiktiver Farbtest T soll Stoff X anzeigen. Validierungsblatt: Blindprobe Wasser farblos; bekannte X-Probe farbig; bekannte Y-Probe ebenfalls farbig; unbekannte U farbig. U wurde ohne dokumentierte Verdünnung erhitzt. Quelle S erklärt ausdrücklich Kreuzreaktion mit Y; Herstellertext H nennt nur „X-Test“. Keine Gesundheitsentscheidung.",
+      "en": "Fictional colour test T is intended to indicate substance X. Validation sheet: water blank colourless; known X sample coloured; known Y sample also coloured; unknown U coloured. U was heated without documented dilution. Source S explicitly explains cross-reaction with Y; manufacturer text H only says “X test”. No health decision."
+    },
+    "learnerTask": {
+      "de": "Beurteile Gültigkeit, geeignete Quellen, Blind-/Positivkontrollen und Tragweite von „U enthält X“. Benenne einen Verfahrensfehler und eine geeignete Folgemethode.",
+      "en": "Assess validity, suitable sources, blank/positive controls and the scope of “U contains X”. Identify a procedure error and a suitable follow-up method."
+    },
+    "expectedAnswer": {
+      "de": "Die Blank-/Positivkontrolle zeigt grundsätzliches Testansprechen; Y macht den Test nicht spezifisch. U-Farbe ist ein Hinweis auf eine reagierende Komponente, kein eindeutiger X-Nachweis. S ist für Spezifität relevanter als das verkürzte Etikett H; unbekannte Verdünnung/Erhitzung kann Signal verändern. Eine unabhängig spezifischere Analyse mit dokumentierten Bedingungen ist nötig. Blindproben korrigieren keinen grundsätzlich unspezifischen Reaktionsmechanismus. Weil X/Y hier keine Stoffidentitäten oder Trennmerkmale haben, darf kein benanntes Gerät ungeprüft als X-spezifisch gelten. Akzeptabel ist eine konkrete kontrollierte Wiederholung mit dokumentierter Verdünnung/Temperatur und eine begründete Planung zur Validierung einer ergänzenden Methode an bekannten X-, Y- und Blindproben. Für einen eindeutigen X-Nachweis muss deren Spezifität erst belegt werden; Wiederholung des unspezifischen Tests allein identifiziert X weiterhin nicht.",
+      "en": "Blank/positive controls show that the test responds in principle; Y makes it non-specific. U colour indicates a reacting component, not unique proof of X. S is more relevant to specificity than the shortened label H; unknown dilution/heating may alter the signal. An independent more specific analysis under documented conditions is needed. Blanks do not correct an inherently non-specific reaction mechanism. Because X/Y have no identities or discriminating properties here, no named instrument may be presumed X-specific. Accept a concrete controlled repeat with documented dilution/temperature and a justified plan to validate an additional method against known X, Y and blank samples. Its specificity must first be established for unique proof of X; repeating the non-specific test alone still does not identify X."
+    },
+    "requiredAssessmentCriteria": [
+      {
+        "criterionKey": "data-validity-test-not-proof-C1",
+        "meaning": {
+          "de": "Kontrollen, Kreuzreaktion und Verfahrensbedingungen werden ausgewertet.",
+          "en": "Controls, cross-reaction and procedure conditions are evaluated."
+        }
+      },
+      {
+        "criterionKey": "data-validity-test-not-proof-C2",
+        "meaning": {
+          "de": "Hinweis und eindeutiger Nachweis werden sauber unterschieden.",
+          "en": "Indication and unique proof are clearly distinguished."
+        }
+      },
+      {
+        "criterionKey": "data-validity-test-not-proof-C3",
+        "meaning": {
+          "de": "Quellenwahl und konkrete Folgemethode/Verbesserung sind begründet. Eine Folgemethode ist als zu validierender Vorschlag zu begründen; unbekannte X/Y-Eigenschaften begründen keine bereits bewiesene Gerätespezifität.",
+          "en": "Source choice and a specific follow-up method/improvement are justified. Justify a follow-up method as a proposal requiring validation; unknown X/Y properties do not establish instrument specificity."
+        }
+      }
+    ],
+    "transfer": {
+      "de": "Wenn Y ausgeschlossen wird, erkläre, welche weiteren Informationen vor einem eindeutigen Nachweis noch fehlen können.",
+      "en": "If Y is excluded, explain what further information may still be missing before unique proof."
+    }
+  },
+  {
+    "caseKey": "data-validity-temperature-confound",
+    "materialOrigin": "SkillPilot-authored teaching scenario; numbers are supplied model/reference data, not learner measurements",
+    "suppliedMaterial": {
+      "de": "Neu skaliertes synthetisches Lehrmodell zur Leitfähigkeit zweier NaCl-Proben: A 1,0 g/L bei 20 °C: 1800 µS/cm; B 1,0 g/L bei 35 °C: 2300 µS/cm. Messgerät ohne Temperaturkompensation; Kontrolle A bei 35 °C: 2298 µS/cm. Behauptung: B enthält deutlich mehr Salz. Für diese modellierte Messreihe bleibt die grobe Wiederholstreuung einer Einzelmessung ausdrücklich ±3 µS/cm; sie wurde nicht mit Konzentrations-/Leitfähigkeitskorrektur multipliziert und ist keine vollständige Messunsicherheit. Die Kontrollzahl 2298 ist gezielt neu angesetzt, damit temperaturgleiche Werte 2 µS/cm auseinanderliegen; es werden keine echten Messungen behauptet.",
+      "en": "Rescaled synthetic teaching model for conductivity of two NaCl samples: A 1.0 g/L at 20 °C: 1800 µS/cm; B 1.0 g/L at 35 °C: 2300 µS/cm. Meter lacks temperature compensation; control A at 35 °C: 2298 µS/cm. Claim: B contains much more salt. For this modelled measurement series one measurement explicitly retains the rough ±3 µS/cm repeat scatter; it was not multiplied with the concentration/conductivity correction and is not full measurement uncertainty. The control value 2298 is deliberately newly set so the matched-temperature values differ by 2 µS/cm; no real measurements are claimed."
+    },
+    "learnerTask": {
+      "de": "Prüfe, welche Folgerung durch Daten getragen wird, welche Störgröße vorliegt und wie ein gültiger Stoffmengenvergleich verbessert werden kann.",
+      "en": "Assess which conclusion the data support, the confounder present and how to improve a valid amount comparison."
+    },
+    "expectedAnswer": {
+      "de": "Die 500-µS/cm-Differenz ist mit Temperatur gekoppelt; Kontrolle A35 liegt innerhalb grober Streuung bei B35. Daten belegen kein Mehr an Salz in B. Gleiche Temperatur, Standards, Wiederholungen und bekannte Kompensation/gleiches Ionensystem sind nötig. Streuungsangabe ist nicht die vollständige Messunsicherheit; selbst temperaturgleiche Leitfähigkeit wäre bei unbekannten Ionensorten keine eindeutige NaCl-Konzentration.",
+      "en": "The 500-µS/cm difference is confounded by temperature; A35 control lies within rough scatter of B35. Data do not establish more salt in B. Equal temperature, standards, repeats and known compensation/the same ion system are needed. The scatter estimate is not full measurement uncertainty; even equal-temperature conductivity would not uniquely determine NaCl concentration for unknown ion species."
+    },
+    "requiredAssessmentCriteria": [
+      {
+        "criterionKey": "data-validity-temperature-confound-C1",
+        "meaning": {
+          "de": "Temperatur wird anhand der Kontrollmessung als Störgröße begründet.",
+          "en": "Temperature is justified as a confounder using the control."
+        }
+      },
+      {
+        "criterionKey": "data-validity-temperature-confound-C2",
+        "meaning": {
+          "de": "Nicht getragene Konzentrationsbehauptung wird zurückgewiesen.",
+          "en": "The unsupported concentration claim is rejected."
+        }
+      },
+      {
+        "criterionKey": "data-validity-temperature-confound-C3",
+        "meaning": {
+          "de": "Konkrete methodische Verbesserung und Reichweitengrenze werden genannt.",
+          "en": "Specific method improvement and scope limit are identified."
+        }
+      }
+    ],
+    "transfer": {
+      "de": "Plane den Vergleich, wenn Probe B zusätzlich Saccharose enthält; erläutere die Grenze reiner Leitfähigkeitsdaten.",
+      "en": "Plan the comparison if B additionally contains sucrose; explain the limit of conductivity-only data."
+    }
+  }
+]

@@ -1,0 +1,141 @@
+{
+  "goalId": "28c90c6a-3020-5c51-ac40-d802f3f12d2d",
+  "caseId": "strong-and-weak-bases-four-characteristic-points",
+  "role": "Whole reused AUTHOR case, one bounded assumptions clarification; original independent P1 remains evidence for original bytes only",
+  "titleDe": "Starke und schwache Base: vier Punkte einer Titration begründen",
+  "titleEn": "Strong and weak bases: justify four points of a titration",
+  "dataStatus": "Explicitly stipulated ideal aqueous model data; no actual experiment or learner work",
+  "routeBoundaryDe": "Gezielter Entwurf zur rechnerischen Basenroute des NI-eA-Abschnitts. Keine Pflicht für NI-gA oder alle Bundesländer abgeleitet. Die gesamte Quelle und der ganze Kurs werden hier nicht freigegeben.",
+  "routeBoundaryEn": "Targeted design for the NI advanced-course base-calculation clause. No compulsory coverage is inferred for NI basic courses or every jurisdiction. This does not approve the whole source or course.",
+  "materialAndData": {
+    "temperature_C": 25.0,
+    "waterIonProduct_mol2_L2": 1e-14,
+    "weakBase": {
+      "substance": "NH3(aq)",
+      "sampleVolume_mL": 25.0,
+      "formalConcentration_mol_L": 0.1,
+      "pKb": 4.75
+    },
+    "strongBase": {
+      "substance": "NaOH(aq)",
+      "sampleVolume_mL": 25.0,
+      "formalConcentration_mol_L": 0.1,
+      "assumption": "Complete dissociation; Na+ spectator ion"
+    },
+    "titrant": {
+      "substance": "HCl(aq)",
+      "concentration_mol_L": 0.1,
+      "assumption": "Complete dissociation; Cl− spectator ion"
+    },
+    "requestedAddedVolumes_mL": [
+      0.0,
+      12.5,
+      25.0,
+      30.0
+    ],
+    "indicatorTransitionIntervals_pH": {
+      "methylRed": [
+        4.4,
+        6.2
+      ],
+      "bromothymolBlue": [
+        6.0,
+        7.6
+      ],
+      "phenolphthalein": [
+        8.2,
+        10.0
+      ]
+    },
+    "assumptionsDe": [
+      "Volumina additiv; keine Probenverluste oder NH3-Verflüchtigung.",
+      "Aktivitäten durch Konzentrationen angenähert; keine zusätzlichen Fremdsalz-/Aktivitätseffekte, kein CO₂-Eintrag und keine weiteren gelösten Protolytesysteme. Die Protolyse von NH₄⁺ und NH₃ sowie die Autoprotolyse des Wassers bleiben ausdrücklich Teil des Modells.",
+      "Alle Zahlen sind Modelldaten. Vier berechnete Punkte sind keine aufgenommenen Messkurven und legen nicht jeden Zwischenwert eindeutig fest."
+    ],
+    "assumptionsEn": [
+      "Volumes are additive; no sample loss or NH3 volatilisation.",
+      "Concentrations approximate activities; no additional foreign-salt/activity effects, CO₂ ingress or other dissolved protolyte systems. NH₄⁺/NH₃ protolysis and water autoprotolysis explicitly remain part of the model.",
+      "All numbers are model data. Four calculated points are not acquired curves and do not uniquely fix every intermediate value."
+    ]
+  },
+  "taskDemandDe": [
+    "Stelle für jede Probe die Neutralisationsbilanz auf und berechne den Verbrauch am Äquivalenzpunkt. Erkläre, warum beide Proben hier dieselbe Stoffmenge HCl benötigen, obwohl ihre Anfangs-pH-Werte verschieden sind.",
+    "Berechne für beide Proben den Anfangs-pH sowie den pH nach Zugabe von 12,50 mL, 25,00 mL und 30,00 mL HCl. Begründe für jeden Abschnitt zuerst das vorherrschende Modell und berücksichtige jeweils das gesamte Volumen. Leite die Säurekonstante von NH4+ aus der gegebenen Basenkonstante ab.",
+    "Begründe, warum am Halbäquivalenzpunkt nur bei der schwachen Base näherungsweise pH=pKa(NH4+) gilt und warum der Äquivalenzpunkt der NH3-Probe hier im Sauren liegt. Eine starke Base erhält keinen erfundenen pKa-Pufferbereich.",
+    "Skizziere aus diesen Modellpunkten zwei ausdrücklich schematische Kurven mit beschrifteten Achsen, Einheiten, Halb- und Äquivalenzpunkt. Erkläre die Unterschiede der Pufferregion und des Kurvenverlaufs, ohne Zwischenwerte als Messdaten auszugeben.",
+    "Wähle aus den angegebenen Intervallen einen begründeten Indikator für jede Probe. Erkläre insbesondere, warum ein Phenolphthalein-Endpunkt für die NH3-Probe den HCl-Verbrauch deutlich zu früh anzeigen kann. Prüfe dazu die Stoffmengenbilanz im Pufferabschnitt oder berechne einen Zwischenpunkt; ein bloßer Vergleich mit pH 7 genügt nicht."
+  ],
+  "taskDemandEn": [
+    "Write the neutralisation balance for each sample and calculate the equivalence consumption. Explain why both samples require the same amount of HCl despite their different initial pH values.",
+    "Calculate the initial pH and the pH after adding 12.50 mL, 25.00 mL and 30.00 mL HCl for both samples. First justify the dominant model in each region and use the total volume. Derive the NH4+ acid constant from the given base constant.",
+    "Explain why only the weak base has approximately pH=pKa(NH4+) at half-equivalence and why the NH3 equivalence point is acidic here. Do not invent a pKa buffer region for a strong base.",
+    "Use the model points to sketch two explicitly schematic curves with labelled axes, units, half-equivalence and equivalence. Explain the buffer-region and curve-shape differences without representing intermediate values as acquired data.",
+    "Choose a justified indicator for each sample using the supplied transition intervals. Explain in particular why a phenolphthalein endpoint can substantially precede NH3 equivalence. Check a buffer-region amount balance or calculate an intermediate point; merely comparing with pH 7 is insufficient."
+  ],
+  "workedModelDe": {
+    "equivalence": "n0=0,02500 L·0,100 mol/L=0,002500 mol; Veq=25,00 mL für beide Proben. Basenstärke ändert das Anfangsgleichgewicht, nicht die vorgegebene formale 1:1-Stoffmenge.",
+    "initialNaOH": "[OH−]≈0,100 mol/L; pOH=1,00; pH=13,00.",
+    "initialNH3": "Kb=10^−4,75=1,7783·10^−5. Mit x=[OH−] und Kb=x²/(0,100−x) ergibt sich x≈0,0013247 mol/L und pH≈11,12. Die übliche Wurzelnäherung ergibt etwa11,13; der geringe Dissoziationsgrad muss geprüft werden.",
+    "halfNaOH": "Rest n(OH−)=0,001250 mol in0,03750 L, also0,033333 mol/L; pH≈12,52. Dies ist ein stöchiometrischer Rest, kein konjugierter schwacher Puffer.",
+    "halfNH3": "Formal n(NH3)=n(NH4+)=0,001250 mol. pKa(NH4+)=14,00−4,75=9,25; pH≈9,25. Die Näherung beruht auf dem erhaltenen NH3/NH4+-Paar, nicht allein auf dem Wort Halbäquivalenzpunkt.",
+    "equivalenceNaOH": "Im idealen25°C-Modell bleiben nur Zuschauerionen; pH=7,00. Diese Neutralzahl wird nicht auf andere Temperaturen oder die schwache Base übertragen.",
+    "equivalenceNH3": "Formal c(NH4+)=0,002500/0,05000=0,05000 mol/L. Ka=Kw/Kb=5,6234·10^−10; [H3O+]≈sqrt(Ka·c)=5,3026·10^−6 mol/L; pH≈5,28. NH4+ protolysiert als schwache Säure.",
+    "afterEquivalenceBoth": "Formaler HCl-Überschuss0,000500 mol im Gesamtvolumen0,05500 L; [H3O+]≈0,0090909 mol/L und pH≈2,04. NH4+-Protolyse ist unter diesen Bedingungen dagegen vernachlässigbar; der formale Überschuss wird nicht allgemein mit einer exakt freien Ionenmenge gleichgesetzt.",
+    "indicator": "Für NH3 passt Methylrot4,4–6,2 in den berechneten steilen Bereich um pH≈5,28. Bei24,90mL liefert die NH3/NH4+-Näherung pH≈6,85, bei25,10mL der HCl-Überschuss pH≈3,70. Phenolphthalein8,2–10,0 wechselt bereits im Pufferbereich; bei pH8,2 ist im Modell ungefähr22,95mL statt25,00mL zugesetzt. Eine daraus berechnete NH3-Menge würde unterschätzt. Für NaOH ist Bromthymolblau um pH7 passend; andere Intervalle dürfen nur anhand der tatsächlichen steilen Kurvenregion beurteilt werden."
+  },
+  "workedModelEn": {
+    "equivalence": "n0=0.02500 L×0.100 mol/L=0.002500 mol; Veq=25.00 mL for either sample. Base strength changes the initial equilibrium, not the stipulated formal1:1 amount.",
+    "initial": "NaOH: [OH−]≈0.100 mol/L, pH13.00. NH3: Kb=1.7783×10^−5=x²/(0.100−x), giving [OH−]≈0.0013247 mol/L and pH11.12. A checked square-root approximation gives about11.13.",
+    "half": "NaOH:0.001250 mol OH− remains in0.03750 L, pH12.52. NH3: equal formal NH3/NH4+ amounts, pKa=14.00−4.75=9.25, so pH≈9.25. The strong-base half point is not a weak conjugate buffer.",
+    "equivalencePoint": "Ideal NaOH/HCl at25°C gives pH7.00. NH3 becomes0.05000 mol/L formal NH4+; Ka=Kw/Kb=5.6234×10^−10 and the weak-acid approximation gives pH5.28.",
+    "afterEquivalence": "The formal HCl excess is0.000500 mol in0.05500 L; pH≈2.04 for both. NH4+ dissociation is negligible in this region. This is a justified approximation, not a universal identity of formal excess and exact free-ion amount.",
+    "indicator": "Methyl red4.4–6.2 fits the steep NH3 region around pH5.28: model estimates give about6.85 at24.90mL and3.70 at25.10mL. Phenolphthalein8.2–10.0 changes within the buffer region; the model reaches pH8.2 at about22.95mL, underestimating NH3 if used as its equivalence volume. Bromothymol blue aroundpH7 suits NaOH; judge alternative intervals by its actual steep region rather than a universal indicator rule."
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "id": "amount-balance",
+        "required": true,
+        "de": "Beide1:1-Bilanzen, gleiche Ausgangsstoffmenge und gleicher Äquivalenzverbrauch begründet; Konzentration mit Menge nicht verwechselt.",
+        "en": "Justify both1:1 balances, equal starting amounts and equal equivalence consumption; distinguish concentration from amount."
+      },
+      {
+        "id": "all-four-strong-base-points",
+        "required": true,
+        "de": "Alle vier starken Basenpunkte mit zutreffender Rest-/Überschuss-/Wasserbilanz und tatsächlichem Gesamtvolumen berechnet.",
+        "en": "Calculate all four strong-base points using the applicable residual, excess or water model and actual total volume."
+      },
+      {
+        "id": "all-four-weak-base-points",
+        "required": true,
+        "de": "Alle vier schwachen Basenpunkte mit jeweils begründetem Modell, Kw/Kb-Beziehung, Pufferverhältnis und NH4+-Protolyse berechnet; nicht nur vorgegebene Zahlen gedeutet.",
+        "en": "Calculate all four weak-base points with justified regional models, Kw/Kb relation, buffer ratio and NH4+ protolysis; interpreting supplied answers alone is insufficient."
+      },
+      {
+        "id": "curve-and-indicator-transfer",
+        "required": true,
+        "de": "Beide schematischen Kurven unterscheiden, Indikatorintervalle gegen begründete Kurvenregion prüfen und konkreten frühen NH3-Phenolphthalein-Endpunkt samt Fehlerrichtung erklären.",
+        "en": "Distinguish both schematic curves, assess indicator intervals against justified curve regions and explain the concrete early NH3 phenolphthalein endpoint and bias."
+      },
+      {
+        "id": "model-boundaries",
+        "required": true,
+        "de": "Annahmen, Näherungen und25°C-Bindung benennen; Modellpunkte nicht als Messwerte ausgeben, keine praktische Durchführung oder gesamte Quellabdeckung behaupten.",
+        "en": "State assumptions, approximations and25°C boundary; do not pass model points as measurements or claim actual execution or complete source coverage."
+      }
+    ],
+    "acceptedRounding": "About0.02pH for justified approximations; assess equations and models, not merely answer matching.",
+    "completionRuleDe": "Bewerte die gezeigten unabhängigen fachlichen Leistungen und den tatsächlichen Transfer über den Fallpool. Eine reichhaltige zusammenhängende Bearbeitung kann mehrere Anforderungen belegen. Nach vollständiger Evidenz keine Zusatzaufgabe nur wegen einer festen Fallzahl verlangen.",
+    "completionRuleEn": "Assess independent demonstrated competence and actual transfer across the pool. One rich coherent submission may support several requirements. Do not demand another task solely for a fixed case quota after complete evidence."
+  },
+  "remainingHolds": [
+    "No independent case/P approval yet.",
+    "No whole-source/course/view approval.",
+    "Actual acquisition/experimental half point and polyprotic-route obligations remain with their real carriers and are not met by this calculation case.",
+    "Weak-model prerequisite/whole sequencing and BW-HH-memory holds remain.",
+    "No canonical/active/Normal/central/strict-count changes."
+  ],
+  "HumanApproval": false,
+  "HumanTrial": false,
+  "actualLearnerExecutions": 0
+}

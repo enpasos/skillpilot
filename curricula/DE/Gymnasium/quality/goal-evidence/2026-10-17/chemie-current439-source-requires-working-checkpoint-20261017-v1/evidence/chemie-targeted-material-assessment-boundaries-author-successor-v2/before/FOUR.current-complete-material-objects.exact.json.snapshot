@@ -1,0 +1,192 @@
+{
+  "role": "Exact own v1 whole material objects before bounded boundary correction",
+  "source": {
+    "path": "/mnt/e/skillpilot-chemie-L7-20261017/chemie-mixed18-four-targeted-P-gaps-author-successor-v1/materials/FIVE.whole-bilingual-targeted-cases.author.json",
+    "sha256": "98a9bb9d9ad6032f650548c5ce14703885ea331d39b4fc8582f5dc7ca4696c98",
+    "bytes": 37271
+  },
+  "cases": [
+    {
+      "goalId": "f85b4651-50ea-5b42-b193-3465c05257a7",
+      "id": "nitrogen-mo-count",
+      "titleDe": "N2: Besetzung selbst aus dem Schema gewinnen",
+      "titleEn": "N2: derive occupation from the actual scheme",
+      "provenance": "Own prospective bilingual teaching material, CC-BY-4.0. Primary-source historical facts are attributed separately; no observed learner work, experiment or independent review is claimed.",
+      "materialsDe": "Valenz-MO-Schemata homonuklearer zweiatomiger Moleküle, 1s-Kernorbitale bewusst weggelassen. Jede Klammer ist ein Orbital, up/down je ein Elektron mit entsprechendem Spin. Nebeneinander stehende pi-Orbitale sind entartet. Ein Stern bezeichnet antibindend; ohne Stern bindend. z ist die Bindungsachse. Gezeigt ist nur die jeweilige qualitative Reihenfolge, keine gemeinsame absolute Energieskala beider Moleküle. Unterschiedliche 2s/2p-Mischung führt hier bei N2 zu pi2p unter sigma2p, bei O2 umgekehrt. Diese Reihenfolge wird gegeben und muss nicht hergeleitet werden.\nN2: relative Energie nimmt nach oben zu / relative energy increases upwards\nhoch/high   sigma*2p_z     [    ]\n            pi*2p_x       [    ]   pi*2p_y [    ]\n            sigma2p_z     [up down]\n            pi2p_x        [up down] pi2p_y [up down]\n            sigma*2s      [up down]\nniedrig/low sigma2s       [up down]",
+      "materialsEn": "Valence MO schemes for homonuclear diatomic molecules; 1s core orbitals are intentionally omitted. Each bracket is one orbital; up/down each denotes one electron with that spin. Side-by-side pi orbitals are degenerate. A star marks antibonding; unstarred orbitals are bonding. z is the bond axis. Each ladder gives its qualitative order, not a shared absolute energy scale. Different 2s/2p mixing gives pi2p below sigma2p for N2 and the reverse for O2 here. The order is supplied and need not be derived.\nN2: relative Energie nimmt nach oben zu / relative energy increases upwards\nhoch/high   sigma*2p_z     [    ]\n            pi*2p_x       [    ]   pi*2p_y [    ]\n            sigma2p_z     [up down]\n            pi2p_x        [up down] pi2p_y [up down]\n            sigma*2s      [up down]\nniedrig/low sigma2s       [up down]",
+      "taskDe": "Zähle im bereitgestellten N2-Schema selbst die bindenden und antibindenden Valenzelektronen. Leite die Bindungsordnung mit einer erklärten Beziehung ab. Erkläre, weshalb die Zahl aller besetzten Elektronen allein die Bindungsordnung noch nicht bestimmt. Begrenze eine Aussage über Stärke/Stabilität; eine genaue Bindungsenergie wird nicht verlangt.",
+      "taskEn": "Independently count bonding and antibonding valence electrons in the supplied N2 ladder. Derive bond order using an explained relationship. Explain why total occupied electrons alone does not determine bond order. Bound any strength/stability claim; no exact bond energy is required.",
+      "expectedPerformanceDe": "Aus den besetzten Kästchen folgen acht bindende und zwei antibindende Valenzelektronen, (8−2)/2=3. Bindende Beiträge stabilisieren relativ zu den getrennten Atomorbitalen, antibindende wirken entgegen. Aus dem Modell folgt eine Dreifachbindungsordnung, keine exakte Dissoziationsenergie oder allgemeine Reaktionsgeschwindigkeit.",
+      "expectedPerformanceEn": "The occupied boxes give eight bonding and two antibonding valence electrons, (8−2)/2=3. Bonding contributions stabilise relative to the separate atomic orbitals and antibonding contributions oppose them. The model gives triple bond order, not an exact dissociation energy or general reaction rate.",
+      "understandingFocusDe": "Tatsächliche Diagramminterpretation mit selbst gewonnenen Zähldaten statt bloßer Einsetzung schon fertiger Summen.",
+      "understandingFocusEn": "Actual diagram interpretation with independently extracted occupations rather than substitution of precomputed totals.",
+      "rubric": [
+        {
+          "id": "mo-n2-read",
+          "points": 2,
+          "criterionDe": "Besetzungen selbst richtig zählen und Orbitalarten unterscheiden.",
+          "criterionEn": "Independently count occupations and distinguish orbital types."
+        },
+        {
+          "id": "mo-n2-reason",
+          "points": 2,
+          "criterionDe": "Halbdifferenz herleiten und Modellgrenze begründen.",
+          "criterionEn": "Derive the half-difference and justify a model limit."
+        },
+        {
+          "id": "mo-n2-transfer",
+          "points": 2,
+          "criterionDe": "Geänderte Besetzung am höchsten besetzten Orbital selbst deuten.",
+          "criterionEn": "Independently interpret changed occupation of the highest occupied orbital."
+        }
+      ],
+      "maximumPoints": 6,
+      "freshTransfer": {
+        "taskDe": "N2+ entsteht im gegebenen Modell durch Entfernen eines Elektrons aus dem höchsten besetzten Valenz-MO. Markiere das betroffene Kästchen, zeichne die neue Besetzung und begründe die neue Bindungsordnung ohne erneut vorgegebene Zählsummen.",
+        "taskEn": "In the supplied model N2+ forms by removing an electron from the highest occupied valence MO. Mark that box, draw its new occupation and justify the new bond order without supplied totals.",
+        "expectedPerformanceDe": "Das bindende sigma2p_z verliert ein Elektron: sieben bindende, zwei antibindende, BO=2,5. Entfernen eines bindenden Elektrons senkt die Bindungsordnung.",
+        "expectedPerformanceEn": "Bonding sigma2p_z loses one electron: seven bonding, two antibonding, BO=2.5. Removing a bonding electron lowers bond order."
+      },
+      "assessmentBoundaryDe": "Bewertet werden die ausdrücklich gezeigte eigene Begründung und frischer selbstständiger Transfer. Dies ist keine zusätzliche starre Fall-/Laufquote. Die gesondert erhaltene praktische Durchführung bleibt notwendig; dieses Material belegt keine bereits erfolgte Handlung.",
+      "assessmentBoundaryEn": "Assess explicitly demonstrated independent reasoning and fresh transfer. This adds no fixed case/run quota. Separately retained practical execution remains necessary; this material establishes no action already performed."
+    },
+    {
+      "goalId": "f85b4651-50ea-5b42-b193-3465c05257a7",
+      "id": "fresh-oxygen-cation",
+      "titleDe": "O2 und O2+: neue Besetzung statt übertragener Reihenfolge",
+      "titleEn": "O2 and O2+: changed occupation with the correct separate order",
+      "provenance": "Own prospective bilingual teaching material, CC-BY-4.0. Primary-source historical facts are attributed separately; no observed learner work, experiment or independent review is claimed.",
+      "materialsDe": "Valenz-MO-Schemata homonuklearer zweiatomiger Moleküle, 1s-Kernorbitale bewusst weggelassen. Jede Klammer ist ein Orbital, up/down je ein Elektron mit entsprechendem Spin. Nebeneinander stehende pi-Orbitale sind entartet. Ein Stern bezeichnet antibindend; ohne Stern bindend. z ist die Bindungsachse. Gezeigt ist nur die jeweilige qualitative Reihenfolge, keine gemeinsame absolute Energieskala beider Moleküle. Unterschiedliche 2s/2p-Mischung führt hier bei N2 zu pi2p unter sigma2p, bei O2 umgekehrt. Diese Reihenfolge wird gegeben und muss nicht hergeleitet werden.\nO2: relative Energie nimmt nach oben zu / relative energy increases upwards\nhoch/high   sigma*2p_z     [    ]\n            pi*2p_x       [up  ]   pi*2p_y [up  ]\n            pi2p_x        [up down] pi2p_y [up down]\n            sigma2p_z     [up down]\n            sigma*2s      [up down]\nniedrig/low sigma2s       [up down]",
+      "materialsEn": "Valence MO schemes for homonuclear diatomic molecules; 1s core orbitals are intentionally omitted. Each bracket is one orbital; up/down each denotes one electron with that spin. Side-by-side pi orbitals are degenerate. A star marks antibonding; unstarred orbitals are bonding. z is the bond axis. Each ladder gives its qualitative order, not a shared absolute energy scale. Different 2s/2p mixing gives pi2p below sigma2p for N2 and the reverse for O2 here. The order is supplied and need not be derived.\nO2: relative Energie nimmt nach oben zu / relative energy increases upwards\nhoch/high   sigma*2p_z     [    ]\n            pi*2p_x       [up  ]   pi*2p_y [up  ]\n            pi2p_x        [up down] pi2p_y [up down]\n            sigma2p_z     [up down]\n            sigma*2s      [up down]\nniedrig/low sigma2s       [up down]",
+      "taskDe": "Lies das bereitgestellte O2-Schema unabhängig vom N2-Schema: zähle beide Orbitalarten selbst und berechne die Bindungsordnung. Beschreibe die Besetzung der entarteten höchsten besetzten Orbitale. Eine magnetische Folgerung darf anhand ungepaarter Elektronen erläutert werden; exakte Energiewerte sind nicht vorgegeben.",
+      "taskEn": "Read the supplied O2 scheme independently from N2: count both orbital types and calculate bond order. Describe occupation of the degenerate highest occupied orbitals. A magnetic inference may be explained from unpaired electrons; exact energies are not supplied.",
+      "expectedPerformanceDe": "Acht bindende und vier antibindende Valenzelektronen ergeben BO=2. Die beiden pi*-Orbitale sind je einfach parallel besetzt; zwei ungepaarte Elektronen erlauben die qualitative Paramagnetismusdeutung. Keine quantifizierte Bindungsenergie folgt aus den Kästchen allein.",
+      "expectedPerformanceEn": "Eight bonding and four antibonding valence electrons give BO=2. The two pi* orbitals each carry one parallel-spin electron; two unpaired electrons support qualitative paramagnetism. The boxes alone provide no quantitative bond energy.",
+      "understandingFocusDe": "Selbstständiges Lesen eines anderen Moleküls mit anderer Reihenfolge und anschließender Veränderung der antibindenden Besetzung.",
+      "understandingFocusEn": "Independently read another molecule with a different level order and then change antibonding occupation.",
+      "rubric": [
+        {
+          "id": "mo-o2-read",
+          "points": 2,
+          "criterionDe": "O2-Kästchen richtig lesen, ohne N2-Reihenfolge zu übertragen.",
+          "criterionEn": "Read O2 boxes correctly without copying the N2 ordering."
+        },
+        {
+          "id": "mo-o2-bo",
+          "points": 2,
+          "criterionDe": "Bindungsordnung mit richtiger Halbdifferenz begründen.",
+          "criterionEn": "Justify bond order with the correct half-difference."
+        },
+        {
+          "id": "mo-o2-transfer",
+          "points": 2,
+          "criterionDe": "Ionisierung und Wirkung antibindender Besetzung erklären.",
+          "criterionEn": "Explain ionisation and the effect of antibonding occupation."
+        }
+      ],
+      "maximumPoints": 6,
+      "freshTransfer": {
+        "taskDe": "Entferne für O2+ ein Elektron aus einem höchsten besetzten pi*-Orbital. Zeichne die geänderte Besetzung und leite selbst die neue Bindungsordnung ab. Begründe den Unterschied zum Entfernen aus einem bindenden Orbital.",
+        "taskEn": "For O2+ remove one electron from a highest occupied pi* orbital. Draw the changed occupation and independently derive bond order. Explain the difference from removal out of a bonding orbital.",
+        "expectedPerformanceDe": "Acht bindende und drei antibindende Elektronen ergeben BO=2,5. Weniger antibindende Besetzung erhöht die modellierte Bindungsordnung; daraus folgt ohne weitere Daten keine exakte Energie oder Geschwindigkeitsrangfolge.",
+        "expectedPerformanceEn": "Eight bonding and three antibonding electrons give BO=2.5. Reduced antibonding occupation increases model bond order; no exact energy or reaction-rate ranking follows without additional data."
+      },
+      "assessmentBoundaryDe": "Bewertet werden die ausdrücklich gezeigte eigene Begründung und frischer selbstständiger Transfer. Dies ist keine zusätzliche starre Fall-/Laufquote. Die gesondert erhaltene praktische Durchführung bleibt notwendig; dieses Material belegt keine bereits erfolgte Handlung.",
+      "assessmentBoundaryEn": "Assess explicitly demonstrated independent reasoning and fresh transfer. This adds no fixed case/run quota. Separately retained practical execution remains necessary; this material establishes no action already performed."
+    },
+    {
+      "goalId": "b8d3b453-d638-5518-aab0-d84ec2e8567c",
+      "id": "aromatic-nitronium-new-path",
+      "titleDe": "Nitroniumfall: welcher Abschluss stellt Aromatizität her?",
+      "titleEn": "Nitronium case: which completion restores aromaticity?",
+      "provenance": "Own prospective bilingual teaching material, CC-BY-4.0. Primary-source historical facts are attributed separately; no observed learner work, experiment or independent review is claimed.",
+      "materialsDe": "Neuer Papierfall, kein Versuch: Ein Benzolring besitzt ein zusammenhängendes zyklisches System aus sechs pi-Elektronen. Das vorgegebene Elektrophil ist NO2+ (Nitroniumion). Nach Bindung von NO2 am Ring-C1 liegt das nichtaromatische sigma-Zwischenion C6H6NO2+ vor: C1 trägt H und NO2 sowie Einfachbindungen zu seinen beiden Ringnachbarn; im restlichen Ring liegen zwei C=C-Bindungen und eine delokalisierbare positive Ladung. Zwei ausdrücklich hypothetische Abschlusskarten: A entfernt H+ von C1 und erzeugt C6H5NO2 mit drei alternierenden Ring-Doppelbindungen; B addiert Cl− an eine positiv beschriebene Ringposition und erzeugt C6H6ClNO2 mit weiterhin zwei Ring-Doppelbindungen. B ist eine gegebene Modellalternative, keine Behauptung einer tatsächlichen Konkurrenzreaktion im Nitriergemisch. Hinweise auf genaue Raten oder Barrieren fehlen.",
+      "materialsEn": "New paper case, no experiment: benzene has a continuous cyclic six-pi-electron system. The supplied electrophile is NO2+ (nitronium). Bonding NO2 to ring C1 gives nonaromatic sigma intermediate C6H6NO2+: C1 carries H and NO2 plus single bonds to its two ring neighbours; the remaining ring has two C=C bonds and a delocalisable positive charge. Two explicitly hypothetical completion cards: A removes H+ from C1, producing C6H5NO2 with three alternating ring double bonds; B adds Cl− at a positively represented ring position, producing C6H6ClNO2 with only two ring double bonds. B is a given model alternative, not a claimed competing reaction in a nitrating mixture. Exact rates and barriers are not supplied.",
+      "taskDe": "Prüfe für A und B Stoff- und Ladungsbilanz sowie durchgehende zyklische pi-Delokalisierung. Begründe, welcher Abschluss die aromatische Stabilisierung zurückgewinnt und warum die bloße Neutralität des Produkts dafür nicht genügt. Formuliere die Gesamtbilanz der vorgegebenen Substitution und begrenze ein daraus abgeleitetes Reaktivitätsurteil.",
+      "taskEn": "For A and B check atom/charge balance and continuous cyclic pi delocalisation. Explain which completion restores aromatic stabilisation and why product neutrality alone is insufficient. Write the overall balance of the supplied substitution and bound a reactivity claim.",
+      "expectedPerformanceDe": "A liefert C6H5NO2 + H+; Atome und Gesamtladung +1 bleiben erhalten. C1 wird wieder Teil des durchgehenden pi-Systems; Aromatizität ist wiederhergestellt. B neutralisiert zwar das Ion durch Cl−-Aufnahme, stellt das zyklische sechs-pi-System aber nicht wieder her. C6H6 + NO2+ → C6H5NO2 + H+ beschreibt den Substitutionsschritt. Die Rückgewinnung aromatischer Stabilisierung erklärt eine Triebkraft, beweist allein aber weder genaue Geschwindigkeit noch jeden denkbaren Reaktionsweg.",
+      "expectedPerformanceEn": "A yields C6H5NO2 + H+; atoms and total charge +1 are conserved. C1 rejoins the continuous pi system, restoring aromaticity. B neutralises charge through Cl− capture but does not restore the cyclic six-pi system. C6H6 + NO2+ → C6H5NO2 + H+ describes the substitution step. Regaining aromatic stabilisation explains a driving contribution but alone proves neither exact rate nor every possible pathway.",
+      "understandingFocusDe": "Neues Elektrophil und eigenständiger Aromatizitätsschluss; Neutralisation und Wiederaromatisierung trennen.",
+      "understandingFocusEn": "A new electrophile and independent aromaticity judgement; distinguish charge neutralisation from rearomatisation.",
+      "rubric": [
+        {
+          "id": "arom-path",
+          "points": 2,
+          "criterionDe": "An beiden Abschlusskarten die pi-Unterbrechung/Restaurierung begründen.",
+          "criterionEn": "Justify interruption/restoration of the pi system for both completion cards."
+        },
+        {
+          "id": "arom-balance",
+          "points": 2,
+          "criterionDe": "Substitutionsbilanz und Ladung richtig formulieren.",
+          "criterionEn": "Give the correct substitution and charge balance."
+        },
+        {
+          "id": "arom-transfer",
+          "points": 2,
+          "criterionDe": "Andere Reaktionsbedingungen ohne universelles Additionsverbot beurteilen.",
+          "criterionEn": "Assess different reaction conditions without a universal prohibition of addition."
+        }
+      ],
+      "maximumPoints": 6,
+      "freshTransfer": {
+        "taskDe": "Frische Gegenkarte: Unter ausdrücklich geeigneter H2-/Katalysatorführung wird C6H6+3H2→C6H12 vorgegeben. Das Produkt besitzt nur C–C-Einfachbindungen. Prüfe „Benzol kann wegen Aromatizität niemals addiert werden“. Ist das Modell der Substitution deshalb falsch?",
+        "taskEn": "Fresh countercard: under explicitly suitable H2/catalyst conditions the reaction C6H6+3H2→C6H12 is supplied. The product has only C–C single bonds. Assess “Benzene can never undergo addition because it is aromatic.” Does this invalidate the substitution model?",
+        "expectedPerformanceDe": "Die allgemeine Behauptung ist falsch. In der gegebenen Hydrierung geht Aromatizität verloren; andere Bindungsänderungen und Reaktionsbedingungen ermöglichen dennoch den vorgegebenen Prozess. Das bedingt formulierte Substitutionsmodell bleibt sinnvoll. Aus Aromatizität allein folgt kein absolutes Reaktionsverbot oder eine vollständige kinetische Prognose.",
+        "expectedPerformanceEn": "The universal claim is false. Aromaticity is lost in the given hydrogenation, yet other bond changes and conditions allow the supplied process. The conditional substitution model remains useful. Aromaticity alone gives no absolute reaction prohibition or complete kinetic prediction."
+      },
+      "assessmentBoundaryDe": "Bewertet werden die ausdrücklich gezeigte eigene Begründung und frischer selbstständiger Transfer. Dies ist keine zusätzliche starre Fall-/Laufquote. Die gesondert erhaltene praktische Durchführung bleibt notwendig; dieses Material belegt keine bereits erfolgte Handlung.",
+      "assessmentBoundaryEn": "Assess explicitly demonstrated independent reasoning and fresh transfer. This adds no fixed case/run quota. Separately retained practical execution remains necessary; this material establishes no action already performed."
+    },
+    {
+      "goalId": "188bd684-e894-5753-8a50-798220b04d97",
+      "id": "basf-indigo-1897-actual-sources",
+      "titleDe": "Realer Fall: Forschungsinvestition in synthetischen Indigo",
+      "titleEn": "Real case: investment in synthetic indigo",
+      "provenance": "Own prospective bilingual teaching material, CC-BY-4.0. Primary-source historical facts are attributed separately; no observed learner work, experiment or independent review is claimed.",
+      "materialsDe": "Tatsächliche Quellenkarten, abgerufen 17.10.2026: H1 BASF-Unternehmenschronik, Abschnitt „1897 / Indigo rein BASF“, https://www.basf.com/global/de/who-we-are/history/chronology/1865-1901/1897: Markteinführung 1897; 17 Jahre Forschung/Entwicklung; 18 Millionen Goldmark Investition, laut Firmenquelle mehr als das damalige Grundkapital. Das ist eine interessengebundene rückblickende Firmendarstellung, keine von uns unabhängig geprüfte historische Jahresrechnung. H2 Science Museum Group, Objekt1914-659/1, Beschreibung Absätze3 und6, https://collection.sciencemuseumgroup.org.uk/objects/co9382056/natural-indigo-dye-specimen-no-7: Naturindigo war ein global gehandeltes Plantagenprodukt; synthetischer Indigo verdrängte später Teile dieses Markts und verringerte Investitionen in Naturindigoproduktion. Der Museumstext thematisiert auch Zwangsarbeit bzw. erzwungenen Anbau. H2 liefert keine Bestätigung der BASF-Investitionszahl. Reale Umsatz-, Gewinn-, jährliche Zahlungsstrom-, Absatz- oder bezifferte Schadensdaten sind in diesen Karten nicht enthalten. Goldmark werden nicht in heutige Euro umgerechnet.",
+      "materialsEn": "Actual source cards, accessed17Oct2026: H1 BASF corporate chronology, section “1897 / Indigo Pure BASF”, https://www.basf.com/global/en/who-we-are/history/chronology/1865-1901/1897: launch1897;17 years of research/development;18 million gold marks invested, reported as exceeding share capital at that time. This is an interested retrospective company account, not a historical annual account independently audited by us. H2 Science Museum Group, object1914-659/1, description paragraphs3 and6, https://collection.sciencemuseumgroup.org.uk/objects/co9382056/natural-indigo-dye-specimen-no-7: natural indigo was a globally traded plantation product; synthetic indigo later displaced part of that market and reduced investment in natural-indigo production. The museum also discusses coerced labour or cultivation. H2 does not corroborate the BASF investment amount. These cards supply no actual sales revenue, profit, annual cash flows, sales volume or monetised damage figures. Gold marks are not converted to present-day euros.",
+      "taskDe": "Erkläre an diesem belegten Fall, wie Farbstoffchemie Forschungsorganisation, Kapitalbindung, technische Umsetzung und Marktveränderung verbinden konnte. Ordne die Geldgröße als Investition ein und trenne sie von Umsatz und Gewinn. Beurteile die Bedeutung für industrielle Entwicklung mit einer begründeten positiven Wirkung und einer wirtschaftlichen oder gesellschaftlichen Grenze. Prüfe Herkunft/Intention und welche Aussage jede Quelle tatsächlich stützt. Welche zusätzlichen historischen Unterlagen wären für Rentabilität und Wohlfahrtsbilanz erforderlich?",
+      "taskEn": "Using this documented case, explain how dye chemistry could connect research organisation, committed capital, industrial implementation and market change. Classify the monetary amount as investment, separating it from revenue and profit. Assess its significance for industrial development with a justified positive contribution and an economic or social limit. Examine provenance/intent and what each source actually supports. Which further historical records would be needed for profitability and overall welfare?",
+      "expectedPerformanceDe": "Der Fall belegt nach Herkunft markierte Forschungs- und Investitionsanstrengung sowie Markteinführung; dies macht den Übergang von chemischem Wissen zu industrieller Produktion konkret. Plausible Beiträge sind technisches Verfahren, gebundenes Kapital und neue Marktversorgung. Investitionsaufwand ist weder Verkaufserlös noch Überschuss. Ohne vollständige Erlös-/Kostenreihen, Zeitbezug und Gegenfaktoren lässt sich keine Rendite oder alleinige Ursache des gesamten Industriewachstums berechnen. Der Museumsbefund erweitert den Blick auf verdrängte Produzenten und gesellschaftliche Belastungen, bestätigt aber nicht die finanzielle Firmenangabe. Das positive Innovationsurteil bleibt deshalb mit offener Netto- und Verteilungsbilanz vereinbar.",
+      "expectedPerformanceEn": "The attributed case documents research/investment effort and market launch, making the transition from chemistry to industrial production concrete. Plausible contributions include process development, committed capital and a new market supply. Investment expenditure is neither sales revenue nor surplus. Without complete revenue/cost series, timing and alternative influences no return or sole cause of all industrial growth can be calculated. The museum widens attention to displaced producers and social burdens but does not verify the company financial claim. A positive innovation assessment can therefore coexist with unresolved net and distributional effects.",
+      "understandingFocusDe": "Echte historische Quellen und echte zugeordnete finanzielle Größe; Firmeninteresse, Museumsreichweite und unbelegte Gewinne offen trennen.",
+      "understandingFocusEn": "Actual historical sources and an attributed real financial magnitude; distinguish company interests, museum scope and unsupported profits.",
+      "rubric": [
+        {
+          "id": "hist-mechanism",
+          "points": 2,
+          "criterionDe": "Chemisches Wissen, Forschung, Investition und Markt sachbezogen verbinden.",
+          "criterionEn": "Connect chemistry, research, investment and market with case-based reasoning."
+        },
+        {
+          "id": "hist-money",
+          "points": 2,
+          "criterionDe": "Investition von Umsatz/Gewinn und heutigen Währungen unterscheiden.",
+          "criterionEn": "Distinguish investment from revenue/profit and present-day currencies."
+        },
+        {
+          "id": "hist-source",
+          "points": 2,
+          "criterionDe": "Firmeninteresse und tatsächlich unterschiedliche Quellenreichweite prüfen.",
+          "criterionEn": "Assess company interests and the different actual scopes of the sources."
+        },
+        {
+          "id": "hist-judgement",
+          "points": 2,
+          "criterionDe": "Begründetes Nutzen-/Grenzenurteil ohne erfundene Rendite oder Alleinkausalität formulieren.",
+          "criterionEn": "Give a reasoned contribution/limits judgement without invented returns or sole causation."
+        }
+      ],
+      "maximumPoints": 8,
+      "freshTransfer": {
+        "taskDe": "Neue tatsächliche Quellenkarte H3: BASF-Chronik „The Age of Dyes“, gedruckte S27, PDF-Blatt15, Eintrag1901 (Original-PDF im Quellenledger): Ein weiterer BASF-Farbstoff, Indanthrene Blue RS, besitzt laut Firmenchronik bessere Licht-/Waschechtheit und eröffnet neue Anwendungen. Prüfe nun die Behauptung „Ein erfolgreicher neuer Farbstoff garantiert seinem Hersteller dauerhaft denselben Markt“. Ändert dies die Unterscheidung von Investition und Gewinn?",
+        "taskEn": "New actual source card H3: BASF chronology “The Age of Dyes”, printedp27, PDFsheet15, entry1901 (original PDF in the source ledger): a further BASF dye, Indanthrene Blue RS, is described as having improved light/wash fastness and opening new applications. Assess “A successful new dye guarantees its producer the same market permanently.” Does this change the distinction between investment and profit?",
+        "expectedPerformanceDe": "Neue Stoffeigenschaften und interne Konkurrenz können Anwendungen und Nachfrage verschieben; anfänglicher Erfolg garantiert keinen unveränderten Dauermarkt. Forschungswissen kann weitere Produkte ermöglichen, aber Umsätze, Kosten und Gewinne bleiben gesondert nachzuweisen. Auch H3 ist eine Firmenquelle; ein unabhängiger Markt- oder Rechnungsbeleg wird daraus nicht.",
+        "expectedPerformanceEn": "New properties and in-house competition can shift applications and demand; initial success guarantees no unchanged permanent market. Research knowledge may enable further products, while revenue, costs and profit still require separate evidence. H3 is also a company source, not an independent market or accounting record."
+      },
+      "assessmentBoundaryDe": "Bewertet werden die ausdrücklich gezeigte eigene Begründung und frischer selbstständiger Transfer. Dies ist keine zusätzliche starre Fall-/Laufquote. Die gesondert erhaltene praktische Durchführung bleibt notwendig; dieses Material belegt keine bereits erfolgte Handlung.",
+      "assessmentBoundaryEn": "Assess explicitly demonstrated independent reasoning and fresh transfer. This adds no fixed case/run quota. Separately retained practical execution remains necessary; this material establishes no action already performed."
+    }
+  ]
+}

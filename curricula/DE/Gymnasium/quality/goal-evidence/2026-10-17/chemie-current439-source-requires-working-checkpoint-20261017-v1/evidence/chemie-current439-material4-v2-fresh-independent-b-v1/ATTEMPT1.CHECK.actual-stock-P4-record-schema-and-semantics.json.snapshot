@@ -1,0 +1,52 @@
+{
+  "checkedAtUTC": "2026-10-17T09:06:06.289Z",
+  "actualValidators": [
+    "contracts/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "app/scripts/positiveGoalEvidenceProfileModel.ts:validatePositiveGoalEvidenceRecordSemantics",
+    "contracts/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json"
+  ],
+  "scope": "Four exact current independent-B P candidate records, full profile retention, native schema and direct stock per-record semantic validation with final canonical goals, semantic kinds and actual image digests. No full central configuration/build acceptance or human approval claim.",
+  "recordCount": 4,
+  "errors": [
+    "28c90c6a-3020-5c51-ac40-d802f3f12d2d: schema data/reason must NOT have more than 2000 characters"
+  ],
+  "findings": [
+    {
+      "goalId": "f85b4651-50ea-5b42-b193-3465c05257a7",
+      "schemaValid": true,
+      "stockSemanticErrors": [],
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate"
+    },
+    {
+      "goalId": "b8d3b453-d638-5518-aab0-d84ec2e8567c",
+      "schemaValid": true,
+      "stockSemanticErrors": [],
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate"
+    },
+    {
+      "goalId": "28c90c6a-3020-5c51-ac40-d802f3f12d2d",
+      "schemaValid": false,
+      "stockSemanticErrors": [],
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate"
+    },
+    {
+      "goalId": "188bd684-e894-5753-8a50-798220b04d97",
+      "schemaValid": true,
+      "stockSemanticErrors": [],
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate"
+    }
+  ],
+  "valid": false
+}

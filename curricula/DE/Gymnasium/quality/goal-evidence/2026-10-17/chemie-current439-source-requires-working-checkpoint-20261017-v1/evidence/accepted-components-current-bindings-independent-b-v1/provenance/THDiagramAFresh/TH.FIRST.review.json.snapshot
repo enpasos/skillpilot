@@ -1,0 +1,113 @@
+{
+  "createdAtUtc": "2026-10-17T03:59:00.074293+00:00",
+  "reviewer": "Independent A",
+  "authorJudgmentsRead": false,
+  "peerReportsRead": false,
+  "claimLimits": [
+    "Machine-authored review candidate only.",
+    "No author, normal, canonical, profile, ledger or L6 writes.",
+    "No formal native D/P integration, M7 closure, human approval, actual learner performance or runtime/client acceptance.",
+    "No universal official GK duty, extra task quota or numerical duty is added to qualitative goals."
+  ],
+  "reviewId": "independent-a-TH-diagram-fresh-FIRST-v1",
+  "reviewType": "Fresh independent first content review of new TH diagram case, with own pinned prior conceptual context",
+  "verdict": "KEEP",
+  "input": {
+    "path": "tmp/chemie-m7-resumed-20261016/source-primary-optionality-and-TH-diagram-author-successor-v1/INPUT.TH-one-actual-U-level-diagram.content-only.for-independent-followup.json",
+    "sha256": "64abdce2b8c42cd6605961e6ab3b6a7bcc3270a8f02c7929ed41de798ad707ad"
+  },
+  "wholeGoalId": "4928d5d1-e790-5883-9349-3b03a1c63b99",
+  "wholeGoalMatchesPinnedV3": true,
+  "sourceEvidence": {
+    "pdf": {
+      "path": "curricula/DE/Gymnasium/input/TH/LP_GY_Chemie_2024.pdf",
+      "sha256": "sha256:f89768dabb9f273d3086c5c16008759c7010244ccab1ebb0b3b44b138411c8d7",
+      "bytes": 1569418
+    },
+    "printedPage": 40,
+    "pdfPageOneBased": 45,
+    "section": "4.1.2 Energetische Betrachtungen chemischer Reaktionen; Erster Hauptsatz der Thermodynamik",
+    "actualPageImageInspected": {
+      "path": "tmp/chemie-m7-resumed-20261016/source-primary-optionality-and-TH-diagram-author-successor-v1/TH45.printed40.visual.png",
+      "sha256": "sha256:1afe7913a5c40ce9fafb891897c7c3283d6e76614a0cd1926f53a157cb030a9f",
+      "bytes": 186170
+    },
+    "column": "Right: zusätzlich für das erhöhte Anforderungsniveau",
+    "officialUniversalGKRequirement": false,
+    "historicalGK_LKTagIsNotCurrentSourceAuthority": true,
+    "historicalRowPreservedExactly": true
+  },
+  "newCase": {
+    "id": "th-internal-energy-level-diagram-heat-and-volume-work",
+    "canonicalJsonSha256": "8e3b497a1ec2c262edd54baa34801b5804d2f028c00a98b363c5c68263ac8cbd",
+    "deEnEquivalent": true,
+    "operatorActuallyDemanded": "Construct and explain two actual schematic internal-energy level diagrams, including signed heat and work contributions and a direct initial-to-final ΔU arrow. A boundary-arrow vessel sketch is explicitly insufficient.",
+    "signChecks": [
+      {
+        "case": "A",
+        "q": "positive",
+        "wOn": "negative, expansion",
+        "condition": "q exceeds absolute value of work",
+        "deltaU": "positive; final level above initial but below bookkeeping heat intermediate",
+        "privateConstructiveRelativeExample": [
+          0,
+          5,
+          3
+        ]
+      },
+      {
+        "case": "B",
+        "q": "negative",
+        "wOn": "positive, compression",
+        "condition": "work input is less than absolute value of heat output",
+        "deltaU": "negative; final level below initial and above bookkeeping heat intermediate",
+        "privateConstructiveRelativeExample": [
+          0,
+          -5,
+          -3
+        ]
+      }
+    ],
+    "symbolicProof": "For A, q=a>0 and w_on=−b with 0<b<a, so ΔU=a−b>0. For B, q=−a and w_on=b with 0<b<a, so ΔU=−a+b<0. Both direct arrows equal q+w_on.",
+    "stateAndProcessDistinction": "U0 is an arbitrary relative energy level. The q/w steps represent a bookkeeping decomposition of transfer contributions, not stored kinds of heat/work or real sequential intermediate states. ΔH=ΔU+Δ(pV); absent information about Δ(pV), a U arrow cannot generally be relabelled ΔH.",
+    "freshTransfer": "B changes both transfer directions and the net sign. The learner constructs a new diagram and justifies its endpoint independently; no Joule values, pΔV calculation or molar scaling are demanded.",
+    "fit": "Representing how heat and volume work change internal energy, then distinguishing this from enthalpy, directly operationalises the unchanged 4928 concept. It does not create a separate entropy/second-law or numerical-calorimetry goal."
+  },
+  "preservation": {
+    "currentConceptualProfileMatchesPinnedV3": true,
+    "twoOldCasesExact": true,
+    "oldWholeExpectationExact": true,
+    "twoOldVariationAxesExact": true,
+    "oldCoverageFlagsExact": true,
+    "qualitative801WholeGoalUnchanged": true
+  },
+  "courseScope": "TH primary enhanced-level requirement is stated explicitly. The existing broad authored goal/view scope is retained without calling this a universal official GK duty. The symbolic representation adds no quantitative pΔV/molar obligation and no new fixed task quota.",
+  "actualTHViewEvidence": [
+    {
+      "viewId": "de-th-gym-chemistry-gk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-TH",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "exactlySameAsPinnedPriorInput": true,
+      "target4928": true,
+      "prerequisitesPresentAsTarget": true
+    },
+    {
+      "viewId": "de-th-gym-chemistry-lk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-TH",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "exactlySameAsPinnedPriorInput": true,
+      "target4928": true,
+      "prerequisitesPresentAsTarget": true
+    }
+  ],
+  "limits": "This assesses the content of a drawing task and expected performance, not an actual learner drawing, a new visual asset, or V-gate acceptance.",
+  "openFindings": []
+}

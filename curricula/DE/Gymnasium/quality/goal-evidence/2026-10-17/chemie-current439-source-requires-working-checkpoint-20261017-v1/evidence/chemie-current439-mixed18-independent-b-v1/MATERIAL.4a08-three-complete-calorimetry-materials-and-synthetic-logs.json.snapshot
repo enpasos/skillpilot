@@ -1,0 +1,440 @@
+{
+  "schemaVersion": 1,
+  "selection": "Only complete operative science fields are copied unchanged; no surrounding review metadata. Synthetic logs are author exercises, not actual observations.",
+  "materials": [
+    {
+      "caseId": "salt-calorimetry-execution",
+      "sourceFile": {
+        "path": "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-thermodynamics-eleven-current402-P-A-source-author-20261012-v2/cases/whole11.DEEN.cases-material-data-modelanswers-rubrics.json",
+        "sha256": "3ce1341aad5620e92c95995d0f41dfd1005b5d79e9fbe5b9d0fb3234bb4f0b45",
+        "bytes": 234132
+      },
+      "sourceJsonPointer": "/cases/3",
+      "selectedFieldPins": [
+        {
+          "sourceJsonPointer": "/cases/3/goalId",
+          "sha256": "03a5d26984024a8351c54e5304ed50653667ca9830250b7a0c9c64e4a2ca9f27",
+          "bytes": 38,
+          "encoding": "UTF-8 JSON, sorted keys, compact separators, unescaped Unicode"
+        },
+        {
+          "sourceJsonPointer": "/cases/3/case",
+          "sha256": "ea181fe898d8d1a1456eedfbd476ead871214929f3980cddab9c13864e5df358",
+          "bytes": 3305,
+          "encoding": "UTF-8 JSON, sorted keys, compact separators, unescaped Unicode"
+        },
+        {
+          "sourceJsonPointer": "/cases/3/materialAndData",
+          "sha256": "6f752af2b26d76783729f449c75ec2bc2f5ec2960a928bddf03bc4cdfa56458a",
+          "bytes": 863,
+          "encoding": "UTF-8 JSON, sorted keys, compact separators, unescaped Unicode"
+        },
+        {
+          "sourceJsonPointer": "/cases/3/modelAnswer",
+          "sha256": "d43765cb3b7eea75a7b7c8f2434f7bb009489d01755d3f69c17590b20444420e",
+          "bytes": 1345,
+          "encoding": "UTF-8 JSON, sorted keys, compact separators, unescaped Unicode"
+        },
+        {
+          "sourceJsonPointer": "/cases/3/rubric",
+          "sha256": "7ca0294ecbb640ef9a252ed5f97bcf7c08caabb5e93dbe8f1fdc3f2f34486d52",
+          "bytes": 2249,
+          "encoding": "UTF-8 JSON, sorted keys, compact separators, unescaped Unicode"
+        },
+        {
+          "sourceJsonPointer": "/cases/3/assessmentMethodDe",
+          "sha256": "4b85b732f4f061d9869904096d4188327446e9b1f7b968fd0d24ed823c7d1416",
+          "bytes": 239,
+          "encoding": "UTF-8 JSON, sorted keys, compact separators, unescaped Unicode"
+        },
+        {
+          "sourceJsonPointer": "/cases/3/assessmentMethodEn",
+          "sha256": "9f8c829bbc4181c529219e956680a6309ce56d34bad8898e2546ab6fb1c3b738",
+          "bytes": 206,
+          "encoding": "UTF-8 JSON, sorted keys, compact separators, unescaped Unicode"
+        },
+        {
+          "sourceJsonPointer": "/cases/3/evidenceMode",
+          "sha256": "6b4b2b4882ac65372050f7d70ae3870768b0a11362f6c5049f51cfe96a34fdfb",
+          "bytes": 28,
+          "encoding": "UTF-8 JSON, sorted keys, compact separators, unescaped Unicode"
+        },
+        {
+          "sourceJsonPointer": "/cases/3/syntheticPracticeLog",
+          "sha256": "db483cb466494772a90a871fcf5a5012c887cfb6e81089dcb196a76ad8d31b97",
+          "bytes": 339,
+          "encoding": "UTF-8 JSON, sorted keys, compact separators, unescaped Unicode"
+        }
+      ],
+      "currentCaseVerbatimEqual": true,
+      "scientificMaterial": {
+        "goalId": "4a08f31f-204c-5339-9d9f-5d2af28d5d5c",
+        "case": {
+          "id": "salt-calorimetry-execution",
+          "taskDemandDe": "Betreuter, von der Lehrkraft freigegebener Styroporkalorimeter-Versuch, methodisch nach Uni Göttingen „Lösungswärme von Salzen“ (2159) angepasst: je 40,00 g Wasser, 0,00500 mol wasserfreies CaCl2 (0,555 g) bzw. CaCl2·6H2O (1,095 g), getrennte saubere Ansätze. Bereitgestelltes/kalibriertes C_cal, Waage, Digitaltemperatursensor, Rührer; Schutzbrille, Staubkontakt vermeiden, Entsorgung nach Lehrkraft. Gefäße nicht gasdicht verschließen. Plane eine exotherme und eine endotherme Messung mit gleicher Wassermasse/Temperatur, Wasser-Leerprobe und Wiederholung. Führe beide aus; logge Masse sowie T alle 15 s vor/nach Zugabe, zeichne T(t), begründe den Auswertezeitpunkt und berechne ΔH_m≈-[(m_Lösung c_p)+C_cal]ΔT/n. Dokumentiere deine echten Befunde. Zusätzlich werte das gebundene synthetische Übungsprotokoll aus; es ersetzt keine Durchführung.",
+          "taskDemandEn": "Teacher-authorised supervised polystyrene-calorimeter experiment adapted from Göttingen's “Lösungswärme von Salzen” (2159): 40.00 g water per run, 0.00500 mol anhydrous CaCl2 (0.555 g) or CaCl2·6H2O (1.095 g), separate clean runs. Supplied/calibrated C_cal, balance, digital thermometer and stirrer; goggles, avoid dust exposure and follow teacher disposal. Do not seal vessels gas-tight. Plan one exothermic and one endothermic measurement using equal water mass/temperature, a water blank and repeat runs. Execute both; record mass and T every 15 s before/after addition, plot T(t), justify the evaluation point and calculate ΔH_m≈-[(m_solution c_p)+C_cal]ΔT/n. Submit actual observations. Also analyse the bound synthetic practice log; it does not replace execution.",
+          "expectedPerformanceDe": "Vollpunkte erfordern eigene Planung, reale Rohdaten beider ausgeführten Messungen, Leerprobe/Wiederholung und Fehlerbetrachtung. Im synthetischen Modell: m=40,555 bzw. 41,095 g, c_p=4,18 J g^-1 K^-1, C_cal=25,0 J K^-1, ΔT bei 60 s=+1,70 bzw. -0,50 K: ΔH_m≈-66,14 bzw. +19,68 kJ/mol. Exothermes Lösen erwärmt die Umgebung, endothermes entzieht ihr Wärme; Gitterauftrennung und Hydratation wirken gegeneinander. Wärmeverlust, Sensorverzug, Salzform/Reinheit und angenähertes c_p begrenzen den Messwert. Unerwartete Befunde werden untersucht statt durch Modellwerte ersetzt. Die offene Messung approximiert ΔH nur bei konstantem Druck und berücksichtigtem Energieaustausch.",
+          "expectedPerformanceEn": "Full credit requires an independent plan, actual raw data from both executed measurements, blank/repeats and uncertainty analysis. Synthetic model: m=40.555 or 41.095 g, c_p=4.18 J g^-1 K^-1, C_cal=25.0 J K^-1, ΔT at 60 s=+1.70 or -0.50 K: ΔH_m≈-66.14 or +19.68 kJ/mol. Exothermic dissolution warms surroundings, endothermic dissolution absorbs heat; lattice separation and hydration oppose each other. Heat loss, sensor lag, salt form/purity and approximate c_p bound the result. Investigate deviations rather than replace them with model values. The open assay approximates ΔH only at constant pressure with energy transfers accounted for.",
+          "understandingFocusDe": "Kalorimetrie tatsächlich planen/durchführen/auswerten und Unsicherheit begründen.",
+          "understandingFocusEn": "Actually plan/execute/evaluate calorimetry and justify uncertainty."
+        },
+        "materialAndData": {
+          "de": "Betreuter, von der Lehrkraft freigegebener Styroporkalorimeter-Versuch, methodisch nach Uni Göttingen „Lösungswärme von Salzen“ (2159) angepasst: je 40,00 g Wasser, 0,00500 mol wasserfreies CaCl2 (0,555 g) bzw. CaCl2·6H2O (1,095 g), getrennte saubere Ansätze. Bereitgestelltes/kalibriertes C_cal, Waage, Digitaltemperatursensor, Rührer; Schutzbrille, Staubkontakt vermeiden, Entsorgung nach Lehrkraft. Gefäße nicht gasdicht verschließen.",
+          "en": "Teacher-authorised supervised polystyrene-calorimeter experiment adapted from Göttingen's “Lösungswärme von Salzen” (2159): 40.00 g water per run, 0.00500 mol anhydrous CaCl2 (0.555 g) or CaCl2·6H2O (1.095 g), separate clean runs. Supplied/calibrated C_cal, balance, digital thermometer and stirrer; goggles, avoid dust exposure and follow teacher disposal. Do not seal vessels gas-tight."
+        },
+        "modelAnswer": {
+          "de": "Vollpunkte erfordern eigene Planung, reale Rohdaten beider ausgeführten Messungen, Leerprobe/Wiederholung und Fehlerbetrachtung. Im synthetischen Modell: m=40,555 bzw. 41,095 g, c_p=4,18 J g^-1 K^-1, C_cal=25,0 J K^-1, ΔT bei 60 s=+1,70 bzw. -0,50 K: ΔH_m≈-66,14 bzw. +19,68 kJ/mol. Exothermes Lösen erwärmt die Umgebung, endothermes entzieht ihr Wärme; Gitterauftrennung und Hydratation wirken gegeneinander. Wärmeverlust, Sensorverzug, Salzform/Reinheit und angenähertes c_p begrenzen den Messwert. Unerwartete Befunde werden untersucht statt durch Modellwerte ersetzt. Die offene Messung approximiert ΔH nur bei konstantem Druck und berücksichtigtem Energieaustausch.",
+          "en": "Full credit requires an independent plan, actual raw data from both executed measurements, blank/repeats and uncertainty analysis. Synthetic model: m=40.555 or 41.095 g, c_p=4.18 J g^-1 K^-1, C_cal=25.0 J K^-1, ΔT at 60 s=+1.70 or -0.50 K: ΔH_m≈-66.14 or +19.68 kJ/mol. Exothermic dissolution warms surroundings, endothermic dissolution absorbs heat; lattice separation and hydration oppose each other. Heat loss, sensor lag, salt form/purity and approximate c_p bound the result. Investigate deviations rather than replace them with model values. The open assay approximates ΔH only at constant pressure with energy transfers accounted for."
+        },
+        "rubric": {
+          "maximumPoints": 5,
+          "criteria": [
+            {
+              "points": 1,
+              "aspectDe": "Eigenen Plan, Leerprobe und Wiederholung vorlegen.",
+              "aspectEn": "Supply an independent plan, blank and repeats."
+            },
+            {
+              "points": 1,
+              "aspectDe": "Beide echten Messungen mit Massen und T(t)-Rohdaten dokumentieren.",
+              "aspectEn": "Document both actual measurements with mass and raw T(t) data."
+            },
+            {
+              "points": 1,
+              "aspectDe": "Kalorimeterwärmekapazität, Vorzeichen und molare Basis korrekt verwenden.",
+              "aspectEn": "Use calorimeter heat capacity, signs and molar basis correctly."
+            },
+            {
+              "points": 1,
+              "aspectDe": "Exotherm/endotherm und Gitter-/Hydratationsbeiträge erklären.",
+              "aspectEn": "Explain exo/endo and lattice/hydration contributions."
+            },
+            {
+              "points": 1,
+              "aspectDe": "Mindestens zwei konkrete Fehlerquellen und keine ersetzte Durchführung benennen.",
+              "aspectEn": "Identify at least two concrete errors without substituting for execution."
+            }
+          ],
+          "fullCreditEvidenceDe": "Vollpunkte erfordern eigene Planung, reale Rohdaten beider ausgeführten Messungen, Leerprobe/Wiederholung und Fehlerbetrachtung. Im synthetischen Modell: m=40,555 bzw. 41,095 g, c_p=4,18 J g^-1 K^-1, C_cal=25,0 J K^-1, ΔT bei 60 s=+1,70 bzw. -0,50 K: ΔH_m≈-66,14 bzw. +19,68 kJ/mol. Exothermes Lösen erwärmt die Umgebung, endothermes entzieht ihr Wärme; Gitterauftrennung und Hydratation wirken gegeneinander. Wärmeverlust, Sensorverzug, Salzform/Reinheit und angenähertes c_p begrenzen den Messwert. Unerwartete Befunde werden untersucht statt durch Modellwerte ersetzt. Die offene Messung approximiert ΔH nur bei konstantem Druck und berücksichtigtem Energieaustausch.",
+          "fullCreditEvidenceEn": "Full credit requires an independent plan, actual raw data from both executed measurements, blank/repeats and uncertainty analysis. Synthetic model: m=40.555 or 41.095 g, c_p=4.18 J g^-1 K^-1, C_cal=25.0 J K^-1, ΔT at 60 s=+1.70 or -0.50 K: ΔH_m≈-66.14 or +19.68 kJ/mol. Exothermic dissolution warms surroundings, endothermic dissolution absorbs heat; lattice separation and hydration oppose each other. Heat loss, sensor lag, salt form/purity and approximate c_p bound the result. Investigate deviations rather than replace them with model values. The open assay approximates ΔH only at constant pressure with energy transfers accounted for."
+        },
+        "assessmentMethodDe": "Bewertet wird die selbstständig vorgelegte chemische Begründung/Rechnung bzw. die ausdrücklich verlangte reale Handlung mit Originalprotokoll. Vorgelegte synthetische Daten und Modellantworten sind keine beobachtete Lernendenleistung.",
+        "assessmentMethodEn": "Assess the independently submitted chemical reasoning/calculation or explicitly required actual action with its original record. Supplied synthetic data/model answers are not observed learner performance.",
+        "evidenceMode": "learner_execution_required",
+        "syntheticPracticeLog": {
+          "explicitlySynthetic": true,
+          "timeSeconds": [
+            -30,
+            0,
+            15,
+            30,
+            60,
+            90,
+            120
+          ],
+          "CaCl2TemperatureC": [
+            20,
+            20,
+            21.55,
+            21.8,
+            21.7,
+            21.6,
+            21.5
+          ],
+          "CaCl2HexahydrateTemperatureC": [
+            20,
+            20,
+            19.65,
+            19.4,
+            19.5,
+            19.55,
+            19.6
+          ],
+          "waterBlankTemperatureC": [
+            20,
+            20,
+            20,
+            20,
+            20,
+            20,
+            20
+          ],
+          "evaluationAtSeconds": 60,
+          "cp_J_per_g_K": 4.18,
+          "calorimeterHeatCapacity_J_per_K": 25,
+          "amountEach_mol": 0.005
+        }
+      }
+    },
+    {
+      "caseId": "st-named-calorimetry-execution",
+      "sourceFile": {
+        "path": "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-thermodynamics-eleven-current402-P-A-source-author-20261012-v2/cases/whole11.DEEN.cases-material-data-modelanswers-rubrics.json",
+        "sha256": "3ce1341aad5620e92c95995d0f41dfd1005b5d79e9fbe5b9d0fb3234bb4f0b45",
+        "bytes": 234132
+      },
+      "sourceJsonPointer": "/cases/4",
+      "selectedFieldPins": [
+        {
+          "sourceJsonPointer": "/cases/4/goalId",
+          "sha256": "03a5d26984024a8351c54e5304ed50653667ca9830250b7a0c9c64e4a2ca9f27",
+          "bytes": 38,
+          "encoding": "UTF-8 JSON, sorted keys, compact separators, unescaped Unicode"
+        },
+        {
+          "sourceJsonPointer": "/cases/4/case",
+          "sha256": "b803ef953997d34cb88b2bc0062d9e7ccb9d0f64266d7b919207971e25fa2429",
+          "bytes": 3100,
+          "encoding": "UTF-8 JSON, sorted keys, compact separators, unescaped Unicode"
+        },
+        {
+          "sourceJsonPointer": "/cases/4/materialAndData",
+          "sha256": "caed742a832616c9628e6c9dc21a360b7ba3e64ac50c60865ab0173f3cfd1d5a",
+          "bytes": 912,
+          "encoding": "UTF-8 JSON, sorted keys, compact separators, unescaped Unicode"
+        },
+        {
+          "sourceJsonPointer": "/cases/4/modelAnswer",
+          "sha256": "f0699e68d1c9cccd28aa887d3e3a8d46e41bc4b215e0ea818d808ec18e3eb746",
+          "bytes": 1142,
+          "encoding": "UTF-8 JSON, sorted keys, compact separators, unescaped Unicode"
+        },
+        {
+          "sourceJsonPointer": "/cases/4/rubric",
+          "sha256": "ee3fd8dcfc0da2033cab980dfed3ece384604a819e3119e168a27f6b902d9187",
+          "bytes": 1987,
+          "encoding": "UTF-8 JSON, sorted keys, compact separators, unescaped Unicode"
+        },
+        {
+          "sourceJsonPointer": "/cases/4/assessmentMethodDe",
+          "sha256": "4b85b732f4f061d9869904096d4188327446e9b1f7b968fd0d24ed823c7d1416",
+          "bytes": 239,
+          "encoding": "UTF-8 JSON, sorted keys, compact separators, unescaped Unicode"
+        },
+        {
+          "sourceJsonPointer": "/cases/4/assessmentMethodEn",
+          "sha256": "9f8c829bbc4181c529219e956680a6309ce56d34bad8898e2546ab6fb1c3b738",
+          "bytes": 206,
+          "encoding": "UTF-8 JSON, sorted keys, compact separators, unescaped Unicode"
+        },
+        {
+          "sourceJsonPointer": "/cases/4/evidenceMode",
+          "sha256": "6b4b2b4882ac65372050f7d70ae3870768b0a11362f6c5049f51cfe96a34fdfb",
+          "bytes": 28,
+          "encoding": "UTF-8 JSON, sorted keys, compact separators, unescaped Unicode"
+        },
+        {
+          "sourceJsonPointer": "/cases/4/syntheticPracticeLog",
+          "sha256": "4960d391aed4fb78e0711b6ec3559eef29f2adc9f4d93266a04cf0ba553adb97",
+          "bytes": 307,
+          "encoding": "UTF-8 JSON, sorted keys, compact separators, unescaped Unicode"
+        }
+      ],
+      "currentCaseVerbatimEqual": true,
+      "scientificMaterial": {
+        "goalId": "4a08f31f-204c-5339-9d9f-5d2af28d5d5c",
+        "case": {
+          "id": "st-named-calorimetry-execution",
+          "taskDemandDe": "Verbindliche ST-Verfahren als betreuter, lehrkraftfreigegebener Auftrag: Magnesium und Ammoniumhydrogencarbonat jeweils mit verdünnter Salzsäure. Autoren-Mikromaßstab: getrennt je 20,0 mL HCl 0,20 mol/L im offenen Kalorimeter, einmal 0,0243 g Mg, einmal 0,0791 g NH4HCO3. Säure ist überschüssig; bereitetes C_cal/Temperatursensor. Schutzbrille; keine Zündquelle, kein direkter Gasnachweis, nie gasdicht schließen (H2 bzw. CO2); Lehrkraft regelt Rückstände. Plane, führe beide Reaktionen aus und protokolliere eigene Temperatur-Zeit-Kurven, Massen und Kontroll-/Wiederholungswerte. Formuliere die Stoffgleichungen mit Phasen, berechne die jeweiligen molaren Enthalpien und erkläre, warum Gasbildung allein weder Vorzeichen noch Spontanität bestimmt. Synthetische Vergleichsdaten stehen im vollständigen Fall und sind keine eigenen Beobachtungen.",
+          "taskDemandEn": "ST-required methods as a supervised teacher-authorised task: magnesium and ammonium hydrogen carbonate each with dilute hydrochloric acid. Author microscale: separate runs of 20.0 mL HCl 0.20 mol/L in open calorimeters, one with 0.0243 g Mg and one with 0.0791 g NH4HCO3. Acid is in excess; supplied C_cal/temperature sensor. Goggles; no ignition source/direct gas test, never seal gas-tight (H2 or CO2); follow teacher disposal. Plan and execute both reactions, recording actual temperature/time traces, masses, controls and repeats. Give equations with phases, calculate molar enthalpies and explain why gas formation alone establishes neither sign nor spontaneity. Synthetic comparison data are supplied in the whole case and are not your observations.",
+          "expectedPerformanceDe": "Mg(s)+2 HCl(aq)->MgCl2(aq)+H2(g); NH4HCO3(s)+HCl(aq)->NH4Cl(aq)+CO2(g)+H2O(l). Bei jeweils 0,00100 mol im synthetischen Modell, m≈20,0243 bzw. 20,0791 g, c_p=4,18 und C_cal=25,0 J/K, ΔT=+4,20 bzw. -0,350 K: etwa -456,55 bzw. +38,13 kJ/mol. Eine Gleichung wird pro Mol des begrenzenden Feststoffs bilanziert. Eigene Ausführung/T(t)/Kontrolle ist verpflichtend; kleine ΔT macht den endothermen Wert besonders unsicher. Gas entführt Stoff/Energie; bei offenen Kalorimetern muss der Einfluss diskutiert werden. Gasbildung allein ist kein Enthalpie- oder Spontanitätsbeweis.",
+          "expectedPerformanceEn": "Mg(s)+2 HCl(aq)->MgCl2(aq)+H2(g); NH4HCO3(s)+HCl(aq)->NH4Cl(aq)+CO2(g)+H2O(l). Synthetic model with 0.00100 mol each, m≈20.0243 or 20.0791 g, c_p=4.18 and C_cal=25.0 J/K, ΔT=+4.20 or -0.350 K gives about -456.55 or +38.13 kJ/mol. Use one mole of limiting solid as the reaction basis. Actual execution/T(t)/controls are required; small ΔT makes the endothermic result especially uncertain. Escaping gas transports matter/energy, whose effect in open calorimetry must be discussed. Gas formation alone proves neither enthalpy sign nor spontaneity.",
+          "understandingFocusDe": "Genau die verlangten ST-Schülerversuche ausführen und Stoff-/Energiebilanz getrennt deuten.",
+          "understandingFocusEn": "Execute the specifically required ST experiments and distinguish matter/energy balances."
+        },
+        "materialAndData": {
+          "de": "Verbindliche ST-Verfahren als betreuter, lehrkraftfreigegebener Auftrag: Magnesium und Ammoniumhydrogencarbonat jeweils mit verdünnter Salzsäure. Autoren-Mikromaßstab: getrennt je 20,0 mL HCl 0,20 mol/L im offenen Kalorimeter, einmal 0,0243 g Mg, einmal 0,0791 g NH4HCO3. Säure ist überschüssig; bereitetes C_cal/Temperatursensor. Schutzbrille; keine Zündquelle, kein direkter Gasnachweis, nie gasdicht schließen (H2 bzw. CO2); Lehrkraft regelt Rückstände.",
+          "en": "ST-required methods as a supervised teacher-authorised task: magnesium and ammonium hydrogen carbonate each with dilute hydrochloric acid. Author microscale: separate runs of 20.0 mL HCl 0.20 mol/L in open calorimeters, one with 0.0243 g Mg and one with 0.0791 g NH4HCO3. Acid is in excess; supplied C_cal/temperature sensor. Goggles; no ignition source/direct gas test, never seal gas-tight (H2 or CO2); follow teacher disposal."
+        },
+        "modelAnswer": {
+          "de": "Mg(s)+2 HCl(aq)->MgCl2(aq)+H2(g); NH4HCO3(s)+HCl(aq)->NH4Cl(aq)+CO2(g)+H2O(l). Bei jeweils 0,00100 mol im synthetischen Modell, m≈20,0243 bzw. 20,0791 g, c_p=4,18 und C_cal=25,0 J/K, ΔT=+4,20 bzw. -0,350 K: etwa -456,55 bzw. +38,13 kJ/mol. Eine Gleichung wird pro Mol des begrenzenden Feststoffs bilanziert. Eigene Ausführung/T(t)/Kontrolle ist verpflichtend; kleine ΔT macht den endothermen Wert besonders unsicher. Gas entführt Stoff/Energie; bei offenen Kalorimetern muss der Einfluss diskutiert werden. Gasbildung allein ist kein Enthalpie- oder Spontanitätsbeweis.",
+          "en": "Mg(s)+2 HCl(aq)->MgCl2(aq)+H2(g); NH4HCO3(s)+HCl(aq)->NH4Cl(aq)+CO2(g)+H2O(l). Synthetic model with 0.00100 mol each, m≈20.0243 or 20.0791 g, c_p=4.18 and C_cal=25.0 J/K, ΔT=+4.20 or -0.350 K gives about -456.55 or +38.13 kJ/mol. Use one mole of limiting solid as the reaction basis. Actual execution/T(t)/controls are required; small ΔT makes the endothermic result especially uncertain. Escaping gas transports matter/energy, whose effect in open calorimetry must be discussed. Gas formation alone proves neither enthalpy sign nor spontaneity."
+        },
+        "rubric": {
+          "maximumPoints": 5,
+          "criteria": [
+            {
+              "points": 1,
+              "aspectDe": "Beide konkret verlangten realen Reaktionen ausführen.",
+              "aspectEn": "Execute both specifically required actual reactions."
+            },
+            {
+              "points": 1,
+              "aspectDe": "Stoffgleichungen, begrenzenden Stoff und molare Basis angeben.",
+              "aspectEn": "Give equations, limiting species and molar basis."
+            },
+            {
+              "points": 1,
+              "aspectDe": "Eigene T(t)-Kurven mit Kontrollen auswerten.",
+              "aspectEn": "Evaluate actual T(t) curves with controls."
+            },
+            {
+              "points": 1,
+              "aspectDe": "Vorzeichen, Calorimeterbeitrag und Beispielrechnung korrekt verwenden.",
+              "aspectEn": "Correctly use signs, calorimeter contribution and model arithmetic."
+            },
+            {
+              "points": 1,
+              "aspectDe": "Gastransport und geringe Temperaturdifferenz als Grenzen erläutern.",
+              "aspectEn": "Explain gas transport and small temperature difference as limits."
+            }
+          ],
+          "fullCreditEvidenceDe": "Mg(s)+2 HCl(aq)->MgCl2(aq)+H2(g); NH4HCO3(s)+HCl(aq)->NH4Cl(aq)+CO2(g)+H2O(l). Bei jeweils 0,00100 mol im synthetischen Modell, m≈20,0243 bzw. 20,0791 g, c_p=4,18 und C_cal=25,0 J/K, ΔT=+4,20 bzw. -0,350 K: etwa -456,55 bzw. +38,13 kJ/mol. Eine Gleichung wird pro Mol des begrenzenden Feststoffs bilanziert. Eigene Ausführung/T(t)/Kontrolle ist verpflichtend; kleine ΔT macht den endothermen Wert besonders unsicher. Gas entführt Stoff/Energie; bei offenen Kalorimetern muss der Einfluss diskutiert werden. Gasbildung allein ist kein Enthalpie- oder Spontanitätsbeweis.",
+          "fullCreditEvidenceEn": "Mg(s)+2 HCl(aq)->MgCl2(aq)+H2(g); NH4HCO3(s)+HCl(aq)->NH4Cl(aq)+CO2(g)+H2O(l). Synthetic model with 0.00100 mol each, m≈20.0243 or 20.0791 g, c_p=4.18 and C_cal=25.0 J/K, ΔT=+4.20 or -0.350 K gives about -456.55 or +38.13 kJ/mol. Use one mole of limiting solid as the reaction basis. Actual execution/T(t)/controls are required; small ΔT makes the endothermic result especially uncertain. Escaping gas transports matter/energy, whose effect in open calorimetry must be discussed. Gas formation alone proves neither enthalpy sign nor spontaneity."
+        },
+        "assessmentMethodDe": "Bewertet wird die selbstständig vorgelegte chemische Begründung/Rechnung bzw. die ausdrücklich verlangte reale Handlung mit Originalprotokoll. Vorgelegte synthetische Daten und Modellantworten sind keine beobachtete Lernendenleistung.",
+        "assessmentMethodEn": "Assess the independently submitted chemical reasoning/calculation or explicitly required actual action with its original record. Supplied synthetic data/model answers are not observed learner performance.",
+        "evidenceMode": "learner_execution_required",
+        "syntheticPracticeLog": {
+          "explicitlySynthetic": true,
+          "timeSeconds": [
+            -30,
+            0,
+            15,
+            30,
+            60,
+            90
+          ],
+          "MgTemperatureC": [
+            20,
+            20,
+            22.5,
+            24.1,
+            24.2,
+            24.0
+          ],
+          "NH4HCO3TemperatureC": [
+            20,
+            20,
+            19.8,
+            19.6,
+            19.65,
+            19.7
+          ],
+          "acidBlankTemperatureC": [
+            20,
+            20,
+            20,
+            20,
+            20,
+            20
+          ],
+          "evaluationAtSeconds": 60,
+          "amountEach_mol": 0.001,
+          "calorimeterHeatCapacity_J_per_K": 25,
+          "cp_J_per_g_K": 4.18
+        }
+      }
+    },
+    {
+      "caseId": "neutralisation-calorimetry",
+      "sourceFile": {
+        "path": "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q4-thermodynamics-eleven-current402-P-A-source-author-20261012-v2/cases/whole11.DEEN.cases-material-data-modelanswers-rubrics.json",
+        "sha256": "3ce1341aad5620e92c95995d0f41dfd1005b5d79e9fbe5b9d0fb3234bb4f0b45",
+        "bytes": 234132
+      },
+      "sourceJsonPointer": "/cases/5",
+      "selectedFieldPins": [
+        {
+          "sourceJsonPointer": "/cases/5/goalId",
+          "sha256": "03a5d26984024a8351c54e5304ed50653667ca9830250b7a0c9c64e4a2ca9f27",
+          "bytes": 38,
+          "encoding": "UTF-8 JSON, sorted keys, compact separators, unescaped Unicode"
+        },
+        {
+          "sourceJsonPointer": "/cases/5/case",
+          "sha256": "ce397d72613ed6e2936af42aeb8eb2895b1b9d12900bf7546a96f6940c9bccd3",
+          "bytes": 3116,
+          "encoding": "UTF-8 JSON, sorted keys, compact separators, unescaped Unicode"
+        },
+        {
+          "sourceJsonPointer": "/cases/5/materialAndData",
+          "sha256": "9339f00615aa1712252ed07306946f4a5f1b5b087a00baed87444b13dcfcb747",
+          "bytes": 1038,
+          "encoding": "UTF-8 JSON, sorted keys, compact separators, unescaped Unicode"
+        },
+        {
+          "sourceJsonPointer": "/cases/5/modelAnswer",
+          "sha256": "9d0dc0a9e7777070f674bc54d8c797603cca15afe4cb51a24ce29880803e3b30",
+          "bytes": 1028,
+          "encoding": "UTF-8 JSON, sorted keys, compact separators, unescaped Unicode"
+        },
+        {
+          "sourceJsonPointer": "/cases/5/rubric",
+          "sha256": "f7120d1b8c960ae468ae1a679006e9eef72152a615b1f2cda2f54f48982741cc",
+          "bytes": 1672,
+          "encoding": "UTF-8 JSON, sorted keys, compact separators, unescaped Unicode"
+        },
+        {
+          "sourceJsonPointer": "/cases/5/assessmentMethodDe",
+          "sha256": "4b85b732f4f061d9869904096d4188327446e9b1f7b968fd0d24ed823c7d1416",
+          "bytes": 239,
+          "encoding": "UTF-8 JSON, sorted keys, compact separators, unescaped Unicode"
+        },
+        {
+          "sourceJsonPointer": "/cases/5/assessmentMethodEn",
+          "sha256": "9f8c829bbc4181c529219e956680a6309ce56d34bad8898e2546ab6fb1c3b738",
+          "bytes": 206,
+          "encoding": "UTF-8 JSON, sorted keys, compact separators, unescaped Unicode"
+        },
+        {
+          "sourceJsonPointer": "/cases/5/evidenceMode",
+          "sha256": "6b4b2b4882ac65372050f7d70ae3870768b0a11362f6c5049f51cfe96a34fdfb",
+          "bytes": 28,
+          "encoding": "UTF-8 JSON, sorted keys, compact separators, unescaped Unicode"
+        }
+      ],
+      "currentCaseVerbatimEqual": true,
+      "scientificMaterial": {
+        "goalId": "4a08f31f-204c-5339-9d9f-5d2af28d5d5c",
+        "case": {
+          "id": "neutralisation-calorimetry",
+          "taskDemandDe": "Betreuter Neutralisations-Kalorimetrieauftrag, als eigene kontrollierte Anpassung an Göttingen „Thermometrische Titration“ (1333): je 20,00 mL bereitgestellte 0,200 mol/L HCl und NaOH, gleiche Anfangstemperatur; offenes isolierendes Gefäß, Thermometer, Rühren, Schutzbrille. C_cal ist bereitgestellt oder durch separate Wassermischung kalibriert. Blindversuch Säure+Wasser bei gleichem Volumen. Synthetischer Rechenvergleich: m_Lösung=40,0 g, c_p=4,18 J/(g K), C_cal=20,0 J/K, ΔT=+1,20 K; Aufgaben-Vergleichswert -57,0 kJ/mol H2O. Plane und führe die freigegebene Messung samt Blindversuch aus, lege echte Rohdaten vor und berechne pro Mol gebildeten Wassers. Vergleiche den synthetischen Rechenwert mit dem Aufgaben-Vergleichswert und begründe mindestens zwei Abweichungsursachen. Die Quellenmethode ist thermometrische Titration; dieses feste Mischungsverfahren ist eine ausdrücklich benannte Autorenanpassung.",
+          "taskDemandEn": "Supervised neutralisation calorimetry, an author-controlled adaptation of Göttingen's “Thermometrische Titration” (1333): 20.00 mL each supplied 0.200 mol/L HCl/NaOH, equal initial temperature, open insulated vessel, thermometer, stirring and goggles. C_cal is supplied or separately calibrated by water mixing. Blank: acid+water at equal volume. Synthetic calculation: m_solution=40.0 g, c_p=4.18 J/(g K), C_cal=20.0 J/K, ΔT=+1.20 K; task comparison value -57.0 kJ/mol H2O. Plan/execute the authorised assay with blank, submit actual raw data and calculate per mole of water formed. Compare the synthetic calculation with the task benchmark and justify at least two causes of deviation. The source method is thermometric titration; this fixed-volume mixing method is an explicitly declared author adaptation.",
+          "expectedPerformanceDe": "H3O+(aq)+OH-(aq)->2 H2O(l), netto 0,00400 mol Neutralisationsumsatz/Wasserbildung relativ zu H+(aq)+OH-(aq)->H2O(l). Q_Lösung+Kal=224,64 J, ΔH_m≈-56,16 kJ/mol, etwa 1,47% geringerer Betrag als -57,0. Wärmeverlust, Sensor-/Mischverzug, Verdünnungswärme und angenähertes c_p begrenzen den Vergleich. Blindversuch/Datenpunkte sind tatsächlich abzugeben; vorgegebene Werte reichen nur für Modellrechnung. Reagenzien, Konzentration und Zeitpunkt müssen dokumentiert werden; keine Behauptung eines eigenen gemessenen Standardwerts.",
+          "expectedPerformanceEn": "H3O+(aq)+OH-(aq)->2 H2O(l); net 0.00400 mol neutralisation/water formation relative to H+(aq)+OH-(aq)->H2O(l). Q_solution+cal=224.64 J, ΔH_m≈-56.16 kJ/mol, about 1.47% smaller in magnitude than -57.0. Heat loss, sensor/mixing lag, dilution heat and approximate c_p bound the comparison. Actual blank/raw observations are required; supplied values support only model calculation. Record reagents, concentration and timing; do not claim a personally measured standard value.",
+          "understandingFocusDe": "Neutralisationsenthalpie aus realer kontrollierter Messung und klarer Bezugsreaktion ableiten.",
+          "understandingFocusEn": "Infer neutralisation enthalpy from an actual controlled assay and a clear reference reaction."
+        },
+        "materialAndData": {
+          "de": "Betreuter Neutralisations-Kalorimetrieauftrag, als eigene kontrollierte Anpassung an Göttingen „Thermometrische Titration“ (1333): je 20,00 mL bereitgestellte 0,200 mol/L HCl und NaOH, gleiche Anfangstemperatur; offenes isolierendes Gefäß, Thermometer, Rühren, Schutzbrille. C_cal ist bereitgestellt oder durch separate Wassermischung kalibriert. Blindversuch Säure+Wasser bei gleichem Volumen. Synthetischer Rechenvergleich: m_Lösung=40,0 g, c_p=4,18 J/(g K), C_cal=20,0 J/K, ΔT=+1,20 K; Aufgaben-Vergleichswert -57,0 kJ/mol H2O.",
+          "en": "Supervised neutralisation calorimetry, an author-controlled adaptation of Göttingen's “Thermometrische Titration” (1333): 20.00 mL each supplied 0.200 mol/L HCl/NaOH, equal initial temperature, open insulated vessel, thermometer, stirring and goggles. C_cal is supplied or separately calibrated by water mixing. Blank: acid+water at equal volume. Synthetic calculation: m_solution=40.0 g, c_p=4.18 J/(g K), C_cal=20.0 J/K, ΔT=+1.20 K; task comparison value -57.0 kJ/mol H2O."
+        },
+        "modelAnswer": {
+          "de": "H3O+(aq)+OH-(aq)->2 H2O(l), netto 0,00400 mol Neutralisationsumsatz/Wasserbildung relativ zu H+(aq)+OH-(aq)->H2O(l). Q_Lösung+Kal=224,64 J, ΔH_m≈-56,16 kJ/mol, etwa 1,47% geringerer Betrag als -57,0. Wärmeverlust, Sensor-/Mischverzug, Verdünnungswärme und angenähertes c_p begrenzen den Vergleich. Blindversuch/Datenpunkte sind tatsächlich abzugeben; vorgegebene Werte reichen nur für Modellrechnung. Reagenzien, Konzentration und Zeitpunkt müssen dokumentiert werden; keine Behauptung eines eigenen gemessenen Standardwerts.",
+          "en": "H3O+(aq)+OH-(aq)->2 H2O(l); net 0.00400 mol neutralisation/water formation relative to H+(aq)+OH-(aq)->H2O(l). Q_solution+cal=224.64 J, ΔH_m≈-56.16 kJ/mol, about 1.47% smaller in magnitude than -57.0. Heat loss, sensor/mixing lag, dilution heat and approximate c_p bound the comparison. Actual blank/raw observations are required; supplied values support only model calculation. Record reagents, concentration and timing; do not claim a personally measured standard value."
+        },
+        "rubric": {
+          "maximumPoints": 4,
+          "criteria": [
+            {
+              "points": 1,
+              "aspectDe": "Eigene Durchführung/Rohdaten und Blindversuch vorlegen.",
+              "aspectEn": "Submit actual execution/raw data and blank."
+            },
+            {
+              "points": 1,
+              "aspectDe": "0,00400 mol Umsatz und Vorzeichen begründen.",
+              "aspectEn": "Justify 0.00400 mol extent and sign."
+            },
+            {
+              "points": 1,
+              "aspectDe": "224,64 J/-56,16 kJ/mol sowie begrenzten Vergleich berechnen.",
+              "aspectEn": "Calculate 224.64 J/-56.16 kJ/mol and a bounded comparison."
+            },
+            {
+              "points": 1,
+              "aspectDe": "Fehler/Verdünnung und Quellenanpassung offen benennen.",
+              "aspectEn": "Identify errors/dilution and the declared source adaptation."
+            }
+          ],
+          "fullCreditEvidenceDe": "H3O+(aq)+OH-(aq)->2 H2O(l), netto 0,00400 mol Neutralisationsumsatz/Wasserbildung relativ zu H+(aq)+OH-(aq)->H2O(l). Q_Lösung+Kal=224,64 J, ΔH_m≈-56,16 kJ/mol, etwa 1,47% geringerer Betrag als -57,0. Wärmeverlust, Sensor-/Mischverzug, Verdünnungswärme und angenähertes c_p begrenzen den Vergleich. Blindversuch/Datenpunkte sind tatsächlich abzugeben; vorgegebene Werte reichen nur für Modellrechnung. Reagenzien, Konzentration und Zeitpunkt müssen dokumentiert werden; keine Behauptung eines eigenen gemessenen Standardwerts.",
+          "fullCreditEvidenceEn": "H3O+(aq)+OH-(aq)->2 H2O(l); net 0.00400 mol neutralisation/water formation relative to H+(aq)+OH-(aq)->H2O(l). Q_solution+cal=224.64 J, ΔH_m≈-56.16 kJ/mol, about 1.47% smaller in magnitude than -57.0. Heat loss, sensor/mixing lag, dilution heat and approximate c_p bound the comparison. Actual blank/raw observations are required; supplied values support only model calculation. Record reagents, concentration and timing; do not claim a personally measured standard value."
+        },
+        "assessmentMethodDe": "Bewertet wird die selbstständig vorgelegte chemische Begründung/Rechnung bzw. die ausdrücklich verlangte reale Handlung mit Originalprotokoll. Vorgelegte synthetische Daten und Modellantworten sind keine beobachtete Lernendenleistung.",
+        "assessmentMethodEn": "Assess the independently submitted chemical reasoning/calculation or explicitly required actual action with its original record. Supplied synthetic data/model answers are not observed learner performance.",
+        "evidenceMode": "learner_execution_required"
+      }
+    }
+  ]
+}

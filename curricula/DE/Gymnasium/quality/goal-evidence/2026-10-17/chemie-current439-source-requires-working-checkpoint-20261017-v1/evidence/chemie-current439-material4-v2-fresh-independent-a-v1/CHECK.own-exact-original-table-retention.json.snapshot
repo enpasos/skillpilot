@@ -1,0 +1,48 @@
+{
+  "checkedAtUTC": "2026-10-17T08:55:10.313379+00:00",
+  "method": "Own exact numeric/object comparison plus actual reading of original model statements; not author checklist",
+  "checks": [
+    {
+      "caseId": "T05-C1",
+      "field": "providedData/acidTable",
+      "matchesExactOriginalNumericTable": true,
+      "points": 12
+    },
+    {
+      "caseId": "T05-C2",
+      "field": "providedData/acidYTable",
+      "matchesExactOriginalNumericTable": true,
+      "points": 12
+    },
+    {
+      "caseId": "POLY-QUALITATIVE-C1",
+      "matchesExactOriginalGlycineNumericObjects": true,
+      "points": 13
+    },
+    {
+      "caseId": "T05-C2",
+      "field": "providedData/acidXTableForComparison",
+      "matchesOriginalComparisonTable": true,
+      "points": 12
+    },
+    {
+      "caseId": "POLY-QUALITATIVE-C1",
+      "field": "providedData/monoproticYTable",
+      "matchesOriginalComparisonTable": true,
+      "points": 12
+    },
+    {
+      "caseId": "T08-C2",
+      "fourOldCompactSAndWTuplesRetained": true,
+      "oldApproximationInitial11_13Preserved": true
+    },
+    {
+      "caseId": "strong-and-weak-bases-four-characteristic-points",
+      "fourGivenBaseValuesAndThreeIntermediateValuesPresentInOriginalWorkedModel": true,
+      "moreCompleteInitial11_12AndApproximation11_13ExplicitlyDistinguished": true,
+      "noNewMeasurement": true
+    }
+  ],
+  "allPass": true,
+  "technicalRetry": "Initial string-format tuple check rejected equivalent 30.00/30 formatting; corrected comparison uses numeric pairs and passes. No science or input changed."
+}

@@ -1,0 +1,377 @@
+{
+  "goalId": "3ec31fe1-e01b-5edd-bd9a-936191d67639",
+  "text": {
+    "currentTitleDe": "Wirkungsgrade vergleichen",
+    "currentTitleEn": "Compare efficiencies",
+    "currentDescriptionDe": "Die lernende Person kann Wirkungsgrade verschiedener Energiewandler berechnen und vergleichen.",
+    "currentDescriptionEn": "The learner can calculate and compare efficiencies of various energy converters."
+  },
+  "canonicalContext": {
+    "shortKey": null,
+    "phase": null,
+    "core": null,
+    "weight": 1.1,
+    "tags": [
+      "LK"
+    ],
+    "competencyRefs": [],
+    "sourceRef": null,
+    "dimensionTags": {
+      "framework": "hessen-kc-2024-chemistry",
+      "demandLevel": "AB3",
+      "processCompetencies": [],
+      "guidingIdeas": [
+        "BC_REAKTION",
+        "BC_ENERGIE"
+      ],
+      "phase": "Q4"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BY",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "type": "atomic",
+    "nodeKind": null,
+    "semanticAtomic": null,
+    "semanticKind": null,
+    "applicabilitySemantics": {
+      "fromRequires": null,
+      "mappingInheritance": null,
+      "projection": null
+    },
+    "requires": [
+      "e64a79df-7f21-5651-9b5d-e7d17580569e"
+    ],
+    "contains": [],
+    "examples": []
+  },
+  "currentCanonicalContentFields": {
+    "id": "3ec31fe1-e01b-5edd-bd9a-936191d67639",
+    "title": "Wirkungsgrade vergleichen",
+    "titleEn": "Compare efficiencies",
+    "description": "Die lernende Person kann Wirkungsgrade verschiedener Energiewandler berechnen und vergleichen.",
+    "descriptionEn": "The learner can calculate and compare efficiencies of various energy converters.",
+    "requires": [
+      "e64a79df-7f21-5651-9b5d-e7d17580569e"
+    ],
+    "contains": [],
+    "tags": [
+      "LK"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024-chemistry",
+      "demandLevel": "AB3",
+      "processCompetencies": [],
+      "guidingIdeas": [
+        "BC_REAKTION",
+        "BC_ENERGIE"
+      ],
+      "phase": "Q4"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BY",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "3ec31fe1-e01b-5edd-bd9a-936191d67639",
+        "title": "Visualisierung: Wirkungsgrade vergleichen",
+        "url": "/assets/goal-visualizations/chemie/3ec31fe1-e01b-5edd-bd9a-936191d67639/3ec31fe1-e01b-5edd-bd9a-936191d67639.jpg",
+        "provider": "Google Gemini / Nano Banana Pro",
+        "description": "Visualisierung zum Lernziel: Wirkungsgrade vergleichen.",
+        "altText": "Didaktische Visualisierung zum Lernziel \"Wirkungsgrade vergleichen\". Die lernende Person kann Wirkungsgrade verschiedener Energiewandler berechnen und vergleichen.",
+        "lang": "de",
+        "license": "AI-generated, SkillPilot-curated",
+        "reviewStatus": "pilot"
+      }
+    ],
+    "provenance": {
+      "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+      "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+      "sourceGoalId": "206bfa43-a28c-49a0-a1e1-dc9ef12f1085"
+    }
+  },
+  "profile": {
+    "archetype": "data",
+    "expectations": [
+      {
+        "id": "e1",
+        "essentialUnderstandingDe": "Wirkungsgrad ist nutzbarerOutput geteilt durchInput an einer erklärten Grenze.",
+        "essentialUnderstandingEn": "Efficiency is useful output/input at an explicit boundary.",
+        "observablePerformanceDe": "energy20-13-a: Drei verschiedene Nutzengrenzen ausdrücklich definieren. energy20-13-b: Strom-/Brennstoff- und Radarbeitsgrenzen korrekt auswählen.",
+        "observablePerformanceEn": "energy20-13-a: Explicitly define three useful-output boundaries. energy20-13-b: Select electricity/fuel/wheel-work boundaries correctly."
+      },
+      {
+        "id": "e2",
+        "essentialUnderstandingDe": "Teil- und Kettenwirkungsgrade werden auf einer deklarierten Energiebezugsbasis aus tatsächlich genutztem Output berechnet; nicht nachgefragte Wärme ist kein genutzter Dienst.",
+        "essentialUnderstandingEn": "Partial and chain efficiencies use a declared energy basis and actual useful output; undemanded heat is not used service.",
+        "observablePerformanceDe": "energy20-13-a: 30/80/50% und60/85/70% korrekt berechnen. energy20-13-b: 82%,32,8%,25% und gemeinsame15kWh-Servicebasis herleiten.",
+        "observablePerformanceEn": "energy20-13-a: Correctly calculate30/80/50% and60/85/70%. energy20-13-b: Derive82%,32.8%,25% and common15kWh service."
+      },
+      {
+        "id": "e3",
+        "essentialUnderstandingDe": "Teil- und Kettenwirkungsgrade brauchen gleiche Nutzfunktion und Fehlergrenze.",
+        "essentialUnderstandingEn": "Partial/chain efficiencies need equal service and error boundaries.",
+        "observablePerformanceDe": "energy20-13-a: Energieerhaltung, Nutzung, Vergleichsbasis und absolute Fehlergrenzen auseinanderhalten. energy20-13-b: Verschiedene Nutzfunktionen und einmalige Verlustbilanz erklären; kein Umwelturteil aus einem Teilwirkungsgrad.",
+        "observablePerformanceEn": "energy20-13-a: Separate energy conservation, service, comparison basis and absolute error bounds. energy20-13-b: Explain different service functions and count losses once; no environmental verdict from one partial efficiency."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "e1",
+        "e2",
+        "e3"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "energy20-13-a-transfer",
+        "textDe": "Der Wärmebedarf wächst auf5MJ und die Stromnachfrage sinkt. Bestimme neu, welche Kennzahl für diesen Dienst relevant ist, statt einen festen Sieger ausηel abzuleiten.",
+        "textEn": "Heat demand rises to5MJ while electricity demand falls. Reconsider the relevant metric instead of choosing a permanent winner fromηel."
+      },
+      {
+        "id": "energy20-13-b-transfer",
+        "textDe": "Strom kommt nun direkt aus einerPV-Anlage. Sage, welche bekannte Teilwirkungsgradmessung bleibt und welche Primärenergie-Konvention neu deklariert werden muss.",
+        "textEn": "Electricity now comes directly fromPV. Identify the unchanged measured partial efficiency and the primary-energy convention requiring a new declaration."
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "energy20-13-a",
+        "taskDemandDe": "Ganzes eigenes Material curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy-four-context-satisfied-current422-positive-and-atomic-informed-20261015-v1/materials/four-whole-cases8.targeted-informed-successor.json #energy20-13-a,sha256:e1e84ffeff7db7534372949e9cf38f5dfd2a95546fcfba6d07ee177e369098bf. Berechne elektrische, nominelle Gesamt- und bedarfsbezogene Gesamtwirkungsgrade. Vergleiche auf gemeinsamer Eingangs- oder Servicebasis und erkläre, warum WandlerB nicht85%nutzbare Energie liefert, wenn Wärmebedarf fehlt. Bestimme aus den vorgegebenen Fehlergrenzen passende Wirkungsgradintervalle; zähle den festen Wärmebedarf nicht als weitere Messunsicherheit.",
+        "taskDemandEn": "Whole own material curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy-four-context-satisfied-current422-positive-and-atomic-informed-20261015-v1/materials/four-whole-cases8.targeted-informed-successor.json #energy20-13-a,sha256:e1e84ffeff7db7534372949e9cf38f5dfd2a95546fcfba6d07ee177e369098bf. Calculate electrical,nominal-total and demand-adjusted efficiencies. Compare on a common input/service basis and explain whyB does not deliver85%useful energy when heat demand is absent. Derive efficiency intervals from the given error bounds; do not treat the fixed heat demand as an extra measurement uncertainty.",
+        "expectedPerformanceDe": "A:ηel30%, nominell80%, mit2MJBedarf50%. B:ηel60%, nominell85%, mit2MJBedarf70%. Bei gleichem20MJ-Eingang entsprichtA zwei Durchgängen und anderem Serviceumfang; dieser Vergleich muss ausdrücklich bezeichnet werden. Wirkungsgrade sind dimensionslose Anteile, nichtMJ-Werte; ungenutzte Wärme bleibt Energie, aber keine für diese Nachfrage genutzte Arbeit/Wärme. Unsicherheiten verhindern hier nicht den großen Stromunterschied, aber eine feinere Rangfolge braucht Fehlerrechnung und einheitliche Grenze. Bei den ausdrücklich exakten Eingängen ergeben sich für A elektrisch29–31%, nominell78–82% und bedarfsbezogen49–51%; für B59,5–60,5%,84–86% und69,5–70,5%. Für die nominale Summe werden die beiden absoluten Fehlergrenzen konservativ addiert. Bei2MJBedarf liegt selbst die kleinste verfügbare Wärme über dem Bedarf: nur die Stromfehlergrenze wirkt auf den bedarfsbezogenen Zähler. Ohne Wärmenutzung liefert B60% elektrischen Nutzen, nicht85%. Im Transfer mit5MJWärmebedarf wären bei vollständig genutztem Strom die nominalen Werte relevant; sinkende Stromnachfrage ohne Zahlen erlaubt keinen neuen eindeutigen Gesamtnutzen.",
+        "expectedPerformanceEn": "A:electrical30%,nominal80%,with2MJ demand50%. B:electrical60%,nominal85%,with2MJ demand70%. Equal20MJ input means twoA cycles and a different service total,which must be declared. Efficiencies are dimensionless fractions,notMJ. Unused heat remains energy but is not useful service for this demand. Uncertainty does not erase the large electrical difference;fine rankings need error analysis/common boundaries. With the explicitly exact inputs, A has electrical29–31%, nominal78–82% and demand-adjusted49–51%; B has59.5–60.5%,84–86% and69.5–70.5%. For nominal sums, conservatively add both absolute output error bounds. At2MJ heat demand even the smallest heat output exceeds demand, so only the electricity error bound affects the demand-adjusted numerator. With no heat use, B supplies60% electrical service, not85%. In the5MJ-heat transfer, nominal values apply if all electricity is used; an unspecified reduction in electricity demand prevents a unique new useful-output result.",
+        "understandingFocusDe": "Der Wärmebedarf wächst auf5MJ und die Stromnachfrage sinkt. Bestimme neu, welche Kennzahl für diesen Dienst relevant ist, statt einen festen Sieger ausηel abzuleiten.",
+        "understandingFocusEn": "Heat demand rises to5MJ while electricity demand falls. Reconsider the relevant metric instead of choosing a permanent winner fromηel."
+      },
+      {
+        "id": "energy20-13-b",
+        "taskDemandDe": "Ganzes eigenes Material curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy-four-context-satisfied-current422-positive-and-atomic-informed-20261015-v1/materials/four-whole-cases8.targeted-informed-successor.json #energy20-13-b,sha256:e1e84ffeff7db7534372949e9cf38f5dfd2a95546fcfba6d07ee177e369098bf. Berechne Steckdose-Rad, Primärenergie-Rad und Brennstoff-Rad-Wirkungsgrad. Normiere für einen Vergleich beide auf15kWh Radarbeit. Prüfe die Behauptung „82%ist direkt mit25%vergleichbar, also ist die ganze Kette82%“. Erkläre zusätzlich, weshalb die80%/5% aus dem Übersichtskontext verschiedene Nutzfunktionen betreffen und keinen allgemeinen Anwendungssieger festlegen.",
+        "taskDemandEn": "Whole own material curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy-four-context-satisfied-current422-positive-and-atomic-informed-20261015-v1/materials/four-whole-cases8.targeted-informed-successor.json #energy20-13-b,sha256:e1e84ffeff7db7534372949e9cf38f5dfd2a95546fcfba6d07ee177e369098bf. Calculate socket-to-wheel,primary-to-wheel and fuel-to-wheel efficiencies. Normalise both to15kWh wheel work. Evaluate“82%can directly be compared with25%,so the entire chain is82%”. Also explain why the overview’s80%/5% use different service functions and cannot select a universal application winner.",
+        "expectedPerformanceDe": "ηsocket=16,4/20=82%; Primärinput20/0,4=50kWh,ηgesamt32,8%. Brennstoff-Rad-Pfad15/60=25%. Für15kWhRad benötigtEV15/0,82≈18,293kWhSteckdosenstrom und45,732kWhPrimärenergie; Verbrennungspfad60kWh.82%beschreibt eine engere Grenze als25%Brennstoff-Rad. Ein anderer Strombereitstellungsweg verändert Primärenergiedefinition und Bilanz; die Daten zeigen keine vollständige Ökobilanz. Die40%-Strecke endet bereits an der Steckdose; ihre Verluste werden einmal berücksichtigt. Brennstoffgewinnung beider Wege und Herstellungsbilanzen sind nicht nachgewiesen. Die80% eines Motors und5% einer Lampe sind korrekt als numerische Anteile verschiedener definierter Nutzformen lesbar; mechanische Arbeit und Licht sind keine austauschbare Dienstleistung. Daraus folgt kein allgemeines Umwelt- oder Einsatzranking.",
+        "expectedPerformanceEn": "Socket efficiency16.4/20=82%;primary input20/0.4=50kWh,total32.8%. Fuel-to-wheel path15/60=25%. For15kWh wheels,EV needs15/0.82≈18.293kWh socket and45.732kWh primary;combustion60kWh.82%uses a narrower boundary than fuel-to-wheel25%. Another electricity route changes primary-energy conventions/accounting;this is not a completeLCA. The40% path already ends at the socket, so count its losses once. Fuel extraction for both routes and manufacturing inventories are not established. A motor’s80% and a lamp’s5% are numerical fractions of different defined service forms; mechanical work and light are not interchangeable services. They establish no universal environmental or application ranking.",
+        "understandingFocusDe": "Strom kommt nun direkt aus einerPV-Anlage. Sage, welche bekannte Teilwirkungsgradmessung bleibt und welche Primärenergie-Konvention neu deklariert werden muss.",
+        "understandingFocusEn": "Electricity now comes directly fromPV. Identify the unchanged measured partial efficiency and the primary-energy convention requiring a new declaration."
+      }
+    ]
+  },
+  "teacherContext": {
+    "currentDirectPrerequisiteWholeGoals": [
+      {
+        "id": "e64a79df-7f21-5651-9b5d-e7d17580569e",
+        "title": "Pflanzenölkraftstoffe einordnen",
+        "titleEn": "Classify vegetable oil fuels",
+        "description": "Die lernende Person kann Pflanzenölkraftstoffe und Biodiesel auf Basis von Triglyceriden und Umesterung beschreiben sowie ökologische Folgen des Einsatzes diskutieren.",
+        "descriptionEn": "The learner can describe vegetable-oil fuels and biodiesel using triglyceride structure and transesterification and discuss ecological consequences of their use.",
+        "weight": 2,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [
+          "0959eef2-3c7d-5b33-a109-ddf332a5dbd9",
+          "4d9defde-d3bc-5c43-83ff-9cf6f2930643"
+        ],
+        "requires": [],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-chemistry",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BC_AUFBAU",
+            "BC_ENERGIE"
+          ],
+          "phase": "Q4"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+            "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "cb71c0bf-f3f4-4315-880e-f80362bdfad7"
+          },
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "type": "cluster",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "e64a79df-7f21-5651-9b5d-e7d17580569e",
+            "title": "Visualisierung: Pflanzenölkraftstoffe einordnen",
+            "url": "/assets/goal-visualizations/chemie/e64a79df-7f21-5651-9b5d-e7d17580569e/e64a79df-7f21-5651-9b5d-e7d17580569e.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Pflanzenölkraftstoffe einordnen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Pflanzenölkraftstoffe einordnen\". Die lernende Person kann Pflanzenölkraftstoffe und Biodiesel auf Basis von Triglyceriden und Umesterung beschreiben sowie ökologische Folgen des Einsatzes diskutieren.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "accepted"
+          }
+        ]
+      }
+    ],
+    "currentDirectParentWholeClusters": [
+      {
+        "id": "e4f2332c-9d04-5220-b4e1-501b9ac3a0c7",
+        "title": "Q4.2 Nachhaltige Chemie & Energieumwandlung",
+        "titleEn": "Q4.2 Sustainable Chemistry & Energy Conversion",
+        "description": "Energieumwandlungen in Brennstoffzellen und biogenen Kraftstoffen bewerten.",
+        "descriptionEn": "Evaluate energy conversions in fuel cells and biogenic fuels.",
+        "weight": 14,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [
+          "ecce0306-13dc-5563-a097-afe69805a8d6",
+          "e64a79df-7f21-5651-9b5d-e7d17580569e",
+          "a76ab487-4663-5005-8454-cb3196f3773b",
+          "7a5a8e37-7078-5974-a4d8-edf7d4cbbfc3",
+          "a3386a86-f1ee-55b8-bcd5-03bfb1f9d987",
+          "3ec31fe1-e01b-5edd-bd9a-936191d67639",
+          "e20d205f-03a4-5f96-b456-9b20460605a2",
+          "0cf2ffe1-a988-5ffb-ab37-0ac7d58b23dd",
+          "16b24dc5-0e48-5e3b-8307-01289db8d1a9",
+          "1873eb42-1c85-548e-918c-4f4f73ed784f",
+          "1051c091-a044-5a09-8946-60a4b5e5d185",
+          "7dc80ee2-64e3-50c1-8aaa-0fef0ed0919d",
+          "ceda84ff-f48a-5e16-84fd-ad681de7e460",
+          "4d7554d4-3f89-5c64-8a67-4b73b55b4442"
+        ],
+        "requires": [],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-chemistry",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BC_ENERGIE",
+            "BC_AUFBAU"
+          ],
+          "phase": "Q4"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+            "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "8da28848-37ac-4a02-919a-99a34a24177d"
+          }
+        },
+        "type": "cluster",
+        "examples": []
+      }
+    ],
+    "currentFull439PageContext": {
+      "pageNumber": 317,
+      "navigationOrder": 342,
+      "treeOrder": 411,
+      "breadcrumbs": [
+        "Chemie – kanonische M7-Prüfsicht",
+        "Chemie",
+        "Energie und Nachhaltigkeit",
+        "Q4.2 Nachhaltige Chemie & Energieumwandlung"
+      ],
+      "chapterIds": [
+        "structure:chemie-m7-review-root",
+        "structure:chemie-canonical-root-explicit-QS",
+        "goal:f4fa58e7-5c6c-58dd-82db-19e7e0abe822",
+        "goal:e4f2332c-9d04-5220-b4e1-501b9ac3a0c7"
+      ],
+      "requires": [],
+      "reverseRequires": [],
+      "externalPrerequisites": [
+        {
+          "goalId": "e64a79df-7f21-5651-9b5d-e7d17580569e",
+          "title": "Pflanzenölkraftstoffe einordnen",
+          "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-e64a79df-7f21-5651-9b5d-e7d17580569e"
+        }
+      ],
+      "externalReverseRequires": [
+        {
+          "goalId": "32705a3a-9b7f-5cc0-ba41-881d13d0c45b",
+          "title": "HE-LK: Materialgestützte Chemie-Abschlussaufgabe bearbeiten",
+          "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-32705a3a-9b7f-5cc0-ba41-881d13d0c45b"
+        }
+      ]
+    },
+    "authoredCurrentApplicability": {
+      "jurisdiction": [
+        "DE-BY",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    }
+  }
+}

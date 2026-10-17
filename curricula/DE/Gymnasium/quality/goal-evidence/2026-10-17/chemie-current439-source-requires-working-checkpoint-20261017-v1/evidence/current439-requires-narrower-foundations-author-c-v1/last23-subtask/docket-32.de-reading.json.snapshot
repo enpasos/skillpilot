@@ -1,0 +1,128 @@
+{
+  "index": 32,
+  "goal": {
+    "id": "8da5c5cf-d346-5df9-b4c9-26938fc80a88",
+    "shortKey": "canonical_chemistry_by_food_component_quantification",
+    "title": "Lebensmittelinhaltsstoffe quantitativ bestimmen",
+    "description": "Die lernende Person kann geeignete experimentelle Verfahren auswählen und auswerten, um den Gehalt von Lebensmittelinhaltsstoffen zu bestimmen.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "canonical",
+      "SekII"
+    ],
+    "contains": [],
+    "requires": [
+      "8fe39739-2938-5e2c-8db2-08572b44569a"
+    ],
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-chemistry",
+      "demandLevel": "AB3",
+      "processCompetencies": [
+        "PK1_ERKENNTNISGEWINNUNG",
+        "PK3_AUSWERTEN"
+      ],
+      "guidingIdeas": [
+        "BC_REAKTION"
+      ],
+      "phase": "Q2",
+      "area": "Lebensmittelchemie",
+      "topicCode": "CANONICAL.CHEMISTRY.Q2.FOOD_COMPONENT_QUANTIFICATION"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BY",
+        "DE-HE",
+        "DE-NI"
+      ]
+    },
+    "extendedData": {
+      "provenance": {
+        "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+        "sourceLandscapeTitle": "DE-BY - Chemie Gymnasium (Bayern, LehrplanPLUS Source-Extraction)",
+        "sourceGoalId": "302818a2-d25c-5de2-a279-877bf6369557"
+      }
+    },
+    "type": "atomic",
+    "examples": [],
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "8da5c5cf-d346-5df9-b4c9-26938fc80a88",
+        "title": "Visualisierung: Lebensmittelinhaltsstoffe quantitativ bestimmen",
+        "url": "/assets/goal-visualizations/chemie/8da5c5cf-d346-5df9-b4c9-26938fc80a88/8da5c5cf-d346-5df9-b4c9-26938fc80a88.png",
+        "provider": "OpenAI / ChatGPT-Codex built-in image_gen (model version not exposed)",
+        "description": "Visualisierung zum Lernziel: Lebensmittelinhaltsstoffe quantitativ bestimmen.",
+        "altText": "Eine Saftprobe, die gemessene Masse eines ausgewählten Inhaltsstoffs und das Volumen der ursprünglichen Probe führen zur Formel rho=m/V. Die Einheit g/L kennzeichnet die Massenkonzentration.",
+        "lang": "de",
+        "license": "CC-BY-4.0",
+        "reviewStatus": "pilot"
+      }
+    ]
+  },
+  "p": {
+    "schemaVersion": 2,
+    "reviewId": "chemie-q2-naturstoffe-current407-fresh-independent-a-20261012-v2",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "goalId": "8da5c5cf-d346-5df9-b4c9-26938fc80a88",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "reviewedAt": "2026-10-12T06:59:54.903161+00:00",
+    "reviewer": "Fresh independent A; original author profile body retained for binding check",
+    "reason": "DE: Exakter Autorenprofilkörper für normalen Byte-/Schemaabgleich; mein eigenständiges fachliches Urteil einschließlich aller Holds steht in FINAL.targeted29.genuine-scientific-judgments.json. EN: Exact author profile body retained for normal binding validation; independent scientific judgments and holds are recorded separately. No human approval or learner performance is claimed.",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": [],
+    "dissent": [],
+    "profile": {
+      "archetype": "data",
+      "expectations": [
+        {
+          "id": "aspect-1",
+          "essentialUnderstandingDe": "Methodeauswählen, Kalibrationund Messgrößeverbinden.",
+          "observablePerformanceDe": "Steigung0, 8L/g; Probe0, 30g/L, Original6g/L; 250mL1, 5g. Leerwert/Positivstandard, Verdünnung, Interferenz/Auslinearität prüfen. GOD/PODbeziehtsichauf Glucose, nicht Saccharose/Gesamtzucker; g/L=Massenkonzentration, nichtmol/L."
+        },
+        {
+          "id": "aspect-2",
+          "essentialUnderstandingDe": "Neues Analyt/Messprinzipbegrenztauswählen.",
+          "observablePerformanceDe": "10µmol=1, 7612mg/10mL=17, 612mg/100mL. Realeandere Reduktionsmittel verursachenpositive Abweichung; Endpunkt/Standardisierung/Blindwert/Kontrolle nötig. Keine Spezifität alleinauseiner Titration."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "aspect-1",
+          "aspect-2"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "material-operator-context",
+          "textDe": "Die ausgearbeiteten Fälle wechseln Stoff, Kontrollprobe, pH, Bezugsgröße, Quellenweg oder Nutzungskontext. Werte sind ausdrücklich Aufgabenwerte; tatsächliche Durchführung/Recherche wird im individuellen Lernpfad nur anhand vorgelegter Arbeit beurteilt."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "case-1",
+          "taskDemandDe": "Wähle für Glucoseineinem Modellsaft denbereitgestellten GOD/POD-Farbtest stattunspezifischer Gesamtzuckerprobe. Synthetische Photometriedaten unteridentischen Bedingungen505nm/1cm: Standards0; 0, 10; 0, 20; 0, 40g/L mit Absorbanz0; 0, 08; 0, 16; 0, 32; 20fachverdünnte Probe0, 24. Erstelle Kalibration, berechne Original-Massenkonzentration und Massein250mL; begründedie Methode/Kontrollen.",
+          "expectedPerformanceDe": "Steigung0, 8L/g; Probe0, 30g/L, Original6g/L; 250mL1, 5g. Leerwert/Positivstandard, Verdünnung, Interferenz/Auslinearität prüfen. GOD/PODbeziehtsichauf Glucose, nicht Saccharose/Gesamtzucker; g/L=Massenkonzentration, nichtmol/L.",
+          "understandingFocusDe": "Methodeauswählen, Kalibrationund Messgrößeverbinden."
+        },
+        {
+          "id": "case-2",
+          "taskDemandDe": "Wähle für Vitamin Cineineralsascorbinsäureexklusivreduzierenddefinierten Modelllösung Iodometrie statt Glucosetest.10, 00mLProbe verbrauchen2, 00mLI2 0, 00500mol/L; Verhältnis1: 1, MAscorbinsäure176, 12g/mol. Berechne mg/100mL undbeurteile die Übertragbarkeitaufrealen Saftmitanderen Reduktionsmitteln.",
+          "expectedPerformanceDe": "10µmol=1, 7612mg/10mL=17, 612mg/100mL. Realeandere Reduktionsmittel verursachenpositive Abweichung; Endpunkt/Standardisierung/Blindwert/Kontrolle nötig. Keine Spezifität alleinauseiner Titration.",
+          "understandingFocusDe": "Neues Analyt/Messprinzipbegrenztauswählen."
+        }
+      ]
+    }
+  }
+}

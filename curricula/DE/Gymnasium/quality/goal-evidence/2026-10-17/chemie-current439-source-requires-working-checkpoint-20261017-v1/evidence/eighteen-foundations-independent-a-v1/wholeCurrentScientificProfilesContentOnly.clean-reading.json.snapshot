@@ -1,0 +1,599 @@
+[
+  {
+    "goalId": "1dc15fa2-fca4-56b0-b5c1-4d215613dde0",
+    "wholeProfile": {
+      "archetype": "concept",
+      "expectations": [
+        {
+          "id": "specified-entities-and-mole",
+          "essentialUnderstandingDe": "Stoffmenge ist eine zählbezogene Größe mit Einheit mol für ausdrücklich benannte Elementarteilchen. Dieselbe Stoffmenge verschiedener Moleküle oder Atome bedeutet dieselbe Zahl dieser Einheiten, nicht gleiche Masse. Moleküle, Atome, Ionen und Formeleinheiten dürfen nicht stillschweigend ineinander umbenannt werden.",
+          "essentialUnderstandingEn": "Amount of substance is a counting-related quantity measured in mol for explicitly specified elementary entities. Equal amounts of different molecules or atoms mean equal numbers of those entities, not equal masses. Molecules, atoms, ions and formula units must not be silently substituted for each other.",
+          "observablePerformanceDe": "Die lernende Person benennt die gezählte Einheit, übersetzt zwischen Molekülen/Formeleinheiten und enthaltenen Atomen/Ionen und erklärt, weshalb eine gleiche Zahl von Teilchenpaketen keine Aussage über gleiche Masse liefert.",
+          "observablePerformanceEn": "The learner specifies the counted entity, translates between molecules/formula units and constituent atoms/ions and explains why equal numbers of particle packages do not imply equal mass."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "specified-entities-and-mole"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "entity-kind",
+          "textDe": "Moleküle und einzelne Atome werden mit Ionen und Formeleinheiten kontrastiert.",
+          "textEn": "Molecules and single atoms are contrasted with ions and formula units."
+        },
+        {
+          "id": "reference-count",
+          "textDe": "Gleiche Stoffmenge der Verbindungen wird mit unterschiedlicher Stoffmenge enthaltener Teilchen verglichen.",
+          "textEn": "Equal compound amounts are compared with unequal amounts of constituent particles."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "oxygen-and-helium-packages",
+          "taskDemandDe": "Zwei Proben sind beschriftet: A enthält 0,20 mol O2-Moleküle, B enthält 0,20 mol He-Atome. Begründe, welche Teilchenzahlen gleich sind, wie viel mol O-Atome A enthält und ob die Beschriftung gleiche Massen beweist. Die genaue Zahl für ein mol brauchst du hier nicht auszurechnen.",
+          "taskDemandEn": "Two samples are labelled: A contains 0.20 mol O2 molecules and B contains 0.20 mol He atoms. Explain which particle counts are equal, how many mol of O atoms A contains and whether the labels prove equal masses. You need not calculate the numerical count in one mol.",
+          "expectedPerformanceDe": "A und B besitzen gleich viele jeweils benannte Elementarteilchen: O2-Moleküle bzw. He-Atome. A enthält 0,40 mol O-Atome. Die doppelte Atomzahl in A macht die Molekülstoffmenge nicht zu 0,40 mol O2; gleiche Stoffmenge beweist keine gleiche Masse.",
+          "expectedPerformanceEn": "A and B contain equal numbers of their specified entities: O2 molecules and He atoms. A contains 0.40 mol of O atoms. Its doubled atom count does not make the molecular amount 0.40 mol O2; equal amount does not establish equal mass.",
+          "understandingFocusDe": "Gezählte Einheit, enthaltene Atome und Probenmasse werden begründet auseinandergehalten.",
+          "understandingFocusEn": "The counted entity, constituent atoms and sample mass are distinguished with reasons."
+        },
+        {
+          "id": "salt-formula-units-fresh",
+          "taskDemandDe": "Frischer Fall ohne Rechenweg: Ein NaCl-Kristall besteht aus Na+- und Cl−-Ionen im Verhältnis 1:1. Er enthält 0,30 mol NaCl-Formeleinheiten. Ein Mitschüler schreibt: „Das sind 0,60 mol NaCl-Moleküle.“ Beurteile die Aussage und formuliere korrekte Stoffmengenangaben für die Formeleinheiten, Na+-Ionen, Cl−-Ionen und alle Ionen zusammen.",
+          "taskDemandEn": "Fresh case without a worked method: a NaCl crystal consists of Na+ and Cl− ions in a 1:1 ratio and contains 0.30 mol NaCl formula units. A classmate writes: “That is 0.60 mol NaCl molecules.” Evaluate the statement and give correct amounts for formula units, Na+ ions, Cl− ions and all ions together.",
+          "expectedPerformanceDe": "0,30 mol Formeleinheiten, 0,30 mol Na+-Ionen und 0,30 mol Cl−-Ionen; insgesamt 0,60 mol Ionen, mit ausdrücklich gemeinsamer gezählter Einheit „Ionen“. NaCl im Kristall besteht nicht aus isolierten NaCl-Molekülen; Anzahl der Bestandteile und Anzahl der Verhältnisformeleinheiten sind unterschiedliche Bezüge.",
+          "expectedPerformanceEn": "There are 0.30 mol formula units, 0.30 mol Na+ ions and 0.30 mol Cl− ions, totalling 0.60 mol ions with the common counted entity explicitly stated. Crystalline NaCl is not composed of isolated NaCl molecules; constituent-ion count and formula-unit count use different reference entities.",
+          "understandingFocusDe": "Selbstständiger Wechsel zur Ionengitter-Darstellung, ohne eine molekulare Zählregel unbesehen zu übertragen.",
+          "understandingFocusEn": "Independent transfer to an ionic-lattice representation without blindly applying a molecular counting rule."
+        }
+      ]
+    }
+  },
+  {
+    "goalId": "4aa3a130-b517-5ac5-87b2-147fe432cadd",
+    "wholeProfile": {
+      "archetype": "data",
+      "expectations": [
+        {
+          "id": "adequacy-for-question",
+          "essentialUnderstandingDe": "Daten sind nur für eine Fragestellung angemessen, wenn Messprinzip, Probenbedingungen und benötigte Unterscheidung zusammenpassen.",
+          "essentialUnderstandingEn": "Data are adequate for a question only when measurement principle, sample conditions and required distinction fit together.",
+          "observablePerformanceDe": "Prüft am Farbtest Selektivität/Blank und am Leitfähigkeitsvergleich Temperatur, Ionensorte und Kontrollprobe; trennt Messantwort von Stoffidentifikation.",
+          "observablePerformanceEn": "Checks selectivity/blank for the colour test and temperature, ion type and control for the conductivity comparison; separates measurement response from substance identification."
+        },
+        {
+          "id": "bounded-conclusion",
+          "essentialUnderstandingDe": "Eine positive Antwort eines kreuzreaktiven Tests beweist keinen eindeutigen Stoff; ein unkontrollierter Temperaturunterschied beweist keine Konzentrationsdifferenz.",
+          "essentialUnderstandingEn": "A positive cross-reactive test does not prove a unique substance; an uncontrolled temperature difference does not prove a concentration difference.",
+          "observablePerformanceDe": "Begründet unterstützte und nicht unterstützte Aussagen mit X/Y/Blank bzw. A20/A35/B35 und begrenzt die ±3-Streuung auf das gegebene Modell.",
+          "observablePerformanceEn": "Justifies supported and unsupported claims using X/Y/blank or A20/A35/B35 and confines ±3 scatter to the supplied model."
+        },
+        {
+          "id": "fresh-validity-check",
+          "essentialUnderstandingDe": "Ein ausgeschlossener Störstoff beseitigt nicht alle Unsicherheit; eine neue ungeladene Matrixkomponente kann Ionenbeweglichkeit verändern.",
+          "essentialUnderstandingEn": "Excluding one interferent does not remove all uncertainty; a new uncharged matrix component may change ion mobility.",
+          "observablePerformanceDe": "Nennt nach Y-Ausschluss weitere relevante Testgrenzen und entwickelt bei Saccharosezugabe einen temperatur- und matrixgleichen Kontroll-/Kalibriervergleich.",
+          "observablePerformanceEn": "Names further relevant test limits after excluding Y and develops a temperature- and matrix-matched control/calibration comparison for added sucrose."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "adequacy-for-question",
+          "bounded-conclusion",
+          "fresh-validity-check"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "interferent-exclusion",
+          "textDe": "Ein bekannter Kreuzreaktant entfällt; andere Interferenzen und Nachweisgrenze bleiben zu prüfen.",
+          "textEn": "One known cross-reactant is removed; other interferences and detection limit still need checking."
+        },
+        {
+          "id": "matrix-change",
+          "textDe": "Temperaturkontrolle wird um Saccharose-/Viskositäts- und Matrixkontrolle erweitert.",
+          "textEn": "Temperature control is extended by sucrose/viscosity and matrix control."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "data-validity-test-not-proof",
+          "taskDemandDe": "Beurteile Gültigkeit, geeignete Quellen, Blind-/Positivkontrollen und Tragweite von „U enthält X“. Benenne einen Verfahrensfehler und eine geeignete Folgemethode.\nFrische Variation: Wenn Y ausgeschlossen wird, erkläre, welche weiteren Informationen vor einem eindeutigen Nachweis noch fehlen können.",
+          "taskDemandEn": "Assess validity, suitable sources, blank/positive controls and the scope of “U contains X”. Identify a procedure error and a suitable follow-up method.\nFresh variation: If Y is excluded, explain what further information may still be missing before unique proof.",
+          "expectedPerformanceDe": "Die Blank-/Positivkontrolle zeigt grundsätzliches Testansprechen; Y macht den Test nicht spezifisch. U-Farbe ist ein Hinweis auf eine reagierende Komponente, kein eindeutiger X-Nachweis. S ist für Spezifität relevanter als das verkürzte Etikett H; unbekannte Verdünnung/Erhitzung kann Signal verändern. Eine unabhängig spezifischere Analyse mit dokumentierten Bedingungen ist nötig. Blindproben korrigieren keinen grundsätzlich unspezifischen Reaktionsmechanismus. Weil X/Y hier keine Stoffidentitäten oder Trennmerkmale haben, darf kein benanntes Gerät ungeprüft als X-spezifisch gelten. Akzeptabel ist eine konkrete kontrollierte Wiederholung mit dokumentierter Verdünnung/Temperatur und eine begründete Planung zur Validierung einer ergänzenden Methode an bekannten X-, Y- und Blindproben. Für einen eindeutigen X-Nachweis muss deren Spezifität erst belegt werden; Wiederholung des unspezifischen Tests allein identifiziert X weiterhin nicht.\nFrischer Transfer: Der Ausschluss von Y beseitigt nur den bekannten Kreuzreaktanten Y. Weitere unbekannte Stoffe, Matrix-/pH-/Temperaturbedingungen, Nachweisgrenze, Empfindlichkeit und Störreaktionen bleiben mögliche Grenzen. Eine positive Antwort ist nur bei dokumentiert validierter Selektivität und passenden Probenbedingungen eine starke Stütze für X. Weitere bekannte X-/Nicht-X-Proben, Blank, geeignete Matrixkontrollen und eine für X validierte unabhängige Methode würden die Aussage verstärken. Eine beliebig genannte zweite Apparatur garantiert noch keine Selektivität. Erhitzen oder Verdünnen kann die tatsächliche Probe verändern; ursprüngliche Probenbedingungen erhalten und kenntlich machen. Kein absoluter Nachweis aller unbekannten Möglichkeiten folgt aus Y-Ausschluss.",
+          "expectedPerformanceEn": "Blank/positive controls show that the test responds in principle; Y makes it non-specific. U colour indicates a reacting component, not unique proof of X. S is more relevant to specificity than the shortened label H; unknown dilution/heating may alter the signal. An independent more specific analysis under documented conditions is needed. Blanks do not correct an inherently non-specific reaction mechanism. Because X/Y have no identities or discriminating properties here, no named instrument may be presumed X-specific. Accept a concrete controlled repeat with documented dilution/temperature and a justified plan to validate an additional method against known X, Y and blank samples. Its specificity must first be established for unique proof of X; repeating the non-specific test alone still does not identify X.\nFresh transfer: Excluding Y removes only the known cross-reactant Y. Other unknown substances, matrix/pH/temperature conditions, detection limit, sensitivity and interfering reactions remain possible limits. A positive response strongly supports X only with documented validated selectivity and appropriate sample conditions. Further known X/non-X samples, blank, suitable matrix controls and an independent method validated for X would strengthen the claim. Simply naming a second instrument does not guarantee selectivity. Heating or dilution may change the actual sample; retain and label original sample conditions. Excluding Y does not exclude every unknown possibility absolutely.",
+          "understandingFocusDe": "Neue Selektivitätsinformation begrenzt den Nachweisanspruch konkret statt ihn absolut zu machen.",
+          "understandingFocusEn": "New selectivity information bounds the identification claim concretely rather than making it absolute."
+        },
+        {
+          "id": "data-validity-temperature-confound",
+          "taskDemandDe": "Prüfe, welche Folgerung durch Daten getragen wird, welche Störgröße vorliegt und wie ein gültiger Stoffmengenvergleich verbessert werden kann.\nFrische Variation: Plane den Vergleich, wenn Probe B zusätzlich Saccharose enthält; erläutere die Grenze reiner Leitfähigkeitsdaten.",
+          "taskDemandEn": "Assess which conclusion the data support, the confounder present and how to improve a valid amount comparison.\nFresh variation: Plan the comparison if B additionally contains sucrose; explain the limit of conductivity-only data.",
+          "expectedPerformanceDe": "Die 500-µS/cm-Differenz ist mit Temperatur gekoppelt; Kontrolle A35 liegt innerhalb grober Streuung bei B35. Daten belegen kein Mehr an Salz in B. Gleiche Temperatur, Standards, Wiederholungen und bekannte Kompensation/gleiches Ionensystem sind nötig. Streuungsangabe ist nicht die vollständige Messunsicherheit; selbst temperaturgleiche Leitfähigkeit wäre bei unbekannten Ionensorten keine eindeutige NaCl-Konzentration.\nFrischer Transfer: Saccharose liefert im beschriebenen Modell keine zusätzlichen dissoziierten Ionen, kann aber Lösungsmatrix und Viskosität und damit die Beweglichkeit vorhandener Ionen verändern. Aus κ lässt sich deshalb weder Saccharosemenge noch gesamter gelöster Stoff direkt bestimmen. Bei gleicher Temperatur NaCl-Kontrollen mit/ohne gleiche Saccharosematrix, geeignete Blanks und eine für diese Matrix validierte Konzentrationskalibrierung vergleichen. Die bereits vorgegebenen A35/B35-Werte enthalten keine neue Saccharosemessung. Eine Behauptung höherer NaCl-Konzentration wäre nur innerhalb geprüfter Ionensorte, Temperatur und Matrix zulässig; die ±3-Wiederholstreuung ersetzt keine Gesamtunsicherheit.",
+          "expectedPerformanceEn": "The 500-µS/cm difference is confounded by temperature; A35 control lies within rough scatter of B35. Data do not establish more salt in B. Equal temperature, standards, repeats and known compensation/the same ion system are needed. The scatter estimate is not full measurement uncertainty; even equal-temperature conductivity would not uniquely determine NaCl concentration for unknown ion species.\nFresh transfer: Sucrose supplies no additional dissociated ions in the described model but may change solution matrix and viscosity and therefore mobility of existing ions. κ therefore does not directly determine sucrose amount or total dissolved material. At equal temperature compare NaCl controls with/without the same sucrose matrix, suitable blanks and concentration calibration validated for this matrix. The existing A35/B35 values contain no new sucrose measurement. A claim of higher NaCl concentration would be valid only within checked ion type, temperature and matrix; ±3 repeat scatter is not total uncertainty.",
+          "understandingFocusDe": "Temperaturkontrolle allein löst bei neuer Matrix nicht alle Konzentrations-Gültigkeitsfragen.",
+          "understandingFocusEn": "Temperature control alone does not resolve every concentration-validity question in a new matrix."
+        }
+      ]
+    }
+  },
+  {
+    "goalId": "363c5740-8a3c-50b8-8c3a-5548c80c36ea",
+    "wholeProfile": {
+      "archetype": "modeling",
+      "expectations": [
+        {
+          "id": "structure-model-reasoning",
+          "essentialUnderstandingDe": "Bei koordinativer Bindungsbildung stellt ein besetztes nichtbindendes Liganden-Donororbital ein freies Elektronenpaar bereit; ein energetisch geeignetes unbesetztes Orbital am Zentralatom oder Zentralion übernimmt im vorgegebenen qualitativen Modell die Akzeptorrolle. Herkunft des Paars und gemeinsame Bindung sind zu unterscheiden.",
+          "essentialUnderstandingEn": "In coordinate-bond formation an occupied ligand nonbonding donor orbital supplies a lone pair; an energetically suitable unoccupied orbital at the central atom or ion takes the acceptor role in the supplied qualitative model. Pair origin and shared bond must be distinguished.",
+          "observablePerformanceDe": "Die Person identifiziert im vorgegebenen Kupfer(II)-Tartrat-Ausschnitt das Liganden-O, sein besetztes Donororbital und das ausdrücklich dargestellte unbesetzte Zentralion-Akzeptororbital, erläutert deren Wechselwirkung bei Bindungsbildung und die Rolle der Tartratkomplexierung in der Fehling-Lösung. Das Modell behauptet keine vollständige Komplexgeometrie oder leere Gesamtheit der Cu(II)-d-Orbitale.",
+          "observablePerformanceEn": "In the supplied copper(II)-tartrate fragment the learner identifies ligand O, its occupied donor orbital and the explicitly represented unoccupied central-ion acceptor orbital, explains their interaction in bond formation and tartrate complexation in Fehling solution. The model claims neither a complete complex geometry nor that all Cu(II) d orbitals are empty."
+        },
+        {
+          "id": "fresh-application-and-boundary",
+          "essentialUnderstandingDe": "Ein vereinfachter Bindungsausschnitt beweist keine eindeutige vollständige Komplexformel; Komplexbildung ist nicht identisch mit der späteren Cu(II)-Reduktion zu Cu2O.",
+          "essentialUnderstandingEn": "A simplified bond fragment establishes no unique full complex formula; complex formation is not the subsequent Cu(II) reduction to Cu2O.",
+          "observablePerformanceDe": "A liefert im vorgegebenen Modell die benötigte Paarquelle, B nicht. Die Pfeildarstellung einer koordinativen Bindung beschreibt Paarherkunft, nicht automatisch Änderung der Oxidationsstufe. Die spätere Fehling-Redoxreaktion erzeugt Cu(I) in Cu2O; der Ausschnitt allein legt Anzahl/Anordnung aller Liganden nicht fest. HE Q1.2 nennt koordinative Bindung im erhöhten Niveau. Das Profil behauptet keine GK-Pflicht oder empirisch geprüfte vollständige Komplexstruktur.",
+          "observablePerformanceEn": "A supplies the required pair in the specified model, B does not. A coordinate-bond arrow describes pair origin, not an automatic change in oxidation state. Later Fehling redox produces Cu(I) in Cu2O; the fragment alone does not determine every ligand number or arrangement. HE Q1.2 lists coordinate bonding at advanced level. The profile claims neither a GK obligation nor an empirically verified full complex structure."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "structure-model-reasoning",
+          "fresh-application-and-boundary"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "material-variation",
+          "textDe": "Ligand mit/ohne verfügbares Elektronenpaar, Koordination versus Redoxnachweis, fragmentarisches Modell versus ganze Komplexstöchiometrie.",
+          "textEn": "Ligand with/without an available lone pair, coordination versus redox test, fragmentary model versus full complex stoichiometry."
+        },
+        {
+          "id": "counterexample",
+          "textDe": "Ein vereinfachter Bindungsausschnitt beweist keine eindeutige vollständige Komplexformel; Komplexbildung ist nicht identisch mit der späteren Cu(II)-Reduktion zu Cu2O.",
+          "textEn": "A simplified bond fragment establishes no unique full complex formula; complex formation is not the subsequent Cu(II) reduction to Cu2O."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "chem-current15-363c5740-case-1",
+          "taskDemandDe": "Ein ausdrücklich vereinfachter Ausschnitt zeigt Cu2+ neben einem O-Donoratom des Tartratliganden mit freiem Elektronenpaar. Es wird keine vollständige Strukturformel eines einzigen Fehling-Komplexes vorgegeben. Im zusätzlich vorgegebenen qualitativen Orbitalmodell ist das nichtbindende Donororbital am Liganden-O mit einem Elektronenpaar besetzt; am Zentralion wird ein energetisch geeignetes unbesetztes Akzeptororbital schematisch dargestellt. Das Modell behauptet weder, dass alle Cu(II)-d-Orbitale leer sind, noch eine bestimmte vollständige Komplexgeometrie. Zeichne den Elektronenpaarbeitrag zur Bindung und erläutere die Donator-/Akzeptorrolle und den Zweck der Tartratkomplexierung. Ordne dabei das besetzte Liganden-Donororbital und das unbesetzte Zentralion-Akzeptororbital ausdrücklich zu und erkläre, warum beide für das Modell der Bindungsbildung benötigt werden.",
+          "taskDemandEn": "An explicitly simplified fragment shows Cu2+ beside a tartrate-ligand O donor with a lone pair. No full structural formula of a unique Fehling complex is supplied. In the additionally supplied qualitative orbital model, the ligand-O nonbonding donor orbital contains an electron pair; an energetically suitable unoccupied acceptor orbital is represented schematically at the central ion. The model claims neither that all Cu(II) d orbitals are empty nor a particular complete complex geometry. Draw the electron-pair contribution to the bond, explain donor/acceptor roles and the purpose of tartrate complexation. Explicitly identify the occupied ligand donor orbital and unoccupied central-ion acceptor orbital and explain why both are needed in the bond-formation model.",
+          "expectedPerformanceDe": "Das O-Paar wird zum akzeptierenden Cu(II)-Zentralion gerichtet; der Ligand ist Elektronenpaardonator. Die Tartratkomplexierung hält Kupfer(II) in der alkalischen Fehling-Lösung löslich und vermeidet die einfache Fällung als Cu(OH)2. Dieser Schritt allein reduziert Cu(II) nicht zu Cu(I). Im vorgegebenen Modell ist das besetzte nichtbindende Ligandenorbital die Paarquelle, das unbesetzte passende Zentralionorbital der Akzeptor; ihre Wechselwirkung erklärt die Ausbildung der gemeinsamen Bindung. Aus dem schematischen Akzeptororbital folgt keine Aussage, dass sämtliche Metall-d-Orbitale leer seien.",
+          "expectedPerformanceEn": "The O pair is directed towards accepting central Cu(II); the ligand is electron-pair donor. Tartrate complexation keeps Cu(II) soluble in alkaline Fehling solution, avoiding simple Cu(OH)2 precipitation. This step alone does not reduce Cu(II) to Cu(I). In the supplied model the occupied ligand nonbonding orbital is the pair source and the suitable unoccupied central-ion orbital the acceptor; their interaction explains formation of the shared bond. The schematic acceptor orbital does not imply that all metal d orbitals are empty.",
+          "understandingFocusDe": "Nicht behaupten, dass zwei Elektronen aus dem Liganden als freie Ladung auf das Zentralion übertragen werden; Koordination wird als Bindungsmodell erläutert.",
+          "understandingFocusEn": "Do not claim that two ligand electrons are transferred as free charge onto the central ion; coordination is explained as a bond model."
+        },
+        {
+          "id": "chem-current15-363c5740-case-2",
+          "taskDemandDe": "Frischer Modellvergleich: Ausschnitt A enthält einen Liganden mit verfügbarem O-Elektronenpaar; Ausschnitt B zeigt nur eine gesättigte C-H-Gruppe ohne angegebenes verfügbares Donorpaar. Ein Text setzt den Koordinationspfeil mit Cu2+ → Cu+ gleich. Beurteile beide Donorangebote und korrigiere die Gleichsetzung mit der Redoxreaktion. Nenne die Grenze des Fragmentmodells.",
+          "taskDemandEn": "Fresh model comparison: fragment A has a ligand with an available O lone pair; fragment B shows only a saturated C-H group without an available donor pair. A text equates the coordination arrow with Cu2+ → Cu+. Assess both donor proposals and correct the identification with a redox reaction. State the fragment model limitation.",
+          "expectedPerformanceDe": "A liefert im vorgegebenen Modell die benötigte Paarquelle, B nicht. Die Pfeildarstellung einer koordinativen Bindung beschreibt Paarherkunft, nicht automatisch Änderung der Oxidationsstufe. Die spätere Fehling-Redoxreaktion erzeugt Cu(I) in Cu2O; der Ausschnitt allein legt Anzahl/Anordnung aller Liganden nicht fest.",
+          "expectedPerformanceEn": "A supplies the required pair in the specified model, B does not. A coordinate-bond arrow describes pair origin, not an automatic change in oxidation state. Later Fehling redox produces Cu(I) in Cu2O; the fragment alone does not determine every ligand number or arrangement.",
+          "understandingFocusDe": "HE Q1.2 nennt koordinative Bindung im erhöhten Niveau. Das Profil behauptet keine GK-Pflicht oder empirisch geprüfte vollständige Komplexstruktur.",
+          "understandingFocusEn": "HE Q1.2 lists coordinate bonding at advanced level. The profile claims neither a GK obligation nor an empirically verified full complex structure."
+        }
+      ]
+    }
+  },
+  {
+    "goalId": "02634fdd-c8ba-591a-b240-77129b1bebb8",
+    "wholeProfile": {
+      "archetype": "experiment",
+      "expectations": [
+        {
+          "id": "plan-and-indicator",
+          "essentialUnderstandingDe": "Eine geeignete Maßlösung bekannter Konzentration und die Reaktionsstöchiometrie erlauben Konzentrationsbestimmung aus gemessenen Volumina. Die Planung begründet Probe, Maßlösung, Messgefäße und Indikator aus der zu erwartenden pH-Änderung.",
+          "essentialUnderstandingEn": "A suitable standard solution of known concentration and reaction stoichiometry allow concentration determination from measured volumes. Planning justifies sample, standard solution, volumetric equipment and indicator using the expected pH change.",
+          "observablePerformanceDe": "Die lernende Person erstellt und begründet einen geeigneten Plan einschließlich Mess-/Dokumentationsschritten und Indikatorwahl, statt eine Apparatur nur wiederzuerkennen.",
+          "observablePerformanceEn": "The learner produces and justifies a suitable plan with measurement/documentation steps and indicator choice rather than merely recognizing equipment."
+        },
+        {
+          "id": "actual-conduct-and-documentation",
+          "essentialUnderstandingDe": "Praktische Durchführung ist eine eigene beobachtbare Prozessleistung: fachgerechte Handhabung, kontrollierte Zugabe und dokumentierte Anfangs-/Endstände. Bereitgestellte Daten, Simulation oder Bild allein zeigen keine tatsächliche Durchführung.",
+          "essentialUnderstandingEn": "Practical conduct is an observable process performance: proper handling, controlled addition and documented initial/final readings. Supplied data, simulation or image alone do not demonstrate actual practical conduct.",
+          "observablePerformanceDe": "Für den Durchführungsaspekt liegt eine tatsächliche dokumentierte fachgerechte Durchführung im beaufsichtigten Unterricht/Labor vor. Auswertung bereitgestellter Zahlen kann die anderen Aspekte zeigen, ersetzt diesen Beleg aber nicht.",
+          "observablePerformanceEn": "For the conduct aspect, actual documented competent practical performance in supervised teaching/laboratory conditions is required. Analysis of supplied values can demonstrate other aspects but does not replace this evidence."
+        },
+        {
+          "id": "stoichiometric-evaluation-and-limit",
+          "essentialUnderstandingDe": "Die verbrauchte Maßlösungsmenge ist Endstand minus Anfangsstand. Stoffmengen werden durch die passende ausgeglichene Reaktion verknüpft. Indikatorumschlag ist ein beobachtetes Endpunktsignal, nicht begrifflich identisch mit dem Äquivalenzpunkt; Ablesung und Umschlag begrenzen die Genauigkeit.",
+          "essentialUnderstandingEn": "Titrant consumption is final minus initial reading. Amounts are linked through the appropriate balanced reaction. Indicator colour change is an observed endpoint signal, not definitionally identical with equivalence; readings and endpoint observation limit accuracy.",
+          "observablePerformanceDe": "Die lernende Person wertet dokumentierte Volumina mit Einheiten und passendem Stoffmengenverhältnis aus, begründet die Indikatorwahl und beurteilt Genauigkeit oder einen veränderten Reaktionsfall.",
+          "observablePerformanceEn": "The learner evaluates recorded volumes with units and appropriate amount ratio, justifies indicator selection and evaluates accuracy or a changed reaction case."
+        },
+        {
+          "id": "concentration-acquisition-and-amount-volume-reference",
+          "essentialUnderstandingDe": "Die Konzentrationsrechnung ist Teil der eigenen titrimetrischen Konzentrationsbestimmung. Sie wird aus der ausdrücklich bestimmten analytischen Stoffmenge je Gesamtvolumen der ursprünglichen homogenen Probe entwickelt. Bei formalen Säurekonzentrationen ist dies nicht die Konzentration ungespaltener Moleküle. Reaktionsfaktor, tatsächlich erfasster Probenanteil und verlustfreie Verdünnung müssen begründet werden; eine geänderte Teilchenverteilung ändert hier nicht den erhaltenen formalen analytischen Bestand. Aliquotmenge und Konzentration sowie Maßlösungs-, Proben- und spätere Kolbenvolumina sind zu unterscheiden.",
+          "essentialUnderstandingEn": "Concentration calculation belongs to the goal own titrimetric determination. Develop it from the specified analytical amount per total volume of the initial homogeneous sample. For formal acid concentrations, this is not undissociated molecular concentration. Justify reaction ratio, sampled fraction and loss-free dilution; changed speciation does not change the conserved formal analytical amount here. Distinguish aliquot amount from concentration and titrant, sample and final flask volumes.",
+          "observablePerformanceDe": "Die lernende Person erklärt den Konzentrationsbezug, entwickelt ihren Stoffmengen-/Volumenansatz mit Einheiten selbst und rechnet aus einem neuen Protokoll mit chemisch begründetem Reaktionsfaktor auf die bestimmte Probe zurück. Sie prüft am unabhängig geänderten Aliquot bzw. Verdünnungs-/Aufstockungsfall den erhaltenen Stoffmengenanteil und widerlegt einen falschen Nenner. Eine beigefügte Formel oder Zahlensubstitution allein reicht nicht. Vorhandene ganze praktische und analytische Kriterien bleiben verbindlich; Papierauswertung gilt nicht als Durchführung.",
+          "observablePerformanceEn": "The learner explains the concentration reference, independently develops an amount/volume calculation with units and uses a fresh record with chemically justified reaction ratio to recover the requested sample concentration. With an independently changed aliquot, dilution or spike, they check the conserved amount fraction and refute a wrong denominator. A supplied equation or numerical substitution alone is insufficient. Every existing whole practical/analytical criterion remains mandatory; paper analysis is not execution."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "plan-and-indicator",
+          "actual-conduct-and-documentation",
+          "stoichiometric-evaluation-and-limit",
+          "concentration-acquisition-and-amount-volume-reference"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "reaction-ratio-and-endpoint",
+          "textDe": "Einprotonige und unter den gegebenen Bedingungen zweiprotonig neutralisierte Säure; vorgegebene pH-Sprungbereiche gegenüber Indikatorbereich vergleichen.",
+          "textEn": "Monoprotic acid and an acid neutralized diprotically under the supplied conditions; compare provided pH-jump and indicator ranges."
+        },
+        {
+          "id": "process-versus-data",
+          "textDe": "Praktische beobachtete Durchführung und unabhängiger datenbasierter Transfer werden getrennt als Evidenzarten benannt.",
+          "textEn": "Actual observed practical conduct and independent data-based transfer are identified as different evidence kinds."
+        },
+        {
+          "id": "acquired-concentration-reference",
+          "textDe": "Die Konzentrationsbeziehung wird erstmals aus Bedeutung und Einheiten entwickelt; keine gegebene Formel ersetzt den Erwerb.",
+          "textEn": "Acquire concentration relations from meaning and units; a given formula does not replace learning."
+        },
+        {
+          "id": "aliquot-dilution-and-reaction-ratio-transfer",
+          "textDe": "Ein neuer Probenanteil bzw. eine neue Verdünnung und Reaktions-/Aufstockungsbilanz verlangt eigene Stoffmengenerhaltung statt starrer 1:1- oder Volumenfaktoren.",
+          "textEn": "A fresh aliquot or dilution and reaction/spike balance requires own amount-conservation reasoning rather than fixed 1:1 or volume factors."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "hydrochloric-acid-supervised-protocol",
+          "taskDemandDe": "Plane und begründe im beaufsichtigten Unterricht eine geeignete HCl/NaOH-Titration. Für den Durchführungsaspekt muss eine tatsächliche fachgerechte, dokumentierte Durchführung vorliegen; hier angegebene Beispieldaten allein ersetzen sie nicht. Beispielprotokoll: 25,00 mL HCl, NaOH-Maßlösung 0,1000 mol/L, Bürettenstände 0,80 und 19,00 mL. Gegebene Kurve hat um den Äquivalenzpunkt einen steilen Sprung ungefähr pH 4–10; ein Indikator schlägt pH 8,2–10 um. Begründe die grundsätzliche Eignung, dokumentiere den Verbrauch und bestimme die Probenkonzentration mit begrenzter Genauigkeitsaussage.",
+          "taskDemandEn": "Plan and justify suitable HCl/NaOH titration in supervised teaching. The conduct aspect requires actual competent documented practical performance; these example data alone do not replace it. Example record: 25.00 mL HCl, 0.1000 mol/L NaOH standard solution, burette readings 0.80 and 19.00 mL. A supplied curve has a steep jump near equivalence approximately pH 4–10; an indicator changes at pH 8.2–10. Justify its general suitability, document consumption and determine sample concentration with an appropriate accuracy limit.",
+          "expectedPerformanceDe": "Planung benennt bekannte Maßlösung, definiertes Probevolumen, geeignete Volumenmessung, kontrollierte Zugabe und tatsächliche Protokollierung; Durchführung nur bei entsprechendem realem Beleg. ΔV=18,20 mL, n(NaOH)=0,001820 mol, HCl:NaOH=1:1, c(HCl)=0,07280 mol/L aus den Beispieldaten. Der Indikatorbereich liegt im steilen Sprung; Umschlag und Äquivalenz sind dennoch verschiedene Begriffe. Ablese-/Endpunktunsicherheit verhindert unbegründete zusätzliche Ziffern oder perfekte Genauigkeit.",
+          "expectedPerformanceEn": "Planning specifies a known standard solution, defined sample volume, suitable volumetric measurement, controlled addition and actual recording; conduct is credited only with corresponding real evidence. ΔV=18.20 mL, n(NaOH)=0.001820 mol, HCl:NaOH=1:1 and c(HCl)=0.07280 mol/L follow from example data. The indicator range lies in the steep jump, but endpoint and equivalence remain distinct concepts. Reading/endpoint uncertainty precludes unjustified extra digits or perfect accuracy.",
+          "understandingFocusDe": "Ganzer analytischer Ablauf; bereitgestellte Zahlen sind ausdrücklich kein Praxisnachweis.",
+          "understandingFocusEn": "The complete analytical workflow; supplied values explicitly do not prove practical conduct."
+        },
+        {
+          "id": "different-stoichiometry-and-indicator-transfer",
+          "taskDemandDe": "Unabhängig vom Bild liegt ein Datenfall mit 25,00 mL H₂SO₄-Probe und 25,00 mL verbrauchter 0,1000 mol/L NaOH vor. Beide Protonen werden unter den gegebenen Bedingungen vollständig neutralisiert; die passende Reaktionsgleichung ist bereitzustellen oder zu begründen. Beurteile den 1:1-Rechenansatz und bestimme die Konzentration. In einem zusätzlichen gegebenen schwache-Base/starke-Säure-Fall liegt der maßgebliche steile pH-Sprung nur zwischen 4 und 6. Prüfe, ob der zuvor benutzte Indikatorbereich 8,2–10 für diesen Fall passt.",
+          "taskDemandEn": "Independently of the image, data give a 25.00 mL H₂SO₄ sample and 25.00 mL consumption of 0.1000 mol/L NaOH. Both protons are completely neutralized under the supplied conditions; provide or justify the appropriate equation. Evaluate a 1:1 calculation and determine concentration. An additional supplied weak-base/strong-acid case has its relevant steep pH jump only between 4 and 6. Evaluate whether the previous indicator range 8.2–10 suits this case.",
+          "expectedPerformanceDe": "H₂SO₄ + 2NaOH → Na₂SO₄ + 2H₂O, also n(H₂SO₄)=0,001250 mol und c=0,05000 mol/L; ein 1:1-Ansatz würde die Konzentration verdoppeln. Der neue Sprung 4–6 umfasst 8,2–10 nicht: dieser Indikator ist für den gegebenen neuen Fall ungeeignet; eine im Sprung liegende geeignete Mess-/Indikatorwahl muss neu begründet werden. Datenrechnung beweist keine zweite praktische Durchführung und wird nicht als solche ausgegeben.",
+          "expectedPerformanceEn": "H₂SO₄ + 2NaOH → Na₂SO₄ + 2H₂O gives n(H₂SO₄)=0.001250 mol and c=0.05000 mol/L; a 1:1 approach would double concentration. The new jump at 4–6 does not include 8.2–10, so that indicator is unsuitable for this supplied new case and an appropriate choice within the jump must be justified anew. Data analysis does not prove a second practical performance and is not presented as one.",
+          "understandingFocusDe": "Chemisch neuer stöchiometrischer und Indikator-Transfer, keine bloße Zahlensubstitution oder zusätzliche Praxisquote.",
+          "understandingFocusEn": "Chemically fresh stoichiometric and indicator transfer, not mere number substitution or an extra practical quota."
+        },
+        {
+          "id": "concentration-acquisition-neutralisation-amount-volume",
+          "taskDemandDe": "Einführung im Lernziel: Konzentration bezieht eine benannte analytische Stoffmenge auf das Gesamtvolumen der homogenen Lösung. Hier sind HCl-/H2SO4-Konzentrationen formal, keine Konzentrationen ungespaltener Säuremoleküle. Ein homogenes Aliquot enthält einen proportionalen Stoffmengenanteil. Verlustfreie Verdünnung erhält den übertragenen analytischen Bestand, kann aber die Teilchenverteilung ändern. Entwickle aus dieser Bedeutung selbst einen Rechenansatz mit Einheiten. Eine gegebene Formel oder ein Autorenlösungsweg belegt keinen Erwerb.\nReiner neuer Papierfall, keine Laboranweisung: Eine Modell-HCl-Probe wird im beaufsichtigten Referenzprotokoll in einem 25,00-mL-Aliquot mit NaOH-Maßlösung von 0,05000 mol/L titriert. Bürettenstände 1,15 und 21,15 mL; kein gesonderter Blindwert. Die Stoffgleichung ist aus HCl, NaOH, NaCl und Wasser selbst zu bilden. Gegebene Indikator-/Kurveninformation bestätigt nur die Eignung des protokollierten Endpunkts, nicht perfekte Genauigkeit. Erkläre zunächst in eigenen Worten die Bedeutung von 0,05000 mol/L, entwickle daraus den Stoffmengenansatz mit Einheiten und bestimme nach der Reaktionsbilanz die Probenkonzentration. Begründe die Bezugsgrößen: Warum ist der Nenner weder die verbrauchte Maßlösungsmenge noch das Flüssigkeitsvolumen im Kolben am Ende? Ein neuer aliquoter Ansatz verwendet nur 12,50 mL derselben homogenen Probe. Begründe vor der Rechnung, was am Verbrauch und was an der gesuchten Konzentration gleich bleibt oder sich ändert. Vorgegebene Zahlen sind kein Nachweis eigener Titration.",
+          "taskDemandEn": "Introduction within this goal: concentration relates a specified analytical amount to total homogeneous solution volume. Here HCl/H2SO4 concentrations are formal, not undissociated molecular concentrations. A homogeneous aliquot has a proportional amount share. Loss-free dilution conserves transferred analytical amount but can alter speciation. Develop a calculation with units from this meaning. A supplied equation or author solution does not demonstrate acquisition.\nFresh paper case only, not a laboratory instruction: a supervised reference record titrates a 25.00-mL aliquot of model HCl with 0.05000 mol/L NaOH. Burette readings are 1.15 and 21.15 mL; no separate blank. Build the substance equation yourself from HCl, NaOH, NaCl and water. Supplied indicator/curve information confirms only suitability of the recorded endpoint, not perfect accuracy. First explain 0.05000 mol/L in your own words, develop the amount calculation with units and determine sample concentration using the reaction balance. Justify the reference quantities: why is the denominator neither the consumed titrant volume nor the final liquid volume in the flask? A fresh aliquot uses only 12.50 mL of the same homogeneous sample. Explain before calculating what happens to consumption and to the requested concentration. Supplied numbers do not demonstrate personal titration.",
+          "expectedPerformanceDe": "Hier sind c(HCl) und die Säurestoffmenge formale analytische Größen der ursprünglichen Probe, keine Behauptung über ungespaltene HCl-Moleküle. Die Konzentration bezeichnet mol NaOH je Liter der Maßlösung, nicht die Stoffmenge des gesamten Vorrats. Aus der Bedeutung wird n=c·V hergeleitet, mit 20,00 mL=0,02000 L also 0,001000 mol NaOH. HCl+NaOH→NaCl+H2O ergibt 1:1, daher 1,000 mmol HCl im ursprünglichen 25,00-mL-Probenaliquot. Aus Stoffmenge pro Probenvolumen folgt c=n/V=0,001000 mol/0,02500 L=0,04000 mol/L. Der nach der Zugabe vergrößerte Kolbeninhalt würde eine andere Konzentration nach Mischung beschreiben, nicht die Ausgangsprobe. Ein homogenes 12,50-mL-Aliquot enthält die halbe Stoffmenge, benötigt 10,00 mL Maßlösung und hat weiterhin 0,04000 mol/L. Die Person begründet Proportionalität und Einheiten; bloßes Einsetzen ohne Teilchen-/Volumenbezug reicht nicht. Ablese-/Endpunktgrenzen bleiben bestehen und keine reale Durchführung wird aus den Papierdaten behauptet.",
+          "expectedPerformanceEn": "Here c(HCl) and acid amount are formal analytical quantities of the initial sample, not claims about undissociated HCl molecules. Concentration specifies mol NaOH per litre of titrant, not the amount in the entire stock. Derive n=c·V from that meaning: 20.00 mL=0.02000 L gives 0.001000 mol NaOH. HCl+NaOH→NaCl+H2O establishes 1:1, hence 1.000 mmol HCl in the original 25.00-mL sample aliquot. Amount per sample volume gives c=n/V=0.001000 mol/0.02500 L=0.04000 mol/L. The enlarged final flask volume would describe a different concentration after mixing, not the initial sample. A homogeneous 12.50-mL aliquot has half the amount, uses 10.00 mL titrant and still has 0.04000 mol/L. Explain proportionality and units; substitution without an entity/volume interpretation is insufficient. Reading/endpoint limits remain and the paper data establish no actual personal execution.",
+          "understandingFocusDe": "Erwerb des Konzentrationsbegriffs innerhalb der eigenen titrimetrischen Bestimmung: Stoffmenge, stöchiometrische Bilanz und richtiges Ausgangs-Probenvolumen werden begründet verknüpft.",
+          "understandingFocusEn": "Acquire concentration meaning within the goal own titrimetric determination: connect amount, reaction stoichiometry and the correct original sample volume with reasons."
+        },
+        {
+          "id": "concentration-transfer-diprotic-dilution-original-sample",
+          "taskDemandDe": "Frischer selbstständiger Papiertransfer ohne vorgegebenen Rechenweg oder einzusetzende Formel. Eine fiktive H2SO4-Originalprobe wird durch verlustfreie quantitative Übertragung von 10,00 mL in ein Gesamtvolumen von 100,00 mL verdünnt. Von dieser homogenen Verdünnung werden 25,00 mL mit 0,04000 mol/L NaOH titriert; Bürettenstände 0,80 und 13,30 mL, kein gesonderter Blindwert. Beide Protonen werden unter den angegebenen Bedingungen vollständig neutralisiert. Stelle die passende Stoffgleichung selbst auf und bestimme mit begründetem Mengen- und Volumenbezug die Konzentrationen der verdünnten und der ursprünglichen Probe. Widerlege getrennt „immer 1:1“ und „100 mL Wasser wurden hinzugefügt“. Zeichne oder beschreibe den Weg der Stoffmenge vom Originalansatz über Gesamtverdünnung zum Aliquot. Unabhängige Änderung: Statt 25,00 werden 50,00 mL derselben Verdünnung titriert. Leite die Änderung des erwarteten Verbrauchs und des Ergebnisses für die Originalkonzentration ab; übernimm nicht ungeprüft einen Faktor. Indikatorplanung und tatsächliche freigegebene Ausführung bleiben die unveränderten eigenen Kriterien des ganzen Lernziels, dieser Papierfall ersetzt sie nicht. Die H2SO4-Konzentration ist als formale analytische Säurekonzentration zu verstehen, nicht als Konzentration ungespaltener H2SO4-Moleküle.",
+          "taskDemandEn": "Fresh independent paper transfer without a worked route or supplied substitution formula. A fictional original H2SO4 sample is diluted by loss-free quantitative transfer of 10.00 mL into a total final volume of 100.00 mL. A 25.00-mL aliquot of this homogeneous dilution is titrated with 0.04000 mol/L NaOH; burette readings are 0.80 and 13.30 mL, with no separate blank. Both protons are completely neutralised under the stated conditions. Construct the substance equation yourself and use justified amount and volume references to determine diluted and original sample concentrations. Refute separately “always 1:1” and “100 mL of water were added”. Draw or describe the amount path from original portion through the full dilution to the aliquot. Independently change the aliquot to 50.00 mL of the same dilution. Derive the change in consumption and in the recovered original concentration rather than copying a factor. Indicator planning and actual released practical execution remain unchanged requirements of the whole goal; this paper case does not replace them. Interpret H2SO4 concentration as formal analytical acid concentration, not concentration of undissociated H2SO4 molecules.",
+          "expectedPerformanceDe": "H2SO4+2NaOH→Na2SO4+2H2O. Verbrauch 12,50 mL ergibt 0,5000 mmol NaOH; das Aliquot enthält deshalb 0,2500 mmol H2SO4. Bezug auf 25,00 mL der Verdünnung ergibt 0,01000 mol/L. Diese 25,00 mL sind ein Viertel der gesamten 100,00 mL; die Gesamtverdünnung enthält somit 1,000 mmol, die bereits in den übertragenen 10,00 mL Originalprobe enthalten waren. Originalkonzentration 0,1000 mol/L. Die Verdünnung beträgt wegen Anfangs- und Gesamtvolumen zehnfach, nicht wegen eines unbegründeten Zahlenfaktors. Ein 1:1-Ansatz verdoppelt fälschlich den Säuregehalt; das Endvolumen 100,00 mL ist nicht die zugegebene Wassermenge. Bei 50,00 mL aliquotiert man die doppelte Stoffmenge und erwartet 25,00 mL Maßlösung; verdünnte und originale Konzentration bleiben unverändert. Die Lösungsschritte erklären die Erhaltung und Verteilung der bestimmten Stoffmenge; kein pH-, Selbstherstellungs- oder Praxisbeleg wird aus dem Papiermodell abgeleitet.",
+          "expectedPerformanceEn": "H2SO4+2NaOH→Na2SO4+2H2O. Consumption of 12.50 mL gives 0.5000 mmol NaOH, so the aliquot contains 0.2500 mmol H2SO4. Relating this to 25.00 mL diluted sample gives 0.01000 mol/L. That aliquot is one quarter of the complete 100.00 mL, which therefore contains 1.000 mmol, conserved from the transferred 10.00 mL original portion. Original concentration is 0.1000 mol/L. Dilution is tenfold because of initial and final total volumes, not an unexplained numerical factor. A 1:1 approach doubles the acid content incorrectly; final volume 100.00 mL is not water added. A 50.00-mL aliquot doubles the amount and requires 25.00 mL titrant; both diluted and original concentrations stay unchanged. Explain amount conservation and partitioning throughout; the paper model proves neither pH calculation nor solution preparation nor actual practice.",
+          "understandingFocusDe": "Neuer Reaktionstyp und echte Rückrechnung über zwei verschiedene Probenbezüge: 1:2-Stöchiometrie, Aliquot, Verdünnung und Originalprobe bleiben eigenständige begründete Leistungen.",
+          "understandingFocusEn": "New reaction ratio and genuine back-calculation across different sample references: 1:2 stoichiometry, aliquot, dilution and original sample each require justified reasoning."
+        }
+      ]
+    }
+  },
+  {
+    "goalId": "e22a34d4-ac1e-5afe-8f77-0dfa4fd9f44f",
+    "wholeProfile": {
+      "archetype": "experiment",
+      "expectations": [
+        {
+          "id": "e1",
+          "essentialUnderstandingDe": "Unter festgelegten pH- und Matrixbedingungen bindet EDTA die erfassten Metallionen im Verhältnis 1:1; Puffer und Metallindikator ermöglichen einen auswertbaren Endpunkt.",
+          "essentialUnderstandingEn": "Under specified pH and matrix conditions, EDTA binds the measured metal ions in a 1:1 ratio; buffer and metal indicator enable an interpretable endpoint.",
+          "observablePerformanceDe": "Die lernende Person erklärt Komplexbildung, bedingte Stabilität und Indikatorverdrängung und begrenzt den Befund auf die Ca/Mg-Summe.",
+          "observablePerformanceEn": "The learner explains complex formation, conditional stability and indicator displacement, limiting the result to the Ca/Mg sum."
+        },
+        {
+          "id": "e2",
+          "essentialUnderstandingDe": "Eine durchgeführte Titration erfordert beobachtetes sachgerechtes Handeln; eine gelesene Verbrauchstabelle belegt diese Handlung nicht.",
+          "essentialUnderstandingEn": "Performing a titration requires observed competent handling; reading a titer table does not demonstrate that action.",
+          "observablePerformanceDe": "Sie stellt nach tatsächlicher örtlicher Freigabe Verdünnungen und Aliquote her, bedient die Bürette und dokumentiert pH, Ablesungen und kontrollierten Farbumschlag. Ohne reale Beobachtung bleibt dieser Nachweis offen.",
+          "observablePerformanceEn": "After actual local authorization, the learner prepares dilutions and aliquots, operates the burette and records pH, readings and a controlled colour endpoint. Without real observation this evidence remains absent."
+        },
+        {
+          "id": "e3",
+          "essentialUnderstandingDe": "Blindwert, Aliquot und Verdünnung beziehen den stöchiometrisch ermittelten Metallgehalt auf die ursprüngliche Probe.",
+          "essentialUnderstandingEn": "Blank, aliquot and dilution relate the stoichiometric metal amount to the original sample.",
+          "observablePerformanceDe": "Sie korrigiert den mittleren Verbrauch, berechnet Stoffmenge und Summenkonzentration mit Einheiten und begründet den Rückrechnungsfaktor bei der verdünnten Probe.",
+          "observablePerformanceEn": "The learner corrects the mean titer, calculates amount and total concentration with units and explains the dilution factor back to the original sample."
+        },
+        {
+          "id": "e4",
+          "essentialUnderstandingDe": "Wiederholbarkeit, Wiederfindung und Selektivität beantworten verschiedene Fragen; eine gute Wiederfindung trennt Ca und Mg nicht.",
+          "essentialUnderstandingEn": "Repeatability, recovery and selectivity answer different questions; good recovery does not separate Ca from Mg.",
+          "observablePerformanceDe": "Sie berechnet die Referenz- beziehungsweise Aufstockwiederfindung, prüft die vorgegebene Toleranz und widerlegt eine unzulässige Einzelmetall- oder universelle Matrixaussage.",
+          "observablePerformanceEn": "The learner calculates reference or spike recovery, checks the supplied tolerance and refutes an unsupported individual-metal or universal matrix claim."
+        },
+        {
+          "id": "concentration-acquisition-and-amount-volume-reference",
+          "essentialUnderstandingDe": "Die Konzentrationsrechnung ist Teil der eigenen titrimetrischen Konzentrationsbestimmung. Sie wird aus der ausdrücklich bestimmten analytischen Stoffmenge je Gesamtvolumen der ursprünglichen homogenen Probe entwickelt. Bei formalen Säurekonzentrationen ist dies nicht die Konzentration ungespaltener Moleküle. Reaktionsfaktor, tatsächlich erfasster Probenanteil und verlustfreie Verdünnung müssen begründet werden; eine geänderte Teilchenverteilung ändert hier nicht den erhaltenen formalen analytischen Bestand. Aliquotmenge und Konzentration sowie Maßlösungs-, Proben- und spätere Kolbenvolumina sind zu unterscheiden.",
+          "essentialUnderstandingEn": "Concentration calculation belongs to the goal own titrimetric determination. Develop it from the specified analytical amount per total volume of the initial homogeneous sample. For formal acid concentrations, this is not undissociated molecular concentration. Justify reaction ratio, sampled fraction and loss-free dilution; changed speciation does not change the conserved formal analytical amount here. Distinguish aliquot amount from concentration and titrant, sample and final flask volumes.",
+          "observablePerformanceDe": "Die lernende Person erklärt den Konzentrationsbezug, entwickelt ihren Stoffmengen-/Volumenansatz mit Einheiten selbst und rechnet aus einem neuen Protokoll mit chemisch begründetem Reaktionsfaktor auf die bestimmte Probe zurück. Sie prüft am unabhängig geänderten Aliquot bzw. Verdünnungs-/Aufstockungsfall den erhaltenen Stoffmengenanteil und widerlegt einen falschen Nenner. Eine beigefügte Formel oder Zahlensubstitution allein reicht nicht. Vorhandene ganze praktische und analytische Kriterien bleiben verbindlich; Papierauswertung gilt nicht als Durchführung.",
+          "observablePerformanceEn": "The learner explains the concentration reference, independently develops an amount/volume calculation with units and uses a fresh record with chemically justified reaction ratio to recover the requested sample concentration. With an independently changed aliquot, dilution or spike, they check the conserved amount fraction and refute a wrong denominator. A supplied equation or numerical substitution alone is insufficient. Every existing whole practical/analytical criterion remains mandatory; paper analysis is not execution."
+        }
+      ],
+      "variationAxes": [
+        {
+          "id": "sample-preparation",
+          "textDe": "Direkte Probe mit einer unabhängig hergestellten Verdünnung und einer Aufstockkontrolle vergleichen.",
+          "textEn": "Compare a direct sample with an independently prepared dilution and spike control."
+        },
+        {
+          "id": "observation-and-log",
+          "textDe": "Tatsächlich beobachtete Handhabung von der getrennten Auswertung synthetischer Protokolle unterscheiden.",
+          "textEn": "Distinguish observed handling from separate evaluation of synthetic logs."
+        },
+        {
+          "id": "quality-and-selectivity",
+          "textDe": "Von enger Verbrauchsstreuung zur Prüfung von Richtigkeit und begrenzter Ca/Mg-Selektivität wechseln.",
+          "textEn": "Move from narrow titer scatter to checking trueness and limited Ca/Mg selectivity."
+        },
+        {
+          "id": "acquired-concentration-reference",
+          "textDe": "Die Konzentrationsbeziehung wird erstmals aus Bedeutung und Einheiten entwickelt; keine gegebene Formel ersetzt den Erwerb.",
+          "textEn": "Acquire concentration relations from meaning and units; a given formula does not replace learning."
+        },
+        {
+          "id": "aliquot-dilution-and-reaction-ratio-transfer",
+          "textDe": "Ein neuer Probenanteil bzw. eine neue Verdünnung und Reaktions-/Aufstockungsbilanz verlangt eigene Stoffmengenerhaltung statt starrer 1:1- oder Volumenfaktoren.",
+          "textEn": "A fresh aliquot or dilution and reaction/spike balance requires own amount-conservation reasoning rather than fixed 1:1 or volume factors."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "t01-c1",
+          "taskDemandDe": "Den Ca/Mg-Gesamtgehalt aus Blindwert und Referenzkontrolle bestimmen; Titrationshandhabung getrennt tatsächlich beobachten. Vollständiges Material, Auftrag, Lösung und vier Kriterien: materials/twenty-complete-DEEN-cases.author.json, Fall T01-C1.",
+          "taskDemandEn": "Determine total Ca/Mg using a blank and reference control; observe titration handling separately. Complete material, task, solution and four criteria: materials/twenty-complete-DEEN-cases.author.json, case T01-C1.",
+          "expectedPerformanceDe": "1. Formal gilt M²⁺ + Y⁴⁻ ⇌ MY²⁻, also n(M)=n(EDTA). Die Protonierung des freien EDTA hängt vom pH ab; bei pH 10 liegt es nicht ausschließlich als Y⁴⁻ vor. Der Puffer hält die Methodenbedingungen. EDTA bindet das Metall stärker als der Indikator; dessen Rot-Blau-Umschlag markiert den vereinbarten Endpunkt. Erfasst wird die Summe Ca+Mg, nicht jede Art getrennt. 2. Erwartete reale Handlungen sind korrektes Pipettieren, eine vorbereitete luftblasenfreie Bürette, getrennte Anfangs-/Endablesung, Schwenken und zuletzt tropfenweise Zugabe bis beständig blau. Hier liegt keine tatsächliche Beobachtung vor. 3. Mittelwert 19.85 mL minus Blindwert 0.10 mL ergibt 19.75 mL; n=0.1975 mmol und c(Ca+Mg)=3.950 mmol/L. Referenz- und Blindwertkontrolle prüfen systematische Fehler. 4. Die Kontrolle ergibt korrigiert 15.02 mL und 3.004 mmol/L: 100.13 % Wiederfindung beziehungsweise +0.13 %, innerhalb ±2 %. Kleine Streuung allein würde diese Richtigkeit nicht belegen. Auch die Kontrolle erlaubt keine getrennte Ca-Zuordnung.",
+          "expectedPerformanceEn": "1. Formal M²⁺+Y⁴⁻⇌MY²⁻ gives n(M)=n(EDTA). Free-ligand protonation depends on pH; this does not assert that all free EDTA is Y⁴⁻ at pH 10. Buffer maintains method conditions; EDTA displaces the metal indicator, with the specified red-to-blue endpoint. The result is total Ca²⁺+Mg²⁺, not each separately. 2. Expected real actions: correct pipetting, conditioned air-free burette, separate initial/final readings, mixing and final dropwise addition to persistent blue. Only actual observation can evidence this performance; none occurred here. 3. Mean 19.85 mL minus 0.10 mL blank gives 19.75 mL. n=0.1975 mmol and c=3.950 mmol/L. A known Ca/Mg reference and blank check address systematic error; small scatter alone is insufficient.\n4. Corrected 15.02 mL gives 3.004 mmol/L: about 100.13% recovery and +0.13% deviation, within ±2%. Small replicate scatter alone would not show this. The Ca+Mg sum does not identify calcium separately.",
+          "understandingFocusDe": "Referenzkontrolle und Stöchiometrie begrenzen die Aussage; die Tabelle ersetzt keine Durchführung.",
+          "understandingFocusEn": "Reference control and stoichiometry bound the claim; the table does not replace performance."
+        },
+        {
+          "id": "t01-c2",
+          "taskDemandDe": "Eine vierfach verdünnte Probe und eine Metallaufstockung auswerten; ursprüngliche Aliquotmenge und praktische Verdünnung beachten. Vollständiges Material, Auftrag, Lösung und vier Kriterien: materials/twenty-complete-DEEN-cases.author.json, Fall T01-C2.",
+          "taskDemandEn": "Evaluate a fourfold dilution and metal spike, retaining the original aliquot amount and practical dilution requirement. Complete material, task, solution and four criteria: materials/twenty-complete-DEEN-cases.author.json, case T01-C2.",
+          "expectedPerformanceDe": "1. Unter den gegebenen Methodenbedingungen erfasst eine EDTA-Einheit ein Metallion. Puffer und Indikator ermöglichen den Endpunkt. Die Aufstockung fügt derselben ursprünglichen Aliquotmenge eine bekannte Metallmenge hinzu. 2. Verdünnung, Aliquotierung, Bürettenablesung, pH-Kontrolle und beständiger Endpunkt müssen tatsächlich beobachtet werden; hier sind die Beobachtungsfelder leer. 3. Mittelwert 4.80−0.10=4.70 mL ergibt 0.04700 mmol, verdünnt 1.880 mmol/L und ursprünglich 7.520 mmol/L. 4. Gleiche Blindwerte kürzen sich in der Differenz: ΔV=9.82−4.80=5.02 mL und Δn=0.05020 mmol. Wiederfindung 100.4 %, innerhalb 98–102 %. Dies stützt die begrenzte Methoden-/Matrixkontrolle, aber weder universelle Selektivität noch getrennte Ca-/Mg-Gehalte. Die erste Modellverdünnung belegt keine Wiederholbarkeit unabhängiger Vorbereitungen.",
+          "expectedPerformanceEn": "1. Under the supplied conditions one EDTA unit determines one metal ion; pH and indicator enable the method endpoint. Spiking adds a known metal amount to the same original sample aliquot. 2. Actual dilution, aliquoting, burette readings, pH control and a controlled persistent endpoint must be observed; no observation log exists here. 3. Mean 4.80−0.10=4.70 mL gives 0.04700 mmol, diluted concentration 1.880 mmol/L and original 7.520 mmol/L. 4. Equal blanks cancel in the difference: ΔV=9.82−4.80=5.02 mL, Δn=0.05020 mmol, recovery 100.4%, within 98–102%. This supports the stated matrix/method control, not universal selectivity or separate Ca/Mg concentrations.",
+          "understandingFocusDe": "Ein zusätzlicher Stoffmengenbeitrag ist vom Rückrechnungsfaktor zu unterscheiden; gute Wiederfindung identifiziert keine Einzelmetalle.",
+          "understandingFocusEn": "Distinguish the added amount from the back-calculation factor; good recovery does not identify individual metals."
+        },
+        {
+          "id": "edta-concentration-acquisition-blank-and-sample-reference",
+          "taskDemandDe": "Einführung im Lernziel: Konzentration bezieht eine benannte analytische Stoffmenge auf das Gesamtvolumen der homogenen Lösung. Bei EDTA sind formale Maßlösung und die bestimmte Ca/Mg-Summe klar zu benennen. Ein homogenes Aliquot enthält einen proportionalen Stoffmengenanteil; verlustfreie Verdünnung erhält den übertragenen analytischen Bestand. Entwickle aus dieser Bedeutung selbst einen Rechenansatz mit Einheiten. Eine gegebene Formel oder ein Autorenlösungsweg belegt keinen Erwerb.\nNeuer synthetischer EDTA-Papierfall. Eine 40,00-mL-Modellprobe enthält ausschließlich die hier bestimmten Ca2+- und Mg2+-Ionen; keine weiteren EDTA-verbrauchenden Metalle. Methode mit bereitgestelltem pH-10-Puffer und Metallindikator, gleicher festgelegter Endpunkt für Probe und Blindwert. EDTA-Maßlösung 0,01000 mol/L; Anfangs-/Endablesung der Probe 2,20/18,70 mL, gesonderter Methodenblindwert 0,50 mL. Erkläre zunächst die Konzentrationsangabe als Stoffmengen-Volumen-Beziehung und leite deinen Rechenansatz selbst daraus ab. Begründe aus dem Komplexbildungsmodell die Metall-EDTA-Stoffmengenbeziehung. Bestimme den korrigierten Metallgehalt des Aliquots und die Konzentrationssumme der Ausgangsprobe. Erkläre, warum weder das ganze Bürettenendvolumen noch das nach Puffer-/Titrantzugabe vergrößerte Kolbenvolumen der gesuchte Probenbezug ist. Darf das Ergebnis als Calciumkonzentration allein bezeichnet werden? Tatsächliches Pipettieren, Bürettenhandhaben, pH-Kontrolle und beobachteter Farbumschlag bleiben eigene praktische Kriterien; es liegen keine Beobachtungsdaten einer lernenden Person vor.",
+          "taskDemandEn": "Introduction within this goal: concentration relates a specified analytical amount to total homogeneous solution volume. Identify formal EDTA titrant and the determined Ca/Mg total. A homogeneous aliquot has a proportional amount share; loss-free dilution conserves transferred analytical amount. Develop a calculation with units from this meaning. A supplied equation or author solution does not demonstrate acquisition.\nFresh synthetic EDTA paper case. A 40.00-mL model sample contains only the Ca2+ and Mg2+ ions determined by this method, with no other EDTA-consuming metals. Supplied pH-10 buffer and metal indicator, with the same defined endpoint for sample and blank. EDTA titrant is 0.01000 mol/L; sample initial/final readings are 2.20/18.70 mL and the separate method blank is 0.50 mL. First explain concentration as an amount/volume relation and derive your calculation from that meaning. Use the complex-formation model to justify metal-to-EDTA amount ratio. Determine corrected metal amount in the aliquot and total concentration in the initial sample. Explain why neither the final burette reading nor the enlarged flask volume after buffer/titrant addition is the requested sample reference. May the result be called calcium concentration alone? Actual pipetting, burette use, pH checks and an observed endpoint remain separate practical requirements; no learner observations are present.",
+          "expectedPerformanceDe": "0,01000 mol/L beschreibt die formale EDTA-Stoffmenge je Liter Maßlösung, nicht ausschließlich freie Y4−-Teilchen im pH-10-Bad. Aus dem Konzentrationsbegriff wird n=c·V selbst hergeleitet. Zuerst Differenz 18,70−2,20=16,50 mL, dann Methodenblindwert 0,50 mL abziehen: bestimmungsrelevant 16,00 mL. Unter den festgelegten Komplexbildungsbedingungen bindet eine EDTA-Einheit ein Metallion, daher 0,1600 mmol Ca+Mg im ursprünglichen 40,00-mL-Aliquot. c(Ca+Mg)=0,1600 mmol/0,04000 L=4,000 mmol/L. 18,70 mL ist kein Verbrauch und das spätere Kolbenvolumen kein Volumen der ursprünglichen Probe. Ca und Mg werden nicht getrennt identifiziert; der gegebene Puffer begründet keine Pflicht zur starken-Säure/Base- oder Extremverdünnungs-pH-Rechnung. Reales Ausführen muss unabhängig tatsächlich beobachtet werden; Papierwerte liefern weder solche Beobachtung noch einen realen Erfolg.",
+          "expectedPerformanceEn": "0.01000 mol/L denotes formal EDTA amount per litre of titrant, not exclusively free Y4− species at pH 10. Derive n=c·V from concentration meaning. First subtract readings, 18.70−2.20=16.50 mL; then subtract the 0.50-mL method blank, leaving 16.00 mL analytical consumption. One EDTA unit binds one metal ion under the defined conditions, giving 0.1600 mmol Ca+Mg in the initial 40.00-mL aliquot. c(Ca+Mg)=0.1600 mmol/0.04000 L=4.000 mmol/L. 18.70 mL is not consumption and final flask volume is not initial sample volume. Calcium and magnesium are not separately identified; supplied buffer does not create a strong-acid/base or extreme-dilution pH calculation requirement. Actual execution needs independent real observation; paper values prove neither personal execution nor actual success.",
+          "understandingFocusDe": "Eigener EDTA-Konzentrationserwerb verbindet formale Maßlösung, Blindwert und richtigen Probenbezug mit chemisch begründeter 1:1-Komplexstöchiometrie.",
+          "understandingFocusEn": "EDTA-specific concentration acquisition connects formal titrant concentration, blank and correct sample reference with chemically justified 1:1 complex stoichiometry."
+        },
+        {
+          "id": "edta-independent-dilution-aliquot-original-and-spike",
+          "taskDemandDe": "Frischer selbstständiger Papiertransfer ohne vorgegebenen Rechenweg oder einzusetzende Formel. 20,00 mL einer nur Ca/Mg enthaltenden Originalprobe werden verlustfrei in ein Endvolumen von 100,00 mL überführt. Ein 25,00-mL-Aliquot dieser homogenen Verdünnung wird mit EDTA 0,005000 mol/L nach demselben bereitgestellten pH-10-Methodenprotokoll ausgewertet. Bürettenstände unaufgestockt 1,10/9,70 mL, gesonderter Methodenblindwert 0,20 mL. Ein zweites gleiches 25,00-mL-Aliquot erhält zusätzlich 10,00 mL einer getrennten Ca2+-Standardlösung von 0,005000 mol/L; die EDTA-Stände sind dann 1,10/19,70 mL bei gleichem Blindwert. Puffer und gleiche zulässige Methodenbedingungen einschließlich Selektivität, Endpunkt und fehlenden Fällungen sind für diesen Papiervergleich festgelegt; Wiederfindungstoleranz 98–102 %. Entwickle die Stoffmengen- und Volumenkette selbst: berechne die ursprüngliche Ca/Mg-Summenkonzentration aus dem unaufgestockten Aliquot, bestimme die Wiederfindung der hinzugefügten Ca-Menge und erkläre, welcher Probenbezug bei Aufstockung unverändert bleibt. Beurteile „Nach Aufstockung sind 35 mL im Kolben, deshalb muss die Originalprobe durch 35 mL geteilt werden“. Eine ausgedachte reale Durchführung oder unabhängige Wiederholbarkeit wird aus diesen synthetischen Einzelprotokollen nicht behauptet.",
+          "taskDemandEn": "Fresh independent paper transfer without a worked route or supplied substitution formula. Loss-free transfer of 20.00 mL of an original Ca/Mg-only sample makes a final volume of 100.00 mL. A 25.00-mL aliquot of this homogeneous dilution is evaluated with 0.005000 mol/L EDTA using the same supplied pH-10 method. Unspiked burette readings are 1.10/9.70 mL, with a separate 0.20-mL method blank. A second identical 25.00-mL aliquot additionally receives 10.00 mL of a separate 0.005000 mol/L Ca2+ standard; EDTA readings become 1.10/19.70 mL with the same blank. Buffer and the same valid conditions, including selectivity, endpoint and absence of precipitation, are stipulated for this paper comparison; recovery acceptance is 98–102%. Develop the amount/volume chain yourself: calculate original Ca/Mg total concentration from the unspiked aliquot, determine recovery of the added calcium and explain which sample reference remains unchanged on spiking. Assess “35 mL are in the flask after spiking, so original sample concentration must use 35 mL as denominator”. Do not invent actual execution or independent repeatability from these single synthetic records.",
+          "expectedPerformanceDe": "Unaufgestockter Verbrauch 9,70−1,10=8,60 mL; blindwertkorrigiert 8,40 mL, also 0,04200 mmol Metall im 25,00-mL-Verdünnungsaliquot. Verdünnte Summenkonzentration 1,680 mmol/L. Das Aliquot enthält ein Viertel der Stoffmenge aus 20,00 mL Originalprobe; Gesamtverdünnung 0,1680 mmol und Originalkonzentration 8,400 mmol/L. Der Faktor fünf folgt aus 100,00/20,00 mL und Stoffmengenerhaltung. Aufgestockter Bruttoverbrauch 18,60 mL; gleiche Blindwerte kürzen sich in der Differenz zu 10,00 mL EDTA, entsprechend 0,05000 mmol. Zugegeben wurden ebenfalls 0,05000 mmol Ca, daher 100,0 % Wiederfindung innerhalb 98–102 %. Die unaufgestockte ursprüngliche Probenmenge im zweiten Ansatz bleibt diejenige des 25,00-mL-Verdünnungsaliquots; die Zugabe erweitert das Kolbenvolumen und den Metallbestand, nicht die aus der Originalprobe stammende Aliquotmenge. Eine Konzentration des gesamten aufgestockten Kolbeninhalts wäre eine andere Frage. Gute Wiederfindung beweist weder getrennten Ca-/Mg-Gehalt noch generelle Matrixgültigkeit oder wiederholte eigene Herstellung; praktische Durchführung bleibt tatsächlich nachzuweisen.",
+          "expectedPerformanceEn": "Unspiked consumption is 9.70−1.10=8.60 mL; blank correction leaves 8.40 mL and thus 0.04200 mmol metal in the 25.00-mL diluted aliquot. Diluted total concentration is 1.680 mmol/L. This aliquot has one quarter of the amount transferred from 20.00 mL original sample; the complete dilution has 0.1680 mmol and original concentration is 8.400 mmol/L. The factor five follows from 100.00/20.00 mL and amount conservation. Spiked gross consumption is 18.60 mL; equal blanks cancel in the 10.00-mL EDTA difference, equivalent to 0.05000 mmol. The added calcium amount is also 0.05000 mmol, giving 100.0% recovery within 98–102%. The amount originating from the original sample in the second flask remains that of the 25.00-mL diluted aliquot; addition increases flask volume and metal amount, not the original sample aliquot. Concentration in the complete spiked flask would answer another question. Good recovery establishes neither separate Ca/Mg values nor universal matrix validity nor repeated personal preparation; practical execution still requires actual evidence.",
+          "understandingFocusDe": "Eigenständige quantitative Übertragung trennt Verbrauch, Blindwert, 1:1-Bindung, aliquoten Stoffmengenanteil, Originalprobenrückrechnung und tatsächlich hinzugefügte Metallmenge.",
+          "understandingFocusEn": "Independent quantitative transfer separates consumption, blank, 1:1 binding, aliquot amount fraction, back-calculation to original sample and actually added metal amount."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "e1",
+          "e2",
+          "e3",
+          "e4",
+          "concentration-acquisition-and-amount-volume-reference"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      }
+    }
+  },
+  {
+    "goalId": "f1ed86f0-534d-57d7-8952-a004a331cc54",
+    "wholeProfile": {
+      "archetype": "procedure",
+      "expectations": [
+        {
+          "id": "g1",
+          "essentialUnderstandingDe": "Verdünnung erhält die gelöste Stoffmenge; definiertes Endvolumen bestimmt die Konzentration.",
+          "essentialUnderstandingEn": "Dilution conserves dissolved amount; final volume determines concentration.",
+          "observablePerformanceDe": "Berechne Stoffmengen/Stockvolumina für starke Säure und mehrwertige Base, begründe Stöchiometrie und Geräte.",
+          "observablePerformanceEn": "Calculate acid/divalent-base amounts and stock volumes, justifying stoichiometry/apparatus."
+        },
+        {
+          "id": "g2",
+          "essentialUnderstandingDe": "Eine hergestellte Lösung und ihr pH brauchen eigene beobachtete Herstellung und kalibrierte Messung.",
+          "essentialUnderstandingEn": "Prepared solution and pH require observed personal preparation/calibrated measurement.",
+          "observablePerformanceDe": "Führe die freigegebene Herstellung/Messung tatsächlich durch und plausibilisiere eigene Werte einschließlich Wassergrenze und Fehlerprüfung.",
+          "observablePerformanceEn": "Actually prepare/measure and assess personal values including water-limit/error checks."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "g1",
+          "g2"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "acid-base-stoichiometry",
+          "textDe": "Starke einprotonige Säure gegenüber zweiwertigem Hydroxid und NaOH-Vergleich.",
+          "textEn": "Strong monoprotic acid versus divalent hydroxide and NaOH comparison."
+        },
+        {
+          "id": "concentration-regime",
+          "textDe": "Normale Verdünnung gegenüber idealer Extremverdünnung mit Autoprotolyse.",
+          "textEn": "Ordinary dilution versus ideal extreme dilution including autoprotolysis."
+        },
+        {
+          "id": "actual-data",
+          "textDe": "Beobachtete Herstellung/Messung gegenüber vorgegebenen Daten und Fehlersuche.",
+          "textEn": "Observed preparation/measurement versus supplied data and troubleshooting."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "solution-1",
+          "taskDemandDe": "Berechne und begründe 250,0 mL 0,0100 M HCl aus 0,100 M Stock. Stelle und miss die Lösung unter Aufsicht tatsächlich her. Prüfe die Vergleichswerte und die getrennte ideale 10−8-M-Probe mit der gegebenen Bilanzlösung.",
+          "taskDemandEn": "Calculate and justify 250.0 mL 0.0100 M HCl from 0.100 M stock. Actually prepare and measure it under supervision. Assess comparison readings and the separate ideal 10−8-M sample using the supplied balance solution.",
+          "expectedPerformanceDe": "2,50 mmol und 25,00 mL Stock; auf Endvolumen auffüllen, kalibriert messen und eigene Handlungen/Rohwerte dokumentieren. pH≈2; 3,02 ist ein Prüfhinweis, keine bewiesene Fehlerursache. Die ideale Extremverdünnung ergibt pH≈6,978 statt 8.",
+          "expectedPerformanceEn": "2.50 mmol and 25.00 mL stock; make up to final volume, measure with calibration and document own actions/raw readings. pH≈2; 3.02 prompts checks but proves no specific cause. Ideal extreme dilution gives pH≈6.978, not 8.",
+          "understandingFocusDe": "Stoffmengenerhaltung, kontrollierte tatsächliche Herstellung und begründete Modellgrenze.",
+          "understandingFocusEn": "Amount conservation, controlled actual preparation and a justified model limit."
+        },
+        {
+          "id": "solution-2",
+          "taskDemandDe": "Verdünne unter Aufsicht 25,00 mL 0,00250 M Ca(OH)2 auf 250,0 mL; berechne Masse/Konzentration/pH und vergleiche NaOH bei gleicher formaler Konzentration sowie die gelieferten Messwerte.",
+          "taskDemandEn": "Under supervision dilute 25.00 mL 0.00250 M Ca(OH)2 to 250.0 mL; calculate mass/concentration/pH and compare NaOH at equal formal concentration and the supplied readings.",
+          "expectedPerformanceDe": "c=2,500·10−4 M, gelöst 4,631 mg, [OH−]=2c und pH≈10,699. NaOH hat pH≈10,398. Eigene beobachtete Herstellung/Messung bleibt erforderlich; CO2, Aktivität und Messung begrenzen den Vergleich.",
+          "expectedPerformanceEn": "c=2.500·10−4 M, dissolved mass 4.631 mg, [OH−]=2c and pH≈10.699. NaOH gives pH≈10.398. Own observed preparation/measurement is required; CO2, activity and measurement limit comparison.",
+          "understandingFocusDe": "Geänderte Hydroxidstöchiometrie, keine automatische Übertragung auf NH3.",
+          "understandingFocusEn": "Changed hydroxide stoichiometry, with no automatic extension to NH3."
+        }
+      ]
+    }
+  },
+  {
+    "goalId": "13d4f336-ab16-54a7-9479-c920b458f385",
+    "wholeProfile": {
+      "archetype": "experiment",
+      "expectations": [
+        {
+          "id": "b004-13d4f336-core",
+          "essentialUnderstandingDe": "Schutzregeln haben konkrete Anlässe: Augenschutz gegen Spritzer, freie Arbeitsfläche und geeignete Kennzeichnung gegen Verwechslung sowie Lehrkraftanweisung bei Unsicherheit oder Zwischenfall. Sicheres Arbeiten beginnt vor der Materialhandlung.",
+          "essentialUnderstandingEn": "Safety rules address particular risks: eye protection for splashes, clear workspace and labeling against mix-ups, and teacher direction when uncertain or after an incident. Safe work starts before handling materials.",
+          "observablePerformanceDe": "Die lernende Person bereitet an einem ungefährlichen, lehrkraftbetreuten Modellplatz ihren Arbeitsplatz vor, prüft Brille und Beschriftung und meldet einen unklaren Behälter, statt eigenmächtig weiterzumachen.",
+          "observablePerformanceEn": "At a harmless teacher-supervised model station, the learner prepares the workspace, checks eye protection and labeling, and reports an unclear vessel rather than proceeding independently."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "b004-13d4f336-core"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "phase",
+          "textDe": "Vorbereitung und Reaktion auf einen Zwischenfall werden getrennt geprüft.",
+          "textEn": "Preparation and response to an incident are tested separately."
+        },
+        {
+          "id": "risk",
+          "textDe": "Verwechslung und Spritzer erfordern unterschiedliche unmittelbare Handlungen.",
+          "textEn": "Mix-up and splash call for different immediate actions."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "supervised-water-model-station",
+          "taskDemandDe": "An einem lehrkraftbetreuten Modellplatz stehen nur Wasser, zwei klar beschriftete Becher und ein unbeschrifteter Becher. Zeige vor Beginn eine sichere Vorbereitung: Schutzbrille korrekt tragen, Arbeitsplatz freimachen, Beschriftung prüfen und den unklaren Becher der Lehrkraft melden; keine Chemikalien oder Flammen.",
+          "taskDemandEn": "At a teacher-supervised model station there are only water, two labeled beakers and one unlabeled beaker. Demonstrate safe preparation: wear eye protection correctly, clear the workspace, check labels and report the unlabeled beaker to the teacher; no chemicals or flames.",
+          "expectedPerformanceDe": "Die lernende Person führt die sicheren Vorbereitungsschritte tatsächlich aus, verwendet den unbeschrifteten Becher nicht und erläutert die Verwechslungsgefahr.",
+          "expectedPerformanceEn": "The learner actually performs the safe preparation, does not use the unlabeled beaker and explains the mix-up risk.",
+          "understandingFocusDe": "Beobachtete Anwendung statt Regelaufsagen.",
+          "understandingFocusEn": "Observed application rather than rule recitation."
+        },
+        {
+          "id": "fresh-splash-response-card",
+          "taskDemandDe": "Eine neue Situationskarte schildert einen unerwarteten Spritzer einer unbekannten Lösung bei einer lehrkraftgeleiteten Schulübung auf Arbeitsfläche und Kleidung; Hautkontakt ist möglich. Entscheide die sofortigen sicheren Schritte für die betroffene Person und begründe, weshalb Du nicht eigenmächtig weiterarbeitest.",
+          "taskDemandEn": "A fresh situation card describes an unexpected splash of an unknown solution during a teacher-run school exercise onto the bench and clothing; skin contact is possible. Decide immediate safe steps for the affected person and why you do not continue on your own.",
+          "expectedPerformanceDe": "Die lernende Person stoppt die Arbeit, informiert sofort die Lehrkraft und benennt mögliche Haut- und Kleidungskontamination. Betroffene Haut wird unverzüglich mit fließendem Wasser gespült; kontaminierte Kleidung wird unter Lehrkraft-/Ersthelferanweisung zügig abgelegt, ohne weitere Haut zu benetzen. Sie befolgt die örtliche Erste-Hilfe-Regelung und veranlasst nötige weitere Hilfe; sie improvisiert weder Neutralisation noch Entsorgung.",
+          "expectedPerformanceEn": "The learner stops work, immediately alerts the teacher and identifies possible skin and clothing contamination. Affected skin is promptly rinsed with running water; contaminated clothing is removed promptly under teacher/first-aider direction without spreading contamination to skin. They follow local first-aid procedures and obtain further help as needed; they do not improvise neutralization or disposal.",
+          "understandingFocusDe": "Neue Kontamination prüft sichere Sofortreaktion, einschließlich Haut und Kleidung, nicht bloß Abstand und Meldung.",
+          "understandingFocusEn": "A new contamination tests immediate safe action, including skin and clothing, not merely distance and reporting."
+        }
+      ]
+    }
+  },
+  {
+    "goalId": "1351706f-4ea6-56e9-951b-87b24cbcdee8",
+    "wholeProfile": {
+      "archetype": "experiment",
+      "expectations": [
+        {
+          "id": "understanding",
+          "essentialUnderstandingDe": "Herstellen ist eine beobachtbare Arbeitsroutine. Sie ist vom Erklären der Löslichkeitsgrenze und vom Berechnen eines Mischungsanteils unabhängig prüfbar.",
+          "essentialUnderstandingEn": "Preparation is an observable working routine, assessed separately from explaining a solubility limit or calculating a mixture fraction.",
+          "observablePerformanceDe": "Ein vollständiger betreuter Aktionslog zeigt getrenntes Tarieren und Abwiegen, vollständiges Übertragen, Rühren, bestätigte Endbeobachtung und Beschriftung nach der bereitgestellten Arbeitsanweisung. Die lernende Person dokumentiert beim alternativen Modul dessen freigegebenes Lösungsmittel und die jeweiligen Schritte; ein Plan ohne durchgeführten Log wird nicht als Ausführung ausgegeben.",
+          "observablePerformanceEn": "A complete supervised action log shows separate taring and weighing, complete transfer, stirring, a confirmed final observation and labelling under the supplied instruction. For the alternative module the learner records its permitted solvent and each specified step; a plan without an executed log is not represented as performance."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "understanding"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "changed-conditions",
+          "textDe": "In S wählst du versehentlich Wasser statt des freigegebenen ethanolischen Lösungsmittels. Darfst du den erfolgreichen S-Endbefund aus der Vorlage übernehmen?",
+          "textEn": "In S you accidentally choose water instead of its permitted ethanolic solvent. May you copy the successful S endpoint from the example?"
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "preparation-salt-water-performed-log",
+          "taskDemandDe": "Führe P-1 unter Aufsicht aus oder führe die Simulatoraktionen tatsächlich in der angegebenen Reihenfolge aus. Gib das ausgefüllte Ausführungsprotokoll ab. Eine geplante Schrittfolge oder die Aussage „Salz löst sich“ reicht ohne Durchführung beziehungsweise Simulatorlog nicht aus.",
+          "taskDemandEn": "Execute P-1 under supervision or actually issue the simulator actions in sequence. Submit the completed execution log. A planned sequence or “salt dissolves” without execution or a simulator log is insufficient.",
+          "expectedPerformanceDe": "Erwartetes erfolgreiches Protokoll: Freigabe geprüft; trockenes Gefäß tariert; 48,0 g Wasser angezeigt; Wasser-Becherglas sicher abgestellt; leere Wägeschale tariert; darin mit sauberem Spatel separat 2,0 g Salz abgewogen und aus der Wägeschale vollständig ins Wasser übertragen; gerührt; Rückmeldung/Beobachtung: keine sichtbaren Kristalle, einheitliche Flüssigkeit ohne getrennte Phase; mit Kochsalzlösung und Datum beschriftet; keine Abweichung. Das ist eine hergestellte Lösung im begrenzten Fall, keine allgemeine Behauptung über beliebige Salz-/Lösungsmittelkombinationen.",
+          "expectedPerformanceEn": "Expected successful log: permission checked; dry vessel tared; 48.0 g water displayed; water beaker placed securely; empty weighing dish tared; 2.0 g salt weighed separately in that dish with the clean spatula and transferred completely from the dish into the water; stirred; feedback/observation: no visible crystals, uniform liquid without a separate phase; labelled salt solution and date; no deviation. This documents preparation in the bounded case, not a claim about arbitrary salt/solvent combinations.",
+          "understandingFocusDe": "Herstellen ist eine beobachtbare Arbeitsroutine. Sie ist vom Erklären der Löslichkeitsgrenze und vom Berechnen eines Mischungsanteils unabhängig prüfbar.",
+          "understandingFocusEn": "Preparation is an observable working routine, assessed separately from explaining a solubility limit or calculating a mixture fraction."
+        },
+        {
+          "id": "preparation-bound-phase-solvent-transfer",
+          "taskDemandDe": "Führe die angegebenen Aktionen für L, S und G im moderierten Simulator aus und gib für jedes Modul den vollständigen Aktions-/Rückmeldungslog mit Endbeobachtung und Beschriftung ab. Benenne die jeweils andere Ausgangsphase und das vorgegebene Lösungsmittel. Ersetze keinen Log durch die bloße Behauptung „das ist löslich“.",
+          "taskDemandEn": "Execute the specified L, S and G actions in the facilitator-mediated simulator and submit each complete action/feedback log, final observation and label. Identify each changed starting phase and specified solvent. Do not replace a log with the assertion “it is soluble.”",
+          "expectedPerformanceDe": "Erwartet werden drei getrennte Logs mit jeweils geprüftem Modul/Freigabe, dem modulspezifischen Lösungsmittel und der vorgeschriebenen Zugabe. L dokumentiert flüssigen Ausgangsstoff in Wasser, danach keine Schlieren; S festen Ausgangsstoff im ethanolischen Lösungsmittel, danach keine Partikel; G gasförmigen Ausgangsstoff in Wasser unter festgehaltenen Modellbedingungen, Kontakt/Mischen/Warten und bestätigte Aufnahme. Alle enden mit inspect und richtiger Beschriftung. Die L-Mengen und Mischhandlung dürfen nicht ungeprüft auf S oder G übertragen werden.",
+          "expectedPerformanceEn": "Three separate logs are expected, each with module/permission checked, its specific solvent and prescribed addition. L records a liquid starting substance in water followed by no streaks; S a solid in ethanolic solvent followed by no particles; G a gas in water under fixed model conditions, contact/mixing/waiting and confirmed absorption. Each ends with inspect and its correct label. L’s quantities and mixing action cannot be copied to S or G without using that module’s instruction.",
+          "understandingFocusDe": "Herstellen ist eine beobachtbare Arbeitsroutine. Sie ist vom Erklären der Löslichkeitsgrenze und vom Berechnen eines Mischungsanteils unabhängig prüfbar.",
+          "understandingFocusEn": "Preparation is an observable working routine, assessed separately from explaining a solubility limit or calculating a mixture fraction."
+        }
+      ]
+    }
+  }
+]

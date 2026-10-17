@@ -1,0 +1,87 @@
+[
+  {
+    "pointer": "/primaryStudies",
+    "content": [
+      {
+        "id": "ince2002",
+        "title": "Kinetic of Esterification of Ethyl Alcohol by Acetic Acid on a Catalytic Resin",
+        "author": "Erol İnce",
+        "publication": "Pamukkale University Journal of Engineering Sciences 2002, 8(1), 109–113",
+        "url": "https://dergipark.org.tr/en/download/article-file/191290",
+        "document": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q3-three-current402-live-context-author-20261012-v7/sources/ince2002-primary.pdf",
+          "bytes": 104882,
+          "sha256": "sha256:1a340bd4c4fed7bf5dfe3fc082e6366cc4fd1051a467ccc746e4e2ef77dc349c"
+        },
+        "actualExperimentalSystem": "Ethanoic acid + ethanol ⇌ ethyl ethanoate + water; resin-catalysed stirred batch under reflux at controlled temperature.",
+        "commonSample": "Section2.1/2.2, PDFp2: successive approximately500µL liquid aliquots from one reaction vessel; each aliquot analysed for all four components by one GC system. No combining separate starting vessels.",
+        "method": "HP6890 GC, serial TCD/FID, HP-Innowax column; TCD quantitative processing, FID reference/mass-balance support.",
+        "publishedActualObservations": "PDFp3 Figures1–4 are actual plotted conversion-time series with nonzero incomplete conversion, approaching plateaus. PDFp4–5 Table2 reports experimental equilibrium constant3.98. The table is not a list of four raw detector peaks.",
+        "documentedControls": [
+          "Reflux to limit material loss",
+          "Temperature regulation",
+          "Changed starting ratios, water amounts and catalyst loadings",
+          "FID reference/mass-balance support"
+        ],
+        "notDocumented": [
+          "Individual raw chromatograms, retention times and measured four-component peak areas",
+          "Species reference-standard/blank results and matrix-recovery/selectivity tests",
+          "Validated quench or preservation time for each withdrawn aliquot",
+          "Run-specific chemical-equilibrium claim independently checked against the unusual initial-water omission in equation6"
+        ],
+        "literalHold": "HOLD_INCE2002_RAW_SPECIES_CALIBRATION_AND_ALIQUOT_PRESERVATION",
+        "allowedConclusion": "Authentic published reaction and analytical-method context with incomplete conversion; conditional four-species coexistence under the authors’ identity/closed-balance assumptions. Not a fully auditable four-species same-time chromatogram dossier.",
+        "actualSourceConsistencyFinding": {
+          "source": "PDFp4 equation6 and PDFp5 Table2 compared with PDFp2 Table1",
+          "observed": "Equation6 uses X_Ae squared as product term although initial water is nonzero in Table1; Table2 gives k1=0.0244 and k2=0.0047, whose ratio is approximately5.19, while reporting Kexp3.98. The text says Kexp=k1/k2. These inconsistencies prevent using the reported constant as a self-validating equilibrium proof.",
+          "independentlyComputedRatio": 5.191489361702128,
+          "reportedKexp": 3.98,
+          "decision": "HOLD numerical/model consistency, author source audit only"
+        }
+      },
+      {
+        "id": "schnoor2020",
+        "title": "Heat on – Calibration of IR Spectroscopy at Process Conditions for Continuous Esterification",
+        "authors": [
+          "Johann-Kilian Schnoor",
+          "Lennard D. Schulte",
+          "Marcel A. Liauw"
+        ],
+        "publication": "Chemie Ingenieur Technik2020,92(10),1467–1473",
+        "doi": "10.1002/cite.202000050",
+        "url": "https://d-nb.info/1364231212/34",
+        "document": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-q3-three-current402-live-context-author-20261012-v7/sources/schnoor2020-primary.pdf",
+          "bytes": 301052,
+          "sha256": "sha256:f047631dbe94fbcb513823035e9435b57e3f01abbe7b695dca249b6157823fa5"
+        },
+        "actualExperimentalSystem": "Continuous acid/alcohol esterification in a heated meander reactor; ethanol and methanol experiments explicitly distinguished.",
+        "commonSample": "Section2.2/2.3, PDFp2–3: one inline ATR probe immediately after the reactor analyses the shared stream at process conditions. The later offline NMR tube is explicitly a different sampling/measurement time.",
+        "method": "ATR-FTIR with PLS regression using prepared pure/matrix compositions at process conditions; validation and cross-NMR discussed.",
+        "publishedActualObservations": "PDFp4 Figure3 is calibration, not an unknown reaction sample. PDFp5 Figure4 is conversion-based calibration, not an executed equilibrium composition. PDFp6 Figure5 is the measured methanol reaction, not the ethanol reaction. It reports positive incomplete acid conversion with residence-time dependence.",
+        "documentedControls": [
+          "No-catalyst calibration with short residence time limiting unintended reaction",
+          "Pure/matrix calibration at measurement conditions",
+          "Pump calibration and residence-time-distribution checks",
+          "Cross-validation/prediction errors",
+          "Four repeat measurements per point",
+          "Offline NMR check for unexpected side products; delay prevents exact composition equivalence"
+        ],
+        "measurementErrorExample": {
+          "source": "PDFp5 Table1, ethanol multicomponent model, RMSEP percent",
+          "ethanol": 2.1,
+          "ethylEthanoate": 1.0,
+          "ethanoicAcid": 0.9,
+          "water": 2.6
+        },
+        "notDocumented": [
+          "Raw four-species spectrum and independent assignments for one named reaction point in the main article",
+          "Explicit negative blank chromatogram/IR control",
+          "The ethanol reaction-component plot in the supporting material, which returnedHTTP403 during this preparation"
+        ],
+        "literalHold": "HOLD_SCHNOOR2020_REACTION_POINT_SPECIES_DATA_AND_OPEN_EQUILIBRIUM_BOUNDARY",
+        "allowedConclusion": "Authentic process analytical controls and actual published reaction data. Continuous stationarity is not evidence of equal forward/reverse rates. Calibration mixtures, a delayed offline NMR sample and an ethanol/methanol substitution cannot be presented as one equilibrium sample."
+      }
+    ]
+  }
+]

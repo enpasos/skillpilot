@@ -1,0 +1,132 @@
+{
+  "index": 27,
+  "goal": {
+    "id": "858d56e0-ab8f-51a4-b07e-7d9d94cab8e2",
+    "shortKey": "canonical_chemistry_q1_alkanol_oxidizability",
+    "title": "Oxidierbarkeit von Alkanolen vergleichen",
+    "description": "Die lernende Person kann primäre, sekundäre und tertiäre Alkanole hinsichtlich ihrer Oxidierbarkeit vergleichen.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK"
+    ],
+    "contains": [],
+    "requires": [],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024-chemistry",
+      "demandLevel": "AB2",
+      "processCompetencies": [],
+      "guidingIdeas": [
+        "BC_REAKTION"
+      ],
+      "phase": "Q1"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "extendedData": {
+      "provenance": {
+        "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+        "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+        "sourceGoalId": "646532d2-8f06-459b-88fc-03a6f71f5885",
+        "splitFromCanonicalGoalId": "61446285-4415-5bd9-9fdc-c19bb9ec1b02",
+        "splitReviewId": "canonical-chemistry-q1-alkanols-carbonyls"
+      }
+    },
+    "type": "atomic",
+    "examples": [],
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "858d56e0-ab8f-51a4-b07e-7d9d94cab8e2",
+        "title": "Visualisierung: Oxidierbarkeit von Alkanolen vergleichen",
+        "url": "/assets/goal-visualizations/chemie/858d56e0-ab8f-51a4-b07e-7d9d94cab8e2/858d56e0-ab8f-51a4-b07e-7d9d94cab8e2.jpg",
+        "provider": "Google Gemini / Nano Banana Pro",
+        "description": "Visualisierung zum Lernziel: Oxidierbarkeit von Alkanolen vergleichen.",
+        "altText": "Didaktische Visualisierung zum Lernziel \"Oxidierbarkeit von Alkanolen vergleichen\". Die lernende Person kann primäre, sekundäre und tertiäre Alkanole hinsichtlich ihrer Oxidierbarkeit vergleichen.",
+        "lang": "de",
+        "license": "AI-generated, SkillPilot-curated",
+        "reviewStatus": "pilot"
+      }
+    ]
+  },
+  "p": {
+    "schemaVersion": 2,
+    "reviewId": "canonical-chemistry-positive-evidence-b002-q1-organic-current-9-v2",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "goalId": "858d56e0-ab8f-51a4-b07e-7d9d94cab8e2",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "reviewedAt": "2026-09-30T16:15:46Z",
+    "reviewer": "codex-gpt-6-chemistry-b002-positive-profile-author-after-independent-qa",
+    "reason": "Eine einzige Struktur-Reaktivitätsentscheidung; „nicht oxidierbar“ wird ausdrücklich auf die üblichen milden Bedingungen begrenzt. Zwei vom Bild unabhängige Anwendungsfälle prüfen frischen Transfer. Dieser KI-Kandidat bleibt needs_human_review und ersetzt keine menschliche Freigabe.",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": [],
+    "dissent": [],
+    "profile": {
+      "archetype": "concept",
+      "expectations": [
+        {
+          "id": "b002-858d56e0-core",
+          "essentialUnderstandingDe": "Primäre und sekundäre Alkanole besitzen am OH-tragenden C ein H für die übliche Oxidation zu Carbonylverbindungen; tertiären fehlt es, weshalb die analoge milde Oxidation nicht greift.",
+          "observablePerformanceDe": "Die lernende Person markiert das relevante C-H in gegebenen Strukturen und ordnet primäres, sekundäres und tertiäres Alkanol unter vergleichbaren milden Bedingungen."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "b002-858d56e0-core"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "alkanol-class",
+          "textDe": "Primär, sekundär und tertiär werden strukturell unterschieden."
+        },
+        {
+          "id": "branching",
+          "textDe": "Ein frischer verzweigter Fall prüft die lokale OH-Umgebung."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "three-propanol-classes",
+          "taskDemandDe": "Vergleiche Propan-1-ol, Propan-2-ol und 2-Methylpropan-2-ol unter üblichen milden Oxidationsbedingungen. Markiere das H am OH-tragenden C.",
+          "expectedPerformanceDe": "Die lernende Person ordnet primär, sekundär und tertiär zu; die ersten beiden besitzen das relevante C-H, das tertiäre nicht.",
+          "understandingFocusDe": "Lokale Struktur erklärt den Unterschied in der üblichen Oxidation."
+        },
+        {
+          "id": "fresh-branched-classification",
+          "taskDemandDe": "Neue Strukturkarten zeigen 3-Methylbutan-2-ol und 2-Methylbutan-2-ol. Welches lässt sich unter denselben milden Bedingungen zum Carbonyl oxidieren?",
+          "expectedPerformanceDe": "Die lernende Person erkennt beim ersten das OH-tragende sekundäre C-H und beim zweiten ein tertiäres C ohne H; sie begrenzt die Aussage auf die vorgegebenen Bedingungen.",
+          "understandingFocusDe": "Verzweigung allein ist kein Ersatz für C-H-Prüfung."
+        }
+      ]
+    }
+  }
+}

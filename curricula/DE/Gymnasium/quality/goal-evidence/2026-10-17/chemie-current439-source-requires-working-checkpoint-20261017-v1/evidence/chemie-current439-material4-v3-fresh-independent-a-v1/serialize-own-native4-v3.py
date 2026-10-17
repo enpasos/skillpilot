@@ -1,0 +1,34 @@
+from pathlib import Path
+import json,hashlib,datetime
+OUT=Path('/mnt/e/skillpilot-chemie-L7-20261017/chemie-current439-material4-v3-fresh-independent-a-v1')
+started=datetime.datetime.now(datetime.timezone.utc).isoformat()
+pin=json.load(open(OUT/'INPUT.native-v3-selector.pin.json'));selector=json.load(open(pin['path']));ROUND=Path(selector['nativeRoot'])/'round-a'
+first=json.load(open(OUT/'FIRST4.independent-v3-successor-science.json'));seal=json.load(open(OUT/'FIRST4.v3.seal.json'));bindingSeal=json.load(open(OUT/'FIRST4.native-binding.seal.json'))
+assert hashlib.sha256(Path(seal['artifact']['path']).read_bytes()).hexdigest()==seal['artifact']['sha256']
+assert hashlib.sha256(Path(bindingSeal['path']).read_bytes()).hexdigest()==bindingSeal['sha256']
+input=json.load(open(ROUND/'description-review-input.json'));campaign=json.load(open(ROUND/'description-review-campaign.json'));bundle=json.load(open(ROUND/'review-bundle-manifest.json'))
+# Reuse only this reviewer's own bilingual formulations for identical canonical descriptions.
+# Current material judgments and current-native bindings come from the new sealed V3 observations.
+oldresults=Path('/mnt/e/skillpilot-chemie-L7-20261017/chemie-remediation14-fresh-independent-a-v1/native-round-a-results');oldfile=next(oldresults.glob('*.records.jsonl'))
+old={r['goalId']:r for r in [json.loads(l) for l in oldfile.read_text().splitlines()]}
+byfirst={r['goalId']:r for r in first['results']}
+runId='chemie-material4-v3-independent-a-20261017-observed-science-v1'
+records=[]
+for i,g in enumerate(input['goals']):
+ own=byfirst[g['goalId']];prev=old[g['goalId']]
+ for k in ['goalFingerprint','currentDescriptionDe','currentDescriptionEn']:assert own[k]==g[k]
+ for k in ['currentTitleDe','currentTitleEn','currentDescriptionDe','currentDescriptionEn']:assert prev[k]==g[k]
+ assert own['descriptionVerdict']=='KEEP' and own['positiveMaterialVerdict']=='KEEP'
+ r={'$schema':'https://skillpilot.com/schemas/goal-description-review/v1/goal-description-review-record.schema.json','schemaVersion':1,'recordId':runId+'-'+str(i+1).zfill(2),'runId':runId,'campaignId':campaign['campaignId'],'roundId':campaign['roundId'],'bundleFingerprint':bundle['bundleFingerprint'],'bookDigest':bundle['bookModelDigest']}
+ for k in ['goalId','goalFingerprint','pageFingerprint','currentTitleDe','currentTitleEn','currentDescriptionDe','currentDescriptionEn']:r[k]=g[k]
+ r.update({'decision':'keep','understandingEvidence':prev['understandingEvidence'],'rationale':'Actual bounded V3 current-context review retains this clear, scientifically accurate bilingual description without changing its scope. '+own['ownScientificRationale'],'evidenceProfileContract':'positive-understanding-evidence-v2','evidenceProfileRecommendation':'none','recordStatus':'candidate','reviewAuthority':'ai_candidate'})
+ records.append(r)
+batch=campaign['batches'][0];results=OUT/'native-round-a-results';results.mkdir(exist_ok=True);recpath=results/(batch['batchId']+'.records.jsonl');recpath.write_text(''.join(json.dumps(r,ensure_ascii=False,separators=(',',':'))+'\n' for r in records))
+params={'actualAgent':'/root/chemie_four_image_fresh_independent_v_20261017','provider':'OpenAI','knownModelFamily':'GPT-6','exactModelSnapshot':'not exposed in agent context','samplingParameters':'not exposed, not invented','scientificInputReadingStartedAtUTC':first['timing']['scientificInputReadingStartedAtUTC'],'scientificFIRSTSealedAtUTC':seal['sealedAtUTC'],'actualFrozenNativeInputReadingStartedAtUTC':pin['actualFrozenNativeInputReadingStartedAtUTC'],'actualFrozenNativeBindingConfirmationSealedAtUTC':bindingSeal['sealedAtUTC'],'nativeSerializationStartedAtUTC':started,'reviewMethod':'Actual bounded independent V3 follow-up on whole affected cases, all20 current rubric links, all9 operative bindings, unchanged whole canonical and profile context, current actual PDF and browser images. No author audit or peer decisions.','unchangedBilingualUnderstandingFormulations':'This same reviewer\'s own earlier formulations are reused only for exactly equal descriptions after actual targeted current-binding review; no extra D14 vote is claimed.','nativeV2RunClaimed':False,'peerBOrDResultsRead':False}
+parbytes=(json.dumps(params,ensure_ascii=False,sort_keys=True,indent=2)+'\n').encode();(OUT/'NATIVE.actual-run-parameters.json').write_bytes(parbytes)
+arts=[{'role':a['role'],'digest':a['digest']} for a in bundle['artifacts'] if a['role'] in ['book_pdf','book_pdf_render_manifest','book_model','review_input_json','review_prompt','review_criteria','run_manifest_schema']];arts.append({'role':'description_review_batch_input_jsonl','digest':batch['batchInputFingerprint']})
+completed=datetime.datetime.now(datetime.timezone.utc).isoformat()
+run={'$schema':'https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json','schemaVersion':1,'runId':runId,'campaignId':campaign['campaignId'],'roundId':campaign['roundId'],'batchId':batch['batchId'],'batchInputFingerprint':batch['batchInputFingerprint'],'bundleFingerprint':bundle['bundleFingerprint'],'bookDigest':bundle['bookModelDigest'],'provider':'OpenAI','model':'GPT-6 (Codex agent; exact model snapshot not exposed)','role':'subject_reviewer','promptFamilyId':'goal-description-understanding-evidence-v2','promptFingerprint':campaign['promptFingerprint'],'criteriaFingerprint':campaign['criteriaFingerprint'],'generationParametersFingerprint':'sha256:'+hashlib.sha256(parbytes).hexdigest(),'independenceGroupId':campaign['independenceGroupId'],'blindToOtherRuns':True,'goalIds':batch['goalIds'],'inputArtifacts':arts,'startedAt':first['timing']['scientificInputReadingStartedAtUTC'],'completedAt':completed,'status':'completed','outputDigest':'sha256:'+hashlib.sha256(recpath.read_bytes()).hexdigest(),'toolchainVersion':'goal-description-review-v1'}
+runpath=results/(batch['batchId']+'.run.json');runpath.write_text(json.dumps(run,ensure_ascii=False,indent=2)+'\n')
+(OUT/'NATIVE.serialization-timing.json').write_text(json.dumps({'actualV3ScientificStart':run['startedAt'],'actualAuthorV3FIRSTSeal':seal['sealedAtUTC'],'actualFrozenNativeInputStart':pin['actualFrozenNativeInputReadingStartedAtUTC'],'actualFrozenNativeBindingConfirmationSeal':bindingSeal['sealedAtUTC'],'nativeSerializationStartedAt':started,'nativeSerializationCompletedAt':completed,'noNativeV2RunExists':True,'meaning':'V3 run spans actual science plus later native serialization. Both FIRST and frozen-binding confirmation precede serializer. No exact previous historical time guessed.'},indent=2)+'\n')
+print(json.dumps({'recordsPath':str(recpath),'recordsSha256':hashlib.sha256(recpath.read_bytes()).hexdigest(),'runPath':str(runpath),'runSha256':hashlib.sha256(runpath.read_bytes()).hexdigest(),'records':len(records),'decisions':{'keep':4},'profileRecommendations':{'none':4}},indent=2))

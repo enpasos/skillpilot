@@ -1,0 +1,285 @@
+{
+  "atUTC": "2026-10-17T11:18:31.176689+00:00",
+  "selector": {
+    "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-P1-native1-root-v2/capsule/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-SN-indicator-P1-native1-root-v2/SELECTOR.clean-current-SN-own-indicator-whole-material-and-nativeD1.sealed.json",
+    "sha256": "55a5b6e7588d915c10552fcc924c4e9c5dc7c72aad35598e7b2058cd2582c3fb",
+    "bytes": 13368
+  },
+  "newAggregate": {
+    "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-P1-native1-root-v2/capsule/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-SN-indicator-P1-native1-root-v2/P439.f79-corrected-and-SN-own-indicator.author-candidate.aggregate.jsonl",
+    "sha256": "56cfed452aa7fa0eb5c08650885af1db961d7d15e0ad33dfc0f6d3e80ef7512b",
+    "bytes": 4493338
+  },
+  "previousAggregate": {
+    "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-P1-native1-root-v2/capsule/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-f79-explicit-concentration-ratio-author-root-v1/P439.only-f79-explicit-concentration-ratio.author-candidate.aggregate.jsonl",
+    "sha256": "c83f1a90c525f2f71d967af969b47a92f837dbf0e1ca1d2a590ad50e759423b1",
+    "bytes": 4484382
+  },
+  "other438WholeLinesExact": true,
+  "f79CorrectedLineExact": true,
+  "authorInputsUnchanged": true,
+  "canonicalAndSemanticUnchanged": true,
+  "MainUnchanged": true,
+  "globalStrictGainClaimed": 0,
+  "stockSteps": [
+    {
+      "argv": [
+        "node",
+        "--import",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/loader.mjs",
+        "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-P1-native1-root-v2/capsule/app/scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-SN-indicator-P1-native1-root-v2/P1.author.config.json",
+        "--mode=check"
+      ],
+      "cwd": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-P1-native1-root-v2/capsule",
+      "exitCode": 0,
+      "elapsedSeconds": 13.057880599000782,
+      "stdout": "# Positive Goal Evidence Review: chemie-current439-sn-indicator-own-investigation-author-root-20261017-v2\nScope: One supervised own-indicator-investigation author successor; independent scientific acceptance pending\nConfigured goals: 1\nApproved: 0\nNeeds human review: 1\nRejected: 0\nBlocking issues: 0\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "--import",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/loader.mjs",
+        "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-P1-native1-root-v2/capsule/app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "prepare",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-SN-indicator-P1-native1-root-v2/native1.batch.config.json"
+      ],
+      "cwd": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-P1-native1-root-v2/capsule",
+      "exitCode": 0,
+      "elapsedSeconds": 49.93239978699421,
+      "stdout": "Standalone goal-description batch prepared: chemie-current439-sn-own-indicator-native1-20261017-v2; goals=1; model=sha256:2ec01be0d1d9febfd42526dd44681bf62e138ee3deabe3c3ea5cbe6a9b8f7abc; bundle=sha256:54f314b4b4dee4b11fc55dd85e6e923d6c0310ee5f7284e95ce95421648f8a11\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "--import",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/loader.mjs",
+        "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-P1-native1-root-v2/capsule/app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "check",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-SN-indicator-P1-native1-root-v2/native1.batch.config.json"
+      ],
+      "cwd": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-P1-native1-root-v2/capsule",
+      "exitCode": 0,
+      "elapsedSeconds": 14.239161129997228,
+      "stdout": "Standalone goal-description batch valid: chemie-current439-sn-own-indicator-native1-20261017-v2; goals=1\n",
+      "stderr": ""
+    }
+  ],
+  "guards": [
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/AUTHOR-PACKAGE.sealed.manifest.json",
+      "sha256": "6c9a851374818550771fc36125e597f3b711aa9071f13e28f9e027833cac789d",
+      "bytes": 8649
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-P1-native1-root-v2/capsule/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "sha256": "38c437d5fa0e24f8587b26cbdb2e3f168f3ffaf915aaaef885f918ac22c668e0",
+      "bytes": 2919296
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-P1-native1-root-v2/capsule/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-remediation14-author-assembly-technical-v1/SEM650.same-kinds-four-description-source-bindings.author-draft.json",
+      "sha256": "4807fb1139038dadbb6a1edde1f6f7b7e7f67a95e62c0fb2aaac7ca94d69bda6",
+      "bytes": 208191
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/README.md",
+      "sha256": "3bfc6b9e7a8ddf51c04a8526297160d56e12e717954f5606be1f7061787e8eb5",
+      "bytes": 3587
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/archive/ASSETS.current24-mapped-target-bound-real-originals.json",
+      "sha256": "938c8995b2c51bf594496f00583818f27dbfe0937a5df538afb0213ac8adc083",
+      "bytes": 49936
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/archive/CONTEXT.complete-41-current-mapped-target-subtrees-P-profiles-and-real-assets.no-old-verdicts.json",
+      "sha256": "0c97b858690cfa31a22047b6eb4a2a253bbf996820d21bc177c3443d4ca76a21",
+      "bytes": 958092
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/archive/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "sha256": "38c437d5fa0e24f8587b26cbdb2e3f168f3ffaf915aaaef885f918ac22c668e0",
+      "bytes": 2919296
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/archive/DE_SN_CHEMIE_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+      "sha256": "3f7d68cf03eea3e6694c3263b90a1f6c6448028bbaf9c03a9c9275427c2bbf95",
+      "bytes": 397726
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/archive/FIRST.independent-Source9-HB97.scientific.frozen.md",
+      "sha256": "b577d5418ad784c6c0f2fd2a7a26e1b90ffea34cfc935034f1f308e7e3d920d3",
+      "bytes": 21541
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/archive/FIRST.source9-HB97.scientific-findings.sealed.json",
+      "sha256": "e9a377a1ca7de9b1055328278698ff44c89e4ada71c6e53ea72fdd200d4f7624",
+      "bytes": 86164
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/archive/INPUTS.exact-archive.manifest.json",
+      "sha256": "e320d15c4339eb07cb155939271d707e2477f114f6a54ac42cc4a8412c05fe73",
+      "bytes": 10393
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/archive/MATERIAL.relevant-current-V3-whole-operative-cases.no-old-verdicts.json",
+      "sha256": "a4b1200c21f121700b69ead4e4394d45e88eeaf2d2ad828aedac04932ce3caa4",
+      "bytes": 11284
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/archive/P1.previous-current.whole-profile.json",
+      "sha256": "54c6b9972e260410a36c0c383515516481ad25c0f25cc19e48821e233534e546",
+      "bytes": 7105
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/archive/P1.previous-current.whole-row.exact.jsonl",
+      "sha256": "23345f44c85b27422e4a04a4d41fe0f9989a29e87826cb5cd75e7c9d532d1264",
+      "bytes": 9225
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/archive/P1.previous-current.whole-row.json",
+      "sha256": "0bd9417cb7ea8319e8a4cdc69ee9e2dd2dc79715c7c1ea6513e2e966b3b11e65",
+      "bytes": 9633
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/archive/P439.material4-v3-only28c-author-profile-current.aggregate.jsonl",
+      "sha256": "eb2019c4bb61b375d2959a4c03c32c479da7a31f0ef1b4d39d44e477ec2a26f6",
+      "bytes": 4484458
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/archive/REVIEW.current-source9-whole-union-HB97.whole-scientific-inputs.no-old-verdicts.json",
+      "sha256": "dd7b8f863c4b1796d5abe37a25728c5e91bdea6d3c0cbc0e5e8764c610d42a48",
+      "bytes": 2667378
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/archive/SELECTOR.clean-current-Source9-HB97-with-whole-target-subtrees-real-assets-materials.sealed.json",
+      "sha256": "3e459d001f5f7b067b46f8c61908a798f33a5927b24243c994bc7a6a9270cd33",
+      "bytes": 63121
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/archive/current-goal.whole.exact-structure.json",
+      "sha256": "fea2b5e09b3f7af70a8a516df15c4e55d1f712b0aaffe56f1a77b0f5153c3f8f",
+      "bytes": 3055
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/archive/d2ccd1d5-56f7-583f-9724-e97441367f91.png",
+      "sha256": "cf6f69ccb31591750a925603b9930d57edb0f9f0112c6512b28ad674a561f7f8",
+      "bytes": 1513753
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/archive/lehrplan-gymnasium-chemie-sachsen-2025.pdf",
+      "sha256": "3a74886e7ee9492b003d4916719e2b4644aef5fdfe8331cdefd8151fe0e86051",
+      "bytes": 824141
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/archive/sn_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "sha256": "aecc9c8bea8f1933a4599cb8afb6ceb6cd9f36444e863bd4706473262fa50a18",
+      "bytes": 359103
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/author_successor.py",
+      "sha256": "dd27750adf622162a632677db9ead39738e7de7317d421a570f90a37aba52e19",
+      "bytes": 24176
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/candidate/CASE-1.complete.operative.json",
+      "sha256": "e25d3df81f34deac696822d08b50a5784613b7b85557c37c4cafedfe4d1c983c",
+      "bytes": 5550
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/candidate/CASE-2.complete.operative.json",
+      "sha256": "d331508e1238a98192f3f4db9ca7f27c90cff50902bd79645f93724b7eb43d66",
+      "bytes": 5824
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/candidate/MATERIALS.AND.CASES.md",
+      "sha256": "37967b0608c735bae50da1bf94f80c0fbc5ea189598bcf116a152faefe46a516",
+      "bytes": 10603
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/candidate/P1.successor.author-intent.NOT-native-record.json",
+      "sha256": "280fc7189b62e12398c750507d403b39e29e1b5d09a455f229576e9c45b35587",
+      "bytes": 1630
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/candidate/P1.successor.substantive-field-diff.json",
+      "sha256": "a85ce369f4eeb87423f4d27589795b7e3dfdc17835f632e87cbb4c0d43586dc1",
+      "bytes": 24950
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/candidate/P1.successor.whole-profile.body.json",
+      "sha256": "a19098b63a322d3faa8bbfcf82bdede135b2891796aad12de4c8c2755ba10a4c",
+      "bytes": 16958
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/candidate/RAW-OBSERVATIONS.unperformed.template.json",
+      "sha256": "8198b0b77987a65c0dd45d249a941dbdb176e10cc3dd0977f5d8711f3bbda065",
+      "bytes": 1080
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/candidate/RUBRIC.AND.REFERENCE.md",
+      "sha256": "86a46bec46a410d91df080df623ce0aa41ca108d101845d56dbc93744f8a299d",
+      "bytes": 4836
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/finalize_author_package.py",
+      "sha256": "decdecee64c14858afcb2a5888ab55ceba70f0656f4efce6a37512f7e2b12bc2",
+      "bytes": 7752
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/sources/SOURCE-PINS.and-LIMITS.json",
+      "sha256": "04554a13e5aff0f29744cc458babce0df1c2583e10998ba6f174850ed2cc1fc4",
+      "bytes": 12636
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/sources/manufacturer/MN-902xx.primary-search-extraction.txt",
+      "sha256": "51a98bced0f89e9561046aadde421a34ed4665d793fcb3627739637cc9e41056",
+      "bytes": 1631
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/sources/manufacturer/SDB-0965.original.pdf",
+      "sha256": "d507f51b714334225d3a2f22610070c52f78174757b0ccd0d95a014a8a76e76c",
+      "bytes": 254982
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/sources/manufacturer/SDB-0965.source-url.txt",
+      "sha256": "b0960d88719bb24c4ea2ca5b1fbcccf7da10c2fb58f8c2780e9a8fff77c1bef0",
+      "bytes": 284
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/sources/manufacturer/initial-request-urls.json",
+      "sha256": "ac0a8758f9c3faf9becb9efbcc169028a2d52a23bd1226c4799b57d603c5093f",
+      "bytes": 621
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/sources/manufacturer/network-acquisition-log.json",
+      "sha256": "4eee3c4f36bd2dc747ab2966ae929b91687b1c676e1941b510cb00b80afd6ffe",
+      "bytes": 632
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/sources/manufacturer/web-primary-extractions.json",
+      "sha256": "285aaf0b3982e3a0bc20a62729a20b4e767d7d03737fe5b5cc2cb10bf32909f1",
+      "bytes": 49174
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/validate_author_candidate.py",
+      "sha256": "7ab859ba1a4250df3b870d482377da0bb107a3eca95897dbc01a9a291a560500",
+      "bytes": 3096
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/validation/AUTHOR-STRUCTURAL-VALIDATION.json",
+      "sha256": "0cdbc831fe9fb54607592ba63d8888486ca531167e216673ea39618a8a401f5f",
+      "bytes": 786
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-P1-native1-root-v2/capsule/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-f79-explicit-concentration-ratio-author-root-v1/P439.only-f79-explicit-concentration-ratio.author-candidate.aggregate.jsonl",
+      "sha256": "c83f1a90c525f2f71d967af969b47a92f837dbf0e1ca1d2a590ad50e759423b1",
+      "bytes": 4484382
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+# Conditional059 chronology, original evidence retained
+
+All three original index/resolution claims are physically present and have exact original byte digests and stock resolution fingerprints. Stock extraction of both original sources at each stage finds six actual `keep` records, with bindings exactly matching their stored resolutions. All three resolutions declare resolved/keep_current; no revise/block is hidden. Every original bundle artifact, including model/PDF/HTML, exists with its declared digest. This is an original-source extraction and byte check; complete historical/current round validation remains for Root.
+
+Chronology: historical withdrawn acid7 original claim → current435/native-five → current439 next20,16 finalized. The original withdrawn wording and canonical/P context differ from current; neither later evidence nor source excerpt is projected backward. The actual latest059 has matching current DE/EN final text, stock canonical context, whole P and asset digest. Actual full439 page context is a separate additive comparison.
+
+A prospective three-index chain is structurally linear under stock APIs. Its future config would preserve original214+35safe edges and add two059 links, retaining six other active Withdrawals and all three Retirements. The original seventh Withdrawal and old config remain immutable history. The plan is HOLD pending Root's complete original/current native validation and explicit acceptance of the proven successor. No active Withdrawal was removed and no CAS was applied.
+
+The RAW-before-enum-correction files preserve an early conservative aggregate boolean that compared record enum `keep` to resolution enum `keep_current`. Actual source records and digests were already exact; the current outputs use the record enum correctly. No science decision changed.

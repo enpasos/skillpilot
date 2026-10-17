@@ -1,0 +1,453 @@
+{
+  "role": "Future command/path map only, all commands unexecuted; no actual report without final scope statistics",
+  "atUTC": "2026-10-17T06:23:53.937247+00:00",
+  "inventory": {
+    "path": "/mnt/e/skillpilot-chemie-L7-20261017/final439-gates-command-map-technical-v1/INVENTORY.existing-full439-configs-D-lineage-and-current112-namespaces.json",
+    "sha256": "b37b24cc0d98b43739fcfc79a89a65f1abc2e285052bbe9888e9e039a2390369",
+    "bytes": 1058725
+  },
+  "commands": [
+    {
+      "id": "BUILD-CURRENT439-MODEL",
+      "cwd": "${NEW_STABLE_FULL_REVIEW_CAPSULE_ROOT}",
+      "argv": [
+        "node",
+        "--preserve-symlinks",
+        "--preserve-symlinks-main",
+        "--import",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/loader.mjs",
+        "app/scripts/buildGoalBookModel.ts",
+        "${NEW_CURRENT439_GOALBOOK_CONFIG_RELATIVE}"
+      ],
+      "existingScript": {
+        "path": "/home/enpasos/projects/skillpilot/app/scripts/buildGoalBookModel.ts",
+        "sha256": "d6af4aa3a329c3e66b1b7a61482aa0b47913e8979d62ec8047af1b23f3b70552",
+        "bytes": 1063
+      },
+      "inputs": [
+        "Exact stable all-seven C650 and39views + authoritative SEM650 + current merged P439 + current VQA/actual assets",
+        "Retained private full439 review-only view; compare actual resulting439 IDs to current curricularAtomic set"
+      ],
+      "writes": [
+        "config.outputPath only; new private artifact"
+      ],
+      "conditions": "Rebase a copy of latest full439 config. Point evidenceReviewPaths to exact final current P439, semanticKindLedgerPath to current650 ledger, outputPath under new capsule. Preserve old L6 config/model.",
+      "executedHere": false
+    },
+    {
+      "id": "CHECK-EXISTING-TARGETED-NATIVE-BATCH",
+      "cwd": "${NEW_STABLE_FULL_REVIEW_CAPSULE_ROOT}",
+      "argv": [
+        "node",
+        "--preserve-symlinks",
+        "--preserve-symlinks-main",
+        "--import",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/loader.mjs",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "check",
+        "--config",
+        "${EXISTING_REVIEWED_BATCH_CONFIG_RELATIVE}"
+      ],
+      "existingScript": {
+        "path": "/home/enpasos/projects/skillpilot/app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "sha256": "eff84dcf0d823c15b0827cb898b30d44f29c7ee219b67b4d2505b134536529cf",
+        "bytes": 64228
+      },
+      "inputs": [
+        "Exact existing frozen batch config/manifest/bundle/model/rounds/resolution inputs"
+      ],
+      "writes": [],
+      "conditions": "Run only against its frozen original bytes or an exact physically complete replica; do not point old reviewed batches at changed current pages.",
+      "executedHere": false
+    },
+    {
+      "id": "CHECK-EXISTING-NATIVE-DUAL",
+      "cwd": "${NEW_STABLE_FULL_REVIEW_CAPSULE_ROOT}",
+      "argv": [
+        "node",
+        "--preserve-symlinks",
+        "--preserve-symlinks-main",
+        "--import",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/loader.mjs",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "summarize",
+        "--config",
+        "${EXISTING_REVIEWED_BATCH_CONFIG_RELATIVE}"
+      ],
+      "existingScript": {
+        "path": "/home/enpasos/projects/skillpilot/app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "sha256": "eff84dcf0d823c15b0827cb898b30d44f29c7ee219b67b4d2505b134536529cf",
+        "bytes": 64228
+      },
+      "inputs": [
+        "Both actual independent original round outputs and bundle proofs"
+      ],
+      "writes": [],
+      "conditions": "No --write: validate existing exact dual summary; no reviewer/campaign generation.",
+      "executedHere": false
+    },
+    {
+      "id": "CHECK-EXISTING-NATIVE-INDEX",
+      "cwd": "${NEW_STABLE_FULL_REVIEW_CAPSULE_ROOT}",
+      "argv": [
+        "node",
+        "--preserve-symlinks",
+        "--preserve-symlinks-main",
+        "--import",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/loader.mjs",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "${EXISTING_REVIEWED_BATCH_CONFIG_RELATIVE}"
+      ],
+      "existingScript": {
+        "path": "/home/enpasos/projects/skillpilot/app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "sha256": "eff84dcf0d823c15b0827cb898b30d44f29c7ee219b67b4d2505b134536529cf",
+        "bytes": 64228
+      },
+      "inputs": [
+        "Original paired rounds, actual current-input binding selected by that batch and explicit synthesis/resolutions"
+      ],
+      "writes": [],
+      "conditions": "No --write: validate existing exact index. This is not permission to refresh historical reviewer evidence.",
+      "executedHere": false
+    },
+    {
+      "id": "PREPARE-ONLY-GENUINE-CHANGED-CONTEXT-SUBSET",
+      "cwd": "${NEW_STABLE_FULL_REVIEW_CAPSULE_ROOT}",
+      "argv": [
+        "node",
+        "--preserve-symlinks",
+        "--preserve-symlinks-main",
+        "--import",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/loader.mjs",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "prepare",
+        "--config",
+        "${NEW_BOUNDED_CHANGED_CONTEXT_BATCH_CONFIG_RELATIVE}"
+      ],
+      "existingScript": {
+        "path": "/home/enpasos/projects/skillpilot/app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "sha256": "eff84dcf0d823c15b0827cb898b30d44f29c7ee219b67b4d2505b134536529cf",
+        "bytes": 64228
+      },
+      "inputs": [
+        "Stable current439 full-model base + explicitly selected changed goal IDs"
+      ],
+      "writes": [
+        "New outputDirectory model/HTML/PDF/bundle/campaign/round inputs"
+      ],
+      "conditions": "Only after actual final contextdiff identifies changed pages requiring targeted review. prepare writes artifacts even without --write and refuses existing outputDirectory. No entire439 review restart.",
+      "executedHere": false
+    },
+    {
+      "id": "M-CHECK",
+      "cwd": "${NEW_STABLE_FULL_REVIEW_CAPSULE_ROOT}",
+      "argv": [
+        "node",
+        "--preserve-symlinks",
+        "--preserve-symlinks-main",
+        "--import",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/loader.mjs",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/memory-card-review/canonical-chemistry-full.config.json",
+        "--mode=check"
+      ],
+      "existingScript": {
+        "path": "/home/enpasos/projects/skillpilot/app/scripts/memoryCardReview.ts",
+        "sha256": "e42b154d8557e4ccff249c7cb41ac26b7c40560dd150dbd3255923cd038446f5",
+        "bytes": 49377
+      },
+      "inputs": [
+        "Current650 canonical,439 ordinary M records,80 card records/seven actual decks,67 Memory units,506 leaf scope and39 current visibilityScopes"
+      ],
+      "writes": [],
+      "conditions": "Run against final stable integrated actual compiled context; previous subset/pair checks are not this full gate. No --write-fingerprints/bootstrap; never infer mastery.",
+      "executedHere": false
+    },
+    {
+      "id": "P-OWN-NAMESPACE-CHECK",
+      "cwd": "${NEW_STABLE_FULL_REVIEW_CAPSULE_ROOT}",
+      "argv": [
+        "node",
+        "--preserve-symlinks",
+        "--preserve-symlinks-main",
+        "--import",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/loader.mjs",
+        "app/scripts/positiveGoalEvidenceReview.ts",
+        "--config=${ONE_OF_FINAL_112_OWN_CONFIG_RELATIVE}",
+        "--mode=check"
+      ],
+      "existingScript": {
+        "path": "/home/enpasos/projects/skillpilot/app/scripts/positiveGoalEvidenceReview.ts",
+        "sha256": "179f602f639479b683c5477462c664dd930a0055960eb6320f3eb33c6d8d9ff6",
+        "bytes": 18781
+      },
+      "inputs": [
+        "Each original own reviewId/criteria bytes/run manifests where genuine + current authoritative SEM + exact whole records/actual resource bytes"
+      ],
+      "writes": [],
+      "conditions": "Use final namespace index112 disjoint scopes covering439. Never validate all records under one generic criteria/config or rewrite old criteria identities.",
+      "executedHere": false
+    },
+    {
+      "id": "A-CHECK",
+      "cwd": "${NEW_STABLE_FULL_REVIEW_CAPSULE_ROOT}",
+      "argv": [
+        "node",
+        "--preserve-symlinks",
+        "--preserve-symlinks-main",
+        "--import",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/loader.mjs",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=${ONE_OF_CURRENT_75_A_CONFIG_RELATIVE}",
+        "--mode=check"
+      ],
+      "existingScript": {
+        "path": "/home/enpasos/projects/skillpilot/app/scripts/semanticAtomicityReview.ts",
+        "sha256": "b3052145387d8fd9414af100e0aa61f2ec083875d852c9c87ea4aa2ed91f56d9",
+        "bytes": 12015
+      },
+      "inputs": [
+        "Current semantic-class source and its exact original own evidence/criteria/config namespaces"
+      ],
+      "writes": [],
+      "conditions": "Preserve classes; current technical source bindings are separate from scientific decisions.",
+      "executedHere": false
+    },
+    {
+      "id": "V-FRESHNESS-CHECK",
+      "cwd": "${NEW_STABLE_FULL_REVIEW_CAPSULE_ROOT}",
+      "argv": [
+        "node",
+        "--preserve-symlinks",
+        "--preserve-symlinks-main",
+        "--import",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/loader.mjs",
+        "app/scripts/generateGoalVisualizationQaLedgers.ts",
+        "--check",
+        "--subject=chemie"
+      ],
+      "existingScript": {
+        "path": "/home/enpasos/projects/skillpilot/app/scripts/generateGoalVisualizationQaLedgers.ts",
+        "sha256": "7dac3f8c013c05042cb01d922429e6c7db203f3a511b57bc06f154d0922afa48",
+        "bytes": 16538
+      },
+      "inputs": [
+        "Current canonical resources, actual canonical/public asset bytes, current exact AI-V ledger metadata"
+      ],
+      "writes": [],
+      "conditions": "The tool mkdirs QA root if missing even in --check. Ensure root exists and physical complete assets are staged; do not transfer old human approvals or equate earlier V reviews with new Native-D votes.",
+      "executedHere": false
+    },
+    {
+      "id": "FULL439-CENTRAL-DIAGNOSTIC",
+      "cwd": "${NEW_STABLE_FULL_REVIEW_CAPSULE_ROOT}",
+      "argv": [
+        "node",
+        "--preserve-symlinks",
+        "--preserve-symlinks-main",
+        "--import",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/loader.mjs",
+        "app/scripts/reportDeepUnderstandingRollout.ts",
+        "--config=${NEW_CURRENT439_CENTRAL_CONFIG_RELATIVE}",
+        "--mode=report",
+        "--format=json"
+      ],
+      "existingScript": {
+        "path": "/home/enpasos/projects/skillpilot/app/scripts/reportDeepUnderstandingRollout.ts",
+        "sha256": "a13dff507b0df8e3d78aea16002300ed283ba943a5da184380cc53c818af8e80",
+        "bytes": 83166
+      },
+      "inputs": [
+        "Exact current439 subject config derived from L6 private105D/112P/75A/M/V config with all unchanged history+current namespaces and genuine new review successors"
+      ],
+      "writes": [
+        "stdout only; caller may capture to new E diagnostic path"
+      ],
+      "conditions": "Only after final all-seven R stats/guards are stable and complete dependencies are staged. Invokes stock child checks; not a no-op or metadata-only operation. No final completion claim from diagnostic output alone.",
+      "executedHere": false
+    },
+    {
+      "id": "FULL439-CENTRAL-CHECK",
+      "cwd": "${NEW_STABLE_FULL_REVIEW_CAPSULE_ROOT}",
+      "argv": [
+        "node",
+        "--preserve-symlinks",
+        "--preserve-symlinks-main",
+        "--import",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/loader.mjs",
+        "app/scripts/reportDeepUnderstandingRollout.ts",
+        "--config=${NEW_CURRENT439_CENTRAL_CONFIG_RELATIVE}",
+        "--mode=check",
+        "--format=json"
+      ],
+      "existingScript": {
+        "path": "/home/enpasos/projects/skillpilot/app/scripts/reportDeepUnderstandingRollout.ts",
+        "sha256": "a13dff507b0df8e3d78aea16002300ed283ba943a5da184380cc53c818af8e80",
+        "bytes": 83166
+      },
+      "inputs": [
+        "Same exact stable fully populated current439 central inputs"
+      ],
+      "writes": [
+        "stdout only"
+      ],
+      "conditions": "Fail exit if blocking issues. Exact nonempty denominator/current IDs, all five gate intersections and all six required checks are decisive.",
+      "executedHere": false
+    },
+    {
+      "id": "GENERATE-CQR303-AND-STATUS",
+      "cwd": "${NEW_STABLE_FULL_REVIEW_CAPSULE_ROOT}",
+      "argv": [
+        "node",
+        "--preserve-symlinks",
+        "--preserve-symlinks-main",
+        "--import",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/loader.mjs",
+        "app/scripts/generateCurriculumQualityStatus.ts"
+      ],
+      "existingScript": {
+        "path": "/home/enpasos/projects/skillpilot/app/scripts/generateCurriculumQualityStatus.ts",
+        "sha256": "514bab03b7c041655e0063a4bf6ecb7ac4cd51edda9581e76182e980aa384957",
+        "bytes": 274591
+      },
+      "inputs": [
+        "Default central registry at curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json selecting the new Chemie439 subject context; all other subject scopes and route/source data retained"
+      ],
+      "writes": [
+        "New capsule docs/qa-ci/status/curriculum-quality-status.json/.md and app generated status artifacts"
+      ],
+      "conditions": "This runs applicability compilation internally. Do not run before source agent final R or repeat it casually. Root must decide later whether final status generation is the one authorized full status gate. The standalone custom --config central result is not automatically used by this script.",
+      "executedHere": false
+    },
+    {
+      "id": "CHECK-CURRENT-STATUS-AND-CQR303",
+      "cwd": "${NEW_STABLE_FULL_REVIEW_CAPSULE_ROOT}",
+      "argv": [
+        "node",
+        "--preserve-symlinks",
+        "--preserve-symlinks-main",
+        "--import",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/loader.mjs",
+        "app/scripts/generateCurriculumQualityStatus.ts",
+        "--check"
+      ],
+      "existingScript": {
+        "path": "/home/enpasos/projects/skillpilot/app/scripts/generateCurriculumQualityStatus.ts",
+        "sha256": "514bab03b7c041655e0063a4bf6ecb7ac4cd51edda9581e76182e980aa384957",
+        "bytes": 274591
+      },
+      "inputs": [
+        "Same default current registry/config graph and generated status bytes"
+      ],
+      "writes": [],
+      "conditions": "Also runs applicability compilation internally; not authorized by this read-only map and not a cheap compare-only check.",
+      "executedHere": false
+    },
+    {
+      "id": "PROTECTED-FLOOR-CHECK",
+      "cwd": "${NEW_STABLE_FULL_REVIEW_CAPSULE_ROOT}",
+      "argv": [
+        "node",
+        "--preserve-symlinks",
+        "--preserve-symlinks-main",
+        "--import",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/loader.mjs",
+        "app/scripts/checkCurriculumMaturityFloors.ts"
+      ],
+      "existingScript": {
+        "path": "/home/enpasos/projects/skillpilot/app/scripts/checkCurriculumMaturityFloors.ts",
+        "sha256": "3b4a68687835e8067bfd74514c573dfef68029837f10a458ac5569e54faead5e",
+        "bytes": 4701
+      },
+      "inputs": [
+        "New capsule docs/qa-ci/status/curriculum-quality-status.json and app/scripts/config/curriculum-maturity-floor-policy.json"
+      ],
+      "writes": [],
+      "conditions": "Reads all protected curricula from actual generated status. Chemistry floor is M6 in pinned policy; M7 remains a separate strict claim. Do not edit floor policy or infer all-protected pass from Chemie alone.",
+      "executedHere": false
+    }
+  ],
+  "existingSubjectConfig": {
+    "path": "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/chemie-shared640-recycling-native-author-capsule-L6-v1/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-native36-contexts-four-images-open-private-L6-technical-20261017-v1/central.current439.native36-contexts-four-images-open.private.config.json",
+    "sha256": "333d21c6444a830651e1731dc69da66bc532b63871c7624ffde2fd3f3874faf0",
+    "bytes": 173120
+  },
+  "actualExistingFull439BaseInput": {
+    "path": "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/chemie-shared640-recycling-native-author-capsule-L6-v1/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current439-paired-generic-SekI-and-NI-private-L6-technical-20261016-v1/base.full439.current-native-inputs.config.json",
+    "sha256": "1a97e82f542725dccdc05f69ff7de90bc11a86eeb147ca05e35aa2650ec94c15",
+    "bytes": 1185
+  },
+  "actualExistingPrivateFull439View": {
+    "path": "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/chemie-shared640-recycling-native-author-capsule-L6-v1/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current439-paired-F03-private-L6-technical-20261016-v1/VIEW.full439.final-native-review-only.json",
+    "sha256": "10b2a4a0906fbd55d05a0d52544c76b4176f8dfd2805e8c3b0dbb3618a46691d",
+    "bytes": 10003
+  },
+  "latestActualCompiledRStatisticsForAllSeven": "PENDING from source agent; not read or fabricated here",
+  "pre7SnapshotOnly": {
+    "path": "/mnt/e/skillpilot-chemie-L7-20261017/paired-package03-04-05-and-HB7f-actual-current650-technical-v1/candidate.canonical650.paired03-04-plus-NI05-and-HB7f.private.json",
+    "sha256": "4eca52fe0e2fa45f2c4aa0780a38c3f78b1f0da6d6cff7eb379815c170104837",
+    "bytes": 2848067
+  },
+  "importantRootAndCwdBoundary": "Use a NEW physically complete owned E review capsule. Exact stock entry/helper code must resolve import.meta repositoryRoot there; avoid shared-script symlink root drift and silent main-guard no-op. The preserve-symlinks launcher matches earlier actual successful native commands; also verify copied entry/helper bytepins and node_modules/tsx availability. Do not execute commands at protected Main/L6/L7 roots.",
+  "nativeContextDiffAPI": {
+    "existingDedicatedFull439DiffCLI": "not located; do not invent one",
+    "stockExports": [
+      "loadGoalBookBuildInputs(configPath, repositoryRoot) from app/scripts/goalBookModel.ts",
+      "buildGoalDescriptionCanonicalContext(canonicalGoal) from app/scripts/validateGoalDescriptionReviewCampaign.ts",
+      "buildGoalDescriptionReviewInput({bundle,reviewInput,landscape}) and fingerprintGoalDescriptionReviewInput from the same module",
+      "fingerprintSemanticKindSourceGoal from app/scripts/goalBookModel.ts",
+      "fingerprintGoalForPositiveEvidence / fingerprintPositiveGoalEvidenceReviewInput / fingerprintPositiveGoalEvidenceProfile from app/scripts/positiveGoalEvidenceProfileModel.ts"
+    ],
+    "workAfterStableR": "Generate exactly current439 model under new config, compare each selected original resolution owner whole current goal and embedded page/P/resource bindings against actual current stock payloads. Distinguish unchanged per-goal science, raw applicability/Requires/DEEN/P/image changes and purely global pagination/bundle differences; retain original frozen embedded pages and original round manifests. Only genuine changed native contexts become bounded new paired reviews.",
+    "stockCanonicalContextFields": [
+      "shortKey",
+      "phase",
+      "core",
+      "weight",
+      "tags",
+      "competencyRefs",
+      "sourceRef",
+      "dimensionTags",
+      "raw applicability",
+      "type",
+      "nodeKind",
+      "semanticAtomic",
+      "semanticKind",
+      "applicabilityFromRequires",
+      "applicabilityMappingInheritance",
+      "applicabilityProjection",
+      "requires",
+      "contains",
+      "examples"
+    ],
+    "notIncludedInStockDCanonicalContext": [
+      "extendedData.skillPilotAcquisitionExtensions",
+      "extendedData.applicabilityOverrides"
+    ],
+    "consequence": "Do not equate metadata-only scope additions with new native-D canonical-context changes. New science scope provenance, actual compiler applicability and SEM source fingerprints remain independent obligations. Do not claim native reviewers saw annotation fields absent from their payload."
+  },
+  "requiredFinalConfigurationConditions": [
+    "Stable all-seven C650 and39wholeviews, final actual R statistics/front-end exclusions and warnings preserved; no earlier partial snapshot advertised as final",
+    "Both overlap-author confirmations and root exact whole-object acceptance, all actual independent package provenance; explicit lossless overlap75e/503 guards",
+    "New whole439 P binding under112 own criteria/review namespaces; stock mismatches are concrete open contexts, never blind criteria migration or whole439 historical restart",
+    "Current source-bound SEM650 preserving classifications; current M439/cards80/decks7/units67/scope506/visibility39 and current VQA/actual public+canonical PNG/JPEG bytes",
+    "Populate all105 original/current D indices and transitive resolution/round/manifest/bundle/page/PDF/HTML/canonical resource files byte-exact, retain supersessions214/withdrawals7/semanticRetirements3 until genuine reviewed successor evidence justifies changes",
+    "Physically populate75 Aconfig references and their source ledgers; use new current112 Pfragment paths instead of missing old Pconfig addresses",
+    "Derive a new current439 subject config from latest L6 private config, then bind this subject into a NEW default multi-subject registry for CQR303; preserve other subjects and all protected floors",
+    "Measure exact current curricularAtomic set and actual generated native full439 model IDset before calling it current439; private full view is canonical-subtree based and carries no new runtime route",
+    "Existing next20 has20 input goals but only16 finalized D resolutions; preserve four explicit image deferrals as open until actual current paired native evidence",
+    "Do not generate actual Central/model/gate reports until final R and integration prerequisites exist; this map creates no new run IDs, votes, Human approval or M7 closure"
+  ],
+  "packageJsonSideEffects": {
+    "quality:curriculum-status": "npm prehook runs quality:memory-card-review:report:all and writes reports; avoid using it casually for a bounded diagnostic",
+    "quality:curriculum-status:check": "runs generator --check AND maturity-floor checker; generator itself recompiles applicability",
+    "quality:memory-card-review:report:all": "writes reports for every configured M subject; not needed to locate commands",
+    "directScriptCommands": "Above argv expose exact tool behavior and let root control isolated output scope later"
+  },
+  "newRunsExecuted": [],
+  "MainL6L7Writes": false,
+  "M7": false,
+  "HumanApproval": false
+}

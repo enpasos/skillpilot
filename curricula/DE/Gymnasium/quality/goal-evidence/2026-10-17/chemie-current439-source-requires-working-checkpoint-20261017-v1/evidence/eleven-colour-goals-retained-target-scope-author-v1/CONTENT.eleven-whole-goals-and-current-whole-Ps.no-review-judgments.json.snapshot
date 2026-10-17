@@ -1,0 +1,1903 @@
+{
+  "inventoryPin": {
+    "path": "/mnt/e/skillpilot-chemie-L7-20261017/actual650-current-concentration-and-foundations-stock-applicability-root-v1/INVENTORY.independent-b.current153-grouped-goal-view-cause.v2.json",
+    "sha256": "7efdd351199547b6199b37f058843641aa698dad2b107f341ec47c84526270f5"
+  },
+  "baseCanonicalPin": {
+    "path": "/mnt/e/skillpilot-chemie-L7-20261017/paired-twenty-foundations-and-coordinate-priors-actual-whole650-assembly-root-v1/candidate.canonical650.paired-c95-twenty-foundations-and-coordinate-priors.private.json",
+    "sha256": "48482f9f092028b1f33c41e9223c250dbeb0f00750614f42cb613b6f72cd51dd",
+    "bytes": 2722686
+  },
+  "positiveProfileContentSource": {
+    "path": "/mnt/e/skillpilot-chemie-L7-20261017/current650-P35-SEM-candidate-bindings-independent-b-v1/capsule/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current650-P35-and-SEM-inactive-technical-candidate-v1/P439.actual-current-candidate.404-plus9-plus24-plus2.jsonl",
+    "sha256": "f6c111722952d3cfa2ccb0c49995fd096be2b3ba215dfe6c0dbefe89594e93aa"
+  },
+  "wholeGoalsAndScientificProfiles": [
+    {
+      "wholeGoal": {
+        "id": "54bc6ca0-b770-5f10-ac54-bcc1d04298f5",
+        "shortKey": "canonical_chemistry_upper_dye_chemistry_emission_absorption_color",
+        "title": "Emission und Absorption zur Farbigkeit unterscheiden",
+        "titleEn": "Distinguish emission and absorption for color",
+        "description": "Die lernende Person kann zwischen Emission und Absorption verschiedener Lichtwellenlängen unterscheiden und damit Ursachen von Farbigkeit beschreiben.",
+        "descriptionEn": "The learner can distinguish between emission and absorption of different wavelengths of light and use this to describe causes of color.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical",
+          "SekII"
+        ],
+        "contains": [],
+        "requires": [
+          "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-chemistry",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "PK2_MODELLIEREN",
+            "PK3_BEWERTEN",
+            "PK4_KOMMUNIZIEREN"
+          ],
+          "guidingIdeas": [
+            "BC_AUFBAU",
+            "BC_REAKTION",
+            "BC_ENERGIE"
+          ],
+          "phase": "Q4",
+          "area": "Farbstoffchemie",
+          "topicCode": "CANONICAL.CHEMISTRY.UPPER.DYES.EMISSION_ABSORPTION_COLOR"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BY",
+            "DE-HB",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SN",
+            "DE-ST"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+            "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+            "sourceGoalId": "a019534e-c548-5952-a166-8e9ad3153653"
+          },
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "54bc6ca0-b770-5f10-ac54-bcc1d04298f5",
+            "title": "Visualisierung: Emission und Absorption zur Farbigkeit unterscheiden",
+            "url": "/assets/goal-visualizations/chemie/54bc6ca0-b770-5f10-ac54-bcc1d04298f5/54bc6ca0-b770-5f10-ac54-bcc1d04298f5.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Emission und Absorption zur Farbigkeit unterscheiden.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Emission und Absorption zur Farbigkeit unterscheiden\". Die lernende Person kann zwischen Emission und Absorption verschiedener Lichtwellenlängen unterscheiden und damit Ursachen von Farbigkeit beschreiben.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeProfile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Emission gibt Photonen ab; Absorption entzieht der einfallenden Strahlung bestimmte Wellenlängen.",
+            "essentialUnderstandingEn": "Emission releases photons; absorption removes particular wavelengths from incident light.",
+            "observablePerformanceDe": "Unterscheidet Energiefluss und Spektrensignal.",
+            "observablePerformanceEn": "Distinguishes energy flow and spectral signals."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Beobachtete Farbe hängt von der austretenden Strahlung und Beleuchtung ab.",
+            "essentialUnderstandingEn": "Observed color depends on outgoing radiation and illumination.",
+            "observablePerformanceDe": "Leitet Farbe in einer veränderten Beleuchtungssituation ab.",
+            "observablePerformanceEn": "Predicts color under changed illumination."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "v1",
+            "textDe": "Selbstleuchten versus beleuchtetes Material",
+            "textEn": "Self-emission versus illuminated material"
+          },
+          {
+            "id": "v2",
+            "textDe": "Lichtquelle und Filter",
+            "textEn": "Light source and filter"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "54bc6ca0-case-1",
+            "taskDemandDe": "Idealisiert: Eine LED sendet im Dunkeln Licht bei 470 nm aus. Eine nicht fluoreszierende klare Lösung absorbiert aus weißem Licht vor allem 450–490 nm und lässt längere sichtbare Wellenlängen passieren.\n1. Ordne beide Vorgänge Emission oder Absorption zu und beschreibe die Richtung des Energieübergangs zwischen Materie und Licht.\n2. Erkläre die blaue LED-Farbe und die näherungsweise gelbe Durchsichtfarbe der Lösung; sage begründet voraus, ob die Lösung im Dunkeln selbst leuchtet.",
+            "taskDemandEn": "Idealized: an LED emits 470 nm light in darkness. A clear nonfluorescent solution absorbs mostly 450–490 nm from white light and transmits longer visible wavelengths.\n1. Classify both processes as emission or absorption and describe energy transfer between matter and light.\n2. Explain the blue LED color and approximate yellow transmitted color of the solution; predict with reasons whether it glows in darkness.",
+            "expectedPerformanceDe": "1. Die LED emittiert: angeregte Materie gibt Energie als Photon ab. Die Lösung absorbiert: eingestrahlte Photonen übertragen Energie an Moleküle. Absorbierte blaue Photonen sind kein blaues Emissionssignal.\n2. 470 nm wird als blau wahrgenommen. Die Lösung entzieht dem weißen Licht den Blauanteil; durchgelassene Anteile ergeben näherungsweise gelb. Ohne Beleuchtung fehlt eingestrahltes Licht; bei ausgeschlossener Fluoreszenz und eigener Anregung leuchtet sie nicht.",
+            "expectedPerformanceEn": "1. The LED emits: excited matter releases energy as photons. The solution absorbs: incoming photons transfer energy to molecules. Absorbed blue photons are not a blue emission signal.\n2. 470 nm is perceived as blue. The solution removes blue from white light; transmitted components appear approximately yellow. Without illumination there is no incident light; with fluorescence and independent excitation excluded it does not glow.",
+            "understandingFocusDe": "Die LED emittiert: angeregte Materie gibt Energie als Photon ab. Die Lösung absorbiert: eingestrahlte Photonen übertragen Energie an Moleküle. Absorbierte blaue Photonen sind kein blaues Emissionssignal. / 470 nm wird als blau wahrgenommen. Die Lösung entzieht dem weißen Licht den Blauanteil; durchgelassene Anteile ergeben näherungsweise gelb. Ohne Beleuchtung fehlt eingestrahltes Licht; bei ausgeschlossener Fluoreszenz und eigener Anregung leuchtet sie nicht.",
+            "understandingFocusEn": "The LED emits: excited matter releases energy as photons. The solution absorbs: incoming photons transfer energy to molecules. Absorbed blue photons are not a blue emission signal. / 470 nm is perceived as blue. The solution removes blue from white light; transmitted components appear approximately yellow. Without illumination there is no incident light; with fluorescence and independent excitation excluded it does not glow."
+          },
+          {
+            "id": "54bc6ca0-case-2",
+            "taskDemandDe": "Modell: Eine Quelle emittiert nur 630 nm. Ein Filter lässt 520–560 nm passieren, absorbiert aber 630 nm vollständig; er fluoresziert nicht. Danach wird die rote Quelle durch eine 540-nm-Quelle ersetzt.\n1. Unterscheide den Emissionsvorgang der Quelle vom Absorptionsvorgang des Filters und erkläre, ob der Filter aus rotem Licht grünes Licht erzeugt.\n2. Leite die Beobachtung hinter dem Filter für beide Quellen aus den Wellenlängenbereichen ab.",
+            "taskDemandEn": "Model: a source emits only 630 nm. A filter transmits 520–560 nm but completely absorbs 630 nm and does not fluoresce. The red source is then replaced by a 540 nm source.\n1. Distinguish emission by the source from absorption by the filter and explain whether the filter produces green light from red light.\n2. Predict the observation behind the filter for both sources using the wavelength ranges.",
+            "expectedPerformanceDe": "1. Die Quelle sendet Photonen ihrer vorgegebenen Wellenlänge aus. Der Filter nimmt Energie der 630-nm-Photonen auf; er erzeugt nach den Vorgaben keine 540-nm-Photonen. „Grün“ bedeutet hier Durchlassen, keine Farbkonversion.\n2. Mit 630 nm erscheint die Durchsicht dunkel, da die einzige eingestrahlte Wellenlänge absorbiert wird. Mit 540 nm erscheint sie grün, weil diese Wellenlänge im Durchlassbereich liegt.",
+            "expectedPerformanceEn": "1. The source emits photons at its specified wavelength. The filter takes up energy from 630 nm photons; under the conditions given it produces no 540 nm photons. “Green” describes transmission, not conversion.\n2. With 630 nm the transmitted view is dark because the only incident wavelength is absorbed. With 540 nm it appears green because that wavelength lies in the passband.",
+            "understandingFocusDe": "Die Quelle sendet Photonen ihrer vorgegebenen Wellenlänge aus. Der Filter nimmt Energie der 630-nm-Photonen auf; er erzeugt nach den Vorgaben keine 540-nm-Photonen. „Grün“ bedeutet hier Durchlassen, keine Farbkonversion. / Mit 630 nm erscheint die Durchsicht dunkel, da die einzige eingestrahlte Wellenlänge absorbiert wird. Mit 540 nm erscheint sie grün, weil diese Wellenlänge im Durchlassbereich liegt.",
+            "understandingFocusEn": "The source emits photons at its specified wavelength. The filter takes up energy from 630 nm photons; under the conditions given it produces no 540 nm photons. “Green” describes transmission, not conversion. / With 630 nm the transmitted view is dark because the only incident wavelength is absorbed. With 540 nm it appears green because that wavelength lies in the passband."
+          }
+        ]
+      },
+      "profileSourceLine": 243,
+      "mechanicalTargetExclusions": {
+        "goalId": "54bc6ca0-b770-5f10-ac54-bcc1d04298f5",
+        "viewIds": [
+          "de-bw-gym-chemistry-gk",
+          "de-bw-gym-chemistry-lk"
+        ],
+        "missingJurisdictions": [
+          "DE-BW"
+        ],
+        "compiledApplicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BY",
+            "DE-HB",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SN",
+            "DE-ST"
+          ]
+        },
+        "evidenceJurisdictionsByKind": {
+          "mapping": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BY"
+          ],
+          "requires-closure": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BY",
+            "DE-HB",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SN",
+            "DE-ST"
+          ],
+          "provenance": [
+            "DE-BY"
+          ]
+        }
+      }
+    },
+    {
+      "wholeGoal": {
+        "id": "87d8cc68-fe82-5273-9e43-c18b566ecb6c",
+        "shortKey": "canonical_chemistry_upper_dye_chemistry_delocalized_electrons_energy_levels",
+        "title": "Farbigkeit durch delokalisierte Elektronen erklären",
+        "titleEn": "Explain color through delocalized electrons",
+        "description": "Die lernende Person kann die Absorption bestimmter Lichtwellenlängen als Anregung delokalisierter Elektronen erklären und Farbigkeit mithilfe eines Energiestufenschemas begründen.",
+        "descriptionEn": "The learner can explain absorption of specific wavelengths as excitation of delocalized electrons and justify color using an energy-level scheme.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical",
+          "SekII"
+        ],
+        "contains": [],
+        "requires": [
+          "54bc6ca0-b770-5f10-ac54-bcc1d04298f5"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-chemistry",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "PK2_MODELLIEREN",
+            "PK3_BEWERTEN",
+            "PK4_KOMMUNIZIEREN"
+          ],
+          "guidingIdeas": [
+            "BC_AUFBAU",
+            "BC_REAKTION",
+            "BC_ENERGIE"
+          ],
+          "phase": "Q4",
+          "area": "Farbstoffchemie",
+          "topicCode": "CANONICAL.CHEMISTRY.UPPER.DYES.DELOCALIZED_ELECTRONS_ENERGY_LEVELS"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BY",
+            "DE-HB",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SN",
+            "DE-ST"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+            "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+            "sourceGoalId": "84a0167c-f57f-5720-9ac1-6b1423cd64fb"
+          },
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "87d8cc68-fe82-5273-9e43-c18b566ecb6c",
+            "title": "Visualisierung: Farbigkeit durch delokalisierte Elektronen erklären",
+            "url": "/assets/goal-visualizations/chemie/87d8cc68-fe82-5273-9e43-c18b566ecb6c/87d8cc68-fe82-5273-9e43-c18b566ecb6c.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Farbigkeit durch delokalisierte Elektronen erklären.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Farbigkeit durch delokalisierte Elektronen erklären\". Die lernende Person kann die Absorption bestimmter Lichtwellenlängen als Anregung delokalisierter Elektronen erklären und Farbigkeit mithilfe eines Energiestufenschemas begründen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeProfile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Absorption hebt Elektronen um eine erlaubte Energiedifferenz an; ΔE=hc/λ verbindet Übergang und Spektrum.",
+            "essentialUnderstandingEn": "Absorption excites electrons across an allowed energy difference; ΔE=hc/λ connects transition and spectrum.",
+            "observablePerformanceDe": "Zeichnet Energieniveaus und ordnet absorbierte Photonen zu.",
+            "observablePerformanceEn": "Draws energy levels and assigns absorbed photons."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Sichtbare Farbigkeit verlangt passende Absorption im sichtbaren Bereich und austretendes Restlicht.",
+            "essentialUnderstandingEn": "Visible color requires suitable visible absorption and outgoing residual light.",
+            "observablePerformanceDe": "Überträgt einen geänderten Energieabstand auf Farbe und Modellgrenze.",
+            "observablePerformanceEn": "Transfers a changed energy gap to color and a model limit."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "v1",
+            "textDe": "Sichtbarer Übergang versus UV",
+            "textEn": "Visible transition versus ultraviolet"
+          },
+          {
+            "id": "v2",
+            "textDe": "Geänderte Konjugation und Energieabstand",
+            "textEn": "Changed conjugation and energy gap"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "87d8cc68-case-1",
+            "taskDemandDe": "Modellfarbstoff A hat einen erlaubten Übergang von 2,48 eV, B einen von 4,13 eV. hc=1240 eV·nm. Beide haben im Modell nur diese Bande; A ist nicht fluoreszierend. Sichtbarer Bereich hier 400–700 nm.\n1. Zeichne für A und B ein Energienstufenschema mit aufwärts gerichtetem Absorptionspfeil und berechne jeweils die absorbierte Wellenlänge.\n2. Begründe, welches System durch diese Bande unter Weißlicht sichtbar farbig sein kann; erkläre, warum die absorbierte Wellenlänge nicht direkt seine Durchsichtfarbe ist.",
+            "taskDemandEn": "Model dye A has an allowed transition of 2.48 eV, B one of 4.13 eV. hc=1240 eV·nm. Each has only this band in the model; A is nonfluorescent. The visible range is 400–700 nm here.\n1. Draw energy-level schemes for A and B with upward absorption arrows and calculate each absorbed wavelength.\n2. Explain which system can be visibly colored by this band under white light; explain why the absorbed wavelength is not its transmitted color.",
+            "expectedPerformanceDe": "1. Je zwei Niveaus mit Abstand ΔE und Pfeil vom unteren zum oberen. A: 1240/2,48=500 nm; B: 1240/4,13≈300 nm. Der Pfeil beschreibt Energieaufnahme des delokalisierten Elektronensystems.\n2. A absorbiert sichtbar, B nach dem Modell nur UV. A kann durch Entzug von 500-nm-Licht farbig erscheinen; die Farbe stammt aus dem übrigen durchgelassenen Spektrum, nicht aus dem absorbierten Photon. Ohne weitere sichtbare Banden ist B durchsichtig farblos.",
+            "expectedPerformanceEn": "1. Each diagram has two levels separated by ΔE and an arrow from lower to upper. A: 1240/2.48=500 nm; B: 1240/4.13≈300 nm. The arrow represents energy uptake by the delocalized electron system.\n2. A absorbs visibly; B absorbs only ultraviolet in the model. A can appear colored by removing 500 nm light; color comes from the remaining transmitted spectrum, not the absorbed photon. Without other visible bands B is colorless in transmission.",
+            "understandingFocusDe": "Je zwei Niveaus mit Abstand ΔE und Pfeil vom unteren zum oberen. A: 1240/2,48=500 nm; B: 1240/4,13≈300 nm. Der Pfeil beschreibt Energieaufnahme des delokalisierten Elektronensystems. / A absorbiert sichtbar, B nach dem Modell nur UV. A kann durch Entzug von 500-nm-Licht farbig erscheinen; die Farbe stammt aus dem übrigen durchgelassenen Spektrum, nicht aus dem absorbierten Photon. Ohne weitere sichtbare Banden ist B durchsichtig farblos.",
+            "understandingFocusEn": "Each diagram has two levels separated by ΔE and an arrow from lower to upper. A: 1240/2.48=500 nm; B: 1240/4.13≈300 nm. The arrow represents energy uptake by the delocalized electron system. / A absorbs visibly; B absorbs only ultraviolet in the model. A can appear colored by removing 500 nm light; color comes from the remaining transmitted spectrum, not the absorbed photon. Without other visible bands B is colorless in transmission."
+          },
+          {
+            "id": "87d8cc68-case-2",
+            "taskDemandDe": "Zwei idealisierte Farbstoffformen mit gleicher Konzentration: lange planare Konjugation ΔE=2,00 eV; nach sp³-Unterbrechung ΔE=3,10 eV. hc=1240 eV·nm. Nur die angegebene Bande wird betrachtet; reale Moleküle besitzen weitere Übergänge.\n1. Stelle beide Energieabstände dar, berechne die Wellenlängen und ordne die Richtung der Spektralverschiebung zu.\n2. Erkläre die Beziehung zwischen unterbrochener Delokalisierung und den gegebenen Energieabständen; nenne eine Grenze der Vorhersage der tatsächlichen Farbe aus einem einzigen Übergang.",
+            "taskDemandEn": "Two idealized dye forms at equal concentration: long planar conjugation ΔE=2.00 eV; after sp³ interruption ΔE=3.10 eV. hc=1240 eV·nm. Only the stated band is considered; real molecules have additional transitions.\n1. Represent both energy gaps, calculate wavelengths and identify the direction of spectral shift.\n2. Explain the relation between interrupted delocalization and the supplied energy gaps; state one limit of predicting actual color from a single transition.",
+            "expectedPerformanceDe": "1. 2,00 eV→620 nm, 3,10 eV→400 nm. Der größere Abstand benötigt ein energiereicheres Photon und verschiebt die Bande zu kürzeren Wellenlängen, also hypsochrom. Beide Schemata haben aufwärts gerichtete Absorptionspfeile.\n2. Im angegebenen Vergleich erhöht die sp³-Unterbrechung den erlaubten Übergangsabstand gegenüber der langen Konjugation. Die tatsächliche Farbe hängt auch von Bandenbreite, weiteren Übergängen und Beleuchtung ab; ein ΔE-Wert liefert allein keine exakte Farbe.",
+            "expectedPerformanceEn": "1. 2.00 eV→620 nm and 3.10 eV→400 nm. The larger gap requires a higher-energy photon and shifts the band to shorter wavelengths, a hypsochromic shift. Both schemes have upward absorption arrows.\n2. In the supplied comparison sp³ interruption increases the allowed transition gap relative to long conjugation. Actual color also depends on bandwidth, other transitions and illumination; one ΔE alone does not determine an exact color.",
+            "understandingFocusDe": "2,00 eV→620 nm, 3,10 eV→400 nm. Der größere Abstand benötigt ein energiereicheres Photon und verschiebt die Bande zu kürzeren Wellenlängen, also hypsochrom. Beide Schemata haben aufwärts gerichtete Absorptionspfeile. / Im angegebenen Vergleich erhöht die sp³-Unterbrechung den erlaubten Übergangsabstand gegenüber der langen Konjugation. Die tatsächliche Farbe hängt auch von Bandenbreite, weiteren Übergängen und Beleuchtung ab; ein ΔE-Wert liefert allein keine exakte Farbe.",
+            "understandingFocusEn": "2.00 eV→620 nm and 3.10 eV→400 nm. The larger gap requires a higher-energy photon and shifts the band to shorter wavelengths, a hypsochromic shift. Both schemes have upward absorption arrows. / In the supplied comparison sp³ interruption increases the allowed transition gap relative to long conjugation. Actual color also depends on bandwidth, other transitions and illumination; one ΔE alone does not determine an exact color."
+          }
+        ]
+      },
+      "profileSourceLine": 253,
+      "mechanicalTargetExclusions": {
+        "goalId": "87d8cc68-fe82-5273-9e43-c18b566ecb6c",
+        "viewIds": [
+          "de-bw-gym-chemistry-gk",
+          "de-bw-gym-chemistry-lk"
+        ],
+        "missingJurisdictions": [
+          "DE-BW"
+        ],
+        "compiledApplicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BY",
+            "DE-HB",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SN",
+            "DE-ST"
+          ]
+        },
+        "evidenceJurisdictionsByKind": {
+          "mapping": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BY",
+            "DE-HB",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SN",
+            "DE-ST"
+          ],
+          "provenance": [
+            "DE-BY"
+          ]
+        }
+      }
+    },
+    {
+      "wholeGoal": {
+        "id": "c8f51eac-c131-58a8-8d00-0fcbbe4bc18c",
+        "shortKey": "canonical_chemistry_upper_dye_chemistry_absorbed_reflected_light",
+        "title": "Absorbiertes und reflektiertes Licht verknüpfen",
+        "titleEn": "Relate absorbed and reflected light",
+        "description": "Die lernende Person kann die Farbigkeit von Stoffen über den Zusammenhang zwischen absorbierten und reflektierten Lichtwellenlängen erklären.",
+        "descriptionEn": "The learner can explain the color of substances through the relationship between absorbed and reflected wavelengths of light.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical",
+          "SekII"
+        ],
+        "contains": [],
+        "requires": [
+          "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-chemistry",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "PK2_MODELLIEREN",
+            "PK3_BEWERTEN",
+            "PK4_KOMMUNIZIEREN"
+          ],
+          "guidingIdeas": [
+            "BC_AUFBAU",
+            "BC_REAKTION",
+            "BC_ENERGIE"
+          ],
+          "phase": "Q4",
+          "area": "Farbstoffchemie",
+          "topicCode": "CANONICAL.CHEMISTRY.UPPER.DYES.ABSORBED_REFLECTED_LIGHT"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+            "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+            "sourceGoalId": "d3682adf-a80c-5d7e-bd8d-18e39dbd33ed"
+          },
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "c8f51eac-c131-58a8-8d00-0fcbbe4bc18c",
+            "title": "Visualisierung: Absorbiertes und reflektiertes Licht verknüpfen",
+            "url": "/assets/goal-visualizations/chemie/c8f51eac-c131-58a8-8d00-0fcbbe4bc18c/c8f51eac-c131-58a8-8d00-0fcbbe4bc18c.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Absorbiertes und reflektiertes Licht verknüpfen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Absorbiertes und reflektiertes Licht verknüpfen\". Die lernende Person kann die Farbigkeit von Stoffen über den Zusammenhang zwischen absorbierten und reflektierten Lichtwellenlängen erklären.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeProfile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Die Oberfläche reflektiert die nicht absorbierten Anteile der Beleuchtung; Farben sind keine Stoffetiketten unabhängig vom Licht.",
+            "essentialUnderstandingEn": "A surface reflects nonabsorbed illumination components; color is not independent of the light.",
+            "observablePerformanceDe": "Verknüpft Spektralanteile von Einfall, Absorption und Reflexion.",
+            "observablePerformanceEn": "Connects spectral components of incident, absorbed and reflected light."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Eine eingeschränkte Beleuchtung verändert die reflektierte Farbe.",
+            "essentialUnderstandingEn": "Restricted illumination changes reflected color.",
+            "observablePerformanceDe": "Überträgt auf anders zusammengesetztes einfallendes Licht.",
+            "observablePerformanceEn": "Transfers to different incident spectra."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "v1",
+            "textDe": "Weißlicht und monochromatische Beleuchtung",
+            "textEn": "White and monochromatic illumination"
+          },
+          {
+            "id": "v2",
+            "textDe": "Reflexionsdaten und Farbvergleich",
+            "textEn": "Reflectance data and color comparison"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "c8f51eac-case-1",
+            "taskDemandDe": "Ideales undurchsichtiges Gewebe reflektiert 430–480 nm stark, absorbiert 550–650 nm fast vollständig. Weißlicht enthält beide Bereiche; die zweite Lampe liefert nur 590 nm. Emission und Transmission sind ausgeschlossen. Für alle übrigen sichtbaren Wellenlängen im Modellbereich380–780 nm außerhalb430–480 nm ist der Reflexionsanteil vernachlässigbar.\n1. Erkläre die Farbe unter Weißlicht mit absorbierten und reflektierten Wellenlängen, ohne absorbiertes Licht als sichtbare Stofffarbe zu deuten.\n2. Sage die Erscheinung unter 590-nm-Licht voraus und begründe sie mit dem verfügbaren Einfallsspektrum.",
+            "taskDemandEn": "An ideal opaque fabric strongly reflects 430–480 nm and almost completely absorbs 550–650 nm. White light contains both ranges; a second lamp supplies only 590 nm. Emission and transmission are excluded. Reflectance is negligible at every other visible wavelength in the model range380–780 nm outside430–480 nm.\n1. Explain the color under white light using absorbed and reflected wavelengths, without treating absorbed light as the visible fabric color.\n2. Predict its appearance under 590 nm illumination and justify it using the available incident spectrum.",
+            "expectedPerformanceDe": "1. Das Gewebe reflektiert den Blauanteil 430–480 nm und absorbiert längere Anteile; das Auge erhält überwiegend blaues Licht. Die absorbierten gelb-roten Anteile gelangen nicht als Reflexionslicht zum Auge.\n2. Es erscheint sehr dunkel. 590 nm wird fast vollständig absorbiert; die Lampe liefert keine blauen Photonen, die das Gewebe reflektieren könnte.",
+            "expectedPerformanceEn": "1. The fabric reflects the blue 430–480 nm component and absorbs longer wavelengths; the eye receives mainly blue light. Absorbed yellow-red components do not reach the eye as reflection.\n2. It appears very dark. 590 nm is almost completely absorbed, and the lamp supplies no blue photons for the fabric to reflect.",
+            "understandingFocusDe": "Das Gewebe reflektiert den Blauanteil 430–480 nm und absorbiert längere Anteile; das Auge erhält überwiegend blaues Licht. Die absorbierten gelb-roten Anteile gelangen nicht als Reflexionslicht zum Auge. / Es erscheint sehr dunkel. 590 nm wird fast vollständig absorbiert; die Lampe liefert keine blauen Photonen, die das Gewebe reflektieren könnte.",
+            "understandingFocusEn": "The fabric reflects the blue 430–480 nm component and absorbs longer wavelengths; the eye receives mainly blue light. Absorbed yellow-red components do not reach the eye as reflection. / It appears very dark. 590 nm is almost completely absorbed, and the lamp supplies no blue photons for the fabric to reflect."
+          },
+          {
+            "id": "c8f51eac-case-2",
+            "taskDemandDe": "Erfundene Reflexionsanteile bei 450/550/650 nm: Muster A 5/5/80 %, Muster B 5/40/80 %. Weißlicht hat gleiche Intensität in den drei Modellbändern; die zweite Beleuchtung enthält nur 550 nm.\n1. Vergleiche die reflektierten Weißlichtanteile beider Muster und erkläre, warum ihre Farben trotz gleicher Rotreflexion verschieden sein können.\n2. Entscheide, welches Muster unter 550 nm heller wirkt, und begründe die Entscheidung; nenne die Grenze einer exakten Farbbezeichnung aus nur drei Bändern.",
+            "taskDemandEn": "Invented reflectance at 450/550/650 nm: sample A 5/5/80%, sample B 5/40/80%. White light has equal intensity in the three model bands; a second light contains only 550 nm.\n1. Compare both samples’ reflected white-light components and explain why colors may differ despite equal red reflection.\n2. Decide which sample looks brighter at 550 nm and justify it; state the limit of assigning an exact color name from only three bands.",
+            "expectedPerformanceDe": "1. A reflektiert fast nur Rot und wirkt rot. B reflektiert zusätzlich deutlich Grün, daher kann es gelblicher wirken. Gleiche Rotanteile garantieren keine gleiche Farbe, weil auch die übrigen Anteile zählen.\n2. B ist heller: 40 % statt 5 % des angebotenen Grünlichts werden reflektiert. Ein vollständiges Spektrum und die Wahrnehmungsbedingungen fehlen; eine exakte Farbkoordinate oder Farbbezeichnung ist damit nicht festgelegt.",
+            "expectedPerformanceEn": "1. A reflects mainly red and appears red. B additionally reflects much more green and may therefore look more yellowish. Equal red components do not guarantee equal color because the other components matter.\n2. B is brighter because it reflects 40% rather than 5% of the offered green light. The full spectrum and perception conditions are missing, so an exact color coordinate or name is not fixed.",
+            "understandingFocusDe": "A reflektiert fast nur Rot und wirkt rot. B reflektiert zusätzlich deutlich Grün, daher kann es gelblicher wirken. Gleiche Rotanteile garantieren keine gleiche Farbe, weil auch die übrigen Anteile zählen. / B ist heller: 40 % statt 5 % des angebotenen Grünlichts werden reflektiert. Ein vollständiges Spektrum und die Wahrnehmungsbedingungen fehlen; eine exakte Farbkoordinate oder Farbbezeichnung ist damit nicht festgelegt.",
+            "understandingFocusEn": "A reflects mainly red and appears red. B additionally reflects much more green and may therefore look more yellowish. Equal red components do not guarantee equal color because the other components matter. / B is brighter because it reflects 40% rather than 5% of the offered green light. The full spectrum and perception conditions are missing, so an exact color coordinate or name is not fixed."
+          }
+        ]
+      },
+      "profileSourceLine": 244,
+      "mechanicalTargetExclusions": {
+        "goalId": "c8f51eac-c131-58a8-8d00-0fcbbe4bc18c",
+        "viewIds": [
+          "de-bw-gym-chemistry-gk",
+          "de-bw-gym-chemistry-lk",
+          "de-rp-gym-chemistry-gk",
+          "de-rp-gym-chemistry-lk",
+          "de-sh-gym-chemistry-gk",
+          "de-sh-gym-chemistry-lk",
+          "de-sn-gym-chemistry-gk",
+          "de-sn-gym-chemistry-lk",
+          "de-st-gym-chemistry-gk",
+          "de-st-gym-chemistry-lk"
+        ],
+        "missingJurisdictions": [
+          "DE-BW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SN",
+          "DE-ST"
+        ],
+        "compiledApplicability": {
+          "jurisdiction": [
+            "DE-BY"
+          ]
+        },
+        "evidenceJurisdictionsByKind": {
+          "mapping": [
+            "DE-BY"
+          ],
+          "provenance": [
+            "DE-BY"
+          ]
+        }
+      }
+    },
+    {
+      "wholeGoal": {
+        "id": "61da9d34-cb35-5c2c-ac8e-83f48b6a4fd3",
+        "shortKey": "canonical_chemistry_upper_dye_chemistry_everyday_dyes_health_evaluation",
+        "title": "Farbstoffe im Alltag und Gesundheit bewerten",
+        "titleEn": "Evaluate dyes in everyday life and health contexts",
+        "description": "Die lernende Person kann den Einsatz ausgewählter Farbstoffe im Alltag recherchieren und bewerten sowie Auswirkungen ihrer Verwendung auf die menschliche Gesundheit vergleichen und beurteilen.",
+        "descriptionEn": "The learner can research and evaluate the use of selected dyes in everyday life and compare and assess effects of their use on human health.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical",
+          "SekII"
+        ],
+        "contains": [],
+        "requires": [
+          "54bc6ca0-b770-5f10-ac54-bcc1d04298f5"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-chemistry",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "PK2_MODELLIEREN",
+            "PK3_BEWERTEN",
+            "PK4_KOMMUNIZIEREN"
+          ],
+          "guidingIdeas": [
+            "BC_AUFBAU",
+            "BC_REAKTION",
+            "BC_ENERGIE"
+          ],
+          "phase": "Q4",
+          "area": "Farbstoffchemie",
+          "topicCode": "CANONICAL.CHEMISTRY.UPPER.DYES.EVERYDAY_DYES_HEALTH_EVALUATION"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BY",
+            "DE-HB"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+            "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+            "sourceGoalId": "3407ef25-bb30-59b9-8ed0-cc259699e62e"
+          },
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "61da9d34-cb35-5c2c-ac8e-83f48b6a4fd3",
+            "title": "Visualisierung: Farbstoffe im Alltag und Gesundheit bewerten",
+            "url": "/assets/goal-visualizations/chemie/61da9d34-cb35-5c2c-ac8e-83f48b6a4fd3/61da9d34-cb35-5c2c-ac8e-83f48b6a4fd3.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Farbstoffe im Alltag und Gesundheit bewerten.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Farbstoffe im Alltag und Gesundheit bewerten\". Die lernende Person kann den Einsatz ausgewählter Farbstoffe im Alltag recherchieren und bewerten sowie Auswirkungen ihrer Verwendung auf die menschliche Gesundheit vergleichen und beurteilen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeProfile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Recherche muss Quelle, Stoffidentität, Nutzung und Gesundheitsbehauptung nachvollziehbar verbinden.",
+            "essentialUnderstandingEn": "Research must traceably connect source, chemical identity, use and health claim.",
+            "observablePerformanceDe": "Entnimmt Primärinformationen und belegt Fundstelle statt Werbeaussagen zu übernehmen.",
+            "observablePerformanceEn": "Extracts primary information with a locator rather than adopting advertising."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Gesundheitsbewertung unterscheidet Gefährdung von Exposition und vergleicht gleichartige Anwendungen.",
+            "essentialUnderstandingEn": "Health judgment distinguishes hazard from exposure and compares like applications.",
+            "observablePerformanceDe": "Gewichtet Nutzen, Exposition und Evidenzgrenzen.",
+            "observablePerformanceEn": "Weighs benefit, exposure and evidence limits."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "v1",
+            "textDe": "Lebensmittelfarbe versus Textilfarbstoff",
+            "textEn": "Food color versus textile dye"
+          },
+          {
+            "id": "v2",
+            "textDe": "Primärquelle versus allgemeine Werbeaussage",
+            "textEn": "Primary source versus a general advertisement"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "61da9d34-case-1",
+            "taskDemandDe": "Für eine Recherche liegt die Primärseite EFSA „Food colours“ (https://www.efsa.europa.eu/en/topics/topic/food-colours; geprüft 13.10.2026) bereit: Funktionen sind Farberhalt/-verstärkung, Sicherheitsbewertung ist stoffbezogen. Erfundenes Angebot: Lebensmittel-Farbe F mit exakter Identität und dokumentierter Bewertung; technischer Textilfarbstoff T ohne Lebensmitteldossier. Keine konkreten Zulassungs- oder Dosierungswerte werden geliefert.\n1. Recherchiere auf der angegebenen Primärseite je einen Nutzen und eine Aussage zur Sicherheitsprüfung; dokumentiere URL, Abschnitt und Abrufdatum und unterscheide Befund von der Werbeaussage „jede natürliche Farbe ist gesund“.\n2. Vergleiche F und T für die gleiche Getränkenutzung nach Stoffidentität, Expositionsweg und verfügbarer Gesundheitsprüfung; formuliere ein bedingtes Urteil und eine fehlende Information.",
+            "taskDemandEn": "For research the primary EFSA “Food colours” page is available (https://www.efsa.europa.eu/en/topics/topic/food-colours; checked 13 October 2026): functions include maintaining/enhancing color and safety assessment is substance-specific. Invented offer: food color F with exact identity and documented assessment; technical textile dye T without a food dossier. No specific authorization or dosage values are supplied.\n1. Research one benefit and one safety-assessment statement on the specified primary page; record URL, section and access date and distinguish evidence from the advertisement “every natural color is healthy”.\n2. Compare F and T for the same beverage use by identity, exposure route and available health assessment; give a conditional judgment and one missing fact.",
+            "expectedPerformanceDe": "1. Nachprüfbarer Recherchebeleg: EFSA-URL, Abschnitt Einleitung/Sicherheitsbewertung und tatsächliches Abrufdatum; Farberhalt oder Farbverstärkung als Nutzen, stoffbezogene Bewertung als Sicherheitsbefund. Die Seite trägt keine pauschale Gesundheitsgarantie allein aufgrund natürlicher Herkunft. Bei nicht erfolgtem Abruf bleiben Recherchepunkte offen.\n2. Bei Getränken ist orale Aufnahme der gemeinsame Vergleichsweg. F hat ein zur Verwendung passendes Dossier; T besitzt hier keines und ist daher keine belegte Lebensmittelalternative. Eine endgültige Entscheidung benötigt genaue Identität, Verwendungsbedingungen und Exposition/Dosierung; weder F noch T wird aus dem Modell als pauschal sicher oder toxisch erklärt.",
+            "expectedPerformanceEn": "1. Verifiable research evidence names the EFSA URL, introduction/safety-assessment section and actual access date; color maintenance or enhancement is a benefit and substance-specific assessment is the safety finding. The page does not support a blanket health guarantee based on natural origin. Without an actual lookup, research credit remains unavailable.\n2. In beverages oral intake is the common comparison route. F has a dossier matching its use; T has none here and is not an evidenced food alternative. A final decision needs exact identity, use conditions and exposure/dose; the model labels neither substance universally safe or toxic.",
+            "understandingFocusDe": "Nachprüfbarer Recherchebeleg: EFSA-URL, Abschnitt Einleitung/Sicherheitsbewertung und tatsächliches Abrufdatum; Farberhalt oder Farbverstärkung als Nutzen, stoffbezogene Bewertung als Sicherheitsbefund. Die Seite trägt keine pauschale Gesundheitsgarantie allein aufgrund natürlicher Herkunft. Bei nicht erfolgtem Abruf bleiben Recherchepunkte offen. / Bei Getränken ist orale Aufnahme der gemeinsame Vergleichsweg. F hat ein zur Verwendung passendes Dossier; T besitzt hier keines und ist daher keine belegte Lebensmittelalternative. Eine endgültige Entscheidung benötigt genaue Identität, Verwendungsbedingungen und Exposition/Dosierung; weder F noch T wird aus dem Modell als pauschal sicher oder toxisch erklärt.",
+            "understandingFocusEn": "Verifiable research evidence names the EFSA URL, introduction/safety-assessment section and actual access date; color maintenance or enhancement is a benefit and substance-specific assessment is the safety finding. The page does not support a blanket health guarantee based on natural origin. Without an actual lookup, research credit remains unavailable. / In beverages oral intake is the common comparison route. F has a dossier matching its use; T has none here and is not an evidenced food alternative. A final decision needs exact identity, use conditions and exposure/dose; the model labels neither substance universally safe or toxic."
+          },
+          {
+            "id": "61da9d34-case-2",
+            "taskDemandDe": "Recherchequellen: EFSA „Food additives“ (https://www.efsa.europa.eu/en/topics/topic/food-additives) erläutert unterschiedliche Herkunft; die Primärseite „Food colours“ beschreibt stoffbezogene Prüfung. Erfundenes Textilangebot N nennt nur „pflanzlich“ ohne genaue Stoffidentität; S nennt eine genaue synthetische Identität, aber das Dossier betrifft orale Aufnahme, nicht Hautkontakt. Beide haben gleiche angenommene Farbechtheit.\n1. Recherchiere je einen Primärbefund zu Herkunft und stoffbezogener Prüfung und dokumentiere URL, Abschnitt, Abrufdatum; erkläre die Grenze der Übertragung von Lebensmitteldaten auf Textilien.\n2. Vergleiche die Gesundheitsbelege von N und S für Hautkontakt und entscheide begründet, ob das Material eine Rangfolge „natürlich ist gesünder“ trägt; fordere eine konkret fehlende Information je Angebot.",
+            "taskDemandEn": "Research sources: EFSA “Food additives” (https://www.efsa.europa.eu/en/topics/topic/food-additives) discusses different origins; “Food colours” describes substance-specific assessment. Invented textile offer N says only “plant-based” without exact identity; S names an exact synthetic identity but its dossier addresses oral intake rather than skin contact. Both have equal assumed color fastness.\n1. Research one primary finding each on origin and substance-specific assessment and record URL, section and access date; explain the limit of transferring food evidence to textiles.\n2. Compare N and S health evidence for skin contact and assess whether the material supports “natural is healthier”; request one specific missing fact for each offer.",
+            "expectedPerformanceDe": "1. Ein tatsächlicher Recherchebeleg benennt beide EFSA-URLs, passende Abschnitte und Abrufdatum. Herkunft kann verschieden sein; Prüfung betrifft konkrete Stoffe und Expositionsbedingungen. Lebensmitteldaten beantworten nicht automatisch Hautkontakt oder Freisetzung aus einer Faser. Ohne Abruf kein Nachweis des Rechercheoperators.\n2. Die Daten tragen keine Gesundheitsrangfolge nach Herkunft. N benötigt Stoffidentität/Verunreinigungsprofil, S benötigt hautkontaktbezogene Bewertung oder Freisetzungsdaten. Gleiche angenommene Farbechtheit ersetzt keine toxikologische Evidenz; beide Angebote bleiben bis zu passenden Daten offen.",
+            "expectedPerformanceEn": "1. Actual research evidence names both EFSA URLs, relevant sections and access date. Origins vary; assessment concerns particular substances and exposures. Food data do not automatically answer skin contact or release from a fiber. Without a lookup the research operator is not demonstrated.\n2. The data do not support a health ranking by origin. N needs identity/impurity information; S needs a skin-contact assessment or release data. Equal assumed fastness does not replace toxicological evidence; both remain unresolved pending matching data.",
+            "understandingFocusDe": "Ein tatsächlicher Recherchebeleg benennt beide EFSA-URLs, passende Abschnitte und Abrufdatum. Herkunft kann verschieden sein; Prüfung betrifft konkrete Stoffe und Expositionsbedingungen. Lebensmitteldaten beantworten nicht automatisch Hautkontakt oder Freisetzung aus einer Faser. Ohne Abruf kein Nachweis des Rechercheoperators. / Die Daten tragen keine Gesundheitsrangfolge nach Herkunft. N benötigt Stoffidentität/Verunreinigungsprofil, S benötigt hautkontaktbezogene Bewertung oder Freisetzungsdaten. Gleiche angenommene Farbechtheit ersetzt keine toxikologische Evidenz; beide Angebote bleiben bis zu passenden Daten offen.",
+            "understandingFocusEn": "Actual research evidence names both EFSA URLs, relevant sections and access date. Origins vary; assessment concerns particular substances and exposures. Food data do not automatically answer skin contact or release from a fiber. Without a lookup the research operator is not demonstrated. / The data do not support a health ranking by origin. N needs identity/impurity information; S needs a skin-contact assessment or release data. Equal assumed fastness does not replace toxicological evidence; both remain unresolved pending matching data."
+          }
+        ]
+      },
+      "profileSourceLine": 254,
+      "mechanicalTargetExclusions": {
+        "goalId": "61da9d34-cb35-5c2c-ac8e-83f48b6a4fd3",
+        "viewIds": [
+          "de-bw-gym-chemistry-gk",
+          "de-bw-gym-chemistry-lk",
+          "de-rp-gym-chemistry-gk",
+          "de-rp-gym-chemistry-lk",
+          "de-sh-gym-chemistry-gk",
+          "de-sh-gym-chemistry-lk",
+          "de-sn-gym-chemistry-gk",
+          "de-sn-gym-chemistry-lk",
+          "de-st-gym-chemistry-gk",
+          "de-st-gym-chemistry-lk"
+        ],
+        "missingJurisdictions": [
+          "DE-BW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SN",
+          "DE-ST"
+        ],
+        "compiledApplicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BY",
+            "DE-HB"
+          ]
+        },
+        "evidenceJurisdictionsByKind": {
+          "mapping": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BY",
+            "DE-HB"
+          ],
+          "provenance": [
+            "DE-BY"
+          ]
+        }
+      }
+    },
+    {
+      "wholeGoal": {
+        "id": "64b03eff-a967-54a1-ace3-89cb7650a65c",
+        "shortKey": "canonical_chemistry_upper_dye_chemistry_donor_acceptor_substituent_effects",
+        "title": "Substituenteneffekte in Farbstoff-Molekülen erklären",
+        "titleEn": "Explain substituent effects in dye molecules",
+        "description": "Die lernende Person kann das Donator-Akzeptor-Konzept auf Farbstoff-Moleküle anwenden und den Einfluss funktioneller Gruppen auf die Farbigkeit der zugehörigen Stoffe erklären.",
+        "descriptionEn": "The learner can apply the donor-acceptor concept to dye molecules and explain how functional groups influence the color of the corresponding substances.",
+        "weight": 1,
+        "tags": [
+          "LK",
+          "canonical",
+          "SekII"
+        ],
+        "contains": [],
+        "requires": [
+          "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-chemistry",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "PK2_MODELLIEREN",
+            "PK3_BEWERTEN",
+            "PK4_KOMMUNIZIEREN"
+          ],
+          "guidingIdeas": [
+            "BC_AUFBAU",
+            "BC_REAKTION",
+            "BC_ENERGIE"
+          ],
+          "phase": "Q4",
+          "area": "Farbstoffchemie",
+          "topicCode": "CANONICAL.CHEMISTRY.UPPER.DYES.DONOR_ACCEPTOR_SUBSTITUENT_EFFECTS"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BY",
+            "DE-HB",
+            "DE-NW",
+            "DE-SH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+            "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+            "sourceGoalId": "b9f8c8a1-a45f-5a2f-ac56-11682856b27a"
+          },
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "64b03eff-a967-54a1-ace3-89cb7650a65c",
+            "title": "Visualisierung: Substituenteneffekte in Farbstoff-Molekülen erklären",
+            "url": "/assets/goal-visualizations/chemie/64b03eff-a967-54a1-ace3-89cb7650a65c/64b03eff-a967-54a1-ace3-89cb7650a65c.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Substituenteneffekte in Farbstoff-Molekülen erklären.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Substituenteneffekte in Farbstoff-Molekülen erklären\". Die lernende Person kann das Donator-Akzeptor-Konzept auf Farbstoff-Moleküle anwenden und den Einfluss funktioneller Gruppen auf die Farbigkeit der zugehörigen Stoffe erklären.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeProfile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Donor und Akzeptor beeinflussen ein gekoppeltes π-System; der Effekt hängt von Stellung und Kopplung ab.",
+            "essentialUnderstandingEn": "Donor and acceptor groups affect a coupled pi system; the effect depends on position and coupling.",
+            "observablePerformanceDe": "Identifiziert Gruppen und verknüpft elektronischen Effekt mit Spektren.",
+            "observablePerformanceEn": "Identifies groups and connects electronic effects to spectra."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Protonierung oder unterbrochene Konjugation kann einen Donoreffekt verändern; eine Rotverschiebung ist keine universelle Gruppenregel.",
+            "essentialUnderstandingEn": "Protonation or interrupted conjugation can alter donation; a red shift is not a universal group rule.",
+            "observablePerformanceDe": "Begründet einen veränderten Übergang anhand konkreter Bedingungen.",
+            "observablePerformanceEn": "Explains a changed transition under specific conditions."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "v1",
+            "textDe": "Donorprotonierung und Spektraländerung",
+            "textEn": "Donor protonation and spectrum change"
+          },
+          {
+            "id": "v2",
+            "textDe": "Konjugation versus sp³-Unterbrechung",
+            "textEn": "Conjugation versus sp³ interruption"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "64b03eff-case-1",
+            "taskDemandDe": "Papiermodell eines planaren Donor–π–Akzeptor-Farbstoffs: para-(CH₃)₂N–C₆H₄–CH=CH–C₆H₄–NO₂. Gleicher Lösungsmittelzustand; λmax neutral 510 nm, nach Protonierung des Aminostickstoffs 430 nm. Die Nitrogruppe bleibt unverändert.\n1. Kennzeichne Donor und Akzeptor im neutralen Molekül und begründe die Kopplung über das π-System.\n2. Erkläre die Änderung des Aminodonors bei Protonierung und ordne die angegebene Verschiebungsrichtung sowie die Änderung der Übergangsenergie zu.",
+            "taskDemandEn": "Paper model of a planar donor–pi–acceptor dye: para-(CH₃)₂N–C₆H₄–CH=CH–C₆H₄–NO₂. Same solvent conditions; neutral λmax 510 nm and 430 nm after protonation at the amino nitrogen. The nitro group remains unchanged.\n1. Identify donor and acceptor in the neutral molecule and explain coupling through the pi system.\n2. Explain the amino donor change on protonation and identify the stated shift direction and transition-energy change.",
+            "expectedPerformanceDe": "1. –N(CH₃)₂ kann sein freies Elektronenpaar in das gekoppelte π-System einspeisen (+M); –NO₂ zieht über Mesomerie Elektronendichte ab (−M). Die sp²-Brücke ermöglicht Kopplung der beiden Enden.\n2. Nach H⁺-Bindung ist das Paar in einer N–H-Bindung gebunden; der neutrale +M-Donor steht nicht mehr so zur Verfügung. 510→430 nm ist hypsochrom; nach ΔE=hc/λ steigt die Übergangsenergie. Das erklärt diesen angegebenen Fall, keine universelle Regel für alle protonierten Farbstoffe.",
+            "expectedPerformanceEn": "1. –N(CH₃)₂ can donate its lone pair into the coupled pi system (+M); –NO₂ withdraws electron density through resonance (−M). The sp² bridge couples the two ends.\n2. After H⁺ bonding the pair forms the N–H bond, so the neutral +M donor is no longer available in the same way. 510→430 nm is hypsochromic; ΔE=hc/λ increases. This explains the supplied case rather than a universal rule for all protonated dyes.",
+            "understandingFocusDe": "–N(CH₃)₂ kann sein freies Elektronenpaar in das gekoppelte π-System einspeisen (+M); –NO₂ zieht über Mesomerie Elektronendichte ab (−M). Die sp²-Brücke ermöglicht Kopplung der beiden Enden. / Nach H⁺-Bindung ist das Paar in einer N–H-Bindung gebunden; der neutrale +M-Donor steht nicht mehr so zur Verfügung. 510→430 nm ist hypsochrom; nach ΔE=hc/λ steigt die Übergangsenergie.",
+            "understandingFocusEn": "–N(CH₃)₂ can donate its lone pair into the coupled pi system (+M); –NO₂ withdraws electron density through resonance (−M). The sp² bridge couples the two ends. / After H⁺ bonding the pair forms the N–H bond, so the neutral +M donor is no longer available in the same way. 510→430 nm is hypsochromic; ΔE=hc/λ increases."
+          },
+          {
+            "id": "64b03eff-case-2",
+            "taskDemandDe": "Zwei idealisierte Moleküle besitzen dieselben Amino-Donor- und Nitro-Akzeptor-Endgruppen. A hat eine planare –CH=CH–Brücke und λmax 500 nm. B hat –CH₂–CH₂– als Brücke und λmax 330 nm; Konzentration und Lösungsmittel sind gleich.\n1. Erkläre, welche Brücke Donor und Akzeptor mesomer koppelt, und begründe die Unterbrechung bei der anderen.\n2. Verknüpfe die zwei Absorptionsmaxima mit Übergangsenergie und sichtbarer Farbigkeit; beurteile die Aussage „Eine Nitrogruppe macht jedes Molekül farbig“.",
+            "taskDemandEn": "Two idealized molecules have the same amino donor and nitro acceptor end groups. A has a planar –CH=CH– bridge and λmax 500 nm. B has a –CH₂–CH₂– bridge and λmax 330 nm; concentration and solvent are equal.\n1. Explain which bridge couples donor and acceptor by resonance and why the other interrupts it.\n2. Connect both absorption maxima to transition energy and visible color; assess the claim “A nitro group makes every molecule colored”.",
+            "expectedPerformanceDe": "1. A besitzt benachbarte p-Orbitale über die sp²-Brücke. Bei B unterbrechen sp³-C die durchgehende Konjugation; die Endgruppen allein bilden kein langes gekoppeltes π-System.\n2. 500 nm liegt im sichtbaren Bereich und entspricht einer kleineren ΔE als 330 nm im UV. A kann durch sichtbare Absorption farbig sein; B wäre im gegebenen Modell ohne weitere sichtbare Banden farblos. Die Nitrogruppe allein garantiert keine sichtbare Absorption.",
+            "expectedPerformanceEn": "1. A has adjacent p orbitals through its sp² bridge. In B sp³ carbons interrupt continuous conjugation; end groups alone do not make a long coupled pi system.\n2. 500 nm is visible and corresponds to a smaller ΔE than ultraviolet 330 nm. A can be colored by visible absorption; B would be colorless in the given model without other visible bands. A nitro group alone does not guarantee visible absorption.",
+            "understandingFocusDe": "A besitzt benachbarte p-Orbitale über die sp²-Brücke. Bei B unterbrechen sp³-C die durchgehende Konjugation; die Endgruppen allein bilden kein langes gekoppeltes π-System. / 500 nm liegt im sichtbaren Bereich und entspricht einer kleineren ΔE als 330 nm im UV. A kann durch sichtbare Absorption farbig sein; B wäre im gegebenen Modell ohne weitere sichtbare Banden farblos. Die Nitrogruppe allein garantiert keine sichtbare Absorption.",
+            "understandingFocusEn": "A has adjacent p orbitals through its sp² bridge. In B sp³ carbons interrupt continuous conjugation; end groups alone do not make a long coupled pi system. / 500 nm is visible and corresponds to a smaller ΔE than ultraviolet 330 nm. A can be colored by visible absorption; B would be colorless in the given model without other visible bands. A nitro group alone does not guarantee visible absorption."
+          }
+        ]
+      },
+      "profileSourceLine": 245,
+      "mechanicalTargetExclusions": {
+        "goalId": "64b03eff-a967-54a1-ace3-89cb7650a65c",
+        "viewIds": [
+          "de-bw-gym-chemistry-lk",
+          "de-rp-gym-chemistry-lk",
+          "de-sn-gym-chemistry-lk",
+          "de-st-gym-chemistry-lk"
+        ],
+        "missingJurisdictions": [
+          "DE-BW",
+          "DE-RP",
+          "DE-SN",
+          "DE-ST"
+        ],
+        "compiledApplicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BY",
+            "DE-HB",
+            "DE-NW",
+            "DE-SH"
+          ]
+        },
+        "evidenceJurisdictionsByKind": {
+          "mapping": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BY",
+            "DE-HB",
+            "DE-NW",
+            "DE-SH"
+          ],
+          "provenance": [
+            "DE-BY"
+          ]
+        }
+      }
+    },
+    {
+      "wholeGoal": {
+        "id": "f0ba30a8-84b3-5915-bf85-6c3a176064d2",
+        "shortKey": "canonical_chemistry_upper_dye_chemistry_absorption_spectra_evaluate",
+        "title": "Absorptionsspektren von Farbstoffen auswerten",
+        "titleEn": "Evaluate absorption spectra of dyes",
+        "description": "Die lernende Person kann aus Absorptionsspektren von Farbstoffen Wellenlängenbereiche, Absorptionsmaxima und Absorptionsstärke bestimmen und Unterschiede unter Berücksichtigung der Messbedingungen deuten.",
+        "descriptionEn": "The learner can identify wavelength regions, absorption maxima and absorption strength from dye absorption spectra and interpret differences while taking measurement conditions into account.",
+        "weight": 1,
+        "tags": [
+          "LK",
+          "canonical",
+          "SekII"
+        ],
+        "contains": [],
+        "requires": [
+          "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-chemistry",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "PK2_MODELLIEREN",
+            "PK3_BEWERTEN",
+            "PK4_KOMMUNIZIEREN"
+          ],
+          "guidingIdeas": [
+            "BC_AUFBAU",
+            "BC_REAKTION",
+            "BC_ENERGIE"
+          ],
+          "phase": "Q4",
+          "area": "Farbstoffchemie",
+          "topicCode": "CANONICAL.CHEMISTRY.UPPER.DYES.ABSORPTION_SPECTRA_EVALUATE"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BY",
+            "DE-HB",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SN",
+            "DE-ST"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+            "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+            "sourceGoalId": "e9935be8-1829-5c78-a3d7-98cca371cdc7"
+          },
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "f0ba30a8-84b3-5915-bf85-6c3a176064d2",
+            "title": "Visualisierung: Absorptionsspektren von Farbstoffen auswerten",
+            "url": "/assets/goal-visualizations/chemie/f0ba30a8-84b3-5915-bf85-6c3a176064d2/f0ba30a8-84b3-5915-bf85-6c3a176064d2.png",
+            "provider": "OpenAI / Codex built-in image_gen (model not exposed)",
+            "description": "Visualisierung zum Lernziel: Absorptionsspektren von Farbstoffen auswerten.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Absorptionsspektren von Farbstoffen auswerten\". Die lernende Person kann aus Absorptionsspektren von Farbstoffen Wellenlängenbereiche, Absorptionsmaxima und Absorptionsstärke bestimmen und Unterschiede unter Berücksichtigung der Messbedingungen deuten.",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeProfile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Ein Absorptionsspektrum enthält Wellenlängenlage und Intensität unter definierten Bedingungen.",
+            "essentialUnderstandingEn": "An absorption spectrum contains wavelength position and intensity under defined conditions.",
+            "observablePerformanceDe": "Bestimmt Maxima, Banden und sinnvolle Messbedingungen.",
+            "observablePerformanceEn": "Identifies maxima, bands and meaningful measurement conditions."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Absorbanz hängt auch von Konzentration und Weglänge ab; Spektrenvergleich darf Intensität nicht mit Bandverschiebung verwechseln.",
+            "essentialUnderstandingEn": "Absorbance also depends on concentration and path length; intensity changes are distinct from spectral shifts.",
+            "observablePerformanceDe": "Vergleicht veränderte Proben und begrenzt die Schlussfolgerung.",
+            "observablePerformanceEn": "Compares changed samples and limits the inference."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "v1",
+            "textDe": "Wellenlängenlage versus Verdünnung",
+            "textEn": "Wavelength position versus dilution"
+          },
+          {
+            "id": "v2",
+            "textDe": "Überlagerung und Referenzspektren",
+            "textEn": "Superposition and reference spectra"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "f0ba30a8-case-1",
+            "taskDemandDe": "Erfundene Absorbanz bei 420/460/500/540/580 nm: Probe A 0,10/0,40/0,90/0,45/0,10; halb konzentriertes B 0,05/0,20/0,45/0,225/0,05. Gleiche 1-cm-Küvette, Lösungsmittel und temperaturstabiler Farbstoff ohne Aggregation.\n1. Bestimme für beide Proben das tabellierte Maximum und beschreibe Lage sowie Intensitätsänderung getrennt.\n2. Erkläre die Absorbanzänderung mit A=εcl und beurteile, ob die Tabelle eine Änderung der molekularen Übergangsenergie belegt.",
+            "taskDemandEn": "Invented absorbance at 420/460/500/540/580 nm: sample A 0.10/0.40/0.90/0.45/0.10; half-concentration B 0.05/0.20/0.45/0.225/0.05. Same 1 cm cuvette and solvent, stable temperature and nonaggregating dye.\n1. Identify both tabulated maxima and describe position and intensity changes separately.\n2. Explain the absorbance change using A=εcl and assess whether the table proves a change of molecular transition energy.",
+            "expectedPerformanceDe": "1. Beide tabellierten Maxima liegen bei 500 nm. Amax sinkt von 0,90 auf 0,45; die Bandenlage bleibt im Raster gleich. Das exakte Maximum zwischen Stützstellen ist nicht bestimmt.\n2. Bei gleicher ε und l halbiert halbes c die Absorbanz. Eine Intensitätsänderung bei gleicher λmax belegt keine veränderte ΔE; die Daten passen zur Verdünnung desselben Farbstoffs.",
+            "expectedPerformanceEn": "1. Both tabulated maxima are at 500 nm. Amax decreases from 0.90 to 0.45; the band position stays the same on the grid. An exact maximum between data points is not determined.\n2. At equal ε and l, halving c halves absorbance. An intensity change with unchanged λmax does not establish a changed ΔE; the data fit dilution of the same dye.",
+            "understandingFocusDe": "Beide tabellierten Maxima liegen bei 500 nm. Amax sinkt von 0,90 auf 0,45; die Bandenlage bleibt im Raster gleich.  / Bei gleicher ε und l halbiert halbes c die Absorbanz. Eine Intensitätsänderung bei gleicher λmax belegt keine veränderte ΔE; die Daten passen zur Verdünnung desselben Farbstoffs.",
+            "understandingFocusEn": "Both tabulated maxima are at 500 nm. Amax decreases from 0.90 to 0.45; the band position stays the same on the grid.  / At equal ε and l, halving c halves absorbance. An intensity change with unchanged λmax does not establish a changed ΔE; the data fit dilution of the same dye."
+          },
+          {
+            "id": "f0ba30a8-case-2",
+            "taskDemandDe": "Ideales additives Modell gleicher Küvetten: bei 450/550/650 nm hat Referenz X A=0,8/0,1/0,0, Y A=0,0/0,1/0,7. Mischung M A=0,8/0,2/0,7. Rauschen ±0,02; keine chemische Wechselwirkung.\n1. Prüfe an allen drei Wellenlängen, ob M als Summe von X und Y erklärbar ist, und ordne die zwei starken Absorptionsbereiche zu.\n2. Wähle je eine geeignete Wellenlänge zum möglichst getrennten Nachweis von X und Y; begründe die Wahl und nenne eine Grenze der eindeutigen Stoffidentifikation aus drei Stützstellen.",
+            "taskDemandEn": "Ideal additive model with identical cuvettes: at 450/550/650 nm reference X has A=0.8/0.1/0.0, Y has A=0.0/0.1/0.7. Mixture M has A=0.8/0.2/0.7. Noise is ±0.02; no chemical interaction.\n1. Check at all three wavelengths whether M can be explained as the sum of X and Y and assign its two strong absorption regions.\n2. Choose one wavelength for each nearly separate detection of X and Y; justify both choices and state one limit to unambiguous identification from three data points.",
+            "expectedPerformanceDe": "1. 0,8+0,0=0,8; 0,1+0,1=0,2; 0,0+0,7=0,7. M entspricht der Summe. 450 nm wird X, 650 nm Y zugeordnet; die Mitte enthält Beiträge beider.\n2. 450 nm für X und 650 nm für Y, weil die jeweils andere Referenz dort im Modell nicht absorbiert. Drei Punkte schließen weitere Farbstoffe mit denselben Werten nicht aus; ein vollständigeres Spektrum oder weiterer Nachweis wäre nötig.",
+            "expectedPerformanceEn": "1. 0.8+0.0=0.8; 0.1+0.1=0.2; 0.0+0.7=0.7. M matches the sum. 450 nm is assigned to X and 650 nm to Y; the middle contains both contributions.\n2. 450 nm for X and 650 nm for Y because the other reference does not absorb there in this model. Three points cannot exclude other dyes with the same values; a fuller spectrum or another identification method is needed.",
+            "understandingFocusDe": "0,8+0,0=0,8; 0,1+0,1=0,2; 0,0+0,7=0,7. M entspricht der Summe. 450 nm wird X, 650 nm Y zugeordnet; die Mitte enthält Beiträge beider. / 450 nm für X und 650 nm für Y, weil die jeweils andere Referenz dort im Modell nicht absorbiert. Drei Punkte schließen weitere Farbstoffe mit denselben Werten nicht aus; ein vollständigeres Spektrum oder weiterer Nachweis wäre nötig.",
+            "understandingFocusEn": "0.8+0.0=0.8; 0.1+0.1=0.2; 0.0+0.7=0.7. M matches the sum. 450 nm is assigned to X and 650 nm to Y; the middle contains both contributions. / 450 nm for X and 650 nm for Y because the other reference does not absorb there in this model. Three points cannot exclude other dyes with the same values; a fuller spectrum or another identification method is needed."
+          }
+        ]
+      },
+      "profileSourceLine": 384,
+      "mechanicalTargetExclusions": {
+        "goalId": "f0ba30a8-84b3-5915-bf85-6c3a176064d2",
+        "viewIds": [
+          "de-bw-gym-chemistry-lk"
+        ],
+        "missingJurisdictions": [
+          "DE-BW"
+        ],
+        "compiledApplicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BY",
+            "DE-HB",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SN",
+            "DE-ST"
+          ]
+        },
+        "evidenceJurisdictionsByKind": {
+          "mapping": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BY",
+            "DE-HB",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SN",
+            "DE-ST"
+          ],
+          "provenance": [
+            "DE-BY"
+          ]
+        }
+      }
+    },
+    {
+      "wholeGoal": {
+        "id": "b208b1a5-c609-53a1-8add-979417a93b7d",
+        "shortKey": "canonical_chemistry_upper_dye_chemistry_textile_dye_interactions",
+        "title": "Textilfarbstoffe über Farbstoff-Faser-Wechselwirkungen beurteilen",
+        "titleEn": "Evaluate textile dyes through dye-fiber interactions",
+        "description": "Die lernende Person kann ausgewählte Bindungs- und Wechselwirkungstypen zwischen Farbstoff-Molekülen und Faser-Molekülen beschreiben und die Eignung von Farbstoffen als Textilfarbstoff beurteilen.",
+        "descriptionEn": "The learner can describe selected bonding and interaction types between dye molecules and fiber molecules and evaluate the suitability of dyes as textile dyes.",
+        "weight": 1,
+        "tags": [
+          "LK",
+          "canonical",
+          "SekII"
+        ],
+        "contains": [],
+        "requires": [
+          "eb7537dd-d11b-50e9-a6d7-51a78e96fc4e",
+          "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-chemistry",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "PK2_MODELLIEREN",
+            "PK3_BEWERTEN",
+            "PK4_KOMMUNIZIEREN"
+          ],
+          "guidingIdeas": [
+            "BC_AUFBAU",
+            "BC_REAKTION",
+            "BC_ENERGIE"
+          ],
+          "phase": "Q4",
+          "area": "Farbstoffchemie",
+          "topicCode": "CANONICAL.CHEMISTRY.UPPER.DYES.TEXTILE_DYE_INTERACTIONS"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HB",
+            "DE-RP",
+            "DE-SH",
+            "DE-SN"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+            "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+            "sourceGoalId": "4707b786-fc4b-5d9c-87df-173eb719b29d"
+          },
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "b208b1a5-c609-53a1-8add-979417a93b7d",
+            "title": "Visualisierung: Textilfarbstoffe über Farbstoff-Faser-Wechselwirkungen beurteilen",
+            "url": "/assets/goal-visualizations/chemie/b208b1a5-c609-53a1-8add-979417a93b7d/b208b1a5-c609-53a1-8add-979417a93b7d.png",
+            "provider": "OpenAI imagegen built-in; exact model not exposed",
+            "description": "Visualisierung zum Lernziel: Textilfarbstoffe über Farbstoff-Faser-Wechselwirkungen beurteilen.",
+            "altText": "Drei ausgewählte Farbstoff-Faser-Modelle: ionische Anziehung an protonierten Wollgruppen im sauren Bad; kovalente Reaktivfarbstoffbindung an Cellulose; neutrale Dispersionsfarbstoffe zwischen Polyesterketten. Die Eignung hängt vom Farbstoff, der Faser und den Bedingungen ab; keine allgemeine Beständigkeitsrangfolge.",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "draft"
+          }
+        ]
+      },
+      "wholeProfile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Färbereignung entsteht aus konkreten Farbstoff-Faser-Wechselwirkungen und Bedingungen.",
+            "essentialUnderstandingEn": "Dye suitability arises from specific dye-fiber interactions and conditions.",
+            "observablePerformanceDe": "Ordnet Ladungen, Wasserstoffbrücken, Dispersion oder kovalente Fixierung zu.",
+            "observablePerformanceEn": "Assigns charges, hydrogen bonding, dispersion or covalent fixation."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Löslichkeit, Bindungsstärke und Waschbeständigkeit müssen zusammen beurteilt werden.",
+            "essentialUnderstandingEn": "Solubility, interaction strength and wash resistance must be judged together.",
+            "observablePerformanceDe": "Begründet eine materialbezogene Auswahl mit Grenzen.",
+            "observablePerformanceEn": "Justifies a material-specific choice with limits."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "v1",
+            "textDe": "Proteinfasern versus Cellulose",
+            "textEn": "Protein fibers versus cellulose"
+          },
+          {
+            "id": "v2",
+            "textDe": "Kovalente Fixierung versus Einlagerung",
+            "textEn": "Covalent fixation versus entrapment"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "b208b1a5-case-1",
+            "taskDemandDe": "Modell im sauren Färbebad: Wollprotein trägt –NH₃⁺-Gruppen; Baumwollcellulose überwiegend ungeladene –OH-Gruppen. Farbstoff D besitzt zwei –SO₃⁻-Gruppen und H-Brücken-Akzeptoren. Beide Proben werden gleich gespült; keine kovalente Reaktion.\n1. Beschreibe die elektrostatischen und möglichen Wasserstoffbrücken-Wechselwirkungen von D mit beiden Fasern; unterscheide sie von kovalenter Bindung.\n2. Beurteile die bevorzugte Eignung für Wolle gegenüber Baumwolle unter den angegebenen Bedingungen und nenne eine Grenze der Waschbeständigkeitsvorhersage.",
+            "taskDemandEn": "Model in an acidic dye bath: wool protein carries –NH₃⁺ groups; cotton cellulose has mostly uncharged –OH groups. Dye D has two –SO₃⁻ groups and hydrogen-bond acceptors. Both samples are rinsed equally; no covalent reaction.\n1. Describe electrostatic and possible hydrogen-bond interactions of D with both fibers; distinguish them from covalent bonding.\n2. Assess preferred suitability for wool rather than cotton under these conditions and state one limit of predicting wash resistance.",
+            "expectedPerformanceDe": "1. D⁻-Gruppen werden von Woll–NH₃⁺ elektrostatisch angezogen. Zusätzlich sind H-Brücken zwischen geeigneten Faser-Donoren und D-Akzeptoren möglich. Cellulose bietet –OH für H-Brücken, aber hier keine positiven Fixierstellen. Keine der Wechselwirkungen ist eine neu gebildete kovalente Farbstoff-Faser-Bindung.\n2. Wolle besitzt hier zusätzliche ionische Anziehung und ist daher günstiger für D. Dies ist keine Garantie: konkrete Bindungsstärke, Farbstoffgröße, pH des Waschbads oder Konkurrenz durch Wasser fehlen. Die bloße Anzahl von –OH-Gruppen belegt keine stärkere Fixierung an Baumwolle.",
+            "expectedPerformanceEn": "1. D anionic groups are electrostatically attracted to wool –NH₃⁺. Hydrogen bonds may also form between suitable fiber donors and dye acceptors. Cellulose offers –OH groups for hydrogen bonding but no positive fixation sites here. Neither interaction is a newly formed covalent dye-fiber bond.\n2. Wool provides additional ionic attraction and is favored for D here. This is not a guarantee: actual interaction strength, dye size, wash-bath pH or competition from water are unknown. Merely counting –OH groups does not establish stronger cotton fixation.",
+            "understandingFocusDe": "D⁻-Gruppen werden von Woll–NH₃⁺ elektrostatisch angezogen. Zusätzlich sind H-Brücken zwischen geeigneten Faser-Donoren und D-Akzeptoren möglich. Cellulose bietet –OH für H-Brücken, aber hier keine positiven Fixierstellen. Keine der Wechselwirkungen ist eine neu gebildete kovalente Farbstoff-Faser-Bindung. / Wolle besitzt hier zusätzliche ionische Anziehung und ist daher günstiger für D. Dies ist keine Garantie: konkrete Bindungsstärke, Farbstoffgröße, pH des Waschbads oder Konkurrenz durch Wasser fehlen.",
+            "understandingFocusEn": "D anionic groups are electrostatically attracted to wool –NH₃⁺. Hydrogen bonds may also form between suitable fiber donors and dye acceptors. Cellulose offers –OH groups for hydrogen bonding but no positive fixation sites here. Neither interaction is a newly formed covalent dye-fiber bond. / Wool provides additional ionic attraction and is favored for D here. This is not a guarantee: actual interaction strength, dye size, wash-bath pH or competition from water are unknown."
+          },
+          {
+            "id": "b208b1a5-case-2",
+            "taskDemandDe": "Idealisiert: Cellulose–O⁻ kann am elektrophilen Triazin-C eines Reaktivfarbstoffs mit Cl-Abgang substituieren: Cell–O–Triazin–D. Polyester besitzt unter den angegebenen Bedingungen keine entsprechenden reaktiven Gruppen; ein neutraler wenig wasserlöslicher Dispersionsfarbstoff lagert sich durch Dispersion und hydrophobe Affinität ein.\n1. Ordne beide Fixierungsmodelle den Fasern zu und erkläre den Unterschied zwischen kovalenter Reaktion und intermolekularer Einlagerung.\n2. Beurteile, warum ein stark wasserlöslicher ionischer Farbstoff ohne reaktive Gruppe für diesen Polyester ungünstig ist, und begrenze die Behauptung „kovalent bedeutet immer unveränderliche Farbe“.",
+            "taskDemandEn": "Idealized: cellulose–O⁻ can substitute at electrophilic triazine C of a reactive dye with chloride leaving, giving Cell–O–Triazine–D. Polyester has no corresponding reactive groups under the stated conditions; a neutral poorly water-soluble disperse dye is taken up through dispersion and hydrophobic affinity.\n1. Assign both fixation models to the fibers and explain covalent reaction versus intermolecular uptake.\n2. Assess why a highly water-soluble ionic dye without a reactive group is unfavorable for this polyester and limit the claim “covalent always means unchangeable color”.",
+            "expectedPerformanceDe": "1. Reaktivfarbstoff passt zum angegebenen Cellulose-Nukleophil: neue Cell–O–C-Bindung mit Cl⁻-Abgang. Der Dispersionsfarbstoff wird ohne neue kovalente Bindung im Polyester aufgenommen. Beide Modelle beruhen auf verschiedenen Stoffeigenschaften.\n2. Der ionische Farbstoff bevorzugt Wasser und hat in diesem Modell keine günstige Fixierroute am Polyester. Kovalente Fixierung erschwert Auswaschen, verhindert aber nicht photochemischen Abbau, Faserabbau oder andere chemische Veränderungen.",
+            "expectedPerformanceEn": "1. The reactive dye fits the given cellulose nucleophile: a new Cell–O–C bond forms with Cl⁻ departure. The disperse dye enters polyester without a new covalent bond. The models rely on different material properties.\n2. The ionic dye favors water and has no suitable polyester fixation route in this model. Covalent fixation impedes washing out but does not prevent photochemical degradation, fiber breakdown or other chemical changes.",
+            "understandingFocusDe": "Reaktivfarbstoff passt zum angegebenen Cellulose-Nukleophil: neue Cell–O–C-Bindung mit Cl⁻-Abgang. Der Dispersionsfarbstoff wird ohne neue kovalente Bindung im Polyester aufgenommen. Beide Modelle beruhen auf verschiedenen Stoffeigenschaften. / Der ionische Farbstoff bevorzugt Wasser und hat in diesem Modell keine günstige Fixierroute am Polyester. Kovalente Fixierung erschwert Auswaschen, verhindert aber nicht photochemischen Abbau, Faserabbau oder andere chemische Veränderungen.",
+            "understandingFocusEn": "The reactive dye fits the given cellulose nucleophile: a new Cell–O–C bond forms with Cl⁻ departure. The disperse dye enters polyester without a new covalent bond. The models rely on different material properties. / The ionic dye favors water and has no suitable polyester fixation route in this model. Covalent fixation impedes washing out but does not prevent photochemical degradation, fiber breakdown or other chemical changes."
+          }
+        ]
+      },
+      "profileSourceLine": 261,
+      "mechanicalTargetExclusions": {
+        "goalId": "b208b1a5-c609-53a1-8add-979417a93b7d",
+        "viewIds": [
+          "de-bw-gym-chemistry-lk",
+          "de-st-gym-chemistry-lk"
+        ],
+        "missingJurisdictions": [
+          "DE-BW",
+          "DE-ST"
+        ],
+        "compiledApplicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HB",
+            "DE-RP",
+            "DE-SH",
+            "DE-SN"
+          ]
+        },
+        "evidenceJurisdictionsByKind": {
+          "mapping": [
+            "DE-BY",
+            "DE-HB",
+            "DE-RP",
+            "DE-SH",
+            "DE-SN"
+          ],
+          "provenance": [
+            "DE-BY"
+          ]
+        }
+      }
+    },
+    {
+      "wholeGoal": {
+        "id": "63e0d92b-d86a-53c2-aa0a-bc985fc85174",
+        "shortKey": "canonical_chemistry_upper_dye_chemistry_vat_dyeing",
+        "title": "Küpenfärbung erklären und durchführen",
+        "titleEn": "Explain and carry out vat dyeing",
+        "description": "Die lernende Person kann das Prinzip der Küpenfärbung erklären, eine Küpenfärbung durchführen und diese gegebenenfalls mit einer weiteren Färbemethode vergleichen.",
+        "descriptionEn": "The learner can explain the principle of vat dyeing, carry out vat dyeing, and, if appropriate, compare it with another dyeing method.",
+        "weight": 1,
+        "tags": [
+          "LK",
+          "canonical",
+          "SekII"
+        ],
+        "contains": [],
+        "requires": [
+          "4961130b-1ee8-58f2-a319-dff0a864db6a",
+          "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-chemistry",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "PK2_MODELLIEREN",
+            "PK3_BEWERTEN",
+            "PK4_KOMMUNIZIEREN"
+          ],
+          "guidingIdeas": [
+            "BC_AUFBAU",
+            "BC_REAKTION",
+            "BC_ENERGIE"
+          ],
+          "phase": "Q4",
+          "area": "Farbstoffchemie",
+          "topicCode": "CANONICAL.CHEMISTRY.UPPER.DYES.VAT_DYEING"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+            "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+            "sourceGoalId": "27c2fc49-a941-51b9-848d-34c54f281d7e"
+          },
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "63e0d92b-d86a-53c2-aa0a-bc985fc85174",
+            "title": "Visualisierung: Küpenfärbung erklären und durchführen",
+            "url": "/assets/goal-visualizations/chemie/63e0d92b-d86a-53c2-aa0a-bc985fc85174/63e0d92b-d86a-53c2-aa0a-bc985fc85174.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Küpenfärbung erklären und durchführen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Küpenfärbung erklären und durchführen\". Die lernende Person kann das Prinzip der Küpenfärbung erklären, eine Küpenfärbung durchführen und diese gegebenenfalls mit einer weiteren Färbemethode vergleichen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeProfile": {
+        "archetype": "experiment",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Küpenfärbung macht einen schwer löslichen oxidierten Farbstoff durch Reduktion löslich und oxidiert ihn nach Faseraufnahme wieder.",
+            "essentialUnderstandingEn": "Vat dyeing reduces an insoluble oxidized dye to a soluble form and reoxidizes it after fiber uptake.",
+            "observablePerformanceDe": "Erklärt Reihenfolge, Redoxwechsel und Löslichkeit ohne Stoffumwandlung zu verwechseln.",
+            "observablePerformanceEn": "Explains sequence, redox change and solubility without conflating them."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Kontrollen und Sauerstoffkontakt prüfen das Funktionsmodell.",
+            "essentialUnderstandingEn": "Controls and oxygen exposure test the operating model.",
+            "observablePerformanceDe": "Begründet einen Vergleich und trennt Beobachtung von Interpretation.",
+            "observablePerformanceEn": "Justifies a comparison and separates observation from interpretation."
+          },
+          {
+            "id": "e3",
+            "essentialUnderstandingDe": "Durchführung erfordert tatsächlich beobachtete sichere Handlungen und ein eigenes Rohprotokoll.",
+            "essentialUnderstandingEn": "Execution requires actually observed safe actions and an original raw log.",
+            "observablePerformanceDe": "Führt den freigegebenen Mikroversuch unter Aufsicht aus und dokumentiert reale Beobachtungen.",
+            "observablePerformanceEn": "Carries out the approved microscale experiment under supervision and records real observations."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2",
+            "e3"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "v1",
+            "textDe": "Reduktion fehlt versus vollständige Küpe",
+            "textEn": "No reduction versus a complete vat"
+          },
+          {
+            "id": "v2",
+            "textDe": "Luftkontakt und Färbemethodenvergleich",
+            "textEn": "Air exposure and dyeing-method comparison"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "63e0d92b-case-1",
+            "taskDemandDe": "Entwurf für einen späteren beaufsichtigten Mikroversuch, noch nicht ausgeführt. Lehrkraft stellt nach freigegebener Schul-SOP eine frisch reduzierte alkalische Indigoküpe, ein gleich konzentriertes nichtreduziertes Indigobad und zwei gleiche Baumwollstücke bereit. Keine Herstellung durch Lernende; Schutzbrille, Handschuhe, Pinzette und Abfallsammlung nach SOP. Sollfolge: 30 s eintauchen, entnehmen, 2 min Luftkontakt, nach SOP spülen. Protokollfelder bleiben leer: Badfarbe, Faserfarbe direkt/nach Luft, Spülwasserfarbe, Abweichung.\n1. Erkläre die Reduktion zur löslichen Leukoform, Faseraufnahme und Luftoxidation zurück zum schwer löslichen Indigo; schreibe die basische Halbreaktion I+2e⁻⇌L²⁻ mit den Rollen der Formen.\n2. Begründe die nichtreduzierte Kontrolle und benenne zwei konstant zu haltende Bedingungen sowie eine Auswertungsgrenze.\n3. Führe beide Färbungen unter Aufsicht mit der vorgegebenen SOP aus; lasse Eintauchen, Entnehmen, Luftkontakt und Spülen direkt beobachten und dokumentiere alle fünf Rohprotokollfelder für beide Stücke.",
+            "taskDemandEn": "Design for a future supervised microscale experiment, not yet performed. The teacher supplies a freshly reduced alkaline indigo vat, an equally concentrated unreduced indigo bath and two identical cotton swatches under an approved school SOP. Learners do not prepare reagents; goggles, gloves, forceps and waste collection follow the SOP. Planned sequence: dip for 30 s, remove, expose to air for 2 min, rinse under SOP. Log fields are blank: bath color, fiber color immediately/after air, rinse-water color and deviations.\n1. Explain reduction to soluble leuco form, fiber uptake and air oxidation back to poorly soluble indigo; write the basic half-reaction I+2e⁻⇌L²⁻ and identify the forms.\n2. Justify the unreduced control and name two conditions to keep constant and one inference limit.\n3. Carry out both dyeings under supervision using the supplied SOP; have dipping, removal, air exposure and rinsing directly observed and record all five raw-log fields for both swatches.",
+            "expectedPerformanceDe": "1. I ist neutrales oxidiertes Indigo; in stark alkalischer Küpe wird es zu L²⁻ reduziert, der besser wasserlöslichen dianionischen Leukoform. I+2e⁻⇌L²⁻ ist ladungsbilanziert. Nach Aufnahme in die Faser gibt L²⁻ bei Oxidation Elektronen ab; schwer lösliches I bleibt in der Faser. Die gelbliche/grünliche Küpenfarbe und spätere Blaufärbung sind Erwartungen, keine hier beobachteten Ergebnisse.\n2. Die Kontrolle prüft den Beitrag der Reduktion zur Aufnahme. Beispielsweise Stückgröße und Tauchzeit müssen gleich sein. Unterschiede in Benetzung oder Küpenalter können die Interpretation begrenzen; dies ist kein quantitativer Vergleich der aufgenommenen Stoffmenge.\n3. 2 Punkte nur bei tatsächlich beobachteter vollständiger SOP-Handlung beider Stücke und eigenem vollständigem Rohlog; 1 für eine beobachtete Teilfolge mit zugehörigen Rohdaten; 0 ohne reale Beobachtung. Erwartungsfarben oder abgeschriebene Musterlogs sind kein Ausführungsnachweis. Der Autorversuch ist nicht durchgeführt.",
+            "expectedPerformanceEn": "1. I is neutral oxidized indigo; a strongly alkaline vat reduces it to L²⁻, the more water-soluble dianionic leuco form. I+2e⁻⇌L²⁻ balances charge. After fiber uptake L²⁻ loses electrons upon oxidation; poorly soluble I remains in the fiber. Yellowish/greenish vat color and later blue are predictions, not observed results here.\n2. The control tests the role of reduction in uptake. For example, swatch size and dipping time must be equal. Wetting differences or vat age can limit interpretation; this is not a quantitative measurement of dye uptake.\n3. 2 points require actually observed complete SOP actions for both swatches and a complete original raw log; 1 for an observed partial sequence with its raw data; 0 without real observation. Predicted colors or copied model logs are not execution evidence. The author experiment has not occurred.",
+            "understandingFocusDe": "I ist neutrales oxidiertes Indigo; in stark alkalischer Küpe wird es zu L²⁻ reduziert, der besser wasserlöslichen dianionischen Leukoform. I+2e⁻⇌L²⁻ ist ladungsbilanziert. Nach Aufnahme in die Faser gibt L²⁻ bei Oxidation Elektronen ab; schwer lösliches I bleibt in der Faser.  / Die Kontrolle prüft den Beitrag der Reduktion zur Aufnahme. Beispielsweise Stückgröße und Tauchzeit müssen gleich sein. Unterschiede in Benetzung oder Küpenalter können die Interpretation begrenzen; dies ist kein quantitativer Vergleich der aufgenommenen Stoffmenge. / 2 Punkte nur bei tatsächlich beobachteter vollständiger SOP-Handlung beider Stücke und eigenem vollständigem Rohlog; 1 für eine beobachtete Teilfolge mit zugehörigen Rohdaten; 0 ohne reale Beobachtung. Erwartungsfarben oder abgeschriebene Musterlogs sind kein Ausführungsnachweis. Der Autorversuch ist nicht durchgeführt.",
+            "understandingFocusEn": "I is neutral oxidized indigo; a strongly alkaline vat reduces it to L²⁻, the more water-soluble dianionic leuco form. I+2e⁻⇌L²⁻ balances charge. After fiber uptake L²⁻ loses electrons upon oxidation; poorly soluble I remains in the fiber.  / The control tests the role of reduction in uptake. For example, swatch size and dipping time must be equal. Wetting differences or vat age can limit interpretation; this is not a quantitative measurement of dye uptake. / 2 points require actually observed complete SOP actions for both swatches and a complete original raw log; 1 for an observed partial sequence with its raw data; 0 without real observation. Predicted colors or copied model logs are not execution evidence. The author experiment has not occurred."
+          },
+          {
+            "id": "63e0d92b-case-2",
+            "taskDemandDe": "Späterer Schulversuch unter freigegebener Mikro-SOP: Lehrkraft liefert reduzierte Indigoküpe und einen für Baumwolle geeigneten wässrigen Direktfarbstoff. Drei gleiche Stücke: A Indigo mit sofort 2 min Luftkontakt; B Indigo mit erster Beobachtung in der Küpe, dann 2 min Luftkontakt; C Direktfarbstoff gemäß Lehrer-SOP. Gleiche Endspülung. Lernende ändern weder Reagenzien noch Schutz-/Abfallregeln. Leere Felder für Aufnahmezustand, Farbverlauf, Spülwasser und Abweichung; keine synthetischen Messwerte.\n1. Erkläre den erwarteten Farbverlauf bei A und B über Elektronenabgabe an Luftsauerstoff und den Wechsel der Löslichkeit; unterscheide erwartete von tatsächlich gemessenen Farben.\n2. Vergleiche Küpen- und Direktfärbung hinsichtlich löslicher Aufnahmeform und Fixierungsprinzip; begründe eine passende Kontrolle und eine Grenze der subjektiven Farbstärke.\n3. Führe die drei freigegebenen Abläufe unter direkter Lehrerbeobachtung aus und protokolliere Aufnahmezustand, Farbverlauf, Spülwasser und Abweichung für jedes Stück; kennzeichne nicht ausgeführte Schritte ausdrücklich.",
+            "taskDemandEn": "Future school experiment under an approved microscale SOP: teacher supplies reduced indigo vat and an aqueous direct dye suitable for cotton. Three equal swatches: A indigo with immediate 2 min air exposure; B indigo first observed in the vat, then 2 min air exposure; C direct dye under teacher SOP. Same final rinse. Learners do not change reagents or protection/waste rules. Blank fields record uptake state, color sequence, rinse water and deviations; no synthetic measurements.\n1. Explain the predicted color sequence in A and B through electron transfer to air oxygen and the solubility change; distinguish predictions from actually observed colors.\n2. Compare vat and direct dyeing in soluble uptake form and fixation principle; justify a suitable control and one limit of subjective color intensity.\n3. Perform the three approved sequences under direct teacher observation and log uptake state, color sequence, rinse water and deviations for each swatch; explicitly mark any unperformed steps.",
+            "expectedPerformanceDe": "1. In der Küpe liegt die reduzierte lösliche Leukoform vor; nach Luftkontakt wird sie oxidiert und bildet schwer lösliches blaues Indigo. B macht den zeitlichen Wechsel nach der Erstbeobachtung zugänglich; A erhält sofort Luft. Das sind Modellvorhersagen, bis echte Rohbeobachtungen vorliegen.\n2. Beide Methoden nehmen Farbstoff aus dem Bad auf. Die Küpe wechselt die Redox-/Löslichkeitsform und lagert schwer lösliches Indigo ein; der Direktfarbstoff bindet ohne diesen Redoxwechsel über geeignete intermolekulare Affinität. Ein ungefärbtes gleich behandeltes Stück kontrolliert Fasergrundfarbe. Subjektive Dunkelheit allein ist keine Konzentrationsmessung.\n3. Ausführungskriterium: direkte Beobachtung der tatsächlich freigegebenen Handlungen und vollständiger eigener Vier-Felder-Rohlog für A/B/C; Teilfolge erlaubt 1 Punkt, vollständig 2. Keine Punkte für nie ausgeführte Handlungen, erwartete Farben oder Musterprotokolle.",
+            "expectedPerformanceEn": "1. The vat contains reduced soluble leuco form; air exposure oxidizes it to poorly soluble blue indigo. B makes the temporal change accessible after the initial observation; A receives air immediately. These remain model predictions until actual raw observations exist.\n2. Both take up dye from a bath. The vat changes redox/solubility form and deposits poorly soluble indigo; the direct dye binds through suitable intermolecular affinity without that redox change. An undyed equally treated swatch controls background color. Subjective darkness alone does not measure concentration.\n3. Execution criterion: direct observation of the approved actions actually performed and a complete original four-field log for A/B/C; a partial sequence earns 1 point, completion 2. Unperformed actions, predicted colors or model logs earn no execution credit.",
+            "understandingFocusDe": "In der Küpe liegt die reduzierte lösliche Leukoform vor; nach Luftkontakt wird sie oxidiert und bildet schwer lösliches blaues Indigo. B macht den zeitlichen Wechsel nach der Erstbeobachtung zugänglich; A erhält sofort Luft. Das sind Modellvorhersagen, bis echte Rohbeobachtungen vorliegen. / Beide Methoden nehmen Farbstoff aus dem Bad auf. Die Küpe wechselt die Redox-/Löslichkeitsform und lagert schwer lösliches Indigo ein; der Direktfarbstoff bindet ohne diesen Redoxwechsel über geeignete intermolekulare Affinität. Ein ungefärbtes gleich behandeltes Stück kontrolliert Fasergrundfarbe. Subjektive Dunkelheit allein ist keine Konzentrationsmessung. / Ausführungskriterium: direkte Beobachtung der tatsächlich freigegebenen Handlungen und vollständiger eigener Vier-Felder-Rohlog für A/B/C; Teilfolge erlaubt 1 Punkt, vollständig 2. Keine Punkte für nie ausgeführte Handlungen, erwartete Farben oder Musterprotokolle.",
+            "understandingFocusEn": "The vat contains reduced soluble leuco form; air exposure oxidizes it to poorly soluble blue indigo. B makes the temporal change accessible after the initial observation; A receives air immediately. These remain model predictions until actual raw observations exist. / Both take up dye from a bath. The vat changes redox/solubility form and deposits poorly soluble indigo; the direct dye binds through suitable intermolecular affinity without that redox change. An undyed equally treated swatch controls background color. Subjective darkness alone does not measure concentration. / Execution criterion: direct observation of the approved actions actually performed and a complete original four-field log for A/B/C; a partial sequence earns 1 point, completion 2. Unperformed actions, predicted colors or model logs earn no execution credit."
+          }
+        ]
+      },
+      "profileSourceLine": 246,
+      "mechanicalTargetExclusions": {
+        "goalId": "63e0d92b-d86a-53c2-aa0a-bc985fc85174",
+        "viewIds": [
+          "de-bw-gym-chemistry-lk",
+          "de-rp-gym-chemistry-lk",
+          "de-sh-gym-chemistry-lk",
+          "de-sn-gym-chemistry-lk",
+          "de-st-gym-chemistry-lk"
+        ],
+        "missingJurisdictions": [
+          "DE-BW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SN",
+          "DE-ST"
+        ],
+        "compiledApplicability": {
+          "jurisdiction": [
+            "DE-BY"
+          ]
+        },
+        "evidenceJurisdictionsByKind": {
+          "mapping": [
+            "DE-BY"
+          ],
+          "provenance": [
+            "DE-BY"
+          ]
+        }
+      }
+    },
+    {
+      "wholeGoal": {
+        "id": "188bd684-e894-5753-8a50-798220b04d97",
+        "shortKey": "canonical_chemistry_upper_dye_chemistry_dye_industry_significance",
+        "title": "Farbstoffe als Motor der chemischen Industrie beurteilen",
+        "titleEn": "Assess dyes as a driver of the chemical industry",
+        "description": "Die lernende Person kann die wirtschaftliche Bedeutung der Farbstoffe für die Entwicklung der chemischen Industrie beurteilen.",
+        "descriptionEn": "The learner can assess the economic significance of dyes for the development of the chemical industry.",
+        "weight": 1,
+        "tags": [
+          "LK",
+          "canonical",
+          "SekII"
+        ],
+        "contains": [],
+        "requires": [
+          "7f140b34-ed26-59e7-8ad2-ccb6b56bc9d6",
+          "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-chemistry",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "PK2_MODELLIEREN",
+            "PK3_BEWERTEN",
+            "PK4_KOMMUNIZIEREN"
+          ],
+          "guidingIdeas": [
+            "BC_AUFBAU",
+            "BC_REAKTION",
+            "BC_ENERGIE"
+          ],
+          "phase": "Q4",
+          "area": "Farbstoffchemie",
+          "topicCode": "CANONICAL.CHEMISTRY.UPPER.DYES.DYE_INDUSTRY_SIGNIFICANCE"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HB"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+            "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+            "sourceGoalId": "43a2f7b0-7eaf-52f5-af79-836b5ee55412"
+          },
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "188bd684-e894-5753-8a50-798220b04d97",
+            "title": "Visualisierung: Farbstoffe als Motor der chemischen Industrie beurteilen",
+            "url": "/assets/goal-visualizations/chemie/188bd684-e894-5753-8a50-798220b04d97/188bd684-e894-5753-8a50-798220b04d97.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Farbstoffe als Motor der chemischen Industrie beurteilen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Farbstoffe als Motor der chemischen Industrie beurteilen\". Die lernende Person kann die wirtschaftliche Bedeutung der Farbstoffe für die Entwicklung der chemischen Industrie beurteilen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeProfile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Farbstoffproduktion kann Forschung, Skalierung und Absatz der chemischen Industrie verbinden.",
+            "essentialUnderstandingEn": "Dye production can connect research, scale-up and markets in the chemical industry.",
+            "observablePerformanceDe": "Leitet wirtschaftliche Wirkung aus benannten Daten und Mechanismen ab.",
+            "observablePerformanceEn": "Infers economic impact from stated data and mechanisms."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Eine historisch-wirtschaftliche Bewertung braucht Grenzen und Gegenargumente; Korrelation genügt nicht zur Alleinursache.",
+            "essentialUnderstandingEn": "Historical economic judgment needs limits and counterarguments; correlation does not establish sole causation.",
+            "observablePerformanceDe": "Gewichtet Nutzen und Kosten und begrenzt eine Kausalaussage.",
+            "observablePerformanceEn": "Weighs benefits and costs and limits a causal claim."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "v1",
+            "textDe": "Skalierung und Marktpreise",
+            "textEn": "Scale-up and prices"
+          },
+          {
+            "id": "v2",
+            "textDe": "Forschungstransfer und Umweltkosten",
+            "textEn": "Research transfer and environmental costs"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "188bd684-case-1",
+            "taskDemandDe": "Erfundenes historisches Modell, keine realen Firmendaten: vor Umstellung 200 Beschäftigte, 20 t Farbstoff/Jahr, Preis 12 Einheiten/kg; danach 600 Beschäftigte, 120 t/Jahr, Preis 5/kg. Forschungsabteilung wächst von 4 auf 30 Personen; Energiebedarf/Jahr steigt, Abwasserkosten fehlen. Gleichzeitig wird die Bahnverbindung verbessert.\n1. Beurteile anhand von Mengen-, Preis- und Forschungsdaten zwei Wege, wie die Farbstoffproduktion die Industrieentwicklung fördern könnte.\n2. Prüfe die Aussage „Der Farbstoff allein verursachte das gesamte Wachstum“; benenne eine alternative Erklärung und eine fehlende Kostengröße für die Gesamtbewertung.",
+            "taskDemandEn": "Invented historical model, not real company data: before change, 200 employees, 20 t dye/year, price 12 units/kg; after, 600 employees, 120 t/year, price 5/kg. Research staff grows from 4 to 30; yearly energy demand rises and wastewater costs are missing. Railway access also improves.\n1. Use output, price and research data to assess two ways dye production could promote industrial development.\n2. Assess “The dye alone caused all growth”; name one alternative explanation and one missing cost variable for the overall judgment.",
+            "expectedPerformanceDe": "1. Größere Produktion bei niedrigerem Preis kann breitere Märkte bedienen und Skalierung fördern. Die vergrößerte Forschung kann neue Verfahren und weitere Produkte entwickeln. Der sechsfachen Menge steht nicht automatisch sechsfacher Gewinn gegenüber, weil der Preis sinkt und Kosten fehlen.\n2. Die Gleichzeitigkeit beweist keine alleinige Ursache. Besserer Bahnanschluss könnte Absatz und Transportkosten beeinflussen. Abwasserbehandlungskosten oder zusätzliche Energiekosten fehlen; deshalb ist eine gesamte Rentabilitäts- oder Wohlfahrtsbilanz nicht bestimmt.",
+            "expectedPerformanceEn": "1. Higher output at lower price can reach wider markets and promote scale-up. Expanded research can develop processes and additional products. Sixfold output does not automatically mean sixfold profit because price falls and costs are missing.\n2. Coincidence does not prove a sole cause. Better rail access could affect sales and transport costs. Wastewater-treatment or added energy costs are missing, so total profitability or welfare is undetermined.",
+            "understandingFocusDe": "Größere Produktion bei niedrigerem Preis kann breitere Märkte bedienen und Skalierung fördern. Die vergrößerte Forschung kann neue Verfahren und weitere Produkte entwickeln. Der sechsfachen Menge steht nicht automatisch sechsfacher Gewinn gegenüber, weil der Preis sinkt und Kosten fehlen. / Die Gleichzeitigkeit beweist keine alleinige Ursache. Besserer Bahnanschluss könnte Absatz und Transportkosten beeinflussen. Abwasserbehandlungskosten oder zusätzliche Energiekosten fehlen; deshalb ist eine gesamte Rentabilitäts- oder Wohlfahrtsbilanz nicht bestimmt.",
+            "understandingFocusEn": "Higher output at lower price can reach wider markets and promote scale-up. Expanded research can develop processes and additional products. Sixfold output does not automatically mean sixfold profit because price falls and costs are missing. / Coincidence does not prove a sole cause. Better rail access could affect sales and transport costs. Wastewater-treatment or added energy costs are missing, so total profitability or welfare is undetermined."
+          },
+          {
+            "id": "188bd684-case-2",
+            "taskDemandDe": "Erfundenes Archivmodell: Firma B finanziert ein Analyselabor aus Farbstofferlösen. In zehn Jahren werden drei Verfahren zur organischen Synthese auf andere Produktgruppen übertragen. Marktanteil Farbstoffe sinkt von 70 auf 35 % des Umsatzes; Gesamtumsatz bleibt gleich. Eine Akte berichtet hohe Abwasserschäden, ohne Geldwert.\n1. Erkläre anhand der Akten einen plausiblen Beitrag der Farbstoffchemie zu Forschung und Produktdiversifizierung; deute den fallenden Umsatzanteil ohne ihn als Umsatzrückgang auszugeben.\n2. Formuliere ein begründetes wirtschaftliches Urteil mit einem Nutzen, einer Belastung und einer Grenze der vorliegenden Daten.",
+            "taskDemandEn": "Invented archive model: company B funds an analytical laboratory from dye revenue. Over ten years, three organic synthesis methods transfer to other product groups. Dye share falls from 70 to 35% of revenue while total revenue stays constant. One file reports substantial wastewater harm without monetary valuation.\n1. Use the records to explain a plausible contribution of dye chemistry to research and product diversification; interpret the falling share without calling it a total-revenue decrease.\n2. Write a justified economic judgment with one benefit, one burden and one data limit.",
+            "expectedPerformanceDe": "1. Farbstofferlöse finanzieren Methodenwissen, das auf drei andere Verfahren übertragen wird. Bei konstantem Gesamtumsatz sinkt der Farbstoffumsatzanteil um 35 Prozentpunkte; andere Produktgruppen gewinnen Anteil. Dies passt zu Diversifizierung, belegt aber keinen Gesamtumsatzrückgang.\n2. Die Farbstoffsparte wirkt als Finanzierungs- und Wissensquelle; gleichzeitig belasten Abwasserschäden die gesellschaftliche Bilanz. Ohne Schadenswert und Kosten kann ihr Nettobeitrag nicht exakt beziffert werden. Ein positives Innovationsurteil kann daher mit einer offenen Gesamtwohlfahrtsbilanz verbunden sein.",
+            "expectedPerformanceEn": "1. Dye revenue funds methods that transfer to three other processes. With constant total revenue the dye share falls by 35 percentage points while other groups gain share. This fits diversification but does not establish a total-revenue decrease.\n2. The dye division supplies funding and knowledge, while wastewater harm burdens the social balance. Without damage valuation and costs its net contribution cannot be quantified. A positive innovation judgment can coexist with an unresolved overall welfare balance.",
+            "understandingFocusDe": "Farbstofferlöse finanzieren Methodenwissen, das auf drei andere Verfahren übertragen wird. Bei konstantem Gesamtumsatz sinkt der Farbstoffumsatzanteil um 35 Prozentpunkte; andere Produktgruppen gewinnen Anteil. Dies passt zu Diversifizierung, belegt aber keinen Gesamtumsatzrückgang. / Die Farbstoffsparte wirkt als Finanzierungs- und Wissensquelle; gleichzeitig belasten Abwasserschäden die gesellschaftliche Bilanz. Ohne Schadenswert und Kosten kann ihr Nettobeitrag nicht exakt beziffert werden. Ein positives Innovationsurteil kann daher mit einer offenen Gesamtwohlfahrtsbilanz verbunden sein.",
+            "understandingFocusEn": "Dye revenue funds methods that transfer to three other processes. With constant total revenue the dye share falls by 35 percentage points while other groups gain share. This fits diversification but does not establish a total-revenue decrease. / The dye division supplies funding and knowledge, while wastewater harm burdens the social balance. Without damage valuation and costs its net contribution cannot be quantified. A positive innovation judgment can coexist with an unresolved overall welfare balance."
+          }
+        ]
+      },
+      "profileSourceLine": 247,
+      "mechanicalTargetExclusions": {
+        "goalId": "188bd684-e894-5753-8a50-798220b04d97",
+        "viewIds": [
+          "de-bw-gym-chemistry-lk",
+          "de-rp-gym-chemistry-lk",
+          "de-sh-gym-chemistry-lk",
+          "de-sn-gym-chemistry-lk",
+          "de-st-gym-chemistry-lk"
+        ],
+        "missingJurisdictions": [
+          "DE-BW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SN",
+          "DE-ST"
+        ],
+        "compiledApplicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HB"
+          ]
+        },
+        "evidenceJurisdictionsByKind": {
+          "mapping": [
+            "DE-BY",
+            "DE-HB"
+          ],
+          "provenance": [
+            "DE-BY"
+          ]
+        }
+      }
+    },
+    {
+      "wholeGoal": {
+        "id": "981242bb-a729-5701-b02d-c2f7f489e5af",
+        "shortKey": "canonical_chemistry_upper_dye_chemistry_azo_dye_synthesis",
+        "title": "Azofarbstoff-Synthese mechanistisch darstellen",
+        "titleEn": "Represent azo-dye synthesis mechanistically",
+        "description": "Die lernende Person kann die vollständige Syntheseroute eines Azofarbstoffs aus einem aromatischen primären Amin über Diazotierung und anschließende Azokupplung auf Teilchenebene mechanistisch darstellen und den Bindungsaufbau sowie die Atom- und Ladungsbilanz erklären.",
+        "descriptionEn": "The learner can represent the complete synthesis route of an azo dye from an aromatic primary amine through diazotization and subsequent azo coupling mechanistically at particle level and explain bond formation and atom and charge balance.",
+        "weight": 1,
+        "tags": [
+          "LK",
+          "canonical",
+          "SekII"
+        ],
+        "contains": [],
+        "requires": [
+          "17ab1148-7383-5cab-8b91-73aff795f1e4",
+          "a9c22adc-b543-5b0c-a2d8-3189facdff08",
+          "1c1420c2-a8e2-520f-8015-6df637a973bd"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-chemistry",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "PK2_MODELLIEREN",
+            "PK3_BEWERTEN",
+            "PK4_KOMMUNIZIEREN"
+          ],
+          "guidingIdeas": [
+            "BC_AUFBAU",
+            "BC_REAKTION",
+            "BC_ENERGIE"
+          ],
+          "phase": "Q4",
+          "area": "Farbstoffchemie",
+          "topicCode": "CANONICAL.CHEMISTRY.UPPER.DYES.AZO_DYE_SYNTHESIS"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-RP"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+            "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+            "sourceGoalId": "4fb9f93d-b53f-5e9a-9bd1-5d600f081091",
+            "canonicalSplitOriginGoalId": "e5941581-0aba-5354-b4b9-d0249d4538a8"
+          },
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "981242bb-a729-5701-b02d-c2f7f489e5af",
+            "title": "Visualisierung: Azofarbstoff-Synthese mechanistisch darstellen",
+            "url": "/assets/goal-visualizations/chemie/981242bb-a729-5701-b02d-c2f7f489e5af/981242bb-a729-5701-b02d-c2f7f489e5af.png",
+            "provider": "OpenAI / ChatGPT-Codex built-in image_gen.imagegen",
+            "description": "Vereinfachte Azosynthese über Diazotierung und anschließende Azokupplung.",
+            "altText": "Drei große Restformeln Ar–NH₂, [Ar–N≡N]⁺ und Ar–N=N–Ar′ zeigen Diazotierung mit HNO₂/H⁺ und anschließende Azokupplung mit Ar′–H unter Protonenabgabe. Ar und Ar′ stehen für aromatische Reste. Die Darstellung ist eine vereinfachte Route ohne alle Zwischenstufen und volle Stoffbilanz.",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeProfile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Azosynthese umfasst Diazotierung und Kupplung; N-N-Bindungsaufbau, Ladungen und Rearomatisierung werden auf Teilchenebene erklärt.",
+            "essentialUnderstandingEn": "Azo synthesis includes diazotization and coupling; N-N formation, charges and rearomatization are explained at particle level.",
+            "observablePerformanceDe": "Stellt den begrenzten Diazotierungsweg mit Bilanz sowie den Kupplungsmechanismus aus den ausdrücklich gegebenen Zwischenstufen dar.",
+            "observablePerformanceEn": "Represents the bounded diazotization route and balance, then coupling, using the explicitly supplied intermediates."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "v1",
+            "textDe": "Aromatisches primäres Amin und Kupplungspartner",
+            "textEn": "Aromatic primary amine and coupling partner"
+          },
+          {
+            "id": "v2",
+            "textDe": "Elektronenpaarfluss, Ladungsbilanz und verfügbarer Donor",
+            "textEn": "Electron-pair flow, charge balance and available donor"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "981242bb-case-1",
+            "taskDemandDe": "Nur Papiermechanismen, keine Ausführung. Azo: [Ph–N≡N]⁺ und C₆H₅OH unter Bedingungen mit aktivem Phenol; das Produkt ist para-HO–C₆H₄–N=N–Ph. Vorgeschaltete Diazotierung im Papiermodell: Ar_D=Ph; Ar_D–NH₂ + HNO₂ in wässriger Säure bei0–5 °C. NO⁺ bezeichnet das nitrosierende Elektrophil. Die Zwischenstufen Ar_D–NH–N=O und Ar_D–N=N–OH sind als Strukturhilfen gegeben; einzelne Protonenübertragungen dürfen zu Sammelschritten zusammengefasst werden. Ar_D steht für den unveränderten Arylrest. Keine dirigierenden Effekte oder praktischen Ausführungsschritte werden zusätzlich geprüft.\n1. Ergänze vor der Kupplung die Diazotierung auf Teilchenebene: beschreibe den Elektronenpaarfluss beim Angriff des Aminostickstoffs auf NO⁺, ordne die gegebenen N-N-Zwischenstufen bis zum Diazoniumion und erkläre die Rolle der Säure und der Wasserabspaltung. Formuliere die Gesamtgleichung mit Ar_D–NH₂, HNO₂ und H⁺ und prüfe Atom- und Gesamtladungsbilanz. Vollständige Einzelpfeile für jede Protonenübertragung sind nicht gefordert.\n2. Stelle für die Azokupplung Elektronenpaarpfeile vom Ring zum terminalen Diazoniumnitrogen, die Verringerung von N≡N zu N=N, den σ-Komplex und die rearomatisierende Protonenabgabe dar; bilanziere die Gesamtladung.",
+            "taskDemandEn": "Paper mechanisms only, no execution. Azo: Ph–N≡N⁺ and C₆H₅OH under conditions with reactive phenol; the product is para-HO–C₆H₄–N=N–Ph. Preceding diazotization in the paper model: Ar_D=Ph; Ar_D–NH₂ + HNO₂ in aqueous acid at0–5 °C. NO⁺ denotes the nitrosating electrophile. Ar_D–NH–N=O and Ar_D–N=N–OH are supplied structural guides; individual proton transfers may be grouped. Ar_D is the unchanged aryl group. No extra directing-effect or practical-execution requirement is assessed.\n1. Complete diazotization before coupling at particle level: describe electron-pair flow when amino nitrogen attacks NO⁺, order the supplied N-N intermediates up to the diazonium ion, and explain acid and water-loss roles. Write the overall equation using Ar_D–NH₂, HNO₂ and H⁺ and check atom and net-charge balance. Separate arrows for every proton transfer are not required.\n2. Show electron-pair arrows from the ring to terminal diazonium nitrogen, reduction of N≡N to N=N, the sigma complex and rearomatizing proton loss; balance overall charge.",
+            "expectedPerformanceDe": "1. Ein verfügbares N-Elektronenpaar des neutralen Aminanteils greift das N des nitrosierenden NO⁺ an und bildet die N-N-Bindung. Nach Protonenübertragung/Deprotonierung liegt Ar_D–NH–N=O vor; Protonenumlagerung ergibt Ar_D–N=N–OH. Säure ermöglicht die Bildung des Nitrosierungsreagenzes und protoniert die OH-Gruppe zu einer Wasserabgangsgruppe. Wasserabspaltung und Bildung der N≡N-Bindung ergeben [Ar_D–N≡N]⁺. Gesamt: Ar_DNH₂ + HNO₂ + H⁺ → [Ar_DN₂]⁺ + 2 H₂O. Außer dem unveränderten Ar_D stehen links wie rechts2 N,2 O und4 H; Gesamtladung jeweils+1. Diese verkürzte Teilchenfolge genügt hier; sie ist kein vollständiges Protonenübertragungsnetz und keine Versuchsaufzeichnung.\n2. Ein Ring-π-Paar greift das terminale N von Ph–N≡N⁺ an; ein N≡N-π-Paar wird auf das an Ph gebundene N verschoben. Es entsteht ein positiv geladener Ring-σ-Komplex mit Ph–N=N–C-Bindung. Eine Base nimmt H⁺ am angegriffenen C ab; das C–H-Paar stellt die Ring-π-Bindung wieder her. PhN₂⁺ + C₆H₅OH → Ph–N=N–C₆H₄–OH + H⁺: +1 auf beiden Seiten.",
+            "expectedPerformanceEn": "1. An available N lone pair of the neutral amine fraction attacks nitrogen of nitrosating NO⁺ and forms the N-N bond. Proton transfer/deprotonation gives Ar_D–NH–N=O; proton rearrangement gives Ar_D–N=N–OH. Acid enables formation of the nitrosating reagent and protonates OH into a water leaving group. Water loss and formation of N≡N give [Ar_D–N≡N]⁺. Overall: Ar_DNH₂ + HNO₂ + H⁺ → [Ar_DN₂]⁺ + 2 H₂O. Apart from unchanged Ar_D, both sides contain2 N,2 O and4 H; net charge is+1 on both sides. This abbreviated particle sequence is sufficient here; it is neither a complete proton-transfer network nor an experiment record.\n2. A ring pi pair attacks the terminal N of Ph–N≡N⁺; one N≡N pi pair moves onto the N bound to Ph. This gives a positively charged ring sigma complex with a Ph–N=N–C bond. A base removes H⁺ at the attacked carbon; its C–H pair restores the ring pi bond. PhN₂⁺ + C₆H₅OH → Ph–N=N–C₆H₄–OH + H⁺ has +1 on both sides.",
+            "understandingFocusDe": "Azosynthese umfasst Diazotierung und Kupplung; N-N-Bindungsaufbau, Ladungen und Rearomatisierung werden auf Teilchenebene erklärt.",
+            "understandingFocusEn": "Azo synthesis includes diazotization and coupling; N-N formation, charges and rearomatization are explained at particle level."
+          },
+          {
+            "id": "981242bb-case-2",
+            "taskDemandDe": "Papiermodell: p-NO₂–C₆H₄–N₂⁺ koppelt an N,N-Dimethylanilin para zum Aminodonor. Gegenionen sind Zuschauer; keine Stoffe werden hergestellt. Vorgeschaltete Diazotierung im Papiermodell: Ar_D=p-NO₂–C₆H₄; Ar_D–NH₂ + HNO₂ in wässriger Säure bei0–5 °C. NO⁺ bezeichnet das nitrosierende Elektrophil. Die Zwischenstufen Ar_D–NH–N=O und Ar_D–N=N–OH sind als Strukturhilfen gegeben; einzelne Protonenübertragungen dürfen zu Sammelschritten zusammengefasst werden. Ar_D steht für den unveränderten Arylrest. Keine dirigierenden Effekte oder praktischen Ausführungsschritte werden zusätzlich geprüft.\n1. Ergänze vor der Kupplung die Diazotierung auf Teilchenebene: beschreibe den Elektronenpaarfluss beim Angriff des Aminostickstoffs auf NO⁺, ordne die gegebenen N-N-Zwischenstufen bis zum Diazoniumion und erkläre die Rolle der Säure und der Wasserabspaltung. Formuliere die Gesamtgleichung mit Ar_D–NH₂, HNO₂ und H⁺ und prüfe Atom- und Gesamtladungsbilanz. Vollständige Einzelpfeile für jede Protonenübertragung sind nicht gefordert.\n2. Zeichne den Azokupplungsmechanismus mit Elektronenpaarpfeilen, N=N-Verknüpfung, σ-Komplex-Ladung und Deprotonierung; erkläre, warum vollständige Protonierung des Aminodonors die Kupplung erschwert.",
+            "taskDemandEn": "Paper model: p-NO₂–C₆H₄–N₂⁺ couples to N,N-dimethylaniline para to its amino donor. Counterions are spectators; no substances are made. Preceding diazotization in the paper model: Ar_D=p-NO₂–C₆H₄; Ar_D–NH₂ + HNO₂ in aqueous acid at0–5 °C. NO⁺ denotes the nitrosating electrophile. Ar_D–NH–N=O and Ar_D–N=N–OH are supplied structural guides; individual proton transfers may be grouped. Ar_D is the unchanged aryl group. No extra directing-effect or practical-execution requirement is assessed.\n1. Complete diazotization before coupling at particle level: describe electron-pair flow when amino nitrogen attacks NO⁺, order the supplied N-N intermediates up to the diazonium ion, and explain acid and water-loss roles. Write the overall equation using Ar_D–NH₂, HNO₂ and H⁺ and check atom and net-charge balance. Separate arrows for every proton transfer are not required.\n2. Draw azo coupling with electron-pair arrows, N=N linkage, sigma-complex charge and deprotonation; explain why complete protonation of the amino donor hinders coupling.",
+            "expectedPerformanceDe": "1. Ein verfügbares N-Elektronenpaar des neutralen Aminanteils greift das N des nitrosierenden NO⁺ an und bildet die N-N-Bindung. Nach Protonenübertragung/Deprotonierung liegt Ar_D–NH–N=O vor; Protonenumlagerung ergibt Ar_D–N=N–OH. Säure ermöglicht die Bildung des Nitrosierungsreagenzes und protoniert die OH-Gruppe zu einer Wasserabgangsgruppe. Wasserabspaltung und Bildung der N≡N-Bindung ergeben [Ar_D–N≡N]⁺. Gesamt: Ar_DNH₂ + HNO₂ + H⁺ → [Ar_DN₂]⁺ + 2 H₂O. Außer dem unveränderten Ar_D stehen links wie rechts2 N,2 O und4 H; Gesamtladung jeweils+1. Diese verkürzte Teilchenfolge genügt hier; sie ist kein vollständiges Protonenübertragungsnetz und keine Versuchsaufzeichnung.\n2. π-Paar des Dimethylanilinrings→terminales Diazonium-N; N≡N-π-Paar→inneres N. Positiver σ-Komplex→H⁺-Abgabe mit C–H-Paar→Ring-π. Produkt p-NO₂–C₆H₄–N=N–C₆H₄–N(CH₃)₂, insgesamt Diazoniumpartner+ArH→Azofarbstoff+H⁺. Protoniertes –N⁺H(CH₃)₂ hat kein verfügbares freies Paar für den +M-Effekt, daher weniger aktivierter Ring.",
+            "expectedPerformanceEn": "1. An available N lone pair of the neutral amine fraction attacks nitrogen of nitrosating NO⁺ and forms the N-N bond. Proton transfer/deprotonation gives Ar_D–NH–N=O; proton rearrangement gives Ar_D–N=N–OH. Acid enables formation of the nitrosating reagent and protonates OH into a water leaving group. Water loss and formation of N≡N give [Ar_D–N≡N]⁺. Overall: Ar_DNH₂ + HNO₂ + H⁺ → [Ar_DN₂]⁺ + 2 H₂O. Apart from unchanged Ar_D, both sides contain2 N,2 O and4 H; net charge is+1 on both sides. This abbreviated particle sequence is sufficient here; it is neither a complete proton-transfer network nor an experiment record.\n2. Dimethylaniline ring pi pair→terminal diazonium N; N≡N pi pair→inner N. Positive sigma complex→H⁺ loss with C–H pair→ring pi. Product: p-NO₂–C₆H₄–N=N–C₆H₄–N(CH₃)₂; overall diazonium partner+ArH→azo dye+H⁺. Protonated –N⁺H(CH₃)₂ lacks an available lone pair for +M donation, so the ring is less activated.",
+            "understandingFocusDe": "Azosynthese umfasst Diazotierung und Kupplung; N-N-Bindungsaufbau, Ladungen und Rearomatisierung werden auf Teilchenebene erklärt.",
+            "understandingFocusEn": "Azo synthesis includes diazotization and coupling; N-N formation, charges and rearomatization are explained at particle level."
+          }
+        ]
+      },
+      "profileSourceLine": 262,
+      "mechanicalTargetExclusions": {
+        "goalId": "981242bb-a729-5701-b02d-c2f7f489e5af",
+        "viewIds": [
+          "de-rp-gym-chemistry-lk"
+        ],
+        "missingJurisdictions": [
+          "DE-RP"
+        ],
+        "compiledApplicability": {
+          "jurisdiction": [
+            "DE-BY"
+          ]
+        },
+        "evidenceJurisdictionsByKind": {
+          "provenance": [
+            "DE-BY"
+          ]
+        }
+      }
+    },
+    {
+      "wholeGoal": {
+        "id": "34da1a4c-5082-54c8-9084-a94826fd36cd",
+        "shortKey": "canonical_chemistry_upper_dye_chemistry_indicator_structure_change",
+        "title": "Indikatorfarbstoffe über Strukturänderungen erklären",
+        "titleEn": "Explain indicator dyes through structural changes",
+        "description": "Die lernende Person kann erklären, wie Säure-Base- oder Redoxreaktionen delokalisierte Elektronensysteme verändern, und damit die Funktionsweise von Indikatoren beschreiben.",
+        "descriptionEn": "The learner can explain how acid-base or redox reactions change delocalized electron systems and use this to describe the function of indicators.",
+        "weight": 1,
+        "tags": [
+          "LK",
+          "canonical",
+          "SekII"
+        ],
+        "contains": [],
+        "requires": [
+          "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-chemistry",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "PK2_MODELLIEREN",
+            "PK3_BEWERTEN",
+            "PK4_KOMMUNIZIEREN"
+          ],
+          "guidingIdeas": [
+            "BC_AUFBAU",
+            "BC_REAKTION",
+            "BC_ENERGIE"
+          ],
+          "phase": "Q4",
+          "area": "Farbstoffchemie",
+          "topicCode": "CANONICAL.CHEMISTRY.UPPER.DYES.INDICATOR_STRUCTURE_CHANGE"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HH",
+            "DE-MV",
+            "DE-RP",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+            "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+            "sourceGoalId": "4ac0512a-3dcc-5af2-89b2-ed7c72215c1c"
+          },
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "34da1a4c-5082-54c8-9084-a94826fd36cd",
+            "title": "Visualisierung: Indikatorfarbstoffe über Strukturänderungen erklären",
+            "url": "/assets/goal-visualizations/chemie/34da1a4c-5082-54c8-9084-a94826fd36cd/34da1a4c-5082-54c8-9084-a94826fd36cd.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Indikatorfarbstoffe über Strukturänderungen erklären.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Indikatorfarbstoffe über Strukturänderungen erklären\". Die lernende Person kann erklären, wie Säure-Base- oder Redoxreaktionen delokalisierte Elektronensysteme verändern, und damit die Funktionsweise von Indikatoren beschreiben.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeProfile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Säure-Base- oder Redoxwechsel ändern Elektronenverteilung und Spektrum eines Indikators.",
+            "essentialUnderstandingEn": "Acid-base or redox changes alter an indicator’s electron distribution and spectrum.",
+            "observablePerformanceDe": "Verknüpft Teilchenform, Gleichgewicht und Farbe.",
+            "observablePerformanceEn": "Connects particle form, equilibrium and color."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Der Indikator zeigt ein chemisches Gleichgewicht, nicht einen beliebigen Farbumschlag ohne Strukturgrund.",
+            "essentialUnderstandingEn": "An indicator reports a chemical equilibrium rather than an arbitrary color switch without structural basis.",
+            "observablePerformanceDe": "Überträgt das Modell auf eine veränderte chemische Bedingung.",
+            "observablePerformanceEn": "Transfers the model to a changed chemical condition."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "v1",
+            "textDe": "Protolyse versus Redoxform",
+            "textEn": "Protolysis versus redox form"
+          },
+          {
+            "id": "v2",
+            "textDe": "Gleichgewicht und Konjugationsunterbrechung",
+            "textEn": "Equilibrium and interrupted conjugation"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "34da1a4c-case-1",
+            "taskDemandDe": "Idealisierter Indikator HIn ⇌ H⁺ + In⁻: HIn hat im Modell unterbrochene ausgedehnte Konjugation und kein sichtbares Maximum; In⁻ ist planar konjugiert mit λmax 560 nm. pKₐ=7,0; gleicher solvent- und konzentrationsbezogener Zustand, keine weitere Protolyse.\n1. Erkläre den Zusammenhang zwischen den beiden Strukturformen und der sichtbaren Absorption; unterscheide das Gleichgewicht von mesomeren Grenzformeln.\n2. Bestimme mit [In⁻]/[HIn]=10^(pH−pKₐ) die dominierende Form bei pH 6 und 8 und erkläre die Farbumschlagrichtung.",
+            "taskDemandEn": "Idealized indicator HIn ⇌ H⁺ + In⁻: HIn has interrupted extended conjugation and no visible maximum in this model; In⁻ is planar and conjugated with λmax 560 nm. pKₐ=7.0; same solvent and concentration conditions, no further protolysis.\n1. Explain the connection between both structures and visible absorption; distinguish the equilibrium from resonance contributors.\n2. Use [In⁻]/[HIn]=10^(pH−pKₐ) to identify the dominant form at pH 6 and 8 and explain the color-change direction.",
+            "expectedPerformanceDe": "1. In⁻ besitzt die längere konjugierte Elektronenverteilung und absorbiert im Modell sichtbar bei 560 nm; HIn nicht. HIn und In⁻ unterscheiden sich durch ein Proton und sind echte Teilchenformen im Gleichgewicht. Mesomere Formen desselben Teilchens unterscheiden sich nicht in Atomzusammensetzung.\n2. Bei pH 6 beträgt das Verhältnis 0,1: HIn dominiert. Bei pH 8 beträgt es 10: In⁻ dominiert. Steigender pH begünstigt die konjugierte sichtbare Absorberform, daher stärkere Indikatorfarbe; der Übergang ist graduell, kein scharfer Einzel-pH.",
+            "expectedPerformanceEn": "1. In⁻ has the more extended conjugated distribution and absorbs visibly at 560 nm in the model; HIn does not. HIn and In⁻ differ by a proton and are real forms in equilibrium. Resonance contributors of one particle do not differ in composition.\n2. At pH 6 the ratio is 0.1, so HIn dominates. At pH 8 it is 10, so In⁻ dominates. Higher pH favors the conjugated visible absorber and therefore stronger indicator color; the transition is gradual, not one sharp pH value.",
+            "understandingFocusDe": "In⁻ besitzt die längere konjugierte Elektronenverteilung und absorbiert im Modell sichtbar bei 560 nm; HIn nicht. HIn und In⁻ unterscheiden sich durch ein Proton und sind echte Teilchenformen im Gleichgewicht. Mesomere Formen desselben Teilchens unterscheiden sich nicht in Atomzusammensetzung. / Bei pH 6 beträgt das Verhältnis 0,1: HIn dominiert. Bei pH 8 beträgt es 10: In⁻ dominiert. Steigender pH begünstigt die konjugierte sichtbare Absorberform, daher stärkere Indikatorfarbe; der Übergang ist graduell, kein scharfer Einzel-pH.",
+            "understandingFocusEn": "In⁻ has the more extended conjugated distribution and absorbs visibly at 560 nm in the model; HIn does not. HIn and In⁻ differ by a proton and are real forms in equilibrium. Resonance contributors of one particle do not differ in composition. / At pH 6 the ratio is 0.1, so HIn dominates. At pH 8 it is 10, so In⁻ dominates. Higher pH favors the conjugated visible absorber and therefore stronger indicator color; the transition is gradual, not one sharp pH value."
+          },
+          {
+            "id": "34da1a4c-case-2",
+            "taskDemandDe": "Vereinfachtes Redoxindikator-Modell: B⁺ + H⁺ + 2e⁻ ⇌ BH. B⁺ ist delokalisiert, absorbiert im Modell 530–700 nm stark und lässt 430–480 nm weitgehend durch; BH hat ein unterbrochenes π-System und erscheint ohne weitere Banden farblos. Ein Reduktionsmittel liefert Elektronen; Luftsauerstoff kann den Rückweg fördern. Keine reale Stoffzubereitung.\n1. Prüfe die Ladungsbilanz und erkläre die Entfärbung bei Reduktion über die vorgegebene Strukturänderung; begründe die blaue Erscheinung der oxidierten Form.\n2. Erkläre die erwartete Rückfärbung bei Luftkontakt und begründe, warum dieses Signal allein keinen bestimmten pH-Wert misst.",
+            "taskDemandEn": "Simplified redox-indicator model: B⁺ + H⁺ + 2e⁻ ⇌ BH. B⁺ is delocalized, strongly absorbs 530–700 nm in the model and largely transmits 430–480 nm; BH has an interrupted pi system and appears colorless without other bands. A reducing agent supplies electrons; air oxygen can promote reversal. No actual preparation.\n1. Check charge balance and explain decolorization upon reduction through the supplied structural change; explain why the oxidized form looks blue.\n2. Explain predicted recoloring on air exposure and why this signal alone does not measure a particular pH.",
+            "expectedPerformanceDe": "1. Links +1+1−2=0, rechts BH neutral. Reduktion unterbricht im Modell die ausgedehnte Delokalisierung, sodass die sichtbare Bande entfällt. B⁺ entzieht dem Weißlicht vorwiegend grüne bis rote Anteile; das verbleibende blaue Licht erklärt die modellierte blaue Erscheinung.\n2. Luftsauerstoff wirkt als Elektronenakzeptor und ermöglicht Oxidation zurück zu B⁺. Das Signal hängt von Redoxbedingungen und gegebenenfalls auch Protonenaktivität ab; ohne Kalibrierung und definierte Bedingungen gibt es keinen eindeutigen pH-Wert.",
+            "expectedPerformanceEn": "1. Left charge +1+1−2=0 equals neutral BH. Reduction interrupts extended delocalization in the model, removing the visible band. B⁺ removes mainly green-to-red components from white light; remaining blue light explains its modeled blue appearance.\n2. Air oxygen acts as an electron acceptor and permits oxidation back to B⁺. The signal depends on redox conditions and potentially proton activity; without calibration and controlled conditions it gives no unique pH value.",
+            "understandingFocusDe": "Links +1+1−2=0, rechts BH neutral. Reduktion unterbricht im Modell die ausgedehnte Delokalisierung, sodass die sichtbare Bande entfällt. B⁺ entzieht dem Weißlicht vorwiegend grüne bis rote Anteile; das verbleibende blaue Licht erklärt die modellierte blaue Erscheinung. / Luftsauerstoff wirkt als Elektronenakzeptor und ermöglicht Oxidation zurück zu B⁺. Das Signal hängt von Redoxbedingungen und gegebenenfalls auch Protonenaktivität ab; ohne Kalibrierung und definierte Bedingungen gibt es keinen eindeutigen pH-Wert.",
+            "understandingFocusEn": "Left charge +1+1−2=0 equals neutral BH. Reduction interrupts extended delocalization in the model, removing the visible band. B⁺ removes mainly green-to-red components from white light; remaining blue light explains its modeled blue appearance. / Air oxygen acts as an electron acceptor and permits oxidation back to B⁺. The signal depends on redox conditions and potentially proton activity; without calibration and controlled conditions it gives no unique pH value."
+          }
+        ]
+      },
+      "profileSourceLine": 248,
+      "mechanicalTargetExclusions": {
+        "goalId": "34da1a4c-5082-54c8-9084-a94826fd36cd",
+        "viewIds": [
+          "de-sh-gym-chemistry-lk"
+        ],
+        "missingJurisdictions": [
+          "DE-SH"
+        ],
+        "compiledApplicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HH",
+            "DE-MV",
+            "DE-RP",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "evidenceJurisdictionsByKind": {
+          "mapping": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HH",
+            "DE-MV",
+            "DE-RP",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ],
+          "provenance": [
+            "DE-BY"
+          ]
+        }
+      }
+    }
+  ],
+  "baseWhole39ViewsPin": {
+    "path": "/mnt/e/skillpilot-chemie-L7-20261017/paired-twenty-foundations-and-coordinate-priors-actual-whole650-assembly-root-v1/candidate.whole39views.paired48-plus20-foundations.private.json",
+    "sha256": "f3989d39a8096f160de40c35b81281054cbe06012626a227439a7f5895bfd9ac",
+    "bytes": 1661836
+  }
+}

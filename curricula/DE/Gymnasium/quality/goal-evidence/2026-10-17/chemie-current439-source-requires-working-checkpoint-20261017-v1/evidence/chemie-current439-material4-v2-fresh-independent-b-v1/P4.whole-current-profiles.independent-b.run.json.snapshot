@@ -1,0 +1,41 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-material4-v3-fresh-independent-b-20261017-v1-native-P",
+  "bundleFingerprint": "sha256:2b4d85280ea1c758aa980e8517f462b3c7b5533e79e38c5ad50c1592b5756762",
+  "bookDigest": "sha256:e501cc7cb865f079fd49eae07cd7e85923c9c0b6172fb38e410ef54a5020a6c1",
+  "provider": "OpenAI",
+  "model": "Codex based on GPT-6; exact deployment identifier not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "positive-understanding-evidence-v2-whole-profile-independent-review",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+  "generationParametersFingerprint": "sha256:c434545557475b4e83d2e0defc269d689009d65473e6035631e7628473bbe29e",
+  "independenceGroupId": "chemie-current439-material4-v3-targeted-20261017-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "f85b4651-50ea-5b42-b193-3465c05257a7",
+    "b8d3b453-d638-5518-aab0-d84ec2e8567c",
+    "28c90c6a-3020-5c51-ac40-d802f3f12d2d",
+    "188bd684-e894-5753-8a50-798220b04d97"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:a403b941b10e575a4659ac6fa6394be0878c0868ffec09cb4b18709e9b6a4148"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835"
+    }
+  ],
+  "startedAt": "2026-10-17T09:04:20Z",
+  "completedAt": "2026-10-17T09:06:30Z",
+  "status": "completed",
+  "outputDigest": "sha256:fbaa5b3a94e36682e21b9890fe042871023ea0d2e06a3e680f2f4766b22c5c64",
+  "toolchainVersion": "skillpilot-native-description-v1-sealed-first-serialization"
+}

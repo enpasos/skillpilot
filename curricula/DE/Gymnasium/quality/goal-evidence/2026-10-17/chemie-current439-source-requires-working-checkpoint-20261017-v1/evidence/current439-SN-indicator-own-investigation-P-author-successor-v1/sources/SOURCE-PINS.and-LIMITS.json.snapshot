@@ -1,0 +1,190 @@
+{
+  "role": "Author source provenance and exact available file pins; not an acceptance manifest",
+  "capturedAtUTC": "2026-10-17T11:01:36.385672+00:00",
+  "cleanCurrentSelector": {
+    "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/archive/SELECTOR.clean-current-Source9-HB97-with-whole-target-subtrees-real-assets-materials.sealed.json",
+    "sha256": "3e459d001f5f7b067b46f8c61908a798f33a5927b24243c994bc7a6a9270cd33",
+    "bytes": 63121
+  },
+  "originalInputsArchiveManifest": {
+    "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/archive/INPUTS.exact-archive.manifest.json",
+    "sha256": "e320d15c4339eb07cb155939271d707e2477f114f6a54ac42cc4a8412c05fe73",
+    "bytes": 10393
+  },
+  "primarySources": [
+    {
+      "id": "SN-binding-operator",
+      "officialUrl": "https://www.schulportal.sachsen.de/lplandb/lehrplan/file/521/lnuYavMOfLLQRd2MlehG",
+      "originalPDF": {
+        "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/archive/lehrplan-gymnasium-chemie-sachsen-2025.pdf",
+        "sha256": "3a74886e7ee9492b003d4916719e2b4644aef5fdfe8331cdefd8151fe0e86051",
+        "bytes": 824141
+      },
+      "pages": [
+        {
+          "physical": 4,
+          "printed": "IV",
+          "use": "Goals/content are binding; remarks recommend."
+        },
+        {
+          "physical": 24,
+          "printed": "12",
+          "use": "Grade 8 LB5, left-column experimental examination of acidic solutions using indicators; right-side SE remark."
+        }
+      ],
+      "authorityLimit": "Author read the actual current archived primary PDF; no source-union approval is granted."
+    },
+    {
+      "id": "MN-92110-actual-instructions",
+      "officialUrl": "https://www.mn-net.com/media/pdf/Instruction-92110-pH-test-strips-pH-Fix-0-14-fixed-indicator.pdf",
+      "retrievalMode": "Official PDF content read via web tool, German/English first pages, Rev 10/2026; direct HTTP bytes download blocked (403).",
+      "extractionCapture": {
+        "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/sources/manufacturer/web-primary-extractions.json",
+        "sha256": "285aaf0b3982e3a0bc20a62729a20b4e767d7d03737fe5b5cc2cb10bf32909f1",
+        "bytes": 49174
+      },
+      "use": "Product identity 92110, original reference scale, visual whole-field immersion 1 s, remove excess, match chart; insufficient buffering requires colour constancy.",
+      "notOriginalPDFPin": true
+    },
+    {
+      "id": "MN-90201-product-and-paper-instructions",
+      "officialUrls": [
+        "https://www.mn-net.com/us/universal-indicator-paper-ph-1-11-reel-90201?c=6098",
+        "https://www.mn-net.com/media/pdf/9b/88/e0/Instruction-902xx-Universal-and-special-indicator-pH-test-paper.pdf"
+      ],
+      "retrievalMode": "Official product page and official paper-instruction PDF search extraction read via web tool; original PDF bytes unavailable locally.",
+      "productExtractionCapture": {
+        "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/sources/manufacturer/web-primary-extractions.json",
+        "sha256": "285aaf0b3982e3a0bc20a62729a20b4e767d7d03737fe5b5cc2cb10bf32909f1",
+        "bytes": 49174
+      },
+      "instructionExtractionCapture": {
+        "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/sources/manufacturer/MN-902xx.primary-search-extraction.txt",
+        "sha256": "51a98bced0f89e9561046aadde421a34ed4665d793fcb3627739637cc9e41056",
+        "bytes": 1631
+      },
+      "use": "90201 range 1–11, own single-colour chart; read damp. For weak/unbuffered solution, paper against tube inside wall, fill to brim, compare through glass after about 1 min.",
+      "notOriginalPDFPin": true
+    },
+    {
+      "id": "ROTH-P712-identity",
+      "officialUrl": "https://www.carlroth.com/de/en/buffer-solutions-roticalipure/buffer-solution-ph-4-00-%C2%B10-01-%2820-%C2%B0c%29/p/p712.1",
+      "retrievalMode": "Official primary manufacturer product text read via web search.",
+      "use": "P712 colourless ready-to-use pH4.00±0.01 at20°C citrate buffer, as distinct from red-tinted A517.",
+      "sourceBytesArchived": false,
+      "limit": "Actual bottle/lot and current local safety information still required; no safety clearance inferred."
+    },
+    {
+      "id": "ROTH-9977-identity",
+      "officialUrl": "https://www.carlroth.com/en/en/rotistar-ph-buffer-solutions/buffer-solution-ph-7-00-%C2%B10-01-%2820-%C2%B0c%29/p/9977.1",
+      "retrievalMode": "Official primary manufacturer product text read via web search.",
+      "use": "9977 colourless pH7.00±0.01 at20°C phosphate mixture (potassium dihydrogen phosphate/disodium hydrogen phosphate).",
+      "sourceBytesArchived": false,
+      "limit": "Actual bottle/lot and current local safety information still required; no safety clearance inferred."
+    },
+    {
+      "id": "ROTH-0965-SDS",
+      "officialUrl": "https://www.carlroth.com/medias/SDB-0965-DE-DE.pdf?context=bWFzdGVyfHNlY3VyaXR5RGF0YXNoZWV0c3wyNTQ5ODJ8YXBwbGljYXRpb24vcGRmfGFEQTNMMmhpWmk4NU1UZ3pPVEkyTXpJeE1UZ3lMMU5FUWw4d09UWTFYMFJGWDBSRkxuQmtaZ3w0ZDg0NWRmOGE0YzNlMmU5NmI4M2U4OGE2MjIzYjBiOTBhMWE2YTZhNDc0ODJiYzc0ZDViZDFmYjY0NzkzOWE3",
+      "originalPDF": {
+        "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/sources/manufacturer/SDB-0965.original.pdf",
+        "sha256": "d507f51b714334225d3a2f22610070c52f78174757b0ccd0d95a014a8a76e76c",
+        "bytes": 254982
+      },
+      "retrievalMode": "Full original manufacturer SDS downloaded and first pages read locally.",
+      "use": "NaHCO3≥99%, product0965, CAS144-55-8, German SDS4.1 revised2024-09-18; laboratory use and no private/food use.",
+      "limit": "Not a release of the prepared classroom mixture or a statement that current local stock has no risks."
+    },
+    {
+      "id": "ROTH-X863-stock-identity-and-risk",
+      "officialUrls": [
+        "https://www.carlroth.com/downloads/sdb/de/X/SDB_X863_CH_DE.pdf",
+        "https://www.carlroth.com/medias/SDB-X863-BE-DE.pdf"
+      ],
+      "retrievalMode": "Manufacturer SDS primary web extraction read, including stock identity CAS77-92-9 and irritation hazards; original bytes download unsuccessful.",
+      "extractionCapture": {
+        "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-SN-indicator-own-investigation-P-author-successor-v1/sources/manufacturer/web-primary-extractions.json",
+        "sha256": "285aaf0b3982e3a0bc20a62729a20b4e767d7d03737fe5b5cc2cb10bf32909f1",
+        "bytes": 49174
+      },
+      "use": "Anhydrous citric acid≥99.5%, X863; restrict solid handling/preparation to teacher and require current actual local safety information.",
+      "notOriginalPDFPin": true,
+      "limit": "Swiss/Belgian historical extraction is not a German school release; obtain actual current relevant SDS before real work."
+    }
+  ],
+  "priorFirstReviewsUsedAs": "Author error checklist only; archived whole, not new independent votes.",
+  "unchangedInputPins": [
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "sha256": "38c437d5fa0e24f8587b26cbdb2e3f168f3ffaf915aaaef885f918ac22c668e0",
+      "bytes": 2919296
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-material4-v3-targeted-preparation-technical-v1/P439.material4-v3-only28c-author-profile-current.aggregate.jsonl",
+      "sha256": "eb2019c4bb61b375d2959a4c03c32c479da7a31f0ef1b4d39d44e477ec2a26f6",
+      "bytes": 4484458
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-source9-HB97-whole-union-neutral-review-preparation-technical-v1/SELECTOR.clean-current-Source9-HB97-with-whole-target-subtrees-real-assets-materials.sealed.json",
+      "sha256": "3e459d001f5f7b067b46f8c61908a798f33a5927b24243c994bc7a6a9270cd33",
+      "bytes": 63121
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-source9-HB97-whole-union-neutral-review-preparation-technical-v1/REVIEW.current-source9-whole-union-HB97.whole-scientific-inputs.no-old-verdicts.json",
+      "sha256": "dd7b8f863c4b1796d5abe37a25728c5e91bdea6d3c0cbc0e5e8764c610d42a48",
+      "bytes": 2667378
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-source9-HB97-whole-union-neutral-review-preparation-technical-v1/CONTEXT.complete-41-current-mapped-target-subtrees-P-profiles-and-real-assets.no-old-verdicts.json",
+      "sha256": "0c97b858690cfa31a22047b6eb4a2a253bbf996820d21bc177c3443d4ca76a21",
+      "bytes": 958092
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-source9-HB97-whole-union-neutral-review-preparation-technical-v1/MATERIAL.relevant-current-V3-whole-operative-cases.no-old-verdicts.json",
+      "sha256": "a4b1200c21f121700b69ead4e4394d45e88eeaf2d2ad828aedac04932ce3caa4",
+      "bytes": 11284
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-source9-HB97-whole-union-neutral-review-preparation-technical-v1/ASSETS.current24-mapped-target-bound-real-originals.json",
+      "sha256": "938c8995b2c51bf594496f00583818f27dbfe0937a5df538afb0213ac8adc083",
+      "bytes": 49936
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-source9-HB97-whole-union-neutral-review-preparation-technical-v1/primary/3a74886e7ee9492b003d4916719e2b4644aef5fdfe8331cdefd8151fe0e86051/lehrplan-gymnasium-chemie-sachsen-2025.pdf",
+      "sha256": "3a74886e7ee9492b003d4916719e2b4644aef5fdfe8331cdefd8151fe0e86051",
+      "bytes": 824141
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/app/public/assets/goal-visualizations/chemie/d2ccd1d5-56f7-583f-9724-e97441367f91/d2ccd1d5-56f7-583f-9724-e97441367f91.png",
+      "sha256": "cf6f69ccb31591750a925603b9930d57edb0f9f0112c6512b28ad674a561f7f8",
+      "bytes": 1513753
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-source9-HB97-fresh-independent-a-v1/FIRST.source9-HB97.scientific-findings.sealed.json",
+      "sha256": "e9a377a1ca7de9b1055328278698ff44c89e4ada71c6e53ea72fdd200d4f7624",
+      "bytes": 86164
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-source9-HB97-fresh-independent-b-v1/FIRST.independent-Source9-HB97.scientific.frozen.md",
+      "sha256": "b577d5418ad784c6c0f2fd2a7a26e1b90ffea34cfc935034f1f308e7e3d920d3",
+      "bytes": 21541
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "sha256": "aecc9c8bea8f1933a4599cb8afb6ceb6cd9f36444e863bd4706473262fa50a18",
+      "bytes": 359103
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_CHEMIE_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+      "sha256": "3f7d68cf03eea3e6694c3263b90a1f6c6448028bbaf9c03a9c9275427c2bbf95",
+      "bytes": 397726
+    }
+  ],
+  "limits": [
+    "This is the finite author artifact, inactive. It does not close source coverage or grant P/D/M/V acceptance.",
+    "Manufacturer colour scales are not reproduced or invented. Concrete original product charts and actual stock/lot identifiers must be materialized and bound before laboratory use.",
+    "The authored pH ranges for prepared citric acid and bicarbonate are broad chemistry-model orientations, not measured product certifications or guaranteed chart matches. Actual observations and controls govern.",
+    "No actual own raw observations, teacher signature, safety release, learner mastery or human approval exists in this package.",
+    "The current binding goal, prerequisite and good image are unchanged; former P aggregate remains byte-exact with all438other rows.",
+    "Third-party source documents retain their original rights; archival/source citation is not relicensing."
+  ]
+}

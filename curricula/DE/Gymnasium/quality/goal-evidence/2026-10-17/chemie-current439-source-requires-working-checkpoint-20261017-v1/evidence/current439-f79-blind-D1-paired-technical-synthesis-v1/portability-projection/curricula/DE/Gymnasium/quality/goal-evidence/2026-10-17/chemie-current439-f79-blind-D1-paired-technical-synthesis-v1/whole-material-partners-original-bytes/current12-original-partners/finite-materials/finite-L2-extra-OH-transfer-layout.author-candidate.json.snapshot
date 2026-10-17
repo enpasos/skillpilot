@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "role": "Finite hypothetical fresh OH-addition layout; original L/L2 scaffold unchanged",
+  "basePose": "L2",
+  "deleteAtomIds": [
+    "HC5_1"
+  ],
+  "addedAtoms": {
+    "OX": {
+      "element": "O",
+      "xyz_A": [
+        4.141666666666667,
+        -0.0015441843823440493,
+        -0.6741084647311754
+      ],
+      "role": "new hypothetical hydroxyl; donor/acceptor possible, not an established affinity change"
+    },
+    "HX": {
+      "element": "H",
+      "xyz_A": [
+        3.387490139873023,
+        0.5918794031266762,
+        -0.8154103126362942
+      ],
+      "role": "hydroxyl H"
+    }
+  },
+  "addedBonds": [
+    {
+      "a": "C5",
+      "b": "OX",
+      "order": 1,
+      "length_A": 1.43
+    },
+    {
+      "a": "OX",
+      "b": "HX",
+      "order": 1,
+      "length_A": 0.97
+    }
+  ],
+  "chemicalChange": "One C5 hydrogen replaced by OH: CH2 -> CH(OH), giving a hypothetical new derivative, not the same-compound pose claim. Amide/phenyl and original Nplus geometry remain fixed.",
+  "ownFiniteChecks": {
+    "C5_OX_HX_deg": 108,
+    "new_OX_Hdonor_distance_A": 3.735321190769954,
+    "originalNplusContactDistanceUnchanged_A": 6.190714763082907
+  },
+  "newKdOrClinicalEffectClaimed": false,
+  "actualLearnerConstruction": false,
+  "humanApproval": false
+}

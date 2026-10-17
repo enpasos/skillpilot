@@ -1,0 +1,80 @@
+{
+  "atUTC": "2026-10-17T09:20:29.124862+00:00",
+  "startedAtUTC": "2026-10-17T09:17:49.968621+00:00",
+  "exitCode": 0,
+  "elapsedSeconds": 151.86246497899992,
+  "stockReportModeIsNotCheckPass": true,
+  "configuration": {
+    "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-remediation14-guarded-root-integration-technical-v1/current4-v3-root-successor/central.current439.D113-P439V3.PROSPECTIVE.config.json",
+    "sha256": "ab71b7955ddfedca35dba08afcb9b3e6f05e911d8a8d33904d158b94adb9bf6c",
+    "bytes": 244713
+  },
+  "stdout": {
+    "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/central-current439-D113-P439V3-actual-v1/central.stock.stdout.json",
+    "sha256": "dd2ca4ca7cc83681db345baa62301677bce11ba54a6213be5b256501bcc33536",
+    "bytes": 26696
+  },
+  "stderr": {
+    "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/central-current439-D113-P439V3-actual-v1/central.stock.stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "guardedInputs": 592,
+  "changedInputs": [],
+  "blockingIssueCount": 6,
+  "subjects": [
+    {
+      "subject": "chemie",
+      "denominator": 439,
+      "strictComplete": 0,
+      "percentage": "0.0%",
+      "gates": {
+        "currentDescriptionResolutions": 439,
+        "currentPositiveEvidenceProfiles": 439,
+        "currentSemanticAtomicityDecisions": 0,
+        "currentMemoryReviewDecisions": 439,
+        "currentVisualizationQaRecords": 0
+      },
+      "remaining": 439,
+      "requiredChecks": [
+        {
+          "id": "semantic-kind-scope",
+          "status": "pass"
+        },
+        {
+          "id": "description-review-validation",
+          "status": "pass"
+        },
+        {
+          "id": "positive-evidence-validation",
+          "status": "pass"
+        },
+        {
+          "id": "semantic-atomicity-check",
+          "status": "fail"
+        },
+        {
+          "id": "memory-card-check",
+          "status": "pass"
+        },
+        {
+          "id": "visualization-freshness-and-approval-check",
+          "status": "fail"
+        }
+      ],
+      "strictCompletionReady": false,
+      "deferredVisualizationGoalIds": [],
+      "issues": [
+        "chemie: semantic-atomicity production check failed for curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-9b-current-angle-atomicity-independent-c-v1/config/A-retained-009.rest24.original-review-identity.config.json: at async ModuleLoader.import (node:internal/modules/esm/loader:606:24) | at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) { | errno: -2, | code: 'ENOENT', | syscall: 'open', | path: '/mnt/e/skillpilot-chemie-L7-20261017/current650-all-seven-current439-native-central-preparation-technical-a-v1/capsule/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-9b-current-angle-atomicity-independent-c-v1/config/A-retained-009.rest24.original-review-identity.config.json' | } | Node.js v20.20.2",
+        "chemie: semantic-atomicity production check failed for curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-9b-current-angle-atomicity-independent-c-v1/config/A1.9b-current-angle.independent-c.config.json: at async ModuleLoader.import (node:internal/modules/esm/loader:606:24) | at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) { | errno: -2, | code: 'ENOENT', | syscall: 'open', | path: '/mnt/e/skillpilot-chemie-L7-20261017/current650-all-seven-current439-native-central-preparation-technical-a-v1/capsule/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-9b-current-angle-atomicity-independent-c-v1/config/A1.9b-current-angle.independent-c.config.json' | } | Node.js v20.20.2",
+        "chemie: semantic-atomicity production check failed for curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-remediation14-guarded-root-integration-technical-v1/config/A006.same-identity-exact-rest.config.json: at async ModuleLoader.import (node:internal/modules/esm/loader:606:24) | at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) { | errno: -2, | code: 'ENOENT', | syscall: 'open', | path: '/mnt/e/skillpilot-chemie-L7-20261017/current650-all-seven-current439-native-central-preparation-technical-a-v1/capsule/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-remediation14-guarded-root-integration-technical-v1/config/A006.same-identity-exact-rest.config.json' | } | Node.js v20.20.2",
+        "chemie: semantic-atomicity production check failed for curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-remediation14-guarded-root-integration-technical-v1/config/A052.same-identity-exact-rest.config.json: at async ModuleLoader.import (node:internal/modules/esm/loader:606:24) | at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) { | errno: -2, | code: 'ENOENT', | syscall: 'open', | path: '/mnt/e/skillpilot-chemie-L7-20261017/current650-all-seven-current439-native-central-preparation-technical-a-v1/capsule/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-remediation14-guarded-root-integration-technical-v1/config/A052.same-identity-exact-rest.config.json' | } | Node.js v20.20.2",
+        "chemie: semantic-atomicity production check failed for curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-remediation14-guarded-root-integration-technical-v1/config/A4.actual-independent.relative-canonical.config.json: at async ModuleLoader.import (node:internal/modules/esm/loader:606:24) | at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) { | errno: -2, | code: 'ENOENT', | syscall: 'open', | path: '/mnt/e/skillpilot-chemie-L7-20261017/current650-all-seven-current439-native-central-preparation-technical-a-v1/capsule/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-remediation14-guarded-root-integration-technical-v1/config/A4.actual-independent.relative-canonical.config.json' | } | Node.js v20.20.2",
+        "chemie: visualization-QA freshness check failed: Goal visualization QA ledger(s) are stale: | - curricula/DE/Gymnasium/quality/goal-visualization-qa/chemie.qa.json"
+      ]
+    }
+  ],
+  "newScientificVotes": 0,
+  "mainChanged": false,
+  "humanApproval": false
+}
