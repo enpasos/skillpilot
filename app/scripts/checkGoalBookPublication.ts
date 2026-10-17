@@ -267,11 +267,20 @@ const assertNoLearnerDataKeys = (value: unknown, path = '$') => {
 }
 
 export const assertCanonicalRelationUrls = (model: GoalBookModel) => {
+  const externalLandscapeIds = new Set(
+    (model.source.externalLandscapes ?? []).map(({ landscapeId }) => landscapeId),
+  )
   const externalReferences = model.pages.flatMap((page) => [
     ...page.externalPrerequisites,
     ...page.externalReverseRequires,
   ])
   for (const reference of externalReferences) {
+    const landscapeId = reference.landscapeId ?? model.book.landscapeId
+    if (reference.landscapeId !== undefined && (
+      landscapeId === model.book.landscapeId || !externalLandscapeIds.has(landscapeId)
+    )) {
+      fail(`external relation ${reference.goalId} has an unbound canonical landscape`)
+    }
     if (reference.canonicalUrl === null) continue
     const url = new URL(reference.canonicalUrl)
     const parameterKeys = [...url.searchParams.keys()]
@@ -285,7 +294,7 @@ export const assertCanonicalRelationUrls = (model: GoalBookModel) => {
       || new Set(parameterKeys).size !== 2
       || !parameterKeys.includes('landscape')
       || !parameterKeys.includes('edition')
-      || url.searchParams.get('landscape') !== model.book.landscapeId
+      || url.searchParams.get('landscape') !== landscapeId
       || url.searchParams.get('edition') !== model.book.edition
     ) {
       fail(`external relation ${reference.goalId} has an unsafe canonical URL`)
