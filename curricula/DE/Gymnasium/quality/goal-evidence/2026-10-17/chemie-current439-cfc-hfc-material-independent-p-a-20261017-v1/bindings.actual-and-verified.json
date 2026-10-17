@@ -1,0 +1,63 @@
+{
+  "atUTC": "2026-10-17T13:21:49.680528+00:00",
+  "bindings": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-cfc-hfc-whole-material-author-20261017-v1/SELECTOR.whole-author-material-clean-inputs.sealed.json",
+      "sha256": "36aff9f6da2b8527a121eda0002eb1c036b3d9803de6b2a74ac3746b51edbf7b",
+      "bytes": 1831
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-cfc-hfc-whole-material-author-20261017-v1/sources.primary-reading.author.json",
+      "sha256": "169bcdae519fdd0048875b327b4ce8107a6b9ad4bd4d7b676f1ddc7df7d1ed37",
+      "bytes": 5221,
+      "matchesSelector": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-cfc-hfc-whole-material-author-20261017-v1/materials/TWO.complete-DE-EN-cases.AUTHOR.pending.json",
+      "sha256": "381e70acb3d28d32e7d4c6b6a10392ba98035157d53a00322480fc6c5edb3d95",
+      "bytes": 19051,
+      "matchesSelector": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-cfc-hfc-whole-material-author-20261017-v1/P1.whole-profile.AUTHOR.pending.json",
+      "sha256": "43d0f1c76dd7a5c2c0a4347ff4767bdb8126bf458ac4fa82bb68edb4fd312194",
+      "bytes": 8969,
+      "matchesSelector": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-cfc-hfc-whole-material-author-20261017-v1/REVIEW-INPUT.clean-whole-goal-profile-material.json",
+      "sha256": "7abd294777610cae6c888a7453b25ba50d73c9ea41bfdceeda7770b2ca2e6ef2",
+      "bytes": 36569,
+      "matchesSelector": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-cfc-hfc-whole-material-author-20261017-v1/AUTHOR.delta-and-bounds.json",
+      "sha256": "f5856f157b02b5162d44923c1a736f6c11654f7aa125915a2261061596b76cdc",
+      "bytes": 1513,
+      "matchesSelector": true
+    }
+  ],
+  "referencedBaseBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-source-requires-working-checkpoint-20261017-v1/candidate/DE_DEU_S_GYM_CANONICAL_CHEMIE.C650.inactive.json",
+      "sha256": "38c437d5fa0e24f8587b26cbdb2e3f168f3ffaf915aaaef885f918ac22c668e0",
+      "bytes": 2919296,
+      "matchesAuthorDelta": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-source-requires-working-checkpoint-20261017-v1/candidate/P439.f79-and-SN-corrected.inactive.jsonl",
+      "sha256": "56cfed452aa7fa0eb5c08650885af1db961d7d15e0ad33dfc0f6d3e80ef7512b",
+      "bytes": 4493338,
+      "matchesAuthorDelta": true
+    }
+  ],
+  "checks": {
+    "allFiveSelectorEntriesMatch": true,
+    "wholeMaterialEqualsSeparateMaterialFile": true,
+    "profileEqualsSeparateProfileFile": true,
+    "sourceLocatorsEqualSeparateSourceFile": true,
+    "wholeCleanGoalEqualsReferencedCanonicalGoal": true,
+    "referencedBaseFilesMatchAuthorDelta": true
+  },
+  "scope": "Only the selected whole-goal material package and the referenced exact goal/base hashes; no broad P439 review."
+}

@@ -1,0 +1,21 @@
+{
+  "label": "write",
+  "argv": [
+    "node",
+    "--preserve-symlinks",
+    "--preserve-symlinks-main",
+    "--import",
+    "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/loader.mjs",
+    "/home/enpasos/projects/skillpilot/tmp/chemie-current439-P5-native-check-20261017/capsule/app/scripts/materializePositiveGoalEvidenceCandidates.ts",
+    "--config",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-five-paired-P-integration-20261017-v1/P5.review.config.json",
+    "--candidates",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-five-paired-P-integration-20261017-v1/P5.paired.candidates.json",
+    "--write"
+  ],
+  "cwd": "/home/enpasos/projects/skillpilot/tmp/chemie-current439-P5-native-check-20261017/capsule",
+  "exitCode": 1,
+  "elapsedSeconds": 0.5331171759971767,
+  "stdout": "",
+  "stderr": "/home/enpasos/projects/skillpilot/tmp/chemie-current439-P5-native-check-20261017/capsule/app/scripts/materializePositiveGoalEvidenceCandidates.ts:301\n  if (reviewed.errors.length > 0) throw new Error(reviewed.errors.join('\\n'))\n                                        ^\n\n\nError: e81a4aed-9695-533e-8eb7-7a0c714346ea: data/profile/applicationCaseBriefs/0/taskDemandDe must NOT have more than 2000 characters; data/profile/applicationCaseBriefs/0/expectedPerformanceDe must NOT have more than 2000 characters; data/profile/applicationCaseBriefs/1/expectedPerformanceDe must NOT have more than 2000 characters\n31781d00-8f20-5041-bd7f-e261b27af162: data/profile/applicationCaseBriefs/0/expectedPerformanceDe must NOT have more than 2000 characters; data/profile/applicationCaseBriefs/0/expectedPerformanceEn must NOT have more than 2000 characters\n38e30bb9-6145-5da0-80b8-36e3c45e15d0: data/profile/applicationCaseBriefs/0/expectedPerformanceDe must NOT have more than 2000 characters; data/profile/applicationCaseBriefs/0/expectedPerformanceEn must NOT have more than 2000 characters; data/profile/applicationCaseBriefs/1/expectedPerformanceDe must NOT have more than 2000 characters; data/profile/applicationCaseBriefs/1/expectedPerformanceEn must NOT have more than 2000 characters\ne81a4aed-9695-533e-8eb7-7a0c714346ea: missing review record\n31781d00-8f20-5041-bd7f-e261b27af162: missing review record\n38e30bb9-6145-5da0-80b8-36e3c45e15d0: missing review record\n    at main (/home/enpasos/projects/skillpilot/tmp/chemie-current439-P5-native-check-20261017/capsule/app/scripts/materializePositiveGoalEvidenceCandidates.ts:301:41)\n\nNode.js v20.20.2\n"
+}

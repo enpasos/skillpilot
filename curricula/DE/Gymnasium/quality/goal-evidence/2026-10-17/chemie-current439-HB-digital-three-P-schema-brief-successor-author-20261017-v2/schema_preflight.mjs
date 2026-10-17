@@ -1,0 +1,18 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import { fileURLToPath } from 'node:url';
+import Ajv2020 from '/home/enpasos/projects/skillpilot/app/node_modules/ajv/dist/2020.js';
+const dir=path.dirname(fileURLToPath(import.meta.url));
+const root='/home/enpasos/projects/skillpilot';
+const sourcePath=path.join(root,'contracts/goal-evidence/v2/goal-evidence-profile.schema.json');
+const schema=JSON.parse(fs.readFileSync(sourcePath,'utf8'));
+const fragment={$schema:schema.$schema,$id:'urn:skillpilot:hb-digital-three-inner-profile-preflight',...schema.properties.profile,$defs:schema.$defs};
+const ajv=new Ajv2020({allErrors:true,strict:false});
+const validate=ajv.compile(fragment);
+const input=JSON.parse(fs.readFileSync(path.join(dir,'AUTHOR.three-whole-profiles.schema-brief-v2.pending.json'),'utf8'));
+const records=input.records.map(r=>({goalId:r.goalId,valid:validate(r.profile),errors:validate.errors?structuredClone(validate.errors):[]}));
+const result={tool:'Actual installed Ajv2020',schemaPath:path.relative(root,sourcePath),schemaSHA256:crypto.createHash('sha256').update(fs.readFileSync(sourcePath)).digest('hex'),validatedFragment:'properties.profile with original $defs',recordCount:records.length,allValid:records.every(r=>r.valid),records,readOnlyContractAndActiveFiles:true,schemaRelaxed:false,nativeWriterInvoked:false};
+fs.writeFileSync(path.join(dir,'CHECKS.actual-Ajv2020-inner-profile-preflight.json'),JSON.stringify(result,null,2)+'\n');
+process.stdout.write(JSON.stringify(result)+'\n');
+if(!result.allValid)process.exitCode=1;

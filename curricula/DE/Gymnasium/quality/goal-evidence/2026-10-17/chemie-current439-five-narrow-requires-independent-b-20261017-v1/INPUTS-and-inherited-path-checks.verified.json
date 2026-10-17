@@ -1,0 +1,288 @@
+{
+  "reviewId": "chemie-current439-five-narrow-requires-independent-b-20261017-v1",
+  "reviewedAt": "2026-10-17T13:25:46.375176+00:00",
+  "reviewer": "Codex independent Chemistry prerequisite reviewer B",
+  "reviewAuthority": "ai_candidate",
+  "inputSha256": "c149aa65db443ac290543689f8988aece2101cd45bc2a9fca0419020939ccefb",
+  "scope": "Five new narrower prerequisite additions only; necessity from whole dependent goal and scientific P bodies, plus newly imposed prerequisite closure. No restart of the 52 prior broad removals.",
+  "currentIndependentAReviewConsulted": false,
+  "authorDecisionConsulted": false,
+  "priorProfileWrapperVerdictsUsedAsAuthority": false,
+  "globalStrictClosureClaim": false,
+  "humanApproval": false,
+  "learnerAcceptance": false,
+  "M7Approval": false,
+  "cleanInput": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-five-narrow-requires-clean-review-input-20261017-v1/INPUT.five-pairs.whole-goals-and-P.clean.json",
+    "sha256": "c149aa65db443ac290543689f8988aece2101cd45bc2a9fca0419020939ccefb",
+    "bytes": 128202
+  },
+  "selector": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-five-narrow-requires-clean-review-input-20261017-v1/SELECTOR.clean.sealed.json",
+    "sha256": "eadafa8a4ed3a17b012356947294ad0a6a30f8ea1c1e4fbf56c6be205a48b08e",
+    "bytes": 384
+  },
+  "pinnedReferencedInputs": [
+    {
+      "name": "original650",
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-source-requires-working-checkpoint-20261017-v1/candidate/DE_DEU_S_GYM_CANONICAL_CHEMIE.C650.inactive.json",
+      "sha256": "38c437d5fa0e24f8587b26cbdb2e3f168f3ffaf915aaaef885f918ac22c668e0",
+      "bytes": 2919296,
+      "verified": true
+    },
+    {
+      "name": "candidate650",
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-requires52-narrow-foundations-author-20261017-v1/C650.requires52-with-five-narrow-foundations.AUTHOR-PENDING.json.snapshot",
+      "sha256": "439348646753e7fe07d2b5cedc70713ed94ccce787d565738f630f119f727efe",
+      "bytes": 2916908,
+      "verified": true
+    },
+    {
+      "name": "currentP439",
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-source-requires-working-checkpoint-20261017-v1/candidate/P439.f79-and-SN-corrected.inactive.jsonl",
+      "sha256": "56cfed452aa7fa0eb5c08650885af1db961d7d15e0ad33dfc0f6d3e80ef7512b",
+      "bytes": 4493338,
+      "verified": true
+    }
+  ],
+  "wholeCleanInputGoalCount": 8,
+  "pairCount": 5,
+  "wholeGoalObjectsEqualCandidate": true,
+  "allEightScientificPProfileBodiesRead": true,
+  "additionalCurrentPGoalIdsReadForClosure": [
+    "42a84bca-d27e-581f-a43a-eee424f0504d",
+    "9b5d6326-d27c-4ece-8c72-debda705464a",
+    "bbe038e9-86ed-5ec6-ab33-316758ddb16d"
+  ],
+  "method": "Own read-only structural traversal of requires plus all canonical contains ancestors, following AGENTS compatibility semantics. Delta is measured against the same candidate with only these five proposed edges omitted. This is not a runtime compiler test.",
+  "edgeChecks": [
+    {
+      "prerequisiteGoalId": "04fa0ba1-eb6e-53c8-93d4-dfa28bb4b162",
+      "dependentGoalId": "8be14f15-2258-58e6-ae4e-38953f5d0570",
+      "directEdgePresent": true,
+      "dependentContainsAncestors": [
+        {
+          "id": "33766473-86a1-5f82-afc9-bdb8ed6a2ab6",
+          "title": "Q3.3 Redoxgleichgewichte",
+          "requires": []
+        },
+        {
+          "id": "442c31c5-c561-5c7a-90bb-2335d779175c",
+          "title": "Chemie",
+          "requires": []
+        },
+        {
+          "id": "633f4fd4-1c36-5377-8fe6-44d8eeac3c56",
+          "title": "Chemisches Gleichgewicht",
+          "requires": []
+        }
+      ],
+      "prerequisiteContainsAncestors": [
+        {
+          "id": "323a222e-5db8-53c5-b2dc-6f9c1d0d277c",
+          "title": "Einführungsphase Reaktionsgrundlagen",
+          "requires": []
+        },
+        {
+          "id": "442c31c5-c561-5c7a-90bb-2335d779175c",
+          "title": "Chemie",
+          "requires": []
+        },
+        {
+          "id": "cd7f484a-ac2e-55bb-b904-61d743e87821",
+          "title": "Redoxreaktionen",
+          "requires": []
+        }
+      ],
+      "newRequiredClosureComparedWithSameCandidateWithoutFiveAdditions": [
+        {
+          "id": "04fa0ba1-eb6e-53c8-93d4-dfa28bb4b162",
+          "title": "Redoxbegriffe sicher anwenden"
+        }
+      ],
+      "dependentReachableFromPrerequisite": false
+    },
+    {
+      "prerequisiteGoalId": "13d4f336-ab16-54a7-9479-c920b458f385",
+      "dependentGoalId": "978a6f25-0601-5457-9211-aab206c95603",
+      "directEdgePresent": true,
+      "dependentContainsAncestors": [
+        {
+          "id": "24b47a95-c239-552a-9be7-324aa54a89dd",
+          "title": "Q2.1 Naturstoffe",
+          "requires": []
+        },
+        {
+          "id": "442c31c5-c561-5c7a-90bb-2335d779175c",
+          "title": "Chemie",
+          "requires": []
+        },
+        {
+          "id": "ae683d59-06a5-59be-87b5-b8648fd138c8",
+          "title": "Naturstoffe und Synthesechemie",
+          "requires": []
+        }
+      ],
+      "prerequisiteContainsAncestors": [
+        {
+          "id": "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+          "title": "Arbeitsweisen der Chemie anwenden",
+          "requires": [
+            "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+          ]
+        },
+        {
+          "id": "3588c15e-adbe-5b81-b3a7-10da20574e3d",
+          "title": "Chemische Grundlagen (Sek I)",
+          "requires": [
+            "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+          ]
+        },
+        {
+          "id": "442c31c5-c561-5c7a-90bb-2335d779175c",
+          "title": "Chemie",
+          "requires": []
+        }
+      ],
+      "newRequiredClosureComparedWithSameCandidateWithoutFiveAdditions": [
+        {
+          "id": "13d4f336-ab16-54a7-9479-c920b458f385",
+          "title": "Allgemeine Sicherheitsregeln im Chemielabor anwenden"
+        }
+      ],
+      "dependentReachableFromPrerequisite": false
+    },
+    {
+      "prerequisiteGoalId": "13d4f336-ab16-54a7-9479-c920b458f385",
+      "dependentGoalId": "d2ccd1d5-56f7-583f-9724-e97441367f91",
+      "directEdgePresent": true,
+      "dependentContainsAncestors": [
+        {
+          "id": "3588c15e-adbe-5b81-b3a7-10da20574e3d",
+          "title": "Chemische Grundlagen (Sek I)",
+          "requires": [
+            "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+          ]
+        },
+        {
+          "id": "442c31c5-c561-5c7a-90bb-2335d779175c",
+          "title": "Chemie",
+          "requires": []
+        }
+      ],
+      "prerequisiteContainsAncestors": [
+        {
+          "id": "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+          "title": "Arbeitsweisen der Chemie anwenden",
+          "requires": [
+            "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+          ]
+        },
+        {
+          "id": "3588c15e-adbe-5b81-b3a7-10da20574e3d",
+          "title": "Chemische Grundlagen (Sek I)",
+          "requires": [
+            "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+          ]
+        },
+        {
+          "id": "442c31c5-c561-5c7a-90bb-2335d779175c",
+          "title": "Chemie",
+          "requires": []
+        }
+      ],
+      "newRequiredClosureComparedWithSameCandidateWithoutFiveAdditions": [
+        {
+          "id": "13d4f336-ab16-54a7-9479-c920b458f385",
+          "title": "Allgemeine Sicherheitsregeln im Chemielabor anwenden"
+        }
+      ],
+      "dependentReachableFromPrerequisite": false
+    },
+    {
+      "prerequisiteGoalId": "e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+      "dependentGoalId": "23533087-89ea-5f29-8ec1-9f2e01197bb6",
+      "directEdgePresent": true,
+      "dependentContainsAncestors": [
+        {
+          "id": "1e803ef8-fc76-493d-85c5-de877cd38fda",
+          "title": "Atombau, Bindungsmodelle, Molekülgeometrie und Polarität",
+          "requires": []
+        },
+        {
+          "id": "442c31c5-c561-5c7a-90bb-2335d779175c",
+          "title": "Chemie",
+          "requires": []
+        }
+      ],
+      "prerequisiteContainsAncestors": [
+        {
+          "id": "442c31c5-c561-5c7a-90bb-2335d779175c",
+          "title": "Chemie",
+          "requires": []
+        },
+        {
+          "id": "fb3bdf39-4baf-4510-a192-c8a12fbf5dba",
+          "title": "Chemische Symbolsprache und Anwendung (Sek I)",
+          "requires": []
+        }
+      ],
+      "newRequiredClosureComparedWithSameCandidateWithoutFiveAdditions": [
+        {
+          "id": "9b5d6326-d27c-4ece-8c72-debda705464a",
+          "title": "Dalton-Modell und Modellcharakter erläutern"
+        },
+        {
+          "id": "e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+          "title": "Chemische Symbole und Formeln sicher nutzen"
+        }
+      ],
+      "dependentReachableFromPrerequisite": false
+    },
+    {
+      "prerequisiteGoalId": "e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+      "dependentGoalId": "4961130b-1ee8-58f2-a319-dff0a864db6a",
+      "directEdgePresent": true,
+      "dependentContainsAncestors": [
+        {
+          "id": "323a222e-5db8-53c5-b2dc-6f9c1d0d277c",
+          "title": "Einführungsphase Reaktionsgrundlagen",
+          "requires": []
+        },
+        {
+          "id": "442c31c5-c561-5c7a-90bb-2335d779175c",
+          "title": "Chemie",
+          "requires": []
+        },
+        {
+          "id": "cd7f484a-ac2e-55bb-b904-61d743e87821",
+          "title": "Redoxreaktionen",
+          "requires": []
+        }
+      ],
+      "prerequisiteContainsAncestors": [
+        {
+          "id": "442c31c5-c561-5c7a-90bb-2335d779175c",
+          "title": "Chemie",
+          "requires": []
+        },
+        {
+          "id": "fb3bdf39-4baf-4510-a192-c8a12fbf5dba",
+          "title": "Chemische Symbolsprache und Anwendung (Sek I)",
+          "requires": []
+        }
+      ],
+      "newRequiredClosureComparedWithSameCandidateWithoutFiveAdditions": [
+        {
+          "id": "9b5d6326-d27c-4ece-8c72-debda705464a",
+          "title": "Dalton-Modell und Modellcharakter erläutern"
+        },
+        {
+          "id": "e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+          "title": "Chemische Symbole und Formeln sicher nutzen"
+        }
+      ],
+      "dependentReachableFromPrerequisite": false
+    }
+  ]
+}

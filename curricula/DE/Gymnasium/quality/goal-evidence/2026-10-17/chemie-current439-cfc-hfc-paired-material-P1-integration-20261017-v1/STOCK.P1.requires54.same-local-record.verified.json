@@ -1,0 +1,37 @@
+{
+  "role": "Exact local CFC goal/requires record unchanged under bounded requires54 successor; no whole354context or globalP revalidation",
+  "steps": [
+    {
+      "label": "verify",
+      "argv": [
+        "node",
+        "--import",
+        "./app/node_modules/tsx/dist/loader.mjs",
+        "app/scripts/materializePositiveGoalEvidenceCandidates.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-cfc-hfc-paired-material-P1-integration-20261017-v1/P1.review.requires54.config.json",
+        "--candidates",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-cfc-hfc-paired-material-P1-integration-20261017-v1/P1.paired-material.candidates.json"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 0.4318725650009583,
+      "stdout": "Verified curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-cfc-hfc-paired-material-P1-integration-20261017-v1/P1.paired-material.current-candidate.jsonl: 1 current AI candidate profile(s).\n",
+      "stderr": ""
+    },
+    {
+      "label": "check",
+      "argv": [
+        "node",
+        "--import",
+        "./app/node_modules/tsx/dist/loader.mjs",
+        "app/scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-cfc-hfc-paired-material-P1-integration-20261017-v1/P1.review.requires54.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 0.382093577994965,
+      "stdout": "# Positive Goal Evidence Review: chemie-current439-cfc-hfc-whole-material-paired-ai-20261017-v1\nScope: One whole CFC/HFC profile with two genuine independent material reviews; candidate context only, no global source/D/M7 closure\nConfigured goals: 1\nApproved: 0\nNeeds human review: 1\nRejected: 0\nBlocking issues: 0\n",
+      "stderr": ""
+    }
+  ]
+}

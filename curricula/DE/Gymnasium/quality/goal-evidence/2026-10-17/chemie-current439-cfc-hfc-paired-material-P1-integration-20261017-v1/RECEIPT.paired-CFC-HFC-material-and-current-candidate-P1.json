@@ -1,0 +1,157 @@
+{
+  "role": "Actual paired scientific material closure and stock-bound candidate P1; not global integration",
+  "atUTC": "2026-10-17T13:27:10.384369+00:00",
+  "goalId": "3c9bfa10-9a13-50cc-96c8-6213e28d6c54",
+  "decision": "PAIRED_MATERIAL_ACCEPTED",
+  "independentReviews": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-cfc-hfc-material-independent-p-a-20261017-v1/REVIEW.independent-P-A.json",
+      "sha256": "76582eef662f3249f1376770a3c3dd4003af9be523f7954424dba8fbc28f3158",
+      "bytes": 8615
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-cfc-hfc-material-independent-p-b-20261017-v1/REVIEW.independent-p-b.json",
+      "sha256": "1a26b7e8aaaf4256a9f6b5df3cbff56bf4eb70550ec80f014c5556da9beba1ad",
+      "bytes": 19223
+    }
+  ],
+  "authorSelector": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-cfc-hfc-whole-material-author-20261017-v1/SELECTOR.whole-author-material-clean-inputs.sealed.json",
+    "sha256": "36aff9f6da2b8527a121eda0002eb1c036b3d9803de6b2a74ac3746b51edbf7b",
+    "bytes": 1831
+  },
+  "material": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-cfc-hfc-whole-material-author-20261017-v1/materials/TWO.complete-DE-EN-cases.AUTHOR.pending.json",
+    "sha256": "381e70acb3d28d32e7d4c6b6a10392ba98035157d53a00322480fc6c5edb3d95",
+    "bytes": 19051
+  },
+  "sourceLocators": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-cfc-hfc-whole-material-author-20261017-v1/sources.primary-reading.author.json",
+    "sha256": "169bcdae519fdd0048875b327b4ce8107a6b9ad4bd4d7b676f1ddc7df7d1ed37",
+    "bytes": 5221
+  },
+  "exactWholeProfilePreservedAfterReviews": true,
+  "record": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-cfc-hfc-paired-material-P1-integration-20261017-v1/P1.paired-material.current-candidate.jsonl",
+    "sha256": "1e8272932fd37e8998292f5f81e93e4d49658f259946dda0fb7ce8e77a5ce467",
+    "bytes": 9659
+  },
+  "config": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-cfc-hfc-paired-material-P1-integration-20261017-v1/P1.review.config.json",
+    "sha256": "34d6edad5d420399a4981dcf1c1f46617d1888a0e468988b0b8e0e21990965d7",
+    "bytes": 1462
+  },
+  "aggregate": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-cfc-hfc-paired-material-P1-integration-20261017-v1/P439.f79-SN-and-CFC-HFC-paired-material.inactive.jsonl",
+    "sha256": "5aa9e4e25b446aef22ff6b40760c47f85822d065228e0c4ddea334883e83f509",
+    "bytes": 4495190
+  },
+  "other438RecordLinesByteExact": true,
+  "localRequiresContext": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-requires52-narrow-foundations-author-20261017-v1/C650.requires52-with-five-narrow-foundations.AUTHOR-PENDING.json.snapshot",
+    "sha256": "439348646753e7fe07d2b5cedc70713ed94ccce787d565738f630f119f727efe",
+    "bytes": 2916908
+  },
+  "stockCheckSteps": [
+    {
+      "label": "write",
+      "argv": [
+        "node",
+        "--import",
+        "./app/node_modules/tsx/dist/loader.mjs",
+        "app/scripts/materializePositiveGoalEvidenceCandidates.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-cfc-hfc-paired-material-P1-integration-20261017-v1/P1.review.config.json",
+        "--candidates",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-cfc-hfc-paired-material-P1-integration-20261017-v1/P1.paired-material.candidates.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 0.5493205890015815,
+      "stdout": "Wrote curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-cfc-hfc-paired-material-P1-integration-20261017-v1/P1.paired-material.current-candidate.jsonl: 1 current AI candidate profile(s).\n",
+      "stderr": ""
+    },
+    {
+      "label": "verify",
+      "argv": [
+        "node",
+        "--import",
+        "./app/node_modules/tsx/dist/loader.mjs",
+        "app/scripts/materializePositiveGoalEvidenceCandidates.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-cfc-hfc-paired-material-P1-integration-20261017-v1/P1.review.config.json",
+        "--candidates",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-cfc-hfc-paired-material-P1-integration-20261017-v1/P1.paired-material.candidates.json"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 0.41263332100061234,
+      "stdout": "Verified curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-cfc-hfc-paired-material-P1-integration-20261017-v1/P1.paired-material.current-candidate.jsonl: 1 current AI candidate profile(s).\n",
+      "stderr": ""
+    },
+    {
+      "label": "check",
+      "argv": [
+        "node",
+        "--import",
+        "./app/node_modules/tsx/dist/loader.mjs",
+        "app/scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-cfc-hfc-paired-material-P1-integration-20261017-v1/P1.review.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 0.3565649840020342,
+      "stdout": "# Positive Goal Evidence Review: chemie-current439-cfc-hfc-whole-material-paired-ai-20261017-v1\nScope: One whole CFC/HFC profile with two genuine independent material reviews; candidate context only, no global source/D/M7 closure\nConfigured goals: 1\nApproved: 0\nNeeds human review: 1\nRejected: 0\nBlocking issues: 0\n",
+      "stderr": ""
+    }
+  ],
+  "guardsUnchanged": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-requires52-narrow-foundations-author-20261017-v1/C650.requires52-with-five-narrow-foundations.AUTHOR-PENDING.json.snapshot",
+      "sha256": "439348646753e7fe07d2b5cedc70713ed94ccce787d565738f630f119f727efe",
+      "bytes": 2916908
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-source-requires-working-checkpoint-20261017-v1/candidate/SEM650.inactive.json",
+      "sha256": "4807fb1139038dadbb6a1edde1f6f7b7e7f67a95e62c0fb2aaac7ca94d69bda6",
+      "bytes": 208191
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "sha256": "9a68501347031f266572dea551e71c3507b66fb5ed94142a1a99f6a282708960",
+      "bytes": 1747712
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-source-requires-working-checkpoint-20261017-v1/candidate/P439.f79-and-SN-corrected.inactive.jsonl",
+      "sha256": "56cfed452aa7fa0eb5c08650885af1db961d7d15e0ad33dfc0f6d3e80ef7512b",
+      "bytes": 4493338
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-cfc-hfc-material-independent-p-a-20261017-v1/REVIEW.independent-P-A.json",
+      "sha256": "76582eef662f3249f1376770a3c3dd4003af9be523f7954424dba8fbc28f3158",
+      "bytes": 8615
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-cfc-hfc-material-independent-p-b-20261017-v1/REVIEW.independent-p-b.json",
+      "sha256": "1a26b7e8aaaf4256a9f6b5df3cbff56bf4eb70550ec80f014c5556da9beba1ad",
+      "bytes": 19223
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-cfc-hfc-whole-material-author-20261017-v1/SELECTOR.whole-author-material-clean-inputs.sealed.json",
+      "sha256": "36aff9f6da2b8527a121eda0002eb1c036b3d9803de6b2a74ac3746b51edbf7b",
+      "bytes": 1831
+    }
+  ],
+  "reviewAuthority": "ai_candidate",
+  "status": "needs_human_review",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "newScientificMaterialClosures": 1,
+  "newStrictGlobalClosures": 0,
+  "newGlobalBindingClosures": 0,
+  "finalGraphAndDContextIntegrationPending": true,
+  "normalSourceQualificationPending": true,
+  "activeRegistryOrCanonicalModified": false,
+  "HumanApproval": false,
+  "HumanTrial": false,
+  "M7Claim": false
+}

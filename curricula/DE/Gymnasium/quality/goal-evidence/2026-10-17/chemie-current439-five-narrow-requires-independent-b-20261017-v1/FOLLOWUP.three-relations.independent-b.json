@@ -1,0 +1,96 @@
+{
+  "reviewId": "chemie-current439-three-adjacent-relations-independent-b-20261017-v1",
+  "reviewedAt": "2026-10-17T13:27:21.428246+00:00",
+  "reviewer": "Codex independent Chemistry prerequisite reviewer B",
+  "reviewAuthority": "ai_candidate",
+  "scope": "Exactly the three relations requested after the sealed first five-pair review. All full specified C/P read from pinned C650/P439; retained redox-role C/P also re-inspected as the comparison for relation 3.",
+  "originalFirstVerdictPreserved": {
+    "selectorPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-five-narrow-requires-independent-b-20261017-v1/SELECTOR.independent-b.sealed.json",
+    "selectorSha256": "286013a46e2cfea1ce09ae940ab21b8a5fc501385b0e96830e63cbe68ddea55f",
+    "allBoundFilesUnchanged": true
+  },
+  "candidate650Sha256": "439348646753e7fe07d2b5cedc70713ed94ccce787d565738f630f119f727efe",
+  "P439Sha256": "56cfed452aa7fa0eb5c08650885af1db961d7d15e0ad33dfc0f6d3e80ef7512b",
+  "currentIndependentAReviewConsulted": false,
+  "authorDecisionOrProposalConsulted": false,
+  "counts": {
+    "ACCEPT": 1,
+    "REJECT": 2,
+    "HOLD": 0
+  },
+  "relations": [
+    {
+      "relationNumber": 1,
+      "dependentGoalId": "e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+      "prerequisiteGoalId": "9b5d6326-d27c-4ece-8c72-debda705464a",
+      "candidateRelationPresent": true,
+      "verdict": "REJECT",
+      "necessityQuestion": "Must the whole Dalton-model competence be mastered before the symbols/formulas goal?",
+      "rationale": "No. The notation goal asks the learner to interpret atom symbols, form NH3 from an explicitly supplied particle card, and distinguish 2 CO from CO2. Atom types and particle multiplicity are the needed representational ideas. The full Dalton predecessor instead requires observation versus law versus hypothesis, evidential limits, isotopes and subatomic corrections to historical assumptions. Those are not necessary entrance achievements for reading and constructing these given atom/molecule representations. A coherent optional learning order is not a universal mastery dependency.",
+      "taskAnchors": [
+        "ammonia-particle-cards",
+        "fresh-carbon-monoxide-vs-two",
+        "chem-next20-9b5d6326-case-1",
+        "chem-next20-9b5d6326-case-2"
+      ],
+      "recommendedRelationDecision": "Remove this whole-goal requires relation, retaining the Dalton goal itself as authored learning content.",
+      "newPrerequisiteRequiredInstead": false
+    },
+    {
+      "relationNumber": 2,
+      "dependentGoalId": "23533087-89ea-5f29-8ec1-9f2e01197bb6",
+      "prerequisiteGoalId": "bbe038e9-86ed-5ec6-ab33-316758ddb16d",
+      "candidateRelationPresent": true,
+      "verdict": "REJECT",
+      "necessityQuestion": "Must the whole orbital-overlap competence be mastered before constructing Lewis and resonance formulas?",
+      "rationale": "No. The Lewis cases supply valence-electron counts, total electrons and fixed central-atom skeletons. The target is to construct bond/lone-pair/formal-charge representations, keep the electron count and connectivity, and interpret equivalent resonance contributors. A shared electron pair is part of this target model. The full orbital predecessor additionally demands explaining spatial overlap of singly occupied orbitals, opposite-spin pairing, attractive/repulsive energy changes and an equilibrium internuclear distance in H2/HCl. Neither energy curves nor orbital/spin explanations are needed to construct the specified Lewis/nitrate/carbonate representations. Their usefulness for a deeper physical explanation does not make whole prior mastery necessary.",
+      "taskAnchors": [
+        "chem-next25-23533087-case-1",
+        "chem-next25-23533087-case-2",
+        "chem-next25-bbe038e9-case-1",
+        "chem-next25-bbe038e9-case-2"
+      ],
+      "recommendedRelationDecision": "Remove this whole-goal requires relation; retain orbital overlap as its own content. Keep the narrow notation foundation rather than replace the removed gate with another broad theory goal.",
+      "newPrerequisiteRequiredInstead": false
+    },
+    {
+      "relationNumber": 3,
+      "dependentGoalId": "8be14f15-2258-58e6-ae4e-38953f5d0570",
+      "prerequisiteGoalId": "e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+      "candidateRelationPresent": false,
+      "verdict": "ACCEPT",
+      "necessityQuestion": "Does the whole electrochemical-series task core require the symbols/formula core beyond retained redox roles?",
+      "rationale": "Yes. q3-10-a requires the learner to construct Cu + 2 Ag+ -> Cu2+ + 2 Ag in the fresh transfer, and distinguish the coefficient 2 from scaling electrode potentials. q3-10-b explicitly triples the reaction and asks why electron count changes 2 to 6 while the cell potential is unchanged. The notation core establishes whole-particle coefficients versus subscripts and consistent element/particle counting. In contrast, retained redox-role cases give Zn + Cu2+ -> Zn2+ + Cu and Fe + Cu2+ -> Fe2+ + Cu with unit particle coefficients, then assess coupled donor/acceptor assignments; mastering those does not establish the needed general coefficient/particle distinction. This is an actual entrance representation skill, separate from learning potentials, reference changes and redox direction.",
+      "taskAnchors": [
+        "q3-10-a",
+        "q3-10-b",
+        "zinc-copper-supplied-net-reaction",
+        "iron-copper-independent-transfer",
+        "fresh-carbon-monoxide-vs-two"
+      ],
+      "recommendedRelationDecision": "Add the direct symbols/formulas prerequisite for the electrochemical-series goal after removal of the rejected whole-Dalton gate in relation 1.",
+      "acceptanceScope": "Necessary direct symbols/formulas competence. Does not approve an unremediated path that still inherits the whole Dalton goal, and does not substitute the broad oxidation-number or stoichiometry goal."
+    }
+  ],
+  "effectOnFirstReview": "The first five-pair artifact remains 3 ACCEPT / 2 HOLD as sealed. The extra bounded question identifies a further necessary notation dependency for Spannungsreihen that was not recorded in the first five-pair pass. The two original HOLDs are not silently lifted: an authored successor must bind the removal of the rejected Dalton gate and any further exact changes before a successor verdict can accept that new graph.",
+  "supportedFiniteRemediation": [
+    "Remove e7c363d4.requires -> 9b5d6326 whole Dalton goal.",
+    "Remove 23533087.requires -> bbe038e9 whole orbital-overlap goal.",
+    "Add 8be14f15.requires -> e7c363d4 notation core after the Dalton gate is removed."
+  ],
+  "noCandidateMutated": true,
+  "fullDPApproval": false,
+  "sourceApproval": false,
+  "imageApproval": false,
+  "humanApproval": false,
+  "learnerApproval": false,
+  "M7Approval": false,
+  "globalGraphApproval": false,
+  "externalTerminologySupport": [
+    {
+      "title": "IUPAC Gold Book: Lewis formula",
+      "url": "https://goldbook.iupac.org/terms/view/L03513",
+      "scope": "Supports Lewis notation as electron-pair/formal-charge representation. The prerequisite decision is the reviewer inference from the local full tasks."
+    }
+  ]
+}

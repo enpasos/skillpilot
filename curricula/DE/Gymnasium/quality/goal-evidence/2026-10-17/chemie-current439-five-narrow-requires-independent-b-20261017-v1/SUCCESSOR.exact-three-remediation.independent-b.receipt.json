@@ -1,0 +1,147 @@
+{
+  "reviewId": "chemie-current439-exact-successor-conditions-independent-b-20261017-v1",
+  "reviewedAt": "2026-10-17T13:31:16.620160+00:00",
+  "reviewer": "Codex independent Chemistry prerequisite reviewer B",
+  "reviewAuthority": "ai_candidate",
+  "verdict": "ACCEPT_TARGETED_SUCCESSOR_RELATIONS",
+  "candidate": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-requires54-six-narrow-foundations-paired-successor-20261017-v1/C650.requires54-six-narrow-foundations.science-paired.PENDING-final-context.json.snapshot",
+    "sha256": "e15dd15e977e4a6eb8ee01f022bff68cbd233dceb09ba3b296584012cc070139",
+    "bytes": 2916854
+  },
+  "comparedWith": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-requires52-narrow-foundations-author-20261017-v1/C650.requires52-with-five-narrow-foundations.AUTHOR-PENDING.json.snapshot",
+    "sha256": "439348646753e7fe07d2b5cedc70713ed94ccce787d565738f630f119f727efe",
+    "bytes": 2916908
+  },
+  "originalFirstAndFollowupPreserved": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-five-narrow-requires-independent-b-20261017-v1/SELECTOR.independent-b.sealed.json",
+      "sha256": "286013a46e2cfea1ce09ae940ab21b8a5fc501385b0e96830e63cbe68ddea55f",
+      "boundFilesUnchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-five-narrow-requires-independent-b-20261017-v1/SELECTOR.followup-three-relations.independent-b.sealed.json",
+      "sha256": "fbf82d9da4fb5408b09ce3d6e84e44efc7e391ba2659e817bd21746c19de12c6",
+      "boundFilesUnchanged": true
+    }
+  ],
+  "scope": "Exact binding of the three agreed independent B follow-up conditions to the successor; resolve only the original two inherited-path HOLDs. No new broad graph science review.",
+  "ownChecks": {
+    "goals": 650,
+    "allGoalIdsAndOrderUnchanged": true,
+    "allNonRequiresGoalFieldsUnchanged": true,
+    "allOtherTopLevelFieldsUnchanged": true,
+    "requiresListsChangedAgainstPriorCandidate": [
+      "e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+      "23533087-89ea-5f29-8ec1-9f2e01197bb6",
+      "8be14f15-2258-58e6-ae4e-38953f5d0570"
+    ],
+    "exactRemovedRelations": [
+      {
+        "dependentGoalId": "23533087-89ea-5f29-8ec1-9f2e01197bb6",
+        "prerequisiteGoalId": "bbe038e9-86ed-5ec6-ab33-316758ddb16d"
+      },
+      {
+        "dependentGoalId": "e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+        "prerequisiteGoalId": "9b5d6326-d27c-4ece-8c72-debda705464a"
+      }
+    ],
+    "exactAddedRelations": [
+      {
+        "dependentGoalId": "8be14f15-2258-58e6-ae4e-38953f5d0570",
+        "prerequisiteGoalId": "e7c363d4-e02d-4895-8750-ba62c2eb63fe"
+      }
+    ],
+    "otherChangedRequiresLists": false,
+    "totalAgainstOriginal650": {
+      "removed": 54,
+      "added": 6,
+      "changedRequiresLists": 49
+    },
+    "containsAncestorRequiresAwareClosures": {
+      "23533087-89ea-5f29-8ec1-9f2e01197bb6": [
+        "e7c363d4-e02d-4895-8750-ba62c2eb63fe"
+      ],
+      "4961130b-1ee8-58f2-a319-dff0a864db6a": [
+        "a9c22adc-b543-5b0c-a2d8-3189facdff08",
+        "e7c363d4-e02d-4895-8750-ba62c2eb63fe"
+      ],
+      "8be14f15-2258-58e6-ae4e-38953f5d0570": [
+        "04fa0ba1-eb6e-53c8-93d4-dfa28bb4b162",
+        "a9c22adc-b543-5b0c-a2d8-3189facdff08",
+        "e7c363d4-e02d-4895-8750-ba62c2eb63fe"
+      ],
+      "e7c363d4-e02d-4895-8750-ba62c2eb63fe": []
+    },
+    "wholeDaltonAbsentFromBothHeldPathsAndNewSeriesPath": true,
+    "wholeOrbitalOverlapAbsentFromLewisPath": true,
+    "noSelfReachabilityInTargetedPaths": true,
+    "P439BytesStillMatchPinnedInput": true
+  },
+  "resolvedOriginalHOLDs": [
+    {
+      "dependentGoalId": "23533087-89ea-5f29-8ec1-9f2e01197bb6",
+      "prerequisiteGoalId": "e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+      "firstVerdict": "HOLD",
+      "successorVerdict": "ACCEPT",
+      "reason": "The rejected whole-Dalton dependency has actually been removed from the symbols/formulas goal; own ancestor-aware prerequisite traversal finds no alternative inherited Dalton path. Whole target goal and P task cores are unchanged. The direct narrow notation competence remains necessary as established in FIRST."
+    },
+    {
+      "dependentGoalId": "4961130b-1ee8-58f2-a319-dff0a864db6a",
+      "prerequisiteGoalId": "e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+      "firstVerdict": "HOLD",
+      "successorVerdict": "ACCEPT",
+      "reason": "The rejected whole-Dalton dependency has actually been removed from the symbols/formulas goal; own ancestor-aware prerequisite traversal finds no alternative inherited Dalton path. Whole target goal and P task cores are unchanged. The direct narrow notation competence remains necessary as established in FIRST."
+    }
+  ],
+  "sixNarrowPairsInSuccessor": [
+    {
+      "prerequisiteGoalId": "04fa0ba1-eb6e-53c8-93d4-dfa28bb4b162",
+      "dependentGoalId": "8be14f15-2258-58e6-ae4e-38953f5d0570",
+      "verdict": "ACCEPT",
+      "basis": "FIRST necessity judgment with actual HOLD conditions resolved"
+    },
+    {
+      "prerequisiteGoalId": "13d4f336-ab16-54a7-9479-c920b458f385",
+      "dependentGoalId": "978a6f25-0601-5457-9211-aab206c95603",
+      "verdict": "ACCEPT",
+      "basis": "FIRST necessity judgment with actual HOLD conditions resolved"
+    },
+    {
+      "prerequisiteGoalId": "13d4f336-ab16-54a7-9479-c920b458f385",
+      "dependentGoalId": "d2ccd1d5-56f7-583f-9724-e97441367f91",
+      "verdict": "ACCEPT",
+      "basis": "FIRST necessity judgment with actual HOLD conditions resolved"
+    },
+    {
+      "prerequisiteGoalId": "e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+      "dependentGoalId": "23533087-89ea-5f29-8ec1-9f2e01197bb6",
+      "verdict": "ACCEPT",
+      "basis": "FIRST necessity judgment with actual HOLD conditions resolved"
+    },
+    {
+      "prerequisiteGoalId": "e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+      "dependentGoalId": "4961130b-1ee8-58f2-a319-dff0a864db6a",
+      "verdict": "ACCEPT",
+      "basis": "FIRST necessity judgment with actual HOLD conditions resolved"
+    },
+    {
+      "prerequisiteGoalId": "e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+      "dependentGoalId": "8be14f15-2258-58e6-ae4e-38953f5d0570",
+      "verdict": "ACCEPT",
+      "basis": "Sealed three-relation follow-up, relation 3; actual direct edge present and whole-Dalton gate absent"
+    }
+  ],
+  "scientificInterpretation": "The successor implements the exact conditions behind independent B: notation no longer imports whole Dalton-model mastery; Lewis no longer requires whole orbital/energy/spin explanation; electrochemical-series work has the necessary direct coefficient/particle-notation foundation in addition to redox roles. No further semantic changes were introduced.",
+  "limits": [
+    "The original FIRST and follow-up remain unchanged historical verdicts; this receipt binds their finite conditions to the new hash.",
+    "No new scientific first review of the previously paired 52 removals.",
+    "No whole D/P, source, native-context, visualization, memory, semantic-atomicity, learner, Human Trial or M7 approval.",
+    "This is not final-context/profile-fingerprint rebinding or a global compiler/runtime acceptance claim.",
+    "No candidate, author, active, Git or build file mutated by this review."
+  ],
+  "globalStrictClosureClaim": false,
+  "currentIndependentAReviewConsulted": false,
+  "authorScientificDecisionUsedAsAuthority": false
+}

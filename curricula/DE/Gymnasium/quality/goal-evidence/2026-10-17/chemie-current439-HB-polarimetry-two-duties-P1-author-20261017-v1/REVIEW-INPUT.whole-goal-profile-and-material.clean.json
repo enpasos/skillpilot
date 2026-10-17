@@ -1,0 +1,523 @@
+{
+  "role": "Entire clean author goal/P/material input for independent review; not approval",
+  "goal": {
+    "id": "f4d5a02d-711b-5a6b-a41d-971359c1f64d",
+    "shortKey": "canonical_chemistry_q2_optical_activity_polarimetry",
+    "title": "Optische Aktivität und Polarimetrie auswerten",
+    "titleEn": "Evaluate optical activity and polarimetry",
+    "description": "Die lernende Person kann optische Aktivität chiraler Naturstoffe erläutern, den spezifischen Drehwinkel als Kenneigenschaft beschreiben und Polarimetrie zur Charakterisierung optisch aktiver Substanzen fachlich einordnen.",
+    "descriptionEn": "The learner can explain optical activity of chiral natural substances, describe specific rotation as a characteristic property, and classify polarimetry for characterizing optically active substances.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "canonical"
+    ],
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-chemistry",
+      "demandLevel": "AB2",
+      "processCompetencies": [
+        "PK2_MODELLIEREN",
+        "PK4_KOMMUNIZIEREN"
+      ],
+      "guidingIdeas": [
+        "BC_AUFBAU"
+      ],
+      "phase": "Q2",
+      "area": "Naturstoffe",
+      "topicCode": "CANONICAL.CHEMISTRY.Q2.OPTICAL_ACTIVITY_POLARIMETRY"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BW",
+        "DE-BY",
+        "DE-HE",
+        "DE-NI"
+      ]
+    },
+    "extendedData": {
+      "provenance": {
+        "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+        "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+        "sourceGoalId": "he-chem-sekii-q2-1-b12-a01-ac6789ef"
+      }
+    },
+    "contains": [],
+    "requires": [
+      "62149f36-87c0-5a2d-8a78-e7d4203f58c2",
+      "8761cfd2-aa1a-56f1-9272-9cf66ef4b271"
+    ],
+    "type": "atomic",
+    "examples": [],
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "f4d5a02d-711b-5a6b-a41d-971359c1f64d",
+        "title": "Visualisierung: Optische Aktivität und Polarimetrie auswerten",
+        "url": "/assets/goal-visualizations/chemie/f4d5a02d-711b-5a6b-a41d-971359c1f64d/f4d5a02d-711b-5a6b-a41d-971359c1f64d.png",
+        "provider": "OpenAI / ChatGPT-Codex built-in image_gen (model version not exposed)",
+        "description": "Schematischer Polarimetrie-Aufbau aus Lichtquelle, Polarisator, optisch aktiver Probe und Analysator. Die Ebenenpfeile zeigen eine mögliche Drehung; die Zeichnung legt weder ein gemessenes Vorzeichen noch einen Zahlenwert fest.",
+        "altText": "Eine Probe dreht die eingezeichnete Schwingungsebene zwischen Polarisator und Analysator. Ein großes Winkelsymbol vergleicht Eingangs- und Ausgangsrichtung; kein D/L- oder Vorzeichenurteil wird dargestellt.",
+        "lang": "de",
+        "license": "CC-BY-4.0",
+        "reviewStatus": "candidate"
+      }
+    ]
+  },
+  "profile": {
+    "archetype": "data",
+    "expectations": [
+      {
+        "id": "structure-and-evidence",
+        "essentialUnderstandingDe": "Spezifische Rotation bindet Drehwinkel an Konzentration, Weglänge, Temperatur und Wellenlänge.",
+        "essentialUnderstandingEn": "Specific rotation relates angle to concentration, path length, temperature and wavelength.",
+        "observablePerformanceDe": "[alpha]=+60 Grad mL g^-1 dm^-1; Vergleich verlangt gleiche Temperatur/Wellenlänge/Lösemittel. (+) bestimmt keine D-Konfiguration.",
+        "observablePerformanceEn": "[alpha]=+60 degrees mL g^-1 dm^-1; compare at same temperature/wavelength/solvent. Positive sign does not establish D configuration."
+      },
+      {
+        "id": "fresh-transfer",
+        "essentialUnderstandingDe": "Die gleiche fachliche Beziehung wird auf einen veränderten Fall übertragen; Bedingungen und Schlussgrenzen werden benannt.",
+        "essentialUnderstandingEn": "The same subject relationship is transferred to a changed case with explicit conditions and inference limits.",
+        "observablePerformanceDe": "Enantiomere drehen gleich groß entgegengesetzt unter identischen Bedingungen; Racemat kompensiert. Null kann auch achiral oder andere Ursachen bedeuten und beweist nicht Stoffidentität.",
+        "observablePerformanceEn": "Enantiomers rotate equally and oppositely under identical conditions; racemate cancels. Zero can also reflect achirality or other causes and does not identify a substance."
+      },
+      {
+        "id": "execution",
+        "essentialUnderstandingDe": "Charakterisierung/Identifikationgegenexplizite Referenzen.",
+        "essentialUnderstandingEn": "Characterise/identify against explicit references.",
+        "observablePerformanceDe": "[alpha]=+53°mL/(gdm), innerhalb Messgenauigkeitpassend Glucose. Bedingungen, Reinheit/Gleichgewicht/Referenzbestandwichtig; Wertalleinbewirktkeineuniverselle Identifikationaller Naturstoffe.",
+        "observablePerformanceEn": "Specific rotation+53°mL/(g dm), matches glucose within precision. Conditions, purity/equilibrium/reference universe matter; one value does not identify all substances uniquely."
+      },
+      {
+        "id": "polarimeter-components-and-angle",
+        "essentialUnderstandingDe": "Das benannte Polarimetermodell verknüpft definierte lineare Polarisation, Probenwirkung und orientierungsselektive Analyse. Ein relativer Winkelvergleich mit Leerwert ist von bloßer Helligkeit zu unterscheiden.",
+        "essentialUnderstandingEn": "The specified polarimeter connects defined linear polarization, sample effect and orientation-selective analysis. Relative angle measurement against a blank differs from brightness alone.",
+        "observablePerformanceDe": "Erkläre am vollständigen A/B-Material Polarisator, Probe und Analysator kausal und prüfe einen frischen Wegfall eines Filters; ein Bauteilname reicht nicht.",
+        "observablePerformanceEn": "Explain polarizer, sample and analyzer causally from full A/B material and evaluate fresh removal of a filter; naming parts alone is insufficient."
+      },
+      {
+        "id": "carbohydrate-concentration-inversion",
+        "essentialUnderstandingDe": "Für eine bekannte einzige optisch aktive Zuckerkomponente unter passenden Bedingungen lässt sich aus α=[α]lc die Konzentration c ableiten. Einheiten, Blank, Vorzeichen und Mehrkomponentengrenze bestimmen die Aussagekraft.",
+        "essentialUnderstandingEn": "For a known single optically active sugar component under matching conditions, c follows from α=[α]lc. Units, blank, sign and mixture limitations determine the inference.",
+        "observablePerformanceDe": "Berechne die unbekannte Glucose- und im frischen Fall Fructosekonzentration aus den vollständig angegebenen Modellwerten; begründe Modellgrenzen und veränderte Messbedingungen. Keine echte Messung wird dadurch behauptet.",
+        "observablePerformanceEn": "Calculate unknown glucose and fresh fructose concentrations from the complete stipulated model data; justify model limits and changed conditions. No actual measurement is claimed."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "structure-and-evidence",
+        "fresh-transfer",
+        "execution",
+        "polarimeter-components-and-angle",
+        "carbohydrate-concentration-inversion"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "material-operator-context",
+        "textDe": "Die ausgearbeiteten Fälle wechseln Stoff, Kontrollprobe, pH, Bezugsgröße, Quellenweg oder Nutzungskontext. Werte sind ausdrücklich Aufgabenwerte; tatsächliche Durchführung/Recherche wird im individuellen Lernpfad nur anhand vorgelegter Arbeit beurteilt.",
+        "textEn": "Worked cases vary substance, control, pH, unit, search path or use. Values are task data; actual individual execution/research is assessed only from submitted work."
+      },
+      {
+        "id": "known-reference-unknown-concentration",
+        "textDe": "Bekannte spezifische Drehung mit unbekannter c; Glucose/Fructose, Weglänge, Leerwert und Referenzbedingung gezielt wechseln. Alle Pflichtaspekte können in einer integrierten Aufgabe gezeigt werden; fünf Fallangebote sind keine Fünf-Aufgaben-Quote.",
+        "textEn": "Known specific rotation with unknown c; vary glucose/fructose, path, blank and reference conditions. All required aspects may be shown within one integrated task; five offered cases are not a five-task quota."
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "case-a",
+        "taskDemandDe": "Bei vorgegebener Konvention alpha=[alpha]lc, c in g/mL, l in dm, sind alpha=+6 Grad, l=2 dm, c=0.05 g/mL. Bestimme die spezifische Rotation und benenne Bedingungen.",
+        "taskDemandEn": "Using supplied alpha=[alpha]lc with c in g/mL and l in dm, alpha=+6 degrees, l=2 dm, c=0.05 g/mL. Determine specific rotation and conditions.",
+        "expectedPerformanceDe": "[alpha]=+60 Grad mL g^-1 dm^-1; Vergleich verlangt gleiche Temperatur/Wellenlänge/Lösemittel. (+) bestimmt keine D-Konfiguration.",
+        "expectedPerformanceEn": "[alpha]=+60 degrees mL g^-1 dm^-1; compare at same temperature/wavelength/solvent. Positive sign does not establish D configuration.",
+        "understandingFocusDe": "Spezifische Rotation bindet Drehwinkel an Konzentration, Weglänge, Temperatur und Wellenlänge.",
+        "understandingFocusEn": "Specific rotation relates angle to concentration, path length, temperature and wavelength."
+      },
+      {
+        "id": "case-b-transfer",
+        "taskDemandDe": "Vergleiche ein reines Enantiomer und ein 1: 1-Racemat gleicher Gesamtkonzentration. Was folgt aus Drehung null und was nicht?",
+        "taskDemandEn": "Compare a pure enantiomer and 1: 1 racemate at equal total concentration. What does zero rotation establish and fail to establish?",
+        "expectedPerformanceDe": "Enantiomere drehen gleich groß entgegengesetzt unter identischen Bedingungen; Racemat kompensiert. Null kann auch achiral oder andere Ursachen bedeuten und beweist nicht Stoffidentität.",
+        "expectedPerformanceEn": "Enantiomers rotate equally and oppositely under identical conditions; racemate cancels. Zero can also reflect achirality or other causes and does not identify a substance.",
+        "understandingFocusDe": "Spezifische Rotation bindet Drehwinkel an Konzentration, Weglänge, Temperatur und Wellenlänge.",
+        "understandingFocusEn": "Specific rotation relates angle to concentration, path length, temperature and wavelength."
+      },
+      {
+        "id": "execution-1",
+        "taskDemandDe": "Vorgegebener fiktiver Polarimetrie-Datensatz, keine tatsächlich ausgeführte Messung: Eine als rein vorausgesetzte Modellprobe in Wasser hat bei 20 °C und 589 nm in einer Küvette der Länge l = 1,00 dm bei c = 0,100 g/mL den beobachteten Drehwinkel alpha = +5,3° mit vorgegebener Winkelunsicherheit ±0,1°. Für dieses Aufgabenmodell sind ausdrücklich die SPEZIFISCHEN Drehungen als Referenzen vorgegeben: [alpha](Glucose) = +52,7 °·mL/(g·dm), [alpha](Fructose) = −92,4 °·mL/(g·dm), beide im selben Lösemittel, bei derselben Temperatur und Wellenlänge und im für den Vergleich vorausgesetzten Gleichgewichtszustand. Diese Referenzgrößen sind NICHT beobachtete Winkel bei der angegebenen Küvettenlänge/Konzentration. Nutze die vorgegebene Konvention alpha = [alpha] l c.\n\nBerechne die spezifische Drehung samt der hier allein betrachteten Winkelunsicherheit. Ordne die Probe ausschließlich innerhalb der beiden vorgegebenen Referenzkandidaten ein und begründe, warum dieser eingeschränkte Vergleich keine universelle Stoffidentifikation und keine Zuordnung des Drehzeichens zur D/L-Konfiguration erlaubt.",
+        "taskDemandEn": "Supplied fictional polarimetry data, not an actual measurement: A model sample assumed pure in water at 20 °C and 589 nm has observed rotation alpha = +5.3° with stipulated angular uncertainty ±0.1°, path length l = 1.00 dm, and c = 0.100 g/mL. The reference values supplied specifically for this model are SPECIFIC rotations: [alpha](glucose) = +52.7 °·mL/(g·dm) and [alpha](fructose) = −92.4 °·mL/(g·dm), in the same solvent, at the same temperature and wavelength, and in the stipulated equilibrium state. These are NOT observed angles at the given path length and concentration. Use the supplied convention alpha = [alpha] l c.\n\nCalculate the specific rotation and the uncertainty arising solely from the supplied angular uncertainty. Identify the sample only within the two stipulated reference candidates and explain why this restricted comparison neither identifies any possible substance uniquely nor assigns D/L configuration from the rotation sign.",
+        "expectedPerformanceDe": "[alpha] = +5,3°/(1,00 dm · 0,100 g/mL) = +53 °·mL/(g·dm). Bei hier als exakt gesetztem l und c ergibt die Winkelunsicherheit ±1 °·mL/(g·dm). +52,7 liegt innerhalb dieses vereinfachten Intervalls; −92,4 passt nicht. Unter den ausdrücklich beschränkten zwei Alternativen und Reinheits-/Gleichgewichtsannahmen passt daher Glucose. Die Zahlen +52,7/−92,4 sind spezifische Referenzdrehungen, nicht direkt vergleichbare gemessene Winkel. Andere Substanzen oder Gemische können ähnliche Drehungen liefern; Temperatur, Wellenlänge, Lösemittel, Konzentrationskonvention und Gleichgewichtszustand müssen passen. (+) beweist keine D-Konfiguration. Dieser fiktive Fall ist keine tatsächliche Stoffanalyse oder Messbestätigung.",
+        "expectedPerformanceEn": "[alpha] = +5.3°/(1.00 dm · 0.100 g/mL) = +53 °·mL/(g·dm). Taking l and c as exact in this model, the angular uncertainty gives ±1 °·mL/(g·dm). +52.7 is within that simplified interval, whereas −92.4 is incompatible. Glucose therefore fits under the explicitly restricted two alternatives and purity/equilibrium assumptions. The +52.7/−92.4 values are specific reference rotations, not directly comparable observed angles. Other substances or mixtures may have similar rotations, so temperature, wavelength, solvent, concentration convention, and equilibrium state must match. A positive sign does not establish D configuration. The fictional case is not an actual substance analysis or measurement confirmation.",
+        "understandingFocusDe": "Charakterisierung/Identifikationgegenexplizite Referenzen.",
+        "understandingFocusEn": "Characterise/identify against explicit references."
+      },
+      {
+        "id": "hb-polarimeter-device-glucose-concentration",
+        "taskDemandDe": "Erläutere die Funktion jedes Bauteils im gegebenen Polarimetermodell und warum ein Leerwert benötigt wird. Erkläre, weshalb die Änderung des Detektorsignals beim Drehen des Analysators einen Drehwinkel zugänglich macht, statt einfach nur Helligkeit als Stoffkennwert zu messen. Berechne aus der Kalibrierprobe [α]. Bestimme anschließend aus Leerwert-/Probenstellung und Küvettenlänge die unbekannte Glucose-Massenkonzentration in g/mL und g/L; hier ist c, nicht [α], gesucht. Schätze die allein aus der angegebenen Winkelunsicherheit folgende c-Unsicherheit. Begründe die notwendigen Gleichgewichts-/Reinheits-/Temperatur-/Wellenlängen-/Lösemittelannahmen. Ordne die Aussagegrenze der Konzentration einer bekannten Substanz gegenüber Identifikation eines unbekannten Stoffs und gegenüber D/L-Zuordnung ein. Vollständige Gerätedaten und synthetische Werte stehen im zugeordneten A/B-Material.",
+        "taskDemandEn": "Explain each component in the specified polarimeter and why a blank is needed. Explain how varying analyzer transmission makes an angle accessible rather than treating brightness alone as a substance constant. Derive [α] from the calibration sample. Then calculate the unknown glucose mass concentration in g/mL and g/L from blank/sample settings and cell length; here c, not [α], is unknown. Estimate the c uncertainty from the stated angular uncertainty alone. Justify the equilibrium, purity, temperature, wavelength and solvent assumptions. Distinguish concentration of an already identified substance from identifying an unknown substance or inferring D/L configuration. Complete instrument data and synthetic values are in the corresponding A/B material.",
+        "expectedPerformanceDe": "Der erste Filter legt eine lineare Polarisation fest. Die optisch aktive Probe verändert deren Richtung; der zweite Filter prüft sie durch winkelabhängige Transmission. Die zum gleichen Minimum nötige Winkelkorrektur relativ zum Lösemittel ist α. Ohne definierte Eingangspolarisation ist dieses einfache Kompensationsmodell nicht begründet; eine Helligkeitsabnahme allein kann auch Absorption oder Trübung sein. [α]=5,27/(1,00·0,100)=+52,7 Grad·mL/(g·dm). α=6,216−2,000=+4,216°; l=200 mm=2,00 dm; c=4,216/(52,7·2,00)=0,0400 g/mL=40,0 g/L. Nur die vorgegebene Winkelunsicherheit ergibt Δc=0,05/(52,7·2,00)≈0,00047 g/mL≈0,47 g/L. Die eingeschränkte Modellangabe ist damit etwa (40,0±0,5) g/L, keine vollständige reale Unsicherheitsbilanz. Die Rückrechnung setzt bekannte Glucose als einzigen optisch aktiven gelösten Stoff und passende Referenzbedingungen voraus. Positives Vorzeichen beweist keine D-Konfiguration, passende Rotation keine universelle Identität.",
+        "expectedPerformanceEn": "The first filter defines linear polarization. The active sample changes its orientation; the second filter tests it through angle-dependent transmission. Compensation to the same minimum relative to solvent gives α. Without defined input polarization this simple compensation model is not justified; brightness loss alone can be absorption or turbidity. [α]=5.27/(1.00·0.100)=+52.7 degree·mL/(g·dm). α=6.216−2.000=+4.216°; l=200 mm=2.00 dm; c=4.216/(52.7·2.00)=0.0400 g/mL=40.0 g/L. The stated angle uncertainty alone gives Δc=0.05/(52.7·2.00)≈0.00047 g/mL≈0.47 g/L, hence about (40.0±0.5) g/L in this limited model, not a full actual uncertainty budget. Inversion assumes known glucose as the only optically active solute and matching reference conditions. A positive sign does not establish D configuration, and rotation is not universal identification.",
+        "understandingFocusDe": "Die Küvettenlänge wird bei unveränderter Probe halbiert. Eine neue Probe wird dagegen bei anderer Wellenlänge gemessen, für die keine Referenz gegeben ist. Was ändert sich und wo ist die Rückrechnung nicht mehr begründet? Im linearen Modell halbiert sich α bei gleicher c; korrektes Einsetzen der neuen Länge ergibt dieselbe Konzentration. Bei anderer Wellenlänge kann die spezifische Rotation anders sein; ohne passende Referenz wird kein belastbarer Konzentrationswert berechnet.",
+        "understandingFocusEn": "Halve the cell length for the unchanged sample. A separate sample is measured at another wavelength with no corresponding reference. What changes, and where is inversion no longer justified? In the linear model α halves at unchanged c; using the new length recovers the same concentration. Specific rotation can change with wavelength, so no defensible concentration is inferred without a matching reference."
+      },
+      {
+        "id": "hb-fructose-concentration-sign-and-mixture-transfer",
+        "taskDemandDe": "Bearbeite den frischen Fructosefall ohne Übernahme des Glucosewertes. Erkläre am Geräteprinzip, was das negative Vorzeichen bedeutet, und berechne c in g/mL sowie g/L. Prüfe eine Rechnung, die 50 mm unverändert als l=50 einsetzt, und eine zweite, die eine negative Massenkonzentration meldet. Vergleiche danach eine 1:1-Enantiomerenmischung mit einer optisch inaktiven Lösung: Was erlaubt α=0 über Identität und Konzentration zu folgern? Eine Zusatzprobe enthält mehrere optisch aktive Zucker unbekannter Zusammensetzung. Begründe, weshalb ein Winkel mit nur einer Referenz-[α] dann keine eindeutige individuelle Zuckerkonzentration liefert. Vollständige Gerätedaten und synthetische Werte stehen im zugeordneten A/B-Material.",
+        "taskDemandEn": "Solve the fresh fructose case without reusing the glucose reference. Explain the negative sign using the instrument principle and calculate c in g/mL and g/L. Evaluate a calculation inserting 50 mm unchanged as l=50 and another reporting negative mass concentration. Then compare a 1:1 enantiomer mixture with an optically inactive solution: what does α=0 imply about identity and concentration? A further sample contains several optically active sugars of unknown composition. Explain why one angle and one reference [α] cannot uniquely determine each sugar concentration. Complete instrument data and synthetic values are in the corresponding A/B material.",
+        "expectedPerformanceDe": "50,0 mm=0,500 dm; c=−1,386/(−92,4·0,500)=0,0300 g/mL=30,0 g/L. Das Vorzeichen beschreibt den Drehsinn in der festgelegten Konvention, keine negative Stoffmenge und keine D/L-Zuordnung. Einsetzen von 50 statt0,5 unterschätzt c um Faktor100. Ein ideales Racemat kompensiert trotz vorhandener chiraler Substanz; Null ist kein allgemeiner Nachweis für c=0, Achiralität oder eine bestimmte Identität. Für mehrere Beiträge liefert ein Winkel nur eine Summenbedingung; Einzelkonzentrationen bleiben ohne weitere unabhängige Information unbestimmt. Das gilt auch bei bekannter Messpräzision.",
+        "expectedPerformanceEn": "50.0 mm=0.500 dm; c=−1.386/(−92.4·0.500)=0.0300 g/mL=30.0 g/L. The sign describes rotation direction in the stated convention, not negative amount or D/L configuration. Inserting 50 instead of0.5 underestimates c by100. An ideal racemate cancels despite chiral material being present; zero does not generally establish c=0, achirality or a particular identity. Multiple contributions give a sum constraint from one angle; individual concentrations remain undetermined without independent information, even at known precision.",
+        "understandingFocusDe": "Der Analysator wird entfernt; es bleibt nur die am Detektor gemessene Helligkeit. Kann man mit demselben Prinzip den vorherigen Drehwinkel und daraus c bestimmen? Welche fehlende Information ist entscheidend? Die orientierungsselektive Analyse fehlt. Aus einer bloßen Gesamtintensität lässt sich im gegebenen einfachen Modell der Drehwinkel nicht eindeutig ableiten; Absorption und Trübung können Intensität verändern. Ohne α ist auch die bisherige Rückrechnung nicht begründet.",
+        "understandingFocusEn": "Remove the analyzer and retain only detector brightness. Can the same principle determine the previous rotation angle and hence c? What essential information is missing? Orientation-selective analysis is missing. Total intensity alone does not determine rotation in the specified simple model; absorption or turbidity may change brightness. Without α, the previous concentration inversion is not justified."
+      }
+    ]
+  },
+  "wholeMaterial": {
+    "role": "Complete own author material, pending independent review",
+    "goalId": "f4d5a02d-711b-5a6b-a41d-971359c1f64d",
+    "common": {
+      "modelOnly": true,
+      "observedExperiment": false,
+      "instrumentDe": "Benanntes vereinfachtes Polarimetermodell: monochromatische Lichtquelle → fester Linearpolarisator → transparente Probenküvette bekannter Länge l → drehbarer Linear-Analysator mit Winkelskala → Lichtdetektor. Zuerst wird mit dem reinen Lösemittel das Transmissionsminimum bestimmt; danach mit der Probenlösung unter gleichen Bedingungen. Für die kleinen hier vorgegebenen Winkel ist die Winkelzweideutigkeit ausgeschlossen. Die kalibrierte Skala benutzt dieselbe Blick- und Vorzeichenkonvention für Leerwert und Probe. Die Differenz α = Probenstellung − Leerwertstellung ist die optische Drehung. Das ist ein Geräteprinzipmodell, keine Anleitung oder Freigabe für eine tatsächliche Messung.",
+      "instrumentEn": "Specified simplified polarimeter: monochromatic source → fixed linear polarizer → transparent sample cell of known path length l → rotating linear analyzer with angular scale → detector. Determine the transmission minimum first with pure solvent and then with the sample under the same conditions. Angular ambiguity is excluded for the small stated angles. The calibrated scale uses the same viewing/sign convention for blank and sample. The difference α = sample setting − blank setting is optical rotation. This is an instrument-principle model, not authorization or instructions for an actual measurement.",
+      "equationDe": "Für diese Aufgaben gilt ausdrücklich α = [α] l c, mit α in Grad, l in dm, c in g/mL und [α] in Grad·mL/(g·dm). c ist Masse des benannten gelösten Kohlenhydrats je Volumen der fertigen Lösung, nicht je Volumen eingesetzten Lösemittels. Eine Angabe in g/100 mL darf nicht unverändert in diese Konvention eingesetzt werden. Die Vergleichsbedingungen sind Lösemittel Wasser, 20 °C, 589 nm und der vorausgesetzte Gleichgewichtszustand. Im linearen Aufgabenmodell sind l und die Referenz-[α] exakt; reale Messungen hätten zusätzliche Unsicherheiten.",
+      "equationEn": "These tasks explicitly use α = [α] l c with α in degrees, l in dm, c in g/mL and [α] in degree·mL/(g·dm). c means mass of the named dissolved carbohydrate per final solution volume, not per initial solvent volume. A value in g/100 mL cannot be inserted unchanged. Conditions are water, 20 °C, 589 nm and the stipulated equilibrium state. In the linear task model l and reference [α] are exact; actual measurements would have additional uncertainties."
+    },
+    "cases": [
+      {
+        "id": "hb-polarimeter-device-glucose-concentration",
+        "materialId": "A",
+        "dataProvenance": "All numerical values are stipulated synthetic task data; no actual measurement, sample identity or manufacturer certificate is claimed. Specific-reference values are carried from the existing hypothetical profile, not newly measured.",
+        "providedData": {
+          "solvent": "water",
+          "temperatureC": 20,
+          "wavelengthNm": 589,
+          "equilibriumAssumed": true,
+          "knownCalibration": {
+            "namedSubstance": "glucose, stipulated pure and at equilibrium",
+            "observedRotationDeg": 5.27,
+            "pathLengthDm": 1.0,
+            "massConcentrationGPerMl": 0.1
+          },
+          "unknownKnownIdentity": {
+            "namedSubstance": "glucose, stipulated sole optically active solute, not unknown chemical identity",
+            "blankAnalyzerSettingDeg": 2.0,
+            "sampleAnalyzerSettingDeg": 6.216,
+            "pathLengthMm": 200,
+            "statedAngleDifferenceUncertaintyDeg": 0.05
+          }
+        },
+        "taskDe": "Erläutere die Funktion jedes Bauteils im gegebenen Polarimetermodell und warum ein Leerwert benötigt wird. Erkläre, weshalb die Änderung des Detektorsignals beim Drehen des Analysators einen Drehwinkel zugänglich macht, statt einfach nur Helligkeit als Stoffkennwert zu messen. Berechne aus der Kalibrierprobe [α]. Bestimme anschließend aus Leerwert-/Probenstellung und Küvettenlänge die unbekannte Glucose-Massenkonzentration in g/mL und g/L; hier ist c, nicht [α], gesucht. Schätze die allein aus der angegebenen Winkelunsicherheit folgende c-Unsicherheit. Begründe die notwendigen Gleichgewichts-/Reinheits-/Temperatur-/Wellenlängen-/Lösemittelannahmen. Ordne die Aussagegrenze der Konzentration einer bekannten Substanz gegenüber Identifikation eines unbekannten Stoffs und gegenüber D/L-Zuordnung ein.",
+        "taskEn": "Explain each component in the specified polarimeter and why a blank is needed. Explain how varying analyzer transmission makes an angle accessible rather than treating brightness alone as a substance constant. Derive [α] from the calibration sample. Then calculate the unknown glucose mass concentration in g/mL and g/L from blank/sample settings and cell length; here c, not [α], is unknown. Estimate the c uncertainty from the stated angular uncertainty alone. Justify the equilibrium, purity, temperature, wavelength and solvent assumptions. Distinguish concentration of an already identified substance from identifying an unknown substance or inferring D/L configuration.",
+        "expectedDe": "Der erste Filter legt eine lineare Polarisation fest. Die optisch aktive Probe verändert deren Richtung; der zweite Filter prüft sie durch winkelabhängige Transmission. Die zum gleichen Minimum nötige Winkelkorrektur relativ zum Lösemittel ist α. Ohne definierte Eingangspolarisation ist dieses einfache Kompensationsmodell nicht begründet; eine Helligkeitsabnahme allein kann auch Absorption oder Trübung sein. [α]=5,27/(1,00·0,100)=+52,7 Grad·mL/(g·dm). α=6,216−2,000=+4,216°; l=200 mm=2,00 dm; c=4,216/(52,7·2,00)=0,0400 g/mL=40,0 g/L. Nur die vorgegebene Winkelunsicherheit ergibt Δc=0,05/(52,7·2,00)≈0,00047 g/mL≈0,47 g/L. Die eingeschränkte Modellangabe ist damit etwa (40,0±0,5) g/L, keine vollständige reale Unsicherheitsbilanz. Die Rückrechnung setzt bekannte Glucose als einzigen optisch aktiven gelösten Stoff und passende Referenzbedingungen voraus. Positives Vorzeichen beweist keine D-Konfiguration, passende Rotation keine universelle Identität.",
+        "expectedEn": "The first filter defines linear polarization. The active sample changes its orientation; the second filter tests it through angle-dependent transmission. Compensation to the same minimum relative to solvent gives α. Without defined input polarization this simple compensation model is not justified; brightness loss alone can be absorption or turbidity. [α]=5.27/(1.00·0.100)=+52.7 degree·mL/(g·dm). α=6.216−2.000=+4.216°; l=200 mm=2.00 dm; c=4.216/(52.7·2.00)=0.0400 g/mL=40.0 g/L. The stated angle uncertainty alone gives Δc=0.05/(52.7·2.00)≈0.00047 g/mL≈0.47 g/L, hence about (40.0±0.5) g/L in this limited model, not a full actual uncertainty budget. Inversion assumes known glucose as the only optically active solute and matching reference conditions. A positive sign does not establish D configuration, and rotation is not universal identification.",
+        "freshTransferDe": "Die Küvettenlänge wird bei unveränderter Probe halbiert. Eine neue Probe wird dagegen bei anderer Wellenlänge gemessen, für die keine Referenz gegeben ist. Was ändert sich und wo ist die Rückrechnung nicht mehr begründet?",
+        "freshTransferEn": "Halve the cell length for the unchanged sample. A separate sample is measured at another wavelength with no corresponding reference. What changes, and where is inversion no longer justified?",
+        "freshExpectedDe": "Im linearen Modell halbiert sich α bei gleicher c; korrektes Einsetzen der neuen Länge ergibt dieselbe Konzentration. Bei anderer Wellenlänge kann die spezifische Rotation anders sein; ohne passende Referenz wird kein belastbarer Konzentrationswert berechnet.",
+        "freshExpectedEn": "In the linear model α halves at unchanged c; using the new length recovers the same concentration. Specific rotation can change with wavelength, so no defensible concentration is inferred without a matching reference."
+      },
+      {
+        "id": "hb-fructose-concentration-sign-and-mixture-transfer",
+        "materialId": "B",
+        "dataProvenance": "Independent synthetic task case, not a real concentration measurement.",
+        "providedData": {
+          "knownSubstance": "fructose, sole optically active solute stipulated",
+          "specificRotationDegreeMlPerGDm": -92.4,
+          "pathLengthMm": 50.0,
+          "correctedObservedRotationDeg": -1.386,
+          "solvent": "water",
+          "temperatureC": 20,
+          "wavelengthNm": 589,
+          "equilibriumAssumed": true
+        },
+        "taskDe": "Bearbeite den frischen Fructosefall ohne Übernahme des Glucosewertes. Erkläre am Geräteprinzip, was das negative Vorzeichen bedeutet, und berechne c in g/mL sowie g/L. Prüfe eine Rechnung, die 50 mm unverändert als l=50 einsetzt, und eine zweite, die eine negative Massenkonzentration meldet. Vergleiche danach eine 1:1-Enantiomerenmischung mit einer optisch inaktiven Lösung: Was erlaubt α=0 über Identität und Konzentration zu folgern? Eine Zusatzprobe enthält mehrere optisch aktive Zucker unbekannter Zusammensetzung. Begründe, weshalb ein Winkel mit nur einer Referenz-[α] dann keine eindeutige individuelle Zuckerkonzentration liefert.",
+        "taskEn": "Solve the fresh fructose case without reusing the glucose reference. Explain the negative sign using the instrument principle and calculate c in g/mL and g/L. Evaluate a calculation inserting 50 mm unchanged as l=50 and another reporting negative mass concentration. Then compare a 1:1 enantiomer mixture with an optically inactive solution: what does α=0 imply about identity and concentration? A further sample contains several optically active sugars of unknown composition. Explain why one angle and one reference [α] cannot uniquely determine each sugar concentration.",
+        "expectedDe": "50,0 mm=0,500 dm; c=−1,386/(−92,4·0,500)=0,0300 g/mL=30,0 g/L. Das Vorzeichen beschreibt den Drehsinn in der festgelegten Konvention, keine negative Stoffmenge und keine D/L-Zuordnung. Einsetzen von 50 statt0,5 unterschätzt c um Faktor100. Ein ideales Racemat kompensiert trotz vorhandener chiraler Substanz; Null ist kein allgemeiner Nachweis für c=0, Achiralität oder eine bestimmte Identität. Für mehrere Beiträge liefert ein Winkel nur eine Summenbedingung; Einzelkonzentrationen bleiben ohne weitere unabhängige Information unbestimmt. Das gilt auch bei bekannter Messpräzision.",
+        "expectedEn": "50.0 mm=0.500 dm; c=−1.386/(−92.4·0.500)=0.0300 g/mL=30.0 g/L. The sign describes rotation direction in the stated convention, not negative amount or D/L configuration. Inserting 50 instead of0.5 underestimates c by100. An ideal racemate cancels despite chiral material being present; zero does not generally establish c=0, achirality or a particular identity. Multiple contributions give a sum constraint from one angle; individual concentrations remain undetermined without independent information, even at known precision.",
+        "freshTransferDe": "Der Analysator wird entfernt; es bleibt nur die am Detektor gemessene Helligkeit. Kann man mit demselben Prinzip den vorherigen Drehwinkel und daraus c bestimmen? Welche fehlende Information ist entscheidend?",
+        "freshTransferEn": "Remove the analyzer and retain only detector brightness. Can the same principle determine the previous rotation angle and hence c? What essential information is missing?",
+        "freshExpectedDe": "Die orientierungsselektive Analyse fehlt. Aus einer bloßen Gesamtintensität lässt sich im gegebenen einfachen Modell der Drehwinkel nicht eindeutig ableiten; Absorption und Trübung können Intensität verändern. Ohne α ist auch die bisherige Rückrechnung nicht begründet.",
+        "freshExpectedEn": "Orientation-selective analysis is missing. Total intensity alone does not determine rotation in the specified simple model; absorption or turbidity may change brightness. Without α, the previous concentration inversion is not justified."
+      }
+    ],
+    "rubricDe": [
+      "Bauteile und vergleichende Winkelmessung kausal erklären, nicht nur Namen aufzählen.",
+      "Weg-/Konzentrationseinheiten sowie Leerwert korrekt behandeln.",
+      "[α] und unbekanntes c in verschiedenen Rollen bestimmen, Vorzeichen fachlich prüfen.",
+      "Referenzbedingungen, bekannte Stoffidentität und Mehrkomponentengrenze unterscheiden.",
+      "Frische Geräte-/Bedingungsvariation begründet bearbeiten; alte Antworten nicht abschreiben."
+    ],
+    "rubricEn": [
+      "Explain components and comparative angular measurement causally rather than listing labels.",
+      "Handle path/concentration units and blank correctly.",
+      "Derive [α] and unknown c in distinct roles and interpret sign.",
+      "Distinguish reference conditions, known identity and mixture limitations.",
+      "Reason independently about fresh instrument/condition changes rather than copying prior answers."
+    ],
+    "existingThreeCasesRemainExact": true,
+    "minimumIndependentDemonstrationsMeansNoTaskQuota": true,
+    "observedLearnerPerformance": false,
+    "HumanApproval": false,
+    "HumanTrial": false,
+    "M7Claim": false,
+    "ownMaterialLicense": "CC-BY-4.0",
+    "externalSourceRightsNotRelicensed": true
+  },
+  "sourceLocators": [
+    {
+      "role": "Actual primary manufacturer reading, scope-limited; no copied full text",
+      "publisher": "Anton Paar GmbH",
+      "title": "Basics of polarimetry",
+      "url": "https://wiki.anton-paar.com/en/basics-of-polarimetry/",
+      "accessedAtUTC": "2026-10-17T13:36:59.287141+00:00",
+      "method": "Actual web.run page read on author turn; no raw page cache or exact container digest claimed",
+      "sections": [
+        "Measuring principle",
+        "Optical rotation and related quantities",
+        "Specific rotation",
+        "Concentration"
+      ],
+      "ownParaphraseDe": "Polarisator, Probe und Analysator erlauben eine winkelbezogene Kompensation. Bekannte spezifische Rotation und Weglänge ermöglichen unter passenden Bedingungen die Konzentrationsauswertung.",
+      "readingLimit": "The page describes alternative instrument layouts. This task explicitly uses a fixed polarizer and rotating analyzer, not all commercial devices. Its passage defining a 1 g/100 mL reference conflicts with its later 1 g/mL convention; that ambiguous sentence is not adopted. This packet states its own units explicitly. IUPAC definition pages returned403 and are not claimed as independently read."
+    }
+  ],
+  "originalProfile": {
+    "archetype": "data",
+    "expectations": [
+      {
+        "id": "structure-and-evidence",
+        "essentialUnderstandingDe": "Spezifische Rotation bindet Drehwinkel an Konzentration, Weglänge, Temperatur und Wellenlänge.",
+        "essentialUnderstandingEn": "Specific rotation relates angle to concentration, path length, temperature and wavelength.",
+        "observablePerformanceDe": "[alpha]=+60 Grad mL g^-1 dm^-1; Vergleich verlangt gleiche Temperatur/Wellenlänge/Lösemittel. (+) bestimmt keine D-Konfiguration.",
+        "observablePerformanceEn": "[alpha]=+60 degrees mL g^-1 dm^-1; compare at same temperature/wavelength/solvent. Positive sign does not establish D configuration."
+      },
+      {
+        "id": "fresh-transfer",
+        "essentialUnderstandingDe": "Die gleiche fachliche Beziehung wird auf einen veränderten Fall übertragen; Bedingungen und Schlussgrenzen werden benannt.",
+        "essentialUnderstandingEn": "The same subject relationship is transferred to a changed case with explicit conditions and inference limits.",
+        "observablePerformanceDe": "Enantiomere drehen gleich groß entgegengesetzt unter identischen Bedingungen; Racemat kompensiert. Null kann auch achiral oder andere Ursachen bedeuten und beweist nicht Stoffidentität.",
+        "observablePerformanceEn": "Enantiomers rotate equally and oppositely under identical conditions; racemate cancels. Zero can also reflect achirality or other causes and does not identify a substance."
+      },
+      {
+        "id": "execution",
+        "essentialUnderstandingDe": "Charakterisierung/Identifikationgegenexplizite Referenzen.",
+        "essentialUnderstandingEn": "Characterise/identify against explicit references.",
+        "observablePerformanceDe": "[alpha]=+53°mL/(gdm), innerhalb Messgenauigkeitpassend Glucose. Bedingungen, Reinheit/Gleichgewicht/Referenzbestandwichtig; Wertalleinbewirktkeineuniverselle Identifikationaller Naturstoffe.",
+        "observablePerformanceEn": "Specific rotation+53°mL/(g dm), matches glucose within precision. Conditions, purity/equilibrium/reference universe matter; one value does not identify all substances uniquely."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "structure-and-evidence",
+        "fresh-transfer",
+        "execution"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "material-operator-context",
+        "textDe": "Die ausgearbeiteten Fälle wechseln Stoff, Kontrollprobe, pH, Bezugsgröße, Quellenweg oder Nutzungskontext. Werte sind ausdrücklich Aufgabenwerte; tatsächliche Durchführung/Recherche wird im individuellen Lernpfad nur anhand vorgelegter Arbeit beurteilt.",
+        "textEn": "Worked cases vary substance, control, pH, unit, search path or use. Values are task data; actual individual execution/research is assessed only from submitted work."
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "case-a",
+        "taskDemandDe": "Bei vorgegebener Konvention alpha=[alpha]lc, c in g/mL, l in dm, sind alpha=+6 Grad, l=2 dm, c=0.05 g/mL. Bestimme die spezifische Rotation und benenne Bedingungen.",
+        "taskDemandEn": "Using supplied alpha=[alpha]lc with c in g/mL and l in dm, alpha=+6 degrees, l=2 dm, c=0.05 g/mL. Determine specific rotation and conditions.",
+        "expectedPerformanceDe": "[alpha]=+60 Grad mL g^-1 dm^-1; Vergleich verlangt gleiche Temperatur/Wellenlänge/Lösemittel. (+) bestimmt keine D-Konfiguration.",
+        "expectedPerformanceEn": "[alpha]=+60 degrees mL g^-1 dm^-1; compare at same temperature/wavelength/solvent. Positive sign does not establish D configuration.",
+        "understandingFocusDe": "Spezifische Rotation bindet Drehwinkel an Konzentration, Weglänge, Temperatur und Wellenlänge.",
+        "understandingFocusEn": "Specific rotation relates angle to concentration, path length, temperature and wavelength."
+      },
+      {
+        "id": "case-b-transfer",
+        "taskDemandDe": "Vergleiche ein reines Enantiomer und ein 1: 1-Racemat gleicher Gesamtkonzentration. Was folgt aus Drehung null und was nicht?",
+        "taskDemandEn": "Compare a pure enantiomer and 1: 1 racemate at equal total concentration. What does zero rotation establish and fail to establish?",
+        "expectedPerformanceDe": "Enantiomere drehen gleich groß entgegengesetzt unter identischen Bedingungen; Racemat kompensiert. Null kann auch achiral oder andere Ursachen bedeuten und beweist nicht Stoffidentität.",
+        "expectedPerformanceEn": "Enantiomers rotate equally and oppositely under identical conditions; racemate cancels. Zero can also reflect achirality or other causes and does not identify a substance.",
+        "understandingFocusDe": "Spezifische Rotation bindet Drehwinkel an Konzentration, Weglänge, Temperatur und Wellenlänge.",
+        "understandingFocusEn": "Specific rotation relates angle to concentration, path length, temperature and wavelength."
+      },
+      {
+        "id": "execution-1",
+        "taskDemandDe": "Vorgegebener fiktiver Polarimetrie-Datensatz, keine tatsächlich ausgeführte Messung: Eine als rein vorausgesetzte Modellprobe in Wasser hat bei 20 °C und 589 nm in einer Küvette der Länge l = 1,00 dm bei c = 0,100 g/mL den beobachteten Drehwinkel alpha = +5,3° mit vorgegebener Winkelunsicherheit ±0,1°. Für dieses Aufgabenmodell sind ausdrücklich die SPEZIFISCHEN Drehungen als Referenzen vorgegeben: [alpha](Glucose) = +52,7 °·mL/(g·dm), [alpha](Fructose) = −92,4 °·mL/(g·dm), beide im selben Lösemittel, bei derselben Temperatur und Wellenlänge und im für den Vergleich vorausgesetzten Gleichgewichtszustand. Diese Referenzgrößen sind NICHT beobachtete Winkel bei der angegebenen Küvettenlänge/Konzentration. Nutze die vorgegebene Konvention alpha = [alpha] l c.\n\nBerechne die spezifische Drehung samt der hier allein betrachteten Winkelunsicherheit. Ordne die Probe ausschließlich innerhalb der beiden vorgegebenen Referenzkandidaten ein und begründe, warum dieser eingeschränkte Vergleich keine universelle Stoffidentifikation und keine Zuordnung des Drehzeichens zur D/L-Konfiguration erlaubt.",
+        "taskDemandEn": "Supplied fictional polarimetry data, not an actual measurement: A model sample assumed pure in water at 20 °C and 589 nm has observed rotation alpha = +5.3° with stipulated angular uncertainty ±0.1°, path length l = 1.00 dm, and c = 0.100 g/mL. The reference values supplied specifically for this model are SPECIFIC rotations: [alpha](glucose) = +52.7 °·mL/(g·dm) and [alpha](fructose) = −92.4 °·mL/(g·dm), in the same solvent, at the same temperature and wavelength, and in the stipulated equilibrium state. These are NOT observed angles at the given path length and concentration. Use the supplied convention alpha = [alpha] l c.\n\nCalculate the specific rotation and the uncertainty arising solely from the supplied angular uncertainty. Identify the sample only within the two stipulated reference candidates and explain why this restricted comparison neither identifies any possible substance uniquely nor assigns D/L configuration from the rotation sign.",
+        "expectedPerformanceDe": "[alpha] = +5,3°/(1,00 dm · 0,100 g/mL) = +53 °·mL/(g·dm). Bei hier als exakt gesetztem l und c ergibt die Winkelunsicherheit ±1 °·mL/(g·dm). +52,7 liegt innerhalb dieses vereinfachten Intervalls; −92,4 passt nicht. Unter den ausdrücklich beschränkten zwei Alternativen und Reinheits-/Gleichgewichtsannahmen passt daher Glucose. Die Zahlen +52,7/−92,4 sind spezifische Referenzdrehungen, nicht direkt vergleichbare gemessene Winkel. Andere Substanzen oder Gemische können ähnliche Drehungen liefern; Temperatur, Wellenlänge, Lösemittel, Konzentrationskonvention und Gleichgewichtszustand müssen passen. (+) beweist keine D-Konfiguration. Dieser fiktive Fall ist keine tatsächliche Stoffanalyse oder Messbestätigung.",
+        "expectedPerformanceEn": "[alpha] = +5.3°/(1.00 dm · 0.100 g/mL) = +53 °·mL/(g·dm). Taking l and c as exact in this model, the angular uncertainty gives ±1 °·mL/(g·dm). +52.7 is within that simplified interval, whereas −92.4 is incompatible. Glucose therefore fits under the explicitly restricted two alternatives and purity/equilibrium assumptions. The +52.7/−92.4 values are specific reference rotations, not directly comparable observed angles. Other substances or mixtures may have similar rotations, so temperature, wavelength, solvent, concentration convention, and equilibrium state must match. A positive sign does not establish D configuration. The fictional case is not an actual substance analysis or measurement confirmation.",
+        "understandingFocusDe": "Charakterisierung/Identifikationgegenexplizite Referenzen.",
+        "understandingFocusEn": "Characterise/identify against explicit references."
+      }
+    ]
+  },
+  "HBSourceDuties": [
+    {
+      "ordinal": 147,
+      "sourceGoalId": "hb-chemistry-sekii-gyo2022-clause-p26-2.1-content-gk_lk-03",
+      "sourceClauseIds": [
+        "HB2022-p26-2.1-content-GK_LK-03"
+      ],
+      "sourceText": "Die lernende Person kann die Funktionsweise eines Polarimeters erklären.",
+      "topicCode": "2.1",
+      "sourceSpan": "physical PDF26, printed 26; content; GK_LK block item 3",
+      "sourcePassageId": "hb-chemistry-sekii:2022-primary-p26-2.1",
+      "requiredOperators": [
+        "erklären"
+      ],
+      "status": "HOLD_needsCanonicalGoal/P-correction",
+      "decision": "pending_independent_review",
+      "canonicalGoalIds": [
+        "f4d5a02d-711b-5a6b-a41d-971359c1f64d"
+      ],
+      "components": [
+        {
+          "componentId": "HB232-147-C1",
+          "canonicalGoalIds": [
+            "f4d5a02d-711b-5a6b-a41d-971359c1f64d"
+          ],
+          "canonicalGoalTitles": [
+            "Optische Aktivität und Polarimetrie auswerten"
+          ],
+          "requiredOperators": [
+            "erklären"
+          ],
+          "rationaleDe": "Rotation, spezifischer Drehwinkel, Bedingungen und Enantiomer/Racemat-Verhalten werden erklärt; der aktuelle Aufgabenvertrag setzt die Messgleichung voraus.",
+          "wholeGoalProfileEvidence": [
+            {
+              "goalId": "f4d5a02d-711b-5a6b-a41d-971359c1f64d",
+              "expectationIds": [
+                "structure-and-evidence",
+                "fresh-transfer",
+                "execution"
+              ],
+              "applicationCaseIds": [
+                "case-a",
+                "case-b-transfer",
+                "execution-1"
+              ]
+            }
+          ]
+        }
+      ],
+      "missingDutyDe": "Die Funktionsweise des Polarimeters (Polarisator, Probe, Analysator, beobachteter Drehwinkel) ist nicht als aktuelle beobachtbare Erklärpflicht kontrahiert. Formelrechnung und begrenzte Stoffcharakterisierung allein schließen die Gerätefunktionsklausel nicht.",
+      "holdKind": "needsCanonicalGoal/P-correction",
+      "scopeQualifications": {
+        "sourceScopeExact": {
+          "officialTopicStatus": "selected_topic_requirement",
+          "selectionRule": "HB37-GK-one-LK-two-from-2.1-2.2-2.3-4.2",
+          "selectedByLearner": null,
+          "universalOfficialRequirement": false
+        },
+        "courseLevelExact": "GK_LK",
+        "phaseTagsAreNotAuthority": true,
+        "crossTopicScope": null,
+        "topicChoice": "1 GK / 2 LK from 2.1,2.2,2.3,4.2; official Schwerpunkt selection not inferred",
+        "topic4_3": null,
+        "ownerBroaderTargetDoesNotMakeOfficialChoiceUniversal": true,
+        "BcPNotGeneralChemistryCredit": true
+      },
+      "oldIdReusedDiscoveryOnly": false,
+      "oldMappingTransferred": false,
+      "sourceCompletionClaimed": false,
+      "extraCanonicalTeachingContent": "Only the explicitly reasoned source component is proposed. Other whole-goal duties remain canonical teaching content and do not enlarge the official source clause."
+    },
+    {
+      "ordinal": 149,
+      "sourceGoalId": "hb-chemistry-sekii-gyo2022-clause-p26-2.1-content-lk-01",
+      "sourceClauseIds": [
+        "HB2022-p26-2.1-content-LK-01"
+      ],
+      "sourceText": "Die lernende Person kann Kohlenhydratkonzentrationen mit Polarimeterdaten berechnen.",
+      "topicCode": "2.1",
+      "sourceSpan": "physical PDF26, printed 26; content; LK block item 1",
+      "sourcePassageId": "hb-chemistry-sekii:2022-primary-p26-2.1",
+      "requiredOperators": [
+        "berechnen"
+      ],
+      "status": "HOLD_needsCanonicalGoal/P-correction",
+      "decision": "pending_independent_review",
+      "canonicalGoalIds": [
+        "f4d5a02d-711b-5a6b-a41d-971359c1f64d"
+      ],
+      "components": [
+        {
+          "componentId": "HB232-149-C1",
+          "canonicalGoalIds": [
+            "f4d5a02d-711b-5a6b-a41d-971359c1f64d"
+          ],
+          "canonicalGoalTitles": [
+            "Optische Aktivität und Polarimetrie auswerten"
+          ],
+          "requiredOperators": [
+            "berechnen"
+          ],
+          "rationaleDe": "Der aktuelle Polarimetriefall berechnet die spezifische Drehung aus gegebenem Winkel, Länge UND bereits gegebener Konzentration.",
+          "wholeGoalProfileEvidence": [
+            {
+              "goalId": "f4d5a02d-711b-5a6b-a41d-971359c1f64d",
+              "expectationIds": [
+                "structure-and-evidence",
+                "fresh-transfer",
+                "execution"
+              ],
+              "applicationCaseIds": [
+                "case-a",
+                "case-b-transfer",
+                "execution-1"
+              ]
+            }
+          ]
+        }
+      ],
+      "missingDutyDe": "Der Quellenoperator verlangt Kohlenhydratkonzentration aus Polarimeterdaten zu berechnen. Kein aktueller Pflichtfall macht c zur unbekannten Größe und prüft Referenz-/Längen-/Einheitenbedingungen dafür; vorhandene [alpha]-Rechnung ist nur Teilbeitrag. P-Korrektur am vorhandenen Ziel genügt voraussichtlich.",
+      "holdKind": "needsCanonicalGoal/P-correction",
+      "scopeQualifications": {
+        "sourceScopeExact": {
+          "officialTopicStatus": "selected_topic_requirement",
+          "selectionRule": "HB37-GK-one-LK-two-from-2.1-2.2-2.3-4.2",
+          "selectedByLearner": null,
+          "universalOfficialRequirement": false
+        },
+        "courseLevelExact": "LK",
+        "phaseTagsAreNotAuthority": true,
+        "crossTopicScope": null,
+        "topicChoice": "1 GK / 2 LK from 2.1,2.2,2.3,4.2; official Schwerpunkt selection not inferred",
+        "topic4_3": null,
+        "ownerBroaderTargetDoesNotMakeOfficialChoiceUniversal": true,
+        "BcPNotGeneralChemistryCredit": true
+      },
+      "oldIdReusedDiscoveryOnly": false,
+      "oldMappingTransferred": false,
+      "sourceCompletionClaimed": false,
+      "extraCanonicalTeachingContent": "Only the explicitly reasoned source component is proposed. Other whole-goal duties remain canonical teaching content and do not enlarge the official source clause."
+    }
+  ],
+  "canonicalPin": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-requires54-six-narrow-foundations-paired-successor-20261017-v1/C650.requires54-six-narrow-foundations.science-paired.PENDING-final-context.json.snapshot",
+    "sha256": "e15dd15e977e4a6eb8ee01f022bff68cbd233dceb09ba3b296584012cc070139",
+    "bytes": 2916854
+  },
+  "previousP439Pin": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-source-requires-working-checkpoint-20261017-v1/candidate/P439.f79-and-SN-corrected.inactive.jsonl",
+    "sha256": "56cfed452aa7fa0eb5c08650885af1db961d7d15e0ad33dfc0f6d3e80ef7512b",
+    "bytes": 4493338
+  },
+  "noGoalIDDescriptionRequiresImageOrOther438PChanges": true,
+  "reviewQuestions": [
+    "Do device explanation and inverse carbohydrate concentration close the two exact source duties without exceeding whole goal semantics?",
+    "Are complete cases realistic and scientifically correct with unit/sign/blank/equilibrium/reference limits?",
+    "Are all original goals/three cases retained and non-quota independence respected?",
+    "Are bilingual duties equivalent and the material genuinely complete?",
+    "Return concrete ACCEPT/HOLD; do not treat author findings, references or existing P wrapper as approval."
+  ]
+}
