@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "explicit-normal-source-slot-activation-plan",
+  "applied": false,
+  "newScientificJudgments": false,
+  "humanApproval": false,
+  "M7Claim": false,
+  "reason": "The existing quality reader selects one regular extraction per landscape while scanning all *.source-extraction.json. A second inactive regular file is not isolated by its activation flag. Keep one current normal source slot and preserve exact prior bytes in history.",
+  "codeEvidence": {
+    "path": "app/scripts/generateCurriculumQualityStatus.ts",
+    "function": "readSourceExtractionGoalIdsByLandscapeId",
+    "observedSelection": "regular extractions replace the same landscape key; flags are not used"
+  },
+  "supersedesNormalPathProposalOnly": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-HB232-final-source-mapping-integration-20261017-v1/GUARDS.normal-integration.portable.json",
+    "sha256": "0160c7450e29844a9298d7aca60e146a4a6afd8e165247956e7a25307b21dbd8",
+    "bytes": 5125
+  },
+  "normalSourceSlot": "curricula/DE/Gymnasium/input/HB/upper-secondary/source-extraction/DE_HB_CHEMIE_SEKII_GYO_2022.source-extraction.json",
+  "normalMappingSlot": "curricula/DE/Gymnasium/mapping/DE-HB/upper-secondary/hb_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+  "oldSourceExpected": {
+    "path": "curricula/DE/Gymnasium/input/HB/upper-secondary/source-extraction/DE_HB_CHEMIE_SEKII_GYO_2022.source-extraction.json",
+    "sha256": "3a928a968081b9dd32f7783656a2ee05ac5980de8bdaa5629e9a642a1d310269",
+    "bytes": 155247
+  },
+  "oldSourceExactHistory": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-HB232-final-source-mapping-integration-20261017-v1/history/Main88.source-extraction.original-exact.json.snapshot",
+    "sha256": "3a928a968081b9dd32f7783656a2ee05ac5980de8bdaa5629e9a642a1d310269",
+    "bytes": 155247
+  },
+  "oldMappingExpected": {
+    "path": "curricula/DE/Gymnasium/mapping/DE-HB/upper-secondary/hb_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+    "sha256": "2b8ee1efc9336b67e566b4322d850598127cf24f0df07c4708ef6eabc6437462",
+    "bytes": 129033
+  },
+  "oldMappingExactHistory": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-HB232-final-source-mapping-integration-20261017-v1/history/Main88.mapping.original-exact.review.json.snapshot",
+    "sha256": "2b8ee1efc9336b67e566b4322d850598127cf24f0df07c4708ef6eabc6437462",
+    "bytes": 129033
+  },
+  "preparedSourceInput": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-HB232-final-source-mapping-integration-20261017-v1/HB232.current-paired.portable.source-extraction.json.snapshot",
+    "sha256": "f97d8253069142b2232a819eee49a5950666bf4cff130098c242d0d3fd8a2db4",
+    "bytes": 757207
+  },
+  "preparedMappingInput": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-HB232-final-source-mapping-integration-20261017-v1/HB232.current-paired-mapping.portable.review.json",
+    "sha256": "db877ed285ff6018c0eb7ca4568ea4a556801c1c3a733215fc089f24f1249aa3",
+    "bytes": 611878
+  },
+  "activationMetadataOperations": {
+    "source": {
+      "/activation/normalSourcePathAfterIntegration": "curricula/DE/Gymnasium/input/HB/upper-secondary/source-extraction/DE_HB_CHEMIE_SEKII_GYO_2022.source-extraction.json",
+      "/activation/active": "set true only after complete reviewed source/scope/view integration",
+      "/pipelineStatus": "replace pending activation metadata only when actual checks are complete"
+    },
+    "mapping": {
+      "/sourceExtractionPath": "curricula/DE/Gymnasium/input/HB/upper-secondary/source-extraction/DE_HB_CHEMIE_SEKII_GYO_2022.source-extraction.json",
+      "/active": "set true only after complete reviewed source/scope/view integration",
+      "/status/normalActivation": "set completed only when actual checks are complete"
+    }
+  },
+  "sourceGoalsPassagesProvenanceScopeTermsAndOptionalBodiesMustRemainObjectExact": true,
+  "singleRegularHBUpperExtractionSlotRequired": true,
+  "currentNativeDPRebindingStillRequired": true,
+  "pending": [
+    "HB lower14 whole-source binding remediation",
+    "complete reviewed HB stage/course views and their actual scope evidence",
+    "final compiled applicability and selected M/card/view origin bindings",
+    "targeted final native D/P contexts and all required M7 completion checks"
+  ],
+  "normalFilesModifiedByThisPlan": false
+}

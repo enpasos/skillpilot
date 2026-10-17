@@ -1,0 +1,67 @@
+{
+  "artifactType": "bounded technical followup of two metadata path corrections",
+  "atUTC": "2026-10-17T20:02:16.284449+00:00",
+  "reviewer": "independent A",
+  "technicalOnly": true,
+  "reviewAuthority": "ai_candidate",
+  "active": false,
+  "newScientificJudgment": false,
+  "status": "PASS",
+  "scope": "Only two path corrections, source/map/guard pins and unchanged scientific bodies; previous5234-check audit not repeated.",
+  "inputPins": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-HB232-final-source-mapping-integration-20261017-v1/HB232.current-paired.portable.source-extraction.json.snapshot",
+      "sha256": "f97d8253069142b2232a819eee49a5950666bf4cff130098c242d0d3fd8a2db4",
+      "bytes": 757207
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-HB232-final-source-mapping-integration-20261017-v1/HB232.current-paired-mapping.portable.review.json",
+      "sha256": "db877ed285ff6018c0eb7ca4568ea4a556801c1c3a733215fc089f24f1249aa3",
+      "bytes": 611878
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-HB232-final-source-mapping-integration-20261017-v1/GUARDS.normal-integration.portable.json",
+      "sha256": "0160c7450e29844a9298d7aca60e146a4a6afd8e165247956e7a25307b21dbd8",
+      "bytes": 5125
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-HB232-final-source-mapping-integration-20261017-v1/AUDIT.paired-mapping-independent-technical-audit.json",
+      "sha256": "150da3719af40019f404e7fbb75b3dd92ca8997fa6804583e08ba936e025988d",
+      "bytes": 221798
+    }
+  ],
+  "checks": {
+    "source_expected_SHA": true,
+    "mapping_expected_SHA": true,
+    "audit_archive_exact": true,
+    "source_exactly_two_paths_and_additive_metadata": true,
+    "mapping_exact_except_new_source_candidate_pin": true,
+    "unchanged_sourceGoals": true,
+    "unchanged_sourceGoalProvenance": true,
+    "unchanged_passages": true,
+    "unchanged_mandatoryTermSets": true,
+    "unchanged_optionalSourceSuggestions": true,
+    "unchanged_scopeRules": true,
+    "corrected_pin_/sourceDocumentPin/path": true,
+    "corrected_path_/sourceDocumentPin/path": true,
+    "corrected_pin_/historicalInventory/path": true,
+    "corrected_path_/historicalInventory/path": true,
+    "guard_output_selection": true,
+    "guard_output_source": true,
+    "guard_output_mapping": true,
+    "mapping_source_candidate_exact": true,
+    "inactive_and_pending": true
+  },
+  "closedMetadataFindings": [
+    "/sourceDocumentPin/path",
+    "/historicalInventory/path"
+  ],
+  "sourceAndJudgmentBodiesChanged": false,
+  "normalSourceActivation": false,
+  "finalContextPending": true,
+  "M7Claim": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "fullQAOrBuildRun": false,
+  "oldEvidenceFilesModifiedByAuditor": false
+}

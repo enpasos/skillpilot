@@ -1,0 +1,1641 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "positive-understanding-evidence-v2-writer-input-selection",
+  "purpose": "Deterministic dereference plan; retains complete existing profiles without copying 37 author bodies or writing native fingerprints.",
+  "status": "pendingFinalContext",
+  "reviewAuthority": "ai_candidate",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "active": false,
+  "humanApproval": false,
+  "M7Claim": false,
+  "objectHashConvention": "SHA256 of sorted-key compact JSON, UTF-8, ensure_ascii=false, no newline.",
+  "inputs": {
+    "C650": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-requires54-six-narrow-foundations-paired-successor-20261017-v1/C650.requires54-six-narrow-foundations.science-paired.PENDING-final-context.json.snapshot",
+      "sha256": "sha256:e15dd15e977e4a6eb8ee01f022bff68cbd233dceb09ba3b296584012cc070139",
+      "bytes": 2916854
+    },
+    "P439": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-five-paired-P-integration-20261017-v2/P439.CFC-HB-five-paired-material.inactive.jsonl",
+      "sha256": "sha256:404b83511b195891a1c348f3afef6c6fcb52791b6e170ab5b98a9b72384612ba",
+      "bytes": 4540234
+    },
+    "SEM650": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-source-requires-working-checkpoint-20261017-v1/candidate/SEM650.inactive.json",
+      "sha256": "sha256:4807fb1139038dadbb6a1edde1f6f7b7e7f67a95e62c0fb2aaac7ca94d69bda6",
+      "bytes": 208191
+    },
+    "pairedBiomolecules": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-biomolecules-paired-scientific-integration-20261017-v1/P11.paired-scientific-selection.pending-native-binding.json",
+      "sha256": "sha256:94bd62956c876f9e08b61dea49e72f777b89488071a4c86f36749e3f23463718",
+      "bytes": 14015
+    },
+    "pairedLab": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-lab-physical-paired-selection-20261017-v1/PAIRED.scientific-selection.json",
+      "sha256": "sha256:4bff4a249f60ae327b1742c5ff64b6de4a2a97486864b19bc7ff32459f938ef3",
+      "bytes": 13681
+    },
+    "pairedMaterials": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-HB-materials-resources-paired-selection-20261017-v1/PAIRED.scientific-selection.json",
+      "sha256": "sha256:ee816b4dffa61a21a85a7b8eb7e7c5c6b0fcedf33bf7dc81368ad3ea066c19f0",
+      "bytes": 24814
+    },
+    "biomoleculesAuthor": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-biomolecules-material-author-20261017-v1/AUTHOR.whole-profiles.pending.json",
+      "sha256": "sha256:27d54c2302f48b871e9b3f42e3c4b20c8ed2a9ed4f583664756e9315726e14f2",
+      "bytes": 345738
+    },
+    "labAuthor": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB078-acidified-chloride-carbonate-control-author-successor-20261017-v2/AUTHOR.eleven-whole-profiles.HB078-operative-v3.pending.json",
+      "sha256": "sha256:0b20ba598cae8e6c3f12e0f1c96eae25ed146a8d1e1e4e90cad8ac0d01628de7",
+      "bytes": 240756
+    },
+    "materialsAuthor": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2/AUTHOR.whole-profile-successors.goal-specific-v2.pending.json",
+      "sha256": "sha256:a34a28ef99c06f3a33569e3b1c977ad53ea12598697850939eb77bda6eaf3502",
+      "bytes": 372075
+    },
+    "newAtoms": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-material-author-20261017-v1/AUTHOR.two-new-whole-atoms.pending.json",
+      "sha256": "sha256:7f22fd60a96390a60ea85ab60b8f319045abe88a1ffb1fed405d1b5a2d91662f",
+      "bytes": 18390
+    },
+    "scopeThree": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-material-author-20261017-v1/AUTHOR.three-existing-goal-scope-successors.pending.json",
+      "sha256": "sha256:1443c60f6e1e3cc9a5f6631d4515aa7e3e0c530b0981ad9e9a2d90b9978b599e",
+      "bytes": 15914
+    },
+    "scope2652": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2/AUTHOR.2652-whole-goal-successor.pending.json",
+      "sha256": "sha256:a18c142aa5edd8919260b1e1914c037298a936b1446260e9ee861ae84a71af01",
+      "bytes": 20822
+    }
+  },
+  "baseline": {
+    "input": "P439",
+    "format": "jsonl",
+    "recordCount": 439,
+    "goalIdField": "goalId",
+    "profileField": "profile",
+    "order": "Original JSONL record order; replace matching goalId in place, append newProfiles in listed order."
+  },
+  "overrides": [
+    {
+      "goalId": "684ffe86-3a9f-5514-866a-47d16372f2d4",
+      "baselineLine": 295,
+      "authorRecord": {
+        "input": "biomoleculesAuthor",
+        "jsonPointer": "/records/0"
+      },
+      "goalPointer": "/records/0/goalExact",
+      "profilePointer": "/records/0/profile",
+      "profileSHA256": "d4aa01fe17f78aa4831139d749d68a4972548b767be6e6d1109421ebbb285765",
+      "pairedSelection": {
+        "input": "pairedBiomolecules",
+        "jsonPointer": "/records/0"
+      },
+      "scientificDecision": "ACCEPT",
+      "profileLocatorBase": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-biomolecules-material-author-20261017-v1"
+    },
+    {
+      "goalId": "127e2fc9-23f3-5ce8-a1c9-8c9e014c8a8a",
+      "baselineLine": 208,
+      "authorRecord": {
+        "input": "biomoleculesAuthor",
+        "jsonPointer": "/records/1"
+      },
+      "goalPointer": "/records/1/goalExact",
+      "profilePointer": "/records/1/profile",
+      "profileSHA256": "d4c00d710c71e460d02aa48a307b0e3773926e84641222cf84e21f5ba0a4c418",
+      "pairedSelection": {
+        "input": "pairedBiomolecules",
+        "jsonPointer": "/records/1"
+      },
+      "scientificDecision": "ACCEPT",
+      "profileLocatorBase": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-biomolecules-material-author-20261017-v1"
+    },
+    {
+      "goalId": "dfaef897-dcd4-55d4-a1fe-3dd90b818853",
+      "baselineLine": 294,
+      "authorRecord": {
+        "input": "biomoleculesAuthor",
+        "jsonPointer": "/records/2"
+      },
+      "goalPointer": "/records/2/goalExact",
+      "profilePointer": "/records/2/profile",
+      "profileSHA256": "786879f3c3edf37c523bd617d7544437e62cf9cdc454d81fdfd6b512da32d1ee",
+      "pairedSelection": {
+        "input": "pairedBiomolecules",
+        "jsonPointer": "/records/2"
+      },
+      "scientificDecision": "ACCEPT",
+      "profileLocatorBase": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-biomolecules-material-author-20261017-v1"
+    },
+    {
+      "goalId": "85342c52-9722-54b0-8fbb-513d9d648363",
+      "baselineLine": 22,
+      "authorRecord": {
+        "input": "biomoleculesAuthor",
+        "jsonPointer": "/records/3"
+      },
+      "goalPointer": "/records/3/goalExact",
+      "profilePointer": "/records/3/profile",
+      "profileSHA256": "d0d975533a84bff1147d59f2007640efdce82e1df84aa2bcf353a5c2452e7dee",
+      "pairedSelection": {
+        "input": "pairedBiomolecules",
+        "jsonPointer": "/records/3"
+      },
+      "scientificDecision": "ACCEPT",
+      "profileLocatorBase": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-biomolecules-material-author-20261017-v1"
+    },
+    {
+      "goalId": "92c99237-1c74-54fc-bf08-9191656afaa6",
+      "baselineLine": 35,
+      "authorRecord": {
+        "input": "biomoleculesAuthor",
+        "jsonPointer": "/records/4"
+      },
+      "goalPointer": "/records/4/goalExact",
+      "profilePointer": "/records/4/profile",
+      "profileSHA256": "304f83994242a6513acd29ce6cd374837d1d09144d273e5dc001183e5c999d5c",
+      "pairedSelection": {
+        "input": "pairedBiomolecules",
+        "jsonPointer": "/records/4"
+      },
+      "scientificDecision": "ACCEPT",
+      "profileLocatorBase": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-biomolecules-material-author-20261017-v1"
+    },
+    {
+      "goalId": "065d764c-daec-5d35-95da-3e922d2029c7",
+      "baselineLine": 270,
+      "authorRecord": {
+        "input": "biomoleculesAuthor",
+        "jsonPointer": "/records/5"
+      },
+      "goalPointer": "/records/5/goalExact",
+      "profilePointer": "/records/5/profile",
+      "profileSHA256": "a3c72106698b3aa21322cc22f9a8e0fe8486443000b00e53bff297741f973950",
+      "pairedSelection": {
+        "input": "pairedBiomolecules",
+        "jsonPointer": "/records/5"
+      },
+      "scientificDecision": "ACCEPT",
+      "profileLocatorBase": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-biomolecules-material-author-20261017-v1"
+    },
+    {
+      "goalId": "5a709938-e0f5-42b7-94f0-cfded08963a2",
+      "baselineLine": 42,
+      "authorRecord": {
+        "input": "biomoleculesAuthor",
+        "jsonPointer": "/records/6"
+      },
+      "goalPointer": "/records/6/goalExact",
+      "profilePointer": "/records/6/profile",
+      "profileSHA256": "58cc58b0c4693b9da6f41dacaac442b4e7119ec0fae851bdfccb564f47769b20",
+      "pairedSelection": {
+        "input": "pairedBiomolecules",
+        "jsonPointer": "/records/6"
+      },
+      "scientificDecision": "ACCEPT",
+      "profileLocatorBase": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-biomolecules-material-author-20261017-v1"
+    },
+    {
+      "goalId": "2f3cdec5-f845-5b0f-841e-8b1d47de0281",
+      "baselineLine": 293,
+      "authorRecord": {
+        "input": "biomoleculesAuthor",
+        "jsonPointer": "/records/7"
+      },
+      "goalPointer": "/records/7/goalExact",
+      "profilePointer": "/records/7/profile",
+      "profileSHA256": "ad923795ab87e4b1905014c9008ad949c95622de35f31527e17a1b57cd4922e8",
+      "pairedSelection": {
+        "input": "pairedBiomolecules",
+        "jsonPointer": "/records/7"
+      },
+      "scientificDecision": "ACCEPT",
+      "profileLocatorBase": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-biomolecules-material-author-20261017-v1"
+    },
+    {
+      "goalId": "7371c82e-6668-5ddc-ba78-347113fcddf8",
+      "baselineLine": 292,
+      "authorRecord": {
+        "input": "biomoleculesAuthor",
+        "jsonPointer": "/records/8"
+      },
+      "goalPointer": "/records/8/goalExact",
+      "profilePointer": "/records/8/profile",
+      "profileSHA256": "2d0dda1ab57cf71d290372a50715039b0c693a75dfeaa9d02acfe409103aef06",
+      "pairedSelection": {
+        "input": "pairedBiomolecules",
+        "jsonPointer": "/records/8"
+      },
+      "scientificDecision": "ACCEPT",
+      "profileLocatorBase": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-biomolecules-material-author-20261017-v1"
+    },
+    {
+      "goalId": "5c8f0bbb-103a-579f-87fc-c997afe4fd18",
+      "baselineLine": 272,
+      "authorRecord": {
+        "input": "biomoleculesAuthor",
+        "jsonPointer": "/records/9"
+      },
+      "goalPointer": "/records/9/goalExact",
+      "profilePointer": "/records/9/profile",
+      "profileSHA256": "51085c683941a3bc52432b14592d09212f0499024bd4d027fd324554706427c6",
+      "pairedSelection": {
+        "input": "pairedBiomolecules",
+        "jsonPointer": "/records/9"
+      },
+      "scientificDecision": "ACCEPT",
+      "profileLocatorBase": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-biomolecules-material-author-20261017-v1"
+    },
+    {
+      "goalId": "42391b16-bbae-5c77-84e1-d488e714167b",
+      "baselineLine": 173,
+      "authorRecord": {
+        "input": "biomoleculesAuthor",
+        "jsonPointer": "/records/10"
+      },
+      "goalPointer": "/records/10/goalExact",
+      "profilePointer": "/records/10/profile",
+      "profileSHA256": "681748ddc2c40301327a26d2660bd5d991bf645922140e28fbb70dba7b6bfaec",
+      "pairedSelection": {
+        "input": "pairedBiomolecules",
+        "jsonPointer": "/records/10"
+      },
+      "scientificDecision": "ACCEPT",
+      "profileLocatorBase": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-biomolecules-material-author-20261017-v1"
+    },
+    {
+      "goalId": "16b24dc5-0e48-5e3b-8307-01289db8d1a9",
+      "baselineLine": 316,
+      "authorRecord": {
+        "input": "labAuthor",
+        "jsonPointer": "/records/0"
+      },
+      "goalPointer": "/records/0/goalExact",
+      "profilePointer": "/records/0/profile",
+      "profileSHA256": "4e870d6f3ee7948c9859d5a239055c9b056ca5b093535656c080bd1063a55fd6",
+      "pairedSelection": {
+        "input": "pairedLab",
+        "jsonPointer": "/records/0"
+      },
+      "scientificDecision": "ACCEPT",
+      "profileLocatorBase": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB078-acidified-chloride-carbonate-control-author-successor-20261017-v2"
+    },
+    {
+      "goalId": "345fdca9-038f-51e2-9bea-b6ac416a734a",
+      "baselineLine": 111,
+      "authorRecord": {
+        "input": "labAuthor",
+        "jsonPointer": "/records/1"
+      },
+      "goalPointer": "/records/1/goalExact",
+      "profilePointer": "/records/1/profile",
+      "profileSHA256": "711d5c2944802e36b889a37d0afe522af5c6748c5b87a362670da452112d1d88",
+      "pairedSelection": {
+        "input": "pairedLab",
+        "jsonPointer": "/records/1"
+      },
+      "scientificDecision": "ACCEPT",
+      "profileLocatorBase": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB078-acidified-chloride-carbonate-control-author-successor-20261017-v2"
+    },
+    {
+      "goalId": "448815cc-4127-54b7-96bf-e54b3d2a38c5",
+      "baselineLine": 109,
+      "authorRecord": {
+        "input": "labAuthor",
+        "jsonPointer": "/records/2"
+      },
+      "goalPointer": "/records/2/goalExact",
+      "profilePointer": "/records/2/profile",
+      "profileSHA256": "eb031c92aa0aeea41d2c4dd35ea6ffd07dae427bdcca8a55a071548c48d21a48",
+      "pairedSelection": {
+        "input": "pairedLab",
+        "jsonPointer": "/records/2"
+      },
+      "scientificDecision": "ACCEPT",
+      "profileLocatorBase": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB078-acidified-chloride-carbonate-control-author-successor-20261017-v2"
+    },
+    {
+      "goalId": "48115ff7-7aca-5d0b-a9e7-7fc6c78434ef",
+      "baselineLine": 355,
+      "authorRecord": {
+        "input": "labAuthor",
+        "jsonPointer": "/records/3"
+      },
+      "goalPointer": "/records/3/goalExact",
+      "profilePointer": "/records/3/profile",
+      "profileSHA256": "cdb672f99c8e5cbb28c0b5cf67733d2bb05b1a7455c1997c3a38c1d341ae87ac",
+      "pairedSelection": {
+        "input": "pairedLab",
+        "jsonPointer": "/records/3"
+      },
+      "scientificDecision": "ACCEPT",
+      "profileLocatorBase": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB078-acidified-chloride-carbonate-control-author-successor-20261017-v2"
+    },
+    {
+      "goalId": "5a30273a-98d5-5163-bb16-c250b7ed4e7f",
+      "baselineLine": 164,
+      "authorRecord": {
+        "input": "labAuthor",
+        "jsonPointer": "/records/4"
+      },
+      "goalPointer": "/records/4/goalExact",
+      "profilePointer": "/records/4/profile",
+      "profileSHA256": "93a35601a6506ed84e1531fd87bd5fe6e14e8788ca13501a6ece1aed9cde8fbb",
+      "pairedSelection": {
+        "input": "pairedLab",
+        "jsonPointer": "/records/4"
+      },
+      "scientificDecision": "ACCEPT",
+      "profileLocatorBase": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB078-acidified-chloride-carbonate-control-author-successor-20261017-v2"
+    },
+    {
+      "goalId": "882630ba-815c-5c6b-868c-2e6cd7eef459",
+      "baselineLine": 404,
+      "authorRecord": {
+        "input": "labAuthor",
+        "jsonPointer": "/records/5"
+      },
+      "goalPointer": "/records/5/goalExact",
+      "profilePointer": "/records/5/profile",
+      "profileSHA256": "dbd1ed478379f1ce742f2b66934162e968ae2b6b43fa086f6f2a384e973d1dd5",
+      "pairedSelection": {
+        "input": "pairedLab",
+        "jsonPointer": "/records/5"
+      },
+      "scientificDecision": "ACCEPT",
+      "profileLocatorBase": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB078-acidified-chloride-carbonate-control-author-successor-20261017-v2"
+    },
+    {
+      "goalId": "9e3fae29-84d5-5600-bfb3-82d49ea3f1b5",
+      "baselineLine": 175,
+      "authorRecord": {
+        "input": "labAuthor",
+        "jsonPointer": "/records/6"
+      },
+      "goalPointer": "/records/6/goalExact",
+      "profilePointer": "/records/6/profile",
+      "profileSHA256": "bc65505cb7d26cd25f329217093ccc3af5583f9c2474e2d89282153565b48882",
+      "pairedSelection": {
+        "input": "pairedLab",
+        "jsonPointer": "/records/6"
+      },
+      "scientificDecision": "ACCEPT",
+      "profileLocatorBase": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB078-acidified-chloride-carbonate-control-author-successor-20261017-v2"
+    },
+    {
+      "goalId": "a44af1fa-5988-5b7d-b206-691c6bbf7dd4",
+      "baselineLine": 142,
+      "authorRecord": {
+        "input": "labAuthor",
+        "jsonPointer": "/records/7"
+      },
+      "goalPointer": "/records/7/goalExact",
+      "profilePointer": "/records/7/profile",
+      "profileSHA256": "85610e83eaac1883167b04cd26bfe5e10fac81ef5c844f7e985fe1ce5c0ad41c",
+      "pairedSelection": {
+        "input": "pairedLab",
+        "jsonPointer": "/records/7"
+      },
+      "scientificDecision": "ACCEPT",
+      "profileLocatorBase": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB078-acidified-chloride-carbonate-control-author-successor-20261017-v2"
+    },
+    {
+      "goalId": "c8844ac6-c414-5a0e-9fcd-7d0a82177d09",
+      "baselineLine": 214,
+      "authorRecord": {
+        "input": "labAuthor",
+        "jsonPointer": "/records/8"
+      },
+      "goalPointer": "/records/8/goalExact",
+      "profilePointer": "/records/8/profile",
+      "profileSHA256": "27145ff43e3387c7971e12c251e71df44462a94fa56550b44c2bfd0691b28cfb",
+      "pairedSelection": {
+        "input": "pairedLab",
+        "jsonPointer": "/records/8"
+      },
+      "scientificDecision": "ACCEPT",
+      "profileLocatorBase": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB078-acidified-chloride-carbonate-control-author-successor-20261017-v2"
+    },
+    {
+      "goalId": "e0944fbb-0761-5f9c-afaa-3d4713ed1bed",
+      "baselineLine": 361,
+      "authorRecord": {
+        "input": "labAuthor",
+        "jsonPointer": "/records/9"
+      },
+      "goalPointer": "/records/9/goalExact",
+      "profilePointer": "/records/9/profile",
+      "profileSHA256": "cb348682f003ea41d141e0eb1eac1bd6544182849d3126508856ef11f845f883",
+      "pairedSelection": {
+        "input": "pairedLab",
+        "jsonPointer": "/records/9"
+      },
+      "scientificDecision": "ACCEPT",
+      "profileLocatorBase": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB078-acidified-chloride-carbonate-control-author-successor-20261017-v2"
+    },
+    {
+      "goalId": "fd7977bf-1d8e-5c5e-9c37-bd76bb2ffeef",
+      "baselineLine": 72,
+      "authorRecord": {
+        "input": "labAuthor",
+        "jsonPointer": "/records/10"
+      },
+      "goalPointer": "/records/10/goalExact",
+      "profilePointer": "/records/10/profile",
+      "profileSHA256": "e4636d72a7ed5df484368dfcbcf5fbb8d3d35746e58d986c9bbec8ef1e7543da",
+      "pairedSelection": {
+        "input": "pairedLab",
+        "jsonPointer": "/records/10"
+      },
+      "scientificDecision": "ACCEPT",
+      "profileLocatorBase": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB078-acidified-chloride-carbonate-control-author-successor-20261017-v2"
+    },
+    {
+      "goalId": "0278a515-8990-5a1c-8a1b-a03382a144a3",
+      "baselineLine": 238,
+      "authorRecord": {
+        "input": "materialsAuthor",
+        "jsonPointer": "/records/0"
+      },
+      "goalPointer": "/records/0/goalExact",
+      "profilePointer": "/records/0/profile",
+      "profileSHA256": "6f679a388bf61f029ba8e856f6f4fdf7d76a8a8b690c262b0123530bf7bc7daa",
+      "pairedSelection": {
+        "input": "pairedMaterials",
+        "jsonPointer": "/existingWholeProfiles/0"
+      },
+      "scientificDecision": "ACCEPT",
+      "profileLocatorBase": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2"
+    },
+    {
+      "goalId": "2652caef-b557-58b9-9b28-70db62625ce5",
+      "baselineLine": 269,
+      "authorRecord": {
+        "input": "materialsAuthor",
+        "jsonPointer": "/records/1"
+      },
+      "goalPointer": "/records/1/goalExact",
+      "profilePointer": "/records/1/profile",
+      "profileSHA256": "598c26b8b5d792ae2380c478491bf70662bc5a59382079897ffb6a93a8ac99da",
+      "pairedSelection": {
+        "input": "pairedMaterials",
+        "jsonPointer": "/existingWholeProfiles/1"
+      },
+      "scientificDecision": "ACCEPT",
+      "profileLocatorBase": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2"
+    },
+    {
+      "goalId": "8721d943-8368-5304-bd3c-7d7944099662",
+      "baselineLine": 229,
+      "authorRecord": {
+        "input": "materialsAuthor",
+        "jsonPointer": "/records/2"
+      },
+      "goalPointer": "/records/2/goalExact",
+      "profilePointer": "/records/2/profile",
+      "profileSHA256": "3da8fb782d788f2ac8d02a46963c92e440fb7b862d8618a21f95b27cd1c31b9f",
+      "pairedSelection": {
+        "input": "pairedMaterials",
+        "jsonPointer": "/existingWholeProfiles/2"
+      },
+      "scientificDecision": "ACCEPT",
+      "profileLocatorBase": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2"
+    },
+    {
+      "goalId": "dfbccd62-1203-5d1b-927d-65a4ca41bbad",
+      "baselineLine": 235,
+      "authorRecord": {
+        "input": "materialsAuthor",
+        "jsonPointer": "/records/3"
+      },
+      "goalPointer": "/records/3/goalExact",
+      "profilePointer": "/records/3/profile",
+      "profileSHA256": "a23052a524853241e6baa480c6528beb740f68feadab4b10e202fc2f38657046",
+      "pairedSelection": {
+        "input": "pairedMaterials",
+        "jsonPointer": "/existingWholeProfiles/3"
+      },
+      "scientificDecision": "ACCEPT",
+      "profileLocatorBase": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2"
+    },
+    {
+      "goalId": "d72cbb62-0b65-5b9a-aece-70c23d4e618a",
+      "baselineLine": 284,
+      "authorRecord": {
+        "input": "materialsAuthor",
+        "jsonPointer": "/records/4"
+      },
+      "goalPointer": "/records/4/goalExact",
+      "profilePointer": "/records/4/profile",
+      "profileSHA256": "27fd4cb4737897ce16bec3aff86cbf44c096e82baa48f635511af897fec717a5",
+      "pairedSelection": {
+        "input": "pairedMaterials",
+        "jsonPointer": "/existingWholeProfiles/4"
+      },
+      "scientificDecision": "ACCEPT",
+      "profileLocatorBase": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2"
+    },
+    {
+      "goalId": "87d8cc68-fe82-5273-9e43-c18b566ecb6c",
+      "baselineLine": 253,
+      "authorRecord": {
+        "input": "materialsAuthor",
+        "jsonPointer": "/records/5"
+      },
+      "goalPointer": "/records/5/goalExact",
+      "profilePointer": "/records/5/profile",
+      "profileSHA256": "1df84b860788c4f50cdfa8fbb14bc2f16747bf30dbaa7c583062052dae73fb28",
+      "pairedSelection": {
+        "input": "pairedMaterials",
+        "jsonPointer": "/existingWholeProfiles/5"
+      },
+      "scientificDecision": "ACCEPT",
+      "profileLocatorBase": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2"
+    },
+    {
+      "goalId": "64b03eff-a967-54a1-ace3-89cb7650a65c",
+      "baselineLine": 245,
+      "authorRecord": {
+        "input": "materialsAuthor",
+        "jsonPointer": "/records/6"
+      },
+      "goalPointer": "/records/6/goalExact",
+      "profilePointer": "/records/6/profile",
+      "profileSHA256": "29f0835c4f3f139c5adbd3e7bb4387bd8d0f7646c5f897ed1460bc8b84bfb730",
+      "pairedSelection": {
+        "input": "pairedMaterials",
+        "jsonPointer": "/existingWholeProfiles/6"
+      },
+      "scientificDecision": "ACCEPT",
+      "profileLocatorBase": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2"
+    },
+    {
+      "goalId": "707998c1-872d-582d-a2d6-14e7d967cbdb",
+      "baselineLine": 129,
+      "authorRecord": {
+        "input": "materialsAuthor",
+        "jsonPointer": "/records/7"
+      },
+      "goalPointer": "/records/7/goalExact",
+      "profilePointer": "/records/7/profile",
+      "profileSHA256": "746e8edf19046c107c84983c4f9dfb5d4d7fce3650600107bbcf29f1b0dafc37",
+      "pairedSelection": {
+        "input": "pairedMaterials",
+        "jsonPointer": "/existingWholeProfiles/7"
+      },
+      "scientificDecision": "ACCEPT",
+      "profileLocatorBase": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2"
+    },
+    {
+      "goalId": "3eb2a06c-d283-57aa-9eb4-088940c4801a",
+      "baselineLine": 425,
+      "authorRecord": {
+        "input": "materialsAuthor",
+        "jsonPointer": "/records/8"
+      },
+      "goalPointer": "/records/8/goalExact",
+      "profilePointer": "/records/8/profile",
+      "profileSHA256": "ad2cb43f8442cfefe1758761160415f0803ab8234f1f1f4c1d5f66267ab9f96b",
+      "pairedSelection": {
+        "input": "pairedMaterials",
+        "jsonPointer": "/existingWholeProfiles/8"
+      },
+      "scientificDecision": "ACCEPT",
+      "profileLocatorBase": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2"
+    },
+    {
+      "goalId": "0959eef2-3c7d-5b33-a109-ddf332a5dbd9",
+      "baselineLine": 417,
+      "authorRecord": {
+        "input": "materialsAuthor",
+        "jsonPointer": "/records/9"
+      },
+      "goalPointer": "/records/9/goalExact",
+      "profilePointer": "/records/9/profile",
+      "profileSHA256": "0d3d7fc4b59d647cbe783a0e87a6ed4c540880a0fc2822eccb20cdde6817cac9",
+      "pairedSelection": {
+        "input": "pairedMaterials",
+        "jsonPointer": "/existingWholeProfiles/9"
+      },
+      "scientificDecision": "ACCEPT",
+      "profileLocatorBase": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2"
+    },
+    {
+      "goalId": "8b98d8ba-65c6-58d7-92f0-45f4b2456573",
+      "baselineLine": 160,
+      "authorRecord": {
+        "input": "materialsAuthor",
+        "jsonPointer": "/records/10"
+      },
+      "goalPointer": "/records/10/goalExact",
+      "profilePointer": "/records/10/profile",
+      "profileSHA256": "d62ae2a7871d1c6ef35ea312e10901b482f7115427f455d16c30623cf335656e",
+      "pairedSelection": {
+        "input": "pairedMaterials",
+        "jsonPointer": "/existingWholeProfiles/10"
+      },
+      "scientificDecision": "ACCEPT",
+      "profileLocatorBase": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2"
+    },
+    {
+      "goalId": "ac8b6c0f-98b2-5092-806d-d9498efbfa35",
+      "baselineLine": 180,
+      "authorRecord": {
+        "input": "materialsAuthor",
+        "jsonPointer": "/records/11"
+      },
+      "goalPointer": "/records/11/goalExact",
+      "profilePointer": "/records/11/profile",
+      "profileSHA256": "3206fd7ce49e7779752b1a1142fa5595e81eb8042a3a2b96fc8f19588c691758",
+      "pairedSelection": {
+        "input": "pairedMaterials",
+        "jsonPointer": "/existingWholeProfiles/11"
+      },
+      "scientificDecision": "ACCEPT",
+      "profileLocatorBase": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2"
+    },
+    {
+      "goalId": "38e30bb9-6145-5da0-80b8-36e3c45e15d0",
+      "baselineLine": 186,
+      "authorRecord": {
+        "input": "materialsAuthor",
+        "jsonPointer": "/records/12"
+      },
+      "goalPointer": "/records/12/goalExact",
+      "profilePointer": "/records/12/profile",
+      "profileSHA256": "ab78dd9489bb3c4a4d667579bfc96e6e6f69437d8c654b4891ba192a3b0cdfa2",
+      "pairedSelection": {
+        "input": "pairedMaterials",
+        "jsonPointer": "/existingWholeProfiles/12"
+      },
+      "scientificDecision": "ACCEPT",
+      "profileLocatorBase": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2"
+    },
+    {
+      "goalId": "9f892457-c4e5-56da-830c-bf6cac0c98d7",
+      "baselineLine": 184,
+      "authorRecord": {
+        "input": "materialsAuthor",
+        "jsonPointer": "/records/13"
+      },
+      "goalPointer": "/records/13/goalExact",
+      "profilePointer": "/records/13/profile",
+      "profileSHA256": "7829924e1d3a8b44285c61f92c49a4e1007f5a282924c1a2b31d08de6b224a27",
+      "pairedSelection": {
+        "input": "pairedMaterials",
+        "jsonPointer": "/existingWholeProfiles/13"
+      },
+      "scientificDecision": "ACCEPT",
+      "profileLocatorBase": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2"
+    },
+    {
+      "goalId": "c21a611c-1069-5b32-b673-4f37a89b094f",
+      "baselineLine": 436,
+      "authorRecord": {
+        "input": "materialsAuthor",
+        "jsonPointer": "/records/14"
+      },
+      "goalPointer": "/records/14/goalExact",
+      "profilePointer": "/records/14/profile",
+      "profileSHA256": "dab38af19275835cb2506fd35704cdc7495c332297a71cfccc56e193fee81692",
+      "pairedSelection": {
+        "input": "pairedMaterials",
+        "jsonPointer": "/existingWholeProfiles/14"
+      },
+      "scientificDecision": "ACCEPT",
+      "profileLocatorBase": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2"
+    }
+  ],
+  "newProfiles": [
+    {
+      "goalId": "31cce65a-480a-5111-ab3c-da2feb3d4065",
+      "authorRecord": {
+        "input": "newAtoms",
+        "jsonPointer": "/records/0"
+      },
+      "goalPointer": "/records/0/goalExact",
+      "profilePointer": "/records/0/profile",
+      "profileSHA256": "80dfe9257aac0b9759fdf752b24e6b3826aedfa2fa113013b6f24390f5e33947",
+      "pairedSelection": {
+        "input": "pairedMaterials",
+        "jsonPointer": "/newWholeAtoms/0"
+      },
+      "semanticProposal": "curricularAtomic",
+      "scientificDPA": "ACCEPT",
+      "profileLocatorBase": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-material-author-20261017-v1"
+    },
+    {
+      "goalId": "abfa609d-9764-5bd8-999c-1d10a7eeac78",
+      "authorRecord": {
+        "input": "newAtoms",
+        "jsonPointer": "/records/1"
+      },
+      "goalPointer": "/records/1/goalExact",
+      "profilePointer": "/records/1/profile",
+      "profileSHA256": "cb196cce95afc33e15fee8ebb61465fcf85efb841e9e068a2f8e923f3a080f44",
+      "pairedSelection": {
+        "input": "pairedMaterials",
+        "jsonPointer": "/newWholeAtoms/1"
+      },
+      "semanticProposal": "curricularAtomic",
+      "scientificDPA": "ACCEPT",
+      "profileLocatorBase": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-material-author-20261017-v1"
+    }
+  ],
+  "operativeMaterialFiles": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-biomolecules-material-author-20261017-v1/MATERIALS.whole-DE-EN.pending.json",
+      "sha256": "sha256:8fc8b42a1f364d5db1549fc1b8f0373310fbba87d767fbaf3f93c22b3f8b5ed1",
+      "bytes": 84366
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy-three-wording-four-alt-bounded-author-root-20261015-v1/materials/energy20-02-a.whole-targeted-author-successor.json",
+      "sha256": "sha256:d873beb4c717c3496376b7f3dcc9e98073395cf2d5b26bdd3150e120bf308817",
+      "bytes": 4744
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy20-four-defects-targeted-material-author-successor-20261015-v1/materials/forty-two-whole-DE-EN-cases.four-defects-successor.author.json",
+      "sha256": "sha256:5762a8f53db8ff2a6f44f98f1495959132bc04541e0af85c0088ace5e9da21fe",
+      "bytes": 170824
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-lab-physical-material-author-20261017-v1/materials/HB188-secondary-lead-lithium-own-schemata.DE-EN.json",
+      "sha256": "sha256:4f87bf17d15725a2cd8eac689b0b2975549736554525d82500b21a943856ffc8",
+      "bytes": 6512
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-lab-physical-material-author-20261017-v1/materials/HB193-rechargeable-cell-overpotential-and-losses.DE-EN.json",
+      "sha256": "sha256:88685bca5ee32bd93fed3552385e4dea18f3b6e8c31c9c450b88ac4c86da1db3",
+      "bytes": 6189
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-lab-physical-material-author-20261017-v1/materials/HB082-alkanol-homology-structure-series.DE-EN.json",
+      "sha256": "sha256:db4307a471f19d91a8cce7d81735d1a48d5425795eb3ba05e62d34bf6ae60008",
+      "bytes": 5019
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-lab-physical-material-author-20261017-v1/materials/HB073-EN-based-bond-type-and-nonpolar-bond.DE-EN.json",
+      "sha256": "sha256:77bfc1914a4cf28327e40b2e3a5f5a8de6e8c897728b0eb0f38be6ff4a4687ff",
+      "bytes": 5652
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-lab-physical-material-author-20261017-v1/materials/HB133-hydrated-metal-coordinate-bond-acidity.DE-EN.json",
+      "sha256": "sha256:a87bc0bffb9a1c7d346216eb15ab79f369999f7e0b5ef45cc086105e7fefabf6",
+      "bytes": 5995
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-lab-physical-material-author-20261017-v1/materials/HB089-describe-solubility-melting-boiling-investigations.DE-EN.json",
+      "sha256": "sha256:d8f5f8d3749bfa8a856d95f0484d5a900e96bd654b7eb405089e998347845cce",
+      "bytes": 8079
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-lab-physical-material-author-20261017-v1/materials/HB136-ocean-acidification-ecological-options.DE-EN.json",
+      "sha256": "sha256:93d69505e8a644269c207038105f522d73193550005a9528d4f5d2bcbff4fa68",
+      "bytes": 7707
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-lab-physical-material-author-20261017-v1/materials/HB138-142-pressure-kinetics-own-digital-model-acquisition.DE-EN.json",
+      "sha256": "sha256:c2f6c52cd5d1f0e0b4c08711d2a815b150d14c1c4f5fc281f93b4086ed275ff4",
+      "bytes": 9202
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB078-acidified-chloride-carbonate-control-author-successor-20261017-v2/HB078-four-ion-detection-supervised-practice.DE-EN.json",
+      "sha256": "sha256:1c78f2f104ad65aca94bc9558aa7fcd379ea54a47760a7b76ec764074db8aae4",
+      "bytes": 13347
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-lab-physical-material-author-20261017-v1/materials/HB188-primary-alkaline-own-structure-reaction-scheme.DE-EN.json",
+      "sha256": "sha256:850544ca4d7c68a87ffefe9d0266b7263b551a124aa624dc706ead413c8ef699",
+      "bytes": 5832
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-lab-physical-material-author-20261017-v1/materials/HB134-own-digital-titration-curve-evaluation.DE-EN.json",
+      "sha256": "sha256:2c2febab77dac315275ab3e8e20eda57598ed34ee252d3bf1d86649c31270bf9",
+      "bytes": 6555
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-lab-physical-material-author-20261017-v1/materials/HB185-own-galvanic-electrolysis-schemata.DE-EN.json",
+      "sha256": "sha256:b4e33ad539c5cb0d4e6bbcd1ce927b253f8f6365583123f259fd6fa3dee0e500",
+      "bytes": 6475
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-material-author-20261017-v1/materials/hb097-real-pla-investigation.DE-EN.json",
+      "sha256": "sha256:3a40735a3cfed08bdbe5d65c153b6ee6ee2a5fbaff7fd7e1f7c95aae8c179a69",
+      "bytes": 5312
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2/materials/hb213-formulated-polymer-additives.DE-EN.json",
+      "sha256": "sha256:1606f28582d88b4edc9186751b447ae90bba4f9d5851f7f2bbf12d8dc4f7e093",
+      "bytes": 5266
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-material-author-20261017-v1/materials/hb208-recovery-routes.DE-EN.json",
+      "sha256": "sha256:8bf2694013da9149bc27d9732189c39a2442126c9fed975f298b54c0d9c14f91",
+      "bytes": 4202
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-material-author-20261017-v1/materials/hb210-nanocomposite.DE-EN.json",
+      "sha256": "sha256:6c855f19fd808393334b0dede09ab7c32105c50bfffe5493540cbda6bc49fb38",
+      "bytes": 3872
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-material-author-20261017-v1/materials/hb217-dye-origins-polyenes.DE-EN.json",
+      "sha256": "sha256:c08b4296305eb99836fde952a96d4f32340021864427fe92744b1b12efc9af78",
+      "bytes": 5461
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-material-author-20261017-v1/materials/hb-colour-three-terms.DE-EN.json",
+      "sha256": "sha256:c88d88c5ace716eb5360a20811d0a48f1333867173fa65de2ef214e5961953c2",
+      "bytes": 4801
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-material-author-20261017-v1/materials/hb230-actual-digital-aromatics.DE-EN.json",
+      "sha256": "sha256:5203ac6ff201e8a6bf8572e1cf7344aba5f76774dbb7716d2d2f5a8fd6a16919",
+      "bytes": 3787
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-SH032-one-coherent-selected-theme-process-chain-author-successor-20261016-v1/materials/TWO.complete-nonisomorphic-DE-EN-cases-and-fresh-transfers.AUTHOR.inactive.json",
+      "sha256": "sha256:06b1933b21eb36c0ec4e5ae584dbd6032caf63238acbd11c702c096db3981f2f",
+      "bytes": 47376
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-material-author-20261017-v1/materials/hb232-drug-society.DE-EN.json",
+      "sha256": "sha256:6bf57b222d7956a53c80b2e63c3d8f0bd61dc4865fb26b5987f497b898e95345",
+      "bytes": 5240
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-material-author-20261017-v1/materials/hb200-plant-oil-routes.DE-EN.json",
+      "sha256": "sha256:5fc5b2069fec299a0aab42970875e1928e62a8cda4af0b378faae883e21bf36c",
+      "bytes": 5303
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2/materials/hb098-205-goal-specific-whole-material.DE-EN.json",
+      "sha256": "sha256:405fc0688d5ff8e0f27fd862121de7110238d531501759a8c6574008d7292fcc",
+      "bytes": 17182
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2/materials/HB135_acid-base-everyday-research-presentation.DE-EN.json",
+      "sha256": "sha256:b618ee60426418aaef0ed075dfa272ace46c453947db42cff3c9f513ad658791",
+      "bytes": 10770
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2/materials/HB135-goal-specific-operative-sections.DE-EN.json",
+      "sha256": "sha256:de0667b4c14b0bad2d49f2ac8e805208faa34f5c3dbaff53a5f31a6981549de7",
+      "bytes": 6478
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-biomolecules-material-author-20261017-v1/materials/hb-bio-beet-sugar-production-three-criteria.json",
+      "sha256": "sha256:55fff82005350fb9bd977d4a1e7997bf466544b62aa83780b3b32f2d511fd240",
+      "bytes": 5202
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2/materials/hb-microplastics-feedstock-environment.DE-EN.json",
+      "sha256": "sha256:224dc8b5898ed0aa1a78f63a7de06437fe16ff55fc4927a047221a87596b2e94",
+      "bytes": 5265
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-material-author-20261017-v1/materials/hb199-greenhouse-energy-climate.DE-EN.json",
+      "sha256": "sha256:f198a3d307d9a99c8a63269598142b1a4cc46515b075d1de35c2788fa2c38312",
+      "bytes": 6852
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-material-author-20261017-v1/materials/hb201-btl-fischer-tropsch.DE-EN.json",
+      "sha256": "sha256:aaac9f5c4224822e692de4aaff3720f8c761c66c70580446017281bf6f6fcb54",
+      "bytes": 5654
+    }
+  ],
+  "profileMaterialLocators": [
+    {
+      "goalId": "684ffe86-3a9f-5514-866a-47d16372f2d4",
+      "profilePointer": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-biomolecules-material-author-20261017-v1/AUTHOR.whole-profiles.pending.json",
+        "jsonPointer": "/records/0/profile"
+      },
+      "operativeMaterialLocators": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-biomolecules-material-author-20261017-v1/MATERIALS.whole-DE-EN.pending.json",
+          "jsonPointer": "/cases/0",
+          "caseId": "hb-bio-sugar-tree-and-industrial-building-blocks",
+          "sha256": "sha256:8fc8b42a1f364d5db1549fc1b8f0373310fbba87d767fbaf3f93c22b3f8b5ed1",
+          "caseObjectSHA256": "1d3041719c2ece0ec385593aeeb01c07371127dd1e48837ffb7bf57adfc1fcc4"
+        }
+      ]
+    },
+    {
+      "goalId": "127e2fc9-23f3-5ce8-a1c9-8c9e014c8a8a",
+      "profilePointer": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-biomolecules-material-author-20261017-v1/AUTHOR.whole-profiles.pending.json",
+        "jsonPointer": "/records/1/profile"
+      },
+      "operativeMaterialLocators": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-biomolecules-material-author-20261017-v1/MATERIALS.whole-DE-EN.pending.json",
+          "jsonPointer": "/cases/1",
+          "caseId": "hb-bio-beet-sugar-production-three-criteria",
+          "sha256": "sha256:8fc8b42a1f364d5db1549fc1b8f0373310fbba87d767fbaf3f93c22b3f8b5ed1",
+          "caseObjectSHA256": "82b3393ae6dad1bc3c17efb3a40d74d51c9a87e4e8ab873b07cbe58c7d6d2158"
+        }
+      ]
+    },
+    {
+      "goalId": "dfaef897-dcd4-55d4-a1fe-3dd90b818853",
+      "profilePointer": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-biomolecules-material-author-20261017-v1/AUTHOR.whole-profiles.pending.json",
+        "jsonPointer": "/records/2/profile"
+      },
+      "operativeMaterialLocators": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-biomolecules-material-author-20261017-v1/MATERIALS.whole-DE-EN.pending.json",
+          "jsonPointer": "/cases/2",
+          "caseId": "hb-bio-mutarotation-two-starting-anomers",
+          "sha256": "sha256:8fc8b42a1f364d5db1549fc1b8f0373310fbba87d767fbaf3f93c22b3f8b5ed1",
+          "caseObjectSHA256": "2fdff7c65bf3994318af66dde2c6df7ef625ff0cd45ccb7fd4afd5260c6ba8ca"
+        }
+      ]
+    },
+    {
+      "goalId": "85342c52-9722-54b0-8fbb-513d9d648363",
+      "profilePointer": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-biomolecules-material-author-20261017-v1/AUTHOR.whole-profiles.pending.json",
+        "jsonPointer": "/records/3/profile"
+      },
+      "operativeMaterialLocators": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-biomolecules-material-author-20261017-v1/MATERIALS.whole-DE-EN.pending.json",
+          "jsonPointer": "/cases/3",
+          "caseId": "hb-bio-glucose-chair-configuration-transfer",
+          "sha256": "sha256:8fc8b42a1f364d5db1549fc1b8f0373310fbba87d767fbaf3f93c22b3f8b5ed1",
+          "caseObjectSHA256": "83c787e1576b7cab6628efc1f2242379e5fff116cd0f928dba076b0a4642b9d3"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-biomolecules-material-author-20261017-v1/MATERIALS.whole-DE-EN.pending.json",
+          "jsonPointer": "/cases/4",
+          "caseId": "hb-bio-amino-acid-cip-exception-transfer",
+          "sha256": "sha256:8fc8b42a1f364d5db1549fc1b8f0373310fbba87d767fbaf3f93c22b3f8b5ed1",
+          "caseObjectSHA256": "c9f3d5f64b885631367023c0e09522d5e455696e7b5266b500849abec8a91b34"
+        }
+      ]
+    },
+    {
+      "goalId": "92c99237-1c74-54fc-bf08-9191656afaa6",
+      "profilePointer": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-biomolecules-material-author-20261017-v1/AUTHOR.whole-profiles.pending.json",
+        "jsonPointer": "/records/4/profile"
+      },
+      "operativeMaterialLocators": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-biomolecules-material-author-20261017-v1/MATERIALS.whole-DE-EN.pending.json",
+          "jsonPointer": "/cases/5",
+          "caseId": "hb-bio-fischer-wedge-analogue-digital-own-models",
+          "sha256": "sha256:8fc8b42a1f364d5db1549fc1b8f0373310fbba87d767fbaf3f93c22b3f8b5ed1",
+          "caseObjectSHA256": "3c5930a0f0b80c6fab6bdbe4668b99562c348433f7934ea3d658ff52be15a81b"
+        }
+      ]
+    },
+    {
+      "goalId": "065d764c-daec-5d35-95da-3e922d2029c7",
+      "profilePointer": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-biomolecules-material-author-20261017-v1/AUTHOR.whole-profiles.pending.json",
+        "jsonPointer": "/records/5/profile"
+      },
+      "operativeMaterialLocators": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-biomolecules-material-author-20261017-v1/MATERIALS.whole-DE-EN.pending.json",
+          "jsonPointer": "/cases/6",
+          "caseId": "hb-bio-beta-sheet-backbone-versus-sidechains",
+          "sha256": "sha256:8fc8b42a1f364d5db1549fc1b8f0373310fbba87d767fbaf3f93c22b3f8b5ed1",
+          "caseObjectSHA256": "a03d2368f7d0c8ae2f51631e3a2bab321f565576f19eea162b0c669d04e728e7"
+        }
+      ]
+    },
+    {
+      "goalId": "5a709938-e0f5-42b7-94f0-cfded08963a2",
+      "profilePointer": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-biomolecules-material-author-20261017-v1/AUTHOR.whole-profiles.pending.json",
+        "jsonPointer": "/records/6/profile"
+      },
+      "operativeMaterialLocators": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-biomolecules-material-author-20261017-v1/MATERIALS.whole-DE-EN.pending.json",
+          "jsonPointer": "/cases/7",
+          "caseId": "hb-bio-fat-recovery-separation-methods",
+          "sha256": "sha256:8fc8b42a1f364d5db1549fc1b8f0373310fbba87d767fbaf3f93c22b3f8b5ed1",
+          "caseObjectSHA256": "f5c28bd310f7b19096f828816df2008a548433200ba156f63c6e001da6238f36"
+        }
+      ]
+    },
+    {
+      "goalId": "2f3cdec5-f845-5b0f-841e-8b1d47de0281",
+      "profilePointer": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-biomolecules-material-author-20261017-v1/AUTHOR.whole-profiles.pending.json",
+        "jsonPointer": "/records/7/profile"
+      },
+      "operativeMaterialLocators": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-biomolecules-material-author-20261017-v1/MATERIALS.whole-DE-EN.pending.json",
+          "jsonPointer": "/cases/8",
+          "caseId": "hb-bio-fat-indices-structure-stoichiometry",
+          "sha256": "sha256:8fc8b42a1f364d5db1549fc1b8f0373310fbba87d767fbaf3f93c22b3f8b5ed1",
+          "caseObjectSHA256": "0a2c11e3d76d62f04949ed59e7a32db3416555403993813372271000cfee5498"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-biomolecules-material-author-20261017-v1/MATERIALS.whole-DE-EN.pending.json",
+          "jsonPointer": "/cases/9",
+          "caseId": "hb-bio-fat-indices-composition-durability-transfer",
+          "sha256": "sha256:8fc8b42a1f364d5db1549fc1b8f0373310fbba87d767fbaf3f93c22b3f8b5ed1",
+          "caseObjectSHA256": "22e06da5ab9e9a49c1073bb0e72fc9563eab4021fa01d86844a848cf29e809b9"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-biomolecules-material-author-20261017-v1/MATERIALS.whole-DE-EN.pending.json",
+          "jsonPointer": "/cases/10",
+          "caseId": "hb-bio-fat-hydrogenation-addition-and-packing",
+          "sha256": "sha256:8fc8b42a1f364d5db1549fc1b8f0373310fbba87d767fbaf3f93c22b3f8b5ed1",
+          "caseObjectSHA256": "e207edefb3455982a0af20dccb95230d478b2e9aa6aa1065daef17ad86740c44"
+        }
+      ]
+    },
+    {
+      "goalId": "7371c82e-6668-5ddc-ba78-347113fcddf8",
+      "profilePointer": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-biomolecules-material-author-20261017-v1/AUTHOR.whole-profiles.pending.json",
+        "jsonPointer": "/records/8/profile"
+      },
+      "operativeMaterialLocators": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-biomolecules-material-author-20261017-v1/MATERIALS.whole-DE-EN.pending.json",
+          "jsonPointer": "/cases/11",
+          "caseId": "hb-bio-essential-fatty-acids-use-choice",
+          "sha256": "sha256:8fc8b42a1f364d5db1549fc1b8f0373310fbba87d767fbaf3f93c22b3f8b5ed1",
+          "caseObjectSHA256": "4787cd321897eb89fb1a3f0535619bc905b492d3712b60c55eb426d9b5d550c0"
+        }
+      ]
+    },
+    {
+      "goalId": "5c8f0bbb-103a-579f-87fc-c997afe4fd18",
+      "profilePointer": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-biomolecules-material-author-20261017-v1/AUTHOR.whole-profiles.pending.json",
+        "jsonPointer": "/records/9/profile"
+      },
+      "operativeMaterialLocators": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-biomolecules-material-author-20261017-v1/MATERIALS.whole-DE-EN.pending.json",
+          "jsonPointer": "/cases/12",
+          "caseId": "hb-bio-xanthoproteic-structure-selectivity-paper-case",
+          "sha256": "sha256:8fc8b42a1f364d5db1549fc1b8f0373310fbba87d767fbaf3f93c22b3f8b5ed1",
+          "caseObjectSHA256": "79eac9720b6dbbfffab3134503e03e618966a0a178d29e611dfb941578857007"
+        }
+      ]
+    },
+    {
+      "goalId": "42391b16-bbae-5c77-84e1-d488e714167b",
+      "profilePointer": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-biomolecules-material-author-20261017-v1/AUTHOR.whole-profiles.pending.json",
+        "jsonPointer": "/records/10/profile"
+      },
+      "operativeMaterialLocators": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-biomolecules-material-author-20261017-v1/MATERIALS.whole-DE-EN.pending.json",
+          "jsonPointer": "/cases/13",
+          "caseId": "hb-bio-own-protein-condition-investigation",
+          "sha256": "sha256:8fc8b42a1f364d5db1549fc1b8f0373310fbba87d767fbaf3f93c22b3f8b5ed1",
+          "caseObjectSHA256": "0a4e34fb537b453f35368089fbde530a47cf044ff9d1000bd2d4322baaf8b5ee"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-biomolecules-material-author-20261017-v1/MATERIALS.whole-DE-EN.pending.json",
+          "jsonPointer": "/cases/14",
+          "caseId": "hb-bio-own-oil-solubility-versus-emulsion",
+          "sha256": "sha256:8fc8b42a1f364d5db1549fc1b8f0373310fbba87d767fbaf3f93c22b3f8b5ed1",
+          "caseObjectSHA256": "1748b956f67002c8de2a0de98f7802bd50bc15ab2d0ae7cc0eba9601806dc1d2"
+        }
+      ]
+    },
+    {
+      "goalId": "16b24dc5-0e48-5e3b-8307-01289db8d1a9",
+      "profilePointer": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB078-acidified-chloride-carbonate-control-author-successor-20261017-v2/AUTHOR.eleven-whole-profiles.HB078-operative-v3.pending.json",
+        "jsonPointer": "/records/0/profile"
+      },
+      "operativeMaterialLocators": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy-three-wording-four-alt-bounded-author-root-20261015-v1/materials/energy20-02-a.whole-targeted-author-successor.json",
+          "jsonPointer": "",
+          "sha256": "sha256:d873beb4c717c3496376b7f3dcc9e98073395cf2d5b26bdd3150e120bf308817",
+          "embeddedShaVerified": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy20-four-defects-targeted-material-author-successor-20261015-v1/materials/forty-two-whole-DE-EN-cases.four-defects-successor.author.json",
+          "jsonPointer": "",
+          "sha256": "sha256:5762a8f53db8ff2a6f44f98f1495959132bc04541e0af85c0088ace5e9da21fe",
+          "embeddedShaVerified": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-lab-physical-material-author-20261017-v1/materials/HB188-secondary-lead-lithium-own-schemata.DE-EN.json",
+          "sha256": "sha256:4f87bf17d15725a2cd8eac689b0b2975549736554525d82500b21a943856ffc8",
+          "bytes": 6512,
+          "jsonPointer": "",
+          "caseId": "hb188-secondary-lead-lithium-own-schemata"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-lab-physical-material-author-20261017-v1/materials/HB193-rechargeable-cell-overpotential-and-losses.DE-EN.json",
+          "sha256": "sha256:88685bca5ee32bd93fed3552385e4dea18f3b6e8c31c9c450b88ac4c86da1db3",
+          "bytes": 6189,
+          "jsonPointer": "",
+          "caseId": "hb193-rechargeable-cell-overpotential-and-losses"
+        }
+      ]
+    },
+    {
+      "goalId": "345fdca9-038f-51e2-9bea-b6ac416a734a",
+      "profilePointer": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB078-acidified-chloride-carbonate-control-author-successor-20261017-v2/AUTHOR.eleven-whole-profiles.HB078-operative-v3.pending.json",
+        "jsonPointer": "/records/1/profile"
+      },
+      "operativeMaterialLocators": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-lab-physical-material-author-20261017-v1/materials/HB082-alkanol-homology-structure-series.DE-EN.json",
+          "sha256": "sha256:db4307a471f19d91a8cce7d81735d1a48d5425795eb3ba05e62d34bf6ae60008",
+          "bytes": 5019,
+          "jsonPointer": "",
+          "caseId": "hb082-alkanol-homology-structure-series"
+        }
+      ]
+    },
+    {
+      "goalId": "448815cc-4127-54b7-96bf-e54b3d2a38c5",
+      "profilePointer": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB078-acidified-chloride-carbonate-control-author-successor-20261017-v2/AUTHOR.eleven-whole-profiles.HB078-operative-v3.pending.json",
+        "jsonPointer": "/records/2/profile"
+      },
+      "operativeMaterialLocators": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-lab-physical-material-author-20261017-v1/materials/HB073-EN-based-bond-type-and-nonpolar-bond.DE-EN.json",
+          "sha256": "sha256:77bfc1914a4cf28327e40b2e3a5f5a8de6e8c897728b0eb0f38be6ff4a4687ff",
+          "bytes": 5652,
+          "jsonPointer": "",
+          "caseId": "hb073-en-based-bond-type-and-nonpolar-bond"
+        }
+      ]
+    },
+    {
+      "goalId": "48115ff7-7aca-5d0b-a9e7-7fc6c78434ef",
+      "profilePointer": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB078-acidified-chloride-carbonate-control-author-successor-20261017-v2/AUTHOR.eleven-whole-profiles.HB078-operative-v3.pending.json",
+        "jsonPointer": "/records/3/profile"
+      },
+      "operativeMaterialLocators": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-lab-physical-material-author-20261017-v1/materials/HB133-hydrated-metal-coordinate-bond-acidity.DE-EN.json",
+          "sha256": "sha256:a87bc0bffb9a1c7d346216eb15ab79f369999f7e0b5ef45cc086105e7fefabf6",
+          "bytes": 5995,
+          "jsonPointer": "",
+          "caseId": "hb133-hydrated-metal-coordinate-bond-acidity"
+        }
+      ]
+    },
+    {
+      "goalId": "5a30273a-98d5-5163-bb16-c250b7ed4e7f",
+      "profilePointer": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB078-acidified-chloride-carbonate-control-author-successor-20261017-v2/AUTHOR.eleven-whole-profiles.HB078-operative-v3.pending.json",
+        "jsonPointer": "/records/4/profile"
+      },
+      "operativeMaterialLocators": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-lab-physical-material-author-20261017-v1/materials/HB089-describe-solubility-melting-boiling-investigations.DE-EN.json",
+          "sha256": "sha256:d8f5f8d3749bfa8a856d95f0484d5a900e96bd654b7eb405089e998347845cce",
+          "bytes": 8079,
+          "jsonPointer": "",
+          "caseId": "hb089-describe-solubility-melting-boiling-investigations"
+        }
+      ]
+    },
+    {
+      "goalId": "882630ba-815c-5c6b-868c-2e6cd7eef459",
+      "profilePointer": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB078-acidified-chloride-carbonate-control-author-successor-20261017-v2/AUTHOR.eleven-whole-profiles.HB078-operative-v3.pending.json",
+        "jsonPointer": "/records/5/profile"
+      },
+      "operativeMaterialLocators": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-lab-physical-material-author-20261017-v1/materials/HB136-ocean-acidification-ecological-options.DE-EN.json",
+          "sha256": "sha256:93d69505e8a644269c207038105f522d73193550005a9528d4f5d2bcbff4fa68",
+          "bytes": 7707,
+          "jsonPointer": "",
+          "caseId": "hb136-ocean-acidification-ecological-options"
+        }
+      ]
+    },
+    {
+      "goalId": "9e3fae29-84d5-5600-bfb3-82d49ea3f1b5",
+      "profilePointer": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB078-acidified-chloride-carbonate-control-author-successor-20261017-v2/AUTHOR.eleven-whole-profiles.HB078-operative-v3.pending.json",
+        "jsonPointer": "/records/6/profile"
+      },
+      "operativeMaterialLocators": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-lab-physical-material-author-20261017-v1/materials/HB138-142-pressure-kinetics-own-digital-model-acquisition.DE-EN.json",
+          "sha256": "sha256:c2f6c52cd5d1f0e0b4c08711d2a815b150d14c1c4f5fc281f93b4086ed275ff4",
+          "bytes": 9202,
+          "jsonPointer": "",
+          "caseId": "hb138-142-pressure-kinetics-own-digital-model-acquisition"
+        }
+      ]
+    },
+    {
+      "goalId": "a44af1fa-5988-5b7d-b206-691c6bbf7dd4",
+      "profilePointer": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB078-acidified-chloride-carbonate-control-author-successor-20261017-v2/AUTHOR.eleven-whole-profiles.HB078-operative-v3.pending.json",
+        "jsonPointer": "/records/7/profile"
+      },
+      "operativeMaterialLocators": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB078-acidified-chloride-carbonate-control-author-successor-20261017-v2/HB078-four-ion-detection-supervised-practice.DE-EN.json",
+          "sha256": "sha256:1c78f2f104ad65aca94bc9558aa7fcd379ea54a47760a7b76ec764074db8aae4",
+          "bytes": 13347,
+          "jsonPointer": "",
+          "caseId": "hb078-four-ion-detection-supervised-practice"
+        }
+      ]
+    },
+    {
+      "goalId": "c8844ac6-c414-5a0e-9fcd-7d0a82177d09",
+      "profilePointer": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB078-acidified-chloride-carbonate-control-author-successor-20261017-v2/AUTHOR.eleven-whole-profiles.HB078-operative-v3.pending.json",
+        "jsonPointer": "/records/8/profile"
+      },
+      "operativeMaterialLocators": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-lab-physical-material-author-20261017-v1/materials/HB188-primary-alkaline-own-structure-reaction-scheme.DE-EN.json",
+          "sha256": "sha256:850544ca4d7c68a87ffefe9d0266b7263b551a124aa624dc706ead413c8ef699",
+          "bytes": 5832,
+          "jsonPointer": "",
+          "caseId": "hb188-primary-alkaline-own-structure-reaction-scheme"
+        }
+      ]
+    },
+    {
+      "goalId": "e0944fbb-0761-5f9c-afaa-3d4713ed1bed",
+      "profilePointer": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB078-acidified-chloride-carbonate-control-author-successor-20261017-v2/AUTHOR.eleven-whole-profiles.HB078-operative-v3.pending.json",
+        "jsonPointer": "/records/9/profile"
+      },
+      "operativeMaterialLocators": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-lab-physical-material-author-20261017-v1/materials/HB134-own-digital-titration-curve-evaluation.DE-EN.json",
+          "sha256": "sha256:2c2febab77dac315275ab3e8e20eda57598ed34ee252d3bf1d86649c31270bf9",
+          "bytes": 6555,
+          "jsonPointer": "",
+          "caseId": "hb134-own-digital-titration-curve-evaluation"
+        }
+      ]
+    },
+    {
+      "goalId": "fd7977bf-1d8e-5c5e-9c37-bd76bb2ffeef",
+      "profilePointer": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB078-acidified-chloride-carbonate-control-author-successor-20261017-v2/AUTHOR.eleven-whole-profiles.HB078-operative-v3.pending.json",
+        "jsonPointer": "/records/10/profile"
+      },
+      "operativeMaterialLocators": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-lab-physical-material-author-20261017-v1/materials/HB185-own-galvanic-electrolysis-schemata.DE-EN.json",
+          "sha256": "sha256:b4e33ad539c5cb0d4e6bbcd1ce927b253f8f6365583123f259fd6fa3dee0e500",
+          "bytes": 6475,
+          "jsonPointer": "",
+          "caseId": "hb185-own-galvanic-electrolysis-schemata"
+        }
+      ]
+    },
+    {
+      "goalId": "0278a515-8990-5a1c-8a1b-a03382a144a3",
+      "profilePointer": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2/AUTHOR.whole-profile-successors.goal-specific-v2.pending.json",
+        "jsonPointer": "/records/0/profile"
+      },
+      "operativeMaterialLocators": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-material-author-20261017-v1/materials/hb097-real-pla-investigation.DE-EN.json",
+          "sha256": "sha256:3a40735a3cfed08bdbe5d65c153b6ee6ee2a5fbaff7fd7e1f7c95aae8c179a69",
+          "bytes": 5312,
+          "jsonPointer": "",
+          "authorMaterialPinVerified": true
+        }
+      ]
+    },
+    {
+      "goalId": "2652caef-b557-58b9-9b28-70db62625ce5",
+      "profilePointer": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2/AUTHOR.whole-profile-successors.goal-specific-v2.pending.json",
+        "jsonPointer": "/records/1/profile"
+      },
+      "operativeMaterialLocators": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2/materials/hb213-formulated-polymer-additives.DE-EN.json",
+          "sha256": "sha256:1606f28582d88b4edc9186751b447ae90bba4f9d5851f7f2bbf12d8dc4f7e093",
+          "bytes": 5266,
+          "jsonPointer": "",
+          "authorMaterialPinVerified": true
+        }
+      ]
+    },
+    {
+      "goalId": "8721d943-8368-5304-bd3c-7d7944099662",
+      "profilePointer": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2/AUTHOR.whole-profile-successors.goal-specific-v2.pending.json",
+        "jsonPointer": "/records/2/profile"
+      },
+      "operativeMaterialLocators": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-material-author-20261017-v1/materials/hb208-recovery-routes.DE-EN.json",
+          "sha256": "sha256:8bf2694013da9149bc27d9732189c39a2442126c9fed975f298b54c0d9c14f91",
+          "bytes": 4202,
+          "jsonPointer": "",
+          "authorMaterialPinVerified": true
+        }
+      ]
+    },
+    {
+      "goalId": "dfbccd62-1203-5d1b-927d-65a4ca41bbad",
+      "profilePointer": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2/AUTHOR.whole-profile-successors.goal-specific-v2.pending.json",
+        "jsonPointer": "/records/3/profile"
+      },
+      "operativeMaterialLocators": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-material-author-20261017-v1/materials/hb210-nanocomposite.DE-EN.json",
+          "sha256": "sha256:6c855f19fd808393334b0dede09ab7c32105c50bfffe5493540cbda6bc49fb38",
+          "bytes": 3872,
+          "jsonPointer": "",
+          "authorMaterialPinVerified": true
+        }
+      ]
+    },
+    {
+      "goalId": "d72cbb62-0b65-5b9a-aece-70c23d4e618a",
+      "profilePointer": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2/AUTHOR.whole-profile-successors.goal-specific-v2.pending.json",
+        "jsonPointer": "/records/4/profile"
+      },
+      "operativeMaterialLocators": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-material-author-20261017-v1/materials/hb217-dye-origins-polyenes.DE-EN.json",
+          "sha256": "sha256:c08b4296305eb99836fde952a96d4f32340021864427fe92744b1b12efc9af78",
+          "bytes": 5461,
+          "jsonPointer": "",
+          "authorMaterialPinVerified": true
+        }
+      ]
+    },
+    {
+      "goalId": "87d8cc68-fe82-5273-9e43-c18b566ecb6c",
+      "profilePointer": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2/AUTHOR.whole-profile-successors.goal-specific-v2.pending.json",
+        "jsonPointer": "/records/5/profile"
+      },
+      "operativeMaterialLocators": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-material-author-20261017-v1/materials/hb-colour-three-terms.DE-EN.json",
+          "sha256": "sha256:c88d88c5ace716eb5360a20811d0a48f1333867173fa65de2ef214e5961953c2",
+          "bytes": 4801,
+          "jsonPointer": "",
+          "authorMaterialPinVerified": true
+        }
+      ]
+    },
+    {
+      "goalId": "64b03eff-a967-54a1-ace3-89cb7650a65c",
+      "profilePointer": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2/AUTHOR.whole-profile-successors.goal-specific-v2.pending.json",
+        "jsonPointer": "/records/6/profile"
+      },
+      "operativeMaterialLocators": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-material-author-20261017-v1/materials/hb-colour-three-terms.DE-EN.json",
+          "sha256": "sha256:c88d88c5ace716eb5360a20811d0a48f1333867173fa65de2ef214e5961953c2",
+          "bytes": 4801,
+          "jsonPointer": "",
+          "authorMaterialPinVerified": true
+        }
+      ]
+    },
+    {
+      "goalId": "707998c1-872d-582d-a2d6-14e7d967cbdb",
+      "profilePointer": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2/AUTHOR.whole-profile-successors.goal-specific-v2.pending.json",
+        "jsonPointer": "/records/7/profile"
+      },
+      "operativeMaterialLocators": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-material-author-20261017-v1/materials/hb230-actual-digital-aromatics.DE-EN.json",
+          "sha256": "sha256:5203ac6ff201e8a6bf8572e1cf7344aba5f76774dbb7716d2d2f5a8fd6a16919",
+          "bytes": 3787,
+          "jsonPointer": "",
+          "authorMaterialPinVerified": true
+        }
+      ]
+    },
+    {
+      "goalId": "3eb2a06c-d283-57aa-9eb4-088940c4801a",
+      "profilePointer": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2/AUTHOR.whole-profile-successors.goal-specific-v2.pending.json",
+        "jsonPointer": "/records/8/profile"
+      },
+      "operativeMaterialLocators": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-SH032-one-coherent-selected-theme-process-chain-author-successor-20261016-v1/materials/TWO.complete-nonisomorphic-DE-EN-cases-and-fresh-transfers.AUTHOR.inactive.json",
+          "jsonPointer": "",
+          "sha256": "sha256:06b1933b21eb36c0ec4e5ae584dbd6032caf63238acbd11c702c096db3981f2f",
+          "embeddedShaVerified": false
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-material-author-20261017-v1/materials/hb232-drug-society.DE-EN.json",
+          "sha256": "sha256:6bf57b222d7956a53c80b2e63c3d8f0bd61dc4865fb26b5987f497b898e95345",
+          "bytes": 5240,
+          "jsonPointer": "",
+          "authorMaterialPinVerified": true
+        }
+      ]
+    },
+    {
+      "goalId": "0959eef2-3c7d-5b33-a109-ddf332a5dbd9",
+      "profilePointer": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2/AUTHOR.whole-profile-successors.goal-specific-v2.pending.json",
+        "jsonPointer": "/records/9/profile"
+      },
+      "operativeMaterialLocators": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-material-author-20261017-v1/materials/hb200-plant-oil-routes.DE-EN.json",
+          "sha256": "sha256:5fc5b2069fec299a0aab42970875e1928e62a8cda4af0b378faae883e21bf36c",
+          "bytes": 5303,
+          "jsonPointer": "",
+          "authorMaterialPinVerified": true
+        }
+      ]
+    },
+    {
+      "goalId": "8b98d8ba-65c6-58d7-92f0-45f4b2456573",
+      "profilePointer": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2/AUTHOR.whole-profile-successors.goal-specific-v2.pending.json",
+        "jsonPointer": "/records/10/profile"
+      },
+      "operativeMaterialLocators": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2/materials/hb098-205-goal-specific-whole-material.DE-EN.json",
+          "sha256": "sha256:405fc0688d5ff8e0f27fd862121de7110238d531501759a8c6574008d7292fcc",
+          "bytes": 17182,
+          "jsonPointer": "",
+          "authorMaterialPinVerified": true
+        }
+      ]
+    },
+    {
+      "goalId": "ac8b6c0f-98b2-5092-806d-d9498efbfa35",
+      "profilePointer": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2/AUTHOR.whole-profile-successors.goal-specific-v2.pending.json",
+        "jsonPointer": "/records/11/profile"
+      },
+      "operativeMaterialLocators": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2/materials/hb098-205-goal-specific-whole-material.DE-EN.json",
+          "sha256": "sha256:405fc0688d5ff8e0f27fd862121de7110238d531501759a8c6574008d7292fcc",
+          "bytes": 17182,
+          "jsonPointer": "",
+          "authorMaterialPinVerified": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2/materials/HB135_acid-base-everyday-research-presentation.DE-EN.json",
+          "sha256": "sha256:b618ee60426418aaef0ed075dfa272ace46c453947db42cff3c9f513ad658791",
+          "bytes": 10770,
+          "jsonPointer": "",
+          "authorMaterialPinVerified": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2/materials/HB135-goal-specific-operative-sections.DE-EN.json",
+          "jsonPointer": "",
+          "sha256": "sha256:de0667b4c14b0bad2d49f2ac8e805208faa34f5c3dbaff53a5f31a6981549de7",
+          "embeddedShaVerified": false
+        }
+      ]
+    },
+    {
+      "goalId": "38e30bb9-6145-5da0-80b8-36e3c45e15d0",
+      "profilePointer": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2/AUTHOR.whole-profile-successors.goal-specific-v2.pending.json",
+        "jsonPointer": "/records/12/profile"
+      },
+      "operativeMaterialLocators": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2/materials/hb098-205-goal-specific-whole-material.DE-EN.json",
+          "sha256": "sha256:405fc0688d5ff8e0f27fd862121de7110238d531501759a8c6574008d7292fcc",
+          "bytes": 17182,
+          "jsonPointer": "",
+          "authorMaterialPinVerified": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2/materials/HB135_acid-base-everyday-research-presentation.DE-EN.json",
+          "sha256": "sha256:b618ee60426418aaef0ed075dfa272ace46c453947db42cff3c9f513ad658791",
+          "bytes": 10770,
+          "jsonPointer": "",
+          "authorMaterialPinVerified": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2/materials/HB135-goal-specific-operative-sections.DE-EN.json",
+          "jsonPointer": "",
+          "sha256": "sha256:de0667b4c14b0bad2d49f2ac8e805208faa34f5c3dbaff53a5f31a6981549de7",
+          "embeddedShaVerified": false
+        }
+      ]
+    },
+    {
+      "goalId": "9f892457-c4e5-56da-830c-bf6cac0c98d7",
+      "profilePointer": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2/AUTHOR.whole-profile-successors.goal-specific-v2.pending.json",
+        "jsonPointer": "/records/13/profile"
+      },
+      "operativeMaterialLocators": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-biomolecules-material-author-20261017-v1/materials/hb-bio-beet-sugar-production-three-criteria.json",
+          "sha256": "sha256:55fff82005350fb9bd977d4a1e7997bf466544b62aa83780b3b32f2d511fd240",
+          "bytes": 5202,
+          "jsonPointer": "",
+          "authorMaterialPinVerified": true
+        }
+      ]
+    },
+    {
+      "goalId": "c21a611c-1069-5b32-b673-4f37a89b094f",
+      "profilePointer": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2/AUTHOR.whole-profile-successors.goal-specific-v2.pending.json",
+        "jsonPointer": "/records/14/profile"
+      },
+      "operativeMaterialLocators": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-goal-specific-successor-author-20261017-v2/materials/hb-microplastics-feedstock-environment.DE-EN.json",
+          "sha256": "sha256:224dc8b5898ed0aa1a78f63a7de06437fe16ff55fc4927a047221a87596b2e94",
+          "bytes": 5265,
+          "jsonPointer": "",
+          "authorMaterialPinVerified": true
+        }
+      ]
+    },
+    {
+      "goalId": "31cce65a-480a-5111-ab3c-da2feb3d4065",
+      "profilePointer": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-material-author-20261017-v1/AUTHOR.two-new-whole-atoms.pending.json",
+        "jsonPointer": "/records/0/profile"
+      },
+      "operativeMaterialLocators": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-material-author-20261017-v1/materials/hb199-greenhouse-energy-climate.DE-EN.json",
+          "sha256": "sha256:f198a3d307d9a99c8a63269598142b1a4cc46515b075d1de35c2788fa2c38312",
+          "bytes": 6852,
+          "jsonPointer": "",
+          "authorMaterialPinVerified": true
+        }
+      ]
+    },
+    {
+      "goalId": "abfa609d-9764-5bd8-999c-1d10a7eeac78",
+      "profilePointer": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-material-author-20261017-v1/AUTHOR.two-new-whole-atoms.pending.json",
+        "jsonPointer": "/records/1/profile"
+      },
+      "operativeMaterialLocators": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-material-author-20261017-v1/materials/hb201-btl-fischer-tropsch.DE-EN.json",
+          "sha256": "sha256:aaac9f5c4224822e692de4aaff3720f8c761c66c70580446017281bf6f6fcb54",
+          "bytes": 5654,
+          "jsonPointer": "",
+          "authorMaterialPinVerified": true
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "baseline": 439,
+    "overrides": 37,
+    "retainedBaselineProfiles": 402,
+    "newProfiles": 2,
+    "resultProfiles": 441
+  },
+  "futureWriterContract": {
+    "canonicalCandidatePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-paired-material-scope-integration-20261017-v1/C652.scope-material-paired.PENDING-source-context.json.snapshot",
+    "extractWholeProfileFromReferencedAuthorRecord": true,
+    "retainBaselineProfileForUnlistedGoalIds": true,
+    "profileLocatorBaseMustBeRetained": true,
+    "materialLocatorsAreOperativeNotOptionalExamples": true,
+    "oldNativeFingerprintsMustNotBeCopiedAsCurrent": true,
+    "nativeMaterializationAllowedNow": false,
+    "nativeMaterializationCondition": "Final source/mapping/view and current D/P/context bindings selected and reviewed; derive native hashes with the stock writer then.",
+    "claimLevelAfterMaterialization": "E1/G1 ai_candidate / needs_human_review; no human or M7 claim"
+  },
+  "notCoveredByThisPlan": [
+    "Source92/142 ongoing independent full-union reviews",
+    "HB134 GK scope/placement integration",
+    "Final source mappings, views, source extraction activation and semantic ledger integration",
+    "Final current D/P/A/M/V bindings and Layer-A/floor/publication gates"
+  ]
+}

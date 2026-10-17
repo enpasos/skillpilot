@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "role": "Technical SEM652 writer handoff; no new scientific review",
+  "atUTC": "2026-10-17T19:59:24.815734+00:00",
+  "outputs": {
+    "semanticLedger": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-final-material-image-selection-20261017-v1/SEM652.final-material-image.PENDING-source-context.json",
+      "sha256": "3c6e4aa075af57c9756a79b7bb2adfcf948a16554be0186a26bb6cdbe7e00c2c",
+      "bytes": 208966
+    },
+    "perIDFieldAndScienceDeltas": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-final-material-image-selection-20261017-v1/SEM652.stock-fingerprint-field-deltas-and-science-bindings.json",
+      "sha256": "ec8770582463c388a0209dee0e02ef06ce62feba0962d0e3f67549d3a7153635",
+      "bytes": 261106
+    }
+  },
+  "sourceLandscape": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-final-material-image-selection-20261017-v1/C652.final-material-image.PENDING-source-context.json.snapshot",
+    "sha256": "4e54ba26840aaee3659cf0e9d6f181eb58764f00787213e41f7b201ec462ffea",
+    "bytes": 2925308
+  },
+  "baselineSemanticLedgerUnchanged": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-source-requires-working-checkpoint-20261017-v1/candidate/SEM650.inactive.json",
+    "sha256": "4807fb1139038dadbb6a1edde1f6f7b7e7f67a95e62c0fb2aaac7ca94d69bda6",
+    "bytes": 208191
+  },
+  "stockImplementation": {
+    "path": "app/scripts/goalBookModel.ts",
+    "sha256": "4774479889515b31672c72805cf67ff07e153875a0c08d172e80059010a85fcc",
+    "bytes": 115163
+  },
+  "normalizationProfile": {
+    "path": "contracts/curriculum-package/v1/profiles/semantic-normal-form-v1.profile.json",
+    "sha256": "22e48f2dea55fbc3d6b39fc196c31258ab1559ef6751df4882f43318eadd48ca",
+    "bytes": 3877
+  },
+  "technicalChecks": {
+    "closedSemanticLedgerSchema": "PASS",
+    "fullGoalCoverage": 652,
+    "duplicateGoalDecisions": 0,
+    "curricularAtomic": 441,
+    "stockFingerprintsMatchAllCurrentGoals": 652,
+    "original650DecisionFingerprintsMatchOriginalStockGoals": 650,
+    "unchangedDecisionObjectsValueExact": 597,
+    "onlySourceFingerprintChangedInExisting53": true,
+    "exactChangedFieldsHaveExistingScienceBindings": 53,
+    "newWholeDPAPairs": 2,
+    "uncoveredChangesHOLD": 0,
+    "normalSourceOrRegistryWrites": 0,
+    "historicalInputWrites": 0
+  },
+  "classificationChange": {
+    "oldExistingKindsChanged": 0,
+    "twoNewKinds": "curricularAtomic",
+    "oldParentSemanticKindPreserved": {
+      "goalId": "6b6bceca-e1d9-56f7-ae6c-d7f7c2fa9338",
+      "semanticKind": "programStructure"
+    }
+  },
+  "active": false,
+  "nativeDPOrVHashesCreated": false,
+  "newScientificJudgments": 0,
+  "newGlobalStrictClosures": 0,
+  "M7Claim": false,
+  "HumanApproval": false,
+  "HumanTrial": false
+}

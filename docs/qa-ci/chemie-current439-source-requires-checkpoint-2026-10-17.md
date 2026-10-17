@@ -1,5 +1,82 @@
 # Chemie: Quellen- und Vorbedingungsarbeit vom 17. Oktober
 
+## Aktuelle Fortsetzung: 441er Integrationskandidat
+
+Der zentrale Check nach den beiden zusätzlich übernommenen Bildkorrekturen
+bestätigt weiterhin **231/402 (57,5 %) streng abgeschlossene Chemieziele**.
+Alle sechs Abschlusschecks bestehen; der strenge Abschluss bleibt offen.
+Mathematik 807/807, Physik 478/478, Biologie 397/397 und
+Wirtschaftswissenschaften 346/346 bleiben vollständig abgeschlossen.
+Die Chemie-Gates stehen bei D=232, P=231, A=248, M=402 und V=386.
+**Aktiver strenger Nettozuwachs dieses Pakets: 0.**
+
+- Die geprüften PNG-Korrekturen für Life-Cycle-Assessment (`e20d205f`) und
+  Titration (`28c90c6a`) sind jetzt normal übernommen. Für das aktive,
+  breiter formulierte Titrationsziel liegt eine tatsächliche zusätzliche
+  Sichtprüfung vor; das schematische Bild ersetzt keinen Rechennachweis.
+  Quellenatlas, Bild-Rollout-Abdeckung und KI-Transparenzprüfung bestehen.
+- Der konkrete Kandidat
+  `chemie-current441-paired-material-scope-integration-20261017-v1`
+  verbindet 652 Knoten mit 441 fachlichen Einzelzielen: 37 bereits paarweise
+  geprüfte bestehende Profilnachfolger, zwei neue Ziele und vier geprüfte
+  Zielumfangsänderungen. Die endgültigen Quellen-/Kontextbindungen stehen aus.
+- Der nachgelagerte Quellenledger
+  `chemie-current441-HB232-post-material-paired-ledger-20261017-v3`
+  dokumentiert den damaligen Zwischenstand 209/232 und 247/247 bestätigte
+  Begriffsverwendungen. Der neue Nachfolger
+  `chemie-current441-HB232-final-source-mapping-integration-20261017-v1`
+  bestätigt jetzt **232/232 ganze Oberstufen-Quellenunionen**, ohne offene
+  wissenschaftliche Zuordnungsunterschiede. Alle 23 zuletzt geprüften
+  Trägerlisten stimmen zwischen beiden unabhängigen Prüfungen exakt überein;
+  der konkrete Mapping-Nachfolger enthält 464 einzelne `partial`-Kanten zu
+  207 Trägerzielen. Amtliche GK-/LK-Grenzen, Themenwahl und optionale Beispiele
+  bleiben erhalten. Der unabhängige technische Audit besteht mit 5234/5234
+  Checks; zwei geerbte Cache-/Historienpfade sind im portablen Nachfolger
+  bytegenau korrigiert und gezielt nachgeprüft. Das sind Quellenbeziehungen,
+  keine neuen globalen Lernzielabschlüsse.
+- Für die digitale Bremer GK-Titration (Klausel 134) bestätigen beide Prüfer
+  das ganze Profil des unveränderten Ziels `02634fdd` und dessen vollständige
+  Quellenbeziehung. Eigene reale Durchführung und eigene digitale Rohdaten
+  bleiben erforderlich. Der tatsächliche P441-Writer-Eingang enthält nun
+  **38 bestehende Profilnachfolger und zwei neue Profile**. Normale
+  Quellenaktivierung und native P-Bindung stehen noch aus.
+- Das unlesbare Recyclingbild `8721d943` wurde durch ein tatsächliches PNG
+  mit vier klaren Prozessdarstellungen ersetzt und bei 360 und 680 Pixeln
+  unabhängig mit KEEP geprüft. Es ist im geänderten Kandidatenkontext geprüft;
+  die normale Übernahme erfolgt mit der endgültigen Zielintegration.
+- Der zugehörige SEM652-Nachfolger wurde mit der vorhandenen Stockfunktion
+  gegen alle 652 Ziele geprüft: 441 `curricularAtomic`, 597 ganze bestehende
+  Entscheidungen exakt erhalten, 53 bestehende Bindungen auf die tatsächlich
+  geprüften Relations-/Zielnachfolger übertragen, zwei neue Klassifikationen
+  aus den unabhängigen ganzen D-/P-/Atomaritätsurteilen übernommen. Keine
+  zusätzliche fachliche Prüfung oder menschliche Freigabe wird daraus
+  abgeleitet.
+- Vier vollständige Bremer View-Kandidaten kompilieren ohne Strukturfehler
+  oder Warnungen: CrossStage GK/LK und explizites SekII GK/LK. Die fachliche
+  Aktivierung bleibt getrennt. Fünf alte leere Sek-I-Cluster betreffen 14
+  konkrete Quellenentscheidungen; hierfür werden ganze aktuelle Nachfolger
+  statt automatischer Kindervererbung bearbeitet. Auch die noch offenen
+  Erwerbs-, Origin- und Stage-Bindungen sind je View ausgewiesen.
+- Ein begrenzter tatsächlicher Stock-Compilervergleich bestätigt für das
+  neue Oberstufenmapping 100 zusätzliche HB-Mitgliedschaften und keine
+  Änderung einer anderen Landesmitgliedschaft. Die gespeicherten Felder
+  sind noch nicht insgesamt compileraktuell; sie werden gezielt im finalen
+  Quellen-/Memory-/View-Stand integriert. Bei der späteren Aktivierung werden
+  der vorhandene normale Quellslot und sein Mapping gemeinsam umgeschaltet;
+  die bisherigen88er-Bytes sind exakt archiviert.
+
+**Paketfortschritt:** 23 zuvor offene ganze Quellenbeziehungen bestätigt
+(22 neue ganze Quellenurteile und die getrennt versiegelte Titrationsbindung);
+kein aktiver strenger Nettozuwachs. Die Kandidaten sind direkt auf Main
+sichtbar; sie sind noch nicht vollständig normal integriert.
+
+Nächste Schritte: Quellen/Geltung/Views zusammenführen, tatsächlich
+betroffene endgültige D-/P-Kontexte gezielt
+prüfen und binden, anschließend zentrale Abschluss-QS einschließlich CQR-303
+und GitHub-CI. Menschliche Prüfung, Freigabe und Erprobung bleiben getrennt.
+Die folgenden Abschnitte dokumentieren die davor erreichten Teilstände;
+ihre damaligen Kandidatenzahlen ersetzen diesen aktuellen Stand nicht.
+
 ## GitHub-Sicherung und sichtbare Fortsetzung
 
 Commit `d94a910333d4d7831d6aaaaa993cc89bfc60d047` ist auf `main`

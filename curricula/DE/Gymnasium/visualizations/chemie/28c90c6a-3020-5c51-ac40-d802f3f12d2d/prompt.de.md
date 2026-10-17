@@ -8,30 +8,16 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
-- Status: accepted
-- Quellbild: `28c90c6a-3020-5c51-ac40-d802f3f12d2d.jpg`
-- Public Asset: `/assets/goal-visualizations/chemie/28c90c6a-3020-5c51-ac40-d802f3f12d2d/28c90c6a-3020-5c51-ac40-d802f3f12d2d.jpg`
+- Provider: OpenAI / ChatGPT-Codex built-in image_gen (model version not exposed)
+- Status: accepted_pilot
+- Quellbild: `28c90c6a-3020-5c51-ac40-d802f3f12d2d.png`
+- Public Asset: `/assets/goal-visualizations/chemie/28c90c6a-3020-5c51-ac40-d802f3f12d2d/28c90c6a-3020-5c51-ac40-d802f3f12d2d.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Titrationskurven deuten
-Beschreibung: Die lernende Person kann Titrationsdaten und Titrationskurven auswerten, charakteristische Punkte einer Titrationskurve berechnen und daraus Informationen zum untersuchten Stoff sowie zu geeigneten Indikatoren ableiten.
-
-Zusatzanweisung:
-Use one internally consistent titration: ethanoic acid titrated with NaOH. Draw a smooth increasing curve with initial pH about 2.9, a buffer region, half-equivalence where pH = pKa = 4.76, equivalence above 7 at about pH 8.7, and then excess-base region. Mark the corresponding volumes consistently. Show phenolphthalein transition range about pH 8.2–10 as suitable. Do not label the equivalence point pH 7 for this weak-acid example.
+Use case: scientific-educational; edit target is the referenced existing chemistry learning illustration. Produce one corrected PNG, wide about16:9 and1600x900, keeping the friendly hand-drawn cream-paper/blue-curve/pink-indicator visual style. Correct its false dissolved-species statements and retain a clear weak-acid/strong-base titration. Use fewer larger labels so the curve and chemically important labels remain understandable at360px width.
+Title exactly "Titrationskurve deuten". One large blue rising S-shaped curve: start about pH3, buffer region, half-equivalence about pH4.8, equivalence above7 about8.8, then OH− excess about12. y-axis "pH" with0,7,14. x-axis "Zugabe von NaOH", show0, Vₑ/2 and Vₑ in proportion (half-equivalence halfway from0 to equivalence). A thin horizontal pink indicator band pH8.2–10 labeled "Phenolphthalein", equivalence dot inside it. Large non-overlapping labels "Essigsäure", "Puffer", "Äquivalenz", "OH⁻-Überschuss". At buffer dot "pH ≈ pKₛ"; at equivalence short "Acetat-Lösung · pH > 7". Footer "Essigsäure + Natronlauge · schematisch". Do not say only acid or only salt; dissolved species coexist because of protolysis/hydrolysis. Do not draw molecular NaOH as the pH-causing species. This is an orientation diagram, not experimental data. No extra panels, no photorealism, no dense paragraphs, no watermark. Scientific positions/arrows and the plotted weak-acid curve must be coherent.
 ```
 
 ## Review-Notiz

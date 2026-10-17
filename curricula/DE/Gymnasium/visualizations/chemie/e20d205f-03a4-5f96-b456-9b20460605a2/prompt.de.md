@@ -8,32 +8,16 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
-- Status: pilot
-- Quellbild: `e20d205f-03a4-5f96-b456-9b20460605a2.jpg`
-- Public Asset: `/assets/goal-visualizations/chemie/e20d205f-03a4-5f96-b456-9b20460605a2/e20d205f-03a4-5f96-b456-9b20460605a2.jpg`
+- Provider: OpenAI / ChatGPT-Codex built-in image_gen (model version not exposed)
+- Status: accepted_pilot
+- Quellbild: `e20d205f-03a4-5f96-b456-9b20460605a2.png`
+- Public Asset: `/assets/goal-visualizations/chemie/e20d205f-03a4-5f96-b456-9b20460605a2/e20d205f-03a4-5f96-b456-9b20460605a2.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Life-Cycle-Assessment anwenden
-Beschreibung: Die lernende Person kann vereinfachte Ökobilanzen für Energieträger erstellen und interpretieren.
-
-Zusatzanweisung:
-Korrigiere die fachliche Aussage der Ergebnisdarstellung. Zeige die Auswertung einer vereinfachten Ökobilanz als sachlichen Vergleich mehrerer Umweltwirkungen über Rohstoffgewinnung, Produktion, Transport, Nutzung und Entsorgung. Verwende keine roten Kreuze oder Symbole, die das Ableiten von Handlungsoptionen als falsch darstellen. Vergleich, Interpretation und daraus begründete Verbesserungsoptionen sollen als aufeinanderfolgende, positive Arbeitsschritte erscheinen. Alle deutschen Beschriftungen müssen vollständig und korrekt geschrieben sein.
-
-Die Legende einer gestapelten Ergebnisgrafik darf genau diese fünf Lebenswegphasen jeweils genau einmal enthalten: Rohstoffgewinnung, Produktion, Transport, Nutzung, Entsorgung. Keine doppelte Kategorie, keine sechste Farbe und keine widersprüchliche Zuordnung. Alternativ kann die Ergebnisgrafik ganz ohne Farblegende auskommen, wenn die Umweltwirkungen eindeutig vergleichbar bleiben.
+Use case: scientific-educational; correct the referenced friendly comic-style LCA illustration. Main documented defect: the B bar repeats green/yellow phases and conflicts with its five-colour phase legend. Create one corrected PNG about1600x900,16:9; preserve the friendly pale-blue/green illustrated style, life-cycle comparison and interpret-to-improve idea. Use a clean readable simplified composition so its essential phase comparison works at360px phone width.
+Title "Ökobilanzen vergleichen". Show FIVE large simple phase icons in one row, each with one consistent colour and one short label: brown "Rohstoffe", grey "Produktion", blue "Transport", yellow "Nutzung", green "Entsorgung". Below, two clear stacked bars "Pfad A" and "Pfad B", both with EXACTLY five contiguous segments, bottom-to-top brown,grey,blue,yellow,green, each colour appears once per bar. Every segment thick enough to remain visible at phone width. A total visibly higher than B is merely supplied illustrative data; use large caption "Beispieldaten · gleiche Strommenge". y-label "Klimawirkung (relativ)". This compares a single effect category with the same functional basis, not a universal total environmental ranking. Do not call wind a chemical energy carrier. A small clipboard/observer and a broad curved arrow to a lightbulb can retain the interpretation/improvement motif with short "Alle Phasen beachten". Do not add claims that renewables are always better in every category, no invented physical measurements, no tiny table or crowded prose. Preserve readable correct diagram logic and welcoming cartoon style.
 ```
 
 ## Review-Notiz

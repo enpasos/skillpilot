@@ -1,0 +1,51 @@
+{
+  "artifactType": "independent-first-review-sha256-seal",
+  "sealedAtUTC": "2026-10-17T19:27:16.680245+00:00",
+  "reviewer": "/root/chemie_hb92_142_whole_union_independent_a_20261017",
+  "foreignAorBReviewOrLedgerVerdictsReadBeforeThisSeal": false,
+  "artifactPins": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-HB92-HB142-whole-source-union-independent-a-20261017-v1/FIRST.json",
+      "sha256": "7f2904d672753d3ae8a74726a98e0082dd488e61dea82db10ea2871b2cb3c673",
+      "bytes": 33856
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-HB92-HB142-whole-source-union-independent-a-20261017-v1/README.md",
+      "sha256": "c021771a9b58415903032936f9cf9dcb55d93eaed9deb4de07c4dac972af4498",
+      "bytes": 1989
+    }
+  ],
+  "decisionSummary": [
+    {
+      "ordinal": 92,
+      "decision": "ACCEPT",
+      "claim": "ACCEPT_COMPLETE_QUALIFIED_AUTHORED_UNION_ONLY"
+    },
+    {
+      "ordinal": 142,
+      "decision": "ACCEPT",
+      "claim": "ACCEPT_COMPLETE_QUALIFIED_AUTHORED_UNION_ONLY"
+    }
+  ],
+  "inputPinVerification": {
+    "authorInput": true,
+    "wholeSourceObjects": 2,
+    "wholeGoalObjects": 6,
+    "wholeProfileObjects": 6,
+    "allExactMatches": true,
+    "completeMaterialFiles": 3
+  },
+  "portabilityCheck": {
+    "function": "scripts/validate_schemas.py:curriculum_symlink_errors",
+    "errors": [],
+    "fullValidationRun": false
+  },
+  "jsonParsedBeforeSeal": true,
+  "active": false,
+  "normalSourceActivation": false,
+  "nativeDPClosure": false,
+  "M7Claim": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "sealMeaning": "Exact local FIRST/README bytes, sealed before any foreign A/B judgment or verdict-ledger access. No digital identity signature, source activation, runtime acceptance or human approval."
+}
