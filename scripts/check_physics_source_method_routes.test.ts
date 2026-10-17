@@ -32,9 +32,16 @@ const views: { path: string, view: CompositionView }[] = manifest.sourcePaths
 const orientation = '5c44b9ba-9b05-4774-95d5-073230d3fc4f'
 const observation = '5355fee0-0477-5570-a234-561477bf77ba'
 const units = '3ed3279e-c524-5230-a277-dda89493df6d'
+const mathUnits = 'f2e42af5-67a6-477e-82ea-e65b09cc6cb3'
+const mathRationalAddition = '4eeab7d5-eeb3-579b-845e-1c52ffe9e89f'
+const mathRationalMultiplication = 'ee48e811-4c9c-5080-9836-8403fc9f0810'
 const models = 'e5bc2227-d900-585f-8ac0-9d3f1cb40e27'
 const sources = 'd2e6f87d-795b-5631-a7cc-0bfb5dc5142e'
 const methods = [observation, units, models, sources]
+const mathMethodPrerequisites = new Map([
+  [units, [mathUnits]],
+  [sources, [mathRationalAddition, mathRationalMultiplication]],
+])
 const astronomy = [
   '982df2f3-e040-5f4b-b668-0fe05d994b29',
   '6ae54ff9-dc3b-563b-b2ee-09a0f0d00162',
@@ -63,6 +70,17 @@ test('every atlas view that teaches either astronomy goal also teaches its compl
     }
     for (const goalId of methods) {
       for (const requiredId of byId.get(goalId)?.requires ?? []) {
+        if (mathMethodPrerequisites.get(goalId)?.includes(requiredId)) {
+          // These authored mathematics prerequisites resolve across subjects;
+          // physics method prerequisites must still be visible targets below.
+          const mathGoal = landscapesById.get('68a8ac50-f5f5-4e24-8aa9-5e408ca01ced')?.goals
+            .find(goal => goal.id === requiredId)
+          assert(mathGoal, `${path}: missing canonical mathematics prerequisite: ${requiredId}`)
+          assert.equal(byId.get(requiredId), mathGoal, `${path}: unresolved mathematics prerequisite: ${requiredId}`)
+          assert(roles.prerequisiteOnlyGoalIds.has(requiredId), `${path}: omitted mathematics prerequisite: ${requiredId}`)
+          assert(!roles.targetGoalIds.has(requiredId), `${path}: mathematics prerequisite became a physics target: ${requiredId}`)
+          continue
+        }
         assert(roles.targetGoalIds.has(requiredId), `${path}: omitted method dependency: ${goalId} -> ${requiredId}`)
       }
     }
@@ -70,11 +88,11 @@ test('every atlas view that teaches either astronomy goal also teaches its compl
   assert.equal(astronomyViewCount, 60)
 })
 
-test('the four method goals form a bounded sequence after the existing orientation', () => {
+test('the four method goals form a bounded sequence after the existing orientation and mathematics foundation', () => {
   assert.deepEqual(byId.get(observation)?.requires, [orientation])
-  assert.deepEqual(byId.get(units)?.requires, [orientation])
+  assert.deepEqual(byId.get(units)?.requires, [orientation, mathUnits])
   assert.deepEqual(byId.get(models)?.requires, [observation])
-  assert.deepEqual(byId.get(sources)?.requires, [models, units])
+  assert.deepEqual(byId.get(sources)?.requires, [models, units, mathRationalAddition, mathRationalMultiplication])
   for (const goalId of astronomy) assert(byId.get(goalId)?.requires.includes(sources))
 })
 
