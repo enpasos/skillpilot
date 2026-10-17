@@ -1,0 +1,65 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-007.gpt61-sol-ultra",
+  "campaignId": "physics-existing-math-prerequisites-campaign-a-20261017-v1",
+  "roundId": "physics-existing-math-prerequisites-first-a-20261017-v1",
+  "batchId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-007",
+  "batchInputFingerprint": "sha256:2907c8e97bdd4a0fa87522c4f39a269d5daad196ff27f2c39c97c61fc717888a",
+  "bundleFingerprint": "sha256:a3e5ff4e8a6ce263cdba8a660005323d8e18a093b0a2a18d9ca4b2c78b2980c5",
+  "bookDigest": "sha256:3cbacf5cf3d4838db6ef75ed0fd3dbf2410d823d688c65bd250032bdd79fbace",
+  "provider": "openai",
+  "model": "gpt-6.1-sol",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:3fc3ba8215a98f63fb30054f988519ee3db3f9b449c6818ef5a63fa39cb789e1",
+  "generationParametersFingerprint": "sha256:b11a08be1bc17bfe555488e6e5303aec8edffd9614200c042fc2e6b54fd527cb",
+  "independenceGroupId": "physics-existing-math-prerequisites-independent-a-20261017-v1",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "23335a89-f8e6-5c22-8705-d71193aeac96",
+    "89124b92-5769-5e13-8a5d-78497936260f",
+    "a5031dfc-6d25-5a04-850a-5c7d8a254c21",
+    "6a73cacc-e86d-5248-a180-fd3da8454b0f",
+    "946ecf7b-0fcf-5776-9fb6-d397423c2f12",
+    "44f0eefa-2d93-5954-879f-f6c49e5cebc7",
+    "f2538793-8b0a-5c3b-b216-5d329a4e87bd",
+    "b4772b06-b10c-52dd-841b-a96ffb7c7e28"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:c7c75025fd0d241378b73afb44bf0f1007e0673fdefe774cfc8a67055f05b67e"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:e835b0e81bebe550fa5d232471582f95f5001779916cadd121e511ebc3f92396"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:2907c8e97bdd4a0fa87522c4f39a269d5daad196ff27f2c39c97c61fc717888a"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:3fc3ba8215a98f63fb30054f988519ee3db3f9b449c6818ef5a63fa39cb789e1"
+    },
+    {
+      "role": "finding_schema",
+      "digest": "sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-10-17T09:04:50.959Z",
+  "completedAt": "2026-10-17T09:06:23.272384Z",
+  "status": "completed",
+  "outputDigest": "sha256:a170be96c5841a00de00ec9e5395bfeb0eac2999b91bcbf2048d1fd5660b6672",
+  "toolchainVersion": "codex-native-multi-agent-review-20261017-v1"
+}

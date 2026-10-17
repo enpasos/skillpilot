@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physics-existing-math-current-resolution-f23fdfa9-38b6-5157-8301-ed302476c456",
+  "goal": {
+    "goalId": "f23fdfa9-38b6-5157-8301-ed302476c456",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:ee9d1911490cd319043422a3e8f41463c8d027fb73acc483bc3b396d5dc02b34",
+    "pageFingerprint": "sha256:e87dd6159d44246e8f25f5e0e1106ad3f3dfb733ec54fcf881502dfefadf42b7",
+    "goalReviewContextFingerprint": "sha256:a17f0c7630d074d08ac7b9595a358f2414e14db241fee2d4c7f583ff516ee3ba",
+    "finalText": {
+      "titleDe": "Mittelwert und Streuung aus Messreihen bestimmen",
+      "titleEn": "Determine Mean and Spread from Data Series",
+      "descriptionDe": "Die lernende Person kann aus einer Messreihe Mittelwerte bestimmen und die Streuung zur qualitativen Unsicherheitsbewertung nutzen.",
+      "descriptionEn": "The learner can determine mean values from a data series and use spread for qualitative uncertainty assessment."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-a-20261017-v1",
+      "campaignDigest": "sha256:b23805760ff147505f7d53ab1a339fd1e1dd226dc7eda0776ccfe4ec09726b43",
+      "roundId": "physics-existing-math-prerequisites-first-a-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-a-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "goalReviewContextFingerprint": "sha256:a17f0c7630d074d08ac7b9595a358f2414e14db241fee2d4c7f583ff516ee3ba",
+      "batchId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-002",
+      "runId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-002.gpt61-sol-ultra",
+      "runManifestDigest": "sha256:5b6108fdc46ac0350718d07bb264fb6167aaec4d272ba91b0fc46e942dd9c5fd",
+      "resultsDigest": "sha256:43e144f145152cc4a2bcdb2e8a7f8757a927c6911c1a31f5830fc85d7a6108c3",
+      "recordId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-002.gpt61-sol-ultra.3",
+      "recordDigest": "sha256:a09c39d8c3303eb33a6605e6a553dcc7b42149571d5fc4afc987f1d654135860"
+    },
+    "second": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-b-20261017-v1",
+      "campaignDigest": "sha256:e5062c24fc41990b95c544705fa59130d293784be6143a7146169694e24d1103",
+      "roundId": "physics-existing-math-prerequisites-first-b-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-b-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "goalReviewContextFingerprint": "sha256:a17f0c7630d074d08ac7b9595a358f2414e14db241fee2d4c7f583ff516ee3ba",
+      "batchId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-002",
+      "runId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-002.sol-native-d",
+      "runManifestDigest": "sha256:b50791cb0066aea0cf9eb461998dbf5b1223d44cd6995966e121df7215ab350c",
+      "resultsDigest": "sha256:540f25420693baeb4341d9597a9a95f17b01f6527c3ea18b7e3b5547ac7b6d4b",
+      "recordId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-002.sol-native-d.goal-003",
+      "recordDigest": "sha256:408e13688906eec98e216927f247750c9f9584a3a45b10a2e193764c540f1214"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:d5ca2db392c5a44a98f275ce73cd20a967c005e0d7c38a11f2ba88573a0cfff6"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "physics-existing-math-current-synthesis-f23fdfa9-38b6-5157-8301-ed302476c456",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "codex-native-d-integration-sol",
+    "synthesizedAt": "2026-10-17T09:19:29.758632Z",
+    "rationaleDe": "Der aktuelle bilinguale Vertrag zu „Mittelwert und Streuung aus Messreihen bestimmen“ bleibt bestehen. Mittelwert und Streuung beschreiben Lage und zufällige Variabilität einer Messreihe; geringe Streuung schließt einen gemeinsamen systematischen Fehler nicht aus. Die lernende Person bestimmt den Mittelwert, vergleicht die Streuung zweier Reihen und begrenzt Aussagen über Richtigkeit ohne unabhängige Referenz. Bei einer neuen Reihe mit einem auffälligen Wert begründet die lernende Person dessen Behandlung aus dem Messprotokoll und erklärt seine Wirkung auf Mittelwert und Streuung. Beide tatsächlich vorliegenden Ganzkontext-Reviews urteilen keep und empfehlen für das mitgelesene vollständige V2-Profil none; die konkrete Evidence-Fassung der zweiten Runde wird unverändert übernommen.",
+    "rationaleEn": "The current bilingual contract for “Determine Mean and Spread from Data Series” is retained. Mean and spread describe the location and random variability of a measurement series; small spread does not rule out a shared systematic error. The learner determines the mean, compares the spread of two series, and limits claims about accuracy without an independent reference. For a fresh series with a conspicuous value, the learner justifies its treatment from the measurement record and explains its effect on mean and spread. Both actual whole-context reviews judge keep and recommend none for the complete V2 profile read alongside the goal; the second round's concrete evidence formulation is adopted unchanged.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Mittelwert und Streuung beschreiben Lage und zufällige Variabilität einer Messreihe; geringe Streuung schließt einen gemeinsamen systematischen Fehler nicht aus.",
+      "essentialUnderstandingEn": "Mean and spread describe the location and random variability of a measurement series; small spread does not rule out a shared systematic error.",
+      "observablePerformanceDe": "Die lernende Person bestimmt den Mittelwert, vergleicht die Streuung zweier Reihen und begrenzt Aussagen über Richtigkeit ohne unabhängige Referenz.",
+      "observablePerformanceEn": "The learner determines the mean, compares the spread of two series, and limits claims about accuracy without an independent reference.",
+      "transferExpectationDe": "Bei einer neuen Reihe mit einem auffälligen Wert begründet die lernende Person dessen Behandlung aus dem Messprotokoll und erklärt seine Wirkung auf Mittelwert und Streuung.",
+      "transferExpectationEn": "For a fresh series with a conspicuous value, the learner justifies its treatment from the measurement record and explains its effect on mean and spread."
+    },
+    "dissent": [
+      {
+        "dissentId": "physics-existing-math-current-synthesis-f23fdfa9-38b6-5157-8301-ed302476c456.dissent-1",
+        "source": "both",
+        "disposition": "accepted_second",
+        "textDe": "Die beiden aktuellen keep/none-Reviews verwenden eigenständige Verständnis- und Begründungstexte. Die oben konkret benannte Understanding-/Handlungs-/Transferevidence wird aus der zweiten Runde übernommen; die erste Meinung bleibt unverändert gebunden.",
+        "textEn": "The two current keep/none reviews use independently written understanding evidence and rationales. The specific understanding, performance, and transfer evidence stated above is taken from the second round; the first opinion remains bound unchanged."
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:6af91b5bf13b3caa2dbc64ee04afeaebc50f3f23d56f75b20e13475a9fe9887f"
+}

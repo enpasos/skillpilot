@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physics-existing-math-current-resolution-27b90ce9-b650-5232-85fb-ce2cb69d59a3",
+  "goal": {
+    "goalId": "27b90ce9-b650-5232-85fb-ce2cb69d59a3",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:150b93d273f8ff899f18f9beda181fb7016f01736258d3a4cf76acf3ecef2aac",
+    "pageFingerprint": "sha256:73a26bc00595660233008c38603d916acc5ade5860fda8ad4b24e4d8814a7345",
+    "goalReviewContextFingerprint": "sha256:84360884e8504daf5a2c3fc57f7cd64f7fa1413e035952a4908adbd3d2fa7357",
+    "finalText": {
+      "titleDe": "Elektrische Geräte- und Akkuangaben physikalisch deuten",
+      "titleEn": "Interpret electrical device and battery ratings physically",
+      "descriptionDe": "Die lernende Person kann Angaben zu Spannung, Stromstärke, Leistung und Akkuladung auf Alltagsgeräten und Akkus mit ihren Einheiten physikalisch deuten und für den vorgesehenen Betrieb einordnen.",
+      "descriptionEn": "The learner can physically interpret voltage, current, power, and battery-charge ratings on everyday devices and batteries together with their units and classify their roles for intended operation."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-a-20261017-v1",
+      "campaignDigest": "sha256:b23805760ff147505f7d53ab1a339fd1e1dd226dc7eda0776ccfe4ec09726b43",
+      "roundId": "physics-existing-math-prerequisites-first-a-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-a-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "goalReviewContextFingerprint": "sha256:84360884e8504daf5a2c3fc57f7cd64f7fa1413e035952a4908adbd3d2fa7357",
+      "batchId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-006",
+      "runId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-006.gpt61-sol-ultra",
+      "runManifestDigest": "sha256:c4c5e37e1f85289802f553e474f9cf4fff96923921c82b047f789c71e1ebc44b",
+      "resultsDigest": "sha256:e52423ab9709c27f6222ce9f7fabb5e7e029aa82cd36d56d85b03f6d10565c1c",
+      "recordId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-006.gpt61-sol-ultra.1",
+      "recordDigest": "sha256:6e5cd68aca98cf402442c9a3b046d7d425c5c6a48586d9d1e5e2720501ebb546"
+    },
+    "second": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-b-20261017-v1",
+      "campaignDigest": "sha256:e5062c24fc41990b95c544705fa59130d293784be6143a7146169694e24d1103",
+      "roundId": "physics-existing-math-prerequisites-first-b-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-b-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "goalReviewContextFingerprint": "sha256:84360884e8504daf5a2c3fc57f7cd64f7fa1413e035952a4908adbd3d2fa7357",
+      "batchId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-006",
+      "runId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-006.sol-native-d",
+      "runManifestDigest": "sha256:bf7f541643fbb2936478e262546548e9f50c5c16632be4b8795d1fd536208fb3",
+      "resultsDigest": "sha256:374837d35e7d5af666cd8329d03970a09e7cfed9f66b1c04bda748f6b02a837b",
+      "recordId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-006.sol-native-d.goal-001",
+      "recordDigest": "sha256:ab0248a293d2c7eba837bb2ec922aca7dc60d6eeca625f46ced9d210d38eaafd"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:d5ca2db392c5a44a98f275ce73cd20a967c005e0d7c38a11f2ba88573a0cfff6"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "physics-existing-math-current-synthesis-27b90ce9-b650-5232-85fb-ce2cb69d59a3",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Root AI synthesis; native D integration with faithful English translation",
+    "synthesizedAt": "2026-10-17T09:28:15.543662Z",
+    "rationaleDe": "B hat recht, dass 12 V·0,50 A gültige Hellmodusrechnung ist, da beide Modi dieselbe Spannung besitzen. Genau dieses gültige Triplett steht aber bereits ausdrücklich im expectedPerformance neben dem Sparmodus-Triplett; zurückgewiesen wird die Einheitenmischung mit mAh. Der Solltext fordert nicht, das gültige Produkt wegen der gleichwertigen Spannungsherkunft zu verwerfen. TaskDemand vermischt ist unglücklich, doch die richtige Antwort wird schon vollständig anerkannt. Diese Resolution entscheidet ausschließlich den aktuellen D-Wortlaut. Erforderliche P-Korrekturen und deren neue fachliche Qualifikation werden getrennt behandelt; unveränderte P-Akzeptanz wird nicht behauptet.",
+    "rationaleEn": "Round B correctly notes that 12 V times 0.50 A is a valid bright-mode calculation because both modes use the same voltage. However, exactly this valid triple is already explicitly included in expected performance alongside the economy-mode triple; it is mixing units with mAh that is rejected. The expected answer does not demand rejecting the valid product because its equivalent voltage came from the other mode. The task wording mixes is awkward, but the correct answer is already fully recognized. This resolution decides only the current description wording. Required profile corrections and their fresh substantive qualification are handled separately; acceptance of an unchanged profile is not asserted.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Volt, Ampere, Watt und Amperestunden kennzeichnen verschiedene Größen und Betriebsbedingungen; maximale Versorgungsstromstärke ist keine erzwungene Stromaufnahme.",
+      "essentialUnderstandingEn": "Volts, amperes, watts, and ampere-hours identify different quantities and operating conditions; maximum supply current is not a forced current draw.",
+      "observablePerformanceDe": "Die lernende Person annotiert ein unbekanntes Etikett mit Größen, Einheiten und Anschlussseite und prüft zusammengehörige Gleichspannungswerte sowie eine sichere hypothetische Versorgung.",
+      "observablePerformanceEn": "The learner annotates an unfamiliar label with quantities, units, and connection side and checks paired direct-voltage ratings and a hypothetical safe supply.",
+      "transferExpectationDe": "Bei gleicher mAh-Angabe und verschiedener Spannung unterscheidet sie gleiche Nennladung von verschiedener nominaler Energie und begrenzt jede Laufzeitaussage durch Last und Betriebsbedingungen.",
+      "transferExpectationEn": "For equal mAh ratings at different voltages, the learner distinguishes equal rated charge from different nominal energy and limits any runtime claim by load and operating conditions."
+    },
+    "dissent": [
+      {
+        "dissentId": "physics-existing-math-current-synthesis-27b90ce9-b650-5232-85fb-ce2cb69d59a3.dissent-1",
+        "source": "both",
+        "disposition": "merged",
+        "textDe": "Beide aktuellen D-Urteile lauten keep. P-Empfehlungen bleiben unverändert gebunden: erste Runde none, zweite Runde revise. B hat recht, dass 12 V·0,50 A gültige Hellmodusrechnung ist, da beide Modi dieselbe Spannung besitzen. Genau dieses gültige Triplett steht aber bereits ausdrücklich im expectedPerformance neben dem Sparmodus-Triplett; zurückgewiesen wird die Einheitenmischung mit mAh. Der Solltext fordert nicht, das gültige Produkt wegen der gleichwertigen Spannungsherkunft zu verwerfen. TaskDemand vermischt ist unglücklich, doch die richtige Antwort wird schon vollständig anerkannt. Diese Resolution entscheidet ausschließlich den aktuellen D-Wortlaut. Erforderliche P-Korrekturen und deren neue fachliche Qualifikation werden getrennt behandelt; unveränderte P-Akzeptanz wird nicht behauptet.",
+        "textEn": "Both current description judgments are keep. Their profile recommendations remain bound unchanged: first round none, second round revise. Round B correctly notes that 12 V times 0.50 A is a valid bright-mode calculation because both modes use the same voltage. However, exactly this valid triple is already explicitly included in expected performance alongside the economy-mode triple; it is mixing units with mAh that is rejected. The expected answer does not demand rejecting the valid product because its equivalent voltage came from the other mode. The task wording mixes is awkward, but the correct answer is already fully recognized. This resolution decides only the current description wording. Required profile corrections and their fresh substantive qualification are handled separately; acceptance of an unchanged profile is not asserted."
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:121d5a25432bd20aa17fbc683169abea293679616ffedbad26b60cd35673aab9"
+}

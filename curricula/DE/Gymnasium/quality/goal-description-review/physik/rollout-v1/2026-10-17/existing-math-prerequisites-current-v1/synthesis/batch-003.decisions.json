@@ -1,0 +1,120 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physics-existing-math-current-synthesis-batch-3",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Root AI synthesis; native D integration with faithful English translation",
+  "synthesizedAt": "2026-10-17T09:28:15.543662Z",
+  "batch": {
+    "batchId": "physics-existing-math-current-synthesis-batch-3",
+    "batchManifestDigest": "sha256:ce223a6578a0ad4e78af235bc0a6893b485b8673165e3ee17309b194f77652ba",
+    "configDigest": "sha256:ee224f52814e20e7e8785ebeed3f0d6fd6d12ff70314dbc4723184e4072243c4",
+    "bundleFingerprint": "sha256:a3e5ff4e8a6ce263cdba8a660005323d8e18a093b0a2a18d9ca4b2c78b2980c5",
+    "bookDigest": "sha256:3cbacf5cf3d4838db6ef75ed0fd3dbf2410d823d688c65bd250032bdd79fbace",
+    "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+    "dualSummaryDigest": "sha256:d5ca2db392c5a44a98f275ce73cd20a967c005e0d7c38a11f2ba88573a0cfff6",
+    "canonicalLandscapeDigest": "sha256:ee9ac934b68c13f0ed64335c362ebc807a9c8d91f5e74ad90bcb0a1baa22baee"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-a-20261017-v1",
+      "campaignDigest": "sha256:b23805760ff147505f7d53ab1a339fd1e1dd226dc7eda0776ccfe4ec09726b43",
+      "roundId": "physics-existing-math-prerequisites-first-a-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-a-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "batchId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-003",
+      "batchInputFingerprint": "sha256:d0eafe924158c854a54ae3538f05fd1559ee7401cf6649c5e51d9cd5def215db",
+      "runId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-003.gpt61-sol-ultra",
+      "runManifestDigest": "sha256:95a24edd9ca0fed3efcec1b257f95832dccedc19567b638c3601864bcdf1882e",
+      "resultsDigest": "sha256:84c283a8b59d7714a42ed93c19446bf37cfef9e27c0c826b705fbe151d292a60"
+    },
+    "second": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-b-20261017-v1",
+      "campaignDigest": "sha256:e5062c24fc41990b95c544705fa59130d293784be6143a7146169694e24d1103",
+      "roundId": "physics-existing-math-prerequisites-first-b-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-b-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "batchId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-003",
+      "batchInputFingerprint": "sha256:bf0ee423c4d52f9dea1ec9e20d1298b9b84cbfacfd7af5b38076a98f596674e2",
+      "runId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-003.sol-native-d",
+      "runManifestDigest": "sha256:7b0166780cd8d391f24e297b285ca5464dbf3968141764e1c71dc54983bd2964",
+      "resultsDigest": "sha256:b42b879d2fc1a41e73c0742a5a2c09dcf750d6ffaf891550a266965fe70f9409"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physics-existing-math-current-synthesis-1730c01d-8c85-57df-b031-c11e2a0511b1",
+      "goalId": "1730c01d-8c85-57df-b031-c11e2a0511b1",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:5bce6ea2d9debd2eb6dd7a8fd2fa2a83171938e8dcc85e915c6c95d1511d033b",
+      "pageFingerprint": "sha256:72e2c08ad3422382e6cb58815ac58f0c6d84ed9e744374bdc681ee8e27ebc9f0",
+      "goalReviewContextFingerprint": "sha256:8e356909b88d0a663fbf928243bba205446f79ebc4134f073588cddf340cc91b",
+      "finalText": {
+        "titleDe": "Arbeit, Spannung und Potenzial im E-Feld",
+        "titleEn": "Work, Voltage, and Potential in Electric Fields",
+        "descriptionDe": "Die lernende Person kann die Spannung zwischen zwei Punkten als Potenzialdifferenz und – bei offengelegter Vorzeichenkonvention – über Arbeit beziehungsweise Änderung der potenziellen Energie pro Ladung deuten und im homogenen elektrischen Feld für einen Abstand parallel zu den Feldlinien den Betragszusammenhang |U| = E·d anwenden.",
+        "descriptionEn": "The learner can interpret the voltage between two points as a potential difference and, with an explicit sign convention, in terms of work or change in potential energy per unit charge, and apply the magnitude relation |U| = E·d in a uniform electric field for a separation parallel to the field lines."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-003.gpt61-sol-ultra.10",
+          "recordDigest": "sha256:4e4d0121c1f458fad0bebe83f278fc860bab44fcd6d8a5ee846e7507719b1fb2"
+        },
+        "second": {
+          "recordId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-003.sol-native-d.goal-010",
+          "recordDigest": "sha256:121a92cd9c090fac21eac6598102eebb557478d2d7ce710a32924db6b33844fe"
+        }
+      },
+      "revisionDissent": {
+        "sourceRound": "second",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann im elektrostatischen Feld die Spannung zwischen zwei Punkten als Potenzialdifferenz und bei offengelegter Vorzeichenkonvention über Arbeit beziehungsweise Änderung der potenziellen Energie pro Ladung deuten sowie im homogenen Feld für einen Abstand parallel zu den Feldlinien den Betragszusammenhang |U| = E·d anwenden.",
+        "proposedDescriptionEn": "In an electrostatic field, the learner can interpret the voltage between two points as a potential difference and, with an explicit sign convention, in terms of work or change in potential energy per unit charge, and apply |U| = E·d in a uniform field for separation parallel to the field lines.",
+        "rationaleDe": "D nennt Potenzialdifferenz mit Vorzeichenkonvention sowie parallelen Feldabstand. Das vollständige P bindet Referenz, ΔE=qΔφ, W_Feld=−ΔE, Ladungswechsel und schräge Projektion; sämtliche gegebenen Felder sind statisch. Eine induktive nichtkonservative Situation wird nirgends als durch dasselbe Potenzial beschreibbar behauptet. Bs elektrostatische Markierung wäre zutreffend und nützlich, korrigiert hier aber keinen konkret falschen Fall. Diese Resolution entscheidet ausschließlich den aktuellen D-Wortlaut. Erforderliche P-Korrekturen und deren neue fachliche Qualifikation werden getrennt behandelt; unveränderte P-Akzeptanz wird nicht behauptet.",
+        "rationaleEn": "The description specifies potential difference with a sign convention and the field-parallel separation. The complete profile binds a reference, ΔE=qΔφ, W_field=−ΔE, reversal of charge, and oblique projection; all supplied fields are static. No inductive nonconservative situation is claimed to admit that same potential description. Round B's electrostatic qualification would be correct and useful but does not correct a concretely false supplied case. This resolution decides only the current description wording. Required profile corrections and their fresh substantive qualification are handled separately; acceptance of an unchanged profile is not asserted."
+      },
+      "rationaleDe": "D nennt Potenzialdifferenz mit Vorzeichenkonvention sowie parallelen Feldabstand. Das vollständige P bindet Referenz, ΔE=qΔφ, W_Feld=−ΔE, Ladungswechsel und schräge Projektion; sämtliche gegebenen Felder sind statisch. Eine induktive nichtkonservative Situation wird nirgends als durch dasselbe Potenzial beschreibbar behauptet. Bs elektrostatische Markierung wäre zutreffend und nützlich, korrigiert hier aber keinen konkret falschen Fall. Diese Resolution entscheidet ausschließlich den aktuellen D-Wortlaut. Erforderliche P-Korrekturen und deren neue fachliche Qualifikation werden getrennt behandelt; unveränderte P-Akzeptanz wird nicht behauptet.",
+      "rationaleEn": "The description specifies potential difference with a sign convention and the field-parallel separation. The complete profile binds a reference, ΔE=qΔφ, W_field=−ΔE, reversal of charge, and oblique projection; all supplied fields are static. No inductive nonconservative situation is claimed to admit that same potential description. Round B's electrostatic qualification would be correct and useful but does not correct a concretely false supplied case. This resolution decides only the current description wording. Required profile corrections and their fresh substantive qualification are handled separately; acceptance of an unchanged profile is not asserted."
+    },
+    {
+      "decisionId": "physics-existing-math-current-synthesis-58db62d4-458f-5e2d-9ca0-968e09f4944b",
+      "goalId": "58db62d4-458f-5e2d-9ca0-968e09f4944b",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:6568d1ab24e4653dd7d39e3360f164d2ba8cb8ae15a74e457505bc23aa7d3a41",
+      "pageFingerprint": "sha256:9bed2f4d57fccf801226849213adbebc03c2e6f284314f4f2a33776183b68ac7",
+      "goalReviewContextFingerprint": "sha256:adabbf4cbb34881f9269f21a51399de7ab7742912edf78a2f61b4d20e6c2f614",
+      "finalText": {
+        "titleDe": "Gaußsches Verfahren anwenden",
+        "titleEn": "Apply the Gauss Method",
+        "descriptionDe": "Die lernende Person kann das Messverfahren von Gauß (Ablenkungsmethode in Hauptlage und Schwingungsmethode) zur Bestimmung der Horizontalintensität des Erdmagnetfeldes beschreiben und anwenden.",
+        "descriptionEn": "The learner can describe and apply the Gauss measurement method (deflection method in principal position and oscillation method) to determine the horizontal intensity of the Earth's magnetic field."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-003.gpt61-sol-ultra.11",
+          "recordDigest": "sha256:fcdf6a7107ef29cfcb9d644642cf6d64114050adc466328e17f521f7b72e6353"
+        },
+        "second": {
+          "recordId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-003.sol-native-d.goal-011",
+          "recordDigest": "sha256:d518c7e690c756cd5adde869462cf15c58ba0f8168c0d72076fb5a1e058ef95f"
+        }
+      },
+      "revisionDissent": {
+        "sourceRound": "second",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann das Gaußsche Verfahren aus Ablenkungsmessung in geometrisch festgelegter Hauptlage und Schwingungsmessung beschreiben und gemeinsam zur Bestimmung der horizontalen Komponente B_H der magnetischen Flussdichte des Erdmagnetfeldes anwenden.",
+        "proposedDescriptionEn": "The learner can describe the Gauss method combining a deflection measurement in a geometrically specified principal position with an oscillation measurement and apply both together to determine the horizontal component B_H of Earth's magnetic flux density.",
+        "rationaleDe": "Horizontalintensität ist die überlieferte historische Gauß-Bezeichnung. P bindet ausdrücklich B_H in Tesla, Hauptlagengeometrie, Dipolfernfeld, Kleinwinkel und bekannte Trägheit; die Zahlen 20/30 μT sind konsistent. D enthält keine falsche H-/B-Formel oder Einheit. Bs moderne terminologische Ergänzung verbessert Eindeutigkeit, aber der ganze bestehende Vertrag ist bereits auf B festgelegt. Diese Resolution entscheidet ausschließlich den aktuellen D-Wortlaut. Erforderliche P-Korrekturen und deren neue fachliche Qualifikation werden getrennt behandelt; unveränderte P-Akzeptanz wird nicht behauptet.",
+        "rationaleEn": "Horizontal intensity is the established historical terminology of the Gauss method. The profile explicitly specifies B_H in teslas, principal-position geometry, a far-field dipole, the small-angle approximation, and known moment of inertia; the numerical values of 20 and 30 μT are consistent. The description contains no incorrect H/B formula or unit. Round B's modern terminology improves clarity, but the complete existing contract is already defined in terms of B. This resolution decides only the current description wording. Required profile corrections and their fresh substantive qualification are handled separately; acceptance of an unchanged profile is not asserted."
+      },
+      "rationaleDe": "Horizontalintensität ist die überlieferte historische Gauß-Bezeichnung. P bindet ausdrücklich B_H in Tesla, Hauptlagengeometrie, Dipolfernfeld, Kleinwinkel und bekannte Trägheit; die Zahlen 20/30 μT sind konsistent. D enthält keine falsche H-/B-Formel oder Einheit. Bs moderne terminologische Ergänzung verbessert Eindeutigkeit, aber der ganze bestehende Vertrag ist bereits auf B festgelegt. Diese Resolution entscheidet ausschließlich den aktuellen D-Wortlaut. Erforderliche P-Korrekturen und deren neue fachliche Qualifikation werden getrennt behandelt; unveränderte P-Akzeptanz wird nicht behauptet.",
+      "rationaleEn": "Horizontal intensity is the established historical terminology of the Gauss method. The profile explicitly specifies B_H in teslas, principal-position geometry, a far-field dipole, the small-angle approximation, and known moment of inertia; the numerical values of 20 and 30 μT are consistent. The description contains no incorrect H/B formula or unit. Round B's modern terminology improves clarity, but the complete existing contract is already defined in terms of B. This resolution decides only the current description wording. Required profile corrections and their fresh substantive qualification are handled separately; acceptance of an unchanged profile is not asserted."
+    }
+  ],
+  "manifestFingerprint": "sha256:5f4729d121fdf7b27cd5d37b41dacae3ead021337bf5150040193837717e8d43"
+}

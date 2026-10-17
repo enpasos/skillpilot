@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physics-existing-math-current-resolution-e713dc34-beeb-5807-8a90-f872e049aa4e",
+  "goal": {
+    "goalId": "e713dc34-beeb-5807-8a90-f872e049aa4e",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:55c42a096e6edafe005c5e481ccfac675008f975daffff86733ba23a8c84b3db",
+    "pageFingerprint": "sha256:f72ea6f1028ff48faf3af5f6147d52b0f470a94f60502f1e6790dd9afb1d6723",
+    "goalReviewContextFingerprint": "sha256:6f4e8513c461287b4c92ef4019930442f11df7daf4f0e41c1477cba7b91c6373",
+    "finalText": {
+      "titleDe": "Entropie E04: Makroskopische Definition (Clausius)",
+      "titleEn": "Entropy E04: Macroscopic Definition (Clausius)",
+      "descriptionDe": "Die lernende Person nutzt die Definition $dS = \\frac{\\delta Q_{\\mathrm{rev}}}{T}$ und erklärt, warum zur Berechnung von $\\Delta S$ ein reversibler Ersatzweg verwendet werden darf (weil $S$ eine Zustandsgröße ist).",
+      "descriptionEn": "The learner uses the definition $dS = \\frac{\\delta Q_{\\mathrm{rev}}}{T}$ and explains why a reversible substitute path may be used to compute $\\Delta S$ (because $S$ is a state variable)."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-a-20261017-v1",
+      "campaignDigest": "sha256:b23805760ff147505f7d53ab1a339fd1e1dd226dc7eda0776ccfe4ec09726b43",
+      "roundId": "physics-existing-math-prerequisites-first-a-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-a-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "goalReviewContextFingerprint": "sha256:6f4e8513c461287b4c92ef4019930442f11df7daf4f0e41c1477cba7b91c6373",
+      "batchId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-003",
+      "runId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-003.gpt61-sol-ultra",
+      "runManifestDigest": "sha256:95a24edd9ca0fed3efcec1b257f95832dccedc19567b638c3601864bcdf1882e",
+      "resultsDigest": "sha256:84c283a8b59d7714a42ed93c19446bf37cfef9e27c0c826b705fbe151d292a60",
+      "recordId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-003.gpt61-sol-ultra.5",
+      "recordDigest": "sha256:bf00d1cf00d5b2654d7ea22072734bf217a2862c29405501f0f29f99070bd1a5"
+    },
+    "second": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-b-20261017-v1",
+      "campaignDigest": "sha256:e5062c24fc41990b95c544705fa59130d293784be6143a7146169694e24d1103",
+      "roundId": "physics-existing-math-prerequisites-first-b-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-b-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "goalReviewContextFingerprint": "sha256:6f4e8513c461287b4c92ef4019930442f11df7daf4f0e41c1477cba7b91c6373",
+      "batchId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-003",
+      "runId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-003.sol-native-d",
+      "runManifestDigest": "sha256:7b0166780cd8d391f24e297b285ca5464dbf3968141764e1c71dc54983bd2964",
+      "resultsDigest": "sha256:b42b879d2fc1a41e73c0742a5a2c09dcf750d6ffaf891550a266965fe70f9409",
+      "recordId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-003.sol-native-d.goal-005",
+      "recordDigest": "sha256:8ed70f5ab7c1b3958f48b06615269aaf99f1869e21fc8d4c345d6eccc8f85628"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:d5ca2db392c5a44a98f275ce73cd20a967c005e0d7c38a11f2ba88573a0cfff6"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "physics-existing-math-current-synthesis-e713dc34-beeb-5807-8a90-f872e049aa4e",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "codex-native-d-integration-sol",
+    "synthesizedAt": "2026-10-17T09:19:29.758632Z",
+    "rationaleDe": "Der aktuelle bilinguale Vertrag zu „Entropie E04: Makroskopische Definition (Clausius)“ bleibt bestehen. Entropiedifferenzen zwischen Gleichgewichtszuständen sind wegunabhängig; δQ_rev/T bezieht sich auf Wärme und absolute Temperatur eines reversiblen Vergleichswegs. Die lernende Person entwirft einen reversiblen Ersatzweg, berechnet dessen Entropiedifferenz und erklärt gleiche ΔS trotz anderer realer Wärmeübertragung. Bei einer frischen Erwärmung mit konstantem C integriert die lernende Person C dT/T und begründet, weshalb Q/T_Ende nicht allgemein genügt. Beide tatsächlich vorliegenden Ganzkontext-Reviews urteilen keep und empfehlen für das mitgelesene vollständige V2-Profil none; die konkrete Evidence-Fassung der zweiten Runde wird unverändert übernommen.",
+    "rationaleEn": "The current bilingual contract for “Entropy E04: Macroscopic Definition (Clausius)” is retained. Entropy differences between equilibrium states are path-independent; δQ_rev/T refers to heat and absolute temperature on a reversible comparison path. The learner constructs a reversible substitute path, calculates its entropy difference, and explains equal ΔS despite different actual heat transfer. For fresh heating with constant C, the learner integrates C dT/T and explains why Q/T_final is not generally sufficient. Both actual whole-context reviews judge keep and recommend none for the complete V2 profile read alongside the goal; the second round's concrete evidence formulation is adopted unchanged.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Entropiedifferenzen zwischen Gleichgewichtszuständen sind wegunabhängig; δQ_rev/T bezieht sich auf Wärme und absolute Temperatur eines reversiblen Vergleichswegs.",
+      "essentialUnderstandingEn": "Entropy differences between equilibrium states are path-independent; δQ_rev/T refers to heat and absolute temperature on a reversible comparison path.",
+      "observablePerformanceDe": "Die lernende Person entwirft einen reversiblen Ersatzweg, berechnet dessen Entropiedifferenz und erklärt gleiche ΔS trotz anderer realer Wärmeübertragung.",
+      "observablePerformanceEn": "The learner constructs a reversible substitute path, calculates its entropy difference, and explains equal ΔS despite different actual heat transfer.",
+      "transferExpectationDe": "Bei einer frischen Erwärmung mit konstantem C integriert die lernende Person C dT/T und begründet, weshalb Q/T_Ende nicht allgemein genügt.",
+      "transferExpectationEn": "For fresh heating with constant C, the learner integrates C dT/T and explains why Q/T_final is not generally sufficient."
+    },
+    "dissent": [
+      {
+        "dissentId": "physics-existing-math-current-synthesis-e713dc34-beeb-5807-8a90-f872e049aa4e.dissent-1",
+        "source": "both",
+        "disposition": "accepted_second",
+        "textDe": "Die beiden aktuellen keep/none-Reviews verwenden eigenständige Verständnis- und Begründungstexte. Die oben konkret benannte Understanding-/Handlungs-/Transferevidence wird aus der zweiten Runde übernommen; die erste Meinung bleibt unverändert gebunden.",
+        "textEn": "The two current keep/none reviews use independently written understanding evidence and rationales. The specific understanding, performance, and transfer evidence stated above is taken from the second round; the first opinion remains bound unchanged."
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:b8e0a63391f23ffc6edccdceebe2b54a6a91e0d24605b724775b6888ca212970"
+}

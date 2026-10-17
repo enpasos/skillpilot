@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physics-existing-math-current-resolution-e359f8bb-6106-44aa-9edf-694528d2d2a9",
+  "goal": {
+    "goalId": "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:cec7d11bed6b99207f6e4b4256b6595f2a3daa703088a99a978655e98d382af6",
+    "pageFingerprint": "sha256:92a473e1c6c37475b6df7b34f574bd70e9aa4d44338cce7d0b3ff738d96f1921",
+    "goalReviewContextFingerprint": "sha256:cf426ae20fa1172a326149252147c8a9f479bdc1abac72d51b93651fb4528b59",
+    "finalText": {
+      "titleDe": "Erhaltung der mechanischen Energie tiefer verstehen (LK)",
+      "titleEn": "Energy Conservation from Newton's Laws (Advanced Course)",
+      "descriptionDe": "Die lernende Person kann für ein System konstanter Masse, auf das nur konservative Kräfte mit zeitunabhängigem Potenzial wirken, aus dem zweiten Newtonschen Axiom und F = −∇U die Erhaltung der mechanischen Energie herleiten und die Gültigkeitsbedingungen erläutern.",
+      "descriptionEn": "The learner can derive conservation of mechanical energy from Newton's second law and F = −∇U for a constant-mass system subject only to conservative forces with a time-independent potential and explain the conditions under which the derivation is valid."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-a-20261017-v1",
+      "campaignDigest": "sha256:b23805760ff147505f7d53ab1a339fd1e1dd226dc7eda0776ccfe4ec09726b43",
+      "roundId": "physics-existing-math-prerequisites-first-a-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-a-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "goalReviewContextFingerprint": "sha256:cf426ae20fa1172a326149252147c8a9f479bdc1abac72d51b93651fb4528b59",
+      "batchId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-002",
+      "runId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-002.gpt61-sol-ultra",
+      "runManifestDigest": "sha256:5b6108fdc46ac0350718d07bb264fb6167aaec4d272ba91b0fc46e942dd9c5fd",
+      "resultsDigest": "sha256:43e144f145152cc4a2bcdb2e8a7f8757a927c6911c1a31f5830fc85d7a6108c3",
+      "recordId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-002.gpt61-sol-ultra.15",
+      "recordDigest": "sha256:0f39a15864abaf09845b58a858cfacd782735b456cce45ffe18dbe9d8b69e418"
+    },
+    "second": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-b-20261017-v1",
+      "campaignDigest": "sha256:e5062c24fc41990b95c544705fa59130d293784be6143a7146169694e24d1103",
+      "roundId": "physics-existing-math-prerequisites-first-b-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-b-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "goalReviewContextFingerprint": "sha256:cf426ae20fa1172a326149252147c8a9f479bdc1abac72d51b93651fb4528b59",
+      "batchId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-002",
+      "runId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-002.sol-native-d",
+      "runManifestDigest": "sha256:b50791cb0066aea0cf9eb461998dbf5b1223d44cd6995966e121df7215ab350c",
+      "resultsDigest": "sha256:540f25420693baeb4341d9597a9a95f17b01f6527c3ea18b7e3b5547ac7b6d4b",
+      "recordId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-002.sol-native-d.goal-015",
+      "recordDigest": "sha256:360e10ccd4e892f1a57093e691629cad986a73dcf36693707e789cafb98191ce"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:d5ca2db392c5a44a98f275ce73cd20a967c005e0d7c38a11f2ba88573a0cfff6"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "physics-existing-math-current-synthesis-e359f8bb-6106-44aa-9edf-694528d2d2a9",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "codex-native-d-integration-sol",
+    "synthesizedAt": "2026-10-17T09:19:29.758632Z",
+    "rationaleDe": "Der aktuelle bilinguale Vertrag zu „Erhaltung der mechanischen Energie tiefer verstehen (LK)“ bleibt bestehen. Aus Newtons Gleichung folgt kinetische Leistung F·v; bei zeitunabhängigem konservativem Potenzial hebt sie die Änderungsrate der potenziellen Energie auf. Die lernende Person führt Skalarprodukt und Kettenregel zur konstanten Summe E_kin+U aus und benennt Inertialsystem, konstante Masse und konservative Kräfte. Bei frischer zusätzlicher linearer Reibung lokalisiert die lernende Person den Zusatzterm −b v² und erklärt die Abnahme mechanischer Energie. Beide tatsächlich vorliegenden Ganzkontext-Reviews urteilen keep und empfehlen für das mitgelesene vollständige V2-Profil none; die konkrete Evidence-Fassung der zweiten Runde wird unverändert übernommen.",
+    "rationaleEn": "The current bilingual contract for “Energy Conservation from Newton's Laws (Advanced Course)” is retained. Newton’s equation yields kinetic power F·v; for a time-independent conservative potential, it cancels the rate of change of potential energy. The learner uses the scalar product and chain rule to derive constant E_kin+U and states inertial-frame, constant-mass, and conservative-force conditions. For fresh added linear drag, the learner identifies the extra term −b v² and explains the decrease in mechanical energy. Both actual whole-context reviews judge keep and recommend none for the complete V2 profile read alongside the goal; the second round's concrete evidence formulation is adopted unchanged.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Aus Newtons Gleichung folgt kinetische Leistung F·v; bei zeitunabhängigem konservativem Potenzial hebt sie die Änderungsrate der potenziellen Energie auf.",
+      "essentialUnderstandingEn": "Newton’s equation yields kinetic power F·v; for a time-independent conservative potential, it cancels the rate of change of potential energy.",
+      "observablePerformanceDe": "Die lernende Person führt Skalarprodukt und Kettenregel zur konstanten Summe E_kin+U aus und benennt Inertialsystem, konstante Masse und konservative Kräfte.",
+      "observablePerformanceEn": "The learner uses the scalar product and chain rule to derive constant E_kin+U and states inertial-frame, constant-mass, and conservative-force conditions.",
+      "transferExpectationDe": "Bei frischer zusätzlicher linearer Reibung lokalisiert die lernende Person den Zusatzterm −b v² und erklärt die Abnahme mechanischer Energie.",
+      "transferExpectationEn": "For fresh added linear drag, the learner identifies the extra term −b v² and explains the decrease in mechanical energy."
+    },
+    "dissent": [
+      {
+        "dissentId": "physics-existing-math-current-synthesis-e359f8bb-6106-44aa-9edf-694528d2d2a9.dissent-1",
+        "source": "both",
+        "disposition": "accepted_second",
+        "textDe": "Die beiden aktuellen keep/none-Reviews verwenden eigenständige Verständnis- und Begründungstexte. Die oben konkret benannte Understanding-/Handlungs-/Transferevidence wird aus der zweiten Runde übernommen; die erste Meinung bleibt unverändert gebunden.",
+        "textEn": "The two current keep/none reviews use independently written understanding evidence and rationales. The specific understanding, performance, and transfer evidence stated above is taken from the second round; the first opinion remains bound unchanged."
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:04264ebed485063093379c1cb0c14cc67bb91f67e62946129a9fb446104575af"
+}

@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physics-existing-math-current-resolution-b39ae8fb-4358-5866-8adf-3d5365368eeb",
+  "goal": {
+    "goalId": "b39ae8fb-4358-5866-8adf-3d5365368eeb",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:4424e080678909f0ca3021623987379b2d7e887ee492f64d46233a44b8137172",
+    "pageFingerprint": "sha256:ae55b904da53ad0a520e32e4f23da9691120988c0ca0102ac3a85d152effc208",
+    "goalReviewContextFingerprint": "sha256:62bf0ad023f3d1db5be25b2bad46214afea0c3bd5ec52da2caff8a4ae61340ec",
+    "finalText": {
+      "titleDe": "Hall-Effekt anwenden",
+      "titleEn": "Apply the Hall Effect",
+      "descriptionDe": "Die lernende Person kann die Hall-Spannung in einem stromdurchflossenen Leiter im Magnetfeld bestimmen und aus ihrem Betrag beziehungsweise Vorzeichen erklären, wie der Hall-Effekt zur Messung von Magnetfeldern oder zur Bestimmung des Ladungsträgertyps genutzt wird.",
+      "descriptionEn": "The learner can determine the Hall voltage in a current-carrying conductor in a magnetic field and use its magnitude or sign to explain how the Hall effect is used to measure magnetic fields or determine the charge-carrier type."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-a-20261017-v1",
+      "campaignDigest": "sha256:b23805760ff147505f7d53ab1a339fd1e1dd226dc7eda0776ccfe4ec09726b43",
+      "roundId": "physics-existing-math-prerequisites-first-a-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-a-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "goalReviewContextFingerprint": "sha256:62bf0ad023f3d1db5be25b2bad46214afea0c3bd5ec52da2caff8a4ae61340ec",
+      "batchId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-004",
+      "runId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-004.gpt61-sol-ultra",
+      "runManifestDigest": "sha256:9c9ddaf0c348a25c1e1b43323c964818c2d46354ae4d16b5df3e0d7d5f22dec8",
+      "resultsDigest": "sha256:4063be3a53db26b433b9daf13cbafc1a3787e8c8d805d448fa968dd9528959b2",
+      "recordId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-004.gpt61-sol-ultra.13",
+      "recordDigest": "sha256:d3a1394f6eab54cc5b7e691ad6653f16981b2fc1ec9f43399df6a63f3a32a88d"
+    },
+    "second": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-b-20261017-v1",
+      "campaignDigest": "sha256:e5062c24fc41990b95c544705fa59130d293784be6143a7146169694e24d1103",
+      "roundId": "physics-existing-math-prerequisites-first-b-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-b-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "goalReviewContextFingerprint": "sha256:62bf0ad023f3d1db5be25b2bad46214afea0c3bd5ec52da2caff8a4ae61340ec",
+      "batchId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-004",
+      "runId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-004.sol-native-d",
+      "runManifestDigest": "sha256:a84563029eb88312e47261a09ceb869965e36e2828fd2ae6e4cd6a2a28b96c92",
+      "resultsDigest": "sha256:a1f0742fd58d23c41f41b21804a5546f13564cc25c9ee328614efebbf482a670",
+      "recordId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-004.sol-native-d.goal-013",
+      "recordDigest": "sha256:2547a337ddf4281e8976f05a783434203ae4d390ef089066fa6f543bc1f38244"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:d5ca2db392c5a44a98f275ce73cd20a967c005e0d7c38a11f2ba88573a0cfff6"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "physics-existing-math-current-synthesis-b39ae8fb-4358-5866-8adf-3d5365368eeb",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Root AI synthesis; native D integration with faithful English translation",
+    "synthesizedAt": "2026-10-17T09:28:15.543662Z",
+    "rationaleDe": "Das ganze P bindet Einträgermodell, Kalibrierung, Geometrie und Polung korrekt. B unterschätzt eine vorhandene Einschränkung: DE sagt Halbierung bereits bei sonst gleichen Materialparametern. EN lässt genau diesen Vorbehalt weg und fordert unbedingte Halbierung aus doppelter Dicke. Gleiches n und gleicher Ladungsbetrag folgen nicht allein aus Einträgermodell. Der konkrete Fehler ist daher enger als Bs pauschale Diagnose. Diese Resolution entscheidet ausschließlich den aktuellen D-Wortlaut. Erforderliche P-Korrekturen und deren neue fachliche Qualifikation werden getrennt behandelt; unveränderte P-Akzeptanz wird nicht behauptet.",
+    "rationaleEn": "The complete profile correctly specifies a single-carrier model, calibration, geometry, and polarity. Round B overlooks an existing qualification: the German wording already conditions halving on other material parameters being unchanged. The English version omits exactly that qualification and demands unconditional halving from double thickness. Equal carrier density and charge magnitude do not follow from a single-carrier model alone. The concrete error is therefore narrower than Round B's general diagnosis. This resolution decides only the current description wording. Required profile corrections and their fresh substantive qualification are handled separately; acceptance of an unchanged profile is not asserted.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Im stationären Einträgermodell balanciert das Hall-Feld magnetische Ablenkung; Betrag und Polung tragen nur mit bekannten Geometrie-, Material- und Orientierungskonventionen Information.",
+      "essentialUnderstandingEn": "In the steady single-carrier model, the Hall field balances magnetic deflection; magnitude and polarity convey information only with known geometry, material, and orientation conventions.",
+      "observablePerformanceDe": "Die lernende Person konstruiert Ladungsseiten und Hall-Polung und bestimmt Spannung oder Feld aus der angegebenen Kalibrierung mit Einheiten.",
+      "observablePerformanceEn": "The learner constructs charged sides and Hall polarity and determines voltage or field from supplied calibration with units.",
+      "transferExpectationDe": "Bei frischen Proben unterschiedlicher Dicke trennt die lernende Person geometrische Skalierung von unbekannter Trägerdichte und leitet den Trägertyp nur bei bekannter Polungskonvention ab.",
+      "transferExpectationEn": "For fresh samples of different thickness, the learner separates geometric scaling from unknown carrier density and infers carrier type only with a known polarity convention."
+    },
+    "dissent": [
+      {
+        "dissentId": "physics-existing-math-current-synthesis-b39ae8fb-4358-5866-8adf-3d5365368eeb.dissent-1",
+        "source": "both",
+        "disposition": "merged",
+        "textDe": "Beide aktuellen D-Urteile lauten keep. P-Empfehlungen bleiben unverändert gebunden: erste Runde none, zweite Runde revise. Das ganze P bindet Einträgermodell, Kalibrierung, Geometrie und Polung korrekt. B unterschätzt eine vorhandene Einschränkung: DE sagt Halbierung bereits bei sonst gleichen Materialparametern. EN lässt genau diesen Vorbehalt weg und fordert unbedingte Halbierung aus doppelter Dicke. Gleiches n und gleicher Ladungsbetrag folgen nicht allein aus Einträgermodell. Der konkrete Fehler ist daher enger als Bs pauschale Diagnose. Diese Resolution entscheidet ausschließlich den aktuellen D-Wortlaut. Erforderliche P-Korrekturen und deren neue fachliche Qualifikation werden getrennt behandelt; unveränderte P-Akzeptanz wird nicht behauptet.",
+        "textEn": "Both current description judgments are keep. Their profile recommendations remain bound unchanged: first round none, second round revise. The complete profile correctly specifies a single-carrier model, calibration, geometry, and polarity. Round B overlooks an existing qualification: the German wording already conditions halving on other material parameters being unchanged. The English version omits exactly that qualification and demands unconditional halving from double thickness. Equal carrier density and charge magnitude do not follow from a single-carrier model alone. The concrete error is therefore narrower than Round B's general diagnosis. This resolution decides only the current description wording. Required profile corrections and their fresh substantive qualification are handled separately; acceptance of an unchanged profile is not asserted."
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:1133cf28ae91c59549308b21e41e5c48460496e91743238fb0814ea27f1e282a"
+}

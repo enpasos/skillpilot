@@ -2050,6 +2050,7 @@ public class LearnerServiceTest {
     @Transactional
     void coachStateKeepsSixRemainingReleasedJ8ExamTasksSelectable() {
         selectCompletedCanonicalMathCrossStageCurriculum();
+        masterMathematicsPrerequisitesOutsideScope(COMPOSITION_MERGED_DE_J8_SCOPE_ID);
         learnerService.setPlannedGoals(learnerId, Set.of(COMPOSITION_MERGED_DE_J8_SCOPE_ID));
         Set<String> remainingExamTaskIds = Set.of(
                 J8_EXAM_TASK_1_ID,
@@ -2134,6 +2135,18 @@ public class LearnerServiceTest {
                 .map(goalId -> new Mastery(learner, goalId, 1.0))
                 .toList());
 
+        // Task 5 -> cylinder mantle -> circle circumference is a real Main
+        // requirement chain. The earlier circumference skill is stored and
+        // explicitly supported by the view, without becoming a target here.
+        String cylinderMantleId = "f65ab452-1884-57b0-9be3-c7d9e4944891";
+        String circleCircumferenceId = "4dbb8e8e-c0b5-5d51-8897-0024d77e8602";
+        assertThat(canonicalGoals.get(J8_EXAM_TASK_5_ID).getRequires()).contains(cylinderMantleId);
+        assertThat(canonicalGoals.get(cylinderMantleId).getRequires()).contains(circleCircumferenceId);
+        assertThat(learnerService.getMastery(learnerId)).containsEntry(circleCircumferenceId, 1.0);
+        assertThat(learnerService.getFilteredAtomicGoalIds(
+                CANONICAL_GYMNASIUM_ROOT_ID, learner.getPersonalCurriculum(), null, false))
+                .doesNotContain(circleCircumferenceId);
+
         var coachState = learnerService.getCoachLearnerState(learnerId);
 
         assertThat(coachState.goals().scope().total_atomic()).isEqualTo(55);
@@ -2163,6 +2176,7 @@ public class LearnerServiceTest {
     @Transactional
     void focusMutationClearsOutOfScopeActiveGoalAndReturnsNewAutopilotState() {
         selectCompletedCanonicalMathCurriculum();
+        masterMathematicsPrerequisitesOutsideScope(COMPOSITION_J7_SCOPE_ID);
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         learner.setLearningStrategy("SEQUENTIAL");
         learner.setAutoPilot(false);
@@ -2273,6 +2287,7 @@ public class LearnerServiceTest {
     @Transactional
     void hessenSekTwoLkFocusNavigationWidensEOneToEPhaseAndPreservesActiveGoal() {
         selectCompletedHessenSekTwoLkCurriculum();
+        masterMathematicsPrerequisitesOutsideScope(CANONICAL_E_ONE_SCOPE_ID);
         learnerService.setPlannedGoals(learnerId, Set.of(CANONICAL_E_ONE_SCOPE_ID));
 
         String activeGoalId = learnerService.getLearnerState(learnerId).frontier().stream()
@@ -2609,6 +2624,7 @@ public class LearnerServiceTest {
                 }
                 """));
         learnerRepository.save(learner);
+        masterMathematicsPrerequisitesOutsideScope(COMPOSITION_J8_SCOPE_ID);
         learnerService.setPlannedGoals(learnerId, Set.of(COMPOSITION_J8_SCOPE_ID));
 
         completeCurrentScope();
@@ -3843,6 +3859,7 @@ public class LearnerServiceTest {
                 }
                 """));
         learnerRepository.save(learner);
+        masterMathematicsPrerequisitesOutsideScope(COMPOSITION_J10_SCOPE_ID);
         learnerService.setPlannedGoals(learnerId, Set.of(COMPOSITION_J10_SCOPE_ID));
 
         completeCurrentScope(200);
@@ -4225,6 +4242,30 @@ public class LearnerServiceTest {
                 }
                 """));
         learnerRepository.save(learner);
+    }
+
+    /** Set up prior learning for navigation tests without completing any focus target. */
+    private void masterMathematicsPrerequisitesOutsideScope(String scopeId) {
+        Map<String, LearningGoal> goals = landscapeService.getById(CANONICAL_MATH_LANDSCAPE_ID)
+                .getGoals().stream()
+                .collect(java.util.stream.Collectors.toMap(LearningGoal::getId, goal -> goal));
+        Set<String> focusAtoms = new LinkedHashSet<>();
+        if (scopeId.startsWith("composition:")) {
+            compositionViewService.resolveStructureReference(scopeId).referencedGoalIds()
+                    .forEach(id -> collectAtomicGoalIds(id, goals, focusAtoms));
+        } else {
+            collectAtomicGoalIds(scopeId, goals, focusAtoms);
+        }
+        assertThat(focusAtoms).isNotEmpty();
+        List<String> priorGoalIds = CanonicalPrerequisiteTestContext.withStoredPrerequisites(
+                landscapeService, List.copyOf(focusAtoms), List.of(), Set.of());
+        // Mastered intermediates alone are insufficient: earlier prerequisites
+        // remain independent, even when they are outside the Level-3 focus.
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        masteryRepository.saveAllAndFlush(priorGoalIds.stream()
+                .filter(id -> goals.get(id).getContains() == null || goals.get(id).getContains().isEmpty())
+                .map(id -> new Mastery(learner, id, 1.0))
+                .toList());
     }
 
     private void collectAtomicGoalIds(

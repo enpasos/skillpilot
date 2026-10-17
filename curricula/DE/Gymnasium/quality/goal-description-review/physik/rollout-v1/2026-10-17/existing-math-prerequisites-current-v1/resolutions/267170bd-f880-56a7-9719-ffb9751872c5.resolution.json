@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physics-existing-math-current-resolution-267170bd-f880-56a7-9719-ffb9751872c5",
+  "goal": {
+    "goalId": "267170bd-f880-56a7-9719-ffb9751872c5",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:0e2f9478ab426bb63e4a70fdf7511009a7f04b342dc888dd89d702a86298e6c7",
+    "pageFingerprint": "sha256:7e1cdfc59294b016aeb47bee4c82371b4d6af165265d06f2f853c1d3535706ac",
+    "goalReviewContextFingerprint": "sha256:a991f29ca916a5e2ed08da9f3a51ae2240e97dbe9cd205857143c4a2f22b7c0a",
+    "finalText": {
+      "titleDe": "Spannungsbilanzen in Maschen mit Energieerhaltung begründen",
+      "titleEn": "Justify voltage balances in loops using energy conservation",
+      "descriptionDe": "Die lernende Person kann in Maschen einfacher Schaltungen im stationären Zustand eine Umlaufrichtung festlegen, vorzeichenrichtige Spannungsbilanzen aufstellen, unbekannte Spannungen bestimmen oder prüfen und die Maschenregel damit begründen, dass die zugeführte und an Bauteile übertragene Energie pro Ladung bei einem vollständigen Umlauf bilanziert ist.",
+      "descriptionEn": "The learner can choose a traversal direction in loops of simple steady-state circuits, set up voltage balances with consistent signs, determine or check unknown voltages, and justify the loop rule by balancing the energy supplied and transferred in components per unit charge over one complete traversal."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-a-20261017-v1",
+      "campaignDigest": "sha256:b23805760ff147505f7d53ab1a339fd1e1dd226dc7eda0776ccfe4ec09726b43",
+      "roundId": "physics-existing-math-prerequisites-first-a-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-a-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "goalReviewContextFingerprint": "sha256:a991f29ca916a5e2ed08da9f3a51ae2240e97dbe9cd205857143c4a2f22b7c0a",
+      "batchId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-001",
+      "runId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-001.gpt61-sol-ultra",
+      "runManifestDigest": "sha256:094515edecb2b7196fbdd172a2b16ede575ed41472b1261c95050a3616884c47",
+      "resultsDigest": "sha256:6fe96ecbef24b2bc767239d9b9b32c9c9c2f1869a0d8a054619a716dd87b6e84",
+      "recordId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-001.gpt61-sol-ultra.11",
+      "recordDigest": "sha256:d0bc8483af18da05663a69e7f817a24fd35a898fc692dc4b766a7b4cf4ca45b6"
+    },
+    "second": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-b-20261017-v1",
+      "campaignDigest": "sha256:e5062c24fc41990b95c544705fa59130d293784be6143a7146169694e24d1103",
+      "roundId": "physics-existing-math-prerequisites-first-b-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-b-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "goalReviewContextFingerprint": "sha256:a991f29ca916a5e2ed08da9f3a51ae2240e97dbe9cd205857143c4a2f22b7c0a",
+      "batchId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-001",
+      "runId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-001.sol-native-d",
+      "runManifestDigest": "sha256:65f84fad2bb09d7c48c9fa9f6000b428869b9d58c565e162c7114af868acc62f",
+      "resultsDigest": "sha256:d116ad2f07ac28380a8ad995889234f0d281f51a94942218a3a869981863b8f7",
+      "recordId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-001.sol-native-d.goal-011",
+      "recordDigest": "sha256:80e46723c6b2f439ccc3c3a675707ab3eabf3bbc0f2393841d43820bce42589c"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:d5ca2db392c5a44a98f275ce73cd20a967c005e0d7c38a11f2ba88573a0cfff6"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "physics-existing-math-current-synthesis-267170bd-f880-56a7-9719-ffb9751872c5",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "codex-native-d-integration-sol",
+    "synthesizedAt": "2026-10-17T09:19:29.758632Z",
+    "rationaleDe": "Der aktuelle bilinguale Vertrag zu „Spannungsbilanzen in Maschen mit Energieerhaltung begründen“ bleibt bestehen. In einer stationären einfachen Masche bilanziert die Spannung Energie pro Ladung; nach einem vollständigen Umlauf sind Energieaufnahme und -übertragung ausgeglichen. Vorzeichen hängen von Polarität und Umlaufrichtung ab. Die lernende Person markiert Polaritäten und Umlaufrichtung, bilanziert alle Spannungsänderungen, bestimmt eine unbekannte Spannung und erklärt die Gleichung als Energieübertragung pro Coulomb. In einer neu angeordneten Masche mit umgekehrt gezeichneter Quelle stellt die lernende Person die Bilanz in beiden Umlaufrichtungen auf und begründet, weshalb beide dieselbe physikalische Spannung ergeben. Beide tatsächlich vorliegenden Ganzkontext-Reviews urteilen keep und empfehlen für das mitgelesene vollständige V2-Profil none; die konkrete Evidence-Fassung der zweiten Runde wird unverändert übernommen.",
+    "rationaleEn": "The current bilingual contract for “Justify voltage balances in loops using energy conservation” is retained. In a simple steady-state loop, voltage accounts for energy per charge; after a complete traversal, energy gained and transferred balance. Signs depend on polarity and traversal direction. The learner marks polarities and traversal direction, balances all voltage changes, determines an unknown voltage, and explains the equation as energy transferred per coulomb. In a rearranged loop with a source drawn in reverse orientation, the learner writes the balance in both traversal directions and explains why both yield the same physical voltage. Both actual whole-context reviews judge keep and recommend none for the complete V2 profile read alongside the goal; the second round's concrete evidence formulation is adopted unchanged.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "In einer stationären einfachen Masche bilanziert die Spannung Energie pro Ladung; nach einem vollständigen Umlauf sind Energieaufnahme und -übertragung ausgeglichen. Vorzeichen hängen von Polarität und Umlaufrichtung ab.",
+      "essentialUnderstandingEn": "In a simple steady-state loop, voltage accounts for energy per charge; after a complete traversal, energy gained and transferred balance. Signs depend on polarity and traversal direction.",
+      "observablePerformanceDe": "Die lernende Person markiert Polaritäten und Umlaufrichtung, bilanziert alle Spannungsänderungen, bestimmt eine unbekannte Spannung und erklärt die Gleichung als Energieübertragung pro Coulomb.",
+      "observablePerformanceEn": "The learner marks polarities and traversal direction, balances all voltage changes, determines an unknown voltage, and explains the equation as energy transferred per coulomb.",
+      "transferExpectationDe": "In einer neu angeordneten Masche mit umgekehrt gezeichneter Quelle stellt die lernende Person die Bilanz in beiden Umlaufrichtungen auf und begründet, weshalb beide dieselbe physikalische Spannung ergeben.",
+      "transferExpectationEn": "In a rearranged loop with a source drawn in reverse orientation, the learner writes the balance in both traversal directions and explains why both yield the same physical voltage."
+    },
+    "dissent": [
+      {
+        "dissentId": "physics-existing-math-current-synthesis-267170bd-f880-56a7-9719-ffb9751872c5.dissent-1",
+        "source": "both",
+        "disposition": "accepted_second",
+        "textDe": "Die beiden aktuellen keep/none-Reviews verwenden eigenständige Verständnis- und Begründungstexte. Die oben konkret benannte Understanding-/Handlungs-/Transferevidence wird aus der zweiten Runde übernommen; die erste Meinung bleibt unverändert gebunden.",
+        "textEn": "The two current keep/none reviews use independently written understanding evidence and rationales. The specific understanding, performance, and transfer evidence stated above is taken from the second round; the first opinion remains bound unchanged."
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:fa45830955ed4a3f1eb2a4585eace9d33e1066d2851f34e553c852811fa29606"
+}

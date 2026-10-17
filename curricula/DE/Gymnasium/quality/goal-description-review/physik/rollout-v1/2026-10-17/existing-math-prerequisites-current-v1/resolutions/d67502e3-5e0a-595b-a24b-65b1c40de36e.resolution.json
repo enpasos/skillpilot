@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physics-existing-math-current-resolution-d67502e3-5e0a-595b-a24b-65b1c40de36e",
+  "goal": {
+    "goalId": "d67502e3-5e0a-595b-a24b-65b1c40de36e",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:0d5cef647aee1e97824bc8d632e7f0154020a6e5914129bf9027d0cf333cb6db",
+    "pageFingerprint": "sha256:e7f70fe3d9177f227ef0089b6dfcfea92a0c2439d4ea2ecc4c96cac0840a8144",
+    "goalReviewContextFingerprint": "sha256:42f7c433041defbfe16b6415f5e77894379bb7fa9140dbb0fa4855ac4d433da0",
+    "finalText": {
+      "titleDe": "Bewegungen mit Videoanalyse untersuchen",
+      "titleEn": "Investigate motion using video analysis",
+      "descriptionDe": "Die lernende Person kann ein Bewegungsvideo räumlich und zeitlich kalibrieren, daraus Orts-Zeit-Daten sowie s(t)- und v(t)-Diagramme gewinnen und Modelle einer gleichförmigen oder geworfenen Bewegung unter Berücksichtigung der Messunsicherheit prüfen.",
+      "descriptionEn": "The learner can calibrate a motion video spatially and temporally, obtain position-time data and s(t) and v(t) graphs from it, and test models of uniform or projectile motion while accounting for measurement uncertainty."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-a-20261017-v1",
+      "campaignDigest": "sha256:b23805760ff147505f7d53ab1a339fd1e1dd226dc7eda0776ccfe4ec09726b43",
+      "roundId": "physics-existing-math-prerequisites-first-a-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-a-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "goalReviewContextFingerprint": "sha256:42f7c433041defbfe16b6415f5e77894379bb7fa9140dbb0fa4855ac4d433da0",
+      "batchId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-002",
+      "runId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-002.gpt61-sol-ultra",
+      "runManifestDigest": "sha256:5b6108fdc46ac0350718d07bb264fb6167aaec4d272ba91b0fc46e942dd9c5fd",
+      "resultsDigest": "sha256:43e144f145152cc4a2bcdb2e8a7f8757a927c6911c1a31f5830fc85d7a6108c3",
+      "recordId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-002.gpt61-sol-ultra.6",
+      "recordDigest": "sha256:d4394f4dcbd59090b077ea9a37cf0c2aa6de4d48c6176e484ce10c73ebd126b6"
+    },
+    "second": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-b-20261017-v1",
+      "campaignDigest": "sha256:e5062c24fc41990b95c544705fa59130d293784be6143a7146169694e24d1103",
+      "roundId": "physics-existing-math-prerequisites-first-b-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-b-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "goalReviewContextFingerprint": "sha256:42f7c433041defbfe16b6415f5e77894379bb7fa9140dbb0fa4855ac4d433da0",
+      "batchId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-002",
+      "runId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-002.sol-native-d",
+      "runManifestDigest": "sha256:b50791cb0066aea0cf9eb461998dbf5b1223d44cd6995966e121df7215ab350c",
+      "resultsDigest": "sha256:540f25420693baeb4341d9597a9a95f17b01f6527c3ea18b7e3b5547ac7b6d4b",
+      "recordId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-002.sol-native-d.goal-006",
+      "recordDigest": "sha256:53e2d42d0efd7708a1243b16db3fd614ec8482a80649f7278b65577bb993abf1"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:d5ca2db392c5a44a98f275ce73cd20a967c005e0d7c38a11f2ba88573a0cfff6"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "physics-existing-math-current-synthesis-d67502e3-5e0a-595b-a24b-65b1c40de36e",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Root AI synthesis; native D integration with faithful English translation",
+    "synthesizedAt": "2026-10-17T09:28:15.543662Z",
+    "rationaleDe": "Die Videoanalyse bildet eine korrekte zusammenhängende Kalibrierungs-, Auswertungs- und Modellprüfungskette. Der zweite P-Brief nennt aber unbekannten Startzeitpunkt und erwartet dennoch rekonstruiert den Zeitnullpunkt. Eine beliebige Flugsequenz bestimmt den Abwurfzeitpunkt ohne Zusatzinformation nicht. Eine frei gewählte begründete Zeitnull genügt zur x-/y-/v-Analyse. Dies ist eine konkrete unnötig unmögliche Sollanforderung. Diese Resolution entscheidet ausschließlich den aktuellen D-Wortlaut. Erforderliche P-Korrekturen und deren neue fachliche Qualifikation werden getrennt behandelt; unveränderte P-Akzeptanz wird nicht behauptet.",
+    "rationaleEn": "The video analysis forms a correct connected chain of calibration, evaluation, and model checking. However, the second profile brief gives an unknown starting time while still expecting reconstruction of the time origin. An arbitrary flight sequence does not determine release time without additional identifying information. A freely chosen and justified time origin suffices for the position-component and velocity analysis. This is a concrete, unnecessarily impossible expected performance. This resolution decides only the current description wording. Required profile corrections and their fresh substantive qualification are handled separately; acceptance of an unchanged profile is not asserted.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Erst Maßstab, Zeitbasis und Achsenwahl machen Bildpunkte zu Orts-Zeit-Daten; abgeleitete Geschwindigkeiten verstärken Positionsrauschen.",
+      "essentialUnderstandingEn": "Only scale, time base, and axis choice turn image points into position-time data; derived velocities amplify position noise.",
+      "observablePerformanceDe": "Die lernende Person kalibriert ein Video, erzeugt nachvollziehbar Orts- und Geschwindigkeitsdiagramme und prüft ein Bewegungsmodell mit Unsicherheiten.",
+      "observablePerformanceEn": "The learner calibrates a video, produces traceable position and velocity graphs, and tests a motion model with uncertainties.",
+      "transferExpectationDe": "In einem neuen Wurfvideo mit schräger Kamerasicht trennt die lernende Person Perspektivgrenzen von möglichen Modellabweichungen und legt den Zeitursprung begründet fest.",
+      "transferExpectationEn": "In a fresh projectile video with an oblique camera view, the learner separates perspective limits from possible model deviations and justifies the time origin."
+    },
+    "dissent": [
+      {
+        "dissentId": "physics-existing-math-current-synthesis-d67502e3-5e0a-595b-a24b-65b1c40de36e.dissent-1",
+        "source": "both",
+        "disposition": "merged",
+        "textDe": "Beide aktuellen D-Urteile lauten keep. P-Empfehlungen bleiben unverändert gebunden: erste Runde none, zweite Runde revise. Die Videoanalyse bildet eine korrekte zusammenhängende Kalibrierungs-, Auswertungs- und Modellprüfungskette. Der zweite P-Brief nennt aber unbekannten Startzeitpunkt und erwartet dennoch rekonstruiert den Zeitnullpunkt. Eine beliebige Flugsequenz bestimmt den Abwurfzeitpunkt ohne Zusatzinformation nicht. Eine frei gewählte begründete Zeitnull genügt zur x-/y-/v-Analyse. Dies ist eine konkrete unnötig unmögliche Sollanforderung. Diese Resolution entscheidet ausschließlich den aktuellen D-Wortlaut. Erforderliche P-Korrekturen und deren neue fachliche Qualifikation werden getrennt behandelt; unveränderte P-Akzeptanz wird nicht behauptet.",
+        "textEn": "Both current description judgments are keep. Their profile recommendations remain bound unchanged: first round none, second round revise. The video analysis forms a correct connected chain of calibration, evaluation, and model checking. However, the second profile brief gives an unknown starting time while still expecting reconstruction of the time origin. An arbitrary flight sequence does not determine release time without additional identifying information. A freely chosen and justified time origin suffices for the position-component and velocity analysis. This is a concrete, unnecessarily impossible expected performance. This resolution decides only the current description wording. Required profile corrections and their fresh substantive qualification are handled separately; acceptance of an unchanged profile is not asserted."
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:3f73c8be39da20f121b3303887348c61a1cda111f8ec1671900832aed562ac31"
+}

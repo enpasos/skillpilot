@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physics-existing-math-current-resolution-eaef821b-4dbe-52a4-a0e2-574e5ce2040d",
+  "goal": {
+    "goalId": "eaef821b-4dbe-52a4-a0e2-574e5ce2040d",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:7ea18dbae997743bab787a10b62a6fbffcc44f9074f59052aa771309a3d507d9",
+    "pageFingerprint": "sha256:561ad409fc73a360d80f191d6d61248695c0ad36cf00d56f216351176b879fbe",
+    "goalReviewContextFingerprint": "sha256:54516641cb7b00f3a1faff70ec685a81aeb9d2d7a4b31aef6438141f97efbc0d",
+    "finalText": {
+      "titleDe": "Entropie E07: Entropieänderung idealer Gase",
+      "titleEn": "Entropy E07: Entropy Change of Ideal Gases",
+      "descriptionDe": "Die lernende Person kann Entropieänderungen einer festen Menge idealen Gases bei einfachen Zustandsänderungen berechnen und physikalisch deuten, insbesondere isotherm mit $\\Delta S = nR\\ln(V_2/V_1)$, und die Größen $n$, $R$, $V$ und $T$ sowie die Gültigkeitsbedingungen zuordnen.",
+      "descriptionEn": "The learner can calculate and physically interpret entropy changes of a fixed amount of ideal gas in simple changes of state, especially isothermal ones using $\\Delta S = nR\\ln(V_2/V_1)$, and identify the quantities $n$, $R$, $V$ and $T$ and the conditions of validity."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-a-20261017-v1",
+      "campaignDigest": "sha256:b23805760ff147505f7d53ab1a339fd1e1dd226dc7eda0776ccfe4ec09726b43",
+      "roundId": "physics-existing-math-prerequisites-first-a-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-a-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "goalReviewContextFingerprint": "sha256:54516641cb7b00f3a1faff70ec685a81aeb9d2d7a4b31aef6438141f97efbc0d",
+      "batchId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-003",
+      "runId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-003.gpt61-sol-ultra",
+      "runManifestDigest": "sha256:95a24edd9ca0fed3efcec1b257f95832dccedc19567b638c3601864bcdf1882e",
+      "resultsDigest": "sha256:84c283a8b59d7714a42ed93c19446bf37cfef9e27c0c826b705fbe151d292a60",
+      "recordId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-003.gpt61-sol-ultra.6",
+      "recordDigest": "sha256:f1432c32d4248aa8f1f60eeffedf24d8e95686ee333cc8b68ca24f9e278ca70e"
+    },
+    "second": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-b-20261017-v1",
+      "campaignDigest": "sha256:e5062c24fc41990b95c544705fa59130d293784be6143a7146169694e24d1103",
+      "roundId": "physics-existing-math-prerequisites-first-b-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-b-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "goalReviewContextFingerprint": "sha256:54516641cb7b00f3a1faff70ec685a81aeb9d2d7a4b31aef6438141f97efbc0d",
+      "batchId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-003",
+      "runId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-003.sol-native-d",
+      "runManifestDigest": "sha256:7b0166780cd8d391f24e297b285ca5464dbf3968141764e1c71dc54983bd2964",
+      "resultsDigest": "sha256:b42b879d2fc1a41e73c0742a5a2c09dcf750d6ffaf891550a266965fe70f9409",
+      "recordId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-003.sol-native-d.goal-006",
+      "recordDigest": "sha256:eec3467b2565002d7efc1ae4564fb65777269200ea6c43ad36c3d93a611362f3"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:d5ca2db392c5a44a98f275ce73cd20a967c005e0d7c38a11f2ba88573a0cfff6"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "physics-existing-math-current-synthesis-eaef821b-4dbe-52a4-a0e2-574e5ce2040d",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Root AI synthesis; native D integration with faithful English translation",
+    "synthesizedAt": "2026-10-17T09:28:15.543662Z",
+    "rationaleDe": "D beansprucht einfache ideale Gaszustandsänderungen und insbesondere, nicht ausschließlich, Isothermie. Das ganze P hat nur eine isotherme quantitative expectation; der zweite Brief erkennt einen Temperaturterm lediglich als nötig und dupliziert die Aufgabenanforderung als Sollantwort. Der positiv beanspruchte nichtisotherme Rechenkern bleibt damit unbelegt. Beide aktuellen Reviews weisen dieselbe Lücke aus. Diese Resolution entscheidet ausschließlich den aktuellen D-Wortlaut. Erforderliche P-Korrekturen und deren neue fachliche Qualifikation werden getrennt behandelt; unveränderte P-Akzeptanz wird nicht behauptet.",
+    "rationaleEn": "The description covers simple ideal-gas state changes, especially rather than exclusively isothermal changes. The complete profile contains only an isothermal quantitative expectation; the second brief merely identifies a temperature term as necessary and repeats the task demand as its expected answer. The positively claimed nonisothermal calculation therefore remains uncovered. Both current reviews identify the same gap. This resolution decides only the current description wording. Required profile corrections and their fresh substantive qualification are handled separately; acceptance of an unchanged profile is not asserted.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Bei fester idealer Gasmenge ist ΔS eine Zustandsdifferenz; bei gleicher Temperatur ergibt sie nR ln(V₂/V₁), bei Temperaturänderung kommt ein begründeter Temperaturbeitrag hinzu.",
+      "essentialUnderstandingEn": "For a fixed amount of ideal gas, ΔS is a state difference; at equal temperature it is nR ln(V₂/V₁), while a temperature change requires a justified temperature contribution.",
+      "observablePerformanceDe": "Die lernende Person prüft Zustandsbedingungen, prognostiziert das Vorzeichen, berechnet ΔS mit J/K und erklärt Stoffmenge, dimensionsloses Verhältnis und Temperaturrolle.",
+      "observablePerformanceEn": "The learner checks state conditions, predicts the sign, calculates ΔS in J/K, and explains amount of substance, dimensionless ratio, and the role of temperature.",
+      "transferExpectationDe": "Bei frischer Expansion mit zusätzlicher Erwärmung verwendet die lernende Person einen geeigneten reversiblen Vergleichsweg und berechnet auch den Temperaturbeitrag unter der angegebenen Wärmekapazitätsannahme.",
+      "transferExpectationEn": "For a fresh expansion with added heating, the learner uses a suitable reversible comparison path and also calculates the temperature contribution under the stated heat-capacity assumption."
+    },
+    "dissent": [
+      {
+        "dissentId": "physics-existing-math-current-synthesis-eaef821b-4dbe-52a4-a0e2-574e5ce2040d.dissent-1",
+        "source": "both",
+        "disposition": "merged",
+        "textDe": "Beide aktuellen D-Urteile lauten keep. P-Empfehlungen bleiben unverändert gebunden: erste Runde revise, zweite Runde revise. D beansprucht einfache ideale Gaszustandsänderungen und insbesondere, nicht ausschließlich, Isothermie. Das ganze P hat nur eine isotherme quantitative expectation; der zweite Brief erkennt einen Temperaturterm lediglich als nötig und dupliziert die Aufgabenanforderung als Sollantwort. Der positiv beanspruchte nichtisotherme Rechenkern bleibt damit unbelegt. Beide aktuellen Reviews weisen dieselbe Lücke aus. Diese Resolution entscheidet ausschließlich den aktuellen D-Wortlaut. Erforderliche P-Korrekturen und deren neue fachliche Qualifikation werden getrennt behandelt; unveränderte P-Akzeptanz wird nicht behauptet.",
+        "textEn": "Both current description judgments are keep. Their profile recommendations remain bound unchanged: first round revise, second round revise. The description covers simple ideal-gas state changes, especially rather than exclusively isothermal changes. The complete profile contains only an isothermal quantitative expectation; the second brief merely identifies a temperature term as necessary and repeats the task demand as its expected answer. The positively claimed nonisothermal calculation therefore remains uncovered. Both current reviews identify the same gap. This resolution decides only the current description wording. Required profile corrections and their fresh substantive qualification are handled separately; acceptance of an unchanged profile is not asserted."
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:8717883a11721d545c81f93c77dba13ece81ed6dcb1f9015c7233df211ae4a7b"
+}

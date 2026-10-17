@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:2cdb4239a7a8358fd328eb5a66cbaa856c1af56af3ef06e895d9666b804ba7f5",
+  "reviewInputFingerprint": "sha256:b5e212d14fbdfe73d56b884355af035c27f4dcf4c7131313a44489dd1b856145",
+  "goalCount": 5,
+  "rounds": {
+    "first": {
+      "campaignId": "physics-existing-math-followup-five-campaign-a-20261017-v1",
+      "roundId": "physics-existing-math-followup-five-first-a-20261017-v1",
+      "independenceGroupId": "physics-existing-math-followup-five-independent-a-20261017-v1",
+      "runIds": [
+        "physics-existing-math-followup-five-native-a-20261017-v1"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-6.1-sol::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physics-existing-math-followup-five-campaign-b-20261017-v1",
+      "roundId": "physics-existing-math-followup-five-first-b-20261017-v1",
+      "independenceGroupId": "physics-existing-math-followup-five-independent-b-20261017-v1",
+      "runIds": [
+        "physics-existing-math-followup-five-first-b-20261017-v1.native-sol"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-6.1-sol::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "openai"
+    ],
+    "sharedModelIdentities": [
+      "openai::gpt-6.1-sol::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 5,
+    "unavailable": 0,
+    "requiresSynthesis": 5
+  },
+  "goals": [
+    {
+      "goalId": "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+      "firstRecordId": "physics-existing-math-followup-five-native-a-20261017-v1.record-001",
+      "secondRecordId": "physics-existing-math-followup-five-first-b-20261017-v1.native-sol.record-001",
+      "firstRunId": "physics-existing-math-followup-five-native-a-20261017-v1",
+      "secondRunId": "physics-existing-math-followup-five-first-b-20261017-v1.native-sol",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "497f1311-17d6-56ff-afb1-422a738e5c16",
+      "firstRecordId": "physics-existing-math-followup-five-native-a-20261017-v1.record-002",
+      "secondRecordId": "physics-existing-math-followup-five-first-b-20261017-v1.native-sol.record-002",
+      "firstRunId": "physics-existing-math-followup-five-native-a-20261017-v1",
+      "secondRunId": "physics-existing-math-followup-five-first-b-20261017-v1.native-sol",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+      "firstRecordId": "physics-existing-math-followup-five-native-a-20261017-v1.record-003",
+      "secondRecordId": "physics-existing-math-followup-five-first-b-20261017-v1.native-sol.record-003",
+      "firstRunId": "physics-existing-math-followup-five-native-a-20261017-v1",
+      "secondRunId": "physics-existing-math-followup-five-first-b-20261017-v1.native-sol",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "18c1f954-487e-5121-bb18-6c64a82f573d",
+      "firstRecordId": "physics-existing-math-followup-five-native-a-20261017-v1.record-004",
+      "secondRecordId": "physics-existing-math-followup-five-first-b-20261017-v1.native-sol.record-004",
+      "firstRunId": "physics-existing-math-followup-five-native-a-20261017-v1",
+      "secondRunId": "physics-existing-math-followup-five-first-b-20261017-v1.native-sol",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "89124b92-5769-5e13-8a5d-78497936260f",
+      "firstRecordId": "physics-existing-math-followup-five-native-a-20261017-v1.record-005",
+      "secondRecordId": "physics-existing-math-followup-five-first-b-20261017-v1.native-sol.record-005",
+      "firstRunId": "physics-existing-math-followup-five-native-a-20261017-v1",
+      "secondRunId": "physics-existing-math-followup-five-first-b-20261017-v1.native-sol",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

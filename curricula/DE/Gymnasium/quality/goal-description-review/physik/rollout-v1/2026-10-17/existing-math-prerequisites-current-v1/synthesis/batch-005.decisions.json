@@ -1,0 +1,120 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physics-existing-math-current-synthesis-batch-5",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Root AI synthesis; native D integration with faithful English translation",
+  "synthesizedAt": "2026-10-17T09:28:15.543662Z",
+  "batch": {
+    "batchId": "physics-existing-math-current-synthesis-batch-5",
+    "batchManifestDigest": "sha256:e3da6144c42f714c237dae3386a9818277954ec91a470fc136e84692f1c933f1",
+    "configDigest": "sha256:ee224f52814e20e7e8785ebeed3f0d6fd6d12ff70314dbc4723184e4072243c4",
+    "bundleFingerprint": "sha256:a3e5ff4e8a6ce263cdba8a660005323d8e18a093b0a2a18d9ca4b2c78b2980c5",
+    "bookDigest": "sha256:3cbacf5cf3d4838db6ef75ed0fd3dbf2410d823d688c65bd250032bdd79fbace",
+    "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+    "dualSummaryDigest": "sha256:d5ca2db392c5a44a98f275ce73cd20a967c005e0d7c38a11f2ba88573a0cfff6",
+    "canonicalLandscapeDigest": "sha256:ee9ac934b68c13f0ed64335c362ebc807a9c8d91f5e74ad90bcb0a1baa22baee"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-a-20261017-v1",
+      "campaignDigest": "sha256:b23805760ff147505f7d53ab1a339fd1e1dd226dc7eda0776ccfe4ec09726b43",
+      "roundId": "physics-existing-math-prerequisites-first-a-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-a-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "batchId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-005",
+      "batchInputFingerprint": "sha256:f6ea8aac2ce16cfc45f15ef3b9d596520953f83ee8d07681ceaaaeb3d0ef296d",
+      "runId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-005.gpt61-sol-ultra",
+      "runManifestDigest": "sha256:32974da6ed0a10199b96e8a0f271efdc218f6c181f8784a62964ae78b0e540c9",
+      "resultsDigest": "sha256:45e33d777065b47eefa7c0cc65d10cdf0b42d873c8efa241e657ddb8b708eb27"
+    },
+    "second": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-b-20261017-v1",
+      "campaignDigest": "sha256:e5062c24fc41990b95c544705fa59130d293784be6143a7146169694e24d1103",
+      "roundId": "physics-existing-math-prerequisites-first-b-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-b-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "batchId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-005",
+      "batchInputFingerprint": "sha256:e5be5905c0353b752dc1f067e6592e82419c38d516fe4eff6cfe614ae32fcf13",
+      "runId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-005.sol-native-d",
+      "runManifestDigest": "sha256:6de62895bfc8743ce30dc2e96720587d305a8ec62df840ee609e2edb11235280",
+      "resultsDigest": "sha256:58ad524b796b0b39b6bdd4d6e2f5c506b602268f3872a337c8f67e96d96e73f6"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physics-existing-math-current-synthesis-7fe6f8a1-5580-4e37-bf8e-9772964a6b0a",
+      "goalId": "7fe6f8a1-5580-4e37-bf8e-9772964a6b0a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:1eb5d0c364344a666d54e06264adb3c91cac98892bc23bcce85e47140c7d81f0",
+      "pageFingerprint": "sha256:312d1b2edb4970c9e6eff5e320443e551448104669d5b1a446a5cfaaa76f0253",
+      "goalReviewContextFingerprint": "sha256:283c6f1a88b174e7d2a4b000cbbba05401fc0694a78187aacb85a4ed4c770ba8",
+      "finalText": {
+        "titleDe": "Ladungsträger in Magnetfeldern bei beliebigem Eintrittswinkel beschreiben",
+        "titleEn": "Describe Charged Particles in Magnetic Fields at Arbitrary Entry Angles",
+        "descriptionDe": "Die lernende Person kann die Geschwindigkeit eines geladenen Teilchens beim Eintritt in ein homogenes Magnetfeld in feldparallele und feldsenkrechte Komponenten zerlegen und daraus mithilfe der Lorentzkraft Gerad-, Kreis- oder Schraubenbahnen qualitativ deuten.",
+        "descriptionEn": "The learner can decompose the velocity of a charged particle entering a uniform magnetic field into field-parallel and field-perpendicular components and use the Lorentz force to qualitatively interpret straight, circular, or helical trajectories."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-005.gpt61-sol-ultra.13",
+          "recordDigest": "sha256:84f7b2cde6d6f13318c2d465bfeca24fbb0e263690bc89c2ee1cd7b85f45e4f6"
+        },
+        "second": {
+          "recordId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-005.sol-native-d.goal-013",
+          "recordDigest": "sha256:85d63c9b28cd1312abb2d1658a435fe2b116718415b94927678b5cde516722f8"
+        }
+      },
+      "revisionDissent": {
+        "sourceRound": "first",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann die Geschwindigkeit eines geladenen Teilchens beim Eintritt in ein homogenes Magnetfeld in feldparallele und feldsenkrechte Komponenten zerlegen und unter Vernachlässigung anderer Kräfte daraus mithilfe der magnetischen Lorentzkraft Gerad-, Kreis- oder Schraubenbahnen qualitativ deuten.",
+        "proposedDescriptionEn": "The learner can decompose the velocity of a charged particle entering a uniform magnetic field into field-parallel and field-perpendicular components and, neglecting other forces, use the magnetic Lorentz force to qualitatively interpret straight, circular, or helical trajectories.",
+        "rationaleDe": "D beansprucht Bahnformen aus der magnetischen Lorentzkraft im homogenen Magnetfeld. P nennt idealisiertes Feld und magnetisch unveränderte Energie; alle Fälle variieren ausschließlich B, q oder Eintrittsvektor. Zusätzliche Kräfte werden nirgends vorgegeben und dann falsch ignoriert. As Kräfteausschluss expliziert das vorhandene Modell, aber kein konkret widersprechender Fall ist belegt. Komponenten-/Vorzeichen- und Winkelfälle sind vollständig. Diese Resolution entscheidet ausschließlich den aktuellen D-Wortlaut. Erforderliche P-Korrekturen und deren neue fachliche Qualifikation werden getrennt behandelt; unveränderte P-Akzeptanz wird nicht behauptet.",
+        "rationaleEn": "The description covers trajectories from magnetic Lorentz force in a uniform magnetic field. The profile names the idealized field and unchanged magnetic energy; every case varies only B, charge, or entry velocity. Additional forces are nowhere supplied and then incorrectly ignored. Round A's exclusion of other forces makes the existing model explicit but identifies no concretely contradictory case. Component, sign, and angle cases are complete. This resolution decides only the current description wording. Required profile corrections and their fresh substantive qualification are handled separately; acceptance of an unchanged profile is not asserted."
+      },
+      "rationaleDe": "D beansprucht Bahnformen aus der magnetischen Lorentzkraft im homogenen Magnetfeld. P nennt idealisiertes Feld und magnetisch unveränderte Energie; alle Fälle variieren ausschließlich B, q oder Eintrittsvektor. Zusätzliche Kräfte werden nirgends vorgegeben und dann falsch ignoriert. As Kräfteausschluss expliziert das vorhandene Modell, aber kein konkret widersprechender Fall ist belegt. Komponenten-/Vorzeichen- und Winkelfälle sind vollständig. Diese Resolution entscheidet ausschließlich den aktuellen D-Wortlaut. Erforderliche P-Korrekturen und deren neue fachliche Qualifikation werden getrennt behandelt; unveränderte P-Akzeptanz wird nicht behauptet.",
+      "rationaleEn": "The description covers trajectories from magnetic Lorentz force in a uniform magnetic field. The profile names the idealized field and unchanged magnetic energy; every case varies only B, charge, or entry velocity. Additional forces are nowhere supplied and then incorrectly ignored. Round A's exclusion of other forces makes the existing model explicit but identifies no concretely contradictory case. Component, sign, and angle cases are complete. This resolution decides only the current description wording. Required profile corrections and their fresh substantive qualification are handled separately; acceptance of an unchanged profile is not asserted."
+    },
+    {
+      "decisionId": "physics-existing-math-current-synthesis-f7f2c254-1663-5861-bed7-a32c00495b19",
+      "goalId": "f7f2c254-1663-5861-bed7-a32c00495b19",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a54a9234aa4e1a1adc289218aec3cb0957047dd6e3c903c382e168927ee6bd3e",
+      "pageFingerprint": "sha256:bd831c87b0c465fa8bab2583117c539612bd16062a9bc68c4ceda3d333951e7d",
+      "goalReviewContextFingerprint": "sha256:9fbe0aafb2d7aa0b7ae65f672c13e835c6231e210f9080ad4ed52cc7a45247ec",
+      "finalText": {
+        "titleDe": "Wirkungsgrad als Verhältnis nutzbarer und zugeführter Energie deuten",
+        "titleEn": "Interpret Efficiency as the Ratio of Useful to Input Energy",
+        "descriptionDe": "Die lernende Person kann den Wirkungsgrad als Verhältnis nutzbarer zu zugeführter Energie bestimmen, Energieanteile in einem einfachen System bilanzieren und begründen, warum ein Wirkungsgrad nicht größer als eins sein kann.",
+        "descriptionEn": "The learner can determine efficiency as the ratio of useful to input energy, balance energy shares in a simple system, and justify why efficiency cannot exceed one."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-005.gpt61-sol-ultra.19",
+          "recordDigest": "sha256:2e24a97be2718a1bb8aa0925b2e3b9493c20b4a5d8cc2047af4dfd6a90141122"
+        },
+        "second": {
+          "recordId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-005.sol-native-d.goal-019",
+          "recordDigest": "sha256:a96101e91ddf80bfc72945e28e2a38ee94492811eb7cd7a41c45157d33bcf39f"
+        }
+      },
+      "revisionDissent": {
+        "sourceRound": "first",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann bei festgelegter Systemgrenze den Wirkungsgrad als Verhältnis nutzbarer zu vollständig erfasster zugeführter Energie bestimmen, die Energieanteile bilanzieren und begründen, warum dieser Anteil ohne Abnahme gespeicherter Energie nicht größer als eins sein kann.",
+        "proposedDescriptionEn": "For a specified system boundary, the learner can determine efficiency as the ratio of useful energy to fully accounted input energy, balance the energy shares, and justify why this fraction cannot exceed one without a decrease in stored energy.",
+        "rationaleDe": "D definiert Wirkungsgrad als Nutzanteil und ist bei vollständiger berücksichtigter Umwandlungsenergie korrekt. P formuliert Energieerhaltung jedoch allgemein als Nutzenergie plus sonstige Abgaben gleich Zufuhr. Bei Speicheränderung gilt E_zu−E_ab=ΔE_Speicher. Ein gemessener Abgabe/Zufuhr-Quotient über eins kann daher reale Speicherentnahme anzeigen, ohne Rechenfehler; korrekt definierter Umwandlungswirkungsgrad bleibt ≤1. A trifft diese fehlende Bilanzbedingung; B weist zu Recht auf vorhandene Systemgrenzenprüfung hin, die Speicheränderung aber noch nicht ausdrücklich umfasst. Diese Resolution entscheidet ausschließlich den aktuellen D-Wortlaut. Erforderliche P-Korrekturen und deren neue fachliche Qualifikation werden getrennt behandelt; unveränderte P-Akzeptanz wird nicht behauptet.",
+        "rationaleEn": "The description defines efficiency as a useful fraction and is correct when conversion energy is fully accounted for. The profile, however, states energy conservation generally as useful energy plus other outputs equaling input. With a change in stored energy, E_input−E_output=ΔE_stored. A measured output/input ratio above one can therefore reflect actual release from storage without a calculation error; correctly defined conversion efficiency remains at most one. Round A identifies this missing balance condition; Round B correctly notes the existing boundary check, which does not yet expressly include storage changes. This resolution decides only the current description wording. Required profile corrections and their fresh substantive qualification are handled separately; acceptance of an unchanged profile is not asserted."
+      },
+      "rationaleDe": "D definiert Wirkungsgrad als Nutzanteil und ist bei vollständiger berücksichtigter Umwandlungsenergie korrekt. P formuliert Energieerhaltung jedoch allgemein als Nutzenergie plus sonstige Abgaben gleich Zufuhr. Bei Speicheränderung gilt E_zu−E_ab=ΔE_Speicher. Ein gemessener Abgabe/Zufuhr-Quotient über eins kann daher reale Speicherentnahme anzeigen, ohne Rechenfehler; korrekt definierter Umwandlungswirkungsgrad bleibt ≤1. A trifft diese fehlende Bilanzbedingung; B weist zu Recht auf vorhandene Systemgrenzenprüfung hin, die Speicheränderung aber noch nicht ausdrücklich umfasst. Diese Resolution entscheidet ausschließlich den aktuellen D-Wortlaut. Erforderliche P-Korrekturen und deren neue fachliche Qualifikation werden getrennt behandelt; unveränderte P-Akzeptanz wird nicht behauptet.",
+      "rationaleEn": "The description defines efficiency as a useful fraction and is correct when conversion energy is fully accounted for. The profile, however, states energy conservation generally as useful energy plus other outputs equaling input. With a change in stored energy, E_input−E_output=ΔE_stored. A measured output/input ratio above one can therefore reflect actual release from storage without a calculation error; correctly defined conversion efficiency remains at most one. Round A identifies this missing balance condition; Round B correctly notes the existing boundary check, which does not yet expressly include storage changes. This resolution decides only the current description wording. Required profile corrections and their fresh substantive qualification are handled separately; acceptance of an unchanged profile is not asserted."
+    }
+  ],
+  "manifestFingerprint": "sha256:264931559a1bf8229fbeae4f25daa291cccaa4faa1c4d5de2747604f3f2ac66c"
+}

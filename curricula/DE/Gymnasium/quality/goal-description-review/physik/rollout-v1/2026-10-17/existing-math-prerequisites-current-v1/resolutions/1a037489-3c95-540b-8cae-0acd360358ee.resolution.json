@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physics-existing-math-current-resolution-1a037489-3c95-540b-8cae-0acd360358ee",
+  "goal": {
+    "goalId": "1a037489-3c95-540b-8cae-0acd360358ee",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:01dd51f3e5a40538c9334c80ca1cba7b0d1a5e8fcf58874bbe8e8fad3ca9e768",
+    "pageFingerprint": "sha256:15025282da5cf8e97aa29087df48bb0c5ef85439c4d5c2ec9d47bee957274c75",
+    "goalReviewContextFingerprint": "sha256:7f67483871e0386403eeb9449bc611bb25db00094872c6bfbe25d0802e80fef1",
+    "finalText": {
+      "titleDe": "Induktion durch Änderung des magnetischen Flusses",
+      "titleEn": "Induction by Change of Magnetic Flux",
+      "descriptionDe": "Die lernende Person kann für ein homogenes Magnetfeld den magnetischen Fluss Φ = B · A · cos(α) durch die von einer Leiterschleife aufgespannte Fläche beschreiben, wobei α der Winkel zwischen Feldrichtung und Flächennormale ist, und qualitativ erklären, dass eine zeitliche Änderung dieses Flusses eine Induktionsspannung hervorruft.",
+      "descriptionEn": "For a uniform magnetic field, the learner can describe the magnetic flux Φ = B · A · cos(α) through the area enclosed by a conducting loop, where α is the angle between the field direction and the surface normal, and qualitatively explain that a change of this flux over time produces an induced voltage."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-a-20261017-v1",
+      "campaignDigest": "sha256:b23805760ff147505f7d53ab1a339fd1e1dd226dc7eda0776ccfe4ec09726b43",
+      "roundId": "physics-existing-math-prerequisites-first-a-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-a-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "goalReviewContextFingerprint": "sha256:7f67483871e0386403eeb9449bc611bb25db00094872c6bfbe25d0802e80fef1",
+      "batchId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-003",
+      "runId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-003.gpt61-sol-ultra",
+      "runManifestDigest": "sha256:95a24edd9ca0fed3efcec1b257f95832dccedc19567b638c3601864bcdf1882e",
+      "resultsDigest": "sha256:84c283a8b59d7714a42ed93c19446bf37cfef9e27c0c826b705fbe151d292a60",
+      "recordId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-003.gpt61-sol-ultra.18",
+      "recordDigest": "sha256:4ef0b3211e74944204dfc0e2b7f805819bb8259ee0aa0e8cc8a48eb366b4a6ff"
+    },
+    "second": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-b-20261017-v1",
+      "campaignDigest": "sha256:e5062c24fc41990b95c544705fa59130d293784be6143a7146169694e24d1103",
+      "roundId": "physics-existing-math-prerequisites-first-b-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-b-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "goalReviewContextFingerprint": "sha256:7f67483871e0386403eeb9449bc611bb25db00094872c6bfbe25d0802e80fef1",
+      "batchId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-003",
+      "runId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-003.sol-native-d",
+      "runManifestDigest": "sha256:7b0166780cd8d391f24e297b285ca5464dbf3968141764e1c71dc54983bd2964",
+      "resultsDigest": "sha256:b42b879d2fc1a41e73c0742a5a2c09dcf750d6ffaf891550a266965fe70f9409",
+      "recordId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-003.sol-native-d.goal-018",
+      "recordDigest": "sha256:3a6df9b48f2d1384b76d519489e8740ff3be64e0ad3f50598b576e03aecb9518"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:d5ca2db392c5a44a98f275ce73cd20a967c005e0d7c38a11f2ba88573a0cfff6"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "physics-existing-math-current-synthesis-1a037489-3c95-540b-8cae-0acd360358ee",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "codex-native-d-integration-sol",
+    "synthesizedAt": "2026-10-17T09:19:29.758632Z",
+    "rationaleDe": "Der aktuelle bilinguale Vertrag zu „Induktion durch Änderung des magnetischen Flusses“ bleibt bestehen. Magnetischer Fluss hängt von Feld, überdeckter Fläche und ihrer Normalenorientierung ab; Induktion benötigt dessen zeitliche Änderung. Die lernende Person konstruiert die Flächennormale, deutet BAcosα mit Einheit und erklärt aus einem Ablauf die Intervalle mit Flussänderung. Bei einer neuen Translation durch einen begrenzten Feldbereich unterscheidet die lernende Person Ein-/Austritt von unverändertem Fluss bei vollständiger Feldüberdeckung. Beide tatsächlich vorliegenden Ganzkontext-Reviews urteilen keep und empfehlen für das mitgelesene vollständige V2-Profil none; die konkrete Evidence-Fassung der zweiten Runde wird unverändert übernommen.",
+    "rationaleEn": "The current bilingual contract for “Induction by Change of Magnetic Flux” is retained. Magnetic flux depends on field, overlapped area, and its normal orientation; induction requires its change over time. The learner constructs the surface normal, interprets BAcosα with its unit, and explains intervals of changing flux from a process description. For a fresh translation through a bounded field region, the learner distinguishes entry and exit from unchanged flux under full overlap. Both actual whole-context reviews judge keep and recommend none for the complete V2 profile read alongside the goal; the second round's concrete evidence formulation is adopted unchanged.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Magnetischer Fluss hängt von Feld, überdeckter Fläche und ihrer Normalenorientierung ab; Induktion benötigt dessen zeitliche Änderung.",
+      "essentialUnderstandingEn": "Magnetic flux depends on field, overlapped area, and its normal orientation; induction requires its change over time.",
+      "observablePerformanceDe": "Die lernende Person konstruiert die Flächennormale, deutet BAcosα mit Einheit und erklärt aus einem Ablauf die Intervalle mit Flussänderung.",
+      "observablePerformanceEn": "The learner constructs the surface normal, interprets BAcosα with its unit, and explains intervals of changing flux from a process description.",
+      "transferExpectationDe": "Bei einer neuen Translation durch einen begrenzten Feldbereich unterscheidet die lernende Person Ein-/Austritt von unverändertem Fluss bei vollständiger Feldüberdeckung.",
+      "transferExpectationEn": "For a fresh translation through a bounded field region, the learner distinguishes entry and exit from unchanged flux under full overlap."
+    },
+    "dissent": [
+      {
+        "dissentId": "physics-existing-math-current-synthesis-1a037489-3c95-540b-8cae-0acd360358ee.dissent-1",
+        "source": "both",
+        "disposition": "accepted_second",
+        "textDe": "Die beiden aktuellen keep/none-Reviews verwenden eigenständige Verständnis- und Begründungstexte. Die oben konkret benannte Understanding-/Handlungs-/Transferevidence wird aus der zweiten Runde übernommen; die erste Meinung bleibt unverändert gebunden.",
+        "textEn": "The two current keep/none reviews use independently written understanding evidence and rationales. The specific understanding, performance, and transfer evidence stated above is taken from the second round; the first opinion remains bound unchanged."
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:8fa250fcd86699569cfe800e6f8727a3090d5868ffd989df66295d3f5846cfd3"
+}

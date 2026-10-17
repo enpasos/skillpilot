@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physics-existing-math-current-resolution-8cdef591-6ddb-5151-8c74-a80be0271079",
+  "goal": {
+    "goalId": "8cdef591-6ddb-5151-8c74-a80be0271079",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:46ed7cf7b864cabf50dcd2f12fafc6a0323e0e99fb636614b99f51d596814af6",
+    "pageFingerprint": "sha256:ceb2c10a74f3eef0d15d58a563a142da0a759213a903b0671ae91d6c6f5bb59f",
+    "goalReviewContextFingerprint": "sha256:98c1dc129aa00b7714cb0d9679e84df090fab21dedae621c7fd92dfacfd409be",
+    "finalText": {
+      "titleDe": "Membran- und Axialwiderstand im passiven Axonmodell untersuchen",
+      "titleEn": "Investigate membrane and axial resistance in a passive axon model",
+      "descriptionDe": "Die lernende Person kann Potenzialverläufe in einem passiven Widerstandsleitermodell messen und mathematisch beschreiben sowie begründen, warum ein größerer Membranwiderstand die räumliche Abschwächung verringert, ein größerer Axialwiderstand sie dagegen verstärkt.",
+      "descriptionEn": "The learner can measure and mathematically describe potential profiles in a passive cable model and justify why greater membrane resistance reduces spatial attenuation whereas greater axial resistance increases it."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-a-20261017-v1",
+      "campaignDigest": "sha256:b23805760ff147505f7d53ab1a339fd1e1dd226dc7eda0776ccfe4ec09726b43",
+      "roundId": "physics-existing-math-prerequisites-first-a-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-a-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "goalReviewContextFingerprint": "sha256:98c1dc129aa00b7714cb0d9679e84df090fab21dedae621c7fd92dfacfd409be",
+      "batchId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-006",
+      "runId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-006.gpt61-sol-ultra",
+      "runManifestDigest": "sha256:c4c5e37e1f85289802f553e474f9cf4fff96923921c82b047f789c71e1ebc44b",
+      "resultsDigest": "sha256:e52423ab9709c27f6222ce9f7fabb5e7e029aa82cd36d56d85b03f6d10565c1c",
+      "recordId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-006.gpt61-sol-ultra.16",
+      "recordDigest": "sha256:4c55a77ee4d8b1c3980aa215826bd245e2110942d4905b7bcde93e2bc1e5d37b"
+    },
+    "second": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-b-20261017-v1",
+      "campaignDigest": "sha256:e5062c24fc41990b95c544705fa59130d293784be6143a7146169694e24d1103",
+      "roundId": "physics-existing-math-prerequisites-first-b-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-b-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "goalReviewContextFingerprint": "sha256:98c1dc129aa00b7714cb0d9679e84df090fab21dedae621c7fd92dfacfd409be",
+      "batchId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-006",
+      "runId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-006.sol-native-d",
+      "runManifestDigest": "sha256:bf7f541643fbb2936478e262546548e9f50c5c16632be4b8795d1fd536208fb3",
+      "resultsDigest": "sha256:374837d35e7d5af666cd8329d03970a09e7cfed9f66b1c04bda748f6b02a837b",
+      "recordId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-006.sol-native-d.goal-016",
+      "recordDigest": "sha256:9fb6201ada03a30805db99f04ce39cf6ac75760c1bca84d55bd18327e39b88a2"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:d5ca2db392c5a44a98f275ce73cd20a967c005e0d7c38a11f2ba88573a0cfff6"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "physics-existing-math-current-synthesis-8cdef591-6ddb-5151-8c74-a80be0271079",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Root AI synthesis; native D integration with faithful English translation",
+    "synthesizedAt": "2026-10-17T09:28:15.543662Z",
+    "rationaleDe": "D fordert Potenzialmessung. P erlaubt alternativ vollständig analysiert; beide Fälle geben Funktion bzw. Simulationstabelle vor, sodass eigene Datenerhebung entfallen kann. Das ist die konkrete Abdeckungslücke. In der Kabeltheorie werden r_m und r_i traditionell beide längenbezogen benannt, obwohl r_m Ω·m und r_i Ω/m trägt. Die proportionalen Skalierungen im P sind korrekt; der Sprachhinweis rechtfertigt keine zusätzliche Dimensionsaufgabe. Beide Reviews verlangen zu Recht mindestens selbst erhobene Modellwerte. Diese Resolution entscheidet ausschließlich den aktuellen D-Wortlaut. Erforderliche P-Korrekturen und deren neue fachliche Qualifikation werden getrennt behandelt; unveränderte P-Akzeptanz wird nicht behauptet.",
+    "rationaleEn": "The description requires potential measurement. The profile permits a wholly analytical alternative; both cases supply a function or simulation table, allowing the learner's own data collection to be omitted. This is the concrete coverage gap. Cable theory traditionally describes both r_m and r_i as length-related even though their units are Ω·m and Ω/m respectively. The proportional scalings in the profile are correct; the wording note does not justify an additional dimensional-analysis task. Both reviews correctly require at least independently collected model values. This resolution decides only the current description wording. Required profile corrections and their fresh substantive qualification are handled separately; acceptance of an unchanged profile is not asserted.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Membranleckströme und axialer Längswiderstand begrenzen die passive räumliche Reichweite unterschiedlich; eine Längskonstante beschreibt den normierten Potenzialabfall unter festgelegten Modellbedingungen.",
+      "essentialUnderstandingEn": "Membrane leakage and axial longitudinal resistance limit passive spatial reach in different ways; a length constant describes normalized potential decay under specified model conditions.",
+      "observablePerformanceDe": "Die lernende Person ermittelt Potenziale relativ zu einer festen Referenz an mehreren Orten eines sicheren Ersatzmodells und beschreibt den Verlauf mit einem geprüften räumlichen Abklingmodell.",
+      "observablePerformanceEn": "The learner obtains potentials relative to a fixed reference at several positions in a safe analogue and describes the profile with a checked spatial decay model.",
+      "transferExpectationDe": "Bei isoliert verändertem Membran- oder Axialwiderstand sagt sie die Richtung der Reichweitenänderung voraus und begründet sie mit Leck- und Längsstrom statt mit einer zeitlichen Leitungsgeschwindigkeit.",
+      "transferExpectationEn": "For an isolated change in membrane or axial resistance, the learner predicts the direction of the range change and explains it using leakage and longitudinal current rather than a temporal conduction speed."
+    },
+    "dissent": [
+      {
+        "dissentId": "physics-existing-math-current-synthesis-8cdef591-6ddb-5151-8c74-a80be0271079.dissent-1",
+        "source": "both",
+        "disposition": "merged",
+        "textDe": "Beide aktuellen D-Urteile lauten keep. P-Empfehlungen bleiben unverändert gebunden: erste Runde revise, zweite Runde revise. D fordert Potenzialmessung. P erlaubt alternativ vollständig analysiert; beide Fälle geben Funktion bzw. Simulationstabelle vor, sodass eigene Datenerhebung entfallen kann. Das ist die konkrete Abdeckungslücke. In der Kabeltheorie werden r_m und r_i traditionell beide längenbezogen benannt, obwohl r_m Ω·m und r_i Ω/m trägt. Die proportionalen Skalierungen im P sind korrekt; der Sprachhinweis rechtfertigt keine zusätzliche Dimensionsaufgabe. Beide Reviews verlangen zu Recht mindestens selbst erhobene Modellwerte. Diese Resolution entscheidet ausschließlich den aktuellen D-Wortlaut. Erforderliche P-Korrekturen und deren neue fachliche Qualifikation werden getrennt behandelt; unveränderte P-Akzeptanz wird nicht behauptet.",
+        "textEn": "Both current description judgments are keep. Their profile recommendations remain bound unchanged: first round revise, second round revise. The description requires potential measurement. The profile permits a wholly analytical alternative; both cases supply a function or simulation table, allowing the learner's own data collection to be omitted. This is the concrete coverage gap. Cable theory traditionally describes both r_m and r_i as length-related even though their units are Ω·m and Ω/m respectively. The proportional scalings in the profile are correct; the wording note does not justify an additional dimensional-analysis task. Both reviews correctly require at least independently collected model values. This resolution decides only the current description wording. Required profile corrections and their fresh substantive qualification are handled separately; acceptance of an unchanged profile is not asserted."
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:73efdd792019dfe4ce72c00968b606838fe578a275610a37d96e56a01bbafe1d"
+}

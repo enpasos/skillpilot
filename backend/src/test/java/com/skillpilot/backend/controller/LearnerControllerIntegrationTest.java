@@ -19,6 +19,8 @@ import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.MasteryRepository;
 import com.skillpilot.backend.repository.PlannedGoalRepository;
 import com.skillpilot.backend.service.CurriculaService;
+import com.skillpilot.backend.service.CanonicalPrerequisiteTestContext;
+import com.skillpilot.backend.landscape.LandscapeService;
 import com.skillpilot.backend.service.LearnerService;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -126,6 +128,16 @@ public class LearnerControllerIntegrationTest {
                 "selected": true,
                 "filterId": "GK",
                 "stage": "CrossStage"
+              }
+            }
+            """;
+    private static final String CANONICAL_PHYSICS_HE_CROSS_STAGE_GK_PERSONAL_CONFIG = """
+            {
+              "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+                "selected": true, "filterId": "HE", "stage": "CrossStage"
+              },
+              "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {
+                "selected": true, "filterId": "GK", "stage": "CrossStage"
               }
             }
             """;
@@ -419,6 +431,9 @@ public class LearnerControllerIntegrationTest {
 
     @Autowired
     private LearnerService learnerService;
+
+    @Autowired
+    private LandscapeService landscapeService;
 
     @Autowired
     private CurriculaService curriculaService;
@@ -716,14 +731,17 @@ public class LearnerControllerIntegrationTest {
 
     @Test
     void getLearnerStateHttpTurnsMixedLegacyConservationPlanAndMasteryIntoCanonicalFrontier() throws Exception {
-        String responseBody = getLearnerStateBody(
+        String responseBody = getPreparedLearnerStateBody(
                 List.of(
                         LEGACY_PHYSICS_CONSERVATION_CLUSTER_ID,
                         LEGACY_BAYERN_PHYSICS_ENERGY_CLUSTER_ID,
                         LEGACY_BAYERN_PHYSICS_MOMENTUM_CLUSTER_ID),
                 List.of(
                         LEGACY_PHYSICS_ENERGY_CONSERVATION_ID,
-                        LEGACY_BAYERN_PHYSICS_MOMENTUM_CONSERVATION_ID));
+                        LEGACY_BAYERN_PHYSICS_MOMENTUM_CONSERVATION_ID),
+                List.of(CANONICAL_PHYSICS_SIMPLE_COLLISIONS_ID, CANONICAL_PHYSICS_INELASTIC_COLLISIONS_ID),
+                Set.of("91c49019-ea51-4ce5-a919-c91c45b25e83", "839ecc8f-3a60-418b-bc92-64bfeef33824"),
+                CANONICAL_PHYSICS_HE_CROSS_STAGE_GK_PERSONAL_CONFIG);
 
         JsonNode root = objectMapper.readTree(responseBody);
         JsonNode planned = root.path("goals").path("planned");
@@ -747,14 +765,17 @@ public class LearnerControllerIntegrationTest {
 
     @Test
     void getLearnerStateHttpTurnsMixedLegacyMotionPlanAndMasteryIntoCanonicalFrontier() throws Exception {
-        String responseBody = getLearnerStateBody(
+        String responseBody = getPreparedLearnerStateBody(
                 List.of(
                         LEGACY_PHYSICS_CLUSTER_ID,
                         LEGACY_BAYERN_PHYSICS_MOTION_CLUSTER_ID,
                         LEGACY_BAYERN_PHYSICS_MOTION_MODELING_ID),
                 List.of(
                         LEGACY_BAYERN_PHYSICS_DIAGRAMS_ID,
-                        LEGACY_SEK1_LINEAR_FUNCTIONS_ID));
+                        LEGACY_SEK1_LINEAR_FUNCTIONS_ID),
+                List.of(CANONICAL_PHYSICS_UNIFORM_MOTION_ID),
+                Set.of(CANONICAL_PHYSICS_DIAGRAMS_ID),
+                CANONICAL_PHYSICS_CROSS_STAGE_GK_PERSONAL_CONFIG);
 
         JsonNode root = objectMapper.readTree(responseBody);
         JsonNode planned = root.path("goals").path("planned");
@@ -777,12 +798,15 @@ public class LearnerControllerIntegrationTest {
 
     @Test
     void getLearnerStateHttpTurnsMixedLegacyE3PlanAndMasteryIntoCanonicalSuperpositionFrontier() throws Exception {
-        String responseBody = getLearnerStateBody(
+        String responseBody = getPreparedLearnerStateBody(
                 List.of(
                         LEGACY_PHYSICS_E3_CLUSTER_ID,
                         LEGACY_BAYERN_PHYSICS_HORIZONTAL_THROW_HYPOTHESES_ID,
                         LEGACY_BAYERN_PHYSICS_HORIZONTAL_THROW_ANALYSIS_ID),
-                List.of(LEGACY_PHYSICS_APPLY_F_EQUALS_M_A_ID));
+                List.of(LEGACY_PHYSICS_APPLY_F_EQUALS_M_A_ID),
+                List.of(CANONICAL_PHYSICS_SUPERPOSITION_ID),
+                Set.of("5f289cdc-fda1-4058-b44f-041ba1398e79"),
+                CANONICAL_PHYSICS_CROSS_STAGE_GK_PERSONAL_CONFIG);
 
         JsonNode root = objectMapper.readTree(responseBody);
         JsonNode planned = root.path("goals").path("planned");
@@ -804,9 +828,12 @@ public class LearnerControllerIntegrationTest {
 
     @Test
     void getLearnerStateHttpTurnsLegacyE3PlanAndMasteryIntoCanonicalSuperpositionFrontier() throws Exception {
-        String responseBody = getLearnerStateBody(
+        String responseBody = getPreparedLearnerStateBody(
                 List.of(LEGACY_PHYSICS_E3_CLUSTER_ID),
-                List.of(LEGACY_PHYSICS_APPLY_F_EQUALS_M_A_ID));
+                List.of(LEGACY_PHYSICS_APPLY_F_EQUALS_M_A_ID),
+                List.of(CANONICAL_PHYSICS_SUPERPOSITION_ID),
+                Set.of("5f289cdc-fda1-4058-b44f-041ba1398e79"),
+                CANONICAL_PHYSICS_CROSS_STAGE_GK_PERSONAL_CONFIG);
 
         JsonNode root = objectMapper.readTree(responseBody);
         JsonNode planned = root.path("goals").path("planned");
@@ -824,9 +851,11 @@ public class LearnerControllerIntegrationTest {
 
     @Test
     void getLearnerStateHttpExposesAuthoredNewtonAtomsInsteadOfCurricularAreaCluster() throws Exception {
-        String responseBody = getLearnerStateBody(
+        String responseBody = getPreparedLearnerStateBody(
                 List.of(CANONICAL_PHYSICS_NEWTON_AXIOMS_CLUSTER_ID),
                 List.of(LEGACY_PHYSICS_ACCELERATED_ID),
+                List.of(CANONICAL_PHYSICS_FIRST_LAW_ID),
+                Set.of(),
                 CANONICAL_PHYSICS_CROSS_STAGE_GK_PERSONAL_CONFIG);
 
         JsonNode root = objectMapper.readTree(responseBody);
@@ -1771,6 +1800,35 @@ public class LearnerControllerIntegrationTest {
             titles.add(topic.path("title").asText());
         }
         assertThat(titles).contains("Q3 Stochastik", "Abiturprüfung Mathematik");
+    }
+
+    private String getPreparedLearnerStateBody(
+            List<String> plannedIds,
+            List<String> originallyStoredIds,
+            List<String> testedTargetIds,
+            Set<String> suppliedByLegacyProjection,
+            String personalCurriculum) throws Exception {
+        // A mastered legacy predecessor does not certify its own prerequisites.
+        // First preserve the real blocked state, then store the missing earlier
+        // preparation explicitly so this test can isolate plan/mastery migration.
+        JsonNode blocked = objectMapper.readTree(getLearnerStateBody(
+                plannedIds, originallyStoredIds, personalCurriculum));
+        assertThat(jsonIds(blocked.path("frontier"))).doesNotContainAnyElementsOf(testedTargetIds);
+        assertThat(learnerService.getMastery(learnerId)).containsAllEntriesOf(
+                suppliedByLegacyProjection.stream().collect(java.util.stream.Collectors.toMap(
+                        id -> id, id -> 1.0)));
+        List<String> preparedIds = CanonicalPrerequisiteTestContext.withStoredPrerequisites(
+                landscapeService, testedTargetIds, originallyStoredIds, suppliedByLegacyProjection);
+        assertThat(preparedIds).doesNotContainAnyElementsOf(testedTargetIds);
+        if (!suppliedByLegacyProjection.isEmpty()) {
+            assertThat(preparedIds).doesNotContainAnyElementsOf(suppliedByLegacyProjection);
+        }
+        // The positive migration case must enroll these goals. An explicitly
+        // prerequisite-only goal never becomes an offer through extra mastery.
+        assertThat(learnerService.getFilteredAtomicGoalIds(
+                CANONICAL_PHYSICS_ID, personalCurriculum, null, false))
+                .containsAll(testedTargetIds);
+        return getLearnerStateBody(plannedIds, preparedIds, personalCurriculum);
     }
 
     private String getLearnerStateBodyForPlannedGoals(String... goalIds) throws Exception {

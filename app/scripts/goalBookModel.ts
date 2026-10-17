@@ -20,6 +20,7 @@ import {
   compileCompositionView,
   normalizeCompositionView,
   type CompositionView,
+  type CompositionViewNode,
   type CompositionCompileResult,
   type CompiledCompositionPreviewNode,
 } from '../src/utils/authoring/compositionViewAuthoring'
@@ -667,6 +668,7 @@ const assertUniqueCanonicalGoalIds = (landscape: unknown) => {
 const resolveExternalLandscapes = (
   rawLandscape: unknown,
   externalSources: GoalBookExternalLandscapeBuildSource[],
+  rawViews: unknown[],
 ): ResolvedExternalLandscapes => {
   assertUniqueCanonicalGoalIds(rawLandscape)
   const primaryRecord = asRecord(rawLandscape, 'landscape')
@@ -746,6 +748,31 @@ const resolveExternalLandscapes = (
     })
   })
 
+  // Explicit prerequisite-only references authorize lookup support from an
+  // already bound source. Preserve a referenced subtree's contains hierarchy
+  // so the ordinary composition compiler can resolve its authored role.
+  const externalSubtreeGoalIds = new Set<string>()
+  const addSubtree = (goalId: string) => {
+    if (externalSubtreeGoalIds.has(goalId)) return
+    const goal = rawExternalGoalById.get(goalId)
+    if (!goal) return
+    externalSubtreeGoalIds.add(goalId)
+    requiredExternalGoalIds.add(goalId)
+    const contains = Array.isArray(goal.contains) ? goal.contains : []
+    contains.forEach((reference) => addSubtree(normalizeGoalRef(reference)))
+  }
+  const visitReference = (node: CompositionViewNode) => {
+    if (node.kind === 'structure') {
+      node.children.forEach(visitReference)
+      return
+    }
+    if (node.kind === 'landscapeEntry' || node.projectionRole !== 'prerequisiteOnly') return
+    if (!rawExternalGoalById.has(node.goalId)) return
+    if (node.kind === 'canonicalSubtree') addSubtree(node.goalId)
+    else requiredExternalGoalIds.add(node.goalId)
+  }
+  rawViews.forEach((rawView) => normalizeCompositionView(rawView).rootNodes.forEach(visitReference))
+
   const externalGoalStubs = [...requiredExternalGoalIds]
     .sort(compareStrings)
     .map((goalId) => {
@@ -753,8 +780,8 @@ const resolveExternalLandscapes = (
         ?? fail(`cannot materialize external prerequisite ${goalId}.`)
       return {
         ...structuredClone(goal),
-        type: 'atomic',
-        contains: [],
+        ...(externalSubtreeGoalIds.has(goalId) ? {} : { type: 'atomic' }),
+        contains: externalSubtreeGoalIds.has(goalId) ? structuredClone(goal.contains ?? []) : [],
         requires: [],
       }
     })
@@ -1858,6 +1885,8 @@ export const buildGoalBookModel = ({
   const resolvedExternalLandscapes = resolveExternalLandscapes(
     rawLandscape,
     externalLandscapeSources,
+    [rawCompositionView, ...(rawCompositionViewSources ?? []).map(({ view }) => view)]
+      .filter((view) => view !== undefined),
   )
   const {
     landscape,
@@ -2062,7 +2091,7 @@ export const buildGoalBookModel = ({
             prerequisiteId,
             graph.goalById,
             referenceLandscapeId,
-            canonicalGoalUrl(normalizedAtlasBaseUrl, landscapeId, prerequisiteId),
+            canonicalGoalUrl(normalizedAtlasBaseUrl, referenceLandscapeId ?? landscapeId, prerequisiteId),
             mode,
           )
         }),
@@ -2382,7 +2411,7 @@ export const parseAndValidateGoalBookModel = (raw: unknown): GoalBookModel => {
       }
       const expectedUrl = canonicalGoalUrl(
         model.book.atlasBaseUrl ?? undefined,
-        model.book.landscapeId,
+        reference.landscapeId ?? model.book.landscapeId,
         goalId,
       )
       if (reference.canonicalUrl !== expectedUrl) {

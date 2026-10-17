@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physics-existing-math-current-resolution-d18d4190-ddc1-5181-b1b6-e79947b737c2",
+  "goal": {
+    "goalId": "d18d4190-ddc1-5181-b1b6-e79947b737c2",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:e779dacc231c01467f281b8dbe76aab4e0376a814c360d70709772e9afbded29",
+    "pageFingerprint": "sha256:02f1a1b422ccc9c5eac2cf7fa2148bf785f5403f8231a058da6a846ac190e59f",
+    "goalReviewContextFingerprint": "sha256:4d08a91dbcb1b3eb112f5e27b79ed2dfa7e2564e9e6a57e59c668dc37ea91a86",
+    "finalText": {
+      "titleDe": "Induktionsgesetz in Ableitungsform anwenden",
+      "titleEn": "Apply the Time-Derivative Form of the Law of Induction",
+      "descriptionDe": "Die lernende Person kann bei einem differenzierbaren zeitabhängigen magnetischen Fluss die momentane Induktionsspannung einer Spule mit N gleichartigen Windungen mit U_ind(t) = −N · dΦ(t)/dt bestimmen und den zeitlichen Spannungsverlauf physikalisch deuten.",
+      "descriptionEn": "When magnetic flux is a differentiable function of time, the learner can determine the instantaneous induced voltage of a coil with N equivalent turns using U_ind(t) = −N · dΦ(t)/dt and physically interpret the voltage’s time dependence."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-a-20261017-v1",
+      "campaignDigest": "sha256:b23805760ff147505f7d53ab1a339fd1e1dd226dc7eda0776ccfe4ec09726b43",
+      "roundId": "physics-existing-math-prerequisites-first-a-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-a-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "goalReviewContextFingerprint": "sha256:4d08a91dbcb1b3eb112f5e27b79ed2dfa7e2564e9e6a57e59c668dc37ea91a86",
+      "batchId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-004",
+      "runId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-004.gpt61-sol-ultra",
+      "runManifestDigest": "sha256:9c9ddaf0c348a25c1e1b43323c964818c2d46354ae4d16b5df3e0d7d5f22dec8",
+      "resultsDigest": "sha256:4063be3a53db26b433b9daf13cbafc1a3787e8c8d805d448fa968dd9528959b2",
+      "recordId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-004.gpt61-sol-ultra.16",
+      "recordDigest": "sha256:c0dad705abb059853343b27cb4af7de3d19ab6528875925c797a80a88bc0a548"
+    },
+    "second": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-b-20261017-v1",
+      "campaignDigest": "sha256:e5062c24fc41990b95c544705fa59130d293784be6143a7146169694e24d1103",
+      "roundId": "physics-existing-math-prerequisites-first-b-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-b-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "goalReviewContextFingerprint": "sha256:4d08a91dbcb1b3eb112f5e27b79ed2dfa7e2564e9e6a57e59c668dc37ea91a86",
+      "batchId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-004",
+      "runId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-004.sol-native-d",
+      "runManifestDigest": "sha256:a84563029eb88312e47261a09ceb869965e36e2828fd2ae6e4cd6a2a28b96c92",
+      "resultsDigest": "sha256:a1f0742fd58d23c41f41b21804a5546f13564cc25c9ee328614efebbf482a670",
+      "recordId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-004.sol-native-d.goal-016",
+      "recordDigest": "sha256:289537d77226062d5abbc6ca3dee11400f5e6f7c72e4599e4dd2e2977ed865d5"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:d5ca2db392c5a44a98f275ce73cd20a967c005e0d7c38a11f2ba88573a0cfff6"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "physics-existing-math-current-synthesis-d18d4190-ddc1-5181-b1b6-e79947b737c2",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "codex-native-d-integration-sol",
+    "synthesizedAt": "2026-10-17T09:19:29.758632Z",
+    "rationaleDe": "Der aktuelle bilinguale Vertrag zu „Induktionsgesetz in Ableitungsform anwenden“ bleibt bestehen. Momentane Induktionsspannung folgt der negativen Flusssteigung unter fester Orientierung, nicht dem Flusswert; am Knick ist die klassische Ableitung nicht eindeutig definiert. Die lernende Person differenziert einen neuen glatten Flussverlauf und erklärt Spannungsnullen und Extremwerte mit Steigung, Einheiten und N-Skalierung. Bei einem frischen glatten Puls und einem Verlauf mit Knick konstruiert die lernende Person den Spannungsverlauf und benennt die Grenze des Momentanwerts am Knick. Beide tatsächlich vorliegenden Ganzkontext-Reviews urteilen keep und empfehlen für das mitgelesene vollständige V2-Profil none; die konkrete Evidence-Fassung der zweiten Runde wird unverändert übernommen.",
+    "rationaleEn": "The current bilingual contract for “Apply the Time-Derivative Form of the Law of Induction” is retained. Instantaneous induced voltage follows negative flux slope under fixed orientation, not flux value; at a corner the classical derivative is not uniquely defined. The learner differentiates a fresh smooth flux curve and explains voltage zeros and extrema through slope, units, and turn-count scaling. For a fresh smooth pulse and a curve with a corner, the learner constructs voltage and states the limit on its instantaneous value at the corner. Both actual whole-context reviews judge keep and recommend none for the complete V2 profile read alongside the goal; the second round's concrete evidence formulation is adopted unchanged.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Momentane Induktionsspannung folgt der negativen Flusssteigung unter fester Orientierung, nicht dem Flusswert; am Knick ist die klassische Ableitung nicht eindeutig definiert.",
+      "essentialUnderstandingEn": "Instantaneous induced voltage follows negative flux slope under fixed orientation, not flux value; at a corner the classical derivative is not uniquely defined.",
+      "observablePerformanceDe": "Die lernende Person differenziert einen neuen glatten Flussverlauf und erklärt Spannungsnullen und Extremwerte mit Steigung, Einheiten und N-Skalierung.",
+      "observablePerformanceEn": "The learner differentiates a fresh smooth flux curve and explains voltage zeros and extrema through slope, units, and turn-count scaling.",
+      "transferExpectationDe": "Bei einem frischen glatten Puls und einem Verlauf mit Knick konstruiert die lernende Person den Spannungsverlauf und benennt die Grenze des Momentanwerts am Knick.",
+      "transferExpectationEn": "For a fresh smooth pulse and a curve with a corner, the learner constructs voltage and states the limit on its instantaneous value at the corner."
+    },
+    "dissent": [
+      {
+        "dissentId": "physics-existing-math-current-synthesis-d18d4190-ddc1-5181-b1b6-e79947b737c2.dissent-1",
+        "source": "both",
+        "disposition": "accepted_second",
+        "textDe": "Die beiden aktuellen keep/none-Reviews verwenden eigenständige Verständnis- und Begründungstexte. Die oben konkret benannte Understanding-/Handlungs-/Transferevidence wird aus der zweiten Runde übernommen; die erste Meinung bleibt unverändert gebunden.",
+        "textEn": "The two current keep/none reviews use independently written understanding evidence and rationales. The specific understanding, performance, and transfer evidence stated above is taken from the second round; the first opinion remains bound unchanged."
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:0b3c12af374cefd373235dc6ac9502dbcd892bfc6c48707a66cb29ee9b94ea5e"
+}

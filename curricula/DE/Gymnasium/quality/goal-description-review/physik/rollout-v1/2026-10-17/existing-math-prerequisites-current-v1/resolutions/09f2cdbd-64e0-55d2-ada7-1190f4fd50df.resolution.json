@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physics-existing-math-current-resolution-09f2cdbd-64e0-55d2-ada7-1190f4fd50df",
+  "goal": {
+    "goalId": "09f2cdbd-64e0-55d2-ada7-1190f4fd50df",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:4a84495d204bf0ccdc70a5ff739b8482f6bbbe9581f4b95a095a45cb029f4149",
+    "pageFingerprint": "sha256:c1bda0e09e216c53dd51dedd85e6f291e64bf16ed44dd8d238475d561a83903f",
+    "goalReviewContextFingerprint": "sha256:b24c6815b7f65480c6df1c94c73ab2eb66fc433b48ad5dc6d80a2ac6f3618875",
+    "finalText": {
+      "titleDe": "Methode: Lösungsansatz für DGL (Exponentialfunktion)",
+      "titleEn": "Method: Exponential Ansatz for Differential Equations",
+      "descriptionDe": "Die lernende Person kann bei einfachen physikalischen Differenzialgleichungen, in denen die Änderungsrate proportional zur Zustandsgröße ist (z. B. bei der RC-Entladung), einen passenden Exponentialansatz wählen und durch Ableiten prüfen, ob er die Differenzialgleichung und die Anfangsbedingung erfüllt.",
+      "descriptionEn": "The learner can choose an appropriate exponential ansatz for simple physics differential equations in which the rate of change is proportional to the state variable (e.g., RC discharge) and verify by differentiation that it satisfies the differential equation and the initial condition."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-a-20261017-v1",
+      "campaignDigest": "sha256:b23805760ff147505f7d53ab1a339fd1e1dd226dc7eda0776ccfe4ec09726b43",
+      "roundId": "physics-existing-math-prerequisites-first-a-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-a-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "goalReviewContextFingerprint": "sha256:b24c6815b7f65480c6df1c94c73ab2eb66fc433b48ad5dc6d80a2ac6f3618875",
+      "batchId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-004",
+      "runId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-004.gpt61-sol-ultra",
+      "runManifestDigest": "sha256:9c9ddaf0c348a25c1e1b43323c964818c2d46354ae4d16b5df3e0d7d5f22dec8",
+      "resultsDigest": "sha256:4063be3a53db26b433b9daf13cbafc1a3787e8c8d805d448fa968dd9528959b2",
+      "recordId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-004.gpt61-sol-ultra.11",
+      "recordDigest": "sha256:dfe2eaa79dbe921b6e12bb0ff5ed63ea7a2eafe8823dd6c0968dc8b4733241fb"
+    },
+    "second": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-b-20261017-v1",
+      "campaignDigest": "sha256:e5062c24fc41990b95c544705fa59130d293784be6143a7146169694e24d1103",
+      "roundId": "physics-existing-math-prerequisites-first-b-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-b-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "goalReviewContextFingerprint": "sha256:b24c6815b7f65480c6df1c94c73ab2eb66fc433b48ad5dc6d80a2ac6f3618875",
+      "batchId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-004",
+      "runId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-004.sol-native-d",
+      "runManifestDigest": "sha256:a84563029eb88312e47261a09ceb869965e36e2828fd2ae6e4cd6a2a28b96c92",
+      "resultsDigest": "sha256:a1f0742fd58d23c41f41b21804a5546f13564cc25c9ee328614efebbf482a670",
+      "recordId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-004.sol-native-d.goal-011",
+      "recordDigest": "sha256:fa52158f40c130bd04be765bfd24d3c2de2b10442e7d867ab9ef63732c3aca17"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:d5ca2db392c5a44a98f275ce73cd20a967c005e0d7c38a11f2ba88573a0cfff6"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis/batch-004.decisions.json",
+    "manifestId": "physics-existing-math-current-synthesis-batch-4",
+    "manifestDigest": "sha256:8dc5cd7bf0faab6b65830a3a5dfae9981ef58177c2d2b5cfe7a2e483087aafae",
+    "manifestFingerprint": "sha256:c4e3bb983bd4181c767e145e1410cddb017dedd40d8511eeff991033538691a4",
+    "decisionId": "physics-existing-math-current-synthesis-09f2cdbd-64e0-55d2-ada7-1190f4fd50df"
+  },
+  "synthesis": {
+    "synthesisId": "physics-existing-math-current-synthesis-09f2cdbd-64e0-55d2-ada7-1190f4fd50df",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Root AI synthesis; native D integration with faithful English translation",
+    "synthesizedAt": "2026-10-17T09:28:15.543662Z",
+    "rationaleDe": "Proportionalität bezeichnet hier bereits einen konstanten Proportionalitätsfaktor; k(t) wäre keine feste Proportionalität derselben Größen. Das ganze P nennt Konstante, Ableitungsprüfung, Anfangswert, Vorzeichen, Einheit und Zeitskala. Die Briefs sind Aufgabenentwürfe: ein anderer Prozess/andere Zustandsgröße und Wachstum/Abnahme werden unabhängig konkretisiert; fertige numerische Aufgaben sind nicht Pflichtbestandteil eines Profils. Doppelte ähnliche Erwartungen sind redaktionell unschön, entwerten den vollständigen Methodenkern aber nicht. Die generischen Variationstexte sollen bei Durchführung konkret erfüllt werden. Diese Resolution entscheidet ausschließlich den aktuellen D-Wortlaut. Erforderliche P-Korrekturen und deren neue fachliche Qualifikation werden getrennt behandelt; unveränderte P-Akzeptanz wird nicht behauptet.",
+    "rationaleEn": "Proportionality here already denotes a constant proportionality factor; k(t) would not be a fixed proportionality between the same quantities. The complete profile specifies the constant, derivative check, initial value, sign, unit, and time scale. The briefs are task outlines: another process or state quantity and growth versus decay are concretized independently; completed numerical tasks are not mandatory profile content. Similar duplicated expectations are editorially awkward but do not invalidate the complete methodological core. Generic variation statements must be concretely fulfilled when used. This resolution decides only the current description wording. Required profile corrections and their fresh substantive qualification are handled separately; acceptance of an unchanged profile is not asserted.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Eine zur Zustandsgröße proportionale Änderungsrate führt zu einer Exponentialfunktion mit zeitinversem Koeffizienten.",
+      "essentialUnderstandingEn": "A rate proportional to the state variable yields an exponential function with an inverse-time coefficient.",
+      "observablePerformanceDe": "Wählt den Ansatz, differenziert ihn und prüft Gleichung, Anfangswert und physikalische Zeitskala.",
+      "observablePerformanceEn": "Chooses the ansatz, differentiates it, and checks equation, initial value, and physical time scale.",
+      "transferExpectationDe": "Prüft bei einer zusätzlichen konstanten Quelle, warum ein unveränderter reiner Exponentialansatz die neue Gleichung verfehlt.",
+      "transferExpectationEn": "Checks why an unchanged pure exponential ansatz fails a new equation containing an additional constant source."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-6169bcc7721ccefa6a170adb259f3023b25986e2099fa5a412da133b13c45c37",
+        "source": "second",
+        "textDe": "Die zweite Runde schlug folgende Revision vor: „Die lernende Person kann bei einfachen physikalischen Differenzialgleichungen, deren Änderungsrate mit konstantem Proportionalitätsfaktor proportional zur Zustandsgröße ist, einen passenden Exponentialansatz wählen und durch Ableiten prüfen, ob er die Differenzialgleichung und die Anfangsbedingung erfüllt.“ Die Synthese verwirft diesen Ersatztext ausdrücklich und behält den aktuellen kanonischen Wortlaut bei. Proportionalität bezeichnet hier bereits einen konstanten Proportionalitätsfaktor; k(t) wäre keine feste Proportionalität derselben Größen. Das ganze P nennt Konstante, Ableitungsprüfung, Anfangswert, Vorzeichen, Einheit und Zeitskala. Die Briefs sind Aufgabenentwürfe: ein anderer Prozess/andere Zustandsgröße und Wachstum/Abnahme werden unabhängig konkretisiert; fertige numerische Aufgaben sind nicht Pflichtbestandteil eines Profils. Doppelte ähnliche Erwartungen sind redaktionell unschön, entwerten den vollständigen Methodenkern aber nicht. Die generischen Variationstexte sollen bei Durchführung konkret erfüllt werden. Diese Resolution entscheidet ausschließlich den aktuellen D-Wortlaut. Erforderliche P-Korrekturen und deren neue fachliche Qualifikation werden getrennt behandelt; unveränderte P-Akzeptanz wird nicht behauptet.",
+        "textEn": "The second round proposed this revision: “The learner can choose an appropriate exponential ansatz for simple physics differential equations whose rate of change is proportional to the state variable with a constant proportionality factor and verify by differentiation that it satisfies the equation and initial condition.” The synthesis explicitly rejects that replacement text and retains the current canonical wording. Proportionality here already denotes a constant proportionality factor; k(t) would not be a fixed proportionality between the same quantities. The complete profile specifies the constant, derivative check, initial value, sign, unit, and time scale. The briefs are task outlines: another process or state quantity and growth versus decay are concretized independently; completed numerical tasks are not mandatory profile content. Similar duplicated expectations are editorially awkward but do not invalidate the complete methodological core. Generic variation statements must be concretely fulfilled when used. This resolution decides only the current description wording. Required profile corrections and their fresh substantive qualification are handled separately; acceptance of an unchanged profile is not asserted.",
+        "disposition": "rejected_revision_evidence_accepted"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:0bd388d006c99c6569a9a243a59891f5785601c43593e63379b4b00bef76f493"
+}

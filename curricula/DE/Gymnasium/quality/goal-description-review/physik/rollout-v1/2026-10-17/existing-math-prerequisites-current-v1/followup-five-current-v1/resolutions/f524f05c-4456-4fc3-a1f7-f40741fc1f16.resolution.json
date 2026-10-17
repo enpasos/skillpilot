@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physics-existing-math-followup-five-resolution-f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+  "goal": {
+    "goalId": "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:a037c48de3259664d4079a953bb464ade1b34c1c51d049034c61ca23c41bc17d",
+    "pageFingerprint": "sha256:6e8871370dacf85cc7f5403a9c484a093ff386681867ed500e63fca5357ac896",
+    "goalReviewContextFingerprint": "sha256:7b576f6558b215124bdae13f4821ac6458f7a330b273da020b1716a081559ae8",
+    "finalText": {
+      "titleDe": "Impulserhaltung aus Newtonschen Axiomen (LK)",
+      "titleEn": "Momentum Conservation from Newton's Laws (Advanced Course)",
+      "descriptionDe": "Die lernende Person kann in einem Inertialsystem für ein materiell abgeschlossenes System aus Newtons zweitem und drittem Axiom herleiten, dass der Gesamtimpuls bei verschwindendem resultierendem äußerem Kraftstoß an den Intervallgrenzen gleich ist, und die Voraussetzungen für seine fortlaufende Erhaltung diskutieren.",
+      "descriptionEn": "In an inertial frame, the learner can derive from Newton's second and third laws that total momentum has equal values at the interval boundaries in a materially closed system when the net external impulse is zero and discuss the conditions for its continuous conservation."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physics-existing-math-followup-five-campaign-a-20261017-v1",
+      "campaignDigest": "sha256:d7cd021a93b2fb2db3667d97fe0539a33b715e7576181ee611af40dc4fd0e873",
+      "roundId": "physics-existing-math-followup-five-first-a-20261017-v1",
+      "independenceGroupId": "physics-existing-math-followup-five-independent-a-20261017-v1",
+      "reviewInputFingerprint": "sha256:b5e212d14fbdfe73d56b884355af035c27f4dcf4c7131313a44489dd1b856145",
+      "goalReviewContextFingerprint": "sha256:7b576f6558b215124bdae13f4821ac6458f7a330b273da020b1716a081559ae8",
+      "batchId": "physics-existing-math-followup-five-first-a-20261017-v1.batch-001",
+      "runId": "physics-existing-math-followup-five-native-a-20261017-v1",
+      "runManifestDigest": "sha256:9f9b2526594f98cd5c26a151b71516a1fa2815797c61411827ce43a5f9dad23c",
+      "resultsDigest": "sha256:1f9bf48138750949bb66b5cee4e8a6bc6e8e8e624fbfc323f1c408d3fdaddd64",
+      "recordId": "physics-existing-math-followup-five-native-a-20261017-v1.record-001",
+      "recordDigest": "sha256:4ac62abb22f3ea0251d59bf10eac0d9ab409bc4825af6c8b9798138bc297dd13"
+    },
+    "second": {
+      "campaignId": "physics-existing-math-followup-five-campaign-b-20261017-v1",
+      "campaignDigest": "sha256:f36ac17f64c2fe7501010d2c66ca7e8044a5aab19ea1a4ec48365ffb95269669",
+      "roundId": "physics-existing-math-followup-five-first-b-20261017-v1",
+      "independenceGroupId": "physics-existing-math-followup-five-independent-b-20261017-v1",
+      "reviewInputFingerprint": "sha256:b5e212d14fbdfe73d56b884355af035c27f4dcf4c7131313a44489dd1b856145",
+      "goalReviewContextFingerprint": "sha256:7b576f6558b215124bdae13f4821ac6458f7a330b273da020b1716a081559ae8",
+      "batchId": "physics-existing-math-followup-five-first-b-20261017-v1.batch-001",
+      "runId": "physics-existing-math-followup-five-first-b-20261017-v1.native-sol",
+      "runManifestDigest": "sha256:5f9d30a9a79bbc6e30a4929d8a13d9892b9cf11ff298077d4575e2aaae38f6dc",
+      "resultsDigest": "sha256:348d2965bd2897129f07c110bccf9369f2ab39a03b9e6b7a063cbf8716bb76bc",
+      "recordId": "physics-existing-math-followup-five-first-b-20261017-v1.native-sol.record-001",
+      "recordDigest": "sha256:ee8fb83badbaf9fa7880f746c71cb1830cf4559f0d63c1445f9ec364339bf35b"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:2c2c185f19ab3fd872be5b777d9fe3d38ec564e0bf42c96c50b7ac5415425546"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "physics-existing-math-followup-five-synthesis-f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Root AI synthesis; native D integration with faithful English translation",
+    "synthesizedAt": "2026-10-17T09:38:46.526306Z",
+    "rationaleDe": "Der tatsächlich korrigierte aktuelle D-Wortlaut trennt gleiche Gesamtimpulse an den Intervallgrenzen bei verschwindendem äußeren Gesamtkraftstoß von den Voraussetzungen zeitlich fortlaufender Erhaltung. Das vollständige P trägt die Newton-II/III-Summation, innere Kräfte, Vektorbilanz, Systemgrenzenwechsel und entgegengesetzte äußere Impulse. Beide neuen Reviews beurteilen genau diesen aktuellen Vertrag mit keep/P-none; Root übernimmt die konkrete Evidence aus A, gestützt durch B. Die ursprünglichen Urteile (revise/revise) bleiben im ursprünglichen 128er-Review unverändert erhalten. Diese Resolution bindet ausschließlich die beiden neuen aktuellen 5er-Reviews; sie behauptet keine historisch einstimmige Beurteilung.",
+    "rationaleEn": "The actually corrected current description distinguishes equal total momentum at the interval boundaries under zero total external impulse from the conditions for continuous conservation. The complete profile covers summation of Newton II/III, internal forces, the vector balance, changes of system boundary, and opposing external impulses. Both new reviews judge this exact current contract keep/P-none; Root adopts A's concrete evidence, supported by B. The original judgments (revise/revise) remain unchanged in the original 128-goal review. This resolution binds only the two new current five-goal reviews; it does not claim historically unanimous judgments.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "In einem materiell abgeschlossenen Newtonschen Mehrkörpersystem im Inertialsystem ergibt die Summe der Impulsänderungen die Änderung des vektoriellen Gesamtimpulses. Innere Kräfte heben sich nach dem dritten Axiom paarweise auf; deshalb gilt ΔP⃗ = J⃗_ext. Ein äußerer Gesamtkraftstoß von null sichert gleiche Anfangs- und Endimpulse, während zeitlich durchgehende Konstanz eine zu jedem Zeitpunkt verschwindende resultierende äußere Kraft verlangt.",
+      "essentialUnderstandingEn": "For a materially closed Newtonian multi-body system in an inertial frame, summing the momentum changes gives the change in vector total momentum. Internal forces cancel pairwise by the third law, giving ΔP⃗ = J⃗_ext. Zero total external impulse ensures equal initial and final momentum, whereas continuous constancy requires zero net external force at every instant.",
+      "observablePerformanceDe": "Die lernende Person wählt Systemgrenze und Zeitintervall, trennt innere und äußere Kräfte, summiert die Gleichungen des zweiten Axioms und begründet die Aufhebung innerer Kräfte. Sie leitet die vektorielle Impulsbilanz mit konsistenten Einheiten her und beurteilt anhand eines Kraftverlaufs getrennt die Endpunktgleichheit und die fortlaufende Erhaltung.",
+      "observablePerformanceEn": "The learner chooses a system boundary and time interval, distinguishes internal from external forces, sums the second-law equations, and justifies cancellation of internal forces. The learner derives the vector momentum balance with consistent units and uses a force history to assess endpoint equality and continuous conservation separately.",
+      "transferExpectationDe": "In einem frischen Fall wird die Systemgrenze von zwei wechselwirkenden Körpern auf einen Körper verkleinert oder ein äußerer Kraftverlauf mit zeitlich getrennten entgegengesetzten Impulsen vorgegeben. Die lernende Person leitet die jeweils veränderte Bilanz selbstständig her und erklärt, welche Erhaltungsaussage tatsächlich gilt.",
+      "transferExpectationEn": "A fresh case narrows the system boundary from two interacting bodies to one body or supplies an external force history with equal and opposite impulses at different times. The learner independently derives the changed balance and explains which conservation statement actually holds."
+    },
+    "dissent": [
+      {
+        "dissentId": "physics-existing-math-followup-five-synthesis-f524f05c-4456-4fc3-a1f7-f40741fc1f16.dissent-1",
+        "source": "both",
+        "disposition": "accepted_first",
+        "textDe": "Die beiden neuen Reviews stimmen in keep/P-none überein und formulieren ihre sechs Evidence-Felder sowie Begründungen unabhängig. Root wählt die konkrete Fassung aus A, gestützt durch B. Die ursprünglichen Urteile (revise/revise) bleiben im ursprünglichen 128er-Review unverändert erhalten. Diese Resolution bindet ausschließlich die beiden neuen aktuellen 5er-Reviews; sie behauptet keine historisch einstimmige Beurteilung.",
+        "textEn": "The two new reviews agree on keep/P-none and independently formulate their six evidence fields and rationales. Root selects the concrete formulation from A, supported by B. The original judgments (revise/revise) remain unchanged in the original 128-goal review. This resolution binds only the two new current five-goal reviews; it does not claim historically unanimous judgments."
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:3f8f06f89dc30e1c9a750cd144555492f16554833bbb436a86ccf86b1604edf1"
+}

@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physics-existing-math-current-resolution-3857891b-d328-585b-9936-85c7aff122ee",
+  "goal": {
+    "goalId": "3857891b-d328-585b-9936-85c7aff122ee",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:a0fa57a28313a5a4d54aa21686d17f0147f8701f75081196f26081b1319960b0",
+    "pageFingerprint": "sha256:27c5d9f4771a7355ee1dcea1283578c572cf0879ac1eb33fb788d54a60ebf932",
+    "goalReviewContextFingerprint": "sha256:afe91c2ba017fd494567397574c585d37e38a8d4f5b1659fc6a87d6e0750cd59",
+    "finalText": {
+      "titleDe": "Die Strom-Spannungs-Kennlinie einer Diode experimentell bestimmen",
+      "titleEn": "Determine a Diode’s Current–Voltage Characteristic Experimentally",
+      "descriptionDe": "Die lernende Person kann in einem beaufsichtigten, strombegrenzten Kleinspannungsversuch die Strom-Spannungs-Kennlinie einer Diode in Durchlass- und Sperrpolung aufnehmen und aus den Messwerten ihr richtungsabhängiges Leitverhalten begründen.",
+      "descriptionEn": "The learner can record a diode’s current–voltage characteristic under forward and reverse bias in a supervised, current-limited low-voltage experiment and use the measurements to justify its direction-dependent conduction."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-a-20261017-v1",
+      "campaignDigest": "sha256:b23805760ff147505f7d53ab1a339fd1e1dd226dc7eda0776ccfe4ec09726b43",
+      "roundId": "physics-existing-math-prerequisites-first-a-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-a-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "goalReviewContextFingerprint": "sha256:afe91c2ba017fd494567397574c585d37e38a8d4f5b1659fc6a87d6e0750cd59",
+      "batchId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-004",
+      "runId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-004.gpt61-sol-ultra",
+      "runManifestDigest": "sha256:9c9ddaf0c348a25c1e1b43323c964818c2d46354ae4d16b5df3e0d7d5f22dec8",
+      "resultsDigest": "sha256:4063be3a53db26b433b9daf13cbafc1a3787e8c8d805d448fa968dd9528959b2",
+      "recordId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-004.gpt61-sol-ultra.7",
+      "recordDigest": "sha256:eb39cb3e5e22130b40a12decbf52f8c8bda847b7d73d32bdd1b7b401e06154c3"
+    },
+    "second": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-b-20261017-v1",
+      "campaignDigest": "sha256:e5062c24fc41990b95c544705fa59130d293784be6143a7146169694e24d1103",
+      "roundId": "physics-existing-math-prerequisites-first-b-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-b-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "goalReviewContextFingerprint": "sha256:afe91c2ba017fd494567397574c585d37e38a8d4f5b1659fc6a87d6e0750cd59",
+      "batchId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-004",
+      "runId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-004.sol-native-d",
+      "runManifestDigest": "sha256:a84563029eb88312e47261a09ceb869965e36e2828fd2ae6e4cd6a2a28b96c92",
+      "resultsDigest": "sha256:a1f0742fd58d23c41f41b21804a5546f13564cc25c9ee328614efebbf482a670",
+      "recordId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-004.sol-native-d.goal-007",
+      "recordDigest": "sha256:b553ad6e274d257fed3f97c65cf626ea8d1e98cc9715f41b29663678834562ad"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:d5ca2db392c5a44a98f275ce73cd20a967c005e0d7c38a11f2ba88573a0cfff6"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "physics-existing-math-current-synthesis-3857891b-d328-585b-9936-85c7aff122ee",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "codex-native-d-integration-sol",
+    "synthesizedAt": "2026-10-17T09:19:29.758632Z",
+    "rationaleDe": "Der aktuelle bilinguale Vertrag zu „Die Strom-Spannungs-Kennlinie einer Diode experimentell bestimmen“ bleibt bestehen. Die Diodenkennlinie verbindet Strom durch die Diode mit Spannung direkt an ihr; eine Nullanzeige im Sperrbetrieb beweist keinen exakt verschwindenden Strom. Die lernende Person nimmt unter Aufsicht mit Strombegrenzung eigene signierte U-I-Paare auf, dokumentiert Bereiche und Unsicherheiten und begründet das Leitverhalten. Bei einer freigegebenen frischen Nachmessung mit höherer Auflösung prüft die lernende Person die Sperrstromanzeige und begrenzt den Vergleich durch Temperatur und Messunsicherheit. Beide tatsächlich vorliegenden Ganzkontext-Reviews urteilen keep und empfehlen für das mitgelesene vollständige V2-Profil none; die konkrete Evidence-Fassung der zweiten Runde wird unverändert übernommen.",
+    "rationaleEn": "The current bilingual contract for “Determine a Diode’s Current–Voltage Characteristic Experimentally” is retained. A diode characteristic relates current through the diode to voltage directly across it; a zero reverse-bias display does not prove exactly zero current. Under supervision with current limitation, the learner records original signed voltage-current pairs, documents ranges and uncertainties, and justifies conduction behavior. In an approved fresh repeat with higher resolution, the learner checks the reverse-current reading and bounds the comparison by temperature and uncertainty. Both actual whole-context reviews judge keep and recommend none for the complete V2 profile read alongside the goal; the second round's concrete evidence formulation is adopted unchanged.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die Diodenkennlinie verbindet Strom durch die Diode mit Spannung direkt an ihr; eine Nullanzeige im Sperrbetrieb beweist keinen exakt verschwindenden Strom.",
+      "essentialUnderstandingEn": "A diode characteristic relates current through the diode to voltage directly across it; a zero reverse-bias display does not prove exactly zero current.",
+      "observablePerformanceDe": "Die lernende Person nimmt unter Aufsicht mit Strombegrenzung eigene signierte U-I-Paare auf, dokumentiert Bereiche und Unsicherheiten und begründet das Leitverhalten.",
+      "observablePerformanceEn": "Under supervision with current limitation, the learner records original signed voltage-current pairs, documents ranges and uncertainties, and justifies conduction behavior.",
+      "transferExpectationDe": "Bei einer freigegebenen frischen Nachmessung mit höherer Auflösung prüft die lernende Person die Sperrstromanzeige und begrenzt den Vergleich durch Temperatur und Messunsicherheit.",
+      "transferExpectationEn": "In an approved fresh repeat with higher resolution, the learner checks the reverse-current reading and bounds the comparison by temperature and uncertainty."
+    },
+    "dissent": [
+      {
+        "dissentId": "physics-existing-math-current-synthesis-3857891b-d328-585b-9936-85c7aff122ee.dissent-1",
+        "source": "both",
+        "disposition": "accepted_second",
+        "textDe": "Die beiden aktuellen keep/none-Reviews verwenden eigenständige Verständnis- und Begründungstexte. Die oben konkret benannte Understanding-/Handlungs-/Transferevidence wird aus der zweiten Runde übernommen; die erste Meinung bleibt unverändert gebunden.",
+        "textEn": "The two current keep/none reviews use independently written understanding evidence and rationales. The specific understanding, performance, and transfer evidence stated above is taken from the second round; the first opinion remains bound unchanged."
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:17083de420081525d71eb974348892ac546787cb6d0fe21c4131188b5078d9c7"
+}

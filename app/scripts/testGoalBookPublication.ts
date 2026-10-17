@@ -209,6 +209,42 @@ assert.throws(
   'relation links cannot carry credentials',
 )
 
+const physics = verifiedBooks.find(({ model }) => model.book.id === 'de-gym-physik-bundesweit')
+assert.ok(physics, 'the real publication contains the registered Physics atlas')
+const mathPrerequisites = physics.model.pages.flatMap(({ externalPrerequisites }) => (
+  externalPrerequisites.filter(({ landscapeId }) => landscapeId === verified.model.book.landscapeId)
+))
+assert.ok(mathPrerequisites.length > 0, 'Physics exercises bound Mathematics prerequisite URLs')
+assert.doesNotThrow(
+  () => assertCanonicalRelationUrls(physics.model),
+  'bound Mathematics prerequisites retain their own canonical landscape in the Physics publication',
+)
+for (const reference of mathPrerequisites) {
+  assert.ok(reference.canonicalUrl)
+  assert.equal(new URL(reference.canonicalUrl).searchParams.get('landscape'), verified.model.book.landscapeId)
+}
+
+const unboundPhysicsModel = structuredClone(physics.model)
+unboundPhysicsModel.source.externalLandscapes = []
+assert.throws(
+  () => assertCanonicalRelationUrls(unboundPhysicsModel),
+  /unbound canonical landscape/u,
+  'a foreign canonical target requires an explicit bound source landscape',
+)
+const wrongPhysicsLandscapeModel = structuredClone(physics.model)
+const mathPrerequisite = wrongPhysicsLandscapeModel.pages
+  .flatMap(({ externalPrerequisites }) => externalPrerequisites)
+  .find(({ landscapeId }) => landscapeId === verified.model.book.landscapeId)
+assert.ok(mathPrerequisite?.canonicalUrl)
+const wrongPhysicsLandscapeUrl = new URL(mathPrerequisite.canonicalUrl)
+wrongPhysicsLandscapeUrl.searchParams.set('landscape', physics.model.book.landscapeId)
+mathPrerequisite.canonicalUrl = wrongPhysicsLandscapeUrl.toString()
+assert.throws(
+  () => assertCanonicalRelationUrls(wrongPhysicsLandscapeModel),
+  /unsafe canonical URL/u,
+  'a bound Mathematics prerequisite cannot silently resolve to the Physics atlas',
+)
+
 const temporaryDirectory = await mkdtemp(join(tmpdir(), 'skillpilot-published-goal-book.'))
 try {
   for (const subject of ['chemistry', 'biology']) {
