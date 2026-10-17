@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physics-existing-math-current-resolution-74a74132-fa39-541c-8d3c-696cf228452d",
+  "goal": {
+    "goalId": "74a74132-fa39-541c-8d3c-696cf228452d",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:27a9f8ca048e8fd9a07622eeaf562319bcb7411b70ebb1ca1b4f47523e5cfa68",
+    "pageFingerprint": "sha256:0fc507eaaf43070f0f9bdcf8ecbb3170d51092c41aade491e9b8b73a3a60dd15",
+    "goalReviewContextFingerprint": "sha256:e57f46f3b0105c28ee916df5cae0a0dbc0d8ebc1d94f1238b8d9942bb82dade7",
+    "finalText": {
+      "titleDe": "Linearbeschleuniger modellieren",
+      "titleEn": "Model Linear Accelerator",
+      "descriptionDe": "Die lernende Person kann lineare Beschleunigerstufen über die Energiezunahme einer Ladung im elektrischen Feld klassisch modellieren und begründen, warum bei Geschwindigkeiten, die nicht mehr klein gegenüber der Lichtgeschwindigkeit sind, relativistische Beziehungen für Energie und Impuls erforderlich werden.",
+      "descriptionEn": "The learner can model linear accelerator stages classically through the energy gained by a charge in an electric field and justify why relativistic relations for energy and momentum are required when speeds are no longer small compared with the speed of light."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-a-20261017-v1",
+      "campaignDigest": "sha256:b23805760ff147505f7d53ab1a339fd1e1dd226dc7eda0776ccfe4ec09726b43",
+      "roundId": "physics-existing-math-prerequisites-first-a-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-a-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "goalReviewContextFingerprint": "sha256:e57f46f3b0105c28ee916df5cae0a0dbc0d8ebc1d94f1238b8d9942bb82dade7",
+      "batchId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-004",
+      "runId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-004.gpt61-sol-ultra",
+      "runManifestDigest": "sha256:9c9ddaf0c348a25c1e1b43323c964818c2d46354ae4d16b5df3e0d7d5f22dec8",
+      "resultsDigest": "sha256:4063be3a53db26b433b9daf13cbafc1a3787e8c8d805d448fa968dd9528959b2",
+      "recordId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-004.gpt61-sol-ultra.12",
+      "recordDigest": "sha256:7cd1066877e48bb3219b6f8d6ca908966be626b5bf326e99e147c313a80e61cd"
+    },
+    "second": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-b-20261017-v1",
+      "campaignDigest": "sha256:e5062c24fc41990b95c544705fa59130d293784be6143a7146169694e24d1103",
+      "roundId": "physics-existing-math-prerequisites-first-b-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-b-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "goalReviewContextFingerprint": "sha256:e57f46f3b0105c28ee916df5cae0a0dbc0d8ebc1d94f1238b8d9942bb82dade7",
+      "batchId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-004",
+      "runId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-004.sol-native-d",
+      "runManifestDigest": "sha256:a84563029eb88312e47261a09ceb869965e36e2828fd2ae6e4cd6a2a28b96c92",
+      "resultsDigest": "sha256:a1f0742fd58d23c41f41b21804a5546f13564cc25c9ee328614efebbf482a670",
+      "recordId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-004.sol-native-d.goal-012",
+      "recordDigest": "sha256:2753fe684d54e8e41944d0d64bd593c964efc5c81d87cbf4038f4f182cace5b2"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:d5ca2db392c5a44a98f275ce73cd20a967c005e0d7c38a11f2ba88573a0cfff6"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "physics-existing-math-current-synthesis-74a74132-fa39-541c-8d3c-696cf228452d",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Root AI synthesis; native D integration with faithful English translation",
+    "synthesizedAt": "2026-10-17T09:28:15.543662Z",
+    "rationaleDe": "D trennt klassische Stufenbilanz und Relativitätsgrenze korrekt. P nennt zwar allgemeine Vorzeichenwahl, verwendet dann aber ΔK=qΔV ohne Potenzialreihenfolge. Außerdem soll Bewegungsrichtung allein aus Ladung/Polung bestimmt werden; vorhandene Anfangsgeschwindigkeit kann trotz entgegengesetzter Kraft zunächst bestehen. Die beiden konkreten Sollbehauptungen benötigen eine lokale Definition, keine zusätzliche Beschleunigerkompetenz. Diese Resolution entscheidet ausschließlich den aktuellen D-Wortlaut. Erforderliche P-Korrekturen und deren neue fachliche Qualifikation werden getrennt behandelt; unveränderte P-Akzeptanz wird nicht behauptet.",
+    "rationaleEn": "The description correctly separates classical stage-by-stage energy balance from the relativistic limit. Although the profile mentions general sign choice, it then uses ΔK=qΔV without defining the potential order. It also asks movement direction to be determined from charge and polarity alone, although initial velocity can persist despite an opposing force. These two concrete expected statements require a local definition rather than an additional accelerator competence. This resolution decides only the current description wording. Required profile corrections and their fresh substantive qualification are handled separately; acceptance of an unchanged profile is not asserted.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Eine Beschleunigerstufe überträgt durch eine passend definierte Potenzialdifferenz Energie; klassische Energie- und Impulsformeln sind nur für v≪c tragfähig.",
+      "essentialUnderstandingEn": "An accelerator stage transfers energy through an appropriately defined potential difference; classical energy and momentum formulas are valid only for v≪c.",
+      "observablePerformanceDe": "Die lernende Person legt Punktreihenfolge, Ladungsvorzeichen und Anfangsbewegung fest, bilanziert Energiegewinne und prüft die klassische Geschwindigkeit gegen c.",
+      "observablePerformanceEn": "The learner specifies point order, charge sign, and initial motion, balances energy gains, and checks the classical speed against c.",
+      "transferExpectationDe": "Bei einer frischen umgepolten Stufe unterscheidet die lernende Person Abbremsung von tatsächlicher Bewegungsumkehr und begründet bei hoher Endenergie die relativistische Modellwahl.",
+      "transferExpectationEn": "For a fresh reversed-polarity stage, the learner distinguishes slowing from actual reversal and justifies a relativistic model at high final energy."
+    },
+    "dissent": [
+      {
+        "dissentId": "physics-existing-math-current-synthesis-74a74132-fa39-541c-8d3c-696cf228452d.dissent-1",
+        "source": "both",
+        "disposition": "merged",
+        "textDe": "Beide aktuellen D-Urteile lauten keep. P-Empfehlungen bleiben unverändert gebunden: erste Runde revise, zweite Runde revise. D trennt klassische Stufenbilanz und Relativitätsgrenze korrekt. P nennt zwar allgemeine Vorzeichenwahl, verwendet dann aber ΔK=qΔV ohne Potenzialreihenfolge. Außerdem soll Bewegungsrichtung allein aus Ladung/Polung bestimmt werden; vorhandene Anfangsgeschwindigkeit kann trotz entgegengesetzter Kraft zunächst bestehen. Die beiden konkreten Sollbehauptungen benötigen eine lokale Definition, keine zusätzliche Beschleunigerkompetenz. Diese Resolution entscheidet ausschließlich den aktuellen D-Wortlaut. Erforderliche P-Korrekturen und deren neue fachliche Qualifikation werden getrennt behandelt; unveränderte P-Akzeptanz wird nicht behauptet.",
+        "textEn": "Both current description judgments are keep. Their profile recommendations remain bound unchanged: first round revise, second round revise. The description correctly separates classical stage-by-stage energy balance from the relativistic limit. Although the profile mentions general sign choice, it then uses ΔK=qΔV without defining the potential order. It also asks movement direction to be determined from charge and polarity alone, although initial velocity can persist despite an opposing force. These two concrete expected statements require a local definition rather than an additional accelerator competence. This resolution decides only the current description wording. Required profile corrections and their fresh substantive qualification are handled separately; acceptance of an unchanged profile is not asserted."
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:bb4dbe57fc9f9ea42faa009fd5e6c67047ea2a1dc3073438b5a4c28f0da6441d"
+}

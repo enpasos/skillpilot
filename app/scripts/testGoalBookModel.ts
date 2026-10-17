@@ -11,6 +11,7 @@ import {
 import {
   compileCompositionView,
   normalizeCompositionView,
+  type CompositionView,
   type CompiledCompositionPreviewNode,
 } from '../src/utils/authoring/compositionViewAuthoring'
 import {
@@ -517,10 +518,53 @@ assert.deepEqual(
     goalId: 'math-foundation',
     title: 'External mathematics foundation',
     landscapeId: 'fixture-mathematics',
-    canonicalUrl: 'https://skillpilot.com/goal-atlas?landscape=fixture-landscape&edition=curricular-atomic-v1#goal-math-foundation',
+    canonicalUrl: 'https://skillpilot.com/goal-atlas?landscape=fixture-mathematics&edition=curricular-atomic-v1#goal-math-foundation',
   }],
 )
 parseAndValidateGoalBookModel(crossLandscapeBook)
+
+const wrongLandscapeLink = structuredClone(crossLandscapeBook)
+wrongLandscapeLink.pages.find(({ goalId }) => goalId === 'A')!.externalPrerequisites[0].canonicalUrl =
+  'https://skillpilot.com/goal-atlas?landscape=fixture-landscape&edition=curricular-atomic-v1#goal-math-foundation'
+const wrongLinkPage = wrongLandscapeLink.pages.find(({ goalId }) => goalId === 'A')!
+const { pageFingerprint: _wrongLinkFingerprint, ...wrongLinkPageContent } = wrongLinkPage
+void _wrongLinkFingerprint
+wrongLinkPage.pageFingerprint = `sha256:${createHash('sha256').update(stableGoalBookJson({
+  modelSchemaVersion: wrongLandscapeLink.schemaVersion,
+  edition: wrongLandscapeLink.book.edition,
+  page: wrongLinkPageContent,
+})).digest('hex')}`
+assert.throws(() => parseAndValidateGoalBookModel(wrongLandscapeLink), /invalid external canonical URL/u)
+
+const explicitExternalSubtree = structuredClone(crossLandscapePrerequisite)
+explicitExternalSubtree.externalLandscapeSources![0].landscape = {
+  ...externalLandscapeFixture,
+  goals: [
+    goal({ id: 'math-root', contains: ['math-branch', 'math-unused'] }),
+    goal({ id: 'math-branch', contains: ['math-foundation'] }),
+    goal({ id: 'math-foundation', title: 'External mathematics foundation' }),
+    goal({ id: 'math-unused' }),
+  ],
+}
+;(explicitExternalSubtree.compositionView as CompositionView).rootNodes.push({
+  kind: 'canonicalSubtree', goalId: 'math-root', projectionRole: 'prerequisiteOnly',
+})
+const supportedBook = buildGoalBookModel(explicitExternalSubtree)
+assert.deepEqual(supportedBook.pages.map(({ goalId }) => goalId), crossLandscapeBook.pages.map(({ goalId }) => goalId))
+assert.deepEqual(supportedBook.excludedTargetGoals, crossLandscapeBook.excludedTargetGoals)
+assert.deepEqual(supportedBook.pages.find(({ goalId }) => goalId === 'A')!.externalPrerequisites,
+  crossLandscapeBook.pages.find(({ goalId }) => goalId === 'A')!.externalPrerequisites)
+parseAndValidateGoalBookModel(supportedBook)
+
+const unboundExternalSubtree = structuredClone(explicitExternalSubtree)
+unboundExternalSubtree.externalLandscapeSources![0].landscape = externalLandscapeFixture
+expectBuildFailure(unboundExternalSubtree, /CPV-002 math-root/u)
+
+const externalSubtreeTarget = structuredClone(explicitExternalSubtree)
+;(externalSubtreeTarget.compositionView as CompositionView).rootNodes.push({
+  kind: 'goalEntry', goalId: 'math-unused', projectionRole: 'target',
+})
+expectBuildFailure(externalSubtreeTarget, /invalid bound navigation view: CPV-002 math-unused/u)
 
 const openCrossLandscapeSource = structuredClone(crossLandscapeBook) as unknown as {
   source: { externalLandscapes: Array<Record<string, unknown>> }

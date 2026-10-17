@@ -5875,39 +5875,14 @@ public class LearnerService {
                 continue; // Already mastered
             }
 
-            boolean prerequisitesMet = true;
-            List<String> requires = effectiveRequires.getOrDefault(goal.getId(), goal.getRequires());
-            if (requires != null) {
-                for (String reqId : requires) {
-                    String resolvedReqId = resolveGoalRef(reqId, prerequisiteLookupGoals);
-                    if (resolvedReqId == null) {
-                        // Preserve the existing optimistic behavior for prerequisites that are
-                        // unknown in the applicable lookup. A matched composition view expands
-                        // that lookup to its structural graph, where prerequisite-only goals are
-                        // known and therefore evaluated.
-                        continue;
-                    }
-                    if (projection.compositionViewApplied()
-                            && !projection.targetGoalIds().contains(resolvedReqId)
-                            && !projection.prerequisiteOnlyGoalIds().contains(resolvedReqId)) {
-                        if (isDirectRequirement(goal, resolvedReqId, prerequisiteLookupGoals)) {
-                            prerequisitesMet = false;
-                            break;
-                        }
-                        // A matched composition view distinguishes selectable targets from
-                        // intentional prerequisite-only support goals. Do not reintroduce
-                        // unrelated requirements inherited from legacy clusters through the
-                        // structural compatibility graph. Direct canonical requirements fail
-                        // closed when the authored view omits them.
-                        continue;
-                    }
-                    Double reqMastery = effectivePrereqMastery.getOrDefault(resolvedReqId, 0.0);
-                    if (reqMastery < 0.9) {
-                        prerequisitesMet = false;
-                        break;
-                    }
-                }
-            }
+            boolean prerequisitesMet = areFrontierPrerequisitesMastered(
+                    goal,
+                    projection,
+                    prerequisiteLookupGoals,
+                    effectiveRequires,
+                    effectivePrereqMastery,
+                    Boolean.TRUE.equals(learner.getStrictMode()),
+                    null);
 
             if (prerequisitesMet
                     && !isExamGoalUnavailableForHardCheck(goal)
@@ -6061,60 +6036,15 @@ public class LearnerService {
                 continue;
             }
 
-            boolean prerequisitesMet = true;
-            List<String> requires = useStructuralPrerequisiteLookup
-                    ? globalEffectiveRequires.getOrDefault(goal.getId(), goal.getRequires())
-                    : effectiveRequires.getOrDefault(goal.getId(), goal.getRequires());
-            if (requires != null) {
-                for (String reqId : requires) {
-                    Map<String, LearningGoal> prerequisiteLookupGoals =
-                            useStructuralPrerequisiteLookup ? allStructuralGoals : allFilteredGoals;
-                    String resolvedReqId = resolveGoalRef(reqId, prerequisiteLookupGoals);
-                    if (resolvedReqId == null) {
-                        if (strictMode) {
-                            // In strict mode, unknown prerequisite means blocked
-                            prerequisitesMet = false;
-                            break;
-                        }
-                        // Optimistic mode only ignores truly unknown prerequisites. A known
-                        // prerequisite remains effective even when it is prerequisite-only.
-                        continue;
-                    }
-                    if (projection.compositionViewApplied()
-                            && !projection.targetGoalIds().contains(resolvedReqId)
-                            && !projection.prerequisiteOnlyGoalIds().contains(resolvedReqId)) {
-                        if (isDirectRequirement(goal, resolvedReqId, prerequisiteLookupGoals)) {
-                            prerequisitesMet = false;
-                            break;
-                        }
-                        // Only explicitly reached prerequisite-only goals participate in a
-                        // composition projection. Broad inherited requirements from legacy
-                        // cluster structure must not become hidden blockers. Direct canonical
-                        // requirements fail closed when the authored view omits them.
-                        continue;
-                    }
-
-                    if (!strictMode
-                            && !plannedIds.isEmpty()
-                            && !scope.contains(resolvedReqId)) {
-                        if (!projection.compositionViewApplied()
-                                || !projection.prerequisiteOnlyGoalIds().contains(resolvedReqId)) {
-                            // Preserve optimistic scope behavior. The only out-of-scope goals
-                            // that a composition view deliberately keeps active are its
-                            // prerequisite-only support goals.
-                            continue;
-                        }
-                    }
-
-                    Double reqMastery = useStructuralPrerequisiteLookup
-                            ? globalEffectivePrereqMastery.getOrDefault(resolvedReqId, 0.0)
-                            : effectivePrereqMastery.getOrDefault(resolvedReqId, 0.0);
-                    if (reqMastery < 0.9) {
-                        prerequisitesMet = false;
-                        break;
-                    }
-                }
-            }
+            boolean prerequisitesMet = areFrontierPrerequisitesMastered(
+                    goal,
+                    projection,
+                    useStructuralPrerequisiteLookup ? allStructuralGoals : allFilteredGoals,
+                    useStructuralPrerequisiteLookup ? globalEffectiveRequires : effectiveRequires,
+                    useStructuralPrerequisiteLookup ? globalEffectivePrereqMastery : effectivePrereqMastery,
+                    strictMode,
+                    !strictMode && !plannedIds.isEmpty() && !projection.compositionViewApplied()
+                            ? scope : null);
 
             if (isExamGoalUnavailableForHardCheck(goal)) {
                 continue;
@@ -6227,6 +6157,61 @@ public class LearnerService {
                         || "Motivation".equalsIgnoreCase(tag));
     }
 
+    private boolean areFrontierPrerequisitesMastered(
+            LearningGoal goal,
+            GoalProjection projection,
+            Map<String, LearningGoal> prerequisiteLookupGoals,
+            Map<String, List<String>> effectiveRequires,
+            Map<String, Double> effectivePrereqMastery,
+            boolean strictMode,
+            Set<String> legacyPrerequisiteScope) {
+        ArrayDeque<LearningGoal> pending = new ArrayDeque<>();
+        Set<String> checked = new HashSet<>();
+        pending.add(goal);
+        while (!pending.isEmpty()) {
+            LearningGoal owner = pending.removeFirst();
+            if (!checked.add(owner.getId())) {
+                continue;
+            }
+            List<String> requires = effectiveRequires.getOrDefault(owner.getId(), owner.getRequires());
+            if (requires == null) {
+                continue;
+            }
+            for (String reqId : requires) {
+                String resolvedReqId = resolveGoalRef(reqId, prerequisiteLookupGoals);
+                boolean direct = isDirectRequirement(
+                        owner, resolvedReqId == null ? reqId : resolvedReqId, prerequisiteLookupGoals);
+                if (resolvedReqId == null) {
+                    if (strictMode || (projection.compositionViewApplied() && direct)) {
+                        return false;
+                    }
+                    // Preserve optimistic unknown legacy compatibility requirements.
+                    continue;
+                }
+                if (projection.compositionViewApplied()
+                        && !projection.targetGoalIds().contains(resolvedReqId)
+                        && !projection.prerequisiteOnlyGoalIds().contains(resolvedReqId)) {
+                    if (direct) {
+                        return false;
+                    }
+                    // Broad inherited compatibility requirements outside an authored
+                    // projection must not become hidden blockers at any chain depth.
+                    continue;
+                }
+                if (legacyPrerequisiteScope != null && !legacyPrerequisiteScope.contains(resolvedReqId)) {
+                    continue;
+                }
+                if (effectivePrereqMastery.getOrDefault(resolvedReqId, 0.0) < 0.9) {
+                    return false;
+                }
+                // Persisted mastery of an intermediate goal does not certify its
+                // prerequisites. Follow the effective relation without changing mastery.
+                pending.addLast(prerequisiteLookupGoals.get(resolvedReqId));
+            }
+        }
+        return true;
+    }
+
     private boolean isDirectRequirement(
             LearningGoal goal,
             String resolvedRequirementId,
@@ -6235,8 +6220,8 @@ public class LearnerService {
             return false;
         }
         return goal.getRequires().stream()
-                .map(requirement -> resolveGoalRef(requirement, requirementLookupGoals))
-                .anyMatch(resolvedRequirementId::equals);
+                .anyMatch(requirement -> resolvedRequirementId.equals(requirement)
+                        || resolvedRequirementId.equals(resolveGoalRef(requirement, requirementLookupGoals)));
     }
 
     private List<FrontierGoal> getRequiredOrientationGoals(
@@ -9713,6 +9698,7 @@ public class LearnerService {
                 config == null ? Collections.emptyMap() : config;
 
         LinkedHashMap<String, CompositionGoalReference> referencedGoals = new LinkedHashMap<>();
+        List<Map<String, CompositionGoalReference>> referencesByView = new ArrayList<>();
         LinkedHashSet<String> fallbackGoalIds = new LinkedHashSet<>();
         LinkedHashSet<String> compositionViewIds = new LinkedHashSet<>();
         LinkedHashSet<String> presentationRootGoalIds = new LinkedHashSet<>();
@@ -9727,6 +9713,7 @@ public class LearnerService {
                         landscapeService.getById(readString(defaultView.get("landscapeId"))),
                         presentationRootGoalIds);
                 collectCompositionViewGoalReferences(defaultView.get("rootNodes"), referencedGoals);
+                referencesByView.add(new LinkedHashMap<>(referencedGoals));
             }
             authoritativeCandidateSeen = true;
         }
@@ -9768,6 +9755,7 @@ public class LearnerService {
                     addFilteredLandscapeGoalIds(landscape, allGoals, fallbackGoalIds);
                 }
             } else {
+                referencesByView.add(landscapeReferencedGoals);
                 landscapeReferencedGoals.forEach((goalId, reference) ->
                         referencedGoals.merge(goalId, reference, this::mergeCompositionGoalReferences));
             }
@@ -9783,10 +9771,37 @@ public class LearnerService {
                 hydrateExternalPrerequisiteOnlyStructuralGoals(
                         referencedGoals,
                         structuralGoals);
-        Map<String, CompositionProjectionAssignment> projectionAssignments =
-                resolveCompositionProjectionAssignments(
-                        referencedGoals,
-                        compositionStructuralGoals);
+        Map<String, CompositionProjectionAssignment> projectionAssignments = new LinkedHashMap<>();
+        Set<String> independentlyPresentedRootGoalIds = new LinkedHashSet<>();
+        for (Map<String, CompositionGoalReference> viewReferences : referencesByView) {
+            // Specificity resolves roles inside one subject view. Independently
+            // selected views then join their targets without removing enrollment.
+            Map<String, CompositionProjectionAssignment> viewAssignments =
+                    resolveCompositionProjectionAssignments(viewReferences, compositionStructuralGoals);
+            Set<String> viewTargetAncestors = viewAssignments.entrySet().stream()
+                    .filter(entry -> entry.getValue().role() == ProjectionRole.TARGET)
+                    .map(Map.Entry::getKey)
+                    .filter(allGoals::containsKey)
+                    .collect(Collectors.toCollection(LinkedHashSet::new));
+            addCompositionAncestors(compositionStructuralGoals, viewTargetAncestors);
+            for (String rootGoalId : presentationRootGoalIds) {
+                CompositionProjectionAssignment ownAssignment = viewAssignments.get(rootGoalId);
+                if (viewTargetAncestors.contains(rootGoalId)
+                        && (ownAssignment == null || ownAssignment.role() == ProjectionRole.TARGET)) {
+                    independentlyPresentedRootGoalIds.add(rootGoalId);
+                }
+            }
+            viewAssignments.forEach((goalId, assignment) -> {
+                CompositionProjectionAssignment current = projectionAssignments.get(goalId);
+                if (current != null && current.role() != assignment.role()) {
+                    if (assignment.role() == ProjectionRole.TARGET) {
+                        projectionAssignments.put(goalId, assignment);
+                    }
+                } else {
+                    mergeCompositionProjectionAssignment(goalId, assignment, projectionAssignments);
+                }
+            });
+        }
         LinkedHashSet<String> targetGoalIds = projectionAssignments.entrySet().stream()
                 .filter(entry -> entry.getValue().role() == ProjectionRole.TARGET)
                 .map(Map.Entry::getKey)
@@ -9806,6 +9821,10 @@ public class LearnerService {
                 .collect(Collectors.toCollection(LinkedHashSet::new));
         // Non-authoritative fallback goals are learner-facing targets.
         prerequisiteOnlyGoalIds.removeAll(targetGoalIds);
+        // A foreign support view cannot hide the existing navigation anchor
+        // of an independently selected subject. This does not enroll the
+        // anchor as a target or override POnly authored in that own view.
+        prerequisiteOnlyGoalIds.removeAll(independentlyPresentedRootGoalIds);
 
         LinkedHashSet<String> visibleGoalIds = new LinkedHashSet<>(targetGoalIds);
         addCompositionAncestors(allGoals, visibleGoalIds);

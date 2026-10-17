@@ -1,0 +1,156 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physics-existing-math-current-synthesis-batch-2",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Root AI synthesis; native D integration with faithful English translation",
+  "synthesizedAt": "2026-10-17T09:28:15.543662Z",
+  "batch": {
+    "batchId": "physics-existing-math-current-synthesis-batch-2",
+    "batchManifestDigest": "sha256:cff1fd2265a32ad85b3316ca95d87845c258df6c7ca69a8bb98c40f077cda7f7",
+    "configDigest": "sha256:ee224f52814e20e7e8785ebeed3f0d6fd6d12ff70314dbc4723184e4072243c4",
+    "bundleFingerprint": "sha256:a3e5ff4e8a6ce263cdba8a660005323d8e18a093b0a2a18d9ca4b2c78b2980c5",
+    "bookDigest": "sha256:3cbacf5cf3d4838db6ef75ed0fd3dbf2410d823d688c65bd250032bdd79fbace",
+    "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+    "dualSummaryDigest": "sha256:d5ca2db392c5a44a98f275ce73cd20a967c005e0d7c38a11f2ba88573a0cfff6",
+    "canonicalLandscapeDigest": "sha256:ee9ac934b68c13f0ed64335c362ebc807a9c8d91f5e74ad90bcb0a1baa22baee"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-a-20261017-v1",
+      "campaignDigest": "sha256:b23805760ff147505f7d53ab1a339fd1e1dd226dc7eda0776ccfe4ec09726b43",
+      "roundId": "physics-existing-math-prerequisites-first-a-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-a-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "batchId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-002",
+      "batchInputFingerprint": "sha256:7d2baf20f5dbd03a65bcc92ae4481de81a2b7b41c63b67086c4c2a8e83c8cf82",
+      "runId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-002.gpt61-sol-ultra",
+      "runManifestDigest": "sha256:5b6108fdc46ac0350718d07bb264fb6167aaec4d272ba91b0fc46e942dd9c5fd",
+      "resultsDigest": "sha256:43e144f145152cc4a2bcdb2e8a7f8757a927c6911c1a31f5830fc85d7a6108c3"
+    },
+    "second": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-b-20261017-v1",
+      "campaignDigest": "sha256:e5062c24fc41990b95c544705fa59130d293784be6143a7146169694e24d1103",
+      "roundId": "physics-existing-math-prerequisites-first-b-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-b-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "batchId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-002",
+      "batchInputFingerprint": "sha256:6c717e991ca4728b568d434db1d006f4a710d35a6c12a58215d1e6ea74a08d1f",
+      "runId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-002.sol-native-d",
+      "runManifestDigest": "sha256:b50791cb0066aea0cf9eb461998dbf5b1223d44cd6995966e121df7215ab350c",
+      "resultsDigest": "sha256:540f25420693baeb4341d9597a9a95f17b01f6527c3ea18b7e3b5547ac7b6d4b"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physics-existing-math-current-synthesis-ce431132-dfc4-42c2-aff6-bd72035190f8",
+      "goalId": "ce431132-dfc4-42c2-aff6-bd72035190f8",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:95d059f7d9429995816457c18cf514a4ed17fed36aa204f9f0d4c524af356a1d",
+      "pageFingerprint": "sha256:8b0394b5da874c0c43f2edc2354a3a055d5bc0a324f8f370c7f24ea65ab1a583",
+      "goalReviewContextFingerprint": "sha256:518037040152c2f76212874ddd2e60f9c33d3004d240041251eea1e4edae852b",
+      "finalText": {
+        "titleDe": "Bewegungen mit Diagrammen untersuchen",
+        "titleEn": "Investigate Motions with Diagrams",
+        "descriptionDe": "Die lernende Person kann einfache Bewegungen experimentell erfassen und in t-s-, t-v- und t-a-Diagrammen darstellen und interpretieren.",
+        "descriptionEn": "The learner can experimentally record simple motions and represent and interpret them in t-s, t-v, and t-a diagrams."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-002.gpt61-sol-ultra.7",
+          "recordDigest": "sha256:88f63d2bed4a11782dc2f5d04be4b4e4408873afda0216edc31115448c6d84ba"
+        },
+        "second": {
+          "recordId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-002.sol-native-d.goal-007",
+          "recordDigest": "sha256:21343f61622389c513c866a915113ffffd470e1d9e474c3dc562a7be1bc2d85c"
+        }
+      },
+      "revisionDissent": {
+        "sourceRound": "second",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann einfache Bewegungen sicher experimentell erfassen, gemessene und daraus bestimmte Größen unterscheiden und die Bewegung in zueinander passenden Zeit-Ort-, Zeit-Geschwindigkeits- und Zeit-Beschleunigungs-Diagrammen darstellen und interpretieren.",
+        "proposedDescriptionEn": "The learner can safely record simple motions experimentally, distinguish measured from derived quantities, and represent and interpret the motion in mutually consistent time-position, time-velocity, and time-acceleration graphs.",
+        "rationaleDe": "Experimentell erfassen und in drei Diagrammen darstellen behauptet nicht, Geschwindigkeit und Beschleunigung seien direkt beobachtet. Das vollständige P verlangt ausdrücklich gemessene/abgeleitete Größen, konsistente Vorzeichen, Steigungen/Flächen sowie Auflösungs- und Rauschgrenzen. Der Transfer vom Beschleunigungsprotokoll mit Anfangswerten zurück zu v und s ist echt. Bs D-Fassung erläutert bereits verbindliches Verständnis, ohne einen vorhandenen falschen Satz zu korrigieren. Diese Resolution entscheidet ausschließlich den aktuellen D-Wortlaut. Erforderliche P-Korrekturen und deren neue fachliche Qualifikation werden getrennt behandelt; unveränderte P-Akzeptanz wird nicht behauptet.",
+        "rationaleEn": "Experimentally recording motion and displaying it in three graphs does not claim that velocity and acceleration are directly observed. The complete profile explicitly distinguishes measured and derived quantities and requires consistent signs, slopes and areas, as well as resolution and noise limitations. Transfer from an acceleration record with initial values back to velocity and position is substantive. Round B's description explains understanding already required by the contract without correcting an existing false statement. This resolution decides only the current description wording. Required profile corrections and their fresh substantive qualification are handled separately; acceptance of an unchanged profile is not asserted."
+      },
+      "rationaleDe": "Experimentell erfassen und in drei Diagrammen darstellen behauptet nicht, Geschwindigkeit und Beschleunigung seien direkt beobachtet. Das vollständige P verlangt ausdrücklich gemessene/abgeleitete Größen, konsistente Vorzeichen, Steigungen/Flächen sowie Auflösungs- und Rauschgrenzen. Der Transfer vom Beschleunigungsprotokoll mit Anfangswerten zurück zu v und s ist echt. Bs D-Fassung erläutert bereits verbindliches Verständnis, ohne einen vorhandenen falschen Satz zu korrigieren. Diese Resolution entscheidet ausschließlich den aktuellen D-Wortlaut. Erforderliche P-Korrekturen und deren neue fachliche Qualifikation werden getrennt behandelt; unveränderte P-Akzeptanz wird nicht behauptet.",
+      "rationaleEn": "Experimentally recording motion and displaying it in three graphs does not claim that velocity and acceleration are directly observed. The complete profile explicitly distinguishes measured and derived quantities and requires consistent signs, slopes and areas, as well as resolution and noise limitations. Transfer from an acceleration record with initial values back to velocity and position is substantive. Round B's description explains understanding already required by the contract without correcting an existing false statement. This resolution decides only the current description wording. Required profile corrections and their fresh substantive qualification are handled separately; acceptance of an unchanged profile is not asserted."
+    },
+    {
+      "decisionId": "physics-existing-math-current-synthesis-7eeff2de-6015-49a6-a96e-a488d886dc9f",
+      "goalId": "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:1e1374abd88fb6216cbd7068d1c0eb3356434a0cecae642b3697c9c5f07cbb87",
+      "pageFingerprint": "sha256:aa3ccb825d51993cc9c1ff2669c0032cec7ab3ad6dac2130676e20651cc4ff62",
+      "goalReviewContextFingerprint": "sha256:df58f1f13f9c773cd75edf248519a5f64f6cb32dace900152b65a2050a20fc5b",
+      "finalText": {
+        "titleDe": "Kinetische Energie",
+        "titleEn": "Kinetic Energy",
+        "descriptionDe": "Die lernende Person kann die kinetische Energie $E_\\mathrm{k}=\\frac{1}{2}mv^2$ berechnen und die Abhängigkeit von Masse und Geschwindigkeit erläutern.",
+        "descriptionEn": "The learner can calculate kinetic energy $E_k=\\frac{1}{2}mv^2$ and explain its dependence on mass and velocity."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-002.gpt61-sol-ultra.14",
+          "recordDigest": "sha256:c409a22d708e9d5f573213a278df4b097f797df73916661b3d61920535a19dac"
+        },
+        "second": {
+          "recordId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-002.sol-native-d.goal-014",
+          "recordDigest": "sha256:0abbcef8d579bb38583b60ff4b979ba5cf3aaf76f2d7e100497e2655e07502c3"
+        }
+      },
+      "revisionDissent": {
+        "sourceRound": "second",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann im klassischen Modell die kinetische Energie eines Körpers im gewählten Bezugssystem mit E_k = ½mv² berechnen, v als Geschwindigkeitsbetrag deuten und die lineare Abhängigkeit von der Masse sowie die quadratische Abhängigkeit von diesem Betrag erläutern.",
+        "proposedDescriptionEn": "The learner can calculate a body's kinetic energy in a chosen reference frame using the classical model E_k = ½mv², interpret v as speed, and explain the linear dependence on mass and quadratic dependence on speed.",
+        "rationaleDe": "E_k=mv²/2 ist im klassischen Modell korrekt; eine vorzeichenbehaftete eindimensionale Geschwindigkeit liefert nach Quadrieren denselben Betrag. P bindet Skalarität, Nichtnegativität, Bezugssystem und Massenskalierung und prüft den Zug-/Bodenvergleich quantitativ. D behauptet weder Richtungs- noch Bezugssysteminvarianz. Bs Ergänzungen würden zutreffendes P nochmals in D ausformulieren. Diese Resolution entscheidet ausschließlich den aktuellen D-Wortlaut. Erforderliche P-Korrekturen und deren neue fachliche Qualifikation werden getrennt behandelt; unveränderte P-Akzeptanz wird nicht behauptet.",
+        "rationaleEn": "The relation E_k=mv²/2 is correct in the classical model; squaring a signed one-dimensional velocity gives the same magnitude. The profile specifies scalar character, nonnegativity, reference frame, and mass scaling and quantitatively tests the train-ground comparison. The description claims neither direction nor reference-frame invariance. Round B's additions would restate correct profile content in the description. This resolution decides only the current description wording. Required profile corrections and their fresh substantive qualification are handled separately; acceptance of an unchanged profile is not asserted."
+      },
+      "rationaleDe": "E_k=mv²/2 ist im klassischen Modell korrekt; eine vorzeichenbehaftete eindimensionale Geschwindigkeit liefert nach Quadrieren denselben Betrag. P bindet Skalarität, Nichtnegativität, Bezugssystem und Massenskalierung und prüft den Zug-/Bodenvergleich quantitativ. D behauptet weder Richtungs- noch Bezugssysteminvarianz. Bs Ergänzungen würden zutreffendes P nochmals in D ausformulieren. Diese Resolution entscheidet ausschließlich den aktuellen D-Wortlaut. Erforderliche P-Korrekturen und deren neue fachliche Qualifikation werden getrennt behandelt; unveränderte P-Akzeptanz wird nicht behauptet.",
+      "rationaleEn": "The relation E_k=mv²/2 is correct in the classical model; squaring a signed one-dimensional velocity gives the same magnitude. The profile specifies scalar character, nonnegativity, reference frame, and mass scaling and quantitatively tests the train-ground comparison. The description claims neither direction nor reference-frame invariance. Round B's additions would restate correct profile content in the description. This resolution decides only the current description wording. Required profile corrections and their fresh substantive qualification are handled separately; acceptance of an unchanged profile is not asserted."
+    },
+    {
+      "decisionId": "physics-existing-math-current-synthesis-68c90ba6-c438-463c-9a53-cf61062d416a",
+      "goalId": "68c90ba6-c438-463c-9a53-cf61062d416a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:1a8df2f516b4dd0164c664f2b6145cc196613a01378b47b1c240aef736207f1e",
+      "pageFingerprint": "sha256:575d36836fe6dee4b1fb40145b7cc2eeb7aedcd45f0057b008913b0a7b78e323",
+      "goalReviewContextFingerprint": "sha256:2158c3ef4184b8db4957fa7b8fee02356f2396aa60c1e58a2730f3522062942c",
+      "finalText": {
+        "titleDe": "Bezugssysteme und Geschwindigkeitsüberlagerung",
+        "titleEn": "Reference Frames and Velocity Superposition",
+        "descriptionDe": "Die lernende Person kann für eine Bewegung ein geeignetes Bezugssystem wählen und Relativgeschwindigkeiten vektoriell überlagern, um die resultierende Bewegung zu bestimmen und zu erklären.",
+        "descriptionEn": "The learner can choose a suitable frame of reference for a motion and combine relative velocities vectorially to determine and explain the resulting motion."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-002.gpt61-sol-ultra.17",
+          "recordDigest": "sha256:215d14e49901aa5591cae903e9da7f7d4948760be8a2eed5b129d0a5d7a78144"
+        },
+        "second": {
+          "recordId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-002.sol-native-d.goal-017",
+          "recordDigest": "sha256:511b7b30688ddfee515d60ed577157700e77f308e5deb733d9adba38ae98adb0"
+        }
+      },
+      "revisionDissent": {
+        "sourceRound": "second",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann für Bewegungen mit Geschwindigkeiten weit unterhalb der Lichtgeschwindigkeit geeignete gleichförmig gegeneinander bewegte Bezugssysteme wählen und Relativgeschwindigkeiten im klassischen Modell vektoriell überlagern, um die resultierende Bewegung im gewählten System zu bestimmen und zu erklären.",
+        "proposedDescriptionEn": "For motion at speeds far below the speed of light, the learner can choose suitable reference frames moving uniformly relative to one another and combine relative velocities vectorially in the classical model to determine and explain the resulting motion in the chosen frame.",
+        "rationaleDe": "D behandelt den klassischen E-Phasen-Kern; P konkretisiert ihn ausschließlich am 18-m/s-Zug sowie 3-/2-m/s-Boot. Nirgends wird ein relativistischer Zahlenfall mit klassischer Addition falsch gelöst oder universelle relativistische Gültigkeit behauptet. Bezugswahl, gerichtete Komponenten und nicht parallele Geometrie werden eigenständig geprüft. Bs Grenzhinweis wäre fachlich möglich, aber kein ernsthafter Defekt der vorhandenen langsamen Fälle. Diese Resolution entscheidet ausschließlich den aktuellen D-Wortlaut. Erforderliche P-Korrekturen und deren neue fachliche Qualifikation werden getrennt behandelt; unveränderte P-Akzeptanz wird nicht behauptet.",
+        "rationaleEn": "The description addresses the classical introductory-phase core, which the profile concretizes exclusively using an 18 m/s train and boats at 3 and 2 m/s. No relativistic numerical case is incorrectly solved using classical addition, and universal relativistic validity is not claimed. Reference choice, directed components, and nonparallel geometry are tested independently. Round B's validity-limit note would be scientifically possible but does not establish a serious defect in the existing low-speed cases. This resolution decides only the current description wording. Required profile corrections and their fresh substantive qualification are handled separately; acceptance of an unchanged profile is not asserted."
+      },
+      "rationaleDe": "D behandelt den klassischen E-Phasen-Kern; P konkretisiert ihn ausschließlich am 18-m/s-Zug sowie 3-/2-m/s-Boot. Nirgends wird ein relativistischer Zahlenfall mit klassischer Addition falsch gelöst oder universelle relativistische Gültigkeit behauptet. Bezugswahl, gerichtete Komponenten und nicht parallele Geometrie werden eigenständig geprüft. Bs Grenzhinweis wäre fachlich möglich, aber kein ernsthafter Defekt der vorhandenen langsamen Fälle. Diese Resolution entscheidet ausschließlich den aktuellen D-Wortlaut. Erforderliche P-Korrekturen und deren neue fachliche Qualifikation werden getrennt behandelt; unveränderte P-Akzeptanz wird nicht behauptet.",
+      "rationaleEn": "The description addresses the classical introductory-phase core, which the profile concretizes exclusively using an 18 m/s train and boats at 3 and 2 m/s. No relativistic numerical case is incorrectly solved using classical addition, and universal relativistic validity is not claimed. Reference choice, directed components, and nonparallel geometry are tested independently. Round B's validity-limit note would be scientifically possible but does not establish a serious defect in the existing low-speed cases. This resolution decides only the current description wording. Required profile corrections and their fresh substantive qualification are handled separately; acceptance of an unchanged profile is not asserted."
+    }
+  ],
+  "manifestFingerprint": "sha256:a32c3d4cc9bcd657691e157e17a7925a48654e591035bfae54f200e2731c9d09"
+}

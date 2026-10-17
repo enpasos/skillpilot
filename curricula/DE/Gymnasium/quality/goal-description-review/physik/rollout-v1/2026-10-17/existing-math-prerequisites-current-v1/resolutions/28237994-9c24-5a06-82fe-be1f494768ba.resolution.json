@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physics-existing-math-current-resolution-28237994-9c24-5a06-82fe-be1f494768ba",
+  "goal": {
+    "goalId": "28237994-9c24-5a06-82fe-be1f494768ba",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:61f43a22ea6092977e3705b318d8fe1185d0ddee8ce54afba9eb43826ffbc1de",
+    "pageFingerprint": "sha256:c729858b32eb50160e2940b1f4708ef6e20e2c1be226cd66baaf338176204eb0",
+    "goalReviewContextFingerprint": "sha256:8481bfdf2a4de8a152fd18aadff8672f964faf18ca89d1293098d4de30a79ea0",
+    "finalText": {
+      "titleDe": "Spannung in einfachen Stromkreisen messen",
+      "titleEn": "Measure voltage in simple circuits",
+      "descriptionDe": "Die lernende Person kann ein Voltmeter parallel zwischen zwei Punkten eines einfachen Kleinspannungsstromkreises mit geeignetem Messbereich anschließen, die Spannung mit Einheit messen und erläutern, auf welches Punktepaar sich der Messwert bezieht.",
+      "descriptionEn": "The learner can connect a voltmeter in parallel between two points of a simple low-voltage circuit using a suitable measurement range, measure the voltage with its unit, and explain which pair of points the reading refers to."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-a-20261017-v1",
+      "campaignDigest": "sha256:b23805760ff147505f7d53ab1a339fd1e1dd226dc7eda0776ccfe4ec09726b43",
+      "roundId": "physics-existing-math-prerequisites-first-a-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-a-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "goalReviewContextFingerprint": "sha256:8481bfdf2a4de8a152fd18aadff8672f964faf18ca89d1293098d4de30a79ea0",
+      "batchId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-001",
+      "runId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-001.gpt61-sol-ultra",
+      "runManifestDigest": "sha256:094515edecb2b7196fbdd172a2b16ede575ed41472b1261c95050a3616884c47",
+      "resultsDigest": "sha256:6fe96ecbef24b2bc767239d9b9b32c9c9c2f1869a0d8a054619a716dd87b6e84",
+      "recordId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-001.gpt61-sol-ultra.9",
+      "recordDigest": "sha256:8d2ae79b23ea67931ddd5f56a49d852c13d2c84dc32788ab64601368b928d4ed"
+    },
+    "second": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-b-20261017-v1",
+      "campaignDigest": "sha256:e5062c24fc41990b95c544705fa59130d293784be6143a7146169694e24d1103",
+      "roundId": "physics-existing-math-prerequisites-first-b-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-b-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "goalReviewContextFingerprint": "sha256:8481bfdf2a4de8a152fd18aadff8672f964faf18ca89d1293098d4de30a79ea0",
+      "batchId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-001",
+      "runId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-001.sol-native-d",
+      "runManifestDigest": "sha256:65f84fad2bb09d7c48c9fa9f6000b428869b9d58c565e162c7114af868acc62f",
+      "resultsDigest": "sha256:d116ad2f07ac28380a8ad995889234f0d281f51a94942218a3a869981863b8f7",
+      "recordId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-001.sol-native-d.goal-009",
+      "recordDigest": "sha256:11313e960e1f818b383b35dbbcecb53e74946ab2740c5b7c2bac694c26774d2b"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:d5ca2db392c5a44a98f275ce73cd20a967c005e0d7c38a11f2ba88573a0cfff6"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "physics-existing-math-current-synthesis-28237994-9c24-5a06-82fe-be1f494768ba",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Root AI synthesis; native D integration with faithful English translation",
+    "synthesizedAt": "2026-10-17T09:28:15.543662Z",
+    "rationaleDe": "D nennt Kleinspannung, geeigneten Messbereich und genau zwei Punkte. P bindet einen sicheren geeigneten Bereich und erklärt Vorzeichen über die Punktreihenfolge. Der Umpolfall fordert eine Vorhersage vor dem Wechsel; er behauptet nicht, ein beliebiges unidirektionales Analoggerät könne sicher negativ ausgesteuert werden. Bs Apparatgrenze ist bei konkreter Durchführung richtig, aber als Stimulus-/Gerätewahl kann ein geeignetes Instrument eingesetzt werden; ein zwingender falscher Sollsatz ist nicht belegt. Diese Resolution entscheidet ausschließlich den aktuellen D-Wortlaut. Erforderliche P-Korrekturen und deren neue fachliche Qualifikation werden getrennt behandelt; unveränderte P-Akzeptanz wird nicht behauptet.",
+    "rationaleEn": "The description specifies low voltage, a suitable measurement range, and exactly two points. The profile binds a safe suitable range and explains the sign through the order of the points. The polarity-reversal case requires a prediction before switching; it does not claim that any unidirectional analogue meter can safely show a negative deflection. Round B's apparatus limitation is correct for actual execution, but a suitable instrument can be selected when the stimulus and apparatus are specified; no necessarily false expected performance is established. This resolution decides only the current description wording. Required profile corrections and their fresh substantive qualification are handled separately; acceptance of an unchanged profile is not asserted.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Spannung bezieht sich auf ein geordnetes Punktepaar; das Voltmeter wird zwischen diesen Punkten parallel angeschlossen, und die Anschlussreihenfolge bestimmt das Vorzeichen.",
+      "essentialUnderstandingEn": "Voltage refers to an ordered pair of points; the voltmeter is connected in parallel between them, and terminal order determines the sign.",
+      "observablePerformanceDe": "Die lernende Person markiert beide Messpunkte, plant den Parallelanschluss in einem sicheren Kleinspannungsstromkreis, wählt den Bereich und berichtet den Wert mit Einheit und Bezugspaar.",
+      "observablePerformanceEn": "The learner marks both measurement points, plans the parallel connection in a safe low-voltage circuit, selects the range, and reports the value with its unit and reference pair.",
+      "transferExpectationDe": "Für eine neue Schaltung sagt die lernende Person bei vertauschten Leitungen an einem dafür geeigneten Digitalvoltmeter das umgekehrte Vorzeichen voraus und unterscheidet dies vom Wechsel eines Messpunkts.",
+      "transferExpectationEn": "For a fresh circuit, the learner predicts the reversed sign when leads are exchanged on a suitable digital voltmeter and distinguishes this from moving one measurement point."
+    },
+    "dissent": [
+      {
+        "dissentId": "physics-existing-math-current-synthesis-28237994-9c24-5a06-82fe-be1f494768ba.dissent-1",
+        "source": "both",
+        "disposition": "merged",
+        "textDe": "Beide aktuellen D-Urteile lauten keep. P-Empfehlungen bleiben unverändert gebunden: erste Runde none, zweite Runde revise. D nennt Kleinspannung, geeigneten Messbereich und genau zwei Punkte. P bindet einen sicheren geeigneten Bereich und erklärt Vorzeichen über die Punktreihenfolge. Der Umpolfall fordert eine Vorhersage vor dem Wechsel; er behauptet nicht, ein beliebiges unidirektionales Analoggerät könne sicher negativ ausgesteuert werden. Bs Apparatgrenze ist bei konkreter Durchführung richtig, aber als Stimulus-/Gerätewahl kann ein geeignetes Instrument eingesetzt werden; ein zwingender falscher Sollsatz ist nicht belegt. Diese Resolution entscheidet ausschließlich den aktuellen D-Wortlaut. Erforderliche P-Korrekturen und deren neue fachliche Qualifikation werden getrennt behandelt; unveränderte P-Akzeptanz wird nicht behauptet.",
+        "textEn": "Both current description judgments are keep. Their profile recommendations remain bound unchanged: first round none, second round revise. The description specifies low voltage, a suitable measurement range, and exactly two points. The profile binds a safe suitable range and explains the sign through the order of the points. The polarity-reversal case requires a prediction before switching; it does not claim that any unidirectional analogue meter can safely show a negative deflection. Round B's apparatus limitation is correct for actual execution, but a suitable instrument can be selected when the stimulus and apparatus are specified; no necessarily false expected performance is established. This resolution decides only the current description wording. Required profile corrections and their fresh substantive qualification are handled separately; acceptance of an unchanged profile is not asserted."
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:a036d47988d7946452a487ec91ded4a708a7e480fd194fed3931160a78270bca"
+}

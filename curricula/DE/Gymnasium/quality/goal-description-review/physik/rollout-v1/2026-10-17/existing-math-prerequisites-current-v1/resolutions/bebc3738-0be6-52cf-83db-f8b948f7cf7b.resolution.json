@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physics-existing-math-current-resolution-bebc3738-0be6-52cf-83db-f8b948f7cf7b",
+  "goal": {
+    "goalId": "bebc3738-0be6-52cf-83db-f8b948f7cf7b",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:ec9c0010af1779d18c61fc76ccd97abb5906d2dc9c423ef10864daf06a43e10a",
+    "pageFingerprint": "sha256:9b9051d8807703cf4374d8a2c53454b8aff19a3e26ed8f2b30dc02150411b134",
+    "goalReviewContextFingerprint": "sha256:bc2ffc791925a71d8ee535ad0ede6353b0ae7b0a459fb0993bca440c5a8a44ae",
+    "finalText": {
+      "titleDe": "Sonnenradius aus Beobachtungsdaten abschätzen",
+      "titleEn": "Estimate the Solar Radius from Observational Data",
+      "descriptionDe": "Die lernende Person kann aus einem sicher gewonnenen oder bereitgestellten Winkeldurchmesser der Sonne und ihrer Entfernung mithilfe eines geometrischen Modells den Sonnenradius abschätzen und die Messunsicherheit berücksichtigen.",
+      "descriptionEn": "The learner can use a safely obtained or supplied angular diameter of the Sun and its distance with a geometrical model to estimate the solar radius and account for measurement uncertainty."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-a-20261017-v1",
+      "campaignDigest": "sha256:b23805760ff147505f7d53ab1a339fd1e1dd226dc7eda0776ccfe4ec09726b43",
+      "roundId": "physics-existing-math-prerequisites-first-a-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-a-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "goalReviewContextFingerprint": "sha256:bc2ffc791925a71d8ee535ad0ede6353b0ae7b0a459fb0993bca440c5a8a44ae",
+      "batchId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-006",
+      "runId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-006.gpt61-sol-ultra",
+      "runManifestDigest": "sha256:c4c5e37e1f85289802f553e474f9cf4fff96923921c82b047f789c71e1ebc44b",
+      "resultsDigest": "sha256:e52423ab9709c27f6222ce9f7fabb5e7e029aa82cd36d56d85b03f6d10565c1c",
+      "recordId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-006.gpt61-sol-ultra.20",
+      "recordDigest": "sha256:5aeee86c714a711123a83a50f3c8df17fa8daaf5f7808ee651d815ff71461598"
+    },
+    "second": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-b-20261017-v1",
+      "campaignDigest": "sha256:e5062c24fc41990b95c544705fa59130d293784be6143a7146169694e24d1103",
+      "roundId": "physics-existing-math-prerequisites-first-b-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-b-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "goalReviewContextFingerprint": "sha256:bc2ffc791925a71d8ee535ad0ede6353b0ae7b0a459fb0993bca440c5a8a44ae",
+      "batchId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-006",
+      "runId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-006.sol-native-d",
+      "runManifestDigest": "sha256:bf7f541643fbb2936478e262546548e9f50c5c16632be4b8795d1fd536208fb3",
+      "resultsDigest": "sha256:374837d35e7d5af666cd8329d03970a09e7cfed9f66b1c04bda748f6b02a837b",
+      "recordId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-006.sol-native-d.goal-020",
+      "recordDigest": "sha256:891de6b58c4551fdaec8a3df3945a5d5a7cb94feaa1cb15499ea2992318d86c0"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:d5ca2db392c5a44a98f275ce73cd20a967c005e0d7c38a11f2ba88573a0cfff6"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "physics-existing-math-current-synthesis-bebc3738-0be6-52cf-83db-f8b948f7cf7b",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "codex-native-d-integration-sol",
+    "synthesizedAt": "2026-10-17T09:19:29.758632Z",
+    "rationaleDe": "Der aktuelle bilinguale Vertrag zu „Sonnenradius aus Beobachtungsdaten abschätzen“ bleibt bestehen. Der beobachtete Winkeldurchmesser hängt von physischem Sonnenradius und Mittelpunktentfernung ab; der Radius wird geometrisch erschlossen und nicht direkt aus einer Bildgröße abgelesen. Die lernende Person konstruiert die Sichtliniengeometrie, unterscheidet Winkelradius und Winkeldurchmesser und berechnet mit begründeter Näherung einen Radius samt Unsicherheitsabschätzung. Bei größerer Beobachtungsentfernung und gröberer Auflösung prognostiziert sie einen kleineren Winkel, prüft die Verträglichkeit des erneut bestimmten Radius und erklärt die veränderte Unsicherheit. Beide tatsächlich vorliegenden Ganzkontext-Reviews urteilen keep und empfehlen für das mitgelesene vollständige V2-Profil none; die konkrete Evidence-Fassung der zweiten Runde wird unverändert übernommen.",
+    "rationaleEn": "The current bilingual contract for “Estimate the Solar Radius from Observational Data” is retained. Observed angular diameter depends on the Sun's physical radius and centre distance; radius is inferred geometrically rather than read directly from an image size. The learner constructs the line-of-sight geometry, distinguishes angular radius and diameter, and calculates a radius with an uncertainty estimate using a justified approximation. At greater observing distance and coarser resolution, the learner predicts a smaller angle, checks compatibility of the newly inferred radius, and explains the changed uncertainty. Both actual whole-context reviews judge keep and recommend none for the complete V2 profile read alongside the goal; the second round's concrete evidence formulation is adopted unchanged.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Der beobachtete Winkeldurchmesser hängt von physischem Sonnenradius und Mittelpunktentfernung ab; der Radius wird geometrisch erschlossen und nicht direkt aus einer Bildgröße abgelesen.",
+      "essentialUnderstandingEn": "Observed angular diameter depends on the Sun's physical radius and centre distance; radius is inferred geometrically rather than read directly from an image size.",
+      "observablePerformanceDe": "Die lernende Person konstruiert die Sichtliniengeometrie, unterscheidet Winkelradius und Winkeldurchmesser und berechnet mit begründeter Näherung einen Radius samt Unsicherheitsabschätzung.",
+      "observablePerformanceEn": "The learner constructs the line-of-sight geometry, distinguishes angular radius and diameter, and calculates a radius with an uncertainty estimate using a justified approximation.",
+      "transferExpectationDe": "Bei größerer Beobachtungsentfernung und gröberer Auflösung prognostiziert sie einen kleineren Winkel, prüft die Verträglichkeit des erneut bestimmten Radius und erklärt die veränderte Unsicherheit.",
+      "transferExpectationEn": "At greater observing distance and coarser resolution, the learner predicts a smaller angle, checks compatibility of the newly inferred radius, and explains the changed uncertainty."
+    },
+    "dissent": [
+      {
+        "dissentId": "physics-existing-math-current-synthesis-bebc3738-0be6-52cf-83db-f8b948f7cf7b.dissent-1",
+        "source": "both",
+        "disposition": "accepted_second",
+        "textDe": "Die beiden aktuellen keep/none-Reviews verwenden eigenständige Verständnis- und Begründungstexte. Die oben konkret benannte Understanding-/Handlungs-/Transferevidence wird aus der zweiten Runde übernommen; die erste Meinung bleibt unverändert gebunden.",
+        "textEn": "The two current keep/none reviews use independently written understanding evidence and rationales. The specific understanding, performance, and transfer evidence stated above is taken from the second round; the first opinion remains bound unchanged."
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:c661d2d75e9832f00c0a56dd480446400e299acb687126a70e81e5e9a7c4a46e"
+}

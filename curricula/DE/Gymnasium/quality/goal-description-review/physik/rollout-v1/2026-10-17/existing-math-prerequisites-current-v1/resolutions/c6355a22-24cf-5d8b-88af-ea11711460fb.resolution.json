@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physics-existing-math-current-resolution-c6355a22-24cf-5d8b-88af-ea11711460fb",
+  "goal": {
+    "goalId": "c6355a22-24cf-5d8b-88af-ea11711460fb",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:58a4cdd4883979a2e1ef515bf4c7ffed9fdbe159db558aac44e16fd50c1fc80e",
+    "pageFingerprint": "sha256:428c9de0ec75314ff8e97fffb8c8dc707fdc6283d0bf1560f4204f4f3fe0f7e5",
+    "goalReviewContextFingerprint": "sha256:4823da949fe45827a7768417d64bb7528a6bb836d066d0b9a6ee341469210363",
+    "finalText": {
+      "titleDe": "Kraft auf stromdurchflossene Leiter",
+      "titleEn": "Force on Current-Carrying Conductors",
+      "descriptionDe": "Die lernende Person kann Betrag und Richtung der Kraft auf ein gerades stromdurchflossenes Leiterstück im homogenen Magnetfeld mit F = B · I · ℓ · sin(α) bestimmen, wobei α der Winkel zwischen Strom- und Feldrichtung ist, und bei senkrechter Anordnung B aus einer Kraftmessung mit B = F/(I · ℓ) ermitteln.",
+      "descriptionEn": "The learner can determine the magnitude and direction of the force on a straight current-carrying conductor segment in a uniform magnetic field using F = B · I · ℓ · sin(α), where α is the angle between the current and field directions, and determine B from a force measurement in the perpendicular case using B = F/(I · ℓ)."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-a-20261017-v1",
+      "campaignDigest": "sha256:b23805760ff147505f7d53ab1a339fd1e1dd226dc7eda0776ccfe4ec09726b43",
+      "roundId": "physics-existing-math-prerequisites-first-a-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-a-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "goalReviewContextFingerprint": "sha256:4823da949fe45827a7768417d64bb7528a6bb836d066d0b9a6ee341469210363",
+      "batchId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-003",
+      "runId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-003.gpt61-sol-ultra",
+      "runManifestDigest": "sha256:95a24edd9ca0fed3efcec1b257f95832dccedc19567b638c3601864bcdf1882e",
+      "resultsDigest": "sha256:84c283a8b59d7714a42ed93c19446bf37cfef9e27c0c826b705fbe151d292a60",
+      "recordId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-003.gpt61-sol-ultra.13",
+      "recordDigest": "sha256:2ee893edbe6ddcb53f22db566461b83c814d110a47f2e306ab3720461c7e2d02"
+    },
+    "second": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-b-20261017-v1",
+      "campaignDigest": "sha256:e5062c24fc41990b95c544705fa59130d293784be6143a7146169694e24d1103",
+      "roundId": "physics-existing-math-prerequisites-first-b-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-b-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "goalReviewContextFingerprint": "sha256:4823da949fe45827a7768417d64bb7528a6bb836d066d0b9a6ee341469210363",
+      "batchId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-003",
+      "runId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-003.sol-native-d",
+      "runManifestDigest": "sha256:7b0166780cd8d391f24e297b285ca5464dbf3968141764e1c71dc54983bd2964",
+      "resultsDigest": "sha256:b42b879d2fc1a41e73c0742a5a2c09dcf750d6ffaf891550a266965fe70f9409",
+      "recordId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-003.sol-native-d.goal-013",
+      "recordDigest": "sha256:a925c245f462a39601a2c78b8d5a168a82e7f2bdd66972380e0c5b0910b55163"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:d5ca2db392c5a44a98f275ce73cd20a967c005e0d7c38a11f2ba88573a0cfff6"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "physics-existing-math-current-synthesis-c6355a22-24cf-5d8b-88af-ea11711460fb",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "codex-native-d-integration-sol",
+    "synthesizedAt": "2026-10-17T09:19:29.758632Z",
+    "rationaleDe": "Der aktuelle bilinguale Vertrag zu „Kraft auf stromdurchflossene Leiter“ bleibt bestehen. Die Leiterkraft steht senkrecht auf Strom- und Feldrichtung; ihr Betrag hängt vom Sinus des Zwischenwinkels und der wirksamen Länge ab. Die lernende Person berechnet den Kraftbetrag, konstruiert die Richtung und bestimmt im senkrechten Fall B aus kontrollierten Kraft-Strom-Daten. Bei einer frischen Messreihe mit Kraftoffset verwendet die lernende Person die Steigung statt eines einzelnen Quotienten und prüft den Parallel-Grenzfall. Beide tatsächlich vorliegenden Ganzkontext-Reviews urteilen keep und empfehlen für das mitgelesene vollständige V2-Profil none; die konkrete Evidence-Fassung der zweiten Runde wird unverändert übernommen.",
+    "rationaleEn": "The current bilingual contract for “Force on Current-Carrying Conductors” is retained. Conductor force is perpendicular to current and field direction; its magnitude depends on the sine of their angle and the effective length. The learner calculates force magnitude, constructs its direction, and determines B from controlled force-current data in the perpendicular case. For a fresh series with a force offset, the learner uses the slope instead of one quotient and checks the parallel limiting case. Both actual whole-context reviews judge keep and recommend none for the complete V2 profile read alongside the goal; the second round's concrete evidence formulation is adopted unchanged.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die Leiterkraft steht senkrecht auf Strom- und Feldrichtung; ihr Betrag hängt vom Sinus des Zwischenwinkels und der wirksamen Länge ab.",
+      "essentialUnderstandingEn": "Conductor force is perpendicular to current and field direction; its magnitude depends on the sine of their angle and the effective length.",
+      "observablePerformanceDe": "Die lernende Person berechnet den Kraftbetrag, konstruiert die Richtung und bestimmt im senkrechten Fall B aus kontrollierten Kraft-Strom-Daten.",
+      "observablePerformanceEn": "The learner calculates force magnitude, constructs its direction, and determines B from controlled force-current data in the perpendicular case.",
+      "transferExpectationDe": "Bei einer frischen Messreihe mit Kraftoffset verwendet die lernende Person die Steigung statt eines einzelnen Quotienten und prüft den Parallel-Grenzfall.",
+      "transferExpectationEn": "For a fresh series with a force offset, the learner uses the slope instead of one quotient and checks the parallel limiting case."
+    },
+    "dissent": [
+      {
+        "dissentId": "physics-existing-math-current-synthesis-c6355a22-24cf-5d8b-88af-ea11711460fb.dissent-1",
+        "source": "both",
+        "disposition": "accepted_second",
+        "textDe": "Die beiden aktuellen keep/none-Reviews verwenden eigenständige Verständnis- und Begründungstexte. Die oben konkret benannte Understanding-/Handlungs-/Transferevidence wird aus der zweiten Runde übernommen; die erste Meinung bleibt unverändert gebunden.",
+        "textEn": "The two current keep/none reviews use independently written understanding evidence and rationales. The specific understanding, performance, and transfer evidence stated above is taken from the second round; the first opinion remains bound unchanged."
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:0dd79f35cf93240eb962e141b3fefb1b731cd01e3e46b89cedeb9756d3b10a77"
+}

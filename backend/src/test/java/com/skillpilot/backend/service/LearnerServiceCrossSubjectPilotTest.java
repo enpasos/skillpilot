@@ -32,6 +32,7 @@ import java.time.Instant;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -1036,12 +1037,12 @@ class LearnerServiceCrossSubjectPilotTest {
 
     @Test
     void canonicalPhysicsPilotLearnerStateUnlocksDiagramGoalFromCanonicalMathAndProjectedPhysicsMastery() {
-        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
-                .thenReturn(List.of(
-                        new Mastery(learner, LEGACY_PHYSICS_WHY_ID, 1.0),
-                        new Mastery(learner, CANONICAL_MATH_FUNCTION_CONCEPT_ID, 1.0),
-                        new Mastery(learner, CANONICAL_MATH_READ_VALUES_ID, 1.0)));
+
         learner.setPersonalCurriculum(CANONICAL_PHYSICS_GK_PERSONAL_CONFIG);
+
+        prepareLegacyFrontierContext(compositionAwareLearnerService(), CANONICAL_PHYSICS_DIAGRAMS_ID,
+                List.of(LEGACY_PHYSICS_WHY_ID, CANONICAL_MATH_FUNCTION_CONCEPT_ID, CANONICAL_MATH_READ_VALUES_ID),
+                Set.of(CANONICAL_PHYSICS_WHY_ID));
 
         UnifiedLearnerStateResponse state = compositionAwareLearnerService().getLearnerState(LEARNER_ID);
 
@@ -1052,6 +1053,26 @@ class LearnerServiceCrossSubjectPilotTest {
                 .extracting(FrontierGoal::id)
                 .contains(CANONICAL_PHYSICS_DIAGRAMS_ID)
                 .doesNotContain(LEGACY_PHYSICS_WHY_ID, LEGACY_MATH_FUNCTION_CONCEPT_ID, LEGACY_MATH_READ_VALUES_ID);
+    }
+
+    private void prepareLegacyFrontierContext(
+            LearnerService service,
+            String targetId,
+            List<String> originallyStoredIds,
+            Set<String> suppliedByLegacyProjection) {
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID)).thenReturn(
+                originallyStoredIds.stream().map(id -> new Mastery(learner, id, 1.0)).toList());
+        assertThat(service.getRichFrontier(LEARNER_ID)).extracting(FrontierGoal::id).doesNotContain(targetId);
+        assertThat(service.getMastery(LEARNER_ID)).containsAllEntriesOf(
+                suppliedByLegacyProjection.stream().collect(java.util.stream.Collectors.toMap(
+                        id -> id, id -> 1.0)));
+        // The positive assertion below tests migration with explicitly stored
+        // earlier preparation, not mastery inferred from a dependent goal.
+        List<String> preparedIds = CanonicalPrerequisiteTestContext.withStoredPrerequisites(
+                landscapeService, List.of(targetId), originallyStoredIds, suppliedByLegacyProjection);
+        assertThat(preparedIds).doesNotContain(targetId).doesNotContainAnyElementsOf(suppliedByLegacyProjection);
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID)).thenReturn(
+                preparedIds.stream().map(id -> new Mastery(learner, id, 1.0)).toList());
     }
 
     private LearnerService compositionAwareLearnerService() {
@@ -1220,8 +1241,11 @@ class LearnerServiceCrossSubjectPilotTest {
     void canonicalPhysicsPilotFrontierUnlocksHeatTransferFromProjectedLegacyParticleModelMastery() {
         when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
                 .thenReturn(List.of(new PlannedGoal(learner, CANONICAL_PHYSICS_SEK1_HEAT_CLUSTER_ID)));
-        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
-                .thenReturn(List.of(new Mastery(learner, LEGACY_SEK1_PHYSICS_PARTICLE_MODEL_ID, 1.0)));
+
+
+        prepareLegacyFrontierContext(learnerService, CANONICAL_PHYSICS_SEK1_HEAT_TRANSFER_ID,
+                List.of(LEGACY_SEK1_PHYSICS_PARTICLE_MODEL_ID),
+                Set.of(CANONICAL_PHYSICS_SEK1_PARTICLE_MODEL_ID));
 
         List<FrontierGoal> frontier = learnerService.getRichFrontier(LEARNER_ID);
 
@@ -1397,8 +1421,11 @@ class LearnerServiceCrossSubjectPilotTest {
     void canonicalPhysicsPilotFrontierUnlocksWorkGoalFromProjectedLegacyE2Scope() {
         when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
                 .thenReturn(List.of(new PlannedGoal(learner, LEGACY_PHYSICS_E2_CLUSTER_ID)));
-        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
-                .thenReturn(List.of(new Mastery(learner, LEGACY_PHYSICS_APPLY_F_EQUALS_M_A_ID, 1.0)));
+
+
+        prepareLegacyFrontierContext(learnerService, CANONICAL_PHYSICS_WORK_AS_ENERGY_CHANGE_ID,
+                List.of(LEGACY_PHYSICS_APPLY_F_EQUALS_M_A_ID),
+                Set.of(CANONICAL_PHYSICS_F_EQUALS_M_A_ID));
 
         List<FrontierGoal> frontier = learnerService.getRichFrontier(LEARNER_ID);
 
@@ -1411,10 +1438,11 @@ class LearnerServiceCrossSubjectPilotTest {
     void canonicalPhysicsPilotFrontierUnlocksInelasticCollisionsFromProjectedLegacyEnergyAndMomentumMastery() {
         when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
                 .thenReturn(List.of(new PlannedGoal(learner, CANONICAL_PHYSICS_CONSERVATION_CLUSTER_ID)));
-        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
-                .thenReturn(List.of(
-                        new Mastery(learner, LEGACY_PHYSICS_ENERGY_CONSERVATION_ID, 1.0),
-                        new Mastery(learner, LEGACY_PHYSICS_MOMENTUM_CONSERVATION_ID, 1.0)));
+
+
+        prepareLegacyFrontierContext(learnerService, CANONICAL_PHYSICS_INELASTIC_COLLISIONS_ID,
+                List.of(LEGACY_PHYSICS_ENERGY_CONSERVATION_ID, LEGACY_PHYSICS_MOMENTUM_CONSERVATION_ID),
+                Set.of("91c49019-ea51-4ce5-a919-c91c45b25e83", "839ecc8f-3a60-418b-bc92-64bfeef33824"));
 
         List<FrontierGoal> frontier = learnerService.getRichFrontier(LEARNER_ID);
 

@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physics-existing-math-current-resolution-6a73cacc-e86d-5248-a180-fd3da8454b0f",
+  "goal": {
+    "goalId": "6a73cacc-e86d-5248-a180-fd3da8454b0f",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:4b4ff84b658c2084e673adb740aa4571bb3bc7d79826a14cb0ffcb2c0cbdd318",
+    "pageFingerprint": "sha256:3f666cce509cb69ef3a418b0f4a1b3593508c2fe213a7408bf8e6107b6cb5538",
+    "goalReviewContextFingerprint": "sha256:0f3ba58b4da11b6f802a251e1cb52722389e6a5bc38573c38a5b19756f16162e",
+    "finalText": {
+      "titleDe": "Sternradien aus HRD-Daten abschätzen",
+      "titleEn": "Estimate stellar radii from HR-diagram data",
+      "descriptionDe": "Die lernende Person kann aus Leuchtkraft und Oberflächentemperatur eines Sterns im Hertzsprung-Russell-Diagramm seinen Radius mit einem thermischen Strahlungsmodell abschätzen und erklären, wie beide Größen die Schätzung bestimmen.",
+      "descriptionEn": "The learner can estimate a star's radius from its luminosity and surface temperature in a Hertzsprung–Russell diagram using a thermal-radiation model and explain how both quantities determine the estimate."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-a-20261017-v1",
+      "campaignDigest": "sha256:b23805760ff147505f7d53ab1a339fd1e1dd226dc7eda0776ccfe4ec09726b43",
+      "roundId": "physics-existing-math-prerequisites-first-a-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-a-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "goalReviewContextFingerprint": "sha256:0f3ba58b4da11b6f802a251e1cb52722389e6a5bc38573c38a5b19756f16162e",
+      "batchId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-007",
+      "runId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-007.gpt61-sol-ultra",
+      "runManifestDigest": "sha256:830cd25a6988cc4fa14812ac47955a1781fafe1729b1d8ea84ed8b6cf338cedc",
+      "resultsDigest": "sha256:a170be96c5841a00de00ec9e5395bfeb0eac2999b91bcbf2048d1fd5660b6672",
+      "recordId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-007.gpt61-sol-ultra.4",
+      "recordDigest": "sha256:3b364a03f000dcacd7bd5dbafaa8ebe5804c74265765d80a1f612886b15f2172"
+    },
+    "second": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-b-20261017-v1",
+      "campaignDigest": "sha256:e5062c24fc41990b95c544705fa59130d293784be6143a7146169694e24d1103",
+      "roundId": "physics-existing-math-prerequisites-first-b-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-b-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "goalReviewContextFingerprint": "sha256:0f3ba58b4da11b6f802a251e1cb52722389e6a5bc38573c38a5b19756f16162e",
+      "batchId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-007",
+      "runId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-007.sol-native-d",
+      "runManifestDigest": "sha256:11c05c46d6b6bda26645c6543f16147708e6a000cdbad67869f965a66206959e",
+      "resultsDigest": "sha256:d73d79553d903ebfd9770a926a1cc23fcd2e55ff1d5a6c31216f278fbb0a201e",
+      "recordId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-007.sol-native-d.goal-004",
+      "recordDigest": "sha256:332c92ad1367ab90c11d1882183ef225aee01cf651d6889b16546df04afc4229"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:d5ca2db392c5a44a98f275ce73cd20a967c005e0d7c38a11f2ba88573a0cfff6"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "physics-existing-math-current-synthesis-6a73cacc-e86d-5248-a180-fd3da8454b0f",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "codex-native-d-integration-sol",
+    "synthesizedAt": "2026-10-17T09:19:29.758632Z",
+    "rationaleDe": "Der aktuelle bilinguale Vertrag zu „Sternradien aus HRD-Daten abschätzen“ bleibt bestehen. Im thermischen Kugelmodell verbindet L=4πR²σT⁴ gesamte Strahlungsleistung, abstrahlende Fläche und Temperatur; beide HRD-Koordinaten werden zur Radiusschätzung benötigt. Die lernende Person gewinnt aus dem Modell eine Radius- oder Verhältnisbeziehung und erklärt anhand neuer HRD-Punkte den Einfluss von Leuchtkraft und Temperatur. Bei gleicher Leuchtkraft und doppelter Temperatur begründet sie den Viertelradius und erklärt, weshalb eine überschätzte Temperatur den erschlossenen Radius zu klein ausfallen lässt. Beide tatsächlich vorliegenden Ganzkontext-Reviews urteilen keep und empfehlen für das mitgelesene vollständige V2-Profil none; die konkrete Evidence-Fassung der zweiten Runde wird unverändert übernommen.",
+    "rationaleEn": "The current bilingual contract for “Estimate stellar radii from HR-diagram data” is retained. In the thermal spherical model, L=4πR²σT⁴ connects total radiated power, emitting area, and temperature; both HR-diagram coordinates are needed to estimate radius. The learner obtains a radius or ratio relation from the model and explains the effects of luminosity and temperature using fresh HR-diagram points. At equal luminosity and double the temperature, the learner justifies a radius one quarter as large and explains why overestimated temperature makes inferred radius too small. Both actual whole-context reviews judge keep and recommend none for the complete V2 profile read alongside the goal; the second round's concrete evidence formulation is adopted unchanged.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Im thermischen Kugelmodell verbindet L=4πR²σT⁴ gesamte Strahlungsleistung, abstrahlende Fläche und Temperatur; beide HRD-Koordinaten werden zur Radiusschätzung benötigt.",
+      "essentialUnderstandingEn": "In the thermal spherical model, L=4πR²σT⁴ connects total radiated power, emitting area, and temperature; both HR-diagram coordinates are needed to estimate radius.",
+      "observablePerformanceDe": "Die lernende Person gewinnt aus dem Modell eine Radius- oder Verhältnisbeziehung und erklärt anhand neuer HRD-Punkte den Einfluss von Leuchtkraft und Temperatur.",
+      "observablePerformanceEn": "The learner obtains a radius or ratio relation from the model and explains the effects of luminosity and temperature using fresh HR-diagram points.",
+      "transferExpectationDe": "Bei gleicher Leuchtkraft und doppelter Temperatur begründet sie den Viertelradius und erklärt, weshalb eine überschätzte Temperatur den erschlossenen Radius zu klein ausfallen lässt.",
+      "transferExpectationEn": "At equal luminosity and double the temperature, the learner justifies a radius one quarter as large and explains why overestimated temperature makes inferred radius too small."
+    },
+    "dissent": [
+      {
+        "dissentId": "physics-existing-math-current-synthesis-6a73cacc-e86d-5248-a180-fd3da8454b0f.dissent-1",
+        "source": "both",
+        "disposition": "accepted_second",
+        "textDe": "Die beiden aktuellen keep/none-Reviews verwenden eigenständige Verständnis- und Begründungstexte. Die oben konkret benannte Understanding-/Handlungs-/Transferevidence wird aus der zweiten Runde übernommen; die erste Meinung bleibt unverändert gebunden.",
+        "textEn": "The two current keep/none reviews use independently written understanding evidence and rationales. The specific understanding, performance, and transfer evidence stated above is taken from the second round; the first opinion remains bound unchanged."
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:d24f806b1ad32fea5f8767063f5bf402bf28dc359c1e48826f109f8ee0257a9e"
+}

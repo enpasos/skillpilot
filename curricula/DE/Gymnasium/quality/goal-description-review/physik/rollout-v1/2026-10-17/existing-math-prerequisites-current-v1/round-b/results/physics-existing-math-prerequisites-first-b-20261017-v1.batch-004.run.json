@@ -1,0 +1,77 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-004.sol-native-d",
+  "campaignId": "physics-existing-math-prerequisites-campaign-b-20261017-v1",
+  "roundId": "physics-existing-math-prerequisites-first-b-20261017-v1",
+  "batchId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-004",
+  "batchInputFingerprint": "sha256:531388afb559ede9bcbdf87ad2977eb018acd79bcb1d6900494695514440af60",
+  "bundleFingerprint": "sha256:a3e5ff4e8a6ce263cdba8a660005323d8e18a093b0a2a18d9ca4b2c78b2980c5",
+  "bookDigest": "sha256:3cbacf5cf3d4838db6ef75ed0fd3dbf2410d823d688c65bd250032bdd79fbace",
+  "provider": "openai",
+  "model": "gpt-6.1-sol",
+  "role": "didactic_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:3fc3ba8215a98f63fb30054f988519ee3db3f9b449c6818ef5a63fa39cb789e1",
+  "generationParametersFingerprint": "sha256:b11a08be1bc17bfe555488e6e5303aec8edffd9614200c042fc2e6b54fd527cb",
+  "independenceGroupId": "physics-existing-math-prerequisites-independent-b-20261017-v1",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "4c919da9-157a-5a14-a725-f7343975c9ab",
+    "51bc5513-6879-548f-b19a-9746b667f1a3",
+    "ef6d5067-96b0-5388-87dd-5ac4e6a3e313",
+    "48e3d6c2-00bf-5afd-8846-ba3dbd01e96d",
+    "6ebb6182-f221-5f4c-b112-4ac72b104321",
+    "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+    "3857891b-d328-585b-9936-85c7aff122ee",
+    "3b586f2a-60e2-5019-aa08-6a47616a1f1f",
+    "206fe51d-cc78-5422-b139-32cc97eb1c37",
+    "455c65ca-814a-56ad-918a-013155883c52",
+    "09f2cdbd-64e0-55d2-ada7-1190f4fd50df",
+    "74a74132-fa39-541c-8d3c-696cf228452d",
+    "b39ae8fb-4358-5866-8adf-3d5365368eeb",
+    "b2fb9a25-4d26-5cf2-a917-823909dcb6bd",
+    "18c1f954-487e-5121-bb18-6c64a82f573d",
+    "d18d4190-ddc1-5181-b1b6-e79947b737c2",
+    "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+    "e160acb4-5b88-509e-8055-2653df420c65",
+    "215f5558-562c-5686-b649-931f324c7983",
+    "f6a3a602-1e45-5018-b0ff-3d49933cf634"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:c7c75025fd0d241378b73afb44bf0f1007e0673fdefe774cfc8a67055f05b67e"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:e835b0e81bebe550fa5d232471582f95f5001779916cadd121e511ebc3f92396"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:3fc3ba8215a98f63fb30054f988519ee3db3f9b449c6818ef5a63fa39cb789e1"
+    },
+    {
+      "role": "finding_schema",
+      "digest": "sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:531388afb559ede9bcbdf87ad2977eb018acd79bcb1d6900494695514440af60"
+    }
+  ],
+  "startedAt": "2026-10-17T09:02:37Z",
+  "completedAt": "2026-10-17T09:05:55.748701Z",
+  "status": "completed",
+  "outputDigest": "sha256:a1f0742fd58d23c41f41b21804a5546f13564cc25c9ee328614efebbf482a670",
+  "toolchainVersion": "codex-native-multi-agent-review-20261017-v1"
+}

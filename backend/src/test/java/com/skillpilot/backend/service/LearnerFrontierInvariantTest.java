@@ -203,10 +203,22 @@ public class LearnerFrontierInvariantTest {
                 snapshot.mastery(),
                 snapshot.plannedGoals());
 
-        assertThat(actual).containsExactlyInAnyOrderElementsOf(expected);
-
+        // A persisted intermediate skill does not certify its prerequisite.
+        // This real export has symmetry -> polynomial basics -> orientation,
+        // with only polynomial basics mastered.
+        String symmetry = "8f42b49d-a2fb-45f5-9da3-97ec96b8113e";
+        String polynomialBasics = "0903db01-4377-4a79-8f29-aceffea68f24";
+        String orientation = "bea16be0-88b3-51b7-be3b-494d5c496105";
         Map<String, LearningGoal> filteredGoals = getFilteredGoals(snapshot.selectedCurriculum(),
                 snapshot.personalCurriculum());
+        assertThat(filteredGoals.get(symmetry).getRequires()).contains(polynomialBasics);
+        assertThat(filteredGoals.get(polynomialBasics).getRequires()).contains(orientation);
+        assertThat(snapshot.mastery().getOrDefault(symmetry, 0.0)).isZero();
+        assertThat(snapshot.mastery()).containsEntry(polynomialBasics, 1.0);
+        assertThat(snapshot.mastery().getOrDefault(orientation, 0.0)).isZero();
+        assertThat(actual).contains(orientation).doesNotContain(symmetry);
+        assertThat(actual).containsExactlyInAnyOrderElementsOf(expected);
+
         Set<String> expectedAtomic = expected.stream()
                 .map(filteredGoals::get)
                 .filter(Objects::nonNull)
@@ -337,6 +349,31 @@ public class LearnerFrontierInvariantTest {
         Map<String, Double> effectivePrereqMastery = computeEffectivePrereqMastery(filteredGoals, masteryMap);
         Set<String> scope = computeScope(plannedIds, structuralGoals);
 
+        // Independently derive reachability by repeated set expansion, rather
+        // than using the service's candidate-by-candidate mastery traversal.
+        Map<String, Set<String>> reachablePrerequisites = new LinkedHashMap<>();
+        for (LearningGoal goal : filteredGoals.values()) {
+            Set<String> prerequisites = new LinkedHashSet<>();
+            for (String ref : effectiveRequires.getOrDefault(goal.getId(), List.of())) {
+                String prerequisite = resolveGoalRef(ref, filteredGoals);
+                if (prerequisite != null && (plannedIds.isEmpty() || scope.contains(prerequisite))) {
+                    prerequisites.add(prerequisite);
+                }
+            }
+            reachablePrerequisites.put(goal.getId(), prerequisites);
+        }
+        boolean expanded;
+        do {
+            expanded = false;
+            for (Set<String> prerequisites : reachablePrerequisites.values()) {
+                Set<String> next = new LinkedHashSet<>(prerequisites);
+                for (String prerequisite : prerequisites) {
+                    next.addAll(reachablePrerequisites.getOrDefault(prerequisite, Set.of()));
+                }
+                expanded |= prerequisites.addAll(next);
+            }
+        } while (expanded);
+
         List<String> frontier = new ArrayList<>();
         for (LearningGoal goal : filteredGoals.values()) {
             if (!plannedIds.isEmpty() && !scope.contains(goal.getId())) {
@@ -349,7 +386,7 @@ public class LearnerFrontierInvariantTest {
             }
 
             boolean prerequisitesMet = true;
-            List<String> requires = effectiveRequires.getOrDefault(goal.getId(), goal.getRequires());
+            Set<String> requires = reachablePrerequisites.get(goal.getId());
             if (requires != null) {
                 for (String reqId : requires) {
                     String resolvedReqId = resolveGoalRef(reqId, filteredGoals);

@@ -68,7 +68,9 @@ class ProjectionRoleLearnerServiceTest {
     private static final List<String> MASTERED_PHYSICS_CONTEXT_IDS = List.of(
             PHYSICS_ORIENTATION_ID,
             "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93", // Aufbau des Sonnensystems
-            "c52d55c3-b687-586c-b0f9-8ffcd1069424"); // Urknallmodell
+            "c52d55c3-b687-586c-b0f9-8ffcd1069424", // Urknallmodell
+            "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7", // dessen Voraussetzung: kosmische Strukturen
+            "2b700858-bc2e-5ddf-a791-b14d44160480"); // dessen Voraussetzung: Beobachtungsmethoden
     private static final String GLOBAL_ASSESSMENT_ROOT_ID = "global-assessment-root";
     private static final String GLOBAL_ASSESSMENT_EXAM_ID = "global-assessment-exam";
     private static final String SYNTHETIC_STRUCTURE_ID =
@@ -121,9 +123,8 @@ class ProjectionRoleLearnerServiceTest {
                 fixture.learner(),
                 EXTERNAL_PREREQUISITE_ID,
                 1.0);
-        when(fixture.masteryRepository().findByLearner_SkillpilotId(LEARNER_ID))
-                .thenReturn(List.of())
-                .thenReturn(List.of(externalMastery));
+        when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(fixture.learner(), TARGET_ID)));
 
         ProjectionSets projection = projectionSets(fixture.service());
 
@@ -138,7 +139,13 @@ class ProjectionRoleLearnerServiceTest {
                         EXTERNAL_PREREQUISITE_ID,
                         EXTERNAL_PREREQUISITE_CHILD_ID);
         assertThat(fixture.service().getFrontier(LEARNER_ID)).isEmpty();
+        assertThat(fixture.service().getRichFrontier(LEARNER_ID))
+                .extracting(FrontierGoal::id).doesNotContain(TARGET_ID);
+        when(fixture.masteryRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(externalMastery));
         assertThat(fixture.service().getFrontier(LEARNER_ID)).containsExactly(TARGET_ID);
+        assertThat(fixture.service().getRichFrontier(LEARNER_ID))
+                .extracting(FrontierGoal::id).containsExactly(TARGET_ID);
     }
 
     @Test
@@ -178,6 +185,57 @@ class ProjectionRoleLearnerServiceTest {
                         EXTERNAL_PREREQUISITE_ROOT_ID,
                         EXTERNAL_PREREQUISITE_ID,
                         EXTERNAL_PREREQUISITE_CHILD_ID);
+    }
+
+    @Test
+    void mathematicsRootSupportChecksOnlyRequiredChainAndNeverEnrollsUnneededGoals() {
+        for (boolean strictMode : List.of(false, true)) {
+            Fixture fixture = fixture(view(
+                    goalEntry(TARGET_ID),
+                    canonicalSubtree(EXTERNAL_PREREQUISITE_ROOT_ID, "prerequisiteOnly")));
+            fixture.learner().setStrictMode(strictMode);
+            String unusedMathematicsId = "unused-mathematics";
+            LearningGoal root = clusterGoal(EXTERNAL_PREREQUISITE_ROOT_ID,
+                    List.of(EXTERNAL_PREREQUISITE_ID, EXTERNAL_PREREQUISITE_CHILD_ID, unusedMathematicsId));
+            LearningGoal required = atomicGoal(EXTERNAL_PREREQUISITE_ID,
+                    List.of(EXTERNAL_PREREQUISITE_CHILD_ID));
+            LearningGoal foundation = atomicGoal(EXTERNAL_PREREQUISITE_CHILD_ID, List.of());
+            // This unused leaf is unmastered and even has an unresolved requirement.
+            // Lookup support does not make its requirement an obligation of TARGET_ID.
+            LearningGoal unused = atomicGoal(unusedMathematicsId, List.of("unknown-unused-mathematics"));
+            for (LearningGoal mathematicsGoal : List.of(root, required, foundation, unused)) {
+                when(fixture.landscapeService().getGoalDefinition(mathematicsGoal.getId()))
+                        .thenReturn(mathematicsGoal);
+            }
+            fixture.landscape().getGoals().stream()
+                    .filter(goal -> TARGET_ID.equals(goal.getId()))
+                    .findFirst().orElseThrow().setRequires(List.of(EXTERNAL_PREREQUISITE_ID));
+            when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                    .thenReturn(List.of(new PlannedGoal(fixture.learner(), TARGET_ID)));
+            Mastery requiredMastery = new Mastery(fixture.learner(), EXTERNAL_PREREQUISITE_ID, 1.0);
+            when(fixture.masteryRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                    .thenReturn(List.of(requiredMastery));
+
+            ProjectionSets projection = projectionSets(fixture.service());
+            assertThat(projection.targetGoalIds()).containsExactly(TARGET_ID);
+            assertThat(projection.prerequisiteOnlyGoalIds()).containsExactlyInAnyOrder(
+                    EXTERNAL_PREREQUISITE_ROOT_ID, EXTERNAL_PREREQUISITE_ID,
+                    EXTERNAL_PREREQUISITE_CHILD_ID, unusedMathematicsId);
+            assertThat(fixture.service().getFilteredAtomicGoalIds(
+                    LANDSCAPE_ID, PERSONAL_CURRICULUM, null, false)).containsExactly(TARGET_ID);
+            assertThat(fixture.service().getFrontier(LEARNER_ID)).isEmpty();
+            assertThat(fixture.service().getRichFrontier(LEARNER_ID)).isEmpty();
+
+            when(fixture.masteryRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                    .thenReturn(List.of(requiredMastery,
+                            new Mastery(fixture.learner(), EXTERNAL_PREREQUISITE_CHILD_ID, 1.0)));
+            assertThat(fixture.service().getFrontier(LEARNER_ID)).containsExactly(TARGET_ID);
+            assertThat(fixture.service().getRichFrontier(LEARNER_ID))
+                    .extracting(FrontierGoal::id).containsExactly(TARGET_ID);
+            assertThat(fixture.service().getMastery(LEARNER_ID)).doesNotContainKey(unusedMathematicsId);
+            verify(fixture.masteryRepository(), never()).save(any(Mastery.class));
+            verify(fixture.masteryRepository(), never()).saveAll(any());
+        }
     }
 
     @Test
@@ -243,6 +301,10 @@ class ProjectionRoleLearnerServiceTest {
         Fixture fixture = fixture(view(
                 goalEntry(TARGET_ID),
                 goalEntry(PREREQUISITE_ID, "prerequisiteOnly")));
+        // This test isolates a single direct prerequisite; chains have their own tests.
+        fixture.landscape().getGoals().stream()
+                .filter(goal -> PREREQUISITE_ID.equals(goal.getId()))
+                .findFirst().orElseThrow().setRequires(List.of());
         Mastery prerequisiteMastery = new Mastery(fixture.learner(), PREREQUISITE_ID, 1.0);
         when(fixture.masteryRepository().findByLearner_SkillpilotId(LEARNER_ID))
                 .thenReturn(List.of())
@@ -323,6 +385,220 @@ class ProjectionRoleLearnerServiceTest {
     }
 
     @Test
+    void unknownDirectPrerequisiteBlocksBothFrontiersInEitherMode() {
+        for (boolean strictMode : List.of(false, true)) {
+            Fixture fixture = fixture(view(goalEntry(TARGET_ID)));
+            fixture.learner().setStrictMode(strictMode);
+            fixture.landscape().getGoals().stream()
+                    .filter(goal -> TARGET_ID.equals(goal.getId()))
+                    .findFirst().orElseThrow()
+                    .setRequires(List.of("unknown-mathematics-prerequisite"));
+            when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                    .thenReturn(List.of(new PlannedGoal(fixture.learner(), TARGET_ID)));
+
+            assertThat(fixture.service().getFrontier(LEARNER_ID)).doesNotContain(TARGET_ID);
+            assertThat(fixture.service().getRichFrontier(LEARNER_ID))
+                    .extracting(FrontierGoal::id).doesNotContain(TARGET_ID);
+        }
+    }
+
+    @Test
+    void selectedTargetPrerequisiteOutsideFocusStillBlocksUntilStoredMasteryReleasesIt() {
+        Fixture fixture = fixture(view(goalEntry(TARGET_ID), goalEntry(PREREQUISITE_ID)));
+        // Isolate the focus boundary from transitive prerequisite checks.
+        fixture.landscape().getGoals().stream()
+                .filter(goal -> PREREQUISITE_ID.equals(goal.getId()))
+                .findFirst().orElseThrow().setRequires(List.of());
+        when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(fixture.learner(), TARGET_ID)));
+
+        assertThat(fixture.service().getFrontier(LEARNER_ID)).doesNotContain(TARGET_ID);
+        assertThat(fixture.service().getRichFrontier(LEARNER_ID))
+                .extracting(FrontierGoal::id).doesNotContain(TARGET_ID);
+
+        when(fixture.masteryRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new Mastery(fixture.learner(), PREREQUISITE_ID, 1.0)));
+        assertThat(fixture.service().getFrontier(LEARNER_ID)).containsExactly(TARGET_ID);
+        assertThat(fixture.service().getRichFrontier(LEARNER_ID))
+                .extracting(FrontierGoal::id).containsExactly(TARGET_ID);
+        verify(fixture.masteryRepository(), never()).save(any(Mastery.class));
+        verify(fixture.masteryRepository(), never()).saveAll(any());
+    }
+
+    @Test
+    void simpleFrontierChecksTransitivePrerequisitesDespiteMasteredIntermediateGoal() {
+        assertTransitivePrerequisiteBlocksUntilStoredMastery(false);
+    }
+
+    @Test
+    void richFrontierChecksTransitivePrerequisitesDespiteMasteredIntermediateGoal() {
+        assertTransitivePrerequisiteBlocksUntilStoredMastery(true);
+    }
+
+    private void assertTransitivePrerequisiteBlocksUntilStoredMastery(boolean richFrontier) {
+        for (boolean strictMode : List.of(false, true)) {
+            for (String mathematicsRole : List.of("target", "prerequisiteOnly")) {
+                Fixture fixture = fixture(view(
+                        goalEntry(TARGET_ID), goalEntry(PREREQUISITE_ID),
+                        goalEntry(EXTERNAL_PREREQUISITE_ID, mathematicsRole)));
+                String mathematicsLandscapeId = "transitive-mathematics";
+                SkillLandscape mathematics = new SkillLandscape();
+                mathematics.setLandscapeId(mathematicsLandscapeId);
+                mathematics.setGoals(List.of(atomicGoal(EXTERNAL_PREREQUISITE_ID, List.of())));
+                when(fixture.landscapeService().getClosure(LANDSCAPE_ID))
+                        .thenReturn(List.of(fixture.landscape(), mathematics));
+                when(fixture.landscapeService().getById(mathematicsLandscapeId)).thenReturn(mathematics);
+                when(fixture.compositionViewService().isAuthoritativeForLandscape(mathematicsLandscapeId))
+                        .thenReturn(true);
+                when(fixture.compositionViewService().findLearnerScopeView(eq(mathematicsLandscapeId), anyMap()))
+                        .thenReturn(Map.of(
+                                "viewId", "transitive-mathematics-view",
+                                "landscapeId", mathematicsLandscapeId,
+                                "rootNodes", List.of(goalEntry(EXTERNAL_PREREQUISITE_ID, mathematicsRole))));
+                fixture.learner().setPersonalCurriculum("""
+                        {"projection-roles":{"selected":true,"filterId":"LK"},
+                         "transitive-mathematics":{"selected":true,"filterId":"LK"}}
+                        """);
+                fixture.learner().setStrictMode(strictMode);
+                fixture.landscape().getGoals().stream()
+                        .filter(goal -> PREREQUISITE_ID.equals(goal.getId()))
+                        .findFirst().orElseThrow()
+                        .setRequires(List.of(EXTERNAL_PREREQUISITE_ID));
+                when(fixture.landscapeService().getGoalDefinition(EXTERNAL_PREREQUISITE_ID))
+                        .thenReturn(atomicGoal(EXTERNAL_PREREQUISITE_ID, List.of()));
+                when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                        .thenReturn(List.of(new PlannedGoal(fixture.learner(), TARGET_ID)));
+                Mastery intermediateMastery = new Mastery(fixture.learner(), PREREQUISITE_ID, 1.0);
+                when(fixture.masteryRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                        .thenReturn(List.of(intermediateMastery));
+                ProjectionSets projection = projectionSets(
+                        fixture.service(), fixture.learner().getPersonalCurriculum());
+                assertThat(mathematicsRole.equals("target")
+                        ? projection.targetGoalIds() : projection.prerequisiteOnlyGoalIds())
+                        .contains(EXTERNAL_PREREQUISITE_ID);
+
+                List<String> blockedFrontier = richFrontier
+                        ? fixture.service().getRichFrontier(LEARNER_ID).stream().map(FrontierGoal::id).toList()
+                        : fixture.service().getFrontier(LEARNER_ID);
+                assertThat(blockedFrontier)
+                        .as("strict=%s, mathematicsRole=%s", strictMode, mathematicsRole)
+                        .doesNotContain(TARGET_ID);
+                assertThat(fixture.service().getMastery(LEARNER_ID))
+                        .doesNotContainKey(EXTERNAL_PREREQUISITE_ID);
+
+                when(fixture.masteryRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                        .thenReturn(List.of(intermediateMastery,
+                                new Mastery(fixture.learner(), EXTERNAL_PREREQUISITE_ID, 1.0)));
+                List<String> releasedFrontier = richFrontier
+                        ? fixture.service().getRichFrontier(LEARNER_ID).stream().map(FrontierGoal::id).toList()
+                        : fixture.service().getFrontier(LEARNER_ID);
+                assertThat(releasedFrontier).containsExactly(TARGET_ID);
+                verify(fixture.masteryRepository(), never()).save(any(Mastery.class));
+                verify(fixture.masteryRepository(), never()).saveAll(any());
+            }
+        }
+    }
+
+    @Test
+    void physicsPrerequisiteOnlyEntryDoesNotRemoveIndependentlySelectedMathematicsTarget() {
+        Fixture fixture = fixture(view(
+                goalEntry(TARGET_ID), goalEntry(EXTERNAL_PREREQUISITE_ID, "prerequisiteOnly")));
+        String mathematicsLandscapeId = "independent-mathematics";
+        SkillLandscape mathematics = new SkillLandscape();
+        mathematics.setLandscapeId(mathematicsLandscapeId);
+        mathematics.setFrameworkId("canonical-gymnasium-mathematics-test");
+        mathematics.setGoals(List.of(
+                clusterGoal(EXTERNAL_PREREQUISITE_ROOT_ID, List.of(EXTERNAL_PREREQUISITE_ID)),
+                atomicGoal(EXTERNAL_PREREQUISITE_ID, List.of())));
+        when(fixture.landscapeService().getClosure(LANDSCAPE_ID))
+                .thenReturn(List.of(fixture.landscape(), mathematics));
+        when(fixture.landscapeService().getById(mathematicsLandscapeId)).thenReturn(mathematics);
+        when(fixture.compositionViewService().isAuthoritativeForLandscape(mathematicsLandscapeId))
+                .thenReturn(true);
+        when(fixture.compositionViewService().findLearnerScopeView(eq(mathematicsLandscapeId), anyMap()))
+                .thenReturn(Map.of(
+                        "viewId", "independent-mathematics-view",
+                        "landscapeId", mathematicsLandscapeId,
+                        "rootNodes", List.of(canonicalSubtree(EXTERNAL_PREREQUISITE_ROOT_ID))));
+        String personalCurriculum = """
+                {"projection-roles":{"selected":true,"filterId":"LK"},
+                 "independent-mathematics":{"selected":true,"filterId":"LK"}}
+                """;
+        fixture.learner().setPersonalCurriculum(personalCurriculum);
+
+        ProjectionSets projection = projectionSets(fixture.service(), personalCurriculum);
+        assertThat(projection.targetGoalIds()).contains(TARGET_ID, EXTERNAL_PREREQUISITE_ID);
+        assertThat(projection.prerequisiteOnlyGoalIds()).doesNotContain(EXTERNAL_PREREQUISITE_ID);
+        assertThat(fixture.service().getFilteredAtomicGoalIds(
+                        LANDSCAPE_ID, personalCurriculum, null, false))
+                .contains(TARGET_ID, EXTERNAL_PREREQUISITE_ID);
+    }
+
+    @Test
+    void foreignSupportRootDoesNotHideIndependentSubjectPresentationAnchor() {
+        Fixture fixture = fixture(view(goalEntry(TARGET_ID),
+                canonicalSubtree(EXTERNAL_PREREQUISITE_ROOT_ID, "prerequisiteOnly")));
+        String mathematicsLandscapeId = "independent-mathematics";
+        SkillLandscape mathematics = new SkillLandscape();
+        mathematics.setLandscapeId(mathematicsLandscapeId);
+        mathematics.setFrameworkId("canonical-gymnasium-mathematics-test");
+        LearningGoal mathematicsRoot = clusterGoal(EXTERNAL_PREREQUISITE_ROOT_ID,
+                List.of(EXTERNAL_PREREQUISITE_CHILD_ID));
+        mathematicsRoot.setTags(List.of("root"));
+        mathematics.setGoals(List.of(mathematicsRoot,
+                clusterGoal(EXTERNAL_PREREQUISITE_CHILD_ID, List.of(EXTERNAL_PREREQUISITE_ID)),
+                atomicGoal(EXTERNAL_PREREQUISITE_ID, List.of())));
+        when(fixture.landscapeService().getClosure(LANDSCAPE_ID))
+                .thenReturn(List.of(fixture.landscape(), mathematics));
+        when(fixture.landscapeService().getById(mathematicsLandscapeId)).thenReturn(mathematics);
+        when(fixture.compositionViewService().isAuthoritativeForLandscape(mathematicsLandscapeId))
+                .thenReturn(true);
+        // The own view targets the branch, while the existing landscape root
+        // remains its presentation anchor rather than a newly enrolled target.
+        when(fixture.compositionViewService().findLearnerScopeView(eq(mathematicsLandscapeId), anyMap()))
+                .thenReturn(Map.of("viewId", "independent-mathematics-view",
+                        "landscapeId", mathematicsLandscapeId,
+                        "rootNodes", List.of(canonicalSubtree(EXTERNAL_PREREQUISITE_CHILD_ID))));
+        String personalCurriculum = """
+                {"projection-roles":{"selected":true,"filterId":"LK"},
+                 "independent-mathematics":{"selected":true,"filterId":"LK"}}
+                """;
+        fixture.learner().setPersonalCurriculum(personalCurriculum);
+
+        ProjectionSets projection = projectionSets(fixture.service(), personalCurriculum);
+        assertThat(projection.targetGoalIds()).containsExactlyInAnyOrder(
+                TARGET_ID, EXTERNAL_PREREQUISITE_CHILD_ID, EXTERNAL_PREREQUISITE_ID);
+        assertThat(projection.targetGoalIds()).doesNotContain(EXTERNAL_PREREQUISITE_ROOT_ID);
+        assertThat(projection.prerequisiteOnlyGoalIds()).doesNotContain(EXTERNAL_PREREQUISITE_ROOT_ID);
+        assertThat(projection.presentationRootGoalIds()).contains(EXTERNAL_PREREQUISITE_ROOT_ID);
+
+        Fixture ownPrerequisiteRoot = fixture(view(
+                canonicalSubtree(ROOT_CLUSTER_ID, "prerequisiteOnly"), goalEntry(TARGET_ID)));
+        ProjectionSets ownProjection = projectionSets(ownPrerequisiteRoot.service());
+        assertThat(ownProjection.prerequisiteOnlyGoalIds()).contains(ROOT_CLUSTER_ID);
+        assertThat(ownProjection.presentationRootGoalIds()).doesNotContain(ROOT_CLUSTER_ID);
+    }
+
+    @Test
+    void dependentMasteryNeverGrantsOrSuppressesItsUnmasteredPrerequisite() {
+        Fixture fixture = fixture(view(goalEntry(TARGET_ID), goalEntry(PREREQUISITE_ID)));
+        fixture.landscape().getGoals().stream()
+                .filter(goal -> PREREQUISITE_ID.equals(goal.getId()))
+                .findFirst().orElseThrow().setRequires(List.of());
+        when(fixture.masteryRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new Mastery(fixture.learner(), TARGET_ID, 1.0)));
+        when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(fixture.learner(), PREREQUISITE_ID)));
+
+        assertThat(fixture.service().getFrontier(LEARNER_ID)).containsExactly(PREREQUISITE_ID);
+        assertThat(fixture.service().getRichFrontier(LEARNER_ID))
+                .extracting(FrontierGoal::id).containsExactly(PREREQUISITE_ID);
+        assertThat(fixture.service().getMastery(LEARNER_ID)).doesNotContainKey(PREREQUISITE_ID);
+        verify(fixture.masteryRepository(), never()).save(any(Mastery.class));
+        verify(fixture.masteryRepository(), never()).saveAll(any());
+    }
+
+    @Test
     void releasedExamWithoutDirectDidacticPrerequisiteNeverEntersFrontier() {
         Fixture fixture = fixture(view(goalEntry(OUTSIDE_TARGET_ID)));
         LearningGoal exam = fixture.landscape().getGoals().stream()
@@ -345,6 +621,10 @@ class ProjectionRoleLearnerServiceTest {
         Fixture fixture = fixture(view(
                 goalEntry(OUTSIDE_TARGET_ID),
                 goalEntry(PREREQUISITE_ID, "prerequisiteOnly")));
+        // The exam gate here has one terminal didactic prerequisite.
+        fixture.landscape().getGoals().stream()
+                .filter(goal -> PREREQUISITE_ID.equals(goal.getId()))
+                .findFirst().orElseThrow().setRequires(List.of());
         LearningGoal exam = fixture.landscape().getGoals().stream()
                 .filter(goal -> OUTSIDE_TARGET_ID.equals(goal.getId()))
                 .findFirst()
@@ -780,6 +1060,7 @@ class ProjectionRoleLearnerServiceTest {
         List<Map<String, Object>> entries = new ArrayList<>();
         entries.add(goalEntry(SOLAR_SYSTEM_CLASSIFICATION_ID));
         entries.add(goalEntry(OPEN_COSMOLOGICAL_QUESTIONS_ID));
+        entries.add(canonicalSubtree("c01b1ce9-a667-4a46-b251-ec33ae602b15", "prerequisiteOnly"));
         MASTERED_PHYSICS_CONTEXT_IDS.forEach(id -> entries.add(goalEntry(id, "prerequisiteOnly")));
         if (!"omitted".equals(methodRole)) {
             PHYSICS_METHOD_IDS.forEach(id -> entries.add(goalEntry(id, methodRole)));
@@ -797,14 +1078,22 @@ class ProjectionRoleLearnerServiceTest {
         root.setTags(List.of("root"));
         List<LearningGoal> goals = new ArrayList<>(List.of(root));
         ObjectMapper mapper = new ObjectMapper();
-        // Keep canonical requirements intact in this small runtime fixture. The other
-        // astronomy prerequisites are already mastered; real composition views have separate tests.
-        for (var node : mapper.readTree(Path.of(
+        // Keep the whole current canonical contracts. This fixture isolates the
+        // Physics-method route, with its actual Mathematics preparation stored
+        // separately; explicit POnly support does not enroll Mathematics targets.
+        SkillLandscape canonicalPhysics = mapper.readValue(Path.of(
                 "../curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json")
-                .toFile()).path("goals")) {
-            if (routeIds.contains(node.path("id").asText())) {
-                goals.add(mapper.treeToValue(node, LearningGoal.class));
-            }
+                .toFile(), SkillLandscape.class);
+        SkillLandscape canonicalMathematics = mapper.readValue(Path.of(
+                "../curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json")
+                .toFile(), SkillLandscape.class);
+        for (LearningGoal goal : canonicalPhysics.getGoals()) {
+            if (routeIds.contains(goal.getId())) goals.add(goal);
+        }
+        when(fixture.landscapeService().getById(canonicalPhysics.getLandscapeId())).thenReturn(canonicalPhysics);
+        when(fixture.landscapeService().getById(canonicalMathematics.getLandscapeId())).thenReturn(canonicalMathematics);
+        for (LearningGoal goal : canonicalMathematics.getGoals()) {
+            when(fixture.landscapeService().getGoalDefinition(goal.getId())).thenReturn(goal);
         }
         assertThat(goals).extracting(LearningGoal::getId)
                 .containsAll(routeIds).hasSize(routeIds.size() + 1);
@@ -818,6 +1107,15 @@ class ProjectionRoleLearnerServiceTest {
             Fixture fixture, Set<String> masteredMethods, String... expectedFrontier) {
         Map<String, Double> explicitMastery = new LinkedHashMap<>();
         MASTERED_PHYSICS_CONTEXT_IDS.forEach(id -> explicitMastery.put(id, 1.0));
+        Set<String> mathematicsIds = fixture.landscapeService().getById(
+                "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced").getGoals().stream()
+                .map(LearningGoal::getId).collect(java.util.stream.Collectors.toSet());
+        List<String> routeTargets = new ArrayList<>(PHYSICS_METHOD_IDS);
+        routeTargets.add(SOLAR_SYSTEM_CLASSIFICATION_ID);
+        routeTargets.add(OPEN_COSMOLOGICAL_QUESTIONS_ID);
+        CanonicalPrerequisiteTestContext.withStoredPrerequisites(
+                fixture.landscapeService(), routeTargets, List.of(), Set.of()).stream()
+                .filter(mathematicsIds::contains).forEach(id -> explicitMastery.put(id, 1.0));
         PHYSICS_METHOD_IDS.forEach(id -> explicitMastery.put(id, masteredMethods.contains(id) ? 1.0 : 0.0));
         explicitMastery.put(SOLAR_SYSTEM_CLASSIFICATION_ID, 0.0);
         explicitMastery.put(OPEN_COSMOLOGICAL_QUESTIONS_ID, 0.0);
@@ -1030,11 +1328,16 @@ class ProjectionRoleLearnerServiceTest {
 
     @SuppressWarnings("unchecked")
     private ProjectionSets projectionSets(LearnerService service) {
+        return projectionSets(service, PERSONAL_CURRICULUM);
+    }
+
+    @SuppressWarnings("unchecked")
+    private ProjectionSets projectionSets(LearnerService service, String personalCurriculum) {
         Object projection = ReflectionTestUtils.invokeMethod(
                 service,
                 "getGoalProjection",
                 LANDSCAPE_ID,
-                PERSONAL_CURRICULUM);
+                personalCurriculum);
         Set<String> targetGoalIds =
                 ReflectionTestUtils.invokeMethod(projection, "targetGoalIds");
         Set<String> prerequisiteOnlyGoalIds =

@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physics-existing-math-current-resolution-b615830a-e8b0-5754-81e0-99da98343a8d",
+  "goal": {
+    "goalId": "b615830a-e8b0-5754-81e0-99da98343a8d",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:b7fd41467577af57ba1137045b65bf277b264c84ee55810adae49bd0209153ba",
+    "pageFingerprint": "sha256:d3257d0eb609fb9862cce647097cecf3b174f3193cd37fafb2a73044d059f48c",
+    "goalReviewContextFingerprint": "sha256:51c0689209b7b6fc1dac585b3ee78e46e489d4c37d0877b38154aa8947e8865a",
+    "finalText": {
+      "titleDe": "Signifikante Stellen korrekt verwenden",
+      "titleEn": "Use Significant Figures Correctly",
+      "descriptionDe": "Die lernende Person kann Rechenergebnisse passend zur angegebenen Genauigkeit beziehungsweise Unsicherheit der Eingangsdaten auf eine sinnvolle Zahl signifikanter Stellen runden, Zwischenwerte mit ausreichender Genauigkeit weiterführen und Scheingenauigkeit vermeiden.",
+      "descriptionEn": "The learner can round calculated results to a meaningful number of significant figures consistent with the stated precision or uncertainty of the input data, carry intermediate values with sufficient precision, and avoid false precision."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-a-20261017-v1",
+      "campaignDigest": "sha256:b23805760ff147505f7d53ab1a339fd1e1dd226dc7eda0776ccfe4ec09726b43",
+      "roundId": "physics-existing-math-prerequisites-first-a-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-a-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "goalReviewContextFingerprint": "sha256:51c0689209b7b6fc1dac585b3ee78e46e489d4c37d0877b38154aa8947e8865a",
+      "batchId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-002",
+      "runId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-002.gpt61-sol-ultra",
+      "runManifestDigest": "sha256:5b6108fdc46ac0350718d07bb264fb6167aaec4d272ba91b0fc46e942dd9c5fd",
+      "resultsDigest": "sha256:43e144f145152cc4a2bcdb2e8a7f8757a927c6911c1a31f5830fc85d7a6108c3",
+      "recordId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-002.gpt61-sol-ultra.2",
+      "recordDigest": "sha256:119f0327ca7b943075f0c31daf3721295bb1ec920d515ab8e6428f377c75b90e"
+    },
+    "second": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-b-20261017-v1",
+      "campaignDigest": "sha256:e5062c24fc41990b95c544705fa59130d293784be6143a7146169694e24d1103",
+      "roundId": "physics-existing-math-prerequisites-first-b-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-b-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "goalReviewContextFingerprint": "sha256:51c0689209b7b6fc1dac585b3ee78e46e489d4c37d0877b38154aa8947e8865a",
+      "batchId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-002",
+      "runId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-002.sol-native-d",
+      "runManifestDigest": "sha256:b50791cb0066aea0cf9eb461998dbf5b1223d44cd6995966e121df7215ab350c",
+      "resultsDigest": "sha256:540f25420693baeb4341d9597a9a95f17b01f6527c3ea18b7e3b5547ac7b6d4b",
+      "recordId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-002.sol-native-d.goal-002",
+      "recordDigest": "sha256:3458684f496d80fc54eaa84f505f68c3341eea3e37fb4863a17f42b723717566"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:d5ca2db392c5a44a98f275ce73cd20a967c005e0d7c38a11f2ba88573a0cfff6"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "physics-existing-math-current-synthesis-b615830a-e8b0-5754-81e0-99da98343a8d",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "codex-native-d-integration-sol",
+    "synthesizedAt": "2026-10-17T09:19:29.758632Z",
+    "rationaleDe": "Der aktuelle bilinguale Vertrag zu „Signifikante Stellen korrekt verwenden“ bleibt bestehen. Ergebnisziffern dürfen nur die Eingangsdatenqualität ausdrücken; ausreichende Schutzstellen verhindern Rundungsfehler in Zwischenrechnungen. Die lernende Person rechnet mehrstufig mit Schutzstellen, begründet die Endrundung und erkennt Scheingenauigkeit in einer langen Rechneranzeige. Bei einer neuen Rechnung mit ausdrücklich angegebenen Unsicherheiten ersetzt die lernende Person die bloße Ziffernzählregel durch eine daran ausgerichtete Ergebnisangabe. Beide tatsächlich vorliegenden Ganzkontext-Reviews urteilen keep und empfehlen für das mitgelesene vollständige V2-Profil none; die konkrete Evidence-Fassung der zweiten Runde wird unverändert übernommen.",
+    "rationaleEn": "The current bilingual contract for “Use Significant Figures Correctly” is retained. Reported digits must express only the input-data quality; sufficient guard digits prevent rounding errors in intermediate calculations. The learner calculates in several steps with guard digits, justifies final rounding, and identifies false precision in a long calculator display. For a fresh calculation with explicitly supplied uncertainties, the learner replaces mere digit counting with a result reported in line with those uncertainties. Both actual whole-context reviews judge keep and recommend none for the complete V2 profile read alongside the goal; the second round's concrete evidence formulation is adopted unchanged.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Ergebnisziffern dürfen nur die Eingangsdatenqualität ausdrücken; ausreichende Schutzstellen verhindern Rundungsfehler in Zwischenrechnungen.",
+      "essentialUnderstandingEn": "Reported digits must express only the input-data quality; sufficient guard digits prevent rounding errors in intermediate calculations.",
+      "observablePerformanceDe": "Die lernende Person rechnet mehrstufig mit Schutzstellen, begründet die Endrundung und erkennt Scheingenauigkeit in einer langen Rechneranzeige.",
+      "observablePerformanceEn": "The learner calculates in several steps with guard digits, justifies final rounding, and identifies false precision in a long calculator display.",
+      "transferExpectationDe": "Bei einer neuen Rechnung mit ausdrücklich angegebenen Unsicherheiten ersetzt die lernende Person die bloße Ziffernzählregel durch eine daran ausgerichtete Ergebnisangabe.",
+      "transferExpectationEn": "For a fresh calculation with explicitly supplied uncertainties, the learner replaces mere digit counting with a result reported in line with those uncertainties."
+    },
+    "dissent": [
+      {
+        "dissentId": "physics-existing-math-current-synthesis-b615830a-e8b0-5754-81e0-99da98343a8d.dissent-1",
+        "source": "both",
+        "disposition": "accepted_second",
+        "textDe": "Die beiden aktuellen keep/none-Reviews verwenden eigenständige Verständnis- und Begründungstexte. Die oben konkret benannte Understanding-/Handlungs-/Transferevidence wird aus der zweiten Runde übernommen; die erste Meinung bleibt unverändert gebunden.",
+        "textEn": "The two current keep/none reviews use independently written understanding evidence and rationales. The specific understanding, performance, and transfer evidence stated above is taken from the second round; the first opinion remains bound unchanged."
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:ef5e09c1a75d675652f20f13cb1cf188a638a2db6b7c0650502f44487a8972c3"
+}

@@ -1,0 +1,192 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physics-existing-math-current-synthesis-batch-1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Root AI synthesis; native D integration with faithful English translation",
+  "synthesizedAt": "2026-10-17T09:28:15.543662Z",
+  "batch": {
+    "batchId": "physics-existing-math-current-synthesis-batch-1",
+    "batchManifestDigest": "sha256:08dcccd3cc35c93abbf0a311b39297d573d2cf35aacea8c763414778b0e86d6a",
+    "configDigest": "sha256:ee224f52814e20e7e8785ebeed3f0d6fd6d12ff70314dbc4723184e4072243c4",
+    "bundleFingerprint": "sha256:a3e5ff4e8a6ce263cdba8a660005323d8e18a093b0a2a18d9ca4b2c78b2980c5",
+    "bookDigest": "sha256:3cbacf5cf3d4838db6ef75ed0fd3dbf2410d823d688c65bd250032bdd79fbace",
+    "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+    "dualSummaryDigest": "sha256:d5ca2db392c5a44a98f275ce73cd20a967c005e0d7c38a11f2ba88573a0cfff6",
+    "canonicalLandscapeDigest": "sha256:ee9ac934b68c13f0ed64335c362ebc807a9c8d91f5e74ad90bcb0a1baa22baee"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-a-20261017-v1",
+      "campaignDigest": "sha256:b23805760ff147505f7d53ab1a339fd1e1dd226dc7eda0776ccfe4ec09726b43",
+      "roundId": "physics-existing-math-prerequisites-first-a-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-a-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "batchId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-001",
+      "batchInputFingerprint": "sha256:8dd50eb9cc5797bb4a4964fe8a70e0c116aff30ec6333ad24168b0186f87b32f",
+      "runId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-001.gpt61-sol-ultra",
+      "runManifestDigest": "sha256:094515edecb2b7196fbdd172a2b16ede575ed41472b1261c95050a3616884c47",
+      "resultsDigest": "sha256:6fe96ecbef24b2bc767239d9b9b32c9c9c2f1869a0d8a054619a716dd87b6e84"
+    },
+    "second": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-b-20261017-v1",
+      "campaignDigest": "sha256:e5062c24fc41990b95c544705fa59130d293784be6143a7146169694e24d1103",
+      "roundId": "physics-existing-math-prerequisites-first-b-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-b-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "batchId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-001",
+      "batchInputFingerprint": "sha256:40161fb673c1d3574a998aa6d41349152f04db2fd40437a1a5303370089bb5bd",
+      "runId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-001.sol-native-d",
+      "runManifestDigest": "sha256:65f84fad2bb09d7c48c9fa9f6000b428869b9d58c565e162c7114af868acc62f",
+      "resultsDigest": "sha256:d116ad2f07ac28380a8ad995889234f0d281f51a94942218a3a869981863b8f7"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physics-existing-math-current-synthesis-2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+      "goalId": "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d663fa47bbebac4849db74bae3278372d20237dded7c7093d94601b9a9872e38",
+      "pageFingerprint": "sha256:a4deadb941f1fb180011be0809ff11e33b2e5f302f047ec5ca9eaba29133e799",
+      "goalReviewContextFingerprint": "sha256:cc9effecd63e2cc6576422c286322ff69eb570c5609d2cd02a0ad4de06aee1cd",
+      "finalText": {
+        "titleDe": "Einfache Stossvorgaenge mit Impuls- und Energieerhaltung analysieren",
+        "titleEn": "Analyze simple collision processes using momentum and energy conservation",
+        "descriptionDe": "Die lernende Person kann einfache Stossvorgaenge quantitativ untersuchen, dabei Impuls- und Energieerhaltung fachlich nutzen und die Rolle von Erhaltungssaetzen in der Mechanik erklaeren.",
+        "descriptionEn": "The learner can quantitatively analyze simple collision processes, use momentum and energy conservation appropriately, and explain the role of conservation laws in mechanics."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-001.gpt61-sol-ultra.1",
+          "recordDigest": "sha256:2713f045bdddf3e45b32d016a0dfa2ec662790b7d44404052e6394b7ed418c64"
+        },
+        "second": {
+          "recordId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-001.sol-native-d.goal-001",
+          "recordDigest": "sha256:32d10356fe8693fc37dc751342275b3313c1f9c9dead56a67e1d58e7278d8377"
+        }
+      },
+      "revisionDissent": {
+        "sourceRound": "second",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann einfache Stoßvorgänge für ein System mit vernachlässigbarem äußerem Kraftstoß quantitativ mithilfe der Impulserhaltung und einer Gesamtenergiebilanz analysieren und erklären, wann dabei auch die kinetische Energie erhalten bleibt.",
+        "proposedDescriptionEn": "The learner can quantitatively analyze simple collisions for a system with negligible external impulse using momentum conservation and a total-energy balance, and explain when kinetic energy is also conserved.",
+        "rationaleDe": "D verlangt bereits fachliches Nutzen beider Erhaltungssätze, ohne isolierte Einzelimpulserhaltung oder universelle kinetische Energieerhaltung zu behaupten. Das ganze P bindet System A+B, vernachlässigbaren äußeren Kraftstoß, Gesamtenergie einschließlich innerer Energie, Vorzeichen und elastischen/haftenden Gegenstoß. Bs D-Revision expliziert zutreffend diese vorhandenen Pflichten; ein ernsthafter Fehlanspruch bleibt nach Gesamtlektüre nicht übrig. Die integrierte Stoßanalyse benötigt keine Aufspaltung. Diese Resolution entscheidet ausschließlich den aktuellen D-Wortlaut. Erforderliche P-Korrekturen und deren neue fachliche Qualifikation werden getrennt behandelt; unveränderte P-Akzeptanz wird nicht behauptet.",
+        "rationaleEn": "The description already requires appropriate use of both conservation laws without claiming conservation of an individual body's momentum or universal conservation of kinetic energy. The complete profile specifies system A+B, negligible external impulse, total energy including internal energy, signs, and elastic versus sticking head-on collisions. Round B's revision correctly makes existing obligations explicit; reading the whole contract reveals no remaining serious false claim. The integrated collision analysis does not require splitting. This resolution decides only the current description wording. Required profile corrections and their fresh substantive qualification are handled separately; acceptance of an unchanged profile is not asserted."
+      },
+      "rationaleDe": "D verlangt bereits fachliches Nutzen beider Erhaltungssätze, ohne isolierte Einzelimpulserhaltung oder universelle kinetische Energieerhaltung zu behaupten. Das ganze P bindet System A+B, vernachlässigbaren äußeren Kraftstoß, Gesamtenergie einschließlich innerer Energie, Vorzeichen und elastischen/haftenden Gegenstoß. Bs D-Revision expliziert zutreffend diese vorhandenen Pflichten; ein ernsthafter Fehlanspruch bleibt nach Gesamtlektüre nicht übrig. Die integrierte Stoßanalyse benötigt keine Aufspaltung. Diese Resolution entscheidet ausschließlich den aktuellen D-Wortlaut. Erforderliche P-Korrekturen und deren neue fachliche Qualifikation werden getrennt behandelt; unveränderte P-Akzeptanz wird nicht behauptet.",
+      "rationaleEn": "The description already requires appropriate use of both conservation laws without claiming conservation of an individual body's momentum or universal conservation of kinetic energy. The complete profile specifies system A+B, negligible external impulse, total energy including internal energy, signs, and elastic versus sticking head-on collisions. Round B's revision correctly makes existing obligations explicit; reading the whole contract reveals no remaining serious false claim. The integrated collision analysis does not require splitting. This resolution decides only the current description wording. Required profile corrections and their fresh substantive qualification are handled separately; acceptance of an unchanged profile is not asserted."
+    },
+    {
+      "decisionId": "physics-existing-math-current-synthesis-f1a078ae-6262-4444-a4bc-a5ab275621cf",
+      "goalId": "f1a078ae-6262-4444-a4bc-a5ab275621cf",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ddae4a9a8927cf3989b59c1c491a815fab29030ff4216ada22d490e672abd965",
+      "pageFingerprint": "sha256:20ca7326e392c7dbc7465b614e4721f9d263094b838c71dc75338b1bc45f2565",
+      "goalReviewContextFingerprint": "sha256:46532f60ba424d27965d4cab89b31d3f507ec4235a9d36e135c0cb02e36905b5",
+      "finalText": {
+        "titleDe": "Stromstärke in einfachen Stromkreisen messen",
+        "titleEn": "Measure current in simple circuits",
+        "descriptionDe": "Die lernende Person kann ein Amperemeter in einem einfachen Stromkreis in Reihe anschließen, einen geeigneten Messbereich wählen und die Stromstärke bestimmen sowie den Messwert mit Einheit angeben.",
+        "descriptionEn": "The learner can connect an ammeter in series in a simple circuit, select a suitable measurement range, determine the current, and report the reading with its unit."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-001.gpt61-sol-ultra.12",
+          "recordDigest": "sha256:aa781938f1092f8411f1666bc4a5fe57c620e50a5b188e348c8786930b8c4af2"
+        },
+        "second": {
+          "recordId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-001.sol-native-d.goal-012",
+          "recordDigest": "sha256:3832b027df5d9d1beb02f403bd4df6e2d720e08d234f1584ca1258d435d4405a"
+        }
+      },
+      "revisionDissent": {
+        "sourceRound": "second",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann ein Amperemeter in einem einfachen sicheren Kleinspannungsstromkreis an der gefragten Stelle in Reihe anschließen, einen geeigneten Messbereich wählen, die Stromstärke bestimmen und den Messwert mit Einheit angeben.",
+        "proposedDescriptionEn": "The learner can connect an ammeter in series at the requested location in a simple safe low-voltage circuit, select a suitable range, determine the current, and report the reading with its unit.",
+        "rationaleDe": "D beschreibt eine fachgerechte Messung, ohne einen gefährlichen Spannungswert vorzugeben. Das ganze P setzt sichere Kleinspannung, Polung/Anschlüsse, sicheren Startbereich, Zweigstrom und Prüfung vor dem Einschalten verbindlich; sämtliche drei Fälle bleiben Kleinspannungsfälle. B möchte diese vorhandene P-Bedingung zusätzlich in D schreiben. Das ist sinnvoll, aber kein belegter ernsthafter Defekt des Gesamtvertrags. Diese Resolution entscheidet ausschließlich den aktuellen D-Wortlaut. Erforderliche P-Korrekturen und deren neue fachliche Qualifikation werden getrennt behandelt; unveränderte P-Akzeptanz wird nicht behauptet.",
+        "rationaleEn": "The description specifies a proper measurement without prescribing a dangerous voltage. The complete profile requires safe low voltage, correct polarity and terminals, a safe initial range, branch current, and checking before power is applied; all three cases remain low-voltage cases. Round B would additionally place this existing profile condition in the description. This is useful but does not demonstrate a serious defect in the overall contract. This resolution decides only the current description wording. Required profile corrections and their fresh substantive qualification are handled separately; acceptance of an unchanged profile is not asserted."
+      },
+      "rationaleDe": "D beschreibt eine fachgerechte Messung, ohne einen gefährlichen Spannungswert vorzugeben. Das ganze P setzt sichere Kleinspannung, Polung/Anschlüsse, sicheren Startbereich, Zweigstrom und Prüfung vor dem Einschalten verbindlich; sämtliche drei Fälle bleiben Kleinspannungsfälle. B möchte diese vorhandene P-Bedingung zusätzlich in D schreiben. Das ist sinnvoll, aber kein belegter ernsthafter Defekt des Gesamtvertrags. Diese Resolution entscheidet ausschließlich den aktuellen D-Wortlaut. Erforderliche P-Korrekturen und deren neue fachliche Qualifikation werden getrennt behandelt; unveränderte P-Akzeptanz wird nicht behauptet.",
+      "rationaleEn": "The description specifies a proper measurement without prescribing a dangerous voltage. The complete profile requires safe low voltage, correct polarity and terminals, a safe initial range, branch current, and checking before power is applied; all three cases remain low-voltage cases. Round B would additionally place this existing profile condition in the description. This is useful but does not demonstrate a serious defect in the overall contract. This resolution decides only the current description wording. Required profile corrections and their fresh substantive qualification are handled separately; acceptance of an unchanged profile is not asserted."
+    },
+    {
+      "decisionId": "physics-existing-math-current-synthesis-53196a71-9dbd-4835-b2f9-ff21b8a8962c",
+      "goalId": "53196a71-9dbd-4835-b2f9-ff21b8a8962c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:9eaba9b5f11f424c715cc636ac46c17401eb938e3ae07226f39d2b17304ada6f",
+      "pageFingerprint": "sha256:ae9d503826eb3ba62d6b7fca85c5e95e10ebdada1a8c69528235b7c9488aad4d",
+      "goalReviewContextFingerprint": "sha256:2d498e64e85ad08a0b4bf6d51e13b43f77256da29599e8dae055ec257e21712c",
+      "finalText": {
+        "titleDe": "Zusammenhang von Spannung und Stromstärke qualitativ erläutern",
+        "titleEn": "Explain the relationship between voltage and current qualitatively",
+        "descriptionDe": "Die lernende Person kann die Stromstärke durch und die Spannung an einem einfachen Bauteil messen und anhand zusammengehöriger Messwertpaare bei unveränderten Bedingungen ihren qualitativen Zusammenhang erläutern.",
+        "descriptionEn": "The learner can measure the current through and voltage across a simple component and use paired measurements obtained under unchanged conditions to explain their qualitative relationship."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-001.gpt61-sol-ultra.13",
+          "recordDigest": "sha256:1762a64fade1eb7418e74c93eebf223f5c90ec64647d650b3242e1ada54a58d0"
+        },
+        "second": {
+          "recordId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-001.sol-native-d.goal-013",
+          "recordDigest": "sha256:8c94e62d4ebb4215567fac7b4129aa3d9f4c63166e48517887690121c87bb481"
+        }
+      },
+      "revisionDissent": {
+        "sourceRound": "second",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann in einem einfachen sicheren Kleinspannungsstromkreis die Stromstärke durch und die Spannung an einem Bauteil messen und anhand zusammengehöriger Messwertpaare bei sonst unveränderten Bedingungen ihren qualitativen Zusammenhang erläutern.",
+        "proposedDescriptionEn": "The learner can measure the current through and voltage across a component in a simple safe low-voltage circuit and use paired measurements under otherwise unchanged conditions to explain their qualitative relationship.",
+        "rationaleDe": "Im U-I-Messreihenkontext meint unveränderte Bedingungen die kontrollierten übrigen Bedingungen; daraus folgt kein Verbot der ausdrücklich untersuchten U-I-Variation. Das vollständige P macht genau diese Unterscheidung explizit, bindet sichere Kleinspannung, korrekte Messpaare, Trends und Nichtproportionalität und prüft den Bauteilwechsel. B identifiziert mögliche Sprachpräzisierung, keinen konkret falschen Zusammenhang. Diese Resolution entscheidet ausschließlich den aktuellen D-Wortlaut. Erforderliche P-Korrekturen und deren neue fachliche Qualifikation werden getrennt behandelt; unveränderte P-Akzeptanz wird nicht behauptet.",
+        "rationaleEn": "In the voltage-current data-series context, unchanged conditions mean the other controlled conditions; the wording does not prohibit the explicitly investigated variation of voltage and current. The complete profile makes this distinction explicit, specifies safe low voltage, correctly paired readings, trends, and nonproportional behavior, and tests a change of component. Round B identifies possible wording precision rather than a concretely false relationship. This resolution decides only the current description wording. Required profile corrections and their fresh substantive qualification are handled separately; acceptance of an unchanged profile is not asserted."
+      },
+      "rationaleDe": "Im U-I-Messreihenkontext meint unveränderte Bedingungen die kontrollierten übrigen Bedingungen; daraus folgt kein Verbot der ausdrücklich untersuchten U-I-Variation. Das vollständige P macht genau diese Unterscheidung explizit, bindet sichere Kleinspannung, korrekte Messpaare, Trends und Nichtproportionalität und prüft den Bauteilwechsel. B identifiziert mögliche Sprachpräzisierung, keinen konkret falschen Zusammenhang. Diese Resolution entscheidet ausschließlich den aktuellen D-Wortlaut. Erforderliche P-Korrekturen und deren neue fachliche Qualifikation werden getrennt behandelt; unveränderte P-Akzeptanz wird nicht behauptet.",
+      "rationaleEn": "In the voltage-current data-series context, unchanged conditions mean the other controlled conditions; the wording does not prohibit the explicitly investigated variation of voltage and current. The complete profile makes this distinction explicit, specifies safe low voltage, correctly paired readings, trends, and nonproportional behavior, and tests a change of component. Round B identifies possible wording precision rather than a concretely false relationship. This resolution decides only the current description wording. Required profile corrections and their fresh substantive qualification are handled separately; acceptance of an unchanged profile is not asserted."
+    },
+    {
+      "decisionId": "physics-existing-math-current-synthesis-f92b5b8a-327f-50d2-8313-6a142399ebf0",
+      "goalId": "f92b5b8a-327f-50d2-8313-6a142399ebf0",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:979191d899b8181ca1e7c225c1e132d134d0f682c71d38021637942a053522f1",
+      "pageFingerprint": "sha256:9e0176a3a93b6554bff7e76a15fa85353ba5d41e512c21565c5ce0bcc7d602ac",
+      "goalReviewContextFingerprint": "sha256:fd4fcc2b9e5f72b76ccd3483d5319c60a0e124e5a06e260babae8f1856aa05ed",
+      "finalText": {
+        "titleDe": "Volumen unregelmäßiger Körper durch Flüssigkeitsverdrängung bestimmen",
+        "titleEn": "Determine the volume of irregular objects by liquid displacement",
+        "descriptionDe": "Die lernende Person kann das Volumen eines vollständig eintauchbaren unregelmäßigen festen Körpers aus dem Flüssigkeitsstand vor und nach dem Eintauchen bestimmen, die Differenz mit passender Volumeneinheit angeben und Ablese- oder Luftblasenfehler beurteilen.",
+        "descriptionEn": "The learner can determine the volume of a fully submersible irregular solid object from the liquid levels before and after immersion, state the difference with an appropriate volume unit, and assess reading errors or errors caused by air bubbles."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-001.gpt61-sol-ultra.16",
+          "recordDigest": "sha256:0167b4689ace8f4bea83f6a9b539a9c930facff70db9ddeab4319ec801105bfc"
+        },
+        "second": {
+          "recordId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-001.sol-native-d.goal-016",
+          "recordDigest": "sha256:97391797b9f414eb9e0b77c400e8b06e48221e475bbd8a9400a233042484d319"
+        }
+      },
+      "revisionDissent": {
+        "sourceRound": "second",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann das Volumen eines vollständig eingetauchten unregelmäßigen festen Körpers, der sich in der Messflüssigkeit weder löst noch sie aufnimmt, aus der Differenz der Volumenablesungen vor und nach dem Eintauchen bestimmen, mit passender Einheit angeben und Ablese- oder Luftblasenfehler beurteilen.",
+        "proposedDescriptionEn": "The learner can determine the volume of a fully immersed irregular solid object that neither dissolves in nor absorbs the measuring liquid from the difference between volume readings before and after immersion, report it with an appropriate unit, and assess reading or air-bubble errors.",
+        "rationaleDe": "D bindet vollständiges Eintauchen, Differenzprinzip und Luftblasen-/Ablesefehler. P nennt einen nicht löslichen Körper und einen geeigneten Steinfall; Luftblasen werden kausal geprüft. Saugende, poröse oder quellende Gegenstände benötigen zusätzliche Materialeignungs-/Volumendefinitionen. Keiner der vorliegenden Fälle wendet das Verfahren ausdrücklich an einem solchen Gegenmaterial an. Bs ausführlichere Materialkonvention ist sinnvoll, aber der konkrete vorhandene Vertrag wird dadurch nicht nachweislich falsch. Diese Resolution entscheidet ausschließlich den aktuellen D-Wortlaut. Erforderliche P-Korrekturen und deren neue fachliche Qualifikation werden getrennt behandelt; unveränderte P-Akzeptanz wird nicht behauptet.",
+        "rationaleEn": "The description specifies complete immersion, the difference principle, and bubble and reading errors. The profile identifies an insoluble body and a suitable stone case and checks bubbles causally. Absorbent, porous, or swelling objects require further material-suitability and volume conventions. None of the supplied cases explicitly applies the procedure to such a counterexample material. Round B's fuller material convention is useful but does not establish that the existing concrete contract is false. This resolution decides only the current description wording. Required profile corrections and their fresh substantive qualification are handled separately; acceptance of an unchanged profile is not asserted."
+      },
+      "rationaleDe": "D bindet vollständiges Eintauchen, Differenzprinzip und Luftblasen-/Ablesefehler. P nennt einen nicht löslichen Körper und einen geeigneten Steinfall; Luftblasen werden kausal geprüft. Saugende, poröse oder quellende Gegenstände benötigen zusätzliche Materialeignungs-/Volumendefinitionen. Keiner der vorliegenden Fälle wendet das Verfahren ausdrücklich an einem solchen Gegenmaterial an. Bs ausführlichere Materialkonvention ist sinnvoll, aber der konkrete vorhandene Vertrag wird dadurch nicht nachweislich falsch. Diese Resolution entscheidet ausschließlich den aktuellen D-Wortlaut. Erforderliche P-Korrekturen und deren neue fachliche Qualifikation werden getrennt behandelt; unveränderte P-Akzeptanz wird nicht behauptet.",
+      "rationaleEn": "The description specifies complete immersion, the difference principle, and bubble and reading errors. The profile identifies an insoluble body and a suitable stone case and checks bubbles causally. Absorbent, porous, or swelling objects require further material-suitability and volume conventions. None of the supplied cases explicitly applies the procedure to such a counterexample material. Round B's fuller material convention is useful but does not establish that the existing concrete contract is false. This resolution decides only the current description wording. Required profile corrections and their fresh substantive qualification are handled separately; acceptance of an unchanged profile is not asserted."
+    }
+  ],
+  "manifestFingerprint": "sha256:1dc111d2120e3b0819de64ab03a9aa20ed6dbf92525e0f25d5d5e34cba9c8c0f"
+}

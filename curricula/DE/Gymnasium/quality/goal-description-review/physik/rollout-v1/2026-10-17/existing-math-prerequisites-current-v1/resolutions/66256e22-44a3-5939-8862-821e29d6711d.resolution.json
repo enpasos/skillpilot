@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physics-existing-math-current-resolution-66256e22-44a3-5939-8862-821e29d6711d",
+  "goal": {
+    "goalId": "66256e22-44a3-5939-8862-821e29d6711d",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:726ad86f33f10e44be128ce796c0746610fac16ade219f5423617b912faf4b64",
+    "pageFingerprint": "sha256:37ce36c9a232f11cce156e011ac7c58d861251e728b204afa47af1b3ff16ad2c",
+    "goalReviewContextFingerprint": "sha256:c8c8620c1351f96fe6628fdf29b6362e8a5d54c93f3f3b2dd182890350732b2f",
+    "finalText": {
+      "titleDe": "Strom-Spannungs-Kennlinien einfacher Bauteile experimentell untersuchen und deuten",
+      "titleEn": "Experimentally investigate and interpret current-voltage characteristics of simple components",
+      "descriptionDe": "Die lernende Person kann unter sicheren Kleinspannungsbedingungen Stromstärke und Spannung an einfachen Bauteilen systematisch messen, Kennlinien erstellen und den Zusammenhang von Spannung, Stromstärke und Widerstand deuten.",
+      "descriptionEn": "Under safe low-voltage conditions, the learner can systematically measure current and voltage for simple components, construct current-voltage characteristics, and interpret the relationship among voltage, current, and resistance."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-a-20261017-v1",
+      "campaignDigest": "sha256:b23805760ff147505f7d53ab1a339fd1e1dd226dc7eda0776ccfe4ec09726b43",
+      "roundId": "physics-existing-math-prerequisites-first-a-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-a-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "goalReviewContextFingerprint": "sha256:c8c8620c1351f96fe6628fdf29b6362e8a5d54c93f3f3b2dd182890350732b2f",
+      "batchId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-005",
+      "runId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-005.gpt61-sol-ultra",
+      "runManifestDigest": "sha256:32974da6ed0a10199b96e8a0f271efdc218f6c181f8784a62964ae78b0e540c9",
+      "resultsDigest": "sha256:45e33d777065b47eefa7c0cc65d10cdf0b42d873c8efa241e657ddb8b708eb27",
+      "recordId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-005.gpt61-sol-ultra.20",
+      "recordDigest": "sha256:95e717fcc50e6f61a6977405e6fdcd734175ef6f9165ee1f65ac099721e02b60"
+    },
+    "second": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-b-20261017-v1",
+      "campaignDigest": "sha256:e5062c24fc41990b95c544705fa59130d293784be6143a7146169694e24d1103",
+      "roundId": "physics-existing-math-prerequisites-first-b-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-b-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "goalReviewContextFingerprint": "sha256:c8c8620c1351f96fe6628fdf29b6362e8a5d54c93f3f3b2dd182890350732b2f",
+      "batchId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-005",
+      "runId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-005.sol-native-d",
+      "runManifestDigest": "sha256:6de62895bfc8743ce30dc2e96720587d305a8ec62df840ee609e2edb11235280",
+      "resultsDigest": "sha256:58ad524b796b0b39b6bdd4d6e2f5c506b602268f3872a337c8f67e96d96e73f6",
+      "recordId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-005.sol-native-d.goal-020",
+      "recordDigest": "sha256:1dbb5ccce8ccd5d5a565f1f67fb211c3a87bf5cc75a672af9279932afd7b527a"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:d5ca2db392c5a44a98f275ce73cd20a967c005e0d7c38a11f2ba88573a0cfff6"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "physics-existing-math-current-synthesis-66256e22-44a3-5939-8862-821e29d6711d",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Root AI synthesis; native D integration with faithful English translation",
+    "synthesizedAt": "2026-10-17T09:28:15.543662Z",
+    "rationaleDe": "D fordert eigenes systematisches Messen. P lässt Schaltung konstruieren/korrigieren und Messreihe planen; alle drei Briefs geben Daten vor, und die Nachmessung wird nur verlangt. So kann das gesamte Profil ohne eigene Erhebung erfüllt werden. Zusätzlich nennt DE die I-über-U-Steigung Leitfähigkeit; EN sagt korrekt conductance. Bei nichtlinearen Kurven ist die lokale Steigung differenzieller Leitwert und von I/U bzw. U/I zu unterscheiden. Dies sind konkrete Begriffs-/Abdeckungslücken. Diese Resolution entscheidet ausschließlich den aktuellen D-Wortlaut. Erforderliche P-Korrekturen und deren neue fachliche Qualifikation werden getrennt behandelt; unveränderte P-Akzeptanz wird nicht behauptet.",
+    "rationaleEn": "The description requires the learner's own systematic measurements. The profile permits construction or correction of the circuit and planning of a series; all three briefs supply data, and remeasurement is only requested. The entire profile can thus be satisfied without obtaining one's own readings. In addition, the German wording calls the current-versus-voltage slope Leitfähigkeit, while the English correctly says conductance. For nonlinear curves the local slope is differential conductance and must be distinguished from I/U or U/I. These are concrete terminology and coverage gaps. This resolution decides only the current description wording. Required profile corrections and their fresh substantive qualification are handled separately; acceptance of an unchanged profile is not asserted.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Ein Kennlinienpunkt verknüpft Spannung am und Strom durch dasselbe Bauteil im selben Zustand; ein konstanter Widerstand ist eine zu prüfende Modelleigenschaft.",
+      "essentialUnderstandingEn": "A characteristic point pairs voltage across and current through the same component in the same state; constant resistance is a model property to be tested.",
+      "observablePerformanceDe": "Die lernende Person baut eine sichere Kleinspannungsschaltung auf, erhebt systematisch zugehörige Messpaare und erstellt ein beschriftetes Diagramm mit begründeter Widerstandsdeutung.",
+      "observablePerformanceEn": "The learner builds a safe low-voltage circuit, systematically obtains paired readings, and constructs a labelled graph with a justified interpretation of resistance.",
+      "transferExpectationDe": "Bei einer erwärmten Lampe oder verändertem Vorzeichen unterscheidet sie Zustandsänderung und Messfehler, prüft mehrere U/I-Werte und beschränkt Vorhersagen auf den untersuchten sicheren Bereich.",
+      "transferExpectationEn": "For a heated lamp or a sign change, the learner distinguishes a change of state from measurement error, checks several U/I values, and limits predictions to the investigated safe range."
+    },
+    "dissent": [
+      {
+        "dissentId": "physics-existing-math-current-synthesis-66256e22-44a3-5939-8862-821e29d6711d.dissent-1",
+        "source": "both",
+        "disposition": "merged",
+        "textDe": "Beide aktuellen D-Urteile lauten keep. P-Empfehlungen bleiben unverändert gebunden: erste Runde revise, zweite Runde revise. D fordert eigenes systematisches Messen. P lässt Schaltung konstruieren/korrigieren und Messreihe planen; alle drei Briefs geben Daten vor, und die Nachmessung wird nur verlangt. So kann das gesamte Profil ohne eigene Erhebung erfüllt werden. Zusätzlich nennt DE die I-über-U-Steigung Leitfähigkeit; EN sagt korrekt conductance. Bei nichtlinearen Kurven ist die lokale Steigung differenzieller Leitwert und von I/U bzw. U/I zu unterscheiden. Dies sind konkrete Begriffs-/Abdeckungslücken. Diese Resolution entscheidet ausschließlich den aktuellen D-Wortlaut. Erforderliche P-Korrekturen und deren neue fachliche Qualifikation werden getrennt behandelt; unveränderte P-Akzeptanz wird nicht behauptet.",
+        "textEn": "Both current description judgments are keep. Their profile recommendations remain bound unchanged: first round revise, second round revise. The description requires the learner's own systematic measurements. The profile permits construction or correction of the circuit and planning of a series; all three briefs supply data, and remeasurement is only requested. The entire profile can thus be satisfied without obtaining one's own readings. In addition, the German wording calls the current-versus-voltage slope Leitfähigkeit, while the English correctly says conductance. For nonlinear curves the local slope is differential conductance and must be distinguished from I/U or U/I. These are concrete terminology and coverage gaps. This resolution decides only the current description wording. Required profile corrections and their fresh substantive qualification are handled separately; acceptance of an unchanged profile is not asserted."
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:1ee8c733db82fb2f54fd9859ceb6cc8d7b9beb4f207b8208f48e5916c2ce585f"
+}

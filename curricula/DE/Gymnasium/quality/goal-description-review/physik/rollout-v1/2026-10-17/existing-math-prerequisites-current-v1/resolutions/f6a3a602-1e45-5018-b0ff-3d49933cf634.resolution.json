@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physics-existing-math-current-resolution-f6a3a602-1e45-5018-b0ff-3d49933cf634",
+  "goal": {
+    "goalId": "f6a3a602-1e45-5018-b0ff-3d49933cf634",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:164244596cc86e94ef2ce9fa2c36500dee2e33900b54e06cdab3bcac7ba0c674",
+    "pageFingerprint": "sha256:839124a275ecde6d8433249452591c1208612ec8c4b44fff87984a6817c87dce",
+    "goalReviewContextFingerprint": "sha256:53cb32766e51b2a901f193e4590c0d5cdc6729375f4c1d0477385a95490626ea",
+    "finalText": {
+      "titleDe": "Beugung am Einzelspalt berechnen",
+      "titleEn": "Calculate Diffraction at Single Slit",
+      "descriptionDe": "Die lernende Person kann die Fraunhofer-Intensitätsverteilung eines gleichmäßig beleuchteten Einzelspalts aus der Überlagerung seiner Elementarwellen modellieren, die Minima und die Breite des Zentralmaximums begründen und Nebenmaxima aus dem Modell mit angemessenen Näherungen lokalisieren.",
+      "descriptionEn": "The learner can model the Fraunhofer intensity distribution of a uniformly illuminated single slit from the superposition of its elementary waves, explain the minima and the width of the central maximum, and locate secondary maxima using appropriate approximations of the model."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-a-20261017-v1",
+      "campaignDigest": "sha256:b23805760ff147505f7d53ab1a339fd1e1dd226dc7eda0776ccfe4ec09726b43",
+      "roundId": "physics-existing-math-prerequisites-first-a-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-a-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "goalReviewContextFingerprint": "sha256:53cb32766e51b2a901f193e4590c0d5cdc6729375f4c1d0477385a95490626ea",
+      "batchId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-004",
+      "runId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-004.gpt61-sol-ultra",
+      "runManifestDigest": "sha256:9c9ddaf0c348a25c1e1b43323c964818c2d46354ae4d16b5df3e0d7d5f22dec8",
+      "resultsDigest": "sha256:4063be3a53db26b433b9daf13cbafc1a3787e8c8d805d448fa968dd9528959b2",
+      "recordId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-004.gpt61-sol-ultra.20",
+      "recordDigest": "sha256:e34bb2620f5f3da613708e4985bce594837a8239b2710d4b86182a08fe51d0f6"
+    },
+    "second": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-b-20261017-v1",
+      "campaignDigest": "sha256:e5062c24fc41990b95c544705fa59130d293784be6143a7146169694e24d1103",
+      "roundId": "physics-existing-math-prerequisites-first-b-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-b-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "goalReviewContextFingerprint": "sha256:53cb32766e51b2a901f193e4590c0d5cdc6729375f4c1d0477385a95490626ea",
+      "batchId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-004",
+      "runId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-004.sol-native-d",
+      "runManifestDigest": "sha256:a84563029eb88312e47261a09ceb869965e36e2828fd2ae6e4cd6a2a28b96c92",
+      "resultsDigest": "sha256:a1f0742fd58d23c41f41b21804a5546f13564cc25c9ee328614efebbf482a670",
+      "recordId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-004.sol-native-d.goal-020",
+      "recordDigest": "sha256:6d65a52a0f6e1b43a5dd182e2b304534b85ba27f40a86fd37f2d1aaaa67c49fd"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:d5ca2db392c5a44a98f275ce73cd20a967c005e0d7c38a11f2ba88573a0cfff6"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "physics-existing-math-current-synthesis-f6a3a602-1e45-5018-b0ff-3d49933cf634",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "codex-native-d-integration-sol",
+    "synthesizedAt": "2026-10-17T09:19:29.758632Z",
+    "rationaleDe": "Der aktuelle bilinguale Vertrag zu „Beugung am Einzelspalt berechnen“ bleibt bestehen. Kohärente Elementaramplituden erzeugen im gleichmäßig beleuchteten Fraunhofer-Einzelspalt eine sinc²-Verteilung; ganzzahlige nichtnullige Ordnungen sind Minima, nicht das Zentrum. Die lernende Person erklärt die Modellkonstruktion, bestimmt Minima und Zentralbreite und lokalisiert Nebenmaxima aus Modelldaten mit geprüfter Schirmgeometrie. Bei frischer halbierter Spaltbreite prognostiziert die lernende Person die verbreiterte Verteilung und begrenzt dieselbe sinc²-Kurve bei ungleichmäßiger Beleuchtung. Beide tatsächlich vorliegenden Ganzkontext-Reviews urteilen keep und empfehlen für das mitgelesene vollständige V2-Profil none; die konkrete Evidence-Fassung der zweiten Runde wird unverändert übernommen.",
+    "rationaleEn": "The current bilingual contract for “Calculate Diffraction at Single Slit” is retained. Coherent elementary amplitudes produce a sinc² distribution for a uniformly illuminated Fraunhofer single slit; nonzero integer orders are minima, not the centre. The learner explains model construction, determines minima and central width, and locates side maxima from model data with checked screen geometry. For a freshly halved slit width, the learner predicts the broadened pattern and limits use of the same sinc² curve under nonuniform illumination. Both actual whole-context reviews judge keep and recommend none for the complete V2 profile read alongside the goal; the second round's concrete evidence formulation is adopted unchanged.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Kohärente Elementaramplituden erzeugen im gleichmäßig beleuchteten Fraunhofer-Einzelspalt eine sinc²-Verteilung; ganzzahlige nichtnullige Ordnungen sind Minima, nicht das Zentrum.",
+      "essentialUnderstandingEn": "Coherent elementary amplitudes produce a sinc² distribution for a uniformly illuminated Fraunhofer single slit; nonzero integer orders are minima, not the centre.",
+      "observablePerformanceDe": "Die lernende Person erklärt die Modellkonstruktion, bestimmt Minima und Zentralbreite und lokalisiert Nebenmaxima aus Modelldaten mit geprüfter Schirmgeometrie.",
+      "observablePerformanceEn": "The learner explains model construction, determines minima and central width, and locates side maxima from model data with checked screen geometry.",
+      "transferExpectationDe": "Bei frischer halbierter Spaltbreite prognostiziert die lernende Person die verbreiterte Verteilung und begrenzt dieselbe sinc²-Kurve bei ungleichmäßiger Beleuchtung.",
+      "transferExpectationEn": "For a freshly halved slit width, the learner predicts the broadened pattern and limits use of the same sinc² curve under nonuniform illumination."
+    },
+    "dissent": [
+      {
+        "dissentId": "physics-existing-math-current-synthesis-f6a3a602-1e45-5018-b0ff-3d49933cf634.dissent-1",
+        "source": "both",
+        "disposition": "accepted_second",
+        "textDe": "Die beiden aktuellen keep/none-Reviews verwenden eigenständige Verständnis- und Begründungstexte. Die oben konkret benannte Understanding-/Handlungs-/Transferevidence wird aus der zweiten Runde übernommen; die erste Meinung bleibt unverändert gebunden.",
+        "textEn": "The two current keep/none reviews use independently written understanding evidence and rationales. The specific understanding, performance, and transfer evidence stated above is taken from the second round; the first opinion remains bound unchanged."
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:00ff02567ab2e1f1e52e39690689e62f2a0b05d11b653da97e97bc55df1e4fb0"
+}

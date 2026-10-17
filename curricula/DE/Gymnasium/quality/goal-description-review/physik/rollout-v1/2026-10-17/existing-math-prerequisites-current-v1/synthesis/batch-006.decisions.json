@@ -1,0 +1,120 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physics-existing-math-current-synthesis-batch-6",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Root AI synthesis; native D integration with faithful English translation",
+  "synthesizedAt": "2026-10-17T09:28:15.543662Z",
+  "batch": {
+    "batchId": "physics-existing-math-current-synthesis-batch-6",
+    "batchManifestDigest": "sha256:f9c7e8822a47fbc1f839617ddf10829c22aab19cbb7aa59f61873154680579a7",
+    "configDigest": "sha256:ee224f52814e20e7e8785ebeed3f0d6fd6d12ff70314dbc4723184e4072243c4",
+    "bundleFingerprint": "sha256:a3e5ff4e8a6ce263cdba8a660005323d8e18a093b0a2a18d9ca4b2c78b2980c5",
+    "bookDigest": "sha256:3cbacf5cf3d4838db6ef75ed0fd3dbf2410d823d688c65bd250032bdd79fbace",
+    "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+    "dualSummaryDigest": "sha256:d5ca2db392c5a44a98f275ce73cd20a967c005e0d7c38a11f2ba88573a0cfff6",
+    "canonicalLandscapeDigest": "sha256:ee9ac934b68c13f0ed64335c362ebc807a9c8d91f5e74ad90bcb0a1baa22baee"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-a-20261017-v1",
+      "campaignDigest": "sha256:b23805760ff147505f7d53ab1a339fd1e1dd226dc7eda0776ccfe4ec09726b43",
+      "roundId": "physics-existing-math-prerequisites-first-a-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-a-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "batchId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-006",
+      "batchInputFingerprint": "sha256:9a2f395a5ec58215b19ed1ca131d2663ab25c5aed2352b998663844b2ba36e07",
+      "runId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-006.gpt61-sol-ultra",
+      "runManifestDigest": "sha256:c4c5e37e1f85289802f553e474f9cf4fff96923921c82b047f789c71e1ebc44b",
+      "resultsDigest": "sha256:e52423ab9709c27f6222ce9f7fabb5e7e029aa82cd36d56d85b03f6d10565c1c"
+    },
+    "second": {
+      "campaignId": "physics-existing-math-prerequisites-campaign-b-20261017-v1",
+      "campaignDigest": "sha256:e5062c24fc41990b95c544705fa59130d293784be6143a7146169694e24d1103",
+      "roundId": "physics-existing-math-prerequisites-first-b-20261017-v1",
+      "independenceGroupId": "physics-existing-math-prerequisites-independent-b-20261017-v1",
+      "reviewInputFingerprint": "sha256:068680f2dbef54b225e3a33d67a71622998885223b61badfeb65b3d892e88f19",
+      "batchId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-006",
+      "batchInputFingerprint": "sha256:4ad54c29fd81dd6e4b5ed1f3e42bee541c294553673671076e24cfed6b0a59d0",
+      "runId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-006.sol-native-d",
+      "runManifestDigest": "sha256:bf7f541643fbb2936478e262546548e9f50c5c16632be4b8795d1fd536208fb3",
+      "resultsDigest": "sha256:374837d35e7d5af666cd8329d03970a09e7cfed9f66b1c04bda748f6b02a837b"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physics-existing-math-current-synthesis-5c0d5040-92e4-50f6-9695-9d33d889a080",
+      "goalId": "5c0d5040-92e4-50f6-9695-9d33d889a080",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e14c92836a6cb9a9dd4d8fe3cba939a327c03b43a91f55bb67c83a73a9c3ff2d",
+      "pageFingerprint": "sha256:18fb21d861e930626ef8dae59961b87d3bab426bc14432fc7564b00c2c215948",
+      "goalReviewContextFingerprint": "sha256:00bbb68b520a80254ad3adc227f1adcd2204976ae3a0d9b0d1d97469f871fe40",
+      "finalText": {
+        "titleDe": "Physikalische Methoden im Forschungsgebiet anwenden",
+        "titleEn": "Apply Physics Methods in a Research Field",
+        "descriptionDe": "Die lernende Person kann fachliche Konzepte, Modelle und Arbeitsweisen aus der Kursstufe auf ein ausgewaehltes Forschungsgebiet uebertragen.",
+        "descriptionEn": "The learner can transfer concepts, models, and methods from upper-secondary physics to a selected research field."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-006.gpt61-sol-ultra.5",
+          "recordDigest": "sha256:b0637651d14fa9736ac21ad1e8c8355e6f763a068cc968fac6271f0ed0d14be3"
+        },
+        "second": {
+          "recordId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-006.sol-native-d.goal-005",
+          "recordDigest": "sha256:75950ebca3a75f20416d0b7a267dbcdc018f304ebbc174b65cddbad651a5cc10"
+        }
+      },
+      "revisionDissent": {
+        "sourceRound": "second",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann Konzepte, Modelle und Arbeitsweisen aus der Kursstufenphysik begründet auf eine konkrete Fragestellung eines ausgewählten Forschungsgebiets anwenden und die Aussagekraft ihres Ergebnisses anhand von Daten und Modellgrenzen prüfen.",
+        "proposedDescriptionEn": "The learner can apply concepts, models, and methods from upper-secondary physics with justification to a concrete question in a selected research field and assess what the result supports using data and model limitations.",
+        "rationaleDe": "D beansprucht bewusst offenen fachlichen Methodentransfer in ein ausgewähltes Forschungsgebiet; übertragen/anwenden ist eine beobachtbare Leistung und muss nicht alle P-Detailkriterien wiederholen. P bindet Vorhersage, System-/Größenzuordnung, Datenvergleich und Modellgrenze und liefert zwei echte verschiedene Methoden im selben Forschungsfall: Michelson-Phasenskala und Laufzeitgrenze. B formuliert vorhandene Konkretisierung ausführlicher, korrigiert aber keinen falschen oder unprüfbaren Gesamtvertrag. Diese Resolution entscheidet ausschließlich den aktuellen D-Wortlaut. Erforderliche P-Korrekturen und deren neue fachliche Qualifikation werden getrennt behandelt; unveränderte P-Akzeptanz wird nicht behauptet.",
+        "rationaleEn": "The description intentionally covers open subject-specific method transfer to a selected research field; transfer or application is an observable performance and need not repeat every detailed profile criterion. The profile binds prediction, system and quantity mapping, comparison with data, and model limits and supplies two substantively different methods within one research case: a Michelson phase scale and a travel-time bound. Round B expands existing specificity without correcting a false or unassessable overall contract. This resolution decides only the current description wording. Required profile corrections and their fresh substantive qualification are handled separately; acceptance of an unchanged profile is not asserted."
+      },
+      "rationaleDe": "D beansprucht bewusst offenen fachlichen Methodentransfer in ein ausgewähltes Forschungsgebiet; übertragen/anwenden ist eine beobachtbare Leistung und muss nicht alle P-Detailkriterien wiederholen. P bindet Vorhersage, System-/Größenzuordnung, Datenvergleich und Modellgrenze und liefert zwei echte verschiedene Methoden im selben Forschungsfall: Michelson-Phasenskala und Laufzeitgrenze. B formuliert vorhandene Konkretisierung ausführlicher, korrigiert aber keinen falschen oder unprüfbaren Gesamtvertrag. Diese Resolution entscheidet ausschließlich den aktuellen D-Wortlaut. Erforderliche P-Korrekturen und deren neue fachliche Qualifikation werden getrennt behandelt; unveränderte P-Akzeptanz wird nicht behauptet.",
+      "rationaleEn": "The description intentionally covers open subject-specific method transfer to a selected research field; transfer or application is an observable performance and need not repeat every detailed profile criterion. The profile binds prediction, system and quantity mapping, comparison with data, and model limits and supplies two substantively different methods within one research case: a Michelson phase scale and a travel-time bound. Round B expands existing specificity without correcting a false or unassessable overall contract. This resolution decides only the current description wording. Required profile corrections and their fresh substantive qualification are handled separately; acceptance of an unchanged profile is not asserted."
+    },
+    {
+      "decisionId": "physics-existing-math-current-synthesis-ef0f2391-fd8e-5ae3-ae86-7adcdd833c7a",
+      "goalId": "ef0f2391-fd8e-5ae3-ae86-7adcdd833c7a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:5937d9c232fb733510085313dca3dd3e20c6002363e97fa15e96ad434038b652",
+      "pageFingerprint": "sha256:e28966894c3cb02ad1795fcbb13836ea5d8c090e9064cd9e8cbae638f2525b34",
+      "goalReviewContextFingerprint": "sha256:80ad6c42cade7146410c0abc2370ac9b9ea5f5cf7d30938c8db9c07ea95063e1",
+      "finalText": {
+        "titleDe": "Kondensator und Spule im Wechselstromkreis analysieren",
+        "titleEn": "Analyze capacitors and inductors in AC circuits",
+        "descriptionDe": "Die lernende Person kann Amplitudenverhaeltnisse und Phasenbeziehungen zwischen Spannung und Stromstaerke fuer Kondensator und Spule im Wechselstromkreis aus differentiellen Zusammenhaengen erschliessen und mit Zeigerdiagrammen beschreiben.",
+        "descriptionEn": "The learner can derive amplitude ratios and phase relationships between voltage and current for capacitors and inductors in AC circuits from differential relationships and describe them using phasor diagrams."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-existing-math-prerequisites-first-a-20261017-v1.batch-006.gpt61-sol-ultra.18",
+          "recordDigest": "sha256:d474f1c4d916429be6bd1a22c2b2a72ad077942aa03cbd6d3f1360d4a5f00881"
+        },
+        "second": {
+          "recordId": "physics-existing-math-prerequisites-first-b-20261017-v1.batch-006.sol-native-d.goal-018",
+          "recordDigest": "sha256:0424eaf0e5bc93bf28b5ffa40dc3a7c1bd482626abc3d02872b895411d21036c"
+        }
+      },
+      "revisionDissent": {
+        "sourceRound": "second",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann für ideale Kondensatoren und Spulen bei sinusförmigen Wechselgrößen Amplitudenverhältnisse und Phasenbeziehungen zwischen Spannung und Stromstärke aus den differentiellen Zusammenhängen erschließen und mit Zeigerdiagrammen beschreiben.",
+        "proposedDescriptionEn": "For ideal capacitors and inductors with sinusoidal AC quantities, the learner can derive amplitude ratios and phase relationships between voltage and current from the differential relationships and describe them using phasor diagrams.",
+        "rationaleDe": "D beschreibt die differenziellen Bauteilbeziehungen und Zeigerdiagramme; in diesem Schulkontext bindet Zeigerbeschreibung sinusförmige Wechselgrößen. Das ganze P setzt ideale Bauteile, passive Konvention und Sinussignale ausdrücklich, schließt ohmsche Spulenverluste aus und prüft C-/L-Transfer mit entgegengesetztem Frequenztrend. Nirgends wird eine beliebige nichtsinusförmige oder verlustbehaftete Situation falsch als reine Viertelperiodenverschiebung behandelt. Bs D-Zusatz wiederholt zutreffende bereits verbindliche Bedingungen. Zusätzlich ist Sinusfoermige Wechselgroessen mit Zeigerdiagrammen beschreiben bereits ein direkter vorhandener prerequisite; die Sinusannahme wird durch den Relationskontext gestützt. Diese Resolution entscheidet ausschließlich den aktuellen D-Wortlaut. Erforderliche P-Korrekturen und deren neue fachliche Qualifikation werden getrennt behandelt; unveränderte P-Akzeptanz wird nicht behauptet.",
+        "rationaleEn": "The description specifies differential component relations and phasor diagrams; in this school context, the phasor representation implies sinusoidal AC quantities. The complete profile explicitly assumes ideal components, the passive convention, and sinusoidal signals, excludes resistive coil losses, and tests capacitor-inductor transfer with opposite frequency trends. No arbitrary nonsinusoidal or lossy situation is incorrectly treated as a pure quarter-period shift. Round B's addition repeats correct conditions that are already binding. A direct existing prerequisite is Describe sinusoidal AC quantities using phasor diagrams, so the relations context also supports the sinusoidal assumption. This resolution decides only the current description wording. Required profile corrections and their fresh substantive qualification are handled separately; acceptance of an unchanged profile is not asserted."
+      },
+      "rationaleDe": "D beschreibt die differenziellen Bauteilbeziehungen und Zeigerdiagramme; in diesem Schulkontext bindet Zeigerbeschreibung sinusförmige Wechselgrößen. Das ganze P setzt ideale Bauteile, passive Konvention und Sinussignale ausdrücklich, schließt ohmsche Spulenverluste aus und prüft C-/L-Transfer mit entgegengesetztem Frequenztrend. Nirgends wird eine beliebige nichtsinusförmige oder verlustbehaftete Situation falsch als reine Viertelperiodenverschiebung behandelt. Bs D-Zusatz wiederholt zutreffende bereits verbindliche Bedingungen. Zusätzlich ist Sinusfoermige Wechselgroessen mit Zeigerdiagrammen beschreiben bereits ein direkter vorhandener prerequisite; die Sinusannahme wird durch den Relationskontext gestützt. Diese Resolution entscheidet ausschließlich den aktuellen D-Wortlaut. Erforderliche P-Korrekturen und deren neue fachliche Qualifikation werden getrennt behandelt; unveränderte P-Akzeptanz wird nicht behauptet.",
+      "rationaleEn": "The description specifies differential component relations and phasor diagrams; in this school context, the phasor representation implies sinusoidal AC quantities. The complete profile explicitly assumes ideal components, the passive convention, and sinusoidal signals, excludes resistive coil losses, and tests capacitor-inductor transfer with opposite frequency trends. No arbitrary nonsinusoidal or lossy situation is incorrectly treated as a pure quarter-period shift. Round B's addition repeats correct conditions that are already binding. A direct existing prerequisite is Describe sinusoidal AC quantities using phasor diagrams, so the relations context also supports the sinusoidal assumption. This resolution decides only the current description wording. Required profile corrections and their fresh substantive qualification are handled separately; acceptance of an unchanged profile is not asserted."
+    }
+  ],
+  "manifestFingerprint": "sha256:c197ccaa07455cc472ca83e0ec60fac7cf2a2485ae4b8e7afadbef7c68e31dd5"
+}
