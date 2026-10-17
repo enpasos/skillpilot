@@ -1,0 +1,77 @@
+{
+  "archetype": "modeling",
+  "expectations": [
+    {
+      "id": "whole-duty-1",
+      "essentialUnderstandingDe": "Elektrolyse wandelt zugeführte elektrische Energie in chemisch gespeicherte Energie um. Wasserstoff ist dabei ein Energieträger; seine Bewertung hängt auch von der Herkunft des eingesetzten Stroms ab.",
+      "essentialUnderstandingEn": "Electrolysis converts supplied electrical energy into chemically stored energy. Hydrogen is an energy carrier, and its assessment also depends on the source of the electricity input.",
+      "observablePerformanceDe": "Elektrolyse und regenerativen Strom als Energieinput erklären. Weitere mögliche Aufgabenvariation: Wasserstofferzeugung als Energieumwandlung darstellen.",
+      "observablePerformanceEn": "Explain electrolysis and renewable electricity as energy input. Further possible task variation: Represent hydrogen production as energy conversion."
+    },
+    {
+      "id": "whole-duty-2",
+      "essentialUnderstandingDe": "Physikalische Wasserstoffspeicherung verändert Druck oder Zustand, während chemische Speicher Wasserstoff an einen Träger binden und wieder freisetzen. Beide Pfade haben eigene Aufwände und Verluste.",
+      "essentialUnderstandingEn": "Physical hydrogen storage changes pressure or state, whereas chemical stores bind hydrogen to a carrier and release it again. Both routes have their own demands and losses.",
+      "observablePerformanceDe": "Physische/chemische Speicherprinzipien unterscheiden. Weitere mögliche Aufgabenvariation: Hydrid und Druckspeicher fachlich unterscheiden.",
+      "observablePerformanceEn": "Distinguish physical/chemical storage principles. Further possible task variation: Distinguish hydride and pressure storage scientifically."
+    },
+    {
+      "id": "whole-duty-3",
+      "essentialUnderstandingDe": "Auf gemeinsamer Energiebasis und bei passenden Systemgrenzen ergibt sich der Kettenwirkungsgrad aus dem Produkt der Stufenwirkungsgrade; eine hohe Effizienz einer einzelnen Stufe ist keine hohe Effizienz der ganzen Kette.",
+      "essentialUnderstandingEn": "On a common energy basis and with appropriate system boundaries, chain efficiency is the product of stage efficiencies; high efficiency of one stage does not establish high efficiency of the whole chain.",
+      "observablePerformanceDe": "Beide Kettenwirkungsgrade richtig multiplizieren. Weitere mögliche Aufgabenvariation: 382,5/414/900kWh korrekt vergleichen.",
+      "observablePerformanceEn": "Multiply both chain efficiencies correctly. Further possible task variation: Compare382.5/414/900kWh correctly."
+    },
+    {
+      "id": "whole-duty-4",
+      "essentialUnderstandingDe": "Effizienz, Eignung für eine Speicheraufgabe und Nachhaltigkeit sind verschiedene Urteile. Stromherkunft, Ressourcen, Infrastruktur, Speicherdauer und Bedarf können die Bewertung zusätzlich zu den Energieverlusten bestimmen.",
+      "essentialUnderstandingEn": "Efficiency, suitability for a storage task and sustainability are different judgments. Electricity origin, resources, infrastructure, storage duration and demand may affect assessment in addition to energy losses.",
+      "observablePerformanceDe": "Nachhaltigkeitsurteil mit Nutzung und Systemgrenzen begründen. Weitere mögliche Aufgabenvariation: Nutzungszeit, Effizienz und fehlende Nachhaltigkeitsdaten unterscheiden.",
+      "observablePerformanceEn": "Justify sustainability judgment with use and system limits. Further possible task variation: Distinguish use duration,efficiency and missing sustainability data."
+    }
+  ],
+  "coverageExpectations": {
+    "requiredExpectationIds": [
+      "whole-duty-1",
+      "whole-duty-2",
+      "whole-duty-3",
+      "whole-duty-4"
+    ],
+    "alternativeExpectationGroups": [],
+    "minimumIndependentDemonstrations": 2,
+    "freshVariationRequired": true,
+    "independentTransferRequired": true
+  },
+  "variationAxes": [
+    {
+      "id": "whole-case-material",
+      "textDe": "Saisonale Wasserstoffkette / Chemischer Speicher versus kurzfristiger Speicher",
+      "textEn": "Seasonal hydrogen chain / Chemical storage versus short-term storage"
+    },
+    {
+      "id": "independent-transfer",
+      "textDe": "Frisch: Elektrolyse nutzt fossilen Strom, Wirkungsgrade gleich. Macht „Wasserstoff“ die Kette automatisch nachhaltig? / Frisch: physischer Speicherpfad verschlechtert sich auf80%, alles andere gleich. Rückenergie?",
+      "textEn": "Fresh: electrolysis uses fossil electricity with unchanged efficiencies. Does “hydrogen” automatically make the chain sustainable? / Fresh: physical storage route falls to80%,all else unchanged. Returned energy?"
+    }
+  ],
+  "applicationCaseBriefs": [
+    {
+      "id": "q3-13-a",
+      "taskDemandDe": "Fiktiver erneuerbarer Stromüberschuss100kWh. Elektrolysewirkungsgrad70%, physische Druckspeicherung90%, Rückverstromung50%. Alternative chemische Bindung an Träger: Speicherpfad80% statt90%; alle Prozentwerte beziehen sich auf dieselbe Energiebasis, Nebenaufwand enthalten. Beide brauchen Anlage/Rohstoffe. Beurteile Erzeugung, physikalische und chemische Speicherung sowie Effizienz für saisonale Nutzung. Erkläre Energieträger statt Energiequelle und begrenze Nachhaltigkeitsbehauptungen. Separater Transfer: Frisch: Elektrolyse nutzt fossilen Strom, Wirkungsgrade gleich. Macht „Wasserstoff“ die Kette automatisch nachhaltig?",
+      "expectedPerformanceDe": "Elektrolyse2H₂O→2H₂+O₂ speichert zugeführte elektrische Energie chemisch. Druckspeicherung erhält nach Modell63kWh H₂-Energie, Rückstrom31,5kWh; Gesamt31,5%. Chemischer Pfad:100·0,70·0,80·0,50=28kWh,28%. Druckspeicherung ändert physikalischen Zustand, chemischer Träger bindet H₂ chemisch und benötigt Rückgewinnung. Saisonale Lagerbarkeit kann trotz Verlusten wertvoll sein. Stromherkunft, Rohstoffe, Infrastruktur und Bedarf müssen geprüft werden. Transferantwort: Nein; die gleichen31,5% sagen nichts über Emissionen des Inputs. H₂ ist Energieträger, dessen Bewertung die Stromerzeugung einschließt. Scoring /10: 2P: Elektrolyse und regenerativen Strom als Energieinput erklären.; 2P: Physische/chemische Speicherprinzipien unterscheiden.; 2P: Beide Kettenwirkungsgrade richtig multiplizieren.; 2P: Nachhaltigkeitsurteil mit Nutzung und Systemgrenzen begründen.; 2P: Nein; die gleichen31,5% sagen nichts über Emissionen des Inputs. H₂ ist Energieträger, dessen Bewertung die Stromerzeugung einschließt.",
+      "understandingFocusDe": "Nachweis des ganzen aktuellen Ziels durch ausreichend gezeigte zusammenhängende Fachleistung; keine Zusatzaufgabenquote. Vorhandene Fälle sind Alternativen und gezielte Ergänzungen. Synthetische Autorenmaterialien belegen keine tatsächliche Experimentdurchführung oder Lernendenleistung. Quellenanteile bleiben einzeln begrenzt.",
+      "taskDemandEn": "Fictional renewable electricity surplus100kWh. Electrolysis efficiency70%, physical pressure storage90%, reconversion50%. Alternative chemical carrier: storage path80% rather than90%; all efficiencies share the same energy basis and include auxiliary demand. Both need plant/resources. Evaluate production,physical and chemical storage and efficiency for seasonal use. Explain carrier rather than energy source and bound sustainability claims. Separate transfer: Fresh: electrolysis uses fossil electricity with unchanged efficiencies. Does “hydrogen” automatically make the chain sustainable?",
+      "expectedPerformanceEn": "Electrolysis2H₂O→2H₂+O₂ stores supplied electrical energy chemically. Model pressure storage retains63kWh H₂ energy, returning31.5kWh electricity; total31.5%. Chemical route:100·0.70·0.80·0.50=28kWh,28%. Pressure storage changes physical state; chemical carrier binds H₂ chemically and needs release. Seasonal storage may be valuable despite losses. Check electricity source,resources,infrastructure and demand. Transfer response: No; the same31.5% says nothing about input emissions. H₂ is a carrier and assessment includes electricity generation. Scoring /10: 2P: Explain electrolysis and renewable electricity as energy input.; 2P: Distinguish physical/chemical storage principles.; 2P: Multiply both chain efficiencies correctly.; 2P: Justify sustainability judgment with use and system limits.; 2P: No; the same31.5% says nothing about input emissions. H₂ is a carrier and assessment includes electricity generation.",
+      "understandingFocusEn": "Evidence for the whole current goal through sufficiently demonstrated connected scientific performance; no extra-task quota. Available cases are alternatives and targeted additions. Synthetic author material proves no actual experiment execution or learner performance. Source contributions remain individually bounded."
+    },
+    {
+      "id": "q3-13-b",
+      "taskDemandDe": "Synthetische erneuerbare1000kWh. H₂-Kette: Elektrolyse75%, chemischer Metallhydridspeicher mit Rückgewinnung85%, Brennstoffzelle60%. Alternative physische H₂-Kette:75%,Druckpfad92%,60%. Elektrischer Kurzzeitspeicher90%, aber vorgegebene geringe Kapazität für saisonale Aufgabe. Keine Anlagenempfehlung. Vergleiche Erzeugung und beide Wasserstoffspeicher fachlich. Berechne Rückenergie und begründe, welche Angaben für ein Nachhaltigkeitsurteil fehlen. Trenne Effizienz und Eignung. Separater Transfer: Frisch: physischer Speicherpfad verschlechtert sich auf80%, alles andere gleich. Rückenergie?",
+      "expectedPerformanceDe": "Elektrolyse nutzt Strom zur endergonen Wasserspaltung. Hydridbildung ist chemische Bindung, Druckhaltung physische Speicherung. Chemische Kette1000·0,75·0,85·0,60=382,5kWh; physische414kWh. Kurzzeitmodell900kWh ist effizienter, aber die gegebene saisonale Kapazität fehlt. Rohstoff-/Anlagenaufwand, Speicherdauer, Verluste und erneuerbare Verfügbarkeit fehlen für einen Gesamtsieger. Transferantwort: 360kWh; nun liegt er unter382,5kWh der chemischen Modellkette. „Physisch immer effizienter“ wäre falsch. Scoring /10: 2P: Wasserstofferzeugung als Energieumwandlung darstellen.; 2P: Hydrid und Druckspeicher fachlich unterscheiden.; 2P: 382,5/414/900kWh korrekt vergleichen.; 2P: Nutzungszeit, Effizienz und fehlende Nachhaltigkeitsdaten unterscheiden.; 2P: 360kWh; nun liegt er unter382,5kWh der chemischen Modellkette. „Physisch immer effizienter“ wäre falsch.",
+      "understandingFocusDe": "Nachweis des ganzen aktuellen Ziels durch ausreichend gezeigte zusammenhängende Fachleistung; keine Zusatzaufgabenquote. Vorhandene Fälle sind Alternativen und gezielte Ergänzungen. Synthetische Autorenmaterialien belegen keine tatsächliche Experimentdurchführung oder Lernendenleistung. Quellenanteile bleiben einzeln begrenzt.",
+      "taskDemandEn": "Synthetic renewable1000kWh. H₂ chain: electrolysis75%,chemical metal-hydride storage including release85%,fuel cell60%. Alternative physical H₂ chain:75%,pressure route92%,60%. Electrical short-term storage90% but supplied insufficient capacity for seasonal task. No plant recommendation. Compare production and both hydrogen storage types scientifically. Calculate returned energy and explain what sustainability data are missing. Distinguish efficiency and suitability. Separate transfer: Fresh: physical storage route falls to80%,all else unchanged. Returned energy?",
+      "expectedPerformanceEn": "Electrolysis uses electricity for endergonic water splitting. Hydride formation is chemical binding; pressure containment is physical storage. Chemical chain1000·0.75·0.85·0.60=382.5kWh; physical414kWh. Short-term model900kWh is more efficient but lacks supplied seasonal capacity. Resource/plant demand,storage duration,losses and renewable availability are missing for an overall winner. Transfer response: 360kWh; it is now below382.5kWh of the chemical model chain. “Physical always more efficient” would be false. Scoring /10: 2P: Represent hydrogen production as energy conversion.; 2P: Distinguish hydride and pressure storage scientifically.; 2P: Compare382.5/414/900kWh correctly.; 2P: Distinguish use duration,efficiency and missing sustainability data.; 2P: 360kWh; it is now below382.5kWh of the chemical model chain. “Physical always more efficient” would be false.",
+      "understandingFocusEn": "Evidence for the whole current goal through sufficiently demonstrated connected scientific performance; no extra-task quota. Available cases are alternatives and targeted additions. Synthetic author material proves no actual experiment execution or learner performance. Source contributions remain individually bounded."
+    }
+  ]
+}

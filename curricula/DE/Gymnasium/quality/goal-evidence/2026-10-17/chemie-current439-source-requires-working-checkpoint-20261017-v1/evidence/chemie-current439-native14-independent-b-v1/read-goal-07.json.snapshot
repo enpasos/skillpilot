@@ -1,0 +1,126 @@
+{
+  "i": 7,
+  "goalId": "9e3fae29-84d5-5600-bfb3-82d49ea3f1b5",
+  "titleDe": "Chemische Daten quantitativ und hypothesenbezogen auswerten",
+  "titleEn": "Evaluate chemical data quantitatively in relation to hypotheses",
+  "descriptionDe": "Die lernende Person kann für eine chemische Fragestellung geeignete mathematische Auswertungsverfahren und digitale Werkzeuge auswählen und begründet anwenden, quantitative Zusammenhänge unter Beachtung der Untersuchungsbedingungen interpretieren und daraus fachübergreifend begründete Schlüsse zur Stützung oder Falsifizierung der Ausgangshypothese ziehen.",
+  "descriptionEn": "The learner can select and apply suitable mathematical analysis methods and digital tools with justification for a chemical question, interpret quantitative relationships while accounting for the investigation conditions, and derive justified interdisciplinary conclusions that support or falsify the initial hypothesis.",
+  "C": {
+    "shortKey": "canonical_chemistry_b008_upper_quantitative_hypothesis_data_evaluation",
+    "phase": null,
+    "core": null,
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "canonical",
+      "SekII"
+    ],
+    "competencyRefs": [],
+    "sourceRef": null,
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-chemistry",
+      "demandLevel": "AB2",
+      "processCompetencies": [
+        "PK1_EXPERIMENTIEREN",
+        "PK4_KOMMUNIZIEREN"
+      ],
+      "guidingIdeas": [
+        "BC_REAKTION"
+      ],
+      "phase": "GLOBAL",
+      "area": "Erkenntnisgewinnung und Kommunikation",
+      "topicCode": "CANONICAL.CHEMISTRY.B008.UPPER_QUANTITATIVE_HYPOTHESIS_DATA_EVALUATION"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BY",
+        "DE-RP"
+      ]
+    },
+    "type": "atomic",
+    "nodeKind": null,
+    "semanticAtomic": null,
+    "semanticKind": null,
+    "applicabilitySemantics": {
+      "fromRequires": null,
+      "mappingInheritance": "boundary",
+      "projection": null
+    },
+    "requires": [
+      "7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6",
+      "503dedcb-0efc-5e6b-bbc9-20761a0951f5"
+    ],
+    "contains": [],
+    "examples": []
+  },
+  "P": {
+    "archetype": "data",
+    "expectations": [
+      {
+        "id": "actual-digital-analysis",
+        "essentialUnderstandingDe": "Digitale Auswertung macht Rechenweg, Rohdaten und Modellannahmen nachvollziehbar; eine gelesene fertige Grafik zeigt keine eigene Nutzung.",
+        "essentialUnderstandingEn": "Digital evaluation makes computation, raw data and assumptions traceable; reading a completed chart does not show own tool use.",
+        "observablePerformanceDe": "Erstellt eine eigene Datei mit den markierten Modell-Rohdaten, Formeln, Scatterplot/Regression, Einheiten und überprüfbaren Zellbezügen für Kalibrierung und Kinetik.",
+        "observablePerformanceEn": "Creates an own file with labelled model raw data, formulas, scatterplot/regression, units and checkable cell references for calibration and kinetics."
+      },
+      {
+        "id": "mathematical-chemical-inference",
+        "essentialUnderstandingDe": "Lineare Kalibrierung und logarithmierte Konzentrations-Zeit-Beziehung beantworten unterschiedliche chemische Fragen unter begrenzten Modellannahmen.",
+        "essentialUnderstandingEn": "Linear calibration and log concentration–time relations answer different chemical questions under bounded model assumptions.",
+        "observablePerformanceDe": "Ermittelt mit Offset die Modellkonzentration 7 mg/L sowie k≈0,05 min⁻¹ und Halbwertszeit≈13,86 min, interpretiert Residuen und stellt den mathematisch-chemischen Zusammenhang zur Hypothese her.",
+        "observablePerformanceEn": "Obtains model concentration 7 mg/L with an offset and k≈0.05 min⁻¹ and half-life≈13.86 min, interprets residuals and connects mathematics and chemistry to the hypothesis."
+      },
+      {
+        "id": "fresh-digital-decision",
+        "essentialUnderstandingDe": "Außerhalb kalibrierter Daten oder bei einer veränderten Datenreihe müssen Gültigkeit und Modellpassung erneut geprüft werden; Streuung ist nicht Gesamtunsicherheit.",
+        "essentialUnderstandingEn": "Outside calibration data or after changing a dataset validity and model fit must be checked again; scatter is not total uncertainty.",
+        "observablePerformanceDe": "Bearbeitet A=0,650 als formal berechenbaren, aber nicht berichtbaren Bereichsfehler und c20=0,050 als neue markierte Datenversion; berechnet erneut, dokumentiert Residuen und begründet Unterstützung oder begrenzten Gegenbefund.",
+        "observablePerformanceEn": "Handles A=0.650 as a formally computable but unreportable range error and c20=0.050 as a new labelled data version; recalculates, documents residuals and justifies support or a bounded counterfinding."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "actual-digital-analysis",
+        "mathematical-chemical-inference",
+        "fresh-digital-decision"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "out-of-range",
+        "textDe": "Absorbanz überschreitet den oberen Standard; Gültigkeitsflag und weitere Messanforderung werden digital sichtbar.",
+        "textEn": "Absorbance exceeds the upper standard; a validity flag and further measurement requirement are digitally visible."
+      },
+      {
+        "id": "changed-kinetics",
+        "textDe": "Ein einzelner Konzentrationswert ändert sich; alter Vergleich und neuer Fit werden getrennt.",
+        "textEn": "One concentration reading changes; old comparison and new fit are kept separate."
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "upper-quantitative-hypothesis-data-evaluation-digital-calibration",
+        "taskDemandDe": "Erzeuge tatsächlich eine Tabellenkalkulationsdatei mit Rohdaten, Streudiagramm, linearer Regression einschließlich Offset, Probenauswertung und dokumentiertem Verdünnungsfaktor. Begründe mathematische Wahl, Interpolation und Hypothesenbefund.\nFrische Variation: Berechne digital neu für A = 0,650 und erkläre, warum die direkte Extrapolation keine gültige Analyse ist.",
+        "taskDemandEn": "Actually create a spreadsheet file with raw data, scatter graph, linear regression including offset, sample evaluation and documented dilution factor. Justify mathematical choice, interpolation and hypothesis finding.\nFresh variation: Recalculate digitally for A = 0.650 and explain why direct extrapolation is not a valid analysis.",
+        "expectedPerformanceDe": "Steigung 0,080 L/mg, Offset 0,010; A-Mittel 0,290, cverdünnt = 3,50 mg/L, cOriginal = 7,00 mg/L. Beispiel Zellformeln AVERAGE(Probenspalte), SLOPE(A;c), INTERCEPT(A;c), (Amean−b)/m*2; lokalisierte Äquivalente zulässig. U liegt innerhalb der Kalibration. Abweichungen ±0,001 A entsprechen hier ±0,0125 mg/L verdünnt (nur Streuungsbeitrag), nicht vollständiger Unsicherheit. Daten stützen die Bereichshypothese; Chemie/Optik und Mathematik verbinden Kalibration und Stoffkonzentration.\nFrischer Transfer: Im digitalen Arbeitsblatt A=0,650 als neue Modellzeile kennzeichnen. Die formale Rechnung (0,650−0,010)/0,080=8,0 mg/L überschreitet die kalibrierten 0–6 mg/L; sie dient allein der Bereichsprüfung. Die Berichtsspalte erhält deshalb „außerhalb Kalibrierung / weiterer gültiger Wert erforderlich“, nicht 16 mg/L als abgesicherten Originalwert. Ein eigener Gültigkeitsflag vergleicht Absorbanz mit 0,010–0,490. Bekannte zusätzliche Verdünnung und tatsächlich neuer in-range-Wert mit geprüfter Kalibrierung wären erforderlich; dessen Absorbanz darf nicht aus der ungültigen Extrapolation vorhergesagt werden. Rohdaten, formale Rechenzelle, Sperrflag und begründete Entscheidung sind in einer tatsächlich eigenen Datei aufzubewahren. Die Autoren-Rechenreferenz ist keine Lernendendatei.",
+        "expectedPerformanceEn": "Slope 0.080 L/mg, intercept 0.010; mean A 0.290, cdiluted = 3.50 mg/L, coriginal = 7.00 mg/L. Example cell formulas AVERAGE(sample column), SLOPE(A;c), INTERCEPT(A;c), (Amean−b)/m*2; localised equivalents accepted. U is within calibration. Deviations ±0.001 A correspond here to ±0.0125 mg/L diluted (scatter contribution only), not full uncertainty. Data support the interval hypothesis; chemistry/optics and mathematics connect calibration and concentration.\nFresh transfer: Label A=0.650 as a new model row in the digital workbook. The formal computation (0.650−0.010)/0.080=8.0 mg/L exceeds calibrated 0–6 mg/L and serves only the range check. The reporting column therefore receives “outside calibration / further valid reading required”, not 16 mg/L as a validated original value. An own validity flag compares absorbance with 0.010–0.490. A known additional dilution and actually new in-range reading with checked calibration would be needed; its absorbance must not be predicted from invalid extrapolation. Retain raw data, formal computation cell, blocking flag and justified decision in an actually own file. The author computation reference is not a learner file.",
+        "understandingFocusDe": "Digitale mathematische Auswertung zeigt eine echte Bereichsentscheidung statt ungeprüfter Extrapolation.",
+        "understandingFocusEn": "Digital mathematical evaluation shows a real range decision rather than unchecked extrapolation."
+      },
+      {
+        "id": "upper-quantitative-hypothesis-data-evaluation-digital-kinetics",
+        "taskDemandDe": "Wähle und erzeuge eine digitale quantitative Auswertung, prüfe die Hypothese über eine geeignete Linearisierung und Residuen, interpretiere k und Halbwertszeit und benenne Gültigkeitsbedingungen.\nFrische Variation: Ersetze den 20-min-Wert durch 0,0500 mol/L; untersuche Residuum und mögliche Mess-/Temperaturfehler, bevor du das Modell verlässlich verwirfst.",
+        "taskDemandEn": "Choose and create a digital quantitative evaluation, test the hypothesis using appropriate linearisation and residuals, interpret k and half-life and state validity conditions.\nFresh variation: Replace the 20-min value with 0.0500 mol/L; inspect the residual and possible measurement/temperature errors before reliably rejecting the model.",
+        "expectedPerformanceDe": "LN(c/c0) ergibt ungefähr 0/−0,500/−1,000/−1,500; Regression gegen t liefert k ≈ 0,0500 min⁻¹, t1/2 = ln2/k ≈ 13,86 min. In der Tabellenkalkulation LN(B2/$B$2), Regression und Residuenformel verwenden; gerundete Eingangsdaten erzeugen kleine Residuen. Die Daten sind konsistent mit erster Ordnung unter isothermen Bedingungen, beweisen keine einzigartige Reaktionsmechanik. Eine krumme c-t-Kurve allein widerlegt erste Ordnung gerade nicht.\nFrischer Transfer: Originaldaten unverändert halten; eine neue Modellversion setzt ausschließlich c(20)=0,050 mol/L. Dann ln(c/c0)=ln(0,5)=−0,69315 statt ungefähr −1. Gegen die alte idealisierte Gerade y=−0,05t beträgt die Abweichung +0,30685. Ein neuer Least-Squares-Fit aller vier gerundeten Werte liefert etwa y=0,03069−0,046935t; beim geänderten 20-min-Wert bleibt ein positives Residuum von etwa 0,21486. Der Fit absorbiert einen Teil der Abweichung und beweist keine eindeutige neue Kinetik. Eigenes Blatt mit getrennten Versionen, Formeln, beiden Linien und Residuen erstellen; Datenherkunft und mögliche Verfahrens-/Temperaturabweichung prüfen. Ohne Fehler-/Unabhängigkeitsdaten ist eine belastbare chemische Falsifikation begrenzt. Kein eigener Messwert wurde erzeugt.",
+        "expectedPerformanceEn": "LN(c/c0) gives approximately 0/−0.500/−1.000/−1.500; regression against t yields k ≈ 0.0500 min⁻¹, t1/2 = ln2/k ≈ 13.86 min. Use spreadsheet LN(B2/$B$2), regression and a residual formula; rounded inputs generate small residuals. Data are consistent with first order under isothermal conditions, not proof of a unique reaction mechanism. A curved c-t graph alone does not refute first order.\nFresh transfer: Retain original data; a new model version changes only c(20)=0.050 mol/L. Then ln(c/c0)=ln(0.5)=−0.69315 rather than approximately −1. Against the old idealised line y=−0.05t the deviation is +0.30685. A new least-squares fit to all four rounded values gives about y=0.03069−0.046935t; the changed 20-min value retains a positive residual of about 0.21486. The fit absorbs part of the deviation and does not prove unique new kinetics. Create an own workbook with separate versions, formulas, both lines and residuals; examine data origin and possible procedural/temperature deviations. Without error/independence information reliable chemical falsification is bounded. No own measurement was generated.",
+        "understandingFocusDe": "Eine digitale neue Datenversion unterscheidet alten Modellvergleich, Neufit und belastbaren chemischen Gegenbefund.",
+        "understandingFocusEn": "A digital new data version distinguishes old-model comparison, refit and reliable chemical counterfinding."
+      }
+    ]
+  }
+}

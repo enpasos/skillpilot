@@ -1,0 +1,22 @@
+// SPDX-License-Identifier: Apache-2.0
+// Bounded whole-view and route-reference inspection only; no candidate application.
+import fs from 'node:fs'
+import assert from 'node:assert/strict'
+import { collectCompositionProjectionRoleGoalIds } from '/home/enpasos/projects/skillpilot/app/src/utils/authoring/compositionViewAuthoring.ts'
+const O='/mnt/e/skillpilot-chemie-L7-20261017/two-BW-and-coordinate-priors-independent-b-v1'
+const read=(p:string)=>JSON.parse(fs.readFileSync(p,'utf8')),eq=(a:any,b:any)=>JSON.stringify(a)===JSON.stringify(b)
+const x=read('/mnt/e/skillpilot-chemie-L7-20261017/two-BW-data-teachers-and-coordinate-model-priors-author-root-v1/REVIEW-INPUT.clean-two-BW-data-targets-and-coordinate-prior-replacement.json'),f=read(x.foreignInput.path),c=read(x.baseCanonical.path),views=read(x.baseWhole39Views.path),gs=new Map<string,any>(c.goals.map((g:any)=>[g.id,g])),vs=new Map<string,any>(views.map((v:any)=>[v.viewId,v]))
+for(const z of f.separateWholeBeforeAndAfterGoalScopeAnnotations)gs.set(z.goalId,z.after)
+for(const z of f.wholeBeforeAndAfterViews)vs.set(z.viewId,z.after)
+for(const z of x.wholeGoalChanges)assert(eq(z.before,gs.get(z.goalId)))
+const ch=x.wholeViewChanges[0];assert(eq(ch.before,vs.get(ch.viewId)))
+const rb=collectCompositionProjectionRoleGoalIds(ch.before.rootNodes,gs),ra=collectCompositionProjectionRoleGoalIds(ch.after.rootNodes,gs),ids=ch.addedExistingOrdinaryTargetGoalIds
+assert([...rb.targetGoalIds].every(id=>ra.targetGoalIds.has(id)));assert(eq([...rb.prerequisiteOnlyGoalIds].sort(),[...ra.prerequisiteOnlyGoalIds].sort()));assert(eq([...ra.targetGoalIds].filter(id=>!rb.targetGoalIds.has(id)).sort(),ids.slice().sort()));for(const id of ids)assert(!rb.prerequisiteOnlyGoalIds.has(id));
+const strip=(z:any):any=>Array.isArray(z)?z.filter(a=>!(a?.kind==='goalEntry'&&ids.includes(a.goalId))).map(strip):z&&typeof z==='object'?Object.fromEntries(Object.entries(z).map(([k,v])=>[k,strip(v)])):z
+assert(eq(strip(ch.after),ch.before));assert(eq(x.currentRPWholeViewAfterForeignProposal,vs.get('de-rp-gym-chemistry-lk')))
+const gAfter=new Map(gs);for(const z of x.wholeGoalChanges)gAfter.set(z.goalId,z.after)
+const cid='363c5740-8a3c-50b8-8c3a-5548c80c36ea',role=(r:any,id:string)=>r.targetGoalIds.has(id)?'target':r.prerequisiteOnlyGoalIds.has(id)?'prerequisiteOnly':'absent'
+const roleRows=[...vs.values()].map((v:any)=>{const r=collectCompositionProjectionRoleGoalIds(v.rootNodes,gs);return {viewId:v.viewId,scope:v.scope,coordinateGoalRole:role(r,cid),newDirectTeachers:gAfter.get(cid).requires.map((id:string)=>({goalId:id,role:role(r,id)})),oldRemovedTeachers:gs.get(cid).requires.filter((id:string)=>!gAfter.get(cid).requires.includes(id)).map((id:string)=>({goalId:id,role:role(r,id)}))}}).filter(r=>r.coordinateGoalRole==='target')
+const cycles:any[]=[];const color=new Map<string,number>();const walk=(id:string)=>{if(color.get(id)===1){cycles.push(id);return};if(color.get(id)===2)return;color.set(id,1);for(const j of gAfter.get(id).requires??[])walk(j);color.set(id,2)};for(const id of gAfter.keys())walk(id);assert(!cycles.length)
+const closure=(id:string)=>{const seen=new Set<string>();const run=(j:string)=>{if(seen.has(j))return;seen.add(j);for(const k of gAfter.get(j).requires??[])run(k)};run(id);return [...seen]};const rpView=vs.get('de-rp-gym-chemistry-lk'),rpRoles=collectCompositionProjectionRoleGoalIds(rpView.rootNodes,gAfter);const rpFullCoordinateRoute=closure(cid).map(id=>({goalId:id,title:gAfter.get(id).title,role:role(rpRoles,id)}));const payload={rpFullCoordinateRoute,role:'B independent bounded references; no APV or source-science counter inference',conditionalBeforeExactlyForeign18WholeObjects:true,newBWTargets:ids,oldTargetDeletions:0,oldPrerequisiteOnlyRoleChanges:0,removingTwoNewReferencesReproducesWholeConditionalBeforeView:true,rpWholeViewUnchanged:true,coordinateRawTargetViews:roleRows,missingNewDirectTeacherRoles:roleRows.filter(r=>r.newDirectTeachers.some((t:any)=>t.role==='absent')),candidateRequiresCycleCount:cycles.length,M7:false,HumanApproval:false}
+fs.writeFileSync(O+'/FIRST.bounded-reference-checks.json',JSON.stringify(payload,null,2)+'\n',{flag:'w'});console.log(JSON.stringify({newBWTargets:ids,coordinateTargetViewCount:roleRows.length,missingDirectTeacherRoles:payload.missingNewDirectTeacherRoles,rp:roleRows.find(r=>r.viewId==='de-rp-gym-chemistry-lk'),requiresCycles:cycles.length}))

@@ -1,0 +1,784 @@
+[
+  {
+    "index": 1,
+    "goalId": "413040cd-ba74-5227-948c-a778b0bd0f56",
+    "titleDe": "Löslichkeit und Sättigung aus Daten erklären",
+    "titleEn": "Explain solubility and saturation from data",
+    "descriptionDe": "Die lernende Person kann für einen vorgegebenen Stoff, ein Lösungsmittel und eine Temperatur aus Mengen- und Beobachtungsdaten erklären, ob eine Lösung gesättigt oder ungesättigt ist und welche zusätzliche Stoffmenge sich unter diesen Bedingungen noch lösen kann.",
+    "descriptionEn": "For a specified substance, solvent and temperature, the learner can use quantities and observations to explain whether a solution is saturated or unsaturated and how much further solute can dissolve under those conditions.",
+    "canonicalContext": {
+      "shortKey": "canonical_chemistry_sek1_b007_solubility",
+      "phase": "GLOBAL",
+      "core": false,
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "competencyRefs": [],
+      "sourceRef": null,
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "PK1_EXPERIMENTIEREN",
+          "PK2_MODELLIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU",
+          "BC_REAKTION"
+        ],
+        "phase": "GLOBAL",
+        "area": "Grundlagen",
+        "topicCode": "CANONICAL.CHEMISTRY.SEK1.B007.SOLUBILITY"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "nodeKind": null,
+      "semanticAtomic": null,
+      "semanticKind": null,
+      "applicabilitySemantics": {
+        "fromRequires": null,
+        "mappingInheritance": "boundary",
+        "projection": null
+      },
+      "requires": [],
+      "contains": [],
+      "examples": []
+    },
+    "context": {
+      "pageNumber": 1,
+      "breadcrumbs": [
+        "Chemie – kanonische M7-Prüfsicht",
+        "Chemie",
+        "Chemische Grundlagen (Sek I)",
+        "Lösungen und Löslichkeit beschreiben"
+      ],
+      "requires": [],
+      "reverseRequires": [],
+      "externalPrerequisites": [],
+      "externalReverseRequires": [
+        {
+          "goalId": "8b2d351e-e44f-5385-9b89-13ef54b5918f",
+          "title": "Temperaturabhängige Löslichkeit und Kristallbildung untersuchen",
+          "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-8b2d351e-e44f-5385-9b89-13ef54b5918f"
+        }
+      ],
+      "visualization": {
+        "resourceType": "image",
+        "title": "Visualisierung: Löslichkeit und Sättigung aus Daten erklären",
+        "url": "/assets/goal-visualizations/chemie/413040cd-ba74-5227-948c-a778b0bd0f56/413040cd-ba74-5227-948c-a778b0bd0f56.png",
+        "altText": "Bei 20 Grad Celsius zeigen zwei Gefäße denselben Stoff und dieselbe Lösungsmittelmenge. Links kann sich noch Stoff lösen; rechts bleibt bei Sättigung ein ungelöster Feststoffrest am Boden. Die Flüssigkeit darüber ist in beiden Fällen homogen.",
+        "originalDigest": "sha256:12ef7e530ae7d42c09907db1f9b32e62c8b6fe20f7980a883e9d6e865a1ffd3d",
+        "qaStatus": "review_candidate",
+        "approvedForPublication": false
+      }
+    },
+    "profile": {
+      "archetype": "data",
+      "expectations": [
+        {
+          "id": "understanding",
+          "essentialUnderstandingDe": "Die Löslichkeitsgrenze gilt für eine bestimmte Stoffkombination und Temperatur. Sättigung kann auch ohne sichtbaren Bodensatz vorliegen; Rühren verändert nicht automatisch die Gleichgewichtsgrenze.",
+          "essentialUnderstandingEn": "A solubility limit applies to a specified substance pair and temperature. Saturation can occur without visible residue; stirring does not automatically change the equilibrium limit.",
+          "observablePerformanceDe": "Die lernende Person bestimmt aus der vorgegebenen Löslichkeit die Kapazität der jeweiligen Wassermenge, trennt gelöste Masse und Bodensatz und begründet ungesättigt beziehungsweise gesättigt einschließlich des klaren Grenzfalls. Sie bilanziert die zusätzliche Wassermenge, statt weitere Löslichkeit allein aus längerem Rühren oder aus einer Temperaturänderung ohne neue Daten zu behaupten.",
+          "observablePerformanceEn": "The learner derives capacity for the given water mass from the supplied solubility, distinguishes dissolved mass from residue and justifies unsaturated or saturated states including the clear limiting case. They balance additional water rather than claiming more solubility from stirring longer or from a temperature change without new data."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "understanding"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "changed-conditions",
+          "textDe": "Bei 20 °C wurden nur 20,0 g U in 80,0 g Wasser gegeben. Ein Mitschüler behauptet: „Dieser Stoff macht immer Bodensatz.“ Begründe den neuen Fall.",
+          "textEn": "At 20 °C only 20.0 g U was added to 80.0 g water. A classmate claims “This substance always leaves residue.” Explain the new case."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "solubility-clear-saturated-countercase",
+          "taskDemandDe": "Bestimme für A und B die maximal lösbare Menge, begründe gesättigt/ungesättigt und berechne die zusätzlich lösbare Menge T. Beurteile „Ohne Bodensatz ist jede Lösung ungesättigt“.",
+          "taskDemandEn": "Determine the maximum dissolvable amount for A and B, justify saturated/unsaturated and calculate how much more T can dissolve. Assess “Every solution without residue is unsaturated.”",
+          "expectedPerformanceDe": "Für 40,0 g Wasser beträgt die Grenze 24,0 × 40,0/100,0 = 9,6 g T. A ist ungesättigt: noch 9,6 − 7,2 = 2,4 g können sich lösen. B ist bereits an der Grenze und damit gesättigt; zusätzlich 0 g. Dass B klar und ohne Bodensatz ist, ändert die Grenzmenge nicht. Die Behauptung ist falsch.",
+          "expectedPerformanceEn": "For 40.0 g water the limit is 24.0 × 40.0/100.0 = 9.6 g T. A is unsaturated: another 9.6 − 7.2 = 2.4 g can dissolve. B is at the limit and saturated; another 0 g can dissolve. Its clear appearance without residue does not change the limiting amount. The claim is false.",
+          "understandingFocusDe": "Die Löslichkeitsgrenze gilt für eine bestimmte Stoffkombination und Temperatur. Sättigung kann auch ohne sichtbaren Bodensatz vorliegen; Rühren verändert nicht automatisch die Gleichgewichtsgrenze.",
+          "understandingFocusEn": "A solubility limit applies to a specified substance pair and temperature. Saturation can occur without visible residue; stirring does not automatically change the equilibrium limit."
+        },
+        {
+          "id": "solubility-residue-water-and-temperature",
+          "taskDemandDe": "Bestimme zunächst gelöste Menge, Rest und Sättigung. Kann bloß längeres Rühren den Rest unter denselben Gleichgewichtsbedingungen vollständig lösen? Bestimme dann den Zustand nach Änderung A. Nenne für B die fehlende entscheidende Angabe.",
+          "taskDemandEn": "First determine dissolved amount, residue and saturation. Can simply stirring longer dissolve all residue under the same equilibrium conditions? Then determine the state after A and name the decisive missing value for B.",
+          "expectedPerformanceDe": "Zunächst sind maximal 30,0 × 80,0/100,0 = 24,0 g gelöst; 32,0 − 24,0 = 8,0 g bleiben als Rest. Die Flüssigkeitsphase ist gesättigt. Noch mehr Rühren ändert unter den ausdrücklich bereits erreichten Gleichgewichtsbedingungen die Grenze nicht. Nach A: 120,0 g Wasser, Grenze 36,0 g; alle 32,0 g lösen sich, 4,0 g zusätzliche Kapazität, ungesättigt. Für B brauche ich die Löslichkeit bei 40 °C; ich darf die 20-°C-Grenze weder unverändert übernehmen noch eine bestimmte Zunahme erraten.",
+          "expectedPerformanceEn": "Initially at most 30.0 × 80.0/100.0 = 24.0 g is dissolved; 32.0 − 24.0 = 8.0 g remains. The liquid phase is saturated. More stirring does not change the limit under explicitly attained equilibrium conditions. After A: 120.0 g water, limit 36.0 g; all 32.0 g dissolves, with 4.0 g further capacity, so unsaturated. B requires solubility at 40 °C; I may neither reuse the 20 °C limit unchanged nor guess a particular increase.",
+          "understandingFocusDe": "Die Löslichkeitsgrenze gilt für eine bestimmte Stoffkombination und Temperatur. Sättigung kann auch ohne sichtbaren Bodensatz vorliegen; Rühren verändert nicht automatisch die Gleichgewichtsgrenze.",
+          "understandingFocusEn": "A solubility limit applies to a specified substance pair and temperature. Saturation can occur without visible residue; stirring does not automatically change the equilibrium limit."
+        }
+      ]
+    }
+  },
+  {
+    "index": 2,
+    "goalId": "a25a19ed-aec3-59cc-ae28-31d98746cb9d",
+    "titleDe": "Ethanolwirkungen im Körper und Alltagsrisiken einordnen",
+    "titleEn": "Interpret bodily effects of ethanol and everyday risks",
+    "descriptionDe": "Die lernende Person kann anhand bereitgestellter Informationen Wirkungen von Ethanol im menschlichen Körper und seinen schrittweisen oxidativen Abbau erläutern und daraus Gesundheits- und Sicherheitsrisiken einer konkreten Alltagssituation fachlich begründet beurteilen.",
+    "descriptionEn": "The learner can use supplied information to explain effects of ethanol in the human body and its stepwise oxidative metabolism, and use this to give a scientifically reasoned assessment of health and safety risks in a concrete everyday situation.",
+    "canonicalContext": {
+      "shortKey": "canonical_chemistry_ethanol_body_effects_everyday_risk",
+      "phase": null,
+      "core": null,
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "competencyRefs": [],
+      "sourceRef": null,
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "BC_REAKTION"
+        ],
+        "phase": "E"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW"
+        ]
+      },
+      "type": "atomic",
+      "nodeKind": null,
+      "semanticAtomic": null,
+      "semanticKind": null,
+      "applicabilitySemantics": {
+        "fromRequires": null,
+        "mappingInheritance": "boundary",
+        "projection": null
+      },
+      "requires": [
+        "e1214210-406e-5075-b83c-086b3972ed66"
+      ],
+      "contains": [],
+      "examples": []
+    },
+    "context": {
+      "pageNumber": 2,
+      "breadcrumbs": [
+        "Chemie – kanonische M7-Prüfsicht",
+        "Chemie",
+        "Einführungsphase Reaktionsgrundlagen",
+        "Einführung organische Verbindungen",
+        "Ethanol gesundheitlich und gesellschaftlich einordnen"
+      ],
+      "requires": [],
+      "reverseRequires": [],
+      "externalPrerequisites": [
+        {
+          "goalId": "e1214210-406e-5075-b83c-086b3972ed66",
+          "title": "Ethanol-Eigenschaften aus der Hydroxygruppe ableiten",
+          "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-e1214210-406e-5075-b83c-086b3972ed66"
+        }
+      ],
+      "externalReverseRequires": [
+        {
+          "goalId": "14577339-9e0c-5b44-8e47-91e1a4947367",
+          "title": "HE-GK: Materialgestützte Chemie-Abschlussaufgabe bearbeiten",
+          "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-14577339-9e0c-5b44-8e47-91e1a4947367"
+        },
+        {
+          "goalId": "32705a3a-9b7f-5cc0-ba41-881d13d0c45b",
+          "title": "HE-LK: Materialgestützte Chemie-Abschlussaufgabe bearbeiten",
+          "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-32705a3a-9b7f-5cc0-ba41-881d13d0c45b"
+        }
+      ],
+      "visualization": {
+        "resourceType": "image",
+        "title": "Visualisierung: Ethanolwirkungen im Körper und Alltagsrisiken einordnen",
+        "url": "/assets/goal-visualizations/chemie/a25a19ed-aec3-59cc-ae28-31d98746cb9d/a25a19ed-aec3-59cc-ae28-31d98746cb9d.png",
+        "altText": "Ethanol CH3–CH2–OH führt über Ethanal CH3–CHO zu Acetat CH3–COO−. Auslassungspunkte zeigen einen unvollständigen Teilweg. Gehirn-, Leber- und Verkehrsrisikomotive ergänzen die Darstellung ohne Zeitangabe.",
+        "originalDigest": "sha256:87fabd9bbe77c5c96e6ee0d15b203705258be72ae6f3586ae9e98c60d0b6cef0",
+        "qaStatus": "review_candidate",
+        "approvedForPublication": false
+      }
+    },
+    "profile": {
+      "archetype": "concept",
+      "expectations": [
+        {
+          "id": "e1",
+          "essentialUnderstandingDe": "Akute Funktionsbeeinträchtigung und mögliche längerfristige Schädigung sind unterschiedliche körperliche Folgen. Ein zweckgebundener Nutzen äußerer Anwendung belegt keine Harmlosigkeit beim Konsum.",
+          "essentialUnderstandingEn": "Acute functional impairment and possible longer-term harm are distinct bodily effects. Purpose-specific benefits of external application do not establish harmlessness of consumption.",
+          "observablePerformanceDe": "Erklärt anhand der gegebenen Informationen Körperwirkung und Risikobezug und unterscheidet vorgesehene Anwendung von Konsum.",
+          "observablePerformanceEn": "Uses the supplied information to explain bodily effects and risk, distinguishing intended external use from consumption."
+        },
+        {
+          "id": "e2",
+          "essentialUnderstandingDe": "Die Metabolisierbarkeit von Ethanol bedeutet nicht sofortige Unschädlichkeit; ein Teilweg kann schädliche Zwischenprodukte enthalten.",
+          "essentialUnderstandingEn": "Being metabolizable does not make ethanol immediately harmless; a partial pathway can contain harmful intermediates.",
+          "observablePerformanceDe": "Deutet das bereitgestellte Ethanol–Ethanal–Acetat-Schema als schrittweise Oxidation und begrenzt seine Aussage zur Körperwirkung; keine auswendig gelernte Biochemie.",
+          "observablePerformanceEn": "Interprets the supplied ethanol–ethanal–acetate scheme as stepwise oxidation and explains its limits concerning bodily effects; no memorized biochemistry."
+        },
+        {
+          "id": "e3",
+          "essentialUnderstandingDe": "Eine fachliche Alltagsentscheidung braucht Wirkungsbezug, begrenzte Belege und klare Sicherheitskriterien.",
+          "essentialUnderstandingEn": "A scientifically reasoned everyday decision needs a link to bodily effects, bounded evidence and clear safety criteria.",
+          "observablePerformanceDe": "Begründet eine konkrete Sicherheits-/Gesundheitsentscheidung in der frischen Situation und kennzeichnet nicht belegte Individualdiagnosen, sichere Mengen und genaue Abbauzeiten.",
+          "observablePerformanceEn": "Justifies a concrete health/safety response in the fresh situation and identifies unsupported diagnoses, safe amounts and exact elimination times."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "e1",
+          "e2",
+          "e3"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "context-and-inference",
+          "textDe": "Von Verkehrssituation zu sachlicher Werbung/zweckgebundener äußerer Anwendung wechseln; fehlerhafte Schlüsse aus Herkunft, Metabolisierbarkeit oder Nutzen prüfen.",
+          "textEn": "Change between traffic, factual advertising and purpose-specific external application; assess faulty inferences from origin, metabolism or benefit."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "ethanol-effects-successor-a",
+          "taskDemandDe": "Erläutere an K1 und K2 den Unterschied zwischen einer akuten Funktionsbeeinträchtigung und einer möglichen längerfristigen Schädigung. Deute den bereitgestellten Abbauweg als schrittweise Oxidation und erkläre, weshalb er weder sofortige Unbedenklichkeit noch eine Abfahrtszeit beweist. Begründe für den Fall einen Heimweg, bei dem die betroffene Person kein Fahrzeug führt, und nenne die Grenzen der Aussage. Ordne außerdem mit Karte D den Nutzen der vorgesehenen äußeren Anwendung ein und widerlege begründet den Schluss, dieser Nutzen mache die Einnahme harmlos.",
+          "taskDemandEn": "Use C1 and C2 to explain the difference between acute impairment and possible longer-term harm. Interpret the supplied pathway as stepwise oxidation and explain why it demonstrates neither immediate harmlessness nor a departure time. Justify a journey in which the affected person does not operate a vehicle, and state the limits of the conclusion. Also use card D to interpret the benefit of the intended external application and explain why that benefit does not make ingestion harmless.",
+          "expectedPerformanceDe": "Akut kann das gestörte Denken oder die gestörte Koordination schon die aktuelle Verkehrssituation riskant machen; eine mögliche langfristige Organschädigung ist eine andere Zeitebene. Der rechte Kohlenstoff wird von −I zu +I und +III oxidiert; die Enzyme bewirken mehrere Schritte, und das Zwischenprodukt Ethanal ist selbst schädlich. Das Schema ist keine Uhr und zeigt keine gemessene aktuelle Fähigkeit. Ein geplanter Heimweg etwa durch Abholung mit einer verlässlich nüchternen verantwortlichen Person vermeidet eigene Fahrzeugführung. Ob eine bestimmte Person eine Krankheit hat, wie viel sie konsumiert hat oder ab wann sie wieder fahrtüchtig ist, folgt nicht. Die Keimreduktion bezieht sich auf eine vorgesehene äußere Anwendung. Ein Nutzen für diesen Zweck ist mit Risiken der Aufnahme in den Körper vereinbar und beweist keine Harmlosigkeit beim Trinken; unterschiedliche Aufnahmewege und Verwendungszwecke dürfen nicht gleichgesetzt werden.",
+          "expectedPerformanceEn": "Disrupted thinking or coordination can make the present traffic situation risky; possible longer-term organ damage occurs on a different time scale. The right-hand carbon is oxidized from −I to +I to +III; enzymes mediate several steps, and the intermediate ethanal is itself harmful. The scheme is not a clock and reports no measured current ability. A planned journey such as collection by a reliably sober responsible person avoids operating a vehicle. The information does not establish personal illness, intake or a time when the person becomes fit to drive. Reducing microbes concerns a specified external application. A benefit for that purpose can coexist with risks from intake into the body and does not establish harmlessness of drinking; different routes of exposure and purposes must not be equated.",
+          "understandingFocusDe": "Neue Situation: Eine Getränkewerbung behauptet „Natürlich vergoren und deshalb für alle risikofrei“. Prüfe die Schlussfolgerung an den Karten und begründe, welche Art von Beleg fehlt, ohne eine sichere Menge zu erfinden.",
+          "understandingFocusEn": "Fresh situation: a drinks advertisement claims “Naturally fermented, therefore risk-free for everyone”. Assess the inference using the cards and explain what kind of evidence is missing without inventing a safe amount."
+        },
+        {
+          "id": "ethanol-effects-successor-b",
+          "taskDemandDe": "Erkläre am Material, weshalb der Nutzen einer vorgesehenen äußeren Anwendung und gesundheitliche Risiken beim Konsum nebeneinander bestehen können. Korrigiere beide Plakate mit einer Begründung zu Körperwirkung und zum schrittweisen Abbau. Unterscheide eine begründete allgemeine Risikoaussage von einer unbelegten individuellen Diagnose. Formuliere eine sachliche Beschriftung für eine Schulausstellung.",
+          "taskDemandEn": "Explain from the material why benefits of intended external use can coexist with health risks of consumption. Correct both posters with reasoning about bodily effects and stepwise metabolism. Distinguish a justified general risk statement from an unsupported personal diagnosis. Write a factual caption for a school exhibition.",
+          "expectedPerformanceDe": "D betrifft einen bestimmten äußeren Verwendungszweck; daraus folgt keine Unbedenklichkeit einer Aufnahme in den Körper. Ethanol kann Denken und Koordination beeinträchtigen und bei wiederholtem starkem Konsum unter anderem die Leber schädigen. Der Abbau ist schrittweise und erzeugt mit Ethanal ein schädliches Zwischenprodukt; Metabolisierbarkeit bedeutet daher keine sofortige Unschädlichkeit. Q macht aus einem möglichen Risiko eine angeblich sichere aktuelle Diagnose und ist durch die Karten nicht gedeckt. Eine passende Beschriftung nennt den zweckgebundenen Nutzen und grenzt ihn von Konsumrisiken ab. Sie behauptet weder eine sichere Konsummenge noch eine Erkrankung aller Konsumierenden.",
+          "expectedPerformanceEn": "D concerns a specific external purpose and does not establish that intake into the body is harmless. Ethanol can impair thinking and coordination and repeated heavy consumption can damage the liver, among other organs. Metabolism occurs in steps and produces the harmful intermediate ethanal; being metabolizable does not mean immediate harmlessness. Q turns a possible risk into a supposedly certain current diagnosis, which the cards do not support. A suitable caption identifies the purpose-specific benefit and distinguishes it from consumption risks, without claiming a safe intake or illness in every consumer.",
+          "understandingFocusDe": "Neue Situation: Für einen schulischen Ausflug soll aus dem Satz „Nach einiger Zeit ist Ethanol abgebaut“ eine feste Wartezeit bis zum Fahrradfahren abgeleitet werden. Begründe selbstständig, weshalb das Material diese Zeit nicht festlegt und welche Sicherheitsentscheidung trotzdem vertretbar ist.",
+          "understandingFocusEn": "Fresh situation: on a school outing, the statement “Ethanol is broken down after some time” is used to infer a fixed waiting time before cycling. Independently explain why this material does not establish that time and what safety response is still defensible."
+        }
+      ]
+    }
+  },
+  {
+    "index": 3,
+    "goalId": "a96e9b3d-a02d-54f8-a3d3-318e0ea5180c",
+    "titleDe": "Herstellung und Struktur von Silikonen für Polymervergleiche erklären",
+    "titleEn": "Explain silicone formation and structure for polymer comparison",
+    "descriptionDe": "Die lernende Person kann Herstellung und Bau von Silikonmolekülen beschreiben und daraus ihre Eigenschaften im Vergleich mit ausgewählten kohlenstoffbasierten Polymeren erklären.",
+    "descriptionEn": "The learner can describe production and structure of silicone molecules and use that account to explain their properties in comparison with selected carbon-based polymers.",
+    "canonicalContext": {
+      "shortKey": "canonical_chemistry_silicone_formation_structure_carbon_polymer_comparison",
+      "phase": null,
+      "core": null,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "SekII",
+        "GK",
+        "LK"
+      ],
+      "competencyRefs": [],
+      "sourceRef": null,
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "BC_AUFBAU",
+          "BC_REAKTION"
+        ],
+        "phase": "Q2",
+        "area": "Kunststoffchemie",
+        "topicCode": "CANONICAL.CHEMISTRY.Q2.SILICONE_FORMATION_STRUCTURE_CARBON_POLYMER_COMPARISON"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "type": "atomic",
+      "nodeKind": null,
+      "semanticAtomic": null,
+      "semanticKind": null,
+      "applicabilitySemantics": {
+        "fromRequires": null,
+        "mappingInheritance": "boundary",
+        "projection": null
+      },
+      "requires": [
+        "2652caef-b557-58b9-9b28-70db62625ce5"
+      ],
+      "contains": [],
+      "examples": []
+    },
+    "context": {
+      "pageNumber": 3,
+      "breadcrumbs": [
+        "Chemie – kanonische M7-Prüfsicht",
+        "Chemie",
+        "Naturstoffe und Synthesechemie",
+        "Q2.2 Grundlagen der Kunststoffchemie",
+        "Silikone herstellen und strukturbezogen vergleichen"
+      ],
+      "requires": [],
+      "reverseRequires": [
+        {
+          "goalId": "6413429b-53d8-5ad1-9af6-d0e562cbf0f5",
+          "title": "Nanoskalige Silikonoberflächen materialgestützt beurteilen",
+          "anchor": "goal-6413429b-53d8-5ad1-9af6-d0e562cbf0f5",
+          "pageNumber": 4
+        }
+      ],
+      "externalPrerequisites": [
+        {
+          "goalId": "2652caef-b557-58b9-9b28-70db62625ce5",
+          "title": "Eigenschaftsprofile von Polymeren",
+          "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-2652caef-b557-58b9-9b28-70db62625ce5"
+        }
+      ],
+      "externalReverseRequires": [],
+      "visualization": {
+        "resourceType": "image",
+        "title": "Visualisierung: Herstellung und Struktur von Silikonen für Polymervergleiche erklären",
+        "url": "/assets/goal-visualizations/chemie/a96e9b3d-a02d-54f8-a3d3-318e0ea5180c/a96e9b3d-a02d-54f8-a3d3-318e0ea5180c.png",
+        "altText": "Zwei Dimethylsilandiolmoleküle kondensieren zu einem endgruppenrichtigen Disiloxan und Wasser. Darunter zeigen drei schematische Felder freie Silikonölketten, ein vernetztes Elastomer beim Dehnen und einen Wassertropfen an methylhaltigen Oberflächengruppen.",
+        "originalDigest": "sha256:f5f699a9e679ab9437dcdfbb09f6c3ee93932ce1f051e44004f11d0be68860dd",
+        "qaStatus": "review_candidate",
+        "approvedForPublication": false
+      }
+    },
+    "profile": {
+      "archetype": "modeling",
+      "expectations": [
+        {
+          "id": "e1",
+          "essentialUnderstandingDe": "Silanol-Kondensation erklärt das Siloxanrückgrat; endliche Ketten haben passende Endgruppen und eine bilanzierte Wasserabgabe.",
+          "essentialUnderstandingEn": "Silanol condensation accounts for the siloxane backbone; finite chains retain correct end groups and a balanced water release.",
+          "observablePerformanceDe": "Beschreibt und bilanziert eine vorgegebene endliche Kette, prüft Si/O-Valenzen.",
+          "observablePerformanceEn": "Describes and balances a supplied finite chain and checks Si/O valences."
+        },
+        {
+          "id": "e2",
+          "essentialUnderstandingDe": "Silikonrückgrat, organische Seitengruppen und kohlenstoffbasiertes Vergleichsrückgrat sind unterscheidbare Bauprinzipien.",
+          "essentialUnderstandingEn": "Silicone backbone, organic side groups and a carbon-based comparison backbone are distinct building principles.",
+          "observablePerformanceDe": "Vergleicht PDMS-Si–O/Methyl mit einem gegebenen PE-C–C-Modell, ohne Silikon mit Silicium gleichzusetzen. Vergleicht zusätzlich die bereitgestellten Eigenschaftsbeobachtungen von rückstellendem vernetztem PDMS und bleibend verformtem PE bei gleichen Bedingungen; leitet keine universelle Eigenschaft allein aus der Rückgratbezeichnung ab.",
+          "observablePerformanceEn": "Compares PDMS Si–O/methyl against supplied PE C–C without equating silicone and silicon. Also compares supplied property observations of recovering crosslinked PDMS and permanently deformed PE under equal conditions; infers no universal property solely from the backbone label."
+        },
+        {
+          "id": "e3",
+          "essentialUnderstandingDe": "Lineare Ketten und kovalente Netzwerke erklären unterschiedliche Eigenschaftsprofile; der Werkstoffvergleich bleibt an Struktur und Bedingung gebunden.",
+          "essentialUnderstandingEn": "Linear chains and covalent networks explain different property profiles; material comparison remains structure/condition-bound.",
+          "observablePerformanceDe": "Erklärt Öl/Rückstellung und begründet die Werkstoffwahl bei geänderter Vernetzung statt eine universelle Polymer-Rangfolge zu behaupten.",
+          "observablePerformanceEn": "Explains oil/recovery and justifies material choice after changed crosslinking instead of asserting a universal polymer ranking."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "e1",
+          "e2",
+          "e3"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "v1",
+          "textDe": "Endliche Kettenlänge und Wasserbilanz",
+          "textEn": "Finite chain length and water balance"
+        },
+        {
+          "id": "v2",
+          "textDe": "Lineares gegenüber vernetztem Material",
+          "textEn": "Linear versus crosslinked material"
+        },
+        {
+          "id": "v3",
+          "textDe": "Werkstoffanforderung und Datengrenze",
+          "textEn": "Material requirement and data limit"
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "e560-formation-case-1",
+          "taskDemandDe": "1. Beschreibe die Silanol-Kondensation durch eine vollständige Formel des Trimers samt Wasser und prüfe die Si/O-Valenzen. 2. Vergleiche Siloxanrückgrat und organische Seitengruppen mit dem PE-Modell. 3. Erkläre Öl gegenüber Elastomer anhand der Vernetzung und begründe unter den gegebenen Bedingungen eine Dichtungsauswahl. Was ändert sich, wenn dieselbe PDMS-Kette zunächst nicht vernetzt ist?",
+          "taskDemandEn": "1. Describe silanol condensation using a complete trimer formula including water and check Si/O valences. 2. Compare the siloxane backbone and organic side groups with the PE model. 3. Explain oil versus elastomer through crosslinking and justify a seal choice under the supplied conditions. What changes if the same PDMS chain is initially uncrosslinked?",
+          "expectedPerformanceDe": "3 HO–Si(CH₃)₂–OH → HO–Si(CH₃)₂–O–Si(CH₃)₂–O–Si(CH₃)₂–OH + 2 H₂O. Jedes Si trägt vier Einfachbindungen; Brücken-O zwei, terminaler OH-Sauerstoff Si und H. Das Si–O-Rückgrat mit Methylgruppen unterscheidet sich vom C–C-Rückgrat des PE-Modells. Gleiche Methylgruppen beweisen kein gleiches Rückgrat. Nicht vernetzte Ketten können gegeneinander gleiten; kovalente Netzpunkte begrenzen das Gleiten und ermöglichen im gegebenen Elastomer Rückstellung. Daher ist für die geforderte Formstabilität das gegebene vernetzte PDMS geeignet, das Öl nicht. Vernetzung verändert Verhalten bei derselben Polymerchemie; daraus folgt keine pauschale Überlegenheit aller Silikone gegenüber allen kohlenstoffbasierten Polymeren.",
+          "expectedPerformanceEn": "3 HO–Si(CH₃)₂–OH → HO–Si(CH₃)₂–O–Si(CH₃)₂–O–Si(CH₃)₂–OH + 2 H₂O. Each Si has four single bonds; bridge O has two, terminal OH oxygen bonds to Si and H. The Si–O backbone with methyl groups differs from the C–C backbone of supplied PE. Identical methyl groups would not establish an identical backbone. Uncrosslinked chains can slide relative to each other; covalent network points restrict sliding and allow recovery in the supplied elastomer. Thus the given crosslinked PDMS suits the required shape stability, whereas the oil does not. Crosslinking changes behaviour at the same polymer chemistry; this does not prove universal superiority of all silicones over all carbon-based polymers.",
+          "understandingFocusDe": "Formuliert endgruppenrichtiges Trimer und zwei H₂O; erklärt Si-Vierbindigkeit und O-Zweibindigkeit. / Vergleicht PDMS-Si–O mit Methylgruppen ausdrücklich mit PE-C–C und trennt Rückgrat von Seitengruppen. / Erklärt gleitende Ölketten gegenüber kovalenten Netzpunkten und begründet Dichtung/Rückstellung auch beim Wechsel zur unvernetzten Variante.",
+          "understandingFocusEn": "Gives correctly terminated trimer and two H₂O; explains four bonds at Si and two at O. / Explicitly compares PDMS Si–O with methyl groups against PE C–C and distinguishes backbone from side groups. / Explains sliding oil chains versus covalent network points and justifies seal/recovery including the change to an uncrosslinked variant."
+        },
+        {
+          "id": "e560-formation-case-2",
+          "taskDemandDe": "1. Stelle die vollständige endliche Tetramer-Kondensation samt Wasser auf und erkläre den Unterschied zwischen Rückgratverknüpfung und zusätzlichen Netzpunkten. 2. Vergleiche die Molekülbauprinzipien mit PE und ausdrücklich die beobachteten Eigenschaften unter denselben Prüfbedingungen: rückstellendes vernetztes PDMS gegenüber bleibend verformtem PE. Erkläre, was dieser Fallvergleich zeigt und was die Rückgratbezeichnung allein nicht beweist. 3. Erkläre die geänderte Rückstellung anhand der Netzstruktur. Beurteile: „Das Silikon stellt hier zurück, also ist jedes Silikon für jede Beanspruchung besser als PE.“",
+          "taskDemandEn": "1. Write the complete finite tetramer condensation including water and explain backbone linkage versus additional network points. 2. Compare molecular building principles with PE and explicitly compare observed properties under the same testing conditions: recovering crosslinked PDMS versus permanently deformed PE. Explain what this case comparison shows and what the backbone label alone does not establish. 3. Explain changed recovery through network structure. Assess: “This silicone recovers here, so every silicone is better than PE under every type of loading.”",
+          "expectedPerformanceDe": "4 HO–Si(CH₃)₂–OH → HO–Si(CH₃)₂–O–Si(CH₃)₂–O–Si(CH₃)₂–O–Si(CH₃)₂–OH + 3 H₂O. Drei neue Si–O–Si-Brücken entstehen in der offenen Kette; End-OH bleiben. Si–O mit organischen Methylgruppen ist nicht das C–C-Rückgrat von PE. Im gegebenen direkten Eigenschaftsvergleich stellt das vernetzte PDMS nach Dehnung zurück, während die PE-Probe unter denselben Prüfbedingungen bleibende Formänderung zeigt. Die Daten belegen diesen Unterschied der beiden konkreten Proben; das C–C-Rückgrat allein wird nicht als Ursache jeder PE-Verformung oder als Beweis eines allgemeinen Eigenschaftsurteils ausgegeben. Zusätzliche kovalente Verbindungen zwischen Ketten sind ein anderes Strukturmerkmal als bloß mehr Kettenlänge. Sie begrenzen im Fall das gegenseitige Gleiten und erklären die Rückstellung. Für diese Beanspruchung kann die vernetzte Probe geeigneter sein; der unvernetzte Ölzustand und fehlende Wärme-/Langzeitdaten verhindern eine allgemeine Rangfolge sämtlicher Silikone und kohlenstoffbasierter Polymere.",
+          "expectedPerformanceEn": "4 HO–Si(CH₃)₂–OH → HO–Si(CH₃)₂–O–Si(CH₃)₂–O–Si(CH₃)₂–O–Si(CH₃)₂–OH + 3 H₂O. Three new Si–O–Si bridges form in the open chain; terminal OH groups remain. Si–O with organic methyl groups is not the PE C–C backbone. In the supplied direct property comparison, crosslinked PDMS recovers after extension while the PE specimen shows permanent deformation under the same testing conditions. The data establish this difference between the two particular specimens; the C–C backbone alone is not treated as the cause of every PE deformation or as proof of a general property conclusion. Additional covalent links between chains are distinct from merely greater chain length. They restrict relative sliding in this case and explain recovery. For this loading the crosslinked specimen may be more suitable; uncrosslinked oil and missing heat/long-term data prevent a universal ranking of all silicones and carbon-based polymers.",
+          "understandingFocusDe": "Gibt vollständiges Tetramer mit drei H₂O und korrekten Endgruppen/Si–O-Brücken an. / Vergleicht Siloxan-Si–O/Methyl mit PE-C–C und trennt Kettenbildung von zusätzlichen Netzverknüpfungen. Vergleicht außerdem die beobachtete PDMS-Rückstellung ausdrücklich mit bleibender PE-Verformung unter gleichen Prüfbedingungen und begrenzt den Befund auf diese Proben; das Rückgrat allein erklärt nicht jede PE-Eigenschaft. / Erklärt Rückstellung und begrenzt die Werkstoffwahl auf gegebene Struktur, Beanspruchung und tatsächlich vorhandene Daten.",
+          "understandingFocusEn": "Gives complete tetramer with three H₂O and correct end groups/Si–O bridges. / Compares siloxane Si–O/methyl with PE C–C and separates chain formation from additional network links. Also explicitly compares observed PDMS recovery with permanent PE deformation under equal testing conditions and bounds the observation to these specimens; the backbone alone does not explain every PE property. / Explains recovery and limits material choice to given structure, loading and available data."
+        }
+      ]
+    }
+  },
+  {
+    "index": 4,
+    "goalId": "6413429b-53d8-5ad1-9af6-d0e562cbf0f5",
+    "titleDe": "Nanoskalige Silikonoberflächen materialgestützt beurteilen",
+    "titleEn": "Assess nanoscale silicone surfaces using material data",
+    "descriptionDe": "Die lernende Person kann die Bedeutung von Silikonen für nanoskalige Oberflächenanwendungen anhand von Materialdaten erläutern und Benetzungsbehauptungen beurteilen, indem sie Schichtdicke von Partikelgröße unterscheidet sowie Silikonchemie und Oberflächenstruktur berücksichtigt.",
+    "descriptionEn": "The learner can explain the relevance of silicones for nanoscale surface applications using material data and assess wetting claims by distinguishing film thickness from particle size and considering silicone chemistry and surface structure.",
+    "canonicalContext": {
+      "shortKey": "canonical_chemistry_silicone_nanoscale_surface_material_data_application",
+      "phase": null,
+      "core": null,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "SekII",
+        "GK",
+        "LK"
+      ],
+      "competencyRefs": [],
+      "sourceRef": null,
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "BC_AUFBAU"
+        ],
+        "phase": "Q2",
+        "area": "Kunststoffchemie",
+        "topicCode": "CANONICAL.CHEMISTRY.Q2.SILICONE_NANOSCALE_SURFACE_APPLICATION"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "type": "atomic",
+      "nodeKind": null,
+      "semanticAtomic": null,
+      "semanticKind": null,
+      "applicabilitySemantics": {
+        "fromRequires": null,
+        "mappingInheritance": "boundary",
+        "projection": null
+      },
+      "requires": [
+        "a96e9b3d-a02d-54f8-a3d3-318e0ea5180c"
+      ],
+      "contains": [],
+      "examples": []
+    },
+    "context": {
+      "pageNumber": 4,
+      "breadcrumbs": [
+        "Chemie – kanonische M7-Prüfsicht",
+        "Chemie",
+        "Naturstoffe und Synthesechemie",
+        "Q2.2 Grundlagen der Kunststoffchemie",
+        "Silikone herstellen und strukturbezogen vergleichen"
+      ],
+      "requires": [
+        {
+          "goalId": "a96e9b3d-a02d-54f8-a3d3-318e0ea5180c",
+          "title": "Herstellung und Struktur von Silikonen für Polymervergleiche erklären",
+          "anchor": "goal-a96e9b3d-a02d-54f8-a3d3-318e0ea5180c",
+          "pageNumber": 3
+        }
+      ],
+      "reverseRequires": [],
+      "externalPrerequisites": [],
+      "externalReverseRequires": [],
+      "visualization": {
+        "resourceType": "image",
+        "title": "Visualisierung: Nanoskalige Silikonoberflächen materialgestützt beurteilen",
+        "url": "/assets/goal-visualizations/chemie/6413429b-53d8-5ad1-9af6-d0e562cbf0f5/6413429b-53d8-5ad1-9af6-d0e562cbf0f5.png",
+        "altText": "Zwei gleich geneigte, orange beschichtete Unterlagen zeigen bei gleicher Silikonchemie einen stärker ausgebreiteten ruhenden Tropfen auf einer glatten Oberfläche und einen kompakteren beweglichen Tropfen auf einer strukturierten Oberfläche. Ein vergrößerter Schichtquerschnitt markiert 40 nm als vertikale Schichtdicke, ausdrücklich keine Partikelgröße. Die Darstellung belegt weder Schmutzentfernung noch dauerhafte Selbstreinigung.",
+        "originalDigest": "sha256:241fd5bbbf3a80a1dea330e59fe4e3bf313018af91e4322b478cd0c623b31643",
+        "qaStatus": "review_candidate",
+        "approvedForPublication": false
+      }
+    },
+    "profile": {
+      "archetype": "modeling",
+      "expectations": [
+        {
+          "id": "e1",
+          "essentialUnderstandingDe": "Silikone können in nanoskaligen Oberflächenanwendungen relevant sein; Schichtdicke und Partikelgröße sind unterschiedliche Größen.",
+          "essentialUnderstandingEn": "Silicones can be relevant in nanoscale surface applications; film thickness and particle size are different dimensions.",
+          "observablePerformanceDe": "Erläutert eine materialgestützte Nano-Anwendung und trennt Dicke von separat belegter oder unbelegter Partikelgröße.",
+          "observablePerformanceEn": "Explains a material-based nano application and separates thickness from independently evidenced or unsupported particle size."
+        },
+        {
+          "id": "e2",
+          "essentialUnderstandingDe": "Benetzung hängt von Silikonchemie und Oberflächenstruktur ab; eine gleiche Dicke allein erklärt keine gleiche Benetzung.",
+          "essentialUnderstandingEn": "Wetting depends on silicone chemistry and surface structure; equal thickness alone does not account for equal wetting.",
+          "observablePerformanceDe": "Nutzt die Gleichchemie-Strukturvariation und Gleichdicken-Chemiekontrolle; trennt Kontaktwinkel von Abrollwinkel.",
+          "observablePerformanceEn": "Uses same-chemistry structural variation and equal-thickness chemistry control; distinguishes contact angle from roll-off angle."
+        },
+        {
+          "id": "e3",
+          "essentialUnderstandingDe": "Daten zu Tropfenbewegung stützen begrenzte Funktionsaussagen, beweisen aber keine Schmutzentfernung oder dauerhafte Selbstreinigung.",
+          "essentialUnderstandingEn": "Droplet-motion data support bounded functional claims but establish neither dirt removal nor durable self-cleaning.",
+          "observablePerformanceDe": "Beurteilt bei geänderter Struktur eine Anwendungsbehauptung und nennt den fehlenden passenden Funktions-/Belastungsnachweis.",
+          "observablePerformanceEn": "Assesses an application claim after changed structure and identifies missing relevant functional/loading evidence."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "e1",
+          "e2",
+          "e3"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "v1",
+          "textDe": "Schichtdicke gegenüber unabhängiger Partikelmessung",
+          "textEn": "Film thickness versus independent particle measurement"
+        },
+        {
+          "id": "v2",
+          "textDe": "Gleiche Chemie, andere Oberflächenstruktur",
+          "textEn": "Same chemistry, different surface structure"
+        },
+        {
+          "id": "v3",
+          "textDe": "Kontaktwinkel, Abrollen und tatsächlicher Funktionsnachweis",
+          "textEn": "Contact angle, roll-off and actual function evidence"
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "e560-nanosurface-case-1",
+          "taskDemandDe": "1. Erläutere an diesem Beispiel die Bedeutung von Silikonen für eine nanoskalige Oberflächenanwendung: Welche chemischen und strukturellen Hinweise können Wasserabweisung und bewegliche Tropfen erklären? 2. Vergleiche glatt/nanostrukturiert und die hydrophile Kontrolle. Trägt die Schichtdicke allein das Benetzungsurteil? 3. Prüfe „40 nm Dicke beweist 40 nm Silikonpartikel und eine dauerhaft selbstreinigende Oberfläche“. Begründe, welche Aussagen gestützt sind und welche weitere Beobachtung nötig wäre.",
+          "taskDemandEn": "1. Explain silicone relevance for a nanoscale surface application in this example: which chemistry/structure evidence can account for water repellency and mobile drops? 2. Compare smooth/nanostructured surfaces and the hydrophilic control. Does film thickness alone establish wetting behaviour? 3. Evaluate “40 nm thickness proves 40 nm silicone particles and a permanently self-cleaning surface.” Explain supported claims and a needed further observation.",
+          "expectedPerformanceDe": "Eine nanoskalige Siloxanschicht kann als funktionale Oberfläche genutzt werden. Organische Methylgruppen sind mit Wasserabweisung vereinbar; bei gleicher Silikonchemie zeigen geänderte Oberflächenstruktur und 105°/35° gegenüber 155°/5°, dass Chemie allein nicht das gesamte Verhalten festlegt. Der kleinere Abrollwinkel unterstützt beweglichere Tropfen unter den gegebenen Bedingungen. Die hydrophile 40-nm-Kontrolle zeigt, dass gleiche Dicke nicht gleiche Benetzung bedeutet. 40 nm ist eine Schichtdimension, kein gemessener Partikeldurchmesser. Bewegliche Tropfen machen die Anwendung für wasserabweisende/gegebenenfalls reinigende Oberflächen interessant, beweisen aber weder tatsächlichen Schmutzabtrag noch Dauerhaftigkeit. Dafür sind passende Beobachtungen zum Schmutzabtrag und zum Verhalten nach Abrieb nötig; Nano bedeutet nicht automatisch mehr Funktion oder Sicherheit.",
+          "expectedPerformanceEn": "A nanoscale siloxane film can provide a functional surface. Organic methyl groups are compatible with water repellency; at the same silicone chemistry, changed structure and 105°/35° versus 155°/5° show that chemistry alone does not determine all behaviour. Smaller roll-off angle supports more mobile drops under the stated conditions. The hydrophilic 40-nm control shows that equal thickness does not mean equal wetting. The 40 nm value is a film dimension, not a measured particle diameter. Mobile drops make such surfaces relevant for water-repellent/potentially cleaning applications but establish neither actual dirt removal nor durability. Appropriate dirt-removal observations and behaviour after abrasion are needed; nano does not automatically mean greater function or safety.",
+          "understandingFocusDe": "Erklärt Nano-Oberflächenanwendung über Silikonchemie und Struktur; trennt Schichtdicke von fehlendem Partikeldurchmesser. / Interpretiert die kontrollierte Strukturvariation und die hydrophile Gleichdickenkontrolle; Chemie und Struktur tragen getrennte Bezüge. / Leitet beweglichere Tropfen aus dem kleineren Abrollwinkel ab und begrenzt Selbstreinigung/Dauerhaftigkeit wegen fehlendem Schmutz-/Abriebnachweis.",
+          "understandingFocusEn": "Explains nanoscale surface application using silicone chemistry and structure; separates film thickness from missing particle diameter. / Interprets controlled structural variation and hydrophilic equal-thickness control; chemistry and structure contribute distinct links. / Uses smaller roll-off angle to infer more mobile drops and limits cleaning/durability claims because dirt/abrasion evidence is missing."
+        },
+        {
+          "id": "e560-nanosurface-case-2",
+          "taskDemandDe": "1. Beschreibe die mögliche Bedeutung der Silikonoberfläche für die Anwendung und unterscheide die beiden Größenangaben 80 nm und 45 nm. 2. Erläutere, was aus A/B bei gleicher Chemie über die Wirkung der Struktur folgt. Beurteile „B hat immer noch einen großen Kontaktwinkel, also rollen Tropfen so leicht ab wie bei A“. 3. Prüfe, ob A oder B damit dauerhaft selbstreinigend ist, und gib ein begrenztes Anwendungsurteil mit einer konkret nötigen weiteren Beobachtung.",
+          "taskDemandEn": "1. Describe possible silicone-surface relevance for the application and distinguish the 80 nm and 45 nm dimensions. 2. Explain what A/B at the same chemistry show about structural effects. Evaluate “B still has a large contact angle, so drops roll off as easily as in A.” 3. Assess whether A or B is thereby permanently self-cleaning and give a bounded application conclusion with a specific further observation needed.",
+          "expectedPerformanceDe": "Die 80 nm betreffen die Schicht; 45 nm ist eine separat ausgewiesene Partikelgröße ausschließlich für C. Ohne die Zusatzangabe dürfte man keine Partikelgröße aus 80 nm ableiten. Silikonchemie und passende Oberflächenstruktur können zur nanoskaligen Funktionalisierung beitragen. A/B haben gleiche Chemie, aber andere Struktur und stark unterschiedliche Abrollwinkel. Ein hoher Kontaktwinkel in B bedeutet nach den Angaben nicht gleich leichte Tropfenbewegung: 40° verlangt deutlich mehr Neigung als 5°. Die hydrophile Gleichdickenkontrolle verhindert eine Erklärung allein aus der Dicke. A erscheint für bewegliche Tropfen unter den gegebenen Bedingungen günstiger; echter Schmutztransport, Abrieb- oder Langzeitbeständigkeit bleiben unbelegt. Eine Beobachtung des Schmutzabtrags vor/nach Belastung würde die funktionale Anwendung prüfen. Das Urteil ist daten- und zustandsgebunden, keine Behauptung über alle Silikonprodukte.",
+          "expectedPerformanceEn": "The 80 nm refers to the film; 45 nm is separately stated particle size only for C. Without that extra information, particle size could not be inferred from 80 nm. Silicone chemistry and suitable surface structure can contribute to nanoscale functionalization. A/B have the same chemistry but different structure and very different roll-off angles. High contact angle in B does not mean equally easy droplet movement: 40° requires much greater tilt than 5°. The hydrophilic equal-thickness control prevents a thickness-only explanation. A appears better for mobile drops under the supplied conditions; actual dirt transport, abrasion resistance or long-term stability remain unsupported. Observing dirt removal before/after loading would test the functional application. The conclusion is data/state-bound, not a statement about every silicone product.",
+          "understandingFocusDe": "Verbindet Silikon-Oberflächenfunktion mit Materialdaten und unterscheidet 80-nm-Schicht von separat gemessenen 45-nm-Partikeln in C. / Erklärt bei gleicher Chemie die Strukturänderung und trennt hohen Kontaktwinkel von leichtem Abrollen anhand 150°/40° gegenüber 155°/5°. / Begründet ein zustandsgebundenes Anwendungsurteil und benennt fehlenden Schmutzabtrag/Belastungsnachweis statt Nano-Selbstreinigung vorauszusetzen.",
+          "understandingFocusEn": "Connects silicone surface function to material data and separates 80-nm film from independently measured 45-nm particles in C. / Explains structural change at constant chemistry and distinguishes high contact angle from easy rolling using 150°/40° versus 155°/5°. / Justifies a state-bound application conclusion and identifies missing dirt-removal/loading evidence rather than assuming nano self-cleaning."
+        }
+      ]
+    }
+  },
+  {
+    "index": 5,
+    "goalId": "6eba90b5-d4a6-5625-be61-e7f30f7eb964",
+    "titleDe": "Kunststoff-Verarbeitungsverfahren beschreiben",
+    "titleEn": "Describe plastic processing methods",
+    "descriptionDe": "Die lernende Person kann Verarbeitungsverfahren für Kunststoffe wie Spritzgießen, Tiefziehen, Kalandrieren und Extrudieren beschreiben und mit Materialeigenschaften verknüpfen.",
+    "descriptionEn": "The learner can describe plastic processing methods such as injection moulding, thermoforming, calendering, and extrusion and link them to material properties.",
+    "canonicalContext": {
+      "shortKey": "canonical_chemistry_upper_plastic_processing_methods",
+      "phase": "Q2",
+      "core": false,
+      "weight": 1,
+      "tags": [
+        "LK",
+        "SekII",
+        "canonical"
+      ],
+      "competencyRefs": [],
+      "sourceRef": null,
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK4_KOMMUNIZIEREN",
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU",
+          "BC_REAKTION"
+        ],
+        "phase": "Q2",
+        "area": "Kunststoffchemie",
+        "topicCode": "CANONICAL.CHEMISTRY.Q2.PLASTIC_PROCESSING_METHODS"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE"
+        ]
+      },
+      "type": "atomic",
+      "nodeKind": null,
+      "semanticAtomic": null,
+      "semanticKind": null,
+      "applicabilitySemantics": {
+        "fromRequires": null,
+        "mappingInheritance": "boundary",
+        "projection": null
+      },
+      "requires": [
+        "2652caef-b557-58b9-9b28-70db62625ce5",
+        "3aef6d91-04ff-5ec7-b92e-ccf330d9816a"
+      ],
+      "contains": [],
+      "examples": []
+    },
+    "context": {
+      "pageNumber": 5,
+      "breadcrumbs": [
+        "Chemie – kanonische M7-Prüfsicht",
+        "Chemie",
+        "Naturstoffe und Synthesechemie",
+        "Q2.2 Grundlagen der Kunststoffchemie"
+      ],
+      "requires": [],
+      "reverseRequires": [],
+      "externalPrerequisites": [
+        {
+          "goalId": "3aef6d91-04ff-5ec7-b92e-ccf330d9816a",
+          "title": "Thermisches Verhalten von Kunststoffen erklären",
+          "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-3aef6d91-04ff-5ec7-b92e-ccf330d9816a"
+        },
+        {
+          "goalId": "2652caef-b557-58b9-9b28-70db62625ce5",
+          "title": "Eigenschaftsprofile von Polymeren",
+          "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-2652caef-b557-58b9-9b28-70db62625ce5"
+        }
+      ],
+      "externalReverseRequires": [],
+      "visualization": {
+        "resourceType": "image",
+        "title": "Visualisierung: Kunststoff-Verarbeitungsverfahren beschreiben",
+        "url": "/assets/goal-visualizations/chemie/6eba90b5-d4a6-5625-be61-e7f30f7eb964/6eba90b5-d4a6-5625-be61-e7f30f7eb964.jpg",
+        "altText": "Didaktische Visualisierung zum Lernziel \"Kunststoff-Verarbeitungsverfahren beschreiben\". Die lernende Person kann Verarbeitungsverfahren für Kunststoffe wie Spritzgießen, Tiefziehen, Kalandrieren und Extrudieren beschreiben und mit Materialeigenschaften verknüpfen.",
+        "originalDigest": "sha256:8ddb5d3212c131ed2f8b39f9c2ba85bbb7c3c034a8ef2e829a9028e904948391",
+        "qaStatus": "review_candidate",
+        "approvedForPublication": false
+      }
+    },
+    "profile": {
+      "archetype": "procedure",
+      "expectations": [
+        {
+          "id": "e1",
+          "essentialUnderstandingDe": "Spritzgießen, Tiefziehen, Kalandrieren und Extrudieren unterscheiden Werkzeug, Ausgangsform und kontinuierliche/zyklische Formgebung.",
+          "essentialUnderstandingEn": "Injection moulding, thermoforming, calendering and extrusion differ in tooling, starting form and continuous/cyclic shaping.",
+          "observablePerformanceDe": "Beschreibt alle vier Wege und ordnet geeignete Produktgeometrien begründet zu.",
+          "observablePerformanceEn": "Describes all four routes and assigns suitable product geometries with reasons."
+        },
+        {
+          "id": "e2",
+          "essentialUnderstandingDe": "Fließfähigkeit, Dehnbarkeit und thermisches Fenster müssen zur Methode passen.",
+          "essentialUnderstandingEn": "Flowability, extensibility and thermal window must suit the method.",
+          "observablePerformanceDe": "Begründet Verfahrenswahl anhand gegebener Materialdaten und trennt Umformen von Zersetzung.",
+          "observablePerformanceEn": "Justifies process choice using supplied material data and distinguishes shaping from decomposition."
+        },
+        {
+          "id": "e3",
+          "essentialUnderstandingDe": "Geänderte Vernetzung oder Produktgeometrie kann eine Verfahrenswahl unbrauchbar machen.",
+          "essentialUnderstandingEn": "Changed crosslinking or product geometry can invalidate a process choice.",
+          "observablePerformanceDe": "Überträgt die Auswahl auf neues Material oder neue Form und benennt notwendige Prozessprüfung.",
+          "observablePerformanceEn": "Transfers selection to a new material or shape and identifies a required process test."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "e1",
+          "e2",
+          "e3"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "v1",
+          "textDe": "Geometrie und Kontinuität",
+          "textEn": "Geometry and continuity"
+        },
+        {
+          "id": "v2",
+          "textDe": "Schmelze oder warme Folie",
+          "textEn": "Melt or warm sheet"
+        },
+        {
+          "id": "v3",
+          "textDe": "Vernetzung und Prozessfenster",
+          "textEn": "Crosslinking and process window"
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "6eba90b5-case-1",
+          "taskDemandDe": "Ordne jedem Produkt ein Verfahren zu und beschreibe dessen Hauptschritte. Begründe Materialzustand/Temperatur und eine Kontrolle gegen Qualitätsfehler.",
+          "taskDemandEn": "Assign a process to each product and describe its main steps. Justify material state/temperature and one control against quality defects.",
+          "expectedPerformanceDe": "Verschluss: Schmelze in geschlossene Form spritzgießen, abkühlen/entformen. Becher: Folie warm tiefziehen mit Druck/Vakuum, abkühlen. Bahn: plastifiziertes Material zwischen Walzen kalandrieren. Schlauch: Schmelze kontinuierlich durch Ringdüse extrudieren, kühlen. Schmelzwege 180–210°C, Tiefziehen 100–130°C; 250°C meiden. Dicke, Abkühlung, Fließ-/Dehnverhalten prüfen, nicht Temperaturen blind übernehmen.",
+          "expectedPerformanceEn": "Cap: inject melt into closed mould, cool/eject. Cup: pressure/vacuum thermoform warm sheet, then cool. Sheet: calender plasticised material through rollers. Tube: continuously extrude melt through an annular die, then cool. Melt routes 180–210°C; thermoforming 100–130°C; avoid 250°C. Check thickness, cooling and flow/stretch behaviour rather than blindly reusing temperatures.",
+          "understandingFocusDe": "Fallbezogene Aspekte: Verschluss Spritzguss, Folienbecher Tiefziehen, Bahn Kalandrieren, Schlauch Extrusion; Hauptschritte passend. / Schmelzwege 180–210°C, Folie 100–130°C, 250°C-Zersetzung vermeiden; Zustände unterscheiden. / Produktdicke/Abkühlung/Fließ- oder Dehnverhalten als konkrete Qualitätskontrolle, keine blind übernommene Temperatur. Die Verknüpfung zu Erwartungs-IDs behauptet keine vollständige Erfüllung jeder Gesamtprofilerwartung in diesem Einzelfall.",
+          "understandingFocusEn": "Case-specific aspects: Cap injection moulding, film cup thermoforming, sheet calendering, tube extrusion; appropriate main steps. / Melt routes 180–210°C, film 100–130°C, avoid 250°C decomposition; distinguish states. / Specific quality control through thickness/cooling/flow or stretching, not blindly adopted temperature. Links to expectation IDs do not assert complete fulfilment of every whole-profile expectation in this one case."
+        },
+        {
+          "id": "6eba90b5-case-2",
+          "taskDemandDe": "Beurteile Umformen des fertigen Netzes mit allen vier Verfahren. Schlage für den Vorläufer eine plausibel passende Formgebung mit anschließender Vernetzung vor und unterscheide dies von Tiefziehen.",
+          "taskDemandEn": "Assess shaping the finished network using all four processes. Propose a plausible route for the precursor with subsequent crosslinking and distinguish it from thermoforming.",
+          "expectedPerformanceDe": "Fertiges Netz kann nicht wie Thermoplast geschmolzen/injiziert/extrudiert oder warmfolienmäßig umgeformt werden; höheres Heizen führt zur Zersetzung. Vorläufer kontinuierlich durch Profildüse extrudieren, danach kontrolliert vernetzen, falls Reaktionszeit/Formstabilität passen. Tiefziehen formt eine vorhandene warme Folie in diskrete Form; Kalandrieren erzeugt Bahnen, Spritzgießen diskrete Formteile. Prozessfenster und Vernetzungskinetik noch prüfen.",
+          "expectedPerformanceEn": "The finished network cannot be remelted/injected/extruded or thermoformed like a thermoplastic; more heat leads to decomposition. Continuously extrude precursor through a profile die, then crosslink under controlled conditions if reaction time and shape stability permit. Thermoforming reshapes existing warm sheet into a discrete form; calendering makes sheets and injection moulding discrete components. Verify processing window and crosslinking kinetics.",
+          "understandingFocusDe": "Fallbezogene Aspekte: Fertiges dichtes Netz fließt nicht; 240°C-Zersetzung liefert kein nutzbares Schmelzfenster. / Alle vier Wege im gegebenen Netzfall abgrenzen; Tiefziehen vorhandene Folie, Kalandrieren Bahn, Spritzguss für diskrete Formteile. / 190°C-Vorläufer durch Profildüse, danach Vernetzung bedingt auf Kinetik/Formhalt; keine Folien-Tiefziehroute. Die Verknüpfung zu Erwartungs-IDs behauptet keine vollständige Erfüllung jeder Gesamtprofilerwartung in diesem Einzelfall.",
+          "understandingFocusEn": "Case-specific aspects: Finished dense network does not flow; 240°C decomposition creates no usable melt window. / Differentiate all four routes for supplied network; thermoforming existing film, calendering sheet, injection discrete. / 190°C precursor through profile die, then crosslink conditional on kinetics/shape retention; no film-thermoforming route. Links to expectation IDs do not assert complete fulfilment of every whole-profile expectation in this one case."
+        }
+      ]
+    }
+  }
+]

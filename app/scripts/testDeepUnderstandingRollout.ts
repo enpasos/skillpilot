@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import './testMemoryVisibilityStatusParity'
 import './testDeepUnderstandingSupersessionChains'
 import './testDeepUnderstandingSemanticRetirements'
 import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'

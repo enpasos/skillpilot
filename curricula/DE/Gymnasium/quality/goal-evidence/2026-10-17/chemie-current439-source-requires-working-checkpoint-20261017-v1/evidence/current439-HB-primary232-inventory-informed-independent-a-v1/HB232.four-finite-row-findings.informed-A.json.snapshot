@@ -1,0 +1,101 @@
+{
+  "scientificFIRST": {
+    "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-HB-primary232-inventory-informed-independent-a-v1/FIRST.HB232-informed-A.scientific-findings.sealed.json",
+    "sha256": "f6c4ee34c53dfa167e6107992c35ec6c2468cbd2332052cc6961e6f8e7c90035",
+    "bytes": 17678
+  },
+  "decision": "revise",
+  "findings": [
+    {
+      "findingId": "HB232-A-01",
+      "decision": "revise",
+      "kind": "compressed_operator_object_needs_explicit_text_alignment",
+      "sourceGoalIndex": 0,
+      "candidateId": "hb-chemistry-sekii-gyo2022-clause-p07-std-s-standard-s-gk_lk-01",
+      "primaryClauseId": "HB2022-p07-STD-S-standard-S-GK_LK-01",
+      "primaryPhysicalPage": 7,
+      "primaryPrintedPage": "7",
+      "originalFragment": "beschreiben und begründen Ordnungsprinzipien für Stoffe und wenden diese an",
+      "candidateFragment": "Stoffe nach begründeten Ordnungsprinzipien klassifizieren",
+      "semanticFinding": "Applying already justified classification principles is narrower than independently describing AND justifying the principles AND applying them. The provenance correctly retains beschreiben, begruenden, anwenden, so this is not a lost-provenance or missing-inventory-clause finding. The candidate display/source paraphrase should explicitly state the same three-part demand.",
+      "jsonFieldsToAlign": [
+        "/sourceGoals/0/title",
+        "/sourceGoals/0/description",
+        "/sourceGoals/0/sourceText",
+        "/sourceGoals/0/parentBulletText"
+      ],
+      "companionPassageId": "hb-chemistry-sekii:2022-primary-p07-STD-S",
+      "companionFieldToRefresh": "text for this clause",
+      "alreadyCorrect": "sourceGoalProvenance.requiredOperators, page locator, common GK/LK scope and primaryClauseId",
+      "action": "Restore explicit description and justification of the substance-ordering principles alongside their application; preserve current ID, provenance and source scope."
+    },
+    {
+      "findingId": "HB232-A-02",
+      "decision": "revise",
+      "kind": "semantic_scope_and_example_qualifier",
+      "sourceGoalIndex": 28,
+      "candidateId": "hb-chemistry-sekii-gyo2022-clause-p09-std-e-standard-e1-e12-gk_lk-12",
+      "primaryClauseId": "HB2022-p09-STD-E-standard-E1-E12-GK_LK-12",
+      "primaryPhysicalPage": 9,
+      "primaryPrintedPage": "9",
+      "originalFragment": "reflektieren Möglichkeiten und Grenzen des konkreten Erkenntnisgewinnungsprozesses sowie der gewonnenen Erkenntnisse (z. B. Reproduzierbarkeit, Falsifizierbarkeit, Intersubjektivität, logische Konsistenz, Vorläufigkeit)",
+      "candidateFragment": "Erkenntnisweg und Erkenntnisse hinsichtlich Reproduzierbarkeit, Falsifizierbarkeit, Intersubjektivität, Konsistenz und Vorläufigkeit reflektieren",
+      "semanticFinding": "The original central object is the possibilities and limits of the concrete inquiry and its conclusions; the five parenthesised criteria are examples. The paraphrase removes that explicit possibilities/limits object and converts the z.B. examples into an unconditional conjunction. A field listing only reflektieren does not restore either qualification.",
+      "jsonFieldsToAlign": [
+        "/sourceGoals/28/title",
+        "/sourceGoals/28/description",
+        "/sourceGoals/28/sourceText",
+        "/sourceGoals/28/parentBulletText"
+      ],
+      "companionPassageId": "hb-chemistry-sekii:2022-primary-p09-STD-E",
+      "companionFieldToRefresh": "text for this clause",
+      "alreadyCorrect": "The reflection operator, source page, clause locator and common course scope",
+      "action": "Restore possibilities/limits of the concrete inquiry and knowledge, and retain the illustrative status of the listed criteria instead of declaring all five a new universal per-task quota."
+    },
+    {
+      "findingId": "HB232-A-03",
+      "decision": "revise",
+      "kind": "stale_companion_text_only_not_current_description_science",
+      "sourceGoalIndex": 209,
+      "candidateId": "hb-chemistry-sekii-gyo2022-clause-p34-4.1-content-lk-02",
+      "primaryClauseId": "HB2022-p34-4.1-content-LK-02",
+      "primaryPhysicalPage": 34,
+      "primaryPrintedPage": "34",
+      "originalFragment": "beschreiben die Veränderung der Eigenschaften von Kunststoffen durch den Einsatz von Nanotechnologie (Nanostrukturierung, Nanopartikelverstärkte Kunststoffe)",
+      "candidateFragment": "Durch Nanostrukturierung und Nanopartikel verstärkte Kunststoffe verursachte Eigenschaftsänderungen beschreiben",
+      "semanticFinding": "The CURRENT description already correctly relates property changes of plastics to nanostructuring and nanoparticle reinforcement. The title/sourceText/parentBulletText and the assembled passage retain a grammatically malformed earlier companion string which can attach the causation to plastics rather than the nanotechnology intervention. This is companion-copy consistency, not a new scientific defect in the corrected description.",
+      "jsonFieldsToAlign": [
+        "/sourceGoals/209/title",
+        "/sourceGoals/209/sourceText",
+        "/sourceGoals/209/parentBulletText"
+      ],
+      "companionPassageId": "hb-chemistry-sekii:2022-primary-p34-4.1",
+      "companionFieldToRefresh": "text for this clause",
+      "alreadyCorrect": "/sourceGoals/209/description = Die lernende Person kann die durch Nanostrukturierung und Nanopartikelverstärkung verursachten Eigenschaftsänderungen von Kunststoffen beschreiben.; LK course and original clause locator",
+      "action": "Align stale companion paraphrases with the already correct causal relation in the current description; do not widen the competence or rewrite its correct course/description."
+    },
+    {
+      "findingId": "HB232-A-04",
+      "decision": "revise",
+      "kind": "semantic_evaluation_object",
+      "sourceGoalIndex": 231,
+      "candidateId": "hb-chemistry-sekii-gyo2022-clause-p36-4.3-process-gk_lk-04",
+      "primaryClauseId": "HB2022-p36-4.3-process-GK_LK-04",
+      "primaryPhysicalPage": 36,
+      "primaryPrintedPage": "36",
+      "originalFragment": "bewerten die Auswirkungen der Entwicklung neuer Medikamente anhand ausgewählter Beispiele in historischen und aktuellen gesellschaftlichen Zusammenhängen",
+      "candidateFragment": "Die Entwicklung neuer Medikamente anhand historischer und aktueller gesellschaftlicher Beispiele bewerten",
+      "semanticFinding": "The original requires evaluating the CONSEQUENCES of developing new medicines in historical and current social contexts. Evaluating drug development itself can instead address the research process or product development; the explicit consequence object is missing from title, description and source paraphrase. The operator and society/time context alone do not identify that object.",
+      "jsonFieldsToAlign": [
+        "/sourceGoals/231/title",
+        "/sourceGoals/231/description",
+        "/sourceGoals/231/sourceText",
+        "/sourceGoals/231/parentBulletText"
+      ],
+      "companionPassageId": "hb-chemistry-sekii:2022-primary-p36-4.3",
+      "companionFieldToRefresh": "text for this clause",
+      "alreadyCorrect": "The bewerten operator, LK-only effective topic4.3 applicability, within-topic common original qualifier and primary clause locator",
+      "action": "Explicitly preserve the impacts/consequences of development as the evaluation object with selected examples in historical and current social contexts; retain the current row identity and LK topic rule."
+    }
+  ]
+}

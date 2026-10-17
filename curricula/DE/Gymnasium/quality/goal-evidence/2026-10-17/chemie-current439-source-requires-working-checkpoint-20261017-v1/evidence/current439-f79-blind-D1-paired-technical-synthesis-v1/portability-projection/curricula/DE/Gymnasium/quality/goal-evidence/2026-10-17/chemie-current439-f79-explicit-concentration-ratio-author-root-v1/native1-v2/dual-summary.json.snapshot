@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:df94f7471c54bc71bda30ff2bf8b3439878e6e573fcde5ab923ba523f1d02e68",
+  "reviewInputFingerprint": "sha256:bca6a52f5665687c0b4970c70b0df2033d1a64691724ea8ec528613dd1caf851",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-current439-f79-explicit-concentration-ratio-native1-20261017-v2-a",
+      "roundId": "chemie-current439-f79-explicit-concentration-ratio-native1-20261017-v2-first-pass-a",
+      "independenceGroupId": "chemie-current439-f79-explicit-concentration-ratio-native1-20261017-v2-independent-a",
+      "runIds": [
+        "chemie-current439-f79-ratio-fresh-blind-independent-a-20261017-v2"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 / Codex family disclosed; exact backend model ID not exposed::not exposed to the review agent"
+      ]
+    },
+    "second": {
+      "campaignId": "chemie-current439-f79-explicit-concentration-ratio-native1-20261017-v2-b",
+      "roundId": "chemie-current439-f79-explicit-concentration-ratio-native1-20261017-v2-first-pass-b",
+      "independenceGroupId": "chemie-current439-f79-explicit-concentration-ratio-native1-20261017-v2-independent-b",
+      "runIds": [
+        "chemie-f79-fresh-blind-d1-b-20261017-8286cd4beeaa"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex runtime, GPT-6 family; exact runtime model identifier unavailable::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "f79f15c0-e848-5e17-9eb5-26753d35c93b",
+      "firstRecordId": "chemie-current439-f79-ratio-fresh-blind-independent-a-20261017-v2.f79",
+      "secondRecordId": "chemie-f79-fresh-blind-d1-b-20261017-8286cd4beeaa.d1-record-001",
+      "firstRunId": "chemie-current439-f79-ratio-fresh-blind-independent-a-20261017-v2",
+      "secondRunId": "chemie-f79-fresh-blind-d1-b-20261017-8286cd4beeaa",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

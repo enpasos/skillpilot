@@ -1,0 +1,98 @@
+[
+  {
+    "pointer": "/material",
+    "content": {
+      "de": "Nutze das vollständig gebundene Dossier q3-01-d und die Originalseiten. Es enthält zwei reale veröffentlichte Studien mit identifizierbaren chemischen Systemen, Methoden, Beobachtungen und Kontrollen. Die vorhandenen sechs Modell-/Fachfälle und q3-01-c bleiben unverändert; q3-01-c ist weiterhin synthetisch. Keine hier angegebenen Messungen wurden durch SkillPilot oder Lernende ausgeführt. Die Dossierfelder notDocumented benennen fehlende Originalbelege.",
+      "en": "Use the complete bound dossier q3-01-d and original pages. It contains two actual published studies with identified chemical systems, methods, observations and controls. The six retained model/subject cases and q3-01-c remain unchanged; q3-01-c remains synthetic. None of these measurements was performed by SkillPilot or a learner. The dossier notDocumented fields name missing original evidence."
+    }
+  },
+  {
+    "pointer": "/task",
+    "content": {
+      "de": "Ordne bei der Esterbildung Edukte und Produkte zu. Prüfe für jede Studie den gemeinsamen Probenbezug, den tatsächlich gemessenen Befund und die vorhandenen Kontrollbelege. Entscheide, ob der Artikel einen vollständig prüfbaren experimentellen Nachweis aller Stoffarten in einer chemischen Gleichgewichtsprobe liefert. Erkläre den Unterschied zwischen einem gemessenen Signal, modellgestützter Auswertung, bekannter Kalibriermischung und dem realen Reaktionszustand. Welche Aussage über Dynamik folgt aus einer konstanten Zusammensetzung, wenn Stoff ein- und ausströmt? Benenne die konkret fehlenden Belege und trenne Berichtsauswertung von eigener Durchführung.",
+      "en": "Assign reactants and products in ester formation. For each study evaluate the common sample, the actually measured observation and documented controls. Decide whether the article supplies a fully auditable experimental identification of all species in a chemical-equilibrium sample. Explain the distinction between a measured signal, model-assisted interpretation, known calibration mixture and actual reaction state. What can constant composition establish about dynamics when matter enters and leaves? Name the specific missing evidence and distinguish report interpretation from own execution."
+    }
+  },
+  {
+    "pointer": "/modelResponse",
+    "content": {
+      "de": "Säure und Alkohol sind Edukte, Ester und Wasser Produkte. Die gemeinsame GC-Aliquot-Analyse ist identifiziert; veröffentlichte Konversionskurven sind echte Messberichte, aber individuelle Peakzuordnung, Blanks und Probenkonservierung fehlen. Aus Stoffbilanz und unvollständigem Umsatz kann man unter den Autorenannahmen Koexistenz begründen; dies ist kein vollständig auditierbarer vierfacher Roh-Nachweis. Die inline IR-Kalibrierung liefert echte Methoden- und Matrixkontrollen, ersetzt jedoch keinen benannten vierkomponentigen Reaktionsmesspunkt. Fig.4 zeigt Kalibrierung; Fig.5 die Methanolreaktion. Die spätere NMR-Probe hat eine andere Zeit und darf nicht als identische Zusammensetzung ausgegeben werden. Fremde Kontrollen können nicht zwischen Studien übertragen werden. Konstanz im offenen Reaktor kann durch Stoffaustausch entstehen; sie beweist keine gleichen Reaktionsraten. Die bereitgestellten Artikel erlauben Quellen- und Datenkritik; fehlende konkrete Befunde und ein beanspruchter eigener Versuch bleiben offen.",
+      "en": "Acid and alcohol are reactants; ester and water are products. Common GC aliquot analysis is identified; published conversion curves are actual measurement reports, but individual peak assignments, blanks and sample preservation are absent. Coexistence can be reasoned from material balance and incomplete conversion under the authors’ assumptions; it is not a fully auditable four-species raw identification. Inline IR calibration provides actual method and matrix controls but does not replace a named four-component reaction measurement point. Fig.4 is calibration; Fig.5 is the methanol reaction. The later NMR sample has a different time and cannot be presented as identical composition. Controls cannot be transferred between studies. Constancy in an open reactor may be maintained by material exchange and does not establish equal reaction rates. These articles support source/data critique; missing specific observations and any claimed own experiment remain open."
+    }
+  },
+  {
+    "pointer": "/scoring",
+    "content": {
+      "maximumPoints": 12,
+      "criteria": [
+        {
+          "id": "species-sample",
+          "points": 2,
+          "criterion": {
+            "de": "Edukte/Produkte korrekt und gemeinsamen Probenbezug jeder Studie korrekt erklären.",
+            "en": "Correctly assign reactants/products and explain each study’s common-sample link."
+          }
+        },
+        {
+          "id": "observations-controls",
+          "points": 2,
+          "criterion": {
+            "de": "Tatsächlich veröffentlichte Messungen und dokumentierte Kontrollen von fehlenden Roh-/Blank-/Konservierungsbelegen trennen.",
+            "en": "Distinguish actually published measurements and controls from missing raw/blank/preservation evidence."
+          }
+        },
+        {
+          "id": "calibration-execution",
+          "points": 2,
+          "criterion": {
+            "de": "Kalibrierung und Methanolreaktion nicht als unbekannte Ethanol-Gleichgewichtsprobe ausgeben; Methodenbelege nicht zwischen Studien übertragen.",
+            "en": "Do not present calibration or the methanol reaction as an unknown ethanol equilibrium sample; do not transfer method evidence between studies."
+          }
+        },
+        {
+          "id": "equilibrium-boundary",
+          "points": 2,
+          "criterion": {
+            "de": "Offene Stationarität von chemischem Gleichgewicht unterscheiden; keine gemessenen gleichen Hin-/Rückraten behaupten.",
+            "en": "Distinguish open stationarity from chemical equilibrium; claim no measured equal forward/reverse rates."
+          }
+        },
+        {
+          "id": "actual-performance",
+          "points": 2,
+          "criterion": {
+            "de": "Nur die tatsächlich vorgelegte Quellen-/Datenauswertung bewerten; keine eigene Durchführung, Lernendenleistung oder HumanTrial erfinden.",
+            "en": "Assess only submitted source/data interpretation; invent no own execution, actual learner performance or HumanTrial."
+          }
+        },
+        {
+          "id": "fresh-transfer",
+          "points": 2,
+          "criterion": {
+            "de": "Frischen Matrix-/Proben-Gegenfall begründet ablehnen und die passende Reparatur nennen.",
+            "en": "Reject the fresh matrix/sample counterexample with reasons and specify the needed repair."
+          }
+        }
+      ],
+      "rule": {
+        "de": "12/12 bescheinigt nur die tatsächlich gezeigte kritische Auswertung. Kein Durchführungsnachweis, kein Quellenoperatorabschluss; fehlende Bindungen werden nicht als erledigt gezählt.",
+        "en": "12/12 certifies only the critical interpretation actually shown. No execution or source-operator completion; missing bindings are not counted as completed."
+      }
+    }
+  },
+  {
+    "pointer": "/freshTransfer",
+    "content": {
+      "task": {
+        "de": "Ein neuer Bericht kombiniert einen Produktpeak in einer bekannten Kalibriermischung mit einem Eduktpeak aus einer zwei Stunden später gemessenen anderen Reaktionsprobe. Die Probe wurde nach Entnahme weiter katalysiert. Darf daraus gleichzeitige Präsenz in der ursprünglichen Gleichgewichtsprobe folgen? Welche konkrete Messung/Kontrolle fehlt?",
+        "en": "A new report combines a product peak from a known calibration mixture with a reactant peak from another reaction sample measured two hours later. Catalysis continued after sampling. Does this establish coexistence in the original equilibrium sample? Which specific measurement/control is missing?"
+      },
+      "modelResponse": {
+        "de": "Nein: bekannte Kalibrierung und spätere veränderte Probe liefern keinen gemeinsamen Originalzustand. Nötig sind artspezifische Signale aus derselben zeitlich gebundenen Probe oder validiert unverändernden Aliquoten, passende Matrix-/Blank-/Referenzkontrollen und dokumentierte Probenkonservierung. Ein offener stationärer Betrieb braucht zusätzlich eine begründete Gleichgewichtsprüfung.",
+        "en": "No: known calibration and a later altered sample do not identify one original state. Species-specific signals from one time-linked sample or validated composition-preserving aliquots are required, with suitable matrix/blank/reference controls and documented preservation. An open stationary process also needs a justified equilibrium test."
+      },
+      "independentAdministration": true,
+      "releaseModelOnlyAfterSubmission": true
+    }
+  }
+]

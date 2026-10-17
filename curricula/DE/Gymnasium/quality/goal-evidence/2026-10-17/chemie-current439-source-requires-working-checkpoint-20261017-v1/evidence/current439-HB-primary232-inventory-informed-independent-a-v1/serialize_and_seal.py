@@ -1,0 +1,35 @@
+from pathlib import Path
+import json,hashlib,datetime,collections
+out=Path(__file__).parent;base=Path('/mnt/e/skillpilot-chemie-L7-20261017/current439-HB-primary232-neutral-scientific-review-preparation-root-v1');sp=base/'SELECTOR.clean-HB-primary232-whole-science-for-independent-source-review.sealed.json';s=json.loads(sp.read_text());d=json.loads(Path(s['scientificView']['path']).read_text());fp=out/'FIRST.HB232-informed-A.scientific-findings.sealed.json';assert hashlib.sha256(fp.read_bytes()).hexdigest()=='f6c4ee34c53dfa167e6107992c35ec6c2468cbd2332052cc6961e6f8e7c90035';raw=json.loads(fp.read_text())
+pin=lambda p:{'path':str(p),'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'bytes':p.stat().st_size}
+rev={x['candidateId']:x for x in raw['finiteRowFindings']};prov={x['sourceGoalId']:x for x in d['sourceGoalProvenance']};records=[]
+for n,g in enumerate(d['sourceGoals']):
+ issue=rev.get(g['id']);records.append({'recordId':'chemie-HB232-informed-independent-a-20261017-v1.'+g['id'],'candidateSourceGoalId':g['id'],'candidateJsonPointer':'/sourceGoals/'+str(n),'candidateScientificBodySha256':hashlib.sha256(json.dumps(g,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest(),'sourceClauseIds':g.get('sourceClauseIds',prov[g['id']]['sourceClauseIds']),'sourceRef':g['sourceRef'],'courseLevel':g['courseLevel'],'sourceScope':prov[g['id']]['sourceScope'],'requiredOperators':prov[g['id']]['requiredOperators'],'decision':'revise' if issue else 'accepted_bounded_inventory_clause','findingId':issue['findingId'] if issue else None,'scientificFIRST':pin(fp),'qualification':'Inactive authored primary source inventory only, with original course/topic/selection/operator qualifiers; this is not verbatim transcription unless expressly designated and not a unique canonical/mastery duty. All canonical mapping remains OPEN.','recordStatus':'candidate','reviewAuthority':'ai_candidate','evidenceLevel':'E1','maximumClaimScope':'G1','humanApproval':False,'canonicalCarrierApproved':False})
+rp=out/'HB232.clause-inventory.informed-independent-A.candidate-records.jsonl';rp.write_text(''.join(json.dumps(r,ensure_ascii=False,separators=(',',':'))+'\n' for r in records))
+fi=out/'HB232.four-finite-row-findings.informed-A.json';fi.write_text(json.dumps({'scientificFIRST':pin(fp),'decision':'revise','findings':raw['finiteRowFindings']},ensure_ascii=False,indent=2)+'\n')
+ids=[g['id'] for g in d['sourceGoals']];assert len(ids)==232 and len(set(ids))==232 and set(prov)==set(ids);assert len(d['passages'])==28 and len(d['mandatoryTermSets'])==27 and len(d['optionalSourceSuggestions'])==113 and len(d['derivedTeachingEntries'])==40 and len(d['section2Section3_1SourceOverlaps'])==14
+assert all(not p.get('mappingTransferAllowed',True) for p in d['sourceGoalProvenance'])
+assert all(not x['officialMandatoryCompetency'] and not x['selectionImplied'] for x in d['optionalSourceSuggestions']);assert all(not x['officialMandatorySourceGoal'] for x in d['derivedTeachingEntries'])
+assert all(set(p['sourceGoalIds'])<=set(ids) for p in d['passages']);assert set().union(*(set(p['sourceGoalIds']) for p in d['passages']))==set(ids)
+assert all(set(x['sourceGoalIds'])<=set(ids) for x in d['mandatoryTermSets'])
+old=json.loads(Path(s['previousScientific97']['path']).read_text());oldGoals={x['id']:x for x in old['wholeCurrentScientific97SourceGoalBodies']};assert len(oldGoals)==97
+preserved=[]
+for g in d['sourceGoals']:
+ if g['id'].startswith('hb-chemistry-sekii-gyo2022-primary-active-ingredient-'):
+  comparable=json.loads(json.dumps(g)); md=comparable.get('metadata',{}).get('fourDutyAuthorDerivation',{}); differences={}
+  for key in ['status','wholeSourceUnionApproved']:
+   if key in md and key not in oldGoals[g['id']].get('metadata',{}).get('fourDutyAuthorDerivation',{}):differences[key]=md.pop(key)
+  eq=comparable==oldGoals[g['id']];assert eq;preserved.append({'sourceGoalId':g['id'],'allScientificFieldsEqualToPrevious97':eq,'onlyCurrentAuthorMetadataNotPresentInPreviousCleanProjection':differences,'fullRawObjectByteEqualityNotClaimed':True})
+assert len(preserved)==2
+checks=[]
+for k in ['scientificView','previousScientific97','actualPrimary','authorCandidateSourceBinding']:
+ expected=s[k];actual=pin(Path(expected['path']));assert actual['sha256']==expected['sha256'] and actual['bytes']==expected['bytes'];checks.append({'input':k,**actual,'unchanged':True})
+assert pin(sp)['sha256']=='b9f2f2ccff32143eb4e07b2b8c21b07c6c59bdf4db0d93f93efa0d5f3c10798e'
+counts=dict(collections.Counter(r['decision'] for r in records));byPassage={p['id']:len(p['sourceGoalIds']) for p in d['passages']}
+receipt={'role':'Bounded post-FIRST integrity checks only; not scientific approval','atUTC':datetime.datetime.now(datetime.timezone.utc).isoformat(),'scientificFIRSTUnchanged':pin(fp),'inputGuards':checks,'selectorUnchanged':pin(sp),'unique232GoalsAndProvenanceBijection':True,'28PassagesCoverExactly232CandidateIds':True,'27TermsetReferencesValid':True,'all113SuggestionsOptionalNoSelectionImplied':True,'all40DerivedEntriesNotOfficialMandatory':True,'all232AutomaticMappingTransferFalse':True,'preservedTwoLiteralActiveIngredientObjects':preserved,'perPassageClauseCounts':byPassage,'recordCounts':counts,'noStockNativeDOrHumanSourceSchemaClaimed':True,'allCanonicalMappings':'OPEN','MainKSourceOrInputMutated':False,'fullCentralBuildRun':False}
+ch=out/'CHECK.bounded-HB232-output-and-unchanged-inputs.json';ch.write_text(json.dumps(receipt,ensure_ascii=False,indent=2)+'\n')
+sel={'role':'Sealed finite independent SOURCE A informed-followup of HB232 inactive primary inventory; four local revisions, no canonical integration','atUTC':datetime.datetime.now(datetime.timezone.utc).isoformat(),'inputSelector':pin(sp),'scientificFIRST':pin(fp),'finiteFourRowFindings':pin(fi),'exact232ClauseRecords':pin(rp),'boundedIntegrityReceipt':pin(ch),'overallDecision':'revise','scientificPositiveScope':'Reasoned positive inventory reconstruction, counting rule, common/LK/topic-choice conditions, termsets, optional/derived separation and overlap boundaries are in FIRST. The finite4 wording findings prevent unqualified full-paraphrase acceptance of this exact version.','recordCounts':counts,'finiteRevisionIds':list(rev),'materialPins':{k:s[k] for k in ['scientificView','previousScientific97','actualPrimary','authorCandidateSourceBinding']},'scopeLimits':raw['limits'],'reviewerAndExposure':raw['reviewer'],'noNewBlindCampaign':True,'noPairedSynthesis':True,'noOtherSourceBOrAuthorResolutionChecklistRead':True,'nextReview':'Only actual corrected4-row/passage successor informed followup is needed for these findings; unchanged232 science need not be repeated.'}
+p=out/'SELECTOR.HB232-informed-independent-A.sealed.json';p.write_text(json.dumps(sel,ensure_ascii=False,indent=2)+'\n')
+for x in [rp,fi,ch,p]:x.chmod(0o444)
+(out/'SELECTOR.HB232-informed-independent-A.sealed.sha256').write_text(pin(p)['sha256']+'  '+p.name+'\n')
+print(json.dumps({'selector':pin(p),'FIRST':pin(fp),'findings':pin(fi),'records':pin(rp),'checks':pin(ch),'counts':counts},ensure_ascii=False,indent=2))

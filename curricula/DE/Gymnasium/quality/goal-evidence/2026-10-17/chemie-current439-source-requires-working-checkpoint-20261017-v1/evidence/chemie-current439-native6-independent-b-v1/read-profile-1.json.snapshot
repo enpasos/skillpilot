@@ -1,0 +1,53 @@
+{
+  "archetype": "representation",
+  "expectations": [
+    {
+      "id": "angle-only-increment",
+      "essentialUnderstandingDe": "Gegebene EPA-Grundanordnungen liefern idealisierte Winkelreferenzen. Freie Paare begründen qualitative Abweichungen, keine exakten Messwerte. Die Molekülgestalt wird vorausgesetzt und nicht erneut abgeschlossen.",
+      "essentialUnderstandingEn": "Given VSEPR domain arrangements supply idealized angle references. Lone pairs explain qualitative deviations, not exact measurements. Molecular shape is assumed rather than completed again.",
+      "observablePerformanceDe": "Ordnet Referenzwinkel zu gegebenen Geometrien zu, begründet eine Winkelverkleinerung durch freie Paare und nennt die Idealisierungsgrenze. Gestaltklassifikation allein genügt nicht.",
+      "observablePerformanceEn": "Assigns reference angles to given geometries, justifies compression by lone pairs and states idealization limits. Shape classification alone is insufficient."
+    }
+  ],
+  "coverageExpectations": {
+    "requiredExpectationIds": [
+      "angle-only-increment"
+    ],
+    "alternativeExpectationGroups": [],
+    "minimumIndependentDemonstrations": 2,
+    "freshVariationRequired": true,
+    "independentTransferRequired": true
+  },
+  "variationAxes": [
+    {
+      "id": "given-angle-domain",
+      "textDe": "Vorgegebene lineare, planare und tetraedrische Domänen und Molekülgestalten.",
+      "textEn": "Supplied linear, planar and tetrahedral domains and molecular shapes."
+    },
+    {
+      "id": "angle-model-boundary",
+      "textDe": "Freie Paare und Modellwinkel gegenüber Messbehauptungen.",
+      "textEn": "Lone pairs and model angles versus measurement claims."
+    }
+  ],
+  "applicationCaseBriefs": [
+    {
+      "id": "epa-angle-only-tetrahedral-reference",
+      "taskDemandDe": "Alle Molekülgestalten und Elektronendomänen sind bereits gegeben; ihre erneute Ableitung oder Klassifikation wird nicht geprüft. Referenz: Vier Domänen sind ideal tetraedrisch angeordnet, mit 109,5°. CH4 ist tetraedrisch ohne freie Paare; H2O ist gewinkelt bei vier Domänen und zwei freien Paaren. Ordne den idealen CH4-Winkel zu und erkläre, weshalb der H–O–H-Winkel qualitativ kleiner sein kann. Welcher exakte Messwert folgt daraus nicht? Frischer Transfer: NH3 ist als trigonal-pyramidal mit vier Domänen und einem freien Paar gegeben. Begründe die Richtung der Winkelabweichung vom Referenzwert.",
+      "taskDemandEn": "All molecular shapes and electron-domain counts are supplied; their derivation or classification is not assessed again. Reference: Four domains are ideally tetrahedral, with 109.5°. CH4 is tetrahedral without lone pairs; H2O is bent with four domains and two lone pairs. Assign the ideal CH4 angle and explain why H–O–H can be smaller. What exact measured value does this not establish? Fresh transfer: NH3 is given as trigonal pyramidal with four domains and one lone pair. Justify the direction of its angle deviation from the reference.",
+      "expectedPerformanceDe": "CH4 hat im idealen tetraedrischen Modell 109,5°. Im einfachen EPA-Modell beanspruchen freie Paare mehr Raum und drücken Bindungsrichtungen zusammen; der H–O–H-Winkel ist gegenüber 109,5° verkleinert. Eine exakte gemessene Winkelzahl folgt daraus nicht. Für das vorgegebene NH3-Modell wird ebenfalls eine Verkleinerung gegenüber dem tetraedrischen Referenzwinkel begründet. Gestalten nur zu benennen genügt nicht.",
+      "expectedPerformanceEn": "CH4 has 109.5° in the ideal tetrahedral model. In simple VSEPR, lone pairs occupy more space and compress bond directions; H–O–H is smaller than 109.5°. This does not supply an exact measured angle. For the given NH3 model, likewise justify a reduction from the tetrahedral reference. Merely naming shapes is insufficient.",
+      "understandingFocusDe": "Gefordert sind Winkelzuordnung, begründete Abweichung und Modellgrenze. Alle Gestalten sind Eingabedaten.",
+      "understandingFocusEn": "The performance is angle assignment, justified deviation and model limits. All shapes are input data."
+    },
+    {
+      "id": "epa-angle-only-linear-planar-transfer",
+      "taskDemandDe": "Gegebene Referenzen: linear 180°, trigonal-planar 120°, tetraedrische Domänen 109,5°. CO2 ist linear mit zwei Domänen am C; BH3 ist trigonal-planar mit drei Domänen am B; NH3 ist trigonal-pyramidal mit vier Domänen einschließlich eines freien Paars. Die Formen werden nicht erneut abgefragt. Ordne ideale Winkel zu, begründe, weshalb drei Bindungen bei BH3 und NH3 keine gleichen Winkel erzwingen, und prüfe: „EPA liefert für jedes Molekül den exakten gemessenen Winkel.“ Frische Variation: Eine Messung weicht vom idealen Referenzwinkel ab. Erkläre, weshalb weder Messung noch gesamtes Modell ohne weitere Prüfung verworfen werden dürfen.",
+      "taskDemandEn": "Given references: linear 180°, trigonal planar 120°, tetrahedral domains 109.5°. CO2 is linear with two central-carbon domains; BH3 is trigonal planar with three boron domains; NH3 is trigonal pyramidal with four domains including one lone pair. Shapes are not assessed again. Assign ideal angles, explain why three bonds in BH3 and NH3 do not require equal angles, and assess: “VSEPR gives the exact measured angle for every molecule.” Fresh variation: A measurement differs from the ideal reference. Explain why neither the measurement nor the entire model should be discarded without further checks.",
+      "expectedPerformanceDe": "CO2 gehört zum linearen 180°- und BH3 zum planaren 120°-Referenzwinkel. NH3 hat tetraedrische Domänen mit 109,5° als Ausgangsideal und einer freipaarbedingten Verkleinerung. Drei Bindungen machen NH3 nicht zu einem 120°-Fall. EPA ist ein idealisierendes Modell; Bedingungen, weitere Einflüsse und Messunsicherheit müssen geprüft werden. Eine Abweichung allein beweist weder einen Messfehler noch ein vollständiges Modellversagen.",
+      "expectedPerformanceEn": "CO2 uses the linear 180° reference and BH3 the planar 120° reference. NH3 has tetrahedral domains with 109.5° as baseline and lone-pair compression. Three bonds do not make NH3 a 120° case. VSEPR is an idealized model; conditions, further influences and measurement uncertainty require checks. Deviation alone proves neither measurement error nor complete model failure.",
+      "understandingFocusDe": "Frischer Winkelvergleich ohne wiederholte Gestaltklassifikation.",
+      "understandingFocusEn": "A fresh angle comparison without repeated shape classification."
+    }
+  ]
+}

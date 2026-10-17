@@ -1,0 +1,1895 @@
+{
+  "atUTC": "2026-10-17T10:02:33.135683+00:00",
+  "exitCode": 0,
+  "elapsedSeconds": 647.1696830989968,
+  "changedGuardedSources": [],
+  "stdout": {
+    "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/closure-current439-normal-global-status-root-v2/normal-global-quality-status.stdout.txt",
+    "sha256": "389ceee89ed1081de6f1d3d5ad7fdcb5b5500928914a89ab424ec89b103be861",
+    "bytes": 108
+  },
+  "stderr": {
+    "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/closure-current439-normal-global-status-root-v2/normal-global-quality-status.stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "outputs": [
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/docs/qa-ci/status/curriculum-quality-status.json",
+      "sha256": "14d1a2c7fbf7dc7de98ae6d65995002e27ac60696da20e972f6606559d839388",
+      "bytes": 2836130
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/docs/qa-ci/status/curriculum-quality-status.md",
+      "sha256": "1457e5ffdce4911dc63e6882bc986ccde845b11b804bba6928dfa086e135d8d4",
+      "bytes": 66182
+    }
+  ],
+  "actualSubjects": [
+    {
+      "subject": "Biologie",
+      "maturity": "M6",
+      "goals": 484,
+      "rules": [
+        {
+          "id": "CQR-001",
+          "status": "pass",
+          "summary": "Basic graph integrity checks pass.",
+          "metrics": {
+            "goals": 484,
+            "localReferenceIssues": 0
+          }
+        },
+        {
+          "id": "CQR-002",
+          "status": "pass",
+          "summary": "Explicit type metadata matches graph structure.",
+          "metrics": {
+            "mismatches": 0
+          }
+        },
+        {
+          "id": "CQR-000",
+          "status": "pass",
+          "summary": "All 16 declared Bundesland source inventories are readable, linked to official source URLs, and fully registered.",
+          "metrics": {
+            "totalJurisdictions": 16,
+            "completeSourceJurisdictions": 16,
+            "emptySourceJurisdictions": 0,
+            "missingReadableSourceInventoryJurisdictions": 0,
+            "originalSourceUrlIssues": 0,
+            "sourceExtractedGoals": 1024,
+            "sourceOriginalGoals": 1024,
+            "sourceUnregisteredGoals": 0,
+            "sourceExtractedAtomicGoals": 1024,
+            "sourceUnregisteredAtomicGoals": 0
+          }
+        },
+        {
+          "id": "CQR-003",
+          "status": "pass",
+          "summary": "All 16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.",
+          "metrics": {
+            "totalJurisdictions": 16,
+            "coveredJurisdictions": 16,
+            "sourceBackedJurisdictions": 16,
+            "sourceCompleteJurisdictions": 16,
+            "fullCoverageJurisdictions": 16,
+            "uncoveredJurisdictions": 0,
+            "incompleteJurisdictions": 0,
+            "unsupportedAssignmentJurisdictions": 0,
+            "sourceUnmappedJurisdictions": 0,
+            "unsupportedAssignedAtomicGoals": 0,
+            "unmappedSourceAtomicGoals": 0,
+            "sourceAtomicGoals": 1024,
+            "sourceMappedToViewAtomicGoals": 1024,
+            "sourceOriginalGoals": 1024,
+            "sourceFullyCoveredOriginalGoals": 1024,
+            "sourcePartiallyCoveredOriginalGoals": 0,
+            "sourceUncoveredOriginalGoals": 0,
+            "surrogateBackedAtomicGoals": 4,
+            "partialSourceLinkedAtomicGoals": 0,
+            "warningedJurisdictions": 0,
+            "cleanJurisdictions": 16,
+            "partialJurisdictions": 0,
+            "errorJurisdictions": 0,
+            "minSourceBackedAtomicGoals": 62,
+            "maxVisibleAtomicGoals": 365,
+            "maxSourceBackedAtomicGoals": 365,
+            "totalAtomicGoals": 399
+          }
+        },
+        {
+          "id": "CQR-004",
+          "status": "pass",
+          "summary": "Course-level mapping is clean for 1249 upper-secondary source-to-canonical mapping edge(s), including 0 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+          "metrics": {
+            "configuredMappingFiles": 65,
+            "sourceGoals": 1049,
+            "sourceGoalsWithCourseLevel": 1049,
+            "gkLkSourceGoals": 490,
+            "lkSourceGoals": 559,
+            "unspecifiedSourceGoals": 6,
+            "checkedMappingEdges": 1249,
+            "defaultedUnspecifiedMappingEdges": 0,
+            "reviewedCourseLevelExceptions": 0,
+            "mismatches": 0,
+            "missingSourceGoals": 0,
+            "missingTargetGoals": 0,
+            "unmappedCourseLevelSourceGoals": 0
+          }
+        },
+        {
+          "id": "CQR-005",
+          "status": "pass",
+          "summary": "Source-goal counts are inside the configured peer-baseline corridor or explicitly reviewed.",
+          "metrics": {
+            "sourceExtractionSources": 22,
+            "peerBaselineChecks": 14,
+            "failedPeerBaselineChecks": 0,
+            "granularityChecks": 0,
+            "failedGranularityChecks": 0
+          }
+        },
+        {
+          "id": "CQR-301",
+          "status": "pass",
+          "summary": "Semantic atomicity review ledgers are current and fully accepted.",
+          "metrics": {
+            "configs": 1,
+            "leafGoals": 397,
+            "atomic": 397,
+            "needsDeveloperReview": 0,
+            "nonAtomic": 0,
+            "missing": 0,
+            "stale": 0,
+            "obsolete": 0
+          }
+        },
+        {
+          "id": "CQR-302",
+          "status": "pass",
+          "summary": "Memory-card review is current: 10/397 ordinary atomic goals intentionally use memorization support, 27/27 primary cards are kept with origin traces, all 3 memory goals are traced, and 37 view-visible memory-required goals resolve to visible memory nodes.",
+          "metrics": {
+            "configs": 1,
+            "reviewedGoals": 397,
+            "noMemoryNeeded": 387,
+            "memoryRequired": 10,
+            "needsDeveloperReview": 0,
+            "missing": 0,
+            "stale": 0,
+            "obsolete": 0,
+            "duplicateRecords": 0,
+            "invalidRecords": 0,
+            "primaryCards": 27,
+            "keptCards": 27,
+            "cardsMarkedRemove": 0,
+            "cardNeedsDeveloperReview": 0,
+            "missingCardReviews": 0,
+            "staleCardReviews": 0,
+            "obsoleteCardReviews": 0,
+            "duplicateCardReviewRecords": 0,
+            "invalidCardReviewRecords": 0,
+            "untracedMemoryRequiredGoals": 0,
+            "visibilityScopes": 8,
+            "visibilityCheckedMemoryRequiredGoals": 37,
+            "visibilityMissingVisibleMemoryGoals": 0,
+            "visibilityErrors": 0,
+            "memoryGoals": 3,
+            "tracedMemoryGoals": 3,
+            "untracedMemoryGoals": 0,
+            "deckIds": 3,
+            "deckFiles": 6,
+            "cardRows": 54
+          },
+          "details": [
+            "canonical-biology-full: audit report docs/qa-ci/status/memory-card-review-canonical-biology-full.md"
+          ]
+        },
+        {
+          "id": "CQR-303",
+          "status": "fail",
+          "summary": "Deep curriculum QA is incomplete: 0/397 current curricularAtomic goals strictly complete.",
+          "metrics": {
+            "expectedGoals": 397,
+            "remaining": 397,
+            "strictComplete": 0,
+            "currentDescriptionResolutions": 397,
+            "currentPositiveEvidenceProfiles": 0,
+            "currentSemanticAtomicityDecisions": 397,
+            "currentMemoryReviewDecisions": 397,
+            "currentVisualizationQaRecords": 0,
+            "deferredVisualizations": 0,
+            "requiredChecksPassed": 4,
+            "requiredChecksTotal": 6,
+            "blockingIssues": 795
+          },
+          "details": [
+            "biologie: curricula/DE/Gymnasium/quality/goal-evidence/2026-09-30/biologie-m7-e198-controlled-concentration-v5/positive-evidence.config.json: 1984fd66-c117-5c29-87b3-1c1626e4ba81: goal-visualization asset is missing at /mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/app/public/assets/goal-visualizations/biologie/1984fd66-c117-5c29-87b3-1c1626e4ba81/1984fd66-c117-5c29-87b3-1c1626e4ba81.png",
+            "biologie: curricula/DE/Gymnasium/quality/goal-evidence/2026-09-30/biologie-m7-e198-controlled-concentration-v5/positive-evidence.config.json: 1984fd66-c117-5c29-87b3-1c1626e4ba81: stale reviewInputFingerprint; expected sha256:74d216352b5f562d448ad61b16f7c743601df0bbe972b2c83899c4548988d5a0",
+            "biologie: curricula/DE/Gymnasium/quality/goal-evidence/2026-09-30/biologie-m7-ephase-7c-cell-nucleus-v3/positive-evidence.config.json: 7c6bf0cc-6ed8-56b1-b44a-642f7a069a5f: goal-visualization asset is missing at /mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/app/public/assets/goal-visualizations/biologie/7c6bf0cc-6ed8-56b1-b44a-642f7a069a5f/7c6bf0cc-6ed8-56b1-b44a-642f7a069a5f.png",
+            "biologie: curricula/DE/Gymnasium/quality/goal-evidence/2026-09-30/biologie-m7-ephase-7c-cell-nucleus-v3/positive-evidence.config.json: 7c6bf0cc-6ed8-56b1-b44a-642f7a069a5f: stale reviewInputFingerprint; expected sha256:f5abbafdc12d1050aee60eece91b6fe5698102f49f2f1a3ae14935e7e39e27ed",
+            "biologie: curricula/DE/Gymnasium/quality/goal-evidence/2026-09-30/biologie-m7-global-inquiry-four-v1/positive-evidence.config.json: 2eaabe90-46bf-555e-876b-d853434a322d: goal-visualization asset is missing at /mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/app/public/assets/goal-visualizations/biologie/2eaabe90-46bf-555e-876b-d853434a322d/2eaabe90-46bf-555e-876b-d853434a322d.png",
+            "biologie: curricula/DE/Gymnasium/quality/goal-evidence/2026-09-30/biologie-m7-global-inquiry-four-v1/positive-evidence.config.json: 2eaabe90-46bf-555e-876b-d853434a322d: stale reviewInputFingerprint; expected sha256:a1d5dc942b7dd46ba982d4d262ca1b26523e693bf55348b3570cb31658fa2b37",
+            "biologie: curricula/DE/Gymnasium/quality/goal-evidence/2026-09-30/biologie-m7-global-inquiry-four-v1/positive-evidence.config.json: 5a47f591-f2ac-5457-872a-22c89c2dbe93: goal-visualization asset is missing at /mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/app/public/assets/goal-visualizations/biologie/5a47f591-f2ac-5457-872a-22c89c2dbe93/5a47f591-f2ac-5457-872a-22c89c2dbe93.png",
+            "biologie: curricula/DE/Gymnasium/quality/goal-evidence/2026-09-30/biologie-m7-global-inquiry-four-v1/positive-evidence.config.json: 5a47f591-f2ac-5457-872a-22c89c2dbe93: stale reviewInputFingerprint; expected sha256:2e432e7b7938bb2fb405029ff0c2587e890e67b71f9cfa912a07df3d120d0c33",
+            "biologie: curricula/DE/Gymnasium/quality/goal-evidence/2026-09-30/biologie-m7-global-inquiry-four-v1/positive-evidence.config.json: 6ae33a8e-874c-53ee-858f-c64f1848cfbc: goal-visualization asset is missing at /mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/app/public/assets/goal-visualizations/biologie/6ae33a8e-874c-53ee-858f-c64f1848cfbc/6ae33a8e-874c-53ee-858f-c64f1848cfbc.png",
+            "biologie: curricula/DE/Gymnasium/quality/goal-evidence/2026-09-30/biologie-m7-global-inquiry-four-v1/positive-evidence.config.json: 6ae33a8e-874c-53ee-858f-c64f1848cfbc: stale reviewInputFingerprint; expected sha256:efef5892570f376918449ba23ec8aa1ec138a286f2de8ccd968c969800ff4469",
+            "biologie: curricula/DE/Gymnasium/quality/goal-evidence/2026-09-30/biologie-m7-global-inquiry-four-v1/positive-evidence.config.json: 713e062d-2bb9-5fbc-8040-129387c7d3ca: goal-visualization asset is missing at /mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/app/public/assets/goal-visualizations/biologie/713e062d-2bb9-5fbc-8040-129387c7d3ca/713e062d-2bb9-5fbc-8040-129387c7d3ca.png",
+            "biologie: curricula/DE/Gymnasium/quality/goal-evidence/2026-09-30/biologie-m7-global-inquiry-four-v1/positive-evidence.config.json: 713e062d-2bb9-5fbc-8040-129387c7d3ca: stale reviewInputFingerprint; expected sha256:8e8b17ec04a2c209f1157a7c21cccb1fcc256225c2325439094e6b3daec0701d",
+            "biologie: curricula/DE/Gymnasium/quality/goal-evidence/2026-09-30/biologie-m7-global-methods-four-v2/positive-evidence.config.json: 0380f992-723a-513d-8c3f-8ca7f8e0394f: goal-visualization asset is missing at /mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/app/public/assets/goal-visualizations/biologie/0380f992-723a-513d-8c3f-8ca7f8e0394f/0380f992-723a-513d-8c3f-8ca7f8e0394f.png",
+            "biologie: curricula/DE/Gymnasium/quality/goal-evidence/2026-09-30/biologie-m7-global-methods-four-v2/positive-evidence.config.json: 0380f992-723a-513d-8c3f-8ca7f8e0394f: stale reviewInputFingerprint; expected sha256:7ff8002d7173ce3526bbda6dcd239b7173012ab19c8c6bfe1a0215c3fbceaaa2",
+            "biologie: curricula/DE/Gymnasium/quality/goal-evidence/2026-09-30/biologie-m7-global-methods-four-v2/positive-evidence.config.json: 0f1549f6-8341-53b0-8161-5eaeb2b37809: goal-visualization asset is missing at /mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/app/public/assets/goal-visualizations/biologie/0f1549f6-8341-53b0-8161-5eaeb2b37809/0f1549f6-8341-53b0-8161-5eaeb2b37809.png",
+            "biologie: curricula/DE/Gymnasium/quality/goal-evidence/2026-09-30/biologie-m7-global-methods-four-v2/positive-evidence.config.json: 0f1549f6-8341-53b0-8161-5eaeb2b37809: stale reviewInputFingerprint; expected sha256:f442891715f6858bed5072ad70172ab5da43cdd7a1b93ead1fecd939cda205a3",
+            "biologie: curricula/DE/Gymnasium/quality/goal-evidence/2026-09-30/biologie-m7-global-methods-four-v2/positive-evidence.config.json: 26aa47b7-e5cc-5131-8980-0ec3271758b6: goal-visualization asset is missing at /mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/app/public/assets/goal-visualizations/biologie/26aa47b7-e5cc-5131-8980-0ec3271758b6/26aa47b7-e5cc-5131-8980-0ec3271758b6.png",
+            "biologie: curricula/DE/Gymnasium/quality/goal-evidence/2026-09-30/biologie-m7-global-methods-four-v2/positive-evidence.config.json: 26aa47b7-e5cc-5131-8980-0ec3271758b6: stale reviewInputFingerprint; expected sha256:ff0660b11538fd3575a07f1254f1353e84d3e4d831dc0eaac8ca1de82073ec9e",
+            "biologie: curricula/DE/Gymnasium/quality/goal-evidence/2026-09-30/biologie-m7-global-methods-four-v2/positive-evidence.config.json: d97f6957-fbc9-569c-8648-f7df5eb9dfd8: goal-visualization asset is missing at /mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/app/public/assets/goal-visualizations/biologie/d97f6957-fbc9-569c-8648-f7df5eb9dfd8/d97f6957-fbc9-569c-8648-f7df5eb9dfd8.png",
+            "biologie: curricula/DE/Gymnasium/quality/goal-evidence/2026-09-30/biologie-m7-global-methods-four-v2/positive-evidence.config.json: d97f6957-fbc9-569c-8648-f7df5eb9dfd8: stale reviewInputFingerprint; expected sha256:e08ad35d923ab29f01ddaa10de665f86324e41175b9627bc46ddd3e926cc16ec"
+          ]
+        },
+        {
+          "id": "CQR-401",
+          "status": "pass",
+          "summary": "8 composition view(s) are registered.",
+          "metrics": {
+            "compositionViews": 8
+          }
+        },
+        {
+          "id": "CQR-501",
+          "status": "pass",
+          "summary": "No active applicability warning debt is visible.",
+          "metrics": {
+            "activeWarnings": 0,
+            "rawActiveWarnings": 0,
+            "diagnosticPartialOnlyWarnings": 1380,
+            "acceptedWarnings": 0,
+            "obsoleteAcceptedWarnings": 0
+          },
+          "details": [
+            "non-blocking partial-only applicability diagnostics APV-202: 1380",
+            "diagnostic finding type APV-202: 1380"
+          ]
+        }
+      ],
+      "scopes": [
+        {
+          "scopeId": "canonical-biology-sek2",
+          "label": "Sekundarstufe II",
+          "selectedAtomicGoals": 239,
+          "maturity": "M4",
+          "rules": [
+            {
+              "id": "CQR-101",
+              "status": "pass",
+              "summary": "Effective route coverage is complete for the configured scope.",
+              "metrics": {
+                "selectedAtomicGoals": 239,
+                "missingMotivationPath": 0,
+                "missingTerminalPath": 0
+              }
+            },
+            {
+              "id": "CQR-102",
+              "status": "pass",
+              "summary": "Direct atomic route coverage is complete for the configured scope.",
+              "metrics": {
+                "selectedAtomicGoals": 239,
+                "missingDirectMotivationPath": 0,
+                "missingDirectTerminalPath": 0
+              }
+            },
+            {
+              "id": "CQR-103",
+              "status": "pass",
+              "summary": "No scoped cluster-level requires remain.",
+              "metrics": {
+                "scopedClusterRequires": 0
+              }
+            },
+            {
+              "id": "CQR-201",
+              "status": "pass",
+              "summary": "All configured terminal autonomy goals have examData.",
+              "metrics": {
+                "terminalAutonomyGoals": 18,
+                "terminalAutonomyGoalsWithExamData": 18,
+                "terminalAutonomyGoalsWithoutExamData": 0
+              }
+            },
+            {
+              "id": "CQR-202",
+              "status": "pass",
+              "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+              "metrics": {
+                "terminalAutonomyGoals": 18,
+                "concreteExamData": 18,
+                "weakExamData": 0
+              }
+            },
+            {
+              "id": "CQR-203",
+              "status": "pass",
+              "summary": "All terminal autonomy examData has release and coverage metadata.",
+              "metrics": {
+                "terminalAutonomyGoals": 18,
+                "releasedCoverageCompleteExamData": 18,
+                "releaseCoverageIncompleteExamData": 0
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "subject": "Chemie",
+      "maturity": "M1",
+      "goals": 650,
+      "rules": [
+        {
+          "id": "CQR-001",
+          "status": "pass",
+          "summary": "Basic graph integrity checks pass.",
+          "metrics": {
+            "goals": 650,
+            "localReferenceIssues": 0
+          }
+        },
+        {
+          "id": "CQR-002",
+          "status": "pass",
+          "summary": "Explicit type metadata matches graph structure.",
+          "metrics": {
+            "mismatches": 0
+          }
+        },
+        {
+          "id": "CQR-000",
+          "status": "pass",
+          "summary": "All 16 declared Bundesland source inventories are readable, linked to official source URLs, and fully registered.",
+          "metrics": {
+            "totalJurisdictions": 16,
+            "completeSourceJurisdictions": 16,
+            "emptySourceJurisdictions": 0,
+            "missingReadableSourceInventoryJurisdictions": 0,
+            "originalSourceUrlIssues": 0,
+            "sourceExtractedGoals": 5880,
+            "sourceOriginalGoals": 5880,
+            "sourceUnregisteredGoals": 0,
+            "sourceExtractedAtomicGoals": 5880,
+            "sourceUnregisteredAtomicGoals": 0
+          }
+        },
+        {
+          "id": "CQR-003",
+          "status": "fail",
+          "summary": "0/16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.",
+          "metrics": {
+            "totalJurisdictions": 16,
+            "coveredJurisdictions": 16,
+            "sourceBackedJurisdictions": 16,
+            "sourceCompleteJurisdictions": 0,
+            "fullCoverageJurisdictions": 0,
+            "uncoveredJurisdictions": 0,
+            "incompleteJurisdictions": 16,
+            "unsupportedAssignmentJurisdictions": 16,
+            "sourceUnmappedJurisdictions": 11,
+            "unsupportedAssignedAtomicGoals": 427,
+            "unmappedSourceAtomicGoals": 82,
+            "sourceAtomicGoals": 5880,
+            "sourceMappedToViewAtomicGoals": 5798,
+            "sourceOriginalGoals": 5880,
+            "sourceFullyCoveredOriginalGoals": 5798,
+            "sourcePartiallyCoveredOriginalGoals": 0,
+            "sourceUncoveredOriginalGoals": 82,
+            "surrogateBackedAtomicGoals": 0,
+            "partialSourceLinkedAtomicGoals": 0,
+            "warningedJurisdictions": 0,
+            "cleanJurisdictions": 0,
+            "partialJurisdictions": 0,
+            "errorJurisdictions": 16,
+            "minSourceBackedAtomicGoals": 122,
+            "maxVisibleAtomicGoals": 348,
+            "maxSourceBackedAtomicGoals": 321,
+            "totalAtomicGoals": 378
+          },
+          "details": [
+            "DE-BW: 17 assigned atomic goal(s) without source-backed Lehrplan evidence",
+            "DE-HE: 27 assigned atomic goal(s) without source-backed Lehrplan evidence",
+            "DE-BY: 2 assigned atomic goal(s) without source-backed Lehrplan evidence",
+            "DE-BB: 31 assigned atomic goal(s) without source-backed Lehrplan evidence",
+            "DE-BE: 31 assigned atomic goal(s) without source-backed Lehrplan evidence",
+            "DE-NI: 40 assigned atomic goal(s) without source-backed Lehrplan evidence",
+            "DE-NW: 22 assigned atomic goal(s) without source-backed Lehrplan evidence",
+            "DE-SH: 27 assigned atomic goal(s) without source-backed Lehrplan evidence",
+            "DE-HB: 25 assigned atomic goal(s) without source-backed Lehrplan evidence",
+            "DE-HH: 31 assigned atomic goal(s) without source-backed Lehrplan evidence",
+            "DE-MV: 29 assigned atomic goal(s) without source-backed Lehrplan evidence",
+            "DE-RP: 32 assigned atomic goal(s) without source-backed Lehrplan evidence",
+            "DE-SL: 30 assigned atomic goal(s) without source-backed Lehrplan evidence",
+            "DE-SN: 29 assigned atomic goal(s) without source-backed Lehrplan evidence",
+            "DE-ST: 27 assigned atomic goal(s) without source-backed Lehrplan evidence",
+            "DE-TH: 27 assigned atomic goal(s) without source-backed Lehrplan evidence",
+            "DE-BW: 2 source Lehrplan atom(s) do not map into the Bundesland view",
+            "DE-BY: 62 source Lehrplan atom(s) do not map into the Bundesland view",
+            "DE-BB: 2 source Lehrplan atom(s) do not map into the Bundesland view",
+            "DE-BE: 2 source Lehrplan atom(s) do not map into the Bundesland view"
+          ]
+        },
+        {
+          "id": "CQR-004",
+          "status": "pass",
+          "summary": "Course-level mapping is clean for 1877 upper-secondary source-to-canonical mapping edge(s), including 33 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+          "metrics": {
+            "configuredMappingFiles": 50,
+            "sourceGoals": 4021,
+            "sourceGoalsWithCourseLevel": 4021,
+            "gkLkSourceGoals": 2126,
+            "lkSourceGoals": 1401,
+            "unspecifiedSourceGoals": 397,
+            "checkedMappingEdges": 1877,
+            "defaultedUnspecifiedMappingEdges": 166,
+            "reviewedCourseLevelExceptions": 33,
+            "mismatches": 0,
+            "missingSourceGoals": 0,
+            "missingTargetGoals": 0,
+            "unmappedCourseLevelSourceGoals": 0
+          }
+        },
+        {
+          "id": "CQR-005",
+          "status": "warn",
+          "summary": "1 source-goal count plausibility issue(s) need review before this curriculum can be treated as mature.",
+          "metrics": {
+            "sourceExtractionSources": 32,
+            "peerBaselineChecks": 27,
+            "failedPeerBaselineChecks": 1,
+            "granularityChecks": 1,
+            "failedGranularityChecks": 0
+          },
+          "details": [
+            "DE-HB: DE-HB - Chemie Gymnasiale Oberstufe (Bremen, Bildungsplan 2022 Source-Extraction) - 97 Source-Ziele; Vergleich HE/BW SEKII (202); Median 202; zulässiger 30%-Median-Korridor 142-262; Abweichung vom Median -52%."
+          ]
+        },
+        {
+          "id": "CQR-301",
+          "status": "pass",
+          "summary": "Semantic atomicity review ledgers are current and fully accepted.",
+          "metrics": {
+            "configs": 76,
+            "leafGoals": 439,
+            "atomic": 439,
+            "needsDeveloperReview": 0,
+            "nonAtomic": 0,
+            "missing": 0,
+            "stale": 0,
+            "obsolete": 0
+          }
+        },
+        {
+          "id": "CQR-302",
+          "status": "warn",
+          "summary": "Memory-card review still has missing, stale, invalid, or untraced entries.",
+          "metrics": {
+            "configs": 1,
+            "reviewedGoals": 439,
+            "noMemoryNeeded": 373,
+            "memoryRequired": 66,
+            "needsDeveloperReview": 0,
+            "missing": 0,
+            "stale": 0,
+            "obsolete": 0,
+            "duplicateRecords": 0,
+            "invalidRecords": 0,
+            "primaryCards": 752,
+            "keptCards": 752,
+            "cardsMarkedRemove": 0,
+            "cardNeedsDeveloperReview": 0,
+            "missingCardReviews": 0,
+            "staleCardReviews": 0,
+            "obsoleteCardReviews": 0,
+            "duplicateCardReviewRecords": 0,
+            "invalidCardReviewRecords": 0,
+            "untracedMemoryRequiredGoals": 0,
+            "visibilityScopes": 39,
+            "visibilityCheckedMemoryRequiredGoals": 1659,
+            "visibilityMissingVisibleMemoryGoals": 22,
+            "visibilityErrors": 22,
+            "memoryGoals": 67,
+            "tracedMemoryGoals": 67,
+            "untracedMemoryGoals": 0,
+            "deckIds": 7,
+            "deckFiles": 68,
+            "cardRows": 770
+          },
+          "details": [
+            "canonical-chemistry-full: audit report curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-remediation14-guarded-root-integration-technical-v1/reports/M439.stock-report.md",
+            "canonical-chemistry-full: de-he-gym-chemistry-gk: Grundlagen Spektroskopie [466bd2e9-39a5-5221-b620-945934adce00] is visible, but none of its referenced memoryGoalIds is visible in curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+            "canonical-chemistry-full: de-he-gym-chemistry-gk: Konfiguration und Konformation unterscheiden [85342c52-9722-54b0-8fbb-513d9d648363] is visible, but none of its referenced memoryGoalIds is visible in curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+            "canonical-chemistry-full: de-he-gym-chemistry-gk: Stereoisomerietypen zuordnen [9decc36b-a69a-5599-a9f0-fcebdf0203d8] is visible, but none of its referenced memoryGoalIds is visible in curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+            "canonical-chemistry-full: de-he-gym-chemistry-gk: Stereozentren erkennen [b92bfa45-b500-5647-8fd2-a14b708aaf59] is visible, but none of its referenced memoryGoalIds is visible in curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+            "canonical-chemistry-full: de-he-gym-chemistry-gk: Arrhenius-Beziehung anwenden [e62c6c58-b688-59c3-8ac5-2cfc26ac22d7] is visible, but none of its referenced memoryGoalIds is visible in curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+            "canonical-chemistry-full: de-he-gym-chemistry-gk: Nernst-Gleichung auf galvanische Zellen anwenden (LK) [b7521ac7-4ad1-5e63-96ca-4c6c9b2b1e0b] is visible, but none of its referenced memoryGoalIds is visible in curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+            "canonical-chemistry-full: de-he-gym-chemistry-gk: Puffer-pH mit der Henderson-Hasselbalch-Gleichung berechnen [a449e874-6fec-502b-9667-6f078adc4d64] is visible, but none of its referenced memoryGoalIds is visible in curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+            "canonical-chemistry-full: de-he-gym-chemistry-gk: Biologische Abbauwege von Tensiden beschreiben [cc5a626a-dc85-57e2-b422-259f92901545] is visible, but none of its referenced memoryGoalIds is visible in curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+            "canonical-chemistry-full: de-he-gym-chemistry-gk: Biodieselgewinnung durch Umesterung erklären [4d9defde-d3bc-5c43-83ff-9cf6f2930643] is visible, but none of its referenced memoryGoalIds is visible in curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+            "canonical-chemistry-full: de-he-gym-chemistry-gk: Synthetischen Kautschuk und Vulkanisation erklären [4955f745-b946-5d3d-82d6-5e52dc8549a3] is visible, but none of its referenced memoryGoalIds is visible in curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+            "canonical-chemistry-full: de-he-gym-chemistry-gk: Viskose und Cellulosederivate als Textilfasern erklären [f57d53b0-5bdf-5998-81f4-8bfb2fc5bde7] is visible, but none of its referenced memoryGoalIds is visible in curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+            "canonical-chemistry-full: de-he-gym-sekii-chemistry-gk: Grundlagen Spektroskopie [466bd2e9-39a5-5221-b620-945934adce00] is visible, but none of its referenced memoryGoalIds is visible in curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk.view.json",
+            "canonical-chemistry-full: de-he-gym-sekii-chemistry-gk: Konfiguration und Konformation unterscheiden [85342c52-9722-54b0-8fbb-513d9d648363] is visible, but none of its referenced memoryGoalIds is visible in curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk.view.json",
+            "canonical-chemistry-full: de-he-gym-sekii-chemistry-gk: Stereoisomerietypen zuordnen [9decc36b-a69a-5599-a9f0-fcebdf0203d8] is visible, but none of its referenced memoryGoalIds is visible in curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk.view.json",
+            "canonical-chemistry-full: de-he-gym-sekii-chemistry-gk: Stereozentren erkennen [b92bfa45-b500-5647-8fd2-a14b708aaf59] is visible, but none of its referenced memoryGoalIds is visible in curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk.view.json",
+            "canonical-chemistry-full: de-he-gym-sekii-chemistry-gk: Arrhenius-Beziehung anwenden [e62c6c58-b688-59c3-8ac5-2cfc26ac22d7] is visible, but none of its referenced memoryGoalIds is visible in curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk.view.json",
+            "canonical-chemistry-full: de-he-gym-sekii-chemistry-gk: Nernst-Gleichung auf galvanische Zellen anwenden (LK) [b7521ac7-4ad1-5e63-96ca-4c6c9b2b1e0b] is visible, but none of its referenced memoryGoalIds is visible in curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk.view.json",
+            "canonical-chemistry-full: de-he-gym-sekii-chemistry-gk: Puffer-pH mit der Henderson-Hasselbalch-Gleichung berechnen [a449e874-6fec-502b-9667-6f078adc4d64] is visible, but none of its referenced memoryGoalIds is visible in curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk.view.json",
+            "canonical-chemistry-full: de-he-gym-sekii-chemistry-gk: Zeolith-Enthärter strukturell erklären [2d16528c-1424-5999-b3d2-af4593a147fc] is visible, but none of its referenced memoryGoalIds is visible in curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk.view.json"
+          ]
+        },
+        {
+          "id": "CQR-303",
+          "status": "pass",
+          "summary": "Deep curriculum QA is complete for all 439 current curricularAtomic goals.",
+          "metrics": {
+            "expectedGoals": 439,
+            "remaining": 0,
+            "strictComplete": 439,
+            "currentDescriptionResolutions": 439,
+            "currentPositiveEvidenceProfiles": 439,
+            "currentSemanticAtomicityDecisions": 439,
+            "currentMemoryReviewDecisions": 439,
+            "currentVisualizationQaRecords": 439,
+            "deferredVisualizations": 0,
+            "requiredChecksPassed": 6,
+            "requiredChecksTotal": 6,
+            "blockingIssues": 0
+          }
+        },
+        {
+          "id": "CQR-401",
+          "status": "pass",
+          "summary": "39 composition view(s) are registered.",
+          "metrics": {
+            "compositionViews": 39
+          }
+        },
+        {
+          "id": "CQR-501",
+          "status": "warn",
+          "summary": "148 active and 0 obsolete accepted applicability warning(s) need review; 2201 partial-only diagnostic finding(s) are non-blocking.",
+          "metrics": {
+            "activeWarnings": 148,
+            "rawActiveWarnings": 148,
+            "diagnosticPartialOnlyWarnings": 2201,
+            "acceptedWarnings": 0,
+            "obsoleteAcceptedWarnings": 0
+          },
+          "details": [
+            "non-blocking partial-only applicability diagnostics APV-202: 2201",
+            "active warning type APV-203: 98",
+            "active warning type APV-201: 50",
+            "diagnostic finding type APV-202: 2201"
+          ]
+        }
+      ],
+      "scopes": [
+        {
+          "scopeId": "canonical-chemistry-sek2",
+          "label": "Sekundarstufe II",
+          "selectedAtomicGoals": 328,
+          "maturity": "M0",
+          "rules": [
+            {
+              "id": "CQR-101",
+              "status": "fail",
+              "summary": "Effective route coverage has missing route segments.",
+              "metrics": {
+                "selectedAtomicGoals": 328,
+                "missingMotivationPath": 12,
+                "missingTerminalPath": 97
+              },
+              "details": [
+                "No effective motivation path: Enzymreaktionen und Hemmung modellieren [f7f35d71-927a-511c-a49e-65a66794a9bc]",
+                "No effective motivation path: Peptidbindungen erklären [197bc2c5-835e-59e7-9263-5684e89799cc]",
+                "No effective motivation path: Optische Aktivität und Polarimetrie auswerten [f4d5a02d-711b-5a6b-a41d-971359c1f64d]",
+                "No effective motivation path: Proteinstruktur und Faltung [065d764c-daec-5d35-95da-3e922d2029c7]",
+                "No effective motivation path: Enzymkinetik vertiefen [c245d5fd-ce46-5b45-ab2e-e610547b5f7c]",
+                "No effective motivation path: Glykosidische Bindungen [7b477c2b-0919-5d70-810b-188a88c55ffc]",
+                "No effective motivation path: Wirkungsgrade vergleichen [3ec31fe1-e01b-5edd-bd9a-936191d67639]",
+                "No effective motivation path: Proteinlöslichkeit und Denaturierung erklären [058dca74-1b57-5eb3-9c94-1c7b6cc795ad]",
+                "No effective motivation path: Außenfaktoren auf Enzymreaktionen erklären [b4ca3af2-77f1-59e8-955d-c4959e284242]",
+                "No effective motivation path: Proteine in der Biotechnologie erklären [014e6d85-eecf-5228-9031-52a39981cd0d]",
+                "No effective motivation path: Proteine mit der Biuret-Reaktion nachweisen und erklären [cf270aaf-235a-55a7-94a2-c4d9d7570a6b]",
+                "No effective motivation path: Qualitätskontrolle von Arzneimitteln an Belegen beurteilen [4a7dee38-1056-5e27-acec-e6a12f58109f]",
+                "No effective terminal path: Stoffe nach Struktur und Eigenschaften ordnen [02dc29ae-4046-556a-b048-d64a0feb8f16]",
+                "No effective terminal path: Reaktionstypen mechanismisch einordnen [7a05a1ce-45d3-571e-be51-afcd8dfd33ca]",
+                "No effective terminal path: Stoffkreisläufe mit Reaktionen und physikalischen Vorgängen beschreiben [c0f1bf09-5a70-5006-b1e9-e91f786a63bf]",
+                "No effective terminal path: Chemische Sachverhalte fachlich diskutieren [1f354a60-be44-512b-8f8b-f67c8c456035]",
+                "No effective terminal path: Unterenergiestufen aus Spektren und Ionisierungsenergien ableiten [49235cbe-6658-5e7e-8bd4-398416bcebdc]",
+                "No effective terminal path: Quantenzahlen und Besetzungsregeln zur PSE-Anordnung nutzen [3bc48951-025c-5144-99b1-924db611a5f9]",
+                "No effective terminal path: Ionenladungen von Nebengruppenelementen orbitalenergetisch begründen [a138d7bf-163a-59e0-a50a-8438ef4f5168]",
+                "No effective terminal path: Antreffwahrscheinlichkeit mit Unbestimmtheit begründen [73547696-e225-5f14-839b-c77f54c32bae]"
+              ]
+            },
+            {
+              "id": "CQR-102",
+              "status": "warn",
+              "summary": "Direct atomic route coverage still needs migration work.",
+              "metrics": {
+                "selectedAtomicGoals": 328,
+                "missingDirectMotivationPath": 16,
+                "missingDirectTerminalPath": 97
+              },
+              "details": [
+                "No direct atomic motivation path: Einfache Bindungswinkel mit dem EPA-Modell erklären [9b56d01e-c2d7-51d8-b78e-237592c1ed20]",
+                "No direct atomic motivation path: Enzymreaktionen und Hemmung modellieren [f7f35d71-927a-511c-a49e-65a66794a9bc]",
+                "No direct atomic motivation path: Peptidbindungen erklären [197bc2c5-835e-59e7-9263-5684e89799cc]",
+                "No direct atomic motivation path: Optische Aktivität und Polarimetrie auswerten [f4d5a02d-711b-5a6b-a41d-971359c1f64d]",
+                "No direct atomic motivation path: Proteinstruktur und Faltung [065d764c-daec-5d35-95da-3e922d2029c7]",
+                "No direct atomic motivation path: Enzymkinetik vertiefen [c245d5fd-ce46-5b45-ab2e-e610547b5f7c]",
+                "No direct atomic motivation path: Glykosidische Bindungen [7b477c2b-0919-5d70-810b-188a88c55ffc]",
+                "No direct atomic motivation path: Wirkungsgrade vergleichen [3ec31fe1-e01b-5edd-bd9a-936191d67639]",
+                "No direct atomic motivation path: Proteinlöslichkeit und Denaturierung erklären [058dca74-1b57-5eb3-9c94-1c7b6cc795ad]",
+                "No direct atomic motivation path: Außenfaktoren auf Enzymreaktionen erklären [b4ca3af2-77f1-59e8-955d-c4959e284242]",
+                "No direct atomic motivation path: Proteine in der Biotechnologie erklären [014e6d85-eecf-5228-9031-52a39981cd0d]",
+                "No direct atomic motivation path: Proteine mit der Biuret-Reaktion nachweisen und erklären [cf270aaf-235a-55a7-94a2-c4d9d7570a6b]",
+                "No direct atomic motivation path: Wirkstoff-Isolierung als Stofftrennung erklären [40f2db27-0ebe-5f03-941d-708aebcc64b7]",
+                "No direct atomic motivation path: Wirkstoffforschung mit Analyse, Synthese und Molecular Modelling erklären [93a7ce4d-1c90-568c-9368-cac423011ef9]",
+                "No direct atomic motivation path: Gaschromatografische Trennung erklären und Chromatogramme deuten [5cd8b2a2-2c90-5e29-8061-dd5e3a682f9d]",
+                "No direct atomic motivation path: Qualitätskontrolle von Arzneimitteln an Belegen beurteilen [4a7dee38-1056-5e27-acec-e6a12f58109f]",
+                "No direct atomic terminal path: Stoffe nach Struktur und Eigenschaften ordnen [02dc29ae-4046-556a-b048-d64a0feb8f16]",
+                "No direct atomic terminal path: Reaktionstypen mechanismisch einordnen [7a05a1ce-45d3-571e-be51-afcd8dfd33ca]",
+                "No direct atomic terminal path: Stoffkreisläufe mit Reaktionen und physikalischen Vorgängen beschreiben [c0f1bf09-5a70-5006-b1e9-e91f786a63bf]",
+                "No direct atomic terminal path: Chemische Sachverhalte fachlich diskutieren [1f354a60-be44-512b-8f8b-f67c8c456035]"
+              ]
+            },
+            {
+              "id": "CQR-103",
+              "status": "pass",
+              "summary": "No scoped cluster-level requires remain.",
+              "metrics": {
+                "scopedClusterRequires": 0
+              }
+            },
+            {
+              "id": "CQR-201",
+              "status": "pass",
+              "summary": "All configured terminal autonomy goals have examData.",
+              "metrics": {
+                "terminalAutonomyGoals": 30,
+                "terminalAutonomyGoalsWithExamData": 30,
+                "terminalAutonomyGoalsWithoutExamData": 0
+              }
+            },
+            {
+              "id": "CQR-202",
+              "status": "fail",
+              "summary": "10 terminal autonomy examData item(s) are placeholders or incomplete.",
+              "metrics": {
+                "terminalAutonomyGoals": 30,
+                "concreteExamData": 20,
+                "weakExamData": 10
+              },
+              "details": [
+                "Weak examData: Biokunststoff aus Milchsäure [e6cb2efa-0fd5-518d-9df2-c75aa71fa4c6] (reviewStatus=draft)",
+                "Weak examData: Proteinshake und Denaturierung [8872d828-a025-5e45-af74-3d84caedfb73] (reviewStatus=draft)",
+                "Weak examData: ABS-Gehäuse im Recyclinglabor [954b55d6-8a2b-533d-8aff-dadaf6306916] (reviewStatus=draft)",
+                "Weak examData: Ammoniaksynthese im Containerlabor [35b76ced-abb8-558b-8e05-29aa3c587e75] (reviewStatus=draft)",
+                "Weak examData: Starke Referenzsäure für die Getränkekontrolle titrieren [bacf2568-03bc-5655-8798-cda078c897e3] (reviewStatus=draft)",
+                "Weak examData: Korrosionsschutz an einer Schiffsschraube [c31fa777-89c0-52f5-a6d9-d054027aabf5] (reviewStatus=draft)",
+                "Weak examData: Waschmittelkonzentrat und Temperaturwahl [4a2477e3-3bae-5452-8058-58e6ed9cc3e3] (reviewStatus=draft)",
+                "Weak examData: HE-GK: Materialgestützte Chemie-Abschlussaufgabe bearbeiten [14577339-9e0c-5b44-8e47-91e1a4947367] (reviewStatus=draft)",
+                "Weak examData: HE-LK: Materialgestützte Chemie-Abschlussaufgabe bearbeiten [32705a3a-9b7f-5cc0-ba41-881d13d0c45b] (reviewStatus=draft)",
+                "Weak examData: Prüfungsaufgabe: ein Salicylatprojekt durchgängig beurteilen [69928892-ac71-553d-a35c-4f96f16b6d6e] (reviewStatus=draft)"
+              ]
+            },
+            {
+              "id": "CQR-203",
+              "status": "warn",
+              "summary": "10 terminal autonomy examData item(s) lack release or coverage metadata.",
+              "metrics": {
+                "terminalAutonomyGoals": 30,
+                "releasedCoverageCompleteExamData": 20,
+                "releaseCoverageIncompleteExamData": 10
+              },
+              "details": [
+                "Incomplete exam release/coverage: Biokunststoff aus Milchsäure [e6cb2efa-0fd5-518d-9df2-c75aa71fa4c6] (reviewStatus is not released)",
+                "Incomplete exam release/coverage: Proteinshake und Denaturierung [8872d828-a025-5e45-af74-3d84caedfb73] (reviewStatus is not released)",
+                "Incomplete exam release/coverage: ABS-Gehäuse im Recyclinglabor [954b55d6-8a2b-533d-8aff-dadaf6306916] (reviewStatus is not released)",
+                "Incomplete exam release/coverage: Ammoniaksynthese im Containerlabor [35b76ced-abb8-558b-8e05-29aa3c587e75] (reviewStatus is not released)",
+                "Incomplete exam release/coverage: Starke Referenzsäure für die Getränkekontrolle titrieren [bacf2568-03bc-5655-8798-cda078c897e3] (reviewStatus is not released)",
+                "Incomplete exam release/coverage: Korrosionsschutz an einer Schiffsschraube [c31fa777-89c0-52f5-a6d9-d054027aabf5] (reviewStatus is not released)",
+                "Incomplete exam release/coverage: Waschmittelkonzentrat und Temperaturwahl [4a2477e3-3bae-5452-8058-58e6ed9cc3e3] (reviewStatus is not released)",
+                "Incomplete exam release/coverage: HE-GK: Materialgestützte Chemie-Abschlussaufgabe bearbeiten [14577339-9e0c-5b44-8e47-91e1a4947367] (reviewStatus is not released)",
+                "Incomplete exam release/coverage: HE-LK: Materialgestützte Chemie-Abschlussaufgabe bearbeiten [32705a3a-9b7f-5cc0-ba41-881d13d0c45b] (reviewStatus is not released)",
+                "Incomplete exam release/coverage: Prüfungsaufgabe: ein Salicylatprojekt durchgängig beurteilen [69928892-ac71-553d-a35c-4f96f16b6d6e] (reviewStatus is not released)"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "subject": "Mathematik",
+      "maturity": "M4",
+      "goals": 1252,
+      "rules": [
+        {
+          "id": "CQR-001",
+          "status": "pass",
+          "summary": "Basic graph integrity checks pass.",
+          "metrics": {
+            "goals": 1252,
+            "localReferenceIssues": 0
+          }
+        },
+        {
+          "id": "CQR-002",
+          "status": "pass",
+          "summary": "Explicit type metadata matches graph structure.",
+          "metrics": {
+            "mismatches": 0
+          }
+        },
+        {
+          "id": "CQR-000",
+          "status": "pass",
+          "summary": "All 16 declared Bundesland source inventories are readable, linked to official source URLs, and fully registered.",
+          "metrics": {
+            "totalJurisdictions": 16,
+            "completeSourceJurisdictions": 16,
+            "emptySourceJurisdictions": 0,
+            "missingReadableSourceInventoryJurisdictions": 0,
+            "originalSourceUrlIssues": 0,
+            "sourceExtractedGoals": 9978,
+            "sourceOriginalGoals": 9978,
+            "sourceUnregisteredGoals": 0,
+            "sourceExtractedAtomicGoals": 9978,
+            "sourceUnregisteredAtomicGoals": 0
+          }
+        },
+        {
+          "id": "CQR-003",
+          "status": "pass",
+          "summary": "All 16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.",
+          "metrics": {
+            "totalJurisdictions": 16,
+            "coveredJurisdictions": 16,
+            "sourceBackedJurisdictions": 16,
+            "sourceCompleteJurisdictions": 16,
+            "fullCoverageJurisdictions": 16,
+            "uncoveredJurisdictions": 0,
+            "incompleteJurisdictions": 0,
+            "unsupportedAssignmentJurisdictions": 0,
+            "sourceUnmappedJurisdictions": 0,
+            "unsupportedAssignedAtomicGoals": 0,
+            "unmappedSourceAtomicGoals": 0,
+            "sourceAtomicGoals": 9978,
+            "sourceMappedToViewAtomicGoals": 9978,
+            "sourceOriginalGoals": 9978,
+            "sourceFullyCoveredOriginalGoals": 9978,
+            "sourcePartiallyCoveredOriginalGoals": 0,
+            "sourceUncoveredOriginalGoals": 0,
+            "surrogateBackedAtomicGoals": 22,
+            "partialSourceLinkedAtomicGoals": 0,
+            "warningedJurisdictions": 0,
+            "cleanJurisdictions": 16,
+            "partialJurisdictions": 0,
+            "errorJurisdictions": 0,
+            "minSourceBackedAtomicGoals": 531,
+            "maxVisibleAtomicGoals": 707,
+            "maxSourceBackedAtomicGoals": 707,
+            "totalAtomicGoals": 717
+          }
+        },
+        {
+          "id": "CQR-004",
+          "status": "pass",
+          "summary": "Course-level mapping is clean for 637 upper-secondary source-to-canonical mapping edge(s), including 10 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+          "metrics": {
+            "configuredMappingFiles": 40,
+            "sourceGoals": 4051,
+            "sourceGoalsWithCourseLevel": 4051,
+            "gkLkSourceGoals": 2328,
+            "lkSourceGoals": 1245,
+            "unspecifiedSourceGoals": 62,
+            "checkedMappingEdges": 637,
+            "defaultedUnspecifiedMappingEdges": 110,
+            "reviewedCourseLevelExceptions": 10,
+            "mismatches": 0,
+            "missingSourceGoals": 0,
+            "missingTargetGoals": 0,
+            "unmappedCourseLevelSourceGoals": 0
+          }
+        },
+        {
+          "id": "CQR-005",
+          "status": "pass",
+          "summary": "Source-goal counts are inside the configured peer-baseline corridor or explicitly reviewed.",
+          "metrics": {
+            "sourceExtractionSources": 31,
+            "peerBaselineChecks": 27,
+            "failedPeerBaselineChecks": 0,
+            "granularityChecks": 0,
+            "failedGranularityChecks": 0
+          }
+        },
+        {
+          "id": "CQR-301",
+          "status": "pass",
+          "summary": "Semantic atomicity review ledgers are current and fully accepted.",
+          "metrics": {
+            "configs": 1,
+            "leafGoals": 807,
+            "atomic": 807,
+            "needsDeveloperReview": 0,
+            "nonAtomic": 0,
+            "missing": 0,
+            "stale": 0,
+            "obsolete": 0
+          }
+        },
+        {
+          "id": "CQR-302",
+          "status": "pass",
+          "summary": "Memory-card review is current: 40/807 ordinary atomic goals intentionally use memorization support, 64/64 primary cards are kept with origin traces, all 6 memory goals are traced, and 17 view-visible memory-required goals resolve to visible memory nodes.",
+          "metrics": {
+            "configs": 1,
+            "reviewedGoals": 807,
+            "noMemoryNeeded": 767,
+            "memoryRequired": 40,
+            "needsDeveloperReview": 0,
+            "missing": 0,
+            "stale": 0,
+            "obsolete": 0,
+            "duplicateRecords": 0,
+            "invalidRecords": 0,
+            "primaryCards": 64,
+            "keptCards": 64,
+            "cardsMarkedRemove": 0,
+            "cardNeedsDeveloperReview": 0,
+            "missingCardReviews": 0,
+            "staleCardReviews": 0,
+            "obsoleteCardReviews": 0,
+            "duplicateCardReviewRecords": 0,
+            "invalidCardReviewRecords": 0,
+            "untracedMemoryRequiredGoals": 0,
+            "visibilityScopes": 2,
+            "visibilityCheckedMemoryRequiredGoals": 17,
+            "visibilityMissingVisibleMemoryGoals": 0,
+            "visibilityErrors": 0,
+            "memoryGoals": 6,
+            "tracedMemoryGoals": 6,
+            "untracedMemoryGoals": 0,
+            "deckIds": 6,
+            "deckFiles": 12,
+            "cardRows": 128
+          },
+          "details": [
+            "canonical-math-full: audit report docs/qa-ci/status/memory-card-review-canonical-math-full.md"
+          ]
+        },
+        {
+          "id": "CQR-303",
+          "status": "fail",
+          "summary": "Deep curriculum QA is incomplete: 0/807 current curricularAtomic goals strictly complete.",
+          "metrics": {
+            "expectedGoals": 807,
+            "remaining": 807,
+            "strictComplete": 0,
+            "currentDescriptionResolutions": 807,
+            "currentPositiveEvidenceProfiles": 251,
+            "currentSemanticAtomicityDecisions": 807,
+            "currentMemoryReviewDecisions": 807,
+            "currentVisualizationQaRecords": 0,
+            "deferredVisualizations": 0,
+            "requiredChecksPassed": 4,
+            "requiredChecksTotal": 6,
+            "blockingIssues": 978
+          },
+          "details": [
+            "mathematik: curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-21/m7-extended-integration-informed-keep-1-v1/positive-evidence.config.json: 0d21097c-09bf-5375-8c56-34ce8dc5bc35: goal-visualization asset is missing at /mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/app/public/assets/goal-visualizations/mathematik/0d21097c-09bf-5375-8c56-34ce8dc5bc35/0d21097c-09bf-5375-8c56-34ce8dc5bc35.jpg",
+            "mathematik: curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-21/m7-extended-integration-informed-keep-1-v1/positive-evidence.config.json: 0d21097c-09bf-5375-8c56-34ce8dc5bc35: stale reviewInputFingerprint; expected sha256:eccba8446559d5f1b0c8e22ee497c84643fd9e695cc01449376eee7f0a368c8e",
+            "mathematik: curricula/DE/Gymnasium/quality/goal-evidence/2026-09-27/math-aeae-notation-imagegen-p-rebind-v1/positive-evidence.config.json: aeae526e-b3a4-5a17-b177-351df0307cb9: goal-visualization asset is missing at /mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/app/public/assets/goal-visualizations/mathematik/aeae526e-b3a4-5a17-b177-351df0307cb9/aeae526e-b3a4-5a17-b177-351df0307cb9.png",
+            "mathematik: curricula/DE/Gymnasium/quality/goal-evidence/2026-09-27/math-aeae-notation-imagegen-p-rebind-v1/positive-evidence.config.json: aeae526e-b3a4-5a17-b177-351df0307cb9: stale reviewInputFingerprint; expected sha256:54c62716017dcb4880099e458d480de3cb74996222ef70bd8bbbcc94bd8e4a3b",
+            "mathematik: curricula/DE/Gymnasium/quality/goal-evidence/2026-09-27/math-aeae-notation-imagegen-p-rebind-v1/retained-fourteen.config.json: 08b80080-4895-55df-8ca6-4e8c5eb0f9f5: goal-visualization asset is missing at /mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/app/public/assets/goal-visualizations/mathematik/08b80080-4895-55df-8ca6-4e8c5eb0f9f5/08b80080-4895-55df-8ca6-4e8c5eb0f9f5.jpg",
+            "mathematik: curricula/DE/Gymnasium/quality/goal-evidence/2026-09-27/math-aeae-notation-imagegen-p-rebind-v1/retained-fourteen.config.json: 08b80080-4895-55df-8ca6-4e8c5eb0f9f5: stale reviewInputFingerprint; expected sha256:5d609fbd47f8d565317eb805980dfb7fd5766d1b65e5bb27e8887a8a715591f3",
+            "mathematik: curricula/DE/Gymnasium/quality/goal-evidence/2026-09-27/math-aeae-notation-imagegen-p-rebind-v1/retained-fourteen.config.json: 121ef4c5-c1c2-5294-9582-86bab2355907: goal-visualization asset is missing at /mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/app/public/assets/goal-visualizations/mathematik/121ef4c5-c1c2-5294-9582-86bab2355907/121ef4c5-c1c2-5294-9582-86bab2355907.jpg",
+            "mathematik: curricula/DE/Gymnasium/quality/goal-evidence/2026-09-27/math-aeae-notation-imagegen-p-rebind-v1/retained-fourteen.config.json: 121ef4c5-c1c2-5294-9582-86bab2355907: stale reviewInputFingerprint; expected sha256:622d8ec9bf9803cd66b6645763afd687f7afab3fc19a48806cd2b1b811fc8869",
+            "mathematik: curricula/DE/Gymnasium/quality/goal-evidence/2026-09-27/math-aeae-notation-imagegen-p-rebind-v1/retained-fourteen.config.json: 18b43bc8-ee2a-5505-99ad-3a261a62f64a: goal-visualization asset is missing at /mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/app/public/assets/goal-visualizations/mathematik/18b43bc8-ee2a-5505-99ad-3a261a62f64a/18b43bc8-ee2a-5505-99ad-3a261a62f64a.jpg",
+            "mathematik: curricula/DE/Gymnasium/quality/goal-evidence/2026-09-27/math-aeae-notation-imagegen-p-rebind-v1/retained-fourteen.config.json: 18b43bc8-ee2a-5505-99ad-3a261a62f64a: stale reviewInputFingerprint; expected sha256:d6e523196fc8d5fe276f874876389ab3cc26342d64e9aa196c6866a5360ad38b",
+            "mathematik: curricula/DE/Gymnasium/quality/goal-evidence/2026-09-27/math-aeae-notation-imagegen-p-rebind-v1/retained-fourteen.config.json: 3019ed7f-8f74-5330-816c-17997156ed68: goal-visualization asset is missing at /mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/app/public/assets/goal-visualizations/mathematik/3019ed7f-8f74-5330-816c-17997156ed68/3019ed7f-8f74-5330-816c-17997156ed68.jpg",
+            "mathematik: curricula/DE/Gymnasium/quality/goal-evidence/2026-09-27/math-aeae-notation-imagegen-p-rebind-v1/retained-fourteen.config.json: 3019ed7f-8f74-5330-816c-17997156ed68: stale reviewInputFingerprint; expected sha256:eccfd7b3d3a5fedf2dedef061e3eb11e708c30b9a3405468fadb0b2e281c404c",
+            "mathematik: curricula/DE/Gymnasium/quality/goal-evidence/2026-09-27/math-aeae-notation-imagegen-p-rebind-v1/retained-fourteen.config.json: 33f2da84-d6ac-54d2-931a-76aed5cbc0c2: goal-visualization asset is missing at /mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/app/public/assets/goal-visualizations/mathematik/33f2da84-d6ac-54d2-931a-76aed5cbc0c2/33f2da84-d6ac-54d2-931a-76aed5cbc0c2.jpg",
+            "mathematik: curricula/DE/Gymnasium/quality/goal-evidence/2026-09-27/math-aeae-notation-imagegen-p-rebind-v1/retained-fourteen.config.json: 33f2da84-d6ac-54d2-931a-76aed5cbc0c2: stale reviewInputFingerprint; expected sha256:9ef79fb60cac871dfea60f7c1744358c41b24ac9760eb4a79c14dd9a5ed789fd",
+            "mathematik: curricula/DE/Gymnasium/quality/goal-evidence/2026-09-27/math-aeae-notation-imagegen-p-rebind-v1/retained-fourteen.config.json: 3b64b90b-ed89-5aeb-9838-bf05ccef9d77: goal-visualization asset is missing at /mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/app/public/assets/goal-visualizations/mathematik/3b64b90b-ed89-5aeb-9838-bf05ccef9d77/3b64b90b-ed89-5aeb-9838-bf05ccef9d77.jpg",
+            "mathematik: curricula/DE/Gymnasium/quality/goal-evidence/2026-09-27/math-aeae-notation-imagegen-p-rebind-v1/retained-fourteen.config.json: 3b64b90b-ed89-5aeb-9838-bf05ccef9d77: stale reviewInputFingerprint; expected sha256:07822c88668e321e6ed1d90f7d0be1bc6788d5bf67cbe9127efc2fb0bd72cb75",
+            "mathematik: curricula/DE/Gymnasium/quality/goal-evidence/2026-09-27/math-aeae-notation-imagegen-p-rebind-v1/retained-fourteen.config.json: 70f37fda-545f-51dc-a002-c8e435e5c4a5: goal-visualization asset is missing at /mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/app/public/assets/goal-visualizations/mathematik/70f37fda-545f-51dc-a002-c8e435e5c4a5/70f37fda-545f-51dc-a002-c8e435e5c4a5.jpg",
+            "mathematik: curricula/DE/Gymnasium/quality/goal-evidence/2026-09-27/math-aeae-notation-imagegen-p-rebind-v1/retained-fourteen.config.json: 70f37fda-545f-51dc-a002-c8e435e5c4a5: stale reviewInputFingerprint; expected sha256:1ddf1c3a03d2100a4c8c4e8f790c02c7d7bb548918334938692ad152bcf9e46b",
+            "mathematik: curricula/DE/Gymnasium/quality/goal-evidence/2026-09-27/math-aeae-notation-imagegen-p-rebind-v1/retained-fourteen.config.json: 8b635349-abc3-59e7-af93-ec28940bf690: goal-visualization asset is missing at /mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/app/public/assets/goal-visualizations/mathematik/8b635349-abc3-59e7-af93-ec28940bf690/8b635349-abc3-59e7-af93-ec28940bf690.jpg",
+            "mathematik: curricula/DE/Gymnasium/quality/goal-evidence/2026-09-27/math-aeae-notation-imagegen-p-rebind-v1/retained-fourteen.config.json: 8b635349-abc3-59e7-af93-ec28940bf690: stale reviewInputFingerprint; expected sha256:0104ddef799824a8ec7437ce9d2069131267eea2f6dc7cd952f5afa88c40f01a"
+          ]
+        },
+        {
+          "id": "CQR-401",
+          "status": "pass",
+          "summary": "88 composition view(s) are registered.",
+          "metrics": {
+            "compositionViews": 88
+          }
+        },
+        {
+          "id": "CQR-501",
+          "status": "warn",
+          "summary": "11 active and 0 obsolete accepted applicability warning(s) need review; 9415 partial-only diagnostic finding(s) are non-blocking.",
+          "metrics": {
+            "activeWarnings": 11,
+            "rawActiveWarnings": 11,
+            "diagnosticPartialOnlyWarnings": 9415,
+            "acceptedWarnings": 0,
+            "obsoleteAcceptedWarnings": 0
+          },
+          "details": [
+            "non-blocking partial-only applicability diagnostics APV-202: 9415",
+            "active warning type APV-203: 10",
+            "active warning type APV-201: 1",
+            "diagnostic finding type APV-202: 9415"
+          ]
+        }
+      ],
+      "scopes": [
+        {
+          "scopeId": "canonical-math-sek1",
+          "label": "Sekundarstufe I",
+          "selectedAtomicGoals": 282,
+          "maturity": "M4",
+          "rules": [
+            {
+              "id": "CQR-101",
+              "status": "pass",
+              "summary": "Effective route coverage is complete for the configured scope.",
+              "metrics": {
+                "selectedAtomicGoals": 282,
+                "missingMotivationPath": 0,
+                "missingTerminalPath": 0
+              }
+            },
+            {
+              "id": "CQR-102",
+              "status": "pass",
+              "summary": "Direct atomic route coverage is complete for the configured scope.",
+              "metrics": {
+                "selectedAtomicGoals": 282,
+                "missingDirectMotivationPath": 0,
+                "missingDirectTerminalPath": 0
+              }
+            },
+            {
+              "id": "CQR-103",
+              "status": "pass",
+              "summary": "No scoped cluster-level requires remain.",
+              "metrics": {
+                "scopedClusterRequires": 0
+              }
+            },
+            {
+              "id": "CQR-104",
+              "status": "pass",
+              "summary": "Route endpoints are exactly visible in every relevant learner-facing projection scope.",
+              "metrics": {
+                "relevantCompositionViews": 54,
+                "evaluatedProjectionScopes": 54,
+                "requiredMotivationAnchors": 1,
+                "minimumRequiredTerminalAutonomyGoals": 21,
+                "requiredTerminalAutonomyGoals": 55,
+                "projectionScopesMissingMotivationAnchors": 0,
+                "projectionScopesMissingTerminalAutonomyGoals": 0,
+                "projectionScopesWithUnexpectedTerminalAutonomyGoals": 0,
+                "projectionScopesWithoutExpectedTerminalAutonomyGoals": 0,
+                "terminalGoalsMissingCompiledApplicability": 0,
+                "projectionScopesWithInvalidStageStructure": 0,
+                "nationalProjectionScopesUsingJurisdictionStageAuthority": 0,
+                "nationalProjectionScopesMissingJurisdictionStageAuthority": 0,
+                "nationalProjectionScopesWithAmbiguousJurisdictionStageAuthority": 0,
+                "nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority": 0,
+                "nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority": 0,
+                "nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority": 0,
+                "projectionScopesWithIncompleteExplicitTerminalPrerequisites": 0,
+                "explicitTerminalPrerequisiteOccurrencesMissingFromProjection": 0,
+                "projectionScopesWithIncompleteWholeMaterialCoverageBindings": 0,
+                "wholeMaterialCoveredGoalOccurrencesWithoutVisiblePrerequisitePath": 0,
+                "projectionScopesWithIncompleteWholeMaterialPrerequisiteClosure": 0,
+                "wholeMaterialPrerequisiteOccurrencesMissingFromProjection": 0,
+                "uniqueExplicitTerminalPrerequisitesMissingFromProjection": 0,
+                "projectionLocalRouteChecksEnabled": 0,
+                "visibleSelectedAtomicGoalOccurrences": 11423,
+                "visibleProfileSelectedAtomicGoalOccurrences": 11423,
+                "visibleProjectedRouteTargetGoalOccurrences": 11423,
+                "visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector": 0,
+                "uniqueProjectedRouteTargetsExcludedByProfileSelector": 0,
+                "visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks": 0,
+                "projectionScopesMissingEffectiveMotivationRoutes": 0,
+                "projectionScopesMissingDirectMotivationRoutes": 0,
+                "projectionScopesMissingEffectiveTerminalRoutes": 0,
+                "projectionScopesMissingDirectTerminalRoutes": 0,
+                "visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+                "visibleSelectedGoalOccurrencesMissingDirectMotivationRoute": 0,
+                "visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+                "visibleSelectedGoalOccurrencesMissingDirectTerminalRoute": 0,
+                "profileSelectorExcludedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+                "profileSelectorExcludedGoalOccurrencesMissingDirectMotivationRoute": 0,
+                "profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+                "profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute": 0,
+                "uniqueVisibleSelectedGoalsMissingEffectiveMotivationRoute": 0,
+                "uniqueVisibleSelectedGoalsMissingDirectMotivationRoute": 0,
+                "uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute": 0,
+                "uniqueVisibleSelectedGoalsMissingDirectTerminalRoute": 0
+              }
+            },
+            {
+              "id": "CQR-201",
+              "status": "pass",
+              "summary": "All configured terminal autonomy goals have examData.",
+              "metrics": {
+                "terminalAutonomyGoals": 58,
+                "terminalAutonomyGoalsWithExamData": 58,
+                "terminalAutonomyGoalsWithoutExamData": 0
+              }
+            },
+            {
+              "id": "CQR-202",
+              "status": "pass",
+              "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+              "metrics": {
+                "terminalAutonomyGoals": 58,
+                "concreteExamData": 58,
+                "weakExamData": 0
+              }
+            },
+            {
+              "id": "CQR-203",
+              "status": "pass",
+              "summary": "All terminal autonomy examData has release and coverage metadata.",
+              "metrics": {
+                "terminalAutonomyGoals": 58,
+                "releasedCoverageCompleteExamData": 58,
+                "releaseCoverageIncompleteExamData": 0
+              }
+            }
+          ]
+        },
+        {
+          "scopeId": "canonical-math-sek2",
+          "label": "Sekundarstufe II",
+          "selectedAtomicGoals": 605,
+          "maturity": "M4",
+          "rules": [
+            {
+              "id": "CQR-101",
+              "status": "pass",
+              "summary": "Effective route coverage is complete for the configured scope.",
+              "metrics": {
+                "selectedAtomicGoals": 605,
+                "missingMotivationPath": 0,
+                "missingTerminalPath": 0
+              }
+            },
+            {
+              "id": "CQR-102",
+              "status": "pass",
+              "summary": "Direct atomic route coverage is complete for the configured scope.",
+              "metrics": {
+                "selectedAtomicGoals": 605,
+                "missingDirectMotivationPath": 0,
+                "missingDirectTerminalPath": 0
+              }
+            },
+            {
+              "id": "CQR-103",
+              "status": "pass",
+              "summary": "No scoped cluster-level requires remain.",
+              "metrics": {
+                "scopedClusterRequires": 0
+              }
+            },
+            {
+              "id": "CQR-201",
+              "status": "pass",
+              "summary": "All configured terminal autonomy goals have examData.",
+              "metrics": {
+                "terminalAutonomyGoals": 78,
+                "terminalAutonomyGoalsWithExamData": 78,
+                "terminalAutonomyGoalsWithoutExamData": 0
+              }
+            },
+            {
+              "id": "CQR-202",
+              "status": "pass",
+              "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+              "metrics": {
+                "terminalAutonomyGoals": 78,
+                "concreteExamData": 78,
+                "weakExamData": 0
+              }
+            },
+            {
+              "id": "CQR-203",
+              "status": "pass",
+              "summary": "All terminal autonomy examData has release and coverage metadata.",
+              "metrics": {
+                "terminalAutonomyGoals": 78,
+                "releasedCoverageCompleteExamData": 78,
+                "releaseCoverageIncompleteExamData": 0
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "subject": "Physik",
+      "maturity": "M4",
+      "goals": 764,
+      "rules": [
+        {
+          "id": "CQR-001",
+          "status": "pass",
+          "summary": "Basic graph integrity checks pass.",
+          "metrics": {
+            "goals": 764,
+            "localReferenceIssues": 0
+          }
+        },
+        {
+          "id": "CQR-002",
+          "status": "pass",
+          "summary": "Explicit type metadata matches graph structure.",
+          "metrics": {
+            "mismatches": 0
+          }
+        },
+        {
+          "id": "CQR-000",
+          "status": "pass",
+          "summary": "All 16 declared Bundesland source inventories are readable, linked to official source URLs, and fully registered.",
+          "metrics": {
+            "totalJurisdictions": 16,
+            "completeSourceJurisdictions": 16,
+            "emptySourceJurisdictions": 0,
+            "missingReadableSourceInventoryJurisdictions": 0,
+            "originalSourceUrlIssues": 0,
+            "sourceExtractedGoals": 6289,
+            "sourceOriginalGoals": 6289,
+            "sourceUnregisteredGoals": 0,
+            "sourceExtractedAtomicGoals": 6289,
+            "sourceUnregisteredAtomicGoals": 0
+          }
+        },
+        {
+          "id": "CQR-003",
+          "status": "pass",
+          "summary": "All 16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.",
+          "metrics": {
+            "totalJurisdictions": 16,
+            "coveredJurisdictions": 16,
+            "sourceBackedJurisdictions": 16,
+            "sourceCompleteJurisdictions": 16,
+            "fullCoverageJurisdictions": 16,
+            "uncoveredJurisdictions": 0,
+            "incompleteJurisdictions": 0,
+            "unsupportedAssignmentJurisdictions": 0,
+            "sourceUnmappedJurisdictions": 0,
+            "unsupportedAssignedAtomicGoals": 0,
+            "unmappedSourceAtomicGoals": 0,
+            "sourceAtomicGoals": 6289,
+            "sourceMappedToViewAtomicGoals": 6289,
+            "sourceOriginalGoals": 6289,
+            "sourceFullyCoveredOriginalGoals": 6289,
+            "sourcePartiallyCoveredOriginalGoals": 0,
+            "sourceUncoveredOriginalGoals": 0,
+            "surrogateBackedAtomicGoals": 0,
+            "partialSourceLinkedAtomicGoals": 0,
+            "warningedJurisdictions": 0,
+            "cleanJurisdictions": 16,
+            "partialJurisdictions": 0,
+            "errorJurisdictions": 0,
+            "minSourceBackedAtomicGoals": 219,
+            "maxVisibleAtomicGoals": 426,
+            "maxSourceBackedAtomicGoals": 426,
+            "totalAtomicGoals": 445
+          }
+        },
+        {
+          "id": "CQR-004",
+          "status": "pass",
+          "summary": "Course-level mapping is clean for 742 upper-secondary source-to-canonical mapping edge(s), including 0 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+          "metrics": {
+            "configuredMappingFiles": 25,
+            "sourceGoals": 3989,
+            "sourceGoalsWithCourseLevel": 3989,
+            "gkLkSourceGoals": 1769,
+            "lkSourceGoals": 1427,
+            "unspecifiedSourceGoals": 0,
+            "checkedMappingEdges": 742,
+            "defaultedUnspecifiedMappingEdges": 0,
+            "reviewedCourseLevelExceptions": 0,
+            "mismatches": 0,
+            "missingSourceGoals": 0,
+            "missingTargetGoals": 0,
+            "unmappedCourseLevelSourceGoals": 0
+          }
+        },
+        {
+          "id": "CQR-005",
+          "status": "pass",
+          "summary": "Source-goal counts are inside the configured peer-baseline corridor or explicitly reviewed.",
+          "metrics": {
+            "sourceExtractionSources": 25,
+            "peerBaselineChecks": 21,
+            "failedPeerBaselineChecks": 0,
+            "granularityChecks": 0,
+            "failedGranularityChecks": 0
+          }
+        },
+        {
+          "id": "CQR-301",
+          "status": "pass",
+          "summary": "Semantic atomicity review ledgers are current and fully accepted.",
+          "metrics": {
+            "configs": 1,
+            "leafGoals": 478,
+            "atomic": 478,
+            "needsDeveloperReview": 0,
+            "nonAtomic": 0,
+            "missing": 0,
+            "stale": 0,
+            "obsolete": 0
+          }
+        },
+        {
+          "id": "CQR-302",
+          "status": "pass",
+          "summary": "Memory-card review is current: 129/478 ordinary atomic goals intentionally use memorization support, 146/146 primary cards are kept with origin traces, all 5 memory goals are traced, and 258 view-visible memory-required goals resolve to visible memory nodes.",
+          "metrics": {
+            "configs": 1,
+            "reviewedGoals": 478,
+            "noMemoryNeeded": 349,
+            "memoryRequired": 129,
+            "needsDeveloperReview": 0,
+            "missing": 0,
+            "stale": 0,
+            "obsolete": 0,
+            "duplicateRecords": 0,
+            "invalidRecords": 0,
+            "primaryCards": 146,
+            "keptCards": 146,
+            "cardsMarkedRemove": 0,
+            "cardNeedsDeveloperReview": 0,
+            "missingCardReviews": 0,
+            "staleCardReviews": 0,
+            "obsoleteCardReviews": 0,
+            "duplicateCardReviewRecords": 0,
+            "invalidCardReviewRecords": 0,
+            "untracedMemoryRequiredGoals": 0,
+            "visibilityScopes": 2,
+            "visibilityCheckedMemoryRequiredGoals": 258,
+            "visibilityMissingVisibleMemoryGoals": 0,
+            "visibilityErrors": 0,
+            "memoryGoals": 5,
+            "tracedMemoryGoals": 5,
+            "untracedMemoryGoals": 0,
+            "deckIds": 5,
+            "deckFiles": 6,
+            "cardRows": 233
+          },
+          "details": [
+            "canonical-physics-full: audit report docs/qa-ci/status/memory-card-review-canonical-physics-full.md"
+          ]
+        },
+        {
+          "id": "CQR-303",
+          "status": "fail",
+          "summary": "Deep curriculum QA is incomplete: 0/478 current curricularAtomic goals strictly complete.",
+          "metrics": {
+            "expectedGoals": 478,
+            "remaining": 478,
+            "strictComplete": 0,
+            "currentDescriptionResolutions": 478,
+            "currentPositiveEvidenceProfiles": 158,
+            "currentSemanticAtomicityDecisions": 478,
+            "currentMemoryReviewDecisions": 478,
+            "currentVisualizationQaRecords": 0,
+            "deferredVisualizations": 0,
+            "requiredChecksPassed": 4,
+            "requiredChecksTotal": 6,
+            "blockingIssues": 268
+          },
+          "details": [
+            "physik: curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-final-diode-consolidation-v1/positive-evidence.config.json: 2084b7d4-300d-5fa0-8b8d-c480c40f853e: goal-visualization asset is missing at /mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/app/public/assets/goal-visualizations/physik/2084b7d4-300d-5fa0-8b8d-c480c40f853e/2084b7d4-300d-5fa0-8b8d-c480c40f853e.png",
+            "physik: curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-final-diode-consolidation-v1/positive-evidence.config.json: 2084b7d4-300d-5fa0-8b8d-c480c40f853e: stale reviewInputFingerprint; expected sha256:13160d47bc5344db39a8a6ce6d2957c4af59b96be5766d59685b62fd288b4513",
+            "physik: curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-final-diode-consolidation-v1/positive-evidence.config.json: 3857891b-d328-585b-9936-85c7aff122ee: goal-visualization asset is missing at /mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/app/public/assets/goal-visualizations/physik/3857891b-d328-585b-9936-85c7aff122ee/3857891b-d328-585b-9936-85c7aff122ee.png",
+            "physik: curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-final-diode-consolidation-v1/positive-evidence.config.json: 3857891b-d328-585b-9936-85c7aff122ee: stale reviewInputFingerprint; expected sha256:8a99e1e892f533042d4f4a9519b54660fe52b8dd370995b1b2b85b087589e8ac",
+            "physik: curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-final-diode-consolidation-v1/positive-evidence.config.json: 3b586f2a-60e2-5019-aa08-6a47616a1f1f: goal-visualization asset is missing at /mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/app/public/assets/goal-visualizations/physik/3b586f2a-60e2-5019-aa08-6a47616a1f1f/3b586f2a-60e2-5019-aa08-6a47616a1f1f.png",
+            "physik: curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-final-diode-consolidation-v1/positive-evidence.config.json: 3b586f2a-60e2-5019-aa08-6a47616a1f1f: stale reviewInputFingerprint; expected sha256:04d8e095a55a6836c8ee9756b13800fe80605bb2f976d5990b3b2555f44cbcc8",
+            "physik: curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-four-goal-completion-v1/positive-evidence.paused-current-20260908-v1.config.json: 68034218-8f3e-5f7f-ae4e-ed057dd4e44e: goal-visualization asset is missing at /mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/app/public/assets/goal-visualizations/physik/68034218-8f3e-5f7f-ae4e-ed057dd4e44e/68034218-8f3e-5f7f-ae4e-ed057dd4e44e.jpg",
+            "physik: curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-four-goal-completion-v1/positive-evidence.paused-current-20260908-v1.config.json: 68034218-8f3e-5f7f-ae4e-ed057dd4e44e: stale reviewInputFingerprint; expected sha256:86243d6981035f8b920f54cf106294b0a300549e4f4c50dec1106028916b0e4b",
+            "physik: curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-four-goal-completion-v1/positive-evidence.paused-current-20260908-v1.config.json: 69280706-5af6-5788-85b7-93287c2ffe74: goal-visualization asset is missing at /mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/app/public/assets/goal-visualizations/physik/69280706-5af6-5788-85b7-93287c2ffe74/69280706-5af6-5788-85b7-93287c2ffe74.jpg",
+            "physik: curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-four-goal-completion-v1/positive-evidence.paused-current-20260908-v1.config.json: 69280706-5af6-5788-85b7-93287c2ffe74: stale reviewInputFingerprint; expected sha256:2ce8a4aa1ffb36601adc8e53c73c85674c821e5a30c682903ce275fa8d0f099c",
+            "physik: curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-four-goal-completion-v1/positive-evidence.paused-current-20260908-v1.config.json: 922f32ba-f214-5a82-be5c-1111aca51d4a: goal-visualization asset is missing at /mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/app/public/assets/goal-visualizations/physik/922f32ba-f214-5a82-be5c-1111aca51d4a/922f32ba-f214-5a82-be5c-1111aca51d4a.jpg",
+            "physik: curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-four-goal-completion-v1/positive-evidence.paused-current-20260908-v1.config.json: 922f32ba-f214-5a82-be5c-1111aca51d4a: stale reviewInputFingerprint; expected sha256:a3ee893eccc2e7dd5c025ca6ee8a27c2f800f9e99d4e22470acc2a9db0042d4a",
+            "physik: curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-four-goal-completion-v1/positive-evidence.paused-current-20260908-v1.config.json: af50bb9a-fd7b-50f5-9698-48c4efe99032: goal-visualization asset is missing at /mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/app/public/assets/goal-visualizations/physik/af50bb9a-fd7b-50f5-9698-48c4efe99032/af50bb9a-fd7b-50f5-9698-48c4efe99032.jpg",
+            "physik: curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-four-goal-completion-v1/positive-evidence.paused-current-20260908-v1.config.json: af50bb9a-fd7b-50f5-9698-48c4efe99032: stale reviewInputFingerprint; expected sha256:f3b948ec2f65430491aaf6d8b2ac74eff0f2e27e137261e1bb8da2ff15f16697",
+            "physik: curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-four-goal-completion-v1/positive-evidence.paused-current-20260908-v1.config.json: c2af45aa-e3fc-5119-9159-c5a260b4135a: goal-visualization asset is missing at /mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/app/public/assets/goal-visualizations/physik/c2af45aa-e3fc-5119-9159-c5a260b4135a/c2af45aa-e3fc-5119-9159-c5a260b4135a.jpg",
+            "physik: curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-four-goal-completion-v1/positive-evidence.paused-current-20260908-v1.config.json: c2af45aa-e3fc-5119-9159-c5a260b4135a: stale reviewInputFingerprint; expected sha256:35994d15758912ab5e13bac92010da00bdc0972a47ea85180b3d42a0cfc3b796",
+            "physik: curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-four-goal-completion-v1/positive-evidence.paused-current-20260908-v1.config.json: e1b21fe9-ab6f-58c4-a0b6-9895061fbabb: goal-visualization asset is missing at /mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/app/public/assets/goal-visualizations/physik/e1b21fe9-ab6f-58c4-a0b6-9895061fbabb/e1b21fe9-ab6f-58c4-a0b6-9895061fbabb.jpg",
+            "physik: curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-four-goal-completion-v1/positive-evidence.paused-current-20260908-v1.config.json: e1b21fe9-ab6f-58c4-a0b6-9895061fbabb: stale reviewInputFingerprint; expected sha256:e635b46d1dbcfae2b3b768d4b8b8d13c041c900b0de7f4cd88aaa816d72c1f84",
+            "physik: curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-four-goal-completion-v1/positive-evidence.paused-current-20260908-v1.config.json: f505f039-3f07-5afe-88b8-f02532e9c2f0: goal-visualization asset is missing at /mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/app/public/assets/goal-visualizations/physik/f505f039-3f07-5afe-88b8-f02532e9c2f0/f505f039-3f07-5afe-88b8-f02532e9c2f0.jpg",
+            "physik: curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-four-goal-completion-v1/positive-evidence.paused-current-20260908-v1.config.json: f505f039-3f07-5afe-88b8-f02532e9c2f0: stale reviewInputFingerprint; expected sha256:52fcba312d601c72ce7c55f588bad330c4f63d646f3b29b9139f0dfc4064c489"
+          ]
+        },
+        {
+          "id": "CQR-401",
+          "status": "pass",
+          "summary": "69 composition view(s) are registered.",
+          "metrics": {
+            "compositionViews": 69
+          }
+        },
+        {
+          "id": "CQR-501",
+          "status": "warn",
+          "summary": "1 active and 0 obsolete accepted applicability warning(s) need review; 6341 partial-only diagnostic finding(s) are non-blocking.",
+          "metrics": {
+            "activeWarnings": 1,
+            "rawActiveWarnings": 1,
+            "diagnosticPartialOnlyWarnings": 6341,
+            "acceptedWarnings": 0,
+            "obsoleteAcceptedWarnings": 0
+          },
+          "details": [
+            "non-blocking partial-only applicability diagnostics APV-202: 6341",
+            "active warning type APV-201: 1",
+            "diagnostic finding type APV-202: 6341"
+          ]
+        }
+      ],
+      "scopes": [
+        {
+          "scopeId": "canonical-physics-sek1",
+          "label": "Sekundarstufe I",
+          "selectedAtomicGoals": 96,
+          "maturity": "M4",
+          "rules": [
+            {
+              "id": "CQR-101",
+              "status": "pass",
+              "summary": "Effective route coverage is complete for the configured scope.",
+              "metrics": {
+                "selectedAtomicGoals": 96,
+                "missingMotivationPath": 0,
+                "missingTerminalPath": 0
+              }
+            },
+            {
+              "id": "CQR-102",
+              "status": "pass",
+              "summary": "Direct atomic route coverage is complete for the configured scope.",
+              "metrics": {
+                "selectedAtomicGoals": 96,
+                "missingDirectMotivationPath": 0,
+                "missingDirectTerminalPath": 0
+              }
+            },
+            {
+              "id": "CQR-103",
+              "status": "pass",
+              "summary": "No scoped cluster-level requires remain.",
+              "metrics": {
+                "scopedClusterRequires": 0
+              }
+            },
+            {
+              "id": "CQR-104",
+              "status": "pass",
+              "summary": "Route endpoints are exactly visible and every visible selected goal stays on a visible atomic route from motivation to a terminal in every relevant learner-facing projection scope.",
+              "metrics": {
+                "relevantCompositionViews": 35,
+                "evaluatedProjectionScopes": 80,
+                "requiredMotivationAnchors": 1,
+                "minimumRequiredTerminalAutonomyGoals": 34,
+                "requiredTerminalAutonomyGoals": 55,
+                "projectionScopesMissingMotivationAnchors": 0,
+                "projectionScopesMissingTerminalAutonomyGoals": 0,
+                "projectionScopesWithUnexpectedTerminalAutonomyGoals": 0,
+                "projectionScopesWithoutExpectedTerminalAutonomyGoals": 0,
+                "terminalGoalsMissingCompiledApplicability": 0,
+                "projectionScopesWithInvalidStageStructure": 0,
+                "nationalProjectionScopesUsingJurisdictionStageAuthority": 48,
+                "nationalProjectionScopesMissingJurisdictionStageAuthority": 0,
+                "nationalProjectionScopesWithAmbiguousJurisdictionStageAuthority": 0,
+                "nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority": 1395,
+                "nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority": 159,
+                "nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority": 291,
+                "projectionScopesWithIncompleteExplicitTerminalPrerequisites": 0,
+                "explicitTerminalPrerequisiteOccurrencesMissingFromProjection": 0,
+                "projectionScopesWithIncompleteWholeMaterialCoverageBindings": 0,
+                "wholeMaterialCoveredGoalOccurrencesWithoutVisiblePrerequisitePath": 0,
+                "projectionScopesWithIncompleteWholeMaterialPrerequisiteClosure": 0,
+                "wholeMaterialPrerequisiteOccurrencesMissingFromProjection": 0,
+                "uniqueExplicitTerminalPrerequisitesMissingFromProjection": 0,
+                "projectionLocalRouteChecksEnabled": 1,
+                "visibleSelectedAtomicGoalOccurrences": 6371,
+                "visibleProfileSelectedAtomicGoalOccurrences": 6136,
+                "visibleProjectedRouteTargetGoalOccurrences": 6371,
+                "visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector": 235,
+                "uniqueProjectedRouteTargetsExcludedByProfileSelector": 61,
+                "visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks": 0,
+                "projectionScopesMissingEffectiveMotivationRoutes": 0,
+                "projectionScopesMissingDirectMotivationRoutes": 0,
+                "projectionScopesMissingEffectiveTerminalRoutes": 0,
+                "projectionScopesMissingDirectTerminalRoutes": 0,
+                "visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+                "visibleSelectedGoalOccurrencesMissingDirectMotivationRoute": 0,
+                "visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+                "visibleSelectedGoalOccurrencesMissingDirectTerminalRoute": 0,
+                "profileSelectorExcludedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+                "profileSelectorExcludedGoalOccurrencesMissingDirectMotivationRoute": 0,
+                "profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+                "profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute": 0,
+                "uniqueVisibleSelectedGoalsMissingEffectiveMotivationRoute": 0,
+                "uniqueVisibleSelectedGoalsMissingDirectMotivationRoute": 0,
+                "uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute": 0,
+                "uniqueVisibleSelectedGoalsMissingDirectTerminalRoute": 0
+              }
+            },
+            {
+              "id": "CQR-201",
+              "status": "pass",
+              "summary": "All configured terminal autonomy goals have examData.",
+              "metrics": {
+                "terminalAutonomyGoals": 65,
+                "terminalAutonomyGoalsWithExamData": 65,
+                "terminalAutonomyGoalsWithoutExamData": 0
+              }
+            },
+            {
+              "id": "CQR-202",
+              "status": "pass",
+              "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+              "metrics": {
+                "terminalAutonomyGoals": 65,
+                "concreteExamData": 65,
+                "weakExamData": 0
+              }
+            },
+            {
+              "id": "CQR-203",
+              "status": "pass",
+              "summary": "All terminal autonomy examData has release and coverage metadata.",
+              "metrics": {
+                "terminalAutonomyGoals": 65,
+                "releasedCoverageCompleteExamData": 65,
+                "releaseCoverageIncompleteExamData": 0
+              }
+            }
+          ]
+        },
+        {
+          "scopeId": "canonical-physics-sek2",
+          "label": "Sekundarstufe II",
+          "selectedAtomicGoals": 306,
+          "maturity": "M4",
+          "rules": [
+            {
+              "id": "CQR-101",
+              "status": "pass",
+              "summary": "Effective route coverage is complete for the configured scope.",
+              "metrics": {
+                "selectedAtomicGoals": 306,
+                "missingMotivationPath": 0,
+                "missingTerminalPath": 0
+              }
+            },
+            {
+              "id": "CQR-102",
+              "status": "pass",
+              "summary": "Direct atomic route coverage is complete for the configured scope.",
+              "metrics": {
+                "selectedAtomicGoals": 306,
+                "missingDirectMotivationPath": 0,
+                "missingDirectTerminalPath": 0
+              }
+            },
+            {
+              "id": "CQR-103",
+              "status": "pass",
+              "summary": "No scoped cluster-level requires remain.",
+              "metrics": {
+                "scopedClusterRequires": 0
+              }
+            },
+            {
+              "id": "CQR-201",
+              "status": "pass",
+              "summary": "All configured terminal autonomy goals have examData.",
+              "metrics": {
+                "terminalAutonomyGoals": 76,
+                "terminalAutonomyGoalsWithExamData": 76,
+                "terminalAutonomyGoalsWithoutExamData": 0
+              }
+            },
+            {
+              "id": "CQR-202",
+              "status": "pass",
+              "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+              "metrics": {
+                "terminalAutonomyGoals": 76,
+                "concreteExamData": 76,
+                "weakExamData": 0
+              }
+            },
+            {
+              "id": "CQR-203",
+              "status": "pass",
+              "summary": "All terminal autonomy examData has release and coverage metadata.",
+              "metrics": {
+                "terminalAutonomyGoals": 76,
+                "releasedCoverageCompleteExamData": 76,
+                "releaseCoverageIncompleteExamData": 0
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "subject": "Wirtschaftswissenschaften",
+      "maturity": "M4",
+      "goals": 702,
+      "rules": [
+        {
+          "id": "CQR-001",
+          "status": "pass",
+          "summary": "Basic graph integrity checks pass.",
+          "metrics": {
+            "goals": 702,
+            "localReferenceIssues": 0
+          }
+        },
+        {
+          "id": "CQR-002",
+          "status": "pass",
+          "summary": "Explicit type metadata matches graph structure.",
+          "metrics": {
+            "mismatches": 0
+          }
+        },
+        {
+          "id": "CQR-000",
+          "status": "pass",
+          "summary": "All 16 declared Bundesland source inventories are readable, linked to official source URLs, and fully registered.",
+          "metrics": {
+            "totalJurisdictions": 16,
+            "completeSourceJurisdictions": 16,
+            "emptySourceJurisdictions": 0,
+            "missingReadableSourceInventoryJurisdictions": 0,
+            "originalSourceUrlIssues": 0,
+            "sourceExtractedGoals": 2136,
+            "sourceOriginalGoals": 2136,
+            "sourceUnregisteredGoals": 0,
+            "sourceExtractedAtomicGoals": 2136,
+            "sourceUnregisteredAtomicGoals": 0
+          }
+        },
+        {
+          "id": "CQR-003",
+          "status": "pass",
+          "summary": "All 16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.",
+          "metrics": {
+            "totalJurisdictions": 16,
+            "coveredJurisdictions": 16,
+            "sourceBackedJurisdictions": 16,
+            "sourceCompleteJurisdictions": 16,
+            "fullCoverageJurisdictions": 16,
+            "uncoveredJurisdictions": 0,
+            "incompleteJurisdictions": 0,
+            "unsupportedAssignmentJurisdictions": 0,
+            "sourceUnmappedJurisdictions": 0,
+            "unsupportedAssignedAtomicGoals": 0,
+            "unmappedSourceAtomicGoals": 0,
+            "sourceAtomicGoals": 2136,
+            "sourceMappedToViewAtomicGoals": 2136,
+            "sourceOriginalGoals": 2136,
+            "sourceFullyCoveredOriginalGoals": 2136,
+            "sourcePartiallyCoveredOriginalGoals": 0,
+            "sourceUncoveredOriginalGoals": 0,
+            "surrogateBackedAtomicGoals": 63,
+            "partialSourceLinkedAtomicGoals": 0,
+            "warningedJurisdictions": 0,
+            "cleanJurisdictions": 16,
+            "partialJurisdictions": 0,
+            "errorJurisdictions": 0,
+            "minSourceBackedAtomicGoals": 71,
+            "maxVisibleAtomicGoals": 302,
+            "maxSourceBackedAtomicGoals": 302,
+            "totalAtomicGoals": 344
+          }
+        },
+        {
+          "id": "CQR-004",
+          "status": "pass",
+          "summary": "Course-level mapping is clean for 309 upper-secondary source-to-canonical mapping edge(s), including 1 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+          "metrics": {
+            "configuredMappingFiles": 32,
+            "sourceGoals": 1385,
+            "sourceGoalsWithCourseLevel": 1385,
+            "gkLkSourceGoals": 808,
+            "lkSourceGoals": 420,
+            "unspecifiedSourceGoals": 117,
+            "checkedMappingEdges": 309,
+            "defaultedUnspecifiedMappingEdges": 105,
+            "reviewedCourseLevelExceptions": 1,
+            "mismatches": 0,
+            "missingSourceGoals": 0,
+            "missingTargetGoals": 0,
+            "unmappedCourseLevelSourceGoals": 0
+          }
+        },
+        {
+          "id": "CQR-005",
+          "status": "pass",
+          "summary": "Source-goal counts are inside the configured peer-baseline corridor or explicitly reviewed.",
+          "metrics": {
+            "sourceExtractionSources": 30,
+            "peerBaselineChecks": 27,
+            "failedPeerBaselineChecks": 0,
+            "granularityChecks": 0,
+            "failedGranularityChecks": 0
+          }
+        },
+        {
+          "id": "CQR-301",
+          "status": "pass",
+          "summary": "Semantic atomicity review ledgers are current and fully accepted.",
+          "metrics": {
+            "configs": 1,
+            "leafGoals": 346,
+            "atomic": 346,
+            "needsDeveloperReview": 0,
+            "nonAtomic": 0,
+            "missing": 0,
+            "stale": 0,
+            "obsolete": 0
+          }
+        },
+        {
+          "id": "CQR-302",
+          "status": "pass",
+          "summary": "Memory-card review is current: 66/346 ordinary atomic goals intentionally use memorization support, 67/67 primary cards are kept with origin traces, all 10 memory goals are traced, and 1376 view-visible memory-required goals resolve to visible memory nodes.",
+          "metrics": {
+            "configs": 1,
+            "reviewedGoals": 346,
+            "noMemoryNeeded": 280,
+            "memoryRequired": 66,
+            "needsDeveloperReview": 0,
+            "missing": 0,
+            "stale": 0,
+            "obsolete": 0,
+            "duplicateRecords": 0,
+            "invalidRecords": 0,
+            "primaryCards": 67,
+            "keptCards": 67,
+            "cardsMarkedRemove": 0,
+            "cardNeedsDeveloperReview": 0,
+            "missingCardReviews": 0,
+            "staleCardReviews": 0,
+            "obsoleteCardReviews": 0,
+            "duplicateCardReviewRecords": 0,
+            "invalidCardReviewRecords": 0,
+            "untracedMemoryRequiredGoals": 0,
+            "visibilityScopes": 48,
+            "visibilityCheckedMemoryRequiredGoals": 1376,
+            "visibilityMissingVisibleMemoryGoals": 0,
+            "visibilityErrors": 0,
+            "memoryGoals": 10,
+            "tracedMemoryGoals": 10,
+            "untracedMemoryGoals": 0,
+            "deckIds": 10,
+            "deckFiles": 10,
+            "cardRows": 67
+          },
+          "details": [
+            "canonical-economics-full: audit report curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-CI-current-head-source-view-and-test-contract-root-v1/memory346.48-view-scopes.live-current.native-report.md"
+          ]
+        },
+        {
+          "id": "CQR-303",
+          "status": "fail",
+          "summary": "Deep curriculum QA is incomplete: 0/346 current curricularAtomic goals strictly complete.",
+          "metrics": {
+            "expectedGoals": 346,
+            "remaining": 346,
+            "strictComplete": 0,
+            "currentDescriptionResolutions": 346,
+            "currentPositiveEvidenceProfiles": 7,
+            "currentSemanticAtomicityDecisions": 346,
+            "currentMemoryReviewDecisions": 346,
+            "currentVisualizationQaRecords": 0,
+            "deferredVisualizations": 0,
+            "requiredChecksPassed": 4,
+            "requiredChecksTotal": 6,
+            "blockingIssues": 679
+          },
+          "details": [
+            "wirtschaftswissenschaften: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-01.only-final702-sem-pointer.activation-ready.config.json: 00a4e086-ed5b-5a3f-bcd9-a862d83c60ab: goal-visualization asset is missing at /mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/app/public/assets/goal-visualizations/wirtschaftswissenschaften/00a4e086-ed5b-5a3f-bcd9-a862d83c60ab/00a4e086-ed5b-5a3f-bcd9-a862d83c60ab.png",
+            "wirtschaftswissenschaften: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-01.only-final702-sem-pointer.activation-ready.config.json: 00a4e086-ed5b-5a3f-bcd9-a862d83c60ab: stale reviewInputFingerprint; expected sha256:d45138dd5fc7805c2d6daae50ccf058f3322193f18033a970d8e97f6f4653ee7",
+            "wirtschaftswissenschaften: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-01.only-final702-sem-pointer.activation-ready.config.json: 0e397f08-e472-50f4-a05b-81d76dd6d3fa: goal-visualization asset is missing at /mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/app/public/assets/goal-visualizations/wirtschaftswissenschaften/0e397f08-e472-50f4-a05b-81d76dd6d3fa/0e397f08-e472-50f4-a05b-81d76dd6d3fa.png",
+            "wirtschaftswissenschaften: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-01.only-final702-sem-pointer.activation-ready.config.json: 0e397f08-e472-50f4-a05b-81d76dd6d3fa: stale reviewInputFingerprint; expected sha256:52e75e1a16fb37770fb3445e6c27865c5dd8ae9ead5e7cf923141a09d6391437",
+            "wirtschaftswissenschaften: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-01.only-final702-sem-pointer.activation-ready.config.json: 1153a5a3-89b7-567b-8b8f-0128a91cde41: goal-visualization asset is missing at /mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/app/public/assets/goal-visualizations/wirtschaftswissenschaften/1153a5a3-89b7-567b-8b8f-0128a91cde41/1153a5a3-89b7-567b-8b8f-0128a91cde41.png",
+            "wirtschaftswissenschaften: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-01.only-final702-sem-pointer.activation-ready.config.json: 1153a5a3-89b7-567b-8b8f-0128a91cde41: stale reviewInputFingerprint; expected sha256:0f7089ed7fffcfb1c2c9310603e34fde7ad7cb7693f97b1edbff750f9974e7f8",
+            "wirtschaftswissenschaften: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-01.only-final702-sem-pointer.activation-ready.config.json: 273809d9-bc31-5c1b-8a58-149dd61d2ba0: goal-visualization asset is missing at /mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/app/public/assets/goal-visualizations/wirtschaftswissenschaften/273809d9-bc31-5c1b-8a58-149dd61d2ba0/273809d9-bc31-5c1b-8a58-149dd61d2ba0.png",
+            "wirtschaftswissenschaften: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-01.only-final702-sem-pointer.activation-ready.config.json: 273809d9-bc31-5c1b-8a58-149dd61d2ba0: stale reviewInputFingerprint; expected sha256:1bb836d1605cb6f1084c2f5aedda7c7d44b1d4989ffceffb9e188f53579d04d1",
+            "wirtschaftswissenschaften: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-01.only-final702-sem-pointer.activation-ready.config.json: 2d933a56-3e5f-5f0c-a33d-d314d18a6d26: goal-visualization asset is missing at /mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/app/public/assets/goal-visualizations/wirtschaftswissenschaften/2d933a56-3e5f-5f0c-a33d-d314d18a6d26/2d933a56-3e5f-5f0c-a33d-d314d18a6d26.png",
+            "wirtschaftswissenschaften: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-01.only-final702-sem-pointer.activation-ready.config.json: 2d933a56-3e5f-5f0c-a33d-d314d18a6d26: stale reviewInputFingerprint; expected sha256:277106386cd12eedf3bc3d3125e7df157c5aa48152d3cbae02d6fd583c472e9b",
+            "wirtschaftswissenschaften: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-01.only-final702-sem-pointer.activation-ready.config.json: 5394d443-e484-5ddd-bded-03d60ab5b71f: goal-visualization asset is missing at /mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/app/public/assets/goal-visualizations/wirtschaftswissenschaften/5394d443-e484-5ddd-bded-03d60ab5b71f/5394d443-e484-5ddd-bded-03d60ab5b71f.png",
+            "wirtschaftswissenschaften: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-01.only-final702-sem-pointer.activation-ready.config.json: 5394d443-e484-5ddd-bded-03d60ab5b71f: stale reviewInputFingerprint; expected sha256:6e0fe2b33d7b35d80d5672b835c4b8364c2d62ee8f8699faba51f9bd841bc0e8",
+            "wirtschaftswissenschaften: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-01.only-final702-sem-pointer.activation-ready.config.json: 83779981-2279-5f96-8ea3-2293e801973f: goal-visualization asset is missing at /mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/app/public/assets/goal-visualizations/wirtschaftswissenschaften/83779981-2279-5f96-8ea3-2293e801973f/83779981-2279-5f96-8ea3-2293e801973f.png",
+            "wirtschaftswissenschaften: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-01.only-final702-sem-pointer.activation-ready.config.json: 83779981-2279-5f96-8ea3-2293e801973f: stale reviewInputFingerprint; expected sha256:52a1148e43a32d5cbae14ed93233475c64b491733335293ecf50a440ddca4b44",
+            "wirtschaftswissenschaften: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-01.only-final702-sem-pointer.activation-ready.config.json: 8c3ebc36-22e6-5c9d-a921-e8b3e679261c: goal-visualization asset is missing at /mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/app/public/assets/goal-visualizations/wirtschaftswissenschaften/8c3ebc36-22e6-5c9d-a921-e8b3e679261c/8c3ebc36-22e6-5c9d-a921-e8b3e679261c.png",
+            "wirtschaftswissenschaften: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-01.only-final702-sem-pointer.activation-ready.config.json: 8c3ebc36-22e6-5c9d-a921-e8b3e679261c: stale reviewInputFingerprint; expected sha256:59567f12ea9d893e5f4efb483f7c23d7daba43b8c7ddff666b99475fa6f8e251",
+            "wirtschaftswissenschaften: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-01.only-final702-sem-pointer.activation-ready.config.json: b08b7a2e-e281-5dc8-b79d-5d44032fb6cc: goal-visualization asset is missing at /mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/app/public/assets/goal-visualizations/wirtschaftswissenschaften/b08b7a2e-e281-5dc8-b79d-5d44032fb6cc/b08b7a2e-e281-5dc8-b79d-5d44032fb6cc.png",
+            "wirtschaftswissenschaften: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-01.only-final702-sem-pointer.activation-ready.config.json: b08b7a2e-e281-5dc8-b79d-5d44032fb6cc: stale reviewInputFingerprint; expected sha256:6bd2a1c2258c1e6f36cbe84f95c573c770d94e54a52747c126a9d9dafcf1fc44",
+            "wirtschaftswissenschaften: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-01.only-final702-sem-pointer.activation-ready.config.json: c3512617-8522-5751-8660-5241a6379790: goal-visualization asset is missing at /mnt/e/skillpilot-chemie-L7-20261017/current439-remediation14-guarded-root-integration-technical-v1/capsule/app/public/assets/goal-visualizations/wirtschaftswissenschaften/c3512617-8522-5751-8660-5241a6379790/c3512617-8522-5751-8660-5241a6379790.png",
+            "wirtschaftswissenschaften: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-01.only-final702-sem-pointer.activation-ready.config.json: c3512617-8522-5751-8660-5241a6379790: stale reviewInputFingerprint; expected sha256:77bf9aa4888ed7699ef5df172aa657ba78f47265003424189daadd7cd014815f"
+          ]
+        },
+        {
+          "id": "CQR-401",
+          "status": "pass",
+          "summary": "48 composition view(s) are registered.",
+          "metrics": {
+            "compositionViews": 48
+          }
+        },
+        {
+          "id": "CQR-501",
+          "status": "warn",
+          "summary": "11 active and 0 obsolete accepted applicability warning(s) need review; 1485 partial-only diagnostic finding(s) are non-blocking.",
+          "metrics": {
+            "activeWarnings": 11,
+            "rawActiveWarnings": 11,
+            "diagnosticPartialOnlyWarnings": 1485,
+            "acceptedWarnings": 0,
+            "obsoleteAcceptedWarnings": 0
+          },
+          "details": [
+            "non-blocking partial-only applicability diagnostics APV-202: 1485",
+            "active warning type APV-201: 11",
+            "diagnostic finding type APV-202: 1485"
+          ]
+        }
+      ],
+      "scopes": [
+        {
+          "scopeId": "canonical-economics-crossstage",
+          "label": "Sekundarstufe I/II",
+          "selectedAtomicGoals": 346,
+          "maturity": "M4",
+          "rules": [
+            {
+              "id": "CQR-101",
+              "status": "pass",
+              "summary": "Effective route coverage is complete for the configured scope.",
+              "metrics": {
+                "selectedAtomicGoals": 346,
+                "missingMotivationPath": 0,
+                "missingTerminalPath": 0
+              }
+            },
+            {
+              "id": "CQR-102",
+              "status": "pass",
+              "summary": "Direct atomic route coverage is complete for the configured scope.",
+              "metrics": {
+                "selectedAtomicGoals": 346,
+                "missingDirectMotivationPath": 0,
+                "missingDirectTerminalPath": 0
+              }
+            },
+            {
+              "id": "CQR-103",
+              "status": "pass",
+              "summary": "No scoped cluster-level requires remain.",
+              "metrics": {
+                "scopedClusterRequires": 0
+              }
+            },
+            {
+              "id": "CQR-104",
+              "status": "pass",
+              "summary": "Route endpoints are exactly visible and every visible selected goal stays on a visible atomic route from motivation to a terminal in every relevant learner-facing projection scope.",
+              "metrics": {
+                "relevantCompositionViews": 34,
+                "evaluatedProjectionScopes": 64,
+                "requiredMotivationAnchors": 1,
+                "minimumRequiredTerminalAutonomyGoals": 44,
+                "requiredTerminalAutonomyGoals": 262,
+                "projectionScopesMissingMotivationAnchors": 0,
+                "projectionScopesMissingTerminalAutonomyGoals": 0,
+                "projectionScopesWithUnexpectedTerminalAutonomyGoals": 0,
+                "projectionScopesWithoutExpectedTerminalAutonomyGoals": 0,
+                "terminalGoalsMissingCompiledApplicability": 0,
+                "projectionScopesWithInvalidStageStructure": 0,
+                "nationalProjectionScopesUsingJurisdictionStageAuthority": 32,
+                "nationalProjectionScopesMissingJurisdictionStageAuthority": 0,
+                "nationalProjectionScopesWithAmbiguousJurisdictionStageAuthority": 0,
+                "nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority": 697,
+                "nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority": 326,
+                "nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority": 120,
+                "projectionScopesWithIncompleteExplicitTerminalPrerequisites": 0,
+                "explicitTerminalPrerequisiteOccurrencesMissingFromProjection": 0,
+                "projectionScopesWithIncompleteWholeMaterialCoverageBindings": 0,
+                "wholeMaterialCoveredGoalOccurrencesWithoutVisiblePrerequisitePath": 0,
+                "projectionScopesWithIncompleteWholeMaterialPrerequisiteClosure": 0,
+                "wholeMaterialPrerequisiteOccurrencesMissingFromProjection": 0,
+                "uniqueExplicitTerminalPrerequisitesMissingFromProjection": 0,
+                "projectionLocalRouteChecksEnabled": 1,
+                "visibleSelectedAtomicGoalOccurrences": 6996,
+                "visibleProfileSelectedAtomicGoalOccurrences": 6996,
+                "visibleProjectedRouteTargetGoalOccurrences": 6996,
+                "visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector": 0,
+                "uniqueProjectedRouteTargetsExcludedByProfileSelector": 0,
+                "visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks": 0,
+                "projectionScopesMissingEffectiveMotivationRoutes": 0,
+                "projectionScopesMissingDirectMotivationRoutes": 0,
+                "projectionScopesMissingEffectiveTerminalRoutes": 0,
+                "projectionScopesMissingDirectTerminalRoutes": 0,
+                "visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+                "visibleSelectedGoalOccurrencesMissingDirectMotivationRoute": 0,
+                "visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+                "visibleSelectedGoalOccurrencesMissingDirectTerminalRoute": 0,
+                "profileSelectorExcludedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+                "profileSelectorExcludedGoalOccurrencesMissingDirectMotivationRoute": 0,
+                "profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+                "profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute": 0,
+                "uniqueVisibleSelectedGoalsMissingEffectiveMotivationRoute": 0,
+                "uniqueVisibleSelectedGoalsMissingDirectMotivationRoute": 0,
+                "uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute": 0,
+                "uniqueVisibleSelectedGoalsMissingDirectTerminalRoute": 0
+              }
+            },
+            {
+              "id": "CQR-201",
+              "status": "pass",
+              "summary": "All configured terminal autonomy goals have examData.",
+              "metrics": {
+                "terminalAutonomyGoals": 287,
+                "terminalAutonomyGoalsWithExamData": 287,
+                "terminalAutonomyGoalsWithoutExamData": 0
+              }
+            },
+            {
+              "id": "CQR-202",
+              "status": "pass",
+              "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+              "metrics": {
+                "terminalAutonomyGoals": 287,
+                "concreteExamData": 287,
+                "weakExamData": 0
+              }
+            },
+            {
+              "id": "CQR-203",
+              "status": "pass",
+              "summary": "All terminal autonomy examData has release and coverage metadata.",
+              "metrics": {
+                "terminalAutonomyGoals": 287,
+                "releasedCoverageCompleteExamData": 287,
+                "releaseCoverageIncompleteExamData": 0
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

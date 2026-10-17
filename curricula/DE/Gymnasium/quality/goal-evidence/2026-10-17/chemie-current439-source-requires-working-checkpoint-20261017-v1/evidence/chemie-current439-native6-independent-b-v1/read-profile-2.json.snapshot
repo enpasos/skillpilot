@@ -1,0 +1,56 @@
+{
+  "archetype": "modeling",
+  "expectations": [
+    {
+      "id": "amphiphilic-interface",
+      "essentialUnderstandingDe": "Seifen besitzen hydrophile Carboxylatköpfe und hydrophobe Kohlenwasserstoffreste. Ihre Anordnung hängt davon ab, welche Seite der Grenzfläche Wasser berührt.",
+      "essentialUnderstandingEn": "Soaps have hydrophilic carboxylate heads and hydrophobic hydrocarbon tails. Their arrangement depends on which side of the interface touches water.",
+      "observablePerformanceDe": "Kopf und Rest in einer Struktur markieren und Moleküle an Luft/Wasser- und Öl/Wasser-Grenzflächen begründet ausrichten.",
+      "observablePerformanceEn": "Mark head and tail in a structure and justify molecular orientations at air/water and oil/water interfaces."
+    },
+    {
+      "id": "micelles-emulsion-surface",
+      "essentialUnderstandingDe": "In einer normalen wässrigen Micelle weisen hydrophobe Reste überwiegend nach innen und Köpfe nach außen. Tenside können Öl dispergieren und die Oberflächenspannung verringern; Dispersion ist keine chemische Auflösung oder Fettspaltung.",
+      "essentialUnderstandingEn": "In a normal aqueous micelle hydrophobic tails mainly point inward and heads outward. Surfactants can disperse oil and lower surface tension; dispersion is not chemical dissolution or fat cleavage.",
+      "observablePerformanceDe": "Micellen, emulgierte Öltröpfchen und Luft/Wasser-Grenzflächen unterscheiden und bereitgestellte Dispersions-/Oberflächenspannungsdaten mit der Struktur erklären.",
+      "observablePerformanceEn": "Distinguish micelles, emulsified oil droplets and air/water interfaces and explain supplied dispersion/surface-tension data using structure."
+    }
+  ],
+  "coverageExpectations": {
+    "requiredExpectationIds": [
+      "amphiphilic-interface",
+      "micelles-emulsion-surface"
+    ],
+    "alternativeExpectationGroups": [],
+    "minimumIndependentDemonstrations": 2,
+    "freshVariationRequired": true,
+    "independentTransferRequired": true
+  },
+  "variationAxes": [
+    {
+      "id": "changed-chemical-case",
+      "textDe": "Andere Grenzflächen und umgekehrte Phasenlage; Molekülorientierung aus den berührenden Phasen statt aus einer auswendig gelernten Kreiszeichnung.",
+      "textEn": "Change interfaces and reverse phase geometry; infer molecular orientation from contacting phases instead of memorizing a circular drawing."
+    }
+  ],
+  "applicationCaseBriefs": [
+    {
+      "id": "oil-in-water-and-surface",
+      "taskDemandDe": "Zeichne die Anordnung einer vorgegebenen Seife an Luft/Wasser und um ein Öltröpfchen in Wasser. Erkläre zusätzlich eine normale wässrige Micelle sowie bereitgestellte Daten mit/ohne Tensid: Öl bleibt länger verteilt und die Oberflächenspannung sinkt.",
+      "taskDemandEn": "Draw a supplied soap at air/water and around an oil droplet in water. Explain a normal aqueous micelle and supplied with/without-surfactant data: oil remains dispersed longer and surface tension falls.",
+      "expectedPerformanceDe": "Köpfe berühren Wasser, Reste Luft bzw. Öl; in der normalen Micelle liegen Reste innen. Das stabilisierte dispergierte Öl bleibt eine getrennte Phase. An der Oberfläche verändern adsorbierte Tenside die Grenzflächenenergie; weder Seifenbildung noch Fettspaltung ist erforderlich.",
+      "expectedPerformanceEn": "Heads contact water, tails air or oil; normal micelle tails point inward. Stabilized dispersed oil remains a separate phase. Adsorbed surfactants change interfacial energy; neither soap production nor fat cleavage is required.",
+      "understandingFocusDe": "Grenzfläche, Micelle und Wirkung verbunden erklären.",
+      "understandingFocusEn": "Connect interface, micelle and action."
+    },
+    {
+      "id": "water-drop-in-oil-interface",
+      "taskDemandDe": "Frisch gegeben ist ein hypothetisches Wassertröpfchen in einer zusammenhängenden Ölphase. Sage allein aus der amphiphilen Struktur die bevorzugte Orientierung einer Seife an dieser Grenzfläche voraus und begründe, warum damit noch keine stabile inverse Micelle oder Emulsion bewiesen ist.",
+      "taskDemandEn": "A fresh hypothetical water droplet sits in continuous oil. Predict only the preferred interfacial soap orientation from amphiphilic structure and explain why this does not prove a stable inverse micelle or emulsion.",
+      "expectedPerformanceDe": "Köpfe richten sich zum Wassertröpfchen, Reste zur äußeren Ölphase. Die Orientierung folgt aus Phasenkontakt; Stabilität erfordert zusätzliche Bedingungen/Daten und ist nicht bei jeder Seife garantiert. Die normale wässrige Micelle ist anders orientiert.",
+      "expectedPerformanceEn": "Heads face the water droplet, tails the surrounding oil. Phase contact explains orientation; stability needs additional conditions/data and is not guaranteed for every soap. A normal aqueous micelle has the opposite geometry.",
+      "understandingFocusDe": "Frischer Phasen-/Modellgrenzentransfer.",
+      "understandingFocusEn": "Fresh phase and model-limit transfer."
+    }
+  ]
+}

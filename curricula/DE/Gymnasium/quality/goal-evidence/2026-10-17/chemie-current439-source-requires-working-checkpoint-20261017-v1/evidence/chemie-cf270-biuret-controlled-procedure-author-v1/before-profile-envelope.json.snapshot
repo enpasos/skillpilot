@@ -1,0 +1,66 @@
+{
+  "goalId": "cf270aaf-235a-55a7-94a2-c4d9d7570a6b",
+  "goalFingerprint": "sha256:b07469051202ac5c1e72159576aeb32ae3ae02bce1684938dccd0bb0fc22bde1",
+  "profileRuleVersion": "positive-understanding-evidence-v2",
+  "profileFingerprint": "sha256:464af5a63f2a79f59188b0fe053e391fff9f273ed5180c96174e68405f64163f",
+  "status": "needs_human_review",
+  "reviewAuthority": "ai_candidate",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "profile": {
+    "archetype": "concept",
+    "expectations": [
+      {
+        "id": "aspect-1",
+        "essentialUnderstandingDe": "Durchführung und Koordination am kontrollierten Test verbinden.",
+        "essentialUnderstandingEn": "Link controlled execution to coordination.",
+        "observablePerformanceDe": "Violett bei geeigneter Peptidprobe; Glycin/Wasser keine Biuret-Positivkontrolle. CuII koordiniert in alkalischer Lösung geeignete Peptid-Stickstoffdonoren; blauer Cu(OH)2-Niederschlag bei Reagenzüberschuss ist keinvioletter Proteinbefund.",
+        "observablePerformanceEn": "Suitable peptide sample violet; glycine/water are not positive biuret controls. Cu(II) coordinates suitable peptide N donors in alkali; blue Cu(OH)2 precipitate from excess reagent is not a violet protein result."
+      },
+      {
+        "id": "aspect-2",
+        "essentialUnderstandingDe": "Ein Nachweis benötigt Kontrollen und begrenzte Schlüsse.",
+        "essentialUnderstandingEn": "An assay needs controls and bounded conclusions.",
+        "observablePerformanceDe": "Proteinkontrolle prüft Reagenzfunktion; Verdünnung kann Nachweisgrenze unterschreiten. Negativ bedeutetkein Nachweis unterdiesen Bedingungen, nichtabsolutkeine Peptidbindung; keine Aminosäuren-Einzelidentifikation.",
+        "observablePerformanceEn": "Protein control checks reagent function; dilution can fall below detection limit. Negative means not detected under conditions, not absence of all peptide bonds; no unique amino acid identification."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "aspect-1",
+        "aspect-2"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "material-operator-context",
+        "textDe": "Die ausgearbeiteten Fälle wechseln Stoff, Kontrollprobe, pH, Bezugsgröße, Quellenweg oder Nutzungskontext. Werte sind ausdrücklich Aufgabenwerte; tatsächliche Durchführung/Recherche wird im individuellen Lernpfad nur anhand vorgelegter Arbeit beurteilt.",
+        "textEn": "Worked cases vary substance, control, pH, unit, search path or use. Values are task data; actual individual execution/research is assessed only from submitted work."
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "case-1",
+        "taskDemandDe": "Führe betreut eine Biuret-Serie aus: je2mL verdünntes Eiklar, 1%Glycin, Wasser; je1mLNaOH1mol/L und10Tropfen CuSO4 0, 1mol/L zugeben und vorsichtig mischen. Proben beschriften, getrennte Pipetten verwenden, tatsächliche Farben/Niederschläge aufzeichnen. Deute mit Peptidgruppen.",
+        "taskDemandEn": "Execute a supervised biuret series: 2mL each diluted eggwhite, 1%glycine, water; add1mL1mol/L NaOH and10drops0.1mol/L CuSO4, mix gently, label, use separate pipettes and record actual colours/precipitates. Explain using peptide groups.",
+        "expectedPerformanceDe": "Violett bei geeigneter Peptidprobe; Glycin/Wasser keine Biuret-Positivkontrolle. CuII koordiniert in alkalischer Lösung geeignete Peptid-Stickstoffdonoren; blauer Cu(OH)2-Niederschlag bei Reagenzüberschuss ist keinvioletter Proteinbefund.",
+        "expectedPerformanceEn": "Suitable peptide sample violet; glycine/water are not positive biuret controls. Cu(II) coordinates suitable peptide N donors in alkali; blue Cu(OH)2 precipitate from excess reagent is not a violet protein result.",
+        "understandingFocusDe": "Durchführung und Koordination am kontrollierten Test verbinden.",
+        "understandingFocusEn": "Link controlled execution to coordination."
+      },
+      {
+        "id": "case-2",
+        "taskDemandDe": "Führe mit Gelatine statt Eiklar eine zweite Serie aus und untersuche eine starkverdünnte Gelatineprobe. Erkläre einen schwachen/ausbleibenden Farbbefund und die Grenze des Nachweises; protokolliere Kontrollen und tatsächliche Durchführung.",
+        "taskDemandEn": "Execute another series using gelatin and a strongly diluted gelatin sample. Explain weak/absent colour and detection limits; record controls and actual execution.",
+        "expectedPerformanceDe": "Proteinkontrolle prüft Reagenzfunktion; Verdünnung kann Nachweisgrenze unterschreiten. Negativ bedeutetkein Nachweis unterdiesen Bedingungen, nichtabsolutkeine Peptidbindung; keine Aminosäuren-Einzelidentifikation.",
+        "expectedPerformanceEn": "Protein control checks reagent function; dilution can fall below detection limit. Negative means not detected under conditions, not absence of all peptide bonds; no unique amino acid identification.",
+        "understandingFocusDe": "Ein Nachweis benötigt Kontrollen und begrenzte Schlüsse.",
+        "understandingFocusEn": "An assay needs controls and bounded conclusions."
+      }
+    ]
+  }
+}

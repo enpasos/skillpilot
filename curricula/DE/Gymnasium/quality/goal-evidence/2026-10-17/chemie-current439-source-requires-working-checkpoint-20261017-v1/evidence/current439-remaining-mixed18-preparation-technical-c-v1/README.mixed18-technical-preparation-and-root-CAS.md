@@ -1,0 +1,13 @@
+# Current439 remaining Mixed18 technical preparation
+
+The remaining18 of the sealed concrete51 inventory are prepared in actual full439 book order: five requires-only plus13 with mixed specific changes. The overlapping concrete flags are requires13, raw jurisdiction9, existing whole P7 and current asset binding4; no final DE/EN text differs. The exact historical-to-current fields remain explicit in the selection. Current canonical/P/SEM/QA/assets are copied by readonly reference without editing or new scientific judgement. For9decc36b-a69a-5599-a9f0-fcebdf0203d8 the historical D input had no embedded P; the current existing profile is embedded for the first time. This is separate from the seven actual embedded-profile changes.
+
+The source is Root18/196, ledger1269d3db20df75623ea8f73f34f5822bb1d81e0250f2893cd1e069ef1b1bc675. One actual stock prepare and one actual stock prepared validator passed. Commands, timing and raw outputs are preserved. The required stock in-memory base load yields base digest4b97c2a295643d56546e38c394caa60f622eeeb0c2ea997dace1e6da12808a54. No central or standalone full439 compiler/model/PDF command ran.
+
+The frozen clean selector contains current18 subset HTML/PDF/images, exact identical formal inputs for two distinct blind campaigns, current whole C/P records, teacher prerequisites/parents/navigation context, and245 matching current direct source partners from20 mappingfiles/17 existing original source references. It contains no peer verdict or expected review outcome. Preparation gives no new P/image/source review, evidence level, science vote or approval.
+
+Only this private capsule receives an administrative handoff. Original18 configs and ledger are archived byte-exact. Eleven old claims move into the new18; six remainder scopes keep11/10/14/9/15/16 goals in their exact original order and retain every other field. All40 frozen6+20+14 claims/configs/inputs remain exact. Own19/203 passes the actual stock loader and stronger global goalId uniqueness.
+
+The guarded unapplied root CAS provides whole before/after ledger and remainder objects. Parallel Requires20 and P13 packages share the original18/196 basis. Root must combine all51 disjoint new IDs into one administrative union, including combined remainders for shared old scopes. Each individual after-ledger illustrates its own package only. Root will register actual scientific results and D evidence separately.
+
+All7 withdrawals and original105/214/7/3 D controls remain exact. No main/F/root/other capsule write, review result, new science vote, human approval or M7 claim occurred.

@@ -1,0 +1,144 @@
+{
+  "originalComparisons": [
+    {
+      "kind": "originalEDTAMaterialSource",
+      "case": "T01-C1",
+      "exactObjectFoundInActualOriginal": false,
+      "matchingIdentifiers": 1
+    },
+    {
+      "kind": "originalEDTAMaterialSource",
+      "case": "T01-C2",
+      "exactObjectFoundInActualOriginal": false,
+      "matchingIdentifiers": 1
+    },
+    {
+      "kind": "dataValidityMaterialSource",
+      "case": "data-validity-test-not-proof",
+      "exactObjectFoundInActualOriginal": false,
+      "matchingIdentifiers": 1
+    },
+    {
+      "kind": "dataValidityMaterialSource",
+      "case": "data-validity-temperature-confound",
+      "exactObjectFoundInActualOriginal": false,
+      "matchingIdentifiers": 1
+    },
+    {
+      "kind": "originalStockCompiledRow",
+      "goalId": "1dc15fa2-fca4-56b0-b5c1-4d215613dde0",
+      "exactObjectMatches": true
+    },
+    {
+      "kind": "originalStockCompiledRow",
+      "goalId": "d7e08305-25c2-5c2c-b87d-443358526a1b",
+      "exactObjectMatches": true
+    },
+    {
+      "kind": "originalStockCompiledRow",
+      "goalId": "4aa3a130-b517-5ac5-87b2-147fe432cadd",
+      "exactObjectMatches": true
+    },
+    {
+      "kind": "originalStockCompiledRow",
+      "goalId": "363c5740-8a3c-50b8-8c3a-5548c80c36ea",
+      "exactObjectMatches": true
+    }
+  ],
+  "ownSyntheticDataCalculations": {
+    "T01-C1": {
+      "mean_mL": 19.849999999999998,
+      "corrected_mL": 19.749999999999996,
+      "cTotal_mmol_L": 3.9499999999999993,
+      "referenceRecoveryPercent": 100.13333333333334
+    },
+    "T01-C2": {
+      "cOriginal_mmol_L": 7.52,
+      "spikeRecoveryPercent": 100.4
+    },
+    "EDTA-new-acquisition": {
+      "corrected_mL": 16.0,
+      "metal_mmol": 0.16,
+      "cTotal_mmol_L": 4.0
+    },
+    "EDTA-new-transfer": {
+      "cOriginal_mmol_L": 8.4,
+      "spikeRecoveryPercent": 99.99999999999997
+    },
+    "neutralisation-new-acquisition": {
+      "cHCl_mol_L": 0.04
+    },
+    "neutralisation-new-transfer": {
+      "cH2SO4Diluted_mol_L": 0.01,
+      "cH2SO4Original_mol_L": 0.1
+    },
+    "data-validity": {
+      "unmatchedTemperatureDifference_microS_cm": 500,
+      "matchedTemperatureDifference_microS_cm": 2
+    },
+    "mole-profile": {
+      "O_atoms_mol_from_0_20_mol_O2": 0.4,
+      "allIons_mol_from_0_30_mol_NaCl_formula_units": 0.6
+    }
+  },
+  "learnerPerformance": false,
+  "cleanFieldComparisonClarification": [
+    {
+      "case": "T01-C1",
+      "everySelectedCleanFieldEqualsActualOriginal": true,
+      "unselectedOriginalKeys": [
+        "newIndependentReviewStatus"
+      ],
+      "unselectedJudgmentValuesNotUsed": true
+    },
+    {
+      "case": "T01-C2",
+      "everySelectedCleanFieldEqualsActualOriginal": true,
+      "unselectedOriginalKeys": [
+        "newIndependentReviewStatus"
+      ],
+      "unselectedJudgmentValuesNotUsed": true
+    },
+    {
+      "case": "data-validity-test-not-proof",
+      "everySelectedCleanFieldEqualsActualOriginal": true,
+      "unselectedOriginalKeys": [
+        "candidateGoalId",
+        "candidateKey",
+        "evidenceLevel",
+        "generationLevel",
+        "humanApproval",
+        "humanTrial",
+        "learnerPerformanceRecorded",
+        "nativeEvidenceApproved",
+        "originalFamilyGoalId",
+        "reviewStatus",
+        "sourceOperatorScopeContractDe",
+        "status",
+        "strictCompletionsAdded"
+      ],
+      "unselectedJudgmentValuesNotUsed": true
+    },
+    {
+      "case": "data-validity-temperature-confound",
+      "everySelectedCleanFieldEqualsActualOriginal": true,
+      "unselectedOriginalKeys": [
+        "candidateGoalId",
+        "candidateKey",
+        "evidenceLevel",
+        "generationLevel",
+        "humanApproval",
+        "humanTrial",
+        "learnerPerformanceRecorded",
+        "nativeEvidenceApproved",
+        "originalFamilyGoalId",
+        "reviewStatus",
+        "sourceOperatorScopeContractDe",
+        "status",
+        "strictCompletionsAdded"
+      ],
+      "unselectedJudgmentValuesNotUsed": true
+    }
+  ],
+  "wholeObjectEqualityMeaning": "False whole-object equality above means excluded keys only. Every selected clean field equals its actual original. Excluded judgment values were not inspected or used."
+}

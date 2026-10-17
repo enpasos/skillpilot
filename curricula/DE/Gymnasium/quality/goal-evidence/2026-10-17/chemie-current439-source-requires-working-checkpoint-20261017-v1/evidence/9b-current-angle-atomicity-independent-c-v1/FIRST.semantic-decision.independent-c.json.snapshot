@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "chemie-9b-current-angle-atomicity-independent-c-20261017-v1",
+  "reviewedAt": "2026-10-17T06:49:35.161942+00:00",
+  "reviewAuthority": "ai_candidate",
+  "status": "ai_candidate",
+  "human": false,
+  "humanApprovalClaim": false,
+  "goalId": "9b56d01e-c2d7-51d8-b78e-237592c1ed20",
+  "priorGoalId": "67cd332f-9db7-50e1-87f6-172ef3714300",
+  "decision": "atomic",
+  "semanticAtomic": true,
+  "independence": {
+    "ownFirstDecisionBeforeOldAtomicityRecordsOrPeerJudgments": true,
+    "foreign9bAtomicityOrAuthorOrPeerOrRootJudgmentsOpened": false,
+    "wholeRequestedPRowRead": true,
+    "PRowMetadataContainsPriorReviewReferences": true,
+    "PRowReferencedJudgmentsNotOpened": true,
+    "PMetadataNotUsedAsAuthority": true,
+    "goalFingerprintCalculatedBeforeDecision": false,
+    "suggestedOutcomeAssumed": false
+  },
+  "readInputs": [
+    {
+      "path": "/home/enpasos/projects/skillpilot/AGENTS.md",
+      "section": "7.1 Semantic atomicity review",
+      "scope": "exactly one content learning goal; content judgment, not verb or field count"
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current650-all-seven-current439-native-central-preparation-technical-a-v1/capsule/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "scope": "Only the full current objects for 9b56d01e-c2d7-51d8-b78e-237592c1ed20 and 67cd332f-9db7-50e1-87f6-172ef3714300"
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current650-all-seven-current439-native-central-preparation-technical-a-v1/capsule/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-paired-all-seven-HB7f-current650-technical-v1/P439.current.all439-whole-lines-exact-03-04-retained.jsonl",
+      "scope": "Only the complete current 9b line including its whole bilingual profile and metadata"
+    }
+  ],
+  "inputPins": [
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current650-all-seven-current439-native-central-preparation-technical-a-v1/capsule/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "sha256": "e0af9e3dedc6db17b940ec7d4732a6c2bcced7d00f3a30df9db948b9936332a8",
+      "bytes": 2918833
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/current650-all-seven-current439-native-central-preparation-technical-a-v1/capsule/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-paired-all-seven-HB7f-current650-technical-v1/P439.current.all439-whole-lines-exact-03-04-retained.jsonl",
+      "sha256": "8f8a2a870cca12e918838c8e4ee36f56421d0d024ab2c73f04bc07ad427e7437",
+      "bytes": 4452267
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/9b-current-angle-atomicity-independent-c-v1/CLEAN-INPUT.two-whole-current-goals.json",
+      "sha256": "0a7de880b8289f2bd16aacc53f6d178270d27631af0283e96140853d830e1708",
+      "bytes": 6608
+    },
+    {
+      "path": "/mnt/e/skillpilot-chemie-L7-20261017/9b-current-angle-atomicity-independent-c-v1/CLEAN-INPUT.9b-whole-current-P-line.jsonl",
+      "sha256": "7cee6d7795d4cac7b7513da6579b32ad65d423be804823f52013195a7a7fff5f",
+      "bytes": 8523
+    }
+  ],
+  "analysisDe": {
+    "eingabe": "Vorgegebene Molekülgestalten und EPA-Elektronendomänen; im P-Profil sind auch lineare, trigonal-planare und tetraedrische Winkelreferenzen explizit gegeben. Die Ableitung der Gestalt aus Lewis-/Valenzstrichformeln ist kein neu zu prüfender Teil dieses Ziels.",
+    "gegenstand": "Die durch das EPA-Modell beschriebene Bindungswinkelvorstellung: idealisierte Referenzwinkel, gerichtete qualitative Abweichung bei freien Paaren und die Reichweite dieser Modellvorstellung gegenüber exakten Messwerten.",
+    "pruefbareEinzelleistung": "Zu einer gegebenen Domänenanordnung/Molekülgestalt eine begründete EPA-Winkelaussage treffen: passenden Referenzwinkel zuordnen, eine freipaarbedingte qualitative Verkleinerung erklären und die Aussage als Modellvorhersage ohne Ableitung eines exakten Messwertes begrenzen. Diese Schritte bilden eine zusammenhängende fachliche Erklärung desselben Winkelbefunds.",
+    "abgrenzungZum67Prior": "67 behandelt den räumlichen Bau einfacher Moleküle und die Verknüpfung mit Lewis-/Valenzstrichdarstellungen. 9b setzt diese Gestalten und Domänen als Eingaben voraus und verlangt den zusätzlichen begründeten Winkelvergleich. Das explizite requires verweist auf 67. Bloßes Benennen oder erneutes Herleiten einer Gestalt erfüllt 9b nicht.",
+    "unabhaengigkeitspruefung": "Winkelzuordnung, freipaarbedingte Abweichung und Modellgrenze sind hier keine beliebige Sammlung unabhängiger Routinen. Alle betreffen denselben EPA-Winkelanspruch; eine unqualifizierte exakte Messbehauptung wäre gerade eine unzureichende Erklärung dieses Gegenstands. Es wird weder eine weitere Strukturermittlung noch experimentelle Winkelmessung, quantitative Fehlerrechnung oder eine zweite chemische Modellfamilie verlangt. Ein isoliert gelernter Referenzwinkel allein genügt ebenfalls nicht.",
+    "profilpruefung": "Die zwei P-Anwendungsfälle halten Gestalten/Domänen konstant als Eingaben und variieren nur lineare/planare/tetraedrische Winkelreferenzen, freie Paare und die Grenze eines idealisierten Modells. Die allgemeine Aussage, Messbedingungen und Unsicherheit vor einer Verwerfung zu prüfen, wird als kurze Einschränkung der konkreten Winkelbehauptung verstanden; sie fordert keine eigenständige Messunsicherheitsrechnung oder Versuchsplanung.",
+    "deEn": "DE und EN setzen dieselben Gestalten/Domänen voraus und verlangen Winkelzuordnung, qualitative freipaarbedingte Abweichung und die Abgrenzung idealisierter Winkel von Messwerten. Kein zusätzliches unabhängiges EN-Lernziel.",
+    "ressourcenMetadaten": "Der vorhandene Bildlink trägt noch den breiteren alten Titel Molekülgeometrien. Das ist keine zusätzliche in Zieltext/P geforderte Einzelleistung und kein Grund, hier Geometrieableitung als zweiten Prüfauftrag einzuführen. Bild-/Darstellungsqualität wird in dieser Atomaritätsentscheidung nicht freigegeben."
+  },
+  "reason": "Atomic: one bounded performance is a scientifically qualified EPA bond-angle explanation for supplied shapes/domains. Reference assignment, lone-pair compression and the limit against exact measured values are linked aspects of that same angle claim. Geometry derivation remains the explicit 67 prerequisite; neither a second independent geometry task nor measurement/uncertainty calculation is required. Current DE/EN and the complete P profile preserve this boundary.",
+  "splitRequired": false,
+  "openAtomicityConcern": false,
+  "maximumClaim": "Independent AI semantic atomicity candidate for the exact current goal only. No D/P/V approval, human approval, source-coverage approval, M7 claim, runtime acceptance or activation."
+}

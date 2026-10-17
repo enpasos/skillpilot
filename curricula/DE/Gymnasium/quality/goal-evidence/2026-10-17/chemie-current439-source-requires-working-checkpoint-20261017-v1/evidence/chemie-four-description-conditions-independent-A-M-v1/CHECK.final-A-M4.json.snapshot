@@ -1,0 +1,47 @@
+{
+  "role": "Own bounded final A/M4 bindings, source-preservation and actual stock-check verification",
+  "passed": true,
+  "checkedAtUTC": "2026-10-17T08:38:01.173428+00:00",
+  "first": {
+    "path": "/mnt/e/skillpilot-chemie-L7-20261017/chemie-four-description-conditions-independent-A-M-v1/FIRST.independent-A-M-science.json",
+    "sha256": "da76460a496e0d2619e2fdb389ce7ca3131d4b8e505bf9ccedc51979f8c175a9",
+    "bytes": 14316,
+    "sealedAtUTC": "2026-10-17T08:35:28.624593+00:00",
+    "nativeRowsSerializedBeforeSeal": false
+  },
+  "stockChecks": [
+    {
+      "command": [
+        "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+        "/home/enpasos/projects/skillpilot/app/scripts/semanticAtomicityReview.ts",
+        "--mode=check",
+        "--config=/mnt/e/skillpilot-chemie-L7-20261017/chemie-four-description-conditions-independent-A-M-v1/A4.independent-current-description.config.json"
+      ],
+      "returncode": 0,
+      "checkedAtUTC": "2026-10-17T08:38:00.274361+00:00",
+      "unmodifiedStockScript": true
+    },
+    {
+      "command": [
+        "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+        "/home/enpasos/projects/skillpilot/app/scripts/memoryCardReview.ts",
+        "--mode=check",
+        "--config=/mnt/e/skillpilot-chemie-L7-20261017/chemie-four-description-conditions-independent-A-M-v1/M4.independent-current-description.config.json"
+      ],
+      "returncode": 0,
+      "checkedAtUTC": "2026-10-17T08:38:00.939872+00:00",
+      "unmodifiedStockScript": true
+    }
+  ],
+  "onlyFourDescriptionPairsChanged": true,
+  "other646WholeGoalsUnchanged": true,
+  "oldCurrentNMemoryAndCardsUnchanged": true,
+  "semanticAtomic": 4,
+  "noMemoryNeeded": 4,
+  "newCards": 0,
+  "newVisibilityObligations": 0,
+  "priorExistingVisibilityScopesRetained": 39,
+  "centralIntegration": false,
+  "DApproval": false,
+  "humanApproval": false
+}

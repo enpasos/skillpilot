@@ -5,8 +5,10 @@ import { fileURLToPath } from 'node:url'
 import { convertLearningGoal } from '../src/goalTypes'
 import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
 import {
+  collectCompositionProjectionRoleGoalIds,
   getCompositionProjectionRole,
   normalizeCompositionView,
+  type CompositionView,
   type CompositionViewNode,
 } from '../src/utils/authoring/compositionViewAuthoring'
 import { applyCompositionViewProjection } from '../src/utils/compositionViewRuntime'
@@ -3179,12 +3181,19 @@ function collectCompositionViewVisibleGoalIds(
   }
 
   try {
-    const parsed = loadJson<{ rootNodes?: unknown[] }>(absoluteViewPath)
+    const parsed = loadJson<Partial<Pick<CompositionView, 'rootNodes' | 'scope'>>>(absoluteViewPath)
     if (!Array.isArray(parsed.rootNodes)) {
       errors.push(`${viewPath}: rootNodes must be an array`)
       return { visibleGoalIds, errors }
     }
     parsed.rootNodes.forEach(visitNode)
+    const { targetGoalIds } = collectCompositionProjectionRoleGoalIds(parsed.rootNodes, goalById)
+    // Match the reviewed learner scope used by the standalone Memory check.
+    visibleGoalIds.clear()
+    targetGoalIds.forEach((goalId) => {
+      const goal = goalById.get(goalId)
+      if (goal && goalMatchesFilters(goal, parsed.scope?.courseProfile)) visibleGoalIds.add(goalId)
+    })
   } catch (error) {
     errors.push(`${viewPath}: cannot parse composition view (${(error as Error).message})`)
   }
@@ -3192,7 +3201,7 @@ function collectCompositionViewVisibleGoalIds(
   return { visibleGoalIds, errors }
 }
 
-function collectMemoryVisibilityReport(
+export function collectMemoryVisibilityReport(
   config: MemoryCardReviewConfig,
   goalById: Map<string, LearningGoal>,
   currentRecords: MemoryCardReviewRecord[],

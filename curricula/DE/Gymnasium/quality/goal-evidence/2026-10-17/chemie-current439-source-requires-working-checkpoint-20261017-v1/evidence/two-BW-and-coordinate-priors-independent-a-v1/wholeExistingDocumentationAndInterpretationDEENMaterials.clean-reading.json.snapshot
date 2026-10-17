@@ -1,0 +1,174 @@
+[
+  {
+    "caseKey": "data-documentation-raw-dissolution",
+    "materialOrigin": "SkillPilot-authored teaching scenario; numbers are supplied model/reference data, not learner measurements",
+    "suppliedMaterial": {
+      "de": "Autoriertes Rohblatt R1: Zuckerauflösung, 2,0 g in 50 mL Wasser, 1 Rührbewegung/s. Zeilen: Probe W1,20,0 °C,92 s; W2,20,5 °C,88 s; H1,40,0 °C,47 s; H2,39,5 °C,50 s. Notizen: W1 große Blase am Glas; Ende = letzter sichtbarer Kristall; Beobachter M. Deutung am Rand: „Teilchen bewegen sich schneller“. Datumsfeld fehlt. R1 ist ein Unterrichtsdatensatz, kein aktueller Lernendenversuch.",
+      "en": "Authored raw sheet R1: sugar dissolution, 2.0 g in 50 mL water, 1 stirring motion/s. Rows: sample W1,20.0 °C,92 s; W2,20.5 °C,88 s; H1,40.0 °C,47 s; H2,39.5 °C,50 s. Notes: W1 large bubble at glass; endpoint = last visible crystal; observer M. Margin interpretation: “particles move faster”. Date missing. R1 is a teaching dataset, not a current learner experiment."
+    },
+    "learnerTask": {
+      "de": "Erzeuge aus R1 ein nachvollziehbares Protokoll mit Tabelle, Einheiten, Herkunft, Bedingungen und Fehlstellen; trenne Beobachtung von Deutung.",
+      "en": "Create a traceable record from R1 with table, units, origin, conditions and missing fields; distinguish observation from interpretation."
+    },
+    "expectedAnswer": {
+      "de": "Tabelle enthält alle vier Proben mit T/°C und t/s unverändert; Herkunft R1/SkillPilot-Lehrdatensatz, Beobachter M, Datum „nicht angegeben“. Festbedingungen Masse/Volumen/Rührweise/Endpunkt separat. Blase und Kristall-Endpunkt sind Beobachtungs-/Verfahrenseinträge; Teilchenbewegung ist eine Modell-Deutung. Kein Datum und keine eigenen Messwerte ergänzen.",
+      "en": "The table retains all four samples with T/°C and t/s; origin R1/SkillPilot teaching dataset, observer M, date “not supplied”. Fixed mass/volume/stirring/endpoint are separate. Bubble and crystal endpoint are observation/method entries; particle motion is a model interpretation. Do not invent a date or own measurements."
+    },
+    "requiredAssessmentCriteria": [
+      {
+        "criterionKey": "data-documentation-raw-dissolution-C1",
+        "meaning": {
+          "de": "Alle Werte und Einheiten bleiben exakt; Bedingungsfelder sind getrennt.",
+          "en": "All values and units remain exact; condition fields are separate."
+        }
+      },
+      {
+        "criterionKey": "data-documentation-raw-dissolution-C2",
+        "meaning": {
+          "de": "Herkunft und fehlendes Datum werden wahrheitsgemäß ausgewiesen.",
+          "en": "Origin and missing date are honestly shown."
+        }
+      },
+      {
+        "criterionKey": "data-documentation-raw-dissolution-C3",
+        "meaning": {
+          "de": "Beobachtung, Messung und Erklärung werden unterscheidbar dargestellt.",
+          "en": "Observation, measurement and explanation are distinguishable."
+        }
+      }
+    ],
+    "transfer": {
+      "de": "Separat bereitgestellte Zusatznotiz R2 (ebenfalls ein fiktiver SkillPilot-Lehrdatensatz, keine echte Messung): Am 7. Oktober 2026 um 10:15 Uhr wird ein neuer unabhängiger Ansatz W3 geprüft, Beobachter N, Thermometer TH1 mit 0,1-°C-Anzeige, Wassertemperatur 20,3 °C vor Zuckerzugabe. Ergänze diese Notiz mit Herkunft R2, Zeitpunkt, neuem Probenbezug und Messbedingung als separates Ereignis. Lass die alte R1-Tabelle unverändert; R2 bestätigt weder nachträglich Temperaturen der alten Proben noch eine eigene Durchführung. Eine echte neue Messung darf nur mit eigenem tatsächlich beobachtetem Ansatz, Gerät und Log als solche ergänzt werden.",
+      "en": "Separately supplied note R2 (also a fictional SkillPilot teaching dataset, not a real measurement): On 7 October 2026 at 10:15 a new independent sample W3 is checked, observer N, thermometer TH1 with 0.1-°C display resolution, water temperature 20.3 °C before sugar addition. Append this note as a separate event with R2 provenance, time, new sample identity and measurement condition. Preserve the old R1 table; R2 neither retrospectively verifies old sample temperatures nor records own execution. An actual new measurement may only be appended as such for an own genuinely observed sample, instrument and log."
+    }
+  },
+  {
+    "caseKey": "data-documentation-research-calibration",
+    "materialOrigin": "SkillPilot-authored teaching scenario; numbers are supplied model/reference data, not learner measurements",
+    "suppliedMaterial": {
+      "de": "Fiktives Forschungsarchiv D2 (SkillPilot, Version 1): Absorbanz bei 520 nm, Küvettenweg 1,00 cm, 25 °C. Standards c = 0/2/4/6 mg/L, A = 0,010/0,170/0,330/0,490. Probe U: 0,291 und 0,289; Gerätekennung P-2. U wurde vor Messung 1:2 verdünnt; unverdünnte Probe stammt aus Behälter U7. Keine Urheberschaft eines realen Labors behauptet.",
+      "en": "Fictional research archive D2 (SkillPilot, version 1): absorbance at 520 nm, cuvette path 1.00 cm, 25 °C. Standards c = 0/2/4/6 mg/L, A = 0.010/0.170/0.330/0.490. Sample U: 0.291 and 0.289; instrument P-2. U was diluted 1:2 before measurement; undiluted sample came from container U7. No authorship by a real laboratory is claimed."
+    },
+    "learnerTask": {
+      "de": "Dokumentiere recherchierte Kalibrations- und Probendaten getrennt mit Quelle/Version, Einheiten und Verdünnungskette; kennzeichne später berechnete Ergebnisse als Berechnung.",
+      "en": "Document researched calibration and sample data separately with source/version, units and dilution chain; mark subsequently calculated results as calculations."
+    },
+    "expectedAnswer": {
+      "de": "Original A-Werte bleiben dimensionslos; c in mg/L. U7 → Verdünnung 1:2 → U-Messungen ist sichtbar. Mittelwert 0,290 und rückgerechnete ursprüngliche 7,00 mg/L werden in einem Berechnungsabschnitt mit Kalibration vermerkt, nicht als ursprünglich gemessene Konzentration. Quellenangabe D2/SkillPilot/v1, Gerät und Bedingungen stehen im Kopf.",
+      "en": "Original A values remain dimensionless; c is in mg/L. U7 → 1:2 dilution → U measurements is visible. Mean 0.290 and back-calculated original 7.00 mg/L are entered in a calculation section with the calibration, not as an originally measured concentration. D2/SkillPilot/v1, instrument and conditions appear in the header."
+    },
+    "requiredAssessmentCriteria": [
+      {
+        "criterionKey": "data-documentation-research-calibration-C1",
+        "meaning": {
+          "de": "Kalibration, Probe und Rechenwerte sind strukturell getrennt.",
+          "en": "Calibration, sample and calculated values are structurally separated."
+        }
+      },
+      {
+        "criterionKey": "data-documentation-research-calibration-C2",
+        "meaning": {
+          "de": "Verdünnung und Herkunft sind vollständig nachvollziehbar.",
+          "en": "Dilution and origin are fully traceable."
+        }
+      },
+      {
+        "criterionKey": "data-documentation-research-calibration-C3",
+        "meaning": {
+          "de": "Keine recherchierten Modellwerte werden als eigene Messungen ausgegeben.",
+          "en": "Researched model data are not presented as own measurements."
+        }
+      }
+    ],
+    "transfer": {
+      "de": "Dokumentiere eine nachträgliche Korrektur von „1:2“ auf „1:4“ mit Änderungshistorie und betroffenem Rechenergebnis.",
+      "en": "Document a later correction from “1:2” to “1:4” with change history and affected calculated result."
+    }
+  },
+  {
+    "caseKey": "lower-chemical-data-interpretation-temperature-trend",
+    "materialOrigin": "SkillPilot-authored teaching scenario; numbers are supplied model/reference data, not learner measurements",
+    "suppliedMaterial": {
+      "de": "Modellmessreihe: T = 20/30/40 °C; Auflösezeiten für 2,0 g Zucker in 50 mL bei gleichem Rühren = 90/65/48 s, Wiederholungen = 94/63/50 s. Vorgegebene Hypothese: Erhöhte Temperatur verkürzt unter diesen Bedingungen die Auflösezeit.",
+      "en": "Model measurement series: T = 20/30/40 °C; dissolution times for 2.0 g sugar in 50 mL at equal stirring = 90/65/48 s; repeats = 94/63/50 s. Supplied hypothesis: Increased temperature reduces dissolution time under these conditions."
+    },
+    "learnerTask": {
+      "de": "Erzeuge eine geeignete Tabelle und ein beschriftetes Diagramm, erläutere den Trend und beurteile die Hypothese mit den Wiederholungen. Unterscheide Geschwindigkeit und Löslichkeitsgrenze.",
+      "en": "Create an appropriate table and labelled graph, explain the trend and evaluate the hypothesis using repeats. Distinguish rate and solubility limit."
+    },
+    "expectedAnswer": {
+      "de": "Mittelwerte 92/64/49 s; T auf x-Achse, Zeit auf y-Achse mit Einheiten. Zeiten sinken wiederholt deutlich; das stützt die Hypothese im Bereich 20–40 °C. Keine lineare Abnahme für alle Temperaturen und keine größere maximal lösbare Masse sind nachgewiesen. Größere Wiederholungsstreuung wäre im Diagramm sichtbar zu machen.",
+      "en": "Means are 92/64/49 s; T on x-axis, time on y-axis with units. Times repeatedly fall clearly; this supports the hypothesis at 20–40 °C. Neither a linear decrease at all temperatures nor a larger maximum dissolvable mass is established. Larger repeat scatter should be visible in the graph."
+    },
+    "requiredAssessmentCriteria": [
+      {
+        "criterionKey": "lower-chemical-data-interpretation-temperature-trend-C1",
+        "meaning": {
+          "de": "Geeignete Darstellung mit richtigen Mittelwerten und Einheiten.",
+          "en": "Appropriate representation with correct means and units."
+        }
+      },
+      {
+        "criterionKey": "lower-chemical-data-interpretation-temperature-trend-C2",
+        "meaning": {
+          "de": "Trend wird erklärt und mit Wiederholungen auf die Hypothese bezogen.",
+          "en": "Trend is explained and related to the hypothesis using repeats."
+        }
+      },
+      {
+        "criterionKey": "lower-chemical-data-interpretation-temperature-trend-C3",
+        "meaning": {
+          "de": "Reichweite und nicht gemessene Löslichkeitsgrenze bleiben begrenzt.",
+          "en": "Scope and unmeasured solubility limit remain bounded."
+        }
+      }
+    ],
+    "transfer": {
+      "de": "Bei 50 °C werden 80/45 s gemessen: Erkläre, weshalb vor einer Trendbehauptung Versuchsbedingungen geprüft werden müssen.",
+      "en": "At 50 °C times are 80/45 s: explain why conditions must be checked before claiming a trend."
+    }
+  },
+  {
+    "caseKey": "lower-chemical-data-interpretation-conductivity-series",
+    "materialOrigin": "SkillPilot-authored teaching scenario; numbers are supplied model/reference data, not learner measurements",
+    "suppliedMaterial": {
+      "de": "Physikalisch plausibel skalierte synthetische Lehrdaten bei 25 °C: c(NaCl) = 0,0/0,5/1,0/1,5 g/L; Leitfähigkeit κ = 3/1020/1990/2950 µS/cm. Eine Saccharoseprobe mit 1,0 g/L liefert 4 µS/cm. Die Blindprobe 3 und Vergleichsprobe 4 werden nicht mitskaliert. Als Plausibilitätsanker liefert ein herstellerbeschrifteter 1000-mg/L-NaCl-Standard 1990 µS/cm bei 25 °C; die Reihe bleibt eine eigene Lehrmodellreihe, keine echten Lernendenmessungen oder zertifizierte Kalibration. Hypothese: Mehr NaCl erhöht in dieser Reihe κ; nicht jede gelöste Substanz hat dieselbe Wirkung.",
+      "en": "Physically plausibly scaled synthetic teaching data at 25 °C: c(NaCl) = 0.0/0.5/1.0/1.5 g/L; conductivity κ = 3/1020/1990/2950 µS/cm. A sucrose sample at 1.0 g/L gives 4 µS/cm. The blank 3 and comparison 4 are not scaled. A manufacturer-labelled 1000-mg/L NaCl standard gives 1990 µS/cm at 25 °C as a plausibility anchor; this remains an own teaching-model series, not real learner measurements or certified calibration. Hypothesis: More NaCl raises κ in this series; not every dissolved substance has the same effect."
+    },
+    "learnerTask": {
+      "de": "Wähle eine passende Darstellung, beschreibe Beziehungen und erkläre mit beweglichen Ladungsträgern den Hypothesenbefund; prüfe die Rolle der Vergleichsprobe.",
+      "en": "Choose a suitable representation, describe relationships and explain the hypothesis finding using mobile charge carriers; assess the comparison sample."
+    },
+    "expectedAnswer": {
+      "de": "κ gegen c zeigt wachsende Leitfähigkeit, nahe linear in dieser kleinen Reihe. NaCl liefert bewegliche Ionen, Saccharose überwiegend ungeladene Moleküle; ihr Wert nahe Blindprobe widerlegt „jedes Gelöste leitet gleich“. Der Stoffvergleich unterstützt einen Ionenbezug, bestimmt aber keine unbekannte Salzidentität.",
+      "en": "κ against c shows increasing conductivity, approximately linear within this small series. NaCl supplies mobile ions, sucrose mainly uncharged molecules; its near-blank value contradicts “every dissolved substance conducts equally”. The comparison supports an ion interpretation but does not identify an unknown salt."
+    },
+    "requiredAssessmentCriteria": [
+      {
+        "criterionKey": "lower-chemical-data-interpretation-conductivity-series-C1",
+        "meaning": {
+          "de": "Achsen/Einheiten und Stoffvergleich sind korrekt.",
+          "en": "Axes/units and substance comparison are correct."
+        }
+      },
+      {
+        "criterionKey": "lower-chemical-data-interpretation-conductivity-series-C2",
+        "meaning": {
+          "de": "Datenbeziehung und chemische Deutung werden verbunden.",
+          "en": "Data relationship and chemical interpretation are connected."
+        }
+      },
+      {
+        "criterionKey": "lower-chemical-data-interpretation-conductivity-series-C3",
+        "meaning": {
+          "de": "Hypothesenstützung bleibt auf Bedingungen und Bereich beschränkt.",
+          "en": "Hypothesis support remains restricted to conditions and range."
+        }
+      }
+    ],
+    "transfer": {
+      "de": "Beschreibe, wie steigende Temperatur bei nur einer Probe die Interpretation stören könnte.",
+      "en": "Describe how rising temperature in just one sample could confound the interpretation."
+    }
+  }
+]

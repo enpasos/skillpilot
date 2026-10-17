@@ -1,0 +1,96 @@
+[
+  {
+    "pointer": "/",
+    "content": {
+      "fixtureId": "q3-01-e-synthetic-raw-instrument-fixture",
+      "methodId": "q3-01-e-visible-FeNCS-school-adaptation",
+      "synthetic": true,
+      "notActualLabMeasurements": true,
+      "temperatureC": 25.0,
+      "pathLengthCm": 1.0,
+      "wavelengthNm": 480,
+      "reportedRawAbsorbances": [
+        {
+          "sample": "B-high-Fe-calibration",
+          "A": 0.08
+        },
+        {
+          "sample": "C1",
+          "A": 0.305
+        },
+        {
+          "sample": "C2",
+          "A": 0.53
+        },
+        {
+          "sample": "C3",
+          "A": 0.755
+        },
+        {
+          "sample": "C4",
+          "A": 0.98
+        },
+        {
+          "sample": "B-S-matched-Fe",
+          "A": 0.01
+        },
+        {
+          "sample": "B-SCN-only",
+          "A": 0.002
+        },
+        {
+          "sample": "S-original",
+          "secondsAfterMixing": 60,
+          "A": 0.37
+        },
+        {
+          "sample": "S-original",
+          "secondsAfterMixing": 90,
+          "A": 0.371
+        },
+        {
+          "sample": "S-original",
+          "secondsAfterMixing": 120,
+          "A": 0.369
+        },
+        {
+          "sample": "S-independent-repeat",
+          "secondsAfterMixing": 90,
+          "A": 0.373
+        },
+        {
+          "sample": "C2-end-recheck",
+          "A": 0.532
+        },
+        {
+          "sample": "B-high-Fe-end-recheck",
+          "A": 0.081
+        }
+      ],
+      "referenceIdentityControl": "Synthetic supplied scanned reference and sample spectra have the same480nm maximum and matching normalized450/480/500/530nm band ratios0.70/1.00/0.83/0.33 within0.02; Fe-only and SCN-only blanks show no such band. These numerical reference data are fixture material, not an actual published spectrum or a real completed validation.",
+      "quantitativeBounds": {
+        "correctedCalibrationSlopeLmolCm": 4500,
+        "lowerSlopeBound": 4200,
+        "upperOriginalProductSignal": 0.364,
+        "lowerInitialFeMolL": 0.00098,
+        "lowerInitialSCNMolL": 0.000392,
+        "conservativeProductUpperMolL": 8.666666666666667e-05,
+        "lowerResidualFeMolL": 0.0008933333333333333,
+        "lowerResidualSCNMolL": 0.00030533333333333335
+      },
+      "freshDilutionObservation": {
+        "originalAliquotMl": 1.0,
+        "freshMatrixAddedMl": 9.0,
+        "newTotalMl": 10.0,
+        "changedState": true,
+        "correctedStableAbsorbance": 0.0045,
+        "unreEquilibratedTenfoldPrediction": 0.036,
+        "noPreservationOrQuenchClaim": true
+      },
+      "failedControlVariant": {
+        "change": "New sample includes concentrated KSCN/chloride, its band ratio changes and calibration residuals exceed0.010.",
+        "allowedConclusion": "Do not identify a single1:1 species or infer free reactants by the old calibration. Preserve actual observation and investigate competing complexes/matrix effects."
+      }
+    }
+  }
+]

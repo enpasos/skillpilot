@@ -1,0 +1,47 @@
+{
+  "role": "Actual isolated QS regression proof; current raw Chemistry content unchanged",
+  "atUTC": "2026-10-17T10:19:42.377975+00:00",
+  "steps": [
+    {
+      "step": "unfixed-generator-reproduces-GK-false-positive",
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "node:internal/modules/run_main:123\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n1 !== 0\n\n    at check (/mnt/e/skillpilot-chemie-L7-20261017/current439-normal-memory-visibility-parity-QS-root-v1/capsule/app/scripts/testMemoryVisibilityStatusParity.ts:43:12)\n    at assert (/mnt/e/skillpilot-chemie-L7-20261017/current439-normal-memory-visibility-parity-QS-root-v1/capsule/app/scripts/testMemoryVisibilityStatusParity.ts:46:3)\n    at Object.<anonymous> (/mnt/e/skillpilot-chemie-L7-20261017/current439-normal-memory-visibility-parity-QS-root-v1/capsule/app/scripts/testMemoryVisibilityStatusParity.ts:52:1)\n    at Module._compile (node:internal/modules/cjs/loader:1521:14)\n    at Object.transformer (/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/register-D46fvsV_.cjs:3:1104)\n    at Module.load (node:internal/modules/cjs/loader:1266:32)\n    at Module._load (node:internal/modules/cjs/loader:1091:12)\n    at cjsLoader (node:internal/modules/esm/translators:298:15)\n    at ModuleWrap.<anonymous> (node:internal/modules/esm/translators:240:7)\n    at ModuleJob.run (node:internal/modules/esm/module_job:325:25) {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: 1,\n  expected: 0,\n  operator: 'strictEqual'\n}\n\nNode.js v20.20.2\n"
+    },
+    {
+      "step": "fixed-generator-course-and-specific-role-regressions",
+      "exitCode": 0,
+      "stdout": "Memory visibility agrees between standalone checks and curriculum status.\n",
+      "stderr": ""
+    },
+    {
+      "step": "fixed-generator-actual-current439-memory39-parity",
+      "exitCode": 0,
+      "stdout": "{\"scopes\":39,\"currentReviewRecords\":439,\"missingVisibleMemoryGoals\":0,\"errors\":0,\"standaloneStatusParity\":true}\n",
+      "stderr": ""
+    }
+  ],
+  "MainUnchanged": true,
+  "KCurrentScientificCapsuleUnchanged": true,
+  "testAddedToExistingDeepUnderstandingCIGate": true,
+  "files": [
+    {
+      "targetRepoPath": "app/scripts/generateCurriculumQualityStatus.ts",
+      "candidate": "/mnt/e/skillpilot-chemie-L7-20261017/current439-normal-memory-visibility-parity-QS-root-v1/capsule/app/scripts/generateCurriculumQualityStatus.ts",
+      "sha256": "e8dd1ee3df4054d4578109647d5f46fb5a83e5fe7de7e117a1865c39477c3fef",
+      "bytes": 275082
+    },
+    {
+      "targetRepoPath": "app/scripts/testMemoryVisibilityStatusParity.ts",
+      "candidate": "/mnt/e/skillpilot-chemie-L7-20261017/current439-normal-memory-visibility-parity-QS-root-v1/capsule/app/scripts/testMemoryVisibilityStatusParity.ts",
+      "sha256": "46e1c82269f787ed9c18e5268deece517e40a765ad480f97e801665c9956c8a6",
+      "bytes": 2941
+    },
+    {
+      "targetRepoPath": "app/scripts/testDeepUnderstandingRollout.ts",
+      "candidate": "/mnt/e/skillpilot-chemie-L7-20261017/current439-normal-memory-visibility-parity-QS-root-v1/capsule/app/scripts/testDeepUnderstandingRollout.ts",
+      "sha256": "02573d8f07f2d84f70226df6aa672f0db1961e01ed82e42aa4d283eeb57a670e",
+      "bytes": 21039
+    }
+  ]
+}
