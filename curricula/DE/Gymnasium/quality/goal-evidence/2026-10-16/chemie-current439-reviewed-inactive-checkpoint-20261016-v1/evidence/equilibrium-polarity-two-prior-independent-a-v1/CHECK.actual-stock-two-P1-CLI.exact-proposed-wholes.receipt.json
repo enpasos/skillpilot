@@ -1,0 +1,48 @@
+{
+  "role": "Two actual stock CLI finite checks on exact proposed whole goals and corresponding proposed SEM rows; not an applied-L6 check or scientific evidence by exit status",
+  "date": "2026-10-16T20:19:33.829Z",
+  "initialInvocationCorrection": {
+    "attempt": "check --config <path>",
+    "exitCode": 1,
+    "output": "Unknown argument: check",
+    "correction": "Read actual stock parseArgs and use --mode=check --config=<path>."
+  },
+  "runs": [
+    {
+      "tag": "equilibrium",
+      "command": "node --preserve-symlinks --preserve-symlinks-main --import /home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/loader.mjs app/scripts/positiveGoalEvidenceReview.ts --mode=check --config=tmp/chemie-m7-resumed-20261016/equilibrium-polarity-two-prior-independent-a-v1/P1.equilibrium.finite-exact-proposed-wholes.stock-check.config.json",
+      "cwd": "tmp/chemie-m7-resumed-20261016/equilibrium-polarity-two-prior-independent-a-v1/readonly-stock-P2-host",
+      "status": "fulfilled",
+      "value": {
+        "chunk_id": "b5ea4b",
+        "wall_time_seconds": 0.209692286,
+        "exit_code": 0,
+        "original_token_count": 86,
+        "output": "# Positive Goal Evidence Review: two-prior-equilibrium-current-context-independent-a-20261016-v1\nScope: Only equilibrium proposed acquisition successor; independent actual full design/context E1G1, BB/BE-GK scope HOLD/noD/noHuman/full-source-union acceptance\nConfigured goals: 1\nApproved: 0\nNeeds human review: 1\nRejected: 0\nBlocking issues: 0\n"
+      }
+    },
+    {
+      "tag": "polarity",
+      "command": "node --preserve-symlinks --preserve-symlinks-main --import /home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/loader.mjs app/scripts/positiveGoalEvidenceReview.ts --mode=check --config=tmp/chemie-m7-resumed-20261016/equilibrium-polarity-two-prior-independent-a-v1/P1.polarity.finite-exact-proposed-wholes.stock-check.config.json",
+      "cwd": "tmp/chemie-m7-resumed-20261016/equilibrium-polarity-two-prior-independent-a-v1/readonly-stock-P2-host",
+      "status": "fulfilled",
+      "value": {
+        "chunk_id": "f60d32",
+        "wall_time_seconds": 0.229022338,
+        "exit_code": 0,
+        "original_token_count": 85,
+        "output": "# Positive Goal Evidence Review: two-prior-polarity-current-context-independent-a-20261016-v1\nScope: Only polarity proposed acquisition successor; independent actual full design/context E1G1, BB/BE-GK scope HOLD/noD/noHuman/full-source-union acceptance\nConfigured goals: 1\nApproved: 0\nNeeds human review: 1\nRejected: 0\nBlocking issues: 0\n"
+      }
+    }
+  ],
+  "actualFinalFiniteCLIExits": [
+    0,
+    0
+  ],
+  "scientificFIRST": "sha256:dad2051c32af429fef7eef4d4ff5b93b7c75492dad0527045c3739549b1bd8c8",
+  "unapplied": true,
+  "normalOrL6Writes": false,
+  "HumanApproval": false,
+  "HumanTrial": false,
+  "M7Claim": false
+}

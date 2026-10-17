@@ -1,0 +1,64 @@
+{
+  "documentType": "guarded-whole-file-author-candidate-CAS",
+  "schemaVersion": 1,
+  "author": "chemie_native9_fresh_independent_b_20261016",
+  "status": "AUTHOR_INACTIVE_REQUIRES_FOREIGN_QA",
+  "createdAt": "2026-10-16T21:06:29.552158+00:00",
+  "scope": "Exactly two BW CrossStage views; sole aggregate prerequisiteOnly canonicalSubtree reference appended per view. All child targets and other fields retained.",
+  "scienceFirst": {
+    "path": "tmp/chemie-m7-resumed-20261016/BW-lab-aggregate-existing-child-acquisition-author-v1/FIRST.scientific-source-and-role-semantics.AUTHOR.frozen.json",
+    "sha256": "83ea6c8675a23928347cc06dfa624a0039a5ba3b2381bc0729aae5146ead9caa"
+  },
+  "baseCanonicalSHA256": "ae53884b26285d9483b315f030216566b74fb7067e9fc962610e493aadeb3fb2",
+  "baseSemanticKindsSHA256": "23347dac27ae2d616a2334b5c30c5465c031ae177a034d6d1f7df18e2585295a",
+  "wholeFileReplacements": [
+    {
+      "targetPath": "curricula/DE/Gymnasium/composition-views/chemie/de-bw-gk.view.json",
+      "expectedCurrentSHA256": "b721ab3f68c366ce2376cda532f30ca6135ede02cc6efea6a82cd393de5f0953",
+      "beforeWhole": {
+        "path": "tmp/chemie-m7-resumed-20261016/BW-lab-aggregate-existing-child-acquisition-author-v1/before/de-bw-gk.view.json",
+        "sha256": "b721ab3f68c366ce2376cda532f30ca6135ede02cc6efea6a82cd393de5f0953"
+      },
+      "afterWhole": {
+        "path": "tmp/chemie-m7-resumed-20261016/BW-lab-aggregate-existing-child-acquisition-author-v1/after/de-bw-gk.view.json",
+        "sha256": "a95b8595d8d613faf4a80ac2182016a4a7a54ed00c0b91fb155eb0fc24999332"
+      },
+      "onlySemanticDelta": {
+        "jsonPath": "rootNodes[0].children[append]",
+        "addedNode": {
+          "kind": "canonicalSubtree",
+          "goalId": "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+          "projectionRole": "prerequisiteOnly"
+        }
+      }
+    },
+    {
+      "targetPath": "curricula/DE/Gymnasium/composition-views/chemie/de-bw-lk.view.json",
+      "expectedCurrentSHA256": "a2e0046418264c365349c70caf94b1408c6dfbd78a61dc1f739d9f543363d0e7",
+      "beforeWhole": {
+        "path": "tmp/chemie-m7-resumed-20261016/BW-lab-aggregate-existing-child-acquisition-author-v1/before/de-bw-lk.view.json",
+        "sha256": "a2e0046418264c365349c70caf94b1408c6dfbd78a61dc1f739d9f543363d0e7"
+      },
+      "afterWhole": {
+        "path": "tmp/chemie-m7-resumed-20261016/BW-lab-aggregate-existing-child-acquisition-author-v1/after/de-bw-lk.view.json",
+        "sha256": "b7723f82362cf4e08117843e2dd963e6cf04f28aa30f85bd75c8563af441ed76"
+      },
+      "onlySemanticDelta": {
+        "jsonPath": "rootNodes[0].children[append]",
+        "addedNode": {
+          "kind": "canonicalSubtree",
+          "goalId": "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+          "projectionRole": "prerequisiteOnly"
+        }
+      }
+    }
+  ],
+  "zeroOtherMutations": [
+    "canonical ordinary/cluster bodies",
+    "all requires",
+    "source extraction/mappings",
+    "all P profiles and materials",
+    "all cards/images",
+    "normal/capsule files"
+  ]
+}

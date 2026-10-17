@@ -1,0 +1,152 @@
+[
+  {
+    "name": "ordinary atom absent prior",
+    "view": "de-hh-gk.view.json",
+    "consumer": "747c5777-07d7-51a9-9be3-7d0d6f51d4e2",
+    "prior": "448815cc-4127-54b7-96bf-e54b3d2a38c5",
+    "scope": {
+      "schoolForm": "Gymnasium",
+      "jurisdiction": "DE-HH",
+      "stage": "CrossStage",
+      "courseProfile": "GK"
+    },
+    "viewSHA256": "dc4192346ed5b846737df9f97b103dcb90b307c373baac2c27aad9e846889f24",
+    "actualConsumerDirectRequiresPrior": true,
+    "consumerRole": "target",
+    "priorRole": "absent",
+    "childRoles": []
+  },
+  {
+    "name": "direct lab cluster absent despite children",
+    "view": "de-bw-gk.view.json",
+    "consumer": "580b3616-f121-5d82-ac6b-fc24f145fbdc",
+    "prior": "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+    "scope": {
+      "schoolForm": "Gymnasium",
+      "jurisdiction": "DE-BW",
+      "stage": "CrossStage",
+      "courseProfile": "GK"
+    },
+    "viewSHA256": "b721ab3f68c366ce2376cda532f30ca6135ede02cc6efea6a82cd393de5f0953",
+    "actualConsumerDirectRequiresPrior": true,
+    "consumerRole": "target",
+    "priorRole": "absent",
+    "childRoles": [
+      {
+        "id": "416dfd33-8b43-5c49-903c-9847b95e4208",
+        "role": "target"
+      },
+      {
+        "id": "13d4f336-ab16-54a7-9479-c920b458f385",
+        "role": "target"
+      }
+    ]
+  },
+  {
+    "name": "Memory consumer absent acquisition",
+    "view": "de-bb-gk.view.json",
+    "consumer": "1e519951-9850-5a07-ac82-d9f0075e3d05",
+    "prior": "72236f2c-771e-4ab6-933a-e549ee49d15b",
+    "scope": {
+      "schoolForm": "Gymnasium",
+      "jurisdiction": "DE-BB",
+      "stage": "CrossStage",
+      "courseProfile": "GK"
+    },
+    "viewSHA256": "b1976c66d1940e5bc047d0d0683f96fbe49ee6f68921d1f4edf6f48e76f4cf36",
+    "actualConsumerDirectRequiresPrior": true,
+    "consumerRole": "target",
+    "priorRole": "absent",
+    "childRoles": []
+  },
+  {
+    "name": "foreign applicability authored ref",
+    "view": "de-sh-lk.view.json",
+    "consumer": "188bd684-e894-5753-8a50-798220b04d97",
+    "prior": "7f140b34-ed26-59e7-8ad2-ccb6b56bc9d6",
+    "scope": {
+      "schoolForm": "Gymnasium",
+      "jurisdiction": "DE-SH",
+      "stage": "CrossStage",
+      "courseProfile": "LK"
+    },
+    "viewSHA256": "c06113e01beb6d3d9b3f69dd59680b70a89577dd95d02850ce54565cf2f87d69",
+    "actualConsumerDirectRequiresPrior": true,
+    "consumerRole": "authored-target-filtered-out-by-scope",
+    "priorRole": "absent",
+    "childRoles": []
+  },
+  {
+    "name": "explicit SekII entry support",
+    "view": "de-he-sekii-lk.view.json",
+    "consumer": "a44af1fa-5988-5b7d-b206-691c6bbf7dd4",
+    "prior": "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+    "scope": {
+      "schoolForm": "Gymnasium",
+      "jurisdiction": "DE-HE",
+      "stage": "SekII",
+      "courseProfile": "LK"
+    },
+    "viewSHA256": "54b7c654a169bcb77fc2bf586ad49fc0193372b0d15cf34084a55d65876c149a",
+    "actualConsumerDirectRequiresPrior": true,
+    "consumerRole": "prerequisiteOnly",
+    "priorRole": "prerequisiteOnly",
+    "childRoles": [
+      {
+        "id": "416dfd33-8b43-5c49-903c-9847b95e4208",
+        "role": "prerequisiteOnly"
+      },
+      {
+        "id": "13d4f336-ab16-54a7-9479-c920b458f385",
+        "role": "prerequisiteOnly"
+      }
+    ]
+  },
+  {
+    "name": "actual SekII target with entry support",
+    "view": "de-he-sekii-gk.view.json",
+    "consumer": "28bb9d15-f865-5843-a035-6066580fea64",
+    "prior": "d2ccd1d5-56f7-583f-9724-e97441367f91",
+    "scope": {
+      "schoolForm": "Gymnasium",
+      "jurisdiction": "DE-HE",
+      "stage": "SekII",
+      "courseProfile": "GK"
+    },
+    "viewSHA256": "2333a0d92c58f483e354eca57e8aec00f66d4921a90f9413de8d8a9e9d59a32d",
+    "actualConsumerDirectRequiresPrior": true,
+    "consumerRole": "target",
+    "priorRole": "prerequisiteOnly",
+    "childRoles": []
+  },
+  {
+    "name": "other direct cluster carbohydrate",
+    "view": "de-hh-gk.view.json",
+    "consumer": "a76ab487-4663-5005-8454-cb3196f3773b",
+    "prior": "8761cfd2-aa1a-56f1-9272-9cf66ef4b271",
+    "scope": {
+      "schoolForm": "Gymnasium",
+      "jurisdiction": "DE-HH",
+      "stage": "CrossStage",
+      "courseProfile": "GK"
+    },
+    "viewSHA256": "dc4192346ed5b846737df9f97b103dcb90b307c373baac2c27aad9e846889f24",
+    "actualConsumerDirectRequiresPrior": true,
+    "consumerRole": "target",
+    "priorRole": "absent",
+    "childRoles": [
+      {
+        "id": "684ffe86-3a9f-5514-866a-47d16372f2d4",
+        "role": "absent"
+      },
+      {
+        "id": "dfaef897-dcd4-55d4-a1fe-3dd90b818853",
+        "role": "absent"
+      },
+      {
+        "id": "1d2e7b80-653d-57b8-a284-8ede5a353b73",
+        "role": "absent"
+      }
+    ]
+  }
+]

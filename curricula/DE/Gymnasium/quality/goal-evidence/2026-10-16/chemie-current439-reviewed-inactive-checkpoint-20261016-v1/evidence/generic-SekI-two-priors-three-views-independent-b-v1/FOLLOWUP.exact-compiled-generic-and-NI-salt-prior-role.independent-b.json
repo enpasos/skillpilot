@@ -1,0 +1,247 @@
+{
+  "role": "Independent B exact compiled membership follow-up to resolve a harness-scope ambiguity",
+  "scientificFIRST": {
+    "path": "tmp/chemie-m7-resumed-20261016/generic-SekI-two-priors-three-views-independent-b-v1/FIRST.independent-b.science.frozen.json",
+    "sha256": "sha256:92c1fd8b28739036cbc7b1e215abb13772dc4d3a4d08b0b2e92a65d0cbca84f9"
+  },
+  "canonicalSHA": "sha256:37e092408007e0c8c675beda79b667e8dced936c7ec33742082340fcc77fdc80",
+  "goals": [
+    {
+      "goalId": "5abc5961-6368-52bb-88b9-6a846c3c37a8",
+      "title": "Lösen von Salzen energetisch erklären",
+      "semanticKind": "curricularAtomic",
+      "contains": [],
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "requires": [
+        "5338b54c-68bc-5892-907c-e025351ffde6",
+        "4285d84a-2c9a-4d51-8250-8bed4daf2d2e",
+        "eb7537dd-d11b-50e9-a6d7-51a78e96fc4e"
+      ]
+    },
+    {
+      "goalId": "5338b54c-68bc-5892-907c-e025351ffde6",
+      "title": "Lösungsvorgänge mit dem Teilchenmodell beschreiben",
+      "semanticKind": "curricularAtomic",
+      "contains": [],
+      "tags": [
+        "GK",
+        "LK",
+        "SekI",
+        "canonical"
+      ],
+      "requires": [
+        "988888bb-1f88-55f9-9a44-f3f60469a297"
+      ]
+    }
+  ],
+  "viewRows": [
+    {
+      "viewId": "de-de-gym-seki-chemistry",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "SekI"
+      },
+      "filters": [],
+      "membership": [
+        {
+          "goalId": "5abc5961-6368-52bb-88b9-6a846c3c37a8",
+          "rawTarget": true,
+          "filterMatches": true,
+          "target": true,
+          "prerequisiteOnly": false,
+          "compiledOccurrences": 1,
+          "compiledPaths": [
+            [
+              {
+                "label": "Chemie",
+                "sourceGoalId": null
+              },
+              {
+                "label": "Sekundarstufe I",
+                "sourceGoalId": null
+              },
+              {
+                "label": "Chemische Grundlagen (Sek I)",
+                "sourceGoalId": "3588c15e-adbe-5b81-b3a7-10da20574e3d"
+              },
+              {
+                "label": "Lösen von Salzen energetisch erklären",
+                "sourceGoalId": "5abc5961-6368-52bb-88b9-6a846c3c37a8"
+              }
+            ]
+          ]
+        },
+        {
+          "goalId": "5338b54c-68bc-5892-907c-e025351ffde6",
+          "rawTarget": true,
+          "filterMatches": true,
+          "target": true,
+          "prerequisiteOnly": false,
+          "compiledOccurrences": 1,
+          "compiledPaths": [
+            [
+              {
+                "label": "Chemie",
+                "sourceGoalId": null
+              },
+              {
+                "label": "Sekundarstufe I",
+                "sourceGoalId": null
+              },
+              {
+                "label": "Chemische Grundlagen (Sek I)",
+                "sourceGoalId": "3588c15e-adbe-5b81-b3a7-10da20574e3d"
+              },
+              {
+                "label": "Teilchenmodell für Stoff- und Lösungsvorgänge nutzen",
+                "sourceGoalId": "10ce2814-8796-5633-9bed-f6990d039b91"
+              },
+              {
+                "label": "Lösungsvorgänge mit dem Teilchenmodell beschreiben",
+                "sourceGoalId": "5338b54c-68bc-5892-907c-e025351ffde6"
+              }
+            ]
+          ]
+        }
+      ],
+      "stageInterpretation": "Stage stays an authored view discriminator; phase, requires, source origin or GK/LK do not infer it."
+    },
+    {
+      "viewId": "de-ni-gym-chemistry-gk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NI",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "filters": [
+        "GK",
+        "DE-NI"
+      ],
+      "membership": [
+        {
+          "goalId": "5abc5961-6368-52bb-88b9-6a846c3c37a8",
+          "rawTarget": true,
+          "filterMatches": true,
+          "target": true,
+          "prerequisiteOnly": false,
+          "compiledOccurrences": 1,
+          "compiledPaths": [
+            [
+              {
+                "label": "Chemie",
+                "sourceGoalId": null
+              },
+              {
+                "label": "Lehrplanbelegte Chemie-Ziele (DE-NI, GK)",
+                "sourceGoalId": null
+              },
+              {
+                "label": "Chemische Grundlagen (Sek I)",
+                "sourceGoalId": null
+              },
+              {
+                "label": "Lösen von Salzen energetisch erklären",
+                "sourceGoalId": "5abc5961-6368-52bb-88b9-6a846c3c37a8"
+              }
+            ]
+          ]
+        },
+        {
+          "goalId": "5338b54c-68bc-5892-907c-e025351ffde6",
+          "rawTarget": false,
+          "filterMatches": true,
+          "target": false,
+          "prerequisiteOnly": false,
+          "compiledOccurrences": 0,
+          "compiledPaths": []
+        }
+      ],
+      "stageInterpretation": "Stage stays an authored view discriminator; phase, requires, source origin or GK/LK do not infer it."
+    },
+    {
+      "viewId": "de-ni-gym-chemistry-lk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NI",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "filters": [
+        "LK",
+        "DE-NI"
+      ],
+      "membership": [
+        {
+          "goalId": "5abc5961-6368-52bb-88b9-6a846c3c37a8",
+          "rawTarget": true,
+          "filterMatches": true,
+          "target": true,
+          "prerequisiteOnly": false,
+          "compiledOccurrences": 1,
+          "compiledPaths": [
+            [
+              {
+                "label": "Chemie",
+                "sourceGoalId": null
+              },
+              {
+                "label": "Lehrplanbelegte Chemie-Ziele (DE-NI, LK)",
+                "sourceGoalId": null
+              },
+              {
+                "label": "Chemische Grundlagen (Sek I)",
+                "sourceGoalId": null
+              },
+              {
+                "label": "Lösen von Salzen energetisch erklären",
+                "sourceGoalId": "5abc5961-6368-52bb-88b9-6a846c3c37a8"
+              }
+            ]
+          ]
+        },
+        {
+          "goalId": "5338b54c-68bc-5892-907c-e025351ffde6",
+          "rawTarget": false,
+          "filterMatches": true,
+          "target": false,
+          "prerequisiteOnly": false,
+          "compiledOccurrences": 0,
+          "compiledPaths": []
+        }
+      ],
+      "stageInterpretation": "Stage stays an authored view discriminator; phase, requires, source origin or GK/LK do not infer it."
+    }
+  ],
+  "genericSubtreePaths": [
+    {
+      "goalId": "5abc5961-6368-52bb-88b9-6a846c3c37a8",
+      "canonicalSubtree": "3588c15e-adbe-5b81-b3a7-10da20574e3d",
+      "containsPath": [
+        "3588c15e-adbe-5b81-b3a7-10da20574e3d",
+        "5abc5961-6368-52bb-88b9-6a846c3c37a8"
+      ]
+    },
+    {
+      "goalId": "5338b54c-68bc-5892-907c-e025351ffde6",
+      "canonicalSubtree": "3588c15e-adbe-5b81-b3a7-10da20574e3d",
+      "containsPath": [
+        "3588c15e-adbe-5b81-b3a7-10da20574e3d",
+        "10ce2814-8796-5633-9bed-f6990d039b91",
+        "5338b54c-68bc-5892-907c-e025351ffde6"
+      ]
+    }
+  ],
+  "verdict": "Generic scope has target→target and one compiled occurrence of both goals. Both NI scopes retain target→absent before and after; the candidate does not create or repair that older outside-scope interface.",
+  "scopeCorrection": "Initial broad harness failure occurred in NI, not generic. Raw failures are preserved; no stock schema/compiler or scientific FIRST was weakened or rewritten.",
+  "P2Provenance": "Actual own scientific FIRST and agent identity; reviewRunIds empty. Record schema and current input/profile semantics checked, no configured AI-run manifest or complete positiveGoalEvidenceReview campaign claimed.",
+  "RorL6Writes": false,
+  "HumanApproval": false,
+  "HumanTrial": false,
+  "M7Claim": false
+}

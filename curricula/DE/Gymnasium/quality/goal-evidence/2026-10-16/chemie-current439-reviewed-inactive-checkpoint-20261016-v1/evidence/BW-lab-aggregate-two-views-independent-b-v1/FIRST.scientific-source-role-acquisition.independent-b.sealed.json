@@ -1,0 +1,58 @@
+{
+  "documentType": "independent-b-scientific-first-sealed-judgement",
+  "createdAtUTC": "2026-10-16T21:11:21.203089+00:00",
+  "scope": "Exactly BW GK/LK CrossStage views and existing laboratory aggregate acquisition; no full scientific re-review of previously valid child AMVP",
+  "independence": {
+    "readOtherReviewerJudgements": false,
+    "readAuthorFIRSTOrAuthorCheckerOutputs": false,
+    "authorRoutingRead": "selector, CAS, whole semantic inputs and candidate node only; no author science verdict adopted",
+    "readMemoryOrRootJournal": false,
+    "compilerOrSchemaExecutionBeforeThisSeal": false
+  },
+  "inputs": {
+    "path": "tmp/chemie-m7-resumed-20261016/BW-lab-aggregate-two-views-independent-b-v1/INPUT.six-whole-goals-two-whole-profiles-two-whole-cases.independent-b.json",
+    "sha256": "209c1aabef9eee3b8570a05f3724609b4d61bc10c19d4ad685ca80bf1584040a"
+  },
+  "sourceJudgements": [
+    {
+      "source": "BW Bildungsplan 2016 Gymnasium Chemie, überarbeitet 25.03.2022; PDF p11/printed9; 2.1 (5),(6)",
+      "primarySHA256": "3ae66c6c2db6371aa24153484f78832f1dfc2097deac8b8dfbffeb32bed28c62",
+      "observation": "Sicherheits- und Umweltaspekte, Durchführung, Beschreibung, Protokoll und Auswertung sowie sachgerechter Geräteumgang sind ausdrücklich Prozesskompetenzen.",
+      "boundedConclusion": "Die vorhandenen beiden Ziele Arbeitsweisen/Dokumentation und situationsbezogene allgemeine Sicherheit haben fachliche Deckung. Diese Prozesspassage deckt keine beliebige neue spezielle Gefahrstoffpflicht."
+    },
+    {
+      "source": "same official PDF p15/printed13; 3.2.1.1 (1),(3),(4)",
+      "observation": "Eigenschaften werden experimentell untersucht; Gefahrenzeichen sind gesondert benannt; Gemischtrennung wird geplant und durchgeführt.",
+      "boundedConclusion": "Die unveränderten grundlegenden Methoden mit eigenem Protokoll passen als Erwerbsweg; der Sammelknoten ist keine neue eigene BW-Atomkompetenz. Die konkret bestehende 1:n-Abbildung der fachlichen Nachweise bleibt unverändert."
+    }
+  ],
+  "goalAndProfileJudgements": [
+    {
+      "subject": "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+      "decision": "KEEP",
+      "reason": "Unveränderter curricularArea-Cluster mit genau 416dfd33 und 13d4f336 als Kindern; Clusterbeschreibung benennt exakt Laborgrundmethoden und allgemeine Sicherheit. Er repräsentiert deren gemeinsame Voraussetzung für drei bestehende Fachziele; kein eigenes atomisches Prüfziel, keine Wiederholung einer vollständigen Laborprüfung."
+    },
+    {
+      "subject": "416dfd33-8b43-5c49-903c-9847b95e4208 and 13d4f336-ab16-54a7-9479-c920b458f385",
+      "decision": "KEEP_WITHIN_TARGET_ROLE_SCOPE",
+      "reason": "Beide ganzen Ziele/Profile und die zwei verknüpften DE/EN-Fälle wurden gelesen und gegen private L6 bzw. Originalmaterial gleich geprüft. Die praktische Eigenhandlung samt Dokumentation und situationsbezogener Sicherheit bleibt erforderlich; Chat-Erklärungen oder Lehrdaten sind keine Ausführung. Die vorhandenen Fallanforderungen sind unverändert und entstehen nicht durch die neue Sammelreferenz. Keine neue historische AMVP-Freigabe."
+    },
+    {
+      "subject": "fcc73fb5 / 580b3616 / a44af1fa",
+      "decision": "KEEP_EXISTING_REQUIREMENTS",
+      "reason": "Die ganzen unveränderten Ziele verlangen Eigenschaftenbeschreibung bzw. experimentelle Gas-/Ionennachweise. Grundlegende Laborhandlung und allgemeine Sicherheit als gemeinsame Voraussetzung sind didaktisch passend. Die Sammelreferenz ist eine Modellierungsentscheidung über vorhandene Ziele, kein wörtlich vorgeschriebener curricularer Verweis."
+    }
+  ],
+  "roleAndAcquisitionJudgement": {
+    "decision": "KEEP_BOUNDED_PENDING_ACTUAL_TECHNICAL_PROOFS",
+    "reason": "Ein prerequisiteOnly-Verweis auf den bestehenden Cluster kann die fehlende voraussetzungsseitige Erreichbarkeit heilen, wenn beide bereits vorhandenen direkten Kindreferenzen unverändert als uniqueTargets gewinnen. Die erworbene Voraussetzung muss aus denselben beiden vorhandenen Lernzielen stammen. Der Sammelknoten darf weder als zusätzliches Atom noch als sichtbarer zweiter Lernweg erscheinen. Fehlende projectionRole am GK-goalEntry bedeutet laut tatsächlichem Code target; dies darf nicht zu prerequisiteOnly umgedeutet werden.",
+    "masteryRequirement": "Die zwei Kinder müssen gemeinsam die Cluster-Voraussetzung tragen; ein einzelnes erfülltes Kind allein darf die fachliche Freigabe nicht vortäuschen. Bestehende Schwellen/ggf. historisch gespeicherte Clusterwerte werden nicht geändert.",
+    "pending": "Exakte WholeView-CAS, guardedBefore, Schema, real collector/raw compiler, Rollen-Spezifität, unique tree und kind-aware Delta werden erst nach dieser Versiegelung tatsächlich geprüft."
+  },
+  "limits": [
+    "Keine neuen Kinder, keine neuen Profile, keine neuen historischen Kind-AMVP-Urteile.",
+    "Keine neue M7-, Human-, Host- oder Laufzeitakzeptanz.",
+    "Alte kind-aware Fehler/HOLDs bleiben offen; Teilreparatur ist kein Vollpass.",
+    "Keine R/L6-, normal-, canonical-, nativeD-, Build- oder Central-Schreiboperationen."
+  ]
+}

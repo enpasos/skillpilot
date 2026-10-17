@@ -1,0 +1,752 @@
+{
+  "documentType": "independent-A-actual-finite-stock-check",
+  "createdAt": "2026-10-16T21:12:14.009Z",
+  "pins": [
+    {
+      "path": "tmp/chemie-m7-resumed-20261016/chemie-shared640-recycling-native-author-capsule-L6-v1/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "sha256": "ae53884b26285d9483b315f030216566b74fb7067e9fc962610e493aadeb3fb2"
+    },
+    {
+      "path": "tmp/chemie-m7-resumed-20261016/chemie-shared640-recycling-native-author-capsule-L6-v1/curricula/DE/Gymnasium/quality/goal-book-publication/chemie.semantic-kinds.json",
+      "sha256": "23347dac27ae2d616a2334b5c30c5465c031ae177a034d6d1f7df18e2585295a"
+    },
+    {
+      "path": "tmp/chemie-m7-resumed-20261016/chemie-shared640-recycling-native-author-capsule-L6-v1/app/src/utils/authoring/compositionViewAuthoring.ts",
+      "sha256": "d7ee9ab670d2d73a3ed82700c2bca2dee3f2da6c8e9517120c5c45acac0d84a7"
+    },
+    {
+      "path": "tmp/chemie-m7-resumed-20261016/chemie-shared640-recycling-native-author-capsule-L6-v1/app/src/utils/goalFilters.ts",
+      "sha256": "49e4896fba8d946ce9cc0de30230f73770a29db61486fc3a6dc53f099a4bc89f"
+    },
+    {
+      "path": "tmp/chemie-m7-resumed-20261016/BW-lab-aggregate-two-views-independent-a-v1/check-independent-a-stock.mts",
+      "sha256": "961d9f68b2ff7e7f7709c960d6d2a1f68d01c24952f8e92151a323606cc0e7f6"
+    }
+  ],
+  "executed": "actual stock collector, actual goalMatchesFilters, actual raw compiler, actual compiler with authoritative semanticKind attached to transient canonical goal clones, exact before/after whole views, reversed-order roles and finite default/explicit child role probes",
+  "rows": [
+    {
+      "course": "gk",
+      "before": {
+        "path": "tmp/chemie-m7-resumed-20261016/BW-lab-aggregate-existing-child-acquisition-author-v1/before/de-bw-gk.view.json",
+        "sha256": "b721ab3f68c366ce2376cda532f30ca6135ede02cc6efea6a82cd393de5f0953"
+      },
+      "after": {
+        "path": "tmp/chemie-m7-resumed-20261016/BW-lab-aggregate-existing-child-acquisition-author-v1/after/de-bw-gk.view.json",
+        "sha256": "a95b8595d8d613faf4a80ac2182016a4a7a54ed00c0b91fb155eb0fc24999332"
+      },
+      "authoredTargetCount": 188,
+      "effectiveTargetCount": 182,
+      "effectiveTargetSetExact": true,
+      "authoredTargetSetExact": true,
+      "addedTargetIds": [],
+      "removedTargetIds": [],
+      "supportBefore": 1,
+      "supportAfter": 2,
+      "soleAddedSupportId": "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+      "children": [
+        {
+          "goalId": "416dfd33-8b43-5c49-903c-9847b95e4208",
+          "beforeRole": "target",
+          "afterRole": "target",
+          "actualRenderedOccurrences": [
+            {
+              "goalId": "416dfd33-8b43-5c49-903c-9847b95e4208",
+              "parent": "structure:acid-residual-de-bw-gk-existing-acquisition"
+            }
+          ],
+          "unchangedWholeBody": true
+        },
+        {
+          "goalId": "13d4f336-ab16-54a7-9479-c920b458f385",
+          "beforeRole": "target",
+          "afterRole": "target",
+          "actualRenderedOccurrences": [
+            {
+              "goalId": "13d4f336-ab16-54a7-9479-c920b458f385",
+              "parent": "structure:acid-residual-de-bw-gk-existing-acquisition"
+            }
+          ],
+          "unchangedWholeBody": true
+        }
+      ],
+      "aggregateHidden": true,
+      "compiledWholeTreeExact": true,
+      "compiledWholeTreeSHA256": "d2519fc72d787d6d7c60ee0c1c1b13fc8447874f4aeea1ab5f6b5c2052d579b9",
+      "duplicateRenderedIds": [],
+      "multipleVisibleParents": [],
+      "roleSpecificityIndependentOfOrder": true,
+      "rawStockCompileErrors": [],
+      "kindAwareExactUnchangedErrors": [
+        {
+          "code": "CPV-009",
+          "severity": "error",
+          "nodePath": "0.1.0.1",
+          "goalId": "c7d4d9f7-d23f-44fc-bf22-3872e0f2b9a0",
+          "message": "goalEntry darf keinen als curricularArea klassifizierten kanonischen Cluster als opakes Ziel einblenden; verwende canonicalSubtree oder eine explizite fachliche Struktur aus atomaren Zielen."
+        },
+        {
+          "code": "CPV-009",
+          "severity": "error",
+          "nodePath": "0.1.0.5",
+          "goalId": "53fd1bfd-facb-54ae-b2dc-f667ed1414fc",
+          "message": "goalEntry darf keinen als curricularArea klassifizierten kanonischen Cluster als opakes Ziel einblenden; verwende canonicalSubtree oder eine explizite fachliche Struktur aus atomaren Zielen."
+        },
+        {
+          "code": "CPV-009",
+          "severity": "error",
+          "nodePath": "0.1.0.14",
+          "goalId": "10ce2814-8796-5633-9bed-f6990d039b91",
+          "message": "goalEntry darf keinen als curricularArea klassifizierten kanonischen Cluster als opakes Ziel einblenden; verwende canonicalSubtree oder eine explizite fachliche Struktur aus atomaren Zielen."
+        },
+        {
+          "code": "CPV-009",
+          "severity": "error",
+          "nodePath": "0.1.1.2",
+          "goalId": "91238ba1-5c63-50c7-a4fd-9bbe492c6b61",
+          "message": "goalEntry darf keinen als curricularArea klassifizierten kanonischen Cluster als opakes Ziel einblenden; verwende canonicalSubtree oder eine explizite fachliche Struktur aus atomaren Zielen."
+        },
+        {
+          "code": "CPV-009",
+          "severity": "error",
+          "nodePath": "0.1.1.4",
+          "goalId": "542822de-cb96-56cf-a487-0fc3b5820f57",
+          "message": "goalEntry darf keinen als curricularArea klassifizierten kanonischen Cluster als opakes Ziel einblenden; verwende canonicalSubtree oder eine explizite fachliche Struktur aus atomaren Zielen."
+        },
+        {
+          "code": "CPV-009",
+          "severity": "error",
+          "nodePath": "0.1.2.2",
+          "goalId": "bb707fda-504c-4699-a78c-d0a6c320658f",
+          "message": "goalEntry darf keinen als curricularArea klassifizierten kanonischen Cluster als opakes Ziel einblenden; verwende canonicalSubtree oder eine explizite fachliche Struktur aus atomaren Zielen."
+        },
+        {
+          "code": "CPV-009",
+          "severity": "error",
+          "nodePath": "0.1.2.7",
+          "goalId": "871eabde-6e19-59d3-bc7c-60977a9837db",
+          "message": "goalEntry darf keinen als curricularArea klassifizierten kanonischen Cluster als opakes Ziel einblenden; verwende canonicalSubtree oder eine explizite fachliche Struktur aus atomaren Zielen."
+        },
+        {
+          "code": "CPV-009",
+          "severity": "error",
+          "nodePath": "0.1.8.13",
+          "goalId": "dd843c85-bf60-58c3-861b-fb531ba69b17",
+          "message": "goalEntry darf keinen als curricularArea klassifizierten kanonischen Cluster als opakes Ziel einblenden; verwende canonicalSubtree oder eine explizite fachliche Struktur aus atomaren Zielen."
+        },
+        {
+          "code": "CPV-009",
+          "severity": "error",
+          "nodePath": "0.1.9.2",
+          "goalId": "9aec52cb-1f7d-5343-b5f9-a8e72ddd25fa",
+          "message": "goalEntry darf keinen als curricularArea klassifizierten kanonischen Cluster als opakes Ziel einblenden; verwende canonicalSubtree oder eine explizite fachliche Struktur aus atomaren Zielen."
+        },
+        {
+          "code": "CPV-009",
+          "severity": "error",
+          "nodePath": "0.1.9.3",
+          "goalId": "0aaf0cc6-b059-56ef-9284-4cb7a0c5bff5",
+          "message": "goalEntry darf keinen als curricularArea klassifizierten kanonischen Cluster als opakes Ziel einblenden; verwende canonicalSubtree oder eine explizite fachliche Struktur aus atomaren Zielen."
+        },
+        {
+          "code": "CPV-009",
+          "severity": "error",
+          "nodePath": "0.1.9.5",
+          "goalId": "61446285-4415-5bd9-9fdc-c19bb9ec1b02",
+          "message": "goalEntry darf keinen als curricularArea klassifizierten kanonischen Cluster als opakes Ziel einblenden; verwende canonicalSubtree oder eine explizite fachliche Struktur aus atomaren Zielen."
+        },
+        {
+          "code": "CPV-009",
+          "severity": "error",
+          "nodePath": "0.1.10.22",
+          "goalId": "e56040b5-1da8-5080-b358-086d04922339",
+          "message": "goalEntry darf keinen als curricularArea klassifizierten kanonischen Cluster als opakes Ziel einblenden; verwende canonicalSubtree oder eine explizite fachliche Struktur aus atomaren Zielen."
+        }
+      ],
+      "ordinaryMissingBefore": 48,
+      "ordinaryMissingAfter": 45,
+      "exactRemovedOrdinaryMissingInterfaces": [
+        {
+          "goalId": "580b3616-f121-5d82-ac6b-fc24f145fbdc",
+          "requirementId": "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+          "requirementKind": "curricularArea"
+        },
+        {
+          "goalId": "a44af1fa-5988-5b7d-b206-691c6bbf7dd4",
+          "requirementId": "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+          "requirementKind": "curricularArea"
+        },
+        {
+          "goalId": "fcc73fb5-7413-557f-aea3-b9692a66ee75",
+          "requirementId": "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+          "requirementKind": "curricularArea"
+        }
+      ],
+      "addedOrdinaryMissingInterfaces": [],
+      "remainingOrdinaryMissingInterfaces": [
+        {
+          "goalId": "0a5a49f2-8e8a-5edb-b6ca-3f8636957a17",
+          "requirementId": "dc5173e8-6e63-58d3-a79b-bd74ef3cb98b",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "11bea4c6-7b8a-47e0-8293-2eb1ce34cf66",
+          "requirementId": "e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "1c1420c2-a8e2-520f-8015-6df637a973bd",
+          "requirementId": "e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "1d2e7b80-653d-57b8-a284-8ede5a353b73",
+          "requirementId": "973c12d9-d863-5292-8c68-9c80cdacf9e2",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "1dc15fa2-fca4-56b0-b5c1-4d215613dde0",
+          "requirementId": "e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "2924f784-5261-54e8-93ee-49ac3b3cd300",
+          "requirementId": "1e5a4b89-69f1-5379-811e-c8ec76faad2a",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "363c5740-8a3c-50b8-8c3a-5548c80c36ea",
+          "requirementId": "448815cc-4127-54b7-96bf-e54b3d2a38c5",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "363c5740-8a3c-50b8-8c3a-5548c80c36ea",
+          "requirementId": "9b56d01e-c2d7-51d8-b78e-237592c1ed20",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "363c5740-8a3c-50b8-8c3a-5548c80c36ea",
+          "requirementId": "973c12d9-d863-5292-8c68-9c80cdacf9e2",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "3ce81f96-4fbb-5022-88b7-337a000315ed",
+          "requirementId": "56bc6377-1291-58bc-b433-5b9f673888e9",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "3de28598-672f-5753-8a45-8f559c2f9dc2",
+          "requirementId": "973c12d9-d863-5292-8c68-9c80cdacf9e2",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "3de28598-672f-5753-8a45-8f559c2f9dc2",
+          "requirementId": "a3788e40-b540-5bed-be37-b33053528422",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "3e9eb5d0-3407-5a1e-9492-ad87f98d303d",
+          "requirementId": "e5aefd51-2de4-590c-903f-286d043a8c30",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "3e9eb5d0-3407-5a1e-9492-ad87f98d303d",
+          "requirementId": "3fb7dea4-f832-5e23-b518-68b13a655b92",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "4bdbdf32-3021-5a0a-b412-b611166b2d21",
+          "requirementId": "e5aefd51-2de4-590c-903f-286d043a8c30",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "4bdbdf32-3021-5a0a-b412-b611166b2d21",
+          "requirementId": "3fb7dea4-f832-5e23-b518-68b13a655b92",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "5abc5961-6368-52bb-88b9-6a846c3c37a8",
+          "requirementId": "5338b54c-68bc-5892-907c-e025351ffde6",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "5abc5961-6368-52bb-88b9-6a846c3c37a8",
+          "requirementId": "4285d84a-2c9a-4d51-8250-8bed4daf2d2e",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "5c8f0bbb-103a-579f-87fc-c997afe4fd18",
+          "requirementId": "8fe39739-2938-5e2c-8db2-08572b44569a",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "70b12d1c-abaf-45c6-ae9e-b571e9cbc126",
+          "requirementId": "4285d84a-2c9a-4d51-8250-8bed4daf2d2e",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "70b34ae7-4481-590c-9a02-516464750832",
+          "requirementId": "a3788e40-b540-5bed-be37-b33053528422",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "72236f2c-771e-4ab6-933a-e549ee49d15b",
+          "requirementId": "9b5d6326-d27c-4ece-8c72-debda705464a",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "747c5777-07d7-51a9-9be3-7d0d6f51d4e2",
+          "requirementId": "448815cc-4127-54b7-96bf-e54b3d2a38c5",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "747c5777-07d7-51a9-9be3-7d0d6f51d4e2",
+          "requirementId": "9b56d01e-c2d7-51d8-b78e-237592c1ed20",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "79db6d68-b402-5563-a348-f2784fed8867",
+          "requirementId": "e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "7a05a1ce-45d3-571e-be51-afcd8dfd33ca",
+          "requirementId": "e5aefd51-2de4-590c-903f-286d043a8c30",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "7a05a1ce-45d3-571e-be51-afcd8dfd33ca",
+          "requirementId": "3fb7dea4-f832-5e23-b518-68b13a655b92",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "7a05a1ce-45d3-571e-be51-afcd8dfd33ca",
+          "requirementId": "667bc303-e9b8-570b-84f1-61cc8bdfd006",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "801790f9-be3a-51fe-9b0f-3452c1bba887",
+          "requirementId": "8ece9beb-9458-5ea1-8e45-9be04670f464",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "8576b82b-811a-5e13-b5dc-ec5d42030565",
+          "requirementId": "fa203f3a-0e81-5bcb-a4c8-e4374b7f04a3",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "8a2ad724-df5e-5986-8de9-560ba43caac2",
+          "requirementId": "e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "94a62b39-d4a2-5882-99d1-6886ead07726",
+          "requirementId": "c95f6059-d7c2-5bcd-b61e-95e3577efdb2",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "95dc0ee5-a0af-5682-af32-d66e36fbeb50",
+          "requirementId": "e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "a0e8f0f2-24e2-5945-a511-597d32e73796",
+          "requirementId": "8ece9beb-9458-5ea1-8e45-9be04670f464",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "a0e8f0f2-24e2-5945-a511-597d32e73796",
+          "requirementId": "5b1bb5d9-07b1-5ba9-b320-cc97be917c60",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca",
+          "requirementId": "4285d84a-2c9a-4d51-8250-8bed4daf2d2e",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "a530ee7d-1002-5f02-ae05-a9d46410ac78",
+          "requirementId": "9b5d6326-d27c-4ece-8c72-debda705464a",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "a78aacf9-92ea-5627-8776-a595111f754c",
+          "requirementId": "d465d82b-4bf2-5527-bb7c-dad5a92605fe",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "c0f1bf09-5a70-5006-b1e9-e91f786a63bf",
+          "requirementId": "17fe22c4-1248-5f37-9d0c-52ee4571d09f",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "c8844ac6-c414-5a0e-9fcd-7d0a82177d09",
+          "requirementId": "96fd8608-8d98-53f0-9b86-1311c3220fd3",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "e9d34f34-2a43-5cc7-bcca-1d08e057531d",
+          "requirementId": "ca216bc6-5205-5b46-abbd-fd5628e4ca5b",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "eb7537dd-d11b-50e9-a6d7-51a78e96fc4e",
+          "requirementId": "448815cc-4127-54b7-96bf-e54b3d2a38c5",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "eb7537dd-d11b-50e9-a6d7-51a78e96fc4e",
+          "requirementId": "9b56d01e-c2d7-51d8-b78e-237592c1ed20",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "f71a2c0a-3a6a-5b23-9fb4-1b57cfb68528",
+          "requirementId": "5b1bb5d9-07b1-5ba9-b320-cc97be917c60",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "fcaf8c9b-bd81-552e-9d91-43649895471e",
+          "requirementId": "9b5d6326-d27c-4ece-8c72-debda705464a",
+          "requirementKind": "curricularAtomic"
+        }
+      ],
+      "rawFindingsExact": true,
+      "kindAwareFindingsExact": true
+    },
+    {
+      "course": "lk",
+      "before": {
+        "path": "tmp/chemie-m7-resumed-20261016/BW-lab-aggregate-existing-child-acquisition-author-v1/before/de-bw-lk.view.json",
+        "sha256": "a2e0046418264c365349c70caf94b1408c6dfbd78a61dc1f739d9f543363d0e7"
+      },
+      "after": {
+        "path": "tmp/chemie-m7-resumed-20261016/BW-lab-aggregate-existing-child-acquisition-author-v1/after/de-bw-lk.view.json",
+        "sha256": "b7723f82362cf4e08117843e2dd963e6cf04f28aa30f85bd75c8563af441ed76"
+      },
+      "authoredTargetCount": 202,
+      "effectiveTargetCount": 190,
+      "effectiveTargetSetExact": true,
+      "authoredTargetSetExact": true,
+      "addedTargetIds": [],
+      "removedTargetIds": [],
+      "supportBefore": 1,
+      "supportAfter": 2,
+      "soleAddedSupportId": "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+      "children": [
+        {
+          "goalId": "416dfd33-8b43-5c49-903c-9847b95e4208",
+          "beforeRole": "target",
+          "afterRole": "target",
+          "actualRenderedOccurrences": [
+            {
+              "goalId": "416dfd33-8b43-5c49-903c-9847b95e4208",
+              "parent": "structure:de-bw-lk-curated-acquisition-foundations"
+            }
+          ],
+          "unchangedWholeBody": true
+        },
+        {
+          "goalId": "13d4f336-ab16-54a7-9479-c920b458f385",
+          "beforeRole": "target",
+          "afterRole": "target",
+          "actualRenderedOccurrences": [
+            {
+              "goalId": "13d4f336-ab16-54a7-9479-c920b458f385",
+              "parent": "structure:de-bw-lk-curated-acquisition-foundations"
+            }
+          ],
+          "unchangedWholeBody": true
+        }
+      ],
+      "aggregateHidden": true,
+      "compiledWholeTreeExact": true,
+      "compiledWholeTreeSHA256": "07dca1db5d1daa98375a36d002f0d9a433b05c1440556438733660443f5617d8",
+      "duplicateRenderedIds": [],
+      "multipleVisibleParents": [],
+      "roleSpecificityIndependentOfOrder": true,
+      "rawStockCompileErrors": [],
+      "kindAwareExactUnchangedErrors": [
+        {
+          "code": "CPV-009",
+          "severity": "error",
+          "nodePath": "0.2.0.1",
+          "goalId": "c7d4d9f7-d23f-44fc-bf22-3872e0f2b9a0",
+          "message": "goalEntry darf keinen als curricularArea klassifizierten kanonischen Cluster als opakes Ziel einblenden; verwende canonicalSubtree oder eine explizite fachliche Struktur aus atomaren Zielen."
+        },
+        {
+          "code": "CPV-009",
+          "severity": "error",
+          "nodePath": "0.2.0.5",
+          "goalId": "53fd1bfd-facb-54ae-b2dc-f667ed1414fc",
+          "message": "goalEntry darf keinen als curricularArea klassifizierten kanonischen Cluster als opakes Ziel einblenden; verwende canonicalSubtree oder eine explizite fachliche Struktur aus atomaren Zielen."
+        },
+        {
+          "code": "CPV-009",
+          "severity": "error",
+          "nodePath": "0.2.0.14",
+          "goalId": "10ce2814-8796-5633-9bed-f6990d039b91",
+          "message": "goalEntry darf keinen als curricularArea klassifizierten kanonischen Cluster als opakes Ziel einblenden; verwende canonicalSubtree oder eine explizite fachliche Struktur aus atomaren Zielen."
+        },
+        {
+          "code": "CPV-009",
+          "severity": "error",
+          "nodePath": "0.2.1.2",
+          "goalId": "91238ba1-5c63-50c7-a4fd-9bbe492c6b61",
+          "message": "goalEntry darf keinen als curricularArea klassifizierten kanonischen Cluster als opakes Ziel einblenden; verwende canonicalSubtree oder eine explizite fachliche Struktur aus atomaren Zielen."
+        },
+        {
+          "code": "CPV-009",
+          "severity": "error",
+          "nodePath": "0.2.1.4",
+          "goalId": "542822de-cb96-56cf-a487-0fc3b5820f57",
+          "message": "goalEntry darf keinen als curricularArea klassifizierten kanonischen Cluster als opakes Ziel einblenden; verwende canonicalSubtree oder eine explizite fachliche Struktur aus atomaren Zielen."
+        },
+        {
+          "code": "CPV-009",
+          "severity": "error",
+          "nodePath": "0.2.2.2",
+          "goalId": "bb707fda-504c-4699-a78c-d0a6c320658f",
+          "message": "goalEntry darf keinen als curricularArea klassifizierten kanonischen Cluster als opakes Ziel einblenden; verwende canonicalSubtree oder eine explizite fachliche Struktur aus atomaren Zielen."
+        },
+        {
+          "code": "CPV-009",
+          "severity": "error",
+          "nodePath": "0.2.2.7",
+          "goalId": "871eabde-6e19-59d3-bc7c-60977a9837db",
+          "message": "goalEntry darf keinen als curricularArea klassifizierten kanonischen Cluster als opakes Ziel einblenden; verwende canonicalSubtree oder eine explizite fachliche Struktur aus atomaren Zielen."
+        },
+        {
+          "code": "CPV-009",
+          "severity": "error",
+          "nodePath": "0.2.8.13",
+          "goalId": "dd843c85-bf60-58c3-861b-fb531ba69b17",
+          "message": "goalEntry darf keinen als curricularArea klassifizierten kanonischen Cluster als opakes Ziel einblenden; verwende canonicalSubtree oder eine explizite fachliche Struktur aus atomaren Zielen."
+        },
+        {
+          "code": "CPV-009",
+          "severity": "error",
+          "nodePath": "0.2.9.2",
+          "goalId": "9aec52cb-1f7d-5343-b5f9-a8e72ddd25fa",
+          "message": "goalEntry darf keinen als curricularArea klassifizierten kanonischen Cluster als opakes Ziel einblenden; verwende canonicalSubtree oder eine explizite fachliche Struktur aus atomaren Zielen."
+        },
+        {
+          "code": "CPV-009",
+          "severity": "error",
+          "nodePath": "0.2.9.3",
+          "goalId": "0aaf0cc6-b059-56ef-9284-4cb7a0c5bff5",
+          "message": "goalEntry darf keinen als curricularArea klassifizierten kanonischen Cluster als opakes Ziel einblenden; verwende canonicalSubtree oder eine explizite fachliche Struktur aus atomaren Zielen."
+        },
+        {
+          "code": "CPV-009",
+          "severity": "error",
+          "nodePath": "0.2.9.5",
+          "goalId": "61446285-4415-5bd9-9fdc-c19bb9ec1b02",
+          "message": "goalEntry darf keinen als curricularArea klassifizierten kanonischen Cluster als opakes Ziel einblenden; verwende canonicalSubtree oder eine explizite fachliche Struktur aus atomaren Zielen."
+        },
+        {
+          "code": "CPV-009",
+          "severity": "error",
+          "nodePath": "0.2.10.26",
+          "goalId": "e56040b5-1da8-5080-b358-086d04922339",
+          "message": "goalEntry darf keinen als curricularArea klassifizierten kanonischen Cluster als opakes Ziel einblenden; verwende canonicalSubtree oder eine explizite fachliche Struktur aus atomaren Zielen."
+        },
+        {
+          "code": "CPV-009",
+          "severity": "error",
+          "nodePath": "0.2.14.6",
+          "goalId": "e5941581-0aba-5354-b4b9-d0249d4538a8",
+          "message": "goalEntry darf keinen als curricularArea klassifizierten kanonischen Cluster als opakes Ziel einblenden; verwende canonicalSubtree oder eine explizite fachliche Struktur aus atomaren Zielen."
+        }
+      ],
+      "ordinaryMissingBefore": 35,
+      "ordinaryMissingAfter": 32,
+      "exactRemovedOrdinaryMissingInterfaces": [
+        {
+          "goalId": "580b3616-f121-5d82-ac6b-fc24f145fbdc",
+          "requirementId": "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+          "requirementKind": "curricularArea"
+        },
+        {
+          "goalId": "a44af1fa-5988-5b7d-b206-691c6bbf7dd4",
+          "requirementId": "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+          "requirementKind": "curricularArea"
+        },
+        {
+          "goalId": "fcc73fb5-7413-557f-aea3-b9692a66ee75",
+          "requirementId": "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+          "requirementKind": "curricularArea"
+        }
+      ],
+      "addedOrdinaryMissingInterfaces": [],
+      "remainingOrdinaryMissingInterfaces": [
+        {
+          "goalId": "0a5a49f2-8e8a-5edb-b6ca-3f8636957a17",
+          "requirementId": "dc5173e8-6e63-58d3-a79b-bd74ef3cb98b",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "1d2e7b80-653d-57b8-a284-8ede5a353b73",
+          "requirementId": "973c12d9-d863-5292-8c68-9c80cdacf9e2",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "2924f784-5261-54e8-93ee-49ac3b3cd300",
+          "requirementId": "1e5a4b89-69f1-5379-811e-c8ec76faad2a",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "363c5740-8a3c-50b8-8c3a-5548c80c36ea",
+          "requirementId": "973c12d9-d863-5292-8c68-9c80cdacf9e2",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "3ce81f96-4fbb-5022-88b7-337a000315ed",
+          "requirementId": "56bc6377-1291-58bc-b433-5b9f673888e9",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "3de28598-672f-5753-8a45-8f559c2f9dc2",
+          "requirementId": "973c12d9-d863-5292-8c68-9c80cdacf9e2",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "3de28598-672f-5753-8a45-8f559c2f9dc2",
+          "requirementId": "a3788e40-b540-5bed-be37-b33053528422",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "3e9eb5d0-3407-5a1e-9492-ad87f98d303d",
+          "requirementId": "e5aefd51-2de4-590c-903f-286d043a8c30",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "3e9eb5d0-3407-5a1e-9492-ad87f98d303d",
+          "requirementId": "3fb7dea4-f832-5e23-b518-68b13a655b92",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "4bdbdf32-3021-5a0a-b412-b611166b2d21",
+          "requirementId": "e5aefd51-2de4-590c-903f-286d043a8c30",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "4bdbdf32-3021-5a0a-b412-b611166b2d21",
+          "requirementId": "3fb7dea4-f832-5e23-b518-68b13a655b92",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "5abc5961-6368-52bb-88b9-6a846c3c37a8",
+          "requirementId": "5338b54c-68bc-5892-907c-e025351ffde6",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "5c8f0bbb-103a-579f-87fc-c997afe4fd18",
+          "requirementId": "8fe39739-2938-5e2c-8db2-08572b44569a",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "70b34ae7-4481-590c-9a02-516464750832",
+          "requirementId": "a3788e40-b540-5bed-be37-b33053528422",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "7a05a1ce-45d3-571e-be51-afcd8dfd33ca",
+          "requirementId": "e5aefd51-2de4-590c-903f-286d043a8c30",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "7a05a1ce-45d3-571e-be51-afcd8dfd33ca",
+          "requirementId": "3fb7dea4-f832-5e23-b518-68b13a655b92",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "7a05a1ce-45d3-571e-be51-afcd8dfd33ca",
+          "requirementId": "667bc303-e9b8-570b-84f1-61cc8bdfd006",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "801790f9-be3a-51fe-9b0f-3452c1bba887",
+          "requirementId": "8ece9beb-9458-5ea1-8e45-9be04670f464",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "8576b82b-811a-5e13-b5dc-ec5d42030565",
+          "requirementId": "fa203f3a-0e81-5bcb-a4c8-e4374b7f04a3",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "94a62b39-d4a2-5882-99d1-6886ead07726",
+          "requirementId": "c95f6059-d7c2-5bcd-b61e-95e3577efdb2",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "a0e8f0f2-24e2-5945-a511-597d32e73796",
+          "requirementId": "8ece9beb-9458-5ea1-8e45-9be04670f464",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "a0e8f0f2-24e2-5945-a511-597d32e73796",
+          "requirementId": "5b1bb5d9-07b1-5ba9-b320-cc97be917c60",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "a78aacf9-92ea-5627-8776-a595111f754c",
+          "requirementId": "d465d82b-4bf2-5527-bb7c-dad5a92605fe",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "c0f1bf09-5a70-5006-b1e9-e91f786a63bf",
+          "requirementId": "17fe22c4-1248-5f37-9d0c-52ee4571d09f",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "c8844ac6-c414-5a0e-9fcd-7d0a82177d09",
+          "requirementId": "96fd8608-8d98-53f0-9b86-1311c3220fd3",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "ceda84ff-f48a-5e16-84fd-ad681de7e460",
+          "requirementId": "cc803809-fa7f-517c-b356-9f2f7caf21a5",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "ceda84ff-f48a-5e16-84fd-ad681de7e460",
+          "requirementId": "93b914d4-747d-5b22-90ff-ac6320514b44",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "e22a34d4-ac1e-5afe-8f77-0dfa4fd9f44f",
+          "requirementId": "4aa3a130-b517-5ac5-87b2-147fe432cadd",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "e96771d3-fd72-59e6-8f4c-573ef8cbde0a",
+          "requirementId": "1df17884-96ae-57d7-9da9-dbebd082596f",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "e9d34f34-2a43-5cc7-bcca-1d08e057531d",
+          "requirementId": "ca216bc6-5205-5b46-abbd-fd5628e4ca5b",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "f1ed86f0-534d-57d7-8952-a004a331cc54",
+          "requirementId": "28bb9d15-f865-5843-a035-6066580fea64",
+          "requirementKind": "curricularAtomic"
+        },
+        {
+          "goalId": "f71a2c0a-3a6a-5b23-9fb4-1b57cfb68528",
+          "requirementId": "5b1bb5d9-07b1-5ba9-b320-cc97be917c60",
+          "requirementKind": "curricularAtomic"
+        }
+      ],
+      "rawFindingsExact": true,
+      "kindAwareFindingsExact": true
+    }
+  ],
+  "allBoundedAssertionsPASS": true,
+  "ordinaryDirectContextsRestored": 6,
+  "fullKindAwareCompilePASS": false,
+  "unchangedOldKindAwareErrorCount": 25,
+  "claims": "No backend execution, no learner mastery write or runtime acceptance, no global PASS. Existing HOLDs explicitly retained."
+}

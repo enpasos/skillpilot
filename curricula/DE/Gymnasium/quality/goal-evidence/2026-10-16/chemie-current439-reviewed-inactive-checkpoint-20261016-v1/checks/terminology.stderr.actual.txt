@@ -1,0 +1,19 @@
+node:fs:448
+    return binding.readFileUtf8(path, stringToFlags(options.flag));
+                   ^
+
+Error: ENOENT: no such file or directory, open '/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current439-reviewed-inactive-checkpoint-20261016-v1/evidence/BB-BE-eleven-crossstage-LK-independent-a-v1/BB-lower-secondary.txt'
+    at readFileSync (node:fs:448:20)
+    at <anonymous> (/home/enpasos/projects/skillpilot/app/scripts/checkTerminology.ts:733:20)
+    at Array.flatMap (<anonymous>)
+    at <anonymous> (/home/enpasos/projects/skillpilot/app/scripts/checkTerminology.ts:732:41)
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current439-reviewed-inactive-checkpoint-20261016-v1/evidence/BB-BE-eleven-crossstage-LK-independent-a-v1/BB-lower-secondary.txt'
+}
+
+Node.js v20.20.2

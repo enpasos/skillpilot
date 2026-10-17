@@ -1,0 +1,129 @@
+{
+  "documentType": "independent-b-static-source-inspection-not-executed-backend-test",
+  "atUTC": "2026-10-16T21:14:33.497543+00:00",
+  "executionStatus": "STATIC_ONLY; backend tests and app full test suite were not executed",
+  "backendEvidence": [
+    {
+      "file": {
+        "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+        "sha256": "6feb500671761d9bf4d90e36aefb4517009d278a2b2193bee3307aafdd180bab",
+        "bytes": 529427
+      },
+      "firstLine": 5810,
+      "lastLine": 5823,
+      "exactText": "            return Collections.emptyList();\n        }\n\n        GoalProjection projection = getGoalProjection(curriculumId, learner.getPersonalCurriculum());\n        Map<String, LearningGoal> allGoals = projection.visibleGoals();\n        Map<String, LearningGoal> prerequisiteLookupGoals = projection.compositionViewApplied()\n                ? projection.structuralGoals()\n                : allGoals;\n        Map<String, List<String>> effectiveRequires =\n                computeEffectiveRequires(prerequisiteLookupGoals);\n        Map<String, Double> masteryMap = getMastery(skillpilotId);\n        Map<String, Double> effectiveMastery = computeEffectiveMastery(allGoals, masteryMap);\n        Map<String, Double> effectivePrereqMastery =\n                computeEffectivePrereqMastery(prerequisiteLookupGoals, masteryMap);"
+    },
+    {
+      "file": {
+        "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+        "sha256": "6feb500671761d9bf4d90e36aefb4517009d278a2b2193bee3307aafdd180bab",
+        "bytes": 529427
+      },
+      "firstLine": 5881,
+      "lastLine": 5910,
+      "exactText": "                for (String reqId : requires) {\n                    String resolvedReqId = resolveGoalRef(reqId, prerequisiteLookupGoals);\n                    if (resolvedReqId == null) {\n                        // Preserve the existing optimistic behavior for prerequisites that are\n                        // unknown in the applicable lookup. A matched composition view expands\n                        // that lookup to its structural graph, where prerequisite-only goals are\n                        // known and therefore evaluated.\n                        continue;\n                    }\n                    if (projection.compositionViewApplied()\n                            && !projection.targetGoalIds().contains(resolvedReqId)\n                            && !projection.prerequisiteOnlyGoalIds().contains(resolvedReqId)) {\n                        if (isDirectRequirement(goal, resolvedReqId, prerequisiteLookupGoals)) {\n                            prerequisitesMet = false;\n                            break;\n                        }\n                        // A matched composition view distinguishes selectable targets from\n                        // intentional prerequisite-only support goals. Do not reintroduce\n                        // unrelated requirements inherited from legacy clusters through the\n                        // structural compatibility graph. Direct canonical requirements fail\n                        // closed when the authored view omits them.\n                        continue;\n                    }\n                    Double reqMastery = effectivePrereqMastery.getOrDefault(resolvedReqId, 0.0);\n                    if (reqMastery < 0.9) {\n                        prerequisitesMet = false;\n                        break;\n                    }\n                }\n            }"
+    },
+    {
+      "file": {
+        "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+        "sha256": "6feb500671761d9bf4d90e36aefb4517009d278a2b2193bee3307aafdd180bab",
+        "bytes": 529427
+      },
+      "firstLine": 5980,
+      "lastLine": 5990,
+      "exactText": "        Map<String, Double> effectivePrereqMastery =\n                computeEffectivePrereqMastery(allFilteredGoals, masteryMap);\n        boolean useStructuralPrerequisiteLookup =\n                strictMode || projection.compositionViewApplied();\n        Map<String, List<String>> globalEffectiveRequires = useStructuralPrerequisiteLookup\n                ? computeEffectiveRequires(allStructuralGoals)\n                : effectiveRequires;\n        Map<String, Double> globalEffectivePrereqMastery = useStructuralPrerequisiteLookup\n                ? computeEffectivePrereqMastery(allStructuralGoals, masteryMap)\n                : effectivePrereqMastery;\n"
+    },
+    {
+      "file": {
+        "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+        "sha256": "6feb500671761d9bf4d90e36aefb4517009d278a2b2193bee3307aafdd180bab",
+        "bytes": 529427
+      },
+      "firstLine": 6081,
+      "lastLine": 6118,
+      "exactText": "                        continue;\n                    }\n                    if (projection.compositionViewApplied()\n                            && !projection.targetGoalIds().contains(resolvedReqId)\n                            && !projection.prerequisiteOnlyGoalIds().contains(resolvedReqId)) {\n                        if (isDirectRequirement(goal, resolvedReqId, prerequisiteLookupGoals)) {\n                            prerequisitesMet = false;\n                            break;\n                        }\n                        // Only explicitly reached prerequisite-only goals participate in a\n                        // composition projection. Broad inherited requirements from legacy\n                        // cluster structure must not become hidden blockers. Direct canonical\n                        // requirements fail closed when the authored view omits them.\n                        continue;\n                    }\n\n                    if (!strictMode\n                            && !plannedIds.isEmpty()\n                            && !scope.contains(resolvedReqId)) {\n                        if (!projection.compositionViewApplied()\n                                || !projection.prerequisiteOnlyGoalIds().contains(resolvedReqId)) {\n                            // Preserve optimistic scope behavior. The only out-of-scope goals\n                            // that a composition view deliberately keeps active are its\n                            // prerequisite-only support goals.\n                            continue;\n                        }\n                    }\n\n                    Double reqMastery = useStructuralPrerequisiteLookup\n                            ? globalEffectivePrereqMastery.getOrDefault(resolvedReqId, 0.0)\n                            : effectivePrereqMastery.getOrDefault(resolvedReqId, 0.0);\n                    if (reqMastery < 0.9) {\n                        prerequisitesMet = false;\n                        break;\n                    }\n                }\n            }\n"
+    },
+    {
+      "file": {
+        "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+        "sha256": "6feb500671761d9bf4d90e36aefb4517009d278a2b2193bee3307aafdd180bab",
+        "bytes": 529427
+      },
+      "firstLine": 6724,
+      "lastLine": 6784,
+      "exactText": "    private double computeEffectivePrereqMastery(String goalId, Map<String, LearningGoal> allGoals,\n            Map<String, Double> masteryMap, Map<String, Double> cache, Set<String> visiting) {\n        Double cached = cache.get(goalId);\n        if (cached != null) {\n            return cached;\n        }\n        if (visiting.contains(goalId)) {\n            return masteryMap.getOrDefault(goalId, 0.0);\n        }\n        visiting.add(goalId);\n\n        LearningGoal goal = allGoals.get(goalId);\n        double mastery = masteryMap.getOrDefault(goalId, 0.0);\n        double effective = mastery;\n\n        if (goal != null && goal.getContains() != null && !goal.getContains().isEmpty()) {\n            List<String> childIds = new ArrayList<>();\n            boolean hasCoreChild = false;\n            for (String childRef : goal.getContains()) {\n                String childId = resolveGoalRef(childRef, allGoals);\n                if (childId == null) {\n                    continue;\n                }\n                childIds.add(childId);\n                LearningGoal child = allGoals.get(childId);\n                if (child != null && isCoreForPrereqs(child)) {\n                    hasCoreChild = true;\n                }\n            }\n\n            List<Double> childValues = new ArrayList<>();\n            for (String childId : childIds) {\n                LearningGoal child = allGoals.get(childId);\n                if (child == null) {\n                    continue;\n                }\n                if (hasCoreChild && !isCoreForPrereqs(child)) {\n                    continue;\n                }\n                childValues.add(computeEffectivePrereqMastery(childId, allGoals, masteryMap, cache, visiting));\n            }\n            if (!childValues.isEmpty()) {\n                effective = childValues.stream().min(Double::compareTo).orElse(mastery);\n            }\n        }\n\n        visiting.remove(goalId);\n        cache.put(goalId, effective);\n        return effective;\n    }\n\n    private boolean isCoreForPrereqs(LearningGoal goal) {\n        if (goal == null) {\n            return false;\n        }\n        List<String> tags = goal.getTags();\n        if (tags == null || tags.isEmpty()) {\n            return true;\n        }\n        return tags.contains(\"GK\");\n    }"
+    },
+    {
+      "file": {
+        "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+        "sha256": "6feb500671761d9bf4d90e36aefb4517009d278a2b2193bee3307aafdd180bab",
+        "bytes": 529427
+      },
+      "firstLine": 10318,
+      "lastLine": 10415,
+      "exactText": "    private Map<String, CompositionProjectionAssignment> resolveCompositionProjectionAssignments(\n            Map<String, CompositionGoalReference> references,\n            Map<String, LearningGoal> goals) {\n        LinkedHashMap<String, CompositionProjectionAssignment> assignments =\n                new LinkedHashMap<>();\n        if (references == null\n                || references.isEmpty()\n                || goals == null\n                || goals.isEmpty()) {\n            return assignments;\n        }\n        references.forEach((referencedGoalId, reference) -> {\n            if (reference == null || reference.sources().isEmpty()) {\n                return;\n            }\n            String exactGoalId = resolveGoalRef(referencedGoalId, goals);\n            if (exactGoalId == null || !goals.containsKey(exactGoalId)) {\n                return;\n            }\n            for (CompositionProjectionSource source : reference.sources()) {\n                if (source.includeDescendants()) {\n                    assignCompositionSubtreeProjection(\n                            exactGoalId,\n                            source.role(),\n                            goals,\n                            assignments);\n                } else {\n                    mergeCompositionProjectionAssignment(\n                            exactGoalId,\n                            new CompositionProjectionAssignment(\n                                    source.role(),\n                                    true,\n                                    0),\n                            assignments);\n                }\n            }\n        });\n        return assignments;\n    }\n\n    private void assignCompositionSubtreeProjection(\n            String goalId,\n            ProjectionRole role,\n            Map<String, LearningGoal> goals,\n            Map<String, CompositionProjectionAssignment> assignments) {\n        if (goalId == null || !goals.containsKey(goalId)) {\n            return;\n        }\n        // Specificity is the shortest distance from this authored reference to\n        // each goal, not its root's global depth. A shared descendant in a DAG\n        // must not change roles because an unrelated branch has more ancestors.\n        Map<String, Integer> distances = new HashMap<>();\n        Deque<String> pending = new ArrayDeque<>();\n        distances.put(goalId, 0);\n        pending.add(goalId);\n        while (!pending.isEmpty()) {\n            String currentId = pending.removeFirst();\n            LearningGoal goal = goals.get(currentId);\n            if (goal == null) continue;\n            int distance = distances.get(currentId);\n            mergeCompositionProjectionAssignment(\n                    currentId,\n                    new CompositionProjectionAssignment(role, false, distance),\n                    assignments);\n            for (String childRef : goal.getContains() == null ? List.<String>of() : goal.getContains()) {\n                String childId = resolveGoalRef(childRef, goals);\n                if (childId != null && goals.containsKey(childId) && !distances.containsKey(childId)) {\n                    distances.put(childId, distance + 1);\n                    pending.addLast(childId);\n                }\n            }\n        }\n    }\n\n    private void mergeCompositionProjectionAssignment(\n            String goalId,\n            CompositionProjectionAssignment candidate,\n            Map<String, CompositionProjectionAssignment> assignments) {\n        assignments.merge(goalId, candidate, (current, incoming) -> {\n            if (current.direct() != incoming.direct()) {\n                return incoming.direct() ? incoming : current;\n            }\n            if (!current.direct() && current.distance() != incoming.distance()) {\n                return incoming.distance() < current.distance()\n                        ? incoming\n                        : current;\n            }\n            if (current.role() == ProjectionRole.TARGET\n                    || incoming.role() == ProjectionRole.TARGET) {\n                return new CompositionProjectionAssignment(\n                        ProjectionRole.TARGET,\n                        current.direct(),\n                        Math.min(current.distance(), incoming.distance()));\n            }\n            return current;\n        });\n    }\n"
+    }
+  ],
+  "existingTestsReadButNotRun": [
+    {
+      "file": {
+        "path": "backend/src/test/java/com/skillpilot/backend/service/ProjectionRoleLearnerServiceTest.java",
+        "sha256": "9410d77f7a585e4cb32f43b2b38d1ebfd577ad3fe5f90077d788f12e89dc840f",
+        "bytes": 51934
+      },
+      "firstLine": 242,
+      "lastLine": 258,
+      "exactText": "    void explicitPrerequisiteOnlyGoalBlocksAndReleasesTargetUsingGlobalMastery() {\n        Fixture fixture = fixture(view(\n                goalEntry(TARGET_ID),\n                goalEntry(PREREQUISITE_ID, \"prerequisiteOnly\")));\n        Mastery prerequisiteMastery = new Mastery(fixture.learner(), PREREQUISITE_ID, 1.0);\n        when(fixture.masteryRepository().findByLearner_SkillpilotId(LEARNER_ID))\n                .thenReturn(List.of())\n                .thenReturn(List.of(prerequisiteMastery))\n                .thenReturn(List.of(prerequisiteMastery));\n\n        assertThat(fixture.service().getFrontier(LEARNER_ID)).isEmpty();\n        assertThat(fixture.service().getFrontier(LEARNER_ID)).containsExactly(TARGET_ID);\n\n        assertThat(fixture.service().getMastery(LEARNER_ID))\n                .containsEntry(PREREQUISITE_ID, 1.0);\n        assertThat(fixture.service().getFilteredAtomicGoalIds(\n                        LANDSCAPE_ID, PERSONAL_CURRICULUM, null, false))"
+    },
+    {
+      "file": {
+        "path": "backend/src/test/java/com/skillpilot/backend/service/ProjectionRoleLearnerServiceTest.java",
+        "sha256": "9410d77f7a585e4cb32f43b2b38d1ebfd577ad3fe5f90077d788f12e89dc840f",
+        "bytes": 51934
+      },
+      "firstLine": 298,
+      "lastLine": 323,
+      "exactText": "    @Test\n    void omittedDirectPrerequisiteFailsClosedButOmittedInheritedCompatibilityPrerequisiteDoesNotBlock() {\n        Fixture directRequirement = fixture(view(goalEntry(TARGET_ID)));\n        when(directRequirement.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))\n                .thenReturn(List.of(new PlannedGoal(directRequirement.learner(), TARGET_ID)));\n\n        assertThat(directRequirement.service().getFrontier(LEARNER_ID)).isEmpty();\n        assertThat(directRequirement.service().getRichFrontier(LEARNER_ID))\n                .extracting(FrontierGoal::id)\n                .doesNotContain(TARGET_ID);\n\n        Fixture inheritedRequirement = fixture(view(goalEntry(OUTSIDE_TARGET_ID)));\n        inheritedRequirement.landscape().getGoals().stream()\n                .filter(goal -> ROOT_CLUSTER_ID.equals(goal.getId()))\n                .findFirst()\n                .orElseThrow()\n                .setRequires(List.of(PREREQUISITE_ID));\n        when(inheritedRequirement.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))\n                .thenReturn(List.of(new PlannedGoal(inheritedRequirement.learner(), OUTSIDE_TARGET_ID)));\n\n        assertThat(inheritedRequirement.service().getFrontier(LEARNER_ID))\n                .containsExactly(OUTSIDE_TARGET_ID);\n        assertThat(inheritedRequirement.service().getRichFrontier(LEARNER_ID))\n                .extracting(FrontierGoal::id)\n                .containsExactly(OUTSIDE_TARGET_ID);\n    }"
+    },
+    {
+      "file": {
+        "path": "backend/src/test/java/com/skillpilot/backend/service/ProjectionRoleLearnerServiceTest.java",
+        "sha256": "9410d77f7a585e4cb32f43b2b38d1ebfd577ad3fe5f90077d788f12e89dc840f",
+        "bytes": 51934
+      },
+      "firstLine": 536,
+      "lastLine": 557,
+      "exactText": "    void directGoalEntryOverridesInheritedCanonicalSubtreeRegardlessOfRole() {\n        Fixture directPrerequisite = fixture(view(\n                canonicalSubtree(ROOT_CLUSTER_ID),\n                goalEntry(TARGET_ID, \"prerequisiteOnly\")));\n\n        ProjectionSets directPrerequisiteProjection =\n                projectionSets(directPrerequisite.service());\n        assertThat(directPrerequisiteProjection.targetGoalIds())\n                .contains(ROOT_CLUSTER_ID, NESTED_CLUSTER_ID, OUTSIDE_TARGET_ID)\n                .doesNotContain(TARGET_ID);\n        assertThat(directPrerequisiteProjection.prerequisiteOnlyGoalIds())\n                .contains(TARGET_ID);\n\n        Fixture directTarget = fixture(view(\n                canonicalSubtree(ROOT_CLUSTER_ID, \"prerequisiteOnly\"),\n                goalEntry(TARGET_ID)));\n\n        ProjectionSets directTargetProjection = projectionSets(directTarget.service());\n        assertThat(directTargetProjection.targetGoalIds()).containsExactly(TARGET_ID);\n        assertThat(directTargetProjection.prerequisiteOnlyGoalIds())\n                .contains(ROOT_CLUSTER_ID, NESTED_CLUSTER_ID, OUTSIDE_TARGET_ID)\n                .doesNotContain(TARGET_ID);"
+    },
+    {
+      "file": {
+        "path": "app/scripts/testCompositionProjectionRoles.ts",
+        "sha256": "387606feb5d83ca7908322b8df12443767f86cc8c93b04148e4bc6b41586dda8",
+        "bytes": 36662
+      },
+      "firstLine": 176,
+      "lastLine": 199,
+      "exactText": "const firstNode = view.rootNodes[0]\nassert.equal(firstNode.kind, 'structure')\nif (firstNode.kind !== 'structure') {\n  throw new Error('Expected structure node.')\n}\nconst defaultTargetNode = firstNode.children[0]\nassert.equal(defaultTargetNode.kind, 'goalEntry')\nif (defaultTargetNode.kind !== 'goalEntry') {\n  throw new Error('Expected goalEntry node.')\n}\nassert.equal(\n  getCompositionProjectionRole(defaultTargetNode),\n  'target',\n  'A missing projectionRole must remain backwards-compatible and mean target.',\n)\n\nassert.equal(compositionViewExposesGoal([entry], view, 'TARGET'), true)\nassert.equal(compositionViewExposesGoal([entry], view, 'SUPPORT_CLUSTER'), false)\nassert.equal(\n  compositionViewExposesGoal([entry], view, 'SUPPORT_CHILD'),\n  true,\n  'An explicit target must win over an inherited prerequisiteOnly role.',\n)\nassert.equal("
+    }
+  ],
+  "conclusions": [
+    "Direkte goalEntry-Quellen sind spezifischer als canonicalSubtree-Vererbung. Fehlende projectionRole ist target. Beide echten Kindreferenzen bleiben target; der separat ergänzte Cluster bleibt prerequisiteOnly.",
+    "Bei angewandter Composition View prüft der einfache wie der reiche Frontier-Pfad direkte bekannte Voraussetzungen fail-closed, wenn deren Rollenreferenz fehlt. Die neue Referenz behebt genau die Rollenlücke des 266a-Clusters.",
+    "computeEffectivePrereqMastery bestimmt ein vorhandenes Cluster über min der relevanten Kinder, mit GK-Kernfilter, wenn Kernkinder existieren. Hier haben beide Kinder GK; keines wird ausgelassen. Ein gespeicherter Clusterwert ersetzt bei vorhandenen Kindern das Minimum nicht.",
+    "Statische Folgerung bei binären Kindwerten: (0,0), (1,0), (0,1) geben Aggregat 0; (1,1) gibt 1. Die tatsächlich im Code geprüfte Voraussetzungschwelle ist 0.9. Dies ist eine Codeableitung, kein ausgeführter LearnerService-Test.",
+    "Die sechs geschlossenen Rolleninterfaces sind keine Behauptung, dass alle übrigen Voraussetzungen, Orientierung, Fokus, Session oder tatsächliche Lernleistung bereits erfüllt wären."
+  ],
+  "supplementalPrimaryReadAfterFIRST": {
+    "source": {
+      "role": "officialPrimary",
+      "path": "curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_CH_V2.pdf",
+      "sha256": "3ae66c6c2db6371aa24153484f78832f1dfc2097deac8b8dfbffeb32bed28c62",
+      "bytes": 2155781
+    },
+    "pdfPage": 21,
+    "printedPage": 19,
+    "section": "3.2.2.1 (2),(6)",
+    "method": "pdftotext -f 21 -l 21 -layout original-primary.pdf -; actual page read",
+    "judgement": "Planung, tatsächliche Durchführung und Protokoll sind ausdrücklich genannt; Gas- und Ionennachweise sind als Stoff-/Ionennachweise gedeckt. Der kanonische gemeinsame Laborvoraussetzungsverweis ist didaktische Modellierung, keine wörtliche source edge."
+  }
+}
