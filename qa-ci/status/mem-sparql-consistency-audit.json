@@ -1,0 +1,2634 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-06-01T21:02:15.040Z",
+  "generatedBy": "app/scripts/generateMemSparqlConsistencyAudit.ts",
+  "configPath": "curricula/DE/Gymnasium/quality/mem-sparql-consistency/canonical-math-poc.config.json",
+  "endpoint": "https://sparql.mem.edufeed.org/sparql",
+  "subjectLabel": "Mathematik",
+  "schoolTypeLabel": "Gymnasium",
+  "mode": "non_blocking_review",
+  "summary": {
+    "jurisdictions": 16,
+    "localSourceExtractions": 31,
+    "localSourceGoals": 9974,
+    "memCurriculumAvailableJurisdictions": 2,
+    "memCurriculumMissingForLocalSourceJurisdictions": 14,
+    "concreteComparisons": 2,
+    "issueCount": 87
+  },
+  "sourceExtractions": [
+    {
+      "path": "curricula/DE/Gymnasium/input/BB/lower-secondary/source-extraction/DE_BB_MATHEMATIK_SEKI_RLP_2015.source-extraction.json",
+      "title": "DE-BB - Mathematik Sekundarstufe I (Brandenburg, RLP 1-10 Source-Extraction)",
+      "extractionId": "DE-BB-MATHEMATIK-SEKI-RLP-2015-2023",
+      "sourceLandscapeId": "54cf7ae7-21e7-4cc2-a7b8-1f7dd9df5dc1",
+      "jurisdiction": "DE-BB",
+      "subject": "Mathematik",
+      "stage": "SekI",
+      "sourceDocuments": 1,
+      "passages": 19,
+      "sourceGoals": 289
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BB/upper-secondary/source-extraction/DE_BB_MATHEMATIK_SEKII_GOST_2022.source-extraction.json",
+      "title": "DE-BB - Mathematik Oberstufe (Brandenburg, GOST 2022 Source-Extraction)",
+      "extractionId": "DE-BB-MATHEMATIK-SEKII-GOST-2022",
+      "sourceLandscapeId": "c36ba9b3-4d11-4b19-a278-cd6c3c3fcc71",
+      "jurisdiction": "DE-BB",
+      "subject": "Mathematik",
+      "stage": "SekII",
+      "sourceDocuments": 1,
+      "passages": 14,
+      "sourceGoals": 196
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BE/lower-secondary/source-extraction/DE_BE_MATHEMATIK_SEKI_RLP_2015.source-extraction.json",
+      "title": "DE-BE - Mathematik Sekundarstufe I (Berlin, RLP 1-10 Source-Extraction)",
+      "extractionId": "de-be-math-seki-rlp-2015-source-extraction",
+      "sourceLandscapeId": "b30048d2-d649-4727-b448-988a0f86a2c2",
+      "jurisdiction": "DE-BE",
+      "subject": "Mathematik",
+      "stage": "SekI",
+      "sourceDocuments": 1,
+      "passages": 19,
+      "sourceGoals": 289
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BE/upper-secondary/source-extraction/DE_BE_MATHEMATIK_SEKII_GO_2014.source-extraction.json",
+      "title": "DE-BE - Mathematik Oberstufe (Berlin, GO 2014 Source-Extraction)",
+      "extractionId": "de-be-math-sekii-go-2014-source-extraction",
+      "sourceLandscapeId": "5aafcc55-e89f-4dd5-ab17-9455e3c103b7",
+      "jurisdiction": "DE-BE",
+      "subject": "Mathematik",
+      "stage": "SekII",
+      "sourceDocuments": 1,
+      "passages": 15,
+      "sourceGoals": 195
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BW/lower-secondary/source-extraction/DE_BW_MATHEMATIK_SEKI_BP2016.source-extraction.json",
+      "title": "Mathematik Sekundarstufe I (Baden-Wuerttemberg, BP2016 Source-Extraction)",
+      "extractionId": "DE-BW-MATHEMATIK-SEKI-BP2016",
+      "sourceLandscapeId": "6232b783-199c-4c50-92f2-9fb31277e619",
+      "jurisdiction": "DE-BW",
+      "subject": "Mathematik",
+      "stage": "SekI",
+      "sourceDocuments": 1,
+      "passages": 20,
+      "sourceGoals": 278
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_MATHEMATIK_SEKII_BP2016.source-extraction.json",
+      "title": "DE-BW - Mathematik Kursstufe (Baden-Wuerttemberg, BP2016 Source-Extraction)",
+      "extractionId": "DE-BW-MATHEMATIK-SEKII-BP2016-SOURCE-EXTRACTION",
+      "sourceLandscapeId": "fa8f864a-aac5-486d-8e77-40df2af038a3",
+      "jurisdiction": "DE-BW",
+      "subject": "Mathematik",
+      "stage": "SekII",
+      "sourceDocuments": 1,
+      "passages": 16,
+      "sourceGoals": 221
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_MATHEMATIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+      "title": "DE-BY - Mathematik Gymnasium (Bayern, LehrplanPLUS Source-Extraction)",
+      "extractionId": "DE-BY-MATHEMATIK-GYMNASIUM-LEHRPLANPLUS",
+      "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+      "jurisdiction": "DE-BY",
+      "subject": "Mathematik",
+      "stage": "SekI+SekII",
+      "sourceDocuments": 12,
+      "passages": 66,
+      "sourceGoals": 468
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HB/lower-secondary/source-extraction/DE_HB_MATHEMATIK_SEKI_BILDUNGSPLAN_2006_2022.source-extraction.json",
+      "title": "Mathematik Sekundarstufe I (Bremen, Bildungsplan 2006 mit 2022-Einschraenkung Source-Extraction)",
+      "extractionId": "DE-HB-MATHEMATIK-SEKI-BILDUNGSPLAN-2006-2022",
+      "sourceLandscapeId": "c22f0777-fd82-4ad5-8306-33124017bdee",
+      "jurisdiction": "DE-HB",
+      "subject": "Mathematik",
+      "stage": "SekI",
+      "sourceDocuments": 2,
+      "passages": 11,
+      "sourceGoals": 256
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HB/upper-secondary/source-extraction/DE_HB_MATHEMATIK_SEKII_BILDUNGSPLAN_2022.source-extraction.json",
+      "title": "Mathematik Gymnasiale Oberstufe (Bremen, Bildungsplan 2022 Source-Extraction)",
+      "extractionId": "DE-HB-MATHEMATIK-SEKII-BILDUNGSPLAN-2022",
+      "sourceLandscapeId": "ffd76109-d192-467c-b0c0-033b445f0de7",
+      "jurisdiction": "DE-HB",
+      "subject": "Mathematik",
+      "stage": "SekII",
+      "sourceDocuments": 1,
+      "passages": 122,
+      "sourceGoals": 275
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_MATHEMATIK_SEKI_KC_G8_G9.source-extraction.json",
+      "title": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_MATHEMATIK_SEKI_KC_G8_G9.source-extraction.json",
+      "extractionId": "DE-HE-MATHEMATIK-SEKI-KC-G8-G9",
+      "sourceLandscapeId": "b167b4cd-4b78-4c84-a721-6b2adbbcab3c",
+      "jurisdiction": "DE-HE",
+      "subject": "Mathematik",
+      "stage": "SekI",
+      "sourceDocuments": 4,
+      "passages": 89,
+      "sourceGoals": 601
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+      "title": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+      "extractionId": "DE-HE-MATHEMATIK-SEKII-KC2024",
+      "sourceLandscapeId": "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3",
+      "jurisdiction": "DE-HE",
+      "subject": "Mathematik",
+      "stage": "SekII",
+      "sourceDocuments": 1,
+      "passages": 25,
+      "sourceGoals": 316
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HH/lower-secondary/source-extraction/DE_HH_MATHEMATIK_SEKI_BILDUNGSPLAN_2022.source-extraction.json",
+      "title": "Mathematik Sekundarstufe I (Hamburg, Bildungsplan 2022 Source-Extraction)",
+      "extractionId": "DE-HH-MATHEMATIK-SEKI-BILDUNGSPLAN-2022",
+      "sourceLandscapeId": "c0ecbd92-92da-4b37-b77d-d537824d5141",
+      "jurisdiction": "DE-HH",
+      "subject": "Mathematik",
+      "stage": "SekI",
+      "sourceDocuments": 1,
+      "passages": 43,
+      "sourceGoals": 437
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HH/upper-secondary/source-extraction/DE_HH_MATHEMATIK_SEKII_BILDUNGSPLAN_2022.source-extraction.json",
+      "title": "Mathematik Studienstufe (Hamburg, Bildungsplan 2022 Source-Extraction)",
+      "extractionId": "DE-HH-MATHEMATIK-SEKII-BILDUNGSPLAN-2022",
+      "sourceLandscapeId": "42e6e650-ed49-472f-bd01-ba712d096bda",
+      "jurisdiction": "DE-HH",
+      "subject": "Mathematik",
+      "stage": "SekII",
+      "sourceDocuments": 1,
+      "passages": 15,
+      "sourceGoals": 189
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_MATHEMATIK_SEKI_RAHMENPLAENE_2020_2019.source-extraction.json",
+      "title": "DE-MV - Mathematik Sekundarstufe I (Mecklenburg-Vorpommern, Rahmenplaene 2020/2019 Source-Extraction)",
+      "extractionId": "DE-MV-MATHEMATIK-SEKI-RAHMENPLAENE-2020-2019",
+      "sourceLandscapeId": "71c43461-d20e-4267-bd18-ad9ba66f0c5b",
+      "jurisdiction": "DE-MV",
+      "subject": "Mathematik",
+      "stage": "SekI",
+      "sourceDocuments": 2,
+      "passages": 33,
+      "sourceGoals": 369
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/MV/upper-secondary/source-extraction/DE_MV_MATHEMATIK_SEKII_RAHMENPLAN_2019.source-extraction.json",
+      "title": "DE-MV - Mathematik Qualifikationsphase (Mecklenburg-Vorpommern, Rahmenplan 2019 Source-Extraction)",
+      "extractionId": "DE-MV-MATHEMATIK-SEKII-RAHMENPLAN-2019",
+      "sourceLandscapeId": "9d420a46-b007-44ce-a4b4-453ef4e38523",
+      "jurisdiction": "DE-MV",
+      "subject": "Mathematik",
+      "stage": "SekII",
+      "sourceDocuments": 1,
+      "passages": 15,
+      "sourceGoals": 219
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/NI/lower-secondary/source-extraction/DE_NI_MATHEMATIK_SEKI_KERNCURRICULUM.source-extraction.json",
+      "title": "DE-NI - Mathematik Sekundarstufe I (Niedersachsen, Kerncurriculum Source-Extraction)",
+      "extractionId": "DE-NI-MATHEMATIK-SEKI-KERNCURRICULUM",
+      "sourceLandscapeId": "2b995085-dc5e-47c6-a563-9dcfc01fb74d",
+      "jurisdiction": "DE-NI",
+      "subject": "Mathematik",
+      "stage": "SekI",
+      "sourceDocuments": 1,
+      "passages": 28,
+      "sourceGoals": 361
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/NI/upper-secondary/source-extraction/DE_NI_MATHEMATIK_SEKII_KERNCURRICULUM_2019.source-extraction.json",
+      "title": "DE-NI - Mathematik Gymnasiale Oberstufe (Niedersachsen, Kerncurriculum 2019 Source-Extraction)",
+      "extractionId": "DE-NI-MATHEMATIK-SEKII-KERNCURRICULUM-2019",
+      "sourceLandscapeId": "fcb04661-6ea2-4030-a9b2-97e6cc03daf8",
+      "jurisdiction": "DE-NI",
+      "subject": "Mathematik",
+      "stage": "SekII",
+      "sourceDocuments": 1,
+      "passages": 25,
+      "sourceGoals": 220
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/NW/lower-secondary/source-extraction/DE_NW_MATHEMATIK_SEKI_KLP_2019.source-extraction.json",
+      "title": "DE-NW - Mathematik Sekundarstufe I (Nordrhein-Westfalen, KLP 2019 Source-Extraction)",
+      "extractionId": "DE-NW-MATHEMATIK-SEKI-KLP-2019",
+      "sourceLandscapeId": "c862423f-d0ac-4a65-8ad2-9a6e560313a8",
+      "jurisdiction": "DE-NW",
+      "subject": "Mathematik",
+      "stage": "SekI",
+      "sourceDocuments": 1,
+      "passages": 17,
+      "sourceGoals": 207
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/NW/upper-secondary/source-extraction/DE_NW_MATHEMATIK_SEKII_KLP_2023.source-extraction.json",
+      "title": "DE-NW - Mathematik Gymnasiale Oberstufe (Nordrhein-Westfalen, KLP 2023 Source-Extraction)",
+      "extractionId": "DE-NW-MATHEMATIK-SEKII-KLP-2023",
+      "sourceLandscapeId": "d3a068ca-90c6-4d7f-ab6b-4d8b43085cb1",
+      "jurisdiction": "DE-NW",
+      "subject": "Mathematik",
+      "stage": "SekII",
+      "sourceDocuments": 1,
+      "passages": 13,
+      "sourceGoals": 235
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/RP/lower-secondary/source-extraction/DE_RP_MATHEMATIK_SEKI_RAHMENLEHRPLAN_2007.source-extraction.json",
+      "title": "DE-RP - Mathematik Sekundarstufe I (Rheinland-Pfalz, Rahmenlehrplan 2007 Source-Extraction)",
+      "extractionId": "DE-RP-MATHEMATIK-SEKI-RAHMENLEHRPLAN-2007",
+      "sourceLandscapeId": "810f8134-b4be-4f16-9b14-e50228b30bdd",
+      "jurisdiction": "DE-RP",
+      "subject": "Mathematik",
+      "stage": "SekI",
+      "sourceDocuments": 1,
+      "passages": 25,
+      "sourceGoals": 253
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/RP/upper-secondary/source-extraction/DE_RP_MATHEMATIK_SEKII_MSS_2015.source-extraction.json",
+      "title": "DE-RP - Mathematik Gymnasiale Oberstufe (Rheinland-Pfalz, MSS 2015 Source-Extraction)",
+      "extractionId": "DE-RP-MATHEMATIK-SEKII-MSS-2015",
+      "sourceLandscapeId": "2095b9f8-9d79-40bb-9601-3133ebb6f355",
+      "jurisdiction": "DE-RP",
+      "subject": "Mathematik",
+      "stage": "SekII",
+      "sourceDocuments": 1,
+      "passages": 23,
+      "sourceGoals": 192
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_MATHEMATIK_SEKI_FACHANFORDERUNGEN_2024.source-extraction.json",
+      "title": "DE-SH - Mathematik Sekundarstufe I (Schleswig-Holstein, Fachanforderungen 2024 Source-Extraction)",
+      "extractionId": "DE-SH-MATHEMATIK-SEKI-FACHANFORDERUNGEN-2024",
+      "sourceLandscapeId": "271b385b-04c7-4205-8202-b2dc918f5782",
+      "jurisdiction": "DE-SH",
+      "subject": "Mathematik",
+      "stage": "SekI",
+      "sourceDocuments": 1,
+      "passages": 6,
+      "sourceGoals": 346
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json",
+      "title": "DE-SH - Mathematik Oberstufe (Schleswig-Holstein, Fachanforderungen 2024 Source-Extraction)",
+      "extractionId": "DE-SH-MATHEMATIK-SEKII-FACHANFORDERUNGEN-2024",
+      "sourceLandscapeId": "01ffba7d-7588-4221-bd2b-1a692839809a",
+      "jurisdiction": "DE-SH",
+      "subject": "Mathematik",
+      "stage": "SekII",
+      "sourceDocuments": 1,
+      "passages": 6,
+      "sourceGoals": 274
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_MATHEMATIK_SEKI_GYM9_2023_2026.source-extraction.json",
+      "title": "DE-SL - Mathematik Sekundarstufe I (Saarland, Gymnasium G9 2023-2026 Source-Extraction)",
+      "extractionId": "DE-SL-MATHEMATIK-SEKI-GYM9-2023-2026",
+      "sourceLandscapeId": "9250478f-ebb4-438d-b6d9-738e1a6d574a",
+      "jurisdiction": "DE-SL",
+      "subject": "Mathematik",
+      "stage": "SekI",
+      "sourceDocuments": 5,
+      "passages": 37,
+      "sourceGoals": 818
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SL/upper-secondary/source-extraction/DE_SL_MATHEMATIK_SEKII_GOS_2014_2019.source-extraction.json",
+      "title": "DE-SL - Mathematik Gymnasiale Oberstufe (Saarland, GOS 2014/2019 Source-Extraction)",
+      "extractionId": "DE-SL-MATHEMATIK-SEKII-GOS-2014-2019",
+      "sourceLandscapeId": "7d66c285-38b4-4031-9836-2bba5de68e24",
+      "jurisdiction": "DE-SL",
+      "subject": "Mathematik",
+      "stage": "SekII",
+      "sourceDocuments": 3,
+      "passages": 23,
+      "sourceGoals": 743
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_MATHEMATIK_SEKI_LEHRPLAN_GYMNASIUM_2019.source-extraction.json",
+      "title": "DE-SN - Mathematik Sekundarstufe I (Sachsen, Lehrplan Gymnasium 2019 Source-Extraction)",
+      "extractionId": "DE-SN-MATHEMATIK-SEKI-LEHRPLAN-GYMNASIUM-2019",
+      "sourceLandscapeId": "a615db78-931e-44ac-b0b5-44e16286470f",
+      "jurisdiction": "DE-SN",
+      "subject": "Mathematik",
+      "stage": "SekI",
+      "sourceDocuments": 1,
+      "passages": 47,
+      "sourceGoals": 327
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SN/upper-secondary/source-extraction/DE_SN_MATHEMATIK_SEKII_LEHRPLAN_GYMNASIUM_2019.source-extraction.json",
+      "title": "DE-SN - Mathematik Jahrgangsstufen 11/12 (Sachsen, Lehrplan Gymnasium 2019 Source-Extraction)",
+      "extractionId": "DE-SN-MATHEMATIK-SEKII-LEHRPLAN-GYMNASIUM-2019",
+      "sourceLandscapeId": "59e52106-1d03-46ae-8fc6-6fdd6ab181d0",
+      "jurisdiction": "DE-SN",
+      "subject": "Mathematik",
+      "stage": "SekII",
+      "sourceDocuments": 1,
+      "passages": 31,
+      "sourceGoals": 243
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/ST/lower-secondary/source-extraction/DE_ST_MATHEMATIK_SEKI_FACHLEHRPLAN_GYMNASIUM_2019.source-extraction.json",
+      "title": "DE-ST - Mathematik Sekundarstufe I (Sachsen-Anhalt, Fachlehrplan Gymnasium 2019 Source-Extraction)",
+      "extractionId": "DE-ST-MATHEMATIK-SEKI-FACHLEHRPLAN-GYMNASIUM-2019",
+      "sourceLandscapeId": "251bcdfc-19eb-4543-8ff7-5fb9fef6b667",
+      "jurisdiction": "DE-ST",
+      "subject": "Mathematik",
+      "stage": "SekI",
+      "sourceDocuments": 1,
+      "passages": 32,
+      "sourceGoals": 424
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/ST/upper-secondary/source-extraction/DE_ST_MATHEMATIK_SEKII_FACHLEHRPLAN_GYMNASIUM_2019.source-extraction.json",
+      "title": "DE-ST - Mathematik Qualifikationsphase (Sachsen-Anhalt, Fachlehrplan Gymnasium 2019 Source-Extraction)",
+      "extractionId": "DE-ST-MATHEMATIK-SEKII-FACHLEHRPLAN-GYMNASIUM-2019",
+      "sourceLandscapeId": "000359cf-2dfb-4216-bc71-743f76917a35",
+      "jurisdiction": "DE-ST",
+      "subject": "Mathematik",
+      "stage": "SekII",
+      "sourceDocuments": 1,
+      "passages": 15,
+      "sourceGoals": 188
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_MATHEMATIK_SEKI_LEHRPLAN_GYMNASIUM_2018_2025.source-extraction.json",
+      "title": "DE-TH - Mathematik Sekundarstufe I (Thueringen, Lehrplan Gymnasium 2018/2025 Source-Extraction)",
+      "extractionId": "DE-TH-MATHEMATIK-SEKI-LEHRPLAN-GYMNASIUM-2018-2025",
+      "sourceLandscapeId": "25444927-45d3-486c-8e7f-39853e7de610",
+      "jurisdiction": "DE-TH",
+      "subject": "Mathematik",
+      "stage": "SekI",
+      "sourceDocuments": 2,
+      "passages": 17,
+      "sourceGoals": 356
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/TH/upper-secondary/source-extraction/DE_TH_MATHEMATIK_SEKII_LEHRPLAN_GYMNASIUM_2018_2025.source-extraction.json",
+      "title": "DE-TH - Mathematik Gymnasiale Oberstufe (Thueringen, Lehrplan Gymnasium 2018/2025 Source-Extraction)",
+      "extractionId": "DE-TH-MATHEMATIK-SEKII-LEHRPLAN-GYMNASIUM-2018-2025",
+      "sourceLandscapeId": "cced401d-58d5-4832-b010-3b3466d0655b",
+      "jurisdiction": "DE-TH",
+      "subject": "Mathematik",
+      "stage": "SekII",
+      "sourceDocuments": 2,
+      "passages": 8,
+      "sourceGoals": 189
+    }
+  ],
+  "stateRows": [
+    {
+      "jurisdiction": "DE-BB",
+      "label": "Brandenburg",
+      "localSourceExtractions": 2,
+      "localSourceGoals": 485,
+      "localStages": [
+        "SekI",
+        "SekII"
+      ],
+      "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000057",
+      "memSubjectIri": null,
+      "memSchoolTypeIri": null,
+      "memPlanCount": 0,
+      "status": "mem_curriculum_missing"
+    },
+    {
+      "jurisdiction": "DE-BE",
+      "label": "Berlin",
+      "localSourceExtractions": 2,
+      "localSourceGoals": 484,
+      "localStages": [
+        "SekI",
+        "SekII"
+      ],
+      "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000048",
+      "memSubjectIri": null,
+      "memSchoolTypeIri": null,
+      "memPlanCount": 0,
+      "status": "mem_curriculum_missing"
+    },
+    {
+      "jurisdiction": "DE-BW",
+      "label": "Baden-Württemberg",
+      "localSourceExtractions": 2,
+      "localSourceGoals": 499,
+      "localStages": [
+        "SekI",
+        "SekII"
+      ],
+      "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000049",
+      "memSubjectIri": null,
+      "memSchoolTypeIri": null,
+      "memPlanCount": 0,
+      "status": "mem_curriculum_missing"
+    },
+    {
+      "jurisdiction": "DE-BY",
+      "label": "Bayern",
+      "localSourceExtractions": 1,
+      "localSourceGoals": 468,
+      "localStages": [
+        "SekI+SekII"
+      ],
+      "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000051",
+      "memSubjectIri": "https://w3id.org/schulfach/BY_0000010",
+      "memSchoolTypeIri": "https://w3id.org/schulart/BY_0000005",
+      "memPlanCount": 10,
+      "status": "aligned"
+    },
+    {
+      "jurisdiction": "DE-HB",
+      "label": "Bremen",
+      "localSourceExtractions": 2,
+      "localSourceGoals": 531,
+      "localStages": [
+        "SekI",
+        "SekII"
+      ],
+      "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000056",
+      "memSubjectIri": null,
+      "memSchoolTypeIri": null,
+      "memPlanCount": 0,
+      "status": "mem_curriculum_missing"
+    },
+    {
+      "jurisdiction": "DE-HE",
+      "label": "Hessen",
+      "localSourceExtractions": 2,
+      "localSourceGoals": 917,
+      "localStages": [
+        "SekI",
+        "SekII"
+      ],
+      "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000050",
+      "memSubjectIri": null,
+      "memSchoolTypeIri": null,
+      "memPlanCount": 0,
+      "status": "mem_curriculum_missing"
+    },
+    {
+      "jurisdiction": "DE-HH",
+      "label": "Hamburg",
+      "localSourceExtractions": 2,
+      "localSourceGoals": 626,
+      "localStages": [
+        "SekI",
+        "SekII"
+      ],
+      "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000045",
+      "memSubjectIri": null,
+      "memSchoolTypeIri": null,
+      "memPlanCount": 0,
+      "status": "mem_curriculum_missing"
+    },
+    {
+      "jurisdiction": "DE-MV",
+      "label": "Mecklenburg-Vorpommern",
+      "localSourceExtractions": 2,
+      "localSourceGoals": 588,
+      "localStages": [
+        "SekI",
+        "SekII"
+      ],
+      "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000052",
+      "memSubjectIri": null,
+      "memSchoolTypeIri": null,
+      "memPlanCount": 0,
+      "status": "mem_curriculum_missing"
+    },
+    {
+      "jurisdiction": "DE-NI",
+      "label": "Niedersachsen",
+      "localSourceExtractions": 2,
+      "localSourceGoals": 581,
+      "localStages": [
+        "SekI",
+        "SekII"
+      ],
+      "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000043",
+      "memSubjectIri": null,
+      "memSchoolTypeIri": null,
+      "memPlanCount": 0,
+      "status": "mem_curriculum_missing"
+    },
+    {
+      "jurisdiction": "DE-NW",
+      "label": "Nordrhein-Westfalen",
+      "localSourceExtractions": 2,
+      "localSourceGoals": 442,
+      "localStages": [
+        "SekI",
+        "SekII"
+      ],
+      "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000044",
+      "memSubjectIri": null,
+      "memSchoolTypeIri": null,
+      "memPlanCount": 0,
+      "status": "mem_curriculum_missing"
+    },
+    {
+      "jurisdiction": "DE-RP",
+      "label": "Rheinland-Pfalz",
+      "localSourceExtractions": 2,
+      "localSourceGoals": 445,
+      "localStages": [
+        "SekI",
+        "SekII"
+      ],
+      "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000046",
+      "memSubjectIri": null,
+      "memSchoolTypeIri": null,
+      "memPlanCount": 0,
+      "status": "mem_curriculum_missing"
+    },
+    {
+      "jurisdiction": "DE-SH",
+      "label": "Schleswig-Holstein",
+      "localSourceExtractions": 2,
+      "localSourceGoals": 620,
+      "localStages": [
+        "SekI",
+        "SekII"
+      ],
+      "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000054",
+      "memSubjectIri": null,
+      "memSchoolTypeIri": null,
+      "memPlanCount": 0,
+      "status": "mem_curriculum_missing"
+    },
+    {
+      "jurisdiction": "DE-SL",
+      "label": "Saarland",
+      "localSourceExtractions": 2,
+      "localSourceGoals": 1561,
+      "localStages": [
+        "SekI",
+        "SekII"
+      ],
+      "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000055",
+      "memSubjectIri": null,
+      "memSchoolTypeIri": null,
+      "memPlanCount": 0,
+      "status": "mem_curriculum_missing"
+    },
+    {
+      "jurisdiction": "DE-SN",
+      "label": "Sachsen",
+      "localSourceExtractions": 2,
+      "localSourceGoals": 570,
+      "localStages": [
+        "SekI",
+        "SekII"
+      ],
+      "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000047",
+      "memSubjectIri": "https://w3id.org/schulfach/SN_0000012",
+      "memSchoolTypeIri": "https://w3id.org/schulart/SN_0000005",
+      "memPlanCount": 1,
+      "status": "mem_curriculum_available"
+    },
+    {
+      "jurisdiction": "DE-ST",
+      "label": "Sachsen-Anhalt",
+      "localSourceExtractions": 2,
+      "localSourceGoals": 612,
+      "localStages": [
+        "SekI",
+        "SekII"
+      ],
+      "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000053",
+      "memSubjectIri": null,
+      "memSchoolTypeIri": null,
+      "memPlanCount": 0,
+      "status": "mem_curriculum_missing"
+    },
+    {
+      "jurisdiction": "DE-TH",
+      "label": "Thüringen",
+      "localSourceExtractions": 2,
+      "localSourceGoals": 545,
+      "localStages": [
+        "SekI",
+        "SekII"
+      ],
+      "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000031",
+      "memSubjectIri": null,
+      "memSchoolTypeIri": null,
+      "memPlanCount": 0,
+      "status": "mem_curriculum_missing"
+    }
+  ],
+  "concreteComparisons": [
+    {
+      "id": "de-by-math-gymnasium-lehrplanplus",
+      "label": "Bayern Mathematik Gymnasium LehrplanPLUS",
+      "jurisdiction": "DE-BY",
+      "localUniqueExpectationTexts": 291,
+      "memExpectationTexts": 292,
+      "matchedMemExpectationTexts": 292,
+      "unmatchedMemExpectationTexts": 0,
+      "unmatchedLocalExpectationTexts": 0,
+      "status": "aligned"
+    },
+    {
+      "id": "de-sn-math-gymnasium-lehrplan-2019",
+      "label": "Sachsen Mathematik Gymnasium Lehrplan 2019",
+      "jurisdiction": "DE-SN",
+      "localUniqueExpectationTexts": 479,
+      "memExpectationTexts": 572,
+      "matchedMemExpectationTexts": 534,
+      "unmatchedMemExpectationTexts": 38,
+      "unmatchedLocalExpectationTexts": 35,
+      "status": "discrepancies"
+    }
+  ],
+  "triage": [
+    {
+      "comparisonId": "de-sn-math-gymnasium-lehrplan-2019",
+      "label": "Sachsen Mathematik Gymnasium Lehrplan 2019",
+      "jurisdiction": "DE-SN",
+      "unmatchedMemExpectationTexts": 38,
+      "unmatchedLocalExpectationTexts": 35,
+      "itemCount": 49,
+      "categoryCounts": {
+        "granularity_mismatch": 17,
+        "local_passage_only": 6,
+        "local_extraction_artifact": 0,
+        "notation_formula_representation": 14,
+        "possible_real_gap": 2,
+        "source_scope_mismatch": 10
+      },
+      "items": [
+        {
+          "id": "triage-71e50486e83b",
+          "side": "mem_only",
+          "similarity": 1,
+          "memText": "Abstände",
+          "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-26287",
+          "localText": "Jahrgangsstufen 11/12 - Grundkurs: Lernbereich 7 - Abstände und Winkel: - Beherrschen des Ermittelns von Abständen und Winkeln\n- Skalarprodukt und Vektorprodukt einschließlich ihrer geometrisch...",
+          "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "category": "local_passage_only",
+          "confidence": "high",
+          "rationale": "MEM text appears in a local source passage, but not as a standalone local source goal."
+        },
+        {
+          "id": "triage-72396f73c7b3",
+          "side": "mem_only",
+          "similarity": 1,
+          "memText": "Sierpinski-Dreieck",
+          "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-26580",
+          "localText": "Jahrgangsstufen 11/12 - Leistungskurs: Wahlbereich 3 - Dynamische Systeme und fraktale Strukturen: ...- Einblick gewinnen in fraktale Strukturen\n- fraktale Strukturen in der Natur\n- Sierpinski-Dreieck Selbstähnlichkeit\n- Feigenbaum-Diagramm Attraktoren, Chaos",
+          "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "category": "local_passage_only",
+          "confidence": "high",
+          "rationale": "MEM text appears in a local source passage, but not as a standalone local source goal."
+        },
+        {
+          "id": "triage-982a5ffdd3ed",
+          "side": "mem_only",
+          "similarity": 1,
+          "memText": "Lösen linearer Gleichungssysteme",
+          "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-26421",
+          "localText": "Jahrgangsstufen 11/12 - Grundkurs: Lernbereich 2 - Matrizen: - Kennen der Verwendung von Matrizen beim Darstellen und Lösen linearer Gleichungssysteme\n- Darstellen linearer Gleichungssysteme in Matrizenschreibweise\n- Multipliziere...",
+          "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "category": "local_passage_only",
+          "confidence": "high",
+          "rationale": "MEM text appears in a local source passage, but not as a standalone local source goal."
+        },
+        {
+          "id": "triage-c5fd709c7e51",
+          "side": "mem_only",
+          "similarity": 1,
+          "memText": "Formel von Simpson",
+          "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-26621",
+          "localText": "Jahrgangsstufen 11/12 - Leistungskurs: Wahlbereich 5 - Numerische Integrationsverfahren: ...pproximation des Integranden durch Polynome 2. Grades\n- Kepler’sche Fassregel\n- Formel von Simpson Einblicke gewinnen in den Vergleich verschiedener iterativer Verfahren anhand a...",
+          "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "category": "local_passage_only",
+          "confidence": "high",
+          "rationale": "MEM text appears in a local source passage, but not as a standalone local source goal."
+        },
+        {
+          "id": "triage-c8e96f9d85e7",
+          "side": "mem_only",
+          "similarity": 1,
+          "memText": "Feigenbaum-Diagramm",
+          "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-26584",
+          "localText": "Jahrgangsstufen 11/12 - Leistungskurs: Wahlbereich 3 - Dynamische Systeme und fraktale Strukturen: ...ren\n- fraktale Strukturen in der Natur\n- Sierpinski-Dreieck Selbstähnlichkeit\n- Feigenbaum-Diagramm Attraktoren, Chaos",
+          "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "category": "local_passage_only",
+          "confidence": "high",
+          "rationale": "MEM text appears in a local source passage, but not as a standalone local source goal."
+        },
+        {
+          "id": "triage-d3a4d1a06ed0",
+          "side": "mem_only",
+          "similarity": 1,
+          "memText": "Abstände",
+          "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-26524",
+          "localText": "Jahrgangsstufen 11/12 - Grundkurs: Lernbereich 7 - Abstände und Winkel: - Beherrschen des Ermittelns von Abständen und Winkeln\n- Skalarprodukt und Vektorprodukt einschließlich ihrer geometrisch...",
+          "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "category": "local_passage_only",
+          "confidence": "high",
+          "rationale": "MEM text appears in a local source passage, but not as a standalone local source goal."
+        },
+        {
+          "id": "triage-34562d318990",
+          "side": "local_only",
+          "similarity": 0,
+          "localText": "Entwickeln des Anschauungsvermögens: Die Schüler nutzen Vektoren zur Veranschaulichung und Beschreibung geometrischer Objekte in Ebene und Raum. Sie stellen räumliche Objekte im dreidimensionalen Koordinatensystem dar und verwenden dazu auch geeignete Software. Das Anschauungsvermögen der Schüler erreicht eine Ausprägung, die Einsicht in komplexere Zusammenhänge zwischen algebraischen und analytischen Strukturen sowie ihrer geometrischen Darstellung ermöglicht. Die Schüler stellen Beziehungen zwischen dem Graphen einer Funktion und dem der zugehörigen Ableitungsfunktion her und veranschaulichen spezielle stochastische Verteilungen.",
+          "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "category": "source_scope_mismatch",
+          "confidence": "high",
+          "rationale": "Local text is broad stage-level source prose rather than a MEM-style curriculum expectation fragment."
+        },
+        {
+          "id": "triage-38529a41b84c",
+          "side": "local_only",
+          "similarity": 0,
+          "localText": "Erwerben grundlegender Kompetenzen im Umgang mit ausgewählten mathematischen Objekten: Die Schüler gelangen zu vertieften Einsichten bezüglich der zentralen mathematischen Begriffe Grenz- wert, Ableitung und bestimmtes Integral. Sie wenden Regeln der Differential- und Integralrechnung auf ausgewählte Funktionen an. Die Schüler unterscheiden Lösbarkeitsfälle bei linearen Gleichungssystemen und können Gleichungen von Funktionen mittels Regressionsmodellen bestimmen. Sie untersuchen spe- zielle stochastische Prozesse mithilfe binomialverteilter und normalverteilter Zufallsgrößen. Die Schüler beschreiben geometrische Objekte analytisch, untersuchen Lagebeziehungen und ermitteln Abstände sowie Winkel.",
+          "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "category": "source_scope_mismatch",
+          "confidence": "high",
+          "rationale": "Local text is broad stage-level source prose rather than a MEM-style curriculum expectation fragment."
+        },
+        {
+          "id": "triage-553eef945551",
+          "side": "local_only",
+          "similarity": 0,
+          "localText": "Entwickeln von Problemlösefähigkeiten: Die Schüler wenden die neu erworbenen Kenntnisse der Differential- und Integralrechnung, der Vektor- rechnung und analytischen Geometrie sowie der Wahrscheinlichkeitsrechnung und Statistik auf komple- xere und realitätsnahe Problemstellungen an. Sie übertragen insbesondere ihre Fähigkeiten im Mathema- tisieren und Modellieren auf inner- und außermathematische Probleme. Die Schüler beschreiben Zu- sammenhänge durch Gleichungen und Graphen und charakterisieren stochastische Prozesse. Sie ver- netzen mathematisches Wissen unterschiedlicher mathematischer Teilbereiche durch Systematisieren und Strukturieren.",
+          "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "category": "source_scope_mismatch",
+          "confidence": "high",
+          "rationale": "Local text is broad stage-level source prose rather than a MEM-style curriculum expectation fragment."
+        },
+        {
+          "id": "triage-5b687cb319c3",
+          "side": "local_only",
+          "similarity": 0,
+          "localText": "Entwickeln eines kritischen Vernunftgebrauchs: Die Schüler werten kritisch die Eignung von Modellen, Verfahren sowie Hilfsmitteln. Sie berücksichtigen die Genauigkeit implementierter Routinen im GTR bzw. in mathematischer Software. Die Schüler finden Begründungen zunehmend selbstständig. Sie unterscheiden zwischen notwendigen und hinreichenden Bedingungen.",
+          "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "category": "source_scope_mismatch",
+          "confidence": "high",
+          "rationale": "Local text is broad stage-level source prose rather than a MEM-style curriculum expectation fragment."
+        },
+        {
+          "id": "triage-65f8e51436de",
+          "side": "local_only",
+          "similarity": 0,
+          "localText": "Entwickeln eines kritischen Vernunftgebrauchs: Die Schüler werten kritisch die Eignung von Modellen, Verfahren sowie Hilfsmitteln. Sie schätzen ein, ob eine Näherungslösung oder eine algebraisch exakte Lösung in der jeweiligen Situation verwendet werden sollte, berücksichtigen die Genauigkeit implementierter Routinen im GTR bzw. in mathematischer Soft- ware und beurteilen die Eignung von Modellen und Lösungswegen. Die Schüler führen direkte und indi- rekte Beweise zunehmend selbstständig. Sie unterscheiden zwischen notwendigen und hinreichenden Bedingungen und führen vollständige Fallunterscheidungen durch.",
+          "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "category": "source_scope_mismatch",
+          "confidence": "high",
+          "rationale": "Local text is broad stage-level source prose rather than a MEM-style curriculum expectation fragment."
+        },
+        {
+          "id": "triage-cb66d7fda8d8",
+          "side": "local_only",
+          "similarity": 0,
+          "localText": "Entwickeln von Problemlösefähigkeiten: Die Schüler wenden die neu erworbenen Kenntnisse der Differential- und Integralrechnung, der Vektor- rechnung und analytischen Geometrie sowie der Wahrscheinlichkeitsrechnung und Statistik auf komple- xere und realitätsnahe Problemstellungen an. Sie übertragen insbesondere ihre Fähigkeiten im Mathema- tisieren und Modellieren auf kompliziertere inner- und außermathematische Probleme. Die Schüler be- schreiben Zusammenhänge durch Gleichungen und Graphen und charakterisieren stochastische Prozes- se. Sie sind zunehmend in der Lage, Extremwertaufgaben mit verschiedenen Verfahren zu lösen. Beim Problemlösen entwickeln die Schüler die Fähigkeit, selbstständig propädeutische Fragestellungen zu finden, Thesen aufzustellen und Lösungspläne zu entwerfen.",
+          "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "category": "source_scope_mismatch",
+          "confidence": "high",
+          "rationale": "Local text is broad stage-level source prose rather than a MEM-style curriculum expectation fragment."
+        },
+        {
+          "id": "triage-cf69b36899f8",
+          "side": "local_only",
+          "similarity": 0,
+          "localText": "Entwickeln des Anschauungsvermögens: Die Schüler nutzen Vektoren zur Veranschaulichung und Beschreibung geometrischer Objekte in Ebene und Raum. Sie stellen räumliche Objekte im dreidimensionalen Koordinatensystem dar und verwenden dazu auch geeignete Software. Die Schüler stellen Beziehungen zwischen dem Graphen einer Funktion und dem der zugehörigen Ableitungsfunktion her.",
+          "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "category": "source_scope_mismatch",
+          "confidence": "high",
+          "rationale": "Local text is broad stage-level source prose rather than a MEM-style curriculum expectation fragment."
+        },
+        {
+          "id": "triage-d5774893b6e1",
+          "side": "local_only",
+          "similarity": 0,
+          "localText": "Entwickeln des verständigen Umgangs mit der fachgebundenen Sprache unter Bezug und Ab- grenzung zur alltäglichen Sprache: Die Schüler verstehen, reflektieren und nutzen Texte mit dem Ziel, eigenes Wissen weiter zu entwickeln und neues Wissen zu erwerben. Komplexe mathematische Texte zu einem vorgegebenen Thema gestal- ten sie weitgehend selbstständig und sind in der Lage, mathematische Sachverhalte unter Nutzung zeit- gemäßer Hilfsmittel zu präsentieren. Dazu nutzen Sie angemessen mathematische Fachbegriffe und setzen die Fachsprache in konstruktiven Diskussionen zu mathematischen Problemstellungen sicher ein.",
+          "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "category": "source_scope_mismatch",
+          "confidence": "high",
+          "rationale": "Local text is broad stage-level source prose rather than a MEM-style curriculum expectation fragment."
+        },
+        {
+          "id": "triage-db88e12265b6",
+          "side": "local_only",
+          "similarity": 0,
+          "localText": "Entwickeln des verständigen Umgangs mit der fachgebundenen Sprache unter Bezug und Ab- grenzung zur alltäglichen Sprache: Die Schüler verstehen, reflektieren und nutzen Texte mit dem Ziel, eigenes Wissen weiter zu entwickeln und neues Wissen zu erwerben. Sie beschreiben komplexe Lösungspläne und sind in der Lage, ma- thematische Sachverhalte unter Nutzung zeitgemäßer Hilfsmittel zu präsentieren. Die Schüler setzen die Fachsprache in konstruktiven Diskussionen zu mathematischen Problemstellungen angemessen ein.",
+          "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "category": "source_scope_mismatch",
+          "confidence": "high",
+          "rationale": "Local text is broad stage-level source prose rather than a MEM-style curriculum expectation fragment."
+        },
+        {
+          "id": "triage-fe00cf968753",
+          "side": "local_only",
+          "similarity": 0,
+          "localText": "Erwerben grundlegender Kompetenzen im Umgang mit ausgewählten mathematischen Objekten: Die Schüler gewinnen inhaltliches Verständnis von den Begriffen Grenzwert, erste Ableitung und be- stimmtes Integral. Sie wenden Kenntnisse der Differential- und Integralrechnung auf ausgewählte Funktionen an und nutzen beim Lösen von Aufgaben Rechenhilfsmittel sachgerecht. Die Schüler untersuchen stochastische Prozesse mithilfe binomialverteilter Zufallsgrößen. Sie untersuchen Lagebeziehungen ge- ometrischer Objekte analytisch und ermitteln in ausgewählten Fällen Abstände sowie Winkel.",
+          "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "category": "source_scope_mismatch",
+          "confidence": "high",
+          "rationale": "Local text is broad stage-level source prose rather than a MEM-style curriculum expectation fragment."
+        },
+        {
+          "id": "triage-2f116e1d44fd",
+          "side": "paired",
+          "similarity": 1,
+          "memText": "dy = k·G-y·dx (beschränktes Wachstum)",
+          "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-26329",
+          "localText": "dy  k  (G  y )  dx (beschränktes Wachstum)",
+          "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "category": "notation_formula_representation",
+          "confidence": "high",
+          "rationale": "Texts overlap, but mathematical notation, formula glyphs, or private-use PDF symbols differ between MEM and the local extraction."
+        },
+        {
+          "id": "triage-56ed52cfaede",
+          "side": "paired",
+          "similarity": 1,
+          "memText": "dy = k·y·G-y·dx (logistisches Wachstum)",
+          "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-26639",
+          "localText": "dy  k  y  (G  y )  dx (logistisches Wachstum)",
+          "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "category": "notation_formula_representation",
+          "confidence": "high",
+          "rationale": "Texts overlap, but mathematical notation, formula glyphs, or private-use PDF symbols differ between MEM and the local extraction."
+        },
+        {
+          "id": "triage-7f64d14da45f",
+          "side": "paired",
+          "similarity": 1,
+          "memText": "dy = k·G-y·dx (beschränktes Wachstum)",
+          "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-26644",
+          "localText": "dy  k  G  y   dx (beschränktes Wachstum)",
+          "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "category": "notation_formula_representation",
+          "confidence": "high",
+          "rationale": "Texts overlap, but mathematical notation, formula glyphs, or private-use PDF symbols differ between MEM and the local extraction."
+        },
+        {
+          "id": "triage-d77fd7d3c691",
+          "side": "paired",
+          "similarity": 1,
+          "memText": "Einfluss von Parametern auf den Verlauf der Graphen und auf die Eigenschaften der Funktionen für die Fälle \nc·fx; fx+c; fx+c; fc·x",
+          "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-25924",
+          "localText": "Einfluss von Parametern auf den Verlauf der Graphen und auf die Eigenschaften der Funktionen für die Fälle c  f ( x ); f ( x )  c; f ( x  c ); f (",
+          "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "category": "notation_formula_representation",
+          "confidence": "high",
+          "rationale": "Texts overlap, but mathematical notation, formula glyphs, or private-use PDF symbols differ between MEM and the local extraction."
+        },
+        {
+          "id": "triage-024c52484a9d",
+          "side": "paired",
+          "similarity": 0.9,
+          "memText": "Ermitteln von Integralen mit und ohne Hilfsmittel",
+          "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-26468",
+          "localText": "Ermitteln von Integralen mit und ohne Hilfsmittel ohne Hilfsmittel: ganzrationale Funktionen, Potenzfunktionen mit rationalen Exponenten, Funktionen, die mittels linearer Substitution integriert werden können,  e dx;  x dx;  sin x dx x",
+          "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "category": "notation_formula_representation",
+          "confidence": "high",
+          "rationale": "Texts overlap, but mathematical notation, formula glyphs, or private-use PDF symbols differ between MEM and the local extraction."
+        },
+        {
+          "id": "triage-071752327759",
+          "side": "paired",
+          "similarity": 0.9,
+          "memText": "Beherrschen charakteristischer Eigenschaften und des Verlaufs der Graphen der Funktionen",
+          "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-25958",
+          "localText": "Beherrschen charakteristischer Eigenschaften und des Verlaufs der Graphen der Funktionen y  x; y  x 2; y  x; y ; x y  ln x; y  e x; y  sin x ohne Verwendung von Hilfsmitteln",
+          "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "category": "notation_formula_representation",
+          "confidence": "high",
+          "rationale": "Texts overlap, but mathematical notation, formula glyphs, or private-use PDF symbols differ between MEM and the local extraction."
+        },
+        {
+          "id": "triage-1d35af9b66a4",
+          "side": "paired",
+          "similarity": 0.9,
+          "memText": "Übertragen des Wissens zu speziellen Funktionen auf Verknüpfungen und Verkettungen von Funktionen",
+          "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-25954",
+          "localText": "Übertragen des Wissens zu speziellen Funktionen auf Verknüpfungen und Verkettungen von Funktionen Verknüpfung der Funktionen y  sin x und y  cos x zu y  tan x",
+          "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "category": "notation_formula_representation",
+          "confidence": "high",
+          "rationale": "Texts overlap, but mathematical notation, formula glyphs, or private-use PDF symbols differ between MEM and the local extraction."
+        },
+        {
+          "id": "triage-c98e76ef6a38",
+          "side": "paired",
+          "similarity": 0.9,
+          "memText": "Ermitteln von Integralen mit und ohne Hilfsmittel",
+          "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-26264",
+          "localText": "Ermitteln von Integralen mit und ohne Hilfsmittel ohne Hilfsmittel: ganzrationale Funktionen, Potenzfunktionen mit rationalen Exponenten sowie  e dx;  x dx;  sin x dx x",
+          "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "category": "notation_formula_representation",
+          "confidence": "high",
+          "rationale": "Texts overlap, but mathematical notation, formula glyphs, or private-use PDF symbols differ between MEM and the local extraction."
+        },
+        {
+          "id": "triage-e1b2842bbd48",
+          "side": "paired",
+          "similarity": 0.8,
+          "memText": "ohne Hilfsmittel: ganzrationale Funktionen, Potenzfunktionen mit rationalen Exponenten sowie\n∫ex dx; ∫1xdx; ∫sin x dx",
+          "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-26265",
+          "localText": "ohne Hilfsmittel: ganzrationale Funktionen, Potenzfunktionen mit rationalen Exponenten, f ( x )  e x, f ( x )  ln x f ( x )  sin x einfache Verkettungen und Verknüpfungen",
+          "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "category": "notation_formula_representation",
+          "confidence": "high",
+          "rationale": "Texts overlap, but mathematical notation, formula glyphs, or private-use PDF symbols differ between MEM and the local extraction."
+        },
+        {
+          "id": "triage-762ffbf0850c",
+          "side": "mem_only",
+          "similarity": 0.9,
+          "memText": "ohne Verwendung von Hilfsmitteln",
+          "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-25961",
+          "localText": "Beherrschen charakteristischer Eigenschaften und des Verlaufs der Graphen der Funktionen y  x; y  x 2; y  x; y ; x y  ln x; y  e x; y  sin x ohne Verwendung von Hilfsmitteln",
+          "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "category": "notation_formula_representation",
+          "confidence": "high",
+          "rationale": "Texts overlap, but mathematical notation, formula glyphs, or private-use PDF symbols differ between MEM and the local extraction."
+        },
+        {
+          "id": "triage-5944c6878927",
+          "side": "mem_only",
+          "similarity": 0.897,
+          "memText": "ohne Hilfsmittel: ganzrationale Funktionen, Potenzfunktionen mit rationalen Exponenten, Funktionen, die mittels linearer Substitution integriert werden können,\n∫ex dx; ∫1xdx; ∫sin x dx",
+          "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-26474",
+          "localText": "Ermitteln von Integralen mit und ohne Hilfsmittel ohne Hilfsmittel: ganzrationale Funktionen, Potenzfunktionen mit rationalen Exponenten, Funktionen, die mittels linearer Substitution integriert werden können,  e dx;  x dx;  sin x dx x",
+          "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "category": "notation_formula_representation",
+          "confidence": "high",
+          "rationale": "Texts overlap, but mathematical notation, formula glyphs, or private-use PDF symbols differ between MEM and the local extraction."
+        },
+        {
+          "id": "triage-8a9c39983cf6",
+          "side": "mem_only",
+          "similarity": 0,
+          "memText": "y=x ; y=x2 ; y=x ; y=1x;",
+          "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-25959",
+          "category": "notation_formula_representation",
+          "confidence": "medium",
+          "rationale": "Texts overlap, but mathematical notation, formula glyphs, or private-use PDF symbols differ between MEM and the local extraction."
+        },
+        {
+          "id": "triage-c3e30407aab1",
+          "side": "mem_only",
+          "similarity": 0,
+          "memText": "Verknüpfung der Funktionen\ny=sin x und y=cos x zu y=tan x",
+          "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-25955",
+          "category": "notation_formula_representation",
+          "confidence": "medium",
+          "rationale": "Texts overlap, but mathematical notation, formula glyphs, or private-use PDF symbols differ between MEM and the local extraction."
+        },
+        {
+          "id": "triage-ff316bf22057",
+          "side": "mem_only",
+          "similarity": 0,
+          "memText": "y=ln x ; y=ex ; y=sin x",
+          "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-25960",
+          "category": "notation_formula_representation",
+          "confidence": "medium",
+          "rationale": "Texts overlap, but mathematical notation, formula glyphs, or private-use PDF symbols differ between MEM and the local extraction."
+        },
+        {
+          "id": "triage-6d357d3cf5ba",
+          "side": "paired",
+          "similarity": 0.933,
+          "memText": "Finden von Gleichungen für Messreihen mithilfe linearer Regression mit CAS oder TK",
+          "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-25751",
+          "localText": "Finden von Gleichungen für Messreihen mithilfe linearer Regression mit GTR, CAS oder TK",
+          "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "category": "granularity_mismatch",
+          "confidence": "high",
+          "rationale": "Texts appear related, but one side is broader, narrower, or combines several curriculum fragments."
+        },
+        {
+          "id": "triage-0605e74e9c23",
+          "side": "paired",
+          "similarity": 0.923,
+          "memText": "Kennen des Umsetzens einfacher Algorithmen in der Programmierebene des CAS unter Verwendung der allgemeinen Grundstrukturen Sequenz, Verzweigung und Zyklus",
+          "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-25798",
+          "localText": "Kennen des Umsetzens einfacher Algorithmen in der Programmierebene des GTR unter Verwendung der allgemeinen Grundstrukturen Sequenz, Verzweigung und Zyklus",
+          "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "category": "granularity_mismatch",
+          "confidence": "high",
+          "rationale": "Texts appear related, but one side is broader, narrower, or combines several curriculum fragments."
+        },
+        {
+          "id": "triage-79ed32993f6a",
+          "side": "paired",
+          "similarity": 0.909,
+          "memText": "grafisches Lösen quadratischer Gleichungen sowie Lösen mit CAS",
+          "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-25854",
+          "localText": "grafisches Lösen quadratischer Gleichungen sowie Lösen mit GTR oder CAS",
+          "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "category": "granularity_mismatch",
+          "confidence": "high",
+          "rationale": "Texts appear related, but one side is broader, narrower, or combines several curriculum fragments."
+        },
+        {
+          "id": "triage-14d07d53ef47",
+          "side": "paired",
+          "similarity": 0.9,
+          "memText": "inhaltlich im Kopf: einfache Gleichungen mit überschaubarem Zahlenmateria",
+          "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-25472",
+          "localText": "inhaltlich im Kopf: einfache Gleichungen mit überschaubarem Zahlenmaterial",
+          "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "category": "granularity_mismatch",
+          "confidence": "high",
+          "rationale": "Texts appear related, but one side is broader, narrower, or combines several curriculum fragments."
+        },
+        {
+          "id": "triage-3041da890e40",
+          "side": "paired",
+          "similarity": 0.9,
+          "memText": "Definitions- und Wertebereich, lokale und globale Extrema, Wendepunkte, Nullstellen, Polstellen, Monotonie, Symmetrie, achsenparallele Asymptoten",
+          "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-26034",
+          "localText": "lokale und globale Extrema, Wendepunkte, Nullstellen, Polstellen, Monotonie, Symmetrie, achsenparallele Asymptoten",
+          "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "category": "granularity_mismatch",
+          "confidence": "high",
+          "rationale": "Texts appear related, but one side is broader, narrower, or combines several curriculum fragments."
+        },
+        {
+          "id": "triage-3064363a2d6f",
+          "side": "paired",
+          "similarity": 0.9,
+          "memText": "Selbstähnlichkeit",
+          "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-26582",
+          "localText": "Sierpinski-Dreieck Selbstähnlichkeit",
+          "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "category": "granularity_mismatch",
+          "confidence": "high",
+          "rationale": "Texts appear related, but one side is broader, narrower, or combines several curriculum fragments."
+        },
+        {
+          "id": "triage-4deae0299e4e",
+          "side": "paired",
+          "similarity": 0.9,
+          "memText": "Definitions- und Wertebereich, lokale und globale Extrema, Wendepunkte, Nullstellen, Polstellen, Monotonie, Symmetrie, Asymptoten",
+          "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-26406",
+          "localText": "lokale und globale Extrema, Wendepunkte, Nullstellen, Polstellen, Monotonie, Symmetrie, Asymptoten",
+          "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "category": "granularity_mismatch",
+          "confidence": "high",
+          "rationale": "Texts appear related, but one side is broader, narrower, or combines several curriculum fragments."
+        },
+        {
+          "id": "triage-8ab08e939756",
+          "side": "paired",
+          "similarity": 0.9,
+          "memText": "Lösen linearer Gleichungssysteme",
+          "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-26239",
+          "localText": "Lösen linearer Gleichungssysteme mittels Gauß-Jordan-Verfahren",
+          "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "category": "granularity_mismatch",
+          "confidence": "high",
+          "rationale": "Texts appear related, but one side is broader, narrower, or combines several curriculum fragments."
+        },
+        {
+          "id": "triage-9040cadb7721",
+          "side": "paired",
+          "similarity": 0.9,
+          "memText": "Beherrschen des Darstellens, Vergleichens und Ordnens rationaler Zahlen",
+          "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-25384",
+          "localText": "Beherrschen des Darstellens, Vergleichens und Ordnens rationaler Zahlen Darstellen der Beziehungen zwischen natürlichen, gebrochenen, ganzen und rationalen Zahlen im Mengendiagramm",
+          "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "category": "granularity_mismatch",
+          "confidence": "high",
+          "rationale": "Texts appear related, but one side is broader, narrower, or combines several curriculum fragments."
+        },
+        {
+          "id": "triage-cd40326a8f63",
+          "side": "paired",
+          "similarity": 0.9,
+          "memText": "Attraktoren, Chaos",
+          "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-26585",
+          "localText": "Feigenbaum-Diagramm Attraktoren, Chaos",
+          "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "category": "granularity_mismatch",
+          "confidence": "high",
+          "rationale": "Texts appear related, but one side is broader, narrower, or combines several curriculum fragments."
+        },
+        {
+          "id": "triage-f507f0f16db9",
+          "side": "paired",
+          "similarity": 0.9,
+          "memText": "Einblicke gewinnen in den Vergleich verschiedener iterativer Verfahren anhand ausgewählter Beispiele",
+          "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-26625",
+          "localText": "Formel von Simpson Einblicke gewinnen in den Vergleich verschiedener iterativer Verfahren anhand ausgewählter Beispiele",
+          "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "category": "granularity_mismatch",
+          "confidence": "high",
+          "rationale": "Texts appear related, but one side is broader, narrower, or combines several curriculum fragments."
+        },
+        {
+          "id": "triage-4cf280259b8c",
+          "side": "paired",
+          "similarity": 0.857,
+          "memText": "mit CAS: kompliziertere Koeffizienten",
+          "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-25764",
+          "localText": "mit GTR oder CAS: kompliziertere Koeffizienten",
+          "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "category": "granularity_mismatch",
+          "confidence": "high",
+          "rationale": "Texts appear related, but one side is broader, narrower, or combines several curriculum fragments."
+        },
+        {
+          "id": "triage-92028a99ecf4",
+          "side": "paired",
+          "similarity": 0.833,
+          "memText": "Nutzen von CAS-Programmen oder geeigneter Software zur Simulation",
+          "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-25818",
+          "localText": "Nutzen von GTR-Programmen oder geeigneter Software zur Simulation",
+          "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "category": "granularity_mismatch",
+          "confidence": "high",
+          "rationale": "Texts appear related, but one side is broader, narrower, or combines several curriculum fragments."
+        },
+        {
+          "id": "triage-c370d3db8f3b",
+          "side": "paired",
+          "similarity": 0.727,
+          "memText": "Kennen der Simulation mit Zufallszahlen (Monte-Carlo-Methode)",
+          "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-25811",
+          "localText": "Kennen der Simulation mit Zufallszahlen (MonteCarlo-Methode)",
+          "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "category": "granularity_mismatch",
+          "confidence": "high",
+          "rationale": "Texts appear related, but one side is broader, narrower, or combines several curriculum fragments."
+        },
+        {
+          "id": "triage-302b8b8b4ea9",
+          "side": "paired",
+          "similarity": 0.667,
+          "memText": "Kennen unterschiedlicher optischer Täuschungen",
+          "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-25263",
+          "localText": "Kennen unterschiedlicher optischer Täuschun- m gen S",
+          "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "category": "granularity_mismatch",
+          "confidence": "high",
+          "rationale": "Texts appear related, but one side is broader, narrower, or combines several curriculum fragments."
+        },
+        {
+          "id": "triage-6c6db62fea60",
+          "side": "mem_only",
+          "similarity": 0.9,
+          "memText": "Integralfunktion, Hauptsatz der Differential- und Integralrechnung",
+          "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-26481",
+          "localText": "Hauptsatz der Differential- und Integralrechnung",
+          "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "category": "granularity_mismatch",
+          "confidence": "high",
+          "rationale": "Texts appear related, but one side is broader, narrower, or combines several curriculum fragments."
+        },
+        {
+          "id": "triage-909bb74bfe15",
+          "side": "mem_only",
+          "similarity": 0.9,
+          "memText": "Darstellen der Beziehungen zwischen natürlichen, gebrochenen, ganzen und rationalen Zahlen im Mengendiagramm",
+          "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-25388",
+          "localText": "Beherrschen des Darstellens, Vergleichens und Ordnens rationaler Zahlen Darstellen der Beziehungen zwischen natürlichen, gebrochenen, ganzen und rationalen Zahlen im Mengendiagramm",
+          "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "category": "granularity_mismatch",
+          "confidence": "high",
+          "rationale": "Texts appear related, but one side is broader, narrower, or combines several curriculum fragments."
+        },
+        {
+          "id": "triage-6dd2f119513e",
+          "side": "mem_only",
+          "similarity": 0,
+          "memText": "Division",
+          "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-24943",
+          "category": "possible_real_gap",
+          "confidence": "low",
+          "rationale": "No strong deterministic match candidate was found. This needs human review as a possible real source or MEM coverage gap.",
+          "reviewNote": "PoC probe on 2026-06-01: a constrained MEM query places this as an intermediate node under `Beherrschen der Grundrechenarten für natürliche Zahlen`; the local Sachsen extraction already contains `Umkehrung der Multiplikation` plus the related division routines in the same source passage. Treat as wording/granularity review, not as an automatic source gap."
+        },
+        {
+          "id": "triage-a3e85d9ef77a",
+          "side": "local_only",
+          "similarity": 0,
+          "localText": "Bogenlängen",
+          "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "category": "possible_real_gap",
+          "confidence": "low",
+          "rationale": "No strong deterministic match candidate was found. This needs human review as a possible real source or MEM coverage gap.",
+          "reviewNote": "PoC probe on 2026-06-01: the local Sachsen LK extraction contains `Bogenlängen` as an official subitem row in Integralrechnung at source line 2746. A constrained MEM query over the Sachsen Gymnasium Mathematik plan did not find an exact `Bogenlängen` label; it only found `Grad- und Bogenmaß` for the broader Bogen search. Treat as MEM/source-version coverage feedback candidate."
+        }
+      ]
+    }
+  ],
+  "issues": [
+    {
+      "id": "local_expectation_not_found_in_mem-01d14106921b",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "Local source expectation not found in MEM",
+      "details": "Feigenbaum-Diagramm Attraktoren, Chaos",
+      "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+      "evidence": {
+        "sourceGoalIds": [
+          "de-sn-mathematik-sekii-lehrplan-gymnasium-2019-sn-sekii-lk-wb03-dynamische-systeme-und-fraktale-strukturen-r009-4d805f5d7d"
+        ],
+        "sourceRefs": [
+          "Lehrplan Gymnasium Mathematik, Sachsen, 2019"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-02eb3a854af8",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "Local source expectation not found in MEM",
+      "details": "dy  k  (G  y )  dx (beschränktes Wachstum)",
+      "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+      "evidence": {
+        "sourceGoalIds": [
+          "de-sn-mathematik-sekii-lehrplan-gymnasium-2019-sn-sekii-lk-wb06-differentialgleichungen-r005-41879e2f6a"
+        ],
+        "sourceRefs": [
+          "Lehrplan Gymnasium Mathematik, Sachsen, 2019"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-0ce6f8e2e80a",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "Local source expectation not found in MEM",
+      "details": "Einfluss von Parametern auf den Verlauf der Graphen und auf die Eigenschaften der Funktionen für die Fälle c  f ( x ); f ( x )  c; f ( x  c ); f (",
+      "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+      "evidence": {
+        "sourceGoalIds": [
+          "de-sn-mathematik-seki-lehrplan-gymnasium-2019-sn-seki-10-lb01-wachstumsvorgange-und-periodische-vorgange-r006-3f35edf364"
+        ],
+        "sourceRefs": [
+          "Lehrplan Gymnasium Mathematik, Sachsen, 2019"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-17247307fce9",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "Local source expectation not found in MEM",
+      "details": "Entwickeln des verständigen Umgangs mit der fachgebundenen Sprache unter Bezug und Ab- grenzung zur alltäglichen Sprache: Die Schüler verstehen, reflektieren und nutzen Texte mit dem Ziel, eigenes Wissen weiter zu entwickeln und neues Wissen zu erwerben. Komplexe mathematische Texte zu einem vorgegebenen Thema gestal- ten sie weitgehend selbstständig und sind in der Lage, mathematische Sachverhalte unter Nutzung zeit- gemäßer Hilfsmittel zu präsentieren. Dazu nutzen Sie angemessen mathematische Fachbegriffe und setzen die Fachsprache in konstruktiven Diskussionen zu mathematischen Problemstellungen sicher ein.",
+      "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+      "evidence": {
+        "sourceGoalIds": [
+          "de-sn-mathematik-sekii-lehrplan-gymnasium-2019-sn-sekii-lk-zg00-stufenbezogene-ziele-r003-a4a9e25adf"
+        ],
+        "sourceRefs": [
+          "Lehrplan Gymnasium Mathematik, Sachsen, 2019"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-1d1d5e410e4e",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "Local source expectation not found in MEM",
+      "details": "dy  k  G  y   dx (beschränktes Wachstum)",
+      "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+      "evidence": {
+        "sourceGoalIds": [
+          "de-sn-mathematik-sekii-lehrplan-gymnasium-2019-sn-sekii-gk-wb06-differentialgleichungen-r004-e0ca5a3c38"
+        ],
+        "sourceRefs": [
+          "Lehrplan Gymnasium Mathematik, Sachsen, 2019"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-2038a7490303",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "Local source expectation not found in MEM",
+      "details": "Bogenlängen",
+      "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+      "evidence": {
+        "sourceGoalIds": [
+          "de-sn-mathematik-sekii-lehrplan-gymnasium-2019-sn-sekii-lk-lb05-integralrechnung-r010-c1fd02cad2"
+        ],
+        "sourceRefs": [
+          "Lehrplan Gymnasium Mathematik, Sachsen, 2019"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-20b00c547769",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "Local source expectation not found in MEM",
+      "details": "lokale und globale Extrema, Wendepunkte, Nullstellen, Polstellen, Monotonie, Symmetrie, achsenparallele Asymptoten",
+      "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+      "evidence": {
+        "sourceGoalIds": [
+          "de-sn-mathematik-sekii-lehrplan-gymnasium-2019-sn-sekii-gk-lb01-differentialrechnung-r016-c23d54c923"
+        ],
+        "sourceRefs": [
+          "Lehrplan Gymnasium Mathematik, Sachsen, 2019"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-235281a208f4",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "Local source expectation not found in MEM",
+      "details": "Entwickeln des Anschauungsvermögens: Die Schüler nutzen Vektoren zur Veranschaulichung und Beschreibung geometrischer Objekte in Ebene und Raum. Sie stellen räumliche Objekte im dreidimensionalen Koordinatensystem dar und verwenden dazu auch geeignete Software. Das Anschauungsvermögen der Schüler erreicht eine Ausprägung, die Einsicht in komplexere Zusammenhänge zwischen algebraischen und analytischen Strukturen sowie ihrer geometrischen Darstellung ermöglicht. Die Schüler stellen Beziehungen zwischen dem Graphen einer Funktion und dem der zugehörigen Ableitungsfunktion her und veranschaulichen spezielle stochastische Verteilungen.",
+      "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+      "evidence": {
+        "sourceGoalIds": [
+          "de-sn-mathematik-sekii-lehrplan-gymnasium-2019-sn-sekii-lk-zg00-stufenbezogene-ziele-r004-6db294a627"
+        ],
+        "sourceRefs": [
+          "Lehrplan Gymnasium Mathematik, Sachsen, 2019"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-270d8577635c",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "Local source expectation not found in MEM",
+      "details": "mit GTR oder CAS: kompliziertere Koeffizienten",
+      "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+      "evidence": {
+        "sourceGoalIds": [
+          "de-sn-mathematik-seki-lehrplan-gymnasium-2019-sn-seki-8-lb03-funktionen-und-lineare-gleichungssysteme-r014-64d1d64b96"
+        ],
+        "sourceRefs": [
+          "Lehrplan Gymnasium Mathematik, Sachsen, 2019"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-37ffae66ee13",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "Local source expectation not found in MEM",
+      "details": "Entwickeln eines kritischen Vernunftgebrauchs: Die Schüler werten kritisch die Eignung von Modellen, Verfahren sowie Hilfsmitteln. Sie berücksichtigen die Genauigkeit implementierter Routinen im GTR bzw. in mathematischer Software. Die Schüler finden Begründungen zunehmend selbstständig. Sie unterscheiden zwischen notwendigen und hinreichenden Bedingungen.",
+      "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+      "evidence": {
+        "sourceGoalIds": [
+          "de-sn-mathematik-sekii-lehrplan-gymnasium-2019-sn-sekii-gk-zg00-stufenbezogene-ziele-r002-0fc409c26e"
+        ],
+        "sourceRefs": [
+          "Lehrplan Gymnasium Mathematik, Sachsen, 2019"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-5c8dc0c48396",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "Local source expectation not found in MEM",
+      "details": "Erwerben grundlegender Kompetenzen im Umgang mit ausgewählten mathematischen Objekten: Die Schüler gewinnen inhaltliches Verständnis von den Begriffen Grenzwert, erste Ableitung und be- stimmtes Integral. Sie wenden Kenntnisse der Differential- und Integralrechnung auf ausgewählte Funktionen an und nutzen beim Lösen von Aufgaben Rechenhilfsmittel sachgerecht. Die Schüler untersuchen stochastische Prozesse mithilfe binomialverteilter Zufallsgrößen. Sie untersuchen Lagebeziehungen ge- ometrischer Objekte analytisch und ermitteln in ausgewählten Fällen Abstände sowie Winkel.",
+      "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+      "evidence": {
+        "sourceGoalIds": [
+          "de-sn-mathematik-sekii-lehrplan-gymnasium-2019-sn-sekii-gk-zg00-stufenbezogene-ziele-r005-b1aefaa426"
+        ],
+        "sourceRefs": [
+          "Lehrplan Gymnasium Mathematik, Sachsen, 2019"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-5f4db27bc4a1",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "Local source expectation not found in MEM",
+      "details": "grafisches Lösen quadratischer Gleichungen sowie Lösen mit GTR oder CAS",
+      "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+      "evidence": {
+        "sourceGoalIds": [
+          "de-sn-mathematik-seki-lehrplan-gymnasium-2019-sn-seki-9-lb01-funktionen-und-potenzen-r011-8cb7acfc82"
+        ],
+        "sourceRefs": [
+          "Lehrplan Gymnasium Mathematik, Sachsen, 2019"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-6d14cf261e96",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "Local source expectation not found in MEM",
+      "details": "Ermitteln von Integralen mit und ohne Hilfsmittel ohne Hilfsmittel: ganzrationale Funktionen, Potenzfunktionen mit rationalen Exponenten, Funktionen, die mittels linearer Substitution integriert werden können,  e dx;  x dx;  sin x dx x",
+      "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+      "evidence": {
+        "sourceGoalIds": [
+          "de-sn-mathematik-sekii-lehrplan-gymnasium-2019-sn-sekii-lk-lb05-integralrechnung-r003-b18817fe7e"
+        ],
+        "sourceRefs": [
+          "Lehrplan Gymnasium Mathematik, Sachsen, 2019"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-74f20027d3d4",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "Local source expectation not found in MEM",
+      "details": "Entwickeln von Problemlösefähigkeiten: Die Schüler wenden die neu erworbenen Kenntnisse der Differential- und Integralrechnung, der Vektor- rechnung und analytischen Geometrie sowie der Wahrscheinlichkeitsrechnung und Statistik auf komple- xere und realitätsnahe Problemstellungen an. Sie übertragen insbesondere ihre Fähigkeiten im Mathema- tisieren und Modellieren auf kompliziertere inner- und außermathematische Probleme. Die Schüler be- schreiben Zusammenhänge durch Gleichungen und Graphen und charakterisieren stochastische Prozes- se. Sie sind zunehmend in der Lage, Extremwertaufgaben mit verschiedenen Verfahren zu lösen. Beim Problemlösen entwickeln die Schüler die Fähigkeit, selbstständig propädeutische Fragestellungen zu finden, Thesen aufzustellen und Lösungspläne zu entwerfen.",
+      "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+      "evidence": {
+        "sourceGoalIds": [
+          "de-sn-mathematik-sekii-lehrplan-gymnasium-2019-sn-sekii-lk-zg00-stufenbezogene-ziele-r001-f03d1bfe5c"
+        ],
+        "sourceRefs": [
+          "Lehrplan Gymnasium Mathematik, Sachsen, 2019"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-7c0eabee1142",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "Local source expectation not found in MEM",
+      "details": "Beherrschen charakteristischer Eigenschaften und des Verlaufs der Graphen der Funktionen y  x; y  x 2; y  x; y ; x y  ln x; y  e x; y  sin x ohne Verwendung von Hilfsmitteln",
+      "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+      "evidence": {
+        "sourceGoalIds": [
+          "de-sn-mathematik-seki-lehrplan-gymnasium-2019-sn-seki-10-lb04-funktionale-zusammenhange-r009-bddb4f62ae"
+        ],
+        "sourceRefs": [
+          "Lehrplan Gymnasium Mathematik, Sachsen, 2019"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-7f9779c85e74",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "Local source expectation not found in MEM",
+      "details": "Kennen der Simulation mit Zufallszahlen (MonteCarlo-Methode)",
+      "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+      "evidence": {
+        "sourceGoalIds": [
+          "de-sn-mathematik-seki-lehrplan-gymnasium-2019-sn-seki-8-wb03-simulation-mit-zufallszahlen-r001-3c385f78e2"
+        ],
+        "sourceRefs": [
+          "Lehrplan Gymnasium Mathematik, Sachsen, 2019"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-845ab5891b97",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "Local source expectation not found in MEM",
+      "details": "Formel von Simpson Einblicke gewinnen in den Vergleich verschiedener iterativer Verfahren anhand ausgewählter Beispiele",
+      "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+      "evidence": {
+        "sourceGoalIds": [
+          "de-sn-mathematik-sekii-lehrplan-gymnasium-2019-sn-sekii-lk-wb05-numerische-integrationsverfahren-r007-b434749af8"
+        ],
+        "sourceRefs": [
+          "Lehrplan Gymnasium Mathematik, Sachsen, 2019"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-89cbfebc6507",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "Local source expectation not found in MEM",
+      "details": "Sierpinski-Dreieck Selbstähnlichkeit",
+      "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+      "evidence": {
+        "sourceGoalIds": [
+          "de-sn-mathematik-sekii-lehrplan-gymnasium-2019-sn-sekii-lk-wb03-dynamische-systeme-und-fraktale-strukturen-r008-77349cc5e4"
+        ],
+        "sourceRefs": [
+          "Lehrplan Gymnasium Mathematik, Sachsen, 2019"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-89e83b3bff8f",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "Local source expectation not found in MEM",
+      "details": "Entwickeln eines kritischen Vernunftgebrauchs: Die Schüler werten kritisch die Eignung von Modellen, Verfahren sowie Hilfsmitteln. Sie schätzen ein, ob eine Näherungslösung oder eine algebraisch exakte Lösung in der jeweiligen Situation verwendet werden sollte, berücksichtigen die Genauigkeit implementierter Routinen im GTR bzw. in mathematischer Soft- ware und beurteilen die Eignung von Modellen und Lösungswegen. Die Schüler führen direkte und indi- rekte Beweise zunehmend selbstständig. Sie unterscheiden zwischen notwendigen und hinreichenden Bedingungen und führen vollständige Fallunterscheidungen durch.",
+      "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+      "evidence": {
+        "sourceGoalIds": [
+          "de-sn-mathematik-sekii-lehrplan-gymnasium-2019-sn-sekii-lk-zg00-stufenbezogene-ziele-r002-085b6b8e2f"
+        ],
+        "sourceRefs": [
+          "Lehrplan Gymnasium Mathematik, Sachsen, 2019"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-8ed3e955dfa4",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "Local source expectation not found in MEM",
+      "details": "Ermitteln von Integralen mit und ohne Hilfsmittel ohne Hilfsmittel: ganzrationale Funktionen, Potenzfunktionen mit rationalen Exponenten sowie  e dx;  x dx;  sin x dx x",
+      "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+      "evidence": {
+        "sourceGoalIds": [
+          "de-sn-mathematik-sekii-lehrplan-gymnasium-2019-sn-sekii-gk-lb05-integralrechnung-r003-bdc3325bd9"
+        ],
+        "sourceRefs": [
+          "Lehrplan Gymnasium Mathematik, Sachsen, 2019"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-9bf7e22649ea",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "Local source expectation not found in MEM",
+      "details": "Übertragen des Wissens zu speziellen Funktionen auf Verknüpfungen und Verkettungen von Funktionen Verknüpfung der Funktionen y  sin x und y  cos x zu y  tan x",
+      "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+      "evidence": {
+        "sourceGoalIds": [
+          "de-sn-mathematik-seki-lehrplan-gymnasium-2019-sn-seki-10-lb04-funktionale-zusammenhange-r007-f084212d73"
+        ],
+        "sourceRefs": [
+          "Lehrplan Gymnasium Mathematik, Sachsen, 2019"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-a245ff7dc604",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "Local source expectation not found in MEM",
+      "details": "Entwickeln des verständigen Umgangs mit der fachgebundenen Sprache unter Bezug und Ab- grenzung zur alltäglichen Sprache: Die Schüler verstehen, reflektieren und nutzen Texte mit dem Ziel, eigenes Wissen weiter zu entwickeln und neues Wissen zu erwerben. Sie beschreiben komplexe Lösungspläne und sind in der Lage, ma- thematische Sachverhalte unter Nutzung zeitgemäßer Hilfsmittel zu präsentieren. Die Schüler setzen die Fachsprache in konstruktiven Diskussionen zu mathematischen Problemstellungen angemessen ein.",
+      "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+      "evidence": {
+        "sourceGoalIds": [
+          "de-sn-mathematik-sekii-lehrplan-gymnasium-2019-sn-sekii-gk-zg00-stufenbezogene-ziele-r003-a046d299d6"
+        ],
+        "sourceRefs": [
+          "Lehrplan Gymnasium Mathematik, Sachsen, 2019"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-a83fdb7e1c3a",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "Local source expectation not found in MEM",
+      "details": "Kennen des Umsetzens einfacher Algorithmen in der Programmierebene des GTR unter Verwendung der allgemeinen Grundstrukturen Sequenz, Verzweigung und Zyklus",
+      "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+      "evidence": {
+        "sourceGoalIds": [
+          "de-sn-mathematik-seki-lehrplan-gymnasium-2019-sn-seki-8-wb01-programmierung-mathematischer-algorithmen-r002-0889b9feea"
+        ],
+        "sourceRefs": [
+          "Lehrplan Gymnasium Mathematik, Sachsen, 2019"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-afbedb65b907",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "Local source expectation not found in MEM",
+      "details": "Kennen unterschiedlicher optischer Täuschun- m gen S",
+      "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+      "evidence": {
+        "sourceGoalIds": [
+          "de-sn-mathematik-seki-lehrplan-gymnasium-2019-sn-seki-6-wb02-unterhaltsame-geometrie-r001-6664446c4a"
+        ],
+        "sourceRefs": [
+          "Lehrplan Gymnasium Mathematik, Sachsen, 2019"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-b095976fb412",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "Local source expectation not found in MEM",
+      "details": "Lösen linearer Gleichungssysteme mittels Gauß-Jordan-Verfahren",
+      "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+      "evidence": {
+        "sourceGoalIds": [
+          "de-sn-mathematik-sekii-lehrplan-gymnasium-2019-sn-sekii-gk-lb02-matrizen-r004-39f54eaabf",
+          "de-sn-mathematik-sekii-lehrplan-gymnasium-2019-sn-sekii-lk-lb02-matrizen-r004-39f54eaabf"
+        ],
+        "sourceRefs": [
+          "Lehrplan Gymnasium Mathematik, Sachsen, 2019"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-b0bf30d80844",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "Local source expectation not found in MEM",
+      "details": "dy  k  y  (G  y )  dx (logistisches Wachstum)",
+      "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+      "evidence": {
+        "sourceGoalIds": [
+          "de-sn-mathematik-sekii-lehrplan-gymnasium-2019-sn-sekii-lk-wb06-differentialgleichungen-r004-11b2dbb516"
+        ],
+        "sourceRefs": [
+          "Lehrplan Gymnasium Mathematik, Sachsen, 2019"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-c160bbbe7da7",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "Local source expectation not found in MEM",
+      "details": "Entwickeln von Problemlösefähigkeiten: Die Schüler wenden die neu erworbenen Kenntnisse der Differential- und Integralrechnung, der Vektor- rechnung und analytischen Geometrie sowie der Wahrscheinlichkeitsrechnung und Statistik auf komple- xere und realitätsnahe Problemstellungen an. Sie übertragen insbesondere ihre Fähigkeiten im Mathema- tisieren und Modellieren auf inner- und außermathematische Probleme. Die Schüler beschreiben Zu- sammenhänge durch Gleichungen und Graphen und charakterisieren stochastische Prozesse. Sie ver- netzen mathematisches Wissen unterschiedlicher mathematischer Teilbereiche durch Systematisieren und Strukturieren.",
+      "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+      "evidence": {
+        "sourceGoalIds": [
+          "de-sn-mathematik-sekii-lehrplan-gymnasium-2019-sn-sekii-gk-zg00-stufenbezogene-ziele-r001-7b47723555"
+        ],
+        "sourceRefs": [
+          "Lehrplan Gymnasium Mathematik, Sachsen, 2019"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-c3f0f8579c0a",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "Local source expectation not found in MEM",
+      "details": "Nutzen von GTR-Programmen oder geeigneter Software zur Simulation",
+      "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+      "evidence": {
+        "sourceGoalIds": [
+          "de-sn-mathematik-seki-lehrplan-gymnasium-2019-sn-seki-8-wb03-simulation-mit-zufallszahlen-r004-bee7566148"
+        ],
+        "sourceRefs": [
+          "Lehrplan Gymnasium Mathematik, Sachsen, 2019"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-db9e7a02f5f4",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "Local source expectation not found in MEM",
+      "details": "lokale und globale Extrema, Wendepunkte, Nullstellen, Polstellen, Monotonie, Symmetrie, Asymptoten",
+      "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+      "evidence": {
+        "sourceGoalIds": [
+          "de-sn-mathematik-sekii-lehrplan-gymnasium-2019-sn-sekii-lk-lb01-differentialrechnung-r017-0b4451d0f9"
+        ],
+        "sourceRefs": [
+          "Lehrplan Gymnasium Mathematik, Sachsen, 2019"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-dcc272a1b0d5",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "Local source expectation not found in MEM",
+      "details": "Entwickeln des Anschauungsvermögens: Die Schüler nutzen Vektoren zur Veranschaulichung und Beschreibung geometrischer Objekte in Ebene und Raum. Sie stellen räumliche Objekte im dreidimensionalen Koordinatensystem dar und verwenden dazu auch geeignete Software. Die Schüler stellen Beziehungen zwischen dem Graphen einer Funktion und dem der zugehörigen Ableitungsfunktion her.",
+      "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+      "evidence": {
+        "sourceGoalIds": [
+          "de-sn-mathematik-sekii-lehrplan-gymnasium-2019-sn-sekii-gk-zg00-stufenbezogene-ziele-r004-3fbe015d78"
+        ],
+        "sourceRefs": [
+          "Lehrplan Gymnasium Mathematik, Sachsen, 2019"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-df56f1b1583a",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "Local source expectation not found in MEM",
+      "details": "Beherrschen des Darstellens, Vergleichens und Ordnens rationaler Zahlen Darstellen der Beziehungen zwischen natürlichen, gebrochenen, ganzen und rationalen Zahlen im Mengendiagramm",
+      "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+      "evidence": {
+        "sourceGoalIds": [
+          "de-sn-mathematik-seki-lehrplan-gymnasium-2019-sn-seki-7-lb02-arbeiten-mit-rationalen-zahlen-r001-8bf9715112"
+        ],
+        "sourceRefs": [
+          "Lehrplan Gymnasium Mathematik, Sachsen, 2019"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-e0e7a2df2c2a",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "Local source expectation not found in MEM",
+      "details": "inhaltlich im Kopf: einfache Gleichungen mit überschaubarem Zahlenmaterial",
+      "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+      "evidence": {
+        "sourceGoalIds": [
+          "de-sn-mathematik-seki-lehrplan-gymnasium-2019-sn-seki-7-lb02-arbeiten-mit-rationalen-zahlen-r009-bd91ec593d"
+        ],
+        "sourceRefs": [
+          "Lehrplan Gymnasium Mathematik, Sachsen, 2019"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-e938756d8f4d",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "Local source expectation not found in MEM",
+      "details": "Finden von Gleichungen für Messreihen mithilfe linearer Regression mit GTR, CAS oder TK",
+      "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+      "evidence": {
+        "sourceGoalIds": [
+          "de-sn-mathematik-seki-lehrplan-gymnasium-2019-sn-seki-8-lb03-funktionen-und-lineare-gleichungssysteme-r011-41fa1fd181"
+        ],
+        "sourceRefs": [
+          "Lehrplan Gymnasium Mathematik, Sachsen, 2019"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-f95874221780",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "Local source expectation not found in MEM",
+      "details": "Erwerben grundlegender Kompetenzen im Umgang mit ausgewählten mathematischen Objekten: Die Schüler gelangen zu vertieften Einsichten bezüglich der zentralen mathematischen Begriffe Grenz- wert, Ableitung und bestimmtes Integral. Sie wenden Regeln der Differential- und Integralrechnung auf ausgewählte Funktionen an. Die Schüler unterscheiden Lösbarkeitsfälle bei linearen Gleichungssystemen und können Gleichungen von Funktionen mittels Regressionsmodellen bestimmen. Sie untersuchen spe- zielle stochastische Prozesse mithilfe binomialverteilter und normalverteilter Zufallsgrößen. Die Schüler beschreiben geometrische Objekte analytisch, untersuchen Lagebeziehungen und ermitteln Abstände sowie Winkel.",
+      "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+      "evidence": {
+        "sourceGoalIds": [
+          "de-sn-mathematik-sekii-lehrplan-gymnasium-2019-sn-sekii-lk-zg00-stufenbezogene-ziele-r005-0d82f2dc0f"
+        ],
+        "sourceRefs": [
+          "Lehrplan Gymnasium Mathematik, Sachsen, 2019"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-fe3b868dcca2",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "Local source expectation not found in MEM",
+      "details": "ohne Hilfsmittel: ganzrationale Funktionen, Potenzfunktionen mit rationalen Exponenten, f ( x )  e x, f ( x )  ln x f ( x )  sin x einfache Verkettungen und Verknüpfungen",
+      "localRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+      "evidence": {
+        "sourceGoalIds": [
+          "de-sn-mathematik-sekii-lehrplan-gymnasium-2019-sn-sekii-gk-lb01-differentialrechnung-r012-3d896ca3a9"
+        ],
+        "sourceRefs": [
+          "Lehrplan Gymnasium Mathematik, Sachsen, 2019"
+        ]
+      }
+    },
+    {
+      "id": "mem_curriculum_missing_for_local_source-04568bf479ca",
+      "category": "MEM_CURRICULUM_MISSING_FOR_LOCAL_SOURCE",
+      "severity": "watch",
+      "jurisdiction": "DE-TH",
+      "title": "Thüringen: local mathematics source extraction exists, but MEM has no matching curriculum plans",
+      "details": "Local SkillPilot source extraction has 2 file(s) and 545 source goals for Thüringen. The MEM endpoint currently exposes the state vocabulary, but no Thüringen SekI/SekII curriculum plan matching Mathematik/Gymnasium.",
+      "evidence": {
+        "localSourceExtractions": 2,
+        "localSourceGoals": 545,
+        "localStages": [
+          "SekI",
+          "SekII"
+        ],
+        "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000031",
+        "memSubjectIri": null,
+        "memSchoolTypeIri": null
+      }
+    },
+    {
+      "id": "mem_curriculum_missing_for_local_source-04eaafe7b0a9",
+      "category": "MEM_CURRICULUM_MISSING_FOR_LOCAL_SOURCE",
+      "severity": "watch",
+      "jurisdiction": "DE-HB",
+      "title": "Bremen: local mathematics source extraction exists, but MEM has no matching curriculum plans",
+      "details": "Local SkillPilot source extraction has 2 file(s) and 531 source goals for Bremen. The MEM endpoint currently exposes the state vocabulary, but no Bremen SekI/SekII curriculum plan matching Mathematik/Gymnasium.",
+      "evidence": {
+        "localSourceExtractions": 2,
+        "localSourceGoals": 531,
+        "localStages": [
+          "SekI",
+          "SekII"
+        ],
+        "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000056",
+        "memSubjectIri": null,
+        "memSchoolTypeIri": null
+      }
+    },
+    {
+      "id": "mem_curriculum_missing_for_local_source-23f2c417c05d",
+      "category": "MEM_CURRICULUM_MISSING_FOR_LOCAL_SOURCE",
+      "severity": "watch",
+      "jurisdiction": "DE-NI",
+      "title": "Niedersachsen: local mathematics source extraction exists, but MEM has no matching curriculum plans",
+      "details": "Local SkillPilot source extraction has 2 file(s) and 581 source goals for Niedersachsen. The MEM endpoint currently exposes the state vocabulary, but no Niedersachsen SekI/SekII curriculum plan matching Mathematik/Gymnasium.",
+      "evidence": {
+        "localSourceExtractions": 2,
+        "localSourceGoals": 581,
+        "localStages": [
+          "SekI",
+          "SekII"
+        ],
+        "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000043",
+        "memSubjectIri": null,
+        "memSchoolTypeIri": null
+      }
+    },
+    {
+      "id": "mem_curriculum_missing_for_local_source-411f6f626b43",
+      "category": "MEM_CURRICULUM_MISSING_FOR_LOCAL_SOURCE",
+      "severity": "watch",
+      "jurisdiction": "DE-SL",
+      "title": "Saarland: local mathematics source extraction exists, but MEM has no matching curriculum plans",
+      "details": "Local SkillPilot source extraction has 2 file(s) and 1561 source goals for Saarland. The MEM endpoint currently exposes the state vocabulary, but no Saarland SekI/SekII curriculum plan matching Mathematik/Gymnasium.",
+      "evidence": {
+        "localSourceExtractions": 2,
+        "localSourceGoals": 1561,
+        "localStages": [
+          "SekI",
+          "SekII"
+        ],
+        "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000055",
+        "memSubjectIri": null,
+        "memSchoolTypeIri": null
+      }
+    },
+    {
+      "id": "mem_curriculum_missing_for_local_source-433c221727d9",
+      "category": "MEM_CURRICULUM_MISSING_FOR_LOCAL_SOURCE",
+      "severity": "watch",
+      "jurisdiction": "DE-RP",
+      "title": "Rheinland-Pfalz: local mathematics source extraction exists, but MEM has no matching curriculum plans",
+      "details": "Local SkillPilot source extraction has 2 file(s) and 445 source goals for Rheinland-Pfalz. The MEM endpoint currently exposes the state vocabulary, but no Rheinland-Pfalz SekI/SekII curriculum plan matching Mathematik/Gymnasium.",
+      "evidence": {
+        "localSourceExtractions": 2,
+        "localSourceGoals": 445,
+        "localStages": [
+          "SekI",
+          "SekII"
+        ],
+        "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000046",
+        "memSubjectIri": null,
+        "memSchoolTypeIri": null
+      }
+    },
+    {
+      "id": "mem_curriculum_missing_for_local_source-4dd84fd1d114",
+      "category": "MEM_CURRICULUM_MISSING_FOR_LOCAL_SOURCE",
+      "severity": "watch",
+      "jurisdiction": "DE-BW",
+      "title": "Baden-Württemberg: local mathematics source extraction exists, but MEM has no matching curriculum plans",
+      "details": "Local SkillPilot source extraction has 2 file(s) and 499 source goals for Baden-Württemberg. The MEM endpoint currently exposes the state vocabulary, but no Baden-Württemberg SekI/SekII curriculum plan matching Mathematik/Gymnasium.",
+      "evidence": {
+        "localSourceExtractions": 2,
+        "localSourceGoals": 499,
+        "localStages": [
+          "SekI",
+          "SekII"
+        ],
+        "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000049",
+        "memSubjectIri": null,
+        "memSchoolTypeIri": null
+      }
+    },
+    {
+      "id": "mem_curriculum_missing_for_local_source-654e6484d2ee",
+      "category": "MEM_CURRICULUM_MISSING_FOR_LOCAL_SOURCE",
+      "severity": "watch",
+      "jurisdiction": "DE-HE",
+      "title": "Hessen: local mathematics source extraction exists, but MEM has no matching curriculum plans",
+      "details": "Local SkillPilot source extraction has 2 file(s) and 917 source goals for Hessen. The MEM endpoint currently exposes the state vocabulary, but no Hessen SekI/SekII curriculum plan matching Mathematik/Gymnasium.",
+      "evidence": {
+        "localSourceExtractions": 2,
+        "localSourceGoals": 917,
+        "localStages": [
+          "SekI",
+          "SekII"
+        ],
+        "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000050",
+        "memSubjectIri": null,
+        "memSchoolTypeIri": null
+      }
+    },
+    {
+      "id": "mem_curriculum_missing_for_local_source-969ba3a5c24c",
+      "category": "MEM_CURRICULUM_MISSING_FOR_LOCAL_SOURCE",
+      "severity": "watch",
+      "jurisdiction": "DE-NW",
+      "title": "Nordrhein-Westfalen: local mathematics source extraction exists, but MEM has no matching curriculum plans",
+      "details": "Local SkillPilot source extraction has 2 file(s) and 442 source goals for Nordrhein-Westfalen. The MEM endpoint currently exposes the state vocabulary, but no Nordrhein-Westfalen SekI/SekII curriculum plan matching Mathematik/Gymnasium.",
+      "evidence": {
+        "localSourceExtractions": 2,
+        "localSourceGoals": 442,
+        "localStages": [
+          "SekI",
+          "SekII"
+        ],
+        "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000044",
+        "memSubjectIri": null,
+        "memSchoolTypeIri": null
+      }
+    },
+    {
+      "id": "mem_curriculum_missing_for_local_source-97302e81cbef",
+      "category": "MEM_CURRICULUM_MISSING_FOR_LOCAL_SOURCE",
+      "severity": "watch",
+      "jurisdiction": "DE-HH",
+      "title": "Hamburg: local mathematics source extraction exists, but MEM has no matching curriculum plans",
+      "details": "Local SkillPilot source extraction has 2 file(s) and 626 source goals for Hamburg. The MEM endpoint currently exposes the state vocabulary, but no Hamburg SekI/SekII curriculum plan matching Mathematik/Gymnasium.",
+      "evidence": {
+        "localSourceExtractions": 2,
+        "localSourceGoals": 626,
+        "localStages": [
+          "SekI",
+          "SekII"
+        ],
+        "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000045",
+        "memSubjectIri": null,
+        "memSchoolTypeIri": null
+      }
+    },
+    {
+      "id": "mem_curriculum_missing_for_local_source-a314cbac7646",
+      "category": "MEM_CURRICULUM_MISSING_FOR_LOCAL_SOURCE",
+      "severity": "watch",
+      "jurisdiction": "DE-ST",
+      "title": "Sachsen-Anhalt: local mathematics source extraction exists, but MEM has no matching curriculum plans",
+      "details": "Local SkillPilot source extraction has 2 file(s) and 612 source goals for Sachsen-Anhalt. The MEM endpoint currently exposes the state vocabulary, but no Sachsen-Anhalt SekI/SekII curriculum plan matching Mathematik/Gymnasium.",
+      "evidence": {
+        "localSourceExtractions": 2,
+        "localSourceGoals": 612,
+        "localStages": [
+          "SekI",
+          "SekII"
+        ],
+        "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000053",
+        "memSubjectIri": null,
+        "memSchoolTypeIri": null
+      }
+    },
+    {
+      "id": "mem_curriculum_missing_for_local_source-a57f6bde5a04",
+      "category": "MEM_CURRICULUM_MISSING_FOR_LOCAL_SOURCE",
+      "severity": "watch",
+      "jurisdiction": "DE-SH",
+      "title": "Schleswig-Holstein: local mathematics source extraction exists, but MEM has no matching curriculum plans",
+      "details": "Local SkillPilot source extraction has 2 file(s) and 620 source goals for Schleswig-Holstein. The MEM endpoint currently exposes the state vocabulary, but no Schleswig-Holstein SekI/SekII curriculum plan matching Mathematik/Gymnasium.",
+      "evidence": {
+        "localSourceExtractions": 2,
+        "localSourceGoals": 620,
+        "localStages": [
+          "SekI",
+          "SekII"
+        ],
+        "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000054",
+        "memSubjectIri": null,
+        "memSchoolTypeIri": null
+      }
+    },
+    {
+      "id": "mem_curriculum_missing_for_local_source-a77dc312361a",
+      "category": "MEM_CURRICULUM_MISSING_FOR_LOCAL_SOURCE",
+      "severity": "watch",
+      "jurisdiction": "DE-MV",
+      "title": "Mecklenburg-Vorpommern: local mathematics source extraction exists, but MEM has no matching curriculum plans",
+      "details": "Local SkillPilot source extraction has 2 file(s) and 588 source goals for Mecklenburg-Vorpommern. The MEM endpoint currently exposes the state vocabulary, but no Mecklenburg-Vorpommern SekI/SekII curriculum plan matching Mathematik/Gymnasium.",
+      "evidence": {
+        "localSourceExtractions": 2,
+        "localSourceGoals": 588,
+        "localStages": [
+          "SekI",
+          "SekII"
+        ],
+        "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000052",
+        "memSubjectIri": null,
+        "memSchoolTypeIri": null
+      }
+    },
+    {
+      "id": "mem_curriculum_missing_for_local_source-cb7d88d22353",
+      "category": "MEM_CURRICULUM_MISSING_FOR_LOCAL_SOURCE",
+      "severity": "watch",
+      "jurisdiction": "DE-BB",
+      "title": "Brandenburg: local mathematics source extraction exists, but MEM has no matching curriculum plans",
+      "details": "Local SkillPilot source extraction has 2 file(s) and 485 source goals for Brandenburg. The MEM endpoint currently exposes the state vocabulary, but no Brandenburg SekI/SekII curriculum plan matching Mathematik/Gymnasium.",
+      "evidence": {
+        "localSourceExtractions": 2,
+        "localSourceGoals": 485,
+        "localStages": [
+          "SekI",
+          "SekII"
+        ],
+        "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000057",
+        "memSubjectIri": null,
+        "memSchoolTypeIri": null
+      }
+    },
+    {
+      "id": "mem_curriculum_missing_for_local_source-f36e1325f6cb",
+      "category": "MEM_CURRICULUM_MISSING_FOR_LOCAL_SOURCE",
+      "severity": "watch",
+      "jurisdiction": "DE-BE",
+      "title": "Berlin: local mathematics source extraction exists, but MEM has no matching curriculum plans",
+      "details": "Local SkillPilot source extraction has 2 file(s) and 484 source goals for Berlin. The MEM endpoint currently exposes the state vocabulary, but no Berlin SekI/SekII curriculum plan matching Mathematik/Gymnasium.",
+      "evidence": {
+        "localSourceExtractions": 2,
+        "localSourceGoals": 484,
+        "localStages": [
+          "SekI",
+          "SekII"
+        ],
+        "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000048",
+        "memSubjectIri": null,
+        "memSchoolTypeIri": null
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-0d8b1863c8cc",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "MEM expectation not found in local source extraction: Gymnasium Mathematik",
+      "details": "ohne Hilfsmittel: ganzrationale Funktionen, Potenzfunktionen mit rationalen Exponenten sowie\n∫ex dx; ∫1xdx; ∫sin x dx",
+      "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-26265",
+      "evidence": {
+        "planIri": "https://lp-sachsen.org/resource/lehrplan-461",
+        "planLabel": "Gymnasium Mathematik",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-0dcf0e408cff",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "MEM expectation not found in local source extraction: Gymnasium Mathematik",
+      "details": "Division",
+      "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-24943",
+      "evidence": {
+        "planIri": "https://lp-sachsen.org/resource/lehrplan-461",
+        "planLabel": "Gymnasium Mathematik",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-15c21e498466",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "MEM expectation not found in local source extraction: Gymnasium Mathematik",
+      "details": "Darstellen der Beziehungen zwischen natürlichen, gebrochenen, ganzen und rationalen Zahlen im Mengendiagramm",
+      "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-25388",
+      "evidence": {
+        "planIri": "https://lp-sachsen.org/resource/lehrplan-461",
+        "planLabel": "Gymnasium Mathematik",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-1869f63bbdc5",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "MEM expectation not found in local source extraction: Gymnasium Mathematik",
+      "details": "mit CAS: kompliziertere Koeffizienten",
+      "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-25764",
+      "evidence": {
+        "planIri": "https://lp-sachsen.org/resource/lehrplan-461",
+        "planLabel": "Gymnasium Mathematik",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-192371fe781a",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "MEM expectation not found in local source extraction: Gymnasium Mathematik",
+      "details": "Feigenbaum-Diagramm",
+      "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-26584",
+      "evidence": {
+        "planIri": "https://lp-sachsen.org/resource/lehrplan-461",
+        "planLabel": "Gymnasium Mathematik",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-1c2e4c7edf58",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "MEM expectation not found in local source extraction: Gymnasium Mathematik",
+      "details": "Definitions- und Wertebereich, lokale und globale Extrema, Wendepunkte, Nullstellen, Polstellen, Monotonie, Symmetrie, Asymptoten",
+      "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-26406",
+      "evidence": {
+        "planIri": "https://lp-sachsen.org/resource/lehrplan-461",
+        "planLabel": "Gymnasium Mathematik",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-23422cae65c3",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "MEM expectation not found in local source extraction: Gymnasium Mathematik",
+      "details": "Lösen linearer Gleichungssysteme",
+      "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-26421",
+      "evidence": {
+        "planIri": "https://lp-sachsen.org/resource/lehrplan-461",
+        "planLabel": "Gymnasium Mathematik",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-27b67f8c03a5",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "MEM expectation not found in local source extraction: Gymnasium Mathematik",
+      "details": "Verknüpfung der Funktionen\ny=sin x und y=cos x zu y=tan x",
+      "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-25955",
+      "evidence": {
+        "planIri": "https://lp-sachsen.org/resource/lehrplan-461",
+        "planLabel": "Gymnasium Mathematik",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-2b8ec9dc6f84",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "MEM expectation not found in local source extraction: Gymnasium Mathematik",
+      "details": "Einfluss von Parametern auf den Verlauf der Graphen und auf die Eigenschaften der Funktionen für die Fälle \nc·fx; fx+c; fx+c; fc·x",
+      "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-25924",
+      "evidence": {
+        "planIri": "https://lp-sachsen.org/resource/lehrplan-461",
+        "planLabel": "Gymnasium Mathematik",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-38c463ce6a38",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "MEM expectation not found in local source extraction: Gymnasium Mathematik",
+      "details": "Kennen des Umsetzens einfacher Algorithmen in der Programmierebene des CAS unter Verwendung der allgemeinen Grundstrukturen Sequenz, Verzweigung und Zyklus",
+      "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-25798",
+      "evidence": {
+        "planIri": "https://lp-sachsen.org/resource/lehrplan-461",
+        "planLabel": "Gymnasium Mathematik",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-437c4fc34772",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "MEM expectation not found in local source extraction: Gymnasium Mathematik",
+      "details": "Formel von Simpson",
+      "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-26621",
+      "evidence": {
+        "planIri": "https://lp-sachsen.org/resource/lehrplan-461",
+        "planLabel": "Gymnasium Mathematik",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-489f11a4a805",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "MEM expectation not found in local source extraction: Gymnasium Mathematik",
+      "details": "Finden von Gleichungen für Messreihen mithilfe linearer Regression mit CAS oder TK",
+      "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-25751",
+      "evidence": {
+        "planIri": "https://lp-sachsen.org/resource/lehrplan-461",
+        "planLabel": "Gymnasium Mathematik",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-48df946a81d8",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "MEM expectation not found in local source extraction: Gymnasium Mathematik",
+      "details": "dy = k·y·G-y·dx (logistisches Wachstum)",
+      "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-26639",
+      "evidence": {
+        "planIri": "https://lp-sachsen.org/resource/lehrplan-461",
+        "planLabel": "Gymnasium Mathematik",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-4dd60a267099",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "MEM expectation not found in local source extraction: Gymnasium Mathematik",
+      "details": "Nutzen von CAS-Programmen oder geeigneter Software zur Simulation",
+      "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-25818",
+      "evidence": {
+        "planIri": "https://lp-sachsen.org/resource/lehrplan-461",
+        "planLabel": "Gymnasium Mathematik",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-57f87400bba4",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "MEM expectation not found in local source extraction: Gymnasium Mathematik",
+      "details": "Einblicke gewinnen in den Vergleich verschiedener iterativer Verfahren anhand ausgewählter Beispiele",
+      "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-26625",
+      "evidence": {
+        "planIri": "https://lp-sachsen.org/resource/lehrplan-461",
+        "planLabel": "Gymnasium Mathematik",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-5c6e6a09524f",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "MEM expectation not found in local source extraction: Gymnasium Mathematik",
+      "details": "ohne Verwendung von Hilfsmitteln",
+      "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-25961",
+      "evidence": {
+        "planIri": "https://lp-sachsen.org/resource/lehrplan-461",
+        "planLabel": "Gymnasium Mathematik",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-7b273fae57ca",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "MEM expectation not found in local source extraction: Gymnasium Mathematik",
+      "details": "Kennen der Simulation mit Zufallszahlen (Monte-Carlo-Methode)",
+      "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-25811",
+      "evidence": {
+        "planIri": "https://lp-sachsen.org/resource/lehrplan-461",
+        "planLabel": "Gymnasium Mathematik",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-90248617c381",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "MEM expectation not found in local source extraction: Gymnasium Mathematik",
+      "details": "ohne Hilfsmittel: ganzrationale Funktionen, Potenzfunktionen mit rationalen Exponenten, Funktionen, die mittels linearer Substitution integriert werden können,\n∫ex dx; ∫1xdx; ∫sin x dx",
+      "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-26474",
+      "evidence": {
+        "planIri": "https://lp-sachsen.org/resource/lehrplan-461",
+        "planLabel": "Gymnasium Mathematik",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-9396b56d0113",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "MEM expectation not found in local source extraction: Gymnasium Mathematik",
+      "details": "Übertragen des Wissens zu speziellen Funktionen auf Verknüpfungen und Verkettungen von Funktionen",
+      "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-25954",
+      "evidence": {
+        "planIri": "https://lp-sachsen.org/resource/lehrplan-461",
+        "planLabel": "Gymnasium Mathematik",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-93feccc14e93",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "MEM expectation not found in local source extraction: Gymnasium Mathematik",
+      "details": "Lösen linearer Gleichungssysteme",
+      "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-26239",
+      "evidence": {
+        "planIri": "https://lp-sachsen.org/resource/lehrplan-461",
+        "planLabel": "Gymnasium Mathematik",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-990f5f8a2cec",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "MEM expectation not found in local source extraction: Gymnasium Mathematik",
+      "details": "dy = k·G-y·dx (beschränktes Wachstum)",
+      "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-26329",
+      "evidence": {
+        "planIri": "https://lp-sachsen.org/resource/lehrplan-461",
+        "planLabel": "Gymnasium Mathematik",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-a0902e94c887",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "MEM expectation not found in local source extraction: Gymnasium Mathematik",
+      "details": "Ermitteln von Integralen mit und ohne Hilfsmittel",
+      "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-26468",
+      "evidence": {
+        "planIri": "https://lp-sachsen.org/resource/lehrplan-461",
+        "planLabel": "Gymnasium Mathematik",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-bd526a0778c7",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "MEM expectation not found in local source extraction: Gymnasium Mathematik",
+      "details": "Definitions- und Wertebereich, lokale und globale Extrema, Wendepunkte, Nullstellen, Polstellen, Monotonie, Symmetrie, achsenparallele Asymptoten",
+      "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-26034",
+      "evidence": {
+        "planIri": "https://lp-sachsen.org/resource/lehrplan-461",
+        "planLabel": "Gymnasium Mathematik",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-c73564d4f1bf",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "MEM expectation not found in local source extraction: Gymnasium Mathematik",
+      "details": "Integralfunktion, Hauptsatz der Differential- und Integralrechnung",
+      "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-26481",
+      "evidence": {
+        "planIri": "https://lp-sachsen.org/resource/lehrplan-461",
+        "planLabel": "Gymnasium Mathematik",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-cc3758da1372",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "MEM expectation not found in local source extraction: Gymnasium Mathematik",
+      "details": "Abstände",
+      "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-26524",
+      "evidence": {
+        "planIri": "https://lp-sachsen.org/resource/lehrplan-461",
+        "planLabel": "Gymnasium Mathematik",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-d3dad3eeca02",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "MEM expectation not found in local source extraction: Gymnasium Mathematik",
+      "details": "dy = k·G-y·dx (beschränktes Wachstum)",
+      "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-26644",
+      "evidence": {
+        "planIri": "https://lp-sachsen.org/resource/lehrplan-461",
+        "planLabel": "Gymnasium Mathematik",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-d4334659074e",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "MEM expectation not found in local source extraction: Gymnasium Mathematik",
+      "details": "Attraktoren, Chaos",
+      "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-26585",
+      "evidence": {
+        "planIri": "https://lp-sachsen.org/resource/lehrplan-461",
+        "planLabel": "Gymnasium Mathematik",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-dd67002dee93",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "MEM expectation not found in local source extraction: Gymnasium Mathematik",
+      "details": "Sierpinski-Dreieck",
+      "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-26580",
+      "evidence": {
+        "planIri": "https://lp-sachsen.org/resource/lehrplan-461",
+        "planLabel": "Gymnasium Mathematik",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-defd952289b0",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "MEM expectation not found in local source extraction: Gymnasium Mathematik",
+      "details": "inhaltlich im Kopf: einfache Gleichungen mit überschaubarem Zahlenmateria",
+      "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-25472",
+      "evidence": {
+        "planIri": "https://lp-sachsen.org/resource/lehrplan-461",
+        "planLabel": "Gymnasium Mathematik",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-e1bef5f054a2",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "MEM expectation not found in local source extraction: Gymnasium Mathematik",
+      "details": "Selbstähnlichkeit",
+      "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-26582",
+      "evidence": {
+        "planIri": "https://lp-sachsen.org/resource/lehrplan-461",
+        "planLabel": "Gymnasium Mathematik",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-e50cb90ccb63",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "MEM expectation not found in local source extraction: Gymnasium Mathematik",
+      "details": "Kennen unterschiedlicher optischer Täuschungen",
+      "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-25263",
+      "evidence": {
+        "planIri": "https://lp-sachsen.org/resource/lehrplan-461",
+        "planLabel": "Gymnasium Mathematik",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-e9de6a0e9f60",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "MEM expectation not found in local source extraction: Gymnasium Mathematik",
+      "details": "Ermitteln von Integralen mit und ohne Hilfsmittel",
+      "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-26264",
+      "evidence": {
+        "planIri": "https://lp-sachsen.org/resource/lehrplan-461",
+        "planLabel": "Gymnasium Mathematik",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-ea87f9ab9960",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "MEM expectation not found in local source extraction: Gymnasium Mathematik",
+      "details": "grafisches Lösen quadratischer Gleichungen sowie Lösen mit CAS",
+      "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-25854",
+      "evidence": {
+        "planIri": "https://lp-sachsen.org/resource/lehrplan-461",
+        "planLabel": "Gymnasium Mathematik",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-ed08e869805c",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "MEM expectation not found in local source extraction: Gymnasium Mathematik",
+      "details": "y=x ; y=x2 ; y=x ; y=1x;",
+      "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-25959",
+      "evidence": {
+        "planIri": "https://lp-sachsen.org/resource/lehrplan-461",
+        "planLabel": "Gymnasium Mathematik",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-f2a7b3215dea",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "MEM expectation not found in local source extraction: Gymnasium Mathematik",
+      "details": "y=ln x ; y=ex ; y=sin x",
+      "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-25960",
+      "evidence": {
+        "planIri": "https://lp-sachsen.org/resource/lehrplan-461",
+        "planLabel": "Gymnasium Mathematik",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-f30ac150f021",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "MEM expectation not found in local source extraction: Gymnasium Mathematik",
+      "details": "Abstände",
+      "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-26287",
+      "evidence": {
+        "planIri": "https://lp-sachsen.org/resource/lehrplan-461",
+        "planLabel": "Gymnasium Mathematik",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-f61b3b5a09ca",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "MEM expectation not found in local source extraction: Gymnasium Mathematik",
+      "details": "Beherrschen charakteristischer Eigenschaften und des Verlaufs der Graphen der Funktionen",
+      "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-25958",
+      "evidence": {
+        "planIri": "https://lp-sachsen.org/resource/lehrplan-461",
+        "planLabel": "Gymnasium Mathematik",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-fb62eec116fa",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-SN",
+      "title": "MEM expectation not found in local source extraction: Gymnasium Mathematik",
+      "details": "Beherrschen des Darstellens, Vergleichens und Ordnens rationaler Zahlen",
+      "memRef": "https://lp-sachsen.org/resource/lernziel-lerninhalt-25384",
+      "evidence": {
+        "planIri": "https://lp-sachsen.org/resource/lehrplan-461",
+        "planLabel": "Gymnasium Mathematik",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    }
+  ]
+}
