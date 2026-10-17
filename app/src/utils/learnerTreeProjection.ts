@@ -129,6 +129,50 @@ const dedupePreservingOrder = (ids: string[]) => {
   })
 }
 
+export function collapseLearnerSubjectRoots(
+  allGoals: Map<string, UiGoal>,
+  visibleChildrenByParent: Map<string, string[]>,
+) {
+  const childrenByParent = new Map<string, string[]>(
+    Array.from(visibleChildrenByParent, ([parentId, childIds]) => [parentId, [...childIds]]),
+  )
+  const subjectRootIdByAlias = new Map<string, string>()
+  const childrenBySubjectRootAlias = new Map<string, string[]>()
+
+  allGoals.forEach((root) => {
+    if (!root.tags?.includes('root') || !root.landscapeId?.trim()) return
+    const rootTitle = normalizeComparableText(root.title)
+    if (!rootTitle) return
+
+    const childIds = visibleChildrenByParent.get(root.id)
+    if (!childIds) return
+    const visibleChildren = childIds.flatMap((childId) => {
+      const child = allGoals.get(childId)
+      const aliasChildren = visibleChildrenByParent.get(childId) ?? []
+      if (
+        !child
+        || childId === root.id
+        || !isCompositionStructureNode(child)
+        || child.landscapeId !== root.landscapeId
+        || normalizeComparableText(child.title) !== rootTitle
+        || aliasChildren.length === 0
+      ) {
+        return [childId]
+      }
+
+      // Preserve the addressable scope in allGoals while removing only its
+      // redundant row and parent edges from the learner's visible tree.
+      subjectRootIdByAlias.set(childId, root.id)
+      childrenBySubjectRootAlias.set(childId, [...aliasChildren])
+      childrenByParent.delete(childId)
+      return aliasChildren
+    })
+    childrenByParent.set(root.id, dedupePreservingOrder(visibleChildren))
+  })
+
+  return { childrenByParent, subjectRootIdByAlias, childrenBySubjectRootAlias }
+}
+
 interface RootBranchInfo {
   depth: number
   rootChildOrder: number

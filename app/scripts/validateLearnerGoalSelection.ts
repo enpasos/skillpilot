@@ -4,6 +4,7 @@ import { createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { CompetenceTree } from '../src/components/CompetenceTree'
 import { LanguageProvider } from '../src/contexts/LanguageContext'
+import type { UiGoal } from '../src/goalTypes'
 import {
   getFocusMutationRevealTarget,
   getInitialLearnerGoalReveal,
@@ -18,7 +19,10 @@ import {
   applyCompositionViewProjection,
   applyMatchedCompositionRouteGoalProjection,
 } from '../src/utils/compositionViewRuntime'
-import { normalizeLearnerProjectedEntries } from '../src/utils/learnerTreeProjection'
+import {
+  collapseLearnerSubjectRoots,
+  normalizeLearnerProjectedEntries,
+} from '../src/utils/learnerTreeProjection'
 import { buildDirectChildrenMap } from '../src/utils/treeProjectionRuntime'
 import {
   buildGoalContainsClosure,
@@ -738,5 +742,155 @@ assert.deepStrictEqual(
   [],
   'A visible exact Sekundarstufe-II selection must not also mark its fully covered Mathematics parent as selected.',
 )
+
+const collectRenderedIds = (
+  rootId: string,
+  childrenByParent: Map<string, string[]>,
+) => {
+  const ids = new Set<string>()
+  const visit = (id: string) => {
+    if (ids.has(id)) return
+    ids.add(id)
+    childrenByParent.get(id)?.forEach(visit)
+  }
+  visit(rootId)
+  return ids
+}
+
+const renderedAtomicProgress = (
+  rootId: string,
+  allGoals: Map<string, UiGoal>,
+  childrenByParent: Map<string, string[]>,
+) => {
+  const atomicIds = [...collectRenderedIds(rootId, childrenByParent)]
+    .filter((id) => allGoals.get(id)?.type === 'atomic')
+    .sort()
+  const totals = atomicIds.reduce((result, id, index) => {
+    const weight = allGoals.get(id)!.weight
+    return {
+      weight: result.weight + weight,
+      masteredWeight: result.masteredWeight + weight * ((index % 3) / 2),
+    }
+  }, { weight: 0, masteredWeight: 0 })
+  return { atomicIds, ...totals }
+}
+
+const subjectRootCases = [
+  { directory: 'mathematik', landscape: canonicalMathLandscape, views: ['de-he-gk', 'de-he-lk'] },
+  {
+    directory: 'physik',
+    landscape: JSON.parse(readFileSync('../curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json', 'utf8')),
+    views: ['de-he-gk', 'de-he-lk'],
+  },
+  {
+    directory: 'chemie',
+    landscape: JSON.parse(readFileSync('../curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json', 'utf8')),
+    views: ['de-he-gk', 'de-he-lk'],
+  },
+  {
+    directory: 'biologie',
+    landscape: JSON.parse(readFileSync('../curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json', 'utf8')),
+    // Biology currently uses the nationwide view for Hesse too.
+    views: ['de-de-gym-biology-gk'],
+  },
+]
+const subjectRootEntries = prepareLandscapeEntries(subjectRootCases.map(({ landscape }) => landscape))
+
+for (const { directory, views } of subjectRootCases) {
+  for (const viewName of views) {
+    const view = JSON.parse(readFileSync(
+      `../curricula/DE/Gymnasium/composition-views/${directory}/${viewName}.view.json`, 'utf8',
+    ))
+    const entry = normalizeLearnerProjectedEntries(
+      applyCompositionViewProjection(subjectRootEntries, view),
+    ).find((candidate) => candidate.meta.landscapeId === view.landscapeId)!
+    const allGoals = new Map(entry.goals.map((goal) => [goal.id, goal] as const))
+    const root = entry.goals.find((goal) => goal.tags?.includes('root'))!
+    assert.ok(root, `${viewName}: retain the real subject root.`)
+    const originalChildren = buildDirectChildrenMap(allGoals)
+    const originalChildrenSnapshot = structuredClone(originalChildren)
+    const originalGoalsSnapshot = structuredClone(allGoals)
+    const { childrenByParent, subjectRootIdByAlias, childrenBySubjectRootAlias } =
+      collapseLearnerSubjectRoots(allGoals, originalChildren)
+
+    assert.deepStrictEqual(originalChildren, originalChildrenSnapshot, `${viewName}: leave the input tree untouched.`)
+    assert.deepStrictEqual(allGoals, originalGoalsSnapshot, `${viewName}: retain every canonical and persisted synthetic scope ID.`)
+    assert.deepStrictEqual(
+      renderedAtomicProgress(root.id, allGoals, childrenByParent),
+      renderedAtomicProgress(root.id, allGoals, originalChildren),
+      `${viewName}: every atomic target and its weighted progress must remain unchanged.`,
+    )
+    for (const [aliasId, rootId] of subjectRootIdByAlias) {
+      assert.equal(rootId, root.id)
+      assert.equal(childrenByParent.has(aliasId), false, 'The hidden alias must not remain a second visible parent.')
+      assert.deepStrictEqual(childrenBySubjectRootAlias.get(aliasId), originalChildren.get(aliasId))
+      const persistedFocus = buildGoalContainsClosure([aliasId], allGoals)
+      assert.ok(persistedFocus.size > 1, 'A persisted subject-alias focus must still resolve its real descendants.')
+      assert.deepStrictEqual(
+        buildGoalContainsClosure([aliasId], allGoals),
+        buildGoalContainsClosure([aliasId], originalGoalsSnapshot),
+        'Collapsing a visible row must not narrow or replace an existing stored focus.',
+      )
+      const markers = buildRenderedScopeMarkerGoalIds(allGoals, childrenByParent, persistedFocus, [aliasId])
+      assert.ok(markers.has(root.id), 'The real subject root must represent a persisted hidden subject-alias focus.')
+    }
+    if (directory === 'mathematik' || directory === 'physik') {
+      assert.equal(subjectRootIdByAlias.size, 1, `${viewName}: remove the reported duplicate despite prerequisite-only siblings.`)
+    }
+
+    const markup = renderToStaticMarkup(createElement(LanguageProvider, null, createElement(CompetenceTree, {
+      rootGoals: [root], allGoals, getMastery: () => 0.5,
+      plannedGoals: new Set<string>(), onTogglePlan: () => undefined,
+      onSelect: () => undefined, selectedId: root.id, audience: 'learner', structureMode: 'content',
+      expandedGoalIds: new Set([root.id]), onToggleExpanded: () => undefined,
+      visibleChildrenByParentOverride: childrenByParent, useRawGoalTitles: true,
+    })))
+    const exactSubjectLabels = markup.match(new RegExp(`>${root.title}<`, 'gu')) ?? []
+    assert.equal(exactSubjectLabels.length, 1, `${viewName}: render the subject heading exactly once.`)
+  }
+}
+
+const genericSubjectRoot: UiGoal = {
+  ...mathRootGoal!, id: 'subject-root', landscapeId: 'generic-subject', title: 'Werkstoffkunde',
+  contains: ['subject-alias', 'extra-target', 'real-cluster', 'subject-alias'], tags: ['root'],
+}
+const genericSubjectAlias: UiGoal = {
+  ...genericSubjectRoot, id: 'subject-alias', title: '  WERKSTOFFKUNDE ', tags: ['synthetic:program-unit'],
+  contains: ['first-target', 'hidden-target', 'second-target'],
+  extendedData: { syntheticStructureKind: 'compositionView' },
+}
+const genericRealCluster: UiGoal = {
+  ...genericSubjectRoot, id: 'real-cluster', tags: [], contains: ['real-target'],
+}
+const genericSubjectGoals = new Map([
+  genericSubjectRoot, genericSubjectAlias, genericRealCluster,
+  ...['first-target', 'second-target', 'hidden-target', 'extra-target', 'real-target'].map((id, index): UiGoal => ({
+    ...genericSubjectRoot, id, title: id, tags: [], contains: [], type: 'atomic', weight: index + 1,
+  })),
+].map((goal) => [goal.id, goal] as const))
+const genericSubjectChildren = buildDirectChildrenMap(genericSubjectGoals)
+// This target was already excluded by the authored projection/filter.
+genericSubjectChildren.set('subject-alias', ['first-target', 'second-target'])
+const genericCollapsed = collapseLearnerSubjectRoots(genericSubjectGoals, genericSubjectChildren)
+assert.deepStrictEqual(genericCollapsed.childrenByParent.get('subject-root'), [
+  'first-target', 'second-target', 'extra-target', 'real-cluster',
+], 'A generic subject alias must lift filtered children in order, retain extra targets and deduplicate IDs.')
+assert.deepStrictEqual(genericCollapsed.childrenBySubjectRootAlias.get('subject-alias'), ['first-target', 'second-target'])
+assert.deepStrictEqual(genericCollapsed.childrenByParent.get('real-cluster'), ['real-target'],
+  'A genuinely authored same-name subject cluster must not be flattened.')
+assert.deepStrictEqual(
+  renderedAtomicProgress('subject-root', genericSubjectGoals, genericCollapsed.childrenByParent),
+  renderedAtomicProgress('subject-root', genericSubjectGoals, genericSubjectChildren),
+)
+for (const landscapeId of [undefined, 'another-subject']) {
+  const ambiguousGoals = new Map(genericSubjectGoals)
+  ambiguousGoals.set('subject-alias', { ...genericSubjectAlias, landscapeId })
+  assert.equal(collapseLearnerSubjectRoots(ambiguousGoals, genericSubjectChildren).subjectRootIdByAlias.size, 0,
+    'Missing or different subject identity must not cause a same-name node to disappear.')
+}
+const emptyAliasChildren = new Map(genericSubjectChildren)
+emptyAliasChildren.set('subject-alias', [])
+assert.equal(collapseLearnerSubjectRoots(genericSubjectGoals, emptyAliasChildren).subjectRootIdByAlias.size, 0,
+  'A filtered-empty alias must not become an invented replacement branch.')
 
 console.log('✅ Learner goal selection regression checks passed.')

@@ -208,6 +208,11 @@ try {
   )
   const waitReady = async (page: Page, title: string) => {
     await page.getByTestId('learner-current-goal').getByRole('heading', { name: title }).waitFor({ timeout: 20_000 })
+    const sidebar = page.locator('#learner-goal-sidebar')
+    for (const subject of ['Mathematik', 'Physik']) {
+      assert.equal(await sidebar.getByText(subject, { exact: true }).count(), 1,
+        `${subject} must appear once even when the saved composition scope has the same title.`)
+    }
     const overview = page.getByTestId('learner-plan-today-overview')
     // The cockpit shows the backend text; it never fabricates completions of its own.
     for (const [key, subject] of [['mathematik', 'Mathematik'], ['physik', 'Physik']] as const) {
@@ -218,6 +223,30 @@ try {
     }
     assert.equal(await overview.getByRole('progressbar').count(), 0,
       'no locally derived progress bar may survive in the cockpit')
+  }
+
+  // A previously saved subject scope remains the same focus after its redundant
+  // row is removed, and revealing that focus still reaches the active content.
+  {
+    const h = await open({ state: { body: {
+      ...(state(learnerA).body as Record<string, unknown>),
+      goals: {
+        planned: [{ id: 'math-subject-scope' }],
+        mastered_count: 0,
+        total_count: 4,
+        personalized: { mastered_atomic: 0, total_atomic: 4 },
+      },
+    } } })
+    await waitReady(h.page, mathTitle)
+    const mathRow = h.page.locator('#learner-goal-sidebar')
+      .getByText('Mathematik', { exact: true }).locator('..')
+    assert.equal(await mathRow.getByRole('img', { name: 'Aktueller Lernfokus' }).count(), 1,
+      'the visible subject heading represents the existing hidden subject focus')
+    await h.page.getByTitle('Gehe zum markierten Scope', { exact: true }).click()
+    await h.page.locator('#learner-goal-sidebar').getByText(mathTitle, { exact: true }).waitFor()
+    assert.deepEqual(h.unexpected, [], 'collapsing a subject wrapper must not rewrite the saved focus')
+    await h.page.screenshot({ path: `${screenshotDir}subject-headings.png` })
+    await h.context.close()
   }
 
   // Follow the ordinary Cockpit link and landing action, retaining the active

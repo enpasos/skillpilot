@@ -45,12 +45,23 @@ const goal = (id: string, landscapeId: string, title: string, phase: string, chi
   tags: [], leitideen: [], kompetenzen: [], sourceRef: '', requires: [],
   contains: children, examples: [], type: children.length ? 'cluster' : 'atomic', nodeKind: 'tutor',
 })
-const mathRoot = goal('math-root', mathId, 'Mathematik', 'GLOBAL', ['math-sek-i', 'math-sek-ii'])
-const physicsRoot = goal('physics-root', physicsId, 'Physik', 'GLOBAL', ['physics-sek-i', 'physics-sek-ii'])
+const mathRoot = goal('math-root', mathId, 'Mathematik', 'GLOBAL', ['math-subject-scope'])
+const physicsRoot = goal('physics-root', physicsId, 'Physik', 'GLOBAL', ['physics-subject-scope'])
+mathRoot.tags = ['root']
+physicsRoot.tags = ['root']
+// These saved composition scopes reproduce the duplicate subject headings from
+// production. They must remain addressable even when their extra row is hidden.
+const subjectScope = (id: string, landscapeId: string, title: string, children: string[]) => ({
+  ...goal(id, landscapeId, title, 'GLOBAL', children),
+  tags: ['synthetic:program-unit'],
+  extendedData: { syntheticStructureKind: 'compositionView' },
+})
 const mathUpper = goal('math-upper', mathId, 'Ableitungen für Wachstumsmodelle deuten', 'SekII')
 const physicsUpper = goal('physics-upper', physicsId, 'Elektrische Felder untersuchen', 'SekII')
 const allGoals = new Map([
   mathRoot, physicsRoot,
+  subjectScope('math-subject-scope', mathId, 'Mathematik', ['math-sek-i', 'math-sek-ii']),
+  subjectScope('physics-subject-scope', physicsId, 'Physik', ['physics-sek-i', 'physics-sek-ii']),
   goal('math-sek-i', mathId, 'Sekundarstufe I', 'SekI', ['math-lower']),
   goal('math-sek-ii', mathId, 'Sekundarstufe II', 'SekII', [mathUpper.id]),
   goal('physics-sek-i', physicsId, 'Sekundarstufe I', 'SekI', ['physics-lower']),
