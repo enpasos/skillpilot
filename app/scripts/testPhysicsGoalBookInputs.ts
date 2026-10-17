@@ -635,6 +635,14 @@ const readJson = <T>(repositoryPath: string): T => (
   JSON.parse(readFileSync(resolve(repoRoot, repositoryPath), 'utf8')) as T
 )
 
+const currentRelationRecheckGoalIds = new Set(readJson<{
+  resolutions: Array<{ goalId: string }>
+}>(
+  'curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/'
+  + '2026-10-17/existing-math-prerequisites-current-v1/resolution-index.json',
+).resolutions.map(({ goalId }) => goalId))
+assert.equal(currentRelationRecheckGoalIds.size, 128, 'the current relation recheck binds exactly 128 Physics goals')
+
 const readJsonLines = <T>(repositoryPath: string): T[] => (
   readFileSync(resolve(repoRoot, repositoryPath), 'utf8')
     .split(/\r?\n/u)
@@ -731,6 +739,12 @@ const explicitClassification = (
   parentIdsByChild: ReadonlyMap<string, string[]>,
 ): Pick<SemanticKindDecision, 'semanticKind' | 'decisionBasis'> => {
   if (reviewedAtomicGoalIds.has(goal.id)) {
+    if (currentRelationRecheckGoalIds.has(goal.id)) {
+      return {
+        semanticKind: 'curricularAtomic',
+        decisionBasis: 'reviewed-current-semantic-recheck-curricular-atomic',
+      }
+    }
     return {
       semanticKind: 'curricularAtomic',
       decisionBasis: STRUCTURAL_SPLIT_ATOMIC_GOAL_IDS.has(goal.id)
@@ -989,9 +1003,15 @@ assert.deepEqual(
   goalById.get(wellClusterId)?.contains,
   [wellEnergyId, wellProbabilityId],
 )
-for (const goalId of [wellEnergyId, wellProbabilityId]) {
+for (const [goalId, expectedRequires] of [
+  [wellEnergyId, ['51bc5513-6879-548f-b19a-9746b667f1a3']],
+  [wellProbabilityId, [
+    '51bc5513-6879-548f-b19a-9746b667f1a3',
+    'b9bbd2a8-1379-5ffb-817f-41467d48abef', // Definite integral for interval probability.
+  ]],
+] as const) {
   assert.deepEqual(goalById.get(goalId)?.contains, [])
-  assert.deepEqual(goalById.get(goalId)?.requires, ['51bc5513-6879-548f-b19a-9746b667f1a3'])
+  assert.deepEqual(goalById.get(goalId)?.requires, expectedRequires)
 }
 const wellProbabilityAssessment = rawGoalById.get('2f8d4250-66c5-54e9-abb8-80735dc408d2')
 assert(wellProbabilityAssessment, 'a genuine terminal task for interval probability is required')
@@ -1240,11 +1260,11 @@ rawLandscape.goals.forEach((goal) => {
   }
 })
 assert.deepEqual(foreignContainsEdges, [], 'Physics canonical contains must remain subject-internal')
-assert.equal(foreignRequiresEdges.length, 10, 'Physics must retain exactly ten cross-subject prerequisites')
+assert.equal(foreignRequiresEdges.length, 162, 'Physics must retain exactly 162 reviewed cross-subject prerequisites')
 assert.equal(
   new Set(foreignRequiresEdges.map(({ goalId }) => goalId)).size,
-  8,
-  'Physics cross-subject prerequisites must resolve to exactly eight mathematics goals',
+  54,
+  'Physics cross-subject prerequisites must resolve to exactly 54 existing mathematics goals',
 )
 foreignRequiresEdges.forEach(({ goalId }) => {
   assert(mathGoalIds.has(goalId), `Physics cross-subject prerequisite ${goalId} is not canonical mathematics`)
@@ -1568,7 +1588,10 @@ allPhysicsViewPaths.forEach((viewPath) => {
     // branch into this strict availability set.
     const rootStructures = collectCompositionStructures(view.rootNodes, 'physics-root')
     assert.equal(rootStructures.length, 1, `${view.viewId} must expose exactly one Physics root structure`)
-    const rootLevelPrerequisiteNodes = rootStructures[0].children.filter((node) => (
+    const rootLevelPrerequisiteNodes = [
+      ...view.rootNodes,
+      ...rootStructures[0].children,
+    ].filter((node) => (
       node.kind !== 'structure'
       && node.kind !== 'landscapeEntry'
       && node.projectionRole === 'prerequisiteOnly'
@@ -1672,12 +1695,46 @@ allPhysicsViewPaths.forEach((viewPath) => {
     authoredForeignPrerequisiteRootById.set(root.goalId, root)
   })
 
+  // Retain the exact legacy support roots and the reviewed shared Mathematics
+  // subtree; its descendants supply the newly explicit direct prerequisites.
+  const strictStateUpperScope = ['DE-BW', 'DE-BY'].includes(view.scope.jurisdiction ?? '')
+    && view.scope.stage === 'SekII'
+  const expectedForeignRoots: AuthoredPrerequisiteRoot[] = [
+    { goalId: 'c01b1ce9-a667-4a46-b251-ec33ae602b15', kind: 'canonicalSubtree' },
+  ]
+  if (view.scope.stage !== 'SekI' && !strictStateUpperScope) {
+    expectedForeignRoots.push(
+      { goalId: '09f47964-2cd0-410e-93ee-9632b582fc91', kind: 'goalEntry' },
+      { goalId: '5a9702f4-7e4d-457d-b98c-f0bafcd1e386', kind: 'canonicalSubtree' },
+      { goalId: 'a8c42ee9-2898-4247-819f-c235032ac78a', kind: 'goalEntry' },
+      { goalId: 'af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186', kind: 'goalEntry' },
+      { goalId: 'c1f50bcc-7848-4e49-b9de-0ec030cc6bca', kind: 'goalEntry' },
+      { goalId: 'e4f3a846-d2b8-4ee5-b0a2-4dc2833b2ecb', kind: 'canonicalSubtree' },
+    )
+    if (view.scope.jurisdiction !== 'DE-BY') {
+      expectedForeignRoots.push({ goalId: 'c65ecabf-d00b-4e2d-99ae-b64692325ffb', kind: 'goalEntry' })
+    }
+    if (!['DE-BW', 'DE-BY'].includes(view.scope.jurisdiction ?? '')) {
+      expectedForeignRoots.push({ goalId: '858113c5-e53b-57bb-b01f-ba95c3ddcb6f', kind: 'goalEntry' })
+    }
+  }
   assert.deepEqual(
-    [...authoredForeignPrerequisiteRootById.keys()].sort(compareCodePoints),
-    [...expectedForeignPrerequisiteIds].sort(compareCodePoints),
-    `${view.viewId} prerequisite-only support roots must exactly match direct foreign requires of visible Physics targets`,
+    authoredForeignPrerequisiteRoots.sort((left, right) => compareCodePoints(left.goalId, right.goalId)),
+    expectedForeignRoots.sort((left, right) => compareCodePoints(left.goalId, right.goalId)),
+    `${view.viewId} must retain exactly its reviewed foreign prerequisite roots and node kinds`,
+  )
+  const foreignProjectionGoalIds = collectAuthoredProjectionGoalIds(
+    authoredForeignPrerequisiteRoots.map((root) => ({ ...root, projectionRole: 'prerequisiteOnly' })),
+    physicsAndMathGoalById,
   )
   expectedForeignPrerequisiteIds.forEach((goalId) => {
+    assert(mathGoalIds.has(goalId), `${view.viewId} foreign prerequisite ${goalId} is not canonical mathematics`)
+    assert(
+      foreignProjectionGoalIds.has(goalId),
+      `${view.viewId} direct foreign prerequisite ${goalId} is absent from its authored prerequisite-only subtrees`,
+    )
+  })
+  authoredForeignPrerequisiteRoots.forEach(({ goalId }) => {
     const mathGoal = mathGoalById.get(goalId)
     assert(mathGoal, `${view.viewId} foreign prerequisite ${goalId} is not canonical mathematics`)
     const expectedKind = resolveCanonicalNodeType(mathGoal) === 'cluster'
