@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-current450-post-ci-targeted-context-01-20261018-v1-resolution-13d4f336-ab16-54a7-9479-c920b458f385",
+  "goal": {
+    "goalId": "13d4f336-ab16-54a7-9479-c920b458f385",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:9216feff81724402c3c0d53f5d31a75c9c36a13467a05ac8b0d2e58cef9f813f",
+    "pageFingerprint": "sha256:2125f582ed6cd0d83ffa4be15b2e1e7836cd6635d62b94a1249a03229d74d6da",
+    "goalReviewContextFingerprint": "sha256:7a0f0be5d7d119a732f13c3a46dc131f640a7663dedc75a2fd44deeb43ac48d0",
+    "finalText": {
+      "titleDe": "Allgemeine Sicherheitsregeln im Chemielabor anwenden",
+      "titleEn": "Apply general laboratory safety rules",
+      "descriptionDe": "Die lernende Person kann grundlegende Sicherheitsregeln im Chemielabor situationsbezogen anwenden.",
+      "descriptionEn": "The learner can apply basic safety rules in the chemistry laboratory in context."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-current450-post-ci-targeted-context-01-20261018-v1-a",
+      "campaignDigest": "sha256:7311b49600dc8f1d8f33e07c52afa6879fa00445b4a3d0c77b5253893bbb2491",
+      "roundId": "chemie-current450-post-ci-targeted-context-01-20261018-v1-first-pass-a",
+      "independenceGroupId": "chemie-current450-post-ci-targeted-context-01-20261018-v1-independent-a",
+      "reviewInputFingerprint": "sha256:b175158296be133ec2e3c3e6f583ed42d652f6429fbfc91e8cda9ce33da7ca1f",
+      "goalReviewContextFingerprint": "sha256:7a0f0be5d7d119a732f13c3a46dc131f640a7663dedc75a2fd44deeb43ac48d0",
+      "batchId": "chemie-current450-post-ci-targeted-context-01-20261018-v1-first-pass-a.batch-001",
+      "runId": "chemie-current-context-01-fresh-blind-a-20261018-170213",
+      "runManifestDigest": "sha256:f6498550311b26281c649e22a2fd6289b0b494566d3181fe3ffa54a607b2bfc5",
+      "resultsDigest": "sha256:9f696492fa60914e0e51153b629d3f1f471421ad1b7b48d896614f06b5b63868",
+      "recordId": "chemie-fresh-blind-a-context-01-g01",
+      "recordDigest": "sha256:b4ab4bba28edf612162040580567ca755052ba3bc688d893503ef03018b99545"
+    },
+    "second": {
+      "campaignId": "chemie-current450-post-ci-targeted-context-01-20261018-v1-b",
+      "campaignDigest": "sha256:9d55c4cbd5b3b198568d0d8c6969cc9e7cb1497994eb30b712e779b63a536f6b",
+      "roundId": "chemie-current450-post-ci-targeted-context-01-20261018-v1-first-pass-b",
+      "independenceGroupId": "chemie-current450-post-ci-targeted-context-01-20261018-v1-independent-b",
+      "reviewInputFingerprint": "sha256:b175158296be133ec2e3c3e6f583ed42d652f6429fbfc91e8cda9ce33da7ca1f",
+      "goalReviewContextFingerprint": "sha256:7a0f0be5d7d119a732f13c3a46dc131f640a7663dedc75a2fd44deeb43ac48d0",
+      "batchId": "chemie-current450-post-ci-targeted-context-01-20261018-v1-first-pass-b.batch-001",
+      "runId": "chemie-current450-post-ci-targeted-context-01-20261018-v1-first-pass-b.codex-fresh-blind-b",
+      "runManifestDigest": "sha256:ab03f23462811abb68f981bf3c80832dad61ee4123045946b48aeaf14aca1804",
+      "resultsDigest": "sha256:6ae8033c3b375561077f43260962a2711e37c4961049be2e716354b2362b2ab6",
+      "recordId": "chemie-current450-post-ci-targeted-context-01-20261018-v1-first-pass-b.codex-fresh-blind-b.goal-001",
+      "recordDigest": "sha256:212c1625cb358ae33c6b7a079f655498413e7b22b411544c3c18267087175bcb"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:479b8f74834354ef3799b6a7ee68f6a2f2bb524bb6a30f562142dca89b83ffce"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-post-ci-context-01-D-only-root-synthesis-20261018-v2",
+    "manifestDigest": "sha256:4dd2b3f84a1e4edafc97a68c833e03d9176d8678802829c9b3d5fea34ad80555",
+    "manifestFingerprint": "sha256:592327a971a8e877230b924b26e41fe6185096bc2a3833cd961207cb293028da",
+    "decisionId": "chemie-post-ci-context-01-D-only-root-synthesis-20261018-v2-decision-001"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-post-ci-context-01-D-only-root-synthesis-20261018-v2-decision-001",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex Root; D-only synthesis after two sealed fresh current independent first passes; separate P findings remain open",
+    "synthesizedAt": "2026-10-18T17:11:10.977Z",
+    "rationaleDe": "Beide aktuellen unabhängigen Runden bestätigen die situationsbezogene Sicherheitsroutine und das vollständige P. Der direkte Orientierungseinstieg ändert weder die fachliche Handlung noch die Grenzen betreuter Durchführung.",
+    "rationaleEn": "Both current independent rounds confirm the situational safety routine and complete P profile. The direct orientation prerequisite changes neither the competence nor the limits of supervised execution.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Grundlegende Laborregeln vermeiden konkrete Gefährdungen; Schutzbrille, geordneter Arbeitsplatz und eindeutige Kennzeichnung dienen unterschiedlichen Schutzfunktionen.",
+      "essentialUnderstandingEn": "Basic laboratory rules prevent particular hazards; eye protection, an orderly workspace and clear labels have different protective functions.",
+      "observablePerformanceDe": "An einem beaufsichtigten ungefährlichen Modellplatz setzt die Person passende Schutzmaßnahmen um und erklärt am unbeschrifteten Gefäß, weshalb sie die Arbeit unterbricht und die Lehrkraft informiert.",
+      "observablePerformanceEn": "At a supervised harmless model station, the learner implements suitable precautions and explains why an unlabelled vessel requires stopping work and informing the teacher.",
+      "transferExpectationDe": "Bei einer frisch vorgelegten Spritzersituation entscheidet sie statt bloßer Vorbereitung über unmittelbare Schutz- und Hilfeschritte nach den örtlichen Anweisungen und erklärt die veränderte Gefährdung.",
+      "transferExpectationEn": "For a fresh splash scenario, the learner decides immediate protective and assistance steps under local instructions rather than preparation alone and explains the changed hazard."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-56e66e9fa980bc2f3dd423e4b766e98592e00132e1dddd2371953cb8ce825de7",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der zweiten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the second round.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:b019a42a49143371cf902a5903c9611a1507226e20a35bed1146f1e78ca2f2aa"
+}

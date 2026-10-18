@@ -1,0 +1,76 @@
+{
+  "reviewId": "chemie-current450-independent-a-257-two-English-fields-followup-20261018-v2",
+  "reviewedAt": "2026-10-18T17:12:58.583816+00:00",
+  "reviewAuthority": "ai_candidate",
+  "status": "needs_human_review",
+  "scope": "Independent limited recheck of exactly two corrected English full-credit rubric fields; original first review remains exact",
+  "goalId": "25729c34-33d5-553a-a723-046113a7da47",
+  "decision": "accept",
+  "originalFirstReview": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-native-nine-material-independent-a-20261018-v1/REVIEW.active-two-D-six-P.independent-a.json",
+    "sha256": "7bb280c023def0f573399b37cbe5f2d7d54ea61e01cac1eaf83e4905c207a27b",
+    "bytes": 29341
+  },
+  "inputs": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-native-nine-material-and-description-author-20261018-v1/materials/257-buffers-complete-source-boxes.teacher.DE-EN.json",
+      "sha256": "9d167fa8ab01c28886186924b48c5a78517abc0817d0b56650d060e65a9c786f",
+      "bytes": 10185
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-nine-257-english-rubric-successor-author-20261018-v2/257-buffers-complete-source-boxes.teacher.DE-EN.json",
+      "sha256": "3c1a4e74a4b05ed785f413aa4da6f49c932aac4ae1ccc6325b038f354ccc7636",
+      "bytes": 10422
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-nine-257-english-rubric-successor-author-20261018-v2/AUTHOR.exact-two-field-change.pending.json",
+      "sha256": "c0cb2e11037c6716f983c7eef776e7fce60d50e16049950dee6fe792ea36de4e",
+      "bytes": 2957
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-nine-257-english-rubric-successor-author-20261018-v2/MATERIAL.one-teacher-successor.pending.json",
+      "sha256": "a94bb043f84acbae45515c20a9904ac7b7079cb230dbc45da04cb9ffa09b56c9",
+      "bytes": 1396
+    }
+  ],
+  "allFirstReviewRawInputsStillExact": true,
+  "actualChangedPointers": [
+    "/cases/0/rubric/1/fullCreditEn",
+    "/cases/0/rubric/2/fullCreditEn"
+  ],
+  "perFinding": [
+    {
+      "jsonPointer": "/cases/0/rubric/1/fullCreditEn",
+      "before": "Phosphate fits assay pKa; unsuitable for Ca process despite pH; other listed buffer slack needed range/validation.",
+      "after": "Phosphate is suitable for the assay range and compatible according to the supplied data; it is unsuitable for the stated calcium-containing process despite the pH match. No other listed buffer is established as suitable at pH 7.0 without further data.",
+      "findingStatus": "closed_by_exact_additive_successor",
+      "reasonDe": "Das englische Kriterium verlangt nun ausdrücklich pKa-/pH-Passung plus die gegebene Verträglichkeit im Assay, schließt den gegebenen Calciumprozess aus und lässt andere Kandidaten bei fehlendem Nachweis offen. Das stimmt mit dem deutschen Kriterium und der fachlich richtigen Musterlösung überein."
+    },
+    {
+      "jsonPointer": "/cases/0/rubric/2/fullCreditEn",
+      "before": "A checkable but load/condition limited; Bun supported/interested; lab pH is not treatment/safety evidence.",
+      "after": "Source A is checkable but limited to its stated load and conditions; source B is unsupported and commercially interested. Laboratory pH stability is not evidence of treatment suitability or clinical safety.",
+      "findingStatus": "closed_by_exact_additive_successor",
+      "reasonDe": "Quelle A bleibt auf die geprüfte Last und Bedingungen begrenzt; Quelle B wird ausdrücklich als unbelegte kommerzielle Behauptung eingeordnet. Labor-pH-Stabilität wird nicht zur Behandlungs- oder klinischen Sicherheitsfreigabe gemacht. Die beschädigte Verneinung ist damit behoben."
+    }
+  ],
+  "combinedMaterialJudgment": {
+    "role": "Only when the explicit pending one-teacher override is selected",
+    "activeEightAccept": 8,
+    "activeEightRevise": 0,
+    "historicalV1FirstReviewUnchanged": true,
+    "holdQuestionsResolved": false
+  },
+  "boundaries": {
+    "onlyTwoActualFieldsChanged": true,
+    "otherTeacherFieldsSemanticallyExact": true,
+    "allSixPRecordsAndTwoDFileBytesStillExact": true,
+    "allOtherPinnedMaterialFileBytesStillExact": true,
+    "additionalPerformanceDuty": false,
+    "normalActivation": false,
+    "nativeDReview": false,
+    "humanApproval": false,
+    "actualLearnerPerformance": false,
+    "M7Claim": false
+  }
+}

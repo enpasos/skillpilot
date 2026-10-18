@@ -1,0 +1,175 @@
+{
+  "role": "ACTUAL_STABLE_CHECKPOINT_GENERATOR_AND_PROTECTED_MATURITY_CHECKS",
+  "checks": [
+    {
+      "check": "curriculum-status",
+      "exitCode": 0,
+      "outputs": [
+        {
+          "path": "CHECK.checkpoint-curriculum-status.stdout.txt",
+          "sha256": "0080af64f2db6810c1249edc9319bed29a253a76821b26c22ae76161cbe58d50"
+        },
+        {
+          "path": "CHECK.checkpoint-curriculum-status.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    {
+      "check": "maturity-floors",
+      "exitCode": 0,
+      "outputs": [
+        {
+          "path": "CHECK.checkpoint-maturity-floors.stdout.txt",
+          "sha256": "959f6932ca04e96e121ba58bd4878d17b1fe4fe8c52b5f5b82deb86bda94a70d"
+        },
+        {
+          "path": "CHECK.checkpoint-maturity-floors.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    {
+      "check": "documentation-links",
+      "exitCode": 0,
+      "outputs": [
+        {
+          "path": "CHECK.checkpoint-documentation-links.stdout.txt",
+          "sha256": "4a539b4e283e7a25d9f4c31d83030d348d3f360f60ccecef7120aeddb0ffd168"
+        },
+        {
+          "path": "CHECK.checkpoint-documentation-links.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    {
+      "check": "documentation-indexes",
+      "exitCode": 0,
+      "outputs": [
+        {
+          "path": "CHECK.checkpoint-documentation-indexes.stdout.txt",
+          "sha256": "2ba0d2aa99b03ea9fd1b2f717a2ad5dfae44e11d2fbb85e8d14551f368c1efe0"
+        },
+        {
+          "path": "CHECK.checkpoint-documentation-indexes.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    {
+      "check": "generated-status-registry",
+      "exitCode": 0,
+      "outputs": [
+        {
+          "path": "CHECK.checkpoint-generated-status-registry.stdout.txt",
+          "sha256": "b9d70d7acf26466f4103877c96568903885fd8497ad661b72e597be4de75c626"
+        },
+        {
+          "path": "CHECK.checkpoint-generated-status-registry.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    }
+  ],
+  "subjects": {
+    "Biologie": {
+      "maturity": "M7",
+      "deepQa": {
+        "expectedGoals": 397,
+        "remaining": 0,
+        "strictComplete": 397,
+        "currentDescriptionResolutions": 397,
+        "currentPositiveEvidenceProfiles": 397,
+        "currentSemanticAtomicityDecisions": 397,
+        "currentMemoryReviewDecisions": 397,
+        "currentVisualizationQaRecords": 397,
+        "deferredVisualizations": 0,
+        "requiredChecksPassed": 6,
+        "requiredChecksTotal": 6,
+        "blockingIssues": 0
+      }
+    },
+    "Chemie": {
+      "maturity": "M6",
+      "deepQa": {
+        "expectedGoals": 450,
+        "remaining": 122,
+        "strictComplete": 328,
+        "currentDescriptionResolutions": 328,
+        "currentPositiveEvidenceProfiles": 450,
+        "currentSemanticAtomicityDecisions": 450,
+        "currentMemoryReviewDecisions": 450,
+        "currentVisualizationQaRecords": 450,
+        "deferredVisualizations": 0,
+        "requiredChecksPassed": 5,
+        "requiredChecksTotal": 6,
+        "blockingIssues": 128
+      }
+    },
+    "Mathematik": {
+      "maturity": "M7",
+      "deepQa": {
+        "expectedGoals": 807,
+        "remaining": 0,
+        "strictComplete": 807,
+        "currentDescriptionResolutions": 807,
+        "currentPositiveEvidenceProfiles": 807,
+        "currentSemanticAtomicityDecisions": 807,
+        "currentMemoryReviewDecisions": 807,
+        "currentVisualizationQaRecords": 807,
+        "deferredVisualizations": 0,
+        "requiredChecksPassed": 6,
+        "requiredChecksTotal": 6,
+        "blockingIssues": 0
+      }
+    },
+    "Physik": {
+      "maturity": "M7",
+      "deepQa": {
+        "expectedGoals": 478,
+        "remaining": 0,
+        "strictComplete": 478,
+        "currentDescriptionResolutions": 478,
+        "currentPositiveEvidenceProfiles": 478,
+        "currentSemanticAtomicityDecisions": 478,
+        "currentMemoryReviewDecisions": 478,
+        "currentVisualizationQaRecords": 478,
+        "deferredVisualizations": 0,
+        "requiredChecksPassed": 6,
+        "requiredChecksTotal": 6,
+        "blockingIssues": 0
+      }
+    },
+    "Wirtschaftswissenschaften": {
+      "maturity": "M7",
+      "deepQa": {
+        "expectedGoals": 346,
+        "remaining": 0,
+        "strictComplete": 346,
+        "currentDescriptionResolutions": 346,
+        "currentPositiveEvidenceProfiles": 346,
+        "currentSemanticAtomicityDecisions": 346,
+        "currentMemoryReviewDecisions": 346,
+        "currentVisualizationQaRecords": 346,
+        "deferredVisualizations": 0,
+        "requiredChecksPassed": 6,
+        "requiredChecksTotal": 6,
+        "blockingIssues": 0
+      }
+    }
+  },
+  "canonicalGraphUnchangedByThisCheckpoint": true,
+  "newCandidateMaterialsActivated": false,
+  "gitHubAcceptanceOfThisLocalCheckpoint": false,
+  "statusPins": [
+    {
+      "path": "docs/qa-ci/status/curriculum-quality-status.json",
+      "sha256": "31a560ead97211d047180e7c0b64533f30f661c3f49d06d03e310bf32dd56df0"
+    },
+    {
+      "path": "docs/qa-ci/status/curriculum-quality-status.md",
+      "sha256": "3f42a7d94a41d0b081fadbc8306b263de395877cdf88935a1a72be36c30d5525"
+    }
+  ]
+}

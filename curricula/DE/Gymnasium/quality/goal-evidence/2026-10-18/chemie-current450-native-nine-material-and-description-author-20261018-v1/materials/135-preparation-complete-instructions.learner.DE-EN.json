@@ -1,0 +1,160 @@
+{
+  "goalId": "1351706f-4ea6-56e9-951b-87b24cbcdee8",
+  "authorStatus": "unreviewed_author_candidate",
+  "license": "CC-BY-4.0",
+  "actualLearnerPerformanceRecorded": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "independentReviewClaim": false,
+  "interface": "learner_only",
+  "performanceMode": "supervised_actual_or_facilitator_mediated_simulation",
+  "cases": [
+    {
+      "id": "preparation-salt-water-performed-log",
+      "title": {
+        "de": "Kochsalzlösung mit Durchführung und Protokoll",
+        "en": "Prepare salt solution with execution and a log"
+      },
+      "material": {
+        "de": [
+          "Ausschließlich beaufsichtigter Unterricht oder der unten beschriebene Handlungssimulator: Lehrkraft gibt Kochsalz, Wasser, ein sauberes Becherglas, eine separate saubere trockene Wägeschale, einen sauberen Laborspatel zum Einwiegen und Übertragen des Salzes, einen sauberen Rührstab und eine Waage frei. Brille und Kittel nach örtlicher Anweisung; nichts probieren; keine Stoffsubstitution, kein Erhitzen. Material: 2,0 g Kochsalz und 48,0 g Wasser bei Raumtemperatur, ausreichende Löslichkeit unter diesen bereitgestellten Bedingungen.",
+          "Arbeitsanweisung P-1: Aufsicht/Materialfreigabe prüfen; trockenes Becherglas auf Waage tarieren; 48,0 g Wasser einwiegen; das Wasser-Becherglas von der Waage nehmen und standsicher abstellen; die leere Wägeschale auf der Waage tarieren; darin mithilfe des sauberen Spatels 2,0 g Salz separat abwiegen; das Salz aus der Wägeschale mit dem Spatel vollständig portionsweise in das Wasser übertragen; mit dem Rührstab rühren, bis keine Kristalle mehr zu sehen sind; mit Inhalt und Datum beschriften. Bei verbleibenden Kristallen oder verschüttetem Material stoppen und Lehrkraft fragen, keine Nachdosierung erraten.",
+          "Protokollvorlage: Schrittfolge; angezeigte Wasser-/Salzmassen; keine sichtbaren Kristalle/keine getrennte Phase ja oder nein; Abweichungen; Beschriftung. Die Beobachtung wird von der Aufsicht oder Simulatorrückmeldung bestätigt. Das Protokoll enthält keine Personendaten."
+        ],
+        "en": [
+          "Supervised classroom activity or the action simulator specified below only: the teacher permits table salt, water, a clean beaker, a separate clean dry weighing dish, a clean laboratory spatula for weighing and transferring the salt, a clean stirring rod and balance. Goggles and coat per local instruction; no tasting, substitutions or heating. Materials: 2.0 g salt and 48.0 g water at room temperature, with sufficient solubility under the supplied conditions.",
+          "Instruction P-1: check supervision/material permission; tare the dry beaker on the balance; weigh in 48.0 g water; remove the water beaker from the balance and put it down securely; tare the empty weighing dish on the balance; use the clean spatula to weigh 2.0 g salt separately in that dish; use the spatula to transfer all the salt from the dish to the water in portions; stir until no crystals remain visible; label with contents and date. Stop and ask the teacher after persistent crystals or spilling; do not guess replacement doses.",
+          "Log template: step sequence; displayed water/salt masses; no visible crystals/no separate phase yes or no; deviations; label. The supervisor or simulator feedback confirms observations. The log contains no personal data."
+        ]
+      },
+      "task": {
+        "de": "Führe P-1 unter Aufsicht aus oder führe die Simulatoraktionen tatsächlich in der angegebenen Reihenfolge aus. Gib das ausgefüllte Ausführungsprotokoll ab. Eine geplante Schrittfolge oder die Aussage „Salz löst sich“ reicht ohne Durchführung beziehungsweise Simulatorlog nicht aus.",
+        "en": "Execute P-1 under supervision or actually issue the simulator actions in sequence. Submit the completed execution log. A planned sequence or “salt dissolves” without execution or a simulator log is insufficient."
+      },
+      "methodAndFeedbackRules": {
+        "kind": "facilitator-mediated deterministic action protocol; no existing app claimed",
+        "actionVocabulary": [
+          "check_permission",
+          "tare_empty_beaker",
+          "weigh_water_48g",
+          "place_water_beaker_securely",
+          "tare_empty_salt_dish",
+          "weigh_salt_2g_separately",
+          "add_all_salt",
+          "stir",
+          "inspect",
+          "label_salt_solution_date"
+        ],
+        "stateRules": {
+          "de": [
+            "Start: keine Mengen im Gefäß; Freigabe nicht geprüft. Der Moderator verarbeitet jede eingereichte Aktion einzeln und protokolliert Aktion und Rückmeldung.",
+            "Nur check_permission → tare_empty_beaker → weigh_water_48g → place_water_beaker_securely → tare_empty_salt_dish → weigh_salt_2g_separately → add_all_salt erzeugt den zulässigen Ansatz. Mengenrückmeldung: Wasser 48,0 g, Salz 2,0 g. Vor stir: sichtbare Salzkristalle.",
+            "stir nach vollständiger Zugabe meldet keine sichtbaren Kristalle und eine einheitliche Phase; inspect gibt diese Beobachtung aus. label_salt_solution_date danach schließt ab. Falsche Reihenfolge, anderes Material oder Mengenverlust: STOP; keinen Erfolgslog ausgeben.",
+            "add_all_salt bedeutet die vollständige portionsweise Übertragung aus der tarierten Wägeschale mithilfe des freigegebenen sauberen Spatels. Zurückgebliebenes oder verschüttetes Salz erzeugt STOP und keinen vollständigen Zugabenachweis."
+          ],
+          "en": [
+            "Start: no quantities in the vessel; permission unchecked. The facilitator processes each submitted action individually and logs action and feedback.",
+            "Only check_permission → tare_empty_beaker → weigh_water_48g → place_water_beaker_securely → tare_empty_salt_dish → weigh_salt_2g_separately → add_all_salt produces the permitted batch. Quantity feedback: water 48.0 g, salt 2.0 g. Before stir: visible salt crystals.",
+            "After complete addition, stir reports no visible crystals and a uniform phase; inspect returns that observation. label_salt_solution_date then closes the run. Wrong order, other material or quantity loss: STOP; no success log.",
+            "add_all_salt means complete transfer in portions from the tared weighing dish using the permitted clean spatula. Salt left behind or spilled produces STOP rather than evidence of complete addition."
+          ]
+        },
+        "requiredEvidence": "ordered action-feedback log, measured quantities, final inspection and label; hypothetical supplied expected log is not learner evidence"
+      },
+      "performanceBoundary": {
+        "de": "Keine tatsächliche Lernendenleistung wird mit diesem Autorenmuster behauptet. Die praktische Variante benötigt örtliche Freigabe und Aufsicht; der gebundene Simulator ist ein hier spezifiziertes moderiertes Verfahren, keine vorhandene oder getestete App.",
+        "en": "This author example claims no actual learner performance. The practical variant needs local permission and supervision; the bound simulator is a facilitator-mediated procedure specified here, not an existing or tested app."
+      },
+      "blankOwnLog": {
+        "actualPermissionOrFacilitator": null,
+        "actualMode": null,
+        "orderedOwnActionsAndReturnedFeedback": [],
+        "rawOwnFinalObservation": null,
+        "actualQuantitiesAndSolvent": null,
+        "deviations": null,
+        "actualLabel": null
+      }
+    },
+    {
+      "id": "preparation-bound-phase-solvent-transfer",
+      "title": {
+        "de": "Gebundene Simulation mit anderen Ausgangsphasen",
+        "en": "Bound simulation with different starting phases"
+      },
+      "material": {
+        "de": [
+          "Ausschließlich virtuelle, moderierte Module P-2; keine realen Stoffe oder Gase. Je Modul liegt eine eigene freigegebene Simulationsanweisung vor. Es geht um ihr Ausführen, nicht um Herleiten der Löslichkeit oder Berechnen eines Anteils.",
+          "Modul L: flüssiges Glycerol in Wasser. select_L → check_permission → load_water_18mL → dose_glycerol_2mL → mix_L → inspect → label_L. Vor mix_L zeigt das Modell Schlieren; danach eine einheitliche Phase.",
+          "Modul S: fester Modellstoff S in einem ethanolischen Lösungsmittel. select_S → check_permission → load_ethanol_solvent_10mL → dose_S_0_01g → mix_S → inspect → label_S. Materialdaten erklären diese kleine Modellmenge als vollständig löslich. Vor mix_S sind Partikel sichtbar; danach eine einheitlich gefärbte Phase ohne Partikel.",
+          "Modul G: gasförmiges CO2 in Wasser bei 20 °C Modelltemperatur und konstantem CO2-Modellpartialdruck von 1 bar. select_G → check_permission → load_water_20mL → contact_CO2_model_aliquot → mix_G → wait_G → inspect → label_G. Das feste Modellaliquot von 0,010 g liegt innerhalb der bereitgestellten Modell-Aufnahmekapazität von 0,030 g. Beide Werte sind Simulatordaten, keine Messwertbehauptung. Beim Kontakt erscheinen Blasen, nach mix_G/wait_G meldet das Modell „Aliquot aufgenommen, eine Flüssigkeitsphase, keine sichtbaren Blasen“. Temperatur/Druck werden nicht geändert.",
+          "Jedes Modul startet leer. Der Moderator gibt nur nach zulässigen Aktionen die genannten Beobachtungen aus. Falsches Lösungsmittel, falsche Dosierung oder vertauschte Reihenfolge ergibt STOP und Neustart des betreffenden Moduls. Freie Chemikalienwahl und reale Gasapparaturen sind ausgeschlossen."
+        ],
+        "en": [
+          "Virtual facilitator-mediated P-2 modules only; no real substances or gases. Each module provides its own permitted simulation instruction. The assessment concerns executing it, not deriving solubility or calculating a fraction.",
+          "Module L: liquid glycerol in water. select_L → check_permission → load_water_18mL → dose_glycerol_2mL → mix_L → inspect → label_L. Before mix_L the model shows streaks; afterwards a uniform phase.",
+          "Module S: solid model substance S in an ethanolic solvent. select_S → check_permission → load_ethanol_solvent_10mL → dose_S_0_01g → mix_S → inspect → label_S. Supplied material data state that this small model quantity dissolves completely. Before mix_S particles are visible; afterwards a uniformly coloured phase without particles.",
+          "Module G: gaseous CO2 in water at model temperature 20 °C and constant CO2 model partial pressure of 1 bar. select_G → check_permission → load_water_20mL → contact_CO2_model_aliquot → mix_G → wait_G → inspect → label_G. The fixed 0.010 g model aliquot lies within the supplied 0.030 g model absorption capacity. Both values are simulator data, not claimed measurements. Contact displays bubbles; after mix_G/wait_G the model reports “aliquot absorbed, one liquid phase, no visible bubbles”. Temperature/pressure remain fixed.",
+          "Each module starts empty. The facilitator returns the stated observations only after allowed actions. Wrong solvent, wrong dose or changed ordering gives STOP and a restart of that module. Free choice of chemicals and actual gas apparatus are excluded."
+        ]
+      },
+      "task": {
+        "de": "Führe die angegebenen Aktionen für L, S und G im moderierten Simulator aus und gib für jedes Modul den vollständigen Aktions-/Rückmeldungslog mit Endbeobachtung und Beschriftung ab. Benenne die jeweils andere Ausgangsphase und das vorgegebene Lösungsmittel. Ersetze keinen Log durch die bloße Behauptung „das ist löslich“.",
+        "en": "Execute the specified L, S and G actions in the facilitator-mediated simulator and submit each complete action/feedback log, final observation and label. Identify each changed starting phase and specified solvent. Do not replace a log with the assertion “it is soluble.”"
+      },
+      "methodAndFeedbackRules": {
+        "kind": "facilitator-mediated deterministic state protocol; no existing app claimed",
+        "runScope": [
+          "L: liquid/water",
+          "S: solid/ethanolic solvent",
+          "G: gas/water"
+        ],
+        "allowedSequences": {
+          "L": [
+            "select_L",
+            "check_permission",
+            "load_water_18mL",
+            "dose_glycerol_2mL",
+            "mix_L",
+            "inspect",
+            "label_L"
+          ],
+          "S": [
+            "select_S",
+            "check_permission",
+            "load_ethanol_solvent_10mL",
+            "dose_S_0_01g",
+            "mix_S",
+            "inspect",
+            "label_S"
+          ],
+          "G": [
+            "select_G",
+            "check_permission",
+            "load_water_20mL",
+            "contact_CO2_model_aliquot",
+            "mix_G",
+            "wait_G",
+            "inspect",
+            "label_G"
+          ]
+        },
+        "transitionRule": "Each action requires all previous actions of the selected sequence in order. Wrong action enters STOP; only restart_selected_module returns to its empty start. Feedback observations are the specific module states supplied in material.",
+        "terminalRule": "Success requires the full matching sequence and its final uniformity observation; each facilitator log contains action, feedback and ordered step number.",
+        "noActualExperimentOrLearnerResultClaimed": true
+      },
+      "performanceBoundary": {
+        "de": "Der Simulator prüft eine geführte Handlungsroutine in ausgewählten Feststoff-, Flüssigkeits- und Gasfällen mit Wasser beziehungsweise ethanolischem Lösungsmittel. Er beweist keine reale Laborkompetenz und keine vollständige nationale Quellenabdeckung. Benzin und beliebige weitere Lösungsmittel werden nicht simuliert. Die Modellwerte sind keine realen Löslichkeitsmessungen.",
+        "en": "The simulator assesses a guided action routine for selected solid, liquid and gas cases with water or ethanolic solvent. It proves neither actual laboratory competence nor complete nationwide source coverage. Petrol and arbitrary additional solvents are not simulated. Model values are not actual solubility measurements."
+      },
+      "blankOwnLog": {
+        "actualPermissionOrFacilitator": null,
+        "actualMode": null,
+        "orderedOwnActionsAndReturnedFeedback": [],
+        "rawOwnFinalObservation": null,
+        "actualQuantitiesAndSolvent": null,
+        "deviations": null,
+        "actualLabel": null
+      }
+    }
+  ]
+}

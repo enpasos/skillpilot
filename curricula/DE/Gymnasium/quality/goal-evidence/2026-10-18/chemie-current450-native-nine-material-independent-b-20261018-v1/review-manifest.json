@@ -1,0 +1,67 @@
+{
+  "reviewId": "chemie-current450-native-nine-material-independent-b-20261018-v1",
+  "reviewKind": "informed-independent-candidate-material-text-QA",
+  "reviewer": "Codex (GPT-6 family; exact serving model identifier/version not exposed)",
+  "generationParameters": {
+    "exactModelVersion": null,
+    "temperature": null,
+    "topP": null,
+    "seed": null,
+    "reasoningEffort": null,
+    "hiddenParameters": "Not exposed; null means unknown."
+  },
+  "startedAt": "2026-10-18T17:12:17.379038+00:00",
+  "completedAt": "2026-10-18T17:17:17.350490+00:00",
+  "scope": {
+    "goalCount": 9,
+    "coreCandidateCount": 8,
+    "descriptionCandidates": 2,
+    "profileCandidates": 6,
+    "learnerTeacherMaterialPairs": 6,
+    "effectiveTeacherOverride": "257 V2 only",
+    "optionalAlternative223SplitDraftWritten": false
+  },
+  "decisions": {
+    "accept": 8,
+    "hold": 1
+  },
+  "candidateAcceptanceBoundary": "accept applies only to the explicitly reviewed D or P/material repair, never to whole-goal/source/atomicity completion or activation. Separate holds remain open.",
+  "separateOpenTopics": [
+    {
+      "topic": "1bda-HB-conditional-profile-duty",
+      "decision": "hold",
+      "reasonDe": "HB-Erwartung beschreibt sich als nur lokal gültig und steht gleichzeitig in der globalen requiredExpectationIds-Liste. Dieser Kandidat ändert P nicht; keine Behauptung einer technisch aufgelösten HB-Geltung."
+    },
+    {
+      "topic": "223e-semantic-atomicity",
+      "decision": "hold",
+      "reasonDe": "Das Gesamtziel verbindet mehrere Stoff-/Prozesswege, Bilanzprüfung und Generations-/Klimagrenze. Der aktuelle Auftrag darf die getrennte Atomizitätsentscheidung offenlassen; vollständiges Material allein löst sie nicht."
+    },
+    {
+      "topic": "28bb-NI-conditional-profile-duty",
+      "decision": "hold",
+      "reasonDe": "Bedingte NI-Pflicht versus globale Pflicht-ID ohne hier geprüfte Geltungsauswertung."
+    }
+  ],
+  "independence": {
+    "otherMaterialReviewerOutputsRead": false,
+    "otherMaterialReviewerOutputsRequested": false,
+    "historicalNativeDescriptionCampaignFilesOpened": false,
+    "canonicalFilesOrDiffsOpened": false,
+    "newBlindNativeDescriptionReviewClaimed": false,
+    "boundedInputExposure": "The explicitly assigned candidate D file includes quoted historical findings and author effect arguments. These were visible in the supplied input; linked historical files were not opened and the statements were not treated as authority. The current P originals were supplied comparison inputs.",
+    "priorTaskBoundary": "This is a separate informed candidate QA after the sealed 28-goal independent description review; no new native first-pass claim."
+  },
+  "verification": {
+    "command": "python3 /tmp/chemie_nine_b_check.py",
+    "exitCode": 0,
+    "rawLog": "verification-raw.txt",
+    "globalBuildRun": false,
+    "nativeDescriptionValidatorRun": false,
+    "allAssignedInputPinsUnchanged": true
+  },
+  "authority": "ai_candidate",
+  "humanApproval": false,
+  "humanTrial": false,
+  "normalActivationApproved": false
+}

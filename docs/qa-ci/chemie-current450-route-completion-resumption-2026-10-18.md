@@ -1,5 +1,76 @@
 # Chemie: Lernwegabschluss nach bestandenem CI-Zwischenstand
 
+## Aktuelle Fortsetzung nach dem grünen Commit `c9f951f7`
+
+Der [GitHub-Lauf für `c9f951f7`](https://github.com/enpasos/skillpilot/actions/runs/39140420885)
+ist erfolgreich abgeschlossen. Auch die inzwischen hinzugekommenen geplanten
+Checks sind grün; die aktuelle GitHub-Abfrage zählt 16 erfolgreiche Checks.
+Die aktuelle lokale zentrale Messung bestätigt **328/450 streng abgeschlossene
+Ziele (72,9 %)**, mit D/P/A/M/V **328/450/450/450/450**. Chemie bleibt M6;
+122 Ziele sind noch nicht streng abgeschlossen. Die aktuelle Fortsetzung ist
+noch nicht Teil dieses grünen Commits. Mathematik, Physik und Biologie bleiben
+mit 807/807, 478/478 und 397/397 vollständig M7.
+
+Der Ursachenabgleich mit den unveränderten nativen Prüffunktionen lokalisiert
+**30 aktuelle Kontextfehler in 13 Beschreibungsindizes**. Alle betreffen
+`requires`, einer zusätzlich die auf Rheinland-Pfalz begrenzte Geltung.
+Weitere 160 einzeln gültige Ziele werden durch die Integrität ihrer zugehörigen
+Nachweisketten blockiert. Diese Kettenanforderung bleibt unverändert.
+Die Mengen sind keine 190 neuen fachlichen Erstprüfungen.
+
+Die vorhandenen 279 vorbereiteten Reviewinputs wurden gegen dasselbe aktuelle,
+regulär begrenzte Buchlayout verglichen: **278 Zielinputs sind vollständig
+gleich**, einer hat einen geänderten Kontext. Die frühere pauschale
+Neubearbeitung aller 279 wäre daher unnötig. Die bestehenden gültigen Urteile
+und alle historischen Artefakte bleiben erhalten.
+
+Zwei regulär vorbereitete aktuelle Gruppen mit **20 und 8 Zielen** haben ihre
+beiden frischen Erstprüfungen und die reguläre Teilfinalisierung abgeschlossen.
+Informierte Bewertungen der bisherigen Reviewer
+bleiben getrennte Kandidaten: Der unveränderte native Erstprüfungsvertrag
+verbietet frühere Runden und kanonische Diffs als Revieweingaben. Deshalb
+prüften zwei frische, kontextfreie Reviewer die vollständigen aktuellen
+P-Seiten. Sie erhielten weder historische Urteile noch Ergebnisse voneinander.
+Frühere Ersturteile werden nicht nachträglich umgeschrieben. Peptidbindung und Biotreibstoffe sind aus
+diesen 28 Fällen zurückgestellt, bis ihre tatsächlichen Materialbefunde
+bearbeitet sind. Die
+[Auswahl mit allen 30 konkreten Kontextdifferenzen](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-post-CI-description-resumption-20261018-v1/ACTUAL.targeted-context-selection.json)
+trennt beide Mengen ausdrücklich.
+
+**21 aktuelle D-Bindungen sind regulär integriert.** Der zentrale Bericht
+steigt dadurch von 260 auf 328, netto **+68 wiederhergestellte strenge
+Nachweisketten, 0 neue fachliche Erstabschlüsse**. Acht der neu gebundenen Ziele
+zählen bereits streng; zusätzlich werden 60 unveränderte alte Ziele durch die
+reparierten Ketten wieder gültig. 13 der 21 neuen D-Bindungen bleiben wegen
+anderer offener Kettenglieder vorerst blockiert. Sieben aktuelle
+Beschreibungs-/Atomaritätsfälle sowie die getrennt protokollierten
+Aufgabenbefunde sind weiterhin offen. Die
+[Messung mit genauen ID-Mengen](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-post-CI-description-resumption-20261018-v1/MEASUREMENT.actual-progress-260-to328.json)
+hält diese Unterscheidung fest.
+
+Der separate Autorenkandidat für neun priorisierte Fälle enthält
+begrenzte Energie-/Massenbeschreibungen, zugängliche vollständige Aufgabengaben,
+einen integrierten neuen Peptidtransfer, einen basischen Anwendungsfall sowie
+explizit offene Geltungs-/Atomaritätsfragen. Zwei tatsächliche unabhängige
+Komponentenprüfungen akzeptieren zwei Beschreibungspräzisierungen und sechs
+Materialreparaturen einschließlich des additiven englischen
+Bewertungskriterien-Nachfolgers. Diese acht Komponenten sind noch nicht
+aktiviert; die drei Geltungs-/Atomaritätsfragen bleiben offen. Die gezielten
+Autorenkorrekturen aus den 28 aktuellen Fällen haben ebenfalls zwei getrennte
+informierte Kandidatenprüfungen: Beide akzeptieren drei
+Beschreibungspräzisierungen, das gesonderte Beibehalten des aktuellen
+Molekülmodellierungsziels, zwei kleine Profilkorrekturen und die begrenzten
+Materialreparaturen zu Molekülmodellierung und BTL. Die pH-/Recherchegeltung
+beim Magensäureziel sowie drei strukturelle Fragen bleiben offen. Diese
+Kandidaten erhöhen die strenge Quote noch nicht.
+
+Die vollständige reguläre Statusgenerierung bestätigt den 328er-Stand und die
+geschützten M7-Reifegrade. Die Untergrenzenprüfung besteht für alle zehn
+geschützten Curricula; Dokumentationslinks, Indexabdeckung und Status-Registry
+sind ebenfalls geprüft. Die finalisierten Arbeitsgruppen sind aus dem
+In-flight-Ledger ausgetragen; ihre offenen historischen Deferrals bleiben
+unverändert erhalten.
+
 ## Wiederaufnahme
 
 Der gesicherte Zwischenstand auf `main`, Commit

@@ -1,0 +1,61 @@
+{
+  "scope": "context-01",
+  "runId": "chemie-current-context-01-fresh-blind-a-20261018-170213",
+  "validatedAt": "2026-10-18T17:11:09.978465+00:00",
+  "completedAt": "2026-10-18T17:11:10.665889+00:00",
+  "validatorCommand": [
+    "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+    "scripts/validateGoalDescriptionReviewCampaignResults.ts",
+    "--bundle",
+    "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-post-CI-description-resumption-20261018-v1/context-01/round-a/review-bundle-manifest.json",
+    "--input",
+    "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-post-CI-description-resumption-20261018-v1/context-01/round-a/description-review-input.json",
+    "--campaign",
+    "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-post-CI-description-resumption-20261018-v1/context-01/round-a/description-review-campaign.json",
+    "--batches-dir",
+    "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-post-CI-description-resumption-20261018-v1/context-01/round-a/batches",
+    "--results-dir",
+    "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-post-CI-description-resumption-20261018-v1/context-01/round-a/results"
+  ],
+  "cwd": "/home/enpasos/projects/skillpilot/app",
+  "exitCode": 0,
+  "goalCount": 20,
+  "decisions": {
+    "keep": 15,
+    "revise": 3,
+    "split_review": 2
+  },
+  "evidenceProfileRecommendations": {
+    "none": 14,
+    "revise": 6
+  },
+  "inputsUnchanged": true,
+  "inspectionScope": "All 28 assigned current bilingual texts, canonical context, page fields and complete semantic current P profiles; GoalBook/bundle/batch equality checked. No external linked materials or effective source/view mapping validation claimed. No other description run output, informed candidate, canonical diff or earlier campaign read.",
+  "outputs": [
+    {
+      "path": "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-post-CI-description-resumption-20261018-v1/context-01/round-a/results/chemie-current450-post-ci-targeted-context-01-20261018-v1-first-pass-a.batch-001.records.jsonl",
+      "digest": "sha256:9f696492fa60914e0e51153b629d3f1f471421ad1b7b48d896614f06b5b63868",
+      "bytes": 73279
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-post-CI-description-resumption-20261018-v1/context-01/round-a/results/chemie-current450-post-ci-targeted-context-01-20261018-v1-first-pass-a.batch-001.run.json",
+      "digest": "sha256:dce944b7eecc65788c8aeb011f88e6767e488f9c2903ef38e8a7ef8944ce3e3c",
+      "bytes": 3293
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-post-CI-description-resumption-20261018-v1/context-01/round-a/fresh-blind-a-evidence/generation-parameters.exposed.json",
+      "digest": "sha256:223c99a77b706c23d87d98f3e7da686adc9b878f2a78a25db658377322fcb423",
+      "bytes": 372
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-post-CI-description-resumption-20261018-v1/context-01/round-a/fresh-blind-a-evidence/validator.stdout.log",
+      "digest": "sha256:e0f37561cfc26bd178883fcca9712aa2174c574f19fb3e290bd5be45f6e6cf57",
+      "bytes": 51
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-post-CI-description-resumption-20261018-v1/context-01/round-a/fresh-blind-a-evidence/validator.stderr.log",
+      "digest": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  ]
+}

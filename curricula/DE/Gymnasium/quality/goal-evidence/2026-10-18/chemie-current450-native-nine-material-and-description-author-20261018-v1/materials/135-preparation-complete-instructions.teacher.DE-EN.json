@@ -1,0 +1,130 @@
+{
+  "goalId": "1351706f-4ea6-56e9-951b-87b24cbcdee8",
+  "authorStatus": "unreviewed_author_candidate",
+  "license": "CC-BY-4.0",
+  "actualLearnerPerformanceRecorded": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "independentReviewClaim": false,
+  "interface": "teacher_only_withhold_until_independent_response",
+  "cases": [
+    {
+      "id": "preparation-salt-water-performed-log",
+      "expectedResponse": {
+        "de": "Erwartetes erfolgreiches Protokoll: Freigabe geprüft; trockenes Gefäß tariert; 48,0 g Wasser angezeigt; Wasser-Becherglas sicher abgestellt; leere Wägeschale tariert; darin mit sauberem Spatel separat 2,0 g Salz abgewogen und aus der Wägeschale vollständig ins Wasser übertragen; gerührt; Rückmeldung/Beobachtung: keine sichtbaren Kristalle, einheitliche Flüssigkeit ohne getrennte Phase; mit Kochsalzlösung und Datum beschriftet; keine Abweichung. Das ist eine hergestellte Lösung im begrenzten Fall, keine allgemeine Behauptung über beliebige Salz-/Lösungsmittelkombinationen.",
+        "en": "Expected successful log: permission checked; dry vessel tared; 48.0 g water displayed; water beaker placed securely; empty weighing dish tared; 2.0 g salt weighed separately in that dish with the clean spatula and transferred completely from the dish into the water; stirred; feedback/observation: no visible crystals, uniform liquid without a separate phase; labelled salt solution and date; no deviation. This documents preparation in the bounded case, not a claim about arbitrary salt/solvent combinations."
+      },
+      "criteria": [
+        {
+          "criterionLocalKey": "preparation-salt-water-performed-log-criterion-1",
+          "required": true,
+          "text": {
+            "de": "Ein tatsächliches betreutes Ausführungsprotokoll oder vollständiger Simulatoraktionslog liegt vor; eine Erklärung allein genügt nicht.",
+            "en": "There is an actual supervised execution log or complete simulator action log; an explanation alone does not suffice."
+          },
+          "binding": "same routine essential understanding"
+        },
+        {
+          "criterionLocalKey": "preparation-salt-water-performed-log-criterion-2",
+          "required": true,
+          "text": {
+            "de": "Freigabe, Tarieren des Becherglases, Einwiegen des Wassers, sicheres Abstellen, getrenntes Tarieren der Wägeschale, korrektes Salzabwiegen, vollständige Übertragung mit dem sauberen Spatel und Rühren sind dokumentiert.",
+            "en": "Permission, taring the beaker, weighing the water, secure placement, separately taring the weighing dish, correct salt weighing, complete transfer using the clean spatula and stirring are documented."
+          },
+          "binding": "same routine essential understanding"
+        },
+        {
+          "criterionLocalKey": "preparation-salt-water-performed-log-criterion-3",
+          "required": true,
+          "text": {
+            "de": "Die bestätigte Endbeobachtung zeigt keine Kristalle/abgetrennte Phase; die Beschriftung stimmt mit dem Inhalt überein.",
+            "en": "Confirmed final observation shows no crystals/separate phase; the label matches the contents."
+          },
+          "binding": "same routine essential understanding"
+        },
+        {
+          "criterionLocalKey": "preparation-salt-water-performed-log-criterion-4",
+          "required": true,
+          "text": {
+            "de": "Abweichungen werden offen protokolliert und lösen Rückfrage statt eigenständiger Mengenänderung aus.",
+            "en": "Deviations are recorded and lead to asking the supervisor rather than independently changing quantities."
+          },
+          "binding": "same routine essential understanding"
+        }
+      ],
+      "countercase": {
+        "de": {
+          "task": "Beim Hinzufügen fällt ein Teil des abgewogenen Salzes außerhalb des Gefäßes. Ist ein unverändertes Erfolgsprotokoll zulässig?",
+          "expected": "Nein. Die vollständige Zugabe ist nicht nachgewiesen. Abweichung protokollieren und nach P-1 stoppen/Lehrkraft fragen; keine frei erfundene Ersatzmenge zugeben."
+        },
+        "en": {
+          "task": "Some weighed salt falls outside the vessel during addition. Is an unchanged success log valid?",
+          "expected": "No. Complete addition is not established. Log the deviation and stop/ask the teacher under P-1; do not invent a replacement dose."
+        }
+      },
+      "modeBoundary": {
+        "de": "Keine tatsächliche Lernendenleistung wird mit diesem Autorenmuster behauptet. Die praktische Variante benötigt örtliche Freigabe und Aufsicht; der gebundene Simulator ist ein hier spezifiziertes moderiertes Verfahren, keine vorhandene oder getestete App.",
+        "en": "This author example claims no actual learner performance. The practical variant needs local permission and supervision; the bound simulator is a facilitator-mediated procedure specified here, not an existing or tested app."
+      }
+    },
+    {
+      "id": "preparation-bound-phase-solvent-transfer",
+      "expectedResponse": {
+        "de": "Erwartet werden drei getrennte Logs mit jeweils geprüftem Modul/Freigabe, dem modulspezifischen Lösungsmittel und der vorgeschriebenen Zugabe. L dokumentiert flüssigen Ausgangsstoff in Wasser, danach keine Schlieren; S festen Ausgangsstoff im ethanolischen Lösungsmittel, danach keine Partikel; G gasförmigen Ausgangsstoff in Wasser unter festgehaltenen Modellbedingungen, Kontakt/Mischen/Warten und bestätigte Aufnahme. Alle enden mit inspect und richtiger Beschriftung. Die L-Mengen und Mischhandlung dürfen nicht ungeprüft auf S oder G übertragen werden.",
+        "en": "Three separate logs are expected, each with module/permission checked, its specific solvent and prescribed addition. L records a liquid starting substance in water followed by no streaks; S a solid in ethanolic solvent followed by no particles; G a gas in water under fixed model conditions, contact/mixing/waiting and confirmed absorption. Each ends with inspect and its correct label. L’s quantities and mixing action cannot be copied to S or G without using that module’s instruction."
+      },
+      "criteria": [
+        {
+          "criterionLocalKey": "preparation-bound-phase-solvent-transfer-criterion-1",
+          "required": true,
+          "text": {
+            "de": "Für alle drei Module sind eingereichte Aktionen mit vom Moderator erzeugten Rückmeldungen vollständig vorhanden.",
+            "en": "All three modules have complete submitted actions and facilitator-generated feedback."
+          },
+          "binding": "same routine essential understanding"
+        },
+        {
+          "criterionLocalKey": "preparation-bound-phase-solvent-transfer-criterion-2",
+          "required": true,
+          "text": {
+            "de": "Jedes Modul verwendet seine eigene Lösungsmittel-/Zugabeanweisung; fremde Mengen werden nicht übernommen.",
+            "en": "Each module uses its own solvent/addition instruction; unrelated quantities are not copied."
+          },
+          "binding": "same routine essential understanding"
+        },
+        {
+          "criterionLocalKey": "preparation-bound-phase-solvent-transfer-criterion-3",
+          "required": true,
+          "text": {
+            "de": "Die vorgeschriebene Endkontrolle und Beschriftung sind nach der Homogenitätsrückmeldung dokumentiert.",
+            "en": "Required final inspection and labelling are logged after the uniformity feedback."
+          },
+          "binding": "same routine essential understanding"
+        },
+        {
+          "criterionLocalKey": "preparation-bound-phase-solvent-transfer-criterion-4",
+          "required": true,
+          "text": {
+            "de": "Die Leistung wird als begrenzte Simulation eingeordnet, ohne reale praktische Durchführung oder allgemeine Stoffverträglichkeit zu behaupten.",
+            "en": "Performance is described as a bounded simulation without claiming real practical execution or universal compatibility."
+          },
+          "binding": "same routine essential understanding"
+        }
+      ],
+      "countercase": {
+        "de": {
+          "task": "In S wählst du versehentlich Wasser statt des freigegebenen ethanolischen Lösungsmittels. Darfst du den erfolgreichen S-Endbefund aus der Vorlage übernehmen?",
+          "expected": "Nein. Der Moderator meldet STOP; diese Durchführung entspricht nicht der S-Anweisung. Das S-Modul muss mit dessen eigener freigegebener Anleitung neu gestartet werden. Über Löslichkeit in Wasser folgt aus dem vorgegebenen S-Endbefund nichts."
+        },
+        "en": {
+          "task": "In S you accidentally choose water instead of its permitted ethanolic solvent. May you copy the successful S endpoint from the example?",
+          "expected": "No. The facilitator returns STOP; the run violates the S instruction. Restart S with its own permitted instruction. Its supplied successful endpoint says nothing about solubility in water."
+        }
+      },
+      "modeBoundary": {
+        "de": "Der Simulator prüft eine geführte Handlungsroutine in ausgewählten Feststoff-, Flüssigkeits- und Gasfällen mit Wasser beziehungsweise ethanolischem Lösungsmittel. Er beweist keine reale Laborkompetenz und keine vollständige nationale Quellenabdeckung. Benzin und beliebige weitere Lösungsmittel werden nicht simuliert. Die Modellwerte sind keine realen Löslichkeitsmessungen.",
+        "en": "The simulator assesses a guided action routine for selected solid, liquid and gas cases with water or ethanolic solvent. It proves neither actual laboratory competence nor complete nationwide source coverage. Petrol and arbitrary additional solvents are not simulated. Model values are not actual solubility measurements."
+      }
+    }
+  ]
+}

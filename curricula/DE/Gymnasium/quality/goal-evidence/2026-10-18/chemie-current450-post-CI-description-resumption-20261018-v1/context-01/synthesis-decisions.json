@@ -1,0 +1,505 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "chemie-post-ci-context-01-D-only-root-synthesis-20261018-v2",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex Root; D-only synthesis after two sealed fresh current independent first passes; separate P findings remain open",
+  "synthesizedAt": "2026-10-18T17:11:10.977Z",
+  "batch": {
+    "batchId": "chemie-current450-post-ci-targeted-context-01-20261018-v1",
+    "batchManifestDigest": "sha256:3c4b6fa71a4b6c9f8735f8489827d257c30ab75839b18372b2755c85cba7d5bc",
+    "configDigest": "sha256:285d8d8f9d3a65b5c6c781deaa295458387b8f34c0c0445470dabb6197bbcea7",
+    "bundleFingerprint": "sha256:da1817f6e66e057635bd49a364aaa8f1830368cc2943ac8291e33297fb33c49c",
+    "bookDigest": "sha256:93c66863a16c6aa3901a02204983dc2804cb5f29ade70132f2dfc173eea61ae4",
+    "reviewInputFingerprint": "sha256:b175158296be133ec2e3c3e6f583ed42d652f6429fbfc91e8cda9ce33da7ca1f",
+    "dualSummaryDigest": "sha256:479b8f74834354ef3799b6a7ee68f6a2f2bb524bb6a30f562142dca89b83ffce",
+    "canonicalLandscapeDigest": "sha256:4a98ea0fadda602b7b04e4117e02aef986c127ed36074d3e700a1777f08a1901"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-current450-post-ci-targeted-context-01-20261018-v1-a",
+      "campaignDigest": "sha256:7311b49600dc8f1d8f33e07c52afa6879fa00445b4a3d0c77b5253893bbb2491",
+      "roundId": "chemie-current450-post-ci-targeted-context-01-20261018-v1-first-pass-a",
+      "independenceGroupId": "chemie-current450-post-ci-targeted-context-01-20261018-v1-independent-a",
+      "reviewInputFingerprint": "sha256:b175158296be133ec2e3c3e6f583ed42d652f6429fbfc91e8cda9ce33da7ca1f",
+      "batchId": "chemie-current450-post-ci-targeted-context-01-20261018-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:f0fc9737c5ac79c2ce848bd35b613886415ab01b5e5b082d86f9363c0c6e7a5f",
+      "runId": "chemie-current-context-01-fresh-blind-a-20261018-170213",
+      "runManifestDigest": "sha256:f6498550311b26281c649e22a2fd6289b0b494566d3181fe3ffa54a607b2bfc5",
+      "resultsDigest": "sha256:9f696492fa60914e0e51153b629d3f1f471421ad1b7b48d896614f06b5b63868"
+    },
+    "second": {
+      "campaignId": "chemie-current450-post-ci-targeted-context-01-20261018-v1-b",
+      "campaignDigest": "sha256:9d55c4cbd5b3b198568d0d8c6969cc9e7cb1497994eb30b712e779b63a536f6b",
+      "roundId": "chemie-current450-post-ci-targeted-context-01-20261018-v1-first-pass-b",
+      "independenceGroupId": "chemie-current450-post-ci-targeted-context-01-20261018-v1-independent-b",
+      "reviewInputFingerprint": "sha256:b175158296be133ec2e3c3e6f583ed42d652f6429fbfc91e8cda9ce33da7ca1f",
+      "batchId": "chemie-current450-post-ci-targeted-context-01-20261018-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:c206275c2e052d053c91474d78dbbcd3f06d18ffeb5a947fe19d8f19dd75f685",
+      "runId": "chemie-current450-post-ci-targeted-context-01-20261018-v1-first-pass-b.codex-fresh-blind-b",
+      "runManifestDigest": "sha256:ab03f23462811abb68f981bf3c80832dad61ee4123045946b48aeaf14aca1804",
+      "resultsDigest": "sha256:6ae8033c3b375561077f43260962a2711e37c4961049be2e716354b2362b2ab6"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "chemie-post-ci-context-01-D-only-root-synthesis-20261018-v2-decision-001",
+      "goalId": "13d4f336-ab16-54a7-9479-c920b458f385",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:9216feff81724402c3c0d53f5d31a75c9c36a13467a05ac8b0d2e58cef9f813f",
+      "pageFingerprint": "sha256:2125f582ed6cd0d83ffa4be15b2e1e7836cd6635d62b94a1249a03229d74d6da",
+      "goalReviewContextFingerprint": "sha256:7a0f0be5d7d119a732f13c3a46dc131f640a7663dedc75a2fd44deeb43ac48d0",
+      "finalText": {
+        "titleDe": "Allgemeine Sicherheitsregeln im Chemielabor anwenden",
+        "titleEn": "Apply general laboratory safety rules",
+        "descriptionDe": "Die lernende Person kann grundlegende Sicherheitsregeln im Chemielabor situationsbezogen anwenden.",
+        "descriptionEn": "The learner can apply basic safety rules in the chemistry laboratory in context."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-fresh-blind-a-context-01-g01",
+          "recordDigest": "sha256:b4ab4bba28edf612162040580567ca755052ba3bc688d893503ef03018b99545"
+        },
+        "second": {
+          "recordId": "chemie-current450-post-ci-targeted-context-01-20261018-v1-first-pass-b.codex-fresh-blind-b.goal-001",
+          "recordDigest": "sha256:212c1625cb358ae33c6b7a079f655498413e7b22b411544c3c18267087175bcb"
+        }
+      },
+      "rationaleDe": "Beide aktuellen unabhängigen Runden bestätigen die situationsbezogene Sicherheitsroutine und das vollständige P. Der direkte Orientierungseinstieg ändert weder die fachliche Handlung noch die Grenzen betreuter Durchführung.",
+      "rationaleEn": "Both current independent rounds confirm the situational safety routine and complete P profile. The direct orientation prerequisite changes neither the competence nor the limits of supervised execution."
+    },
+    {
+      "decisionId": "chemie-post-ci-context-01-D-only-root-synthesis-20261018-v2-decision-002",
+      "goalId": "1837690e-cfb1-5b1c-96c8-0fb40d6d5d69",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f5dc96676c6951d7d1cef87060a5ce7f1aebb7bf77f2fd772c4b3840ff71499d",
+      "pageFingerprint": "sha256:0c0bd739a70720c083e669a126ff0decba98da6e54d085e944fa91e67c808bd2",
+      "goalReviewContextFingerprint": "sha256:fcc82ace9beded483edb688dff209b043028c664eb4d33bf9fbf9a7d9372d8f3",
+      "finalText": {
+        "titleDe": "Waschvorgänge beeinflussen",
+        "titleEn": "Influence washing processes",
+        "descriptionDe": "Die lernende Person kann den Einfluss von Temperatur, Wasserhärte und Tensidkonzentration auf die Waschwirkung erklären und dabei Dispergiervermögen, Micellenbildung und die Bildung schwer löslicher Kalkseifen berücksichtigen.",
+        "descriptionEn": "The learner can explain the influence of temperature, water hardness, and surfactant concentration on washing action, taking dispersing capacity, micelle formation, and the formation of poorly soluble calcium and magnesium soaps into account."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-fresh-blind-a-context-01-g02",
+          "recordDigest": "sha256:fb16bc56230cebb1cbc937074b5efbfa1999f8a0c2e44031b47058eb358ba6e5"
+        },
+        "second": {
+          "recordId": "chemie-current450-post-ci-targeted-context-01-20261018-v1-first-pass-b.codex-fresh-blind-b.goal-002",
+          "recordDigest": "sha256:108a4db39ad0c63473f5261be28a33a8b36c224c90b2a360e2aec4a98bdbe977"
+        }
+      },
+      "rationaleDe": "Temperatur, Wasserhärte und Tensidkonzentration bleiben Einflussfaktoren derselben teilchenbezogenen Wascherklärung. Beide aktuellen Runden bestätigen D und P; der zusätzliche Orientierungseinstieg erweitert keine Stoff- oder Versuchspflicht.",
+      "rationaleEn": "Temperature, hardness and surfactant concentration remain factors of one particle-level washing explanation. Both current rounds accept D and P; the orientation prerequisite adds no substance or execution obligation."
+    },
+    {
+      "decisionId": "chemie-post-ci-context-01-D-only-root-synthesis-20261018-v2-decision-003",
+      "goalId": "2fac2f0e-bccc-5511-b9fb-cc1bc3aeed00",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a9a41564174167296a3dd03b5ea1fc8645cf3157f26a93dcf8cddb36ae8be640",
+      "pageFingerprint": "sha256:1b2444d64bd5b662fe3962108ed0a8ec5af5ac2d73eb09c02d59e3707a4a9977",
+      "goalReviewContextFingerprint": "sha256:4c216a67bbef0993c0008ba1b28e76db667ac84f8a28c20451816d4737c871b9",
+      "finalText": {
+        "titleDe": "Magensäurebildung und Protonenpumpen-Hemmer erklären",
+        "titleEn": "Explain gastric acid formation and proton pump inhibitors",
+        "descriptionDe": "Die lernende Person kann die Bildung von Magensäure chemisch beschreiben und daran die Wirkweise von Protonenpumpen-Hemmern erklären.",
+        "descriptionEn": "The learner can chemically describe gastric acid formation and use it to explain how proton pump inhibitors work."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-fresh-blind-a-context-01-g03",
+          "recordDigest": "sha256:4aaea27e07297015c5a672dd6d39bc8c8fe69788de819b735d50b7ef53b20df3"
+        },
+        "second": {
+          "recordId": "chemie-current450-post-ci-targeted-context-01-20261018-v1-first-pass-b.codex-fresh-blind-b.goal-003",
+          "recordDigest": "sha256:7d3e42c2faa1c18b5c4681ffc404edb0e2f23c6a22449fc3d9c5944138d44704"
+        }
+      },
+      "rationaleDe": "Beide aktuellen unabhängigen Runden bestätigen die unveränderte Beschreibung. Die Fassung verknüpft Säurebildung und Pumpenhemmung über denselben Erklärungszusammenhang und bleibt von der anschließenden Antazida-Bewertung unterscheidbar. Das aktuelle Profil erklärt die entscheidende Transport-/Verbrauchsunterscheidung, macht jedoch über e3 auch quantitative Modellkonzentrationen und beide Fall-pH-Berechnungen verpflichtend. Diese Rechnungen können Veranschaulichung bleiben; sie sollen nicht zu einer zusätzlichen Pflicht neben der beanspruchten chemischen Erklärung werden. Eine externe NCI-Seite wurde nicht geöffnet; die mitgelieferte Mechanismusparaphrase wird als Kontext behandelt. Der gesonderte P-Befund bleibt ausdrücklich offen; dieser Abschluss gilt ausschließlich für D und behauptet keine Materialremediation.",
+      "rationaleEn": "Both current independent rounds retain the unchanged description. In the simplified model, acid formation involves proton supply and energy-coupled proton transport with separate chloride transport; PPIs inhibit H⁺/K⁺-ATPase and hence new secretion. The separate P finding remains open; this decision closes D only and claims no material remediation."
+    },
+    {
+      "decisionId": "chemie-post-ci-context-01-D-only-root-synthesis-20261018-v2-decision-004",
+      "goalId": "36666b4a-97af-51fc-9983-56cdcc7a8229",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:48040c2af3eea2a65f19a4c76c20b2e420d1a46fa65da7e35c3f06c4732cea4b",
+      "pageFingerprint": "sha256:7b3cd6456da124854e03aa1d4753bf00ba5fa9e6a78117b81c8b180d3091f9af",
+      "goalReviewContextFingerprint": "sha256:217522d9ff2f2c3fe046cf898f120f8024c7dab3dbe71387b20e692c2c07d510",
+      "finalText": {
+        "titleDe": "Chemische Quellen und Darstellungen kritisch prüfen",
+        "titleEn": "Critically assess chemistry sources and representations",
+        "descriptionDe": "Die lernende Person kann analoge und digitale Quellen oder Darstellungsformen zu chemischen Sachverhalten hinsichtlich ihrer Aussagen, fachlichen Relevanz, Vertrauenswürdigkeit, Urheberschaft und Intention vergleichen und ihre Eignung und Validität für eine konkrete Frage begründet beurteilen.",
+        "descriptionEn": "The learner can compare analogue and digital sources or representations of chemical issues in terms of their claims, scientific relevance, trustworthiness, authorship, and intention, and justify their suitability and validity for a specific question."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-fresh-blind-a-context-01-g04",
+          "recordDigest": "sha256:8e5ca6f25ae4485c1892e94288c246b786563817dccfd8fcc97a57728e76a1af"
+        },
+        "second": {
+          "recordId": "chemie-current450-post-ci-targeted-context-01-20261018-v1-first-pass-b.codex-fresh-blind-b.goal-004",
+          "recordDigest": "sha256:7b5a41efe2af6a1ca3bbed5e8c1a5dd957bca0eca4fc7573c1c80503bd79dc81"
+        }
+      },
+      "rationaleDe": "Beide aktuellen unabhängigen Runden bestätigen die unveränderte Beschreibung. Vergleich und begründetes Eignungsurteil bilden eine zusammenhängende Quellenkritik, deren relevante Kriterien bereits knapp und bilingual benannt sind. Das Profil enthält eine geeignete Änderung von Evidenz und Finanzierung. Seine konkreten Fallbriefs verlangen jedoch A/B/C-Urteile und Zahlenwerte, ohne die bezeichneten Quellenauszüge bzw. Messdaten selbst bereitzustellen; die erste Variation wird sogar ausdrücklich nur angekündigt. Für eine selbstständige Prüfung müssen diese Materialien im jeweiligen Fall tatsächlich vorliegen. Dies betrifft das Profil, nicht eine Erweiterung der Beschreibung oder eine behauptete Quellenmappingprüfung. Der gesonderte P-Befund bleibt ausdrücklich offen; dieser Abschluss gilt ausschließlich für D und behauptet keine Materialremediation.",
+      "rationaleEn": "Both current independent rounds retain the unchanged description. The suitability of a chemistry source depends on the specific question, traceable evidence and claim limits; authorship and interest are factors to examine rather than automatic truth judgments. The separate P finding remains open; this decision closes D only and claims no material remediation."
+    },
+    {
+      "decisionId": "chemie-post-ci-context-01-D-only-root-synthesis-20261018-v2-decision-005",
+      "goalId": "3899edf4-a809-54b1-8ee7-4e67aa82dc7c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ad29cb29db1dd4319610a89e0a4d5ddd63c1a08af90ea94ed34ef2350935583f",
+      "pageFingerprint": "sha256:53eeb2daebede6784bc19f1d99e9e0398f9aa65da233d623cce577d0a0eaa636",
+      "goalReviewContextFingerprint": "sha256:981bd001a56d7666e17e32c2a6d904d488e00cce5c03b0cc7b90de7e6c27a269",
+      "finalText": {
+        "titleDe": "Nukleophile Substitution als Donator-Akzeptor-Reaktion beschreiben",
+        "titleEn": "Describe nucleophilic substitution as a donor-acceptor reaction",
+        "descriptionDe": "Die lernende Person kann nukleophile Substitution als Reaktion eines Elektronenpaardonators mit einem Elektronenpaarakzeptor beschreiben.",
+        "descriptionEn": "The learner can describe nucleophilic substitution as a reaction between an electron-pair donor and an electron-pair acceptor."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-fresh-blind-a-context-01-g05",
+          "recordDigest": "sha256:11240398ce6fb11d27211f59c2fc3a1f8c29e986ead3ace095fc9baf59e6ad54"
+        },
+        "second": {
+          "recordId": "chemie-current450-post-ci-targeted-context-01-20261018-v1-first-pass-b.codex-fresh-blind-b.goal-005",
+          "recordDigest": "sha256:17f76bc85f0fc93190479ee94667e086dbe56964e1de7e2dfec464fed6976049"
+        }
+      },
+      "rationaleDe": "Beide aktuellen unabhängigen Runden bestätigen die unveränderte Beschreibung einschließlich des Austauschs einer Abgangsgruppe im konkreten Verständnisnachweis. Die früheren Vorschläge wollten diesen im Begriff nukleophile Substitution bereits beanspruchten Austausch ausschreiben. Sie korrigieren keine falsche Donator-/Akzeptorrolle oder unklare Zielidentität; das aktuelle P enthält den Austausch ausdrücklich. Root verwirft diese reine Explizierung mit erhaltener alter Originalempfehlung. SN1/SN2 und Kinetik werden nicht ergänzt.",
+      "rationaleEn": "Both current independent rounds retain the unchanged description and explicitly evidence leaving-group replacement. Earlier proposals spelled out the replacement already claimed by nucleophilic substitution; they correct neither an erroneous donor/acceptor role nor ambiguous goal identity. Current P explicitly contains replacement. Root rejects the extra explicit wording while preserving both original recommendations. No SN1/SN2 or kinetics duty is added."
+    },
+    {
+      "decisionId": "chemie-post-ci-context-01-D-only-root-synthesis-20261018-v2-decision-006",
+      "goalId": "3ce81f96-4fbb-5022-88b7-337a000315ed",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:1d5e3620ccb32c5cccd88d5250fd32a06500d315963028b49a3583e28eb08adc",
+      "pageFingerprint": "sha256:19389609c567a79a9f10b892b0dff4ae7a27406ff2f08d7857bdfbb7d70686c4",
+      "goalReviewContextFingerprint": "sha256:b2789cc99ae27cfb5d85776f01290fdd4b8791e5c384f57d3c537ff048b3600c",
+      "finalText": {
+        "titleDe": "Einflussfaktoren diskutieren",
+        "titleEn": "Discuss influencing factors",
+        "descriptionDe": "Die lernende Person kann den Einfluss von Stoffart, Konzentration, Zerteilungsgrad und Temperatur auf die Reaktionsgeschwindigkeit qualitativ erklären und diese Einflüsse auf Teilchenebene mit der Stoßtheorie begründen.",
+        "descriptionEn": "The learner can qualitatively explain the influence of substance type, concentration, degree of division, and temperature on reaction rate and justify these influences at particle level using collision theory."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-fresh-blind-a-context-01-g06",
+          "recordDigest": "sha256:263e30d5aac4d60673ad34e44989ac51a459703cdd56218806bb060b2ad93c2e"
+        },
+        "second": {
+          "recordId": "chemie-current450-post-ci-targeted-context-01-20261018-v1-first-pass-b.codex-fresh-blind-b.goal-006",
+          "recordDigest": "sha256:36dd2baabcc40bb8296d64eb54dc9a2dfb339be532893dcb8600b28eb3782352"
+        }
+      },
+      "rationaleDe": "Beide aktuellen Runden bestätigen die qualitative Erklärung veränderter Reaktionsgeschwindigkeit über die Stoßtheorie. Mehrere Einflussgrößen bilden hier Variationen derselben kausalen Modellroutine; eine allgemeine quantitative Geschwindigkeitsgleichung wird nicht ergänzt.",
+      "rationaleEn": "Both current rounds confirm the qualitative collision-theory explanation of changed reaction rate. The factors vary one causal modeling routine; no general quantitative rate law is added."
+    },
+    {
+      "decisionId": "chemie-post-ci-context-01-D-only-root-synthesis-20261018-v2-decision-007",
+      "goalId": "3fb7dea4-f832-5e23-b518-68b13a655b92",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:722e36aa5ac92e9b1f2376fbc3de71cb5899b87363325c9772a0bcf5ed6ec030",
+      "pageFingerprint": "sha256:37e802d2cfb073669db82ea1f7bf62f33eb850ad07946b7549d93c1470375cc3",
+      "goalReviewContextFingerprint": "sha256:ad6ee4194099de669da25c13dcb7251b5de7ffb8f0229d175b4cb5a8f5222fc0",
+      "finalText": {
+        "titleDe": "Elektrophile Addition mechanistisch darstellen",
+        "titleEn": "Represent electrophilic addition mechanistically",
+        "descriptionDe": "Die lernende Person kann elektrophile Additionen an ungesättigten Kohlenwasserstoffen mechanistisch darstellen.",
+        "descriptionEn": "The learner can represent electrophilic additions to unsaturated hydrocarbons mechanistically."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-fresh-blind-a-context-01-g08",
+          "recordDigest": "sha256:26fc22defc5591b511c08e6e4261d73c0bafb890ca50e3518126e4d9eb763c66"
+        },
+        "second": {
+          "recordId": "chemie-current450-post-ci-targeted-context-01-20261018-v1-first-pass-b.codex-fresh-blind-b.goal-008",
+          "recordDigest": "sha256:19379a47907d711e48cbdb243bfd9cf800d125c394329606854d2d676b732e63"
+        }
+      },
+      "rationaleDe": "Beide aktuellen Runden bestätigen den begrenzten Mechanismus elektrophiler Addition mit vollständig gebundenem P. Die Synthese übernimmt die zweite Verständnisfolge und fügt keine universelle Produktregel oder fremden Mechanismus hinzu.",
+      "rationaleEn": "Both current rounds confirm the bounded electrophilic-addition mechanism and complete bound P. Synthesis retains the second understanding chain without adding a universal product rule or a different mechanism."
+    },
+    {
+      "decisionId": "chemie-post-ci-context-01-D-only-root-synthesis-20261018-v2-decision-008",
+      "goalId": "42a84bca-d27e-581f-a43a-eee424f0504d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:cb2615bbcbaf11d17039a279480013c17f6aea1b8e8171b47f81d8008ba89b48",
+      "pageFingerprint": "sha256:a8bc29805cef18357dbe468e564ad23195de1aa8227b9756719751935e57743a",
+      "goalReviewContextFingerprint": "sha256:5013a73affbdb2baa5b6b197a1db4b8b1254aaa585132bc2c8974c1c98d80a0a",
+      "finalText": {
+        "titleDe": "Elemente, Verbindungen und Gemische unterscheiden",
+        "titleEn": "Distinguish elements, compounds, and mixtures",
+        "descriptionDe": "Die lernende Person kann Reinstoffe, Stoffgemische, Elemente und Verbindungen fachlich voneinander abgrenzen und mit Teilchenvorstellungen beschreiben.",
+        "descriptionEn": "The learner can distinguish pure substances, mixtures, elements, and compounds and describe them using particle ideas."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-fresh-blind-a-context-01-g09",
+          "recordDigest": "sha256:a86243d2538ba01ea1a80dffafed998f6bb81cc90eb55785120c296a7e9bd6ae"
+        },
+        "second": {
+          "recordId": "chemie-current450-post-ci-targeted-context-01-20261018-v1-first-pass-b.codex-fresh-blind-b.goal-009",
+          "recordDigest": "sha256:321debb33c0e895772b82e25d5d1f1da305e23e2b3f421a389031d6d4f4b7369"
+        }
+      },
+      "rationaleDe": "Element, Verbindung, Reinstoff und Gemisch werden als zusammenhängende Stoffklassifikation mit Teilchenbezug unterschieden. Beide aktuellen Runden bestätigen Beschreibung und P; der neue direkte Einstieg ist gezielt mitgeprüft.",
+      "rationaleEn": "Element, compound, pure substance and mixture form one connected substance-classification routine using particle models. Both current rounds accept description and P, including the new direct entry prerequisite."
+    },
+    {
+      "decisionId": "chemie-post-ci-context-01-D-only-root-synthesis-20261018-v2-decision-009",
+      "goalId": "4965395d-e0c5-5e23-a408-a11712aab409",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:9bde66bc22bd5a5c4e664646baf41ee6f0a760aaa50d965901c8c5a7c7478e2d",
+      "pageFingerprint": "sha256:fea9737d55df32e55430e601d2bf1091ee9810fb88968a8c514c22e0c4e92c23",
+      "goalReviewContextFingerprint": "sha256:f419fd2af201723a93ec5fc8a6adc09e186e0de6032aa4b9a993529878300b97",
+      "finalText": {
+        "titleDe": "Gesellschaftliche Folgen der Wirkstoffentwicklung historisch und aktuell bewerten",
+        "titleEn": "Evaluate historical and current social effects of medicine development",
+        "descriptionDe": "Die lernende Person kann anhand bereitgestellter Beispiele die Auswirkungen der Entwicklung von Medikamenten in historischen und aktuellen gesellschaftlichen Zusammenhängen anhand belegter Wirkung, Versorgung und Zugang, Kosten, Sicherheit sowie Resistenz- und Evidenzgrenzen begründet bewerten und ihr Urteil bei geänderten Wirksamkeitsannahmen revidieren.",
+        "descriptionEn": "Using supplied examples, the learner can give a reasoned evaluation of the effects of medicine development in historical and current social contexts using evidenced effectiveness, supply and access, costs, safety, resistance and evidence limits, and revise the judgment when assumptions about effectiveness change."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-fresh-blind-a-context-01-g10",
+          "recordDigest": "sha256:532b5835e921d2e03d0f9edfe5576808fd34266b6b92fe1249bcb7db2de9d111"
+        },
+        "second": {
+          "recordId": "chemie-current450-post-ci-targeted-context-01-20261018-v1-first-pass-b.codex-fresh-blind-b.goal-010",
+          "recordDigest": "sha256:f6517ad57c3e717dab35cd9498aa8ee7e694c9ef0344839a64f0bfd8603bb3d9"
+        }
+      },
+      "rationaleDe": "Beide aktuellen unabhängigen Runden bestätigen die unveränderte Beschreibung. Trotz der Länge bleibt dies eine integrierte gesellschaftliche Bewertung bereitgestellter Medikamentenbeispiele. Die Kriterien und der Annahmenwechsel sind bereits ausdrücklich beansprucht und DE/EN äquivalent, daher keine zusätzliche fachliche Forderung. Im aktuellen Profil setzen A/B-Wertung, Kostenindex und Zugangswerte ein vollständiges historisch-aktuelles Dossier voraus, das in den gebundenen Fallbriefs nicht enthalten ist. Diese Daten und Belege müssen für die geforderte selbstständige Abwägung tatsächlich bereitgestellt werden; neue Resistenzdaten dürfen nicht nur eine alte Musterwertung ersetzen. Der gesonderte P-Befund bleibt ausdrücklich offen; dieser Abschluss gilt ausschließlich für D und behauptet keine Materialremediation.",
+      "rationaleEn": "Both current independent rounds retain the unchanged description. The social effects of medicine development depend on supported benefit, safety, supply, access and costs; limitations such as resistance and uncertain evidence constrain a judgment in historical and current contexts. The separate P finding remains open; this decision closes D only and claims no material remediation."
+    },
+    {
+      "decisionId": "chemie-post-ci-context-01-D-only-root-synthesis-20261018-v2-decision-010",
+      "goalId": "4a7dee38-1056-5e27-acec-e6a12f58109f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:1dadb8c105a2e71dab7765573e528cacfb3435492020ee871abcbe5f4071e626",
+      "pageFingerprint": "sha256:e934402404c08d59ea1d033690016a8610a293f37e3afa31eccd459ab5995cce",
+      "goalReviewContextFingerprint": "sha256:7a8b74538d2bb193afa71d7951ec69657ef6ec6029421fe39a50e9601a9b26ac",
+      "finalText": {
+        "titleDe": "Qualitätskontrolle von Arzneimitteln an Belegen beurteilen",
+        "titleEn": "Assess evidence in pharmaceutical quality control",
+        "descriptionDe": "Die lernende Person kann an vorgegebenen Arzneimittel-Unterlagen begründet beurteilen, welche Aussagen über Qualität durch chemische Analytik, dokumentierte gute Herstellungspraxis und den allgemeinen Zweck des Arzneimittelgesetzes gestützt sind, und zwischen diesen Belegarten sowie offenen Qualitätsfragen unterscheiden.",
+        "descriptionEn": "The learner can use supplied pharmaceutical documents to judge which quality claims are supported by chemical analysis, documented good manufacturing practice and the general purpose of the German Medicines Act, and distinguish these types of evidence and unresolved quality questions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-fresh-blind-a-context-01-g11",
+          "recordDigest": "sha256:f49a5eb2f1d1762c3aabd1ccd5158499f4e1c2e3b1f8dd513b66eea8b7885399"
+        },
+        "second": {
+          "recordId": "chemie-current450-post-ci-targeted-context-01-20261018-v1-first-pass-b.codex-fresh-blind-b.goal-011",
+          "recordDigest": "sha256:6dc6a292c5fa6665928b12e8c5dd2262039e11da6584dcd2af5f840a05cfb82c"
+        }
+      },
+      "rationaleDe": "Beide aktuellen unabhängigen Runden bestätigen die unveränderte Beschreibung. Die drei Belegarten werden als Grundlage eines begrenzten Qualitätsurteils verbunden, nicht als drei eigenständige Lehrgänge. Die gelieferte Methodenkarte erklärt Analytik, GMP und allgemeinen AMG-Zweck; die Fälle machen die gegenseitige Nicht-Ersetzbarkeit konkret. Die Beschreibung erhält diese Reichweitengrenze bilingual. Das ist keine Prüfung aktueller Rechtslage oder realer Chargenfreigabe; die Fachseite wurde nicht geöffnet. Frühere P- oder Textbefunde werden getrennt ausdrücklich adjudiziert; keine historische Stimme wird überschrieben.",
+      "rationaleEn": "Both current independent rounds retain the unchanged description. Analytical findings, documented manufacturing processes and a general statutory protective purpose answer different quality questions; none alone proves overall quality or individual authorisation.Earlier P or wording findings receive separate explicit adjudication; historical votes remain unchanged."
+    },
+    {
+      "decisionId": "chemie-post-ci-context-01-D-only-root-synthesis-20261018-v2-decision-011",
+      "goalId": "4aa3a130-b517-5ac5-87b2-147fe432cadd",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e66d637f6a24d6598da4d720f9f9cd4308c43541fb974bc6a72d856c6c04acdd",
+      "pageFingerprint": "sha256:3285d507be30c837de600ff6fc2d3f942d153564cf69c537ee7bce7a0620225c",
+      "goalReviewContextFingerprint": "sha256:79df09bac5c2becdab772ccb234a72a22031a6dff7a42a723537d60ff08a85fd",
+      "finalText": {
+        "titleDe": "Die Aussagekraft chemischer Daten beurteilen",
+        "titleEn": "Assess the evidential value of chemical data",
+        "descriptionDe": "Die lernende Person kann die Angemessenheit, Gültigkeit und Tragweite erhobener oder recherchierter chemischer Daten beurteilen, mögliche Mess- und Verfahrensfehler anhand der Untersuchungsbedingungen begründen und erklären, welche Schlussfolgerungen die Daten tragen und welche nicht.",
+        "descriptionEn": "The learner can assess the suitability, validity, and reach of experimental or researched chemical data, justify possible measurement and procedural errors using the investigation conditions, and explain which conclusions the data support and which they do not."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-fresh-blind-a-context-01-g12",
+          "recordDigest": "sha256:6cab8175e6344508c58e5f6d29731f74ec4545ef063b415d18b311d41c98b98a"
+        },
+        "second": {
+          "recordId": "chemie-current450-post-ci-targeted-context-01-20261018-v1-first-pass-b.codex-fresh-blind-b.goal-012",
+          "recordDigest": "sha256:ba3a32f76f79ae8e33a40447e5e3e6838b72acf42c3a509092235a593c9f0abf"
+        }
+      },
+      "rationaleDe": "Beide aktuellen unabhängigen Runden bestätigen die unveränderte Beschreibung. Die Beschreibung verbindet Angemessenheit, Fehlerursachen und Schlussreichweite zu einem sachgerechten Datenurteil und ist in beiden Sprachen äquivalent. Das Profil begrenzt Selektivitäts- und Leitfähigkeitsschlüsse sinnvoll. In den Fallbriefs fehlen aber die dort vorausgesetzten Quellen H/S, X/Y-Testdaten und A20/A35/B35-Messwerte samt Streuungsangabe. Die Lösungen setzen diese konkreten Materialien voraus. Das Profil sollte sie bereitstellen, bevor eine unabhängige Datenprüfung beansprucht wird; ein neuer Messmethodenkatalog gehört nicht in die Beschreibung. Der gesonderte P-Befund bleibt ausdrücklich offen; dieser Abschluss gilt ausschließlich für D und behauptet keine Materialremediation.",
+      "rationaleEn": "Both current independent rounds retain the unchanged description. Chemical data support an inference only within an appropriate measurement principle and controlled sample conditions; cross-reactions, temperature and matrix can limit attribution. The separate P finding remains open; this decision closes D only and claims no material remediation."
+    },
+    {
+      "decisionId": "chemie-post-ci-context-01-D-only-root-synthesis-20261018-v2-decision-012",
+      "goalId": "5851b53a-162b-5c17-9269-510ee54ad846",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ebc73cd6625e4da997dff260d03f829199ffa5fcf355f8987af37ababb773106",
+      "pageFingerprint": "sha256:87955f106b56e204ec49353684000d2822d626694b78105bd99ff729a3b25f30",
+      "goalReviewContextFingerprint": "sha256:9f5d7c27e1c2b588f29982480009c3c0d01a00edf69233b739d8f3724cd812d8",
+      "finalText": {
+        "titleDe": "Oxidationsprodukte von Alkanolen erklären",
+        "titleEn": "Explain oxidation products of alkanols",
+        "descriptionDe": "Die lernende Person kann die Bildung von Aldehyden, Ketonen und Carbonsäuren bei der Oxidation geeigneter Alkanole erklären.",
+        "descriptionEn": "The learner can explain the formation of aldehydes, ketones, and carboxylic acids during oxidation of suitable alkanols."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-fresh-blind-a-context-01-g13",
+          "recordDigest": "sha256:0a107c03f02188f2174175082939ad058f07b43c563816ff6c876dd649297ecf"
+        },
+        "second": {
+          "recordId": "chemie-current450-post-ci-targeted-context-01-20261018-v1-first-pass-b.codex-fresh-blind-b.goal-013",
+          "recordDigest": "sha256:a65099ea5af4ced48a9c10d39a7248f69e6d6dbad2eb64f8c65121c1ce419b00"
+        }
+      },
+      "rationaleDe": "Beide aktuellen unabhängigen Runden bestätigen die unveränderte Beschreibung. Die Formulierung bewahrt die zentrale Struktur-Produkt-Erklärung und macht durch geeignete Alkanole keine pauschale Aussage über jeden Alkohol. Die Sprachfassungen entsprechen einander; der Nachfolger behandelt Nachweise getrennt. Im deutschen Profileintrag ist jedoch ein primäres Aldehyd als Klasse formuliert, während Englisch zutreffend primary-derived aldehyde sagt. Das sollte lokal zu einem aus einem primären Alkanol gebildeten Aldehyd präzisiert werden; die ausgearbeiteten Fallbeziehungen bleiben passend. Der gesonderte P-Befund bleibt ausdrücklich offen; dieser Abschluss gilt ausschließlich für D und behauptet keine Materialremediation.",
+      "rationaleEn": "Both current independent rounds retain the unchanged description. Bonds at the OH-bearing carbon determine ordinary carbonyl formation: primary alkanols yield aldehydes and, on further oxidation, carboxylic acids, while secondary alkanols yield ketones. The separate P finding remains open; this decision closes D only and claims no material remediation."
+    },
+    {
+      "decisionId": "chemie-post-ci-context-01-D-only-root-synthesis-20261018-v2-decision-013",
+      "goalId": "6413429b-53d8-5ad1-9af6-d0e562cbf0f5",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:48fc2d416ba8556f96420896abc0720d7642a85305f1bd6cc613e12e75efe8cc",
+      "pageFingerprint": "sha256:a3d4f3ad313ba9d32ae217ba27dde770be954ae18464b150ca049a7b2c8c9e01",
+      "goalReviewContextFingerprint": "sha256:fb8022cb4d628b3a174fd09034dab8fdb0f184e88d4f11744114e0ccbf6c765a",
+      "finalText": {
+        "titleDe": "Nanoskalige Silikonoberflächen materialgestützt beurteilen",
+        "titleEn": "Assess nanoscale silicone surfaces using material data",
+        "descriptionDe": "Die lernende Person kann die Bedeutung von Silikonen für nanoskalige Oberflächenanwendungen anhand von Materialdaten erläutern und Benetzungsbehauptungen beurteilen, indem sie Schichtdicke von Partikelgröße unterscheidet sowie Silikonchemie und Oberflächenstruktur berücksichtigt.",
+        "descriptionEn": "The learner can explain the relevance of silicones for nanoscale surface applications using material data and assess wetting claims by distinguishing film thickness from particle size and considering silicone chemistry and surface structure."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-fresh-blind-a-context-01-g14",
+          "recordDigest": "sha256:9e1282ce18f48aee20b1f367306ddbd89953c4dd4d30308887edfd0205dd2955"
+        },
+        "second": {
+          "recordId": "chemie-current450-post-ci-targeted-context-01-20261018-v1-first-pass-b.codex-fresh-blind-b.goal-014",
+          "recordDigest": "sha256:27a88c62791f4fadcfacbf04913202fb47855d69f19270f7b8bc289a82d22a9e"
+        }
+      },
+      "rationaleDe": "Beide aktuellen unabhängigen Runden bestätigen die unveränderte Beschreibung. Dicken-/Partikelunterscheidung, Chemie und Struktur dienen demselben materialgestützten Benetzungsurteil; die Beschreibung integriert sie klar und bilingual. Das Profil bietet passende Grenzen zu Schmutzabtrag und Dauerhaftigkeit. Die Fallaufträge setzen aber Materialkarten und vollständige A/B/C-/Kontrolldaten voraus, während zentrale Winkelwerte erst in der erwarteten Lösung stehen. Sie sollten dem Lernenden als Eingabe vorgelegt werden, damit das Urteil aus Daten entstehen kann. Die Visualisierungsbeschreibung ist dafür kein selbstständiger Leistungsnachweis. Der gesonderte P-Befund bleibt ausdrücklich offen; dieser Abschluss gilt ausschließlich für D und behauptet keine Materialremediation.",
+      "rationaleEn": "Both current independent rounds retain the unchanged description. Nanoscale film thickness and particle size describe different dimensions; wetting and droplet movement on silicone surfaces depend on surface chemistry and structure. The separate P finding remains open; this decision closes D only and claims no material remediation."
+    },
+    {
+      "decisionId": "chemie-post-ci-context-01-D-only-root-synthesis-20261018-v2-decision-014",
+      "goalId": "7b477c2b-0919-5d70-810b-188a88c55ffc",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:daf6c73bab56dd7726c65911eb9c29e78701e34ffaa7a27702776f833b523ab0",
+      "pageFingerprint": "sha256:bed25935bb021882d2998a71c0d533833263af15f11cbac8310215b0f7417a8a",
+      "goalReviewContextFingerprint": "sha256:3922f1425311d2c51ce63cee852d9291058945cdd05b36cfd74d800286c5bdf8",
+      "finalText": {
+        "titleDe": "Glykosidische Bindungen",
+        "titleEn": "Glycosidic bonds",
+        "descriptionDe": "Die lernende Person kann die Verknüpfung von Zuckerbausteinen durch glykosidische Bindungen und deren Spaltung durch Hydrolyse anhand von Strukturformeln erklären.",
+        "descriptionEn": "The learner can explain the linkage of sugar units through glycosidic bonds and their cleavage by hydrolysis using structural formulas."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-fresh-blind-a-context-01-g16",
+          "recordDigest": "sha256:cd74bee735fd7239928ec63d3260feed838d87e5b181b1d4aa6fdf5b8e221203"
+        },
+        "second": {
+          "recordId": "chemie-current450-post-ci-targeted-context-01-20261018-v1-first-pass-b.codex-fresh-blind-b.goal-016",
+          "recordDigest": "sha256:a31ea1705f39a635a3db882f409306374409ae65c99ef0e270a42ae9059266a6"
+        }
+      },
+      "rationaleDe": "Beide aktuellen unabhängigen Runden bestätigen die unveränderte Beschreibung. Verknüpfung und hydrolytische Spaltung sind die beiden Richtungen derselben glykosidischen Bindungsbeziehung; daraus ergibt sich kein sachlicher Splitbedarf. Strukturformeln machen die Leistung beobachtbar. Das Profil unterscheidet anomere Zentren, formale Wasserbilanz und bloßes Lösen und bietet mit dem Polymer eine strukturelle Übertragung. Die Formulierungen stimmen bilingual überein. Frühere P- oder Textbefunde werden getrennt ausdrücklich adjudiziert; keine historische Stimme wird überschrieben.",
+      "rationaleEn": "Both current independent rounds retain the unchanged description. Glycosidic bonds link sugar units through an anomeric centre; formal linkage and hydrolysis can be represented in structural formulas with water release or uptake, respectively.Earlier P or wording findings receive separate explicit adjudication; historical votes remain unchanged."
+    },
+    {
+      "decisionId": "chemie-post-ci-context-01-D-only-root-synthesis-20261018-v2-decision-015",
+      "goalId": "9b56d01e-c2d7-51d8-b78e-237592c1ed20",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f71621c4f2e0f579cd98db6c6036611adf4112ae572b40ea874dd0c5931741a9",
+      "pageFingerprint": "sha256:ba6a2392c159fd81988dd414afb9cb0cd688bbbbaa434ce1a6894ecfa08297b2",
+      "goalReviewContextFingerprint": "sha256:2f12513ea9e137596ba812210757c746e883275e37676fbccfe331259a3ee471",
+      "finalText": {
+        "titleDe": "Einfache Bindungswinkel mit dem EPA-Modell erklären",
+        "titleEn": "Explain simple bond angles using the VSEPR model",
+        "descriptionDe": "Die lernende Person kann zu bereits dargestellten Molekülgestalten und EPA-Elektronendomänen passende idealisierte einfache Bindungswinkel zuordnen, qualitative Winkelabweichungen durch freie Elektronenpaare begründen und die Grenzen solcher Modellwinkel gegenüber exakten Messwerten erläutern.",
+        "descriptionEn": "The learner can assign appropriate idealized simple bond angles to already depicted molecular shapes and VSEPR electron domains, explain qualitative angle deviations caused by lone pairs and distinguish the limits of such model angles from exact measured values."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-fresh-blind-a-context-01-g19",
+          "recordDigest": "sha256:9d7bd670e19dfeadbc4db08e117e833f781cd09ab314b4549823e2c71c797302"
+        },
+        "second": {
+          "recordId": "chemie-current450-post-ci-targeted-context-01-20261018-v1-first-pass-b.codex-fresh-blind-b.goal-019",
+          "recordDigest": "sha256:367c8348bcdf96a89fa8a7aa5d7e8a95a703497d4745386201efc6f2345a0ab1"
+        }
+      },
+      "rationaleDe": "Beide aktuellen Runden bestätigen die Zuordnung idealisierter EPA-Winkel, qualitative freie-Elektronenpaar-Abweichungen und Messgrenzen als eine Modellinterpretation. Die bereits dargestellten Gestalten werden nicht durch eine zusätzliche Gestaltbestimmung oder exakte Winkelrechnung ersetzt.",
+      "rationaleEn": "Both current rounds confirm idealized VSEPR-angle assignment, qualitative lone-pair deviations and measurement limits as one model interpretation. Supplied shapes do not become an extra shape-determination or exact-angle calculation task."
+    }
+  ],
+  "deferredGoals": [
+    {
+      "goalId": "3ec31fe1-e01b-5edd-bd9a-936191d67639",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "rationaleDe": "Aktueller Beschreibungs- oder Atomaritätsbefund bleibt offen. A: revise; B: revise. Die kanonische Fassung wird erst nach tatsächlicher Remediation beziehungsweise Adjudikation angenommen.",
+      "rationaleEn": "A current wording or atomicity finding remains open. A: revise; B: revise. Canonical text awaits actual remediation or adjudication."
+    },
+    {
+      "goalId": "707998c1-872d-582d-a2d6-14e7d967cbdb",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "rationaleDe": "Aktueller Beschreibungs- oder Atomaritätsbefund bleibt offen. A: revise; B: keep. Die kanonische Fassung wird erst nach tatsächlicher Remediation beziehungsweise Adjudikation angenommen.",
+      "rationaleEn": "A current wording or atomicity finding remains open. A: revise; B: keep. Canonical text awaits actual remediation or adjudication."
+    },
+    {
+      "goalId": "858d56e0-ab8f-51a4-b07e-7d9d94cab8e2",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "rationaleDe": "Aktueller Beschreibungs- oder Atomaritätsbefund bleibt offen. A: revise; B: revise. Die kanonische Fassung wird erst nach tatsächlicher Remediation beziehungsweise Adjudikation angenommen.",
+      "rationaleEn": "A current wording or atomicity finding remains open. A: revise; B: revise. Canonical text awaits actual remediation or adjudication."
+    },
+    {
+      "goalId": "8721d943-8368-5304-bd3c-7d7944099662",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "rationaleDe": "Aktueller Beschreibungs- oder Atomaritätsbefund bleibt offen. A: split_review; B: split_review. Die kanonische Fassung wird erst nach tatsächlicher Remediation beziehungsweise Adjudikation angenommen.",
+      "rationaleEn": "A current wording or atomicity finding remains open. A: split_review; B: split_review. Canonical text awaits actual remediation or adjudication."
+    },
+    {
+      "goalId": "a3788e40-b540-5bed-be37-b33053528422",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "rationaleDe": "Aktueller Beschreibungs- oder Atomaritätsbefund bleibt offen. A: split_review; B: split_review. Die kanonische Fassung wird erst nach tatsächlicher Remediation beziehungsweise Adjudikation angenommen.",
+      "rationaleEn": "A current wording or atomicity finding remains open. A: split_review; B: split_review. Canonical text awaits actual remediation or adjudication."
+    }
+  ],
+  "manifestFingerprint": "sha256:592327a971a8e877230b924b26e41fe6185096bc2a3833cd961207cb293028da"
+}
