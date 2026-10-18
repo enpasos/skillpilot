@@ -1,0 +1,95 @@
+{
+  "role": "ONE_AUTHORIZED_NORMAL_GENERATED_DOC_OUTPUT_AND_THREE_ORIGINAL_GATE_RESULTS",
+  "head": "06a03ecbc193550b73d7d7b3af53a5a7e61b17fb",
+  "beforeNormalOutput": {
+    "path": "docs/qa-ci/status/README.md",
+    "sha256": "62acfe6e39fb0c880b83ea03dbc58b2bef2a28b3eb7462febc2af468819d2980",
+    "bytes": 15266
+  },
+  "afterNormalOutput": {
+    "path": "docs/qa-ci/status/README.md",
+    "sha256": "e46a0787106c77a928d0fc57cb0c317e0a8326cdaa7c3f05273470936d2fb17a",
+    "bytes": 15300
+  },
+  "actualOutputByteExactToPreview": true,
+  "changedTrackedPaths": [
+    "docs/qa-ci/status/README.md"
+  ],
+  "otherNormalSourceGeneratorRegistryWorkflowOrCanonicalChanges": 0,
+  "commands": [
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "docs:generated-status-registry"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot",
+      "startedAt": "2026-10-18T12:00:41.034716+00:00",
+      "finishedAt": "2026-10-18T12:00:42.092534+00:00",
+      "elapsedSeconds": 1.058,
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:generated-status-registry"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot",
+      "startedAt": "2026-10-18T12:00:58.841856+00:00",
+      "finishedAt": "2026-10-18T12:01:00.231210+00:00",
+      "elapsedSeconds": 1.389,
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:docs-links"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot",
+      "startedAt": "2026-10-18T12:00:58.852990+00:00",
+      "finishedAt": "2026-10-18T12:00:59.751607+00:00",
+      "elapsedSeconds": 0.899,
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:docs-indexes"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot",
+      "startedAt": "2026-10-18T12:00:58.848866+00:00",
+      "finishedAt": "2026-10-18T12:00:59.612614+00:00",
+      "elapsedSeconds": 0.764,
+      "exitCode": 0
+    }
+  ],
+  "gitDiffCheck": {
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "normalChanges": 1,
+  "normalOutput": "docs/qa-ci/status/README.md",
+  "qualityGateThresholdChanges": 0,
+  "fullBuilds": 0,
+  "commits": 0,
+  "pushes": 0,
+  "newRemoteCIResultClaim": false,
+  "newM7OrHumanApproval": false
+}

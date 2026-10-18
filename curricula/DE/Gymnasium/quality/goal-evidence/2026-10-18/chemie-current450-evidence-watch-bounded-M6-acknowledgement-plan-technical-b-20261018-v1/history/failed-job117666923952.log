@@ -1,0 +1,655 @@
+﻿2026-10-18T11:46:29.2428110Z Current runner version: '2.337.0'
+2026-10-18T11:46:29.2462939Z ##[group]Runner Image Provisioner
+2026-10-18T11:46:29.2464629Z Hosted Compute Agent
+2026-10-18T11:46:29.2465820Z Version: 20261012.601
+2026-10-18T11:46:29.2466956Z Commit: f3dc54e1fb89da6852db922499a0233137369e1d
+2026-10-18T11:46:29.2468301Z Build Date: 2026-10-12T17:48:21Z
+2026-10-18T11:46:29.2469619Z Worker ID: {fa2e3d65-1601-4af6-9bd6-a9c8e39ee5e4}
+2026-10-18T11:46:29.2470969Z Region: eastus
+2026-10-18T11:46:29.2472101Z Cloud: Azure
+2026-10-18T11:46:29.2473368Z ##[endgroup]
+2026-10-18T11:46:29.2475678Z ##[group]Operating System
+2026-10-18T11:46:29.2476815Z Ubuntu
+2026-10-18T11:46:29.2477743Z 24.04.5
+2026-10-18T11:46:29.2478687Z LTS
+2026-10-18T11:46:29.2479568Z ##[endgroup]
+2026-10-18T11:46:29.2480544Z ##[group]Runner Image
+2026-10-18T11:46:29.2481597Z Image: ubuntu-24.04
+2026-10-18T11:46:29.2482658Z Version: 20261012.334.1
+2026-10-18T11:46:29.2485151Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-18T11:46:29.2488071Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+2026-10-18T11:46:29.2490000Z ##[endgroup]
+2026-10-18T11:46:29.2492536Z ##[group]GITHUB_TOKEN Permissions
+2026-10-18T11:46:29.2495874Z Contents: read
+2026-10-18T11:46:29.2496862Z Metadata: read
+2026-10-18T11:46:29.2497924Z ##[endgroup]
+2026-10-18T11:46:29.2501527Z Secret source: Actions
+2026-10-18T11:46:29.2503451Z Cache mode: write
+2026-10-18T11:46:29.2505006Z Prepare workflow directory
+2026-10-18T11:46:29.2967894Z Prepare all required actions
+2026-10-18T11:46:29.3037480Z Getting action download info
+2026-10-18T11:46:29.5283829Z Download action repository 'actions/checkout@v6' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+2026-10-18T11:46:29.6570840Z Download action repository 'actions/setup-python@v6' (SHA:ece7cb06caefa5fff74198d8649806c4678c61a1)
+2026-10-18T11:46:29.7286099Z Download action repository 'actions/upload-artifact@v6' (SHA:b7c566a772e6b6bfb58ed0dc250532a479d7789f)
+2026-10-18T11:46:29.9641900Z Complete job name: chemistry-evidence-watch
+2026-10-18T11:46:30.0384358Z ##[group]Run actions/checkout@v6
+2026-10-18T11:46:30.0385235Z with:
+2026-10-18T11:46:30.0385686Z   repository: enpasos/skillpilot
+2026-10-18T11:46:30.0389458Z   token: ***
+2026-10-18T11:46:30.0389895Z   ssh-strict: true
+2026-10-18T11:46:30.0390333Z   ssh-user: git
+2026-10-18T11:46:30.0390775Z   persist-credentials: true
+2026-10-18T11:46:30.0391313Z   clean: true
+2026-10-18T11:46:30.0391817Z   sparse-checkout-cone-mode: true
+2026-10-18T11:46:30.0392343Z   fetch-depth: 1
+2026-10-18T11:46:30.0392773Z   fetch-tags: false
+2026-10-18T11:46:30.0393415Z   show-progress: true
+2026-10-18T11:46:30.0393863Z   lfs: false
+2026-10-18T11:46:30.0394279Z   submodules: false
+2026-10-18T11:46:30.0394721Z   set-safe-directory: true
+2026-10-18T11:46:30.0395231Z   allow-unsafe-pr-checkout: false
+2026-10-18T11:46:30.0396027Z ##[endgroup]
+2026-10-18T11:46:30.1364168Z Syncing repository: enpasos/skillpilot
+2026-10-18T11:46:30.1366061Z ##[group]Getting Git version info
+2026-10-18T11:46:30.1366867Z Working directory is '/home/runner/work/skillpilot/skillpilot'
+2026-10-18T11:46:30.1367909Z [command]/usr/bin/git version
+2026-10-18T11:46:30.1429716Z git version 2.55.0
+2026-10-18T11:46:30.1452202Z ##[endgroup]
+2026-10-18T11:46:30.1466366Z Temporarily overriding HOME='/home/runner/work/_temp/10d8da5c-6f43-40d4-b7b0-12672cf28905' before making global git config changes
+2026-10-18T11:46:30.1468471Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-18T11:46:30.1471126Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/skillpilot/skillpilot
+2026-10-18T11:46:30.1516298Z Deleting the contents of '/home/runner/work/skillpilot/skillpilot'
+2026-10-18T11:46:30.1520571Z ##[group]Determining repository object format
+2026-10-18T11:46:30.1523248Z ##[endgroup]
+2026-10-18T11:46:30.1524050Z ##[group]Initializing the repository
+2026-10-18T11:46:30.1527479Z [command]/usr/bin/git init /home/runner/work/skillpilot/skillpilot
+2026-10-18T11:46:30.1628291Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-18T11:46:30.1629851Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-18T11:46:30.1631042Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-18T11:46:30.1632283Z hint: call:
+2026-10-18T11:46:30.1632843Z hint:
+2026-10-18T11:46:30.1633943Z hint: 	git config --global init.defaultBranch <name>
+2026-10-18T11:46:30.1634841Z hint:
+2026-10-18T11:46:30.1635792Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-18T11:46:30.1637480Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-18T11:46:30.1638480Z hint:
+2026-10-18T11:46:30.1638907Z hint: 	git branch -m <name>
+2026-10-18T11:46:30.1639412Z hint:
+2026-10-18T11:46:30.1640048Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-18T11:46:30.1641608Z Initialized empty Git repository in /home/runner/work/skillpilot/skillpilot/.git/
+2026-10-18T11:46:30.1643717Z [command]/usr/bin/git remote add origin https://github.com/enpasos/skillpilot
+2026-10-18T11:46:30.1685535Z ##[endgroup]
+2026-10-18T11:46:30.1686329Z ##[group]Disabling automatic garbage collection
+2026-10-18T11:46:30.1689105Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-18T11:46:30.1717651Z ##[endgroup]
+2026-10-18T11:46:30.1718561Z ##[group]Setting up auth
+2026-10-18T11:46:30.1719373Z Removing SSH command configuration
+2026-10-18T11:46:30.1724943Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-18T11:46:30.1754628Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-18T11:46:30.2078034Z Removing HTTP extra header
+2026-10-18T11:46:30.2084702Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-18T11:46:30.2117109Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-18T11:46:30.2335495Z Removing includeIf entries pointing to credentials config files
+2026-10-18T11:46:30.2339688Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-18T11:46:30.2370816Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-18T11:46:30.2609784Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-fcb49048-e44b-4a02-bf38-a4c96bb5def6.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-18T11:46:30.2648418Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/skillpilot/skillpilot/.git.path /home/runner/work/_temp/git-credentials-fcb49048-e44b-4a02-bf38-a4c96bb5def6.config
+2026-10-18T11:46:30.2693260Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/skillpilot/skillpilot/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-fcb49048-e44b-4a02-bf38-a4c96bb5def6.config
+2026-10-18T11:46:30.2727533Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-fcb49048-e44b-4a02-bf38-a4c96bb5def6.config
+2026-10-18T11:46:30.2796199Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-fcb49048-e44b-4a02-bf38-a4c96bb5def6.config
+2026-10-18T11:46:30.2826843Z ##[endgroup]
+2026-10-18T11:46:30.2828435Z ##[group]Fetching the repository
+2026-10-18T11:46:30.2836851Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +06a03ecbc193550b73d7d7b3af53a5a7e61b17fb:refs/remotes/origin/main
+2026-10-18T11:50:59.4436935Z From https://github.com/enpasos/skillpilot
+2026-10-18T11:50:59.4438454Z  * [new ref]             06a03ecbc193550b73d7d7b3af53a5a7e61b17fb -> origin/main
+2026-10-18T11:50:59.4447513Z [command]/usr/bin/git branch --list --remote origin/main
+2026-10-18T11:50:59.4471725Z   origin/main
+2026-10-18T11:50:59.4491620Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
+2026-10-18T11:50:59.4512638Z 06a03ecbc193550b73d7d7b3af53a5a7e61b17fb
+2026-10-18T11:50:59.4516933Z ##[endgroup]
+2026-10-18T11:50:59.4517575Z ##[group]Determining the checkout info
+2026-10-18T11:50:59.4522337Z ##[endgroup]
+2026-10-18T11:50:59.4523692Z [command]/usr/bin/git sparse-checkout disable
+2026-10-18T11:50:59.4569664Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-18T11:50:59.4596080Z ##[group]Checking out the ref
+2026-10-18T11:50:59.4601556Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-10-18T11:51:01.7658639Z Updating files:   0% (484/203204)
+2026-10-18T11:51:02.7653834Z Updating files:   0% (614/203204)
+2026-10-18T11:51:03.7715335Z Updating files:   0% (733/203204)
+2026-10-18T11:51:04.7726125Z Updating files:   0% (859/203204)
+2026-10-18T11:51:05.7797866Z Updating files:   0% (978/203204)
+2026-10-18T11:51:06.7677071Z Updating files:   0% (1095/203204)
+2026-10-18T11:51:07.7655962Z Updating files:   0% (1213/203204)
+2026-10-18T11:51:08.7700927Z Updating files:   0% (1329/203204)
+2026-10-18T11:51:09.9488284Z Updating files:   0% (1459/203204)
+2026-10-18T11:51:10.9554650Z Updating files:   0% (1537/203204)
+2026-10-18T11:51:11.7666356Z Updating files:   0% (1540/203204)
+2026-10-18T11:51:12.7680730Z Updating files:   0% (1641/203204)
+2026-10-18T11:51:13.7694379Z Updating files:   0% (1780/203204)
+2026-10-18T11:51:14.8539744Z Updating files:   0% (1912/203204)
+2026-10-18T11:51:15.9514712Z Updating files:   0% (2011/203204)
+2026-10-18T11:51:17.1521188Z Updating files:   0% (2015/203204)
+2026-10-18T11:51:17.7985133Z Updating files:   0% (2020/203204)
+2026-10-18T11:51:17.8957337Z Updating files:   0% (2023/203204)
+2026-10-18T11:51:18.7679286Z Updating files:   1% (2033/203204)
+2026-10-18T11:51:19.7721495Z Updating files:   1% (2137/203204)
+2026-10-18T11:51:20.7685983Z Updating files:   1% (2267/203204)
+2026-10-18T11:51:21.7687958Z Updating files:   1% (2407/203204)
+2026-10-18T11:51:22.7734634Z Updating files:   1% (2538/203204)
+2026-10-18T11:51:23.7694921Z Updating files:   1% (2665/203204)
+2026-10-18T11:51:24.7678364Z Updating files:   1% (2777/203204)
+2026-10-18T11:51:25.7654543Z Updating files:   1% (2865/203204)
+2026-10-18T11:51:26.7698782Z Updating files:   1% (2936/203204)
+2026-10-18T11:51:27.8685092Z Updating files:   1% (3041/203204)
+2026-10-18T11:51:28.8473632Z Updating files:   1% (3101/203204)
+2026-10-18T11:51:29.7654249Z Updating files:   1% (3274/203204)
+2026-10-18T11:51:30.6872115Z Updating files:   1% (3281/203204)
+2026-10-18T11:51:30.7638084Z Updating files:   2% (4065/203204)
+2026-10-18T11:51:30.9562736Z Updating files:   2% (5025/203204)
+2026-10-18T11:51:31.8730336Z Updating files:   3% (6097/203204)
+2026-10-18T11:51:32.7864387Z Updating files:   3% (7273/203204)
+2026-10-18T11:51:33.2224247Z Updating files:   3% (7662/203204)
+2026-10-18T11:51:33.7638099Z Updating files:   4% (8129/203204)
+2026-10-18T11:51:33.9417617Z Updating files:   4% (8745/203204)
+2026-10-18T11:51:34.3019377Z Updating files:   5% (10161/203204)
+2026-10-18T11:51:34.9454300Z Updating files:   6% (12193/203204)
+2026-10-18T11:51:35.2499285Z Updating files:   6% (13997/203204)
+2026-10-18T11:51:35.7637844Z Updating files:   7% (14225/203204)
+2026-10-18T11:51:36.7417253Z Updating files:   7% (14534/203204)
+2026-10-18T11:51:36.7686729Z Updating files:   8% (16257/203204)
+2026-10-18T11:51:37.3967111Z Updating files:   8% (16314/203204)
+2026-10-18T11:51:37.7638399Z Updating files:   9% (18289/203204)
+2026-10-18T11:51:37.7724792Z Updating files:   9% (20280/203204)
+2026-10-18T11:51:38.0918782Z Updating files:  10% (20321/203204)
+2026-10-18T11:51:38.3584514Z Updating files:  11% (22353/203204)
+2026-10-18T11:51:38.7640984Z Updating files:  12% (24385/203204)
+2026-10-18T11:51:38.7827701Z Updating files:  12% (26238/203204)
+2026-10-18T11:51:39.1864188Z Updating files:  13% (26417/203204)
+2026-10-18T11:51:39.6074760Z Updating files:  14% (28449/203204)
+2026-10-18T11:51:39.8020868Z Updating files:  15% (30481/203204)
+2026-10-18T11:51:40.7980638Z Updating files:  15% (30695/203204)
+2026-10-18T11:51:41.2008456Z Updating files:  15% (31773/203204)
+2026-10-18T11:51:41.7951755Z Updating files:  16% (32513/203204)
+2026-10-18T11:51:42.8002435Z Updating files:  16% (32683/203204)
+2026-10-18T11:51:43.4062196Z Updating files:  16% (33108/203204)
+2026-10-18T11:51:43.7645553Z Updating files:  17% (34545/203204)
+2026-10-18T11:51:44.0782914Z Updating files:  17% (35375/203204)
+2026-10-18T11:51:44.7659053Z Updating files:  18% (36577/203204)
+2026-10-18T11:51:44.7987460Z Updating files:  18% (38446/203204)
+2026-10-18T11:51:45.7637832Z Updating files:  19% (38609/203204)
+2026-10-18T11:51:45.9325738Z Updating files:  19% (40106/203204)
+2026-10-18T11:51:46.7674259Z Updating files:  20% (40641/203204)
+2026-10-18T11:51:47.1481863Z Updating files:  20% (41928/203204)
+2026-10-18T11:51:47.7751409Z Updating files:  21% (42673/203204)
+2026-10-18T11:51:48.2862122Z Updating files:  21% (43903/203204)
+2026-10-18T11:51:48.7652693Z Updating files:  22% (44705/203204)
+2026-10-18T11:51:49.7753644Z Updating files:  22% (45606/203204)
+2026-10-18T11:51:49.8347827Z Updating files:  22% (46638/203204)
+2026-10-18T11:51:50.7893277Z Updating files:  23% (46737/203204)
+2026-10-18T11:51:51.8474362Z Updating files:  23% (47313/203204)
+2026-10-18T11:51:52.8436790Z Updating files:  23% (47721/203204)
+2026-10-18T11:51:54.2063821Z Updating files:  23% (47970/203204)
+2026-10-18T11:51:54.6086240Z Updating files:  23% (48397/203204)
+2026-10-18T11:51:54.7719077Z Updating files:  24% (48769/203204)
+2026-10-18T11:51:55.7711488Z Updating files:  24% (49006/203204)
+2026-10-18T11:51:56.7239503Z Updating files:  24% (49787/203204)
+2026-10-18T11:51:56.7665525Z Updating files:  25% (50801/203204)
+2026-10-18T11:51:57.7648711Z Updating files:  25% (50905/203204)
+2026-10-18T11:51:58.2876350Z Updating files:  25% (51719/203204)
+2026-10-18T11:51:58.7688975Z Updating files:  26% (52834/203204)
+2026-10-18T11:51:59.0849345Z Updating files:  26% (53782/203204)
+2026-10-18T11:51:59.7768930Z Updating files:  27% (54866/203204)
+2026-10-18T11:52:00.1824159Z Updating files:  27% (56147/203204)
+2026-10-18T11:52:00.7650311Z Updating files:  28% (56898/203204)
+2026-10-18T11:52:00.8808168Z Updating files:  28% (58459/203204)
+2026-10-18T11:52:01.7639149Z Updating files:  29% (58930/203204)
+2026-10-18T11:52:02.1653362Z Updating files:  29% (59725/203204)
+2026-10-18T11:52:02.7716496Z Updating files:  30% (60962/203204)
+2026-10-18T11:52:03.0738036Z Updating files:  30% (62115/203204)
+2026-10-18T11:52:03.7638311Z Updating files:  31% (62994/203204)
+2026-10-18T11:52:04.1779606Z Updating files:  31% (64135/203204)
+2026-10-18T11:52:04.7648430Z Updating files:  32% (65026/203204)
+2026-10-18T11:52:05.8144948Z Updating files:  32% (65708/203204)
+2026-10-18T11:52:06.0834301Z Updating files:  32% (66800/203204)
+2026-10-18T11:52:06.7641378Z Updating files:  33% (67058/203204)
+2026-10-18T11:52:07.7683478Z Updating files:  33% (67660/203204)
+2026-10-18T11:52:07.7926226Z Updating files:  33% (69066/203204)
+2026-10-18T11:52:08.7648796Z Updating files:  34% (69090/203204)
+2026-10-18T11:52:09.4625339Z Updating files:  34% (70734/203204)
+2026-10-18T11:52:09.7652535Z Updating files:  35% (71122/203204)
+2026-10-18T11:52:10.3478191Z Updating files:  35% (71458/203204)
+2026-10-18T11:52:10.7645960Z Updating files:  36% (73154/203204)
+2026-10-18T11:52:11.1726116Z Updating files:  36% (73881/203204)
+2026-10-18T11:52:11.7679286Z Updating files:  37% (75186/203204)
+2026-10-18T11:52:12.0069619Z Updating files:  37% (76710/203204)
+2026-10-18T11:52:12.7638239Z Updating files:  38% (77218/203204)
+2026-10-18T11:52:13.1888905Z Updating files:  38% (78652/203204)
+2026-10-18T11:52:13.7655759Z Updating files:  39% (79250/203204)
+2026-10-18T11:52:14.7638488Z Updating files:  39% (79606/203204)
+2026-10-18T11:52:14.8466443Z Updating files:  39% (80799/203204)
+2026-10-18T11:52:15.7899783Z Updating files:  40% (81282/203204)
+2026-10-18T11:52:16.7607659Z Updating files:  40% (82077/203204)
+2026-10-18T11:52:16.7753423Z Updating files:  41% (83314/203204)
+2026-10-18T11:52:17.7702453Z Updating files:  41% (83335/203204)
+2026-10-18T11:52:18.7643715Z Updating files:  41% (84136/203204)
+2026-10-18T11:52:18.7810691Z Updating files:  41% (85208/203204)
+2026-10-18T11:52:19.7986291Z Updating files:  42% (85346/203204)
+2026-10-18T11:52:20.4763460Z Updating files:  42% (86545/203204)
+2026-10-18T11:52:20.7838532Z Updating files:  43% (87378/203204)
+2026-10-18T11:52:21.7746735Z Updating files:  43% (87905/203204)
+2026-10-18T11:52:21.7985332Z Updating files:  43% (89285/203204)
+2026-10-18T11:52:22.7641839Z Updating files:  44% (89410/203204)
+2026-10-18T11:52:23.0216008Z Updating files:  44% (90701/203204)
+2026-10-18T11:52:23.7885999Z Updating files:  45% (91442/203204)
+2026-10-18T11:52:24.7647061Z Updating files:  45% (92196/203204)
+2026-10-18T11:52:25.7647763Z Updating files:  45% (93036/203204)
+2026-10-18T11:52:26.1086033Z Updating files:  45% (93285/203204)
+2026-10-18T11:52:26.7711029Z Updating files:  46% (93474/203204)
+2026-10-18T11:52:27.6724646Z Updating files:  46% (94347/203204)
+2026-10-18T11:52:27.7704884Z Updating files:  47% (95506/203204)
+2026-10-18T11:52:28.7579337Z Updating files:  47% (95794/203204)
+2026-10-18T11:52:28.8011189Z Updating files:  48% (97538/203204)
+2026-10-18T11:52:29.7640468Z Updating files:  48% (97540/203204)
+2026-10-18T11:52:30.2572630Z Updating files:  48% (98913/203204)
+2026-10-18T11:52:30.8521657Z Updating files:  49% (99570/203204)
+2026-10-18T11:52:31.7708624Z Updating files:  49% (99706/203204)
+2026-10-18T11:52:32.7469129Z Updating files:  49% (100072/203204)
+2026-10-18T11:52:32.7670113Z Updating files:  50% (101602/203204)
+2026-10-18T11:52:33.3853721Z Updating files:  50% (101674/203204)
+2026-10-18T11:52:33.6613663Z Updating files:  51% (103635/203204)
+2026-10-18T11:52:33.7637431Z Updating files:  52% (105667/203204)
+2026-10-18T11:52:33.7758561Z Updating files:  52% (107467/203204)
+2026-10-18T11:52:34.8461650Z Updating files:  53% (107699/203204)
+2026-10-18T11:52:35.1108947Z Updating files:  53% (109262/203204)
+2026-10-18T11:52:35.8461525Z Updating files:  54% (109731/203204)
+2026-10-18T11:52:36.8000112Z Updating files:  54% (110468/203204)
+2026-10-18T11:52:37.3993018Z Updating files:  54% (110819/203204)
+2026-10-18T11:52:37.7658411Z Updating files:  55% (111763/203204)
+2026-10-18T11:52:38.7897781Z Updating files:  55% (112199/203204)
+2026-10-18T11:52:38.8597734Z Updating files:  55% (113669/203204)
+2026-10-18T11:52:39.8070683Z Updating files:  56% (113795/203204)
+2026-10-18T11:52:40.1992035Z Updating files:  56% (114944/203204)
+2026-10-18T11:52:40.7673707Z Updating files:  57% (115827/203204)
+2026-10-18T11:52:40.9932028Z Updating files:  57% (117099/203204)
+2026-10-18T11:52:41.7940408Z Updating files:  58% (117859/203204)
+2026-10-18T11:52:42.3093268Z Updating files:  58% (119107/203204)
+2026-10-18T11:52:42.7637212Z Updating files:  59% (119891/203204)
+2026-10-18T11:52:43.2524229Z Updating files:  59% (120840/203204)
+2026-10-18T11:52:43.7716801Z Updating files:  60% (121923/203204)
+2026-10-18T11:52:44.7674835Z Updating files:  60% (122713/203204)
+2026-10-18T11:52:45.2884582Z Updating files:  60% (123597/203204)
+2026-10-18T11:52:45.7665447Z Updating files:  61% (123955/203204)
+2026-10-18T11:52:46.7875684Z Updating files:  61% (124499/203204)
+2026-10-18T11:52:47.4739657Z Updating files:  61% (124775/203204)
+2026-10-18T11:52:47.8043974Z Updating files:  62% (125987/203204)
+2026-10-18T11:52:48.7667105Z Updating files:  62% (126521/203204)
+2026-10-18T11:52:49.7650891Z Updating files:  62% (126956/203204)
+2026-10-18T11:52:50.6334396Z Updating files:  62% (127593/203204)
+2026-10-18T11:52:50.7648782Z Updating files:  63% (128019/203204)
+2026-10-18T11:52:51.7936148Z Updating files:  63% (128061/203204)
+2026-10-18T11:52:52.7676245Z Updating files:  63% (128725/203204)
+2026-10-18T11:52:53.0695390Z Updating files:  63% (129617/203204)
+2026-10-18T11:52:53.7722857Z Updating files:  64% (130051/203204)
+2026-10-18T11:52:54.0135847Z Updating files:  64% (131447/203204)
+2026-10-18T11:52:54.5246295Z Updating files:  65% (132083/203204)
+2026-10-18T11:52:54.8478316Z Updating files:  66% (134115/203204)
+2026-10-18T11:52:54.9835922Z Updating files:  66% (135469/203204)
+2026-10-18T11:52:55.7664298Z Updating files:  67% (136147/203204)
+2026-10-18T11:52:56.5843496Z Updating files:  67% (137119/203204)
+2026-10-18T11:52:56.7993385Z Updating files:  68% (138179/203204)
+2026-10-18T11:52:57.7998562Z Updating files:  68% (138369/203204)
+2026-10-18T11:52:58.7779387Z Updating files:  68% (138640/203204)
+2026-10-18T11:52:59.4594876Z Updating files:  68% (139265/203204)
+2026-10-18T11:52:59.7643681Z Updating files:  69% (140211/203204)
+2026-10-18T11:53:00.7638920Z Updating files:  69% (140794/203204)
+2026-10-18T11:53:01.5015164Z Updating files:  69% (141869/203204)
+2026-10-18T11:53:01.7695645Z Updating files:  70% (142243/203204)
+2026-10-18T11:53:02.8037091Z Updating files:  70% (142438/203204)
+2026-10-18T11:53:03.8031740Z Updating files:  70% (142660/203204)
+2026-10-18T11:53:04.7907978Z Updating files:  70% (142668/203204)
+2026-10-18T11:53:05.7637499Z Updating files:  70% (142681/203204)
+2026-10-18T11:53:06.2911483Z Updating files:  70% (143551/203204)
+2026-10-18T11:53:06.7831460Z Updating files:  71% (144275/203204)
+2026-10-18T11:53:07.2859700Z Updating files:  71% (145062/203204)
+2026-10-18T11:53:07.7784912Z Updating files:  72% (146307/203204)
+2026-10-18T11:53:08.6234911Z Updating files:  72% (147056/203204)
+2026-10-18T11:53:08.7900185Z Updating files:  73% (148339/203204)
+2026-10-18T11:53:09.6392116Z Updating files:  73% (148697/203204)
+2026-10-18T11:53:09.7681882Z Updating files:  74% (150371/203204)
+2026-10-18T11:53:10.7678686Z Updating files:  74% (150523/203204)
+2026-10-18T11:53:10.9282058Z Updating files:  74% (152051/203204)
+2026-10-18T11:53:11.7637825Z Updating files:  75% (152403/203204)
+2026-10-18T11:53:12.3774474Z Updating files:  75% (153490/203204)
+2026-10-18T11:53:12.7681345Z Updating files:  76% (154436/203204)
+2026-10-18T11:53:12.9180944Z Updating files:  76% (155689/203204)
+2026-10-18T11:53:13.4940739Z Updating files:  77% (156468/203204)
+2026-10-18T11:53:13.7740472Z Updating files:  78% (158500/203204)
+2026-10-18T11:53:14.3160725Z Updating files:  78% (159114/203204)
+2026-10-18T11:53:14.7637233Z Updating files:  79% (160532/203204)
+2026-10-18T11:53:15.2356786Z Updating files:  79% (161767/203204)
+2026-10-18T11:53:15.7649553Z Updating files:  80% (162564/203204)
+2026-10-18T11:53:16.0566817Z Updating files:  80% (163575/203204)
+2026-10-18T11:53:16.7648588Z Updating files:  81% (164596/203204)
+2026-10-18T11:53:17.2222353Z Updating files:  81% (165815/203204)
+2026-10-18T11:53:17.7740724Z Updating files:  82% (166628/203204)
+2026-10-18T11:53:18.0526105Z Updating files:  82% (167947/203204)
+2026-10-18T11:53:18.8542730Z Updating files:  83% (168660/203204)
+2026-10-18T11:53:19.6055085Z Updating files:  83% (170063/203204)
+2026-10-18T11:53:19.7861483Z Updating files:  84% (170692/203204)
+2026-10-18T11:53:20.7408939Z Updating files:  84% (170959/203204)
+2026-10-18T11:53:20.7639733Z Updating files:  85% (172724/203204)
+2026-10-18T11:53:21.4081906Z Updating files:  85% (172797/203204)
+2026-10-18T11:53:21.7730698Z Updating files:  86% (174756/203204)
+2026-10-18T11:53:21.9764505Z Updating files:  86% (175419/203204)
+2026-10-18T11:53:22.6884742Z Updating files:  87% (176788/203204)
+2026-10-18T11:53:22.7638822Z Updating files:  88% (178820/203204)
+2026-10-18T11:53:23.7660987Z Updating files:  88% (178917/203204)
+2026-10-18T11:53:24.7653306Z Updating files:  88% (179330/203204)
+2026-10-18T11:53:25.7646711Z Updating files:  88% (179708/203204)
+2026-10-18T11:53:25.8581137Z Updating files:  88% (180355/203204)
+2026-10-18T11:53:26.7707385Z Updating files:  89% (180852/203204)
+2026-10-18T11:53:27.7663041Z Updating files:  89% (181907/203204)
+2026-10-18T11:53:28.7668816Z Updating files:  89% (182415/203204)
+2026-10-18T11:53:29.3470239Z Updating files:  89% (182852/203204)
+2026-10-18T11:53:29.9990726Z Updating files:  90% (182884/203204)
+2026-10-18T11:53:30.8004128Z Updating files:  90% (182947/203204)
+2026-10-18T11:53:31.7740847Z Updating files:  90% (183009/203204)
+2026-10-18T11:53:32.6388316Z Updating files:  90% (183838/203204)
+2026-10-18T11:53:32.7709675Z Updating files:  91% (184916/203204)
+2026-10-18T11:53:33.7670848Z Updating files:  91% (185126/203204)
+2026-10-18T11:53:34.8406912Z Updating files:  91% (185659/203204)
+2026-10-18T11:53:35.9500389Z Updating files:  91% (186212/203204)
+2026-10-18T11:53:36.7676318Z Updating files:  91% (186246/203204)
+2026-10-18T11:53:37.8929664Z Updating files:  91% (186289/203204)
+2026-10-18T11:53:38.7019207Z Updating files:  91% (186516/203204)
+2026-10-18T11:53:38.7648481Z Updating files:  92% (186948/203204)
+2026-10-18T11:53:39.7700712Z Updating files:  92% (187022/203204)
+2026-10-18T11:53:40.7712069Z Updating files:  92% (187539/203204)
+2026-10-18T11:53:41.7646196Z Updating files:  92% (187897/203204)
+2026-10-18T11:53:42.6009536Z Updating files:  92% (188545/203204)
+2026-10-18T11:53:42.7680941Z Updating files:  93% (188980/203204)
+2026-10-18T11:53:44.0036757Z Updating files:  93% (189052/203204)
+2026-10-18T11:53:44.7945697Z Updating files:  93% (189075/203204)
+2026-10-18T11:53:45.8518334Z Updating files:  93% (189116/203204)
+2026-10-18T11:53:46.7655275Z Updating files:  93% (189140/203204)
+2026-10-18T11:53:47.7648199Z Updating files:  93% (189571/203204)
+2026-10-18T11:53:48.5936642Z Updating files:  93% (190454/203204)
+2026-10-18T11:53:48.7685659Z Updating files:  94% (191012/203204)
+2026-10-18T11:53:49.7637625Z Updating files:  94% (191141/203204)
+2026-10-18T11:53:50.7662248Z Updating files:  94% (192111/203204)
+2026-10-18T11:53:51.1522191Z Updating files:  94% (192754/203204)
+2026-10-18T11:53:51.7709182Z Updating files:  95% (193044/203204)
+2026-10-18T11:53:52.8082954Z Updating files:  95% (193626/203204)
+2026-10-18T11:53:53.7673920Z Updating files:  95% (193982/203204)
+2026-10-18T11:53:54.7702785Z Updating files:  95% (194295/203204)
+2026-10-18T11:53:55.7649178Z Updating files:  95% (194634/203204)
+2026-10-18T11:53:57.0882560Z Updating files:  95% (194899/203204)
+2026-10-18T11:53:57.8451078Z Updating files:  95% (195025/203204)
+2026-10-18T11:53:57.9887517Z Updating files:  95% (195041/203204)
+2026-10-18T11:53:58.7683101Z Updating files:  96% (195076/203204)
+2026-10-18T11:53:59.7653465Z Updating files:  96% (195239/203204)
+2026-10-18T11:54:00.7643029Z Updating files:  96% (195462/203204)
+2026-10-18T11:54:01.7703569Z Updating files:  96% (195659/203204)
+2026-10-18T11:54:02.7711002Z Updating files:  96% (195860/203204)
+2026-10-18T11:54:03.7647411Z Updating files:  96% (196099/203204)
+2026-10-18T11:54:04.7752159Z Updating files:  96% (196355/203204)
+2026-10-18T11:54:05.7644970Z Updating files:  96% (196680/203204)
+2026-10-18T11:54:06.0777146Z Updating files:  96% (197003/203204)
+2026-10-18T11:54:06.7861579Z Updating files:  97% (197108/203204)
+2026-10-18T11:54:07.7728217Z Updating files:  97% (197276/203204)
+2026-10-18T11:54:08.7714119Z Updating files:  97% (197597/203204)
+2026-10-18T11:54:09.7705517Z Updating files:  97% (197854/203204)
+2026-10-18T11:54:10.7681804Z Updating files:  97% (198148/203204)
+2026-10-18T11:54:11.7648670Z Updating files:  97% (198431/203204)
+2026-10-18T11:54:12.8955588Z Updating files:  97% (198751/203204)
+2026-10-18T11:54:13.4095589Z Updating files:  97% (198998/203204)
+2026-10-18T11:54:13.7704634Z Updating files:  98% (199140/203204)
+2026-10-18T11:54:14.7658707Z Updating files:  98% (199247/203204)
+2026-10-18T11:54:15.7649142Z Updating files:  98% (199461/203204)
+2026-10-18T11:54:16.7693889Z Updating files:  98% (199677/203204)
+2026-10-18T11:54:17.7878508Z Updating files:  98% (199865/203204)
+2026-10-18T11:54:18.7966771Z Updating files:  98% (200195/203204)
+2026-10-18T11:54:19.9356682Z Updating files:  98% (200300/203204)
+2026-10-18T11:54:20.7683467Z Updating files:  98% (200350/203204)
+2026-10-18T11:54:21.5825184Z Updating files:  98% (200616/203204)
+2026-10-18T11:54:21.7641376Z Updating files:  99% (201172/203204)
+2026-10-18T11:54:22.0942609Z Updating files:  99% (201718/203204)
+2026-10-18T11:54:22.0966329Z Updating files: 100% (203204/203204)
+2026-10-18T11:54:22.0968828Z Updating files: 100% (203204/203204), done.
+2026-10-18T11:54:22.8481373Z Switched to a new branch 'main'
+2026-10-18T11:54:22.8515078Z branch 'main' set up to track 'origin/main'.
+2026-10-18T11:54:22.9899803Z ##[endgroup]
+2026-10-18T11:54:23.0321993Z [command]/usr/bin/git log -1 --format=%H
+2026-10-18T11:54:23.0338408Z 06a03ecbc193550b73d7d7b3af53a5a7e61b17fb
+2026-10-18T11:54:23.2874754Z ##[group]Run actions/setup-python@v6
+2026-10-18T11:54:23.2876711Z with:
+2026-10-18T11:54:23.2887210Z   python-version: 3.11
+2026-10-18T11:54:23.2893170Z   check-latest: false
+2026-10-18T11:54:23.2896229Z   token: ***
+2026-10-18T11:54:23.2898633Z   update-environment: true
+2026-10-18T11:54:23.2900986Z   allow-prereleases: false
+2026-10-18T11:54:23.2903399Z   freethreaded: false
+2026-10-18T11:54:23.2905578Z ##[endgroup]
+2026-10-18T11:54:23.4944807Z ##[group]Installed versions
+2026-10-18T11:54:23.5062226Z Successfully set up CPython (3.11.17)
+2026-10-18T11:54:23.5066095Z ##[endgroup]
+2026-10-18T11:54:23.5759535Z ##[group]Run ./scripts/run_canonical_chemistry_evidence_watch.sh
+2026-10-18T11:54:23.5760423Z [36;1m./scripts/run_canonical_chemistry_evidence_watch.sh[0m
+2026-10-18T11:54:23.6784050Z shell: /usr/bin/bash -e {0}
+2026-10-18T11:54:23.6784347Z env:
+2026-10-18T11:54:23.6784646Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-10-18T11:54:23.6785257Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib/pkgconfig
+2026-10-18T11:54:23.6785767Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-10-18T11:54:23.6786198Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-10-18T11:54:23.6786631Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-10-18T11:54:23.6787066Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib
+2026-10-18T11:54:23.6787449Z ##[endgroup]
+2026-10-18T11:54:24.1505946Z Canonical Chemistry evidence-watch self-test passed.
+2026-10-18T11:54:24.9188103Z chemistry-evidence-watch: changed=138 added=4 removed=0
+2026-10-18T11:54:24.9191060Z CHANGED curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json
+2026-10-18T11:54:24.9194149Z CHANGED curricula/DE/Gymnasium/composition-views/chemie/de-bb-gk.view.json
+2026-10-18T11:54:24.9197023Z CHANGED curricula/DE/Gymnasium/composition-views/chemie/de-bb-lk.view.json
+2026-10-18T11:54:24.9199855Z CHANGED curricula/DE/Gymnasium/composition-views/chemie/de-be-gk.view.json
+2026-10-18T11:54:24.9200579Z CHANGED curricula/DE/Gymnasium/composition-views/chemie/de-be-lk.view.json
+2026-10-18T11:54:24.9203476Z CHANGED curricula/DE/Gymnasium/composition-views/chemie/de-bw-gk.view.json
+2026-10-18T11:54:24.9206778Z CHANGED curricula/DE/Gymnasium/composition-views/chemie/de-bw-lk.view.json
+2026-10-18T11:54:24.9209604Z CHANGED curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-gk.view.json
+2026-10-18T11:54:24.9212479Z CHANGED curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-lk.view.json
+2026-10-18T11:54:24.9213291Z CHANGED curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-seki-chemistry.view.json
+2026-10-18T11:54:24.9216213Z CHANGED curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-gk.view.json
+2026-10-18T11:54:24.9218988Z CHANGED curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-lk.view.json
+2026-10-18T11:54:24.9221661Z CHANGED curricula/DE/Gymnasium/composition-views/chemie/de-hb-gk.view.json
+2026-10-18T11:54:24.9222355Z CHANGED curricula/DE/Gymnasium/composition-views/chemie/de-hb-lk.view.json
+2026-10-18T11:54:24.9224992Z CHANGED curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json
+2026-10-18T11:54:24.9227724Z CHANGED curricula/DE/Gymnasium/composition-views/chemie/de-he-lk.view.json
+2026-10-18T11:54:24.9230483Z CHANGED curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk.view.json
+2026-10-18T11:54:24.9233597Z CHANGED curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-lk.view.json
+2026-10-18T11:54:24.9234339Z CHANGED curricula/DE/Gymnasium/composition-views/chemie/de-hh-gk.view.json
+2026-10-18T11:54:24.9234922Z CHANGED curricula/DE/Gymnasium/composition-views/chemie/de-hh-lk.view.json
+2026-10-18T11:54:24.9235490Z CHANGED curricula/DE/Gymnasium/composition-views/chemie/de-mv-gk.view.json
+2026-10-18T11:54:24.9236056Z CHANGED curricula/DE/Gymnasium/composition-views/chemie/de-mv-lk.view.json
+2026-10-18T11:54:24.9236625Z CHANGED curricula/DE/Gymnasium/composition-views/chemie/de-ni-gk.view.json
+2026-10-18T11:54:24.9237190Z CHANGED curricula/DE/Gymnasium/composition-views/chemie/de-ni-lk.view.json
+2026-10-18T11:54:24.9237753Z CHANGED curricula/DE/Gymnasium/composition-views/chemie/de-nw-gk.view.json
+2026-10-18T11:54:24.9238315Z CHANGED curricula/DE/Gymnasium/composition-views/chemie/de-nw-lk.view.json
+2026-10-18T11:54:24.9238878Z CHANGED curricula/DE/Gymnasium/composition-views/chemie/de-rp-gk.view.json
+2026-10-18T11:54:24.9239456Z CHANGED curricula/DE/Gymnasium/composition-views/chemie/de-rp-lk.view.json
+2026-10-18T11:54:24.9240262Z CHANGED curricula/DE/Gymnasium/composition-views/chemie/de-sh-gk.view.json
+2026-10-18T11:54:24.9240826Z CHANGED curricula/DE/Gymnasium/composition-views/chemie/de-sh-lk.view.json
+2026-10-18T11:54:24.9241383Z CHANGED curricula/DE/Gymnasium/composition-views/chemie/de-sl-gk.view.json
+2026-10-18T11:54:24.9241944Z CHANGED curricula/DE/Gymnasium/composition-views/chemie/de-sl-lk.view.json
+2026-10-18T11:54:24.9242500Z CHANGED curricula/DE/Gymnasium/composition-views/chemie/de-sn-gk.view.json
+2026-10-18T11:54:24.9243238Z CHANGED curricula/DE/Gymnasium/composition-views/chemie/de-sn-lk.view.json
+2026-10-18T11:54:24.9243796Z CHANGED curricula/DE/Gymnasium/composition-views/chemie/de-st-gk.view.json
+2026-10-18T11:54:24.9244357Z CHANGED curricula/DE/Gymnasium/composition-views/chemie/de-st-lk.view.json
+2026-10-18T11:54:24.9244912Z CHANGED curricula/DE/Gymnasium/composition-views/chemie/de-th-gk.view.json
+2026-10-18T11:54:24.9245470Z CHANGED curricula/DE/Gymnasium/composition-views/chemie/de-th-lk.view.json
+2026-10-18T11:54:24.9246246Z CHANGED curricula/DE/Gymnasium/input/BB/lower-secondary/source-extraction/DE_BB_CHEMIE_SEKI_RLP_2015.source-extraction.json
+2026-10-18T11:54:24.9247248Z CHANGED curricula/DE/Gymnasium/input/BB/upper-secondary/source-extraction/DE_BB_CHEMIE_SEKII_RLP_GOST_2022.source-extraction.json
+2026-10-18T11:54:24.9248239Z CHANGED curricula/DE/Gymnasium/input/BE/lower-secondary/source-extraction/DE_BE_CHEMIE_SEKI_RLP_2015.source-extraction.json
+2026-10-18T11:54:24.9249142Z CHANGED curricula/DE/Gymnasium/input/BE/upper-secondary/source-extraction/DE_BE_CHEMIE_SEKII_RLP_GOST_2022.source-extraction.json
+2026-10-18T11:54:24.9250015Z CHANGED curricula/DE/Gymnasium/input/BW/lower-secondary/source-extraction/DE_BW_CHEMIE_SEKI_BP2016_V2.source-extraction.json
+2026-10-18T11:54:24.9250858Z CHANGED curricula/DE/Gymnasium/input/HB/upper-secondary/source-extraction/DE_HB_CHEMIE_SEKII_GYO_2022.source-extraction.json
+2026-10-18T11:54:24.9251726Z CHANGED curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_CHEMIE_SEKI_G9.source-extraction.json
+2026-10-18T11:54:24.9252608Z CHANGED curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_CHEMIE_SEKII_KC2024_CURRENT2026.source-extraction.json
+2026-10-18T11:54:24.9253674Z CHANGED curricula/DE/Gymnasium/input/HH/upper-secondary/source-extraction/DE_HH_CHEMIE_SEKII_BILDUNGSPLAN_2022.source-extraction.json
+2026-10-18T11:54:24.9254577Z CHANGED curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_CHEMIE_SEKI_RAHMENPLAN_2021.source-extraction.json
+2026-10-18T11:54:24.9255537Z CHANGED curricula/DE/Gymnasium/input/MV/upper-secondary/source-extraction/DE_MV_CHEMIE_SEKII_RAHMENPLAN_ERPROBUNGSFASSUNG_2022.source-extraction.json
+2026-10-18T11:54:24.9256471Z CHANGED curricula/DE/Gymnasium/input/NI/lower-secondary/source-extraction/DE_NI_CHEMIE_SEKI_KC2015.source-extraction.json
+2026-10-18T11:54:24.9257454Z CHANGED curricula/DE/Gymnasium/input/NW/upper-secondary/source-extraction/DE_NW_CHEMIE_SEKII_KLP2022.source-extraction.json
+2026-10-18T11:54:24.9258348Z CHANGED curricula/DE/Gymnasium/input/RP/lower-secondary/source-extraction/DE_RP_CHEMIE_SEKI_RAHMENLEHRPLAN_2014.source-extraction.json
+2026-10-18T11:54:24.9259242Z CHANGED curricula/DE/Gymnasium/input/RP/upper-secondary/source-extraction/DE_RP_CHEMIE_SEKII_MSS_2022.source-extraction.json
+2026-10-18T11:54:24.9260163Z CHANGED curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_CHEMIE_SEKII_FACHANFORDERUNGEN_2022.source-extraction.json
+2026-10-18T11:54:24.9261082Z CHANGED curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_CHEMIE_SEKI_GYM9_2024_2025.source-extraction.json
+2026-10-18T11:54:24.9261942Z CHANGED curricula/DE/Gymnasium/input/SL/upper-secondary/source-extraction/DE_SL_CHEMIE_SEKII_GOS_2023_2025.source-extraction.json
+2026-10-18T11:54:24.9262841Z CHANGED curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_CHEMIE_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json
+2026-10-18T11:54:24.9264053Z CHANGED curricula/DE/Gymnasium/input/SN/upper-secondary/source-extraction/DE_SN_CHEMIE_SEKII_LEHRPLAN_GYMNASIUM_2025.source-extraction.json
+2026-10-18T11:54:24.9265024Z CHANGED curricula/DE/Gymnasium/input/ST/upper-secondary/source-extraction/DE_ST_CHEMIE_SEKII_FACHLEHRPLAN_GYMNASIUM_2022.source-extraction.json
+2026-10-18T11:54:24.9265982Z CHANGED curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_CHEMIE_SEKI_LEHRPLAN_GYMNASIUM_2024.source-extraction.json
+2026-10-18T11:54:24.9266940Z CHANGED curricula/DE/Gymnasium/mapping/DE-BB/lower-secondary/bb_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json
+2026-10-18T11:54:24.9267819Z CHANGED curricula/DE/Gymnasium/mapping/DE-BB/lower-secondary/bb_chemistry_lower_secondary_to_canonical_chemistry.json
+2026-10-18T11:54:24.9268705Z CHANGED curricula/DE/Gymnasium/mapping/DE-BB/upper-secondary/bb_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json
+2026-10-18T11:54:24.9269603Z CHANGED curricula/DE/Gymnasium/mapping/DE-BB/upper-secondary/bb_chemistry_upper_secondary_to_canonical_chemistry.json
+2026-10-18T11:54:24.9270503Z CHANGED curricula/DE/Gymnasium/mapping/DE-BE/lower-secondary/be_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json
+2026-10-18T11:54:24.9271563Z CHANGED curricula/DE/Gymnasium/mapping/DE-BE/lower-secondary/be_chemistry_lower_secondary_to_canonical_chemistry.json
+2026-10-18T11:54:24.9272433Z CHANGED curricula/DE/Gymnasium/mapping/DE-BE/upper-secondary/be_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json
+2026-10-18T11:54:24.9273420Z CHANGED curricula/DE/Gymnasium/mapping/DE-BE/upper-secondary/be_chemistry_upper_secondary_to_canonical_chemistry.json
+2026-10-18T11:54:24.9274423Z CHANGED curricula/DE/Gymnasium/mapping/DE-BW/lower-secondary/bw_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json
+2026-10-18T11:54:24.9275939Z CHANGED curricula/DE/Gymnasium/mapping/DE-BW/lower-secondary/bw_chemistry_lower_secondary_to_canonical_chemistry.json
+2026-10-18T11:54:24.9277602Z CHANGED curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json
+2026-10-18T11:54:24.9278524Z CHANGED curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_chemistry_upper_secondary_to_canonical_chemistry.json
+2026-10-18T11:54:24.9279506Z CHANGED curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_chemistry_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.json
+2026-10-18T11:54:24.9281452Z CHANGED curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_chemistry_source_extraction_to_canonical_chemistry.m7-energy-four-current-20261005-v1.review.json
+2026-10-18T11:54:24.9283158Z CHANGED curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_chemistry_source_extraction_to_canonical_chemistry.m7-energy13-current-20261005-v1.review.json
+2026-10-18T11:54:24.9284402Z CHANGED curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_chemistry_source_extraction_to_canonical_chemistry.review.json
+2026-10-18T11:54:24.9285190Z CHANGED curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_chemistry_to_canonical_chemistry.json
+2026-10-18T11:54:24.9286021Z CHANGED curricula/DE/Gymnasium/mapping/DE-HB/lower-secondary/hb_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json
+2026-10-18T11:54:24.9286990Z CHANGED curricula/DE/Gymnasium/mapping/DE-HB/upper-secondary/hb_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json
+2026-10-18T11:54:24.9287883Z CHANGED curricula/DE/Gymnasium/mapping/DE-HB/upper-secondary/hb_chemistry_upper_secondary_to_canonical_chemistry.json
+2026-10-18T11:54:24.9289109Z CHANGED curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.m7-b010-five-prospective-20261005-v1.b007-normal-source-scope-20261011-v1.review.json
+2026-10-18T11:54:24.9290690Z CHANGED curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.m7-b010-five-prospective-20261005-v1.review.json
+2026-10-18T11:54:24.9291833Z CHANGED curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json
+2026-10-18T11:54:24.9293204Z CHANGED curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.m7-b014-five-current-20261005-v1.review.json
+2026-10-18T11:54:24.9294482Z CHANGED curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.m7-energy-four-current-20261005-v1.review.json
+2026-10-18T11:54:24.9295732Z CHANGED curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.m7-energy13-current-20261005-v1.review.json
+2026-10-18T11:54:24.9297003Z CHANGED curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.m7-q1-fourteen-current-20261005-v4.review.json
+2026-10-18T11:54:24.9298492Z CHANGED curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.q1-atomic-split-author-proposal-20261005-v1.q4-four-bounded-reviewed-20261013-v1.review.json
+2026-10-18T11:54:24.9300057Z CHANGED curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.q1-atomic-split-author-proposal-20261005-v1.review.json
+2026-10-18T11:54:24.9301234Z CHANGED curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json
+2026-10-18T11:54:24.9302155Z CHANGED curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_to_canonical_chemistry.json
+2026-10-18T11:54:24.9303247Z CHANGED curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json
+2026-10-18T11:54:24.9304140Z CHANGED curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_chemistry_lower_secondary_to_canonical_chemistry.json
+2026-10-18T11:54:24.9305169Z CHANGED curricula/DE/Gymnasium/mapping/DE-HH/upper-secondary/hh_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.q4-four-bounded-reviewed-20261013-v1.review.json
+2026-10-18T11:54:24.9306285Z CHANGED curricula/DE/Gymnasium/mapping/DE-HH/upper-secondary/hh_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json
+2026-10-18T11:54:24.9307165Z CHANGED curricula/DE/Gymnasium/mapping/DE-HH/upper-secondary/hh_chemistry_upper_secondary_to_canonical_chemistry.json
+2026-10-18T11:54:24.9308045Z CHANGED curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json
+2026-10-18T11:54:24.9309279Z CHANGED curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_chemistry_lower_secondary_to_canonical_chemistry.json
+2026-10-18T11:54:24.9310164Z CHANGED curricula/DE/Gymnasium/mapping/DE-MV/upper-secondary/mv_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json
+2026-10-18T11:54:24.9311039Z CHANGED curricula/DE/Gymnasium/mapping/DE-MV/upper-secondary/mv_chemistry_upper_secondary_to_canonical_chemistry.json
+2026-10-18T11:54:24.9311910Z CHANGED curricula/DE/Gymnasium/mapping/DE-NI/lower-secondary/ni_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json
+2026-10-18T11:54:24.9312783Z CHANGED curricula/DE/Gymnasium/mapping/DE-NI/lower-secondary/ni_chemistry_lower_secondary_to_canonical_chemistry.json
+2026-10-18T11:54:24.9314101Z CHANGED curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.m7-manganometry-three-route-corrections-20261012-v1.review.json
+2026-10-18T11:54:24.9315296Z CHANGED curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json
+2026-10-18T11:54:24.9316293Z CHANGED curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_chemistry_upper_secondary_to_canonical_chemistry.json
+2026-10-18T11:54:24.9317315Z CHANGED curricula/DE/Gymnasium/mapping/DE-NW/lower-secondary/nrw_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.json
+2026-10-18T11:54:24.9318437Z CHANGED curricula/DE/Gymnasium/mapping/DE-NW/lower-secondary/nrw_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json
+2026-10-18T11:54:24.9319325Z CHANGED curricula/DE/Gymnasium/mapping/DE-NW/lower-secondary/nrw_chemistry_lower_secondary_to_canonical_chemistry.json
+2026-10-18T11:54:24.9320359Z CHANGED curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.q4-four-bounded-reviewed-20261013-v1.review.json
+2026-10-18T11:54:24.9321490Z CHANGED curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json
+2026-10-18T11:54:24.9322371Z CHANGED curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_chemistry_upper_secondary_to_canonical_chemistry.json
+2026-10-18T11:54:24.9323526Z CHANGED curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json
+2026-10-18T11:54:24.9324410Z CHANGED curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_chemistry_lower_secondary_to_canonical_chemistry.json
+2026-10-18T11:54:24.9325283Z CHANGED curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json
+2026-10-18T11:54:24.9326164Z CHANGED curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_chemistry_upper_secondary_to_canonical_chemistry.json
+2026-10-18T11:54:24.9327179Z CHANGED curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.json
+2026-10-18T11:54:24.9328296Z CHANGED curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json
+2026-10-18T11:54:24.9329169Z CHANGED curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_chemistry_lower_secondary_to_canonical_chemistry.json
+2026-10-18T11:54:24.9330177Z CHANGED curricula/DE/Gymnasium/mapping/DE-SH/upper-secondary/sh_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.m7-micelle-correction-20261012-v1.review.json
+2026-10-18T11:54:24.9331272Z CHANGED curricula/DE/Gymnasium/mapping/DE-SH/upper-secondary/sh_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json
+2026-10-18T11:54:24.9332142Z CHANGED curricula/DE/Gymnasium/mapping/DE-SH/upper-secondary/sh_chemistry_upper_secondary_to_canonical_chemistry.json
+2026-10-18T11:54:24.9333369Z CHANGED curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json
+2026-10-18T11:54:24.9334242Z CHANGED curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_chemistry_lower_secondary_to_canonical_chemistry.json
+2026-10-18T11:54:24.9335112Z CHANGED curricula/DE/Gymnasium/mapping/DE-SL/upper-secondary/sl_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json
+2026-10-18T11:54:24.9335974Z CHANGED curricula/DE/Gymnasium/mapping/DE-SL/upper-secondary/sl_chemistry_upper_secondary_to_canonical_chemistry.json
+2026-10-18T11:54:24.9336850Z CHANGED curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json
+2026-10-18T11:54:24.9337718Z CHANGED curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_chemistry_lower_secondary_to_canonical_chemistry.json
+2026-10-18T11:54:24.9338590Z CHANGED curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json
+2026-10-18T11:54:24.9339591Z CHANGED curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_chemistry_upper_secondary_to_canonical_chemistry.json
+2026-10-18T11:54:24.9340466Z CHANGED curricula/DE/Gymnasium/mapping/DE-ST/lower-secondary/st_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json
+2026-10-18T11:54:24.9341338Z CHANGED curricula/DE/Gymnasium/mapping/DE-ST/lower-secondary/st_chemistry_lower_secondary_to_canonical_chemistry.json
+2026-10-18T11:54:24.9342216Z CHANGED curricula/DE/Gymnasium/mapping/DE-ST/upper-secondary/st_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json
+2026-10-18T11:54:24.9343279Z CHANGED curricula/DE/Gymnasium/mapping/DE-ST/upper-secondary/st_chemistry_upper_secondary_to_canonical_chemistry.json
+2026-10-18T11:54:24.9344154Z CHANGED curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json
+2026-10-18T11:54:24.9345023Z CHANGED curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_chemistry_lower_secondary_to_canonical_chemistry.json
+2026-10-18T11:54:24.9346046Z CHANGED curricula/DE/Gymnasium/mapping/DE-TH/upper-secondary/th_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.json
+2026-10-18T11:54:24.9347156Z CHANGED curricula/DE/Gymnasium/mapping/DE-TH/upper-secondary/th_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json
+2026-10-18T11:54:24.9348036Z CHANGED curricula/DE/Gymnasium/mapping/DE-TH/upper-secondary/th_chemistry_upper_secondary_to_canonical_chemistry.json
+2026-10-18T11:54:24.9348828Z ADDED curricula/DE/Gymnasium/composition-views/chemie/de-by-c10-ethanol-risk-unit.current-pilot.view.json
+2026-10-18T11:54:24.9349511Z ADDED curricula/DE/Gymnasium/composition-views/chemie/de-by-lk.current-pilot.view.json
+2026-10-18T11:54:24.9350092Z ADDED curricula/DE/Gymnasium/composition-views/chemie/de-hb-sekii-gk.view.json
+2026-10-18T11:54:24.9350635Z ADDED curricula/DE/Gymnasium/composition-views/chemie/de-hb-sekii-lk.view.json
+2026-10-18T11:54:24.9365410Z ##[error]Process completed with exit code 1.
+2026-10-18T11:54:24.9458165Z ##[group]Run actions/upload-artifact@v6
+2026-10-18T11:54:24.9458469Z with:
+2026-10-18T11:54:24.9458690Z   name: canonical-chemistry-evidence-watch
+2026-10-18T11:54:24.9459371Z   path: docs/dev/canonical-gymnasium-chemistry-evidence-watch-status.md
+docs/dev/canonical-gymnasium-chemistry-evidence-watch-delta.md
+
+2026-10-18T11:54:24.9460050Z   if-no-files-found: warn
+2026-10-18T11:54:24.9460283Z   compression-level: 6
+2026-10-18T11:54:24.9460498Z   overwrite: false
+2026-10-18T11:54:24.9460708Z   include-hidden-files: false
+2026-10-18T11:54:24.9460938Z env:
+2026-10-18T11:54:24.9461186Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-10-18T11:54:24.9461604Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib/pkgconfig
+2026-10-18T11:54:24.9462182Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-10-18T11:54:24.9462556Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-10-18T11:54:24.9463213Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-10-18T11:54:24.9463620Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib
+2026-10-18T11:54:24.9463940Z ##[endgroup]
+2026-10-18T11:54:25.1232859Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2026-10-18T11:54:25.1236034Z The least common ancestor is /home/runner/work/skillpilot/skillpilot/docs/dev. This will be the root directory of the artifact
+2026-10-18T11:54:25.1237083Z With the provided path, there will be 2 files uploaded
+2026-10-18T11:54:25.1243399Z Artifact name is valid!
+2026-10-18T11:54:25.1244437Z Root directory input is valid!
+2026-10-18T11:54:25.3457337Z Beginning upload of artifact content to blob storage
+2026-10-18T11:54:25.4144193Z Uploaded bytes 11330
+2026-10-18T11:54:25.4489202Z Finished uploading artifact content to blob storage!
+2026-10-18T11:54:25.4490330Z SHA256 digest of uploaded artifact zip is ebcfe045f5f1aa38ed4ae22cabb8863484550fa8bf563231a57c27f92531dd6e
+2026-10-18T11:54:25.4491682Z Finalizing artifact upload
+2026-10-18T11:54:25.6678166Z Artifact canonical-chemistry-evidence-watch.zip successfully finalized. Artifact ID 12135642700
+2026-10-18T11:54:25.6679797Z Artifact canonical-chemistry-evidence-watch has been successfully uploaded! Final size is 11330 bytes. Artifact ID is 12135642700
+2026-10-18T11:54:25.6683772Z Artifact download URL: https://github.com/enpasos/skillpilot/actions/runs/39124585152/artifacts/12135642700
+2026-10-18T11:54:25.6902710Z Post job cleanup.
+2026-10-18T11:54:25.7831064Z [command]/usr/bin/git version
+2026-10-18T11:54:25.7869116Z git version 2.55.0
+2026-10-18T11:54:25.7922526Z Temporarily overriding HOME='/home/runner/work/_temp/a261bd5f-e343-4e45-84e0-c2055810369e' before making global git config changes
+2026-10-18T11:54:25.7926608Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-18T11:54:25.7927751Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/skillpilot/skillpilot
+2026-10-18T11:54:25.7959943Z Removing SSH command configuration
+2026-10-18T11:54:25.7966697Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-18T11:54:25.8005619Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-18T11:54:25.8814624Z Removing HTTP extra header
+2026-10-18T11:54:25.8823815Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-18T11:54:25.8858623Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-18T11:54:25.9612307Z Removing includeIf entries pointing to credentials config files
+2026-10-18T11:54:25.9617909Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-18T11:54:25.9680518Z includeif.gitdir:/home/runner/work/skillpilot/skillpilot/.git.path
+2026-10-18T11:54:25.9683472Z includeif.gitdir:/home/runner/work/skillpilot/skillpilot/.git/worktrees/*.path
+2026-10-18T11:54:25.9686235Z includeif.gitdir:/github/workspace/.git.path
+2026-10-18T11:54:25.9687006Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-18T11:54:25.9692437Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/skillpilot/skillpilot/.git.path
+2026-10-18T11:54:25.9713482Z /home/runner/work/_temp/git-credentials-fcb49048-e44b-4a02-bf38-a4c96bb5def6.config
+2026-10-18T11:54:25.9723918Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/skillpilot/skillpilot/.git.path /home/runner/work/_temp/git-credentials-fcb49048-e44b-4a02-bf38-a4c96bb5def6.config
+2026-10-18T11:54:25.9768799Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/skillpilot/skillpilot/.git/worktrees/*.path
+2026-10-18T11:54:25.9780979Z /home/runner/work/_temp/git-credentials-fcb49048-e44b-4a02-bf38-a4c96bb5def6.config
+2026-10-18T11:54:25.9790878Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/skillpilot/skillpilot/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-fcb49048-e44b-4a02-bf38-a4c96bb5def6.config
+2026-10-18T11:54:25.9829050Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-10-18T11:54:25.9849492Z /github/runner_temp/git-credentials-fcb49048-e44b-4a02-bf38-a4c96bb5def6.config
+2026-10-18T11:54:25.9858775Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-fcb49048-e44b-4a02-bf38-a4c96bb5def6.config
+2026-10-18T11:54:25.9899103Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-18T11:54:25.9926426Z /github/runner_temp/git-credentials-fcb49048-e44b-4a02-bf38-a4c96bb5def6.config
+2026-10-18T11:54:25.9933974Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-fcb49048-e44b-4a02-bf38-a4c96bb5def6.config
+2026-10-18T11:54:25.9987076Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-18T11:54:26.0800481Z Removing credentials config '/home/runner/work/_temp/git-credentials-fcb49048-e44b-4a02-bf38-a4c96bb5def6.config'
+2026-10-18T11:54:26.0903676Z Cleaning up orphan processes

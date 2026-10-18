@@ -1,6 +1,6 @@
 # Canonical Gymnasium Chemistry Evidence Watch Delta
 
-Snapshot: `2026-10-12T23:28:33Z`
+Snapshot: `2026-10-18T12:14:08Z`
 
 This file is generated from:
 
@@ -10,9 +10,9 @@ This file is generated from:
 
 ## Headline
 
-- Baseline snapshot: `2026-10-12T23:28:33Z`
-- Current watched files: `156`
-- Unchanged watched files: `156`
+- Baseline snapshot: `2026-10-18T11:58:59Z`
+- Current watched files: `160`
+- Unchanged watched files: `160`
 - Changed watched files: `0`
 - Added watch paths since baseline: `0`
 - Removed watch paths since baseline: `0`
