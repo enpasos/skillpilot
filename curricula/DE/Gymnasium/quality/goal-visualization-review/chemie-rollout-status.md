@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-10-18T00:43:33.373Z
+Generated: 2026-10-18T15:10:15.152Z
 
 Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 
@@ -16,7 +16,7 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Alle Ziele in der Landschaft | 662 |
+| Alle Ziele in der Landschaft | 737 |
 | Atomare Ziele im Visualisierungs-Scope | 450 |
 | Ziele mit primaerem Visualisierungslink | 450 |
 | Coverage | 100.0% |

@@ -388,3 +388,12 @@ Der vollständige Originalvalidator besteht mit 352 Ansichten und null Fehlern;
 Projektionsrollen-, Memory- und Watch-Prüfung bestehen ebenfalls. Der
 [technische Einfeldbeleg](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-runtime-view-routing-and-label-repair-technical-20261018-v1/checks/ACTUAL.HE-GK-group-label-CI-followup.json)
 hält die unveränderten Grenzen und die tatsächlichen Prüfungen fest.
+
+Der Nachlauf für `3b985e83b` bestätigt Frontend, Backend, Ansichtsvalidierung,
+Tiefen-QS und den zentralen Qualitätsbericht. Die spätere Rolloutprüfung fand
+eine veraltete Gesamtzahl im generierten Chemie-Bildbericht: 662 statt 737
+Graphknoten. Der Originalgenerator korrigiert ausschließlich diese Zahl und
+den Zeitstempel in JSON und Markdown. Alle 450 Bilddatensätze, Links,
+Bewertungsstände und Abdeckungswerte bleiben unverändert; der ursprüngliche
+Abdeckungs- und Paritätstest besteht. Daraus folgt kein neuer fachlicher
+Abschluss und keine menschliche Freigabe.
