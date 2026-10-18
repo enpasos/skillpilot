@@ -1,0 +1,218 @@
+{
+  "role": "ACTUAL_FINAL_LOCAL_CI_REPAIR_NOT_M7_OR_HUMAN_APPROVAL",
+  "completedAt": "2026-10-18T13:26:46.685518+00:00",
+  "againstHead": "d8343a6d129c343508df65ebadcb2d82e515972d",
+  "maturity": "M6",
+  "deepUnderstanding": {
+    "expectedGoals": 450,
+    "remaining": 190,
+    "strictComplete": 260,
+    "currentDescriptionResolutions": 260,
+    "currentPositiveEvidenceProfiles": 450,
+    "currentSemanticAtomicityDecisions": 450,
+    "currentMemoryReviewDecisions": 450,
+    "currentVisualizationQaRecords": 450,
+    "deferredVisualizations": 0,
+    "requiredChecksPassed": 5,
+    "requiredChecksTotal": 6,
+    "blockingIssues": 215
+  },
+  "failedChemistryRules": [
+    "CQR-303"
+  ],
+  "sourceCoverage": {
+    "id": "CQR-003",
+    "status": "pass",
+    "summary": "All 16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.",
+    "metrics": {
+      "totalJurisdictions": 16,
+      "coveredJurisdictions": 16,
+      "sourceBackedJurisdictions": 16,
+      "sourceCompleteJurisdictions": 16,
+      "fullCoverageJurisdictions": 16,
+      "uncoveredJurisdictions": 0,
+      "incompleteJurisdictions": 0,
+      "unsupportedAssignmentJurisdictions": 0,
+      "sourceUnmappedJurisdictions": 0,
+      "unsupportedAssignedAtomicGoals": 0,
+      "unmappedSourceAtomicGoals": 0,
+      "sourceAtomicGoals": 6134,
+      "sourceMappedToViewAtomicGoals": 6134,
+      "sourceOriginalGoals": 6134,
+      "sourceFullyCoveredOriginalGoals": 6134,
+      "sourcePartiallyCoveredOriginalGoals": 0,
+      "sourceUncoveredOriginalGoals": 0,
+      "surrogateBackedAtomicGoals": 31,
+      "partialSourceLinkedAtomicGoals": 0,
+      "warningedJurisdictions": 0,
+      "cleanJurisdictions": 16,
+      "partialJurisdictions": 0,
+      "errorJurisdictions": 0,
+      "minSourceBackedAtomicGoals": 144,
+      "maxVisibleAtomicGoals": 349,
+      "maxSourceBackedAtomicGoals": 349,
+      "totalAtomicGoals": 379
+    }
+  },
+  "memory": {
+    "configs": 1,
+    "reviewedGoals": 450,
+    "noMemoryNeeded": 384,
+    "memoryRequired": 66,
+    "needsDeveloperReview": 0,
+    "missing": 0,
+    "stale": 0,
+    "obsolete": 0,
+    "duplicateRecords": 0,
+    "invalidRecords": 0,
+    "primaryCards": 759,
+    "keptCards": 759,
+    "cardsMarkedRemove": 0,
+    "cardNeedsDeveloperReview": 0,
+    "missingCardReviews": 0,
+    "staleCardReviews": 0,
+    "obsoleteCardReviews": 0,
+    "duplicateCardReviewRecords": 0,
+    "invalidCardReviewRecords": 0,
+    "untracedMemoryRequiredGoals": 0,
+    "visibilityScopes": 41,
+    "visibilityCheckedMemoryRequiredGoals": 1715,
+    "visibilityMissingVisibleMemoryGoals": 0,
+    "visibilityErrors": 0,
+    "memoryGoals": 68,
+    "tracedMemoryGoals": 68,
+    "untracedMemoryGoals": 0,
+    "deckIds": 7,
+    "deckFiles": 69,
+    "cardRows": 777
+  },
+  "protectedSubjects": [
+    {
+      "subject": "Biologie",
+      "maturity": "M7",
+      "deep": {
+        "expectedGoals": 397,
+        "remaining": 0,
+        "strictComplete": 397,
+        "currentDescriptionResolutions": 397,
+        "currentPositiveEvidenceProfiles": 397,
+        "currentSemanticAtomicityDecisions": 397,
+        "currentMemoryReviewDecisions": 397,
+        "currentVisualizationQaRecords": 397,
+        "deferredVisualizations": 0,
+        "requiredChecksPassed": 6,
+        "requiredChecksTotal": 6,
+        "blockingIssues": 0
+      }
+    },
+    {
+      "subject": "Mathematik",
+      "maturity": "M7",
+      "deep": {
+        "expectedGoals": 807,
+        "remaining": 0,
+        "strictComplete": 807,
+        "currentDescriptionResolutions": 807,
+        "currentPositiveEvidenceProfiles": 807,
+        "currentSemanticAtomicityDecisions": 807,
+        "currentMemoryReviewDecisions": 807,
+        "currentVisualizationQaRecords": 807,
+        "deferredVisualizations": 0,
+        "requiredChecksPassed": 6,
+        "requiredChecksTotal": 6,
+        "blockingIssues": 0
+      }
+    },
+    {
+      "subject": "Physik",
+      "maturity": "M7",
+      "deep": {
+        "expectedGoals": 478,
+        "remaining": 0,
+        "strictComplete": 478,
+        "currentDescriptionResolutions": 478,
+        "currentPositiveEvidenceProfiles": 478,
+        "currentSemanticAtomicityDecisions": 478,
+        "currentMemoryReviewDecisions": 478,
+        "currentVisualizationQaRecords": 478,
+        "deferredVisualizations": 0,
+        "requiredChecksPassed": 6,
+        "requiredChecksTotal": 6,
+        "blockingIssues": 0
+      }
+    }
+  ],
+  "backendTargetedFullClasses": {
+    "tests": 88,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "originalHandoff": "checks/chemie450-backend-ci-d8343a6d.final-handoff.json",
+    "BYRuntimeAndParentVectorsUnchangedAfterSourceRoleCorrection": true
+  },
+  "additionalMergerTargetTest": "pass",
+  "frontendOriginalGoalSelectionTest": "pass",
+  "typescriptBuild": "pass",
+  "originalDeepUnderstandingTest": "pass",
+  "allFiveBookInputAndOutputBindingChecks": "pass",
+  "requiredScopeSourceAndMemoryChecks": "pass",
+  "documentationRegistryLinksAndIndexChecks": "pass",
+  "originalEvidenceWatch": "pass",
+  "installedBaselineSha256": "ad4352e22762167a899c21b4019a15b8de70fcdd55b0141e9abe3e715f7abcfb",
+  "currentStatusSha256": "5b04651eb5d32de48ce1d65e70618dc831ac03c53226450010b58e787c1a19ee",
+  "newScientificClosures": 0,
+  "newDOrPDecisions": 0,
+  "historicalEvidenceRetained": true,
+  "humanApproval": false,
+  "remoteCIClaim": false,
+  "archivedActualLogs": [
+    {
+      "originalExecutionPath": "tmp/chemie450-ci-repair-final-source-bound-watch.stdout.txt",
+      "archivePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-runtime-view-routing-and-label-repair-technical-20261018-v1/checks/chemie450-ci-repair-final-source-bound-watch.stdout.txt",
+      "sha256": "e82aa0aa93de049d61e4bbd3baaa475470794d54a471d721172ca65a8d6e5f8e",
+      "bytes": 135
+    },
+    {
+      "originalExecutionPath": "tmp/chemie450-ci-repair-final-maturity-floors.stdout.txt",
+      "archivePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-runtime-view-routing-and-label-repair-technical-20261018-v1/checks/chemie450-ci-repair-final-maturity-floors.stdout.txt",
+      "sha256": "959f6932ca04e96e121ba58bd4878d17b1fe4fe8c52b5f5b82deb86bda94a70d",
+      "bytes": 159
+    },
+    {
+      "originalExecutionPath": "tmp/chemie450-ci-repair-final-deep-test.stdout.txt",
+      "archivePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-runtime-view-routing-and-label-repair-technical-20261018-v1/checks/chemie450-ci-repair-final-deep-test.stdout.txt",
+      "sha256": "d6d80141f3a12381386365ae0dd19d8ee0222e73049808dafdc20290ae09764d",
+      "bytes": 582
+    },
+    {
+      "originalExecutionPath": "tmp/chemie450-frontend-focus-fixed-alias-only.stdout.log",
+      "archivePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-runtime-view-routing-and-label-repair-technical-20261018-v1/checks/chemie450-frontend-focus-fixed-alias-only.stdout.log.txt",
+      "sha256": "7f1bac7485825faf213f637cd38b9fad794c909ffbcbd7a42c39f8586d40f8cf",
+      "bytes": 152
+    },
+    {
+      "originalExecutionPath": "tmp/chemie450-ci-repair-check-generated-status-registry.stdout.txt",
+      "archivePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-runtime-view-routing-and-label-repair-technical-20261018-v1/checks/chemie450-ci-repair-check-generated-status-registry.stdout.txt",
+      "sha256": "b9d70d7acf26466f4103877c96568903885fd8497ad661b72e597be4de75c626",
+      "bytes": 153
+    },
+    {
+      "originalExecutionPath": "tmp/chemie450-ci-repair-check-docs-links.stdout.txt",
+      "archivePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-runtime-view-routing-and-label-repair-technical-20261018-v1/checks/chemie450-ci-repair-check-docs-links.stdout.txt",
+      "sha256": "4a539b4e283e7a25d9f4c31d83030d348d3f360f60ccecef7120aeddb0ffd168",
+      "bytes": 121
+    },
+    {
+      "originalExecutionPath": "tmp/chemie450-ci-repair-check-docs-indexes.stdout.txt",
+      "archivePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-runtime-view-routing-and-label-repair-technical-20261018-v1/checks/chemie450-ci-repair-check-docs-indexes.stdout.txt",
+      "sha256": "2ba0d2aa99b03ea9fd1b2f717a2ad5dfae44e11d2fbb85e8d14551f368c1efe0",
+      "bytes": 131
+    },
+    {
+      "originalExecutionPath": "tmp/chemie450-ci-repair-goal-books.after-atlas.stdout.txt",
+      "archivePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-runtime-view-routing-and-label-repair-technical-20261018-v1/checks/chemie450-ci-repair-goal-books.after-atlas.stdout.txt",
+      "sha256": "cb0780104fd68cfd4021b3ca4184afa29282d8c7b9015a7e370dca852285693b",
+      "bytes": 1020
+    }
+  ]
+}

@@ -1,0 +1,317 @@
+{
+  "role": "NARROW_ACTUAL_CHEMISTRY_SOURCE_FIXTURE_COUNT_CORRECTION_ONLY",
+  "at": "2026-10-18T12:58:12.759855+00:00",
+  "sourceHead": "d8343a6d129c343508df65ebadcb2d82e515972d",
+  "file": "backend/src/test/java/com/skillpilot/backend/landscape/LandscapeServiceTest.java",
+  "beforeSha256": "0d2ca54c611b206193075f4fd1356d6c03a6064eeba5a8fc4acc1ef5c1734b0d",
+  "afterSha256": "0932f9591ad499e9e53ce08dd4aeef7b21c4ee1e391f2588dff4ea8425f3e239",
+  "changedCountLiterals": 19,
+  "qualitativeAndNonCountAssertionsUnchanged": true,
+  "HBTitleAndCountDeferredUntilSourceStatusDiagnosis": true,
+  "changes": [
+    {
+      "method": "loadsBadenWuerttembergChemistrySourceExtractionsFromRealRegistry",
+      "variable": "lower",
+      "sourceLandscapeId": "ac4d5c1c-b2c9-5724-b0bc-64b9d666ad87",
+      "beforeExpected": 65,
+      "expectedAndActual": 66,
+      "source": {
+        "path": "curricula/DE/Gymnasium/input/BW/lower-secondary/source-extraction/DE_BW_CHEMIE_SEKI_BP2016_V2.source-extraction.json",
+        "sha256": "511b0e9122c831bcda654bd9c3887b1fdba0ee7e779939d6d733c21f91df8025",
+        "bytes": 158687,
+        "title": "Chemie Sekundarstufe I (Baden-Wuerttemberg, BP2016 V2 Source-Extraction)",
+        "sourceGoals": 66
+      },
+      "jsonPointer": "/sourceGoals",
+      "sourceRuntimeConversion": "LandscapeService.java:1066 directly converts the full sourceGoals array."
+    },
+    {
+      "method": "loadsBerlinBrandenburgChemistrySourceExtractionsFromRealRegistry",
+      "variable": "brandenburgLower",
+      "sourceLandscapeId": "9b66c555-7231-40a0-a493-9ffff8bde46c",
+      "beforeExpected": 68,
+      "expectedAndActual": 71,
+      "source": {
+        "path": "curricula/DE/Gymnasium/input/BB/lower-secondary/source-extraction/DE_BB_CHEMIE_SEKI_RLP_2015.source-extraction.json",
+        "sha256": "517828e0e9aa95b61dfb8c1e1a11e0c86f7409b24fc1d63f376ded2503caaa4e",
+        "bytes": 139373,
+        "title": "DE-BB - Chemie Sekundarstufe I (Brandenburg, RLP 2015 Source-Extraction)",
+        "sourceGoals": 71
+      },
+      "jsonPointer": "/sourceGoals",
+      "sourceRuntimeConversion": "LandscapeService.java:1066 directly converts the full sourceGoals array."
+    },
+    {
+      "method": "loadsBerlinBrandenburgChemistrySourceExtractionsFromRealRegistry",
+      "variable": "brandenburgUpper",
+      "sourceLandscapeId": "6a3e6947-d950-5619-8db8-2ab9a6ac55c6",
+      "beforeExpected": 203,
+      "expectedAndActual": 216,
+      "source": {
+        "path": "curricula/DE/Gymnasium/input/BB/upper-secondary/source-extraction/DE_BB_CHEMIE_SEKII_RLP_GOST_2022.source-extraction.json",
+        "sha256": "4ee91e7ad4df223b0416953b141a69f4c20153a824ba2e94fd20eeaa8416d24d",
+        "bytes": 390548,
+        "title": "DE-BB - Chemie Oberstufe (Brandenburg, RLP GOST 2022 Source-Extraction)",
+        "sourceGoals": 216
+      },
+      "jsonPointer": "/sourceGoals",
+      "sourceRuntimeConversion": "LandscapeService.java:1066 directly converts the full sourceGoals array."
+    },
+    {
+      "method": "loadsBerlinBrandenburgChemistrySourceExtractionsFromRealRegistry",
+      "variable": "berlinLower",
+      "sourceLandscapeId": "2af9b757-11db-461a-812e-d1c1b4d6e104",
+      "beforeExpected": 68,
+      "expectedAndActual": 71,
+      "source": {
+        "path": "curricula/DE/Gymnasium/input/BE/lower-secondary/source-extraction/DE_BE_CHEMIE_SEKI_RLP_2015.source-extraction.json",
+        "sha256": "28adf73b7b7167ecc0e6e031548eaf57017a78f3499102429b6106b5abdabf11",
+        "bytes": 139353,
+        "title": "DE-BE - Chemie Sekundarstufe I (Berlin, RLP 2015 Source-Extraction)",
+        "sourceGoals": 71
+      },
+      "jsonPointer": "/sourceGoals",
+      "sourceRuntimeConversion": "LandscapeService.java:1066 directly converts the full sourceGoals array."
+    },
+    {
+      "method": "loadsBerlinBrandenburgChemistrySourceExtractionsFromRealRegistry",
+      "variable": "berlinUpper",
+      "sourceLandscapeId": "4bb4be30-3d9c-5e5b-9c9f-64fb0bc80c0c",
+      "beforeExpected": 203,
+      "expectedAndActual": 216,
+      "source": {
+        "path": "curricula/DE/Gymnasium/input/BE/upper-secondary/source-extraction/DE_BE_CHEMIE_SEKII_RLP_GOST_2022.source-extraction.json",
+        "sha256": "fe6f8b477ba797a0cfdc37c1a95e683c1806ecb1e9e037671367117330e41fc0",
+        "bytes": 390553,
+        "title": "DE-BE - Chemie Oberstufe (Berlin, RLP GOST 2022 Source-Extraction)",
+        "sourceGoals": 216
+      },
+      "jsonPointer": "/sourceGoals",
+      "sourceRuntimeConversion": "LandscapeService.java:1066 directly converts the full sourceGoals array."
+    },
+    {
+      "method": "loadsHamburgChemistrySourceExtractionsFromRealRegistry",
+      "variable": "upper",
+      "sourceLandscapeId": "7516a41d-2eb2-5ce4-8f38-31570f0ffa81",
+      "beforeExpected": 97,
+      "expectedAndActual": 108,
+      "source": {
+        "path": "curricula/DE/Gymnasium/input/HH/upper-secondary/source-extraction/DE_HH_CHEMIE_SEKII_BILDUNGSPLAN_2022.source-extraction.json",
+        "sha256": "8200ca3e81e7b339da1b7fd36add3cef85d82ec4601c0ac9d8d6b7ddf8904b5a",
+        "bytes": 213716,
+        "title": "DE-HH - Chemie Studienstufe (Hamburg, Bildungsplan 2022 Source-Extraction)",
+        "sourceGoals": 108
+      },
+      "jsonPointer": "/sourceGoals",
+      "sourceRuntimeConversion": "LandscapeService.java:1066 directly converts the full sourceGoals array."
+    },
+    {
+      "method": "loadsMecklenburgVorpommernChemistrySourceExtractionsFromRealRegistry",
+      "variable": "lower",
+      "sourceLandscapeId": "e19d84c3-efa8-5b74-8c78-b284fc65b26c",
+      "beforeExpected": 114,
+      "expectedAndActual": 115,
+      "source": {
+        "path": "curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_CHEMIE_SEKI_RAHMENPLAN_2021.source-extraction.json",
+        "sha256": "ffff1f5c4e2cd1c2c102820c31e97cf42ee33a384a528dcc544063d2a1fc235c",
+        "bytes": 232774,
+        "title": "DE-MV - Chemie Sekundarstufe I (Mecklenburg-Vorpommern, Rahmenplan 2021 Source-Extraction)",
+        "sourceGoals": 115
+      },
+      "jsonPointer": "/sourceGoals",
+      "sourceRuntimeConversion": "LandscapeService.java:1066 directly converts the full sourceGoals array."
+    },
+    {
+      "method": "loadsMecklenburgVorpommernChemistrySourceExtractionsFromRealRegistry",
+      "variable": "upper",
+      "sourceLandscapeId": "4f98d47b-8536-5021-8bf1-09761eff8050",
+      "beforeExpected": 122,
+      "expectedAndActual": 136,
+      "source": {
+        "path": "curricula/DE/Gymnasium/input/MV/upper-secondary/source-extraction/DE_MV_CHEMIE_SEKII_RAHMENPLAN_ERPROBUNGSFASSUNG_2022.source-extraction.json",
+        "sha256": "7338089fe466655ca91d13771499976a1eb36382c7d171c10f8f55100351f9e8",
+        "bytes": 338780,
+        "title": "DE-MV - Chemie Qualifikationsphase (Mecklenburg-Vorpommern, Rahmenplan 2022 Erprobungsfassung Source-Extraction)",
+        "sourceGoals": 136
+      },
+      "jsonPointer": "/sourceGoals",
+      "sourceRuntimeConversion": "LandscapeService.java:1066 directly converts the full sourceGoals array."
+    },
+    {
+      "method": "loadsNiedersachsenChemistrySourceExtractionsFromRealRegistry",
+      "variable": "lower",
+      "sourceLandscapeId": "d1d18318-e66f-44dc-8e82-52f8aa0b0ac1",
+      "beforeExpected": 196,
+      "expectedAndActual": 198,
+      "source": {
+        "path": "curricula/DE/Gymnasium/input/NI/lower-secondary/source-extraction/DE_NI_CHEMIE_SEKI_KC2015.source-extraction.json",
+        "sha256": "b7007991e6f2031b7382e7f75f1cedae13573ff9bfc59fb89fcc0fc930eb9897",
+        "bytes": 361478,
+        "title": "DE-NI - Chemie Sekundarstufe I (Niedersachsen, KC 2015 Source-Extraction)",
+        "sourceGoals": 198
+      },
+      "jsonPointer": "/sourceGoals",
+      "sourceRuntimeConversion": "LandscapeService.java:1066 directly converts the full sourceGoals array."
+    },
+    {
+      "method": "loadsNrwChemistrySourceExtractionsFromRealRegistry",
+      "variable": "upper",
+      "sourceLandscapeId": "9d80e7cf-2087-5eda-841a-e02e707b5ba9",
+      "beforeExpected": 154,
+      "expectedAndActual": 170,
+      "source": {
+        "path": "curricula/DE/Gymnasium/input/NW/upper-secondary/source-extraction/DE_NW_CHEMIE_SEKII_KLP2022.source-extraction.json",
+        "sha256": "5aecad2abd08ddd4102636007bfc65c61ffbfdea4c9b9459a2505703a7207fbf",
+        "bytes": 457319,
+        "title": "DE-NW - Chemie Oberstufe (Nordrhein-Westfalen, KLP 2022 Source-Extraction)",
+        "sourceGoals": 170
+      },
+      "jsonPointer": "/sourceGoals",
+      "sourceRuntimeConversion": "LandscapeService.java:1066 directly converts the full sourceGoals array."
+    },
+    {
+      "method": "loadsRheinlandPfalzChemistrySourceExtractionsFromRealRegistry",
+      "variable": "lower",
+      "sourceLandscapeId": "4eb03df6-9416-5dc8-8957-a9cd3d5ce6a9",
+      "beforeExpected": 65,
+      "expectedAndActual": 66,
+      "source": {
+        "path": "curricula/DE/Gymnasium/input/RP/lower-secondary/source-extraction/DE_RP_CHEMIE_SEKI_RAHMENLEHRPLAN_2014.source-extraction.json",
+        "sha256": "6c2bf6dde65159bdec084b25615fd4457642d4f8bec1d038c714cc5b2b423d37",
+        "bytes": 191984,
+        "title": "DE-RP - Chemie Sekundarstufe I (Rheinland-Pfalz, Lehrplan BCP 2014 Source-Extraction)",
+        "sourceGoals": 66
+      },
+      "jsonPointer": "/sourceGoals",
+      "sourceRuntimeConversion": "LandscapeService.java:1066 directly converts the full sourceGoals array."
+    },
+    {
+      "method": "loadsRheinlandPfalzChemistrySourceExtractionsFromRealRegistry",
+      "variable": "upper",
+      "sourceLandscapeId": "7995e414-2401-5987-89e8-f4dfd816bd68",
+      "beforeExpected": 325,
+      "expectedAndActual": 338,
+      "source": {
+        "path": "curricula/DE/Gymnasium/input/RP/upper-secondary/source-extraction/DE_RP_CHEMIE_SEKII_MSS_2022.source-extraction.json",
+        "sha256": "2fa9eb0e16b1d8ca6363b31bdd743468b0d6a2ca9074f1fba357b5ce9f52f4cb",
+        "bytes": 589133,
+        "title": "DE-RP - Chemie Mainzer Studienstufe (Rheinland-Pfalz, Lehrplan 2022 Source-Extraction)",
+        "sourceGoals": 338
+      },
+      "jsonPointer": "/sourceGoals",
+      "sourceRuntimeConversion": "LandscapeService.java:1066 directly converts the full sourceGoals array."
+    },
+    {
+      "method": "loadsSaarlandChemistrySourceExtractionsFromRealRegistry",
+      "variable": "lower",
+      "sourceLandscapeId": "c8d559dc-e8de-52a7-851a-6e411907daf6",
+      "beforeExpected": 190,
+      "expectedAndActual": 193,
+      "source": {
+        "path": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_CHEMIE_SEKI_GYM9_2024_2025.source-extraction.json",
+        "sha256": "6480091ef884f002596c6a430228df9e99f56c925852c9d8b48a4383a03852c9",
+        "bytes": 328797,
+        "title": "DE-SL - Chemie Sekundarstufe I (Saarland, Gymnasium G9 2024/2025 Source-Extraction)",
+        "sourceGoals": 193
+      },
+      "jsonPointer": "/sourceGoals",
+      "sourceRuntimeConversion": "LandscapeService.java:1066 directly converts the full sourceGoals array."
+    },
+    {
+      "method": "loadsSaarlandChemistrySourceExtractionsFromRealRegistry",
+      "variable": "upper",
+      "sourceLandscapeId": "7aae5eef-c2ae-5365-8091-955d96b89ad8",
+      "beforeExpected": 712,
+      "expectedAndActual": 713,
+      "source": {
+        "path": "curricula/DE/Gymnasium/input/SL/upper-secondary/source-extraction/DE_SL_CHEMIE_SEKII_GOS_2023_2025.source-extraction.json",
+        "sha256": "442c3d3780e2549cc01eb9e8f74d43d0bf1a8c511980deaf28b5ece932cd080d",
+        "bytes": 1259551,
+        "title": "DE-SL - Chemie Gymnasiale Oberstufe (Saarland, GOS 2023/2025 Source-Extraction)",
+        "sourceGoals": 713
+      },
+      "jsonPointer": "/sourceGoals",
+      "sourceRuntimeConversion": "LandscapeService.java:1066 directly converts the full sourceGoals array."
+    },
+    {
+      "method": "loadsSachsenAnhaltChemistrySourceExtractionsFromRealRegistry",
+      "variable": "upper",
+      "sourceLandscapeId": "86a99136-152f-5da7-84f2-3a0ed9f53697",
+      "beforeExpected": 324,
+      "expectedAndActual": 333,
+      "source": {
+        "path": "curricula/DE/Gymnasium/input/ST/upper-secondary/source-extraction/DE_ST_CHEMIE_SEKII_FACHLEHRPLAN_GYMNASIUM_2022.source-extraction.json",
+        "sha256": "6283903d1adf70e1f68454106fd4773b65a5ff56413da5f828777eba321e84ba",
+        "bytes": 899130,
+        "title": "DE-ST - Chemie Sekundarstufe II (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction)",
+        "sourceGoals": 333
+      },
+      "jsonPointer": "/sourceGoals",
+      "sourceRuntimeConversion": "LandscapeService.java:1066 directly converts the full sourceGoals array."
+    },
+    {
+      "method": "loadsSaxonyChemistrySourceExtractionsFromRealRegistry",
+      "variable": "lower",
+      "sourceLandscapeId": "1e86b8e6-3a95-5df3-8622-8c2afbb989e1",
+      "beforeExpected": 176,
+      "expectedAndActual": 188,
+      "source": {
+        "path": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_CHEMIE_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+        "sha256": "0328f250e395b87f9e072339f79ec46dd68073cb7d0d665d293c39fa8b62bd30",
+        "bytes": 524066,
+        "title": "DE-SN - Chemie Sekundarstufe I (Sachsen, Lehrplan Gymnasium 2025 Source-Extraction)",
+        "sourceGoals": 188
+      },
+      "jsonPointer": "/sourceGoals",
+      "sourceRuntimeConversion": "LandscapeService.java:1066 directly converts the full sourceGoals array."
+    },
+    {
+      "method": "loadsSaxonyChemistrySourceExtractionsFromRealRegistry",
+      "variable": "upper",
+      "sourceLandscapeId": "4629b4f3-95eb-5166-8b6b-056632d0f270",
+      "beforeExpected": 302,
+      "expectedAndActual": 304,
+      "source": {
+        "path": "curricula/DE/Gymnasium/input/SN/upper-secondary/source-extraction/DE_SN_CHEMIE_SEKII_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+        "sha256": "6ea85d0c818b8d25ef1c7c035b2992e2bfe02a00206ab73f7582eb1a96a5c723",
+        "bytes": 828791,
+        "title": "DE-SN - Chemie Jahrgangsstufen 11/12 (Sachsen, Lehrplan Gymnasium 2025 Source-Extraction)",
+        "sourceGoals": 304
+      },
+      "jsonPointer": "/sourceGoals",
+      "sourceRuntimeConversion": "LandscapeService.java:1066 directly converts the full sourceGoals array."
+    },
+    {
+      "method": "loadsSchleswigHolsteinChemistrySourceExtractionsFromRealRegistry",
+      "variable": "upper",
+      "sourceLandscapeId": "5dd72a26-67b0-5b2c-8a81-8ad179a6634e",
+      "beforeExpected": 165,
+      "expectedAndActual": 169,
+      "source": {
+        "path": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_CHEMIE_SEKII_FACHANFORDERUNGEN_2022.source-extraction.json",
+        "sha256": "567ffe1c34980ede87ebb9ac30125bdc5a25037530d341ec13374ea174dd594c",
+        "bytes": 276160,
+        "title": "DE-SH - Chemie Oberstufe (Schleswig-Holstein, Fachanforderungen 2022 Source-Extraction)",
+        "sourceGoals": 169
+      },
+      "jsonPointer": "/sourceGoals",
+      "sourceRuntimeConversion": "LandscapeService.java:1066 directly converts the full sourceGoals array."
+    },
+    {
+      "method": "loadsThueringenChemistrySourceExtractionsFromRealRegistry",
+      "variable": "lower",
+      "sourceLandscapeId": "d416f737-fb4c-585f-85a5-cd9a94c20cbe",
+      "beforeExpected": 224,
+      "expectedAndActual": 226,
+      "source": {
+        "path": "curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_CHEMIE_SEKI_LEHRPLAN_GYMNASIUM_2024.source-extraction.json",
+        "sha256": "c795b79bc6f87bf3b15ab7b4050f588682819527261a994681a8b3b4db3c2e1f",
+        "bytes": 452571,
+        "title": "DE-TH - Chemie Sekundarstufe I (Thueringen, Lehrplan Gymnasium 2024 Source-Extraction)",
+        "sourceGoals": 226
+      },
+      "jsonPointer": "/sourceGoals",
+      "sourceRuntimeConversion": "LandscapeService.java:1066 directly converts the full sourceGoals array."
+    }
+  ]
+}

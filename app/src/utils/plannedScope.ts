@@ -63,12 +63,34 @@ export const buildRenderedScopeMarkerGoalIds = (
   plannedGoalIds: Iterable<string> = [],
 ) => {
   const exactPlannedGoalIds = new Set(plannedGoalIds)
+  const taggedRootIds = Array.from(allGoals.values())
+    .filter((goal) => goal.tags?.includes('root'))
+    .map((goal) => goal.id)
+  const referencedGoalIds = new Set(Array.from(renderedChildrenByParent.values()).flat())
+  const renderedRootIds = taggedRootIds.length > 0
+    ? taggedRootIds
+    : Array.from(allGoals.keys()).filter((goalId) => !referencedGoalIds.has(goalId))
+  const renderedGoalIds = new Set<string>()
+  const pendingRenderedIds = [...renderedRootIds]
+  while (pendingRenderedIds.length > 0) {
+    const goalId = pendingRenderedIds.pop()!
+    if (!allGoals.has(goalId) || renderedGoalIds.has(goalId)) continue
+    renderedGoalIds.add(goalId)
+    pendingRenderedIds.push(...(renderedChildrenByParent.get(goalId) ?? []))
+  }
+  // A persisted composition alias can cover only part of today's subject root.
+  const hasHiddenPlannedCompositionGoal = Array.from(exactPlannedGoalIds)
+    .some((goalId) => {
+      const goal = allGoals.get(goalId)
+      return !renderedGoalIds.has(goalId) && !!goal && isCompositionStructureNode(goal)
+    })
   const statsByGoalId = new Map<string, { scopedConcrete: number; unscopedConcrete: number }>()
   const parentIdsByChild = new Map<string, Set<string>>()
   const renderedPlannedDescendantCache = new Map<string, boolean>()
   const visiting = new Set<string>()
 
   renderedChildrenByParent.forEach((childIds, parentId) => {
+    if (!renderedGoalIds.has(parentId)) return
     childIds.forEach((childId) => {
       const parentIds = parentIdsByChild.get(childId) ?? new Set<string>()
       parentIds.add(parentId)
@@ -107,17 +129,6 @@ export const buildRenderedScopeMarkerGoalIds = (
     return stats.scopedConcrete > 0 && stats.unscopedConcrete === 0
   }
 
-  const hasFullyCoveredAncestor = (goalId: string, visited: Set<string> = new Set()): boolean => {
-    if (visited.has(goalId)) return false
-    const nextVisited = new Set(visited)
-    nextVisited.add(goalId)
-
-    const parentIds = parentIdsByChild.get(goalId) ?? new Set<string>()
-    return Array.from(parentIds).some((parentId) =>
-      isFullyCoveredScopeRepresentative(parentId) || hasFullyCoveredAncestor(parentId, nextVisited),
-    )
-  }
-
   const hasExactPlannedGoalInRenderedSubtree = (
     goalId: string,
     visited: Set<string> = new Set(),
@@ -136,31 +147,47 @@ export const buildRenderedScopeMarkerGoalIds = (
     return containsExactPlannedGoal
   }
 
-  const markerGoalIds = new Set<string>()
-  allGoals.forEach((_, goalId) => {
-    if (scopedGoalIds.has(goalId)) return
-    if (!isFullyCoveredScopeRepresentative(goalId)) return
-
+  const isScopeMarkerCandidate = (goalId: string) => {
+    if (!renderedGoalIds.has(goalId) || exactPlannedGoalIds.has(goalId)) return false
+    if (scopedGoalIds.has(goalId) && !hasHiddenPlannedCompositionGoal) return false
+    if (!isFullyCoveredScopeRepresentative(goalId)) return false
     // An exact visible selection must remain the only selected row. A fully
     // covered ancestor is merely an equivalent scope when it has only that
     // selected subtree; showing the same removal icon there makes both rows
     // look selected and also hides the ancestor's own selection control.
-    // Keep representative markers only for planned canonical goals that are
-    // not reachable in the rendered composition tree.
-    if (hasExactPlannedGoalInRenderedSubtree(goalId)) return
+    // Hidden persisted scopes use equivalent visible branches instead.
+    return !hasExactPlannedGoalInRenderedSubtree(goalId)
+  }
 
-    if (!hasFullyCoveredAncestor(goalId)) {
+  const hasSelectedOrRepresentativeAncestor = (goalId: string, visited: Set<string> = new Set()): boolean => {
+    if (visited.has(goalId)) return false
+    const nextVisited = new Set(visited)
+    nextVisited.add(goalId)
+
+    const parentIds = parentIdsByChild.get(goalId) ?? new Set<string>()
+    return Array.from(parentIds).some((parentId) =>
+      exactPlannedGoalIds.has(parentId)
+      || isScopeMarkerCandidate(parentId)
+      || hasSelectedOrRepresentativeAncestor(parentId, nextVisited),
+    )
+  }
+
+  const markerGoalIds = new Set<string>()
+  allGoals.forEach((_, goalId) => {
+    if (isScopeMarkerCandidate(goalId) && !hasSelectedOrRepresentativeAncestor(goalId)) {
       markerGoalIds.add(goalId)
     }
   })
 
-  const compositionStructureMarkerGoalIds = Array.from(markerGoalIds).filter((goalId) => {
-    const goal = allGoals.get(goalId)
-    return !!goal && isCompositionStructureNode(goal)
-  })
-
-  if (compositionStructureMarkerGoalIds.length > 0) {
-    return new Set(compositionStructureMarkerGoalIds)
+  if (!hasHiddenPlannedCompositionGoal) {
+    // Preserve the existing year/phase structure preference for canonical foci.
+    const compositionStructureMarkerGoalIds = Array.from(markerGoalIds).filter((goalId) => {
+      const goal = allGoals.get(goalId)
+      return !!goal && isCompositionStructureNode(goal)
+    })
+    if (compositionStructureMarkerGoalIds.length > 0) {
+      return new Set(compositionStructureMarkerGoalIds)
+    }
   }
 
   return markerGoalIds

@@ -7,7 +7,7 @@
 > Source of truth: `app/scripts/generateCurriculumQualityStatus.ts`
 > Source of truth: `curricula/`
 
-Generated: 2026-10-18T11:36:54.349Z
+Generated: 2026-10-18T13:25:13.633Z
 Rules version: curriculum-quality-v5
 
 ## Summary
@@ -85,7 +85,7 @@ Rules version: curriculum-quality-v5
 | Chemie (Gymnasium, DE) | Chemie Sekundarstufe I (Baden-Wuerttemberg, BP2016 V2 Source-Extraction) | DE-BW | 1/1 URL; local cache 1/1 | 3/3 | - | 7 | 66 | 26 | 40 | 39% | - |  |
 | Chemie (Gymnasium, DE) | DE-BY - Biologisch-chemisches Praktikum Gymnasium (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 1/1 URL; local cache 1/1 | 3/3 | - | 14 | 52 | 52 | 0 | 100% | - |  |
 | Chemie (Gymnasium, DE) | DE-BY - Chemie Gymnasium (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 1/1 URL; local cache 1/1 | 3/3 | - | 54 | 332 | 277 | 55 | 83% | - |  |
-| Chemie (Gymnasium, DE) | Bremen Chemie GyO 2022 — inactive primary-clause source inventory AUTHOR successor | DE-HB | 1/1 URL; local cache 1/1 | 0/3 | MAPPING-1 | 28 | 232 | 0 | 0 | 0% | - |  |
+| Chemie (Gymnasium, DE) | DE-HB - Chemie Gymnasiale Oberstufe (Bremen, Bildungsplan 2022 Source-Extraction) | DE-HB | 1/1 URL; local cache 1/1 | 0/3 | MAPPING-1 | 28 | 232 | 0 | 0 | 0% | - |  |
 | Chemie (Gymnasium, DE) | DE-HB - Chemie Sekundarstufe I (Bremen, Bildungsplan 2006/2022 Source-Extraction) | DE-HB | 2/2 URL; local cache 2/2 | 3/3 | - | 4 | 42 | 0 | 42 | 0% | - |  |
 | Chemie (Gymnasium, DE) | Chemie Oberstufe (Hessen, KC 2024 Source-Extraction) | DE-HE | 1/1 URL; local cache 1/1 | 3/3 | - | 22 | 202 | 134 | 68 | 66% | - |  |
 | Chemie (Gymnasium, DE) | Chemie Sekundarstufe I (Hessen, G9 Source-Extraction) | DE-HE | 1/1 URL; local cache 1/1 | 2/2 | - | 9 | 123 | 67 | 56 | 54% | - |  |

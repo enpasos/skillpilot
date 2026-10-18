@@ -330,3 +330,48 @@ Erst am stabilen Integrationsstand folgen der vollständige Zentralbericht,
 die abhängigen Layer-A-Prüfungen, die geschützten Reifegrad-Untergrenzen und
 der neue GitHub-CI-Lauf. Menschliche Prüfung, örtliche Sicherheitsfreigabe,
 tatsächliche Durchführung und Erprobung bleiben getrennte Nachweise.
+
+## CI-Integrationskorrekturen nach `06a03ec` und `d8343a6`
+
+Der [GitHub-Lauf für `d8343a6`](https://github.com/enpasos/skillpilot/actions/runs/39126550659)
+legte weitere Integrationsfehler offen. Die Watch- und Dokumentationschecks
+dieses Commits waren bereits erfolgreich; die drei Anwendungsjobs scheiterten
+an unterschiedlichen nachgelagerten Prüfungen.
+
+- Der G8/G9-Bereitschaftsbericht wird mit dem unveränderten Originalgenerator
+  aus den aktuellen Source-Inventaren erzeugt. Seine acht unmittelbar
+  nachfolgenden Readiness-/Quellenbegründungschecks bestehen lokal.
+- Ein Vierziel-Bayern-Autorenpilot darf nicht den vollständigen Sek-I-Scope
+  ersetzen. Seine Originalbytes bleiben archiviert. Der vollständige BY-View
+  erhält die drei zusätzlichen bestehenden Bayern-Ziele und umfasst nach
+  dem Laufzeitfilter 104 atomare Ziele je G8/G9. Vier nicht bayerische Targets
+  aus dem generischen Ausgangsbaum sind ausdrücklich aus seiner Zielrolle
+  ausgeschlossen. Sie sind keine Voraussetzungen der 104 Bayern-Ziele.
+  Der Original-Quellenevaluator bestätigt CQR-003 für 16/16 Länder und
+  284/284 quellenbelegte sichtbare Bayern-Ziele, ohne neue Quellenmappings.
+- Vier abweichende GK/LK-Labels werden auf den jeweils bereits vorhandenen
+  Wortlaut angeglichen. Der HB-Sourcecarrier erhält seinen offiziellen Titel
+  zurück; seine 232 Sourcegoalobjekte bleiben unverändert. Die entsprechenden
+  Testzahlen folgen den tatsächlichen Source- und Projektionsmengen.
+- Beide vollständigen betroffenen Backendklassen bestehen mit 88/88 Tests;
+  der zusätzliche Mergerzieltest besteht ebenfalls. Der abschließende reine
+  Bayern-Quellenrollenfix lässt ihre Laufzeit-Ziel- und Elternvektoren exakt
+  unverändert. Alle 41 Viewcompiler und Voraussetzungsschließungen bestehen.
+- Ein gespeicherter versteckter Fachalias kann einen echten Teilfokus bilden.
+  Die sichtbaren Marker müssen genau dessen Ziele darstellen und dürfen keine
+  ungewählten Schwesterziele einschließen. Der korrigierte Originaltest prüft
+  diese exakte Vereinigung, vollständige Mathematik-/Physikfoki, J8-Priorität,
+  explizite Einzelauswahl, unveränderte Persistenz und unveränderten Fortschritt.
+- Der Tiefen-QS-Test behandelt Chemie ausdrücklich als laufenden M6-Checkpoint
+  mit offenen Beschreibungsreviews. Er verlangt weiterhin aktuelle P/A/M/V und
+  verhindert M7 bei offenen D-Befunden. Mathematik, Physik und Biologie bleiben
+  ausdrücklich geschützte vollständige M7-Baselines. Der Originaltest besteht.
+
+Die [begrenzten tatsächlichen Integrationsbelege](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-runtime-view-routing-and-label-repair-technical-20261018-v1/checks/ACTUAL.final-source-bound-CI-repair.json)
+bewahren auch den zwischenzeitlich gefundenen Bayern-Quellenfehler und seine
+gezielte Korrektur. Frühere unqualifizierte Raw-Target-Aussagen sind dadurch
+berichtigt; die ursprünglichen Receipts bleiben unverändert erhalten.
+Kanonik, fachliche Reviewentscheidungen, Karten und Bilder werden durch dieses
+Fixpaket nicht neu bewertet. Es erzeugt keine neuen fachlichen Abschlüsse und
+keine menschliche Freigabe. CI-Erfolg ist am jeweils tatsächlich geprüften
+Git-Head festzustellen.

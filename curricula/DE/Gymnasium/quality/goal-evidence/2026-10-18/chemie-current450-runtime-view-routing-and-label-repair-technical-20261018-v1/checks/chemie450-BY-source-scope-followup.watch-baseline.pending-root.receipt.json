@@ -1,0 +1,104 @@
+{
+  "role": "PENDING_ROOT_REVIEW_SINGLE_BY_SOURCE_SCOPE_RECORD_WATCH_FOLLOWUP_NOT_INSTALLED",
+  "at": "2026-10-18T13:20:26.041060+00:00",
+  "oldBaseline": {
+    "path": "curricula/DE/Gymnasium/provenance/chemistry-evidence-watch-baseline.json",
+    "sha256": "4268467567735d13f207072edd8993e38d48b2f9b5feadc51013a833be99ff2c",
+    "bytes": 49289
+  },
+  "candidate": {
+    "path": "tmp/chemie450-BY-source-scope-followup.watch-baseline.candidate.json",
+    "sha256": "ad4352e22762167a899c21b4019a15b8de70fcdd55b0141e9abe3e715f7abcfb",
+    "bytes": 49289
+  },
+  "measured": {
+    "changed": [
+      "curricula/DE/Gymnasium/composition-views/chemie/de-by-seki.view.json"
+    ],
+    "added": [],
+    "removed": [],
+    "unchangedFullRecordObjects": 159,
+    "recordCount": 160
+  },
+  "candidateOriginalDiffRecords": [
+    0,
+    0,
+    0
+  ],
+  "all159OtherFullObjectsAndKeyOrdersAndHashModesUnchanged": true,
+  "archives": [
+    {
+      "normalPath": "curricula/DE/Gymnasium/provenance/chemistry-evidence-watch-baseline.json",
+      "archive": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-runtime-view-routing-and-label-repair-technical-20261018-v1/history/watch-before-BY-source-scope-followup/chemistry-evidence-watch-baseline.json",
+        "sha256": "4268467567735d13f207072edd8993e38d48b2f9b5feadc51013a833be99ff2c",
+        "bytes": 49289
+      }
+    },
+    {
+      "normalPath": "docs/dev/canonical-gymnasium-chemistry-evidence-watch-status.md",
+      "archive": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-runtime-view-routing-and-label-repair-technical-20261018-v1/history/watch-before-BY-source-scope-followup/canonical-gymnasium-chemistry-evidence-watch-status.md",
+        "sha256": "88b0973d7eb5db956931e8a0245b005724a2bb32910a3ff2b3a6f4a5889e3ba9",
+        "bytes": 60112
+      }
+    },
+    {
+      "normalPath": "docs/dev/canonical-gymnasium-chemistry-evidence-watch-delta.md",
+      "archive": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-runtime-view-routing-and-label-repair-technical-20261018-v1/history/watch-before-BY-source-scope-followup/canonical-gymnasium-chemistry-evidence-watch-delta.md",
+        "sha256": "084bf5966ef17c7a83254bc07150e377b3278b42e20a02c492882fb1863bbd0c",
+        "bytes": 1608
+      }
+    }
+  ],
+  "originalCurrentDeltaLog": {
+    "path": "tmp/chemie450-BY-source-scope-followup.watch-original-current-delta.log",
+    "sha256": "f0c6d2f7d5603fd4a99d22395f140916d7a7c9b46e452de83eb4e9c9e777587e",
+    "bytes": 131
+  },
+  "originalCurrentDeltaExitCode": 1,
+  "originalSourceEvaluator": {
+    "receipt": {
+      "path": "tmp/chemie450-BY-original-source-scope.after-correction.json",
+      "sha256": "5f6f2b2b1d4328974d07878d71b5e1aed566d19da0d407901b25dc794bd3f4eb",
+      "bytes": 20263
+    },
+    "CQR003": "pass",
+    "allJurisdictions": 16,
+    "unsupportedAssignedAtomicGoals": 0,
+    "BYSourceBackedAtomicGoals": 284,
+    "BYVisibleAtomicGoals": 284,
+    "BYSourceOriginalGoals": 384,
+    "BYSourceFullyCoveredOriginalGoals": 384
+  },
+  "productionCheck": {
+    "path": "tmp/chemie450-BY-source-scope-followup.production-check.json",
+    "sha256": "db52ecf42973ef8bab46387f289e8daa6c9f98943fd6b8193dcf15ad4d99a4eb",
+    "bytes": 43201
+  },
+  "excludedForeignTargets": [
+    "413040cd-ba74-5227-948c-a778b0bd0f56",
+    "4aeced1e-15cd-58df-83f7-68e2531c2d32",
+    "49d42c38-419c-5048-b7e9-860645dd122d",
+    "8b2d351e-e44f-5385-9b89-13ef54b5918f"
+  ],
+  "threeInheritedExclusionsViaPrerequisiteOnly": [
+    "413040cd-ba74-5227-948c-a778b0bd0f56",
+    "4aeced1e-15cd-58df-83f7-68e2531c2d32",
+    "49d42c38-419c-5048-b7e9-860645dd122d"
+  ],
+  "directHEOptionalTargetRemoved": "8b2d351e-e44f-5385-9b89-13ef54b5918f",
+  "foreignTargetsRequiredByBYTargets": 0,
+  "currentBYSekI104TargetAndParentVectorsUnchangedForG8AndG9": true,
+  "current41ViewCompilersAndFullRequiresClosurePassed": true,
+  "sourceMappingsChanged": 0,
+  "canonicalBytesChanged": false,
+  "memoryReviewOrCardRecordsChanged": false,
+  "normalWatchFilesStillOriginal": true,
+  "watchSelfTest": "Canonical Chemistry evidence-watch self-test passed.",
+  "newScientificVotes": 0,
+  "newM7OrHumanApproval": false,
+  "normalInstallationPerformed": false,
+  "correctionToEarlierScopeClaim": "The previous generic-plus-three raw target union retained four foreign atoms; the current source-bound BY target role excludes them. Actual AP-filtered104 target/parent vectors stay byte-content equivalent. The earlier unqualified raw-target claim is superseded; historical receipts and snapshots remain unchanged."
+}

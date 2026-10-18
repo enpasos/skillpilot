@@ -375,7 +375,7 @@ class LandscapeServiceTest {
                 assertThat(upper.getTitle())
                                 .isEqualTo("DE-NW - Chemie Oberstufe (Nordrhein-Westfalen, KLP 2022 Source-Extraction)");
                 assertThat(lower.getGoals()).hasSize(79);
-                assertThat(upper.getGoals()).hasSize(154);
+                assertThat(upper.getGoals()).hasSize(170);
                 assertThat(landscapeService.resolveSourceLandscapeJurisdiction(NRW_CHEMISTRY_LOWER_ID))
                                 .isEqualTo("DE-NW");
                 assertThat(landscapeService.resolveSourceLandscapeJurisdiction(NRW_CHEMISTRY_UPPER_ID))
@@ -400,8 +400,8 @@ class LandscapeServiceTest {
                                 .isEqualTo("DE-RP - Chemie Sekundarstufe I (Rheinland-Pfalz, Lehrplan BCP 2014 Source-Extraction)");
                 assertThat(upper.getTitle())
                                 .isEqualTo("DE-RP - Chemie Mainzer Studienstufe (Rheinland-Pfalz, Lehrplan 2022 Source-Extraction)");
-                assertThat(lower.getGoals()).hasSize(65);
-                assertThat(upper.getGoals()).hasSize(325);
+                assertThat(lower.getGoals()).hasSize(66);
+                assertThat(upper.getGoals()).hasSize(338);
                 assertThat(landscapeService.resolveSourceLandscapeJurisdiction(RHEINLAND_PFALZ_CHEMISTRY_LOWER_ID))
                                 .isEqualTo("DE-RP");
                 assertThat(landscapeService.resolveSourceLandscapeJurisdiction(RHEINLAND_PFALZ_CHEMISTRY_UPPER_ID))
@@ -426,7 +426,7 @@ class LandscapeServiceTest {
                                 .isEqualTo("DE-NI - Chemie Sekundarstufe I (Niedersachsen, KC 2015 Source-Extraction)");
                 assertThat(upper.getTitle())
                                 .isEqualTo("DE-NI - Chemie Oberstufe (Niedersachsen, KC 2022 Source-Extraction)");
-                assertThat(lower.getGoals()).hasSize(196);
+                assertThat(lower.getGoals()).hasSize(198);
                 assertThat(upper.getGoals()).hasSize(333);
                 assertThat(landscapeService.resolveSourceLandscapeJurisdiction(NIEDERSACHSEN_CHEMISTRY_LOWER_ID))
                                 .isEqualTo("DE-NI");
@@ -460,10 +460,10 @@ class LandscapeServiceTest {
                                 .isEqualTo("DE-BE - Chemie Sekundarstufe I (Berlin, RLP 2015 Source-Extraction)");
                 assertThat(berlinUpper.getTitle())
                                 .isEqualTo("DE-BE - Chemie Oberstufe (Berlin, RLP GOST 2022 Source-Extraction)");
-                assertThat(brandenburgLower.getGoals()).hasSize(68);
-                assertThat(brandenburgUpper.getGoals()).hasSize(203);
-                assertThat(berlinLower.getGoals()).hasSize(68);
-                assertThat(berlinUpper.getGoals()).hasSize(203);
+                assertThat(brandenburgLower.getGoals()).hasSize(71);
+                assertThat(brandenburgUpper.getGoals()).hasSize(216);
+                assertThat(berlinLower.getGoals()).hasSize(71);
+                assertThat(berlinUpper.getGoals()).hasSize(216);
                 assertThat(landscapeService.resolveSourceLandscapeJurisdiction(BRANDENBURG_CHEMISTRY_LOWER_ID))
                                 .isEqualTo("DE-BB");
                 assertThat(landscapeService.resolveSourceLandscapeJurisdiction(BRANDENBURG_CHEMISTRY_UPPER_ID))
@@ -495,7 +495,7 @@ class LandscapeServiceTest {
                 assertThat(upper.getTitle())
                                 .isEqualTo("DE-HB - Chemie Gymnasiale Oberstufe (Bremen, Bildungsplan 2022 Source-Extraction)");
                 assertThat(lower.getGoals()).hasSize(42);
-                assertThat(upper.getGoals()).hasSize(88);
+                assertThat(upper.getGoals()).hasSize(232);
                 assertThat(landscapeService.resolveSourceLandscapeJurisdiction(BREMEN_CHEMISTRY_LOWER_ID))
                                 .isEqualTo("DE-HB");
                 assertThat(landscapeService.resolveSourceLandscapeJurisdiction(BREMEN_CHEMISTRY_UPPER_ID))
@@ -520,7 +520,7 @@ class LandscapeServiceTest {
                                 .isEqualTo("Chemie Sekundarstufe I (Baden-Wuerttemberg, BP2016 V2 Source-Extraction)");
                 assertThat(upper.getTitle())
                                 .isEqualTo("Chemie Kursstufe (Baden-Wuerttemberg, BP2016 V2 Source-Extraction)");
-                assertThat(lower.getGoals()).hasSize(65);
+                assertThat(lower.getGoals()).hasSize(66);
                 assertThat(upper.getGoals()).hasSize(126);
                 assertThat(landscapeService.resolveSourceLandscapeJurisdiction(BADEN_WUERTTEMBERG_CHEMISTRY_LOWER_ID))
                                 .isEqualTo("DE-BW");
@@ -547,7 +547,7 @@ class LandscapeServiceTest {
                 assertThat(upper.getTitle())
                                 .isEqualTo("DE-HH - Chemie Studienstufe (Hamburg, Bildungsplan 2022 Source-Extraction)");
                 assertThat(lower.getGoals()).hasSize(65);
-                assertThat(upper.getGoals()).hasSize(97);
+                assertThat(upper.getGoals()).hasSize(108);
                 assertThat(landscapeService.resolveSourceLandscapeJurisdiction(HAMBURG_CHEMISTRY_LOWER_ID))
                                 .isEqualTo("DE-HH");
                 assertThat(landscapeService.resolveSourceLandscapeJurisdiction(HAMBURG_CHEMISTRY_UPPER_ID))
@@ -572,8 +572,8 @@ class LandscapeServiceTest {
                                 .isEqualTo("DE-MV - Chemie Sekundarstufe I (Mecklenburg-Vorpommern, Rahmenplan 2021 Source-Extraction)");
                 assertThat(upper.getTitle())
                                 .isEqualTo("DE-MV - Chemie Qualifikationsphase (Mecklenburg-Vorpommern, Rahmenplan 2022 Erprobungsfassung Source-Extraction)");
-                assertThat(lower.getGoals()).hasSize(114);
-                assertThat(upper.getGoals()).hasSize(122);
+                assertThat(lower.getGoals()).hasSize(115);
+                assertThat(upper.getGoals()).hasSize(136);
                 assertThat(landscapeService.resolveSourceLandscapeJurisdiction(MECKLENBURG_VORPOMMERN_CHEMISTRY_LOWER_ID))
                                 .isEqualTo("DE-MV");
                 assertThat(landscapeService.resolveSourceLandscapeJurisdiction(MECKLENBURG_VORPOMMERN_CHEMISTRY_UPPER_ID))
@@ -599,7 +599,7 @@ class LandscapeServiceTest {
                 assertThat(upper.getTitle())
                                 .isEqualTo("DE-SH - Chemie Oberstufe (Schleswig-Holstein, Fachanforderungen 2022 Source-Extraction)");
                 assertThat(lower.getGoals()).hasSize(156);
-                assertThat(upper.getGoals()).hasSize(165);
+                assertThat(upper.getGoals()).hasSize(169);
                 assertThat(landscapeService.resolveSourceLandscapeJurisdiction(SCHLESWIG_HOLSTEIN_CHEMISTRY_LOWER_ID))
                                 .isEqualTo("DE-SH");
                 assertThat(landscapeService.resolveSourceLandscapeJurisdiction(SCHLESWIG_HOLSTEIN_CHEMISTRY_UPPER_ID))
@@ -624,8 +624,8 @@ class LandscapeServiceTest {
                                 .isEqualTo("DE-SN - Chemie Sekundarstufe I (Sachsen, Lehrplan Gymnasium 2025 Source-Extraction)");
                 assertThat(upper.getTitle())
                                 .isEqualTo("DE-SN - Chemie Jahrgangsstufen 11/12 (Sachsen, Lehrplan Gymnasium 2025 Source-Extraction)");
-                assertThat(lower.getGoals()).hasSize(176);
-                assertThat(upper.getGoals()).hasSize(302);
+                assertThat(lower.getGoals()).hasSize(188);
+                assertThat(upper.getGoals()).hasSize(304);
                 assertThat(landscapeService.resolveSourceLandscapeJurisdiction(SAXONY_CHEMISTRY_LOWER_ID))
                                 .isEqualTo("DE-SN");
                 assertThat(landscapeService.resolveSourceLandscapeJurisdiction(SAXONY_CHEMISTRY_UPPER_ID))
@@ -651,7 +651,7 @@ class LandscapeServiceTest {
                 assertThat(upper.getTitle())
                                 .isEqualTo("DE-ST - Chemie Sekundarstufe II (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction)");
                 assertThat(lower.getGoals()).hasSize(270);
-                assertThat(upper.getGoals()).hasSize(324);
+                assertThat(upper.getGoals()).hasSize(333);
                 assertThat(landscapeService.resolveSourceLandscapeJurisdiction(SACHSEN_ANHALT_CHEMISTRY_LOWER_ID))
                                 .isEqualTo("DE-ST");
                 assertThat(landscapeService.resolveSourceLandscapeJurisdiction(SACHSEN_ANHALT_CHEMISTRY_UPPER_ID))
@@ -676,7 +676,7 @@ class LandscapeServiceTest {
                                 .isEqualTo("DE-TH - Chemie Sekundarstufe I (Thueringen, Lehrplan Gymnasium 2024 Source-Extraction)");
                 assertThat(upper.getTitle())
                                 .isEqualTo("DE-TH - Chemie Qualifikationsphase (Thueringen, Lehrplan Gymnasium 2024 Source-Extraction)");
-                assertThat(lower.getGoals()).hasSize(224);
+                assertThat(lower.getGoals()).hasSize(226);
                 assertThat(upper.getGoals()).hasSize(225);
                 assertThat(landscapeService.resolveSourceLandscapeJurisdiction(THUERINGIA_CHEMISTRY_LOWER_ID))
                                 .isEqualTo("DE-TH");
@@ -702,8 +702,8 @@ class LandscapeServiceTest {
                                 .isEqualTo("DE-SL - Chemie Sekundarstufe I (Saarland, Gymnasium G9 2024/2025 Source-Extraction)");
                 assertThat(upper.getTitle())
                                 .isEqualTo("DE-SL - Chemie Gymnasiale Oberstufe (Saarland, GOS 2023/2025 Source-Extraction)");
-                assertThat(lower.getGoals()).hasSize(190);
-                assertThat(upper.getGoals()).hasSize(712);
+                assertThat(lower.getGoals()).hasSize(193);
+                assertThat(upper.getGoals()).hasSize(713);
                 assertThat(landscapeService.resolveSourceLandscapeJurisdiction(SAARLAND_CHEMISTRY_LOWER_ID))
                                 .isEqualTo("DE-SL");
                 assertThat(landscapeService.resolveSourceLandscapeJurisdiction(SAARLAND_CHEMISTRY_UPPER_ID))

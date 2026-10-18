@@ -832,7 +832,40 @@ for (const { directory, views } of subjectRootCases) {
         'Collapsing a visible row must not narrow or replace an existing stored focus.',
       )
       const markers = buildRenderedScopeMarkerGoalIds(allGoals, childrenByParent, persistedFocus, [aliasId])
-      assert.ok(markers.has(root.id), 'The real subject root must represent a persisted hidden subject-alias focus.')
+      const context = `${directory}/${viewName}: hidden subject-alias ${aliasId}`
+      const visibleIds = collectRenderedIds(root.id, childrenByParent)
+      const visibleAtomicIds = [...visibleIds].filter((id) => allGoals.get(id)?.type === 'atomic').sort()
+      const focusedAtomicIds = visibleAtomicIds.filter((id) => persistedFocus.has(id))
+      const markedAtomicIds = new Set<string>()
+      for (const markerId of markers) {
+        assert.ok(visibleIds.has(markerId), `${context}: focus markers must be visible below the real root.`)
+        for (const id of collectRenderedIds(markerId, childrenByParent)) {
+          if (allGoals.get(id)?.type === 'atomic') markedAtomicIds.add(id)
+        }
+      }
+      assert.deepStrictEqual(
+        [...markedAtomicIds].sort(), focusedAtomicIds,
+        `${context}: visible marker branches must cover every selected atomic target and no unselected sibling.`,
+      )
+      if (focusedAtomicIds.length === visibleAtomicIds.length) {
+        assert.ok(markers.has(root.id), `${context}: the real root must represent the complete hidden subject scope.`)
+      } else {
+        assert.equal(markers.has(root.id), false, `${context}: a partial alias focus must not mark unrelated root siblings.`)
+      }
+      if (directory === 'mathematik' || directory === 'physik') {
+        assert.deepStrictEqual(focusedAtomicIds, visibleAtomicIds, `${context}: retain the existing full-subject fixture.`)
+        assert.ok(markers.has(root.id), `${context}: retain the complete-subject root marker.`)
+      }
+      const explicitVisibleGoalId = focusedAtomicIds[0]
+      assert.ok(explicitVisibleGoalId, `${context}: retain a visible atomic focus target.`)
+      assert.deepStrictEqual(
+        [...buildRenderedScopeMarkerGoalIds(
+          allGoals, childrenByParent,
+          buildGoalContainsClosure([explicitVisibleGoalId], allGoals), [explicitVisibleGoalId],
+        )],
+        [],
+        `${context}: an exact visible selection must not gain additional ancestor controls.`,
+      )
     }
     if (directory === 'mathematik' || directory === 'physik') {
       assert.equal(subjectRootIdByAlias.size, 1, `${viewName}: remove the reported duplicate despite prerequisite-only siblings.`)

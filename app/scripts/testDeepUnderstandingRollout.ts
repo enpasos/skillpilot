@@ -250,9 +250,13 @@ assert.throws(
 const report = await generateDeepUnderstandingRollout()
 const mathematics = report.subjects.find(({ subject }) => subject === 'mathematik')
 const physics = report.subjects.find(({ subject }) => subject === 'physik')
+const biology = report.subjects.find(({ subject }) => subject === 'biologie')
+const chemistry = report.subjects.find(({ subject }) => subject === 'chemie')
 const economics = report.subjects.find(({ subject }) => subject === 'wirtschaftswissenschaften')
 assert.ok(mathematics)
 assert.ok(physics)
+assert.ok(biology, 'The completed Biology rollout must remain in the central report.')
+assert.ok(chemistry, 'The current Chemistry M6 checkpoint must remain in the central report.')
 assert.ok(economics, 'The current Economics rollout must be included in the central report.')
 const mathQa = JSON.parse(readFileSync(resolve(
   repositoryRoot,
@@ -270,19 +274,19 @@ assert.ok(staleEvidenceGoalIds.every((goalId) => qualityHoldGoalIds.has(goalId))
 assert.equal(new Set(staleEvidenceGoalIds).size, staleEvidenceGoalIds.length)
 assert.equal(report.blockingIssueCount, report.subjects.reduce((sum, subject) => sum + subject.issues.length, 0),
   'The aggregate must include every actual subject blocker.')
-assert.equal(report.blockingIssueCount, staleEvidenceGoalIds.length + economics.issues.length,
-  'Only the explicitly tracked Economics rollout may add blockers to the protected subjects.')
-for (const subject of report.subjects.filter(({ subject }) => !['mathematik', 'wirtschaftswissenschaften'].includes(subject))) {
+assert.equal(report.blockingIssueCount, staleEvidenceGoalIds.length + economics.issues.length + chemistry.issues.length,
+  'Only the explicitly tracked Chemistry and Economics rollouts may add blockers to the protected subjects.')
+for (const subject of report.subjects.filter(({ subject }) => !['mathematik', 'wirtschaftswissenschaften', 'chemie'].includes(subject))) {
   assert.deepEqual(subject.issues, [], `${subject.subject} must retain its existing blocker-free baseline.`)
 }
 assert.equal(physics.issues.length, 0)
-for (const subject of [mathematics, physics]) {
+for (const subject of [mathematics, physics, biology]) {
   assert.equal(hasStrictDeepUnderstandingCompletion(subject), true,
     `${subject.subject} must retain M7 for every current curricularAtomic goal.`)
 }
 assert.ok([...qualityHoldGoalIds].every((goalId) => mathematics.deferredVisualizationGoalIds.includes(goalId)))
 assert.ok([...qualityHoldGoalIds].every((goalId) => !mathematics.strictCompleteGoalIds.includes(goalId)))
-for (const subject of [mathematics, physics, economics]) {
+for (const subject of [mathematics, physics, biology, chemistry, economics]) {
   assert.ok(subject.denominator && subject.denominator > 0)
   assert.equal(subject.strictCompleteGoalIds.length, subject.strictComplete)
   assert.ok(subject.strictComplete <= subject.denominator)
@@ -297,6 +301,9 @@ for (const subject of [mathematics, physics, economics]) {
   if (subject.subject === 'wirtschaftswissenschaften') {
     assert.ok(failedChecks.every((id) => ['description-review-validation', 'visualization-freshness-and-approval-check'].includes(id)),
       'The Economics checkpoint requires current scope/P/A/M; pending D/V must remain M7 failures.')
+  } else if (subject.subject === 'chemie') {
+    assert.deepEqual(failedChecks, subject.strictCompletionReady ? [] : ['description-review-validation'],
+      'The Chemistry M6 checkpoint retains current P/A/M/V; open description reviews must remain M7 failures.')
   } else {
     assert.deepEqual(failedChecks,
       subject.subject === 'mathematik' && staleEvidenceGoalIds.length > 0 ? ['positive-evidence-validation'] : [],
@@ -328,4 +335,10 @@ assert.equal(economicsQa.status, economics.strictCompletionReady ? 'pass' : 'fai
 assert.equal(deriveCurriculumMaturity([...coreRules, memoryPassed, economicsQa], routeScopes),
   economics.strictCompletionReady ? 'M7' : 'M6', 'Open Economics findings must never grant M7.')
 
-console.log(`Deep-understanding rollout self-test passed: strict 5-gate intersection, fail-closed ownership, protected M7 and live denominators Math=${mathematics.denominator}/Physics=${physics.denominator}/Economics=${economics.denominator}.`)
+const chemistryLandscape = JSON.parse(readFileSync(resolve(repositoryRoot, chemistry.landscapePath), 'utf8')) as SkillLandscape
+const chemistryQa = evaluateDeepUnderstandingQa(chemistryLandscape, chemistry.landscapePath, report)
+assert.equal(chemistryQa.status, chemistry.strictCompletionReady ? 'pass' : 'fail')
+assert.equal(deriveCurriculumMaturity([...coreRules, memoryPassed, chemistryQa], routeScopes),
+  chemistry.strictCompletionReady ? 'M7' : 'M6', 'Open Chemistry description reviews must never grant M7.')
+
+console.log(`Deep-understanding rollout self-test passed: strict 5-gate intersection, fail-closed ownership, protected M7 and live denominators Math=${mathematics.denominator}/Physics=${physics.denominator}/Biology=${biology.denominator}/Chemistry=${chemistry.denominator}/Economics=${economics.denominator}.`)
