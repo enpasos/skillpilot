@@ -210,7 +210,10 @@ try {
     await page.getByTestId('learner-current-goal').getByRole('heading', { name: title }).waitFor({ timeout: 20_000 })
     const sidebar = page.locator('#learner-goal-sidebar')
     for (const subject of ['Mathematik', 'Physik']) {
-      assert.equal(await sidebar.getByText(subject, { exact: true }).count(), 1,
+      const subjectLabel = sidebar.getByText(subject, { exact: true })
+      // Legacy content can render before the saved sidebar scope has loaded.
+      await subjectLabel.waitFor({ state: 'visible', timeout: 20_000 })
+      assert.equal(await subjectLabel.count(), 1,
         `${subject} must appear once even when the saved composition scope has the same title.`)
     }
     const overview = page.getByTestId('learner-plan-today-overview')
@@ -450,8 +453,14 @@ try {
   // Legacy landscapes do not use the canonical scope-loading screen. The
   // independently placed banner must still wait for the new learner's state.
   {
-    const h = await open(undefined, 'legacy')
-    await waitReady(h.page, mathTitle)
+    const initialProfileGate = gate()
+    const h = await open({ profile: initialProfileGate.promise }, 'legacy')
+    await h.page.getByTestId('learner-current-goal').getByRole('heading', { name: mathTitle }).waitFor()
+    assert.equal(await h.page.locator('#learner-goal-sidebar').getByText('Mathematik', { exact: true }).count(), 0,
+      'legacy content can be visible while the saved sidebar scope is still loading')
+    const ready = waitReady(h.page, mathTitle)
+    initialProfileGate.resolve(profile(learnerA))
+    await ready
     const banner = h.page.getByTestId('learner-active-goal-banner')
     await banner.getByText(mathTitle, { exact: true }).waitFor()
     const newStateGate = gate()
