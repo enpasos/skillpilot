@@ -1,0 +1,313 @@
+{
+  "role": "FUTURE_COMMAND_RECIPE_NOT_EXECUTED",
+  "baseRecipePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/final-gates-plan/COMMANDS.final-gates-plan.json",
+  "baseRecipeSHA256": "b123a1aaec85ff0e4e8b2abb83f3fd192ba63690b203678a29dd343e21edc6f2",
+  "old442AssertionsAndPinsNotReused": true,
+  "preconditions": [
+    "final reviewed content/source/view/applicability integration",
+    "explicit exact accepted new-practice release and changed-row semantic fingerprints",
+    "actual27 current P context transports and unique450 owner selection",
+    "actual final affected D page/context rounds, synthesis, validated indices and append-only current ownership"
+  ],
+  "commands": [
+    {
+      "id": "schemas",
+      "cwd": ".",
+      "argv": [
+        "python",
+        "scripts/validate_schemas.py"
+      ],
+      "scope": "All committed curriculum JSON and portable symlink constraints",
+      "kind": "check",
+      "writes": []
+    },
+    {
+      "id": "goal-uuids",
+      "cwd": ".",
+      "argv": [
+        "python",
+        "scripts/validate_goal_ids_uuid.py"
+      ],
+      "scope": "Current goal UUID integrity",
+      "kind": "check",
+      "writes": []
+    },
+    {
+      "id": "graph",
+      "cwd": ".",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "validate:graph"
+      ],
+      "scope": "Normal graph integrity, requires/contains/effective DAG",
+      "kind": "check",
+      "writes": []
+    },
+    {
+      "id": "view-filters",
+      "cwd": ".",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "validate:view-filters"
+      ],
+      "scope": "Normal projected filtered graphs",
+      "kind": "check",
+      "writes": []
+    },
+    {
+      "id": "composition",
+      "cwd": ".",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "validate:composition-views"
+      ],
+      "scope": "Normal composition views including current Chemistry41",
+      "kind": "check",
+      "writes": []
+    },
+    {
+      "id": "projection-roles",
+      "cwd": ".",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "test:composition-projection-roles"
+      ],
+      "scope": "Target/prerequisiteOnly regression; no mastery transfer",
+      "kind": "check",
+      "writes": []
+    },
+    {
+      "id": "course-consistency",
+      "cwd": ".",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "test:course-level-mapping-consistency"
+      ],
+      "scope": "Normal source/course/view consistency",
+      "kind": "check",
+      "writes": []
+    },
+    {
+      "id": "source-registry",
+      "cwd": ".",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:source-landscape-registry"
+      ],
+      "scope": "Normal source registry payload/path/identity integrity",
+      "kind": "check",
+      "writes": []
+    },
+    {
+      "id": "source-coverage-refresh",
+      "cwd": ".",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "quality:source-coverage-audit"
+      ],
+      "scope": "Regenerate normal audit against frozen source mappings",
+      "kind": "generated-report",
+      "writes": [
+        "docs/qa-ci/status/curriculum-source-coverage-audit.json",
+        "docs/qa-ci/status/curriculum-source-coverage-audit.md"
+      ]
+    },
+    {
+      "id": "source-coverage-check",
+      "cwd": ".",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "quality:source-coverage-audit:check"
+      ],
+      "scope": "Existing source/applicability regression plus generated audit freshness",
+      "kind": "check",
+      "writes": []
+    },
+    {
+      "id": "repository-sources",
+      "cwd": ".",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "test:repository-source-availability"
+      ],
+      "scope": "Repository-backed source availability contract",
+      "kind": "check",
+      "writes": []
+    },
+    {
+      "id": "source-inventory",
+      "cwd": ".",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "test:source-extraction-inventory"
+      ],
+      "scope": "Actual registered source-extraction inventory",
+      "kind": "check",
+      "writes": []
+    },
+    {
+      "id": "memory-all",
+      "cwd": ".",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "quality:memory-card-review:check:all"
+      ],
+      "scope": "All active normal memory configurations, exact cards/decks/origins and view visibility",
+      "kind": "check",
+      "writes": []
+    },
+    {
+      "id": "layer-a-inventory",
+      "cwd": ".",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:ai-transparency-inventory"
+      ],
+      "scope": "Measured live Layer-A landscape, image and memory inventory",
+      "kind": "check",
+      "writes": []
+    },
+    {
+      "id": "chemistry-atlas-inputs",
+      "cwd": ".",
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/buildGoalBookSourceAtlasInputs.ts",
+        "--config",
+        "app/scripts/config/goal-books/de-gym-chemistry-national-atlas.inputs.json"
+      ],
+      "scope": "Only current Chemistry book-local source inputs",
+      "kind": "generated-publication-inputs",
+      "writes": [
+        "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/",
+        "app/scripts/config/goal-books/de-gym-chemistry-national-atlas.sources.json",
+        "app/scripts/config/goal-books/navigation/de-gym-chemistry-national-atlas.view.json"
+      ]
+    },
+    {
+      "id": "runtime-assets",
+      "cwd": ".",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "prepare:runtime-assets"
+      ],
+      "scope": "Normal generated runtime asset preparation before publication",
+      "kind": "generated-runtime-assets",
+      "writes": [
+        "Generated app/public curriculum assets"
+      ]
+    },
+    {
+      "id": "publication-build",
+      "cwd": ".",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "build:goal-books"
+      ],
+      "scope": "All registered native book models, PDFs, source sidecars and index",
+      "kind": "publication-build",
+      "writes": [
+        "app/public/lernzielbuch/"
+      ]
+    },
+    {
+      "id": "publication-check",
+      "cwd": ".",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:goal-book-publication"
+      ],
+      "scope": "Current publication registry and exact model/PDF/manifest/source bindings",
+      "kind": "check",
+      "writes": []
+    },
+    {
+      "id": "status-all5",
+      "cwd": ".",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "quality:curriculum-status"
+      ],
+      "scope": "Existing normal all-curriculum Layer-A/CQR status, including one actual all5 D/P/A/M/V calculation",
+      "kind": "central-report-and-status",
+      "writes": [
+        "Active memory Markdown reports (npm prequality hook)",
+        "docs/qa-ci/status/curriculum-quality-status.json",
+        "docs/qa-ci/status/curriculum-quality-status.md"
+      ]
+    },
+    {
+      "id": "maturity-floors",
+      "cwd": ".",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:curriculum-maturity-floors"
+      ],
+      "scope": "All protected normal maturity floors",
+      "kind": "check",
+      "writes": []
+    }
+  ],
+  "requiredFinalAssertions": [
+    "Chemistry curricularAtomic450 unchanged",
+    "strict D/P/A/M/V all450/450",
+    "CQR303 pass",
+    "M7 machine quality",
+    "six required final checks pass",
+    "zero blockers",
+    "protected subject floors unchanged",
+    "actual CI assessed separately"
+  ],
+  "executed": false
+}

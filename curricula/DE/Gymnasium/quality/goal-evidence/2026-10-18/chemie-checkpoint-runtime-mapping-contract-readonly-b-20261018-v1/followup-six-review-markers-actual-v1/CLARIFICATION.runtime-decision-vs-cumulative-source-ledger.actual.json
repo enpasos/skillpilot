@@ -1,0 +1,141 @@
+{
+  "role": "additive clarification of runtime-decision versus cumulative source-ledger identity; original integration seal unchanged",
+  "observedAt": "2026-10-18T11:41:07.144665+00:00",
+  "wholeDecisionByteOrObjectEqualityNotClaimedByIntegration": true,
+  "actualGuarantees": [
+    "All six C7 metadata objects are equal in the corresponding source ledger.",
+    "The entire removed runtime decision and raw field bytes remain captured in the original integration audit.",
+    "All 4549 mappings array/entry bytes and all current source-ledger file bytes are preserved.",
+    "No new science judgment or whole-source approval is made."
+  ],
+  "precision": "All five non-SH removed runtime decision field sets are identical subsets of the source decisions, which carry additional review metadata. SH is cumulative: canonicalGoalIds/sourceSpan/rationale differ, so its removed decision must not be identified one-to-one with the whole current source decision.",
+  "originalSealSha256": "bfdafe2c299f057862182192cb5a107d153ff369391ed5b1cec78e95e2612a1e",
+  "items": [
+    {
+      "runtimePath": "curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_chemistry_lower_secondary_to_canonical_chemistry.json",
+      "sourceGoalId": "mv-chemistry-seki-process-standard-e-data-patterns",
+      "removedRuntimeDecisionSemanticSha256": "9caa170f4eca7c0f099341734f6a05507c3066f153d0622df0720b8fb6283eb2",
+      "actualReviewDecisionSemanticSha256": "5881f1320f4f00cac2a0f9232e687a6de74a760bdb331816f2800197fb4f4317",
+      "reviewPath": "curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "reviewJsonPointer": "/decisions/114",
+      "reviewFileSha256": "87dcb2f3166579d78778c669b8a30ad3d491d1cdbf22503ed1483d24064e3ad3",
+      "wholeDecisionObjectEqual": false,
+      "allRemovedRuntimeDecisionFieldsAreIdenticalSubsetOfReviewDecision": true,
+      "differingRuntimeFields": [],
+      "removedCanonicalGoalIds": [
+        "e0d05c36-eaac-4c75-8ead-3fd5bdafefca"
+      ],
+      "actualReviewCanonicalGoalIds": [
+        "e0d05c36-eaac-4c75-8ead-3fd5bdafefca"
+      ],
+      "C7MetadataObjectEqual": true,
+      "removedEntireRuntimeDecisionStillRetainedInOriginalIntegrationAudit": true
+    },
+    {
+      "runtimePath": "curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_chemistry_lower_secondary_to_canonical_chemistry.json",
+      "sourceGoalId": "rp-chemistry-seki-process-standard-5-3-2-e-data-model-conclusions",
+      "removedRuntimeDecisionSemanticSha256": "523f2706d10880550c7fce2db49ae5e797833fb796da0eb60baf79a6e7f16d06",
+      "actualReviewDecisionSemanticSha256": "aab49a6fdf4bf6cfbec9074f816db61e881fcdd5db9045485f202e1155af6ac7",
+      "reviewPath": "curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "reviewJsonPointer": "/decisions/65",
+      "reviewFileSha256": "a38eea1bfc472140a76be13b4d65699227a7365473f1bb70c38becd7341c69af",
+      "wholeDecisionObjectEqual": false,
+      "allRemovedRuntimeDecisionFieldsAreIdenticalSubsetOfReviewDecision": true,
+      "differingRuntimeFields": [],
+      "removedCanonicalGoalIds": [
+        "e0d05c36-eaac-4c75-8ead-3fd5bdafefca"
+      ],
+      "actualReviewCanonicalGoalIds": [
+        "e0d05c36-eaac-4c75-8ead-3fd5bdafefca"
+      ],
+      "C7MetadataObjectEqual": true,
+      "removedEntireRuntimeDecisionStillRetainedInOriginalIntegrationAudit": true
+    },
+    {
+      "runtimePath": "curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_chemistry_lower_secondary_to_canonical_chemistry.json",
+      "sourceGoalId": "de-sh-chemie-seki-fachanforderungen-2022-2-1-1-erkenntnisgewinnung-017-a9c35efe",
+      "removedRuntimeDecisionSemanticSha256": "7614ce55e3dc0d207303e8d640be735b43a59241cc89228f6bdeb59de90729f0",
+      "actualReviewDecisionSemanticSha256": "6279f749372d928afa6834cf38e69c87e9e5fa501c9e569d12cb553ca014f3f7",
+      "reviewPath": "curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "reviewJsonPointer": "/decisions/16",
+      "reviewFileSha256": "1e28178f7a7284d34368d33af2f4cfbfbdc3cf6f1e89a42a7fc5f9de684163c3",
+      "wholeDecisionObjectEqual": false,
+      "allRemovedRuntimeDecisionFieldsAreIdenticalSubsetOfReviewDecision": false,
+      "differingRuntimeFields": [
+        "sourceSpan",
+        "canonicalGoalIds",
+        "rationale"
+      ],
+      "removedCanonicalGoalIds": [
+        "e0d05c36-eaac-4c75-8ead-3fd5bdafefca"
+      ],
+      "actualReviewCanonicalGoalIds": [
+        "49b13b33-34b7-5e4e-861c-b21082cb9922",
+        "91238ba1-5c63-50c7-a4fd-9bbe492c6b61",
+        "e0d05c36-eaac-4c75-8ead-3fd5bdafefca"
+      ],
+      "C7MetadataObjectEqual": true,
+      "removedEntireRuntimeDecisionStillRetainedInOriginalIntegrationAudit": true
+    },
+    {
+      "runtimePath": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_chemistry_lower_secondary_to_canonical_chemistry.json",
+      "sourceGoalId": "sn-chemistry-seki-process-standard-kl9-quantitative-mathematical-relations",
+      "removedRuntimeDecisionSemanticSha256": "755676e8040c3a427fe57b9d9e6870f6057b15e6ef5380862626ec7ae11d4ccd",
+      "actualReviewDecisionSemanticSha256": "b99fa169c41b4918cd14cd8a85f2ecd19d8ad24b054d78e385af5151504b13a2",
+      "reviewPath": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "reviewJsonPointer": "/decisions/187",
+      "reviewFileSha256": "56b0304af3c85508a92f5efa456a4082ac96a920fba72fbfc24b6d38251f224d",
+      "wholeDecisionObjectEqual": false,
+      "allRemovedRuntimeDecisionFieldsAreIdenticalSubsetOfReviewDecision": true,
+      "differingRuntimeFields": [],
+      "removedCanonicalGoalIds": [
+        "e0d05c36-eaac-4c75-8ead-3fd5bdafefca"
+      ],
+      "actualReviewCanonicalGoalIds": [
+        "e0d05c36-eaac-4c75-8ead-3fd5bdafefca"
+      ],
+      "C7MetadataObjectEqual": true,
+      "removedEntireRuntimeDecisionStillRetainedInOriginalIntegrationAudit": true
+    },
+    {
+      "runtimePath": "curricula/DE/Gymnasium/mapping/DE-ST/upper-secondary/st_chemistry_upper_secondary_to_canonical_chemistry.json",
+      "sourceGoalId": "st-chemistry-sekii-process-standard-q-e-mathematical-methods",
+      "removedRuntimeDecisionSemanticSha256": "34cadc2f612532a613a06c72290d3417328c2b882e1e51a5c822feb71e3bbbe6",
+      "actualReviewDecisionSemanticSha256": "48cba91f1d07b1db953a2ccd50f1660d35b7966ba00b9f0ae921fabb32fe36a1",
+      "reviewPath": "curricula/DE/Gymnasium/mapping/DE-ST/upper-secondary/st_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "reviewJsonPointer": "/decisions/332",
+      "reviewFileSha256": "1fc01327f1c4dc667413ce319e013f64bb258c508daf1a7dd345c5c7c7a229df",
+      "wholeDecisionObjectEqual": false,
+      "allRemovedRuntimeDecisionFieldsAreIdenticalSubsetOfReviewDecision": true,
+      "differingRuntimeFields": [],
+      "removedCanonicalGoalIds": [
+        "e0d05c36-eaac-4c75-8ead-3fd5bdafefca"
+      ],
+      "actualReviewCanonicalGoalIds": [
+        "e0d05c36-eaac-4c75-8ead-3fd5bdafefca"
+      ],
+      "C7MetadataObjectEqual": true,
+      "removedEntireRuntimeDecisionStillRetainedInOriginalIntegrationAudit": true
+    },
+    {
+      "runtimePath": "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_chemistry_lower_secondary_to_canonical_chemistry.json",
+      "sourceGoalId": "th-chemistry-seki-process-standard-e-1-5",
+      "removedRuntimeDecisionSemanticSha256": "f7740e1e59672f37d03cb73fdf325c509657579094258d531d3f64525b299983",
+      "actualReviewDecisionSemanticSha256": "f76838f1e3ae06268c6d4d43f645610d6ee97c596c372697bf1ac09ce8724bf2",
+      "reviewPath": "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "reviewJsonPointer": "/decisions/225",
+      "reviewFileSha256": "09877648df0ddb0ccd14d06471d5c5be6d237a9143b20353015cf94b750ce158",
+      "wholeDecisionObjectEqual": false,
+      "allRemovedRuntimeDecisionFieldsAreIdenticalSubsetOfReviewDecision": true,
+      "differingRuntimeFields": [],
+      "removedCanonicalGoalIds": [
+        "e0d05c36-eaac-4c75-8ead-3fd5bdafefca"
+      ],
+      "actualReviewCanonicalGoalIds": [
+        "e0d05c36-eaac-4c75-8ead-3fd5bdafefca"
+      ],
+      "C7MetadataObjectEqual": true,
+      "removedEntireRuntimeDecisionStillRetainedInOriginalIntegrationAudit": true
+    }
+  ]
+}

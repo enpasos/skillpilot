@@ -1,0 +1,28 @@
+## Concrete Na/K station: supervised work in a suitable partner laboratory
+
+This original adapted design supplies a concrete enclosed emission station. It requires an actually accessible specialist laboratory cleared for this supervised school activity; it claims neither an existing school instrument nor a performed measurement. Without access the practical Na/K component remains open. Someone else's demonstration or supplied spectra cannot replace it.
+
+### Instrument and roles
+
+Use an Agilent 4200 MP-AES with MP Expert, compatible OneNeb nebulizer, double-pass spray chamber and original torch, operational 4107 nitrogen generator, suitable exhaust and current laboratory instructions. Only trained specialist staff operate plasma, gas supply, instrument calibration and readiness. Keep covers/interlocks closed and unchanged. Learners prepare their own safe aqueous salts, personally present samples at the external input station under specific instruction, identify acquisitions and retain their own spectra. No learner operation of plasma, gas controls, high voltage, hot parts or opened instrument areas. Wear goggles/coat and closed shoes; no eating/drinking vessels.
+
+Specialist staff provide the official instrument/accessory instructions and verify the full site/operating requirements. They prepare the system according to the manufacturer and record successful wavelength calibration/readiness. Allow 30 minutes warm-up from standby after confirming generator readiness. This is a future readiness check, not an instrument or school clearance claimed here.
+
+### Personal samples and fixed sequence
+
+Provide deionised water, identified pure NaCl/KCl individual references, two fresh aliquots of an explicitly pure unknown from exactly this two-candidate set, balance, separate 20.0-mL volumetric vessels, 0.50-/5.00-mL volumetric pipettes, 50.00-mL flasks and clean labelled 10-mL polypropylene measurement tubes. Add no acid, organic solvent or unrelated samples.
+
+1. Personally prepare NaCl, KCl and two independently weighed unknown portions: each 0.100 g made quantitatively to 20.0 mL total with water. Record actual masses/volumes. Dilute 0.50 mL of each to 50.00 mL, then 5.00 mL of that to 50.00 mL, overall 1:1000. Use separate or adequately sample-rinsed pipettes; pass the water blank through equally clean vessels. Transfer 10 mL per labelled measurement tube. U1/U2 are independently weighed/diluted samples, not two readings of one solution.
+2. Staff create MP-Expert entries for Na 588.995/589.592 nm and K 766.491 nm. Software optimises nebulizer gas/viewing position using the personally prepared individual references; save actual values and retain them for every comparison solution. Use automatic background correction with actual measured blanks and retain wavelength-labelled spectral regions and correction settings. No target intensity or guaranteed detection limit is supplied.
+3. Fixed comparison settings: normal pump 15 rpm, uptake 40 s, stabilization 10 s, three technical replicates of 3 s per line. Rinse with water for at least 60 s between solutions; this cautious original choice is not proof of eliminated carryover. Do not proceed with unknowns if flow or individual-reference spectra are unstable/unusable. Staff resolve faults; subsequent changes apply to all samples/references and must be recorded.
+4. Sequence: water B0, NaCl, B1, KCl, B2, unknown U1, B3, unknown U2, final B4. Learners personally verify tube/data identity. Staff demonstrate external sample presentation and directly supervise the permitted personal action; never reach into moving or protected parts. For every tube retain an unaltered personal screen/file record of the wavelength-labelled spectral region, three intensity readings, time and settings. Explicitly identify automatic background correction and preserve the original file.
+5. Saturation invalidates an apparent match: dilute all samples and both references equally by another 1:10, repeat with full blanks and record overall 1:10000. Never change one line/scale/sample just to obtain a desired answer. Contaminated final blanks, mixed signatures, ambiguous references or inconsistent repeats leave the assignment open. If a control failure is unresolved, finish with a justified unresolved result.
+6. For instrument alarm, failed exhaust, leakage, damaged protection or uncertain input, step back and let specialist staff stop the system. Staff handle flushing/shutdown and local aqueous waste; learners clean only their cool preparation bench. No learner maintenance or improvised restart.
+
+### Analysis and empty personal record
+
+Compare original line signatures and blanks. A matching Na signature supports NaCl only within the explicitly pure NaCl/KCl candidate set; K similarly supports KCl. This does not independently prove chloride or analytical purity. Two Na lines are not two different elements. The measurement provides qualitative identification, not an uncalibrated concentration/purity percentage. Do not import teaching conductivity values from part A as observations.
+
+Date/specialist laboratory/supervisor role: ______; specific instrument/method instruction: ______; personal candidate reasoning: ______; original masses/volumes: ______; separate U1/U2 dilutions: ______; readiness/calibration: ______; actual saved line/gas/viewing settings: ______; B0/Na/B1/K/B2/U1/B3/U2/B4 wavelength-labelled files: ______; original time/intensity data: ______; rinses/saturation/changes: ______; actually observed personal input action: ______; assignment or unresolved result/limits: ______.
+
+Fields remain empty. Without personal preparation, permitted actual sample input and original records, no execution credit is awarded.

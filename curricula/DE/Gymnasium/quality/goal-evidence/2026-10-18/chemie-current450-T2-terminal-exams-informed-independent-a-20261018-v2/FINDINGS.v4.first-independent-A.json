@@ -1,0 +1,61 @@
+{
+  "artifactRole": "ACTUAL_INDEPENDENT_SUBSTANTIVE_A_FIRST_FINDINGS_NOT_AUTHOR_OR_RELEASE",
+  "reviewerId": "/root/chemie_t2_independent_a_complete",
+  "inputPackagePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-T2-terminal-exams-author-20261018-v4",
+  "inputWholeDraftFileSHA256": "a1aa6b55d1bb37aec6caed9979b21da054c78bb0d0f3082390a590dea2943586",
+  "inputAuthorSealFileSHA256": "5eecd927480698ec8f64a5c268528022d896013f1e6dcd6614c6b5ab08e6639c",
+  "reviewCompleteForFrozenV4": true,
+  "findings": [
+    {
+      "findingId": "T2-A-01",
+      "status": "requires_bounded_correction",
+      "kind": "required_scientific_answer_and_scoring_coverage",
+      "endpointIds": ["95cff878-b85e-53d8-84bc-132c8bf4cf71"],
+      "ordinaryGoalIds": ["17772924-46b6-5747-a77b-a8c6944d109d"],
+      "fields": ["examData.solutionContent", "examData.solutionContentEn", "examData.scoring.steps.s3a", "examData.scoring.steps.s4a"],
+      "evidence": "Tasks 3 and 4 expressly require structure, packing and consistency reasoning for full versus partial hydrogenation. Both language solutions and both performance criteria repeat the stoichiometry, ester retention, iodine-value and health-limit text without a packing or consistency explanation. Task 4 says only that iodine value decreases, without making its comparison with complete hydrogenation explicit.",
+      "requiredCorrection": "Include equal-length cis-chain saturation removing cis bends, making more regular packing and a higher melting/firmer-consistency tendency plausible in the stated model. For Q, three mol H2 react and three C=C remain per mol triacylglyceride. Its iodine value remains positive versus zero after complete hydrogenation; an exact value requires molar mass. Remaining C=C and unspecified positions/cis-trans distribution/mixture prevent an exact packing, melting or consistency prediction. Preserve ester bonds and avoid a health ranking. Bind the actual reasoning in both solutions and their scoring criteria.",
+      "ordinaryPApprovalRevoked": false,
+      "comment": "The unchanged ordinary profile already demands packing in observablePerformance; this review does not restart its prior scientific review or modify it. The new exam cannot claim complete coverage before its own answer/key includes the demanded aspect."
+    },
+    {
+      "findingId": "T2-A-02",
+      "status": "requires_bounded_correction",
+      "kind": "learner_source_link",
+      "endpointIds": ["9fea3d6f-9c43-5380-a2bc-ba06bf23b70e"],
+      "fields": ["examData.taskContent Task 2", "examData.taskContentEn Task 2"],
+      "evidence": "Task 2 concatenates the FDA label URL and section marker as 022348s018lbl.pdf12.1 in both languages. Task 1 supplies the valid PDF URL, and the PDF section itself was accessed and checked by this reviewer.",
+      "requiredCorrection": "Separate the valid .pdf URL from the section 12.1 reference. No mechanism, model or clinical-scope change is needed."
+    },
+    {
+      "findingId": "T2-A-03",
+      "status": "requires_bounded_correction",
+      "kind": "learner_interface_reviewer_locator",
+      "endpointIds": [
+        "8a281a5b-fa13-5873-a15a-a4a0c8d6cfa1",
+        "95cff878-b85e-53d8-84bc-132c8bf4cf71",
+        "987cebe4-9157-51f2-9939-f12bbb512c6e",
+        "37d2e2a5-736f-541d-a66f-0d467e8e9bc1",
+        "4cbc2b02-d8c9-510e-9f64-2bb98b7673ef"
+      ],
+      "fields": ["examData.taskContent", "examData.taskContentEn"],
+      "evidence": "These learner task bodies expose raw curricula/... reviewer-material locators. In all five isolation/research tasks of 4cbc2b02, the locator is explicitly introduced as complete material, task, solution and four criteria. The actual scientific material and executable learner instructions are already present inline; there is no missing scientific dependency to repair.",
+      "requiredCorrection": "Remove the internal locators and their reviewer-only solution/rubric introductions from both learner task fields and matching task files. Retain the full material, all demands, real primary research URLs, and separate reviewer bindings."
+    },
+    {
+      "findingId": "T2-A-04",
+      "status": "nonblocking_model_completeness_observation",
+      "kind": "inspectable_construction_key",
+      "endpointIds": ["987cebe4-9157-51f2-9939-f12bbb512c6e"],
+      "evidence": "The supplied patterns and formal extension rule make the construction determinate. The Task 1 model/key states the assessable Glucose/Mannose -> Arabinose relationship, C2 epimerism and D assignment, while Task 2 supplies Galactose -> Lyxose and Xylose -> Threose. It does not enumerate the entire supplied family tree requested in Task 1.",
+      "recommendation": "A concise full supplied edge list would make checking a learner's complete drawing easier. This observation does not invalidate the correct targeted configuration reasoning or the retained ordinary P profile and is not an additional blocking requirement."
+    }
+  ],
+  "scoringContentFunctionDecision": "Several b-step texts repeat performance language under a scope-limit label. Their actual full-credit a-step content already demands the relevant chemical limits. No new blocker is created from the label or a preferred rubric layout; this packet records the real hydrogenation omission separately.",
+  "integrationBoundary": "These are new-exam review decisions only. View placement, inherited applicability, source course/optional boundaries and current native context must be resolved and independently checked at integration. Three author-declared unplaced ordinary targets remain held. No automatic normal-file write is authorized by this review.",
+  "humanApproved": false,
+  "humanTrial": false,
+  "learnerExecuted": false,
+  "localSafetyCleared": false,
+  "M7Claimed": false
+}

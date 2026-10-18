@@ -2971,6 +2971,35 @@
       "canonicalGoalId": "1351706f-4ea6-56e9-951b-87b24cbcdee8",
       "matchType": "partial",
       "reviewDecisionId": "d6ad6ab1-1c9a-5101-9b26-d2ed456d3089"
+    },
+    {
+      "legacyGoalId": "ed3c553b-c6eb-5462-a2ad-307e6e4d74a4",
+      "canonicalGoalId": "4bdbdf32-3021-5a0a-b412-b611166b2d21",
+      "matchType": "partial",
+      "reviewDecisionId": "ed3c553b-c6eb-5462-a2ad-307e6e4d74a4"
+    },
+    {
+      "legacyGoalId": "aaed261c-20d8-5529-ab11-3d8cfa68bc0a",
+      "canonicalGoalId": "4bdbdf32-3021-5a0a-b412-b611166b2d21",
+      "matchType": "partial",
+      "reviewDecisionId": "aaed261c-20d8-5529-ab11-3d8cfa68bc0a"
+    },
+    {
+      "legacyGoalId": "64973c76-d058-5e82-8d8d-239e473b4abc",
+      "canonicalGoalId": "cd9ec99b-b694-5673-863c-55528e31250a",
+      "matchType": "partial",
+      "reviewDecisionId": "64973c76-d058-5e82-8d8d-239e473b4abc"
+    },
+    {
+      "legacyGoalId": "64050036-5de4-5064-a598-68e50b5dd91b",
+      "canonicalGoalId": "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+      "matchType": "partial"
+    },
+    {
+      "legacyGoalId": "aaed261c-20d8-5529-ab11-3d8cfa68bc0a",
+      "canonicalGoalId": "f0f67a7a-b06a-50b9-8edc-1f2a0d97520d",
+      "matchType": "partial",
+      "reviewDecisionId": "aaed261c-20d8-5529-ab11-3d8cfa68bc0a"
     }
   ],
   "decisions": [
@@ -2996,7 +3025,8 @@
       "canonicalGoalIds": [
         "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
         "49b13b33-34b7-5e4e-861c-b21082cb9922",
-        "9fc800d1-92d1-5ef6-81c1-33960ae034dd"
+        "9fc800d1-92d1-5ef6-81c1-33960ae034dd",
+        "e81a4aed-9695-533e-8eb7-7a0c714346ea"
       ],
       "rationale": "Das normalisierte BY-Source-Ziel ist inhaltlich vollständig durch mehrere kanonische Chemieziele abgedeckt; 1:n ist die Zuordnungsform, keine fachliche Lücke. Mehrfach vorkommende LehrplanPLUS-Formulierung wurde aus 2 Profil-/Jahrgangsfundstellen dedupliziert. Source24-Autorenkandidat (2026-10-10): zusätzliche explizite partial-Beiträge nur an 9fc800d1-92d1-5ef6-81c1-33960ae034dd. Eigene begrenzte Operationalisierung, noch keine unabhängige Quellenfreigabe; alte vollständige Quellpflicht und sämtliche ursprünglichen Partner bleiben erhalten.",
       "reviewedAt": "2026-05-11",
@@ -3009,7 +3039,27 @@
         "wholeSourceApproval": false,
         "wholeCourseApproval": false,
         "humanApproval": false
-      }
+      },
+      "additionalAcceptedPartialContributions": [
+        {
+          "canonicalGoalId": "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+          "matchType": "partial",
+          "independentAcceptedRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+            "jsonPointer": "/relations/45",
+            "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+          },
+          "currentWholeGoalSHA256": "98266239c4b5174a18410897197d51badaece96e5489acaf47d325a37c47a39e",
+          "currentWholeProfileSHA256": "8d6ba741e47ea48a04f57de70c685953ffd3cc3d251a3423670f56bedb180af0",
+          "acceptedPartDe": "Persönliche reale angeleitete Untersuchung mit Rohdaten, Kontrollen und begrenzter Auswertung.",
+          "acceptedPartEn": "Personal actual guided investigation with raw data, controls and bounded evaluation.",
+          "remainingDutiesDe": "Aktuelles P enthält zusätzlich2 echte ST7/8-Fälle: beaufsichtigte Mg-Oxidation und kalte MgO/Wasser-Untersuchung mit eigenem Wasserblank/Indikator. Sie wurden mitgelesen, tragen aber keine der hier10 anderen Länderbindungen. Alle Altpflichten sind exakt erhalten; HB-Eigenprotokoll bleibt HB. Der vollständige angegebene Operator bleibt maßgeblich; ausschließlich das konkrete aktuelle C/P-Teilmodell wird vorgeschlagen. Alle übrigen Operator-/Kontextpflichten bleiben offen.",
+          "remainingDutiesEn": "The current P additionally contains2 actual ST7/8 cases: supervised Mg oxidation and a cold MgO/water investigation with an own water blank/indicator. They were read but supply none of these10 other-state bindings. Every old duty is exactly retained; the HB own electronic record remains HB-only. The complete quoted source operator remains binding; all unassessed verbs, contexts and course demands remain open.",
+          "wholeSourceApproval": false,
+          "actualLearnerExecutionClaim": false,
+          "newScientificVoteByTechnicalIntegrator": false
+        }
+      ]
     },
     {
       "sourceGoalId": "9752f90e-d410-5bf9-a1bd-d62fbdb17172",
@@ -4552,11 +4602,13 @@
       "sourceSpan": "C10-HG_SG_MUG_WWG_SWG.5.6",
       "decision": "mapped",
       "canonicalGoalIds": [
-        "dd843c85-bf60-58c3-861b-fb531ba69b17"
+        "dd843c85-bf60-58c3-861b-fb531ba69b17",
+        "cd9ec99b-b694-5673-863c-55528e31250a"
       ],
-      "rationale": "Das normalisierte BY-Source-Ziel ist inhaltlich vollständig durch das kanonische Chemieziel abgedeckt. Mehrfach vorkommende LehrplanPLUS-Formulierung wurde aus 2 Profil-/Jahrgangsfundstellen dedupliziert.",
+      "rationale": "Das normalisierte BY-Source-Ziel ist inhaltlich vollständig durch das kanonische Chemieziel abgedeckt. Mehrfach vorkommende LehrplanPLUS-Formulierung wurde aus 2 Profil-/Jahrgangsfundstellen dedupliziert.\nAktuelle unabhängig angenommene partielle Quellenbeziehung: Die beiden Alltagsfälle verlangen körperliche akute/chronische Schäden, situative Gefahren und zusammenwirkende biologische/psychische/soziale Abhängigkeitsfaktoren. Neue Stress-/Werbefälle verlangen begründete respektvolle Entscheidungen. Die identische amtliche Aussage ist in C10-HG/SG/MuG/WWG/SWG und NTG separat vorhanden. Keine Diagnose, sichere Trinkmenge oder reale Lernendenleistung; keine Konsumaufforderung. Teilumfang und tatsächliche Primärgrenze: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-single-state-forward-direct-source-informed-independent-b-20261018-v1/REVIEW.fifty-three-rows-sixty-nine-pairs.FIRST.informed-independent-b.json. Keine ganze Quellenfreigabe, neue D/P/A/M/V-Stimme oder Lernendenausführung.",
       "reviewedAt": "2026-05-11",
-      "reviewer": "codex"
+      "reviewer": "codex",
+      "matchType": "partial"
     },
     {
       "sourceGoalId": "10634734-3fee-5bac-80f0-b4cb3e3c5068",
@@ -6679,11 +6731,28 @@
       "sourceSpan": "C12-EA.5.6",
       "decision": "mapped",
       "canonicalGoalIds": [
-        "ac700167-001f-5ff8-9a7d-85909f5daa4f"
+        "ac700167-001f-5ff8-9a7d-85909f5daa4f",
+        "4bdbdf32-3021-5a0a-b412-b611166b2d21",
+        "f0f67a7a-b06a-50b9-8edc-1f2a0d97520d"
       ],
-      "rationale": "Das normalisierte BY-Source-Ziel ist inhaltlich vollständig durch das kanonische Chemieziel abgedeckt.",
+      "rationale": "Das normalisierte BY-Source-Ziel ist inhaltlich vollständig durch das kanonische Chemieziel abgedeckt.\nAktuelle unabhängig angenommene partielle Quellenbeziehung: Die Person muss zwei Kekulé-Formeln mit unverändertem Gerüst zeichnen, den Resonanzhybrid vom schnellen Wechsel trennen und Substitution gegen dauerhafte π-Ring-Unterbrechung stabilitätsbezogen vergleichen. Beide ausgewählten BY-Operatoren haben damit einen konkreten Anteil. C12 erhöht/LK. Erweitertes Orbitalmodell und gesamte Reaktivitäts-/Energiebegründung sind nicht vollständig gezeigt; kein BY-GK-Beleg oder Halbjahreswechsel aus HE-Q1. Teilumfang und tatsächliche Primärgrenze: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-single-state-forward-direct-source-informed-independent-b-20261018-v1/REVIEW.fifty-three-rows-sixty-nine-pairs.FIRST.informed-independent-b.json. Keine ganze Quellenfreigabe, neue D/P/A/M/V-Stimme oder Lernendenausführung.",
       "reviewedAt": "2026-05-11",
-      "reviewer": "codex"
+      "reviewer": "codex",
+      "matchType": "partial",
+      "additionalAcceptedPartialContributions": [
+        {
+          "canonicalGoalId": "f0f67a7a-b06a-50b9-8edc-1f2a0d97520d",
+          "matchType": "partial",
+          "acceptedScientificRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-multistate-source-informed-independent-b-part-b-20261018-v1/ACCEPTED.exact-fifty-five-partial-one-held-HE-placement.json",
+            "sha256": "ab921ae7928e26b5f58b2c25c8c72c470b2c3b4c111cb9fae09b92b821ef7f48",
+            "bytes": 43536,
+            "jsonPointer": "/approvedPartial/15"
+          },
+          "rationale": "Whole LK P uses orbital overlap, cyclic delocalisation/resonance and supplied energetic comparison (152kJ model), with fresh interrupted-cycle countercase. Exact selected official operator: begründen die Reaktivität aromatischer Systeme, indem sie, auch anhand energetischer Aspekte, deren Bindungsverhältnisse mit Hilfe des Mesomeriemodells und des erweiterten Orbitalmodells beschreiben. Boundary: No real hydrogenation; official optional/GK versus LK context remains attached to the actual selected source.",
+          "wholeSourceCompletionFromSingleGoalMasteryAllowed": false
+        }
+      ]
     },
     {
       "sourceGoalId": "ed3c553b-c6eb-5462-a2ad-307e6e4d74a4",
@@ -6691,11 +6760,13 @@
       "sourceSpan": "C12-EA.5.7",
       "decision": "mapped",
       "canonicalGoalIds": [
-        "b44f460b-3399-5c3c-94b2-fa5fc6c027f2"
+        "b44f460b-3399-5c3c-94b2-fa5fc6c027f2",
+        "4bdbdf32-3021-5a0a-b412-b611166b2d21"
       ],
-      "rationale": "Das normalisierte BY-Source-Ziel ist inhaltlich vollständig durch das kanonische Chemieziel abgedeckt.",
+      "rationale": "Das normalisierte BY-Source-Ziel ist inhaltlich vollständig durch das kanonische Chemieziel abgedeckt.\nAktuelle unabhängig angenommene partielle Quellenbeziehung: Die Person muss zwei Kekulé-Formeln mit unverändertem Gerüst zeichnen, den Resonanzhybrid vom schnellen Wechsel trennen und Substitution gegen dauerhafte π-Ring-Unterbrechung stabilitätsbezogen vergleichen. Beide ausgewählten BY-Operatoren haben damit einen konkreten Anteil. C12 erhöht/LK. Erweitertes Orbitalmodell und gesamte Reaktivitäts-/Energiebegründung sind nicht vollständig gezeigt; kein BY-GK-Beleg oder Halbjahreswechsel aus HE-Q1. Teilumfang und tatsächliche Primärgrenze: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-single-state-forward-direct-source-informed-independent-b-20261018-v1/REVIEW.fifty-three-rows-sixty-nine-pairs.FIRST.informed-independent-b.json. Keine ganze Quellenfreigabe, neue D/P/A/M/V-Stimme oder Lernendenausführung.",
       "reviewedAt": "2026-05-11",
-      "reviewer": "codex"
+      "reviewer": "codex",
+      "matchType": "partial"
     },
     {
       "sourceGoalId": "8cc77f16-6a08-5eb6-b277-a99c28a28658",
@@ -7710,5 +7781,17 @@
     "nationalCoverageApproval": false,
     "C11CourseSourceHoldUnchanged": true,
     "humanApproval": false
+  },
+  "fourteenMethodPartialIntegration": {
+    "independentAcceptedRef": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/ACCEPTED.exact104-direct-partial-two-literal-three-held.json",
+      "sha256": "9958d0a23bb96b4cce0ed69f2018631764f5fe943d87ed8136ef2ba070457119",
+      "bytes": 99336
+    },
+    "newPartialMappingRows": 1,
+    "newSourceDecisionIds": [],
+    "allOldMappingRowsAndOldDecisionFieldsPreserved": true,
+    "wholeSourceCoverageEstablished": false,
+    "newScientificFirstDecisionsByTechnicalIntegrator": 0
   }
 }

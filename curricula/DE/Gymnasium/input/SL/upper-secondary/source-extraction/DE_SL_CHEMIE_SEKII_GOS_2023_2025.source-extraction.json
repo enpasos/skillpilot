@@ -56,7 +56,122 @@
   "method": {
     "sourceProvision": "Amtliche Saarland-Chemie-Lehrplan-PDFs liegen lokal vor; die Quellen wurden aus den oeffentlichen Saarland-Bildungsserver-Lehrplanrouten archiviert.",
     "passageExtraction": "pdftotext -layout; Passagegruppen entsprechen Dokumentseiten mit linker Spalte \"Kompetenzerwartungen\". Die rechte Spalte \"Vorschlaege und Hinweise\" bleibt Kontext und wird nicht als Source-Ziel importiert.",
-    "sourceGoalExtraction": "Ein Source-Ziel pro Kompetenzbullet der linken Kompetenzspalte; eingerueckte Teilbullets werden als Konkretisierung des jeweiligen Source-Ziels gefuehrt."
+    "sourceGoalExtraction": "Ein Source-Ziel pro Kompetenzbullet der linken Kompetenzspalte; eingerueckte Teilbullets werden als Konkretisierung des jeweiligen Source-Ziels gefuehrt.",
+    "twoSourceReviewedPartialAddition": {
+      "previousPipelineStatusHistorical": {
+        "version": 1,
+        "currentStep": "MAPPING-3",
+        "steps": [
+          {
+            "id": "MAPPING-1",
+            "label": "Original-Lehrplanpassagen extrahiert",
+            "status": "complete",
+            "dependsOn": [],
+            "checks": [
+              {
+                "id": "source-documents-present",
+                "label": "Amtliche Saarland-Chemie-Quellen liegen lokal vor",
+                "passed": true,
+                "details": "curricula/DE/Gymnasium/input/SL/Chemie_GOS_Einfuehrungsphase_naturwissenschaftlicher_Zweig_2024.pdf, curricula/DE/Gymnasium/input/SL/Chemie_GOS_Einfuehrungsphase_sprachlicher_Zweig_2024.pdf, curricula/DE/Gymnasium/input/SL/Chemie_GOS_Grundkurs_2023_ab_2027_red_2025.pdf, curricula/DE/Gymnasium/input/SL/Chemie_GOS_Leistungskurs_2023_ab_2027_red_2025.pdf"
+              },
+              {
+                "id": "expected-topic-coverage",
+                "label": "Saarland-Chemie-Passagegruppen aus den Kompetenzspalten sind vorhanden",
+                "passed": true,
+                "details": "160 Passagegruppen."
+              },
+              {
+                "id": "passage-extraction-source",
+                "label": "Passage-Extraction basiert auf amtlichen PDF-Quellen",
+                "passed": true,
+                "details": "Quellen: curricula/DE/Gymnasium/input/SL/Chemie_GOS_Einfuehrungsphase_naturwissenschaftlicher_Zweig_2024.pdf, curricula/DE/Gymnasium/input/SL/Chemie_GOS_Einfuehrungsphase_sprachlicher_Zweig_2024.pdf, curricula/DE/Gymnasium/input/SL/Chemie_GOS_Grundkurs_2023_ab_2027_red_2025.pdf, curricula/DE/Gymnasium/input/SL/Chemie_GOS_Leistungskurs_2023_ab_2027_red_2025.pdf"
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-2",
+            "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+            "status": "complete",
+            "dependsOn": [
+              "MAPPING-1"
+            ],
+            "checks": [
+              {
+                "id": "source-goals-created",
+                "label": "Aus den amtlichen Saarland-Chemie-Passagen wurden Source-Ziele erzeugt",
+                "passed": true,
+                "details": "712 Source-Ziele"
+              },
+              {
+                "id": "source-goal-count-peer-baseline",
+                "label": "Source-Ziel-Anzahl ist gegen bereits gepruefte Chemie-Inventare plausibilisiert",
+                "passed": true,
+                "details": "712 Source-Ziele; HE/BW/BB/BE/HH/MV/NI/NW/RP/SH/ST Sek-II-Chemie = 202/126/203/203/75/122/333/154/325/165/324 Source-Ziele. Saarland Sek-II wird aus EP-NW, EP-sprachlich, GK und LK extrahiert; Dopplungen zwischen Kursdokumenten bleiben als Quellenbeleg erhalten."
+              },
+              {
+                "id": "source-goal-ids-unique",
+                "label": "Source-Ziel-IDs sind eindeutig",
+                "passed": true,
+                "details": "Doppelte IDs: -"
+              },
+              {
+                "id": "source-goals-reference-passages",
+                "label": "Jedes Source-Ziel referenziert eine vorhandene Originalpassage",
+                "passed": true,
+                "details": "Ohne Passage: -"
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-3",
+            "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+            "status": "complete",
+            "dependsOn": [
+              "MAPPING-1",
+              "MAPPING-2"
+            ],
+            "checks": [
+              {
+                "id": "mapping-2-complete",
+                "label": "MAPPING-2 abgeschlossen",
+                "passed": true,
+                "details": "712 Source-Ziele liegen vor; MAPPING-3 ist fachlich reviewed."
+              },
+              {
+                "id": "m3-review-file-present",
+                "label": "M3-Review-Datei ist vorhanden",
+                "passed": true,
+                "details": "curricula/DE/Gymnasium/mapping/DE-SL/upper-secondary/sl_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json"
+              },
+              {
+                "id": "m3-all-source-goals-reviewed",
+                "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+                "passed": true,
+                "details": "712/712 Source-Ziele reviewed; offen: 0."
+              },
+              {
+                "id": "m3-all-source-goals-covered-by-canonical",
+                "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+                "passed": true,
+                "details": "712/712 Source-Ziele sind durch kanonische Chemie-Ziele abgedeckt."
+              }
+            ]
+          }
+        ]
+      },
+      "oldSourceGoalCount": 712,
+      "currentSourceGoalCount": 713,
+      "oldPassageCount": 160,
+      "currentPassageCount": 161,
+      "completeSelectedGeneralDiagramUnitsAppended": 1,
+      "method": "Additive complete selected official LK competence-diagram unit; not a left-column content bullet. Only its specifically reviewed model-use contribution is mapped.",
+      "independentAcceptedRef": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SH-SL-two-source-informed-independent-root-20261018-v1/FIRST.informed-independent-root-two-whole-profiles-and-original-source-scope.json",
+        "sha256": "0da4bc8e67fd3d44dc5a472f86e041ef80a1d2c2ed26e2057ca16ffbd31e28a6",
+        "bytes": 6549
+      },
+      "wholeOfficialSourceCredit": 0
+    }
   },
   "qualityReview": {
     "sourceGoalCountPeerBaseline": {
@@ -246,7 +361,7 @@
             "id": "expected-topic-coverage",
             "label": "Saarland-Chemie-Passagegruppen aus den Kompetenzspalten sind vorhanden",
             "passed": true,
-            "details": "160 Passagegruppen."
+            "details": "160 pre-existing passage groups plus1 complete selected LK competency-diagram unit; 161 current passages."
           },
           {
             "id": "passage-extraction-source",
@@ -268,13 +383,13 @@
             "id": "source-goals-created",
             "label": "Aus den amtlichen Saarland-Chemie-Passagen wurden Source-Ziele erzeugt",
             "passed": true,
-            "details": "712 Source-Ziele"
+            "details": "712 pre-existing source units plus1 complete selected LK competency-diagram unit; 713 current source units."
           },
           {
             "id": "source-goal-count-peer-baseline",
             "label": "Source-Ziel-Anzahl ist gegen bereits gepruefte Chemie-Inventare plausibilisiert",
             "passed": true,
-            "details": "712 Source-Ziele; HE/BW/BB/BE/HH/MV/NI/NW/RP/SH/ST Sek-II-Chemie = 202/126/203/203/75/122/333/154/325/165/324 Source-Ziele. Saarland Sek-II wird aus EP-NW, EP-sprachlich, GK und LK extrahiert; Dopplungen zwischen Kursdokumenten bleiben als Quellenbeleg erhalten."
+            "details": "Historical content-only peer baseline retained in method.twoSourceReviewedPartialAddition.previousPipelineStatusHistorical; no new cross-inventory plausibility or full-standards completeness judgment."
           },
           {
             "id": "source-goal-ids-unique",
@@ -293,7 +408,7 @@
       {
         "id": "MAPPING-3",
         "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
-        "status": "complete",
+        "status": "incomplete",
         "dependsOn": [
           "MAPPING-1",
           "MAPPING-2"
@@ -303,7 +418,7 @@
             "id": "mapping-2-complete",
             "label": "MAPPING-2 abgeschlossen",
             "passed": true,
-            "details": "712 Source-Ziele liegen vor; MAPPING-3 ist fachlich reviewed."
+            "details": "713 complete extracted source units; new LK unit has one bounded partial source-fit review, not whole coverage."
           },
           {
             "id": "m3-review-file-present",
@@ -314,14 +429,14 @@
           {
             "id": "m3-all-source-goals-reviewed",
             "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
-            "passed": true,
-            "details": "712/712 Source-Ziele reviewed; offen: 0."
+            "passed": false,
+            "details": "Historical 712-unit reviews retained as history; new unit reviewed for bounded model use only. No new whole-source review closure."
           },
           {
             "id": "m3-all-source-goals-covered-by-canonical",
             "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
-            "passed": true,
-            "details": "712/712 Source-Ziele sind durch kanonische Chemie-Ziele abgedeckt."
+            "passed": false,
+            "details": "The new LK unit retains experimental and other-investigation duties beyond the accepted model-use contribution. Whole-source coverage remains open."
           }
         ]
       }
@@ -2639,6 +2754,24 @@
         "sl-chem-sekii-sl-ch-sekii-lk-2023-2025-p079-002-18be7559",
         "sl-chem-sekii-sl-ch-sekii-lk-2023-2025-p079-003-70d0e15a"
       ]
+    },
+    {
+      "id": "sl-chemistry-sekii-lk-general-process-models-and-investigations-p03:whole-competency-diagram-unit",
+      "sourceDocumentKey": "SL-CH-SEKII-LK-2023-2025",
+      "topicCode": "general-Erkenntnisgewinnung-Kompetenzmodell",
+      "title": "Kompetenzmodell – Erkenntnisgewinnung, whole diagram unit",
+      "sourceRef": "Saarland Lehrplan Chemie Hauptphase Leistungskurs2023, abAbitur2027, redaktionell2025, physisch/gedruckt3, Kompetenzmodell, ganze Einheit Erkenntnisgewinnung",
+      "text": "Experimentelle und andere Untersuchungsmethoden sowie Modelle nutzen",
+      "metadata": {
+        "physicalPdfPage": 3,
+        "printedPage": 3,
+        "wholeSelectedDiagramUnit": true,
+        "bindingAndProgressionContextPhysicalPages": [
+          3,
+          4
+        ],
+        "notWholePdfText": true
+      }
     }
   ],
   "sourceGoals": [
@@ -20441,6 +20574,49 @@
       "rawSourceText": "recherchieren die Eigenschaften von Benzol und bewerten die Verwendung von Benzol und dessen Derivaten in Bezug auf gesundheitliche und umweltrelevante Aspekte.",
       "rawSourceSpan": "Hauptphase Leistungskurs, S. 79, Source-Ziel 3",
       "rawParentBulletText": "recherchieren die Eigenschaften von Benzol und bewerten die Verwendung von Benzol und dessen Derivaten in Bezug auf gesundheitliche und umweltrelevante Aspekte."
+    },
+    {
+      "id": "sl-chemistry-sekii-lk-general-process-models-and-investigations-p03",
+      "passageId": "sl-chemistry-sekii-lk-general-process-models-and-investigations-p03:whole-competency-diagram-unit",
+      "topicCode": "general-Erkenntnisgewinnung-Kompetenzmodell",
+      "title": "Experimentelle und andere Untersuchungsmethoden sowie Modelle nutzen",
+      "description": "Experimentelle und andere Untersuchungsmethoden sowie Modelle nutzen",
+      "sourceDocumentKey": "SL-CH-SEKII-LK-2023-2025",
+      "sourceText": "Experimentelle und andere Untersuchungsmethoden sowie Modelle nutzen",
+      "parentBulletText": "Experimentelle und andere Untersuchungsmethoden sowie Modelle nutzen",
+      "rawSourceText": "Experimentelle und andere Untersuchungsmethoden sowie Modelle nutzen",
+      "sourceTextKind": "complete_verbatim_competency_diagram_unit",
+      "sourceRef": "Saarland Lehrplan Chemie Hauptphase Leistungskurs2023, abAbitur2027, redaktionell2025, physisch/gedruckt3, Kompetenzmodell, ganze Einheit Erkenntnisgewinnung",
+      "sourceSpan": {
+        "passageId": "sl-chemistry-sekii-lk-general-process-models-and-investigations-p03:whole-competency-diagram-unit",
+        "label": "physical/printed3; complete Erkenntnisgewinnung unit in competency diagram; surrounding binding/progression context physical3–4"
+      },
+      "courseLevel": "LK",
+      "granularity": "completeSelectedOfficialClause",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "subject:Chemie",
+        "stage:SekII",
+        "course:LK",
+        "sourceDocument:SL-CH-SEKII-LK-2023-2025"
+      ],
+      "metadata": {
+        "physicalPdfPage": 3,
+        "printedPage": 3,
+        "wholeOfficialDiagramUnitRetained": true,
+        "officiallyNumbered": false,
+        "localLocatorNotOfficialStandardNumber": true,
+        "authorStatus": "foreign-root-accepted-bounded-partial-technically-integrated",
+        "scopeBoundary": "General compulsory competence model across the upper-course progression, not a named micelle requirement, universal own topic choice or independently complete official experiment/model standard. Only the actual current micelle profile model-use component is proposed; experimental/other-method components stay open.",
+        "historicalAuthorStatus": "inactive-author-successor-pending-foreign-source-review",
+        "independentAcceptedRef": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SH-SL-two-source-informed-independent-root-20261018-v1/FIRST.informed-independent-root-two-whole-profiles-and-original-source-scope.json",
+          "sha256": "0da4bc8e67fd3d44dc5a472f86e041ef80a1d2c2ed26e2057ca16ffbd31e28a6",
+          "bytes": 6549,
+          "jsonPointer": "/decisions/1"
+        },
+        "wholeOfficialSourceCredit": false
+      }
     }
   ]
 }

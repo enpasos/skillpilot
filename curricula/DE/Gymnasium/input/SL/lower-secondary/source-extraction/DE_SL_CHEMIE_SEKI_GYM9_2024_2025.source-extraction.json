@@ -38,7 +38,141 @@
   "method": {
     "sourceProvision": "Amtliche Saarland-Chemie-Lehrplan-PDFs liegen lokal vor; die Quellen wurden aus den oeffentlichen Saarland-Bildungsserver-Lehrplanrouten archiviert.",
     "passageExtraction": "pdftotext -layout; Passagegruppen entsprechen Dokumentseiten mit linker Spalte \"Kompetenzerwartungen\". Die rechte Spalte \"Vorschlaege und Hinweise\" bleibt Kontext und wird nicht als Source-Ziel importiert.",
-    "sourceGoalExtraction": "Ein Source-Ziel pro Kompetenzbullet der linken Kompetenzspalte; eingerueckte Teilbullets werden als Konkretisierung des jeweiligen Source-Ziels gefuehrt."
+    "sourceGoalExtraction": "Ein Source-Ziel pro Kompetenzbullet der linken Kompetenzspalte; eingerueckte Teilbullets werden als Konkretisierung des jeweiligen Source-Ziels gefuehrt. Additive technical successor: retain that exact finite historical inventory, then append complete selected process clauses from the pinned candidate; no claim that every official process standard has been extracted.",
+    "selectedProcessClauseAddition": {
+      "candidate": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-author-20261018-v1/candidate/extraction-additions/SL.complete-selected-process-clauses.additions.json",
+        "sha256": "bc874515c3790b7a372ef82a07cdfa06dcff66d0e421b032574902d6aa9a7ede",
+        "bytes": 17103
+      },
+      "historicalInventory": 190,
+      "newCompleteSelectedClauses": 3,
+      "actualUnionInventory": 193,
+      "oldObjectsAndPassagesUnchanged": true,
+      "currentIndependentPartialReview": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+        "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+        "bytes": 269340
+      },
+      "sharedExtractionOnlyIds": [],
+      "wholeSourceCoverageEstablished": false,
+      "historicalScopeEvidence": {
+        "method": {
+          "sourceProvision": "Amtliche Saarland-Chemie-Lehrplan-PDFs liegen lokal vor; die Quellen wurden aus den oeffentlichen Saarland-Bildungsserver-Lehrplanrouten archiviert.",
+          "passageExtraction": "pdftotext -layout; Passagegruppen entsprechen Dokumentseiten mit linker Spalte \"Kompetenzerwartungen\". Die rechte Spalte \"Vorschlaege und Hinweise\" bleibt Kontext und wird nicht als Source-Ziel importiert.",
+          "sourceGoalExtraction": "Ein Source-Ziel pro Kompetenzbullet der linken Kompetenzspalte; eingerueckte Teilbullets werden als Konkretisierung des jeweiligen Source-Ziels gefuehrt."
+        },
+        "pipelineStatus": {
+          "version": 1,
+          "currentStep": "MAPPING-3",
+          "steps": [
+            {
+              "id": "MAPPING-1",
+              "label": "Original-Lehrplanpassagen extrahiert",
+              "status": "complete",
+              "dependsOn": [],
+              "checks": [
+                {
+                  "id": "source-documents-present",
+                  "label": "Amtliche Saarland-Chemie-Quellen liegen lokal vor",
+                  "passed": true,
+                  "details": "curricula/DE/Gymnasium/input/SL/Chemie_Gymnasium_G9_Klasse_8_2024_red_2025.pdf, curricula/DE/Gymnasium/input/SL/Chemie_Gymnasium_G9_Klasse_9_2025.pdf"
+                },
+                {
+                  "id": "expected-topic-coverage",
+                  "label": "Saarland-Chemie-Passagegruppen aus den Kompetenzspalten sind vorhanden",
+                  "passed": true,
+                  "details": "28 Passagegruppen."
+                },
+                {
+                  "id": "passage-extraction-source",
+                  "label": "Passage-Extraction basiert auf amtlichen PDF-Quellen",
+                  "passed": true,
+                  "details": "Quellen: curricula/DE/Gymnasium/input/SL/Chemie_Gymnasium_G9_Klasse_8_2024_red_2025.pdf, curricula/DE/Gymnasium/input/SL/Chemie_Gymnasium_G9_Klasse_9_2025.pdf"
+                }
+              ]
+            },
+            {
+              "id": "MAPPING-2",
+              "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+              "status": "complete",
+              "dependsOn": [
+                "MAPPING-1"
+              ],
+              "checks": [
+                {
+                  "id": "source-goals-created",
+                  "label": "Aus den amtlichen Saarland-Chemie-Passagen wurden Source-Ziele erzeugt",
+                  "passed": true,
+                  "details": "190 Source-Ziele"
+                },
+                {
+                  "id": "source-goal-count-peer-baseline",
+                  "label": "Source-Ziel-Anzahl ist gegen bereits gepruefte Chemie-Inventare plausibilisiert",
+                  "passed": true,
+                  "details": "190 Source-Ziele; HE/BW/HB/HH/MV/NI/NW/RP/SH/ST Sek-I-Chemie = 122/65/42/76/114/196/79/65/156/270 Source-Ziele. Saarland Sek-I wird aus den Kompetenzbullets der Klassenstufen 8 und 9 extrahiert."
+                },
+                {
+                  "id": "source-goal-ids-unique",
+                  "label": "Source-Ziel-IDs sind eindeutig",
+                  "passed": true,
+                  "details": "Doppelte IDs: -"
+                },
+                {
+                  "id": "source-goals-reference-passages",
+                  "label": "Jedes Source-Ziel referenziert eine vorhandene Originalpassage",
+                  "passed": true,
+                  "details": "Ohne Passage: -"
+                }
+              ]
+            },
+            {
+              "id": "MAPPING-3",
+              "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+              "status": "complete",
+              "dependsOn": [
+                "MAPPING-1",
+                "MAPPING-2"
+              ],
+              "checks": [
+                {
+                  "id": "mapping-2-complete",
+                  "label": "MAPPING-2 abgeschlossen",
+                  "passed": true,
+                  "details": "190 Source-Ziele liegen vor; MAPPING-3 ist fachlich reviewed."
+                },
+                {
+                  "id": "m3-review-file-present",
+                  "label": "M3-Review-Datei ist vorhanden",
+                  "passed": true,
+                  "details": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json"
+                },
+                {
+                  "id": "m3-all-source-goals-reviewed",
+                  "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+                  "passed": true,
+                  "details": "190/190 Source-Ziele reviewed; offen: 0."
+                },
+                {
+                  "id": "m3-all-source-goals-covered-by-canonical",
+                  "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+                  "passed": true,
+                  "details": "190/190 Source-Ziele sind durch kanonische Chemie-Ziele abgedeckt."
+                }
+              ]
+            }
+          ]
+        },
+        "sourceGoalCount": 190,
+        "passageCount": 28,
+        "baseExtraction": {
+          "path": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_CHEMIE_SEKI_GYM9_2024_2025.source-extraction.json",
+          "sha256": "04fd855508778e19305e23e722d4fab0e2b7f618b31f6dcd5e6f7462b47c72dc",
+          "bytes": 303991
+        }
+      },
+      "cellMetadataProvenance": "Original candidate cell metadata is retained byte-for-object. Its inactive/pending wording records the author snapshot; current limited integration and accepted partial contributions are described here and in selectedProcessIntegration, not by inventing whole-source review."
+    }
   },
   "qualityReview": {
     "sourceGoalCountPeerBaseline": {
@@ -74,7 +208,8 @@
     "SL-CH-SEKI-9-2025-P022",
     "SL-CH-SEKI-9-2025-P023",
     "SL-CH-SEKI-9-2025-P025",
-    "SL-CH-SEKI-9-2025-P026"
+    "SL-CH-SEKI-9-2025-P026",
+    "Kompetenzbereiche des Fachs Chemie"
   ],
   "pipelineStatus": {
     "version": 1,
@@ -90,19 +225,19 @@
             "id": "source-documents-present",
             "label": "Amtliche Saarland-Chemie-Quellen liegen lokal vor",
             "passed": true,
-            "details": "curricula/DE/Gymnasium/input/SL/Chemie_Gymnasium_G9_Klasse_8_2024_red_2025.pdf, curricula/DE/Gymnasium/input/SL/Chemie_Gymnasium_G9_Klasse_9_2025.pdf"
+            "details": "Current operative primary document: curricula/DE/Gymnasium/input/SL/Chemie_Gymnasium_G9_Klasse_8_2024_red_2025.pdf. Historical inventory provenance remains in method.selectedProcessClauseAddition.historicalScopeEvidence."
           },
           {
             "id": "expected-topic-coverage",
             "label": "Saarland-Chemie-Passagegruppen aus den Kompetenzspalten sind vorhanden",
             "passed": true,
-            "details": "28 Passagegruppen."
+            "details": "Historical 28 passage inventory retained exactly; 1 selected process passages added. Other standards remain context or unexamined; no complete standards-universe claim."
           },
           {
             "id": "passage-extraction-source",
             "label": "Passage-Extraction basiert auf amtlichen PDF-Quellen",
             "passed": true,
-            "details": "Quellen: curricula/DE/Gymnasium/input/SL/Chemie_Gymnasium_G9_Klasse_8_2024_red_2025.pdf, curricula/DE/Gymnasium/input/SL/Chemie_Gymnasium_G9_Klasse_9_2025.pdf"
+            "details": "Current operative primary document: curricula/DE/Gymnasium/input/SL/Chemie_Gymnasium_G9_Klasse_8_2024_red_2025.pdf. Historical inventory provenance remains in method.selectedProcessClauseAddition.historicalScopeEvidence."
           }
         ]
       },
@@ -118,13 +253,13 @@
             "id": "source-goals-created",
             "label": "Aus den amtlichen Saarland-Chemie-Passagen wurden Source-Ziele erzeugt",
             "passed": true,
-            "details": "190 Source-Ziele"
+            "details": "193 actual source cells = 190 retained historical inventory + 3 complete selected process clauses. No additional unselected standard counted."
           },
           {
             "id": "source-goal-count-peer-baseline",
-            "label": "Source-Ziel-Anzahl ist gegen bereits gepruefte Chemie-Inventare plausibilisiert",
+            "label": "Historische Inhaltsbasis und aktuelle ausgewählte Prozessstandards getrennt gezählt",
             "passed": true,
-            "details": "190 Source-Ziele; HE/BW/HB/HH/MV/NI/NW/RP/SH/ST Sek-I-Chemie = 122/65/42/76/114/196/79/65/156/270 Source-Ziele. Saarland Sek-I wird aus den Kompetenzbullets der Klassenstufen 8 und 9 extrahiert."
+            "details": "The old peer comparison concerned only the historical finite 190-cell inventory; it is preserved in historicalScopeEvidence and is not a current complete-standards benchmark. Actual union: 193 = 190 historical + 3 selected process cells."
           },
           {
             "id": "source-goal-ids-unique",
@@ -143,7 +278,7 @@
       {
         "id": "MAPPING-3",
         "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
-        "status": "complete",
+        "status": "incomplete",
         "dependsOn": [
           "MAPPING-1",
           "MAPPING-2"
@@ -153,29 +288,85 @@
             "id": "mapping-2-complete",
             "label": "MAPPING-2 abgeschlossen",
             "passed": true,
-            "details": "190 Source-Ziele liegen vor; MAPPING-3 ist fachlich reviewed."
+            "details": "193 cells exist. Historical 190-cell M3 evidence remains limited to its original inventory; new bounded partial contributions do not complete whole-source duties."
           },
           {
             "id": "m3-review-file-present",
             "label": "M3-Review-Datei ist vorhanden",
             "passed": true,
-            "details": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json"
+            "details": "Current source/epoch-matching review aliases: curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json"
           },
           {
             "id": "m3-all-source-goals-reviewed",
             "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
-            "passed": true,
-            "details": "190/190 Source-Ziele reviewed; offen: 0."
+            "passed": false,
+            "details": "No new whole-source approval. 3 selected additions carry only their individually accepted partial contributions; 0 shared cells have extraction transport only. Whole operator/course/execution duties remain separate."
           },
           {
             "id": "m3-all-source-goals-covered-by-canonical",
             "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
-            "passed": true,
-            "details": "190/190 Source-Ziele sind durch kanonische Chemie-Ziele abgedeckt."
+            "passed": false,
+            "details": "No new whole-source approval. 3 selected additions carry only their individually accepted partial contributions; 0 shared cells have extraction transport only. Whole operator/course/execution duties remain separate."
           }
         ]
       }
-    ]
+    ],
+    "selectedProcessIntegration": {
+      "status": "accepted-partial-contributions-only",
+      "totalSourceGoalsActual": 193,
+      "historicalSourceGoals": 190,
+      "newCompleteSelectedProcessCells": 3,
+      "newWholeSourceApprovals": 0,
+      "newScientificFirstDecisionsByIntegrator": 0,
+      "independentAcceptedRef": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+        "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+        "bytes": 269340
+      },
+      "sourceCellPartialBindings": [
+        {
+          "sourceGoalId": "sl-chemistry-seki-process-standard-msa-erkenntnis-definition",
+          "acceptedPartialContributions": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+              "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+              "bytes": 269340,
+              "jsonPointer": "/mappings/57"
+            }
+          ],
+          "wholeSourceApproval": false,
+          "extractionTransportOnlyWithoutBindingVote": false
+        },
+        {
+          "sourceGoalId": "sl-chemistry-seki-process-standard-msa-kommunikation-definition",
+          "acceptedPartialContributions": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+              "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+              "bytes": 269340,
+              "jsonPointer": "/mappings/58"
+            }
+          ],
+          "wholeSourceApproval": false,
+          "extractionTransportOnlyWithoutBindingVote": false
+        },
+        {
+          "sourceGoalId": "sl-chemistry-seki-process-standard-msa-bewertung-definition",
+          "acceptedPartialContributions": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+              "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+              "bytes": 269340,
+              "jsonPointer": "/mappings/59"
+            }
+          ],
+          "wholeSourceApproval": false,
+          "extractionTransportOnlyWithoutBindingVote": false
+        }
+      ],
+      "wholeSourceCoverageComplete": false,
+      "historicalM3DoesNotExtendToAddedCells": true
+    }
   },
   "passages": [
     {
@@ -647,6 +838,18 @@
         "sl-chem-seki-sl-ch-seki-9-2025-p026-003-8a8fdb53",
         "sl-chem-seki-sl-ch-seki-9-2025-p026-004-c9caa796"
       ]
+    },
+    {
+      "id": "sl-chemistry-seki-process:kompetenzbereiche-des-fachs-chemie",
+      "topicCode": "Kompetenzbereiche des Fachs Chemie",
+      "title": "SL: selected whole process clauses, original full pages retained",
+      "text": "Kompetenzbereiche des Fachs Chemie\nMit dem Erwerb des Mittleren Schulabschlusses sollen die Lernenden über naturwissen-\nschaftliche Kompetenzen im Allgemeinen sowie chemische Kompetenzen im Besonderen\nverfügen.\nDas den Bildungsstandards für den Mittleren Schulabschluss zugrunde liegende Modell der\nnaturwissenschaftlichen Kompetenz umfasst die vier Kompetenzbereiche Sach-, Erkenntnis-\ngewinnungs-, Kommunikations- und Bewertungskompetenz:\nDie Sachkompetenz (Fachwissen) der Lernenden zeigt sich in der Kenntnis naturwissen-\nschaftlicher Begriffe, Konzepte, Gesetzmäßigkeiten, Theorien und Verfahren verbunden mit\nder Fähigkeit, diese zu beschreiben, zu erklären, sachgerecht zu nutzen und auf fach- und\nalltagsbezogene Sachverhalte zu übertragen. Der Auseinandersetzung mit naturwissen-\nschaftlichen Phänomenen auf der makroskopischen und submikroskopischen Ebene sowie\nder Ebene der Repräsentation kommt dabei eine besondere Bedeutung zu.\nDie Erkenntnisgewinnungskompetenz der Lernenden zeigt sich in der Kenntnis grundlegen-\nder naturwissenschaftlicher Denk- und Arbeitsweisen verbunden mit der Fähigkeit, diese zu\nbeschreiben, zu erklären, für Erkenntnisprozesse systematisch zu nutzen und deren Möglich-\nkeiten und Grenzen zu reflektieren. Für das Fach Chemie sind hier insbesondere Experimente,\nUntersuchungen sowie die Nutzung von Modellen zu nennen.\nDie Kommunikationskompetenz der Lernenden zeigt sich in der Kenntnis von Fachsprache\nund fachtypischen Darstellungen verbunden mit der Fähigkeit, daraus fachbezogene Infor-\nmationen zu erschließen, diese adressaten- und situationsgerecht aufzubereiten und sich ar-\ngumentativ auszutauschen. Im Fach Chemie spielt die Nutzung der Formelsprache dabei eine\nwichtige Rolle.\nDie Bewertungskompetenz der Lernenden zeigt sich in der Kenntnis von fachlichen und über-\nfachlichen Perspektiven und Bewertungsverfahren, verbunden mit der Fähigkeit, Hand-\nlungsoptionen anhand verschiedener Kriterien zu beurteilen, um Entscheidungen auch auf\nethischer Grundlage zu treffen, die Folgen abzuschätzen und Entscheidungsprozesse zu re-\nflektieren.\nDiese vier Kompetenzbereiche durchdringen einander und bilden gemeinsam die Fachkom-\npetenz im Fach Chemie ab. Kompetenzen zeigen sich in der Verbindung von Kenntnissen und\nFähigkeiten in den jeweiligen Kompetenzbereichen und sind nur im Umgang mit Inhalten zu\nerwerben.\nDie drei Unterrichtsfächer Biologie, Chemie und Physik bilden die inhaltliche Dimension durch\nBasiskonzepte ab. In der Chemie wird die Inhaltsdimension durch drei Basiskonzepte struk-\nturiert. Mit diesen Basiskonzepten können Phänomene chemisch beschrieben, geordnet und\nerklärt werden. Sie finden daher in allen vier Kompetenzbereichen Berücksichtigung.\nDie Handlungsdimension bezieht sich auf grundlegende Elemente der naturwissenschaftli-\nchen Erkenntnisgewinnung, also auf experimentelles und theoretisches Arbeiten, auf Kom-\nmunikation und auf die Anwendung und Bewertung chemischer Sachverhalte in fachlichen\nund gesellschaftlichen Kontexten.\nDiese beiden Dimensionen chemischen Arbeitens ermöglichen es den Lernenden, vielfältige\nKompetenzen zu erwerben, die ihnen helfen, die natürliche und kulturelle Welt zu verstehen\nund zu erklären. Die Kompetenzen beschreiben Ergebnisse des Lernens im Sinne von Wissen\nund Können, geben aber keine Unterrichtsmethoden oder -strategien vor.\nDie Kompetenzbereiche erfordern jeweils bereichsspezifisches Fachwissen. Das Fachwissen\nbesteht somit aus einem breiten Spektrum an Kenntnissen als Grundlage fachlicher Kompe-\ntenz. Zu diesem Spektrum gehören naturwissenschaftliche Konzepte, Theorien, Verfahren,\nDenk- und Arbeitsweisen, Fachsprache, fachtypische Darstellungen und Argumentations-\nstrukturen, fachliche wie überfachliche Perspektiven und Bewertungsverfahren.\n\n                                              7\n",
+      "sourceDocumentKey": "SL-CH-SEKI-8-2024",
+      "sourceRef": "curricula/DE/Gymnasium/input/SL/Chemie_Gymnasium_G9_Klasse_8_2024_red_2025.pdf, physical PDF pages [7]",
+      "physicalPdfPages": [
+        7
+      ],
+      "scope": "Full page context, selected clauses only become sourceGoals; all other standards remain unextracted context."
     }
   ],
   "sourceGoals": [
@@ -5399,6 +5602,96 @@
       "rawSourceText": "vergleichen die Arten der Chemischen Bindung (Ionenbindung, Atombindung, Metallbindung) in einer tabellarischen Übersicht.",
       "rawSourceSpan": "Klasse 9, S. 26, Source-Ziel 4",
       "rawParentBulletText": "vergleichen die Arten der Chemischen Bindung (Ionenbindung, Atombindung, Metallbindung) in einer tabellarischen Übersicht."
+    },
+    {
+      "id": "sl-chemistry-seki-process-standard-msa-erkenntnis-definition",
+      "passageId": "sl-chemistry-seki-process:kompetenzbereiche-des-fachs-chemie",
+      "topicCode": "Kompetenzbereiche des Fachs Chemie",
+      "title": "MSA-Erkenntnis-definition: Die Erkenntnisgewinnungskompetenz der Lernenden zeigt sich in der Kenntnis grundlegender naturwissenschaftlicher Denk- und Arbeitsweisen verbunden mit der Fähigkeit, diese zu beschreiben, zu erklären, für Erkenntnisprozesse systematisch zu nutzen und deren Möglichkeiten und Grenzen zu reflektieren. Für das Fach Chemie sind hier insbesondere Experimente, Untersuchungen sowie die Nutzung von Modellen zu nennen.",
+      "description": "Die Erkenntnisgewinnungskompetenz der Lernenden zeigt sich in der Kenntnis grundlegender naturwissenschaftlicher Denk- und Arbeitsweisen verbunden mit der Fähigkeit, diese zu beschreiben, zu erklären, für Erkenntnisprozesse systematisch zu nutzen und deren Möglichkeiten und Grenzen zu reflektieren. Für das Fach Chemie sind hier insbesondere Experimente, Untersuchungen sowie die Nutzung von Modellen zu nennen.",
+      "sourceDocumentKey": "SL-CH-SEKI-8-2024",
+      "sourceText": "Die Erkenntnisgewinnungskompetenz der Lernenden zeigt sich in der Kenntnis grundlegender naturwissenschaftlicher Denk- und Arbeitsweisen verbunden mit der Fähigkeit, diese zu beschreiben, zu erklären, für Erkenntnisprozesse systematisch zu nutzen und deren Möglichkeiten und Grenzen zu reflektieren. Für das Fach Chemie sind hier insbesondere Experimente, Untersuchungen sowie die Nutzung von Modellen zu nennen.",
+      "parentBulletText": "Die Erkenntnisgewinnungskompetenz der Lernenden zeigt sich in der Kenntnis grundlegender naturwissenschaftlicher Denk- und Arbeitsweisen verbunden mit der Fähigkeit, diese zu beschreiben, zu erklären, für Erkenntnisprozesse systematisch zu nutzen und deren Möglichkeiten und Grenzen zu reflektieren. Für das Fach Chemie sind hier insbesondere Experimente, Untersuchungen sowie die Nutzung von Modellen zu nennen.",
+      "sourceRef": "Lehrplan Chemie Klassenstufe 8 im neunjährigen Gymnasium Saarland 2024, redaktionell 2025; physical PDF7; Kompetenzbereiche des Fachs Chemie; MSA-Erkenntnis-definition.",
+      "sourceSpan": {
+        "passageId": "sl-chemistry-seki-process:kompetenzbereiche-des-fachs-chemie",
+        "label": "physical PDF7, Kompetenzbereiche des Fachs Chemie, MSA-Erkenntnis-definition"
+      },
+      "courseLevel": "unspecified",
+      "granularity": "officialCompleteCompetenceDefinitionNotNumberedStandard",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "course:unspecified"
+      ],
+      "metadata": {
+        "officialStandardCode": null,
+        "localLocatorLabel": "MSA-Erkenntnis-definition",
+        "officiallyNumbered": false,
+        "physicalPdfPage": 7,
+        "extractionMethod": "Author read whole primary section; complete clause, line wrapping only normalized; inactive additive candidate; no independent review yet.",
+        "stageCourseBoundary": "MSA-oriented competency definitions in Klasse8 plan; abstract definitions only, not subject-topic or complete SekII standards."
+      }
+    },
+    {
+      "id": "sl-chemistry-seki-process-standard-msa-kommunikation-definition",
+      "passageId": "sl-chemistry-seki-process:kompetenzbereiche-des-fachs-chemie",
+      "topicCode": "Kompetenzbereiche des Fachs Chemie",
+      "title": "MSA-Kommunikation-definition: Die Kommunikationskompetenz der Lernenden zeigt sich in der Kenntnis von Fachsprache und fachtypischen Darstellungen verbunden mit der Fähigkeit, daraus fachbezogene Informationen zu erschließen, diese adressaten- und situationsgerecht aufzubereiten und sich argumentativ auszutauschen. Im Fach Chemie spielt die Nutzung der Formelsprache dabei eine wichtige Rolle.",
+      "description": "Die Kommunikationskompetenz der Lernenden zeigt sich in der Kenntnis von Fachsprache und fachtypischen Darstellungen verbunden mit der Fähigkeit, daraus fachbezogene Informationen zu erschließen, diese adressaten- und situationsgerecht aufzubereiten und sich argumentativ auszutauschen. Im Fach Chemie spielt die Nutzung der Formelsprache dabei eine wichtige Rolle.",
+      "sourceDocumentKey": "SL-CH-SEKI-8-2024",
+      "sourceText": "Die Kommunikationskompetenz der Lernenden zeigt sich in der Kenntnis von Fachsprache und fachtypischen Darstellungen verbunden mit der Fähigkeit, daraus fachbezogene Informationen zu erschließen, diese adressaten- und situationsgerecht aufzubereiten und sich argumentativ auszutauschen. Im Fach Chemie spielt die Nutzung der Formelsprache dabei eine wichtige Rolle.",
+      "parentBulletText": "Die Kommunikationskompetenz der Lernenden zeigt sich in der Kenntnis von Fachsprache und fachtypischen Darstellungen verbunden mit der Fähigkeit, daraus fachbezogene Informationen zu erschließen, diese adressaten- und situationsgerecht aufzubereiten und sich argumentativ auszutauschen. Im Fach Chemie spielt die Nutzung der Formelsprache dabei eine wichtige Rolle.",
+      "sourceRef": "Lehrplan Chemie Klassenstufe 8 im neunjährigen Gymnasium Saarland 2024, redaktionell 2025; physical PDF7; Kompetenzbereiche des Fachs Chemie; MSA-Kommunikation-definition.",
+      "sourceSpan": {
+        "passageId": "sl-chemistry-seki-process:kompetenzbereiche-des-fachs-chemie",
+        "label": "physical PDF7, Kompetenzbereiche des Fachs Chemie, MSA-Kommunikation-definition"
+      },
+      "courseLevel": "unspecified",
+      "granularity": "officialCompleteCompetenceDefinitionNotNumberedStandard",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "course:unspecified"
+      ],
+      "metadata": {
+        "officialStandardCode": null,
+        "localLocatorLabel": "MSA-Kommunikation-definition",
+        "officiallyNumbered": false,
+        "physicalPdfPage": 7,
+        "extractionMethod": "Author read whole primary section; complete clause, line wrapping only normalized; inactive additive candidate; no independent review yet.",
+        "stageCourseBoundary": "MSA-oriented competency definitions in Klasse8 plan; abstract definitions only, not subject-topic or complete SekII standards."
+      }
+    },
+    {
+      "id": "sl-chemistry-seki-process-standard-msa-bewertung-definition",
+      "passageId": "sl-chemistry-seki-process:kompetenzbereiche-des-fachs-chemie",
+      "topicCode": "Kompetenzbereiche des Fachs Chemie",
+      "title": "MSA-Bewertung-definition: Die Bewertungskompetenz der Lernenden zeigt sich in der Kenntnis von fachlichen und überfachlichen Perspektiven und Bewertungsverfahren, verbunden mit der Fähigkeit, Handlungsoptionen anhand verschiedener Kriterien zu beurteilen, um Entscheidungen auch auf ethischer Grundlage zu treffen, die Folgen abzuschätzen und Entscheidungsprozesse zu reflektieren.",
+      "description": "Die Bewertungskompetenz der Lernenden zeigt sich in der Kenntnis von fachlichen und überfachlichen Perspektiven und Bewertungsverfahren, verbunden mit der Fähigkeit, Handlungsoptionen anhand verschiedener Kriterien zu beurteilen, um Entscheidungen auch auf ethischer Grundlage zu treffen, die Folgen abzuschätzen und Entscheidungsprozesse zu reflektieren.",
+      "sourceDocumentKey": "SL-CH-SEKI-8-2024",
+      "sourceText": "Die Bewertungskompetenz der Lernenden zeigt sich in der Kenntnis von fachlichen und überfachlichen Perspektiven und Bewertungsverfahren, verbunden mit der Fähigkeit, Handlungsoptionen anhand verschiedener Kriterien zu beurteilen, um Entscheidungen auch auf ethischer Grundlage zu treffen, die Folgen abzuschätzen und Entscheidungsprozesse zu reflektieren.",
+      "parentBulletText": "Die Bewertungskompetenz der Lernenden zeigt sich in der Kenntnis von fachlichen und überfachlichen Perspektiven und Bewertungsverfahren, verbunden mit der Fähigkeit, Handlungsoptionen anhand verschiedener Kriterien zu beurteilen, um Entscheidungen auch auf ethischer Grundlage zu treffen, die Folgen abzuschätzen und Entscheidungsprozesse zu reflektieren.",
+      "sourceRef": "Lehrplan Chemie Klassenstufe 8 im neunjährigen Gymnasium Saarland 2024, redaktionell 2025; physical PDF7; Kompetenzbereiche des Fachs Chemie; MSA-Bewertung-definition.",
+      "sourceSpan": {
+        "passageId": "sl-chemistry-seki-process:kompetenzbereiche-des-fachs-chemie",
+        "label": "physical PDF7, Kompetenzbereiche des Fachs Chemie, MSA-Bewertung-definition"
+      },
+      "courseLevel": "unspecified",
+      "granularity": "officialCompleteCompetenceDefinitionNotNumberedStandard",
+      "tags": [
+        "jurisdiction:DE-SL",
+        "stage:SekI",
+        "course:unspecified"
+      ],
+      "metadata": {
+        "officialStandardCode": null,
+        "localLocatorLabel": "MSA-Bewertung-definition",
+        "officiallyNumbered": false,
+        "physicalPdfPage": 7,
+        "extractionMethod": "Author read whole primary section; complete clause, line wrapping only normalized; inactive additive candidate; no independent review yet.",
+        "stageCourseBoundary": "MSA-oriented competency definitions in Klasse8 plan; abstract definitions only, not subject-topic or complete SekII standards."
+      }
     }
   ]
 }

@@ -1,0 +1,9 @@
+# Drei geerbte Orientierungspfade: inaktiver atomarer Kandidat
+
+Die aktuelle vollständige Stockmessung und der historische Integrationsbeleg wählen jeweils 338 Ziele. Bereits das damalige `actualRoute` enthielt unter CQR-102 exakt die heutigen acht direkten Motivationslücken. Die Nullangabe betraf ausschließlich CQR-101 (effektive, auch geerbte Pfade). Eine Nullbehauptung für direkte Pfade war falsch. Alle 27 geprüften Kanten sind erhalten; keine der acht Problem-IDs gehörte zu diesen 27. Ihre `requires` sind seit dem damaligen BEFORE-Snapshot unverändert.
+
+Der Kandidat hängt den vorhandenen nicht prüfenden Orientierungsanker genau an drei atomare Sek-I-Wurzeln an: chemische Fach- und Symbolsprache, Laborsicherheit, Reinstoffe/Gemische. Die geerbten Witness-Pfade und alle vollständigen Before/After-Ziele stehen im CAS-Kandidaten. Inhalt, Sprache, Bildverweise, Sicherheits-/Praxisanforderungen und Geltung ändern sich nicht. Beim Symbolziel verläuft der bisherige geerbte Weg über den Arbeitsweisen-Cluster; deshalb ändert sich dort die unmittelbare effektive Kantenmenge redundant. Die vollständige transitive effektive Voraussetzungsmengen bleiben für alle737 Graphknoten unverändert.
+
+Die unveränderten Stockfunktionen messen am Speicherkandidaten CQR-101 Motivation0/Terminal0 und CQR-102 direkte Motivation0/Terminal0. Das ist eine begrenzte Routenprüfung, kein vollständiger neuer Zentralbericht, keine Ansichts-/Geltungsprüfung und keine Freigabe. Die drei neuen Appends sind nicht durch die alten 27 CAS-Reviews unabhängig geprüft. Root veranlasst eine getrennte technische Nachprüfung und entscheidet über Integration sowie ausschließlich tatsächlich betroffene Produktionsbindungen.
+
+Keine Normaldaten, Runtime-Regeln oder Gates geändert; keine D/P/A/M-Freigabe, neue native Gruppe, Bildsichtung oder menschliche Freigabe. M7 bleibt offen. Alte279 native Erstprüfungen bleiben ihrem damaligen eingefrorenen Input zugeordnet.

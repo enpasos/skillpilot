@@ -1,0 +1,636 @@
+{
+  "originalPlan": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-route-exam-remediation-author-plan-20261018-v1/PLAN.actual-minimal-scientifically-valid-repair.json",
+    "sha256": "5bcf1d92bc0520e831feee1074427458ddd3909f9b7ce9d10b149e26fe4e11e8",
+    "bytes": 1829034
+  },
+  "package": {
+    "packageId": "T5",
+    "title": "Biologisch-chemisches Praktikum",
+    "maximalEndGoalCount": 14,
+    "predictedGrossRouteCoverage": 18,
+    "predictedNetRouteCoverageInListedOrder": 18,
+    "predictedMissingTerminalAfterPackage": 0,
+    "newCurricularAtomicGoals": 0,
+    "scientificFirstCompletionsForExistingOrdinaryGoals": 0,
+    "families": [
+      {
+        "familyId": "T5-1",
+        "title": "Unbekannte Proben und Gemische",
+        "authorAssignment": "Reale sichere Reinstoff- und Gemischproben mit Referenzen/Blindproben selbst bearbeiten, Identitätsgrenzen und Mengenbezug erklären. Die vorhandenen vollständigen P-SOPs liefern Eingaben; keine erfundenen Lernendenmesswerte.",
+        "maximalEndGoalIds": [
+          "7b80efe6-b77d-5ace-8886-973ba38e6f9e",
+          "57d2c98d-30b8-5123-b823-e56a4f22b191"
+        ],
+        "predictedMissingTerminalClosure": [
+          "57d2c98d-30b8-5123-b823-e56a4f22b191",
+          "7b80efe6-b77d-5ace-8886-973ba38e6f9e"
+        ],
+        "predictedClosureCount": 2,
+        "boundedEndpointVariants": [
+          {
+            "proposedNewEndpointId": "85ba42e5-7625-50b1-aaf4-bd8e233a1de6",
+            "targetGoalIds": [
+              "7b80efe6-b77d-5ace-8886-973ba38e6f9e",
+              "57d2c98d-30b8-5123-b823-e56a4f22b191"
+            ],
+            "currentTargetViews": [
+              "curricula/DE/Gymnasium/composition-views/chemie/de-by-lk.current-pilot.view.json"
+            ],
+            "requiresPolicy": "Direct requires = exactly the stated genuinely used end goals; retain their unchanged prerequisite closures. No universal HE admission and no cluster requires. If one coherent task cannot actually assess every listed goal, keep separate independently scored cases within the module or split it.",
+            "placement": "A direct child of5964272f-e835-5a24-b2b1-c162be6b75cb is the neutral crossstage/SekII default; a phase-specific existing practice cluster is permitted only where the current phase/course context really matches. Preserve applicable target views; add explicit endpoint goalEntries as needed.",
+            "applicability": "Use applicabilityFromRequires all-of semantics and mappingInheritance boundary for own assessment eligibility. Materialize exact compiled applicability; it is not official source coverage. Do not broaden ordinary-goal applicability.",
+            "unplacedTargetDecisionRequired": false
+          }
+        ],
+        "phaseCourseAndSources": [
+          {
+            "goalId": "7b80efe6-b77d-5ace-8886-973ba38e6f9e",
+            "title": "Unbekannte Reinstoffproben analytisch identifizieren",
+            "phase": "GLOBAL",
+            "courseTags": [
+              "praktikum"
+            ],
+            "applicability": {
+              "jurisdiction": [
+                "DE-BY"
+              ]
+            },
+            "ordinaryDescription": "Die lernende Person kann für einen begründeten Kandidatenraum unterscheidende Analyseverfahren auswählen, sicher durchführen und dokumentieren, um eine unbekannte Reinstoffprobe anhand von Referenzen zu identifizieren und verbleibende Mehrdeutigkeit offenzulegen.",
+            "wholePReference": {
+              "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-normal-source-configs/P114.normal-source.config.json",
+              "recordPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-plan/records/P114.current-owner.review.jsonl",
+              "line": 11,
+              "caseIds": [
+                "bcp-unknown-pure-substance-identity-a",
+                "bcp-unknown-pure-substance-identity-b"
+              ]
+            }
+          },
+          {
+            "goalId": "57d2c98d-30b8-5123-b823-e56a4f22b191",
+            "title": "Stoffgemische qualitativ und quantitativ analysieren",
+            "phase": "GLOBAL",
+            "courseTags": [
+              "praktikum"
+            ],
+            "applicability": {
+              "jurisdiction": [
+                "DE-BY"
+              ]
+            },
+            "ordinaryDescription": "Die lernende Person kann geeignete Analyseverfahren auswählen, sicher durchführen und dokumentieren, um die Bestandteile eines Stoffgemisches und ihre Mengenanteile mit nachvollziehbarer Stoffbilanz und Aussagegrenzen zu bestimmen.",
+            "wholePReference": {
+              "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-normal-source-configs/P114.normal-source.config.json",
+              "recordPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-plan/records/P114.current-owner.review.jsonl",
+              "line": 10,
+              "caseIds": [
+                "bcp-mixture-composition-a",
+                "bcp-mixture-composition-b"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "familyId": "T5-2",
+        "title": "Präparation, Reinigung und Ausbeute",
+        "authorAssignment": "Eigenes Präparat herstellen/aufarbeiten und getrennt Reinheit/Ausbeute prüfen. Unterschiedliche Zielgeltung verlangt einen breiteren Isolier-Endpunkt und gegebenenfalls BY-Präparationszusatz; keine bloße Ausbeuterechnung als Durchführung.",
+        "maximalEndGoalIds": [
+          "4d16601e-fa57-5bcb-a5b6-f308d5b8036a",
+          "e7c3d20e-4b13-560b-b8ee-c5abca8cc624"
+        ],
+        "predictedMissingTerminalClosure": [
+          "4d16601e-fa57-5bcb-a5b6-f308d5b8036a",
+          "e7c3d20e-4b13-560b-b8ee-c5abca8cc624"
+        ],
+        "predictedClosureCount": 2,
+        "boundedEndpointVariants": [
+          {
+            "proposedNewEndpointId": "9a6120ff-c645-513d-aa5c-8fab85df4cc0",
+            "targetGoalIds": [
+              "4d16601e-fa57-5bcb-a5b6-f308d5b8036a"
+            ],
+            "currentTargetViews": [
+              "curricula/DE/Gymnasium/composition-views/chemie/de-by-lk.current-pilot.view.json"
+            ],
+            "requiresPolicy": "Direct requires = exactly the stated genuinely used end goals; retain their unchanged prerequisite closures. No universal HE admission and no cluster requires. If one coherent task cannot actually assess every listed goal, keep separate independently scored cases within the module or split it.",
+            "placement": "A direct child of5964272f-e835-5a24-b2b1-c162be6b75cb is the neutral crossstage/SekII default; a phase-specific existing practice cluster is permitted only where the current phase/course context really matches. Preserve applicable target views; add explicit endpoint goalEntries as needed.",
+            "applicability": "Use applicabilityFromRequires all-of semantics and mappingInheritance boundary for own assessment eligibility. Materialize exact compiled applicability; it is not official source coverage. Do not broaden ordinary-goal applicability.",
+            "unplacedTargetDecisionRequired": false
+          },
+          {
+            "proposedNewEndpointId": "69f73aac-9c13-57ab-82b6-a029b7e2a40a",
+            "targetGoalIds": [
+              "e7c3d20e-4b13-560b-b8ee-c5abca8cc624"
+            ],
+            "currentTargetViews": [
+              "curricula/DE/Gymnasium/composition-views/chemie/de-bb-gk.view.json",
+              "curricula/DE/Gymnasium/composition-views/chemie/de-bb-lk.view.json",
+              "curricula/DE/Gymnasium/composition-views/chemie/de-be-gk.view.json",
+              "curricula/DE/Gymnasium/composition-views/chemie/de-be-lk.view.json",
+              "curricula/DE/Gymnasium/composition-views/chemie/de-by-lk.current-pilot.view.json"
+            ],
+            "requiresPolicy": "Direct requires = exactly the stated genuinely used end goals; retain their unchanged prerequisite closures. No universal HE admission and no cluster requires. If one coherent task cannot actually assess every listed goal, keep separate independently scored cases within the module or split it.",
+            "placement": "A direct child of5964272f-e835-5a24-b2b1-c162be6b75cb is the neutral crossstage/SekII default; a phase-specific existing practice cluster is permitted only where the current phase/course context really matches. Preserve applicable target views; add explicit endpoint goalEntries as needed.",
+            "applicability": "Use applicabilityFromRequires all-of semantics and mappingInheritance boundary for own assessment eligibility. Materialize exact compiled applicability; it is not official source coverage. Do not broaden ordinary-goal applicability.",
+            "unplacedTargetDecisionRequired": false
+          }
+        ],
+        "phaseCourseAndSources": [
+          {
+            "goalId": "4d16601e-fa57-5bcb-a5b6-f308d5b8036a",
+            "title": "Stoffe chemisch präparieren und aufarbeiten",
+            "phase": "GLOBAL",
+            "courseTags": [
+              "praktikum"
+            ],
+            "applicability": {
+              "jurisdiction": [
+                "DE-BY"
+              ]
+            },
+            "ordinaryDescription": "Die lernende Person kann eine chemische Präparation anhand von Reaktionsgleichung und Stoffmengen planen, sicher durchführen, aufarbeiten und dokumentieren sowie Produktmasse, Ausbeute und Reinheitsgrenzen begründet unterscheiden.",
+            "wholePReference": {
+              "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-normal-source-configs/P114.normal-source.config.json",
+              "recordPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-plan/records/P114.current-owner.review.jsonl",
+              "line": 13,
+              "caseIds": [
+                "bcp-chemical-preparation-a",
+                "bcp-chemical-preparation-b"
+              ]
+            }
+          },
+          {
+            "goalId": "e7c3d20e-4b13-560b-b8ee-c5abca8cc624",
+            "title": "Stoffe isolieren, reinigen und Ausbeute beurteilen",
+            "phase": "GLOBAL",
+            "courseTags": [
+              "GK",
+              "LK",
+              "praktikum"
+            ],
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BY",
+                "DE-HH",
+                "DE-MV",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "ordinaryDescription": "Die lernende Person kann auf Grundlage physikalischer und chemischer Stoffeigenschaften geeignete Isolierungs- und Reinigungsverfahren auswaehlen, sicher durchfuehren, Reinheit und Ausbeute pruefen sowie die Taetigkeit dokumentieren.",
+            "wholePReference": {
+              "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-normal-source-configs/P085.normal-source.config.json",
+              "recordPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-plan/records/P085.current-owner.review.jsonl",
+              "line": 2,
+              "caseIds": [
+                "lab15-06-a",
+                "lab15-06-b-synthesis-purity-v2"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "familyId": "T5-3",
+        "title": "Biotechnologie und Enzymreaktion",
+        "authorAssignment": "Zwei eigenständige reale Teiluntersuchungen: Hefe-/Substratkontrolle und kontrollierter Wärme-/Extraktmengenvergleich. Gemeinsame sichere Labororganisation ist möglich; jede Tätigkeit bleibt direkt nachweispflichtig.",
+        "maximalEndGoalIds": [
+          "cb7125b7-8734-51c6-8306-9163114dc0cc",
+          "dd59351e-3b16-5104-b7c6-ff9e402e4de7"
+        ],
+        "predictedMissingTerminalClosure": [
+          "cb7125b7-8734-51c6-8306-9163114dc0cc",
+          "dd59351e-3b16-5104-b7c6-ff9e402e4de7"
+        ],
+        "predictedClosureCount": 2,
+        "boundedEndpointVariants": [
+          {
+            "proposedNewEndpointId": "44af0ce3-e16a-5f05-99ae-1087c2c82f47",
+            "targetGoalIds": [
+              "cb7125b7-8734-51c6-8306-9163114dc0cc",
+              "dd59351e-3b16-5104-b7c6-ff9e402e4de7"
+            ],
+            "currentTargetViews": [
+              "curricula/DE/Gymnasium/composition-views/chemie/de-by-lk.current-pilot.view.json"
+            ],
+            "requiresPolicy": "Direct requires = exactly the stated genuinely used end goals; retain their unchanged prerequisite closures. No universal HE admission and no cluster requires. If one coherent task cannot actually assess every listed goal, keep separate independently scored cases within the module or split it.",
+            "placement": "A direct child of5964272f-e835-5a24-b2b1-c162be6b75cb is the neutral crossstage/SekII default; a phase-specific existing practice cluster is permitted only where the current phase/course context really matches. Preserve applicable target views; add explicit endpoint goalEntries as needed.",
+            "applicability": "Use applicabilityFromRequires all-of semantics and mappingInheritance boundary for own assessment eligibility. Materialize exact compiled applicability; it is not official source coverage. Do not broaden ordinary-goal applicability.",
+            "unplacedTargetDecisionRequired": false
+          }
+        ],
+        "phaseCourseAndSources": [
+          {
+            "goalId": "cb7125b7-8734-51c6-8306-9163114dc0cc",
+            "title": "Stoffe mit biotechnologischen Verfahren herstellen",
+            "phase": "GLOBAL",
+            "courseTags": [
+              "praktikum"
+            ],
+            "applicability": {
+              "jurisdiction": [
+                "DE-BY"
+              ]
+            },
+            "ordinaryDescription": "Die lernende Person kann einen biotechnologischen Herstellungsweg mit geeigneten biologischen Kontrollen planen, sicher durchführen, aufarbeiten und dokumentieren sowie die erhaltene Präparation und die Grenzen des Produktnachweises fachlich begründen.",
+            "wholePReference": {
+              "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-normal-source-configs/P114.normal-source.config.json",
+              "recordPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-plan/records/P114.current-owner.review.jsonl",
+              "line": 12,
+              "caseIds": [
+                "bcp-biotechnological-preparation-a",
+                "bcp-biotechnological-preparation-b"
+              ]
+            }
+          },
+          {
+            "goalId": "dd59351e-3b16-5104-b7c6-ff9e402e4de7",
+            "title": "Einflüsse auf Enzymreaktionen experimentell untersuchen",
+            "phase": "GLOBAL",
+            "courseTags": [
+              "praktikum"
+            ],
+            "applicability": {
+              "jurisdiction": [
+                "DE-BY"
+              ]
+            },
+            "ordinaryDescription": "Die lernende Person kann eine Hypothese zum Einfluss eines Außenfaktors auf eine Enzymreaktion durch einen kontrollierten Versuch sicher sowie art- und naturschutzgerecht prüfen, eigene Reaktionsbeobachtungen dokumentieren und Enzymwirkung, Störgrößen und Aussagegrenzen unterscheiden.",
+            "wholePReference": {
+              "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-normal-source-configs/P114.normal-source.config.json",
+              "recordPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-plan/records/P114.current-owner.review.jsonl",
+              "line": 15,
+              "caseIds": [
+                "bcp-enzyme-reaction-investigation-a",
+                "bcp-enzyme-reaction-investigation-b"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "familyId": "T5-4",
+        "title": "Mikroskopie und Reizantwort",
+        "authorAssignment": "Eigene Präparate/Zeichnungen und getrennte kontrollierte Mimosa-Reizantwort mit Scheinbehandlung. Zwei reale Leistungen, kein Rückschluss von Beobachten auf selbstständiges Durchführen.",
+        "maximalEndGoalIds": [
+          "fec1563e-a34a-5fc1-93bb-03981f35ab13",
+          "c8198159-2109-5ad0-9d37-252ebac0219d"
+        ],
+        "predictedMissingTerminalClosure": [
+          "c8198159-2109-5ad0-9d37-252ebac0219d",
+          "fec1563e-a34a-5fc1-93bb-03981f35ab13"
+        ],
+        "predictedClosureCount": 2,
+        "boundedEndpointVariants": [
+          {
+            "proposedNewEndpointId": "b2bd0ed3-aaa1-504e-9633-17f84201b624",
+            "targetGoalIds": [
+              "fec1563e-a34a-5fc1-93bb-03981f35ab13",
+              "c8198159-2109-5ad0-9d37-252ebac0219d"
+            ],
+            "currentTargetViews": [
+              "curricula/DE/Gymnasium/composition-views/chemie/de-by-lk.current-pilot.view.json"
+            ],
+            "requiresPolicy": "Direct requires = exactly the stated genuinely used end goals; retain their unchanged prerequisite closures. No universal HE admission and no cluster requires. If one coherent task cannot actually assess every listed goal, keep separate independently scored cases within the module or split it.",
+            "placement": "A direct child of5964272f-e835-5a24-b2b1-c162be6b75cb is the neutral crossstage/SekII default; a phase-specific existing practice cluster is permitted only where the current phase/course context really matches. Preserve applicable target views; add explicit endpoint goalEntries as needed.",
+            "applicability": "Use applicabilityFromRequires all-of semantics and mappingInheritance boundary for own assessment eligibility. Materialize exact compiled applicability; it is not official source coverage. Do not broaden ordinary-goal applicability.",
+            "unplacedTargetDecisionRequired": false
+          }
+        ],
+        "phaseCourseAndSources": [
+          {
+            "goalId": "fec1563e-a34a-5fc1-93bb-03981f35ab13",
+            "title": "Mikroskopische Praeparate herstellen und auswerten",
+            "phase": "GLOBAL",
+            "courseTags": [
+              "praktikum"
+            ],
+            "applicability": {
+              "jurisdiction": [
+                "DE-BY"
+              ]
+            },
+            "ordinaryDescription": "Die lernende Person kann Verfahren zur Herstellung mikroskopischer Praeparate auswaehlen, Mikroorganismen, Gewebe, Zellen, Stoffe oder Materialien sicher mikroskopieren, charakteristische Eigenschaften identifizieren, beschriftete Zeichnungen erstellen und die Taetigkeit dokumentieren.",
+            "wholePReference": {
+              "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-normal-source-configs/P112.normal-source.config.json",
+              "recordPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-plan/records/P112.current-owner.review.jsonl",
+              "line": 1,
+              "caseIds": [
+                "lab15-10-a",
+                "lab15-10-b"
+              ]
+            }
+          },
+          {
+            "goalId": "c8198159-2109-5ad0-9d37-252ebac0219d",
+            "title": "Reizantworten von Lebewesen kontrolliert untersuchen",
+            "phase": "GLOBAL",
+            "courseTags": [
+              "praktikum"
+            ],
+            "applicability": {
+              "jurisdiction": [
+                "DE-BY"
+              ]
+            },
+            "ordinaryDescription": "Die lernende Person kann eine Hypothese zu einer beobachtbaren Reizantwort von Lebewesen mit definiertem Reiz, geeigneter Scheinbehandlung und Messregel sicher, art- und naturschutzgerecht prüfen, eigene zeitbezogene Beobachtungen dokumentieren und die Aussage über die Reizantwort von einer nicht gemessenen zellulären Ursache unterscheiden.",
+            "wholePReference": {
+              "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-normal-source-configs/P114.normal-source.config.json",
+              "recordPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-plan/records/P114.current-owner.review.jsonl",
+              "line": 16,
+              "caseIds": [
+                "bcp-organism-stimulus-response-a",
+                "bcp-organism-stimulus-response-b"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "familyId": "T5-5",
+        "title": "Freiland und Lebensraumeignung",
+        "authorAssignment": "Ein kohärentes Feld-/Laborportfolio: eigene schonende Bestimmung und Standortaufnahme, begrenzte kontrollierte Organismenuntersuchung und evidenzgebundene Eignungsbewertung. Erschließt genau auch9d6e-Bestimmung und07bf-Grundanforderungen über bestehende Requires; diese werden nicht automatisch neu gemeistert.",
+        "maximalEndGoalIds": [
+          "0f632595-5875-5a95-83d8-7de3180bdaa6",
+          "843484b9-1acf-54e0-a030-bc214b3b0656"
+        ],
+        "predictedMissingTerminalClosure": [
+          "07bf5fab-9379-5b3c-a6fc-b892fcfa9a49",
+          "0f632595-5875-5a95-83d8-7de3180bdaa6",
+          "843484b9-1acf-54e0-a030-bc214b3b0656",
+          "9d6e1966-b10c-5a70-b215-df7007c95b07"
+        ],
+        "predictedClosureCount": 4,
+        "boundedEndpointVariants": [
+          {
+            "proposedNewEndpointId": "57537252-0dc6-507a-be9f-8553f567785e",
+            "targetGoalIds": [
+              "0f632595-5875-5a95-83d8-7de3180bdaa6",
+              "843484b9-1acf-54e0-a030-bc214b3b0656"
+            ],
+            "currentTargetViews": [
+              "curricula/DE/Gymnasium/composition-views/chemie/de-by-lk.current-pilot.view.json"
+            ],
+            "requiresPolicy": "Direct requires = exactly the stated genuinely used end goals; retain their unchanged prerequisite closures. No universal HE admission and no cluster requires. If one coherent task cannot actually assess every listed goal, keep separate independently scored cases within the module or split it.",
+            "placement": "A direct child of5964272f-e835-5a24-b2b1-c162be6b75cb is the neutral crossstage/SekII default; a phase-specific existing practice cluster is permitted only where the current phase/course context really matches. Preserve applicable target views; add explicit endpoint goalEntries as needed.",
+            "applicability": "Use applicabilityFromRequires all-of semantics and mappingInheritance boundary for own assessment eligibility. Materialize exact compiled applicability; it is not official source coverage. Do not broaden ordinary-goal applicability.",
+            "unplacedTargetDecisionRequired": false
+          }
+        ],
+        "phaseCourseAndSources": [
+          {
+            "goalId": "0f632595-5875-5a95-83d8-7de3180bdaa6",
+            "title": "Lebensgemeinschaften und Standortfaktoren im Freiland charakterisieren",
+            "phase": "GLOBAL",
+            "courseTags": [
+              "praktikum"
+            ],
+            "applicability": {
+              "jurisdiction": [
+                "DE-BY"
+              ]
+            },
+            "ordinaryDescription": "Die lernende Person kann eine hypothesengeleitete ökologische Freilanduntersuchung schonend planen und durchführen, Lebensgemeinschaften sowie abiotische Standortfaktoren qualitativ und quantitativ mit eigener Stichprobe dokumentieren und beobachtete Zusammenhänge von kausalen Aussagen unterscheiden.",
+            "wholePReference": {
+              "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-normal-source-configs/P114.normal-source.config.json",
+              "recordPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-plan/records/P114.current-owner.review.jsonl",
+              "line": 18,
+              "caseIds": [
+                "bcp-community-site-field-investigation-a",
+                "bcp-community-site-field-investigation-b"
+              ]
+            }
+          },
+          {
+            "goalId": "843484b9-1acf-54e0-a030-bc214b3b0656",
+            "title": "Standortbezogene Lebensraumeignung mit Feld- und Wirkungsdaten beurteilen",
+            "phase": "GLOBAL",
+            "courseTags": [
+              "praktikum"
+            ],
+            "applicability": {
+              "jurisdiction": [
+                "DE-BY"
+              ]
+            },
+            "ordinaryDescription": "Die lernende Person kann eine sichere, art- und naturschutzgerechte ökologische Laboruntersuchung oder manipulative Freilanduntersuchung zur Wirkung eines Umweltfaktors tatsächlich durchführen und deren eigene Wirkungsdaten mit dokumentierten Freilandbedingungen verknüpfen, um eine art-, lebensstadien- und messgrößenbezogene Beurteilung eines Lebensraums mit Unsicherheit, Übertragungsgrenzen und gegebenenfalls offener Entscheidung zu begründen.",
+            "wholePReference": {
+              "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-normal-source-configs/P114.normal-source.config.json",
+              "recordPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-plan/records/P114.current-owner.review.jsonl",
+              "line": 19,
+              "caseIds": [
+                "bcp-controlled-environment-habitat-investigation-a",
+                "bcp-controlled-environment-habitat-investigation-b"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "familyId": "T5-6",
+        "title": "Materialsysteme und Alltagsprodukte",
+        "authorAssignment": "Drei kleine unabhängig bewertete Werkstattstationen: selbst hergestellte/charakterisierte Materialkombination; beaufsichtigtes sicheres Körperpflegeprodukt ohne therapeutische Anwendung; echte Lebensmitteltechnik. Keine universelle Großaufgabe und keine Arzneimittelherstellungsfreigabe.",
+        "maximalEndGoalIds": [
+          "ffebca5e-76b5-55d7-80d6-df1e7d2c75ea",
+          "7b443158-8ca9-5b8e-8328-a8fa56f6e26f",
+          "e6dcd3a0-264d-503b-aaac-a3e86eeb7059"
+        ],
+        "predictedMissingTerminalClosure": [
+          "7b443158-8ca9-5b8e-8328-a8fa56f6e26f",
+          "dc4a26c7-8304-529d-8705-7333b2f038fc",
+          "e6dcd3a0-264d-503b-aaac-a3e86eeb7059",
+          "ffebca5e-76b5-55d7-80d6-df1e7d2c75ea"
+        ],
+        "predictedClosureCount": 4,
+        "boundedEndpointVariants": [
+          {
+            "proposedNewEndpointId": "ae171e50-f552-5f8f-b618-77a667f3b5f1",
+            "targetGoalIds": [
+              "ffebca5e-76b5-55d7-80d6-df1e7d2c75ea",
+              "7b443158-8ca9-5b8e-8328-a8fa56f6e26f",
+              "e6dcd3a0-264d-503b-aaac-a3e86eeb7059"
+            ],
+            "currentTargetViews": [
+              "curricula/DE/Gymnasium/composition-views/chemie/de-by-lk.current-pilot.view.json"
+            ],
+            "requiresPolicy": "Direct requires = exactly the stated genuinely used end goals; retain their unchanged prerequisite closures. No universal HE admission and no cluster requires. If one coherent task cannot actually assess every listed goal, keep separate independently scored cases within the module or split it.",
+            "placement": "A direct child of5964272f-e835-5a24-b2b1-c162be6b75cb is the neutral crossstage/SekII default; a phase-specific existing practice cluster is permitted only where the current phase/course context really matches. Preserve applicable target views; add explicit endpoint goalEntries as needed.",
+            "applicability": "Use applicabilityFromRequires all-of semantics and mappingInheritance boundary for own assessment eligibility. Materialize exact compiled applicability; it is not official source coverage. Do not broaden ordinary-goal applicability.",
+            "unplacedTargetDecisionRequired": false
+          }
+        ],
+        "phaseCourseAndSources": [
+          {
+            "goalId": "ffebca5e-76b5-55d7-80d6-df1e7d2c75ea",
+            "title": "Werk- und Baustoffe zu funktionellen Systemen kombinieren",
+            "phase": "GLOBAL",
+            "courseTags": [
+              "praktikum"
+            ],
+            "applicability": {
+              "jurisdiction": [
+                "DE-BY"
+              ]
+            },
+            "ordinaryDescription": "Die lernende Person kann ausgewaehlte Werk- und Baustoffe zu funktionellen Systemen kombinieren und moegliche Anwendungen in Alltag und Technik fachlich begruenden.",
+            "wholePReference": {
+              "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-normal-source-configs/P114.normal-source.config.json",
+              "recordPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-plan/records/P114.current-owner.review.jsonl",
+              "line": 9,
+              "caseIds": [
+                "lab15-15-a",
+                "lab15-15-b"
+              ]
+            }
+          },
+          {
+            "goalId": "7b443158-8ca9-5b8e-8328-a8fa56f6e26f",
+            "title": "Arznei- und Koerperpflegemittel herstellen und chemisch erklaeren",
+            "phase": "GLOBAL",
+            "courseTags": [
+              "praktikum"
+            ],
+            "applicability": {
+              "jurisdiction": [
+                "DE-BY"
+              ]
+            },
+            "ordinaryDescription": "Die lernende Person kann ausgewaehlte Arznei- oder Koerperpflegemittel herstellen und die chemischen Grundlagen der Herstellung fachlich erklaeren.",
+            "wholePReference": {
+              "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-normal-source-configs/P114.normal-source.config.json",
+              "recordPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-plan/records/P114.current-owner.review.jsonl",
+              "line": 7,
+              "caseIds": [
+                "lab15-12-a",
+                "lab15-12-b"
+              ]
+            }
+          },
+          {
+            "goalId": "e6dcd3a0-264d-503b-aaac-a3e86eeb7059",
+            "title": "Lebensmitteltechniken biologisch und chemisch erklaeren",
+            "phase": "GLOBAL",
+            "courseTags": [
+              "praktikum"
+            ],
+            "applicability": {
+              "jurisdiction": [
+                "DE-BY"
+              ]
+            },
+            "ordinaryDescription": "Die lernende Person kann alltagsrelevante Techniken zur Zubereitung und Veredelung von Lebensmitteln praktisch einsetzen und ihre biologischen sowie chemischen Grundlagen erklaeren.",
+            "wholePReference": {
+              "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-normal-source-configs/P114.normal-source.config.json",
+              "recordPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-plan/records/P114.current-owner.review.jsonl",
+              "line": 6,
+              "caseIds": [
+                "lab15-09-a",
+                "lab15-09-b"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "familyId": "T5-7",
+        "title": "Elektrophorese im sicheren Farbstoffmodell",
+        "authorAssignment": "Aminosäureversuch begründet planen; freigegebenes Farbstoffmodell selbst sicher durchführen, eigene Lagen und unabhängigen pH-Transfer auswerten. Die erreichbare d124-Auswertung wird nicht mit realer Aminosäure-Geräteausführung verwechselt.",
+        "maximalEndGoalIds": [
+          "37374918-78c9-577f-9827-695d111ab22d"
+        ],
+        "predictedMissingTerminalClosure": [
+          "37374918-78c9-577f-9827-695d111ab22d",
+          "d1244f5d-9a12-5b74-97fe-ae974f40af26"
+        ],
+        "predictedClosureCount": 2,
+        "boundedEndpointVariants": [
+          {
+            "proposedNewEndpointId": "6ca09c6b-9546-587c-a632-1aa3085bffb1",
+            "targetGoalIds": [
+              "37374918-78c9-577f-9827-695d111ab22d"
+            ],
+            "currentTargetViews": [
+              "curricula/DE/Gymnasium/composition-views/chemie/de-by-lk.current-pilot.view.json"
+            ],
+            "requiresPolicy": "Direct requires = exactly the stated genuinely used end goals; retain their unchanged prerequisite closures. No universal HE admission and no cluster requires. If one coherent task cannot actually assess every listed goal, keep separate independently scored cases within the module or split it.",
+            "placement": "A direct child of5964272f-e835-5a24-b2b1-c162be6b75cb is the neutral crossstage/SekII default; a phase-specific existing practice cluster is permitted only where the current phase/course context really matches. Preserve applicable target views; add explicit endpoint goalEntries as needed.",
+            "applicability": "Use applicabilityFromRequires all-of semantics and mappingInheritance boundary for own assessment eligibility. Materialize exact compiled applicability; it is not official source coverage. Do not broaden ordinary-goal applicability.",
+            "unplacedTargetDecisionRequired": false
+          }
+        ],
+        "phaseCourseAndSources": [
+          {
+            "goalId": "37374918-78c9-577f-9827-695d111ab22d",
+            "title": "Elektrophorese planen und im Farbstoffmodell durchführen",
+            "phase": "Q2",
+            "courseTags": [
+              "LK"
+            ],
+            "applicability": {
+              "jurisdiction": [
+                "DE-BY"
+              ]
+            },
+            "ordinaryDescription": "Die lernende Person kann eine elektrophoretische Trennung von Aminocarbonsäuren anhand von Ladungszustand, Puffer-pH und Polung planen und das Trennprinzip in einem selbst geplanten Farbstoff-Modellexperiment unter freigegebenen gerätespezifischen Bedingungen praktisch untersuchen, indem sie Referenz- und Vergleichsbedingungen festlegt, eigene Rohdaten dokumentiert und die Aussagekraft sowie die Übertragungsgrenzen des Modells begründet.",
+            "wholePReference": {
+              "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-normal-source-configs/P115.normal-source.config.json",
+              "recordPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-plan/records/P115.current-owner.review.jsonl",
+              "line": 9,
+              "caseIds": [
+                "practical-1",
+                "practical-2-transfer"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "authorContract": [
+    "Read each referenced full P record and any material payload, not just the short taskDemand field. Preserve actual positive-understanding expectations and fresh-transfer boundaries.",
+    "Material must be fully available to learners in taskContent or an actually bound readable resource. Include complete model solution, correct units/structures, enumerated scoring steps, positive passing threshold, coveredGoalIds/strands/demandLevels, truthful draft status before reviews, and DE/EN parity where currently used.",
+    "Practical performance requires its own observable actions and real learner record. Machine author/review can release the designed assessment without inventing execution, human trial, local safety clearance or learner mastery.",
+    "One goal per current semanticKind curricularAtomic stays in the denominator. New finite assessment nodes are genuinely practice/assessment, not reclassified ordinary goals. Source support, optional status, course profile and actual current placement remain explicit.",
+    "No new classroom/runtime feature is needed. Do not introduce OR prerequisites, programmatic mastery shortcuts or all-country source claims.",
+    "Current P cases and old unchanged scientific reviews are reusable; the new exam task/rubric/Requires/placement is still a new actual review object. Use two independent reviewers for changed ordinary D contexts and independent real exam science/interface review before machine released."
+  ],
+  "protectedState": {
+    "protectedSubjects": [
+      "mathematik",
+      "physik",
+      "biologie",
+      "wirtschaft"
+    ],
+    "protectedStrictCounts": [
+      807,
+      478,
+      397,
+      346
+    ],
+    "protectedObjects": "Exact deep equality of four registry subject objects and byte equality of their canonical/review/image/book outputs. Compare against sealed pre-integration state and HEAD where already confirmed.",
+    "ordinaryContextChanges": "The27 orientation entries change actual ordinary goalRequires fingerprints. Parent task must calculate the complete impacted D page/prerequisite/reverse-link context set; two independent fresh D decisions are required wherever a bound scientific/context input changed. P/A/M/V follow their actual input/fingerprint dependencies; no blanket450 rereview and no hash-only release.",
+    "terminalContextChanges": "New exam consumer edges and placement can change reverse links and generated goal pages for ordinary goals even if ordinary semantic object bytes remain unchanged. Compute actual before/after context fingerprints and review only the changed content/context. Existing P profile bodies, images, source witnesses and other subjects remain exact unless a concrete new defect is observed.",
+    "newEndPointNativeBindings": "New assessment semantic-kind decisions, source/applicability and composition bindings, exam author/review evidence and current generator inputs; these are not new ordinary D/P/A/M/V first completions. Keep sourceAtlas own-practice pages distinct from official curriculum source coverage."
+  },
+  "validationOrder": [
+    "1 Freeze finite before/after candidate and run only original route functions/graph-cycle, exact goal/classification/denominator and protected-object comparisons. In-memory predictions are routing evidence only.",
+    "2 For each accepted author package run its actual schema/complete-task arithmetic and targeted source/course/view/applicability checks; compile only affected chemistry views/endpoint scopes. Check all-of requires visibility and actual practical performance channels.",
+    "3 After real A/B reviews, integrate one coherent batch and run only native validators for actually changed D/P/A/M/V bindings, semantic kinds, endpoint release and exact artifact references. Preserve all unchanged scientific votes.",
+    "4 At stable complete integration, run current central D/P/A/M/V check and one full original curriculum-quality report plus protected maturity floor check. Expected CQR1010/0, CQR2020weak, CQR303450/450, ChemistryM7 and protected fourM7 floors. CQR102 warn may remain8direct-orientation routes; do not repair unrelated migrations just to eliminate a warning.",
+    "5 Regenerate required affected chemistry book/publication/source and measured Layer-A outputs once; confirm four other subjects exact. Only then commit the exact final reviewed tree and verify the GitHub required checks on that exact SHA under root authorization. No portal/runtime/deployment action."
+  ],
+  "limitations": [
+    "The37 task families are assignment boundaries, not37 automatically valid exams.74 finite variants preserve current differing course/view scopes and contain at most3 maximal end goals each. A scientifically justified shared endpoint may reduce this count only after real task and visibility review.",
+    "All current case brief objects have taskDemand/expectedPerformance/understandingFocus DE/EN, but no native examData scoring object. Expected performance is reusable solution input, not a completed point rubric.",
+    "Five ordinary end goals currently have no rendered target view. The plan preserves them and records explicit placement decisions; it never uses their absence to shrink450/337 denominators.",
+    "No field in this planning output is a new positive independent science vote. Root owns integration, required current tests, commit and exact GitHub CI verification."
+  ],
+  "newIndependentVotes": 0
+}

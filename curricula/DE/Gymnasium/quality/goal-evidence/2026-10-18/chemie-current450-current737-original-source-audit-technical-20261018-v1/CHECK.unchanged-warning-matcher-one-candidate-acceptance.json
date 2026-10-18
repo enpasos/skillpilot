@@ -1,0 +1,74 @@
+{
+  "role": "READ_ONLY_EXISTING_ACCEPTANCE_CONTRACT_CHECK",
+  "productionContractLocators": [
+    "app/scripts/generateCurriculumQualityStatus.ts:748",
+    "app/scripts/generateCurriculumQualityStatus.ts:3896",
+    "app/scripts/generateCurriculumQualityStatus.ts:3946",
+    "app/scripts/generateCurriculumQualityStatus.ts:5740",
+    "docs/qa-ci/graph-validation-rules.md:93",
+    "docs/qa-ci/graph-validation-rules.md:144"
+  ],
+  "exactWarningKey": "APV-201|c436b994-8f44-5134-b9f8-0c9f5d6a5ba0|4216a708-d9c4-5582-ad7c-65d81643f0d3|jurisdiction|",
+  "readOnlyRegistryOverlayReads": 1,
+  "readerRestored": true,
+  "currentCanonicalPin": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "sha256": "6c485a0d2828f6821e8d92a720714329f475837882c0167ef1d33edda8be89da",
+    "bytes": 5354193
+  },
+  "beforeRegistryPin": {
+    "path": "docs/qa-ci/applicability-accepted-warnings.json",
+    "sha256": "81b57e26d323daa54a318a429e4224a05a96581775dbc829cecaab8856d2a1b6",
+    "bytes": 227189
+  },
+  "allOldGlobalObjectsExact": 110,
+  "allOldChemistryObjectsExact": 87,
+  "oldObjectsBytePrefixExact": true,
+  "afterMetrics": {
+    "activeWarnings": 0,
+    "acceptedWarnings": 88,
+    "obsoleteAcceptedWarnings": 0,
+    "diagnostics": 2670,
+    "acceptedCode_APV_201": 88,
+    "acceptedGlobalWarnings": 88,
+    "diagnosticCode_APV_202": 2670,
+    "diagnosticJurisdiction_DE_BB": 168,
+    "diagnosticJurisdiction_DE_BE": 168,
+    "diagnosticJurisdiction_DE_BW": 120,
+    "diagnosticJurisdiction_DE_BY": 30,
+    "diagnosticJurisdiction_DE_HB": 299,
+    "diagnosticJurisdiction_DE_HE": 39,
+    "diagnosticJurisdiction_DE_HH": 170,
+    "diagnosticJurisdiction_DE_MV": 177,
+    "diagnosticJurisdiction_DE_NI": 196,
+    "diagnosticJurisdiction_DE_NW": 143,
+    "diagnosticJurisdiction_DE_RP": 202,
+    "diagnosticJurisdiction_DE_SH": 200,
+    "diagnosticJurisdiction_DE_SL": 188,
+    "diagnosticJurisdiction_DE_SN": 206,
+    "diagnosticJurisdiction_DE_ST": 178,
+    "diagnosticJurisdiction_DE_TH": 186
+  },
+  "afterRule": {
+    "id": "CQR-501",
+    "status": "pass",
+    "summary": "88 accepted applicability warning(s) are current and no active applicability warning debt is visible.",
+    "metrics": {
+      "activeWarnings": 0,
+      "rawActiveWarnings": 0,
+      "diagnosticPartialOnlyWarnings": 2670,
+      "acceptedWarnings": 88,
+      "obsoleteAcceptedWarnings": 0
+    },
+    "details": [
+      "non-blocking partial-only applicability diagnostics APV-202: 2670",
+      "diagnostic finding type APV-202: 2670",
+      "accepted current warning type APV-201: 88"
+    ]
+  },
+  "compilerWarningsFilteredOrChanged": false,
+  "sourceCoverageCreditAdded": false,
+  "gateThresholdChanges": 0,
+  "normalWrites": 0,
+  "newScientificOrHumanApproval": false
+}

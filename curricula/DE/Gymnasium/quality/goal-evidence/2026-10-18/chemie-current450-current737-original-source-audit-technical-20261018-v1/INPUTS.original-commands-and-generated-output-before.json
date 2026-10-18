@@ -1,0 +1,62 @@
+{
+  "utc": "2026-10-18T10:16:10.523934+00:00",
+  "commands": [
+    [
+      "npm",
+      "--prefix",
+      "app",
+      "run",
+      "quality:source-coverage-audit"
+    ],
+    [
+      "npm",
+      "--prefix",
+      "app",
+      "run",
+      "quality:source-coverage-audit:check"
+    ]
+  ],
+  "inputPins": [
+    {
+      "path": "app/package.json",
+      "sha256": "8f135f14a21f930ee69467bb111c11a5dc281a0140418255832ee44b8d0a8617",
+      "bytes": 29838
+    },
+    {
+      "path": "app/scripts/generateCurriculumSourceCoverageAudit.ts",
+      "sha256": "c56e0522432213f666d785b16655057ff4d4cf3cc491346fd6bf2f39219f62c2",
+      "bytes": 21456
+    },
+    {
+      "path": "app/scripts/sourceCoverageAndApplicabilityRegression.test.ts",
+      "sha256": "3acb7a4eaef3713d051900f5ab2db95c1139dd8913b062d836dd27af07ca994d",
+      "bytes": 15514
+    },
+    {
+      "path": "app/scripts/sourceCoverageEvidence.ts",
+      "sha256": "1caf8a1db812aef91360f6aaffc38aab6cdd39649502ee3e5690bd18f9f28f4d",
+      "bytes": 3504
+    },
+    {
+      "path": "app/scripts/applicabilityCompiler.ts",
+      "sha256": "50f4a09007cece8119c53f665b6442e028e4ffb3910fda7b377e60f8cb6c81dd",
+      "bytes": 56784
+    }
+  ],
+  "beforeGeneratedOutputPins": [
+    {
+      "path": "docs/qa-ci/status/curriculum-source-coverage-audit.json",
+      "sha256": "29ef73559eeea8a1dd5c2adede31fb6d6bdf72ec3a1bf7ae64619cf9ecba3766",
+      "bytes": 213066
+    },
+    {
+      "path": "docs/qa-ci/status/curriculum-source-coverage-audit.md",
+      "sha256": "786322ee5b79ad355215ac39a0411a6258f486ba5c5a0f7079a1315a047f86de",
+      "bytes": 5838
+    }
+  ],
+  "allowedNormalOutputPaths": [
+    "docs/qa-ci/status/curriculum-source-coverage-audit.json",
+    "docs/qa-ci/status/curriculum-source-coverage-audit.md"
+  ]
+}

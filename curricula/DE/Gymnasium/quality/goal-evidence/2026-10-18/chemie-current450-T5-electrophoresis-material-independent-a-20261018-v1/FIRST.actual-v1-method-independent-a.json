@@ -1,0 +1,125 @@
+{
+  "role": "FRESH_INDEPENDENT_SUBSTANTIVE_MATERIAL_REVIEW_A",
+  "reviewer": "/root/chemie_orientation_independent_a",
+  "candidate": "T5 electrophoresis operative card v1",
+  "goalId": "37374918-78c9-577f-9827-695d111ab22d",
+  "verdict": "HOLD_EQUIPMENT_BUFFER_FILL_MISMATCH",
+  "actuallyRead": [
+    "Whole ordinary goal including both descriptions, prerequisite, scope and provenance",
+    "Whole native P profile including all four expectations and both complete practical/transfer cases",
+    "Whole DE and EN method, empty raw record and hidden supervisor preparation",
+    "Actually accessible primary equipment and teaching manuals; authored-source boundary"
+  ],
+  "inputPins": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-T5-electrophoresis-operative-material-author-20261018-v1/INPUT.whole-current-373-goal-and-P.exact.json",
+      "sha256": "3cab7053685283c46c991ece2563903194ef5e32e727eb523764fc4fda814d92",
+      "bytes": 22310
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-T5-electrophoresis-operative-material-author-20261018-v1/AUTHOR.complete-electrophoresis-material.pending.json",
+      "sha256": "04c1340118603fbbb13a673ba9bbf43bd988e2ef7e021620a35f3271f5b26680",
+      "bytes": 13555
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-T5-electrophoresis-operative-material-author-20261018-v1/ELECTROPHORESIS.personal-method.de.md",
+      "sha256": "3e6a106e730fb8b0cecdaa89e5a01568fefcc3a1653f38fc5bcd524880e25cc8",
+      "bytes": 6296
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-T5-electrophoresis-operative-material-author-20261018-v1/ELECTROPHORESIS.personal-method.en.md",
+      "sha256": "0417eb8c08d95cf711403e62a94adcd0a82e3c041aa387dc1efa5175253ac2f9",
+      "bytes": 5615
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-T5-electrophoresis-operative-material-author-20261018-v1/READ.actual-primary-methods-and-own-design-boundary.json",
+      "sha256": "5aec83fe2f670bfa6bcd0f3b2ba57669402a145a951305eaf682e8db2b350187",
+      "bytes": 2119
+    }
+  ],
+  "findings": [
+    {
+      "id": "A-T5-E01",
+      "severity": "HOLD",
+      "actualCandidate": "Both languages supply at least 150 mL, gate starting at 150 mL, and prescribe a 1–2 mm buffer overlay for the named Mini-Sub Cell GT EDU 7×7 cm tray.",
+      "sourceEvidence": "The actually named 2024 GT manual Table 4 gives 265–320 mL Mini-Sub base buffer volume dependent on gel size/thickness; section 2.2 prescribes 2–6 mm overlay.",
+      "whyItMatters": "The material supply and acceptance threshold do not establish the named chamber can be filled correctly. A separate cover instruction cannot make 150 mL a sufficient supply. The lower overlay bound also differs.",
+      "requiredNarrowCorrection": "Provide sufficient matched buffer for gel and chamber; bind actual fill/overlay to the named device instructions and record it. Remove the 150 mL acceptance threshold. Do not claim the phosphate method becomes manufacturer validated."
+    }
+  ],
+  "substantiveDecisions": [
+    {
+      "aspect": "Dyes and charge",
+      "decision": "Scientifically plausible model",
+      "reason": "E133 and E102 are anionic at pH 7; minus-side loading and movement toward positive anode are consistent. Different size, shape, charge and matrix can affect mobility. Neither unique identity nor molar mass, purity or guaranteed resolution follows from colour/migration."
+    },
+    {
+      "aspect": "Buffer, concentration and mixture arithmetic",
+      "decision": "Correct within stated approximation",
+      "reason": "Total phosphate is 10 mmol/L and the stated base/acid ratio gives an ideal Henderson–Hasselbalch pH of about 7.00015 using pKa 7.21. Actual pH verification remains essential. 0.160 g/20 mL is 0.8% m/v; 25 mg/50 mL is 0.050% m/v; 5/50 mL is 10% glycerol. Equal-volume mixing halves each dye to 0.025% and retains 10% glycerol."
+    },
+    {
+      "aspect": "Equipment and electrical procedure",
+      "decision": "Otherwise coherent subject to E01",
+      "reason": "The named enclosed GT cell, original interlock/leads and compatible ground-isolated supply match the equipment family. Disconnecting before access, qualified casting, recorded actual V/I and temperature stop are explicit. Specified maximum power is 0.6 W and 30-minute energy 1080 J; these are ceilings, not measured heating or local safety approval."
+    },
+    {
+      "aspect": "Scientific status of pH 7 matrix",
+      "decision": "Honest prospective design; no vendor validation inferred",
+      "reason": "The source dye manuals support the method family and anionic dye references, while their TAE procedures do not validate this 10 mmol/L phosphate matrix or its resolution. The card states this boundary and accepts unresolved separation rather than fabricating successful bands."
+    },
+    {
+      "aspect": "Ordinary/P interface",
+      "decision": "Preserves all four requirements when read with the whole goal/P",
+      "reason": "The amino-acid pI/pH/polarity plan remains separate theory; one actual self-planned controlled dye run is still required. F1/F2/U/B, personal loading, actual pH/polarity/conditions, own band distances/widths and a fresh reversed-polarity prediction address actual execution, raw data and transfer limits. A supplied procedure alone does not demonstrate the learner planned reference/comparison conditions or performed the work; the ordinary/P requirements remain controlling."
+    },
+    {
+      "aspect": "Scoring/evidence boundary",
+      "decision": "No automatic practical pass",
+      "reason": "All raw fields remain blank. Observation of actual personal loading, supervised participation, measurements and interpretation is required. Neither paper planning, foreign pictures nor one repeated supplied label substitute. A theoretical polarity transfer needs no second-run quota; this dye run gives no amino-acid execution credit."
+    },
+    {
+      "aspect": "Language parity",
+      "decision": "Both whole methods reviewed",
+      "reason": "The same E01 mismatch appears in DE and EN; concentrations, run limits, stopping rules, empty data and no-execution boundary otherwise agree."
+    }
+  ],
+  "sourceReads": [
+    {
+      "url": "https://www.bio-rad.com/sites/default/files/2024-07/10016027.pdf",
+      "readVia": "actual browser PDF text",
+      "scope": "Table 4; sections 1.2, 2.1, 2.2, 2.3",
+      "rawSHA256": null,
+      "rawBytes": null,
+      "rawDownloadBoundary": "HTTP 403 prevents a raw-byte hash claim"
+    },
+    {
+      "url": "https://www.bio-rad.com/sites/default/files/webroot/web/pdf/lse/literature/M1665086EDU.pdf",
+      "readVia": "actual browser PDF text",
+      "scope": "dye/agarose teaching family, matching buffer and matrix/heating discussion; TAE method differs",
+      "rawSHA256": null,
+      "rawBytes": null
+    },
+    {
+      "url": "https://eu.theminione.com/wp-content/uploads/sites/4/2019/04/M3009-Candy-Color-Electrophoresis-StudentsGuide-041019-WEB-EMAIL.pdf",
+      "readVia": "primary browser PDF and author raw-access pin as declared input",
+      "scope": "dye model reference; no phosphate validation inferred",
+      "rawPinIndependentlyRecomputed": false
+    }
+  ],
+  "calculation": {
+    "idealPH": 7.00015483832576,
+    "agaroseMassVolumePercent": 0.8,
+    "dyeMassVolumePercent": 0.05,
+    "glycerolVolumePercent": 10.0,
+    "UeachDyeMassVolumePercent": 0.025,
+    "maxPowerW": 0.6,
+    "maxEnergyJ": 1080.0
+  },
+  "normalWrites": 0,
+  "actualLearnerExecution": false,
+  "localSafetyRelease": false,
+  "humanApproval": false,
+  "finalNativeDPBindingCompleted": false,
+  "newOrdinaryScienceCompletionClaimed": false
+}

@@ -1,0 +1,252 @@
+{
+  "role": "ACTUAL_UNCHANGED_ROUTE_EVALUATOR_ON_MEMORY_CANDIDATE_NOT_NORMAL_INTEGRATION",
+  "inputs": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "sha256": "4788d9034bc977b7f93681720a61efdba573a1550268e27973a507d72e26d575",
+      "bytes": 3404796
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-twenty-seven-orientation-entry-author-20261018-v1/AUTHOR.27-orientation-entry-requires-only.pending.json",
+      "sha256": "10c38db00d6c00f43f5230efb97b504d126f5318e1eef5e1b619e1057ee61eea",
+      "bytes": 356142
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-orientation-anchor-language-author-20261018-v2/AUTHOR.whole-orientation-before-and-candidate.pending.json",
+      "sha256": "4fcf44945c4ad2480510d9e7077f4e9283c7ef166b94e2e0f1c4682295f663bc",
+      "bytes": 4690
+    }
+  ],
+  "evaluator": {
+    "path": "app/scripts/generateCurriculumQualityStatus.ts",
+    "sha256": "e8dd1ee3df4054d4578109647d5f46fb5a83e5fe7de7e117a1865c39477c3fef",
+    "bytes": 275082
+  },
+  "changedOrdinaryRequires": 27,
+  "changedOrientationEnglishDescriptions": 1,
+  "beforeRoute": {
+    "scopeId": "canonical-chemistry-sek2",
+    "label": "Sekundarstufe II",
+    "selectedAtomicGoals": 338,
+    "maturity": "M0",
+    "rules": [
+      {
+        "id": "CQR-101",
+        "status": "fail",
+        "summary": "Effective route coverage has missing route segments.",
+        "metrics": {
+          "selectedAtomicGoals": 338,
+          "missingMotivationPath": 77,
+          "missingTerminalPath": 103
+        },
+        "details": [
+          "No effective motivation path: Brønsted-Konzept anwenden [1c1420c2-a8e2-520f-8015-6df637a973bd]",
+          "No effective motivation path: Säure-Base-Paare vergleichen [b4777001-f4ed-5fe9-9d98-02319abdea09]",
+          "No effective motivation path: Einfache Bindungswinkel mit dem EPA-Modell erklären [9b56d01e-c2d7-51d8-b78e-237592c1ed20]",
+          "No effective motivation path: Radikalische Substitution mechanistisch darstellen [e5aefd51-2de4-590c-903f-286d043a8c30]",
+          "No effective motivation path: Elektrophile Addition mechanistisch darstellen [3fb7dea4-f832-5e23-b518-68b13a655b92]",
+          "No effective motivation path: Bindungsänderungen und Nachweise bei Halogenreaktionen deuten [622f09e5-a5bb-5ccf-919f-bae990c7c116]",
+          "No effective motivation path: Organische Moleküle mit Molecular Modelling darstellen [707998c1-872d-582d-a2d6-14e7d967cbdb]",
+          "No effective motivation path: Nukleophile Substitution als Donator-Akzeptor-Reaktion beschreiben [3899edf4-a809-54b1-8ee7-4e67aa82dc7c]",
+          "No effective motivation path: Halogenalkan-Hydroxid-Reaktionsgleichungen formulieren [d4928773-3be8-5cf1-907c-ef07c96751e8]",
+          "No effective motivation path: Halogenidionen-Nachweise deuten [41396457-d97b-55f3-9804-2af1bb188e79]",
+          "No effective motivation path: Oxidierbarkeit von Alkanolen vergleichen [858d56e0-ab8f-51a4-b07e-7d9d94cab8e2]",
+          "No effective motivation path: Oxidationsprodukte von Alkanolen erklären [5851b53a-162b-5c17-9269-510ee54ad846]",
+          "No effective motivation path: Aldehyd- und Keton-Nachweise durchführen und deuten [973c12d9-d863-5292-8c68-9c80cdacf9e2]",
+          "No effective motivation path: Substitutionsmechanismen differenzieren (LK) [a4bac92b-d685-5cb6-94c8-c9b8b878d125]",
+          "No effective motivation path: Carbonsäuren beschreiben [a3788e40-b540-5bed-be37-b33053528422]",
+          "No effective motivation path: Acidität begründen [ca216bc6-5205-5b46-abbd-fd5628e4ca5b]",
+          "No effective motivation path: Esterbildung und Estereigenschaften erklären [70b34ae7-4481-590c-9a02-516464750832]",
+          "No effective motivation path: Esterreaktionen und ihre Reversibilität deuten [667bc303-e9b8-570b-84f1-61cc8bdfd006]",
+          "No effective motivation path: Di- und Tricarbonsäuren strukturell beschreiben (LK) [bd36dc58-c93e-5247-9e82-da2f9e4e2bed]",
+          "No effective motivation path: Alkalische Esterhydrolyse mechanistisch vertiefen (LK) [4da0839d-ab6d-53c1-ac21-c9872555ae16]"
+        ]
+      },
+      {
+        "id": "CQR-102",
+        "status": "warn",
+        "summary": "Direct atomic route coverage still needs migration work.",
+        "metrics": {
+          "selectedAtomicGoals": 338,
+          "missingDirectMotivationPath": 91,
+          "missingDirectTerminalPath": 103
+        },
+        "details": [
+          "No direct atomic motivation path: Stoffe nach Struktur und Eigenschaften ordnen [02dc29ae-4046-556a-b048-d64a0feb8f16]",
+          "No direct atomic motivation path: Lösungen berechnen und pH bestimmen [f1ed86f0-534d-57d7-8952-a004a331cc54]",
+          "No direct atomic motivation path: Säure-Base-Titrationen planen [02634fdd-c8ba-591a-b240-77129b1bebb8]",
+          "No direct atomic motivation path: Brønsted-Konzept anwenden [1c1420c2-a8e2-520f-8015-6df637a973bd]",
+          "No direct atomic motivation path: Säure-Base-Paare vergleichen [b4777001-f4ed-5fe9-9d98-02319abdea09]",
+          "No direct atomic motivation path: Einfache Bindungswinkel mit dem EPA-Modell erklären [9b56d01e-c2d7-51d8-b78e-237592c1ed20]",
+          "No direct atomic motivation path: Radikalische Substitution mechanistisch darstellen [e5aefd51-2de4-590c-903f-286d043a8c30]",
+          "No direct atomic motivation path: Elektrophile Addition mechanistisch darstellen [3fb7dea4-f832-5e23-b518-68b13a655b92]",
+          "No direct atomic motivation path: Bindungsänderungen und Nachweise bei Halogenreaktionen deuten [622f09e5-a5bb-5ccf-919f-bae990c7c116]",
+          "No direct atomic motivation path: Organische Moleküle mit Molecular Modelling darstellen [707998c1-872d-582d-a2d6-14e7d967cbdb]",
+          "No direct atomic motivation path: Nukleophile Substitution als Donator-Akzeptor-Reaktion beschreiben [3899edf4-a809-54b1-8ee7-4e67aa82dc7c]",
+          "No direct atomic motivation path: Halogenalkan-Hydroxid-Reaktionsgleichungen formulieren [d4928773-3be8-5cf1-907c-ef07c96751e8]",
+          "No direct atomic motivation path: Halogenidionen-Nachweise deuten [41396457-d97b-55f3-9804-2af1bb188e79]",
+          "No direct atomic motivation path: Oxidierbarkeit von Alkanolen vergleichen [858d56e0-ab8f-51a4-b07e-7d9d94cab8e2]",
+          "No direct atomic motivation path: Oxidationsprodukte von Alkanolen erklären [5851b53a-162b-5c17-9269-510ee54ad846]",
+          "No direct atomic motivation path: Aldehyd- und Keton-Nachweise durchführen und deuten [973c12d9-d863-5292-8c68-9c80cdacf9e2]",
+          "No direct atomic motivation path: Substitutionsmechanismen differenzieren (LK) [a4bac92b-d685-5cb6-94c8-c9b8b878d125]",
+          "No direct atomic motivation path: Carbonsäuren beschreiben [a3788e40-b540-5bed-be37-b33053528422]",
+          "No direct atomic motivation path: Acidität begründen [ca216bc6-5205-5b46-abbd-fd5628e4ca5b]",
+          "No direct atomic motivation path: Esterbildung und Estereigenschaften erklären [70b34ae7-4481-590c-9a02-516464750832]"
+        ]
+      },
+      {
+        "id": "CQR-103",
+        "status": "pass",
+        "summary": "No scoped cluster-level requires remain.",
+        "metrics": {
+          "scopedClusterRequires": 0
+        }
+      },
+      {
+        "id": "CQR-201",
+        "status": "pass",
+        "summary": "All configured terminal autonomy goals have examData.",
+        "metrics": {
+          "terminalAutonomyGoals": 32,
+          "terminalAutonomyGoalsWithExamData": 32,
+          "terminalAutonomyGoalsWithoutExamData": 0
+        }
+      },
+      {
+        "id": "CQR-202",
+        "status": "pass",
+        "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+        "metrics": {
+          "terminalAutonomyGoals": 32,
+          "concreteExamData": 32,
+          "weakExamData": 0
+        }
+      },
+      {
+        "id": "CQR-203",
+        "status": "pass",
+        "summary": "All terminal autonomy examData has release and coverage metadata.",
+        "metrics": {
+          "terminalAutonomyGoals": 32,
+          "releasedCoverageCompleteExamData": 32,
+          "releaseCoverageIncompleteExamData": 0
+        }
+      }
+    ]
+  },
+  "candidateRoute": {
+    "scopeId": "canonical-chemistry-sek2",
+    "label": "Sekundarstufe II",
+    "selectedAtomicGoals": 338,
+    "maturity": "M0",
+    "rules": [
+      {
+        "id": "CQR-101",
+        "status": "fail",
+        "summary": "Effective route coverage has missing route segments.",
+        "metrics": {
+          "selectedAtomicGoals": 338,
+          "missingMotivationPath": 0,
+          "missingTerminalPath": 103
+        },
+        "details": [
+          "No effective terminal path: Stoffe nach Struktur und Eigenschaften ordnen [02dc29ae-4046-556a-b048-d64a0feb8f16]",
+          "No effective terminal path: Reaktionstypen mechanismisch einordnen [7a05a1ce-45d3-571e-be51-afcd8dfd33ca]",
+          "No effective terminal path: Stoffkreisläufe mit Reaktionen und physikalischen Vorgängen beschreiben [c0f1bf09-5a70-5006-b1e9-e91f786a63bf]",
+          "No effective terminal path: Chemische Sachverhalte fachlich diskutieren [1f354a60-be44-512b-8f8b-f67c8c456035]",
+          "No effective terminal path: Unterenergiestufen aus Spektren und Ionisierungsenergien ableiten [49235cbe-6658-5e7e-8bd4-398416bcebdc]",
+          "No effective terminal path: Quantenzahlen und Besetzungsregeln zur PSE-Anordnung nutzen [3bc48951-025c-5144-99b1-924db611a5f9]",
+          "No effective terminal path: Ionenladungen von Nebengruppenelementen orbitalenergetisch begründen [a138d7bf-163a-59e0-a50a-8438ef4f5168]",
+          "No effective terminal path: Antreffwahrscheinlichkeit mit Unbestimmtheit begründen [73547696-e225-5f14-839b-c77f54c32bae]",
+          "No effective terminal path: Doppelspaltexperiment quantenmodellhaft einordnen [2bc1a15b-a677-5612-a564-33e826d11327]",
+          "No effective terminal path: Orbitale als Wahrscheinlichkeitsräume beschreiben [0acc8cd2-be6d-567e-a023-1d9e90475510]",
+          "No effective terminal path: Wellenfunktionen mit Wahrscheinlichkeitsdichten verknüpfen [fbc5a920-05d6-53c8-9fc0-a5f4e57f2c6d]",
+          "No effective terminal path: MO-Energieniveauschemata zur Molekülexistenz auswerten [386e28af-505a-5eb9-87fe-9c6946f10433]",
+          "No effective terminal path: MO-Schemata durch Linearkombination von Atomorbitalen erklären [70bcb6bd-b7f8-5e23-b466-f9bc270a9c67]",
+          "No effective terminal path: Verdauungssäfte chemisch erklären [3681e688-7880-5bb4-9ab9-ef78289345c8]",
+          "No effective terminal path: Individuelle Verdauungs- und Resorptionsunterschiede begründen [0b5342b9-512d-573f-90d5-7522aee35efa]",
+          "No effective terminal path: Magensäurebildung und Protonenpumpen-Hemmer erklären [2fac2f0e-bccc-5511-b9fb-cc1bc3aeed00]",
+          "No effective terminal path: Antazida und Sodbrennen chemisch bewerten [126c56ef-25ac-57b6-84df-111b79d01b8d]",
+          "No effective terminal path: Verdauungshilfsmittel chemisch beurteilen [5f151e8c-a62e-5e8c-979d-dcf4eb025873]",
+          "No effective terminal path: Schmerzmittelwirkstoffe chemisch einordnen [f71a2c0a-3a6a-5b23-9fb4-1b57cfb68528]",
+          "No effective terminal path: Wirkstoff-Moleküle retrosynthetisch erschließen [539476ee-f9cd-5b66-9b2e-ab42c4ea7cf4]"
+        ]
+      },
+      {
+        "id": "CQR-102",
+        "status": "warn",
+        "summary": "Direct atomic route coverage still needs migration work.",
+        "metrics": {
+          "selectedAtomicGoals": 338,
+          "missingDirectMotivationPath": 8,
+          "missingDirectTerminalPath": 103
+        },
+        "details": [
+          "No direct atomic motivation path: Stoffe nach Struktur und Eigenschaften ordnen [02dc29ae-4046-556a-b048-d64a0feb8f16]",
+          "No direct atomic motivation path: Lösungen berechnen und pH bestimmen [f1ed86f0-534d-57d7-8952-a004a331cc54]",
+          "No direct atomic motivation path: Planare chromatografische Trennungen durchführen und auswerten [978a6f25-0601-5457-9211-aab206c95603]",
+          "No direct atomic motivation path: Anspruchsvolle chemische Experimente selbstständig durchführen [f79f15c0-e848-5e17-9eb5-26753d35c93b]",
+          "No direct atomic motivation path: Wirkstoff-Isolierung als Stofftrennung erklären [40f2db27-0ebe-5f03-941d-708aebcc64b7]",
+          "No direct atomic motivation path: Wirkstoffforschung mit Analyse, Synthese und Molecular Modelling erklären [93a7ce4d-1c90-568c-9368-cac423011ef9]",
+          "No direct atomic motivation path: Gaschromatografische Trennung erklären und Chromatogramme deuten [5cd8b2a2-2c90-5e29-8061-dd5e3a682f9d]",
+          "No direct atomic motivation path: Biobasierte PLA-Proben kontrolliert untersuchen [6fa55d29-9d79-5b80-92f2-01f9bb64ef35]",
+          "No direct atomic terminal path: Stoffe nach Struktur und Eigenschaften ordnen [02dc29ae-4046-556a-b048-d64a0feb8f16]",
+          "No direct atomic terminal path: Reaktionstypen mechanismisch einordnen [7a05a1ce-45d3-571e-be51-afcd8dfd33ca]",
+          "No direct atomic terminal path: Stoffkreisläufe mit Reaktionen und physikalischen Vorgängen beschreiben [c0f1bf09-5a70-5006-b1e9-e91f786a63bf]",
+          "No direct atomic terminal path: Chemische Sachverhalte fachlich diskutieren [1f354a60-be44-512b-8f8b-f67c8c456035]",
+          "No direct atomic terminal path: Unterenergiestufen aus Spektren und Ionisierungsenergien ableiten [49235cbe-6658-5e7e-8bd4-398416bcebdc]",
+          "No direct atomic terminal path: Quantenzahlen und Besetzungsregeln zur PSE-Anordnung nutzen [3bc48951-025c-5144-99b1-924db611a5f9]",
+          "No direct atomic terminal path: Ionenladungen von Nebengruppenelementen orbitalenergetisch begründen [a138d7bf-163a-59e0-a50a-8438ef4f5168]",
+          "No direct atomic terminal path: Antreffwahrscheinlichkeit mit Unbestimmtheit begründen [73547696-e225-5f14-839b-c77f54c32bae]",
+          "No direct atomic terminal path: Doppelspaltexperiment quantenmodellhaft einordnen [2bc1a15b-a677-5612-a564-33e826d11327]",
+          "No direct atomic terminal path: Orbitale als Wahrscheinlichkeitsräume beschreiben [0acc8cd2-be6d-567e-a023-1d9e90475510]",
+          "No direct atomic terminal path: Wellenfunktionen mit Wahrscheinlichkeitsdichten verknüpfen [fbc5a920-05d6-53c8-9fc0-a5f4e57f2c6d]",
+          "No direct atomic terminal path: MO-Energieniveauschemata zur Molekülexistenz auswerten [386e28af-505a-5eb9-87fe-9c6946f10433]"
+        ]
+      },
+      {
+        "id": "CQR-103",
+        "status": "pass",
+        "summary": "No scoped cluster-level requires remain.",
+        "metrics": {
+          "scopedClusterRequires": 0
+        }
+      },
+      {
+        "id": "CQR-201",
+        "status": "pass",
+        "summary": "All configured terminal autonomy goals have examData.",
+        "metrics": {
+          "terminalAutonomyGoals": 32,
+          "terminalAutonomyGoalsWithExamData": 32,
+          "terminalAutonomyGoalsWithoutExamData": 0
+        }
+      },
+      {
+        "id": "CQR-202",
+        "status": "pass",
+        "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+        "metrics": {
+          "terminalAutonomyGoals": 32,
+          "concreteExamData": 32,
+          "weakExamData": 0
+        }
+      },
+      {
+        "id": "CQR-203",
+        "status": "pass",
+        "summary": "All terminal autonomy examData has release and coverage metadata.",
+        "metrics": {
+          "terminalAutonomyGoals": 32,
+          "releasedCoverageCompleteExamData": 32,
+          "releaseCoverageIncompleteExamData": 0
+        }
+      }
+    ]
+  },
+  "normalWrites": 0,
+  "wholeCentralRun": false,
+  "compositionAndApplicabilityNotSupplied": true,
+  "M7Claim": false,
+  "scientificFirstCompletions": 0
+}

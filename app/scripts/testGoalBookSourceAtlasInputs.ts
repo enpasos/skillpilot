@@ -365,7 +365,14 @@ export const testGoalBookSourceAtlasInputs = (): void => {
   // The source atlas publishes HE LK use and ascorbic-acid analysis; the authored
   // quantitative paraben transfer remains explicitly outside source coverage.
   // B007 adds six reviewed content atoms in place of two compound atoms (+4).
-  assert.deepEqual(chemistry.receipt.counts, { canonicalCurricularAtomicGoals: 402, publishedCurricularAtomicGoals: 382, sourceViews: 48, unresolvedSourceScopeDecisions: 496, omittedGoals: 20 })
+  // Current447 retains own acquisition separately: five new source-backed goals enter;
+  // the salicylate production goal loses the moved societal drug-impact witness.
+  // Current450 retains the three distinct HB industrial-sugar/fat duties.
+  // The later independently reviewed source bindings add ten existing atoms;
+  // The integrated RP elective quality, SN GK film-fixing and TH LK comparison
+  // source bindings add three existing atoms; 37 remain omitted and all496
+  // source-scope HOLDs remain. This refresh adds no source decision.
+  assert.deepEqual(chemistry.receipt.counts, { canonicalCurricularAtomicGoals: 450, publishedCurricularAtomicGoals: 413, sourceViews: 48, unresolvedSourceScopeDecisions: 496, omittedGoals: 37 })
   // Keep the reviewed C10 child routes when newer process-competency mappings
   // are integrated. Visibility inherited from their parent cannot replace
   // these direct, bounded source witnesses.
@@ -390,16 +397,22 @@ export const testGoalBookSourceAtlasInputs = (): void => {
     [[goalId, 'direct', 'source-metadata', byChemistryMappingPath]],
     'A direct C10 child witness must survive alongside historical parent routing')
   }
-  for (const [goalId, sourceGoalId, scopes] of [
-    ['d2d735de-bede-5310-8aeb-8bb7562c7b75', 'bw-chem-sekii-3-3-2-b07-a01-2cd72615', ['DE-BW/SekII/GK', 'DE-BW/SekII/LK']],
-    ['a0f6ba09-f072-5887-a797-fa369453c62a', 'bw-chem-sekii-3-4-2-b06-a01-99efae9b', ['DE-BW/SekII/LK']],
-    ['7b39fa19-fec3-575e-9324-a3226b703358', 'bw-chem-sekii-3-4-7-b06-a01-46c58b93', ['DE-BW/SekII/LK']],
+  // HB232 adds distinct reviewed partial source contributions. The original
+  // BW operators retain their own exact scopes and direct identity.
+  for (const [goalId, sourceGoalId, scopes, hbSourceGoalIds, heStandardId] of [
+    ['d2d735de-bede-5310-8aeb-8bb7562c7b75', 'bw-chem-sekii-3-3-2-b07-a01-2cd72615', ['DE-BW/SekII/GK', 'DE-BW/SekII/LK'], ['hb-chemistry-sekii-gyo2022-clause-p22-1.1-process-gk_lk-01'], 'he-chemistry-sekii-kc2024-current2026-standard-e5'],
+    ['a0f6ba09-f072-5887-a797-fa369453c62a', 'bw-chem-sekii-3-4-2-b06-a01-99efae9b', ['DE-BW/SekII/LK'], [], 'he-chemistry-sekii-kc2024-current2026-standard-s15'],
+    ['7b39fa19-fec3-575e-9324-a3226b703358', 'bw-chem-sekii-3-4-7-b06-a01-46c58b93', ['DE-BW/SekII/LK'], ['hb-chemistry-sekii-gyo2022-clause-p31-3.2-content-gk_lk-02', 'hb-chemistry-sekii-gyo2022-clause-p31-3.2-process-gk_lk-01'], 'he-chemistry-sekii-kc2024-current2026-standard-e5'],
   ] as const) {
-    assert.deepEqual(chemistry.receipt.scopes.filter(s => s.goalIds.includes(goalId)).map(s => s.key), scopes,
-      'The practical contribution must retain its reviewed BW course scope without importing Sek I or other jurisdictions')
+    const hbScopes = hbSourceGoalIds.length ? ['DE-HB/SekII/GK', 'DE-HB/SekII/LK'] : []
+    const heScopes = ['DE-HE/SekII/GK', 'DE-HE/SekII/LK']
+    assert.deepEqual(chemistry.receipt.scopes.filter(s => s.goalIds.includes(goalId)).map(s => s.key), [...scopes, ...hbScopes, ...heScopes],
+      'Retain exact BW/HB scopes and only the separately reviewed common HE2026 standard contribution')
     assert.deepEqual(chemistry.receipt.scopes.flatMap(s => s.witnesses.filter(w => w.goalId === goalId)
       .map(w => [s.key, w.sourceGoalId, w.mappedTargetGoalId, w.coverage, w.profileBasis])),
-    scopes.map(scope => [scope, sourceGoalId, goalId, 'direct', 'source-metadata']),
+    [...scopes.map(scope => [scope, sourceGoalId, goalId, 'direct', 'source-metadata']),
+      ...hbScopes.flatMap(scope => hbSourceGoalIds.map(hbSourceGoalId => [scope, hbSourceGoalId, goalId, 'direct', 'source-metadata'])),
+      ...heScopes.map(scope => [scope, heStandardId, goalId, 'direct', 'source-metadata'])],
     'Each practical goal must retain its own direct source operator; direct identity is not full source-clause approval')
   }
   const prescribedSolutionGoalId = '1351706f-4ea6-56e9-951b-87b24cbcdee8'
@@ -419,8 +432,8 @@ export const testGoalBookSourceAtlasInputs = (): void => {
     row.legacyGoalId === 'bw-chem-sekii-3-3-2-b07-a01-2cd72615'
     && row.canonicalGoalId === 'd2d735de-bede-5310-8aeb-8bb7562c7b75').map(row => row.matchType), ['partial'],
   'The concentration investigation must not become exact coverage of the whole pressure/temperature/concentration duty')
-  assert.equal(chemistry.receipt.omittedGoals.filter(g => g.reason === 'unresolved-source-scope').length, 9)
-  assert.equal(chemistry.receipt.omittedGoals.filter(g => g.reason === 'no-reviewed-mapped-source-witness').length, 11)
+  assert.equal(chemistry.receipt.omittedGoals.filter(g => g.reason === 'unresolved-source-scope').length, 6)
+  assert.equal(chemistry.receipt.omittedGoals.filter(g => g.reason === 'no-reviewed-mapped-source-witness').length, 31)
   const knowledgeInfluencesGoalId = 'e5a5dcd8-053c-55fd-b5c7-bba93779da53'
   assert.deepEqual(chemistry.receipt.omittedGoals.filter(g => g.goalId === knowledgeInfluencesGoalId), [
     { goalId: knowledgeInfluencesGoalId, reason: 'unresolved-source-scope' },
@@ -441,6 +454,109 @@ export const testGoalBookSourceAtlasInputs = (): void => {
     { goalId: quantitativeParabenGoalId, reason: 'no-reviewed-mapped-source-witness' },
   ], 'An authored quantitative transfer must not be presented as the source paraben-use operator')
   assert.ok(chemistry.receipt.scopes.every(s => !s.goalIds.includes(quantitativeParabenGoalId)))
+  // Each newly published atom must retain precisely its accepted direct
+  // partial source identities. This does not confer whole official-source credit.
+  const newChemistrySourceWitnesses = [
+    ['DE-BB/SekI/', 'bb-chemistry-seki-rlp2015-3-10-055-8067e94d', 'a25a19ed-aec3-59cc-ae28-31d98746cb9d'],
+    ['DE-BE/SekI/', 'be-chemistry-seki-rlp2015-3-10-055-8067e94d', 'a25a19ed-aec3-59cc-ae28-31d98746cb9d'],
+    ['DE-BW/SekI/', 'bw-chem-seki-3-2-1-1-b13-a01-1e95d177', 'a25a19ed-aec3-59cc-ae28-31d98746cb9d'],
+    ['DE-BY/SekI/', '64973c76-d058-5e82-8d8d-239e473b4abc', 'cd9ec99b-b694-5673-863c-55528e31250a'],
+    ['DE-HE/SekI/', 'he-chem-seki-8-1-f03-a01-e8972452', '8b2d351e-e44f-5385-9b89-13ef54b5918f'],
+    ['DE-HE/SekII/GK', 'he-chem-sekii-e-3-b07-a01-72b742ac', 'a25a19ed-aec3-59cc-ae28-31d98746cb9d'],
+    ['DE-HE/SekII/LK', 'he-chem-sekii-e-3-b07-a01-72b742ac', 'a25a19ed-aec3-59cc-ae28-31d98746cb9d'],
+    ['DE-HE/SekII/LK', 'he-chem-sekii-q3-3-b10-a01-f814c697', '0e3f849b-133d-57da-882c-0d67c3eb05b8'],
+    ['DE-HH/SekI/', 'de-hh-chemie-seki-bildungsplan-2014-2018-3-1-uf-j10-012-da87b9a0', 'cc5a626a-dc85-57e2-b422-259f92901545'],
+    ['DE-HH/SekI/', 'de-hh-chemie-seki-bildungsplan-2014-2018-3-2-inhalte-064-4ba24dc7', 'a25a19ed-aec3-59cc-ae28-31d98746cb9d'],
+    ['DE-HH/SekII/GK', 'de-hh-chemie-sekii-bildungsplan-2022-2-3-044-7c750b14', '2d16528c-1424-5999-b3d2-af4593a147fc'],
+    ['DE-HH/SekII/LK', 'de-hh-chemie-sekii-bildungsplan-2022-2-3-044-7c750b14', '2d16528c-1424-5999-b3d2-af4593a147fc'],
+    ['DE-MV/SekI/', 'mv-chem-seki-mv-ch-seki-2021-j10-funktionelle-gruppen-005-00aefcdc', 'a25a19ed-aec3-59cc-ae28-31d98746cb9d'],
+    ['DE-MV/SekI/', 'mv-chem-seki-mv-ch-seki-2021-j10-funktionelle-gruppen-008-352e7117', 'cc5a626a-dc85-57e2-b422-259f92901545'],
+    ['DE-MV/SekII/GK', 'mv-chem-sekii-mv-ch-sekii-2022-erprobung-q-gleichgewichte-003-5609e8fa', '2d16528c-1424-5999-b3d2-af4593a147fc'],
+    ['DE-MV/SekII/LK', 'mv-chem-sekii-mv-ch-sekii-2022-erprobung-q-gleichgewichte-003-5609e8fa', '2d16528c-1424-5999-b3d2-af4593a147fc'],
+    ['DE-NI/SekII/GK', 'ni-chemistry-sekii-kc2022-ep-3-kompetenz-008-92b23769', 'a25a19ed-aec3-59cc-ae28-31d98746cb9d'],
+    ['DE-NI/SekII/GK', 'ni-chemistry-sekii-kc2022-ep-3-kompetenz-009-a0d908ad', 'a25a19ed-aec3-59cc-ae28-31d98746cb9d'],
+    ['DE-NI/SekII/GK', 'ni-chemistry-sekii-kc2022-q-makro-nano-kompetenz-002-6ed76938', '4955f745-b946-5d3d-82d6-5e52dc8549a3'],
+    ['DE-NI/SekII/GK', 'ni-chemistry-sekii-kc2022-q-makro-nano-kompetenz-006-592991dc', 'f57d53b0-5bdf-5998-81f4-8bfb2fc5bde7'],
+    ['DE-NI/SekII/GK', 'ni-chemistry-sekii-kc2022-q-organik-4-kompetenz-002-05581320', 'f57d53b0-5bdf-5998-81f4-8bfb2fc5bde7'],
+    ['DE-NI/SekII/LK', 'ni-chemistry-sekii-kc2022-ep-3-kompetenz-008-92b23769', 'a25a19ed-aec3-59cc-ae28-31d98746cb9d'],
+    ['DE-NI/SekII/LK', 'ni-chemistry-sekii-kc2022-ep-3-kompetenz-009-a0d908ad', 'a25a19ed-aec3-59cc-ae28-31d98746cb9d'],
+    ['DE-NI/SekII/LK', 'ni-chemistry-sekii-kc2022-q-makro-nano-kompetenz-002-6ed76938', '4955f745-b946-5d3d-82d6-5e52dc8549a3'],
+    ['DE-NI/SekII/LK', 'ni-chemistry-sekii-kc2022-q-makro-nano-kompetenz-006-592991dc', 'f57d53b0-5bdf-5998-81f4-8bfb2fc5bde7'],
+    ['DE-NI/SekII/LK', 'ni-chemistry-sekii-kc2022-q-organik-3-kompetenz-014-d68a5383', 'b7b5df21-78f3-5408-89f1-36deed450695'],
+    ['DE-NI/SekII/LK', 'ni-chemistry-sekii-kc2022-q-organik-4-kompetenz-002-05581320', 'f57d53b0-5bdf-5998-81f4-8bfb2fc5bde7'],
+    ['DE-NI/SekII/LK', 'ni-chemistry-sekii-kc2022-q-protolyse-3-kompetenz-009-2cb0e209', 'c61b2a7a-fb0f-5a76-92e9-771c789fa816'],
+    ['DE-NI/SekII/LK', 'ni-chemistry-sekii-kc2022-q-redox-3-kompetenz-013-d68aa68e', '0e3f849b-133d-57da-882c-0d67c3eb05b8'],
+    ['DE-NW/SekII/GK', 'de-nw-chemie-sekii-klp-2022-EF-organische-stoffklassen-bewertungskompetenz-001-1d335640', 'a25a19ed-aec3-59cc-ae28-31d98746cb9d'],
+    ['DE-NW/SekII/LK', 'de-nw-chemie-sekii-klp-2022-EF-organische-stoffklassen-bewertungskompetenz-001-1d335640', 'a25a19ed-aec3-59cc-ae28-31d98746cb9d'],
+    ['DE-RP/SekII/LK', 'rp-chem-sekii-rp-ch-sekii-2022-baustein-16-2-003-47fbbe54', 'cc5a626a-dc85-57e2-b422-259f92901545'],
+    ['DE-RP/SekII/LK', 'rp-chem-sekii-rp-ch-sekii-2022-baustein-7-1-002-b737a24c', '2d16528c-1424-5999-b3d2-af4593a147fc'],
+    ['DE-SH/SekII/GK', 'de-sh-chemie-sekii-fachanforderungen-2022-3-2-chemie-der-funktionalen-stoffe-und-materialien-030-5d25c671', '2d16528c-1424-5999-b3d2-af4593a147fc'],
+    ['DE-SH/SekII/GK', 'de-sh-chemie-sekii-fachanforderungen-2022-3-2-chemie-der-funktionalen-stoffe-und-materialien-031-247f5e51', 'cc5a626a-dc85-57e2-b422-259f92901545'],
+    ['DE-SH/SekII/LK', 'de-sh-chemie-sekii-fachanforderungen-2022-3-2-chemie-der-funktionalen-stoffe-und-materialien-030-5d25c671', '2d16528c-1424-5999-b3d2-af4593a147fc'],
+    ['DE-SH/SekII/LK', 'de-sh-chemie-sekii-fachanforderungen-2022-3-2-chemie-der-funktionalen-stoffe-und-materialien-031-247f5e51', 'cc5a626a-dc85-57e2-b422-259f92901545'],
+    ['DE-SL/SekII/LK', 'sl-chem-sekii-sl-ch-sekii-lk-2023-2025-p022-002-cd00fca0', '2d16528c-1424-5999-b3d2-af4593a147fc'],
+    ['DE-SL/SekII/LK', 'sl-chem-sekii-sl-ch-sekii-lk-2023-2025-p073-003-87264536', 'cc5a626a-dc85-57e2-b422-259f92901545'],
+    ['DE-SN/SekII/LK', 'sn-chem-sekii-sn-ch-jahrgangsstufe-11-leistungskurs-lb2-043-02-6ee8b8e4', 'cc5a626a-dc85-57e2-b422-259f92901545'],
+    ['DE-SN/SekII/LK', 'sn-chem-sekii-sn-ch-jahrgangsstufe-11-leistungskurs-lb4-048-02-8cfdba0a', '2d16528c-1424-5999-b3d2-af4593a147fc'],
+    ['DE-ST/SekI/', 'st-chem-seki-st-schuljahrgang-9-ausgewahlte-derivate-der-alkane-untersuchen-199-f5728801', 'cc5a626a-dc85-57e2-b422-259f92901545'],
+    ['DE-ST/SekII/LK', 'st-chem-sekii-st-schuljahrgange-11-12-ean-chemische-gleichgewichte-qualitativ-und-quantitativ-betrachten-123-08e296e3', '2d16528c-1424-5999-b3d2-af4593a147fc'],
+    ['DE-TH/SekII/GK', 'th-chem-sekii-th-ch-sekii-4-1-3-chemisches-gleichgewicht-gleichgewichtsreaktionen-051-03-001362ed', '2d16528c-1424-5999-b3d2-af4593a147fc'],
+    ['DE-TH/SekII/GK', 'th-chem-sekii-th-ch-sekii-4-1-5-verbindungen-bestimmen-098-01-fd1ae715', 'cc5a626a-dc85-57e2-b422-259f92901545'],
+    ['DE-TH/SekII/LK', 'th-chem-sekii-th-ch-sekii-4-1-3-chemisches-gleichgewicht-gleichgewichtsreaktionen-051-03-001362ed', '2d16528c-1424-5999-b3d2-af4593a147fc'],
+    ['DE-TH/SekII/LK', 'th-chem-sekii-th-ch-sekii-4-1-5-verbindungen-bestimmen-098-01-fd1ae715', 'cc5a626a-dc85-57e2-b422-259f92901545'],
+  ]
+  const newChemistrySourceGoalIds = new Set(newChemistrySourceWitnesses.map(row => row[2]))
+  assert.equal(newChemistrySourceGoalIds.size, 10)
+  assert.deepEqual(chemistry.receipt.scopes.flatMap(scope => scope.witnesses
+    .filter(w => newChemistrySourceGoalIds.has(w.goalId))
+    .map(w => [scope.key, w.sourceGoalId, w.goalId, w.mappedTargetGoalId, w.coverage, w.profileBasis]))
+    .sort((a, b) => JSON.stringify(a).localeCompare(JSON.stringify(b))),
+  newChemistrySourceWitnesses.map(([scope, source, goal]) => [scope, source, goal, goal, 'direct', 'source-metadata'])
+    .sort((a, b) => JSON.stringify(a).localeCompare(JSON.stringify(b))),
+  'Newly published Chemistry atoms must keep exact reviewed source/course identities without inherited or whole-source substitution')
+  // These four direct scope witnesses explain the later 410 -> 413 refresh.
+  // RP and SN retain their official optional units; TH remains elevated LK.
+  // A direct witness does not close the whole source unit or adjacent experiment.
+  const checkpointChemistryWitnesses = [
+    ['DE-RP/SekII/GK', 'rp-chem-sekii-rp-ch-sekii-2022-baustein-2-3-005-6ff85354', '4a7dee38-1056-5e27-acec-e6a12f58109f',
+      'curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json',
+      'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-T2-terminal-exams-interface-author-20261018-v6/sources/RP.selected-unit23-quality-GK-LK.source-extraction.json'],
+    ['DE-RP/SekII/LK', 'rp-chem-sekii-rp-ch-sekii-2022-baustein-2-3-005-6ff85354', '4a7dee38-1056-5e27-acec-e6a12f58109f',
+      'curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json',
+      'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-T2-terminal-exams-interface-author-20261018-v6/sources/RP.selected-unit23-quality-GK-LK.source-extraction.json'],
+    ['DE-SN/SekII/GK', 'sn-chem-sekii-sn-ch-jahrgangsstufe-11-grundkurs-wb1-011-01-81755658', 'f4f7f028-10db-53f9-bdae-456e0c6d0896',
+      'curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json',
+      'curricula/DE/Gymnasium/input/SN/upper-secondary/source-extraction/DE_SN_CHEMIE_SEKII_LEHRPLAN_GYMNASIUM_2025.source-extraction.json'],
+    ['DE-TH/SekII/LK', 'th-chem-sekii-th-ch-sekii-4-1-8-synthesen-171-03-99c1b0d0', '0559cec7-330b-57f1-a409-31cf1b4ac9fb',
+      'curricula/DE/Gymnasium/mapping/DE-TH/upper-secondary/th_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.json',
+      'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-T2-terminal-exams-interface-author-20261018-v6/sources/TH.current235.selected-conditions-LK.source-extraction.json'],
+  ] as const
+  const checkpointChemistryGoalIds = new Set<string>(checkpointChemistryWitnesses.map(row => row[2]))
+  assert.equal(checkpointChemistryGoalIds.size, 3)
+  assert.deepEqual(chemistry.receipt.scopes.flatMap(scope => scope.witnesses
+    .filter(w => checkpointChemistryGoalIds.has(w.goalId))
+    .map(w => [scope.key, w.sourceGoalId, w.goalId, w.mappedTargetGoalId, w.coverage, w.profileBasis, w.mappingPath, w.sourceExtractionPath])),
+  checkpointChemistryWitnesses.map(([scope, source, goal, mapping, extraction]) =>
+    [scope, source, goal, goal, 'direct', 'source-metadata', mapping, extraction]),
+  'The checkpoint must retain only the four reviewed RP GK/LK, SN GK and TH LK source witnesses')
+  assert.ok(chemistry.receipt.omittedGoals.every(g => !checkpointChemistryGoalIds.has(g.goalId)))
+  const rpCheckpointExtraction = JSON.parse(readFileSync(resolve(root, checkpointChemistryWitnesses[0][4]), 'utf8'))
+  const rpCheckpointSource = rpCheckpointExtraction.sourceGoals.find((g: { id: string }) => g.id === checkpointChemistryWitnesses[0][1])
+  assert.equal(rpCheckpointSource.courseLevel, 'GK_LK')
+  assert.deepEqual(rpCheckpointSource.sourceScopeExact.courseProfiles, ['GK', 'LK'])
+  assert.equal(rpCheckpointSource.sourceScopeExact.officialOptional, true)
+  assert.equal(rpCheckpointSource.sourceScopeExact.actualLearnerChoice, false)
+  const snCheckpointExtraction = JSON.parse(readFileSync(resolve(root, checkpointChemistryWitnesses[2][4]), 'utf8'))
+  const snCheckpointSource = snCheckpointExtraction.sourceGoals.find((g: { id: string }) => g.id === checkpointChemistryWitnesses[2][1])
+  assert.equal(snCheckpointSource.courseLevel, 'GK')
+  assert.equal(snCheckpointSource.topicCode, 'SN-CH-jahrgangsstufe-11-grundkurs-WB1')
+  assert.equal(snCheckpointSource.parentBulletText, 'Kennen der Vorgänge beim Fixieren eines Films')
+  const thCheckpointExtraction = JSON.parse(readFileSync(resolve(root, checkpointChemistryWitnesses[3][4]), 'utf8'))
+  const thCheckpointSource = thCheckpointExtraction.sourceGoals.find((g: { id: string }) => g.id === checkpointChemistryWitnesses[3][1])
+  assert.equal(thCheckpointSource.courseLevel, 'LK')
+  assert.deepEqual(thCheckpointSource.sourceScopeExact.courseProfiles, ['LK'])
+  assert.equal(thCheckpointSource.sourceScopeExact.officialOptional, false)
+  assert.equal(thCheckpointSource.sourceScopeExact.adjacentStructureAndPracticalDutiesNotClosed, true)
   const formerCompoundGoalId = 'd3cd250f-5221-589d-aa1c-44a4692d1acb'
   assert.ok(chemistry.receipt.scopes.every(s => !s.goalIds.includes(formerCompoundGoalId)), 'The former compound atom is now a cluster, not an atlas atom')
   assert.ok(chemistry.receipt.omittedGoals.every(g => g.goalId !== formerCompoundGoalId))
@@ -457,7 +573,7 @@ export const testGoalBookSourceAtlasInputs = (): void => {
   assert.ok(!chemistry.receipt.scopes.find(s => s.key === 'DE-HE/SekII/GK')!.goalIds.includes(quantitativeGibbsGoalId),
     'The reviewed LK calculation must not widen the HE GK scope')
   assert.deepEqual(chemistry.receipt.scopes.filter(s => s.jurisdiction === 'DE-BY' || (s.jurisdiction === 'DE-HE' && s.stage === 'SekII')).map(s => [s.key, s.goalIds.length]), [
-    ['DE-BY/SekI/', 98], ['DE-BY/SekII/GK', 117], ['DE-BY/SekII/LK', 148], ['DE-HE/SekII/GK', 112], ['DE-HE/SekII/LK', 142],
+    ['DE-BY/SekI/', 100], ['DE-BY/SekII/GK', 118], ['DE-BY/SekII/LK', 149], ['DE-HE/SekII/GK', 146], ['DE-HE/SekII/LK', 173],
   ], 'Reviewed Chemistry routes must retain their exact BY/HE source scopes')
   assert.deepEqual([...new Set(chemistry.receipt.scopes.flatMap(s => s.witnesses.filter(w => w.profileBasis === 'authored-view').map(() => s.jurisdiction)))].sort(), ['DE-BB', 'DE-BE'])
   // Every grouped witness expands back to the exact original provenance record.

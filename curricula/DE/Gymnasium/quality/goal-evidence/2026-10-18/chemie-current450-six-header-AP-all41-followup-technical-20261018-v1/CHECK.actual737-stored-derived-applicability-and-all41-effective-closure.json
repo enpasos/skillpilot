@@ -1,0 +1,2012 @@
+{
+  "role": "BOUNDED_READ_ONLY_COMMIT_CHECKPOINT_NOT_M7_OR_HUMAN_APPROVAL",
+  "status": "PASS",
+  "canonicalInput": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "sha256": "4a98ea0fadda602b7b04e4117e02aef986c127ed36074d3e700a1777f08a1901",
+    "bytes": 5354349
+  },
+  "semanticInput": {
+    "path": "curricula/DE/Gymnasium/quality/goal-book-publication/chemie.semantic-kinds.json",
+    "sha256": "adf265efda401a357d7a58229210ccd1b6c4173a28ab8efe6aefeec58113a3b6",
+    "bytes": 236320
+  },
+  "registryInput": {
+    "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+    "sha256": "ceb0d85918a25084e40784adfc12ab147e5b2a31598c733109d21ba0d8116ebb",
+    "bytes": 683515
+  },
+  "compiler": {
+    "api": "buildApplicabilityCompilation",
+    "sourceUnmodified": true,
+    "reportWriterCalled": false,
+    "startedAt": "2026-10-18T11:40:59.284Z",
+    "finishedAt": "2026-10-18T11:41:35.785Z",
+    "summary": {
+      "goals": 737,
+      "errors": 0,
+      "warnings": 88,
+      "diagnostics": 2670
+    },
+    "storedDerivedGoalCount": 737,
+    "storedDerivedApplicabilityMismatches": 0,
+    "storedAPVectorSHA256": "982395e6cd33f55b9378a26a0d0500c4123d00291f65932e391af722f13718b1",
+    "derivedAPVectorSHA256": "982395e6cd33f55b9378a26a0d0500c4123d00291f65932e391af722f13718b1",
+    "remainingFromRequiresAllOfChecked": 92,
+    "warningCodeCounts": {
+      "APV-201": 88
+    },
+    "warnings": [
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "059acb11-29b3-5645-ac4c-b4214dc41a2d",
+        "title": "Halbtitration zur pK-Bestimmung nutzen",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-NI."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "0959eef2-3c7d-5b33-a109-ddf332a5dbd9",
+        "title": "Pflanzenölkraftstoffe strukturbezogen einordnen",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-BB, DE-BE."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "1351706f-4ea6-56e9-951b-87b24cbcdee8",
+        "title": "Lösungen nach Arbeitsanweisung herstellen",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-HH, DE-MV, DE-RP, DE-SH, DE-SL, DE-SN, DE-ST, DE-TH."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "14577339-9e0c-5b44-8e47-91e1a4947367",
+        "title": "HE-GK: Materialgestützte Chemie-Abschlussaufgabe bearbeiten",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-HE."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "14f1fe97-0585-5738-845e-9c49173d8afa",
+        "title": "Leitfähige Kunststoffe anwenden und mit Metallen vergleichen",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-NI."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "17acbdec-5274-510f-8588-0eac164ebbe5",
+        "title": "Halogenreaktionen von Kohlenwasserstoffen vergleichen",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-HB, DE-NW."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "188bd684-e894-5753-8a50-798220b04d97",
+        "title": "Farbstoffe als Motor der chemischen Industrie beurteilen",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-BW, DE-RP, DE-SH, DE-SN, DE-ST."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "1bdaf7f2-ff3b-455a-a7fb-95a44642762a",
+        "title": "Massenerhaltung bei Reaktionen erklären",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-HH."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "1df17884-96ae-57d7-9da9-dbebd082596f",
+        "title": "Chemische Handlungsoptionen kriteriengeleitet bewerten",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-BB, DE-BE."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "223e33a4-5545-5332-ac4e-7d7a6cbc587c",
+        "title": "Biotreibstoffe nach Rohstoff und Herstellungsweg unterscheiden",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-BB, DE-BE, DE-HE, DE-HH, DE-MV, DE-RP, DE-SH, DE-SL, DE-SN, DE-ST, DE-TH."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "23533087-89ea-5f29-8ec1-9f2e01197bb6",
+        "title": "Valenzstrichformeln und Mesomerie aufstellen",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-BB, DE-BE."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "28bb9d15-f865-5843-a035-6066580fea64",
+        "title": "Arrhenius-Definitionen wiederholen",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-BB, DE-BE, DE-BW, DE-HB, DE-HH, DE-MV, DE-NI, DE-NW, DE-RP, DE-SH, DE-SL, DE-SN, DE-ST, DE-TH."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "2d16528c-1424-5999-b3d2-af4593a147fc",
+        "title": "Zeolith-Enthärter strukturell erklären",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-HH, DE-MV, DE-RP, DE-SH, DE-SL, DE-SN, DE-ST, DE-TH."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "326d45bf-9f77-57d5-a054-93e76b034dd5",
+        "title": "Aggregatzustände und Übergänge deuten",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-NW, DE-RP."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "32705a3a-9b7f-5cc0-ba41-881d13d0c45b",
+        "title": "HE-LK: Materialgestützte Chemie-Abschlussaufgabe bearbeiten",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-HE."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "34da1a4c-5082-54c8-9084-a94826fd36cd",
+        "title": "Indikatorfarbstoffe über Strukturänderungen erklären",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-SH."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "3dbd84de-51cb-5ff7-801b-077a54520fed",
+        "title": "σ-Komplex-Mechanismus",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-NI."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "3eb2a06c-d283-57aa-9eb4-088940c4801a",
+        "title": "Wirkstoffentwicklung, Produktion und Vermarktung verknüpfen",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-HB."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "413040cd-ba74-5227-948c-a778b0bd0f56",
+        "title": "Löslichkeit und Sättigung aus Daten erklären",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-HE."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "4216a708-d9c4-5582-ad7c-65d81643f0d3",
+        "title": "Prüfung: pH-Titrationskurven experimentell aufnehmen und darstellen",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-BY, DE-HE, DE-NI."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "42391b16-bbae-5c77-84e1-d488e714167b",
+        "title": "Chemische Untersuchungen selbst planen und durchführen",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-NI, DE-SH, DE-SL, DE-SN."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "4955f745-b946-5d3d-82d6-5e52dc8549a3",
+        "title": "Synthetischen Kautschuk und Vulkanisation erklären",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-NI."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "4965395d-e0c5-5e23-a408-a11712aab409",
+        "title": "Gesellschaftliche Folgen der Wirkstoffentwicklung historisch und aktuell bewerten",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-SH."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "4b9810b0-5d3d-59d8-a948-c3f6dd6303c7",
+        "title": "Acidität und Basizität mit induktiven und mesomeren Effekten begründen",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-NI."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "4d9defde-d3bc-5c43-83ff-9cf6f2930643",
+        "title": "Biodieselgewinnung durch Umesterung erklären",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-BB, DE-BE."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "503dedcb-0efc-5e6b-bbc9-20761a0951f5",
+        "title": "Chemische Fragestellungen und Hypothesen theoriegestützt formulieren",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-HE, DE-NW, DE-RP."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "54bc6ca0-b770-5f10-ac54-bcc1d04298f5",
+        "title": "Emission und Absorption zur Farbigkeit unterscheiden",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-NW."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "56bc6377-1291-58bc-b433-5b9f673888e9",
+        "title": "Geschwindigkeiten bestimmen",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-BW."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "5c4788a7-6760-53dc-894e-e04bca6f8cd9",
+        "title": "Gasverhalten mit dem kinetischen Teilchenmodell deuten",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-BB, DE-BE, DE-BW."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "5cd8b2a2-2c90-5e29-8061-dd5e3a682f9d",
+        "title": "Gaschromatografische Trennung erklären und Chromatogramme deuten",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-NI."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "61da9d34-cb35-5c2c-ac8e-83f48b6a4fd3",
+        "title": "Farbstoffe im Alltag und Gesundheit bewerten",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-BW, DE-RP, DE-SH, DE-SN, DE-ST."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "63e0d92b-d86a-53c2-aa0a-bc985fc85174",
+        "title": "Küpenfärbung erklären und durchführen",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-BW, DE-RP, DE-SH, DE-SN, DE-ST."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "64b03eff-a967-54a1-ace3-89cb7650a65c",
+        "title": "Substituenteneffekte in Farbstoff-Molekülen erklären",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-BW, DE-HB, DE-NW, DE-RP, DE-SN, DE-ST."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "67cd332f-9db7-50e1-87f6-172ef3714300",
+        "title": "Molekülgeometrien mit dem EPA-Modell erklären",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-HH, DE-MV."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "6966df95-f125-5ecc-af8e-0442545d9f17",
+        "title": "Micellenbildung deuten",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-HH, DE-MV, DE-RP, DE-SL, DE-SN, DE-ST, DE-TH."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "6c7ce93c-7675-51da-bc0c-7d0257f7ff7d",
+        "title": "Chemische Modelle nutzen und kritisch vergleichen",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-SH."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "6eba90b5-d4a6-5625-be61-e7f30f7eb964",
+        "title": "Kunststoff-Verarbeitungsverfahren beschreiben",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-NI."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "73cbd4d8-5da1-5e54-85ce-c88e7b1613fe",
+        "title": "Leitfähige Kunststoffe über konjugierte Systeme erklären",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-NI."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "75e2eff1-f871-5461-9e3f-26d0b333ce2f",
+        "title": "Chemische Alltagsfragen und prüfbare Hypothesen formulieren",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-HE, DE-RP."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "7b39fa19-fec3-575e-9324-a3226b703358",
+        "title": "Leerlaufspannungen galvanischer Zellen experimentell ermitteln",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-HE."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "7c0b944d-3f1f-5d26-84b0-2a359f689cf0",
+        "title": "Konduktometrische Fällungstitrationen durchführen und auswerten",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-BB, DE-BE."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6",
+        "title": "Chemische Daten auswerten und auf Hypothesen beziehen",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-BB, DE-BE, DE-BW, DE-HH, DE-MV, DE-NI, DE-RP, DE-SH, DE-SL, DE-SN, DE-ST, DE-TH."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "7f140b34-ed26-59e7-8ad2-ccb6b56bc9d6",
+        "title": "Chemische Anwendungen und ihre gesellschaftliche Bedeutung diskutieren",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-HB."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "858d56e0-ab8f-51a4-b07e-7d9d94cab8e2",
+        "title": "Oxidierbarkeit von Alkanolen vergleichen",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-SN."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "87d8cc68-fe82-5273-9e43-c18b566ecb6c",
+        "title": "Farbigkeit durch delokalisierte Elektronen erklären",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-BW, DE-NW."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "8b2d351e-e44f-5385-9b89-13ef54b5918f",
+        "title": "Temperaturabhängige Löslichkeit und Kristallbildung untersuchen",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-HE."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "91cd4728-b811-562a-970b-18b81dfb4bdf",
+        "title": "Polare Eigenschaften erklären",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-HH, DE-MV, DE-NI, DE-NW, DE-RP, DE-SH, DE-SL, DE-SN, DE-ST, DE-TH."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "981242bb-a729-5701-b02d-c2f7f489e5af",
+        "title": "Azofarbstoff-Synthese mechanistisch darstellen",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-RP."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "99d41b0f-e958-54cf-a077-9bed1704a303",
+        "title": "Eigene chemische Untersuchungen reflektieren",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-HE."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "9e3fae29-84d5-5600-bfb3-82d49ea3f1b5",
+        "title": "Chemische Daten quantitativ und hypothesenbezogen auswerten",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-HE, DE-RP."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "9f892457-c4e5-56da-830c-bf6cac0c98d7",
+        "title": "Chemische Wirkungen in historischen und aktuellen Zusammenhängen bewerten",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-HE."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "9fc800d1-92d1-5ef6-81c1-33960ae034dd",
+        "title": "Chemische Daten nachvollziehbar dokumentieren",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-BW, DE-NI, DE-RP."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "a0080b5f-13ff-56bc-b8ff-2ff6273e2ec1",
+        "title": "Wissenschaftliche Gültigkeitskriterien anwenden",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-HE."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "a0f6ba09-f072-5887-a797-fa369453c62a",
+        "title": "Ein reversibles Austauschmodell zur Gleichgewichtseinstellung durchführen",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-HE."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "a25a19ed-aec3-59cc-ae28-31d98746cb9d",
+        "title": "Ethanolwirkungen im Körper und Alltagsrisiken einordnen",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-BB, DE-BE, DE-BW, DE-HH, DE-MV, DE-NI, DE-NW."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "a449e874-6fec-502b-9667-6f078adc4d64",
+        "title": "Puffer-pH mit der Henderson-Hasselbalch-Gleichung berechnen",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-BW."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "a8800c36-d13c-5f63-962c-cf18c3795c63",
+        "title": "Chemische Erkenntniswege und ihre Reichweite erklären",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-HE."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "afa7dae7-9378-5687-aa8d-69a04afaa0d8",
+        "title": "Nanostrukturierte Silberwerkstoffe einordnen",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-NI."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "b208b1a5-c609-53a1-8add-979417a93b7d",
+        "title": "Textilfarbstoffe über Farbstoff-Faser-Wechselwirkungen beurteilen",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-BW, DE-ST."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "b7ae47da-6afa-5651-977a-3139af7d6eab",
+        "title": "Metallrecycling für Konsum- und Entsorgungsentscheidungen nutzen",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-NW."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "b7b5df21-78f3-5408-89f1-36deed450695",
+        "title": "Friedel-Crafts-Reaktionen",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-NI."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "bbe038e9-86ed-5ec6-ab33-316758ddb16d",
+        "title": "Elektronenpaarbindung mit Orbitalüberlappung erklären",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-HH."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "c3077d95-f3fe-5579-8493-cb92992809c4",
+        "title": "Alkoholmonomere durch nukleophile Substitution erklären",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-BB, DE-BE."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "c61b2a7a-fb0f-5a76-92e9-771c789fa816",
+        "title": "Pufferwirkung experimentell untersuchen",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-NI."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "c8f51eac-c131-58a8-8d00-0fcbbe4bc18c",
+        "title": "Absorbiertes und reflektiertes Licht verknüpfen",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-BW, DE-RP, DE-SH, DE-SN, DE-ST."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "c95f6059-d7c2-5bcd-b61e-95e3577efdb2",
+        "title": "Korrosionsverhalten von Metallen beurteilen",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-BB, DE-BE."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "ca216bc6-5205-5b46-abbd-fd5628e4ca5b",
+        "title": "Acidität begründen",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-NI."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "cc5a626a-dc85-57e2-b422-259f92901545",
+        "title": "Biologische Abbauwege von Tensiden beschreiben",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-HH, DE-MV, DE-RP, DE-SH, DE-SL, DE-SN, DE-ST, DE-TH."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "cc803809-fa7f-517c-b356-9f2f7caf21a5",
+        "title": "Energiekonzept auf Donator-Akzeptor-Reaktionen anwenden",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-BB, DE-BE."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "d2d735de-bede-5310-8aeb-8bb7562c7b75",
+        "title": "Konzentrationsbedingte Gleichgewichtsverschiebungen experimentell untersuchen",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-HE."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "d61ce84f-1d0d-555f-be05-aedb589225ce",
+        "title": "Dirigierende Effekte analysieren (LK)",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-NI."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "d815960a-21ab-5a42-8b23-ecd20d03db19",
+        "title": "Anwendungsorientierte Farbstoffforschung im zeitlichen Wandel erklären",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-BW."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "dfbccd62-1203-5d1b-927d-65a4ca41bbad",
+        "title": "Nanomaterialien und nanostrukturierte Oberflächen erklären",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-HB."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "e0944fbb-0761-5f9c-afaa-3d4713ed1bed",
+        "title": "pH-Titrationskurven experimentell aufnehmen und darstellen",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-NI."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+        "title": "Konstante Massenverhältnisse beschreiben",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-HH, DE-MV, DE-NW, DE-RP, DE-SH, DE-SL, DE-SN, DE-ST, DE-TH."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "e47b22ec-4443-5aae-bf38-71e3164b6b3e",
+        "title": "Biopolymer-Abbau",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-NI."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "e5d6de7e-28c5-5dd8-a700-ecc1a3a7b8cd",
+        "title": "Saure Alltagslösungen nach Bedeutung, Verwendung und Umgang einordnen",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-SN."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "e74f5301-70d3-5869-bd3d-79a5763a1718",
+        "title": "Orbitalmodell und Valenzstrichschreibweise anwenden",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-BB, DE-BE."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "e96771d3-fd72-59e6-8f4c-573ef8cbde0a",
+        "title": "Aromatische Verbindungen in Alltag, Industrie und Gesundheit bewerten",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-NI."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "f0ba30a8-84b3-5915-bf85-6c3a176064d2",
+        "title": "Absorptionsspektren von Farbstoffen auswerten",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-BW, DE-NW."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "f0f67a7a-b06a-50b9-8edc-1f2a0d97520d",
+        "title": "Bindungsverhältnisse aromatischer Systeme modellieren",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-HB, DE-SH, DE-SN."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "f1ed86f0-534d-57d7-8952-a004a331cc54",
+        "title": "Lösungen berechnen und pH bestimmen",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-SN."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "f54b2c33-11f1-571f-aa1c-cf969cc141c4",
+        "title": "Gewinnung seltener Metalle für Spannungsquellen diskutieren",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-MV."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "f57d53b0-5bdf-5998-81f4-8bfb2fc5bde7",
+        "title": "Viskose und Cellulosederivate als Textilfasern erklären",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-NI."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "f5efab9d-2c61-44ea-b36a-87f873b51fd8",
+        "title": "Energiestufenmodell und Elektronenverteilung anwenden",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-HH."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "f79f15c0-e848-5e17-9eb5-26753d35c93b",
+        "title": "Anspruchsvolle chemische Experimente selbstständig durchführen",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-HE."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "f947cd04-952a-5a9d-9445-3ffc70e02c3c",
+        "title": "Polyadditionen analysieren (LK)",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-NI."
+      },
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "f9e6d689-6e59-59a4-9f21-8c2d44413244",
+        "title": "Entsorgung und Recycling von Batterien und Akkumulatoren bewerten",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-HH, DE-MV."
+      }
+    ],
+    "warningsSuppressedOrReclassified": 0,
+    "projections": [
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BW",
+        "visibleGoals": 361,
+        "errors": 0,
+        "warnings": 0,
+        "diagnostics": 120
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-HE",
+        "visibleGoals": 609,
+        "errors": 0,
+        "warnings": 0,
+        "diagnostics": 39
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BY",
+        "visibleGoals": 646,
+        "errors": 0,
+        "warnings": 0,
+        "diagnostics": 30
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BB",
+        "visibleGoals": 410,
+        "errors": 0,
+        "warnings": 0,
+        "diagnostics": 168
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BE",
+        "visibleGoals": 410,
+        "errors": 0,
+        "warnings": 0,
+        "diagnostics": 168
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-NI",
+        "visibleGoals": 407,
+        "errors": 0,
+        "warnings": 0,
+        "diagnostics": 196
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-NW",
+        "visibleGoals": 262,
+        "errors": 0,
+        "warnings": 0,
+        "diagnostics": 143
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-SH",
+        "visibleGoals": 381,
+        "errors": 0,
+        "warnings": 0,
+        "diagnostics": 200
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-HB",
+        "visibleGoals": 520,
+        "errors": 0,
+        "warnings": 0,
+        "diagnostics": 299
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-HH",
+        "visibleGoals": 317,
+        "errors": 0,
+        "warnings": 0,
+        "diagnostics": 170
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-MV",
+        "visibleGoals": 329,
+        "errors": 0,
+        "warnings": 0,
+        "diagnostics": 177
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-RP",
+        "visibleGoals": 384,
+        "errors": 0,
+        "warnings": 0,
+        "diagnostics": 202
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-SL",
+        "visibleGoals": 353,
+        "errors": 0,
+        "warnings": 0,
+        "diagnostics": 188
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-SN",
+        "visibleGoals": 383,
+        "errors": 0,
+        "warnings": 0,
+        "diagnostics": 206
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-ST",
+        "visibleGoals": 335,
+        "errors": 0,
+        "warnings": 0,
+        "diagnostics": 178
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-TH",
+        "visibleGoals": 342,
+        "errors": 0,
+        "warnings": 0,
+        "diagnostics": 186
+      }
+    ],
+    "reviewedPHVariantScopes": {
+      "4216a708-d9c4-5582-ad7c-65d81643f0d3": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE",
+          "DE-NI"
+        ]
+      },
+      "f7a7f4c2-6949-5f14-beeb-d22a74011d80": {
+        "jurisdiction": [
+          "DE-HB"
+        ]
+      }
+    }
+  },
+  "closure": {
+    "semantics": "Same reviewed169/T5 algorithm with production runtime projection. Start at every current filtered rendered atomic target; inherit all ancestor requires; traverse requires transitively; expand required clusters into contains descendants; require every reached atomic goal to be a current target or explicit prerequisiteOnly role.",
+    "viewCount": 41,
+    "totalAtomicTargetAppearances": 10234,
+    "totalTransitiveGoalPairs": 78187,
+    "totalTransitiveAtomicPairs": 73315,
+    "missingProjectedPairs": 0,
+    "missingAtomicRolePairs": 0,
+    "views": [
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-bb-gk.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-BB",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        },
+        "viewCompilerErrors": 0,
+        "rawTargetRoleCount": 245,
+        "explicitPrerequisiteOnlyCount": 5,
+        "renderedCount": 285,
+        "filteredTargetCount": 245,
+        "atomicTargetCount": 240,
+        "transitiveAllGoalPairCount": 1639,
+        "transitiveAtomicPairCount": 1521,
+        "transitivePairVectorSHA256": "6fd1e1d72c3ba0dfb4ae1898ce27ad4a567b6b5326b963b5257b3f7de9fec717",
+        "missingProjectedPrerequisitePairs": [],
+        "missingAtomicTargetOrExplicitSupportPairs": [],
+        "filteredTargetSetSHA256": "28517a5ffe98ee272a302037d3219cba6b0a1869685ab89a0e1980b9f9f68c71",
+        "renderedSetSHA256": "c511c5c45c4a1bff918577a55e156668d03709c39d4a833805248fbd382c033b",
+        "renderedParentVectorSHA256": "603c95148aa11ef3e65e4a37d8746fbd5617b1a3cab1092b2733f5f7eeef1dcc",
+        "commonPHOffered": false,
+        "HBDigitalPHOffered": false
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-bb-lk.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-BB",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "viewCompilerErrors": 0,
+        "rawTargetRoleCount": 287,
+        "explicitPrerequisiteOnlyCount": 4,
+        "renderedCount": 334,
+        "filteredTargetCount": 287,
+        "atomicTargetCount": 282,
+        "transitiveAllGoalPairCount": 1985,
+        "transitiveAtomicPairCount": 1855,
+        "transitivePairVectorSHA256": "ee9e424787004e7dc2083474b349c0df089ae04aa1e48bb89619d424f914b848",
+        "missingProjectedPrerequisitePairs": [],
+        "missingAtomicTargetOrExplicitSupportPairs": [],
+        "filteredTargetSetSHA256": "c7bba2823e6691a6b1c2ecbb36b1bab5148bcbe577682e80d52d92bddddfd3fe",
+        "renderedSetSHA256": "6dc6a0ca8ae8abdfeeb22389d343a88e7458dfae4d403265fce3196eae99bc9b",
+        "renderedParentVectorSHA256": "b0d261cf9273d840b5acd6548f789417a096e4611d0afe7ae7d7c992b87c3487",
+        "commonPHOffered": false,
+        "HBDigitalPHOffered": false
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-be-gk.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-BE",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        },
+        "viewCompilerErrors": 0,
+        "rawTargetRoleCount": 245,
+        "explicitPrerequisiteOnlyCount": 5,
+        "renderedCount": 285,
+        "filteredTargetCount": 245,
+        "atomicTargetCount": 240,
+        "transitiveAllGoalPairCount": 1639,
+        "transitiveAtomicPairCount": 1521,
+        "transitivePairVectorSHA256": "6fd1e1d72c3ba0dfb4ae1898ce27ad4a567b6b5326b963b5257b3f7de9fec717",
+        "missingProjectedPrerequisitePairs": [],
+        "missingAtomicTargetOrExplicitSupportPairs": [],
+        "filteredTargetSetSHA256": "28517a5ffe98ee272a302037d3219cba6b0a1869685ab89a0e1980b9f9f68c71",
+        "renderedSetSHA256": "ccfe1e2887bf0a7d70e9d3fef6f20579b986e3201db34631ef4c7c2920efab44",
+        "renderedParentVectorSHA256": "b0d5decac49238da0535cca0f34da740f32f3f501e6e9ee476d5102c97a4887d",
+        "commonPHOffered": false,
+        "HBDigitalPHOffered": false
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-be-lk.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-BE",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "viewCompilerErrors": 0,
+        "rawTargetRoleCount": 287,
+        "explicitPrerequisiteOnlyCount": 4,
+        "renderedCount": 334,
+        "filteredTargetCount": 287,
+        "atomicTargetCount": 282,
+        "transitiveAllGoalPairCount": 1985,
+        "transitiveAtomicPairCount": 1855,
+        "transitivePairVectorSHA256": "ee9e424787004e7dc2083474b349c0df089ae04aa1e48bb89619d424f914b848",
+        "missingProjectedPrerequisitePairs": [],
+        "missingAtomicTargetOrExplicitSupportPairs": [],
+        "filteredTargetSetSHA256": "c7bba2823e6691a6b1c2ecbb36b1bab5148bcbe577682e80d52d92bddddfd3fe",
+        "renderedSetSHA256": "b47403b20d975e085e535aac6d69bfab33357e0c83a2a8ac08ce3859378e0b12",
+        "renderedParentVectorSHA256": "6fb127a5f4242892e9011e118c9123a6e7e18f8131b56c741200c20511d0e712",
+        "commonPHOffered": false,
+        "HBDigitalPHOffered": false
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-bw-gk.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-BW",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        },
+        "viewCompilerErrors": 0,
+        "rawTargetRoleCount": 221,
+        "explicitPrerequisiteOnlyCount": 12,
+        "renderedCount": 264,
+        "filteredTargetCount": 221,
+        "atomicTargetCount": 217,
+        "transitiveAllGoalPairCount": 1491,
+        "transitiveAtomicPairCount": 1387,
+        "transitivePairVectorSHA256": "7bba87220a9e755c62e7becd1f325a07cab450bde5518c09f19110ad06a009e9",
+        "missingProjectedPrerequisitePairs": [],
+        "missingAtomicTargetOrExplicitSupportPairs": [],
+        "filteredTargetSetSHA256": "7824d0fb98d0bdbb368f019a5493cec669fa982d7087b7c262bbebbd868f512f",
+        "renderedSetSHA256": "707948eeb1510bd7b2862271c0a02cac3988ff633f4ac716f59b84f3c7b2c553",
+        "renderedParentVectorSHA256": "d09ab12c23e9bafa0f51f3c5538300fc37078b879a8fe0504de91bc2690926d7",
+        "commonPHOffered": false,
+        "HBDigitalPHOffered": false
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-bw-lk.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-BW",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "viewCompilerErrors": 0,
+        "rawTargetRoleCount": 236,
+        "explicitPrerequisiteOnlyCount": 18,
+        "renderedCount": 279,
+        "filteredTargetCount": 236,
+        "atomicTargetCount": 232,
+        "transitiveAllGoalPairCount": 1566,
+        "transitiveAtomicPairCount": 1464,
+        "transitivePairVectorSHA256": "a02cbad92e8dd8cbdb5ba5b7fb594f84c4500ca94d621f1d6c9767d32ba7d445",
+        "missingProjectedPrerequisitePairs": [],
+        "missingAtomicTargetOrExplicitSupportPairs": [],
+        "filteredTargetSetSHA256": "3c9874aca3c3c3e6372e1b7f0b08f540e6138090214c8e36b51d8f6c73d51bcf",
+        "renderedSetSHA256": "88bda86aa5567834f4ec9dd5d9a7367010083b5f0d5463440165fa62132e8430",
+        "renderedParentVectorSHA256": "e17d8cc1f7dbf59f25a443d1d97e1807b29e845fb67ea55c8b2f01bdfaf8cf5f",
+        "commonPHOffered": false,
+        "HBDigitalPHOffered": false
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-by-c10-ethanol-risk-unit.current-pilot.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-BY",
+          "stage": "SekI"
+        },
+        "viewCompilerErrors": 0,
+        "rawTargetRoleCount": 4,
+        "explicitPrerequisiteOnlyCount": 0,
+        "renderedCount": 6,
+        "filteredTargetCount": 4,
+        "atomicTargetCount": 4,
+        "transitiveAllGoalPairCount": 6,
+        "transitiveAtomicPairCount": 6,
+        "transitivePairVectorSHA256": "1c5eaa15318fa43e9788631c42895d28fb4e24f95992fe4a7dd48b02bd4f3dee",
+        "missingProjectedPrerequisitePairs": [],
+        "missingAtomicTargetOrExplicitSupportPairs": [],
+        "filteredTargetSetSHA256": "92f34ac539322d51ebdb5b1bb0a1b444681ade463948651afd18ca5e9a310554",
+        "renderedSetSHA256": "6c67433799655de76b0751c71cff846b9a38ec08c94ab6854816d76790f72795",
+        "renderedParentVectorSHA256": "475cf1fc39d3a4e24f1472df7bc8f4d8c619cb5a94a7554a77cd557dc96a22fa",
+        "commonPHOffered": false,
+        "HBDigitalPHOffered": false
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-by-lk.current-pilot.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-BY",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "viewCompilerErrors": 0,
+        "rawTargetRoleCount": 377,
+        "explicitPrerequisiteOnlyCount": 9,
+        "renderedCount": 406,
+        "filteredTargetCount": 377,
+        "atomicTargetCount": 369,
+        "transitiveAllGoalPairCount": 3250,
+        "transitiveAtomicPairCount": 3016,
+        "transitivePairVectorSHA256": "2516efe5947b6404ac913b7f00e559f9dcf1d849590db75352e133d50aaa8033",
+        "missingProjectedPrerequisitePairs": [],
+        "missingAtomicTargetOrExplicitSupportPairs": [],
+        "filteredTargetSetSHA256": "04e5ca35403fd911936e0119cb08b45ad8be2cc4ad0e3b247ab6b00a920aab37",
+        "renderedSetSHA256": "4fbcc1f66ad65e793a879fc218c0d2ad768ccd88d2a6aca234180e5215c73b66",
+        "renderedParentVectorSHA256": "8a25fd7f87ed308ffcae6eec7d3433a931f355c29792f3e27c59eade14a32e3e",
+        "commonPHOffered": false,
+        "HBDigitalPHOffered": false
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-gk.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        },
+        "viewCompilerErrors": 0,
+        "rawTargetRoleCount": 509,
+        "explicitPrerequisiteOnlyCount": 4,
+        "renderedCount": 522,
+        "filteredTargetCount": 418,
+        "atomicTargetCount": 351,
+        "transitiveAllGoalPairCount": 3332,
+        "transitiveAtomicPairCount": 3123,
+        "transitivePairVectorSHA256": "b0d0cff29297685907ad4d46994eed072b16a8c3b2cf24f62d6ef6fd9f1881ad",
+        "missingProjectedPrerequisitePairs": [],
+        "missingAtomicTargetOrExplicitSupportPairs": [],
+        "filteredTargetSetSHA256": "a02c50896141dfb0c2b6c3ef0e0d68ad2f83d820f5dc475ae1da2a265e7035a8",
+        "renderedSetSHA256": "03725a75cb1eccafee8430d73dca98a3829f45ed19b68a56646116a2626ea7d1",
+        "renderedParentVectorSHA256": "3466cbdc7e4b6a14ccbe8ff90bfc3ac0604e2ac55bc6dd741e67d70e69662749",
+        "commonPHOffered": false,
+        "HBDigitalPHOffered": false
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-lk.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "viewCompilerErrors": 0,
+        "rawTargetRoleCount": 516,
+        "explicitPrerequisiteOnlyCount": 0,
+        "renderedCount": 533,
+        "filteredTargetCount": 515,
+        "atomicTargetCount": 442,
+        "transitiveAllGoalPairCount": 4105,
+        "transitiveAtomicPairCount": 3870,
+        "transitivePairVectorSHA256": "f290903cf3a285ae9be89d582f9fdfd443c9d82601b586be1b6d2c747860d6e7",
+        "missingProjectedPrerequisitePairs": [],
+        "missingAtomicTargetOrExplicitSupportPairs": [],
+        "filteredTargetSetSHA256": "316d330679dc3bdb4e718882cbd33fa42a40e927e5d3c1ca46afbb694036f519",
+        "renderedSetSHA256": "34e9bdc6f97db51ecfb3d1bed750f86b834cdb777c535bfafa2d93edfe199de6",
+        "renderedParentVectorSHA256": "8b0942528a3e26bea0976dd8376fe22886eb271ec9ccba98bbe420eaf012ad8b",
+        "commonPHOffered": true,
+        "HBDigitalPHOffered": true
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-seki-chemistry.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "stage": "SekI"
+        },
+        "viewCompilerErrors": 0,
+        "rawTargetRoleCount": 122,
+        "explicitPrerequisiteOnlyCount": 0,
+        "renderedCount": 130,
+        "filteredTargetCount": 122,
+        "atomicTargetCount": 105,
+        "transitiveAllGoalPairCount": 715,
+        "transitiveAtomicPairCount": 646,
+        "transitivePairVectorSHA256": "1c0745527fe5ca730905b95c384356d131be679ef39b8c342648f77cba55acb2",
+        "missingProjectedPrerequisitePairs": [],
+        "missingAtomicTargetOrExplicitSupportPairs": [],
+        "filteredTargetSetSHA256": "fc90c88f7cef4e6aca8836a053175fca47b8a79054f6196a08f69d75c60f49bd",
+        "renderedSetSHA256": "84b73f4da052df0d4d6e32ceb3f2f0f3b252f473a7197c5f98fd92c634aa0d88",
+        "renderedParentVectorSHA256": "a9ed5a2a9402c5b2ca00f32f9e4f8309d5d704d7fc77b7a81af9a8b1a9383008",
+        "commonPHOffered": false,
+        "HBDigitalPHOffered": false
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-gk.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "stage": "SekII",
+          "courseProfile": "GK"
+        },
+        "viewCompilerErrors": 0,
+        "rawTargetRoleCount": 397,
+        "explicitPrerequisiteOnlyCount": 55,
+        "renderedCount": 411,
+        "filteredTargetCount": 306,
+        "atomicTargetCount": 256,
+        "transitiveAllGoalPairCount": 2693,
+        "transitiveAtomicPairCount": 2548,
+        "transitivePairVectorSHA256": "b4501af03206ede8e6171ed5835d7920d28bb36a49c695eb5bc4db574a15c01e",
+        "missingProjectedPrerequisitePairs": [],
+        "missingAtomicTargetOrExplicitSupportPairs": [],
+        "filteredTargetSetSHA256": "21be864f951b4d8a85d90f2e93b7606b54929fc907604e7cf5e3ae1a814dc61d",
+        "renderedSetSHA256": "7a961ea0ad5aeca3e29049f0873f82ac33026ce6e59acd52d3975e68430c409e",
+        "renderedParentVectorSHA256": "89fff0ad5029e1851729109adb321b4c6d5af25b5c96941ef7d166f538053a26",
+        "commonPHOffered": false,
+        "HBDigitalPHOffered": false
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-lk.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "stage": "SekII",
+          "courseProfile": "LK"
+        },
+        "viewCompilerErrors": 0,
+        "rawTargetRoleCount": 404,
+        "explicitPrerequisiteOnlyCount": 52,
+        "renderedCount": 421,
+        "filteredTargetCount": 403,
+        "atomicTargetCount": 347,
+        "transitiveAllGoalPairCount": 3466,
+        "transitiveAtomicPairCount": 3295,
+        "transitivePairVectorSHA256": "5adec449dc67b73fb988fbb26928d16061b4b9e31ea662a95fbd77e8f2066107",
+        "missingProjectedPrerequisitePairs": [],
+        "missingAtomicTargetOrExplicitSupportPairs": [],
+        "filteredTargetSetSHA256": "de9c2e7fcf8bf64ae26f817646de05ffb01ee603e39126a0c2b78320ba5bb397",
+        "renderedSetSHA256": "e992da29f46b950b765b9f20142e4f7fe77dff160bbe2cc09b2176058e0efdeb",
+        "renderedParentVectorSHA256": "02c5fc1416d820af4575a7d35a988cfcabe5a4bbd280d5d669cb4a9c05cab118",
+        "commonPHOffered": true,
+        "HBDigitalPHOffered": true
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-hb-gk.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HB",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        },
+        "viewCompilerErrors": 0,
+        "rawTargetRoleCount": 286,
+        "explicitPrerequisiteOnlyCount": 8,
+        "renderedCount": 325,
+        "filteredTargetCount": 286,
+        "atomicTargetCount": 286,
+        "transitiveAllGoalPairCount": 1976,
+        "transitiveAtomicPairCount": 1842,
+        "transitivePairVectorSHA256": "55b70f00d4166b6aa40faf6eeb98c315f4a0bc795907c0b761c4b63c432395f7",
+        "missingProjectedPrerequisitePairs": [],
+        "missingAtomicTargetOrExplicitSupportPairs": [],
+        "filteredTargetSetSHA256": "e87c18b29a4a797c2cf58f7ad228c9d478ac6c9ef27a352f7f3d1babb7a6b7b9",
+        "renderedSetSHA256": "b6af84554d189b2ca5d2e67c2ebb2dc5e83e38a0385922d955455282a9a1970f",
+        "renderedParentVectorSHA256": "411e9073462589024324cad29e48d30c8798903e1f9cbe6c1b0fe7678263d0ff",
+        "commonPHOffered": false,
+        "HBDigitalPHOffered": false
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-hb-lk.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HB",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "viewCompilerErrors": 0,
+        "rawTargetRoleCount": 357,
+        "explicitPrerequisiteOnlyCount": 8,
+        "renderedCount": 399,
+        "filteredTargetCount": 357,
+        "atomicTargetCount": 357,
+        "transitiveAllGoalPairCount": 2458,
+        "transitiveAtomicPairCount": 2306,
+        "transitivePairVectorSHA256": "41d09bafffcd66f79cc4dd7b987b071414d0c05c8b3047dfd045aa19e0f6cb50",
+        "missingProjectedPrerequisitePairs": [],
+        "missingAtomicTargetOrExplicitSupportPairs": [],
+        "filteredTargetSetSHA256": "f8a9a2c4c06c59f0f66145f6c49308eae23afa9a75aa9ca49cfd254379dc4f4d",
+        "renderedSetSHA256": "7ba2a7afde45b423f0a6b9aa406cdd5cccec490864013a75cb9336be641a306a",
+        "renderedParentVectorSHA256": "c6d9d27e84d7d7d3552e882f8fbd9dd3146adf9f6a883c57b424bd5678342ee4",
+        "commonPHOffered": false,
+        "HBDigitalPHOffered": true
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-hb-sekii-gk.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HB",
+          "stage": "SekII",
+          "courseProfile": "GK"
+        },
+        "viewCompilerErrors": 0,
+        "rawTargetRoleCount": 246,
+        "explicitPrerequisiteOnlyCount": 23,
+        "renderedCount": 280,
+        "filteredTargetCount": 246,
+        "atomicTargetCount": 246,
+        "transitiveAllGoalPairCount": 1702,
+        "transitiveAtomicPairCount": 1595,
+        "transitivePairVectorSHA256": "908fc6b16a9f35e1a104fefa7f367a3872678a8423b158d7ebaba45bff7d0f44",
+        "missingProjectedPrerequisitePairs": [],
+        "missingAtomicTargetOrExplicitSupportPairs": [],
+        "filteredTargetSetSHA256": "094d8a8d0497c42da6f855238aae3a9b5a271eafb6f84d265ccdb3215119a404",
+        "renderedSetSHA256": "bbad0e7c76720a7aa5942834604ac558c2d1546497a3eda695f06aeed746daac",
+        "renderedParentVectorSHA256": "ab384e6a1c7a49872a6178c36334a067cc1951547d0684046494591da43b0a37",
+        "commonPHOffered": false,
+        "HBDigitalPHOffered": false
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-hb-sekii-lk.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HB",
+          "stage": "SekII",
+          "courseProfile": "LK"
+        },
+        "viewCompilerErrors": 0,
+        "rawTargetRoleCount": 317,
+        "explicitPrerequisiteOnlyCount": 23,
+        "renderedCount": 354,
+        "filteredTargetCount": 317,
+        "atomicTargetCount": 317,
+        "transitiveAllGoalPairCount": 2184,
+        "transitiveAtomicPairCount": 2059,
+        "transitivePairVectorSHA256": "2fe9fe8f5a292e2b611fbc42d8e21bb2e27e3f41e4875668d61420e7f91320bc",
+        "missingProjectedPrerequisitePairs": [],
+        "missingAtomicTargetOrExplicitSupportPairs": [],
+        "filteredTargetSetSHA256": "9d849f63b0b246e71c58532042bf3bf7c6687dbe8fa10d4a0dc9459518815f9f",
+        "renderedSetSHA256": "239075055221cd2932e7c4d676d8c86d97911fef3c9a45b3274c8e4513c2806c",
+        "renderedParentVectorSHA256": "5d0ba9547773623e40a544a18d9ebfd92789aa03a2af2b05bdfcf8ab74426c8e",
+        "commonPHOffered": false,
+        "HBDigitalPHOffered": true
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HE",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        },
+        "viewCompilerErrors": 0,
+        "rawTargetRoleCount": 422,
+        "explicitPrerequisiteOnlyCount": 10,
+        "renderedCount": 455,
+        "filteredTargetCount": 337,
+        "atomicTargetCount": 292,
+        "transitiveAllGoalPairCount": 2527,
+        "transitiveAtomicPairCount": 2365,
+        "transitivePairVectorSHA256": "61de6d187af22c0809a06d8b6c1f008097d4fb6feb75b5aef59040dd0cb7f9ef",
+        "missingProjectedPrerequisitePairs": [],
+        "missingAtomicTargetOrExplicitSupportPairs": [],
+        "filteredTargetSetSHA256": "49342eace85e0789f5825f4a228087c328eaca0f68b3dc6951e8590fc8687999",
+        "renderedSetSHA256": "7162da229beadf3dc8f9ea3c99370601e794f134aba03a370e95225ff88c4751",
+        "renderedParentVectorSHA256": "b2dd795485b1afe5d12837537a41c6d251732ba5087aad873ea709fe7346dfc5",
+        "commonPHOffered": false,
+        "HBDigitalPHOffered": false
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-he-lk.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HE",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "viewCompilerErrors": 0,
+        "rawTargetRoleCount": 428,
+        "explicitPrerequisiteOnlyCount": 13,
+        "renderedCount": 467,
+        "filteredTargetCount": 426,
+        "atomicTargetCount": 379,
+        "transitiveAllGoalPairCount": 3293,
+        "transitiveAtomicPairCount": 3104,
+        "transitivePairVectorSHA256": "da0fbb2c614bde5cd5c1c2d774161a8159152ab1328d74c37b0f54f6510edbb6",
+        "missingProjectedPrerequisitePairs": [],
+        "missingAtomicTargetOrExplicitSupportPairs": [],
+        "filteredTargetSetSHA256": "609a06c3974ce2db8e83cb2eb325feb12a58dda01e6f6b79f26e30714af24457",
+        "renderedSetSHA256": "74dfe9ed5d6948d6ef8e2f00133d7e0a3c1a2572fca5ed294b5214c147060e3b",
+        "renderedParentVectorSHA256": "484bf931de63c86b8bb8ba0fb3f9c409a02c49bb6caa68d9445f715397126c52",
+        "commonPHOffered": false,
+        "HBDigitalPHOffered": false
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HE",
+          "stage": "SekII",
+          "courseProfile": "GK"
+        },
+        "viewCompilerErrors": 0,
+        "rawTargetRoleCount": 316,
+        "explicitPrerequisiteOnlyCount": 99,
+        "renderedCount": 342,
+        "filteredTargetCount": 231,
+        "atomicTargetCount": 200,
+        "transitiveAllGoalPairCount": 1874,
+        "transitiveAtomicPairCount": 1777,
+        "transitivePairVectorSHA256": "a91038bc42047d1339896c0ad1fe64fdeef20ff0a671f2f1f64e709a7dd73297",
+        "missingProjectedPrerequisitePairs": [],
+        "missingAtomicTargetOrExplicitSupportPairs": [],
+        "filteredTargetSetSHA256": "c04878be230a5cc365f8e17edfe7e97e937816db6ad134c9add18d6a7194460f",
+        "renderedSetSHA256": "08b7c55712075870d60c2f3e264952bcdeba23b0ddba2fe4d90fcf43649a35e4",
+        "renderedParentVectorSHA256": "c94d35a267cfd3724323c5923cc98985956f393b5842b381db3351cd47f74e98",
+        "commonPHOffered": false,
+        "HBDigitalPHOffered": false
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-lk.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HE",
+          "stage": "SekII",
+          "courseProfile": "LK"
+        },
+        "viewCompilerErrors": 0,
+        "rawTargetRoleCount": 322,
+        "explicitPrerequisiteOnlyCount": 102,
+        "renderedCount": 353,
+        "filteredTargetCount": 320,
+        "atomicTargetCount": 287,
+        "transitiveAllGoalPairCount": 2648,
+        "transitiveAtomicPairCount": 2523,
+        "transitivePairVectorSHA256": "5e1615558a5c0506bc20df284b391cb5df02a8ef6b45ca7a03e00436d6df8099",
+        "missingProjectedPrerequisitePairs": [],
+        "missingAtomicTargetOrExplicitSupportPairs": [],
+        "filteredTargetSetSHA256": "834aa32089e4554a43919ae99cc98856136f4cb601c823925a4a5776ea3f392a",
+        "renderedSetSHA256": "1b7251fd29050038e2a7b34ba8f53bb6eb96363644737eedb5cfb8031acef4ba",
+        "renderedParentVectorSHA256": "d89ba49a1899ad456c3661761bff40ec11a2f238c3a581e9999e1d9d23b13c95",
+        "commonPHOffered": false,
+        "HBDigitalPHOffered": false
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-hh-gk.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HH",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        },
+        "viewCompilerErrors": 0,
+        "rawTargetRoleCount": 189,
+        "explicitPrerequisiteOnlyCount": 4,
+        "renderedCount": 233,
+        "filteredTargetCount": 189,
+        "atomicTargetCount": 185,
+        "transitiveAllGoalPairCount": 1113,
+        "transitiveAtomicPairCount": 1042,
+        "transitivePairVectorSHA256": "7a0bfa1832756c5f7aebeb30aa91778a0ae2854e1d67f382b5303096bf17b227",
+        "missingProjectedPrerequisitePairs": [],
+        "missingAtomicTargetOrExplicitSupportPairs": [],
+        "filteredTargetSetSHA256": "4ac564936332032801041e04fe1e13953b99d411f365e97de34b8645beb08370",
+        "renderedSetSHA256": "7534037f56c3fce1f18660419ac84d214438e77e729b75be4663b3c2179dfdbd",
+        "renderedParentVectorSHA256": "daf740625c4c9f0338fc975ecffd0017a23a1c8be0301e986a00af4d70bec152",
+        "commonPHOffered": false,
+        "HBDigitalPHOffered": false
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-hh-lk.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HH",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "viewCompilerErrors": 0,
+        "rawTargetRoleCount": 220,
+        "explicitPrerequisiteOnlyCount": 6,
+        "renderedCount": 267,
+        "filteredTargetCount": 220,
+        "atomicTargetCount": 215,
+        "transitiveAllGoalPairCount": 1360,
+        "transitiveAtomicPairCount": 1278,
+        "transitivePairVectorSHA256": "0b9c39b75cd051b93af4300ba90addf0cc5fcfbba1af3e17498b3ae8d16a6fa2",
+        "missingProjectedPrerequisitePairs": [],
+        "missingAtomicTargetOrExplicitSupportPairs": [],
+        "filteredTargetSetSHA256": "ed8477b42720b69575a2dfca2b0172d5b46bafbdb7e220e0da5840b31e1a12e7",
+        "renderedSetSHA256": "725e04156a7011cfef6e3e37e5f8cf566e183998e369355ef4440a3ea8c34b7a",
+        "renderedParentVectorSHA256": "13306f87f497dd31fb5b7c0de45bb5c97c998f09e36454089a4fedfbc6743811",
+        "commonPHOffered": false,
+        "HBDigitalPHOffered": false
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-mv-gk.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-MV",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        },
+        "viewCompilerErrors": 0,
+        "rawTargetRoleCount": 199,
+        "explicitPrerequisiteOnlyCount": 3,
+        "renderedCount": 254,
+        "filteredTargetCount": 199,
+        "atomicTargetCount": 195,
+        "transitiveAllGoalPairCount": 1209,
+        "transitiveAtomicPairCount": 1132,
+        "transitivePairVectorSHA256": "5f21b0e7f66c0a1330ffeb7f2527997467aa4358a2a0aa9cf5881c58d4de6695",
+        "missingProjectedPrerequisitePairs": [],
+        "missingAtomicTargetOrExplicitSupportPairs": [],
+        "filteredTargetSetSHA256": "abb2ef7810a780a73f2946c041811f855e66e57952c0818aa0820a374a987602",
+        "renderedSetSHA256": "d3f5b9155f03a8cdbd98c3b44fbc538ccf76140a191b961ba35abf2a48665eb8",
+        "renderedParentVectorSHA256": "ac790430286a967da3c1eea3c6a93e774465c127d3cec0226acb02eebabafa3e",
+        "commonPHOffered": false,
+        "HBDigitalPHOffered": false
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-mv-lk.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-MV",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "viewCompilerErrors": 0,
+        "rawTargetRoleCount": 234,
+        "explicitPrerequisiteOnlyCount": 5,
+        "renderedCount": 294,
+        "filteredTargetCount": 234,
+        "atomicTargetCount": 229,
+        "transitiveAllGoalPairCount": 1513,
+        "transitiveAtomicPairCount": 1422,
+        "transitivePairVectorSHA256": "86e07fab30573964266ad9e4a5e05ea01fc7f807b09fd7898b1a73177edf9fb7",
+        "missingProjectedPrerequisitePairs": [],
+        "missingAtomicTargetOrExplicitSupportPairs": [],
+        "filteredTargetSetSHA256": "406fa7dfc6507f3901915be1d3e9953da18a2faf41b8606dec2bbb2694e1c368",
+        "renderedSetSHA256": "8621e3567a0f893d28e8b8d5fdb592375cb49f3ec453b73ca5b9d64f7d8ad8d8",
+        "renderedParentVectorSHA256": "7dddbfe01dec98a64b8b1af4c5ab10437b97ecb1f2cd92b30193475b7f5d1a0d",
+        "commonPHOffered": false,
+        "HBDigitalPHOffered": false
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-ni-gk.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-NI",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        },
+        "viewCompilerErrors": 0,
+        "rawTargetRoleCount": 264,
+        "explicitPrerequisiteOnlyCount": 9,
+        "renderedCount": 310,
+        "filteredTargetCount": 264,
+        "atomicTargetCount": 259,
+        "transitiveAllGoalPairCount": 2286,
+        "transitiveAtomicPairCount": 2123,
+        "transitivePairVectorSHA256": "327976643b99c8fdf3731aac91ec227ed423eed18c28bdf9692e05145ef20ca7",
+        "missingProjectedPrerequisitePairs": [],
+        "missingAtomicTargetOrExplicitSupportPairs": [],
+        "filteredTargetSetSHA256": "6e58f6eb576b35b8d5a7f57723bd0a608fb3ee9d0558a124b22ac21b6d5ebd65",
+        "renderedSetSHA256": "686fd1e60469a888229f4ea82fd771ee900e7fca22cb54930c0cf6a486c6f2bd",
+        "renderedParentVectorSHA256": "964de3ec458d60172e81ee0a789d15090a8845856b6e934c24fafbd3b5ed59ba",
+        "commonPHOffered": false,
+        "HBDigitalPHOffered": false
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-ni-lk.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-NI",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "viewCompilerErrors": 0,
+        "rawTargetRoleCount": 307,
+        "explicitPrerequisiteOnlyCount": 9,
+        "renderedCount": 355,
+        "filteredTargetCount": 307,
+        "atomicTargetCount": 301,
+        "transitiveAllGoalPairCount": 2590,
+        "transitiveAtomicPairCount": 2415,
+        "transitivePairVectorSHA256": "29c60bff5cd7d57b30f7069b7479fb30b04d7ac83ac0699f994810cc89109259",
+        "missingProjectedPrerequisitePairs": [],
+        "missingAtomicTargetOrExplicitSupportPairs": [],
+        "filteredTargetSetSHA256": "0d1a3585f50ba99cbecba4bdd72f0fb526dfee9e230990ba6fcc4f245ce74110",
+        "renderedSetSHA256": "f908993817f2010e231e321813f6fc7de334b790eff2fba41fd89d7b0f1fb13e",
+        "renderedParentVectorSHA256": "5ffa200f45ff163ba2c5208dc45a1fc6da63f4d00298cfc3d89e32c6ef574fdb",
+        "commonPHOffered": true,
+        "HBDigitalPHOffered": false
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-nw-gk.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-NW",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        },
+        "viewCompilerErrors": 0,
+        "rawTargetRoleCount": 165,
+        "explicitPrerequisiteOnlyCount": 6,
+        "renderedCount": 205,
+        "filteredTargetCount": 165,
+        "atomicTargetCount": 163,
+        "transitiveAllGoalPairCount": 952,
+        "transitiveAtomicPairCount": 893,
+        "transitivePairVectorSHA256": "64e3170bd0c131aabfa136e70ba447368fbac89e01a195510fdc446b4053ec96",
+        "missingProjectedPrerequisitePairs": [],
+        "missingAtomicTargetOrExplicitSupportPairs": [],
+        "filteredTargetSetSHA256": "d7c19063ceddc38dbf2300bf1c90cb3b05a0fd9cefda36e9504ebb3bd4c950d0",
+        "renderedSetSHA256": "fc0b470d2147a9ba749a779cd49f5ac8a94e29aab85d9c605fb4c1d0360c8371",
+        "renderedParentVectorSHA256": "5c86494c48536f11c4fc4959230d071b8f44069855bb28430e3eb124502bf910",
+        "commonPHOffered": false,
+        "HBDigitalPHOffered": false
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-nw-lk.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-NW",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "viewCompilerErrors": 0,
+        "rawTargetRoleCount": 179,
+        "explicitPrerequisiteOnlyCount": 7,
+        "renderedCount": 219,
+        "filteredTargetCount": 179,
+        "atomicTargetCount": 177,
+        "transitiveAllGoalPairCount": 1005,
+        "transitiveAtomicPairCount": 944,
+        "transitivePairVectorSHA256": "753090c6e6d2edf39188e0d71c8c9bef9b31efcb32ad8b9b9bf0ba0aa9629ab7",
+        "missingProjectedPrerequisitePairs": [],
+        "missingAtomicTargetOrExplicitSupportPairs": [],
+        "filteredTargetSetSHA256": "0658e4560d7925c0a82f2dc2b910e74ec4274eb68d2c3f50ead8ef1000297779",
+        "renderedSetSHA256": "1ad813f85161f10371475202d0afdd0722acb0f7ab73aad6e58dc69aa1720756",
+        "renderedParentVectorSHA256": "711e93dca81548c9dbb5797a2615b2da3d9dd6e4f35cdc04bd9eb3c1c32afa03",
+        "commonPHOffered": false,
+        "HBDigitalPHOffered": false
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-rp-gk.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-RP",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        },
+        "viewCompilerErrors": 0,
+        "rawTargetRoleCount": 226,
+        "explicitPrerequisiteOnlyCount": 11,
+        "renderedCount": 290,
+        "filteredTargetCount": 226,
+        "atomicTargetCount": 221,
+        "transitiveAllGoalPairCount": 1615,
+        "transitiveAtomicPairCount": 1509,
+        "transitivePairVectorSHA256": "805e79dd8b69a344ffde443deca79f33ff0815a49416ca937dcb98afe3832476",
+        "missingProjectedPrerequisitePairs": [],
+        "missingAtomicTargetOrExplicitSupportPairs": [],
+        "filteredTargetSetSHA256": "7831bc3df415563937c29af5252501b5743cd7188bf6e51fded07845ba9ccd6c",
+        "renderedSetSHA256": "ff9c42a5b37554005f3a304bde12623c0185da0417f9cf497d749c9a1170a847",
+        "renderedParentVectorSHA256": "1f26ece906352879f1a821cc92684c49667569affa1682f7441b4b64afbe2abe",
+        "commonPHOffered": false,
+        "HBDigitalPHOffered": false
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-rp-lk.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-RP",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "viewCompilerErrors": 0,
+        "rawTargetRoleCount": 276,
+        "explicitPrerequisiteOnlyCount": 13,
+        "renderedCount": 347,
+        "filteredTargetCount": 276,
+        "atomicTargetCount": 270,
+        "transitiveAllGoalPairCount": 2014,
+        "transitiveAtomicPairCount": 1890,
+        "transitivePairVectorSHA256": "4981228646719bfd48aea233f37a1f75bc3cfe7464c03e130eea346fe25e83f0",
+        "missingProjectedPrerequisitePairs": [],
+        "missingAtomicTargetOrExplicitSupportPairs": [],
+        "filteredTargetSetSHA256": "a451321d4c9bc77b5f3b75ba6db7ebf6e0b3782e352ae43fbd59815c339af287",
+        "renderedSetSHA256": "24ce6b2f1285695b8135699d92ed3f4e8d7597c981047a7a6f6fe0e4f9eda9ff",
+        "renderedParentVectorSHA256": "005541eeb4d2f63834b00f2c1302235202597a208f963496cca762a09c78dbcc",
+        "commonPHOffered": false,
+        "HBDigitalPHOffered": false
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-sh-gk.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-SH",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        },
+        "viewCompilerErrors": 0,
+        "rawTargetRoleCount": 228,
+        "explicitPrerequisiteOnlyCount": 10,
+        "renderedCount": 276,
+        "filteredTargetCount": 228,
+        "atomicTargetCount": 222,
+        "transitiveAllGoalPairCount": 1639,
+        "transitiveAtomicPairCount": 1530,
+        "transitivePairVectorSHA256": "505a9bad222c7d1d40f8bd4323a3a7f2c6933b1338d1c1e010456f1a1a98da63",
+        "missingProjectedPrerequisitePairs": [],
+        "missingAtomicTargetOrExplicitSupportPairs": [],
+        "filteredTargetSetSHA256": "ff5ae45a3bc6d0646234c55c81160fd3e1813d824c7690df0be3a039c344c6a5",
+        "renderedSetSHA256": "b077ae8727eb8d41b758cbd46e7e9576e101ad2a9ee9c1a0a98b08ca7341f179",
+        "renderedParentVectorSHA256": "e9ad421676e23a8d804ab69496ce404b9f520f0df4ad507dd1c546ecbe56baf1",
+        "commonPHOffered": false,
+        "HBDigitalPHOffered": false
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-sh-lk.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-SH",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "viewCompilerErrors": 0,
+        "rawTargetRoleCount": 272,
+        "explicitPrerequisiteOnlyCount": 12,
+        "renderedCount": 324,
+        "filteredTargetCount": 272,
+        "atomicTargetCount": 265,
+        "transitiveAllGoalPairCount": 1949,
+        "transitiveAtomicPairCount": 1827,
+        "transitivePairVectorSHA256": "bcaca5efcd50465fb674be168ff1d39e1616f899ac23bb75d5382a8a4f24355c",
+        "missingProjectedPrerequisitePairs": [],
+        "missingAtomicTargetOrExplicitSupportPairs": [],
+        "filteredTargetSetSHA256": "26cf68b66efb728ea75d4855d5be62329bdcbb5eab3e3e7072f4cf399d11983b",
+        "renderedSetSHA256": "5d41e584dab5419ee2af1fb4c53a0e950a444056e32ae681a8de27f881e03f8c",
+        "renderedParentVectorSHA256": "ac1f8d58d98324c00c97a514bfb8b646553c6d156a1edf4f28126c1a2fa90836",
+        "commonPHOffered": false,
+        "HBDigitalPHOffered": false
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-sl-gk.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-SL",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        },
+        "viewCompilerErrors": 0,
+        "rawTargetRoleCount": 216,
+        "explicitPrerequisiteOnlyCount": 11,
+        "renderedCount": 274,
+        "filteredTargetCount": 216,
+        "atomicTargetCount": 211,
+        "transitiveAllGoalPairCount": 1570,
+        "transitiveAtomicPairCount": 1467,
+        "transitivePairVectorSHA256": "5149f845425e0158fca97ceea7698fa9bb8f70f55e55c1d8d30be7d8df85f4b9",
+        "missingProjectedPrerequisitePairs": [],
+        "missingAtomicTargetOrExplicitSupportPairs": [],
+        "filteredTargetSetSHA256": "d4af1247fecbcc3619e7508d57804319e7e2e80b951c32f0bb28fbd47d130eda",
+        "renderedSetSHA256": "e787800718a1bfbc6565bd5340f7efc37b78fe44cf3d5d9260657453d0b7a481",
+        "renderedParentVectorSHA256": "15ad630bc5655444eaf2bd150a9ba33f82a61e2877be56776acc6e89fcd022bf",
+        "commonPHOffered": false,
+        "HBDigitalPHOffered": false
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-sl-lk.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-SL",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "viewCompilerErrors": 0,
+        "rawTargetRoleCount": 247,
+        "explicitPrerequisiteOnlyCount": 13,
+        "renderedCount": 310,
+        "filteredTargetCount": 247,
+        "atomicTargetCount": 241,
+        "transitiveAllGoalPairCount": 1817,
+        "transitiveAtomicPairCount": 1703,
+        "transitivePairVectorSHA256": "9a509652551115deada6438bff2eb048e40e8d2426ae7c556e671fbbc0c94100",
+        "missingProjectedPrerequisitePairs": [],
+        "missingAtomicTargetOrExplicitSupportPairs": [],
+        "filteredTargetSetSHA256": "0c167352eec5215a07a43a8d06b2e7f8ddc1f5f18f5573b49c0148e1b4de0694",
+        "renderedSetSHA256": "6b5d4add5afedefdcf2123e0393fc882d01ebb833adf10a0e1923d171dba2a3c",
+        "renderedParentVectorSHA256": "eff317629af18e51071099a5975aab4aafea5758559fb15d4f13f741fc6b2a69",
+        "commonPHOffered": false,
+        "HBDigitalPHOffered": false
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-sn-gk.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-SN",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        },
+        "viewCompilerErrors": 0,
+        "rawTargetRoleCount": 230,
+        "explicitPrerequisiteOnlyCount": 10,
+        "renderedCount": 286,
+        "filteredTargetCount": 230,
+        "atomicTargetCount": 224,
+        "transitiveAllGoalPairCount": 1657,
+        "transitiveAtomicPairCount": 1547,
+        "transitivePairVectorSHA256": "9df87b8c8ac723bd0d5addc3d46a3879f0e1c56044c800fce0dfaf7360e6a360",
+        "missingProjectedPrerequisitePairs": [],
+        "missingAtomicTargetOrExplicitSupportPairs": [],
+        "filteredTargetSetSHA256": "4e74cc7cdb7864e6d80b466a82209368c7a46d8edbd105c9b4566a3eafe5f81c",
+        "renderedSetSHA256": "6088a49044363464916d3679990d4d5058def96814e8af011109bce7c9e8dc46",
+        "renderedParentVectorSHA256": "8e0b2d65e962afbfd06350a93190b3268033ed58cf6628a5bdb955ae025b79bd",
+        "commonPHOffered": false,
+        "HBDigitalPHOffered": false
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-sn-lk.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-SN",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "viewCompilerErrors": 0,
+        "rawTargetRoleCount": 271,
+        "explicitPrerequisiteOnlyCount": 12,
+        "renderedCount": 332,
+        "filteredTargetCount": 271,
+        "atomicTargetCount": 264,
+        "transitiveAllGoalPairCount": 1933,
+        "transitiveAtomicPairCount": 1812,
+        "transitivePairVectorSHA256": "bd53804b4615fd16ce799fd81147b178a92513d70aec03b1ed8a3b64a99f5273",
+        "missingProjectedPrerequisitePairs": [],
+        "missingAtomicTargetOrExplicitSupportPairs": [],
+        "filteredTargetSetSHA256": "f99af0e1d677ab6e34370ff0631f95a1447774a4759553f808a760c74c42f95a",
+        "renderedSetSHA256": "1bc9b84493061387ecc0783c6852e66c4b3f8127f657324f09171cadf1abacc2",
+        "renderedParentVectorSHA256": "81d1d324679c59371c8c7858e58b2473bd31d6ef493a46c45bddcdf8c93e53cd",
+        "commonPHOffered": false,
+        "HBDigitalPHOffered": false
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-st-gk.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-ST",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        },
+        "viewCompilerErrors": 0,
+        "rawTargetRoleCount": 198,
+        "explicitPrerequisiteOnlyCount": 4,
+        "renderedCount": 254,
+        "filteredTargetCount": 198,
+        "atomicTargetCount": 194,
+        "transitiveAllGoalPairCount": 1159,
+        "transitiveAtomicPairCount": 1088,
+        "transitivePairVectorSHA256": "17c4bac5160837920220bf10e3b0a7061f08a5931c76915791f3304bdb844ff1",
+        "missingProjectedPrerequisitePairs": [],
+        "missingAtomicTargetOrExplicitSupportPairs": [],
+        "filteredTargetSetSHA256": "1c418ea9a79c37023936b90041f845d1811ac102de066bbf6e3b1eacc8d6c304",
+        "renderedSetSHA256": "6682ee0396b87f53ff0c11b445d95a35c21bb6ea5649ef5060d6a7c313e066a4",
+        "renderedParentVectorSHA256": "75ce55b7b17a81c39f1f21b39cb7c6e06622cb279ef2ba982f51d62b42641531",
+        "commonPHOffered": false,
+        "HBDigitalPHOffered": false
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-st-lk.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-ST",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "viewCompilerErrors": 0,
+        "rawTargetRoleCount": 238,
+        "explicitPrerequisiteOnlyCount": 6,
+        "renderedCount": 299,
+        "filteredTargetCount": 238,
+        "atomicTargetCount": 233,
+        "transitiveAllGoalPairCount": 1452,
+        "transitiveAtomicPairCount": 1368,
+        "transitivePairVectorSHA256": "3bbb615fcf6502901dc1ab5bbb3f7d3b0f220eb8182ea18695ae3f0585e45f30",
+        "missingProjectedPrerequisitePairs": [],
+        "missingAtomicTargetOrExplicitSupportPairs": [],
+        "filteredTargetSetSHA256": "70982ccb23f180bf39aa76712abc40625752b72f820d93729a1f4aadb9ae426f",
+        "renderedSetSHA256": "0711b04e034ca107fe0de33531b754995c3fada570eebaec906afdec41f47439",
+        "renderedParentVectorSHA256": "ed2e61a5be86d2dc18d339e28e1c204bce7f570c911564c526ef19d451c4f2e0",
+        "commonPHOffered": false,
+        "HBDigitalPHOffered": false
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-th-gk.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-TH",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        },
+        "viewCompilerErrors": 0,
+        "rawTargetRoleCount": 207,
+        "explicitPrerequisiteOnlyCount": 5,
+        "renderedCount": 265,
+        "filteredTargetCount": 207,
+        "atomicTargetCount": 201,
+        "transitiveAllGoalPairCount": 1281,
+        "transitiveAtomicPairCount": 1200,
+        "transitivePairVectorSHA256": "37afd2557182d54ffec9ca5fba8cd3563ece89d3383f6e9ff4ee208c426d3c5d",
+        "missingProjectedPrerequisitePairs": [],
+        "missingAtomicTargetOrExplicitSupportPairs": [],
+        "filteredTargetSetSHA256": "e1233d326f5e9712b8fd931e7011f4a4350d0c86e7520b9c33879d928306cc19",
+        "renderedSetSHA256": "49ae226b448b941ea23c85fe718472a206ec89108edd4c5dd0bc6d4379e30ee1",
+        "renderedParentVectorSHA256": "854c36a00555f5bc4de331659869b132dfe4fc9ca50684264ed5c227be13bb8d",
+        "commonPHOffered": false,
+        "HBDigitalPHOffered": false
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-th-lk.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-TH",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "viewCompilerErrors": 0,
+        "rawTargetRoleCount": 240,
+        "explicitPrerequisiteOnlyCount": 7,
+        "renderedCount": 304,
+        "filteredTargetCount": 240,
+        "atomicTargetCount": 233,
+        "transitiveAllGoalPairCount": 1539,
+        "transitiveAtomicPairCount": 1447,
+        "transitivePairVectorSHA256": "a71b38b29b51c359e5adba8b603aa92578761a1bfec0c97ffe66043e801c856e",
+        "missingProjectedPrerequisitePairs": [],
+        "missingAtomicTargetOrExplicitSupportPairs": [],
+        "filteredTargetSetSHA256": "87763912f5179b593998a21611b99c0aa0210f842a3efe709f5fce16ebe9b1b4",
+        "renderedSetSHA256": "79a86fdf45b291882620b490eb9c58006cbe2182246684ee4963923a372dd333",
+        "renderedParentVectorSHA256": "146612f640aca88fa7fd47cb2b521936705396fd69b4ad168c1a90e485b2609b",
+        "commonPHOffered": false,
+        "HBDigitalPHOffered": false
+      }
+    ]
+  },
+  "normalWrites": 0,
+  "fullReportOrModelBuilds": 0,
+  "renders": 0,
+  "newDPAMVOrHumanVotes": 0
+}

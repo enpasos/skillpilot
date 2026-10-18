@@ -15,7 +15,138 @@
   },
   "method": {
     "passageExtraction": "pdftotext -raw; Kapitel 3.1/3.2 wird nach verbindlichen Sachgebiets- und Themenbereichsinhalten segmentiert.",
-    "sourceGoalExtraction": "ein Source-Ziel pro amtlichem Kompetenz- oder Inhaltsbullet; Erlaeuterungs-, Bewertungs- und Organisationsabschnitte werden nicht als fachliche Source-Ziele gezählt."
+    "sourceGoalExtraction": "ein Source-Ziel pro amtlichem Kompetenz- oder Inhaltsbullet; Erlaeuterungs-, Bewertungs- und Organisationsabschnitte werden nicht als fachliche Source-Ziele gezählt.",
+    "fourteenMethodSelectedProcessAddition": {
+      "technicalIntegration": "Authorised additive integration of independently accepted foreign author relations; no new scientific vote",
+      "candidate": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-author-20261018-v1/candidate/extraction-additions/08.DE-SH.SekII.complete-operator-additions.json",
+        "sha256": "cf748167a2fb81ebdaee05b61eb467ff9246e0122a499cfc6344b471ef7be3a7",
+        "bytes": 31725
+      },
+      "independentAcceptedRef": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/ACCEPTED.exact104-direct-partial-two-literal-three-held.json",
+        "sha256": "9958d0a23bb96b4cce0ed69f2018631764f5fe943d87ed8136ef2ba070457119",
+        "bytes": 99336
+      },
+      "retainedImmediateBeforeInventory": 165,
+      "newCompleteSelectedOperatorCells": 4,
+      "actualUnionInventory": 169,
+      "allOldSourceCellsAndPassagesExactlyRetained": true,
+      "noCompleteOfficialStandardsUniverseClaim": true,
+      "wholeSourceCoverageEstablished": false,
+      "historicalPipelineStatusBeforeThisAddition": {
+        "currentStep": "MAPPING-3",
+        "steps": [
+          {
+            "id": "MAPPING-1",
+            "label": "Original-Lehrplanpassagen extrahiert",
+            "status": "complete",
+            "dependsOn": [],
+            "checks": [
+              {
+                "id": "source-document-present",
+                "label": "Amtliche SH-Chemie-Quelle liegt lokal vor",
+                "passed": true,
+                "details": "curricula/DE/Gymnasium/input/SH/Fachanforderungen_Chemie_Sekundarstufe_2022_barrierearm.pdf"
+              },
+              {
+                "id": "expected-section-coverage",
+                "label": "Alle erwarteten SH-Chemie-Abschnitte sind als Lehrplanpassagen vorhanden",
+                "passed": true,
+                "details": "Fehlende Abschnitte: -"
+              },
+              {
+                "id": "official-source-extraction",
+                "label": "Passage-Extraction basiert auf amtlicher PDF-Quelle statt Legacy-Snapshot",
+                "passed": true,
+                "details": "Quelle: curricula/DE/Gymnasium/input/SH/Fachanforderungen_Chemie_Sekundarstufe_2022_barrierearm.pdf"
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-2",
+            "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+            "status": "complete",
+            "dependsOn": [
+              "MAPPING-1"
+            ],
+            "checks": [
+              {
+                "id": "source-goals-created",
+                "label": "Source-Ziele aus den amtlichen SH-Chemie-Bullets erzeugt",
+                "passed": true,
+                "details": "165 Source-Ziele"
+              },
+              {
+                "id": "source-goal-count-peer-baseline",
+                "label": "Source-Ziel-Anzahl ist gegen geprüfte Chemie-Inventare plausibilisiert",
+                "passed": true,
+                "details": "165 Source-Ziele; SH Sek II wird aus den verbindlichen Sachgebiets- und Themenbereichsinhalten extrahiert und liegt im Korridor der geprüften direkten Chemie-Sek-II-Inventare (BW 126, NW 154, HE 202, BB/BE 203)."
+              },
+              {
+                "id": "source-goal-ids-unique",
+                "label": "Source-Ziel-IDs sind eindeutig",
+                "passed": true,
+                "details": "Doppelte IDs: -"
+              },
+              {
+                "id": "source-goals-reference-passages",
+                "label": "Jedes Source-Ziel referenziert eine vorhandene Originalpassage",
+                "passed": true,
+                "details": "Ohne Passage: -"
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-3",
+            "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+            "status": "incomplete",
+            "dependsOn": [
+              "MAPPING-1",
+              "MAPPING-2"
+            ],
+            "checks": [
+              {
+                "id": "mapping-2-complete",
+                "label": "MAPPING-2 abgeschlossen",
+                "passed": true,
+                "details": "165 Source-Ziele liegen vor; MAPPING-3 muss nun fachlich reviewed werden."
+              },
+              {
+                "id": "m3-review-file-present",
+                "label": "M3-Review-Datei ist vorhanden",
+                "passed": true,
+                "details": "curricula/DE/Gymnasium/mapping/DE-SH/upper-secondary/sh_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json"
+              },
+              {
+                "id": "m3-review-decisions-reference-source-goals",
+                "label": "M3-Review-Entscheidungen referenzieren gueltige Source-Ziele",
+                "passed": false,
+                "details": "Wird aus der Review-Datei berechnet."
+              },
+              {
+                "id": "m3-review-targets-exist",
+                "label": "M3-Review-Ziele referenzieren vorhandene Canonical-Ziele",
+                "passed": false,
+                "details": "Wird aus der Review-Datei berechnet."
+              },
+              {
+                "id": "m3-all-source-goals-reviewed",
+                "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+                "passed": false,
+                "details": "MAPPING-3 ist noch nicht fachlich reviewed."
+              },
+              {
+                "id": "m3-all-source-goals-covered-by-canonical",
+                "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+                "passed": false,
+                "details": "MAPPING-3 ist noch nicht fachlich reviewed."
+              }
+            ]
+          }
+        ]
+      }
+    }
   },
   "qualityReview": {
     "sourceGoalCountPeerBaseline": {
@@ -30,7 +161,11 @@
     "3-2-chemie-und-leben",
     "3-2-chemie-und-umwelt",
     "3-2-chemie-und-energie",
-    "3-2-chemie-der-funktionalen-stoffe-und-materialien"
+    "3-2-chemie-der-funktionalen-stoffe-und-materialien",
+    "2.1.2 Untersuchungsdesigns bullet3",
+    "2.1.4 Entscheidungen bullet8",
+    "2.1.3 Informationen erschließen bullet1",
+    "2.1.3 Informationen erschließen bullet2"
   ],
   "pipelineStatus": {
     "currentStep": "MAPPING-3",
@@ -73,13 +208,13 @@
             "id": "source-goals-created",
             "label": "Source-Ziele aus den amtlichen SH-Chemie-Bullets erzeugt",
             "passed": true,
-            "details": "165 Source-Ziele"
+            "details": "169 actual cells = 165 retained immediate previous inventory + 4 new whole selected operators. Previous content/standard phases remain historical; no unselected standard counted."
           },
           {
             "id": "source-goal-count-peer-baseline",
-            "label": "Source-Ziel-Anzahl ist gegen geprüfte Chemie-Inventare plausibilisiert",
+            "label": "Historische Basis und neu ausgewählte vollständige Operatoren getrennt gezählt",
             "passed": true,
-            "details": "165 Source-Ziele; SH Sek II wird aus den verbindlichen Sachgebiets- und Themenbereichsinhalten extrahiert und liegt im Korridor der geprüften direkten Chemie-Sek-II-Inventare (BW 126, NW 154, HE 202, BB/BE 203)."
+            "details": "Previous peer comparisons concern their historical inventory only; original evidence retained in method.fourteenMethodSelectedProcessAddition.historicalPipelineStatusBeforeThisAddition. Current actual union 169=165+4; no full-standards benchmark."
           },
           {
             "id": "source-goal-ids-unique",
@@ -108,7 +243,7 @@
             "id": "mapping-2-complete",
             "label": "MAPPING-2 abgeschlossen",
             "passed": true,
-            "details": "165 Source-Ziele liegen vor; MAPPING-3 muss nun fachlich reviewed werden."
+            "details": "169 actual source cells exist. Historical M3 results remain scoped to their prior inventory. Current individually accepted partial relations do not prove all whole-source duties."
           },
           {
             "id": "m3-review-file-present",
@@ -132,17 +267,78 @@
             "id": "m3-all-source-goals-reviewed",
             "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
             "passed": false,
-            "details": "MAPPING-3 ist noch nicht fachlich reviewed."
+            "details": "4 newly selected whole operator cells have specific partial relations only. No new whole-source approval; all remaining verbs, stage/course/context and actual-performance duties remain open. Historical completeness is retained only in the saved previous pipeline record."
           },
           {
             "id": "m3-all-source-goals-covered-by-canonical",
             "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
             "passed": false,
-            "details": "MAPPING-3 ist noch nicht fachlich reviewed."
+            "details": "4 newly selected whole operator cells have specific partial relations only. No new whole-source approval; all remaining verbs, stage/course/context and actual-performance duties remain open. Historical completeness is retained only in the saved previous pipeline record."
           }
         ]
       }
-    ]
+    ],
+    "fourteenMethodPartialIntegration": {
+      "status": "accepted-partial-contributions-only",
+      "totalSourceGoalsActual": 169,
+      "retainedImmediateBeforeCells": 165,
+      "newCompleteSelectedOperatorCells": 4,
+      "newWholeSourceApprovals": 0,
+      "newScientificFirstDecisionsByTechnicalIntegrator": 0,
+      "independentAcceptedRef": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/ACCEPTED.exact104-direct-partial-two-literal-three-held.json",
+        "sha256": "9958d0a23bb96b4cce0ed69f2018631764f5fe943d87ed8136ef2ba070457119",
+        "bytes": 99336
+      },
+      "newSourceCellPartialBindings": [
+        {
+          "sourceGoalId": "sh-chemistry-sekii-process-standard-untersuchungsdesign-bullet3",
+          "acceptedPartialRelations": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/5",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "wholeSourceApproval": false
+        },
+        {
+          "sourceGoalId": "sh-chemistry-sekii-process-standard-b-entscheiden-bullet8",
+          "acceptedPartialRelations": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/16",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "wholeSourceApproval": false
+        },
+        {
+          "sourceGoalId": "sh-chemistry-sekii-process-standard-k-erschliessen-bullet1",
+          "acceptedPartialRelations": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/29",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "wholeSourceApproval": false
+        },
+        {
+          "sourceGoalId": "sh-chemistry-sekii-process-standard-k-erschliessen-bullet2",
+          "acceptedPartialRelations": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/30",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "wholeSourceApproval": false
+        }
+      ],
+      "historicalM3DoesNotExtendAutomaticallyToNewCells": true,
+      "wholeSourceCoverageComplete": false
+    }
   },
   "passages": [
     {
@@ -379,6 +575,78 @@
         "de-sh-chemie-sekii-fachanforderungen-2022-3-2-chemie-der-funktionalen-stoffe-und-materialien-034-e9b42b58",
         "de-sh-chemie-sekii-fachanforderungen-2022-3-2-chemie-der-funktionalen-stoffe-und-materialien-035-a76e9a63"
       ]
+    },
+    {
+      "id": "sh-chemistry-sekii-process-standard-untersuchungsdesign-bullet3:whole-primary-context",
+      "topicCode": "2.1.2 Untersuchungsdesigns bullet3",
+      "title": "Selected complete official operator; full original page context referenced",
+      "sourceDocumentKey": "SH-FA-CHEMIE-SEK-2022",
+      "text": "qualitative und quantitative experimentelle Untersuchungen – den chemischen Arbeitsweisen und Sicherheitsregeln entsprechend – durchführen, protokollieren und auswerten.",
+      "physicalPdfPages": [
+        39
+      ],
+      "sourceRef": "Schleswig-Holstein Fachanforderungen Chemie Sekundarstufe I/II 2022; physical PDF39; 2.1.2 Untersuchungsdesigns bullet3",
+      "scope": "Only this entire selected operator is newly operative. Full original primary-page context was read and remains available at the pinned official PDF; all unselected operators remain without a new binding vote.",
+      "primaryDocumentPin": {
+        "path": "curricula/DE/Gymnasium/input/SH/Fachanforderungen_Chemie_Sekundarstufe_2022_barrierearm.pdf",
+        "sha256": "ab56f18400f427991d6c7a7fba64be3e027c2a48c2d7d0c2c42f85db690981f9",
+        "bytes": 3120998
+      },
+      "sourceStageCourseAndContext": "SH Fachanforderungen2022 SekII complete unnumbered operator in2.1.2/2.1.3/2.1.4 table, physical=printed39. Retain whole course/content demands and differentiated depth; no entire-course equivalence."
+    },
+    {
+      "id": "sh-chemistry-sekii-process-standard-b-entscheiden-bullet8:whole-primary-context",
+      "topicCode": "2.1.4 Entscheidungen bullet8",
+      "title": "Selected complete official operator; full original page context referenced",
+      "sourceDocumentKey": "SH-FA-CHEMIE-SEK-2022",
+      "text": "grundlegende Aspekte zu Gefahren und Sicherheit in Labor und Alltag beurteilen und daraus begründet Handlungsoptionen ableiten.",
+      "physicalPdfPages": [
+        43
+      ],
+      "sourceRef": "Schleswig-Holstein Fachanforderungen Chemie Sekundarstufe I/II 2022; physical PDF43; 2.1.4 Entscheidungen bullet8",
+      "scope": "Only this entire selected operator is newly operative. Full original primary-page context was read and remains available at the pinned official PDF; all unselected operators remain without a new binding vote.",
+      "primaryDocumentPin": {
+        "path": "curricula/DE/Gymnasium/input/SH/Fachanforderungen_Chemie_Sekundarstufe_2022_barrierearm.pdf",
+        "sha256": "ab56f18400f427991d6c7a7fba64be3e027c2a48c2d7d0c2c42f85db690981f9",
+        "bytes": 3120998
+      },
+      "sourceStageCourseAndContext": "SH Fachanforderungen2022 SekII complete unnumbered operator in2.1.2/2.1.3/2.1.4 table, physical=printed43. Retain whole course/content demands and differentiated depth; no entire-course equivalence."
+    },
+    {
+      "id": "sh-chemistry-sekii-process-standard-k-erschliessen-bullet1:whole-primary-context",
+      "topicCode": "2.1.3 Informationen erschließen bullet1",
+      "title": "Selected complete official operator; full original page context referenced",
+      "sourceDocumentKey": "SH-FA-CHEMIE-SEK-2022",
+      "text": "zu chemischen Sachverhalten zielgerichtet in analogen und digitalen Medien recherchieren und passende Quellen für ihre Zwecke auswählen",
+      "physicalPdfPages": [
+        41
+      ],
+      "sourceRef": "Schleswig-Holstein Fachanforderungen Chemie Sekundarstufe I/II 2022; physical PDF41; 2.1.3 Informationen erschließen bullet1",
+      "scope": "Only this entire selected operator is newly operative. Full original primary-page context was read and remains available at the pinned official PDF; all unselected operators remain without a new binding vote.",
+      "primaryDocumentPin": {
+        "path": "curricula/DE/Gymnasium/input/SH/Fachanforderungen_Chemie_Sekundarstufe_2022_barrierearm.pdf",
+        "sha256": "ab56f18400f427991d6c7a7fba64be3e027c2a48c2d7d0c2c42f85db690981f9",
+        "bytes": 3120998
+      },
+      "sourceStageCourseAndContext": "SH Fachanforderungen2022 SekII complete unnumbered operator in2.1.2/2.1.3/2.1.4 table, physical=printed41. Retain whole course/content demands and differentiated depth; no entire-course equivalence."
+    },
+    {
+      "id": "sh-chemistry-sekii-process-standard-k-erschliessen-bullet2:whole-primary-context",
+      "topicCode": "2.1.3 Informationen erschließen bullet2",
+      "title": "Selected complete official operator; full original page context referenced",
+      "sourceDocumentKey": "SH-FA-CHEMIE-SEK-2022",
+      "text": "relevante und aussagekräftige Informationen und Daten zu chemischen Sachverhalten und anwendungsbezogenen Fragestellungen auswählen und Informationen aus Quellen mit verschiedenen, auch komplexen Darstellungsformen erschließen",
+      "physicalPdfPages": [
+        41
+      ],
+      "sourceRef": "Schleswig-Holstein Fachanforderungen Chemie Sekundarstufe I/II 2022; physical PDF41; 2.1.3 Informationen erschließen bullet2",
+      "scope": "Only this entire selected operator is newly operative. Full original primary-page context was read and remains available at the pinned official PDF; all unselected operators remain without a new binding vote.",
+      "primaryDocumentPin": {
+        "path": "curricula/DE/Gymnasium/input/SH/Fachanforderungen_Chemie_Sekundarstufe_2022_barrierearm.pdf",
+        "sha256": "ab56f18400f427991d6c7a7fba64be3e027c2a48c2d7d0c2c42f85db690981f9",
+        "bytes": 3120998
+      },
+      "sourceStageCourseAndContext": "SH Fachanforderungen2022 SekII complete unnumbered operator in2.1.2/2.1.3/2.1.4 table, physical=printed41. Retain whole course/content demands and differentiated depth; no entire-course equivalence."
     }
   ],
   "sourceGoals": [
@@ -4659,17 +4927,197 @@
         "passageId": "de-sh-chemie-sekii-fachanforderungen-2022:3-2-chemie-der-funktionalen-stoffe-und-materialien",
         "label": "3.2 Chemie der funktionalen Stoffe und Materialien, S. 71: Syntheseplanung"
       },
-      "courseLevel": "GK_LK",
+      "courseLevel": "LK",
       "tags": [
         "subject:Chemie",
         "jurisdiction:DE-SH",
         "stage:SekII",
         "section:3-2-chemie-der-funktionalen-stoffe-und-materialien",
-        "courseLevel:GK_LK"
+        "courseLevel:LK"
       ],
       "metadata": {
         "extractionMethod": "pdftotext-raw-official-pdf-bullet-extraction",
         "sectionCode": "3-2-chemie-der-funktionalen-stoffe-und-materialien"
+      }
+    },
+    {
+      "id": "sh-chemistry-sekii-process-standard-untersuchungsdesign-bullet3",
+      "passageId": "sh-chemistry-sekii-process-standard-untersuchungsdesign-bullet3:whole-primary-context",
+      "topicCode": "2.1.2 Untersuchungsdesigns bullet3",
+      "title": "2.1.2 Untersuchungsdesigns bullet3: qualitative und quantitative experimentelle Untersuchungen – den chemischen Arbeitsweisen und Sicherheitsregeln entsprechend – durchführen, protokollieren und auswerten.",
+      "description": "qualitative und quantitative experimentelle Untersuchungen – den chemischen Arbeitsweisen und Sicherheitsregeln entsprechend – durchführen, protokollieren und auswerten.",
+      "sourceDocumentKey": "SH-FA-CHEMIE-SEK-2022",
+      "sourceText": "qualitative und quantitative experimentelle Untersuchungen – den chemischen Arbeitsweisen und Sicherheitsregeln entsprechend – durchführen, protokollieren und auswerten.",
+      "parentBulletText": "qualitative und quantitative experimentelle Untersuchungen – den chemischen Arbeitsweisen und Sicherheitsregeln entsprechend – durchführen, protokollieren und auswerten.",
+      "sourceRef": "Schleswig-Holstein Fachanforderungen Chemie Sekundarstufe I/II 2022; physical PDF39; 2.1.2 Untersuchungsdesigns bullet3",
+      "sourceSpan": {
+        "passageId": "sh-chemistry-sekii-process-standard-untersuchungsdesign-bullet3:whole-primary-context",
+        "label": "2.1.2 Untersuchungsdesigns bullet3, physical PDF39"
+      },
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompleteOperatorClause",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekII",
+        "course:GK_LK"
+      ],
+      "metadata": {
+        "localLocatorLabel": "2.1.2 Untersuchungsdesigns bullet3",
+        "officiallyNumbered": false,
+        "physicalPdfPage": 39,
+        "extractionMethod": "Own author read complete primary operator and whole page; line wrapping normalized. Inactive, independent review required; no whole-source approval.",
+        "stageCourseBoundary": "SH Fachanforderungen2022 SekII complete unnumbered operator in2.1.2/2.1.3/2.1.4 table, physical=printed39. Retain whole course/content demands and differentiated depth; no entire-course equivalence.",
+        "currentAcceptedPartialRelations": {
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+            "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248",
+            "bytes": 731348
+          },
+          "bindings": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/5",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "authorInactiveWordingIsHistoricalSnapshot": true,
+          "wholeSourceApproval": false
+        }
+      }
+    },
+    {
+      "id": "sh-chemistry-sekii-process-standard-b-entscheiden-bullet8",
+      "passageId": "sh-chemistry-sekii-process-standard-b-entscheiden-bullet8:whole-primary-context",
+      "topicCode": "2.1.4 Entscheidungen bullet8",
+      "title": "2.1.4 Entscheidungen bullet8: grundlegende Aspekte zu Gefahren und Sicherheit in Labor und Alltag beurteilen und daraus begründet Handlungsoptionen ableiten.",
+      "description": "grundlegende Aspekte zu Gefahren und Sicherheit in Labor und Alltag beurteilen und daraus begründet Handlungsoptionen ableiten.",
+      "sourceDocumentKey": "SH-FA-CHEMIE-SEK-2022",
+      "sourceText": "grundlegende Aspekte zu Gefahren und Sicherheit in Labor und Alltag beurteilen und daraus begründet Handlungsoptionen ableiten.",
+      "parentBulletText": "grundlegende Aspekte zu Gefahren und Sicherheit in Labor und Alltag beurteilen und daraus begründet Handlungsoptionen ableiten.",
+      "sourceRef": "Schleswig-Holstein Fachanforderungen Chemie Sekundarstufe I/II 2022; physical PDF43; 2.1.4 Entscheidungen bullet8",
+      "sourceSpan": {
+        "passageId": "sh-chemistry-sekii-process-standard-b-entscheiden-bullet8:whole-primary-context",
+        "label": "2.1.4 Entscheidungen bullet8, physical PDF43"
+      },
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompleteOperatorClause",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekII",
+        "course:GK_LK"
+      ],
+      "metadata": {
+        "localLocatorLabel": "2.1.4 Entscheidungen bullet8",
+        "officiallyNumbered": false,
+        "physicalPdfPage": 43,
+        "extractionMethod": "Own author read complete primary operator and whole page; line wrapping normalized. Inactive, independent review required; no whole-source approval.",
+        "stageCourseBoundary": "SH Fachanforderungen2022 SekII complete unnumbered operator in2.1.2/2.1.3/2.1.4 table, physical=printed43. Retain whole course/content demands and differentiated depth; no entire-course equivalence.",
+        "currentAcceptedPartialRelations": {
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+            "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248",
+            "bytes": 731348
+          },
+          "bindings": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/16",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "authorInactiveWordingIsHistoricalSnapshot": true,
+          "wholeSourceApproval": false
+        }
+      }
+    },
+    {
+      "id": "sh-chemistry-sekii-process-standard-k-erschliessen-bullet1",
+      "passageId": "sh-chemistry-sekii-process-standard-k-erschliessen-bullet1:whole-primary-context",
+      "topicCode": "2.1.3 Informationen erschließen bullet1",
+      "title": "2.1.3 Informationen erschließen bullet1: zu chemischen Sachverhalten zielgerichtet in analogen und digitalen Medien recherchieren und passende Quellen für ihre Zwecke auswählen",
+      "description": "zu chemischen Sachverhalten zielgerichtet in analogen und digitalen Medien recherchieren und passende Quellen für ihre Zwecke auswählen",
+      "sourceDocumentKey": "SH-FA-CHEMIE-SEK-2022",
+      "sourceText": "zu chemischen Sachverhalten zielgerichtet in analogen und digitalen Medien recherchieren und passende Quellen für ihre Zwecke auswählen",
+      "parentBulletText": "zu chemischen Sachverhalten zielgerichtet in analogen und digitalen Medien recherchieren und passende Quellen für ihre Zwecke auswählen",
+      "sourceRef": "Schleswig-Holstein Fachanforderungen Chemie Sekundarstufe I/II 2022; physical PDF41; 2.1.3 Informationen erschließen bullet1",
+      "sourceSpan": {
+        "passageId": "sh-chemistry-sekii-process-standard-k-erschliessen-bullet1:whole-primary-context",
+        "label": "2.1.3 Informationen erschließen bullet1, physical PDF41"
+      },
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompleteOperatorClause",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekII",
+        "course:GK_LK"
+      ],
+      "metadata": {
+        "localLocatorLabel": "2.1.3 Informationen erschließen bullet1",
+        "officiallyNumbered": false,
+        "physicalPdfPage": 41,
+        "extractionMethod": "Own author read complete primary operator and whole page; line wrapping normalized. Inactive, independent review required; no whole-source approval.",
+        "stageCourseBoundary": "SH Fachanforderungen2022 SekII complete unnumbered operator in2.1.2/2.1.3/2.1.4 table, physical=printed41. Retain whole course/content demands and differentiated depth; no entire-course equivalence.",
+        "currentAcceptedPartialRelations": {
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+            "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248",
+            "bytes": 731348
+          },
+          "bindings": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/29",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "authorInactiveWordingIsHistoricalSnapshot": true,
+          "wholeSourceApproval": false
+        }
+      }
+    },
+    {
+      "id": "sh-chemistry-sekii-process-standard-k-erschliessen-bullet2",
+      "passageId": "sh-chemistry-sekii-process-standard-k-erschliessen-bullet2:whole-primary-context",
+      "topicCode": "2.1.3 Informationen erschließen bullet2",
+      "title": "2.1.3 Informationen erschließen bullet2: relevante und aussagekräftige Informationen und Daten zu chemischen Sachverhalten und anwendungsbezogenen Fragestellungen auswählen und Informationen aus Quellen mit verschiedenen, auch komplexen Darstellungsformen erschließen",
+      "description": "relevante und aussagekräftige Informationen und Daten zu chemischen Sachverhalten und anwendungsbezogenen Fragestellungen auswählen und Informationen aus Quellen mit verschiedenen, auch komplexen Darstellungsformen erschließen",
+      "sourceDocumentKey": "SH-FA-CHEMIE-SEK-2022",
+      "sourceText": "relevante und aussagekräftige Informationen und Daten zu chemischen Sachverhalten und anwendungsbezogenen Fragestellungen auswählen und Informationen aus Quellen mit verschiedenen, auch komplexen Darstellungsformen erschließen",
+      "parentBulletText": "relevante und aussagekräftige Informationen und Daten zu chemischen Sachverhalten und anwendungsbezogenen Fragestellungen auswählen und Informationen aus Quellen mit verschiedenen, auch komplexen Darstellungsformen erschließen",
+      "sourceRef": "Schleswig-Holstein Fachanforderungen Chemie Sekundarstufe I/II 2022; physical PDF41; 2.1.3 Informationen erschließen bullet2",
+      "sourceSpan": {
+        "passageId": "sh-chemistry-sekii-process-standard-k-erschliessen-bullet2:whole-primary-context",
+        "label": "2.1.3 Informationen erschließen bullet2, physical PDF41"
+      },
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompleteOperatorClause",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekII",
+        "course:GK_LK"
+      ],
+      "metadata": {
+        "localLocatorLabel": "2.1.3 Informationen erschließen bullet2",
+        "officiallyNumbered": false,
+        "physicalPdfPage": 41,
+        "extractionMethod": "Own author read complete primary operator and whole page; line wrapping normalized. Inactive, independent review required; no whole-source approval.",
+        "stageCourseBoundary": "SH Fachanforderungen2022 SekII complete unnumbered operator in2.1.2/2.1.3/2.1.4 table, physical=printed41. Retain whole course/content demands and differentiated depth; no entire-course equivalence.",
+        "currentAcceptedPartialRelations": {
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+            "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248",
+            "bytes": 731348
+          },
+          "bindings": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/30",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "authorInactiveWordingIsHistoricalSnapshot": true,
+          "wholeSourceApproval": false
+        }
       }
     }
   ]

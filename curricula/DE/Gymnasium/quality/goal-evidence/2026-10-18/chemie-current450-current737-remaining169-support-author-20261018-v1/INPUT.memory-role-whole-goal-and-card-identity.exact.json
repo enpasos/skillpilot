@@ -1,0 +1,87 @@
+{
+  "canonicalPin": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "sha256": "e9328a381969cc49c794ba8751a4f9be817e7c180f7a0e01a1dce6e341fa99b7",
+    "bytes": 5257391
+  },
+  "wholeCurrentMemoryGoal": {
+    "id": "1e519951-9850-5a07-ac82-d9f0075e3d05",
+    "title": "Lernkarten - Atombau und Bindung",
+    "titleEn": "Flashcards - Atomic Structure and Bonding",
+    "description": "Die lernende Person kann zentrale Begriffe zu Atombau, Bindungsarten, Molekülgeometrie und Wechselwirkungen mithilfe von Lernkarten sicher abrufen.",
+    "descriptionEn": "The learner can reliably recall core concepts of atomic structure, bonding, molecular geometry, and intermolecular interactions using flashcards.",
+    "weight": 0.5,
+    "tags": [
+      "GK",
+      "LK",
+      "srs-deck:de_gymnasium_chemistry_bonding_structure",
+      "memorization"
+    ],
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "extendedData": {
+      "vocabularySource": "/data/de_gymnasium_chemistry_flashcards_bonding_structure.de.json"
+    },
+    "contains": [],
+    "requires": [
+      "72236f2c-771e-4ab6-933a-e549ee49d15b",
+      "e9d74940-1e0e-4511-9718-4851f49ad7a5",
+      "67cd332f-9db7-50e1-87f6-172ef3714300"
+    ],
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-chemistry",
+      "demandLevel": "AB1",
+      "processCompetencies": [],
+      "guidingIdeas": [],
+      "phase": "GLOBAL",
+      "area": "Atombau und Bindung"
+    },
+    "nodeKind": "memory",
+    "type": "atomic"
+  },
+  "sourceDeck": {
+    "path": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_chemistry_flashcards_bonding_structure.de.json",
+    "sha256": "776ecb4581a4d9d304e032e9bb06dc15cf75c88dc96899382e2b5ce62eafb389",
+    "bytes": 4603
+  },
+  "publishedDataCopy": {
+    "path": "app/public/data/de_gymnasium_chemistry_flashcards_bonding_structure.de.json",
+    "sha256": "776ecb4581a4d9d304e032e9bb06dc15cf75c88dc96899382e2b5ce62eafb389",
+    "bytes": 4603
+  },
+  "deckId": "de_gymnasium_chemistry_bonding_structure",
+  "cardCount": 9,
+  "bothCopiesByteExact": true,
+  "noCardOrSelectionTagChanges": true,
+  "proposedViews": [
+    "curricula/DE/Gymnasium/composition-views/chemie/de-bw-gk.view.json",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-bw-lk.view.json",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-hb-gk.view.json",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-hb-lk.view.json",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-he-lk.view.json",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-ni-gk.view.json",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-ni-lk.view.json"
+  ],
+  "declaredDependency": "Salt-class cluster254f7a85 requires bonding cluster1e803ef8; inherited requirement plus required-cluster expansion includes this recall descendant. No edge is introduced.",
+  "explicitMemoryRationale": "Preserve nodeKind memory, authoritative semantic kind memory, memorization/srs-deck tags, vocabulary source, all cards/selection tags and three existing requires. All eight entries are prerequisiteOnly and remain nonrendered. Shared global recall state is unchanged; mastery/completion still follows the existing due-card/Verified Recall rules. No automatic completion, skipping, new learner target or content-atom reclassification is introduced.",
+  "normalWrites": 0
+}

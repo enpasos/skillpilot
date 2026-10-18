@@ -1,0 +1,28 @@
+{
+  "status": "LOCAL_AUTHOR_CANDIDATE_COMPLETE_NOT_RELEASED",
+  "checkedAtUTC": "2026-10-18T08:59:06.906647+00:00",
+  "commands": [
+    {
+      "command": "python curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-T5-terminal-exams-author-20261018-v2/tools/check-finite-v2.py",
+      "exitCode": 0,
+      "result": "PASS_BOUNDED_AUTHOR_STRUCTURE_MATERIAL_BINDING_CHECK"
+    },
+    {
+      "command": "app/node_modules/.bin/tsx curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-T5-terminal-exams-author-20261018-v2/tools/check-finite-projections.ts",
+      "exitCode": 0,
+      "result": "PASS_ACTUAL_PROJECTION: all36 Chemistry views, no leaks or old target changes"
+    },
+    {
+      "command": "app/node_modules/.bin/tsx curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-T5-terminal-exams-author-20261018-v2/tools/check-finite-task-markdown.ts",
+      "exitCode": 0,
+      "result": "PASS_FINITE_INSTALLED_MARKDOWN_STACK_SSR:32 DE/EN task/solution strings"
+    }
+  ],
+  "normalWrites": 0,
+  "broadBuilds": 0,
+  "newIndependentVotesClaimed": 0,
+  "actualLearnerExecution": false,
+  "localSafetyRelease": false,
+  "humanApproval": false,
+  "humanTrial": false
+}

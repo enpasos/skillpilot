@@ -1,0 +1,32 @@
+// SPDX-License-Identifier: Apache-2.0
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync,readdirSync,existsSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import {expandGoalBookSourceAtlasReceipt} from '../../../../../../../app/scripts/goalBookSourceAtlasInputs';
+const O='curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-source-atlas413-checkpoint-technical-20261018-v1/';
+assert(!existsSync(O+'SEAL.technical-checkpoint.json'));
+const read=(p:string)=>JSON.parse(readFileSync(p,'utf8'));
+const pin=(path:string)=>{const b=readFileSync(path);return{path,sha256:createHash('sha256').update(b).digest('hex'),bytes:b.length}};
+const dump=(name:string,x:any)=>writeFileSync(O+name,JSON.stringify(x,null,2)+'\n');
+const cfg=read('app/scripts/config/goal-books/de-gym-chemistry-national-atlas.inputs.json');
+const receiptPath=cfg.outputDirectory+'/source-projection.receipt.json',old=expandGoalBookSourceAtlasReceipt(read(receiptPath));assert.equal(old.counts.publishedCurricularAtomicGoals,410);
+const diagnostic=read('tmp/chemie450-checkpoint-atlas413-measurement.json'),candidate=read('tmp/chemie450-checkpoint-atlas413-candidate-receipt.json');
+const guards=candidate.inputBindings.map((p:any)=>{const actual=pin(p.path);assert.equal('sha256:'+actual.sha256,p.sha256);return actual});
+for(const p of ['curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json','app/scripts/buildGoalBookSourceAtlasInputs.ts','app/scripts/goalBookSourceAtlasInputs.ts'])guards.push(pin(p));
+const witnesses=diagnostic.witnesses.map((w:any)=>{
+ const extraction=read(w.sourceExtractionPath),index=extraction.sourceGoals.findIndex((s:any)=>s.id===w.sourceGoalId),source=extraction.sourceGoals[index],mapping=read(w.mappingPath);
+ assert(source);const edge=mapping.mappings.filter((m:any)=>m.legacyGoalId===w.sourceGoalId&&m.canonicalGoalId===w.goalId);assert.equal(edge.length,1);
+ const decision=mapping.decisions.find((d:any)=>d.sourceGoalId===w.sourceGoalId);assert.equal(decision.decision,'mapped');assert(decision.canonicalGoalIds.includes(w.goalId));
+ const sn=w.scope.includes('DE-SN'),rp=w.scope.includes('DE-RP');assert.equal(source.courseLevel,rp?'GK_LK':sn?'GK':'LK');
+ if(!sn)assert.equal(source.sourceScopeExact.officialOptional,rp);
+ return{...w,sourceGoalLocator:{path:w.sourceExtractionPath,jsonPointer:'/sourceGoals/'+index,wholeSourceGoalSHA256:createHash('sha256').update(JSON.stringify(source)).digest('hex')},sourceGoalCourseLevel:source.courseLevel,sourceGoalTopicCode:source.topicCode,sourceSpan:source.sourceSpan,mappingMatchType:edge[0].matchType,officialOptional:rp||sn,actualLearnerChoiceClaim:false,primaryPDF:{path:extraction.sourceDocument.path,physicalPage:rp?38:sn?41:58,printedPage:rp?38:sn?29:53,actuallyRead:'pdftotext -layout of the current local primary PDF page; existing raster/source reviews separately retained'},boundary:rp?'Quality-control component in optional W5h unit2.3, GK/LK; other elective duties remain separate':sn?'J11 GK optional Wahlbereich1 explaining film fixing by complexation; adjacent personal experiment and the whole unit remain separate':'Additional elevated-level right-column reaction-type condition comparison, LK; adjacent structure/practical duties remain separate'};
+});
+const B='curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/';
+const reviewPaths=[B+'chemie-current450-T2-reviewed-nineteen-normal-integration-technical-20261018-v1/REVIEW.bounded-source-scope-phase-and-view-interface.root.json',B+'chemie-current450-T2-reviewed-nineteen-normal-integration-technical-20261018-v1/RECEIPT.actual-T2-nineteen-assessment-and-source-integration.json',B+'chemie-current450-RP-elective23-source-independent-a-20261018-v1/FIRST.actual-RP-elective23-partial-source-fit-independent-a.json',B+'chemie-current450-T3-photometry-material-independent-a-20261018-v1/REVIEW.SN-paired-source-course-prerequisite-placement.independent-a.json',B+'chemie-current450-SN-film-source-binding-normal-integration-technical-20261018-v1/RECEIPT.actual-existing-source-fit-binding-integration.json',B+'chemie-current450-SN-reviewed-pair-normal-integration-technical-20261018-v1/RECEIPT.actual-source-matched-SN-pair-integration.json',B+'chemie-current450-current737-original-source-audit-technical-20261018-v1/DIAGNOSIS.actual-stock-Chemistry-source-course-rules.json'];
+for(const p of reviewPaths)guards.push(pin(p));
+const legacyIds=['a25a19ed-aec3-59cc-ae28-31d98746cb9d','cd9ec99b-b694-5673-863c-55528e31250a','8b2d351e-e44f-5385-9b89-13ef54b5918f','0e3f849b-133d-57da-882c-0d67c3eb05b8','cc5a626a-dc85-57e2-b422-259f92901545','2d16528c-1424-5999-b3d2-af4593a147fc','4955f745-b946-5d3d-82d6-5e52dc8549a3','f57d53b0-5bdf-5998-81f4-8bfb2fc5bde7','b7b5df21-78f3-5408-89f1-36deed450695','c61b2a7a-fb0f-5a76-92e9-771c789fa816'];
+const test=readFileSync('app/scripts/testGoalBookSourceAtlasInputs.ts','utf8'),start=test.indexOf('  const newChemistrySourceWitnesses = ['),end=test.indexOf('  const newChemistrySourceGoalIds = ',start);assert(start>0&&end>start);
+const outputs=[...readdirSync(cfg.outputDirectory).map(n=>cfg.outputDirectory+'/'+n),cfg.manifestPath,cfg.navigationViewPath].map(pin);
+dump('BEFORE.stock410-and-source-input-pins.json',{originalStockReceipt:pin(receiptPath),oldCounts:old.counts,oldPublishedGoalIds:[...new Set(old.scopes.flatMap((s:any)=>s.goalIds))].sort(),oldOmittedGoals:old.omittedGoals,oldUnresolvedSourceScopes:old.unresolvedSourceScopes,legacy10GoalIds:legacyIds,legacy10Witnesses:old.scopes.flatMap((s:any)=>s.witnesses.filter((w:any)=>legacyIds.includes(w.goalId)).map((w:any)=>({scope:s.key,...w}))),legacy10TestMatrixSourceSHA256:createHash('sha256').update(test.slice(start,end)).digest('hex'),stockOutputPins:outputs,frozenInputPins:guards});
+dump('READ.actual-four-primary-source-scope-witnesses-and-existing-reviews.json',{role:'TECHNICAL_REFRESH_OF_PREVIOUSLY_REVIEWED_SOURCE_BINDINGS_NOT_NEW_SOURCE_REVIEW',witnesses,existingReviewedAuthorityPins:reviewPaths.map(pin),expectedAddedGoalIds:diagnostic.added,expectedRemovedGoalIds:[],sourceHoldCountUnchanged:496,newScientificWholeSourceOrHumanApproval:false});
+console.log(JSON.stringify({before:old.counts,witnesses:witnesses.length,guardPins:guards.length,normalWrites:0}));

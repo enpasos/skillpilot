@@ -1,0 +1,116 @@
+{
+  "status": "READ_ONLY_CHEMISTRY_SOURCE_COURSE_EVALUATION_COMPLETE",
+  "rules": [
+    {
+      "id": "CQR-000",
+      "status": "pass",
+      "summary": "All 16 declared Bundesland source inventories are readable, linked to official source URLs, and fully registered.",
+      "metrics": {
+        "totalJurisdictions": 16,
+        "completeSourceJurisdictions": 16,
+        "emptySourceJurisdictions": 0,
+        "missingReadableSourceInventoryJurisdictions": 0,
+        "originalSourceUrlIssues": 0,
+        "sourceExtractedGoals": 6134,
+        "sourceOriginalGoals": 6134,
+        "sourceUnregisteredGoals": 0,
+        "sourceExtractedAtomicGoals": 6134,
+        "sourceUnregisteredAtomicGoals": 0
+      }
+    },
+    {
+      "id": "CQR-003",
+      "status": "pass",
+      "summary": "All 16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.",
+      "metrics": {
+        "totalJurisdictions": 16,
+        "coveredJurisdictions": 16,
+        "sourceBackedJurisdictions": 16,
+        "sourceCompleteJurisdictions": 16,
+        "fullCoverageJurisdictions": 16,
+        "uncoveredJurisdictions": 0,
+        "incompleteJurisdictions": 0,
+        "unsupportedAssignmentJurisdictions": 0,
+        "sourceUnmappedJurisdictions": 0,
+        "unsupportedAssignedAtomicGoals": 0,
+        "unmappedSourceAtomicGoals": 0,
+        "sourceAtomicGoals": 6134,
+        "sourceMappedToViewAtomicGoals": 6134,
+        "sourceOriginalGoals": 6134,
+        "sourceFullyCoveredOriginalGoals": 6134,
+        "sourcePartiallyCoveredOriginalGoals": 0,
+        "sourceUncoveredOriginalGoals": 0,
+        "surrogateBackedAtomicGoals": 31,
+        "partialSourceLinkedAtomicGoals": 0,
+        "warningedJurisdictions": 0,
+        "cleanJurisdictions": 16,
+        "partialJurisdictions": 0,
+        "errorJurisdictions": 0,
+        "minSourceBackedAtomicGoals": 144,
+        "maxVisibleAtomicGoals": 349,
+        "maxSourceBackedAtomicGoals": 349,
+        "totalAtomicGoals": 379
+      }
+    },
+    {
+      "id": "CQR-004",
+      "status": "pass",
+      "summary": "Course-level mapping is clean for 1881 upper-secondary source-to-canonical mapping edge(s), including 32 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+      "metrics": {
+        "configuredMappingFiles": 50,
+        "sourceGoals": 4287,
+        "sourceGoalsWithCourseLevel": 4287,
+        "gkLkSourceGoals": 2384,
+        "lkSourceGoals": 1410,
+        "unspecifiedSourceGoals": 406,
+        "checkedMappingEdges": 1881,
+        "defaultedUnspecifiedMappingEdges": 172,
+        "reviewedCourseLevelExceptions": 32,
+        "mismatches": 0,
+        "missingSourceGoals": 0,
+        "missingTargetGoals": 0,
+        "unmappedCourseLevelSourceGoals": 0
+      }
+    },
+    {
+      "id": "CQR-005",
+      "status": "pass",
+      "summary": "Source-goal counts are inside the configured peer-baseline corridor or explicitly reviewed.",
+      "metrics": {
+        "sourceExtractionSources": 32,
+        "peerBaselineChecks": 26,
+        "failedPeerBaselineChecks": 0,
+        "granularityChecks": 0,
+        "failedGranularityChecks": 0
+      }
+    },
+    {
+      "id": "CQR-501",
+      "status": "warn",
+      "summary": "1 active and 0 obsolete accepted applicability warning(s) need review; 2670 partial-only diagnostic finding(s) are non-blocking.",
+      "metrics": {
+        "activeWarnings": 1,
+        "rawActiveWarnings": 1,
+        "diagnosticPartialOnlyWarnings": 2670,
+        "acceptedWarnings": 87,
+        "obsoleteAcceptedWarnings": 0
+      },
+      "details": [
+        "non-blocking partial-only applicability diagnostics APV-202: 2670",
+        "active warning type APV-201: 1",
+        "diagnostic finding type APV-202: 2670",
+        "accepted current warning type APV-201: 87"
+      ]
+    }
+  ],
+  "unsupportedOccurrences": 0,
+  "unsupportedUniqueGoals": 0,
+  "compilerSummary": {
+    "goals": 737,
+    "errors": 0,
+    "warnings": 88,
+    "diagnostics": 2670
+  },
+  "inputPinsChecked": 169,
+  "normalWrites": 0
+}

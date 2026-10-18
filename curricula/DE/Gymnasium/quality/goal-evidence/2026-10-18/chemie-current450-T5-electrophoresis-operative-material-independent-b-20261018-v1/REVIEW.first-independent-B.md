@@ -1,0 +1,30 @@
+<!-- SPDX-License-Identifier: CC-BY-4.0 -->
+# Electrophoresis operative card: independent B FIRST
+
+**Bounded material correction required: T5-M-B-01.** I independently read the entire current `37374918-78c9-577f-9827-695d111ab22d` goal and whole P record, both complete DE/EN methods, their embedded copies, supervisor U/B preparation and source-boundary receipt. No current A verdict was read before this FIRST. Exact input/seal equality and arithmetic facts are recorded in `CHECK.exact-inputs-and-independent-arithmetic.json`; these checks do not generate this judgment.
+
+## Required correction
+
+For the actual Mini-Sub Cell GT, [the primary manual](https://www.bio-rad.com/sites/default/files/2024-07/10016027.pdf) gives 265–320 mL base buffer volume depending on the gel (Table4, physicalPDFp11/printedp5), and 2–6 mm overlay (casting step8, physicalPDFp16/printedp10). The card supplies at least150 mL, makes150 mL its start threshold and gives1–2 mm overlay. These figures do not provision or describe the named chamber consistently. Although the separate coverage check can prevent an underfilled start, it does not repair the stated supply/threshold. Correct the actual equipment fill, matched-buffer quantity and overlay in both method files and embedded strings. Do not turn a corrected fill into a manufacturer validation of the whole dye adaptation.
+
+## Actual executable-method and scientific reading
+
+The instrument is fully identified, enclosed and unmodified, with intact lid/interlock and compatible ground-isolated supply. Power is off and output leads disconnected before access, including the two temperature interruptions. The [PowerPac Basic primary manual](https://www.bio-rad.com/webroot/web/pdf/lsr/literature/4006213.pdf) permits the proposed30 V setting and20 mA limit. Their product is at most0.6 W and1080 J over30 active minutes; actual displayed values, interruption times and temperatures must be recorded. This is a low-power design boundary, not evidence that a real run stayed cool or separated. Stop/no-escalation instructions include30°C, damage, leaks, unusual gas, faults and approaching the gel edge. Supervisor preparation of hot agarose avoids assigning its heating to the learner.
+
+The phosphate recipe totals10 mmol/L; using the stated illustrative pKa7.21 gives approximatelypH7.000, correctly subordinate to actual calibrated pH verification.0.160g/20.0mL is0.8% agarose;25.0mg/50.00mL is0.050%m/v and5.00mL glycerol/50.00mL is10%v/v. F1/F2 are explicit substances rather than ambiguous baking colours. The MiniOne [primary dye guide](https://eu.theminione.com/wp-content/uploads/sites/4/2019/04/M3009-Candy-Color-Electrophoresis-StudentsGuide-041019-WEB-EMAIL.pdf), physicalp15, was downloaded, rendered and actually viewed: Blue1 and Yellow5 are depicted as net anions. Its cation-free displayed masses are not reused as salt molar masses. This is consistent with the card's qualitative migration prediction toward the positive anode atpH7; exact speeds or resolution are not inferred from this page.
+
+The [Bio-Rad STEM primary guide](https://www.bio-rad.com/sites/default/files/webroot/web/pdf/lse/literature/M1665086EDU.pdf) supports matched gel/running buffer and explains conductivity/heating; its normal TAE context is aroundpH8 and does not certify thispH7 phosphate recipe. Its parsed p12 electrode table contains a direction inconsistency; I do not rely on those erroneous lines. The card uses the correct anion-to-positive-anode relation. The card expressly calls its particular matrix/run settings an original prospective adaptation; no measured migration, validated resolution or manufacturer endorsement is asserted.
+
+Supervisor-coded U is a1:1 volume mixture of the same stocks, so each dye is0.025%m/v and glycerol remains10%; blank B matches buffer/glycerol. Independent reference lanes, fresh tips and blank inspection make carryover and failed resolution visible. Data remain the learner's actual origins, band centres/widths, polarity, pH, field estimate, time and operating conditions. U is judged against actual references before its prepared identity is revealed. Unresolved bands and failed controls stay unresolved; co-migration alone cannot prove unique identity, mass or purity.
+
+## Required P semantics retained
+
+The ordinary goal and P demand (1) an amino-acid charge/pH/pI plan, (2) an actually self-planned and locally cleared dye investigation, (3) genuine own raw data, and (4) model/control/transfer reasoning. This card supplies a prospective operating envelope for the dye part; it must be used together with the learner's own justified plan and the separately assessed amino-acid planning. Full ordinary mastery cannot follow merely from mechanically following the card. Its phrase about full **execution** points does not replace those other P requirements.
+
+The actual dye run earns no amino-acid execution credit. A fresh polarity prediction may accompany one complete actual run; neither a second run nor invented distances are required. Reversed polarity changes the anode's spatial location and may lose anionic samples from end-loaded wells. Prediction is kept separate from observation. The amino-acidpH11 question remains theory pending suitable instrument/buffer clearance, rather than being physically applied to this dye setup.
+
+After the bounded fill remedy, the remaining method/source/evidence design can be retained. This review alone does not release laboratory use, establish learner performance, close native D/P or placement, approve the whole T5 exam, or establish strictM7.
+
+## Source-access honesty
+
+All cited primaries were opened/read through the browser. A fresh raw download of the Bio-Rad GT URL returnedHTTP403; no local full-PDF hash is claimed for that source. Browser text remained accessible. The MiniOne raw PDF succeeded (SHA256 `0a745ed4c97427bd6351cd6b5813fc82f8d7baebe36e72b0f1bef7f409f8ff51`); its rendered structure page was actually inspected. Third-party PDF/image bytes remain ignored repository scratch, not copied into this review package or relicensed.

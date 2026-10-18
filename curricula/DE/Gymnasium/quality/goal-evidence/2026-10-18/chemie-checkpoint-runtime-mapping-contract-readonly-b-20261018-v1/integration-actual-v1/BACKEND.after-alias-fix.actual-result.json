@@ -1,0 +1,669 @@
+{
+  "observedAt": "2026-10-18T11:23:49.923130+00:00",
+  "execution": {
+    "role": "actual local targeted Backend test execution after bounded 61-row runtime alias fix",
+    "commandArgv": [
+      "./gradlew",
+      "--no-daemon",
+      "test",
+      "--tests",
+      "com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest",
+      "--tests",
+      "com.skillpilot.backend.service.LearnerServiceCanonicalProjectionTest"
+    ],
+    "cwd": "backend",
+    "startedAt": "2026-10-18T11:20:42.068878+00:00",
+    "status": "completed",
+    "stdoutPath": "tmp/chemie450-checkpoint-backend-targeted.after-alias-fix.stdout.txt",
+    "stderrPath": "tmp/chemie450-checkpoint-backend-targeted.after-alias-fix.stderr.txt",
+    "completedAt": "2026-10-18T11:23:03.438665+00:00",
+    "exitCode": 1,
+    "durationSeconds": 141.37,
+    "logs": [
+      {
+        "path": "tmp/chemie450-checkpoint-backend-targeted.after-alias-fix.stdout.txt",
+        "sha256": "af9dd735eefab2efe694c8f93fde6ec0dab5c05cbb17fd77c4cb631393a793d8",
+        "bytes": 1153233
+      },
+      {
+        "path": "tmp/chemie450-checkpoint-backend-targeted.after-alias-fix.stderr.txt",
+        "sha256": "40310147d4bf0b0bf43cea66d08c08527cb1bb9371aa2be2afec4ece3430041d",
+        "bytes": 1031
+      }
+    ]
+  },
+  "classes": [
+    {
+      "class": "com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest",
+      "xmlPath": "backend/build/test-results/test/TEST-com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest.xml",
+      "xmlSha256": "a89bc367b7a4d351ce9fb5aa29bc1e5901dc97e9d5ca00df4eff2ed244006c4c",
+      "xmlBytes": 2182965,
+      "tests": 87,
+      "failures": 30,
+      "errors": 0,
+      "skipped": 0,
+      "failedTests": [
+        {
+          "test": "parsesRepositoryBackedCanonicalChemistryThueringenUpperSecondaryMappingFixture()",
+          "type": "java.lang.AssertionError",
+          "expectedActual": [
+            1008,
+            1021
+          ],
+          "messageHead": "java.lang.AssertionError: \nExpected size: 1008 but was: 1021 in:\n[com.skillpilot.backend.landscape.GoalMappingEntry@7051777c,\n    com.skillpilot.backend.landscape.GoalMappingEntry@3241713e,\n    com.skillpilot.backend.landscape.GoalMappingEntry@5ecba515,\n    com.skillpilot.backend.landscape.GoalMappingEntry@512d4583,\n    com.skillpilot.backend.landscape.GoalMappingEntry@2abc224d,\n    com.skillpilot.backend.landscape.GoalMappingEntry@13cd7ea5,\n    com.skillpilot.backend.landscape.GoalMappingEntry@102d92c4,\n    com.skillpilot.backend.landscape.GoalMappingEntry@2b97cc1f,\n    com.skillpilot.backend.landscape.GoalMappingEntry@60723d6a,\n    com.skil",
+          "sourceFrames": [
+            [
+              "GoalMappingRepositoryFixtureTest",
+              "2187"
+            ]
+          ]
+        },
+        {
+          "test": "parsesRepositoryBackedCanonicalChemistryBerlinUpperSecondaryMappingFixture()",
+          "type": "java.lang.AssertionError",
+          "expectedActual": [
+            316,
+            322
+          ],
+          "messageHead": "java.lang.AssertionError: \nExpected size: 316 but was: 322 in:\n[com.skillpilot.backend.landscape.GoalMappingEntry@3d98d138,\n    com.skillpilot.backend.landscape.GoalMappingEntry@2f2d52ef,\n    com.skillpilot.backend.landscape.GoalMappingEntry@f2ce6b,\n    com.skillpilot.backend.landscape.GoalMappingEntry@25c53f74,\n    com.skillpilot.backend.landscape.GoalMappingEntry@5e2f3be5,\n    com.skillpilot.backend.landscape.GoalMappingEntry@1bd0b0e5,\n    com.skillpilot.backend.landscape.GoalMappingEntry@dc7b462,\n    com.skillpilot.backend.landscape.GoalMappingEntry@1f51431,\n    com.skillpilot.backend.landscape.GoalMappingEntry@26a2f7f9,\n    com.skillpilot",
+          "sourceFrames": [
+            [
+              "GoalMappingRepositoryFixtureTest",
+              "1663"
+            ]
+          ]
+        },
+        {
+          "test": "parsesRepositoryBackedCanonicalChemistryMappingFixture()",
+          "type": "java.lang.AssertionError",
+          "expectedActual": [
+            187,
+            195
+          ],
+          "messageHead": "java.lang.AssertionError: \nExpected size: 187 but was: 195 in:\n[com.skillpilot.backend.landscape.GoalMappingEntry@5d1b9c3d,\n    com.skillpilot.backend.landscape.GoalMappingEntry@69e05f61,\n    com.skillpilot.backend.landscape.GoalMappingEntry@49a26d19,\n    com.skillpilot.backend.landscape.GoalMappingEntry@730e5763,\n    com.skillpilot.backend.landscape.GoalMappingEntry@7275c74b,\n    com.skillpilot.backend.landscape.GoalMappingEntry@19058533,\n    com.skillpilot.backend.landscape.GoalMappingEntry@4315e9af,\n    com.skillpilot.backend.landscape.GoalMappingEntry@42210be1,\n    com.skillpilot.backend.landscape.GoalMappingEntry@1eb2d371,\n    com.skillp",
+          "sourceFrames": [
+            [
+              "GoalMappingRepositoryFixtureTest",
+              "2360"
+            ]
+          ]
+        },
+        {
+          "test": "parsesRepositoryBackedCanonicalChemistrySchleswigHolsteinSek1MappingFixture()",
+          "type": "java.lang.AssertionError",
+          "expectedActual": [
+            454,
+            474
+          ],
+          "messageHead": "java.lang.AssertionError: \nExpected size: 454 but was: 474 in:\n[com.skillpilot.backend.landscape.GoalMappingEntry@3659d7b1,\n    com.skillpilot.backend.landscape.GoalMappingEntry@2015b2cd,\n    com.skillpilot.backend.landscape.GoalMappingEntry@3bdb2c78,\n    com.skillpilot.backend.landscape.GoalMappingEntry@64693226,\n    com.skillpilot.backend.landscape.GoalMappingEntry@1c758545,\n    com.skillpilot.backend.landscape.GoalMappingEntry@117bcfdc,\n    com.skillpilot.backend.landscape.GoalMappingEntry@73a19967,\n    com.skillpilot.backend.landscape.GoalMappingEntry@5e746d37,\n    com.skillpilot.backend.landscape.GoalMappingEntry@6e1b9411,\n    com.skillp",
+          "sourceFrames": [
+            [
+              "GoalMappingRepositoryFixtureTest",
+              "1178"
+            ]
+          ]
+        },
+        {
+          "test": "parsesRepositoryBackedCanonicalChemistryBrandenburgUpperSecondaryMappingFixture()",
+          "type": "java.lang.AssertionError",
+          "expectedActual": [
+            316,
+            322
+          ],
+          "messageHead": "java.lang.AssertionError: \nExpected size: 316 but was: 322 in:\n[com.skillpilot.backend.landscape.GoalMappingEntry@778d82e9,\n    com.skillpilot.backend.landscape.GoalMappingEntry@408e96d9,\n    com.skillpilot.backend.landscape.GoalMappingEntry@59901c4d,\n    com.skillpilot.backend.landscape.GoalMappingEntry@168cd36b,\n    com.skillpilot.backend.landscape.GoalMappingEntry@d8d9199,\n    com.skillpilot.backend.landscape.GoalMappingEntry@3901f6af,\n    com.skillpilot.backend.landscape.GoalMappingEntry@602ae7b6,\n    com.skillpilot.backend.landscape.GoalMappingEntry@10cd6753,\n    com.skillpilot.backend.landscape.GoalMappingEntry@71ad3d8a,\n    com.skillpi",
+          "sourceFrames": [
+            [
+              "GoalMappingRepositoryFixtureTest",
+              "1637"
+            ]
+          ]
+        },
+        {
+          "test": "parsesRepositoryBackedCanonicalChemistryRheinlandPfalzSek1MappingFixture()",
+          "type": "java.lang.AssertionError",
+          "expectedActual": [
+            277,
+            284
+          ],
+          "messageHead": "java.lang.AssertionError: \nExpected size: 277 but was: 284 in:\n[com.skillpilot.backend.landscape.GoalMappingEntry@636bbbbb,\n    com.skillpilot.backend.landscape.GoalMappingEntry@7eae3764,\n    com.skillpilot.backend.landscape.GoalMappingEntry@10dc7d6,\n    com.skillpilot.backend.landscape.GoalMappingEntry@4f668f29,\n    com.skillpilot.backend.landscape.GoalMappingEntry@716e431d,\n    com.skillpilot.backend.landscape.GoalMappingEntry@7e744f43,\n    com.skillpilot.backend.landscape.GoalMappingEntry@11a8042c,\n    com.skillpilot.backend.landscape.GoalMappingEntry@6a4ccef7,\n    com.skillpilot.backend.landscape.GoalMappingEntry@69391e08,\n    com.skillpi",
+          "sourceFrames": [
+            [
+              "GoalMappingRepositoryFixtureTest",
+              "1337"
+            ]
+          ]
+        },
+        {
+          "test": "parsesRepositoryBackedCanonicalChemistryNrwSek1MappingFixture()",
+          "type": "java.lang.AssertionError",
+          "expectedActual": [
+            596,
+            609
+          ],
+          "messageHead": "java.lang.AssertionError: \nExpected size: 596 but was: 609 in:\n[com.skillpilot.backend.landscape.GoalMappingEntry@5d21202d,\n    com.skillpilot.backend.landscape.GoalMappingEntry@14b789f6,\n    com.skillpilot.backend.landscape.GoalMappingEntry@6eb17ec8,\n    com.skillpilot.backend.landscape.GoalMappingEntry@730f9695,\n    com.skillpilot.backend.landscape.GoalMappingEntry@277bf091,\n    com.skillpilot.backend.landscape.GoalMappingEntry@fab35b1,\n    com.skillpilot.backend.landscape.GoalMappingEntry@6a094db2,\n    com.skillpilot.backend.landscape.GoalMappingEntry@65bdd558,\n    com.skillpilot.backend.landscape.GoalMappingEntry@1dba4e06,\n    com.skillpi",
+          "sourceFrames": [
+            [
+              "GoalMappingRepositoryFixtureTest",
+              "2244"
+            ]
+          ]
+        },
+        {
+          "test": "parsesRepositoryBackedCanonicalChemistryNiedersachsenUpperSecondaryMappingFixture()",
+          "type": "java.lang.AssertionError",
+          "expectedActual": [
+            768,
+            793
+          ],
+          "messageHead": "java.lang.AssertionError: \nExpected size: 768 but was: 793 in:\n[com.skillpilot.backend.landscape.GoalMappingEntry@11900483,\n    com.skillpilot.backend.landscape.GoalMappingEntry@14a049f9,\n    com.skillpilot.backend.landscape.GoalMappingEntry@94e51e8,\n    com.skillpilot.backend.landscape.GoalMappingEntry@5de6cf3a,\n    com.skillpilot.backend.landscape.GoalMappingEntry@4cc36c19,\n    com.skillpilot.backend.landscape.GoalMappingEntry@5a3a1bf9,\n    com.skillpilot.backend.landscape.GoalMappingEntry@2100d047,\n    com.skillpilot.backend.landscape.GoalMappingEntry@4af45442,\n    com.skillpilot.backend.landscape.GoalMappingEntry@1d805aa1,\n    com.skillpi",
+          "sourceFrames": [
+            [
+              "GoalMappingRepositoryFixtureTest",
+              "891"
+            ]
+          ]
+        },
+        {
+          "test": "parsesRepositoryBackedCanonicalChemistrySchleswigHolsteinUpperSecondaryMappingFixture()",
+          "type": "java.lang.AssertionError",
+          "expectedActual": [
+            565,
+            570
+          ],
+          "messageHead": "java.lang.AssertionError: \nExpected size: 565 but was: 570 in:\n[com.skillpilot.backend.landscape.GoalMappingEntry@30c4e352,\n    com.skillpilot.backend.landscape.GoalMappingEntry@f1dd5b4,\n    com.skillpilot.backend.landscape.GoalMappingEntry@73809e7,\n    com.skillpilot.backend.landscape.GoalMappingEntry@5f96f6a2,\n    com.skillpilot.backend.landscape.GoalMappingEntry@48df4071,\n    com.skillpilot.backend.landscape.GoalMappingEntry@290e8cab,\n    com.skillpilot.backend.landscape.GoalMappingEntry@6e3ecf5c,\n    com.skillpilot.backend.landscape.GoalMappingEntry@67507df,\n    com.skillpilot.backend.landscape.GoalMappingEntry@341b13a8,\n    com.skillpilo",
+          "sourceFrames": [
+            [
+              "GoalMappingRepositoryFixtureTest",
+              "1191"
+            ]
+          ]
+        },
+        {
+          "test": "parsesRepositoryBackedCanonicalChemistryRheinlandPfalzUpperSecondaryMappingFixture()",
+          "type": "java.lang.AssertionError",
+          "expectedActual": [
+            1264,
+            1285
+          ],
+          "messageHead": "java.lang.AssertionError: \nExpected size: 1264 but was: 1285 in:\n[com.skillpilot.backend.landscape.GoalMappingEntry@72b43104,\n    com.skillpilot.backend.landscape.GoalMappingEntry@e111c7c,\n    com.skillpilot.backend.landscape.GoalMappingEntry@4d0e54e0,\n    com.skillpilot.backend.landscape.GoalMappingEntry@32f96bba,\n    com.skillpilot.backend.landscape.GoalMappingEntry@611640f0,\n    com.skillpilot.backend.landscape.GoalMappingEntry@67e25252,\n    com.skillpilot.backend.landscape.GoalMappingEntry@58f4b31a,\n    com.skillpilot.backend.landscape.GoalMappingEntry@21a9a705,\n    com.skillpilot.backend.landscape.GoalMappingEntry@72eb6200,\n    com.skill",
+          "sourceFrames": [
+            [
+              "GoalMappingRepositoryFixtureTest",
+              "1350"
+            ]
+          ]
+        },
+        {
+          "test": "parsesRepositoryBackedCanonicalChemistryBavariaMappingFixture()",
+          "type": "java.lang.AssertionError",
+          "expectedActual": [
+            60,
+            61
+          ],
+          "messageHead": "java.lang.AssertionError: \nExpected size: 60 but was: 61 in:\n[com.skillpilot.backend.landscape.GoalMappingEntry@3a36cd5,\n    com.skillpilot.backend.landscape.GoalMappingEntry@53f0d09c,\n    com.skillpilot.backend.landscape.GoalMappingEntry@47acd13b,\n    com.skillpilot.backend.landscape.GoalMappingEntry@6f8e9d06,\n    com.skillpilot.backend.landscape.GoalMappingEntry@77d381e6,\n    com.skillpilot.backend.landscape.GoalMappingEntry@2272cbb0,\n    com.skillpilot.backend.landscape.GoalMappingEntry@3f6f3cc,\n    com.skillpilot.backend.landscape.GoalMappingEntry@180b3819,\n    com.skillpilot.backend.landscape.GoalMappingEntry@733c464f,\n    com.skillpilot",
+          "sourceFrames": [
+            [
+              "GoalMappingRepositoryFixtureTest",
+              "3056"
+            ]
+          ]
+        },
+        {
+          "test": "parsesRepositoryBackedCanonicalChemistrySaxonyUpperSecondaryMappingFixture()",
+          "type": "java.lang.AssertionError",
+          "expectedActual": [
+            1747,
+            1758
+          ],
+          "messageHead": "java.lang.AssertionError: \nExpected size: 1747 but was: 1758 in:\n[com.skillpilot.backend.landscape.GoalMappingEntry@494c8f29,\n    com.skillpilot.backend.landscape.GoalMappingEntry@4f379769,\n    com.skillpilot.backend.landscape.GoalMappingEntry@1c57f6b2,\n    com.skillpilot.backend.landscape.GoalMappingEntry@4b515eab,\n    com.skillpilot.backend.landscape.GoalMappingEntry@66c9b52f,\n    com.skillpilot.backend.landscape.GoalMappingEntry@1536ea40,\n    com.skillpilot.backend.landscape.GoalMappingEntry@36776c32,\n    com.skillpilot.backend.landscape.GoalMappingEntry@7792d851,\n    com.skillpilot.backend.landscape.GoalMappingEntry@5cd96b41,\n    com.skil",
+          "sourceFrames": [
+            [
+              "GoalMappingRepositoryFixtureTest",
+              "2016"
+            ]
+          ]
+        },
+        {
+          "test": "repositoryFixtureIsDiscoveredByGoalMappingServiceWithoutSpecialFilenameSuffix()",
+          "type": "java.lang.AssertionError",
+          "expectedActual": null,
+          "messageHead": "java.lang.AssertionError: \nExpecting actual not to be empty",
+          "sourceFrames": [
+            [
+              "GoalMappingRepositoryFixtureTest",
+              "2621"
+            ]
+          ]
+        },
+        {
+          "test": "parsesRepositoryBackedCanonicalChemistryHamburgSek1MappingFixture()",
+          "type": "java.lang.AssertionError",
+          "expectedActual": [
+            131,
+            139
+          ],
+          "messageHead": "java.lang.AssertionError: \nExpected size: 131 but was: 139 in:\n[com.skillpilot.backend.landscape.GoalMappingEntry@3f857e08,\n    com.skillpilot.backend.landscape.GoalMappingEntry@6070775e,\n    com.skillpilot.backend.landscape.GoalMappingEntry@b5ac0c1,\n    com.skillpilot.backend.landscape.GoalMappingEntry@224c7de4,\n    com.skillpilot.backend.landscape.GoalMappingEntry@36ad229b,\n    com.skillpilot.backend.landscape.GoalMappingEntry@55846997,\n    com.skillpilot.backend.landscape.GoalMappingEntry@805e72e,\n    com.skillpilot.backend.landscape.GoalMappingEntry@49671897,\n    com.skillpilot.backend.landscape.GoalMappingEntry@168142da,\n    com.skillpil",
+          "sourceFrames": [
+            [
+              "GoalMappingRepositoryFixtureTest",
+              "1757"
+            ]
+          ]
+        },
+        {
+          "test": "parsesRepositoryBackedCanonicalChemistrySaarlandSek1MappingFixture()",
+          "type": "java.lang.AssertionError",
+          "expectedActual": [
+            601,
+            612
+          ],
+          "messageHead": "java.lang.AssertionError: \nExpected size: 601 but was: 612 in:\n[com.skillpilot.backend.landscape.GoalMappingEntry@4a864d4d,\n    com.skillpilot.backend.landscape.GoalMappingEntry@7d3691e1,\n    com.skillpilot.backend.landscape.GoalMappingEntry@46a123e4,\n    com.skillpilot.backend.landscape.GoalMappingEntry@44bc2449,\n    com.skillpilot.backend.landscape.GoalMappingEntry@3c28e5b6,\n    com.skillpilot.backend.landscape.GoalMappingEntry@7558c24b,\n    com.skillpilot.backend.landscape.GoalMappingEntry@3a296107,\n    com.skillpilot.backend.landscape.GoalMappingEntry@1f129467,\n    com.skillpilot.backend.landscape.GoalMappingEntry@646cd766,\n    com.skillp",
+          "sourceFrames": [
+            [
+              "GoalMappingRepositoryFixtureTest",
+              "1913"
+            ]
+          ]
+        },
+        {
+          "test": "parsesRepositoryBackedCanonicalChemistryBadenWuerttembergSek1MappingFixture()",
+          "type": "java.lang.AssertionError",
+          "expectedActual": [
+            124,
+            128
+          ],
+          "messageHead": "java.lang.AssertionError: \nExpected size: 124 but was: 128 in:\n[com.skillpilot.backend.landscape.GoalMappingEntry@28768e25,\n    com.skillpilot.backend.landscape.GoalMappingEntry@310d57b1,\n    com.skillpilot.backend.landscape.GoalMappingEntry@143fefaf,\n    com.skillpilot.backend.landscape.GoalMappingEntry@18ffca6c,\n    com.skillpilot.backend.landscape.GoalMappingEntry@46468f0,\n    com.skillpilot.backend.landscape.GoalMappingEntry@5f8f1712,\n    com.skillpilot.backend.landscape.GoalMappingEntry@34a6d9db,\n    com.skillpilot.backend.landscape.GoalMappingEntry@52ecc989,\n    com.skillpilot.backend.landscape.GoalMappingEntry@756808cc,\n    com.skillpi",
+          "sourceFrames": [
+            [
+              "GoalMappingRepositoryFixtureTest",
+              "1598"
+            ]
+          ]
+        },
+        {
+          "test": "parsesRepositoryBackedCanonicalChemistrySaxonyAnhaltUpperSecondaryMappingFixture()",
+          "type": "java.lang.AssertionError",
+          "expectedActual": [
+            1453,
+            1462
+          ],
+          "messageHead": "java.lang.AssertionError: \nExpected size: 1453 but was: 1462 in:\n[com.skillpilot.backend.landscape.GoalMappingEntry@a3cba3a,\n    com.skillpilot.backend.landscape.GoalMappingEntry@2aea717c,\n    com.skillpilot.backend.landscape.GoalMappingEntry@5ca4dce5,\n    com.skillpilot.backend.landscape.GoalMappingEntry@1291aab5,\n    com.skillpilot.backend.landscape.GoalMappingEntry@7d133fb7,\n    com.skillpilot.backend.landscape.GoalMappingEntry@40bd0f8,\n    com.skillpilot.backend.landscape.GoalMappingEntry@7eb27768,\n    com.skillpilot.backend.landscape.GoalMappingEntry@6169be09,\n    com.skillpilot.backend.landscape.GoalMappingEntry@5e3db14,\n    com.skillpi",
+          "sourceFrames": [
+            [
+              "GoalMappingRepositoryFixtureTest",
+              "2113"
+            ]
+          ]
+        },
+        {
+          "test": "parsesRepositoryBackedCanonicalChemistryBadenWuerttembergUpperSecondaryMappingFixture()",
+          "type": "java.lang.AssertionError",
+          "expectedActual": [
+            213,
+            218
+          ],
+          "messageHead": "java.lang.AssertionError: \nExpected size: 213 but was: 218 in:\n[com.skillpilot.backend.landscape.GoalMappingEntry@166b11e,\n    com.skillpilot.backend.landscape.GoalMappingEntry@5e68be2,\n    com.skillpilot.backend.landscape.GoalMappingEntry@5323999f,\n    com.skillpilot.backend.landscape.GoalMappingEntry@f18b738,\n    com.skillpilot.backend.landscape.GoalMappingEntry@3bc20984,\n    com.skillpilot.backend.landscape.GoalMappingEntry@aca3c85,\n    com.skillpilot.backend.landscape.GoalMappingEntry@45eab322,\n    com.skillpilot.backend.landscape.GoalMappingEntry@f017dd0,\n    com.skillpilot.backend.landscape.GoalMappingEntry@2424cb9d,\n    com.skillpilot.",
+          "sourceFrames": [
+            [
+              "GoalMappingRepositoryFixtureTest",
+              "1611"
+            ]
+          ]
+        },
+        {
+          "test": "parsesRepositoryBackedCanonicalChemistrySaarlandUpperSecondaryMappingFixture()",
+          "type": "java.lang.AssertionError",
+          "expectedActual": [
+            3155,
+            3167
+          ],
+          "messageHead": "java.lang.AssertionError: \nExpected size: 3155 but was: 3167 in:\n[com.skillpilot.backend.landscape.GoalMappingEntry@59f45950,\n    com.skillpilot.backend.landscape.GoalMappingEntry@7871d261,\n    com.skillpilot.backend.landscape.GoalMappingEntry@58164e9a,\n    com.skillpilot.backend.landscape.GoalMappingEntry@11bfffb3,\n    com.skillpilot.backend.landscape.GoalMappingEntry@6a7a1a0d,\n    com.skillpilot.backend.landscape.GoalMappingEntry@1c6e3ff9,\n    com.skillpilot.backend.landscape.GoalMappingEntry@76e6c070,\n    com.skillpilot.backend.landscape.GoalMappingEntry@184afb78,\n    com.skillpilot.backend.landscape.GoalMappingEntry@22da200e,\n    com.skil",
+          "sourceFrames": [
+            [
+              "GoalMappingRepositoryFixtureTest",
+              "1926"
+            ]
+          ]
+        },
+        {
+          "test": "parsesRepositoryBackedCanonicalChemistryNiedersachsenSek1MappingFixture()",
+          "type": "java.lang.AssertionError",
+          "expectedActual": [
+            672,
+            678
+          ],
+          "messageHead": "java.lang.AssertionError: \nExpected size: 672 but was: 678 in:\n[com.skillpilot.backend.landscape.GoalMappingEntry@54b44879,\n    com.skillpilot.backend.landscape.GoalMappingEntry@78288f83,\n    com.skillpilot.backend.landscape.GoalMappingEntry@29c1249a,\n    com.skillpilot.backend.landscape.GoalMappingEntry@5beb6be2,\n    com.skillpilot.backend.landscape.GoalMappingEntry@2d6a0766,\n    com.skillpilot.backend.landscape.GoalMappingEntry@1182d1df,\n    com.skillpilot.backend.landscape.GoalMappingEntry@31c7c281,\n    com.skillpilot.backend.landscape.GoalMappingEntry@31f31b20,\n    com.skillpilot.backend.landscape.GoalMappingEntry@4c5f7b4f,\n    com.skillp",
+          "sourceFrames": [
+            [
+              "GoalMappingRepositoryFixtureTest",
+              "878"
+            ]
+          ]
+        },
+        {
+          "test": "parsesRepositoryBackedCanonicalChemistryBerlinSek1MappingFixture()",
+          "type": "java.lang.AssertionError",
+          "expectedActual": [
+            191,
+            197
+          ],
+          "messageHead": "java.lang.AssertionError: \nExpected size: 191 but was: 197 in:\n[com.skillpilot.backend.landscape.GoalMappingEntry@53f495f0,\n    com.skillpilot.backend.landscape.GoalMappingEntry@5efe5b25,\n    com.skillpilot.backend.landscape.GoalMappingEntry@45707f76,\n    com.skillpilot.backend.landscape.GoalMappingEntry@1f0e2bdc,\n    com.skillpilot.backend.landscape.GoalMappingEntry@682266d8,\n    com.skillpilot.backend.landscape.GoalMappingEntry@44a93f8a,\n    com.skillpilot.backend.landscape.GoalMappingEntry@26463a6,\n    com.skillpilot.backend.landscape.GoalMappingEntry@6c5ae8fd,\n    com.skillpilot.backend.landscape.GoalMappingEntry@17354708,\n    com.skillpi",
+          "sourceFrames": [
+            [
+              "GoalMappingRepositoryFixtureTest",
+              "1650"
+            ]
+          ]
+        },
+        {
+          "test": "parsesRepositoryBackedCanonicalChemistryNrwUpperSecondaryMappingFixture()",
+          "type": "java.lang.AssertionError",
+          "expectedActual": [
+            1420,
+            1427
+          ],
+          "messageHead": "java.lang.AssertionError: \nExpected size: 1420 but was: 1427 in:\n[com.skillpilot.backend.landscape.GoalMappingEntry@6afeaf2d,\n    com.skillpilot.backend.landscape.GoalMappingEntry@365bfc5f,\n    com.skillpilot.backend.landscape.GoalMappingEntry@1a7e799e,\n    com.skillpilot.backend.landscape.GoalMappingEntry@37a3ec27,\n    com.skillpilot.backend.landscape.GoalMappingEntry@283baa39,\n    com.skillpilot.backend.landscape.GoalMappingEntry@416b1265,\n    com.skillpilot.backend.landscape.GoalMappingEntry@2830315f,\n    com.skillpilot.backend.landscape.GoalMappingEntry@da22aa,\n    com.skillpilot.backend.landscape.GoalMappingEntry@75452aea,\n    com.skillp",
+          "sourceFrames": [
+            [
+              "GoalMappingRepositoryFixtureTest",
+              "2257"
+            ]
+          ]
+        },
+        {
+          "test": "parsesRepositoryBackedCanonicalChemistryBremenUpperSecondaryMappingFixture()",
+          "type": "java.lang.AssertionError",
+          "expectedActual": [
+            254,
+            261
+          ],
+          "messageHead": "java.lang.AssertionError: \nExpected size: 254 but was: 261 in:\n[com.skillpilot.backend.landscape.GoalMappingEntry@70ee9d31,\n    com.skillpilot.backend.landscape.GoalMappingEntry@1a01ffff,\n    com.skillpilot.backend.landscape.GoalMappingEntry@a99c42c,\n    com.skillpilot.backend.landscape.GoalMappingEntry@2fa879ed,\n    com.skillpilot.backend.landscape.GoalMappingEntry@2b2b7e3c,\n    com.skillpilot.backend.landscape.GoalMappingEntry@3ec082a1,\n    com.skillpilot.backend.landscape.GoalMappingEntry@7a3c99f1,\n    com.skillpilot.backend.landscape.GoalMappingEntry@16b7e04a,\n    com.skillpilot.backend.landscape.GoalMappingEntry@661db63e,\n    com.skillpi",
+          "sourceFrames": [
+            [
+              "GoalMappingRepositoryFixtureTest",
+              "1694"
+            ]
+          ]
+        },
+        {
+          "test": "parsesRepositoryBackedCanonicalChemistryMecklenburgVorpommernSek1MappingFixture()",
+          "type": "java.lang.AssertionError",
+          "expectedActual": [
+            447,
+            455
+          ],
+          "messageHead": "java.lang.AssertionError: \nExpected size: 447 but was: 455 in:\n[com.skillpilot.backend.landscape.GoalMappingEntry@4c41a177,\n    com.skillpilot.backend.landscape.GoalMappingEntry@2faf6e4a,\n    com.skillpilot.backend.landscape.GoalMappingEntry@43ab0659,\n    com.skillpilot.backend.landscape.GoalMappingEntry@644947ee,\n    com.skillpilot.backend.landscape.GoalMappingEntry@25421809,\n    com.skillpilot.backend.landscape.GoalMappingEntry@714bffd5,\n    com.skillpilot.backend.landscape.GoalMappingEntry@6ac9b66b,\n    com.skillpilot.backend.landscape.GoalMappingEntry@4491eaeb,\n    com.skillpilot.backend.landscape.GoalMappingEntry@71262020,\n    com.skillp",
+          "sourceFrames": [
+            [
+              "GoalMappingRepositoryFixtureTest",
+              "1832"
+            ]
+          ]
+        },
+        {
+          "test": "parsesRepositoryBackedCanonicalChemistryHamburgUpperSecondaryMappingFixture()",
+          "type": "java.lang.AssertionError",
+          "expectedActual": [
+            395,
+            408
+          ],
+          "messageHead": "java.lang.AssertionError: \nExpected size: 395 but was: 408 in:\n[com.skillpilot.backend.landscape.GoalMappingEntry@65262308,\n    com.skillpilot.backend.landscape.GoalMappingEntry@792e8181,\n    com.skillpilot.backend.landscape.GoalMappingEntry@511d5e6e,\n    com.skillpilot.backend.landscape.GoalMappingEntry@7a78d380,\n    com.skillpilot.backend.landscape.GoalMappingEntry@2e1291a4,\n    com.skillpilot.backend.landscape.GoalMappingEntry@23bd2f6e,\n    com.skillpilot.backend.landscape.GoalMappingEntry@18e8eb59,\n    com.skillpilot.backend.landscape.GoalMappingEntry@2430cf17,\n    com.skillpilot.backend.landscape.GoalMappingEntry@1e95f584,\n    com.skillp",
+          "sourceFrames": [
+            [
+              "GoalMappingRepositoryFixtureTest",
+              "1770"
+            ]
+          ]
+        },
+        {
+          "test": "parsesRepositoryBackedCanonicalChemistrySaxonySek1MappingFixture()",
+          "type": "java.lang.AssertionError",
+          "expectedActual": [
+            845,
+            866
+          ],
+          "messageHead": "java.lang.AssertionError: \nExpected size: 845 but was: 866 in:\n[com.skillpilot.backend.landscape.GoalMappingEntry@56f72909,\n    com.skillpilot.backend.landscape.GoalMappingEntry@71285693,\n    com.skillpilot.backend.landscape.GoalMappingEntry@3199a202,\n    com.skillpilot.backend.landscape.GoalMappingEntry@7286827b,\n    com.skillpilot.backend.landscape.GoalMappingEntry@1dd64243,\n    com.skillpilot.backend.landscape.GoalMappingEntry@2ef913a4,\n    com.skillpilot.backend.landscape.GoalMappingEntry@520c3dcb,\n    com.skillpilot.backend.landscape.GoalMappingEntry@145fe8ab,\n    com.skillpilot.backend.landscape.GoalMappingEntry@3b347439,\n    com.skillp",
+          "sourceFrames": [
+            [
+              "GoalMappingRepositoryFixtureTest",
+              "2003"
+            ]
+          ]
+        },
+        {
+          "test": "parsesRepositoryBackedCanonicalChemistrySaxonyAnhaltSek1MappingFixture()",
+          "type": "java.lang.AssertionError",
+          "expectedActual": [
+            1024,
+            1033
+          ],
+          "messageHead": "java.lang.AssertionError: \nExpected size: 1024 but was: 1033 in:\n[com.skillpilot.backend.landscape.GoalMappingEntry@3595086b,\n    com.skillpilot.backend.landscape.GoalMappingEntry@627d35ff,\n    com.skillpilot.backend.landscape.GoalMappingEntry@7157413e,\n    com.skillpilot.backend.landscape.GoalMappingEntry@3245efdb,\n    com.skillpilot.backend.landscape.GoalMappingEntry@2f0e7fa8,\n    com.skillpilot.backend.landscape.GoalMappingEntry@24d7657b,\n    com.skillpilot.backend.landscape.GoalMappingEntry@6f428e6e,\n    com.skillpilot.backend.landscape.GoalMappingEntry@72e49f6a,\n    com.skillpilot.backend.landscape.GoalMappingEntry@2e4b5da1,\n    com.skil",
+          "sourceFrames": [
+            [
+              "GoalMappingRepositoryFixtureTest",
+              "2100"
+            ]
+          ]
+        },
+        {
+          "test": "parsesRepositoryBackedCanonicalChemistryMecklenburgVorpommernUpperSecondaryMappingFixture()",
+          "type": "java.lang.AssertionError",
+          "expectedActual": [
+            552,
+            569
+          ],
+          "messageHead": "java.lang.AssertionError: \nExpected size: 552 but was: 569 in:\n[com.skillpilot.backend.landscape.GoalMappingEntry@175957b6,\n    com.skillpilot.backend.landscape.GoalMappingEntry@1b7a4930,\n    com.skillpilot.backend.landscape.GoalMappingEntry@591a4d25,\n    com.skillpilot.backend.landscape.GoalMappingEntry@4bfe83d,\n    com.skillpilot.backend.landscape.GoalMappingEntry@5906ebfb,\n    com.skillpilot.backend.landscape.GoalMappingEntry@10fc1a22,\n    com.skillpilot.backend.landscape.GoalMappingEntry@1b841e7d,\n    com.skillpilot.backend.landscape.GoalMappingEntry@6081f330,\n    com.skillpilot.backend.landscape.GoalMappingEntry@eb695e8,\n    com.skillpil",
+          "sourceFrames": [
+            [
+              "GoalMappingRepositoryFixtureTest",
+              "1845"
+            ]
+          ]
+        },
+        {
+          "test": "parsesRepositoryBackedCanonicalChemistryBrandenburgSek1MappingFixture()",
+          "type": "java.lang.AssertionError",
+          "expectedActual": [
+            191,
+            197
+          ],
+          "messageHead": "java.lang.AssertionError: \nExpected size: 191 but was: 197 in:\n[com.skillpilot.backend.landscape.GoalMappingEntry@42db955e,\n    com.skillpilot.backend.landscape.GoalMappingEntry@6bd2f039,\n    com.skillpilot.backend.landscape.GoalMappingEntry@6c8ad6d7,\n    com.skillpilot.backend.landscape.GoalMappingEntry@2d0778d0,\n    com.skillpilot.backend.landscape.GoalMappingEntry@33e8694b,\n    com.skillpilot.backend.landscape.GoalMappingEntry@4fc71437,\n    com.skillpilot.backend.landscape.GoalMappingEntry@75c15f76,\n    com.skillpilot.backend.landscape.GoalMappingEntry@631678e6,\n    com.skillpilot.backend.landscape.GoalMappingEntry@1344f7fe,\n    com.skillp",
+          "sourceFrames": [
+            [
+              "GoalMappingRepositoryFixtureTest",
+              "1624"
+            ]
+          ]
+        },
+        {
+          "test": "parsesRepositoryBackedCanonicalChemistryThueringenSek1MappingFixture()",
+          "type": "java.lang.AssertionError",
+          "expectedActual": [
+            999,
+            1008
+          ],
+          "messageHead": "java.lang.AssertionError: \nExpected size: 999 but was: 1008 in:\n[com.skillpilot.backend.landscape.GoalMappingEntry@3d3b4e09,\n    com.skillpilot.backend.landscape.GoalMappingEntry@5dc9d25a,\n    com.skillpilot.backend.landscape.GoalMappingEntry@686fb58a,\n    com.skillpilot.backend.landscape.GoalMappingEntry@2c4be45f,\n    com.skillpilot.backend.landscape.GoalMappingEntry@4be7acd9,\n    com.skillpilot.backend.landscape.GoalMappingEntry@58afecfd,\n    com.skillpilot.backend.landscape.GoalMappingEntry@4d79d187,\n    com.skillpilot.backend.landscape.GoalMappingEntry@3e63bd6b,\n    com.skillpilot.backend.landscape.GoalMappingEntry@48144f1a,\n    com.skill",
+          "sourceFrames": [
+            [
+              "GoalMappingRepositoryFixtureTest",
+              "2174"
+            ]
+          ]
+        }
+      ],
+      "executedTestNames": [
+        "parsesRepositoryBackedCanonicalMathBadenWuerttembergSek1MappingFixture()",
+        "parsesRepositoryBackedCanonicalChemistryBremenSek1MappingFixture()",
+        "parsesRepositoryBackedCanonicalMathSek1MappingFixture()",
+        "parsesRepositoryBackedCanonicalPhysicsSaarlandUpperSecondaryMappingFixture()",
+        "parsesRepositoryBackedCanonicalNrwUpperSecondaryPhysicsMappingFixture()",
+        "parsesRepositoryBackedCanonicalPhysicsHamburgSek1MappingFixture()",
+        "parsesRepositoryBackedCanonicalChemistryThueringenUpperSecondaryMappingFixture()",
+        "parsesRepositoryBackedCanonicalMusicMappingFixture()",
+        "parsesRepositoryBackedCanonicalLatinMappingFixture()",
+        "parsesRepositoryBackedCanonicalCzechBavariaMappingFixture()",
+        "parsesRepositoryBackedCanonicalChemistryBerlinUpperSecondaryMappingFixture()",
+        "parsesRepositoryBackedCanonicalChemistrySek1MappingFixture()",
+        "parsesRepositoryBackedCanonicalPhysicsSchleswigHolsteinUpperSecondaryMappingFixture()",
+        "parsesRepositoryBackedCanonicalMathNiedersachsenSek1MappingFixture()",
+        "parsesRepositoryBackedCanonicalMathBadenWuerttembergUpperSecondaryMappingFixture()",
+        "parsesRepositoryBackedCanonicalChemistryMappingFixture()",
+        "parsesRepositoryBackedCanonicalChemistrySchleswigHolsteinSek1MappingFixture()",
+        "parsesRepositoryBackedCanonicalPhysicsHamburgUpperSecondaryMappingFixture()",
+        "parsesRepositoryBackedCanonicalMathNrwUpperSecondaryMappingFixture()",
+        "parsesRepositoryBackedCanonicalChemistryBrandenburgUpperSecondaryMappingFixture()",
+        "parsesRepositoryBackedCanonicalRussianBavariaMappingFixture()",
+        "parsesRepositoryBackedCanonicalChemistryRheinlandPfalzSek1MappingFixture()",
+        "parsesRepositoryBackedCanonicalPhysicsThueringenSek1MappingFixture()",
+        "parsesRepositoryBackedCanonicalPhysicsPilotBavariaMappingFixture()",
+        "parsesRepositoryBackedCanonicalEnglishMappingFixture()",
+        "parsesRepositoryBackedCanonicalBiologyBavariaMappingFixture()",
+        "parsesRepositoryBackedCanonicalPhysicsSaxonyUpperSecondaryMappingFixture()",
+        "parsesRepositoryBackedCanonicalChemistryNrwSek1MappingFixture()",
+        "parsesRepositoryBackedCanonicalChemistryNiedersachsenUpperSecondaryMappingFixture()",
+        "parsesRepositoryBackedCanonicalGermanMappingFixture()",
+        "parsesRepositoryBackedCanonicalBiologyMappingFixture()",
+        "parsesRepositoryBackedCanonicalPhysicsRheinlandPfalzUpperSecondaryMappingFixture()",
+        "parsesRepositoryBackedCanonicalMathNrwSek1MappingFixture()",
+        "parsesRepositoryBackedCanonicalChemistrySchleswigHolsteinUpperSecondaryMappingFixture()",
+        "parsesRepositoryBackedCanonicalChemistryRheinlandPfalzUpperSecondaryMappingFixture()",
+        "parsesRepositoryBackedCanonicalPhysicsPilotMappingFixture()",
+        "parsesRepositoryBackedCanonicalMathMappingFixture()",
+        "parsesRepositoryBackedCanonicalPhysicsSaxonyAnhaltUpperSecondaryMappingFixture()",
+        "parsesRepositoryBackedCanonicalPhysicsBadenWuerttembergUpperSecondaryMappingFixture()",
+        "parsesRepositoryBackedCanonicalPhysicsMecklenburgVorpommernSek1MappingFixture()",
+        "parsesRepositoryBackedCanonicalChemistryBavariaMappingFixture()",
+        "parsesRepositoryBackedCanonicalPhysicsThueringenUpperSecondaryMappingFixture()",
+        "parsesRepositoryBackedCanonicalChemistrySaxonyUpperSecondaryMappingFixture()",
+        "parsesRepositoryBackedCanonicalBiologySek1MappingFixture()",
+        "parsesRepositoryBackedCanonicalSpanishMappingFixture()",
+        "parsesRepositoryBackedCanonicalPhysicsSaxonySek1MappingFixture()",
+        "parsesRepositoryBackedCanonicalMathBavariaMappingFixture()",
+        "repositoryFixtureIsDiscoveredByGoalMappingServiceWithoutSpecialFilenameSuffix()",
+        "parsesRepositoryBackedCanonicalPhysicsBremenUpperSecondaryMappingFixture()",
+        "parsesRepositoryBackedCanonicalPhysicsSaxonyAnhaltSek1MappingFixture()",
+        "parsesRepositoryBackedCanonicalChemistryHamburgSek1MappingFixture()",
+        "parsesRepositoryBackedCanonicalFrenchSek1MappingFixture()",
+        "parsesRepositoryBackedCanonicalPhysicsSek1MappingFixture()",
+        "parsesRepositoryBackedCanonicalChemistrySaarlandSek1MappingFixture()",
+        "parsesRepositoryBackedCanonicalChineseMappingFixture()",
+        "parsesRepositoryBackedCanonicalChemistryBadenWuerttembergSek1MappingFixture()",
+        "parsesRepositoryBackedCanonicalPolishBavariaMappingFixture()",
+        "parsesRepositoryBackedCanonicalChemistrySaxonyAnhaltUpperSecondaryMappingFixture()",
+        "parsesRepositoryBackedCanonicalMathBrandenburgUpperSecondaryMappingFixture()",
+        "parsesRepositoryBackedCanonicalPhysicsBremenSek1MappingFixture()",
+        "parsesRepositoryBackedCanonicalChemistryBadenWuerttembergUpperSecondaryMappingFixture()",
+        "parsesRepositoryBackedCanonicalMathNiedersachsenUpperSecondaryMappingFixture()",
+        "parsesRepositoryBackedCanonicalChemistrySaarlandUpperSecondaryMappingFixture()",
+        "parsesRepositoryBackedCanonicalChemistryNiedersachsenSek1MappingFixture()",
+        "parsesRepositoryBackedCanonicalChemistryBerlinSek1MappingFixture()",
+        "parsesRepositoryBackedCanonicalHistoryMappingFixture()",
+        "parsesRepositoryBackedCanonicalChemistryNrwUpperSecondaryMappingFixture()",
+        "parsesRepositoryBackedCanonicalChemistryBremenUpperSecondaryMappingFixture()",
+        "parsesRepositoryBackedCanonicalChemistryMecklenburgVorpommernSek1MappingFixture()",
+        "parsesRepositoryBackedCanonicalPhysicsNiedersachsenUpperSecondaryMappingFixture()",
+        "parsesRepositoryBackedCanonicalItalianBavariaMappingFixture()",
+        "parsesRepositoryBackedCanonicalChemistryHamburgUpperSecondaryMappingFixture()",
+        "parsesRepositoryBackedCanonicalPhysicsMecklenburgVorpommernUpperSecondaryMappingFixture()",
+        "parsesRepositoryBackedCanonicalFrenchMappingFixture()",
+        "parsesRepositoryBackedCanonicalGreekMappingFixture()",
+        "parsesRepositoryBackedCanonicalPhysicsSaarlandSek1MappingFixture()",
+        "parsesRepositoryBackedCanonicalChemistrySaxonySek1MappingFixture()",
+        "parsesRepositoryBackedCanonicalPoliticsEconomicsMappingFixture()",
+        "parsesRepositoryBackedCanonicalChemistrySaxonyAnhaltSek1MappingFixture()",
+        "parsesRepositoryBackedCanonicalMathSchleswigHolsteinUpperSecondaryMappingFixture()",
+        "parsesRepositoryBackedCanonicalChemistryMecklenburgVorpommernUpperSecondaryMappingFixture()",
+        "parsesRepositoryBackedCanonicalChemistryBrandenburgSek1MappingFixture()",
+        "parsesRepositoryBackedCanonicalPhysicsBerlinUpperSecondaryMappingFixture()",
+        "parsesRepositoryBackedCanonicalPhysicsBrandenburgUpperSecondaryMappingFixture()",
+        "parsesRepositoryBackedCanonicalInformaticsMappingFixture()",
+        "parsesRepositoryBackedCanonicalEconomicsMappingFixture()",
+        "parsesRepositoryBackedCanonicalChemistryThueringenSek1MappingFixture()"
+      ]
+    },
+    {
+      "class": "com.skillpilot.backend.service.LearnerServiceCanonicalProjectionTest",
+      "xmlPath": "backend/build/test-results/test/TEST-com.skillpilot.backend.service.LearnerServiceCanonicalProjectionTest.xml",
+      "xmlSha256": "75bfef574cc172a451646dfd04fcef6a9cfa2622b17f354ba7eaace014602baa",
+      "xmlBytes": 38418,
+      "tests": 58,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0,
+      "failedTests": [
+        {
+          "test": "canonicalChemistryFrontierUsesProjectedSek1ChemistryMastery()",
+          "type": "java.lang.AssertionError",
+          "expectedActual": null,
+          "messageHead": "java.lang.AssertionError: \nExpecting\n  [\"f97b9c87-16d0-58fd-bcb2-c51574aa36d0\",\n    \"28bb9d15-f865-5843-a035-6066580fea64\",\n    \"f1ed86f0-534d-57d7-8952-a004a331cc54\",\n    \"1c1420c2-a8e2-520f-8015-6df637a973bd\"]\nnot to contain\n  [\"a9c22adc-b543-5b0c-a2d8-3189facdff08\",\n    \"f1ed86f0-534d-57d7-8952-a004a331cc54\",\n    \"0bfc34bc-9a17-4e86-ac62-b2bf4b967a43\"]\nbut found\n  [\"f1ed86f0-534d-57d7-8952-a004a331cc54\"]\n",
+          "sourceFrames": [
+            [
+              "LearnerServiceCanonicalProjectionTest",
+              "587"
+            ]
+          ]
+        }
+      ],
+      "executedTestNames": [
+        "canonicalGymnasiumRootStateFilterFallsBackToCanonicalCoverageWhenRawApplicabilityIsNarrower()",
+        "getLearnerStateClearsActiveGoalWhenPlannedFocusExcludesIt()",
+        "getPlannedGoalsProjectsLegacySek1ClusterIdsForCanonicalView()",
+        "getPlannedGoalsProjectsLegacySek1ChemistryReactionsClusterForCanonicalView()",
+        "getMasteryProjectsExactBavariaLinearAnalysisMasteryIntoCanonicalPilotGoals()",
+        "getPlannedGoalsProjectsLegacySek1ChemistrySymbolLanguageClusterForCanonicalView()",
+        "canonicalChemistryBondModelEntrypointDependsOnProjectedSek1IonicBondingBridge()",
+        "getMasteryProjectsExactSek1ChemistrySafetyAndSeparationIntoCanonicalChemistryGoals()",
+        "narrowedCentralDilationDoesNotInheritPartialLegacyMasteryOrAliasItsWriteId()",
+        "canonicalChemistrySimpleRedoxSeriesFrontierRequiresElectronTransferTerms()",
+        "getPlannedGoalsProjectsLegacySek1ChemistryClusterForCanonicalView()",
+        "getMasteryKeepsHigherStoredCanonicalMasteryThanLowerLegacyProjection()",
+        "canonicalPilotLearnerStateProjectsLegacyActiveGoalToCanonicalGoal()",
+        "getPlannedGoalsProjectsLegacyScopeIdsForCanonicalView()",
+        "canonicalChemistrySek1AtomicStructureFrontierUsesProjectedPeriodicAndIonMastery()",
+        "canonicalChemistrySek1ElectrolysisFrontierUsesProjectedIonAndRedoxMastery()",
+        "setMasteryUsesCanonicalGoalKeyWhenLegacyActiveGoalIsMappedIntoCanonicalView()",
+        "getMasteryProjectsExactSek1ChemistryAtomicStructureMasteryIntoCanonicalChemistryGoals()",
+        "consolidatedCorrosionProtectionRequiresReassessmentWithoutAliasingLegacyWrites()",
+        "canonicalChemistrySek1FrontierUsesProjectedSafetyAndSubstanceMastery()",
+        "getPlannedGoalsProjectsLegacySek1BiologyClusterForCanonicalView()",
+        "canonicalPilotFrontierUsesProjectedLegacyMastery()",
+        "getMasteryProjectsExactBavariaLegacyMasteryIntoCanonicalPilotGoals()",
+        "canonicalPilotLearnerStateUsesProjectedMasteryWithoutLegacyLeakage()",
+        "getMasteryProjectsExactBavariaQuadraticVertexMasteryIntoCanonicalPilotGoals()",
+        "getMasteryProjectsExactSek1BiologyPhotosynthesisMasteryIntoCanonicalBiologyGoals()",
+        "getPlannedGoalsProjectsLegacySek1BiologyPhotosynthesisClusterForCanonicalView()",
+        "getMasteryProjectsExactSek1ChemistryIonAndElectrolysisMasteryIntoCanonicalChemistryGoals()",
+        "getPlannedGoalsProjectsLegacyBavariaClusterIdsForCanonicalView()",
+        "canonicalGymnasiumRootPropagatesBundeslandFilterIntoMathChildLandscape()",
+        "getPlannedGoalsProjectsLegacySek1LinearEquationsGoalForCanonicalView()",
+        "getPlannedGoalsProjectsLegacyBavariaQuadraticFormsGoalForCanonicalView()",
+        "getMasteryProjectsExactSek1ChemistryReactionMasteryIntoCanonicalChemistryGoals()",
+        "canonicalGymnasiumRootBwLkIncludesReviewedBwMathCorridors()",
+        "getMasteryProjectsExactSek1LegacyMasteryIntoCanonicalPilotGoals()",
+        "getMasteryProjectsExactSek1BiologyMasteryIntoCanonicalBiologyGoals()",
+        "getPlannedGoalsProjectsLegacySek1NumberBasicsGoalForCanonicalView()",
+        "bavariaCurriculumReadDoesNotProjectCanonicalGoalsIntoLegacyView()",
+        "canonicalChemistrySek1ReactionFrontierUsesProjectedIntroReactionMastery()",
+        "legacyCurriculumReadDoesNotProjectCanonicalGoalsIntoLegacyView()",
+        "canonicalChemistrySek1SymbolLanguageFrontierUsesProjectedEquationAndReactionMastery()",
+        "getMasteryWithTimestampsUsesNewerLegacyTimestampForEqualExactProjection()",
+        "canonicalChemistryUpperElectrolysisDependsOnProjectedSek1ElectrolysisBridge()",
+        "getMasteryProjectsExactLegacyMasteryIntoCanonicalPilotGoals()",
+        "getMasteryProjectsExactSek1ChemistryMasteryIntoCanonicalChemistryGoals()",
+        "getPlannedGoalsProjectsLegacySek1ChemistryAtomicStructureClusterForCanonicalView()",
+        "retiredSpecialPositionsKeepsHistoricalMasteryWithoutGrantingSuccessorMastery()",
+        "canonicalChemistrySimpleRedoxSeriesDependsOnReviewedElectronTransferTerms()",
+        "getPlannedGoalsProjectsLegacySek1ChemistryIonElectrolysisClusterForCanonicalView()",
+        "canonicalBiologyFrontierUsesProjectedSek1BiologyMastery()",
+        "getMasteryProjectsExactSek1ProportionalMasteryIntoCanonicalPilotGoals()",
+        "canonicalChemistryFrontierUsesProjectedSek1ChemistryMastery()",
+        "getPlannedGoalsProjectsLegacySek1BinomialGoalForCanonicalView()",
+        "getMasteryProjectsExactBavariaIntegerArithmeticMasteryIntoCanonicalPilotGoals()",
+        "canonicalChemistrySimpleRedoxSeriesFrontierDoesNotRequireHistoricalOxidationRoute()",
+        "getPlannedGoalsCollapsesMixedLegacyScopesIntoCanonicalSubtrees()",
+        "getMasteryProjectsExactSek1ChemistrySymbolLanguageMasteryIntoCanonicalChemistryGoals()",
+        "canonicalBiologyQ3FrontierUsesProjectedSek1PhotosynthesisMastery()"
+      ]
+    }
+  ]
+}

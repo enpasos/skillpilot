@@ -126,7 +126,164 @@
   ],
   "method": {
     "type": "official-pdf-source-extraction",
-    "notes": "Die Source-Extraction basiert auf dem lokal archivierten amtlichen Niedersachsen-Kerncurriculum Naturwissenschaften Gymnasium Sek I 2015. Extrahiert werden nur die verbindlichen Chemie-Kompetenz-Bullets aus den Basiskonzept-Tabellen auf S. 51-64; Anhang und Umsetzungsvorschlaege bleiben ausgeschlossen."
+    "notes": "Die Source-Extraction basiert auf dem lokal archivierten amtlichen Niedersachsen-Kerncurriculum Naturwissenschaften Gymnasium Sek I 2015. Extrahiert werden nur die verbindlichen Chemie-Kompetenz-Bullets aus den Basiskonzept-Tabellen auf S. 51-64; Anhang und Umsetzungsvorschlaege bleiben ausgeschlossen.",
+    "sourceGoalExtraction": "Historical source extraction method retained in historicalScopeEvidence. Additive technical successor: retain that exact finite historical inventory, then append complete selected process clauses from the pinned candidate; no claim that every official process standard has been extracted.",
+    "selectedProcessClauseAddition": {
+      "candidate": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-author-20261018-v1/candidate/extraction-additions/NI.complete-selected-process-clauses.additions.json",
+        "sha256": "3678aa1daf7449bf0e3092963f941658e47d696dd33320cd15460edf96997b8b",
+        "bytes": 11643
+      },
+      "historicalInventory": 196,
+      "newCompleteSelectedClauses": 2,
+      "actualUnionInventory": 198,
+      "oldObjectsAndPassagesUnchanged": true,
+      "currentIndependentPartialReview": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+        "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+        "bytes": 269340
+      },
+      "sharedExtractionOnlyIds": [],
+      "wholeSourceCoverageEstablished": false,
+      "historicalScopeEvidence": {
+        "method": {
+          "type": "official-pdf-source-extraction",
+          "notes": "Die Source-Extraction basiert auf dem lokal archivierten amtlichen Niedersachsen-Kerncurriculum Naturwissenschaften Gymnasium Sek I 2015. Extrahiert werden nur die verbindlichen Chemie-Kompetenz-Bullets aus den Basiskonzept-Tabellen auf S. 51-64; Anhang und Umsetzungsvorschlaege bleiben ausgeschlossen."
+        },
+        "pipelineStatus": {
+          "currentStep": "",
+          "steps": [
+            {
+              "id": "MAPPING-1",
+              "label": "Original-Lehrplanpassagen extrahiert",
+              "status": "complete",
+              "dependsOn": [],
+              "checks": [
+                {
+                  "id": "source-document-present",
+                  "label": "Amtliches NI-Naturwissenschaften-Sek-I-PDF liegt lokal vor",
+                  "passed": true,
+                  "details": "curricula/DE/Gymnasium/input/NI/lower-secondary/kc_naturwissenschaften_gymnasium_sek_i_2015.pdf"
+                },
+                {
+                  "id": "expected-topic-coverage",
+                  "label": "Alle Chemie-Basiskonzept-Kompetenztabellen sind als Passagen vorhanden",
+                  "passed": true,
+                  "details": "14/14 Tabellen; fehlend: -"
+                },
+                {
+                  "id": "appendix-excluded",
+                  "label": "Anhang und Umsetzungsvorschläge wurden nicht als Source-Ziele extrahiert",
+                  "passed": true,
+                  "details": "Extraktionsfenster endet vor dem Anhang zum Kerncurriculum Chemie auf S. 65."
+                }
+              ]
+            },
+            {
+              "id": "MAPPING-2",
+              "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+              "status": "complete",
+              "dependsOn": [
+                "MAPPING-1"
+              ],
+              "checks": [
+                {
+                  "id": "source-goals-created",
+                  "label": "Source-Ziele aus den amtlichen Chemie-Kompetenz-Bullets erzeugt",
+                  "passed": true,
+                  "details": "196/196 Source-Ziele aus Fachwissen, Erkenntnisgewinnung, Kommunikation und Bewertung."
+                },
+                {
+                  "id": "passage-to-source-goal-coverage",
+                  "label": "Jede Chemie-Kompetenztabelle hat Source-Ziele",
+                  "passed": true,
+                  "details": "Passagen ohne Source-Ziele: -"
+                },
+                {
+                  "id": "source-goal-ids-unique",
+                  "label": "Source-Ziel-IDs sind eindeutig",
+                  "passed": true,
+                  "details": "Doppelte IDs: -"
+                },
+                {
+                  "id": "source-goals-reference-passages",
+                  "label": "Jedes Source-Ziel referenziert eine vorhandene Originalpassage",
+                  "passed": true,
+                  "details": "Ohne Passage: -"
+                },
+                {
+                  "id": "source-goal-trace-complete",
+                  "label": "Jedes Source-Ziel hat Kompetenzüberschrift, Source-Span und Quellenreferenz",
+                  "passed": true,
+                  "details": "Unvollständige Source-Ziele: -"
+                },
+                {
+                  "id": "source-goal-count-peer-baseline-local-audit",
+                  "label": "Auffällige Source-Ziel-Anzahl wurde fachlich plausibilisiert",
+                  "passed": true,
+                  "details": "196 liegt deutlich über HE/BW-Sek-I-Vergleichswerten. Das ist hier plausibel, weil NI die verbindlichen Kompetenzen einzeln über vier Kompetenzbereiche und 14 Basiskonzept-Tabellen ausweist; extrahiert wurden nur S. 51-64, nicht der Anhang."
+                }
+              ]
+            },
+            {
+              "id": "MAPPING-3",
+              "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+              "status": "complete",
+              "dependsOn": [
+                "MAPPING-1",
+                "MAPPING-2"
+              ],
+              "checks": [
+                {
+                  "id": "mapping-2-complete",
+                  "label": "MAPPING-2 abgeschlossen",
+                  "passed": true,
+                  "details": "196 Source-Ziele liegen vor; MAPPING-3 wurde gegen diese Source-Extraction-IDs abgeschlossen."
+                },
+                {
+                  "id": "m3-review-file-present",
+                  "label": "M3-Review-Datei ist vorhanden",
+                  "passed": true,
+                  "details": "curricula/DE/Gymnasium/mapping/DE-NI/lower-secondary/ni_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json"
+                },
+                {
+                  "id": "m3-review-decisions-reference-source-goals",
+                  "label": "M3-Review-Entscheidungen referenzieren gültige Source-Ziele",
+                  "passed": true,
+                  "details": "Reviewed Source-Ziele: 196/196."
+                },
+                {
+                  "id": "m3-review-targets-exist",
+                  "label": "M3-Review-Ziele referenzieren vorhandene Canonical-Ziele",
+                  "passed": true,
+                  "details": "Unbekannte Canonical-Ziele: -"
+                },
+                {
+                  "id": "m3-all-source-goals-reviewed",
+                  "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+                  "passed": true,
+                  "details": "196/196 Source-Ziele reviewed; offen: 0."
+                },
+                {
+                  "id": "m3-all-source-goals-covered-by-canonical",
+                  "label": "Alle Source-Ziele sind durch SkillPilot-Ziele abgedeckt",
+                  "passed": true,
+                  "details": "Fachlich abgedeckt: 196/196; verbleibend: 0 explizite Canonical-Gaps, 0 unreviewed."
+                }
+              ]
+            }
+          ]
+        },
+        "sourceGoalCount": 196,
+        "passageCount": 14,
+        "baseExtraction": {
+          "path": "curricula/DE/Gymnasium/input/NI/lower-secondary/source-extraction/DE_NI_CHEMIE_SEKI_KC2015.source-extraction.json",
+          "sha256": "c10b5f8ac37aa6770cdc5b9b4980ba285a04dcd95ce76a90784b7d42afb675b9",
+          "bytes": 344410
+        }
+      },
+      "cellMetadataProvenance": "Original candidate cell metadata is retained byte-for-object. Its inactive/pending wording records the author snapshot; current limited integration and accepted partial contributions are described here and in selectedProcessIntegration, not by inventing whole-source review."
+    }
   },
   "qualityReview": {
     "sourceGoalCountPeerBaseline": {
@@ -148,10 +305,11 @@
     "CR-9-10-3",
     "E-5-6-1",
     "E-7-8-2",
-    "E-9-10-3"
+    "E-9-10-3",
+    "3.3.1 Prozessbezogene Kompetenzen"
   ],
   "pipelineStatus": {
-    "currentStep": "",
+    "currentStep": "MAPPING-3",
     "steps": [
       {
         "id": "MAPPING-1",
@@ -163,13 +321,13 @@
             "id": "source-document-present",
             "label": "Amtliches NI-Naturwissenschaften-Sek-I-PDF liegt lokal vor",
             "passed": true,
-            "details": "curricula/DE/Gymnasium/input/NI/lower-secondary/kc_naturwissenschaften_gymnasium_sek_i_2015.pdf"
+            "details": "Current operative primary document: curricula/DE/Gymnasium/input/NI/lower-secondary/kc_naturwissenschaften_gymnasium_sek_i_2015.pdf. Historical inventory provenance remains in method.selectedProcessClauseAddition.historicalScopeEvidence."
           },
           {
             "id": "expected-topic-coverage",
             "label": "Alle Chemie-Basiskonzept-Kompetenztabellen sind als Passagen vorhanden",
             "passed": true,
-            "details": "14/14 Tabellen; fehlend: -"
+            "details": "Historical 14 passage inventory retained exactly; 1 selected process passages added. Other standards remain context or unexamined; no complete standards-universe claim."
           },
           {
             "id": "appendix-excluded",
@@ -191,7 +349,7 @@
             "id": "source-goals-created",
             "label": "Source-Ziele aus den amtlichen Chemie-Kompetenz-Bullets erzeugt",
             "passed": true,
-            "details": "196/196 Source-Ziele aus Fachwissen, Erkenntnisgewinnung, Kommunikation und Bewertung."
+            "details": "198 actual source cells = 196 retained historical inventory + 2 complete selected process clauses. No additional unselected standard counted."
           },
           {
             "id": "passage-to-source-goal-coverage",
@@ -228,7 +386,7 @@
       {
         "id": "MAPPING-3",
         "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
-        "status": "complete",
+        "status": "incomplete",
         "dependsOn": [
           "MAPPING-1",
           "MAPPING-2"
@@ -238,13 +396,13 @@
             "id": "mapping-2-complete",
             "label": "MAPPING-2 abgeschlossen",
             "passed": true,
-            "details": "196 Source-Ziele liegen vor; MAPPING-3 wurde gegen diese Source-Extraction-IDs abgeschlossen."
+            "details": "198 cells exist. Historical 196-cell M3 evidence remains limited to its original inventory; new bounded partial contributions do not complete whole-source duties."
           },
           {
             "id": "m3-review-file-present",
             "label": "M3-Review-Datei ist vorhanden",
             "passed": true,
-            "details": "curricula/DE/Gymnasium/mapping/DE-NI/lower-secondary/ni_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json"
+            "details": "Current source/epoch-matching review aliases: curricula/DE/Gymnasium/mapping/DE-NI/lower-secondary/ni_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json"
           },
           {
             "id": "m3-review-decisions-reference-source-goals",
@@ -261,18 +419,61 @@
           {
             "id": "m3-all-source-goals-reviewed",
             "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
-            "passed": true,
-            "details": "196/196 Source-Ziele reviewed; offen: 0."
+            "passed": false,
+            "details": "No new whole-source approval. 2 selected additions carry only their individually accepted partial contributions; 0 shared cells have extraction transport only. Whole operator/course/execution duties remain separate."
           },
           {
             "id": "m3-all-source-goals-covered-by-canonical",
             "label": "Alle Source-Ziele sind durch SkillPilot-Ziele abgedeckt",
-            "passed": true,
-            "details": "Fachlich abgedeckt: 196/196; verbleibend: 0 explizite Canonical-Gaps, 0 unreviewed."
+            "passed": false,
+            "details": "No new whole-source approval. 2 selected additions carry only their individually accepted partial contributions; 0 shared cells have extraction transport only. Whole operator/course/execution duties remain separate."
           }
         ]
       }
-    ]
+    ],
+    "selectedProcessIntegration": {
+      "status": "accepted-partial-contributions-only",
+      "totalSourceGoalsActual": 198,
+      "historicalSourceGoals": 196,
+      "newCompleteSelectedProcessCells": 2,
+      "newWholeSourceApprovals": 0,
+      "newScientificFirstDecisionsByIntegrator": 0,
+      "independentAcceptedRef": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+        "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+        "bytes": 269340
+      },
+      "sourceCellPartialBindings": [
+        {
+          "sourceGoalId": "ni-chemistry-seki-process-standard-quantifizieren-bullet3",
+          "acceptedPartialContributions": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+              "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+              "bytes": 269340,
+              "jsonPointer": "/mappings/44"
+            }
+          ],
+          "wholeSourceApproval": false,
+          "extractionTransportOnlyWithoutBindingVote": false
+        },
+        {
+          "sourceGoalId": "ni-chemistry-seki-process-standard-quantifizieren-bullet4",
+          "acceptedPartialContributions": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+              "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+              "bytes": 269340,
+              "jsonPointer": "/mappings/45"
+            }
+          ],
+          "wholeSourceApproval": false,
+          "extractionTransportOnlyWithoutBindingVote": false
+        }
+      ],
+      "wholeSourceCoverageComplete": false,
+      "historicalM3DoesNotExtendToAddedCells": true
+    }
   },
   "passages": [
     {
@@ -638,6 +839,18 @@
         "ni-chemistry-seki-kc2015-e-9-10-3-kompetenz-009-e1cf7fd0",
         "ni-chemistry-seki-kc2015-e-9-10-3-kompetenz-010-f802f797"
       ]
+    },
+    {
+      "id": "ni-chemistry-seki-process:3.3.1-prozessbezogene-kompetenzen",
+      "topicCode": "3.3.1 Prozessbezogene Kompetenzen",
+      "title": "NI: selected whole process clauses, original full pages retained",
+      "text": "Chemische Fragestellungen quantifizieren\n\n‒ Quantitative Experimente planen, durchführen und protokollieren\n‒ Messwerte in Tabellen und Diagrammen darstellen\n‒ Abweichungen von Messergebnissen beschreiben und deuten\n‒ Anhand gegebener oder gewonnener Daten Gesetzmäßigkeiten ableiten\n\nMathematische Verfahren anwenden\n\n‒ Proportionalitäten erkennen\n‒ Größengleichungen in Berechnungen anwenden\n\nModelle kennen und anwenden\n\n‒ Teilchenmodell / Bausteinmodell kennen und anwenden\n‒ Stoff- und Teilchenebene unterscheiden\n‒ Den Nutzen des Teilchenmodells / Bausteinmodells erkennen\n‒ Teilchenmodell / Bausteinmodell und einfaches Atommodell unterscheiden\n‒ Chemische Reaktionen auf der Atomebene deuten\n‒ Ein differenziertes Atommodell anwenden\n‒ Die Grundstruktur des PSE anhand eines differenzierten Atommodells entwickeln\n‒ PSE anwenden\n‒ Bindungsmodelle kennen und anwenden\n‒ Modelle zu zwischenmolekularen Wechselwirkungen kennen und anwenden\n‒ Geeignete Modelle zur Visualisierung von Strukturen nutzen\n‒ Nutzen und Grenzen von Modellen erkennen\n\nKompetenzbereich Kommunikation\n\n\nUmgang mit chemischen Sachverhalten\n\n‒ Experimente protokollieren\n‒ Ergebnisse vorstellen\n‒ Tabellen nutzen\n‒ Im Internet und in Büchern recherchieren\n‒ Gewonnene Daten in Diagrammen darstellen\n\nFachsprache entwickeln\n\n‒ Fachsprache und Alltagssprache unterscheiden\n‒ Fachsprache in Alltagssprache übersetzen und umgekehrt\n‒ Themenbezogene und aussagekräftige Informationen auswählen\n‒ Fachlich korrekt und folgerichtig argumentieren\n‒ Einwände selbstkritisch diskutieren\n‒ Arbeit als Team präsentieren\n\n\n\n\n                                                    47\n",
+      "sourceDocumentKey": "NI-KC-NATURWISSENSCHAFTEN-SEKI-2015-CHEMIE",
+      "sourceRef": "curricula/DE/Gymnasium/input/NI/lower-secondary/kc_naturwissenschaften_gymnasium_sek_i_2015.pdf, physical PDF pages [47]",
+      "physicalPdfPages": [
+        47
+      ],
+      "scope": "Full page context, selected clauses only become sourceGoals; all other standards remain unextracted context."
     }
   ],
   "sourceGoals": [
@@ -6715,6 +6928,66 @@
         "extractionMethod": "pdftotext-raw-official-pdf-competence-table-bullet-extraction",
         "concept": "Energie",
         "grades": "9/10"
+      }
+    },
+    {
+      "id": "ni-chemistry-seki-process-standard-quantifizieren-bullet3",
+      "passageId": "ni-chemistry-seki-process:3.3.1-prozessbezogene-kompetenzen",
+      "topicCode": "3.3.1 Prozessbezogene Kompetenzen",
+      "title": "Quantifizieren-bullet3: Abweichungen von Messergebnissen beschreiben und deuten",
+      "description": "Abweichungen von Messergebnissen beschreiben und deuten",
+      "sourceDocumentKey": "NI-KC-NATURWISSENSCHAFTEN-SEKI-2015-CHEMIE",
+      "sourceText": "Abweichungen von Messergebnissen beschreiben und deuten",
+      "parentBulletText": "Abweichungen von Messergebnissen beschreiben und deuten",
+      "sourceRef": "Niedersachsen Kerncurriculum Naturwissenschaften Gymnasium Sekundarbereich I 2015, Chemie; physical PDF47; 3.3.1 Prozessbezogene Kompetenzen; Quantifizieren-bullet3.",
+      "sourceSpan": {
+        "passageId": "ni-chemistry-seki-process:3.3.1-prozessbezogene-kompetenzen",
+        "label": "physical PDF47, 3.3.1 Prozessbezogene Kompetenzen, Quantifizieren-bullet3"
+      },
+      "courseLevel": "unspecified",
+      "granularity": "officialCompleteUnnumberedClause",
+      "tags": [
+        "jurisdiction:DE-NI",
+        "stage:SekI",
+        "course:unspecified"
+      ],
+      "metadata": {
+        "officialStandardCode": null,
+        "localLocatorLabel": "Quantifizieren-bullet3",
+        "officiallyNumbered": false,
+        "physicalPdfPage": 47,
+        "extractionMethod": "Author read whole primary section; complete clause, line wrapping only normalized; inactive additive candidate; no independent review yet.",
+        "stageCourseBoundary": "SekI process progression, section3.3.1; no SekII end-standard or performance substitution."
+      }
+    },
+    {
+      "id": "ni-chemistry-seki-process-standard-quantifizieren-bullet4",
+      "passageId": "ni-chemistry-seki-process:3.3.1-prozessbezogene-kompetenzen",
+      "topicCode": "3.3.1 Prozessbezogene Kompetenzen",
+      "title": "Quantifizieren-bullet4: Anhand gegebener oder gewonnener Daten Gesetzmäßigkeiten ableiten",
+      "description": "Anhand gegebener oder gewonnener Daten Gesetzmäßigkeiten ableiten",
+      "sourceDocumentKey": "NI-KC-NATURWISSENSCHAFTEN-SEKI-2015-CHEMIE",
+      "sourceText": "Anhand gegebener oder gewonnener Daten Gesetzmäßigkeiten ableiten",
+      "parentBulletText": "Anhand gegebener oder gewonnener Daten Gesetzmäßigkeiten ableiten",
+      "sourceRef": "Niedersachsen Kerncurriculum Naturwissenschaften Gymnasium Sekundarbereich I 2015, Chemie; physical PDF47; 3.3.1 Prozessbezogene Kompetenzen; Quantifizieren-bullet4.",
+      "sourceSpan": {
+        "passageId": "ni-chemistry-seki-process:3.3.1-prozessbezogene-kompetenzen",
+        "label": "physical PDF47, 3.3.1 Prozessbezogene Kompetenzen, Quantifizieren-bullet4"
+      },
+      "courseLevel": "unspecified",
+      "granularity": "officialCompleteUnnumberedClause",
+      "tags": [
+        "jurisdiction:DE-NI",
+        "stage:SekI",
+        "course:unspecified"
+      ],
+      "metadata": {
+        "officialStandardCode": null,
+        "localLocatorLabel": "Quantifizieren-bullet4",
+        "officiallyNumbered": false,
+        "physicalPdfPage": 47,
+        "extractionMethod": "Author read whole primary section; complete clause, line wrapping only normalized; inactive additive candidate; no independent review yet.",
+        "stageCourseBoundary": "SekI process progression, section3.3.1; no SekII end-standard or performance substitution."
       }
     }
   ]

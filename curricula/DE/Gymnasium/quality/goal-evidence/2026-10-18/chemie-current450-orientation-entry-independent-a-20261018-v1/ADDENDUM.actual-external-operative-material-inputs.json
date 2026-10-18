@@ -1,0 +1,1231 @@
+{
+  "artifactRole": "ADDITIVE_ACTUAL_OPERATIVE_MATERIAL_INPUT_PINS_AND_EXACT_CASES",
+  "createdAtUTC": "2026-10-18T08:22:02.117124+00:00",
+  "method": "P bodies were read in full. For external case context, complete selected material objects (or explicitly identified givens/rubrics read alongside their complete corresponding P cases) were inspected. This addendum identifies raw files and whole selected input cases; it adds no review votes, native D/P bindings or completions.",
+  "inputs": [
+    {
+      "rawInput": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-material-author-20261017-v1/materials/hb199-greenhouse-energy-climate.DE-EN.json",
+        "sha256": "f198a3d307d9a99c8a63269598142b1a4cc46515b075d1de35c2788fa2c38312",
+        "bytes": 6852
+      },
+      "wholeMaterial": {
+        "materialId": "hb199-greenhouse-energy-climate",
+        "sourceOrdinals": [
+          199,
+          203,
+          92
+        ],
+        "title": {
+          "de": "Energiehaushalt und Klimafolgen",
+          "en": "Energy budget and climate consequences"
+        },
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1",
+        "active": false,
+        "humanApproval": false,
+        "actualLearnerPerformanceRecorded": false,
+        "M7Claim": false,
+        "ownMaterialLicense": "CC-BY-4.0",
+        "modelAndDataOrigin": {
+          "de": "Alle fiktiven Zahlen und Befunde sind eigene Unterrichtsmodelle, keine beobachtete Lernendenleistung, Produktprüfung oder Zulassung. Reale Quellen sind separat verzeichnet.",
+          "en": "All fictional numbers and findings are own teaching models, not observed learner performance, product testing or approval. Genuine sources are listed separately."
+        },
+        "givens": {
+          "de": "Eigene dimensionslose Energieflussmodelle pro gleicher Zeitspanne, keine heutigen Messwerte: Zustand I am Rand des Erdsystems einfallend 100, reflektierte kurzwellige Sonnenstrahlung 30, ausgehende langwellige Wärmestrahlung 70; netto 0. Anfangszustand II mit mehr CO2, zunächst gleicher Temperatur und gleichen Sonnen-/Reflexionsflüssen: ausgehende Wärmestrahlung 68, netto +2. Oberfläche absorbiert Einstrahlung und emittiert langwellige IR-Strahlung; Treibhausgase absorbieren/emittieren in bestimmten IR-Bereichen, auch Richtung Oberfläche. Keine spiegelnde IR-Reflexion und keine undurchlässige Einwegtür. Der natürliche Treibhauseffekt beruht auf natürlich vorhandenen Gasen, darunter Wasserdampf und CO2; menschliche Zusätze können Konzentration und Strahlungswirkung erhöhen. Fossile Verbrennung fügt dem schnellen Kreislauf Kohlenstoff hinzu. Bestandsanstieg und Strahlungswirkung sind verschiedene zu verknüpfende Schritte. Bedingungen: andere Flüsse und Albedo gehalten; keine Temperatur aus den Zahlen ableitbar.",
+          "en": "Own dimensionless flux models per equal time interval, not present measurements: state I at the Earth-system boundary has incoming 100, reflected shortwave sunlight 30 and outgoing longwave thermal radiation 70; net 0. Initial state II with more CO2, initially equal temperature and unchanged solar/reflection flux: outgoing thermal radiation 68, net +2. The surface absorbs input and emits longwave IR; greenhouse gases absorb/emit in specific IR bands, also toward the surface. This is neither mirror-like IR reflection nor an impenetrable one-way door. Natural greenhouse effects involve naturally present gases including water vapour and CO2; human additions can raise concentration and radiative effect. Fossil combustion adds carbon to the fast cycle. Stock increase and radiative effect are distinct linked steps. Conditions: other fluxes/albedo held; no temperature derives from these numbers."
+        },
+        "learnerTask": {
+          "de": "Erkläre und zeichne den Energiehaushalt der Erde, natürlichen und anthropogenen Treibhauseffekt mit Absorption/Emission. Bilanziere beide Zustände. Beschreibe Erwärmung als Anpassung an zunächst positive Energiebilanz: ein wärmeres System kann mehr abstrahlen. Kommuniziere die Kette fossile Nutzung→CO2-Bestand→Strahlungsbilanz→Klimaänderung und mögliche Folgen wie veränderte Hitzehäufigkeit und thermische Ozeanausdehnung. Bewerte Minderung nach Wirksamkeit, Zeit, Umsetzbarkeit und Verteilung; das Schema allein ordnet keinem einzelnen Wetterereignis eine Ursache zu.",
+          "en": "Explain and draw Earth energy budget and natural/anthropogenic greenhouse effects using absorption/emission. Balance both states. Describe warming as adjustment to an initially positive energy balance: a warmer system can emit more. Communicate fossil use→CO2 stock→radiation balance→climate change and possible effects such as changed heat frequency and ocean thermal expansion. Evaluate mitigation by effectiveness, timing, feasibility and distribution; this diagram alone attributes no individual weather event."
+        },
+        "modelSolution": {
+          "de": "I:100−30−70=0; II:100−30−68=+2, zunächst Energiespeicherung. Anthropogener Zusatz verändert die Bilanz auf Grundlage des natürlichen Effekts; er erzeugt keine Energie. Mehr CO2-Bestand allein ist noch keine Erklärung des IR-Mechanismus. Unter gehaltenen Bedingungen kann wärmere Abstrahlung eine neue Bilanz herstellen; genaue Temperatur/Zeit/regionale Folgen brauchen weitere Modelle. Weniger fossile Emissionen vermindern den weiteren Zufluss, stellen aber den alten atmosphärischen Bestand nicht sofort wieder her. Ein Urteil legt Kriterien und Bedingungen offen.",
+          "en": "I:100−30−70=0; II:100−30−68=+2, initially energy storage. Human additions modify balance on top of the natural effect and create no energy. More CO2 stock alone does not explain the IR mechanism. Under held conditions warmer emission can restore balance; exact temperature/time/regional effects need further models. Lower fossil emissions reduce additional input but do not instantly restore old atmospheric stock. Judgments state criteria and conditions."
+        },
+        "freshTransfer": {
+          "task": {
+            "de": "Neuer Modellfall bei gleicher anfänglicher Temperatur: Reflexion steigt zugleich auf 33, ausgehende Wärme bleibt 68. Bilanziere und prüfe: Jeder CO2-Anstieg erzeugt unabhängig von allen anderen Einflüssen sofort dieselbe lokale Erwärmung. Präsentiere ein korrigiertes Kausalbild.",
+            "en": "New model at equal initial temperature: reflection also rises to 33, outgoing heat remains 68. Balance and assess: every CO2 increase instantly causes the same local warming regardless of all other influences. Present a corrected causal picture."
+          },
+          "expected": {
+            "de": "100−33−68=−1; Albedoänderung verändert die Gesamtbilanz. Sie hebt die IR-Wirkung des CO2 nicht auf, widerlegt aber die ausschließlich eindimensionale Behauptung. Globale Bilanz, Trägheit, Rückkopplungen und lokale Folgen trennen; kein sofortiger universeller Temperaturwert.",
+            "en": "100−33−68=−1; changed albedo modifies total balance. It does not remove CO2 IR effects but rejects the one-dimensional claim. Distinguish global balance, inertia, feedbacks and local effects; no instant universal temperature."
+          }
+        },
+        "rubric": {
+          "de": "Drei Quellbegriffe ausdrücklich; korrekte Kurz-/Langwellenflüsse; Absorption/Emission statt Reflexion; Bestands-/Wirkungskette; begründete Folgen/Bewertung und neuer Albedotransfer.",
+          "en": "Explicit three source terms; correct short/longwave flows; absorption/emission rather than reflection; stock/effect chain; reasoned effects/evaluation and new albedo transfer."
+        },
+        "blankLearnerRecord": {
+          "ownWork": null,
+          "actualActionTrace": null,
+          "sourcesActuallyRead": null,
+          "freshTransfer": null
+        }
+      },
+      "readBoundary": "Complete material scientific givens, tasks, model solution, fresh transfer and rubric; status fields do not establish approval."
+    },
+    {
+      "rawInput": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-material-author-20261017-v1/materials/hb200-plant-oil-routes.DE-EN.json",
+        "sha256": "5fc5b2069fec299a0aab42970875e1928e62a8cda4af0b378faae883e21bf36c",
+        "bytes": 5303
+      },
+      "wholeMaterial": {
+        "materialId": "hb200-plant-oil-routes",
+        "sourceOrdinals": [
+          200
+        ],
+        "title": {
+          "de": "Pflanzenöl gewinnen und Biotreibstoffe unterscheiden",
+          "en": "Isolate plant oil and distinguish biofuels"
+        },
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1",
+        "active": false,
+        "humanApproval": false,
+        "actualLearnerPerformanceRecorded": false,
+        "M7Claim": false,
+        "ownMaterialLicense": "CC-BY-4.0",
+        "modelAndDataOrigin": {
+          "de": "Alle fiktiven Zahlen und Befunde sind eigene Unterrichtsmodelle, keine beobachtete Lernendenleistung, Produktprüfung oder Zulassung. Reale Quellen sind separat verzeichnet.",
+          "en": "All fictional numbers and findings are own teaching models, not observed learner performance, product testing or approval. Genuine sources are listed separately."
+        },
+        "givens": {
+          "de": "Industrielles Papierschema Ölfrucht→Reinigen/Zerkleinern→Pressen→Filtern/Raffinieren→Triglyceridgemisch. Optionale industrielle Lösemittelextraktion ist Trennung,keine hier auszuführende Tätigkeit. Ideal100 kg trockene Saat→30 kg Öl+70 kg Presskuchen;Saatölgehalt,Verluste/Feuchte fehlen. Pflanzenöl=Triglyceride. Biodiesel:Triglycerid+3 Methanol→3 Fettsäuremethylester+Glycerin,danach Trennung/Reinigung;keine Betriebsanweisung. Zucker-Bioethanol:C6H12O6→2 C2H5OH+2 CO2,anschließend Abtrennung;real Umsatz begrenzt. Generationenkonvention hier:1 aus Zucker/Stärke/Speiseöl geeigneter Nahrungspflanzen;2 aus lignocellulosischen bzw.benannten Reststoffpfaden. Generation ist Rohstoff-/Prozesszuordnung,keine Nachhaltigkeitsgarantie. Vollständiger BTL-FT-Prozess ist HB-LK;GK benötigt hier nur zutreffende Abgrenzung.",
+          "en": "Industrial paper scheme oil crop→cleaning/crushing→pressing→filtering/refining→triglyceride mixture. Optional industrial solvent extraction is separation,not an activity to perform here. Ideal100 kg dry seed→30 kg oil+70 kg press cake;seed oil content,loss/moisture absent. Plant oil=triglycerides. Biodiesel:triglyceride+3 methanol→3 fatty-acid methyl esters+glycerol,then separation/purification;no operating instructions. Sugar bioethanol:C6H12O6→2 C2H5OH+2 CO2,then separation;actual conversion limited. Generation convention:1 from sugar/starch/edible oils of suitable food crops;2 from lignocellulosic or specified residue routes. Generation classifies feedstock/process,not guaranteed sustainability. Full BTL-FT process belongs to HB LK;GK here needs accurate distinction only."
+        },
+        "learnerTask": {
+          "de": "Erkläre konkrete Gewinnungs-/Herstellungsschritte auf Stoffebene. Unterscheide Pflanzenöl,Biodiesel und Bioethanol nach Rohstoff,Stoffklasse,Kernprozess. Prüfe Saatbilanz. Verwende Treibstoffe der1./2.Generation und begründe,warum erneuerbar nicht automatisch CO2-neutral ist. Erhaltene vertiefte Biodiesel-/Bioethanolprofile sind zusätzliche Carrier;keine Herstellung durchführen.",
+          "en": "Explain concrete isolation/manufacturing steps at substance level. Distinguish plant oil,biodiesel and bioethanol by feedstock,class,core process. Check seed balance. Use first/second-generation fuels and explain why renewable is not automatically carbon-neutral. Retained detailed biodiesel/bioethanol profiles are additional carriers;perform no manufacture."
+        },
+        "modelSolution": {
+          "de": "Pressen/Filtern trennt vorhandene Triglyceride;Umesterung bildet neue Ester/Glycerin;Gärung bildet Ethanol/CO2.30+70=100 kg im idealen Saat-System;Gesamtöl-Ausbeute ohne Ölanteil nicht berechenbar. Anbau,Prozessenergie,Landnutzung,Transport,Nebenprodukte beeinflussen Klimabilanz;Auspuff emittiert auch biogenes CO2.",
+          "en": "Pressing/filtering separates existing triglycerides;transesterification forms new esters/glycerol;fermentation forms ethanol/CO2.30+70=100 kg within ideal seed boundary;total oil recovery needs oil content. Cultivation,process energy,land use,transport,coproducts affect climate balance;exhaust also releases biogenic CO2."
+        },
+        "freshTransfer": {
+          "task": {
+            "de": "Restholz wird über Synthesegas zu Kraftstoff;anderer Anbieter nutzt gefiltertes Rapsöl. Beide heißen werblich Biodiesel und klimaneutral. Prüfe ohne neue GK-LK-Detailpflicht.",
+            "en": "Waste wood becomes fuel via syngas;another producer uses filtered rapeseed oil. Both advertise biodiesel and carbon neutrality. Assess without adding LK detail duties for GK."
+          },
+          "expected": {
+            "de": "Holz/Synthesegas passt zum zweiten Generationen-/BTL-Kontext,nicht FAME. Gefiltertes Rapsöl bleibt Pflanzenöl,keine Umesterung. Für beide keine automatische Neutralität;LCA-Systemgrenze fehlt.",
+            "en": "Wood/syngas fits second-generation/BTL context,not FAME. Filtered rapeseed oil remains plant oil,no transesterification. Neither is automatically neutral;LCA boundary absent."
+          }
+        },
+        "rubric": {
+          "de": "Herstellungsschritte und Stoffklassen;richtige Bilanz/Generationen;kein Neutralitäts- oder GK/LK-Kurzschluss.",
+          "en": "Manufacturing steps/classes;correct balance/generations;no neutrality or GK/LK shortcut."
+        },
+        "blankLearnerRecord": {
+          "ownWork": null,
+          "actualActionTrace": null,
+          "sourcesActuallyRead": null,
+          "freshTransfer": null
+        }
+      },
+      "readBoundary": "Complete material scientific givens, tasks, model solution, fresh transfer and rubric; status fields do not establish approval."
+    },
+    {
+      "rawInput": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-material-author-20261017-v1/materials/hb201-btl-fischer-tropsch.DE-EN.json",
+        "sha256": "aaac9f5c4224822e692de4aaff3720f8c761c66c70580446017281bf6f6fcb54",
+        "bytes": 5654
+      },
+      "wholeMaterial": {
+        "materialId": "hb201-btl-fischer-tropsch",
+        "sourceOrdinals": [
+          201
+        ],
+        "title": {
+          "de": "BTL über Fischer–Tropsch",
+          "en": "BTL through Fischer–Tropsch"
+        },
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1",
+        "active": false,
+        "humanApproval": false,
+        "actualLearnerPerformanceRecorded": false,
+        "M7Claim": false,
+        "ownMaterialLicense": "CC-BY-4.0",
+        "modelAndDataOrigin": {
+          "de": "Alle fiktiven Zahlen und Befunde sind eigene Unterrichtsmodelle, keine beobachtete Lernendenleistung, Produktprüfung oder Zulassung. Reale Quellen sind separat verzeichnet.",
+          "en": "All fictional numbers and findings are own teaching models, not observed learner performance, product testing or approval. Genuine sources are listed separately."
+        },
+        "givens": {
+          "de": "Ausschließlich industrielles Papierschema: lignocellulosische Biomasse wie Restholz→Vergasung→rohes Synthesegas (wesentlich CO/H2 plus Verunreinigungen)→Reinigung und Einstellung H2/CO→katalytische Fischer–Tropsch-Synthese→Gemisch verschiedener Kohlenwasserstoffketten und Wasser→Abtrennung, gegebenenfalls Hydrocracken/Isomerisieren→Kraftstofffraktionen. Keine Anlage nachbauen, kein CO/H2 erzeugen. Ideales Alkanmodell n CO+(2n+1)H2→CnH2n+2+n H2O; keine gesamte Vergasungsbilanz oder Behauptung reinen FT-Produkts. Rechenfall n=8, 20 mol CO+44 mol H2, nur ideale Reaktion und vollständiger limitierender Umsatz. BTL=Biomass-to-Liquid; Kohleweg CTL, Erdgasweg GTL. BTL ist weder gepresstes Triglyceridöl noch FAME-Biodiesel. Hier Gen2-Kontext lignocellulosischer Reststoff; erste Generation meint hier Zucker/Stärke/Speiseöl geeigneter Nahrungspflanzen. LCA braucht Regeneration, Transport, Prozessenergie, Landnutzungs-/Opportunitätseffekte, Nebenprodukte und Systemgrenze.",
+          "en": "Industrial paper scheme only: lignocellulosic biomass such as waste wood→gasification→raw syngas (mainly CO/H2 plus contaminants)→cleanup and H2/CO adjustment→catalytic Fischer–Tropsch synthesis→mixture of hydrocarbon chain lengths and water→separation, where needed hydrocracking/isomerization→fuel fractions. Build no plant and produce no CO/H2. Ideal alkane model n CO+(2n+1)H2→CnH2n+2+n H2O; not the complete gasification balance or a claim of pure FT product. Calculate n=8, 20 mol CO+44 mol H2, only this ideal reaction and complete limiting conversion. BTL=Biomass-to-Liquid; coal gives CTL, natural gas GTL. BTL is neither pressed triglyceride oil nor FAME biodiesel. Generation 2 here means lignocellulosic residue; first generation here means sugar/starch/edible oils of suitable food crops. LCA needs regrowth, transport, process energy, land-use/opportunity effects, coproducts and boundary."
+        },
+        "learnerTask": {
+          "de": "Erkläre jeden Schritt und seine Funktion. Prüfe C/H/O-Bilanz des Octanmodells, bestimme limitierenden Stoff, ideale Produkt-/Wassermenge und H2-Rest. Begründe Gemisch/Aufarbeitung, grenze BTL von Pflanzenöl/Biodiesel und Generation1 ab. Prüfe: zweite Generation ist immer CO2-neutral.",
+          "en": "Explain every step and purpose. Check C/H/O balance for ideal octane; determine limiting reactant, ideal product/water and residual H2. Explain mixture/upgrading, distinguish BTL from plant oil/biodiesel and generation 1. Assess: second generation is always carbon-neutral."
+        },
+        "modelSolution": {
+          "de": "8 CO+17 H2→C8H18+8 H2O erhält 8 C,8 O,34 H. CO limitiert:2,5 mol ideales Octan,20 mol Wasser,42,5 mol H2 verbraucht,1,5 mol übrig. Real entstehen mehrere Kettenlängen/Nebenprodukte; selektive Ausbeute folgt daraus nicht. Reinigung schützt Katalysator; Verhältnissteuerung und Aufarbeitung liefern nutzbare Fraktionen. Nachwachsende Biomasse kann CO2 wieder aufnehmen, aber Verbrennung emittiert CO2; Gesamtneutralität ist LCA-/zeitabhängig.",
+          "en": "8 CO+17 H2→C8H18+8 H2O conserves 8 C,8 O,34 H. CO limits:2.5 mol ideal octane,20 mol water,42.5 mol H2 consumed,1.5 mol left. Actual products contain several chain lengths/byproducts; selective yield does not follow. Cleanup protects catalysts; ratio adjustment/upgrading give useful fractions. Regrowing biomass can take up CO2 but combustion emits CO2; overall neutrality depends on LCA/time."
+        },
+        "freshTransfer": {
+          "task": {
+            "de": "Neuer Anbieter verwendet Kohle statt Holz, nennt FT-Gemisch BTL-Diesel und klimaneutral. Eingang nun 20 mol CO+34 mol H2. Prüfe Name, ideale Bilanz und Klimafazit.",
+            "en": "New producer uses coal instead of wood, calls its FT mixture BTL diesel and carbon-neutral. Feed is now 20 mol CO+34 mol H2. Check naming, ideal balance and climate conclusion."
+          },
+          "expected": {
+            "de": "Kohle bedeutet CTL, nicht BTL. H2 limitiert:2 mol ideales Octan,16 mol Wasser,4 mol CO bleiben. Reales Gemisch bleibt offen. FT macht weder Rohstoff erneuerbar noch LCA automatisch neutral.",
+            "en": "Coal means CTL, not BTL. H2 limits:2 mol ideal octane,16 mol water,4 mol CO remain. Actual mixture is unresolved. FT makes neither feedstock renewable nor LCA automatically neutral."
+          }
+        },
+        "rubric": {
+          "de": "Vollständige Biomasse-/Synthesegas-/FT-/Aufarbeitungskette; korrekte Bilanz und Grenzen; BTL/FAME/CTL und Generationen; neuer limitierender Stoff; bedingte LCA.",
+          "en": "Complete biomass/syngas/FT/upgrading chain; correct balance/limits; BTL/FAME/CTL and generations; new limiting reactant; conditional LCA."
+        },
+        "blankLearnerRecord": {
+          "ownWork": null,
+          "actualActionTrace": null,
+          "sourcesActuallyRead": null,
+          "freshTransfer": null
+        }
+      },
+      "readBoundary": "Complete material scientific givens, tasks, model solution, fresh transfer and rubric; status fields do not establish approval."
+    },
+    {
+      "rawInput": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-material-author-20261017-v1/materials/hb208-recovery-routes.DE-EN.json",
+        "sha256": "8bf2694013da9149bc27d9732189c39a2442126c9fed975f298b54c0d9c14f91",
+        "bytes": 4202
+      },
+      "wholeMaterial": {
+        "materialId": "hb208-recovery-routes",
+        "sourceOrdinals": [
+          208
+        ],
+        "title": {
+          "de": "Stoffliche und energetische Verwertung",
+          "en": "Material and energy recovery"
+        },
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1",
+        "active": false,
+        "humanApproval": false,
+        "actualLearnerPerformanceRecorded": false,
+        "M7Claim": false,
+        "ownMaterialLicense": "CC-BY-4.0",
+        "modelAndDataOrigin": {
+          "de": "Alle fiktiven Zahlen und Befunde sind eigene Unterrichtsmodelle, keine beobachtete Lernendenleistung, Produktprüfung oder Zulassung. Reale Quellen sind separat verzeichnet.",
+          "en": "All fictional numbers and findings are own teaching models, not observed learner performance, product testing or approval. Genuine sources are listed separately."
+        },
+        "givens": {
+          "de": "Reiner PE-Modellstrom100 kg, vereinfacht(CH2)n. M:Sortieren/Reinigen/Aufschmelzen→80 kg Granulat+20 kg Rest. C:chemisch Spalten/Aufarbeiten→70 kg gemischte organische Rohstoffe+30 kg Rest, kein fertiger Kunststoff. E:vollständige kontrollierte industrielle Verbrennung; Heizwert44 MJ/kg,20% Strom und40% tatsächlich genutzte Wärme, Rest Verluste. Inputs M/C, Emissionen, Qualität und Restbehandlung fehlen.1 kWh=3,6 MJ; M(CH2)=14 g/mol,M(CO2)=44 g/mol. Nur Papieranalyse, keine Verbrennung.",
+          "en": "Pure PE model100 kg, simplified(CH2)n. M:sorting/cleaning/remelting→80 kg granulate+20 kg residue. C:chemical cleavage/work-up→70 kg mixed organic feedstock+30 kg residue, not finished polymer. E:complete controlled industrial combustion;44 MJ/kg heating value,20% electricity and40% actually useful heat, rest losses. M/C inputs, emissions, quality and residue treatment absent.1 kWh=3.6 MJ;M(CH2)=14 g/mol,M(CO2)=44 g/mol. Paper analysis only, no burning."
+        },
+        "learnerTask": {
+          "de": "Beschreibe werkstoffliche, rohstoffliche und energetische Wege. Bilanziere E-Energie und idealen direkten CO2-Ausstoß. Erkläre, weshalb kg Granulat/Rohstoff und Strom keine gleiche Funktion liefern. Formuliere ein bedingtes Urteil und fehlende LCA-Daten.",
+          "en": "Describe mechanical, feedstock and energy routes. Balance E energy and ideal direct CO2. Explain why kg granulate/feedstock and electricity do not supply equal functions. Give a conditional judgment and missing LCA data."
+        },
+        "modelSolution": {
+          "de": "M erhält Polymerketten weitgehend; C erzeugt kleinere Rohstoffe; E verbraucht Polymer durch Oxidation zur Energienutzung, kein stoffliches Recycling.4400 MJ Einsatz,880 MJ=244,4 kWh Strom,1760 MJ=488,9 kWh Wärme. CH2+1,5O2→CO2+H2O;100·44/14=314,3 kg direktes CO2 ideal. Keine Lebenszyklusrangliste ohne gleiche Funktion/Systemgrenze.",
+          "en": "M largely retains chains; C makes smaller feedstocks; E consumes polymer by oxidation for useful energy, not material recycling.4400 MJ input,880 MJ=244.4 kWh electricity,1760 MJ=488.9 kWh heat. CH2+1.5O2→CO2+H2O;100·44/14=314.3 kg ideal direct CO2. No LCA ranking without equal function/boundary."
+        },
+        "freshTransfer": {
+          "task": {
+            "de": "Neuer Abfall hat unbekannte PVC-/PE-Anteile, verschmutzte Mehrschichten und keinen Abnehmer für M-Granulat. Welche Rechnung/Folgerung bleibt tragfähig?",
+            "en": "New waste has unknown PVC/PE fractions, dirty multilayers and no buyer for M granulate. Which calculation/inference remains justified?"
+          },
+          "expected": {
+            "de": "PE-Reinbilanz/Heizwert nicht übernehmen. Zusammensetzung, Sortierbarkeit, Abgasreinigung und reale Produktsubstitution klären. Stoff-/Energieunterscheidung bleibt gültig.",
+            "en": "Do not transfer pure-PE balance/heating value. Resolve composition, sortability, flue-gas treatment and actual product substitution. Material/energy distinction remains valid."
+          }
+        },
+        "rubric": {
+          "de": "Drei Pfade; korrekte Einheiten/Bilanz; Funktionsvergleich; ehrlicher Gemischtransfer.",
+          "en": "Three routes; correct units/balance; functional comparison; honest mixture transfer."
+        },
+        "blankLearnerRecord": {
+          "ownWork": null,
+          "actualActionTrace": null,
+          "sourcesActuallyRead": null,
+          "freshTransfer": null
+        }
+      },
+      "readBoundary": "Complete material scientific givens, tasks, model solution, fresh transfer and rubric; status fields do not establish approval."
+    },
+    {
+      "rawInput": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-material-author-20261017-v1/materials/hb230-actual-digital-aromatics.DE-EN.json",
+        "sha256": "5203ac6ff201e8a6bf8572e1cf7344aba5f76774dbb7716d2d2f5a8fd6a16919",
+        "bytes": 3787
+      },
+      "wholeMaterial": {
+        "materialId": "hb230-actual-digital-aromatics",
+        "sourceOrdinals": [
+          230
+        ],
+        "title": {
+          "de": "Aromaten selbst digital darstellen",
+          "en": "Actually represent aromatics digitally"
+        },
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1",
+        "active": false,
+        "humanApproval": false,
+        "actualLearnerPerformanceRecorded": false,
+        "M7Claim": false,
+        "ownMaterialLicense": "CC-BY-4.0",
+        "modelAndDataOrigin": {
+          "de": "Alle fiktiven Zahlen und Befunde sind eigene Unterrichtsmodelle, keine beobachtete Lernendenleistung, Produktprüfung oder Zulassung. Reale Quellen sind separat verzeichnet.",
+          "en": "All fictional numbers and findings are own teaching models, not observed learner performance, product testing or approval. Genuine sources are listed separately."
+        },
+        "givens": {
+          "de": "Lehrkraft/Lernender wählt tatsächlich verfügbaren Moleküleditor mit3D-Ansicht,kein Anbieterzwang. Benzol C6H6:sechs sp2-C im geschlossenen annähernd ebenen Ring, kontinuierliches π-System. Kekulé-/aromatische Darstellung sind Modelle desselben Moleküls. Programm kann gewählte Konventionen/optimierte Geometrien zeigen;keine reale Bindungslängenmessung. Ohne Werkzeug bleibt digitale Handlung offen.",
+          "en": "Teacher/learner chooses actually available molecular editor with3D view,no required vendor. Benzene C6H6:six sp2 carbons in approximately planar ring,continuous π system. Kekulé/aromatic depictions model the same molecule. Software shows conventions/optimized geometry,not actual measured bond lengths. Without tool,digital action remains open."
+        },
+        "learnerTask": {
+          "de": "Erstelle/prüfe Benzol tatsächlich digital;prüfe Formel/Valenzen,wechsle2D/3D,rotiere und erkläre Ringebene/π-System samt Grenzen fest eingezeichneter Doppelbindungen. Sichere eigene bearbeitbare Datei oder geeigneten Export mit nachvollziehbarer eigener Aktionsspur. Bereitgestelltes Bild ersetzt eigene Handlung nicht.",
+          "en": "Actually create/check benzene digitally;check formula/valences,switch2D/3D,rotate and explain ring plane/π system and limits of fixed double bonds. Retain own editable file or suitable export with trace of own actions. Supplied image cannot replace own action."
+        },
+        "modelSolution": {
+          "de": "Eigenes Modell hat C6H6/korrekte Valenzen;Delokalisierung ist kein reales Bindungshinundherspringen. Werkzeug und Darstellungen begründen. Export belegt Modellhandlung,nicht Experiment/Elektronendichtemessung.",
+          "en": "Own model has C6H6/correct valences;delocalization is not literal bonds jumping back and forth. Justify tool/views. Export supports modelling action,not experiment/electron-density measurement."
+        },
+        "freshTransfer": {
+          "task": {
+            "de": "Ändere das eigene Modell tatsächlich zu Toluol C7H8;prüfe Ringkonjugation/Valenzen und irreführende räumliche Ansicht.",
+            "en": "Actually change own model to toluene C7H8;check ring conjugation/valences and misleading perspective."
+          },
+          "expected": {
+            "de": "Methyl ersetzt Ring-H,Ring bleibt gekoppelt,C7H8. Rotation trennt Projektion und Modellgeometrie. Keine reale Messung behaupten.",
+            "en": "Methyl replaces ring H,ring stays coupled,C7H8. Rotation separates projection/model geometry. Claim no actual measurement."
+          }
+        },
+        "rubric": {
+          "de": "Tatsächliche eigene Datei/Aktionen;korrekte Struktur/Modellgrenze;neuer Substitutions-/Ansichtstransfer.",
+          "en": "Actual own file/actions;correct structure/model limits;new substitution/view transfer."
+        },
+        "blankLearnerRecord": {
+          "ownWork": null,
+          "actualActionTrace": null,
+          "sourcesActuallyRead": null,
+          "freshTransfer": null
+        },
+        "actualDigitalActionRequired": true
+      },
+      "readBoundary": "Complete material scientific givens, tasks, model solution, fresh transfer and rubric; status fields do not establish approval."
+    },
+    {
+      "rawInput": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-materials-resources-material-author-20261017-v1/materials/hb232-drug-society.DE-EN.json",
+        "sha256": "6bf57b222d7956a53c80b2e63c3d8f0bd61dc4865fb26b5987f497b898e95345",
+        "bytes": 5240
+      },
+      "wholeMaterial": {
+        "materialId": "hb232-drug-society",
+        "sourceOrdinals": [
+          232
+        ],
+        "title": {
+          "de": "Wirkstoffforschung historisch und heute",
+          "en": "Drug research historically and today"
+        },
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1",
+        "active": false,
+        "humanApproval": false,
+        "actualLearnerPerformanceRecorded": false,
+        "M7Claim": false,
+        "ownMaterialLicense": "CC-BY-4.0",
+        "modelAndDataOrigin": {
+          "de": "Alle fiktiven Zahlen und Befunde sind eigene Unterrichtsmodelle, keine beobachtete Lernendenleistung, Produktprüfung oder Zulassung. Reale Quellen sind separat verzeichnet.",
+          "en": "All fictional numbers and findings are own teaching models, not observed learner performance, product testing or approval. Genuine sources are listed separately."
+        },
+        "givens": {
+          "de": "Historische Sachkarte:Nobelpreis Medizin1945 würdigte Fleming,Chain,Florey für Penicillin und heilende Wirkung bei verschiedenen Infektionskrankheiten. Antibakterieller Befund,Entwicklung von Wirksamkeits-/Sicherheitsnachweisen,Aufarbeitung und skalierbare Herstellung sind verschiedene Leistungen. Breitere Verfügbarkeit veränderte Behandlungsmöglichkeiten;Resistenz/ungleicher Zugang begrenzen Nutzen. Keine Behandlungsempfehlung. Fiktive heutige Förderoptionen mit ausdrücklich gleicher erwarteter Wirksamkeit im Modell:A erweitert Zugang zu geprüftem Wirkstoff,Kostenindex3,erreicht80/100 Modellbedürftige,Resistenzüberwachung enthalten;B entwickelt einen neuen antimikrobiellen Wirkstoff und plant dessen Vermarktung,Index5,erreicht50/100,Überwachung nicht finanziert. Für beide Sicherheit in definierter Zielgruppe angenommen;Umwelt-/Langzeitdaten fehlen. Keine echten klinischen Studien.",
+          "en": "Historical card:1945 Nobel Medicine Prize recognized Fleming,Chain,Florey for penicillin and curative effects in various infectious diseases. Antibacterial findings,development of efficacy/safety evidence,work-up and scalable production are different achievements. Wider availability changed treatment possibilities;resistance/unequal access limit benefit. No treatment advice. Fictional current funding choices with explicitly equal expected model efficacy:A expands access to assessed drug,cost index3,reaches80/100 model people in need,resistance monitoring included;B develops a new antimicrobial active ingredient and plans its marketing,index5,reaches50/100,monitoring unfunded. Both assume safety for defined population;environmental/long-term data absent. Not actual clinical studies."
+        },
+        "learnerTask": {
+          "de": "Bewerte gesellschaftliche Bedeutung historisch UND aktuell anhand Nutzen,Zugang,Kosten,Sicherheit,Resistenz und Evidenzgrenzen. Unterscheide Befund,Entwicklung,großtechnische Verfügbarkeit und Werbeversprechen. Begründe eine bedingte Förderwahl;Zahlen sind keine medizinische Freigabe.",
+          "en": "Evaluate societal significance historically AND today using benefit,access,cost,safety,resistance and evidence limits. Distinguish finding,development,industrial availability and marketing. Justify a conditional funding choice;numbers give no medical approval."
+        },
+        "modelSolution": {
+          "de": "Historischer Nutzen braucht Entwicklung,Produktion und Zugang über Entdeckung hinaus. Bei angenommener gleicher Wirkung spricht im Modell mehr Zugang,niedrigerer Index und Überwachung für A. Das Urteil legt Werte/Kriterien offen. Neue Forschung kann wichtig sein;Neuheit allein belegt weder Wirkung noch gesellschaftlichen Gesamtnutzen.",
+          "en": "Historical benefit needs development,production and access beyond discovery. With assumed equal efficacy,greater access,lower index and monitoring favour A in this model. Judgment states values/criteria. New research can matter;novelty alone proves neither efficacy nor overall societal benefit."
+        },
+        "freshTransfer": {
+          "task": {
+            "de": "Neue Resistenzdaten machen alten Wirkstoff für einen Teil unwirksam;belastbare Vergleichsdaten für B fehlen. Übertrage die Entscheidung.",
+            "en": "New resistance data make the old drug ineffective for some;robust comparative evidence for B is absent. Transfer the decision."
+          },
+          "expected": {
+            "de": "Gleiche-Wirkung-Annahme entfällt;alte Zahlenrangfolge reicht nicht. Neue Wirksamkeits-/Sicherheitsdaten und Zielgruppenabgrenzung nötig. Forschung/Überwachung neu gewichten;B-Wirkung nicht erfinden,keine Behandlung empfehlen.",
+            "en": "Equal-efficacy assumption fails;old numerical ranking no longer suffices. New efficacy/safety evidence and population definitions needed. Reweight research/monitoring;invent no B efficacy and recommend no treatment."
+          }
+        },
+        "rubric": {
+          "de": "Historischer UND aktueller Gesellschaftsbezug;Entwicklung/Produktion/Zugang;begründetes Urteil;neue Evidenz verändert Annahmen;keine klinischen Leistungsbehauptungen.",
+          "en": "Historical AND current societal context;development/production/access;reasoned judgment;new evidence changes assumptions;no clinical-performance claims."
+        },
+        "blankLearnerRecord": {
+          "ownWork": null,
+          "actualActionTrace": null,
+          "sourcesActuallyRead": null,
+          "freshTransfer": null
+        }
+      },
+      "readBoundary": "Complete material scientific givens, tasks, model solution, fresh transfer and rubric; status fields do not establish approval."
+    },
+    {
+      "rawInput": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-colour-calibration-domain-targeted-author-v10/fifty-two-cases.de-en.author-candidate.json",
+        "sha256": "e06d93a5098cb765b50d174412a0692a3d966f774354acb37d653a3223df5bfb",
+        "bytes": 316441
+      },
+      "actualSelectedCases": [
+        {
+          "jsonPointer": "/cases/16",
+          "wholeCaseObjectSHA256": "5b27fa9079cd0f0e84c2d2ab619a55ee039accc73383c2ae3c94d08b4f5266f7",
+          "wholeCase": {
+            "caseKey": "data-validity-test-not-proof",
+            "candidateKey": "data-validity",
+            "candidateGoalId": null,
+            "originalFamilyGoalId": "49b13b33-34b7-5e4e-861c-b21082cb9922",
+            "status": "ai_candidate",
+            "reviewStatus": "needs_human_review",
+            "evidenceLevel": "E1",
+            "generationLevel": "G1",
+            "materialOrigin": "SkillPilot-authored teaching scenario; numbers are supplied model/reference data, not learner measurements",
+            "learnerPerformanceRecorded": false,
+            "humanApproval": false,
+            "humanTrial": false,
+            "suppliedMaterial": {
+              "de": "Fiktiver Farbtest T soll Stoff X anzeigen. Validierungsblatt: Blindprobe Wasser farblos; bekannte X-Probe farbig; bekannte Y-Probe ebenfalls farbig; unbekannte U farbig. U wurde ohne dokumentierte Verdünnung erhitzt. Quelle S erklärt ausdrücklich Kreuzreaktion mit Y; Herstellertext H nennt nur „X-Test“. Keine Gesundheitsentscheidung.",
+              "en": "Fictional colour test T is intended to indicate substance X. Validation sheet: water blank colourless; known X sample coloured; known Y sample also coloured; unknown U coloured. U was heated without documented dilution. Source S explicitly explains cross-reaction with Y; manufacturer text H only says “X test”. No health decision."
+            },
+            "learnerTask": {
+              "de": "Beurteile Gültigkeit, geeignete Quellen, Blind-/Positivkontrollen und Tragweite von „U enthält X“. Benenne einen Verfahrensfehler und eine geeignete Folgemethode.",
+              "en": "Assess validity, suitable sources, blank/positive controls and the scope of “U contains X”. Identify a procedure error and a suitable follow-up method."
+            },
+            "expectedAnswer": {
+              "de": "Die Blank-/Positivkontrolle zeigt grundsätzliches Testansprechen; Y macht den Test nicht spezifisch. U-Farbe ist ein Hinweis auf eine reagierende Komponente, kein eindeutiger X-Nachweis. S ist für Spezifität relevanter als das verkürzte Etikett H; unbekannte Verdünnung/Erhitzung kann Signal verändern. Eine unabhängig spezifischere Analyse mit dokumentierten Bedingungen ist nötig. Blindproben korrigieren keinen grundsätzlich unspezifischen Reaktionsmechanismus. Weil X/Y hier keine Stoffidentitäten oder Trennmerkmale haben, darf kein benanntes Gerät ungeprüft als X-spezifisch gelten. Akzeptabel ist eine konkrete kontrollierte Wiederholung mit dokumentierter Verdünnung/Temperatur und eine begründete Planung zur Validierung einer ergänzenden Methode an bekannten X-, Y- und Blindproben. Für einen eindeutigen X-Nachweis muss deren Spezifität erst belegt werden; Wiederholung des unspezifischen Tests allein identifiziert X weiterhin nicht.",
+              "en": "Blank/positive controls show that the test responds in principle; Y makes it non-specific. U colour indicates a reacting component, not unique proof of X. S is more relevant to specificity than the shortened label H; unknown dilution/heating may alter the signal. An independent more specific analysis under documented conditions is needed. Blanks do not correct an inherently non-specific reaction mechanism. Because X/Y have no identities or discriminating properties here, no named instrument may be presumed X-specific. Accept a concrete controlled repeat with documented dilution/temperature and a justified plan to validate an additional method against known X, Y and blank samples. Its specificity must first be established for unique proof of X; repeating the non-specific test alone still does not identify X."
+            },
+            "requiredAssessmentCriteria": [
+              {
+                "criterionKey": "data-validity-test-not-proof-C1",
+                "meaning": {
+                  "de": "Kontrollen, Kreuzreaktion und Verfahrensbedingungen werden ausgewertet.",
+                  "en": "Controls, cross-reaction and procedure conditions are evaluated."
+                }
+              },
+              {
+                "criterionKey": "data-validity-test-not-proof-C2",
+                "meaning": {
+                  "de": "Hinweis und eindeutiger Nachweis werden sauber unterschieden.",
+                  "en": "Indication and unique proof are clearly distinguished."
+                }
+              },
+              {
+                "criterionKey": "data-validity-test-not-proof-C3",
+                "meaning": {
+                  "de": "Quellenwahl und konkrete Folgemethode/Verbesserung sind begründet. Eine Folgemethode ist als zu validierender Vorschlag zu begründen; unbekannte X/Y-Eigenschaften begründen keine bereits bewiesene Gerätespezifität.",
+                  "en": "Source choice and a specific follow-up method/improvement are justified. Justify a follow-up method as a proposal requiring validation; unknown X/Y properties do not establish instrument specificity."
+                }
+              }
+            ],
+            "transfer": {
+              "de": "Wenn Y ausgeschlossen wird, erkläre, welche weiteren Informationen vor einem eindeutigen Nachweis noch fehlen können.",
+              "en": "If Y is excluded, explain what further information may still be missing before unique proof."
+            },
+            "sourceOperatorScopeContractDe": "BY C9 Fehlerbezug, C10 Gültigkeit, C11 Mess-/Verfahrensfehler und C12/13 B3 Tragweite; C12.3.3 Testergebniswert benötigt im Fall zudem geeignete Quellen, Blindproben und Hinweis/Nachweis-Unterscheidung. Diese Spezialisierung ist nur partielle Prozessdeckung.",
+            "nativeEvidenceApproved": false,
+            "strictCompletionsAdded": 0
+          }
+        },
+        {
+          "jsonPointer": "/cases/17",
+          "wholeCaseObjectSHA256": "7615bace46ff2b18926f529e6d6c1ede04a2ae00927533a732dd56b68199adc1",
+          "wholeCase": {
+            "caseKey": "data-validity-temperature-confound",
+            "candidateKey": "data-validity",
+            "candidateGoalId": null,
+            "originalFamilyGoalId": "49b13b33-34b7-5e4e-861c-b21082cb9922",
+            "status": "ai_candidate",
+            "reviewStatus": "needs_human_review",
+            "evidenceLevel": "E1",
+            "generationLevel": "G1",
+            "materialOrigin": "SkillPilot-authored teaching scenario; numbers are supplied model/reference data, not learner measurements",
+            "learnerPerformanceRecorded": false,
+            "humanApproval": false,
+            "humanTrial": false,
+            "suppliedMaterial": {
+              "de": "Neu skaliertes synthetisches Lehrmodell zur Leitfähigkeit zweier NaCl-Proben: A 1,0 g/L bei 20 °C: 1800 µS/cm; B 1,0 g/L bei 35 °C: 2300 µS/cm. Messgerät ohne Temperaturkompensation; Kontrolle A bei 35 °C: 2298 µS/cm. Behauptung: B enthält deutlich mehr Salz. Für diese modellierte Messreihe bleibt die grobe Wiederholstreuung einer Einzelmessung ausdrücklich ±3 µS/cm; sie wurde nicht mit Konzentrations-/Leitfähigkeitskorrektur multipliziert und ist keine vollständige Messunsicherheit. Die Kontrollzahl 2298 ist gezielt neu angesetzt, damit temperaturgleiche Werte 2 µS/cm auseinanderliegen; es werden keine echten Messungen behauptet.",
+              "en": "Rescaled synthetic teaching model for conductivity of two NaCl samples: A 1.0 g/L at 20 °C: 1800 µS/cm; B 1.0 g/L at 35 °C: 2300 µS/cm. Meter lacks temperature compensation; control A at 35 °C: 2298 µS/cm. Claim: B contains much more salt. For this modelled measurement series one measurement explicitly retains the rough ±3 µS/cm repeat scatter; it was not multiplied with the concentration/conductivity correction and is not full measurement uncertainty. The control value 2298 is deliberately newly set so the matched-temperature values differ by 2 µS/cm; no real measurements are claimed."
+            },
+            "learnerTask": {
+              "de": "Prüfe, welche Folgerung durch Daten getragen wird, welche Störgröße vorliegt und wie ein gültiger Stoffmengenvergleich verbessert werden kann.",
+              "en": "Assess which conclusion the data support, the confounder present and how to improve a valid amount comparison."
+            },
+            "expectedAnswer": {
+              "de": "Die 500-µS/cm-Differenz ist mit Temperatur gekoppelt; Kontrolle A35 liegt innerhalb grober Streuung bei B35. Daten belegen kein Mehr an Salz in B. Gleiche Temperatur, Standards, Wiederholungen und bekannte Kompensation/gleiches Ionensystem sind nötig. Streuungsangabe ist nicht die vollständige Messunsicherheit; selbst temperaturgleiche Leitfähigkeit wäre bei unbekannten Ionensorten keine eindeutige NaCl-Konzentration.",
+              "en": "The 500-µS/cm difference is confounded by temperature; A35 control lies within rough scatter of B35. Data do not establish more salt in B. Equal temperature, standards, repeats and known compensation/the same ion system are needed. The scatter estimate is not full measurement uncertainty; even equal-temperature conductivity would not uniquely determine NaCl concentration for unknown ion species."
+            },
+            "requiredAssessmentCriteria": [
+              {
+                "criterionKey": "data-validity-temperature-confound-C1",
+                "meaning": {
+                  "de": "Temperatur wird anhand der Kontrollmessung als Störgröße begründet.",
+                  "en": "Temperature is justified as a confounder using the control."
+                }
+              },
+              {
+                "criterionKey": "data-validity-temperature-confound-C2",
+                "meaning": {
+                  "de": "Nicht getragene Konzentrationsbehauptung wird zurückgewiesen.",
+                  "en": "The unsupported concentration claim is rejected."
+                }
+              },
+              {
+                "criterionKey": "data-validity-temperature-confound-C3",
+                "meaning": {
+                  "de": "Konkrete methodische Verbesserung und Reichweitengrenze werden genannt.",
+                  "en": "Specific method improvement and scope limit are identified."
+                }
+              }
+            ],
+            "transfer": {
+              "de": "Plane den Vergleich, wenn Probe B zusätzlich Saccharose enthält; erläutere die Grenze reiner Leitfähigkeitsdaten.",
+              "en": "Plan the comparison if B additionally contains sucrose; explain the limit of conductivity-only data."
+            },
+            "sourceOperatorScopeContractDe": "BY C9 Fehlerbezug, C10 Gültigkeit, C11 Mess-/Verfahrensfehler und C12/13 B3 Tragweite; C12.3.3 Testergebniswert benötigt im Fall zudem geeignete Quellen, Blindproben und Hinweis/Nachweis-Unterscheidung. Diese Spezialisierung ist nur partielle Prozessdeckung.",
+            "nativeEvidenceApproved": false,
+            "strictCompletionsAdded": 0
+          }
+        },
+        {
+          "jsonPointer": "/cases/28",
+          "wholeCaseObjectSHA256": "b79662b918bf80de5286311981f25700fc3ac81b3473f70072e98add78305d66",
+          "wholeCase": {
+            "caseKey": "upper-source-criticism-dye-removal-claims",
+            "candidateKey": "upper-source-criticism",
+            "candidateGoalId": null,
+            "originalFamilyGoalId": "b6327e98-8ab9-5d7f-b826-4023bc1a56a7",
+            "status": "ai_candidate",
+            "reviewStatus": "needs_human_review",
+            "evidenceLevel": "E1",
+            "generationLevel": "G1",
+            "materialOrigin": "SkillPilot-authored teaching scenario; numbers are supplied model/reference data, not learner measurements",
+            "learnerPerformanceRecorded": false,
+            "humanApproval": false,
+            "humanTrial": false,
+            "suppliedMaterial": {
+              "de": "Drei vollständig autorierte Quellen über Filter X: A, Anbieter-Broschüre: „100 % schadstofffrei“, Balkenvergleich vor/nach ohne Achse, Autor Verkaufsabteilung, bezahlt durch X. B, Schul-Laborbericht: Farbstoffabsorbanz 0,400→0,100 bei festem pH und Wellenlänge, Blank und drei Wiederholungen, andere Schadstoffe nicht analysiert, Autor Laborgruppe, offen dokumentiert. C, anonymer Beitrag: „Filter sind giftig“, keine Daten. Alle fiktiv.",
+              "en": "Three fully authored sources about filter X: A, vendor brochure: “100% pollutant-free”, before/after bars without axis, author sales department, funded by X. B, school laboratory report: dye absorbance 0.400→0.100 at fixed pH/wavelength, blank and three repeats, other pollutants not analysed, author laboratory group, openly documented. C, anonymous post: “Filters are poisonous”, no data. All fictional."
+            },
+            "learnerTask": {
+              "de": "Vergleiche Aussagen, Darstellungsformen, Relevanz, Urheber und Intention für „Entfernt X den Farbstoff unter diesen Bedingungen?“ und für „Ist Wasser sicher trinkbar?“ Beurteile Eignung und Validität getrennt.",
+              "en": "Compare claims, representations, relevance, authors and intent for “Does X remove the dye under these conditions?” and “Is the water safe to drink?” Assess suitability and validity separately."
+            },
+            "expectedAnswer": {
+              "de": "B trägt einen begrenzten Farbstoffvergleich: 75 % geringere A bei gegebenem System, nicht vollständige Schadstofffreiheit. Offene Methoden/Kontrollen erhöhen Prüfbarkeit; Schulurheber allein garantiert nicht Wahrheit. A verfolgt Verkauf, verschweigt Achsen/Analytes und überdehnt Aussage; C ist mangels Daten nicht valide. Keine Quelle belegt Trinkbarkeit oder medizinische Sicherheit. Auch B kann bei Farbumschlag statt Stoffentfernung weitere Methodenprüfung brauchen.",
+              "en": "B supports a bounded dye comparison: 75% lower A for the given system, not complete pollutant absence. Open methods/controls increase checkability; school authorship alone does not guarantee truth. A pursues sales, hides axes/analytes and overextends the claim; C lacks valid evidence. None establishes drinkability or medical safety. B may still need further method checks if colour change rather than removal occurs."
+            },
+            "requiredAssessmentCriteria": [
+              {
+                "criterionKey": "upper-source-criticism-dye-removal-claims-C1",
+                "meaning": {
+                  "de": "Alle fünf Quellendimensionen werden vergleichend konkret angewandt.",
+                  "en": "All five source dimensions are specifically compared."
+                }
+              },
+              {
+                "criterionKey": "upper-source-criticism-dye-removal-claims-C2",
+                "meaning": {
+                  "de": "Validität wird anhand Aussage/Methodik beurteilt, nicht nur anhand Institution.",
+                  "en": "Validity is assessed from claim/method, not institution alone."
+                }
+              },
+              {
+                "criterionKey": "upper-source-criticism-dye-removal-claims-C3",
+                "meaning": {
+                  "de": "Farbstofffrage und umfassende Sicherheitsfrage bleiben getrennt.",
+                  "en": "Dye question and broad safety question remain separate."
+                }
+              }
+            ],
+            "transfer": {
+              "de": "A ergänzt unabhängige vollständige Prüfdaten: Wie muss das Urteil anhand neuer Evidenz angepasst werden?",
+              "en": "A adds independent complete test data: how must the judgment change with new evidence?"
+            },
+            "sourceOperatorScopeContractDe": "BY C11 Eignung; C12/13 K3/K4 sowie B2/B4. NI einzelne quellenkritische Stoff-/Industrieklauseln bleiben in ihrem Inhalt/Kursumfang partiell; nicht automatisch gesamte Routine als exact. Geeignete komplexe Quellen können bereitgestellt werden; eigene komplexe Recherche ist keine universelle harte Voraussetzung der Quellenkritik. Eine ausdrücklich verlangte Eigenrecherche bleibt am eigenen Quellenerschließungsziel mit tatsächlichem Quellenfall gebunden.",
+            "nativeEvidenceApproved": false,
+            "strictCompletionsAdded": 0
+          }
+        },
+        {
+          "jsonPointer": "/cases/29",
+          "wholeCaseObjectSHA256": "717004124b7eb5dddbce008ae32798ad31b3e23b5ba5c3f1fb1f56c4817edfdf",
+          "wholeCase": {
+            "caseKey": "upper-source-criticism-pharmaceutical-graph",
+            "candidateKey": "upper-source-criticism",
+            "candidateGoalId": null,
+            "originalFamilyGoalId": "b6327e98-8ab9-5d7f-b826-4023bc1a56a7",
+            "status": "ai_candidate",
+            "reviewStatus": "needs_human_review",
+            "evidenceLevel": "E1",
+            "generationLevel": "G1",
+            "materialOrigin": "SkillPilot-authored teaching scenario; numbers are supplied model/reference data, not learner measurements",
+            "learnerPerformanceRecorded": false,
+            "humanApproval": false,
+            "humanTrial": false,
+            "suppliedMaterial": {
+              "de": "Fiktive Quellen zu Modellstoff Q: A, Fachblatt mit pH/pKa/Gleichgewichtsannahmen und Daten 1,1/2,0/11,0 mg/L bei pH 3/4/5, Autor bekannt, Fehlerbereich und Bedingungen angegeben. B, soziale Grafik: nur „Q 1000 % besser“, unbekannte Bezugsgröße/Urheber, Link zum Shop. C, unabhängiges analoges Lehrbuchkapitel erklärt Ionisierung, enthält aber keine Q-spezifischen Messwerte. Keine echte Wirksamkeitsstudie.",
+              "en": "Fictional sources on model substance Q: A, technical sheet with pH/pKa/equilibrium assumptions and 1.1/2.0/11.0 mg/L at pH 3/4/5, known author, error range/conditions. B, social graphic: only “Q 1000% better”, unknown reference quantity/author, shop link. C, independent analogue textbook chapter explains ionisation but has no Q-specific measurements. No real efficacy study."
+            },
+            "learnerTask": {
+              "de": "Beurteile Quellen für die konkrete chemische Löslichkeitsfrage und für eine behauptete pharmazeutische Wirkung. Vergleiche Form, Herkunft, Intention, relevante Evidenz und offene Grenzen.",
+              "en": "Assess sources for the specific chemical solubility question and a claimed pharmaceutical effect. Compare form, origin, intent, relevant evidence and unresolved limits."
+            },
+            "expectedAnswer": {
+              "de": "A eignet sich bei geprüften Annahmen zur Modell-Löslichkeit; C zum Theoriebezug, nicht als Q-Messung. B verschweigt Nenner und „besser“-Kriterium; bei Anstieg 1,1→11,0 ist Endwert zehnfach, relative Zunahme 900 %, nicht unklar „1000 % besser“. Keine Quelle zeigt Aufnahme, Wirksamkeit oder klinische Sicherheit. Fachliche Plausibilität, Quellenunabhängigkeit und methodische Begrenzung werden gemeinsam gewichtet.",
+              "en": "A is suitable for model solubility when assumptions hold; C for theory, not as a Q measurement. B hides denominator and meaning of “better”; 1.1→11.0 is a tenfold final value, relative increase 900%, not an unclear “1000% better”. None shows uptake, efficacy or clinical safety. Scientific plausibility, source independence and methodological limits are jointly weighed."
+            },
+            "requiredAssessmentCriteria": [
+              {
+                "criterionKey": "upper-source-criticism-pharmaceutical-graph-C1",
+                "meaning": {
+                  "de": "Sachbezogene Quellen-/Formkritik umfasst Urheberschaft und Intention.",
+                  "en": "Content-specific source/representation criticism covers authorship and intent."
+                }
+              },
+              {
+                "criterionKey": "upper-source-criticism-pharmaceutical-graph-C2",
+                "meaning": {
+                  "de": "Bezugsgröße und Prozentdarstellung werden korrekt beurteilt.",
+                  "en": "Reference quantity and percentage representation are correctly assessed."
+                }
+              },
+              {
+                "criterionKey": "upper-source-criticism-pharmaceutical-graph-C3",
+                "meaning": {
+                  "de": "Theoriebeleg, Messbeleg und pharmazeutischer Wirksamkeitsbeleg werden unterschieden.",
+                  "en": "Theory, measurement and pharmaceutical efficacy evidence are distinguished."
+                }
+              }
+            ],
+            "transfer": {
+              "de": "Wie verändert eine von A deklarierte Herstellerfinanzierung die Bewertung, wenn alle Methoden weiterhin prüfbar sind?",
+              "en": "How does declared manufacturer funding of A affect evaluation if methods remain checkable?"
+            },
+            "sourceOperatorScopeContractDe": "BY C11 Eignung; C12/13 K3/K4 sowie B2/B4. NI einzelne quellenkritische Stoff-/Industrieklauseln bleiben in ihrem Inhalt/Kursumfang partiell; nicht automatisch gesamte Routine als exact. Geeignete komplexe Quellen können bereitgestellt werden; eigene komplexe Recherche ist keine universelle harte Voraussetzung der Quellenkritik. Eine ausdrücklich verlangte Eigenrecherche bleibt am eigenen Quellenerschließungsziel mit tatsächlichem Quellenfall gebunden.",
+            "nativeEvidenceApproved": false,
+            "strictCompletionsAdded": 0
+          }
+        }
+      ],
+      "readBoundary": "Only the selected cases and current27 P profile, not every other case in the file, were substantively read."
+    },
+    {
+      "rawInput": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-13/chemie-e560-full-duty-two-atomic-children-source-preserving-author-20261013-v1/positive/four-whole-child-cases.DEEN.author.json",
+        "sha256": "bf3bfd80acdae50992b574fdc37c3c24a1493a6b6f577686dc2072b57db30726",
+        "bytes": 33134
+      },
+      "actualSelectedCases": [
+        {
+          "jsonPointer": "/cases/2",
+          "wholeCaseObjectSHA256": "05cd64a84d625757f9c13100f7954b844a58496cc7845c68fe9c41094edb375b",
+          "wholeCase": {
+            "caseId": "e560-nanosurface-case-1",
+            "goalId": "6413429b-53d8-5ad1-9af6-d0e562cbf0f5",
+            "title": "40-nm-Schicht: Benetzung und Aussagegrenzen",
+            "titleEn": "40-nm film: wetting and claim limits",
+            "dataOrigin": "Own idealized teaching-model data adapted from the exact former whole silicone cases; no measured learner/laboratory result or actual product claim.",
+            "languageParity": "Complete paired DE/EN data, tasks, answers and rubrics.",
+            "dataDe": "Idealisiertes Materialblatt: Eine methylhaltige Siloxanschicht ist 40 nm dick. Glatte Oberfläche: Wasserkontaktwinkel 105°, Abrollwinkel 35°. Nanostrukturierte Oberfläche bei gleicher Silikonchemie: 155°, 5°. Eine anders chemisch beschaffene hydrophile Kontrolle ist ebenfalls 40 nm dick und hat Kontaktwinkel 25°. Ein kleinerer Abrollwinkel bedeutet im Materialblatt, dass ein Tropfen bereits bei geringerer Neigung bewegt werden kann. Schmutzabtrag und Abriebfestigkeit sind nicht gemessen. 40 nm beschreibt nur die Schichtdicke; eine Partikelmessung liegt nicht vor.",
+            "dataEn": "Idealized material sheet: a methyl-bearing siloxane film is 40 nm thick. Smooth surface: water contact angle 105°, roll-off angle 35°. Nanostructured surface at the same silicone chemistry: 155°, 5°. A chemically different hydrophilic control is also 40 nm thick and has contact angle 25°. A smaller roll-off angle means a drop can move at a smaller tilt in this material sheet. Dirt removal and abrasion resistance were not measured. The 40 nm value describes film thickness only; no particle measurement is supplied.",
+            "taskDe": "1. Erläutere an diesem Beispiel die Bedeutung von Silikonen für eine nanoskalige Oberflächenanwendung: Welche chemischen und strukturellen Hinweise können Wasserabweisung und bewegliche Tropfen erklären? 2. Vergleiche glatt/nanostrukturiert und die hydrophile Kontrolle. Trägt die Schichtdicke allein das Benetzungsurteil? 3. Prüfe „40 nm Dicke beweist 40 nm Silikonpartikel und eine dauerhaft selbstreinigende Oberfläche“. Begründe, welche Aussagen gestützt sind und welche weitere Beobachtung nötig wäre.",
+            "taskEn": "1. Explain silicone relevance for a nanoscale surface application in this example: which chemistry/structure evidence can account for water repellency and mobile drops? 2. Compare smooth/nanostructured surfaces and the hydrophilic control. Does film thickness alone establish wetting behaviour? 3. Evaluate “40 nm thickness proves 40 nm silicone particles and a permanently self-cleaning surface.” Explain supported claims and a needed further observation.",
+            "modelAnswerDe": "Eine nanoskalige Siloxanschicht kann als funktionale Oberfläche genutzt werden. Organische Methylgruppen sind mit Wasserabweisung vereinbar; bei gleicher Silikonchemie zeigen geänderte Oberflächenstruktur und 105°/35° gegenüber 155°/5°, dass Chemie allein nicht das gesamte Verhalten festlegt. Der kleinere Abrollwinkel unterstützt beweglichere Tropfen unter den gegebenen Bedingungen. Die hydrophile 40-nm-Kontrolle zeigt, dass gleiche Dicke nicht gleiche Benetzung bedeutet. 40 nm ist eine Schichtdimension, kein gemessener Partikeldurchmesser. Bewegliche Tropfen machen die Anwendung für wasserabweisende/gegebenenfalls reinigende Oberflächen interessant, beweisen aber weder tatsächlichen Schmutzabtrag noch Dauerhaftigkeit. Dafür sind passende Beobachtungen zum Schmutzabtrag und zum Verhalten nach Abrieb nötig; Nano bedeutet nicht automatisch mehr Funktion oder Sicherheit.",
+            "modelAnswerEn": "A nanoscale siloxane film can provide a functional surface. Organic methyl groups are compatible with water repellency; at the same silicone chemistry, changed structure and 105°/35° versus 155°/5° show that chemistry alone does not determine all behaviour. Smaller roll-off angle supports more mobile drops under the stated conditions. The hydrophilic 40-nm control shows that equal thickness does not mean equal wetting. The 40 nm value is a film dimension, not a measured particle diameter. Mobile drops make such surfaces relevant for water-repellent/potentially cleaning applications but establish neither actual dirt removal nor durability. Appropriate dirt-removal observations and behaviour after abrasion are needed; nano does not automatically mean greater function or safety.",
+            "expectationIds": [
+              "e1",
+              "e2",
+              "e3"
+            ],
+            "rubric": [
+              {
+                "expectationId": "e1",
+                "maximumPoints": 2,
+                "criterionDe": "Erklärt Nano-Oberflächenanwendung über Silikonchemie und Struktur; trennt Schichtdicke von fehlendem Partikeldurchmesser.",
+                "criterionEn": "Explains nanoscale surface application using silicone chemistry and structure; separates film thickness from missing particle diameter.",
+                "fullCreditDe": "2 Punkte: Erklärt Nano-Oberflächenanwendung über Silikonchemie und Struktur; trennt Schichtdicke von fehlendem Partikeldurchmesser.",
+                "fullCreditEn": "2 points: Explains nanoscale surface application using silicone chemistry and structure; separates film thickness from missing particle diameter.",
+                "partialCreditDe": "1 Punkt: Nano-Anwendung oder die Dimensionstrennung wird erklärt, der jeweils andere Teil fehlt.",
+                "partialCreditEn": "1 point: Nano application or dimension distinction is explained but the other part is missing.",
+                "zeroCreditDe": "0 Punkte: Silikonnamen oder 40 nm allein beweisen Nano-Partikel und Funktion.",
+                "zeroCreditEn": "0 points: Silicone name or 40 nm alone is treated as proof of nanoparticles and function."
+              },
+              {
+                "expectationId": "e2",
+                "maximumPoints": 2,
+                "criterionDe": "Interpretiert die kontrollierte Strukturvariation und die hydrophile Gleichdickenkontrolle; Chemie und Struktur tragen getrennte Bezüge.",
+                "criterionEn": "Interprets controlled structural variation and hydrophilic equal-thickness control; chemistry and structure contribute distinct links.",
+                "fullCreditDe": "2 Punkte: Interpretiert die kontrollierte Strukturvariation und die hydrophile Gleichdickenkontrolle; Chemie und Struktur tragen getrennte Bezüge.",
+                "fullCreditEn": "2 points: Interprets controlled structural variation and hydrophilic equal-thickness control; chemistry and structure contribute distinct links.",
+                "partialCreditDe": "1 Punkt: Nur die Strukturvariation oder nur die Gleichdickenkontrolle wird begründet.",
+                "partialCreditEn": "1 point: Only structural variation or equal-thickness control is reasoned through.",
+                "zeroCreditDe": "0 Punkte: Gleiche Dicke erzwingt gleiche Benetzung oder veränderte Winkel werden allein aus anderer Chemie erklärt.",
+                "zeroCreditEn": "0 points: Equal thickness is said to force equal wetting or changed angles are attributed solely to different chemistry."
+              },
+              {
+                "expectationId": "e3",
+                "maximumPoints": 2,
+                "criterionDe": "Leitet beweglichere Tropfen aus dem kleineren Abrollwinkel ab und begrenzt Selbstreinigung/Dauerhaftigkeit wegen fehlendem Schmutz-/Abriebnachweis.",
+                "criterionEn": "Uses smaller roll-off angle to infer more mobile drops and limits cleaning/durability claims because dirt/abrasion evidence is missing.",
+                "fullCreditDe": "2 Punkte: Leitet beweglichere Tropfen aus dem kleineren Abrollwinkel ab und begrenzt Selbstreinigung/Dauerhaftigkeit wegen fehlendem Schmutz-/Abriebnachweis.",
+                "fullCreditEn": "2 points: Uses smaller roll-off angle to infer more mobile drops and limits cleaning/durability claims because dirt/abrasion evidence is missing.",
+                "partialCreditDe": "1 Punkt: Abrollbefund oder konkrete Nachweisgrenze wird richtig genannt, aber nicht zusammen begründet.",
+                "partialCreditEn": "1 point: Roll-off observation or a specific evidence limit is identified but not linked.",
+                "zeroCreditDe": "0 Punkte: Kontaktwinkel oder Nano-Etikett beweisen allein dauerhafte Selbstreinigung.",
+                "zeroCreditEn": "0 points: Contact angle or nano label alone is treated as proof of permanent self-cleaning."
+              }
+            ],
+            "maximumPoints": 6,
+            "visualizationRequired": false,
+            "executionClaim": "Author design only; no actual learner result, laboratory work, independent scientific acceptance or mastery.",
+            "noMandatoryLearnerTaskQuota": true,
+            "wholeGoalCoverageDesignClaim": "All three child expectations are elicited in this one multi-step case, including a condition variation; independent review pending."
+          }
+        },
+        {
+          "jsonPointer": "/cases/3",
+          "wholeCaseObjectSHA256": "5806be6209c19c2773af444ea44c327828701294fe1e8101440c06347d099175",
+          "wholeCase": {
+            "caseId": "e560-nanosurface-case-2",
+            "goalId": "6413429b-53d8-5ad1-9af6-d0e562cbf0f5",
+            "title": "80-nm-Schicht nach Strukturänderung",
+            "titleEn": "80-nm film after structural change",
+            "dataOrigin": "Own idealized teaching-model data adapted from the exact former whole silicone cases; no measured learner/laboratory result or actual product claim.",
+            "languageParity": "Complete paired DE/EN data, tasks, answers and rubrics.",
+            "dataDe": "Zweites ideales Materialblatt, andere Bedingung: Eine methylhaltige Siloxanschicht ist 80 nm dick. Zustand A: Kontaktwinkel 155°, Abrollwinkel 5°. Nach einer Oberflächen-Strukturänderung bleibt laut Blatt die Silikonchemie unverändert; Zustand B zeigt 150°, 40°. Eine hydrophile Kontrollschicht gleicher Dicke zeigt 25°. Für eine weitere Probe C wird zusätzlich und unabhängig ein Partikeldurchmesser von 45 nm angegeben; diese Größe wurde nicht aus der Schichtdicke berechnet. Größere Kontaktwinkel stehen hier für schwächere Benetzung, kleinere Abrollwinkel für leichter bewegliche Tropfen. Kein Schmutzabtrag oder Langzeittest wird berichtet.",
+            "dataEn": "Second idealized material sheet with changed conditions: a methyl-bearing siloxane film is 80 nm thick. State A: contact angle 155°, roll-off 5°. After a surface-structure change the sheet says silicone chemistry remains unchanged; state B gives 150°, 40°. A hydrophilic equal-thickness control gives 25°. For another specimen C, particle diameter 45 nm is additionally and independently supplied; it was not calculated from film thickness. Here larger contact angles indicate weaker wetting, smaller roll-off angles easier droplet motion. No dirt-removal or long-term test is reported.",
+            "taskDe": "1. Beschreibe die mögliche Bedeutung der Silikonoberfläche für die Anwendung und unterscheide die beiden Größenangaben 80 nm und 45 nm. 2. Erläutere, was aus A/B bei gleicher Chemie über die Wirkung der Struktur folgt. Beurteile „B hat immer noch einen großen Kontaktwinkel, also rollen Tropfen so leicht ab wie bei A“. 3. Prüfe, ob A oder B damit dauerhaft selbstreinigend ist, und gib ein begrenztes Anwendungsurteil mit einer konkret nötigen weiteren Beobachtung.",
+            "taskEn": "1. Describe possible silicone-surface relevance for the application and distinguish the 80 nm and 45 nm dimensions. 2. Explain what A/B at the same chemistry show about structural effects. Evaluate “B still has a large contact angle, so drops roll off as easily as in A.” 3. Assess whether A or B is thereby permanently self-cleaning and give a bounded application conclusion with a specific further observation needed.",
+            "modelAnswerDe": "Die 80 nm betreffen die Schicht; 45 nm ist eine separat ausgewiesene Partikelgröße ausschließlich für C. Ohne die Zusatzangabe dürfte man keine Partikelgröße aus 80 nm ableiten. Silikonchemie und passende Oberflächenstruktur können zur nanoskaligen Funktionalisierung beitragen. A/B haben gleiche Chemie, aber andere Struktur und stark unterschiedliche Abrollwinkel. Ein hoher Kontaktwinkel in B bedeutet nach den Angaben nicht gleich leichte Tropfenbewegung: 40° verlangt deutlich mehr Neigung als 5°. Die hydrophile Gleichdickenkontrolle verhindert eine Erklärung allein aus der Dicke. A erscheint für bewegliche Tropfen unter den gegebenen Bedingungen günstiger; echter Schmutztransport, Abrieb- oder Langzeitbeständigkeit bleiben unbelegt. Eine Beobachtung des Schmutzabtrags vor/nach Belastung würde die funktionale Anwendung prüfen. Das Urteil ist daten- und zustandsgebunden, keine Behauptung über alle Silikonprodukte.",
+            "modelAnswerEn": "The 80 nm refers to the film; 45 nm is separately stated particle size only for C. Without that extra information, particle size could not be inferred from 80 nm. Silicone chemistry and suitable surface structure can contribute to nanoscale functionalization. A/B have the same chemistry but different structure and very different roll-off angles. High contact angle in B does not mean equally easy droplet movement: 40° requires much greater tilt than 5°. The hydrophilic equal-thickness control prevents a thickness-only explanation. A appears better for mobile drops under the supplied conditions; actual dirt transport, abrasion resistance or long-term stability remain unsupported. Observing dirt removal before/after loading would test the functional application. The conclusion is data/state-bound, not a statement about every silicone product.",
+            "expectationIds": [
+              "e1",
+              "e2",
+              "e3"
+            ],
+            "rubric": [
+              {
+                "expectationId": "e1",
+                "maximumPoints": 2,
+                "criterionDe": "Verbindet Silikon-Oberflächenfunktion mit Materialdaten und unterscheidet 80-nm-Schicht von separat gemessenen 45-nm-Partikeln in C.",
+                "criterionEn": "Connects silicone surface function to material data and separates 80-nm film from independently measured 45-nm particles in C.",
+                "fullCreditDe": "2 Punkte: Verbindet Silikon-Oberflächenfunktion mit Materialdaten und unterscheidet 80-nm-Schicht von separat gemessenen 45-nm-Partikeln in C.",
+                "fullCreditEn": "2 points: Connects silicone surface function to material data and separates 80-nm film from independently measured 45-nm particles in C.",
+                "partialCreditDe": "1 Punkt: Eine Größenart wird richtig erkannt, die Unabhängigkeit oder Anwendungsbedeutung bleibt offen.",
+                "partialCreditEn": "1 point: One dimension is identified correctly but independence or application relevance is missing.",
+                "zeroCreditDe": "0 Punkte: 80 und 45 nm werden ohne getrennte Messbezüge als dieselbe Größe behandelt.",
+                "zeroCreditEn": "0 points: 80 and 45 nm are treated as the same dimension without distinct measurement bases."
+              },
+              {
+                "expectationId": "e2",
+                "maximumPoints": 2,
+                "criterionDe": "Erklärt bei gleicher Chemie die Strukturänderung und trennt hohen Kontaktwinkel von leichtem Abrollen anhand 150°/40° gegenüber 155°/5°.",
+                "criterionEn": "Explains structural change at constant chemistry and distinguishes high contact angle from easy rolling using 150°/40° versus 155°/5°.",
+                "fullCreditDe": "2 Punkte: Erklärt bei gleicher Chemie die Strukturänderung und trennt hohen Kontaktwinkel von leichtem Abrollen anhand 150°/40° gegenüber 155°/5°.",
+                "fullCreditEn": "2 points: Explains structural change at constant chemistry and distinguishes high contact angle from easy rolling using 150°/40° versus 155°/5°.",
+                "partialCreditDe": "1 Punkt: Struktur oder Abrolländerung wird erkannt, beide Befunde aber nicht fachlich verknüpft.",
+                "partialCreditEn": "1 point: Structure or roll-off change is recognized but the observations are not connected.",
+                "zeroCreditDe": "0 Punkte: Großer Kontaktwinkel beweist gleiches leichtes Abrollen oder die chemische Kontrollbedingung wird ignoriert.",
+                "zeroCreditEn": "0 points: Large contact angle is said to prove equally easy rolling or the controlled chemistry condition is ignored."
+              },
+              {
+                "expectationId": "e3",
+                "maximumPoints": 2,
+                "criterionDe": "Begründet ein zustandsgebundenes Anwendungsurteil und benennt fehlenden Schmutzabtrag/Belastungsnachweis statt Nano-Selbstreinigung vorauszusetzen.",
+                "criterionEn": "Justifies a state-bound application conclusion and identifies missing dirt-removal/loading evidence rather than assuming nano self-cleaning.",
+                "fullCreditDe": "2 Punkte: Begründet ein zustandsgebundenes Anwendungsurteil und benennt fehlenden Schmutzabtrag/Belastungsnachweis statt Nano-Selbstreinigung vorauszusetzen.",
+                "fullCreditEn": "2 points: Justifies a state-bound application conclusion and identifies missing dirt-removal/loading evidence rather than assuming nano self-cleaning.",
+                "partialCreditDe": "1 Punkt: Urteil wird begrenzt, aber kein konkreter nötiger Funktionsnachweis wird benannt.",
+                "partialCreditEn": "1 point: Conclusion is limited but no specific functional evidence needed is identified.",
+                "zeroCreditDe": "0 Punkte: Beide Oberflächen oder nur die Nanobezeichnung beweisen dauerhaftes Reinigen.",
+                "zeroCreditEn": "0 points: Both surfaces or the nano label alone are said to prove permanent cleaning."
+              }
+            ],
+            "maximumPoints": 6,
+            "visualizationRequired": false,
+            "executionClaim": "Author design only; no actual learner result, laboratory work, independent scientific acceptance or mastery.",
+            "noMandatoryLearnerTaskQuota": true,
+            "wholeGoalCoverageDesignClaim": "All three child expectations are elicited in this one multi-step case, including a condition variation; independent review pending."
+          }
+        }
+      ],
+      "readBoundary": "Only the selected cases and current27 P profile, not every other case in the file, were substantively read."
+    },
+    {
+      "rawInput": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy-four-context-satisfied-current422-positive-and-atomic-informed-20261015-v1/materials/four-whole-cases8.targeted-informed-successor.json",
+        "sha256": "e1e84ffeff7db7534372949e9cf38f5dfd2a95546fcfba6d07ee177e369098bf",
+        "bytes": 38130
+      },
+      "actualSelectedCases": [
+        {
+          "jsonPointer": "/cases/4",
+          "wholeCaseObjectSHA256": "f89640f0a6b78ce1033dd3bd723a8f03f159a94d03daed22d6d44036acbc2f63",
+          "wholeCase": {
+            "id": "energy20-13-a",
+            "goalId": "3ec31fe1-e01b-5edd-bd9a-936191d67639",
+            "title": "Strom- und Nutzwärmewirkungsgrad",
+            "provenance": "Own fictional chemistry teaching model, CC-BY-4.0. Supplied data are not learner observations, official measurements or present product specifications.",
+            "imageRequired": false,
+            "materialsDe": "Eigene Messkarten: WandlerA erhält10MJ Brennstoff und liefert3MJStrom+5MJ grundsätzlich nutzbare Wärme; WandlerB erhält20MJ desselbenLHV-Brennstoffbezugs und liefert12MJStrom+5MJWärme. Tatsächlicher Wärmebedarf pro Durchgang2MJ. Verluste an Umgebung werden nicht zurückgewonnen. Messunsicherheit jeweils±0,1MJ an Strom/Wärme; keine Apparaturausführung. Im Modell gelten Energieeingänge und Wärmebedarf als exakt. Die jeweils±0,1MJ sind absolute Fehlergrenzen der beiden Ausgabegrößen, keine statistischen Konfidenzintervalle.",
+            "materialsEn": "Own cards:A receives10MJ fuel and gives3MJ electricity+5MJ heat of potentially usable grade;B receives20MJ on the sameLHV basis and gives12MJ electricity+5MJ heat. Actual heat demand2MJ/cycle. Ambient losses are not recovered. Electricity/heat uncertainty±0.1MJ;no apparatus execution. In this model, energy inputs and heat demand are exact. The ±0.1MJ values are absolute error bounds on each output quantity, not statistical confidence intervals.",
+            "taskDe": "Berechne elektrische, nominelle Gesamt- und bedarfsbezogene Gesamtwirkungsgrade. Vergleiche auf gemeinsamer Eingangs- oder Servicebasis und erkläre, warum WandlerB nicht85%nutzbare Energie liefert, wenn Wärmebedarf fehlt. Bestimme aus den vorgegebenen Fehlergrenzen passende Wirkungsgradintervalle; zähle den festen Wärmebedarf nicht als weitere Messunsicherheit.",
+            "taskEn": "Calculate electrical,nominal-total and demand-adjusted efficiencies. Compare on a common input/service basis and explain whyB does not deliver85%useful energy when heat demand is absent. Derive efficiency intervals from the given error bounds; do not treat the fixed heat demand as an extra measurement uncertainty.",
+            "workedReasoningDe": "A:ηel30%, nominell80%, mit2MJBedarf50%. B:ηel60%, nominell85%, mit2MJBedarf70%. Bei gleichem20MJ-Eingang entsprichtA zwei Durchgängen und anderem Serviceumfang; dieser Vergleich muss ausdrücklich bezeichnet werden. Wirkungsgrade sind dimensionslose Anteile, nichtMJ-Werte; ungenutzte Wärme bleibt Energie, aber keine für diese Nachfrage genutzte Arbeit/Wärme. Unsicherheiten verhindern hier nicht den großen Stromunterschied, aber eine feinere Rangfolge braucht Fehlerrechnung und einheitliche Grenze. Bei den ausdrücklich exakten Eingängen ergeben sich für A elektrisch29–31%, nominell78–82% und bedarfsbezogen49–51%; für B59,5–60,5%,84–86% und69,5–70,5%. Für die nominale Summe werden die beiden absoluten Fehlergrenzen konservativ addiert. Bei2MJBedarf liegt selbst die kleinste verfügbare Wärme über dem Bedarf: nur die Stromfehlergrenze wirkt auf den bedarfsbezogenen Zähler. Ohne Wärmenutzung liefert B60% elektrischen Nutzen, nicht85%. Im Transfer mit5MJWärmebedarf wären bei vollständig genutztem Strom die nominalen Werte relevant; sinkende Stromnachfrage ohne Zahlen erlaubt keinen neuen eindeutigen Gesamtnutzen.",
+            "workedReasoningEn": "A:electrical30%,nominal80%,with2MJ demand50%. B:electrical60%,nominal85%,with2MJ demand70%. Equal20MJ input means twoA cycles and a different service total,which must be declared. Efficiencies are dimensionless fractions,notMJ. Unused heat remains energy but is not useful service for this demand. Uncertainty does not erase the large electrical difference;fine rankings need error analysis/common boundaries. With the explicitly exact inputs, A has electrical29–31%, nominal78–82% and demand-adjusted49–51%; B has59.5–60.5%,84–86% and69.5–70.5%. For nominal sums, conservatively add both absolute output error bounds. At2MJ heat demand even the smallest heat output exceeds demand, so only the electricity error bound affects the demand-adjusted numerator. With no heat use, B supplies60% electrical service, not85%. In the5MJ-heat transfer, nominal values apply if all electricity is used; an unspecified reduction in electricity demand prevents a unique new useful-output result.",
+            "freshIndependentTransferDe": "Der Wärmebedarf wächst auf5MJ und die Stromnachfrage sinkt. Bestimme neu, welche Kennzahl für diesen Dienst relevant ist, statt einen festen Sieger ausηel abzuleiten.",
+            "freshIndependentTransferEn": "Heat demand rises to5MJ while electricity demand falls. Reconsider the relevant metric instead of choosing a permanent winner fromηel.",
+            "criterionToObservableRubric": [
+              {
+                "criterionId": "e1",
+                "observableDe": "Drei verschiedene Nutzengrenzen ausdrücklich definieren.",
+                "observableEn": "Explicitly define three useful-output boundaries.",
+                "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+              },
+              {
+                "criterionId": "e2",
+                "observableDe": "30/80/50% und60/85/70% korrekt berechnen.",
+                "observableEn": "Correctly calculate30/80/50% and60/85/70%.",
+                "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+              },
+              {
+                "criterionId": "e3",
+                "observableDe": "Energieerhaltung, tatsächliche Nutzung und Vergleichsbasis auseinanderhalten; die deklarierten absoluten Fehlergrenzen korrekt fortführen.",
+                "observableEn": "Separate energy conservation, actual service and comparison basis; propagate the declared absolute error bounds correctly.",
+                "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+              }
+            ]
+          }
+        },
+        {
+          "jsonPointer": "/cases/5",
+          "wholeCaseObjectSHA256": "0e19579f88af98606fdb827d0f0beab022d183f03045b24b617721e3fabf47cd",
+          "wholeCase": {
+            "id": "energy20-13-b",
+            "goalId": "3ec31fe1-e01b-5edd-bd9a-936191d67639",
+            "title": "Vom Primärbrennstoff bis zum Rad",
+            "provenance": "Own fictional chemistry teaching model, CC-BY-4.0. Supplied data are not learner observations, official measurements or present product specifications.",
+            "imageRequired": false,
+            "materialsDe": "Fiktive Daten pro100km: Elektrofahrzeug bezieht20kWh an der Steckdose und liefert16,4kWh Radarbeit. Die gesamte vorgelagerte Strecke vom Brennstoff-LHV bis zur Steckdose hat im Modellη=40%; zusätzliche Netzverluste werden nicht nochmals angesetzt. Der Verbrennungspfad verbraucht60kWh Brennstoff-LHV am Fahrzeugeingang und liefert15kWh Radarbeit. Dies ist Brennstoff-Rad, kein isolierter Motorwellenwirkungsgrad. Für die Normierung gelten die Wirkungsgrade im Modell als konstant. Unterschiedliche Radarbeiten sind ausdrücklich sichtbar. Brennstoffgewinnung und Anlagen-/Fahrzeugherstellung sind nicht erfasst, keine Wärmegutschrift. Als zusätzlicher Textkontext nennt die vorhandene Übersicht80% für mechanischen Motornutzen und5% für Lichtnutzen einer Lampe bei jeweils100J Eingang.",
+            "materialsEn": "Fictional per100km: EV receives20kWh at the socket and supplies16.4kWh wheel work. The entire upstream fuel-LHV-to-socket path has model efficiency40%; do not add network losses again. The combustion path consumes60kWh fuel LHV at the vehicle input and supplies15kWh wheel work. This is fuel-to-wheel, not isolated engine-shaft efficiency. Efficiencies are assumed constant for the model normalisation. Different wheel outputs are explicit. Fuel extraction and plant/vehicle manufacture are outside the model; no heat credit. Additional text context reports the existing overview’s80% mechanical motor service and5% lamp light service, each for100J input.",
+            "taskDe": "Berechne Steckdose-Rad, Primärenergie-Rad und Brennstoff-Rad-Wirkungsgrad. Normiere für einen Vergleich beide auf15kWh Radarbeit. Prüfe die Behauptung „82%ist direkt mit25%vergleichbar, also ist die ganze Kette82%“. Erkläre zusätzlich, weshalb die80%/5% aus dem Übersichtskontext verschiedene Nutzfunktionen betreffen und keinen allgemeinen Anwendungssieger festlegen.",
+            "taskEn": "Calculate socket-to-wheel,primary-to-wheel and fuel-to-wheel efficiencies. Normalise both to15kWh wheel work. Evaluate“82%can directly be compared with25%,so the entire chain is82%”. Also explain why the overview’s80%/5% use different service functions and cannot select a universal application winner.",
+            "workedReasoningDe": "ηsocket=16,4/20=82%; Primärinput20/0,4=50kWh,ηgesamt32,8%. Brennstoff-Rad-Pfad15/60=25%. Für15kWhRad benötigtEV15/0,82≈18,293kWhSteckdosenstrom und45,732kWhPrimärenergie; Verbrennungspfad60kWh.82%beschreibt eine engere Grenze als25%Brennstoff-Rad. Ein anderer Strombereitstellungsweg verändert Primärenergiedefinition und Bilanz; die Daten zeigen keine vollständige Ökobilanz. Die40%-Strecke endet bereits an der Steckdose; ihre Verluste werden einmal berücksichtigt. Brennstoffgewinnung beider Wege und Herstellungsbilanzen sind nicht nachgewiesen. Die80% eines Motors und5% einer Lampe sind korrekt als numerische Anteile verschiedener definierter Nutzformen lesbar; mechanische Arbeit und Licht sind keine austauschbare Dienstleistung. Daraus folgt kein allgemeines Umwelt- oder Einsatzranking.",
+            "workedReasoningEn": "Socket efficiency16.4/20=82%;primary input20/0.4=50kWh,total32.8%. Fuel-to-wheel path15/60=25%. For15kWh wheels,EV needs15/0.82≈18.293kWh socket and45.732kWh primary;combustion60kWh.82%uses a narrower boundary than fuel-to-wheel25%. Another electricity route changes primary-energy conventions/accounting;this is not a completeLCA. The40% path already ends at the socket, so count its losses once. Fuel extraction for both routes and manufacturing inventories are not established. A motor’s80% and a lamp’s5% are numerical fractions of different defined service forms; mechanical work and light are not interchangeable services. They establish no universal environmental or application ranking.",
+            "freshIndependentTransferDe": "Strom kommt nun direkt aus einerPV-Anlage. Sage, welche bekannte Teilwirkungsgradmessung bleibt und welche Primärenergie-Konvention neu deklariert werden muss.",
+            "freshIndependentTransferEn": "Electricity now comes directly fromPV. Identify the unchanged measured partial efficiency and the primary-energy convention requiring a new declaration.",
+            "criterionToObservableRubric": [
+              {
+                "criterionId": "e1",
+                "observableDe": "Strom-/Brennstoff- und Radarbeitsgrenzen korrekt auswählen.",
+                "observableEn": "Select electricity/fuel/wheel-work boundaries correctly.",
+                "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+              },
+              {
+                "criterionId": "e2",
+                "observableDe": "82%,32,8%,25% und gemeinsame15kWh-Servicebasis herleiten.",
+                "observableEn": "Derive82%,32.8%,25% and common15kWh service.",
+                "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+              },
+              {
+                "criterionId": "e3",
+                "observableDe": "Kein Umwelt- oder Anwendungsurteil allein aus einem Teilwirkungsgrad oder aus verschiedenen Nutzfunktionen ableiten; Verluste nicht doppelt zählen.",
+                "observableEn": "Do not infer an environmental/application verdict from one partial efficiency or different service functions; do not double-count losses.",
+                "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+              }
+            ]
+          }
+        }
+      ],
+      "readBoundary": "Only the selected cases and current27 P profile, not every other case in the file, were substantively read."
+    },
+    {
+      "rawInput": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-energy20-four-defects-targeted-material-author-successor-20261015-v1/materials/forty-two-whole-DE-EN-cases.four-defects-successor.author.json",
+        "sha256": "5762a8f53db8ff2a6f44f98f1495959132bc04541e0af85c0088ace5e9da21fe",
+        "bytes": 170824
+      },
+      "actualSelectedCases": [
+        {
+          "jsonPointer": "/cases/38",
+          "wholeCaseObjectSHA256": "676e9f160da4036b85fef87d3d992be20ce3e5d57c388663e69481cd3903f1fd",
+          "wholeCase": {
+            "id": "energy20-20-a",
+            "goalId": "ebfa2c18-0599-5282-bf7a-80c14d86331e",
+            "title": "Atomökonomie am Syntheseschritt,PMI am Prozess",
+            "provenance": "Own fictional chemistry teaching model, CC-BY-4.0. Supplied data are not learner observations, official measurements or present product specifications.",
+            "imageRequired": false,
+            "materialsDe": "Eigene Seifensynthese: C12H24O2+NaOH→C12H23O2Na+H2O; M200,40,222,18g/mol. Batch200gSäure+40gNaOH+600gProzesswasser+100gLösemittel;180g isoliertes Zielprodukt, Rest vollständig Abfall. Keine Rückgewinnung/Gutschrift, Katalysator0. Zwei getrennte Ränder: mit/ohne Prozesswasser. Kein Versuch.",
+            "materialsEn": "Own soap-component model:C12H24O2+NaOH→C12H23O2Na+H2O;molar masses200,40,222,18g/mol. Batch:200gacid+40gNaOH+600gprocess water+100gsolvent;isolated target180g,all other mass leaves as waste. No recovery/credits,zero catalyst mass. No reaction execution. Two separate boundaries:including/excluding process water.",
+            "taskDe": "Berechne Atomökonomie, Ausbeute, E-Faktor, PMI und begründe verschiedene Aussagen. PrüfePMI=E+1 für beide Ränder. Warum ist dies keine Atomökonomie für bloßes Zusammenmischen eines Waschpulvers?",
+            "taskEn": "Calculate atom economy,yield,E-factor andPMI and explain their distinct claims. CheckPMI=E+1for both boundaries. Explain why this is not atom economy for merely blending detergent powder.",
+            "workedReasoningDe": "Atomökonomie222/240=92,5%; theoretisch222gProdukt, Ausbeute180/222=81,08%. MitWasser Input940g, Abfall760g: PMI5,222, E4,222. Ohne600gProzesswasser Input340g, Abfall160g: PMI1,889, E0,889. Stöchiometrisches Reaktionswasser bleibt im zweiten Abfallrand. PMI=E+1 gilt hier wegen Input=Produkt+Abfall; Recycling verlangt andere transparente Ränder. Atomökonomie ist theoretisch reaktionsbezogen, Ausbeute tatsächlich, PMI/E prozessbezogen; Toxizität/Energie fehlen.",
+            "workedReasoningEn": "Atom economy222/(200+40)=92.5%;theoretical222g product,yield180/222=81.08%. Including water input940g,waste760g:PMI5.222,E4.222. Excluding600g process water input340g,waste160g:PMI1.889,E0.889. Stoichiometric reaction water remains in this second waste boundary. PMI=E+1because all inputs equal product+waste;different recovery boundaries must be stated. Atom economy is theoretical/reaction-specific,yield actual,PMI/E process-specific;none automatically measures toxicity/energy.",
+            "freshIndependentTransferDe": "Bei gleicher Reaktion wird das Lösemittelvolumen halbiert. Welche Kennzahl bleibt, welche Massendaten brauchen eine neue Bestimmung?",
+            "freshIndependentTransferEn": "A new process keeps the equation but halves solvent volume. Predict which metric stays and which mass data need updating before calculation.",
+            "criterionToObservableRubric": [
+              {
+                "criterionId": "e1",
+                "observableDe": "Reaktion, Ausbeute und Prozessmassenrand unterscheiden.",
+                "observableEn": "Distinguish reaction,yield and process mass boundary.",
+                "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+              },
+              {
+                "criterionId": "e2",
+                "observableDe": "92,5%,81,08% und beidePMI/E-Paare einschließlich Reaktionswasser berechnen.",
+                "observableEn": "Calculate92.5%,81.08% andPMI/E for both boundaries including reaction water.",
+                "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+              },
+              {
+                "criterionId": "e3",
+                "observableDe": "BedingtesPMI=E+1 und fehlende Reaktionsatomökonomie beim Mischen erklären.",
+                "observableEn": "Justify conditionalPMI=E+1 and no atom economy for mixing.",
+                "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+              }
+            ]
+          }
+        },
+        {
+          "jsonPointer": "/cases/39",
+          "wholeCaseObjectSHA256": "55574a3954f2dfe2bfa3d722c31ed5e7168589a87b6e9adf98fcaa837dd38805",
+          "wholeCase": {
+            "id": "energy20-20-b",
+            "goalId": "ebfa2c18-0599-5282-bf7a-80c14d86331e",
+            "title": "Formulierungsverlust ist keine Reaktionsatomökonomie",
+            "provenance": "Own fictional chemistry teaching model, CC-BY-4.0. Supplied data are not learner observations, official measurements or present product specifications.",
+            "imageRequired": false,
+            "materialsDe": "Eigene Formulierung:6kgTensid+2kgBuilder+2kgWasser werden ohne Reaktion gemischt. Input10kg, Abfüllverlust0,2kg, Produkt9,8kg. Keine Verpackung/Rückgewinnung. Mögliche vorgeschaltete Synthese: C13H26O2+NaOH→C12H23O2Na+CH3OH; M214,40,222,32g/mol. Gleichwertige reale Waschleistung beider Synthesewege ist nicht angenommen.",
+            "materialsEn": "Own formulation:6kgsurfactant+2kgbuilder+2kgwater gives10kg mixture without reaction. Filling loses0.2kg,final product9.8kg. No recovery/packaging. Possible upstream component synthesis:C13H26O2+NaOH→C12H23O2Na+CH3OH;molar masses214,40,222,32g/mol. No assumption that actual laundry service makes both routes equivalent.",
+            "taskDe": "BerechnePMI/E der Formulierung. Warum ist „100%Atomökonomie beim Mischen“ methodisch falsch? Berechne die Atomökonomie der Reaktion und vergleiche20a. Beweist ein größerer Wert stets geringere Umweltlast?",
+            "taskEn": "Calculate formulationPMI/E and explain why“100%atom economy in mixing”misapplies the metric. Calculate upstream reaction atom economy and compare20a. Assess whether higher atom economy always proves lower environmental burden.",
+            "workedReasoningDe": "PMI10/9,8=1,020408, E0,2/9,8=0,020408. Ohne Reaktion gibt es keine entsprechende Reaktionsatomökonomie;100%verwechselt Mischen und Synthese. Methylestersaponifikation:222/254=87,40%gegen92,5%bei Neutralisation. Das bewertet nur ideale Stöchiometrie, keine Lösemittel, Ausbeute, Energie oder Gefährlichkeit. Prozesse benötigen gleiche Produkt-/Nutzränder; PMI nahe1 beweist ebenfalls keine Nachhaltigkeit.",
+            "workedReasoningEn": "FormulationPMI=10/9.8=1.020408,E=0.2/9.8=0.020408. A non-reactive mixture has no corresponding reaction atom economy;calling it100%confuses mixing with reaction efficiency. Ester saponification:222/(214+40)=87.40%versus92.5%neutralisation. This ranks ideal stoichiometry only,excluding solvents,yield,energy/hazards. Synthesis/formulation comparisons need equal product/service boundaries;PMI near1 also does not prove sustainability.",
+            "freshIndependentTransferDe": "NurWasser geht verloren und die Produktkonzentration ändert sich. Warum sichern gleiche Masse undPMI=E+1 jetzt keine gleiche Nutzfunktion?",
+            "freshIndependentTransferEn": "Losses now contain only water and the final concentration changes. Explain why equal product mass no longer means equal function,andE+1does not prove equivalence.",
+            "criterionToObservableRubric": [
+              {
+                "criterionId": "e1",
+                "observableDe": "Mischen und vorgelagerte Reaktion methodisch trennen.",
+                "observableEn": "Methodologically separate mixing and upstream reaction.",
+                "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+              },
+              {
+                "criterionId": "e2",
+                "observableDe": "PMI1,020408, E0,020408 und87,40% herleiten.",
+                "observableEn": "Correctly derivePMI1.020408/E0.020408 and87.40%.",
+                "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+              },
+              {
+                "criterionId": "e3",
+                "observableDe": "Massenkennzahl gegen Funktion, Toxizität und Energiegrenze abgrenzen.",
+                "observableEn": "Distinguish mass metric from product function,toxicity and energy boundary.",
+                "evidenceBoundary": "Actual independent learner reasoning remains unobserved; answer key alone is not evidence."
+              }
+            ]
+          }
+        }
+      ],
+      "readBoundary": "Only the selected cases and current27 P profile, not every other case in the file, were substantively read."
+    },
+    {
+      "rawInput": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-polymers-three-visual-Pscope-atomicity-author-successor-20261013-v3/whole40.expanded-cases.author-successor.json",
+        "sha256": "026dd931270dd947f3b97898ee17ac26d575b089a3f9572c934f93de9e04a571",
+        "bytes": 301594
+      },
+      "actualSelectedCases": [
+        {
+          "jsonPointer": "/cases/20",
+          "wholeCaseObjectSHA256": "8d132c392080e96f32441e798b415accfedc5aa053b511384bb9c48dbdeda6b6",
+          "wholeCase": {
+            "caseId": "8721d943-case-1",
+            "goalId": "8721d943-8368-5304-bd3c-7d7944099662",
+            "title": "A: Sortenreines PET",
+            "dataOrigin": "Original idealized Skill Pilot exercise data; not observed learner/laboratory data and not external research results",
+            "languageParity": "DE and EN present the same supplied conditions, quantities, demands and model conclusion",
+            "dataDe": "100 kg PET. Mechanisch: 80 kg geeignetes Regranulat, 40 k Wh. Hydrolyse/Aufarbeitung/Repolymerisation: 75 kg äquivalentes PET, 100 k Wh. Pyrolyse: 50 kg chemischer Feedstock, 120 k Wh, noch keine PET-Neusynthese. Energie nur Anlagenbetrieb; Transport fehlt. Anbieterprospekt nennt Hydrolyse „immer klimabesser“.",
+            "dataEn": "100 kg PET. Mechanical route: 80 kg usable regranulate, 40 k Wh. Hydrolysis/purification/repolymerisation: 75 kg equivalent PET, 100 k Wh. Pyrolysis: 50 kg chemical feedstock, 120 k Wh, without new PET synthesis. Energy covers plant operation only; transport excluded. Vendor brochure calls hydrolysis “always better for climate”.",
+            "taskDe": "Erkläre die Wege und Esterhydrolyse. Berechne Betriebsenergie je kg geeignetem PET für die ersten beiden Wege. Wähle bei ausreichender Regranulatqualität vorläufig und bewerte den Prospektsatz.",
+            "taskEn": "Explain routes and ester hydrolysis. Calculate operational energy per kg of suitable PET for the first two routes. Make a provisional choice if regranulate quality suffices and assess the brochure claim.",
+            "modelAnswerDe": "Mechanisch waschen/zerkleinern/aufschmelzen, Ketten weitgehend erhalten; Hydrolyse spaltet Ester in Säure-/Alkoholprodukte, gereinigt erneut polymerisierbar.0.50 versus 1.33 k Wh/kg geeignetes PET. Mechanisch vorläufig günstiger für diesen Bedarf. Feedstock ist noch kein gleichwertiges PET; Pyrolysezahl daher nicht direkt vergleichbar. Strommix, Qualität, Transport, Chemikalien, Verluste, Kosten und Anbieterinteresse fehlen: „immer“ unbelegt.",
+            "modelAnswerEn": "Mechanical washing/shredding/remelting largely preserves chains; hydrolysis cleaves ester links into acid/alcohol products, which can be purified and repolymerised.0.50 versus 1.33 k Wh/kg suitable PET. Mechanical recycling is provisionally preferable for this demand. Feedstock is not yet equivalent PET, so pyrolysis is not directly comparable. Electricity mix, quality, transport, reagents, losses, costs and vendor interest remain unresolved: “always” is unsupported.",
+            "expectationIds": [
+              "e1",
+              "e2",
+              "e3"
+            ],
+            "visualizationRequired": false,
+            "executionClaim": "written/data-based case only; no practical execution or learner mastery asserted",
+            "rubric": [
+              {
+                "expectationId": "e1",
+                "maximumPoints": 2,
+                "criterionDe": "Zeigt fallbezogen: Mechanische Kettenerhaltung, PET-Esterhydrolyse und Pyrolyse-Feedstock von fertigem PET trennen.",
+                "criterionEn": "Demonstrates for this case: Distinguish mechanical chain retention, PET ester hydrolysis and pyrolysis feedstock from finished PET.",
+                "fullCreditDe": "Mechanische Kettenerhaltung, PET-Esterhydrolyse und Pyrolyse-Feedstock von fertigem PET trennen.",
+                "fullCreditEn": "Distinguish mechanical chain retention, PET ester hydrolysis and pyrolysis feedstock from finished PET.",
+                "partialCreditDe": "1 Punkt: ein fachlich richtiger Teil der hier konkret genannten Erklärung/Bilanz ist gezeigt; entscheidende zweite Verbindung, Zahl oder Bedingungsgrenze fehlt.",
+                "partialCreditEn": "1 point: a scientifically correct part of this specific explanation/balance is shown; a decisive second link, quantity or condition limit is missing.",
+                "zeroCreditDe": "0 Punkte: die hier konkret verlangte Leistung fehlt oder widerspricht den bereitgestellten Daten/Strukturen.",
+                "zeroCreditEn": "0 points: the specific demanded performance is absent or contradicts supplied data/structures."
+              },
+              {
+                "expectationId": "e2",
+                "maximumPoints": 2,
+                "criterionDe": "Zeigt fallbezogen: 40/80=0.50 und 100/75≈1.33 kWh/kg geeignetes PET; Pyrolyseprodukt nicht gleichwertig.",
+                "criterionEn": "Demonstrates for this case: 40/80=0.50 and 100/75≈1.33 kWh/kg suitable PET; pyrolysis product not equivalent.",
+                "fullCreditDe": "40/80=0.50 und 100/75≈1.33 kWh/kg geeignetes PET; Pyrolyseprodukt nicht gleichwertig.",
+                "fullCreditEn": "40/80=0.50 and 100/75≈1.33 kWh/kg suitable PET; pyrolysis product not equivalent.",
+                "partialCreditDe": "1 Punkt: ein fachlich richtiger Teil der hier konkret genannten Erklärung/Bilanz ist gezeigt; entscheidende zweite Verbindung, Zahl oder Bedingungsgrenze fehlt.",
+                "partialCreditEn": "1 point: a scientifically correct part of this specific explanation/balance is shown; a decisive second link, quantity or condition limit is missing.",
+                "zeroCreditDe": "0 Punkte: die hier konkret verlangte Leistung fehlt oder widerspricht den bereitgestellten Daten/Strukturen.",
+                "zeroCreditEn": "0 points: the specific demanded performance is absent or contradicts supplied data/structures."
+              },
+              {
+                "expectationId": "e3",
+                "maximumPoints": 2,
+                "criterionDe": "Zeigt fallbezogen: Mechanisch vorläufig bei geeigneter Qualität; Strommix, Chemikalien/Transport und Prospektinteresse verhindern Immer-Urteil.",
+                "criterionEn": "Demonstrates for this case: Mechanical provisionally at adequate quality; electricity mix, chemicals/transport and prospectus interest preclude an always claim.",
+                "fullCreditDe": "Mechanisch vorläufig bei geeigneter Qualität; Strommix, Chemikalien/Transport und Prospektinteresse verhindern Immer-Urteil.",
+                "fullCreditEn": "Mechanical provisionally at adequate quality; electricity mix, chemicals/transport and prospectus interest preclude an always claim.",
+                "partialCreditDe": "1 Punkt: ein fachlich richtiger Teil der hier konkret genannten Erklärung/Bilanz ist gezeigt; entscheidende zweite Verbindung, Zahl oder Bedingungsgrenze fehlt.",
+                "partialCreditEn": "1 point: a scientifically correct part of this specific explanation/balance is shown; a decisive second link, quantity or condition limit is missing.",
+                "zeroCreditDe": "0 Punkte: die hier konkret verlangte Leistung fehlt oder widerspricht den bereitgestellten Daten/Strukturen.",
+                "zeroCreditEn": "0 points: the specific demanded performance is absent or contradicts supplied data/structures."
+              }
+            ],
+            "maximumPoints": 6,
+            "gradingBoundary": "Each rubric scores only the concrete case demand printed here. An expectation ID links a relevant aspect; it does not claim that the whole profile expectation is fully demonstrated in this one case. Six points alone never establish mastery or independent scientific acceptance.",
+            "expectationCoverage": [
+              {
+                "expectationId": "e1",
+                "claim": "bounded case-specific aspect only; consult exact rubric and whole-pair coverage",
+                "fullWholeExpectationClaim": false
+              },
+              {
+                "expectationId": "e2",
+                "claim": "bounded case-specific aspect only; consult exact rubric and whole-pair coverage",
+                "fullWholeExpectationClaim": false
+              },
+              {
+                "expectationId": "e3",
+                "claim": "bounded case-specific aspect only; consult exact rubric and whole-pair coverage",
+                "fullWholeExpectationClaim": false
+              }
+            ]
+          }
+        },
+        {
+          "jsonPointer": "/cases/21",
+          "wholeCaseObjectSHA256": "426b3e8034c5eb554e735d429c19d652dc165c24da3b519457b76cab66606d43",
+          "wholeCase": {
+            "caseId": "8721d943-case-2",
+            "goalId": "8721d943-8368-5304-bd3c-7d7944099662",
+            "title": "B: Gemisch und geschlossener Kreislauf",
+            "dataOrigin": "Original idealized Skill Pilot exercise data; not observed learner/laboratory data and not external research results",
+            "languageParity": "DE and EN present the same supplied conditions, quantities, demands and model conclusion",
+            "dataDe": "Abfall 60 kg PE+40 kg PET, nicht getrennt. Mechanische Mischung für Getränkeflaschen ungeeignet; für nichtkritische Platte verwendbar 70 kg. Sortierung gewinnt 35 kg PET und 50 kg PE. PET hydrolytisch 80% äquivalenter Polymerertrag; PE mechanisch 90%. Gegebene Anwendung: sortenreine Produkte.",
+            "dataEn": "Waste 60 kg PE+40 kg PET, unsorted. Mechanical blend unsuitable for drink bottles but 70 kg usable for a noncritical board. Sorting recovers 35 kg PET and 50 kg PE. PET hydrolysis gives 80% equivalent polymer yield; mechanical PE recovery 90%. Target: single-polymer products.",
+            "taskDe": "Berechne zurückgewonnenes PET/PE und Verluste. Erkläre warum PE nicht wie PET hydrolysierbar ist. Bewerte Kreislauf versus Platte und welche Daten die Auswahl entscheiden.",
+            "taskEn": "Calculate recovered PET/PE and losses. Explain why PE cannot be hydrolysed like PET. Compare the cycle with the board route and identify deciding evidence.",
+            "modelAnswerDe": "PET 28 kg, PE 45 kg, zusammen 73 kg; 27 kg des ursprünglichen 100 kg nicht im Zielprodukt. PE-C–C-Rückgrat besitzt keine Esterhydrolysestellen. Sortierung plus materialgerechte Wege stützt sortenreinen Kreislauf; Platte erfüllt anderen Bedarf und kann ebenfalls sinnvoll sein. Reststoffbehandlung, Qualität/Neumaterialersatz, Energie/Kosten und reale Nachfrage entscheiden; kein vollständig geschlossener Nullverlustkreislauf.",
+            "modelAnswerEn": "PET 28 kg, PE 45 kg, total 73 kg; 27 kg of the initial 100 kg is outside target products. PE has a C–C backbone without ester-hydrolysis sites. Sorting plus material-specific routes supports a single-polymer cycle; the board serves another demand and may also be useful. Residue treatment, quality/virgin-material displacement, energy/cost and actual demand decide; this is not a loss-free closed cycle.",
+            "expectationIds": [
+              "e1",
+              "e2",
+              "e3"
+            ],
+            "visualizationRequired": false,
+            "executionClaim": "written/data-based case only; no practical execution or learner mastery asserted",
+            "rubric": [
+              {
+                "expectationId": "e1",
+                "maximumPoints": 2,
+                "criterionDe": "Zeigt fallbezogen: PET-Ester hydrolysierbar; PE-C–C ohne Esterstellen, materialgerechte Wege nach Sortierung.",
+                "criterionEn": "Demonstrates for this case: PET esters hydrolysable; PE C–C lacks ester sites, material-specific routes after sorting.",
+                "fullCreditDe": "PET-Ester hydrolysierbar; PE-C–C ohne Esterstellen, materialgerechte Wege nach Sortierung.",
+                "fullCreditEn": "PET esters hydrolysable; PE C–C lacks ester sites, material-specific routes after sorting.",
+                "partialCreditDe": "1 Punkt: ein fachlich richtiger Teil der hier konkret genannten Erklärung/Bilanz ist gezeigt; entscheidende zweite Verbindung, Zahl oder Bedingungsgrenze fehlt.",
+                "partialCreditEn": "1 point: a scientifically correct part of this specific explanation/balance is shown; a decisive second link, quantity or condition limit is missing.",
+                "zeroCreditDe": "0 Punkte: die hier konkret verlangte Leistung fehlt oder widerspricht den bereitgestellten Daten/Strukturen.",
+                "zeroCreditEn": "0 points: the specific demanded performance is absent or contradicts supplied data/structures."
+              },
+              {
+                "expectationId": "e2",
+                "maximumPoints": 2,
+                "criterionDe": "Zeigt fallbezogen: 35·0.8=28 kg PET, 50·0.9=45 kg PE, 73 kg Zielprodukt und 27 kg nicht darin.",
+                "criterionEn": "Demonstrates for this case: 35·0.8=28 kg PET, 50·0.9=45 kg PE, 73 kg target product and 27 kg outside it.",
+                "fullCreditDe": "35·0.8=28 kg PET, 50·0.9=45 kg PE, 73 kg Zielprodukt und 27 kg nicht darin.",
+                "fullCreditEn": "35·0.8=28 kg PET, 50·0.9=45 kg PE, 73 kg target product and 27 kg outside it.",
+                "partialCreditDe": "1 Punkt: ein fachlich richtiger Teil der hier konkret genannten Erklärung/Bilanz ist gezeigt; entscheidende zweite Verbindung, Zahl oder Bedingungsgrenze fehlt.",
+                "partialCreditEn": "1 point: a scientifically correct part of this specific explanation/balance is shown; a decisive second link, quantity or condition limit is missing.",
+                "zeroCreditDe": "0 Punkte: die hier konkret verlangte Leistung fehlt oder widerspricht den bereitgestellten Daten/Strukturen.",
+                "zeroCreditEn": "0 points: the specific demanded performance is absent or contradicts supplied data/structures."
+              },
+              {
+                "expectationId": "e3",
+                "maximumPoints": 2,
+                "criterionDe": "Zeigt fallbezogen: 73 kg sortenreines Produkt versus 70 kg Platte erfüllen andere Nachfrage; Qualität, Ersatz, Energie/Kosten/Reststrom entscheiden.",
+                "criterionEn": "Demonstrates for this case: 73 kg pure products versus 70 kg sheet serve different demand; quality, substitution, energy/cost/residue determine choice.",
+                "fullCreditDe": "73 kg sortenreines Produkt versus 70 kg Platte erfüllen andere Nachfrage; Qualität, Ersatz, Energie/Kosten/Reststrom entscheiden.",
+                "fullCreditEn": "73 kg pure products versus 70 kg sheet serve different demand; quality, substitution, energy/cost/residue determine choice.",
+                "partialCreditDe": "1 Punkt: ein fachlich richtiger Teil der hier konkret genannten Erklärung/Bilanz ist gezeigt; entscheidende zweite Verbindung, Zahl oder Bedingungsgrenze fehlt.",
+                "partialCreditEn": "1 point: a scientifically correct part of this specific explanation/balance is shown; a decisive second link, quantity or condition limit is missing.",
+                "zeroCreditDe": "0 Punkte: die hier konkret verlangte Leistung fehlt oder widerspricht den bereitgestellten Daten/Strukturen.",
+                "zeroCreditEn": "0 points: the specific demanded performance is absent or contradicts supplied data/structures."
+              }
+            ],
+            "maximumPoints": 6,
+            "gradingBoundary": "Each rubric scores only the concrete case demand printed here. An expectation ID links a relevant aspect; it does not claim that the whole profile expectation is fully demonstrated in this one case. Six points alone never establish mastery or independent scientific acceptance.",
+            "expectationCoverage": [
+              {
+                "expectationId": "e1",
+                "claim": "bounded case-specific aspect only; consult exact rubric and whole-pair coverage",
+                "fullWholeExpectationClaim": false
+              },
+              {
+                "expectationId": "e2",
+                "claim": "bounded case-specific aspect only; consult exact rubric and whole-pair coverage",
+                "fullWholeExpectationClaim": false
+              },
+              {
+                "expectationId": "e3",
+                "claim": "bounded case-specific aspect only; consult exact rubric and whole-pair coverage",
+                "fullWholeExpectationClaim": false
+              }
+            ]
+          }
+        }
+      ],
+      "readBoundary": "Only the selected cases and current27 P profile, not every other case in the file, were substantively read."
+    },
+    {
+      "rawInput": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-polarimetry-two-duties-P1-author-20261017-v1/MATERIAL.complete-DE-EN.polarimeter-and-two-concentration-cases.AUTHOR.json",
+        "sha256": "25f9403ac6e9170092ae70df514ad05d586457f94e84c168a03516ef91457b1c",
+        "bytes": 13394
+      },
+      "wholeMaterial": {
+        "role": "Complete own author material, pending independent review",
+        "goalId": "f4d5a02d-711b-5a6b-a41d-971359c1f64d",
+        "common": {
+          "modelOnly": true,
+          "observedExperiment": false,
+          "instrumentDe": "Benanntes vereinfachtes Polarimetermodell: monochromatische Lichtquelle → fester Linearpolarisator → transparente Probenküvette bekannter Länge l → drehbarer Linear-Analysator mit Winkelskala → Lichtdetektor. Zuerst wird mit dem reinen Lösemittel das Transmissionsminimum bestimmt; danach mit der Probenlösung unter gleichen Bedingungen. Für die kleinen hier vorgegebenen Winkel ist die Winkelzweideutigkeit ausgeschlossen. Die kalibrierte Skala benutzt dieselbe Blick- und Vorzeichenkonvention für Leerwert und Probe. Die Differenz α = Probenstellung − Leerwertstellung ist die optische Drehung. Das ist ein Geräteprinzipmodell, keine Anleitung oder Freigabe für eine tatsächliche Messung.",
+          "instrumentEn": "Specified simplified polarimeter: monochromatic source → fixed linear polarizer → transparent sample cell of known path length l → rotating linear analyzer with angular scale → detector. Determine the transmission minimum first with pure solvent and then with the sample under the same conditions. Angular ambiguity is excluded for the small stated angles. The calibrated scale uses the same viewing/sign convention for blank and sample. The difference α = sample setting − blank setting is optical rotation. This is an instrument-principle model, not authorization or instructions for an actual measurement.",
+          "equationDe": "Für diese Aufgaben gilt ausdrücklich α = [α] l c, mit α in Grad, l in dm, c in g/mL und [α] in Grad·mL/(g·dm). c ist Masse des benannten gelösten Kohlenhydrats je Volumen der fertigen Lösung, nicht je Volumen eingesetzten Lösemittels. Eine Angabe in g/100 mL darf nicht unverändert in diese Konvention eingesetzt werden. Die Vergleichsbedingungen sind Lösemittel Wasser, 20 °C, 589 nm und der vorausgesetzte Gleichgewichtszustand. Im linearen Aufgabenmodell sind l und die Referenz-[α] exakt; reale Messungen hätten zusätzliche Unsicherheiten.",
+          "equationEn": "These tasks explicitly use α = [α] l c with α in degrees, l in dm, c in g/mL and [α] in degree·mL/(g·dm). c means mass of the named dissolved carbohydrate per final solution volume, not per initial solvent volume. A value in g/100 mL cannot be inserted unchanged. Conditions are water, 20 °C, 589 nm and the stipulated equilibrium state. In the linear task model l and reference [α] are exact; actual measurements would have additional uncertainties."
+        },
+        "cases": [
+          {
+            "id": "hb-polarimeter-device-glucose-concentration",
+            "materialId": "A",
+            "dataProvenance": "All numerical values are stipulated synthetic task data; no actual measurement, sample identity or manufacturer certificate is claimed. Specific-reference values are carried from the existing hypothetical profile, not newly measured.",
+            "providedData": {
+              "solvent": "water",
+              "temperatureC": 20,
+              "wavelengthNm": 589,
+              "equilibriumAssumed": true,
+              "knownCalibration": {
+                "namedSubstance": "glucose, stipulated pure and at equilibrium",
+                "observedRotationDeg": 5.27,
+                "pathLengthDm": 1.0,
+                "massConcentrationGPerMl": 0.1
+              },
+              "unknownKnownIdentity": {
+                "namedSubstance": "glucose, stipulated sole optically active solute, not unknown chemical identity",
+                "blankAnalyzerSettingDeg": 2.0,
+                "sampleAnalyzerSettingDeg": 6.216,
+                "pathLengthMm": 200,
+                "statedAngleDifferenceUncertaintyDeg": 0.05
+              }
+            },
+            "taskDe": "Erläutere die Funktion jedes Bauteils im gegebenen Polarimetermodell und warum ein Leerwert benötigt wird. Erkläre, weshalb die Änderung des Detektorsignals beim Drehen des Analysators einen Drehwinkel zugänglich macht, statt einfach nur Helligkeit als Stoffkennwert zu messen. Berechne aus der Kalibrierprobe [α]. Bestimme anschließend aus Leerwert-/Probenstellung und Küvettenlänge die unbekannte Glucose-Massenkonzentration in g/mL und g/L; hier ist c, nicht [α], gesucht. Schätze die allein aus der angegebenen Winkelunsicherheit folgende c-Unsicherheit. Begründe die notwendigen Gleichgewichts-/Reinheits-/Temperatur-/Wellenlängen-/Lösemittelannahmen. Ordne die Aussagegrenze der Konzentration einer bekannten Substanz gegenüber Identifikation eines unbekannten Stoffs und gegenüber D/L-Zuordnung ein.",
+            "taskEn": "Explain each component in the specified polarimeter and why a blank is needed. Explain how varying analyzer transmission makes an angle accessible rather than treating brightness alone as a substance constant. Derive [α] from the calibration sample. Then calculate the unknown glucose mass concentration in g/mL and g/L from blank/sample settings and cell length; here c, not [α], is unknown. Estimate the c uncertainty from the stated angular uncertainty alone. Justify the equilibrium, purity, temperature, wavelength and solvent assumptions. Distinguish concentration of an already identified substance from identifying an unknown substance or inferring D/L configuration.",
+            "expectedDe": "Der erste Filter legt eine lineare Polarisation fest. Die optisch aktive Probe verändert deren Richtung; der zweite Filter prüft sie durch winkelabhängige Transmission. Die zum gleichen Minimum nötige Winkelkorrektur relativ zum Lösemittel ist α. Ohne definierte Eingangspolarisation ist dieses einfache Kompensationsmodell nicht begründet; eine Helligkeitsabnahme allein kann auch Absorption oder Trübung sein. [α]=5,27/(1,00·0,100)=+52,7 Grad·mL/(g·dm). α=6,216−2,000=+4,216°; l=200 mm=2,00 dm; c=4,216/(52,7·2,00)=0,0400 g/mL=40,0 g/L. Nur die vorgegebene Winkelunsicherheit ergibt Δc=0,05/(52,7·2,00)≈0,00047 g/mL≈0,47 g/L. Die eingeschränkte Modellangabe ist damit etwa (40,0±0,5) g/L, keine vollständige reale Unsicherheitsbilanz. Die Rückrechnung setzt bekannte Glucose als einzigen optisch aktiven gelösten Stoff und passende Referenzbedingungen voraus. Positives Vorzeichen beweist keine D-Konfiguration, passende Rotation keine universelle Identität.",
+            "expectedEn": "The first filter defines linear polarization. The active sample changes its orientation; the second filter tests it through angle-dependent transmission. Compensation to the same minimum relative to solvent gives α. Without defined input polarization this simple compensation model is not justified; brightness loss alone can be absorption or turbidity. [α]=5.27/(1.00·0.100)=+52.7 degree·mL/(g·dm). α=6.216−2.000=+4.216°; l=200 mm=2.00 dm; c=4.216/(52.7·2.00)=0.0400 g/mL=40.0 g/L. The stated angle uncertainty alone gives Δc=0.05/(52.7·2.00)≈0.00047 g/mL≈0.47 g/L, hence about (40.0±0.5) g/L in this limited model, not a full actual uncertainty budget. Inversion assumes known glucose as the only optically active solute and matching reference conditions. A positive sign does not establish D configuration, and rotation is not universal identification.",
+            "freshTransferDe": "Die Küvettenlänge wird bei unveränderter Probe halbiert. Eine neue Probe wird dagegen bei anderer Wellenlänge gemessen, für die keine Referenz gegeben ist. Was ändert sich und wo ist die Rückrechnung nicht mehr begründet?",
+            "freshTransferEn": "Halve the cell length for the unchanged sample. A separate sample is measured at another wavelength with no corresponding reference. What changes, and where is inversion no longer justified?",
+            "freshExpectedDe": "Im linearen Modell halbiert sich α bei gleicher c; korrektes Einsetzen der neuen Länge ergibt dieselbe Konzentration. Bei anderer Wellenlänge kann die spezifische Rotation anders sein; ohne passende Referenz wird kein belastbarer Konzentrationswert berechnet.",
+            "freshExpectedEn": "In the linear model α halves at unchanged c; using the new length recovers the same concentration. Specific rotation can change with wavelength, so no defensible concentration is inferred without a matching reference."
+          },
+          {
+            "id": "hb-fructose-concentration-sign-and-mixture-transfer",
+            "materialId": "B",
+            "dataProvenance": "Independent synthetic task case, not a real concentration measurement.",
+            "providedData": {
+              "knownSubstance": "fructose, sole optically active solute stipulated",
+              "specificRotationDegreeMlPerGDm": -92.4,
+              "pathLengthMm": 50.0,
+              "correctedObservedRotationDeg": -1.386,
+              "solvent": "water",
+              "temperatureC": 20,
+              "wavelengthNm": 589,
+              "equilibriumAssumed": true
+            },
+            "taskDe": "Bearbeite den frischen Fructosefall ohne Übernahme des Glucosewertes. Erkläre am Geräteprinzip, was das negative Vorzeichen bedeutet, und berechne c in g/mL sowie g/L. Prüfe eine Rechnung, die 50 mm unverändert als l=50 einsetzt, und eine zweite, die eine negative Massenkonzentration meldet. Vergleiche danach eine 1:1-Enantiomerenmischung mit einer optisch inaktiven Lösung: Was erlaubt α=0 über Identität und Konzentration zu folgern? Eine Zusatzprobe enthält mehrere optisch aktive Zucker unbekannter Zusammensetzung. Begründe, weshalb ein Winkel mit nur einer Referenz-[α] dann keine eindeutige individuelle Zuckerkonzentration liefert.",
+            "taskEn": "Solve the fresh fructose case without reusing the glucose reference. Explain the negative sign using the instrument principle and calculate c in g/mL and g/L. Evaluate a calculation inserting 50 mm unchanged as l=50 and another reporting negative mass concentration. Then compare a 1:1 enantiomer mixture with an optically inactive solution: what does α=0 imply about identity and concentration? A further sample contains several optically active sugars of unknown composition. Explain why one angle and one reference [α] cannot uniquely determine each sugar concentration.",
+            "expectedDe": "50,0 mm=0,500 dm; c=−1,386/(−92,4·0,500)=0,0300 g/mL=30,0 g/L. Das Vorzeichen beschreibt den Drehsinn in der festgelegten Konvention, keine negative Stoffmenge und keine D/L-Zuordnung. Einsetzen von 50 statt0,5 unterschätzt c um Faktor100. Ein ideales Racemat kompensiert trotz vorhandener chiraler Substanz; Null ist kein allgemeiner Nachweis für c=0, Achiralität oder eine bestimmte Identität. Für mehrere Beiträge liefert ein Winkel nur eine Summenbedingung; Einzelkonzentrationen bleiben ohne weitere unabhängige Information unbestimmt. Das gilt auch bei bekannter Messpräzision.",
+            "expectedEn": "50.0 mm=0.500 dm; c=−1.386/(−92.4·0.500)=0.0300 g/mL=30.0 g/L. The sign describes rotation direction in the stated convention, not negative amount or D/L configuration. Inserting 50 instead of0.5 underestimates c by100. An ideal racemate cancels despite chiral material being present; zero does not generally establish c=0, achirality or a particular identity. Multiple contributions give a sum constraint from one angle; individual concentrations remain undetermined without independent information, even at known precision.",
+            "freshTransferDe": "Der Analysator wird entfernt; es bleibt nur die am Detektor gemessene Helligkeit. Kann man mit demselben Prinzip den vorherigen Drehwinkel und daraus c bestimmen? Welche fehlende Information ist entscheidend?",
+            "freshTransferEn": "Remove the analyzer and retain only detector brightness. Can the same principle determine the previous rotation angle and hence c? What essential information is missing?",
+            "freshExpectedDe": "Die orientierungsselektive Analyse fehlt. Aus einer bloßen Gesamtintensität lässt sich im gegebenen einfachen Modell der Drehwinkel nicht eindeutig ableiten; Absorption und Trübung können Intensität verändern. Ohne α ist auch die bisherige Rückrechnung nicht begründet.",
+            "freshExpectedEn": "Orientation-selective analysis is missing. Total intensity alone does not determine rotation in the specified simple model; absorption or turbidity may change brightness. Without α, the previous concentration inversion is not justified."
+          }
+        ],
+        "rubricDe": [
+          "Bauteile und vergleichende Winkelmessung kausal erklären, nicht nur Namen aufzählen.",
+          "Weg-/Konzentrationseinheiten sowie Leerwert korrekt behandeln.",
+          "[α] und unbekanntes c in verschiedenen Rollen bestimmen, Vorzeichen fachlich prüfen.",
+          "Referenzbedingungen, bekannte Stoffidentität und Mehrkomponentengrenze unterscheiden.",
+          "Frische Geräte-/Bedingungsvariation begründet bearbeiten; alte Antworten nicht abschreiben."
+        ],
+        "rubricEn": [
+          "Explain components and comparative angular measurement causally rather than listing labels.",
+          "Handle path/concentration units and blank correctly.",
+          "Derive [α] and unknown c in distinct roles and interpret sign.",
+          "Distinguish reference conditions, known identity and mixture limitations.",
+          "Reason independently about fresh instrument/condition changes rather than copying prior answers."
+        ],
+        "existingThreeCasesRemainExact": true,
+        "minimumIndependentDemonstrationsMeansNoTaskQuota": true,
+        "observedLearnerPerformance": false,
+        "HumanApproval": false,
+        "HumanTrial": false,
+        "M7Claim": false,
+        "ownMaterialLicense": "CC-BY-4.0",
+        "externalSourceRightsNotRelicensed": true
+      },
+      "readBoundary": "Complete material scientific givens, tasks, model solution, fresh transfer and rubric; status fields do not establish approval."
+    }
+  ],
+  "newScientificFirstCompletions": 0,
+  "newStrictCompletions": 0,
+  "humanApproval": false,
+  "M7Claim": false
+}

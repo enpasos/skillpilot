@@ -15,7 +15,7 @@
   },
   "method": {
     "passageExtraction": "pdftotext -layout; segmented by official Hessen G9 Chemie topic headings 8.1-10.4",
-    "sourceGoalExtraction": "one source goal per official verbindliche Unterrichtsinhalts row aspect; original row text retained in parentBulletText"
+    "sourceGoalExtraction": "one source goal per official verbindliche Unterrichtsinhalts row aspect; original row text retained in parentBulletText; one selected complete official optional8.1/F03 row retained separately; no universal compulsory reclassification"
   },
   "expectedTopicCodes": [
     "8.1",
@@ -81,7 +81,7 @@
             "id": "source-goals-created",
             "label": "Aus den Chemie-Lehrplanpassagen wurden granulare Source-Ziele erzeugt",
             "passed": true,
-            "details": "122 Source-Ziele"
+            "details": "123 Source-Ziele:122 bisherige verbindliche Inhaltszellen unverändert und eine vollständige ausgewählte fakultative8.1/F03-Zeile."
           },
           {
             "id": "passage-to-source-goal-coverage",
@@ -124,7 +124,7 @@
       {
         "id": "MAPPING-3",
         "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
-        "status": "complete",
+        "status": "in_progress",
         "dependsOn": [
           "MAPPING-1",
           "MAPPING-2"
@@ -134,7 +134,7 @@
             "id": "mapping-2-complete",
             "label": "MAPPING-2 abgeschlossen",
             "passed": true,
-            "details": "122 Source-Ziele liegen vor; MAPPING-3 wurde gegen diese Source-Extraction-IDs abgeschlossen."
+            "details": "123 Source-Ziele liegen vor; die neue ausdrücklich fakultative F03-Zeile hat zwei getrennt geprüfte partielle Zielbeiträge."
           },
           {
             "id": "m3-review-file-present",
@@ -146,7 +146,7 @@
             "id": "m3-review-decisions-reference-source-goals",
             "label": "M3-Review-Entscheidungen referenzieren gültige Source-Ziele",
             "passed": true,
-            "details": "Reviewed Source-Ziele: 122/122."
+            "details": "122 historische M3-Entscheidungen unverändert; F03 zwei aktuelle unabhängig angenommene partial-Beiträge, keine ganze Quellenfreigabe."
           },
           {
             "id": "m3-review-targets-exist",
@@ -158,15 +158,62 @@
             "id": "m3-all-source-goals-reviewed",
             "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
             "passed": true,
-            "details": "122/122 Source-Ziele reviewed; offen: 0."
+            "details": "122 historische M3-Entscheidungen unverändert; F03 zwei aktuelle unabhängig angenommene partial-Beiträge, keine ganze Quellenfreigabe."
           },
           {
             "id": "m3-all-source-goals-covered-by-canonical",
             "label": "Alle Source-Ziele sind durch SkillPilot-Ziele abgedeckt",
-            "passed": true,
-            "details": "Abgedeckt: 122/122; verbleibend: 0 explizite Canonical-Gaps, 0 unreviewed."
+            "passed": false,
+            "details": "122 historische Inhaltszellen unverändert; für die neue F03-Zeile sind zwei partielle Beziehungen angenommen. Ganze amtliche Quellenfreigabe wird hier nicht behauptet."
           }
-        ]
+        ],
+        "historical122ContentChecks": {
+          "id": "MAPPING-3",
+          "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+          "status": "complete",
+          "dependsOn": [
+            "MAPPING-1",
+            "MAPPING-2"
+          ],
+          "checks": [
+            {
+              "id": "mapping-2-complete",
+              "label": "MAPPING-2 abgeschlossen",
+              "passed": true,
+              "details": "122 Source-Ziele liegen vor; MAPPING-3 wurde gegen diese Source-Extraction-IDs abgeschlossen."
+            },
+            {
+              "id": "m3-review-file-present",
+              "label": "M3-Review-Datei ist vorhanden",
+              "passed": true,
+              "details": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json"
+            },
+            {
+              "id": "m3-review-decisions-reference-source-goals",
+              "label": "M3-Review-Entscheidungen referenzieren gültige Source-Ziele",
+              "passed": true,
+              "details": "Reviewed Source-Ziele: 122/122."
+            },
+            {
+              "id": "m3-review-targets-exist",
+              "label": "M3-Review-Ziele referenzieren vorhandene Canonical-Ziele",
+              "passed": true,
+              "details": "Unbekannte Canonical-Ziele: -"
+            },
+            {
+              "id": "m3-all-source-goals-reviewed",
+              "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+              "passed": true,
+              "details": "122/122 Source-Ziele reviewed; offen: 0."
+            },
+            {
+              "id": "m3-all-source-goals-covered-by-canonical",
+              "label": "Alle Source-Ziele sind durch SkillPilot-Ziele abgedeckt",
+              "passed": true,
+              "details": "Abgedeckt: 122/122; verbleibend: 0 explizite Canonical-Gaps, 0 unreviewed."
+            }
+          ]
+        }
       }
     ]
   },
@@ -195,7 +242,8 @@
         "he-chem-seki-8-1-b10-a01-00db10ff",
         "he-chem-seki-8-1-b11-a01-4fdeec22",
         "he-chem-seki-8-1-b12-a01-b6cf6a40",
-        "he-chem-seki-8-1-b13-a01-07dfa292"
+        "he-chem-seki-8-1-b13-a01-07dfa292",
+        "he-chem-seki-8-1-f03-a01-e8972452"
       ]
     },
     {
@@ -3443,6 +3491,43 @@
       "rawSourceText": "Bindungsverhältnisse und Strukturformeln",
       "rawSourceSpan": "10.4#B02A03",
       "rawParentBulletText": "4.2 Gesättigte Kohlenwasserstoffe Eigenschaften und Reaktionen gasförmiger und flüssiger Alkane; qualitative Elementaranalyse; Bindungsverhältnisse und Strukturformeln"
+    },
+    {
+      "id": "he-chem-seki-8-1-f03-a01-e8972452",
+      "passageId": "he-chem-seki:8.1",
+      "topicCode": "8.1",
+      "bulletIndex": 3,
+      "aspectIndex": 1,
+      "title": "Fakultativ: Temperaturabhängigkeit der Löslichkeit",
+      "description": "Source-Ziel aus8.1, ausdrücklich fakultative Unterrichtsinhalte/Aufgaben, gedruckteS.12: Temperaturabhängigkeit der Löslichkeit Gesättigte, ungesättigte, konzentrierte und verdünnte Lösungen; Graphen zur Löslichkeit Versuche zur Kristallbildung",
+      "sourceText": "Temperaturabhängigkeit der Löslichkeit Gesättigte, ungesättigte, konzentrierte und verdünnte Lösungen; Graphen zur Löslichkeit Versuche zur Kristallbildung",
+      "sourceSpan": "8.1#F03A01",
+      "parentBulletText": "Temperaturabhängigkeit der Löslichkeit Gesättigte, ungesättigte, konzentrierte und verdünnte Lösungen; Graphen zur Löslichkeit Versuche zur Kristallbildung",
+      "sourceRef": "Lehrplan Chemie Gymnasium Hessen G9,8.1 Stoffe - Strukturen - Eigenschaften, gedruckteS.12, Fakultative Unterrichtsinhalte/Aufgaben, zu1.2",
+      "courseLevel": "unspecified",
+      "granularity": "officialContentRowAspect",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "subject:Chemie",
+        "stage:SekI",
+        "topic:8.1",
+        "courseLevel:unspecified",
+        "sourceOptional:fakultativ"
+      ],
+      "rawSourceText": "Temperaturabhängigkeit der Löslichkeit Gesättigte, ungesättigte, konzentrierte und verdünnte Lösungen; Graphen zur Löslichkeit Versuche zur Kristallbildung",
+      "rawSourceSpan": "8.1#F03A01",
+      "rawParentBulletText": "Temperaturabhängigkeit der Löslichkeit Gesättigte, ungesättigte, konzentrierte und verdünnte Lösungen; Graphen zur Löslichkeit Versuche zur Kristallbildung",
+      "page": 12,
+      "officialOptional": true,
+      "sourceSection": "Fakultative Unterrichtsinhalte/Aufgaben; zu1.2",
+      "officialScope": "Optional SekI row; no official GK/LK distinction and no universal upper-stage duty",
+      "metadata": {
+        "sourceTransport": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-single-state-forward-direct-source-author-20261018-v1/candidate/extraction-additions/HE.G9.complete-optional-solubility-topic.additions.json",
+        "acceptedPartialReview": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-single-state-forward-direct-source-informed-independent-b-20261018-v1/REVIEW.fifty-three-rows-sixty-nine-pairs.FIRST.informed-independent-b.json",
+        "technicalIntegration": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-single53-reviewed-source-integration-technical-20261018-v1/RECEIPT.actual-single53-source-CAS-integration.json",
+        "wholeOfficialSourceApproval": false,
+        "officialOptionalStatusPreserved": true
+      }
     }
   ]
 }

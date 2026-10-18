@@ -7,7 +7,7 @@
 > Source of truth: `app/scripts/generateCurriculumQualityStatus.ts`
 > Source of truth: `curricula/`
 
-Generated: 2026-10-17T12:30:18.520Z
+Generated: 2026-10-18T11:36:54.349Z
 Rules version: curriculum-quality-v5
 
 ## Summary
@@ -29,7 +29,7 @@ Rules version: curriculum-quality-v5
 | Curriculum | Maturity | Goals | Atomic | Passage extraction | Bundeslaender | QA scopes | Warn | Fail |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Biologie (Gymnasium, DE) | M7 | 484 | 427 | 17/23 | 16/16 | 1 | 0 | 0 |
-| Chemie (Gymnasium, DE) | M6 | 523 | 442 | 32/32 | 16/16 | 1 | 1 | 0 |
+| Chemie (Gymnasium, DE) | M6 | 737 | 636 | 31/32 | 16/16 | 1 | 0 | 1 |
 | Chinesisch (Gymnasium, DE) | M0 | 192 | 181 | 2/2 | 2/16 | 0 | 2 | 0 |
 | Deutsch (Gymnasium, DE) | M6 | 354 | 291 | 31/31 | 16/16 | 1 | 0 | 0 |
 | Englisch (Gymnasium, DE) | M0 | 130 | 104 | 2/2 | 2/16 | 0 | 2 | 0 |
@@ -77,38 +77,38 @@ Rules version: curriculum-quality-v5
 | Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Sachsen-Anhalt Fachlehrplan Gymnasium 2022 Source-Extraction) | DE-ST | 1/1 URL; local cache 1/1 | 3/3 | - | 0 | 11 | 0 | 11 | 0% | - |  |
 | Biologie (Gymnasium, DE) | Sachsen-Anhalt E-Phase10: drei vorhandene Q1-Ziele als begrenzte Komponenten – Autorenkandidat | DE-ST | 1/1 URL; local cache 1/1 | 0/3 | MAPPING-1 | 3 | 3 | 0 | 0 | 0% | - |  |
 | Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Thueringen Lehrplan Gymnasium 2024 Source-Extraction) | DE-TH | 1/1 URL; local cache 1/1 | 3/3 | - | 0 | 8 | 0 | 8 | 0% | - |  |
-| Chemie (Gymnasium, DE) | DE-BB - Chemie Oberstufe (Brandenburg, RLP GOST 2022 Source-Extraction) | DE-BB | 1/1 URL; local cache 1/1 | 3/3 | - | 23 | 203 | 100 | 103 | 49% | - |  |
-| Chemie (Gymnasium, DE) | DE-BB - Chemie Sekundarstufe I (Brandenburg, RLP 2015 Source-Extraction) | DE-BB | 1/1 URL; local cache 1/1 | 3/3 | - | 12 | 68 | 0 | 68 | 0% | - |  |
-| Chemie (Gymnasium, DE) | DE-BE - Chemie Oberstufe (Berlin, RLP GOST 2022 Source-Extraction) | DE-BE | 1/1 URL; local cache 1/1 | 3/3 | - | 23 | 203 | 100 | 103 | 49% | - |  |
-| Chemie (Gymnasium, DE) | DE-BE - Chemie Sekundarstufe I (Berlin, RLP 2015 Source-Extraction) | DE-BE | 1/1 URL; local cache 1/1 | 3/3 | - | 12 | 68 | 0 | 68 | 0% | - |  |
+| Chemie (Gymnasium, DE) | DE-BB - Chemie Oberstufe (Brandenburg, RLP GOST 2022 Source-Extraction) | DE-BB | 1/1 URL; local cache 1/1 | 3/3 | - | 23 | 216 | 99 | 117 | 46% | - |  |
+| Chemie (Gymnasium, DE) | DE-BB - Chemie Sekundarstufe I (Brandenburg, RLP 2015 Source-Extraction) | DE-BB | 1/1 URL; local cache 1/1 | 3/3 | - | 15 | 71 | 0 | 71 | 0% | - |  |
+| Chemie (Gymnasium, DE) | DE-BE - Chemie Oberstufe (Berlin, RLP GOST 2022 Source-Extraction) | DE-BE | 1/1 URL; local cache 1/1 | 3/3 | - | 23 | 216 | 99 | 117 | 46% | - |  |
+| Chemie (Gymnasium, DE) | DE-BE - Chemie Sekundarstufe I (Berlin, RLP 2015 Source-Extraction) | DE-BE | 1/1 URL; local cache 1/1 | 3/3 | - | 15 | 71 | 0 | 71 | 0% | - |  |
 | Chemie (Gymnasium, DE) | Chemie Kursstufe (Baden-Wuerttemberg, BP2016 V2 Source-Extraction) | DE-BW | 1/1 URL; local cache 1/1 | 2/3 | MAPPING-3 | 13 | 126 | 0 | 0 | 0% | - |  |
-| Chemie (Gymnasium, DE) | Chemie Sekundarstufe I (Baden-Wuerttemberg, BP2016 V2 Source-Extraction) | DE-BW | 1/1 URL; local cache 1/1 | 3/3 | - | 6 | 65 | 27 | 38 | 42% | - |  |
+| Chemie (Gymnasium, DE) | Chemie Sekundarstufe I (Baden-Wuerttemberg, BP2016 V2 Source-Extraction) | DE-BW | 1/1 URL; local cache 1/1 | 3/3 | - | 7 | 66 | 26 | 40 | 39% | - |  |
 | Chemie (Gymnasium, DE) | DE-BY - Biologisch-chemisches Praktikum Gymnasium (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 1/1 URL; local cache 1/1 | 3/3 | - | 14 | 52 | 52 | 0 | 100% | - |  |
 | Chemie (Gymnasium, DE) | DE-BY - Chemie Gymnasium (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 1/1 URL; local cache 1/1 | 3/3 | - | 54 | 332 | 277 | 55 | 83% | - |  |
-| Chemie (Gymnasium, DE) | DE-HB - Chemie Gymnasiale Oberstufe (Bremen, Bildungsplan 2022 Source-Extraction) | DE-HB | 1/1 URL; local cache 1/1 | 3/3 | - | 18 | 88 | 6 | 82 | 7% | - |  |
+| Chemie (Gymnasium, DE) | Bremen Chemie GyO 2022 — inactive primary-clause source inventory AUTHOR successor | DE-HB | 1/1 URL; local cache 1/1 | 0/3 | MAPPING-1 | 28 | 232 | 0 | 0 | 0% | - |  |
 | Chemie (Gymnasium, DE) | DE-HB - Chemie Sekundarstufe I (Bremen, Bildungsplan 2006/2022 Source-Extraction) | DE-HB | 2/2 URL; local cache 2/2 | 3/3 | - | 4 | 42 | 0 | 42 | 0% | - |  |
-| Chemie (Gymnasium, DE) | Chemie Oberstufe (Hessen, KC 2024 Source-Extraction) | DE-HE | 1/1 URL; local cache 1/1 | 3/3 | - | 22 | 202 | 136 | 66 | 67% | - |  |
-| Chemie (Gymnasium, DE) | Chemie Sekundarstufe I (Hessen, G9 Source-Extraction) | DE-HE | 1/1 URL; local cache 1/1 | 3/3 | - | 9 | 122 | 67 | 55 | 55% | - |  |
-| Chemie (Gymnasium, DE) | DE-HH - Chemie Sekundarstufe I (Hamburg, Bildungsplan Source-Extraction) | DE-HH | 1/1 URL; local cache 1/1 | 3/3 | - | 7 | 65 | 40 | 25 | 62% | - |  |
-| Chemie (Gymnasium, DE) | DE-HH - Chemie Studienstufe (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 1/1 URL; local cache 1/1 | 3/3 | - | 12 | 97 | 18 | 79 | 19% | - |  |
-| Chemie (Gymnasium, DE) | DE-MV - Chemie Qualifikationsphase (Mecklenburg-Vorpommern, Rahmenplan 2022 Erprobungsfassung Source-Extraction) | DE-MV | 1/1 URL; local cache 1/1 | 3/3 | - | 12 | 122 | 18 | 104 | 15% | - |  |
-| Chemie (Gymnasium, DE) | DE-MV - Chemie Sekundarstufe I (Mecklenburg-Vorpommern, Rahmenplan 2021 Source-Extraction) | DE-MV | 1/1 URL; local cache 1/1 | 3/3 | - | 11 | 114 | 34 | 80 | 30% | - |  |
-| Chemie (Gymnasium, DE) | DE-NI - Chemie Oberstufe (Niedersachsen, KC 2022 Source-Extraction) | DE-NI | 1/1 URL; local cache 1/1 | 3/3 | - | 21 | 333 | 82 | 251 | 25% | - |  |
-| Chemie (Gymnasium, DE) | DE-NI - Chemie Sekundarstufe I (Niedersachsen, KC 2015 Source-Extraction) | DE-NI | 1/1 URL; local cache 1/1 | 3/3 | - | 14 | 196 | 23 | 173 | 12% | - |  |
-| Chemie (Gymnasium, DE) | DE-NW - Chemie Oberstufe (Nordrhein-Westfalen, KLP 2022 Source-Extraction) | DE-NW | 1/1 URL; local cache 1/1 | 3/3 | - | 30 | 154 | 2 | 152 | 1% | - |  |
+| Chemie (Gymnasium, DE) | Chemie Oberstufe (Hessen, KC 2024 Source-Extraction) | DE-HE | 1/1 URL; local cache 1/1 | 3/3 | - | 22 | 202 | 134 | 68 | 66% | - |  |
+| Chemie (Gymnasium, DE) | Chemie Sekundarstufe I (Hessen, G9 Source-Extraction) | DE-HE | 1/1 URL; local cache 1/1 | 2/2 | - | 9 | 123 | 67 | 56 | 54% | - |  |
+| Chemie (Gymnasium, DE) | DE-HH - Chemie Sekundarstufe I (Hamburg, Bildungsplan Source-Extraction) | DE-HH | 1/1 URL; local cache 1/1 | 3/3 | - | 7 | 65 | 39 | 26 | 60% | - |  |
+| Chemie (Gymnasium, DE) | DE-HH - Chemie Studienstufe (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 1/1 URL; local cache 1/1 | 3/3 | - | 16 | 108 | 18 | 90 | 17% | - |  |
+| Chemie (Gymnasium, DE) | DE-MV - Chemie Qualifikationsphase (Mecklenburg-Vorpommern, Rahmenplan 2022 Erprobungsfassung Source-Extraction) | DE-MV | 1/1 URL; local cache 1/1 | 3/3 | - | 18 | 136 | 18 | 118 | 13% | - |  |
+| Chemie (Gymnasium, DE) | DE-MV - Chemie Sekundarstufe I (Mecklenburg-Vorpommern, Rahmenplan 2021 Source-Extraction) | DE-MV | 1/1 URL; local cache 1/1 | 3/3 | - | 12 | 115 | 33 | 82 | 29% | - |  |
+| Chemie (Gymnasium, DE) | DE-NI - Chemie Oberstufe (Niedersachsen, KC 2022 Source-Extraction) | DE-NI | 1/1 URL; local cache 1/1 | 3/3 | - | 21 | 333 | 81 | 252 | 24% | - |  |
+| Chemie (Gymnasium, DE) | DE-NI - Chemie Sekundarstufe I (Niedersachsen, KC 2015 Source-Extraction) | DE-NI | 1/1 URL; local cache 1/1 | 3/3 | - | 15 | 198 | 23 | 175 | 12% | - |  |
+| Chemie (Gymnasium, DE) | DE-NW - Chemie Oberstufe (Nordrhein-Westfalen, KLP 2022 Source-Extraction) | DE-NW | 1/1 URL; local cache 1/1 | 3/3 | - | 41 | 170 | 2 | 168 | 1% | - |  |
 | Chemie (Gymnasium, DE) | DE-NW - Chemie Sekundarstufe I (Nordrhein-Westfalen, KLP 2019 Source-Extraction) | DE-NW | 1/1 URL; local cache 1/1 | 3/3 | - | 30 | 79 | 1 | 78 | 1% | - |  |
-| Chemie (Gymnasium, DE) | DE-RP - Chemie Mainzer Studienstufe (Rheinland-Pfalz, Lehrplan 2022 Source-Extraction) | DE-RP | 1/1 URL; local cache 1/1 | 3/3 | - | 63 | 325 | 97 | 228 | 30% | - |  |
-| Chemie (Gymnasium, DE) | DE-RP - Chemie Sekundarstufe I (Rheinland-Pfalz, Lehrplan BCP 2014 Source-Extraction) | DE-RP | 1/1 URL; local cache 1/1 | 3/3 | - | 12 | 65 | 23 | 42 | 35% | - |  |
-| Chemie (Gymnasium, DE) | DE-SH - Chemie Oberstufe (Schleswig-Holstein, Fachanforderungen 2022 Source-Extraction) | DE-SH | 1/1 URL; local cache 1/1 | 3/3 | - | 7 | 165 | 46 | 119 | 28% | - |  |
+| Chemie (Gymnasium, DE) | DE-RP - Chemie Mainzer Studienstufe (Rheinland-Pfalz, Lehrplan 2022 Source-Extraction) | DE-RP | 1/1 URL; local cache 1/1 | 2/3 | MAPPING-3 | 71 | 338 | 0 | 0 | 0% | - |  |
+| Chemie (Gymnasium, DE) | DE-RP - Chemie Sekundarstufe I (Rheinland-Pfalz, Lehrplan BCP 2014 Source-Extraction) | DE-RP | 1/1 URL; local cache 1/1 | 3/3 | - | 13 | 66 | 23 | 43 | 35% | - |  |
+| Chemie (Gymnasium, DE) | DE-SH - Chemie Oberstufe (Schleswig-Holstein, Fachanforderungen 2022 Source-Extraction) | DE-SH | 1/1 URL; local cache 1/1 | 3/3 | - | 11 | 169 | 45 | 124 | 27% | - |  |
 | Chemie (Gymnasium, DE) | DE-SH - Chemie Sekundarstufe I (Schleswig-Holstein, Fachanforderungen 2022 Source-Extraction) | DE-SH | 1/1 URL; local cache 1/1 | 3/3 | - | 8 | 156 | 27 | 129 | 17% | - |  |
-| Chemie (Gymnasium, DE) | DE-SL - Chemie Gymnasiale Oberstufe (Saarland, GOS 2023/2025 Source-Extraction) | DE-SL | 4/4 URL; local cache 4/4 | 3/3 | - | 160 | 712 | 137 | 575 | 19% | - |  |
-| Chemie (Gymnasium, DE) | DE-SL - Chemie Sekundarstufe I (Saarland, Gymnasium G9 2024/2025 Source-Extraction) | DE-SL | 2/2 URL; local cache 2/2 | 3/3 | - | 28 | 190 | 62 | 128 | 33% | - |  |
-| Chemie (Gymnasium, DE) | DE-SN - Chemie Jahrgangsstufen 11/12 (Sachsen, Lehrplan Gymnasium 2025 Source-Extraction) | DE-SN | 1/1 URL; local cache 1/1 | 3/3 | - | 33 | 302 | 38 | 264 | 13% | - |  |
-| Chemie (Gymnasium, DE) | DE-SN - Chemie Sekundarstufe I (Sachsen, Lehrplan Gymnasium 2025 Source-Extraction) | DE-SN | 1/1 URL; local cache 1/1 | 3/3 | - | 28 | 176 | 48 | 128 | 27% | - |  |
-| Chemie (Gymnasium, DE) | DE-ST - Chemie Sekundarstufe I (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction) | DE-ST | 2/2 URL; local cache 2/2 | 3/3 | - | 12 | 270 | 55 | 215 | 20% | - |  |
-| Chemie (Gymnasium, DE) | DE-ST - Chemie Sekundarstufe II (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction) | DE-ST | 2/2 URL; local cache 2/2 | 3/3 | - | 15 | 324 | 40 | 284 | 12% | - |  |
-| Chemie (Gymnasium, DE) | DE-TH - Chemie Qualifikationsphase (Thueringen, Lehrplan Gymnasium 2024 Source-Extraction) | DE-TH | 1/1 URL; local cache 1/1 | 3/3 | - | 55 | 225 | 39 | 186 | 17% | - |  |
-| Chemie (Gymnasium, DE) | DE-TH - Chemie Sekundarstufe I (Thueringen, Lehrplan Gymnasium 2024 Source-Extraction) | DE-TH | 1/1 URL; local cache 1/1 | 3/3 | - | 24 | 224 | 56 | 168 | 25% | - |  |
+| Chemie (Gymnasium, DE) | DE-SL - Chemie Gymnasiale Oberstufe (Saarland, GOS 2023/2025 Source-Extraction) | DE-SL | 4/4 URL; local cache 4/4 | 3/3 | - | 161 | 713 | 137 | 576 | 19% | - |  |
+| Chemie (Gymnasium, DE) | DE-SL - Chemie Sekundarstufe I (Saarland, Gymnasium G9 2024/2025 Source-Extraction) | DE-SL | 2/2 URL; local cache 2/2 | 3/3 | - | 29 | 193 | 62 | 131 | 32% | - |  |
+| Chemie (Gymnasium, DE) | DE-SN - Chemie Jahrgangsstufen 11/12 (Sachsen, Lehrplan Gymnasium 2025 Source-Extraction) | DE-SN | 1/1 URL; local cache 1/1 | 3/3 | - | 35 | 304 | 38 | 266 | 13% | - |  |
+| Chemie (Gymnasium, DE) | DE-SN - Chemie Sekundarstufe I (Sachsen, Lehrplan Gymnasium 2025 Source-Extraction) | DE-SN | 1/1 URL; local cache 1/1 | 3/3 | - | 39 | 188 | 48 | 140 | 26% | - |  |
+| Chemie (Gymnasium, DE) | DE-ST - Chemie Sekundarstufe I (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction) | DE-ST | 2/2 URL; local cache 2/2 | 3/3 | - | 12 | 270 | 52 | 218 | 19% | - |  |
+| Chemie (Gymnasium, DE) | DE-ST - Chemie Sekundarstufe II (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction) | DE-ST | 2/2 URL; local cache 2/2 | 3/3 | - | 24 | 333 | 40 | 293 | 12% | - |  |
+| Chemie (Gymnasium, DE) | DE-TH - Chemie Qualifikationsphase (Thueringen, Lehrplan Gymnasium 2024 Source-Extraction) | DE-TH | 1/1 URL; local cache 1/1 | 2/3 | MAPPING-3 | 55 | 225 | 0 | 0 | 0% | - |  |
+| Chemie (Gymnasium, DE) | DE-TH - Chemie Sekundarstufe I (Thueringen, Lehrplan Gymnasium 2024 Source-Extraction) | DE-TH | 1/1 URL; local cache 1/1 | 3/3 | - | 26 | 226 | 56 | 170 | 25% | - |  |
 | Chinesisch (Gymnasium, DE) | Chinesisch (Gymnasium) | DE-BY | 1/1 URL; local cache 1/1 | 3/3 | - | 19 | 229 | 14 | 215 | 6% | - |  |
 | Chinesisch (Gymnasium, DE) | Chinesisch Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 URL; local cache 1/1 | 3/3 | - | 6 | 170 | 170 | 0 | 100% | - |  |
 | Deutsch (Gymnasium, DE) | Deutsch Oberstufe (Brandenburg, RLP GOST 2022 Source-Extraction) | DE-BB | 1/1 URL; local cache 1/1 | 3/3 | - | 12 | 199 | 0 | 199 | 0% | - |  |
@@ -368,7 +368,7 @@ Rules version: curriculum-quality-v5
 | Curriculum | Complete | DE source-view atoms | Raw atoms | Source-backed states | Extracted source goals | Registered source originals | Fully covered originals | Unregistered source goals | Extracted source atoms | Unregistered source atoms | Unsupported assignments | Unmapped source atoms | Partial | Error | Max source-backed view coverage |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Biologie (Gymnasium, DE) | 16/16 | 399 | 427 | 16 | 1024 | 1024 | 1024 | 0 | 1024 | 0 | 0 | 0 | 0 | 0 | 365 (100%) |
-| Chemie (Gymnasium, DE) | 16/16 | 342 | 442 | 16 | 5865 | 5865 | 5865 | 0 | 5865 | 0 | 0 | 0 | 0 | 0 | 339 (100%) |
+| Chemie (Gymnasium, DE) | 16/16 | 379 | 636 | 16 | 6134 | 6134 | 6134 | 0 | 6134 | 0 | 0 | 0 | 0 | 0 | 349 (100%) |
 | Chinesisch (Gymnasium, DE) | 2/16 | 170 | 181 | 2 | 399 | 399 | 399 | 0 | 399 | 0 | 0 | 0 | 0 | 0 | 170 (100%) |
 | Deutsch (Gymnasium, DE) | 16/16 | 268 | 291 | 16 | 6222 | 6222 | 6222 | 0 | 6222 | 0 | 0 | 0 | 0 | 0 | 268 (100%) |
 | Englisch (Gymnasium, DE) | 2/16 | 89 | 104 | 2 | 103 | 103 | 103 | 0 | 103 | 0 | 0 | 0 | 0 | 0 | 89 (100%) |

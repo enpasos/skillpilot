@@ -25,7 +25,127 @@
   "method": {
     "sourceProvision": "Der amtliche Sachsen-Lehrplan Chemie Gymnasium 2025 liegt lokal als PDF vor; die oeffentliche Lehrplandatenbank stellt eine gemeinsame Datei fuer Klassenstufen 7-10 und Jahrgangsstufen 11/12 bereit.",
     "passageExtraction": "pdftotext -raw; Passagen werden je Klassen-/Jahrgangsstufe und Lern-/Wahlbereich gebildet.",
-    "sourceGoalExtraction": "Ein Source-Ziel pro operatorbezogener Kompetenzzeile und deren fachlichen Unteraspekten. Formelfragmente, Querverweise und Seitenkoepfe werden nicht als eigene Source-Ziele gezaehlt."
+    "sourceGoalExtraction": "Ein Source-Ziel pro operatorbezogener Kompetenzzeile und deren fachlichen Unteraspekten. Formelfragmente, Querverweise und Seitenkoepfe werden nicht als eigene Source-Ziele gezaehlt.",
+    "fourteenMethodSelectedProcessAddition": {
+      "technicalIntegration": "Authorised additive integration of independently accepted foreign author relations; no new scientific vote",
+      "candidate": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-author-20261018-v1/candidate/extraction-additions/10.DE-SN.SekII.complete-operator-additions.json",
+        "sha256": "11f5c10a75865076ddd7b06082e5688ec0fa9ca5bbff8737c77ec6bd1be7e96d",
+        "bytes": 24645
+      },
+      "independentAcceptedRef": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/ACCEPTED.exact104-direct-partial-two-literal-three-held.json",
+        "sha256": "9958d0a23bb96b4cce0ed69f2018631764f5fe943d87ed8136ef2ba070457119",
+        "bytes": 99336
+      },
+      "retainedImmediateBeforeInventory": 302,
+      "newCompleteSelectedOperatorCells": 2,
+      "actualUnionInventory": 304,
+      "allOldSourceCellsAndPassagesExactlyRetained": true,
+      "noCompleteOfficialStandardsUniverseClaim": true,
+      "wholeSourceCoverageEstablished": false,
+      "historicalPipelineStatusBeforeThisAddition": {
+        "version": 1,
+        "currentStep": "MAPPING-3",
+        "steps": [
+          {
+            "id": "MAPPING-1",
+            "label": "Original-Lehrplanpassagen extrahiert",
+            "status": "complete",
+            "dependsOn": [],
+            "checks": [
+              {
+                "id": "source-documents-present",
+                "label": "Amtlicher Sachsen-Chemie-Lehrplan liegt lokal vor",
+                "passed": true,
+                "details": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-chemie-sachsen-2025.pdf"
+              },
+              {
+                "id": "expected-topic-coverage",
+                "label": "Sachsen-Chemie-Passagegruppen aus Lern- und Wahlbereichen sind vorhanden",
+                "passed": true,
+                "details": "33 Passagegruppen."
+              },
+              {
+                "id": "passage-extraction-source",
+                "label": "Passage-Extraction basiert auf amtlicher PDF-Quelle",
+                "passed": true,
+                "details": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-chemie-sachsen-2025.pdf"
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-2",
+            "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+            "status": "complete",
+            "dependsOn": [
+              "MAPPING-1"
+            ],
+            "checks": [
+              {
+                "id": "source-goals-created",
+                "label": "Aus den amtlichen Sachsen-Chemie-Passagen wurden Source-Ziele erzeugt",
+                "passed": true,
+                "details": "302 Source-Ziele"
+              },
+              {
+                "id": "source-goal-count-peer-baseline",
+                "label": "Source-Ziel-Anzahl ist gegen bereits gepruefte Chemie-Inventare plausibilisiert",
+                "passed": true,
+                "details": "302 Source-Ziele; HE/BW/BB/BE/HH/MV/NI/NW/RP/SH/ST/SL Sek-II-Chemie = 202/126/203/203/75/122/333/154/325/165/324/712 Source-Ziele. Sachsen Sek II trennt GK und LK im selben amtlichen Lehrplan."
+              },
+              {
+                "id": "source-goal-ids-unique",
+                "label": "Source-Ziel-IDs sind eindeutig",
+                "passed": true,
+                "details": "Doppelte IDs: -"
+              },
+              {
+                "id": "source-goals-reference-passages",
+                "label": "Jedes Source-Ziel referenziert eine vorhandene Originalpassage",
+                "passed": true,
+                "details": "Ohne Passage: -"
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-3",
+            "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+            "status": "complete",
+            "dependsOn": [
+              "MAPPING-1",
+              "MAPPING-2"
+            ],
+            "checks": [
+              {
+                "id": "mapping-2-complete",
+                "label": "MAPPING-2 abgeschlossen",
+                "passed": true,
+                "details": "302 Source-Ziele liegen vor; MAPPING-3 ist fachlich reviewed."
+              },
+              {
+                "id": "m3-review-file-present",
+                "label": "M3-Review-Datei ist vorhanden",
+                "passed": true,
+                "details": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json"
+              },
+              {
+                "id": "m3-all-source-goals-reviewed",
+                "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+                "passed": true,
+                "details": "302/302 Source-Ziele reviewed; offen: 0."
+              },
+              {
+                "id": "m3-all-source-goals-covered-by-canonical",
+                "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+                "passed": true,
+                "details": "302/302 Source-Ziele sind durch kanonische Chemie-Ziele abgedeckt."
+              }
+            ]
+          }
+        ]
+      }
+    }
   },
   "qualityReview": {
     "sourceGoalCountPeerBaseline": {
@@ -66,7 +186,8 @@
     "SN-CH-jahrgangsstufe-12-leistungskurs-WB1",
     "SN-CH-jahrgangsstufe-12-leistungskurs-WB2",
     "SN-CH-jahrgangsstufe-12-leistungskurs-WB3",
-    "SN-CH-jahrgangsstufe-12-leistungskurs-WB4"
+    "SN-CH-jahrgangsstufe-12-leistungskurs-WB4",
+    "GK/LK11/12 identical objective sentence"
   ],
   "pipelineStatus": {
     "version": 1,
@@ -88,7 +209,7 @@
             "id": "expected-topic-coverage",
             "label": "Sachsen-Chemie-Passagegruppen aus Lern- und Wahlbereichen sind vorhanden",
             "passed": true,
-            "details": "33 Passagegruppen."
+            "details": "All 33 previous operative passages retained exactly; 2 selected complete-operator passages added. This is not the complete official standards universe."
           },
           {
             "id": "passage-extraction-source",
@@ -110,13 +231,13 @@
             "id": "source-goals-created",
             "label": "Aus den amtlichen Sachsen-Chemie-Passagen wurden Source-Ziele erzeugt",
             "passed": true,
-            "details": "302 Source-Ziele"
+            "details": "304 actual cells = 302 retained immediate previous inventory + 2 new whole selected operators. Previous content/standard phases remain historical; no unselected standard counted."
           },
           {
             "id": "source-goal-count-peer-baseline",
-            "label": "Source-Ziel-Anzahl ist gegen bereits gepruefte Chemie-Inventare plausibilisiert",
+            "label": "Historische Basis und neu ausgewählte vollständige Operatoren getrennt gezählt",
             "passed": true,
-            "details": "302 Source-Ziele; HE/BW/BB/BE/HH/MV/NI/NW/RP/SH/ST/SL Sek-II-Chemie = 202/126/203/203/75/122/333/154/325/165/324/712 Source-Ziele. Sachsen Sek II trennt GK und LK im selben amtlichen Lehrplan."
+            "details": "Previous peer comparisons concern their historical inventory only; original evidence retained in method.fourteenMethodSelectedProcessAddition.historicalPipelineStatusBeforeThisAddition. Current actual union 304=302+2; no full-standards benchmark."
           },
           {
             "id": "source-goal-ids-unique",
@@ -135,7 +256,7 @@
       {
         "id": "MAPPING-3",
         "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
-        "status": "complete",
+        "status": "incomplete",
         "dependsOn": [
           "MAPPING-1",
           "MAPPING-2"
@@ -145,7 +266,7 @@
             "id": "mapping-2-complete",
             "label": "MAPPING-2 abgeschlossen",
             "passed": true,
-            "details": "302 Source-Ziele liegen vor; MAPPING-3 ist fachlich reviewed."
+            "details": "304 actual source cells exist. Historical M3 results remain scoped to their prior inventory. Current individually accepted partial relations do not prove all whole-source duties."
           },
           {
             "id": "m3-review-file-present",
@@ -156,18 +277,62 @@
           {
             "id": "m3-all-source-goals-reviewed",
             "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
-            "passed": true,
-            "details": "302/302 Source-Ziele reviewed; offen: 0."
+            "passed": false,
+            "details": "2 newly selected whole operator cells have specific partial relations only. No new whole-source approval; all remaining verbs, stage/course/context and actual-performance duties remain open. Historical completeness is retained only in the saved previous pipeline record."
           },
           {
             "id": "m3-all-source-goals-covered-by-canonical",
             "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
-            "passed": true,
-            "details": "302/302 Source-Ziele sind durch kanonische Chemie-Ziele abgedeckt."
+            "passed": false,
+            "details": "2 newly selected whole operator cells have specific partial relations only. No new whole-source approval; all remaining verbs, stage/course/context and actual-performance duties remain open. Historical completeness is retained only in the saved previous pipeline record."
           }
         ]
       }
-    ]
+    ],
+    "fourteenMethodPartialIntegration": {
+      "status": "accepted-partial-contributions-only",
+      "totalSourceGoalsActual": 304,
+      "retainedImmediateBeforeCells": 302,
+      "newCompleteSelectedOperatorCells": 2,
+      "newWholeSourceApprovals": 0,
+      "newScientificFirstDecisionsByTechnicalIntegrator": 0,
+      "independentAcceptedRef": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/ACCEPTED.exact104-direct-partial-two-literal-three-held.json",
+        "sha256": "9958d0a23bb96b4cce0ed69f2018631764f5fe943d87ed8136ef2ba070457119",
+        "bytes": 99336
+      },
+      "newSourceCellPartialBindings": [
+        {
+          "sourceGoalId": "sn-chemistry-sekii-process-standard-gk-ziel-textanalyse",
+          "acceptedPartialRelations": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/38",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            },
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/63",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "wholeSourceApproval": false
+        },
+        {
+          "sourceGoalId": "sn-chemistry-sekii-process-standard-gk-ziel-own-experiments",
+          "acceptedPartialRelations": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/81",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "wholeSourceApproval": false
+        }
+      ],
+      "historicalM3DoesNotExtendAutomaticallyToNewCells": true,
+      "wholeSourceCoverageComplete": false
+    }
   },
   "passages": [
     {
@@ -801,6 +966,44 @@
         "sn-chem-sekii-sn-ch-jahrgangsstufe-12-leistungskurs-wb4-097-02-f9b0062e",
         "sn-chem-sekii-sn-ch-jahrgangsstufe-12-leistungskurs-wb4-097-03-1a056d6a"
       ]
+    },
+    {
+      "id": "sn-chemistry-sekii-process-standard-gk-ziel-textanalyse:whole-primary-context",
+      "topicCode": "GK/LK11/12 identical objective sentence",
+      "title": "Selected complete official operator; full original page context referenced",
+      "sourceDocumentKey": "SN-CH-2025",
+      "text": "Sie interpretieren und erläutern chemische Reaktionen und können Fachtexte und grafische Darstellungen analysieren.",
+      "physicalPdfPages": [
+        37,
+        47
+      ],
+      "sourceRef": "Lehrplan Gymnasium Chemie Sachsen 2004/2007/2009/2011/2019/2022/2025; GK physical37/printed25 and LK physical47/printed35; exactly identical whole selected sentence",
+      "scope": "Only this entire selected operator is newly operative. Full original primary-page context was read and remains available at the pinned official PDF; all unselected operators remain without a new binding vote.",
+      "primaryDocumentPin": {
+        "path": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-chemie-sachsen-2025.pdf",
+        "sha256": "3a74886e7ee9492b003d4916719e2b4644aef5fdfe8331cdefd8151fe0e86051",
+        "bytes": 824141
+      },
+      "sourceStageCourseAndContext": "SN separate GK and LK11/12 objectives, physical37/printed25 and physical47/printed35. The selected whole sentence is exactly identical in both; no equivalence of entire objectives/courses is inferred. Text analysis supplies no full search/trust duty."
+    },
+    {
+      "id": "sn-chemistry-sekii-process-standard-gk-ziel-own-experiments:whole-primary-context",
+      "topicCode": "GK/LK11/12 identical objective sentence",
+      "title": "Selected complete official operator; full original page context referenced",
+      "sourceDocumentKey": "SN-CH-2025",
+      "text": "Die Schüler können selbstständig chemische Experimente planen, durchführen, beobachten, beschreiben und auswerten.",
+      "physicalPdfPages": [
+        37,
+        47
+      ],
+      "sourceRef": "Lehrplan Gymnasium Chemie Sachsen 2004/2007/2009/2011/2019/2022/2025; GK physical37/printed25 and LK physical47/printed35; exactly identical whole selected sentence",
+      "scope": "Only this entire selected operator is newly operative. Full original primary-page context was read and remains available at the pinned official PDF; all unselected operators remain without a new binding vote.",
+      "primaryDocumentPin": {
+        "path": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-chemie-sachsen-2025.pdf",
+        "sha256": "3a74886e7ee9492b003d4916719e2b4644aef5fdfe8331cdefd8151fe0e86051",
+        "bytes": 824141
+      },
+      "sourceStageCourseAndContext": "SN separate GK and LK11/12 objectives, physical37/printed25 and physical47/printed35. Exactly identical complete independent-experiment sentence, not equivalence of whole courses. Actual planning/execution/observation/description/evaluation remain."
     }
   ],
   "sourceGoals": [
@@ -8655,6 +8858,125 @@
       "rawSourceText": "Einblick in die technische Realisierung und in Produktionsprinzipien und -probleme gewinnen Exkursion in eine Produktionsanlage: Reinheit, Nebenprodukte, Vermeidung unerwünschter Nebenprodukte Sich zu großtechnischen Anwendungen der Elektrolysen positionieren Chlor-Alkali-Elektrolyse",
       "rawSourceSpan": "Jahrgangsstufe 12 Leistungskurs, Technische Elektrolysen, PDF-S. 62",
       "rawParentBulletText": "Einblick in die technische Realisierung und in Produktionsprinzipien und -probleme gewinnen Exkursion in eine Produktionsanlage"
+    },
+    {
+      "id": "sn-chemistry-sekii-process-standard-gk-ziel-textanalyse",
+      "passageId": "sn-chemistry-sekii-process-standard-gk-ziel-textanalyse:whole-primary-context",
+      "topicCode": "GK/LK11/12 identical objective sentence",
+      "title": "GK/LK11/12 identical whole objective: Sie interpretieren und erläutern chemische Reaktionen und können Fachtexte und grafische Darstellungen analysieren.",
+      "description": "Sie interpretieren und erläutern chemische Reaktionen und können Fachtexte und grafische Darstellungen analysieren.",
+      "sourceDocumentKey": "SN-CH-2025",
+      "sourceText": "Sie interpretieren und erläutern chemische Reaktionen und können Fachtexte und grafische Darstellungen analysieren.",
+      "parentBulletText": "Sie interpretieren und erläutern chemische Reaktionen und können Fachtexte und grafische Darstellungen analysieren.",
+      "sourceRef": "Lehrplan Gymnasium Chemie Sachsen 2004/2007/2009/2011/2019/2022/2025; GK physical37/printed25 and LK physical47/printed35; exactly identical whole selected sentence",
+      "sourceSpan": {
+        "passageId": "sn-chemistry-sekii-process-standard-gk-ziel-textanalyse:whole-primary-context",
+        "label": "GK physical37/printed25 and LK physical47/printed35; identical whole sentence"
+      },
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompleteOperatorClause",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "course:GK_LK"
+      ],
+      "metadata": {
+        "localLocatorLabel": "GK11/12 goals text analysis",
+        "officiallyNumbered": false,
+        "physicalPdfPage": 37,
+        "extractionMethod": "Own author read complete primary operator and whole page; line wrapping normalized. Inactive, independent review required; no whole-source approval.",
+        "stageCourseBoundary": "SN separate GK and LK11/12 objectives, physical37/printed25 and physical47/printed35. The selected whole sentence is exactly identical in both; no equivalence of entire objectives/courses is inferred. Text analysis supplies no full search/trust duty.",
+        "currentAcceptedPartialRelations": {
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+            "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248",
+            "bytes": 731348
+          },
+          "bindings": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/38",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            },
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/63",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "authorInactiveWordingIsHistoricalSnapshot": true,
+          "wholeSourceApproval": false
+        }
+      },
+      "sourceOccurrences": [
+        {
+          "courseLevel": "GK",
+          "physicalPdfPage": 37,
+          "wholePrimaryOperator": "Sie interpretieren und erläutern chemische Reaktionen und können Fachtexte und grafische Darstellungen analysieren."
+        },
+        {
+          "courseLevel": "LK",
+          "physicalPdfPage": 47,
+          "wholePrimaryOperator": "Sie interpretieren und erläutern chemische Reaktionen und können Fachtexte und grafische Darstellungen analysieren."
+        }
+      ]
+    },
+    {
+      "id": "sn-chemistry-sekii-process-standard-gk-ziel-own-experiments",
+      "passageId": "sn-chemistry-sekii-process-standard-gk-ziel-own-experiments:whole-primary-context",
+      "topicCode": "GK/LK11/12 identical objective sentence",
+      "title": "GK/LK11/12 identical whole objective: Die Schüler können selbstständig chemische Experimente planen, durchführen, beobachten, beschreiben und auswerten.",
+      "description": "Die Schüler können selbstständig chemische Experimente planen, durchführen, beobachten, beschreiben und auswerten.",
+      "sourceDocumentKey": "SN-CH-2025",
+      "sourceText": "Die Schüler können selbstständig chemische Experimente planen, durchführen, beobachten, beschreiben und auswerten.",
+      "parentBulletText": "Die Schüler können selbstständig chemische Experimente planen, durchführen, beobachten, beschreiben und auswerten.",
+      "sourceRef": "Lehrplan Gymnasium Chemie Sachsen 2004/2007/2009/2011/2019/2022/2025; GK physical37/printed25 and LK physical47/printed35; exactly identical whole selected sentence",
+      "sourceSpan": {
+        "passageId": "sn-chemistry-sekii-process-standard-gk-ziel-own-experiments:whole-primary-context",
+        "label": "GK physical37/printed25 and LK physical47/printed35; identical whole sentence"
+      },
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompleteOperatorClause",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekII",
+        "course:GK_LK"
+      ],
+      "metadata": {
+        "localLocatorLabel": "GK11/12 goals independent experiment",
+        "officiallyNumbered": false,
+        "physicalPdfPage": 37,
+        "extractionMethod": "Own author read complete primary operator and whole page; line wrapping normalized. Inactive, independent review required; no whole-source approval.",
+        "stageCourseBoundary": "SN separate GK and LK11/12 objectives, physical37/printed25 and physical47/printed35. Exactly identical complete independent-experiment sentence, not equivalence of whole courses. Actual planning/execution/observation/description/evaluation remain.",
+        "currentAcceptedPartialRelations": {
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+            "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248",
+            "bytes": 731348
+          },
+          "bindings": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/81",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "authorInactiveWordingIsHistoricalSnapshot": true,
+          "wholeSourceApproval": false
+        }
+      },
+      "sourceOccurrences": [
+        {
+          "courseLevel": "GK",
+          "physicalPdfPage": 37,
+          "wholePrimaryOperator": "Die Schüler können selbstständig chemische Experimente planen, durchführen, beobachten, beschreiben und auswerten."
+        },
+        {
+          "courseLevel": "LK",
+          "physicalPdfPage": 47,
+          "wholePrimaryOperator": "Die Schüler können selbstständig chemische Experimente planen, durchführen, beobachten, beschreiben und auswerten."
+        }
+      ]
     }
   ]
 }

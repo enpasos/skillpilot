@@ -1,0 +1,158 @@
+{
+  "role": "BOUNDED_RAW_AND_OBJECT_CAS_REPLAY_NOT_SCIENTIFIC_ACCEPTANCE",
+  "canonicalPin": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "sha256": "71f6eb7017d54894f008879e81f3bce09f9ea14f31655722b491dbe08c6c698d",
+    "bytes": 4279012
+  },
+  "currentGoalAndPWholeExact": true,
+  "nativePOriginalLineSHA256": "73e83a7c81ba432ef31d5045443221a9c08cd94ba99212845ab7f48f7ed12eda",
+  "nativePFilePin": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-plan/records/P115.current-owner.review.jsonl",
+    "sha256": "c0c923c5673334e4bc92e9c4233d64a19a12f49db62677d0c06128782e4e9b15",
+    "bytes": 148815
+  },
+  "mappingReplays": [
+    {
+      "recordIndex": 4,
+      "beforePin": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_chemistry_upper_secondary_to_canonical_chemistry.json",
+        "sha256": "b9e7f9d62ac681f8a97dd7eaf9cd5649f96aadbc8a5ecf7450b96d66b8f7f91e",
+        "bytes": 362578
+      },
+      "beforeWholeObjectSHA256_sortedCompactJSON": "83ce7119f1050cae6de00241a5df926b34ce4fa2c688e498e3ca6fdea62e3bc5",
+      "candidateWholeObjectSHA256_sortedCompactJSON": "ff8ad155668a5e29527fd7df86d6944c8f399c6fcf5e700409d4f6f00b45e6e9",
+      "operations": [
+        {
+          "op": "append",
+          "jsonPointer": "/mappings",
+          "candidate": {
+            "legacyGoalId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-2-3-005-6ff85354",
+            "canonicalGoalId": "4a7dee38-1056-5e27-acec-e6a12f58109f",
+            "matchType": "partial",
+            "reviewDecisionId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-2-3-005-6ff85354"
+          }
+        }
+      ],
+      "oldMappingsExactlyRetained": true,
+      "onlyNewMappingIs4a7Partial": true,
+      "oldSixContributionsRetainedWithoutNewApproval": true
+    },
+    {
+      "recordIndex": 5,
+      "beforePin": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+        "sha256": "050b749259cdce148bfa3690e615888dbc03832a40a774b92b5530ec72bed617",
+        "bytes": 655616
+      },
+      "beforeWholeObjectSHA256_sortedCompactJSON": "6a3d2c5f96b9cc150cf13a8ad37467c58d793a8e8f8923947461b874fab28cac",
+      "candidateWholeObjectSHA256_sortedCompactJSON": "a8ee8957a56e900bfd1d4bbbe5c9598a607c54e96e7d740e140c3cfe023def08",
+      "operations": [
+        {
+          "op": "append",
+          "jsonPointer": "/mappings",
+          "candidate": {
+            "legacyGoalId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-2-3-005-6ff85354",
+            "canonicalGoalId": "4a7dee38-1056-5e27-acec-e6a12f58109f",
+            "matchType": "partial",
+            "reviewDecisionId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-2-3-005-6ff85354"
+          }
+        },
+        {
+          "op": "replace",
+          "jsonPointer": "/sourceExtractionPath",
+          "before": "curricula/DE/Gymnasium/input/RP/upper-secondary/source-extraction/DE_RP_CHEMIE_SEKII_MSS_2022.source-extraction.json",
+          "candidate": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-T2-terminal-exams-interface-author-20261018-v6/sources/RP.selected-unit23-quality-GK-LK.source-extraction.json"
+        },
+        {
+          "op": "replace",
+          "jsonPointer": "/decisions/47",
+          "before": {
+            "sourceGoalId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-2-3-005-6ff85354",
+            "topicCode": "BAUSTEIN-2-3",
+            "sourceSpan": "2.3 Arzneimittelforschung, Source-Ziel 5",
+            "decision": "mapped",
+            "canonicalGoalIds": [
+              "49b13b33-34b7-5e4e-861c-b21082cb9922",
+              "4a98bbee-41cb-5aef-91c6-f18d7bf2a214",
+              "5a709938-e0f5-42b7-94f0-cfded08963a2",
+              "978a6f25-0601-5457-9211-aab206c95603",
+              "a853069e-2ebb-5a19-8edf-b767cdb41ed7",
+              "f71a2c0a-3a6a-5b23-9fb4-1b57cfb68528"
+            ],
+            "rationale": "Das amtliche Chemie-Source-Ziel ist inhaltlich durch mehrere kanonische Chemieziele abgedeckt; 1:n beschreibt die Zuordnungsform, nicht eine offene Lücke.",
+            "reviewedAt": "2026-05-11",
+            "reviewer": "codex"
+          },
+          "candidate": {
+            "sourceGoalId": "rp-chem-sekii-rp-ch-sekii-2022-baustein-2-3-005-6ff85354",
+            "topicCode": "BAUSTEIN-2-3",
+            "sourceSpan": "2.3 Arzneimittelforschung, Source-Ziel 5",
+            "decision": "mapped",
+            "canonicalGoalIds": [
+              "49b13b33-34b7-5e4e-861c-b21082cb9922",
+              "4a98bbee-41cb-5aef-91c6-f18d7bf2a214",
+              "5a709938-e0f5-42b7-94f0-cfded08963a2",
+              "978a6f25-0601-5457-9211-aab206c95603",
+              "a853069e-2ebb-5a19-8edf-b767cdb41ed7",
+              "f71a2c0a-3a6a-5b23-9fb4-1b57cfb68528",
+              "4a7dee38-1056-5e27-acec-e6a12f58109f"
+            ],
+            "rationale": "New bounded AUTHOR proposal: 4a7 compares chemical analytical evidence, documented GMP and the general purpose of AMG within the actual optional RP unit2.3 quality-control bullet. Existing six contributions remain exact and are not reapproved. This does not certify manufacture, authorization, efficacy or real batch release; independent review of this new partial interface remains required.",
+            "reviewedAt": "2026-10-18",
+            "reviewer": "interface author, not an independent source reviewer",
+            "matchType": "partial",
+            "sourceCourseLevel": "GK_LK",
+            "sourceScopeExact": {
+              "physicalPage": 38,
+              "printedPage": 38,
+              "courseProfiles": [
+                "GK",
+                "LK"
+              ],
+              "officialOptional": true,
+              "unit": "Wahlbaustein2.3 Arzneimittelforschung,5h",
+              "actualLearnerChoice": false,
+              "qualityControlFacet": [
+                "good manufacturing practice",
+                "general Medicines Act purpose",
+                "chemical analytics"
+              ],
+              "otherUnitDutiesNotClosed": true
+            },
+            "operativeInterfaceStatus": "author_candidate_pending_new_bounded_RP_source_interface_review",
+            "newWholeSourceApproval": false,
+            "previousDecisionNotApprovalOfNewTarget": true
+          }
+        }
+      ],
+      "oldMappingsExactlyRetained": true,
+      "onlyNewMappingIs4a7Partial": true,
+      "oldSixContributionsRetainedWithoutNewApproval": true
+    }
+  ],
+  "source": {
+    "beforePin": {
+      "path": "curricula/DE/Gymnasium/input/RP/upper-secondary/source-extraction/DE_RP_CHEMIE_SEKII_MSS_2022.source-extraction.json",
+      "sha256": "2fa9eb0e16b1d8ca6363b31bdd743468b0d6a2ca9074f1fba357b5ce9f52f4cb",
+      "bytes": 589133
+    },
+    "candidatePin": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-RP-elective23-source-independent-a-20261018-v1/input/sources/RP.selected-unit23-quality-GK-LK.source-extraction.json",
+      "sha256": "741a20b82ee18d1a794a06a338a03a532d92191be34433bb88ae753d7d61363e",
+      "bytes": 590360
+    },
+    "unchangedOtherSourceRows": 337,
+    "unchangedOtherPassages": 70,
+    "selectedTextUnchanged": true,
+    "actualDeltas": [
+      "passages/8/page26→38",
+      "sourceGoals/47/courseLevelLK→GK_LK",
+      "sourceGoals/47/sourceRef corrected to physical/printed38",
+      "sourceGoals/47/course tag corrected to GK_LK",
+      "sourceGoals/47/sourceScopeExact added",
+      "selectedT2QualitySourceCorrection audit metadata added"
+    ]
+  },
+  "normalWrites": 0
+}

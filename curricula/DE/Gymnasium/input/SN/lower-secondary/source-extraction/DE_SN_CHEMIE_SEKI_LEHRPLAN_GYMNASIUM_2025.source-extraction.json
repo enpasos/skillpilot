@@ -25,7 +25,852 @@
   "method": {
     "sourceProvision": "Der amtliche Sachsen-Lehrplan Chemie Gymnasium 2025 liegt lokal als PDF vor; die oeffentliche Lehrplandatenbank stellt eine gemeinsame Datei fuer Klassenstufen 7-10 und Jahrgangsstufen 11/12 bereit.",
     "passageExtraction": "pdftotext -raw; Passagen werden je Klassen-/Jahrgangsstufe und Lern-/Wahlbereich gebildet.",
-    "sourceGoalExtraction": "Ein Source-Ziel pro operatorbezogener Kompetenzzeile und deren fachlichen Unteraspekten. Formelfragmente, Querverweise und Seitenkoepfe werden nicht als eigene Source-Ziele gezaehlt."
+    "sourceGoalExtraction": "Ein Source-Ziel pro operatorbezogener Kompetenzzeile und deren fachlichen Unteraspekten. Formelfragmente, Querverweise und Seitenkoepfe werden nicht als eigene Source-Ziele gezaehlt. Additive technical successor: retain that exact finite historical inventory, then append complete selected process clauses from the pinned candidate; no claim that every official process standard has been extracted.",
+    "selectedProcessClauseAddition": {
+      "candidate": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-author-20261018-v1/candidate/extraction-additions/SN.complete-selected-process-clauses.additions.json",
+        "sha256": "020c1b3c3ef445c86439f8288ba031b9dfd1f03707cd6cba5d42cceacff37a04",
+        "bytes": 8125
+      },
+      "historicalInventory": 176,
+      "newCompleteSelectedClauses": 1,
+      "actualUnionInventory": 177,
+      "oldObjectsAndPassagesUnchanged": true,
+      "currentIndependentPartialReview": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+        "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+        "bytes": 269340
+      },
+      "sharedExtractionOnlyIds": [],
+      "wholeSourceCoverageEstablished": false,
+      "historicalScopeEvidence": {
+        "method": {
+          "sourceProvision": "Der amtliche Sachsen-Lehrplan Chemie Gymnasium 2025 liegt lokal als PDF vor; die oeffentliche Lehrplandatenbank stellt eine gemeinsame Datei fuer Klassenstufen 7-10 und Jahrgangsstufen 11/12 bereit.",
+          "passageExtraction": "pdftotext -raw; Passagen werden je Klassen-/Jahrgangsstufe und Lern-/Wahlbereich gebildet.",
+          "sourceGoalExtraction": "Ein Source-Ziel pro operatorbezogener Kompetenzzeile und deren fachlichen Unteraspekten. Formelfragmente, Querverweise und Seitenkoepfe werden nicht als eigene Source-Ziele gezaehlt."
+        },
+        "pipelineStatus": {
+          "version": 1,
+          "currentStep": "MAPPING-3",
+          "steps": [
+            {
+              "id": "MAPPING-1",
+              "label": "Original-Lehrplanpassagen extrahiert",
+              "status": "complete",
+              "dependsOn": [],
+              "checks": [
+                {
+                  "id": "source-documents-present",
+                  "label": "Amtlicher Sachsen-Chemie-Lehrplan liegt lokal vor",
+                  "passed": true,
+                  "details": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-chemie-sachsen-2025.pdf"
+                },
+                {
+                  "id": "expected-topic-coverage",
+                  "label": "Sachsen-Chemie-Passagegruppen aus Lern- und Wahlbereichen sind vorhanden",
+                  "passed": true,
+                  "details": "28 Passagegruppen."
+                },
+                {
+                  "id": "passage-extraction-source",
+                  "label": "Passage-Extraction basiert auf amtlicher PDF-Quelle",
+                  "passed": true,
+                  "details": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-chemie-sachsen-2025.pdf"
+                }
+              ]
+            },
+            {
+              "id": "MAPPING-2",
+              "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+              "status": "complete",
+              "dependsOn": [
+                "MAPPING-1"
+              ],
+              "checks": [
+                {
+                  "id": "source-goals-created",
+                  "label": "Aus den amtlichen Sachsen-Chemie-Passagen wurden Source-Ziele erzeugt",
+                  "passed": true,
+                  "details": "176 Source-Ziele"
+                },
+                {
+                  "id": "source-goal-count-peer-baseline",
+                  "label": "Source-Ziel-Anzahl ist gegen bereits gepruefte Chemie-Inventare plausibilisiert",
+                  "passed": true,
+                  "details": "176 Source-Ziele; HE/BW/HB/HH/MV/NI/NW/RP/SH/ST/SL Sek-I-Chemie = 122/65/42/76/114/196/79/65/156/270/190 Source-Ziele. Sachsen Sek I wird aus operatorbezogenen Lernbereichs- und Wahlbereichszeilen des amtlichen Lehrplans extrahiert."
+                },
+                {
+                  "id": "source-goal-ids-unique",
+                  "label": "Source-Ziel-IDs sind eindeutig",
+                  "passed": true,
+                  "details": "Doppelte IDs: -"
+                },
+                {
+                  "id": "source-goals-reference-passages",
+                  "label": "Jedes Source-Ziel referenziert eine vorhandene Originalpassage",
+                  "passed": true,
+                  "details": "Ohne Passage: -"
+                }
+              ]
+            },
+            {
+              "id": "MAPPING-3",
+              "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+              "status": "complete",
+              "dependsOn": [
+                "MAPPING-1",
+                "MAPPING-2"
+              ],
+              "checks": [
+                {
+                  "id": "mapping-2-complete",
+                  "label": "MAPPING-2 abgeschlossen",
+                  "passed": true,
+                  "details": "176 Source-Ziele liegen vor; MAPPING-3 ist fachlich reviewed."
+                },
+                {
+                  "id": "m3-review-file-present",
+                  "label": "M3-Review-Datei ist vorhanden",
+                  "passed": true,
+                  "details": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json"
+                },
+                {
+                  "id": "m3-all-source-goals-reviewed",
+                  "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+                  "passed": true,
+                  "details": "176/176 Source-Ziele reviewed; offen: 0."
+                },
+                {
+                  "id": "m3-all-source-goals-covered-by-canonical",
+                  "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+                  "passed": true,
+                  "details": "176/176 Source-Ziele sind durch kanonische Chemie-Ziele abgedeckt."
+                }
+              ]
+            }
+          ]
+        },
+        "sourceGoalCount": 176,
+        "passageCount": 28,
+        "baseExtraction": {
+          "path": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_CHEMIE_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+          "sha256": "f5f81461c30cc02fb3d1c31cfa90e3cba6132732e00c3a4fba46341d4dd6791a",
+          "bytes": 400589
+        }
+      },
+      "cellMetadataProvenance": "Original candidate cell metadata is retained byte-for-object. Its inactive/pending wording records the author snapshot; current limited integration and accepted partial contributions are described here and in selectedProcessIntegration, not by inventing whole-source review."
+    },
+    "selectedGeneralCompetenceAddition": {
+      "authorCandidate": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SN-four-held-process-source-author-successor-20261018-v1/candidate/SN.six-complete-general-competence-cells.additions.INACTIVE.json",
+        "sha256": "3eb4aba63efe7c22bb2ec2c4cff44f6141fb4b6d9201430a2743765102fe745d",
+        "bytes": 29695
+      },
+      "independentFirst": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SN-four-held-process-source-informed-independent-a-20261018-v1/FIRST.independent-a.four-SN-pairs-seven-bounded-partial-relations.json",
+        "sha256": "6411c5c09ef09f95f80a1f2cff7dc90c44ea2735f7f76703f03c3717b47170a8",
+        "bytes": 69260
+      },
+      "independentAcceptedRef": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SN-four-held-process-source-informed-independent-a-20261018-v1/ACCEPTED.seven-partial-source-contributions.inactive.for-root.json",
+        "sha256": "d76676a4ef4d71c63f793f9836ec7ef5647dedef93266a405f6c19df122c059a",
+        "bytes": 22547
+      },
+      "independentSeal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SN-four-held-process-source-informed-independent-a-20261018-v1/SEAL.independent-a.four-SN-source-successor-review.json",
+        "sha256": "b03dbcf60e010416a7ab87afbab292caf6b4a37a233adff579851a22462fa0b3",
+        "bytes": 5167
+      },
+      "beforeInventory": 177,
+      "wholeUnitsAdded": 6,
+      "actualUnionInventory": 183,
+      "sourceScopeVsInventoryPlacement": "Official Gymnasium-wide general objectives/competence descriptions in this Chemistry curriculum, developed progressively and concretized in each subject. They are not numbered chemistry end-of-stage standards, not an independent GK/LK graduation requirement, and do not remove the specific class/course or experimental duties. Proposed once in the existing SekI foundational source inventory from this same whole document; official general scope is retained explicitly. Current CrossStage GK/LK view labels do not change that scope.",
+      "oldWholeSourceObjectsAndPassagesUnchanged": true,
+      "historicalBeforePipelineStatus": {
+        "version": 1,
+        "currentStep": "MAPPING-3",
+        "steps": [
+          {
+            "id": "MAPPING-1",
+            "label": "Original-Lehrplanpassagen extrahiert",
+            "status": "complete",
+            "dependsOn": [],
+            "checks": [
+              {
+                "id": "source-documents-present",
+                "label": "Amtlicher Sachsen-Chemie-Lehrplan liegt lokal vor",
+                "passed": true,
+                "details": "Current operative primary document: curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-chemie-sachsen-2025.pdf. Historical inventory provenance remains in method.selectedProcessClauseAddition.historicalScopeEvidence."
+              },
+              {
+                "id": "expected-topic-coverage",
+                "label": "Sachsen-Chemie-Passagegruppen aus Lern- und Wahlbereichen sind vorhanden",
+                "passed": true,
+                "details": "Historical 28 passage inventory retained exactly; 1 selected process passages added. Other standards remain context or unexamined; no complete standards-universe claim."
+              },
+              {
+                "id": "passage-extraction-source",
+                "label": "Passage-Extraction basiert auf amtlicher PDF-Quelle",
+                "passed": true,
+                "details": "Current operative primary document: curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-chemie-sachsen-2025.pdf. Historical inventory provenance remains in method.selectedProcessClauseAddition.historicalScopeEvidence."
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-2",
+            "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+            "status": "complete",
+            "dependsOn": [
+              "MAPPING-1"
+            ],
+            "checks": [
+              {
+                "id": "source-goals-created",
+                "label": "Aus den amtlichen Sachsen-Chemie-Passagen wurden Source-Ziele erzeugt",
+                "passed": true,
+                "details": "177 actual source cells = 176 retained historical inventory + 1 complete selected process clauses. No additional unselected standard counted."
+              },
+              {
+                "id": "source-goal-count-peer-baseline",
+                "label": "Historische Inhaltsbasis und aktuelle ausgewählte Prozessstandards getrennt gezählt",
+                "passed": true,
+                "details": "The old peer comparison concerned only the historical finite 176-cell inventory; it is preserved in historicalScopeEvidence and is not a current complete-standards benchmark. Actual union: 177 = 176 historical + 1 selected process cells."
+              },
+              {
+                "id": "source-goal-ids-unique",
+                "label": "Source-Ziel-IDs sind eindeutig",
+                "passed": true,
+                "details": "Doppelte IDs: -"
+              },
+              {
+                "id": "source-goals-reference-passages",
+                "label": "Jedes Source-Ziel referenziert eine vorhandene Originalpassage",
+                "passed": true,
+                "details": "Ohne Passage: -"
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-3",
+            "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+            "status": "incomplete",
+            "dependsOn": [
+              "MAPPING-1",
+              "MAPPING-2"
+            ],
+            "checks": [
+              {
+                "id": "mapping-2-complete",
+                "label": "MAPPING-2 abgeschlossen",
+                "passed": true,
+                "details": "177 cells exist. Historical 176-cell M3 evidence remains limited to its original inventory; new bounded partial contributions do not complete whole-source duties."
+              },
+              {
+                "id": "m3-review-file-present",
+                "label": "M3-Review-Datei ist vorhanden",
+                "passed": true,
+                "details": "Current source/epoch-matching review aliases: curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json"
+              },
+              {
+                "id": "m3-all-source-goals-reviewed",
+                "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+                "passed": false,
+                "details": "No new whole-source approval. 1 selected additions carry only their individually accepted partial contributions; 0 shared cells have extraction transport only. Whole operator/course/execution duties remain separate."
+              },
+              {
+                "id": "m3-all-source-goals-covered-by-canonical",
+                "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+                "passed": false,
+                "details": "No new whole-source approval. 1 selected additions carry only their individually accepted partial contributions; 0 shared cells have extraction transport only. Whole operator/course/execution duties remain separate."
+              }
+            ]
+          }
+        ],
+        "selectedProcessIntegration": {
+          "status": "accepted-partial-contributions-only",
+          "totalSourceGoalsActual": 177,
+          "historicalSourceGoals": 176,
+          "newCompleteSelectedProcessCells": 1,
+          "newWholeSourceApprovals": 0,
+          "newScientificFirstDecisionsByIntegrator": 0,
+          "independentAcceptedRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+            "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+            "bytes": 269340
+          },
+          "sourceCellPartialBindings": [
+            {
+              "sourceGoalId": "sn-chemistry-seki-process-standard-kl7-lb1-protokollieren",
+              "acceptedPartialContributions": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+                  "bytes": 269340,
+                  "jsonPointer": "/mappings/63"
+                }
+              ],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": false
+            }
+          ],
+          "wholeSourceCoverageComplete": false,
+          "historicalM3DoesNotExtendToAddedCells": true
+        }
+      },
+      "cellMetadataProvenance": "Whole candidate cell objects are retained exactly. Any inactive/pending wording records author provenance; the current accepted partial integration is established here and in each accepted ref, never as whole-source completion.",
+      "newScientificVotesByIntegrator": 0,
+      "wholeSourceCoverageEstablished": false
+    },
+    "fourteenMethodSelectedProcessAddition": {
+      "technicalIntegration": "Authorised additive integration of independently accepted foreign author relations; no new scientific vote",
+      "candidate": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-author-20261018-v1/candidate/extraction-additions/09.DE-SN.SekI.complete-operator-additions.json",
+        "sha256": "e28d9af5341c9c2cd6d9c420afafc76df5a2a50a9155ca424ba6779ba637e43c",
+        "bytes": 21378
+      },
+      "independentAcceptedRef": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/ACCEPTED.exact104-direct-partial-two-literal-three-held.json",
+        "sha256": "9958d0a23bb96b4cce0ed69f2018631764f5fe943d87ed8136ef2ba070457119",
+        "bytes": 99336
+      },
+      "retainedImmediateBeforeInventory": 183,
+      "newCompleteSelectedOperatorCells": 3,
+      "actualUnionInventory": 186,
+      "allOldSourceCellsAndPassagesExactlyRetained": true,
+      "noCompleteOfficialStandardsUniverseClaim": true,
+      "wholeSourceCoverageEstablished": false,
+      "historicalPipelineStatusBeforeThisAddition": {
+        "version": 1,
+        "currentStep": "MAPPING-3",
+        "steps": [
+          {
+            "id": "MAPPING-1",
+            "label": "Original-Lehrplanpassagen extrahiert",
+            "status": "complete",
+            "dependsOn": [],
+            "checks": [
+              {
+                "id": "source-documents-present",
+                "label": "Amtlicher Sachsen-Chemie-Lehrplan liegt lokal vor",
+                "passed": true,
+                "details": "Current operative primary document: curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-chemie-sachsen-2025.pdf. Historical inventory provenance remains in method.selectedProcessClauseAddition.historicalScopeEvidence."
+              },
+              {
+                "id": "expected-topic-coverage",
+                "label": "Sachsen-Chemie-Passagegruppen aus Lern- und Wahlbereichen sind vorhanden",
+                "passed": true,
+                "details": "All29 pre-existing passages remain exact; five selected general-unit passages added (34 actual). No complete official standards-universe claim."
+              },
+              {
+                "id": "passage-extraction-source",
+                "label": "Passage-Extraction basiert auf amtlicher PDF-Quelle",
+                "passed": true,
+                "details": "Current operative primary document: curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-chemie-sachsen-2025.pdf. Historical inventory provenance remains in method.selectedProcessClauseAddition.historicalScopeEvidence."
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-2",
+            "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+            "status": "complete",
+            "dependsOn": [
+              "MAPPING-1"
+            ],
+            "checks": [
+              {
+                "id": "source-goals-created",
+                "label": "Aus den amtlichen Sachsen-Chemie-Passagen wurden Source-Ziele erzeugt",
+                "passed": true,
+                "details": "183 actual whole cells =177 retained pre-integration cells +6 complete general competence units. Existing source bodies are preserved; no unselected standard counted."
+              },
+              {
+                "id": "source-goal-count-peer-baseline",
+                "label": "Historische Inhaltsbasis und aktuelle ausgewählte Prozessstandards getrennt gezählt",
+                "passed": true,
+                "details": "The old176-cell peer comparison and prior177-cell selected-process state remain historical snapshots. Current finite union183=177+6; no complete standards-universe benchmark."
+              },
+              {
+                "id": "source-goal-ids-unique",
+                "label": "Source-Ziel-IDs sind eindeutig",
+                "passed": true,
+                "details": "Doppelte IDs: -"
+              },
+              {
+                "id": "source-goals-reference-passages",
+                "label": "Jedes Source-Ziel referenziert eine vorhandene Originalpassage",
+                "passed": true,
+                "details": "Ohne Passage: -"
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-3",
+            "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+            "status": "incomplete",
+            "dependsOn": [
+              "MAPPING-1",
+              "MAPPING-2"
+            ],
+            "checks": [
+              {
+                "id": "mapping-2-complete",
+                "label": "MAPPING-2 abgeschlossen",
+                "passed": true,
+                "details": "183 cells exist. Historical M3 evidence remains confined to its original inventory; existing and newly accepted bounded partial contributions do not close whole-source duties."
+              },
+              {
+                "id": "m3-review-file-present",
+                "label": "M3-Review-Datei ist vorhanden",
+                "passed": true,
+                "details": "Current source/epoch-matching review aliases: curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json"
+              },
+              {
+                "id": "m3-all-source-goals-reviewed",
+                "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+                "passed": false,
+                "details": "Whole-source M3 remains incomplete. The prior selected process unit and six added whole general units carry only individually accepted partial contributions. Full source, course/progression, own research and actual execution duties remain separate."
+              },
+              {
+                "id": "m3-all-source-goals-covered-by-canonical",
+                "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+                "passed": false,
+                "details": "Whole-source M3 remains incomplete. The prior selected process unit and six added whole general units carry only individually accepted partial contributions. Full source, course/progression, own research and actual execution duties remain separate."
+              }
+            ]
+          }
+        ],
+        "selectedProcessIntegration": {
+          "status": "accepted-partial-contributions-only",
+          "totalSourceGoalsActual": 183,
+          "historicalSourceGoals": 176,
+          "newCompleteSelectedProcessCells": 1,
+          "newWholeSourceApprovals": 0,
+          "newScientificFirstDecisionsByIntegrator": 0,
+          "independentAcceptedRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+            "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+            "bytes": 269340
+          },
+          "sourceCellPartialBindings": [
+            {
+              "sourceGoalId": "sn-chemistry-seki-process-standard-kl7-lb1-protokollieren",
+              "acceptedPartialContributions": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+                  "bytes": 269340,
+                  "jsonPointer": "/mappings/63"
+                }
+              ],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": false
+            },
+            {
+              "sourceGoalId": "sn-chemistry-gymnasium-general-competence-chemical-argumentation",
+              "acceptedPartialContributions": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SN-four-held-process-source-informed-independent-a-20261018-v1/ACCEPTED.seven-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "d76676a4ef4d71c63f793f9836ec7ef5647dedef93266a405f6c19df122c059a",
+                  "bytes": 22547,
+                  "jsonPointer": "/mappings/0"
+                }
+              ],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": false,
+              "officialGeneralSourceScope": "Official Gymnasium-wide general objectives/competence descriptions in this Chemistry curriculum, developed progressively and concretized in each subject. They are not numbered chemistry end-of-stage standards, not an independent GK/LK graduation requirement, and do not remove the specific class/course or experimental duties. Proposed once in the existing SekI foundational source inventory from this same whole document; official general scope is retained explicitly. Current CrossStage GK/LK view labels do not change that scope."
+            },
+            {
+              "sourceGoalId": "sn-chemistry-gymnasium-general-competence-chemical-media-information",
+              "acceptedPartialContributions": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SN-four-held-process-source-informed-independent-a-20261018-v1/ACCEPTED.seven-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "d76676a4ef4d71c63f793f9836ec7ef5647dedef93266a405f6c19df122c059a",
+                  "bytes": 22547,
+                  "jsonPointer": "/mappings/5"
+                }
+              ],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": false,
+              "officialGeneralSourceScope": "Official Gymnasium-wide general objectives/competence descriptions in this Chemistry curriculum, developed progressively and concretized in each subject. They are not numbered chemistry end-of-stage standards, not an independent GK/LK graduation requirement, and do not remove the specific class/course or experimental duties. Proposed once in the existing SekI foundational source inventory from this same whole document; official general scope is retained explicitly. Current CrossStage GK/LK view labels do not change that scope."
+            },
+            {
+              "sourceGoalId": "sn-chemistry-gymnasium-general-competence-criteria-assessment",
+              "acceptedPartialContributions": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SN-four-held-process-source-informed-independent-a-20261018-v1/ACCEPTED.seven-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "d76676a4ef4d71c63f793f9836ec7ef5647dedef93266a405f6c19df122c059a",
+                  "bytes": 22547,
+                  "jsonPointer": "/mappings/1"
+                }
+              ],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": false,
+              "officialGeneralSourceScope": "Official Gymnasium-wide general objectives/competence descriptions in this Chemistry curriculum, developed progressively and concretized in each subject. They are not numbered chemistry end-of-stage standards, not an independent GK/LK graduation requirement, and do not remove the specific class/course or experimental duties. Proposed once in the existing SekI foundational source inventory from this same whole document; official general scope is retained explicitly. Current CrossStage GK/LK view labels do not change that scope."
+            },
+            {
+              "sourceGoalId": "sn-chemistry-gymnasium-general-competence-experiment-results-hypotheses",
+              "acceptedPartialContributions": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SN-four-held-process-source-informed-independent-a-20261018-v1/ACCEPTED.seven-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "d76676a4ef4d71c63f793f9836ec7ef5647dedef93266a405f6c19df122c059a",
+                  "bytes": 22547,
+                  "jsonPointer": "/mappings/3"
+                },
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SN-four-held-process-source-informed-independent-a-20261018-v1/ACCEPTED.seven-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "d76676a4ef4d71c63f793f9836ec7ef5647dedef93266a405f6c19df122c059a",
+                  "bytes": 22547,
+                  "jsonPointer": "/mappings/6"
+                }
+              ],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": false,
+              "officialGeneralSourceScope": "Official Gymnasium-wide general objectives/competence descriptions in this Chemistry curriculum, developed progressively and concretized in each subject. They are not numbered chemistry end-of-stage standards, not an independent GK/LK graduation requirement, and do not remove the specific class/course or experimental duties. Proposed once in the existing SekI foundational source inventory from this same whole document; official general scope is retained explicitly. Current CrossStage GK/LK view labels do not change that scope."
+            },
+            {
+              "sourceGoalId": "sn-chemistry-gymnasium-general-competence-information-techniques",
+              "acceptedPartialContributions": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SN-four-held-process-source-informed-independent-a-20261018-v1/ACCEPTED.seven-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "d76676a4ef4d71c63f793f9836ec7ef5647dedef93266a405f6c19df122c059a",
+                  "bytes": 22547,
+                  "jsonPointer": "/mappings/4"
+                }
+              ],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": false,
+              "officialGeneralSourceScope": "Official Gymnasium-wide general objectives/competence descriptions in this Chemistry curriculum, developed progressively and concretized in each subject. They are not numbered chemistry end-of-stage standards, not an independent GK/LK graduation requirement, and do not remove the specific class/course or experimental duties. Proposed once in the existing SekI foundational source inventory from this same whole document; official general scope is retained explicitly. Current CrossStage GK/LK view labels do not change that scope."
+            },
+            {
+              "sourceGoalId": "sn-chemistry-gymnasium-general-competence-methods",
+              "acceptedPartialContributions": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SN-four-held-process-source-informed-independent-a-20261018-v1/ACCEPTED.seven-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "d76676a4ef4d71c63f793f9836ec7ef5647dedef93266a405f6c19df122c059a",
+                  "bytes": 22547,
+                  "jsonPointer": "/mappings/2"
+                }
+              ],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": false,
+              "officialGeneralSourceScope": "Official Gymnasium-wide general objectives/competence descriptions in this Chemistry curriculum, developed progressively and concretized in each subject. They are not numbered chemistry end-of-stage standards, not an independent GK/LK graduation requirement, and do not remove the specific class/course or experimental duties. Proposed once in the existing SekI foundational source inventory from this same whole document; official general scope is retained explicitly. Current CrossStage GK/LK view labels do not change that scope."
+            }
+          ],
+          "wholeSourceCoverageComplete": false,
+          "historicalM3DoesNotExtendToAddedCells": true,
+          "newCompleteSelectedGeneralCells": 6,
+          "generalIndependentAcceptedRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SN-four-held-process-source-informed-independent-a-20261018-v1/ACCEPTED.seven-partial-source-contributions.inactive.for-root.json",
+            "sha256": "d76676a4ef4d71c63f793f9836ec7ef5647dedef93266a405f6c19df122c059a",
+            "bytes": 22547
+          }
+        }
+      }
+    },
+    "fortyContentAcceptedPartialAddition": {
+      "technicalIntegration": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-reviewed-source-integration-technical-20261018-v1",
+      "independentAcceptedRefs": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-first-twenty-source-informed-independent-a-20261018-v1/ACCEPTED.one-hundred-sixty-four-bounded-direct-relations.with-explicit-context-conditions.json",
+          "sha256": "5af30ee6b2cb919a8445f2668c963b81d22583cb241a8d64f8df469f93da06cf",
+          "bytes": 735256
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-multistate-source-informed-independent-b-part-b-20261018-v1/ACCEPTED.exact-fifty-five-partial-one-held-HE-placement.json",
+          "sha256": "ab921ae7928e26b5f58b2c25c8c72c470b2c3b4c111cb9fae09b92b821ef7f48",
+          "bytes": 43536
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-first-twenty-source-informed-independent-a-20261018-v1/ACCEPTED.six-existing-literal-source-acquisition-foundations.json",
+          "sha256": "c9f3aab904f4b1152d7b8d370b6fddacb997b08a2c784e70032618408a86492c",
+          "bytes": 20744
+        }
+      ],
+      "retainedImmediateBeforeCells": 186,
+      "newCompleteSelectedCells": 1,
+      "currentActualUnionCells": 187,
+      "selectedSameIDCorrections": 0,
+      "allOtherOldCellsAndPassagesExact": true,
+      "noWholeOfficialStandardsUniverseClaim": true,
+      "previousPipelineStatusHistorical": {
+        "version": 1,
+        "currentStep": "MAPPING-3",
+        "steps": [
+          {
+            "id": "MAPPING-1",
+            "label": "Original-Lehrplanpassagen extrahiert",
+            "status": "complete",
+            "dependsOn": [],
+            "checks": [
+              {
+                "id": "source-documents-present",
+                "label": "Amtlicher Sachsen-Chemie-Lehrplan liegt lokal vor",
+                "passed": true,
+                "details": "Current operative primary document: curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-chemie-sachsen-2025.pdf. Historical inventory provenance remains in method.selectedProcessClauseAddition.historicalScopeEvidence."
+              },
+              {
+                "id": "expected-topic-coverage",
+                "label": "Sachsen-Chemie-Passagegruppen aus Lern- und Wahlbereichen sind vorhanden",
+                "passed": true,
+                "details": "All 34 previous operative passages retained exactly; 3 selected complete-operator passages added. This is not the complete official standards universe."
+              },
+              {
+                "id": "passage-extraction-source",
+                "label": "Passage-Extraction basiert auf amtlicher PDF-Quelle",
+                "passed": true,
+                "details": "Current operative primary document: curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-chemie-sachsen-2025.pdf. Historical inventory provenance remains in method.selectedProcessClauseAddition.historicalScopeEvidence."
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-2",
+            "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+            "status": "complete",
+            "dependsOn": [
+              "MAPPING-1"
+            ],
+            "checks": [
+              {
+                "id": "source-goals-created",
+                "label": "Aus den amtlichen Sachsen-Chemie-Passagen wurden Source-Ziele erzeugt",
+                "passed": true,
+                "details": "186 actual cells = 183 retained immediate previous inventory + 3 new whole selected operators. Previous content/standard phases remain historical; no unselected standard counted."
+              },
+              {
+                "id": "source-goal-count-peer-baseline",
+                "label": "Historische Basis und neu ausgewählte vollständige Operatoren getrennt gezählt",
+                "passed": true,
+                "details": "Previous peer comparisons concern their historical inventory only; original evidence retained in method.fourteenMethodSelectedProcessAddition.historicalPipelineStatusBeforeThisAddition. Current actual union 186=183+3; no full-standards benchmark."
+              },
+              {
+                "id": "source-goal-ids-unique",
+                "label": "Source-Ziel-IDs sind eindeutig",
+                "passed": true,
+                "details": "Doppelte IDs: -"
+              },
+              {
+                "id": "source-goals-reference-passages",
+                "label": "Jedes Source-Ziel referenziert eine vorhandene Originalpassage",
+                "passed": true,
+                "details": "Ohne Passage: -"
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-3",
+            "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+            "status": "incomplete",
+            "dependsOn": [
+              "MAPPING-1",
+              "MAPPING-2"
+            ],
+            "checks": [
+              {
+                "id": "mapping-2-complete",
+                "label": "MAPPING-2 abgeschlossen",
+                "passed": true,
+                "details": "186 actual source cells exist. Historical M3 results remain scoped to their prior inventory. Current individually accepted partial relations do not prove all whole-source duties."
+              },
+              {
+                "id": "m3-review-file-present",
+                "label": "M3-Review-Datei ist vorhanden",
+                "passed": true,
+                "details": "Current source/epoch-matching review aliases: curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json"
+              },
+              {
+                "id": "m3-all-source-goals-reviewed",
+                "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+                "passed": false,
+                "details": "3 newly selected whole operator cells have specific partial relations only. No new whole-source approval; all remaining verbs, stage/course/context and actual-performance duties remain open. Historical completeness is retained only in the saved previous pipeline record."
+              },
+              {
+                "id": "m3-all-source-goals-covered-by-canonical",
+                "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+                "passed": false,
+                "details": "3 newly selected whole operator cells have specific partial relations only. No new whole-source approval; all remaining verbs, stage/course/context and actual-performance duties remain open. Historical completeness is retained only in the saved previous pipeline record."
+              }
+            ]
+          }
+        ],
+        "selectedProcessIntegration": {
+          "status": "accepted-partial-contributions-only",
+          "totalSourceGoalsActual": 186,
+          "historicalSourceGoals": 176,
+          "newCompleteSelectedProcessCells": 1,
+          "newWholeSourceApprovals": 0,
+          "newScientificFirstDecisionsByIntegrator": 0,
+          "independentAcceptedRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+            "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+            "bytes": 269340
+          },
+          "sourceCellPartialBindings": [
+            {
+              "sourceGoalId": "sn-chemistry-seki-process-standard-kl7-lb1-protokollieren",
+              "acceptedPartialContributions": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+                  "bytes": 269340,
+                  "jsonPointer": "/mappings/63"
+                }
+              ],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": false
+            },
+            {
+              "sourceGoalId": "sn-chemistry-gymnasium-general-competence-chemical-argumentation",
+              "acceptedPartialContributions": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SN-four-held-process-source-informed-independent-a-20261018-v1/ACCEPTED.seven-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "d76676a4ef4d71c63f793f9836ec7ef5647dedef93266a405f6c19df122c059a",
+                  "bytes": 22547,
+                  "jsonPointer": "/mappings/0"
+                }
+              ],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": false,
+              "officialGeneralSourceScope": "Official Gymnasium-wide general objectives/competence descriptions in this Chemistry curriculum, developed progressively and concretized in each subject. They are not numbered chemistry end-of-stage standards, not an independent GK/LK graduation requirement, and do not remove the specific class/course or experimental duties. Proposed once in the existing SekI foundational source inventory from this same whole document; official general scope is retained explicitly. Current CrossStage GK/LK view labels do not change that scope."
+            },
+            {
+              "sourceGoalId": "sn-chemistry-gymnasium-general-competence-chemical-media-information",
+              "acceptedPartialContributions": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SN-four-held-process-source-informed-independent-a-20261018-v1/ACCEPTED.seven-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "d76676a4ef4d71c63f793f9836ec7ef5647dedef93266a405f6c19df122c059a",
+                  "bytes": 22547,
+                  "jsonPointer": "/mappings/5"
+                }
+              ],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": false,
+              "officialGeneralSourceScope": "Official Gymnasium-wide general objectives/competence descriptions in this Chemistry curriculum, developed progressively and concretized in each subject. They are not numbered chemistry end-of-stage standards, not an independent GK/LK graduation requirement, and do not remove the specific class/course or experimental duties. Proposed once in the existing SekI foundational source inventory from this same whole document; official general scope is retained explicitly. Current CrossStage GK/LK view labels do not change that scope."
+            },
+            {
+              "sourceGoalId": "sn-chemistry-gymnasium-general-competence-criteria-assessment",
+              "acceptedPartialContributions": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SN-four-held-process-source-informed-independent-a-20261018-v1/ACCEPTED.seven-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "d76676a4ef4d71c63f793f9836ec7ef5647dedef93266a405f6c19df122c059a",
+                  "bytes": 22547,
+                  "jsonPointer": "/mappings/1"
+                }
+              ],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": false,
+              "officialGeneralSourceScope": "Official Gymnasium-wide general objectives/competence descriptions in this Chemistry curriculum, developed progressively and concretized in each subject. They are not numbered chemistry end-of-stage standards, not an independent GK/LK graduation requirement, and do not remove the specific class/course or experimental duties. Proposed once in the existing SekI foundational source inventory from this same whole document; official general scope is retained explicitly. Current CrossStage GK/LK view labels do not change that scope."
+            },
+            {
+              "sourceGoalId": "sn-chemistry-gymnasium-general-competence-experiment-results-hypotheses",
+              "acceptedPartialContributions": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SN-four-held-process-source-informed-independent-a-20261018-v1/ACCEPTED.seven-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "d76676a4ef4d71c63f793f9836ec7ef5647dedef93266a405f6c19df122c059a",
+                  "bytes": 22547,
+                  "jsonPointer": "/mappings/3"
+                },
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SN-four-held-process-source-informed-independent-a-20261018-v1/ACCEPTED.seven-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "d76676a4ef4d71c63f793f9836ec7ef5647dedef93266a405f6c19df122c059a",
+                  "bytes": 22547,
+                  "jsonPointer": "/mappings/6"
+                }
+              ],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": false,
+              "officialGeneralSourceScope": "Official Gymnasium-wide general objectives/competence descriptions in this Chemistry curriculum, developed progressively and concretized in each subject. They are not numbered chemistry end-of-stage standards, not an independent GK/LK graduation requirement, and do not remove the specific class/course or experimental duties. Proposed once in the existing SekI foundational source inventory from this same whole document; official general scope is retained explicitly. Current CrossStage GK/LK view labels do not change that scope."
+            },
+            {
+              "sourceGoalId": "sn-chemistry-gymnasium-general-competence-information-techniques",
+              "acceptedPartialContributions": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SN-four-held-process-source-informed-independent-a-20261018-v1/ACCEPTED.seven-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "d76676a4ef4d71c63f793f9836ec7ef5647dedef93266a405f6c19df122c059a",
+                  "bytes": 22547,
+                  "jsonPointer": "/mappings/4"
+                }
+              ],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": false,
+              "officialGeneralSourceScope": "Official Gymnasium-wide general objectives/competence descriptions in this Chemistry curriculum, developed progressively and concretized in each subject. They are not numbered chemistry end-of-stage standards, not an independent GK/LK graduation requirement, and do not remove the specific class/course or experimental duties. Proposed once in the existing SekI foundational source inventory from this same whole document; official general scope is retained explicitly. Current CrossStage GK/LK view labels do not change that scope."
+            },
+            {
+              "sourceGoalId": "sn-chemistry-gymnasium-general-competence-methods",
+              "acceptedPartialContributions": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SN-four-held-process-source-informed-independent-a-20261018-v1/ACCEPTED.seven-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "d76676a4ef4d71c63f793f9836ec7ef5647dedef93266a405f6c19df122c059a",
+                  "bytes": 22547,
+                  "jsonPointer": "/mappings/2"
+                }
+              ],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": false,
+              "officialGeneralSourceScope": "Official Gymnasium-wide general objectives/competence descriptions in this Chemistry curriculum, developed progressively and concretized in each subject. They are not numbered chemistry end-of-stage standards, not an independent GK/LK graduation requirement, and do not remove the specific class/course or experimental duties. Proposed once in the existing SekI foundational source inventory from this same whole document; official general scope is retained explicitly. Current CrossStage GK/LK view labels do not change that scope."
+            }
+          ],
+          "wholeSourceCoverageComplete": false,
+          "historicalM3DoesNotExtendToAddedCells": true,
+          "newCompleteSelectedGeneralCells": 6,
+          "generalIndependentAcceptedRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SN-four-held-process-source-informed-independent-a-20261018-v1/ACCEPTED.seven-partial-source-contributions.inactive.for-root.json",
+            "sha256": "d76676a4ef4d71c63f793f9836ec7ef5647dedef93266a405f6c19df122c059a",
+            "bytes": 22547
+          },
+          "historicalRecordBeforeFourteenAddition": true
+        },
+        "fourteenMethodPartialIntegration": {
+          "status": "accepted-partial-contributions-only",
+          "totalSourceGoalsActual": 186,
+          "retainedImmediateBeforeCells": 183,
+          "newCompleteSelectedOperatorCells": 3,
+          "newWholeSourceApprovals": 0,
+          "newScientificFirstDecisionsByTechnicalIntegrator": 0,
+          "independentAcceptedRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/ACCEPTED.exact104-direct-partial-two-literal-three-held.json",
+            "sha256": "9958d0a23bb96b4cce0ed69f2018631764f5fe943d87ed8136ef2ba070457119",
+            "bytes": 99336
+          },
+          "newSourceCellPartialBindings": [
+            {
+              "sourceGoalId": "sn-chemistry-seki-process-standard-kl7-ziel-sicherheit",
+              "acceptedPartialRelations": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+                  "jsonPointer": "/relations/21",
+                  "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+                }
+              ],
+              "wholeSourceApproval": false
+            },
+            {
+              "sourceGoalId": "sn-chemistry-seki-process-standard-kl7-ziel-umgang-entsorgung",
+              "acceptedPartialRelations": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+                  "jsonPointer": "/relations/69",
+                  "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+                }
+              ],
+              "wholeSourceApproval": false
+            },
+            {
+              "sourceGoalId": "sn-chemistry-seki-process-standard-kl7-lb1-simple-experiments",
+              "acceptedPartialRelations": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+                  "jsonPointer": "/relations/55",
+                  "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+                }
+              ],
+              "wholeSourceApproval": false
+            }
+          ],
+          "historicalM3DoesNotExtendAutomaticallyToNewCells": true,
+          "wholeSourceCoverageComplete": false
+        }
+      }
+    }
   },
   "qualityReview": {
     "sourceGoalCountPeerBaseline": {
@@ -61,7 +906,11 @@
     "SN-CH-klassenstufe-10-LB4",
     "SN-CH-klassenstufe-10-WB1",
     "SN-CH-klassenstufe-10-WB2",
-    "SN-CH-klassenstufe-10-WB3"
+    "SN-CH-klassenstufe-10-WB3",
+    "Klasse7 LB1 Untersuchen von Stoffen",
+    "Kl7 goals safety",
+    "Kl7 goals handling/disposal",
+    "Kl7 LB1 complete experiment bullet"
   ],
   "pipelineStatus": {
     "version": 1,
@@ -77,19 +926,19 @@
             "id": "source-documents-present",
             "label": "Amtlicher Sachsen-Chemie-Lehrplan liegt lokal vor",
             "passed": true,
-            "details": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-chemie-sachsen-2025.pdf"
+            "details": "Current operative primary document: curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-chemie-sachsen-2025.pdf. Historical inventory provenance remains in method.selectedProcessClauseAddition.historicalScopeEvidence."
           },
           {
             "id": "expected-topic-coverage",
             "label": "Sachsen-Chemie-Passagegruppen aus Lern- und Wahlbereichen sind vorhanden",
             "passed": true,
-            "details": "28 Passagegruppen."
+            "details": "All 37 previous passages retained exactly; 1 complete selected clause passages appended. Not a full standards inventory."
           },
           {
             "id": "passage-extraction-source",
             "label": "Passage-Extraction basiert auf amtlicher PDF-Quelle",
             "passed": true,
-            "details": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-chemie-sachsen-2025.pdf"
+            "details": "Current operative primary document: curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-chemie-sachsen-2025.pdf. Historical inventory provenance remains in method.selectedProcessClauseAddition.historicalScopeEvidence."
           }
         ]
       },
@@ -105,13 +954,13 @@
             "id": "source-goals-created",
             "label": "Aus den amtlichen Sachsen-Chemie-Passagen wurden Source-Ziele erzeugt",
             "passed": true,
-            "details": "176 Source-Ziele"
+            "details": "Current actual union 187=186 retained immediate-before cells +1 complete selected operators. Historical peer/content counts remain in method.fortyContentAcceptedPartialAddition.previousPipelineStatusHistorical; no automatic full-standards claim."
           },
           {
             "id": "source-goal-count-peer-baseline",
-            "label": "Source-Ziel-Anzahl ist gegen bereits gepruefte Chemie-Inventare plausibilisiert",
+            "label": "Historische Basis und neu ausgewählte vollständige Operatoren getrennt gezählt",
             "passed": true,
-            "details": "176 Source-Ziele; HE/BW/HB/HH/MV/NI/NW/RP/SH/ST/SL Sek-I-Chemie = 122/65/42/76/114/196/79/65/156/270/190 Source-Ziele. Sachsen Sek I wird aus operatorbezogenen Lernbereichs- und Wahlbereichszeilen des amtlichen Lehrplans extrahiert."
+            "details": "Current actual union 187=186 retained immediate-before cells +1 complete selected operators. Historical peer/content counts remain in method.fortyContentAcceptedPartialAddition.previousPipelineStatusHistorical; no automatic full-standards claim."
           },
           {
             "id": "source-goal-ids-unique",
@@ -130,7 +979,7 @@
       {
         "id": "MAPPING-3",
         "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
-        "status": "complete",
+        "status": "incomplete",
         "dependsOn": [
           "MAPPING-1",
           "MAPPING-2"
@@ -140,29 +989,232 @@
             "id": "mapping-2-complete",
             "label": "MAPPING-2 abgeschlossen",
             "passed": true,
-            "details": "176 Source-Ziele liegen vor; MAPPING-3 ist fachlich reviewed."
+            "details": "186 actual source cells exist. Historical M3 results remain scoped to their prior inventory. Current individually accepted partial relations do not prove all whole-source duties."
           },
           {
             "id": "m3-review-file-present",
             "label": "M3-Review-Datei ist vorhanden",
             "passed": true,
-            "details": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json"
+            "details": "Current source/epoch-matching review aliases: curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json"
           },
           {
             "id": "m3-all-source-goals-reviewed",
             "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
-            "passed": true,
-            "details": "176/176 Source-Ziele reviewed; offen: 0."
+            "passed": false,
+            "details": "New selected operators have accepted specific partial relations only. No whole official source completion or practical performance is established; previous completeness is historical."
           },
           {
             "id": "m3-all-source-goals-covered-by-canonical",
             "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
-            "passed": true,
-            "details": "176/176 Source-Ziele sind durch kanonische Chemie-Ziele abgedeckt."
+            "passed": false,
+            "details": "New selected operators have accepted specific partial relations only. No whole official source completion or practical performance is established; previous completeness is historical."
           }
         ]
       }
-    ]
+    ],
+    "selectedProcessIntegration": {
+      "status": "accepted-partial-contributions-only",
+      "totalSourceGoalsActual": 186,
+      "historicalSourceGoals": 176,
+      "newCompleteSelectedProcessCells": 1,
+      "newWholeSourceApprovals": 0,
+      "newScientificFirstDecisionsByIntegrator": 0,
+      "independentAcceptedRef": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+        "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+        "bytes": 269340
+      },
+      "sourceCellPartialBindings": [
+        {
+          "sourceGoalId": "sn-chemistry-seki-process-standard-kl7-lb1-protokollieren",
+          "acceptedPartialContributions": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+              "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+              "bytes": 269340,
+              "jsonPointer": "/mappings/63"
+            }
+          ],
+          "wholeSourceApproval": false,
+          "extractionTransportOnlyWithoutBindingVote": false
+        },
+        {
+          "sourceGoalId": "sn-chemistry-gymnasium-general-competence-chemical-argumentation",
+          "acceptedPartialContributions": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SN-four-held-process-source-informed-independent-a-20261018-v1/ACCEPTED.seven-partial-source-contributions.inactive.for-root.json",
+              "sha256": "d76676a4ef4d71c63f793f9836ec7ef5647dedef93266a405f6c19df122c059a",
+              "bytes": 22547,
+              "jsonPointer": "/mappings/0"
+            }
+          ],
+          "wholeSourceApproval": false,
+          "extractionTransportOnlyWithoutBindingVote": false,
+          "officialGeneralSourceScope": "Official Gymnasium-wide general objectives/competence descriptions in this Chemistry curriculum, developed progressively and concretized in each subject. They are not numbered chemistry end-of-stage standards, not an independent GK/LK graduation requirement, and do not remove the specific class/course or experimental duties. Proposed once in the existing SekI foundational source inventory from this same whole document; official general scope is retained explicitly. Current CrossStage GK/LK view labels do not change that scope."
+        },
+        {
+          "sourceGoalId": "sn-chemistry-gymnasium-general-competence-chemical-media-information",
+          "acceptedPartialContributions": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SN-four-held-process-source-informed-independent-a-20261018-v1/ACCEPTED.seven-partial-source-contributions.inactive.for-root.json",
+              "sha256": "d76676a4ef4d71c63f793f9836ec7ef5647dedef93266a405f6c19df122c059a",
+              "bytes": 22547,
+              "jsonPointer": "/mappings/5"
+            }
+          ],
+          "wholeSourceApproval": false,
+          "extractionTransportOnlyWithoutBindingVote": false,
+          "officialGeneralSourceScope": "Official Gymnasium-wide general objectives/competence descriptions in this Chemistry curriculum, developed progressively and concretized in each subject. They are not numbered chemistry end-of-stage standards, not an independent GK/LK graduation requirement, and do not remove the specific class/course or experimental duties. Proposed once in the existing SekI foundational source inventory from this same whole document; official general scope is retained explicitly. Current CrossStage GK/LK view labels do not change that scope."
+        },
+        {
+          "sourceGoalId": "sn-chemistry-gymnasium-general-competence-criteria-assessment",
+          "acceptedPartialContributions": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SN-four-held-process-source-informed-independent-a-20261018-v1/ACCEPTED.seven-partial-source-contributions.inactive.for-root.json",
+              "sha256": "d76676a4ef4d71c63f793f9836ec7ef5647dedef93266a405f6c19df122c059a",
+              "bytes": 22547,
+              "jsonPointer": "/mappings/1"
+            }
+          ],
+          "wholeSourceApproval": false,
+          "extractionTransportOnlyWithoutBindingVote": false,
+          "officialGeneralSourceScope": "Official Gymnasium-wide general objectives/competence descriptions in this Chemistry curriculum, developed progressively and concretized in each subject. They are not numbered chemistry end-of-stage standards, not an independent GK/LK graduation requirement, and do not remove the specific class/course or experimental duties. Proposed once in the existing SekI foundational source inventory from this same whole document; official general scope is retained explicitly. Current CrossStage GK/LK view labels do not change that scope."
+        },
+        {
+          "sourceGoalId": "sn-chemistry-gymnasium-general-competence-experiment-results-hypotheses",
+          "acceptedPartialContributions": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SN-four-held-process-source-informed-independent-a-20261018-v1/ACCEPTED.seven-partial-source-contributions.inactive.for-root.json",
+              "sha256": "d76676a4ef4d71c63f793f9836ec7ef5647dedef93266a405f6c19df122c059a",
+              "bytes": 22547,
+              "jsonPointer": "/mappings/3"
+            },
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SN-four-held-process-source-informed-independent-a-20261018-v1/ACCEPTED.seven-partial-source-contributions.inactive.for-root.json",
+              "sha256": "d76676a4ef4d71c63f793f9836ec7ef5647dedef93266a405f6c19df122c059a",
+              "bytes": 22547,
+              "jsonPointer": "/mappings/6"
+            }
+          ],
+          "wholeSourceApproval": false,
+          "extractionTransportOnlyWithoutBindingVote": false,
+          "officialGeneralSourceScope": "Official Gymnasium-wide general objectives/competence descriptions in this Chemistry curriculum, developed progressively and concretized in each subject. They are not numbered chemistry end-of-stage standards, not an independent GK/LK graduation requirement, and do not remove the specific class/course or experimental duties. Proposed once in the existing SekI foundational source inventory from this same whole document; official general scope is retained explicitly. Current CrossStage GK/LK view labels do not change that scope."
+        },
+        {
+          "sourceGoalId": "sn-chemistry-gymnasium-general-competence-information-techniques",
+          "acceptedPartialContributions": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SN-four-held-process-source-informed-independent-a-20261018-v1/ACCEPTED.seven-partial-source-contributions.inactive.for-root.json",
+              "sha256": "d76676a4ef4d71c63f793f9836ec7ef5647dedef93266a405f6c19df122c059a",
+              "bytes": 22547,
+              "jsonPointer": "/mappings/4"
+            }
+          ],
+          "wholeSourceApproval": false,
+          "extractionTransportOnlyWithoutBindingVote": false,
+          "officialGeneralSourceScope": "Official Gymnasium-wide general objectives/competence descriptions in this Chemistry curriculum, developed progressively and concretized in each subject. They are not numbered chemistry end-of-stage standards, not an independent GK/LK graduation requirement, and do not remove the specific class/course or experimental duties. Proposed once in the existing SekI foundational source inventory from this same whole document; official general scope is retained explicitly. Current CrossStage GK/LK view labels do not change that scope."
+        },
+        {
+          "sourceGoalId": "sn-chemistry-gymnasium-general-competence-methods",
+          "acceptedPartialContributions": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SN-four-held-process-source-informed-independent-a-20261018-v1/ACCEPTED.seven-partial-source-contributions.inactive.for-root.json",
+              "sha256": "d76676a4ef4d71c63f793f9836ec7ef5647dedef93266a405f6c19df122c059a",
+              "bytes": 22547,
+              "jsonPointer": "/mappings/2"
+            }
+          ],
+          "wholeSourceApproval": false,
+          "extractionTransportOnlyWithoutBindingVote": false,
+          "officialGeneralSourceScope": "Official Gymnasium-wide general objectives/competence descriptions in this Chemistry curriculum, developed progressively and concretized in each subject. They are not numbered chemistry end-of-stage standards, not an independent GK/LK graduation requirement, and do not remove the specific class/course or experimental duties. Proposed once in the existing SekI foundational source inventory from this same whole document; official general scope is retained explicitly. Current CrossStage GK/LK view labels do not change that scope."
+        }
+      ],
+      "wholeSourceCoverageComplete": false,
+      "historicalM3DoesNotExtendToAddedCells": true,
+      "newCompleteSelectedGeneralCells": 6,
+      "generalIndependentAcceptedRef": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SN-four-held-process-source-informed-independent-a-20261018-v1/ACCEPTED.seven-partial-source-contributions.inactive.for-root.json",
+        "sha256": "d76676a4ef4d71c63f793f9836ec7ef5647dedef93266a405f6c19df122c059a",
+        "bytes": 22547
+      },
+      "historicalRecordBeforeFourteenAddition": true
+    },
+    "fourteenMethodPartialIntegration": {
+      "status": "accepted-partial-contributions-only",
+      "totalSourceGoalsActual": 186,
+      "retainedImmediateBeforeCells": 183,
+      "newCompleteSelectedOperatorCells": 3,
+      "newWholeSourceApprovals": 0,
+      "newScientificFirstDecisionsByTechnicalIntegrator": 0,
+      "independentAcceptedRef": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/ACCEPTED.exact104-direct-partial-two-literal-three-held.json",
+        "sha256": "9958d0a23bb96b4cce0ed69f2018631764f5fe943d87ed8136ef2ba070457119",
+        "bytes": 99336
+      },
+      "newSourceCellPartialBindings": [
+        {
+          "sourceGoalId": "sn-chemistry-seki-process-standard-kl7-ziel-sicherheit",
+          "acceptedPartialRelations": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/21",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "wholeSourceApproval": false
+        },
+        {
+          "sourceGoalId": "sn-chemistry-seki-process-standard-kl7-ziel-umgang-entsorgung",
+          "acceptedPartialRelations": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/69",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "wholeSourceApproval": false
+        },
+        {
+          "sourceGoalId": "sn-chemistry-seki-process-standard-kl7-lb1-simple-experiments",
+          "acceptedPartialRelations": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/55",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "wholeSourceApproval": false
+        }
+      ],
+      "historicalM3DoesNotExtendAutomaticallyToNewCells": true,
+      "wholeSourceCoverageComplete": false
+    },
+    "fortyContentPartialIntegration": {
+      "status": "accepted-specific-partial-relations-only",
+      "totalSourceGoalsActual": 187,
+      "retainedImmediateBeforeCells": 186,
+      "newCompleteSelectedCells": 1,
+      "newWholeSourceApprovals": 0,
+      "newScientificFirstDecisionsByTechnicalIntegrator": 0,
+      "independentAcceptedRefs": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-first-twenty-source-informed-independent-a-20261018-v1/ACCEPTED.one-hundred-sixty-four-bounded-direct-relations.with-explicit-context-conditions.json",
+          "sha256": "5af30ee6b2cb919a8445f2668c963b81d22583cb241a8d64f8df469f93da06cf",
+          "bytes": 735256
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-multistate-source-informed-independent-b-part-b-20261018-v1/ACCEPTED.exact-fifty-five-partial-one-held-HE-placement.json",
+          "sha256": "ab921ae7928e26b5f58b2c25c8c72c470b2c3b4c111cb9fae09b92b821ef7f48",
+          "bytes": 43536
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-first-twenty-source-informed-independent-a-20261018-v1/ACCEPTED.six-existing-literal-source-acquisition-foundations.json",
+          "sha256": "c9f3aab904f4b1152d7b8d370b6fddacb997b08a2c784e70032618408a86492c",
+          "bytes": 20744
+        }
+      ],
+      "wholeSourceCoverageComplete": false
+    }
   },
   "passages": [
     {
@@ -335,7 +1387,7 @@
       "id": "sn-chemistry-seki:sn-ch-klassenstufe-8-lb5",
       "topicCode": "SN-CH-klassenstufe-8-LB5",
       "title": "Klassenstufe 8: Säuren und deren saure Lösungen",
-      "text": "- Einblick in die Bedeutung und Verwendung sowie den Umgang mit Säuren und deren sauren Lösungen im Alltag gewinnen Einteilung in anorganische und organische sauerstoffhaltige anorganische Säuren Verhaltensregeln saurer Regen und dessen Wirkungen experimentelles Untersuchen von sauren Lösungen mit Indikatoren\n- Anwenden des Wissens über den Zusammenhang von Bau und Eigenschaften von Stoffen auf Chlorwasserstoff und seine wässrige Lösung Molekülsubstanzen, Polarität der Atombindung, verdünnte und konzentrierte saure Lösungen, Massenanteil: experimentelles Untersuchen von Eigenschaften elektrische Leitfähigkeit, Wärmeentwicklung beim Lösen und Verdünnen Nutzung digitaler Werkzeuge zur Messwerterfassung\n- Kennen der Reaktion mit Protonenübergang am Beispiel der chemischen Reaktion von Chlorwasserstoff mit Wasser Donator-Akzeptor-Prinzip: Reaktionsgleichungen für Protonenabgabe, Protonenaufnahme und Gesamtreaktion in Ionenschreibweise, Bruttogleichung Teilgleichungen\n- Kennen der Reaktion mit Protonenübergang am Beispiel der chemischen Reaktion von Chlorwasserstoff mit Wasser Donator-Akzeptor-Prinzip: Oxonium-Ion Merkmal saurer Lösungen\n- Übertragen des Wissens über Reaktionen mit Protonenübergang auf die chemische Reaktion von Schwefelsäure mit Wasser Donator-Akzeptor-Prinzip vollständige Protolyse\n- Anwenden des Wissens über Redoxreaktionen auf chemische Reaktionen von verdünnten sauren Lösungen mit unedlen Metallen Salzlösungen experimentelles Untersuchen SE Interpretation als Redoxreaktion",
+      "text": "Redaktionelle Zusammenfassung, kein wörtlicher Quellenauszug.\n\n- Einblick in die Bedeutung und Verwendung sowie den Umgang mit Säuren und deren sauren Lösungen im Alltag gewinnen Einteilung in anorganische und organische sauerstoffhaltige anorganische Säuren Verhaltensregeln saurer Regen und dessen Wirkungen experimentelles Untersuchen von sauren Lösungen mit Indikatoren\n- Anwenden des Wissens über den Zusammenhang von Bau und Eigenschaften von Stoffen auf Chlorwasserstoff und seine wässrige Lösung Molekülsubstanzen, Polarität der Atombindung, verdünnte und konzentrierte saure Lösungen, Massenanteil: experimentelles Untersuchen von Eigenschaften elektrische Leitfähigkeit, Wärmeentwicklung beim Lösen und Verdünnen Nutzung digitaler Werkzeuge zur Messwerterfassung\n- Kennen der Reaktion mit Protonenübergang am Beispiel der chemischen Reaktion von Chlorwasserstoff mit Wasser Donator-Akzeptor-Prinzip: Reaktionsgleichungen für Protonenabgabe, Protonenaufnahme und Gesamtreaktion in Ionenschreibweise, Bruttogleichung Teilgleichungen\n- Kennen der Reaktion mit Protonenübergang am Beispiel der chemischen Reaktion von Chlorwasserstoff mit Wasser Donator-Akzeptor-Prinzip: Oxonium-Ion Merkmal saurer Lösungen\n- Übertragen des Wissens über Reaktionen mit Protonenübergang auf die chemische Reaktion von Schwefelsäure mit Wasser Donator-Akzeptor-Prinzip vollständige Protolyse\n- Anwenden des Wissens über Redoxreaktionen auf chemische Reaktionen von verdünnten sauren Lösungen mit unedlen Metallen Salzlösungen experimentelles Untersuchen SE Interpretation als Redoxreaktion",
       "page": 24,
       "sourcePath": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-chemie-sachsen-2025.pdf",
       "sourceGoalIds": [
@@ -345,7 +1397,35 @@
         "sn-chem-seki-sn-ch-klassenstufe-8-lb5-037-02-00b5b02a",
         "sn-chem-seki-sn-ch-klassenstufe-8-lb5-038-01-d41283ef",
         "sn-chem-seki-sn-ch-klassenstufe-8-lb5-039-01-afcdd22c"
-      ]
+      ],
+      "metadata": {
+        "rawTextOrigin": {
+          "kind": "authored-legacy-summary",
+          "isVerbatimOfficialSourceQuote": false,
+          "textAndRawTextAuthority": "Redaktionelle Zusammenfassung, kein wörtlicher Quellenauszug; keine normativen Operatoren aus der Zusammenfassung ableiten. Amtliche Zellfragmente bleiben in den ausgewählten vollständigen SourceGoals getrennt erhalten.",
+          "originalWholeExtraction": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/history/curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_CHEMIE_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json.snapshot",
+            "sha256": "sha256:1de76385d9d7c76783fa312da71262a9e69a4b36dac71986e838f3150db42e76",
+            "bytes": 391321,
+            "originalPath": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_CHEMIE_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json"
+          },
+          "originalPassageId": "sn-chemistry-seki:sn-ch-klassenstufe-8-lb5",
+          "originalWholePassageObjectSha256": "sha256:3b1359a4c03563d9a90ea26e2c26b17b7720ea9602dde278881b6fe2072330b3",
+          "originalRawTextOrTextObjectSha256": "sha256:e35cb8136ce791f7a19e4a3c748e635aa3230f52fe72ce3a5a135b5d2103d31b",
+          "portableFinding": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-foundation-thirtytwo-normal-source-adapter-author-20261016-v1/retained-inputs/identity-informed-review/FINDINGS.current-normal-translation.json",
+            "sha256": "sha256:29ce9a6b5aa6e5ffeda6725c893db046b0e3a5fe50c3dad1ccd2086a423e0af1",
+            "bytes": 6098
+          },
+          "findingId": "ID-F04"
+        },
+        "currentSourceCellQualification": {
+          "sourceGoalId": "sn-chem-seki-sn-ch-klassenstufe-8-lb5-035-01-d0f98a3c",
+          "currentAuthority": "The selected sourceGoal separately retains the two original left-column fragments, right-column guidance, cross-curricular references and SE marker. The unchanged passage text is historical authored context only; never derive mandatory operators from its merged wording.",
+          "physicalPdfPage": 24,
+          "printedPage": 12
+        }
+      }
     },
     {
       "id": "sn-chemistry-seki:sn-ch-klassenstufe-8-wb1",
@@ -393,7 +1473,7 @@
       "id": "sn-chemistry-seki:sn-ch-klassenstufe-9-lb1",
       "topicCode": "SN-CH-klassenstufe-9-LB1",
       "title": "Klassenstufe 9: Saure, basische und neutrale Lösungen",
-      "text": "- Kennen der sauren, basischen oder neutralen Eigenschaft von Lösungen verschiedene Lösungen des Alltags: experimentelles Untersuchen von Lösungen mit Indikatoren Verhaltensregeln beim Umgang mit basischen Lösungen\n- Kennen der sauren, basischen oder neutralen Eigenschaft von Lösungen verschiedene Lösungen des Alltags: pH-Wert-Skala zur Charakteristik der Lösungen\n- Anwenden des Wissens über den Zusammenhang von Bau, Eigenschaften und Verwendung von Stoffen auf Natriumhydroxid Natronlauge\n- Übertragen des Zusammenhangs zwischen Bau, Eigenschaften und Verwendung von Stoffen auf weitere Metallhydroxide und deren basische Lösungen Einsatz im Alltag: Dissoziationsgleichung\n- Übertragen des Zusammenhangs zwischen Bau, Eigenschaften und Verwendung von Stoffen auf weitere Metallhydroxide und deren basische Lösungen Einsatz im Alltag: Hydroxid-Ion Merkmal basischer Lösungen\n- Übertragen des Wissens über Reaktionen mit Protonenübergang auf chemische Reaktionen von sauren mit basischen Lösungen Donator-Akzeptor-Prinzip: experimentelles Untersuchen SE energetische Betrachtung, Veränderung der Leitfähigkeit Nutzung digitaler Werkzeuge zur Messwerterfassung\n- Übertragen des Wissens über Reaktionen mit Protonenübergang auf chemische Reaktionen von sauren mit basischen Lösungen Donator-Akzeptor-Prinzip: Neutralisation Salzlösungen, Salze",
+      "text": "Redaktionelle Zusammenfassung, kein wörtlicher Quellenauszug.\n\n- Kennen der sauren, basischen oder neutralen Eigenschaft von Lösungen verschiedene Lösungen des Alltags: experimentelles Untersuchen von Lösungen mit Indikatoren Verhaltensregeln beim Umgang mit basischen Lösungen\n- Kennen der sauren, basischen oder neutralen Eigenschaft von Lösungen verschiedene Lösungen des Alltags: pH-Wert-Skala zur Charakteristik der Lösungen\n- Anwenden des Wissens über den Zusammenhang von Bau, Eigenschaften und Verwendung von Stoffen auf Natriumhydroxid Natronlauge\n- Übertragen des Zusammenhangs zwischen Bau, Eigenschaften und Verwendung von Stoffen auf weitere Metallhydroxide und deren basische Lösungen Einsatz im Alltag: Dissoziationsgleichung\n- Übertragen des Zusammenhangs zwischen Bau, Eigenschaften und Verwendung von Stoffen auf weitere Metallhydroxide und deren basische Lösungen Einsatz im Alltag: Hydroxid-Ion Merkmal basischer Lösungen\n- Übertragen des Wissens über Reaktionen mit Protonenübergang auf chemische Reaktionen von sauren mit basischen Lösungen Donator-Akzeptor-Prinzip: experimentelles Untersuchen SE energetische Betrachtung, Veränderung der Leitfähigkeit Nutzung digitaler Werkzeuge zur Messwerterfassung\n- Übertragen des Wissens über Reaktionen mit Protonenübergang auf chemische Reaktionen von sauren mit basischen Lösungen Donator-Akzeptor-Prinzip: Neutralisation Salzlösungen, Salze",
       "page": 27,
       "sourcePath": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-chemie-sachsen-2025.pdf",
       "sourceGoalIds": [
@@ -404,7 +1484,29 @@
         "sn-chem-seki-sn-ch-klassenstufe-9-lb1-051-02-719d16a9",
         "sn-chem-seki-sn-ch-klassenstufe-9-lb1-052-01-ba831b36",
         "sn-chem-seki-sn-ch-klassenstufe-9-lb1-052-02-e51d171b"
-      ]
+      ],
+      "metadata": {
+        "rawTextOrigin": {
+          "kind": "authored-legacy-summary",
+          "isVerbatimOfficialSourceQuote": false,
+          "textAndRawTextAuthority": "Redaktionelle Zusammenfassung, kein wörtlicher Quellenauszug; keine normativen Operatoren aus der Zusammenfassung ableiten. Amtliche Zellfragmente bleiben in den ausgewählten vollständigen SourceGoals getrennt erhalten.",
+          "originalWholeExtraction": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/history/curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_CHEMIE_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json.snapshot",
+            "sha256": "sha256:1de76385d9d7c76783fa312da71262a9e69a4b36dac71986e838f3150db42e76",
+            "bytes": 391321,
+            "originalPath": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_CHEMIE_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json"
+          },
+          "originalPassageId": "sn-chemistry-seki:sn-ch-klassenstufe-9-lb1",
+          "originalWholePassageObjectSha256": "sha256:e203b6b35a07080930f32cad13cdf7bb8a77fe049eccacda79964fab8061677a",
+          "originalRawTextOrTextObjectSha256": "sha256:06ba08ddea4667ef3b89b0408b1e62c39ddb09d3556381d85ab9d34640cb2ca7",
+          "portableFinding": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-foundation-thirtytwo-normal-source-adapter-author-20261016-v1/retained-inputs/identity-informed-review/FINDINGS.current-normal-translation.json",
+            "sha256": "sha256:29ce9a6b5aa6e5ffeda6725c893db046b0e3a5fe50c3dad1ccd2086a423e0af1",
+            "bytes": 6098
+          },
+          "findingId": "ID-F04"
+        }
+      }
     },
     {
       "id": "sn-chemistry-seki:sn-ch-klassenstufe-9-lb2",
@@ -620,6 +1722,165 @@
         "sn-chem-seki-sn-ch-klassenstufe-10-wb3-090-02-3f6c0626",
         "sn-chem-seki-sn-ch-klassenstufe-10-wb3-090-03-569c9ef5"
       ]
+    },
+    {
+      "id": "sn-chemistry-seki-process:klasse7-lb1-untersuchen-von-stoffen",
+      "topicCode": "Klasse7 LB1 Untersuchen von Stoffen",
+      "title": "SN: selected whole process clauses, original full pages retained",
+      "text": "Gymnasium\n\n\n-   Durchführen, Beobachten und Auswerten              SE\n    von einfachen Experimenten                          PH, Kl. 6, LB 2\n-   Protokollieren von Experimenten\nAnwenden von Wissen über Stoffeigenschaften                Methodenbewusstsein\nzur Einteilung der Stoffe\n-   experimentelles Untersuchen von Stoffen auf        SE\n    ihre Eigenschaften                                 Stoffe aus dem Alltagsbereich des Schülers:\n                                                       Kochsalz, Zucker, Wasser, Eisen, Spiritus\n-   Beobachten, Beschreiben, Vergleichen\n-   Stoff                                              Definition\n-   Ordnen von Stoffen nach ihren Eigenschaf-\n    ten\n-   Aggregatzustand und Teilchenmodell                 Nutzung digitaler Medien zur Visualisierung\n                                                        PH, Kl. 6, LB 2\n-   Reinstoffe und Stoffgemische\n        Bedeutung von Massen- und Volumen-                 MA, Kl. 6, LB 5\n        anteil\nAnwenden von Wissen über Stoffeigenschaften\nauf Trennverfahren\n-   Zusammenhang von Eigenschaften und\n    Trennverfahren\n-   experimentelles Ausführen von Trennverfah-         SE\n    ren: Dekantieren, Filtrieren, Eindampfen,\n    Destillieren\n\n\nLernbereich 2:   Metalle – von Aluminium bis Zink                                                7 Ustd.\n\nGestalten einer Dokumentation zu Metallen und          Nutzung digitaler Medien\nLegierungen                                                informatische Bildung\n                                                           Medienbildung\n                                                           Methodenbewusstsein\n-   Eigenschaften – Verwendung\n-   Bedeutung in Alltag und Technik\nÜbertragen des Wissens über Stoffeigenschaften\nauf die Stoffgruppe der Metalle\n    experimentelles Untersuchen von Metallen           SE\n    auf charakteristischen Eigenschaften                PH, Kl. 7, LB 2\nKennen des Kern-Hülle-Modells der Atome                Teilchenmodell, PSE als ständiges Arbeitsmittel\n                                                       Nutzung digitaler Medien\n                                                        PH, Kl. 6, LB 2\n-   Atombau\n-   Element                                            Definition\n-   Symbole von Metallen\nKennen des Baus von Metallen, Metallbindung            Modellvorstellung Metallgitter\n                                                       Nutzung digitaler Medien zur Visualisierung\n\n\n\n\n6                                               2025                                             GY – CH\n",
+      "sourceDocumentKey": "SN-CH-2025",
+      "sourceRef": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-chemie-sachsen-2025.pdf, physical PDF pages [18]",
+      "physicalPdfPages": [
+        18
+      ],
+      "scope": "Full page context, selected clauses only become sourceGoals; all other standards remain unextracted context."
+    },
+    {
+      "id": "sn-chemistry-gymnasium-general:p7-methods",
+      "topicCode": "Methodenbewusstsein",
+      "title": "Methodenbewusstsein",
+      "text": "Sie erwerben Wissen über die Gültigkeitsbedingungen spezifischer Erkenntnismethoden und lernen, dass Erkenntnisse von den eingesetzten Methoden abhängig sind. Dabei entwickeln sie ein differenziertes Weltverständnis.",
+      "sourceDocumentKey": "SN-CH-2025",
+      "sourceRef": "Lehrplan Gymnasium Chemie Sachsen 2025, physical PDF7, printed VII, Methodenbewusstsein",
+      "physicalPdfPages": [
+        7
+      ],
+      "scope": "Official Gymnasium-wide general objectives/competence descriptions in this Chemistry curriculum, developed progressively and concretized in each subject. They are not numbered chemistry end-of-stage standards, not an independent GK/LK graduation requirement, and do not remove the specific class/course or experimental duties. Proposed once in the existing SekI foundational source inventory from this same whole document; official general scope is retained explicitly. Current CrossStage GK/LK view labels do not change that scope.",
+      "passageIsSelectedWholeOperativeUnitsNotCompletePdfCopy": true
+    },
+    {
+      "id": "sn-chemistry-gymnasium-general:p12-information-techniques",
+      "topicCode": "Lernen lernen / Techniken",
+      "title": "Lernen lernen / Techniken",
+      "text": "Techniken der Beschaffung, Überprüfung, Verarbeitung und Aufbereitung von Informationen (z. B. Lese-, Schreib-, Mnemo-, Recherche-, Strukturierungs-, Visualisierungs- und Präsentationstechniken)",
+      "sourceDocumentKey": "SN-CH-2025",
+      "sourceRef": "Lehrplan Gymnasium Chemie Sachsen 2025, physical PDF12, printed XII, Lernen lernen / Techniken",
+      "physicalPdfPages": [
+        12
+      ],
+      "scope": "Official Gymnasium-wide general objectives/competence descriptions in this Chemistry curriculum, developed progressively and concretized in each subject. They are not numbered chemistry end-of-stage standards, not an independent GK/LK graduation requirement, and do not remove the specific class/course or experimental duties. Proposed once in the existing SekI foundational source inventory from this same whole document; official general scope is retained explicitly. Current CrossStage GK/LK view labels do not change that scope.",
+      "passageIsSelectedWholeOperativeUnitsNotCompletePdfCopy": true
+    },
+    {
+      "id": "sn-chemistry-gymnasium-general:p13-experiment-results-hypotheses",
+      "topicCode": "Ziele und Aufgaben des Faches Chemie / Beitrag zur allgemeinen Bildung",
+      "title": "Ziele und Aufgaben des Faches Chemie / Beitrag zur allgemeinen Bildung",
+      "text": "Besondere Bedeutung kommt dem Experiment als Methode der naturwissenschaftlichen Erkenntnisgewinnung zu. Es erfordert eine präzise Fragestellung, exaktes Beobachten und erzieht zu objektiver, unvoreingenommener Beschreibung der Phänomene. Kritisches Analysieren und Deuten der Ergebnisse fördert das Abstraktionsvermögen; die experimentelle Überprüfung der Arbeitshypothesen entwickelt die Problemlösefähigkeit. Durch individuelles und gemeinsames Lernen entwickeln die Schüler sowohl die Kommunikations- und Teamfähigkeit als auch Beharrlichkeit, Selbstständigkeit, Gewissenhaftigkeit, Genauigkeit und Zielstrebigkeit.",
+      "sourceDocumentKey": "SN-CH-2025",
+      "sourceRef": "Lehrplan Gymnasium Chemie Sachsen 2025, physical PDF13, printed 1, Ziele und Aufgaben des Faches Chemie / Beitrag zur allgemeinen Bildung",
+      "physicalPdfPages": [
+        13
+      ],
+      "scope": "Official Gymnasium-wide general objectives/competence descriptions in this Chemistry curriculum, developed progressively and concretized in each subject. They are not numbered chemistry end-of-stage standards, not an independent GK/LK graduation requirement, and do not remove the specific class/course or experimental duties. Proposed once in the existing SekI foundational source inventory from this same whole document; official general scope is retained explicitly. Current CrossStage GK/LK view labels do not change that scope.",
+      "passageIsSelectedWholeOperativeUnitsNotCompletePdfCopy": true
+    },
+    {
+      "id": "sn-chemistry-gymnasium-general:p13-subject-goals",
+      "topicCode": "Ziele und Aufgaben des Faches Chemie / allgemeine fachliche Ziele",
+      "title": "Ziele und Aufgaben des Faches Chemie / allgemeine fachliche Ziele",
+      "text": "Entwickeln der Fähigkeit zum chemisch kompetenten Kommunizieren unter angemessener Nutzung von Fachsprache und fachtypischen Darstellungs- und Argumentationsstrukturen\nEntwickeln der Fähigkeit, Sachverhalte kriteriengeleitet zu beurteilen sowie Entscheidungen und deren Folgen zu bewerten, als Voraussetzung für eine kompetente Teilnahme am gesellschaftlichen Diskurs über Naturwissenschaft und Technik",
+      "sourceDocumentKey": "SN-CH-2025",
+      "sourceRef": "Lehrplan Gymnasium Chemie Sachsen 2025, physical PDF13, printed 1, Ziele und Aufgaben des Faches Chemie / allgemeine fachliche Ziele",
+      "physicalPdfPages": [
+        13
+      ],
+      "scope": "Official Gymnasium-wide general objectives/competence descriptions in this Chemistry curriculum, developed progressively and concretized in each subject. They are not numbered chemistry end-of-stage standards, not an independent GK/LK graduation requirement, and do not remove the specific class/course or experimental duties. Proposed once in the existing SekI foundational source inventory from this same whole document; official general scope is retained explicitly. Current CrossStage GK/LK view labels do not change that scope.",
+      "passageIsSelectedWholeOperativeUnitsNotCompletePdfCopy": true
+    },
+    {
+      "id": "sn-chemistry-gymnasium-general:p14-chemical-media-information",
+      "topicCode": "Ziele und Aufgaben des Faches Chemie / didaktische Grundsätze",
+      "title": "Ziele und Aufgaben des Faches Chemie / didaktische Grundsätze",
+      "text": "Die Entwicklung von Medienkompetenz im Umgang mit verschiedenen traditionellen und digitalen Medien zur Wissensaneignung, Übung und Informationsbeschaffung ist wichtiger Bestandteil des Lehr- und Lernprozesses.",
+      "sourceDocumentKey": "SN-CH-2025",
+      "sourceRef": "Lehrplan Gymnasium Chemie Sachsen 2025, physical PDF14, printed 2, Ziele und Aufgaben des Faches Chemie / didaktische Grundsätze",
+      "physicalPdfPages": [
+        14
+      ],
+      "scope": "Official Gymnasium-wide general objectives/competence descriptions in this Chemistry curriculum, developed progressively and concretized in each subject. They are not numbered chemistry end-of-stage standards, not an independent GK/LK graduation requirement, and do not remove the specific class/course or experimental duties. Proposed once in the existing SekI foundational source inventory from this same whole document; official general scope is retained explicitly. Current CrossStage GK/LK view labels do not change that scope.",
+      "passageIsSelectedWholeOperativeUnitsNotCompletePdfCopy": true
+    },
+    {
+      "id": "sn-chemistry-seki-process-standard-kl7-ziel-sicherheit:whole-primary-context",
+      "topicCode": "Kl7 goals safety",
+      "title": "Selected complete official operator; full original page context referenced",
+      "sourceDocumentKey": "SN-CH-2025",
+      "text": "Sie kennen und beachten geltende Bestimmungen des Gesundheits-, Arbeits- und Brandschutzes im Umgang mit Chemikalien und Geräten im Chemieunterricht.",
+      "physicalPdfPages": [
+        17
+      ],
+      "sourceRef": "Lehrplan Gymnasium Chemie Sachsen 2004/2007/2009/2011/2019/2022/2025; physical PDF17; Kl7 goals safety",
+      "scope": "Only this entire selected operator is newly operative. Full original primary-page context was read and remains available at the pinned official PDF; all unselected operators remain without a new binding vote.",
+      "primaryDocumentPin": {
+        "path": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-chemie-sachsen-2025.pdf",
+        "sha256": "3a74886e7ee9492b003d4916719e2b4644aef5fdfe8331cdefd8151fe0e86051",
+        "bytes": 824141
+      },
+      "sourceStageCourseAndContext": "DE-SN SekI, Klasse7 objectives physical17/printed5, compulsory local grade goals; not LK-only objectives; technical CrossStage/GK/LK target placement does not rename the official grade/level or create an official upper-course duty."
+    },
+    {
+      "id": "sn-chemistry-seki-process-standard-kl7-ziel-umgang-entsorgung:whole-primary-context",
+      "topicCode": "Kl7 goals handling/disposal",
+      "title": "Selected complete official operator; full original page context referenced",
+      "sourceDocumentKey": "SN-CH-2025",
+      "text": "Durch den sachgerechten Umgang mit Stoffen, der die Vermeidung und Entsorgung von Schadstoffen einschließt, erkennen sie an Beispielen die Verantwortung des Menschen für den Schutz der Umwelt.",
+      "physicalPdfPages": [
+        17
+      ],
+      "sourceRef": "Lehrplan Gymnasium Chemie Sachsen 2004/2007/2009/2011/2019/2022/2025; physical PDF17; Kl7 goals handling/disposal",
+      "scope": "Only this entire selected operator is newly operative. Full original primary-page context was read and remains available at the pinned official PDF; all unselected operators remain without a new binding vote.",
+      "primaryDocumentPin": {
+        "path": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-chemie-sachsen-2025.pdf",
+        "sha256": "3a74886e7ee9492b003d4916719e2b4644aef5fdfe8331cdefd8151fe0e86051",
+        "bytes": 824141
+      },
+      "sourceStageCourseAndContext": "DE-SN SekI, Klasse7 objectives physical17/printed5, compulsory local grade goals; not LK-only objectives; technical CrossStage/GK/LK target placement does not rename the official grade/level or create an official upper-course duty."
+    },
+    {
+      "id": "sn-chemistry-seki-process-standard-kl7-lb1-simple-experiments:whole-primary-context",
+      "topicCode": "Kl7 LB1 complete experiment bullet",
+      "title": "Selected complete official operator; full original page context referenced",
+      "sourceDocumentKey": "SN-CH-2025",
+      "text": "Durchführen, Beobachten und Auswerten von einfachen Experimenten",
+      "physicalPdfPages": [
+        18
+      ],
+      "sourceRef": "Lehrplan Gymnasium Chemie Sachsen 2004/2007/2009/2011/2019/2022/2025; physical PDF18; Kl7 LB1 complete experiment bullet",
+      "scope": "Only this entire selected operator is newly operative. Full original primary-page context was read and remains available at the pinned official PDF; all unselected operators remain without a new binding vote.",
+      "primaryDocumentPin": {
+        "path": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-chemie-sachsen-2025.pdf",
+        "sha256": "3a74886e7ee9492b003d4916719e2b4644aef5fdfe8331cdefd8151fe0e86051",
+        "bytes": 824141
+      },
+      "sourceStageCourseAndContext": "DE-SN SekI, Klasse7 LB1 physical18/printed6, SE column and parent Beherrschen simple methods retained; technical CrossStage/GK/LK target placement does not rename the official grade/level or create an official upper-course duty."
+    },
+    {
+      "id": "sn-chemistry-seki-klasse9-goal-structure-properties-models:complete-primary-addition",
+      "sourceDocumentKey": "SN-CH-2025",
+      "topicCode": "Klassenstufe9 Ziele",
+      "title": "Klassenstufe9 Ziele, fachspezifische Arbeitsweisen, whole sentence",
+      "sourceRef": "Lehrplan Gymnasium Chemie Sachsen 2004/2007/2009/2011/2019/2022/2025, physical PDF27, Klassenstufe9 Ziele, fachspezifische Arbeitsweisen, whole sentence",
+      "text": "Sie sind in der Lage, ausgewählte Stoffeigenschaften mit Hilfe der Modellvorstellungen über die Struktur organischer Moleküle, insbesondere über charakteristische Strukturmerkmale und inter- und intramolekulare Wechselwirkungen zu erklären.",
+      "metadata": {
+        "physicalPdfPage": 27,
+        "completeSelectedClauseOnly": true,
+        "notWholePdfText": true
+      }
+    },
+    {
+      "id": "sn-chemistry-seki-process-standard-kl9-quantitative-mathematical-relations:whole-primary-context",
+      "topicCode": "KL9-ZIELE-K-QUANTITATIVE-RELATIONS",
+      "title": "Klasse 9: Quantitative chemische Aussagen mathematisch interpretieren",
+      "text": "Bei quantitativen Betrachtungen können die Schüler verbale Aussagen zu chemischen Sachverhalten in mathematische Beziehungen umsetzen. Sie können Größen, Einheiten und Größengleichungen in diesem Zusammenhang interpretieren.",
+      "sourceDocumentKey": "SN-CH-2025",
+      "sourceRef": "Lehrplan Gymnasium Chemie Sachsen 2004/2007/2009/2011/2019/2022/2025, physical PDF p. 27",
+      "metadata": {
+        "unit": "whole paragraph",
+        "primaryPageOneBased": 27,
+        "surroundingWholePageActuallyRead": true,
+        "contextBoundary": "General chemistry method within the stated lower-secondary scope; no official whole constant-composition-law mandate.",
+        "thirdPartyOfficialTextRetainsOriginalRights": true
+      }
     }
   ],
   "sourceGoals": [
@@ -2345,12 +3606,12 @@
       "topicCode": "SN-CH-klassenstufe-8-LB5",
       "bulletIndex": 35,
       "aspectIndex": 1,
-      "title": "Einblick in die Bedeutung und Verwendung sowie den Umgang mit Säuren und deren sauren Lösungen im Alltag gewinnen Einteilung in anorganische und organische sauerstoffhaltige ano...",
-      "description": "Die lernende Person kann Einblick in die Bedeutung und Verwendung sowie den Umgang mit Säuren und deren sauren Lösungen im Alltag gewinnen Einteilung in anorganische und organische sauerstoffhaltige anorganische Säuren Verhaltensregeln saurer Regen und dessen Wirkungen experimentelles Untersuchen von sauren Lösungen mit Indikatoren.",
-      "sourceText": "Einblick in die Bedeutung und Verwendung sowie den Umgang mit Säuren und deren sauren Lösungen im Alltag gewinnen Einteilung in anorganische und organische sauerstoffhaltige anorganische Säuren Verhaltensregeln saurer Regen und dessen Wirkungen experimentelles Untersuchen von sauren Lösungen mit Indikatoren",
-      "sourceSpan": "Klassenstufe 8, Säuren und deren saure Lösungen, PDF-S. 24",
-      "parentBulletText": "Einblick in die Bedeutung und Verwendung sowie den Umgang mit Säuren und deren sauren Lösungen im Alltag gewinnen Einteilung in anorganische und organische sauerstoffhaltige anorganische Säuren Verhaltensregeln saurer Regen und dessen Wirkungen experimentelles Untersuchen von sauren Lösungen mit Indikatoren",
-      "sourceRef": "Lehrplan Gymnasium Chemie Sachsen 2025, Klassenstufe 8, Säuren und deren saure Lösungen, PDF-S. 24",
+      "title": "Bedeutung und Umgang mit Säuren im Alltag; saure Lösungen mit Indikatoren untersuchen",
+      "description": "Die lernende Person gewinnt Einblick in die Bedeutung und Verwendung sowie den Umgang mit Säuren und deren sauren Lösungen im Alltag und untersucht saure Lösungen experimentell mit Indikatoren.",
+      "sourceText": "Einblick in die Bedeutung und Verwendung sowie den Umgang mit Säuren und deren sauren Lösungen im Alltag gewinnen\nexperimentelles Untersuchen von sauren Lösungen mit Indikatoren",
+      "sourceSpan": "Physical PDF24 / printed12; Klassenstufe8 LB5; left-column introductory cell and indented indicator investigation; right-column SE marker",
+      "parentBulletText": "Einblick in die Bedeutung und Verwendung sowie den Umgang mit Säuren und deren sauren Lösungen im Alltag gewinnen",
+      "sourceRef": "Lehrplan Gymnasium Chemie Sachsen2025, Klassenstufe8 LB5, physical PDF24 / printed12; original left-column source components separately from right-column guidance",
       "courseLevel": "GK_LK",
       "granularity": "officialCompetencyRow",
       "tags": [
@@ -2363,7 +3624,55 @@
       ],
       "rawSourceText": "Einblick in die Bedeutung und Verwendung sowie den Umgang mit Säuren und deren sauren Lösungen im Alltag gewinnen Einteilung in anorganische und organische sauerstoffhaltige anorganische Säuren Verhaltensregeln saurer Regen und dessen Wirkungen experimentelles Untersuchen von sauren Lösungen mit Indikatoren",
       "rawSourceSpan": "Klassenstufe 8, Säuren und deren saure Lösungen, PDF-S. 24",
-      "rawParentBulletText": "Einblick in die Bedeutung und Verwendung sowie den Umgang mit Säuren und deren sauren Lösungen im Alltag gewinnen Einteilung in anorganische und organische sauerstoffhaltige anorganische Säuren Verhaltensregeln saurer Regen und dessen Wirkungen experimentelles Untersuchen von sauren Lösungen mit Indikatoren"
+      "rawParentBulletText": "Einblick in die Bedeutung und Verwendung sowie den Umgang mit Säuren und deren sauren Lösungen im Alltag gewinnen Einteilung in anorganische und organische sauerstoffhaltige anorganische Säuren Verhaltensregeln saurer Regen und dessen Wirkungen experimentelles Untersuchen von sauren Lösungen mit Indikatoren",
+      "descriptionKind": "authored_source_competency_paraphrase_not_new_official_operator",
+      "sourceTextKind": "official_left_column_cell_fragments_joined_with_line_break",
+      "parentBulletTextKind": "official_left_column_parent_cell_fragment",
+      "originalSourceCellLayout": {
+        "primaryPhysicalPdfPage": 24,
+        "primaryPrintedPage": 12,
+        "leftColumnOriginalFragments": [
+          {
+            "role": "introductory_competency",
+            "text": "Einblick in die Bedeutung und Verwendung sowie den Umgang mit Säuren und deren sauren Lösungen im Alltag gewinnen"
+          },
+          {
+            "role": "indented_experimental_competency",
+            "text": "experimentelles Untersuchen von sauren Lösungen mit Indikatoren",
+            "actualOwnExperimentalPerformanceRequired": true
+          }
+        ],
+        "rightColumnGuidance": [
+          {
+            "text": "Einteilung in anorganische und organische Säuren",
+            "status": "didactic_guidance_not_an_additional_left_column_duty"
+          },
+          {
+            "text": "sauerstoffhaltige anorganische Säuren",
+            "status": "didactic_guidance_not_an_additional_left_column_duty"
+          },
+          {
+            "text": "Verhaltensregeln",
+            "status": "didactic_guidance_not_an_additional_left_column_duty"
+          },
+          {
+            "text": "saurer Regen und dessen Wirkungen",
+            "status": "didactic_guidance_not_an_additional_left_column_duty"
+          }
+        ],
+        "rightColumnCrossCurricularReferences": [
+          "Verantwortungsbereitschaft",
+          "Bildung für nachhaltige Entwicklung"
+        ],
+        "rightColumnSEMarker": {
+          "text": "SE",
+          "relatesTo": "indented experimental investigation",
+          "makesLeftColumnOperatorOptional": false
+        },
+        "sourceTextDoesNotMergeRightColumnGuidanceAsAdditionalUniversalDuties": true,
+        "existingRawFields": "Whole previous authored merged summary retained exactly in rawSourceText/rawSourceSpan/rawParentBulletText as historical extraction text, not current literal original authority.",
+        "currentLearnerExecutionProven": false
+      }
     },
     {
       "id": "sn-chem-seki-sn-ch-klassenstufe-8-lb5-036-01-3439faf7",
@@ -2397,51 +3706,117 @@
       "topicCode": "SN-CH-klassenstufe-8-LB5",
       "bulletIndex": 37,
       "aspectIndex": 1,
-      "title": "Kennen der Reaktion mit Protonenübergang am Beispiel der chemischen Reaktion von Chlorwasserstoff mit Wasser Donator-Akzeptor-Prinzip: Reaktionsgleichungen für Protonenabgabe, P...",
-      "description": "Die lernende Person kann Kennen der Reaktion mit Protonenübergang am Beispiel der chemischen Reaktion von Chlorwasserstoff mit Wasser Donator-Akzeptor-Prinzip: Reaktionsgleichungen für Protonenabgabe, Protonenaufnahme und Gesamtreaktion in Ionenschreibweise, Bruttogleichung Teilgleichungen.",
-      "sourceText": "Kennen der Reaktion mit Protonenübergang am Beispiel der chemischen Reaktion von Chlorwasserstoff mit Wasser Donator-Akzeptor-Prinzip: Reaktionsgleichungen für Protonenabgabe, Protonenaufnahme und Gesamtreaktion in Ionenschreibweise, Bruttogleichung Teilgleichungen",
-      "sourceSpan": "Klassenstufe 8, Säuren und deren saure Lösungen, PDF-S. 24",
-      "parentBulletText": "Kennen der Reaktion mit Protonenübergang am Beispiel der chemischen Reaktion von Chlorwasserstoff mit Wasser Donator-Akzeptor-Prinzip",
-      "sourceRef": "Lehrplan Gymnasium Chemie Sachsen 2025, Klassenstufe 8, Säuren und deren saure Lösungen, PDF-S. 24",
-      "courseLevel": "GK_LK",
-      "granularity": "officialCompetencyAspect",
+      "title": "Kennen der Reaktion mit Protonenübergang am Beispiel der chemischen Reaktion von Chlorwasserstoff mit Wasser\nReaktionsgleichungen für Protonenabgabe, Protonenaufnahme und Gesamtreaktion in Ionenschreibweise, Bruttogleichung",
+      "description": "Authored operationalisation of the separately preserved source fragments; source wording and authored action remain distinct.",
+      "sourceText": "Kennen der Reaktion mit Protonenübergang am Beispiel der chemischen Reaktion von Chlorwasserstoff mit Wasser\nReaktionsgleichungen für Protonenabgabe, Protonenaufnahme und Gesamtreaktion in Ionenschreibweise, Bruttogleichung",
+      "sourceSpan": {
+        "section": "SN-CH-klassenstufe-8-LB5",
+        "physicalPage": 24,
+        "printedPage": 12
+      },
+      "parentBulletText": "Kennen der Reaktion mit Protonenübergang am Beispiel der chemischen Reaktion von Chlorwasserstoff mit Wasser",
+      "sourceRef": "official / SN-CH-klassenstufe-8-LB5, PDF-S.24, gedruckt S.12",
+      "courseLevel": "unspecified",
+      "granularity": "officialTableLeftColumnWithSeparateRightColumnContext",
       "tags": [
         "source:sachsen",
         "subject:Chemie",
         "stage:SekI",
         "topic:sn-ch-klassenstufe-8-lb5",
-        "course:GK_LK",
         "sourceDocument:SN-CH-2025"
       ],
-      "rawSourceText": "Kennen der Reaktion mit Protonenübergang am Beispiel der chemischen Reaktion von Chlorwasserstoff mit Wasser Donator-Akzeptor-Prinzip: Reaktionsgleichungen für Protonenabgabe, Protonenaufnahme und Gesamtreaktion in Ionenschreibweise, Bruttogleichung Teilgleichungen",
-      "rawSourceSpan": "Klassenstufe 8, Säuren und deren saure Lösungen, PDF-S. 24",
-      "rawParentBulletText": "Kennen der Reaktion mit Protonenübergang am Beispiel der chemischen Reaktion von Chlorwasserstoff mit Wasser Donator-Akzeptor-Prinzip"
+      "rawSourceText": "Kennen der Reaktion mit Protonenübergang am Beispiel der chemischen Reaktion von Chlorwasserstoff mit Wasser\nReaktionsgleichungen für Protonenabgabe, Protonenaufnahme und Gesamtreaktion in Ionenschreibweise, Bruttogleichung",
+      "rawSourceSpan": {
+        "section": "SN-CH-klassenstufe-8-LB5",
+        "physicalPage": 24,
+        "printedPage": 12
+      },
+      "rawParentBulletText": "Kennen der Reaktion mit Protonenübergang am Beispiel der chemischen Reaktion von Chlorwasserstoff mit Wasser",
+      "literalSourceFragments": [
+        {
+          "role": "left-column-parent",
+          "text": "Kennen der Reaktion mit Protonenübergang am Beispiel der chemischen Reaktion von Chlorwasserstoff mit Wasser"
+        },
+        {
+          "role": "left-column-subitem",
+          "text": "Reaktionsgleichungen für Protonenabgabe, Protonenaufnahme und Gesamtreaktion in Ionenschreibweise, Bruttogleichung"
+        }
+      ],
+      "rightColumnContextFragments": [
+        {
+          "role": "right-column-guidance-or-basiskonzept",
+          "text": "Donator-Akzeptor-Prinzip"
+        },
+        {
+          "role": "right-column-guidance-or-basiskonzept",
+          "text": "Teilgleichungen"
+        }
+      ],
+      "authoredOperationalisation": {
+        "sourceParentRemainsWhole": true,
+        "sourceColumnsNotFusedIntoOriginalSentence": true,
+        "practicalCase": null,
+        "H2SO4SpecificTransferPreserved": false
+      }
     },
     {
       "id": "sn-chem-seki-sn-ch-klassenstufe-8-lb5-037-02-00b5b02a",
       "passageId": "sn-chemistry-seki:sn-ch-klassenstufe-8-lb5",
       "topicCode": "SN-CH-klassenstufe-8-LB5",
       "bulletIndex": 37,
-      "aspectIndex": 2,
-      "title": "Kennen der Reaktion mit Protonenübergang am Beispiel der chemischen Reaktion von Chlorwasserstoff mit Wasser Donator-Akzeptor-Prinzip: Oxonium-Ion Merkmal saurer Lösungen",
-      "description": "Die lernende Person kann Kennen der Reaktion mit Protonenübergang am Beispiel der chemischen Reaktion von Chlorwasserstoff mit Wasser Donator-Akzeptor-Prinzip: Oxonium-Ion Merkmal saurer Lösungen.",
-      "sourceText": "Kennen der Reaktion mit Protonenübergang am Beispiel der chemischen Reaktion von Chlorwasserstoff mit Wasser Donator-Akzeptor-Prinzip: Oxonium-Ion Merkmal saurer Lösungen",
-      "sourceSpan": "Klassenstufe 8, Säuren und deren saure Lösungen, PDF-S. 24",
-      "parentBulletText": "Kennen der Reaktion mit Protonenübergang am Beispiel der chemischen Reaktion von Chlorwasserstoff mit Wasser Donator-Akzeptor-Prinzip",
-      "sourceRef": "Lehrplan Gymnasium Chemie Sachsen 2025, Klassenstufe 8, Säuren und deren saure Lösungen, PDF-S. 24",
-      "courseLevel": "GK_LK",
-      "granularity": "officialCompetencyAspect",
+      "aspectIndex": 1,
+      "title": "Kennen der Reaktion mit Protonenübergang am Beispiel der chemischen Reaktion von Chlorwasserstoff mit Wasser\nOxonium-Ion",
+      "description": "Authored operationalisation of the separately preserved source fragments; source wording and authored action remain distinct.",
+      "sourceText": "Kennen der Reaktion mit Protonenübergang am Beispiel der chemischen Reaktion von Chlorwasserstoff mit Wasser\nOxonium-Ion",
+      "sourceSpan": {
+        "section": "SN-CH-klassenstufe-8-LB5",
+        "physicalPage": 24,
+        "printedPage": 12
+      },
+      "parentBulletText": "Kennen der Reaktion mit Protonenübergang am Beispiel der chemischen Reaktion von Chlorwasserstoff mit Wasser",
+      "sourceRef": "official / SN-CH-klassenstufe-8-LB5, PDF-S.24, gedruckt S.12",
+      "courseLevel": "unspecified",
+      "granularity": "officialTableLeftColumnWithSeparateRightColumnContext",
       "tags": [
         "source:sachsen",
         "subject:Chemie",
         "stage:SekI",
         "topic:sn-ch-klassenstufe-8-lb5",
-        "course:GK_LK",
         "sourceDocument:SN-CH-2025"
       ],
-      "rawSourceText": "Kennen der Reaktion mit Protonenübergang am Beispiel der chemischen Reaktion von Chlorwasserstoff mit Wasser Donator-Akzeptor-Prinzip: Oxonium-Ion Merkmal saurer Lösungen",
-      "rawSourceSpan": "Klassenstufe 8, Säuren und deren saure Lösungen, PDF-S. 24",
-      "rawParentBulletText": "Kennen der Reaktion mit Protonenübergang am Beispiel der chemischen Reaktion von Chlorwasserstoff mit Wasser Donator-Akzeptor-Prinzip"
+      "rawSourceText": "Kennen der Reaktion mit Protonenübergang am Beispiel der chemischen Reaktion von Chlorwasserstoff mit Wasser\nOxonium-Ion",
+      "rawSourceSpan": {
+        "section": "SN-CH-klassenstufe-8-LB5",
+        "physicalPage": 24,
+        "printedPage": 12
+      },
+      "rawParentBulletText": "Kennen der Reaktion mit Protonenübergang am Beispiel der chemischen Reaktion von Chlorwasserstoff mit Wasser",
+      "literalSourceFragments": [
+        {
+          "role": "left-column-parent",
+          "text": "Kennen der Reaktion mit Protonenübergang am Beispiel der chemischen Reaktion von Chlorwasserstoff mit Wasser"
+        },
+        {
+          "role": "left-column-subitem",
+          "text": "Oxonium-Ion"
+        }
+      ],
+      "rightColumnContextFragments": [
+        {
+          "role": "right-column-guidance-or-basiskonzept",
+          "text": "Donator-Akzeptor-Prinzip"
+        },
+        {
+          "role": "right-column-guidance-or-basiskonzept",
+          "text": "Merkmal saurer Lösungen"
+        }
+      ],
+      "authoredOperationalisation": {
+        "sourceParentRemainsWhole": true,
+        "sourceColumnsNotFusedIntoOriginalSentence": true,
+        "practicalCase": null,
+        "H2SO4SpecificTransferPreserved": false
+      }
     },
     {
       "id": "sn-chem-seki-sn-ch-klassenstufe-8-lb5-038-01-d41283ef",
@@ -2449,25 +3824,54 @@
       "topicCode": "SN-CH-klassenstufe-8-LB5",
       "bulletIndex": 38,
       "aspectIndex": 1,
-      "title": "Übertragen des Wissens über Reaktionen mit Protonenübergang auf die chemische Reaktion von Schwefelsäure mit Wasser Donator-Akzeptor-Prinzip vollständige Protolyse",
-      "description": "Die lernende Person kann Übertragen des Wissens über Reaktionen mit Protonenübergang auf die chemische Reaktion von Schwefelsäure mit Wasser Donator-Akzeptor-Prinzip vollständige Protolyse.",
-      "sourceText": "Übertragen des Wissens über Reaktionen mit Protonenübergang auf die chemische Reaktion von Schwefelsäure mit Wasser Donator-Akzeptor-Prinzip vollständige Protolyse",
-      "sourceSpan": "Klassenstufe 8, Säuren und deren saure Lösungen, PDF-S. 24",
-      "parentBulletText": "Übertragen des Wissens über Reaktionen mit Protonenübergang auf die chemische Reaktion von Schwefelsäure mit Wasser Donator-Akzeptor-Prinzip vollständige Protolyse",
-      "sourceRef": "Lehrplan Gymnasium Chemie Sachsen 2025, Klassenstufe 8, Säuren und deren saure Lösungen, PDF-S. 24",
-      "courseLevel": "GK_LK",
-      "granularity": "officialCompetencyRow",
+      "title": "Übertragen des Wissens über Reaktionen mit Protonenübergang auf die chemische Reaktion von Schwefelsäure mit Wasser",
+      "description": "Authored operationalisation of the separately preserved source fragments; source wording and authored action remain distinct.",
+      "sourceText": "Übertragen des Wissens über Reaktionen mit Protonenübergang auf die chemische Reaktion von Schwefelsäure mit Wasser",
+      "sourceSpan": {
+        "section": "SN-CH-klassenstufe-8-LB5",
+        "physicalPage": 25,
+        "printedPage": 13
+      },
+      "parentBulletText": "Übertragen des Wissens über Reaktionen mit Protonenübergang auf die chemische Reaktion von Schwefelsäure mit Wasser",
+      "sourceRef": "official / SN-CH-klassenstufe-8-LB5, PDF-S.25, gedruckt S.13",
+      "courseLevel": "unspecified",
+      "granularity": "officialTableLeftColumnWithSeparateRightColumnContext",
       "tags": [
         "source:sachsen",
         "subject:Chemie",
         "stage:SekI",
         "topic:sn-ch-klassenstufe-8-lb5",
-        "course:GK_LK",
         "sourceDocument:SN-CH-2025"
       ],
-      "rawSourceText": "Übertragen des Wissens über Reaktionen mit Protonenübergang auf die chemische Reaktion von Schwefelsäure mit Wasser Donator-Akzeptor-Prinzip vollständige Protolyse",
-      "rawSourceSpan": "Klassenstufe 8, Säuren und deren saure Lösungen, PDF-S. 24",
-      "rawParentBulletText": "Übertragen des Wissens über Reaktionen mit Protonenübergang auf die chemische Reaktion von Schwefelsäure mit Wasser Donator-Akzeptor-Prinzip vollständige Protolyse"
+      "rawSourceText": "Übertragen des Wissens über Reaktionen mit Protonenübergang auf die chemische Reaktion von Schwefelsäure mit Wasser",
+      "rawSourceSpan": {
+        "section": "SN-CH-klassenstufe-8-LB5",
+        "physicalPage": 25,
+        "printedPage": 13
+      },
+      "rawParentBulletText": "Übertragen des Wissens über Reaktionen mit Protonenübergang auf die chemische Reaktion von Schwefelsäure mit Wasser",
+      "literalSourceFragments": [
+        {
+          "role": "left-column-parent",
+          "text": "Übertragen des Wissens über Reaktionen mit Protonenübergang auf die chemische Reaktion von Schwefelsäure mit Wasser"
+        }
+      ],
+      "rightColumnContextFragments": [
+        {
+          "role": "right-column-guidance-or-basiskonzept",
+          "text": "Donator-Akzeptor-Prinzip"
+        },
+        {
+          "role": "right-column-guidance-or-basiskonzept",
+          "text": "vollständige Protolyse"
+        }
+      ],
+      "authoredOperationalisation": {
+        "sourceParentRemainsWhole": true,
+        "sourceColumnsNotFusedIntoOriginalSentence": true,
+        "practicalCase": null,
+        "H2SO4SpecificTransferPreserved": true
+      }
     },
     {
       "id": "sn-chem-seki-sn-ch-klassenstufe-8-lb5-039-01-afcdd22c",
@@ -2943,51 +4347,125 @@
       "topicCode": "SN-CH-klassenstufe-9-LB1",
       "bulletIndex": 52,
       "aspectIndex": 1,
-      "title": "Übertragen des Wissens über Reaktionen mit Protonenübergang auf chemische Reaktionen von sauren mit basischen Lösungen Donator-Akzeptor-Prinzip: experimentelles Untersuchen SE e...",
-      "description": "Die lernende Person kann Übertragen des Wissens über Reaktionen mit Protonenübergang auf chemische Reaktionen von sauren mit basischen Lösungen Donator-Akzeptor-Prinzip: experimentelles Untersuchen SE energetische Betrachtung, Veränderung der Leitfähigkeit Nutzung digitaler Werkzeuge zur Messwerterfassung.",
-      "sourceText": "Übertragen des Wissens über Reaktionen mit Protonenübergang auf chemische Reaktionen von sauren mit basischen Lösungen Donator-Akzeptor-Prinzip: experimentelles Untersuchen SE energetische Betrachtung, Veränderung der Leitfähigkeit Nutzung digitaler Werkzeuge zur Messwerterfassung",
-      "sourceSpan": "Klassenstufe 9, Saure, basische und neutrale Lösungen, PDF-S. 27",
-      "parentBulletText": "Übertragen des Wissens über Reaktionen mit Protonenübergang auf chemische Reaktionen von sauren mit basischen Lösungen Donator-Akzeptor-Prinzip",
-      "sourceRef": "Lehrplan Gymnasium Chemie Sachsen 2025, Klassenstufe 9, Saure, basische und neutrale Lösungen, PDF-S. 27",
-      "courseLevel": "GK_LK",
-      "granularity": "officialCompetencyAspect",
+      "title": "Übertragen des Wissens über Reaktionen mit Protonenübergang auf chemische Reaktionen von sauren mit basischen Lösungen\nexperimentelles Untersuchen",
+      "description": "Authored operationalisation of the separately preserved source fragments; source wording and authored action remain distinct.",
+      "sourceText": "Übertragen des Wissens über Reaktionen mit Protonenübergang auf chemische Reaktionen von sauren mit basischen Lösungen\nexperimentelles Untersuchen",
+      "sourceSpan": {
+        "section": "SN-CH-klassenstufe-9-LB1",
+        "physicalPage": 28,
+        "printedPage": 16
+      },
+      "parentBulletText": "Übertragen des Wissens über Reaktionen mit Protonenübergang auf chemische Reaktionen von sauren mit basischen Lösungen",
+      "sourceRef": "official / SN-CH-klassenstufe-9-LB1, PDF-S.28, gedruckt S.16",
+      "courseLevel": "unspecified",
+      "granularity": "officialTableLeftColumnWithSeparateRightColumnContext",
       "tags": [
         "source:sachsen",
         "subject:Chemie",
         "stage:SekI",
         "topic:sn-ch-klassenstufe-9-lb1",
-        "course:GK_LK",
         "sourceDocument:SN-CH-2025"
       ],
-      "rawSourceText": "Übertragen des Wissens über Reaktionen mit Protonenübergang auf chemische Reaktionen von sauren mit basischen Lösungen Donator-Akzeptor-Prinzip: experimentelles Untersuchen SE energetische Betrachtung, Veränderung der Leitfähigkeit Nutzung digitaler Werkzeuge zur Messwerterfassung",
-      "rawSourceSpan": "Klassenstufe 9, Saure, basische und neutrale Lösungen, PDF-S. 27",
-      "rawParentBulletText": "Übertragen des Wissens über Reaktionen mit Protonenübergang auf chemische Reaktionen von sauren mit basischen Lösungen Donator-Akzeptor-Prinzip"
+      "rawSourceText": "Übertragen des Wissens über Reaktionen mit Protonenübergang auf chemische Reaktionen von sauren mit basischen Lösungen\nexperimentelles Untersuchen",
+      "rawSourceSpan": {
+        "section": "SN-CH-klassenstufe-9-LB1",
+        "physicalPage": 28,
+        "printedPage": 16
+      },
+      "rawParentBulletText": "Übertragen des Wissens über Reaktionen mit Protonenübergang auf chemische Reaktionen von sauren mit basischen Lösungen",
+      "literalSourceFragments": [
+        {
+          "role": "left-column-parent",
+          "text": "Übertragen des Wissens über Reaktionen mit Protonenübergang auf chemische Reaktionen von sauren mit basischen Lösungen"
+        },
+        {
+          "role": "left-column-subitem",
+          "text": "experimentelles Untersuchen"
+        }
+      ],
+      "rightColumnContextFragments": [
+        {
+          "role": "right-column-guidance-or-basiskonzept",
+          "text": "Donator-Akzeptor-Prinzip"
+        },
+        {
+          "role": "right-column-guidance-or-basiskonzept",
+          "text": "SE"
+        },
+        {
+          "role": "right-column-guidance-or-basiskonzept",
+          "text": "energetische Betrachtung, Veränderung der Leitfähigkeit"
+        },
+        {
+          "role": "right-column-guidance-or-basiskonzept",
+          "text": "Nutzung digitaler Werkzeuge zur Messwerterfassung"
+        }
+      ],
+      "authoredOperationalisation": {
+        "sourceParentRemainsWhole": true,
+        "sourceColumnsNotFusedIntoOriginalSentence": true,
+        "practicalCase": "SN17-REAL-HEAT-CONDUCTIVITY",
+        "H2SO4SpecificTransferPreserved": false
+      }
     },
     {
       "id": "sn-chem-seki-sn-ch-klassenstufe-9-lb1-052-02-e51d171b",
       "passageId": "sn-chemistry-seki:sn-ch-klassenstufe-9-lb1",
       "topicCode": "SN-CH-klassenstufe-9-LB1",
       "bulletIndex": 52,
-      "aspectIndex": 2,
-      "title": "Übertragen des Wissens über Reaktionen mit Protonenübergang auf chemische Reaktionen von sauren mit basischen Lösungen Donator-Akzeptor-Prinzip: Neutralisation Salzlösungen, Salze",
-      "description": "Die lernende Person kann Übertragen des Wissens über Reaktionen mit Protonenübergang auf chemische Reaktionen von sauren mit basischen Lösungen Donator-Akzeptor-Prinzip: Neutralisation Salzlösungen, Salze.",
-      "sourceText": "Übertragen des Wissens über Reaktionen mit Protonenübergang auf chemische Reaktionen von sauren mit basischen Lösungen Donator-Akzeptor-Prinzip: Neutralisation Salzlösungen, Salze",
-      "sourceSpan": "Klassenstufe 9, Saure, basische und neutrale Lösungen, PDF-S. 27",
-      "parentBulletText": "Übertragen des Wissens über Reaktionen mit Protonenübergang auf chemische Reaktionen von sauren mit basischen Lösungen Donator-Akzeptor-Prinzip",
-      "sourceRef": "Lehrplan Gymnasium Chemie Sachsen 2025, Klassenstufe 9, Saure, basische und neutrale Lösungen, PDF-S. 27",
-      "courseLevel": "GK_LK",
-      "granularity": "officialCompetencyAspect",
+      "aspectIndex": 1,
+      "title": "Übertragen des Wissens über Reaktionen mit Protonenübergang auf chemische Reaktionen von sauren mit basischen Lösungen\nNeutralisation",
+      "description": "Authored operationalisation of the separately preserved source fragments; source wording and authored action remain distinct.",
+      "sourceText": "Übertragen des Wissens über Reaktionen mit Protonenübergang auf chemische Reaktionen von sauren mit basischen Lösungen\nNeutralisation",
+      "sourceSpan": {
+        "section": "SN-CH-klassenstufe-9-LB1",
+        "physicalPage": 28,
+        "printedPage": 16
+      },
+      "parentBulletText": "Übertragen des Wissens über Reaktionen mit Protonenübergang auf chemische Reaktionen von sauren mit basischen Lösungen",
+      "sourceRef": "official / SN-CH-klassenstufe-9-LB1, PDF-S.28, gedruckt S.16",
+      "courseLevel": "unspecified",
+      "granularity": "officialTableLeftColumnWithSeparateRightColumnContext",
       "tags": [
         "source:sachsen",
         "subject:Chemie",
         "stage:SekI",
         "topic:sn-ch-klassenstufe-9-lb1",
-        "course:GK_LK",
         "sourceDocument:SN-CH-2025"
       ],
-      "rawSourceText": "Übertragen des Wissens über Reaktionen mit Protonenübergang auf chemische Reaktionen von sauren mit basischen Lösungen Donator-Akzeptor-Prinzip: Neutralisation Salzlösungen, Salze",
-      "rawSourceSpan": "Klassenstufe 9, Saure, basische und neutrale Lösungen, PDF-S. 27",
-      "rawParentBulletText": "Übertragen des Wissens über Reaktionen mit Protonenübergang auf chemische Reaktionen von sauren mit basischen Lösungen Donator-Akzeptor-Prinzip"
+      "rawSourceText": "Übertragen des Wissens über Reaktionen mit Protonenübergang auf chemische Reaktionen von sauren mit basischen Lösungen\nNeutralisation",
+      "rawSourceSpan": {
+        "section": "SN-CH-klassenstufe-9-LB1",
+        "physicalPage": 28,
+        "printedPage": 16
+      },
+      "rawParentBulletText": "Übertragen des Wissens über Reaktionen mit Protonenübergang auf chemische Reaktionen von sauren mit basischen Lösungen",
+      "literalSourceFragments": [
+        {
+          "role": "left-column-parent",
+          "text": "Übertragen des Wissens über Reaktionen mit Protonenübergang auf chemische Reaktionen von sauren mit basischen Lösungen"
+        },
+        {
+          "role": "left-column-subitem",
+          "text": "Neutralisation"
+        }
+      ],
+      "rightColumnContextFragments": [
+        {
+          "role": "right-column-guidance-or-basiskonzept",
+          "text": "Donator-Akzeptor-Prinzip"
+        },
+        {
+          "role": "right-column-guidance-or-basiskonzept",
+          "text": "Salzlösungen, Salze"
+        }
+      ],
+      "authoredOperationalisation": {
+        "sourceParentRemainsWhole": true,
+        "sourceColumnsNotFusedIntoOriginalSentence": true,
+        "practicalCase": null,
+        "H2SO4SpecificTransferPreserved": false
+      }
     },
     {
       "id": "sn-chem-seki-sn-ch-klassenstufe-9-lb2-053-01-dba5485e",
@@ -5198,6 +6676,497 @@
       "rawSourceText": "Einblick in die Vielfalt von Duftstoffen gewinnen Herstellung und Geschichte des Parfüms: experimentelles Untersuchen der Wirkungsdauer von Duftstoffen oder Gewinnung ätherischer Öle",
       "rawSourceSpan": "Klassenstufe 10, Duft- und Aromastoffe, PDF-S. 36",
       "rawParentBulletText": "Einblick in die Vielfalt von Duftstoffen gewinnen Herstellung und Geschichte des Parfüms"
+    },
+    {
+      "id": "sn-chemistry-seki-process-standard-kl7-lb1-protokollieren",
+      "passageId": "sn-chemistry-seki-process:klasse7-lb1-untersuchen-von-stoffen",
+      "topicCode": "Klasse7 LB1 Untersuchen von Stoffen",
+      "title": "KL7-LB1-Protokollieren: Protokollieren von Experimenten",
+      "description": "Protokollieren von Experimenten",
+      "sourceDocumentKey": "SN-CH-2025",
+      "sourceText": "Protokollieren von Experimenten",
+      "parentBulletText": "Beherrschen von einfachen Verfahren im Umgang mit Chemikalien, Geräten und dem Brenner",
+      "sourceRef": "Lehrplan Gymnasium Chemie Sachsen 2004/2007/2009/2011/2019/2022/2025; physical PDF18; Klasse7 LB1 Untersuchen von Stoffen; KL7-LB1-Protokollieren.",
+      "sourceSpan": {
+        "passageId": "sn-chemistry-seki-process:klasse7-lb1-untersuchen-von-stoffen",
+        "label": "physical PDF18, Klasse7 LB1 Untersuchen von Stoffen, KL7-LB1-Protokollieren"
+      },
+      "courseLevel": "unspecified",
+      "granularity": "officialCompleteUnnumberedClause",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekI",
+        "course:unspecified"
+      ],
+      "metadata": {
+        "officialStandardCode": null,
+        "localLocatorLabel": "KL7-LB1-Protokollieren",
+        "officiallyNumbered": false,
+        "physicalPdfPage": 18,
+        "extractionMethod": "Author read whole primary section; complete clause, line wrapping only normalized; inactive additive candidate; no independent review yet.",
+        "stageCourseBoundary": "Klasse7 LB1 / Klasse8 LB1 as located; no SekII or full practical credit."
+      }
+    },
+    {
+      "id": "sn-chemistry-gymnasium-general-competence-methods",
+      "passageId": "sn-chemistry-gymnasium-general:p7-methods",
+      "topicCode": "Methodenbewusstsein",
+      "title": "Methodenbewusstsein: methods",
+      "description": "Sie erwerben Wissen über die Gültigkeitsbedingungen spezifischer Erkenntnismethoden und lernen, dass Erkenntnisse von den eingesetzten Methoden abhängig sind. Dabei entwickeln sie ein differenziertes Weltverständnis.",
+      "sourceDocumentKey": "SN-CH-2025",
+      "sourceText": "Sie erwerben Wissen über die Gültigkeitsbedingungen spezifischer Erkenntnismethoden und lernen, dass Erkenntnisse von den eingesetzten Methoden abhängig sind. Dabei entwickeln sie ein differenziertes Weltverständnis.",
+      "parentBulletText": "Methodenbewusstsein\nSie erwerben Wissen über die Gültigkeitsbedingungen spezifischer Erkenntnismethoden und lernen, dass Erkenntnisse von den eingesetzten Methoden abhängig sind. Dabei entwickeln sie ein differenziertes Weltverständnis.",
+      "sourceRef": "Lehrplan Gymnasium Chemie Sachsen 2025, physical PDF7, printed VII, Methodenbewusstsein",
+      "sourceSpan": {
+        "passageId": "sn-chemistry-gymnasium-general:p7-methods",
+        "label": "physical PDF7, printed VII, Methodenbewusstsein"
+      },
+      "courseLevel": "unspecified",
+      "granularity": "officialCompleteUnnumberedCompetenceDescription",
+      "tags": [
+        "source:sachsen",
+        "subject:Chemie",
+        "jurisdiction:DE-SN",
+        "sourceScope:GymnasiumGeneral",
+        "sourceDocument:SN-CH-2025"
+      ],
+      "metadata": {
+        "officiallyNumbered": false,
+        "officialStandardCode": null,
+        "localLocatorKey": "methods",
+        "physicalPdfPage": 7,
+        "printedPage": "VII",
+        "officialScope": "General Gymnasium or general Chemistry objectives, differentiated progressively by class/course; not a numbered or course-final standard.",
+        "stageCourseBoundary": "Official Gymnasium-wide general objectives/competence descriptions in this Chemistry curriculum, developed progressively and concretized in each subject. They are not numbered chemistry end-of-stage standards, not an independent GK/LK graduation requirement, and do not remove the specific class/course or experimental duties. Proposed once in the existing SekI foundational source inventory from this same whole document; official general scope is retained explicitly. Current CrossStage GK/LK view labels do not change that scope.",
+        "extractionMethod": "Actual whole primary section and six own page renders read; complete selected paragraph/bullet/sentence, line wraps only normalized. Inactive author candidate, independent review pending.",
+        "sourceTextIsWholeSelectedUnit": true,
+        "isolatedGlossaryVerbUsed": false
+      }
+    },
+    {
+      "id": "sn-chemistry-gymnasium-general-competence-information-techniques",
+      "passageId": "sn-chemistry-gymnasium-general:p12-information-techniques",
+      "topicCode": "Lernen lernen / Techniken",
+      "title": "Lernen lernen / Techniken: information-techniques",
+      "description": "Techniken der Beschaffung, Überprüfung, Verarbeitung und Aufbereitung von Informationen (z. B. Lese-, Schreib-, Mnemo-, Recherche-, Strukturierungs-, Visualisierungs- und Präsentationstechniken)",
+      "sourceDocumentKey": "SN-CH-2025",
+      "sourceText": "Techniken der Beschaffung, Überprüfung, Verarbeitung und Aufbereitung von Informationen (z. B. Lese-, Schreib-, Mnemo-, Recherche-, Strukturierungs-, Visualisierungs- und Präsentationstechniken)",
+      "parentBulletText": "Um diese genannten Strategien einsetzen zu können, müssen die Schüler konkrete Lern- und Arbeitstechniken erwerben. Diese sind:\nTechniken der Beschaffung, Überprüfung, Verarbeitung und Aufbereitung von Informationen (z. B. Lese-, Schreib-, Mnemo-, Recherche-, Strukturierungs-, Visualisierungs- und Präsentationstechniken)",
+      "sourceRef": "Lehrplan Gymnasium Chemie Sachsen 2025, physical PDF12, printed XII, Lernen lernen / Techniken",
+      "sourceSpan": {
+        "passageId": "sn-chemistry-gymnasium-general:p12-information-techniques",
+        "label": "physical PDF12, printed XII, Lernen lernen / Techniken"
+      },
+      "courseLevel": "unspecified",
+      "granularity": "officialCompleteUnnumberedCompetenceDescription",
+      "tags": [
+        "source:sachsen",
+        "subject:Chemie",
+        "jurisdiction:DE-SN",
+        "sourceScope:GymnasiumGeneral",
+        "sourceDocument:SN-CH-2025"
+      ],
+      "metadata": {
+        "officiallyNumbered": false,
+        "officialStandardCode": null,
+        "localLocatorKey": "information-techniques",
+        "physicalPdfPage": 12,
+        "printedPage": "XII",
+        "officialScope": "General Gymnasium or general Chemistry objectives, differentiated progressively by class/course; not a numbered or course-final standard.",
+        "stageCourseBoundary": "Official Gymnasium-wide general objectives/competence descriptions in this Chemistry curriculum, developed progressively and concretized in each subject. They are not numbered chemistry end-of-stage standards, not an independent GK/LK graduation requirement, and do not remove the specific class/course or experimental duties. Proposed once in the existing SekI foundational source inventory from this same whole document; official general scope is retained explicitly. Current CrossStage GK/LK view labels do not change that scope.",
+        "extractionMethod": "Actual whole primary section and six own page renders read; complete selected paragraph/bullet/sentence, line wraps only normalized. Inactive author candidate, independent review pending.",
+        "sourceTextIsWholeSelectedUnit": true,
+        "isolatedGlossaryVerbUsed": false
+      }
+    },
+    {
+      "id": "sn-chemistry-gymnasium-general-competence-experiment-results-hypotheses",
+      "passageId": "sn-chemistry-gymnasium-general:p13-experiment-results-hypotheses",
+      "topicCode": "Ziele und Aufgaben des Faches Chemie / Beitrag zur allgemeinen Bildung",
+      "title": "Ziele und Aufgaben des Faches Chemie / Beitrag zur allgemeinen Bildung: experiment-results-hypotheses",
+      "description": "Besondere Bedeutung kommt dem Experiment als Methode der naturwissenschaftlichen Erkenntnisgewinnung zu. Es erfordert eine präzise Fragestellung, exaktes Beobachten und erzieht zu objektiver, unvoreingenommener Beschreibung der Phänomene. Kritisches Analysieren und Deuten der Ergebnisse fördert das Abstraktionsvermögen; die experimentelle Überprüfung der Arbeitshypothesen entwickelt die Problemlösefähigkeit. Durch individuelles und gemeinsames Lernen entwickeln die Schüler sowohl die Kommunikations- und Teamfähigkeit als auch Beharrlichkeit, Selbstständigkeit, Gewissenhaftigkeit, Genauigkeit und Zielstrebigkeit.",
+      "sourceDocumentKey": "SN-CH-2025",
+      "sourceText": "Besondere Bedeutung kommt dem Experiment als Methode der naturwissenschaftlichen Erkenntnisgewinnung zu. Es erfordert eine präzise Fragestellung, exaktes Beobachten und erzieht zu objektiver, unvoreingenommener Beschreibung der Phänomene. Kritisches Analysieren und Deuten der Ergebnisse fördert das Abstraktionsvermögen; die experimentelle Überprüfung der Arbeitshypothesen entwickelt die Problemlösefähigkeit. Durch individuelles und gemeinsames Lernen entwickeln die Schüler sowohl die Kommunikations- und Teamfähigkeit als auch Beharrlichkeit, Selbstständigkeit, Gewissenhaftigkeit, Genauigkeit und Zielstrebigkeit.",
+      "parentBulletText": "Ziele und Aufgaben des Faches Chemie / Beitrag zur allgemeinen Bildung\nBesondere Bedeutung kommt dem Experiment als Methode der naturwissenschaftlichen Erkenntnisgewinnung zu. Es erfordert eine präzise Fragestellung, exaktes Beobachten und erzieht zu objektiver, unvoreingenommener Beschreibung der Phänomene. Kritisches Analysieren und Deuten der Ergebnisse fördert das Abstraktionsvermögen; die experimentelle Überprüfung der Arbeitshypothesen entwickelt die Problemlösefähigkeit. Durch individuelles und gemeinsames Lernen entwickeln die Schüler sowohl die Kommunikations- und Teamfähigkeit als auch Beharrlichkeit, Selbstständigkeit, Gewissenhaftigkeit, Genauigkeit und Zielstrebigkeit.",
+      "sourceRef": "Lehrplan Gymnasium Chemie Sachsen 2025, physical PDF13, printed 1, Ziele und Aufgaben des Faches Chemie / Beitrag zur allgemeinen Bildung",
+      "sourceSpan": {
+        "passageId": "sn-chemistry-gymnasium-general:p13-experiment-results-hypotheses",
+        "label": "physical PDF13, printed 1, Ziele und Aufgaben des Faches Chemie / Beitrag zur allgemeinen Bildung"
+      },
+      "courseLevel": "unspecified",
+      "granularity": "officialCompleteUnnumberedCompetenceDescription",
+      "tags": [
+        "source:sachsen",
+        "subject:Chemie",
+        "jurisdiction:DE-SN",
+        "sourceScope:GymnasiumGeneral",
+        "sourceDocument:SN-CH-2025"
+      ],
+      "metadata": {
+        "officiallyNumbered": false,
+        "officialStandardCode": null,
+        "localLocatorKey": "experiment-results-hypotheses",
+        "physicalPdfPage": 13,
+        "printedPage": "1",
+        "officialScope": "General Gymnasium or general Chemistry objectives, differentiated progressively by class/course; not a numbered or course-final standard.",
+        "stageCourseBoundary": "Official Gymnasium-wide general objectives/competence descriptions in this Chemistry curriculum, developed progressively and concretized in each subject. They are not numbered chemistry end-of-stage standards, not an independent GK/LK graduation requirement, and do not remove the specific class/course or experimental duties. Proposed once in the existing SekI foundational source inventory from this same whole document; official general scope is retained explicitly. Current CrossStage GK/LK view labels do not change that scope.",
+        "extractionMethod": "Actual whole primary section and six own page renders read; complete selected paragraph/bullet/sentence, line wraps only normalized. Inactive author candidate, independent review pending.",
+        "sourceTextIsWholeSelectedUnit": true,
+        "isolatedGlossaryVerbUsed": false
+      }
+    },
+    {
+      "id": "sn-chemistry-gymnasium-general-competence-chemical-argumentation",
+      "passageId": "sn-chemistry-gymnasium-general:p13-subject-goals",
+      "topicCode": "Ziele und Aufgaben des Faches Chemie / allgemeine fachliche Ziele",
+      "title": "Ziele und Aufgaben des Faches Chemie / allgemeine fachliche Ziele: chemical-argumentation",
+      "description": "Entwickeln der Fähigkeit zum chemisch kompetenten Kommunizieren unter angemessener Nutzung von Fachsprache und fachtypischen Darstellungs- und Argumentationsstrukturen",
+      "sourceDocumentKey": "SN-CH-2025",
+      "sourceText": "Entwickeln der Fähigkeit zum chemisch kompetenten Kommunizieren unter angemessener Nutzung von Fachsprache und fachtypischen Darstellungs- und Argumentationsstrukturen",
+      "parentBulletText": "Ziele und Aufgaben des Faches Chemie / allgemeine fachliche Ziele\nEntwickeln der Fähigkeit zum chemisch kompetenten Kommunizieren unter angemessener Nutzung von Fachsprache und fachtypischen Darstellungs- und Argumentationsstrukturen",
+      "sourceRef": "Lehrplan Gymnasium Chemie Sachsen 2025, physical PDF13, printed 1, Ziele und Aufgaben des Faches Chemie / allgemeine fachliche Ziele",
+      "sourceSpan": {
+        "passageId": "sn-chemistry-gymnasium-general:p13-subject-goals",
+        "label": "physical PDF13, printed 1, Ziele und Aufgaben des Faches Chemie / allgemeine fachliche Ziele"
+      },
+      "courseLevel": "unspecified",
+      "granularity": "officialCompleteUnnumberedCompetenceDescription",
+      "tags": [
+        "source:sachsen",
+        "subject:Chemie",
+        "jurisdiction:DE-SN",
+        "sourceScope:GymnasiumGeneral",
+        "sourceDocument:SN-CH-2025"
+      ],
+      "metadata": {
+        "officiallyNumbered": false,
+        "officialStandardCode": null,
+        "localLocatorKey": "chemical-argumentation",
+        "physicalPdfPage": 13,
+        "printedPage": "1",
+        "officialScope": "General Gymnasium or general Chemistry objectives, differentiated progressively by class/course; not a numbered or course-final standard.",
+        "stageCourseBoundary": "Official Gymnasium-wide general objectives/competence descriptions in this Chemistry curriculum, developed progressively and concretized in each subject. They are not numbered chemistry end-of-stage standards, not an independent GK/LK graduation requirement, and do not remove the specific class/course or experimental duties. Proposed once in the existing SekI foundational source inventory from this same whole document; official general scope is retained explicitly. Current CrossStage GK/LK view labels do not change that scope.",
+        "extractionMethod": "Actual whole primary section and six own page renders read; complete selected paragraph/bullet/sentence, line wraps only normalized. Inactive author candidate, independent review pending.",
+        "sourceTextIsWholeSelectedUnit": true,
+        "isolatedGlossaryVerbUsed": false
+      }
+    },
+    {
+      "id": "sn-chemistry-gymnasium-general-competence-criteria-assessment",
+      "passageId": "sn-chemistry-gymnasium-general:p13-subject-goals",
+      "topicCode": "Ziele und Aufgaben des Faches Chemie / allgemeine fachliche Ziele",
+      "title": "Ziele und Aufgaben des Faches Chemie / allgemeine fachliche Ziele: criteria-assessment",
+      "description": "Entwickeln der Fähigkeit, Sachverhalte kriteriengeleitet zu beurteilen sowie Entscheidungen und deren Folgen zu bewerten, als Voraussetzung für eine kompetente Teilnahme am gesellschaftlichen Diskurs über Naturwissenschaft und Technik",
+      "sourceDocumentKey": "SN-CH-2025",
+      "sourceText": "Entwickeln der Fähigkeit, Sachverhalte kriteriengeleitet zu beurteilen sowie Entscheidungen und deren Folgen zu bewerten, als Voraussetzung für eine kompetente Teilnahme am gesellschaftlichen Diskurs über Naturwissenschaft und Technik",
+      "parentBulletText": "Ziele und Aufgaben des Faches Chemie / allgemeine fachliche Ziele\nEntwickeln der Fähigkeit, Sachverhalte kriteriengeleitet zu beurteilen sowie Entscheidungen und deren Folgen zu bewerten, als Voraussetzung für eine kompetente Teilnahme am gesellschaftlichen Diskurs über Naturwissenschaft und Technik",
+      "sourceRef": "Lehrplan Gymnasium Chemie Sachsen 2025, physical PDF13, printed 1, Ziele und Aufgaben des Faches Chemie / allgemeine fachliche Ziele",
+      "sourceSpan": {
+        "passageId": "sn-chemistry-gymnasium-general:p13-subject-goals",
+        "label": "physical PDF13, printed 1, Ziele und Aufgaben des Faches Chemie / allgemeine fachliche Ziele"
+      },
+      "courseLevel": "unspecified",
+      "granularity": "officialCompleteUnnumberedCompetenceDescription",
+      "tags": [
+        "source:sachsen",
+        "subject:Chemie",
+        "jurisdiction:DE-SN",
+        "sourceScope:GymnasiumGeneral",
+        "sourceDocument:SN-CH-2025"
+      ],
+      "metadata": {
+        "officiallyNumbered": false,
+        "officialStandardCode": null,
+        "localLocatorKey": "criteria-assessment",
+        "physicalPdfPage": 13,
+        "printedPage": "1",
+        "officialScope": "General Gymnasium or general Chemistry objectives, differentiated progressively by class/course; not a numbered or course-final standard.",
+        "stageCourseBoundary": "Official Gymnasium-wide general objectives/competence descriptions in this Chemistry curriculum, developed progressively and concretized in each subject. They are not numbered chemistry end-of-stage standards, not an independent GK/LK graduation requirement, and do not remove the specific class/course or experimental duties. Proposed once in the existing SekI foundational source inventory from this same whole document; official general scope is retained explicitly. Current CrossStage GK/LK view labels do not change that scope.",
+        "extractionMethod": "Actual whole primary section and six own page renders read; complete selected paragraph/bullet/sentence, line wraps only normalized. Inactive author candidate, independent review pending.",
+        "sourceTextIsWholeSelectedUnit": true,
+        "isolatedGlossaryVerbUsed": false
+      }
+    },
+    {
+      "id": "sn-chemistry-gymnasium-general-competence-chemical-media-information",
+      "passageId": "sn-chemistry-gymnasium-general:p14-chemical-media-information",
+      "topicCode": "Ziele und Aufgaben des Faches Chemie / didaktische Grundsätze",
+      "title": "Ziele und Aufgaben des Faches Chemie / didaktische Grundsätze: chemical-media-information",
+      "description": "Die Entwicklung von Medienkompetenz im Umgang mit verschiedenen traditionellen und digitalen Medien zur Wissensaneignung, Übung und Informationsbeschaffung ist wichtiger Bestandteil des Lehr- und Lernprozesses.",
+      "sourceDocumentKey": "SN-CH-2025",
+      "sourceText": "Die Entwicklung von Medienkompetenz im Umgang mit verschiedenen traditionellen und digitalen Medien zur Wissensaneignung, Übung und Informationsbeschaffung ist wichtiger Bestandteil des Lehr- und Lernprozesses.",
+      "parentBulletText": "Ziele und Aufgaben des Faches Chemie / didaktische Grundsätze\nDie Entwicklung von Medienkompetenz im Umgang mit verschiedenen traditionellen und digitalen Medien zur Wissensaneignung, Übung und Informationsbeschaffung ist wichtiger Bestandteil des Lehr- und Lernprozesses.",
+      "sourceRef": "Lehrplan Gymnasium Chemie Sachsen 2025, physical PDF14, printed 2, Ziele und Aufgaben des Faches Chemie / didaktische Grundsätze",
+      "sourceSpan": {
+        "passageId": "sn-chemistry-gymnasium-general:p14-chemical-media-information",
+        "label": "physical PDF14, printed 2, Ziele und Aufgaben des Faches Chemie / didaktische Grundsätze"
+      },
+      "courseLevel": "unspecified",
+      "granularity": "officialCompleteDidacticCompetenceSentence",
+      "tags": [
+        "source:sachsen",
+        "subject:Chemie",
+        "jurisdiction:DE-SN",
+        "sourceScope:GymnasiumGeneral",
+        "sourceDocument:SN-CH-2025"
+      ],
+      "metadata": {
+        "officiallyNumbered": false,
+        "officialStandardCode": null,
+        "localLocatorKey": "chemical-media-information",
+        "physicalPdfPage": 14,
+        "printedPage": "2",
+        "officialScope": "General Gymnasium or general Chemistry objectives, differentiated progressively by class/course; not a numbered or course-final standard.",
+        "stageCourseBoundary": "Official Gymnasium-wide general objectives/competence descriptions in this Chemistry curriculum, developed progressively and concretized in each subject. They are not numbered chemistry end-of-stage standards, not an independent GK/LK graduation requirement, and do not remove the specific class/course or experimental duties. Proposed once in the existing SekI foundational source inventory from this same whole document; official general scope is retained explicitly. Current CrossStage GK/LK view labels do not change that scope.",
+        "extractionMethod": "Actual whole primary section and six own page renders read; complete selected paragraph/bullet/sentence, line wraps only normalized. Inactive author candidate, independent review pending.",
+        "sourceTextIsWholeSelectedUnit": true,
+        "isolatedGlossaryVerbUsed": false
+      }
+    },
+    {
+      "id": "sn-chemistry-seki-process-standard-kl7-ziel-sicherheit",
+      "passageId": "sn-chemistry-seki-process-standard-kl7-ziel-sicherheit:whole-primary-context",
+      "topicCode": "Kl7 goals safety",
+      "title": "Kl7 goals safety: Sie kennen und beachten geltende Bestimmungen des Gesundheits-, Arbeits- und Brandschutzes im Umgang mit Chemikalien und Geräten im Chemieunterricht.",
+      "description": "Sie kennen und beachten geltende Bestimmungen des Gesundheits-, Arbeits- und Brandschutzes im Umgang mit Chemikalien und Geräten im Chemieunterricht.",
+      "sourceDocumentKey": "SN-CH-2025",
+      "sourceText": "Sie kennen und beachten geltende Bestimmungen des Gesundheits-, Arbeits- und Brandschutzes im Umgang mit Chemikalien und Geräten im Chemieunterricht.",
+      "parentBulletText": "Sie kennen und beachten geltende Bestimmungen des Gesundheits-, Arbeits- und Brandschutzes im Umgang mit Chemikalien und Geräten im Chemieunterricht.",
+      "sourceRef": "Lehrplan Gymnasium Chemie Sachsen 2004/2007/2009/2011/2019/2022/2025; physical PDF17; Kl7 goals safety",
+      "sourceSpan": {
+        "passageId": "sn-chemistry-seki-process-standard-kl7-ziel-sicherheit:whole-primary-context",
+        "label": "Kl7 goals safety, physical PDF17"
+      },
+      "courseLevel": "unspecified",
+      "granularity": "officialCompleteOperatorClause",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekI",
+        "course:unspecified"
+      ],
+      "metadata": {
+        "localLocatorLabel": "Kl7 goals safety",
+        "officiallyNumbered": false,
+        "physicalPdfPage": 17,
+        "extractionMethod": "Own author read complete primary operator and whole page; line wrapping normalized. Inactive, independent review required; no whole-source approval.",
+        "stageCourseBoundary": "DE-SN SekI, Klasse7 objectives physical17/printed5, compulsory local grade goals; not LK-only objectives; technical CrossStage/GK/LK target placement does not rename the official grade/level or create an official upper-course duty.",
+        "currentAcceptedPartialRelations": {
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+            "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248",
+            "bytes": 731348
+          },
+          "bindings": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/21",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "authorInactiveWordingIsHistoricalSnapshot": true,
+          "wholeSourceApproval": false
+        }
+      }
+    },
+    {
+      "id": "sn-chemistry-seki-process-standard-kl7-ziel-umgang-entsorgung",
+      "passageId": "sn-chemistry-seki-process-standard-kl7-ziel-umgang-entsorgung:whole-primary-context",
+      "topicCode": "Kl7 goals handling/disposal",
+      "title": "Kl7 goals handling/disposal: Durch den sachgerechten Umgang mit Stoffen, der die Vermeidung und Entsorgung von Schadstoffen einschließt, erkennen sie an Beispielen die Verantwortung des Menschen für den Schutz der Umwelt.",
+      "description": "Durch den sachgerechten Umgang mit Stoffen, der die Vermeidung und Entsorgung von Schadstoffen einschließt, erkennen sie an Beispielen die Verantwortung des Menschen für den Schutz der Umwelt.",
+      "sourceDocumentKey": "SN-CH-2025",
+      "sourceText": "Durch den sachgerechten Umgang mit Stoffen, der die Vermeidung und Entsorgung von Schadstoffen einschließt, erkennen sie an Beispielen die Verantwortung des Menschen für den Schutz der Umwelt.",
+      "parentBulletText": "Durch den sachgerechten Umgang mit Stoffen, der die Vermeidung und Entsorgung von Schadstoffen einschließt, erkennen sie an Beispielen die Verantwortung des Menschen für den Schutz der Umwelt.",
+      "sourceRef": "Lehrplan Gymnasium Chemie Sachsen 2004/2007/2009/2011/2019/2022/2025; physical PDF17; Kl7 goals handling/disposal",
+      "sourceSpan": {
+        "passageId": "sn-chemistry-seki-process-standard-kl7-ziel-umgang-entsorgung:whole-primary-context",
+        "label": "Kl7 goals handling/disposal, physical PDF17"
+      },
+      "courseLevel": "unspecified",
+      "granularity": "officialCompleteOperatorClause",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekI",
+        "course:unspecified"
+      ],
+      "metadata": {
+        "localLocatorLabel": "Kl7 goals handling/disposal",
+        "officiallyNumbered": false,
+        "physicalPdfPage": 17,
+        "extractionMethod": "Own author read complete primary operator and whole page; line wrapping normalized. Inactive, independent review required; no whole-source approval.",
+        "stageCourseBoundary": "DE-SN SekI, Klasse7 objectives physical17/printed5, compulsory local grade goals; not LK-only objectives; technical CrossStage/GK/LK target placement does not rename the official grade/level or create an official upper-course duty.",
+        "currentAcceptedPartialRelations": {
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+            "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248",
+            "bytes": 731348
+          },
+          "bindings": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/69",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "authorInactiveWordingIsHistoricalSnapshot": true,
+          "wholeSourceApproval": false
+        }
+      }
+    },
+    {
+      "id": "sn-chemistry-seki-process-standard-kl7-lb1-simple-experiments",
+      "passageId": "sn-chemistry-seki-process-standard-kl7-lb1-simple-experiments:whole-primary-context",
+      "topicCode": "Kl7 LB1 complete experiment bullet",
+      "title": "Kl7 LB1 complete experiment bullet: Durchführen, Beobachten und Auswerten von einfachen Experimenten",
+      "description": "Durchführen, Beobachten und Auswerten von einfachen Experimenten",
+      "sourceDocumentKey": "SN-CH-2025",
+      "sourceText": "Durchführen, Beobachten und Auswerten von einfachen Experimenten",
+      "parentBulletText": "Durchführen, Beobachten und Auswerten von einfachen Experimenten",
+      "sourceRef": "Lehrplan Gymnasium Chemie Sachsen 2004/2007/2009/2011/2019/2022/2025; physical PDF18; Kl7 LB1 complete experiment bullet",
+      "sourceSpan": {
+        "passageId": "sn-chemistry-seki-process-standard-kl7-lb1-simple-experiments:whole-primary-context",
+        "label": "Kl7 LB1 complete experiment bullet, physical PDF18"
+      },
+      "courseLevel": "unspecified",
+      "granularity": "officialCompleteOperatorClause",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekI",
+        "course:unspecified"
+      ],
+      "metadata": {
+        "localLocatorLabel": "Kl7 LB1 complete experiment bullet",
+        "officiallyNumbered": false,
+        "physicalPdfPage": 18,
+        "extractionMethod": "Own author read complete primary operator and whole page; line wrapping normalized. Inactive, independent review required; no whole-source approval.",
+        "stageCourseBoundary": "DE-SN SekI, Klasse7 LB1 physical18/printed6, SE column and parent Beherrschen simple methods retained; technical CrossStage/GK/LK target placement does not rename the official grade/level or create an official upper-course duty.",
+        "currentAcceptedPartialRelations": {
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+            "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248",
+            "bytes": 731348
+          },
+          "bindings": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/55",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "authorInactiveWordingIsHistoricalSnapshot": true,
+          "wholeSourceApproval": false
+        }
+      }
+    },
+    {
+      "id": "sn-chemistry-seki-klasse9-goal-structure-properties-models",
+      "passageId": "sn-chemistry-seki-klasse9-goal-structure-properties-models:complete-primary-addition",
+      "topicCode": "Klassenstufe9 Ziele",
+      "title": "Sie sind in der Lage, ausgewählte Stoffeigenschaften mit Hilfe der Modellvorstellungen über die Struktur organischer Moleküle, insbesondere über charakteristische Strukturmerkmale und inter- und intramolekulare Wechselwirkungen zu erklären.",
+      "description": "Sie sind in der Lage, ausgewählte Stoffeigenschaften mit Hilfe der Modellvorstellungen über die Struktur organischer Moleküle, insbesondere über charakteristische Strukturmerkmale und inter- und intramolekulare Wechselwirkungen zu erklären.",
+      "sourceDocumentKey": "SN-CH-2025",
+      "sourceText": "Sie sind in der Lage, ausgewählte Stoffeigenschaften mit Hilfe der Modellvorstellungen über die Struktur organischer Moleküle, insbesondere über charakteristische Strukturmerkmale und inter- und intramolekulare Wechselwirkungen zu erklären.",
+      "parentBulletText": "Sie sind in der Lage, ausgewählte Stoffeigenschaften mit Hilfe der Modellvorstellungen über die Struktur organischer Moleküle, insbesondere über charakteristische Strukturmerkmale und inter- und intramolekulare Wechselwirkungen zu erklären.",
+      "sourceRef": "Lehrplan Gymnasium Chemie Sachsen 2004/2007/2009/2011/2019/2022/2025, physical PDF27, Klassenstufe9 Ziele, fachspezifische Arbeitsweisen, whole sentence",
+      "sourceSpan": {
+        "passageId": "sn-chemistry-seki-klasse9-goal-structure-properties-models:complete-primary-addition",
+        "label": "physical PDF27, Klassenstufe9 Ziele, fachspezifische Arbeitsweisen, whole sentence"
+      },
+      "courseLevel": "GK_LK",
+      "granularity": "completeSelectedOfficialClause",
+      "tags": [
+        "jurisdiction:DE-SN",
+        "stage:SekI",
+        "course:GK_LK"
+      ],
+      "metadata": {
+        "physicalPdfPage": 27,
+        "actualWholeClauseExtracted": true,
+        "officiallyNumbered": false,
+        "authorStatus": "independently accepted selected partial contributions; no whole official source approval",
+        "scopeBoundary": "Whole original subject/stage/course context retained; this selected general operator does not prescribe the own concrete substance/example, prove actual theme choice or complete the whole official standard.",
+        "historicalAuthorStatus": "inactive-extraction-and-partial-binding-candidate; independent source review pending",
+        "currentAcceptedPartialRelations": {
+          "acceptedRefs": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-first-twenty-source-informed-independent-a-20261018-v1/ACCEPTED.one-hundred-sixty-four-bounded-direct-relations.with-explicit-context-conditions.json",
+              "sha256": "5af30ee6b2cb919a8445f2668c963b81d22583cb241a8d64f8df469f93da06cf",
+              "bytes": 735256,
+              "jsonPointer": "/records/101"
+            }
+          ],
+          "wholeSourceApproval": false,
+          "newScientificDecisionsByTechnicalIntegrator": 0
+        }
+      },
+      "rawSourceText": "Sie sind in der Lage, ausgewählte Stoffeigenschaften mit Hilfe der Modellvorstellungen über die Struktur organischer Moleküle, insbesondere über charakteristische Strukturmerkmale und inter- und intramolekulare Wechselwirkungen zu erklären."
+    },
+    {
+      "id": "sn-chemistry-seki-process-standard-kl9-quantitative-mathematical-relations",
+      "passageId": "sn-chemistry-seki-process-standard-kl9-quantitative-mathematical-relations:whole-primary-context",
+      "topicCode": "KL9-ZIELE-K-QUANTITATIVE-RELATIONS",
+      "title": "Klasse 9: Quantitative chemische Aussagen mathematisch interpretieren",
+      "description": "Bei quantitativen Betrachtungen können die Schüler verbale Aussagen zu chemischen Sachverhalten in mathematische Beziehungen umsetzen. Sie können Größen, Einheiten und Größengleichungen in diesem Zusammenhang interpretieren.",
+      "sourceDocumentKey": "SN-CH-2025",
+      "sourceText": "Bei quantitativen Betrachtungen können die Schüler verbale Aussagen zu chemischen Sachverhalten in mathematische Beziehungen umsetzen. Sie können Größen, Einheiten und Größengleichungen in diesem Zusammenhang interpretieren.",
+      "sourceSpan": {
+        "passageId": "sn-chemistry-seki-process-standard-kl9-quantitative-mathematical-relations:whole-primary-context",
+        "label": "Lehrplan Gymnasium Chemie Sachsen 2004/2007/2009/2011/2019/2022/2025, physical PDF p. 27; Klasse 9"
+      },
+      "sourceRef": "Lehrplan Gymnasium Chemie Sachsen 2004/2007/2009/2011/2019/2022/2025, physical PDF p. 27",
+      "courseLevel": "unspecified",
+      "granularity": "completeOfficialMethodParagraph",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-SN",
+        "stage:SekI",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-whole-selected-official-unit-from-actual-local-PDF",
+        "physicalPageOneBased": 27,
+        "officialOperatorCode": null,
+        "scope": {
+          "stage": "SekI",
+          "sourcePhase": "Klasse 9",
+          "courseLevel": "unspecified",
+          "scopeBoundary": "General chemistry method within the stated lower-secondary scope; no official whole constant-composition-law mandate."
+        },
+        "notNewOfficialLawGoal": true,
+        "noIndependentReviewInThisAuthorTransport": true
+      }
     }
-  ]
+  ],
+  "c7QuantitativeDataPartialIntegration": {
+    "technicalPackagePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-seven-data-source-reviewed-integration-technical-20261018-v1",
+    "foreignAuthorSeal": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-eight-constant-composition-general-data-source-author-successor-20261018-v1/SEAL.inactive-eight-general-data-source-author-successor.json",
+      "sha256": "47f2aa9898e1279f5f4184f421839303c9e374962f0e5254012b412fec88d209",
+      "bytes": 4600
+    },
+    "independentSourceFirst": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-eight-constant-composition-general-data-source-informed-independent-a-20261018-v1/FIRST.independent-a.seven-quantitative-data-source-contributions.json",
+      "sha256": "8854fffa6b2ea3f8e37b40ac01d9ff62e9c7fd9dc8f820848ff47910ba6777f4",
+      "bytes": 36758
+    },
+    "independentSourceSeal": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-eight-constant-composition-general-data-source-informed-independent-a-20261018-v1/SEAL.independent-a.C7-seven-quantitative-source-successor.json",
+      "sha256": "fdd5b7f42626545589262c1b576871a541674a98ae6818a02c6ab5820ae38c0a",
+      "bytes": 4862
+    },
+    "wholeSourceCoverageEstablished": false,
+    "officialWholeConstantCompositionRequirement": false,
+    "newWholeSourceApprovals": 0,
+    "newScientificFirstDecisionsByTechnicalIntegrator": 0,
+    "newNativeDPAMVVotes": 0,
+    "actualLearnerExecutionClaim": false,
+    "ownMeasurementExperimentOrDigitalProductClaim": false,
+    "humanApprovalClaim": false,
+    "addedWholeSelectedSourceGoalIds": [
+      "sn-chemistry-seki-process-standard-kl9-quantitative-mathematical-relations"
+    ],
+    "currentSourceInventoryCountBefore": 187,
+    "currentSourceInventoryCountAfter": 188,
+    "allOldSourceGoalsPassagesAndMetadataRetainedExactly": true
+  }
 }

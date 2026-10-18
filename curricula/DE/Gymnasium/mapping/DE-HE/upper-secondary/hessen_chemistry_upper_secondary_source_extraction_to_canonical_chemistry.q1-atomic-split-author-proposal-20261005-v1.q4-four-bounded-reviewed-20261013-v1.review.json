@@ -4,13 +4,15 @@
   "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
   "targetLandscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
   "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_CHEMIE_SEKII_KC2024_CURRENT2026.source-extraction.json",
-  "status": "complete",
+  "status": "machine-assisted-bounded-partial-source-integration",
   "summary": {
-    "sourceGoals": 202,
-    "mappedSourceGoals": 202,
+    "sourceGoals": 219,
+    "mappedSourceGoals": 210,
     "needsCanonicalGoal": 0,
-    "exactMappings": 134,
-    "partialMappings": 68
+    "exactMappings": 131,
+    "partialMappings": 149,
+    "unreviewedSourceGoalsActual": 9,
+    "newWholeSourceApprovals": 0
   },
   "mappings": [
     {
@@ -1353,9 +1355,11 @@
     },
     {
       "legacyGoalId": "he-chem-sekii-q3-3-b10-a01-f814c697",
-      "canonicalGoalId": "b8c8f70f-64cb-50b1-970c-e0c4295da3fb",
-      "matchType": "exact",
-      "reviewDecisionId": "he-chem-sekii-q3-3-b10-a01-f814c697"
+      "canonicalGoalId": "0e3f849b-133d-57da-882c-0d67c3eb05b8",
+      "matchType": "partial",
+      "reviewDecisionId": "he-chem-sekii-q3-3-b10-a01-f814c697",
+      "courseLevelDecision": "LK",
+      "courseLevelRationale": "Author source binding only: original official LK column/Leistungsfach; raw source extraction course field unchanged. HE-LK only"
     },
     {
       "legacyGoalId": "he-chem-sekii-q3-3-b11-a01-b9f47868",
@@ -1377,8 +1381,14 @@
     },
     {
       "legacyGoalId": "he-chem-sekii-q3-4-b02-a01-f1f960ea",
-      "canonicalGoalId": "5a58126e-0c51-5808-be9e-8faa9dae0c32",
-      "matchType": "exact",
+      "canonicalGoalId": "9fef5c29-62bc-5ada-b96b-6885bcb049cb",
+      "matchType": "partial",
+      "reviewDecisionId": "he-chem-sekii-q3-4-b02-a01-f1f960ea"
+    },
+    {
+      "legacyGoalId": "he-chem-sekii-q3-4-b02-a01-f1f960ea",
+      "canonicalGoalId": "25729c34-33d5-553a-a723-046113a7da47",
+      "matchType": "partial",
       "reviewDecisionId": "he-chem-sekii-q3-4-b02-a01-f1f960ea"
     },
     {
@@ -1638,6 +1648,271 @@
       "canonicalGoalId": "02634fdd-c8ba-591a-b240-77129b1bebb8",
       "matchType": "exact",
       "reviewDecisionId": "he-chem-sekii-e-2-b04-a01-803d5801"
+    },
+    {
+      "legacyGoalId": "he-chemistry-sekii-kc2024-current2026-standard-e5",
+      "canonicalGoalId": "9fc800d1-92d1-5ef6-81c1-33960ae034dd",
+      "matchType": "partial",
+      "reviewDecisionId": "he-chemistry-sekii-kc2024-current2026-standard-e5"
+    },
+    {
+      "legacyGoalId": "he-chemistry-sekii-kc2024-current2026-standard-e8",
+      "canonicalGoalId": "7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6",
+      "matchType": "partial",
+      "reviewDecisionId": "he-chemistry-sekii-kc2024-current2026-standard-e8"
+    },
+    {
+      "legacyGoalId": "he-chemistry-sekii-kc2024-current2026-standard-k1",
+      "canonicalGoalId": "5b1bb5d9-07b1-5ba9-b320-cc97be917c60",
+      "matchType": "partial",
+      "reviewDecisionId": "he-chemistry-sekii-kc2024-current2026-standard-k1"
+    },
+    {
+      "legacyGoalId": "he-chemistry-sekii-kc2024-current2026-standard-k2",
+      "canonicalGoalId": "5b1bb5d9-07b1-5ba9-b320-cc97be917c60",
+      "matchType": "partial",
+      "reviewDecisionId": "he-chemistry-sekii-kc2024-current2026-standard-k2"
+    },
+    {
+      "legacyGoalId": "he-chemistry-sekii-kc2024-current2026-standard-k5",
+      "canonicalGoalId": "5b1bb5d9-07b1-5ba9-b320-cc97be917c60",
+      "matchType": "partial",
+      "reviewDecisionId": "he-chemistry-sekii-kc2024-current2026-standard-k5"
+    },
+    {
+      "legacyGoalId": "he-chemistry-sekii-kc2024-current2026-standard-k8",
+      "canonicalGoalId": "5b1bb5d9-07b1-5ba9-b320-cc97be917c60",
+      "matchType": "partial",
+      "reviewDecisionId": "he-chemistry-sekii-kc2024-current2026-standard-k8"
+    },
+    {
+      "legacyGoalId": "he-chemistry-sekii-kc2024-current2026-standard-b3",
+      "canonicalGoalId": "4aa3a130-b517-5ac5-87b2-147fe432cadd",
+      "matchType": "partial",
+      "reviewDecisionId": "he-chemistry-sekii-kc2024-current2026-standard-b3"
+    },
+    {
+      "legacyGoalId": "he-chemistry-sekii-kc2024-current2026-standard-b5",
+      "canonicalGoalId": "431a0f03-f28a-5e56-a61f-000336d0b410",
+      "matchType": "partial",
+      "reviewDecisionId": "he-chemistry-sekii-kc2024-current2026-standard-b5"
+    },
+    {
+      "legacyGoalId": "he-chemistry-sekii-kc2024-current2026-standard-b10",
+      "canonicalGoalId": "2cf86c25-5280-5e7d-8ebb-9f2e6733fbe2",
+      "matchType": "partial",
+      "reviewDecisionId": "he-chemistry-sekii-kc2024-current2026-standard-b10"
+    },
+    {
+      "legacyGoalId": "he-chemistry-sekii-kc2024-current2026-standard-b10",
+      "canonicalGoalId": "9f892457-c4e5-56da-830c-bf6cac0c98d7",
+      "matchType": "partial",
+      "reviewDecisionId": "he-chemistry-sekii-kc2024-current2026-standard-b10"
+    },
+    {
+      "legacyGoalId": "he-chem-sekii-q2-2-b05-a01-8bec290b",
+      "canonicalGoalId": "459724db-9f9a-5967-8d9a-2b6277415275",
+      "matchType": "partial",
+      "reviewDecisionId": "he-chem-sekii-q2-2-b05-a01-8bec290b"
+    },
+    {
+      "legacyGoalId": "he-chemistry-sekii-kc2024-current2026-standard-e5",
+      "canonicalGoalId": "7b39fa19-fec3-575e-9324-a3226b703358",
+      "matchType": "partial",
+      "reviewDecisionId": "he-chemistry-sekii-kc2024-current2026-standard-e5"
+    },
+    {
+      "legacyGoalId": "he-chemistry-sekii-kc2024-current2026-standard-e5",
+      "canonicalGoalId": "d2d735de-bede-5310-8aeb-8bb7562c7b75",
+      "matchType": "partial",
+      "reviewDecisionId": "he-chemistry-sekii-kc2024-current2026-standard-e5"
+    },
+    {
+      "legacyGoalId": "he-chemistry-sekii-kc2024-current2026-standard-e5",
+      "canonicalGoalId": "f79f15c0-e848-5e17-9eb5-26753d35c93b",
+      "matchType": "partial",
+      "reviewDecisionId": "he-chemistry-sekii-kc2024-current2026-standard-e5"
+    },
+    {
+      "legacyGoalId": "he-chemistry-sekii-kc2024-current2026-standard-e10",
+      "canonicalGoalId": "99d41b0f-e958-54cf-a077-9bed1704a303",
+      "matchType": "partial",
+      "reviewDecisionId": "he-chemistry-sekii-kc2024-current2026-standard-e10"
+    },
+    {
+      "legacyGoalId": "he-chemistry-sekii-kc2024-current2026-standard-b12",
+      "canonicalGoalId": "9f892457-c4e5-56da-830c-bf6cac0c98d7",
+      "matchType": "partial",
+      "reviewDecisionId": "he-chemistry-sekii-kc2024-current2026-standard-b12"
+    },
+    {
+      "legacyGoalId": "he-chemistry-sekii-kc2024-current2026-standard-b13",
+      "canonicalGoalId": "9f892457-c4e5-56da-830c-bf6cac0c98d7",
+      "matchType": "partial",
+      "reviewDecisionId": "he-chemistry-sekii-kc2024-current2026-standard-b13"
+    },
+    {
+      "legacyGoalId": "he-chemistry-sekii-kc2024-current2026-standard-b13",
+      "canonicalGoalId": "c21a611c-1069-5b32-b673-4f37a89b094f",
+      "matchType": "partial",
+      "reviewDecisionId": "he-chemistry-sekii-kc2024-current2026-standard-b13"
+    },
+    {
+      "legacyGoalId": "he-chemistry-sekii-kc2024-current2026-standard-e12",
+      "canonicalGoalId": "a0080b5f-13ff-56bc-b8ff-2ff6273e2ec1",
+      "matchType": "partial",
+      "reviewDecisionId": "he-chemistry-sekii-kc2024-current2026-standard-e12"
+    },
+    {
+      "legacyGoalId": "he-chemistry-sekii-kc2024-current2026-standard-e12",
+      "canonicalGoalId": "a8800c36-d13c-5f63-962c-cf18c3795c63",
+      "matchType": "partial",
+      "reviewDecisionId": "he-chemistry-sekii-kc2024-current2026-standard-e12"
+    },
+    {
+      "legacyGoalId": "he-chemistry-sekii-kc2024-current2026-standard-s15",
+      "canonicalGoalId": "a0f6ba09-f072-5887-a797-fa369453c62a",
+      "matchType": "partial",
+      "reviewDecisionId": "he-chemistry-sekii-kc2024-current2026-standard-s15"
+    },
+    {
+      "legacyGoalId": "he-chem-sekii-q2-3-b01-a01-882010ef",
+      "canonicalGoalId": "b44f460b-3399-5c3c-94b2-fa5fc6c027f2",
+      "matchType": "partial",
+      "reviewDecisionId": "he-chem-sekii-q2-3-b01-a01-882010ef"
+    },
+    {
+      "legacyGoalId": "he-chemistry-sekii-kc2024-current2026-standard-s2",
+      "canonicalGoalId": "dfbccd62-1203-5d1b-927d-65a4ca41bbad",
+      "matchType": "partial",
+      "reviewDecisionId": "he-chemistry-sekii-kc2024-current2026-standard-s2"
+    },
+    {
+      "legacyGoalId": "he-chemistry-sekii-kc2024-current2026-standard-e4",
+      "canonicalGoalId": "f79f15c0-e848-5e17-9eb5-26753d35c93b",
+      "matchType": "partial",
+      "reviewDecisionId": "he-chemistry-sekii-kc2024-current2026-standard-e4"
+    },
+    {
+      "legacyGoalId": "he-chemistry-sekii-kc2024-current2026-standard-k1",
+      "canonicalGoalId": "ac8b6c0f-98b2-5092-806d-d9498efbfa35",
+      "matchType": "partial"
+    },
+    {
+      "legacyGoalId": "he-chemistry-sekii-kc2024-current2026-standard-k2",
+      "canonicalGoalId": "ac8b6c0f-98b2-5092-806d-d9498efbfa35",
+      "matchType": "partial"
+    },
+    {
+      "legacyGoalId": "he-chemistry-sekii-kc2024-current2026-standard-e5",
+      "canonicalGoalId": "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+      "matchType": "partial"
+    },
+    {
+      "legacyGoalId": "he-chemistry-sekii-kc2024-current2026-standard-k4",
+      "canonicalGoalId": "36666b4a-97af-51fc-9983-56cdcc7a8229",
+      "matchType": "partial"
+    },
+    {
+      "legacyGoalId": "he-chemistry-sekii-kc2024-current2026-standard-e4",
+      "canonicalGoalId": "42391b16-bbae-5c77-84e1-d488e714167b",
+      "matchType": "partial"
+    },
+    {
+      "legacyGoalId": "he-chemistry-sekii-kc2024-current2026-standard-e5",
+      "canonicalGoalId": "42391b16-bbae-5c77-84e1-d488e714167b",
+      "matchType": "partial"
+    },
+    {
+      "legacyGoalId": "he-chemistry-sekii-kc2024-current2026-standard-e2",
+      "canonicalGoalId": "503dedcb-0efc-5e6b-bbc9-20761a0951f5",
+      "matchType": "partial"
+    },
+    {
+      "legacyGoalId": "he-chemistry-sekii-kc2024-current2026-standard-e3",
+      "canonicalGoalId": "503dedcb-0efc-5e6b-bbc9-20761a0951f5",
+      "matchType": "partial"
+    },
+    {
+      "legacyGoalId": "he-chemistry-sekii-kc2024-current2026-standard-e2",
+      "canonicalGoalId": "75e2eff1-f871-5461-9e3f-26d0b333ce2f",
+      "matchType": "partial"
+    },
+    {
+      "legacyGoalId": "he-chemistry-sekii-kc2024-current2026-standard-e6",
+      "canonicalGoalId": "9e3fae29-84d5-5600-bfb3-82d49ea3f1b5",
+      "matchType": "partial"
+    },
+    {
+      "legacyGoalId": "he-chemistry-sekii-kc2024-current2026-standard-e8",
+      "canonicalGoalId": "9e3fae29-84d5-5600-bfb3-82d49ea3f1b5",
+      "matchType": "partial"
+    },
+    {
+      "legacyGoalId": "he-chem-sekii-q4-2-b02-a01-25c6a09a",
+      "canonicalGoalId": "223e33a4-5545-5332-ac4e-7d7a6cbc587c",
+      "matchType": "partial",
+      "reviewDecisionId": "he-chem-sekii-q4-2-b02-a01-25c6a09a"
+    },
+    {
+      "legacyGoalId": "he-chem-sekii-q4-2-b03-a03-ec5544a3",
+      "canonicalGoalId": "223e33a4-5545-5332-ac4e-7d7a6cbc587c",
+      "matchType": "partial",
+      "reviewDecisionId": "he-chem-sekii-q4-2-b03-a03-ec5544a3"
+    },
+    {
+      "legacyGoalId": "he-chem-sekii-q4-2-b03-a04-7dfd80db",
+      "canonicalGoalId": "223e33a4-5545-5332-ac4e-7d7a6cbc587c",
+      "matchType": "partial",
+      "reviewDecisionId": "he-chem-sekii-q4-2-b03-a04-7dfd80db"
+    },
+    {
+      "legacyGoalId": "he-chem-sekii-e-3-b07-a01-72b742ac",
+      "canonicalGoalId": "a25a19ed-aec3-59cc-ae28-31d98746cb9d",
+      "matchType": "partial",
+      "reviewDecisionId": "he-chem-sekii-e-3-b07-a01-72b742ac"
+    },
+    {
+      "legacyGoalId": "he-chem-sekii-q1-3-b02-a01-16db9321",
+      "canonicalGoalId": "4b9810b0-5d3d-59d8-a948-c3f6dd6303c7",
+      "matchType": "partial",
+      "reviewDecisionId": "he-chem-sekii-q1-3-b02-a01-16db9321"
+    },
+    {
+      "legacyGoalId": "he-chem-sekii-q3-2-b06-a01-b8b0abe5",
+      "canonicalGoalId": "acdfc7d7-6d6b-5a1f-837c-79449c29a305",
+      "matchType": "partial",
+      "reviewDecisionId": "he-chem-sekii-q3-2-b06-a01-b8b0abe5"
+    },
+    {
+      "legacyGoalId": "he-chem-sekii-q3-2-b06-a01-b8b0abe5",
+      "canonicalGoalId": "edcfc5f0-900d-5819-830f-3b14af2bc369",
+      "matchType": "partial",
+      "reviewDecisionId": "he-chem-sekii-q3-2-b06-a01-b8b0abe5"
+    },
+    {
+      "legacyGoalId": "he-chemistry-sekii-kc2024-current2026-standard-s7",
+      "canonicalGoalId": "acdfc7d7-6d6b-5a1f-837c-79449c29a305",
+      "matchType": "partial",
+      "reviewDecisionId": "he-chemistry-sekii-kc2024-current2026-standard-s7"
+    },
+    {
+      "legacyGoalId": "he-chemistry-sekii-kc2024-current2026-standard-s7",
+      "canonicalGoalId": "edcfc5f0-900d-5819-830f-3b14af2bc369",
+      "matchType": "partial",
+      "reviewDecisionId": "he-chemistry-sekii-kc2024-current2026-standard-s7"
+    },
+    {
+      "legacyGoalId": "he-chemistry-sekii-kc2024-current2026-standard-b10",
+      "canonicalGoalId": "e96771d3-fd72-59e6-8f4c-573ef8cbde0a",
+      "matchType": "partial",
+      "reviewDecisionId": "he-chemistry-sekii-kc2024-current2026-standard-b10"
+    },
+    {
+      "legacyGoalId": "he-chem-sekii-q2-2-b01-a01-8c86ec59",
+      "canonicalGoalId": "6eba90b5-d4a6-5625-be61-e7f30f7eb964",
+      "matchType": "partial",
+      "reviewDecisionId": "he-chem-sekii-q2-2-b01-a01-8c86ec59"
     }
   ],
   "decisions": [
@@ -1988,11 +2263,26 @@
       "decision": "mapped",
       "canonicalGoalIds": [
         "dd843c85-bf60-58c3-861b-fb531ba69b17",
-        "91cd4728-b811-562a-970b-18b81dfb4bdf"
+        "91cd4728-b811-562a-970b-18b81dfb4bdf",
+        "a25a19ed-aec3-59cc-ae28-31d98746cb9d"
       ],
       "rationale": "Das Source-Ziel ist inhaltlich durch mehrere kanonische Chemieziele abgedeckt; 1:n ist hier die korrekte Zuordnungsform.",
       "reviewedAt": "2026-05-11",
-      "reviewer": "codex"
+      "reviewer": "codex",
+      "additionalAcceptedPartialContributions": [
+        {
+          "canonicalGoalId": "a25a19ed-aec3-59cc-ae28-31d98746cb9d",
+          "matchType": "partial",
+          "acceptedScientificRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-first-twenty-source-informed-independent-a-20261018-v1/ACCEPTED.one-hundred-sixty-four-bounded-direct-relations.with-explicit-context-conditions.json",
+            "sha256": "5af30ee6b2cb919a8445f2668c963b81d22583cb241a8d64f8df469f93da06cf",
+            "bytes": 735256,
+            "jsonPointer": "/records/132"
+          },
+          "rationale": "Whole P uses provided ethanol physiology/oxidation and contrasting exposure/use cards to explain body effects and bounded risk decisions, separating external use from ingestion. Exact selected official operator: Ethanol: Hydroxygruppe und deren Einfluss auf die Stoffeigenschaften, Wirkung von Ethanol im menschlichen Körper Boundary: No individual diagnosis, safe dose, driving/waiting-time clearance or actual drinking/physiology experiment.",
+          "wholeSourceCompletionFromSingleGoalMasteryAllowed": false
+        }
+      ]
     },
     {
       "sourceGoalId": "he-chem-sekii-e-4-b01-a01-f319e23e",
@@ -2442,11 +2732,26 @@
       "sourceSpan": "Acidität im Zusammenhang mit polaren Bindungen und induktiven Effekten, Mesomeriemodell am Beispiel des Carboxylations",
       "decision": "mapped",
       "canonicalGoalIds": [
-        "ca216bc6-5205-5b46-abbd-fd5628e4ca5b"
+        "ca216bc6-5205-5b46-abbd-fd5628e4ca5b",
+        "4b9810b0-5d3d-59d8-a948-c3f6dd6303c7"
       ],
       "rationale": "Das Source-Ziel ist inhaltlich durch ein kanonisches Chemieziel abgedeckt.",
       "reviewedAt": "2026-05-11",
-      "reviewer": "codex"
+      "reviewer": "codex",
+      "additionalAcceptedPartialContributions": [
+        {
+          "canonicalGoalId": "4b9810b0-5d3d-59d8-a948-c3f6dd6303c7",
+          "matchType": "partial",
+          "acceptedScientificRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-multistate-source-informed-independent-b-part-b-20261018-v1/ACCEPTED.exact-fifty-five-partial-one-held-HE-placement.json",
+            "sha256": "ab921ae7928e26b5f58b2c25c8c72c470b2c3b4c111cb9fae09b92b821ef7f48",
+            "bytes": 43536,
+            "jsonPointer": "/approvedPartial/28"
+          },
+          "rationale": "Whole P compares acid/base sites using inductive and mesomeric stabilisation, phenol/ethanol and aniline/cyclohexylamine plus chlorine-distance and nitro transfers. Exact selected official operator: Acidität im Zusammenhang mit polaren Bindungen und induktiven Effekten, Mesomeriemodell am Beispiel des Carboxylations Boundary: Inductive/carboxylate or general I-effect contribution is partial; no original pH measurement, automatic official GK obligation for all phenol/aniline details or whole aromatic substitution mechanism.",
+          "wholeSourceCompletionFromSingleGoalMasteryAllowed": false
+        }
+      ]
     },
     {
       "sourceGoalId": "he-chem-sekii-q1-3-b03-a01-46a05b2b",
@@ -3089,11 +3394,38 @@
       "sourceSpan": "Klassifizierung von Kunststoffen und Zusammenhänge zwischen Struktur und Eigenschaften: Duroplaste, Thermoplaste, Elastomere",
       "decision": "mapped",
       "canonicalGoalIds": [
-        "3e9eb5d0-3407-5a1e-9492-ad87f98d303d"
+        "3e9eb5d0-3407-5a1e-9492-ad87f98d303d",
+        "6eba90b5-d4a6-5625-be61-e7f30f7eb964"
       ],
       "rationale": "Das Source-Ziel ist inhaltlich durch ein kanonisches Chemieziel abgedeckt.",
       "reviewedAt": "2026-05-11",
-      "reviewer": "codex"
+      "reviewer": "codex",
+      "additionalAcceptedPartialContributions": [
+        {
+          "canonicalGoalId": "6eba90b5-d4a6-5625-be61-e7f30f7eb964",
+          "matchType": "partial",
+          "scientificPartialAcceptanceAlreadyInOriginalFIRST": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-multistate-source-informed-independent-b-part-b-20261018-v1/FIRST.independent-informed-twenty-B-source-relations.json",
+            "sha256": "40e292440a97e49da1d7c8037bc78480b8908f4429b17e9500f8c4f90dc4624f",
+            "bytes": 322843,
+            "jsonPointer": "/relations/35"
+          },
+          "historicalActivationHOLDBeforeActualViewRepair": true,
+          "actualPlacementConditionResolvedBy": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-reviewed-HE-MV-view-placements-technical-20261018-v1/RECEIPT.actual-six-view-normal-integration.json",
+            "sha256": "c63cdccf0e068b72ae59206db4f12dec5926286dbc41292254d848aa87dceb13",
+            "bytes": 4524
+          },
+          "actualCurrentPureTargetAndRequires": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-C40-HE6eba-reviewed-placement-binding-integration-technical-20261018-v1/CHECK.actual-current-HE-target-and-requires.before-append.json",
+            "sha256": "d75e7af32e355d561dd299f944c93d977712f4cd69c4d46c9a0a43616bf7cb63",
+            "bytes": 3760
+          },
+          "rationale": "Specific thermoplastic/crosslinked structure-property contribution already scientifically approved. The preserved original FIRST held only current HE placement; root repaired it and actual current pure checks now show2LK targets with both prerequisites selected and graph-available. No official prescription of all4machines or whole source completion.",
+          "wholeSourceCompletionFromSingleGoalMasteryAllowed": false,
+          "technicalIntegrationAtUTC": "2026-10-18T03:50:08.687846+00:00"
+        }
+      ]
     },
     {
       "sourceGoalId": "he-chem-sekii-q2-2-b02-a01-422189e7",
@@ -3139,11 +3471,13 @@
       "sourceSpan": "Recycling von Kunststoffen: Rohstoffliches Recycling am Beispiel der Zerlegung in Monomere, werkstoffliches Recycling - Einschmelzen von Thermoplasten, ökologische und ökonomische Aspekte des Recyclings",
       "decision": "mapped",
       "canonicalGoalIds": [
-        "3e9eb5d0-3407-5a1e-9492-ad87f98d303d"
+        "3e9eb5d0-3407-5a1e-9492-ad87f98d303d",
+        "459724db-9f9a-5967-8d9a-2b6277415275"
       ],
-      "rationale": "Das Source-Ziel ist inhaltlich durch ein kanonisches Chemieziel abgedeckt.",
+      "rationale": "Das Source-Ziel ist inhaltlich durch ein kanonisches Chemieziel abgedeckt.\nAktuelle unabhängig angenommene partielle Quellenbeziehung: PMMA/MMA-Fälle erklären weitgehend erhaltene Ketten gegenüber Spaltung/Aufreinigung/erneuter Polymerisation und normieren beide Wege auf denselben spezifikationsgerechten Bedarf. Der Mischungsfall erzeugt einen echten Kosten/Energie-Zielkonflikt. Die ausgewählten ganzen Quelltexte auf PDF43 beider HE-Epochen wurden separat gelesen und stimmen hier überein. Epochentrennung bleibt; kein ganzer Recycling-/Umweltbilanzabschluss und keine praktische Ausführung. Teilumfang und tatsächliche Primärgrenze: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-single-state-forward-direct-source-informed-independent-b-20261018-v1/REVIEW.fifty-three-rows-sixty-nine-pairs.FIRST.informed-independent-b.json. Keine ganze Quellenfreigabe, neue D/P/A/M/V-Stimme oder Lernendenausführung.",
       "reviewedAt": "2026-05-11",
-      "reviewer": "codex"
+      "reviewer": "codex",
+      "matchType": "partial"
     },
     {
       "sourceGoalId": "he-chem-sekii-q2-2-b06-a01-f1814d99",
@@ -3201,11 +3535,13 @@
       "sourceSpan": "Benzen (Benzol): Eigenschaften und Bindungsverhältnisse auf Basis des Mesomeriemodells",
       "decision": "mapped",
       "canonicalGoalIds": [
-        "4bdbdf32-3021-5a0a-b412-b611166b2d21"
+        "4bdbdf32-3021-5a0a-b412-b611166b2d21",
+        "b44f460b-3399-5c3c-94b2-fa5fc6c027f2"
       ],
-      "rationale": "Das Source-Ziel ist inhaltlich durch ein kanonisches Chemieziel abgedeckt.",
+      "rationale": "Das Source-Ziel ist inhaltlich durch ein kanonisches Chemieziel abgedeckt.\nAktuelle unabhängig angenommene partielle Quellenbeziehung: Benzol-Grenzformeln werden auf erhaltenes σ-Gerüst, Elektronenzahl und Ladung geprüft; neutrale und ladungsgetrennte Beiträge sowie unzulässige H-Verschiebung erklären den Modellcharakter der Bindungsverhältnisse. Beide HE-Epochen werden separat an ihrer identischen ausgewählten PDF43-Zeile gebunden. Nur Mesomeriemodellanteil; zusätzliche energetische Differenzierung wird nicht als universelle GK-Pflicht behauptet. Teilumfang und tatsächliche Primärgrenze: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-single-state-forward-direct-source-informed-independent-b-20261018-v1/REVIEW.fifty-three-rows-sixty-nine-pairs.FIRST.informed-independent-b.json. Keine ganze Quellenfreigabe, neue D/P/A/M/V-Stimme oder Lernendenausführung.",
       "reviewedAt": "2026-05-11",
-      "reviewer": "codex"
+      "reviewer": "codex",
+      "matchType": "partial"
     },
     {
       "sourceGoalId": "he-chem-sekii-q2-3-b02-a01-f8de3123",
@@ -3570,11 +3906,39 @@
       "sourceSpan": "Berechnung von pH-Werten wässriger Lösungen schwacher Säuren und Basen (bei nicht vollständiger Protolyse) mithilfe von pKS- und pKB-Werten",
       "decision": "mapped",
       "canonicalGoalIds": [
-        "2a8a13b8-f96a-5ff1-92fa-fe6c19973a0e"
+        "2a8a13b8-f96a-5ff1-92fa-fe6c19973a0e",
+        "acdfc7d7-6d6b-5a1f-837c-79449c29a305",
+        "edcfc5f0-900d-5819-830f-3b14af2bc369"
       ],
       "rationale": "Das Source-Ziel ist inhaltlich durch ein kanonisches Chemieziel abgedeckt.",
       "reviewedAt": "2026-05-11",
-      "reviewer": "codex"
+      "reviewer": "codex",
+      "additionalAcceptedPartialContributions": [
+        {
+          "canonicalGoalId": "acdfc7d7-6d6b-5a1f-837c-79449c29a305",
+          "matchType": "partial",
+          "acceptedScientificRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-multistate-source-informed-independent-b-part-b-20261018-v1/ACCEPTED.exact-fifty-five-partial-one-held-HE-placement.json",
+            "sha256": "ab921ae7928e26b5f58b2c25c8c72c470b2c3b4c111cb9fae09b92b821ef7f48",
+            "bytes": 43536,
+            "jsonPointer": "/approvedPartial/36"
+          },
+          "rationale": "Whole P derives strong/weak monoprotic initial-acid pH from MWG, quadratic/square-root models, dilution and water-ionisation limits. Exact selected official operator: Berechnung von pH-Werten wässriger Lösungen schwacher Säuren und Basen (bei nicht vollständiger Protolyse) mithilfe von pKS- und pKB-Werten Boundary: Initial acid solution only; no complete titration, half-equivalence, salt or excess-point credit.",
+          "wholeSourceCompletionFromSingleGoalMasteryAllowed": false
+        },
+        {
+          "canonicalGoalId": "edcfc5f0-900d-5819-830f-3b14af2bc369",
+          "matchType": "partial",
+          "acceptedScientificRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-multistate-source-informed-independent-b-part-b-20261018-v1/ACCEPTED.exact-fifty-five-partial-one-held-HE-placement.json",
+            "sha256": "ab921ae7928e26b5f58b2c25c8c72c470b2c3b4c111cb9fae09b92b821ef7f48",
+            "bytes": 43536,
+            "jsonPointer": "/approvedPartial/49"
+          },
+          "rationale": "Whole P derives strong/weak initial-base pH via Kb/MWG/quadratic or square-root model with temperature and water limits. Exact selected official operator: Berechnung von pH-Werten wässriger Lösungen schwacher Säuren und Basen (bei nicht vollständiger Protolyse) mithilfe von pKS- und pKB-Werten Boundary: Initial solution/initial titration point only; no full weak-base titration curve, half-equivalence, salt or excess-point completion.",
+          "wholeSourceCompletionFromSingleGoalMasteryAllowed": false
+        }
+      ]
     },
     {
       "sourceGoalId": "he-chem-sekii-q3-2-b07-a01-338f8f40",
@@ -3742,9 +4106,9 @@
       "sourceSpan": "Faraday-Gesetze (ohne Berechnungen)",
       "decision": "mapped",
       "canonicalGoalIds": [
-        "b8c8f70f-64cb-50b1-970c-e0c4295da3fb"
+        "0e3f849b-133d-57da-882c-0d67c3eb05b8"
       ],
-      "rationale": "Das Source-Ziel ist inhaltlich durch ein kanonisches Chemieziel abgedeckt.",
+      "rationale": "Die tatsächliche Originaldatei fordert auf phys47 unter erhöhtem Niveau Faraday-Gesetze ohne Berechnungen. 0e3f erklärt die Ladungs-/Elektronen-/Umsatzbeziehung und trennt Stoffmenge/Masse ohne Zahlenrechnung in beiden ganzen bilingualen Fällen. Der alte quantitative b8c8-Carrier darf den HE-LK-Originaloperator nicht zur Rechenpflicht erweitern. Alle sieben aktuellen Source-Extraction-Aliase erhalten denselben engen Nachfolger; die vorhandenen beiden HE-LK-Targets bleiben, beide HE-GK-Views bleiben ohne0e3f-Target. Einzelkante partial; keine alleinige Quellenziel- oder Lernendenfreigabe.",
       "reviewedAt": "2026-05-11",
       "reviewer": "codex"
     },
@@ -3779,11 +4143,15 @@
       "sourceSpan": "Bedeutungen von Puffern für lebende Organismen",
       "decision": "mapped",
       "canonicalGoalIds": [
-        "5a58126e-0c51-5808-be9e-8faa9dae0c32"
+        "9fef5c29-62bc-5ada-b96b-6885bcb049cb",
+        "25729c34-33d5-553a-a723-046113a7da47"
       ],
-      "rationale": "Das Source-Ziel ist inhaltlich durch ein kanonisches Chemieziel abgedeckt.",
-      "reviewedAt": "2026-05-11",
-      "reviewer": "codex"
+      "rationale": "Technical replay of the existing bounded independent KEEP, not a new scientific review. HE48 puts biological buffer significance in the common GK/LK block and open carbonate/ammonium systems in the separate LK B03 block. The two existing goals contribute only phosphate-buffer and biological-application components; the old exact open-buffer edge remains history only. No whole source/course approval, source-operator change or new GK open-system duty.",
+      "reviewedAt": "2026-10-16T12:28:52.615556+00:00",
+      "reviewer": "Existing bounded independent reviewer /root/chemie_global145_fresh_exam_review_b_20261016; technical replay only, no new scientific vote",
+      "matchType": "partial",
+      "reviewAuthority": "ai_candidate",
+      "reviewStatus": "existing-bounded-independent-keep-technical-replay"
     },
     {
       "sourceGoalId": "he-chem-sekii-q3-4-b03-a01-30991228",
@@ -3976,11 +4344,26 @@
       "decision": "mapped",
       "canonicalGoalIds": [
         "e64a79df-7f21-5651-9b5d-e7d17580569e",
-        "bebea164-dfd7-51d9-a54a-7029c78b7f5f"
+        "bebea164-dfd7-51d9-a54a-7029c78b7f5f",
+        "223e33a4-5545-5332-ac4e-7d7a6cbc587c"
       ],
       "rationale": "Das Source-Ziel ist inhaltlich durch mehrere kanonische Chemieziele abgedeckt; 1:n ist hier die korrekte Zuordnungsform.",
       "reviewedAt": "2026-05-11",
-      "reviewer": "codex"
+      "reviewer": "codex",
+      "additionalAcceptedPartialContributions": [
+        {
+          "canonicalGoalId": "223e33a4-5545-5332-ac4e-7d7a6cbc587c",
+          "matchType": "partial",
+          "acceptedScientificRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-first-twenty-source-informed-independent-a-20261018-v1/ACCEPTED.one-hundred-sixty-four-bounded-direct-relations.with-explicit-context-conditions.json",
+            "sha256": "5af30ee6b2cb919a8445f2668c963b81d22583cb241a8d64f8df469f93da06cf",
+            "bytes": 735256,
+            "jsonPointer": "/records/27"
+          },
+          "rationale": "Whole cases distinguish pressed/filtered plant oil, FAME transesterification and glucose fermentation routes using actual supplied process/material-balance/LCA cards and generation/feedstock contrasts. Exact selected official operator: Pflanzenölkraftstoffe: Fette und fette Öle als Gemische von Triglyceriden, Aufbau eines Triglycerids, Einsatz von Pflanzenölkraftstoffen (zum Beispiel Rapsöl, Palmöl) als erneuerbare Kraftstoffe für Dieselmotoren, Vor- und Nachteile des Einsatzes (zum Beispiel Umweltproblematik des Abholzens von Regenwald beim Anlegen von Palmölplantagen) Boundary: No real biofuel manufacture or official requirement for every generation/route; each source contributes only its explicit route, feedstock or energy-assessment operator.",
+          "wholeSourceCompletionFromSingleGoalMasteryAllowed": false
+        }
+      ]
     },
     {
       "sourceGoalId": "he-chem-sekii-q4-2-b03-a01-f53a3823",
@@ -4015,11 +4398,26 @@
       "decision": "mapped",
       "canonicalGoalIds": [
         "a76ab487-4663-5005-8454-cb3196f3773b",
-        "8761cfd2-aa1a-56f1-9272-9cf66ef4b271"
+        "8761cfd2-aa1a-56f1-9272-9cf66ef4b271",
+        "223e33a4-5545-5332-ac4e-7d7a6cbc587c"
       ],
       "rationale": "Das Source-Ziel ist inhaltlich durch mehrere kanonische Chemieziele abgedeckt; 1:n ist hier die korrekte Zuordnungsform.",
       "reviewedAt": "2026-05-11",
-      "reviewer": "codex"
+      "reviewer": "codex",
+      "additionalAcceptedPartialContributions": [
+        {
+          "canonicalGoalId": "223e33a4-5545-5332-ac4e-7d7a6cbc587c",
+          "matchType": "partial",
+          "acceptedScientificRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-first-twenty-source-informed-independent-a-20261018-v1/ACCEPTED.one-hundred-sixty-four-bounded-direct-relations.with-explicit-context-conditions.json",
+            "sha256": "5af30ee6b2cb919a8445f2668c963b81d22583cb241a8d64f8df469f93da06cf",
+            "bytes": 735256,
+            "jsonPointer": "/records/28"
+          },
+          "rationale": "Whole cases distinguish pressed/filtered plant oil, FAME transesterification and glucose fermentation routes using actual supplied process/material-balance/LCA cards and generation/feedstock contrasts. Exact selected official operator: Bioethanol: Gewinnung von Ethanol aus Glucose durch alkoholische Gärung Boundary: No real biofuel manufacture or official requirement for every generation/route; each source contributes only its explicit route, feedstock or energy-assessment operator.",
+          "wholeSourceCompletionFromSingleGoalMasteryAllowed": false
+        }
+      ]
     },
     {
       "sourceGoalId": "he-chem-sekii-q4-2-b03-a04-7dfd80db",
@@ -4028,11 +4426,26 @@
       "decision": "mapped",
       "canonicalGoalIds": [
         "a76ab487-4663-5005-8454-cb3196f3773b",
-        "8761cfd2-aa1a-56f1-9272-9cf66ef4b271"
+        "8761cfd2-aa1a-56f1-9272-9cf66ef4b271",
+        "223e33a4-5545-5332-ac4e-7d7a6cbc587c"
       ],
       "rationale": "Das Source-Ziel ist inhaltlich durch mehrere kanonische Chemieziele abgedeckt; 1:n ist hier die korrekte Zuordnungsform.",
       "reviewedAt": "2026-05-11",
-      "reviewer": "codex"
+      "reviewer": "codex",
+      "additionalAcceptedPartialContributions": [
+        {
+          "canonicalGoalId": "223e33a4-5545-5332-ac4e-7d7a6cbc587c",
+          "matchType": "partial",
+          "acceptedScientificRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-first-twenty-source-informed-independent-a-20261018-v1/ACCEPTED.one-hundred-sixty-four-bounded-direct-relations.with-explicit-context-conditions.json",
+            "sha256": "5af30ee6b2cb919a8445f2668c963b81d22583cb241a8d64f8df469f93da06cf",
+            "bytes": 735256,
+            "jsonPointer": "/records/29"
+          },
+          "rationale": "Whole cases distinguish pressed/filtered plant oil, FAME transesterification and glucose fermentation routes using actual supplied process/material-balance/LCA cards and generation/feedstock contrasts. Exact selected official operator: Bioethanol: Vor- und Nachteile der Verwendung als Alternative zu fossilen Kraftstoffen Boundary: No real biofuel manufacture or official requirement for every generation/route; each source contributes only its explicit route, feedstock or energy-assessment operator.",
+          "wholeSourceCompletionFromSingleGoalMasteryAllowed": false
+        }
+      ]
     },
     {
       "sourceGoalId": "he-chem-sekii-q4-2-b04-a01-f4ce957f",
@@ -4133,6 +4546,1037 @@
       "rationale": "Das Source-Ziel ist inhaltlich durch mehrere kanonische Chemieziele abgedeckt; 1:n ist hier die korrekte Zuordnungsform.",
       "reviewedAt": "2026-05-11",
       "reviewer": "codex"
+    },
+    {
+      "sourceGoalId": "he-chemistry-sekii-kc2024-current2026-standard-e5",
+      "topicCode": "3.2",
+      "sourceSpan": "physical PDF24, 3.2, E5",
+      "decision": "mapped",
+      "canonicalGoalIds": [
+        "9fc800d1-92d1-5ef6-81c1-33960ae034dd",
+        "7b39fa19-fec3-575e-9324-a3226b703358",
+        "d2d735de-bede-5310-8aeb-8bb7562c7b75",
+        "f79f15c0-e848-5e17-9eb5-26753d35c93b",
+        "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+        "42391b16-bbae-5c77-84e1-d488e714167b"
+      ],
+      "matchType": "partial",
+      "rationale": "Only the individually referenced independently accepted partial operator contributions are integrated. Whole-source, course, research and real execution duties remain separate and are not certified by these mappings.",
+      "reviewedAt": "2026-10-18",
+      "reviewer": "Independent source reviewer A; technical integration by Codex creates no scientific first decision",
+      "wholeSourceCredit": false,
+      "additionalAcceptedPartialContributions": [
+        {
+          "canonicalGoalId": "9fc800d1-92d1-5ef6-81c1-33960ae034dd",
+          "matchType": "partial",
+          "independentAcceptedRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+            "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+            "bytes": 269340,
+            "jsonPointer": "/mappings/0"
+          },
+          "wholePrimaryOperator": "führen qualitative und quantitative experimentelle Untersuchungen – den chemischen Arbeitsweisen und Sicherheitsregeln entsprechend – durch, protokollieren sie und werten diese aus",
+          "primaryPdf": {
+            "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kcgo_chemie_21.04.2026.pdf",
+            "sha256": "628c84dbaadebccf93c6854c58e00a337fd855985aaadc8b998de3dcb1243c3e",
+            "bytes": 527976
+          },
+          "physicalPrimaryPage": 24,
+          "sourceStageCourseContext": "SekII, end of Qualifikationsphase; common GK/LK standards, course depth/self-direction differ; no whole-course completion",
+          "rationale": "Nachvollziehbare Protokollierung mit Einheiten, Herkunft, Bedingungen und sichtbaren fehlenden Angaben ist der direkte Teilbeitrag. Die neue Verdünnungskorrektur erhält Rohdaten und dokumentiert die Ableitungsänderung. Die Quelle wird nicht auf ihre Protokollwörter gekürzt: eigene Gewinnung, sicheres Durchführen oder Präsentieren im ganzen Satz bleiben zusätzlich offen.",
+          "boundaries": "Keine tatsächliche qualitative/quantitative sichere Experimentdurchführung aus vorgelegten Daten. E5 und entsprechende Mehrfachverben bleiben vollständig sichtbar; gebunden wird nur nachvollziehbare Protokollierung, ggf. Daten-/Deutungstrennung. Keine Behauptung vollständiger Präsentation.",
+          "individualBoundary": "",
+          "ownResearchEvidenceRequired": false,
+          "wholeSourceCredit": false,
+          "actualLearnerExecutionClaim": false,
+          "currentGoalSha256": "421a38c89b5e21d14aeab50e686ffe803ca542c02d0d455acaaf24416164e0c8",
+          "currentProfileBodySha256": "fa4ef4c7b277ac500d2714aa9caf980e619b9de9fb8a2dca4ca2cd758f06e746"
+        },
+        {
+          "canonicalGoalId": "7b39fa19-fec3-575e-9324-a3226b703358",
+          "matchType": "partial",
+          "independentAcceptedRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-single-state-forward-direct-source-informed-independent-b-20261018-v1/REVIEW.fifty-three-rows-sixty-nine-pairs.FIRST.informed-independent-b.json",
+            "sha256": "48223d19c4111fa225b15e10c1b374d13a366dfc7d354c756a5f83e8f669a2de",
+            "bytes": 309939,
+            "jsonPointer": "/rows/22"
+          },
+          "rationale": "Das ganze P und beide ganzen Zellmaterialien fordern beobachteten sicheren Aufbau, kompatible KNO₃-Brücke, eigene polungs-/bedingungsgebundene Rohwerte und Auswertung. Leitungswechsel und AgCl-Fall verlangen selbstständige Fehlerdeutung.",
+          "boundaries": "Nur current2026 E5-SekII-Teil. Die Zahlen 1,0843/0,4233V sind ausdrücklich synthetisch und kein persönlicher Ausführungsnachweis; Selbstplanung oder gesamter E5-Umfang werden nicht daraus abgeleitet.",
+          "wholeSourceCredit": false,
+          "actualLearnerExecutionClaim": false
+        },
+        {
+          "canonicalGoalId": "d2d735de-bede-5310-8aeb-8bb7562c7b75",
+          "matchType": "partial",
+          "independentAcceptedRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-single-state-forward-direct-source-informed-independent-b-20261018-v1/REVIEW.fifty-three-rows-sixty-nine-pairs.FIRST.informed-independent-b.json",
+            "sha256": "48223d19c4111fa225b15e10c1b374d13a366dfc7d354c756a5f83e8f669a2de",
+            "bytes": 309939,
+            "jsonPointer": "/rows/42"
+          },
+          "rationale": "Die ganzen Fe(III)/SCN-Materialien und das P fordern tatsächlich beobachtetes sicheres Dosieren, Mischen, zeit-/temperaturkontrollierte Beobachtung und eigene Protokolle. Referenz, gleiche Volumina und Blindwerte begrenzen die quantitative/qualitative Auswertung.",
+          "boundaries": "Nur current2026-E5-Teil. Synthetische Absorbanzen sind keine Durchführung; Konzentration ändert nicht K bei gleicher Temperatur, und das reduzierte Modell ist kein vollständiger Speziationsbeweis oder E4-Selbstplanung.",
+          "wholeSourceCredit": false,
+          "actualLearnerExecutionClaim": false
+        },
+        {
+          "canonicalGoalId": "f79f15c0-e848-5e17-9eb5-26753d35c93b",
+          "matchType": "partial",
+          "independentAcceptedRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-single-state-forward-direct-source-informed-independent-b-20261018-v1/REVIEW.fifty-three-rows-sixty-nine-pairs.FIRST.informed-independent-b.json",
+            "sha256": "48223d19c4111fa225b15e10c1b374d13a366dfc7d354c756a5f83e8f669a2de",
+            "bytes": 309939,
+            "jsonPointer": "/rows/50"
+          },
+          "rationale": "Die ganzen Säure-/Photometriefälle verlangen weitgehend eigene Hypothesen-/Methodenplanung und tatsächlich sichere qual/quant-Ausführung mit Originaldaten, Blank/Standards und Wiederholung. Standardfehler und echte neue In-Bereich-Verdünnungsmessung werden differenziert behandelt.",
+          "boundaries": "E4/E5 nur current2026 SekII-Teil. Referenztitration/Kalibrierwerte sind keine eigenen Daten; Faktor2 garantiert keinen gültigen neuen Messwert. Konkrete Stoff-/Sicherheitsfreigabe und eigene Ausführung bleiben zwingend.",
+          "wholeSourceCredit": false,
+          "actualLearnerExecutionClaim": false
+        },
+        {
+          "canonicalGoalId": "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+          "matchType": "partial",
+          "independentAcceptedRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+            "jsonPointer": "/relations/44",
+            "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+          },
+          "currentWholeGoalSHA256": "98266239c4b5174a18410897197d51badaece96e5489acaf47d325a37c47a39e",
+          "currentWholeProfileSHA256": "8d6ba741e47ea48a04f57de70c685953ffd3cc3d251a3423670f56bedb180af0",
+          "acceptedPartDe": "Persönliche reale angeleitete Untersuchung mit Rohdaten, Kontrollen und begrenzter Auswertung.",
+          "acceptedPartEn": "Personal actual guided investigation with raw data, controls and bounded evaluation.",
+          "remainingDutiesDe": "Aktuelles P enthält zusätzlich2 echte ST7/8-Fälle: beaufsichtigte Mg-Oxidation und kalte MgO/Wasser-Untersuchung mit eigenem Wasserblank/Indikator. Sie wurden mitgelesen, tragen aber keine der hier10 anderen Länderbindungen. Alle Altpflichten sind exakt erhalten; HB-Eigenprotokoll bleibt HB. Der vollständige angegebene Operator bleibt maßgeblich; ausschließlich das konkrete aktuelle C/P-Teilmodell wird vorgeschlagen. Alle übrigen Operator-/Kontextpflichten bleiben offen.",
+          "remainingDutiesEn": "The current P additionally contains2 actual ST7/8 cases: supervised Mg oxidation and a cold MgO/water investigation with an own water blank/indicator. They were read but supply none of these10 other-state bindings. Every old duty is exactly retained; the HB own electronic record remains HB-only. The complete quoted source operator remains binding; all unassessed verbs, contexts and course demands remain open.",
+          "wholeSourceApproval": false,
+          "actualLearnerExecutionClaim": false,
+          "newScientificVoteByTechnicalIntegrator": false
+        },
+        {
+          "canonicalGoalId": "42391b16-bbae-5c77-84e1-d488e714167b",
+          "matchType": "partial",
+          "independentAcceptedRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+            "jsonPointer": "/relations/73",
+            "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+          },
+          "currentWholeGoalSHA256": "10c50e60597b4d44b7863f7cd9a3fee03dd4ed28eda107ab60e246376bc5fda0",
+          "currentWholeProfileSHA256": "681748ddc2c40301327a26d2660bd5d991bf645922140e28fbb70dba7b6bfaec",
+          "acceptedPartDe": "Eigene reale Durchführung/Beobachtung/Auswertung des selbst geplanten freigegebenen Versuchs.",
+          "acceptedPartEn": "Own actual performance/observation/evaluation of the independently planned authorised experiment.",
+          "remainingDutiesDe": "NI/SL/SH-Einzeloperatoren tragen nur Planung, Handling oder Protokoll gemäß ihrem Wortlaut. Keine Übertragung der5 HB-Proteinbedingungen oder HB-Öl/Wasser/Ethanol/Heptan-Zusätze auf andere Länder, keine ganze Forschungsmethodik. Der vollständige angegebene Operator bleibt maßgeblich; ausschließlich das konkrete aktuelle C/P-Teilmodell wird vorgeschlagen. Alle übrigen Operator-/Kontextpflichten bleiben offen.",
+          "remainingDutiesEn": "NI/SL/SH individual operators support only planning, handling or recording according to their wording. Do not transfer the5 HB protein conditions or HB oil/water/ethanol/heptane additions to other states; no complete research-method coverage. The complete quoted source operator remains binding; all unassessed verbs, contexts and course demands remain open.",
+          "wholeSourceApproval": false,
+          "actualLearnerExecutionClaim": false,
+          "newScientificVoteByTechnicalIntegrator": false
+        }
+      ]
+    },
+    {
+      "sourceGoalId": "he-chemistry-sekii-kc2024-current2026-standard-e8",
+      "topicCode": "3.2",
+      "sourceSpan": "physical PDF24, 3.2, E8",
+      "decision": "mapped",
+      "canonicalGoalIds": [
+        "7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6",
+        "9e3fae29-84d5-5600-bfb3-82d49ea3f1b5"
+      ],
+      "matchType": "partial",
+      "rationale": "Only the individually referenced independently accepted partial operator contributions are integrated. Whole-source, course, research and real execution duties remain separate and are not certified by these mappings.",
+      "reviewedAt": "2026-10-18",
+      "reviewer": "Independent source reviewer A; technical integration by Codex creates no scientific first decision",
+      "wholeSourceCredit": false,
+      "additionalAcceptedPartialContributions": [
+        {
+          "canonicalGoalId": "7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6",
+          "matchType": "partial",
+          "independentAcceptedRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+            "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+            "bytes": 269340,
+            "jsonPointer": "/mappings/1"
+          },
+          "wholePrimaryOperator": "finden in erhobenen oder recherchierten Daten Strukturen, Beziehungen und Trends, erklären diese theoriebezogen und ziehen Schlussfolgerungen",
+          "primaryPdf": {
+            "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kcgo_chemie_21.04.2026.pdf",
+            "sha256": "628c84dbaadebccf93c6854c58e00a337fd855985aaadc8b998de3dcb1243c3e",
+            "bytes": 527976
+          },
+          "physicalPrimaryPage": 24,
+          "sourceStageCourseContext": "SekII, end of Qualifikationsphase; common GK/LK standards, course depth/self-direction differ; no whole-course completion",
+          "rationale": "Die vorhandene Tabellen-/Trendinterpretation und neue 50°C- bzw. Leitfähigkeitsdaten verlangen begründete Stützung oder Revision der Hypothese. Theoriebezug bleibt am Datenfall konkret. Eigene Datenerhebung und vollständige Hypothesenerzeugung werden nicht nachträglich behauptet.",
+          "boundaries": "Keine eigene Datenerhebung, keine neue Experimentdurchführung und keine vollständige selbst entworfene Hypothese. Die HB-spezifische zusätzliche Diagrammerstellung wird außerhalb HB nicht behauptet. Breitere Quellenstandards tragen nur die explizite Daten-/Deutungs-Teilkompetenz.",
+          "individualBoundary": "",
+          "ownResearchEvidenceRequired": false,
+          "wholeSourceCredit": false,
+          "actualLearnerExecutionClaim": false,
+          "currentGoalSha256": "fd108aac38406a4dc61531d73d777d42e47a36eabdfee81f348cd7e51addf652",
+          "currentProfileBodySha256": "610c575c2141534faa88d0958b025b5657147621ca445033433cee2c0224bc0d"
+        },
+        {
+          "canonicalGoalId": "9e3fae29-84d5-5600-bfb3-82d49ea3f1b5",
+          "matchType": "partial",
+          "independentAcceptedRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+            "jsonPointer": "/relations/99",
+            "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+          },
+          "currentWholeGoalSHA256": "d7a16b472eff7f0b71e3b66e34b522934ddee81d413181571e3e46ff307cd7cf",
+          "currentWholeProfileSHA256": "bc65505cb7d26cd25f329217093ccc3af5583f9c2474e2d89282153565b48882",
+          "acceptedPartDe": "Theoriebezogene Interpretation von Trends und Residuen mit begrenzter Schlussfolgerung.",
+          "acceptedPartEn": "Theory-related interpretation of trends and residuals with bounded inference.",
+          "remainingDutiesDe": "E6 trägt tatsächliche digitale Verarbeitung, E8 theoriebezogene Datenfolgerung. Modell-/Fremddaten sind keine eigene Messwerterhebung; HB-eigene Drucksimulation und deren Erfassung bleibt HB, keine Sensorpflicht in HE/RP. Der vollständige angegebene Operator bleibt maßgeblich; ausschließlich das konkrete aktuelle C/P-Teilmodell wird vorgeschlagen. Alle übrigen Operator-/Kontextpflichten bleiben offen.",
+          "remainingDutiesEn": "E6 supports actual digital processing and E8 theory-related data inference. Model/external data are not own measurement acquisition; the HB own pressure simulation/acquisition remains HB-only, with no sensor duty in HE/RP. The complete quoted source operator remains binding; all unassessed verbs, contexts and course demands remain open.",
+          "wholeSourceApproval": false,
+          "actualLearnerExecutionClaim": false,
+          "newScientificVoteByTechnicalIntegrator": false
+        }
+      ]
+    },
+    {
+      "sourceGoalId": "he-chemistry-sekii-kc2024-current2026-standard-k1",
+      "topicCode": "3.2",
+      "sourceSpan": "physical PDF26, 3.2, K1",
+      "decision": "mapped",
+      "canonicalGoalIds": [
+        "5b1bb5d9-07b1-5ba9-b320-cc97be917c60",
+        "ac8b6c0f-98b2-5092-806d-d9498efbfa35"
+      ],
+      "matchType": "partial",
+      "rationale": "Only the individually referenced independently accepted partial operator contributions are integrated. Whole-source, course, research and real execution duties remain separate and are not certified by these mappings.",
+      "reviewedAt": "2026-10-18",
+      "reviewer": "Independent source reviewer A; technical integration by Codex creates no scientific first decision",
+      "wholeSourceCredit": false,
+      "additionalAcceptedPartialContributions": [
+        {
+          "canonicalGoalId": "5b1bb5d9-07b1-5ba9-b320-cc97be917c60",
+          "matchType": "partial",
+          "independentAcceptedRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+            "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+            "bytes": 269340,
+            "jsonPointer": "/mappings/2"
+          },
+          "wholePrimaryOperator": "recherchieren zu chemischen Sachverhalten zielgerichtet in analogen und digitalen Medien und wählen für ihre Zwecke passende Quellen aus",
+          "primaryPdf": {
+            "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kcgo_chemie_21.04.2026.pdf",
+            "sha256": "628c84dbaadebccf93c6854c58e00a337fd855985aaadc8b998de3dcb1243c3e",
+            "bytes": 527976
+          },
+          "physicalPrimaryPage": 26,
+          "sourceStageCourseContext": "SekII, end of Qualifikationsphase; common GK/LK standards, course depth/self-direction differ; no whole-course completion",
+          "rationale": "Der vollständige Recherche-/Auswahloperator verlangt hier die bereits vorhandene bedingte eigene Rechercheroute verbindlich: selbst suchen/navigieren, öffnen/lesen, begründet auswählen und konkret belegen. Vorgegebene S/T-Quellen allein reichen dafür nicht.",
+          "boundaries": "Gegebene Quellen allein erfüllen K1-Recherche nicht. Kein Nachweis der ganzen analogen UND digitalen Recherchebreite, sämtlicher komplexer Darstellungen, realer Präsentation, Gruppenarbeit oder vollständiger Urheber-/Zitatprüfung. Bei nicht geforderter Recherche wird nur Informationserschließung beansprucht.",
+          "individualBoundary": "",
+          "ownResearchEvidenceRequired": true,
+          "wholeSourceCredit": false,
+          "actualLearnerExecutionClaim": false,
+          "currentGoalSha256": "43a37d326f0a7b23366815243f41ae36c94c76a94010ef0859698040043a738d",
+          "currentProfileBodySha256": "a68307f93eee1518c3fe4602402a9968c1a404493d5f5bd96f0b36350efa7e46"
+        },
+        {
+          "canonicalGoalId": "ac8b6c0f-98b2-5092-806d-d9498efbfa35",
+          "matchType": "partial",
+          "independentAcceptedRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+            "jsonPointer": "/relations/24",
+            "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+          },
+          "currentWholeGoalSHA256": "097b9d35f24c03ef75f4808b225178ddcae7835d7ede6dca2b6cddedf89deeb8",
+          "currentWholeProfileSHA256": "3206fd7ce49e7779752b1a1142fa5595e81eb8042a3a2b96fc8f19588c691758",
+          "acceptedPartDe": "Tatsächliches eigenes zielgerichtetes Suchen und Auswählen gelesener chemischer Quellen; NI nur der Gleichgewichtsanteil.",
+          "acceptedPartEn": "Actual own purposeful search and selection of read chemical sources; NI only the equilibrium portion.",
+          "remainingDutiesDe": "K1-artige Quellen tragen reale Recherche, K2/SN/SL nur ihre ausdrücklich genannte Informationserschließung. SN/SL begründen keine volle Recherche-/Vertrauenspflicht. NI wird nur auf den Gleichgewichtsanteil gebunden, ohne eA-only Salzpflicht. HB-Zusatzdossiers bleiben HB. Der vollständige angegebene Operator bleibt maßgeblich; ausschließlich das konkrete aktuelle C/P-Teilmodell wird vorgeschlagen. Alle übrigen Operator-/Kontextpflichten bleiben offen.",
+          "remainingDutiesEn": "K1-type sources support actual research; K2/SN/SL support only their stated information interpretation. SN/SL do not establish a whole research/trust duty. NI is bound only to equilibrium-related work without eA-only salt requirements. HB additional dossiers remain HB-only. The complete quoted source operator remains binding; all unassessed verbs, contexts and course demands remain open.",
+          "wholeSourceApproval": false,
+          "actualLearnerExecutionClaim": false,
+          "newScientificVoteByTechnicalIntegrator": false
+        }
+      ]
+    },
+    {
+      "sourceGoalId": "he-chemistry-sekii-kc2024-current2026-standard-k2",
+      "topicCode": "3.2",
+      "sourceSpan": "physical PDF26, 3.2, K2",
+      "decision": "mapped",
+      "canonicalGoalIds": [
+        "5b1bb5d9-07b1-5ba9-b320-cc97be917c60",
+        "ac8b6c0f-98b2-5092-806d-d9498efbfa35"
+      ],
+      "matchType": "partial",
+      "rationale": "Only the individually referenced independently accepted partial operator contributions are integrated. Whole-source, course, research and real execution duties remain separate and are not certified by these mappings.",
+      "reviewedAt": "2026-10-18",
+      "reviewer": "Independent source reviewer A; technical integration by Codex creates no scientific first decision",
+      "wholeSourceCredit": false,
+      "additionalAcceptedPartialContributions": [
+        {
+          "canonicalGoalId": "5b1bb5d9-07b1-5ba9-b320-cc97be917c60",
+          "matchType": "partial",
+          "independentAcceptedRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+            "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+            "bytes": 269340,
+            "jsonPointer": "/mappings/3"
+          },
+          "wholePrimaryOperator": "wählen relevante und aussagekräftige Informationen und Daten zu chemischen Sachverhalten und anwendungsbezogenen Fragestellungen aus und erschließen Informationen aus Quellen mit verschiedenen, auch komplexen Darstellungsformen",
+          "primaryPdf": {
+            "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kcgo_chemie_21.04.2026.pdf",
+            "sha256": "628c84dbaadebccf93c6854c58e00a337fd855985aaadc8b998de3dcb1243c3e",
+            "bytes": 527976
+          },
+          "physicalPrimaryPage": 26,
+          "sourceStageCourseContext": "SekII, end of Qualifikationsphase; common GK/LK standards, course depth/self-direction differ; no whole-course completion",
+          "rationale": "Informationsauswahl und Erschließung werden an S/T-Texten, Mengen-/Eigenschaftstabellen und Prozessdarstellungen überprüft. Die neue Mehrwegfrage verlangt neue relevante Informationen und eine begrenzte Deutung; nicht jede denkbare komplexe Repräsentation ist damit belegt.",
+          "boundaries": "Gegebene Quellen allein erfüllen K1-Recherche nicht. Kein Nachweis der ganzen analogen UND digitalen Recherchebreite, sämtlicher komplexer Darstellungen, realer Präsentation, Gruppenarbeit oder vollständiger Urheber-/Zitatprüfung. Bei nicht geforderter Recherche wird nur Informationserschließung beansprucht.",
+          "individualBoundary": "",
+          "ownResearchEvidenceRequired": false,
+          "wholeSourceCredit": false,
+          "actualLearnerExecutionClaim": false,
+          "currentGoalSha256": "43a37d326f0a7b23366815243f41ae36c94c76a94010ef0859698040043a738d",
+          "currentProfileBodySha256": "a68307f93eee1518c3fe4602402a9968c1a404493d5f5bd96f0b36350efa7e46"
+        },
+        {
+          "canonicalGoalId": "ac8b6c0f-98b2-5092-806d-d9498efbfa35",
+          "matchType": "partial",
+          "independentAcceptedRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+            "jsonPointer": "/relations/25",
+            "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+          },
+          "currentWholeGoalSHA256": "097b9d35f24c03ef75f4808b225178ddcae7835d7ede6dca2b6cddedf89deeb8",
+          "currentWholeProfileSHA256": "3206fd7ce49e7779752b1a1142fa5595e81eb8042a3a2b96fc8f19588c691758",
+          "acceptedPartDe": "Chemisch richtige Interpretation konkreter Fachtexte, Tabellen und Darstellungen; keine zusätzliche Recherche-/Vertrauenspflicht aus diesem Teilanker.",
+          "acceptedPartEn": "Chemically correct interpretation of concrete texts, tables and representations; this partial anchor adds no research/trust duty.",
+          "remainingDutiesDe": "K1-artige Quellen tragen reale Recherche, K2/SN/SL nur ihre ausdrücklich genannte Informationserschließung. SN/SL begründen keine volle Recherche-/Vertrauenspflicht. NI wird nur auf den Gleichgewichtsanteil gebunden, ohne eA-only Salzpflicht. HB-Zusatzdossiers bleiben HB. Der vollständige angegebene Operator bleibt maßgeblich; ausschließlich das konkrete aktuelle C/P-Teilmodell wird vorgeschlagen. Alle übrigen Operator-/Kontextpflichten bleiben offen.",
+          "remainingDutiesEn": "K1-type sources support actual research; K2/SN/SL support only their stated information interpretation. SN/SL do not establish a whole research/trust duty. NI is bound only to equilibrium-related work without eA-only salt requirements. HB additional dossiers remain HB-only. The complete quoted source operator remains binding; all unassessed verbs, contexts and course demands remain open.",
+          "wholeSourceApproval": false,
+          "actualLearnerExecutionClaim": false,
+          "newScientificVoteByTechnicalIntegrator": false
+        }
+      ]
+    },
+    {
+      "sourceGoalId": "he-chemistry-sekii-kc2024-current2026-standard-k5",
+      "topicCode": "3.2",
+      "sourceSpan": "physical PDF26, 3.2, K5",
+      "decision": "mapped",
+      "canonicalGoalIds": [
+        "5b1bb5d9-07b1-5ba9-b320-cc97be917c60"
+      ],
+      "matchType": "partial",
+      "rationale": "Only the individually referenced independently accepted partial operator contributions are integrated. Whole-source, course, research and real execution duties remain separate and are not certified by these mappings.",
+      "reviewedAt": "2026-10-18",
+      "reviewer": "Independent source reviewer A; technical integration by Codex creates no scientific first decision",
+      "wholeSourceCredit": false,
+      "additionalAcceptedPartialContributions": [
+        {
+          "canonicalGoalId": "5b1bb5d9-07b1-5ba9-b320-cc97be917c60",
+          "matchType": "partial",
+          "independentAcceptedRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+            "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+            "bytes": 269340,
+            "jsonPointer": "/mappings/4"
+          },
+          "wholePrimaryOperator": "wählen chemische Sachverhalte und Informationen sach-, adressaten- und situationsgerecht aus",
+          "primaryPdf": {
+            "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kcgo_chemie_21.04.2026.pdf",
+            "sha256": "628c84dbaadebccf93c6854c58e00a337fd855985aaadc8b998de3dcb1243c3e",
+            "bytes": 527976
+          },
+          "physicalPrimaryPage": 26,
+          "sourceStageCourseContext": "SekII, end of Qualifikationsphase; common GK/LK standards, course depth/self-direction differ; no whole-course completion",
+          "rationale": "Die Auswahl ändert sich ausdrücklich zwischen jüngerer Klasse, Hausmeisterteam und Schülerzeitung. Diese konkrete sach-/adressaten-/situationsbezogene Auswahl trägt den Teiloperator; eine tatsächliche öffentliche Präsentation bleibt offen.",
+          "boundaries": "Gegebene Quellen allein erfüllen K1-Recherche nicht. Kein Nachweis der ganzen analogen UND digitalen Recherchebreite, sämtlicher komplexer Darstellungen, realer Präsentation, Gruppenarbeit oder vollständiger Urheber-/Zitatprüfung. Bei nicht geforderter Recherche wird nur Informationserschließung beansprucht.",
+          "individualBoundary": "",
+          "ownResearchEvidenceRequired": false,
+          "wholeSourceCredit": false,
+          "actualLearnerExecutionClaim": false,
+          "currentGoalSha256": "43a37d326f0a7b23366815243f41ae36c94c76a94010ef0859698040043a738d",
+          "currentProfileBodySha256": "a68307f93eee1518c3fe4602402a9968c1a404493d5f5bd96f0b36350efa7e46"
+        }
+      ]
+    },
+    {
+      "sourceGoalId": "he-chemistry-sekii-kc2024-current2026-standard-k8",
+      "topicCode": "3.2",
+      "sourceSpan": "physical PDF26, 3.2, K8",
+      "decision": "mapped",
+      "canonicalGoalIds": [
+        "5b1bb5d9-07b1-5ba9-b320-cc97be917c60"
+      ],
+      "matchType": "partial",
+      "rationale": "Only the individually referenced independently accepted partial operator contributions are integrated. Whole-source, course, research and real execution duties remain separate and are not certified by these mappings.",
+      "reviewedAt": "2026-10-18",
+      "reviewer": "Independent source reviewer A; technical integration by Codex creates no scientific first decision",
+      "wholeSourceCredit": false,
+      "additionalAcceptedPartialContributions": [
+        {
+          "canonicalGoalId": "5b1bb5d9-07b1-5ba9-b320-cc97be917c60",
+          "matchType": "partial",
+          "independentAcceptedRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+            "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+            "bytes": 269340,
+            "jsonPointer": "/mappings/5"
+          },
+          "wholePrimaryOperator": "strukturieren und interpretieren ausgewählte Informationen und leiten Schlussfolgerungen ab",
+          "primaryPdf": {
+            "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kcgo_chemie_21.04.2026.pdf",
+            "sha256": "628c84dbaadebccf93c6854c58e00a337fd855985aaadc8b998de3dcb1243c3e",
+            "bytes": 527976
+          },
+          "physicalPrimaryPage": 26,
+          "sourceStageCourseContext": "SekII, end of Qualifikationsphase; common GK/LK standards, course depth/self-direction differ; no whole-course completion",
+          "rationale": "Chemische Erklärung, Modellzahlen, Sicherheit und fehlende Kreislaufinformation werden strukturiert getrennt und zu begrenzten Schlüssen verarbeitet. Eine reine Quellenliste ohne eigene Interpretation genügt nicht.",
+          "boundaries": "Gegebene Quellen allein erfüllen K1-Recherche nicht. Kein Nachweis der ganzen analogen UND digitalen Recherchebreite, sämtlicher komplexer Darstellungen, realer Präsentation, Gruppenarbeit oder vollständiger Urheber-/Zitatprüfung. Bei nicht geforderter Recherche wird nur Informationserschließung beansprucht.",
+          "individualBoundary": "",
+          "ownResearchEvidenceRequired": false,
+          "wholeSourceCredit": false,
+          "actualLearnerExecutionClaim": false,
+          "currentGoalSha256": "43a37d326f0a7b23366815243f41ae36c94c76a94010ef0859698040043a738d",
+          "currentProfileBodySha256": "a68307f93eee1518c3fe4602402a9968c1a404493d5f5bd96f0b36350efa7e46"
+        }
+      ]
+    },
+    {
+      "sourceGoalId": "he-chemistry-sekii-kc2024-current2026-standard-b3",
+      "topicCode": "3.2",
+      "sourceSpan": "physical PDF27, 3.2, B3",
+      "decision": "mapped",
+      "canonicalGoalIds": [
+        "4aa3a130-b517-5ac5-87b2-147fe432cadd"
+      ],
+      "matchType": "partial",
+      "rationale": "Only the individually referenced independently accepted partial operator contributions are integrated. Whole-source, course, research and real execution duties remain separate and are not certified by these mappings.",
+      "reviewedAt": "2026-10-18",
+      "reviewer": "Independent source reviewer A; technical integration by Codex creates no scientific first decision",
+      "wholeSourceCredit": false,
+      "additionalAcceptedPartialContributions": [
+        {
+          "canonicalGoalId": "4aa3a130-b517-5ac5-87b2-147fe432cadd",
+          "matchType": "partial",
+          "independentAcceptedRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+            "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+            "bytes": 269340,
+            "jsonPointer": "/mappings/6"
+          },
+          "wholePrimaryOperator": "beurteilen Informationen und Daten hinsichtlich ihrer Angemessenheit, Grenzen und Tragweite",
+          "primaryPdf": {
+            "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kcgo_chemie_21.04.2026.pdf",
+            "sha256": "628c84dbaadebccf93c6854c58e00a337fd855985aaadc8b998de3dcb1243c3e",
+            "bytes": 527976
+          },
+          "physicalPrimaryPage": 27,
+          "sourceStageCourseContext": "SekII, end of Qualifikationsphase; common GK/LK standards, course depth/self-direction differ; no whole-course completion",
+          "rationale": "Die Route begründet Kreuzreaktion, Kontrollen und Temperatur-/Matrixeinfluss und grenzt erlaubte Schlüsse ein. Für NI trägt nur das Beschreiben/Deuten von Datenabweichungen; für BW die Aussagekraft der vorliegenden Darstellung; für ST/SL der konkrete Methoden-/Erkenntnisgrenzenanteil. Keine universelle Fehlerrechnung oder tatsächlich ausgeführte Messung.",
+          "boundaries": "Papierdaten sind keine eigene Messung und keine gesamte quantitative Messunsicherheitsrechnung. Nur die tatsächlich geforderte Fehler-/Verfahrens- und Schlussfolgerungskritik trägt; keine universelle Methodologie oder komplette Modellkritik.",
+          "individualBoundary": "",
+          "ownResearchEvidenceRequired": false,
+          "wholeSourceCredit": false,
+          "actualLearnerExecutionClaim": false,
+          "currentGoalSha256": "ecf0bb6b770b73105be0de6e7228bd979dda04e986874cb9a6676986c1c2475e",
+          "currentProfileBodySha256": "59cfee3a21094f52bead68471c96f814c1551e27882a34f0ea5eeb7eb0c60708"
+        }
+      ]
+    },
+    {
+      "sourceGoalId": "he-chemistry-sekii-kc2024-current2026-standard-b5",
+      "topicCode": "3.2",
+      "sourceSpan": "physical PDF27, 3.2, B5",
+      "decision": "mapped",
+      "canonicalGoalIds": [
+        "431a0f03-f28a-5e56-a61f-000336d0b410"
+      ],
+      "matchType": "partial",
+      "rationale": "Only the individually referenced independently accepted partial operator contributions are integrated. Whole-source, course, research and real execution duties remain separate and are not certified by these mappings.",
+      "reviewedAt": "2026-10-18",
+      "reviewer": "Independent source reviewer A; technical integration by Codex creates no scientific first decision",
+      "wholeSourceCredit": false,
+      "additionalAcceptedPartialContributions": [
+        {
+          "canonicalGoalId": "431a0f03-f28a-5e56-a61f-000336d0b410",
+          "matchType": "partial",
+          "independentAcceptedRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+            "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+            "bytes": 269340,
+            "jsonPointer": "/mappings/7"
+          },
+          "wholePrimaryOperator": "entwickeln anhand relevanter Bewertungskriterien Handlungsoptionen in gesellschaftlich- oder alltagsrelevanten Entscheidungssituationen mit fachlichem Bezug und wägen sie gegeneinander ab",
+          "primaryPdf": {
+            "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kcgo_chemie_21.04.2026.pdf",
+            "sha256": "628c84dbaadebccf93c6854c58e00a337fd855985aaadc8b998de3dcb1243c3e",
+            "bytes": 527976
+          },
+          "physicalPrimaryPage": 27,
+          "sourceStageCourseContext": "SekII, end of Qualifikationsphase; common GK/LK standards, course depth/self-direction differ; no whole-course completion",
+          "rationale": "Eigene belegte Gründe, Vergleich vorgegebener Gründe und erneute Gewichtung anhand veränderter Energie-/Grenzwertdaten tragen den Argumentations-/Abwägungsanteil. B5 bzw. die SL-Definition werden nicht auf Abwägen verkürzt: eigenständige Bildung aller Handlungsoptionen, ethische Folgen und reales Handeln bleiben offen.",
+          "boundaries": "Keine tatsächliche Gruppendiskussion, kein reales Handeln, keine vollständige Entwicklung aller Handlungsoptionen; keine pauschale ethische/gesellschaftliche Vollkompetenz.",
+          "individualBoundary": "",
+          "ownResearchEvidenceRequired": false,
+          "wholeSourceCredit": false,
+          "actualLearnerExecutionClaim": false,
+          "currentGoalSha256": "4b9fbf56619dd52c3e4d2f3ccda92ecd1178bdb202a0a4dddcba1639f77e364d",
+          "currentProfileBodySha256": "1792517769c45afcbcbc381c68bcda5892b71a2c6348bddc15b5e090cce4d2bf"
+        }
+      ]
+    },
+    {
+      "sourceGoalId": "he-chemistry-sekii-kc2024-current2026-standard-b10",
+      "topicCode": "3.2",
+      "sourceSpan": {
+        "passageId": "he-chemistry-sekii-kc2024-current2026:standards-b",
+        "label": "physical PDF27, 3.2, B10"
+      },
+      "decision": "mapped",
+      "canonicalGoalIds": [
+        "2cf86c25-5280-5e7d-8ebb-9f2e6733fbe2",
+        "9f892457-c4e5-56da-830c-bf6cac0c98d7",
+        "e96771d3-fd72-59e6-8f4c-573ef8cbde0a"
+      ],
+      "matchType": "partial",
+      "rationale": "Unabhängig angenommene partielle Quellenbeziehung: PP-Mehrwegboxen verbinden Kettenstruktur, Kosten und Nutzung mit Reinigung/Rückgabe und Betroffenengruppen; der Verbundfall zeigt einen zeitabhängigen Klima-Break-even und offene soziale Lasten. Das ist konkrete gesellschaftliche und ökologische Bewertung angewandter Chemie. Nur current2026 B10 und nur diese Beiträge; kein ganzer B12-/B13-Nachweis und keine vollständige Ökobilanz aus den Ausschnittsdaten. Ammoniak und Kühlung verknüpfen historische und aktuelle Produkte, Methoden, Verfahren und Erkenntnisse. Alle drei Nachhaltigkeitsperspektiven, eigenes begrenztes Informations-/Nutzungs-/Meldehandeln und geänderte Wissens-/Leckagebedingungen werden tatsächlich verlangt. B10, B12 und B13 current2026 sind je eigene partielle Beiträge. HB-Zuckerfall bleibt HB; keine vollständige reale Ökobilanz oder eigenmächtige Düngung/Kühlanlagenarbeit. Teilumfang und tatsächliche Primärgrenze: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-single-state-forward-direct-source-informed-independent-b-20261018-v1/REVIEW.fifty-three-rows-sixty-nine-pairs.FIRST.informed-independent-b.json. Keine ganze Quellenfreigabe, neue D/P/A/M/V-Stimme oder Lernendenausführung.",
+      "reviewedAt": "2026-10-18T02:35:05.549413+00:00",
+      "reviewer": "chemie450-single53-informed-independent-b; technische Übernahme durch /root",
+      "additionalAcceptedPartialContributions": [
+        {
+          "canonicalGoalId": "e96771d3-fd72-59e6-8f4c-573ef8cbde0a",
+          "matchType": "partial",
+          "acceptedScientificRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-multistate-source-informed-independent-b-part-b-20261018-v1/ACCEPTED.exact-fifty-five-partial-one-held-HE-placement.json",
+            "sha256": "ab921ae7928e26b5f58b2c25c8c72c470b2c3b4c111cb9fae09b92b821ef7f48",
+            "bytes": 43536,
+            "jsonPointer": "/approvedPartial/47"
+          },
+          "rationale": "Whole P distinguishes benzene IARC hazard classification from exposure-dependent risk and weighs actual supplied industrial benefit/occupational exposure alternatives with chemical evidence. Exact selected official operator: bewerten die gesellschaftliche Relevanz und ökologische Bedeutung der angewandten Chemie Boundary: Named benzene use is an authored concrete safety/relevance case; no medical/legal clearance, real workplace certification, automatic whole aromatic bonding duty or historical performance.",
+          "wholeSourceCompletionFromSingleGoalMasteryAllowed": false
+        }
+      ]
+    },
+    {
+      "sourceGoalId": "he-chemistry-sekii-kc2024-current2026-standard-e10",
+      "topicCode": "3.2",
+      "sourceSpan": {
+        "passageId": "he-chemistry-sekii-kc2024-current2026:standards-e",
+        "label": "physical PDF24, 3.2, E10"
+      },
+      "decision": "mapped",
+      "canonicalGoalIds": [
+        "99d41b0f-e958-54cf-a077-9bed1704a303"
+      ],
+      "matchType": "partial",
+      "rationale": "Unabhängig angenommene partielle Quellenbeziehung: Die beiden Reflexionsfälle verlangen die tatsächlich eigene angeleitete Zucker- bzw. selbstgeplante Ionenuntersuchung samt Rohlog und eigener Entscheidung. Die Verbesserung muss aus einer konkret protokollierten eigenen Unsicherheit folgen. Damit wird E10 wörtlich fachlich ernst genommen. Nur current2026 SekII-E10; fremde Referenzen und allgemeine Musterkritik reichen nicht. Eine angeleitete eigene Durchführung täuscht keine eigene Planung vor; keine neue SekI-Bindung. Teilumfang und tatsächliche Primärgrenze: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-single-state-forward-direct-source-informed-independent-b-20261018-v1/REVIEW.fifty-three-rows-sixty-nine-pairs.FIRST.informed-independent-b.json. Keine ganze Quellenfreigabe, neue D/P/A/M/V-Stimme oder Lernendenausführung.",
+      "reviewedAt": "2026-10-18T02:35:05.549413+00:00",
+      "reviewer": "chemie450-single53-informed-independent-b; technische Übernahme durch /root"
+    },
+    {
+      "sourceGoalId": "he-chemistry-sekii-kc2024-current2026-standard-b12",
+      "topicCode": "3.2",
+      "sourceSpan": {
+        "passageId": "he-chemistry-sekii-kc2024-current2026:standards-b",
+        "label": "physical PDF28, 3.2, B12"
+      },
+      "decision": "mapped",
+      "canonicalGoalIds": [
+        "9f892457-c4e5-56da-830c-bf6cac0c98d7"
+      ],
+      "matchType": "partial",
+      "rationale": "Unabhängig angenommene partielle Quellenbeziehung: Ammoniak und Kühlung verknüpfen historische und aktuelle Produkte, Methoden, Verfahren und Erkenntnisse. Alle drei Nachhaltigkeitsperspektiven, eigenes begrenztes Informations-/Nutzungs-/Meldehandeln und geänderte Wissens-/Leckagebedingungen werden tatsächlich verlangt. B10, B12 und B13 current2026 sind je eigene partielle Beiträge. HB-Zuckerfall bleibt HB; keine vollständige reale Ökobilanz oder eigenmächtige Düngung/Kühlanlagenarbeit. Teilumfang und tatsächliche Primärgrenze: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-single-state-forward-direct-source-informed-independent-b-20261018-v1/REVIEW.fifty-three-rows-sixty-nine-pairs.FIRST.informed-independent-b.json. Keine ganze Quellenfreigabe, neue D/P/A/M/V-Stimme oder Lernendenausführung.",
+      "reviewedAt": "2026-10-18T02:35:05.549413+00:00",
+      "reviewer": "chemie450-single53-informed-independent-b; technische Übernahme durch /root"
+    },
+    {
+      "sourceGoalId": "he-chemistry-sekii-kc2024-current2026-standard-b13",
+      "topicCode": "3.2",
+      "sourceSpan": {
+        "passageId": "he-chemistry-sekii-kc2024-current2026:standards-b",
+        "label": "physical PDF28, 3.2, B13"
+      },
+      "decision": "mapped",
+      "canonicalGoalIds": [
+        "9f892457-c4e5-56da-830c-bf6cac0c98d7",
+        "c21a611c-1069-5b32-b673-4f37a89b094f"
+      ],
+      "matchType": "partial",
+      "rationale": "Unabhängig angenommene partielle Quellenbeziehung: Ammoniak und Kühlung verknüpfen historische und aktuelle Produkte, Methoden, Verfahren und Erkenntnisse. Alle drei Nachhaltigkeitsperspektiven, eigenes begrenztes Informations-/Nutzungs-/Meldehandeln und geänderte Wissens-/Leckagebedingungen werden tatsächlich verlangt. B10, B12 und B13 current2026 sind je eigene partielle Beiträge. HB-Zuckerfall bleibt HB; keine vollständige reale Ökobilanz oder eigenmächtige Düngung/Kühlanlagenarbeit. Fossil-/Bio-PE und der geänderte Strommix/Nutzungszahlfall vergleichen gleichen Dienst, Klima, Land/Wasser und Sammlung/Recyclinggrenzen. Das trägt echte ökologische und ökonomische Nachhaltigkeitsanteile. B13 current2026 enthält zusätzlich Sozialperspektive und Wirkungen eigenen Handelns; diese werden von diesem Einzelziel nicht als erledigt bestätigt. HB-Mikroplastik bleibt kein HE-Pflichtkredit. Teilumfang und tatsächliche Primärgrenze: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-single-state-forward-direct-source-informed-independent-b-20261018-v1/REVIEW.fifty-three-rows-sixty-nine-pairs.FIRST.informed-independent-b.json. Keine ganze Quellenfreigabe, neue D/P/A/M/V-Stimme oder Lernendenausführung.",
+      "reviewedAt": "2026-10-18T02:35:05.549413+00:00",
+      "reviewer": "chemie450-single53-informed-independent-b; technische Übernahme durch /root"
+    },
+    {
+      "sourceGoalId": "he-chemistry-sekii-kc2024-current2026-standard-e12",
+      "topicCode": "3.2",
+      "sourceSpan": {
+        "passageId": "he-chemistry-sekii-kc2024-current2026:standards-e",
+        "label": "physical PDF26, 3.2, E12"
+      },
+      "decision": "mapped",
+      "canonicalGoalIds": [
+        "a0080b5f-13ff-56bc-b8ff-2ff6273e2ec1",
+        "a8800c36-d13c-5f63-962c-cf18c3795c63"
+      ],
+      "matchType": "partial",
+      "rationale": "Unabhängig angenommene partielle Quellenbeziehung: Alle fünf Gültigkeitsaspekte werden an kontrolliertem bzw. unkalibriertem Gegenbefund und Q≠K vor Einstellung geprüft; Temperaturwechsel erfordert eine neue prüfbare K(T)-Aussage. Das ist konkrete E12-Reflexion statt bloßer Begriffsliste. Current2026 SekII. Keine eigene Durchführung, kein universeller Theorienbeweis und keine erfundene Richtung oder Zahl bei fehlenden neuen Daten. Fremde Metallverdrängungs-/Gasarchive werden durch Frage, Kontrolle, Beobachtung und begrenzte Produktdeutung rekonstruiert. Neue spezifische Analyse und positive Glaskontrolle zwingen eine begrenzte Revision. Das ist ein konkreter Möglichkeiten-/Grenzenanteil E12. Nur current2026-SekII-Teilzeuge trotz kanonischem SekI-Tag. Kein SekI-HE-Quellenbeleg, keine eigenen Ergebnisse nach E10 und keine gesamte Fünf-Kriterienleistung. Teilumfang und tatsächliche Primärgrenze: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-single-state-forward-direct-source-informed-independent-b-20261018-v1/REVIEW.fifty-three-rows-sixty-nine-pairs.FIRST.informed-independent-b.json. Keine ganze Quellenfreigabe, neue D/P/A/M/V-Stimme oder Lernendenausführung.",
+      "reviewedAt": "2026-10-18T02:35:05.549413+00:00",
+      "reviewer": "chemie450-single53-informed-independent-b; technische Übernahme durch /root"
+    },
+    {
+      "sourceGoalId": "he-chemistry-sekii-kc2024-current2026-standard-s15",
+      "topicCode": "3.2",
+      "sourceSpan": {
+        "passageId": "he-chemistry-sekii-kc2024-current2026:standards-s",
+        "label": "physical PDF24, 3.2, S15"
+      },
+      "decision": "mapped",
+      "canonicalGoalIds": [
+        "a0f6ba09-f072-5887-a797-fa369453c62a"
+      ],
+      "matchType": "partial",
+      "rationale": "Unabhängig angenommene partielle Quellenbeziehung: Im ganzen Wasser-Austauschmaterial bleiben beide Transfers aus demselben Rundenanfang positiv, obwohl ungleiche Mengen stationär werden. Durchführung/Protokoll, Regelwechsel und Leck-Gegenfall erklären die Analogie Stoffzustand/Teilchendynamik. S15 current2026 nur als Modellteil. Das Modell wird vorgegeben; keine E7-Auswahlleistung, echte chemische Umwandlung oder chemische Gleichgewichtskonstante wird daraus. Vorhandenes LK-Target bleibt begrenzt. Teilumfang und tatsächliche Primärgrenze: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-single-state-forward-direct-source-informed-independent-b-20261018-v1/REVIEW.fifty-three-rows-sixty-nine-pairs.FIRST.informed-independent-b.json. Keine ganze Quellenfreigabe, neue D/P/A/M/V-Stimme oder Lernendenausführung.",
+      "reviewedAt": "2026-10-18T02:35:05.549413+00:00",
+      "reviewer": "chemie450-single53-informed-independent-b; technische Übernahme durch /root"
+    },
+    {
+      "sourceGoalId": "he-chemistry-sekii-kc2024-current2026-standard-s2",
+      "topicCode": "3.2",
+      "sourceSpan": {
+        "passageId": "he-chemistry-sekii-kc2024-current2026:standards-s",
+        "label": "physical PDF23, 3.2, S2"
+      },
+      "decision": "mapped",
+      "canonicalGoalIds": [
+        "dfbccd62-1203-5d1b-927d-65a4ca41bbad"
+      ],
+      "matchType": "partial",
+      "rationale": "Unabhängig angenommene partielle Quellenbeziehung: A/V-Geometrie und kontrollierte Chemie-/Rauheitsvergleiche begründen bedingte Materialvoraussagen. Der Fixierungsfall trennt Größenwirkung, Umsatz und Freisetzung; Gegenkontrolle und fehlende Exposition begrenzen das Urteil. Das trägt S2. Nur current2026 SekII-S2-Teil. Die eng benannte Ag-Polyolefin-Inhaltszelle wird nicht auf beliebige Nanowerkstoffe erweitert; HB-Kompositfall und Produktsicherheitsfreigabe bleiben getrennt. Teilumfang und tatsächliche Primärgrenze: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-single-state-forward-direct-source-informed-independent-b-20261018-v1/REVIEW.fifty-three-rows-sixty-nine-pairs.FIRST.informed-independent-b.json. Keine ganze Quellenfreigabe, neue D/P/A/M/V-Stimme oder Lernendenausführung.",
+      "reviewedAt": "2026-10-18T02:35:05.549413+00:00",
+      "reviewer": "chemie450-single53-informed-independent-b; technische Übernahme durch /root"
+    },
+    {
+      "sourceGoalId": "he-chemistry-sekii-kc2024-current2026-standard-e4",
+      "topicCode": "3.2",
+      "sourceSpan": {
+        "passageId": "he-chemistry-sekii-kc2024-current2026:standards-e",
+        "label": "physical PDF24, 3.2, E4"
+      },
+      "decision": "mapped",
+      "canonicalGoalIds": [
+        "f79f15c0-e848-5e17-9eb5-26753d35c93b",
+        "42391b16-bbae-5c77-84e1-d488e714167b"
+      ],
+      "matchType": "partial",
+      "rationale": "Unabhängig angenommene partielle Quellenbeziehung: Die ganzen Säure-/Photometriefälle verlangen weitgehend eigene Hypothesen-/Methodenplanung und tatsächlich sichere qual/quant-Ausführung mit Originaldaten, Blank/Standards und Wiederholung. Standardfehler und echte neue In-Bereich-Verdünnungsmessung werden differenziert behandelt. E4/E5 nur current2026 SekII-Teil. Referenztitration/Kalibrierwerte sind keine eigenen Daten; Faktor2 garantiert keinen gültigen neuen Messwert. Konkrete Stoff-/Sicherheitsfreigabe und eigene Ausführung bleiben zwingend. Teilumfang und tatsächliche Primärgrenze: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-single-state-forward-direct-source-informed-independent-b-20261018-v1/REVIEW.fifty-three-rows-sixty-nine-pairs.FIRST.informed-independent-b.json. Keine ganze Quellenfreigabe, neue D/P/A/M/V-Stimme oder Lernendenausführung.",
+      "reviewedAt": "2026-10-18T02:35:05.549413+00:00",
+      "reviewer": "chemie450-single53-informed-independent-b; technische Übernahme durch /root",
+      "additionalAcceptedPartialContributions": [
+        {
+          "canonicalGoalId": "42391b16-bbae-5c77-84e1-d488e714167b",
+          "matchType": "partial",
+          "independentAcceptedRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+            "jsonPointer": "/relations/72",
+            "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+          },
+          "currentWholeGoalSHA256": "10c50e60597b4d44b7863f7cd9a3fee03dd4ed28eda107ab60e246376bc5fda0",
+          "currentWholeProfileSHA256": "681748ddc2c40301327a26d2660bd5d991bf645922140e28fbb70dba7b6bfaec",
+          "acceptedPartDe": "Eigener hypothesenbezogener Versuchsplan mit Variablenkontrolle und entscheidbarem Gegenbefund.",
+          "acceptedPartEn": "Own hypothesis-related experimental plan with variable control and a discriminating counterfinding.",
+          "remainingDutiesDe": "NI/SL/SH-Einzeloperatoren tragen nur Planung, Handling oder Protokoll gemäß ihrem Wortlaut. Keine Übertragung der5 HB-Proteinbedingungen oder HB-Öl/Wasser/Ethanol/Heptan-Zusätze auf andere Länder, keine ganze Forschungsmethodik. Der vollständige angegebene Operator bleibt maßgeblich; ausschließlich das konkrete aktuelle C/P-Teilmodell wird vorgeschlagen. Alle übrigen Operator-/Kontextpflichten bleiben offen.",
+          "remainingDutiesEn": "NI/SL/SH individual operators support only planning, handling or recording according to their wording. Do not transfer the5 HB protein conditions or HB oil/water/ethanol/heptane additions to other states; no complete research-method coverage. The complete quoted source operator remains binding; all unassessed verbs, contexts and course demands remain open.",
+          "wholeSourceApproval": false,
+          "actualLearnerExecutionClaim": false,
+          "newScientificVoteByTechnicalIntegrator": false
+        }
+      ]
+    },
+    {
+      "sourceGoalId": "he-chemistry-sekii-kc2024-current2026-standard-k4",
+      "topicCode": "K4",
+      "sourceSpan": {
+        "passageId": "he-chemistry-sekii-kc2024-current2026-standard-k4:whole-primary-context",
+        "label": "K4, physical PDF26"
+      },
+      "sourceCourseLevel": "GK_LK",
+      "sourceStageCourseAndContext": "DE-HE SekII end-of-qualification process standard; common GK/LK operator, differentiated depth and independence remain. This finite partial contribution creates no universal duty to the complete own cases or whole-source completion.",
+      "decision": "mapped",
+      "canonicalGoalIds": [
+        "36666b4a-97af-51fc-9983-56cdcc7a8229"
+      ],
+      "matchType": "partial",
+      "rationale": "Only the specific independently accepted partial source relations below are current. No whole-source/course/topic coverage or learner execution is asserted.",
+      "reviewedAt": "2026-10-18",
+      "reviewer": "Independent informed B source reviewer; technical integrator adds no vote",
+      "scientificEvidence": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+          "jsonPointer": "/relations/57",
+          "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+        }
+      ],
+      "additionalAcceptedPartialContributions": [
+        {
+          "canonicalGoalId": "36666b4a-97af-51fc-9983-56cdcc7a8229",
+          "matchType": "partial",
+          "independentAcceptedRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+            "jsonPointer": "/relations/57",
+            "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+          },
+          "currentWholeGoalSHA256": "612e3829291025facd6e1a39055618e34858f4a09753814b6a771d4a18146bda",
+          "currentWholeProfileSHA256": "350149f9d23652ed937b27bafcdc6a273d5288afc6ea11a86120935355753d25",
+          "acceptedPartDe": "Belegte Prüfung der konkreten Quellenbehauptung auf fachliche Tragweite/Vertrauenswürdigkeit anhand tatsächlich vorhandener Angaben.",
+          "acceptedPartEn": "Evidence-based checking of the actual source claim for scientific reach/trust using actually available information.",
+          "remainingDutiesDe": "SN trägt nur die chemisch sachgerechte Text-/Grafikanalyse, keine ganze Herkunfts-/Intentionenprüfung. SLs allgemeine Kommunikationsdefinition enthält keinen eigenständigen kritischen Prüfoperator und erhält hier HOLD. Der vollständige angegebene Operator bleibt maßgeblich; ausschließlich das konkrete aktuelle C/P-Teilmodell wird vorgeschlagen. Alle übrigen Operator-/Kontextpflichten bleiben offen.",
+          "remainingDutiesEn": "SN supports only scientifically appropriate text/graphic analysis, not a whole provenance/intent evaluation. SL general communication has no distinct critical-checking operator and is held here. The complete quoted source operator remains binding; all unassessed verbs, contexts and course demands remain open.",
+          "wholeSourceApproval": false,
+          "actualLearnerExecutionClaim": false,
+          "newScientificVoteByTechnicalIntegrator": false
+        }
+      ],
+      "wholeSourceCompletionFromSingleGoalMasteryAllowed": false
+    },
+    {
+      "sourceGoalId": "he-chemistry-sekii-kc2024-current2026-standard-e2",
+      "topicCode": "E2",
+      "sourceSpan": {
+        "passageId": "he-chemistry-sekii-kc2024-current2026-standard-e2:whole-primary-context",
+        "label": "E2, physical PDF24"
+      },
+      "sourceCourseLevel": "GK_LK",
+      "sourceStageCourseAndContext": "DE-HE SekII end-of-qualification process standard; common GK/LK operator, differentiated depth and independence remain. This finite partial contribution creates no universal duty to the complete own cases or whole-source completion.",
+      "decision": "mapped",
+      "canonicalGoalIds": [
+        "503dedcb-0efc-5e6b-bbc9-20761a0951f5",
+        "75e2eff1-f871-5461-9e3f-26d0b333ce2f"
+      ],
+      "matchType": "partial",
+      "rationale": "Only the specific independently accepted partial source relations below are current. No whole-source/course/topic coverage or learner execution is asserted.",
+      "reviewedAt": "2026-10-18",
+      "reviewer": "Independent informed B source reviewer; technical integrator adds no vote",
+      "scientificEvidence": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+          "jsonPointer": "/relations/86",
+          "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+          "jsonPointer": "/relations/92",
+          "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+        }
+      ],
+      "additionalAcceptedPartialContributions": [
+        {
+          "canonicalGoalId": "503dedcb-0efc-5e6b-bbc9-20761a0951f5",
+          "matchType": "partial",
+          "independentAcceptedRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+            "jsonPointer": "/relations/86",
+            "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+          },
+          "currentWholeGoalSHA256": "f000033a25044fde6fca1d5aafb699a0d912ea9a9dcb6044c283a0f61d190948",
+          "currentWholeProfileSHA256": "1b3013b11716980d418167a52b320c63f41459de0b6867f24b7a3b9e9d912535",
+          "acceptedPartDe": "Eigene chemisch untersuchbare Fragestellung; weitergehende Theorie-/Durchführungsanteile bleiben eigenständig.",
+          "acceptedPartEn": "Own chemically investigable question; broader theory/performance parts remain separate.",
+          "remainingDutiesDe": "E2 trägt Fragebildung, E3 theoriegeleitete Hypothesen. Eigene weitergehende GK-Erwerbsrechnung bleibt eigene Route, keine amtliche allgemeine schwache-Säure-Rechenpflicht; kein Experiment oder empirischer Befund. Der vollständige angegebene Operator bleibt maßgeblich; ausschließlich das konkrete aktuelle C/P-Teilmodell wird vorgeschlagen. Alle übrigen Operator-/Kontextpflichten bleiben offen.",
+          "remainingDutiesEn": "E2 supports question formation and E3 theory-guided hypotheses. The broader own GK acquisition calculation remains an own route rather than a universal official weak-acid calculation duty; no experiment or empirical result is claimed. The complete quoted source operator remains binding; all unassessed verbs, contexts and course demands remain open.",
+          "wholeSourceApproval": false,
+          "actualLearnerExecutionClaim": false,
+          "newScientificVoteByTechnicalIntegrator": false
+        },
+        {
+          "canonicalGoalId": "75e2eff1-f871-5461-9e3f-26d0b333ce2f",
+          "matchType": "partial",
+          "independentAcceptedRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+            "jsonPointer": "/relations/92",
+            "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+          },
+          "currentWholeGoalSHA256": "222a48177e1385ad84874ca9823ea519c284c5a5751fdc7d778e06ad48aeb81e",
+          "currentWholeProfileSHA256": "c462066dd5a51454c25aa62b738f9ba12ed1185c71078b6f1f85e0637fd67d43",
+          "acceptedPartDe": "Eigene chemisch untersuchbare Fragestellung; weitergehende Theorie-/Durchführungsanteile bleiben eigenständig.",
+          "acceptedPartEn": "Own chemically investigable question; broader theory/performance parts remain separate.",
+          "remainingDutiesDe": "HE/RP-E2 trägt nur die eigene Frage; NW-EP-E3 zusätzlich überprüfbare Hypothesen auf der ausgewählten EP-Stufe. Keine ganze Q-Theoriestufe und keine tatsächliche Durchführung. Der vollständige angegebene Operator bleibt maßgeblich; ausschließlich das konkrete aktuelle C/P-Teilmodell wird vorgeschlagen. Alle übrigen Operator-/Kontextpflichten bleiben offen.",
+          "remainingDutiesEn": "HE/RP E2 supports only the own question; NW introductory E3 additionally supports testable hypotheses at its selected introductory level. No whole qualification-level theory or actual performance is established. The complete quoted source operator remains binding; all unassessed verbs, contexts and course demands remain open.",
+          "wholeSourceApproval": false,
+          "actualLearnerExecutionClaim": false,
+          "newScientificVoteByTechnicalIntegrator": false
+        }
+      ],
+      "wholeSourceCompletionFromSingleGoalMasteryAllowed": false
+    },
+    {
+      "sourceGoalId": "he-chemistry-sekii-kc2024-current2026-standard-e3",
+      "topicCode": "E3",
+      "sourceSpan": {
+        "passageId": "he-chemistry-sekii-kc2024-current2026-standard-e3:whole-primary-context",
+        "label": "E3, physical PDF24"
+      },
+      "sourceCourseLevel": "GK_LK",
+      "sourceStageCourseAndContext": "DE-HE SekII end-of-qualification process standard; common GK/LK operator, differentiated depth and independence remain. This finite partial contribution creates no universal duty to the complete own cases or whole-source completion.",
+      "decision": "mapped",
+      "canonicalGoalIds": [
+        "503dedcb-0efc-5e6b-bbc9-20761a0951f5"
+      ],
+      "matchType": "partial",
+      "rationale": "Only the specific independently accepted partial source relations below are current. No whole-source/course/topic coverage or learner execution is asserted.",
+      "reviewedAt": "2026-10-18",
+      "reviewer": "Independent informed B source reviewer; technical integrator adds no vote",
+      "scientificEvidence": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+          "jsonPointer": "/relations/87",
+          "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+        }
+      ],
+      "additionalAcceptedPartialContributions": [
+        {
+          "canonicalGoalId": "503dedcb-0efc-5e6b-bbc9-20761a0951f5",
+          "matchType": "partial",
+          "independentAcceptedRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+            "jsonPointer": "/relations/87",
+            "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+          },
+          "currentWholeGoalSHA256": "f000033a25044fde6fca1d5aafb699a0d912ea9a9dcb6044c283a0f61d190948",
+          "currentWholeProfileSHA256": "1b3013b11716980d418167a52b320c63f41459de0b6867f24b7a3b9e9d912535",
+          "acceptedPartDe": "Eigene bedingte überprüfbare Hypothese; Q theoriegeleitet, NW-EP nur die ausgewählte überprüfbare Stufe.",
+          "acceptedPartEn": "Own conditional testable hypothesis; qualification level is theory-guided, NW introductory only its selected testable level.",
+          "remainingDutiesDe": "E2 trägt Fragebildung, E3 theoriegeleitete Hypothesen. Eigene weitergehende GK-Erwerbsrechnung bleibt eigene Route, keine amtliche allgemeine schwache-Säure-Rechenpflicht; kein Experiment oder empirischer Befund. Der vollständige angegebene Operator bleibt maßgeblich; ausschließlich das konkrete aktuelle C/P-Teilmodell wird vorgeschlagen. Alle übrigen Operator-/Kontextpflichten bleiben offen.",
+          "remainingDutiesEn": "E2 supports question formation and E3 theory-guided hypotheses. The broader own GK acquisition calculation remains an own route rather than a universal official weak-acid calculation duty; no experiment or empirical result is claimed. The complete quoted source operator remains binding; all unassessed verbs, contexts and course demands remain open.",
+          "wholeSourceApproval": false,
+          "actualLearnerExecutionClaim": false,
+          "newScientificVoteByTechnicalIntegrator": false
+        }
+      ],
+      "wholeSourceCompletionFromSingleGoalMasteryAllowed": false
+    },
+    {
+      "sourceGoalId": "he-chemistry-sekii-kc2024-current2026-standard-e6",
+      "topicCode": "E6",
+      "sourceSpan": {
+        "passageId": "he-chemistry-sekii-kc2024-current2026-standard-e6:whole-primary-context",
+        "label": "E6, physical PDF24"
+      },
+      "sourceCourseLevel": "GK_LK",
+      "sourceStageCourseAndContext": "DE-HE SekII end-of-qualification process standard; common GK/LK operator, differentiated depth and independence remain. This finite partial contribution creates no universal duty to the complete own cases or whole-source completion.",
+      "decision": "mapped",
+      "canonicalGoalIds": [
+        "9e3fae29-84d5-5600-bfb3-82d49ea3f1b5"
+      ],
+      "matchType": "partial",
+      "rationale": "Only the specific independently accepted partial source relations below are current. No whole-source/course/topic coverage or learner execution is asserted.",
+      "reviewedAt": "2026-10-18",
+      "reviewer": "Independent informed B source reviewer; technical integrator adds no vote",
+      "scientificEvidence": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+          "jsonPointer": "/relations/98",
+          "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+        }
+      ],
+      "additionalAcceptedPartialContributions": [
+        {
+          "canonicalGoalId": "9e3fae29-84d5-5600-bfb3-82d49ea3f1b5",
+          "matchType": "partial",
+          "independentAcceptedRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+            "jsonPointer": "/relations/98",
+            "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+          },
+          "currentWholeGoalSHA256": "d7a16b472eff7f0b71e3b66e34b522934ddee81d413181571e3e46ff307cd7cf",
+          "currentWholeProfileSHA256": "bc65505cb7d26cd25f329217093ccc3af5583f9c2474e2d89282153565b48882",
+          "acceptedPartDe": "Tatsächlich eigene digitale Datei/Formeln/Regression/Residuen aus bezeichneten Modell-Rohdaten.",
+          "acceptedPartEn": "Actually own digital file/formulas/regression/residuals from labelled model raw data.",
+          "remainingDutiesDe": "E6 trägt tatsächliche digitale Verarbeitung, E8 theoriebezogene Datenfolgerung. Modell-/Fremddaten sind keine eigene Messwerterhebung; HB-eigene Drucksimulation und deren Erfassung bleibt HB, keine Sensorpflicht in HE/RP. Der vollständige angegebene Operator bleibt maßgeblich; ausschließlich das konkrete aktuelle C/P-Teilmodell wird vorgeschlagen. Alle übrigen Operator-/Kontextpflichten bleiben offen.",
+          "remainingDutiesEn": "E6 supports actual digital processing and E8 theory-related data inference. Model/external data are not own measurement acquisition; the HB own pressure simulation/acquisition remains HB-only, with no sensor duty in HE/RP. The complete quoted source operator remains binding; all unassessed verbs, contexts and course demands remain open.",
+          "wholeSourceApproval": false,
+          "actualLearnerExecutionClaim": false,
+          "newScientificVoteByTechnicalIntegrator": false
+        }
+      ],
+      "wholeSourceCompletionFromSingleGoalMasteryAllowed": false
+    },
+    {
+      "sourceGoalId": "he-chemistry-sekii-kc2024-current2026-standard-s7",
+      "topicCode": "3.2",
+      "sourceSpan": {
+        "passageId": "he-chemistry-sekii-kc2024-current2026:standards-s",
+        "label": "physical PDF23, 3.2, S7"
+      },
+      "decision": "mapped",
+      "canonicalGoalIds": [
+        "acdfc7d7-6d6b-5a1f-837c-79449c29a305",
+        "edcfc5f0-900d-5819-830f-3b14af2bc369"
+      ],
+      "matchType": "partial",
+      "rationale": "Specific source-to-goal components independently accepted in the referenced actual informed FIRST decisions; all other source verbs/context remain separate.",
+      "reviewer": "Technical transport only; actual independent scientific acceptance references below",
+      "reviewedAt": "2026-10-18T03:44:14.777850+00:00",
+      "additionalAcceptedPartialContributions": [
+        {
+          "canonicalGoalId": "acdfc7d7-6d6b-5a1f-837c-79449c29a305",
+          "matchType": "partial",
+          "acceptedScientificRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-multistate-source-informed-independent-b-part-b-20261018-v1/ACCEPTED.exact-fifty-five-partial-one-held-HE-placement.json",
+            "sha256": "ab921ae7928e26b5f58b2c25c8c72c470b2c3b4c111cb9fae09b92b821ef7f48",
+            "bytes": 43536,
+            "jsonPointer": "/approvedPartial/37"
+          },
+          "rationale": "Whole P derives strong/weak monoprotic initial-acid pH from MWG, quadratic/square-root models, dilution and water-ionisation limits. Exact selected official operator: beschreiben die Umkehrbarkeit chemischer Reaktionen, das dynamische Gleichgewicht und das Donator-Akzeptor-Prinzip und wenden diese an Boundary: Initial acid solution only; no complete titration, half-equivalence, salt or excess-point credit.",
+          "wholeSourceCompletionFromSingleGoalMasteryAllowed": false
+        },
+        {
+          "canonicalGoalId": "edcfc5f0-900d-5819-830f-3b14af2bc369",
+          "matchType": "partial",
+          "acceptedScientificRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-multistate-source-informed-independent-b-part-b-20261018-v1/ACCEPTED.exact-fifty-five-partial-one-held-HE-placement.json",
+            "sha256": "ab921ae7928e26b5f58b2c25c8c72c470b2c3b4c111cb9fae09b92b821ef7f48",
+            "bytes": 43536,
+            "jsonPointer": "/approvedPartial/50"
+          },
+          "rationale": "Whole P derives strong/weak initial-base pH via Kb/MWG/quadratic or square-root model with temperature and water limits. Exact selected official operator: beschreiben die Umkehrbarkeit chemischer Reaktionen, das dynamische Gleichgewicht und das Donator-Akzeptor-Prinzip und wenden diese an Boundary: Initial solution/initial titration point only; no full weak-base titration curve, half-equivalence, salt or excess-point completion.",
+          "wholeSourceCompletionFromSingleGoalMasteryAllowed": false
+        }
+      ],
+      "wholeSourceCompletionFromSingleGoalMasteryAllowed": false
     }
-  ]
+  ],
+  "selectedProcessTechnicalIntegration": {
+    "independentAcceptedRef": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+      "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+      "bytes": 269340
+    },
+    "scientificSeal": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/SEAL.independent-a.sixty-pair-source-review.json",
+      "sha256": "d7fecd788bfce678d6cb4688c8ccf4ddb518b10734936e0fbd20794ab637eba4",
+      "bytes": 3920
+    },
+    "historicalInventoryStatus": {
+      "status": "complete",
+      "summary": {
+        "sourceGoals": 202,
+        "mappedSourceGoals": 202,
+        "needsCanonicalGoal": 0,
+        "exactMappings": 133,
+        "partialMappings": 69
+      }
+    },
+    "acceptedPartialContributionsInThisAlias": 8,
+    "newWholeSourceApprovals": 0,
+    "newScientificFirstDecisionsByIntegrator": 0,
+    "actualSourceInventoryCount": 219,
+    "wholeSourceCoverageClaim": false,
+    "actualLearnerExecutionClaim": false,
+    "humanApprovalClaim": false,
+    "exactSourceBoundContributions": [
+      {
+        "sourceGoalId": "he-chemistry-sekii-kc2024-current2026-standard-e5",
+        "canonicalGoalId": "9fc800d1-92d1-5ef6-81c1-33960ae034dd",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_CHEMIE_SEKII_KC2024_CURRENT2026.source-extraction.json",
+        "independentAcceptedRef": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+          "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+          "bytes": 269340,
+          "jsonPointer": "/mappings/0"
+        }
+      },
+      {
+        "sourceGoalId": "he-chemistry-sekii-kc2024-current2026-standard-e8",
+        "canonicalGoalId": "7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_CHEMIE_SEKII_KC2024_CURRENT2026.source-extraction.json",
+        "independentAcceptedRef": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+          "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+          "bytes": 269340,
+          "jsonPointer": "/mappings/1"
+        }
+      },
+      {
+        "sourceGoalId": "he-chemistry-sekii-kc2024-current2026-standard-k1",
+        "canonicalGoalId": "5b1bb5d9-07b1-5ba9-b320-cc97be917c60",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_CHEMIE_SEKII_KC2024_CURRENT2026.source-extraction.json",
+        "independentAcceptedRef": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+          "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+          "bytes": 269340,
+          "jsonPointer": "/mappings/2"
+        }
+      },
+      {
+        "sourceGoalId": "he-chemistry-sekii-kc2024-current2026-standard-k2",
+        "canonicalGoalId": "5b1bb5d9-07b1-5ba9-b320-cc97be917c60",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_CHEMIE_SEKII_KC2024_CURRENT2026.source-extraction.json",
+        "independentAcceptedRef": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+          "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+          "bytes": 269340,
+          "jsonPointer": "/mappings/3"
+        }
+      },
+      {
+        "sourceGoalId": "he-chemistry-sekii-kc2024-current2026-standard-k5",
+        "canonicalGoalId": "5b1bb5d9-07b1-5ba9-b320-cc97be917c60",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_CHEMIE_SEKII_KC2024_CURRENT2026.source-extraction.json",
+        "independentAcceptedRef": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+          "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+          "bytes": 269340,
+          "jsonPointer": "/mappings/4"
+        }
+      },
+      {
+        "sourceGoalId": "he-chemistry-sekii-kc2024-current2026-standard-k8",
+        "canonicalGoalId": "5b1bb5d9-07b1-5ba9-b320-cc97be917c60",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_CHEMIE_SEKII_KC2024_CURRENT2026.source-extraction.json",
+        "independentAcceptedRef": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+          "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+          "bytes": 269340,
+          "jsonPointer": "/mappings/5"
+        }
+      },
+      {
+        "sourceGoalId": "he-chemistry-sekii-kc2024-current2026-standard-b3",
+        "canonicalGoalId": "4aa3a130-b517-5ac5-87b2-147fe432cadd",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_CHEMIE_SEKII_KC2024_CURRENT2026.source-extraction.json",
+        "independentAcceptedRef": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+          "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+          "bytes": 269340,
+          "jsonPointer": "/mappings/6"
+        }
+      },
+      {
+        "sourceGoalId": "he-chemistry-sekii-kc2024-current2026-standard-b5",
+        "canonicalGoalId": "431a0f03-f28a-5e56-a61f-000336d0b410",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_CHEMIE_SEKII_KC2024_CURRENT2026.source-extraction.json",
+        "independentAcceptedRef": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+          "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+          "bytes": 269340,
+          "jsonPointer": "/mappings/7"
+        }
+      }
+    ]
+  },
+  "fourteenMethodPartialIntegration": {
+    "independentAcceptedRef": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/ACCEPTED.exact104-direct-partial-two-literal-three-held.json",
+      "sha256": "9958d0a23bb96b4cce0ed69f2018631764f5fe943d87ed8136ef2ba070457119",
+      "bytes": 99336
+    },
+    "newPartialMappingRows": 11,
+    "newSourceDecisionIds": [
+      "he-chemistry-sekii-kc2024-current2026-standard-k4",
+      "he-chemistry-sekii-kc2024-current2026-standard-e2",
+      "he-chemistry-sekii-kc2024-current2026-standard-e3",
+      "he-chemistry-sekii-kc2024-current2026-standard-e6"
+    ],
+    "allOldMappingRowsAndOldDecisionFieldsPreserved": true,
+    "wholeSourceCoverageEstablished": false,
+    "newScientificFirstDecisionsByTechnicalIntegrator": 0
+  }
 }

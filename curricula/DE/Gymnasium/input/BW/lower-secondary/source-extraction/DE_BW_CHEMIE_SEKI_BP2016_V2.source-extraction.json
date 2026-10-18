@@ -15,7 +15,163 @@
   },
   "method": {
     "passageExtraction": "pdftotext -layout; segmented by official BW Chemie competency section headings 3.2.* to 3.4.*",
-    "sourceGoalExtraction": "one source goal per official numbered competency expectation; original statement retained in sourceText"
+    "sourceGoalExtraction": "one source goal per official numbered competency expectation; original statement retained in sourceText",
+    "fortyContentAcceptedPartialAddition": {
+      "technicalIntegration": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-reviewed-source-integration-technical-20261018-v1",
+      "independentAcceptedRefs": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-first-twenty-source-informed-independent-a-20261018-v1/ACCEPTED.one-hundred-sixty-four-bounded-direct-relations.with-explicit-context-conditions.json",
+          "sha256": "5af30ee6b2cb919a8445f2668c963b81d22583cb241a8d64f8df469f93da06cf",
+          "bytes": 735256
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-multistate-source-informed-independent-b-part-b-20261018-v1/ACCEPTED.exact-fifty-five-partial-one-held-HE-placement.json",
+          "sha256": "ab921ae7928e26b5f58b2c25c8c72c470b2c3b4c111cb9fae09b92b821ef7f48",
+          "bytes": 43536
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-first-twenty-source-informed-independent-a-20261018-v1/ACCEPTED.six-existing-literal-source-acquisition-foundations.json",
+          "sha256": "c9f3aab904f4b1152d7b8d370b6fddacb997b08a2c784e70032618408a86492c",
+          "bytes": 20744
+        }
+      ],
+      "retainedImmediateBeforeCells": 65,
+      "newCompleteSelectedCells": 1,
+      "currentActualUnionCells": 66,
+      "selectedSameIDCorrections": 0,
+      "allOtherOldCellsAndPassagesExact": true,
+      "noWholeOfficialStandardsUniverseClaim": true,
+      "previousPipelineStatusHistorical": {
+        "currentStep": "MAPPING-3",
+        "steps": [
+          {
+            "id": "MAPPING-1",
+            "label": "Original-Lehrplanpassagen extrahiert",
+            "status": "complete",
+            "dependsOn": [],
+            "checks": [
+              {
+                "id": "source-document-present",
+                "label": "Amtliche BW-Chemie-Quelle liegt lokal vor",
+                "passed": true,
+                "details": "curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_CH_V2.pdf"
+              },
+              {
+                "id": "expected-topic-coverage",
+                "label": "Alle erwarteten BW-Chemie-Kompetenzbereiche sind als Lehrplanpassagen vorhanden",
+                "passed": true,
+                "details": "6/6 Bereiche; fehlend: -"
+              },
+              {
+                "id": "unique-topic-passages",
+                "label": "Jeder Kompetenzbereich hat genau eine Passage",
+                "passed": true,
+                "details": "Doppelte Bereiche: -"
+              },
+              {
+                "id": "passage-text-present",
+                "label": "Jede Passage enthält offiziellen Text",
+                "passed": true,
+                "details": "Passagen ohne Text: -"
+              },
+              {
+                "id": "passage-extraction-source",
+                "label": "Passage-Extraction basiert auf amtlicher PDF-Quelle statt Legacy-Snapshot",
+                "passed": true,
+                "details": "Quelle: curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_CH_V2.pdf"
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-2",
+            "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+            "status": "complete",
+            "dependsOn": [
+              "MAPPING-1"
+            ],
+            "checks": [
+              {
+                "id": "source-goals-created",
+                "label": "Aus den amtlichen BW-Chemie-Kompetenzerwartungen wurden Source-Ziele erzeugt",
+                "passed": true,
+                "details": "65 Source-Ziele"
+              },
+              {
+                "id": "passage-to-source-goal-coverage",
+                "label": "Jede Passage hat mindestens ein Source-Ziel",
+                "passed": true,
+                "details": "Passagen ohne Source-Ziele: -"
+              },
+              {
+                "id": "source-goal-ids-unique",
+                "label": "Source-Ziel-IDs sind eindeutig",
+                "passed": true,
+                "details": "Doppelte IDs: -"
+              },
+              {
+                "id": "source-goals-reference-passages",
+                "label": "Jedes Source-Ziel referenziert eine vorhandene Originalpassage",
+                "passed": true,
+                "details": "Ohne Passage: -"
+              },
+              {
+                "id": "source-goal-trace-complete",
+                "label": "Jedes Source-Ziel hat Source-Span, Parent-Bullet und Quellenreferenz",
+                "passed": true,
+                "details": "Unvollständige Source-Ziele: -"
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-3",
+            "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+            "status": "incomplete",
+            "dependsOn": [
+              "MAPPING-1",
+              "MAPPING-2"
+            ],
+            "checks": [
+              {
+                "id": "mapping-2-complete",
+                "label": "MAPPING-2 abgeschlossen",
+                "passed": true,
+                "details": "65 Source-Ziele liegen vor; MAPPING-3 läuft gegen diese Source-Extraction-IDs."
+              },
+              {
+                "id": "m3-review-file-present",
+                "label": "M3-Review-Datei ist vorhanden",
+                "passed": true,
+                "details": "curricula/DE/Gymnasium/mapping/DE-BW/lower-secondary/bw_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json"
+              },
+              {
+                "id": "m3-review-decisions-reference-source-goals",
+                "label": "M3-Review-Entscheidungen referenzieren gültige Source-Ziele",
+                "passed": true,
+                "details": "Noch keine Review-Entscheidungen vorhanden."
+              },
+              {
+                "id": "m3-review-targets-exist",
+                "label": "M3-Review-Ziele referenzieren vorhandene Canonical-Ziele",
+                "passed": true,
+                "details": "Noch keine Canonical-Ziele referenziert."
+              },
+              {
+                "id": "m3-all-source-goals-reviewed",
+                "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+                "passed": false,
+                "details": "0/65 Source-Ziele reviewed; offen: 65."
+              },
+              {
+                "id": "m3-all-source-goals-covered-by-canonical",
+                "label": "Alle Source-Ziele sind durch SkillPilot-Ziele abgedeckt",
+                "passed": false,
+                "details": "Fachlich abgedeckt: 0/65; MAPPING-3 steht aus."
+              }
+            ]
+          }
+        ]
+      }
+    }
   },
   "expectedTopicCodes": [
     "3.2.1.1",
@@ -44,7 +200,7 @@
             "id": "expected-topic-coverage",
             "label": "Alle erwarteten BW-Chemie-Kompetenzbereiche sind als Lehrplanpassagen vorhanden",
             "passed": true,
-            "details": "6/6 Bereiche; fehlend: -"
+            "details": "All 6 previous passages retained exactly; 1 complete selected clause passages appended. Not a full standards inventory."
           },
           {
             "id": "unique-topic-passages",
@@ -78,7 +234,7 @@
             "id": "source-goals-created",
             "label": "Aus den amtlichen BW-Chemie-Kompetenzerwartungen wurden Source-Ziele erzeugt",
             "passed": true,
-            "details": "65 Source-Ziele"
+            "details": "Current actual union 66=65 retained immediate-before cells +1 complete selected operators. Historical peer/content counts remain in method.fortyContentAcceptedPartialAddition.previousPipelineStatusHistorical; no automatic full-standards claim."
           },
           {
             "id": "passage-to-source-goal-coverage",
@@ -143,17 +299,43 @@
             "id": "m3-all-source-goals-reviewed",
             "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
             "passed": false,
-            "details": "0/65 Source-Ziele reviewed; offen: 65."
+            "details": "New selected operators have accepted specific partial relations only. No whole official source completion or practical performance is established; previous completeness is historical."
           },
           {
             "id": "m3-all-source-goals-covered-by-canonical",
             "label": "Alle Source-Ziele sind durch SkillPilot-Ziele abgedeckt",
             "passed": false,
-            "details": "Fachlich abgedeckt: 0/65; MAPPING-3 steht aus."
+            "details": "New selected operators have accepted specific partial relations only. No whole official source completion or practical performance is established; previous completeness is historical."
           }
         ]
       }
-    ]
+    ],
+    "fortyContentPartialIntegration": {
+      "status": "accepted-specific-partial-relations-only",
+      "totalSourceGoalsActual": 66,
+      "retainedImmediateBeforeCells": 65,
+      "newCompleteSelectedCells": 1,
+      "newWholeSourceApprovals": 0,
+      "newScientificFirstDecisionsByTechnicalIntegrator": 0,
+      "independentAcceptedRefs": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-first-twenty-source-informed-independent-a-20261018-v1/ACCEPTED.one-hundred-sixty-four-bounded-direct-relations.with-explicit-context-conditions.json",
+          "sha256": "5af30ee6b2cb919a8445f2668c963b81d22583cb241a8d64f8df469f93da06cf",
+          "bytes": 735256
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-multistate-source-informed-independent-b-part-b-20261018-v1/ACCEPTED.exact-fifty-five-partial-one-held-HE-placement.json",
+          "sha256": "ab921ae7928e26b5f58b2c25c8c72c470b2c3b4c111cb9fae09b92b821ef7f48",
+          "bytes": 43536
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-first-twenty-source-informed-independent-a-20261018-v1/ACCEPTED.six-existing-literal-source-acquisition-foundations.json",
+          "sha256": "c9f3aab904f4b1152d7b8d370b6fddacb997b08a2c784e70032618408a86492c",
+          "bytes": 20744
+        }
+      ],
+      "wholeSourceCoverageComplete": false
+    }
   },
   "passages": [
     {
@@ -286,6 +468,19 @@
         "bw-chem-seki-3-2-2-3-b07-a01-efca6980",
         "bw-chem-seki-3-2-2-3-b08-a01-c2e07d49"
       ]
+    },
+    {
+      "id": "bw-chemistry-seki-process-standard-2-1-10:complete-primary-addition",
+      "sourceDocumentKey": "BP2016-CH-V2",
+      "topicCode": "2.1 Erkenntnisgewinnung (10)",
+      "title": "2.1 Erkenntnisgewinnung (10)",
+      "sourceRef": "Bildungsplan 2016 Gymnasium Chemie Baden-Wuerttemberg, ueberarbeitete Fassung vom 25. Maerz 2022, physical PDF11, 2.1 Erkenntnisgewinnung (10)",
+      "text": "Modelle und Simulationen nutzen, um sich naturwissenschaftliche Sachverhalte zu erschließen",
+      "metadata": {
+        "physicalPdfPage": 11,
+        "completeSelectedClauseOnly": true,
+        "notWholePdfText": true
+      }
     }
   ],
   "sourceGoals": [
@@ -1978,6 +2173,49 @@
       "rawSourceText": "die Kohlenstoffdioxidbilanz und die Reaktionsenergie bei der Verbrennung verschiedener Brennstoffe vergleichen, um die Verwendung verschiedener Energieträger zu bewerten (Wasserstoff, Methan, Benzin)",
       "rawSourceSpan": "3.2.2.3 (8)",
       "rawParentBulletText": "die Kohlenstoffdioxidbilanz und die Reaktionsenergie bei der Verbrennung verschiedener Brennstoffe vergleichen, um die Verwendung verschiedener Energieträger zu bewerten (Wasserstoff, Methan, Benzin)"
+    },
+    {
+      "id": "bw-chemistry-seki-process-standard-2-1-10",
+      "passageId": "bw-chemistry-seki-process-standard-2-1-10:complete-primary-addition",
+      "topicCode": "2.1 Erkenntnisgewinnung (10)",
+      "title": "Modelle und Simulationen nutzen, um sich naturwissenschaftliche Sachverhalte zu erschließen",
+      "description": "Modelle und Simulationen nutzen, um sich naturwissenschaftliche Sachverhalte zu erschließen",
+      "sourceDocumentKey": "BP2016-CH-V2",
+      "sourceText": "Modelle und Simulationen nutzen, um sich naturwissenschaftliche Sachverhalte zu erschließen",
+      "parentBulletText": "Modelle und Simulationen nutzen, um sich naturwissenschaftliche Sachverhalte zu erschließen",
+      "sourceRef": "Bildungsplan 2016 Gymnasium Chemie Baden-Wuerttemberg, ueberarbeitete Fassung vom 25. Maerz 2022, physical PDF11, 2.1 Erkenntnisgewinnung (10)",
+      "sourceSpan": {
+        "passageId": "bw-chemistry-seki-process-standard-2-1-10:complete-primary-addition",
+        "label": "physical PDF11, 2.1 Erkenntnisgewinnung (10)"
+      },
+      "courseLevel": "GK_LK",
+      "granularity": "completeSelectedOfficialClause",
+      "tags": [
+        "jurisdiction:DE-BW",
+        "stage:SekI",
+        "course:GK_LK"
+      ],
+      "metadata": {
+        "physicalPdfPage": 11,
+        "actualWholeClauseExtracted": true,
+        "officiallyNumbered": true,
+        "authorStatus": "independently accepted selected partial contributions; no whole official source approval",
+        "scopeBoundary": "Whole original subject/stage/course context retained; this selected general operator does not prescribe the own concrete substance/example, prove actual theme choice or complete the whole official standard.",
+        "historicalAuthorStatus": "inactive-extraction-and-partial-binding-candidate; independent source review pending",
+        "currentAcceptedPartialRelations": {
+          "acceptedRefs": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-multistate-source-informed-independent-b-part-b-20261018-v1/ACCEPTED.exact-fifty-five-partial-one-held-HE-placement.json",
+              "sha256": "ab921ae7928e26b5f58b2c25c8c72c470b2c3b4c111cb9fae09b92b821ef7f48",
+              "bytes": 43536,
+              "jsonPointer": "/approvedPartial/8"
+            }
+          ],
+          "wholeSourceApproval": false,
+          "newScientificDecisionsByTechnicalIntegrator": 0
+        }
+      },
+      "rawSourceText": "Modelle und Simulationen nutzen, um sich naturwissenschaftliche Sachverhalte zu erschließen"
     }
   ]
 }

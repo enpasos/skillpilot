@@ -1,0 +1,5 @@
+# T5: konkret benannte Elektrophorese-Methode
+
+Der eigene Materialentwurf bindet eine geschlossene benannte Elektrophoresekammer, Geräteanleitungen, zwei bezeichnete reine Farbstoffe, Gel und gemessenen pH7-Puffer, Last-/Zeit-/Temperaturgrenzen, eigene Beladung, Kontrollen, Abschaltung und ein leeres Rohprotokoll. Das normative ganze Ziel und P bleiben exakt. Eine eigene gültige Untersuchung kann die praktische Leistung mit frischer theoretischer Polungsvariation verbinden; keine zweite Durchführung wird als Quote gefordert. Die Aminosäure-/pI-Frage bleibt Theorie.
+
+Die pH7-Phosphatvariante ist ein eigener prospektiver Unterrichtsentwurf. Die Quellen bestätigen Gerätetechnik, Farbstoffionen und Grundmethode; ihre anderen Puffer oder Geräte werden nicht als Validierung dieser Anpassung ausgegeben. Zwei fremde fachliche Material-/Interfaceprüfungen bleiben erforderlich. Dies ist kein Normalwrite, keine tatsächliche Lernendenmessung und keine menschliche oder örtliche Sicherheitsfreigabe.

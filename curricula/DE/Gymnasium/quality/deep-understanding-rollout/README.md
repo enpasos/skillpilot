@@ -5,6 +5,33 @@ Mathematics, Physics, Chemistry, Biology and Economics. Current work targets
 Chemistry only; the achieved Mathematics, Physics and Biology M7 floors remain protected.
 
 Current Chemistry continuation:
+[Route completion after the green checkpoint, 18 October](../../../../../docs/qa-ci/chemie-current450-route-completion-resumption-2026-10-18.md).
+The 450-goal working overlay is restored directly in the normal checkout.
+Reviewed orientation and 75 local assessment designs are now integrated;
+the original route evaluator now measures zero missing effective and direct
+motivation paths and zero missing terminal paths. The full checkpoint found
+eight direct-path gaps omitted by the earlier CQR-101-only measurement;
+three independently checked redundant atomic edges close them while preserving
+all 737 transitive prerequisite sets. Actual all-41-view checks preserve existing
+targets, roles and visible parents; all current target prerequisite closures
+are now explicit. Twenty-seven unchanged positive profiles have current
+technical context bindings; three additional context-only transports preserve
+the existing profile bodies and judgments. The75 new machine assessment design releases
+pass the original CQR-201/202/203 checks for107/107 terminal exams.
+The two reviewed pH variant scopes are preserved explicitly; all737 normal
+applicability fields match the unchanged production compiler with zero errors.
+Final native D bindings remain open. The 279-goal first-pass campaign and its
+open findings are preserved as an inactive checkpoint; two previously retained
+contexts also require current binding after the three atomic-edge appends.
+The actual full central report gives Chemistry M6 and 260/450 strict completions
+(D/P/A/M/V: 260/450/450/450/450); all ten protected maturity floors pass.
+Mathematics 807/807, Physics 478/478 and Biology 397/397 remain M7.
+No M7 completion is inferred from prepared or technically transported review files.
+These route gains are not new ordinary scientific first completions, a
+current 100-percent claim, M7, a human approval or CI for the new local work.
+The preserved main checkpoint passed its own 14 GitHub checks.
+
+Previous Chemistry continuation:
 [Next package after the measured 418/429: six actual reviewed child images, source and memory composition](../../../../../docs/qa-ci/chemie-current418-next-package-progress-2026-10-16.md).
 No additional strict completion has yet been centrally measured for that package.
 

@@ -25,7 +25,127 @@
   "method": {
     "sourceProvision": "Der amtliche Thueringen-Lehrplan Chemie 2024 liegt lokal als PDF vor; die Datei deckt Klassenstufen 7-10, eine Bruecken-Einfuehrungsphase fuer Lernende mit Realschulabschluss und die Qualifikationsphase ab. Diese Source-Extraction nutzt die regulaeren Sek-I- und Qualifikationsphasen-Abschnitte.",
     "passageExtraction": "pdftotext -raw; Passagen werden aus nummerierten Sach- und Methodenkompetenz-Abschnitten und lokalen Unterueberschriften gebildet.",
-    "sourceGoalExtraction": "Ein Source-Ziel pro verbindlicher Kompetenzzeile bzw. pro fachlichem Unteraspekt einer Kompetenzzeile. Selbst-/Sozialkompetenz und die gesonderte Bruecken-Einfuehrungsphase fuer Lernende mit Realschulabschluss bleiben fuer diese Gymnasium-Projektion ausgeklammert."
+    "sourceGoalExtraction": "Ein Source-Ziel pro verbindlicher Kompetenzzeile bzw. pro fachlichem Unteraspekt einer Kompetenzzeile. Selbst-/Sozialkompetenz und die gesonderte Bruecken-Einfuehrungsphase fuer Lernende mit Realschulabschluss bleiben fuer diese Gymnasium-Projektion ausgeklammert.",
+    "fourteenMethodSelectedProcessAddition": {
+      "technicalIntegration": "Authorised additive integration of independently accepted foreign author relations; no new scientific vote",
+      "candidate": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-author-20261018-v1/candidate/extraction-additions/12.DE-TH.SekI.complete-operator-additions.json",
+        "sha256": "01dd19d2a554b6cff41d72d4a1d0ad93ff55bce67ce03b1d2f01da6dfeb878a4",
+        "bytes": 7268
+      },
+      "independentAcceptedRef": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/ACCEPTED.exact104-direct-partial-two-literal-three-held.json",
+        "sha256": "9958d0a23bb96b4cce0ed69f2018631764f5fe943d87ed8136ef2ba070457119",
+        "bytes": 99336
+      },
+      "retainedImmediateBeforeInventory": 224,
+      "newCompleteSelectedOperatorCells": 1,
+      "actualUnionInventory": 225,
+      "allOldSourceCellsAndPassagesExactlyRetained": true,
+      "noCompleteOfficialStandardsUniverseClaim": true,
+      "wholeSourceCoverageEstablished": false,
+      "historicalPipelineStatusBeforeThisAddition": {
+        "version": 1,
+        "currentStep": "MAPPING-3",
+        "steps": [
+          {
+            "id": "MAPPING-1",
+            "label": "Original-Lehrplanpassagen extrahiert",
+            "status": "complete",
+            "dependsOn": [],
+            "checks": [
+              {
+                "id": "source-documents-present",
+                "label": "Amtlicher Thueringen-Chemie-Lehrplan liegt lokal vor",
+                "passed": true,
+                "details": "curricula/DE/Gymnasium/input/TH/LP_GY_Chemie_2024.pdf"
+              },
+              {
+                "id": "expected-topic-coverage",
+                "label": "Thueringen-Chemie-Passagegruppen aus Sek I und Qualifikationsphase sind vorhanden",
+                "passed": true,
+                "details": "24 Passagegruppen."
+              },
+              {
+                "id": "passage-extraction-source",
+                "label": "Passage-Extraction basiert auf amtlicher PDF-Quelle",
+                "passed": true,
+                "details": "curricula/DE/Gymnasium/input/TH/LP_GY_Chemie_2024.pdf"
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-2",
+            "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+            "status": "complete",
+            "dependsOn": [
+              "MAPPING-1"
+            ],
+            "checks": [
+              {
+                "id": "source-goals-created",
+                "label": "Aus den amtlichen Thueringen-Chemie-Passagen wurden Source-Ziele erzeugt",
+                "passed": true,
+                "details": "224 Source-Ziele"
+              },
+              {
+                "id": "source-goal-count-peer-baseline",
+                "label": "Source-Ziel-Anzahl ist gegen bereits gepruefte Chemie-Inventare plausibilisiert",
+                "passed": true,
+                "details": "224 Source-Ziele; HE/BW/HB/HH/MV/NI/NW/RP/SH/ST/SL/SN Sek-I-Chemie = 122/65/42/76/114/196/79/65/156/270/190/176 Source-Ziele. Thueringen Sek I wird aus den Sach- und Methodenkompetenzen der Klassenstufen 7/8 und 9/10 extrahiert."
+              },
+              {
+                "id": "source-goal-ids-unique",
+                "label": "Source-Ziel-IDs sind eindeutig",
+                "passed": true,
+                "details": "Doppelte IDs: -"
+              },
+              {
+                "id": "source-goals-reference-passages",
+                "label": "Jedes Source-Ziel referenziert eine vorhandene Originalpassage",
+                "passed": true,
+                "details": "Ohne Passage: -"
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-3",
+            "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+            "status": "complete",
+            "dependsOn": [
+              "MAPPING-1",
+              "MAPPING-2"
+            ],
+            "checks": [
+              {
+                "id": "mapping-2-complete",
+                "label": "MAPPING-2 abgeschlossen",
+                "passed": true,
+                "details": "224 Source-Ziele liegen vor; MAPPING-3 ist fachlich reviewed."
+              },
+              {
+                "id": "m3-review-file-present",
+                "label": "M3-Review-Datei ist vorhanden",
+                "passed": true,
+                "details": "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json"
+              },
+              {
+                "id": "m3-all-source-goals-reviewed",
+                "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+                "passed": true,
+                "details": "224/224 Source-Ziele reviewed; offen: 0."
+              },
+              {
+                "id": "m3-all-source-goals-covered-by-canonical",
+                "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+                "passed": true,
+                "details": "224/224 Source-Ziele sind durch kanonische Chemie-Ziele abgedeckt."
+              }
+            ]
+          }
+        ]
+      }
+    }
   },
   "qualityReview": {
     "sourceGoalCountPeerBaseline": {
@@ -57,7 +177,8 @@
     "TH-CH-SekI-2.2.1.2-saure-base-theorie-nach-br-nsted",
     "TH-CH-SekI-2.2.1.2-redoxreaktionen",
     "TH-CH-SekI-2.2.1.3-verlauf-chemischer-reaktionen",
-    "TH-CH-SekI-2.2.1.3-volumen-durchfuhren"
+    "TH-CH-SekI-2.2.1.3-volumen-durchfuhren",
+    "B2.3"
   ],
   "pipelineStatus": {
     "version": 1,
@@ -79,7 +200,7 @@
             "id": "expected-topic-coverage",
             "label": "Thueringen-Chemie-Passagegruppen aus Sek I und Qualifikationsphase sind vorhanden",
             "passed": true,
-            "details": "24 Passagegruppen."
+            "details": "All 24 previous operative passages retained exactly; 1 selected complete-operator passages added. This is not the complete official standards universe."
           },
           {
             "id": "passage-extraction-source",
@@ -101,13 +222,13 @@
             "id": "source-goals-created",
             "label": "Aus den amtlichen Thueringen-Chemie-Passagen wurden Source-Ziele erzeugt",
             "passed": true,
-            "details": "224 Source-Ziele"
+            "details": "225 actual cells = 224 retained immediate previous inventory + 1 new whole selected operators. Previous content/standard phases remain historical; no unselected standard counted."
           },
           {
             "id": "source-goal-count-peer-baseline",
-            "label": "Source-Ziel-Anzahl ist gegen bereits gepruefte Chemie-Inventare plausibilisiert",
+            "label": "Historische Basis und neu ausgewählte vollständige Operatoren getrennt gezählt",
             "passed": true,
-            "details": "224 Source-Ziele; HE/BW/HB/HH/MV/NI/NW/RP/SH/ST/SL/SN Sek-I-Chemie = 122/65/42/76/114/196/79/65/156/270/190/176 Source-Ziele. Thueringen Sek I wird aus den Sach- und Methodenkompetenzen der Klassenstufen 7/8 und 9/10 extrahiert."
+            "details": "Previous peer comparisons concern their historical inventory only; original evidence retained in method.fourteenMethodSelectedProcessAddition.historicalPipelineStatusBeforeThisAddition. Current actual union 225=224+1; no full-standards benchmark."
           },
           {
             "id": "source-goal-ids-unique",
@@ -126,7 +247,7 @@
       {
         "id": "MAPPING-3",
         "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
-        "status": "complete",
+        "status": "incomplete",
         "dependsOn": [
           "MAPPING-1",
           "MAPPING-2"
@@ -136,7 +257,7 @@
             "id": "mapping-2-complete",
             "label": "MAPPING-2 abgeschlossen",
             "passed": true,
-            "details": "224 Source-Ziele liegen vor; MAPPING-3 ist fachlich reviewed."
+            "details": "225 actual source cells exist. Historical M3 results remain scoped to their prior inventory. Current individually accepted partial relations do not prove all whole-source duties."
           },
           {
             "id": "m3-review-file-present",
@@ -147,18 +268,46 @@
           {
             "id": "m3-all-source-goals-reviewed",
             "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
-            "passed": true,
-            "details": "224/224 Source-Ziele reviewed; offen: 0."
+            "passed": false,
+            "details": "1 newly selected whole operator cells have specific partial relations only. No new whole-source approval; all remaining verbs, stage/course/context and actual-performance duties remain open. Historical completeness is retained only in the saved previous pipeline record."
           },
           {
             "id": "m3-all-source-goals-covered-by-canonical",
             "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
-            "passed": true,
-            "details": "224/224 Source-Ziele sind durch kanonische Chemie-Ziele abgedeckt."
+            "passed": false,
+            "details": "1 newly selected whole operator cells have specific partial relations only. No new whole-source approval; all remaining verbs, stage/course/context and actual-performance duties remain open. Historical completeness is retained only in the saved previous pipeline record."
           }
         ]
       }
-    ]
+    ],
+    "fourteenMethodPartialIntegration": {
+      "status": "accepted-partial-contributions-only",
+      "totalSourceGoalsActual": 225,
+      "retainedImmediateBeforeCells": 224,
+      "newCompleteSelectedOperatorCells": 1,
+      "newWholeSourceApprovals": 0,
+      "newScientificFirstDecisionsByTechnicalIntegrator": 0,
+      "independentAcceptedRef": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/ACCEPTED.exact104-direct-partial-two-literal-three-held.json",
+        "sha256": "9958d0a23bb96b4cce0ed69f2018631764f5fe943d87ed8136ef2ba070457119",
+        "bytes": 99336
+      },
+      "newSourceCellPartialBindings": [
+        {
+          "sourceGoalId": "th-chemistry-seki-process-standard-b-2-3",
+          "acceptedPartialRelations": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/23",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "wholeSourceApproval": false
+        }
+      ],
+      "historicalM3DoesNotExtendAutomaticallyToNewCells": true,
+      "wholeSourceCoverageComplete": false
+    }
   },
   "passages": [
     {
@@ -624,6 +773,39 @@
         "th-chem-seki-th-ch-seki-2-2-1-3-volumen-durchfuhren-148-01-426cb147",
         "th-chem-seki-th-ch-seki-2-2-1-3-volumen-durchfuhren-149-01-fbb52f6d"
       ]
+    },
+    {
+      "id": "th-chemistry-seki-process-standard-b-2-3:whole-primary-context",
+      "topicCode": "B2.3",
+      "title": "Selected complete official operator; full original page context referenced",
+      "sourceDocumentKey": "TH-CH-2024",
+      "text": "auf der Grundlage von Informationen zu Gefahren und zur Sicherheit beim Umgang mit Chemikalien und Geräten angemessene Maßnahmen ableiten",
+      "physicalPdfPages": [
+        17
+      ],
+      "sourceRef": "Thueringer Lehrplan Chemie fuer den Erwerb der allgemeinen Hochschulreife 2024; physical PDF17; B2.3",
+      "scope": "Only this entire selected operator is newly operative. Full original primary-page context was read and remains available at the pinned official PDF; all unselected operators remain without a new binding vote.",
+      "primaryDocumentPin": {
+        "path": "curricula/DE/Gymnasium/input/TH/LP_GY_Chemie_2024.pdf",
+        "sha256": "f89768dabb9f273d3086c5c16008759c7010244ccab1ebb0b3b44b138411c8d7",
+        "bytes": 1569418
+      },
+      "sourceStageCourseAndContext": "DE-TH SekI, endKl10 general method competency B2.3, physical17/printed12; not Q standard; technical CrossStage/GK/LK target placement does not rename the official grade/level or create an official upper-course duty."
+    },
+    {
+      "id": "th-chemistry-seki-process-standard-e-1-5:whole-primary-context",
+      "topicCode": "E1.5",
+      "title": "E 1.5 Datenzusammenhänge und Schlussfolgerungen",
+      "text": "in erhobenen oder recherchierten Daten Trends, Strukturen und Zusammenhänge erfassen, diese erklären und geeignete Schlussfolgerungen, auch unter Nutzung digitaler Werkzeuge, ziehen",
+      "sourceDocumentKey": "TH-CH-2024",
+      "sourceRef": "Thueringer Lehrplan Chemie fuer den Erwerb der allgemeinen Hochschulreife 2024, physical PDF p. 16",
+      "metadata": {
+        "unit": "whole bullet",
+        "primaryPageOneBased": 16,
+        "surroundingWholePageActuallyRead": true,
+        "contextBoundary": "General chemistry method within the stated lower-secondary scope; no official whole constant-composition-law mandate.",
+        "thirdPartyOfficialTextRetainsOriginalRights": true
+      }
     }
   ],
   "sourceGoals": [
@@ -6674,6 +6856,119 @@
       "rawSourceText": "im Schülerexperiment: ein Modellexperiment zur Darstellung des Zusammenhangs zwischen der Konzentration der Ausgangsstoffe und der Zeit (vollständiger Reaktionsumsatz) durchführen",
       "rawSourceSpan": "Klassenstufen 9/10, 2.2.1.3 Verlauf chemischer Reaktionen, Volumen) durchführen, PDF-S. 29",
       "rawParentBulletText": "im Schülerexperiment"
+    },
+    {
+      "id": "th-chemistry-seki-process-standard-b-2-3",
+      "passageId": "th-chemistry-seki-process-standard-b-2-3:whole-primary-context",
+      "topicCode": "B2.3",
+      "title": "B2.3: auf der Grundlage von Informationen zu Gefahren und zur Sicherheit beim Umgang mit Chemikalien und Geräten angemessene Maßnahmen ableiten",
+      "description": "auf der Grundlage von Informationen zu Gefahren und zur Sicherheit beim Umgang mit Chemikalien und Geräten angemessene Maßnahmen ableiten",
+      "sourceDocumentKey": "TH-CH-2024",
+      "sourceText": "auf der Grundlage von Informationen zu Gefahren und zur Sicherheit beim Umgang mit Chemikalien und Geräten angemessene Maßnahmen ableiten",
+      "parentBulletText": "auf der Grundlage von Informationen zu Gefahren und zur Sicherheit beim Umgang mit Chemikalien und Geräten angemessene Maßnahmen ableiten",
+      "sourceRef": "Thueringer Lehrplan Chemie fuer den Erwerb der allgemeinen Hochschulreife 2024; physical PDF17; B2.3",
+      "sourceSpan": {
+        "passageId": "th-chemistry-seki-process-standard-b-2-3:whole-primary-context",
+        "label": "B2.3, physical PDF17"
+      },
+      "courseLevel": "unspecified",
+      "granularity": "officialCompleteOperatorClause",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "stage:SekI",
+        "course:unspecified"
+      ],
+      "metadata": {
+        "localLocatorLabel": "B2.3",
+        "officiallyNumbered": true,
+        "physicalPdfPage": 17,
+        "extractionMethod": "Own author read complete primary operator and whole page; line wrapping normalized. Inactive, independent review required; no whole-source approval.",
+        "stageCourseBoundary": "DE-TH SekI, endKl10 general method competency B2.3, physical17/printed12; not Q standard; technical CrossStage/GK/LK target placement does not rename the official grade/level or create an official upper-course duty.",
+        "officialStandardCode": "B2.3",
+        "currentAcceptedPartialRelations": {
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+            "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248",
+            "bytes": 731348
+          },
+          "bindings": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/23",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "authorInactiveWordingIsHistoricalSnapshot": true,
+          "wholeSourceApproval": false
+        }
+      }
+    },
+    {
+      "id": "th-chemistry-seki-process-standard-e-1-5",
+      "passageId": "th-chemistry-seki-process-standard-e-1-5:whole-primary-context",
+      "topicCode": "E1.5",
+      "title": "E 1.5 Datenzusammenhänge und Schlussfolgerungen",
+      "description": "in erhobenen oder recherchierten Daten Trends, Strukturen und Zusammenhänge erfassen, diese erklären und geeignete Schlussfolgerungen, auch unter Nutzung digitaler Werkzeuge, ziehen",
+      "sourceDocumentKey": "TH-CH-2024",
+      "sourceText": "in erhobenen oder recherchierten Daten Trends, Strukturen und Zusammenhänge erfassen, diese erklären und geeignete Schlussfolgerungen, auch unter Nutzung digitaler Werkzeuge, ziehen",
+      "sourceSpan": {
+        "passageId": "th-chemistry-seki-process-standard-e-1-5:whole-primary-context",
+        "label": "Thueringer Lehrplan Chemie fuer den Erwerb der allgemeinen Hochschulreife 2024, physical PDF p. 16; allgemeine SekI-Kompetenz"
+      },
+      "sourceRef": "Thueringer Lehrplan Chemie fuer den Erwerb der allgemeinen Hochschulreife 2024, physical PDF p. 16",
+      "courseLevel": "unspecified",
+      "granularity": "completeOfficialMethodBullet",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-TH",
+        "stage:SekI",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-whole-selected-official-unit-from-actual-local-PDF",
+        "physicalPageOneBased": 16,
+        "officialOperatorCode": "E1.5",
+        "scope": {
+          "stage": "SekI",
+          "sourcePhase": "allgemeine SekI-Kompetenz",
+          "courseLevel": "unspecified",
+          "scopeBoundary": "General chemistry method within the stated lower-secondary scope; no official whole constant-composition-law mandate."
+        },
+        "notNewOfficialLawGoal": true,
+        "noIndependentReviewInThisAuthorTransport": true
+      }
     }
-  ]
+  ],
+  "c7QuantitativeDataPartialIntegration": {
+    "technicalPackagePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-seven-data-source-reviewed-integration-technical-20261018-v1",
+    "foreignAuthorSeal": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-eight-constant-composition-general-data-source-author-successor-20261018-v1/SEAL.inactive-eight-general-data-source-author-successor.json",
+      "sha256": "47f2aa9898e1279f5f4184f421839303c9e374962f0e5254012b412fec88d209",
+      "bytes": 4600
+    },
+    "independentSourceFirst": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-eight-constant-composition-general-data-source-informed-independent-a-20261018-v1/FIRST.independent-a.seven-quantitative-data-source-contributions.json",
+      "sha256": "8854fffa6b2ea3f8e37b40ac01d9ff62e9c7fd9dc8f820848ff47910ba6777f4",
+      "bytes": 36758
+    },
+    "independentSourceSeal": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-eight-constant-composition-general-data-source-informed-independent-a-20261018-v1/SEAL.independent-a.C7-seven-quantitative-source-successor.json",
+      "sha256": "fdd5b7f42626545589262c1b576871a541674a98ae6818a02c6ab5820ae38c0a",
+      "bytes": 4862
+    },
+    "wholeSourceCoverageEstablished": false,
+    "officialWholeConstantCompositionRequirement": false,
+    "newWholeSourceApprovals": 0,
+    "newScientificFirstDecisionsByTechnicalIntegrator": 0,
+    "newNativeDPAMVVotes": 0,
+    "actualLearnerExecutionClaim": false,
+    "ownMeasurementExperimentOrDigitalProductClaim": false,
+    "humanApprovalClaim": false,
+    "addedWholeSelectedSourceGoalIds": [
+      "th-chemistry-seki-process-standard-e-1-5"
+    ],
+    "currentSourceInventoryCountBefore": 225,
+    "currentSourceInventoryCountAfter": 226,
+    "allOldSourceGoalsPassagesAndMetadataRetainedExactly": true
+  }
 }

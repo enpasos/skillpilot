@@ -15,7 +15,702 @@
   },
   "method": {
     "passageExtraction": "Hamburger Studienstufe Chemie 2022: die 12 Themen des Kerncurriculums wurden aus den amtlichen PDF-Tabellen S. 24-35 transkribiert und gruppiert.",
-    "sourceGoalExtraction": "ein Source-Ziel pro konkret benannter Kompetenz-, Inhalts- oder Kerncurriculum-Bullet; Kontext-, Leitperspektiven- und Umsetzungshilfe-Abschnitte werden nicht als eigenstaendige fachliche Source-Ziele gezaehlt."
+    "sourceGoalExtraction": "ein Source-Ziel pro konkret benannter Kompetenz-, Inhalts- oder Kerncurriculum-Bullet; Kontext-, Leitperspektiven- und Umsetzungshilfe-Abschnitte werden nicht als eigenstaendige fachliche Source-Ziele gezaehlt. Additive technical successor: retain that exact finite historical inventory, then append complete selected process clauses from the pinned candidate; no claim that every official process standard has been extracted.",
+    "selectedProcessClauseAddition": {
+      "candidate": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-author-20261018-v1/candidate/extraction-additions/HH.complete-selected-process-clauses.additions.json",
+        "sha256": "5114a5891def4b204acd40f3de95fe2be8ffc072fccd4b4291a2abc6d12f5648",
+        "bytes": 27185
+      },
+      "historicalInventory": 97,
+      "newCompleteSelectedClauses": 8,
+      "actualUnionInventory": 105,
+      "oldObjectsAndPassagesUnchanged": true,
+      "currentIndependentPartialReview": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+        "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+        "bytes": 269340
+      },
+      "sharedExtractionOnlyIds": [],
+      "wholeSourceCoverageEstablished": false,
+      "historicalScopeEvidence": {
+        "method": {
+          "passageExtraction": "Hamburger Studienstufe Chemie 2022: die 12 Themen des Kerncurriculums wurden aus den amtlichen PDF-Tabellen S. 24-35 transkribiert und gruppiert.",
+          "sourceGoalExtraction": "ein Source-Ziel pro konkret benannter Kompetenz-, Inhalts- oder Kerncurriculum-Bullet; Kontext-, Leitperspektiven- und Umsetzungshilfe-Abschnitte werden nicht als eigenstaendige fachliche Source-Ziele gezaehlt."
+        },
+        "pipelineStatus": {
+          "currentStep": "MAPPING-3",
+          "steps": [
+            {
+              "id": "MAPPING-1",
+              "label": "Original-Lehrplanpassagen extrahiert",
+              "status": "complete",
+              "dependsOn": [],
+              "checks": [
+                {
+                  "id": "source-document-present",
+                  "label": "Amtliches Hamburger Chemie-PDF liegt lokal vor",
+                  "passed": true,
+                  "details": "curricula/DE/Gymnasium/input/HH/chemie-gyo-2022-data.pdf"
+                },
+                {
+                  "id": "expected-topic-coverage",
+                  "label": "Alle vorgesehenen Hamburger Chemie-Passagegruppen wurden extrahiert",
+                  "passed": true,
+                  "details": "12/12 Passagegruppen."
+                },
+                {
+                  "id": "official-source-extraction",
+                  "label": "Passage-Extraction basiert auf amtlicher PDF-Quelle statt Legacy-Snapshot",
+                  "passed": true,
+                  "details": "Quelle: curricula/DE/Gymnasium/input/HH/chemie-gyo-2022-data.pdf"
+                }
+              ]
+            },
+            {
+              "id": "MAPPING-2",
+              "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+              "status": "complete",
+              "dependsOn": [
+                "MAPPING-1"
+              ],
+              "checks": [
+                {
+                  "id": "source-goals-created",
+                  "label": "Source-Ziele aus den Hamburger Chemie-Lehrplanpassagen erzeugt",
+                  "passed": true,
+                  "details": "97 Source-Ziele"
+                },
+                {
+                  "id": "source-goal-count-peer-baseline",
+                  "label": "Source-Ziel-Anzahl ist gegen gepruefte Chemie-Inventare plausibilisiert",
+                  "passed": true,
+                  "details": "97 Source-Ziele; Hamburg Sek II liegt im Korridor der geprüften direkten Chemie-Sek-II-Inventare BW (126), NW (154), SH (165) und HE (202)."
+                },
+                {
+                  "id": "source-goal-ids-unique",
+                  "label": "Source-Ziel-IDs sind eindeutig",
+                  "passed": true,
+                  "details": "Doppelte IDs: -"
+                },
+                {
+                  "id": "source-goals-reference-passages",
+                  "label": "Jedes Source-Ziel referenziert eine vorhandene Originalpassage",
+                  "passed": true,
+                  "details": "Ohne Passage: -"
+                }
+              ]
+            },
+            {
+              "id": "MAPPING-3",
+              "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+              "status": "incomplete",
+              "dependsOn": [
+                "MAPPING-1",
+                "MAPPING-2"
+              ],
+              "checks": [
+                {
+                  "id": "mapping-2-complete",
+                  "label": "MAPPING-2 abgeschlossen",
+                  "passed": true,
+                  "details": "97 Source-Ziele liegen vor; MAPPING-3 muss nun fachlich reviewed werden."
+                },
+                {
+                  "id": "m3-review-file-present",
+                  "label": "M3-Review-Datei ist vorhanden",
+                  "passed": true,
+                  "details": "curricula/DE/Gymnasium/mapping/DE-HH/upper-secondary/hh_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json"
+                },
+                {
+                  "id": "m3-review-decisions-reference-source-goals",
+                  "label": "M3-Review-Entscheidungen referenzieren gueltige Source-Ziele",
+                  "passed": false,
+                  "details": "Wird aus der Review-Datei berechnet."
+                },
+                {
+                  "id": "m3-review-targets-exist",
+                  "label": "M3-Review-Ziele referenzieren vorhandene Canonical-Ziele",
+                  "passed": false,
+                  "details": "Wird aus der Review-Datei berechnet."
+                },
+                {
+                  "id": "m3-all-source-goals-reviewed",
+                  "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+                  "passed": false,
+                  "details": "MAPPING-3 ist noch nicht fachlich reviewed."
+                },
+                {
+                  "id": "m3-all-source-goals-covered-by-canonical",
+                  "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+                  "passed": false,
+                  "details": "MAPPING-3 ist noch nicht fachlich reviewed."
+                }
+              ]
+            }
+          ]
+        },
+        "sourceGoalCount": 97,
+        "passageCount": 12,
+        "baseExtraction": {
+          "path": "curricula/DE/Gymnasium/input/HH/upper-secondary/source-extraction/DE_HH_CHEMIE_SEKII_BILDUNGSPLAN_2022.source-extraction.json",
+          "sha256": "c8754796e80255a6ab7b7a205a02724535ed4d6aae53fba2cb1ee898e4784311",
+          "bytes": 129014
+        }
+      },
+      "cellMetadataProvenance": "Original candidate cell metadata is retained byte-for-object. Its inactive/pending wording records the author snapshot; current limited integration and accepted partial contributions are described here and in selectedProcessIntegration, not by inventing whole-source review."
+    },
+    "fourteenMethodSelectedProcessAddition": {
+      "technicalIntegration": "Authorised additive integration of independently accepted foreign author relations; no new scientific vote",
+      "candidate": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-author-20261018-v1/candidate/extraction-additions/04.DE-HH.SekII.complete-operator-additions.json",
+        "sha256": "eff656267d87b1a1b43c44a13b2eab8241a356f84c241ddad37135ccd3f87215",
+        "bytes": 12704
+      },
+      "independentAcceptedRef": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/ACCEPTED.exact104-direct-partial-two-literal-three-held.json",
+        "sha256": "9958d0a23bb96b4cce0ed69f2018631764f5fe943d87ed8136ef2ba070457119",
+        "bytes": 99336
+      },
+      "retainedImmediateBeforeInventory": 105,
+      "newCompleteSelectedOperatorCells": 2,
+      "actualUnionInventory": 107,
+      "allOldSourceCellsAndPassagesExactlyRetained": true,
+      "noCompleteOfficialStandardsUniverseClaim": true,
+      "wholeSourceCoverageEstablished": false,
+      "historicalPipelineStatusBeforeThisAddition": {
+        "currentStep": "MAPPING-3",
+        "steps": [
+          {
+            "id": "MAPPING-1",
+            "label": "Original-Lehrplanpassagen extrahiert",
+            "status": "complete",
+            "dependsOn": [],
+            "checks": [
+              {
+                "id": "source-document-present",
+                "label": "Amtliches Hamburger Chemie-PDF liegt lokal vor",
+                "passed": true,
+                "details": "Current operative primary document: curricula/DE/Gymnasium/input/HH/chemie-gyo-2022-data.pdf. Historical inventory provenance remains in method.selectedProcessClauseAddition.historicalScopeEvidence."
+              },
+              {
+                "id": "expected-topic-coverage",
+                "label": "Alle vorgesehenen Hamburger Chemie-Passagegruppen wurden extrahiert",
+                "passed": true,
+                "details": "Historical 12 passage inventory retained exactly; 1 selected process passages added. Other standards remain context or unexamined; no complete standards-universe claim."
+              },
+              {
+                "id": "official-source-extraction",
+                "label": "Passage-Extraction basiert auf amtlicher PDF-Quelle statt Legacy-Snapshot",
+                "passed": true,
+                "details": "Current operative primary document: curricula/DE/Gymnasium/input/HH/chemie-gyo-2022-data.pdf. Historical inventory provenance remains in method.selectedProcessClauseAddition.historicalScopeEvidence."
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-2",
+            "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+            "status": "complete",
+            "dependsOn": [
+              "MAPPING-1"
+            ],
+            "checks": [
+              {
+                "id": "source-goals-created",
+                "label": "Source-Ziele aus den Hamburger Chemie-Lehrplanpassagen erzeugt",
+                "passed": true,
+                "details": "105 actual source cells = 97 retained historical inventory + 8 complete selected process clauses. No additional unselected standard counted."
+              },
+              {
+                "id": "source-goal-count-peer-baseline",
+                "label": "Historische Inhaltsbasis und aktuelle ausgewählte Prozessstandards getrennt gezählt",
+                "passed": true,
+                "details": "The old peer comparison concerned only the historical finite 97-cell inventory; it is preserved in historicalScopeEvidence and is not a current complete-standards benchmark. Actual union: 105 = 97 historical + 8 selected process cells."
+              },
+              {
+                "id": "source-goal-ids-unique",
+                "label": "Source-Ziel-IDs sind eindeutig",
+                "passed": true,
+                "details": "Doppelte IDs: -"
+              },
+              {
+                "id": "source-goals-reference-passages",
+                "label": "Jedes Source-Ziel referenziert eine vorhandene Originalpassage",
+                "passed": true,
+                "details": "Ohne Passage: -"
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-3",
+            "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+            "status": "incomplete",
+            "dependsOn": [
+              "MAPPING-1",
+              "MAPPING-2"
+            ],
+            "checks": [
+              {
+                "id": "mapping-2-complete",
+                "label": "MAPPING-2 abgeschlossen",
+                "passed": true,
+                "details": "105 cells exist. Historical 97-cell M3 evidence remains limited to its original inventory; new bounded partial contributions do not complete whole-source duties."
+              },
+              {
+                "id": "m3-review-file-present",
+                "label": "M3-Review-Datei ist vorhanden",
+                "passed": true,
+                "details": "Current source/epoch-matching review aliases: curricula/DE/Gymnasium/mapping/DE-HH/upper-secondary/hh_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.q4-four-bounded-reviewed-20261013-v1.review.json, curricula/DE/Gymnasium/mapping/DE-HH/upper-secondary/hh_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json"
+              },
+              {
+                "id": "m3-review-decisions-reference-source-goals",
+                "label": "M3-Review-Entscheidungen referenzieren gueltige Source-Ziele",
+                "passed": false,
+                "details": "Wird aus der Review-Datei berechnet."
+              },
+              {
+                "id": "m3-review-targets-exist",
+                "label": "M3-Review-Ziele referenzieren vorhandene Canonical-Ziele",
+                "passed": false,
+                "details": "Wird aus der Review-Datei berechnet."
+              },
+              {
+                "id": "m3-all-source-goals-reviewed",
+                "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+                "passed": false,
+                "details": "No new whole-source approval. 8 selected additions carry only their individually accepted partial contributions; 0 shared cells have extraction transport only. Whole operator/course/execution duties remain separate."
+              },
+              {
+                "id": "m3-all-source-goals-covered-by-canonical",
+                "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+                "passed": false,
+                "details": "No new whole-source approval. 8 selected additions carry only their individually accepted partial contributions; 0 shared cells have extraction transport only. Whole operator/course/execution duties remain separate."
+              }
+            ]
+          }
+        ],
+        "selectedProcessIntegration": {
+          "status": "accepted-partial-contributions-only",
+          "totalSourceGoalsActual": 105,
+          "historicalSourceGoals": 97,
+          "newCompleteSelectedProcessCells": 8,
+          "newWholeSourceApprovals": 0,
+          "newScientificFirstDecisionsByIntegrator": 0,
+          "independentAcceptedRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+            "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+            "bytes": 269340
+          },
+          "sourceCellPartialBindings": [
+            {
+              "sourceGoalId": "hh-chemistry-sekii-process-standard-e5",
+              "acceptedPartialContributions": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+                  "bytes": 269340,
+                  "jsonPointer": "/mappings/8"
+                }
+              ],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": false
+            },
+            {
+              "sourceGoalId": "hh-chemistry-sekii-process-standard-e8",
+              "acceptedPartialContributions": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+                  "bytes": 269340,
+                  "jsonPointer": "/mappings/9"
+                }
+              ],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": false
+            },
+            {
+              "sourceGoalId": "hh-chemistry-sekii-process-standard-k1",
+              "acceptedPartialContributions": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+                  "bytes": 269340,
+                  "jsonPointer": "/mappings/10"
+                }
+              ],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": false
+            },
+            {
+              "sourceGoalId": "hh-chemistry-sekii-process-standard-k2",
+              "acceptedPartialContributions": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+                  "bytes": 269340,
+                  "jsonPointer": "/mappings/11"
+                }
+              ],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": false
+            },
+            {
+              "sourceGoalId": "hh-chemistry-sekii-process-standard-k5",
+              "acceptedPartialContributions": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+                  "bytes": 269340,
+                  "jsonPointer": "/mappings/12"
+                }
+              ],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": false
+            },
+            {
+              "sourceGoalId": "hh-chemistry-sekii-process-standard-k8",
+              "acceptedPartialContributions": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+                  "bytes": 269340,
+                  "jsonPointer": "/mappings/13"
+                }
+              ],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": false
+            },
+            {
+              "sourceGoalId": "hh-chemistry-sekii-process-standard-b3",
+              "acceptedPartialContributions": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+                  "bytes": 269340,
+                  "jsonPointer": "/mappings/14"
+                }
+              ],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": false
+            },
+            {
+              "sourceGoalId": "hh-chemistry-sekii-process-standard-b5",
+              "acceptedPartialContributions": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+                  "bytes": 269340,
+                  "jsonPointer": "/mappings/15"
+                }
+              ],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": false
+            }
+          ],
+          "wholeSourceCoverageComplete": false,
+          "historicalM3DoesNotExtendToAddedCells": true
+        }
+      }
+    },
+    "fortyContentAcceptedPartialAddition": {
+      "technicalIntegration": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-reviewed-source-integration-technical-20261018-v1",
+      "independentAcceptedRefs": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-first-twenty-source-informed-independent-a-20261018-v1/ACCEPTED.one-hundred-sixty-four-bounded-direct-relations.with-explicit-context-conditions.json",
+          "sha256": "5af30ee6b2cb919a8445f2668c963b81d22583cb241a8d64f8df469f93da06cf",
+          "bytes": 735256
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-multistate-source-informed-independent-b-part-b-20261018-v1/ACCEPTED.exact-fifty-five-partial-one-held-HE-placement.json",
+          "sha256": "ab921ae7928e26b5f58b2c25c8c72c470b2c3b4c111cb9fae09b92b821ef7f48",
+          "bytes": 43536
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-first-twenty-source-informed-independent-a-20261018-v1/ACCEPTED.six-existing-literal-source-acquisition-foundations.json",
+          "sha256": "c9f3aab904f4b1152d7b8d370b6fddacb997b08a2c784e70032618408a86492c",
+          "bytes": 20744
+        }
+      ],
+      "retainedImmediateBeforeCells": 107,
+      "newCompleteSelectedCells": 1,
+      "currentActualUnionCells": 108,
+      "selectedSameIDCorrections": 0,
+      "allOtherOldCellsAndPassagesExact": true,
+      "noWholeOfficialStandardsUniverseClaim": true,
+      "previousPipelineStatusHistorical": {
+        "currentStep": "MAPPING-3",
+        "steps": [
+          {
+            "id": "MAPPING-1",
+            "label": "Original-Lehrplanpassagen extrahiert",
+            "status": "complete",
+            "dependsOn": [],
+            "checks": [
+              {
+                "id": "source-document-present",
+                "label": "Amtliches Hamburger Chemie-PDF liegt lokal vor",
+                "passed": true,
+                "details": "Current operative primary document: curricula/DE/Gymnasium/input/HH/chemie-gyo-2022-data.pdf. Historical inventory provenance remains in method.selectedProcessClauseAddition.historicalScopeEvidence."
+              },
+              {
+                "id": "expected-topic-coverage",
+                "label": "Alle vorgesehenen Hamburger Chemie-Passagegruppen wurden extrahiert",
+                "passed": true,
+                "details": "All 13 previous operative passages retained exactly; 2 selected complete-operator passages added. This is not the complete official standards universe."
+              },
+              {
+                "id": "official-source-extraction",
+                "label": "Passage-Extraction basiert auf amtlicher PDF-Quelle statt Legacy-Snapshot",
+                "passed": true,
+                "details": "Current operative primary document: curricula/DE/Gymnasium/input/HH/chemie-gyo-2022-data.pdf. Historical inventory provenance remains in method.selectedProcessClauseAddition.historicalScopeEvidence."
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-2",
+            "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+            "status": "complete",
+            "dependsOn": [
+              "MAPPING-1"
+            ],
+            "checks": [
+              {
+                "id": "source-goals-created",
+                "label": "Source-Ziele aus den Hamburger Chemie-Lehrplanpassagen erzeugt",
+                "passed": true,
+                "details": "107 actual cells = 105 retained immediate previous inventory + 2 new whole selected operators. Previous content/standard phases remain historical; no unselected standard counted."
+              },
+              {
+                "id": "source-goal-count-peer-baseline",
+                "label": "Historische Basis und neu ausgewählte vollständige Operatoren getrennt gezählt",
+                "passed": true,
+                "details": "Previous peer comparisons concern their historical inventory only; original evidence retained in method.fourteenMethodSelectedProcessAddition.historicalPipelineStatusBeforeThisAddition. Current actual union 107=105+2; no full-standards benchmark."
+              },
+              {
+                "id": "source-goal-ids-unique",
+                "label": "Source-Ziel-IDs sind eindeutig",
+                "passed": true,
+                "details": "Doppelte IDs: -"
+              },
+              {
+                "id": "source-goals-reference-passages",
+                "label": "Jedes Source-Ziel referenziert eine vorhandene Originalpassage",
+                "passed": true,
+                "details": "Ohne Passage: -"
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-3",
+            "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+            "status": "incomplete",
+            "dependsOn": [
+              "MAPPING-1",
+              "MAPPING-2"
+            ],
+            "checks": [
+              {
+                "id": "mapping-2-complete",
+                "label": "MAPPING-2 abgeschlossen",
+                "passed": true,
+                "details": "107 actual source cells exist. Historical M3 results remain scoped to their prior inventory. Current individually accepted partial relations do not prove all whole-source duties."
+              },
+              {
+                "id": "m3-review-file-present",
+                "label": "M3-Review-Datei ist vorhanden",
+                "passed": true,
+                "details": "Current source/epoch-matching review aliases: curricula/DE/Gymnasium/mapping/DE-HH/upper-secondary/hh_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.q4-four-bounded-reviewed-20261013-v1.review.json, curricula/DE/Gymnasium/mapping/DE-HH/upper-secondary/hh_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json"
+              },
+              {
+                "id": "m3-review-decisions-reference-source-goals",
+                "label": "M3-Review-Entscheidungen referenzieren gueltige Source-Ziele",
+                "passed": false,
+                "details": "Wird aus der Review-Datei berechnet."
+              },
+              {
+                "id": "m3-review-targets-exist",
+                "label": "M3-Review-Ziele referenzieren vorhandene Canonical-Ziele",
+                "passed": false,
+                "details": "Wird aus der Review-Datei berechnet."
+              },
+              {
+                "id": "m3-all-source-goals-reviewed",
+                "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+                "passed": false,
+                "details": "2 newly selected whole operator cells have specific partial relations only. No new whole-source approval; all remaining verbs, stage/course/context and actual-performance duties remain open. Historical completeness is retained only in the saved previous pipeline record."
+              },
+              {
+                "id": "m3-all-source-goals-covered-by-canonical",
+                "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+                "passed": false,
+                "details": "2 newly selected whole operator cells have specific partial relations only. No new whole-source approval; all remaining verbs, stage/course/context and actual-performance duties remain open. Historical completeness is retained only in the saved previous pipeline record."
+              }
+            ]
+          }
+        ],
+        "selectedProcessIntegration": {
+          "status": "accepted-partial-contributions-only",
+          "totalSourceGoalsActual": 107,
+          "historicalSourceGoals": 97,
+          "newCompleteSelectedProcessCells": 8,
+          "newWholeSourceApprovals": 0,
+          "newScientificFirstDecisionsByIntegrator": 0,
+          "independentAcceptedRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+            "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+            "bytes": 269340
+          },
+          "sourceCellPartialBindings": [
+            {
+              "sourceGoalId": "hh-chemistry-sekii-process-standard-e5",
+              "acceptedPartialContributions": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+                  "bytes": 269340,
+                  "jsonPointer": "/mappings/8"
+                }
+              ],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": false
+            },
+            {
+              "sourceGoalId": "hh-chemistry-sekii-process-standard-e8",
+              "acceptedPartialContributions": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+                  "bytes": 269340,
+                  "jsonPointer": "/mappings/9"
+                }
+              ],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": false
+            },
+            {
+              "sourceGoalId": "hh-chemistry-sekii-process-standard-k1",
+              "acceptedPartialContributions": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+                  "bytes": 269340,
+                  "jsonPointer": "/mappings/10"
+                }
+              ],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": false
+            },
+            {
+              "sourceGoalId": "hh-chemistry-sekii-process-standard-k2",
+              "acceptedPartialContributions": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+                  "bytes": 269340,
+                  "jsonPointer": "/mappings/11"
+                }
+              ],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": false
+            },
+            {
+              "sourceGoalId": "hh-chemistry-sekii-process-standard-k5",
+              "acceptedPartialContributions": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+                  "bytes": 269340,
+                  "jsonPointer": "/mappings/12"
+                }
+              ],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": false
+            },
+            {
+              "sourceGoalId": "hh-chemistry-sekii-process-standard-k8",
+              "acceptedPartialContributions": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+                  "bytes": 269340,
+                  "jsonPointer": "/mappings/13"
+                }
+              ],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": false
+            },
+            {
+              "sourceGoalId": "hh-chemistry-sekii-process-standard-b3",
+              "acceptedPartialContributions": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+                  "bytes": 269340,
+                  "jsonPointer": "/mappings/14"
+                }
+              ],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": false
+            },
+            {
+              "sourceGoalId": "hh-chemistry-sekii-process-standard-b5",
+              "acceptedPartialContributions": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+                  "bytes": 269340,
+                  "jsonPointer": "/mappings/15"
+                }
+              ],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": false
+            }
+          ],
+          "wholeSourceCoverageComplete": false,
+          "historicalM3DoesNotExtendToAddedCells": true,
+          "historicalRecordBeforeFourteenAddition": true
+        },
+        "fourteenMethodPartialIntegration": {
+          "status": "accepted-partial-contributions-only",
+          "totalSourceGoalsActual": 107,
+          "retainedImmediateBeforeCells": 105,
+          "newCompleteSelectedOperatorCells": 2,
+          "newWholeSourceApprovals": 0,
+          "newScientificFirstDecisionsByTechnicalIntegrator": 0,
+          "independentAcceptedRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/ACCEPTED.exact104-direct-partial-two-literal-three-held.json",
+            "sha256": "9958d0a23bb96b4cce0ed69f2018631764f5fe943d87ed8136ef2ba070457119",
+            "bytes": 99336
+          },
+          "newSourceCellPartialBindings": [
+            {
+              "sourceGoalId": "hh-chemistry-sekii-process-standard-b11",
+              "acceptedPartialRelations": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+                  "jsonPointer": "/relations/17",
+                  "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+                }
+              ],
+              "wholeSourceApproval": false
+            },
+            {
+              "sourceGoalId": "hh-chemistry-sekii-process-standard-k4",
+              "acceptedPartialRelations": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+                  "jsonPointer": "/relations/60",
+                  "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+                }
+              ],
+              "wholeSourceApproval": false
+            }
+          ],
+          "historicalM3DoesNotExtendAutomaticallyToNewCells": true,
+          "wholeSourceCoverageComplete": false
+        }
+      }
+    }
   },
   "qualityReview": {
     "sourceGoalCountPeerBaseline": {
@@ -35,7 +730,9 @@
     "3.2",
     "3.3",
     "4.1",
-    "4.2"
+    "4.2",
+    "B11",
+    "K4"
   ],
   "pipelineStatus": {
     "currentStep": "MAPPING-3",
@@ -50,19 +747,19 @@
             "id": "source-document-present",
             "label": "Amtliches Hamburger Chemie-PDF liegt lokal vor",
             "passed": true,
-            "details": "curricula/DE/Gymnasium/input/HH/chemie-gyo-2022-data.pdf"
+            "details": "Current operative primary document: curricula/DE/Gymnasium/input/HH/chemie-gyo-2022-data.pdf. Historical inventory provenance remains in method.selectedProcessClauseAddition.historicalScopeEvidence."
           },
           {
             "id": "expected-topic-coverage",
             "label": "Alle vorgesehenen Hamburger Chemie-Passagegruppen wurden extrahiert",
             "passed": true,
-            "details": "12/12 Passagegruppen."
+            "details": "All 15 previous passages retained exactly; 1 complete selected clause passages appended. Not a full standards inventory."
           },
           {
             "id": "official-source-extraction",
             "label": "Passage-Extraction basiert auf amtlicher PDF-Quelle statt Legacy-Snapshot",
             "passed": true,
-            "details": "Quelle: curricula/DE/Gymnasium/input/HH/chemie-gyo-2022-data.pdf"
+            "details": "Current operative primary document: curricula/DE/Gymnasium/input/HH/chemie-gyo-2022-data.pdf. Historical inventory provenance remains in method.selectedProcessClauseAddition.historicalScopeEvidence."
           }
         ]
       },
@@ -78,13 +775,13 @@
             "id": "source-goals-created",
             "label": "Source-Ziele aus den Hamburger Chemie-Lehrplanpassagen erzeugt",
             "passed": true,
-            "details": "97 Source-Ziele"
+            "details": "Current actual union 108=107 retained immediate-before cells +1 complete selected operators. Historical peer/content counts remain in method.fortyContentAcceptedPartialAddition.previousPipelineStatusHistorical; no automatic full-standards claim."
           },
           {
             "id": "source-goal-count-peer-baseline",
-            "label": "Source-Ziel-Anzahl ist gegen gepruefte Chemie-Inventare plausibilisiert",
+            "label": "Historische Basis und neu ausgewählte vollständige Operatoren getrennt gezählt",
             "passed": true,
-            "details": "97 Source-Ziele; Hamburg Sek II liegt im Korridor der geprüften direkten Chemie-Sek-II-Inventare BW (126), NW (154), SH (165) und HE (202)."
+            "details": "Current actual union 108=107 retained immediate-before cells +1 complete selected operators. Historical peer/content counts remain in method.fortyContentAcceptedPartialAddition.previousPipelineStatusHistorical; no automatic full-standards claim."
           },
           {
             "id": "source-goal-ids-unique",
@@ -113,13 +810,13 @@
             "id": "mapping-2-complete",
             "label": "MAPPING-2 abgeschlossen",
             "passed": true,
-            "details": "97 Source-Ziele liegen vor; MAPPING-3 muss nun fachlich reviewed werden."
+            "details": "107 actual source cells exist. Historical M3 results remain scoped to their prior inventory. Current individually accepted partial relations do not prove all whole-source duties."
           },
           {
             "id": "m3-review-file-present",
             "label": "M3-Review-Datei ist vorhanden",
             "passed": true,
-            "details": "curricula/DE/Gymnasium/mapping/DE-HH/upper-secondary/hh_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json"
+            "details": "Current source/epoch-matching review aliases: curricula/DE/Gymnasium/mapping/DE-HH/upper-secondary/hh_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.q4-four-bounded-reviewed-20261013-v1.review.json, curricula/DE/Gymnasium/mapping/DE-HH/upper-secondary/hh_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json"
           },
           {
             "id": "m3-review-decisions-reference-source-goals",
@@ -137,17 +834,204 @@
             "id": "m3-all-source-goals-reviewed",
             "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
             "passed": false,
-            "details": "MAPPING-3 ist noch nicht fachlich reviewed."
+            "details": "New selected operators have accepted specific partial relations only. No whole official source completion or practical performance is established; previous completeness is historical."
           },
           {
             "id": "m3-all-source-goals-covered-by-canonical",
             "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
             "passed": false,
-            "details": "MAPPING-3 ist noch nicht fachlich reviewed."
+            "details": "New selected operators have accepted specific partial relations only. No whole official source completion or practical performance is established; previous completeness is historical."
           }
         ]
       }
-    ]
+    ],
+    "selectedProcessIntegration": {
+      "status": "accepted-partial-contributions-only",
+      "totalSourceGoalsActual": 107,
+      "historicalSourceGoals": 97,
+      "newCompleteSelectedProcessCells": 8,
+      "newWholeSourceApprovals": 0,
+      "newScientificFirstDecisionsByIntegrator": 0,
+      "independentAcceptedRef": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+        "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+        "bytes": 269340
+      },
+      "sourceCellPartialBindings": [
+        {
+          "sourceGoalId": "hh-chemistry-sekii-process-standard-e5",
+          "acceptedPartialContributions": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+              "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+              "bytes": 269340,
+              "jsonPointer": "/mappings/8"
+            }
+          ],
+          "wholeSourceApproval": false,
+          "extractionTransportOnlyWithoutBindingVote": false
+        },
+        {
+          "sourceGoalId": "hh-chemistry-sekii-process-standard-e8",
+          "acceptedPartialContributions": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+              "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+              "bytes": 269340,
+              "jsonPointer": "/mappings/9"
+            }
+          ],
+          "wholeSourceApproval": false,
+          "extractionTransportOnlyWithoutBindingVote": false
+        },
+        {
+          "sourceGoalId": "hh-chemistry-sekii-process-standard-k1",
+          "acceptedPartialContributions": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+              "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+              "bytes": 269340,
+              "jsonPointer": "/mappings/10"
+            }
+          ],
+          "wholeSourceApproval": false,
+          "extractionTransportOnlyWithoutBindingVote": false
+        },
+        {
+          "sourceGoalId": "hh-chemistry-sekii-process-standard-k2",
+          "acceptedPartialContributions": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+              "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+              "bytes": 269340,
+              "jsonPointer": "/mappings/11"
+            }
+          ],
+          "wholeSourceApproval": false,
+          "extractionTransportOnlyWithoutBindingVote": false
+        },
+        {
+          "sourceGoalId": "hh-chemistry-sekii-process-standard-k5",
+          "acceptedPartialContributions": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+              "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+              "bytes": 269340,
+              "jsonPointer": "/mappings/12"
+            }
+          ],
+          "wholeSourceApproval": false,
+          "extractionTransportOnlyWithoutBindingVote": false
+        },
+        {
+          "sourceGoalId": "hh-chemistry-sekii-process-standard-k8",
+          "acceptedPartialContributions": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+              "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+              "bytes": 269340,
+              "jsonPointer": "/mappings/13"
+            }
+          ],
+          "wholeSourceApproval": false,
+          "extractionTransportOnlyWithoutBindingVote": false
+        },
+        {
+          "sourceGoalId": "hh-chemistry-sekii-process-standard-b3",
+          "acceptedPartialContributions": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+              "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+              "bytes": 269340,
+              "jsonPointer": "/mappings/14"
+            }
+          ],
+          "wholeSourceApproval": false,
+          "extractionTransportOnlyWithoutBindingVote": false
+        },
+        {
+          "sourceGoalId": "hh-chemistry-sekii-process-standard-b5",
+          "acceptedPartialContributions": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+              "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+              "bytes": 269340,
+              "jsonPointer": "/mappings/15"
+            }
+          ],
+          "wholeSourceApproval": false,
+          "extractionTransportOnlyWithoutBindingVote": false
+        }
+      ],
+      "wholeSourceCoverageComplete": false,
+      "historicalM3DoesNotExtendToAddedCells": true,
+      "historicalRecordBeforeFourteenAddition": true
+    },
+    "fourteenMethodPartialIntegration": {
+      "status": "accepted-partial-contributions-only",
+      "totalSourceGoalsActual": 107,
+      "retainedImmediateBeforeCells": 105,
+      "newCompleteSelectedOperatorCells": 2,
+      "newWholeSourceApprovals": 0,
+      "newScientificFirstDecisionsByTechnicalIntegrator": 0,
+      "independentAcceptedRef": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/ACCEPTED.exact104-direct-partial-two-literal-three-held.json",
+        "sha256": "9958d0a23bb96b4cce0ed69f2018631764f5fe943d87ed8136ef2ba070457119",
+        "bytes": 99336
+      },
+      "newSourceCellPartialBindings": [
+        {
+          "sourceGoalId": "hh-chemistry-sekii-process-standard-b11",
+          "acceptedPartialRelations": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/17",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "wholeSourceApproval": false
+        },
+        {
+          "sourceGoalId": "hh-chemistry-sekii-process-standard-k4",
+          "acceptedPartialRelations": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/60",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "wholeSourceApproval": false
+        }
+      ],
+      "historicalM3DoesNotExtendAutomaticallyToNewCells": true,
+      "wholeSourceCoverageComplete": false
+    },
+    "fortyContentPartialIntegration": {
+      "status": "accepted-specific-partial-relations-only",
+      "totalSourceGoalsActual": 108,
+      "retainedImmediateBeforeCells": 107,
+      "newCompleteSelectedCells": 1,
+      "newWholeSourceApprovals": 0,
+      "newScientificFirstDecisionsByTechnicalIntegrator": 0,
+      "independentAcceptedRefs": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-first-twenty-source-informed-independent-a-20261018-v1/ACCEPTED.one-hundred-sixty-four-bounded-direct-relations.with-explicit-context-conditions.json",
+          "sha256": "5af30ee6b2cb919a8445f2668c963b81d22583cb241a8d64f8df469f93da06cf",
+          "bytes": 735256
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-multistate-source-informed-independent-b-part-b-20261018-v1/ACCEPTED.exact-fifty-five-partial-one-held-HE-placement.json",
+          "sha256": "ab921ae7928e26b5f58b2c25c8c72c470b2c3b4c111cb9fae09b92b821ef7f48",
+          "bytes": 43536
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-first-twenty-source-informed-independent-a-20261018-v1/ACCEPTED.six-existing-literal-source-acquisition-foundations.json",
+          "sha256": "c9f3aab904f4b1152d7b8d370b6fddacb997b08a2c784e70032618408a86492c",
+          "bytes": 20744
+        }
+      ],
+      "wholeSourceCoverageComplete": false
+    }
   },
   "passages": [
     {
@@ -366,6 +1250,69 @@
         "de-hh-chemie-sekii-bildungsplan-2022-4-2-096-4e293501",
         "de-hh-chemie-sekii-bildungsplan-2022-4-2-097-d9b3d262"
       ]
+    },
+    {
+      "id": "hh-chemistry-sekii-process:2.2",
+      "topicCode": "2.2",
+      "title": "HH: selected whole process clauses, original full pages retained",
+      "text": "E4   planen, ggf. unter Berücksichtigung der Variablenkontrolle, experiment- oder modellba-\n     sierte Vorgehensweisen, auch zur Prüfung von Hypothesen, Aussagen oder Theorien\n     (5.2, 5.3);\nE5   führen qualitative und quantitative experimentelle Untersuchungen – den chemischen\n     Arbeitsweisen und Sicherheitsregeln entsprechend – durch, protokollieren sie und wer-\n     ten diese aus (5.2, 5.3);\nE6   nutzen digitale Werkzeuge und Medien zum Aufnehmen, Darstellen und Auswerten von\n     Messwerten, für Berechnungen, Modellierungen und Simulationen (5.2, 5.3);\nE7   wählen geeignete Real- oder Denkmodelle (z. B. Atommodelle, Periodensystem der Ele-\n     mente) aus und nutzen sie, um chemische Fragestellungen zu bearbeiten.\n\nTeilkompetenzbereich Erkenntnisprozesse und Ergebnisse interpretieren und\nreflektieren\nDie Schülerinnen und Schüler …\nE8   finden in erhobenen oder recherchierten Daten Strukturen, Beziehungen und Trends,\n     erklären diese theoriebezogen und ziehen Schlussfolgerungen;\nE9   diskutieren Möglichkeiten und Grenzen von Modellen;\nE 10 reflektieren die eigenen Ergebnisse und den eigenen Prozess der Erkenntnisgewinnung;\nE 11 stellen bei der Interpretation von Untersuchungsbefunden fachübergreifende Bezüge\n     her.\n\nTeilkompetenzbereich Merkmale wissenschaftlicher Aussagen und Methoden\ncharakterisieren und reflektieren\nDie Schülerinnen und Schüler …\nE 12 reflektieren Möglichkeiten und Grenzen des konkreten Erkenntnisgewinnungsprozesses\n     sowie der gewonnenen Erkenntnisse (z. B. Reproduzierbarkeit, Falsifizierbarkeit, In-\n     tersubjektivität, logische Konsistenz, Vorläufigkeit).\n\nKommunikationskompetenz\nDie Kommunikationskompetenz der Schülerinnen und Schüler zeigt sich in der Kenntnis von\nFachsprache, fachtypischen Darstellungen und Argumentationsstrukturen sowie in der Fähig-\nkeit, diese zu nutzen, um fachbezogene Informationen zu erschließen, adressaten- und situa-\ntionsgerecht darzustellen und auszutauschen.\nIm Bereich der Kommunikationskompetenz ist es wichtig, sich nicht darauf zu beschränken,\nfachlich richtige Sätze zu Aufgabenstellungen zu formulieren, sondern auch fachlich und fach-\nsprachlich richtig mit chemiebezogenen analogen und digitalen Informationsmaterialien umzu-\ngehen und unterschiedliche Repräsentationsformen adressatengerecht einzusetzen. Dabei\nwerden drei sich überlappende Teilkompetenzbereiche unterschieden. Fachsprache und an-\ndere fachspezifische Repräsentationsformen wie chemische Formeln und Reaktionsgleichun-\ngen werden erlernt, um Inhalte aus unterschiedlichen Medien zu erschließen, sie fachgerecht\nund aufgabenbezogen aufzubereiten und um situationsangemessen agieren zu können.\nHierzu zählt der Informationsaustausch im sozialen Umfeld genauso wie die Partizipation in\neiner wissenschaftlichen Diskussion auf einem angemessenen Niveau. Dazu müssen Aussa-\ngen – auch im historischen Kontext – differenziert wahrgenommen, Missverständnisse und\nStandpunkte geklärt sowie Lösungen angestrebt werden.\n\n\n                                                                                          19\n\n\f\nTeilkompetenzbereich Informationen erschließen\nDie Schülerinnen und Schüler …\nK1   recherchieren zu chemischen Sachverhalten zielgerichtet in analogen und digitalen Me-\n     dien und wählen für ihre Zwecke passende Quellen aus (1.1, 1.2, 1.3);\nK2   wählen relevante und aussagekräftige Informationen und Daten zu chemischen Sach-\n     verhalten und anwendungsbezogenen Fragestellungen aus und erschließen Informatio-\n     nen aus Quellen mit verschiedenen, auch komplexen Darstellungsformen;\nK3   prüfen die Übereinstimmung verschiedener Quellen oder Darstellungsformen im Hinblick\n     auf deren Aussagen (6.1);\nK4   überprüfen die Vertrauenswürdigkeit verwendeter Quellen und Medien (z. B. anhand ih-\n     rer Herkunft und Qualität) (6.1);\n\nTeilkompetenzbereich Informationen aufbereiten\nDie Schülerinnen und Schüler …\nK5   wählen chemische Sachverhalte und Informationen sach-, adressaten- und situations-\n     gerecht aus;\nK6   unterscheiden zwischen Alltags- und Fachsprache;\nK7   nutzen geeignete Darstellungsformen für chemische Sachverhalte und überführen diese\n     ineinander (3.1, 3.2);\nK8   strukturieren und interpretieren ausgewählte Informationen und leiten Schlussfolgerun-\n     gen ab.\n\nTeilkompetenzbereich Informationen austauschen und wissenschaftlich diskutieren\nDie Schülerinnen und Schüler …\nK9   verwenden Fachbegriffe und -sprache korrekt;\nK 10 erklären chemische Sachverhalte und argumentieren fachlich schlüssig;\nK 11 präsentieren chemische Sachverhalte sowie Lern- und Arbeitsergebnisse sach-, adres-\n     saten- und situationsgerecht unter Einsatz geeigneter analoger und digitaler Medien\n     (3.1, 3.2);\nK 12 prüfen die Urheberschaft, belegen verwendete Quellen und kennzeichnen Zitate (3.3);\nK 13 tauschen sich mit anderen konstruktiv über chemische Sachverhalte aus, vertreten, re-\n     flektieren und korrigieren gegebenenfalls den eigenen Standpunkt (2.1, 2.2, 2.3).\n\nBewertungskompetenz\nDie Bewertungskompetenz der Schülerinnen und Schüler zeigt sich in der Kenntnis von fach-\nlichen und überfachlichen Perspektiven und Bewertungsverfahren sowie in der Fähigkeit,\ndiese zu nutzen, um Aussagen bzw. Daten anhand verschiedener Kriterien zu beurteilen, sich\ndazu begründet Meinungen zu bilden, Entscheidungen auch auf ethischer Grundlage zu tref-\nfen und Entscheidungsprozesse und deren Folgen zu reflektieren.\nIm Bereich der Bewertungskompetenz ist es wichtig, sich nicht darauf zu beschränken, Fakten\nzu vergleichen, sondern Sachverhalte und Informationen fachlich zu beurteilen und ggf.\n\n\n\n                                                                                        20\n\n\f\nethisch zu bewerten. Dabei werden drei sich überlappende Teilkompetenzbereiche unter-\nschieden. Um mit Informationen kritisch umgehen zu können, werden Quellen hinsichtlich ihrer\nQualität beurteilt. Hierfür ist Wissen über den Bewertungsprozess notwendig. Die Unterschei-\ndung von wissenschaftlichen und nichtwissenschaftlichen Aussagen erfordert Kenntnisse for-\nmaler und inhaltlicher Kriterien zur Prüfung der Glaubwürdigkeit sowie zur Beurteilung des\nEinflusses von Werten, Normen und Interessen. Es geht darum, sich kriteriengeleitet eigene\nMeinungen zu bilden, Entscheidungen zu treffen und Handlungsoptionen abzuleiten. Dazu\nzählt z. B. bei der Beurteilung und Bewertung von Technologien ein Abwägen von Chancen\nund Risiken unter Berücksichtigung von Sicherheitsmaßnahmen. Hierbei reichen die Entschei-\ndungsfelder vom eigenen täglichen Leben bis zu gesellschaftlich oder politisch relevanten glo-\nbalen Entscheidungen. Aus einer Metaperspektive heraus werden die Entscheidungsprozesse\nreflektiert und daraus entstehende Folgen abgeschätzt. Die Einbindung von Bewertungskom-\npetenz in den Chemieunterricht erfordert, über die sachliche Beurteilung von naturwissen-\nschaftlichen Aussagen hinauszugehen und fachlich relevante Handlungen und Entscheidun-\ngen aus persönlicher, gesellschaftlicher und ethischer Perspektive zu betrachten.\n\nTeilkompetenzbereich Sachverhalte und Informationen multiperspektivisch beurteilen\nDie Schülerinnen und Schüler …\nB1   betrachten Aussagen, Modelle und Verfahren aus unterschiedlichen Perspektiven und\n     beurteilen diese sachgerecht auf der Grundlage chemischer Kenntnisse;\nB2   beurteilen die Inhalte verwendeter Quellen und Medien (z. B. anhand der fachlichen\n     Richtigkeit und Vertrauenswürdigkeit) (6.1);\nB3   beurteilen Informationen und Daten hinsichtlich ihrer Angemessenheit, Grenzen und\n     Tragweite;\nB4   analysieren und beurteilen die Auswahl von Quellen und Darstellungsformen im Zusam-\n     menhang mit der Intention der Autorin/des Autors (6.1).\n\nTeilkompetenzbereich Kriteriengeleitet Meinungen bilden und Entscheidungen treffen\nDie Schülerinnen und Schüler …\nB5   entwickeln anhand relevanter Bewertungskriterien Handlungsoptionen in gesellschaft-\n     lich relevanten oder alltagsrelevanten Entscheidungssituationen mit fachlichem Bezug\n     und wägen sie gegeneinander ab;\nB6   beurteilen Chancen und Risiken ausgewählter Technologien, Produkte und Verhaltens-\n     weisen fachlich und bewerten diese;\nB7   treffen mit Hilfe fachlicher Kriterien begründete Entscheidungen in Alltagssituationen;\nB8   beurteilen die Bedeutung fachlicher Kompetenzen in Bezug auf Alltagssituationen und\n     Berufsfelder;\nB9   beurteilen Möglichkeiten und Grenzen chemischer Sichtweisen;\nB 10 bewerten die gesellschaftliche Relevanz und die ökologische Bedeutung der angewand-\n     ten Chemie;\nB 11 beurteilen grundlegende Aspekte zu Gefahren und Sicherheit in Labor und Alltag und\n     leiten daraus begründet Handlungsoptionen ab.\n\n\n\n\n                                                                                               21\n",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "curricula/DE/Gymnasium/input/HH/chemie-gyo-2022-data.pdf, physical PDF pages [19, 20, 21]",
+      "physicalPdfPages": [
+        19,
+        20,
+        21
+      ],
+      "scope": "Full page context, selected clauses only become sourceGoals; all other standards remain unextracted context."
+    },
+    {
+      "id": "hh-chemistry-sekii-process-standard-b11:whole-primary-context",
+      "topicCode": "B11",
+      "title": "Selected complete official operator; full original page context referenced",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "text": "beurteilen grundlegende Aspekte zu Gefahren und Sicherheit in Labor und Alltag und leiten daraus begründet Handlungsoptionen ab.",
+      "physicalPdfPages": [
+        21
+      ],
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022; physical PDF21; B11",
+      "scope": "Only this entire selected operator is newly operative. Full original primary-page context was read and remains available at the pinned official PDF; all unselected operators remain without a new binding vote.",
+      "primaryDocumentPin": {
+        "path": "curricula/DE/Gymnasium/input/HH/chemie-gyo-2022-data.pdf",
+        "sha256": "4f452d282fdef5f282a2b56f5553d117d12ef17a194d469c34c90658377ccba3",
+        "bytes": 580404
+      },
+      "sourceStageCourseAndContext": "DE-HH SekII end-of-qualification process standard; common GK/LK operator, differentiated depth and independence remain. This finite partial contribution creates no universal duty to the complete own cases or whole-source completion."
+    },
+    {
+      "id": "hh-chemistry-sekii-process-standard-k4:whole-primary-context",
+      "topicCode": "K4",
+      "title": "Selected complete official operator; full original page context referenced",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "text": "überprüfen die Vertrauenswürdigkeit verwendeter Quellen und Medien (z. B. anhand ihrer Herkunft und Qualität) (6.1)",
+      "physicalPdfPages": [
+        20
+      ],
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022; physical PDF20; K4",
+      "scope": "Only this entire selected operator is newly operative. Full original primary-page context was read and remains available at the pinned official PDF; all unselected operators remain without a new binding vote.",
+      "primaryDocumentPin": {
+        "path": "curricula/DE/Gymnasium/input/HH/chemie-gyo-2022-data.pdf",
+        "sha256": "4f452d282fdef5f282a2b56f5553d117d12ef17a194d469c34c90658377ccba3",
+        "bytes": 580404
+      },
+      "sourceStageCourseAndContext": "DE-HH SekII end-of-qualification process standard; common GK/LK operator, differentiated depth and independence remain. This finite partial contribution creates no universal duty to the complete own cases or whole-source completion."
+    },
+    {
+      "id": "hh-chemistry-sekii-process-standard-k7:complete-primary-addition",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "topicCode": "K7 Informationen aufbereiten",
+      "title": "K7 Informationen aufbereiten",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, physical PDF20, K7 Informationen aufbereiten",
+      "text": "nutzen geeignete Darstellungsformen für chemische Sachverhalte und überführen diese ineinander",
+      "metadata": {
+        "physicalPdfPage": 20,
+        "completeSelectedClauseOnly": true,
+        "notWholePdfText": true
+      }
     }
   ],
   "sourceGoals": [
@@ -2890,6 +3837,381 @@
         "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
         "sectionCode": "4.2"
       }
+    },
+    {
+      "id": "hh-chemistry-sekii-process-standard-e5",
+      "passageId": "hh-chemistry-sekii-process:2.2",
+      "topicCode": "2.2",
+      "title": "E5: führen qualitative und quantitative experimentelle Untersuchungen – den chemischen Arbeitsweisen und Sicherheitsregeln entsprechend – durch, protokollieren sie und werten diese aus (5.2, 5.3)",
+      "description": "führen qualitative und quantitative experimentelle Untersuchungen – den chemischen Arbeitsweisen und Sicherheitsregeln entsprechend – durch, protokollieren sie und werten diese aus (5.2, 5.3)",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceText": "führen qualitative und quantitative experimentelle Untersuchungen – den chemischen Arbeitsweisen und Sicherheitsregeln entsprechend – durch, protokollieren sie und werten diese aus (5.2, 5.3)",
+      "parentBulletText": "führen qualitative und quantitative experimentelle Untersuchungen – den chemischen Arbeitsweisen und Sicherheitsregeln entsprechend – durch, protokollieren sie und werten diese aus (5.2, 5.3)",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022; physical PDF19; 2.2; E5.",
+      "sourceSpan": {
+        "passageId": "hh-chemistry-sekii-process:2.2",
+        "label": "physical PDF19, 2.2, E5"
+      },
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompleteNumberedStandard",
+      "tags": [
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "course:GK_LK"
+      ],
+      "metadata": {
+        "officialStandardCode": "E5",
+        "localLocatorLabel": "E5",
+        "officiallyNumbered": true,
+        "physicalPdfPage": 19,
+        "extractionMethod": "Author read whole primary section; complete clause, line wrapping only normalized; inactive additive candidate; no independent review yet.",
+        "stageCourseBoundary": "SekII, end of Qualifikationsphase; common GK/LK standards, course depth/self-direction differ; no whole-course completion"
+      }
+    },
+    {
+      "id": "hh-chemistry-sekii-process-standard-e8",
+      "passageId": "hh-chemistry-sekii-process:2.2",
+      "topicCode": "2.2",
+      "title": "E8: finden in erhobenen oder recherchierten Daten Strukturen, Beziehungen und Trends, erklären diese theoriebezogen und ziehen Schlussfolgerungen",
+      "description": "finden in erhobenen oder recherchierten Daten Strukturen, Beziehungen und Trends, erklären diese theoriebezogen und ziehen Schlussfolgerungen",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceText": "finden in erhobenen oder recherchierten Daten Strukturen, Beziehungen und Trends, erklären diese theoriebezogen und ziehen Schlussfolgerungen",
+      "parentBulletText": "finden in erhobenen oder recherchierten Daten Strukturen, Beziehungen und Trends, erklären diese theoriebezogen und ziehen Schlussfolgerungen",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022; physical PDF19; 2.2; E8.",
+      "sourceSpan": {
+        "passageId": "hh-chemistry-sekii-process:2.2",
+        "label": "physical PDF19, 2.2, E8"
+      },
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompleteNumberedStandard",
+      "tags": [
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "course:GK_LK"
+      ],
+      "metadata": {
+        "officialStandardCode": "E8",
+        "localLocatorLabel": "E8",
+        "officiallyNumbered": true,
+        "physicalPdfPage": 19,
+        "extractionMethod": "Author read whole primary section; complete clause, line wrapping only normalized; inactive additive candidate; no independent review yet.",
+        "stageCourseBoundary": "SekII, end of Qualifikationsphase; common GK/LK standards, course depth/self-direction differ; no whole-course completion"
+      }
+    },
+    {
+      "id": "hh-chemistry-sekii-process-standard-k1",
+      "passageId": "hh-chemistry-sekii-process:2.2",
+      "topicCode": "2.2",
+      "title": "K1: recherchieren zu chemischen Sachverhalten zielgerichtet in analogen und digitalen Medien und wählen für ihre Zwecke passende Quellen aus (1.1, 1.2, 1.3)",
+      "description": "recherchieren zu chemischen Sachverhalten zielgerichtet in analogen und digitalen Medien und wählen für ihre Zwecke passende Quellen aus (1.1, 1.2, 1.3)",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceText": "recherchieren zu chemischen Sachverhalten zielgerichtet in analogen und digitalen Medien und wählen für ihre Zwecke passende Quellen aus (1.1, 1.2, 1.3)",
+      "parentBulletText": "recherchieren zu chemischen Sachverhalten zielgerichtet in analogen und digitalen Medien und wählen für ihre Zwecke passende Quellen aus (1.1, 1.2, 1.3)",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022; physical PDF20; 2.2; K1.",
+      "sourceSpan": {
+        "passageId": "hh-chemistry-sekii-process:2.2",
+        "label": "physical PDF20, 2.2, K1"
+      },
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompleteNumberedStandard",
+      "tags": [
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "course:GK_LK"
+      ],
+      "metadata": {
+        "officialStandardCode": "K1",
+        "localLocatorLabel": "K1",
+        "officiallyNumbered": true,
+        "physicalPdfPage": 20,
+        "extractionMethod": "Author read whole primary section; complete clause, line wrapping only normalized; inactive additive candidate; no independent review yet.",
+        "stageCourseBoundary": "SekII, end of Qualifikationsphase; common GK/LK standards, course depth/self-direction differ; no whole-course completion"
+      }
+    },
+    {
+      "id": "hh-chemistry-sekii-process-standard-k2",
+      "passageId": "hh-chemistry-sekii-process:2.2",
+      "topicCode": "2.2",
+      "title": "K2: wählen relevante und aussagekräftige Informationen und Daten zu chemischen Sachverhalten und anwendungsbezogenen Fragestellungen aus und erschließen Informationen aus Quellen mit verschiedenen, auch komplexen Darstellungsformen",
+      "description": "wählen relevante und aussagekräftige Informationen und Daten zu chemischen Sachverhalten und anwendungsbezogenen Fragestellungen aus und erschließen Informationen aus Quellen mit verschiedenen, auch komplexen Darstellungsformen",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceText": "wählen relevante und aussagekräftige Informationen und Daten zu chemischen Sachverhalten und anwendungsbezogenen Fragestellungen aus und erschließen Informationen aus Quellen mit verschiedenen, auch komplexen Darstellungsformen",
+      "parentBulletText": "wählen relevante und aussagekräftige Informationen und Daten zu chemischen Sachverhalten und anwendungsbezogenen Fragestellungen aus und erschließen Informationen aus Quellen mit verschiedenen, auch komplexen Darstellungsformen",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022; physical PDF20; 2.2; K2.",
+      "sourceSpan": {
+        "passageId": "hh-chemistry-sekii-process:2.2",
+        "label": "physical PDF20, 2.2, K2"
+      },
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompleteNumberedStandard",
+      "tags": [
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "course:GK_LK"
+      ],
+      "metadata": {
+        "officialStandardCode": "K2",
+        "localLocatorLabel": "K2",
+        "officiallyNumbered": true,
+        "physicalPdfPage": 20,
+        "extractionMethod": "Author read whole primary section; complete clause, line wrapping only normalized; inactive additive candidate; no independent review yet.",
+        "stageCourseBoundary": "SekII, end of Qualifikationsphase; common GK/LK standards, course depth/self-direction differ; no whole-course completion"
+      }
+    },
+    {
+      "id": "hh-chemistry-sekii-process-standard-k5",
+      "passageId": "hh-chemistry-sekii-process:2.2",
+      "topicCode": "2.2",
+      "title": "K5: wählen chemische Sachverhalte und Informationen sach-, adressaten- und situationsgerecht aus",
+      "description": "wählen chemische Sachverhalte und Informationen sach-, adressaten- und situationsgerecht aus",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceText": "wählen chemische Sachverhalte und Informationen sach-, adressaten- und situationsgerecht aus",
+      "parentBulletText": "wählen chemische Sachverhalte und Informationen sach-, adressaten- und situationsgerecht aus",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022; physical PDF20; 2.2; K5.",
+      "sourceSpan": {
+        "passageId": "hh-chemistry-sekii-process:2.2",
+        "label": "physical PDF20, 2.2, K5"
+      },
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompleteNumberedStandard",
+      "tags": [
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "course:GK_LK"
+      ],
+      "metadata": {
+        "officialStandardCode": "K5",
+        "localLocatorLabel": "K5",
+        "officiallyNumbered": true,
+        "physicalPdfPage": 20,
+        "extractionMethod": "Author read whole primary section; complete clause, line wrapping only normalized; inactive additive candidate; no independent review yet.",
+        "stageCourseBoundary": "SekII, end of Qualifikationsphase; common GK/LK standards, course depth/self-direction differ; no whole-course completion"
+      }
+    },
+    {
+      "id": "hh-chemistry-sekii-process-standard-k8",
+      "passageId": "hh-chemistry-sekii-process:2.2",
+      "topicCode": "2.2",
+      "title": "K8: strukturieren und interpretieren ausgewählte Informationen und leiten Schlussfolgerungen ab",
+      "description": "strukturieren und interpretieren ausgewählte Informationen und leiten Schlussfolgerungen ab",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceText": "strukturieren und interpretieren ausgewählte Informationen und leiten Schlussfolgerungen ab",
+      "parentBulletText": "strukturieren und interpretieren ausgewählte Informationen und leiten Schlussfolgerungen ab",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022; physical PDF20; 2.2; K8.",
+      "sourceSpan": {
+        "passageId": "hh-chemistry-sekii-process:2.2",
+        "label": "physical PDF20, 2.2, K8"
+      },
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompleteNumberedStandard",
+      "tags": [
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "course:GK_LK"
+      ],
+      "metadata": {
+        "officialStandardCode": "K8",
+        "localLocatorLabel": "K8",
+        "officiallyNumbered": true,
+        "physicalPdfPage": 20,
+        "extractionMethod": "Author read whole primary section; complete clause, line wrapping only normalized; inactive additive candidate; no independent review yet.",
+        "stageCourseBoundary": "SekII, end of Qualifikationsphase; common GK/LK standards, course depth/self-direction differ; no whole-course completion"
+      }
+    },
+    {
+      "id": "hh-chemistry-sekii-process-standard-b3",
+      "passageId": "hh-chemistry-sekii-process:2.2",
+      "topicCode": "2.2",
+      "title": "B3: beurteilen Informationen und Daten hinsichtlich ihrer Angemessenheit, Grenzen und Tragweite",
+      "description": "beurteilen Informationen und Daten hinsichtlich ihrer Angemessenheit, Grenzen und Tragweite",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceText": "beurteilen Informationen und Daten hinsichtlich ihrer Angemessenheit, Grenzen und Tragweite",
+      "parentBulletText": "beurteilen Informationen und Daten hinsichtlich ihrer Angemessenheit, Grenzen und Tragweite",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022; physical PDF21; 2.2; B3.",
+      "sourceSpan": {
+        "passageId": "hh-chemistry-sekii-process:2.2",
+        "label": "physical PDF21, 2.2, B3"
+      },
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompleteNumberedStandard",
+      "tags": [
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "course:GK_LK"
+      ],
+      "metadata": {
+        "officialStandardCode": "B3",
+        "localLocatorLabel": "B3",
+        "officiallyNumbered": true,
+        "physicalPdfPage": 21,
+        "extractionMethod": "Author read whole primary section; complete clause, line wrapping only normalized; inactive additive candidate; no independent review yet.",
+        "stageCourseBoundary": "SekII, end of Qualifikationsphase; common GK/LK standards, course depth/self-direction differ; no whole-course completion"
+      }
+    },
+    {
+      "id": "hh-chemistry-sekii-process-standard-b5",
+      "passageId": "hh-chemistry-sekii-process:2.2",
+      "topicCode": "2.2",
+      "title": "B5: entwickeln anhand relevanter Bewertungskriterien Handlungsoptionen in gesellschaftlich relevanten oder alltagsrelevanten Entscheidungssituationen mit fachlichem Bezug und wägen sie gegeneinander ab",
+      "description": "entwickeln anhand relevanter Bewertungskriterien Handlungsoptionen in gesellschaftlich relevanten oder alltagsrelevanten Entscheidungssituationen mit fachlichem Bezug und wägen sie gegeneinander ab",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceText": "entwickeln anhand relevanter Bewertungskriterien Handlungsoptionen in gesellschaftlich relevanten oder alltagsrelevanten Entscheidungssituationen mit fachlichem Bezug und wägen sie gegeneinander ab",
+      "parentBulletText": "entwickeln anhand relevanter Bewertungskriterien Handlungsoptionen in gesellschaftlich relevanten oder alltagsrelevanten Entscheidungssituationen mit fachlichem Bezug und wägen sie gegeneinander ab",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022; physical PDF21; 2.2; B5.",
+      "sourceSpan": {
+        "passageId": "hh-chemistry-sekii-process:2.2",
+        "label": "physical PDF21, 2.2, B5"
+      },
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompleteNumberedStandard",
+      "tags": [
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "course:GK_LK"
+      ],
+      "metadata": {
+        "officialStandardCode": "B5",
+        "localLocatorLabel": "B5",
+        "officiallyNumbered": true,
+        "physicalPdfPage": 21,
+        "extractionMethod": "Author read whole primary section; complete clause, line wrapping only normalized; inactive additive candidate; no independent review yet.",
+        "stageCourseBoundary": "SekII, end of Qualifikationsphase; common GK/LK standards, course depth/self-direction differ; no whole-course completion"
+      }
+    },
+    {
+      "id": "hh-chemistry-sekii-process-standard-b11",
+      "passageId": "hh-chemistry-sekii-process-standard-b11:whole-primary-context",
+      "topicCode": "B11",
+      "title": "B11: beurteilen grundlegende Aspekte zu Gefahren und Sicherheit in Labor und Alltag und leiten daraus begründet Handlungsoptionen ab.",
+      "description": "beurteilen grundlegende Aspekte zu Gefahren und Sicherheit in Labor und Alltag und leiten daraus begründet Handlungsoptionen ab.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceText": "beurteilen grundlegende Aspekte zu Gefahren und Sicherheit in Labor und Alltag und leiten daraus begründet Handlungsoptionen ab.",
+      "parentBulletText": "beurteilen grundlegende Aspekte zu Gefahren und Sicherheit in Labor und Alltag und leiten daraus begründet Handlungsoptionen ab.",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022; physical PDF21; B11",
+      "sourceSpan": {
+        "passageId": "hh-chemistry-sekii-process-standard-b11:whole-primary-context",
+        "label": "B11, physical PDF21"
+      },
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompleteNumberedStandard",
+      "tags": [
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "course:GK_LK"
+      ],
+      "metadata": {
+        "localLocatorLabel": "B11",
+        "officiallyNumbered": true,
+        "physicalPdfPage": 21,
+        "extractionMethod": "Own author read complete primary operator and whole page; line wrapping normalized. Inactive, independent review required; no whole-source approval.",
+        "stageCourseBoundary": "DE-HH SekII end-of-qualification process standard; common GK/LK operator, differentiated depth and independence remain. This finite partial contribution creates no universal duty to the complete own cases or whole-source completion.",
+        "officialStandardCode": "B11",
+        "currentAcceptedPartialRelations": {
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+            "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248",
+            "bytes": 731348
+          },
+          "bindings": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/17",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "authorInactiveWordingIsHistoricalSnapshot": true,
+          "wholeSourceApproval": false
+        }
+      }
+    },
+    {
+      "id": "hh-chemistry-sekii-process-standard-k4",
+      "passageId": "hh-chemistry-sekii-process-standard-k4:whole-primary-context",
+      "topicCode": "K4",
+      "title": "K4: überprüfen die Vertrauenswürdigkeit verwendeter Quellen und Medien (z. B. anhand ihrer Herkunft und Qualität) (6.1)",
+      "description": "überprüfen die Vertrauenswürdigkeit verwendeter Quellen und Medien (z. B. anhand ihrer Herkunft und Qualität) (6.1)",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceText": "überprüfen die Vertrauenswürdigkeit verwendeter Quellen und Medien (z. B. anhand ihrer Herkunft und Qualität) (6.1)",
+      "parentBulletText": "überprüfen die Vertrauenswürdigkeit verwendeter Quellen und Medien (z. B. anhand ihrer Herkunft und Qualität) (6.1)",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022; physical PDF20; K4",
+      "sourceSpan": {
+        "passageId": "hh-chemistry-sekii-process-standard-k4:whole-primary-context",
+        "label": "K4, physical PDF20"
+      },
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompleteNumberedStandard",
+      "tags": [
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "course:GK_LK"
+      ],
+      "metadata": {
+        "localLocatorLabel": "K4",
+        "officiallyNumbered": true,
+        "physicalPdfPage": 20,
+        "extractionMethod": "Own author read complete primary operator and whole page; line wrapping normalized. Inactive, independent review required; no whole-source approval.",
+        "stageCourseBoundary": "DE-HH SekII end-of-qualification process standard; common GK/LK operator, differentiated depth and independence remain. This finite partial contribution creates no universal duty to the complete own cases or whole-source completion.",
+        "officialStandardCode": "K4",
+        "currentAcceptedPartialRelations": {
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+            "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248",
+            "bytes": 731348
+          },
+          "bindings": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/60",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "authorInactiveWordingIsHistoricalSnapshot": true,
+          "wholeSourceApproval": false
+        }
+      }
+    },
+    {
+      "id": "hh-chemistry-sekii-process-standard-k7",
+      "passageId": "hh-chemistry-sekii-process-standard-k7:complete-primary-addition",
+      "topicCode": "K7 Informationen aufbereiten",
+      "title": "nutzen geeignete Darstellungsformen für chemische Sachverhalte und überführen diese ineinander",
+      "description": "nutzen geeignete Darstellungsformen für chemische Sachverhalte und überführen diese ineinander",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceText": "nutzen geeignete Darstellungsformen für chemische Sachverhalte und überführen diese ineinander",
+      "parentBulletText": "nutzen geeignete Darstellungsformen für chemische Sachverhalte und überführen diese ineinander",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, physical PDF20, K7 Informationen aufbereiten",
+      "sourceSpan": {
+        "passageId": "hh-chemistry-sekii-process-standard-k7:complete-primary-addition",
+        "label": "physical PDF20, K7 Informationen aufbereiten"
+      },
+      "courseLevel": "GK_LK",
+      "granularity": "completeSelectedOfficialClause",
+      "tags": [
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "course:GK_LK"
+      ],
+      "metadata": {
+        "physicalPdfPage": 20,
+        "actualWholeClauseExtracted": true,
+        "officiallyNumbered": true,
+        "authorStatus": "independently accepted selected partial contributions; no whole official source approval",
+        "scopeBoundary": "Whole original subject/stage/course context retained; this selected general operator does not prescribe the own concrete substance/example, prove actual theme choice or complete the whole official standard.",
+        "historicalAuthorStatus": "inactive-extraction-and-partial-binding-candidate; independent source review pending",
+        "currentAcceptedPartialRelations": {
+          "acceptedRefs": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-first-twenty-source-informed-independent-a-20261018-v1/ACCEPTED.one-hundred-sixty-four-bounded-direct-relations.with-explicit-context-conditions.json",
+              "sha256": "5af30ee6b2cb919a8445f2668c963b81d22583cb241a8d64f8df469f93da06cf",
+              "bytes": 735256,
+              "jsonPointer": "/records/157"
+            }
+          ],
+          "wholeSourceApproval": false,
+          "newScientificDecisionsByTechnicalIntegrator": 0
+        }
+      },
+      "rawSourceText": "nutzen geeignete Darstellungsformen für chemische Sachverhalte und überführen diese ineinander"
     }
   ]
 }

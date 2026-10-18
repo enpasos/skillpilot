@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-10-17T19:33:34.322Z
+Generated: 2026-10-18T00:43:33.373Z
 
 Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 
@@ -16,34 +16,36 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Alle Ziele in der Landschaft | 523 |
-| Atomare Ziele im Visualisierungs-Scope | 402 |
-| Ziele mit primaerem Visualisierungslink | 387 |
-| Coverage | 96.3% |
-| Durch Asset oder dokumentierte Deferred-Entscheidung erfasste Ziele | 402 |
+| Alle Ziele in der Landschaft | 662 |
+| Atomare Ziele im Visualisierungs-Scope | 450 |
+| Ziele mit primaerem Visualisierungslink | 450 |
+| Coverage | 100.0% |
+| Durch Asset oder dokumentierte Deferred-Entscheidung erfasste Ziele | 450 |
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
 | Review-Ledger-Dateien | 23 |
-| Offene Provider-Deferred-Ziele | 15 |
+| Offene Provider-Deferred-Ziele | 0 |
 | Offene Quality-Deferred-Ziele | 0 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 0 |
 | Regulaere unvisualisierte Ziele ohne Deferred-Status | 0 |
-| Verlinkt ohne akzeptierende Review-Entscheidung | 43 |
+| Verlinkt ohne akzeptierende Review-Entscheidung | 120 |
 | Akzeptierende Review-Entscheidung ohne Link | 0 |
 
 ## Linked Review Status
 
 | Status | Count |
 | --- | --- |
-| `accepted` | 116 |
-| `accepted_pilot` | 3 |
+| `accepted` | 102 |
+| `accepted_pilot` | 5 |
 | `ai_candidate` | 2 |
 | `ai-reviewed` | 5 |
-| `candidate` | 5 |
-| `pending-independent-actual-review` | 6 |
-| `pilot` | 250 |
+| `candidate` | 10 |
+| `draft` | 16 |
+| `needs_review` | 2 |
+| `pending-independent-actual-review` | 7 |
+| `pilot` | 301 |
 
 ## Ledger Decisions
 
@@ -77,29 +79,13 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 - Neue Bilder bleiben erst `--no-import`-Kandidaten und werden erst nach visueller und fachlicher Kontrolle in die Landschaft gelinkt.
 - Das Coverage-Gate erlaubt nur Ziele mit aktivem primaerem Asset oder einer aktuellen dokumentierten `deferred_provider_limitation`- bzw. `deferred_quality_review`-Entscheidung; regulaer fehlende Ziele lassen das Gate scheitern.
 - Beide Deferred-Arten bleiben offene Bildarbeit und erfuellen das strenge M7-Visualisierungsgate nicht. `deferred_quality_review` bezeichnet ein nach fachlicher Pruefung zurueckgezogenes Bild, nicht ein Providerproblem.
-- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind 15 Provider- und 0 Quality-Deferred-Ziel(e).
+- Der aktuelle Batch hat kein offenes Resume; der naechste produktive Schritt ist die Planung eines neuen Batches.
 
 ## Quality Queues
 
 ### Open Provider Deferred
 
-| Batch | Goal ID | Title | Decision |
-| --- | --- | --- | --- |
-| 018 | `62149f36-87c0-5a2d-8a78-e7d4203f58c2` | Aminosäuren charakterisieren | `deferred_provider_limitation` |
-| 018 | `e5941581-0aba-5354-b4b9-d0249d4538a8` | Azo- und Triphenylmethanfarbstoffe mechanistisch darstellen | `deferred_provider_limitation` |
-| 018 | `f0f67a7a-b06a-50b9-8edc-1f2a0d97520d` | Bindungsverhältnisse aromatischer Systeme modellieren | `deferred_provider_limitation` |
-| 018 | `0cf2ffe1-a988-5ffb-ab37-0ac7d58b23dd` | Brennstoffzellen und Verbrennungskraftwerke multiperspektivisch bewerten | `deferred_provider_limitation` |
-| 018 | `bebea164-dfd7-51d9-a54a-7029c78b7f5f` | Fette bewerten | `deferred_provider_limitation` |
-| 018 | `3de28598-672f-5753-8a45-8f559c2f9dc2` | Funktionelle Gruppen qualitativ nachweisen | `deferred_provider_limitation` |
-| 018 | `0b5342b9-512d-573f-90d5-7522aee35efa` | Individuelle Verdauungs- und Resorptionsunterschiede begründen | `deferred_provider_limitation` |
-| 018 | `eb7537dd-d11b-50e9-a6d7-51a78e96fc4e` | Intermolekulare Kräfte vergleichen | `deferred_provider_limitation` |
-| 018 | `8761cfd2-aa1a-56f1-9272-9cf66ef4b271` | Kohlenhydrate analysieren | `deferred_provider_limitation` |
-| 018 | `360fccb9-896d-5e67-bf5d-5732621604c9` | Nahrungsmittelinhaltsstoffe strukturbezogen einordnen | `deferred_provider_limitation` |
-| 018 | `f4d5a02d-711b-5a6b-a41d-971359c1f64d` | Optische Aktivität und Polarimetrie auswerten | `deferred_provider_limitation` |
-| 018 | `f0f2c5f8-06f1-5774-a176-d96505727acf` | pE/pH- und Pourbaix-Diagramme | `deferred_provider_limitation` |
-| 018 | `e56040b5-1da8-5080-b358-086d04922339` | Silikone herstellen und strukturbezogen vergleichen | `deferred_provider_limitation` |
-| 018 | `0773a104-aaeb-5e96-a615-2a2bec3eb096` | Tensidstrukturen optimieren | `deferred_provider_limitation` |
-| 018 | `3dbd84de-51cb-5ff7-801b-077a54520fed` | σ-Komplex-Mechanismus | `deferred_provider_limitation` |
+Keine Eintraege.
 
 ### Open Quality Deferred
 
@@ -128,10 +114,23 @@ Keine Eintraege.
 | Goal ID | Title | Link status | Latest ledger decision |
 | --- | --- | --- | --- |
 | `ca216bc6-5205-5b46-abbd-fd5628e4ca5b` | Acidität begründen | `pilot` | `deferred_provider_limitation` |
+| `c3077d95-f3fe-5579-8493-cb92992809c4` | Alkoholmonomere durch nukleophile Substitution erklären | `pilot` | - |
+| `d8eeed29-d1b7-5a48-94b5-343629f8e867` | Aminosäuren stereochemisch darstellen | `pilot` | - |
+| `e9d34f34-2a43-5cc7-bcca-1d08e057531d` | Aminosäuren über Säure-Base-Verhalten erklären | `pilot` | - |
+| `ee359c2e-e339-5b56-bceb-cc7517b36bf2` | Ammonium als Proteinabbauprodukt nachweisen | `pilot` | - |
 | `e81a4aed-9695-533e-8eb7-7a0c714346ea` | Angeleitete chemische Untersuchungen sicher durchführen | `pilot` | - |
 | `f79f15c0-e848-5e17-9eb5-26753d35c93b` | Anspruchsvolle chemische Experimente selbstständig durchführen | `pilot` | - |
+| `d815960a-21ab-5a42-8b23-ecd20d03db19` | Anwendungsorientierte Farbstoffforschung im zeitlichen Wandel erklären | `pilot` | - |
 | `3d6699ae-ebbd-5a55-8798-b809a9d74f0a` | Ascorbinsäure quantitativ bestimmen (LK) | `pending-independent-actual-review` | - |
+| `981242bb-a729-5701-b02d-c2f7f489e5af` | Azofarbstoff-Synthese mechanistisch darstellen | `pilot` | - |
+| `f0f67a7a-b06a-50b9-8edc-1f2a0d97520d` | Bindungsverhältnisse aromatischer Systeme modellieren | `pilot` | `deferred_provider_limitation` |
+| `6fa55d29-9d79-5b80-92f2-01f9bb64ef35` | Biobasierte PLA-Proben kontrolliert untersuchen | `pilot` | - |
+| `4d9defde-d3bc-5c43-83ff-9cf6f2930643` | Biodieselgewinnung durch Umesterung erklären | `pilot` | - |
+| `cc5a626a-dc85-57e2-b422-259f92901545` | Biologische Abbauwege von Tensiden beschreiben | `pilot` | - |
+| `223e33a4-5545-5332-ac4e-7d7a6cbc587c` | Biotreibstoffe nach Rohstoff und Herstellungsweg unterscheiden | `pilot` | - |
 | `27e4fe9b-4796-579b-8f7d-06c65fb600c0` | Blei-Akkumulator beschreiben | `pilot` | `deferred_provider_limitation` |
+| `0cf2ffe1-a988-5ffb-ab37-0ac7d58b23dd` | Brennstoffzellen und Verbrennungskraftwerke multiperspektivisch bewerten | `candidate` | `deferred_provider_limitation` |
+| `abfa609d-9764-5bd8-999c-1d10a7eeac78` | BTL-Kraftstoffe über Fischer–Tropsch erklären | `accepted_pilot` | - |
 | `75e2eff1-f871-5461-9e3f-26d0b333ce2f` | Chemische Alltagsfragen und prüfbare Hypothesen formulieren | `pilot` | - |
 | `7f140b34-ed26-59e7-8ad2-ccb6b56bc9d6` | Chemische Anwendungen und ihre gesellschaftliche Bedeutung diskutieren | `pilot` | - |
 | `6c9adc36-b6d0-57fa-8e02-5e156aebfecc` | Chemische Berufsfelder in eine begründete Berufswahl einbeziehen | `pilot` | - |
@@ -144,21 +143,8 @@ Keine Eintraege.
 | `31781d00-8f20-5041-bd7f-e261b27af162` | Chemische Informationen in geeignete Darstellungen überführen | `pilot` | - |
 | `6c7ce93c-7675-51da-bc0c-7d0257f7ff7d` | Chemische Modelle nutzen und kritisch vergleichen | `pilot` | - |
 | `86d34f1f-692d-5522-a9a4-a71c65b24de7` | Chemische Modelle theoriegestützt nutzen und kritisch vergleichen | `pilot` | - |
-| `431a0f03-f28a-5e56-a61f-000336d0b410` | Chemische Pro- und Kontra-Argumente abwägen | `pilot` | - |
-| `36666b4a-97af-51fc-9983-56cdcc7a8229` | Chemische Quellen und Darstellungen kritisch prüfen | `pilot` | - |
-| `38e30bb9-6145-5da0-80b8-36e3c45e15d0` | Chemische Sachverhalte und Arbeitsergebnisse präsentieren | `pilot` | - |
-| `42391b16-bbae-5c77-84e1-d488e714167b` | Chemische Untersuchungen selbst planen und durchführen | `pilot` | - |
-| `9f892457-c4e5-56da-830c-bf6cac0c98d7` | Chemische Wirkungen in historischen und aktuellen Zusammenhängen bewerten | `pilot` | - |
-| `4aa3a130-b517-5ac5-87b2-147fe432cadd` | Die Aussagekraft chemischer Daten beurteilen | `pilot` | - |
-| `99d41b0f-e958-54cf-a077-9bed1704a303` | Eigene chemische Untersuchungen reflektieren | `pilot` | - |
-| `a0f6ba09-f072-5887-a797-fa369453c62a` | Ein reversibles Austauschmodell zur Gleichgewichtseinstellung durchführen | `pilot` | - |
-| `950c73c6-4ed1-488a-9267-1142e95e0055` | Einfache Ionengitter modellieren und Stoffeigenschaften erklären | `pilot` | `deferred_provider_limitation` |
-| `e5a5dcd8-053c-55fd-b5c7-bba93779da53` | Einflüsse auf die Entwicklung chemischen Wissens bewerten | `pilot` | - |
-| `ac8b6c0f-98b2-5092-806d-d9498efbfa35` | Komplexe chemische Quellen selbstständig erschließen | `pilot` | - |
-| `d2d735de-bede-5310-8aeb-8bb7562c7b75` | Konzentrationsbedingte Gleichgewichtsverschiebungen experimentell untersuchen | `pilot` | - |
-| `7b39fa19-fec3-575e-9324-a3226b703358` | Leerlaufspannungen galvanischer Zellen experimentell ermitteln | `pilot` | - |
 
-Weitere 13 Eintraege stehen in der JSON-Begleitdatei.
+Weitere 90 Eintraege stehen in der JSON-Begleitdatei.
 
 ### Accepted Review Without Link
 
@@ -167,10 +153,10 @@ Keine Eintraege.
 ## Next Command
 
 ```bash
-npm --prefix app run visualization:plan-batch -- --count 6 --landscape curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json --output tmp/goal-visualization-chemie-next-batch.txt --include-deferred
+npm --prefix app run visualization:plan-batch -- --count 6 --landscape curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json --output tmp/goal-visualization-chemie-next-batch.txt
 ```
 
-Use this only for an intentional provider-limitation revisit. Generated candidates still require full mathematical review before import; otherwise keep the existing deferred ledger decisions.
+After planning a batch: create prompt append files, generate candidates with `--no-import`, inspect, reject or regenerate faulty images, import only accepted candidates, deploy assets, update the batch ledger, and run validation.
 
 ## Sources
 

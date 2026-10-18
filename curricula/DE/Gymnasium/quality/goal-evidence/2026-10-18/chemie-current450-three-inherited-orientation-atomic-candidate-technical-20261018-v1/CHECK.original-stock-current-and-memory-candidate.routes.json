@@ -1,0 +1,199 @@
+{
+  "schemaVersion": 1,
+  "role": "BOUNDED_UNCHANGED_STOCK_EVALUATOR_MEMORY_CANDIDATE_CHECK",
+  "checkedAt": "2026-10-18T11:14:45.332Z",
+  "evaluator": {
+    "path": "app/scripts/generateCurriculumQualityStatus.ts",
+    "sha256": "e8dd1ee3df4054d4578109647d5f46fb5a83e5fe7de7e117a1865c39477c3fef",
+    "bytes": 275082
+  },
+  "sameEvaluatorBytesAsHistoricalOrientationIntegration": true,
+  "method": "Complete unchanged evaluator source bundled in memory with named diagnostic exports; guarded main not run. Original import.meta URL preserves path semantics. Exact original evaluateRouteProfile and canonical-chemistry-sek2 profile called on current graph and memory-only candidate. All six baseline rules deep-equal current full-report rules. No production write.",
+  "compilationBoundary": "Empty reports matches earlier bounded route probe. No CQR-104/applicability/view/native-binding/full-maturity release is claimed.",
+  "beforeScope": {
+    "scopeId": "canonical-chemistry-sek2",
+    "label": "Sekundarstufe II",
+    "selectedAtomicGoals": 338,
+    "maturity": "M1",
+    "rules": [
+      {
+        "id": "CQR-101",
+        "status": "pass",
+        "summary": "Effective route coverage is complete for the configured scope.",
+        "metrics": {
+          "selectedAtomicGoals": 338,
+          "missingMotivationPath": 0,
+          "missingTerminalPath": 0
+        }
+      },
+      {
+        "id": "CQR-102",
+        "status": "warn",
+        "summary": "Direct atomic route coverage still needs migration work.",
+        "metrics": {
+          "selectedAtomicGoals": 338,
+          "missingDirectMotivationPath": 8,
+          "missingDirectTerminalPath": 0
+        },
+        "details": [
+          "No direct atomic motivation path: Stoffe nach Struktur und Eigenschaften ordnen [02dc29ae-4046-556a-b048-d64a0feb8f16]",
+          "No direct atomic motivation path: Lösungen berechnen und pH bestimmen [f1ed86f0-534d-57d7-8952-a004a331cc54]",
+          "No direct atomic motivation path: Planare chromatografische Trennungen durchführen und auswerten [978a6f25-0601-5457-9211-aab206c95603]",
+          "No direct atomic motivation path: Anspruchsvolle chemische Experimente selbstständig durchführen [f79f15c0-e848-5e17-9eb5-26753d35c93b]",
+          "No direct atomic motivation path: Wirkstoff-Isolierung als Stofftrennung erklären [40f2db27-0ebe-5f03-941d-708aebcc64b7]",
+          "No direct atomic motivation path: Wirkstoffforschung mit Analyse, Synthese und Molecular Modelling erklären [93a7ce4d-1c90-568c-9368-cac423011ef9]",
+          "No direct atomic motivation path: Gaschromatografische Trennung erklären und Chromatogramme deuten [5cd8b2a2-2c90-5e29-8061-dd5e3a682f9d]",
+          "No direct atomic motivation path: Biobasierte PLA-Proben kontrolliert untersuchen [6fa55d29-9d79-5b80-92f2-01f9bb64ef35]"
+        ]
+      },
+      {
+        "id": "CQR-103",
+        "status": "pass",
+        "summary": "No scoped cluster-level requires remain.",
+        "metrics": {
+          "scopedClusterRequires": 0
+        }
+      },
+      {
+        "id": "CQR-201",
+        "status": "pass",
+        "summary": "All configured terminal autonomy goals have examData.",
+        "metrics": {
+          "terminalAutonomyGoals": 107,
+          "terminalAutonomyGoalsWithExamData": 107,
+          "terminalAutonomyGoalsWithoutExamData": 0
+        }
+      },
+      {
+        "id": "CQR-202",
+        "status": "pass",
+        "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+        "metrics": {
+          "terminalAutonomyGoals": 107,
+          "concreteExamData": 107,
+          "weakExamData": 0
+        }
+      },
+      {
+        "id": "CQR-203",
+        "status": "pass",
+        "summary": "All terminal autonomy examData has release and coverage metadata.",
+        "metrics": {
+          "terminalAutonomyGoals": 107,
+          "releasedCoverageCompleteExamData": 107,
+          "releaseCoverageIncompleteExamData": 0
+        }
+      }
+    ]
+  },
+  "candidateScope": {
+    "scopeId": "canonical-chemistry-sek2",
+    "label": "Sekundarstufe II",
+    "selectedAtomicGoals": 338,
+    "maturity": "M4",
+    "rules": [
+      {
+        "id": "CQR-101",
+        "status": "pass",
+        "summary": "Effective route coverage is complete for the configured scope.",
+        "metrics": {
+          "selectedAtomicGoals": 338,
+          "missingMotivationPath": 0,
+          "missingTerminalPath": 0
+        }
+      },
+      {
+        "id": "CQR-102",
+        "status": "pass",
+        "summary": "Direct atomic route coverage is complete for the configured scope.",
+        "metrics": {
+          "selectedAtomicGoals": 338,
+          "missingDirectMotivationPath": 0,
+          "missingDirectTerminalPath": 0
+        }
+      },
+      {
+        "id": "CQR-103",
+        "status": "pass",
+        "summary": "No scoped cluster-level requires remain.",
+        "metrics": {
+          "scopedClusterRequires": 0
+        }
+      },
+      {
+        "id": "CQR-201",
+        "status": "pass",
+        "summary": "All configured terminal autonomy goals have examData.",
+        "metrics": {
+          "terminalAutonomyGoals": 107,
+          "terminalAutonomyGoalsWithExamData": 107,
+          "terminalAutonomyGoalsWithoutExamData": 0
+        }
+      },
+      {
+        "id": "CQR-202",
+        "status": "pass",
+        "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+        "metrics": {
+          "terminalAutonomyGoals": 107,
+          "concreteExamData": 107,
+          "weakExamData": 0
+        }
+      },
+      {
+        "id": "CQR-203",
+        "status": "pass",
+        "summary": "All terminal autonomy examData has release and coverage metadata.",
+        "metrics": {
+          "terminalAutonomyGoals": 107,
+          "releasedCoverageCompleteExamData": 107,
+          "releaseCoverageIncompleteExamData": 0
+        }
+      }
+    ]
+  },
+  "allGoalCount": 737,
+  "completeEffectiveRequiresMeaning": "Transitive reachability over the original stock buildEffectiveRequiresEdges, sorted as a set, excluding no graph goals. Immediate edge sets are reported separately.",
+  "completeEffectiveRequiresComparedForEveryGoal": true,
+  "changedCompleteEffectiveRequiresGoalCount": 0,
+  "completeClosureSetVectorBeforeSha256": "b7313b92cb8710c33411850d0661855bbc085945a318aa626e787fdf66637822",
+  "completeClosureSetVectorAfterSha256": "b7313b92cb8710c33411850d0661855bbc085945a318aa626e787fdf66637822",
+  "immediateEffectiveEdgeChanges": [
+    {
+      "goalId": "95dc0ee5-a0af-5682-af32-d66e36fbeb50",
+      "before": [
+        "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+        "e7c363d4-e02d-4895-8750-ba62c2eb63fe"
+      ],
+      "after": [
+        "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+        "a9c22adc-b543-5b0c-a2d8-3189facdff08",
+        "e7c363d4-e02d-4895-8750-ba62c2eb63fe"
+      ]
+    }
+  ],
+  "normalMutation": false,
+  "originalGoalCountPreserved": true,
+  "changedWholeGoalCount": 3,
+  "changedFieldOnly": "requires",
+  "newReviewVote": false,
+  "minimalAddedSourceNodeCount": 3,
+  "minimalityWitness": {
+    "pairwiseDisjointDirectReachabilitySets": [
+      [
+        "02dc29ae-4046-556a-b048-d64a0feb8f16",
+        "95dc0ee5-a0af-5682-af32-d66e36fbeb50",
+        "e7c363d4-e02d-4895-8750-ba62c2eb63fe"
+      ],
+      [
+        "42a84bca-d27e-581f-a43a-eee424f0504d",
+        "5cd8b2a2-2c90-5e29-8061-dd5e3a682f9d"
+      ],
+      [
+        "13d4f336-ab16-54a7-9479-c920b458f385",
+        "6fa55d29-9d79-5b80-92f2-01f9bb64ef35"
+      ]
+    ],
+    "explanation": "Each of these three selected goals starts in a disjoint existing direct-atomic reachability component and lacks orientation. At least one source edge must change in each component; the candidate changes exactly three source nodes."
+  }
+}

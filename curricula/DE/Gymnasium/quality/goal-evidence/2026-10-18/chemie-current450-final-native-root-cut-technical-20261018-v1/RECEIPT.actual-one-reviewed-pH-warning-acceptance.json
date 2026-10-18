@@ -1,0 +1,83 @@
+{
+  "role": "ONE_EXACT_REVIEWED_MACHINE_APPLICABILITY_WARNING_ACCEPTANCE",
+  "authorAuditSeal": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-current737-original-source-audit-technical-20261018-v1/FREEZE.technical.sha256.json",
+    "sha256": "a9e41242bf5a0724598a9daef9abfa44f490e9ba0b0d668cad4f270fc9a9bf31",
+    "bytes": 9367
+  },
+  "before": {
+    "path": "docs/qa-ci/applicability-accepted-warnings.json",
+    "sha256": "81b57e26d323daa54a318a429e4224a05a96581775dbc829cecaab8856d2a1b6",
+    "bytes": 227189
+  },
+  "after": {
+    "path": "docs/qa-ci/applicability-accepted-warnings.json",
+    "sha256": "f05627cbac10f5fe8c5a4a688270e0367b9d5862a0118c4271a9a47b13449266",
+    "bytes": 230070
+  },
+  "warningKey": "APV-201|c436b994-8f44-5134-b9f8-0c9f5d6a5ba0|4216a708-d9c4-5582-ad7c-65d81643f0d3|jurisdiction|",
+  "acceptedEntry": {
+    "code": "APV-201",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "goalId": "4216a708-d9c4-5582-ad7c-65d81643f0d3",
+    "dimension": "jurisdiction",
+    "rationale": "Bewusste eigene Prüfungsvariante für BY/HE/NI, LK, Q3: Die vollständig geprüfte gemeinsame pH-Prüfung verlangt eigene starke/schwache Titrationskurven und experimentelle Halbäquivalenz mit Unsicherheit; die zusätzliche tatsächliche digitale Datei/Steigungs-/Transferpflicht bleibt ausschließlich im getrennten HB-Endpunkt f7a7f4c2. Die gemeinsame gewöhnliche Voraussetzung e0944fbb hat einen breiteren Länderumfang und darf diese beiden unabhängig geprüften Varianten nicht automatisch erweitern. Der bestehende Override erhält die konkrete geprüfte Grenze und alle41 bisherigen Angebote/Eltern; requires, gesamte Aufgaben/Lösungen/Bewertung und P bleiben unverändert. Keine amtliche Ganzquellenpflicht, neue Quellenabdeckung, neue D/P/A/M/V-Freigabe, menschliche Freigabe oder Lernendenausführung.",
+    "evidence": {
+      "reviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-pH-two-scope-informed-independent-b-20261018-v1/DECISION.informed-independent-b.bounded-followup.json",
+      "reviewedAt": "2026-10-18",
+      "reviewAuthority": "ai_review",
+      "reviewMode": "informed_independent_bounded_existing_pH_variant_scope_and_all41_interface",
+      "humanApproval": false,
+      "authorSeal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-pH-two-reviewed-scope-metadata-author-20261018-v1/FREEZE.author.sha256.json",
+        "sha256": "6512555d61b8da31c9b5d0c901d84d770c65612580225eb77f146861238ab2f9",
+        "bytes": 3742
+      },
+      "independentReviewSeal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-pH-two-scope-informed-independent-b-20261018-v1/SEAL.informed-independent-b.pH-scope-followup.json",
+        "sha256": "3df345c2bfae3185a2f202edce439a370318c3eb7ed106476dc44c0570b16d00",
+        "bytes": 1710
+      },
+      "currentGoalObjectSHA256": "ad3dce063b183ebd4e9f5110fbede7e845e18c6f598386f2de04fb0e81aadf55",
+      "exactWarningKey": "APV-201|c436b994-8f44-5134-b9f8-0c9f5d6a5ba0|4216a708-d9c4-5582-ad7c-65d81643f0d3|jurisdiction|",
+      "exactOverrideJurisdictions": [
+        "DE-BY",
+        "DE-HE",
+        "DE-NI"
+      ],
+      "courseProfiles": [
+        "LK"
+      ],
+      "phase": "Q3",
+      "sharedOrdinaryGoalId": "e0944fbb-0761-5f9c-afaa-3d4713ed1bed",
+      "separateHBDigitalAssessmentGoalId": "f7a7f4c2-6949-5f14-beeb-d22a74011d80",
+      "officialWholeSourceCredit": false,
+      "officialMandatoryRequirement": false,
+      "actualLearnerTopicSelection": false,
+      "newD_P_A_M_VApproval": false
+    }
+  },
+  "rootReview": "Intentional BY/HE/NI LK common pH assessment remains separate from the HB-only digital endpoint; actual independent scope review and all41 checks support this exact boundary.",
+  "oldGlobalAcceptanceObjectsAndBytesPreserved": 110,
+  "oldChemistryAcceptanceObjectsPreserved": 87,
+  "matcherResultForExactAppliedBytes": {
+    "id": "CQR-501",
+    "status": "pass",
+    "summary": "88 accepted applicability warning(s) are current and no active applicability warning debt is visible.",
+    "metrics": {
+      "activeWarnings": 0,
+      "rawActiveWarnings": 0,
+      "diagnosticPartialOnlyWarnings": 2670,
+      "acceptedWarnings": 88,
+      "obsoleteAcceptedWarnings": 0
+    },
+    "details": [
+      "non-blocking partial-only applicability diagnostics APV-202: 2670",
+      "diagnostic finding type APV-202: 2670",
+      "accepted current warning type APV-201: 88"
+    ]
+  },
+  "compilerWarningRemoved": false,
+  "gateFiltersOrThresholdsChanged": false,
+  "sourceCoverageOrNewScientificOrHumanApproval": false
+}

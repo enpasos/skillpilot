@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "correctedAt": "2026-10-18T11:06:27.927817+00:00",
+  "reviewerId": "/root/chemie_final_native_round_a_20261018",
+  "correctionType": "review_input_json_artifact_binding_only",
+  "newReviewVote": false,
+  "newScientificJudgment": false,
+  "newModelInvocation": false,
+  "originalRunTimesPreserved": true,
+  "runIdPreserved": true,
+  "recordBytesPreserved": true,
+  "allOtherRunFieldsPreserved": true,
+  "peerResultsReadBeforeOwnSeal": false,
+  "originals": {
+    "nativeRecords": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-004/round-a/results/chemie-current450-bound-context-d-004-20261018-v2-first-pass-a.batch-001.records.jsonl",
+      "sha256": "beab7e49e27f856d1c9a8bd7d8384163804bb502267bacc6de15751ec5d7a806",
+      "bytes": 61634
+    },
+    "nativeRun": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-004/round-a/results/chemie-current450-bound-context-d-004-20261018-v2-first-pass-a.batch-001.run.json",
+      "sha256": "33bd65b2bbff522d40f6fdaf70dc0696a893bf51a50d4622ba6fb7338efaf644",
+      "bytes": 3138
+    },
+    "originalFirstPassReceipt": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-004/round-a/reviewer-receipts/independent-first-pass.receipt.json",
+      "sha256": "64ceebd7be8b3685acdcc6d8766c8ecc8d3fd9d65c6548c3178395a5e7f99966",
+      "bytes": 2973
+    },
+    "originalFirstPassSeal": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-004/round-a/reviewer-receipts/independent-first-pass.seal.json",
+      "sha256": "b505275945dc32cb3b77fb491f6b6ccca6ccc1539733c0d1af7de305a6d3d3b5",
+      "bytes": 1568
+    }
+  },
+  "equivalenceReceipt": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-004/round-a/reviewer-receipts/bundle-review-input-equivalence.actual.receipt.json",
+    "sha256": "37a0812f5d02c1c583b20be161ffd103b1d8b23eb0022ed139a4b7b9840681ee",
+    "bytes": 11408
+  },
+  "correctArtifact": {
+    "role": "review_input_json",
+    "path": "review-input.json",
+    "digest": "sha256:4f1bbb9597a65d09f36420abe48c60f78d83a864b5e416a708851ff812a08686",
+    "bytes": 297419
+  },
+  "previousIncorrectArtifact": {
+    "role": "review_input_json",
+    "digest": "sha256:857b3ee3f91ac34ad294913f97478e8b4693db2a81df6415bde7ef713ade9a82"
+  },
+  "correctedNativeRun": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-004/round-a/technical-successors/bundle-review-input-binding-v1/results/chemie-current450-bound-context-d-004-20261018-v2-first-pass-a.batch-001.run.json",
+    "sha256": "55d9a3b75e09077db41dc93f2774d2f684d0a8740c46c0b034c48936eea2fde6",
+    "bytes": 3138
+  },
+  "unchangedNativeRecords": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-004/round-a/technical-successors/bundle-review-input-binding-v1/results/chemie-current450-bound-context-d-004-20261018-v2-first-pass-a.batch-001.records.jsonl",
+    "sha256": "beab7e49e27f856d1c9a8bd7d8384163804bb502267bacc6de15751ec5d7a806",
+    "bytes": 61634
+  },
+  "explanation": "The original authoring helper incorrectly used SHA256(description-review-input.json) for role review_input_json. This technical successor binds the actually read and structurally equal bundle review-input surface. Existing judgment records, run identity, model metadata and original review times remain unchanged. The successor is a replacement transport representation of the same one vote; never count both originals and successor."
+}

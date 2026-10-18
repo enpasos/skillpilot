@@ -10,7 +10,8 @@
       "tags": [
         "GK",
         "LK",
-        "goal:dd58c029-176f-5d99-923e-1c1fda6cf58e"
+        "goal:dd58c029-176f-5d99-923e-1c1fda6cf58e",
+        "select:chemistry-bw-lk-organic_q1"
       ]
     },
     {
@@ -21,7 +22,13 @@
       "tags": [
         "GK",
         "LK",
-        "goal:7990387d-f254-5d3b-a589-a3e7ed9502a3"
+        "goal:7990387d-f254-5d3b-a589-a3e7ed9502a3",
+        "select:chemistry-bw-lk-organic_q1",
+        "select:chemistry-functional-groups-only",
+        "goal:cc5a626a-dc85-57e2-b422-259f92901545",
+        "goal:0959eef2-3c7d-5b33-a109-ddf332a5dbd9",
+        "goal:4d9defde-d3bc-5c43-83ff-9cf6f2930643",
+        "goal:f57d53b0-5bdf-5998-81f4-8bfb2fc5bde7"
       ]
     },
     {
@@ -32,7 +39,8 @@
       "tags": [
         "GK",
         "LK",
-        "goal:e14abd24-a0e5-5ab5-ade3-a8ae4f49e935"
+        "goal:e14abd24-a0e5-5ab5-ade3-a8ae4f49e935",
+        "select:chemistry-bw-lk-organic_q1"
       ]
     },
     {
@@ -43,7 +51,8 @@
       "tags": [
         "GK",
         "LK",
-        "goal:3de28598-672f-5753-8a45-8f559c2f9dc2"
+        "goal:3de28598-672f-5753-8a45-8f559c2f9dc2",
+        "select:chemistry-bw-lk-organic_q1"
       ]
     },
     {
@@ -71,12 +80,14 @@
     {
       "id": "chem_org_q1_007",
       "front": "Konfiguration vs. Konformation?",
-      "back": "Konfiguration: nur durch Bindungsbruch änderbar, zum Beispiel R/S oder E/Z.\n\nKonformation: durch Drehung um Einfachbindungen änderbar.",
+      "back": "Konformation: räumliche Anordnung, die sich bei gleicher Konstitution durch Drehung um Einfachbindungen ändern kann.\n\nKonfiguration: räumliche Anordnung, die nicht allein durch solche Drehungen geändert wird, zum Beispiel R/S oder E/Z.",
       "category": "Chemie Q1 - Organische Stoffklassen und Stereochemie",
       "tags": [
         "GK",
         "LK",
-        "goal:85342c52-9722-54b0-8fbb-513d9d648363"
+        "goal:85342c52-9722-54b0-8fbb-513d9d648363",
+        "select:chemistry-configuration-conformation-only",
+        "goal:4955f745-b946-5d3d-82d6-5e52dc8549a3"
       ]
     },
     {
@@ -110,6 +121,26 @@
         "GK",
         "LK",
         "goal:466bd2e9-39a5-5221-b620-945934adce00"
+      ]
+    },
+    {
+      "id": "chem_split_tensid_primary_vs_mineralisation",
+      "front": "Primärabbau und Mineralisierung: Was ist der Unterschied?",
+      "back": "Beim Primärabbau verändern biologische Prozesse den Ausgangsstoff so, dass eine spezifische Eigenschaft verloren geht, bei Tensiden die Oberflächenaktivität; Zwischenprodukte können bleiben. Mineralisierung führt organischen Kohlenstoff in anorganische Endprodukte über, bei vollständigem aerobem Kohlenstoffabbau insbesondere CO2. Ausgangsstoffentfernung allein belegt keine vollständige Mineralisierung; Sorption ist nur Phasenverlagerung.",
+      "category": "Chemie - Tensidabbau",
+      "tags": [
+        "goal:cc5a626a-dc85-57e2-b422-259f92901545",
+        "select:chemistry-surfactant-primary-mineralisation-only"
+      ]
+    },
+    {
+      "id": "chem_polymer_chain_conformation",
+      "front": "Was bedeutet Konformationsänderung einer Polymerkette an drehbaren Einfachbindungen?",
+      "back": "Die räumliche Form der Kette ändert sich durch Drehungen um Einfachbindungen. Die chemische Verknüpfung der Atome bleibt erhalten; es werden dabei keine Bindungen gelöst oder neu geknüpft.",
+      "category": "Chemie Q2 - Polymere",
+      "tags": [
+        "goal:4955f745-b946-5d3d-82d6-5e52dc8549a3",
+        "select:chemistry-polymer-chain-conformation-only"
       ]
     }
   ]

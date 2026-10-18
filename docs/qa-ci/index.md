@@ -53,6 +53,8 @@ Use this page by role: start with the overview documents, then jump to a review 
 
 ## Chemie/Biologie M7: datierte Arbeitsstände
 
+- [Chemie: Lernwegabschluss nach bestandenem CI-Zwischenstand vom 18. Oktober](chemie-current450-route-completion-resumption-2026-10-18.md)
+  Wiederhergestellter 450er-Arbeitsstand, konkrete Aufgabenmaterial-Korrekturen und gezielte unabhängige Prüfungen.
 - [Chemie: stabiler CI-Zwischenstand und inaktiv gesicherter 450er-Arbeitsstand (18.10.2026)](chemie-current450-inactive-ci-checkpoint-2026-10-18.md)
 - [Chemie: historischer 450er-Integrationsbericht vor der Inaktivierung (18.10.2026)](chemie-current450-final-integration-progress-2026-10-18.md)
 - [Chemie: historischer 447er-Integrationsbericht (18.10.2026)](chemie-current447-final-integration-progress-2026-10-18.md)

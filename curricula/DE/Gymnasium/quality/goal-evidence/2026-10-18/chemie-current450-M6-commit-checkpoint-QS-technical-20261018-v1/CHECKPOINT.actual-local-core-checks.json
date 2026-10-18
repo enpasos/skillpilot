@@ -1,0 +1,220 @@
+{
+  "role": "TECHNICAL_M6_CHECKPOINT_NOT_M7_OR_HUMAN_APPROVAL",
+  "measuredAt": "2026-10-18T11:42:14.299228+00:00",
+  "parentCommit": "6754609e97cfa57b722225033ac19c889d2bd8ea",
+  "actualChecks": [
+    {
+      "check": "schemas-full",
+      "actualCommandOrEntrypoint": "python scripts/validate_schemas.py",
+      "observedExitCode": 0,
+      "logs": [
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-M6-commit-checkpoint-QS-technical-20261018-v1/schemas-full.stdout.txt",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-M6-commit-checkpoint-QS-technical-20261018-v1/schemas-full.stderr.txt"
+      ]
+    },
+    {
+      "check": "schemas-final-changes",
+      "actualCommandOrEntrypoint": "targeted original validate_file and curriculum_symlink_errors",
+      "observedExitCode": 0,
+      "logs": [
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-M6-commit-checkpoint-QS-technical-20261018-v1/schemas-final-changes.stdout.txt",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-M6-commit-checkpoint-QS-technical-20261018-v1/schemas-final-changes.stderr.txt"
+      ]
+    },
+    {
+      "check": "memory-active-config",
+      "actualCommandOrEntrypoint": "npm --prefix app run quality:memory-card-review:check -- --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current450-final-delivery-and-term-scope-integration-technical-20261018-v1/M450.exact-two-established-roots.normal.config.json",
+      "observedExitCode": 0,
+      "logs": [
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-M6-commit-checkpoint-QS-technical-20261018-v1/memory-active-config.stdout.txt",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-M6-commit-checkpoint-QS-technical-20261018-v1/memory-active-config.stderr.txt"
+      ]
+    },
+    {
+      "check": "central-status",
+      "actualCommandOrEntrypoint": "app/node_modules/.bin/tsx app/scripts/generateCurriculumQualityStatus.ts",
+      "observedExitCode": 0,
+      "logs": [
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-M6-commit-checkpoint-QS-technical-20261018-v1/central-status.stdout.txt",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-M6-commit-checkpoint-QS-technical-20261018-v1/central-status.stderr.txt"
+      ]
+    },
+    {
+      "check": "protected-maturity-floors",
+      "actualCommandOrEntrypoint": "npm --prefix app run check:curriculum-maturity-floors",
+      "observedExitCode": 0,
+      "logs": [
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-M6-commit-checkpoint-QS-technical-20261018-v1/protected-maturity-floors.stdout.txt",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-M6-commit-checkpoint-QS-technical-20261018-v1/protected-maturity-floors.stderr.txt"
+      ]
+    },
+    {
+      "check": "source-atlas-exported-tests",
+      "actualCommandOrEntrypoint": "actual exported testGoalBookSourceAtlasInputs() via tsx",
+      "observedExitCode": 0,
+      "logs": [
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-M6-commit-checkpoint-QS-technical-20261018-v1/source-atlas-exported-tests.stdout.txt",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-M6-commit-checkpoint-QS-technical-20261018-v1/source-atlas-exported-tests.stderr.txt"
+      ]
+    },
+    {
+      "check": "source-audit-and-nine-regressions",
+      "actualCommandOrEntrypoint": "npm --prefix app run quality:source-coverage-audit:check",
+      "observedExitCode": 0,
+      "logs": [
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-M6-commit-checkpoint-QS-technical-20261018-v1/source-audit-and-nine-regressions.stdout.txt",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-M6-commit-checkpoint-QS-technical-20261018-v1/source-audit-and-nine-regressions.stderr.txt"
+      ]
+    },
+    {
+      "check": "AI-inventory",
+      "actualCommandOrEntrypoint": "npm --prefix app run check:ai-transparency-inventory",
+      "observedExitCode": 0,
+      "logs": [
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-M6-commit-checkpoint-QS-technical-20261018-v1/AI-inventory.stdout.txt",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-M6-commit-checkpoint-QS-technical-20261018-v1/AI-inventory.stderr.txt"
+      ]
+    }
+  ],
+  "centralMeasurement": {
+    "Biologie": {
+      "maturity": "M7",
+      "CQR303": {
+        "id": "CQR-303",
+        "status": "pass",
+        "summary": "Deep curriculum QA is complete for all 397 current curricularAtomic goals.",
+        "metrics": {
+          "expectedGoals": 397,
+          "remaining": 0,
+          "strictComplete": 397,
+          "currentDescriptionResolutions": 397,
+          "currentPositiveEvidenceProfiles": 397,
+          "currentSemanticAtomicityDecisions": 397,
+          "currentMemoryReviewDecisions": 397,
+          "currentVisualizationQaRecords": 397,
+          "deferredVisualizations": 0,
+          "requiredChecksPassed": 6,
+          "requiredChecksTotal": 6,
+          "blockingIssues": 0
+        }
+      }
+    },
+    "Chemie": {
+      "maturity": "M6",
+      "CQR303": {
+        "id": "CQR-303",
+        "status": "fail",
+        "summary": "Deep curriculum QA is incomplete: 260/450 current curricularAtomic goals strictly complete.",
+        "metrics": {
+          "expectedGoals": 450,
+          "remaining": 190,
+          "strictComplete": 260,
+          "currentDescriptionResolutions": 260,
+          "currentPositiveEvidenceProfiles": 450,
+          "currentSemanticAtomicityDecisions": 450,
+          "currentMemoryReviewDecisions": 450,
+          "currentVisualizationQaRecords": 450,
+          "deferredVisualizations": 0,
+          "requiredChecksPassed": 5,
+          "requiredChecksTotal": 6,
+          "blockingIssues": 215
+        },
+        "details": [
+          "chemie: description-resolution supersession lacks an intact old claim and current replacement for 00c647e8-0858-5640-b9da-76d85d528820",
+          "chemie: description-resolution supersession lacks an intact old claim and current replacement for 018bec90-445f-4a88-b8bc-228f8335dee6",
+          "chemie: description-resolution supersession lacks an intact old claim and current replacement for 02634fdd-c8ba-591a-b240-77129b1bebb8",
+          "chemie: description-resolution supersession lacks an intact old claim and current replacement for 0278a515-8990-5a1c-8a1b-a03382a144a3",
+          "chemie: description-resolution supersession lacks an intact old claim and current replacement for 02dc29ae-4046-556a-b048-d64a0feb8f16",
+          "chemie: description-resolution supersession lacks an intact old claim and current replacement for 03e12e4f-83eb-56a7-85ac-e0d628412dcc",
+          "chemie: description-resolution supersession lacks an intact old claim and current replacement for 0503c975-3934-5206-962e-b1c247de0c12",
+          "chemie: description-resolution supersession lacks an intact old claim and current replacement for 058dca74-1b57-5eb3-9c94-1c7b6cc795ad",
+          "chemie: description-resolution supersession lacks an intact old claim and current replacement for 059acb11-29b3-5645-ac4c-b4214dc41a2d",
+          "chemie: description-resolution supersession lacks an intact old claim and current replacement for 065d764c-daec-5d35-95da-3e922d2029c7",
+          "chemie: description-resolution supersession lacks an intact old claim and current replacement for 0959eef2-3c7d-5b33-a109-ddf332a5dbd9",
+          "chemie: description-resolution supersession lacks an intact old claim and current replacement for 0b6a6a15-b355-5be8-abc9-4ef8df11bcb6",
+          "chemie: description-resolution supersession lacks an intact old claim and current replacement for 0cf2ffe1-a988-5ffb-ab37-0ac7d58b23dd",
+          "chemie: description-resolution supersession lacks an intact old claim and current replacement for 127e2fc9-23f3-5ce8-a1c9-8c9e014c8a8a",
+          "chemie: description-resolution supersession lacks an intact old claim and current replacement for 13d4f336-ab16-54a7-9479-c920b458f385",
+          "chemie: description-resolution supersession lacks an intact old claim and current replacement for 14f1fe97-0585-5738-845e-9c49173d8afa",
+          "chemie: description-resolution supersession lacks an intact old claim and current replacement for 16b24dc5-0e48-5e3b-8307-01289db8d1a9",
+          "chemie: description-resolution supersession lacks an intact old claim and current replacement for 17fe22c4-1248-5f37-9d0c-52ee4571d09f",
+          "chemie: description-resolution supersession lacks an intact old claim and current replacement for 1837690e-cfb1-5b1c-96c8-0fb40d6d5d69",
+          "chemie: description-resolution supersession lacks an intact old claim and current replacement for 1873eb42-1c85-548e-918c-4f4f73ed784f"
+        ]
+      }
+    },
+    "Mathematik": {
+      "maturity": "M7",
+      "CQR303": {
+        "id": "CQR-303",
+        "status": "pass",
+        "summary": "Deep curriculum QA is complete for all 807 current curricularAtomic goals.",
+        "metrics": {
+          "expectedGoals": 807,
+          "remaining": 0,
+          "strictComplete": 807,
+          "currentDescriptionResolutions": 807,
+          "currentPositiveEvidenceProfiles": 807,
+          "currentSemanticAtomicityDecisions": 807,
+          "currentMemoryReviewDecisions": 807,
+          "currentVisualizationQaRecords": 807,
+          "deferredVisualizations": 0,
+          "requiredChecksPassed": 6,
+          "requiredChecksTotal": 6,
+          "blockingIssues": 0
+        }
+      }
+    },
+    "Physik": {
+      "maturity": "M7",
+      "CQR303": {
+        "id": "CQR-303",
+        "status": "pass",
+        "summary": "Deep curriculum QA is complete for all 478 current curricularAtomic goals.",
+        "metrics": {
+          "expectedGoals": 478,
+          "remaining": 0,
+          "strictComplete": 478,
+          "currentDescriptionResolutions": 478,
+          "currentPositiveEvidenceProfiles": 478,
+          "currentSemanticAtomicityDecisions": 478,
+          "currentMemoryReviewDecisions": 478,
+          "currentVisualizationQaRecords": 478,
+          "deferredVisualizations": 0,
+          "requiredChecksPassed": 6,
+          "requiredChecksTotal": 6,
+          "blockingIssues": 0
+        }
+      }
+    },
+    "Wirtschaftswissenschaften": {
+      "maturity": "M7",
+      "CQR303": {
+        "id": "CQR-303",
+        "status": "pass",
+        "summary": "Deep curriculum QA is complete for all 346 current curricularAtomic goals.",
+        "metrics": {
+          "expectedGoals": 346,
+          "remaining": 0,
+          "strictComplete": 346,
+          "currentDescriptionResolutions": 346,
+          "currentPositiveEvidenceProfiles": 346,
+          "currentSemanticAtomicityDecisions": 346,
+          "currentMemoryReviewDecisions": 346,
+          "currentVisualizationQaRecords": 346,
+          "deferredVisualizations": 0,
+          "requiredChecksPassed": 6,
+          "requiredChecksTotal": 6,
+          "blockingIssues": 0
+        }
+      }
+    }
+  },
+  "newScientificFirstCompletions": 0,
+  "contextOnlyPTransportsThisContinuation": 30,
+  "nativeFirstPassesRemainInactive": true,
+  "openFindingsRemainOpen": true,
+  "remoteCI": "not_claimed_before_actual_new_commit_run",
+  "completePublicationBuild": "in_progress_at_core_receipt_time",
+  "releaseOrHumanApproval": false
+}

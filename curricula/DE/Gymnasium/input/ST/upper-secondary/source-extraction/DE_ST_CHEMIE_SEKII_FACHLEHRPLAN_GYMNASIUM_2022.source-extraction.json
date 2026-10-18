@@ -33,7 +33,360 @@
   "method": {
     "sourceProvision": "Der amtliche Fachlehrplan Gymnasium Chemie Sachsen-Anhalt 2022 liegt lokal als PDF vor; der 2019-Fachlehrplan bleibt als Delta-Baseline erhalten.",
     "passageExtraction": "pdftotext -layout; Passagen werden je Schuljahrgang/Kursniveau und Kompetenzschwerpunkt gebildet.",
-    "sourceGoalExtraction": "Ein Source-Ziel pro Kompetenzbullet, grundlegendem Wissensbestand und verbindlichem Schülerexperiment. Fächerübergreifende Querverweise, Seitenköpfe und Formelfragmente werden nicht als eigene Source-Ziele gezählt."
+    "sourceGoalExtraction": "Ein Source-Ziel pro Kompetenzbullet, grundlegendem Wissensbestand und verbindlichem Schülerexperiment. Fächerübergreifende Querverweise, Seitenköpfe und Formelfragmente werden nicht als eigene Source-Ziele gezählt. Additive technical successor: retain that exact finite historical inventory, then append complete selected process clauses from the pinned candidate; no claim that every official process standard has been extracted.",
+    "selectedProcessClauseAddition": {
+      "candidate": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-author-20261018-v1/candidate/extraction-additions/ST.complete-selected-process-clauses.additions.json",
+        "sha256": "65bd964d805c6dae60067ec092f6ba500ee851344ab9d4e3376d3bf8c9338597",
+        "bytes": 29784
+      },
+      "historicalInventory": 324,
+      "newCompleteSelectedClauses": 4,
+      "actualUnionInventory": 328,
+      "oldObjectsAndPassagesUnchanged": true,
+      "currentIndependentPartialReview": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+        "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+        "bytes": 269340
+      },
+      "sharedExtractionOnlyIds": [],
+      "wholeSourceCoverageEstablished": false,
+      "historicalScopeEvidence": {
+        "method": {
+          "sourceProvision": "Der amtliche Fachlehrplan Gymnasium Chemie Sachsen-Anhalt 2022 liegt lokal als PDF vor; der 2019-Fachlehrplan bleibt als Delta-Baseline erhalten.",
+          "passageExtraction": "pdftotext -layout; Passagen werden je Schuljahrgang/Kursniveau und Kompetenzschwerpunkt gebildet.",
+          "sourceGoalExtraction": "Ein Source-Ziel pro Kompetenzbullet, grundlegendem Wissensbestand und verbindlichem Schülerexperiment. Fächerübergreifende Querverweise, Seitenköpfe und Formelfragmente werden nicht als eigene Source-Ziele gezählt."
+        },
+        "pipelineStatus": {
+          "version": 1,
+          "currentStep": "",
+          "steps": [
+            {
+              "id": "MAPPING-1",
+              "label": "Original-Lehrplanpassagen extrahiert",
+              "status": "complete",
+              "dependsOn": [],
+              "checks": [
+                {
+                  "id": "source-documents-present",
+                  "label": "Amtlicher Sachsen-Anhalt-Chemie-Fachlehrplan liegt lokal vor",
+                  "passed": true,
+                  "details": "1/1 Originalquelle bereitgestellt: curricula/DE/Gymnasium/input/ST/FLP_Chemie_Gym_01082022_swd.pdf; Baseline: curricula/DE/Gymnasium/input/ST/Chemie_FLP_Gym_01_07_2019.pdf"
+                },
+                {
+                  "id": "expected-topic-coverage",
+                  "label": "Alle erwarteten Sachsen-Anhalt-Chemie-Stufen sind als Passagegruppen vorhanden",
+                  "passed": true,
+                  "details": "3/3 Stufen; 15 Kompetenzschwerpunkte."
+                },
+                {
+                  "id": "passage-extraction-source",
+                  "label": "Passage-Extraction basiert auf amtlicher PDF-Quelle statt Legacy-Snapshot",
+                  "passed": true,
+                  "details": "curricula/DE/Gymnasium/input/ST/FLP_Chemie_Gym_01082022_swd.pdf"
+                }
+              ]
+            },
+            {
+              "id": "MAPPING-2",
+              "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+              "status": "complete",
+              "dependsOn": [
+                "MAPPING-1"
+              ],
+              "checks": [
+                {
+                  "id": "source-goals-created",
+                  "label": "Aus den amtlichen Sachsen-Anhalt-Chemie-Passagen wurden Source-Ziele erzeugt",
+                  "passed": true,
+                  "details": "324 Source-Ziele"
+                },
+                {
+                  "id": "source-goal-count-peer-baseline",
+                  "label": "Source-Ziel-Anzahl ist gegen bereits geprüfte Chemie-Inventare kritisch plausibilisiert",
+                  "passed": true,
+                  "details": "324 Source-Ziele; BW/NW/SH/HE/BB/BE/NI Sek-II-Chemie = 126/154/165/202/203/203/333 Source-Ziele; Sachsen-Anhalt fuehrt gAN, eAN und Wahlpflichtfach im selben Fachlehrplan."
+                },
+                {
+                  "id": "source-goal-ids-unique",
+                  "label": "Source-Ziel-IDs sind eindeutig",
+                  "passed": true,
+                  "details": "Doppelte IDs: -"
+                },
+                {
+                  "id": "source-goals-reference-passages",
+                  "label": "Jedes Source-Ziel referenziert eine vorhandene Originalpassage",
+                  "passed": true,
+                  "details": "Ohne Passage: -"
+                }
+              ]
+            },
+            {
+              "id": "MAPPING-3",
+              "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+              "status": "complete",
+              "dependsOn": [
+                "MAPPING-1",
+                "MAPPING-2"
+              ],
+              "checks": [
+                {
+                  "id": "mapping-2-complete",
+                  "label": "MAPPING-2 abgeschlossen",
+                  "passed": true,
+                  "details": "324 Source-Ziele liegen vor; MAPPING-3 kann gegen diese Source-Extraction-IDs laufen."
+                },
+                {
+                  "id": "m3-review-file-present",
+                  "label": "M3-Review-Datei vorhanden",
+                  "passed": true,
+                  "details": "curricula/DE/Gymnasium/mapping/DE-ST/upper-secondary/st_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json"
+                },
+                {
+                  "id": "m3-review-decisions-reference-source-goals",
+                  "label": "Review-Entscheidungen referenzieren Source-Ziele",
+                  "passed": true,
+                  "details": "Alle Review-Entscheidungen referenzieren Source-Ziele. Alle Mapping-Edges referenzieren Source-Ziele."
+                },
+                {
+                  "id": "m3-review-targets-exist",
+                  "label": "Review-Mappings referenzieren existierende Canonical-Ziele",
+                  "passed": true,
+                  "details": "Alle Mapping-Targets existieren in der kanonischen Chemie-Landschaft."
+                },
+                {
+                  "id": "m3-all-source-goals-reviewed",
+                  "label": "Alle Source-Ziele sind fachlich reviewed",
+                  "passed": true,
+                  "details": "324/324 Source-Ziele sind reviewed; 324 mapped decisions."
+                },
+                {
+                  "id": "m3-all-source-goals-covered-by-canonical",
+                  "label": "Alle Source-Ziele sind durch SkillPilot-Ziele abgedeckt",
+                  "passed": true,
+                  "details": "324/324 Source-Ziele sind durch 1453 Mapping-Edge(s) abgedeckt."
+                }
+              ]
+            }
+          ]
+        },
+        "sourceGoalCount": 324,
+        "passageCount": 15,
+        "baseExtraction": {
+          "path": "curricula/DE/Gymnasium/input/ST/upper-secondary/source-extraction/DE_ST_CHEMIE_SEKII_FACHLEHRPLAN_GYMNASIUM_2022.source-extraction.json",
+          "sha256": "7ee52e564ecf96e36733e803d192a90e993f94ead70bd77d1fe1d115d582326e",
+          "bytes": 824455
+        }
+      },
+      "cellMetadataProvenance": "Original candidate cell metadata is retained byte-for-object. Its inactive/pending wording records the author snapshot; current limited integration and accepted partial contributions are described here and in selectedProcessIntegration, not by inventing whole-source review."
+    },
+    "fourteenMethodSelectedProcessAddition": {
+      "technicalIntegration": "Authorised additive integration of independently accepted foreign author relations; no new scientific vote",
+      "candidate": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-author-20261018-v1/candidate/extraction-additions/11.DE-ST.SekII.complete-operator-additions.json",
+        "sha256": "11c42c86e6929a54ae13954d660eeb2a8e36d243076ca7b40ca65658a278a065",
+        "bytes": 23929
+      },
+      "independentAcceptedRef": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/ACCEPTED.exact104-direct-partial-two-literal-three-held.json",
+        "sha256": "9958d0a23bb96b4cce0ed69f2018631764f5fe943d87ed8136ef2ba070457119",
+        "bytes": 99336
+      },
+      "retainedImmediateBeforeInventory": 328,
+      "newCompleteSelectedOperatorCells": 4,
+      "actualUnionInventory": 332,
+      "allOldSourceCellsAndPassagesExactlyRetained": true,
+      "noCompleteOfficialStandardsUniverseClaim": true,
+      "wholeSourceCoverageEstablished": false,
+      "historicalPipelineStatusBeforeThisAddition": {
+        "version": 1,
+        "currentStep": "MAPPING-3",
+        "steps": [
+          {
+            "id": "MAPPING-1",
+            "label": "Original-Lehrplanpassagen extrahiert",
+            "status": "complete",
+            "dependsOn": [],
+            "checks": [
+              {
+                "id": "source-documents-present",
+                "label": "Amtlicher Sachsen-Anhalt-Chemie-Fachlehrplan liegt lokal vor",
+                "passed": true,
+                "details": "Current operative primary document: curricula/DE/Gymnasium/input/ST/FLP_Chemie_Gym_01082022_swd.pdf. Historical inventory provenance remains in method.selectedProcessClauseAddition.historicalScopeEvidence."
+              },
+              {
+                "id": "expected-topic-coverage",
+                "label": "Alle erwarteten Sachsen-Anhalt-Chemie-Stufen sind als Passagegruppen vorhanden",
+                "passed": true,
+                "details": "Historical 15 passage inventory retained exactly; 4 selected process passages added. Other standards remain context or unexamined; no complete standards-universe claim."
+              },
+              {
+                "id": "passage-extraction-source",
+                "label": "Passage-Extraction basiert auf amtlicher PDF-Quelle statt Legacy-Snapshot",
+                "passed": true,
+                "details": "Current operative primary document: curricula/DE/Gymnasium/input/ST/FLP_Chemie_Gym_01082022_swd.pdf. Historical inventory provenance remains in method.selectedProcessClauseAddition.historicalScopeEvidence."
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-2",
+            "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+            "status": "complete",
+            "dependsOn": [
+              "MAPPING-1"
+            ],
+            "checks": [
+              {
+                "id": "source-goals-created",
+                "label": "Aus den amtlichen Sachsen-Anhalt-Chemie-Passagen wurden Source-Ziele erzeugt",
+                "passed": true,
+                "details": "328 actual source cells = 324 retained historical inventory + 4 complete selected process clauses. No additional unselected standard counted."
+              },
+              {
+                "id": "source-goal-count-peer-baseline",
+                "label": "Historische Inhaltsbasis und aktuelle ausgewählte Prozessstandards getrennt gezählt",
+                "passed": true,
+                "details": "The old peer comparison concerned only the historical finite 324-cell inventory; it is preserved in historicalScopeEvidence and is not a current complete-standards benchmark. Actual union: 328 = 324 historical + 4 selected process cells."
+              },
+              {
+                "id": "source-goal-ids-unique",
+                "label": "Source-Ziel-IDs sind eindeutig",
+                "passed": true,
+                "details": "Doppelte IDs: -"
+              },
+              {
+                "id": "source-goals-reference-passages",
+                "label": "Jedes Source-Ziel referenziert eine vorhandene Originalpassage",
+                "passed": true,
+                "details": "Ohne Passage: -"
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-3",
+            "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+            "status": "incomplete",
+            "dependsOn": [
+              "MAPPING-1",
+              "MAPPING-2"
+            ],
+            "checks": [
+              {
+                "id": "mapping-2-complete",
+                "label": "MAPPING-2 abgeschlossen",
+                "passed": true,
+                "details": "328 cells exist. Historical 324-cell M3 evidence remains limited to its original inventory; new bounded partial contributions do not complete whole-source duties."
+              },
+              {
+                "id": "m3-review-file-present",
+                "label": "M3-Review-Datei vorhanden",
+                "passed": true,
+                "details": "Current source/epoch-matching review aliases: curricula/DE/Gymnasium/mapping/DE-ST/upper-secondary/st_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json"
+              },
+              {
+                "id": "m3-review-decisions-reference-source-goals",
+                "label": "Review-Entscheidungen referenzieren Source-Ziele",
+                "passed": true,
+                "details": "Alle Review-Entscheidungen referenzieren Source-Ziele. Alle Mapping-Edges referenzieren Source-Ziele."
+              },
+              {
+                "id": "m3-review-targets-exist",
+                "label": "Review-Mappings referenzieren existierende Canonical-Ziele",
+                "passed": true,
+                "details": "Alle Mapping-Targets existieren in der kanonischen Chemie-Landschaft."
+              },
+              {
+                "id": "m3-all-source-goals-reviewed",
+                "label": "Alle Source-Ziele sind fachlich reviewed",
+                "passed": false,
+                "details": "No new whole-source approval. 4 selected additions carry only their individually accepted partial contributions; 0 shared cells have extraction transport only. Whole operator/course/execution duties remain separate."
+              },
+              {
+                "id": "m3-all-source-goals-covered-by-canonical",
+                "label": "Alle Source-Ziele sind durch SkillPilot-Ziele abgedeckt",
+                "passed": false,
+                "details": "No new whole-source approval. 4 selected additions carry only their individually accepted partial contributions; 0 shared cells have extraction transport only. Whole operator/course/execution duties remain separate."
+              }
+            ]
+          }
+        ],
+        "selectedProcessIntegration": {
+          "status": "accepted-partial-contributions-only",
+          "totalSourceGoalsActual": 328,
+          "historicalSourceGoals": 324,
+          "newCompleteSelectedProcessCells": 4,
+          "newWholeSourceApprovals": 0,
+          "newScientificFirstDecisionsByIntegrator": 0,
+          "independentAcceptedRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+            "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+            "bytes": 269340
+          },
+          "sourceCellPartialBindings": [
+            {
+              "sourceGoalId": "st-chemistry-sekii-process-standard-q-e-prozessgrenzen",
+              "acceptedPartialContributions": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+                  "bytes": 269340,
+                  "jsonPointer": "/mappings/52"
+                },
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+                  "bytes": 269340,
+                  "jsonPointer": "/mappings/53"
+                }
+              ],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": false
+            },
+            {
+              "sourceGoalId": "st-chemistry-sekii-process-standard-ep-e-experiment",
+              "acceptedPartialContributions": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+                  "bytes": 269340,
+                  "jsonPointer": "/mappings/54"
+                }
+              ],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": false
+            },
+            {
+              "sourceGoalId": "st-chemistry-sekii-process-standard-q-k-argument",
+              "acceptedPartialContributions": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+                  "bytes": 269340,
+                  "jsonPointer": "/mappings/55"
+                }
+              ],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": false
+            },
+            {
+              "sourceGoalId": "st-chemistry-sekii-process-standard-ep-k-zeichensprache",
+              "acceptedPartialContributions": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+                  "bytes": 269340,
+                  "jsonPointer": "/mappings/56"
+                }
+              ],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": false
+            }
+          ],
+          "wholeSourceCoverageComplete": false,
+          "historicalM3DoesNotExtendToAddedCells": true
+        }
+      }
+    }
   },
   "qualityReview": {
     "sourceGoalCountPeerBaseline": {
@@ -56,11 +409,19 @@
     "ST-schuljahrgange-11-12-wahlpflichtfach-donator-akzeptor-prinzip-auf-elektronenubergange-anwenden",
     "ST-schuljahrgange-11-12-wahlpflichtfach-donator-akzeptor-prinzip-auf-protonenubergange-ubertragen",
     "ST-schuljahrgange-11-12-wahlpflichtfach-zusammenhang-zwischen-der-struktur-und-den-eigenschaften-zur-systematisierenden-betrachtung-organischer-verbindungen-und-deren-reaktionen-nutzen",
-    "ST-schuljahrgange-11-12-wahlpflichtfach-ausgewahlte-themen-der-angewandten-chemie-unter-berucksichtigung-der-basiskonzepte-bearbeiten"
+    "ST-schuljahrgange-11-12-wahlpflichtfach-ausgewahlte-themen-der-angewandten-chemie-unter-berucksichtigung-der-basiskonzepte-bearbeiten",
+    "Kapitel2 Erkenntnisgewinnung, Einführungsphase",
+    "Kapitel2 Erkenntnisgewinnung, Qualifikationsphase",
+    "Kapitel2 Kommunikation, Einführungsphase",
+    "Kapitel2 Kommunikation, Qualifikationsphase",
+    "EP K recherche",
+    "Q K interpretation",
+    "EP K source checking",
+    "EP B safe action"
   ],
   "pipelineStatus": {
     "version": 1,
-    "currentStep": "",
+    "currentStep": "MAPPING-3",
     "steps": [
       {
         "id": "MAPPING-1",
@@ -72,19 +433,19 @@
             "id": "source-documents-present",
             "label": "Amtlicher Sachsen-Anhalt-Chemie-Fachlehrplan liegt lokal vor",
             "passed": true,
-            "details": "1/1 Originalquelle bereitgestellt: curricula/DE/Gymnasium/input/ST/FLP_Chemie_Gym_01082022_swd.pdf; Baseline: curricula/DE/Gymnasium/input/ST/Chemie_FLP_Gym_01_07_2019.pdf"
+            "details": "Current operative primary document: curricula/DE/Gymnasium/input/ST/FLP_Chemie_Gym_01082022_swd.pdf. Historical inventory provenance remains in method.selectedProcessClauseAddition.historicalScopeEvidence."
           },
           {
             "id": "expected-topic-coverage",
             "label": "Alle erwarteten Sachsen-Anhalt-Chemie-Stufen sind als Passagegruppen vorhanden",
             "passed": true,
-            "details": "3/3 Stufen; 15 Kompetenzschwerpunkte."
+            "details": "All 19 previous operative passages retained exactly; 4 selected complete-operator passages added. This is not the complete official standards universe."
           },
           {
             "id": "passage-extraction-source",
             "label": "Passage-Extraction basiert auf amtlicher PDF-Quelle statt Legacy-Snapshot",
             "passed": true,
-            "details": "curricula/DE/Gymnasium/input/ST/FLP_Chemie_Gym_01082022_swd.pdf"
+            "details": "Current operative primary document: curricula/DE/Gymnasium/input/ST/FLP_Chemie_Gym_01082022_swd.pdf. Historical inventory provenance remains in method.selectedProcessClauseAddition.historicalScopeEvidence."
           }
         ]
       },
@@ -100,13 +461,13 @@
             "id": "source-goals-created",
             "label": "Aus den amtlichen Sachsen-Anhalt-Chemie-Passagen wurden Source-Ziele erzeugt",
             "passed": true,
-            "details": "324 Source-Ziele"
+            "details": "332 actual cells = 328 retained immediate previous inventory + 4 new whole selected operators. Previous content/standard phases remain historical; no unselected standard counted."
           },
           {
             "id": "source-goal-count-peer-baseline",
-            "label": "Source-Ziel-Anzahl ist gegen bereits geprüfte Chemie-Inventare kritisch plausibilisiert",
+            "label": "Historische Basis und neu ausgewählte vollständige Operatoren getrennt gezählt",
             "passed": true,
-            "details": "324 Source-Ziele; BW/NW/SH/HE/BB/BE/NI Sek-II-Chemie = 126/154/165/202/203/203/333 Source-Ziele; Sachsen-Anhalt fuehrt gAN, eAN und Wahlpflichtfach im selben Fachlehrplan."
+            "details": "Previous peer comparisons concern their historical inventory only; original evidence retained in method.fourteenMethodSelectedProcessAddition.historicalPipelineStatusBeforeThisAddition. Current actual union 332=328+4; no full-standards benchmark."
           },
           {
             "id": "source-goal-ids-unique",
@@ -125,7 +486,7 @@
       {
         "id": "MAPPING-3",
         "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
-        "status": "complete",
+        "status": "incomplete",
         "dependsOn": [
           "MAPPING-1",
           "MAPPING-2"
@@ -135,13 +496,13 @@
             "id": "mapping-2-complete",
             "label": "MAPPING-2 abgeschlossen",
             "passed": true,
-            "details": "324 Source-Ziele liegen vor; MAPPING-3 kann gegen diese Source-Extraction-IDs laufen."
+            "details": "332 actual source cells exist. Historical M3 results remain scoped to their prior inventory. Current individually accepted partial relations do not prove all whole-source duties."
           },
           {
             "id": "m3-review-file-present",
             "label": "M3-Review-Datei vorhanden",
             "passed": true,
-            "details": "curricula/DE/Gymnasium/mapping/DE-ST/upper-secondary/st_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json"
+            "details": "Current source/epoch-matching review aliases: curricula/DE/Gymnasium/mapping/DE-ST/upper-secondary/st_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json"
           },
           {
             "id": "m3-review-decisions-reference-source-goals",
@@ -158,18 +519,160 @@
           {
             "id": "m3-all-source-goals-reviewed",
             "label": "Alle Source-Ziele sind fachlich reviewed",
-            "passed": true,
-            "details": "324/324 Source-Ziele sind reviewed; 324 mapped decisions."
+            "passed": false,
+            "details": "4 newly selected whole operator cells have specific partial relations only. No new whole-source approval; all remaining verbs, stage/course/context and actual-performance duties remain open. Historical completeness is retained only in the saved previous pipeline record."
           },
           {
             "id": "m3-all-source-goals-covered-by-canonical",
             "label": "Alle Source-Ziele sind durch SkillPilot-Ziele abgedeckt",
-            "passed": true,
-            "details": "324/324 Source-Ziele sind durch 1453 Mapping-Edge(s) abgedeckt."
+            "passed": false,
+            "details": "4 newly selected whole operator cells have specific partial relations only. No new whole-source approval; all remaining verbs, stage/course/context and actual-performance duties remain open. Historical completeness is retained only in the saved previous pipeline record."
           }
         ]
       }
-    ]
+    ],
+    "selectedProcessIntegration": {
+      "status": "accepted-partial-contributions-only",
+      "totalSourceGoalsActual": 332,
+      "historicalSourceGoals": 324,
+      "newCompleteSelectedProcessCells": 4,
+      "newWholeSourceApprovals": 0,
+      "newScientificFirstDecisionsByIntegrator": 0,
+      "independentAcceptedRef": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+        "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+        "bytes": 269340
+      },
+      "sourceCellPartialBindings": [
+        {
+          "sourceGoalId": "st-chemistry-sekii-process-standard-q-e-prozessgrenzen",
+          "acceptedPartialContributions": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+              "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+              "bytes": 269340,
+              "jsonPointer": "/mappings/52"
+            },
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+              "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+              "bytes": 269340,
+              "jsonPointer": "/mappings/53"
+            }
+          ],
+          "wholeSourceApproval": false,
+          "extractionTransportOnlyWithoutBindingVote": false
+        },
+        {
+          "sourceGoalId": "st-chemistry-sekii-process-standard-ep-e-experiment",
+          "acceptedPartialContributions": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+              "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+              "bytes": 269340,
+              "jsonPointer": "/mappings/54"
+            }
+          ],
+          "wholeSourceApproval": false,
+          "extractionTransportOnlyWithoutBindingVote": false
+        },
+        {
+          "sourceGoalId": "st-chemistry-sekii-process-standard-q-k-argument",
+          "acceptedPartialContributions": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+              "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+              "bytes": 269340,
+              "jsonPointer": "/mappings/55"
+            }
+          ],
+          "wholeSourceApproval": false,
+          "extractionTransportOnlyWithoutBindingVote": false
+        },
+        {
+          "sourceGoalId": "st-chemistry-sekii-process-standard-ep-k-zeichensprache",
+          "acceptedPartialContributions": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+              "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+              "bytes": 269340,
+              "jsonPointer": "/mappings/56"
+            }
+          ],
+          "wholeSourceApproval": false,
+          "extractionTransportOnlyWithoutBindingVote": false
+        }
+      ],
+      "wholeSourceCoverageComplete": false,
+      "historicalM3DoesNotExtendToAddedCells": true,
+      "historicalRecordBeforeFourteenAddition": true
+    },
+    "fourteenMethodPartialIntegration": {
+      "status": "accepted-partial-contributions-only",
+      "totalSourceGoalsActual": 332,
+      "retainedImmediateBeforeCells": 328,
+      "newCompleteSelectedOperatorCells": 4,
+      "newWholeSourceApprovals": 0,
+      "newScientificFirstDecisionsByTechnicalIntegrator": 0,
+      "independentAcceptedRef": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/ACCEPTED.exact104-direct-partial-two-literal-three-held.json",
+        "sha256": "9958d0a23bb96b4cce0ed69f2018631764f5fe943d87ed8136ef2ba070457119",
+        "bytes": 99336
+      },
+      "newSourceCellPartialBindings": [
+        {
+          "sourceGoalId": "st-chemistry-sekii-process-standard-ep-k-recherche",
+          "acceptedPartialRelations": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/39",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "wholeSourceApproval": false
+        },
+        {
+          "sourceGoalId": "st-chemistry-sekii-process-standard-q-k-interpretation",
+          "acceptedPartialRelations": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/40",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "wholeSourceApproval": false
+        },
+        {
+          "sourceGoalId": "st-chemistry-sekii-process-standard-ep-k-quellenpruefung",
+          "acceptedPartialRelations": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/64",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "wholeSourceApproval": false
+        },
+        {
+          "sourceGoalId": "st-chemistry-sekii-process-standard-ep-b-sicher-handeln",
+          "acceptedPartialRelations": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/22",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            },
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/70",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "wholeSourceApproval": false
+        }
+      ],
+      "historicalM3DoesNotExtendAutomaticallyToNewCells": true,
+      "wholeSourceCoverageComplete": false
+    }
   },
   "passages": [
     {
@@ -645,6 +1148,141 @@
         "st-chem-sekii-st-schuljahrgange-11-12-wahlpflichtfach-ausgewahlte-themen-der-angewandten-chemie-unter-berucksichtigung-der-basiskonzepte-bearbeiten-323-c2c873e6",
         "st-chem-sekii-st-schuljahrgange-11-12-wahlpflichtfach-ausgewahlte-themen-der-angewandten-chemie-unter-berucksichtigung-der-basiskonzepte-bearbeiten-324-6e35335b"
       ]
+    },
+    {
+      "id": "st-chemistry-sekii-process:kapitel2-erkenntnisgewinnung,-einführungsphase",
+      "topicCode": "Kapitel2 Erkenntnisgewinnung, Einführungsphase",
+      "title": "ST: selected whole process clauses, original full pages retained",
+      "text": "Fachlehrplan Chemie Gymnasium                                                                   Stand: 01.08.2022\n\n\n\n                      Am Ende der\n                                Einführungsphase                            Qualifikationsphase\n                      können die Schülerinnen und Schüler in der Regel\n                      –    aus Alltagssituationen                  –    Problemstellungen zu\n                           chemische Sachverhalte                       chemischen Sachverhalten\n                           ableiten,                                    analysieren, Lösungsstrategien\n                      –    Fragestellungen, die durch                   zunehmend selbstständig\n                           chemische Kenntnisse und                     entwickeln und\n                           Untersuchungen zu beantworten                Schlussfolgerungen ziehen.\n                           sind, erkennen und entwickeln.\n                      –    eigenständig Hypothesen                 –    die experimentelle Methode\n                           aufstellen,                                  selbstständig anwenden,\n                      –    qualitative sowie exemplarisch          –    Prozesse der Erkenntnis-\n                           quantitative Aspekte in den                  gewinnung beschreiben,\n                           Fokus experimenteller                        reflektieren sowie Möglichkeiten\n                           Untersuchungen stellen,                      und Grenzen ableiten,\n                      –    selbstständig Experimente unter         –    fächerübergreifende Bezüge bei\n                           Beachtung von Sicherheits- und               dem Interpretieren der\n                           Umweltaspekten durchführen,                  Untersuchungsbefunde\n                           beobachten, auswerten und                    herstellen.\n                           protokollieren.\n                      –    geeignete Modelle und Medien            –    digitale Werkzeuge zum\n                           zur Beschreibung und Erklärung               Modellbilden, zum Messen, zum\n                           chemischer Sachverhalte heran-               Berechnen oder zum Simulieren\n                           ziehen und anwenden sowie auf                nutzen.\n                           Teilchenebene interpretieren.\n                      –    auf Grundlage stöchiometrischer         –    mathematische Methoden zur\n                           Betrachtungen Erkenntnisse                   Lösung chemischer Aufgaben\n                           ableiten.                                    anwenden.\n                      –    Zusammenhänge zwischen                  –    Kontexte zu gesellschafts-\n                           gesellschaftlichen                           relevanten Themen unter\n                           Entwicklungen und                            Berücksichtigung von\n                           Erkenntnissen der Chemie in                  Erkenntnissen der Chemie\n                           erhobenen oder recherchierten                analysieren und erläutern.\n                           Daten Trends, Strukturen und\n                           Beziehungen finden und diese\n                           theoriebezogen erklären.\n\n\n\n\nQuelle: Landesportal Sachsen-Anhalt (http://www.lisa.sachsen-anhalt.de) | Lizenz: Creative Commons (CC BY-SA 3.0)\n                                                       12\n",
+      "sourceDocumentKey": "ST-CH-2022",
+      "sourceRef": "curricula/DE/Gymnasium/input/ST/FLP_Chemie_Gym_01082022_swd.pdf, physical PDF pages [12]",
+      "physicalPdfPages": [
+        12
+      ],
+      "scope": "Full page context, selected clauses only become sourceGoals; all other standards remain unextracted context."
+    },
+    {
+      "id": "st-chemistry-sekii-process:kapitel2-erkenntnisgewinnung,-qualifikationsphase",
+      "topicCode": "Kapitel2 Erkenntnisgewinnung, Qualifikationsphase",
+      "title": "ST: selected whole process clauses, original full pages retained",
+      "text": "Fachlehrplan Chemie Gymnasium                                                                   Stand: 01.08.2022\n\n\n\n                      Am Ende der\n                                Einführungsphase                            Qualifikationsphase\n                      können die Schülerinnen und Schüler in der Regel\n                      –    aus Alltagssituationen                  –    Problemstellungen zu\n                           chemische Sachverhalte                       chemischen Sachverhalten\n                           ableiten,                                    analysieren, Lösungsstrategien\n                      –    Fragestellungen, die durch                   zunehmend selbstständig\n                           chemische Kenntnisse und                     entwickeln und\n                           Untersuchungen zu beantworten                Schlussfolgerungen ziehen.\n                           sind, erkennen und entwickeln.\n                      –    eigenständig Hypothesen                 –    die experimentelle Methode\n                           aufstellen,                                  selbstständig anwenden,\n                      –    qualitative sowie exemplarisch          –    Prozesse der Erkenntnis-\n                           quantitative Aspekte in den                  gewinnung beschreiben,\n                           Fokus experimenteller                        reflektieren sowie Möglichkeiten\n                           Untersuchungen stellen,                      und Grenzen ableiten,\n                      –    selbstständig Experimente unter         –    fächerübergreifende Bezüge bei\n                           Beachtung von Sicherheits- und               dem Interpretieren der\n                           Umweltaspekten durchführen,                  Untersuchungsbefunde\n                           beobachten, auswerten und                    herstellen.\n                           protokollieren.\n                      –    geeignete Modelle und Medien            –    digitale Werkzeuge zum\n                           zur Beschreibung und Erklärung               Modellbilden, zum Messen, zum\n                           chemischer Sachverhalte heran-               Berechnen oder zum Simulieren\n                           ziehen und anwenden sowie auf                nutzen.\n                           Teilchenebene interpretieren.\n                      –    auf Grundlage stöchiometrischer         –    mathematische Methoden zur\n                           Betrachtungen Erkenntnisse                   Lösung chemischer Aufgaben\n                           ableiten.                                    anwenden.\n                      –    Zusammenhänge zwischen                  –    Kontexte zu gesellschafts-\n                           gesellschaftlichen                           relevanten Themen unter\n                           Entwicklungen und                            Berücksichtigung von\n                           Erkenntnissen der Chemie in                  Erkenntnissen der Chemie\n                           erhobenen oder recherchierten                analysieren und erläutern.\n                           Daten Trends, Strukturen und\n                           Beziehungen finden und diese\n                           theoriebezogen erklären.\n\n\n\n\nQuelle: Landesportal Sachsen-Anhalt (http://www.lisa.sachsen-anhalt.de) | Lizenz: Creative Commons (CC BY-SA 3.0)\n                                                       12\n",
+      "sourceDocumentKey": "ST-CH-2022",
+      "sourceRef": "curricula/DE/Gymnasium/input/ST/FLP_Chemie_Gym_01082022_swd.pdf, physical PDF pages [12]",
+      "physicalPdfPages": [
+        12
+      ],
+      "scope": "Full page context, selected clauses only become sourceGoals; all other standards remain unextracted context."
+    },
+    {
+      "id": "st-chemistry-sekii-process:kapitel2-kommunikation,-einführungsphase",
+      "topicCode": "Kapitel2 Kommunikation, Einführungsphase",
+      "title": "ST: selected whole process clauses, original full pages retained",
+      "text": "Fachlehrplan Chemie Gymnasium                                                                   Stand: 01.08.2022\n\n\n\n                          –   chemische Sachverhalte unter             –   chemische Sachverhalte und\n                              Verwendung der chemischen                    Erkenntnisse in unterschied-\n                              Zeichensprache und/oder mit                  licher Form (Symbole, Formeln,\n                              Modellen und Darstellungen                   Gleichungen, Tabellen, Dia-\n                              beschreiben, veranschaulichen                gramme, Graphen, Skizzen,\n                              oder erklären.                               Simulationen) darstellen und\n                                                                           unter Nutzung der\n                                                                           Fachsprache bzw. von\n                                                                           Modellen beschreiben und\n                                                                           erläutern.\n                          –   Zusammenhänge zwischen                   –   komplexere Zusammenhänge\n                              chemischen Sachverhalten und                 zwischen chemischen Sach-\n                              Alltagserscheinungen herstellen              verhalten und Alltagsvor-\n                              und dabei Fachsprache in                     stellungen selbstständig\n                              Alltagssprache und umgekehrt                 herstellen und dabei bewusst\n                              übersetzen.                                  Fachsprache in Alltagssprache\n                                                                           und umgekehrt übersetzen.\n                          –   während des konstruktiven und            –   sachlogisch argumentieren und\n                              kollektiven Austauschs ihren                 schlüssig chemische Sach-\n                              eigenen Standpunkt zu                        verhalte und Fragestellungen\n                              chemischen Sachverhalten                     begründen,\n                              vertreten und dabei fachlich             –   ihren eigenen Standpunkt zu\n                              korrekt sowie folgerichtig                   chemischen Sachverhalten\n                              argumentieren.                               reflektieren und ggf.\n                                                                           korrigieren.\n\nKompetenzbereich         Im Bereich der Bewertungskompetenz sind Sachverhalte und Informationen\nBewertungs-\n                         fachlich sowie aus Sicht der Nachhaltigkeit zu beurteilen und zu bewerten.\nkompetenz\n                         Dies erfordert, über die sachliche Beurteilung von naturwissenschaftlichen\n                         Aussagen hinauszugehen und fachlich relevante Handlungen und\n                         Entscheidungen       aus     persönlicher,    gesellschaftlicher      und    ethischer\n                         Perspektive zu betrachten. Hierbei sind u. a. kriteriengeleitet eigene\n                         Meinungen zu bilden, Entscheidungen zu treffen und Handlungsoptionen\n                         abzuleiten.\n\n                          Am Ende der\n                                   Einführungsphase                            Qualifikationsphase\n                          können die Schülerinnen und Schüler in der Regel\n                          –   grundlegende fachtypische                –   Aussagen aus unterschied-\n                              Kenntnisse und Fertigkeiten                  lichen Perspektiven betrachten\n                              nutzen, um lebenspraktisch                   und diese sachgerecht auf der\n                              bedeutsame Zusammenhänge                     Grundlage chemischer Kennt-\n                              zu erschließen und zu bewerten.              nisse bewerten und die\n                                                                           zugrundeliegenden Kriterien\n                                                                           reflektieren.\n\n\nQuelle: Landesportal Sachsen-Anhalt (http://www.lisa.sachsen-anhalt.de) | Lizenz: Creative Commons (CC BY-SA 3.0)\n                                                       14\n",
+      "sourceDocumentKey": "ST-CH-2022",
+      "sourceRef": "curricula/DE/Gymnasium/input/ST/FLP_Chemie_Gym_01082022_swd.pdf, physical PDF pages [14]",
+      "physicalPdfPages": [
+        14
+      ],
+      "scope": "Full page context, selected clauses only become sourceGoals; all other standards remain unextracted context."
+    },
+    {
+      "id": "st-chemistry-sekii-process:kapitel2-kommunikation,-qualifikationsphase",
+      "topicCode": "Kapitel2 Kommunikation, Qualifikationsphase",
+      "title": "ST: selected whole process clauses, original full pages retained",
+      "text": "Fachlehrplan Chemie Gymnasium                                                                   Stand: 01.08.2022\n\n\n\n                          –   chemische Sachverhalte unter             –   chemische Sachverhalte und\n                              Verwendung der chemischen                    Erkenntnisse in unterschied-\n                              Zeichensprache und/oder mit                  licher Form (Symbole, Formeln,\n                              Modellen und Darstellungen                   Gleichungen, Tabellen, Dia-\n                              beschreiben, veranschaulichen                gramme, Graphen, Skizzen,\n                              oder erklären.                               Simulationen) darstellen und\n                                                                           unter Nutzung der\n                                                                           Fachsprache bzw. von\n                                                                           Modellen beschreiben und\n                                                                           erläutern.\n                          –   Zusammenhänge zwischen                   –   komplexere Zusammenhänge\n                              chemischen Sachverhalten und                 zwischen chemischen Sach-\n                              Alltagserscheinungen herstellen              verhalten und Alltagsvor-\n                              und dabei Fachsprache in                     stellungen selbstständig\n                              Alltagssprache und umgekehrt                 herstellen und dabei bewusst\n                              übersetzen.                                  Fachsprache in Alltagssprache\n                                                                           und umgekehrt übersetzen.\n                          –   während des konstruktiven und            –   sachlogisch argumentieren und\n                              kollektiven Austauschs ihren                 schlüssig chemische Sach-\n                              eigenen Standpunkt zu                        verhalte und Fragestellungen\n                              chemischen Sachverhalten                     begründen,\n                              vertreten und dabei fachlich             –   ihren eigenen Standpunkt zu\n                              korrekt sowie folgerichtig                   chemischen Sachverhalten\n                              argumentieren.                               reflektieren und ggf.\n                                                                           korrigieren.\n\nKompetenzbereich         Im Bereich der Bewertungskompetenz sind Sachverhalte und Informationen\nBewertungs-\n                         fachlich sowie aus Sicht der Nachhaltigkeit zu beurteilen und zu bewerten.\nkompetenz\n                         Dies erfordert, über die sachliche Beurteilung von naturwissenschaftlichen\n                         Aussagen hinauszugehen und fachlich relevante Handlungen und\n                         Entscheidungen       aus     persönlicher,    gesellschaftlicher      und    ethischer\n                         Perspektive zu betrachten. Hierbei sind u. a. kriteriengeleitet eigene\n                         Meinungen zu bilden, Entscheidungen zu treffen und Handlungsoptionen\n                         abzuleiten.\n\n                          Am Ende der\n                                   Einführungsphase                            Qualifikationsphase\n                          können die Schülerinnen und Schüler in der Regel\n                          –   grundlegende fachtypische                –   Aussagen aus unterschied-\n                              Kenntnisse und Fertigkeiten                  lichen Perspektiven betrachten\n                              nutzen, um lebenspraktisch                   und diese sachgerecht auf der\n                              bedeutsame Zusammenhänge                     Grundlage chemischer Kennt-\n                              zu erschließen und zu bewerten.              nisse bewerten und die\n                                                                           zugrundeliegenden Kriterien\n                                                                           reflektieren.\n\n\nQuelle: Landesportal Sachsen-Anhalt (http://www.lisa.sachsen-anhalt.de) | Lizenz: Creative Commons (CC BY-SA 3.0)\n                                                       14\n",
+      "sourceDocumentKey": "ST-CH-2022",
+      "sourceRef": "curricula/DE/Gymnasium/input/ST/FLP_Chemie_Gym_01082022_swd.pdf, physical PDF pages [14]",
+      "physicalPdfPages": [
+        14
+      ],
+      "scope": "Full page context, selected clauses only become sourceGoals; all other standards remain unextracted context."
+    },
+    {
+      "id": "st-chemistry-sekii-process-standard-ep-k-recherche:whole-primary-context",
+      "topicCode": "EP K recherche",
+      "title": "Selected complete official operator; full original page context referenced",
+      "sourceDocumentKey": "ST-CH-2022",
+      "text": "zu chemischen Sachverhalten zielgerichtet und selbstständig in unterschiedlichen Medien recherchieren",
+      "physicalPdfPages": [
+        13
+      ],
+      "sourceRef": "Fachlehrplan Gymnasium Chemie Sachsen-Anhalt 2022; physical PDF13; EP K recherche",
+      "scope": "Only this entire selected operator is newly operative. Full original primary-page context was read and remains available at the pinned official PDF; all unselected operators remain without a new binding vote.",
+      "primaryDocumentPin": {
+        "path": "curricula/DE/Gymnasium/input/ST/FLP_Chemie_Gym_01082022_swd.pdf",
+        "sha256": "fcdbb0bdaf4ccad6d5384c256f77329a36bad299503076493ee368d486ab78b6",
+        "bytes": 741324
+      },
+      "sourceStageCourseAndContext": "ST EP, left column, physical/printed13; not the Q right column."
+    },
+    {
+      "id": "st-chemistry-sekii-process-standard-q-k-interpretation:whole-primary-context",
+      "topicCode": "Q K interpretation",
+      "title": "Selected complete official operator; full original page context referenced",
+      "sourceDocumentKey": "ST-CH-2022",
+      "text": "Fachtexte und grafische Darstellungen interpretieren und daraus Schlüsse ziehen",
+      "physicalPdfPages": [
+        13
+      ],
+      "sourceRef": "Fachlehrplan Gymnasium Chemie Sachsen-Anhalt 2022; physical PDF13; Q K interpretation",
+      "scope": "Only this entire selected operator is newly operative. Full original primary-page context was read and remains available at the pinned official PDF; all unselected operators remain without a new binding vote.",
+      "primaryDocumentPin": {
+        "path": "curricula/DE/Gymnasium/input/ST/FLP_Chemie_Gym_01082022_swd.pdf",
+        "sha256": "fcdbb0bdaf4ccad6d5384c256f77329a36bad299503076493ee368d486ab78b6",
+        "bytes": 741324
+      },
+      "sourceStageCourseAndContext": "ST Q, right column, physical/printed13; not EP left column."
+    },
+    {
+      "id": "st-chemistry-sekii-process-standard-ep-k-quellenpruefung:whole-primary-context",
+      "topicCode": "EP K source checking",
+      "title": "Selected complete official operator; full original page context referenced",
+      "sourceDocumentKey": "ST-CH-2022",
+      "text": "verschiedene Quellen und Darstellungen (u. a. in Medien) kritisch im fachbezogenen Kontext prüfen",
+      "physicalPdfPages": [
+        13
+      ],
+      "sourceRef": "Fachlehrplan Gymnasium Chemie Sachsen-Anhalt 2022; physical PDF13; EP K source checking",
+      "scope": "Only this entire selected operator is newly operative. Full original primary-page context was read and remains available at the pinned official PDF; all unselected operators remain without a new binding vote.",
+      "primaryDocumentPin": {
+        "path": "curricula/DE/Gymnasium/input/ST/FLP_Chemie_Gym_01082022_swd.pdf",
+        "sha256": "fcdbb0bdaf4ccad6d5384c256f77329a36bad299503076493ee368d486ab78b6",
+        "bytes": 741324
+      },
+      "sourceStageCourseAndContext": "ST EP, left column, physical/printed13; not Q source-trust clause."
+    },
+    {
+      "id": "st-chemistry-sekii-process-standard-ep-b-sicher-handeln:whole-primary-context",
+      "topicCode": "EP B safe action",
+      "title": "Selected complete official operator; full original page context referenced",
+      "sourceDocumentKey": "ST-CH-2022",
+      "text": "unter Berücksichtigung von Sicherheitsaspekten und möglicher Gefahren im Labor und Alltag entsprechend handeln",
+      "physicalPdfPages": [
+        15
+      ],
+      "sourceRef": "Fachlehrplan Gymnasium Chemie Sachsen-Anhalt 2022; physical PDF15; EP B safe action",
+      "scope": "Only this entire selected operator is newly operative. Full original primary-page context was read and remains available at the pinned official PDF; all unselected operators remain without a new binding vote.",
+      "primaryDocumentPin": {
+        "path": "curricula/DE/Gymnasium/input/ST/FLP_Chemie_Gym_01082022_swd.pdf",
+        "sha256": "fcdbb0bdaf4ccad6d5384c256f77329a36bad299503076493ee368d486ab78b6",
+        "bytes": 741324
+      },
+      "sourceStageCourseAndContext": "ST EP, left column, physical/printed15; cognitive justification/selection only is partial, not actual action."
+    },
+    {
+      "id": "st-chemistry-sekii-process-standard-q-e-mathematical-methods:whole-primary-context",
+      "topicCode": "Q-E-MATHEMATICAL-METHODS",
+      "title": "Qualifikationsphase: mathematische Methoden für chemische Aufgaben",
+      "text": "mathematische Methoden zur Lösung chemischer Aufgaben anwenden.",
+      "sourceDocumentKey": "ST-CH-2022",
+      "sourceRef": "Fachlehrplan Gymnasium Chemie Sachsen-Anhalt 2022, physical PDF p. 12",
+      "metadata": {
+        "unit": "whole bullet",
+        "primaryPageOneBased": 12,
+        "surroundingWholePageActuallyRead": true,
+        "contextBoundary": "ST right Q column only; no EP/SekI assignment or official whole-goal duty.",
+        "thirdPartyOfficialTextRetainsOriginalRights": true
+      }
     }
   ],
   "sourceGoals": [
@@ -9395,6 +10033,378 @@
       "rawSourceText": "Verbindliche Schülerexperimente: Durchführen adäquater Experimente",
       "rawSourceSpan": "Schuljahrgänge 11/12 Wahlpflichtfach, ausgewählte Themen der angewandten Chemie unter Berücksichtigung der Basiskonzepte bearbeiten, Verbindliche Schülerexperimente, PDF-S. 62",
       "rawParentBulletText": "Durchführen adäquater Experimente"
+    },
+    {
+      "id": "st-chemistry-sekii-process-standard-q-e-prozessgrenzen",
+      "passageId": "st-chemistry-sekii-process:kapitel2-erkenntnisgewinnung,-qualifikationsphase",
+      "topicCode": "Kapitel2 Erkenntnisgewinnung, Qualifikationsphase",
+      "title": "Q-E-Prozessgrenzen: Prozesse der Erkenntnisgewinnung beschreiben, reflektieren sowie Möglichkeiten und Grenzen ableiten",
+      "description": "Prozesse der Erkenntnisgewinnung beschreiben, reflektieren sowie Möglichkeiten und Grenzen ableiten",
+      "sourceDocumentKey": "ST-CH-2022",
+      "sourceText": "Prozesse der Erkenntnisgewinnung beschreiben, reflektieren sowie Möglichkeiten und Grenzen ableiten",
+      "parentBulletText": "Prozesse der Erkenntnisgewinnung beschreiben, reflektieren sowie Möglichkeiten und Grenzen ableiten",
+      "sourceRef": "Fachlehrplan Gymnasium Chemie Sachsen-Anhalt 2022; physical PDF12; Kapitel2 Erkenntnisgewinnung, Qualifikationsphase; Q-E-Prozessgrenzen.",
+      "sourceSpan": {
+        "passageId": "st-chemistry-sekii-process:kapitel2-erkenntnisgewinnung,-qualifikationsphase",
+        "label": "physical PDF12, Kapitel2 Erkenntnisgewinnung, Qualifikationsphase, Q-E-Prozessgrenzen"
+      },
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompleteUnnumberedClause",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "stage:SekII",
+        "course:GK_LK"
+      ],
+      "metadata": {
+        "officialStandardCode": null,
+        "localLocatorLabel": "Q-E-Prozessgrenzen",
+        "officiallyNumbered": false,
+        "physicalPdfPage": 12,
+        "extractionMethod": "Author read whole primary section; complete clause, line wrapping only normalized; inactive additive candidate; no independent review yet.",
+        "stageCourseBoundary": "Exact EP or Q column named on each added clause. No silent column or gAN/eAN conversion; practical duties on p11 remain open."
+      }
+    },
+    {
+      "id": "st-chemistry-sekii-process-standard-ep-e-experiment",
+      "passageId": "st-chemistry-sekii-process:kapitel2-erkenntnisgewinnung,-einführungsphase",
+      "topicCode": "Kapitel2 Erkenntnisgewinnung, Einführungsphase",
+      "title": "EP-E-Experiment: selbstständig Experimente unter Beachtung von Sicherheits- und Umweltaspekten durchführen, beobachten, auswerten und protokollieren",
+      "description": "selbstständig Experimente unter Beachtung von Sicherheits- und Umweltaspekten durchführen, beobachten, auswerten und protokollieren",
+      "sourceDocumentKey": "ST-CH-2022",
+      "sourceText": "selbstständig Experimente unter Beachtung von Sicherheits- und Umweltaspekten durchführen, beobachten, auswerten und protokollieren",
+      "parentBulletText": "selbstständig Experimente unter Beachtung von Sicherheits- und Umweltaspekten durchführen, beobachten, auswerten und protokollieren",
+      "sourceRef": "Fachlehrplan Gymnasium Chemie Sachsen-Anhalt 2022; physical PDF12; Kapitel2 Erkenntnisgewinnung, Einführungsphase; EP-E-Experiment.",
+      "sourceSpan": {
+        "passageId": "st-chemistry-sekii-process:kapitel2-erkenntnisgewinnung,-einführungsphase",
+        "label": "physical PDF12, Kapitel2 Erkenntnisgewinnung, Einführungsphase, EP-E-Experiment"
+      },
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompleteUnnumberedClause",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "stage:SekII",
+        "course:GK_LK"
+      ],
+      "metadata": {
+        "officialStandardCode": null,
+        "localLocatorLabel": "EP-E-Experiment",
+        "officiallyNumbered": false,
+        "physicalPdfPage": 12,
+        "extractionMethod": "Author read whole primary section; complete clause, line wrapping only normalized; inactive additive candidate; no independent review yet.",
+        "stageCourseBoundary": "Exact EP or Q column named on each added clause. No silent column or gAN/eAN conversion; practical duties on p11 remain open."
+      }
+    },
+    {
+      "id": "st-chemistry-sekii-process-standard-q-k-argument",
+      "passageId": "st-chemistry-sekii-process:kapitel2-kommunikation,-qualifikationsphase",
+      "topicCode": "Kapitel2 Kommunikation, Qualifikationsphase",
+      "title": "Q-K-Argument: sachlogisch argumentieren und schlüssig chemische Sachverhalte und Fragestellungen begründen",
+      "description": "sachlogisch argumentieren und schlüssig chemische Sachverhalte und Fragestellungen begründen",
+      "sourceDocumentKey": "ST-CH-2022",
+      "sourceText": "sachlogisch argumentieren und schlüssig chemische Sachverhalte und Fragestellungen begründen",
+      "parentBulletText": "sachlogisch argumentieren und schlüssig chemische Sachverhalte und Fragestellungen begründen",
+      "sourceRef": "Fachlehrplan Gymnasium Chemie Sachsen-Anhalt 2022; physical PDF14; Kapitel2 Kommunikation, Qualifikationsphase; Q-K-Argument.",
+      "sourceSpan": {
+        "passageId": "st-chemistry-sekii-process:kapitel2-kommunikation,-qualifikationsphase",
+        "label": "physical PDF14, Kapitel2 Kommunikation, Qualifikationsphase, Q-K-Argument"
+      },
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompleteUnnumberedClause",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "stage:SekII",
+        "course:GK_LK"
+      ],
+      "metadata": {
+        "officialStandardCode": null,
+        "localLocatorLabel": "Q-K-Argument",
+        "officiallyNumbered": false,
+        "physicalPdfPage": 14,
+        "extractionMethod": "Author read whole primary section; complete clause, line wrapping only normalized; inactive additive candidate; no independent review yet.",
+        "stageCourseBoundary": "Exact EP or Q column named on each added clause. No silent column or gAN/eAN conversion; practical duties on p11 remain open."
+      }
+    },
+    {
+      "id": "st-chemistry-sekii-process-standard-ep-k-zeichensprache",
+      "passageId": "st-chemistry-sekii-process:kapitel2-kommunikation,-einführungsphase",
+      "topicCode": "Kapitel2 Kommunikation, Einführungsphase",
+      "title": "EP-K-Zeichensprache: chemische Sachverhalte unter Verwendung der chemischen Zeichensprache und/oder mit Modellen und Darstellungen beschreiben, veranschaulichen oder erklären",
+      "description": "chemische Sachverhalte unter Verwendung der chemischen Zeichensprache und/oder mit Modellen und Darstellungen beschreiben, veranschaulichen oder erklären",
+      "sourceDocumentKey": "ST-CH-2022",
+      "sourceText": "chemische Sachverhalte unter Verwendung der chemischen Zeichensprache und/oder mit Modellen und Darstellungen beschreiben, veranschaulichen oder erklären",
+      "parentBulletText": "chemische Sachverhalte unter Verwendung der chemischen Zeichensprache und/oder mit Modellen und Darstellungen beschreiben, veranschaulichen oder erklären",
+      "sourceRef": "Fachlehrplan Gymnasium Chemie Sachsen-Anhalt 2022; physical PDF14; Kapitel2 Kommunikation, Einführungsphase; EP-K-Zeichensprache.",
+      "sourceSpan": {
+        "passageId": "st-chemistry-sekii-process:kapitel2-kommunikation,-einführungsphase",
+        "label": "physical PDF14, Kapitel2 Kommunikation, Einführungsphase, EP-K-Zeichensprache"
+      },
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompleteUnnumberedClause",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "stage:SekII",
+        "course:GK_LK"
+      ],
+      "metadata": {
+        "officialStandardCode": null,
+        "localLocatorLabel": "EP-K-Zeichensprache",
+        "officiallyNumbered": false,
+        "physicalPdfPage": 14,
+        "extractionMethod": "Author read whole primary section; complete clause, line wrapping only normalized; inactive additive candidate; no independent review yet.",
+        "stageCourseBoundary": "Exact EP or Q column named on each added clause. No silent column or gAN/eAN conversion; practical duties on p11 remain open."
+      }
+    },
+    {
+      "id": "st-chemistry-sekii-process-standard-ep-k-recherche",
+      "passageId": "st-chemistry-sekii-process-standard-ep-k-recherche:whole-primary-context",
+      "topicCode": "EP K recherche",
+      "title": "EP K recherche: zu chemischen Sachverhalten zielgerichtet und selbstständig in unterschiedlichen Medien recherchieren",
+      "description": "zu chemischen Sachverhalten zielgerichtet und selbstständig in unterschiedlichen Medien recherchieren",
+      "sourceDocumentKey": "ST-CH-2022",
+      "sourceText": "zu chemischen Sachverhalten zielgerichtet und selbstständig in unterschiedlichen Medien recherchieren",
+      "parentBulletText": "zu chemischen Sachverhalten zielgerichtet und selbstständig in unterschiedlichen Medien recherchieren",
+      "sourceRef": "Fachlehrplan Gymnasium Chemie Sachsen-Anhalt 2022; physical PDF13; EP K recherche",
+      "sourceSpan": {
+        "passageId": "st-chemistry-sekii-process-standard-ep-k-recherche:whole-primary-context",
+        "label": "EP K recherche, physical PDF13"
+      },
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompleteOperatorClause",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "stage:SekII",
+        "course:GK_LK"
+      ],
+      "metadata": {
+        "localLocatorLabel": "EP K recherche",
+        "officiallyNumbered": false,
+        "physicalPdfPage": 13,
+        "extractionMethod": "Own author read complete primary operator and whole page; line wrapping normalized. Inactive, independent review required; no whole-source approval.",
+        "stageCourseBoundary": "ST EP, left column, physical/printed13; not the Q right column.",
+        "currentAcceptedPartialRelations": {
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+            "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248",
+            "bytes": 731348
+          },
+          "bindings": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/39",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "authorInactiveWordingIsHistoricalSnapshot": true,
+          "wholeSourceApproval": false
+        }
+      }
+    },
+    {
+      "id": "st-chemistry-sekii-process-standard-q-k-interpretation",
+      "passageId": "st-chemistry-sekii-process-standard-q-k-interpretation:whole-primary-context",
+      "topicCode": "Q K interpretation",
+      "title": "Q K interpretation: Fachtexte und grafische Darstellungen interpretieren und daraus Schlüsse ziehen",
+      "description": "Fachtexte und grafische Darstellungen interpretieren und daraus Schlüsse ziehen",
+      "sourceDocumentKey": "ST-CH-2022",
+      "sourceText": "Fachtexte und grafische Darstellungen interpretieren und daraus Schlüsse ziehen",
+      "parentBulletText": "Fachtexte und grafische Darstellungen interpretieren und daraus Schlüsse ziehen",
+      "sourceRef": "Fachlehrplan Gymnasium Chemie Sachsen-Anhalt 2022; physical PDF13; Q K interpretation",
+      "sourceSpan": {
+        "passageId": "st-chemistry-sekii-process-standard-q-k-interpretation:whole-primary-context",
+        "label": "Q K interpretation, physical PDF13"
+      },
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompleteOperatorClause",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "stage:SekII",
+        "course:GK_LK"
+      ],
+      "metadata": {
+        "localLocatorLabel": "Q K interpretation",
+        "officiallyNumbered": false,
+        "physicalPdfPage": 13,
+        "extractionMethod": "Own author read complete primary operator and whole page; line wrapping normalized. Inactive, independent review required; no whole-source approval.",
+        "stageCourseBoundary": "ST Q, right column, physical/printed13; not EP left column.",
+        "currentAcceptedPartialRelations": {
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+            "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248",
+            "bytes": 731348
+          },
+          "bindings": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/40",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "authorInactiveWordingIsHistoricalSnapshot": true,
+          "wholeSourceApproval": false
+        }
+      }
+    },
+    {
+      "id": "st-chemistry-sekii-process-standard-ep-k-quellenpruefung",
+      "passageId": "st-chemistry-sekii-process-standard-ep-k-quellenpruefung:whole-primary-context",
+      "topicCode": "EP K source checking",
+      "title": "EP K source checking: verschiedene Quellen und Darstellungen (u. a. in Medien) kritisch im fachbezogenen Kontext prüfen",
+      "description": "verschiedene Quellen und Darstellungen (u. a. in Medien) kritisch im fachbezogenen Kontext prüfen",
+      "sourceDocumentKey": "ST-CH-2022",
+      "sourceText": "verschiedene Quellen und Darstellungen (u. a. in Medien) kritisch im fachbezogenen Kontext prüfen",
+      "parentBulletText": "verschiedene Quellen und Darstellungen (u. a. in Medien) kritisch im fachbezogenen Kontext prüfen",
+      "sourceRef": "Fachlehrplan Gymnasium Chemie Sachsen-Anhalt 2022; physical PDF13; EP K source checking",
+      "sourceSpan": {
+        "passageId": "st-chemistry-sekii-process-standard-ep-k-quellenpruefung:whole-primary-context",
+        "label": "EP K source checking, physical PDF13"
+      },
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompleteOperatorClause",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "stage:SekII",
+        "course:GK_LK"
+      ],
+      "metadata": {
+        "localLocatorLabel": "EP K source checking",
+        "officiallyNumbered": false,
+        "physicalPdfPage": 13,
+        "extractionMethod": "Own author read complete primary operator and whole page; line wrapping normalized. Inactive, independent review required; no whole-source approval.",
+        "stageCourseBoundary": "ST EP, left column, physical/printed13; not Q source-trust clause.",
+        "currentAcceptedPartialRelations": {
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+            "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248",
+            "bytes": 731348
+          },
+          "bindings": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/64",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "authorInactiveWordingIsHistoricalSnapshot": true,
+          "wholeSourceApproval": false
+        }
+      }
+    },
+    {
+      "id": "st-chemistry-sekii-process-standard-ep-b-sicher-handeln",
+      "passageId": "st-chemistry-sekii-process-standard-ep-b-sicher-handeln:whole-primary-context",
+      "topicCode": "EP B safe action",
+      "title": "EP B safe action: unter Berücksichtigung von Sicherheitsaspekten und möglicher Gefahren im Labor und Alltag entsprechend handeln",
+      "description": "unter Berücksichtigung von Sicherheitsaspekten und möglicher Gefahren im Labor und Alltag entsprechend handeln",
+      "sourceDocumentKey": "ST-CH-2022",
+      "sourceText": "unter Berücksichtigung von Sicherheitsaspekten und möglicher Gefahren im Labor und Alltag entsprechend handeln",
+      "parentBulletText": "unter Berücksichtigung von Sicherheitsaspekten und möglicher Gefahren im Labor und Alltag entsprechend handeln",
+      "sourceRef": "Fachlehrplan Gymnasium Chemie Sachsen-Anhalt 2022; physical PDF15; EP B safe action",
+      "sourceSpan": {
+        "passageId": "st-chemistry-sekii-process-standard-ep-b-sicher-handeln:whole-primary-context",
+        "label": "EP B safe action, physical PDF15"
+      },
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompleteOperatorClause",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "stage:SekII",
+        "course:GK_LK"
+      ],
+      "metadata": {
+        "localLocatorLabel": "EP B safe action",
+        "officiallyNumbered": false,
+        "physicalPdfPage": 15,
+        "extractionMethod": "Own author read complete primary operator and whole page; line wrapping normalized. Inactive, independent review required; no whole-source approval.",
+        "stageCourseBoundary": "ST EP, left column, physical/printed15; cognitive justification/selection only is partial, not actual action.",
+        "currentAcceptedPartialRelations": {
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+            "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248",
+            "bytes": 731348
+          },
+          "bindings": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/22",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            },
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/70",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "authorInactiveWordingIsHistoricalSnapshot": true,
+          "wholeSourceApproval": false
+        }
+      }
+    },
+    {
+      "id": "st-chemistry-sekii-process-standard-q-e-mathematical-methods",
+      "passageId": "st-chemistry-sekii-process-standard-q-e-mathematical-methods:whole-primary-context",
+      "topicCode": "Q-E-MATHEMATICAL-METHODS",
+      "title": "Qualifikationsphase: mathematische Methoden für chemische Aufgaben",
+      "description": "mathematische Methoden zur Lösung chemischer Aufgaben anwenden.",
+      "sourceDocumentKey": "ST-CH-2022",
+      "sourceText": "mathematische Methoden zur Lösung chemischer Aufgaben anwenden.",
+      "sourceSpan": {
+        "passageId": "st-chemistry-sekii-process-standard-q-e-mathematical-methods:whole-primary-context",
+        "label": "Fachlehrplan Gymnasium Chemie Sachsen-Anhalt 2022, physical PDF p. 12; Q"
+      },
+      "sourceRef": "Fachlehrplan Gymnasium Chemie Sachsen-Anhalt 2022, physical PDF p. 12",
+      "courseLevel": "GK_LK",
+      "granularity": "completeOfficialMethodBullet",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-ST",
+        "stage:SekII",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-whole-selected-official-unit-from-actual-local-PDF",
+        "physicalPageOneBased": 12,
+        "officialOperatorCode": null,
+        "scope": {
+          "stage": "SekII",
+          "sourcePhase": "Q",
+          "courseLevel": "GK_LK",
+          "scopeBoundary": "ST right Q column only; no EP/SekI assignment or official whole-goal duty."
+        },
+        "notNewOfficialLawGoal": true,
+        "noIndependentReviewInThisAuthorTransport": true
+      }
     }
-  ]
+  ],
+  "c7QuantitativeDataPartialIntegration": {
+    "technicalPackagePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-seven-data-source-reviewed-integration-technical-20261018-v1",
+    "foreignAuthorSeal": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-eight-constant-composition-general-data-source-author-successor-20261018-v1/SEAL.inactive-eight-general-data-source-author-successor.json",
+      "sha256": "47f2aa9898e1279f5f4184f421839303c9e374962f0e5254012b412fec88d209",
+      "bytes": 4600
+    },
+    "independentSourceFirst": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-eight-constant-composition-general-data-source-informed-independent-a-20261018-v1/FIRST.independent-a.seven-quantitative-data-source-contributions.json",
+      "sha256": "8854fffa6b2ea3f8e37b40ac01d9ff62e9c7fd9dc8f820848ff47910ba6777f4",
+      "bytes": 36758
+    },
+    "independentSourceSeal": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-eight-constant-composition-general-data-source-informed-independent-a-20261018-v1/SEAL.independent-a.C7-seven-quantitative-source-successor.json",
+      "sha256": "fdd5b7f42626545589262c1b576871a541674a98ae6818a02c6ab5820ae38c0a",
+      "bytes": 4862
+    },
+    "wholeSourceCoverageEstablished": false,
+    "officialWholeConstantCompositionRequirement": false,
+    "newWholeSourceApprovals": 0,
+    "newScientificFirstDecisionsByTechnicalIntegrator": 0,
+    "newNativeDPAMVVotes": 0,
+    "actualLearnerExecutionClaim": false,
+    "ownMeasurementExperimentOrDigitalProductClaim": false,
+    "humanApprovalClaim": false,
+    "addedWholeSelectedSourceGoalIds": [
+      "st-chemistry-sekii-process-standard-q-e-mathematical-methods"
+    ],
+    "currentSourceInventoryCountBefore": 332,
+    "currentSourceInventoryCountAfter": 333,
+    "allOldSourceGoalsPassagesAndMetadataRetainedExactly": true
+  }
 }

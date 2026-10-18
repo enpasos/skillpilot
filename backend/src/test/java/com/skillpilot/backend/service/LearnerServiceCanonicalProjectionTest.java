@@ -57,6 +57,9 @@ class LearnerServiceCanonicalProjectionTest {
     private static final String CANONICAL_BW_GEOMETRY_CLUSTER_ID = "6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44";
     private static final String CANONICAL_BW_STOCHASTICS_CLUSTER_ID = "67ef9787-d540-5f30-9995-f1f9c39a1a45";
     private static final String CANONICAL_CHEMISTRY_ID = "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0";
+    private static final String LEGACY_HE_CORROSION_PROTECTION_ID = "308f9f22-faf4-4f0f-92d9-e8d139c8c9b0";
+    private static final String RETIRED_CORROSION_PROTECTION_ID = "413c5ee5-7826-549f-ad76-63743c59b188";
+    private static final String CANONICAL_CORROSION_PROTECTION_ID = "94a62b39-d4a2-5882-99d1-6886ead07726";
     private static final String CANONICAL_BIOLOGY_ID = "08a43a1b-d97e-522c-9dfa-c950a493364e";
     private static final String CANONICAL_MATH_GK_PERSONAL_CONFIG = """
             {
@@ -313,6 +316,43 @@ class LearnerServiceCanonicalProjectionTest {
     }
 
     @Test
+    void consolidatedCorrosionProtectionRequiresReassessmentWithoutAliasingLegacyWrites() throws Exception {
+        learner.setSelectedCurriculum(CANONICAL_CHEMISTRY_ID);
+        Instant historicalTs = Instant.parse("2026-10-17T08:00:00Z");
+        Mastery legacy = masteryEntry(LEGACY_HE_CORROSION_PROTECTION_ID, 1.0, historicalTs);
+        Mastery retired = masteryEntry(RETIRED_CORROSION_PROTECTION_ID, 1.0, historicalTs);
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID)).thenReturn(List.of(legacy, retired));
+
+        assertThat(landscapeService.getGoalDefinition(RETIRED_CORROSION_PROTECTION_ID)).isNull();
+        LearningGoal successor = landscapeService.getGoalDefinition(CANONICAL_CORROSION_PROTECTION_ID);
+        assertThat(successor).isNotNull();
+        assertThat(learnerService.getMastery(LEARNER_ID))
+                .containsEntry(LEGACY_HE_CORROSION_PROTECTION_ID, 1.0)
+                .containsEntry(RETIRED_CORROSION_PROTECTION_ID, 1.0)
+                .doesNotContainKey(CANONICAL_CORROSION_PROTECTION_ID);
+        assertThat(learnerService.getMasteryWithTimestamps(LEARNER_ID))
+                .doesNotContainKey(CANONICAL_CORROSION_PROTECTION_ID);
+
+        Map<String, LearningGoal> visibleGoals = Map.of(CANONICAL_CORROSION_PROTECTION_ID, successor);
+        assertThat(invokeMapGoalIdForVisibleGoals(LEGACY_HE_CORROSION_PROTECTION_ID, visibleGoals, false))
+                .isEqualTo(LEGACY_HE_CORROSION_PROTECTION_ID);
+        assertThat(invokeMapGoalIdForVisibleGoals(RETIRED_CORROSION_PROTECTION_ID, visibleGoals, false))
+                .isEqualTo(RETIRED_CORROSION_PROTECTION_ID);
+        assertThat(invokeMapGoalIdForVisibleGoals(LEGACY_HE_CORROSION_PROTECTION_ID, visibleGoals, true))
+                .isEqualTo(CANONICAL_CORROSION_PROTECTION_ID);
+
+        Instant canonicalTs = Instant.parse("2026-10-16T08:00:00Z");
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(legacy, retired,
+                        masteryEntry(CANONICAL_CORROSION_PROTECTION_ID, 0.5, canonicalTs)));
+
+        assertThat(learnerService.getMastery(LEARNER_ID))
+                .containsEntry(CANONICAL_CORROSION_PROTECTION_ID, 0.5);
+        assertThat(learnerService.getMasteryWithTimestamps(LEARNER_ID))
+                .containsEntry(CANONICAL_CORROSION_PROTECTION_ID, new MasteryEntryDTO(0.5, canonicalTs));
+    }
+
+    @Test
     void getMasteryProjectsExactBavariaLegacyMasteryIntoCanonicalPilotGoals() {
         when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
                 .thenReturn(List.of(new Mastery(learner, LEGACY_BAYERN_FUNCTION_CONCEPT_ID, 1.0)));
@@ -536,15 +576,33 @@ class LearnerServiceCanonicalProjectionTest {
                         new Mastery(learner, LEGACY_SEK1_CHEMISTRY_WORKING_METHODS_ID, 1.0),
                         new Mastery(learner, LEGACY_SEK1_CHEMISTRY_SUBSTANCES_ID, 1.0),
                         new Mastery(learner, LEGACY_SEK1_CHEMISTRY_STATES_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_CHEMISTRY_SOLUTIONS_ID, 1.0)));
+        // Legacy E2 scope does not impose its outside SekI prerequisites as frontier gates.
+        Map<String, Double> withoutAcidBaseMastery = learnerService.getMastery(LEARNER_ID);
+        assertThat(withoutAcidBaseMastery.getOrDefault(CANONICAL_CHEMISTRY_SEK1_ACID_BASE_ID, 0.0)).isZero();
+        assertThat(withoutAcidBaseMastery.getOrDefault(CANONICAL_CHEMISTRY_PH_ID, 0.0)).isZero();
+        assertThat(withoutAcidBaseMastery.getOrDefault(CANONICAL_CHEMISTRY_ARRHENIUS_ID, 0.0)).isZero();
+
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(
+                        new Mastery(learner, LEGACY_SEK1_CHEMISTRY_WHY_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_CHEMISTRY_WORKING_METHODS_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_CHEMISTRY_SUBSTANCES_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_CHEMISTRY_STATES_ID, 1.0),
                         new Mastery(learner, LEGACY_SEK1_CHEMISTRY_SOLUTIONS_ID, 1.0),
                         new Mastery(learner, LEGACY_SEK1_CHEMISTRY_ACID_BASE_ID, 1.0)));
+
+        Map<String, Double> mastery = learnerService.getMastery(LEARNER_ID);
+        assertThat(mastery).containsEntry(CANONICAL_CHEMISTRY_SEK1_ACID_BASE_ID, 1.0);
+        assertThat(mastery.getOrDefault(CANONICAL_CHEMISTRY_PH_ID, 0.0)).isZero();
+        assertThat(mastery.getOrDefault(CANONICAL_CHEMISTRY_ARRHENIUS_ID, 0.0)).isZero();
 
         List<FrontierGoal> frontier = learnerService.getRichFrontier(LEARNER_ID);
 
         assertThat(frontier)
                 .extracting(FrontierGoal::id)
-                .contains(CANONICAL_CHEMISTRY_ARRHENIUS_ID)
-                .doesNotContain(CANONICAL_CHEMISTRY_WHY_ID, CANONICAL_CHEMISTRY_PH_ID, LEGACY_SEK1_CHEMISTRY_ACID_BASE_ID);
+                .contains(CANONICAL_CHEMISTRY_ARRHENIUS_ID, CANONICAL_CHEMISTRY_PH_ID)
+                .doesNotContain(CANONICAL_CHEMISTRY_WHY_ID, LEGACY_SEK1_CHEMISTRY_ACID_BASE_ID);
     }
 
     @Test

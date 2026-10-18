@@ -15,7 +15,657 @@
   },
   "method": {
     "passageExtraction": "pdftotext -layout; Kapitel 2.2 und 2.3 werden nach EF/GK/LK, Inhaltsfeld und Kompetenzbereich segmentiert.",
-    "sourceGoalExtraction": "ein Source-Ziel pro konkretisiertem Kompetenz-Bullet; uebergeordnete Kompetenzlisten, Basiskonzept-Erlaeuterungen und Leistungsbewertungsabschnitte werden nicht als fachliche Source-Ziele gezählt."
+    "sourceGoalExtraction": "ein Source-Ziel pro konkretisiertem Kompetenz-Bullet; uebergeordnete Kompetenzlisten, Basiskonzept-Erlaeuterungen und Leistungsbewertungsabschnitte werden nicht als fachliche Source-Ziele gezählt. Additive technical successor: retain that exact finite historical inventory, then append complete selected process clauses from the pinned candidate; no claim that every official process standard has been extracted.",
+    "selectedProcessClauseAddition": {
+      "candidate": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-author-20261018-v1/candidate/extraction-additions/NW.complete-selected-process-clauses.additions.json",
+        "sha256": "52b784ad972421fabdff37bd7cc3c5899abb145d4bd4e897ffe4f96718477da7",
+        "bytes": 22084
+      },
+      "historicalInventory": 154,
+      "newCompleteSelectedClauses": 7,
+      "actualUnionInventory": 161,
+      "oldObjectsAndPassagesUnchanged": true,
+      "currentIndependentPartialReview": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+        "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+        "bytes": 269340
+      },
+      "sharedExtractionOnlyIds": [
+        "nw-chemistry-sekii-process-standard-s16-ep",
+        "nw-chemistry-sekii-process-standard-s16-q",
+        "nw-chemistry-sekii-process-standard-s14-q"
+      ],
+      "wholeSourceCoverageEstablished": false,
+      "historicalScopeEvidence": {
+        "method": {
+          "passageExtraction": "pdftotext -layout; Kapitel 2.2 und 2.3 werden nach EF/GK/LK, Inhaltsfeld und Kompetenzbereich segmentiert.",
+          "sourceGoalExtraction": "ein Source-Ziel pro konkretisiertem Kompetenz-Bullet; uebergeordnete Kompetenzlisten, Basiskonzept-Erlaeuterungen und Leistungsbewertungsabschnitte werden nicht als fachliche Source-Ziele gezählt."
+        },
+        "pipelineStatus": {
+          "currentStep": "MAPPING-3",
+          "steps": [
+            {
+              "id": "MAPPING-1",
+              "label": "Original-Lehrplanpassagen extrahiert",
+              "status": "complete",
+              "dependsOn": [],
+              "checks": [
+                {
+                  "id": "source-document-present",
+                  "label": "Amtliches NRW-Chemie-KLP-PDF liegt lokal vor",
+                  "passed": true,
+                  "details": "curricula/DE/Gymnasium/input/NW/upper-secondary/gost_klp_ch_2022_06_07.pdf"
+                },
+                {
+                  "id": "expected-topic-coverage",
+                  "label": "Alle NRW-Chemie-Kompetenzpassagen wurden extrahiert",
+                  "passed": true,
+                  "details": "30/30 Passagegruppen."
+                },
+                {
+                  "id": "official-source-extraction",
+                  "label": "Passage-Extraction basiert auf amtlicher PDF-Quelle statt Legacy-Snapshot",
+                  "passed": true,
+                  "details": "Quelle: curricula/DE/Gymnasium/input/NW/upper-secondary/gost_klp_ch_2022_06_07.pdf"
+                }
+              ]
+            },
+            {
+              "id": "MAPPING-2",
+              "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+              "status": "complete",
+              "dependsOn": [
+                "MAPPING-1"
+              ],
+              "checks": [
+                {
+                  "id": "source-goals-created",
+                  "label": "Source-Ziele aus den amtlichen NRW-Chemie-Kompetenzerwartungen erzeugt",
+                  "passed": true,
+                  "details": "154 Source-Ziele"
+                },
+                {
+                  "id": "source-goal-count-peer-baseline",
+                  "label": "Source-Ziel-Anzahl ist gegen geprüfte Chemie-Inventare plausibilisiert",
+                  "passed": true,
+                  "details": "154 Source-Ziele; NRW liegt im Korridor der direkt aus KLP/Einheitstabellen extrahierten Chemie-Sek-II-Inventare (HE 202, BB/BE 203, BW 126)."
+                },
+                {
+                  "id": "source-goal-ids-unique",
+                  "label": "Source-Ziel-IDs sind eindeutig",
+                  "passed": true,
+                  "details": "Doppelte IDs: -"
+                },
+                {
+                  "id": "source-goals-reference-passages",
+                  "label": "Jedes Source-Ziel referenziert eine vorhandene Originalpassage",
+                  "passed": true,
+                  "details": "Ohne Passage: -"
+                }
+              ]
+            },
+            {
+              "id": "MAPPING-3",
+              "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+              "status": "complete",
+              "dependsOn": [
+                "MAPPING-1",
+                "MAPPING-2"
+              ],
+              "checks": [
+                {
+                  "id": "mapping-2-complete",
+                  "label": "MAPPING-2 abgeschlossen",
+                  "passed": true,
+                  "details": "154 Source-Ziele liegen vor; MAPPING-3 läuft gegen diese Source-Extraction-IDs."
+                },
+                {
+                  "id": "m3-review-file-present",
+                  "label": "M3-Review-Datei ist vorhanden",
+                  "passed": true,
+                  "details": "curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json"
+                },
+                {
+                  "id": "m3-all-source-goals-reviewed",
+                  "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+                  "passed": true,
+                  "details": "154/154 Source-Ziele reviewed; offen: 0."
+                },
+                {
+                  "id": "m3-all-source-goals-covered-by-canonical",
+                  "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+                  "passed": true,
+                  "details": "Abgedeckt: 154/154; keine offenen Canonical-Gaps."
+                }
+              ]
+            }
+          ]
+        },
+        "sourceGoalCount": 154,
+        "passageCount": 30,
+        "baseExtraction": {
+          "path": "curricula/DE/Gymnasium/input/NW/upper-secondary/source-extraction/DE_NW_CHEMIE_SEKII_KLP2022.source-extraction.json",
+          "sha256": "63af0e8396ff4787364042f0892bf2e471aeb1fb3c7517c35b834c904de3ee8f",
+          "bytes": 357909
+        }
+      },
+      "cellMetadataProvenance": "Original candidate cell metadata is retained byte-for-object. Its inactive/pending wording records the author snapshot; current limited integration and accepted partial contributions are described here and in selectedProcessIntegration, not by inventing whole-source review."
+    },
+    "fourteenMethodSelectedProcessAddition": {
+      "technicalIntegration": "Authorised additive integration of independently accepted foreign author relations; no new scientific vote",
+      "candidate": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-author-20261018-v1/candidate/extraction-additions/06.DE-NW.SekII.complete-operator-additions.json",
+        "sha256": "810094963fb3bb2c5f6d79dfeefb58b6ae4733aa7309f668d9d81935a3592c8a",
+        "bytes": 30801
+      },
+      "independentAcceptedRef": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/ACCEPTED.exact104-direct-partial-two-literal-three-held.json",
+        "sha256": "9958d0a23bb96b4cce0ed69f2018631764f5fe943d87ed8136ef2ba070457119",
+        "bytes": 99336
+      },
+      "retainedImmediateBeforeInventory": 161,
+      "newCompleteSelectedOperatorCells": 7,
+      "actualUnionInventory": 168,
+      "allOldSourceCellsAndPassagesExactlyRetained": true,
+      "noCompleteOfficialStandardsUniverseClaim": true,
+      "wholeSourceCoverageEstablished": false,
+      "historicalPipelineStatusBeforeThisAddition": {
+        "currentStep": "MAPPING-3",
+        "steps": [
+          {
+            "id": "MAPPING-1",
+            "label": "Original-Lehrplanpassagen extrahiert",
+            "status": "complete",
+            "dependsOn": [],
+            "checks": [
+              {
+                "id": "source-document-present",
+                "label": "Amtliches NRW-Chemie-KLP-PDF liegt lokal vor",
+                "passed": true,
+                "details": "Current operative primary document: curricula/DE/Gymnasium/input/NW/upper-secondary/gost_klp_ch_2022_06_07.pdf. Historical inventory provenance remains in method.selectedProcessClauseAddition.historicalScopeEvidence."
+              },
+              {
+                "id": "expected-topic-coverage",
+                "label": "Alle NRW-Chemie-Kompetenzpassagen wurden extrahiert",
+                "passed": true,
+                "details": "Historical 30 passage inventory retained exactly; 2 selected process passages added. Other standards remain context or unexamined; no complete standards-universe claim."
+              },
+              {
+                "id": "official-source-extraction",
+                "label": "Passage-Extraction basiert auf amtlicher PDF-Quelle statt Legacy-Snapshot",
+                "passed": true,
+                "details": "Current operative primary document: curricula/DE/Gymnasium/input/NW/upper-secondary/gost_klp_ch_2022_06_07.pdf. Historical inventory provenance remains in method.selectedProcessClauseAddition.historicalScopeEvidence."
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-2",
+            "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+            "status": "complete",
+            "dependsOn": [
+              "MAPPING-1"
+            ],
+            "checks": [
+              {
+                "id": "source-goals-created",
+                "label": "Source-Ziele aus den amtlichen NRW-Chemie-Kompetenzerwartungen erzeugt",
+                "passed": true,
+                "details": "161 actual source cells = 154 retained historical inventory + 7 complete selected process clauses. No additional unselected standard counted."
+              },
+              {
+                "id": "source-goal-count-peer-baseline",
+                "label": "Historische Inhaltsbasis und aktuelle ausgewählte Prozessstandards getrennt gezählt",
+                "passed": true,
+                "details": "The old peer comparison concerned only the historical finite 154-cell inventory; it is preserved in historicalScopeEvidence and is not a current complete-standards benchmark. Actual union: 161 = 154 historical + 7 selected process cells."
+              },
+              {
+                "id": "source-goal-ids-unique",
+                "label": "Source-Ziel-IDs sind eindeutig",
+                "passed": true,
+                "details": "Doppelte IDs: -"
+              },
+              {
+                "id": "source-goals-reference-passages",
+                "label": "Jedes Source-Ziel referenziert eine vorhandene Originalpassage",
+                "passed": true,
+                "details": "Ohne Passage: -"
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-3",
+            "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+            "status": "incomplete",
+            "dependsOn": [
+              "MAPPING-1",
+              "MAPPING-2"
+            ],
+            "checks": [
+              {
+                "id": "mapping-2-complete",
+                "label": "MAPPING-2 abgeschlossen",
+                "passed": true,
+                "details": "161 cells exist. Historical 154-cell M3 evidence remains limited to its original inventory; new bounded partial contributions do not complete whole-source duties."
+              },
+              {
+                "id": "m3-review-file-present",
+                "label": "M3-Review-Datei ist vorhanden",
+                "passed": true,
+                "details": "Current source/epoch-matching review aliases: curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.q4-four-bounded-reviewed-20261013-v1.review.json, curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json"
+              },
+              {
+                "id": "m3-all-source-goals-reviewed",
+                "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+                "passed": false,
+                "details": "No new whole-source approval. 7 selected additions carry only their individually accepted partial contributions; 3 shared cells have extraction transport only. Whole operator/course/execution duties remain separate."
+              },
+              {
+                "id": "m3-all-source-goals-covered-by-canonical",
+                "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+                "passed": false,
+                "details": "No new whole-source approval. 7 selected additions carry only their individually accepted partial contributions; 3 shared cells have extraction transport only. Whole operator/course/execution duties remain separate."
+              }
+            ]
+          }
+        ],
+        "selectedProcessIntegration": {
+          "status": "accepted-partial-contributions-only",
+          "totalSourceGoalsActual": 161,
+          "historicalSourceGoals": 154,
+          "newCompleteSelectedProcessCells": 7,
+          "newWholeSourceApprovals": 0,
+          "newScientificFirstDecisionsByIntegrator": 0,
+          "independentAcceptedRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+            "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+            "bytes": 269340
+          },
+          "sourceCellPartialBindings": [
+            {
+              "sourceGoalId": "nw-chemistry-sekii-process-standard-k1",
+              "acceptedPartialContributions": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+                  "bytes": 269340,
+                  "jsonPointer": "/mappings/48"
+                }
+              ],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": false
+            },
+            {
+              "sourceGoalId": "nw-chemistry-sekii-process-standard-k2",
+              "acceptedPartialContributions": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+                  "bytes": 269340,
+                  "jsonPointer": "/mappings/49"
+                }
+              ],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": false
+            },
+            {
+              "sourceGoalId": "nw-chemistry-sekii-process-standard-k5",
+              "acceptedPartialContributions": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+                  "bytes": 269340,
+                  "jsonPointer": "/mappings/50"
+                }
+              ],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": false
+            },
+            {
+              "sourceGoalId": "nw-chemistry-sekii-process-standard-k8",
+              "acceptedPartialContributions": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+                  "bytes": 269340,
+                  "jsonPointer": "/mappings/51"
+                }
+              ],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": false
+            },
+            {
+              "sourceGoalId": "nw-chemistry-sekii-process-standard-s16-ep",
+              "acceptedPartialContributions": [],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": true
+            },
+            {
+              "sourceGoalId": "nw-chemistry-sekii-process-standard-s16-q",
+              "acceptedPartialContributions": [],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": true
+            },
+            {
+              "sourceGoalId": "nw-chemistry-sekii-process-standard-s14-q",
+              "acceptedPartialContributions": [],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": true
+            }
+          ],
+          "wholeSourceCoverageComplete": false,
+          "historicalM3DoesNotExtendToAddedCells": true
+        }
+      }
+    },
+    "fortyContentAcceptedPartialAddition": {
+      "technicalIntegration": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-reviewed-source-integration-technical-20261018-v1",
+      "independentAcceptedRefs": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-first-twenty-source-informed-independent-a-20261018-v1/ACCEPTED.one-hundred-sixty-four-bounded-direct-relations.with-explicit-context-conditions.json",
+          "sha256": "5af30ee6b2cb919a8445f2668c963b81d22583cb241a8d64f8df469f93da06cf",
+          "bytes": 735256
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-multistate-source-informed-independent-b-part-b-20261018-v1/ACCEPTED.exact-fifty-five-partial-one-held-HE-placement.json",
+          "sha256": "ab921ae7928e26b5f58b2c25c8c72c470b2c3b4c111cb9fae09b92b821ef7f48",
+          "bytes": 43536
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-first-twenty-source-informed-independent-a-20261018-v1/ACCEPTED.six-existing-literal-source-acquisition-foundations.json",
+          "sha256": "c9f3aab904f4b1152d7b8d370b6fddacb997b08a2c784e70032618408a86492c",
+          "bytes": 20744
+        }
+      ],
+      "retainedImmediateBeforeCells": 168,
+      "newCompleteSelectedCells": 2,
+      "currentActualUnionCells": 170,
+      "selectedSameIDCorrections": 0,
+      "allOtherOldCellsAndPassagesExact": true,
+      "noWholeOfficialStandardsUniverseClaim": true,
+      "previousPipelineStatusHistorical": {
+        "currentStep": "MAPPING-3",
+        "steps": [
+          {
+            "id": "MAPPING-1",
+            "label": "Original-Lehrplanpassagen extrahiert",
+            "status": "complete",
+            "dependsOn": [],
+            "checks": [
+              {
+                "id": "source-document-present",
+                "label": "Amtliches NRW-Chemie-KLP-PDF liegt lokal vor",
+                "passed": true,
+                "details": "Current operative primary document: curricula/DE/Gymnasium/input/NW/upper-secondary/gost_klp_ch_2022_06_07.pdf. Historical inventory provenance remains in method.selectedProcessClauseAddition.historicalScopeEvidence."
+              },
+              {
+                "id": "expected-topic-coverage",
+                "label": "Alle NRW-Chemie-Kompetenzpassagen wurden extrahiert",
+                "passed": true,
+                "details": "All 32 previous operative passages retained exactly; 7 selected complete-operator passages added. This is not the complete official standards universe."
+              },
+              {
+                "id": "official-source-extraction",
+                "label": "Passage-Extraction basiert auf amtlicher PDF-Quelle statt Legacy-Snapshot",
+                "passed": true,
+                "details": "Current operative primary document: curricula/DE/Gymnasium/input/NW/upper-secondary/gost_klp_ch_2022_06_07.pdf. Historical inventory provenance remains in method.selectedProcessClauseAddition.historicalScopeEvidence."
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-2",
+            "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+            "status": "complete",
+            "dependsOn": [
+              "MAPPING-1"
+            ],
+            "checks": [
+              {
+                "id": "source-goals-created",
+                "label": "Source-Ziele aus den amtlichen NRW-Chemie-Kompetenzerwartungen erzeugt",
+                "passed": true,
+                "details": "168 actual cells = 161 retained immediate previous inventory + 7 new whole selected operators. Previous content/standard phases remain historical; no unselected standard counted."
+              },
+              {
+                "id": "source-goal-count-peer-baseline",
+                "label": "Historische Basis und neu ausgewählte vollständige Operatoren getrennt gezählt",
+                "passed": true,
+                "details": "Previous peer comparisons concern their historical inventory only; original evidence retained in method.fourteenMethodSelectedProcessAddition.historicalPipelineStatusBeforeThisAddition. Current actual union 168=161+7; no full-standards benchmark."
+              },
+              {
+                "id": "source-goal-ids-unique",
+                "label": "Source-Ziel-IDs sind eindeutig",
+                "passed": true,
+                "details": "Doppelte IDs: -"
+              },
+              {
+                "id": "source-goals-reference-passages",
+                "label": "Jedes Source-Ziel referenziert eine vorhandene Originalpassage",
+                "passed": true,
+                "details": "Ohne Passage: -"
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-3",
+            "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+            "status": "incomplete",
+            "dependsOn": [
+              "MAPPING-1",
+              "MAPPING-2"
+            ],
+            "checks": [
+              {
+                "id": "mapping-2-complete",
+                "label": "MAPPING-2 abgeschlossen",
+                "passed": true,
+                "details": "168 actual source cells exist. Historical M3 results remain scoped to their prior inventory. Current individually accepted partial relations do not prove all whole-source duties."
+              },
+              {
+                "id": "m3-review-file-present",
+                "label": "M3-Review-Datei ist vorhanden",
+                "passed": true,
+                "details": "Current source/epoch-matching review aliases: curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.q4-four-bounded-reviewed-20261013-v1.review.json, curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json"
+              },
+              {
+                "id": "m3-all-source-goals-reviewed",
+                "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+                "passed": false,
+                "details": "7 newly selected whole operator cells have specific partial relations only. No new whole-source approval; all remaining verbs, stage/course/context and actual-performance duties remain open. Historical completeness is retained only in the saved previous pipeline record."
+              },
+              {
+                "id": "m3-all-source-goals-covered-by-canonical",
+                "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+                "passed": false,
+                "details": "7 newly selected whole operator cells have specific partial relations only. No new whole-source approval; all remaining verbs, stage/course/context and actual-performance duties remain open. Historical completeness is retained only in the saved previous pipeline record."
+              }
+            ]
+          }
+        ],
+        "selectedProcessIntegration": {
+          "status": "accepted-partial-contributions-only",
+          "totalSourceGoalsActual": 168,
+          "historicalSourceGoals": 154,
+          "newCompleteSelectedProcessCells": 7,
+          "newWholeSourceApprovals": 0,
+          "newScientificFirstDecisionsByIntegrator": 0,
+          "independentAcceptedRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+            "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+            "bytes": 269340
+          },
+          "sourceCellPartialBindings": [
+            {
+              "sourceGoalId": "nw-chemistry-sekii-process-standard-k1",
+              "acceptedPartialContributions": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+                  "bytes": 269340,
+                  "jsonPointer": "/mappings/48"
+                }
+              ],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": false
+            },
+            {
+              "sourceGoalId": "nw-chemistry-sekii-process-standard-k2",
+              "acceptedPartialContributions": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+                  "bytes": 269340,
+                  "jsonPointer": "/mappings/49"
+                }
+              ],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": false
+            },
+            {
+              "sourceGoalId": "nw-chemistry-sekii-process-standard-k5",
+              "acceptedPartialContributions": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+                  "bytes": 269340,
+                  "jsonPointer": "/mappings/50"
+                }
+              ],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": false
+            },
+            {
+              "sourceGoalId": "nw-chemistry-sekii-process-standard-k8",
+              "acceptedPartialContributions": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+                  "bytes": 269340,
+                  "jsonPointer": "/mappings/51"
+                }
+              ],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": false
+            },
+            {
+              "sourceGoalId": "nw-chemistry-sekii-process-standard-s16-ep",
+              "acceptedPartialContributions": [],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": true
+            },
+            {
+              "sourceGoalId": "nw-chemistry-sekii-process-standard-s16-q",
+              "acceptedPartialContributions": [],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": true
+            },
+            {
+              "sourceGoalId": "nw-chemistry-sekii-process-standard-s14-q",
+              "acceptedPartialContributions": [],
+              "wholeSourceApproval": false,
+              "extractionTransportOnlyWithoutBindingVote": true
+            }
+          ],
+          "wholeSourceCoverageComplete": false,
+          "historicalM3DoesNotExtendToAddedCells": true,
+          "historicalRecordBeforeFourteenAddition": true
+        },
+        "fourteenMethodPartialIntegration": {
+          "status": "accepted-partial-contributions-only",
+          "totalSourceGoalsActual": 168,
+          "retainedImmediateBeforeCells": 161,
+          "newCompleteSelectedOperatorCells": 7,
+          "newWholeSourceApprovals": 0,
+          "newScientificFirstDecisionsByTechnicalIntegrator": 0,
+          "independentAcceptedRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/ACCEPTED.exact104-direct-partial-two-literal-three-held.json",
+            "sha256": "9958d0a23bb96b4cce0ed69f2018631764f5fe943d87ed8136ef2ba070457119",
+            "bytes": 99336
+          },
+          "newSourceCellPartialBindings": [
+            {
+              "sourceGoalId": "nw-chemistry-sekii-process-standard-e5-ep",
+              "acceptedPartialRelations": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+                  "jsonPointer": "/relations/4",
+                  "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+                }
+              ],
+              "wholeSourceApproval": false
+            },
+            {
+              "sourceGoalId": "nw-chemistry-sekii-process-standard-e2-ep",
+              "acceptedPartialRelations": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+                  "jsonPointer": "/relations/93",
+                  "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+                }
+              ],
+              "wholeSourceApproval": false
+            },
+            {
+              "sourceGoalId": "nw-chemistry-sekii-process-standard-e3-ep",
+              "acceptedPartialRelations": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+                  "jsonPointer": "/relations/94",
+                  "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+                }
+              ],
+              "wholeSourceApproval": false
+            },
+            {
+              "sourceGoalId": "nw-chemistry-sekii-process-standard-e2-q",
+              "acceptedPartialRelations": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+                  "jsonPointer": "/relations/88",
+                  "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+                }
+              ],
+              "wholeSourceApproval": false
+            },
+            {
+              "sourceGoalId": "nw-chemistry-sekii-process-standard-e3-q",
+              "acceptedPartialRelations": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+                  "jsonPointer": "/relations/89",
+                  "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+                }
+              ],
+              "wholeSourceApproval": false
+            },
+            {
+              "sourceGoalId": "nw-chemistry-sekii-process-standard-k1-q",
+              "acceptedPartialRelations": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+                  "jsonPointer": "/relations/27",
+                  "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+                }
+              ],
+              "wholeSourceApproval": false
+            },
+            {
+              "sourceGoalId": "nw-chemistry-sekii-process-standard-k2-q",
+              "acceptedPartialRelations": [
+                {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+                  "jsonPointer": "/relations/28",
+                  "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+                }
+              ],
+              "wholeSourceApproval": false
+            }
+          ],
+          "historicalM3DoesNotExtendAutomaticallyToNewCells": true,
+          "wholeSourceCoverageComplete": false
+        }
+      }
+    }
   },
   "qualityReview": {
     "sourceGoalCountPeerBaseline": {
@@ -53,7 +703,14 @@
     "LK-reaktionswege-in-der-organischen-chemie-bewertungskompetenz",
     "LK-moderne-werkstoffe-sachkompetenz",
     "LK-moderne-werkstoffe-erkenntnisgewinnungskompetenz",
-    "LK-moderne-werkstoffe-bewertungskompetenz"
+    "LK-moderne-werkstoffe-bewertungskompetenz",
+    "2.2 Einführungsphase",
+    "2.3 Qualifikationsphase, gemeinsame übergeordnete Standards GK/LK",
+    "E5",
+    "E2",
+    "E3",
+    "K1",
+    "K2"
   ],
   "pipelineStatus": {
     "currentStep": "MAPPING-3",
@@ -68,19 +725,19 @@
             "id": "source-document-present",
             "label": "Amtliches NRW-Chemie-KLP-PDF liegt lokal vor",
             "passed": true,
-            "details": "curricula/DE/Gymnasium/input/NW/upper-secondary/gost_klp_ch_2022_06_07.pdf"
+            "details": "Current operative primary document: curricula/DE/Gymnasium/input/NW/upper-secondary/gost_klp_ch_2022_06_07.pdf. Historical inventory provenance remains in method.selectedProcessClauseAddition.historicalScopeEvidence."
           },
           {
             "id": "expected-topic-coverage",
             "label": "Alle NRW-Chemie-Kompetenzpassagen wurden extrahiert",
             "passed": true,
-            "details": "30/30 Passagegruppen."
+            "details": "All 39 previous passages retained exactly; 2 complete selected clause passages appended. Not a full standards inventory."
           },
           {
             "id": "official-source-extraction",
             "label": "Passage-Extraction basiert auf amtlicher PDF-Quelle statt Legacy-Snapshot",
             "passed": true,
-            "details": "Quelle: curricula/DE/Gymnasium/input/NW/upper-secondary/gost_klp_ch_2022_06_07.pdf"
+            "details": "Current operative primary document: curricula/DE/Gymnasium/input/NW/upper-secondary/gost_klp_ch_2022_06_07.pdf. Historical inventory provenance remains in method.selectedProcessClauseAddition.historicalScopeEvidence."
           }
         ]
       },
@@ -96,13 +753,13 @@
             "id": "source-goals-created",
             "label": "Source-Ziele aus den amtlichen NRW-Chemie-Kompetenzerwartungen erzeugt",
             "passed": true,
-            "details": "154 Source-Ziele"
+            "details": "Current actual union 170=168 retained immediate-before cells +2 complete selected operators. Historical peer/content counts remain in method.fortyContentAcceptedPartialAddition.previousPipelineStatusHistorical; no automatic full-standards claim."
           },
           {
             "id": "source-goal-count-peer-baseline",
-            "label": "Source-Ziel-Anzahl ist gegen geprüfte Chemie-Inventare plausibilisiert",
+            "label": "Historische Basis und neu ausgewählte vollständige Operatoren getrennt gezählt",
             "passed": true,
-            "details": "154 Source-Ziele; NRW liegt im Korridor der direkt aus KLP/Einheitstabellen extrahierten Chemie-Sek-II-Inventare (HE 202, BB/BE 203, BW 126)."
+            "details": "Current actual union 170=168 retained immediate-before cells +2 complete selected operators. Historical peer/content counts remain in method.fortyContentAcceptedPartialAddition.previousPipelineStatusHistorical; no automatic full-standards claim."
           },
           {
             "id": "source-goal-ids-unique",
@@ -121,7 +778,7 @@
       {
         "id": "MAPPING-3",
         "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
-        "status": "complete",
+        "status": "incomplete",
         "dependsOn": [
           "MAPPING-1",
           "MAPPING-2"
@@ -131,29 +788,237 @@
             "id": "mapping-2-complete",
             "label": "MAPPING-2 abgeschlossen",
             "passed": true,
-            "details": "154 Source-Ziele liegen vor; MAPPING-3 läuft gegen diese Source-Extraction-IDs."
+            "details": "168 actual source cells exist. Historical M3 results remain scoped to their prior inventory. Current individually accepted partial relations do not prove all whole-source duties."
           },
           {
             "id": "m3-review-file-present",
             "label": "M3-Review-Datei ist vorhanden",
             "passed": true,
-            "details": "curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json"
+            "details": "Current source/epoch-matching review aliases: curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.q4-four-bounded-reviewed-20261013-v1.review.json, curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json"
           },
           {
             "id": "m3-all-source-goals-reviewed",
             "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
-            "passed": true,
-            "details": "154/154 Source-Ziele reviewed; offen: 0."
+            "passed": false,
+            "details": "New selected operators have accepted specific partial relations only. No whole official source completion or practical performance is established; previous completeness is historical."
           },
           {
             "id": "m3-all-source-goals-covered-by-canonical",
             "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
-            "passed": true,
-            "details": "Abgedeckt: 154/154; keine offenen Canonical-Gaps."
+            "passed": false,
+            "details": "New selected operators have accepted specific partial relations only. No whole official source completion or practical performance is established; previous completeness is historical."
           }
         ]
       }
-    ]
+    ],
+    "selectedProcessIntegration": {
+      "status": "accepted-partial-contributions-only",
+      "totalSourceGoalsActual": 168,
+      "historicalSourceGoals": 154,
+      "newCompleteSelectedProcessCells": 7,
+      "newWholeSourceApprovals": 0,
+      "newScientificFirstDecisionsByIntegrator": 0,
+      "independentAcceptedRef": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+        "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+        "bytes": 269340
+      },
+      "sourceCellPartialBindings": [
+        {
+          "sourceGoalId": "nw-chemistry-sekii-process-standard-k1",
+          "acceptedPartialContributions": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+              "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+              "bytes": 269340,
+              "jsonPointer": "/mappings/48"
+            }
+          ],
+          "wholeSourceApproval": false,
+          "extractionTransportOnlyWithoutBindingVote": false
+        },
+        {
+          "sourceGoalId": "nw-chemistry-sekii-process-standard-k2",
+          "acceptedPartialContributions": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+              "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+              "bytes": 269340,
+              "jsonPointer": "/mappings/49"
+            }
+          ],
+          "wholeSourceApproval": false,
+          "extractionTransportOnlyWithoutBindingVote": false
+        },
+        {
+          "sourceGoalId": "nw-chemistry-sekii-process-standard-k5",
+          "acceptedPartialContributions": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+              "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+              "bytes": 269340,
+              "jsonPointer": "/mappings/50"
+            }
+          ],
+          "wholeSourceApproval": false,
+          "extractionTransportOnlyWithoutBindingVote": false
+        },
+        {
+          "sourceGoalId": "nw-chemistry-sekii-process-standard-k8",
+          "acceptedPartialContributions": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+              "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+              "bytes": 269340,
+              "jsonPointer": "/mappings/51"
+            }
+          ],
+          "wholeSourceApproval": false,
+          "extractionTransportOnlyWithoutBindingVote": false
+        },
+        {
+          "sourceGoalId": "nw-chemistry-sekii-process-standard-s16-ep",
+          "acceptedPartialContributions": [],
+          "wholeSourceApproval": false,
+          "extractionTransportOnlyWithoutBindingVote": true
+        },
+        {
+          "sourceGoalId": "nw-chemistry-sekii-process-standard-s16-q",
+          "acceptedPartialContributions": [],
+          "wholeSourceApproval": false,
+          "extractionTransportOnlyWithoutBindingVote": true
+        },
+        {
+          "sourceGoalId": "nw-chemistry-sekii-process-standard-s14-q",
+          "acceptedPartialContributions": [],
+          "wholeSourceApproval": false,
+          "extractionTransportOnlyWithoutBindingVote": true
+        }
+      ],
+      "wholeSourceCoverageComplete": false,
+      "historicalM3DoesNotExtendToAddedCells": true,
+      "historicalRecordBeforeFourteenAddition": true
+    },
+    "fourteenMethodPartialIntegration": {
+      "status": "accepted-partial-contributions-only",
+      "totalSourceGoalsActual": 168,
+      "retainedImmediateBeforeCells": 161,
+      "newCompleteSelectedOperatorCells": 7,
+      "newWholeSourceApprovals": 0,
+      "newScientificFirstDecisionsByTechnicalIntegrator": 0,
+      "independentAcceptedRef": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/ACCEPTED.exact104-direct-partial-two-literal-three-held.json",
+        "sha256": "9958d0a23bb96b4cce0ed69f2018631764f5fe943d87ed8136ef2ba070457119",
+        "bytes": 99336
+      },
+      "newSourceCellPartialBindings": [
+        {
+          "sourceGoalId": "nw-chemistry-sekii-process-standard-e5-ep",
+          "acceptedPartialRelations": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/4",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "wholeSourceApproval": false
+        },
+        {
+          "sourceGoalId": "nw-chemistry-sekii-process-standard-e2-ep",
+          "acceptedPartialRelations": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/93",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "wholeSourceApproval": false
+        },
+        {
+          "sourceGoalId": "nw-chemistry-sekii-process-standard-e3-ep",
+          "acceptedPartialRelations": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/94",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "wholeSourceApproval": false
+        },
+        {
+          "sourceGoalId": "nw-chemistry-sekii-process-standard-e2-q",
+          "acceptedPartialRelations": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/88",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "wholeSourceApproval": false
+        },
+        {
+          "sourceGoalId": "nw-chemistry-sekii-process-standard-e3-q",
+          "acceptedPartialRelations": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/89",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "wholeSourceApproval": false
+        },
+        {
+          "sourceGoalId": "nw-chemistry-sekii-process-standard-k1-q",
+          "acceptedPartialRelations": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/27",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "wholeSourceApproval": false
+        },
+        {
+          "sourceGoalId": "nw-chemistry-sekii-process-standard-k2-q",
+          "acceptedPartialRelations": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/28",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "wholeSourceApproval": false
+        }
+      ],
+      "historicalM3DoesNotExtendAutomaticallyToNewCells": true,
+      "wholeSourceCoverageComplete": false
+    },
+    "fortyContentPartialIntegration": {
+      "status": "accepted-specific-partial-relations-only",
+      "totalSourceGoalsActual": 170,
+      "retainedImmediateBeforeCells": 168,
+      "newCompleteSelectedCells": 2,
+      "newWholeSourceApprovals": 0,
+      "newScientificFirstDecisionsByTechnicalIntegrator": 0,
+      "independentAcceptedRefs": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-first-twenty-source-informed-independent-a-20261018-v1/ACCEPTED.one-hundred-sixty-four-bounded-direct-relations.with-explicit-context-conditions.json",
+          "sha256": "5af30ee6b2cb919a8445f2668c963b81d22583cb241a8d64f8df469f93da06cf",
+          "bytes": 735256
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-multistate-source-informed-independent-b-part-b-20261018-v1/ACCEPTED.exact-fifty-five-partial-one-held-HE-placement.json",
+          "sha256": "ab921ae7928e26b5f58b2c25c8c72c470b2c3b4c111cb9fae09b92b821ef7f48",
+          "bytes": 43536
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-first-twenty-source-informed-independent-a-20261018-v1/ACCEPTED.six-existing-literal-source-acquisition-foundations.json",
+          "sha256": "c9f3aab904f4b1152d7b8d370b6fddacb997b08a2c784e70032618408a86492c",
+          "bytes": 20744
+        }
+      ],
+      "wholeSourceCoverageComplete": false
+    }
   },
   "passages": [
     {
@@ -609,6 +1474,183 @@
         "de-nw-chemie-sekii-klp-2022-LK-moderne-werkstoffe-bewertungskompetenz-004-d8505964",
         "de-nw-chemie-sekii-klp-2022-LK-moderne-werkstoffe-bewertungskompetenz-005-2a61b1df"
       ]
+    },
+    {
+      "id": "nw-chemistry-sekii-process:2.2-einführungsphase",
+      "topicCode": "2.2 Einführungsphase",
+      "title": "NW: selected whole process clauses, original full pages retained",
+      "text": "Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen\n\nS8    beschreiben an ausgewählten Beispielen Einflussfaktoren auf chemische Re-\n      aktionen und Möglichkeiten der Steuerung durch Variation von Reaktionsbe-\n      dingungen sowie durch den Einsatz von Katalysatoren,\n\nS9    beschreiben unterschiedliche Reaktivitäten und Reaktionsverläufe,\n\nS10   nutzen chemische Konzepte zur Vernetzung von Sachverhalten innerhalb der\n      Chemie sowie mit anderen Unterrichtsfächern.\n\n\nChemische Zusammenhänge qualitativ-modellhaft erklären\n\nDie Schülerinnen und Schüler\n\nS11   erklären an ausgewählten Beispielen die Vielfalt der Stoffe und ihrer Eigen-\n      schaften auf der Basis unterschiedlicher Kombinationen und Anordnungen von\n      Teilchen,\n\nS12   deuten an ausgewählten Beispielen Stoff- und Energieumwandlungen hin-\n      sichtlich der Veränderung von Teilchen sowie des Umbaus chemischer Bin-\n      dungen,\n\nS13   nutzen vorgegebene Modelle zur chemischen Bindung und zu intra- und inter-\n      molekularen Wechselwirkungen,\n\nS14   beschreiben ausgewählte Reaktionsabfolgen auch auf Teilchenebene,\n\nS15   unterscheiden den statischen Zustand auf Stoffebene vom dynamischen\n      Zustand auf Teilchenebene.\n\n\nChemische Zusammenhänge quantitativ-mathematisch beschreiben\n\nDie Schülerinnen und Schüler\n\nS16   entwickeln an ausgewählten Beispielen Reaktionsgleichungen,\n\nS17   wenden bekannte mathematische Verfahren angeleitet auf chemische Sach-\n      verhalte an.\n\n\nErkenntnisgewinnungskompetenz\nFragestellungen und Hypothesen auf Basis von Beobachtungen und Theorien bilden\n\nDie Schülerinnen und Schüler\n\n                                                                                23\n\n\f\nKompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen\n\nMerkmale wissenschaftlicher Aussagen und Methoden charakterisieren und reflektie-\nren\n\nDie Schülerinnen und Schüler\n\nE12   reflektieren Möglichkeiten und Grenzen des konkreten Erkenntnisgewinnungs-\n      prozesses sowie der gewonnenen Erkenntnisse an ausgewählten Beispielen.\n\nKommunikationskompetenz\nInformationen erschließen\n\nDie Schülerinnen und Schüler\n\nK1    recherchieren angeleitet zu chemischen Sachverhalten in analogen und digita-\n      len Medien und wählen für ihre Zwecke passende Quellen aus,\n\nK2    wählen relevante und aussagekräftige Informationen und Daten zu chemi-\n      schen Sachverhalten und anwendungsbezogenen Fragestellungen aus und\n      erschließen Informationen aus Quellen mit verschiedenen Darstellungsformen,\n\nK3    prüfen die Übereinstimmung verschiedener Quellen oder Darstellungsformen\n      im Hinblick auf deren Aussagen,\n\nK4    überprüfen die Vertrauenswürdigkeit verwendeter Quellen und Medien (z. B.\n      anhand ihrer Herkunft und Qualität).\n\n\nInformationen aufbereiten\n\nDie Schülerinnen und Schüler\n\nK5    wählen unterstützt chemische Sachverhalte und Informationen sach-, adressa-\n      ten- und situationsgerecht aus,\n\nK6    unterscheiden zunehmend sicher zwischen Alltags- und Fachsprache,\n\nK7    nutzen vorgegebene Darstellungsformen für chemische Sachverhalte und\n      überführen diese ineinander,\n\nK8    strukturieren ausgewählte Informationen und leiten Schlussfolgerungen ab.\n\n\n\n\n                                                                                  25\n",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKII-2022",
+      "sourceRef": "curricula/DE/Gymnasium/input/NW/upper-secondary/gost_klp_ch_2022_06_07.pdf, physical PDF pages [23, 25]",
+      "physicalPdfPages": [
+        23,
+        25
+      ],
+      "scope": "Full page context, selected clauses only become sourceGoals; all other standards remain unextracted context."
+    },
+    {
+      "id": "nw-chemistry-sekii-process:2.3-qualifikationsphase,-gemeinsame-übergeordnete-standards-gk/lk",
+      "topicCode": "2.3 Qualifikationsphase, gemeinsame übergeordnete Standards GK/LK",
+      "title": "NW: selected whole process clauses, original full pages retained",
+      "text": "Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen\n\nS8    beschreiben Einflussfaktoren auf chemische Reaktionen und Möglichkeiten\n      der Steuerung durch Variation von Reaktionsbedingungen sowie durch den\n      Einsatz von Katalysatoren,\n\nS9    erklären unterschiedliche Reaktivitäten und Reaktionsverläufe,\n\nS10   nutzen chemische Konzepte und Theorien zur Vernetzung von Sachverhalten\n      innerhalb der Chemie sowie mit anderen Unterrichtsfächern.\n\n\nChemische Zusammenhänge qualitativ-modellhaft erklären\n\nDie Schülerinnen und Schüler\n\nS11   erklären die Vielfalt der Stoffe und ihrer Eigenschaften auf der Basis unter-\n      schiedlicher Kombinationen und Anordnungen von Teilchen,\n\nS12   deuten Stoff- und Energieumwandlungen hinsichtlich der Veränderung von\n      Teilchen sowie des Umbaus chemischer Bindungen,\n\nS13   nutzen Modelle zur chemischen Bindung und zu intra- und intermolekularen\n      Wechselwirkungen,\n\nS14   beschreiben ausgewählte Reaktionsmechanismen,\n\nS15   grenzen mithilfe von Modellen den statischen Zustand auf Stoffebene vom\n      dynamischen Zustand auf Teilchenebene ab.\n\n\nChemische Zusammenhänge quantitativ-mathematisch beschreiben\n\nDie Schülerinnen und Schüler\n\nS16   entwickeln Reaktionsgleichungen,\n\nS17   wenden bekannte mathematische Verfahren auf chemische Sachverhalte an.\n\n\nErkenntnisgewinnungskompetenz\nFragestellungen und Hypothesen auf Basis von Beobachtungen und Theorien bilden\n\nDie Schülerinnen und Schüler\n\nE1    leiten chemische Sachverhalte aus Alltagssituationen ab,\n\nE2    identifizieren und entwickeln Fragestellungen zu chemischen Sachverhalten,\n\n                                                                                      33\n",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKII-2022",
+      "sourceRef": "curricula/DE/Gymnasium/input/NW/upper-secondary/gost_klp_ch_2022_06_07.pdf, physical PDF pages [33]",
+      "physicalPdfPages": [
+        33
+      ],
+      "scope": "Full page context, selected clauses only become sourceGoals; all other standards remain unextracted context."
+    },
+    {
+      "id": "nw-chemistry-sekii-process-standard-e5-ep:whole-primary-context",
+      "topicCode": "E5",
+      "title": "Selected complete official operator; full original page context referenced",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKII-2022",
+      "text": "führen qualitative und quantitative experimentelle Untersuchungen – den chemischen Arbeitsweisen und Sicherheitsregeln entsprechend – durch, protokollieren sie und werten diese unter Anleitung aus",
+      "physicalPdfPages": [
+        24
+      ],
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Gymnasiale Oberstufe 2022; physical PDF24; E5",
+      "scope": "Only this entire selected operator is newly operative. Full original primary-page context was read and remains available at the pinned official PDF; all unselected operators remain without a new binding vote.",
+      "primaryDocumentPin": {
+        "path": "curricula/DE/Gymnasium/input/NW/upper-secondary/gost_klp_ch_2022_06_07.pdf",
+        "sha256": "24af8d883b2b609013a45bb921820938e9fec92ec82ff7f5e007ad3d5c04dfe2",
+        "bytes": 468172
+      },
+      "sourceStageCourseAndContext": "NW2022 Einführungsphase, retain guidance/selected/under-instruction operators; not qualification end standard."
+    },
+    {
+      "id": "nw-chemistry-sekii-process-standard-e2-ep:whole-primary-context",
+      "topicCode": "E2",
+      "title": "Selected complete official operator; full original page context referenced",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKII-2022",
+      "text": "identifizieren und entwickeln Fragestellungen zu ausgewählten chemischen Sachverhalten",
+      "physicalPdfPages": [
+        24
+      ],
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Gymnasiale Oberstufe 2022; physical PDF24; E2",
+      "scope": "Only this entire selected operator is newly operative. Full original primary-page context was read and remains available at the pinned official PDF; all unselected operators remain without a new binding vote.",
+      "primaryDocumentPin": {
+        "path": "curricula/DE/Gymnasium/input/NW/upper-secondary/gost_klp_ch_2022_06_07.pdf",
+        "sha256": "24af8d883b2b609013a45bb921820938e9fec92ec82ff7f5e007ad3d5c04dfe2",
+        "bytes": 468172
+      },
+      "sourceStageCourseAndContext": "NW2022 Einführungsphase, retain guidance/selected/under-instruction operators; not qualification end standard."
+    },
+    {
+      "id": "nw-chemistry-sekii-process-standard-e3-ep:whole-primary-context",
+      "topicCode": "E3",
+      "title": "Selected complete official operator; full original page context referenced",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKII-2022",
+      "text": "stellen überprüfbare Hypothesen zur Bearbeitung von Fragestellungen auf.",
+      "physicalPdfPages": [
+        24
+      ],
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Gymnasiale Oberstufe 2022; physical PDF24; E3",
+      "scope": "Only this entire selected operator is newly operative. Full original primary-page context was read and remains available at the pinned official PDF; all unselected operators remain without a new binding vote.",
+      "primaryDocumentPin": {
+        "path": "curricula/DE/Gymnasium/input/NW/upper-secondary/gost_klp_ch_2022_06_07.pdf",
+        "sha256": "24af8d883b2b609013a45bb921820938e9fec92ec82ff7f5e007ad3d5c04dfe2",
+        "bytes": 468172
+      },
+      "sourceStageCourseAndContext": "NW2022 Einführungsphase, retain guidance/selected/under-instruction operators; not qualification end standard."
+    },
+    {
+      "id": "nw-chemistry-sekii-process-standard-e2-q:whole-primary-context",
+      "topicCode": "E2",
+      "title": "Selected complete official operator; full original page context referenced",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKII-2022",
+      "text": "identifizieren und entwickeln Fragestellungen zu chemischen Sachverhalten",
+      "physicalPdfPages": [
+        33
+      ],
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Gymnasiale Oberstufe 2022; physical PDF33; E2",
+      "scope": "Only this entire selected operator is newly operative. Full original primary-page context was read and remains available at the pinned official PDF; all unselected operators remain without a new binding vote.",
+      "primaryDocumentPin": {
+        "path": "curricula/DE/Gymnasium/input/NW/upper-secondary/gost_klp_ch_2022_06_07.pdf",
+        "sha256": "24af8d883b2b609013a45bb921820938e9fec92ec82ff7f5e007ad3d5c04dfe2",
+        "bytes": 468172
+      },
+      "sourceStageCourseAndContext": "NW2022 Qualifikationsphase, common GK/LK process standard; all stage/course content limits retained."
+    },
+    {
+      "id": "nw-chemistry-sekii-process-standard-e3-q:whole-primary-context",
+      "topicCode": "E3",
+      "title": "Selected complete official operator; full original page context referenced",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKII-2022",
+      "text": "stellen theoriegeleitet Hypothesen zur Bearbeitung von Fragestellungen auf.",
+      "physicalPdfPages": [
+        34
+      ],
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Gymnasiale Oberstufe 2022; physical PDF34; E3",
+      "scope": "Only this entire selected operator is newly operative. Full original primary-page context was read and remains available at the pinned official PDF; all unselected operators remain without a new binding vote.",
+      "primaryDocumentPin": {
+        "path": "curricula/DE/Gymnasium/input/NW/upper-secondary/gost_klp_ch_2022_06_07.pdf",
+        "sha256": "24af8d883b2b609013a45bb921820938e9fec92ec82ff7f5e007ad3d5c04dfe2",
+        "bytes": 468172
+      },
+      "sourceStageCourseAndContext": "NW2022 Qualifikationsphase, common GK/LK process standard; all stage/course content limits retained."
+    },
+    {
+      "id": "nw-chemistry-sekii-process-standard-k1-q:whole-primary-context",
+      "topicCode": "K1",
+      "title": "Selected complete official operator; full original page context referenced",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKII-2022",
+      "text": "recherchieren zu chemischen Sachverhalten zielgerichtet in analogen und digitalen Medien und wählen für ihre Zwecke passende Quellen aus",
+      "physicalPdfPages": [
+        35
+      ],
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Gymnasiale Oberstufe 2022; physical PDF35; K1",
+      "scope": "Only this entire selected operator is newly operative. Full original primary-page context was read and remains available at the pinned official PDF; all unselected operators remain without a new binding vote.",
+      "primaryDocumentPin": {
+        "path": "curricula/DE/Gymnasium/input/NW/upper-secondary/gost_klp_ch_2022_06_07.pdf",
+        "sha256": "24af8d883b2b609013a45bb921820938e9fec92ec82ff7f5e007ad3d5c04dfe2",
+        "bytes": 468172
+      },
+      "sourceStageCourseAndContext": "NW2022 Qualifikationsphase, common GK/LK process standard; all stage/course content limits retained."
+    },
+    {
+      "id": "nw-chemistry-sekii-process-standard-k2-q:whole-primary-context",
+      "topicCode": "K2",
+      "title": "Selected complete official operator; full original page context referenced",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKII-2022",
+      "text": "wählen relevante und aussagekräftige Informationen und Daten zu chemischen Sachverhalten und anwendungsbezogenen Fragestellungen aus und erschließen Informationen aus Quellen mit verschiedenen, auch komplexen Darstellungsformen",
+      "physicalPdfPages": [
+        35
+      ],
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Gymnasiale Oberstufe 2022; physical PDF35; K2",
+      "scope": "Only this entire selected operator is newly operative. Full original primary-page context was read and remains available at the pinned official PDF; all unselected operators remain without a new binding vote.",
+      "primaryDocumentPin": {
+        "path": "curricula/DE/Gymnasium/input/NW/upper-secondary/gost_klp_ch_2022_06_07.pdf",
+        "sha256": "24af8d883b2b609013a45bb921820938e9fec92ec82ff7f5e007ad3d5c04dfe2",
+        "bytes": 468172
+      },
+      "sourceStageCourseAndContext": "NW2022 Qualifikationsphase, common GK/LK process standard; all stage/course content limits retained."
+    },
+    {
+      "id": "nw-chemistry-sekii-process-standard-s4-ep:complete-primary-addition",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKII-2022",
+      "topicCode": "S4",
+      "title": "S4, Ende Einführungsphase",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Gymnasiale Oberstufe 2022, physical PDF22, S4, Ende Einführungsphase",
+      "text": "bestimmen an ausgewählten Beispielen Reaktionstypen",
+      "metadata": {
+        "physicalPdfPage": 22,
+        "completeSelectedClauseOnly": true,
+        "notWholePdfText": true
+      }
+    },
+    {
+      "id": "nw-chemistry-sekii-process-standard-s4-q:complete-primary-addition",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKII-2022",
+      "topicCode": "S4",
+      "title": "S4, Ende Qualifikationsphase",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Gymnasiale Oberstufe 2022, physical PDF32, S4, Ende Qualifikationsphase",
+      "text": "bestimmen Reaktionstypen",
+      "metadata": {
+        "physicalPdfPage": 32,
+        "completeSelectedClauseOnly": true,
+        "notWholePdfText": true
+      }
     }
   ],
   "sourceGoals": [
@@ -5077,6 +6119,624 @@
         "phase": "LK",
         "competency": "Bewertungskompetenz"
       }
+    },
+    {
+      "id": "nw-chemistry-sekii-process-standard-k1",
+      "passageId": "nw-chemistry-sekii-process:2.2-einführungsphase",
+      "topicCode": "2.2 Einführungsphase",
+      "title": "K1: recherchieren angeleitet zu chemischen Sachverhalten in analogen und digitalen Medien und wählen für ihre Zwecke passende Quellen aus",
+      "description": "recherchieren angeleitet zu chemischen Sachverhalten in analogen und digitalen Medien und wählen für ihre Zwecke passende Quellen aus",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKII-2022",
+      "sourceText": "recherchieren angeleitet zu chemischen Sachverhalten in analogen und digitalen Medien und wählen für ihre Zwecke passende Quellen aus",
+      "parentBulletText": "recherchieren angeleitet zu chemischen Sachverhalten in analogen und digitalen Medien und wählen für ihre Zwecke passende Quellen aus",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Gymnasiale Oberstufe 2022; physical PDF25; 2.2 Einführungsphase; K1.",
+      "sourceSpan": {
+        "passageId": "nw-chemistry-sekii-process:2.2-einführungsphase",
+        "label": "physical PDF25, 2.2 Einführungsphase, K1"
+      },
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompleteNumberedStandard",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "stage:SekII",
+        "course:GK_LK"
+      ],
+      "metadata": {
+        "officialStandardCode": "K1",
+        "localLocatorLabel": "K1",
+        "officiallyNumbered": true,
+        "physicalPdfPage": 25,
+        "extractionMethod": "Author read whole primary section; complete clause, line wrapping only normalized; inactive additive candidate; no independent review yet.",
+        "stageCourseBoundary": "End of Einführungsphase, chapter2.2; angeleitet/unterstützt retained. Not GK/LK Qualifikationsphase standard completion."
+      }
+    },
+    {
+      "id": "nw-chemistry-sekii-process-standard-k2",
+      "passageId": "nw-chemistry-sekii-process:2.2-einführungsphase",
+      "topicCode": "2.2 Einführungsphase",
+      "title": "K2: wählen relevante und aussagekräftige Informationen und Daten zu chemischen Sachverhalten und anwendungsbezogenen Fragestellungen aus und erschließen Informationen aus Quellen mit verschiedenen Darstellungsformen",
+      "description": "wählen relevante und aussagekräftige Informationen und Daten zu chemischen Sachverhalten und anwendungsbezogenen Fragestellungen aus und erschließen Informationen aus Quellen mit verschiedenen Darstellungsformen",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKII-2022",
+      "sourceText": "wählen relevante und aussagekräftige Informationen und Daten zu chemischen Sachverhalten und anwendungsbezogenen Fragestellungen aus und erschließen Informationen aus Quellen mit verschiedenen Darstellungsformen",
+      "parentBulletText": "wählen relevante und aussagekräftige Informationen und Daten zu chemischen Sachverhalten und anwendungsbezogenen Fragestellungen aus und erschließen Informationen aus Quellen mit verschiedenen Darstellungsformen",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Gymnasiale Oberstufe 2022; physical PDF25; 2.2 Einführungsphase; K2.",
+      "sourceSpan": {
+        "passageId": "nw-chemistry-sekii-process:2.2-einführungsphase",
+        "label": "physical PDF25, 2.2 Einführungsphase, K2"
+      },
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompleteNumberedStandard",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "stage:SekII",
+        "course:GK_LK"
+      ],
+      "metadata": {
+        "officialStandardCode": "K2",
+        "localLocatorLabel": "K2",
+        "officiallyNumbered": true,
+        "physicalPdfPage": 25,
+        "extractionMethod": "Author read whole primary section; complete clause, line wrapping only normalized; inactive additive candidate; no independent review yet.",
+        "stageCourseBoundary": "End of Einführungsphase, chapter2.2; angeleitet/unterstützt retained. Not GK/LK Qualifikationsphase standard completion."
+      }
+    },
+    {
+      "id": "nw-chemistry-sekii-process-standard-k5",
+      "passageId": "nw-chemistry-sekii-process:2.2-einführungsphase",
+      "topicCode": "2.2 Einführungsphase",
+      "title": "K5: wählen unterstützt chemische Sachverhalte und Informationen sach-, adressaten- und situationsgerecht aus",
+      "description": "wählen unterstützt chemische Sachverhalte und Informationen sach-, adressaten- und situationsgerecht aus",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKII-2022",
+      "sourceText": "wählen unterstützt chemische Sachverhalte und Informationen sach-, adressaten- und situationsgerecht aus",
+      "parentBulletText": "wählen unterstützt chemische Sachverhalte und Informationen sach-, adressaten- und situationsgerecht aus",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Gymnasiale Oberstufe 2022; physical PDF25; 2.2 Einführungsphase; K5.",
+      "sourceSpan": {
+        "passageId": "nw-chemistry-sekii-process:2.2-einführungsphase",
+        "label": "physical PDF25, 2.2 Einführungsphase, K5"
+      },
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompleteNumberedStandard",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "stage:SekII",
+        "course:GK_LK"
+      ],
+      "metadata": {
+        "officialStandardCode": "K5",
+        "localLocatorLabel": "K5",
+        "officiallyNumbered": true,
+        "physicalPdfPage": 25,
+        "extractionMethod": "Author read whole primary section; complete clause, line wrapping only normalized; inactive additive candidate; no independent review yet.",
+        "stageCourseBoundary": "End of Einführungsphase, chapter2.2; angeleitet/unterstützt retained. Not GK/LK Qualifikationsphase standard completion."
+      }
+    },
+    {
+      "id": "nw-chemistry-sekii-process-standard-k8",
+      "passageId": "nw-chemistry-sekii-process:2.2-einführungsphase",
+      "topicCode": "2.2 Einführungsphase",
+      "title": "K8: strukturieren ausgewählte Informationen und leiten Schlussfolgerungen ab",
+      "description": "strukturieren ausgewählte Informationen und leiten Schlussfolgerungen ab",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKII-2022",
+      "sourceText": "strukturieren ausgewählte Informationen und leiten Schlussfolgerungen ab",
+      "parentBulletText": "strukturieren ausgewählte Informationen und leiten Schlussfolgerungen ab",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Gymnasiale Oberstufe 2022; physical PDF25; 2.2 Einführungsphase; K8.",
+      "sourceSpan": {
+        "passageId": "nw-chemistry-sekii-process:2.2-einführungsphase",
+        "label": "physical PDF25, 2.2 Einführungsphase, K8"
+      },
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompleteNumberedStandard",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "stage:SekII",
+        "course:GK_LK"
+      ],
+      "metadata": {
+        "officialStandardCode": "K8",
+        "localLocatorLabel": "K8",
+        "officiallyNumbered": true,
+        "physicalPdfPage": 25,
+        "extractionMethod": "Author read whole primary section; complete clause, line wrapping only normalized; inactive additive candidate; no independent review yet.",
+        "stageCourseBoundary": "End of Einführungsphase, chapter2.2; angeleitet/unterstützt retained. Not GK/LK Qualifikationsphase standard completion."
+      }
+    },
+    {
+      "id": "nw-chemistry-sekii-process-standard-s16-ep",
+      "passageId": "nw-chemistry-sekii-process:2.2-einführungsphase",
+      "topicCode": "2.2 Einführungsphase",
+      "title": "S16-EP: entwickeln an ausgewählten Beispielen Reaktionsgleichungen",
+      "description": "entwickeln an ausgewählten Beispielen Reaktionsgleichungen",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKII-2022",
+      "sourceText": "entwickeln an ausgewählten Beispielen Reaktionsgleichungen",
+      "parentBulletText": "entwickeln an ausgewählten Beispielen Reaktionsgleichungen",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Gymnasiale Oberstufe 2022; physical PDF23; 2.2 Einführungsphase; S16-EP.",
+      "sourceSpan": {
+        "passageId": "nw-chemistry-sekii-process:2.2-einführungsphase",
+        "label": "physical PDF23, 2.2 Einführungsphase, S16-EP"
+      },
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompleteNumberedStandard",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "stage:SekII",
+        "course:GK_LK"
+      ],
+      "metadata": {
+        "officialStandardCode": "S16",
+        "localLocatorLabel": "S16-EP",
+        "officiallyNumbered": true,
+        "physicalPdfPage": 23,
+        "extractionMethod": "Author read whole primary section; complete clause, line wrapping only normalized; inactive additive candidate; no independent review yet.",
+        "stageCourseBoundary": "End of Einführungsphase, chapter2.2; angeleitet/unterstützt retained. Not GK/LK Qualifikationsphase standard completion."
+      }
+    },
+    {
+      "id": "nw-chemistry-sekii-process-standard-s16-q",
+      "passageId": "nw-chemistry-sekii-process:2.3-qualifikationsphase,-gemeinsame-übergeordnete-standards-gk/lk",
+      "topicCode": "2.3 Qualifikationsphase, gemeinsame übergeordnete Standards GK/LK",
+      "title": "S16-Q: entwickeln Reaktionsgleichungen",
+      "description": "entwickeln Reaktionsgleichungen",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKII-2022",
+      "sourceText": "entwickeln Reaktionsgleichungen",
+      "parentBulletText": "entwickeln Reaktionsgleichungen",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Gymnasiale Oberstufe 2022; physical PDF33; 2.3 Qualifikationsphase, gemeinsame übergeordnete Standards GK/LK; S16-Q.",
+      "sourceSpan": {
+        "passageId": "nw-chemistry-sekii-process:2.3-qualifikationsphase,-gemeinsame-übergeordnete-standards-gk/lk",
+        "label": "physical PDF33, 2.3 Qualifikationsphase, gemeinsame übergeordnete Standards GK/LK, S16-Q"
+      },
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompleteNumberedStandard",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "stage:SekII",
+        "course:GK_LK"
+      ],
+      "metadata": {
+        "officialStandardCode": "S16",
+        "localLocatorLabel": "S16-Q",
+        "officiallyNumbered": true,
+        "physicalPdfPage": 33,
+        "extractionMethod": "Author read whole primary section; complete clause, line wrapping only normalized; inactive additive candidate; no independent review yet.",
+        "stageCourseBoundary": "End of Qualifikationsphase, chapter2.3; common over-arching GK/LK standard; full course/content and practical/digital clauses remain separate."
+      }
+    },
+    {
+      "id": "nw-chemistry-sekii-process-standard-s14-q",
+      "passageId": "nw-chemistry-sekii-process:2.3-qualifikationsphase,-gemeinsame-übergeordnete-standards-gk/lk",
+      "topicCode": "2.3 Qualifikationsphase, gemeinsame übergeordnete Standards GK/LK",
+      "title": "S14-Q: beschreiben ausgewählte Reaktionsmechanismen",
+      "description": "beschreiben ausgewählte Reaktionsmechanismen",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKII-2022",
+      "sourceText": "beschreiben ausgewählte Reaktionsmechanismen",
+      "parentBulletText": "beschreiben ausgewählte Reaktionsmechanismen",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Gymnasiale Oberstufe 2022; physical PDF33; 2.3 Qualifikationsphase, gemeinsame übergeordnete Standards GK/LK; S14-Q.",
+      "sourceSpan": {
+        "passageId": "nw-chemistry-sekii-process:2.3-qualifikationsphase,-gemeinsame-übergeordnete-standards-gk/lk",
+        "label": "physical PDF33, 2.3 Qualifikationsphase, gemeinsame übergeordnete Standards GK/LK, S14-Q"
+      },
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompleteNumberedStandard",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "stage:SekII",
+        "course:GK_LK"
+      ],
+      "metadata": {
+        "officialStandardCode": "S14",
+        "localLocatorLabel": "S14-Q",
+        "officiallyNumbered": true,
+        "physicalPdfPage": 33,
+        "extractionMethod": "Author read whole primary section; complete clause, line wrapping only normalized; inactive additive candidate; no independent review yet.",
+        "stageCourseBoundary": "End of Qualifikationsphase, chapter2.3; common over-arching GK/LK standard; full course/content and practical/digital clauses remain separate."
+      }
+    },
+    {
+      "id": "nw-chemistry-sekii-process-standard-e5-ep",
+      "passageId": "nw-chemistry-sekii-process-standard-e5-ep:whole-primary-context",
+      "topicCode": "E5",
+      "title": "E5: führen qualitative und quantitative experimentelle Untersuchungen – den chemischen Arbeitsweisen und Sicherheitsregeln entsprechend – durch, protokollieren sie und werten diese unter Anleitung aus",
+      "description": "führen qualitative und quantitative experimentelle Untersuchungen – den chemischen Arbeitsweisen und Sicherheitsregeln entsprechend – durch, protokollieren sie und werten diese unter Anleitung aus",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKII-2022",
+      "sourceText": "führen qualitative und quantitative experimentelle Untersuchungen – den chemischen Arbeitsweisen und Sicherheitsregeln entsprechend – durch, protokollieren sie und werten diese unter Anleitung aus",
+      "parentBulletText": "führen qualitative und quantitative experimentelle Untersuchungen – den chemischen Arbeitsweisen und Sicherheitsregeln entsprechend – durch, protokollieren sie und werten diese unter Anleitung aus",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Gymnasiale Oberstufe 2022; physical PDF24; E5",
+      "sourceSpan": {
+        "passageId": "nw-chemistry-sekii-process-standard-e5-ep:whole-primary-context",
+        "label": "E5, physical PDF24"
+      },
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompleteNumberedStandard",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "stage:SekII",
+        "course:GK_LK"
+      ],
+      "metadata": {
+        "localLocatorLabel": "E5",
+        "officiallyNumbered": true,
+        "physicalPdfPage": 24,
+        "extractionMethod": "Own author read complete primary operator and whole page; line wrapping normalized. Inactive, independent review required; no whole-source approval.",
+        "stageCourseBoundary": "NW2022 Einführungsphase, retain guidance/selected/under-instruction operators; not qualification end standard.",
+        "officialStandardCode": "E5",
+        "currentAcceptedPartialRelations": {
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+            "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248",
+            "bytes": 731348
+          },
+          "bindings": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/4",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "authorInactiveWordingIsHistoricalSnapshot": true,
+          "wholeSourceApproval": false
+        }
+      }
+    },
+    {
+      "id": "nw-chemistry-sekii-process-standard-e2-ep",
+      "passageId": "nw-chemistry-sekii-process-standard-e2-ep:whole-primary-context",
+      "topicCode": "E2",
+      "title": "E2: identifizieren und entwickeln Fragestellungen zu ausgewählten chemischen Sachverhalten",
+      "description": "identifizieren und entwickeln Fragestellungen zu ausgewählten chemischen Sachverhalten",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKII-2022",
+      "sourceText": "identifizieren und entwickeln Fragestellungen zu ausgewählten chemischen Sachverhalten",
+      "parentBulletText": "identifizieren und entwickeln Fragestellungen zu ausgewählten chemischen Sachverhalten",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Gymnasiale Oberstufe 2022; physical PDF24; E2",
+      "sourceSpan": {
+        "passageId": "nw-chemistry-sekii-process-standard-e2-ep:whole-primary-context",
+        "label": "E2, physical PDF24"
+      },
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompleteNumberedStandard",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "stage:SekII",
+        "course:GK_LK"
+      ],
+      "metadata": {
+        "localLocatorLabel": "E2",
+        "officiallyNumbered": true,
+        "physicalPdfPage": 24,
+        "extractionMethod": "Own author read complete primary operator and whole page; line wrapping normalized. Inactive, independent review required; no whole-source approval.",
+        "stageCourseBoundary": "NW2022 Einführungsphase, retain guidance/selected/under-instruction operators; not qualification end standard.",
+        "officialStandardCode": "E2",
+        "currentAcceptedPartialRelations": {
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+            "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248",
+            "bytes": 731348
+          },
+          "bindings": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/93",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "authorInactiveWordingIsHistoricalSnapshot": true,
+          "wholeSourceApproval": false
+        }
+      }
+    },
+    {
+      "id": "nw-chemistry-sekii-process-standard-e3-ep",
+      "passageId": "nw-chemistry-sekii-process-standard-e3-ep:whole-primary-context",
+      "topicCode": "E3",
+      "title": "E3: stellen überprüfbare Hypothesen zur Bearbeitung von Fragestellungen auf.",
+      "description": "stellen überprüfbare Hypothesen zur Bearbeitung von Fragestellungen auf.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKII-2022",
+      "sourceText": "stellen überprüfbare Hypothesen zur Bearbeitung von Fragestellungen auf.",
+      "parentBulletText": "stellen überprüfbare Hypothesen zur Bearbeitung von Fragestellungen auf.",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Gymnasiale Oberstufe 2022; physical PDF24; E3",
+      "sourceSpan": {
+        "passageId": "nw-chemistry-sekii-process-standard-e3-ep:whole-primary-context",
+        "label": "E3, physical PDF24"
+      },
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompleteNumberedStandard",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "stage:SekII",
+        "course:GK_LK"
+      ],
+      "metadata": {
+        "localLocatorLabel": "E3",
+        "officiallyNumbered": true,
+        "physicalPdfPage": 24,
+        "extractionMethod": "Own author read complete primary operator and whole page; line wrapping normalized. Inactive, independent review required; no whole-source approval.",
+        "stageCourseBoundary": "NW2022 Einführungsphase, retain guidance/selected/under-instruction operators; not qualification end standard.",
+        "officialStandardCode": "E3",
+        "currentAcceptedPartialRelations": {
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+            "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248",
+            "bytes": 731348
+          },
+          "bindings": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/94",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "authorInactiveWordingIsHistoricalSnapshot": true,
+          "wholeSourceApproval": false
+        }
+      }
+    },
+    {
+      "id": "nw-chemistry-sekii-process-standard-e2-q",
+      "passageId": "nw-chemistry-sekii-process-standard-e2-q:whole-primary-context",
+      "topicCode": "E2",
+      "title": "E2: identifizieren und entwickeln Fragestellungen zu chemischen Sachverhalten",
+      "description": "identifizieren und entwickeln Fragestellungen zu chemischen Sachverhalten",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKII-2022",
+      "sourceText": "identifizieren und entwickeln Fragestellungen zu chemischen Sachverhalten",
+      "parentBulletText": "identifizieren und entwickeln Fragestellungen zu chemischen Sachverhalten",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Gymnasiale Oberstufe 2022; physical PDF33; E2",
+      "sourceSpan": {
+        "passageId": "nw-chemistry-sekii-process-standard-e2-q:whole-primary-context",
+        "label": "E2, physical PDF33"
+      },
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompleteNumberedStandard",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "stage:SekII",
+        "course:GK_LK"
+      ],
+      "metadata": {
+        "localLocatorLabel": "E2",
+        "officiallyNumbered": true,
+        "physicalPdfPage": 33,
+        "extractionMethod": "Own author read complete primary operator and whole page; line wrapping normalized. Inactive, independent review required; no whole-source approval.",
+        "stageCourseBoundary": "NW2022 Qualifikationsphase, common GK/LK process standard; all stage/course content limits retained.",
+        "officialStandardCode": "E2",
+        "currentAcceptedPartialRelations": {
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+            "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248",
+            "bytes": 731348
+          },
+          "bindings": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/88",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "authorInactiveWordingIsHistoricalSnapshot": true,
+          "wholeSourceApproval": false
+        }
+      }
+    },
+    {
+      "id": "nw-chemistry-sekii-process-standard-e3-q",
+      "passageId": "nw-chemistry-sekii-process-standard-e3-q:whole-primary-context",
+      "topicCode": "E3",
+      "title": "E3: stellen theoriegeleitet Hypothesen zur Bearbeitung von Fragestellungen auf.",
+      "description": "stellen theoriegeleitet Hypothesen zur Bearbeitung von Fragestellungen auf.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKII-2022",
+      "sourceText": "stellen theoriegeleitet Hypothesen zur Bearbeitung von Fragestellungen auf.",
+      "parentBulletText": "stellen theoriegeleitet Hypothesen zur Bearbeitung von Fragestellungen auf.",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Gymnasiale Oberstufe 2022; physical PDF34; E3",
+      "sourceSpan": {
+        "passageId": "nw-chemistry-sekii-process-standard-e3-q:whole-primary-context",
+        "label": "E3, physical PDF34"
+      },
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompleteNumberedStandard",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "stage:SekII",
+        "course:GK_LK"
+      ],
+      "metadata": {
+        "localLocatorLabel": "E3",
+        "officiallyNumbered": true,
+        "physicalPdfPage": 34,
+        "extractionMethod": "Own author read complete primary operator and whole page; line wrapping normalized. Inactive, independent review required; no whole-source approval.",
+        "stageCourseBoundary": "NW2022 Qualifikationsphase, common GK/LK process standard; all stage/course content limits retained.",
+        "officialStandardCode": "E3",
+        "currentAcceptedPartialRelations": {
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+            "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248",
+            "bytes": 731348
+          },
+          "bindings": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/89",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "authorInactiveWordingIsHistoricalSnapshot": true,
+          "wholeSourceApproval": false
+        }
+      }
+    },
+    {
+      "id": "nw-chemistry-sekii-process-standard-k1-q",
+      "passageId": "nw-chemistry-sekii-process-standard-k1-q:whole-primary-context",
+      "topicCode": "K1",
+      "title": "K1: recherchieren zu chemischen Sachverhalten zielgerichtet in analogen und digitalen Medien und wählen für ihre Zwecke passende Quellen aus",
+      "description": "recherchieren zu chemischen Sachverhalten zielgerichtet in analogen und digitalen Medien und wählen für ihre Zwecke passende Quellen aus",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKII-2022",
+      "sourceText": "recherchieren zu chemischen Sachverhalten zielgerichtet in analogen und digitalen Medien und wählen für ihre Zwecke passende Quellen aus",
+      "parentBulletText": "recherchieren zu chemischen Sachverhalten zielgerichtet in analogen und digitalen Medien und wählen für ihre Zwecke passende Quellen aus",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Gymnasiale Oberstufe 2022; physical PDF35; K1",
+      "sourceSpan": {
+        "passageId": "nw-chemistry-sekii-process-standard-k1-q:whole-primary-context",
+        "label": "K1, physical PDF35"
+      },
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompleteNumberedStandard",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "stage:SekII",
+        "course:GK_LK"
+      ],
+      "metadata": {
+        "localLocatorLabel": "K1",
+        "officiallyNumbered": true,
+        "physicalPdfPage": 35,
+        "extractionMethod": "Own author read complete primary operator and whole page; line wrapping normalized. Inactive, independent review required; no whole-source approval.",
+        "stageCourseBoundary": "NW2022 Qualifikationsphase, common GK/LK process standard; all stage/course content limits retained.",
+        "officialStandardCode": "K1",
+        "currentAcceptedPartialRelations": {
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+            "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248",
+            "bytes": 731348
+          },
+          "bindings": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/27",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "authorInactiveWordingIsHistoricalSnapshot": true,
+          "wholeSourceApproval": false
+        }
+      }
+    },
+    {
+      "id": "nw-chemistry-sekii-process-standard-k2-q",
+      "passageId": "nw-chemistry-sekii-process-standard-k2-q:whole-primary-context",
+      "topicCode": "K2",
+      "title": "K2: wählen relevante und aussagekräftige Informationen und Daten zu chemischen Sachverhalten und anwendungsbezogenen Fragestellungen aus und erschließen Informationen aus Quellen mit verschiedenen, auch komplexen Darstellungsformen",
+      "description": "wählen relevante und aussagekräftige Informationen und Daten zu chemischen Sachverhalten und anwendungsbezogenen Fragestellungen aus und erschließen Informationen aus Quellen mit verschiedenen, auch komplexen Darstellungsformen",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKII-2022",
+      "sourceText": "wählen relevante und aussagekräftige Informationen und Daten zu chemischen Sachverhalten und anwendungsbezogenen Fragestellungen aus und erschließen Informationen aus Quellen mit verschiedenen, auch komplexen Darstellungsformen",
+      "parentBulletText": "wählen relevante und aussagekräftige Informationen und Daten zu chemischen Sachverhalten und anwendungsbezogenen Fragestellungen aus und erschließen Informationen aus Quellen mit verschiedenen, auch komplexen Darstellungsformen",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Gymnasiale Oberstufe 2022; physical PDF35; K2",
+      "sourceSpan": {
+        "passageId": "nw-chemistry-sekii-process-standard-k2-q:whole-primary-context",
+        "label": "K2, physical PDF35"
+      },
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompleteNumberedStandard",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "stage:SekII",
+        "course:GK_LK"
+      ],
+      "metadata": {
+        "localLocatorLabel": "K2",
+        "officiallyNumbered": true,
+        "physicalPdfPage": 35,
+        "extractionMethod": "Own author read complete primary operator and whole page; line wrapping normalized. Inactive, independent review required; no whole-source approval.",
+        "stageCourseBoundary": "NW2022 Qualifikationsphase, common GK/LK process standard; all stage/course content limits retained.",
+        "officialStandardCode": "K2",
+        "currentAcceptedPartialRelations": {
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+            "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248",
+            "bytes": 731348
+          },
+          "bindings": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/FIRST.portable-addresses.same-scientific-judgments.json",
+              "jsonPointer": "/relations/28",
+              "sha256": "07e1f5ea3cf18a4aa333b1a63416786369725a5939b7e06dfb8c244e46d40248"
+            }
+          ],
+          "authorInactiveWordingIsHistoricalSnapshot": true,
+          "wholeSourceApproval": false
+        }
+      }
+    },
+    {
+      "id": "nw-chemistry-sekii-process-standard-s4-ep",
+      "passageId": "nw-chemistry-sekii-process-standard-s4-ep:complete-primary-addition",
+      "topicCode": "S4",
+      "title": "bestimmen an ausgewählten Beispielen Reaktionstypen",
+      "description": "bestimmen an ausgewählten Beispielen Reaktionstypen",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKII-2022",
+      "sourceText": "bestimmen an ausgewählten Beispielen Reaktionstypen",
+      "parentBulletText": "bestimmen an ausgewählten Beispielen Reaktionstypen",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Gymnasiale Oberstufe 2022, physical PDF22, S4, Ende Einführungsphase",
+      "sourceSpan": {
+        "passageId": "nw-chemistry-sekii-process-standard-s4-ep:complete-primary-addition",
+        "label": "physical PDF22, S4, Ende Einführungsphase"
+      },
+      "courseLevel": "GK_LK",
+      "granularity": "completeSelectedOfficialClause",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "stage:SekII",
+        "course:GK_LK"
+      ],
+      "metadata": {
+        "physicalPdfPage": 22,
+        "actualWholeClauseExtracted": true,
+        "officiallyNumbered": true,
+        "authorStatus": "independently accepted selected partial contributions; no whole official source approval",
+        "scopeBoundary": "Whole original subject/stage/course context retained; this selected general operator does not prescribe the own concrete substance/example, prove actual theme choice or complete the whole official standard.",
+        "historicalAuthorStatus": "inactive-extraction-and-partial-binding-candidate; independent source review pending",
+        "currentAcceptedPartialRelations": {
+          "acceptedRefs": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-multistate-source-informed-independent-b-part-b-20261018-v1/ACCEPTED.exact-fifty-five-partial-one-held-HE-placement.json",
+              "sha256": "ab921ae7928e26b5f58b2c25c8c72c470b2c3b4c111cb9fae09b92b821ef7f48",
+              "bytes": 43536,
+              "jsonPointer": "/approvedPartial/23"
+            }
+          ],
+          "wholeSourceApproval": false,
+          "newScientificDecisionsByTechnicalIntegrator": 0
+        }
+      },
+      "rawSourceText": "bestimmen an ausgewählten Beispielen Reaktionstypen"
+    },
+    {
+      "id": "nw-chemistry-sekii-process-standard-s4-q",
+      "passageId": "nw-chemistry-sekii-process-standard-s4-q:complete-primary-addition",
+      "topicCode": "S4",
+      "title": "bestimmen Reaktionstypen",
+      "description": "bestimmen Reaktionstypen",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKII-2022",
+      "sourceText": "bestimmen Reaktionstypen",
+      "parentBulletText": "bestimmen Reaktionstypen",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Gymnasiale Oberstufe 2022, physical PDF32, S4, Ende Qualifikationsphase",
+      "sourceSpan": {
+        "passageId": "nw-chemistry-sekii-process-standard-s4-q:complete-primary-addition",
+        "label": "physical PDF32, S4, Ende Qualifikationsphase"
+      },
+      "courseLevel": "GK_LK",
+      "granularity": "completeSelectedOfficialClause",
+      "tags": [
+        "jurisdiction:DE-NW",
+        "stage:SekII",
+        "course:GK_LK"
+      ],
+      "metadata": {
+        "physicalPdfPage": 32,
+        "actualWholeClauseExtracted": true,
+        "officiallyNumbered": true,
+        "authorStatus": "independently accepted selected partial contributions; no whole official source approval",
+        "scopeBoundary": "Whole original subject/stage/course context retained; this selected general operator does not prescribe the own concrete substance/example, prove actual theme choice or complete the whole official standard.",
+        "historicalAuthorStatus": "inactive-extraction-and-partial-binding-candidate; independent source review pending",
+        "currentAcceptedPartialRelations": {
+          "acceptedRefs": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-multistate-source-informed-independent-b-part-b-20261018-v1/ACCEPTED.exact-fifty-five-partial-one-held-HE-placement.json",
+              "sha256": "ab921ae7928e26b5f58b2c25c8c72c470b2c3b4c111cb9fae09b92b821ef7f48",
+              "bytes": 43536,
+              "jsonPointer": "/approvedPartial/24"
+            }
+          ],
+          "wholeSourceApproval": false,
+          "newScientificDecisionsByTechnicalIntegrator": 0
+        }
+      },
+      "rawSourceText": "bestimmen Reaktionstypen"
     }
   ]
 }

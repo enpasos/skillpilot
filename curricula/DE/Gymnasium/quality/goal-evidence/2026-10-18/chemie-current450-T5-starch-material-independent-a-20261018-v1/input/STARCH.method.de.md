@@ -1,0 +1,41 @@
+## Konkrete zugelassene Arbeitsoption: Stärke enzymatisch vorbehandeln
+
+Die neue Substratfrage wird zuerst ohne Lösungsblatt beantwortet: Begründe, ob gewöhnliche Bäckerhefe Stärke unmittelbar wie Glucose nutzt, und entwirf selbst die Kontrollvergleiche. Danach dient diese vollständige Methodenkarte als festgelegter Arbeitsrahmen für die eigene Durchführung. Sie ist ein eigener angepasster Unterrichtsentwurf, keine von einem Hersteller validierte Gär- oder Ausbeutemethode. Eine vollständige Verzuckerung oder bestimmte Gasmenge wird nicht zugesagt.
+
+### Material und Vorbereitungen
+
+Nur frische kommerzielle Bäckerhefe, Lebensmittel-Kartoffelstärke und Glucose verwenden. Je Ansatz werden 10,0 g Substrat und insgesamt 100,0 mL wässrige Flüssigkeit vor Hefezugabe eingesetzt; je Hefebedingung 1,00 g Hefe. Enzym: die flüssige, eindeutig etikettierte NCBE-Amyloglucosidase (AMG 300L aus Aspergillus niger), keine Speichelprobe, kein unbekanntes Enzympulver und keine Umweltkultur. Die Aufsicht prüft Produktidentität, Haltbarkeit und Sicherheitsdatenblatt; Flaschencharge und erklärte Aktivität, sofern angegeben, dokumentieren. Die Rezeptur dosiert das gelieferte Flüssigprodukt nach Volumen und setzt keinen aus der Handelsbezeichnung abgeleiteten Umsatz voraus.
+
+Wässriger 10-mmol/L-Citratpuffer pH 4,50 ±0,10: Die Aufsicht löst 1,9212 g wasserfreie Citronensäure in etwa 700 mL Wasser, stellt bei 20–25 °C mit 0,100-molarer Natronlauge unter Rühren und pH-Messung auf 4,50 ein und füllt nach dem Einstellen auf 1,000 L auf; erneut pH prüfen. Säure-/Laugenvorräte werden nur von der Aufsicht gehandhabt. Für das Enzym-Kontrollprodukt erhitzt die Aufsicht eine gesonderte AMG-Portion im offenen, locker gegen Spritzer abgedeckten Röhrchen nach Erreichen von 80 °C zehn Minuten bei 80–85 °C, kühlt ab und ergänzt einen festgestellten Verdunstungsverlust mit Wasser zur Ausgangsmasse. Dieses wärmebehandelte Enzym ist eine Inaktivierungs-Kontrolle, kein unbelegt vollständig enzymfreies Präparat.
+
+Mindestens acht 250-mL-Kolben, standsichere Wasserbäder für 60 und 30 °C, Thermometer, Waage, Messzylinder/Pipetten, Filter und tarierte Auffanggefäße sowie je ein leichtgängig beweglicher 100-mL-Gasspritzenaufbau mit freiem Gasweg und 1-mL-Teilung. Schutzbrille/Kittel; keine offenen Flammen, keine druckdichten Flaschen. Die Aufsicht bereitet die warme Stärke vor und handhabt heiße Gefäße. Enzymflüssigkeit nicht sprühen, nicht eintrocknen lassen, Haut-/Augenkontakt vermeiden; Verschüttetes sofort mit Wasser nach Schulvorgabe aufnehmen. Bei Atembeschwerden, Verspritzen, blockiertem Gasweg oder Glasbruch stoppen und Aufsicht rufen.
+
+### Ansätze und tatsächlicher Ablauf
+
+Alle Flüssigkeitsmengen sind vor der Hefezugabe angegeben. Die Vergleichsbedingungen werden vorab begründet; Ergebnisse bleiben offen:
+
+| Code | Substrat | Flüssigkeit | Hefe nach Vorbehandlung |
+|---|---|---|---|
+| H | 10,0 g Stärke | 99,0 mL Puffer + 1,00 mL aktives AMG | 1,00 g aktive Hefe |
+| I | 10,0 g Stärke | 99,0 mL Puffer + 1,00 mL wärmebehandeltes AMG | 1,00 g aktive Hefe |
+| N | 10,0 g Stärke | 100,0 mL Puffer, ohne Enzym | 1,00 g aktive Hefe |
+| E | kein Substrat | 99,0 mL Puffer + 1,00 mL aktives AMG | 1,00 g aktive Hefe |
+| EI | kein Substrat | 99,0 mL Puffer + 1,00 mL wärmebehandeltes AMG | 1,00 g aktive Hefe |
+| G | 10,0 g Glucose | 100,0 mL Puffer, ohne Enzym | 1,00 g aktive Hefe |
+| H0 | wie H | wie H | keine Hefe |
+| HI | wie H | wie H | 1,00 g von der Aufsicht inaktivierte/abgekühlte Hefe |
+
+1. Die Aufsicht dispergiert für H/I/N/H0/HI die Stärke zunächst in der jeweiligen Pufferportion und erwärmt offen, locker abgedeckt, unter Rühren zehn Minuten bei 80–85 °C zum Verkleistern; die Enzyme sind dabei noch nicht zugesetzt. Die entsprechenden stärkefreien Puffer-/Glucoseportionen werden gleich thermisch behandelt. Nie trockenheizen oder fest verschließen. Anfangs-/Endmasse notieren; nur plausiblen reinen Verdunstungsverlust durch Wasser zur anfänglichen Masse ergänzen. Verschüttete Substanz ist eine Abweichung, kein automatisch zu reparierender Wasserverlust.
+2. Alle Ansätze auf 60 ±2 °C bringen. H/I/E/EI/H0/HI erhalten jetzt die bezeichnete 1,00-mL-Enzymportion; N und G enthalten bereits aus Schritt 1 die vollständigen 100,0 mL Puffer; nichts zusätzlich zugeben. Beginn, gemessenen pH und Temperatur notieren. 60 Minuten offen/locker abgedeckt bei 60 ±2 °C halten und alle zehn Minuten vorsichtig gleich rühren; keine Enzymaerosole bilden. Die Aufsicht kontrolliert den Wasserstand. Dieses Zeitfenster ist eine untersuchte Arbeitsbedingung und kein behaupteter quantitativer Endpunkt.
+3. Vor jeder Hefezugabe alle Ansätze auf 30 ±1 °C abkühlen, End-pH und tatsächliche Restmasse notieren. Der pH wird nicht nachträglich unterschiedlich eingestellt. Bei ungleichem pH, erheblichem Verlust oder Abweichung vom Temperaturfenster wird der Vergleich als gestört dokumentiert; nicht nachträglich passende Resultate erfinden. Aktive Hefe niemals in die heißen Ansätze geben.
+4. Die Aufsicht stellt die HI-Kontrollhefe bereit: eine mitgemessene eigene Portion Bäckerhefe mit wenig zu ihrem Ansatz gehörender Flüssigkeit zehn Minuten bei 80–85 °C erhitzen, abkühlen; verwendete Flüssigkeitsmenge aus den 100,0 mL dieses Ansatzes entnehmen und wieder vollständig zurückführen. Jede aktive 1,00-g-Portion ebenfalls in eigener entnommener und zurückgeführter Flüssigkeit suspendieren. Keine Zusatzvolumina stillschweigend zusetzen. H0 bleibt hefefrei. Ansätze getrennt beschriften und Werkzeuge wechseln.
+5. Nach Hefezugabe 20 Minuten bei 30 ±1 °C untersuchen, Gasvolumen bei 0/5/10/15/20 Minuten mit tatsächlichen Zeiten und Ableseauflösung notieren. Den frei beweglichen Gasspritzenkolben vorher prüfen, Schläuche niemals abklemmen. Bei 80 mL Gas, schwergängigem Kolben oder blockiertem Weg sofort stoppen, druckfrei durch die Aufsicht öffnen und Zeitpunkt/Volumen als Abbruch festhalten; keine Weiterrechnung als vollständige 20-Minuten-Messung. Kein Gäransatz wird bei 60 oder 80 °C betrieben.
+6. Nach Ende/Abbruch die Präparationen tatsächlich filtrieren, Filtratvolumen, Verluste und Erscheinung dokumentieren; Hefezellen und unverdaute Partikel können zurückbleiben, gelöste Zucker und mögliche Gärprodukte passieren. Keine Destillation, Verkostung oder Verwendung als Lebensmittel. Biologische/enzymehaltige Reste nach schulischem Hygiene-/Entsorgungsplan sammeln und Geräte reinigen.
+
+### Auswertungsauftrag und leeres Protokoll
+
+Vergleiche H mit I und N sowie E mit EI; AMG-Flüssigpräparate können selbst reduzierende Zucker enthalten. E/EI sind deshalb notwendige Träger-/Enzym-Blanks. Vergleiche ferner H/H0/HI und die positive G-Bedingung. Keine einfache Subtraktion als vollständige Stoffbilanz ausgeben: verschiedene Matrizes können die Hefe beeinflussen. Ein Gasunterschied allein identifiziert weder Glucose, CO₂ noch Ethanol und beweist keine vollständige Stärkehydrolyse. Ein Benedict-Test wäre bei diesem Enzympräparat allein kein stärkeursprünglicher Glucosenachweis. Begründe, welche zusätzlichen selektiven Analysen für solche Produktbehauptungen nötig wären. Auch kein Unterschied oder eine gestörte Kontrolle ist unverändert zu berichten.
+
+Datum/Aufsichtsrolle: ______; eigene Hypothese und Kontrolle vor Methodenkarte: ______; Enzymprodukt/Charge/Aktivitätsangabe: ______; Pufferrezept und gemessener pH: ______; eigene Einwaagen/Volumina je Code: ______; Verkleisterungs-/Hydrolysezeiten und gemessene Temperaturen: ______; Vorher-/Nachhermassen und Wasserergänzungen: ______; pH/Temperatur vor Hefezugabe: ______; aktive/inaktive/fehlende Hefe: ______; Gasrohwerte mit Zeiten/Einheiten je Code: ______; Stopps/Abweichungen: ______; eigene Filtration/Filtratvolumina/Verluste: ______; Schlussfolgerungen und offene Produktidentität: ______; tatsächlich beobachtete eigene Handlungen: ______.
+
+Die Felder bleiben leer. Der Stärkevergleich und die Aufarbeitung verlangen eigene tatsächliche Arbeit; Lehrdaten oder ein nacherzählter Plan geben dafür keine Durchführungspunkte.

@@ -164,7 +164,8 @@
   ],
   "method": {
     "type": "official-pdf-source-extraction",
-    "notes": "Die Source-Extraction basiert auf dem lokal archivierten amtlichen Teil-C-PDF Chemie fuer die gymnasiale Oberstufe Berlin-Brandenburg. Als Passagen werden Abschlussstandards, das Basiskonzept-Kapitel 2.3 sowie die E-Phasen- und Q-Phasen-Themenfelder extrahiert. Source-Ziele werden nur aus den Inhaltszeilen der Themenfelder erzeugt; Standards, Basiskonzepte, Experimente, Fachbegriffe, Kontexte und exemplarische Kompetenzentwicklungsbeitraege bleiben Passage-Kontext. Die Source-Ziel-Extraktion nutzt pdftotext -raw, damit die zweispaltigen Grundkurs-/Leistungskurs-Tabellen nicht zu gemischten Kunstzielen verkleben."
+    "notes": "Die Source-Extraction basiert auf dem lokal archivierten amtlichen Teil-C-PDF Chemie fuer die gymnasiale Oberstufe Berlin-Brandenburg. Als Passagen werden Abschlussstandards, das Basiskonzept-Kapitel 2.3 sowie die E-Phasen- und Q-Phasen-Themenfelder extrahiert. Source-Ziele werden nur aus den Inhaltszeilen der Themenfelder erzeugt; Standards, Basiskonzepte, Experimente, Fachbegriffe, Kontexte und exemplarische Kompetenzentwicklungsbeitraege bleiben Passage-Kontext. Die Source-Ziel-Extraktion nutzt pdftotext -raw, damit die zweispaltigen Grundkurs-/Leistungskurs-Tabellen nicht zu gemischten Kunstzielen verkleben.",
+    "additionalCompetencyStandards": "Additive extraction of the13 selected complete official E/K/B standards relevant to six current process goals; existing203 content cells and all original passages retained. Actual original pages9/11–14 and partial source bindings independently reviewed; unselected standards remain passage context. Review: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-BB-BE-six-process-source-informed-independent-b-20261018-v1/REVIEW.twenty-six-partial-source-relations.informed-independent-b.json"
   },
   "expectedTopicCodes": [
     "2.2.1",
@@ -236,15 +237,15 @@
         "checks": [
           {
             "id": "source-goals-created",
-            "label": "Aus den Inhaltszeilen der E-/Q-Themenfelder wurden Source-Ziele erzeugt",
+            "label": "Bestehende Inhaltszellen und ausgewählte vollständige Prozessstandards sind als Source-Ziele erfasst",
             "passed": true,
-            "details": "203 Source-Ziele"
+            "details": "216 Source-Ziele:203 unveränderte Inhaltszellen plus13 vollständige ausgewählte Standards aus2.2.2–2.2.4; übrige Standards bleiben Originalpassagenkontext."
           },
           {
             "id": "passage-to-source-goal-coverage",
             "label": "Jede zieltragende Themenfeld-Passage hat mindestens ein Source-Ziel",
             "passed": true,
-            "details": "Themenfeld-Passagen ohne Source-Ziele: -; Standards und Basiskonzepte bleiben Passage-Kontext."
+            "details": "Alle bisher zieltragenden Themenfelder bleiben unverändert erfasst;13 ausgewählte vollständige Prozessstandards kommen hinzu. Nicht ausgewählte Standards und Basiskonzepte bleiben Passage-Kontext; keine vollständige Erfassung aller Standards behauptet."
           },
           {
             "id": "source-goal-ids-unique",
@@ -260,9 +261,9 @@
           },
           {
             "id": "count-sanity",
-            "label": "Source-Ziel-Anzahl ist gegen den geprüften HE/BW-Median plausibilisiert",
+            "label": "Historischer Inhaltszellenvergleich und gesondert geprüfte Standardergänzung",
             "passed": true,
-            "details": "203 Source-Ziele. HE/BW Sek-II-Chemie-Referenz: HE 202, BW 126, Median 164, 30%-Korridor 115-213."
+            "details": "Der bestehende Inhaltskatalog bleibt203 unveränderte Zellen (historische HE/BW-Inhaltsreferenz202/126, Median164, Korridor115–213 unverändert). Zusätzlich13 einzeln am Original geprüfte vollständige Prozessstandards;216 gesamt ist nicht mit einem reinen Inhaltsmedian gleichzusetzen. Keine Qualitätsgrenze wurde geändert."
           }
         ]
       },
@@ -279,7 +280,7 @@
             "id": "mapping-2-complete",
             "label": "MAPPING-2 abgeschlossen",
             "passed": true,
-            "details": "203 Source-Ziele liegen vor; MAPPING-3 läuft gegen diese Source-Extraction-IDs."
+            "details": "216 Source-Ziele vorhanden;13 ausgewählte Prozessstandards mit ausdrücklicher partieller Zuordnung ergänzt,203 vorhandene Inhaltszellen unverändert."
           },
           {
             "id": "m3-review-file-present",
@@ -291,7 +292,7 @@
             "id": "m3-review-decisions-reference-source-goals",
             "label": "M3-Review-Entscheidungen referenzieren gültige Source-Ziele",
             "passed": true,
-            "details": "Noch keine Review-Entscheidungen vorhanden."
+            "details": "216 bestehende bzw. neue Zuordnungsentscheidungen referenzieren vorhandene Source-IDs; neue26 länderbezogene Beziehungen nur partial und unabhängig geprüft."
           },
           {
             "id": "m3-review-targets-exist",
@@ -301,15 +302,15 @@
           },
           {
             "id": "m3-all-source-goals-reviewed",
-            "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
-            "passed": false,
-            "details": "0/203 Source-Ziele reviewed; offen: 203."
+            "label": "Alle erfassten Source-Ziele besitzen eine M3-Zuordnungsentscheidung; Teilbeiträge bleiben getrennt",
+            "passed": true,
+            "details": "216/216 mit Zuordnungsentscheidung:203 bestehende Entscheidungen unverändert erhalten,13 neue vollständige Standards pro Land mit unabhängig geprüften partiellen Beiträgen. Kein neues Ganzreview der203 Bestandsentscheidungen."
           },
           {
             "id": "m3-all-source-goals-covered-by-canonical",
             "label": "Alle Source-Ziele sind durch SkillPilot-Ziele abgedeckt",
             "passed": false,
-            "details": "Fachlich abgedeckt: 0/203; MAPPING-3 steht aus."
+            "details": "216/216 erfasste Source-Ziele haben Mappingbeziehungen. Das belegt keine vollständige Erfüllung jedes ganzen Originaloperators: unter anderem tatsächliche DurchführungE5, AustauschK13, kritische Urheberschaft/ZitateK12 und eigene OptionsentwicklungB5 bleiben außerhalb dieser Teilbeiträge. Whole-source Abschluss bleibt offen."
           }
         ]
       }
@@ -6223,6 +6224,396 @@
       ],
       "metadata": {
         "extractionMethod": "pdftotext-raw-official-pdf-bullet-and-standard-extraction"
+      }
+    },
+    {
+      "id": "bb-chemistry-sekii-rlp-2-2-2-standard-e5-67c4ee9d",
+      "passageId": "bb-chemistry-sekii-rlp-2-2-2",
+      "topicCode": "2.2.2",
+      "topicTitle": "2.2.2 Erkenntnisgewinnungskompetenz",
+      "category": "Kompetenzstandard",
+      "title": "E5: führen qualitative und quantitative experimentelle Untersuchungen – den chemischen Arbeitsweisen und Sicherheitsregeln entsprechend – durch, protokollieren sie und werten diese aus",
+      "description": "Die Lernenden führen qualitative und quantitative experimentelle Untersuchungen – den chemischen Arbeitsweisen und Sicherheitsregeln entsprechend – durch, protokollieren sie und werten diese aus.",
+      "sourceDocumentKey": "RLP-GOST-CHEMIE-2022",
+      "sourceRef": "Rahmenlehrplan Berlin-Brandenburg Gymnasiale Oberstufe Teil C Chemie 2022, Abschnitt 2.2.2, Standard E5, gedruckte/PDF-S. 11.",
+      "sourceText": "führen qualitative und quantitative experimentelle Untersuchungen – den chemischen Arbeitsweisen und Sicherheitsregeln entsprechend – durch, protokollieren sie und werten diese aus",
+      "sourceSpan": {
+        "passageId": "bb-chemistry-sekii-rlp-2-2-2",
+        "label": "Standard E5"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-BB",
+        "stage:SekII",
+        "course:GK_LK",
+        "topic:2.2.2",
+        "category:Kompetenzstandard"
+      ],
+      "metadata": {
+        "extractionMethod": "Complete numbered competency standard from the unchanged retained official passage; original PDF and explicitly partial scientific source relation independently checked. Review: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-BB-BE-six-process-source-informed-independent-b-20261018-v1/REVIEW.twenty-six-partial-source-relations.informed-independent-b.json#/decisions/0. No whole-source or human approval.",
+        "standardCode": "E5",
+        "officialPdfPage": 11
+      }
+    },
+    {
+      "id": "bb-chemistry-sekii-rlp-2-2-2-standard-e8-e93505dc",
+      "passageId": "bb-chemistry-sekii-rlp-2-2-2",
+      "topicCode": "2.2.2",
+      "topicTitle": "2.2.2 Erkenntnisgewinnungskompetenz",
+      "category": "Kompetenzstandard",
+      "title": "E8: finden in erhobenen oder recherchierten Daten Strukturen, Beziehungen und Trends, erklären diese theoriebezogen und ziehen Schlussfolgerungen",
+      "description": "Die Lernenden finden in erhobenen oder recherchierten Daten Strukturen, Beziehungen und Trends, erklären diese theoriebezogen und ziehen Schlussfolgerungen.",
+      "sourceDocumentKey": "RLP-GOST-CHEMIE-2022",
+      "sourceRef": "Rahmenlehrplan Berlin-Brandenburg Gymnasiale Oberstufe Teil C Chemie 2022, Abschnitt 2.2.2, Standard E8, gedruckte/PDF-S. 12.",
+      "sourceText": "finden in erhobenen oder recherchierten Daten Strukturen, Beziehungen und Trends, erklären diese theoriebezogen und ziehen Schlussfolgerungen",
+      "sourceSpan": {
+        "passageId": "bb-chemistry-sekii-rlp-2-2-2",
+        "label": "Standard E8"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-BB",
+        "stage:SekII",
+        "course:GK_LK",
+        "topic:2.2.2",
+        "category:Kompetenzstandard"
+      ],
+      "metadata": {
+        "extractionMethod": "Complete numbered competency standard from the unchanged retained official passage; original PDF and explicitly partial scientific source relation independently checked. Review: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-BB-BE-six-process-source-informed-independent-b-20261018-v1/REVIEW.twenty-six-partial-source-relations.informed-independent-b.json#/decisions/1. No whole-source or human approval.",
+        "standardCode": "E8",
+        "officialPdfPage": 12
+      }
+    },
+    {
+      "id": "bb-chemistry-sekii-rlp-2-2-2-standard-e12-5b7b9f10",
+      "passageId": "bb-chemistry-sekii-rlp-2-2-2",
+      "topicCode": "2.2.2",
+      "topicTitle": "2.2.2 Erkenntnisgewinnungskompetenz",
+      "category": "Kompetenzstandard",
+      "title": "E12: reflektieren Möglichkeiten und Grenzen des konkreten Erkenntnisgewinnungsprozesses sowie der gewonnenen Erkenntnisse (z. B. Reproduzierbarkeit, Falsifizierbarkeit, Intersubjektivität, logische Konsistenz, Vorläufigkeit)",
+      "description": "Die Lernenden reflektieren Möglichkeiten und Grenzen des konkreten Erkenntnisgewinnungsprozesses sowie der gewonnenen Erkenntnisse (z. B. Reproduzierbarkeit, Falsifizierbarkeit, Intersubjektivität, logische Konsistenz, Vorläufigkeit).",
+      "sourceDocumentKey": "RLP-GOST-CHEMIE-2022",
+      "sourceRef": "Rahmenlehrplan Berlin-Brandenburg Gymnasiale Oberstufe Teil C Chemie 2022, Abschnitt 2.2.2, Standard E12, gedruckte/PDF-S. 12.",
+      "sourceText": "reflektieren Möglichkeiten und Grenzen des konkreten Erkenntnisgewinnungsprozesses sowie der gewonnenen Erkenntnisse (z. B. Reproduzierbarkeit, Falsifizierbarkeit, Intersubjektivität, logische Konsistenz, Vorläufigkeit)",
+      "sourceSpan": {
+        "passageId": "bb-chemistry-sekii-rlp-2-2-2",
+        "label": "Standard E12"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-BB",
+        "stage:SekII",
+        "course:GK_LK",
+        "topic:2.2.2",
+        "category:Kompetenzstandard"
+      ],
+      "metadata": {
+        "extractionMethod": "Complete numbered competency standard from the unchanged retained official passage; original PDF and explicitly partial scientific source relation independently checked. Review: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-BB-BE-six-process-source-informed-independent-b-20261018-v1/REVIEW.twenty-six-partial-source-relations.informed-independent-b.json#/decisions/2. No whole-source or human approval.",
+        "standardCode": "E12",
+        "officialPdfPage": 12
+      }
+    },
+    {
+      "id": "bb-chemistry-sekii-rlp-2-2-3-standard-k1-9d23d0f8",
+      "passageId": "bb-chemistry-sekii-rlp-2-2-3",
+      "topicCode": "2.2.3",
+      "topicTitle": "2.2.3 Kommunikationskompetenz",
+      "category": "Kompetenzstandard",
+      "title": "K1: recherchieren zu chemischen Sachverhalten zielgerichtet in analogen und digitalen Medien und wählen für ihre Zwecke passende Quellen aus",
+      "description": "Die Lernenden recherchieren zu chemischen Sachverhalten zielgerichtet in analogen und digitalen Medien und wählen für ihre Zwecke passende Quellen aus.",
+      "sourceDocumentKey": "RLP-GOST-CHEMIE-2022",
+      "sourceRef": "Rahmenlehrplan Berlin-Brandenburg Gymnasiale Oberstufe Teil C Chemie 2022, Abschnitt 2.2.3, Standard K1, gedruckte/PDF-S. 13.",
+      "sourceText": "recherchieren zu chemischen Sachverhalten zielgerichtet in analogen und digitalen Medien und wählen für ihre Zwecke passende Quellen aus",
+      "sourceSpan": {
+        "passageId": "bb-chemistry-sekii-rlp-2-2-3",
+        "label": "Standard K1"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-BB",
+        "stage:SekII",
+        "course:GK_LK",
+        "topic:2.2.3",
+        "category:Kompetenzstandard"
+      ],
+      "metadata": {
+        "extractionMethod": "Complete numbered competency standard from the unchanged retained official passage; original PDF and explicitly partial scientific source relation independently checked. Review: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-BB-BE-six-process-source-informed-independent-b-20261018-v1/REVIEW.twenty-six-partial-source-relations.informed-independent-b.json#/decisions/3. No whole-source or human approval.",
+        "standardCode": "K1",
+        "officialPdfPage": 13
+      }
+    },
+    {
+      "id": "bb-chemistry-sekii-rlp-2-2-3-standard-k2-a12e1c33",
+      "passageId": "bb-chemistry-sekii-rlp-2-2-3",
+      "topicCode": "2.2.3",
+      "topicTitle": "2.2.3 Kommunikationskompetenz",
+      "category": "Kompetenzstandard",
+      "title": "K2: wählen relevante und aussagekräftige Informationen und Daten zu chemischen Sachverhalten und anwendungsbezogenen Fragestellungen aus und erschließen Informationen aus Quellen mit verschiedenen, auch komplexen Darstellungsformen",
+      "description": "Die Lernenden wählen relevante und aussagekräftige Informationen und Daten zu chemischen Sachverhalten und anwendungsbezogenen Fragestellungen aus und erschließen Informationen aus Quellen mit verschiedenen, auch komplexen Darstellungsformen.",
+      "sourceDocumentKey": "RLP-GOST-CHEMIE-2022",
+      "sourceRef": "Rahmenlehrplan Berlin-Brandenburg Gymnasiale Oberstufe Teil C Chemie 2022, Abschnitt 2.2.3, Standard K2, gedruckte/PDF-S. 13.",
+      "sourceText": "wählen relevante und aussagekräftige Informationen und Daten zu chemischen Sachverhalten und anwendungsbezogenen Fragestellungen aus und erschließen Informationen aus Quellen mit verschiedenen, auch komplexen Darstellungsformen",
+      "sourceSpan": {
+        "passageId": "bb-chemistry-sekii-rlp-2-2-3",
+        "label": "Standard K2"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-BB",
+        "stage:SekII",
+        "course:GK_LK",
+        "topic:2.2.3",
+        "category:Kompetenzstandard"
+      ],
+      "metadata": {
+        "extractionMethod": "Complete numbered competency standard from the unchanged retained official passage; original PDF and explicitly partial scientific source relation independently checked. Review: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-BB-BE-six-process-source-informed-independent-b-20261018-v1/REVIEW.twenty-six-partial-source-relations.informed-independent-b.json#/decisions/4. No whole-source or human approval.",
+        "standardCode": "K2",
+        "officialPdfPage": 13
+      }
+    },
+    {
+      "id": "bb-chemistry-sekii-rlp-2-2-3-standard-k5-e7183091",
+      "passageId": "bb-chemistry-sekii-rlp-2-2-3",
+      "topicCode": "2.2.3",
+      "topicTitle": "2.2.3 Kommunikationskompetenz",
+      "category": "Kompetenzstandard",
+      "title": "K5: wählen chemische Sachverhalte und Informationen sach-, adressaten- und situationsgerecht aus",
+      "description": "Die Lernenden wählen chemische Sachverhalte und Informationen sach-, adressaten- und situationsgerecht aus.",
+      "sourceDocumentKey": "RLP-GOST-CHEMIE-2022",
+      "sourceRef": "Rahmenlehrplan Berlin-Brandenburg Gymnasiale Oberstufe Teil C Chemie 2022, Abschnitt 2.2.3, Standard K5, gedruckte/PDF-S. 13.",
+      "sourceText": "wählen chemische Sachverhalte und Informationen sach-, adressaten- und situationsgerecht aus",
+      "sourceSpan": {
+        "passageId": "bb-chemistry-sekii-rlp-2-2-3",
+        "label": "Standard K5"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-BB",
+        "stage:SekII",
+        "course:GK_LK",
+        "topic:2.2.3",
+        "category:Kompetenzstandard"
+      ],
+      "metadata": {
+        "extractionMethod": "Complete numbered competency standard from the unchanged retained official passage; original PDF and explicitly partial scientific source relation independently checked. Review: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-BB-BE-six-process-source-informed-independent-b-20261018-v1/REVIEW.twenty-six-partial-source-relations.informed-independent-b.json#/decisions/5. No whole-source or human approval.",
+        "standardCode": "K5",
+        "officialPdfPage": 13
+      }
+    },
+    {
+      "id": "bb-chemistry-sekii-rlp-2-2-3-standard-k8-4bc150b8",
+      "passageId": "bb-chemistry-sekii-rlp-2-2-3",
+      "topicCode": "2.2.3",
+      "topicTitle": "2.2.3 Kommunikationskompetenz",
+      "category": "Kompetenzstandard",
+      "title": "K8: strukturieren und interpretieren ausgewählte Informationen und leiten Schlussfolgerungen ab",
+      "description": "Die Lernenden strukturieren und interpretieren ausgewählte Informationen und leiten Schlussfolgerungen ab.",
+      "sourceDocumentKey": "RLP-GOST-CHEMIE-2022",
+      "sourceRef": "Rahmenlehrplan Berlin-Brandenburg Gymnasiale Oberstufe Teil C Chemie 2022, Abschnitt 2.2.3, Standard K8, gedruckte/PDF-S. 13.",
+      "sourceText": "strukturieren und interpretieren ausgewählte Informationen und leiten Schlussfolgerungen ab",
+      "sourceSpan": {
+        "passageId": "bb-chemistry-sekii-rlp-2-2-3",
+        "label": "Standard K8"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-BB",
+        "stage:SekII",
+        "course:GK_LK",
+        "topic:2.2.3",
+        "category:Kompetenzstandard"
+      ],
+      "metadata": {
+        "extractionMethod": "Complete numbered competency standard from the unchanged retained official passage; original PDF and explicitly partial scientific source relation independently checked. Review: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-BB-BE-six-process-source-informed-independent-b-20261018-v1/REVIEW.twenty-six-partial-source-relations.informed-independent-b.json#/decisions/6. No whole-source or human approval.",
+        "standardCode": "K8",
+        "officialPdfPage": 13
+      }
+    },
+    {
+      "id": "bb-chemistry-sekii-rlp-2-2-3-standard-k9-0d3107c6",
+      "passageId": "bb-chemistry-sekii-rlp-2-2-3",
+      "topicCode": "2.2.3",
+      "topicTitle": "2.2.3 Kommunikationskompetenz",
+      "category": "Kompetenzstandard",
+      "title": "K9: verwenden Fachbegriffe und -sprache korrekt",
+      "description": "Die Lernenden verwenden Fachbegriffe und -sprache korrekt.",
+      "sourceDocumentKey": "RLP-GOST-CHEMIE-2022",
+      "sourceRef": "Rahmenlehrplan Berlin-Brandenburg Gymnasiale Oberstufe Teil C Chemie 2022, Abschnitt 2.2.3, Standard K9, gedruckte/PDF-S. 13.",
+      "sourceText": "verwenden Fachbegriffe und -sprache korrekt",
+      "sourceSpan": {
+        "passageId": "bb-chemistry-sekii-rlp-2-2-3",
+        "label": "Standard K9"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-BB",
+        "stage:SekII",
+        "course:GK_LK",
+        "topic:2.2.3",
+        "category:Kompetenzstandard"
+      ],
+      "metadata": {
+        "extractionMethod": "Complete numbered competency standard from the unchanged retained official passage; original PDF and explicitly partial scientific source relation independently checked. Review: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-BB-BE-six-process-source-informed-independent-b-20261018-v1/REVIEW.twenty-six-partial-source-relations.informed-independent-b.json#/decisions/7. No whole-source or human approval.",
+        "standardCode": "K9",
+        "officialPdfPage": 13
+      }
+    },
+    {
+      "id": "bb-chemistry-sekii-rlp-2-2-3-standard-k10-19e84378",
+      "passageId": "bb-chemistry-sekii-rlp-2-2-3",
+      "topicCode": "2.2.3",
+      "topicTitle": "2.2.3 Kommunikationskompetenz",
+      "category": "Kompetenzstandard",
+      "title": "K10: erklären chemische Sachverhalte und argumentieren fachlich schlüssig",
+      "description": "Die Lernenden erklären chemische Sachverhalte und argumentieren fachlich schlüssig.",
+      "sourceDocumentKey": "RLP-GOST-CHEMIE-2022",
+      "sourceRef": "Rahmenlehrplan Berlin-Brandenburg Gymnasiale Oberstufe Teil C Chemie 2022, Abschnitt 2.2.3, Standard K10, gedruckte/PDF-S. 13.",
+      "sourceText": "erklären chemische Sachverhalte und argumentieren fachlich schlüssig",
+      "sourceSpan": {
+        "passageId": "bb-chemistry-sekii-rlp-2-2-3",
+        "label": "Standard K10"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-BB",
+        "stage:SekII",
+        "course:GK_LK",
+        "topic:2.2.3",
+        "category:Kompetenzstandard"
+      ],
+      "metadata": {
+        "extractionMethod": "Complete numbered competency standard from the unchanged retained official passage; original PDF and explicitly partial scientific source relation independently checked. Review: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-BB-BE-six-process-source-informed-independent-b-20261018-v1/REVIEW.twenty-six-partial-source-relations.informed-independent-b.json#/decisions/8. No whole-source or human approval.",
+        "standardCode": "K10",
+        "officialPdfPage": 13
+      }
+    },
+    {
+      "id": "bb-chemistry-sekii-rlp-2-2-3-standard-k12-afe9d77b",
+      "passageId": "bb-chemistry-sekii-rlp-2-2-3",
+      "topicCode": "2.2.3",
+      "topicTitle": "2.2.3 Kommunikationskompetenz",
+      "category": "Kompetenzstandard",
+      "title": "K12: prüfen die Urheberschaft, belegen verwendete Quellen und kennzeichnen Zitate",
+      "description": "Die Lernenden prüfen die Urheberschaft, belegen verwendete Quellen und kennzeichnen Zitate.",
+      "sourceDocumentKey": "RLP-GOST-CHEMIE-2022",
+      "sourceRef": "Rahmenlehrplan Berlin-Brandenburg Gymnasiale Oberstufe Teil C Chemie 2022, Abschnitt 2.2.3, Standard K12, gedruckte/PDF-S. 13.",
+      "sourceText": "prüfen die Urheberschaft, belegen verwendete Quellen und kennzeichnen Zitate",
+      "sourceSpan": {
+        "passageId": "bb-chemistry-sekii-rlp-2-2-3",
+        "label": "Standard K12"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-BB",
+        "stage:SekII",
+        "course:GK_LK",
+        "topic:2.2.3",
+        "category:Kompetenzstandard"
+      ],
+      "metadata": {
+        "extractionMethod": "Complete numbered competency standard from the unchanged retained official passage; original PDF and explicitly partial scientific source relation independently checked. Review: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-BB-BE-six-process-source-informed-independent-b-20261018-v1/REVIEW.twenty-six-partial-source-relations.informed-independent-b.json#/decisions/9. No whole-source or human approval.",
+        "standardCode": "K12",
+        "officialPdfPage": 13
+      }
+    },
+    {
+      "id": "bb-chemistry-sekii-rlp-2-2-3-standard-k13-a144132d",
+      "passageId": "bb-chemistry-sekii-rlp-2-2-3",
+      "topicCode": "2.2.3",
+      "topicTitle": "2.2.3 Kommunikationskompetenz",
+      "category": "Kompetenzstandard",
+      "title": "K13: tauschen sich mit anderen konstruktiv über chemische Sachverhalte aus, vertreten, reflektieren und korrigieren gegebenenfalls den eigenen Standpunkt",
+      "description": "Die Lernenden tauschen sich mit anderen konstruktiv über chemische Sachverhalte aus, vertreten, reflektieren und korrigieren gegebenenfalls den eigenen Standpunkt.",
+      "sourceDocumentKey": "RLP-GOST-CHEMIE-2022",
+      "sourceRef": "Rahmenlehrplan Berlin-Brandenburg Gymnasiale Oberstufe Teil C Chemie 2022, Abschnitt 2.2.3, Standard K13, gedruckte/PDF-S. 13.",
+      "sourceText": "tauschen sich mit anderen konstruktiv über chemische Sachverhalte aus, vertreten, reflektieren und korrigieren gegebenenfalls den eigenen Standpunkt",
+      "sourceSpan": {
+        "passageId": "bb-chemistry-sekii-rlp-2-2-3",
+        "label": "Standard K13"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-BB",
+        "stage:SekII",
+        "course:GK_LK",
+        "topic:2.2.3",
+        "category:Kompetenzstandard"
+      ],
+      "metadata": {
+        "extractionMethod": "Complete numbered competency standard from the unchanged retained official passage; original PDF and explicitly partial scientific source relation independently checked. Review: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-BB-BE-six-process-source-informed-independent-b-20261018-v1/REVIEW.twenty-six-partial-source-relations.informed-independent-b.json#/decisions/10. No whole-source or human approval.",
+        "standardCode": "K13",
+        "officialPdfPage": 13
+      }
+    },
+    {
+      "id": "bb-chemistry-sekii-rlp-2-2-4-standard-b3-2eb9fbca",
+      "passageId": "bb-chemistry-sekii-rlp-2-2-4",
+      "topicCode": "2.2.4",
+      "topicTitle": "2.2.4 Bewertungskompetenz",
+      "category": "Kompetenzstandard",
+      "title": "B3: beurteilen Informationen und Daten hinsichtlich ihrer Angemessenheit, Grenzen und Tragweite",
+      "description": "Die Lernenden beurteilen Informationen und Daten hinsichtlich ihrer Angemessenheit, Grenzen und Tragweite.",
+      "sourceDocumentKey": "RLP-GOST-CHEMIE-2022",
+      "sourceRef": "Rahmenlehrplan Berlin-Brandenburg Gymnasiale Oberstufe Teil C Chemie 2022, Abschnitt 2.2.4, Standard B3, gedruckte/PDF-S. 14.",
+      "sourceText": "beurteilen Informationen und Daten hinsichtlich ihrer Angemessenheit, Grenzen und Tragweite",
+      "sourceSpan": {
+        "passageId": "bb-chemistry-sekii-rlp-2-2-4",
+        "label": "Standard B3"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-BB",
+        "stage:SekII",
+        "course:GK_LK",
+        "topic:2.2.4",
+        "category:Kompetenzstandard"
+      ],
+      "metadata": {
+        "extractionMethod": "Complete numbered competency standard from the unchanged retained official passage; original PDF and explicitly partial scientific source relation independently checked. Review: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-BB-BE-six-process-source-informed-independent-b-20261018-v1/REVIEW.twenty-six-partial-source-relations.informed-independent-b.json#/decisions/11. No whole-source or human approval.",
+        "standardCode": "B3",
+        "officialPdfPage": 14
+      }
+    },
+    {
+      "id": "bb-chemistry-sekii-rlp-2-2-4-standard-b5-00967dac",
+      "passageId": "bb-chemistry-sekii-rlp-2-2-4",
+      "topicCode": "2.2.4",
+      "topicTitle": "2.2.4 Bewertungskompetenz",
+      "category": "Kompetenzstandard",
+      "title": "B5: entwickeln anhand relevanter Bewertungskriterien Handlungsoptionen in gesellschaftlich- oder alltagsrelevanten Entscheidungssituationen mit fachlichem Bezug und wägen sie gegeneinander ab",
+      "description": "Die Lernenden entwickeln anhand relevanter Bewertungskriterien Handlungsoptionen in gesellschaftlich- oder alltagsrelevanten Entscheidungssituationen mit fachlichem Bezug und wägen sie gegeneinander ab.",
+      "sourceDocumentKey": "RLP-GOST-CHEMIE-2022",
+      "sourceRef": "Rahmenlehrplan Berlin-Brandenburg Gymnasiale Oberstufe Teil C Chemie 2022, Abschnitt 2.2.4, Standard B5, gedruckte/PDF-S. 14.",
+      "sourceText": "entwickeln anhand relevanter Bewertungskriterien Handlungsoptionen in gesellschaftlich- oder alltagsrelevanten Entscheidungssituationen mit fachlichem Bezug und wägen sie gegeneinander ab",
+      "sourceSpan": {
+        "passageId": "bb-chemistry-sekii-rlp-2-2-4",
+        "label": "Standard B5"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-BB",
+        "stage:SekII",
+        "course:GK_LK",
+        "topic:2.2.4",
+        "category:Kompetenzstandard"
+      ],
+      "metadata": {
+        "extractionMethod": "Complete numbered competency standard from the unchanged retained official passage; original PDF and explicitly partial scientific source relation independently checked. Review: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-BB-BE-six-process-source-informed-independent-b-20261018-v1/REVIEW.twenty-six-partial-source-relations.informed-independent-b.json#/decisions/12. No whole-source or human approval.",
+        "standardCode": "B5",
+        "officialPdfPage": 14
       }
     }
   ]

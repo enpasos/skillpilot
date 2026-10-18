@@ -1,0 +1,49 @@
+{
+  "executions": [
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "quality:source-coverage-audit"
+      ],
+      "startedUTC": "2026-10-18T10:16:10.525124+00:00",
+      "finishedUTC": "2026-10-18T10:16:34.544860+00:00",
+      "elapsedSeconds": 24.02,
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-current737-original-source-audit-technical-20261018-v1/regenerate.stdout.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-current737-original-source-audit-technical-20261018-v1/regenerate.stderr.txt"
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "quality:source-coverage-audit:check"
+      ],
+      "startedUTC": "2026-10-18T10:16:34.545222+00:00",
+      "finishedUTC": "2026-10-18T10:17:08.018984+00:00",
+      "elapsedSeconds": 33.474,
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-current737-original-source-audit-technical-20261018-v1/evidence-and-check.stdout.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-current737-original-source-audit-technical-20261018-v1/evidence-and-check.stderr.txt"
+    }
+  ],
+  "commandExecutionsPerRequestedCommand": 1,
+  "afterGeneratedOutputPins": [
+    {
+      "path": "docs/qa-ci/status/curriculum-source-coverage-audit.json",
+      "sha256": "a0186470c341d975fd571ed5505e65f9bbbff42a249b58b2f14ebc3650e18683",
+      "bytes": 213066
+    },
+    {
+      "path": "docs/qa-ci/status/curriculum-source-coverage-audit.md",
+      "sha256": "033733065f6b3061b2b1530de416841d9bca6e8d27dcf4da64881dd557372438",
+      "bytes": 5838
+    }
+  ],
+  "normalWriteAuthority": "Only original two generated docs/qa-ci/status/curriculum-source-coverage-audit outputs",
+  "noApprovalClaim": true
+}

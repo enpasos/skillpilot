@@ -1,0 +1,97 @@
+{
+  "artifactRole": "INDEPENDENT_FORMULA_RESULTS_NOT_AUTOMATIC_VERDICT",
+  "conductors": {
+    "polymer_R_ohm": 100.0,
+    "metal_R_ohm": 0.002,
+    "polymer_mass_g": 0.09999999999999999,
+    "metal_mass_g": 0.7999999999999999
+  },
+  "fat_indices": {
+    "A": {
+      "SV_mg_KOH_per_g": 190.16949152542372,
+      "IV_g_I2_per_100g": 86.03389830508476
+    },
+    "B": {
+      "SV_mg_KOH_per_g": 188.88888888888889,
+      "IV_g_I2_per_100g": 0.0
+    },
+    "C": {
+      "SV_mg_KOH_per_g": 263.38028169014086,
+      "IV_g_I2_per_100g": 0.0
+    },
+    "D_1to1_mass_mixture": {
+      "SV_mg_KOH_per_g": 226.7748866077823,
+      "IV_g_I2_per_100g": 43.01694915254238
+    }
+  },
+  "antacid_capacity": {
+    "CaCO3_mmol_H": 9.991008092716553,
+    "CaCO3_mmol_CO2": 4.995504046358277,
+    "MgOH2_mmol_H": 10.2880658436214
+  },
+  "acid_models": {
+    "bicarbonate_mmol_reacted": 1.0,
+    "MgOH2_mmol_reacted_H": 2.0,
+    "bicarbonate_pH": 1.3979400086720375,
+    "MgOH2_pH": 1.5228787452803376
+  },
+  "digestive_models": {
+    "lactose_active_remaining_mmol": 2,
+    "lactose_control_remaining_mmol": 9.8,
+    "glucose_galactose_active_each_mmol": 8,
+    "fat_remaining_mmol": 0.4,
+    "glycerol_mmol": 0.6,
+    "fatty_acid_mmol": 1.7999999999999998,
+    "foam_fraction_decrease": 0.7
+  },
+  "ASA_back_titration_mg": {
+    "A": 249.97200000000004,
+    "B": 175.02544
+  },
+  "HPLC": {
+    "A": {
+      "ASA_mg_per_L": 50.0,
+      "paracetamol_mg_per_L": 25.0,
+      "ASA_mg_per_tablet": 500.0,
+      "paracetamol_mg_per_tablet": 250.0
+    },
+    "B": {
+      "ASA_mg_per_L": 25.0,
+      "paracetamol_mg_per_L": 50.0,
+      "ASA_mg_per_tablet": 250.0,
+      "paracetamol_mg_per_tablet": 500.0
+    }
+  },
+  "plasma_piecewise_linear": {
+    "L_onset_h": 0.5,
+    "L_end_h": 3.0,
+    "L_duration_h": 2.5,
+    "I_onset_h": 1,
+    "I_end_h": 4,
+    "I_duration_h": 3,
+    "R_onset_h": 2,
+    "R_end_h": 4,
+    "R_duration_h": 2
+  },
+  "release50_time_h": {
+    "E": 3.0,
+    "R": 2.6666666666666665,
+    "Z": 0.5555555555555556
+  },
+  "partition": {
+    "N_fraction_O": 0.9,
+    "Z_fraction_O": 0.2,
+    "N_mass_O_g": 0.18,
+    "Z_mass_O_g": 0.02,
+    "N_solute_mass_fraction_O": 0.9,
+    "N_recovery_O": 0.8999999999999999,
+    "U_solute_mass_fraction_F1": 0.9090909090909092,
+    "U_recovery_F1": 0.8333333333333334
+  },
+  "finite_chain_condensation": {
+    "trimer_bridges": 2,
+    "trimer_water_molecules": 2,
+    "tetramer_bridges": 3,
+    "tetramer_water_molecules": 3
+  }
+}

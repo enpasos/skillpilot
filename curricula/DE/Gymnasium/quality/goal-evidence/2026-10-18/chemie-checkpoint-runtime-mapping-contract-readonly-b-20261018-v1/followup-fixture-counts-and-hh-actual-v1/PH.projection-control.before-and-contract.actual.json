@@ -1,0 +1,31 @@
+{
+  "observedAt": "2026-10-18T11:28:14.963708+00:00",
+  "role": "before-pin for explicitly authorized positive/negative mastery projection test repair",
+  "testPath": "backend/src/test/java/com/skillpilot/backend/service/LearnerServiceCanonicalProjectionTest.java",
+  "beforeFileSha256": "0439c0d30cf8476415afa3ff4633dcdb5cadfc46e504a2028c754056c1dcdd3a",
+  "beforeMethod": "    @Test\n    void canonicalChemistryFrontierUsesProjectedSek1ChemistryMastery() {\n        learner.setSelectedCurriculum(CANONICAL_CHEMISTRY_ID);\n        when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))\n                .thenReturn(List.of(new PlannedGoal(learner, CANONICAL_CHEMISTRY_E2_CLUSTER_ID)));\n        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))\n                .thenReturn(List.of(\n                        new Mastery(learner, LEGACY_SEK1_CHEMISTRY_WHY_ID, 1.0),\n                        new Mastery(learner, LEGACY_SEK1_CHEMISTRY_WORKING_METHODS_ID, 1.0),\n                        new Mastery(learner, LEGACY_SEK1_CHEMISTRY_SUBSTANCES_ID, 1.0),\n                        new Mastery(learner, LEGACY_SEK1_CHEMISTRY_STATES_ID, 1.0),\n                        new Mastery(learner, LEGACY_SEK1_CHEMISTRY_SOLUTIONS_ID, 1.0),\n                        new Mastery(learner, LEGACY_SEK1_CHEMISTRY_ACID_BASE_ID, 1.0)));\n\n        List<FrontierGoal> frontier = learnerService.getRichFrontier(LEARNER_ID);\n\n        assertThat(frontier)\n                .extracting(FrontierGoal::id)\n                .contains(CANONICAL_CHEMISTRY_ARRHENIUS_ID)\n                .doesNotContain(CANONICAL_CHEMISTRY_WHY_ID, CANONICAL_CHEMISTRY_PH_ID, LEGACY_SEK1_CHEMISTRY_ACID_BASE_ID);\n    }\n\n",
+  "currentPHRequires": [
+    "1351706f-4ea6-56e9-951b-87b24cbcdee8",
+    "d2ccd1d5-56f7-583f-9724-e97441367f91"
+  ],
+  "headPHRequires": [
+    "28bb9d15-f865-5843-a035-6066580fea64",
+    "1351706f-4ea6-56e9-951b-87b24cbcdee8",
+    "d2ccd1d5-56f7-583f-9724-e97441367f91"
+  ],
+  "currentCanonicalFileSha256": "4a98ea0fadda602b7b04e4117e02aef986c127ed36074d3e700a1777f08a1901",
+  "HESekIExactMappingFileSha256": "5bbf502202f4095d839dc2f553cee937b7e20ccc2260142821753cc2bbfc6464",
+  "relevantExactMappings": [
+    {
+      "legacyGoalId": "745306f5-5d03-4cfd-bca8-5cb0c63d828c",
+      "canonicalGoalId": "53fd1bfd-facb-54ae-b2dc-f667ed1414fc",
+      "matchType": "exact"
+    },
+    {
+      "legacyGoalId": "0bfc34bc-9a17-4e86-ac62-b2bf4b967a43",
+      "canonicalGoalId": "d2ccd1d5-56f7-583f-9724-e97441367f91",
+      "matchType": "exact"
+    }
+  ],
+  "canonicalAndMappingNormalWritesAuthorized": false
+}

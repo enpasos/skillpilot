@@ -544,7 +544,7 @@
     {
       "legacyGoalId": "bw-chem-seki-3-2-2-1-b10-a01-eba1a39a",
       "canonicalGoalId": "3be2d0b7-c22f-57d4-886a-10fc04a629f5",
-      "matchType": "exact",
+      "matchType": "partial",
       "reviewDecisionId": "bw-chem-seki-3-2-2-1-b10-a01-eba1a39a::bw-chemistry-seki-m3"
     },
     {
@@ -750,6 +750,54 @@
       "canonicalGoalId": "871eabde-6e19-59d3-bc7c-60977a9837db",
       "matchType": "exact",
       "reviewDecisionId": "bw-chem-seki-3-2-2-3-b08-a01-c2e07d49::bw-chemistry-seki-m3"
+    },
+    {
+      "legacyGoalId": "bw-chem-seki-3-2-1-3-b01-a01-51cd9e95",
+      "canonicalGoalId": "4285d84a-2c9a-4d51-8250-8bed4daf2d2e",
+      "matchType": "partial",
+      "reviewDecisionId": "bw-chem-seki-3-2-1-3-b01-a01-51cd9e95"
+    },
+    {
+      "legacyGoalId": "bw-chem-seki-3-2-1-2-b08-a01-be890a3d",
+      "canonicalGoalId": "28bb9d15-f865-5843-a035-6066580fea64",
+      "matchType": "partial",
+      "reviewDecisionId": "bw-chem-seki-3-2-1-2-b08-a01-be890a3d"
+    },
+    {
+      "legacyGoalId": "bw-chem-seki-3-2-2-2-b01-a01-12579d9f",
+      "canonicalGoalId": "9b5d6326-d27c-4ece-8c72-debda705464a",
+      "matchType": "partial",
+      "reviewDecisionId": "bw-chem-seki-3-2-2-2-b01-a01-12579d9f"
+    },
+    {
+      "legacyGoalId": "bw-chem-seki-3-2-1-1-b13-a01-1e95d177",
+      "canonicalGoalId": "a25a19ed-aec3-59cc-ae28-31d98746cb9d",
+      "matchType": "partial",
+      "reviewDecisionId": "bw-chem-seki-3-2-1-1-b13-a01-1e95d177"
+    },
+    {
+      "legacyGoalId": "bw-chem-seki-3-2-1-3-b01-a01-51cd9e95",
+      "canonicalGoalId": "448815cc-4127-54b7-96bf-e54b3d2a38c5",
+      "matchType": "partial",
+      "reviewDecisionId": "bw-chem-seki-3-2-1-3-b01-a01-51cd9e95"
+    },
+    {
+      "legacyGoalId": "bw-chem-seki-3-2-1-3-b02-a01-95a4d2ed",
+      "canonicalGoalId": "448815cc-4127-54b7-96bf-e54b3d2a38c5",
+      "matchType": "partial",
+      "reviewDecisionId": "bw-chem-seki-3-2-1-3-b02-a01-95a4d2ed"
+    },
+    {
+      "legacyGoalId": "bw-chemistry-seki-process-standard-2-1-10",
+      "canonicalGoalId": "5c4788a7-6760-53dc-894e-e04bca6f8cd9",
+      "matchType": "partial",
+      "reviewDecisionId": "bw-chemistry-seki-process-standard-2-1-10"
+    },
+    {
+      "legacyGoalId": "bw-chem-seki-3-2-1-3-b05-a01-e3930fd4",
+      "canonicalGoalId": "9b56d01e-c2d7-51d8-b78e-237592c1ed20",
+      "matchType": "partial",
+      "reviewDecisionId": "bw-chem-seki-3-2-1-3-b05-a01-e3930fd4"
     }
   ],
   "decisions": [
@@ -913,11 +961,26 @@
       "sourceSpan": "3.2.1.1 (13)",
       "decision": "mapped",
       "canonicalGoalIds": [
-        "dd843c85-bf60-58c3-861b-fb531ba69b17"
+        "dd843c85-bf60-58c3-861b-fb531ba69b17",
+        "a25a19ed-aec3-59cc-ae28-31d98746cb9d"
       ],
       "rationale": "Das BW-Source-Ziel wird inhaltlich durch das kanonische Chemieziel \"Ethanol gesundheitlich und gesellschaftlich einordnen\" abgedeckt.",
       "reviewedAt": "2026-05-11",
-      "reviewer": "codex"
+      "reviewer": "codex",
+      "additionalAcceptedPartialContributions": [
+        {
+          "canonicalGoalId": "a25a19ed-aec3-59cc-ae28-31d98746cb9d",
+          "matchType": "partial",
+          "acceptedScientificRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-first-twenty-source-informed-independent-a-20261018-v1/ACCEPTED.one-hundred-sixty-four-bounded-direct-relations.with-explicit-context-conditions.json",
+            "sha256": "5af30ee6b2cb919a8445f2668c963b81d22583cb241a8d64f8df469f93da06cf",
+            "bytes": 735256,
+            "jsonPointer": "/records/131"
+          },
+          "rationale": "Whole P uses provided ethanol physiology/oxidation and contrasting exposure/use cards to explain body effects and bounded risk decisions, separating external use from ingestion. Exact selected official operator: die Gefahren und den Nutzen von Ethanol beschreiben (Alkoholkonsum, Desinfektionsmittel) Boundary: No individual diagnosis, safe dose, driving/waiting-time clearance or actual drinking/physiology experiment.",
+          "wholeSourceCompletionFromSingleGoalMasteryAllowed": false
+        }
+      ]
     },
     {
       "sourceGoalId": "bw-chem-seki-3-2-1-1-b14-a01-4d1649fd",
@@ -1045,11 +1108,26 @@
       "sourceSpan": "3.2.1.2 (8)",
       "decision": "mapped",
       "canonicalGoalIds": [
-        "fd309753-4d48-5570-a4ec-09dfeb20ff9c"
+        "fd309753-4d48-5570-a4ec-09dfeb20ff9c",
+        "28bb9d15-f865-5843-a035-6066580fea64"
       ],
       "rationale": "Das BW-Source-Ziel wird inhaltlich durch das kanonische Chemieziel \"Saure und basische Lösungen auf Teilchenebene deuten\" abgedeckt.",
       "reviewedAt": "2026-05-11",
-      "reviewer": "codex"
+      "reviewer": "codex",
+      "additionalAcceptedPartialContributions": [
+        {
+          "canonicalGoalId": "28bb9d15-f865-5843-a035-6066580fea64",
+          "matchType": "partial",
+          "acceptedScientificRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-first-twenty-source-informed-independent-a-20261018-v1/ACCEPTED.one-hundred-sixty-four-bounded-direct-relations.with-explicit-context-conditions.json",
+            "sha256": "5af30ee6b2cb919a8445f2668c963b81d22583cb241a8d64f8df469f93da06cf",
+            "bytes": 735256,
+            "jsonPointer": "/records/0"
+          },
+          "rationale": "Aqueous acid/hydroxide formula-name classification, H3O+/OH− model and solid/solution distinction are actually assessed, including HCl gas versus solution and clear limewater. Exact selected official operator: sauren und alkalischen Lösungen die entsprechenden Teilchen zuordnen (Oxonium-Ionen und Hydroxid-Ionen) Boundary: No claim that every listed nine recall item, an Arrhenius historical label, Brønsted donor/acceptor reasoning, indicator experiment or pH calculation is required/completed by the selected source.",
+          "wholeSourceCompletionFromSingleGoalMasteryAllowed": false
+        }
+      ]
     },
     {
       "sourceGoalId": "bw-chem-seki-3-2-1-2-b09-a01-590d97e5",
@@ -1097,11 +1175,28 @@
       "decision": "mapped",
       "canonicalGoalIds": [
         "950c73c6-4ed1-488a-9267-1142e95e0055",
-        "018bec90-445f-4a88-b8bc-228f8335dee6"
+        "018bec90-445f-4a88-b8bc-228f8335dee6",
+        "4285d84a-2c9a-4d51-8250-8bed4daf2d2e",
+        "448815cc-4127-54b7-96bf-e54b3d2a38c5"
       ],
-      "rationale": "Das BW-Source-Ziel wird inhaltlich durch mehrere kanonische Chemieziele abgedeckt; 1:n ist hier die korrekte Zuordnungsform, weil der Lehrplanpunkt mehrere unterscheidbare Kompetenzen bündelt.",
+      "rationale": "Das BW-Source-Ziel wird inhaltlich durch mehrere kanonische Chemieziele abgedeckt; 1:n ist hier die korrekte Zuordnungsform, weil der Lehrplanpunkt mehrere unterscheidbare Kompetenzen bündelt.\nAktuelle unabhängig angenommene partielle Quellenbeziehung: Na+/Cl− und Mg²+/2Cl− prüfen Ladungsbilanz, Bewegung beider Ionenarten und den Feststoff/Lösungs-Kontrast. Der Zucker-Gegenfall und die Hydratation vorhandener Gitterionen tragen den Leitfähigkeitsanteil des ganzen Salzstandards. Sprödigkeit, Schmelzpunkt und gesamte Ionenbindung sind nicht abgeschlossen. Keine reale Leitfähigkeitsmessung aus den Modellbefunden. Teilumfang und tatsächliche Primärgrenze: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-single-state-forward-direct-source-informed-independent-b-20261018-v1/REVIEW.fifty-three-rows-sixty-nine-pairs.FIRST.informed-independent-b.json. Keine ganze Quellenfreigabe, neue D/P/A/M/V-Stimme oder Lernendenausführung.",
       "reviewedAt": "2026-05-11",
-      "reviewer": "codex"
+      "reviewer": "codex",
+      "matchType": "partial",
+      "additionalAcceptedPartialContributions": [
+        {
+          "canonicalGoalId": "448815cc-4127-54b7-96bf-e54b3d2a38c5",
+          "matchType": "partial",
+          "acceptedScientificRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-multistate-source-informed-independent-b-part-b-20261018-v1/ACCEPTED.exact-fifty-five-partial-one-held-HE-placement.json",
+            "sha256": "ab921ae7928e26b5f58b2c25c8c72c470b2c3b4c111cb9fae09b92b821ef7f48",
+            "bytes": 43536,
+            "jsonPointer": "/approvedPartial/3"
+          },
+          "rationale": "Whole P compares ionic/covalent/metallic binding models and mobile carriers with actual structured fresh examples. Exact selected official operator: die Ionenbindung erklären und typische Eigenschaften der Salze und Salzlösungen begründen (Ionengitter, Sprödigkeit, hohe Schmelztemperatur, elektrische Leitfähigkeit) Boundary: HB-specific electronegativity addon excluded outside HB; each broad bonding source remains partial.",
+          "wholeSourceCompletionFromSingleGoalMasteryAllowed": false
+        }
+      ]
     },
     {
       "sourceGoalId": "bw-chem-seki-3-2-1-3-b02-a01-95a4d2ed",
@@ -1110,11 +1205,26 @@
       "decision": "mapped",
       "canonicalGoalIds": [
         "fcaf8c9b-bd81-552e-9d91-43649895471e",
-        "018bec90-445f-4a88-b8bc-228f8335dee6"
+        "018bec90-445f-4a88-b8bc-228f8335dee6",
+        "448815cc-4127-54b7-96bf-e54b3d2a38c5"
       ],
       "rationale": "Das BW-Source-Ziel wird inhaltlich durch mehrere kanonische Chemieziele abgedeckt; 1:n ist hier die korrekte Zuordnungsform, weil der Lehrplanpunkt mehrere unterscheidbare Kompetenzen bündelt.",
       "reviewedAt": "2026-05-11",
-      "reviewer": "codex"
+      "reviewer": "codex",
+      "additionalAcceptedPartialContributions": [
+        {
+          "canonicalGoalId": "448815cc-4127-54b7-96bf-e54b3d2a38c5",
+          "matchType": "partial",
+          "acceptedScientificRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-multistate-source-informed-independent-b-part-b-20261018-v1/ACCEPTED.exact-fifty-five-partial-one-held-HE-placement.json",
+            "sha256": "ab921ae7928e26b5f58b2c25c8c72c470b2c3b4c111cb9fae09b92b821ef7f48",
+            "bytes": 43536,
+            "jsonPointer": "/approvedPartial/4"
+          },
+          "rationale": "Whole P compares ionic/covalent/metallic binding models and mobile carriers with actual structured fresh examples. Exact selected official operator: die Metallbindung erklären und damit typische Eigenschaften der Metalle begründen (Elektronengasmodell, Duktilität, elektrische Leitfähigkeit) Boundary: HB-specific electronegativity addon excluded outside HB; each broad bonding source remains partial.",
+          "wholeSourceCompletionFromSingleGoalMasteryAllowed": false
+        }
+      ]
     },
     {
       "sourceGoalId": "bw-chem-seki-3-2-1-3-b03-a01-76b1ca05",
@@ -1147,11 +1257,26 @@
       "sourceSpan": "3.2.1.3 (5)",
       "decision": "mapped",
       "canonicalGoalIds": [
-        "67cd332f-9db7-50e1-87f6-172ef3714300"
+        "67cd332f-9db7-50e1-87f6-172ef3714300",
+        "9b56d01e-c2d7-51d8-b78e-237592c1ed20"
       ],
       "rationale": "Das BW-Source-Ziel wird inhaltlich durch das kanonische Chemieziel \"Molekülgeometrien mit dem EPA-Modell erklären\" abgedeckt.",
       "reviewedAt": "2026-05-11",
-      "reviewer": "codex"
+      "reviewer": "codex",
+      "additionalAcceptedPartialContributions": [
+        {
+          "canonicalGoalId": "9b56d01e-c2d7-51d8-b78e-237592c1ed20",
+          "matchType": "partial",
+          "acceptedScientificRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-multistate-source-informed-independent-b-part-b-20261018-v1/ACCEPTED.exact-fifty-five-partial-one-held-HE-placement.json",
+            "sha256": "ab921ae7928e26b5f58b2c25c8c72c470b2c3b4c111cb9fae09b92b821ef7f48",
+            "bytes": 43536,
+            "jsonPointer": "/approvedPartial/11"
+          },
+          "rationale": "Whole P explains109.5°/120°/180° reference angles and lone-pair compression where molecular shapes and domain counts are already provided. Exact selected official operator: den räumlichen Bau von Molekülen mithilfe eines Modells erklären (Elektronenpaarabstoßungsmodell) Boundary: Angle consequence only; this goal alone does not derive all molecular shapes, build digital models or complete every EPA duty.",
+          "wholeSourceCompletionFromSingleGoalMasteryAllowed": false
+        }
+      ]
     },
     {
       "sourceGoalId": "bw-chem-seki-3-2-1-3-b06-a01-1f7c0388",
@@ -1367,7 +1492,7 @@
       "canonicalGoalIds": [
         "3be2d0b7-c22f-57d4-886a-10fc04a629f5"
       ],
-      "rationale": "Das BW-Source-Ziel wird inhaltlich durch das kanonische Chemieziel \"Radikalische Substitution nachvollziehen\" abgedeckt.",
+      "rationale": "Physische22/gedruckte20 fordert die Beschreibung des Radikalmechanismus am Beispiel Alkan/Halogen. Die aktuelle Bromierung von Methan mit Ethane-Transfer weist Initiierung, Fortpflanzung, Abbruch sowie ungepaarte Elektronen und Bilanzen nach. Ein Brombeispiel ist ein Halogenbeispiel; keine universellen Selektivitäten oder weiteren Halogenausbeuten werden behauptet. Nur zwei bestehende CrossStage-Ansichten erhalten eine explizite SekI-Placementreferenz; PhaseE wird dafür nicht zu einer globalen SekI/SekII-Klassifikation umgedeutet. Einzelkante partial; keine alleinige Quellenziel- oder Lernendenfreigabe.",
       "reviewedAt": "2026-05-11",
       "reviewer": "codex"
     },
@@ -1403,11 +1528,26 @@
       "sourceSpan": "3.2.2.2 (1)",
       "decision": "mapped",
       "canonicalGoalIds": [
-        "1bdaf7f2-ff3b-455a-a7fb-95a44642762a"
+        "1bdaf7f2-ff3b-455a-a7fb-95a44642762a",
+        "9b5d6326-d27c-4ece-8c72-debda705464a"
       ],
       "rationale": "Das BW-Source-Ziel wird inhaltlich durch das kanonische Chemieziel \"Massenerhaltung bei Reaktionen erklären\" abgedeckt.",
       "reviewedAt": "2026-05-11",
-      "reviewer": "codex"
+      "reviewer": "codex",
+      "additionalAcceptedPartialContributions": [
+        {
+          "canonicalGoalId": "9b5d6326-d27c-4ece-8c72-debda705464a",
+          "matchType": "partial",
+          "acceptedScientificRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-first-twenty-source-informed-independent-a-20261018-v1/ACCEPTED.one-hundred-sixty-four-bounded-direct-relations.with-explicit-context-conditions.json",
+            "sha256": "5af30ee6b2cb919a8445f2668c963b81d22583cb241a8d64f8df469f93da06cf",
+            "bytes": 735256,
+            "jsonPointer": "/records/72"
+          },
+          "rationale": "Whole P applies Dalton-style particle bookkeeping to mass conservation, distinguishes assumption/hypothesis/law and identifies isotope/subatomic model limits. Exact selected official operator: den Zusammenhang zwischen Massenerhaltung und Atomanzahlerhaltung bei chemischen Reaktionen erläutern Boundary: Only the simple-atom/mass-conservation/model-judgment component; no experiment execution, modern shell/orbital derivation or whole historical model programme.",
+          "wholeSourceCompletionFromSingleGoalMasteryAllowed": false
+        }
+      ]
     },
     {
       "sourceGoalId": "bw-chem-seki-3-2-2-2-b02-a01-a4e7e324",
@@ -1591,6 +1731,37 @@
       "rationale": "Das BW-Source-Ziel wird inhaltlich durch das kanonische Chemieziel \"Brennstoffe nach CO2-Bilanz und Reaktionswärme bewerten\" abgedeckt.",
       "reviewedAt": "2026-05-11",
       "reviewer": "codex"
+    },
+    {
+      "sourceGoalId": "bw-chemistry-seki-process-standard-2-1-10",
+      "topicCode": "2.1 Erkenntnisgewinnung (10)",
+      "sourceSpan": {
+        "passageId": "bw-chemistry-seki-process-standard-2-1-10:complete-primary-addition",
+        "label": "physical PDF11, 2.1 Erkenntnisgewinnung (10)"
+      },
+      "decision": "mapped",
+      "canonicalGoalIds": [
+        "5c4788a7-6760-53dc-894e-e04bca6f8cd9"
+      ],
+      "matchType": "partial",
+      "rationale": "Specific source-to-goal components independently accepted in the referenced actual informed FIRST decisions; all other source verbs/context remain separate.",
+      "reviewer": "Technical transport only; actual independent scientific acceptance references below",
+      "reviewedAt": "2026-10-18T03:44:14.777850+00:00",
+      "additionalAcceptedPartialContributions": [
+        {
+          "canonicalGoalId": "5c4788a7-6760-53dc-894e-e04bca6f8cd9",
+          "matchType": "partial",
+          "acceptedScientificRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-multistate-source-informed-independent-b-part-b-20261018-v1/ACCEPTED.exact-fifty-five-partial-one-held-HE-placement.json",
+            "sha256": "ab921ae7928e26b5f58b2c25c8c72c470b2c3b4c111cb9fae09b92b821ef7f48",
+            "bytes": 43536,
+            "jsonPointer": "/approvedPartial/8"
+          },
+          "rationale": "Whole P uses fixed-N/V warming and fixed-N/T compression cases to explain kinetic gas pressure/temperature effects from the supplied particle model. Exact selected official operator: Modelle und Simulationen nutzen, um sich naturwissenschaftliche Sachverhalte zu erschließen Boundary: No actual gas experiment, derivation of thermodynamic equations or automatic identification of phase-change model use with gas-pressure explanation.",
+          "wholeSourceCompletionFromSingleGoalMasteryAllowed": false
+        }
+      ],
+      "wholeSourceCompletionFromSingleGoalMasteryAllowed": false
     }
   ],
   "targetCurriculumId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",

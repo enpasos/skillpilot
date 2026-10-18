@@ -1,0 +1,26 @@
+// SPDX-License-Identifier: Apache-2.0
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import {expandGoalBookSourceAtlasReceipt} from '../../../../../../../app/scripts/goalBookSourceAtlasInputs';
+const O='curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-source-atlas413-checkpoint-technical-20261018-v1/';
+const read=(p:string)=>JSON.parse(readFileSync(p,'utf8'));
+const pin=(path:string)=>{const b=readFileSync(path);return{path,sha256:createHash('sha256').update(b).digest('hex'),bytes:b.length}};
+const b=read(O+'BEFORE.stock410-and-source-input-pins.json'),cfg=read('app/scripts/config/goal-books/de-gym-chemistry-national-atlas.inputs.json');
+const r=expandGoalBookSourceAtlasReceipt(read(cfg.outputDirectory+'/source-projection.receipt.json'));
+assert.deepEqual(r.counts,{canonicalCurricularAtomicGoals:450,publishedCurricularAtomicGoals:413,sourceViews:48,unresolvedSourceScopeDecisions:496,omittedGoals:37});
+const ids=[...new Set<string>(r.scopes.flatMap((s:any)=>s.goalIds))].sort(),added=ids.filter(id=>!b.oldPublishedGoalIds.includes(id)),removed=b.oldPublishedGoalIds.filter((id:string)=>!ids.includes(id));
+assert.deepEqual(added,['0559cec7-330b-57f1-a409-31cf1b4ac9fb','4a7dee38-1056-5e27-acec-e6a12f58109f','f4f7f028-10db-53f9-bdae-456e0c6d0896']);assert.deepEqual(removed,[]);
+assert.deepEqual(r.unresolvedSourceScopes,b.oldUnresolvedSourceScopes,'All496 source HOLD objects must remain exact');
+assert.deepEqual(r.omittedGoals,b.oldOmittedGoals.filter((g:any)=>!added.includes(g.goalId)),'Only the3 now witnessed omissions may disappear');
+const legacy=r.scopes.flatMap((s:any)=>s.witnesses.filter((w:any)=>b.legacy10GoalIds.includes(w.goalId)).map((w:any)=>({scope:s.key,...w})));
+const matrix=(rows:any[])=>rows.map(w=>[w.scope,w.sourceGoalId,w.goalId,w.mappedTargetGoalId,w.coverage,w.profileBasis]).sort((a,b)=>JSON.stringify(a).localeCompare(JSON.stringify(b)));
+assert.deepEqual(matrix(legacy),matrix(b.legacy10Witnesses));
+const test=readFileSync('app/scripts/testGoalBookSourceAtlasInputs.ts','utf8'),start=test.indexOf('  const newChemistrySourceWitnesses = ['),end=test.indexOf('  const newChemistrySourceGoalIds = ',start);assert.equal(createHash('sha256').update(test.slice(start,end)).digest('hex'),b.legacy10TestMatrixSourceSHA256);
+for(const p of b.frozenInputPins)assert.deepEqual(pin(p.path),p,'Non-authorized source/canonical/SEM/registry/review input changed');
+const witness=r.scopes.flatMap((s:any)=>s.witnesses.filter((w:any)=>added.includes(w.goalId)).map((w:any)=>({scope:s.key,...w})));assert.equal(witness.length,4);
+const source=read(O+'READ.actual-four-primary-source-scope-witnesses-and-existing-reviews.json');assert.deepEqual(witness,source.witnesses.map((w:any)=>Object.fromEntries(Object.entries(w).filter(([k])=>['scope','mappingPath','sourceExtractionPath','sourceGoalId','mappedTargetGoalId','goalId','coverage','profileBasis'].includes(k)))));
+const outputs=b.stockOutputPins.map((p:any)=>{const a=pin(p.path);return{before:p,after:a,changed:p.sha256!==a.sha256}});
+const result={role:'ACTUAL_STOCK413_CHECKPOINT_AND_SCOPE_WITNESS_REGRESSION',counts:r.counts,addedGoalIds:added,removedGoalIds:removed,omissionReasons:{'no-reviewed-mapped-source-witness':r.omittedGoals.filter((g:any)=>g.reason==='no-reviewed-mapped-source-witness').length,'unresolved-source-scope':r.omittedGoals.filter((g:any)=>g.reason==='unresolved-source-scope').length},all496WholeSourceHoldObjectsExact:true,oldOmissionRowsExactExcept3ReviewedWitnessRemovals:true,legacy10WitnessMatrixExact:true,legacy10TestMatrixSourceSHA256:b.legacy10TestMatrixSourceSHA256,legacy10WitnessRows:legacy.length,actualFourNewWitnesses:witness,all113FrozenSourceCanonicalSEMRegistryAndReviewInputPinsExact:true,frozenInputPins:b.frozenInputPins,generatedOutputChanges:outputs,allowedAuthoredCodePins:['app/scripts/config/goal-books/de-gym-chemistry-national-atlas.inputs.json','app/scripts/testGoalBookSourceAtlasInputs.ts'].map(pin),newSourceScientificNativeOrHumanApproval:false};
+writeFileSync(O+'RESULT.actual413-four-witnesses-and-unchanged-source-contract.json',JSON.stringify(result,null,2)+'\n');
+console.log(JSON.stringify({counts:r.counts,added,removed,omissionReasons:result.omissionReasons,old10MatrixRows:legacy.length,all496HoldsExact:true,changedOutputPaths:outputs.filter((p:any)=>p.changed).map((p:any)=>p.after.path),frozenInputPinsExact:b.frozenInputPins.length},null,2));

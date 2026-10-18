@@ -1,0 +1,311 @@
+{
+  "schemaVersion": 1,
+  "reviewerId": "/root/chemie_final_native_round_a_20261018",
+  "preparedAt": "2026-10-18T11:07:22.613138+00:00",
+  "status": "inactive_checkpoint_only",
+  "newReviewVotes": 0,
+  "newModelInvocations": 0,
+  "completedFirstPassGroups": "A001-A006 only; A007-A014 not started/read by this reviewer",
+  "completedGoals": 120,
+  "decisions": {
+    "keep": 94,
+    "revise": 24,
+    "split_review": 2
+  },
+  "technicalProblem": "Original A001-A005 runs incorrectly bound role review_input_json to description-review-input.json bytes. That role requires the bundle manifest artifact bundle/review-input.json. Original results and FIRST receipts/seals remain unchanged.",
+  "completedTechnicalPreparation": [
+    "Complete structural comparison of each bound bundle page+current-P context with every actually read assigned native reviewContext, 20 goals per group; native JSONL goals exactly match the bilingual V3 goals.",
+    "Corrected A001-A005 transport runs under separate technical-successors/bundle-review-input-binding-v1/results, same runId, original review times and model metadata, byte-identical Fachrecords. Only one artifact-role digest differs.",
+    "Separate correction receipts, adapters and seals pin originals and actual equality proofs. Never count successor and original as separate votes.",
+    "Unmodified stock campaign-results validator exit0 for A001-A005 successors and original A006. A006 was corrected before its first seal."
+  ],
+  "integrationBoundary": {
+    "active": false,
+    "loaderFact": "materializeGoalDescriptionRolloutBatch.ts:917 later reads roundDirectory/results directly; no configResultsDir integration.",
+    "originalPathsRepointed": false,
+    "originalRunsOrSealsOverwritten": false,
+    "validatorPatched": false,
+    "newApprovalClaimed": false,
+    "laterNativePartialIntegrationRequires": [
+      "A regularly newly materialized standalone batch with identical actually read content, correct bound runs and all ordinary bindings/gates; or clean fulfilment of the existing original loader contract while preserving immutable first-pass provenance.",
+      "Root must decide and execute that later integration explicitly. The technical successors here remain inactive and do not themselves satisfy the hardwired loader path.",
+      "All substantive open findings, dissent and required human/learner gates remain open."
+    ]
+  },
+  "blindnessAndLimits": "No peer results, old D reviews, author decisions, root measurements/diffs/syntheses or registry closure judgments were read. Current P provenance/legacy IDs and some current evidence/material status metadata were encountered and disclosed. No image inspection or human approval is claimed.",
+  "batchDetails": [
+    {
+      "batch": 1,
+      "judgmentCount": 20,
+      "decisions": {
+        "keep": 16,
+        "revise": 3,
+        "split_review": 1
+      },
+      "integrationStatus": "inactive_technical_transport_successor_only",
+      "originalRecords": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-001/round-a/results/chemie-current450-bound-context-d-001-20261018-v2-first-pass-a.batch-001.records.jsonl",
+        "sha256": "57572f4debbe2f38e83869680e3853cda99262730d6a13287d04da1fec3e1aed",
+        "bytes": 58966
+      },
+      "originalRun": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-001/round-a/results/chemie-current450-bound-context-d-001-20261018-v2-first-pass-a.batch-001.run.json",
+        "sha256": "b9cef9159eebc85b96942792c98f4282754927a51c32160c8d69f10726e4328c",
+        "bytes": 3138
+      },
+      "originalFirstPassSeal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-001/round-a/reviewer-receipts/independent-first-pass.seal.json",
+        "sha256": "ecbdc8a0bd76f08772a0ff8b852d4bc81a0788ed4ef491a4f124da9fa87656f4",
+        "bytes": 1568
+      },
+      "equivalenceProof": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-001/round-a/reviewer-receipts/bundle-review-input-equivalence.actual.receipt.json",
+        "sha256": "9fb5416bad2916c7add542aaee11bbc8bec86feef3a347a10dcc9190fde6b455",
+        "bytes": 11408
+      },
+      "stockValidatedResultsDirectory": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-001/round-a/technical-successors/bundle-review-input-binding-v1/results",
+      "stockValidation": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-001/round-a/technical-successors/bundle-review-input-binding-v1/reviewer-receipts/stock-campaign-results-check.execution.json",
+        "sha256": "840e4abf3033c490bb53d452c8d831c166d6ddb52b162585fddd13301b48405e",
+        "bytes": 1718
+      },
+      "adapter": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-001/round-a/technical-successors/bundle-review-input-binding-v1/reviewer-receipts/ADAPTER.actual-final-first-pass.receipt.json",
+        "sha256": "718657f9a6750a565bee84732703d1364e408971af04731196c180b438e426cd",
+        "bytes": 2661
+      },
+      "technicalSeal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-001/round-a/technical-successors/bundle-review-input-binding-v1/reviewer-receipts/technical-artifact-binding-correction.seal.json",
+        "sha256": "8a3bda151abc3e0be6e0e1834b3ab9523ff1501faacab6a10eb7438981893c15",
+        "bytes": 2660
+      }
+    },
+    {
+      "batch": 2,
+      "judgmentCount": 20,
+      "decisions": {
+        "keep": 15,
+        "split_review": 1,
+        "revise": 4
+      },
+      "integrationStatus": "inactive_technical_transport_successor_only",
+      "originalRecords": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-002/round-a/results/chemie-current450-bound-context-d-002-20261018-v2-first-pass-a.batch-001.records.jsonl",
+        "sha256": "aef0c547b7f1d9667b8bc928a34d4240280b828d974fe03a7646dd35e132ed87",
+        "bytes": 60648
+      },
+      "originalRun": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-002/round-a/results/chemie-current450-bound-context-d-002-20261018-v2-first-pass-a.batch-001.run.json",
+        "sha256": "6b6e5733ee4668168ed322eb29ae406031b8a39f9853a00339653d2488db1a40",
+        "bytes": 3138
+      },
+      "originalFirstPassSeal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-002/round-a/reviewer-receipts/independent-first-pass.seal.json",
+        "sha256": "855cc9ec4502b074e0a6573e8015cd1b1aead44adc9c421130acc746031cc813",
+        "bytes": 1568
+      },
+      "equivalenceProof": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-002/round-a/reviewer-receipts/bundle-review-input-equivalence.actual.receipt.json",
+        "sha256": "8d8d4686723ec0ebfb956cb98c5c43b4fdbe2422bba306876d7e81e6c87cb7e4",
+        "bytes": 11408
+      },
+      "stockValidatedResultsDirectory": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-002/round-a/technical-successors/bundle-review-input-binding-v1/results",
+      "stockValidation": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-002/round-a/technical-successors/bundle-review-input-binding-v1/reviewer-receipts/stock-campaign-results-check.execution.json",
+        "sha256": "a01bb5f3c6f921499df1bdf281fbc34609b8512e863a4bed51e0915c879957f6",
+        "bytes": 1718
+      },
+      "adapter": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-002/round-a/technical-successors/bundle-review-input-binding-v1/reviewer-receipts/ADAPTER.actual-final-first-pass.receipt.json",
+        "sha256": "95a5ff90f0627426093a8e2594cee7ec3b068740b1794b7b9b7172e0d244c6dd",
+        "bytes": 2661
+      },
+      "technicalSeal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-002/round-a/technical-successors/bundle-review-input-binding-v1/reviewer-receipts/technical-artifact-binding-correction.seal.json",
+        "sha256": "aaff7657794db6e2d7dac014f0dd0e2dddda766b74153585103f9eafc899f253",
+        "bytes": 2660
+      }
+    },
+    {
+      "batch": 3,
+      "judgmentCount": 20,
+      "decisions": {
+        "revise": 4,
+        "keep": 16
+      },
+      "integrationStatus": "inactive_technical_transport_successor_only",
+      "originalRecords": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-003/round-a/results/chemie-current450-bound-context-d-003-20261018-v2-first-pass-a.batch-001.records.jsonl",
+        "sha256": "346dbcbe99db61d40a057e02190cff64c96a75446115295e8c098e98b5c19cc2",
+        "bytes": 60565
+      },
+      "originalRun": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-003/round-a/results/chemie-current450-bound-context-d-003-20261018-v2-first-pass-a.batch-001.run.json",
+        "sha256": "60fe8510646935e3abff4a30a3049856243208f653e0b2dc02243bd4eb256cf9",
+        "bytes": 3138
+      },
+      "originalFirstPassSeal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-003/round-a/reviewer-receipts/independent-first-pass.seal.json",
+        "sha256": "efc9c25d6bc31f0796c826e533ccef99fadc03dd8cec2c010b740a539508788f",
+        "bytes": 1568
+      },
+      "equivalenceProof": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-003/round-a/reviewer-receipts/bundle-review-input-equivalence.actual.receipt.json",
+        "sha256": "561fc957f4e54f448be5bceead8d145ab60938c99d4de349295921b32e0972c8",
+        "bytes": 11408
+      },
+      "stockValidatedResultsDirectory": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-003/round-a/technical-successors/bundle-review-input-binding-v1/results",
+      "stockValidation": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-003/round-a/technical-successors/bundle-review-input-binding-v1/reviewer-receipts/stock-campaign-results-check.execution.json",
+        "sha256": "c72d043671abf57088df9ed4836d9240015227c3d68c753a162df168f289b773",
+        "bytes": 1718
+      },
+      "adapter": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-003/round-a/technical-successors/bundle-review-input-binding-v1/reviewer-receipts/ADAPTER.actual-final-first-pass.receipt.json",
+        "sha256": "18bcc15357aa37e5f509d089319b6091f4bfdc753b5f924ca2b9145df6bc840c",
+        "bytes": 2661
+      },
+      "technicalSeal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-003/round-a/technical-successors/bundle-review-input-binding-v1/reviewer-receipts/technical-artifact-binding-correction.seal.json",
+        "sha256": "f52cfb57a99bfc685d8c20068adfa7643ec094182feeb3eca979538c0f124abf",
+        "bytes": 2660
+      }
+    },
+    {
+      "batch": 4,
+      "judgmentCount": 20,
+      "decisions": {
+        "keep": 15,
+        "revise": 5
+      },
+      "integrationStatus": "inactive_technical_transport_successor_only",
+      "originalRecords": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-004/round-a/results/chemie-current450-bound-context-d-004-20261018-v2-first-pass-a.batch-001.records.jsonl",
+        "sha256": "beab7e49e27f856d1c9a8bd7d8384163804bb502267bacc6de15751ec5d7a806",
+        "bytes": 61634
+      },
+      "originalRun": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-004/round-a/results/chemie-current450-bound-context-d-004-20261018-v2-first-pass-a.batch-001.run.json",
+        "sha256": "33bd65b2bbff522d40f6fdaf70dc0696a893bf51a50d4622ba6fb7338efaf644",
+        "bytes": 3138
+      },
+      "originalFirstPassSeal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-004/round-a/reviewer-receipts/independent-first-pass.seal.json",
+        "sha256": "b505275945dc32cb3b77fb491f6b6ccca6ccc1539733c0d1af7de305a6d3d3b5",
+        "bytes": 1568
+      },
+      "equivalenceProof": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-004/round-a/reviewer-receipts/bundle-review-input-equivalence.actual.receipt.json",
+        "sha256": "37a0812f5d02c1c583b20be161ffd103b1d8b23eb0022ed139a4b7b9840681ee",
+        "bytes": 11408
+      },
+      "stockValidatedResultsDirectory": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-004/round-a/technical-successors/bundle-review-input-binding-v1/results",
+      "stockValidation": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-004/round-a/technical-successors/bundle-review-input-binding-v1/reviewer-receipts/stock-campaign-results-check.execution.json",
+        "sha256": "d81d6a5265474148aa53fb32cad33eeb9dd21cb2a9293cb883d1edd318e3e64e",
+        "bytes": 1718
+      },
+      "adapter": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-004/round-a/technical-successors/bundle-review-input-binding-v1/reviewer-receipts/ADAPTER.actual-final-first-pass.receipt.json",
+        "sha256": "ecf41fa3452bd3a003512d98166e1cae2b19adfd0d948dbce5197d829798861e",
+        "bytes": 2661
+      },
+      "technicalSeal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-004/round-a/technical-successors/bundle-review-input-binding-v1/reviewer-receipts/technical-artifact-binding-correction.seal.json",
+        "sha256": "f534f33aff11ac1527c1d13533dbda4e2d88f90fbddaec27291e0072c1ec25f2",
+        "bytes": 2660
+      }
+    },
+    {
+      "batch": 5,
+      "judgmentCount": 20,
+      "decisions": {
+        "keep": 16,
+        "revise": 4
+      },
+      "integrationStatus": "inactive_technical_transport_successor_only",
+      "originalRecords": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-005/round-a/results/chemie-current450-bound-context-d-005-20261018-v2-first-pass-a.batch-001.records.jsonl",
+        "sha256": "3d12c2ab8c0ac6ea35f14c4f42fa4d14f0cb0a952453beaa5854192038ca6403",
+        "bytes": 61103
+      },
+      "originalRun": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-005/round-a/results/chemie-current450-bound-context-d-005-20261018-v2-first-pass-a.batch-001.run.json",
+        "sha256": "bf2fbc1c7664c2596fe442eab28cbd1c5849c8101ebdc3921af47ae02335b604",
+        "bytes": 3138
+      },
+      "originalFirstPassSeal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-005/round-a/reviewer-receipts/independent-first-pass.seal.json",
+        "sha256": "b8ac6bd7a394c599f55422e8d6329acca557dd471b66d77677cd69255fd2b040",
+        "bytes": 1568
+      },
+      "equivalenceProof": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-005/round-a/reviewer-receipts/bundle-review-input-equivalence.actual.receipt.json",
+        "sha256": "e5bcd2ba4e90e8ab29c69bd9d6b8e54e6593b08a02d06f78fe04b3615a8d1800",
+        "bytes": 11408
+      },
+      "stockValidatedResultsDirectory": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-005/round-a/technical-successors/bundle-review-input-binding-v1/results",
+      "stockValidation": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-005/round-a/technical-successors/bundle-review-input-binding-v1/reviewer-receipts/stock-campaign-results-check.execution.json",
+        "sha256": "40b2355586f0ad61172fc11134d3e31d787299b2baaaeb473bca609b111c0ead",
+        "bytes": 1718
+      },
+      "adapter": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-005/round-a/technical-successors/bundle-review-input-binding-v1/reviewer-receipts/ADAPTER.actual-final-first-pass.receipt.json",
+        "sha256": "1f29d919813eaa2867e3a1cfc294c90ca340eec5a1ebded7a7fcaaccce06fa4c",
+        "bytes": 2661
+      },
+      "technicalSeal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-005/round-a/technical-successors/bundle-review-input-binding-v1/reviewer-receipts/technical-artifact-binding-correction.seal.json",
+        "sha256": "706fa0eaa59a2c36646a7d675ee22e954e4490b5b2c1bbd1f56f991c9428643f",
+        "bytes": 2660
+      }
+    },
+    {
+      "batch": 6,
+      "judgmentCount": 20,
+      "decisions": {
+        "keep": 16,
+        "revise": 4
+      },
+      "integrationStatus": "original_first_pass_with_correct_bundle_artifact_binding; checkpoint remains inactive",
+      "originalRecords": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-006/round-a/results/chemie-current450-bound-context-d-006-20261018-v2-first-pass-a.batch-001.records.jsonl",
+        "sha256": "4b6ebd5dcfb5872c035af3b41a31e6cde03709eeda3c50ef27173cccc43b399e",
+        "bytes": 66048
+      },
+      "originalRun": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-006/round-a/results/chemie-current450-bound-context-d-006-20261018-v2-first-pass-a.batch-001.run.json",
+        "sha256": "25f12692d09ae57b04d78902004b140df77934f641365d792369d7b5a9abd89a",
+        "bytes": 3138
+      },
+      "originalFirstPassSeal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-006/round-a/reviewer-receipts/independent-first-pass.seal.json",
+        "sha256": "80195b5b307112cf2489c7530eec3c5401766edd37aa8f5efb57d24478bd72f4",
+        "bytes": 1432
+      },
+      "equivalenceProof": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-006/round-a/reviewer-receipts/bundle-review-input-equivalence.actual.receipt.json",
+        "sha256": "c29a7daff21a8922e73d4b0fd9b627f40310e44821d9a0e92ff0fd476f9d6cb3",
+        "bytes": 11408
+      },
+      "stockValidatedResultsDirectory": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-006/round-a/results",
+      "stockValidation": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-006/round-a/reviewer-receipts/stock-campaign-results-check.execution.json",
+        "sha256": "e6d12b9a0d4e83aca04ae640cd75d7dd1921756bd24d4913efc61981160844a9",
+        "bytes": 1666
+      },
+      "adapter": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-006/round-a/reviewer-receipts/ADAPTER.actual-final-first-pass.receipt.json",
+        "sha256": "8519aaa89cce609d3e0007663fd807dfbd4d28118db195c28d298a4d9c75ca04",
+        "bytes": 2015
+      },
+      "technicalSeal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-native-input-prerequisites-technical-20261018-v1/final-cut/current-binding-v2/batch-006/round-a/reviewer-receipts/bundle-binding-check.additive.seal.json",
+        "sha256": "aafd745f378beb3b49504133f3d35ef92deee479a30ef48630678e64834d3aa9",
+        "bytes": 1598
+      }
+    }
+  ],
+  "executionNote": "The preparation helper completed A001-A005, then its A006 final hash check encountered relative-path normalisation in pin(). A006 had no result mutation; normalisation was fixed in the helper and A006 originals were separately rechecked/sealed with a successful stock validation. No scientific judgment changed."
+}

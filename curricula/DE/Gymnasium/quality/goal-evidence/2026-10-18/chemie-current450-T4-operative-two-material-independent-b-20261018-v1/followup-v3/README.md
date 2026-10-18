@@ -1,0 +1,3 @@
+# Bounded v3 follow-up
+
+Both FIRST findings are resolved: exact Q4/Q1 endpoint phase fields and matching local exercise labels, plus GJU one-based physical55–62. Complete v2 examData and all method files remain exact; current ordinary/P objects and all prior seals remain exact. Independent41-view replay shows exactly12offers and preserves every oldtarget/role/parent. The new local practice titles fit the actual method scope. KEEP this bounded interface; retain the genuine FIRST method judgments without extra votes. No normalwrite, strictcompletion, observed experiment, local clearance, human approval or release is claimed.
