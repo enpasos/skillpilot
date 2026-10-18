@@ -375,3 +375,16 @@ Kanonik, fachliche Reviewentscheidungen, Karten und Bilder werden durch dieses
 Fixpaket nicht neu bewertet. Es erzeugt keine neuen fachlichen Abschlüsse und
 keine menschliche Freigabe. CI-Erfolg ist am jeweils tatsächlich geprüften
 Git-Head festzustellen.
+
+Der [Nachlauf für `bec0101c`](https://github.com/enpasos/skillpilot/actions/runs/39131627172)
+bestätigte die Backendkorrekturen, fand aber zusätzlich CPV-203 im hessischen
+GK-View: Der Gruppentitel wiederholte den Titel seines einzigen direkten
+Lernziels. Nur dieser Gruppentitel wird zu „Fakultative Sek-I-Ergänzung“
+gekürzt. Der Lernzieltitel bleibt mit LK konsistent; Zielmengen, Rollen,
+Elternzuordnungen, Voraussetzungen und Optionalitätskennzeichnung bleiben
+unverändert. Die Watch-Aktualisierung betrifft ausschließlich diesen geprüften
+View-Diff; sie ist kein neuer fachlicher Review oder M7-Abschluss.
+Der vollständige Originalvalidator besteht mit 352 Ansichten und null Fehlern;
+Projektionsrollen-, Memory- und Watch-Prüfung bestehen ebenfalls. Der
+[technische Einfeldbeleg](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-runtime-view-routing-and-label-repair-technical-20261018-v1/checks/ACTUAL.HE-GK-group-label-CI-followup.json)
+hält die unveränderten Grenzen und die tatsächlichen Prüfungen fest.
