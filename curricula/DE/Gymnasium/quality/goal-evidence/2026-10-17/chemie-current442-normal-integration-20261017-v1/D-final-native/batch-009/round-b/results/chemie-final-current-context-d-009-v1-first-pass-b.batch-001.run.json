@@ -1,0 +1,49 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-final163-native-b-009-20261018",
+  "campaignId": "chemie-final-current-context-d-009-v1-b",
+  "roundId": "chemie-final-current-context-d-009-v1-first-pass-b",
+  "batchId": "chemie-final-current-context-d-009-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:5f031072a288ea16dbbe52a5bc0b7cd01aec14a01a895f439fbda968287d1b91",
+  "bundleFingerprint": "sha256:89156a892c31963d2bd408cdf3f097d2e9f9ab82ae5db978388ed5d3e6af7349",
+  "bookDigest": "sha256:b9b7330ce974a92e8828dfeca93eee2953c0fd166707d1e6fd7b9a449f48899e",
+  "provider": "OpenAI",
+  "model": "GPT-6 (Codex)",
+  "modelVersion": "Exact API model/version not exposed in runtime",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:56eb35ae3e9f34d4600ebee7be6fa33594b379427706fa43312138a22d73d683",
+  "independenceGroupId": "chemie-final-current-context-d-009-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "f79f15c0-e848-5e17-9eb5-26753d35c93b",
+    "f947cd04-952a-5a9d-9445-3ffc70e02c3c",
+    "f9e6d689-6e59-59a4-9f21-8c2d44413244"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:2731c814547b7648a1c7b37c37939f47b54fc80e53715be96822aa10b85e39a4"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:5f031072a288ea16dbbe52a5bc0b7cd01aec14a01a895f439fbda968287d1b91"
+    }
+  ],
+  "startedAt": "2026-10-17T22:41:35.206523+00:00",
+  "completedAt": "2026-10-17T22:47:12.013883+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:958a8e3c17b436f293902bdd9e7f34473167454229d86ac32b8478268bcd9d5e",
+  "toolchainVersion": "codex-final163-native-b-v1"
+}

@@ -1,0 +1,547 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "chemie-corrected447-d29-partial-batch-001-actual-pair-root-authorized-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex technical assembler under explicit Root partialD29 integration authorization; actual A/B science only",
+  "synthesizedAt": "2026-10-17T23:46:53.816Z",
+  "batch": {
+    "batchId": "chemie-final-current-context-d-001-v1",
+    "batchManifestDigest": "sha256:82f8bb24548c6f9515de56b73f8dd1678c5bf642f1fac40d5982ef20cb477107",
+    "configDigest": "sha256:10dfb35d293434b168466ce34222bf057b983bf364bc643551b761860557e3f8",
+    "bundleFingerprint": "sha256:1f358402e6bc93bb58383ba925b60dd1e9e9f3c3979716724c79d861cb93b35f",
+    "bookDigest": "sha256:66789361ed96991d86975800c5cbcea40908a69f2cff15456fc0e691b970555a",
+    "reviewInputFingerprint": "sha256:2f8c88255ca0176e4d5939d13dfe5f8d81a20b73e9f6fbc71c1f9683e291e99d",
+    "dualSummaryDigest": "sha256:45d41b827cc1e862148940db107efeced240e0c83943a073c3c207cf17d8ebc7",
+    "canonicalLandscapeDigest": "sha256:35f6c9dc6f7d51c4d9de0f0199b3d28d8eb123207c39f0e4d1994d2b1f9e974d"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-001-v1-a",
+      "campaignDigest": "sha256:aed9af5eaee1feabd413b4199679034aca27b309c9de3ca75cf722a256ff66ea",
+      "roundId": "chemie-final-current-context-d-001-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-001-v1-independent-a",
+      "reviewInputFingerprint": "sha256:2f8c88255ca0176e4d5939d13dfe5f8d81a20b73e9f6fbc71c1f9683e291e99d",
+      "batchId": "chemie-final-current-context-d-001-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:8e71ebb6eb4605e0445f1b76d2148df8c64966bda985ae260e5bab5249985775",
+      "runId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a",
+      "runManifestDigest": "sha256:8e51a9450469d071e0f88015c47a4e7f3e80e3e8363da43373d2bd58be458f10",
+      "resultsDigest": "sha256:f59f41b20f556ec5fb6f8a09f9fc83f734672cef69082b2a1f2f14a02f1bd74f"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-001-v1-b",
+      "campaignDigest": "sha256:3502664b3fd0836edfa029e54886dadff456a86ecd996d7c8494944ae0838304",
+      "roundId": "chemie-final-current-context-d-001-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-001-v1-independent-b",
+      "reviewInputFingerprint": "sha256:2f8c88255ca0176e4d5939d13dfe5f8d81a20b73e9f6fbc71c1f9683e291e99d",
+      "batchId": "chemie-final-current-context-d-001-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:2166f7cf1a36f4b76813cf9d418d80e7b0bde1ccb8b43780a783122c8d25fa69",
+      "runId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b",
+      "runManifestDigest": "sha256:c0980c1e07468a3f9fafd00f4d8f55f5e5fc96764734d60f75154417b799eec6",
+      "resultsDigest": "sha256:c846a81444c0acb4649d6ee21939ad26011aa8e2c54446cb75c8f7f5585a3c8a"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "chemie-corrected447-d29-partial-batch-001-actual-pair-root-authorized-v1-decision-001",
+      "goalId": "02634fdd-c8ba-591a-b240-77129b1bebb8",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:feeb63802691963f83faf5c5169e1017d0b8171c9e9f01ed1f8c7bdeb2974472",
+      "pageFingerprint": "sha256:250c2a7063dd35fb1205347c5b63bb3521f185afc2456a29bbe8a139bbe2ccde",
+      "goalReviewContextFingerprint": "sha256:0f86b38d31c1690f1212416314c59b24dc84f01d8dfa96c17077110efd62bedd",
+      "finalText": {
+        "titleDe": "Säure-Base-Titrationen planen",
+        "titleEn": "Plan acid-base titrations",
+        "descriptionDe": "Die lernende Person kann eine Säure-Base-Titration mit geeigneter Maßlösung und begründetem Indikator fachgerecht planen und durchführen und aus dokumentierten Volumina unter Berücksichtigung der Reaktionsstöchiometrie die Konzentration der Probe bestimmen.",
+        "descriptionEn": "The learner can correctly plan and carry out an acid-base titration using a suitable standard solution and a justified indicator and determine the sample concentration from recorded volumes while accounting for reaction stoichiometry."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a.02634fdd-c8ba-591a-b240-77129b1bebb8",
+          "recordDigest": "sha256:ec1fda9e9b12170a66f1602e0a169df780703245088fa9b87f98459637632c68"
+        },
+        "second": {
+          "recordId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b-001",
+          "recordDigest": "sha256:40cb26f835e797a27374137e1deaac0afc1a6a063fb3b30ed83a9dd6fdcdfb18"
+        }
+      },
+      "rationaleDe": "Technische Synthese der zwei tatsächlich versiegelten KEEP-Urteile zum exakt aktuellen D-Kontext; kein drittes Fachvotum. Die originale bilinguale Understanding-Evidence der ersten Runde wird unverändert gewählt; beide fachlichen Begründungen bleiben erhalten. A: DE/EN benennen denselben zusammenhängenden analytischen Ablauf. Brønsted, Mol und Laborsicherheit sind konkrete Voraussetzungen. P trennt tatsächliche Durchführung von Papiertransfer; 18,20 mL ergeben 0,07280 mol/L HCl, der 1:2-Fall 0,05000 mol/L und der verdünnte Transfer 0,1000 mol/L Originalsäure. Native Seite 1 und Bild passen als Unterstützung; eine digitale pH-Serie wird hier nicht zusätzlich gefordert. Kein Nachweis einer tatsächlichen Lernendenleistung, menschlichen Freigabe oder separat geprüften effektiven Quellen-/Kompositionszuordnung. B: DE/EN beanspruchen denselben zusammenhängenden titrimetrischen Ablauf. Im ganzen P sind 18,20 mL und 0,07280 mol/L für HCl sowie 1:2-Stöchiometrie und 0,1000 mol/L der verdünnungsbezogen zurückgerechneten Originalprobe korrekt. Formale Säurekonzentration wird nicht mit undissoziierten Molekülen verwechselt; Papierfälle ersetzen die praktische Durchführung nicht. Die native Seite zeigt eine passende schematische Bürettenanordnung, keine Lernendenleistung.",
+      "rationaleEn": "Technical synthesis of two actual independently sealed KEEP records for the exact current D context, without a third scientific vote. Select the first round's original bilingual understanding evidence unchanged; preserve both actual reasons. A (original language): DE/EN benennen denselben zusammenhängenden analytischen Ablauf. Brønsted, Mol und Laborsicherheit sind konkrete Voraussetzungen. P trennt tatsächliche Durchführung von Papiertransfer; 18,20 mL ergeben 0,07280 mol/L HCl, der 1:2-Fall 0,05000 mol/L und der verdünnte Transfer 0,1000 mol/L Originalsäure. Native Seite 1 und Bild passen als Unterstützung; eine digitale pH-Serie wird hier nicht zusätzlich gefordert. Kein Nachweis einer tatsächlichen Lernendenleistung, menschlichen Freigabe oder separat geprüften effektiven Quellen-/Kompositionszuordnung. B (original language): DE/EN beanspruchen denselben zusammenhängenden titrimetrischen Ablauf. Im ganzen P sind 18,20 mL und 0,07280 mol/L für HCl sowie 1:2-Stöchiometrie und 0,1000 mol/L der verdünnungsbezogen zurückgerechneten Originalprobe korrekt. Formale Säurekonzentration wird nicht mit undissoziierten Molekülen verwechselt; Papierfälle ersetzen die praktische Durchführung nicht. Die native Seite zeigt eine passende schematische Bürettenanordnung, keine Lernendenleistung."
+    },
+    {
+      "decisionId": "chemie-corrected447-d29-partial-batch-001-actual-pair-root-authorized-v1-decision-002",
+      "goalId": "0278a515-8990-5a1c-8a1b-a03382a144a3",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:fcd4aec9ae67a9c3c0f6e4b84c57a18f1192a1a9afe574184b9154e77357dc68",
+      "pageFingerprint": "sha256:8c8e0bb204b12652ce3dabbc4059d7e0422e156a8183e242640a3e76edc863c0",
+      "goalReviewContextFingerprint": "sha256:afa46343ea3aeeba5c0b9e0b40252af1dd6feb88e602ad019a67654ffb619028",
+      "finalText": {
+        "titleDe": "Biokunststoffe erläutern",
+        "titleEn": "Explain bioplastics",
+        "descriptionDe": "Die lernende Person kann Synthese und Eigenschaften von Polymilchsäure (PLA) beschreiben und Einsatzfelder nennen.",
+        "descriptionEn": "The learner can describe synthesis and properties of polylactic acid (PLA) and name fields of application."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a.0278a515-8990-5a1c-8a1b-a03382a144a3",
+          "recordDigest": "sha256:d9768cad0b8d01ea1f775cc1617944edabf29f3d63f4f6177416a11664e7113d"
+        },
+        "second": {
+          "recordId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b-002",
+          "recordDigest": "sha256:ff65fdcb569e5b10643f7644f7cf4f10eed7aecd8e5649862b67aad65f6786f4"
+        }
+      },
+      "rationaleDe": "Technische Synthese der zwei tatsächlich versiegelten KEEP-Urteile zum exakt aktuellen D-Kontext; kein drittes Fachvotum. Die originale bilinguale Understanding-Evidence der ersten Runde wird unverändert gewählt; beide fachlichen Begründungen bleiben erhalten. A: Die knappe Beschreibung ist bilingual eindeutig auf PLA begrenzt. Das vollständige P mit beiden operativen Fällen unterscheidet Synthesemodelle, Tg/Morphologie, Herkunft und Abbaubedingungen richtig; ein Trimer verliert zwei H2O, Lactid-Ringöffnung nicht je Ringschritt. Die native Seite 2 zeigt das passende Ester-Repetiermotiv und kein pauschales Abbauversprechen. Kein Nachweis einer tatsächlichen Lernendenleistung, menschlichen Freigabe oder separat geprüften effektiven Quellen-/Kompositionszuordnung. B: Der knappe bilinguale Text ist auf PLA begrenzt. Trimer plus zwei Wasser und das Motiv –O–CH(CH3)–CO– sind korrekt; Ringöffnung setzt nicht pro Lactidschritt Wasser frei. Die B-Probe kann durch Kristallite oberhalb Tg günstiger sein, ist ohne Dauerlastdaten nicht freigegeben. Herkunft und kontrollierter Abbau werden in P und tatsächlicher Seitenabbildung zutreffend getrennt.",
+      "rationaleEn": "Technical synthesis of two actual independently sealed KEEP records for the exact current D context, without a third scientific vote. Select the first round's original bilingual understanding evidence unchanged; preserve both actual reasons. A (original language): Die knappe Beschreibung ist bilingual eindeutig auf PLA begrenzt. Das vollständige P mit beiden operativen Fällen unterscheidet Synthesemodelle, Tg/Morphologie, Herkunft und Abbaubedingungen richtig; ein Trimer verliert zwei H2O, Lactid-Ringöffnung nicht je Ringschritt. Die native Seite 2 zeigt das passende Ester-Repetiermotiv und kein pauschales Abbauversprechen. Kein Nachweis einer tatsächlichen Lernendenleistung, menschlichen Freigabe oder separat geprüften effektiven Quellen-/Kompositionszuordnung. B (original language): Der knappe bilinguale Text ist auf PLA begrenzt. Trimer plus zwei Wasser und das Motiv –O–CH(CH3)–CO– sind korrekt; Ringöffnung setzt nicht pro Lactidschritt Wasser frei. Die B-Probe kann durch Kristallite oberhalb Tg günstiger sein, ist ohne Dauerlastdaten nicht freigegeben. Herkunft und kontrollierter Abbau werden in P und tatsächlicher Seitenabbildung zutreffend getrennt."
+    },
+    {
+      "decisionId": "chemie-corrected447-d29-partial-batch-001-actual-pair-root-authorized-v1-decision-003",
+      "goalId": "065d764c-daec-5d35-95da-3e922d2029c7",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:bc3ed101b4dea95112c750df956eb8d073dba01e8d636dad06d873a6d387fc20",
+      "pageFingerprint": "sha256:bde47a943e9f5abd399af364a44865d07c4add5df3178076a46d211765b4bc9b",
+      "goalReviewContextFingerprint": "sha256:43c7d870b6b4e4aa687994a67916353483589006cfc92d339f01329900739f86",
+      "finalText": {
+        "titleDe": "Proteinstruktur und Faltung",
+        "titleEn": "Protein structure and folding",
+        "descriptionDe": "Die lernende Person kann Sekundär-, Tertiär- und Quartärstrukturen von Proteinen über Wechselwirkungen zwischen Peptidgruppen beziehungsweise Seitenketten erklären und daraus Eigenschaften ableiten.",
+        "descriptionEn": "The learner can explain secondary, tertiary, and quaternary protein structures using interactions between peptide groups or side chains and derive properties from them."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a.065d764c-daec-5d35-95da-3e922d2029c7",
+          "recordDigest": "sha256:19c7a2318ca849fd1ce7e40ece81536273d7ba1de8eb39257586ab813cb9bdfe"
+        },
+        "second": {
+          "recordId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b-003",
+          "recordDigest": "sha256:a15d42d661f36dddcb95a1de5b5ec588991587b4e19b91eeee5716d10afd4f9b"
+        }
+      },
+      "rationaleDe": "Technische Synthese der zwei tatsächlich versiegelten KEEP-Urteile zum exakt aktuellen D-Kontext; kein drittes Fachvotum. Die originale bilinguale Understanding-Evidence der ersten Runde wird unverändert gewählt; beide fachlichen Begründungen bleiben erhalten. A: DE/EN benennen einen zusammenhängenden Struktur-Wechselwirkungs-Zusammenhang. P und der ganze Blattfall trennen N→C-Richtung, Rückgrat-H-Brücken und Untereinheiten korrekt; ein Blatt allein ist keine Quartärstruktur. Native Seite 3 und Bild unterscheiden die Ebenen. Die Peptidbindung ist als Voraussetzung benannt; spezielle Denaturierungs- und Enzymziele bleiben Nachfolger. Kein Nachweis einer tatsächlichen Lernendenleistung, menschlichen Freigabe oder separat geprüften effektiven Quellen-/Kompositionszuordnung. B: DE/EN sind fachlich gleichwertig; die Wechselwirkungszuordnung macht die Strukturbegründung beobachtbar. Das ganze P und das beta-Blatt-Material trennen Strangrichtung von CIP sowie Blattbildung von automatisch mehreren Polypeptidketten. Die aktuelle Bildseite zeigt entsprechende Strukturebenen; das Bild liefert keine eigenständige Funktionsevidenz.",
+      "rationaleEn": "Technical synthesis of two actual independently sealed KEEP records for the exact current D context, without a third scientific vote. Select the first round's original bilingual understanding evidence unchanged; preserve both actual reasons. A (original language): DE/EN benennen einen zusammenhängenden Struktur-Wechselwirkungs-Zusammenhang. P und der ganze Blattfall trennen N→C-Richtung, Rückgrat-H-Brücken und Untereinheiten korrekt; ein Blatt allein ist keine Quartärstruktur. Native Seite 3 und Bild unterscheiden die Ebenen. Die Peptidbindung ist als Voraussetzung benannt; spezielle Denaturierungs- und Enzymziele bleiben Nachfolger. Kein Nachweis einer tatsächlichen Lernendenleistung, menschlichen Freigabe oder separat geprüften effektiven Quellen-/Kompositionszuordnung. B (original language): DE/EN sind fachlich gleichwertig; die Wechselwirkungszuordnung macht die Strukturbegründung beobachtbar. Das ganze P und das beta-Blatt-Material trennen Strangrichtung von CIP sowie Blattbildung von automatisch mehreren Polypeptidketten. Die aktuelle Bildseite zeigt entsprechende Strukturebenen; das Bild liefert keine eigenständige Funktionsevidenz."
+    },
+    {
+      "decisionId": "chemie-corrected447-d29-partial-batch-001-actual-pair-root-authorized-v1-decision-004",
+      "goalId": "223e33a4-5545-5332-ac4e-7d7a6cbc587c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:4c6933abc217d77d5b33911ea84a5dda0e491612d389dc6a776d2cc1c138f867",
+      "pageFingerprint": "sha256:3bc592e801ae40a6a429d986c7cd8b5c4fcb6e1bfcb69507c59c52a44e91e0fb",
+      "goalReviewContextFingerprint": "sha256:56091b62a6e76fe3378d462b1d950538d7c543b730091518dc7a14041067825e",
+      "finalText": {
+        "titleDe": "Biotreibstoffe nach Rohstoff und Herstellungsweg unterscheiden",
+        "titleEn": "Distinguish biofuels by feedstock and production route",
+        "descriptionDe": "Die lernende Person kann anhand bereitgestellter Stoff- und Prozessdaten Pflanzenöl, Biodiesel und Bioethanol nach Rohstoff, Stoffklasse sowie Gewinnungs- beziehungsweise Herstellungsweg unterscheiden, dabei physikalische Trennung und chemische Umwandlung erklären, eine vorgegebene Stoffbilanz prüfen und die Wege nach einer angegebenen Rohstoff-/Prozesskonvention der ersten oder zweiten Treibstoffgeneration zuordnen, ohne daraus eine automatische Klimaneutralität abzuleiten.",
+        "descriptionEn": "Using supplied substance and process data, the learner can distinguish vegetable oil, biodiesel and bioethanol by feedstock, substance class and extraction or production route, explain physical separation and chemical conversion, check a supplied material balance, and assign routes to first or second fuel generations using a stated feedstock/process convention without inferring automatic climate neutrality."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a.223e33a4-5545-5332-ac4e-7d7a6cbc587c",
+          "recordDigest": "sha256:c5c28a5fbf1f44e415c1c441011e4ee15d9b0524fe890ab9613ff14bd3d8efde"
+        },
+        "second": {
+          "recordId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b-005",
+          "recordDigest": "sha256:563e06ffd2ca30ec06511d739c139fe3b1ef95d99a7e7d492a20c5b7ecc834ae"
+        }
+      },
+      "rationaleDe": "Technische Synthese der zwei tatsächlich versiegelten KEEP-Urteile zum exakt aktuellen D-Kontext; kein drittes Fachvotum. Die originale bilinguale Understanding-Evidence der ersten Runde wird unverändert gewählt; beide fachlichen Begründungen bleiben erhalten. A: Die längere, aber fachlich zusammenhängende DE/EN-Beschreibung legt die Vergleichsbasis und Konvention ausdrücklich fest. Das ganze operative Material liefert diese Konvention und 30+70=100 kg; ohne Saatölgehalt wird keine Gesamtrückgewinnung erfunden. Native Seite 5/Bild unterscheiden Pressen, Umesterung und Gärung/Trennung. BTL-Detailpflichten werden nicht aus der reinen Zuordnung abgeleitet. Kein Nachweis einer tatsächlichen Lernendenleistung, menschlichen Freigabe oder separat geprüften effektiven Quellen-/Kompositionszuordnung. B: Der lange, aber inhaltlich zusammenhängende DE/EN-Text beschreibt die Rohstoff-/Prozesszuordnung. 30+70=100 kg belegt nur die ideale Systembilanz, keine Ölrückgewinnungsquote ohne Ausgangsölgehalt. Triglycerid+3 Methanol sowie Glucosegärung sind stofflich richtig. Native Grafik und Vollmaterial zeigen vor Strohgärung die Verzuckerung. BTL bleibt von FAME getrennt; keine automatische Klimaneutralität.",
+      "rationaleEn": "Technical synthesis of two actual independently sealed KEEP records for the exact current D context, without a third scientific vote. Select the first round's original bilingual understanding evidence unchanged; preserve both actual reasons. A (original language): Die längere, aber fachlich zusammenhängende DE/EN-Beschreibung legt die Vergleichsbasis und Konvention ausdrücklich fest. Das ganze operative Material liefert diese Konvention und 30+70=100 kg; ohne Saatölgehalt wird keine Gesamtrückgewinnung erfunden. Native Seite 5/Bild unterscheiden Pressen, Umesterung und Gärung/Trennung. BTL-Detailpflichten werden nicht aus der reinen Zuordnung abgeleitet. Kein Nachweis einer tatsächlichen Lernendenleistung, menschlichen Freigabe oder separat geprüften effektiven Quellen-/Kompositionszuordnung. B (original language): Der lange, aber inhaltlich zusammenhängende DE/EN-Text beschreibt die Rohstoff-/Prozesszuordnung. 30+70=100 kg belegt nur die ideale Systembilanz, keine Ölrückgewinnungsquote ohne Ausgangsölgehalt. Triglycerid+3 Methanol sowie Glucosegärung sind stofflich richtig. Native Grafik und Vollmaterial zeigen vor Strohgärung die Verzuckerung. BTL bleibt von FAME getrennt; keine automatische Klimaneutralität."
+    },
+    {
+      "decisionId": "chemie-corrected447-d29-partial-batch-001-actual-pair-root-authorized-v1-decision-005",
+      "goalId": "3eb2a06c-d283-57aa-9eb4-088940c4801a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b3e166a93f10b040137da02018368f874e0f545e38b22cf03fce6bd681eb6476",
+      "pageFingerprint": "sha256:8f39aa781a5380299de69c167f9bd8ccb47feadf2280fc7059b97dbd554cb31b",
+      "goalReviewContextFingerprint": "sha256:d6e45f0f620a0f1d79ece71c26d73e6e2466f2a02a2f457feffe0408b95fcc1f",
+      "finalText": {
+        "titleDe": "Wirkstoffentwicklung, Produktion und Vermarktung verknüpfen",
+        "titleEn": "Connect drug development, production and marketing",
+        "descriptionDe": "Die lernende Person kann an einem materialgestützten Beispiel einer Wirkstoffgruppe den Weg von Forschung und Entwicklung über die Herstellung im Labor und die großtechnische Produktion bis zur Vermarktung fachlich erschließen, indem sie Forschungsbefunde mit Entwicklungsentscheidungen verknüpft, chemische Umwandlung und Aufarbeitung sowie maßstabsbedingte Anforderungen unterscheidet und Vermarktungsentscheidungen mit den Produktdaten und deren Aussagegrenzen begründet einordnet.",
+        "descriptionEn": "Using a supplied example of a drug group, the learner can explain the connected path from research and development through laboratory manufacture and large-scale production to marketing by relating research findings to development decisions, distinguishing chemical transformation, work-up and scale-dependent requirements, and giving reasoned interpretations of marketing decisions using product data and the limits of those data."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a.3eb2a06c-d283-57aa-9eb4-088940c4801a",
+          "recordDigest": "sha256:4fa2e4a8dec462e0dfa745a0a1872de8bd488b16dee5713d7304fea77c2343f8"
+        },
+        "second": {
+          "recordId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b-007",
+          "recordDigest": "sha256:0c4b3ef14be5e1d145c752bfb156860447d012e394287a4a28c215c929e9fb62"
+        }
+      },
+      "rationaleDe": "Technische Synthese der zwei tatsächlich versiegelten KEEP-Urteile zum exakt aktuellen D-Kontext; kein drittes Fachvotum. Die originale bilinguale Understanding-Evidence der ersten Runde wird unverändert gewählt; beide fachlichen Begründungen bleiben erhalten. A: Die Beschreibung beansprucht ausdrücklich die Verknüpfung, sodass die Stationen keine bloße Sammlung unabhängiger Routinen sind. Beide vollständigen bilingualen Fälle tragen die P-Erwartungen: 75% Ausbeute; Wärmefreisetzung/Wandabfuhr-Verhältnis ×10; 100 mögliche/80 verlangte Packungen und 120 Euro Beitrag; später 94/6 statt 97/3. Klinische Wirkung, Zulassung und Gewinn werden nicht aus Chemie-/Absatzdaten erfunden. Native Seite 7 und Rückkopplungsbild passen. Kein Nachweis einer tatsächlichen Lernendenleistung, menschlichen Freigabe oder separat geprüften effektiven Quellen-/Kompositionszuordnung. B: Die DE/EN-Kompetenz verlangt einen verbundenen Weg am selben Wirkstoffbeispiel. Vollmaterial und ganzes P halten diese Verbindung: 75% Ausbeute, zehnfach verschlechtertes geometrisches Wärmeverhältnis, 100 mögliche/80 geplante Packungen und 120 Euro Beitrag stimmen; die separate Modellcharge beweist den ungeprüften Scale-up nicht. Hydrolyse und 99/1-,92/8-,98/2-,94/6-Befunde sind konsistent. Die Grafik zeigt Rückkopplung, keine Produktions- oder klinische Freigabe.",
+      "rationaleEn": "Technical synthesis of two actual independently sealed KEEP records for the exact current D context, without a third scientific vote. Select the first round's original bilingual understanding evidence unchanged; preserve both actual reasons. A (original language): Die Beschreibung beansprucht ausdrücklich die Verknüpfung, sodass die Stationen keine bloße Sammlung unabhängiger Routinen sind. Beide vollständigen bilingualen Fälle tragen die P-Erwartungen: 75% Ausbeute; Wärmefreisetzung/Wandabfuhr-Verhältnis ×10; 100 mögliche/80 verlangte Packungen und 120 Euro Beitrag; später 94/6 statt 97/3. Klinische Wirkung, Zulassung und Gewinn werden nicht aus Chemie-/Absatzdaten erfunden. Native Seite 7 und Rückkopplungsbild passen. Kein Nachweis einer tatsächlichen Lernendenleistung, menschlichen Freigabe oder separat geprüften effektiven Quellen-/Kompositionszuordnung. B (original language): Die DE/EN-Kompetenz verlangt einen verbundenen Weg am selben Wirkstoffbeispiel. Vollmaterial und ganzes P halten diese Verbindung: 75% Ausbeute, zehnfach verschlechtertes geometrisches Wärmeverhältnis, 100 mögliche/80 geplante Packungen und 120 Euro Beitrag stimmen; die separate Modellcharge beweist den ungeprüften Scale-up nicht. Hydrolyse und 99/1-,92/8-,98/2-,94/6-Befunde sind konsistent. Die Grafik zeigt Rückkopplung, keine Produktions- oder klinische Freigabe."
+    },
+    {
+      "decisionId": "chemie-corrected447-d29-partial-batch-001-actual-pair-root-authorized-v1-decision-006",
+      "goalId": "48115ff7-7aca-5d0b-a9e7-7fc6c78434ef",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:1aa0edcc590ee24a93b88b0001ddafa68ccbc04d18be76c8bf2691b9a3c3dcf9",
+      "pageFingerprint": "sha256:d49f138b92eb45b1eb218d9bf92b716d707c9a3752d89d65bbd348ed0d8c069b",
+      "goalReviewContextFingerprint": "sha256:f6d04f49e9af397674b7f4b54fe10ad6ecb12621a217fcd00976e9f83ecacaab",
+      "finalText": {
+        "titleDe": "pK-Werte nutzen",
+        "titleEn": "Use pK values",
+        "descriptionDe": "Die lernende Person kann das Donator-Akzeptor- und Gleichgewichtskonzept auf Protolysereaktionen anwenden, Säure- und Basenstärken über das Massenwirkungsgesetz sowie pKS- und pKB-Werte vergleichen.",
+        "descriptionEn": "The learner can apply the donor-acceptor and equilibrium concepts to protolysis reactions and compare acid and base strengths using the law of mass action as well as pKa and pKb values."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a.48115ff7-7aca-5d0b-a9e7-7fc6c78434ef",
+          "recordDigest": "sha256:f350e4c25becb36978804f0e5b699553bb76b73cff88d7a9bb5abee4d40d2a76"
+        },
+        "second": {
+          "recordId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b-008",
+          "recordDigest": "sha256:b9d93a7108f5a8f555b78172958c0347fa2cb2e5bd5fb0e06496c0ee6a6d5d5a"
+        }
+      },
+      "rationaleDe": "Technische Synthese der zwei tatsächlich versiegelten KEEP-Urteile zum exakt aktuellen D-Kontext; kein drittes Fachvotum. Die originale bilinguale Understanding-Evidence der ersten Runde wird unverändert gewählt; beide fachlichen Begründungen bleiben erhalten. A: Bilinguale Beschreibung, Brønsted-Voraussetzung und native Seite 8 passen. Das ganze P fordert auch die Teilchenerklärung für Säuren UND Basen. Der operative Al-Aquakomplexfall erhält Atome/Ladung und kennzeichnet die koordinative LK-Erweiterung ausdrücklich bedingt; +3=+2+1, pKa 5 gegenüber 9 ist unter gemeinsamer Konvention korrekt. Das Bild ist vereinfachte Unterstützung; keine beliebigen realen pH-Werte werden behauptet. Kein Nachweis einer tatsächlichen Lernendenleistung, menschlichen Freigabe oder separat geprüften effektiven Quellen-/Kompositionszuordnung. B: DE/EN stimmen überein und die tatsächliche Seite zeigt getrennte Säure-/Basegleichgewichte. Das P verlangt Teilchenerklärung statt bloßer pK-Rangfolge. Die ausdrücklich HB-LK-begrenzte Aquakomplexergänzung bilanziert +3=+2+1 korrekt; Wasserligand ist Protonendonator, das Metall wird nicht zu Al2+ reduziert. Wasseraktivität ist konventionsgemäß eingebaut. Kein allgemeiner pH oder zusätzliche GK-Pflicht wird abgeleitet.",
+      "rationaleEn": "Technical synthesis of two actual independently sealed KEEP records for the exact current D context, without a third scientific vote. Select the first round's original bilingual understanding evidence unchanged; preserve both actual reasons. A (original language): Bilinguale Beschreibung, Brønsted-Voraussetzung und native Seite 8 passen. Das ganze P fordert auch die Teilchenerklärung für Säuren UND Basen. Der operative Al-Aquakomplexfall erhält Atome/Ladung und kennzeichnet die koordinative LK-Erweiterung ausdrücklich bedingt; +3=+2+1, pKa 5 gegenüber 9 ist unter gemeinsamer Konvention korrekt. Das Bild ist vereinfachte Unterstützung; keine beliebigen realen pH-Werte werden behauptet. Kein Nachweis einer tatsächlichen Lernendenleistung, menschlichen Freigabe oder separat geprüften effektiven Quellen-/Kompositionszuordnung. B (original language): DE/EN stimmen überein und die tatsächliche Seite zeigt getrennte Säure-/Basegleichgewichte. Das P verlangt Teilchenerklärung statt bloßer pK-Rangfolge. Die ausdrücklich HB-LK-begrenzte Aquakomplexergänzung bilanziert +3=+2+1 korrekt; Wasserligand ist Protonendonator, das Metall wird nicht zu Al2+ reduziert. Wasseraktivität ist konventionsgemäß eingebaut. Kein allgemeiner pH oder zusätzliche GK-Pflicht wird abgeleitet."
+    },
+    {
+      "decisionId": "chemie-corrected447-d29-partial-batch-001-actual-pair-root-authorized-v1-decision-007",
+      "goalId": "4965395d-e0c5-5e23-a408-a11712aab409",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:9bde66bc22bd5a5c4e664646baf41ee6f0a760aaa50d965901c8c5a7c7478e2d",
+      "pageFingerprint": "sha256:9bccdfad5375429abce2e47d939bfbc765611aaeae655335e519ee848392b273",
+      "goalReviewContextFingerprint": "sha256:a47b107dea4f5fbdefa88a39a83f83826c9bf0fa17b5061451fb46ca23986088",
+      "finalText": {
+        "titleDe": "Gesellschaftliche Folgen der Wirkstoffentwicklung historisch und aktuell bewerten",
+        "titleEn": "Evaluate historical and current social effects of medicine development",
+        "descriptionDe": "Die lernende Person kann anhand bereitgestellter Beispiele die Auswirkungen der Entwicklung von Medikamenten in historischen und aktuellen gesellschaftlichen Zusammenhängen anhand belegter Wirkung, Versorgung und Zugang, Kosten, Sicherheit sowie Resistenz- und Evidenzgrenzen begründet bewerten und ihr Urteil bei geänderten Wirksamkeitsannahmen revidieren.",
+        "descriptionEn": "Using supplied examples, the learner can give a reasoned evaluation of the effects of medicine development in historical and current social contexts using evidenced effectiveness, supply and access, costs, safety, resistance and evidence limits, and revise the judgment when assumptions about effectiveness change."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a.4965395d-e0c5-5e23-a408-a11712aab409",
+          "recordDigest": "sha256:af3be891f96e38a1aacfd4cdf23a92f81f44a8b67a165bb8969ee25cd1b08730"
+        },
+        "second": {
+          "recordId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b-009",
+          "recordDigest": "sha256:e06a340a40c8338e241c700b3badc616f81725b7fdfbdf63b3d19d8eda7db5b9"
+        }
+      },
+      "rationaleDe": "Technische Synthese der zwei tatsächlich versiegelten KEEP-Urteile zum exakt aktuellen D-Kontext; kein drittes Fachvotum. Die originale bilinguale Understanding-Evidence der ersten Runde wird unverändert gewählt; beide fachlichen Begründungen bleiben erhalten. A: DE/EN enthalten denselben begrenzten Bewertungsauftrag mit echter Revisionsbedingung. Das ganze operative P trennt historische Sachkarte von erfundenen heutigen Förderoptionen; A ist nur bei ausdrücklich gleicher Wirkung bedingt günstiger, fehlende B-Wirkung wird im Transfer nicht erfunden. Native Seite 9/Bild stellen Evidenz als Grundlage und Nutzen/Risiko als Gegenstände dar. Kein Nachweis einer tatsächlichen Lernendenleistung, menschlichen Freigabe oder separat geprüften effektiven Quellen-/Kompositionszuordnung. B: Die bilinguale Beschreibung benennt einen zusammenhängenden Bewertungsprozess. Vollmaterial und P unterscheiden Penicillin-Befund, Entwicklung und industrielle Verfügbarkeit. Die Förderoption A ist nur unter der ausdrücklich angenommenen gleichen Wirkung vorteilhaft; der frische Resistenzfall hebt diese Annahme auf. Native Bildwaage behandelt Evidenz als Grundlage und nicht als austauschbaren Nutzenposten. Keine Therapieempfehlung oder echte Studienleistung behauptet.",
+      "rationaleEn": "Technical synthesis of two actual independently sealed KEEP records for the exact current D context, without a third scientific vote. Select the first round's original bilingual understanding evidence unchanged; preserve both actual reasons. A (original language): DE/EN enthalten denselben begrenzten Bewertungsauftrag mit echter Revisionsbedingung. Das ganze operative P trennt historische Sachkarte von erfundenen heutigen Förderoptionen; A ist nur bei ausdrücklich gleicher Wirkung bedingt günstiger, fehlende B-Wirkung wird im Transfer nicht erfunden. Native Seite 9/Bild stellen Evidenz als Grundlage und Nutzen/Risiko als Gegenstände dar. Kein Nachweis einer tatsächlichen Lernendenleistung, menschlichen Freigabe oder separat geprüften effektiven Quellen-/Kompositionszuordnung. B (original language): Die bilinguale Beschreibung benennt einen zusammenhängenden Bewertungsprozess. Vollmaterial und P unterscheiden Penicillin-Befund, Entwicklung und industrielle Verfügbarkeit. Die Förderoption A ist nur unter der ausdrücklich angenommenen gleichen Wirkung vorteilhaft; der frische Resistenzfall hebt diese Annahme auf. Native Bildwaage behandelt Evidenz als Grundlage und nicht als austauschbaren Nutzenposten. Keine Therapieempfehlung oder echte Studienleistung behauptet."
+    },
+    {
+      "decisionId": "chemie-corrected447-d29-partial-batch-001-actual-pair-root-authorized-v1-decision-008",
+      "goalId": "4bd54a18-8dd2-59db-bddf-b4c34a10ba79",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:60a3e15585d0f668d6c685ee19fe688a781ab1103b72274ab788c715f4d4a77f",
+      "pageFingerprint": "sha256:23c8a48618a19feb62e5704b2946a96b2cc58989cf8e2b60a8a89ac912ad55e6",
+      "goalReviewContextFingerprint": "sha256:0c9dd9515e235b227afdda4d5dab49d460b39db0a8a8b1ff50cb412723d1ef57",
+      "finalText": {
+        "titleDe": "Starke Säuren mittels eigener digitaler pH-Titration bestimmen",
+        "titleEn": "Determine strong-acid concentration through a personal digital pH titration",
+        "descriptionDe": "Die lernende Person kann eine quantitative Titration einer starken einprotonigen Säure mit begründeter Maßlösung planen und unter fachlicher Aufsicht selbst durchführen, zugehörige eigene Volumen- und pH-Messwerte mit geeigneter pH-Erfassung dokumentieren, diese mit digitalen Werkzeugen als numerische XY-Titrationskurve darstellen und daraus die Probenkonzentration stöchiometrisch bestimmen sowie Endpunktbeobachtung, Äquivalenzbereich und Messunsicherheit begründet unterscheiden.",
+        "descriptionEn": "The learner can plan and personally perform a quantitative titration of a strong monoprotic acid under qualified supervision using a justified standard solution, record personal volume/pH readings with suitable pH measurement, present them as a numeric XY titration curve using digital tools, and determine sample concentration stoichiometrically while distinguishing observed endpoint, equivalence region and measurement uncertainty with reasons."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a.4bd54a18-8dd2-59db-bddf-b4c34a10ba79",
+          "recordDigest": "sha256:cfe0c89b03c3610110eb524c65badd0ad1e2aec0a1cc134e6bf0f637a8df94fa"
+        },
+        "second": {
+          "recordId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b-010",
+          "recordDigest": "sha256:6801ef55c23cbf95a2b0c4e6ec65cb13166b2e14d1b4744a8bf46c995827aa2a"
+        }
+      },
+      "rationaleDe": "Technische Synthese der zwei tatsächlich versiegelten KEEP-Urteile zum exakt aktuellen D-Kontext; kein drittes Fachvotum. Die originale bilinguale Understanding-Evidence der ersten Runde wird unverändert gewählt; beide fachlichen Begründungen bleiben erhalten. A: Der ganze eigene quantitative Untersuchungsablauf ist bilingual ausdrücklich im Ziel enthalten. P und vollständige starke-Säure-Route verlangen reale Eigenarbeit und numerische XY-Abstände, erlauben geprüfte Handübertragung und schreiben keine universelle Sensorautomation vor. Laborsicherheit/Brønsted/Mol sind benannt. Native Seite 10/Bild sind keine tatsächlich erhobene Messreihe; die Freigabe-/Durchführungsgrenze bleibt offen bis realer Leistung. Kein Nachweis einer tatsächlichen Lernendenleistung, menschlichen Freigabe oder separat geprüften effektiven Quellen-/Kompositionszuordnung. B: DE/EN sind deckungsgleich und schreiben reale Eigenarbeit vor. Das vollständige starke-Säure-Protokoll nennt Freigabe, Verdünnungsgrenze, sichere Geräte, pH-Kalibrierung und adaptive Schrittweiten; schwache Säure und Halbäquivalenz gehören nicht dazu. Handübertragung echter Messpaare bleibt erlaubt. Die qualitative native Sollkurve ist ausdrücklich kein Messprotokoll; der Dateifehlerfall fordert keinen zusätzlichen Laborversuch.",
+      "rationaleEn": "Technical synthesis of two actual independently sealed KEEP records for the exact current D context, without a third scientific vote. Select the first round's original bilingual understanding evidence unchanged; preserve both actual reasons. A (original language): Der ganze eigene quantitative Untersuchungsablauf ist bilingual ausdrücklich im Ziel enthalten. P und vollständige starke-Säure-Route verlangen reale Eigenarbeit und numerische XY-Abstände, erlauben geprüfte Handübertragung und schreiben keine universelle Sensorautomation vor. Laborsicherheit/Brønsted/Mol sind benannt. Native Seite 10/Bild sind keine tatsächlich erhobene Messreihe; die Freigabe-/Durchführungsgrenze bleibt offen bis realer Leistung. Kein Nachweis einer tatsächlichen Lernendenleistung, menschlichen Freigabe oder separat geprüften effektiven Quellen-/Kompositionszuordnung. B (original language): DE/EN sind deckungsgleich und schreiben reale Eigenarbeit vor. Das vollständige starke-Säure-Protokoll nennt Freigabe, Verdünnungsgrenze, sichere Geräte, pH-Kalibrierung und adaptive Schrittweiten; schwache Säure und Halbäquivalenz gehören nicht dazu. Handübertragung echter Messpaare bleibt erlaubt. Die qualitative native Sollkurve ist ausdrücklich kein Messprotokoll; der Dateifehlerfall fordert keinen zusätzlichen Laborversuch."
+    },
+    {
+      "decisionId": "chemie-corrected447-d29-partial-batch-001-actual-pair-root-authorized-v1-decision-009",
+      "goalId": "4bdbdf32-3021-5a0a-b412-b611166b2d21",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7fd5d1cb662fee8aeb63590216051c0fa0ea0fc9a033dc4e3319f62dc7362d7d",
+      "pageFingerprint": "sha256:e1bf10dddec9ee74f2824273c9531e221847bc67ef816b45c36cf41d2f9dc121",
+      "goalReviewContextFingerprint": "sha256:8c4d04e1237d31365fa48f83496489c189fc3cb1b0e1de5ac12adb2e65c1e7be",
+      "finalText": {
+        "titleDe": "Benzolstruktur deuten",
+        "titleEn": "Interpret benzene structure",
+        "descriptionDe": "Die lernende Person kann das delokalisierte π-System und die besondere Stabilität von Benzol mithilfe des Mesomeriemodells erklären.",
+        "descriptionEn": "The learner can explain the delocalized π-system and the special stability of benzene using the resonance model."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a.4bdbdf32-3021-5a0a-b412-b611166b2d21",
+          "recordDigest": "sha256:aac2c7713d5ff0475195eb6c6068cbbc3f8b44a729a21e7eb71a9ffa6b3dd377"
+        },
+        "second": {
+          "recordId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b-011",
+          "recordDigest": "sha256:54a6c1d64813564dc3bf0c1b4170400ebb15789fbeb03d1792234e3bca794c65"
+        }
+      },
+      "rationaleDe": "Technische Synthese der zwei tatsächlich versiegelten KEEP-Urteile zum exakt aktuellen D-Kontext; kein drittes Fachvotum. Die originale bilinguale Understanding-Evidence der ersten Runde wird unverändert gewählt; beide fachlichen Begründungen bleiben erhalten. A: Die knappe DE/EN-Beschreibung ist fachlich klar. Beide ganzen P-Fälle verbinden Struktur und Reaktionsvergleich, unterscheiden Resonanz von schnellem Bindungsspringen und begrenzen die Stabilitätsaussage gegenüber Kinetik. Native Seite 11/Bild zeigen Grenzformeln, delokalisierten Ring und Stabilisierung; detaillierte elektrophile Substitution bleibt Nachfolger. Kein Nachweis einer tatsächlichen Lernendenleistung, menschlichen Freigabe oder separat geprüften effektiven Quellen-/Kompositionszuordnung. B: Text und Englisch sind präzise begrenzt. Die ganzen P-Fälle widerlegen ein zeitliches Springen lokalisierter Formen und erklären Substitutionserhalt gegenüber dauerhaftem sp3-Aufbruch; das ist Konzepttransfer ohne vorweggenommenen Mechanismus des Nachfolgeziels. Die aktuelle Seitenabbildung kennzeichnet Grenzformeln und niedrigeren Resonanzhybrid.",
+      "rationaleEn": "Technical synthesis of two actual independently sealed KEEP records for the exact current D context, without a third scientific vote. Select the first round's original bilingual understanding evidence unchanged; preserve both actual reasons. A (original language): Die knappe DE/EN-Beschreibung ist fachlich klar. Beide ganzen P-Fälle verbinden Struktur und Reaktionsvergleich, unterscheiden Resonanz von schnellem Bindungsspringen und begrenzen die Stabilitätsaussage gegenüber Kinetik. Native Seite 11/Bild zeigen Grenzformeln, delokalisierten Ring und Stabilisierung; detaillierte elektrophile Substitution bleibt Nachfolger. Kein Nachweis einer tatsächlichen Lernendenleistung, menschlichen Freigabe oder separat geprüften effektiven Quellen-/Kompositionszuordnung. B (original language): Text und Englisch sind präzise begrenzt. Die ganzen P-Fälle widerlegen ein zeitliches Springen lokalisierter Formen und erklären Substitutionserhalt gegenüber dauerhaftem sp3-Aufbruch; das ist Konzepttransfer ohne vorweggenommenen Mechanismus des Nachfolgeziels. Die aktuelle Seitenabbildung kennzeichnet Grenzformeln und niedrigeren Resonanzhybrid."
+    },
+    {
+      "decisionId": "chemie-corrected447-d29-partial-batch-001-actual-pair-root-authorized-v1-decision-010",
+      "goalId": "684ffe86-3a9f-5514-866a-47d16372f2d4",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:dfce8a53462e0e7bd5a11b4a6a0f9b01cda40b5238c4b61f5d105c178865ec21",
+      "pageFingerprint": "sha256:186bf23521d4fbc81da42a521489e327dc039298706082de99bca930e20fc831",
+      "goalReviewContextFingerprint": "sha256:e96f4d22f6f25772eecc45b6b47e5867c898a7e54b030a71ddee8ef1db8e727d",
+      "finalText": {
+        "titleDe": "Kohlenhydratklassen strukturbezogen unterscheiden",
+        "titleEn": "Distinguish carbohydrate classes by structure",
+        "descriptionDe": "Die lernende Person kann Mono-, Di- und Polysaccharide anhand von Bausteinen und Verknüpfungen unterscheiden und ausgewählte chemische und physiologische Eigenschaften strukturbezogen begründen.",
+        "descriptionEn": "The learner can distinguish mono-, di- and polysaccharides using their units and linkages and justify selected chemical and physiological properties from structure."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a.684ffe86-3a9f-5514-866a-47d16372f2d4",
+          "recordDigest": "sha256:f20c6b98b6b0b8882e2b8b1076a51c090fe6ba5f28b6390cb96c69bb025ea22a"
+        },
+        "second": {
+          "recordId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b-012",
+          "recordDigest": "sha256:2a07d7c7921eb2c93db50e534cb992d7e44772e63b6e905e36c41eebfdda9275"
+        }
+      },
+      "rationaleDe": "Technische Synthese der zwei tatsächlich versiegelten KEEP-Urteile zum exakt aktuellen D-Kontext; kein drittes Fachvotum. Die originale bilinguale Understanding-Evidence der ersten Runde wird unverändert gewählt; beide fachlichen Begründungen bleiben erhalten. A: Die bilinguale Beschreibung enthält einen kohärenten Struktur-Eigenschaftsauftrag. P und das ganze industrielle Material grenzen Stammbaum/C2-Epimerie und fotosynthetische Bildung ausdrücklich aus und begründen A Glucose, B Stärke, C Cellulose unter gegebenen Bedingungen. Native Seite 12/Bild stellen nur Klassenmodelle dar; eine Cellulase-Ausstattung wird nicht erfunden. Kein Nachweis einer tatsächlichen Lernendenleistung, menschlichen Freigabe oder separat geprüften effektiven Quellen-/Kompositionszuordnung. B: DE/EN sind gleichwertig. P und Material halten den Stammbaum ausdrücklich als Hintergrund und verlangen hier keinen C2-Epimerie- oder Biosynthesenachweis. Glucose, Stärke und Cellulose werden über Verknüpfung und Nutzung unterschieden; fehlende Cellulase bleibt eine echte Schlussgrenze. Das native Mono/Di/Poly-Bild ist ein Bausteinmodell, keine detaillierte Bindungszeichnung.",
+      "rationaleEn": "Technical synthesis of two actual independently sealed KEEP records for the exact current D context, without a third scientific vote. Select the first round's original bilingual understanding evidence unchanged; preserve both actual reasons. A (original language): Die bilinguale Beschreibung enthält einen kohärenten Struktur-Eigenschaftsauftrag. P und das ganze industrielle Material grenzen Stammbaum/C2-Epimerie und fotosynthetische Bildung ausdrücklich aus und begründen A Glucose, B Stärke, C Cellulose unter gegebenen Bedingungen. Native Seite 12/Bild stellen nur Klassenmodelle dar; eine Cellulase-Ausstattung wird nicht erfunden. Kein Nachweis einer tatsächlichen Lernendenleistung, menschlichen Freigabe oder separat geprüften effektiven Quellen-/Kompositionszuordnung. B (original language): DE/EN sind gleichwertig. P und Material halten den Stammbaum ausdrücklich als Hintergrund und verlangen hier keinen C2-Epimerie- oder Biosynthesenachweis. Glucose, Stärke und Cellulose werden über Verknüpfung und Nutzung unterschieden; fehlende Cellulase bleibt eine echte Schlussgrenze. Das native Mono/Di/Poly-Bild ist ein Bausteinmodell, keine detaillierte Bindungszeichnung."
+    },
+    {
+      "decisionId": "chemie-corrected447-d29-partial-batch-001-actual-pair-root-authorized-v1-decision-011",
+      "goalId": "6fa55d29-9d79-5b80-92f2-01f9bb64ef35",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:9a1ea47ec62e33c32037d96d7cb0909e1310fdef9e74def0c401caa1e2330a6a",
+      "pageFingerprint": "sha256:2dc12b3441c17f2748f5569be0f97af16eafc3452a4a3a1806ae8c76f3a7cf5d",
+      "goalReviewContextFingerprint": "sha256:8337463dce63818e91ee180c353c04964698e314a5ad3e9ed530685026a6927a",
+      "finalText": {
+        "titleDe": "Biobasierte PLA-Proben kontrolliert untersuchen",
+        "titleEn": "Investigate biobased PLA samples under controlled conditions",
+        "descriptionDe": "Die lernende Person kann eine unter fachlicher Aufsicht freigegebene Eigenschaftsuntersuchung an identifizierten biobasierten PLA-Proben planen und selbst durchführen, tatsächliche Rohdaten mit Einheiten und Unsicherheiten dokumentieren und aus dem kontrollierten Vergleich begrenzte Eigenschaftsaussagen ableiten, wobei Geometrie, Konditionierung und Zusammensetzung als mögliche Einflussgrößen sowie Rohstoffherkunft und biologischer Abbau unterschieden werden.",
+        "descriptionEn": "The learner can plan and personally perform a property investigation of identified biobased PLA samples released under qualified supervision, record actual raw data with units and uncertainty, and derive bounded property conclusions from the controlled comparison while distinguishing geometry, conditioning and composition as possible influences and feedstock origin from biodegradation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a.6fa55d29-9d79-5b80-92f2-01f9bb64ef35",
+          "recordDigest": "sha256:7f7f5ce0fcde88a483b8b0e15b7c33718e0a6fb897525752d348fb9c018d4d63"
+        },
+        "second": {
+          "recordId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b-013",
+          "recordDigest": "sha256:d343b9a1a81c4be39c9fc6afa0273554babfabc3ddee0dd8b054e87923112ca2"
+        }
+      },
+      "rationaleDe": "Technische Synthese der zwei tatsächlich versiegelten KEEP-Urteile zum exakt aktuellen D-Kontext; kein drittes Fachvotum. Die originale bilinguale Understanding-Evidence der ersten Runde wird unverändert gewählt; beide fachlichen Begründungen bleiben erhalten. A: DE/EN umfassen den ganzen eigenen kontrollierten Untersuchungsablauf. Das vollständige P/Material verwendet identifizierte Proben, tatsächlichen Herkunftsnachweis und reale Freigabe, gibt keine Sollmesswerte vor und verlangt keine zusätzliche reale Transferquote. Native Seite 13/Bild unterscheiden belasteten Streifen und unbelastete Bezugslinie; leere Rohdatentabelle beweist keine Durchführung. Kein Nachweis einer tatsächlichen Lernendenleistung, menschlichen Freigabe oder separat geprüften effektiven Quellen-/Kompositionszuordnung. B: Die Beschreibungen verlangen dieselbe praktische Untersuchung. Das vollständige Material hat keine Sollmesswerte, nennt kleine betreut freigegebene Lasten und reale Herkunftsnachweise. Das P trennt Probengeometrie, Konditionierung und Zusammensetzung, biobasiert und Abbau; ein weiterer realer Durchlauf wird nicht aus der Papiertransferfrage verlangt. Die native Seite zeigt eine leere Rohdatentabelle und einen Durchbiegungsvergleich, keine ausgeführte Leistung.",
+      "rationaleEn": "Technical synthesis of two actual independently sealed KEEP records for the exact current D context, without a third scientific vote. Select the first round's original bilingual understanding evidence unchanged; preserve both actual reasons. A (original language): DE/EN umfassen den ganzen eigenen kontrollierten Untersuchungsablauf. Das vollständige P/Material verwendet identifizierte Proben, tatsächlichen Herkunftsnachweis und reale Freigabe, gibt keine Sollmesswerte vor und verlangt keine zusätzliche reale Transferquote. Native Seite 13/Bild unterscheiden belasteten Streifen und unbelastete Bezugslinie; leere Rohdatentabelle beweist keine Durchführung. Kein Nachweis einer tatsächlichen Lernendenleistung, menschlichen Freigabe oder separat geprüften effektiven Quellen-/Kompositionszuordnung. B (original language): Die Beschreibungen verlangen dieselbe praktische Untersuchung. Das vollständige Material hat keine Sollmesswerte, nennt kleine betreut freigegebene Lasten und reale Herkunftsnachweise. Das P trennt Probengeometrie, Konditionierung und Zusammensetzung, biobasiert und Abbau; ein weiterer realer Durchlauf wird nicht aus der Papiertransferfrage verlangt. Die native Seite zeigt eine leere Rohdatentabelle und einen Durchbiegungsvergleich, keine ausgeführte Leistung."
+    },
+    {
+      "decisionId": "chemie-corrected447-d29-partial-batch-001-actual-pair-root-authorized-v1-decision-012",
+      "goalId": "72236f2c-771e-4ab6-933a-e549ee49d15b",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e5ccc10c2573f5476ad1848ad0636567299ee2a1196cf0f60073b3f6b902790d",
+      "pageFingerprint": "sha256:d18db3f246bdf83651ef8549b2d41815ed38957304d2cd79446e8779a062fab8",
+      "goalReviewContextFingerprint": "sha256:d1f45f935a93828de53464569122faf3af6a60a949b50aaef07bab21859761d8",
+      "finalText": {
+        "titleDe": "Kern-Hülle-Modell und Atombausteine beschreiben",
+        "titleEn": "Describe the nuclear model of the atom and atomic constituents",
+        "descriptionDe": "Die lernende Person kann das Rutherford-Streuexperiment als Befund für das Kern-Hülle-Modell einordnen, den Aufbau von Atomen mit dem Kern-Hülle-Modell beschreiben und Protonen, Neutronen sowie Elektronen fachlich einordnen.",
+        "descriptionEn": "The learner can classify Rutherford scattering as evidence for the core-shell model, describe atomic structure using the core-shell model, and correctly classify protons, neutrons, and electrons."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a.72236f2c-771e-4ab6-933a-e549ee49d15b",
+          "recordDigest": "sha256:fd82dd81bd842260a6cca050843797a7ba3a1248b83ea289e7d1eb9a0283f5d8"
+        },
+        "second": {
+          "recordId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b-014",
+          "recordDigest": "sha256:5b3117e3472cdd7fcf3d0878d0cfe7d1b1021876516b0017ec0848091546e76c"
+        }
+      },
+      "rationaleDe": "Technische Synthese der zwei tatsächlich versiegelten KEEP-Urteile zum exakt aktuellen D-Kontext; kein drittes Fachvotum. Die originale bilinguale Understanding-Evidence der ersten Runde wird unverändert gewählt; beide fachlichen Begründungen bleiben erhalten. A: DE/EN sind äquivalent und verknüpfen Befund, Modell und Bausteine. Das ganze P enthält positive UND negative Ladungstransfers mit korrekten Zahlen: Na23 neutral 11/12/11, Na+ 11/12/10, Cl35− 17/18/18. Native Seite 14/Bild sind nicht maßstäblich; P verweigert aus ihnen genaue Bahnen oder eigenständige Neutronenmessung. Nachfolger behandelt erst Energiestufen. Kein Nachweis einer tatsächlichen Lernendenleistung, menschlichen Freigabe oder separat geprüften effektiven Quellen-/Kompositionszuordnung. B: Der volle bilinguale Text bleibt beim Kern-Hülle-Modell und seinen Bausteinen. Beide vollständigen P-Fälle enthalten echte geänderte Ladungs-/Isotopenbedingungen: Na23 11/12/11, Na22 11/11/11, Na23+ 11/12/10 sowie Cl35 17/18/17 und Cl35− 17/18/18 sind korrekt. Die Teilchenzahlen stammen aus Z/A/Ladung, nicht aus der Streuzählung. Native Skizze und Modell liefern keine genaue Bahn, Neutronenmessung oder Schalenbesetzung.",
+      "rationaleEn": "Technical synthesis of two actual independently sealed KEEP records for the exact current D context, without a third scientific vote. Select the first round's original bilingual understanding evidence unchanged; preserve both actual reasons. A (original language): DE/EN sind äquivalent und verknüpfen Befund, Modell und Bausteine. Das ganze P enthält positive UND negative Ladungstransfers mit korrekten Zahlen: Na23 neutral 11/12/11, Na+ 11/12/10, Cl35− 17/18/18. Native Seite 14/Bild sind nicht maßstäblich; P verweigert aus ihnen genaue Bahnen oder eigenständige Neutronenmessung. Nachfolger behandelt erst Energiestufen. Kein Nachweis einer tatsächlichen Lernendenleistung, menschlichen Freigabe oder separat geprüften effektiven Quellen-/Kompositionszuordnung. B (original language): Der volle bilinguale Text bleibt beim Kern-Hülle-Modell und seinen Bausteinen. Beide vollständigen P-Fälle enthalten echte geänderte Ladungs-/Isotopenbedingungen: Na23 11/12/11, Na22 11/11/11, Na23+ 11/12/10 sowie Cl35 17/18/17 und Cl35− 17/18/18 sind korrekt. Die Teilchenzahlen stammen aus Z/A/Ladung, nicht aus der Streuzählung. Native Skizze und Modell liefern keine genaue Bahn, Neutronenmessung oder Schalenbesetzung."
+    },
+    {
+      "decisionId": "chemie-corrected447-d29-partial-batch-001-actual-pair-root-authorized-v1-decision-013",
+      "goalId": "7371c82e-6668-5ddc-ba78-347113fcddf8",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:48158d684d086b515ae6480cd03b71cfefcad7cba2f8842d9dd0fe9453d3cc6e",
+      "pageFingerprint": "sha256:06553f729059b1c7205864c9780d94729fb76344e2b487b015fef8c20c831603",
+      "goalReviewContextFingerprint": "sha256:ddd1cc099b817d55e06a93d3d2135d35173b011ed81c9ddd8ba5e61ea1a9b64f",
+      "finalText": {
+        "titleDe": "Fettverwendung kriteriengeleitet bewerten",
+        "titleEn": "Evaluate fat applications using criteria",
+        "descriptionDe": "Die lernende Person kann die Bedeutung von Fetten für Ernährung, Technik und nachwachsende Rohstoffe anhand geeigneter chemischer und nachhaltigkeitsbezogener Kriterien bewerten.",
+        "descriptionEn": "The learner can evaluate the significance of fats in nutrition, technology and renewable feedstocks using suitable chemical and sustainability criteria."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a.7371c82e-6668-5ddc-ba78-347113fcddf8",
+          "recordDigest": "sha256:47668fc545452f8ea75deb482d5963474a1bc68e7415efa941c95e55db3ef5e7"
+        },
+        "second": {
+          "recordId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b-015",
+          "recordDigest": "sha256:a0216b65e77ce465ce8ba74aa76aee272384b5cb080ee191da07595f39d4a505"
+        }
+      },
+      "rationaleDe": "Technische Synthese der zwei tatsächlich versiegelten KEEP-Urteile zum exakt aktuellen D-Kontext; kein drittes Fachvotum. Die originale bilinguale Understanding-Evidence der ersten Runde wird unverändert gewählt; beide fachlichen Begründungen bleiben erhalten. A: Die DE/EN-Beschreibung enthält die integrierte Nutzungsbewertung; die Struktur ist Voraussetzung. Ganze P-Fälle decken Ernährung, technische Verwendung und Rohstoffgrenzen ab, einschließlich eigener Erklärung der Energiefunktion und geänderter Essenzialität. n-3/n-6 wird korrekt vom Methylende gezählt; Portion/Gesamtkost bleiben offen. Native Seite 15/Bild liefert nur Struktur-/Stofforientierung, keine gesundheitliche Rangfolge. Kein Nachweis einer tatsächlichen Lernendenleistung, menschlichen Freigabe oder separat geprüften effektiven Quellen-/Kompositionszuordnung. B: DE/EN beschreiben eine integrierte Nutzungsbewertung. Das ganze P erklärt Ernährung tatsächlich über Esterhydrolyse und energieliefernde Bausteine; Paraffin ist ein gültiger Gegenfall gegen bloße C/H-Gleichsetzung. Die n-3/n-6- und Delta-Zuordnungen stimmen; fehlende Portionen verhindern eine individuelle Versorgungsbehauptung. Dossiers erlauben verschiedene begründete Gewichtungen, respektieren aber nicht lebensmitteltaugliches B/C. Die wiederverwendete Strukturabbildung ersetzt die Bewertung nicht.",
+      "rationaleEn": "Technical synthesis of two actual independently sealed KEEP records for the exact current D context, without a third scientific vote. Select the first round's original bilingual understanding evidence unchanged; preserve both actual reasons. A (original language): Die DE/EN-Beschreibung enthält die integrierte Nutzungsbewertung; die Struktur ist Voraussetzung. Ganze P-Fälle decken Ernährung, technische Verwendung und Rohstoffgrenzen ab, einschließlich eigener Erklärung der Energiefunktion und geänderter Essenzialität. n-3/n-6 wird korrekt vom Methylende gezählt; Portion/Gesamtkost bleiben offen. Native Seite 15/Bild liefert nur Struktur-/Stofforientierung, keine gesundheitliche Rangfolge. Kein Nachweis einer tatsächlichen Lernendenleistung, menschlichen Freigabe oder separat geprüften effektiven Quellen-/Kompositionszuordnung. B (original language): DE/EN beschreiben eine integrierte Nutzungsbewertung. Das ganze P erklärt Ernährung tatsächlich über Esterhydrolyse und energieliefernde Bausteine; Paraffin ist ein gültiger Gegenfall gegen bloße C/H-Gleichsetzung. Die n-3/n-6- und Delta-Zuordnungen stimmen; fehlende Portionen verhindern eine individuelle Versorgungsbehauptung. Dossiers erlauben verschiedene begründete Gewichtungen, respektieren aber nicht lebensmitteltaugliches B/C. Die wiederverwendete Strukturabbildung ersetzt die Bewertung nicht."
+    },
+    {
+      "decisionId": "chemie-corrected447-d29-partial-batch-001-actual-pair-root-authorized-v1-decision-014",
+      "goalId": "0959eef2-3c7d-5b33-a109-ddf332a5dbd9",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:2b01b9ca06ef18a54852b872dc430bdc53f6ebbcbc56409e342f0ec6644e046b",
+      "pageFingerprint": "sha256:6d864ded5b3acd540ef576c58c4893269eea7a661cced2eda63856c99860a5eb",
+      "goalReviewContextFingerprint": "sha256:400bf2475a2abcea181c376f3f41c3c482855f802ab5f8852a5d0be186d84440",
+      "finalText": {
+        "titleDe": "Pflanzenölkraftstoffe strukturbezogen einordnen",
+        "titleEn": "Interpret vegetable-oil fuels from structure",
+        "descriptionDe": "Die lernende Person kann Pflanzenöle als Gemische von Triglyceriden strukturell beschreiben und ihre Verwendung als Pflanzenölkraftstoffe anhand von Eigenschaften, Rohstoffherkunft und ökologischen Folgen begründet einordnen.",
+        "descriptionEn": "The learner can describe vegetable oils structurally as triglyceride mixtures and interpret their use as vegetable-oil fuels using properties, feedstock provenance and ecological consequences."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a.0959eef2-3c7d-5b33-a109-ddf332a5dbd9",
+          "recordDigest": "sha256:71e2218775db016580d8ccb84dec412f6c050fedfb9900f4c6e12115a10ae264"
+        },
+        "second": {
+          "recordId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b-016",
+          "recordDigest": "sha256:fce4a428d612e05aa95e102480528d672bcd0a5dafeeb797fdcd4a6f6058f9d8"
+        }
+      },
+      "rationaleDe": "Technische Synthese der zwei tatsächlich versiegelten KEEP-Urteile zum exakt aktuellen D-Kontext; kein drittes Fachvotum. Die originale bilinguale Understanding-Evidence der ersten Runde wird unverändert gewählt; beide fachlichen Begründungen bleiben erhalten. A: Die aktuelle bilinguale Beschreibung und das ganze P bleiben bei Pflanzenölstruktur und direkter Nutzung; Umesterung ist ausdrücklich keine eigene Pflicht. Beide Fälle haben echte Änderungen der Beleglage. Native Seite 16/Bild zeigt drei Estergruppen und Bewertungsfelder; Motoreignung und vollständige CO2-Bilanz werden nicht aus dem Symbolkanister oder Triglyceridanteil abgeleitet. Kein Nachweis einer tatsächlichen Lernendenleistung, menschlichen Freigabe oder separat geprüften effektiven Quellen-/Kompositionszuordnung. B: Beschreibung und Englisch bleiben ausdrücklich beim Pflanzenöl. Beide ganzen P-Fälle enthalten bereits die relevanten Angaben und frische Transfers; sie verlangen keine Umesterungsleistung des Nachfolgeziels. Höherer TG-Anteil beziehungsweise ein anonymes Nachhaltigkeitslabel ersetzt weder Betriebsfreigabe noch LCA. Die aktuelle native Abbildung zeigt Struktur, Eigenschaften, Herkunft und Umwelt als getrennte Begründungsgrößen.",
+      "rationaleEn": "Technical synthesis of two actual independently sealed KEEP records for the exact current D context, without a third scientific vote. Select the first round's original bilingual understanding evidence unchanged; preserve both actual reasons. A (original language): Die aktuelle bilinguale Beschreibung und das ganze P bleiben bei Pflanzenölstruktur und direkter Nutzung; Umesterung ist ausdrücklich keine eigene Pflicht. Beide Fälle haben echte Änderungen der Beleglage. Native Seite 16/Bild zeigt drei Estergruppen und Bewertungsfelder; Motoreignung und vollständige CO2-Bilanz werden nicht aus dem Symbolkanister oder Triglyceridanteil abgeleitet. Kein Nachweis einer tatsächlichen Lernendenleistung, menschlichen Freigabe oder separat geprüften effektiven Quellen-/Kompositionszuordnung. B (original language): Beschreibung und Englisch bleiben ausdrücklich beim Pflanzenöl. Beide ganzen P-Fälle enthalten bereits die relevanten Angaben und frische Transfers; sie verlangen keine Umesterungsleistung des Nachfolgeziels. Höherer TG-Anteil beziehungsweise ein anonymes Nachhaltigkeitslabel ersetzt weder Betriebsfreigabe noch LCA. Die aktuelle native Abbildung zeigt Struktur, Eigenschaften, Herkunft und Umwelt als getrennte Begründungsgrößen."
+    },
+    {
+      "decisionId": "chemie-corrected447-d29-partial-batch-001-actual-pair-root-authorized-v1-decision-015",
+      "goalId": "7f140b34-ed26-59e7-8ad2-ccb6b56bc9d6",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:5dfa0a7e6ce7ba85e71cba28ce8379619eded217571b43633d30188cd49e634a",
+      "pageFingerprint": "sha256:596c20bace5024e63cbd50c19dd71ff33a7df9e1d10a260974988e998a5d1da1",
+      "goalReviewContextFingerprint": "sha256:166b02efcac4bad709ebd84ce2fac19a1c2ed48fae46a89296b699a2dd3991f6",
+      "finalText": {
+        "titleDe": "Chemische Anwendungen und ihre gesellschaftliche Bedeutung diskutieren",
+        "titleEn": "Discuss chemical applications and their social significance",
+        "descriptionDe": "Die lernende Person kann Aufgaben und Anwendungsbereiche der Chemie an konkreten Beispielen beschreiben und ihre Bedeutung für Gesellschaft, Mensch und Umwelt fachlich begründet diskutieren.",
+        "descriptionEn": "The learner can describe tasks and application areas of chemistry using concrete examples and discuss their significance for society, people, and the environment with scientific justification."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a.7f140b34-ed26-59e7-8ad2-ccb6b56bc9d6",
+          "recordDigest": "sha256:9b6402abbe69c70c5720a9bf17d84bce3341cdb8fac86365b52bb9619393bdf3"
+        },
+        "second": {
+          "recordId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b-017",
+          "recordDigest": "sha256:fd9e2e623ce2ccf07c409809bb13092722c78205f6206f6f97e2256f50174ade"
+        }
+      },
+      "rationaleDe": "Technische Synthese der zwei tatsächlich versiegelten KEEP-Urteile zum exakt aktuellen D-Kontext; kein drittes Fachvotum. Die originale bilinguale Understanding-Evidence der ersten Runde wird unverändert gewählt; beide fachlichen Begründungen bleiben erhalten. A: DE/EN benennen denselben fachlichen Diskussionsauftrag für Sek I. Das ganze P und beide zusätzlichen HB-Materialien trennen CO-Gesundheitspfad, CO2-Klimapfad und Reiniger-Stoffeintrag; gleiches pH oder weniger CO beweisen keine generelle Unbedenklichkeit. Zusatzpflichten werden ausdrücklich auf die benannten HB-Routen begrenzt. Native Seite 17/Bild zeigt Anwendungsfelder, keine fertige Bewertung oder tatsächliche Leistung. Kein Nachweis einer tatsächlichen Lernendenleistung, menschlichen Freigabe oder separat geprüften effektiven Quellen-/Kompositionszuordnung. B: Die kanonische DE/EN-Beschreibung ist klar. Die vollständigen neuen CO/CO2- und Reinigerfälle sind chemisch schlüssig und zeigen echten Transfer ohne Exposition. Das operative P muss jedoch seine alten Fallaufträge vervollständigen: chemical-applications-society-water-and-materials fordert beide konkrete Beispiele ohne im taskDemand deren Stoff-/Funktionskarten zu liefern; der zweite Fall nennt ebenso beide Fälle erst über die erwartete Lösung. Gleichzeitig bindet required chemical-function Flockung/Korrosionsschutz und Verpackung/Batterie an bereitgestellte Zusammenhänge. Die Lösung darf nicht die einzige Aufgabenangabe sein. Diese P-Reparatur verlangt keine zusätzliche Aufgabenquote und keine Verbreiterung des D-Textes. Die gesonderte P-Revisionsanregung bleibt offen; dies ist kein neuer Whole-P- oder M7-Abschluss.",
+      "rationaleEn": "Technical synthesis of two actual independently sealed KEEP records for the exact current D context, without a third scientific vote. Select the first round's original bilingual understanding evidence unchanged; preserve both actual reasons. A (original language): DE/EN benennen denselben fachlichen Diskussionsauftrag für Sek I. Das ganze P und beide zusätzlichen HB-Materialien trennen CO-Gesundheitspfad, CO2-Klimapfad und Reiniger-Stoffeintrag; gleiches pH oder weniger CO beweisen keine generelle Unbedenklichkeit. Zusatzpflichten werden ausdrücklich auf die benannten HB-Routen begrenzt. Native Seite 17/Bild zeigt Anwendungsfelder, keine fertige Bewertung oder tatsächliche Leistung. Kein Nachweis einer tatsächlichen Lernendenleistung, menschlichen Freigabe oder separat geprüften effektiven Quellen-/Kompositionszuordnung. B (original language): Die kanonische DE/EN-Beschreibung ist klar. Die vollständigen neuen CO/CO2- und Reinigerfälle sind chemisch schlüssig und zeigen echten Transfer ohne Exposition. Das operative P muss jedoch seine alten Fallaufträge vervollständigen: chemical-applications-society-water-and-materials fordert beide konkrete Beispiele ohne im taskDemand deren Stoff-/Funktionskarten zu liefern; der zweite Fall nennt ebenso beide Fälle erst über die erwartete Lösung. Gleichzeitig bindet required chemical-function Flockung/Korrosionsschutz und Verpackung/Batterie an bereitgestellte Zusammenhänge. Die Lösung darf nicht die einzige Aufgabenangabe sein. Diese P-Reparatur verlangt keine zusätzliche Aufgabenquote und keine Verbreiterung des D-Textes. The separate P revision finding remains open; this is no new whole-P or M7 closure."
+    },
+    {
+      "decisionId": "chemie-corrected447-d29-partial-batch-001-actual-pair-root-authorized-v1-decision-016",
+      "goalId": "85342c52-9722-54b0-8fbb-513d9d648363",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b3cf84dd3646af2f70f38d0775a12cd48871c3f6aea46e14076bb03c0201b64d",
+      "pageFingerprint": "sha256:6d8dd47c73b620df3be51dea7355bc6c24e3f1a20400b27ccfccc405dbe3d347",
+      "goalReviewContextFingerprint": "sha256:f22fd1b181429489a66e02048572846d4808acc0e913b6765ef6750b9a74dc29",
+      "finalText": {
+        "titleDe": "Konfiguration und Konformation unterscheiden",
+        "titleEn": "Distinguish configuration and conformation",
+        "descriptionDe": "Die lernende Person kann Konstitution, Konfiguration (R/S, E/Z) und Konformation unterscheiden und darstellen.",
+        "descriptionEn": "The learner can distinguish and represent constitution, configuration (R/S, E/Z), and conformation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a.85342c52-9722-54b0-8fbb-513d9d648363",
+          "recordDigest": "sha256:19354b621e536a2f879447d97428016ce8e3a2a72310b13c534f7959043d7e67"
+        },
+        "second": {
+          "recordId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b-018",
+          "recordDigest": "sha256:5c013c4f20765d0a85551fbb9e58363dd838643bae1ab80dcccb3d1e2a9b1b93"
+        }
+      },
+      "rationaleDe": "Technische Synthese der zwei tatsächlich versiegelten KEEP-Urteile zum exakt aktuellen D-Kontext; kein drittes Fachvotum. Die originale bilinguale Understanding-Evidence der ersten Runde wird unverändert gewählt; beide fachlichen Begründungen bleiben erhalten. A: Die bilinguale Beschreibung fasst eine kohärente Unterscheidungs-/Darstellungskompetenz zusammen. Das ganze P einschließlich beider Supplemente hat richtige CIP-Listen (Cystein CH2SH vor COOH, daher L-Cystein R) und erhält D/beta bei Sesselumklappung. Native Seite 18/Bild unterscheiden interne Drehung und Konfigurationswechsel. Die anspruchsvollen Zucker-/Aminosäurefälle sind ausdrücklich LK-begrenzt und keine neue GK-Pflicht. Kein Nachweis einer tatsächlichen Lernendenleistung, menschlichen Freigabe oder separat geprüften effektiven Quellen-/Kompositionszuordnung. B: Die knappe DE/EN-Kompetenz macht Darstellen ausdrücklich verbindlich. P und Vollmaterial decken Konstitution, R/S und E/Z sowie echte Konformation ab. Beta-D-Glucose ist im 4C1 bei den genannten Gruppen äquatorial, im 1C4 axial bei erhaltenem oben/unten. Für L-Cystein übertrifft CH2SH mit S,H,H das COOH mit O,O,O und ergibt R; Alanin/Serin ergeben S, Glycin kein Zentrum. Das native Bild illustriert den geeigneten tetraedrischen/Einfachbindungsfall, kein allgemeines Moleküldynamikexperiment.",
+      "rationaleEn": "Technical synthesis of two actual independently sealed KEEP records for the exact current D context, without a third scientific vote. Select the first round's original bilingual understanding evidence unchanged; preserve both actual reasons. A (original language): Die bilinguale Beschreibung fasst eine kohärente Unterscheidungs-/Darstellungskompetenz zusammen. Das ganze P einschließlich beider Supplemente hat richtige CIP-Listen (Cystein CH2SH vor COOH, daher L-Cystein R) und erhält D/beta bei Sesselumklappung. Native Seite 18/Bild unterscheiden interne Drehung und Konfigurationswechsel. Die anspruchsvollen Zucker-/Aminosäurefälle sind ausdrücklich LK-begrenzt und keine neue GK-Pflicht. Kein Nachweis einer tatsächlichen Lernendenleistung, menschlichen Freigabe oder separat geprüften effektiven Quellen-/Kompositionszuordnung. B (original language): Die knappe DE/EN-Kompetenz macht Darstellen ausdrücklich verbindlich. P und Vollmaterial decken Konstitution, R/S und E/Z sowie echte Konformation ab. Beta-D-Glucose ist im 4C1 bei den genannten Gruppen äquatorial, im 1C4 axial bei erhaltenem oben/unten. Für L-Cystein übertrifft CH2SH mit S,H,H das COOH mit O,O,O und ergibt R; Alanin/Serin ergeben S, Glycin kein Zentrum. Das native Bild illustriert den geeigneten tetraedrischen/Einfachbindungsfall, kein allgemeines Moleküldynamikexperiment."
+    },
+    {
+      "decisionId": "chemie-corrected447-d29-partial-batch-001-actual-pair-root-authorized-v1-decision-017",
+      "goalId": "8721d943-8368-5304-bd3c-7d7944099662",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:76edec10515d64c0b933874f2b9d3907bf2d85f990765c275744b032134a1d0f",
+      "pageFingerprint": "sha256:97ad9872805a54acc2bddaafa5dabb4b92e8a3df6b2d55346c0aadc2233c40d6",
+      "goalReviewContextFingerprint": "sha256:563579e4fa40eab0d0283988e4da3b161d3395bc6b47d294ab146dce8188e9ba",
+      "finalText": {
+        "titleDe": "Recyclingstrategien abwägen",
+        "titleEn": "Weigh recycling strategies",
+        "descriptionDe": "Die lernende Person kann werkstoffliches und rohstoffliches Recycling von Kunststoffen, einschließlich der Hydrolyse geeigneter Polymere, sowie Wertstoffkreisläufe fachlich erklären, ökologisch und wirtschaftlich bewerten und verwendete Quellen quellenkritisch einordnen. Sie kann energetische Verwertung abgrenzen und deren Stoff-/Energiebilanz unter angegebenen Bedingungen beurteilen.",
+        "descriptionEn": "The learner can explain mechanical and feedstock recycling of plastics, including hydrolysis of suitable polymers, and material cycles, evaluate them environmentally and economically, and critically assess the sources used. The learner can distinguish energy recovery and assess its material/energy balance under stated conditions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a.8721d943-8368-5304-bd3c-7d7944099662",
+          "recordDigest": "sha256:40d5127d09d3cc0399da4f78c728db9f8aedd5a32ab6cc718585658c03e6d150"
+        },
+        "second": {
+          "recordId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b-019",
+          "recordDigest": "sha256:7ac833844173b9852aa7cd5beb13eb28c9c05a5ef82bc40ae5eb359f4fc7c846"
+        }
+      },
+      "rationaleDe": "Technische Synthese der zwei tatsächlich versiegelten KEEP-Urteile zum exakt aktuellen D-Kontext; kein drittes Fachvotum. Die originale bilinguale Understanding-Evidence der ersten Runde wird unverändert gewählt; beide fachlichen Begründungen bleiben erhalten. A: DE/EN sind gleichwertig und grenzen Energierückgewinnung ausdrücklich ab. Ganze P-Fälle ergeben 0,50/1,33 kWh je kg geeignetes PET, 28+45=73 kg Zielprodukte und im reinen PE-Modell 244,4 kWh Strom, 488,9 kWh Wärme sowie 314,3 kg direktes CO2. Funktionsunterschiede und fehlende LCA-/Kostendaten verhindern pauschale Ranglisten. Native Seite 19/Bild sind abstrakte Prozessmodelle, keine PET-Molekülformeln. Kein Nachweis einer tatsächlichen Lernendenleistung, menschlichen Freigabe oder separat geprüften effektiven Quellen-/Kompositionszuordnung. B: Bilinguale Beschreibung und P behandeln eine einheitliche Strategiebeurteilung. Die tatsächlichen Materialien ergeben korrekt 0,50/1,33 kWh je kg geeignetem PET und 73 kg sortenreines Zielprodukt. Im PE-Energiefall sind 244,4 kWh Strom, 488,9 kWh Nutzwärme und 314,3 kg direktes CO2 korrekt; Sauerstoffmasse gehört zur Verbrennungsbilanz. Gemischdaten erlauben keine Übernahme des reinen PE-Heizwerts. Die native Grafik grenzt energetische Verwertung vom Stoffkreislauf ab.",
+      "rationaleEn": "Technical synthesis of two actual independently sealed KEEP records for the exact current D context, without a third scientific vote. Select the first round's original bilingual understanding evidence unchanged; preserve both actual reasons. A (original language): DE/EN sind gleichwertig und grenzen Energierückgewinnung ausdrücklich ab. Ganze P-Fälle ergeben 0,50/1,33 kWh je kg geeignetes PET, 28+45=73 kg Zielprodukte und im reinen PE-Modell 244,4 kWh Strom, 488,9 kWh Wärme sowie 314,3 kg direktes CO2. Funktionsunterschiede und fehlende LCA-/Kostendaten verhindern pauschale Ranglisten. Native Seite 19/Bild sind abstrakte Prozessmodelle, keine PET-Molekülformeln. Kein Nachweis einer tatsächlichen Lernendenleistung, menschlichen Freigabe oder separat geprüften effektiven Quellen-/Kompositionszuordnung. B (original language): Bilinguale Beschreibung und P behandeln eine einheitliche Strategiebeurteilung. Die tatsächlichen Materialien ergeben korrekt 0,50/1,33 kWh je kg geeignetem PET und 73 kg sortenreines Zielprodukt. Im PE-Energiefall sind 244,4 kWh Strom, 488,9 kWh Nutzwärme und 314,3 kg direktes CO2 korrekt; Sauerstoffmasse gehört zur Verbrennungsbilanz. Gemischdaten erlauben keine Übernahme des reinen PE-Heizwerts. Die native Grafik grenzt energetische Verwertung vom Stoffkreislauf ab."
+    }
+  ],
+  "deferredGoals": [
+    {
+      "goalId": "127e2fc9-23f3-5ce8-a1c9-8c9e014c8a8a",
+      "firstDecision": "block",
+      "secondDecision": "keep",
+      "rationaleDe": "Explizit zurückgestellt: A=block, B=keep. Kein BLOCK wird durch dissent oder fingiertes KEEP überstimmt. A: Die aktuelle DE/EN-Beschreibung und native Seite 4 sind für die Bewertung von Verwendung/Ernährung klar; 20 g gegenüber 25 g ist korrekt und das Bild sind keine Messdaten. Im ganzen P wird jedoch zusätzlich hb-bio-beet-sugar-production-three-criteria zwingend: Beschreibung einer industriellen Extraktions-, Fällungs-, Filtrations- und Kristallisationskette sowie Standortbewertung. Eine eigenständig zu bestehende Herstellungs-Prozesskompetenz ist im eigenen Ziel nicht ausgewiesen. Dieser Pflichtumfang muss quellen- und zielbezogen geklärt/zugeordnet werden; keine stillschweigende Erweiterung der Beschreibung oder Löschung fachlich erforderlicher Leistung. Kein Nachweis einer tatsächlichen Lernendenleistung, menschlichen Freigabe oder separat geprüften effektiven Quellen-/Kompositionszuordnung. B: Die Beschreibungen formulieren eine einheitliche kriteriengeleitete Verwendungskompetenz. 20 g gegenüber 25 g sind korrekt; die Abbildung ist symbolisch und nicht deren Messbeleg. Das zusätzliche Produktionsdossier liefert eigene Vergleichsdaten, trennt ökologische, ökonomische und soziale Kriterien und verschweigt die überlappenden Emissionsunsicherheiten nicht. Offizielle Themenwahl oder vollständige Quellenabdeckung wurden damit nicht extern verifiziert.",
+      "rationaleEn": "Explicitly deferred: A=block, B=keep. No BLOCK is overruled or converted into KEEP. Actual reasons, original language: A: Die aktuelle DE/EN-Beschreibung und native Seite 4 sind für die Bewertung von Verwendung/Ernährung klar; 20 g gegenüber 25 g ist korrekt und das Bild sind keine Messdaten. Im ganzen P wird jedoch zusätzlich hb-bio-beet-sugar-production-three-criteria zwingend: Beschreibung einer industriellen Extraktions-, Fällungs-, Filtrations- und Kristallisationskette sowie Standortbewertung. Eine eigenständig zu bestehende Herstellungs-Prozesskompetenz ist im eigenen Ziel nicht ausgewiesen. Dieser Pflichtumfang muss quellen- und zielbezogen geklärt/zugeordnet werden; keine stillschweigende Erweiterung der Beschreibung oder Löschung fachlich erforderlicher Leistung. Kein Nachweis einer tatsächlichen Lernendenleistung, menschlichen Freigabe oder separat geprüften effektiven Quellen-/Kompositionszuordnung. B: Die Beschreibungen formulieren eine einheitliche kriteriengeleitete Verwendungskompetenz. 20 g gegenüber 25 g sind korrekt; die Abbildung ist symbolisch und nicht deren Messbeleg. Das zusätzliche Produktionsdossier liefert eigene Vergleichsdaten, trennt ökologische, ökonomische und soziale Kriterien und verschweigt die überlappenden Emissionsunsicherheiten nicht. Offizielle Themenwahl oder vollständige Quellenabdeckung wurden damit nicht extern verifiziert."
+    },
+    {
+      "goalId": "2f3cdec5-f845-5b0f-841e-8b1d47de0281",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "rationaleDe": "Explizit zurückgestellt: A=block, B=block. Kein BLOCK wird durch dissent oder fingiertes KEEP überstimmt. A: Die DE/EN-Beschreibung und native Seite 6 beanspruchen ausdrücklich ausgewählte physikalische Eigenschaften. Das ganze P macht dagegen zusätzlich Ableitung/Berechnung von Verseifungs- und Iodzahl, Oxidationshaltbarkeit und eine vollständige katalytische Hydrierungsbilanz verpflichtend. Diese analytisch-chemischen/Reaktionsleistungen sind mehr als die benannte physikalische Struktur-Eigenschaftserklärung. Die Zahlen sind in den idealen Modellen nachvollziehbar (VZ A≈190,2, C≈263,4; Gemisch≈226,8; drei C=C benötigen 3 mol H2), lösen aber die Umfangsdifferenz nicht. Pflichtumfang und Zielzuordnung müssen fachlich geklärt werden; kein beschreibungsweites Hinzuerfinden dieser Kompetenzen. Kein Nachweis einer tatsächlichen Lernendenleistung, menschlichen Freigabe oder separat geprüften effektiven Quellen-/Kompositionszuordnung. B: Die bilinguale kanonische Kompetenz ist ausdrücklich auf ausgewählte physikalische Eigenschaften begrenzt. Das aktuelle P verlangt zusätzlich als requiredExpectationIds hb-bio-fat-indices-structure-stoichiometry, hb-bio-fat-indices-composition-durability-transfer und hb-bio-fat-hydrogenation-addition-and-packing: eigenständige Iod-/Verseifungszahl-Herleitungen, Haltbarkeitsschlüsse und Reaktionsbilanz der Fetthärtung. Diese chemisch-analytischen beziehungsweise Reaktionsleistungen sind nicht aus physikalischen Eigenschaften ableitbar. Die Kennzahlrechnung selbst ist korrekt; der Block betrifft die ungelöste Kompetenzzuordnung, nicht eine Zahlenkorrektur. Keine bloße Beschreibungsverbreiterung vorschlagen: Quellenbindung und zuständiges Ziel für diese Pflichtleistungen klären und P passend ausrichten.",
+      "rationaleEn": "Explicitly deferred: A=block, B=block. No BLOCK is overruled or converted into KEEP. Actual reasons, original language: A: Die DE/EN-Beschreibung und native Seite 6 beanspruchen ausdrücklich ausgewählte physikalische Eigenschaften. Das ganze P macht dagegen zusätzlich Ableitung/Berechnung von Verseifungs- und Iodzahl, Oxidationshaltbarkeit und eine vollständige katalytische Hydrierungsbilanz verpflichtend. Diese analytisch-chemischen/Reaktionsleistungen sind mehr als die benannte physikalische Struktur-Eigenschaftserklärung. Die Zahlen sind in den idealen Modellen nachvollziehbar (VZ A≈190,2, C≈263,4; Gemisch≈226,8; drei C=C benötigen 3 mol H2), lösen aber die Umfangsdifferenz nicht. Pflichtumfang und Zielzuordnung müssen fachlich geklärt werden; kein beschreibungsweites Hinzuerfinden dieser Kompetenzen. Kein Nachweis einer tatsächlichen Lernendenleistung, menschlichen Freigabe oder separat geprüften effektiven Quellen-/Kompositionszuordnung. B: Die bilinguale kanonische Kompetenz ist ausdrücklich auf ausgewählte physikalische Eigenschaften begrenzt. Das aktuelle P verlangt zusätzlich als requiredExpectationIds hb-bio-fat-indices-structure-stoichiometry, hb-bio-fat-indices-composition-durability-transfer und hb-bio-fat-hydrogenation-addition-and-packing: eigenständige Iod-/Verseifungszahl-Herleitungen, Haltbarkeitsschlüsse und Reaktionsbilanz der Fetthärtung. Diese chemisch-analytischen beziehungsweise Reaktionsleistungen sind nicht aus physikalischen Eigenschaften ableitbar. Die Kennzahlrechnung selbst ist korrekt; der Block betrifft die ungelöste Kompetenzzuordnung, nicht eine Zahlenkorrektur. Keine bloße Beschreibungsverbreiterung vorschlagen: Quellenbindung und zuständiges Ziel für diese Pflichtleistungen klären und P passend ausrichten."
+    },
+    {
+      "goalId": "87d8cc68-fe82-5273-9e43-c18b566ecb6c",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "rationaleDe": "Explizit zurückgestellt: A=block, B=block. Kein BLOCK wird durch dissent oder fingiertes KEEP überstimmt. A: Die DE/EN-Beschreibung, native Seite 20 und Energie-/Polyencases sind fachlich passend; 2,48 eV entsprechen 500 nm, 4,13 eV etwa 300 nm. Offener Pflichtumfang im vollständigen operativen hb-colour-three-terms: dessen learnerTask/rubric verlangt ausdrücklich ALLE drei historischen HB-Begriffe Chromophor/Auxochrom/Antiauxochrom und Rollenmarkierung, während der eigene aktuelle P-Vertrag hb-chromophore-explicit-use nur die bandenbezogene Chromophorrolle ausweist. Es fehlt eine eindeutige operative Begrenzung dieses geteilten Materials auf die eigene Klausel. Diese Zuordnung muss geklärt werden; keine zusätzliche Nomenklaturpflicht durch stillschweigende Beschreibungserweiterung. Kein Nachweis einer tatsächlichen Lernendenleistung, menschlichen Freigabe oder separat geprüften effektiven Quellen-/Kompositionszuordnung. B: Der D-Text und die energetischen Rechnungen sind fachlich korrekt: 2,48 eV→500 nm, 4,13 eV→etwa300 nm sowie 450 nm→etwa2,76 eV. Die aktuelle polyene-energy-only-Ergänzung hält den Scope. Das ebenfalls operative Vollmaterial hb-colour-three-terms fordert jedoch ausdrücklich alle drei Namen Chromophor, Auxochrom und Antiauxochrom mit Rollen-/Historienrubrik. Das ganze kanonische Ziel beansprucht Anregung/Energieniveaus, nicht das unabhängige Bestehen dieser Dreibegriffs-Klassifikation; der P-Auftrag, den vollständigen D–π–A-Fall zu bearbeiten, lässt diesen Konflikt offen. Historische Konvention ist dort korrekt qualifiziert, beseitigt die unbeanspruchte Pflicht aber nicht. Zuständige Kompetenz/Quellenbindung klären und Pflichtumfang ausrichten; nicht stillschweigend D verbreitern.",
+      "rationaleEn": "Explicitly deferred: A=block, B=block. No BLOCK is overruled or converted into KEEP. Actual reasons, original language: A: Die DE/EN-Beschreibung, native Seite 20 und Energie-/Polyencases sind fachlich passend; 2,48 eV entsprechen 500 nm, 4,13 eV etwa 300 nm. Offener Pflichtumfang im vollständigen operativen hb-colour-three-terms: dessen learnerTask/rubric verlangt ausdrücklich ALLE drei historischen HB-Begriffe Chromophor/Auxochrom/Antiauxochrom und Rollenmarkierung, während der eigene aktuelle P-Vertrag hb-chromophore-explicit-use nur die bandenbezogene Chromophorrolle ausweist. Es fehlt eine eindeutige operative Begrenzung dieses geteilten Materials auf die eigene Klausel. Diese Zuordnung muss geklärt werden; keine zusätzliche Nomenklaturpflicht durch stillschweigende Beschreibungserweiterung. Kein Nachweis einer tatsächlichen Lernendenleistung, menschlichen Freigabe oder separat geprüften effektiven Quellen-/Kompositionszuordnung. B: Der D-Text und die energetischen Rechnungen sind fachlich korrekt: 2,48 eV→500 nm, 4,13 eV→etwa300 nm sowie 450 nm→etwa2,76 eV. Die aktuelle polyene-energy-only-Ergänzung hält den Scope. Das ebenfalls operative Vollmaterial hb-colour-three-terms fordert jedoch ausdrücklich alle drei Namen Chromophor, Auxochrom und Antiauxochrom mit Rollen-/Historienrubrik. Das ganze kanonische Ziel beansprucht Anregung/Energieniveaus, nicht das unabhängige Bestehen dieser Dreibegriffs-Klassifikation; der P-Auftrag, den vollständigen D–π–A-Fall zu bearbeiten, lässt diesen Konflikt offen. Historische Konvention ist dort korrekt qualifiziert, beseitigt die unbeanspruchte Pflicht aber nicht. Zuständige Kompetenz/Quellenbindung klären und Pflichtumfang ausrichten; nicht stillschweigend D verbreitern."
+    }
+  ],
+  "manifestFingerprint": "sha256:4b2c8b63483c3793b794f1d0e521cce8981b5690fe8f80afda1a89e7aa422e4b"
+}

@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-007-v1-resolution-02634fdd-c8ba-591a-b240-77129b1bebb8",
+  "goal": {
+    "goalId": "02634fdd-c8ba-591a-b240-77129b1bebb8",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:feeb63802691963f83faf5c5169e1017d0b8171c9e9f01ed1f8c7bdeb2974472",
+    "pageFingerprint": "sha256:0ea0cf2f3d8267eeafa39dc7ec49c692fa2197ce673330183c23c9408f91cb63",
+    "goalReviewContextFingerprint": "sha256:dc2e5b9a00e41a66d90eac61a23e760b9070bb4e018d9c556ba75adda448e890",
+    "finalText": {
+      "titleDe": "Säure-Base-Titrationen planen",
+      "titleEn": "Plan acid-base titrations",
+      "descriptionDe": "Die lernende Person kann eine Säure-Base-Titration mit geeigneter Maßlösung und begründetem Indikator fachgerecht planen und durchführen und aus dokumentierten Volumina unter Berücksichtigung der Reaktionsstöchiometrie die Konzentration der Probe bestimmen.",
+      "descriptionEn": "The learner can correctly plan and carry out an acid-base titration using a suitable standard solution and a justified indicator and determine the sample concentration from recorded volumes while accounting for reaction stoichiometry."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-007-v1-a",
+      "campaignDigest": "sha256:03e23ca7a839411ee0694d3ffc4c5304359bdbdb4885b890ef7f8def67d5e5a0",
+      "roundId": "chemie-final-current-context-d-007-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-007-v1-independent-a",
+      "reviewInputFingerprint": "sha256:9786177231bba01a5178b748443b7e2ac24b65d395c6cfda891b47d1838d8fd4",
+      "goalReviewContextFingerprint": "sha256:dc2e5b9a00e41a66d90eac61a23e760b9070bb4e018d9c556ba75adda448e890",
+      "batchId": "chemie-final-current-context-d-007-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch007-20261018",
+      "runManifestDigest": "sha256:41b3803956cb0b8e3ceaa1b4c1224724037cd8f6fc9ff400cb30dc979ec172d0",
+      "resultsDigest": "sha256:2deca668c6059260417c15a3d4e706e9325f6ce3e8e0bef2d977983444354968",
+      "recordId": "codex-reviewer-a-final163-batch007-20261018.010",
+      "recordDigest": "sha256:8a6986c56c6e5308ba81c0430990eb7fa2b9cc4b67ca3941e279379874ea8f3a"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-007-v1-b",
+      "campaignDigest": "sha256:f96e78c8b5b03376c090596c68434afdda0adfb82adef282dc1a1a949aed2746",
+      "roundId": "chemie-final-current-context-d-007-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-007-v1-independent-b",
+      "reviewInputFingerprint": "sha256:9786177231bba01a5178b748443b7e2ac24b65d395c6cfda891b47d1838d8fd4",
+      "goalReviewContextFingerprint": "sha256:dc2e5b9a00e41a66d90eac61a23e760b9070bb4e018d9c556ba75adda448e890",
+      "batchId": "chemie-final-current-context-d-007-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-007-20261018",
+      "runManifestDigest": "sha256:c21072a1baeec0fb475776827fd6bdcb51afcb70555317673d8fac140568d60f",
+      "resultsDigest": "sha256:f627bfdb86dcc4a0e7dec63f04ec892ed6ec7af463e3169bda439a10444338fd",
+      "recordId": "chemie-final163-native-b-007-20261018:02634fdd-c8ba-591a-b240-77129b1bebb8",
+      "recordDigest": "sha256:f67e7ef5e65286b5dc53409a2d8108bcf2c4ff7d9195ac0ab24acbf6351e0e17"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:9d01c3a2eaf6ff3168f19750d5b1780c3bd726f4c76d033ac9016e0d3a5debbf"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-007-20261018-v1",
+    "manifestDigest": "sha256:a002d58ade8fb14ebb3f915bed25f48fcfa287b2641be1e7a466d8abd811c99e",
+    "manifestFingerprint": "sha256:12732999b92050cc52642e0c0e4f1bd967da4b1b66528e696859794dba344986",
+    "decisionId": "chemie-final163-paired-D-only-007-20261018-v1-decision-010"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-007-20261018-v1-decision-010",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:39:49.306Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch007-20261018.010): D ist fachlich klar und seine 1:1-/1:2-Rechenfälle sowie die Verdünnungsrückrechnung im vollständig gelesenen P sind korrekt. Eine Ausrichtung von P ist dennoch nötig: hb134-own-digital-strong-acid-curve wird als zusätzliche Pflicht mit eigener pH-Messreihe und digitaler XY-Datei geführt. Das tatsächlich gelesene HB134-Ganzmaterial verlangt bei fehlender Reihe neue reale Erfassung. D fordert Indikatortitration und dokumentierte Volumina, keine eigene pH-Kurvenaufnahme; der direkte Nachfolger e0944fbb ist gerade dafür benannt. D KEEP, verpflichtenden P-Mehrumfang abgleichen. B (chemie-final163-native-b-007-20261018:02634fdd-c8ba-591a-b240-77129b1bebb8): Das D beschreibt eine kohärente vollständige Titrationskompetenz nach Brønsted, Stoffmenge und Laborsicherheit; Planung, tatsächliche Durchführung und stöchiometrische Konzentration sind klar. Das gesamte P trägt diese Teile mit neuen Reaktions- und Verdünnungsfällen. Das tatsächlich vollständig gelesene HB134-Material ergänzt jedoch verbindlich eine eigene pH-Messreihe und selbst erstellte digitale XY-Datei, auch wenn bislang keine pH-Folge vorliegt. Diese zusätzliche digitale Kurvenaufnahme ist im geltenden D nicht benannt und überschneidet den direkten Nachfolger e0944fbb zu experimentellen pH-Titrationskurven. P-Empfehlung revise betrifft diese zusätzliche Abschlussanforderung und ihre Zielbindung; keine Beschreibungserweiterung zur nachträglichen Rechtfertigung. Die ausdrücklich gemeldete P-Abgrenzung bleibt offen; diese D-Entscheidung schließt weder P noch das Fünf-Gate-Ziel ab.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch007-20261018.010; chemie-final163-native-b-007-20261018:02634fdd-c8ba-591a-b240-77129b1bebb8). Their current English understanding evidence is retained: A: Titration obtains the analytical sample amount from a known standard solution and chemical reaction ratio; endpoint signal and equivalence are distinct. B: A titration links recorded standard-solution consumption through reaction stoichiometry to the original sample aliquot; indicator endpoint and equivalence point differ. This is synthesis, not a new independent review. The explicitly recorded P-alignment finding remains open; this D decision closes neither P nor the five-gate goal.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die Titration erschließt die analytische Probenstoffmenge aus einer bekannten Maßlösung und dem chemischen Reaktionsverhältnis; Endpunktsignal und Äquivalenz sind verschieden.",
+      "essentialUnderstandingEn": "Titration obtains the analytical sample amount from a known standard solution and chemical reaction ratio; endpoint signal and equivalence are distinct.",
+      "observablePerformanceDe": "Plant und begründet Maßlösung, Volumenmessung und Indikator, führt den freigegebenen Versuch tatsächlich aus und berechnet aus eigener Anfangs-/Endablesung die Konzentration bezogen auf das ursprüngliche Probenvolumen.",
+      "observablePerformanceEn": "Plans and justifies titrant, volumetric measurement and indicator, actually performs the released experiment and calculates concentration from personal initial/final readings relative to the original sample volume.",
+      "transferExpectationDe": "Leitet bei frischer zweiprotoniger Probe mit quantitativer Verdünnung und geändertem Aliquot Reaktionsfaktor, Stoffmengenanteil und Originalkonzentration selbst her und prüft eine veränderte Indikatoreignung.",
+      "transferExpectationEn": "Independently derives reaction factor, amount share and original concentration for a fresh diprotic sample with quantitative dilution and changed aliquot and checks a changed indicator's suitability."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-a3d5946decb4b45d2c5d5b3b9ee6298b18e69ea20a524448cb4ca3160d5e24a7",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:d5d1727c639831fd95047b343c6f1cb62d19b14c87b7114c90cecf169e867144"
+}

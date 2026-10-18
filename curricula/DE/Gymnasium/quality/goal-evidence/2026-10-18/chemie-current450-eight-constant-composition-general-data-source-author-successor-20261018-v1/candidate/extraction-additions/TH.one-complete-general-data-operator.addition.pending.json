@@ -1,0 +1,91 @@
+{
+  "artifactRole": "INACTIVE_AUTHOR_COMPLETE_SELECTED_PRIMARY_UNIT_APPEND_ONLY",
+  "activation": "pending-independent-source-review-and-root-integration",
+  "baseExtraction": {
+    "path": "curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_CHEMIE_SEKI_LEHRPLAN_GYMNASIUM_2024.source-extraction.json",
+    "sha256": "cacdcdb7a8b6771244ad196595db1d9b1e9c96cefd9c6a05b46bc7fcfccd99b4",
+    "bytes": 447809
+  },
+  "proposedNormalExtractionPath": "curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_CHEMIE_SEKI_LEHRPLAN_GYMNASIUM_2024.source-extraction.json",
+  "sourceLandscapeId": "d416f737-fb4c-585f-85a5-cd9a94c20cbe",
+  "sourceDocument": {
+    "key": "TH-CH-2024",
+    "title": "Thueringer Lehrplan Chemie fuer den Erwerb der allgemeinen Hochschulreife 2024",
+    "path": "curricula/DE/Gymnasium/input/TH/LP_GY_Chemie_2024.pdf",
+    "url": "https://www.schulportal-thueringen.de/tip/resources/medien/63707?dateiname=Chemie_Lehrplan_AHR_2024-11-13.pdf",
+    "official": true
+  },
+  "sourceDocumentPin": {
+    "path": "curricula/DE/Gymnasium/input/TH/LP_GY_Chemie_2024.pdf",
+    "sha256": "f89768dabb9f273d3086c5c16008759c7010244ccab1ebb0b3b44b138411c8d7",
+    "bytes": 1569418
+  },
+  "passagesToAppend": [
+    {
+      "id": "th-chemistry-seki-process-standard-e-1-5:whole-primary-context",
+      "topicCode": "E1.5",
+      "title": "E 1.5 Datenzusammenhänge und Schlussfolgerungen",
+      "text": "in erhobenen oder recherchierten Daten Trends, Strukturen und Zusammenhänge erfassen, diese erklären und geeignete Schlussfolgerungen, auch unter Nutzung digitaler Werkzeuge, ziehen",
+      "sourceDocumentKey": "TH-CH-2024",
+      "sourceRef": "Thueringer Lehrplan Chemie fuer den Erwerb der allgemeinen Hochschulreife 2024, physical PDF p. 16",
+      "metadata": {
+        "unit": "whole bullet",
+        "primaryPageOneBased": 16,
+        "surroundingWholePageActuallyRead": true,
+        "contextBoundary": "General chemistry method within the stated lower-secondary scope; no official whole constant-composition-law mandate.",
+        "thirdPartyOfficialTextRetainsOriginalRights": true
+      }
+    }
+  ],
+  "sourceGoalsToAppend": [
+    {
+      "id": "th-chemistry-seki-process-standard-e-1-5",
+      "passageId": "th-chemistry-seki-process-standard-e-1-5:whole-primary-context",
+      "topicCode": "E1.5",
+      "title": "E 1.5 Datenzusammenhänge und Schlussfolgerungen",
+      "description": "in erhobenen oder recherchierten Daten Trends, Strukturen und Zusammenhänge erfassen, diese erklären und geeignete Schlussfolgerungen, auch unter Nutzung digitaler Werkzeuge, ziehen",
+      "sourceDocumentKey": "TH-CH-2024",
+      "sourceText": "in erhobenen oder recherchierten Daten Trends, Strukturen und Zusammenhänge erfassen, diese erklären und geeignete Schlussfolgerungen, auch unter Nutzung digitaler Werkzeuge, ziehen",
+      "sourceSpan": {
+        "passageId": "th-chemistry-seki-process-standard-e-1-5:whole-primary-context",
+        "label": "Thueringer Lehrplan Chemie fuer den Erwerb der allgemeinen Hochschulreife 2024, physical PDF p. 16; allgemeine SekI-Kompetenz"
+      },
+      "sourceRef": "Thueringer Lehrplan Chemie fuer den Erwerb der allgemeinen Hochschulreife 2024, physical PDF p. 16",
+      "courseLevel": "unspecified",
+      "granularity": "completeOfficialMethodBullet",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-TH",
+        "stage:SekI",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-whole-selected-official-unit-from-actual-local-PDF",
+        "physicalPageOneBased": 16,
+        "officialOperatorCode": "E1.5",
+        "scope": {
+          "stage": "SekI",
+          "sourcePhase": "allgemeine SekI-Kompetenz",
+          "courseLevel": "unspecified",
+          "scopeBoundary": "General chemistry method within the stated lower-secondary scope; no official whole constant-composition-law mandate."
+        },
+        "notNewOfficialLawGoal": true,
+        "noIndependentReviewInThisAuthorTransport": true
+      }
+    }
+  ],
+  "oldWholeSourceGoalCount": 225,
+  "oldSourceGoalsPassagesAndMetadataPreservedExactly": true,
+  "rebaseRule": "Object-wise ID lookup and absent-id append; preserve concurrent cells, passages, metadata and all old objects. Never activate a stale whole afterfile.",
+  "pipelineStatus": {
+    "newWholeSourceApprovals": 0,
+    "independentVotes": 0,
+    "normalWrites": 0
+  },
+  "sourceScopeBoundary": {
+    "stage": "SekI",
+    "sourcePhase": "allgemeine SekI-Kompetenz",
+    "courseLevel": "unspecified",
+    "scopeBoundary": "General chemistry method within the stated lower-secondary scope; no official whole constant-composition-law mandate."
+  }
+}

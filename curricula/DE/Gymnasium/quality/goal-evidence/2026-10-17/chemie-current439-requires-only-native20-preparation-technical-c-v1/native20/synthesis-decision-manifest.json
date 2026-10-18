@@ -1,0 +1,568 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "chemie-current439-requires20-partial-paired-root-synthesis-20261017-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex root actual paired synthesis; accepted revisions explicitly deferred, no human attestation",
+  "synthesizedAt": "2026-10-17T07:54:17.342Z",
+  "batch": {
+    "batchId": "chemie-current439-requires-only-native20-technical-c-20261017-v1",
+    "batchManifestDigest": "sha256:bb24812f14f233a13ccb668eacd432bbc32beb48bd9a9dfc2f08039010276be5",
+    "configDigest": "sha256:a2042699d847a4ec48963b72bcac04596b34454d73ea7bf5d8b4b30702edda68",
+    "bundleFingerprint": "sha256:44d046d36005c9d1a1c02fa80d8bdb094548904a9c87d69ac34fc41787c9d733",
+    "bookDigest": "sha256:d5c005b363bb66e2db9c31cccd7acd98eadfdcaab186708a85ebcdadfbf953f2",
+    "reviewInputFingerprint": "sha256:fa6aac63bdeec96751b9a67be7812dbf4606f3a109b93e7ccd5b26f417a65e51",
+    "dualSummaryDigest": "sha256:8a80a3e2424e4853323e8e5235119619862f1a4fd0400d4db98bcb5e47e5be2f",
+    "canonicalLandscapeDigest": "sha256:e0af9e3dedc6db17b940ec7d4732a6c2bcced7d00f3a30df9db948b9936332a8"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-current439-requires-only-native20-technical-c-20261017-v1-a",
+      "campaignDigest": "sha256:76d7bf082eeb6386c461d85775aaa07a26e9a158122fef6f148e9d43928d0360",
+      "roundId": "chemie-current439-requires-only-native20-technical-c-20261017-v1-first-pass-a",
+      "independenceGroupId": "chemie-current439-requires-only-native20-technical-c-20261017-v1-independent-a",
+      "reviewInputFingerprint": "sha256:fa6aac63bdeec96751b9a67be7812dbf4606f3a109b93e7ccd5b26f417a65e51",
+      "batchId": "chemie-current439-requires-only-native20-technical-c-20261017-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:520b45fff33e5ec7dc3bc4bab24ab572ee31365b01d0f60e68445d05b7da9d7c",
+      "runId": "chemie-current439-requires20-independent-a-v1",
+      "runManifestDigest": "sha256:a430529c1618380db0630582a46be13f934095a97e91375635dbe95dc0e74058",
+      "resultsDigest": "sha256:e091874c3782a92ee5a48bd58a0839903f723d415624f941220abdc237b25a90"
+    },
+    "second": {
+      "campaignId": "chemie-current439-requires-only-native20-technical-c-20261017-v1-b",
+      "campaignDigest": "sha256:80177cbfdedf7f0ba2d5c3c30a74ce932f016c597e640112e6045e2e40f8e7f5",
+      "roundId": "chemie-current439-requires-only-native20-technical-c-20261017-v1-first-pass-b",
+      "independenceGroupId": "chemie-current439-requires-only-native20-technical-c-20261017-v1-independent-b",
+      "reviewInputFingerprint": "sha256:fa6aac63bdeec96751b9a67be7812dbf4606f3a109b93e7ccd5b26f417a65e51",
+      "batchId": "chemie-current439-requires-only-native20-technical-c-20261017-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:69caf51ebd0b91aa4c5b033fe0ceec152ef0bf90da05330cdd89b34aa2513a27",
+      "runId": "chemie-current439-requires20-fresh-independent-b2-20261017-v1",
+      "runManifestDigest": "sha256:b682b7d4407c90277275ea1913b855f12eaad79653eb52468335c2ac17c8c5e0",
+      "resultsDigest": "sha256:4a8f988a50ff0ebf35b09fef3a2b16bcb9c907bd4ed97604ee4cd8e7dab86523"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "chemie-requires20-partial-root-67cd332f-9db7-50e1-87f6-172ef3714300-20261017-v1",
+      "goalId": "67cd332f-9db7-50e1-87f6-172ef3714300",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:5c261ab5f972606410b910dc51a1474146745b34de13192b6ec14d3c26e51002",
+      "pageFingerprint": "sha256:8a6a86623e3ce6337bf2921888360dcb230272331f72bd57fa9d439b431604f0",
+      "goalReviewContextFingerprint": "sha256:7040fe1f3e3b43ac8911f7fdaa35e10d8465a5bbb1b0375563059b6584bdf33f",
+      "finalText": {
+        "titleDe": "Molekülgeometrien mit dem EPA-Modell erklären",
+        "titleEn": "Explain molecular geometry using the VSEPR model",
+        "descriptionDe": "Die lernende Person kann den räumlichen Bau einfacher Moleküle mithilfe des Elektronenpaarabstoßungsmodells erklären und mit Lewis- beziehungsweise Valenzstrichdarstellungen verknüpfen.",
+        "descriptionEn": "The learner can explain the spatial structure of simple molecules using the valence-shell electron-pair repulsion model and connect it with Lewis and valence-line representations."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-requires20-independent-a-v1.record-003",
+          "recordDigest": "sha256:17772ed30fb84007c5ace1dce400e5306f41fc15d0b86b4d4bcb0336f9662b77"
+        },
+        "second": {
+          "recordId": "chemie-current439-requires20-fresh-independent-b2-20261017-v1.003",
+          "recordDigest": "sha256:1c41643b20e7dc39be8fe34e1be1d1fd85bd7ad4f60a1beeb65a5d70c0762f3a"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen Lewis-Domänen-Gestalt als eine EPA-Modellleistung. Runde A trennt gleiche Domänenzahl von verschiedener Atomgestalt und exakte Winkel vom eigenen Nachfolger. Eine ungewöhnliche Keilverteilung allein belegt keinen Bildfehler.",
+      "rationaleEn": "Both rounds confirm Lewis domains to shape as one VSEPR skill. Round A separates equal domain counts from different atomic shapes and exact angles from the successor skill. An unusual wedge arrangement alone does not prove an image defect."
+    },
+    {
+      "decisionId": "chemie-requires20-partial-root-c0f1bf09-5a70-5006-b1e9-e91f786a63bf-20261017-v1",
+      "goalId": "c0f1bf09-5a70-5006-b1e9-e91f786a63bf",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:5f87b6ab5f6421d137d2ae244f112a6a01179b3387a0fa962b0bfd56bf0ee65e",
+      "pageFingerprint": "sha256:a0de19faa82e7cb7c205b0f85c8ff567776590b05d55bd8ca62e110c111ac3ef",
+      "goalReviewContextFingerprint": "sha256:2b9c724bb6153cbcc5f1cb3611bd1a2fd4c192a256f72843963e16e21fbedc1a",
+      "finalText": {
+        "titleDe": "Stoffkreisläufe mit Reaktionen und physikalischen Vorgängen beschreiben",
+        "titleEn": "Describe matter cycles using reactions and physical processes",
+        "descriptionDe": "Die lernende Person kann verschiedene Typen chemischer Reaktionen und physikalischer Vorgänge nutzen, um Stoffkreisläufe in Natur und Technik fachlich zu beschreiben.",
+        "descriptionEn": "The learner can use different types of chemical reactions and physical processes to describe matter cycles in nature and technology."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-requires20-independent-a-v1.record-004",
+          "recordDigest": "sha256:f324a3219c65ba24738e8132b8a3fc058e85f0941056b5e5389b2f3a3d8b61c0"
+        },
+        "second": {
+          "recordId": "chemie-current439-requires20-fresh-independent-b2-20261017-v1.004",
+          "recordDigest": "sha256:2c618aef8a5f5a37f8c7afd35b44c05a506fa856c61304270f52b723113b418d"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen chemischen Stoffumsatz und physikalischen Transport mit Elementerhaltung; Energie wird nicht als Kreislaufstoff ausgegeben. Runde B erhält ausdrücklich den separaten Bildbefund Wasserdampf/Wolkentröpfchen. D/P-KEEP schließt diesen V-Befund nicht.",
+      "rationaleEn": "Both rounds confirm chemical conversion and physical transport with element conservation; energy is not presented as a cycling substance. Round B explicitly retains the separate vapour/cloud-droplet image finding. D/P KEEP does not close that V finding."
+    },
+    {
+      "decisionId": "chemie-requires20-partial-root-1c1420c2-a8e2-520f-8015-6df637a973bd-20261017-v1",
+      "goalId": "1c1420c2-a8e2-520f-8015-6df637a973bd",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7cf484189ead8e3724cfb4c9329b5c9d956b875fe327a779d698c68e8342f14f",
+      "pageFingerprint": "sha256:7140505df6e41c7a18217098fbfb2e760599fc2c26b5ac26c1c14f21f2a45e56",
+      "goalReviewContextFingerprint": "sha256:5b5cff7e87a31f263727e68051c117f35f4def964a0c1ab26e08cd8bdd45de4d",
+      "finalText": {
+        "titleDe": "Brønsted-Konzept anwenden",
+        "titleEn": "Apply Brønsted concept",
+        "descriptionDe": "Die lernende Person kann Protonenübertragungen mit dem Brønsted-Konzept beschreiben, Protolysegleichungen formulieren, korrespondierende Säure-Base-Paare einschließlich der Rolle von Wasser als Ampholyt identifizieren und Säuren und Basen als Teilchen von sauren und basischen Lösungen als Stoffgemischen unterscheiden.",
+        "descriptionEn": "The learner can describe proton transfers using the Brønsted concept, formulate protolysis equations, identify conjugate acid-base pairs including the role of water as an ampholyte and distinguish acids and bases as species from acidic and basic solutions as mixtures."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-requires20-independent-a-v1.record-005",
+          "recordDigest": "sha256:fb836b5e1cf9a97619f7d3b54281c5853e95dea9dc30b92a76a2eb4050359eb2"
+        },
+        "second": {
+          "recordId": "chemie-current439-requires20-fresh-independent-b2-20261017-v1.005",
+          "recordDigest": "sha256:7cde1c7c72d71644f2220b51e6fa20b8da9c9b7e664279408e241a11cca32432"
+        }
+      },
+      "rationaleDe": "Beide Reviews verbinden Protonenweg, Paare und Ampholyt konsistent. Runde A erhält Gesamtladung und zwei Wasserrollen und trennt formale Reaktionsmöglichkeit von Umsatz und pH; quantitative Gleichgewichtsrechnung wird nicht vorausgesetzt.",
+      "rationaleEn": "Both reviews coherently connect proton transfer, conjugate pairs and ampholytes. Round A retains total charge and both water roles, separating formal reaction possibilities from extent and pH without requiring quantitative equilibrium calculations."
+    },
+    {
+      "decisionId": "chemie-requires20-partial-root-1f30d81c-8a26-5675-8c0a-1cb82e96d3ba-20261017-v1",
+      "goalId": "1f30d81c-8a26-5675-8c0a-1cb82e96d3ba",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:2983efcd6c0d9a5e94ca78c1773b9607e591dd1b2de4f65acf7d41a7293cc7ab",
+      "pageFingerprint": "sha256:0bbc7ca983e9b6513726f6a8910d8e5217d6d228db92ea952f5ab608bc1bca66",
+      "goalReviewContextFingerprint": "sha256:ab13f9aac56955ac40a0735777a1106105932032514fe41295dc4942b7adb8f3",
+      "finalText": {
+        "titleDe": "Redox- und Säure-Base-Reaktionen unterscheiden",
+        "titleEn": "Distinguish redox and acid-base reactions",
+        "descriptionDe": "Die lernende Person kann Redoxreaktionen von Säure-Base-Reaktionen fachlich abgrenzen, indem sie Elektronen- und Protonenübertragungen an Beispielen wie unedlen Metallen oder Carbonaten in sauren Lösungen vergleicht.",
+        "descriptionEn": "The learner can distinguish redox reactions from acid-base reactions by comparing electron and proton transfers in examples such as base metals or carbonates in acidic solutions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-requires20-independent-a-v1.record-006",
+          "recordDigest": "sha256:6cc1374ad0556eedc3c9b7ea347d9c4edb4517dca6cd4fb4dc62f5563b86a157"
+        },
+        "second": {
+          "recordId": "chemie-current439-requires20-fresh-independent-b2-20261017-v1.006",
+          "recordDigest": "sha256:a54096a264fc8f597d384a61ccd266f289474f8aceb9fa841b884739a9d2a88c"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen den Vergleich der übertragenen Einheit. Runde A hält CO2-Gasbildung ohne Redox und NH4+-Bildung ohne Oxidationszahlwechsel getrennt; Ladung oder saures Medium allein liefern kein Redoxkriterium.",
+      "rationaleEn": "Both rounds confirm comparison through the transferred entity. Round A separates carbon dioxide gas formation without redox and ammonium formation without an oxidation-state change; charge or acidic medium alone is not a redox criterion."
+    },
+    {
+      "decisionId": "chemie-requires20-partial-root-02634fdd-c8ba-591a-b240-77129b1bebb8-20261017-v1",
+      "goalId": "02634fdd-c8ba-591a-b240-77129b1bebb8",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:feeb63802691963f83faf5c5169e1017d0b8171c9e9f01ed1f8c7bdeb2974472",
+      "pageFingerprint": "sha256:7a17211f7f9f0c62309461d0a3d963f70dc0010b93dc4ebb84008259cb591627",
+      "goalReviewContextFingerprint": "sha256:95ff1dcd8a0cde7a03c82a7b10b8e79408b83fc88e618b3a093cd0e800e503f1",
+      "finalText": {
+        "titleDe": "Säure-Base-Titrationen planen",
+        "titleEn": "Plan acid-base titrations",
+        "descriptionDe": "Die lernende Person kann eine Säure-Base-Titration mit geeigneter Maßlösung und begründetem Indikator fachgerecht planen und durchführen und aus dokumentierten Volumina unter Berücksichtigung der Reaktionsstöchiometrie die Konzentration der Probe bestimmen.",
+        "descriptionEn": "The learner can correctly plan and carry out an acid-base titration using a suitable standard solution and a justified indicator and determine the sample concentration from recorded volumes while accounting for reaction stoichiometry."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-requires20-independent-a-v1.record-007",
+          "recordDigest": "sha256:92a00133948beb3ec40b58a692001453a13c49b1e73ad6cb713513548eac0a9e"
+        },
+        "second": {
+          "recordId": "chemie-current439-requires20-fresh-independent-b2-20261017-v1.007",
+          "recordDigest": "sha256:75944e5621ab59ee6f0a925a60866f05bec20287309b0756e0b1648f97cddefd"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen Planung, tatsächliche Durchführung und stöchiometrische Konzentrationsauswertung als ein Titrationsziel. Runde A erhält Aliquot, Verdünnung und Indikatorgrenzen. Modellwerte liefern keine Durchführungspunkte; eine konkrete örtliche Laborfreigabe wird hier nicht behauptet.",
+      "rationaleEn": "Both rounds confirm planning, actual execution and stoichiometric concentration analysis as one titration goal. Round A retains aliquot, dilution and indicator limits. Model values earn no execution credit and no specific local laboratory authorization is claimed."
+    },
+    {
+      "decisionId": "chemie-requires20-partial-root-8ceb1749-fce0-584f-a2b8-0a309282329a-20261017-v1",
+      "goalId": "8ceb1749-fce0-584f-a2b8-0a309282329a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:fd439e6043e209dd0c527be4c70810e318d2a0a812e589473802b03a43339e3b",
+      "pageFingerprint": "sha256:ad9acd594c0376ecc04d03def445fe370cd163d14317580478e33e5a45a3b190",
+      "goalReviewContextFingerprint": "sha256:8b50a4792ade757ccf3c69a8b2812c72c88cbca77dfba50ccb26e605282f365c",
+      "finalText": {
+        "titleDe": "Fraktionierung und Cracken erklären",
+        "titleEn": "Explain fractionation and cracking",
+        "descriptionDe": "Die lernende Person kann die fraktionierte Destillation sowie das thermische Cracken qualitativ beschreiben und typische Produkte zuordnen.",
+        "descriptionEn": "The learner can qualitatively describe fractional distillation as well as thermal cracking and assign typical products."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-requires20-independent-a-v1.record-008",
+          "recordDigest": "sha256:0df8277e0dda7962fa7d59e4ac394b11bf2124d476573ff3a3cc8273d2c981fa"
+        },
+        "second": {
+          "recordId": "chemie-current439-requires20-fresh-independent-b2-20261017-v1.008",
+          "recordDigest": "sha256:936d8526a7e775a826a28dd4eaff26e1c27d0f6bcb461afa28f946523b59f750"
+        }
+      },
+      "rationaleDe": "Beide Reviews unterscheiden Trennen vorhandener Fraktionen und chemischen Molekülumbau. Runde A hält Fraktionen als Gemische und Crackgleichungen als atomar mögliche Modelle ohne Ausbeuteprognose; keine Raffinerieausführung wird mitgeprüft.",
+      "rationaleEn": "Both reviews distinguish separation of existing fractions from chemical molecular conversion. Round A retains fractions as mixtures and cracking equations as atom-balanced possibilities without yield predictions; refinery execution is not implicitly assessed."
+    },
+    {
+      "decisionId": "chemie-requires20-partial-root-b95cdf98-fc97-5a94-b133-878922d28156-20261017-v1",
+      "goalId": "b95cdf98-fc97-5a94-b133-878922d28156",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:50c21cd059d30a57847a38a32f05722831d0b3c789c13d79b92c70018f02c5bb",
+      "pageFingerprint": "sha256:5138fa59e5acc9875e8633f0ba6a8c99553a97530d08c4d7aa8c4b26f1048d7c",
+      "goalReviewContextFingerprint": "sha256:61ba193335ba6eae8fd3038fdd1319483faec1408b50efcadca01511ec08d00d",
+      "finalText": {
+        "titleDe": "Erdölprodukte in Alltag, Technik und Umwelt bewerten",
+        "titleEn": "Evaluate petroleum products in everyday life, technology, and the environment",
+        "descriptionDe": "Die lernende Person kann wichtige Erdölprodukte ihren Einsatzbereichen in Alltag und Technik zuordnen und Nutzen sowie ökologische Konsequenzen ihres Einsatzes begründet bewerten.",
+        "descriptionEn": "The learner can assign important petroleum products to their applications in everyday life and technology and give a reasoned assessment of the benefits and ecological consequences of their use."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-requires20-independent-a-v1.record-009",
+          "recordDigest": "sha256:c1f7ec9fb5230fc903269f876726b81a02476192406c77240b5536ce930cdce1"
+        },
+        "second": {
+          "recordId": "chemie-current439-requires20-fresh-independent-b2-20261017-v1.009",
+          "recordDigest": "sha256:3ab66ad6c95aab82cb068d715c48bdc9a52b3ffca97c4c1eff5d3251bcc4174c"
+        }
+      },
+      "rationaleDe": "Beide Runden verbinden Produktfunktion mit begrenzter Umweltbewertung. Runde A erhält den Nutzungswechsel zu Schmieröl/Bitumen und trennt fehlende unmittelbare Verbrennung von Folgenfreiheit; Einzelinformationen sind keine vollständige Ökobilanz.",
+      "rationaleEn": "Both rounds connect product function with bounded environmental evaluation. Round A retains changed lubricant/bitumen uses and separates lack of immediate combustion from lack of impact; individual facts are not a complete life-cycle assessment."
+    },
+    {
+      "decisionId": "chemie-requires20-partial-root-3e433dae-99f9-5a95-ad63-d5fa0b5f6836-20261017-v1",
+      "goalId": "3e433dae-99f9-5a95-ad63-d5fa0b5f6836",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a0a9e2e40d5ccebda433dc09fb4d59f59a7650356933d48f4e3f629d81b05c58",
+      "pageFingerprint": "sha256:34bdf19ece28641bcb8e84298f6183cb0801ac2791d3ad6ab71b1e2cf80fcab6",
+      "goalReviewContextFingerprint": "sha256:16c015db76878fe1302dd293e1452604cefcae137d8206f27492bc0112d4d812",
+      "finalText": {
+        "titleDe": "Reaktionsenthalpien aus Bindungsverhältnissen begründen",
+        "titleEn": "Justify reaction enthalpies from bonding relationships",
+        "descriptionDe": "Die lernende Person kann Unterschiede experimentell bestimmter oder vorgegebener Reaktionsenthalpien auf Grundlage der Bindungsverhältnisse begründen und die verglichenen Edukt- und Produktsysteme relativ zueinander als energiereich oder energiearm einstufen.",
+        "descriptionEn": "The learner can justify differences in experimentally determined or given reaction enthalpies based on bonding relationships and classify the compared reactant and product systems as energy-rich or energy-poor relative to one another."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-requires20-independent-a-v1.record-010",
+          "recordDigest": "sha256:74782961c4f6a82b2f011779ac5d38e660548b92ec90e63773c0ad73fd60abe6"
+        },
+        "second": {
+          "recordId": "chemie-current439-requires20-fresh-independent-b2-20261017-v1.010",
+          "recordDigest": "sha256:6c574dc687760016c1bc28823bf03761368ec5f9777967999cf3dd06f54bca08"
+        }
+      },
+      "rationaleDe": "Beide Urteile bestätigen die qualitative Enthalpiebegründung auf gleicher Reaktionsbasis. Runde A unterscheidet Bindungsbruch und -bildung sowie die zusätzliche Flüssigphasenstabilisierung. Eine quantitative Bindungsenergiesummenroutine wird nicht zur verdeckten Abschlussbedingung.",
+      "rationaleEn": "Both judgments confirm qualitative enthalpy explanation on a shared reaction basis. Round A separates bond breaking and formation and additional liquid-phase stabilization. A quantitative bond-energy summation routine is not made a hidden completion condition."
+    },
+    {
+      "decisionId": "chemie-requires20-partial-root-91cd4728-b811-562a-970b-18b81dfb4bdf-20261017-v1",
+      "goalId": "91cd4728-b811-562a-970b-18b81dfb4bdf",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a13ea12c7c844f97972eca0447b82a6c7a63503e1afd8fc262ea6d1fcc6c2280",
+      "pageFingerprint": "sha256:077aee78b20c666f7b97bcdf6614f98b2d467be6603b7b583b9deac6632b16a5",
+      "goalReviewContextFingerprint": "sha256:f4bedcecf93287f84601891163aecaf29e676cea662de632f80f33900a478cef",
+      "finalText": {
+        "titleDe": "Polare Eigenschaften erklären",
+        "titleEn": "Explain polar properties",
+        "descriptionDe": "Die lernende Person kann Dipol-Dipol-Wechselwirkungen und Wasserstoffbrücken zur Deutung von Löslichkeit und Siedetemperatur heranziehen.",
+        "descriptionEn": "The learner can use dipole-dipole interactions and hydrogen bonds to interpret solubility and boiling temperature."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-requires20-independent-a-v1.record-011",
+          "recordDigest": "sha256:16da486f505c33acb73a1a110f5262f37c8068614b8a5f5fb4135e98df02f555"
+        },
+        "second": {
+          "recordId": "chemie-current439-requires20-fresh-independent-b2-20261017-v1.011",
+          "recordDigest": "sha256:dbf71d1a43ff51e9a3ae12ddbf19706389d09a6cc84b387718d9bb32e3ac08dc"
+        }
+      },
+      "rationaleDe": "Beide Runden halten den D-Text für korrekt, empfehlen aber ausdrücklich P-Revision: permanente Dipolkräfte ohne eigenen H-Brückendonator sind bisher nicht selbständig beobachtbar. Runde A hält diese echte Lücke fest. Die D-Resolution schließt weder P noch den vorbereiteten Ether-Nachfolger fachlich ab.",
+      "rationaleEn": "Both rounds find D correct but explicitly recommend P revision: independent application of permanent dipoles without an own hydrogen-bond donor is not yet observable. Round A retains that real gap. This D resolution approves neither P nor the prepared ether successor."
+    },
+    {
+      "decisionId": "chemie-requires20-partial-root-363c5740-8a3c-50b8-8c3a-5548c80c36ea-20261017-v1",
+      "goalId": "363c5740-8a3c-50b8-8c3a-5548c80c36ea",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3aa4633c04b3e1753a9baf8eecf678f4aab262773e9a090c8be651e5abf4b113",
+      "pageFingerprint": "sha256:60d75a2035d40005e1db09305c71159a6ded2ada236f8585a70aeb3f74626845",
+      "goalReviewContextFingerprint": "sha256:99fb265fd4d3169c4dedffb3595980786d4cd897a85dd0c5333deeeec4257ee9",
+      "finalText": {
+        "titleDe": "Koordinative Bindung in der Fehling-Probe deuten",
+        "titleEn": "Interpret coordinate bonding in Fehling test",
+        "descriptionDe": "Die lernende Person kann die Ausbildung koordinativer Bindungen zwischen Zentralatom oder Zentralion und Liganden durch unbesetzte Orbitale am Zentralatom oder Zentralion sowie freie Elektronenpaare am Liganden erlaeutern und am Beispiel der Fehling-Probe deuten.",
+        "descriptionEn": "The learner can explain the formation of coordinate bonds between a central atom or ion and ligands using unoccupied orbitals at the central atom or ion and lone pairs at the ligand, and interpret this using the Fehling test as an example."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-requires20-independent-a-v1.record-012",
+          "recordDigest": "sha256:c7ec5153d4bdf4128c46104208cc2eba50f7fcd437790e230eaa107361c0dbf0"
+        },
+        "second": {
+          "recordId": "chemie-current439-requires20-fresh-independent-b2-20261017-v1.012",
+          "recordDigest": "sha256:3bbe2615bbdd752acab86a56094f22bc36309f760ed2f5198cb155a155d987f1"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen das begrenzte Donor-/Akzeptororbitalmodell. Runde A trennt koordinative Paarherkunft von Reduktion CuII/CuI und Fehling-Durchführung. RP-Pflichtkern und optionale Theorie bleiben verschiedene Quellenleistungen.",
+      "rationaleEn": "Both reviews confirm the bounded donor/acceptor orbital model. Round A separates coordinate-pair origin from CuII/CuI reduction and actual Fehling execution. The RP compulsory core and optional theory remain distinct source contributions."
+    },
+    {
+      "decisionId": "chemie-requires20-partial-root-e9d34f34-2a43-5cc7-bcca-1d08e057531d-20261017-v1",
+      "goalId": "e9d34f34-2a43-5cc7-bcca-1d08e057531d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b39715f891c5b75cd450e1e4628b4dcf3aa983381746d982305e360cb3ef5d51",
+      "pageFingerprint": "sha256:e028ce86c89550da1604a0f7aee3d0f5c942296e87f817f0f15bc279069e2ad7",
+      "goalReviewContextFingerprint": "sha256:d05f7126491795d9ee3090256fba347e3d82afb68904de80b7727d3eed103973",
+      "finalText": {
+        "titleDe": "Aminosäuren über Säure-Base-Verhalten erklären",
+        "titleEn": "Explain amino acids through acid-base behaviour",
+        "descriptionDe": "Die lernende Person kann pH-abhängige Ladungszustände einfacher Aminosäuren und ihr amphoteres Verhalten im Donator-Akzeptor-Konzept anhand von Strukturformeln erklären.",
+        "descriptionEn": "The learner can explain pH-dependent charge states and amphoteric behaviour of simple amino acids using donor-acceptor concepts and structural formulas."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-requires20-independent-a-v1.record-013",
+          "recordDigest": "sha256:dfb8781cccc387c5df4152e25b47fd6bbd973ef2ebc6587dec41ebe04e88696f"
+        },
+        "second": {
+          "recordId": "chemie-current439-requires20-fresh-independent-b2-20261017-v1.013",
+          "recordDigest": "sha256:59532838c4760b3bb0c0650ecef441b178237fe15d55b4db05a8809ae3268953"
+        }
+      },
+      "rationaleDe": "Beide Runden halten pH-abhängige Ladungsformen und Amphoterie zusammen. Runde A erhält zusätzliche Lysin-Seitengruppen, dominante statt ausschließliche Spezies und trennt Elektrophorese ab. Der Binnenabstand in Dezimalwerten ist ein gesonderter Klarheitshinweis, kein neuer fachlicher Abschluss.",
+      "rationaleEn": "Both rounds coherently retain pH-dependent charge forms and amphoterism. Round A preserves additional lysine side groups, dominant rather than exclusive species and the separate electrophoresis skill. Internal spacing in decimal values is a separate clarity note, not a new scientific completion."
+    },
+    {
+      "decisionId": "chemie-requires20-partial-root-cf270aaf-235a-55a7-94a2-c4d9d7570a6b-20261017-v1",
+      "goalId": "cf270aaf-235a-55a7-94a2-c4d9d7570a6b",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b07469051202ac5c1e72159576aeb32ae3ae02bce1684938dccd0bb0fc22bde1",
+      "pageFingerprint": "sha256:3329c98b91ccd7abb409a251ace39dbd611d6dccf6cb33e0c02676a5234e2109",
+      "goalReviewContextFingerprint": "sha256:1914e586b829a33437775365784bc077be06d5b51cca05a435002c11c64c346b",
+      "finalText": {
+        "titleDe": "Proteine mit der Biuret-Reaktion nachweisen und erklären",
+        "titleEn": "Detect and explain proteins using the biuret assay",
+        "descriptionDe": "Die lernende Person kann kontrollierte Biuret-Nachweise durchführen, positive und negative Befunde auswerten und die violette Färbung als Koordination von Kupfer(II)-Ionen durch geeignete Peptidgruppen erklären.",
+        "descriptionEn": "The learner can carry out controlled biuret assays, evaluate positive and negative results and explain the violet colour through copper(II) coordination by suitable peptide groups."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-requires20-independent-a-v1.record-014",
+          "recordDigest": "sha256:e01966fa1610713a81cac422848a011bd2f10bac99690f2f007b7f6f56b4402b"
+        },
+        "second": {
+          "recordId": "chemie-current439-requires20-fresh-independent-b2-20261017-v1.014",
+          "recordDigest": "sha256:b6d9006ac59ce1a4ac4dad226aaea2040b6e7d1b75c4f546b6b2fcd89b3e554b"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen den kontrollierten Biuret-Nachweis als D-Kompetenz. Runde B hält die konkrete P-Lücke bei Proben-/Reagenzbedingungen, Kupferüberschuss und gebundener Sicherheits-/Abfallanleitung fest. Ein neuer SOP-Autorenstand bedarf eigener Prüfung; diese D-Resolution vergibt weder P-Freigabe noch reale Durchführung.",
+      "rationaleEn": "Both rounds confirm controlled biuret detection as the D competence. Round B retains the concrete P gap in sample/reagent conditions, copper excess and bound safety/waste instructions. The new authored SOP requires its own review; this D resolution grants neither P approval nor actual execution credit."
+    },
+    {
+      "decisionId": "chemie-requires20-partial-root-c21a611c-1069-5b32-b673-4f37a89b094f-20261017-v1",
+      "goalId": "c21a611c-1069-5b32-b673-4f37a89b094f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:afd1bdf2e964c984fd1179e4e22021e7d1fcc26b55f4ef70f4f9477173adecea",
+      "pageFingerprint": "sha256:86339ae9b57c04865c1042b6a215c1405373184c2c21e93af381fb39228720e3",
+      "goalReviewContextFingerprint": "sha256:e3d8c0c600ab9e281ed2994744db2fddad7ac36f0853ae06ea945240c1b11d13",
+      "finalText": {
+        "titleDe": "Kunststoffrohstoffe nachhaltig bewerten",
+        "titleEn": "Evaluate plastic raw materials sustainably",
+        "descriptionDe": "Die lernende Person kann ausgewählte Rohstoffe der Kunststoffproduktion hinsichtlich Nachhaltigkeit, Umweltschutz und Entsorgung vergleichen und bewerten.",
+        "descriptionEn": "The learner can compare and evaluate selected raw materials for plastic production in terms of sustainability, environmental protection, and disposal."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-requires20-independent-a-v1.record-015",
+          "recordDigest": "sha256:ac3c3ace996d24808da7b201f9e7ae3e5e30d723a510e159deba4a63c0c4d793"
+        },
+        "second": {
+          "recordId": "chemie-current439-requires20-fresh-independent-b2-20261017-v1.015",
+          "recordDigest": "sha256:09a5c990e886b75f3ffc7d3b5727ca1535b0168f758a84d6055d3a226bdd6f72"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen gleiche Beutelmasse und getrennte Herkunfts-/Nutzungs-/Entsorgungsgrenzen. Runde A bewahrt die unterschiedlichen Mehrwegschwellen und verwechselt Sammlung nicht mit Recyclingausbeute; Herkunft beweist weder Abbau noch CO2-Neutralität.",
+      "rationaleEn": "Both rounds confirm matched bag mass and distinct origin, use and disposal boundaries. Round A retains the different reuse thresholds and does not equate collection with recycling yield; origin proves neither biodegradation nor carbon neutrality."
+    },
+    {
+      "decisionId": "chemie-requires20-partial-root-81373fb7-2a4a-5b2c-acd0-b4e775acaa65-20261017-v1",
+      "goalId": "81373fb7-2a4a-5b2c-acd0-b4e775acaa65",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:8fc642c61215edf0f944fa1ba80e7a6cbfb794b98a675e593a2e718a0fdb7740",
+      "pageFingerprint": "sha256:acda5aad425c04dbeeb12dadc4ec349099d5220d51149f75b5d21b3198da5d2d",
+      "goalReviewContextFingerprint": "sha256:39264e7b4067dc46f9f8a01fb4bfe8fdafc5a2a7112529f1e4a9b1a421329190",
+      "finalText": {
+        "titleDe": "Gleichgewichtsdynamik nachweisen",
+        "titleEn": "Demonstrate equilibrium dynamics",
+        "descriptionDe": "Die lernende Person kann chemische Gleichgewichte mithilfe von Modellen auf Stoff- und Teilchenebene charakterisieren, das gleichzeitige Vorliegen von Edukten und Produkten experimentell zeigen und statische Stoffebene von dynamischer Teilchenebene abgrenzen.",
+        "descriptionEn": "The learner can characterize chemical equilibria using models at substance and particle level, experimentally show the simultaneous presence of reactants and products, and distinguish the static substance level from the dynamic particle level."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-requires20-independent-a-v1.record-016",
+          "recordDigest": "sha256:97d1840f2da343272d1151a81ba5de443170f6f1e93278f7c3b7c51cc60f8f1f"
+        },
+        "second": {
+          "recordId": "chemie-current439-requires20-fresh-independent-b2-20261017-v1.016",
+          "recordDigest": "sha256:0921e92f5096f6ad98931b7dfa000ffc84a1a9d2aedd300fa39aaba98b039596"
+        }
+      },
+      "rationaleDe": "Beide Runden haben die ganze FeNCS-SOP und Materialien gelesen. Runde B erhält die bedingte 1:1-/Absorptivitätsgrenze und positive Eduktrestmengen aus einer Produktobergrenze. Synthetische Auswertung und Publikationskritik ersetzen die ausdrücklich erforderliche eigene Durchführung nicht.",
+      "rationaleEn": "Both rounds read the complete FeNCS SOP and materials. Round B retains the conditional 1:1 and absorptivity limits and positive reagent remainders inferred from a product upper bound. Synthetic analysis and publication critique do not replace the explicitly required personal execution."
+    },
+    {
+      "decisionId": "chemie-requires20-partial-root-28c90c6a-3020-5c51-ac40-d802f3f12d2d-20261017-v1",
+      "goalId": "28c90c6a-3020-5c51-ac40-d802f3f12d2d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:5e7666abb7cd2c4c761356fcd30cccad0080ed13ebcaeb84fb8683e8b420f9c5",
+      "pageFingerprint": "sha256:6744e28721fff10cfd8593136b1c750783e95ce18418f92d7dfcd36b952f979e",
+      "goalReviewContextFingerprint": "sha256:980baf07b2431d589c05e31662b762846a1850cdf1fda2d5d79f6c0f110513bd",
+      "finalText": {
+        "titleDe": "Titrationskurven datengestützt deuten",
+        "titleEn": "Interpret titration curves using data",
+        "descriptionDe": "Die lernende Person kann aus bereitgestellten Titrationsdaten den Verlauf einer Titrationskurve, den Äquivalenzbereich und vorhandene Halbäquivalenz- oder Pufferbereiche erkennen, mit den jeweils pH-bestimmenden Teilchen erklären und daraus begrenzte Aussagen zu Stoffklasse und geeigneten Indikatoren ableiten.",
+        "descriptionEn": "The learner can use supplied titration data to identify curve behaviour, the equivalence region and any half-equivalence or buffer regions, explain them using the pH-controlling species, and derive bounded conclusions about substance class and suitable indicators."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-requires20-independent-a-v1.record-017",
+          "recordDigest": "sha256:d0a4b7d0e03406cac4d4bc99261caf35c6a541b930df7bb7acdb47c5a9eff12c"
+        },
+        "second": {
+          "recordId": "chemie-current439-requires20-fresh-independent-b2-20261017-v1.017",
+          "recordDigest": "sha256:3e8fbc780ebddc0c467cb97013302999769fcd2ca4ee08d0ffebe0f6b43c73fa"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen datengestützte Kurvendeutung ohne verdeckte Mess-/pH-Rechenpflicht. Runde B hält den echten alten Bildfehler nur Säure/nur Salz/molekulare NaOH ausdrücklich offen. Richtige P-Speziesaussagen korrigieren das falsche Bild nicht automatisch.",
+      "rationaleEn": "Both rounds confirm data-based curve interpretation without hidden measurement or pH-calculation duties. Round B explicitly retains the real old-image only-acid/only-salt/molecular-NaOH defect. Correct P species statements do not automatically correct that image."
+    },
+    {
+      "decisionId": "chemie-requires20-partial-root-642d5ea5-b62f-50c8-b0bd-cf132619725f-20261017-v1",
+      "goalId": "642d5ea5-b62f-50c8-b0bd-cf132619725f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b7c42d91c4b9f0c6afe0d0924b46d90e366999d3ae13d1795a3f556f22e836fd",
+      "pageFingerprint": "sha256:44f27839b8d8732517db28c98f9893514a0291797eee3f19784012ed186d1e34",
+      "goalReviewContextFingerprint": "sha256:b998554a8fc6fb5d271058ea3e4e52aa60dda6013abe06b5a18844c54f47a041",
+      "finalText": {
+        "titleDe": "Korrosion verstehen",
+        "titleEn": "Understand corrosion",
+        "descriptionDe": "Die lernende Person kann Lokalelemente erläutern, Korrosionsschutzmaßnahmen begründen und Opferanoden erklären.",
+        "descriptionEn": "The learner can explain local cells, justify corrosion protection measures, and explain sacrificial anodes."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-requires20-independent-a-v1.record-018",
+          "recordDigest": "sha256:3aa30a27e7b2b31848ec352836775862e7fa006c3dca41a763dd4c836db0b13f"
+        },
+        "second": {
+          "recordId": "chemie-current439-requires20-fresh-independent-b2-20261017-v1.018",
+          "recordDigest": "sha256:6cf3b1efae0ce97e90cc17f2a1404580e73b7c51fd0686330b4754772ce2a85c"
+        }
+      },
+      "rationaleDe": "Beide Reviews verbinden Lokalelement und Schutzmechanismen. Runde A erhält Metall-/Elektrolytpfad, Zn-Opferanode, Zinn-Defekt, Belüftung und Flächenbedingungen; Standardpotenzial wird nicht zur Korrosionsrate und Erklärung nicht zur tatsächlichen Durchführung.",
+      "rationaleEn": "Both reviews connect local cells and protection mechanisms. Round A retains metallic/electrolytic paths, zinc sacrifice, tin defects, aeration and area conditions; standard potential is not a corrosion rate and explanation is not actual execution."
+    },
+    {
+      "decisionId": "chemie-requires20-partial-root-96fd8608-8d98-53f0-9b86-1311c3220fd3-20261017-v1",
+      "goalId": "96fd8608-8d98-53f0-9b86-1311c3220fd3",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:39d8fc11a82ede4ce16c70218d7a06ffdbf1958e9e08f83250554cd55b6c607c",
+      "pageFingerprint": "sha256:780a499a1b76caab62df3e3454461c69bd61f24cbec5c8b74dd049283aea7b2e",
+      "goalReviewContextFingerprint": "sha256:ea52ee4a984fe2a6ca989fa926348dc9140cc2b864b5f42bea7aa8076f49dfe8",
+      "finalText": {
+        "titleDe": "Elektrische Arbeit galvanischer Zellen ermitteln",
+        "titleEn": "Determine electrical work of galvanic cells",
+        "descriptionDe": "Die lernende Person kann die von galvanischen Zellen abgegebene elektrische Arbeit aus Spannungs-, Stromstärke- und Zeitmessungen bestimmen und unter den angegebenen Mess- und Modellbedingungen als umgewandelte chemische Energie einordnen.",
+        "descriptionEn": "The learner can determine the electrical work delivered by galvanic cells from voltage, current, and time measurements and interpret it as converted chemical energy under the stated measurement and model conditions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-requires20-independent-a-v1.record-019",
+          "recordDigest": "sha256:5b14dc30de92a15bc54a1fc76a92c1a32328a58b7fda0f607d9acc627679e665"
+        },
+        "second": {
+          "recordId": "chemie-current439-requires20-fresh-independent-b2-20261017-v1.019",
+          "recordDigest": "sha256:70bce8fff238bfae4078d86426f4088731d8a49dcdbcf7d96c5bac9ee230bb4d"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen gleichzeitige Lastmesswerte und korrekte Intervallsummen. Runde A erhält 36J/40J/Leerlauf0J, die Bezugsportion und das reversible -DeltaG-Maximum. Mittelwertprodukte und Reaktionsenthalpie ersetzen diese Arbeitsbestimmung nicht.",
+      "rationaleEn": "Both rounds confirm simultaneous loaded measurements and correct interval sums. Round A retains 36J, 40J, zero open-circuit work, the reference portion and the reversible negative-DeltaG maximum. Products of averages and reaction enthalpy do not replace this work determination."
+    },
+    {
+      "decisionId": "chemie-requires20-partial-root-c8844ac6-c414-5a0e-9fcd-7d0a82177d09-20261017-v1",
+      "goalId": "c8844ac6-c414-5a0e-9fcd-7d0a82177d09",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c547b07e7835df4dc5c9f412f9fb62137eacbf8b8bce0b2e7a7c222fcb9d6433",
+      "pageFingerprint": "sha256:7f5cd43b748a17b49c19803126f0c9008075bf6e08917cf28b5a15380e6e4d46",
+      "goalReviewContextFingerprint": "sha256:d8f0180b46f0a35dc37513103aee1072e7e3e4141b0bc79da02e38c43fa3e879",
+      "finalText": {
+        "titleDe": "Primärzellen und Batterietypen fachlich beurteilen",
+        "titleEn": "Evaluate primary cells and battery types scientifically",
+        "descriptionDe": "Die lernende Person kann das Bau- und Funktionsprinzip galvanischer Zellen auf Primärzellen in Alltag und Technik übertragen und Vor- sowie Nachteile unterschiedlicher Batterietypen fachlich und gesellschaftlich beurteilen.",
+        "descriptionEn": "The learner can transfer the construction and functional principles of galvanic cells to primary cells used in everyday life and technology and evaluate advantages and disadvantages of different battery types scientifically and socially."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-requires20-independent-a-v1.record-020",
+          "recordDigest": "sha256:6c060b2fc9945074f2bf86845a54c16fd7ff282b3bdb90c39bfe91535ef71c8f"
+        },
+        "second": {
+          "recordId": "chemie-current439-requires20-fresh-independent-b2-20261017-v1.020",
+          "recordDigest": "sha256:347fd3b9b95efa7ec344199272ec01c4af19517673cfe349c72981e412323d9d"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen ein bedingtes Primärzellurteil aus galvanischem Prinzip. Runde A erhält Anschluss/Wandler/Luftzugang und den frischen Lagerungswechsel. Eine reine 2-zu-2,4-Wh-Zahländerung ist kein Konzepttransfer; keine Sekundärzell- oder Ladefreigabe wird behauptet.",
+      "rationaleEn": "Both rounds confirm conditional primary-cell evaluation from galvanic principles. Round A retains connection, converter and air-access conditions and the fresh storage-use change. A mere 2-to-2.4Wh change is not conceptual transfer and no secondary-cell or charging approval is claimed."
+    }
+  ],
+  "deferredGoals": [
+    {
+      "goalId": "bbe038e9-86ed-5ec6-ab33-316758ddb16d",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "rationaleDe": "Die berechtigte D-Revision aus Runde B wird angenommen: das einfache Elektronenpaarbindungsmodell muss explizit begrenzt werden. Kein KEEP-Dissens-Override; die neue ganze DE/EN-Fassung benötigt zwei aktuelle unabhängige Reviews.",
+      "rationaleEn": "The valid D revision from round B is accepted: the simple electron-pair model must be explicitly bounded. There is no KEEP dissent override; the complete new bilingual text requires two current independent reviews."
+    },
+    {
+      "goalId": "92c99237-1c74-54fc-bf08-9191656afaa6",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "rationaleDe": "Die berechtigte D-Revision aus Runde B wird angenommen: Darstellungsumwandlung braucht ausreichende Strukturinformation und ist bei Isomerie nicht bedingungslos umkehrbar. Die neue Bedingung bleibt bis zur unabhängigen Prüfung offen.",
+      "rationaleEn": "The valid D revision from round B is accepted: representation conversion requires sufficient structural information and is not unconditionally reversible with isomerism. The new condition remains open pending independent review."
+    }
+  ],
+  "manifestFingerprint": "sha256:9b17096d5484a2620693e149d41a39509a9becba3602cc836b91855640d4d326"
+}

@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-004-v1-resolution-6966df95-f125-5ecc-af8e-0442545d9f17",
+  "goal": {
+    "goalId": "6966df95-f125-5ecc-af8e-0442545d9f17",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:8b8e10c8986185b84c28ed8f2287a62e3f0fb894dd9701e83a02702df90969ab",
+    "pageFingerprint": "sha256:5d29f94aa5607618cdb9b855b2600da05ea3532990c7f34666272e0621aed183",
+    "goalReviewContextFingerprint": "sha256:c5c86d92878480dbbe14a96aa5d9150688db952f18d3f7021afa18afada1f7c7",
+    "finalText": {
+      "titleDe": "Micellenbildung deuten",
+      "titleEn": "Interpret micelle formation",
+      "descriptionDe": "Die lernende Person kann aus der amphiphilen Struktur von Seifen ihre Anordnung an Grenzflächen und in Micellen, ihre Emulgatorwirkung und die Verringerung der Oberflächenspannung von Wasser erklären.",
+      "descriptionEn": "The learner can use the amphiphilic structure of soaps to explain their arrangement at interfaces and in micelles, their emulsifying action, and the reduction of the surface tension of water."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-004-v1-a",
+      "campaignDigest": "sha256:9f49c2740669f7ed36feb828f9f8fbf595137952444feadd39e6636d8aa89cee",
+      "roundId": "chemie-final-current-context-d-004-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-004-v1-independent-a",
+      "reviewInputFingerprint": "sha256:05932460b60d1d36324c4bd65a48bcd0a5fe66088c89302fdebe64beca38e104",
+      "goalReviewContextFingerprint": "sha256:c5c86d92878480dbbe14a96aa5d9150688db952f18d3f7021afa18afada1f7c7",
+      "batchId": "chemie-final-current-context-d-004-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch004-20261018",
+      "runManifestDigest": "sha256:860f1a557a07e28c6af90a01f00ebf8a49e6fb81e38ef37281b5dee695ee7891",
+      "resultsDigest": "sha256:33bf50a914eb196e9c1bc3a74a7a205b97c38e014eae746547ed2dfff792b039",
+      "recordId": "codex-reviewer-a-final163-batch004-20261018.003",
+      "recordDigest": "sha256:42b24a6e89598fbbfd5c0f5b78aa371ad78a40afd38bdb920b83e4a9d611a219"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-004-v1-b",
+      "campaignDigest": "sha256:eb0a6a8bfd9326c9da6104480580f2824f20bebcd54ad258ec5b5ecedd511843",
+      "roundId": "chemie-final-current-context-d-004-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-004-v1-independent-b",
+      "reviewInputFingerprint": "sha256:05932460b60d1d36324c4bd65a48bcd0a5fe66088c89302fdebe64beca38e104",
+      "goalReviewContextFingerprint": "sha256:c5c86d92878480dbbe14a96aa5d9150688db952f18d3f7021afa18afada1f7c7",
+      "batchId": "chemie-final-current-context-d-004-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-004-20261018",
+      "runManifestDigest": "sha256:462a31ff8568ab194b6453b4a575269655a339fccdcaefe3a889f1c0386eb3eb",
+      "resultsDigest": "sha256:59784196a1346be76d18c8e2bb0dce57480d2a3daf93f3217588eb58d6cc6281",
+      "recordId": "chemie-final163-native-b-004-20261018:6966df95-f125-5ecc-af8e-0442545d9f17",
+      "recordDigest": "sha256:f9365302d328eb11071c8f46e9a06760de03c72d79a72f4a81b7bb144c83d2be"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:14644ad1dc6daad38fa105e8dcda4988764bf5544ad0303798c9afec70301ba8"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-004-20261018-v1",
+    "manifestDigest": "sha256:f8c23f4cfaabeda104b822b75b02eabbb05ae2a58f66246e6d76815c2be6f54a",
+    "manifestFingerprint": "sha256:47331b90b9c9747c454cd4e4bf2073fcf661e82b97577552be6a0e71defced6c",
+    "decisionId": "chemie-final163-paired-D-only-004-20261018-v1-decision-003"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-004-20261018-v1-decision-003",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:29:30.204Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch004-20261018.003): Der Text verknüpft vier Erscheinungen durch dieselbe Strukturbeziehung. Das ganze P unterscheidet Micelle und Öltropfen sowie Dispersion und Fettspaltung; Stabilitätsgrenzen sind explizit. B (chemie-final163-native-b-004-20261018:6966df95-f125-5ecc-af8e-0442545d9f17): Alle beschriebenen Wirkungen stammen aus demselben amphiphilen Aufbau. P unterscheidet Micelle und Öltropfen, physikalische Dispersion und Fettspaltung sowie Orientierung und tatsächlich belegte Stabilität.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch004-20261018.003; chemie-final163-native-b-004-20261018:6966df95-f125-5ecc-af8e-0442545d9f17). Their current English understanding evidence is retained: A: Amphiphilic soaps orient hydrophilic heads toward water; interfacial adsorption explains micelles, emulsification and reduced surface tension. B: Hydrophilic soap heads and hydrophobic tails orient by contacting phases; adsorption and aggregation explain action. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Amphiphile Seifen orientieren hydrophile Köpfe zum Wasser; Grenzflächenbelegung erklärt Micellen, Emulgierung und geringere Oberflächenspannung.",
+      "essentialUnderstandingEn": "Amphiphilic soaps orient hydrophilic heads toward water; interfacial adsorption explains micelles, emulsification and reduced surface tension.",
+      "observablePerformanceDe": "Zeichnet Luft/Wasser, Öl/Wasser und normale Micelle und erklärt die gegebenen Dispersions-/Oberflächendaten.",
+      "observablePerformanceEn": "Draws air/water, oil/water and normal micelles and explains supplied dispersion/surface data.",
+      "transferExpectationDe": "Leitet bei Wassertröpfchen in Öl die umgekehrte Orientierung ab, ohne daraus stabile inverse Micellen zu garantieren.",
+      "transferExpectationEn": "Derives reversed orientation for water droplets in oil without guaranteeing stable reverse micelles."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-feb3651ceb2447852ac20894344f2ee3a732838f2d4ca60fe520f1dec0450f0f",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:92b4a40cca6562923d1597adf81401c43fa90f81f47f68bae8724d68a9b4b226"
+}

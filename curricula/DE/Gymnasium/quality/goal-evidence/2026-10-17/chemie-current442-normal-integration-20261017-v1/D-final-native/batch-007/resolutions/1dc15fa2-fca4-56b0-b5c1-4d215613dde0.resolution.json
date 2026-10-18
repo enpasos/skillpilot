@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-007-v1-resolution-1dc15fa2-fca4-56b0-b5c1-4d215613dde0",
+  "goal": {
+    "goalId": "1dc15fa2-fca4-56b0-b5c1-4d215613dde0",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:95794950e14a7e57d69408df3334a5085b41f2eebcea9f847132be28ea839ed3",
+    "pageFingerprint": "sha256:c0e370cdfdd80eae1e0a76d0410180d5fea9e234800a212fef13a8c5ff2697ac",
+    "goalReviewContextFingerprint": "sha256:30c9c2bb369145efc3cf8e471b0a7f0eecc08df1e41906013c02c1cf69b32971",
+    "finalText": {
+      "titleDe": "Stoffmenge und Einheit Mol nutzen",
+      "titleEn": "Use amount of substance and the unit mole",
+      "descriptionDe": "Die lernende Person kann die Stoffmenge als Maß für die Anzahl festgelegter Teilchen deuten und Stoffmengen eindeutig mit der Einheit Mol angeben.",
+      "descriptionEn": "The learner can interpret amount of substance as a measure of the number of specified particles and state amounts of substance unambiguously using the unit mole."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-007-v1-a",
+      "campaignDigest": "sha256:03e23ca7a839411ee0694d3ffc4c5304359bdbdb4885b890ef7f8def67d5e5a0",
+      "roundId": "chemie-final-current-context-d-007-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-007-v1-independent-a",
+      "reviewInputFingerprint": "sha256:9786177231bba01a5178b748443b7e2ac24b65d395c6cfda891b47d1838d8fd4",
+      "goalReviewContextFingerprint": "sha256:30c9c2bb369145efc3cf8e471b0a7f0eecc08df1e41906013c02c1cf69b32971",
+      "batchId": "chemie-final-current-context-d-007-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch007-20261018",
+      "runManifestDigest": "sha256:41b3803956cb0b8e3ceaa1b4c1224724037cd8f6fc9ff400cb30dc979ec172d0",
+      "resultsDigest": "sha256:2deca668c6059260417c15a3d4e706e9325f6ce3e8e0bef2d977983444354968",
+      "recordId": "codex-reviewer-a-final163-batch007-20261018.009",
+      "recordDigest": "sha256:02ec6737c0610f5c752c95a257ddfa36ed86b12c6b5070f48b21dcbb80fbe092"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-007-v1-b",
+      "campaignDigest": "sha256:f96e78c8b5b03376c090596c68434afdda0adfb82adef282dc1a1a949aed2746",
+      "roundId": "chemie-final-current-context-d-007-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-007-v1-independent-b",
+      "reviewInputFingerprint": "sha256:9786177231bba01a5178b748443b7e2ac24b65d395c6cfda891b47d1838d8fd4",
+      "goalReviewContextFingerprint": "sha256:30c9c2bb369145efc3cf8e471b0a7f0eecc08df1e41906013c02c1cf69b32971",
+      "batchId": "chemie-final-current-context-d-007-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-007-20261018",
+      "runManifestDigest": "sha256:c21072a1baeec0fb475776827fd6bdcb51afcb70555317673d8fac140568d60f",
+      "resultsDigest": "sha256:f627bfdb86dcc4a0e7dec63f04ec892ed6ec7af463e3169bda439a10444338fd",
+      "recordId": "chemie-final163-native-b-007-20261018:1dc15fa2-fca4-56b0-b5c1-4d215613dde0",
+      "recordDigest": "sha256:c4f9b2a17bfc0040ea6c8ab5d1052b7e1c0a888d07826b471b444d560e534aef"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:9d01c3a2eaf6ff3168f19750d5b1780c3bd726f4c76d033ac9016e0d3a5debbf"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-007-20261018-v1",
+    "manifestDigest": "sha256:a002d58ade8fb14ebb3f915bed25f48fcfa287b2641be1e7a466d8abd811c99e",
+    "manifestFingerprint": "sha256:12732999b92050cc52642e0c0e4f1bd967da4b1b66528e696859794dba344986",
+    "decisionId": "chemie-final163-paired-D-only-007-20261018-v1-decision-009"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-007-20261018-v1-decision-009",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:39:49.306Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch007-20261018.009): Die aktuelle Beschreibung hält den eigenständigen Erwerb des Stoffmengenbegriffs ausdrücklich beim Zählbezug und der Einheit. Das ganze P fordert die jeweilige gezählte Einheit und vermeidet sowohl gleiche-Massen- als auch isolierte-Salzmolekül-Fehler. Exakte Avogadro-Zahl oder molare Masse sind hierfür nicht vorgeschoben; deren eigene Anschlussziele bleiben getrennt. B (chemie-final163-native-b-007-20261018:1dc15fa2-fca4-56b0-b5c1-4d215613dde0): Das Sek-I-Ziel trennt bewusst Stoffmengenverständnis von späterer Avogadro-Konstanten- oder Massenrechnung. Nach der Formelsprache stellt das gesamte P Moleküle, Atome und ionische Formeleinheiten vollständig gegenüber und verlangt einen neuen Bezugswechsel. Absolute Teilchenzahlen müssen hier nicht berechnet werden; das wahrt die Grenzen zu den direkten Rechen-Nachfolgern.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch007-20261018.009; chemie-final163-native-b-007-20261018:1dc15fa2-fca4-56b0-b5c1-4d215613dde0). Their current English understanding evidence is retained: A: Amount of substance counts explicitly specified entities in mol; equal amounts of different particles mean equal numbers of those entities, not equal mass or total atom count. B: Amount of substance counts explicitly specified entities in mol; equal amounts of different species mean equal counts of those entities, not equal mass. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Stoffmenge zählt ausdrücklich benannte Einheiten in mol; dieselbe Stoffmenge verschiedener Teilchen bedeutet gleiche Zahl dieser Einheiten, nicht gleiche Masse oder Atomgesamtzahl.",
+      "essentialUnderstandingEn": "Amount of substance counts explicitly specified entities in mol; equal amounts of different particles mean equal numbers of those entities, not equal mass or total atom count.",
+      "observablePerformanceDe": "Vergleicht 0,20 mol O2-Moleküle mit 0,20 mol He-Atomen und begründet 0,40 mol enthaltene O-Atome bei unverändert 0,20 mol O2.",
+      "observablePerformanceEn": "Compares 0.20 mol O2 molecules with 0.20 mol He atoms and explains 0.40 mol constituent O atoms while retaining 0.20 mol O2.",
+      "transferExpectationDe": "Wechselt zum NaCl-Gitter und formuliert für 0,30 mol Formeleinheiten jeweils 0,30 mol Na+ und Cl− sowie zusammen 0,60 mol Ionen, ohne NaCl-Moleküle zu erfinden.",
+      "transferExpectationEn": "Transfers to a NaCl lattice and states 0.30 mol each of Na+ and Cl− and 0.60 mol total ions for 0.30 mol formula units without inventing NaCl molecules."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-5292dda16c1647820d2d0870b5b71731267acf3e68feba25363df251e416d9cd",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:98639a6e597e08f992aeb423e1224fe587dbf5a50adf5ab03d9ede03b2b55bb8"
+}

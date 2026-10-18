@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-008-v1-resolution-f0ba30a8-84b3-5915-bf85-6c3a176064d2",
+  "goal": {
+    "goalId": "f0ba30a8-84b3-5915-bf85-6c3a176064d2",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:9d7338844c738bd6e5a33d7b1733204211ebb3773ea3c4c7804ada6f1d1775f1",
+    "pageFingerprint": "sha256:0956f085a0159ea1c01efaa106ce4d4172e3e486270edf88d347560e91754447",
+    "goalReviewContextFingerprint": "sha256:29039a59fe2226b0e0f74aed0832d70f399991d5b1c38781b180c30ff89bf44f",
+    "finalText": {
+      "titleDe": "Absorptionsspektren von Farbstoffen auswerten",
+      "titleEn": "Evaluate absorption spectra of dyes",
+      "descriptionDe": "Die lernende Person kann aus Absorptionsspektren von Farbstoffen Wellenlängenbereiche, Absorptionsmaxima und Absorptionsstärke bestimmen und Unterschiede unter Berücksichtigung der Messbedingungen deuten.",
+      "descriptionEn": "The learner can identify wavelength regions, absorption maxima and absorption strength from dye absorption spectra and interpret differences while taking measurement conditions into account."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-008-v1-a",
+      "campaignDigest": "sha256:bfc1b7bc3538c4dd17f4f184f0a3c6191751a8124732d1299f1f3201d5b9fa22",
+      "roundId": "chemie-final-current-context-d-008-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-008-v1-independent-a",
+      "reviewInputFingerprint": "sha256:3ac18dc51676cde29ff443c24a5b4a66fe4284e778b917d2a635b9e71961d3c3",
+      "goalReviewContextFingerprint": "sha256:29039a59fe2226b0e0f74aed0832d70f399991d5b1c38781b180c30ff89bf44f",
+      "batchId": "chemie-final-current-context-d-008-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch008-20261018",
+      "runManifestDigest": "sha256:1c83d9e9f75802490a373fc32cd5155852662ec2adeb44332b0e4ad3794a53f2",
+      "resultsDigest": "sha256:717572e69fa651d74b4efe4307f0c0f1eb2190475b1f5e1e8a20cdd410f01fcc",
+      "recordId": "codex-reviewer-a-final163-batch008-20261018.015",
+      "recordDigest": "sha256:5a153bed9e690ccfeec8bf1e1afcc0c50fd1b62078493f0dc538f8cd3abec4d9"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-008-v1-b",
+      "campaignDigest": "sha256:8a870c0b67e894644fc8a8bc5a6e566b1b80eb253611ea8e45a3aec8e4e7ce2d",
+      "roundId": "chemie-final-current-context-d-008-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-008-v1-independent-b",
+      "reviewInputFingerprint": "sha256:3ac18dc51676cde29ff443c24a5b4a66fe4284e778b917d2a635b9e71961d3c3",
+      "goalReviewContextFingerprint": "sha256:29039a59fe2226b0e0f74aed0832d70f399991d5b1c38781b180c30ff89bf44f",
+      "batchId": "chemie-final-current-context-d-008-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-008-20261018",
+      "runManifestDigest": "sha256:aae64cd2428db704ad4ac245dcca064a12b9d0dc413b71f7a83725b0f7ddfec2",
+      "resultsDigest": "sha256:89514977b458bdd7656b1bb59d40d99ab77b3c500d848c381a3f4502abbe5fdc",
+      "recordId": "chemie-final163-native-b-008-20261018:f0ba30a8-84b3-5915-bf85-6c3a176064d2",
+      "recordDigest": "sha256:fe791c95d8383153cb57ec39c4b786e1f61dd7e68ff72980805b7bf271fed83a"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:75131dbe4e2143b9a067c805d573de1f211b44cd088aeee05809347756b969ad"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-008-20261018-v1",
+    "manifestDigest": "sha256:5d8be7c440ce4b012a72c9f373aceb76f40ccdfbc79a0e00151adb203a96abb4",
+    "manifestFingerprint": "sha256:6064281f64c256108d7f70c1739582deaed451dc4e86366a0df71edb5d14bd13",
+    "decisionId": "chemie-final163-paired-D-only-008-20261018-v1-decision-015"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-008-20261018-v1-decision-015",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:46:21.803Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch008-20261018.015): Der bilinguale D-Text beschreibt eine konkrete Spektrenauswertung ohne notwendige eigene Messung. Das vollständige P liefert kontrollierte Konzentrations-/Küvettenbedingungen und trennt λ-Lage von A-Höhe. Die Summen 0,8/0,2/0,7 sind korrekt; exakte Maxima zwischen Rasterpunkten oder universelle Stoffidentität werden nicht erfunden. Dies ist fachlich passender Transfer statt reiner Maximalzahlablesung. B (chemie-final163-native-b-008-20261018:f0ba30a8-84b3-5915-bf85-6c3a176064d2): Das LK-Ziel formuliert eine einheitliche Spektrenauswertung mit Messbedingungen. Das vollständige P enthält sämtliche Zahlen und Bedingungen, unterscheidet tabelliertes von exaktem Zwischenstellenmaximum und bietet mit der Mischung einen neuen Anwendungsmodus. Die gegebene Lambert-Beer-Beziehung stützt die Intensitätsdeutung; aus Verdünnung werden weder Bandverschiebung noch eindeutige Gesamtidentität gefolgert.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch008-20261018.015; chemie-final163-native-b-008-20261018:f0ba30a8-84b3-5915-bf85-6c3a176064d2). Their current English understanding evidence is retained: A: An absorption spectrum gives position and strength under defined conditions; an intensity change caused by concentration or path length is not automatically a band shift. B: Spectra distinguish wavelength position from absorption intensity; concentration, path length and chemical state limit comparisons. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Ein Absorptionsspektrum zeigt Lage und Stärke unter definierten Messbedingungen; eine Intensitätsänderung durch Konzentration oder Weglänge ist keine automatische Bandenverschiebung.",
+      "essentialUnderstandingEn": "An absorption spectrum gives position and strength under defined conditions; an intensity change caused by concentration or path length is not automatically a band shift.",
+      "observablePerformanceDe": "Bestimmt in den beiden Tabellen 500 nm als Rastermaximum, beschreibt 0,90→0,45 Absorbanz und begründet die Halbierung mit gleichen ε und Weglänge bei halber Konzentration.",
+      "observablePerformanceEn": "Identifies 500 nm as the tabulated maximum, describes absorbance 0.90→0.45 and explains halving through equal absorptivity/path length and half concentration.",
+      "transferExpectationDe": "Prüft am frischen additiven X/Y-Gemisch alle drei Stützstellen, wählt 450/650 nm zur getrennten Modellbeobachtung und begrenzt eine eindeutige Identifikation aus nur drei Punkten.",
+      "transferExpectationEn": "Checks every sampled wavelength for a fresh additive X/Y mixture, selects 450/650 nm for separated model detection and limits unique identification from only three points."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-a5deb1fc3d982dd3033d455c91f632b7370d3d24cdf4ea2a8fb42da78d5bafcb",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:7590f2992048e399365f48f010a8c069646b5866bdcb2bc8ae8da92adbd63f28"
+}

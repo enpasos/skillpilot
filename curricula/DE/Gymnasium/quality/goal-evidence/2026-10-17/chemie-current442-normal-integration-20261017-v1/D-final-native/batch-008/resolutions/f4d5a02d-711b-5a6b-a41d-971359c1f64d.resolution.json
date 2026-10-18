@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-008-v1-resolution-f4d5a02d-711b-5a6b-a41d-971359c1f64d",
+  "goal": {
+    "goalId": "f4d5a02d-711b-5a6b-a41d-971359c1f64d",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:f562efa768e6a5157ba0cc797e35badfeb5c165f07d063c503b6fce26d4b21f7",
+    "pageFingerprint": "sha256:6200ec98b48899461bc943c7dfab7db19b38fd0b26938fcbb5099006e87102b6",
+    "goalReviewContextFingerprint": "sha256:15e4a146b996bfab22a0a775cb85f34025f043998fd8f697588fde44662e66d6",
+    "finalText": {
+      "titleDe": "Optische Aktivität und Polarimetrie auswerten",
+      "titleEn": "Evaluate optical activity and polarimetry",
+      "descriptionDe": "Die lernende Person kann optische Aktivität chiraler Naturstoffe erläutern, den spezifischen Drehwinkel als Kenneigenschaft beschreiben und Polarimetrie zur Charakterisierung optisch aktiver Substanzen fachlich einordnen.",
+      "descriptionEn": "The learner can explain optical activity of chiral natural substances, describe specific rotation as a characteristic property, and classify polarimetry for characterizing optically active substances."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-008-v1-a",
+      "campaignDigest": "sha256:bfc1b7bc3538c4dd17f4f184f0a3c6191751a8124732d1299f1f3201d5b9fa22",
+      "roundId": "chemie-final-current-context-d-008-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-008-v1-independent-a",
+      "reviewInputFingerprint": "sha256:3ac18dc51676cde29ff443c24a5b4a66fe4284e778b917d2a635b9e71961d3c3",
+      "goalReviewContextFingerprint": "sha256:15e4a146b996bfab22a0a775cb85f34025f043998fd8f697588fde44662e66d6",
+      "batchId": "chemie-final-current-context-d-008-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch008-20261018",
+      "runManifestDigest": "sha256:1c83d9e9f75802490a373fc32cd5155852662ec2adeb44332b0e4ad3794a53f2",
+      "resultsDigest": "sha256:717572e69fa651d74b4efe4307f0c0f1eb2190475b1f5e1e8a20cdd410f01fcc",
+      "recordId": "codex-reviewer-a-final163-batch008-20261018.018",
+      "recordDigest": "sha256:bcf0515cd7177710fd132c9547ba63fa94796ce08fd9c451568c3293ad50646b"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-008-v1-b",
+      "campaignDigest": "sha256:8a870c0b67e894644fc8a8bc5a6e566b1b80eb253611ea8e45a3aec8e4e7ce2d",
+      "roundId": "chemie-final-current-context-d-008-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-008-v1-independent-b",
+      "reviewInputFingerprint": "sha256:3ac18dc51676cde29ff443c24a5b4a66fe4284e778b917d2a635b9e71961d3c3",
+      "goalReviewContextFingerprint": "sha256:15e4a146b996bfab22a0a775cb85f34025f043998fd8f697588fde44662e66d6",
+      "batchId": "chemie-final-current-context-d-008-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-008-20261018",
+      "runManifestDigest": "sha256:aae64cd2428db704ad4ac245dcca064a12b9d0dc413b71f7a83725b0f7ddfec2",
+      "resultsDigest": "sha256:89514977b458bdd7656b1bb59d40d99ab77b3c500d848c381a3f4502abbe5fdc",
+      "recordId": "chemie-final163-native-b-008-20261018:f4d5a02d-711b-5a6b-a41d-971359c1f64d",
+      "recordDigest": "sha256:19b6b2a510eec594e2cedc4bb255738970926edd1884a267a54ad10c66f2c98a"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:75131dbe4e2143b9a067c805d573de1f211b44cd088aeee05809347756b969ad"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-008-20261018-v1",
+    "manifestDigest": "sha256:5d8be7c440ce4b012a72c9f373aceb76f40ccdfbc79a0e00151adb203a96abb4",
+    "manifestFingerprint": "sha256:6064281f64c256108d7f70c1739582deaed451dc4e86366a0df71edb5d14bd13",
+    "decisionId": "chemie-final163-paired-D-only-008-20261018-v1-decision-018"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-008-20261018-v1-decision-018",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:46:21.803Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch008-20261018.018): Die bilinguale D-Fassung ist eine fachliche Einordnung und Auswertung, keine praktische Durchführungspflicht. Das vollständige P liefert die notwendigen Referenzbedingungen und unterscheidet +53±1 spezifische Rotation von beobachtetem Winkel. Auch 40,0±0,5 g/L Glucose und 30,0 g/L Fructose sind innerhalb der gesetzten Modelle konsistent. Nullsignal, positives Vorzeichen und passende Rotation werden nicht zu unzulässigen Konzentrations-, D/L- oder Universalidentitätsschlüssen. B (chemie-final163-native-b-008-20261018:f4d5a02d-711b-5a6b-a41d-971359c1f64d): Das D ist als Erklären optischer Aktivität, Beschreiben spezifischer Rotation und Einordnen der Charakterisierung klar. Das gesamte P und das vollständig gelesene A/B-Material erklären das Gerät korrekt, rechnen konsistent mit Blank und dm/g-mL-Konvention und begrenzen D/L- sowie Identitätsschlüsse. Die zusätzliche verpflichtende Erwartung carbohydrate-concentration-inversion verlangt jedoch die quantitative Bestimmung einer unbekannten Glucose- und Fructosekonzentration samt Unsicherheit. Diese eigenständige quantitative Analysenanwendung ist im geltenden D mit Beschreiben/Einordnen nicht festgelegt. P revise betrifft ihre verbindliche Zielzuordnung beziehungsweise Geltungsgrenze; den D nicht nur zur Aufnahme schon vorhandener Pflichtaufgaben erweitern. Keine reale Polarimetermessung wird beansprucht. Die ausdrücklich gemeldete P-Abgrenzung bleibt offen; diese D-Entscheidung schließt weder P noch das Fünf-Gate-Ziel ab.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch008-20261018.018; chemie-final163-native-b-008-20261018:f4d5a02d-711b-5a6b-a41d-971359c1f64d). Their current English understanding evidence is retained: A: Optical activity rotates polarisation; specific rotation normalises angle by defined concentration and path length under matching reference conditions and alone establishes neither D/L nor arbitrary identity. B: Optical activity is rotation of linearly polarized light; specific rotation normalizes angle under defined conditions and does not universally identify a substance or D/L configuration. This is synthesis, not a new independent review. The explicitly recorded P-alignment finding remains open; this D decision closes neither P nor the five-gate goal.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Optische Aktivität dreht die Polarisation; spezifische Rotation normalisiert den Winkel auf definierte Konzentration und Weglänge unter passenden Referenzbedingungen und bestimmt weder D/L noch beliebige Identität allein.",
+      "essentialUnderstandingEn": "Optical activity rotates polarisation; specific rotation normalises angle by defined concentration and path length under matching reference conditions and alone establishes neither D/L nor arbitrary identity.",
+      "observablePerformanceDe": "Erklärt Polarisator, Probe, Analysator und Leerwert und wertet die angegebenen Winkel mit α=[α]lc samt Einheiten und begrenzter Winkelunsicherheit aus.",
+      "observablePerformanceEn": "Explains polariser, sample, analyser and blank and evaluates supplied angles using α=[α]lc with units and limited angular uncertainty.",
+      "transferExpectationDe": "Rechnet im neuen Fructosefall mit 50 mm=0,500 dm und negativem Referenzwert korrekt auf positive Konzentration zurück und erklärt die Unbestimmtheit bei Racemat, Mischzuckern oder entferntem Analysator.",
+      "transferExpectationEn": "Uses 50 mm=0.500 dm and the negative reference value in a fresh fructose case to recover positive concentration and explains ambiguity for racemate, mixed sugars or removal of the analyser."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-8b6726a8bf192f19421c33032e771926aa38a08944b01e23300260677ebc1c6e",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale, evidenceProfileRecommendation; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale, evidenceProfileRecommendation; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:947393a153916494b6c4db7ab9aa067c15c6143c4275eed83f0c4abd3818d951"
+}

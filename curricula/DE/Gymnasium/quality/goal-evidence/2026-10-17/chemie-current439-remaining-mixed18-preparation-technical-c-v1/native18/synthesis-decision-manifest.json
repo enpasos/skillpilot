@@ -1,0 +1,512 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "chemie-current439-mixed18-partial-paired-root-synthesis-20261017-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex root actual paired synthesis; accepted revisions explicitly deferred, no human attestation",
+  "synthesizedAt": "2026-10-17T08:14:43.459Z",
+  "batch": {
+    "batchId": "chemie-current439-remaining-mixed-native18-technical-c-20261017-v1",
+    "batchManifestDigest": "sha256:26cdc2023d6c98c4d98ca36e63e16b30ded9e05d0b48382d537ef2891ac6e487",
+    "configDigest": "sha256:c832dbcdd16d5bb055ce80331734c79a5a61b43f6217cc1d6f0cc853751d9343",
+    "bundleFingerprint": "sha256:b75adccc0db3a103005aae5a6ffe287cb805f4b0cc1b92bded30f44ef79be812",
+    "bookDigest": "sha256:c1c1b735613a7c8c5afe5c51dc52e3199760b6a4d0f635637c79749e6f55bf75",
+    "reviewInputFingerprint": "sha256:f2edd2f80c2a40c2381e048070da5c32dc1b0bbfc068053f666aec26200930a5",
+    "dualSummaryDigest": "sha256:3593a47e52e6a57bd24b6fb5134194b5f3cae947174445e863077c53606f32d7",
+    "canonicalLandscapeDigest": "sha256:e0af9e3dedc6db17b940ec7d4732a6c2bcced7d00f3a30df9db948b9936332a8"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-current439-remaining-mixed-native18-technical-c-20261017-v1-a",
+      "campaignDigest": "sha256:a9062e3750d20be06657167286d23edaaea027a7af57b4f560fd252f52aa8368",
+      "roundId": "chemie-current439-remaining-mixed-native18-technical-c-20261017-v1-first-pass-a",
+      "independenceGroupId": "chemie-current439-remaining-mixed-native18-technical-c-20261017-v1-independent-a",
+      "reviewInputFingerprint": "sha256:f2edd2f80c2a40c2381e048070da5c32dc1b0bbfc068053f666aec26200930a5",
+      "batchId": "chemie-current439-remaining-mixed-native18-technical-c-20261017-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:fbd651bd67e0fcf83ec56360512282b066b54e6ee9644ec66b776452f9d1411b",
+      "runId": "chemie-current439-mixed18-independent-a-20261017-v1",
+      "runManifestDigest": "sha256:24d5e03aede13a5d2185188c2e8fb1047d06f3595500e08ba37ac6b77c541c06",
+      "resultsDigest": "sha256:1bff99bf66346faf588e651442f51edcefb9ac4c335e86dce32277f4c07cd7a2"
+    },
+    "second": {
+      "campaignId": "chemie-current439-remaining-mixed-native18-technical-c-20261017-v1-b",
+      "campaignDigest": "sha256:c2f222de8ce60a4115b08e66a0cec94aa06bca093ec9a7632e12ac0f843b17e0",
+      "roundId": "chemie-current439-remaining-mixed-native18-technical-c-20261017-v1-first-pass-b",
+      "independenceGroupId": "chemie-current439-remaining-mixed-native18-technical-c-20261017-v1-independent-b",
+      "reviewInputFingerprint": "sha256:f2edd2f80c2a40c2381e048070da5c32dc1b0bbfc068053f666aec26200930a5",
+      "batchId": "chemie-current439-remaining-mixed-native18-technical-c-20261017-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:d3b9eb685a088c8c752fa2c13fc9ab0249b0d1e02b66ef40a26a29ba73fa3ace",
+      "runId": "chemie-current439-mixed18-independent-b-20261017-v1-run",
+      "runManifestDigest": "sha256:963277b151e568a06d8862968b7d65d6c79fbaa7f941445a374e0327a2986894",
+      "resultsDigest": "sha256:f5eb497ee460967d605a647670a0db8b09dc835b760691d5089b78ce4110b45c"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "chemie-mixed18-partial-root-f85b4651-50ea-5b42-b193-3465c05257a7-20261017-v1",
+      "goalId": "f85b4651-50ea-5b42-b193-3465c05257a7",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:9ffb4363e6e864a302afd1ae4ae743606b402cdde234375ccc281b9043c34ac8",
+      "pageFingerprint": "sha256:6ef93b3433ea3253e407bf530a2b7df4b7f9df00f7f9cfb831495b650e433499",
+      "goalReviewContextFingerprint": "sha256:ee60c2d1d5c9bd5c5e1a7a2d63cf960d2600cbab3875a3bcdf964a2454298cf4",
+      "finalText": {
+        "titleDe": "Molekülorbital-Modelle anwenden",
+        "titleEn": "Apply molecular orbital models",
+        "descriptionDe": "Die lernende Person kann einfache MO-Diagramme (z. B. O2, N2) interpretieren und Bindungsordnung ableiten.",
+        "descriptionEn": "The learner can interpret simple MO diagrams (e.g. O2, N2) and derive bond order."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-mixed18-independent-a-20261017-v1.001",
+          "recordDigest": "sha256:2cb6b26c741df36a5e1df195ac63f50dab2e48bfc0c0fe785b88c59f06703afb"
+        },
+        "second": {
+          "recordId": "chemie-current439-mixed18-independent-b-20261017-v1-run.record-001",
+          "recordDigest": "sha256:31e4162728f8f3c62c0eecad726e00a7e473a6f6b5d90edda3c09332a110427c"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen das MO-Deutungsziel und das aktuelle O2-Modell. Runde A hält die tatsächliche Materiallücke eines eigenständig lesbaren geordneten N2-Diagramms fest. Mitgeteilte Summenzahlen ersetzen diese Deutung nicht; der P-Nachfolger bleibt ungeprüft.",
+      "rationaleEn": "Both rounds confirm the MO interpretation goal and current oxygen model. Round A retains the actual material gap of an independently readable ordered nitrogen diagram. Supplied totals do not replace diagram interpretation; the P successor remains unapproved."
+    },
+    {
+      "decisionId": "chemie-mixed18-partial-root-9decc36b-a69a-5599-a9f0-fcebdf0203d8-20261017-v1",
+      "goalId": "9decc36b-a69a-5599-a9f0-fcebdf0203d8",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:881725c14f6fdc54b32a2c1c098b57a668e39ddafb8fc4887a42642e7d18730c",
+      "pageFingerprint": "sha256:69c02035fa5cde6d523d0f50b9d7d1c22b51ca2bb0fd28853d8df417f48a1ae4",
+      "goalReviewContextFingerprint": "sha256:bb9fff3fe18e77129931f8d65a597d563da149990dd28638d18630f4369e4639",
+      "finalText": {
+        "titleDe": "Stereoisomerietypen zuordnen",
+        "titleEn": "Assign stereoisomer types",
+        "descriptionDe": "Die lernende Person kann an vorgegebenen Molekülpaaren mit gleicher Konstitution anhand ihrer räumlichen Anordnung begründen, ob Stereoisomerie vorliegt, und gegebenenfalls den passenden Stereoisomerietyp zuordnen.",
+        "descriptionEn": "The learner can use supplied pairs of molecules with the same constitution to explain from their spatial arrangements whether stereoisomerism is present and, where applicable, assign the appropriate type of stereoisomerism."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-mixed18-independent-a-20261017-v1.002",
+          "recordDigest": "sha256:81c49c339156d89376fb8fee367b9d30253cba4c69387ced2bcea546fb1a0010"
+        },
+        "second": {
+          "recordId": "chemie-current439-mixed18-independent-b-20261017-v1-run.record-002",
+          "recordDigest": "sha256:3c8713f02e0cd33e48fe2ff65608a69525a003a41922dafbc594526c6c916f27"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen räumlich begründete Zuordnung bei gegebener gleicher Konstitution. Runde A erhält E/Z-Bedingung, Spiegelung und echte Drehbarkeit; R/S-Vollnomenklatur wird nicht zum zusätzlichen Abschlussoperator.",
+      "rationaleEn": "Both reviews confirm spatially justified classification with the same supplied constitution. Round A retains E/Z conditions, mirror relation and actual rotation without adding complete R/S nomenclature as another completion operator."
+    },
+    {
+      "decisionId": "chemie-mixed18-partial-root-b8d3b453-d638-5518-aab0-d84ec2e8567c-20261017-v1",
+      "goalId": "b8d3b453-d638-5518-aab0-d84ec2e8567c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7cfe6610ec81b9510eebe1a403f40740cdb6cf50176512a16397f87b103a6358",
+      "pageFingerprint": "sha256:90337cc5a942f6497b24cf563ade10add0f00ef335e129ac146f604394e8de78",
+      "goalReviewContextFingerprint": "sha256:ca0be4182086d5055f21fa2671bd9308b6e4bb08389144e140b34422dc9f0daa",
+      "finalText": {
+        "titleDe": "Reaktivität aromatischer Systeme begründen",
+        "titleEn": "Explain aromatic reactivity",
+        "descriptionDe": "Die lernende Person kann die Reaktivität aromatischer Systeme anhand ihrer Elektronendelokalisierung begründen.",
+        "descriptionEn": "The learner can explain the reactivity of aromatic systems in terms of their electron delocalization."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-mixed18-independent-a-20261017-v1.003",
+          "recordDigest": "sha256:fb9fc3ec74ec1b0ca8234e282ce4693044ce590f77f360872312db37e8395fc5"
+        },
+        "second": {
+          "recordId": "chemie-current439-mixed18-independent-b-20261017-v1-run.record-003",
+          "recordDigest": "sha256:241832c6d496df64915fe29eefc4f9d817805d2914593542db6224430fa829c0"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen Delokalisierung, sigma-Komplex und Rearomatisierung. Runde A hält jedoch dieselbe Benzol/Br2-Reaktion in beiden P-Fällen für keinen ausreichend frischen chemischen Transfer. D bleibt korrekt; die konkrete neue Transferaufgabe ist noch unabhängig zu prüfen.",
+      "rationaleEn": "Both rounds confirm delocalization, sigma complex and rearomatization. Round A nevertheless finds the repeated benzene/bromine reaction insufficient as fresh chemical transfer. D remains correct; the concrete new transfer task still requires independent review."
+    },
+    {
+      "decisionId": "chemie-mixed18-partial-root-94a62b39-d4a2-5882-99d1-6886ead07726-20261017-v1",
+      "goalId": "94a62b39-d4a2-5882-99d1-6886ead07726",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:bd2b6671612c8df991dbeca4dbb4f8c0c3152f241b4d2bf7065902195177750b",
+      "pageFingerprint": "sha256:09aa161dc3ff0a85ac024cf2d703303576a915d4cfc225bc6a3ebf7969d19353",
+      "goalReviewContextFingerprint": "sha256:c4a0fadb09b309f1df12c25954c13e9b43186c76ba0c079bbbdedfca00555c76",
+      "finalText": {
+        "titleDe": "Passiven und aktiven Korrosionsschutz bewerten",
+        "titleEn": "Evaluate passive and active corrosion protection",
+        "descriptionDe": "Die lernende Person kann passive und aktive Korrosionsschutzmaßnahmen, insbesondere Beschichtungen, Schutzschichten, galvanische Kopplung und Opferanoden, erläutern und ökologisch sowie ökonomisch bewerten.",
+        "descriptionEn": "The learner can explain passive and active corrosion protection measures, including coatings, protective layers, galvanic coupling, and sacrificial anodes, and evaluate them ecologically and economically."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-mixed18-independent-a-20261017-v1.004",
+          "recordDigest": "sha256:547d0ec4daba45c7d2b0b2f69aadd646d4733e007a178b400af5a41f3b56ed18"
+        },
+        "second": {
+          "recordId": "chemie-current439-mixed18-independent-b-20261017-v1-run.record-004",
+          "recordDigest": "sha256:8bbb75beb0fb03c686a0ed3240fcf9adf1a0f2588217bd69d1be44804a6b9f94"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen bedingte Barriere-, Opferanoden- und Fremdstrombewertung. Runde A erhält Kontakt, Defektfläche und Film-/Ratenbedingungen. Modellkosten und Potenzial allein liefern weder eine Gesamtökobilanz noch gemessene Lebensdauer.",
+      "rationaleEn": "Both rounds confirm conditional assessment of barriers, sacrificial anodes and impressed current. Round A retains contact, defect area and film/rate conditions. Model cost and potential alone establish neither a total LCA nor measured service life."
+    },
+    {
+      "decisionId": "chemie-mixed18-partial-root-9fef5c29-62bc-5ada-b96b-6885bcb049cb-20261017-v1",
+      "goalId": "9fef5c29-62bc-5ada-b96b-6885bcb049cb",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:73fed7cc4495065b177881a98ad74f77b8d784a7c931aecc023f7e7d3cb2b930",
+      "pageFingerprint": "sha256:55bc4846ad36de8bfc87efdf7f0d93eb6e17d74e1c1e350bfd72597673fdd2de",
+      "goalReviewContextFingerprint": "sha256:27ee2733a1e4706e109c8a604734d675660c54171f554cbca9d46883317577e5",
+      "finalText": {
+        "titleDe": "Geschlossene Puffersysteme",
+        "titleEn": "Closed buffer systems",
+        "descriptionDe": "Die lernende Person kann das Phosphat-Puffersystem beschreiben und die Wirkung mithilfe von Le Chatelier begründen.",
+        "descriptionEn": "The learner can describe the phosphate buffer system and justify the effect using Le Chatelier's principle."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-mixed18-independent-a-20261017-v1.005",
+          "recordDigest": "sha256:2026b7e560eff8bbaf21176de7983ac1832b4c868132de9991d09c43cd747c70"
+        },
+        "second": {
+          "recordId": "chemie-current439-mixed18-independent-b-20261017-v1-run.record-005",
+          "recordDigest": "sha256:90c736fa61b7884993163837cc813748f3d0b854082c46de4b1dff91c7efad54"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen Phosphatpaar, endliche Reserven und die nach Zugabe definierte geschlossene Bilanzgrenze. Runde A hält verminderte pH-Änderung von völliger Konstanz getrennt; offene biologische Systeme und Henderson-Hasselbalch bleiben eigene Anforderungen.",
+      "rationaleEn": "Both rounds confirm the phosphate pair, finite reserves and the closed balance boundary defined after addition. Round A separates reduced pH change from complete constancy; open biological systems and Henderson–Hasselbalch remain separate requirements."
+    },
+    {
+      "decisionId": "chemie-mixed18-partial-root-801790f9-be3a-51fe-9b0f-3452c1bba887-20261017-v1",
+      "goalId": "801790f9-be3a-51fe-9b0f-3452c1bba887",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:36442159d56fb7f6e5c9a2173ed418f06450c9d0a6d9f976294e561aa615edbb",
+      "pageFingerprint": "sha256:e21094535d4b13696b84c3dc9282e49d50b4751e62472519977e88386b65b3f2",
+      "goalReviewContextFingerprint": "sha256:f6729e0863e68ef111656f0f8c1d9bb6a66e34cae29b4da29c4d2905364accff",
+      "finalText": {
+        "titleDe": "1. Hauptsatz anwenden",
+        "titleEn": "Apply 1st Law of Thermodynamics",
+        "descriptionDe": "Die lernende Person kann offene, geschlossene und isolierte Systeme unterscheiden und Energieerhaltung qualitativ erklären.",
+        "descriptionEn": "The learner can distinguish open, closed, and isolated systems and qualitatively explain conservation of energy."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-mixed18-independent-a-20261017-v1.006",
+          "recordDigest": "sha256:85d696b0312614491503c5a83099077c9ba982b7c14b0ccffbf120b70e44392e"
+        },
+        "second": {
+          "recordId": "chemie-current439-mixed18-independent-b-20261017-v1-run.record-006",
+          "recordDigest": "sha256:b020746e85f6cd14cc82ad2ec209bd32f97119223fc8789da714fde50b788ed9"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen den qualitativen ersten Hauptsatz mit konsistenter Zuflusskonvention. Runde A erhält Kolbenarbeit und unterscheidet Gasdichtheit, Wärmeisolierung, vollständige Isolation und konstante Temperatur. Keine quantitative Nachfolgerleistung wird mitgezählt.",
+      "rationaleEn": "Both reviews confirm the qualitative first law with a consistent input sign convention. Round A retains piston work and distinguishes gas-tightness, thermal insulation, full isolation and constant temperature without counting the quantitative successor skill."
+    },
+    {
+      "decisionId": "chemie-mixed18-partial-root-4a08f31f-204c-5339-9d9f-5d2af28d5d5c-20261017-v1",
+      "goalId": "4a08f31f-204c-5339-9d9f-5d2af28d5d5c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:41f00f0e50b3b55633025395d778c9b437d30da35fe6f65a7959f9aa47aa7cc5",
+      "pageFingerprint": "sha256:3b1c3b82f86846fb61ec83833346178c514a8d9489071f4fdf7f34141a9a0e4d",
+      "goalReviewContextFingerprint": "sha256:b08c686e5a5f435749d5cdec4e1b1f4d952b8ed3e01a6fa9e853a2e28e6910d4",
+      "finalText": {
+        "titleDe": "Enthalpien berechnen",
+        "titleEn": "Calculate enthalpies",
+        "descriptionDe": "Die lernende Person kann Reaktionsenthalpien mit dem Satz von Hess und einfachen Kalorimetrieansätzen bestimmen.",
+        "descriptionEn": "The learner can determine reaction enthalpies using Hess's law and simple calorimetry approaches."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-mixed18-independent-a-20261017-v1.007",
+          "recordDigest": "sha256:180a67c222080a9e5328a18ffc4fc7e571f9c72e934205e6bf5730a1920561ee"
+        },
+        "second": {
+          "recordId": "chemie-current439-mixed18-independent-b-20261017-v1-run.record-007",
+          "recordDigest": "sha256:607ff481adfac729d72a152021297b4ce6bd5295aad3ad92a6a68a179ceafadb"
+        }
+      },
+      "rationaleDe": "Beide Runden haben die ganzen Hess-, Salz-, Neutralisations- und Zeitreihenmaterialien gelesen. Runde A hält Molbasis, Wärmekapazität und Quellenrouten auseinander; tatsächliche ST-Mg/NH4HCO3-Durchführung bleibt erforderlich, RP-pV bleibt offiziell optional. Synthetische Werte werden nicht als Quellenmessungen oder eigene Versuche ausgegeben.",
+      "rationaleEn": "Both rounds read complete Hess, salt, neutralization and time-series materials. Round A separates molar basis, heat capacity and source routes; actual ST magnesium/ammonium-hydrogen-carbonate execution remains required and RP pV remains officially optional. Synthetic values are not presented as source measurements or personal experiments."
+    },
+    {
+      "decisionId": "chemie-mixed18-partial-root-a76ab487-4663-5005-8454-cb3196f3773b-20261017-v1",
+      "goalId": "a76ab487-4663-5005-8454-cb3196f3773b",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:23f92581ae108da1090cc45d5344c59b4c60f8eda3b570575fe5b438fe272e9e",
+      "pageFingerprint": "sha256:2c35236076f134a86c8c05bff03adf15e57874aa736b5a270b13a406546e5a59",
+      "goalReviewContextFingerprint": "sha256:71fcbf10a4c1f8a59c1c9b8cde61d32150cd000663b78cb5ac1bbd238ce880f3",
+      "finalText": {
+        "titleDe": "Bioethanolproduktion erklären",
+        "titleEn": "Explain bioethanol production",
+        "descriptionDe": "Die lernende Person kann die Gewinnung von Glucose aus stärkehaltigen Pflanzen, den Aufbau eines Glucosemoleküls und die Umwandlung zu Ethanol durch Gärung beschreiben und Nutzen-Risiko-Aspekte bewerten.",
+        "descriptionEn": "The learner can describe the production of glucose from starch-containing plants,the structure of a glucose molecule and its conversion to ethanol by fermentation,and evaluate benefits and risks of its use."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-mixed18-independent-a-20261017-v1.008",
+          "recordDigest": "sha256:fd25ac78b31b5638b66900cd60fe362e43b84ab095a09d36741778a3820429be"
+        },
+        "second": {
+          "recordId": "chemie-current439-mixed18-independent-b-20261017-v1-run.record-008",
+          "recordDigest": "sha256:fadd75e5cf631bd6afa7d84890a50067188ab47b48441b1b27329e4fa6fe96be"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen eine qualitative Bioethanolkette mit tatsächlich gegebener Glucosestruktur. Runde A erhält Cellulose-/Enzymtransfer und Reaktion/Isolierung. Optionale HE-Themenaufnahme bedeutet weder Themenwahl noch allgemeine CO2-Neutralität oder neue Stereochemie-Rechenpflicht.",
+      "rationaleEn": "Both rounds confirm a qualitative bioethanol chain with the actually supplied glucose structure. Round A retains cellulose/enzyme transfer and reaction/separation. Inclusion of optional HE content implies neither a selected theme nor general carbon neutrality or a new stereochemical calculation duty."
+    },
+    {
+      "decisionId": "chemie-mixed18-partial-root-0cf2ffe1-a988-5ffb-ab37-0ac7d58b23dd-20261017-v1",
+      "goalId": "0cf2ffe1-a988-5ffb-ab37-0ac7d58b23dd",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:2b5b6fad12792e878035314c04c2acff06b97dcbae486b1c905c059f455ffe68",
+      "pageFingerprint": "sha256:6c2422e7152c257d3068169ce96f91a5470a0ad22f42efe4418801799356e77d",
+      "goalReviewContextFingerprint": "sha256:f6ba22bcc8899611e10e35df7b2d4f62da5d3708a644132630b8d04b137aff66",
+      "finalText": {
+        "titleDe": "Brennstoffzellen und Verbrennungskraftwerke multiperspektivisch bewerten",
+        "titleEn": "Evaluate fuel cells and combustion power plants from multiple perspectives",
+        "descriptionDe": "Die lernende Person kann Energieumwandlungen in Brennstoffzellen und Verbrennungskraftwerken vergleichen und ökologische, ökonomische sowie soziale Perspektiven in eine begründete Bewertung einbeziehen.",
+        "descriptionEn": "The learner can compare energy conversions in fuel cells and combustion power plants and include ecological, economic, and social perspectives in a justified evaluation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-mixed18-independent-a-20261017-v1.009",
+          "recordDigest": "sha256:bd428fcbe9e12224e12cd93a7f21b6b75df6adaf3818432ad3db0034c98d9380"
+        },
+        "second": {
+          "recordId": "chemie-current439-mixed18-independent-b-20261017-v1-run.record-009",
+          "recordDigest": "sha256:15894014bf437dfc2c5fd09b182c766cd641cf6018651219574e6e755b4e7248"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen gleiche Dienste und die saisonabhängige KWK-Neudimensionierung. Runde A hält veränderten Strommix von fehlenden Kosten-/Sozialdaten getrennt. Das Kohlebild ist ein Verbrennungsbeispiel, keine universelle Rangfolge über Gas und alle weiteren Pfade.",
+      "rationaleEn": "Both rounds confirm matched service and seasonal CHP resizing. Round A separates changed electricity mix from missing cost and social data. The coal illustration is one combustion example, not a universal ranking across gas and other routes."
+    },
+    {
+      "decisionId": "chemie-mixed18-partial-root-d465d82b-4bf2-5527-bb7c-dad5a92605fe-20261017-v1",
+      "goalId": "d465d82b-4bf2-5527-bb7c-dad5a92605fe",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:1078ebec174b9aa1202224713c59cb92e953ef588b521148211f617c6a309cb5",
+      "pageFingerprint": "sha256:050460daf333b7c8ad6efb42eabe1b3fd2ad248175ce60f4dbfc8a83964fef87",
+      "goalReviewContextFingerprint": "sha256:025fc3c59ec071000bd78e353116aa45f81ea455503b4c05af11adde8fae0ad3",
+      "finalText": {
+        "titleDe": "Tensidstrukturen analysieren",
+        "titleEn": "Analyze surfactant structures",
+        "descriptionDe": "Die lernende Person kann anionische, kationische und nichtionische Tenside anhand ihres Aufbaus charakterisieren.",
+        "descriptionEn": "The learner can characterize anionic, cationic, and nonionic surfactants based on their structure."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-mixed18-independent-a-20261017-v1.010",
+          "recordDigest": "sha256:c25ef16011addef380096b576a80302c124e798963aeb5b088ec7a0e61ace288"
+        },
+        "second": {
+          "recordId": "chemie-current439-mixed18-independent-b-20261017-v1-run.record-010",
+          "recordDigest": "sha256:447a22679570ae8b6f0399af20611e22de9fc0df87ea2ae70cffe5c64a612162"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die drei tatsächlich gegebenen Kopfklassen. Runde B hält den exakt aktuellen zweiten Ganzfall statt eines gleichnamigen älteren Körpers fest; Gegenion, pH-abhängiges Amin und mögliche Assoziation werden nicht mit Kopfklasse oder garantierter Fällung verwechselt.",
+      "rationaleEn": "Both reviews confirm the three actually supplied head-group classes. Round B retains the exact current second whole case instead of an older same-ID body; counterions, pH-dependent amines and possible association are not confused with head class or guaranteed precipitation."
+    },
+    {
+      "decisionId": "chemie-mixed18-partial-root-cc5a626a-dc85-57e2-b422-259f92901545-20261017-v1",
+      "goalId": "cc5a626a-dc85-57e2-b422-259f92901545",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:506a8d74a7021922fb934f56eccf6c51bb2152e588d845ab974c59a01040a391",
+      "pageFingerprint": "sha256:ab1ec3fabcbf0942a6d5a569f6ff8bbe7933db28b0b3cbb665e8cc18466860f0",
+      "goalReviewContextFingerprint": "sha256:1107d13faa2b7787116e2b7008546c51291e014fbdd849a831e8118211f92e87",
+      "finalText": {
+        "titleDe": "Biologische Abbauwege von Tensiden beschreiben",
+        "titleEn": "Describe surfactant biodegradation pathways",
+        "descriptionDe": "Die lernende Person kann biologische Abbauwege geeigneter Tenside anhand ihrer funktionellen Gruppen beschreiben, beispielsweise Hydrolyse, endständige Oxidation und mikrobielle Kettenverkürzung, und Primärabbau, Zwischenprodukte sowie Mineralisierung unterscheiden.",
+        "descriptionEn": "The learner can describe biological degradation pathways of suitable surfactants using their functional groups, for example hydrolysis, terminal oxidation and microbial chain shortening, and distinguish primary degradation, intermediates and mineralisation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-mixed18-independent-a-20261017-v1.012",
+          "recordDigest": "sha256:d2a918545c4464b795d6a7519049bb3c9f9ac683584fb7623982618e08a019d9"
+        },
+        "second": {
+          "recordId": "chemie-current439-mixed18-independent-b-20261017-v1-run.record-012",
+          "recordDigest": "sha256:27fa8025542c5a2edd1c6ee51b559145df84293aa927ab518b6c77a26b98b019"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen die aktuelle begrenzte Abbauwegdarstellung. Runde A unterscheidet Verlust der Oberflächenaktivität, Ausgangsstoffentfernung, Sorption und Mineralisierung und erhält die lineare C12-Modellgrenze. Kein Produktkonformitäts- oder vollständiger CO2-Abbaunachweis entsteht.",
+      "rationaleEn": "Both rounds confirm the current bounded degradation model. Round A separates loss of surface activity, parent removal, sorption and mineralization and retains the linear C12 model limit. No product-conformity or complete carbon-dioxide mineralization proof is created."
+    },
+    {
+      "decisionId": "chemie-mixed18-partial-root-b208b1a5-c609-53a1-8add-979417a93b7d-20261017-v1",
+      "goalId": "b208b1a5-c609-53a1-8add-979417a93b7d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:32f3fba0a5a8c6613330c6b7d7f33dc4cddb89782ad50947d68e72c66c1041ca",
+      "pageFingerprint": "sha256:b5efae51cf7887d3ed7fb664e68994cebf6a23d7223fd38613672d5f912243b1",
+      "goalReviewContextFingerprint": "sha256:b28f4e85ce2218fd176cf0bcaf70631614f0b2d1981ba7f7ca08b9c8e0cbfdff",
+      "finalText": {
+        "titleDe": "Textilfarbstoffe über Farbstoff-Faser-Wechselwirkungen beurteilen",
+        "titleEn": "Evaluate textile dyes through dye-fiber interactions",
+        "descriptionDe": "Die lernende Person kann ausgewählte Bindungs- und Wechselwirkungstypen zwischen Farbstoff-Molekülen und Faser-Molekülen beschreiben und die Eignung von Farbstoffen als Textilfarbstoff beurteilen.",
+        "descriptionEn": "The learner can describe selected bonding and interaction types between dye molecules and fiber molecules and evaluate the suitability of dyes as textile dyes."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-mixed18-independent-a-20261017-v1.013",
+          "recordDigest": "sha256:6a3bcd35bef503e41e7fa26d114f51b42c87995dbbd937db3db8ac9cb478187c"
+        },
+        "second": {
+          "recordId": "chemie-current439-mixed18-independent-b-20261017-v1-run.record-013",
+          "recordDigest": "sha256:67f4849ca3b8789ad36d9755b5173da16900d4466e6ad837ca6c22fb5dbb1998"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen bedingte Farbstoff-Faser-Eignung aus gegebenen Ladungen und Gruppen. Runde A trennt ionische, Wasserstoffbrücken-, kovalente und Polyesteraufnahme-Modelle; kovalente Fixierung garantiert keine Photostabilität. Der eigene Küpenfärbungsoperator bleibt separat.",
+      "rationaleEn": "Both rounds confirm conditional dye–fibre suitability from supplied charges and groups. Round A separates ionic, hydrogen-bond, covalent and polyester-uptake models; covalent fixation does not guarantee photostability. Actual vat-dyeing execution remains separate."
+    },
+    {
+      "decisionId": "chemie-mixed18-partial-root-188bd684-e894-5753-8a50-798220b04d97-20261017-v1",
+      "goalId": "188bd684-e894-5753-8a50-798220b04d97",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e87f813cff7a6d79e6985fd630f3d60f484542c1e8184d82b14b410bab1db3fe",
+      "pageFingerprint": "sha256:2eb72331e6583fa65a908b2b85f114c5479f43c16713e1fc8ccd92ce2b19b403",
+      "goalReviewContextFingerprint": "sha256:5fbc3629ce2963be84a7f592abbfbcdf5f290a6b147cb1cc79b617afb5ee989d",
+      "finalText": {
+        "titleDe": "Farbstoffe als Motor der chemischen Industrie beurteilen",
+        "titleEn": "Assess dyes as a driver of the chemical industry",
+        "descriptionDe": "Die lernende Person kann die wirtschaftliche Bedeutung der Farbstoffe für die Entwicklung der chemischen Industrie beurteilen.",
+        "descriptionEn": "The learner can assess the economic significance of dyes for the development of the chemical industry."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-mixed18-independent-a-20261017-v1.014",
+          "recordDigest": "sha256:b2632e0dfd219174b8a90a3d0831a5d7aa2f7069e42cfa9962dae5a4201342f2"
+        },
+        "second": {
+          "recordId": "chemie-current439-mixed18-independent-b-20261017-v1-run.record-014",
+          "recordDigest": "sha256:7dd561636e4b7977d471233a91f2788dfa924ab9e370dc27b0c7b136acfc0900"
+        }
+      },
+      "rationaleDe": "Beide Runden halten das historisch-wirtschaftliche D-Ziel für passend. Runde A identifiziert aber die fehlende reale historische Quellenbasis neben zwei erfundenen Archivmodellen. Produktionsanstieg beweist keinen Gewinn; der neue belegte Echtfall ist vor P-Abschluss unabhängig zu prüfen.",
+      "rationaleEn": "Both rounds find the historical-economic D goal appropriate. Round A identifies the missing actual historical source basis alongside two invented archive models. Output growth does not prove profit; the new evidenced real case requires independent review before P completion."
+    },
+    {
+      "decisionId": "chemie-mixed18-partial-root-1d2e7b80-653d-57b8-a284-8ede5a353b73-20261017-v1",
+      "goalId": "1d2e7b80-653d-57b8-a284-8ede5a353b73",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:30bb38616b68d294d24e3716bc355f7fb5c61143daa9a3b3453d656abb26b03e",
+      "pageFingerprint": "sha256:d12c5185edc19f88293a2f94466e19e9404251617a775c07f56783833604a267",
+      "goalReviewContextFingerprint": "sha256:2d7f0248cbad2b5dbd2af600a937d91e7355ae3c2e2a87b6b67ecfcdb59471a8",
+      "finalText": {
+        "titleDe": "Reduzierende Kohlenhydrate nachweisen und erklären",
+        "titleEn": "Detect and explain reducing carbohydrates",
+        "descriptionDe": "Die lernende Person kann kontrollierte Fehling- beziehungsweise in der Lehrplanroute verlangte Benedict-Nachweise durchführen, auswerten und positive sowie negative Kohlenhydratbefunde durch zugängliche Carbonylformen und die Verknüpfung anomerer Zentren erklären.",
+        "descriptionEn": "The learner can carry out and evaluate controlled Fehling assays, or Benedict assays required by the curriculum route, and explain positive and negative carbohydrate results through accessible carbonyl forms and anomeric-centre linkages."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-mixed18-independent-a-20261017-v1.015",
+          "recordDigest": "sha256:3a36a2206de8b2e728642600bd74c6b24933f2592ff9b6084e81cd22923c75cb"
+        },
+        "second": {
+          "recordId": "chemie-current439-mixed18-independent-b-20261017-v1-run.record-015",
+          "recordDigest": "sha256:e4b5d8b7654e51d7dad8c29bab9fd57d75be52306e558376ea08b91a6c9bb2fa"
+        }
+      },
+      "rationaleDe": "Beide Reviews erhalten tatsächlichen kontrollierten Nachweis und Strukturbegründung. Runde A hält die echte BW-Option Benedict ODER Tollens sowie die gewählte Autorenroute ausdrücklich getrennt. Fructosezweig und Quellenkursgrenzen bleiben bedingt; Papierfarben und Modellbausteine ersetzen keine Durchführung.",
+      "rationaleEn": "Both reviews retain actual controlled detection and structural reasoning. Round A explicitly separates the real BW Benedict OR Tollens option from the chosen authored route. The fructose branch and course boundaries remain conditional; paper colours and model blocks do not replace execution."
+    },
+    {
+      "decisionId": "chemie-mixed18-partial-root-5c8f0bbb-103a-579f-87fc-c997afe4fd18-20261017-v1",
+      "goalId": "5c8f0bbb-103a-579f-87fc-c997afe4fd18",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e083b6eae8abc5d5cbb34b6c9ad3c89024417f321db63204e5d8a3dab1439492",
+      "pageFingerprint": "sha256:e33088fdf0e2a4952a6ae3340e9aaef228a2e0e9b968939694b6127186743c9b",
+      "goalReviewContextFingerprint": "sha256:2bd784c5acd56c0f704a76491bdbfd2a8b62eb152b6d0c6367c2440fa4054376",
+      "finalText": {
+        "titleDe": "Aminocarbonsäuren und Peptide nachweisen",
+        "titleEn": "Detect amino carboxylic acids and peptides",
+        "descriptionDe": "Die lernende Person kann geeignete Nachweisreaktionen für Aminocarbonsäuren und Peptide durchführen und ihre Aussagekraft etwa bei Lebensmitteln auswerten.",
+        "descriptionEn": "The learner can carry out suitable detection reactions for amino carboxylic acids and peptides and evaluate their evidence, for example in foods."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-mixed18-independent-a-20261017-v1.016",
+          "recordDigest": "sha256:5c45861f3f74ae3930ef36dfc6eed954ccee115f496ae040ef326ac7c03a67d4"
+        },
+        "second": {
+          "recordId": "chemie-current439-mixed18-independent-b-20261017-v1-run.record-016",
+          "recordDigest": "sha256:1453fcf19e5d5222c4d961f408e341a292e65b909d471a59d9617ec6b356ea2d"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen praktischen Operator und Nachweisgrenzen. Runde A hält den fehlenden frischen chemischen Transfer neben wiederholtem Glycin/Protein fest; bloßes Planungs-/Protokollwechseln reicht nicht. Neue Variation erhöht keine starre Versuchsquote und liefert keine erfundene Durchführung.",
+      "rationaleEn": "Both rounds confirm practical execution and assay limits. Round A retains the missing fresh chemical transfer alongside repeated glycine/protein; merely switching planning or protocol representation is insufficient. The new variation creates no fixed experiment quota and no invented execution."
+    },
+    {
+      "decisionId": "chemie-mixed18-partial-root-96d33fb6-ed14-50ab-b5c7-5ce0559d518a-20261017-v1",
+      "goalId": "96d33fb6-ed14-50ab-b5c7-5ce0559d518a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ff4b5f2fb585a6a8fa3d4d30d2bd7ecc658cc65012a3f801d7f3fa83c45620d3",
+      "pageFingerprint": "sha256:6cd8808fe8e4c30174630c3d322900f0b9c550fbb04fbeeec069dda0cd2ed62b",
+      "goalReviewContextFingerprint": "sha256:acb27f45a39f005235c569189bde2ff7b633938aaf01d217a3cbde080047f49e",
+      "finalText": {
+        "titleDe": "Reduzierende Kohlenhydrate und Glucose nachweisen",
+        "titleEn": "Detect reducing carbohydrates and glucose",
+        "descriptionDe": "Die lernende Person kann ausgewählte Nachweise für reduzierende Kohlenhydrate und für Glucose durchführen, auswerten und ihre unterschiedliche Aussagekraft anhand von Molekülstruktur und Enzymwirkung erklären.",
+        "descriptionEn": "The learner can perform and evaluate selected assays for reducing carbohydrates and for glucose, and explain their differing analytical scope using molecular structure and enzyme action."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-mixed18-independent-a-20261017-v1.017",
+          "recordDigest": "sha256:a9fc721911da291def8e427d1d74ba9452c78e8eca211b0a383704041674e8a8"
+        },
+        "second": {
+          "recordId": "chemie-current439-mixed18-independent-b-20261017-v1-run.record-017",
+          "recordDigest": "sha256:b0abea01093242ddb63cbdc7f6c889b4d190e2a75423be387a0f1db5d18e01b2"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen die zusätzliche GOD-Selektivität gegenüber dem reduzierenden Vorgänger. Runde A bindet echte Herstellerbedingungen, 2s/30s und den Messbereich sowie erforderliche Verdünnung der 1%-Probe. Allgemeine Bildchemie wird weder zur kommerziellen Farbreferenz noch zum eigenen Ausführungsbeleg.",
+      "rationaleEn": "Both rounds confirm added GOD selectivity beyond the reducing-assay predecessor. Round A binds actual manufacturer conditions, 2s/30s, the range and required dilution of the 1% sample. Generic image chemistry becomes neither a commercial colour reference nor personal execution evidence."
+    }
+  ],
+  "deferredGoals": [
+    {
+      "goalId": "a78aacf9-92ea-5627-8776-a595111f754c",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "rationaleDe": "Runde A weist berechtigt auf mehrdeutiges softeners hin. Wasserenthärter/Builder wird in beiden Sprachen ausdrücklich gesetzt; diese ganze neue Textfassung bleibt bis zu zwei unabhängigen aktuellen Reviews offen.",
+      "rationaleEn": "Round A validly identifies ambiguous softeners. Water softeners/builders is made explicit in both languages; this complete new wording remains open until two current independent reviews."
+    },
+    {
+      "goalId": "64a5bb87-358d-5a22-958a-f66ba5521cd5",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "rationaleDe": "Runde A erhält zu Recht den tatsächlich offiziellen eigenen Rechercheoperator. Der aktuelle P enthält ihn bereits; der D-Text wird gezielt ergänzt und erst nach zwei unabhängigen Reviews des neuen ganzen Textes abgeschlossen.",
+      "rationaleEn": "Round A correctly retains the actual official independent research operator. Current P already contains it; D is targeted for amendment and will close only after two independent reviews of the complete new text."
+    }
+  ],
+  "manifestFingerprint": "sha256:d19ff40ac4cffd88fcb895f9d9bac81b15587638ea624c9a054251170834f8b1"
+}

@@ -1,0 +1,78 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+  "schemaVersion": 2,
+  "reviewId": "chemie-q1-seven-current-independent-p-20261005-v1",
+  "goalFingerprintRuleVersion": "goal-evidence-v1",
+  "profileRuleVersion": "positive-understanding-evidence-v2",
+  "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+  "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+  "goalId": "057a6826-f599-53b1-bdd1-5a83037a1494",
+  "goalFingerprint": "sha256:7e33723bc3c60c4455255e8b468a844c9af55dc019a31f232b41db1a6ccbc6cd",
+  "reviewInputFingerprint": "sha256:e62042d4cb71b56c932401113a3bc9521fc502ccbad012d96db3e63f6c360bce",
+  "profileFingerprint": "sha256:91dd20b3dce6d0e7a08681e67d4172d19e504936da8d11a3d3501d786203586f",
+  "status": "needs_human_review",
+  "reviewAuthority": "ai_candidate",
+  "reviewedAt": "2026-10-17T21:23:41.999975+00:00",
+  "reviewer": "Codex B technical current-input serialization; underlying scientific authors and reviewers remain recorded in the P442 selection/provenance",
+  "reason": "Independent semantic P review against frozen current D8/DEEN and actual images: comparable common-acyl substitution, correct carbonyl/leaving-group explanation and fresh incompatible-condition control; explicit authored transfer from optional RP source with no direct normative atlas row. No nationwide/HE compulsory/full-source claim. Seven complete bilingual profile payloads KEEP exactly after manual independent review; E1/G1, ai_candidate, needs_human_review. No human approval, learner observation, trial, integration or operative strict closure.",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "reviewRunIds": [],
+  "dissent": [],
+  "profile": {
+    "archetype": "modeling",
+    "expectations": [
+      {
+        "id": "comparable-acyl-substitution",
+        "essentialUnderstandingDe": "Bei vergleichbarer nucleophiler Acylsubstitution hängen Unterschiede von der elektrophilen Carbonylgruppe und der Abgangsgruppe ab. Carbonsäurechloride sind Acylchloride, keine beliebigen chlorhaltigen Moleküle.",
+        "essentialUnderstandingEn": "For comparable nucleophilic acyl substitutions, differences depend on the electrophilic carbonyl group and the leaving group. Carboxylic acid chlorides are acyl chlorides, not arbitrary chlorine-containing molecules.",
+        "observablePerformanceDe": "Die drei Klassen an Strukturformeln erkennen und eine Rangfolge nur für einen begründeten vergleichbaren Reaktionsfall aufstellen.",
+        "observablePerformanceEn": "Identify the three classes in structural formulas and rank them only for a justified comparable reaction case."
+      },
+      {
+        "id": "leaving-group-and-limits",
+        "essentialUnderstandingDe": "Die leichtere Abspaltung einer schwächer basischen Abgangsgruppe und die Carbonylaktivierung können eine Rangfolge erklären. Andere Substituenten, Nucleophile oder Reaktionsbedingungen dürfen nicht stillschweigend gleichgesetzt werden.",
+        "essentialUnderstandingEn": "Easier departure of a less basic leaving group and carbonyl activation can explain a ranking. Other substituents, nucleophiles or reaction conditions must not silently be treated as equivalent.",
+        "observablePerformanceDe": "Ein vorgegebenes Substitutionsschema mit korrektem Carbonyl und Abgangsgruppe erläutern und die Geltungsgrenzen des Vergleichs benennen.",
+        "observablePerformanceEn": "Explain a supplied substitution scheme with the correct carbonyl and leaving group and state the limits of the comparison."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "comparable-acyl-substitution",
+        "leaving-group-and-limits"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "fresh-controlled-chemical-case",
+        "textDe": "Gleicher Acylrest und gleiches Nucleophil bei angegebenen Vergleichsbedingungen; frischer Acylrest und Darstellung; absichtlich nicht vergleichbare Kontrollfälle.",
+        "textEn": "Same acyl group and nucleophile under stated comparison conditions; fresh acyl group and representation; deliberately non-comparable control cases."
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "ethanoyl-derivatives-controlled",
+        "taskDemandDe": "Gegeben sind CH₃COCl, (CH₃CO)₂O und CH₃COOCH₃ sowie ein Modellvergleich ihrer Umsetzung mit demselben Nucleophil unter vergleichbaren Bedingungen. Markiere die Acylgruppen und möglichen Abgangsgruppen. Gegeben sind als Basizitätsstütze pKa(HCl)≈−7, pKa(CH₃COOH)≈4,8, pKa(CH₃OH)≈15,5. Begründe die übliche Rangfolge und ihre Bedingungen.",
+        "taskDemandEn": "Given CH₃COCl, (CH₃CO)₂O and CH₃COOCH₃ and a model comparison with the same nucleophile under comparable conditions, mark acyl groups and potential leaving groups. Supplied basicity clues are pKa(HCl)≈−7, pKa(CH₃COOH)≈4.8 and pKa(CH₃OH)≈15.5. Explain the usual ranking and its conditions.",
+        "expectedPerformanceDe": "Acylchlorid > Anhydrid > Ester im angegebenen vergleichbaren Fall; Cl⁻ ist die schwächste Base und günstigste der genannten Abgangsgruppen, Methoxid die stärkste. Der Carbonylkohlenstoff ist das elektrophile Zentrum. Protonierungs- und Lösungsmittelbedingungen gehören zum Modell; die pKa-Werte allein sind keine universelle Geschwindigkeitsmessung.",
+        "expectedPerformanceEn": "Acyl chloride > anhydride > ester in the specified comparable case; Cl⁻ is the weakest base and most favourable of these leaving groups, while methoxide is the strongest. The carbonyl carbon is the electrophilic centre. Protonation and solvent conditions belong to the model; pKa values alone are not universal rate measurements.",
+        "understandingFocusDe": "Struktur, Basizität und begrenzter mechanistischer Vergleich.",
+        "understandingFocusEn": "Structure, basicity and bounded mechanistic comparison."
+      },
+      {
+        "id": "fresh-acyl-and-incomparable-control",
+        "taskDemandDe": "Frisch gegeben sind entsprechende Propanoylderivate als Skelettformeln und ein Acylchloridversuch in kaltem Wasser neben einer katalysierten Esterspaltung bei höherer Temperatur. Übertrage die Strukturbegründung auf die vergleichbaren Propanoylfälle; entscheide, ob die beiden anderen Versuche eine allgemeine Klassenrangfolge belegen.",
+        "taskDemandEn": "Fresh skeletal formulas show corresponding propanoyl derivatives and an acyl chloride experiment in cold water alongside catalysed ester cleavage at higher temperature. Transfer the structural explanation to comparable propanoyl cases and decide whether the two other experiments establish a general class ranking.",
+        "expectedPerformanceDe": "Die frischen funktionellen Gruppen und Abgangsgruppen werden richtig zugeordnet. Der geänderte, aber gemeinsam gehaltene Acylrest erlaubt den begrenzten Transfer; unterschiedliche Temperatur, Katalyse und Medium verhindern eine Rangfolgerung allein aus den zwei anderen Messwerten.",
+        "expectedPerformanceEn": "The fresh functional groups and leaving groups are identified correctly. A changed but shared acyl group allows bounded transfer; different temperature, catalysis and medium prevent inferring a ranking solely from the other two readings.",
+        "understandingFocusDe": "Frischer Transfer mit erkannten Vergleichsgrenzen.",
+        "understandingFocusEn": "Fresh transfer with recognised comparison limits."
+      }
+    ]
+  }
+}

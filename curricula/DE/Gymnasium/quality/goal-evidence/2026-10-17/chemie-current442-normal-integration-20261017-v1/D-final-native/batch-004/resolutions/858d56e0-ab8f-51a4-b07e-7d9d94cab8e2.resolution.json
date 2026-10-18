@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-004-v1-resolution-858d56e0-ab8f-51a4-b07e-7d9d94cab8e2",
+  "goal": {
+    "goalId": "858d56e0-ab8f-51a4-b07e-7d9d94cab8e2",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:60d40bf5725c58252d84bfc5372d670c19f5f091779b532515e84b067caaf876",
+    "pageFingerprint": "sha256:1e95d5b9c46e4300bcbd1f60957dc93422050368bb82e19319fda16b913c9857",
+    "goalReviewContextFingerprint": "sha256:90000c26bccb613875aac425956c91cc78ce71ec2e1e23d6e94b30bd8c12d5b4",
+    "finalText": {
+      "titleDe": "Oxidierbarkeit von Alkanolen vergleichen",
+      "titleEn": "Compare oxidizability of alkanols",
+      "descriptionDe": "Die lernende Person kann primäre, sekundäre und tertiäre Alkanole hinsichtlich ihrer Oxidierbarkeit vergleichen.",
+      "descriptionEn": "The learner can compare primary, secondary, and tertiary alkanols with respect to their oxidizability."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-004-v1-a",
+      "campaignDigest": "sha256:9f49c2740669f7ed36feb828f9f8fbf595137952444feadd39e6636d8aa89cee",
+      "roundId": "chemie-final-current-context-d-004-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-004-v1-independent-a",
+      "reviewInputFingerprint": "sha256:05932460b60d1d36324c4bd65a48bcd0a5fe66088c89302fdebe64beca38e104",
+      "goalReviewContextFingerprint": "sha256:90000c26bccb613875aac425956c91cc78ce71ec2e1e23d6e94b30bd8c12d5b4",
+      "batchId": "chemie-final-current-context-d-004-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch004-20261018",
+      "runManifestDigest": "sha256:860f1a557a07e28c6af90a01f00ebf8a49e6fb81e38ef37281b5dee695ee7891",
+      "resultsDigest": "sha256:33bf50a914eb196e9c1bc3a74a7a205b97c38e014eae746547ed2dfff792b039",
+      "recordId": "codex-reviewer-a-final163-batch004-20261018.005",
+      "recordDigest": "sha256:23b03471e71a8caaea2b40118e5af5522172c6bb9b815bddc70f2313fa7c3858"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-004-v1-b",
+      "campaignDigest": "sha256:eb0a6a8bfd9326c9da6104480580f2824f20bebcd54ad258ec5b5ecedd511843",
+      "roundId": "chemie-final-current-context-d-004-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-004-v1-independent-b",
+      "reviewInputFingerprint": "sha256:05932460b60d1d36324c4bd65a48bcd0a5fe66088c89302fdebe64beca38e104",
+      "goalReviewContextFingerprint": "sha256:90000c26bccb613875aac425956c91cc78ce71ec2e1e23d6e94b30bd8c12d5b4",
+      "batchId": "chemie-final-current-context-d-004-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-004-20261018",
+      "runManifestDigest": "sha256:462a31ff8568ab194b6453b4a575269655a339fccdcaefe3a889f1c0386eb3eb",
+      "resultsDigest": "sha256:59784196a1346be76d18c8e2bb0dce57480d2a3daf93f3217588eb58d6cc6281",
+      "recordId": "chemie-final163-native-b-004-20261018:858d56e0-ab8f-51a4-b07e-7d9d94cab8e2",
+      "recordDigest": "sha256:f7429121ab287f4c47926abd404a189e95901d65047d9e495de9868bd4e18ed5"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:14644ad1dc6daad38fa105e8dcda4988764bf5544ad0303798c9afec70301ba8"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-004-20261018-v1",
+    "manifestDigest": "sha256:f8c23f4cfaabeda104b822b75b02eabbb05ae2a58f66246e6d76815c2be6f54a",
+    "manifestFingerprint": "sha256:47331b90b9c9747c454cd4e4bf2073fcf661e82b97577552be6a0e71defced6c",
+    "decisionId": "chemie-final163-paired-D-only-004-20261018-v1-decision-005"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-004-20261018-v1-decision-005",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:29:30.204Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch004-20261018.005): Die bilingualen Texte verlangen Vergleich ohne absolute Nichtoxidierbarkeitsbehauptung. Das gesamte P bindet die Erklärung an gleiche milde Bedingungen und vermeidet tertiär gleich unter allen Bedingungen inert. B (chemie-final163-native-b-004-20261018:858d56e0-ab8f-51a4-b07e-7d9d94cab8e2): Die knappe Vergleichsbeschreibung ist sachlich offen für vorgegebene Bedingungen. P begrenzt die Aussage ausdrücklich auf analoge milde Oxidation, sodass daraus keine absolute Unoxidierbarkeit tertiärer Stoffe folgt.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch004-20261018.005; chemie-final163-native-b-004-20261018:858d56e0-ab8f-51a4-b07e-7d9d94cab8e2). Their current English understanding evidence is retained: A: A C-H on the OH-bearing carbon enables ordinary mild carbonyl formation; tertiary alkanols lack it. B: A hydrogen at the hydroxyl-bearing carbon enables ordinary mild carbonyl formation; tertiary alkanols lack that local feature. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Das C-H am OH-tragenden C ermöglicht übliche milde Carbonylbildung; tertiären Alkanolen fehlt dieses H.",
+      "essentialUnderstandingEn": "A C-H on the OH-bearing carbon enables ordinary mild carbonyl formation; tertiary alkanols lack it.",
+      "observablePerformanceDe": "Klassifiziert drei Alkanole und begründet ihre Oxidierbarkeit mit der lokalen OH-C-Umgebung.",
+      "observablePerformanceEn": "Classifies three alkanols and explains oxidisability through the local OH-carbon environment.",
+      "transferExpectationDe": "Entscheidet bei neuen verzweigten Strukturen anhand des relevanten H statt allein anhand der Verzweigung.",
+      "transferExpectationEn": "Decides for fresh branched structures through the relevant H rather than branching alone."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-591ad27795b5063a4c95043a30933e77c908cfb42293ee0ea29c3b59a6477c3e",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:a2feec2f68673f7e6f79541ce3b66eecab2c478cba51665dd124c46eb38c6da1"
+}

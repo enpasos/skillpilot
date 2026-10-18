@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-004-v1-resolution-8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566",
+  "goal": {
+    "goalId": "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:f03f64e09311da797361de9f7b3d1a384aa255e653bcf9a85a013cf866bf5311",
+    "pageFingerprint": "sha256:36f0d7deaa70498306e727ded9970872f8c1aa234f34035e1e4b546bafa24b64",
+    "goalReviewContextFingerprint": "sha256:18db025ab49c8692fafbf9b4bf76104288ce969a93df6c1da1624540e1108777",
+    "finalText": {
+      "titleDe": "Chemische Reaktionen von physikalischen Vorgängen unterscheiden",
+      "titleEn": "Distinguish chemical reactions from physical processes",
+      "descriptionDe": "Die lernende Person kann chemische Reaktionen anhand neu entstehender Stoffe von physikalischen Vorgängen unterscheiden und Beobachtungen wie Temperatur- oder Farbänderungen als mögliche, allein nicht beweiskräftige Hinweise einordnen.",
+      "descriptionEn": "The learner can distinguish chemical reactions from physical processes by the formation of new substances and interpret observations such as temperature or colour changes as possible clues that are not conclusive on their own."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-004-v1-a",
+      "campaignDigest": "sha256:9f49c2740669f7ed36feb828f9f8fbf595137952444feadd39e6636d8aa89cee",
+      "roundId": "chemie-final-current-context-d-004-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-004-v1-independent-a",
+      "reviewInputFingerprint": "sha256:05932460b60d1d36324c4bd65a48bcd0a5fe66088c89302fdebe64beca38e104",
+      "goalReviewContextFingerprint": "sha256:18db025ab49c8692fafbf9b4bf76104288ce969a93df6c1da1624540e1108777",
+      "batchId": "chemie-final-current-context-d-004-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch004-20261018",
+      "runManifestDigest": "sha256:860f1a557a07e28c6af90a01f00ebf8a49e6fb81e38ef37281b5dee695ee7891",
+      "resultsDigest": "sha256:33bf50a914eb196e9c1bc3a74a7a205b97c38e014eae746547ed2dfff792b039",
+      "recordId": "codex-reviewer-a-final163-batch004-20261018.009",
+      "recordDigest": "sha256:6cc5aeb2a9dc91591347fa1d3d82bc97b3ad327ab4421358ae2aead1c9f15743"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-004-v1-b",
+      "campaignDigest": "sha256:eb0a6a8bfd9326c9da6104480580f2824f20bebcd54ad258ec5b5ecedd511843",
+      "roundId": "chemie-final-current-context-d-004-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-004-v1-independent-b",
+      "reviewInputFingerprint": "sha256:05932460b60d1d36324c4bd65a48bcd0a5fe66088c89302fdebe64beca38e104",
+      "goalReviewContextFingerprint": "sha256:18db025ab49c8692fafbf9b4bf76104288ce969a93df6c1da1624540e1108777",
+      "batchId": "chemie-final-current-context-d-004-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-004-20261018",
+      "runManifestDigest": "sha256:462a31ff8568ab194b6453b4a575269655a339fccdcaefe3a889f1c0386eb3eb",
+      "resultsDigest": "sha256:59784196a1346be76d18c8e2bb0dce57480d2a3daf93f3217588eb58d6cc6281",
+      "recordId": "chemie-final163-native-b-004-20261018:8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566",
+      "recordDigest": "sha256:69a2a6f8353773338d9ce7b7ce332ba2aaf3810d410a718fe4b21e65c93e481f"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:14644ad1dc6daad38fa105e8dcda4988764bf5544ad0303798c9afec70301ba8"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-004-20261018-v1",
+    "manifestDigest": "sha256:f8c23f4cfaabeda104b822b75b02eabbb05ae2a58f66246e6d76815c2be6f54a",
+    "manifestFingerprint": "sha256:47331b90b9c9747c454cd4e4bf2073fcf661e82b97577552be6a0e71defced6c",
+    "decisionId": "chemie-final163-paired-D-only-004-20261018-v1-decision-008"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-004-20261018-v1-decision-008",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:29:30.204Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch004-20261018.009): Die bilinguale Beschreibung hält Hinweis und Beweis klar auseinander. Das ganze P prüft Gas- und Farbsignale und begrenzt HB-Atommodelle; CuO wird nicht fälschlich als isolierte Moleküle dargestellt. B (chemie-final163-native-b-004-20261018:8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566): Die Beschreibung benennt bereits Stoffneubildung und die begrenzte Beweiskraft sichtbarer Hinweise. P liefert kontrollierte Gegenpaare und einen konditionierten HB-Modellzusatz mit Atomerhaltung; kein Bild wird als Ausführungsnachweis behandelt.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch004-20261018.009; chemie-final163-native-b-004-20261018:8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566). Their current English understanding evidence is retained: A: Chemical reaction forms new substances; bubbles, colour and heat may also accompany physical processes. B: New substance identity characterises a chemical reaction; appearance or temperature changes can also arise physically. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Chemische Reaktion bildet neue Stoffe; Blasen, Farbe und Wärme können ebenso bei physikalischen Vorgängen auftreten.",
+      "essentialUnderstandingEn": "Chemical reaction forms new substances; bubbles, colour and heat may also accompany physical processes.",
+      "observablePerformanceDe": "Vergleicht Vorher-/Nachher-Stoffdaten und begründet Freisetzung vorhandenen CO2 gegenüber Neubildung von Produkten.",
+      "observablePerformanceEn": "Compares before/after substance data and explains release of existing CO2 versus formation of products.",
+      "transferExpectationDe": "Überträgt die Entscheidung auf Farbänderungen und korrigiert Modellfehler zu Wasserverdampfung beziehungsweise Atomverlust.",
+      "transferExpectationEn": "Transfers the decision to colour changes and corrects model errors in water vaporisation or atom loss."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-61754ee3b425e85cb0e34817b85e0764db9aa61b8317deee826891a4616a55fc",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:b29defcc9129341c18d51a1dc6ff321b9cacbb358a53cae35cca87f586a78d21"
+}

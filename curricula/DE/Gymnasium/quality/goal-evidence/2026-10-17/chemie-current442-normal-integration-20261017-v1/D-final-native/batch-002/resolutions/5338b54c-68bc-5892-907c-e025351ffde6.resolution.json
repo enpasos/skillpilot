@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-002-v1-resolution-5338b54c-68bc-5892-907c-e025351ffde6",
+  "goal": {
+    "goalId": "5338b54c-68bc-5892-907c-e025351ffde6",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:8edae550d26f43d5d985ed768ae547246030f9b408804818c73852debef0ff67",
+    "pageFingerprint": "sha256:3eef2227c0cbda96f04bf884057e0d805c876ab6cc246eec2f1313dc933cf1ea",
+    "goalReviewContextFingerprint": "sha256:bed481ea7d78971b5789572cd75211615b0e22c617c637260eb22456a177cb96",
+    "finalText": {
+      "titleDe": "Lösungsvorgänge mit dem Teilchenmodell beschreiben",
+      "titleEn": "Describe dissolution processes with the particle model",
+      "descriptionDe": "Die lernende Person kann Lösungsvorgänge mit dem Teilchenmodell beschreiben und das Lösen von Salz in Wasser mit Wechselwirkungen zwischen Wasserteilchen und Ionen erklären.",
+      "descriptionEn": "The learner can describe dissolution processes using the particle model and explain salt dissolving in water through interactions between water particles and ions."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-002-v1-a",
+      "campaignDigest": "sha256:b715fd8a726cbbb7aaa20c5ec2078404f295bc90d3f8bc2a5d9f561cd958d38e",
+      "roundId": "chemie-final-current-context-d-002-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-002-v1-independent-a",
+      "reviewInputFingerprint": "sha256:d831530f4fe9ba4c7701b62a5c1bcea6bdf04d0ee9729de34f23dbad666c8a9f",
+      "goalReviewContextFingerprint": "sha256:bed481ea7d78971b5789572cd75211615b0e22c617c637260eb22456a177cb96",
+      "batchId": "chemie-final-current-context-d-002-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch002-20261018",
+      "runManifestDigest": "sha256:6ca66c1115aa27b4d2c73625e937471778c2db2938916b49f6ccc95a7860873d",
+      "resultsDigest": "sha256:ef5c73b963b42df01542d403d612c96c262c8a902a63b3774a35b2b9ec126b7c",
+      "recordId": "codex-reviewer-a-final163-batch002-20261018.019",
+      "recordDigest": "sha256:6954a204e4f4c6e2445259e8da2f9824cf7f78b319955e677c75ff4735a98797"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-002-v1-b",
+      "campaignDigest": "sha256:070e2daf91a611e1ffff2447e23f61558c7f9c9fa26cf87c154c53f406c8b793",
+      "roundId": "chemie-final-current-context-d-002-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-002-v1-independent-b",
+      "reviewInputFingerprint": "sha256:d831530f4fe9ba4c7701b62a5c1bcea6bdf04d0ee9729de34f23dbad666c8a9f",
+      "goalReviewContextFingerprint": "sha256:bed481ea7d78971b5789572cd75211615b0e22c617c637260eb22456a177cb96",
+      "batchId": "chemie-final-current-context-d-002-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-002-20261018",
+      "runManifestDigest": "sha256:c410bb8b0ad9e827901944da0e700a9181082c10d1bbd55ac65a836583b30c6e",
+      "resultsDigest": "sha256:ab8f5774eb6180f67af823d96057f3949f0fb175c7d25a6a52ba94e0874f30cc",
+      "recordId": "chemie-final163-native-b-002-20261018:5338b54c-68bc-5892-907c-e025351ffde6",
+      "recordDigest": "sha256:640805ccac2561cdee44004676f51e9412c7eeed149af9332e401bff4c8427a8"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:d8fb237c4bfae646ace584c195b8d46e5310536aa5be0abf6e49298504cbd0d9"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-002-20261018-v1",
+    "manifestDigest": "sha256:067c0f4ea81884ab77197d8b88f8f555468ebc2707980d808fe8e93abaaa1073",
+    "manifestFingerprint": "sha256:015048c1d39b768cb2cc3bd33b3adb266d68832f23abfb86d580299bfc453bfc",
+    "decisionId": "chemie-final163-paired-D-only-002-20261018-v1-decision-019"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-002-20261018-v1-decision-019",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:25:09.454Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch002-20261018.019): Die Beschreibung enthält die kausale Salz-Wasser-Erklärung ausdrücklich in beiden Sprachen. Das ganze P verlangt diese in jedem Geltungskontext, bewahrt Ionen und Wasser und grenzt Filtermodell, Sättigung und Lösungsenthalpie sauber ab. B (chemie-final163-native-b-002-20261018:5338b54c-68bc-5892-907c-e025351ffde6): Der aktuelle Text beansprucht ausdrücklich die kausale Salz/Wasser-Wechselwirkung und nicht nur Verteilung. P macht diese für das gesamte Ziel verbindlich, erhält Zuckertransfer und lässt Sättigung sowie Lösungsenthalpie als weiterführende Inhalte abgegrenzt.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch002-20261018.019; chemie-final163-native-b-002-20261018:5338b54c-68bc-5892-907c-e025351ffde6). Their current English understanding evidence is retained: A: Dissolution disperses conserved particles; water-ion attraction stabilises separate hydrated ions with correct charge orientation. B: Dissolution conserves particles; water stabilises separated salt ions through appropriately oriented polar interactions. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Lösen verteilt erhaltene Teilchen; Wasser-Ionen-Anziehung stabilisiert getrennte hydratisierte Ionen bei korrekter Ladungsorientierung.",
+      "essentialUnderstandingEn": "Dissolution disperses conserved particles; water-ion attraction stabilises separate hydrated ions with correct charge orientation.",
+      "observablePerformanceDe": "Zeichnet Zucker- oder Salzlösung, erhält Teilchenzahl/Verhältnis und erklärt O-Seite zu Na+ sowie H-Seiten zu Cl−.",
+      "observablePerformanceEn": "Draws sugar or salt solution, conserves particle counts/ratios and explains O toward Na+ and H sides toward Cl−.",
+      "transferExpectationDe": "Korrigiert eine vertauschte Wasserorientierung und begründet, warum klares Papierfiltrat weiterhin Salz enthalten kann.",
+      "transferExpectationEn": "Corrects reversed water orientation and explains why clear paper filtrate may still contain salt."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-6e08623430d56f29bd9f1f4049d0181f2e1906339629fb6e804c29b7992e202f",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:3af2a120c100b24541fad94fd5ef52e8566f65aa1c59a50085a0674fd545c08d"
+}

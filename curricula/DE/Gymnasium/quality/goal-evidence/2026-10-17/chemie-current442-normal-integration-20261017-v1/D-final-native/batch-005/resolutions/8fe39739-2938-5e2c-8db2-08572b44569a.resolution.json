@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-005-v1-resolution-8fe39739-2938-5e2c-8db2-08572b44569a",
+  "goal": {
+    "goalId": "8fe39739-2938-5e2c-8db2-08572b44569a",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:196fb7db626d312dace2dec0a177930eefd42c44a7fc18149aad7e9b1013e36f",
+    "pageFingerprint": "sha256:9b851faf8c4e9654e64342216e6e4e62bac9a1e54fa2a2613385e478193cf6bd",
+    "goalReviewContextFingerprint": "sha256:adf2f1042df41ab1849bfa0a7cddb73d0c4fd2cc689cb2292bf599a73d2f59fb",
+    "finalText": {
+      "titleDe": "Lebensmittelinhaltsstoffe experimentell nachweisen",
+      "titleEn": "Experimentally detect food components",
+      "descriptionDe": "Die lernende Person kann experimentelle Untersuchungen an Lebensmitteln durchführen, um Makronährstoffe und weitere Bestandteile fachgerecht nachzuweisen.",
+      "descriptionEn": "The learner can perform experimental investigations of foods to detect macronutrients and other components appropriately."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-005-v1-a",
+      "campaignDigest": "sha256:c8471cd797dec10abf7198c697339e7dc3a58537ed0f9852f8cf26345c1a666f",
+      "roundId": "chemie-final-current-context-d-005-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-005-v1-independent-a",
+      "reviewInputFingerprint": "sha256:ea93568bfdabdff3f714ec5d94b8dc59252520722e0aa10aa39a38e8541c8349",
+      "goalReviewContextFingerprint": "sha256:adf2f1042df41ab1849bfa0a7cddb73d0c4fd2cc689cb2292bf599a73d2f59fb",
+      "batchId": "chemie-final-current-context-d-005-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch005-20261018",
+      "runManifestDigest": "sha256:e2259ed1b412c3e3898b1487d972c903b35f39252a4a42f584bb855b91d2a437",
+      "resultsDigest": "sha256:054b020007e1d870143eca58ebb28ac20242207e4abfe68fc54ca6d6352a547c",
+      "recordId": "codex-reviewer-a-final163-batch005-20261018.009",
+      "recordDigest": "sha256:2cd051e87deaf8a239bfd19f2498c46cddb34f606822e64fc45aea3b1e587626"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-005-v1-b",
+      "campaignDigest": "sha256:48da8784d2bf2a022d5106050deb7e838bedbbf7dc15498f5e8f7fd019de0920",
+      "roundId": "chemie-final-current-context-d-005-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-005-v1-independent-b",
+      "reviewInputFingerprint": "sha256:ea93568bfdabdff3f714ec5d94b8dc59252520722e0aa10aa39a38e8541c8349",
+      "goalReviewContextFingerprint": "sha256:adf2f1042df41ab1849bfa0a7cddb73d0c4fd2cc689cb2292bf599a73d2f59fb",
+      "batchId": "chemie-final-current-context-d-005-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-005-20261018",
+      "runManifestDigest": "sha256:f156ef3bbef741b54e4c6db6d00df3cf1d510ad9b05729f1ec91bff119669db0",
+      "resultsDigest": "sha256:cdef531d33939f213e22d20615076c31b4ce9a1347b09abc4ccd1a69e5fe8995",
+      "recordId": "chemie-final163-native-b-005-20261018:8fe39739-2938-5e2c-8db2-08572b44569a",
+      "recordDigest": "sha256:8d38b16811a6b60d57a0701a5b39ebd1bc304f0a7f3cc647b33d144a8654c1f2"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:766e419b6962da8bae4b84dd677a6b7df18782647f13f0903d77a8bff87bdb82"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-005-20261018-v1",
+    "manifestDigest": "sha256:a41a2bc6b482499a6ca79542f7bbf5db10ee5ee2b8a366942cad9362acfb6f26",
+    "manifestFingerprint": "sha256:c531460d36cff13dc7321c382660c17c38c5ef6449bf726e255ffa0bb0e06d93",
+    "decisionId": "chemie-final163-paired-D-only-005-20261018-v1-decision-009"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-005-20261018-v1-decision-009",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:31:16.405Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch005-20261018.009): Die bilingualen Texte erhalten experimentelle Durchführung. Das gesamte P konkretisiert weitere Bestandteile, verlangt echte Kontrolllogs und begrenzt Fettfleck/DCPIP; die quantitative Bestimmung bleibt eigener Nachfolger. B (chemie-final163-native-b-005-20261018:8fe39739-2938-5e2c-8db2-08572b44569a): Durchführen ist im Text verbindlich und im P mit getrennten Pipetten, Kontrollen und echten Beobachtungen konkret. Fettfleck und DCPIP bleiben begrenzte Hinweise; exakte Zusammensetzung und Glucosespezifität eines anderen Tests werden nicht verwechselt.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch005-20261018.009; chemie-final163-native-b-005-20261018:8fe39739-2938-5e2c-8db2-08572b44569a). Their current English understanding evidence is retained: A: Food assays use controlled reactions with limited specificity; colour signals and labels replace neither execution nor complete analysis. B: A food assay requires a suitable reaction or measurement mechanism and controls; positive or negative findings have limited specificity. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Lebensmittelnachweise beruhen auf kontrollierten spezifisch begrenzten Reaktionen; Farbsignal und Deklaration ersetzen keine Durchführung oder vollständige Analyse.",
+      "essentialUnderstandingEn": "Food assays use controlled reactions with limited specificity; colour signals and labels replace neither execution nor complete analysis.",
+      "observablePerformanceDe": "Führt betreut Stärke-, Glucose-/Protein- und Fett-/weiteren Bestandteilnachweis mit passenden Positiv-/Negativkontrollen aus.",
+      "observablePerformanceEn": "Performs supervised starch, glucose/protein and fat/further-constituent tests with appropriate positive/negative controls.",
+      "transferExpectationDe": "Überträgt den Makronährstoffgang auf Ascorbat/DCPIP und erklärt neue Reduktionsmittel-, Eigenfarb- oder pH-Störungen.",
+      "transferExpectationEn": "Transfers the macronutrient panel to ascorbate/DCPIP and explains new reductant, intrinsic-colour or pH interference."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-820fe6db4e8eb6842732c59584d0d03dcbcec903aafa3ea1327d9be9e32a7274",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:5d3af52cdcf5864b47bacc62c281399e37843c3cf23c89d8228ba781e12da732"
+}

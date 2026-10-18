@@ -1,0 +1,44 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "codex-reviewer-a-final163-batch009-20261018",
+  "campaignId": "chemie-final-current-context-d-009-v1-a",
+  "roundId": "chemie-final-current-context-d-009-v1-first-pass-a",
+  "batchId": "chemie-final-current-context-d-009-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:208dc906d254aa248904c14a73312c50eeb06716e05a893fd05c3717250a629f",
+  "bundleFingerprint": "sha256:89156a892c31963d2bd408cdf3f097d2e9f9ab82ae5db978388ed5d3e6af7349",
+  "bookDigest": "sha256:b9b7330ce974a92e8828dfeca93eee2953c0fd166707d1e6fd7b9a449f48899e",
+  "provider": "OpenAI",
+  "model": "GPT-6 (Codex)",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:f1d50e3068a683f708dba94581bb2af9a5fd820de126e81a3b655b7b1825c48b",
+  "independenceGroupId": "chemie-final-current-context-d-009-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "f79f15c0-e848-5e17-9eb5-26753d35c93b",
+    "f947cd04-952a-5a9d-9445-3ffc70e02c3c",
+    "f9e6d689-6e59-59a4-9f21-8c2d44413244"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:208dc906d254aa248904c14a73312c50eeb06716e05a893fd05c3717250a629f"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    }
+  ],
+  "startedAt": "2026-10-17T22:39:48.575144+00:00",
+  "completedAt": "2026-10-17T22:40:14.361183+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:409146c0e239b09e760a7fd073410d5eeb3296925e3272634c4c436f56b25f75",
+  "toolchainVersion": "codex-native-review-final163-v1"
+}

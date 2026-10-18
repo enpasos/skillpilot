@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-004-v1-resolution-8edee6b6-9ead-515e-93f5-feada64522b2",
+  "goal": {
+    "goalId": "8edee6b6-9ead-515e-93f5-feada64522b2",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:66422b4a3834c03d52e867a2c4f22e892f83545889520d8c389088f04d9f7477",
+    "pageFingerprint": "sha256:5a14f30a817e7fc342a3a76a8f0c7eee021664e3c2676b0dd6238837ba663398",
+    "goalReviewContextFingerprint": "sha256:8efc2639a86f8553de6e1181fa0b89b243eb2c5e15e19c8489bb2ca81aaf8627",
+    "finalText": {
+      "titleDe": "Grignard-Synthesen deuten",
+      "titleEn": "Interpret Grignard syntheses",
+      "descriptionDe": "Die lernende Person kann Grignard-Reagenzien unter fachlicher Aufsicht und geeigneten wasserfreien Bedingungen zur Addition an Carbonylverbindungen einsetzen sowie die C–C-Bindungsbildung, die Alkoxid-Zwischenstufe und die anschließende Protonierung in Reaktionsschritten darstellen.",
+      "descriptionEn": "The learner can use Grignard reagents for addition to carbonyl compounds under qualified supervision and suitable anhydrous conditions, and represent C–C bond formation, the alkoxide intermediate and subsequent protonation in reaction steps."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-004-v1-a",
+      "campaignDigest": "sha256:9f49c2740669f7ed36feb828f9f8fbf595137952444feadd39e6636d8aa89cee",
+      "roundId": "chemie-final-current-context-d-004-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-004-v1-independent-a",
+      "reviewInputFingerprint": "sha256:05932460b60d1d36324c4bd65a48bcd0a5fe66088c89302fdebe64beca38e104",
+      "goalReviewContextFingerprint": "sha256:8efc2639a86f8553de6e1181fa0b89b243eb2c5e15e19c8489bb2ca81aaf8627",
+      "batchId": "chemie-final-current-context-d-004-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch004-20261018",
+      "runManifestDigest": "sha256:860f1a557a07e28c6af90a01f00ebf8a49e6fb81e38ef37281b5dee695ee7891",
+      "resultsDigest": "sha256:33bf50a914eb196e9c1bc3a74a7a205b97c38e014eae746547ed2dfff792b039",
+      "recordId": "codex-reviewer-a-final163-batch004-20261018.011",
+      "recordDigest": "sha256:5a49694ee1b3364705883474efd8c0a1f648d1ce5c4dad7866fdc00272f9d824"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-004-v1-b",
+      "campaignDigest": "sha256:eb0a6a8bfd9326c9da6104480580f2824f20bebcd54ad258ec5b5ecedd511843",
+      "roundId": "chemie-final-current-context-d-004-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-004-v1-independent-b",
+      "reviewInputFingerprint": "sha256:05932460b60d1d36324c4bd65a48bcd0a5fe66088c89302fdebe64beca38e104",
+      "goalReviewContextFingerprint": "sha256:8efc2639a86f8553de6e1181fa0b89b243eb2c5e15e19c8489bb2ca81aaf8627",
+      "batchId": "chemie-final-current-context-d-004-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-004-20261018",
+      "runManifestDigest": "sha256:462a31ff8568ab194b6453b4a575269655a339fccdcaefe3a889f1c0386eb3eb",
+      "resultsDigest": "sha256:59784196a1346be76d18c8e2bb0dce57480d2a3daf93f3217588eb58d6cc6281",
+      "recordId": "chemie-final163-native-b-004-20261018:8edee6b6-9ead-515e-93f5-feada64522b2",
+      "recordDigest": "sha256:38322a5243810edd66a5e9199148a8ad243c32a91bc47caa4df944965eba0dc2"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:14644ad1dc6daad38fa105e8dcda4988764bf5544ad0303798c9afec70301ba8"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-004-20261018-v1",
+    "manifestDigest": "sha256:f8c23f4cfaabeda104b822b75b02eabbb05ae2a58f66246e6d76815c2be6f54a",
+    "manifestFingerprint": "sha256:47331b90b9c9747c454cd4e4bf2073fcf661e82b97577552be6a0e71defced6c",
+    "decisionId": "chemie-final163-paired-D-only-004-20261018-v1-decision-009"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-004-20261018-v1-decision-009",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:29:30.204Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch004-20261018.011): Der bilinguale Text erhält Einsatzoperator und wasserfreien Rahmen. Das ganze P definiert reale Fachlaborhandlung getrennt vom Papiermodell und sichere Fachpersonal-Aufarbeitung; excluded-Projektion wird nicht als aktuelle Lernersicht ausgegeben. B (chemie-final163-native-b-004-20261018:8edee6b6-9ead-515e-93f5-feada64522b2): Die Beschreibung beansprucht tatsächlichen Einsatz ausdrücklich unter Aufsicht und wasserfreien Bedingungen. P enthält einen getrennten Fachlaborkanal mit lokaler Methode, sicheren Standardlösungen und Fachpersonal-Aufarbeitung; Papierdaten oder ein Plan geben keinen Ausführungskredit. Der kanonisch ausgeschlossene Projektionsstatus wird nicht als vorhandene Lernendenpflicht umgedeutet.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch004-20261018.011; chemie-final163-native-b-004-20261018:8edee6b6-9ead-515e-93f5-feada64522b2). Their current English understanding evidence is retained: A: Grignard groups add nucleophilically to carbonyl C; protic additives consume reagent before later alkoxide protonation. B: The nucleophilic Grignard carbon forms a carbon/carbon bond at a carbonyl; protic additions consume reagent before separate protonation. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Grignard-Reste addieren nukleophil an Carbonyl-C; protische Zusätze verbrauchen Reagenz vor der späteren Alkoxidprotonierung.",
+      "essentialUnderstandingEn": "Grignard groups add nucleophilically to carbonyl C; protic additives consume reagent before later alkoxide protonation.",
+      "observablePerformanceDe": "Stellt neue C–C-Bindung und Alkoxid dar und belegt tatsächlichen freigegebenen Reagenzeinsatz unter unmittelbarer Fachaufsicht.",
+      "observablePerformanceEn": "Represents the new C–C bond and alkoxide and evidences actual authorised reagent use under direct specialist supervision.",
+      "transferExpectationDe": "Überträgt Aldehyd- auf Ketonaddition und bilanziert bei protischer Verunreinigung die neue Alkoholklasse und limitierende Menge.",
+      "transferExpectationEn": "Transfers aldehyde to ketone addition and balances the new alcohol class and limiting amount with protic contamination."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-0a6a471cd115526a3695f553104f0f827dd45f2e8dee4422317a00c653dc040b",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:ff78b05f0d5ab6b320a70bb3c431430bae8d2e8a6cb6f30811b61310d5b7cbf2"
+}

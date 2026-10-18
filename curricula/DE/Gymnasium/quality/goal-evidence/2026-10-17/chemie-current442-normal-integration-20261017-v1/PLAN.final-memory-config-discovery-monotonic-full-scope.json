@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "final-memory-config-discovery-monotonic-full-scope-preparation",
+  "createdAtUTC": "2026-10-17T21:46:10.180820+00:00",
+  "status": "PREPARED_PENDING_FINAL_C654_M68_INSTALLATION_AND_STOCK_MEMORY_CHECK",
+  "normalFilesChanged": false,
+  "newScientificJudgments": 0,
+  "HumanApproval": false,
+  "M7Claim": false,
+  "defaultConfigBefore": {
+    "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-chemistry-full.config.json",
+    "sha256": "27d63e5773462c91fd97ae1d9e2787f1e9e2e2618db9199c4be9acffff63f706",
+    "bytes": 1308
+  },
+  "finalConfigPrepared": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/M442.memory68.full-original-root-plus-current-orphan.config.json",
+    "sha256": "d57dcb4c7f10cf4919629317b6b047320e6385d4fed61a99c52893ce693eb741",
+    "bytes": 7077
+  },
+  "minimalNormalDefaultChange": {
+    "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-chemistry-full.config.json",
+    "jsonPatch": [
+      {
+        "op": "add",
+        "path": "/scope/rootGoalIds/1",
+        "value": "8edee6b6-9ead-515e-93f5-feada64522b2"
+      }
+    ],
+    "beforeScope": {
+      "label": "Canonical chemistry full landscape",
+      "rootGoalIds": [
+        "442c31c5-c561-5c7a-90bb-2335d779175c"
+      ]
+    },
+    "afterScope": {
+      "label": "Canonical chemistry full landscape",
+      "rootGoalIds": [
+        "442c31c5-c561-5c7a-90bb-2335d779175c",
+        "8edee6b6-9ead-515e-93f5-feada64522b2"
+      ]
+    },
+    "allOtherDefaultConfigFieldsUnchanged": true,
+    "futureExactDefaultAfterSHA256": "6d2c1f088013bcf0d5d1312a72593b7458064b9cc7a3c01a40d22c4b6dbbc14f",
+    "applyOnlyAfter": "Final C654/M68 installed; archive exact default bytes under normal integration history before mutation; active central memory config must select finalConfigPrepared."
+  },
+  "retainedIdentityFields": [
+    "reviewId",
+    "landscapeId",
+    "landscapePath",
+    "ruleVersion"
+  ],
+  "scopeExtensionProof": {
+    "canonical": {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "sha256": "cb3c432cc7b6875b55d8ea58acceb0048cdda7a532441dc122abb09a4b51c056",
+      "bytes": 2928297
+    },
+    "semanticKinds": {
+      "path": "curricula/DE/Gymnasium/quality/goal-book-publication/chemie.semantic-kinds.json",
+      "sha256": "85a69bc59d47db6bb5bdfd15004051c5c74aa6bfcb100cbc056f6a20d068f847",
+      "bytes": 209177
+    },
+    "oldRootGoalIds": [
+      "442c31c5-c561-5c7a-90bb-2335d779175c"
+    ],
+    "newRootGoalIds": [
+      "442c31c5-c561-5c7a-90bb-2335d779175c",
+      "8edee6b6-9ead-515e-93f5-feada64522b2"
+    ],
+    "retainedScopeIsSubset": true,
+    "oldContainsClosureNodeCount": 652,
+    "newContainsClosureNodeCount": 653,
+    "addedScopeGoalIds": [
+      "8edee6b6-9ead-515e-93f5-feada64522b2"
+    ],
+    "oldCurrentCurricularAtomicCount": 441,
+    "newCurrentCurricularAtomicCount": 442,
+    "currentCurricularAtomicDenominator": 442,
+    "allCurrent442AtomicIdsCovered": true,
+    "missingCurricularAtomicIds": [],
+    "oldMemoryCount": 67,
+    "newMemoryCount": 67,
+    "newMemory68NotClaimedBeforeInstallation": true,
+    "noPracticeOrOtherScopeMembersRemoved": true,
+    "note": "This follows actual contains closure, exactly as stock memoryCardReview.ts collectConfiguredScopeGoalIds, with no leafGoalIds override. Existing scope contains all its previous structure, practice, orientation and memory members; stock reviewer retains its own relevance rules."
+  },
+  "visibilityScopeProof": {
+    "existing3ObjectsExactOrderedPrefix": [
+      {
+        "label": "Chemie Gymnasium GK (DE)",
+        "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-gk.view.json"
+      },
+      {
+        "label": "Chemie Gymnasium LK (DE)",
+        "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-lk.view.json"
+      },
+      {
+        "label": "Chemie Gymnasium Sek I (DE)",
+        "viewPath": "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-seki-chemistry.view.json"
+      }
+    ],
+    "appendedUniqueViewCount": 38,
+    "finalViewCount": 41,
+    "duplicateViewPaths": [],
+    "noExistingLabelsOrPathsOrOrderChanged": true,
+    "visibilityScopeCoverageRequired": true
+  },
+  "pendingFinalMemoryReviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/M442.memory68.review.jsonl",
+  "card80PathExactRetained": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-M441-portable-actual-input-selection-technical-20261017-v1/retained/cards80.current-with-five-successors.byte-exact.jsonl",
+  "finalReportPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/M442.memory68.stock-report.md",
+  "boundedActualDiscoveryFixture": {
+    "directory": "tmp/chemie442-memory68-discovery/default-configs",
+    "registryPath": "tmp/chemie442-memory68-discovery/registry.json",
+    "copiedNormalDefaultConfigCount": 10,
+    "onlyChemistryScopeFieldAdjustedInFixture": true,
+    "otherFourSubjectObjectsExact": true,
+    "doesNotReadOrApprovePendingM68ReviewLedger": true,
+    "actualStockDiscovery": {
+      "status": "PASS",
+      "function": "app/scripts/memoryCardReviewConfigDiscovery.ts:discoverActiveMemoryCardReviewConfigs",
+      "actualDefaultConfigCount": 10,
+      "selectedChemistryConfig": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/M442.memory68.full-original-root-plus-current-orphan.config.json",
+      "preservedIdentityFields": true,
+      "preservedOrdered3VisibilityPrefix": true,
+      "all41VisibilityPathsUnique": true,
+      "coverageRequirementStrengthened": true,
+      "baselineLeafScopeRejectionReproduced": "Active memory-card review config changes scope: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/M442.ordinary442-memory67.config.json",
+      "normalDefaultSHAStillExact": true,
+      "pendingFinalMemory68LedgerNotReadOrApproved": true
+    }
+  },
+  "requiredIntegrationOrder": [
+    "Archive current normal default config exact bytes.",
+    "Install final C654/SEM654/M442.memory68.review.jsonl and required views after actual paired reviews.",
+    "Apply only the declared default scope extension and select this exact final active M config in Chemistry registry.",
+    "Run actual discoverActiveMemoryCardReviewConfigs against normal defaults and registry; run targeted stock M check with final ledger/cards/views.",
+    "Then perform scoped applicability integration and required final binding checks; no approval follows from this preparation alone."
+  ],
+  "technicalSideEffects": [
+    "discoverActiveMemoryCardReviewConfigs compares scope JSON exactly; default and active scope must be installed coherently.",
+    "applicabilityCompiler consumes discovery-selected ordinary-memory origins; the root-plus-existing-orphan change itself does not add mastery or alter goal IDs.",
+    "Default legacy report/review paths remain unchanged; active successor routes to final M68 ledger and Cards80.",
+    "Append-only visibility strengthens prior three views and required coverage; no view selection or source status is inferred."
+  ]
+}

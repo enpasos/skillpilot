@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-008-v1-resolution-ebfa2c18-0599-5282-bf7a-80c14d86331e",
+  "goal": {
+    "goalId": "ebfa2c18-0599-5282-bf7a-80c14d86331e",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:2c96efc7d917c5bb573baffc35f0ffcfc0aba984f9a8f9c0030ddb00c5872f6d",
+    "pageFingerprint": "sha256:2d186886b381f0d331bd0757745a81e2ab906959b0aaafbea2b7cf4e2ab5588a",
+    "goalReviewContextFingerprint": "sha256:bbaeb3dcd3b257409e937d3b753340725cec51785230757a15ad8609657419a6",
+    "finalText": {
+      "titleDe": "Green-Chemistry-Metriken",
+      "titleEn": "Green Chemistry metrics",
+      "descriptionDe": "Die lernende Person kann die Atomökonomie einer bilanzierten Synthese einer Waschmittelkomponente sowie E-Faktor und PMI für deren Herstellung oder eine klar abgegrenzte Formulierung berechnen und die unterschiedlichen Bilanzgrenzen erläutern.",
+      "descriptionEn": "The learner can calculate atom economy for a balanced synthesis of a detergent component and E-factor and PMI for its production or a clearly bounded formulation,and explain the different accounting boundaries."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-008-v1-a",
+      "campaignDigest": "sha256:bfc1b7bc3538c4dd17f4f184f0a3c6191751a8124732d1299f1f3201d5b9fa22",
+      "roundId": "chemie-final-current-context-d-008-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-008-v1-independent-a",
+      "reviewInputFingerprint": "sha256:3ac18dc51676cde29ff443c24a5b4a66fe4284e778b917d2a635b9e71961d3c3",
+      "goalReviewContextFingerprint": "sha256:bbaeb3dcd3b257409e937d3b753340725cec51785230757a15ad8609657419a6",
+      "batchId": "chemie-final-current-context-d-008-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch008-20261018",
+      "runManifestDigest": "sha256:1c83d9e9f75802490a373fc32cd5155852662ec2adeb44332b0e4ad3794a53f2",
+      "resultsDigest": "sha256:717572e69fa651d74b4efe4307f0c0f1eb2190475b1f5e1e8a20cdd410f01fcc",
+      "recordId": "codex-reviewer-a-final163-batch008-20261018.014",
+      "recordDigest": "sha256:8f121a2ba7f8a1bff47b74a2141daa860971499ba6b5896cd556efe7fca717fb"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-008-v1-b",
+      "campaignDigest": "sha256:8a870c0b67e894644fc8a8bc5a6e566b1b80eb253611ea8e45a3aec8e4e7ce2d",
+      "roundId": "chemie-final-current-context-d-008-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-008-v1-independent-b",
+      "reviewInputFingerprint": "sha256:3ac18dc51676cde29ff443c24a5b4a66fe4284e778b917d2a635b9e71961d3c3",
+      "goalReviewContextFingerprint": "sha256:bbaeb3dcd3b257409e937d3b753340725cec51785230757a15ad8609657419a6",
+      "batchId": "chemie-final-current-context-d-008-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-008-20261018",
+      "runManifestDigest": "sha256:aae64cd2428db704ad4ac245dcca064a12b9d0dc413b71f7a83725b0f7ddfec2",
+      "resultsDigest": "sha256:89514977b458bdd7656b1bb59d40d99ab77b3c500d848c381a3f4502abbe5fdc",
+      "recordId": "chemie-final163-native-b-008-20261018:ebfa2c18-0599-5282-bf7a-80c14d86331e",
+      "recordDigest": "sha256:fb9eed260a756b09657baa864f63490912f570e73f79e083be501083f5d79652"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:75131dbe4e2143b9a067c805d573de1f211b44cd088aeee05809347756b969ad"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-008-20261018-v1",
+    "manifestDigest": "sha256:5d8be7c440ce4b012a72c9f373aceb76f40ccdfbc79a0e00151adb203a96abb4",
+    "manifestFingerprint": "sha256:6064281f64c256108d7f70c1739582deaed451dc4e86366a0df71edb5d14bd13",
+    "decisionId": "chemie-final163-paired-D-only-008-20261018-v1-decision-014"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-008-20261018-v1-decision-014",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:46:21.803Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch008-20261018.014): Die D-Fassung nennt Reaktions- und Formulierungsgrenzen ausdrücklich und äquivalent. Die tatsächlich gelesenen vollständigen energy20-20-Materialangaben schließen beide Massenbilanzen: 940/340 g Input, 180 g Produkt, 760/160 g Abfall. PMI=E+1 gilt dort bedingt durch vollständige Bilanz, nicht allgemein mit beliebigen Recyclinggutschriften. Das vollständige P trennt auch idealen Nutzen von Toxizität, Energie und realer Waschleistung fachlich korrekt. B (chemie-final163-native-b-008-20261018:ebfa2c18-0599-5282-bf7a-80c14d86331e): Die Beschreibung benennt die verschiedenen Bilanzebenen ausdrücklich und macht damit eine sinnvolle atomare Methodenkompetenz prüfbar. Beide tatsächlich vollständig gelesenen Sachfälle liefern ausgeglichene Gleichungen und geschlossene Massenränder; alle angegebenen Kennzahlen sind konsistent. Das vollständige P hält PMI=E+1 an dessen Massenbilanzvoraussetzung und den Vergleich an Produkt/Nutzfunktion fest, ohne Nachhaltigkeit aus einem Einzelwert oder Atomökonomie für bloßes Mischen abzuleiten.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch008-20261018.014; chemie-final163-native-b-008-20261018:ebfa2c18-0599-5282-bf7a-80c14d86331e). Their current English understanding evidence is retained: A: Atom economy evaluates ideal reaction stoichiometry; E-factor and PMI evaluate chosen actual process mass boundaries and are neither yield nor a full environmental assessment. B: Atom economy evaluates ideal reaction stoichiometry whereas E-factor and PMI use an explicitly defined process mass boundary; none is a complete environmental judgment. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Atomökonomie bewertet ideale Reaktionsstöchiometrie; E-Faktor und PMI bewerten gewählte reale Prozessmassenränder und sind weder Ausbeute noch vollständige Umweltbewertung.",
+      "essentialUnderstandingEn": "Atom economy evaluates ideal reaction stoichiometry; E-factor and PMI evaluate chosen actual process mass boundaries and are neither yield nor a full environmental assessment.",
+      "observablePerformanceDe": "Berechnet für die bilanzierte Seifenkomponente 92,5 Prozent Atomökonomie, 81,08 Prozent Ausbeute und die PMI/E-Paare mit und ohne Prozesswasser samt verbleibendem Reaktionswasser.",
+      "observablePerformanceEn": "Calculates 92.5 percent atom economy, 81.08 percent yield and PMI/E pairs including and excluding process water while retaining reaction water for the balanced soap component.",
+      "transferExpectationDe": "Trennt beim neuen Mischprozess PMI/E von nicht anwendbarer Reaktionsatomökonomie, vergleicht die 87,40-Prozent-Methylesterroute und erklärt bei Wasserverlust veränderte Nutzfunktion trotz gleicher Massenkennzahl.",
+      "transferExpectationEn": "Separates PMI/E from inapplicable reaction atom economy in a fresh blending process, compares the 87.40-percent methyl-ester route and explains changed service after water loss despite equal mass metrics."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-4c76f8f118833f1f49aed466b2e0406b2171dc5cc68235dfed8767feeed3d28a",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:6374702056b6206e7be8055ba4f73ba0e539f9032d60d71239fc15dd662dbe57"
+}

@@ -1,0 +1,93 @@
+{
+  "normalInputPins": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "sha256": "a60d2eff467548ef02f93b3a759e1e3bea10306b7876937fa7f038582b0208e4",
+      "bytes": 3398886
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-book-publication/chemie.semantic-kinds.json",
+      "sha256": "b86aab9b396196a0441cf604275a1024b4b71e807eb97f622caf88803b3c5c2e",
+      "bytes": 212019
+    }
+  ],
+  "results": [
+    {
+      "gate": "uuid",
+      "argv": [
+        "python3",
+        "scripts/validate_goal_ids_uuid.py"
+      ],
+      "exitCode": 0,
+      "seconds": 2.463,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current450-final-readonly-structure-gates-20261018-v1/uuid.actual.log"
+    },
+    {
+      "gate": "graph",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "validate:graph"
+      ],
+      "exitCode": 0,
+      "seconds": 3.653,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current450-final-readonly-structure-gates-20261018-v1/graph.actual.log"
+    },
+    {
+      "gate": "view-filters",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "validate:view-filters"
+      ],
+      "exitCode": 0,
+      "seconds": 15.535,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current450-final-readonly-structure-gates-20261018-v1/view-filters.actual.log"
+    },
+    {
+      "gate": "composition",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "validate:composition-views"
+      ],
+      "exitCode": 0,
+      "seconds": 238.544,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current450-final-readonly-structure-gates-20261018-v1/composition.actual.log"
+    },
+    {
+      "gate": "projection-roles",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "test:composition-projection-roles"
+      ],
+      "exitCode": 0,
+      "seconds": 17.132,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current450-final-readonly-structure-gates-20261018-v1/projection-roles.actual.log"
+    },
+    {
+      "gate": "course-level",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "test:course-level-mapping-consistency"
+      ],
+      "exitCode": 0,
+      "seconds": 0.632,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current450-final-readonly-structure-gates-20261018-v1/course-level.actual.log"
+    }
+  ],
+  "allPassed": true,
+  "M7Claim": false
+}

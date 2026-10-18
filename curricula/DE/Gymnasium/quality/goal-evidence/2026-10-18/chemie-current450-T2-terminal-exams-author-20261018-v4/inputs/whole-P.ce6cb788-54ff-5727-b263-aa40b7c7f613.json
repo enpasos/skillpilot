@@ -1,0 +1,91 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+  "schemaVersion": 2,
+  "reviewId": "chemie-carbonyl15-current422-informed-positive-profile-b-20261015-v1",
+  "goalFingerprintRuleVersion": "goal-evidence-v1",
+  "profileRuleVersion": "positive-understanding-evidence-v2",
+  "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+  "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+  "goalId": "ce6cb788-54ff-5727-b263-aa40b7c7f613",
+  "goalFingerprint": "sha256:5aac2b974c99e189523d131f72562afd3e45c08d3e9a91d5c9f5fbf68566a76d",
+  "reviewInputFingerprint": "sha256:4c6ccc5f9839dcfc09575b760805ff375b05a060c47e26f104f0d9c114ac0ee2",
+  "profileFingerprint": "sha256:cccd6e302a7bed8fa48b2d097e36465e6027be454c27a075709ec7ec3bebb6fd",
+  "status": "needs_human_review",
+  "reviewAuthority": "ai_candidate",
+  "reviewedAt": "2026-10-17T21:23:41.999975+00:00",
+  "reviewer": "Codex B technical current-input serialization; underlying scientific authors and reviewers remain recorded in the P442 selection/provenance",
+  "reason": "Das data-Profil verbindet Identifikationssignal, stoffmengen-/kalibrationsbezogene Quantifizierung und Selektivitätsbewertung. Alle Erwartungen sind in beiden Fällen explizit gestellt und sprachlich äquivalent. Es bleibt beim Auswerten bereitgestellter Experimente. Transfer: Rücktitration zu getrennt kalibrierter Chromatographie ändert Messprinzip, Blindwertbehandlung und Selektivitätsrisiken. Operatoren: Qualitatives und quantitatives Auswerten sowie Zusammensetzungsvergleich sind echte Aufgabenleistungen; Durchführung und klinische Wirkung werden nicht aus Lösungen erfunden. Vollständige Prüfung beider DE/EN-Fälle und Rubriken: PA.FIRST.independent-informed-science.json, Ziel 15.",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "reviewRunIds": [],
+  "dissent": [],
+  "profile": {
+    "archetype": "data",
+    "expectations": [
+      {
+        "id": "e1",
+        "essentialUnderstandingDe": "Qualitative Signale identifizieren im kalibrierten Kandidatenraum Stoffe, quantitative Signale benötigen Stoffmengen-/Kalibrationsbezug.",
+        "essentialUnderstandingEn": "Qualitative signals identify substances within a calibrated candidate set; quantitative signals need amount/calibration reference.",
+        "observablePerformanceDe": "Ordnet Referenzsignale zu und wählt eine selektive quantitative Auswertung.",
+        "observablePerformanceEn": "Assigns reference signals and selects a selective quantitative evaluation."
+      },
+      {
+        "id": "e2",
+        "essentialUnderstandingDe": "Blindwert, Aliquot, Verdünnung und Stöchiometrie bestimmen den Wirkstoffgehalt.",
+        "essentialUnderstandingEn": "Blank, aliquot, dilution and stoichiometry determine active-ingredient content.",
+        "observablePerformanceDe": "Berechnet Gehalte aus vollständig vorgegebenen Modellversuchen.",
+        "observablePerformanceEn": "Calculates contents from fully supplied model experiments."
+      },
+      {
+        "id": "e3",
+        "essentialUnderstandingDe": "Gehaltsvergleich muss Selektivität und Versuchsgrenzen beachten.",
+        "essentialUnderstandingEn": "Content comparison must respect selectivity and assay limitations.",
+        "observablePerformanceDe": "Vergleicht Zusammensetzung und erkennt eine unberechtigte Reinheits-/Wirkungsfolgerung.",
+        "observablePerformanceEn": "Compares composition and detects unjustified purity/effect inferences."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "e1",
+        "e2",
+        "e3"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "v1",
+        "textDe": "Rücktitration oder kalibrierte Chromatographie",
+        "textEn": "Back titration versus calibrated chromatography"
+      },
+      {
+        "id": "v2",
+        "textDe": "Selektiver Einzelstoff oder Mischung",
+        "textEn": "Selective single ingredient versus mixture"
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "ce6cb788-case-1",
+        "taskDemandDe": "Daten und Bedingungen:\nChemisches Unterrichtsmodell: keine persönlichen Behandlungs-, Dosierungs- oder Einnahmeempfehlungen; erfundene Modellwerte sind keine klinischen Befunde. Erfundene reine ASS-Kandidaten, keine weiteren säure-/basereaktiven Stoffe. TLC gleiche Bedingungen: ASS-ReferenzRf0.62, Salicylsäure0.30; Tablettenextrakte A/B jeweils0.62, keine zweite detektierte Bande. Gesamt-ASS einer Tablette wird vollständig in25.00 mL0.2000 mol/L NaOH umgesetzt; Nettoprodukt Salicylat⁻ nach kontrollierter Aufarbeitung mit protoniertem Phenol-OH. Je ASS verbraucht die kontrollierte Methode2 OH⁻ (COOH-Neutralisation plus Esterhydrolyse); nach festgelegter Aufarbeitung titriert0.1000 mol/L HCl nur restliches freies OH⁻, kein Phenolatbeitrag. Blindverbrauch50.00 mL; A22.25 mL, B30.57 mL. M(ASS)=180.16 g/mol. Volumina sind Modellwerte; der definierte selektive Endpunkt ist Teil des Datensatzes.\nAufgaben:\n1. Ordne die TLC-Befunde qualitativ zu und begründe die2:1-OH⁻-Stöchiometrie mit einer bilanzierten ASS-Reaktion.\n2. Berechne aus Blindwertdifferenzen beide ASS-Massen pro Tablette, ohne den Faktor2 zu verlieren.\n3. Vergleiche Zusammensetzung und prüfe, ob diese Methode für ein Präparat mit zusätzlicher titrierbarer Säure automatisch ASS-selektiv bleibt.",
+        "taskDemandEn": "Data and conditions:\nChemistry teaching model: no personal treatment, dosing or administration recommendation; invented model values are not clinical findings. Invented ASA-only candidates with no other acid/base-reactive compounds. Matched TLC: ASA referenceRf0.62, salicylic acid0.30; extracts A/B each0.62, no second detected band. One tablet’s entire ASA reacts completely with25.00 mL0.2000 mol/L NaOH; net salicylate⁻ is shown after controlled workup with protonated phenolic OH. Method consumes2 OH⁻ per ASA for COOH neutralization/ester hydrolysis; specified workup then titrates only residual free OH⁻ with0.1000 mol/L HCl, excluding phenolate contribution. Blank50.00 mL; A22.25,B30.57. M(ASA)=180.16 g/mol. Volumes are model values; defined selective endpoint is part of the data.\nTasks:\n1. Assign TLC findings qualitatively and justify2:1 OH⁻ stoichiometry using a balanced ASA reaction.\n2. Calculate both ASA masses per tablet from blank differences, retaining factor2.\n3. Compare composition and assess whether the method automatically remains ASA-selective with another titratable acid.",
+        "expectedPerformanceDe": "1. Rf0.62 stützt ASS in beiden Extrakten unter diesen Bedingungen. C₉H₈O₄ +2 OH⁻ → C₇H₅O₃⁻ +C₂H₃O₂⁻ +H₂O ist atom-/ladungsgleich; je ein OH⁻ für Carboxylneutralisation und Esterhydrolyse. Ein Fleck beweist keine absolute Reinheit.\n2. A:ΔV27.75 mL, verbrauchteOH⁻2.775 mmol, ASS1.3875 mmol,249.972 mg. B:ΔV19.43 mL, OH⁻1.943 mmol, ASS0.9715 mmol,175.025 mg. Blindwertdifferenz entfernt das gemeinsame NaOH-Angebot; der Faktor2 gehört zur Reaktionsbilanz.\n3. A enthält im definierten ASS-only-Modell etwa1.428-mal so viel ASS wie B. Eine zusätzliche Säure verbraucht OH⁻ und würde als ASS fehlgerechnet; dann braucht es selektive Trennung/Referenz-/Kalibrationskontrolle. Gehalt beweist keine relative klinische Wirkung oder sichere Anwendung.",
+        "expectedPerformanceEn": "1. Rf0.62 supports ASA in both under these conditions. C₉H₈O₄ +2 OH⁻ → C₇H₅O₃⁻ +C₂H₃O₂⁻ +H₂O balances atoms/charge; one OH⁻ each for carboxyl neutralization and ester hydrolysis. One spot proves no absolute purity.\n2. A:ΔV27.75 mL gives2.775 mmol OH⁻,1.3875 mmol ASA,249.972 mg. B:ΔV19.43 gives1.943 mmol OH⁻,0.9715 mmol ASA,175.025 mg. Blank difference removes the common NaOH supply; factor2 follows reaction balance.\n3. In the specified ASA-only model A contains about1.428 times B’s ASA. Another acid consumes OH⁻ and would be miscounted as ASA, requiring selective separation/reference/calibration. Content establishes no relative clinical effect or safe use.",
+        "understandingFocusDe": "Qualitative Identifikation und quantitative Gehaltsbestimmung bilden gemeinsam eine prüfbare analytische Aussage. Transfer: Vom ASS-Einzelstoff zur getrennt kalibrierten Zweistoffmischung wechseln und eine Koelution als Selektivitätsproblem erkennen. Zwei unabhängige Nachweisschritte können in einer integrierten Leistung auftreten; die zwei Fallvarianten sind keine Pflichtaufgabenquote. Sobald alle Aspekte und selbstständiger Transfer hinreichend gezeigt sind, endet die Prüfung.",
+        "understandingFocusEn": "Qualitative identification and quantitative content determination jointly form a testable analytical claim. Transfer: Transfer from ASA-only assay to separately calibrated two-component analysis and recognize coelution as a selectivity problem. Two independent demonstration steps can occur in one integrated performance; the two case variants are not a mandatory task quota. Stop assessment once all aspects and independent transfer are sufficiently shown."
+      },
+      {
+        "id": "ce6cb788-case-2",
+        "taskDemandDe": "Daten und Bedingungen:\nChemisches Unterrichtsmodell: keine persönlichen Behandlungs-, Dosierungs- oder Einnahmeempfehlungen; erfundene Modellwerte sind keine klinischen Befunde. Erfundene HPLC-Daten; vollständige Tabletten werden in geeignetem Methanol/Wasser-Gemisch auf100.0 mL gelöst, danach1.00 mL auf100.0 mL verdünnt (Faktor100), kein Verlust. Referenzen: ASS Retentionszeit4.0 min, Paracetamol2.5 min, beide getrennt. Flächeneinheiten: ASS S=20.0 c+5.0; Paracetamol S=10.0 c+2.0, c in mg/L der verdünnten Messlösung. A zeigt ASSS1005, ParacetamolS252; B ASSS505, ParacetamolS502. Kalibrationsbereich0–60 mg/L, Matrixblank entspricht den Achsenabschnitten. Alle Modellproben im Bereich.\nAufgaben:\n1. Ordne Peaks mit Referenzen qualitativ zu und erkläre, warum getrennte Kalibrationen gebraucht werden.\n2. Berechne beide Konzentrationen in der Messlösung und Wirkstoffmassen je ursprünglicher Tablette für A/B.\n3. Vergleiche Gesamtmasse und Wirkstoffverhältnis und begrenze die Aussage bei einem koeluierenden unbekannten Stoff.",
+        "taskDemandEn": "Data and conditions:\nChemistry teaching model: no personal treatment, dosing or administration recommendation; invented model values are not clinical findings. Invented HPLC data: complete tablets dissolved in suitable methanol/water mixture to100.0 mL, then1.00 mL diluted to100.0 mL (factor100), no loss. References: ASA retention4.0 min, paracetamol2.5 min, separated. Area units: ASA S=20.0 c+5.0; paracetamol S=10.0 c+2.0, c in mg/L diluted measurement solution. A gives ASAS1005/paracetamolS252; B ASAS505/paracetamolS502. Calibration range0–60 mg/L; matrix blank equals intercepts; all model samples are within range.\nTasks:\n1. Assign peaks using references and explain why separate calibrations are needed.\n2. Calculate both measurement-solution concentrations and original-tablet masses for A/B.\n3. Compare total active mass/ratio and bound the inference with an unknown coeluting substance.",
+        "expectedPerformanceDe": "1. 4.0-min-Peak gehört im gegebenen Referenzsystem zu ASS,2.5 zu Paracetamol. Unterschiedliche Stoffe haben hier verschiedene Antwortsteigungen20/10; gleiche Fläche ist nicht gleiche Masse. Referenzlauf und Matrixblank stützen die Zuordnung, Retentionszeit allein bleibt allgemein mehrdeutig.\n2. A:ASS(1005−5)/20=50.0 mg/L, Paracetamol(252−2)/10=25.0; B25.0/50.0. Zurückrechnen: c×100×0.1000 L=c×10 mg. A500 mg ASS/250 mg Paracetamol, B250 mg ASS/500 mg Paracetamol.\n3. Beide750 mg Gesamtwirkstoff, aber A ASS:Paracetamol2:1, B1:2. Ein unbekannter koeluierender Stoff könnte Peakflächen erhöhen; dann ist zusätzliche Selektivitätsprüfung nötig. Gleiche Gesamtmasse bedeutet weder gleiche Zusammensetzung noch gleiche klinische Wirkung; kein realer Tablettenbefund wird behauptet.",
+        "expectedPerformanceEn": "1. In this reference system4.0-min peak is ASA,2.5 paracetamol. Different analytes have response slopes20/10; equal area is not equal mass. Reference runs/matrix blank support assignment; retention time alone is generally ambiguous.\n2. A:ASA(1005−5)/20=50.0 mg/L, paracetamol(252−2)/10=25.0; B25.0/50.0. Back calculation:c×100×0.1000 L=c×10 mg. A500 mg ASA/250 mg paracetamol; B250 mg ASA/500 mg paracetamol.\n3. Both total750 mg active ingredients, but A ASA:paracetamol2:1 and B1:2. Unknown coelution could increase areas, requiring additional selectivity testing. Equal active mass means neither equal composition nor equal clinical effects; no actual tablet finding is claimed.",
+        "understandingFocusDe": "Qualitative Identifikation und quantitative Gehaltsbestimmung bilden gemeinsam eine prüfbare analytische Aussage. Transfer: Vom ASS-Einzelstoff zur getrennt kalibrierten Zweistoffmischung wechseln und eine Koelution als Selektivitätsproblem erkennen. Zwei unabhängige Nachweisschritte können in einer integrierten Leistung auftreten; die zwei Fallvarianten sind keine Pflichtaufgabenquote. Sobald alle Aspekte und selbstständiger Transfer hinreichend gezeigt sind, endet die Prüfung.",
+        "understandingFocusEn": "Qualitative identification and quantitative content determination jointly form a testable analytical claim. Transfer: Transfer from ASA-only assay to separately calibrated two-component analysis and recognize coelution as a selectivity problem. Two independent demonstration steps can occur in one integrated performance; the two case variants are not a mandatory task quota. Stop assessment once all aspects and independent transfer are sufficiently shown."
+      }
+    ]
+  }
+}

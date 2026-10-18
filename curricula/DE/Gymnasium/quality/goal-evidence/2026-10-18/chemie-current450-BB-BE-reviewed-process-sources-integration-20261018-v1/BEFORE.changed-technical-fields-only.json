@@ -1,0 +1,304 @@
+[
+  {
+    "path": "curricula/DE/Gymnasium/input/BB/upper-secondary/source-extraction/DE_BB_CHEMIE_SEKII_RLP_GOST_2022.source-extraction.json",
+    "normalBeforePin": {
+      "path": "curricula/DE/Gymnasium/input/BB/upper-secondary/source-extraction/DE_BB_CHEMIE_SEKII_RLP_GOST_2022.source-extraction.json",
+      "sha256": "62c33d8b008d50ab57bed1a05deee2f1b9770a3bb127c4377b79cfb1b1b18529",
+      "bytes": 365069
+    },
+    "method": {
+      "type": "official-pdf-source-extraction",
+      "notes": "Die Source-Extraction basiert auf dem lokal archivierten amtlichen Teil-C-PDF Chemie fuer die gymnasiale Oberstufe Berlin-Brandenburg. Als Passagen werden Abschlussstandards, das Basiskonzept-Kapitel 2.3 sowie die E-Phasen- und Q-Phasen-Themenfelder extrahiert. Source-Ziele werden nur aus den Inhaltszeilen der Themenfelder erzeugt; Standards, Basiskonzepte, Experimente, Fachbegriffe, Kontexte und exemplarische Kompetenzentwicklungsbeitraege bleiben Passage-Kontext. Die Source-Ziel-Extraktion nutzt pdftotext -raw, damit die zweispaltigen Grundkurs-/Leistungskurs-Tabellen nicht zu gemischten Kunstzielen verkleben."
+    },
+    "pipelineStatus": {
+      "currentStep": "MAPPING-3",
+      "steps": [
+        {
+          "id": "MAPPING-1",
+          "label": "Original-Lehrplanpassagen extrahiert",
+          "status": "complete",
+          "dependsOn": [],
+          "checks": [
+            {
+              "id": "source-document-present",
+              "label": "Amtliche BE/BB-Chemie-GOST-Quelle liegt lokal vor",
+              "passed": true,
+              "details": "curricula/DE/Gymnasium/input/BB/upper-secondary/Teil_C_RLP_GOST_2022_Chemie.pdf"
+            },
+            {
+              "id": "expected-topic-coverage",
+              "label": "Alle erwarteten Chemie-GOST-Abschnitte sind als Lehrplanpassagen vorhanden",
+              "passed": true,
+              "details": "23/23 Abschnitte; fehlend: -"
+            },
+            {
+              "id": "unique-topic-passages",
+              "label": "Jeder Abschnitt hat genau eine Passage",
+              "passed": true,
+              "details": "Doppelte Abschnitte: -"
+            },
+            {
+              "id": "passage-text-present",
+              "label": "Jede Passage enthält offiziellen Text",
+              "passed": true,
+              "details": "Passagen ohne Text: -"
+            }
+          ]
+        },
+        {
+          "id": "MAPPING-2",
+          "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+          "status": "complete",
+          "dependsOn": [
+            "MAPPING-1"
+          ],
+          "checks": [
+            {
+              "id": "source-goals-created",
+              "label": "Aus den Inhaltszeilen der E-/Q-Themenfelder wurden Source-Ziele erzeugt",
+              "passed": true,
+              "details": "203 Source-Ziele"
+            },
+            {
+              "id": "passage-to-source-goal-coverage",
+              "label": "Jede zieltragende Themenfeld-Passage hat mindestens ein Source-Ziel",
+              "passed": true,
+              "details": "Themenfeld-Passagen ohne Source-Ziele: -; Standards und Basiskonzepte bleiben Passage-Kontext."
+            },
+            {
+              "id": "source-goal-ids-unique",
+              "label": "Source-Ziel-IDs sind eindeutig",
+              "passed": true,
+              "details": "Doppelte IDs: -"
+            },
+            {
+              "id": "source-goals-reference-passages",
+              "label": "Jedes Source-Ziel referenziert eine vorhandene Originalpassage",
+              "passed": true,
+              "details": "Ohne Passage: -"
+            },
+            {
+              "id": "count-sanity",
+              "label": "Source-Ziel-Anzahl ist gegen den geprüften HE/BW-Median plausibilisiert",
+              "passed": true,
+              "details": "203 Source-Ziele. HE/BW Sek-II-Chemie-Referenz: HE 202, BW 126, Median 164, 30%-Korridor 115-213."
+            }
+          ]
+        },
+        {
+          "id": "MAPPING-3",
+          "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+          "status": "incomplete",
+          "dependsOn": [
+            "MAPPING-1",
+            "MAPPING-2"
+          ],
+          "checks": [
+            {
+              "id": "mapping-2-complete",
+              "label": "MAPPING-2 abgeschlossen",
+              "passed": true,
+              "details": "203 Source-Ziele liegen vor; MAPPING-3 läuft gegen diese Source-Extraction-IDs."
+            },
+            {
+              "id": "m3-review-file-present",
+              "label": "M3-Review-Datei ist vorhanden",
+              "passed": true,
+              "details": "curricula/DE/Gymnasium/mapping/DE-BB/upper-secondary/bb_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json"
+            },
+            {
+              "id": "m3-review-decisions-reference-source-goals",
+              "label": "M3-Review-Entscheidungen referenzieren gültige Source-Ziele",
+              "passed": true,
+              "details": "Noch keine Review-Entscheidungen vorhanden."
+            },
+            {
+              "id": "m3-review-targets-exist",
+              "label": "M3-Review-Ziele referenzieren vorhandene Canonical-Ziele",
+              "passed": true,
+              "details": "Noch keine Canonical-Ziele referenziert."
+            },
+            {
+              "id": "m3-all-source-goals-reviewed",
+              "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+              "passed": false,
+              "details": "0/203 Source-Ziele reviewed; offen: 203."
+            },
+            {
+              "id": "m3-all-source-goals-covered-by-canonical",
+              "label": "Alle Source-Ziele sind durch SkillPilot-Ziele abgedeckt",
+              "passed": false,
+              "details": "Fachlich abgedeckt: 0/203; MAPPING-3 steht aus."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "path": "curricula/DE/Gymnasium/mapping/DE-BB/upper-secondary/bb_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+    "normalBeforePin": {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BB/upper-secondary/bb_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "sha256": "eee4983862b4a1c65a347a8165095a416bab973384e25a6b901120c8d9a30767",
+      "bytes": 196788
+    },
+    "summary": {
+      "sourceGoals": 203,
+      "mappedSourceGoals": 203,
+      "needsCanonicalGoal": 0,
+      "exactMappings": 100,
+      "partialMappings": 103
+    }
+  },
+  {
+    "path": "curricula/DE/Gymnasium/input/BE/upper-secondary/source-extraction/DE_BE_CHEMIE_SEKII_RLP_GOST_2022.source-extraction.json",
+    "normalBeforePin": {
+      "path": "curricula/DE/Gymnasium/input/BE/upper-secondary/source-extraction/DE_BE_CHEMIE_SEKII_RLP_GOST_2022.source-extraction.json",
+      "sha256": "725fa8b2e3c2e5cf8244c945bcf52c1d8bb6fe3ac0c4a445ac763f5479e09ead",
+      "bytes": 365064
+    },
+    "method": {
+      "type": "official-pdf-source-extraction",
+      "notes": "Die Source-Extraction basiert auf dem lokal archivierten amtlichen Teil-C-PDF Chemie fuer die gymnasiale Oberstufe Berlin-Brandenburg. Als Passagen werden Abschlussstandards, das Basiskonzept-Kapitel 2.3 sowie die E-Phasen- und Q-Phasen-Themenfelder extrahiert. Source-Ziele werden nur aus den Inhaltszeilen der Themenfelder erzeugt; Standards, Basiskonzepte, Experimente, Fachbegriffe, Kontexte und exemplarische Kompetenzentwicklungsbeitraege bleiben Passage-Kontext. Die Source-Ziel-Extraktion nutzt pdftotext -raw, damit die zweispaltigen Grundkurs-/Leistungskurs-Tabellen nicht zu gemischten Kunstzielen verkleben."
+    },
+    "pipelineStatus": {
+      "currentStep": "MAPPING-3",
+      "steps": [
+        {
+          "id": "MAPPING-1",
+          "label": "Original-Lehrplanpassagen extrahiert",
+          "status": "complete",
+          "dependsOn": [],
+          "checks": [
+            {
+              "id": "source-document-present",
+              "label": "Amtliche BE/BB-Chemie-GOST-Quelle liegt lokal vor",
+              "passed": true,
+              "details": "curricula/DE/Gymnasium/input/BE/upper-secondary/Teil_C_RLP_GOST_2022_Chemie.pdf"
+            },
+            {
+              "id": "expected-topic-coverage",
+              "label": "Alle erwarteten Chemie-GOST-Abschnitte sind als Lehrplanpassagen vorhanden",
+              "passed": true,
+              "details": "23/23 Abschnitte; fehlend: -"
+            },
+            {
+              "id": "unique-topic-passages",
+              "label": "Jeder Abschnitt hat genau eine Passage",
+              "passed": true,
+              "details": "Doppelte Abschnitte: -"
+            },
+            {
+              "id": "passage-text-present",
+              "label": "Jede Passage enthält offiziellen Text",
+              "passed": true,
+              "details": "Passagen ohne Text: -"
+            }
+          ]
+        },
+        {
+          "id": "MAPPING-2",
+          "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+          "status": "complete",
+          "dependsOn": [
+            "MAPPING-1"
+          ],
+          "checks": [
+            {
+              "id": "source-goals-created",
+              "label": "Aus den Inhaltszeilen der E-/Q-Themenfelder wurden Source-Ziele erzeugt",
+              "passed": true,
+              "details": "203 Source-Ziele"
+            },
+            {
+              "id": "passage-to-source-goal-coverage",
+              "label": "Jede zieltragende Themenfeld-Passage hat mindestens ein Source-Ziel",
+              "passed": true,
+              "details": "Themenfeld-Passagen ohne Source-Ziele: -; Standards und Basiskonzepte bleiben Passage-Kontext."
+            },
+            {
+              "id": "source-goal-ids-unique",
+              "label": "Source-Ziel-IDs sind eindeutig",
+              "passed": true,
+              "details": "Doppelte IDs: -"
+            },
+            {
+              "id": "source-goals-reference-passages",
+              "label": "Jedes Source-Ziel referenziert eine vorhandene Originalpassage",
+              "passed": true,
+              "details": "Ohne Passage: -"
+            },
+            {
+              "id": "count-sanity",
+              "label": "Source-Ziel-Anzahl ist gegen den geprüften HE/BW-Median plausibilisiert",
+              "passed": true,
+              "details": "203 Source-Ziele. HE/BW Sek-II-Chemie-Referenz: HE 202, BW 126, Median 164, 30%-Korridor 115-213."
+            }
+          ]
+        },
+        {
+          "id": "MAPPING-3",
+          "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+          "status": "incomplete",
+          "dependsOn": [
+            "MAPPING-1",
+            "MAPPING-2"
+          ],
+          "checks": [
+            {
+              "id": "mapping-2-complete",
+              "label": "MAPPING-2 abgeschlossen",
+              "passed": true,
+              "details": "203 Source-Ziele liegen vor; MAPPING-3 läuft gegen diese Source-Extraction-IDs."
+            },
+            {
+              "id": "m3-review-file-present",
+              "label": "M3-Review-Datei ist vorhanden",
+              "passed": true,
+              "details": "curricula/DE/Gymnasium/mapping/DE-BE/upper-secondary/be_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json"
+            },
+            {
+              "id": "m3-review-decisions-reference-source-goals",
+              "label": "M3-Review-Entscheidungen referenzieren gültige Source-Ziele",
+              "passed": true,
+              "details": "Noch keine Review-Entscheidungen vorhanden."
+            },
+            {
+              "id": "m3-review-targets-exist",
+              "label": "M3-Review-Ziele referenzieren vorhandene Canonical-Ziele",
+              "passed": true,
+              "details": "Noch keine Canonical-Ziele referenziert."
+            },
+            {
+              "id": "m3-all-source-goals-reviewed",
+              "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+              "passed": false,
+              "details": "0/203 Source-Ziele reviewed; offen: 203."
+            },
+            {
+              "id": "m3-all-source-goals-covered-by-canonical",
+              "label": "Alle Source-Ziele sind durch SkillPilot-Ziele abgedeckt",
+              "passed": false,
+              "details": "Fachlich abgedeckt: 0/203; MAPPING-3 steht aus."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "path": "curricula/DE/Gymnasium/mapping/DE-BE/upper-secondary/be_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+    "normalBeforePin": {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BE/upper-secondary/be_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "sha256": "8539dd21c380c1d0d4e942ff23a61f6a2aa6a3a905356bd5be5dddcddd781ab9",
+      "bytes": 196788
+    },
+    "summary": {
+      "sourceGoals": 203,
+      "mappedSourceGoals": 203,
+      "needsCanonicalGoal": 0,
+      "exactMappings": 100,
+      "partialMappings": 103
+    }
+  }
+]

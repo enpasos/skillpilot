@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-006-v1-resolution-d72cbb62-0b65-5b9a-aece-70c23d4e618a",
+  "goal": {
+    "goalId": "d72cbb62-0b65-5b9a-aece-70c23d4e618a",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:edfb0b1b1399d86865d83fec9ce956437a985e7781ef20792da4187085172733",
+    "pageFingerprint": "sha256:2925cb56beb233e66571304e628b1bc42068b02113eb61b9a2075b58ecb7b99c",
+    "goalReviewContextFingerprint": "sha256:275ca83c539be881348cf94207a0d3786580a662cd5760f32a9197b70720d5e3",
+    "finalText": {
+      "titleDe": "Organische Farbmittel nach Kriterien einteilen",
+      "titleEn": "Classify organic colourants using explicit criteria",
+      "descriptionDe": "Die lernende Person kann ausgewählte organische Farbmittelklassen anhand ausdrücklich benannter Kriterien vorstellen und gegebene Vertreter nachvollziehbar einteilen. Sie berücksichtigt dabei Azofarbstoffe und mindestens zwei weitere ausgewählte Farbstoffklassen und erläutert, wie Einteilungen nach Molekülstruktur, Löslichkeit, Herkunft, Färbemethode oder Verwendung unterschiedliche Zuordnungskriterien nutzen.",
+      "descriptionEn": "The learner can introduce selected classes of organic colourants using explicitly named criteria and classify supplied representatives transparently. They include azo dyes and at least two further selected dye classes and explain how classification by molecular structure, solubility, origin, dyeing method or use applies different criteria."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-006-v1-a",
+      "campaignDigest": "sha256:fac08f3e3e72b3fd65ead31deeafeff62268bea1795f229f19ce85a234e57356",
+      "roundId": "chemie-final-current-context-d-006-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-006-v1-independent-a",
+      "reviewInputFingerprint": "sha256:738c48a5d1a135a764fe483a52f078a241f0f4149b0c7e6ce492ebd53c660d26",
+      "goalReviewContextFingerprint": "sha256:275ca83c539be881348cf94207a0d3786580a662cd5760f32a9197b70720d5e3",
+      "batchId": "chemie-final-current-context-d-006-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch006-20261018",
+      "runManifestDigest": "sha256:419ac41027d7c6085c20a41a7aab2cc5ee3abf5e395b843a596d9b21dbec3d58",
+      "resultsDigest": "sha256:cb07854e0ea40039098f3d266438ec683a808fb475249442535af494ff91bdbe",
+      "recordId": "codex-reviewer-a-final163-batch006-20261018.020",
+      "recordDigest": "sha256:897a55bfc5b4c517df5215682e411d90098e713e25d11bf052fa413c766d3f4e"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-006-v1-b",
+      "campaignDigest": "sha256:e6860f2b3431737a13818dccb510d68b769ac8de8183a266a418614495ba524a",
+      "roundId": "chemie-final-current-context-d-006-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-006-v1-independent-b",
+      "reviewInputFingerprint": "sha256:738c48a5d1a135a764fe483a52f078a241f0f4149b0c7e6ce492ebd53c660d26",
+      "goalReviewContextFingerprint": "sha256:275ca83c539be881348cf94207a0d3786580a662cd5760f32a9197b70720d5e3",
+      "batchId": "chemie-final-current-context-d-006-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-006-20261018",
+      "runManifestDigest": "sha256:f5dff68c2824391cbd358b0efcda18f60656322f44c47dd579639b30eb8f1789",
+      "resultsDigest": "sha256:1905ddcd08914170e96a8288a0308e1390cdf5eb3bbb2c7eb917107830344a7f",
+      "recordId": "chemie-final163-native-b-006-20261018:d72cbb62-0b65-5b9a-aece-70c23d4e618a",
+      "recordDigest": "sha256:6edd6065c9a9a54901cc80f84893d65c0a3e2dfac2bfc1a630147e565b763f6a"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:c423e5d81f53d59095437ae568e0caca6a758058bafd394031ce2cb0f01fc495"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-006-20261018-v1",
+    "manifestDigest": "sha256:841af7f6a231319d70d92e84fb977818248d5825b592e050c63ab4be72fe9634",
+    "manifestFingerprint": "sha256:8a70d3defa5ac0d85b5224774db191bed348f860796a294e7732ed4830512bfe",
+    "decisionId": "chemie-final163-paired-D-only-006-20261018-v1-decision-020"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-006-20261018-v1-decision-020",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:35:51.247Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch006-20261018.020): D legt in beiden Sprachen eine sinnvolle mehrdimensionale Klassifikation mit mindestens drei Klassen fest. Die tatsächlich gelesenen vollständigen A/B/C- und P/Q/R-Karten tragen diese Leistung einschließlich löslich versus pigmentär und Herkunft versus Identität. Das ebenfalls vollständig gelesene hb217-Material ist chemisch plausibel, verlangt aber zusätzlich die Erklärung eines Absorptionswechsels 450→300 nm im Energielückenmodell als Pflicht. Diese Farbigkeitsmechanismusleistung steht nicht in der aktuellen Klassifikationsbeschreibung; P deshalb zur Scope-Ausrichtung überarbeiten, D beibehalten. B (chemie-final163-native-b-006-20261018:d72cbb62-0b65-5b9a-aece-70c23d4e618a): Das bilinguale Ziel ist als mehrkriterielle Klassifikationskompetenz nach dem Stoffklassen-Vorläufer klar und atomar. Die tatsächlich gelesenen vollständigen A/B/C- und P/Q/R/P′-Karten tragen alle fünf Kriterien und einen echten Neueinteilungstransfer. Das zusätzlich vollständig gelesene hb217-Material ist fachlich bedingt formuliert, verlangt aber als Pflichtleistung eine Erklärung des Absorptionswechsels im Energielückenmodell. Diese kausale Farbigkeitserklärung folgt nicht aus dem aktuellen D mit Vorstellen und kriterientreuem Einteilen. P deshalb hinsichtlich dieser zusätzlichen Abschlussanforderung an den geltenden Klassifikationsumfang anbinden; D nicht zur Rechtfertigung des Zusatzes erweitern. Die tatsächlichen gelesenen Sachmaterialien werden separat gepinnt. Die ausdrücklich gemeldete P-Abgrenzung bleibt offen; diese D-Entscheidung schließt weder P noch das Fünf-Gate-Ziel ab.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch006-20261018.020; chemie-final163-native-b-006-20261018:d72cbb62-0b65-5b9a-aece-70c23d4e618a). Their current English understanding evidence is retained: A: Structural class, solubility in the specified medium, origin, dyeing method and use describe different classification criteria for a colourant. B: Structural class, solubility, origin, dyeing method and use are different criteria that must be identified independently for the same organic colourant. This is synthesis, not a new independent review. The explicitly recorded P-alignment finding remains open; this D decision closes neither P nor the five-gate goal.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Strukturklasse, Löslichkeit im jeweiligen Medium, Herkunft, Färbemethode und Verwendung beschreiben unterschiedliche Einteilungskriterien eines Farbmittels.",
+      "essentialUnderstandingEn": "Structural class, solubility in the specified medium, origin, dyeing method and use describe different classification criteria for a colourant.",
+      "observablePerformanceDe": "Stellt Azo-, Triarylmethan- und Anthocyaninmerkmale vor und ordnet die gegebenen A/B/C- und P/Q/R-Karten nach jedem benannten Kriterium mit expliziten Datenlücken zu.",
+      "observablePerformanceEn": "Introduces azo, triarylmethane and anthocyanin features and assigns the supplied A/B/C and P/Q/R cards under each stated criterion, identifying missing data.",
+      "transferExpectationDe": "Erklärt am identischen synthetischen statt extrahierten Vertreter und am sulfonierten P′ getrennt, welche Herkunfts-, Struktur-, Löslichkeits- und Nutzungszuordnungen sich ändern.",
+      "transferExpectationEn": "Explains separately which origin, structure, solubility and use assignments change for an identical synthetic rather than extracted representative and for sulfonated P-prime."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-042a3134ee8be54fd45cc293a3a6d6100190aa70e83da9754517329b693f35ed",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:efeee78b5da0528fcb3eb893fb273286f6374f53d1df142b5d43a456238f7af5"
+}

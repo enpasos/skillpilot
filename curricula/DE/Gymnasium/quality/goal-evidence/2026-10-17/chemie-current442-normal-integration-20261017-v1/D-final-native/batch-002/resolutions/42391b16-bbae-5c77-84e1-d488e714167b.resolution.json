@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-002-v1-resolution-42391b16-bbae-5c77-84e1-d488e714167b",
+  "goal": {
+    "goalId": "42391b16-bbae-5c77-84e1-d488e714167b",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:ee5f0c28ebdcefb244e282c65781c135430a0e3cf9d8441a82f1cc03097a6164",
+    "pageFingerprint": "sha256:c893b9db438582eada8a1acb2e6f52735109310c6228c6ef271206a7f95e45e9",
+    "goalReviewContextFingerprint": "sha256:cd6a28b6b405084a081ec44214be10eb8cef83e70202b5fadf4989bd740a5aee",
+    "finalText": {
+      "titleDe": "Chemische Untersuchungen selbst planen und durchführen",
+      "titleEn": "Plan and carry out chemical investigations independently",
+      "descriptionDe": "Die lernende Person kann einfache qualitative und quantitative Untersuchungen zur Prüfung chemischer Hypothesen selbst planen, geeignete Einflussgrößen und Vergleichsbedingungen wählen, geeignete Arbeitstechniken sicher anwenden und die tatsächlich ausgeführten Untersuchungen nachvollziehbar protokollieren.",
+      "descriptionEn": "The learner can independently plan simple qualitative and quantitative investigations to test chemical hypotheses, select appropriate variables and comparison conditions, use suitable working techniques safely and record the investigations actually performed."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-002-v1-a",
+      "campaignDigest": "sha256:b715fd8a726cbbb7aaa20c5ec2078404f295bc90d3f8bc2a5d9f561cd958d38e",
+      "roundId": "chemie-final-current-context-d-002-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-002-v1-independent-a",
+      "reviewInputFingerprint": "sha256:d831530f4fe9ba4c7701b62a5c1bcea6bdf04d0ee9729de34f23dbad666c8a9f",
+      "goalReviewContextFingerprint": "sha256:cd6a28b6b405084a081ec44214be10eb8cef83e70202b5fadf4989bd740a5aee",
+      "batchId": "chemie-final-current-context-d-002-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch002-20261018",
+      "runManifestDigest": "sha256:6ca66c1115aa27b4d2c73625e937471778c2db2938916b49f6ccc95a7860873d",
+      "resultsDigest": "sha256:ef5c73b963b42df01542d403d612c96c262c8a902a63b3774a35b2b9ec126b7c",
+      "recordId": "codex-reviewer-a-final163-batch002-20261018.011",
+      "recordDigest": "sha256:2bce1522b14af888849064e15071591704e1d95a7e2f89913416185017e9c82f"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-002-v1-b",
+      "campaignDigest": "sha256:070e2daf91a611e1ffff2447e23f61558c7f9c9fa26cf87c154c53f406c8b793",
+      "roundId": "chemie-final-current-context-d-002-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-002-v1-independent-b",
+      "reviewInputFingerprint": "sha256:d831530f4fe9ba4c7701b62a5c1bcea6bdf04d0ee9729de34f23dbad666c8a9f",
+      "goalReviewContextFingerprint": "sha256:cd6a28b6b405084a081ec44214be10eb8cef83e70202b5fadf4989bd740a5aee",
+      "batchId": "chemie-final-current-context-d-002-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-002-20261018",
+      "runManifestDigest": "sha256:c410bb8b0ad9e827901944da0e700a9181082c10d1bbd55ac65a836583b30c6e",
+      "resultsDigest": "sha256:ab8f5774eb6180f67af823d96057f3949f0fb175c7d25a6a52ba94e0874f30cc",
+      "recordId": "chemie-final163-native-b-002-20261018:42391b16-bbae-5c77-84e1-d488e714167b",
+      "recordDigest": "sha256:6296ae3b7b7b10c34c98d70636ed21d8c98528b7ffc927e9822d033d41b4fa7f"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:d8fb237c4bfae646ace584c195b8d46e5310536aa5be0abf6e49298504cbd0d9"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-002-20261018-v1",
+    "manifestDigest": "sha256:067c0f4ea81884ab77197d8b88f8f555468ebc2707980d808fe8e93abaaa1073",
+    "manifestFingerprint": "sha256:015048c1d39b768cb2cc3bd33b3adb266d68832f23abfb86d580299bfc453bfc",
+    "decisionId": "chemie-final163-paired-D-only-002-20261018-v1-decision-011"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-002-20261018-v1-decision-011",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:25:09.454Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch002-20261018.011): Der Text grenzt eigene Planung und Durchführung vom angeleiteten Vorgänger ab. Das ganze P verlangt echte qualitative/quantitative Logs und begrenzt Proteintrübung, Öl-Emulsion und Sättigungsbefund korrekt; gefährdende Handlungen bleiben betreut und freigabepflichtig. B (chemie-final163-native-b-002-20261018:42391b16-bbae-5c77-84e1-d488e714167b): Der Text unterscheidet selbstständige Planung und tatsächliche Durchführung vom vorausgesetzten angeleiteten Arbeiten. P enthält kontrollierte Salz-/Sättigungsfälle und themenspezifische HB-Variationen mit Freigabe, unverfälschtem Rohprotokoll und Grenzen von Trübung als Denaturierungsbeleg; keine bloße Auswertung ersetzt die Handlung.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch002-20261018.011; chemie-final163-native-b-002-20261018:42391b16-bbae-5c77-84e1-d488e714167b). Their current English understanding evidence is retained: A: Own hypothesis testing connects qualitative observation, quantitative measurement, a controlled variable and safe actual execution. B: Hypothesis testing connects own variable choice, controls, qualitative observation and quantitative data to actual safe work. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Eigene Hypothesenprüfung verbindet qualitative Beobachtung, quantitative Messung, kontrollierte Variable und sichere tatsächliche Durchführung.",
+      "essentialUnderstandingEn": "Own hypothesis testing connects qualitative observation, quantitative measurement, a controlled variable and safe actual execution.",
+      "observablePerformanceDe": "Plant einen eigenen freizugebenden Vergleich, führt ihn selbst aus und protokolliert unveränderte Rohdaten und Abweichungen.",
+      "observablePerformanceEn": "Plans an own investigation for release, personally executes it and records unaltered raw data and deviations.",
+      "transferExpectationDe": "Verbessert bei Temperaturstörung oder unscharfer Sättigungsgrenze die Kontrollen und begründet, welche neue Leistung noch auszuführen ist.",
+      "transferExpectationEn": "Improves controls for temperature confounding or a coarse saturation boundary and explains what fresh work still needs execution."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-3b942f0d9b09a746b049a786758fd2cd13f09f8f868134fc601e6a53e0e1386b",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:bceb7d841ac59d100e8e6d7aa150f7e32436555b0ff7682c754af2829c1c5503"
+}

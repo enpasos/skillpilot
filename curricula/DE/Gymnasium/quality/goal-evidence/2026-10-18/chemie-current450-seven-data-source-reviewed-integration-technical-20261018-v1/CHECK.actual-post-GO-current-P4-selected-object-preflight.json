@@ -1,0 +1,700 @@
+{
+  "status": "PASS",
+  "mode": "READ_ONLY_PREPARATION_NO_NORMAL_MUTATION",
+  "createdAtUTC": "2026-10-18T03:52:23.018801+00:00",
+  "foreignAuthorSeal": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-eight-constant-composition-general-data-source-author-successor-20261018-v1/SEAL.inactive-eight-general-data-source-author-successor.json",
+    "sha256": "47f2aa9898e1279f5f4184f421839303c9e374962f0e5254012b412fec88d209",
+    "bytes": 4600
+  },
+  "independentSourceFirst": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-eight-constant-composition-general-data-source-informed-independent-a-20261018-v1/FIRST.independent-a.seven-quantitative-data-source-contributions.json",
+    "sha256": "8854fffa6b2ea3f8e37b40ac01d9ff62e9c7fd9dc8f820848ff47910ba6777f4",
+    "bytes": 36758
+  },
+  "independentSourceSeal": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-eight-constant-composition-general-data-source-informed-independent-a-20261018-v1/SEAL.independent-a.C7-seven-quantitative-source-successor.json",
+    "sha256": "fdd5b7f42626545589262c1b576871a541674a98ae6818a02c6ab5820ae38c0a",
+    "bytes": 4862
+  },
+  "exactLaterNormalWriteList": [
+    "curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_CHEMIE_SEKI_RAHMENPLAN_2021.source-extraction.json",
+    "curricula/DE/Gymnasium/input/RP/lower-secondary/source-extraction/DE_RP_CHEMIE_SEKI_RAHMENLEHRPLAN_2014.source-extraction.json",
+    "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_CHEMIE_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+    "curricula/DE/Gymnasium/input/ST/upper-secondary/source-extraction/DE_ST_CHEMIE_SEKII_FACHLEHRPLAN_GYMNASIUM_2022.source-extraction.json",
+    "curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_CHEMIE_SEKI_LEHRPLAN_GYMNASIUM_2024.source-extraction.json",
+    "curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+    "curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_chemistry_lower_secondary_to_canonical_chemistry.json",
+    "curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+    "curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_chemistry_lower_secondary_to_canonical_chemistry.json",
+    "curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+    "curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_chemistry_lower_secondary_to_canonical_chemistry.json",
+    "curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.json",
+    "curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+    "curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_chemistry_lower_secondary_to_canonical_chemistry.json",
+    "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+    "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_chemistry_lower_secondary_to_canonical_chemistry.json",
+    "curricula/DE/Gymnasium/mapping/DE-ST/upper-secondary/st_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+    "curricula/DE/Gymnasium/mapping/DE-ST/upper-secondary/st_chemistry_upper_secondary_to_canonical_chemistry.json",
+    "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+    "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_chemistry_lower_secondary_to_canonical_chemistry.json"
+  ],
+  "counts": {
+    "sourceInventoriesToAppend": 5,
+    "oldSourceUnitsObservedReadOnly": 2,
+    "mappingAliases": 15,
+    "partialTuplesToAppend": 15,
+    "totalNormalFiles": 20
+  },
+  "changes": [
+    {
+      "path": "curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_CHEMIE_SEKI_RAHMENPLAN_2021.source-extraction.json",
+      "kind": "append-one-whole-sourceGoal-and-one-whole-passage",
+      "beforePin": {
+        "path": "curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_CHEMIE_SEKI_RAHMENPLAN_2021.source-extraction.json",
+        "sha256": "f8fe7064ab5d0b5f35bf6b05dced7d97ddbf7d1e4295719aeb52b4a16dfe78af",
+        "bytes": 213758
+      },
+      "selectedRestore": {
+        "removeSourceGoalId": "mv-chemistry-seki-process-standard-e-data-patterns",
+        "removePassageId": "mv-chemistry-seki-process-standard-e-data-patterns:whole-primary-context",
+        "removeNewMetadataKey": "c7QuantitativeDataPartialIntegration"
+      },
+      "newSourceGoalId": "mv-chemistry-seki-process-standard-e-data-patterns",
+      "beforeWholeObjectSHA256": "23cebd9afd0965e184d6a5d66c611fb5f0ea4a670fe1c9164eefccd447c66ff2",
+      "afterWholeObjectSHA256": "8d9c3865d04e0c7867c8e17fdaeb9c176199172e29488bd25b233524179ac29e",
+      "currentOldSourceGoals": 114,
+      "currentNewSourceGoals": 115,
+      "currentOldMappingRows": 0,
+      "currentNewMappingRows": 0,
+      "allUnrelatedWholeObjectsAndMetadataRetained": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/RP/lower-secondary/source-extraction/DE_RP_CHEMIE_SEKI_RAHMENLEHRPLAN_2014.source-extraction.json",
+      "kind": "append-one-whole-sourceGoal-and-one-whole-passage",
+      "beforePin": {
+        "path": "curricula/DE/Gymnasium/input/RP/lower-secondary/source-extraction/DE_RP_CHEMIE_SEKI_RAHMENLEHRPLAN_2014.source-extraction.json",
+        "sha256": "aef5035f5da0970fe5a4465f9633aed8c7b0815ec667a36dfcb77dfa1ae23701",
+        "bytes": 186202
+      },
+      "selectedRestore": {
+        "removeSourceGoalId": "rp-chemistry-seki-process-standard-5-3-2-e-data-model-conclusions",
+        "removePassageId": "rp-chemistry-seki-process-standard-5-3-2-e-data-model-conclusions:whole-primary-context",
+        "removeNewMetadataKey": "c7QuantitativeDataPartialIntegration"
+      },
+      "newSourceGoalId": "rp-chemistry-seki-process-standard-5-3-2-e-data-model-conclusions",
+      "beforeWholeObjectSHA256": "497308fbc8b9750dab2496034720951ad438dfbded1554655ab57ae7c9b5d850",
+      "afterWholeObjectSHA256": "b269db0d2b0c36456d2ed613489bfe82ba7842be4d0f3e793cc2abe35a7e7074",
+      "currentOldSourceGoals": 65,
+      "currentNewSourceGoals": 66,
+      "currentOldMappingRows": 0,
+      "currentNewMappingRows": 0,
+      "allUnrelatedWholeObjectsAndMetadataRetained": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_CHEMIE_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+      "kind": "append-one-whole-sourceGoal-and-one-whole-passage",
+      "beforePin": {
+        "path": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_CHEMIE_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+        "sha256": "08ef4b0f890b96d051d7542620d501e8fc8ce6d7f7ba506f918d4c2784aa80a2",
+        "bytes": 518948
+      },
+      "selectedRestore": {
+        "removeSourceGoalId": "sn-chemistry-seki-process-standard-kl9-quantitative-mathematical-relations",
+        "removePassageId": "sn-chemistry-seki-process-standard-kl9-quantitative-mathematical-relations:whole-primary-context",
+        "removeNewMetadataKey": "c7QuantitativeDataPartialIntegration"
+      },
+      "newSourceGoalId": "sn-chemistry-seki-process-standard-kl9-quantitative-mathematical-relations",
+      "beforeWholeObjectSHA256": "e83722e739181cfb25b8ba0d1e7b3140dc4848128375f983bdad533ea1b84003",
+      "afterWholeObjectSHA256": "52aa01466962a754d83fc1c201eeeb94714df1bde60207e9f64cdc57c612fbc0",
+      "currentOldSourceGoals": 187,
+      "currentNewSourceGoals": 188,
+      "currentOldMappingRows": 0,
+      "currentNewMappingRows": 0,
+      "allUnrelatedWholeObjectsAndMetadataRetained": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/ST/upper-secondary/source-extraction/DE_ST_CHEMIE_SEKII_FACHLEHRPLAN_GYMNASIUM_2022.source-extraction.json",
+      "kind": "append-one-whole-sourceGoal-and-one-whole-passage",
+      "beforePin": {
+        "path": "curricula/DE/Gymnasium/input/ST/upper-secondary/source-extraction/DE_ST_CHEMIE_SEKII_FACHLEHRPLAN_GYMNASIUM_2022.source-extraction.json",
+        "sha256": "18dfa0b0b5d745e6c5798ca5ef0fc9be28f7ef6d3691c0889ed34c5b7a05a226",
+        "bytes": 894786
+      },
+      "selectedRestore": {
+        "removeSourceGoalId": "st-chemistry-sekii-process-standard-q-e-mathematical-methods",
+        "removePassageId": "st-chemistry-sekii-process-standard-q-e-mathematical-methods:whole-primary-context",
+        "removeNewMetadataKey": "c7QuantitativeDataPartialIntegration"
+      },
+      "newSourceGoalId": "st-chemistry-sekii-process-standard-q-e-mathematical-methods",
+      "beforeWholeObjectSHA256": "999788600786ee90b1f235459cff0e9a9263fee890ce9fb9c8064f36d1edc2e8",
+      "afterWholeObjectSHA256": "1f2e4dd5b418d6d725dca0bbf1ef1b929cecd3fc3e00f99e1152a1241ce2fa88",
+      "currentOldSourceGoals": 332,
+      "currentNewSourceGoals": 333,
+      "currentOldMappingRows": 0,
+      "currentNewMappingRows": 0,
+      "allUnrelatedWholeObjectsAndMetadataRetained": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_CHEMIE_SEKI_LEHRPLAN_GYMNASIUM_2024.source-extraction.json",
+      "kind": "append-one-whole-sourceGoal-and-one-whole-passage",
+      "beforePin": {
+        "path": "curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_CHEMIE_SEKI_LEHRPLAN_GYMNASIUM_2024.source-extraction.json",
+        "sha256": "cacdcdb7a8b6771244ad196595db1d9b1e9c96cefd9c6a05b46bc7fcfccd99b4",
+        "bytes": 447809
+      },
+      "selectedRestore": {
+        "removeSourceGoalId": "th-chemistry-seki-process-standard-e-1-5",
+        "removePassageId": "th-chemistry-seki-process-standard-e-1-5:whole-primary-context",
+        "removeNewMetadataKey": "c7QuantitativeDataPartialIntegration"
+      },
+      "newSourceGoalId": "th-chemistry-seki-process-standard-e-1-5",
+      "beforeWholeObjectSHA256": "b13dd95548bfa8a26afb6562c268e0da23b1accdf7befb0bda9d5b3a2491b385",
+      "afterWholeObjectSHA256": "0dd32fe4e50bda91a107f114c9c618993444a884f1557e820d3d04b39ab023d2",
+      "currentOldSourceGoals": 225,
+      "currentNewSourceGoals": 226,
+      "currentOldMappingRows": 0,
+      "currentNewMappingRows": 0,
+      "allUnrelatedWholeObjectsAndMetadataRetained": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "kind": "append-one-partial-tuple-and-selected-decision-only",
+      "beforePin": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+        "sha256": "69276b7f8f411a0c49f6e52f6c31aa8523be06baec5c672c50b171b3dee32623",
+        "bytes": 101152
+      },
+      "selectedRestore": {
+        "sourceGoalId": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-eg-028-e83f745d",
+        "selectedWholeDecisionBefore": {
+          "sourceGoalId": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-eg-028-e83f745d",
+          "topicCode": "3.1-EG",
+          "sourceSpan": "3.1-EG, S. 20: in Daten Trends, Strukturen und Beziehungen finden, erklaeren und Schlussfolgerungen ziehen",
+          "decision": "mapped",
+          "canonicalGoalIds": [
+            "266a2b2a-9ee2-52f6-ae09-59343da9a60b"
+          ],
+          "rationale": "Das amtliche Chemie-Source-Ziel ist inhaltlich durch ein kanonisches Chemieziel abgedeckt.",
+          "reviewedAt": "2026-05-11",
+          "reviewer": "codex"
+        },
+        "decisionsKeyExistedBefore": true,
+        "removeOneMapping": {
+          "legacyGoalId": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-eg-028-e83f745d",
+          "canonicalGoalId": "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+          "matchType": "partial",
+          "reviewDecisionId": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-eg-028-e83f745d"
+        },
+        "removeNewMetadataKey": "c7QuantitativeDataPartialIntegration"
+      },
+      "sourceGoalId": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-eg-028-e83f745d",
+      "actualSourceExtractionPath": "curricula/DE/Gymnasium/input/HH/lower-secondary/source-extraction/DE_HH_CHEMIE_SEKI_BILDUNGSPLAN.source-extraction.json",
+      "beforeWholeObjectSHA256": "6548c25b37fdce46f0ebeb992f0b83ae0312e1b8829655e49ae5189414065c17",
+      "afterWholeObjectSHA256": "57f01ef400c2eb4a250f8243b73d82651bb76800abe8cceb8d9bb671378bdb90",
+      "currentOldSourceGoals": 0,
+      "currentNewSourceGoals": 0,
+      "currentOldMappingRows": 145,
+      "currentNewMappingRows": 146,
+      "allUnrelatedWholeObjectsAndMetadataRetained": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_chemistry_lower_secondary_to_canonical_chemistry.json",
+      "kind": "append-one-partial-tuple-and-selected-decision-only",
+      "beforePin": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_chemistry_lower_secondary_to_canonical_chemistry.json",
+        "sha256": "b96e1ebf4fd35624e1e0ec17a24c5fb19b96cfb6d0d02bf89d986860b563dc69",
+        "bytes": 42092
+      },
+      "selectedRestore": {
+        "sourceGoalId": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-eg-028-e83f745d",
+        "selectedWholeDecisionBefore": null,
+        "decisionsKeyExistedBefore": false,
+        "removeOneMapping": {
+          "legacyGoalId": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-eg-028-e83f745d",
+          "canonicalGoalId": "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+          "matchType": "partial",
+          "reviewDecisionId": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-eg-028-e83f745d"
+        },
+        "removeNewMetadataKey": "c7QuantitativeDataPartialIntegration"
+      },
+      "sourceGoalId": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-eg-028-e83f745d",
+      "actualSourceExtractionPath": "curricula/DE/Gymnasium/input/HH/lower-secondary/source-extraction/DE_HH_CHEMIE_SEKI_BILDUNGSPLAN.source-extraction.json",
+      "beforeWholeObjectSHA256": "4e87a904e0200897cd623ac78c4583ba6ed60cfd5ff4bb8f80bf3339693e2f0d",
+      "afterWholeObjectSHA256": "96fe3b25bfd350ae7e83d9b48a47d71341539190febd07ffac85edaee8d0462e",
+      "currentOldSourceGoals": 0,
+      "currentNewSourceGoals": 0,
+      "currentOldMappingRows": 145,
+      "currentNewMappingRows": 146,
+      "allUnrelatedWholeObjectsAndMetadataRetained": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "kind": "append-one-partial-tuple-and-selected-decision-only",
+      "beforePin": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+        "sha256": "e2ff001b818c5e63a6727e3a2912a967b3968192ff0f483db849f87a77f4f0a5",
+        "bytes": 219016
+      },
+      "selectedRestore": {
+        "sourceGoalId": "mv-chemistry-seki-process-standard-e-data-patterns",
+        "selectedWholeDecisionBefore": null,
+        "decisionsKeyExistedBefore": true,
+        "removeOneMapping": {
+          "legacyGoalId": "mv-chemistry-seki-process-standard-e-data-patterns",
+          "canonicalGoalId": "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+          "matchType": "partial",
+          "reviewDecisionId": "mv-chemistry-seki-process-standard-e-data-patterns"
+        },
+        "removeNewMetadataKey": "c7QuantitativeDataPartialIntegration"
+      },
+      "sourceGoalId": "mv-chemistry-seki-process-standard-e-data-patterns",
+      "actualSourceExtractionPath": "curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_CHEMIE_SEKI_RAHMENPLAN_2021.source-extraction.json",
+      "beforeWholeObjectSHA256": "1ab1cbd3ba03ba054a22c616742dc19afed14dc3ae5bb558df8c1e954043b504",
+      "afterWholeObjectSHA256": "1ea15f693de02bcd75acb2706e9a59b0a8137a28b0c47d97c183e0502a5a955f",
+      "currentOldSourceGoals": 0,
+      "currentNewSourceGoals": 0,
+      "currentOldMappingRows": 455,
+      "currentNewMappingRows": 456,
+      "allUnrelatedWholeObjectsAndMetadataRetained": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_chemistry_lower_secondary_to_canonical_chemistry.json",
+      "kind": "append-one-partial-tuple-and-selected-decision-only",
+      "beforePin": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_chemistry_lower_secondary_to_canonical_chemistry.json",
+        "sha256": "43f0da094c18db1e1384d279e0e9b9a64ff61895cfae2fe3fd34a6c2ce395004",
+        "bytes": 129074
+      },
+      "selectedRestore": {
+        "sourceGoalId": "mv-chemistry-seki-process-standard-e-data-patterns",
+        "selectedWholeDecisionBefore": null,
+        "decisionsKeyExistedBefore": false,
+        "removeOneMapping": {
+          "legacyGoalId": "mv-chemistry-seki-process-standard-e-data-patterns",
+          "canonicalGoalId": "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+          "matchType": "partial",
+          "reviewDecisionId": "mv-chemistry-seki-process-standard-e-data-patterns"
+        },
+        "removeNewMetadataKey": "c7QuantitativeDataPartialIntegration"
+      },
+      "sourceGoalId": "mv-chemistry-seki-process-standard-e-data-patterns",
+      "actualSourceExtractionPath": "curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_CHEMIE_SEKI_RAHMENPLAN_2021.source-extraction.json",
+      "beforeWholeObjectSHA256": "b467b894345d0256e1bef07a73b3a0a8304266a47426ca44cb1a01583f0783a4",
+      "afterWholeObjectSHA256": "1e15f73cf005013653cce9b90502e0eda71e0a3e3f58d027a875a0c382b76e1f",
+      "currentOldSourceGoals": 0,
+      "currentNewSourceGoals": 0,
+      "currentOldMappingRows": 455,
+      "currentNewMappingRows": 456,
+      "allUnrelatedWholeObjectsAndMetadataRetained": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "kind": "append-one-partial-tuple-and-selected-decision-only",
+      "beforePin": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+        "sha256": "e7d08e35340044bdac3b337483852809b283f24b69fe0376d1b095b0259e37eb",
+        "bytes": 145707
+      },
+      "selectedRestore": {
+        "sourceGoalId": "rp-chemistry-seki-process-standard-5-3-2-e-data-model-conclusions",
+        "selectedWholeDecisionBefore": null,
+        "decisionsKeyExistedBefore": true,
+        "removeOneMapping": {
+          "legacyGoalId": "rp-chemistry-seki-process-standard-5-3-2-e-data-model-conclusions",
+          "canonicalGoalId": "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+          "matchType": "partial",
+          "reviewDecisionId": "rp-chemistry-seki-process-standard-5-3-2-e-data-model-conclusions"
+        },
+        "removeNewMetadataKey": "c7QuantitativeDataPartialIntegration"
+      },
+      "sourceGoalId": "rp-chemistry-seki-process-standard-5-3-2-e-data-model-conclusions",
+      "actualSourceExtractionPath": "curricula/DE/Gymnasium/input/RP/lower-secondary/source-extraction/DE_RP_CHEMIE_SEKI_RAHMENLEHRPLAN_2014.source-extraction.json",
+      "beforeWholeObjectSHA256": "8f08ffc81c4b534d78e1e3a258a8f6c22cd4f293b0b97cef9252eeb723365cdb",
+      "afterWholeObjectSHA256": "15b59cee1bdea619ba520ad8a9bc8f2e1f2a0e9bff1e750d1902714e0e96822d",
+      "currentOldSourceGoals": 0,
+      "currentNewSourceGoals": 0,
+      "currentOldMappingRows": 283,
+      "currentNewMappingRows": 284,
+      "allUnrelatedWholeObjectsAndMetadataRetained": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_chemistry_lower_secondary_to_canonical_chemistry.json",
+      "kind": "append-one-partial-tuple-and-selected-decision-only",
+      "beforePin": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_chemistry_lower_secondary_to_canonical_chemistry.json",
+        "sha256": "72b6d5f070819168934bf856a17bc49e3b897685d3183a11e045a894404e09ce",
+        "bytes": 86448
+      },
+      "selectedRestore": {
+        "sourceGoalId": "rp-chemistry-seki-process-standard-5-3-2-e-data-model-conclusions",
+        "selectedWholeDecisionBefore": null,
+        "decisionsKeyExistedBefore": false,
+        "removeOneMapping": {
+          "legacyGoalId": "rp-chemistry-seki-process-standard-5-3-2-e-data-model-conclusions",
+          "canonicalGoalId": "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+          "matchType": "partial",
+          "reviewDecisionId": "rp-chemistry-seki-process-standard-5-3-2-e-data-model-conclusions"
+        },
+        "removeNewMetadataKey": "c7QuantitativeDataPartialIntegration"
+      },
+      "sourceGoalId": "rp-chemistry-seki-process-standard-5-3-2-e-data-model-conclusions",
+      "actualSourceExtractionPath": "curricula/DE/Gymnasium/input/RP/lower-secondary/source-extraction/DE_RP_CHEMIE_SEKI_RAHMENLEHRPLAN_2014.source-extraction.json",
+      "beforeWholeObjectSHA256": "b41826a7faec23884142d04787e0bc47711e779b1932007ad91fe49a29c17d80",
+      "afterWholeObjectSHA256": "552da5ffc9a1b98fe1322f9a2f41e9b469c12f818447d0a47c8fde5f64a3ddab",
+      "currentOldSourceGoals": 0,
+      "currentNewSourceGoals": 0,
+      "currentOldMappingRows": 283,
+      "currentNewMappingRows": 284,
+      "allUnrelatedWholeObjectsAndMetadataRetained": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.json",
+      "kind": "append-one-partial-tuple-and-selected-decision-only",
+      "beforePin": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.json",
+        "sha256": "8eb9fa3124f5a759a8f20b936359850823f5f47e7b334dd8f8e6b3d3ca6211d5",
+        "bytes": 327133
+      },
+      "selectedRestore": {
+        "sourceGoalId": "de-sh-chemie-seki-fachanforderungen-2022-2-1-1-erkenntnisgewinnung-017-a9c35efe",
+        "selectedWholeDecisionBefore": {
+          "sourceGoalId": "de-sh-chemie-seki-fachanforderungen-2022-2-1-1-erkenntnisgewinnung-017-a9c35efe",
+          "topicCode": "2-1-1-erkenntnisgewinnung",
+          "sourceSpan": "2.1.1 Erkenntnisgewinnung, S. 18: mathematische Verfahren zur Aufbereitung der Daten und zum Erkennen von Trends nutzen.",
+          "decision": "mapped",
+          "canonicalGoalIds": [
+            "49b13b33-34b7-5e4e-861c-b21082cb9922",
+            "91238ba1-5c63-50c7-a4fd-9bbe492c6b61"
+          ],
+          "rationale": "Das amtliche Chemie-Source-Ziel ist inhaltlich durch mehrere kanonische Chemieziele abgedeckt; 1:n beschreibt die Zuordnungsform, nicht eine offene Lücke.",
+          "reviewedAt": "2026-05-11",
+          "reviewer": "codex"
+        },
+        "decisionsKeyExistedBefore": true,
+        "removeOneMapping": {
+          "legacyGoalId": "de-sh-chemie-seki-fachanforderungen-2022-2-1-1-erkenntnisgewinnung-017-a9c35efe",
+          "canonicalGoalId": "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+          "matchType": "partial",
+          "reviewDecisionId": "de-sh-chemie-seki-fachanforderungen-2022-2-1-1-erkenntnisgewinnung-017-a9c35efe"
+        },
+        "removeNewMetadataKey": "c7QuantitativeDataPartialIntegration"
+      },
+      "sourceGoalId": "de-sh-chemie-seki-fachanforderungen-2022-2-1-1-erkenntnisgewinnung-017-a9c35efe",
+      "actualSourceExtractionPath": "curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_CHEMIE_SEKI_FACHANFORDERUNGEN_2022.source-extraction.json",
+      "beforeWholeObjectSHA256": "f5231dd189244180cf26b68e8c4d1deaaa43b0870df5e231257d14d223a2aa10",
+      "afterWholeObjectSHA256": "b641de590dffa050c93292774f73f943ee91262ea3bfa2f8e2b4ef451c606651",
+      "currentOldSourceGoals": 0,
+      "currentNewSourceGoals": 0,
+      "currentOldMappingRows": 481,
+      "currentNewMappingRows": 482,
+      "allUnrelatedWholeObjectsAndMetadataRetained": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "kind": "append-one-partial-tuple-and-selected-decision-only",
+      "beforePin": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+        "sha256": "4882f7e758b08382cfbbb433988ebf26e31d68a4fb7eac93e984ffffb60c55e7",
+        "bytes": 326431
+      },
+      "selectedRestore": {
+        "sourceGoalId": "de-sh-chemie-seki-fachanforderungen-2022-2-1-1-erkenntnisgewinnung-017-a9c35efe",
+        "selectedWholeDecisionBefore": {
+          "sourceGoalId": "de-sh-chemie-seki-fachanforderungen-2022-2-1-1-erkenntnisgewinnung-017-a9c35efe",
+          "topicCode": "2-1-1-erkenntnisgewinnung",
+          "sourceSpan": "2.1.1 Erkenntnisgewinnung, S. 18: mathematische Verfahren zur Aufbereitung der Daten und zum Erkennen von Trends nutzen.",
+          "decision": "mapped",
+          "canonicalGoalIds": [
+            "49b13b33-34b7-5e4e-861c-b21082cb9922",
+            "91238ba1-5c63-50c7-a4fd-9bbe492c6b61"
+          ],
+          "rationale": "Das amtliche Chemie-Source-Ziel ist inhaltlich durch mehrere kanonische Chemieziele abgedeckt; 1:n beschreibt die Zuordnungsform, nicht eine offene Lücke.",
+          "reviewedAt": "2026-05-11",
+          "reviewer": "codex"
+        },
+        "decisionsKeyExistedBefore": true,
+        "removeOneMapping": {
+          "legacyGoalId": "de-sh-chemie-seki-fachanforderungen-2022-2-1-1-erkenntnisgewinnung-017-a9c35efe",
+          "canonicalGoalId": "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+          "matchType": "partial",
+          "reviewDecisionId": "de-sh-chemie-seki-fachanforderungen-2022-2-1-1-erkenntnisgewinnung-017-a9c35efe"
+        },
+        "removeNewMetadataKey": "c7QuantitativeDataPartialIntegration"
+      },
+      "sourceGoalId": "de-sh-chemie-seki-fachanforderungen-2022-2-1-1-erkenntnisgewinnung-017-a9c35efe",
+      "actualSourceExtractionPath": "curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_CHEMIE_SEKI_FACHANFORDERUNGEN_2022.source-extraction.json",
+      "beforeWholeObjectSHA256": "7ff29d9b65a23cde5e4616c0ebde20aaa4b6091f998cba959b18992319616e3b",
+      "afterWholeObjectSHA256": "60b49b38103c80d4e5d51bcce861111ab80a53ac3557baff0e91311a202daaca",
+      "currentOldSourceGoals": 0,
+      "currentNewSourceGoals": 0,
+      "currentOldMappingRows": 480,
+      "currentNewMappingRows": 481,
+      "allUnrelatedWholeObjectsAndMetadataRetained": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_chemistry_lower_secondary_to_canonical_chemistry.json",
+      "kind": "append-one-partial-tuple-and-selected-decision-only",
+      "beforePin": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_chemistry_lower_secondary_to_canonical_chemistry.json",
+        "sha256": "92f70446de28ef3728896fe0428436d4c4f34221e591167725552c16ab494c81",
+        "bytes": 159847
+      },
+      "selectedRestore": {
+        "sourceGoalId": "de-sh-chemie-seki-fachanforderungen-2022-2-1-1-erkenntnisgewinnung-017-a9c35efe",
+        "selectedWholeDecisionBefore": null,
+        "decisionsKeyExistedBefore": false,
+        "removeOneMapping": {
+          "legacyGoalId": "de-sh-chemie-seki-fachanforderungen-2022-2-1-1-erkenntnisgewinnung-017-a9c35efe",
+          "canonicalGoalId": "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+          "matchType": "partial",
+          "reviewDecisionId": "de-sh-chemie-seki-fachanforderungen-2022-2-1-1-erkenntnisgewinnung-017-a9c35efe"
+        },
+        "removeNewMetadataKey": "c7QuantitativeDataPartialIntegration"
+      },
+      "sourceGoalId": "de-sh-chemie-seki-fachanforderungen-2022-2-1-1-erkenntnisgewinnung-017-a9c35efe",
+      "actualSourceExtractionPath": "curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_CHEMIE_SEKI_FACHANFORDERUNGEN_2022.source-extraction.json",
+      "beforeWholeObjectSHA256": "120041f3828558dc6d97a39a0736a335a348e87d02e0b66d7349da37bfaa649f",
+      "afterWholeObjectSHA256": "94aea18bdc3790f961899fc90c5f12bdb26aad025ddd2516f29ac5aaccf52263",
+      "currentOldSourceGoals": 0,
+      "currentNewSourceGoals": 0,
+      "currentOldMappingRows": 473,
+      "currentNewMappingRows": 474,
+      "allUnrelatedWholeObjectsAndMetadataRetained": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "kind": "append-one-partial-tuple-and-selected-decision-only",
+      "beforePin": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+        "sha256": "5c9bf5b546c7d0000fee878b9d73f5c0d6137bedc5e67468f3ffc225ab3a0274",
+        "bytes": 445217
+      },
+      "selectedRestore": {
+        "sourceGoalId": "sn-chemistry-seki-process-standard-kl9-quantitative-mathematical-relations",
+        "selectedWholeDecisionBefore": null,
+        "decisionsKeyExistedBefore": true,
+        "removeOneMapping": {
+          "legacyGoalId": "sn-chemistry-seki-process-standard-kl9-quantitative-mathematical-relations",
+          "canonicalGoalId": "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+          "matchType": "partial",
+          "reviewDecisionId": "sn-chemistry-seki-process-standard-kl9-quantitative-mathematical-relations"
+        },
+        "removeNewMetadataKey": "c7QuantitativeDataPartialIntegration"
+      },
+      "sourceGoalId": "sn-chemistry-seki-process-standard-kl9-quantitative-mathematical-relations",
+      "actualSourceExtractionPath": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_CHEMIE_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+      "beforeWholeObjectSHA256": "598a0f938f72517e7ff068c295c5400792bd8b076a4b12c5ca0833521a0c1460",
+      "afterWholeObjectSHA256": "5e817ba63ec1017175d80b0c2bda40aaef2e493f91b48dc74c71cd4e7e39929f",
+      "currentOldSourceGoals": 0,
+      "currentNewSourceGoals": 0,
+      "currentOldMappingRows": 871,
+      "currentNewMappingRows": 872,
+      "allUnrelatedWholeObjectsAndMetadataRetained": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_chemistry_lower_secondary_to_canonical_chemistry.json",
+      "kind": "append-one-partial-tuple-and-selected-decision-only",
+      "beforePin": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_chemistry_lower_secondary_to_canonical_chemistry.json",
+        "sha256": "0abe376304aa15611221c11c40e1236eabd3a0b1d4fd7d41b4bd3a1f0300147b",
+        "bytes": 244350
+      },
+      "selectedRestore": {
+        "sourceGoalId": "sn-chemistry-seki-process-standard-kl9-quantitative-mathematical-relations",
+        "selectedWholeDecisionBefore": null,
+        "decisionsKeyExistedBefore": false,
+        "removeOneMapping": {
+          "legacyGoalId": "sn-chemistry-seki-process-standard-kl9-quantitative-mathematical-relations",
+          "canonicalGoalId": "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+          "matchType": "partial",
+          "reviewDecisionId": "sn-chemistry-seki-process-standard-kl9-quantitative-mathematical-relations"
+        },
+        "removeNewMetadataKey": "c7QuantitativeDataPartialIntegration"
+      },
+      "sourceGoalId": "sn-chemistry-seki-process-standard-kl9-quantitative-mathematical-relations",
+      "actualSourceExtractionPath": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_CHEMIE_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+      "beforeWholeObjectSHA256": "e1846a2095b532327cbb6fcbafd748999006af5de013c0c23b007a8f5aaa5841",
+      "afterWholeObjectSHA256": "571a223aecef5f754ab6dfd532e78f7c5c23a01b58774abed0bd09825954ae82",
+      "currentOldSourceGoals": 0,
+      "currentNewSourceGoals": 0,
+      "currentOldMappingRows": 867,
+      "currentNewMappingRows": 868,
+      "allUnrelatedWholeObjectsAndMetadataRetained": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-ST/upper-secondary/st_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "kind": "append-one-partial-tuple-and-selected-decision-only",
+      "beforePin": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-ST/upper-secondary/st_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+        "sha256": "af3f320e79cbcfeaed2c93048c9e34e54026519d870902f76ae64b207319ef22",
+        "bytes": 996723
+      },
+      "selectedRestore": {
+        "sourceGoalId": "st-chemistry-sekii-process-standard-q-e-mathematical-methods",
+        "selectedWholeDecisionBefore": null,
+        "decisionsKeyExistedBefore": true,
+        "removeOneMapping": {
+          "legacyGoalId": "st-chemistry-sekii-process-standard-q-e-mathematical-methods",
+          "canonicalGoalId": "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+          "matchType": "partial",
+          "reviewDecisionId": "st-chemistry-sekii-process-standard-q-e-mathematical-methods"
+        },
+        "removeNewMetadataKey": "c7QuantitativeDataPartialIntegration"
+      },
+      "sourceGoalId": "st-chemistry-sekii-process-standard-q-e-mathematical-methods",
+      "actualSourceExtractionPath": "curricula/DE/Gymnasium/input/ST/upper-secondary/source-extraction/DE_ST_CHEMIE_SEKII_FACHLEHRPLAN_GYMNASIUM_2022.source-extraction.json",
+      "beforeWholeObjectSHA256": "446509fc360bceb73e2f585d114c4fa95c01993c1cf5e570c659f13b5dad2226",
+      "afterWholeObjectSHA256": "0109fd3371c58db0c3f4f57d7b2dbc2b4acceee240cdc4d514695570a02a6568",
+      "currentOldSourceGoals": 0,
+      "currentNewSourceGoals": 0,
+      "currentOldMappingRows": 1468,
+      "currentNewMappingRows": 1469,
+      "allUnrelatedWholeObjectsAndMetadataRetained": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-ST/upper-secondary/st_chemistry_upper_secondary_to_canonical_chemistry.json",
+      "kind": "append-one-partial-tuple-and-selected-decision-only",
+      "beforePin": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-ST/upper-secondary/st_chemistry_upper_secondary_to_canonical_chemistry.json",
+        "sha256": "c8dc72db5bf7ebb13de23a75a1298112343b20e0bf14b96595b5a4503ddcd16f",
+        "bytes": 636033
+      },
+      "selectedRestore": {
+        "sourceGoalId": "st-chemistry-sekii-process-standard-q-e-mathematical-methods",
+        "selectedWholeDecisionBefore": null,
+        "decisionsKeyExistedBefore": false,
+        "removeOneMapping": {
+          "legacyGoalId": "st-chemistry-sekii-process-standard-q-e-mathematical-methods",
+          "canonicalGoalId": "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+          "matchType": "partial",
+          "reviewDecisionId": "st-chemistry-sekii-process-standard-q-e-mathematical-methods"
+        },
+        "removeNewMetadataKey": "c7QuantitativeDataPartialIntegration"
+      },
+      "sourceGoalId": "st-chemistry-sekii-process-standard-q-e-mathematical-methods",
+      "actualSourceExtractionPath": "curricula/DE/Gymnasium/input/ST/upper-secondary/source-extraction/DE_ST_CHEMIE_SEKII_FACHLEHRPLAN_GYMNASIUM_2022.source-extraction.json",
+      "beforeWholeObjectSHA256": "dab8c95cc2bd19b3c65ee8c5135c63d8bb518c67132ea82af70e0d4ce1d5daaa",
+      "afterWholeObjectSHA256": "e46dd9f2c9571af8307cf6ab359d922303ddb25f99bb8d6485f8f373d0ea6665",
+      "currentOldSourceGoals": 0,
+      "currentNewSourceGoals": 0,
+      "currentOldMappingRows": 1462,
+      "currentNewMappingRows": 1463,
+      "allUnrelatedWholeObjectsAndMetadataRetained": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "kind": "append-one-partial-tuple-and-selected-decision-only",
+      "beforePin": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+        "sha256": "309e468aeeb3c70479adfdc8ad6fe2bb3e78562143addaa2cc8649a245243b82",
+        "bytes": 503059
+      },
+      "selectedRestore": {
+        "sourceGoalId": "th-chemistry-seki-process-standard-e-1-5",
+        "selectedWholeDecisionBefore": null,
+        "decisionsKeyExistedBefore": true,
+        "removeOneMapping": {
+          "legacyGoalId": "th-chemistry-seki-process-standard-e-1-5",
+          "canonicalGoalId": "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+          "matchType": "partial",
+          "reviewDecisionId": "th-chemistry-seki-process-standard-e-1-5"
+        },
+        "removeNewMetadataKey": "c7QuantitativeDataPartialIntegration"
+      },
+      "sourceGoalId": "th-chemistry-seki-process-standard-e-1-5",
+      "actualSourceExtractionPath": "curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_CHEMIE_SEKI_LEHRPLAN_GYMNASIUM_2024.source-extraction.json",
+      "beforeWholeObjectSHA256": "f509d2b8e00a7f7fef3264a10d9c104bc3b06cdb4ee2c7a2b22cab637a87a317",
+      "afterWholeObjectSHA256": "7a80d1830e7400cd3cb75e957cb1c20abfa78b38634a68115c669ac3e085d9ff",
+      "currentOldSourceGoals": 0,
+      "currentNewSourceGoals": 0,
+      "currentOldMappingRows": 1009,
+      "currentNewMappingRows": 1010,
+      "allUnrelatedWholeObjectsAndMetadataRetained": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_chemistry_lower_secondary_to_canonical_chemistry.json",
+      "kind": "append-one-partial-tuple-and-selected-decision-only",
+      "beforePin": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_chemistry_lower_secondary_to_canonical_chemistry.json",
+        "sha256": "9e752cef5e2e24162fcbcd6919ae680188594affddc6be35aca823500678508a",
+        "bytes": 307761
+      },
+      "selectedRestore": {
+        "sourceGoalId": "th-chemistry-seki-process-standard-e-1-5",
+        "selectedWholeDecisionBefore": null,
+        "decisionsKeyExistedBefore": false,
+        "removeOneMapping": {
+          "legacyGoalId": "th-chemistry-seki-process-standard-e-1-5",
+          "canonicalGoalId": "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+          "matchType": "partial",
+          "reviewDecisionId": "th-chemistry-seki-process-standard-e-1-5"
+        },
+        "removeNewMetadataKey": "c7QuantitativeDataPartialIntegration"
+      },
+      "sourceGoalId": "th-chemistry-seki-process-standard-e-1-5",
+      "actualSourceExtractionPath": "curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_CHEMIE_SEKI_LEHRPLAN_GYMNASIUM_2024.source-extraction.json",
+      "beforeWholeObjectSHA256": "8ded14378ac13388a6cff870eaba42881a6fa68c1287b728509fb8bfdbb7a593",
+      "afterWholeObjectSHA256": "4fa15641eac7cb6047794288cc451cd2a6aed64e634970f3b65fe0f52eaba2a0",
+      "currentOldSourceGoals": 0,
+      "currentNewSourceGoals": 0,
+      "currentOldMappingRows": 1008,
+      "currentNewMappingRows": 1009,
+      "allUnrelatedWholeObjectsAndMetadataRetained": true
+    }
+  ],
+  "readOnlyOldSourceObjects": [
+    {
+      "path": "curricula/DE/Gymnasium/input/HH/lower-secondary/source-extraction/DE_HH_CHEMIE_SEKI_BILDUNGSPLAN.source-extraction.json",
+      "before": {
+        "path": "curricula/DE/Gymnasium/input/HH/lower-secondary/source-extraction/DE_HH_CHEMIE_SEKI_BILDUNGSPLAN.source-extraction.json",
+        "sha256": "ec073c3aa3ceb7f35e7b2a95d927697e5e1595bde479f06c6ebea3a6c04f029e",
+        "bytes": 101888
+      },
+      "action": "read-only-existing-source-and-passage-exact",
+      "sourceGoalId": "de-hh-chemie-seki-bildungsplan-2014-2018-3-1-eg-028-e83f745d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_CHEMIE_SEKI_FACHANFORDERUNGEN_2022.source-extraction.json",
+      "before": {
+        "path": "curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_CHEMIE_SEKI_FACHANFORDERUNGEN_2022.source-extraction.json",
+        "sha256": "125612af7681d03545e40712d25a8d71bf7bb806e7f8d289eab5c89636a10393",
+        "bytes": 241212
+      },
+      "action": "read-only-existing-source-and-passage-exact",
+      "sourceGoalId": "de-sh-chemie-seki-fachanforderungen-2022-2-1-1-erkenntnisgewinnung-017-a9c35efe"
+    }
+  ],
+  "thBoundary": "Only current TH lower-secondary source inventory and its two lower aliases. Upper historical TH225 contracts and selected-process233/current upper successors are not read as a whole-rebase basis and are not written. Any changed lower alias extraction pointer causes STOP.",
+  "sourceAndPBoundariesUnchanged": true,
+  "currentWholeCAndPBinding": {
+    "currentPositiveConfig": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-NI-SL-three-whole-P-native-inactive-technical-20261018-v1/config/P03.original-namespace.inactive.config.json",
+      "sha256": "fc951d728982a1857bb987004e56df5b4d4747cf740875e397147a2a409b1852",
+      "bytes": 1345
+    },
+    "currentNativeRecordFile": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-NI-SL-three-whole-P-native-inactive-technical-20261018-v1/native/P03.whole-profile.inactive.review.jsonl",
+      "sha256": "a76f1ca1486ec9597af4262c2f11a08d6e1ee39ccdf360d255cafed3b5d04ec2",
+      "bytes": 13365
+    },
+    "lineOneBased": 1,
+    "currentWholeNativeRecordObjectSHA256": "bcd40bd3ee868ff655954b90bbc7880575739725ecc54fa02ebd67b08cd42194",
+    "currentWholeProfileObjectSHA256": "bbfa575c178c1f9d80c92c22953ccbed5e67d04cea5dd8f4fb7b76e3098c1788",
+    "acceptedOriginalCuOFeSPrefixExactlyRetained": true,
+    "oldCoverageThresholdsAndAllEarlierRequiredIdsRetained": true,
+    "onlySeparateSLExpectationVariationAndCaseAppended": true,
+    "wholeCurrentProfileAndMetadataActuallyRead": true,
+    "newSLRelationInC7": false,
+    "actualCentralConfig": {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "sha256": "6ee503fa9cb4d6b0ff9de9e864d830d04f6a7f2a26018b6729a65a9c8a6286e5",
+      "bytes": 679807
+    },
+    "centralPositiveConfigCount": 138
+  },
+  "slOutsideC7": true,
+  "newScientificVotes": 0,
+  "stockCurriculumSymlinkErrors": 0,
+  "normalWrites": 0
+}

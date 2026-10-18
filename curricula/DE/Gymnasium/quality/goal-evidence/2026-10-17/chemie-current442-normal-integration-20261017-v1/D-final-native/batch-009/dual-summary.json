@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:89156a892c31963d2bd408cdf3f097d2e9f9ab82ae5db978388ed5d3e6af7349",
+  "reviewInputFingerprint": "sha256:2a493a1e4c90ad26e428da157ab06c92311c1ca6a2278ac42313b60978fcae01",
+  "goalCount": 3,
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-009-v1-a",
+      "roundId": "chemie-final-current-context-d-009-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-009-v1-independent-a",
+      "runIds": [
+        "codex-reviewer-a-final163-batch009-20261018"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 (Codex)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-009-v1-b",
+      "roundId": "chemie-final-current-context-d-009-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-009-v1-independent-b",
+      "runIds": [
+        "chemie-final163-native-b-009-20261018"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 (Codex)::Exact API model/version not exposed in runtime"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 3,
+    "unavailable": 0,
+    "requiresSynthesis": 3
+  },
+  "goals": [
+    {
+      "goalId": "f79f15c0-e848-5e17-9eb5-26753d35c93b",
+      "firstRecordId": "codex-reviewer-a-final163-batch009-20261018.001",
+      "secondRecordId": "chemie-final163-native-b-009-20261018:f79f15c0-e848-5e17-9eb5-26753d35c93b",
+      "firstRunId": "codex-reviewer-a-final163-batch009-20261018",
+      "secondRunId": "chemie-final163-native-b-009-20261018",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f947cd04-952a-5a9d-9445-3ffc70e02c3c",
+      "firstRecordId": "codex-reviewer-a-final163-batch009-20261018.002",
+      "secondRecordId": "chemie-final163-native-b-009-20261018:f947cd04-952a-5a9d-9445-3ffc70e02c3c",
+      "firstRunId": "codex-reviewer-a-final163-batch009-20261018",
+      "secondRunId": "chemie-final163-native-b-009-20261018",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f9e6d689-6e59-59a4-9f21-8c2d44413244",
+      "firstRecordId": "codex-reviewer-a-final163-batch009-20261018.003",
+      "secondRecordId": "chemie-final163-native-b-009-20261018:f9e6d689-6e59-59a4-9f21-8c2d44413244",
+      "firstRunId": "codex-reviewer-a-final163-batch009-20261018",
+      "secondRunId": "chemie-final163-native-b-009-20261018",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

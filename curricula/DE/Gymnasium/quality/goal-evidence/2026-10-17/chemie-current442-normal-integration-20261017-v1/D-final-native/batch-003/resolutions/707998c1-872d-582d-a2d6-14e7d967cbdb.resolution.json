@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-003-v1-resolution-707998c1-872d-582d-a2d6-14e7d967cbdb",
+  "goal": {
+    "goalId": "707998c1-872d-582d-a2d6-14e7d967cbdb",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:e9e2a83a3c62ecc8b946f688ffd7f623702d1522ef8999b4f884fc660f65e1e2",
+    "pageFingerprint": "sha256:620a6ccad4374dbfd80fa723a3d4eb103db42bb5e669868e7a2709a8b6a13065",
+    "goalReviewContextFingerprint": "sha256:f09c67278ead30b41c2ed88aca531d619aef854c3ac732da144b3c27911ac965",
+    "finalText": {
+      "titleDe": "Organische Moleküle mit Molecular Modelling darstellen",
+      "titleEn": "Represent organic molecules with molecular modelling",
+      "descriptionDe": "Die lernende Person kann einfache organische Moleküle durch computerbasiertes Molecular Modelling darstellen.",
+      "descriptionEn": "The learner can represent simple organic molecules using computer-based molecular modelling."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-003-v1-a",
+      "campaignDigest": "sha256:978c14bb7b4e20d9b0754b4b001198cb332f9b414d3303ca7642925c494ece2b",
+      "roundId": "chemie-final-current-context-d-003-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-003-v1-independent-a",
+      "reviewInputFingerprint": "sha256:a8b4e136dc9c2b252755278e60a7cde25130d629087d5e6df627ef8b0ebc209b",
+      "goalReviewContextFingerprint": "sha256:f09c67278ead30b41c2ed88aca531d619aef854c3ac732da144b3c27911ac965",
+      "batchId": "chemie-final-current-context-d-003-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch003-20261018",
+      "runManifestDigest": "sha256:d37e25ac9a9c3eaebef1ba6de0c6086c093b182aa3633bc23d659c25aa6b81d5",
+      "resultsDigest": "sha256:cd44a305e9111a4d099f9ab35d3f7b4ca03c9a7206727ef3bec5bcfd6a791a42",
+      "recordId": "codex-reviewer-a-final163-batch003-20261018.015",
+      "recordDigest": "sha256:db45dadda22ab654ede41edadf35de1ef36a279382b2826342f7ed647c3a6e63"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-003-v1-b",
+      "campaignDigest": "sha256:b2cbbd77c71b72dac1c440f755a8450ab64df323a6a8eacf430f5e2505f92701",
+      "roundId": "chemie-final-current-context-d-003-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-003-v1-independent-b",
+      "reviewInputFingerprint": "sha256:a8b4e136dc9c2b252755278e60a7cde25130d629087d5e6df627ef8b0ebc209b",
+      "goalReviewContextFingerprint": "sha256:f09c67278ead30b41c2ed88aca531d619aef854c3ac732da144b3c27911ac965",
+      "batchId": "chemie-final-current-context-d-003-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-003-20261018",
+      "runManifestDigest": "sha256:1c929404c03d8c96aa74393ad00405392ee0c3ea13c265367e3ff364cdfdf004",
+      "resultsDigest": "sha256:82383b90ab0c51800931b86885a526c7c9c4e558a108be4aa5b0ed88c0da33ac",
+      "recordId": "chemie-final163-native-b-003-20261018:707998c1-872d-582d-a2d6-14e7d967cbdb",
+      "recordDigest": "sha256:fe727ef0a98edd992bebd3d7efe5d2a745381fb59063b5c84d29057e9bd5a7a9"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:ee73048c0284447ea4c17aa5f99fbb11d7041a800acc788f8e7ae8f7a9a22dbd"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-003-20261018-v1",
+    "manifestDigest": "sha256:ce11bd03356fcf672eba95ffbb1028e40d727aec4fd4c79452167746266299a5",
+    "manifestFingerprint": "sha256:4feab5b00ce92e39b208e49a59ef02b9a0bd75db7be760eeedd1bcad82254b99",
+    "decisionId": "chemie-final163-paired-D-only-003-20261018-v1-decision-015"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-003-20261018-v1-decision-015",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:26:58.995Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch003-20261018.015): Der kurze bilinguale Text verlangt computerbasierte Darstellung. Das ganze P bewahrt tatsächliche Toolhandlung und eigene Dateien, ergänzt aromatische Modellfälle und behauptet weder Screenshot als Ausführungsbeleg noch dargestellte Länge als Messung. B (chemie-final163-native-b-003-20261018:707998c1-872d-582d-a2d6-14e7d967cbdb): Die Beschreibung ist kurz und verlangt tatsächliche computerbasierte Darstellung auf vorherigem EPA-Verständnis. P unterscheidet eigene Datei-/Ansichtsänderung von fremdem Screenshot und vermeidet die Ausweitung auf Hybridisierungsvergleich als eigenständigen Nachfolger.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch003-20261018.015; chemie-final163-native-b-003-20261018:707998c1-872d-582d-a2d6-14e7d967cbdb). Their current English understanding evidence is retained: A: Digital molecular modelling requires an own correctly connected structural model; rendered shape is no molecular measurement. B: Digital molecular modelling creates an edited structure with correct connectivity; its views are models rather than measurements. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Digitales Molecular Modelling verlangt ein eigenes korrekt verknüpftes Strukturmodell; gerenderte Gestalt ist keine Molekülmessung.",
+      "essentialUnderstandingEn": "Digital molecular modelling requires an own correctly connected structural model; rendered shape is no molecular measurement.",
+      "observablePerformanceDe": "Erzeugt tatsächlich ein Ethanmodell, prüft Valenzen und dokumentiert Rotation sowie unterschiedliche räumliche Ansichten.",
+      "observablePerformanceEn": "Actually creates an ethane model, checks valences and documents rotation and different spatial views.",
+      "transferExpectationDe": "Korrigiert einen falschen Propandatensatz zu Propen und erläutert lokale Geometrie sowie Modellgrenzen am eigenen digitalen Produkt.",
+      "transferExpectationEn": "Corrects a faulty propane dataset to propene and explains local geometry and limitations using the own digital product."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-4ad2db6d8e8a70bb413917dcf6e0a11a89803d59f1bca0bf4f2f26c2242b8ef3",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:5241bc8a5396d2e26cdbee28fc6660209594f6fccd9d819489ef046594e11b04"
+}

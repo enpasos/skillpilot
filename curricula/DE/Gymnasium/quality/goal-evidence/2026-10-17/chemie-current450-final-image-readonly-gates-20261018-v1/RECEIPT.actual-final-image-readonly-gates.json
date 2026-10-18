@@ -1,0 +1,58 @@
+{
+  "role": "Actual final resource-caption dependent read-only checks; not a human or M7 claim",
+  "results": [
+    {
+      "name": "visualization-rollout.check",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:goal-visualization-rollout-status:chemie"
+      ],
+      "exitCode": 0,
+      "seconds": 0.551,
+      "log": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current450-final-image-readonly-gates-20261018-v1/visualization-rollout.check.txt",
+      "logSha256": "a3a83b7451bbdae2efbc477233003345382a26df54384e27ba9ab7bd492228b9"
+    },
+    {
+      "name": "transparency.check",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:ai-transparency-inventory"
+      ],
+      "exitCode": 0,
+      "seconds": 27.129,
+      "log": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current450-final-image-readonly-gates-20261018-v1/transparency.check.txt",
+      "logSha256": "3cdcf4e332cda0ddcd28cf3b513a585bd2ae07e136706f1fb9e7d1f1ed1adcef"
+    },
+    {
+      "name": "goal-assets.check",
+      "command": [
+        "node",
+        "scripts/check_goal_visualization_assets.mjs"
+      ],
+      "exitCode": 0,
+      "seconds": 37.037,
+      "log": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current450-final-image-readonly-gates-20261018-v1/goal-assets.check.txt",
+      "logSha256": "5d1bf5663e085ff39b3ca1ced1be7ec29c67a6b984f00949bbac16b05086446b"
+    },
+    {
+      "name": "source-atlas.actual-regression",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "-e",
+        "import { testGoalBookSourceAtlasInputs } from './app/scripts/testGoalBookSourceAtlasInputs.ts'; testGoalBookSourceAtlasInputs()"
+      ],
+      "exitCode": 0,
+      "seconds": 4.885,
+      "log": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current450-final-image-readonly-gates-20261018-v1/source-atlas.actual-regression.txt",
+      "logSha256": "dcdf3d0ec05b843dbca234b9b93921089a5fc01af222ae6fc3483e66034337b8"
+    }
+  ],
+  "humanApproval": false,
+  "humanTrial": false
+}

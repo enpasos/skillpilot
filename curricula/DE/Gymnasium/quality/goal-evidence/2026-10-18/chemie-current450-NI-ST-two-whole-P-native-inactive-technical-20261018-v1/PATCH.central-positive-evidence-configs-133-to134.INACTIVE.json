@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "active": false,
+  "normalMutationPerformed": false,
+  "role": "FINITE_REVIEWABLE_PATCH_ONLY_DO_NOT_APPLY_BEFORE_ROOT_AUTHORIZATION_AFTER_A86_SEAL",
+  "centralBefore": {
+    "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+    "sha256": "3218464f89dbf689a8e004a4cdb28d709265e4630971d31ebb48ab744742041a",
+    "bytes": 678763
+  },
+  "subject": "chemie",
+  "subjectIndex": 2,
+  "beforePConfigArrayCanonicalSHA256": "a663964c28cef3ee0f49768f7807d0a93127bd05124a9e194df33787709cc6e6",
+  "beforeConfigCount": 133,
+  "afterConfigCount": 134,
+  "uniqueGoalCountBeforeAndAfter": 450,
+  "replacementOwners": [
+    {
+      "index": 108,
+      "old": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-normal-source-configs/P106.normal-source.config.json",
+      "new": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-NI-ST-two-whole-P-native-inactive-technical-20261018-v1/residual/P106.scope-without-remediated-goal.config.json"
+    },
+    {
+      "index": 44,
+      "old": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current447-native-A-M-P-serialization-technical-20261018-v1/P/residual/P044.config.json",
+      "new": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-NI-ST-two-whole-P-native-inactive-technical-20261018-v1/residual/P044.scope-without-remediated-goal.config.json"
+    }
+  ],
+  "newP2Config": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-NI-ST-two-whole-P-native-inactive-technical-20261018-v1/config/P2.informed-whole-profiles.inactive.config.json",
+    "sha256": "4ae07eba52ac650623483e4dac6a35636072242ceea656b15fc21f2e9e60b750",
+    "bytes": 1383
+  },
+  "operations": [
+    {
+      "op": "test",
+      "path": "/subjects/2/positiveEvidenceConfigPaths/108",
+      "value": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-normal-source-configs/P106.normal-source.config.json"
+    },
+    {
+      "op": "replace",
+      "path": "/subjects/2/positiveEvidenceConfigPaths/108",
+      "value": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-NI-ST-two-whole-P-native-inactive-technical-20261018-v1/residual/P106.scope-without-remediated-goal.config.json"
+    },
+    {
+      "op": "test",
+      "path": "/subjects/2/positiveEvidenceConfigPaths/44",
+      "value": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current447-native-A-M-P-serialization-technical-20261018-v1/P/residual/P044.config.json"
+    },
+    {
+      "op": "replace",
+      "path": "/subjects/2/positiveEvidenceConfigPaths/44",
+      "value": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-NI-ST-two-whole-P-native-inactive-technical-20261018-v1/residual/P044.scope-without-remediated-goal.config.json"
+    },
+    {
+      "op": "add",
+      "path": "/subjects/2/positiveEvidenceConfigPaths/-",
+      "value": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-NI-ST-two-whole-P-native-inactive-technical-20261018-v1/config/P2.informed-whole-profiles.inactive.config.json"
+    }
+  ],
+  "otherSubjectAndChemistryFieldsDelta": []
+}

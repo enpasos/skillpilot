@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-006-v1-resolution-c8f51eac-c131-58a8-8d00-0fcbbe4bc18c",
+  "goal": {
+    "goalId": "c8f51eac-c131-58a8-8d00-0fcbbe4bc18c",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:cd36686dced257a906e8d93983856a56dfa93fe2e4bf675dc1ce5f137a036980",
+    "pageFingerprint": "sha256:4cb0a9cffec30215772be172df21010d8a4bbdb5af4a22c659539ca4089538e9",
+    "goalReviewContextFingerprint": "sha256:cdad901e387bc76b351c6723243d3e72d8c2f119265ae7056eac8d30a2be3c82",
+    "finalText": {
+      "titleDe": "Absorbiertes und reflektiertes Licht verknüpfen",
+      "titleEn": "Relate absorbed and reflected light",
+      "descriptionDe": "Die lernende Person kann die Farbigkeit von Stoffen über den Zusammenhang zwischen absorbierten und reflektierten Lichtwellenlängen erklären.",
+      "descriptionEn": "The learner can explain the color of substances through the relationship between absorbed and reflected wavelengths of light."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-006-v1-a",
+      "campaignDigest": "sha256:fac08f3e3e72b3fd65ead31deeafeff62268bea1795f229f19ce85a234e57356",
+      "roundId": "chemie-final-current-context-d-006-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-006-v1-independent-a",
+      "reviewInputFingerprint": "sha256:738c48a5d1a135a764fe483a52f078a241f0f4149b0c7e6ce492ebd53c660d26",
+      "goalReviewContextFingerprint": "sha256:cdad901e387bc76b351c6723243d3e72d8c2f119265ae7056eac8d30a2be3c82",
+      "batchId": "chemie-final-current-context-d-006-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch006-20261018",
+      "runManifestDigest": "sha256:419ac41027d7c6085c20a41a7aab2cc5ee3abf5e395b843a596d9b21dbec3d58",
+      "resultsDigest": "sha256:cb07854e0ea40039098f3d266438ec683a808fb475249442535af494ff91bdbe",
+      "recordId": "codex-reviewer-a-final163-batch006-20261018.009",
+      "recordDigest": "sha256:a825fe0fad5fef7d0ad50c33f2aa74b0029716bfe890376ce0584475dfd7dc50"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-006-v1-b",
+      "campaignDigest": "sha256:e6860f2b3431737a13818dccb510d68b769ac8de8183a266a418614495ba524a",
+      "roundId": "chemie-final-current-context-d-006-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-006-v1-independent-b",
+      "reviewInputFingerprint": "sha256:738c48a5d1a135a764fe483a52f078a241f0f4149b0c7e6ce492ebd53c660d26",
+      "goalReviewContextFingerprint": "sha256:cdad901e387bc76b351c6723243d3e72d8c2f119265ae7056eac8d30a2be3c82",
+      "batchId": "chemie-final-current-context-d-006-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-006-20261018",
+      "runManifestDigest": "sha256:f5dff68c2824391cbd358b0efcda18f60656322f44c47dd579639b30eb8f1789",
+      "resultsDigest": "sha256:1905ddcd08914170e96a8288a0308e1390cdf5eb3bbb2c7eb917107830344a7f",
+      "recordId": "chemie-final163-native-b-006-20261018:c8f51eac-c131-58a8-8d00-0fcbbe4bc18c",
+      "recordDigest": "sha256:fb9b3ca71bc88cff41d1527dbbf43ed7fbe9810912c79e3d27e75cca69d2ad9a"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:c423e5d81f53d59095437ae568e0caca6a758058bafd394031ce2cb0f01fc495"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-006-20261018-v1",
+    "manifestDigest": "sha256:841af7f6a231319d70d92e84fb977818248d5825b592e050c63ab4be72fe9634",
+    "manifestFingerprint": "sha256:8a70d3defa5ac0d85b5224774db191bed348f860796a294e7732ed4830512bfe",
+    "decisionId": "chemie-final163-paired-D-only-006-20261018-v1-decision-009"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-006-20261018-v1-decision-009",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:35:51.247Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch006-20261018.009): Die bilingualen Fassungen treffen die Spektralbeziehung. Das ganze P schließt im Gewebefall übrige Reflexionsanteile, Transmission und Emission explizit aus und vermeidet damit unterbestimmte Blau-/Dunkelvorhersagen. B (chemie-final163-native-b-006-20261018:c8f51eac-c131-58a8-8d00-0fcbbe4bc18c): Die bilinguale Kurzbeschreibung ist präzise auf reflektierte Stofffarbe gerichtet. Das P schließt Emission/Transmission im ersten Fall aus und legt auch außerhalb des blauen Bereichs das Modell fest; damit ist die Vorhersage nicht unterbestimmt. Der zweite Fall ändert die spektrale Zusammensetzung und macht Wahrnehmungsgrenzen sichtbar. Ein Bild ist dafür weder Antwort noch Leistungsbeleg.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch006-20261018.009; chemie-final163-native-b-006-20261018:c8f51eac-c131-58a8-8d00-0fcbbe4bc18c). Their current English understanding evidence is retained: A: Reflected colour arises from available incident light and selective absorption/reflection rather than a light-independent substance label. B: The colour of an opaque non-emitting surface results from the light actually supplied and the reflected rather than absorbed components. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Reflektierte Farbe entsteht aus vorhandenem Einfallslicht und selektiver Absorption/Reflexion statt aus einem lichtunabhängigen Stoffetikett.",
+      "essentialUnderstandingEn": "Reflected colour arises from available incident light and selective absorption/reflection rather than a light-independent substance label.",
+      "observablePerformanceDe": "Verknüpft Einfalls- und Reflexionsspektrum und erklärt die beobachtete Farbe unter Weißlicht.",
+      "observablePerformanceEn": "Connects incident and reflected spectra and explains appearance under white light.",
+      "transferExpectationDe": "Sagt bei monochromatischer Beleuchtung Dunkelheit beziehungsweise Helligkeitsunterschied voraus und begrenzt Farbnamen aus drei Bändern.",
+      "transferExpectationEn": "Predicts darkness or brightness differences under monochromatic illumination and limits colour names from three bands."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-8564ab868455dc7ac21f70a83617013481f1f6a1cd1e161a2c0d77cd30299c1d",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:0bff9351f4a409a4fae58ead53c3cc9cb589bf611e4309e56feed959b6dfcf87"
+}

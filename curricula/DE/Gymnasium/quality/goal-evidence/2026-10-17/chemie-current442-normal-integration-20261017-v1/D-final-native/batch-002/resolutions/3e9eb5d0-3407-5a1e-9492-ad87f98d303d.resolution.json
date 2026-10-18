@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-002-v1-resolution-3e9eb5d0-3407-5a1e-9492-ad87f98d303d",
+  "goal": {
+    "goalId": "3e9eb5d0-3407-5a1e-9492-ad87f98d303d",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:0627eecd3d32bb7d9ce351c66925fce630f82fcdf8ee1809a7f41030857c2666",
+    "pageFingerprint": "sha256:21d0f3c5ba018179a62c9d47e74b3932541741019bc28c7875f52c044770a11f",
+    "goalReviewContextFingerprint": "sha256:a6981b7a431396b37ae031573af54cb95d2edb72753cf00532e66b5203a6f4d6",
+    "finalText": {
+      "titleDe": "Kunststoffe einteilen",
+      "titleEn": "Classify plastics",
+      "descriptionDe": "Die lernende Person kann Thermoplaste, Duroplaste und Elastomere anhand ihrer Struktur, Eigenschaften und Eignung für ausgewählte Einsatzgebiete unterscheiden.",
+      "descriptionEn": "The learner can distinguish thermoplastics, thermosets, and elastomers based on structure, properties, and suitability for selected applications."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-002-v1-a",
+      "campaignDigest": "sha256:b715fd8a726cbbb7aaa20c5ec2078404f295bc90d3f8bc2a5d9f561cd958d38e",
+      "roundId": "chemie-final-current-context-d-002-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-002-v1-independent-a",
+      "reviewInputFingerprint": "sha256:d831530f4fe9ba4c7701b62a5c1bcea6bdf04d0ee9729de34f23dbad666c8a9f",
+      "goalReviewContextFingerprint": "sha256:a6981b7a431396b37ae031573af54cb95d2edb72753cf00532e66b5203a6f4d6",
+      "batchId": "chemie-final-current-context-d-002-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch002-20261018",
+      "runManifestDigest": "sha256:6ca66c1115aa27b4d2c73625e937471778c2db2938916b49f6ccc95a7860873d",
+      "resultsDigest": "sha256:ef5c73b963b42df01542d403d612c96c262c8a902a63b3774a35b2b9ec126b7c",
+      "recordId": "codex-reviewer-a-final163-batch002-20261018.008",
+      "recordDigest": "sha256:ba6a04bc9ba1e3c90f54feeb458673e41f933153e8583f9e303c1c086c60d3cd"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-002-v1-b",
+      "campaignDigest": "sha256:070e2daf91a611e1ffff2447e23f61558c7f9c9fa26cf87c154c53f406c8b793",
+      "roundId": "chemie-final-current-context-d-002-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-002-v1-independent-b",
+      "reviewInputFingerprint": "sha256:d831530f4fe9ba4c7701b62a5c1bcea6bdf04d0ee9729de34f23dbad666c8a9f",
+      "goalReviewContextFingerprint": "sha256:a6981b7a431396b37ae031573af54cb95d2edb72753cf00532e66b5203a6f4d6",
+      "batchId": "chemie-final-current-context-d-002-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-002-20261018",
+      "runManifestDigest": "sha256:c410bb8b0ad9e827901944da0e700a9181082c10d1bbd55ac65a836583b30c6e",
+      "resultsDigest": "sha256:ab8f5774eb6180f67af823d96057f3949f0fb175c7d25a6a52ba94e0874f30cc",
+      "recordId": "chemie-final163-native-b-002-20261018:3e9eb5d0-3407-5a1e-9492-ad87f98d303d",
+      "recordDigest": "sha256:2b583f7d96b9c678e6a13e9b97fda030ca66ab0db3ab49cad175b727eca5528d"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:d8fb237c4bfae646ace584c195b8d46e5310536aa5be0abf6e49298504cbd0d9"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-002-20261018-v1",
+    "manifestDigest": "sha256:067c0f4ea81884ab77197d8b88f8f555468ebc2707980d808fe8e93abaaa1073",
+    "manifestFingerprint": "sha256:015048c1d39b768cb2cc3bd33b3adb266d68832f23abfb86d580299bfc453bfc",
+    "decisionId": "chemie-final163-paired-D-only-002-20261018-v1-decision-008"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-002-20261018-v1-decision-008",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:25:09.454Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch002-20261018.008): Die beiden Sprachfassungen verbinden Klassifikation und Eignung klar. Das ganze P unterscheidet Verzweigung/Vernetzung und Zersetzung/Schmelzen und begrenzt die Vernetzungsregel ausdrücklich für thermoplastische Elastomere. B (chemie-final163-native-b-002-20261018:3e9eb5d0-3407-5a1e-9492-ad87f98d303d): Der Text verbindet Struktur, Eigenschaften und Einsatz als eine Klassifikationsleistung. P behandelt thermoplastische Elastomere als Grenze der simplen Vernetzungsregel und verwechselt Zersetzen nicht mit Schmelzen; Monomer-Feindifferenzierung folgt erst im Nachfolger.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch002-20261018.008; chemie-final163-native-b-002-20261018:3e9eb5d0-3407-5a1e-9492-ad87f98d303d). Their current English understanding evidence is retained: A: Chain mobility and permanent crosslinking explain melt flow, recovery and shape stability of conventional plastic classes. B: Chain mobility and permanent crosslinking explain conventional plastic classes; branching is not crosslinking. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Kettenbeweglichkeit und dauerhafte Vernetzung erklären Schmelzfluss, Rückstellung und Formstabilität konventioneller Kunststoffklassen.",
+      "essentialUnderstandingEn": "Chain mobility and permanent crosslinking explain melt flow, recovery and shape stability of conventional plastic classes.",
+      "observablePerformanceDe": "Ordnet vorgegebene Struktur-/Verhaltensdaten begründet Thermoplast, Elastomer oder Duroplast zu und wählt passende Anwendungen.",
+      "observablePerformanceEn": "Justifiably classifies supplied structure/behaviour data as thermoplastic, elastomer or thermoset and selects applications.",
+      "transferExpectationDe": "Begrenzt bei bloßer Restdehnung eine uneindeutige Klassifikation und fordert passende Temperatur-/Rückstellprüfungen.",
+      "transferExpectationEn": "Limits an ambiguous classification from residual strain alone and requests suitable temperature/recovery tests."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-ae3fd0ffc6bcc9788af3c229bde651f4fe9c8c20fd3b6c561cca4806eb0b4e6f",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:22d3050a00a83c90d0f819c37f967b408acbebf796f2a43e459eda4e12d3ef52"
+}

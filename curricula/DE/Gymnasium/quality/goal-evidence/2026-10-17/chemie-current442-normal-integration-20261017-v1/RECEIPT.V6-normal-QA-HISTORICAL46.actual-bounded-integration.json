@@ -1,0 +1,112 @@
+{
+  "artifactType": "actual bounded normal Chemistry V integration receipt",
+  "createdAtUTC": "2026-10-17T21:41:11.310360+00:00",
+  "scope": "Integrate six existing genuine machine visual judgments into current normal Chemistry QA and narrowly classify superseded/retired historical JPG assets. No new scientific judgment by assembler.",
+  "status": "APPLIED_WITH_EXPLICIT_REMAINING_TECHNICAL_INPUTS",
+  "normalQA": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/chemie.qa.json",
+    "sha256": "13a8773e5cb03d464de96fae2af54ec3aa79df06ac452364e50bc1c2a7975e51",
+    "bytes": 1350988
+  },
+  "historicalManifest": {
+    "path": "scripts/config/historical-goal-visualization-assets.json",
+    "sha256": "3903dd75b7839e4975c8990cc6a8905e13fd1f92ed60c66fdae17f615aba9414",
+    "bytes": 25268
+  },
+  "counts": {
+    "wholeQARows": 465,
+    "AIApprovedBefore": 461,
+    "AIApprovedAfter": 465,
+    "newExactAssetAIApprovals": 4,
+    "existingSameAssetCurrentContextUpdates": 2,
+    "allOtherRowsWholeExact": 459,
+    "allHumanBlocksWholeExact": 465
+  },
+  "historicalCounts": {
+    "old": 38,
+    "added": 46,
+    "new": 84,
+    "classifications": {
+      "superseded JPG; same current canonical goal has exact PNG primary": 40,
+      "retained former atomic ID is now a cluster with no current primary visualization": 5,
+      "retired413 goal absent from current canonical; old exact JPG retained": 1
+    }
+  },
+  "exactUnchangedClaims": {
+    "otherWholeQARows": 459,
+    "allHumanBlocks": 465,
+    "previousHistoricalEntries": 38,
+    "Canonical_P_M_views_registryMutationsByThisTask": 0,
+    "imageByteChangesByThisTask": 0
+  },
+  "actualCheckResults": [
+    {
+      "argv": [
+        "node",
+        "scripts/check_goal_visualization_assets.mjs"
+      ],
+      "exitCode": 1
+    },
+    {
+      "argv": [
+        "node",
+        "--import",
+        "./app/node_modules/tsx/dist/loader.mjs",
+        "app/scripts/generateGoalVisualizationQaLedgers.ts",
+        "--subjects=chemie",
+        "--check"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "node",
+        "--import",
+        "./app/node_modules/tsx/dist/loader.mjs",
+        "app/scripts/checkGoalVisualizationQaCoverageParity.ts",
+        "--subjects=chemie"
+      ],
+      "exitCode": 1
+    },
+    {
+      "argv": [
+        "node",
+        "--import",
+        "./app/node_modules/tsx/dist/loader.mjs",
+        "app/scripts/checkGoalVisualizationQaApprovalCoverage.ts",
+        "--subjects=chemie"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "remaining": {
+    "assetCheck": "74 actual missing canonical provider prompt.de.md locators; exact finite roster in OPEN receipt, no raster/hash/current-as-historical/orphan errors beyond those74 reported. Genuine generation provenance must be restored by parent; no synthetic prompts supplied.",
+    "parityCheck": "Current QA contains442 ordinary atomics+23 cluster-overview rows; stale normal chemie-rollout-status summary has402 ordinary scope. Parent will regenerate current normal report as part of coordinated integration; no test/code/gate modification."
+  },
+  "evidence": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/V6.normal-QA.exact-before-after-and-source-bindings.receipt.json",
+      "sha256": "e3a0a8fe5b59cde0c602d1653cbec24960656af4567864eaee60df09f32abfef",
+      "bytes": 9245
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/HISTORICAL46.exact-before-after-retained-assets.receipt.json",
+      "sha256": "e80c48e49ce044a6794a43844ef4a9b625c4e21b7b874fa9a37e5605bf835878",
+      "bytes": 67079
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/CHECK.V6-normal-and-HISTORICAL46.actual-stock-results.json",
+      "sha256": "6d2776c786eb4aba18328ea37a3b2994eef69056c6ce581ad8efa6b66429ee74",
+      "bytes": 14322
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/OPEN.V-normal-remaining-prompts-and-rollout-metadata.json",
+      "sha256": "a9362cbc5df078bef6674ea6ecceb5e19d5cd7a445a4c15425452280e656e085",
+      "bytes": 41229
+    }
+  ],
+  "HumanApprovalGrantedByThisTask": false,
+  "HumanTrialClaim": false,
+  "M7Claim": false,
+  "allNormalIntegrationCompleteClaim": false
+}

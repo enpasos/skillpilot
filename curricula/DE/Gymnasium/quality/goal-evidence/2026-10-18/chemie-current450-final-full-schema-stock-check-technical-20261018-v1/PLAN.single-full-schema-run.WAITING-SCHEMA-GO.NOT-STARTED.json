@@ -1,0 +1,55 @@
+{
+  "artifactRole": "READINESS_PLAN_ONLY_SINGLE_FULL_STOCK_SCHEMA_RUN_NOT_STARTED",
+  "preparedAtUTC": "2026-10-18T04:12:30.285339+00:00",
+  "executor": "/root/chemie450_caption1_native_fresh_a",
+  "status": "WAITING_FOR_EXPLICIT_ROOT_SCHEMA_GO",
+  "actualValidatorStarts": 0,
+  "requiredStartCondition": "Explicit later SCHEMA-GO from Root after final central status and last schema-sensitive updates; elapsed time, another agent receipt or successful earlier tests are not authorization.",
+  "plannedExactCommandArgv": [
+    "python3",
+    "scripts/validate_schemas.py"
+  ],
+  "plannedExactCommand": "python3 scripts/validate_schemas.py",
+  "workingDirectory": "repository root",
+  "commandExecutionsAuthorizedNow": 0,
+  "plannedExecutionsAfterActualGo": 1,
+  "originalValidatorAndGuardsUnchanged": true,
+  "environmentOverrides": {},
+  "plannedRawLogs": {
+    "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-full-schema-stock-check-technical-20261018-v1/raw/full-schema.stdout.txt",
+    "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-full-schema-stock-check-technical-20261018-v1/raw/full-schema.stderr.txt"
+  },
+  "plannedTiming": {
+    "startUTC": true,
+    "endUTC": true,
+    "realMonotonicNanoseconds": true,
+    "actualWallDurationSeconds": true,
+    "actualProcessExitCode": true
+  },
+  "preRunAfterGoOnly": [
+    "Record actual Root SCHEMA-GO and the final writer/quiescence context; do not poll or restart central/book/Atlas tasks.",
+    "Pin the unmodified stock validator and actual current Chem450 canonical landscape, authoritative semantic-kind ledger, normal central config and current Chemistry view/source/Atlas binding manifests. Resolve active P paths from the then-current Chemistry config and pin bytes only; no renewed reading or scientific judging of review contents.",
+    "Record observed current goal/config/index counts without manufacturing an expected result. Expected chemistry curricularAtomic denominator is450; any actual mismatch is evidence to report.",
+    "Start the exact stock command once; retain complete separate raw stdout/stderr bytes with UTC and monotonic timing."
+  ],
+  "postRunOnly": [
+    "Parse only the newly written technical receipt JSON and verify its raw-log pins. Record exitcode and exact original diagnostics.",
+    "Compare the captured current input pins after the run; any concurrent change is explicitly reported, not hidden and not followed by an automatic second full scan.",
+    "For failures report the concrete file/reference/schema/JSON location shown by the stock output, especially missing definitions or portability references. Do not bypass guards, suppress findings, infer a fix or alter normal input data.",
+    "Seal the actual single-run receipt and raw logs. No extra test suite, AP/CQR/Build/Review run or automatic retry."
+  ],
+  "protectedNoWrites": [
+    "normal canonical C/P/source/View/central/registry/Atlas/schema files",
+    "validator or npm scripts",
+    "commit/index/staging"
+  ],
+  "prohibitedNow": [
+    "starting the schema validator",
+    "additional tests",
+    "optional re-reading of all reviews",
+    "normal data mutation",
+    "using successful prior checks as SCHEMA-GO"
+  ],
+  "previousExecutionEvidenceNotSubstituted": true,
+  "noHumanOrLearnerApprovalClaim": true
+}

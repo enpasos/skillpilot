@@ -1,0 +1,91 @@
+{
+  "artifactRole": "INACTIVE_AUTHOR_COMPLETE_SELECTED_PRIMARY_UNIT_APPEND_ONLY",
+  "activation": "pending-independent-source-review-and-root-integration",
+  "baseExtraction": {
+    "path": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_CHEMIE_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+    "sha256": "5892329c604c14e848eadc9372928169d2d99fa0e7325ec5866b77bd85b2e484",
+    "bytes": 492786
+  },
+  "proposedNormalExtractionPath": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_CHEMIE_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+  "sourceLandscapeId": "1e86b8e6-3a95-5df3-8622-8c2afbb989e1",
+  "sourceDocument": {
+    "key": "SN-CH-2025",
+    "title": "Lehrplan Gymnasium Chemie Sachsen 2004/2007/2009/2011/2019/2022/2025",
+    "path": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-chemie-sachsen-2025.pdf",
+    "url": "https://www.schulportal.sachsen.de/lplandb/lehrplan/file/521/lnuYavMOfLLQRd2MlehG",
+    "official": true
+  },
+  "sourceDocumentPin": {
+    "path": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-chemie-sachsen-2025.pdf",
+    "sha256": "3a74886e7ee9492b003d4916719e2b4644aef5fdfe8331cdefd8151fe0e86051",
+    "bytes": 824141
+  },
+  "passagesToAppend": [
+    {
+      "id": "sn-chemistry-seki-process-standard-kl9-quantitative-mathematical-relations:whole-primary-context",
+      "topicCode": "KL9-ZIELE-K-QUANTITATIVE-RELATIONS",
+      "title": "Klasse 9: Quantitative chemische Aussagen mathematisch interpretieren",
+      "text": "Bei quantitativen Betrachtungen können die Schüler verbale Aussagen zu chemischen Sachverhalten in mathematische Beziehungen umsetzen. Sie können Größen, Einheiten und Größengleichungen in diesem Zusammenhang interpretieren.",
+      "sourceDocumentKey": "SN-CH-2025",
+      "sourceRef": "Lehrplan Gymnasium Chemie Sachsen 2004/2007/2009/2011/2019/2022/2025, physical PDF p. 27",
+      "metadata": {
+        "unit": "whole paragraph",
+        "primaryPageOneBased": 27,
+        "surroundingWholePageActuallyRead": true,
+        "contextBoundary": "General chemistry method within the stated lower-secondary scope; no official whole constant-composition-law mandate.",
+        "thirdPartyOfficialTextRetainsOriginalRights": true
+      }
+    }
+  ],
+  "sourceGoalsToAppend": [
+    {
+      "id": "sn-chemistry-seki-process-standard-kl9-quantitative-mathematical-relations",
+      "passageId": "sn-chemistry-seki-process-standard-kl9-quantitative-mathematical-relations:whole-primary-context",
+      "topicCode": "KL9-ZIELE-K-QUANTITATIVE-RELATIONS",
+      "title": "Klasse 9: Quantitative chemische Aussagen mathematisch interpretieren",
+      "description": "Bei quantitativen Betrachtungen können die Schüler verbale Aussagen zu chemischen Sachverhalten in mathematische Beziehungen umsetzen. Sie können Größen, Einheiten und Größengleichungen in diesem Zusammenhang interpretieren.",
+      "sourceDocumentKey": "SN-CH-2025",
+      "sourceText": "Bei quantitativen Betrachtungen können die Schüler verbale Aussagen zu chemischen Sachverhalten in mathematische Beziehungen umsetzen. Sie können Größen, Einheiten und Größengleichungen in diesem Zusammenhang interpretieren.",
+      "sourceSpan": {
+        "passageId": "sn-chemistry-seki-process-standard-kl9-quantitative-mathematical-relations:whole-primary-context",
+        "label": "Lehrplan Gymnasium Chemie Sachsen 2004/2007/2009/2011/2019/2022/2025, physical PDF p. 27; Klasse 9"
+      },
+      "sourceRef": "Lehrplan Gymnasium Chemie Sachsen 2004/2007/2009/2011/2019/2022/2025, physical PDF p. 27",
+      "courseLevel": "unspecified",
+      "granularity": "completeOfficialMethodParagraph",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-SN",
+        "stage:SekI",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-whole-selected-official-unit-from-actual-local-PDF",
+        "physicalPageOneBased": 27,
+        "officialOperatorCode": null,
+        "scope": {
+          "stage": "SekI",
+          "sourcePhase": "Klasse 9",
+          "courseLevel": "unspecified",
+          "scopeBoundary": "General chemistry method within the stated lower-secondary scope; no official whole constant-composition-law mandate."
+        },
+        "notNewOfficialLawGoal": true,
+        "noIndependentReviewInThisAuthorTransport": true
+      }
+    }
+  ],
+  "oldWholeSourceGoalCount": 186,
+  "oldSourceGoalsPassagesAndMetadataPreservedExactly": true,
+  "rebaseRule": "Object-wise ID lookup and absent-id append; preserve concurrent cells, passages, metadata and all old objects. Never activate a stale whole afterfile.",
+  "pipelineStatus": {
+    "newWholeSourceApprovals": 0,
+    "independentVotes": 0,
+    "normalWrites": 0
+  },
+  "sourceScopeBoundary": {
+    "stage": "SekI",
+    "sourcePhase": "Klasse 9",
+    "courseLevel": "unspecified",
+    "scopeBoundary": "General chemistry method within the stated lower-secondary scope; no official whole constant-composition-law mandate."
+  }
+}

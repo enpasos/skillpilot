@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "chemie-material4-v3-28c-technical-author-20261017-v1",
+  "reviewedAt": "2026-10-17T21:23:41.999975+00:00",
+  "reviewer": "Codex B technical current-input serialization; underlying scientific authors and reviewers remain recorded in the P442 selection/provenance",
+  "goals": [
+    {
+      "goalId": "28c90c6a-3020-5c51-ac40-d802f3f12d2d",
+      "reason": "Author-only current material-assignment successor copied from the exact sealed v3 whole profile. No independent science review or attainment is certified; the frozen R14 record remains unchanged.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "q1",
+            "essentialUnderstandingDe": "Kurvenform und Richtung liefern begrenzte Modellinformationen.",
+            "essentialUnderstandingEn": "Curve direction and shape supply bounded model information.",
+            "observablePerformanceDe": "Die lernende Person beschreibt Verlauf und Stärkehinweise mit tatsächlichen Daten und vermeidet eindeutige Stoffidentifikation ohne weitere Befunde.",
+            "observablePerformanceEn": "Describe shape and strength clues from actual data, avoiding unsupported unique substance identification."
+          },
+          {
+            "id": "q2",
+            "essentialUnderstandingDe": "Äquivalenz, Halbäquivalenz und Pufferbereich sind verschiedene Begriffe und nur im passenden System vorhanden.",
+            "essentialUnderstandingEn": "Equivalence, half-equivalence and buffer regions differ and apply only in suitable systems.",
+            "observablePerformanceDe": "Sie erkennt vorhandene Bereiche und erläutert die pH-bestimmenden Teilchen; ein Halbvolumen allein ist kein pK-Beweis.",
+            "observablePerformanceEn": "Identify regions present and explain pH-controlling species; a half-volume alone does not prove pKa."
+          },
+          {
+            "id": "q3",
+            "essentialUnderstandingDe": "Indikatorendpunkt, chemische Äquivalenz und temperaturabhängige Neutralität sind zu unterscheiden.",
+            "essentialUnderstandingEn": "Indicator endpoint, chemical equivalence and temperature-dependent neutrality differ.",
+            "observablePerformanceDe": "Sie begründet anhand des gegebenen Kurvenverlaufs und der Intervalle die Indikatorwahl und Grenzen eines behaupteten Volumenfehlers.",
+            "observablePerformanceEn": "Use the supplied curve and intervals to justify an indicator choice and limit volume-error claims."
+          },
+          {
+            "id": "q4",
+            "essentialUnderstandingDe": "Menge, Stärke und Stoffklasse erzeugen unterschiedliche Kurvenaussagen.",
+            "essentialUnderstandingEn": "Amount, strength and substance class yield distinct curve conclusions.",
+            "observablePerformanceDe": "Sie erklärt im vorgelegten Vergleich Gemeinsamkeiten und Unterschiede von Puffer-, Äquivalenz- und Überschussbereichen.",
+            "observablePerformanceEn": "Explain similarities and differences in buffer, equivalence and excess regions for the supplied comparison."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "q1",
+            "q2",
+            "q3",
+            "q4"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "acid-strength",
+            "textDe": "Bei gleicher Stoffmenge von starker zu schwacher Säure wechseln und die veränderten Gleichgewichte begründen.",
+            "textEn": "Change from strong to weak acid at equal amount and explain the altered equilibria."
+          },
+          {
+            "id": "curve-region",
+            "textDe": "Dasselbe Reagenzsystem vor, bei und nach Äquivalenz mit unterschiedlichen Bilanzmodellen behandeln.",
+            "textEn": "Use different balance models for the same reagent system before, at and after equivalence."
+          },
+          {
+            "id": "temperature-and-indicator",
+            "textDe": "Neutralität bei verändertem pKᵥ und die begrenzte Aussage eines Indikatorbereichs prüfen.",
+            "textEn": "Check neutrality at changed pKᵥ and the limited information supplied by an indicator range."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "t05-supplied-acid-curves",
+            "taskDemandDe": "Deute ausschließlich die beigefügten Auswertungsfassungen v2 T05-C1/C2 mit vollständig vorgegebenen Tabellen. Ordne Stärke und Spezies zu, unterscheide Halbpunkt, Äquivalenz und Neutralität und begründe Indikatorkandidaten. Benötigte pH-/pK-Werte und der Temperaturvergleich sind gegeben; keine pH-Rechnung und keine Rechenrubrik der separat erhaltenen Originalfälle werden übernommen.",
+            "taskDemandEn": "Use only the attached interpretation-only v2 projections T05-C1/C2 with fully supplied tables. Classify strength/species, distinguish halfpoint, equivalence and neutrality, and justify indicator candidates. Required pH/pK values and the temperature comparison are given; inherit no pH calculation or calculation rubric from the separately retained originals.",
+            "expectedPerformanceDe": "Starke und schwache Säure haben gleichen formalen Äquivalenzverbrauch, aber unterschiedliche Anfangs-, Puffer- und Salzprotolysebereiche. BTB beziehungsweise Phenolphthalein sind begründete Kandidaten. Ohne Farbkriterium und Auflösung folgt kein exakter Volumenfehler oder Molekülnachweis.",
+            "expectedPerformanceEn": "Strong and weak acids have equal formal equivalence consumption but different initial, buffer and salt-protolysis regions. BTB and phenolphthalein are justified candidates. No exact volume error or molecular identity follows without a colour criterion and sufficient resolution.",
+            "understandingFocusDe": "Dateninterpretation ohne obligatorische Rechnung charakteristischer pH-Werte.",
+            "understandingFocusEn": "Data interpretation without mandatory characteristic-point calculations."
+          },
+          {
+            "id": "base-and-polyprotic-supplied-variation",
+            "taskDemandDe": "Deute die fallende Basenkurve in der Auswertungsfassung v2 T08-C2; die beigefügte BASE-Auswertung ist eine alternative Vertiefung desselben Vergleichs, keine zusätzliche Fallquote. Vergleiche im v2 POLY-QUALITATIVE-C1 die vorgegebenen ein- und zweistufigen Modelle und erkläre Spezies, Pufferregionen und Identifikationsgrenzen. Alle benötigten Zahlenwerte sind gegeben; alte eingebettete Rechenaufträge werden nicht übernommen.",
+            "taskDemandEn": "Interpret the falling base curve in interpretation-only v2 T08-C2; the attached BASE projection is an alternative extension of that comparison, not an additional case quota. Compare supplied single-stage and two-stage models in v2 POLY-QUALITATIVE-C1 and explain species, buffers and identity limits. All required numerical values are given; old embedded calculation tasks are not inherited.",
+            "expectedPerformanceDe": "Schwache Base hinterlässt saures BH+; der Titrant allein macht Äquivalenz nicht neutral. Glycin besitzt hier Stufen um 25 und 50 mL mit wechselnden Paaren; pH um 6 ist zwischen den ausgeprägten Pufferbereichen. Die Daten beweisen keine allgemeine Stoffidentität.",
+            "expectedPerformanceEn": "A weak base leaves acidic BH+; titrant strength alone does not establish neutral equivalence. Here glycine has stages near 25 and 50 mL with changing pairs; pH around 6 lies between its main buffer regions. The data establish no unique substance identity.",
+            "understandingFocusDe": "Geänderte Richtung und Protonenzahl anhand gegebener Daten; keine polyprotische Zahlenrechnung als Zusatzpflicht.",
+            "understandingFocusEn": "Changed curve direction and proton count from supplied data; no added compulsory polyprotic calculation."
+          }
+        ]
+      }
+    }
+  ]
+}

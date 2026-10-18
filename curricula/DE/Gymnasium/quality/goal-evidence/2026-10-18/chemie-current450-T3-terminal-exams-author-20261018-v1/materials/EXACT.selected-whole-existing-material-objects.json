@@ -1,0 +1,1472 @@
+{
+  "role": "IMMUTABLE_SELECTED_MATERIAL_INPUTS_NOT_NEW_APPROVAL",
+  "equilibrium": {
+    "eqrk16-07-a": {
+      "id": "eqrk16-07-a",
+      "goalId": "a8ddb351-3501-5b6d-a908-c82a5d2f14d4",
+      "title": "Gasdissoziation mit sauberem Standardzustand",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Ideales Gasmodell: N2O4(g) ⇌ 2 NO2(g) bei 298 K. Hier sind Kc = Π(ci/c°)^νi und Kp = Π(pi/p°)^νi dimensionslos definiert. Es gelten c° = 1 mol/L, p° = 1 bar und R = 0,08314 L bar/(mol K). Gegeben ist Kc = 0,00500 für genau diese Reaktionsrichtung. Dies ist eine Datenaufgabe, kein NO2-Versuch.",
+      "materialsEn": "Ideal gas model: N2O4(g) ⇌ 2 NO2(g) at 298 K. Define dimensionless Kc = Π(ci/c°)^νi and Kp = Π(pi/p°)^νi. Use c° = 1 mol/L, p° = 1 bar and R = 0.08314 L bar/(mol K). Kc = 0.00500 refers to this exact reaction direction. Data exercise, no NO2 experiment.",
+      "taskDe": "Leite die Umrechnung aus dem idealen Gasgesetz her, bestimme Δν und berechne Kp. Vergleiche die unnormierte Schreibweise Kp = Kc (RT)^Δν. Prüfe R = 8,314 ohne Einheitenanpassung.",
+      "taskEn": "Derive the conversion from the ideal gas law, identify Δν and calculate Kp. Contrast the unnormalised formula Kp = Kc (RT)^Δν. Assess using R = 8.314 without changing units.",
+      "workedReasoningDe": "Δν = 2 − 1 = 1. Aus pi/p° = (ci/c°)(RTc°/p°) folgt Kp = Kc (RTc°/p°)^Δν. Der Faktor ist 24,77572; Kp = 0,123879 ist dimensionslos. Unnormierte Produkte hätten hier Kc in mol/L und Kp in bar; RT wäre dann der Faktor mit Einheit. Beide Konventionen dürfen nicht unmarkiert vermischt werden. R = 8,314 J/(mol K) verlangt konsistente Pa- und m³-Einheiten sowie umgerechnete Standards; blindes Einsetzen ergibt hier einen Faktor-100-Fehler. Die Herleitung setzt ideale Gase bei der genannten Temperatur voraus.",
+      "workedReasoningEn": "Δν = 1. From pi/p° = (ci/c°)(RTc°/p°), obtain Kp = Kc (RTc°/p°)^Δν. The factor is 24.77572, giving dimensionless Kp = 0.123879. Unnormalised products instead give Kc in mol/L and Kp in bar, with a dimensional RT factor. Do not silently mix conventions. R = 8.314 J/(mol K) requires consistent Pa/m³ units and converted standards; blind substitution here gives a factor-100 error. The derivation assumes ideal gases at the stated temperature.",
+      "freshIndependentTransferDe": "Verdopple die ganze Reaktionsgleichung. Leite Kp′, Kc′ und Δν′ ab und begründe die Abhängigkeit von der gewählten Gleichung.",
+      "freshIndependentTransferEn": "Double the entire reaction equation. Derive Kp′, Kc′ and Δν′ and explain their dependence on how the reaction is written.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Den Faktor aus Partialgrößen und Standardzuständen herleiten.",
+          "observableEn": "Derive the factor using partial quantities and standard states.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Δν = 1 und Kp = 0,123879 mit Einheitenkonsistenz berechnen.",
+          "observableEn": "Calculate Δν = 1 and Kp = 0.123879 consistently.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Unnormierte Schulform, Aktivitätskonvention und Grenzen unterscheiden.",
+          "observableEn": "Distinguish classroom products, activity conventions and limits.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    "eqrk16-07-b": {
+      "id": "eqrk16-07-b",
+      "goalId": "a8ddb351-3501-5b6d-a908-c82a5d2f14d4",
+      "title": "Feststoff zählt nicht zu gasförmigem Δν",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Zwei ideale Gasmodelle bei 500 K: I: H2(g) + I2(g) ⇌ 2 HI(g), dimensionslos Kc = 4,00. II: CaCO3(s) ⇌ CaO(s) + CO2(g), dimensionslos Kp = 0,200; reine Feststoffe haben Aktivität 1. Standards wie in 7a; R = 0,08314 L bar/(mol K). Die Konstanten sind Lehrmodelldaten, keine Realdaten bei dieser Temperatur. Ein Anbieter möchte die Formel ohne Korrektur auf dichte Hochdruckgase anwenden.",
+      "materialsEn": "Two ideal gas teaching models at 500 K: I: H2(g) + I2(g) ⇌ 2 HI(g), dimensionless Kc = 4.00. II: CaCO3(s) ⇌ CaO(s) + CO2(g), dimensionless Kp = 0.200; pure solid activities are 1. Standards as in 7a; R = 0.08314 L bar/(mol K). Constants are teaching values, not real data at this temperature. A supplier proposes applying the formula to dense high-pressure gas without corrections.",
+      "taskDe": "Bestimme Δν und das jeweils fehlende K. Erläutere die Rolle der Feststoffe und die nötige zusätzliche Größe bei Nichtidealität. Prüfe die Aussage, Δν = 0 bedeute stets ideales Verhalten.",
+      "taskEn": "Find Δν and the missing K. Explain the role of solids and the additional quantity needed for nonideality. Assess whether Δν = 0 always implies ideal behaviour.",
+      "workedReasoningDe": "I: Δν = 0, daher Kp = Kc = 4,00 im idealen Modell. II: Gas-Δν = 1; reine Feststoffe werden nicht in diese Gaszählung aufgenommen. Der Faktor ist 41,57 und Kc = 0,200/41,57 = 0,004811. Bei vorhandenen reinen Feststoffphasen gilt Aktivität 1; ihre physische Menge verschwindet dadurch nicht. Reale Gase erfordern Fugazitäten beziehungsweise Fugazitätskoeffizienten. Δν = 0 entfernt nur den idealen RT-Faktor; verschiedene Nichtidealitäten heben sich nicht automatisch auf. Phasenwechsel und dichte Gemische brauchen eine neue Modellprüfung.",
+      "workedReasoningEn": "I: Δν = 0, so Kp = Kc = 4.00 in the ideal model. II: gas Δν = 1; do not include solids in the gas count. The factor is 41.57, giving Kc = 0.004811. Pure solid phases have unit activity while present; their physical amount has not vanished. Real gases require fugacities or fugacity coefficients. Δν = 0 removes only the ideal RT factor, not necessarily different nonideal effects. Phase changes and dense mixtures require reassessment.",
+      "freshIndependentTransferDe": "Für überkritisches CO2 ist p/(cRT) deutlich ungleich 1. Identifiziere den versagenden Herleitungsschritt, statt K allein aus Totaldruck zu berechnen.",
+      "freshIndependentTransferEn": "For supercritical CO2, p/(cRT) differs substantially from 1. Identify the failing derivation step rather than computing K from total pressure alone.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Gasstöchiometrie und Feststoffphasen unterscheiden.",
+          "observableEn": "Distinguish gas stoichiometry and solid phases.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Kp = 4,00 und Kc = 0,004811 bestimmen.",
+          "observableEn": "Determine Kp = 4.00 and Kc = 0.004811.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Fugazität und die begrenzte Bedeutung von Δν = 0 erklären.",
+          "observableEn": "Explain fugacity and the limited meaning of Δν = 0.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    "eqrk16-08-a": {
+      "id": "eqrk16-08-a",
+      "goalId": "e0d4f08a-3e67-5e2b-9c4a-06468ec5c3dd",
+      "title": "Endotherme Dissoziation: neues K und Gültigkeitsbereich",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Idealisierte Gasdissoziation A2 ⇌ 2 A: dimensionslos K1 = 0,100 bei T1 = 298 K. Über 298–318 K sei ΔrH° = +50,0 kJ/mol näherungsweise konstant. R = 8,314 J/(mol K). Es gilt ln(K2/K1) = −ΔrH°/R · (1/T2 − 1/T1). Dies sind Lehrmodelldaten; es wird keine gefährliche Stoffprobe untersucht.",
+      "materialsEn": "Idealised gas dissociation A2 ⇌ 2 A: dimensionless K1 = 0.100 at T1 = 298 K. Assume ΔrH° = +50.0 kJ/mol is approximately constant over 298–318 K. R = 8.314 J/(mol K). Use ln(K2/K1) = −ΔrH°/R · (1/T2 − 1/T1). Teaching model data; no hazardous sample is investigated.",
+      "taskDe": "Berechne K2 bei 318 K und prüfe Vorzeichen und Plausibilität. Unterscheide mehr Produkte im Gleichgewicht von einer schnelleren Reaktion. Beurteile die Extrapolation bis 1000 K ohne weitere Daten.",
+      "taskEn": "Calculate K2 at 318 K and check sign and plausibility. Distinguish more equilibrium products from faster reaction. Assess extrapolation to 1000 K without further data.",
+      "workedReasoningDe": "ΔrH° ist in 50000 J/mol umzurechnen. Der Exponent ist +1,2692, also K2 ≈ 0,3558. Dies passt zur endothermen Hinreaktion. Eine Zusammensetzung folgt erst mit Stoffbilanz und Druckbedingungen; K liefert keine Einstellzeit. Kinetik benötigt eigene Raten- oder Aktivierungsgrößen. Bis 1000 K wären Änderungen der Wärmekapazitäten, Phasen und Reaktionswege sowie ΔrH°(T) zu prüfen. Die konstante Enthalpie ist dort nicht belegt. Die Formel verwendet Kelvin und natürlichen Logarithmus, keine Celsiuswerte oder unkonvertierten Zehnerlogarithmen.",
+      "workedReasoningEn": "Convert ΔrH° to 50000 J/mol. The exponent is +1.2692, so K2 ≈ 0.3558, consistent with an endothermic forward reaction. Composition also needs balances and pressure conditions; K gives no equilibration time. Kinetics requires separate rate or activation parameters. Extrapolation to 1000 K requires checking heat capacities, phases, pathways and ΔrH°(T). Constant enthalpy is not established there. Use Kelvin and natural logarithms, not Celsius or unconverted base-ten logarithms.",
+      "freshIndependentTransferDe": "Kehre die Reaktionsgleichung um. Leite K1′, ΔrH°′ und K2′ ab und prüfe den reziproken Zusammenhang.",
+      "freshIndependentTransferEn": "Reverse the reaction equation. Derive K1′, ΔrH°′ and K2′ and check the reciprocal relation.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Kelvin, Joule und natürlichen Logarithmus mit richtigem Vorzeichen verwenden.",
+          "observableEn": "Use Kelvin, joules and natural logarithms with the correct sign.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "K2 ≈ 0,356 chemisch deuten.",
+          "observableEn": "Interpret K2 ≈ 0.356 chemically.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Konstantes ΔrH°, Kinetik und Extrapolationsgrenze erläutern.",
+          "observableEn": "Explain constant ΔrH°, kinetics and extrapolation limits.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    "eqrk16-08-b": {
+      "id": "eqrk16-08-b",
+      "goalId": "e0d4f08a-3e67-5e2b-9c4a-06468ec5c3dd",
+      "title": "Enthalpie aus Gleichgewichtsdaten und falsche Aktivierungsdeutung",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Lehrmodell B ⇌ C: dimensionslose Gleichgewichtskonstanten K = 10,0 bei 300 K und K = 5,00 bei 320 K; Unsicherheit je ±5 %. Das sind zwei Messpunkte. Eine ergänzende qualitative Beschreibung eines ln-K-gegen-1/T-Diagramms mit drei weiteren fiktiven Punkten zeigt oberhalb 400 K deutliche Krümmung. Ein Autor nennt die daraus berechnete Enthalpie die Aktivierungsenergie der Hinreaktion.",
+      "materialsEn": "Teaching model B ⇌ C: dimensionless equilibrium constants K = 10.0 at 300 K and K = 5.00 at 320 K, each with ±5% uncertainty. These are two measured points. An additional qualitative ln-K-versus-1/T plot description with three further fictional points shows marked curvature above 400 K. An author calls the calculated enthalpy the forward activation energy.",
+      "taskDe": "Bestimme die mittlere van’t-Hoff-Reaktionsenthalpie über 300–320 K. Deute Vorzeichen und Krümmung. Widerlege die Aktivierungsbehauptung mit einem Energieniveauschema und benenne nötige kinetische Daten.",
+      "taskEn": "Estimate the average van’t Hoff reaction enthalpy over 300–320 K. Interpret its sign and the curvature. Refute the activation-energy claim with an energy-level sketch and identify necessary kinetic data.",
+      "workedReasoningDe": "ΔrH° ≈ −R ln(5/10)/(1/320 − 1/300) = −27,66 kJ/mol. Erwärmen begünstigt die Rückreaktion des exothermen Hinumsatzes; K sinkt. Zwei Punkte liefern einen Sekantenwert, keine universelle konstante Enthalpie. Die K-Unsicherheit begrenzt die Genauigkeit. Krümmung kann auf ΔrH°(T), geänderte Spezies oder Nichtidealität hinweisen. Reaktionsenthalpie ist die Energiedifferenz der Endzustände; Aktivierungsenergie betrifft die Barriere beziehungsweise Temperaturabhängigkeit von Raten. Dafür wären echte Geschwindigkeitskonstanten bei Temperaturvariation und kontrolliertem Mechanismus nötig.",
+      "workedReasoningEn": "ΔrH° ≈ −R ln(5/10)/(1/320 − 1/300) = −27.66 kJ/mol. Heating favours the reverse of an exothermic forward process, lowering K. Two points yield a secant estimate, not a universal constant enthalpy, and K uncertainty limits precision. Curvature can indicate ΔrH°(T), species changes or nonideality. Reaction enthalpy compares end states; activation energy concerns barriers or rate-temperature dependence. The latter needs actual rate constants across temperatures with a controlled mechanism.",
+      "freshIndependentTransferDe": "Eine Reaktion hat ΔrH° nahe null, läuft bei höherer Temperatur aber rascher. Erkläre die Vereinbarkeit von fast unverändertem K und größeren Raten.",
+      "freshIndependentTransferEn": "A reaction has nearly zero ΔrH° yet is faster at higher temperature. Explain how nearly unchanged K and larger rates are compatible.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "−27,66 kJ/mol und die Richtung des Temperatureffekts ableiten.",
+          "observableEn": "Derive −27.66 kJ/mol and the temperature direction.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Sekantenwert und Kurvenkrümmung als Modellgrenzen erklären.",
+          "observableEn": "Explain the secant estimate and curvature as model limits.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Reaktionsenthalpie und Aktivierungsenergie anhand von Energieniveaus trennen.",
+          "observableEn": "Separate reaction enthalpy and activation energy using energy levels.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    "eqrk16-10-a": {
+      "id": "eqrk16-10-a",
+      "goalId": "f0f2c5f8-06f1-5774-a176-d96505727acf",
+      "title": "Ein eigenes vereinfachtes Cu/Wasser-pE-pH-Diagramm konstruieren",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Bei 25 °C gilt Eh = 0,05916 pE in Volt gegen SHE. Wassergrenzen bei H2- und O2-Aktivität 1, bezogen auf 1 bar: pE = −pH für H+/H2 und pE = 20,78 − pH für O2/H2O. Für Cu2+ + 2 e− ⇌ Cu gilt E° = 0,340 V und festes aCu2+ = 10−6. Das Cu-Untermodell enthält nur gelöstes Cu2+ und reines Kupfermetall. Oxide, Hydroxide und Komplexe sind ausgeschlossen; Cu-Entscheidungen nur für pH 0–5.",
+      "materialsEn": "At 25 °C, Eh = 0.05916 pE in volts versus SHE. Water boundaries at H2 and O2 activity 1, relative to 1 bar, are pE = −pH for H+/H2 and pE = 20.78 − pH for O2/H2O. Cu2+ + 2 e− ⇌ Cu has E° = 0.340 V and fixed aCu2+ = 10−6. The Cu submodel contains only dissolved Cu2+ and pure metal. Oxides, hydroxides and complexes are excluded; restrict Cu decisions to pH 0–5.",
+      "taskDe": "Konstruiere eine beschriftete pE/pH-Skizze und die Cu-Grenze. Ordne P(pH 2, pE 1), Q(2, 6) und R(2, −4) chemisch ein. Unterscheide Modellstabilität von realer Korrosionsgeschwindigkeit.",
+      "taskEn": "Construct a labelled pE/pH sketch and the Cu boundary. Classify P(pH 2, pE 1), Q(2, 6) and R(2, −4) chemically. Distinguish model stability from actual corrosion rate.",
+      "workedReasoningDe": "Die Cu-Linie ist horizontal: Eh = 0,340 + 0,05916/2 · log(10−6) = 0,16252 V, also pE ≈ 2,747. Oberhalb wird Cu2+, unterhalb Metall bevorzugt. Bei pH 2 reicht das Wasserfenster von pE −2 bis 18,78. P liegt darin im Metallbereich, Q darin im Cu2+-Bereich. R liegt unter der H2-Grenze: Wasserreduktion ist thermodynamisch möglich, der Punkt ist kein dauerhaft unverändert stabiler Wasserzustand. Das Zweiformenmodell beweist weder reale Passivierung noch eine Rate und lässt außerhalb pH 0–5 wichtige Cu-Spezies aus. pE ist dimensionslos, Eh eine Spannung.",
+      "workedReasoningEn": "The Cu boundary is horizontal: Eh = 0.16252 V, hence pE ≈ 2.747. Cu2+ is favoured above it, metal below. At pH 2 the water window extends from pE −2 to 18.78. P lies inside it in the metal region and Q inside it in the Cu2+ region. R is below the H2 boundary, so water reduction is thermodynamically possible; it is not an unchanged stable aqueous state. This two-form model establishes neither actual passivation nor a corrosion rate, and omits important Cu species outside pH 0–5. pE is dimensionless; Eh is voltage.",
+      "freshIndependentTransferDe": "Erhöhe die Cu2+-Aktivität hundertfach. Leite die Grenzverschiebung ab und begründe, warum eine fehlende Aktivitätsangabe das Diagramm unvollständig macht.",
+      "freshIndependentTransferEn": "Increase Cu2+ activity one hundredfold. Derive the boundary shift and explain why missing activity information makes the diagram incomplete.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Wassergrenzen und horizontale Cu-Linie konstruieren.",
+          "observableEn": "Construct water boundaries and the horizontal Cu line.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Drei Punkte mit korrekter pE/Eh-Bedeutung einordnen.",
+          "observableEn": "Classify three points with correct pE/Eh meaning.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Fehlende Spezies, Rate und Passivierungsinformation benennen.",
+          "observableEn": "Identify missing species, rate and passivation information.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    "eqrk16-10-b": {
+      "id": "eqrk16-10-b",
+      "goalId": "f0f2c5f8-06f1-5774-a176-d96505727acf",
+      "title": "Geneigte und vertikale Grenze eines Modellmetalls",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Ein eigenes idealisiertes Metall M beschreibt nicht die vollständige Eisenchemie. M2+ + 2 e− ⇌ M hat E° = −0,440 V. M(OH)2(s) ⇌ M2+ + 2 OH− hat KL = 10−15; Kw = 10−14 bei 25 °C. Als Grenze für gelöstes Metall gilt aM2+ = 10−6. Nur M, M2+ und M(OH)2 werden berücksichtigt; Eh = 0,05916 pE. Wassergrenzen wie in 10a. Ein Feststoffbereich garantiert keine dichte, haftende Schutzschicht.",
+      "materialsEn": "An own idealised metal M does not represent complete iron chemistry. M2+ + 2 e− ⇌ M has E° = −0.440 V. M(OH)2(s) ⇌ M2+ + 2 OH− has Ksp = 10−15; Kw = 10−14 at 25 °C. Use aM2+ = 10−6 as the dissolved-metal threshold. Include only M, M2+ and M(OH)2; Eh = 0.05916 pE. Water boundaries are as in 10a. A solid region does not guarantee an adherent protective film.",
+      "taskDe": "Leite die vertikale Fällungsgrenze und die M/M(OH)2-Gerade her. Ordne P(pH 8, Eh −0,50 V) und Q(pH 11, Eh −0,50 V) ein. Warum ersetzt das Schema keinen Materialschutztest?",
+      "taskEn": "Derive the vertical precipitation boundary and M/M(OH)2 line. Classify P(pH 8, Eh −0.50 V) and Q(pH 11, Eh −0.50 V). Why does the scheme not replace a material-protection test?",
+      "workedReasoningDe": "Bei aM2+ = 10−6 gilt aOH− = √(10−15/10−6) = 10−4,5, also pOH 4,5 und pH 9,5. Die Metall/Ion-Linie ist Eh = −0,61748 V. Einsetzen von aM2+ = KL/aOH² ergibt die Feststoff/Metall-Gerade Eh = −0,05546 − 0,05916 pH. P liegt unter pH 9,5 und oberhalb −0,61748 V, also im M2+-Bereich. Q liegt oberhalb pH 9,5 und oberhalb −0,70622 V, also im M(OH)2-Bereich. Beide Punkte liegen im Wasserfenster. Der Schnittpunkt bei pH 9,5 prüft die Konsistenz. Haftung, Porosität, Kinetik, weitere Oxidationsstufen und Komplexe fehlen; ein Feststofffeld bedeutet keinen nachgewiesenen Schutz.",
+      "workedReasoningEn": "At aM2+ = 10−6, aOH− = 10−4.5, giving pOH 4.5 and pH 9.5. The metal/ion line is Eh = −0.61748 V. Substituting aM2+ = Ksp/aOH² gives the solid/metal line Eh = −0.05546 − 0.05916 pH. P has pH below 9.5 and Eh above −0.61748 V, placing it in the M2+ region. Q has pH above 9.5 and Eh above −0.70622 V, placing it in the hydroxide region. Both lie inside the water window. Check consistency at the intersection at pH 9.5. Adhesion, porosity, kinetics, other oxidation states and complexes are absent; a solid field is not proven protection.",
+      "freshIndependentTransferDe": "Füge einen starken M2+-Liganden hinzu. Begründe die nötige Neuberechnung der Grenzen statt einer unveränderten Farbflächenannahme.",
+      "freshIndependentTransferEn": "Add a strong M2+ ligand. Explain the need to recalculate boundaries rather than assuming unchanged coloured regions.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Die vertikale pH-9,5-Grenze aus KL und Kw ableiten.",
+          "observableEn": "Derive the vertical pH-9.5 boundary from Ksp and Kw.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Geneigte Grenze und beide Punkte konsistent bestimmen.",
+          "observableEn": "Determine the sloping boundary and classify both points consistently.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Feststoffstabilität von tatsächlicher Passivierung trennen.",
+          "observableEn": "Separate solid stability from actual passivation.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    "eqrk16-12-b": {
+      "id": "eqrk16-12-b",
+      "goalId": "13838147-c26d-54ca-b9be-5f2f0b8e9de5",
+      "title": "Vorgleichgewicht mit Rückreaktion: Änderung des scheinbaren Gesetzes",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Eigenes atomkonservierendes Modell: A + B ⇌ I mit k1 und k−1; I + C → P mit k2. I enthält die Atome von A+B, P jene von A+B+C. I sei kurzlebig; verwende d[I]/dt ≈ 0. Es gelten k1 = 2,0 L/(mol s), k−1 = 10 s−1 und k2 = 5,0 L/(mol s). [A] = [B] = 0,100 M sind fest. C variiert von 0,010 bis 10 M. Die hohe Konzentration ist eine formale Modellgrenze, keine Behauptung idealer realer Lösungen.",
+      "materialsEn": "Own atom-conserving model: A + B ⇌ I with k1 and k−1; I + C → P with k2. I contains atoms from A+B and P from A+B+C. Assume short-lived I and d[I]/dt ≈ 0. Use k1 = 2.0 L/(mol s), k−1 = 10 s−1 and k2 = 5.0 L/(mol s). [A] = [B] = 0.100 M are fixed; C varies from 0.010 to 10 M. The high concentration is a formal model limit, not a claim of ideal real solutions.",
+      "taskDe": "Leite das Gesetz mit der gegebenen Näherung her, berechne v bei C = 0,010 und 10 M und deute die Grenzfälle. Warum beweist eine passende Rate den Mechanismus noch nicht?",
+      "taskEn": "Derive the law under the stated approximation, calculate v at C = 0.010 and 10 M, and interpret the limits. Why does a good rate fit not prove the mechanism?",
+      "workedReasoningDe": "0 ≈ k1[A][B] − k−1[I] − k2[I][C]. Damit [I] ≈ k1[A][B]/(k−1 + k2[C]) und v = k1k2[A][B][C]/(k−1 + k2[C]). Bei 0,010 M ergibt sich 9,95 · 10−5 M/s; bei 10 M 0,01667 M/s. Bei niedrigem C gilt näherungsweise v = (k1k2/k−1)[A][B][C]; bei hohem C nähert sich v dem Wert k1[A][B] = 0,0200 M/s. Rückzerfall und Abfangen von I erklären die geänderte Abhängigkeit. Gesamtstöchiometrie allein liefert kein Rategesetz. Kurze I-Lebensdauer, Quasistationarität und fehlende Nebenwege benötigen eigene Evidenz, etwa Zeitauflösung oder I-Nachweis. Reale Aktivitätseffekte bei 10 M können die Näherung verletzen.",
+      "workedReasoningEn": "Steady state gives 0 ≈ k1[A][B] − k−1[I] − k2[I][C], hence [I] ≈ k1[A][B]/(k−1 + k2[C]) and v = k1k2[A][B][C]/(k−1 + k2[C]). At 0.010 M, v ≈ 9.95 × 10−5 M/s; at 10 M, v ≈ 0.01667 M/s. Low C gives v ≈ (k1k2/k−1)[A][B][C]; high C approaches k1[A][B] = 0.0200 M/s. Competing return and capture of I explain the changing dependence. Overall stoichiometry alone gives no rate law. Short I lifetime, steady state and absence of side routes need independent evidence such as time resolution or I detection. Actual activity effects at 10 M may invalidate the approximation.",
+      "freshIndependentTransferDe": "Nach einem Impuls steigt [I] zunächst deutlich. Welche Zeitphase verletzt die Näherung, und welche vollständige Differentialgleichung muss dort gelten?",
+      "freshIndependentTransferEn": "After a pulse, [I] initially accumulates substantially. Which time phase violates the approximation, and which full differential equation applies there?",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Die Quasistationaritätsgleichung mit allen Bildungs- und Verlusttermen ableiten.",
+          "observableEn": "Derive the steady-state equation with every formation and loss term.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Beide Raten und Grenzgesetze quantitativ deuten.",
+          "observableEn": "Interpret both rates and limiting laws quantitatively.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Die Näherung und die Identifizierbarkeitsgrenze am geänderten Verlauf prüfen.",
+          "observableEn": "Test the approximation and identifiability limit against the changed course.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    },
+    "eqrk16-12-a": {
+      "id": "eqrk16-12-a",
+      "goalId": "13838147-c26d-54ca-b9be-5f2f0b8e9de5",
+      "title": "Zwei Mechanismen für dieselbe NO-Oxidationskinetik",
+      "provenance": "Own fictional teaching data/model, CC-BY-4.0. Not actual learner work, laboratory observations, official measurements, or current product specifications. Numerical constants are supplied teaching values under the stated conditions.",
+      "imageRequired": false,
+      "materialsDe": "Datenmodell 2 NO + O2 → 2 NO2 bei 25 °C; v = ½ d[NO2]/dt. Anfangsdaten [NO]/[O2] in mol/L → v in mol/(L s): 0,10/0,10 → 2,0 · 10−4; 0,20/0,10 → 8,0 · 10−4; 0,10/0,20 → 4,0 · 10−4. Es werden keine Elementarschritte oder Zwischenprodukte vorgegeben. Mechanismen sind selbst als hypothetische, atom- und ladungserhaltende Modelle zu entwerfen und mit ausdrücklich genannten kinetischen Näherungen zu prüfen; damit wird kein realer NO-Mechanismus bewiesen. Kein Umgang mit NO-Gas.",
+      "materialsEn": "Data model 2 NO + O2 → 2 NO2 at 25 °C; v = ½ d[NO2]/dt. Initial [NO]/[O2] in mol/L → v in mol/(L s): 0.10/0.10 → 2.0 × 10−4; 0.20/0.10 → 8.0 × 10−4; 0.10/0.20 → 4.0 × 10−4. No elementary steps or intermediates are supplied. Independently propose hypothetical atom- and charge-conserving mechanisms and test them under explicitly stated kinetic approximations; this does not prove an actual NO mechanism. No NO gas handling.",
+      "taskDe": "Leite das empirische Geschwindigkeitsgesetz und k mit Einheiten her. Entwirf selbst zwei unterschiedliche mögliche mehrstufige Mechanismushypothesen aus diesem Gesetz und der Nettoreaktion, einschließlich der Zusammensetzung ihrer Zwischenprodukte und der benötigten Näherungen. Zeige für jede Hypothese durch Summierung und Zwischenproduktelimination die Vereinbarkeit mit Nettoreaktion und Gesetz. Erkläre gegebenenfalls den geschwindigkeitsbestimmenden Schritt (GBS), die fehlende Eindeutigkeit und eine zusätzliche unterscheidende Beobachtung. Andere chemisch konsistente Vorschläge als die Musterlösung sind zulässig.",
+      "taskEn": "Derive the empirical rate law and k with units. Independently propose two different possible multistep mechanisms from this law and the net reaction, including intermediate compositions and the required approximations. For each hypothesis, demonstrate compatibility with the net reaction and law by adding steps and eliminating intermediates. Explain any rate-determining step (GBS), nonuniqueness and an additional discriminating observation. Chemically consistent proposals different from the sample solution are acceptable.",
+      "workedReasoningDe": "Doppelte NO-Konzentration vervierfacht v, doppelte O2-Konzentration verdoppelt v: v = k[NO]²[O2] mit k = 0,20 L²/(mol² s). Ein mögliches selbst entworfenes Hypothesenpaar ist A: 2 NO ⇌ N2O2 als schnelles Vorgleichgewicht, dann N2O2 + O2 → 2 NO2 langsam; B: NO + O2 ⇌ NO3 als schnelles Vorgleichgewicht, dann NO3 + NO → 2 NO2 langsam. N2O2 enthält die Atome zweier NO, NO3 diejenigen von NO und O2; jeder Schritt erhält Atome und Ladung. Die Addition beider Schritte ergibt jeweils 2 NO + O2 → 2 NO2. Mit konzentrationsbezogenen Vorgleichgewichtsfaktoren gilt A: [N2O2] = KA[NO]² und v = kA KA[NO]²[O2]; B: [NO3] = KB[NO][O2] und v = kB KB[NO]²[O2]. KA und KB tragen hier die zum Konzentrationsansatz passenden Einheiten; die Produkte kA KA beziehungsweise kB KB haben die Einheit des beobachteten k. Schnelle Einstellung des jeweiligen Vorgleichgewichts und langsamer Produktbildungsschritt sind Annahmen, keine Folgerungen allein aus der Nettostöchiometrie. GBS bedeutet geschwindigkeitsbestimmender Schritt, hier jeweils der langsame Schritt unter diesen Annahmen. Die zwei passenden Entwürfe zeigen Nicht-Eindeutigkeit. Zeitaufgelöste Spektroskopie mit ausreichender Nachweisempfindlichkeit und zusätzliche Temperatur-/Kinetikdaten könnten die Hypothesen unterscheiden; ein ausbleibender Nachweis allein widerlegt keinen Weg. Gleichwertige atomkonservierende Entwürfe mit nachvollziehbar hergeleitetem Gesetz sind anzuerkennen. Keine Hypothese ist damit als realer NO-Mechanismus bestätigt. Im frischen Sättigungsfall sagen die einfachen Muster-A/B-Vorgleichgewichtsansätze unter ihren angegebenen Näherungen weiterhin lineare O2-Abhängigkeit voraus und benötigen daher eine Neubewertung. Für die Schritte von A wäre beispielsweise bei quasistationärem N2O2 statt strengem Vorgleichgewicht v = k1 k2 [NO]²[O2]/(k−1 + k2[O2]) ein möglicher geänderter Modellansatz: linear bei kleinem O2, sättigend bei großem O2. Das ist eine zusätzliche Hypothese, kein bestätigter realer Mechanismus. Ein anderer eigenständig konstruierter, schon sättigender Ansatz ist anhand seiner eigenen Herleitung und Gültigkeitsbedingungen zu beurteilen.",
+      "workedReasoningEn": "Doubling NO quadruples v and doubling O2 doubles v: v = k[NO]²[O2], with k = 0.20 L²/(mol² s). One possible independently proposed pair is A: fast pre-equilibrium 2 NO ⇌ N2O2, followed by slow N2O2 + O2 → 2 NO2; B: fast pre-equilibrium NO + O2 ⇌ NO3, followed by slow NO3 + NO → 2 NO2. N2O2 contains the atoms of two NO, while NO3 contains those of NO and O2; every step conserves atoms and charge. Adding the steps gives 2 NO + O2 → 2 NO2 in either case. Using concentration-based pre-equilibrium factors, A gives [N2O2] = KA[NO]² and v = kA KA[NO]²[O2]; B gives [NO3] = KB[NO][O2] and v = kB KB[NO]²[O2]. KA and KB here have the units required by the concentration expressions; kA KA and kB KB have the observed k units. Rapid pre-equilibration and slow product formation are assumptions, not consequences of net stoichiometry alone. GBS means rate-determining step, here the slow step under those assumptions. The two compatible constructions show nonuniqueness. Time-resolved spectroscopy with adequate detection sensitivity and additional temperature/kinetic data could discriminate; nondetection alone does not disprove a path. Accept equivalent atom-conserving proposals with a justified derivation of the rate law. Neither hypothesis is thereby confirmed as an actual NO mechanism. In the fresh saturation case, the simple sample A/B pre-equilibrium expressions remain linear in O2 under their stated assumptions, so those assumptions need reassessment. For A’s steps, for example, replacing strict pre-equilibrium by steady-state N2O2 could give v = k1 k2 [NO]²[O2]/(k−1 + k2[O2]): linear at low O2 and saturating at high O2. This is an additional hypothesis, not a confirmed actual mechanism. Judge an independently constructed model that already saturates by its own derivation and validity conditions.",
+      "freshIndependentTransferDe": "Ein anderer Bedingungsbereich zeigt Sättigung bezüglich O2. Prüfe für deine selbst entworfenen Hypothesen, ob sie unter den jeweils genannten Näherungen diesen Verlauf vorhersagen können und welche Annahme gegebenenfalls neu geprüft werden muss. Ein Modell, das nur im untersuchten Anfangsbereich linear in O2 ist, darf nicht ohne Prüfung global extrapoliert werden.",
+      "freshIndependentTransferEn": "A different conditions range shows saturation with respect to O2. For each mechanism you proposed, check whether it can predict this behaviour under its stated approximations and which assumption, if any, needs reassessment. A model linear in O2 only over the initial range must not be extrapolated globally without checking.",
+      "criterionToObservableRubric": [
+        {
+          "criterionId": "e1",
+          "observableDe": "Ordnungen und k = 0,20 mit korrekter Produktnormierung ermitteln.",
+          "observableEn": "Determine orders and k = 0.20 with correct product normalisation.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e2",
+          "observableDe": "Zwei eigene unterschiedliche mehrstufige Hypothesen aus Gesetz und Nettoreaktion konstruieren, Atome/Ladung und Zwischenproduktzusammensetzung erhalten und das Gesetz mit expliziten Näherungen sowie richtiger GBS-Bedeutung herleiten; gleichwertige Modelle zulassen.",
+          "observableEn": "Independently construct two different multistep hypotheses from the law and net reaction, conserve atoms/charge and intermediate composition, and derive the law with explicit approximations and correct GBS meaning; allow equivalent models.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        },
+        {
+          "criterionId": "e3",
+          "observableDe": "Nicht-Eindeutigkeit und eine unabhängige Unterscheidungsmessung begründen.",
+          "observableEn": "Explain nonuniqueness and an independent discriminating measurement.",
+          "points": 4,
+          "evidenceBoundary": "Future independent reasoning is not yet observed; solution text and a score alone never demonstrate mastery."
+        }
+      ],
+      "scoring": {
+        "maximumPoints": 12,
+        "interpretation": "Four points per specific criterion: 4 complete justified performance; 3 correct with a minor omission; 2 partly correct relationship; 1 isolated relevant statement; 0 absent/incorrect. Score supports diagnosis and does not itself grant mastery.",
+        "criticalRequirement": "A correct calculation does not compensate for a missing chemical explanation or a false model/safety claim."
+      }
+    }
+  },
+  "acid": {
+    "BUFFER-DESIGN-C1": {
+      "caseId": "BUFFER-DESIGN-C1",
+      "goalIds": [
+        "13877340-1370-5278-bb80-31cf382dd6f5",
+        "a449e874-6fec-502b-9667-6f078adc4d64"
+      ],
+      "titleDe": "Pufferbereich und Kapazität gemeinsam entwerfen",
+      "titleEn": "Design a pH range and buffer capacity together",
+      "role": "Complete informed AUTHOR material and rubric, pending independent review",
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "materialDe": "Ideales Phosphatpaar, ausgenommen die ausdrücklich dosierten Belastungen gegenüber weiterem Stoffaustausch geschlossen, H₂PO₄⁻/HPO₄²⁻ bei 25 °C, pKₛ=7,21. Gesucht sind 100,0 mL Puffer bei pH 7,40 mit formaler Gesamtkonzentration 0,1000 mol/L. Verfügbar sind je 0,2000-molare, von der Lehrkraft standardisierte Lösungen beider Partner. Volumina additiv; Arbeitsmodell γ=1, andere Phosphatstufen und Wasserbeiträge im pH-Bereich 7,2–7,6 vernachlässigbar. Anforderungen: Nach getrennten Belastungen von jeweils 1,000 mmol HCl bzw. NaOH soll 7,20≤pH≤7,60 gelten; Zusatzvolumen im Rechenmodell vernachlässigbar. β=(1/V)dn(starke Base)/d(pH), positive lokale differentielle Kapazität; von endlicher Lasttoleranz zu unterscheiden.",
+      "materialEn": "Ideal phosphate pair, closed to further exchange apart from the explicitly dosed loads, at 25 °C, pKa=7.21. Design 100.0 mL at pH 7.40 and total formal concentration 0.1000 mol/L using standardised 0.2000 M stocks of both partners. Additive volumes, γ=1; other phosphate stages/water negligible over pH 7.2–7.6. Separate 1.000 mmol HCl/NaOH loads should keep pH in 7.20–7.60; dose volume negligible in this model. Define β=(1/V)dn(strong base)/d(pH), positive local differential capacity, distinct from finite load tolerance.",
+      "taskDemandDe": [
+        "Bestimme das nötige Partnerverhältnis, die beiden Stoffmengen und ein vollständiges Rezept einschließlich Auffüllen auf Endvolumen.",
+        "Rechne beide Belastungsalternativen mit vorgeschalteter Bilanz und entscheide über den Bereich. Bestimme außerdem die größtmöglichen modellierten Säure- und Basenlasten bis zu den beiden Grenz-pH-Werten.",
+        "Leite β aus nB/(nA+nB)=r/(1+r), r=10^(pH−pKₛ), ab und berechne lokale Kapazität je Liter und für den gesamten Ansatz. Erkläre den Unterschied zur endlichen Bereichstoleranz.",
+        "Beurteile eine zehnfache Verdünnung und eine Verdopplung beider Stoffmengen bei gleichem Endvolumen. Nenne Voraussetzungen, die vor echter Herstellung/Messung noch geprüft werden müssen."
+      ],
+      "taskDemandEn": [
+        "Find partner ratio, amounts and a complete stock-mixing/final-volume recipe.",
+        "Balance both independent loads and decide compliance; also find maximum modelled acid/base loads to the pH limits.",
+        "Derive β from nB/(nA+nB)=r/(1+r), r=10^(pH−pKa), and calculate per-litre and whole-preparation differential capacity; distinguish finite interval tolerance.",
+        "Assess tenfold dilution and doubled partner amounts at constant final volume, stating checks required before real preparation/measurement."
+      ],
+      "workedModelDe": [
+        "r=10^0,19=1,54882; insgesamt10,000 mmol: nA=3,92339 mmol, nB=6,07661 mmol. Aus 0,2000 M folgen19,6169 mL Säurestock und30,3831 mL Basenstock; anschließend auf100,0 mL auffüllen, nicht nochmals100mL Wasser hinzugeben.",
+        "HCl: A=4,92339/B=5,07661 mmol, pH7,22331. NaOH: A=2,92339/B=7,07661 mmol, pH7,59394; beide erfüllen den idealen Bereich knapp. Untergrenze erreicht bei1,13417 mmol Säure, Obergrenze bei1,02879 mmol Base. Diese Grenzen liegen deutlich vor völligem Partnerverbrauch.",
+        "β=ln(10)·Ct·r/(1+r)²≈0,0548957 mol/(L·pH). Für0,1000L sind das0,00548957 mol/pH. Differentialwert ist die lokale Tangentensteigung; für eine endliche Last muss die nichtlineare HH-Bilanz neu berechnet werden.",
+        "Gleicher Quotient hält im Idealmodell den pH, aber Verdünnung senkt β je Liter; beim gesamten auf1L verdünnten Ansatz bleiben die Gesamtstoffmengen erhalten. Doppelte Partnerkonzentration verdoppelt lokale Kapazität und endliche Mengenreserven bei gleichem V, nicht den pH. Reale Aktivitäten, Temperatur, Standardisierung, Messunsicherheit und Materialverträglichkeit müssen vor dem praktischen Rezept beurteilt werden; keine biologische Eignung allein aus Zahlen."
+      ],
+      "workedModelEn": [
+        "r=1.54882; 10.000 mmol total gives acid3.92339 and base6.07661 mmol. Use19.6169mL acid stock and30.3831mL base stock and make up to100.0mL, not add another100mL water.",
+        "HCl leaves acid4.92339/base5.07661mmol, pH7.22331. NaOH leaves acid2.92339/base7.07661mmol, pH7.59394; both narrowly comply in the ideal model. Limits occur at1.13417mmol acid and1.02879mmol base, before total partner exhaustion.",
+        "β=ln(10)Ct r/(1+r)²≈0.0548957mol/(L·pH), or0.00548957mol/pH for100.0mL. This is a local tangent; finite loads require the nonlinear balance.",
+        "Equal ratio preserves ideal pH while dilution lowers β per litre; diluting the complete sample to1L preserves total partner amounts. Doubling concentration at fixed V doubles local capacity and finite reserves, not pH. Check activities, temperature, standardisation, measurement uncertainty and compatibility before practice; these numbers alone prove no biological suitability."
+      ],
+      "rubric": [
+        {
+          "criterionId": "BUFFER-DESIGN-C1-r1",
+          "fullCreditDe": "Quotient, Stoffmengen, Stockvolumina und Endvolumen bilden ein konsistentes Rezept.",
+          "fullCreditEn": "Ratio, amounts, stock volumes and final volume form a consistent recipe.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        },
+        {
+          "criterionId": "BUFFER-DESIGN-C1-r2",
+          "fullCreditDe": "Beide Einzelbelastungen und die beiden endlichen Lastgrenzen werden aus positiven Restmengen berechnet.",
+          "fullCreditEn": "Calculate both separate loads and finite limits from positive remaining amounts.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        },
+        {
+          "criterionId": "BUFFER-DESIGN-C1-r3",
+          "fullCreditDe": "Differentialkapazität wird hergeleitet und mit richtiger Dimension vom endlichen Bereich unterschieden.",
+          "fullCreditEn": "Derive differential capacity, use correct units and distinguish the finite interval.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        },
+        {
+          "criterionId": "BUFFER-DESIGN-C1-r4",
+          "fullCreditDe": "Verdünnung/Konzentration und reale Prüfgrenzen werden nachvollziehbar bewertet.",
+          "fullCreditEn": "Evaluate dilution/concentration changes and practical limits.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        }
+      ],
+      "maximumDesignPoints": 8,
+      "practicalExecutionRequired": false,
+      "actualLearnerExecutions": 0,
+      "actualObservationRecords": [],
+      "actualPointsAwarded": null,
+      "syntheticDataAreNotPracticalEvidence": true,
+      "HumanApproval": false,
+      "HumanTrial": false
+    },
+    "PRACTICAL-PH-CURVES-P1": {
+      "caseId": "PRACTICAL-PH-CURVES-P1",
+      "goalIds": [
+        "e0944fbb-0761-5f9c-afaa-3d4713ed1bed",
+        "059acb11-29b3-5645-ac4c-b4214dc41a2d",
+        "28c90c6a-3020-5c51-ac40-d802f3f12d2d"
+      ],
+      "titleDe": "Eigene starke/schwache Säurekurven aufnehmen und den Halbpunkt ermitteln",
+      "titleEn": "Acquire personal strong/weak acid curves and determine the halfpoint",
+      "role": "Complete informed AUTHOR material and rubric, pending independent review",
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "materialDe": "Betreutes Schulpraktikum. Die Lehrkraft stellt 25,00-mL-Proben von Salzsäure und Essigsäure im ungefähren Bereich 0,050 mol/L sowie standardisierte 0,0500-molare NaOH bereit und verwahrt die tatsächlichen Probenkonzentrationen zur Plausibilitätsprüfung. Ausstattung: Schutzbrille und Schutzkleidung nach schulischer Gefährdungsbeurteilung, 25-mL-Vollpipette mit Pipettierhilfe, 50-mL-Bürette mit Stativ (auf 0,05 mL ablesbar), 100- bis 150-mL-Bechergläser, Magnetrührer, pH-Meter mit geeigneter Elektrode, Kalibrierpuffer pH 4/7/10 mit Temperaturangaben, Spülwasser, Abfallgefäß und Thermometer. Das Auswerteblatt ist leer. Kalibrierung nach Geräteanleitung prüfen; Unsicherheit und Stabilitätskriterium dokumentieren. Zugabeschritte weit vom Sprung höchstens 2 mL, im erwarteten Bereich 20–27 mL höchstens 0,2 mL und um den tatsächlich eingegrenzten Sprung höchstens 0,05 mL. Bis in einen eindeutigen Nachäquivalenzbereich arbeiten, beispielsweise bis 30 mL. Messplan an reale Beobachtungen anpassen.",
+      "materialEn": "Supervised school practical. The teacher supplies 25.00 mL HCl and acetic-acid samples near 0.050 mol/L and standardised 0.0500 M NaOH, retaining actual sample concentrations for plausibility checks. Equipment: eye protection and clothing required by the school risk assessment, 25 mL volumetric pipette with filler, 50 mL burette and stand readable to 0.05 mL, 100–150 mL beakers, magnetic stirrer, suitable pH electrode/meter, pH 4/7/10 calibration buffers with temperature data, rinse water, waste vessel and thermometer. The worksheet is blank. Follow calibration instructions and record uncertainty and a stability criterion. Add at most 2 mL away from the jump, 0.2 mL in the expected 20–27 mL region and 0.05 mL around the located jump. Continue into clear excess, for example to 30 mL, adapting the plan to actual observations.",
+      "taskDemandDe": [
+        "Begründe Messfrage, Hypothese und Messplan. Prüfe den Aufbau mit der Lehrkraft und dokumentiere Kalibrierung, Temperatur, Maßlösung, Probenvolumen und Geräteunsicherheiten. Nimm unter Aufsicht für beide Säureklassen eigene Volumen/pH-Paare auf; ersetze Rohwerte niemals durch Erwartungswerte.",
+        "Zeichne die eigenen Messreihen mit beschrifteten Achsen, Einheiten, passender Skala und Interpolationskennzeichnung. Bestimme den Äquivalenzbereich aus den Messdaten, beispielsweise mit ΔpH/ΔV, und begründe eine Volumenunsicherheit.",
+        "Ermittle für die schwache Säure V½=Veq/2 aus dem beobachteten Äquivalenzvolumen. Nutze einen eigenen Messwert oder eng benachbarte eigene Punkte; miss bei Bedarf an einer frischen identischen Teilprobe nach. Bestimme näherungsweise pKₛ und begründe die Partnergleichheit und die Grenzen dieser Näherung. Der starke Säurehalbpunkt liefert keinen schwachen Puffer-pK-Wert.",
+        "Vergleiche die Beobachtungen mit Hypothese und Modellen. Erkläre Pufferbereich, Salzprotolyse und mögliche Geräte- oder Verfahrensfehler. Berechne die tatsächliche Probenkonzentration aus Veq und Stöchiometrie. Lege Rohprotokoll, Graphen und Aufsichtsbeobachtung gemeinsam vor."
+      ],
+      "taskDemandEn": [
+        "Justify question, hypothesis and plan. Check the setup with the teacher and document calibration, temperature, titrant, sample volume and instrument uncertainty. Under supervision acquire personal volume/pH readings for both acid classes; never substitute expected values.",
+        "Plot personal readings with labelled axes, units, scale and interpolation markings. Determine the equivalence region from the readings, for example using ΔpH/ΔV, and justify a volume uncertainty.",
+        "For the weak acid use the observed equivalence volume to determine Vhalf=Veq/2. Use a personal reading or nearby personal points; if necessary remeasure a fresh identical aliquot. Estimate pKa and justify equal-partner approximation and its limits. A strong-acid halfpoint provides no weak-buffer pKa.",
+        "Compare observations with hypothesis and models, explaining buffering, salt protolysis and instrument or procedural errors. Calculate actual sample concentration from Veq and stoichiometry. Submit raw notes, plots and supervisor observation together."
+      ],
+      "workedModelDe": [
+        "Erwartet werden tatsächlich ausgefüllte Arbeitsunterlagen und die beobachtete sichere Handhabung: Kalibrierung, Zeit-/Temperaturbezug, abgelesene Volumen/pH-Werte und persönliche Arbeitsschritte. Ohne diese bleibt die Durchführung offen; es wird keine Musterwerttabelle geliefert.",
+        "Die Graphen enthalten eigene Messpunkte. Erwartungsmodelle sind ansteigende Kurven mit scharfem Sprung für die starke Säure sowie Pufferbereich und basischer Äquivalenz für die schwache Säure. Abweichungen werden diskutiert und nicht wegkorrigiert. Grobe Abstände liefern kein exaktes Äquivalenzvolumen.",
+        "V½ folgt aus dem tatsächlichen Veq. Unter geeigneten schwachen Säurebedingungen gilt näherungsweise pH(V½)=pKₛ. Der Wert stammt aus eigenen Daten; Interpolation und Unsicherheit werden genannt. Ein geplantes Halbvolumen allein ist kein experimenteller Befund.",
+        "Für die einprotonige 1:1-Reaktion gilt cProbe=cNaOH·Veq/VProbe. Einheiten und Unsicherheit beruhen auf eigenen Daten. CO₂, Drift, Verzögerung, Rühren und Volumen-/Konzentrationsfehler können relevant sein. Ein misslungener Versuch darf ehrlich dokumentiert werden, belegt aber keine erfolgreiche Durchführung."
+      ],
+      "workedModelEn": [
+        "Require genuine completed notes and observed safe handling: calibration, time/temperature, read volume/pH pairs and personal actions. Without them practical performance remains open; no target reading table is supplied.",
+        "Plots contain personal points. Expected models are rising curves with a sharp strong-acid jump and a weak-acid buffer region/basic equivalence. Discuss deviations without correcting them away. Coarse intervals cannot establish exact equivalence.",
+        "Use actual Veq to obtain Vhalf. Under valid weak-acid conditions pH(Vhalf) approximately equals pKa, estimated from personal data with interpolation/uncertainty stated. A planned half-volume alone is not experimental evidence.",
+        "For the monoprotic 1:1 reaction cSample=cNaOH·Veq/VSample. Units and uncertainty use personal data. Discuss CO₂, drift, lag, stirring and volume/concentration errors. Honest records of unsuccessful work do not establish successful performance."
+      ],
+      "rubric": [
+        {
+          "criterionId": "PRACTICAL-PH-CURVES-P1-r1",
+          "fullCreditDe": "Aufsicht bestätigt tatsächliche fachgerechte Durchführung und eigene Messhandlungen; Kalibrierung, Bedingungen und Rohdaten liegen vor.",
+          "fullCreditEn": "Supervisor confirms actual correct performance and personal measurements, with calibration, conditions and raw data.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        },
+        {
+          "criterionId": "PRACTICAL-PH-CURVES-P1-r2",
+          "fullCreditDe": "Eigene Daten werden beschriftet gezeichnet; Äquivalenz und Unsicherheit folgen aus Auflösung und Kurvenverlauf.",
+          "fullCreditEn": "Plot personal data with labels; derive equivalence and uncertainty from resolution and shape.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        },
+        {
+          "criterionId": "PRACTICAL-PH-CURVES-P1-r3",
+          "fullCreditDe": "Experimenteller Halbpunkt und pK-Schätzung beruhen auf eigenen Daten mit begründeter Näherung.",
+          "fullCreditEn": "Experimental halfpoint and pKa estimate use personal data and a justified approximation.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        },
+        {
+          "criterionId": "PRACTICAL-PH-CURVES-P1-r4",
+          "fullCreditDe": "Interpretation, Konzentrationsrechnung und konkrete Fehlerdiskussion stimmen mit dem echten Protokoll überein.",
+          "fullCreditEn": "Interpretation, concentration and specific error discussion match the actual record.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        }
+      ],
+      "maximumDesignPoints": 8,
+      "practicalExecutionRequired": true,
+      "actualLearnerExecutions": 0,
+      "actualObservationRecords": [],
+      "actualPointsAwarded": null,
+      "syntheticDataAreNotPracticalEvidence": true,
+      "HumanApproval": false,
+      "HumanTrial": false,
+      "practicalBoundaryDe": "Nur nach schulischer Gefährdungsbeurteilung, geeigneter Ausstattung und Aufsicht durch eine fachkundige Lehrkraft. Eigene Messwerte und ein datiertes, pseudonymes Beobachtungsprotokoll der Aufsicht sind erforderlich. Bei fehlender Ausstattung wird die praktische Aufgabe ausgesetzt; Plan, Simulation oder fremde/synthetische Daten erfüllen die Durchführung nicht.",
+      "practicalBoundaryEn": "Requires the school’s risk assessment, suitable equipment and supervision by a qualified chemistry teacher. Personally acquired readings and a dated pseudonymous supervisor observation are required. If equipment is unavailable, postpone the practical task; a plan, simulation or supplied/synthetic data do not satisfy performance.",
+      "blankObservationTemplate": {
+        "pseudonymousWorkId": null,
+        "supervisorRole": null,
+        "date": null,
+        "apparatusAndCalibration": null,
+        "temperature_C": null,
+        "rawReadings": [],
+        "observedLearnerActions": [],
+        "deviationsAndUncertainty": null,
+        "supervisorAttestation": null
+      },
+      "emptyRawDataFields": [
+        "sampleId",
+        "addedVolume_mL",
+        "temperature_C",
+        "measuredPH",
+        "readingStable",
+        "time",
+        "notes"
+      ],
+      "modelValuesSubstitutedForReadings": false
+    },
+    "PRACTICAL-BUFFER-P1": {
+      "caseId": "PRACTICAL-BUFFER-P1",
+      "goalIds": [
+        "c61b2a7a-fb0f-5a76-92e9-771c789fa816",
+        "25729c34-33d5-553a-a723-046113a7da47"
+      ],
+      "titleDe": "Pufferwirkung mit eigener Messreihe untersuchen",
+      "titleEn": "Investigate buffering using personal measurements",
+      "role": "Complete informed AUTHOR material and rubric, pending independent review",
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "materialDe": "Betreutes Schulpraktikum nach Gefährdungsbeurteilung und Freigabe der Lehrkraft. Verfügbar: 0,100-molare Essigsäure und Natriumacetat, je 0,0500-molare HCl und NaOH, pH-Meter und Kalibrierpuffer, 100-mL-Messkolben, Pipetten mit Hilfe, Bürette oder geeignete Dosierpipette, Bechergläser, Rührer, Thermometer, Spülwasser, Abfallgefäß und Schutzbrille. Je 25,00 mL Säure- und Acetatstock im Messkolben auf 100,0 mL auffüllen; damit liegen beide Partner formal je 0,0250 mol/L vor. Vier getrennte 20,00-mL-Ansätze: Puffer mit HCl, Puffer mit NaOH, Wasser mit HCl und Wasser mit NaOH. Je insgesamt 0; 0,50; 1,00; 2,00 mL Titrant zugeben und bei jedem Schritt stabilen pH und Temperatur notieren. Dies sind Dosiervorgaben und keine pH-Messwerte. Zusätzliche Lasten nur nach Prüfung der Lehrkraft; vollständige Erschöpfung ist nicht nötig.",
+      "materialEn": "Supervised school practical after risk assessment and teacher release. Materials: 0.100 M acetic acid and sodium acetate, 0.0500 M HCl and NaOH, pH meter/calibration buffers, 100 mL volumetric flask, pipettes/filler, burette or suitable dosing pipette, beakers, stirrer, thermometer, rinse water, waste vessel and eye protection. Mix 25.00 mL of each buffer stock and make up to 100.0 mL, giving 0.0250 mol/L of each partner. Prepare four separate 20.00 mL portions: buffer with acid, buffer with base, water with acid and water with base. Add total volumes of 0, 0.50, 1.00 and 2.00 mL titrant, recording stable pH and temperature at each step. Volumes are instructions and are not pH readings. Further loading needs a teacher check; full exhaustion is unnecessary.",
+      "taskDemandDe": [
+        "Formuliere Hypothese, Vergleichsvariable und faire Kontrollbedingungen. Erläutere, warum Säure- und Basenzugabe sowie ungepufferte Kontrollen erforderlich sind.",
+        "Stelle den Puffer auf das Endvolumen her und führe die getrennten Messreihen persönlich unter Aufsicht durch. Protokolliere Rohdaten, Kalibrierung, Dosen, Stabilität, Temperatur und Abweichungen.",
+        "Zeichne ΔpH gegen zugegebene Stoffmenge. Vergleiche Puffer und Kontrollen und erkläre die tatsächlich beobachteten Richtungen mit beiden Abfangreaktionen und endlichen Reserven.",
+        "Beurteile die Reichweite der eigenen Daten und offene Punkte. Ersetze fehlende oder abweichende Messungen nicht durch Modellwerte. Unterscheide beobachtete Pufferwirkung vom vollständigen quantitativen Kapazitätsdesign."
+      ],
+      "taskDemandEn": [
+        "State hypothesis, comparison variable and fair controls. Explain why acid/base additions and unbuffered controls are necessary.",
+        "Prepare the buffer to final volume and personally perform separate series under supervision. Record raw readings, calibration, doses, stability, temperature and deviations.",
+        "Plot ΔpH against added amount. Compare buffer and controls and explain actual observed directions with both buffering reactions and finite reserves.",
+        "Assess what personal data support and what remains open. Never replace missing or deviating readings with model values. Distinguish observed buffering from full quantitative capacity design."
+      ],
+      "workedModelDe": [
+        "Startvolumina, Titrantstärken, Dosen, Temperatur und Methode kontrollieren; das Puffersystem ist die Vergleichsvariable. Beide Lastarten prüfen die beiden Partner.",
+        "Tatsächliches Messprotokoll und Aufsichtsbeobachtung sind nötig. Das Endvolumen sichert die definierte formale Konzentration. Rohdaten werden nicht an Sollwerte angepasst.",
+        "Acetat bindet H₃O⁺ und bildet Essigsäure; Essigsäure bindet OH⁻ und bildet Acetat und Wasser. Im gewählten Bereich sind kleinere Änderungen als in Wasser zu erwarten, die eigenen Daten entscheiden jedoch. Jede 20-mL-Pufferportion enthält formal je 0,500 mmol Partner; die maximale vorgegebene Dosis beträgt 0,100 mmol.",
+        "Die Beobachtung gilt für bestimmte Dosen und Bedingungen und belegt keine unbegrenzte Reserve. Temperatur, Aktivitäten, CO₂, Elektrode und Kontamination können relevant sein. Differentialkapazität und maximal zulässige Lasten sind ein eigener Rechenauftrag in BUFFER-DESIGN-C1."
+      ],
+      "workedModelEn": [
+        "Control initial volumes, titrant strengths, doses, temperature and method; buffer presence is the comparison variable. Both load types test both partners.",
+        "Require genuine notes and supervisor observation. Final volume establishes the defined formal concentration. Never adjust readings to targets.",
+        "Acetate consumes H₃O⁺, producing acetic acid; acetic acid consumes OH⁻, producing acetate and water. Smaller buffer changes than in water are expected in this regime, but personal data decide. Each 20 mL buffer portion contains 0.500 mmol of each partner; the largest stated dose is 0.100 mmol.",
+        "Observations apply to specified doses and conditions, not infinite reserves. Consider temperature, activities, CO₂, electrode and contamination. Differential capacity and maximum allowed loads are separately calculated in BUFFER-DESIGN-C1."
+      ],
+      "rubric": [
+        {
+          "criterionId": "PRACTICAL-BUFFER-P1-r1",
+          "fullCreditDe": "Vergleichsfrage, Kontrollbedingungen und Herstellung sind fachlich begründet.",
+          "fullCreditEn": "Justify the question, controls and preparation.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        },
+        {
+          "criterionId": "PRACTICAL-BUFFER-P1-r2",
+          "fullCreditDe": "Eigene Messreihen und Handlungen liegen als Rohprotokoll mit Aufsichtsbeobachtung vor.",
+          "fullCreditEn": "Provide personal raw series and supervisor observation of actions.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        },
+        {
+          "criterionId": "PRACTICAL-BUFFER-P1-r3",
+          "fullCreditDe": "Graphischer Vergleich und beide Reaktionen erklären echte Daten ohne Sollwertersatz.",
+          "fullCreditEn": "Plots and both reactions explain actual data without target substitution.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        },
+        {
+          "criterionId": "PRACTICAL-BUFFER-P1-r4",
+          "fullCreditDe": "Schlussfolgerungen bleiben auf endliche Dosen begrenzt und trennen Beobachtung von Kapazitätsdesign.",
+          "fullCreditEn": "Limit conclusions to finite doses and distinguish observations from capacity design.",
+          "points": 2,
+          "assessmentBoundary": "criterion design only; no learner points awarded"
+        }
+      ],
+      "maximumDesignPoints": 8,
+      "practicalExecutionRequired": true,
+      "actualLearnerExecutions": 0,
+      "actualObservationRecords": [],
+      "actualPointsAwarded": null,
+      "syntheticDataAreNotPracticalEvidence": true,
+      "HumanApproval": false,
+      "HumanTrial": false,
+      "practicalBoundaryDe": "Nur nach schulischer Gefährdungsbeurteilung, geeigneter Ausstattung und Aufsicht durch eine fachkundige Lehrkraft. Eigene Messwerte und ein datiertes, pseudonymes Beobachtungsprotokoll der Aufsicht sind erforderlich. Bei fehlender Ausstattung wird die praktische Aufgabe ausgesetzt; Plan, Simulation oder fremde/synthetische Daten erfüllen die Durchführung nicht.",
+      "practicalBoundaryEn": "Requires the school’s risk assessment, suitable equipment and supervision by a qualified chemistry teacher. Personally acquired readings and a dated pseudonymous supervisor observation are required. If equipment is unavailable, postpone the practical task; a plan, simulation or supplied/synthetic data do not satisfy performance.",
+      "blankObservationTemplate": {
+        "pseudonymousWorkId": null,
+        "supervisorRole": null,
+        "date": null,
+        "apparatusAndCalibration": null,
+        "temperature_C": null,
+        "rawReadings": [],
+        "observedLearnerActions": [],
+        "deviationsAndUncertainty": null,
+        "supervisorAttestation": null
+      }
+    }
+  },
+  "analytics": {
+    "T01-C1": {
+      "id": "T01-C1",
+      "goalId": "e22a34d4-ac1e-5afe-8f77-0dfa4fd9f44f",
+      "titleDe": "Gesamthärte als Ca²⁺+Mg²⁺-Summe",
+      "materialDe": "Didaktische Prüfanweisung, keine erteilte Laborfreigabe: 25°C; Probe enthält nur mit EDTA erfasste Ca²⁺/Mg²⁺, keine störenden Metalle. Bereit: 50.00-mL-Vollpipette, 50-mL-Bürette, Erlenmeyerkolben, EDTA 0.01000 mol/L, NH₃/NH₄⁺-Puffer pH10 und Eriochromschwarz T. Die Lehrkraft muss die lokal geprüfte Dosier-/Entsorgungsanweisung freigeben. Beispielprotokoll für die getrennte Papierauswertung: je50.00mL Probe, Verbräuche19.80/19.90/19.85mL, Blindwert0.10mL. Alle Zahlen sind synthetisch. Vollständiges vorgesehenes Prüfprotokoll (noch nicht ausgeführt): Nur bereitgestellte, verdünnte Ca/Mg-Modelllösungen und etikettierte Maß-/Pufferlösung verwenden; Schutzbrille tragen, nicht kosten, Metall-/EDTA-Abfall getrennt sammeln. Die konkrete schulische Gefährdungsbeurteilung bleibt Voraussetzung einer späteren Durchführung. Bürette mit EDTA spülen, füllen, Spitze luftblasenfrei machen; Anfangsstand auf 0.05 mL ablesen. Aliquot mit der genannten Vollpipette in den Kolben geben, 2.0 mL bereitgestellten pH-10-Methodenpuffer und 2 Tropfen Eriochromschwarz-T-Lösung zufügen. Vor Titration pH 9.9–10.1 kontrollieren; bei Abweichung keine gültige Messung werten. Unter Schwenken mit EDTA titrieren, nahe dem Umschlag tropfenweise; erstmals reinblaue, nach 30 s Mischen beständige Farbe als Endpunkt protokollieren. Innerhalb von 5 min nach Pufferzugabe arbeiten; bei Trübung oder unscharfem Umschlag stoppen und Matrix/Methodenbedingungen prüfen. Endstand, Differenz, Temperatur, pH und Beobachtungen unverändert notieren; drei Aliquote, einen Reagenzblindwert mit Wasser statt Probe und die genannte Kontrollprobe gleich behandeln. Beobachtungsbogen ist leer: Datum/Person; Aliquot; Verdünnung; Anfangs-/Endstand; pH; Endpunktfarbe/-dauer; Abweichung; Entsorgung. Diese leeren Felder sind keine Beobachtungen. Zusätzliche synthetische Kontrolle: Eine getrennt bereitgestellte Ca/Mg-Referenz hat c(Ca+Mg)=3.000 mmol/L. 50.00 mL benötigen im Modell brutto 15.12 mL derselben EDTA-Lösung; derselbe Blindwert beträgt 0.10 mL. Zulässige relative Abweichung: ±2 %.",
+      "materialEn": "Teaching method, not a lab authorization:25°C; only EDTA-determined Ca²⁺/Mg²⁺ occur, with no interfering metals. Available:50.00-mL volumetric pipette,50-mL burette, flask,0.01000 mol/L EDTA, pH 10 NH₃/NH₄⁺ buffer and Eriochrome Black T. A teacher must authorize the locally verified dispensing/disposal protocol. Separate synthetic paper-evaluation log:50.00 mL sample each; titers 19.80/19.90/19.85 mL; blank 0.10 mL. Complete prospective assessment protocol (not executed): use only supplied dilute Ca/Mg model solutions and labelled titrant/buffer; wear eye protection, do not taste and collect metal/EDTA waste separately. A later school procedure requires its actual local risk assessment. Condition the burette with EDTA, fill it and remove tip bubbles; read the initial level to 0.05 mL. Transfer the stated aliquot using a volumetric pipette, add 2.0 mL supplied pH-10 method buffer and 2 drops of Eriochrome Black T solution. Check pH 9.9–10.1 before titrating; a result outside this range is not valid. Swirl while adding EDTA, dropwise near the endpoint; record the first clear blue colour persisting after 30 s mixing. Work within 5 min of buffer addition; stop for cloudiness or an unclear endpoint and investigate matrix/method conditions. Record final reading, difference, temperature, pH and observations unchanged. Treat three aliquots, a reagent blank using water instead of sample, and the stated control alike. The observation form is empty: date/person; aliquot; dilution; initial/final levels; pH; endpoint colour/duration; deviation; disposal. Empty fields are not observations. Additional synthetic control: an independently supplied Ca/Mg reference has total concentration 3.000 mmol/L. A 50.00 mL aliquot uses 15.12 mL gross EDTA in the model, with the same 0.10 mL blank. Allowed relative deviation: ±2%.",
+      "taskDemandDe": "1. Erkläre die 1:1-Beziehung, die Funktion von pH-Puffer/Metallindikator und ob dieses Verfahren Ca²⁺ und Mg²⁺ getrennt bestimmt.\n2. Führe nach lokaler Freigabe unter Aufsicht drei Titrationen durch; dokumentiere Aliquotierung, Anfangs-/Endablesung, Mischen und langsam erreichten stabilen Farbumschlag. Ohne reale Beobachtung ist dieser Teil nicht als ausgeführt bewertbar.\n3. Werte das synthetische Protokoll blindwertkorrigiert aus und nenne eine zusätzliche Prüfung der Richtigkeit.\n4. Berechne die Wiederfindung der Kontrollprobe und beurteile getrennt Streuung, Richtigkeit und die Behauptung, die Gesamthärte liefere den einzelnen Ca-Gehalt.",
+      "taskDemandEn": "1. Explain the 1:1 relation, buffer/metal-indicator roles and whether this method separately determines Ca²⁺ and Mg²⁺.\n2. After local authorization, perform three supervised titrations; record aliquoting, initial/final readings, mixing and a slowly reached persistent color change. Without real observation this part cannot be credited as performed.\n3. Evaluate the synthetic log with blank correction and name an additional trueness check.\n4. Calculate reference recovery and distinguish repeatability, trueness and the claim that total hardness gives the separate calcium content.",
+      "modelAnswerDe": "1. Formal gilt M²⁺ + Y⁴⁻ ⇌ MY²⁻, also n(M)=n(EDTA). Die Protonierung des freien EDTA hängt vom pH ab; bei pH 10 liegt es nicht ausschließlich als Y⁴⁻ vor. Der Puffer hält die Methodenbedingungen. EDTA bindet das Metall stärker als der Indikator; dessen Rot-Blau-Umschlag markiert den vereinbarten Endpunkt. Erfasst wird die Summe Ca+Mg, nicht jede Art getrennt. 2. Erwartete reale Handlungen sind korrektes Pipettieren, eine vorbereitete luftblasenfreie Bürette, getrennte Anfangs-/Endablesung, Schwenken und zuletzt tropfenweise Zugabe bis beständig blau. Hier liegt keine tatsächliche Beobachtung vor. 3. Mittelwert 19.85 mL minus Blindwert 0.10 mL ergibt 19.75 mL; n=0.1975 mmol und c(Ca+Mg)=3.950 mmol/L. Referenz- und Blindwertkontrolle prüfen systematische Fehler. 4. Die Kontrolle ergibt korrigiert 15.02 mL und 3.004 mmol/L: 100.13 % Wiederfindung beziehungsweise +0.13 %, innerhalb ±2 %. Kleine Streuung allein würde diese Richtigkeit nicht belegen. Auch die Kontrolle erlaubt keine getrennte Ca-Zuordnung.",
+      "modelAnswerEn": "1. Formal M²⁺+Y⁴⁻⇌MY²⁻ gives n(M)=n(EDTA). Free-ligand protonation depends on pH; this does not assert that all free EDTA is Y⁴⁻ at pH 10. Buffer maintains method conditions; EDTA displaces the metal indicator, with the specified red-to-blue endpoint. The result is total Ca²⁺+Mg²⁺, not each separately. 2. Expected real actions: correct pipetting, conditioned air-free burette, separate initial/final readings, mixing and final dropwise addition to persistent blue. Only actual observation can evidence this performance; none occurred here. 3. Mean 19.85 mL minus 0.10 mL blank gives 19.75 mL. n=0.1975 mmol and c=3.950 mmol/L. A known Ca/Mg reference and blank check address systematic error; small scatter alone is insufficient.\n4. Corrected 15.02 mL gives 3.004 mmol/L: about 100.13% recovery and +0.13% deviation, within ±2%. Small replicate scatter alone would not show this. The Ca+Mg sum does not identify calcium separately.",
+      "rubric": [
+        {
+          "expectationId": "e1",
+          "maximumPoints": 3,
+          "fullCreditDe": "Eine EDTA-Einheit je Metallion unter Methodenbedingungen; pH beeinflusst bedingte Komplexstabilität; Endpunkt verdrängt Indikator; nur Summenkonzentration.",
+          "fullCreditEn": "One EDTA unit per metal ion under method conditions; pH affects conditional stability; indicator displacement marks endpoint; only total concentration.",
+          "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch. Praktische Punkte verlangen die benannte tatsächliche Beobachtung.",
+          "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong. Practical credit requires the stated actual observation.",
+          "creditBasis": "written-explicit-task",
+          "actualPointsAwarded": null
+        },
+        {
+          "expectationId": "e2",
+          "maximumPoints": 3,
+          "fullCreditDe": "Beobachtungsprotokoll bestätigt korrekte Aliquotierung/Bürettenablesung und kontrollierten persistenten Endpunkt; die synthetischen Zahlen sind kein Ersatz.",
+          "fullCreditEn": "Observation log confirms aliquoting/burette reading and controlled persistent endpoint; synthetic numbers are not a substitute.",
+          "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch. Praktische Punkte verlangen die benannte tatsächliche Beobachtung.",
+          "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong. Practical credit requires the stated actual observation.",
+          "creditBasis": "observed-practical-execution-required",
+          "actualPointsAwarded": null
+        },
+        {
+          "expectationId": "e3",
+          "maximumPoints": 3,
+          "fullCreditDe": "Mittel19.85−0.10=19.75mL; c(Ca+Mg)=3.950mmol/L; bekannte Referenzprobe prüft Richtigkeit.",
+          "fullCreditEn": "Mean 19.85−0.10=19.75 mL; c(Ca+Mg)=3.950 mmol/L; a known reference sample checks trueness.",
+          "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch. Praktische Punkte verlangen die benannte tatsächliche Beobachtung.",
+          "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong. Practical credit requires the stated actual observation.",
+          "creditBasis": "written-explicit-task",
+          "actualPointsAwarded": null
+        },
+        {
+          "expectationId": "e4",
+          "maximumPoints": 3,
+          "fullCreditDe": "Korrigiert 15.02 mL ergeben 3.004 mmol/L, also rund 100.13 % Wiederfindung und +0.13 % Abweichung; die Kontrolle erfüllt ±2 %. Kleine Wiederholstreuung allein würde das nicht zeigen. Die Summe Ca+Mg erlaubt keine getrennte Ca-Zuordnung.",
+          "fullCreditEn": "Corrected 15.02 mL gives 3.004 mmol/L: about 100.13% recovery and +0.13% deviation, within ±2%. Small replicate scatter alone would not show this. The Ca+Mg sum does not identify calcium separately.",
+          "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch. Praktische Punkte verlangen die benannte tatsächliche Beobachtung.",
+          "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong. Practical credit requires the stated actual observation.",
+          "creditBasis": "written-design",
+          "actualPointsAwarded": null
+        }
+      ],
+      "maximumPoints": 12,
+      "fullCreditRequiresAllFourExpectations": true,
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "authorOnly": true,
+      "executed": false,
+      "learnerWorkPresent": false,
+      "practicalExecutionRequired": true,
+      "actualObservationRecords": [],
+      "actualPointsAwarded": null,
+      "wholeGoalScope": {
+        "tags": [
+          "LK",
+          "canonical"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BY",
+            "DE-HE",
+            "DE-RP"
+          ]
+        }
+      },
+      "sourceAuthorCase": {
+        "caseId": "e22a34d4-case-1",
+        "inputPath": "inputs/history/twenty-selected-old-cases.whole-exact.json",
+        "wholeOldCaseObjectSha256": "sha256:05791b5e9bc6ebd90573eb38c0ad2970b9463d44b2d81337a23f184187ff6da4"
+      },
+      "newIndependentReviewStatus": "pending; author material only"
+    },
+    "T01-C2": {
+      "id": "T01-C2",
+      "goalId": "e22a34d4-ac1e-5afe-8f77-0dfa4fd9f44f",
+      "titleDe": "Verdünnung und Aufstockkontrolle einer Ca/Mg-Probe",
+      "materialDe": "Synthetischer Modellfall bei 25 °C: Nur Ca²⁺ und Mg²⁺ werden erfasst; beide sind vorhanden, weitere EDTA-verbrauchende Ionen sind ausgeschlossen. Zwei unabhängige 1:4-Verdünnungen entstehen jeweils aus 25.00 mL Originalprobe in 100.00-mL-Messkolben. Je 25.00 mL verdünnte Probe werden mit 0.01000 mol/L EDTA titriert. Drei Bruttoverbräuche: 4.78/4.80/4.82 mL; Reagenzblindwert 0.10 mL. Für drei weitere Aliquote kommen jeweils 5.00 mL einer getrennten 0.01000-mol/L-Ca²⁺-Standardlösung hinzu, also 0.05000 mmol. Bruttoverbräuche der aufgestockten Aliquote: 9.80/9.82/9.84 mL, derselbe Blindwert. Zulässige Aufstockwiederfindung: 98–102 %. Die Ca-Zugabe ändert die Metallmenge, nicht die ursprüngliche 25.00-mL-Probenaliquotmenge. Keine reale Durchführung. Vollständiges vorgesehenes Prüfprotokoll (noch nicht ausgeführt): Nur bereitgestellte, verdünnte Ca/Mg-Modelllösungen und etikettierte Maß-/Pufferlösung verwenden; Schutzbrille tragen, nicht kosten, Metall-/EDTA-Abfall getrennt sammeln. Die konkrete schulische Gefährdungsbeurteilung bleibt Voraussetzung einer späteren Durchführung. Bürette mit EDTA spülen, füllen, Spitze luftblasenfrei machen; Anfangsstand auf 0.05 mL ablesen. Aliquot mit der genannten Vollpipette in den Kolben geben, 2.0 mL bereitgestellten pH-10-Methodenpuffer und 2 Tropfen Eriochromschwarz-T-Lösung zufügen. Vor Titration pH 9.9–10.1 kontrollieren; bei Abweichung keine gültige Messung werten. Unter Schwenken mit EDTA titrieren, nahe dem Umschlag tropfenweise; erstmals reinblaue, nach 30 s Mischen beständige Farbe als Endpunkt protokollieren. Innerhalb von 5 min nach Pufferzugabe arbeiten; bei Trübung oder unscharfem Umschlag stoppen und Matrix/Methodenbedingungen prüfen. Endstand, Differenz, Temperatur, pH und Beobachtungen unverändert notieren; drei Aliquote, einen Reagenzblindwert mit Wasser statt Probe und die genannte Kontrollprobe gleich behandeln. Beobachtungsbogen ist leer: Datum/Person; Aliquot; Verdünnung; Anfangs-/Endstand; pH; Endpunktfarbe/-dauer; Abweichung; Entsorgung. Diese leeren Felder sind keine Beobachtungen. Die drei synthetischen Verbrauchswerte beschreiben die erste Modellverdünnung. Für die zweite unabhängige Herstellung sind keine Messwerte vorgegeben; deren Beobachtungsfelder bleiben leer. Aus den vorgegebenen Zahlen wird daher keine Wiederholbarkeit unabhängiger Probenvorbereitungen behauptet.",
+      "materialEn": "Synthetic 25 °C model: only Ca²⁺ and Mg²⁺ are determined; both are present and other EDTA-consuming ions are excluded. Prepare two independent 1:4 dilutions, each from 25.00 mL original sample to 100.00 mL. Titrate 25.00 mL diluted aliquots with 0.01000 mol/L EDTA. Gross titers: 4.78/4.80/4.82 mL; reagent blank 0.10 mL. Add 5.00 mL independent 0.01000 mol/L Ca²⁺ standard, 0.05000 mmol, to each of three further aliquots. Their gross titers are 9.80/9.82/9.84 mL with the same blank. Allowed spike recovery: 98–102%. The spike changes metal amount, not the original 25.00 mL sample aliquot. No actual performance. Complete prospective assessment protocol (not executed): use only supplied dilute Ca/Mg model solutions and labelled titrant/buffer; wear eye protection, do not taste and collect metal/EDTA waste separately. A later school procedure requires its actual local risk assessment. Condition the burette with EDTA, fill it and remove tip bubbles; read the initial level to 0.05 mL. Transfer the stated aliquot using a volumetric pipette, add 2.0 mL supplied pH-10 method buffer and 2 drops of Eriochrome Black T solution. Check pH 9.9–10.1 before titrating; a result outside this range is not valid. Swirl while adding EDTA, dropwise near the endpoint; record the first clear blue colour persisting after 30 s mixing. Work within 5 min of buffer addition; stop for cloudiness or an unclear endpoint and investigate matrix/method conditions. Record final reading, difference, temperature, pH and observations unchanged. Treat three aliquots, a reagent blank using water instead of sample, and the stated control alike. The observation form is empty: date/person; aliquot; dilution; initial/final levels; pH; endpoint colour/duration; deviation; disposal. Empty fields are not observations. The three synthetic titers describe the first model dilution. No measurements are supplied for the second independent preparation; its observation fields remain empty. The supplied data therefore do not establish repeatability of independent sample preparations.",
+      "taskDemandDe": "1. Erkläre 1:1-Stöchiometrie, Puffer/Metallindikator und die Bedeutung der unveränderten Probenaliquotmenge.\n2. Stelle nach Freigabe die beiden Verdünnungen her und titriere unaufgestockte/aufgestockte Aliquote nach dem vollständig gegebenen Protokoll; die Handhabung muss tatsächlich beobachtet werden.\n3. Berechne aus dem unaufgestockten Modellprotokoll den ursprünglichen Gesamtgehalt Ca+Mg.\n4. Berechne die Aufstockwiederfindung, beurteile die Methode für diese Matrix und korrigiere die Behauptung, gute Wiederfindung identifiziere die einzelnen Ca-/Mg-Gehalte.",
+      "taskDemandEn": "1. Explain 1:1 stoichiometry, buffer/metal indicator and the unchanged sample aliquot amount.\n2. After authorization prepare both dilutions and titrate unspiked/spiked aliquots using the complete supplied protocol; handling must actually be observed.\n3. Calculate original total Ca+Mg concentration from the unspiked model log.\n4. Calculate spike recovery, assess the method for this matrix and correct the claim that good recovery identifies separate Ca/Mg contents.",
+      "modelAnswerDe": "1. Unter den gegebenen Methodenbedingungen erfasst eine EDTA-Einheit ein Metallion. Puffer und Indikator ermöglichen den Endpunkt. Die Aufstockung fügt derselben ursprünglichen Aliquotmenge eine bekannte Metallmenge hinzu. 2. Verdünnung, Aliquotierung, Bürettenablesung, pH-Kontrolle und beständiger Endpunkt müssen tatsächlich beobachtet werden; hier sind die Beobachtungsfelder leer. 3. Mittelwert 4.80−0.10=4.70 mL ergibt 0.04700 mmol, verdünnt 1.880 mmol/L und ursprünglich 7.520 mmol/L. 4. Gleiche Blindwerte kürzen sich in der Differenz: ΔV=9.82−4.80=5.02 mL und Δn=0.05020 mmol. Wiederfindung 100.4 %, innerhalb 98–102 %. Dies stützt die begrenzte Methoden-/Matrixkontrolle, aber weder universelle Selektivität noch getrennte Ca-/Mg-Gehalte. Die erste Modellverdünnung belegt keine Wiederholbarkeit unabhängiger Vorbereitungen.",
+      "modelAnswerEn": "1. Under the supplied conditions one EDTA unit determines one metal ion; pH and indicator enable the method endpoint. Spiking adds a known metal amount to the same original sample aliquot. 2. Actual dilution, aliquoting, burette readings, pH control and a controlled persistent endpoint must be observed; no observation log exists here. 3. Mean 4.80−0.10=4.70 mL gives 0.04700 mmol, diluted concentration 1.880 mmol/L and original 7.520 mmol/L. 4. Equal blanks cancel in the difference: ΔV=9.82−4.80=5.02 mL, Δn=0.05020 mmol, recovery 100.4%, within 98–102%. This supports the stated matrix/method control, not universal selectivity or separate Ca/Mg concentrations.",
+      "rubric": [
+        {
+          "expectationId": "e1",
+          "maximumPoints": 3,
+          "fullCreditDe": "EDTA-Beziehung, Methodenbedingungen und ursprüngliche Aliquotmenge korrekt erläutert.",
+          "fullCreditEn": "Explains EDTA relation, method conditions and original aliquot correctly.",
+          "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch. Praktische Punkte verlangen die benannte tatsächliche Beobachtung.",
+          "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong. Practical credit requires the stated actual observation.",
+          "creditBasis": "written-design",
+          "actualPointsAwarded": null
+        },
+        {
+          "expectationId": "e2",
+          "maximumPoints": 3,
+          "fullCreditDe": "Verdünnung, Titrationshandhabung, pH und Endpunkt sind erst durch ein tatsächliches Beobachtungsprotokoll belegbar.",
+          "fullCreditEn": "Dilution, titration handling, pH and endpoint require an actual observation record.",
+          "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch. Praktische Punkte verlangen die benannte tatsächliche Beobachtung.",
+          "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong. Practical credit requires the stated actual observation.",
+          "creditBasis": "observed-practical-execution-required",
+          "actualPointsAwarded": null
+        },
+        {
+          "expectationId": "e3",
+          "maximumPoints": 3,
+          "fullCreditDe": "Blindwert, 25.00-mL-Aliquot und Faktor 4 ergeben 7.520 mmol/L Gesamtgehalt.",
+          "fullCreditEn": "Blank, 25.00 mL aliquot and factor 4 give 7.520 mmol/L total.",
+          "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch. Praktische Punkte verlangen die benannte tatsächliche Beobachtung.",
+          "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong. Practical credit requires the stated actual observation.",
+          "creditBasis": "written-design",
+          "actualPointsAwarded": null
+        },
+        {
+          "expectationId": "e4",
+          "maximumPoints": 3,
+          "fullCreditDe": "100.4 % Wiederfindung berechnet und Aussage auf diese Methode/Matrix statt einzelne Metallgehalte begrenzt.",
+          "fullCreditEn": "Calculates 100.4% recovery and limits it to this method/matrix rather than individual metal contents.",
+          "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch. Praktische Punkte verlangen die benannte tatsächliche Beobachtung.",
+          "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong. Practical credit requires the stated actual observation.",
+          "creditBasis": "written-design",
+          "actualPointsAwarded": null
+        }
+      ],
+      "maximumPoints": 12,
+      "fullCreditRequiresAllFourExpectations": true,
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "authorOnly": true,
+      "executed": false,
+      "learnerWorkPresent": false,
+      "practicalExecutionRequired": true,
+      "actualObservationRecords": [],
+      "actualPointsAwarded": null,
+      "wholeGoalScope": {
+        "tags": [
+          "LK",
+          "canonical"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BY",
+            "DE-HE",
+            "DE-RP"
+          ]
+        }
+      },
+      "sourceAuthorCase": {
+        "caseId": "e22a34d4-case-2",
+        "inputPath": "inputs/history/twenty-selected-old-cases.whole-exact.json",
+        "wholeOldCaseObjectSha256": "sha256:b2ab5cbfa88230d6338925a89c425827262c03a4b19ca3d624b49aeace472420"
+      },
+      "newIndependentReviewStatus": "pending; author material only"
+    },
+    "T02-C1": {
+      "id": "T02-C1",
+      "goalId": "ba621c67-b750-5e45-ab37-a51ea45e3ccf",
+      "titleDe": "Farbstofflösung mit Referenzprobe",
+      "materialDe": "25°C, gleicher Reinstoff/gleiches Lösungsmittel,1.00cm-Küvetten, keine Streuung/Interferenz im Modell. Alle Daten synthetisch. Spektrum bei8mg/L:430nm A=.18;450nm .42;470nm .32. Standards c(mg/L)=0,2,4,6,8 mit A=.020,.120,.220,.320,.420. Unbekannt1:5 verdünnt, A=.273,.275,.277. Separate bekannte6.00mg/L-Referenz A=.322; Akzeptanzgrenze für Richtigkeit±2%. Vollständiger noch nicht ausgeführter Messplan: Bereitgestellten stabilen Reinstoff und dasselbe Lösemittel verwenden; Standard-/Referenzherkunft und Geräteeinstellung notieren, Schutzbrille, getrennte Sammlung nach der schulischen Stoffbewertung. Gerät einschalten/stabilisieren lassen, klare 1.00-cm-Küvetten außen trocken reinigen, gleich ausrichten und mit der jeweiligen Lösung vorspülen. Leerprobe ohne Analyt im gleichen Medium messen; Rohwerte und Leerwert getrennt speichern. Den angegebenen Wellenlängenbereich an einem geeigneten Standard scannen und das höchste gemessene Signal bestimmen; Auflösung notieren, nicht aus drei Punkten ein beliebig genaues Maximum behaupten. Standards in aufsteigender Konzentration und Kontrollreferenz mit denselben optischen Bedingungen messen; Küvetten vor jedem Wechsel spülen. Konzentrationen und zugehörige Absorptionen als Kalibrierpunkte dokumentieren, Linearität prüfen; Probe bei Bedarf volumetrisch verdünnen und mindestens drei Füll-/Messwiederholungen durchführen. Unabhängige Referenz getrennt vom Kalibrieransatz behandeln; bei gescheiterter Kontrolle Ergebnis nicht als richtig freigeben. Noch leeres Protokoll: Datum/Person; Standardherstellung; Scan/Wellenlänge; Schichtlänge; Roh-/Leerwerte; Wiederholungen; Kontrollabweichung; Verdünnung; Auswertung/Begründung. Nur später tatsächlich beobachtete Durchführung kann die praktische Leistung belegen. Für die Standards werden aus 20.00 mg/L Stammlösung 0, 5.00, 10.00, 15.00 und 20.00 mL jeweils auf 50.00 mL aufgefüllt. Die 1:5-Probenverdünnung entsteht aus 10.00 mL auf 50.00 mL. Alle angegebenen Absorptionswerte enthalten denselben Leerwertbeitrag. Der Achsenabschnitt berücksichtigt ihn einmal; er wird bei der Rückrechnung nicht ein zweites Mal abgezogen.",
+      "materialEn": "25°C, same pure analyte/solvent,1.00 cm cells, no scattering/interference in the model. Synthetic data. Spectrum at 8 mg/L:430 nm A=.18;450 nm .42;470 nm .32. Standards c(mg/L)=0,2,4,6,8 with A=.020,.120,.220,.320,.420. Unknown diluted 1:5, A=.273,.275,.277. Separate known 6.00 mg/L reference A=.322; trueness tolerance±2%. Complete unexecuted measurement plan: use the supplied stable pure analyte and the same solvent; record standard/reference provenance and instrument settings, use eye protection and collect waste according to the school substance assessment. Allow instrument stabilization; clean and dry the outside of clear 1.00-cm cells, keep orientation constant and rinse with the solution to be measured. Measure the matched analyte-free blank; retain raw readings and blank separately. Scan the specified wavelength interval with a suitable standard, find the highest measured response and record resolution; three points do not locate an arbitrarily precise maximum. Measure standards in increasing concentration and the independent reference under the same optical conditions; rinse between solutions. Record concentration/absorbance pairs and test linearity; dilute unknowns volumetrically where necessary and repeat cell filling/measurement at least three times. Treat the reference independently of calibration preparation; do not release a result as accurate after a failed control. The observation form remains empty: date/person; standards; scan/wavelength; path length; raw/blank readings; replicates; reference error; dilution; calculation/reason. Only later actually observed operation can demonstrate practical performance. Prepare standards by diluting 0, 5.00, 10.00, 15.00 and 20.00 mL of a 20.00 mg/L stock to 50.00 mL each. Dilute unknown 10.00 mL to 50.00 mL. All supplied absorbance values retain the same blank contribution. The intercept accounts for it once; it must not be subtracted a second time in the back-calculation.",
+      "taskDemandDe": "1. Bestimme das gemessene Absorptionsmaximum und erläutere die Bedeutung von Leerprobe und gleicher Küvettenlänge.\n2. Erstelle die Kalibriergerade aus den Standards und gib Steigung, Achsenabschnitt und geprüften Bereich an.\n3. Berechne den mittleren Gehalt der verdünnten und ursprünglichen Probe; begründe, warum Interpolation zulässig ist.\n4. Beurteile Wiederholbarkeit und Richtigkeit getrennt mit den Wiederholungen und der Referenz; nenne eine verbleibende Grenze.\nVorgesehener praktischer Teil zu 1/2: Bereite die Standards vor, messe Scan, Leerprobe und Standards im beaufsichtigten freigegebenen Labor und protokolliere die tatsächliche Bedienung. Die synthetischen Zahlen belegen nur die Papierauswertung, nicht diese Durchführung.",
+      "taskDemandEn": "1. Determine the sampled absorption maximum and explain blank and equal cell length.\n2. Construct the calibration line and give slope, intercept and tested range.\n3. Calculate mean diluted and original content; justify interpolation.\n4. Assess repeatability and trueness separately using replicates/reference; identify a remaining limitation.\nProspective practical part for 1/2: prepare standards and measure scan, blank and standards in an authorized supervised laboratory, recording actual operation. Synthetic values evidence paper evaluation only, not that performance.",
+      "modelAnswerDe": "1. Unter den gemessenen Wellenlängen hat 450 nm die höchste Absorption. Ein genaueres kontinuierliches Maximum benötigt einen feineren Scan. Leerwert 0.020 und gleiche 1.00-cm-Küvetten sichern den Vergleich. 2. Die fünf Standards ergeben A=0.050 (L/mg)·c+0.020 im geprüften Bereich 0–8 mg/L. Der Leerwert ist im Achsenabschnitt bereits berücksichtigt. 3. Der Mittelwert A=0.275 ergibt (0.275−0.020)/0.050=5.10 mg/L; mit Faktor 5 ursprünglich 25.5 mg/L. 4. Die Referenz ergibt 6.04 mg/L, also +0.67 % und damit innerhalb ±2 %. Die kleine Absorptionsspannweite 0.004 zeigt allein keine Richtigkeit. Standardherstellung, Volumengeräte und Matrixkonstanz benötigen eigene Kontroll-/Unsicherheitsnachweise. Scan, Standardherstellung und Bedienung sind hier nicht ausgeführt; praktische Leistung verlangt spätere tatsächliche Beobachtung.",
+      "modelAnswerEn": "1. 450 nm has highest absorption among supplied wavelengths; finer scanning is needed for an exact continuous maximum. Blank.020 and equal 1.00 cm cells keep comparisons valid. 2. A=.050(L/mg)c+.020 over the supplied 0–8 mg/L standard range. 3. Mean A=.275 gives c=5.10 mg/L and original concentration 25.5 mg/L after fivefold correction. 4. Reference recovery 6.04 mg/L differs by+.67%, within the supplied±2% tolerance. Replicate range.004 in A is small but alone cannot establish trueness. Standard preparation, volumetric equipment and matrix consistency need separate uncertainty/control evidence. No instrument was actually operated here. Practical full performance requires actually observed standard preparation, matched cells/blank, recorded scan and own calibration measurements. No observations are present here.",
+      "rubric": [
+        {
+          "expectationId": "e1",
+          "maximumPoints": 3,
+          "fullCreditDe": "450nm hat die größte A; gleiche optische Bedingungen und Leerwert.020 sind erforderlich; Maximum gilt für die gegebenen Stützstellen. Vollständige praktische Leistung erfordert zusätzlich den beobachteten eigenen Scan mit Leerwert/Küvette.",
+          "fullCreditEn": "450 nm has largest A; equal optical conditions and.020 blank are required; maximum is limited to sampled wavelengths. Full practical performance additionally requires an observed own scan with blank/cell control.",
+          "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch. Praktische Punkte verlangen die benannte tatsächliche Beobachtung.",
+          "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong. Practical credit requires the stated actual observation.",
+          "creditBasis": "written-plus-observed-practical-required-for-full-credit",
+          "actualPointsAwarded": null
+        },
+        {
+          "expectationId": "e2",
+          "maximumPoints": 3,
+          "fullCreditDe": "A=.050·c+.020, c inmg/L, Steigung.050L/mg, Bereich0–8mg/L. Eigene Standardherstellung/Kalibriermessung sind gesondert zu beobachten.",
+          "fullCreditEn": "A=.050 c+.020 with c in mg/L, slope.050 L/mg, range 0–8 mg/L. Own standard preparation/calibration measurements must be observed separately.",
+          "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch. Praktische Punkte verlangen die benannte tatsächliche Beobachtung.",
+          "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong. Practical credit requires the stated actual observation.",
+          "creditBasis": "written-plus-observed-practical-required-for-full-credit",
+          "actualPointsAwarded": null
+        },
+        {
+          "expectationId": "e3",
+          "maximumPoints": 3,
+          "fullCreditDe": "Mittlere A=.275 ⇒5.10mg/L verdünnt,25.5mg/L original; liegt innerhalb0–8mg/L.",
+          "fullCreditEn": "Mean A=.275 gives 5.10 mg/L diluted,25.5 mg/L original, within 0–8 mg/L.",
+          "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch. Praktische Punkte verlangen die benannte tatsächliche Beobachtung.",
+          "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong. Practical credit requires the stated actual observation.",
+          "creditBasis": "written-explicit-task",
+          "actualPointsAwarded": null
+        },
+        {
+          "expectationId": "e4",
+          "maximumPoints": 3,
+          "fullCreditDe": "Referenz6.04mg/L,+.67% innerhalb±2%; Streuung A±.002, kleine Wiederholstreuung; kein vollständiges Unsicherheitsbudget.",
+          "fullCreditEn": "Reference 6.04 mg/L,+.67% within±2%; A scatter±.002 is small; full uncertainty budget is absent.",
+          "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch. Praktische Punkte verlangen die benannte tatsächliche Beobachtung.",
+          "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong. Practical credit requires the stated actual observation.",
+          "creditBasis": "written-explicit-task",
+          "actualPointsAwarded": null
+        }
+      ],
+      "maximumPoints": 12,
+      "fullCreditRequiresAllFourExpectations": true,
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "authorOnly": true,
+      "executed": false,
+      "learnerWorkPresent": false,
+      "practicalExecutionRequired": true,
+      "actualObservationRecords": [],
+      "actualPointsAwarded": null,
+      "wholeGoalScope": {
+        "tags": [
+          "LK",
+          "canonical"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BY",
+            "DE-HE"
+          ]
+        }
+      },
+      "sourceAuthorCase": {
+        "caseId": "ba621c67-case-1",
+        "inputPath": "inputs/history/twenty-selected-old-cases.whole-exact.json",
+        "wholeOldCaseObjectSha256": "sha256:c9cdd5dad4de6d0952f43387e57fa58e38fde93e9d27ce4ca592c30e9d1399b0"
+      },
+      "newIndependentReviewStatus": "pending; author material only"
+    },
+    "T02-C2": {
+      "id": "T02-C2",
+      "goalId": "ba621c67-b750-5e45-ab37-a51ea45e3ccf",
+      "titleDe": "Messbereichsgrenze und systematischer Fehler",
+      "materialDe": "25°C; ein Reinstoff, gleiches Lösungsmittel/1.00cm-Küvetten. Synthetisches Spektrum:520nm A=.31;540nm .50;560nm .40. Standards c(mg/L)=0,.5,1.0,1.5,2.0; A=.010,.210,.410,.610,.650. Unbekannt1:4 verdünnt:A=.509,.510,.511. Separate im Modell als bekannt vorgegebene Referenz1.00mg/L ergibt A=.450; hypothetische Akzeptanz±2%. Vollständiger noch nicht ausgeführter Messplan: Bereitgestellten stabilen Reinstoff und dasselbe Lösemittel verwenden; Standard-/Referenzherkunft und Geräteeinstellung notieren, Schutzbrille, getrennte Sammlung nach der schulischen Stoffbewertung. Gerät einschalten/stabilisieren lassen, klare 1.00-cm-Küvetten außen trocken reinigen, gleich ausrichten und mit der jeweiligen Lösung vorspülen. Leerprobe ohne Analyt im gleichen Medium messen; Rohwerte und Leerwert getrennt speichern. Den angegebenen Wellenlängenbereich an einem geeigneten Standard scannen und das höchste gemessene Signal bestimmen; Auflösung notieren, nicht aus drei Punkten ein beliebig genaues Maximum behaupten. Standards in aufsteigender Konzentration und Kontrollreferenz mit denselben optischen Bedingungen messen; Küvetten vor jedem Wechsel spülen. Konzentrationen und zugehörige Absorptionen als Kalibrierpunkte dokumentieren, Linearität prüfen; Probe bei Bedarf volumetrisch verdünnen und mindestens drei Füll-/Messwiederholungen durchführen. Unabhängige Referenz getrennt vom Kalibrieransatz behandeln; bei gescheiterter Kontrolle Ergebnis nicht als richtig freigeben. Noch leeres Protokoll: Datum/Person; Standardherstellung; Scan/Wellenlänge; Schichtlänge; Roh-/Leerwerte; Wiederholungen; Kontrollabweichung; Verdünnung; Auswertung/Begründung. Nur später tatsächlich beobachtete Durchführung kann die praktische Leistung belegen. Standards: 0, 5.00, 10.00, 15.00 und 20.00 mL einer 5.000-mg/L-Stammlösung jeweils auf 50.00 mL auffüllen. 1:4-Probenverdünnung: 25.00 mL auf 100.00 mL. Der 2.0-mg/L-Punkt darf nach der gegebenen Nichtlinearität nicht für eine gemeinsame Gerade erzwungen werden. Alle angegebenen Absorptionswerte enthalten denselben Leerwertbeitrag. Der Achsenabschnitt berücksichtigt ihn einmal; er wird bei der Rückrechnung nicht ein zweites Mal abgezogen.",
+      "materialEn": "25°C, one pure analyte, same solvent/1.00 cm cells. Synthetic spectrum:520 nm A=.31;540 nm .50;560 nm .40. Standards c(mg/L)=0,.5,1.0,1.5,2.0; A=.010,.210,.410,.610,.650. Unknown diluted 1:4: A=.509,.510,.511. Separate model reference with assigned content 1.00 mg/L gives A=.450; hypothetical tolerance±2%. Complete unexecuted measurement plan: use the supplied stable pure analyte and the same solvent; record standard/reference provenance and instrument settings, use eye protection and collect waste according to the school substance assessment. Allow instrument stabilization; clean and dry the outside of clear 1.00-cm cells, keep orientation constant and rinse with the solution to be measured. Measure the matched analyte-free blank; retain raw readings and blank separately. Scan the specified wavelength interval with a suitable standard, find the highest measured response and record resolution; three points do not locate an arbitrarily precise maximum. Measure standards in increasing concentration and the independent reference under the same optical conditions; rinse between solutions. Record concentration/absorbance pairs and test linearity; dilute unknowns volumetrically where necessary and repeat cell filling/measurement at least three times. Treat the reference independently of calibration preparation; do not release a result as accurate after a failed control. The observation form remains empty: date/person; standards; scan/wavelength; path length; raw/blank readings; replicates; reference error; dilution; calculation/reason. Only later actually observed operation can demonstrate practical performance. Prepare standards by diluting 0, 5.00, 10.00, 15.00 and 20.00 mL of a 5.000 mg/L stock to 50.00 mL. Dilute unknown 25.00 mL to 100.00 mL. The supplied nonlinear 2.0 mg/L point must not be forced into one common line. All supplied absorbance values retain the same blank contribution. The intercept accounts for it once; it must not be subtracted a second time in the back-calculation.",
+      "taskDemandDe": "1. Bestimme das Maximum der Stützstellen und begründe den Leerwertabzug bei540nm.\n2. Erstelle eine begründete Kalibriergerade; prüfe den2.0mg/L-Standard auf Linearität.\n3. Berechne aus dem linearen Bereich den ursprünglichen Probengehalt und beurteile die Messbereichswahl.\n4. Vergleiche Präzision und Richtigkeit mit der Referenz und schlage eine konkrete Fehlerprüfung vor.\nVorgesehener praktischer Teil zu 1/2: Bereite die Standards vor, messe Scan, Leerprobe und Standards im beaufsichtigten freigegebenen Labor und protokolliere die tatsächliche Bedienung. Die synthetischen Zahlen belegen nur die Papierauswertung, nicht diese Durchführung.",
+      "taskDemandEn": "1. Determine the sampled maximum and justify blank handling at 540 nm.\n2. Construct a justified calibration line and test the 2.0 mg/L standard for linearity.\n3. Calculate original content using the linear range and assess the range choice.\n4. Compare precision and trueness using the reference and propose a specific error check.\nProspective practical part for 1/2: prepare standards and measure scan, blank and standards in an authorized supervised laboratory, recording actual operation. Synthetic values evidence paper evaluation only, not that performance.",
+      "modelAnswerDe": "1. Das größte gemessene Signal liegt bei 540 nm; A=0.010 bei c=0 ist der Leerwertbeitrag. 2. Die ersten vier Standards ergeben A=0.400·c+0.010. Für 2.0 mg/L wären 0.810 erwartet, gegeben sind 0.650. Eine gemeinsame lineare Ausgleichung aller Punkte ist deshalb nicht begründet. 3. Der Mittelwert 0.510 ergibt verdünnt 1.25 mg/L und mit Faktor 4 ursprünglich 5.00 mg/L. 4. Die Referenz ergibt 1.10 mg/L, also +10 % statt erlaubter ±2 %. Kleine Wiederholstreuung (Spannweite 0.002) schließt einen systematischen Fehler nicht aus. Dessen Ursache ist nicht eindeutig: unabhängige Standard-/Referenzherstellung sowie Geräte-/Leerwertprüfung sind nötig. 5.00 mg/L bleibt ein vorläufiger Rechenwert. Praktische Herstellung, Scan und Kalibrierung wurden hier nicht beobachtet.",
+      "modelAnswerEn": "1. 540 nm is the largest sampled absorption; A=.010 at c=0 is the intercept. 2. The first four standards give A=.400 c+.010;2.0 mg/L should give.810 but gives.650, so fitting every point to one line is unjustified. 3. (.510−.010)/.400=1.25 mg/L; fourfold correction gives 5.00 mg/L. 4. Reference recovery 1.10 mg/L is+10%, outside±2%. Precise replicates (A range.002) do not exclude systematic error. These data do not uniquely identify its cause; independent standard/reference preparation and instrument/blank checks are needed.5.00 mg/L is thus a method-derived content, not a fully verified result. Practical full performance requires actually observed standard preparation, matched cells/blank, recorded scan and own calibration measurements. No observations are present here.",
+      "rubric": [
+        {
+          "expectationId": "e1",
+          "maximumPoints": 3,
+          "fullCreditDe": "540nm; Leerwert.010 wird über den Achsenabschnitt berücksichtigt, nicht nochmals doppelt abgezogen. Vollständige praktische Leistung erfordert zusätzlich den beobachteten eigenen Scan mit Leerwert/Küvette.",
+          "fullCreditEn": "540 nm; blank.010 is included in the intercept and must not be subtracted twice. Full practical performance additionally requires an observed own scan with blank/cell control.",
+          "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch. Praktische Punkte verlangen die benannte tatsächliche Beobachtung.",
+          "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong. Practical credit requires the stated actual observation.",
+          "creditBasis": "written-plus-observed-practical-required-for-full-credit",
+          "actualPointsAwarded": null
+        },
+        {
+          "expectationId": "e2",
+          "maximumPoints": 3,
+          "fullCreditDe": "0–1.5mg/L:A=.400c+.010;2.0 würde.810 ergeben, beobachtet.650, daher außerhalb bestätigter Linearität. Eigene Standardherstellung/Kalibriermessung sind gesondert zu beobachten.",
+          "fullCreditEn": "0–1.5 mg/L: A=.400 c+.010;2.0 would predict.810 versus.650 observed, outside supported linearity. Own standard preparation/calibration measurements must be observed separately.",
+          "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch. Praktische Punkte verlangen die benannte tatsächliche Beobachtung.",
+          "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong. Practical credit requires the stated actual observation.",
+          "creditBasis": "written-plus-observed-practical-required-for-full-credit",
+          "actualPointsAwarded": null
+        },
+        {
+          "expectationId": "e3",
+          "maximumPoints": 3,
+          "fullCreditDe": "Mittlere.510 ergibt1.25mg/L und original5.00mg/L; verdünnte Probe liegt im linearen Bereich.",
+          "fullCreditEn": "Mean.510 gives 1.25 mg/L diluted and 5.00 mg/L original; diluted sample is in the linear range.",
+          "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch. Praktische Punkte verlangen die benannte tatsächliche Beobachtung.",
+          "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong. Practical credit requires the stated actual observation.",
+          "creditBasis": "written-explicit-task",
+          "actualPointsAwarded": null
+        },
+        {
+          "expectationId": "e4",
+          "maximumPoints": 3,
+          "fullCreditDe": "Referenz1.10mg/L,+10% verletzt±2% trotz geringer Wiederholstreuung; Standards/Referenzverdünnung/Instrument prüfen, keinen eindeutigen Grund erfinden.",
+          "fullCreditEn": "Reference 1.10 mg/L,+10% fails±2% despite small replicate scatter; check standards/reference dilution/instrument without inventing a unique cause.",
+          "partialCreditDe": "2: fachlich richtiger Kern mit begrenzter Lücke; 1: richtiger Teil ohne notwendige Verknüpfung; 0: fehlend oder falsch. Praktische Punkte verlangen die benannte tatsächliche Beobachtung.",
+          "partialCreditEn": "2: correct core with a limited gap; 1: a correct part without the required connection; 0: absent or wrong. Practical credit requires the stated actual observation.",
+          "creditBasis": "written-explicit-task",
+          "actualPointsAwarded": null
+        }
+      ],
+      "maximumPoints": 12,
+      "fullCreditRequiresAllFourExpectations": true,
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "authorOnly": true,
+      "executed": false,
+      "learnerWorkPresent": false,
+      "practicalExecutionRequired": true,
+      "actualObservationRecords": [],
+      "actualPointsAwarded": null,
+      "wholeGoalScope": {
+        "tags": [
+          "LK",
+          "canonical"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BY",
+            "DE-HE"
+          ]
+        }
+      },
+      "sourceAuthorCase": {
+        "caseId": "ba621c67-case-2",
+        "inputPath": "inputs/history/twenty-selected-old-cases.whole-exact.json",
+        "wholeOldCaseObjectSha256": "sha256:0f1fca2423e8cb7154ae523736b9d8f481e04425ef2f979f6cd9ea8e994c3011"
+      },
+      "newIndependentReviewStatus": "pending; author material only"
+    }
+  },
+  "gc": {
+    "chromatography-gc-bounded-source-contribution": {
+      "id": "chromatography-gc-bounded-source-contribution",
+      "goalId": "5cd8b2a2-2c90-5e29-8061-dd5e3a682f9d",
+      "title": "GC: Retentionszeiten sind keine Rf-Werte",
+      "status": "author_candidate_E0_G0",
+      "understandingEvidenceStatus": "designed_not_learner_observed",
+      "materialProvenance": "Own fictional/prospective CC-BY-4.0 teaching material. Invented cards, reference calculations and model answers are not actual inspected articles, learner work, measurements or execution.",
+      "materialsDe": "Begrenzte Ergänzung für die beibehaltenen GC-Quellenanteile, keine selbst ausgeführte GC: Trägergas transportiert ein geeignetes flüchtiges Gemisch durch eine Säule. Unterschiedliche Wechselwirkungen mit der stationären Phase erzeugen unterschiedliche Retentionszeiten. Synthetische Referenz unter gleichen Bedingungen: A 3,0 min, B 5,5 min, U 3,0/5,5 min. Es gibt keine DC-Laufmittelfront und keine Peakflächenkalibrierung zur Mengenbestimmung. Geräteausführung ist nicht beobachtet.",
+      "materialsEn": "Bounded addition for retained GC source contributions, not personally performed GC: Carrier gas transports a suitable volatile mixture through a column. Different stationary-phase interactions produce different retention times. Synthetic matched reference: A 3.0 min, B 5.5 min, U 3.0/5.5 min. There is no TLC solvent front and no peak-area calibration for amounts. Instrument execution is unobserved.",
+      "taskDe": "Erkläre das GC-Trennprinzip über Wechselwirkungen und ordne das Referenzchromatogramm begrenzt zu. Unterscheide Retentionszeit von Rf. Grenze die theoretische GC-Deutung ausdrücklich von einer tatsächlichen GC-Geräteausführung und von einer planaren Rf-Trennung ab. Keine der beiden praktischen Ausführungen wird durch diese Karte belegt oder für das neue GC-Ziel verlangt.",
+      "taskEn": "Explain GC separation through interactions and bound the reference chromatogram assignment. Distinguish retention time from Rf. Explicitly distinguish theoretical GC interpretation from actual GC instrument execution and from a planar Rf separation. Neither practical execution is demonstrated by this card or required by the new GC goal.",
+      "modelAnswerDe": "U ist unter diesen Bedingungen mit A/B vereinbar; Ko-Retention allein beweist keine eindeutige Identität. Retentionszeit ist kein dimensionsloser Rf-Wegquotient. Das Datenblatt belegt weder Probenaufgabe noch Säulenwahl, Gerätebedienung oder eine tatsächlich ausgeführte planare Trennung. So bleiben GC-Erklärungs- und Identifikationsanteile erhalten, ohne Ausführung einer anderen Methode vorzutäuschen.",
+      "modelAnswerEn": "U is compatible with A/B under these conditions; co-retention alone proves no unique identity. Retention time is not a dimensionless Rf distance ratio. The sheet demonstrates neither sample injection, column selection, instrument operation nor an actually performed planar separation. GC explanation and identification contributions remain explicit without pretending to execute another method.",
+      "independentTransfer": {
+        "taskDe": "Die Trägergasgeschwindigkeit ändert sich. U erscheint nun bei 4,0 min; nur die alte A-Referenz mit 3,0 min ist vorhanden. Ist A dadurch ausgeschlossen?",
+        "taskEn": "Carrier-gas velocity changes. U now appears at 4.0 min; only the old A reference of 3.0 min is available. Does this rule out A?",
+        "modelAnswerDe": "Nein. Retentionszeiten hängen auch von Methodenbedingungen ab. Referenzen im neuen System und zusätzliche Identitätsbelege werden benötigt; alte Zeiten allein beweisen weder Identität noch Ausschluss.",
+        "modelAnswerEn": "No. Retention times depend on method conditions. New-system references and further identity evidence are needed; old times alone prove neither identity nor exclusion."
+      },
+      "rubric": [
+        {
+          "id": "chromatography-gc-bounded-source-contribution-r1",
+          "maximumPoints": 2,
+          "criterionDe": "Trägergas und stationäre Phase sowie unterschiedliche Wechselwirkungen als Trennprinzip erklären.",
+          "criterionEn": "Explain carrier gas, stationary phase and different interactions as the separation principle.",
+          "actualAwardedPoints": null
+        },
+        {
+          "id": "chromatography-gc-bounded-source-contribution-r2",
+          "maximumPoints": 2,
+          "criterionDe": "Retentionszeiten A3,0/B5,5min nur unter gleichen Bedingungen vergleichen; keine planare Front oder Geräteausführung verlangen.",
+          "criterionEn": "Compare retention times A3.0/B5.5min only under matched conditions; require neither a planar front nor instrument execution.",
+          "actualAwardedPoints": null
+        },
+        {
+          "id": "chromatography-gc-bounded-source-contribution-r3",
+          "maximumPoints": 2,
+          "criterionDe": "Ko-Retention begrenzt identifiziert; tR ist weder Rf noch ohne Kalibrierung ein Mengenmaß.",
+          "criterionEn": "Co-retention gives bounded identification; tR is neither Rf nor an amount measure without calibration.",
+          "actualAwardedPoints": null
+        },
+        {
+          "id": "chromatography-gc-bounded-source-contribution-r4",
+          "maximumPoints": 2,
+          "criterionDe": "Frischer Trägergaswechsel: alte Referenzzeit schließt A nicht aus, passende neue Referenzen begründen.",
+          "criterionEn": "Fresh carrier-gas change: old reference time does not exclude A; justify matched new references.",
+          "actualAwardedPoints": null
+        }
+      ],
+      "maximumPoints": 8,
+      "originalWholeCase": null,
+      "practicalExecutionRequiredForWholeGoal": false,
+      "executionBoundary": "This whole new GC goal is principle and reference-based interpretation. No actual GC execution is demanded or inferred; the retained old case text distinguishes the old whole978 practical claim from its historical limited GC contribution."
+    },
+    "gc-product-identification-and-coelution": {
+      "id": "gc-product-identification-and-coelution",
+      "goalId": "5cd8b2a2-2c90-5e29-8061-dd5e3a682f9d",
+      "title": "GC-Reaktionsprobe und frische Ko-Elution",
+      "status": "author_candidate_not_observed",
+      "understandingEvidenceStatus": "designed_not_learner_observed",
+      "materialProvenance": "Own SkillPilot bilingual teaching material, CC-BY-4.0. Explicitly hypothetical/synthetic unless a named bounded primary source is stated; no actual learner/experiment/batch evidence.",
+      "materialsDe": "Eigene fiktive GC-Karte, keine realen Messungen: gleiches Programm, Säule, Temperatur und Trägergas. Referenzen Ethanol1,5min, Ethylacetat3,0min, Ethansäure5,5min. U zeigt1,5 und3,0min. Ein Detektor meldet Signale; keine Flächenkalibrierung ist vorhanden. Die Zeiten sind erfundene Lehrwerte, keine Stoffkonstanten. Eine stationäre Phase wechselwirkt unterschiedlich mit Komponenten eines geeigneten flüchtigen Gemischs; das Trägergas bewegt sie durch die Säule.",
+      "materialsEn": "Own fictional GC card, not real measurements: matched programme, column, temperature and carrier gas. References ethanol1.5min, ethyl acetate3.0min, ethanoic acid5.5min. U has1.5 and3.0min peaks. A detector supplies signals; no area calibration is available. Times are invented teaching values, not substance constants. A stationary phase interacts differently with components of a suitable volatile mixture; carrier gas transports them through the column.",
+      "taskDe": "Erkläre das Trennprinzip fachsprachlich und deute U als Reaktionsprobe begrenzt. Was ist über Produktbildung, Reinheit und Mengen erlaubt?",
+      "taskEn": "Explain separation using scientific language and bound the interpretation of U as a reaction sample. What can be inferred about product formation, purity and amounts?",
+      "modelAnswerDe": "Unterschiedliche Verteilung/Wechselwirkungen und Flüchtigkeit unter den Methodenbedingungen bewirken verschiedene Aufenthaltszeiten. U ist mit Ethanol und Ethylacetat vereinbar. Das kann Produktbildung stützen, beweist aber keine eindeutige Identität, vollständige Umsetzung oder Reinheit. Das fehlende Ethansäuresignal beweist ohne Nachweisgrenze keine Abwesenheit. Ohne Kalibrierung sind keine Stoffmengenanteile ableitbar.",
+      "modelAnswerEn": "Differing partition/interactions and volatility under the method conditions produce different residence times. U is compatible with ethanol and ethyl acetate. This can support product formation but proves neither unique identity, complete conversion nor purity. Absence of an ethanoic-acid signal does not prove absence without a detection limit. Amount fractions cannot be inferred without calibration.",
+      "independentTransfer": {
+        "taskDe": "Frisch wird eine zweite plausible Komponente C bekannt, die ebenfalls bei3,0min eluiert. Ist der Produktnachweis noch eindeutig? Begründe einen geeigneten nächsten Identitätsschritt.",
+        "taskEn": "A newly plausible component C also elutes at3.0min. Is product identification unique? Justify a suitable next identity check.",
+        "modelAnswerDe": "Nein, Ko-Elution kann mehrere Stoffe verbergen. Eine geeignet veränderte Selektivität mit passenden neuen Standards oder unabhängige strukturelle Analytik kann unterscheiden; nur die alte Peakzeit oder eine größere Peakfläche reicht nicht.",
+        "modelAnswerEn": "No, co-elution can hide multiple substances. Appropriately changed selectivity with matched new standards, or independent structural analysis, can distinguish them; the old peak time or larger peak area cannot."
+      },
+      "rubric": [
+        {
+          "id": "gc-product-identification-and-coelution-r1",
+          "maximumPoints": 2,
+          "criterionDe": "Trägergas, stationäre Wechselwirkungen und methodenabhängige Retention kohärent erklären.",
+          "criterionEn": "Explain carrier gas, stationary interactions and method-dependent retention coherently.",
+          "actualAwardedPoints": null
+        },
+        {
+          "id": "gc-product-identification-and-coelution-r2",
+          "maximumPoints": 2,
+          "criterionDe": "Beide kompatiblen Signale zuordnen und Identitäts-/Nachweisgrenzen benennen.",
+          "criterionEn": "Assign both compatible signals and state identity/detection limits.",
+          "actualAwardedPoints": null
+        },
+        {
+          "id": "gc-product-identification-and-coelution-r3",
+          "maximumPoints": 2,
+          "criterionDe": "Keine Reinheit, vollständige Umsetzung oder Mengenanteile aus unkalibrierten Signalen behaupten.",
+          "criterionEn": "Claim neither purity, full conversion nor amounts from uncalibrated signals.",
+          "actualAwardedPoints": null
+        },
+        {
+          "id": "gc-product-identification-and-coelution-r4",
+          "maximumPoints": 2,
+          "criterionDe": "Frischen Ko-Elutionsfall mit begründetem unterscheidendem Nachweis lösen.",
+          "criterionEn": "Solve fresh co-elution with justified discriminating evidence.",
+          "actualAwardedPoints": null
+        }
+      ],
+      "maximumPoints": 8,
+      "practicalExecutionRequiredForWholeGoal": false,
+      "executionBoundary": "E0/G0 design only. Blank personal-performance fields cannot establish actual execution; synthetic cards are not observations."
+    }
+  },
+  "tlc": {
+    "TLC-THEORY-1": {
+      "caseId": "TLC-THEORY-1",
+      "goalId": "5fdc4fb2-a23b-5949-8d6b-ad43009120dd",
+      "caseRole": "main-application",
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "actualPracticalExecutionRequired": false,
+      "learnerEvidenceObserved": false,
+      "material": {
+        "dataOrigin": "Authored supplied chromatogram data, not an executed experiment or learner observation.",
+        "conditionsDe": "Bereitgestelltes planares DC-Chromatogramm: feste Kieselgelschicht als stationäre Phase, aufsteigendes flüssiges Laufmittel als mobile Phase. Startlinie bei0; alle Strecken längs der Laufrichtung ab derselben Startlinie bis Fleckmitte bzw. Laufmittelfront. R1/R2/U laufen auf derselben Platte unter gleichen Bedingungen. Rf = Stofflaufstrecke / Laufmittelfrontstrecke. Stärkerer Aufenthalt in der stationären Phase relativ zur mobilen Phase bedeutet unter sonst gleichen Bedingungen geringere relative Wanderung.",
+        "conditionsEn": "Supplied planar TLC chromatogram: solid silica stationary phase and an ascending liquid mobile phase. Origin at0; all distances measured along development from the same origin to spot centre or solvent front. R1/R2/U run on the same plate under matched conditions. Rf = solute distance / solvent-front distance. More time in the stationary phase relative to the mobile phase means less relative migration under otherwise matched conditions.",
+        "solventFrontCm": 8.0,
+        "spotCentresCm": {
+          "R1": 2.0,
+          "R2": 5.6,
+          "U": [
+            5.6
+          ]
+        }
+      },
+      "taskDe": "Erläutere, warum Stoffe mit unterschiedlichen relativen Wechselwirkungen mit beiden Phasen unterschiedlich weit wandern können. Berechne Rf für R1, R2 und U, vergleiche die relative Retention und beurteile die Behauptung „U ist sicher reines R2; zwei Flecken beweisen immer genau zwei Stoffe“. Benenne die nötigen Vergleichsbedingungen. Verwende ausschließlich die bereitgestellten Daten; keine eigene Durchführung wird verlangt.",
+      "taskEn": "Explain why substances with different relative interactions with the two phases may migrate different distances. Calculate Rf for R1, R2 and U, compare relative retention and assess “U is certainly pure R2; two spots always prove exactly two substances”. State the necessary comparison conditions. Use only supplied data; no own execution is required.",
+      "workedSolutionDe": "Die mobile Phase transportiert Stoffe; unterschiedlich starke bzw. unterschiedlich lange Wechselwirkungen mit der stationären Phase halten sie relativ dazu zurück. R1:2,0/8,0=0,25; R2:5,6/8,0=0,70; U:5,6/8,0=0,70, jeweils dimensionslos. R1 wird relativ zum Laufmittel stärker zurückgehalten. Ein passender Rf von U und R2 auf derselben Platte stützt Vereinbarkeit, keine eindeutige Identität oder Reinheit: andere Stoffe können ko-migrieren oder unter der Nachweisgrenze liegen. Auch zwei Flecken belegen nicht exakt zwei Komponenten. Vergleich setzt passende stationäre Phase, Laufmittel und Versuchsbedingungen voraus; Rf ist keine allgemeine Stoffkonstante. Keine elektrische Feldwanderung oder pauschale Molekülmassenregel wird als DC-Prinzip behauptet.",
+      "workedSolutionEn": "The mobile phase transports solutes; differing strength or duration of interactions with the stationary phase retains them relative to it. R1:2.0/8.0=0.25; R2:5.6/8.0=0.70; U:5.6/8.0=0.70, all dimensionless. R1 is retained more strongly relative to the solvent front. A matching U/R2 Rf on the same plate supports compatibility, no unique identity or purity: other substances may co-migrate or remain below detection. Two spots likewise do not prove exactly two components. Comparison requires matched stationary phase, solvent and conditions; Rf is not a general substance constant. Neither electric field migration nor a blanket molecular-mass rule is asserted as the TLC principle.",
+      "rubric": [
+        {
+          "criterionDe": "Stationäre/mobile Phase und stoffabhängige relative Retention erklärt, kein Elektrophorese- oder Massenautomatismus.",
+          "criterionEn": "Explains stationary/mobile phases and substance-dependent relative retention, without electrophoresis or automatic mass ranking.",
+          "points": 1
+        },
+        {
+          "criterionDe": "Alle passenden Rf-Quotienten mit gemeinsamer Startlinie und Front desselben Laufs dimensionslos bestimmt.",
+          "criterionEn": "Determines all appropriate dimensionless Rf ratios using the shared origin and front of the same run.",
+          "points": 1
+        },
+        {
+          "criterionDe": "Vergleich nur unter passenden Bedingungen und keine universellen Rf-Konstanten behauptet.",
+          "criterionEn": "Restricts comparison to matched conditions and rejects universal Rf constants.",
+          "points": 1
+        },
+        {
+          "criterionDe": "Ko-Migration, Nachweis-/Auflösungsgrenzen und begrenzte Identitäts-/Reinheitsaussage begründet.",
+          "criterionEn": "Justifies co-migration, detection/resolution limits and bounded identity/purity inference.",
+          "points": 1
+        }
+      ],
+      "totalPoints": 4
+    },
+    "TLC-THEORY-2-TRANSFER": {
+      "caseId": "TLC-THEORY-2-TRANSFER",
+      "goalId": "5fdc4fb2-a23b-5949-8d6b-ad43009120dd",
+      "caseRole": "fresh-independent-transfer",
+      "evidenceLevel": "E0",
+      "maximumClaimScope": "G0",
+      "actualPracticalExecutionRequired": false,
+      "learnerEvidenceObserved": false,
+      "material": {
+        "dataOrigin": "Authored supplied chromatogram data, not an executed experiment or learner observation.",
+        "conditionsDe": "Bereitgestelltes planares DC-Chromatogramm: feste Kieselgelschicht als stationäre Phase, aufsteigendes flüssiges Laufmittel als mobile Phase. Startlinie bei0; alle Strecken längs der Laufrichtung ab derselben Startlinie bis Fleckmitte bzw. Laufmittelfront. R1/R2/U laufen auf derselben Platte unter gleichen Bedingungen. Rf = Stofflaufstrecke / Laufmittelfrontstrecke. Stärkerer Aufenthalt in der stationären Phase relativ zur mobilen Phase bedeutet unter sonst gleichen Bedingungen geringere relative Wanderung.",
+        "conditionsEn": "Supplied planar TLC chromatogram: solid silica stationary phase and an ascending liquid mobile phase. Origin at0; all distances measured along development from the same origin to spot centre or solvent front. R1/R2/U run on the same plate under matched conditions. Rf = solute distance / solvent-front distance. More time in the stationary phase relative to the mobile phase means less relative migration under otherwise matched conditions.",
+        "solventFrontCm": 10.0,
+        "spotCentresCm": {
+          "R1": 3.0,
+          "R2": 7.0,
+          "U": [
+            3.0,
+            7.0
+          ]
+        },
+        "freshContextDe": "Dies ist ein neuer Datensatz mit geändertem Laufmittel. Ein älterer anderer Lauf mit Front8,0cm ergab für R1 Rf0,25 und für R2 Rf0,70. Im neuen Lauf sind die beiden U-Flecken verbreitert; ein schmaler zusätzlicher Stoff könnte verdeckt sein. Ein Mitschüler verwendet für R1 im neuen Lauf fälschlich die8,0cm-Front aus dem alten Lauf und behauptet Rf sei eine universelle Stoffkonstante.",
+        "freshContextEn": "This is a new dataset with changed solvent. An older different run with an8.0cm front gave R1 Rf0.25 and R2 Rf0.70. In the new run the two U spots are broadened and could hide another component. A classmate wrongly uses the old8.0cm front for new R1 and claims Rf is a universal substance constant."
+      },
+      "taskDe": "Erkläre die Trennung mit stationärer und mobiler Phase. Bestimme die neuen Rf-Werte aller Flecken mit der passenden Front und korrigiere Rechnung und Konstantenbehauptung des Mitschülers. Begründe, was sich unter den neuen Bedingungen über U sagen lässt und warum genau zwei Stoffe nicht bewiesen sind. Eine eigene Durchführung wird nicht verlangt.",
+      "taskEn": "Explain separation using the stationary and mobile phases. Determine the new Rf values of all spots using the matching front and correct the classmate’s calculation and constant claim. Justify what the new conditions support about U and why exactly two substances are not proven. No own execution is required.",
+      "workedSolutionDe": "R1:3,0/10,0=0,30; R2:7,0/10,0=0,70; U:0,30 und0,70.3,0/8,0=0,375 verwendet eine fremde Front und ist für diese Platte ungültig. R1 hat jetzt einen anderen Rf als im alten Lauf: Laufmittel und Wechselwirkungen ändern die Verteilung zwischen mobiler und stationärer Phase; Rf ist keine universelle Stoffkonstante. R2 liegt in beiden Läufen zufällig gleich, was die Behauptung nicht rettet. Die zwei U-Lagen sind unter den neuen gemeinsamen Bedingungen mit R1/R2 vereinbar. Ko-Migration, Breite und Nachweisgrenzen erlauben weder eindeutige Identität noch genau zwei Komponenten. Mobilität ist hier weder reine Löslichkeit noch direkt Molekülmasse; der elektrophoretische Feldmechanismus ist nicht das DC-Trennprinzip.",
+      "workedSolutionEn": "R1:3.0/10.0=0.30; R2:7.0/10.0=0.70; U:0.30 and0.70.3.0/8.0=0.375 uses another run’s front and is invalid for this plate. R1 now has a different Rf: solvent and interactions change distribution between the mobile and stationary phases; Rf is no universal substance constant. R2 happening to agree in both runs does not rescue that claim. The two U positions are compatible with R1/R2 under the new matched conditions. Co-migration, spot width and detection limits prove neither unique identity nor exactly two components. Mobility here is neither solubility alone nor directly molecular mass; electrophoretic field migration is not the TLC separation mechanism.",
+      "rubric": [
+        {
+          "criterionDe": "Stationäre/mobile Phase und stoffabhängige relative Retention erklärt, kein Elektrophorese- oder Massenautomatismus.",
+          "criterionEn": "Explains stationary/mobile phases and substance-dependent relative retention, without electrophoresis or automatic mass ranking.",
+          "points": 1
+        },
+        {
+          "criterionDe": "Alle passenden Rf-Quotienten mit gemeinsamer Startlinie und Front desselben Laufs dimensionslos bestimmt.",
+          "criterionEn": "Determines all appropriate dimensionless Rf ratios using the shared origin and front of the same run.",
+          "points": 1
+        },
+        {
+          "criterionDe": "Vergleich nur unter passenden Bedingungen und keine universellen Rf-Konstanten behauptet.",
+          "criterionEn": "Restricts comparison to matched conditions and rejects universal Rf constants.",
+          "points": 1
+        },
+        {
+          "criterionDe": "Ko-Migration, Nachweis-/Auflösungsgrenzen und begrenzte Identitäts-/Reinheitsaussage begründet.",
+          "criterionEn": "Justifies co-migration, detection/resolution limits and bounded identity/purity inference.",
+          "points": 1
+        }
+      ],
+      "totalPoints": 4
+    }
+  },
+  "conductometry": {
+    "id": "conductometry-K1-K2",
+    "taskDemandDe": "Material K1, verfasstes Schulmodell: 25,00 mL einer reinen NaCl-Modelllösung unbekannter Konzentration werden mit 0,01000 mol/L AgNO3 titriert. Unter diesen Modellbedingungen fällt AgCl im stöchiometrischen Arbeitsmodell vollständig; reale Löslichkeit rundet den Knick und wird nicht als exakt null behauptet. Nur Na+, Cl-, Ag+, NO3- tragen relevant zur Leitfähigkeit bei. Konstante Temperatur; kalibrierte Leitfähigkeitszelle; gleiche Rühr- und Wartebedingungen; kein störendes anderes fällbares Ion. Für die vorgegebene Tabelle wurde die gemessene Leitfähigkeit mit (25,00+V)/25,00 auf das Anfangsvolumen korrigiert. V in mL:0/5/10/15/20/25/30/35; korrigierte kappa in µS/cm:1264,0/1254,4/1244,8/1235,2/1225,6/1216,0/1482,8/1749,6. Das sind synthetische Auswertungsdaten, keine real erhobenen Messungen. Gegebene Modell-Ionenleitfähigkeiten in S cm²/mol: Na+50,1; Cl-76,3; Ag+61,9; NO3-71,5.\nAuftrag: Begründe die Messkontrollen und die Volumenkorrektur. Erkläre vor und nach dem Knick jede Ionensorte samt Zuschauerionen und dem geringen Abfall vor der Äquivalenz. Bestimme den Schnitt der beiden Geradenabschnitte und die ursprüngliche Chloridkonzentration mit Reaktionsgleichung, Einheiten und begrenzter Stoffaussage. Führe nach örtlicher fachkundiger Freigabe denselben Untersuchungstyp selbst unter Aufsicht mit eigenen Proben, rohen Volumen-/Leitfähigkeitsdaten und Kontrollen durch; konkrete Stoffe, Mengen und Entsorgung werden durch die örtliche genehmigte Methode festgelegt. Silberhaltige Reste werden nach dieser Methode gesammelt; keine improvisierte Durchführung oder Entsorgung. Die Aufsicht dokumentiert Zellkalibrierung, Temperaturkontrolle, Rühren, schrittweise Titrantzugabe und tatsächliche Rohmessungen. Alle Beobachtungsfelder bleiben hier leer. Vergleiche anschließend die eigene Auswertung mit dem Modell und begründe Abweichungen. Papierauswertung allein erfüllt den praktischen Operator nicht.\nTransfer K2 im selben vollständigen Material: Ein als reines CaCl2-Modell deklariertes Aliquot von20,00 mL benötigt für den leitfähigkeitsbasierten Äquivalenzpunkt20,00 mL0,01000-molarer AgNO3. Diese Angaben sind ein neuer konstruierter Datensatz, keine Behauptung einer eigenen Messung. Bestimme c(Cl-) und c(CaCl2), erkläre das geänderte stöchiometrische Verhältnis und prüfe, ob dasselbe Chloridsignal bei unbekannter Kationenmischung noch die Calciumkonzentration beweisen könnte. Bei einer Matrix mit weiterem fällbarem Anion begrenze die Chloridbehauptung. Ein wiederholtes Ablesen derselben Tabelle ist kein Transfer.\nVollständiger vorgesehener Messauftrag, noch nicht ausgeführt: Nach örtlicher Methodenfreigabe stehen bereit: die bereitgestellte NaCl-Modellprobe, etikettierte0,01000-molare AgNO3-Maßlösung,25,00-mL-Vollpipette,50-mL-Bürette,100-mL-Becherglas, geeignete Leitfähigkeitszelle, Messgerät, Magnetrührer und eine bereitgestellte passende Kalibrierlösung. Schutzbrille und örtliche Laboranweisung gelten; keine Herstellung der Silberlösung durch Lernende. Die Aufsicht prüft vor Beginn Geräteignung und sichere Erfassung des Volumenbereichs0–35mL. Zelle nach Geräteanweisung bei dokumentierter Temperatur kalibrieren, mit deionisiertem Wasser spülen und einen Wasser-Messwert dokumentieren, ohne ihn pauschal als chemischen Blindwert abzuziehen. Bürette mit Maßlösung konditionieren, füllen, Spitze entlüften und Anfangsstand ablesen.25,00mL Probe pipettieren; aktive Zellfläche vollständig eintauchen, bei konstant gehaltener dokumentierter Temperatur gleichmäßig ohne Luftblasen rühren. Anfangsleitfähigkeit nach stabiler Anzeige dokumentieren. Maßlösung schrittweise bis35mL zugeben; zunächst5mL-Schritte, im erkennbaren Knickbereich kleinere Schritte bis0,5mL, nach jedem Schritt bei stabiler Anzeige kumuliertes Volumen, rohe Leitfähigkeit, Temperatur und Auffälligkeiten notieren. Kein Endpunkt wird aus der vorgegebenen Modellzahl als eigene Messung übernommen. Ausreichend Punkte auf beiden Seiten müssen erfasst sein; bei instabiler Anzeige oder ungeeigneter Matrix kein gültiges Endergebnis behaupten. Zelle anschließend gemäß Geräteanweisung reinigen und Kalibrierkontrolle wiederholen; alle silberhaltigen Flüssigkeiten und Feststoffe im lokal festgelegten Abfallstrom sammeln. Rohdaten unverändert behalten, Volumenkorrektur gesondert berechnen, beide linearen Arbeitsbereiche begründet wählen und ihren Schnitt samt Messauflösung auswerten. Der Modell-Vergleich ist von dieser eigenen Durchführung getrennt.",
+    "taskDemandEn": "Material K1, authored school model:25.00 mL of a pure NaCl model solution of unknown concentration is titrated with0.01000 mol/L AgNO3. The working stoichiometric model treats AgCl precipitation as complete; finite real solubility rounds the corner and is not asserted to be exactly zero. Only Na+,Cl-,Ag+,NO3- contribute relevant conductivity. Temperature is constant; the conductivity cell is calibrated; stirring and settling conditions are controlled; no other precipitable interfering ion is present. The supplied table corrects measured conductivity by(25.00+V)/25.00 to the initial volume. V/mL:0/5/10/15/20/25/30/35; corrected kappa/µS cm-1:1264.0/1254.4/1244.8/1235.2/1225.6/1216.0/1482.8/1749.6. These are synthetic analysis data, not measured observations. Supplied model ionic conductivities/S cm2 mol-1:Na+50.1;Cl-76.3;Ag+61.9;NO3-71.5.\nTask: justify measurement controls and the volume correction. Explain every ion before/after the corner, including spectator ions and the small initial decline. Find the two-line intersection and initial chloride concentration, using reaction equation, units and a bounded analyte claim. Following actual local expert authorization, perform the same investigation type under supervision with your own sample, raw volume/conductivity data and controls; actual chemicals, amounts and disposal follow the locally approved method. Collect silver-containing waste as prescribed; do not improvise a procedure or disposal. The supervisor documents calibration, temperature control, stirring, incremental additions and actual raw measurements. All observation fields here remain blank. Compare your own evaluation with the model and explain discrepancies. Paper analysis alone cannot fulfil performance of the experiment.\nTransfer K2 in this same complete material: a declared pure CaCl2 model aliquot of20.00 mL has conductivity-based equivalence at20.00 mL0.01000 M AgNO3. These are a fresh constructed dataset, not a claim of your own measurement. Determine c(Cl-) and c(CaCl2), explain the changed stoichiometry and assess whether the same chloride signal in an unknown cation mixture could prove calcium concentration. Bound the chloride claim if another precipitable anion is present. Reading the same table again is not transfer.\nComplete prospective measurement assignment, not executed: after local method authorization the supplied NaCl model sample, labelled0.01000 M AgNO3 titrant,25.00-mL volumetric pipette,50-mL burette,100-mL beaker, suitable conductivity cell/meter, magnetic stirrer and suitable supplied calibration solution are available. Wear eye protection and follow local lab instructions; learners do not prepare the silver solution. The supervisor verifies equipment suitability and safe coverage of0–35mL. Calibrate as directed at a recorded temperature, rinse with deionized water and record a water reading without automatically subtracting it as a chemical blank. Condition/fill the burette, remove tip bubbles and record its initial level. Pipette25.00mL sample; fully immerse the active cell area and stir uniformly without bubbles at a controlled recorded temperature. Record stable initial conductivity. Add titrant incrementally up to35mL, initially5mL steps and smaller steps down to0.5mL around the observed change in slope; after each stable reading record cumulative volume, raw conductivity, temperature and observations. Do not pass off the supplied model endpoint as an own measurement. Acquire enough points on both sides; do not claim a valid endpoint with unstable readings or an unsuitable matrix. Clean the cell as directed and recheck calibration; collect all silver-containing liquid/solid waste in the local prescribed stream. Preserve raw data unchanged, calculate volume correction separately, justify the two linear working ranges and evaluate their intersection with measurement resolution. Analysis of the supplied model remains separate from actual execution.",
+    "expectedPerformanceDe": "Ag+ + Cl- → AgCl(s). Na+ bleibt gelöst; vor der Äquivalenz wird Cl- durch etwas geringer leitfähiges NO3- ersetzt, daher fällt die volumenbereinigte Leitfähigkeit nur wenig. Nach der Äquivalenz bleiben zusätzliches Ag+ und NO3- gelöst; die Leitfähigkeit steigt stärker. Gerade vor Äquivalenz:kappa=1264,0−1,92V; danach:kappa=1216,0+53,36(V−25,00). Schnitt25,00mL. n(Cl-)=0,01000mol/L×0,02500L=0,2500mmol; c=0,01000mol/L. Die Volumenkorrektur isoliert im Modell den Verdünnungseffekt; sie beseitigt keine Temperatur-/Zell-/Matrixfehler. Eigene Durchführung und tatsächliche Rohdaten müssen separat beobachtet werden; hier ist keine Beobachtung vorhanden. K2:n(Cl-)=0,2000mmol, c(Cl-)=0,01000mol/L, c(CaCl2)=0,005000mol/L nur unter der ausdrücklich reinen CaCl2-Annahme, da ein Formelteilchen zwei Chloridionen liefert. Bei unbekanntem Kation ist nur Chlorid bestimmt; eine Calcium- oder Wasserhärtebehauptung wäre unbelegt. Andere fällbare Anionen können ebenfalls Ag+ verbrauchen; ohne Trennung/Kontrolle ist selbst die Chloridzuordnung nicht selektiv. EDTA-Komplexbildung und Fällung sind verschiedene Verfahren; aus diesem Experiment folgt keine EDTA-Kompetenz.",
+    "expectedPerformanceEn": "Ag+ + Cl- → AgCl(s). Na+ remains dissolved; before equivalence,Cl- is replaced by slightly less conducting NO3-, so volume-corrected conductivity decreases only slightly. After equivalence additional Ag+ and NO3- remain dissolved, increasing conductivity more strongly. Before:kappa=1264.0−1.92V; after:kappa=1216.0+53.36(V−25.00). Intersection25.00mL. n(Cl-)=0.01000mol/L×0.02500L=0.2500mmol; c=0.01000mol/L. Volume correction isolates dilution in this model, not temperature/cell/matrix errors. Own execution/raw measurements require separate observation; none is present here. K2:n(Cl-)=0.2000mmol,c(Cl-)=0.01000mol/L,c(CaCl2)=0.005000mol/L only under the explicit pure-CaCl2 assumption:one formula unit supplies two chloride ions. With unknown cations only chloride is determined; calcium or water hardness is not established. Other precipitable anions also consume silver; without separation/controls even the chloride assignment loses selectivity. Precipitation and EDTA complexometry are different methods; this experiment does not demonstrate EDTA competence.",
+    "rubric": [
+      {
+        "id": "measurement",
+        "de": "Echte beobachtete kontrollierte Durchführung mit eigenen rohen Daten; vorgegebene Zahlen geben hierfür keinen Kredit.",
+        "en": "Actual observed controlled performance with own raw data; supplied values earn no execution credit."
+      },
+      {
+        "id": "ions",
+        "de": "Alle vier Ionensorten vor/nach Äquivalenz und die Modellgrenzen richtig erklären.",
+        "en": "Explain all four ions before/after equivalence and the model limits."
+      },
+      {
+        "id": "equivalence",
+        "de": "Geradenschnitt und 1:1-Chloridrechnung mit Volumina/Einheiten korrekt; Kontrolle und Datenreichweite begründen.",
+        "en": "Correct line intersection and1:1 chloride calculation with volumes/units; justify controls and inference limits."
+      },
+      {
+        "id": "transfer",
+        "de": "Geänderte CaCl2-Stöchiometrie selbstständig deuten; aus Chlorid ohne Matrixannahme kein Calcium ableiten.",
+        "en": "Independently interpret changed CaCl2 stoichiometry; do not infer calcium from chloride without the matrix assumption."
+      }
+    ],
+    "allEssentialCriteriaRequired": true,
+    "mandatoryCaseQuota": false,
+    "actualObservedExecution": false,
+    "actualObservationFields": {
+      "calibration": null,
+      "temperature": null,
+      "rawReadings": null,
+      "supervisorObservation": null
+    }
+  },
+  "strongHB": {
+    "materialId": "HB134-GK-own-digital-strong-acid-titration",
+    "goalIds": [
+      "4bd54a18-8dd2-59db-bddf-b4c34a10ba79"
+    ],
+    "sourceOrdinals": [
+      127,
+      134
+    ],
+    "scope": {
+      "de": "Eigene vollständige quantitative Untersuchung einer starken einprotonigen Säure im freigegebenen Unterricht; GK/LK-HB1.2. Die ganze hier gewählte pH-Volumen-Erfassung, praktische Planung/Durchführung und digitale Auswertung gehören diesem Kandidaten. Keine schwache-Säure-, pKa-, Halbäquivalenz- oder Sensorautomationspflicht.",
+      "en": "A complete personal quantitative investigation of a strong monoprotic acid in released teaching; GK/LK HB1.2. The selected pH/volume acquisition, practical planning/execution and digital evaluation belong to this candidate. No weak-acid, pKa, half-equivalence or sensor-automation requirement."
+    },
+    "materialOrigin": {
+      "de": "Eigenes Unterrichtsmaterial; keine gelieferten Sollwerte als Messung, keine beobachtete Lernendenleistung. Die Lehrkraft verantwortet den vorhandenen freigegebenen Versuch und geeignete pH-Messung; dieses Datenmaterial ersetzt weder deren Gefährdungsbeurteilung noch Durchführung.",
+      "en": "Own teaching material; no supplied ideal values are measurements and no learner performance has been observed. The teacher owns the existing released experiment and suitable pH measurement; this data material replaces neither that risk assessment nor actual execution."
+    },
+    "givens": {
+      "de": "Nutze den eigenen begründeten Titrationsplan und die tatsächliche eigene Durchführung für starke einprotonige Säure und bekannte NaOH-Maßlösung. Erforderlich sind echte Bürettenstände/zugegebene Volumina, Probenvolumen, Maßlösungskonzentration, Indikatorbeobachtung und eine unter Lehrkraftfreigabe tatsächlich aufgenommene Folge zugehöriger pH-Werte. Falls diese pH-Folge im alten Protokoll fehlt, muss sie erst real in der freigegebenen Untersuchung erfasst werden; eine gegebene Kurve oder idealisierte Simulation ersetzt sie nicht. Handübertragung vorhandener echter Messpaare ist zulässig; Sensorautomation, Export oder synchrones Logging sind keine zusätzliche Pflicht. Keine neuen Chemikalien oder Durchführungsschritte werden hier angeordnet.",
+      "en": "Use the personally justified titration plan and actual own execution for a strong monoprotic acid and a known NaOH standard solution. Required records are genuine burette readings/added volumes, sample volume, titrant concentration, indicator observation and a corresponding sequence of pH values actually acquired under teacher release. If the old record lacks that pH sequence, it must first be obtained in the released investigation; a supplied curve or idealised simulation cannot replace it. Checked manual transcription of genuine recorded pairs is allowed; automated sensors, export and synchronous logging are not added requirements. No new chemicals or practical procedure are prescribed here."
+    },
+    "learnerTask": {
+      "de": "Erstelle selbst eine digitale Datei aus diesen eigenen Messpaaren. Bewahre die unveränderte Rohquelle und dokumentiere Übertragung, Einheiten und begründete Korrekturen. Zeichne ein beschriftetes numerisches XY-Diagramm: wirklich zugegebenes Maßlösungsvolumen auf x, gemessener pH auf y; ungleiche Volumenschritte müssen sichtbar bleiben. Beschreibe den gemessenen Kurvenverlauf und begrenze den steilen Bereich aus den tatsächlich vorhandenen Punkten. Vergleiche die Indikatorbeobachtung mit diesem Bereich und begründe die für die Konzentrationsbestimmung verwendete Volumengrenze. Rechne mit der passenden Reaktionsstöchiometrie und dem ursprünglichen Probenvolumen; trenne beobachteten Endpunkt und Äquivalenzbegriff und benenne die Mess-/Ablesegrenze.",
+      "en": "Create your own digital file from these personal measurement pairs. Retain the unchanged raw source and document transcription, units and justified corrections. Make a labelled numeric XY plot with genuinely added titrant volume on x and measured pH on y; unequal volume steps must remain visible. Describe the measured curve and bound its steep region using the points actually available. Compare the indicator observation with that region and justify the volume bound used for concentration determination. Use the appropriate reaction stoichiometry and original sample volume; distinguish observed endpoint from equivalence and state measurement/reading limits."
+    },
+    "expectedReasoning": {
+      "de": "Die eigene digitale Datei mit überprüfbarer Rohquelle ist der Leistungsbeleg, nicht ein fertiger Autorenplot. Eine kategorial gleichabständige x-Achse darf ungleiche Volumenschritte nicht verzerren. Aus endlich weit auseinanderliegenden pH-Punkten folgt ein begrenzter Bereich, kein mathematisch exakter Äquivalenzpunkt. Die Konzentrationsbestimmung bezieht verbrauchte Maßlösung über das stöchiometrische Stoffmengenverhältnis auf das ursprüngliche Probevolumen. Eine gute digitale Darstellung beweist für sich keine tatsächliche Laborhandlung; dafür ist der eigene praktische Beleg dieses neuen Zielkandidaten erforderlich.",
+      "en": "The personal digital file with a checkable raw source is the performance evidence, not an author-supplied plot. An evenly spaced categorical x-axis must not distort unequal volume steps. Finitely separated pH points support a bounded region rather than an exact mathematical equivalence point. Concentration determination relates consumed titrant through reaction amount ratio to the original sample volume. A good digital plot alone does not establish actual laboratory execution; the practical evidence for this new goal candidate remains required."
+    },
+    "freshTransfer": {
+      "task": {
+        "de": "Frischer Dateifehler: Ein echter Volumenschritt von 0,20 mL wurde mit 0,02 mL eingetragen; zusätzlich behandelt ein Liniendiagramm alle Messpunkte als gleich weit auseinander. Prüfe die digitale Datei an der unveränderten eigenen Rohquelle und begründe die Korrektur. Wie verändern sich Darstellung und belegbarer Endpunktbereich?",
+        "en": "Fresh file defect: a genuine 0.20mL volume step was entered as0.02mL, while a line chart treats all records as equally spaced. Check the digital file against the unchanged personal raw source and justify correction. How do the plot and supported endpoint bounds change?"
+      },
+      "expected": {
+        "de": "Volumeneinheit und Originaleintrag kontrollieren, keine Wunschkurve erzeugen. Den zehnfach zu kleinen Schritt korrigieren, die wirkliche kumulative Volumenskala im XY-Diagramm verwenden und den steilen Bereich sowie die daraus verwendete Volumengrenze neu beurteilen. Falls Konzentration/Unsicherheit davon abhängen, auch diese begründet neu berechnen. Eine fremde Sollkurve ist keine Rohquelle.",
+        "en": "Check units and original record without manufacturing a desired curve. Correct the tenfold-small step, use genuine cumulative volume coordinates in an XY plot and reassess the steep region and chosen volume bound. If concentration/uncertainty depends on it, recompute them with reasons. An external ideal curve is not a raw measurement source."
+      }
+    },
+    "blankLearnerRecord": {
+      "actualRawSource": null,
+      "actualDigitalFile": null,
+      "actualTeacherReleasedExecution": null,
+      "ownReasoning": null,
+      "freshTransfer": null
+    },
+    "status": "AUTHOR_PENDING_INDEPENDENT_REVIEW",
+    "reviewAuthority": "ai_candidate",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "active": false,
+    "humanApproval": false,
+    "actualLearnerPerformanceRecorded": false,
+    "M7Claim": false,
+    "ownMaterialLicense": "CC-BY-4.0",
+    "strongOnlyPracticalProtocol": {
+      "de": "Vollständige starke-Säure-Route als Autorenentwurf aus dem vorhandenen PRACTICAL-PH-CURVES-P1, ohne dessen schwache Säure und Halbpunkt: Nur nach schulischer Gefährdungsbeurteilung und konkreter Freigabe im betreuten Fachraum. Die Lehrkraft stellt 25,00 mL HCl-Probe nahe 0,050 mol/L, standardisierte NaOH 0,0500 mol/L und den im begründeten Plan vorgesehenen Indikator gebrauchsfertig bereit; Lernende verdünnen keine Konzentrate. Schutzbrille/Schutzkleidung nach lokaler Beurteilung, Vollpipette mit Pipettierhilfe, gesicherte 50-mL-Bürette, geeignetes Becherglas, Rührer, pH-Meter/Elektrode, Kalibrierpuffer pH4/7/10 mit Temperaturbezug, Spülwasser, Thermometer und freigegebene Entsorgung stehen bereit. Gerät nach Anleitung kalibrieren/prüfen, Probe quantitativ überführen und konstante Messbedingungen sowie Anfangsstand dokumentieren. Unter kontrolliertem Rühren höchstens2mL fern vom Sprung, höchstens0,2mL im zunächst erwarteten Bereich20–27mL und höchstens0,05mL um den tatsächlich eingegrenzten Sprung zugeben; reale Beobachtungen bestimmen die Anpassung. Nach Stabilisierung jeweils kumulatives Volumen, pH, Temperatur und Auffälligkeiten unmittelbar selbst notieren. In den freigegebenen eindeutigen Nachäquivalenzbereich arbeiten, beispielsweise bis30mL; beobachteten Indikatorendpunkt gesondert festhalten. Keine Sollwerttabelle, keine Bildpunkte als eigene Werte. Aufsicht dokumentiert die tatsächlich selbst ausgeführten Kernhandlungen; fehlen Ausstattung, Freigabe oder geeignete tatsächliche Messungen, bleibt die Durchführung offen. Die eigene digitale Datei und die Begründung der stöchiometrischen Konzentration/Unsicherheit folgen aus genau dieser Rohquelle. Dieser konkrete pH-Meter-Fall ist eine gewählte Operationalisierung, keine aus dem Wort digital abgeleitete universelle Sensor-, Export- oder Loggingpflicht.",
+      "en": "Complete strong-acid author route derived from existing PRACTICAL-PH-CURVES-P1, without its weak acid or halfpoint: only in a supervised subject room after the school risk assessment and specific local release. The teacher supplies ready-to-use 25.00mL HCl near0.050mol/L, standardised0.0500mol/L NaOH and the indicator justified in the plan; learners do not dilute concentrates. Provide locally required eye/clothing protection, a volumetric pipette/filler, secured50mL burette, suitable beaker, stirrer, pH meter/electrode, pH4/7/10 calibration buffers with temperature information, rinse water, thermometer and approved waste handling. Calibrate/check as instructed, transfer the sample quantitatively and record constant conditions/initial reading. Under controlled stirring add at most2mL away from the jump,0.2mL in the initially expected20–27mL region and0.05mL around the actually located jump, adapting to real observations. After stable readings personally record cumulative volume,pH,temperature and deviations immediately. Continue into locally released clear excess, for example30mL, separately recording the indicator endpoint. No target table or pictured points may replace own readings. Supervision records actual personal core actions; absent equipment,release or suitable measurements leaves execution open. Derive the digital file and stoichiometric concentration/uncertainty from that same raw source. This selected pH-meter case does not turn digital into a universal sensor,export or logging requirement."
+    }
+  },
+  "HBDigital": {
+    "materialId": "HB134-own-digital-titration-curve-evaluation",
+    "goalIds": [
+      "e0944fbb-0761-5f9c-afaa-3d4713ed1bed"
+    ],
+    "sourceOrdinals": [
+      134
+    ],
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "authorDecision": "pending_independent_review",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "materialOrigin": {
+      "de": "Vollständiges eigenes Autorenmaterial. Zahlen/Referenzmuster sind ausdrücklich Aufgabenmodelle, keine tatsächlichen Lernendenmessungen oder Herstellerzertifikate.",
+      "en": "Complete own author material. Numbers/reference patterns are stipulated teaching models, not actual learner measurements or manufacturer certificates."
+    },
+    "scope": {
+      "de": "Nur die angegebenen HB-Quellenkomponenten im jeweiligen Kurs-/Themenscope; offizielle Wahlthemen und optionale Experimente bleiben qualifiziert. Alle bisherigen ganzen Ziele/Fälle gelten weiter.",
+      "en": "Only named HB source components within their course/topic scope; official choices and optional experiments remain qualified. Every previous whole goal/case remains required."
+    },
+    "performanceMode": "actual_digital_processing_of_existing_supervised_measurements",
+    "suppliedMaterial": {
+      "de": "Digitale Fortsetzung der beiden vollständig vorhandenen, selbst gemessenen pH-Kurvenfälle; kein neuer Versuch und keine Ersatzmessung. Benötigt werden die tatsächlichen eigenen Volumen-/pH-Paare samt Kalibrierung, Temperatur, Probenvolumen, Maßlösung und Volumenunsicherheit aus dem freigegebenen Originalfall. Ohne eigene Messung bleibt die praktische Pflicht offen. Ein Tabellen-/Plotwerkzeug und leere Spalten für V in mL, pH, ΔV, ΔpH/ΔV in mL−1 sowie die jeweilige Intervallmitte stehen bereit. Geprüfte manuelle Übertragung ist erlaubt; automatischer Export oder Sensoranschluss ist nicht vorgeschrieben. Keine Sollkurve als Messung eintragen.",
+      "en": "This digitally continues both existing personally measured pH-curve cases, not a new experiment or substitute measurement. Requires actual own volume/pH pairs, calibration, temperature, sample volume, actual titrant and raw-volume uncertainty from the released original case; without own measurement the practical duty remains open. Supply a digital table/plot tool with blank V(mL),pH,ΔV,ΔpH/ΔV(mL−1) and midpoint columns. Checked manual transcription is allowed; no automatic export or sensor link is required. Use data after proper release/acquisition, never fill an expected curve as measurements."
+    },
+    "learnerTask": {
+      "de": "Erstelle aus den eigenen Messpaaren tatsächlich eine digitale Datei für starke und schwache einprotonige Säure. Bewahre die Rohdaten, dokumentiere Korrekturen und zeichne beschriftete XY-Kurven V → pH. Berechne aus echten Nachbarpunkten ΔpH/ΔV und trage die Werte an den Intervallmitten auf. Begrenze den Äquivalenzbereich aus Messauflösung und Steigungsmaximum. Leite den experimentellen Halbäquivalenzpunkt der schwachen Säure aus demselben Veq-Befund ab; ermittle seinen pH aus eigenen Messpunkten oder begründeter Interpolation mit Unsicherheit. Es geht nicht um den halben pH-Wert.",
+      "en": "Actually create a digital file from own measurement pairs for strong and weak monoprotic acid. Preserve raw data, document every correction, make labelled XY V→pH plots and calculate neighbouring ΔpH/ΔV at interval midpoints. Bound equivalence from measurement resolution/slope maximum; derive weak-acid experimental half-equivalence from that same Veq finding. ObtainpH there from actual measurements or justified interpolation with uncertainty. It is not half thepH."
+    },
+    "expectedReasoning": {
+      "de": "Die digitale Datei zeigt überprüfbare Formeln, Zellbezüge und reale Herkunft. Die größte endliche Steigung begrenzt die Äquivalenzlage; sie liefert keine mathematisch exakte Stelle. Ungleiche Volumenschritte müssen im Nenner stehen. Vhalb ≈ Veq/2 gilt bei passender Stöchiometrie; pHhalb ≈ pKa nur unter der geprüften schwach-einprotonigen Näherung. Punktabstände und Kalibrierung begrenzen die Schätzung. Alle bisherigen Pflichten zu Planung, tatsächlicher Durchführung, starker und schwacher Kurve sowie Unsicherheit bleiben erhalten.",
+      "en": "The digital file shows checkable formulas/references and genuine provenance. Maximum finite slope localises a bounded equivalence region, not an exact point; unequal volume steps belong in the denominator. Vhalf≈Veq/2 under appropriate stoichiometry;pHhalf≈pKa only under the checked weak-monoprotic approximation. Coarse spacing/calibration limit the estimate. Old planning, actual execution, both strong/weak curves and uncertainty duties remain."
+    },
+    "freshTransfer": {
+      "task": {
+        "de": "Frisch: Im steilen Bereich wurde ein Schritt von 0,20 mL als 0,02 mL übertragen. Bewahre die Rohquelle, prüfe den Eintrag und berechne Darstellung, Steigung und Halbpunkt erneut.",
+        "en": "Fresh: a0.20mL step near the steep region was entered as0.02mL. Retain original record, check transcription and recompute plot/slope/halfpoint."
+      },
+      "expected": {
+        "de": "Der falsche Nenner verzehnfacht diese endliche Steigung. Korrigiere anhand der echten Quelle, nicht anhand eines gewünschten Veq, und bewahre die begründete neue Version auf. Äquivalenzbereich, Halbpunkt und Unsicherheit müssen erneut beurteilt werden.",
+        "en": "The denominator error multiplies that finite slope by10. Correct against the actual source, not desired Veq; retain a reasoned new version. Equivalence region/halfpoint may change, requiring renewed uncertainty assessment."
+      }
+    },
+    "rubric": {
+      "de": [
+        "Tatsächliche eigene digitale Auswertung der Titrationsmessdaten vorlegen.",
+        "Kurve, Steigung und Halbpunkt mit Einheiten und Unsicherheit begründen.",
+        "Frischen Übertragungsfehler bearbeiten, ohne Rohdaten zu erfinden."
+      ],
+      "en": [
+        "Show actual own digital evaluation of titration measurements.",
+        "Explain curves/slopes/halfpoint with correct units and uncertainty.",
+        "Handle fresh transcription error without inventing data."
+      ]
+    },
+    "blankLearnerRecord": {
+      "actualProductOrActions": null,
+      "actualObservations": null,
+      "ownReasoning": null,
+      "freshTransfer": null,
+      "unresolvedEvidence": null
+    },
+    "actualLearnerPerformanceRecorded": false,
+    "humanApproval": false,
+    "humanTrial": false,
+    "active": false,
+    "M7Claim": false,
+    "ownMaterialLicense": "CC-BY-4.0",
+    "externalSourceRightsUnchanged": true
+  },
+  "provenance": [
+    {
+      "file": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-redox-kinetics16-current422-whole-material-author-20261015-v1/materials/thirty-two-whole-DE-EN-cases.final-science-and-prose.author.json",
+        "sha256": "86dc6b7640368abf7dbd12b51f4cdf48aba1731f7f543169a30c14261c3ccd2e",
+        "bytes": 165052
+      },
+      "selectedCaseIds": [
+        "eqrk16-07-a",
+        "eqrk16-07-b",
+        "eqrk16-08-a",
+        "eqrk16-08-b",
+        "eqrk16-10-a",
+        "eqrk16-10-b",
+        "eqrk16-12-b"
+      ],
+      "selectionKey": "id",
+      "selectedObjectsSHA256": [
+        "4494fe657bf010d47ec16b7efa4d1569fbbdb86a6328abe1d9a3e61209641eb4",
+        "905c36178eb420f80f8123d54dfa3b8f4e860f754e6349e0acd4a2cff6a23ebd",
+        "090cde3a6394b983d19896ee84a4f18d8d2d444024aa79a51db50541bb6c82b8",
+        "fbc5c9308ef098bc5c21661d9ac1cf7b7286e0146eea384629c820e7a4ec42ce",
+        "b293766948b94208afe2552d3d4f5f0c0df5863a7a2e33b3d03209ee3b62938e",
+        "6362ba57dbef59338892610ce0c88799e1708220bd98ec428315aafc7da7f8da",
+        "ac28b02f7c4bf6dd02b47e16105ca756920b33ef16e173393981a930d9fb64fa"
+      ]
+    },
+    {
+      "file": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-equilibrium-four-material-gap-remediation-author-20261015-v1/materials/thirty-two-whole-DE-EN-cases.four-gap-successor.author.json",
+        "sha256": "c9d14994f6f2cb2fbc3d099a6f6424be55d93e73e3837c428cf42ce8286e851e",
+        "bytes": 174942
+      },
+      "selectedCaseIds": [
+        "eqrk16-12-a"
+      ],
+      "selectionKey": "id",
+      "selectedObjectsSHA256": [
+        "d019ef8104878234e1b58e4f276619864f37f00ffdd8c6200f2e6e1e129c8d3e"
+      ]
+    },
+    {
+      "file": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-acid-source-course-eight-findings-whole-author-successor-20261016-v1/materials/NINE.complete-additional-cases-and-practical-rubrics.author.json",
+        "sha256": "86069f0847c0c8f8658e7a9e80bd362fb722fb1ef24b1e587da2ef8e3e9128e2",
+        "bytes": 68298
+      },
+      "selectedCaseIds": [
+        "BUFFER-DESIGN-C1",
+        "PRACTICAL-PH-CURVES-P1",
+        "PRACTICAL-BUFFER-P1"
+      ],
+      "selectionKey": "caseId",
+      "selectedObjectsSHA256": [
+        "3b3a4fb2d3c2200e2e07b8f6654f137c29e8fd6571bb692cd464274836e8a36e",
+        "d10b12511563b28f6b2e4923bc4c30e516c955d9ecb36e3197f3d6db33e68209",
+        "c353940fd2f7ff56f1747baa784fbf8c4ec0dfdcd914d46f3d0f689e8b6a8d0a"
+      ]
+    },
+    {
+      "file": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-acid-analytics-ten-current419-bounded-author-remediation-20261015-v1/materials/twenty-complete-DEEN-cases.author.json",
+        "sha256": "2e39bc0851da8c559cbe05bc0d7c6454528b25a750fdbe27b132ead332ec37cb",
+        "bytes": 179222
+      },
+      "selectedCaseIds": [
+        "T01-C1",
+        "T01-C2",
+        "T02-C1",
+        "T02-C2"
+      ],
+      "selectionKey": "id",
+      "selectedObjectsSHA256": [
+        "47ecd116e83fdf9f84445092d6b842608e6f677f4c713d9a9fab4558af13319e",
+        "e2102427dd3a68b0c7ca39bd9b23058dfb454dc158fbba588e8adf7818a5ae99",
+        "176cc15d387dcab1d737eef28e2ee295402db7400045ae0c5ee23aa322646293",
+        "e4b81df5310d6b2b1991867645c9f735a1a5aa0e283578cf0df76fc22a51ae74"
+      ]
+    },
+    {
+      "file": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-methods4-v2-split3-current578-inactive-composition-technical-20261016-v1/MATERIALS29.exact-whole-bilingual-author-cases.neutral.json",
+        "sha256": "912e6295850538e288f0e9eae78cf8f0b4a0f0b2f0e99725ef4261e1c4953712",
+        "bytes": 190072
+      },
+      "selectedCaseIds": [
+        "chromatography-gc-bounded-source-contribution",
+        "gc-product-identification-and-coelution"
+      ],
+      "selectionKey": "id",
+      "selectedObjectsSHA256": [
+        "27c4032a4466959d29e1202b0539d96e8d547102b53ded5a2ee0f011ebfa9f58",
+        "c70b71d7281d76ce2d897f46aeff8221d1b4d4a22dc4660b583b9ac67c571dc6"
+      ]
+    },
+    {
+      "file": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-halftitration-electrophoresis-two-source-course-targeted-author-successor-20261016-v3/cases/TWO.planar-TLC-theory-Rf.whole-DEEN-cases.author.json",
+        "sha256": "0acc54410eedb66ec249ce9479bf5a7dd8cd836f2e2d35265f01fc48f7c53e75",
+        "bytes": 10810
+      },
+      "selectedCaseIds": [
+        "TLC-THEORY-1",
+        "TLC-THEORY-2-TRANSFER"
+      ],
+      "selectionKey": "caseId",
+      "selectedObjectsSHA256": [
+        "e288e15c38da110b8c60b54d690c74825647e1468fd9c20bc5c042d1f2c6272c",
+        "23a958d543696aa0b0c1dae958660730d6d16f977b4dcd8edf6d67fef4bcc245"
+      ]
+    },
+    {
+      "file": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-edta-conductometry-whole-source-author-successor-20261016-v1/materials/ONE.complete-bilingual-conductometric-method-and-changed-transfer.author.json",
+        "sha256": "69aa360aeb1504c8dafefedc512615e9d1576ccfc52a74b28fd3a13e2c046b77",
+        "bytes": 12286
+      },
+      "selectedCaseIds": [
+        "conductometry-K1-K2"
+      ]
+    },
+    {
+      "file": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-five-P-scope-operator-remediation-author-20261018-v1/AUTHOR.complete-DE-EN-material-routes.pending.json",
+        "sha256": "f317295316db907a8afd64d32456e0d62e20ff921ec46ad402a0bb0f4e8157e9",
+        "bytes": 61793
+      },
+      "jsonPointer": "/materials/5",
+      "selectedMaterialId": "HB134-GK-own-digital-strong-acid-titration"
+    },
+    {
+      "file": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-lab-physical-material-author-20261017-v1/materials/HB134-own-digital-titration-curve-evaluation.DE-EN.json",
+        "sha256": "2c2febab77dac315275ab3e8e20eda57598ed34ee252d3bf1d86649c31270bf9",
+        "bytes": 6555
+      },
+      "selectedMaterialId": "HB134-own-digital-titration-curve-evaluation"
+    }
+  ]
+}

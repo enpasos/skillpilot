@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-006-v1-resolution-b7b5df21-78f3-5408-89f1-36deed450695",
+  "goal": {
+    "goalId": "b7b5df21-78f3-5408-89f1-36deed450695",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:a96265aa87dbfebf1a25bbcb90c9e771d0795c27079491567a800638d59bc8b7",
+    "pageFingerprint": "sha256:2f2721c9baaf48a39d439fa5e59e8ceee144489f134a02e8e206f0575b85a22c",
+    "goalReviewContextFingerprint": "sha256:62be0a106824783767141465d63b34427f5fa9a836108176ad2eb3feb84fd149",
+    "finalText": {
+      "titleDe": "Friedel-Crafts-Reaktionen",
+      "titleEn": "Friedel-Crafts reactions",
+      "descriptionDe": "Die lernende Person kann Friedel-Crafts-Alkylierungen und -Acylierungen mechanistisch begründet planen und Einflüsse von Substrat und Reaktionsbedingungen auf Umlagerungen, Mehrfachsubstitution und Produktselektivität beurteilen.",
+      "descriptionEn": "The learner can plan Friedel–Crafts alkylations and acylations using mechanistic reasoning and evaluate how substrates and reaction conditions influence rearrangement, multiple substitution and product selectivity."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-006-v1-a",
+      "campaignDigest": "sha256:fac08f3e3e72b3fd65ead31deeafeff62268bea1795f229f19ce85a234e57356",
+      "roundId": "chemie-final-current-context-d-006-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-006-v1-independent-a",
+      "reviewInputFingerprint": "sha256:738c48a5d1a135a764fe483a52f078a241f0f4149b0c7e6ce492ebd53c660d26",
+      "goalReviewContextFingerprint": "sha256:62be0a106824783767141465d63b34427f5fa9a836108176ad2eb3feb84fd149",
+      "batchId": "chemie-final-current-context-d-006-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch006-20261018",
+      "runManifestDigest": "sha256:419ac41027d7c6085c20a41a7aab2cc5ee3abf5e395b843a596d9b21dbec3d58",
+      "resultsDigest": "sha256:cb07854e0ea40039098f3d266438ec683a808fb475249442535af494ff91bdbe",
+      "recordId": "codex-reviewer-a-final163-batch006-20261018.005",
+      "recordDigest": "sha256:db3c5dc66d6bd8aab0493b8088406084050450be194e9ddb30f8b9fa6022d697"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-006-v1-b",
+      "campaignDigest": "sha256:e6860f2b3431737a13818dccb510d68b769ac8de8183a266a418614495ba524a",
+      "roundId": "chemie-final-current-context-d-006-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-006-v1-independent-b",
+      "reviewInputFingerprint": "sha256:738c48a5d1a135a764fe483a52f078a241f0f4149b0c7e6ce492ebd53c660d26",
+      "goalReviewContextFingerprint": "sha256:62be0a106824783767141465d63b34427f5fa9a836108176ad2eb3feb84fd149",
+      "batchId": "chemie-final-current-context-d-006-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-006-20261018",
+      "runManifestDigest": "sha256:f5dff68c2824391cbd358b0efcda18f60656322f44c47dd579639b30eb8f1789",
+      "resultsDigest": "sha256:1905ddcd08914170e96a8288a0308e1390cdf5eb3bbb2c7eb917107830344a7f",
+      "recordId": "chemie-final163-native-b-006-20261018:b7b5df21-78f3-5408-89f1-36deed450695",
+      "recordDigest": "sha256:70e5c94cde957e7a197e0423c1ed98be154d90d0f4cea4ed7307206c215cd97c"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:c423e5d81f53d59095437ae568e0caca6a758058bafd394031ce2cb0f01fc495"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-006-20261018-v1",
+    "manifestDigest": "sha256:841af7f6a231319d70d92e84fb977818248d5825b592e050c63ab4be72fe9634",
+    "manifestFingerprint": "sha256:8a70d3defa5ac0d85b5224774db191bed348f860796a294e7732ed4830512bfe",
+    "decisionId": "chemie-final163-paired-D-only-006-20261018-v1-decision-005"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-006-20261018-v1-decision-005",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:35:51.247Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch006-20261018.005): Der aktuelle bilinguale Text fordert Planung und Urteil statt Ausführung. Das ganze P wahrt Atomgerüst, AlCl3-Produktkomplex und getrennte Reduktion und garantiert weder Reinprodukt noch konstantes ortho/para-Verhältnis. B (chemie-final163-native-b-006-20261018:b7b5df21-78f3-5408-89f1-36deed450695): Das atomare Routenplanungsziel integriert Mechanismus, Substrat und Selektivität fachlich sinnvoll nach dem σ-Komplex. Beide vollständigen P-Fälle prüfen mehr als Mechanismusnamen: Umlagerung, Mehrfachalkylierung, Acylierungs-Deaktivierung, Reduktionsschritt und bedingte Selektivität. AlCl3-Komplexierung und Aufarbeitung begrenzen die vereinfachte Katalysatorvorstellung angemessen.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch006-20261018.005; chemie-final163-native-b-006-20261018:b7b5df21-78f3-5408-89f1-36deed450695). Their current English understanding evidence is retained: A: Friedel-Crafts routes differ in acylium/alkyl electrophiles, rearrangement and ring activation; conditions limit selectivity. B: Friedel–Crafts alkylation and acylation share electrophilic aromatic substitution but differ in rearrangement, ring activation and route-planning options. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Friedel-Crafts-Routen unterscheiden Acylium-/Alkylelektrophile, Umlagerung und Ringaktivierung; Bedingungen begrenzen Selektivität.",
+      "essentialUnderstandingEn": "Friedel-Crafts routes differ in acylium/alkyl electrophiles, rearrangement and ring activation; conditions limit selectivity.",
+      "observablePerformanceDe": "Plant Ringangriff/σ-Komplex und begründet Acylierung mit getrennter Reduktion für kontrollierbaren Seitenkettenaufbau.",
+      "observablePerformanceEn": "Plans ring attack/sigma complex and justifies acylation with separate reduction for controlled side-chain construction.",
+      "transferExpectationDe": "Prüft ein neues Substrat oder geänderte Lewis-Säure-Menge und verweigert unbelegte exakte Isomerenanteile.",
+      "transferExpectationEn": "Checks a new substrate or changed Lewis-acid amount and rejects unsupported exact isomer fractions."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-89b14caed47e81ca09f5e0554ae9aef6e3a89e986647447a8f8b095ba9bec7b1",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:7450d0cf1d1b9d90d303c5c165f368bd9d109cfbe40115a5778b4b44df415831"
+}

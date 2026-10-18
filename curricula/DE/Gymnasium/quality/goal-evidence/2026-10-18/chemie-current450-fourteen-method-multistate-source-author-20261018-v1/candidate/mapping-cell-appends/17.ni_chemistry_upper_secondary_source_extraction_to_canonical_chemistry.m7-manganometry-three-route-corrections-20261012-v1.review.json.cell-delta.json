@@ -1,0 +1,85 @@
+{
+  "artifactRole": "INACTIVE_MAPPING_CELL_APPEND_AUTHOR_CANDIDATE",
+  "activation": "independent-review-required",
+  "mappingPath": "curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.m7-manganometry-three-route-corrections-20261012-v1.review.json",
+  "beforeWholeFilePinForAuditNotGlobalCAS": {
+    "path": "curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.m7-manganometry-three-route-corrections-20261012-v1.review.json",
+    "sha256": "edc758d8ea54135a32ec6b93b382b2211021b91c2ffa5ef522d9e3200346e094",
+    "bytes": 459133
+  },
+  "sourceExtractionPathAtAuthoring": "curricula/DE/Gymnasium/input/NI/upper-secondary/source-extraction/DE_NI_CHEMIE_SEKII_KC2022.source-extraction.json",
+  "wholeUnrelatedRowsMustBePreserved": true,
+  "cellAppends": [
+    {
+      "pairAbsentExpectedBefore": {
+        "legacyGoalId": "ni-chemistry-sekii-kc2022-q-ggw-2-kompetenz-006-2568194e",
+        "canonicalGoalId": "ac8b6c0f-98b2-5092-806d-d9498efbfa35"
+      },
+      "mappingToAppend": {
+        "legacyGoalId": "ni-chemistry-sekii-kc2022-q-ggw-2-kompetenz-006-2568194e",
+        "canonicalGoalId": "ac8b6c0f-98b2-5092-806d-d9498efbfa35",
+        "matchType": "partial"
+      },
+      "boundedAuthorWitness": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-author-20261018-v1/CANDIDATE.one-hundred-four-direct-partial-contributions.inactive.json",
+        "jsonPointer": "/mappings/26"
+      },
+      "existingAuthoritativeSourceDecisionsCAS": [
+        {
+          "jsonPointer": "/decisions/129",
+          "wholeDecision": {
+            "sourceGoalId": "ni-chemistry-sekii-kc2022-q-ggw-2-kompetenz-006-2568194e",
+            "topicCode": "Q-GGW-2",
+            "sourceSpan": "Kompetenz: recherchieren in unterschiedlichen Quellen und überprüfen deren Vertrauenswürdigkeit.",
+            "decision": "mapped",
+            "canonicalGoalIds": [
+              "b6327e98-8ab9-5d7f-b826-4023bc1a56a7"
+            ],
+            "rationale": "Das NI-Source-Ziel ist inhaltlich vollständig durch das zugeordnete kanonische Chemie-Ziel abgedeckt.",
+            "reviewedAt": "2026-05-11",
+            "reviewer": "codex"
+          },
+          "sha256": "96a58c91e8b46aade26b798c5b7362d929e159a2d8d3eab6da5d33ae5f280c59"
+        }
+      ],
+      "decisionIntegrationBoundary": "Following specific independent acceptance, merge this bounded partial target contribution into the current authoritative source decision without dropping other targets or promoting whole-source coverage. A prior whole-originalHOLD/REJECT is not automatically reversed. New operator cells require their own finite partial decision; old decision/whole-source history remains."
+    },
+    {
+      "pairAbsentExpectedBefore": {
+        "legacyGoalId": "ni-chemistry-sekii-kc2022-q-ggw-2-kompetenz-008-1723d6ea",
+        "canonicalGoalId": "36666b4a-97af-51fc-9983-56cdcc7a8229"
+      },
+      "mappingToAppend": {
+        "legacyGoalId": "ni-chemistry-sekii-kc2022-q-ggw-2-kompetenz-008-1723d6ea",
+        "canonicalGoalId": "36666b4a-97af-51fc-9983-56cdcc7a8229",
+        "matchType": "partial"
+      },
+      "boundedAuthorWitness": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-author-20261018-v1/CANDIDATE.one-hundred-four-direct-partial-contributions.inactive.json",
+        "jsonPointer": "/mappings/58"
+      },
+      "existingAuthoritativeSourceDecisionsCAS": [
+        {
+          "jsonPointer": "/decisions/131",
+          "wholeDecision": {
+            "sourceGoalId": "ni-chemistry-sekii-kc2022-q-ggw-2-kompetenz-008-1723d6ea",
+            "topicCode": "Q-GGW-2",
+            "sourceSpan": "Kompetenz: analysieren und beurteilen Inhalte unterschiedlicher Quellen.",
+            "decision": "mapped",
+            "canonicalGoalIds": [
+              "b6327e98-8ab9-5d7f-b826-4023bc1a56a7",
+              "1df17884-96ae-57d7-9da9-dbebd082596f"
+            ],
+            "rationale": "Das NI-Source-Ziel bündelt fachliche und/oder prozessbezogene Teilkompetenzen; die 1:n-Zuordnung deckt den Inhalt vollständig ab und beschreibt keine offene Lücke.",
+            "reviewedAt": "2026-05-11",
+            "reviewer": "codex"
+          },
+          "sha256": "e67e55d76f081f9f3f0432e63f01a936a314c740071514d6f33fc970a99f8890"
+        }
+      ],
+      "decisionIntegrationBoundary": "Following specific independent acceptance, merge this bounded partial target contribution into the current authoritative source decision without dropping other targets or promoting whole-source coverage. A prior whole-originalHOLD/REJECT is not automatically reversed. New operator cells require their own finite partial decision; old decision/whole-source history remains."
+    }
+  ],
+  "wholeFileReplacement": false,
+  "wholeSourceCredit": false
+}

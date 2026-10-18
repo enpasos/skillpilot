@@ -1,0 +1,54 @@
+{
+  "artifactRole": "ACTUAL_ORIGINAL_READONLY_SOURCE_CHECK_EXECUTION",
+  "scriptName": "test:source-extraction-inventory",
+  "command": [
+    "npm",
+    "--prefix",
+    "app",
+    "run",
+    "test:source-extraction-inventory"
+  ],
+  "commandText": "npm --prefix app run test:source-extraction-inventory",
+  "workingDirectory": "repository-root",
+  "packageScriptExact": "tsx scripts/testSourceExtractionInventory.ts",
+  "startUTC": "2026-10-18T04:01:19.597513+00:00",
+  "endUTC": "2026-10-18T04:01:20.783443+00:00",
+  "actualWallDurationNs": 1185913210,
+  "actualWallDurationSeconds": 1.18591321,
+  "exitCode": 0,
+  "processCompleted": true,
+  "packageAndEntryScriptBefore": [
+    {
+      "path": "app/package.json",
+      "sha256": "8f135f14a21f930ee69467bb111c11a5dc281a0140418255832ee44b8d0a8617",
+      "bytes": 29838
+    },
+    {
+      "path": "app/scripts/testSourceExtractionInventory.ts",
+      "sha256": "5d2874737b14c7fa3542f01b91ed2a52f66873f62af9fdf20febe5d8cd0201fa",
+      "bytes": 11056
+    }
+  ],
+  "packageAndEntryScriptAfter": [
+    {
+      "path": "app/package.json",
+      "sha256": "8f135f14a21f930ee69467bb111c11a5dc281a0140418255832ee44b8d0a8617",
+      "bytes": 29838
+    },
+    {
+      "path": "app/scripts/testSourceExtractionInventory.ts",
+      "sha256": "5d2874737b14c7fa3542f01b91ed2a52f66873f62af9fdf20febe5d8cd0201fa",
+      "bytes": 11056
+    }
+  ],
+  "packageAndEntryScriptUnchanged": true,
+  "rawCombinedStdoutStderr": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-frozen-three-source-readonly-checks-technical-20261018-v1/test-source-extraction-inventory.stdout-stderr.raw.txt",
+    "sha256": "3e010853b52c26add373bb1b1f85bc3740fa3c4f552e21f4758071d59c4c799e",
+    "bytes": 195
+  },
+  "scientificVotes": 0,
+  "normalDataWritesByThisWrapper": 0,
+  "buildOrCompilerOrOtherChecksInvokedByThisWrapper": 0,
+  "overallM7OrCIPassClaim": false
+}

@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-003-v1-resolution-5851b53a-162b-5c17-9269-510ee54ad846",
+  "goal": {
+    "goalId": "5851b53a-162b-5c17-9269-510ee54ad846",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:ebc73cd6625e4da997dff260d03f829199ffa5fcf355f8987af37ababb773106",
+    "pageFingerprint": "sha256:4078f9a77e447de79344fa747d503fe4aca4f88ee8c631641b9b9ba023fa7473",
+    "goalReviewContextFingerprint": "sha256:5fd27778cbc8a5f44751fe2df57142a8a5e05455ee0e1689b388644966170661",
+    "finalText": {
+      "titleDe": "Oxidationsprodukte von Alkanolen erklären",
+      "titleEn": "Explain oxidation products of alkanols",
+      "descriptionDe": "Die lernende Person kann die Bildung von Aldehyden, Ketonen und Carbonsäuren bei der Oxidation geeigneter Alkanole erklären.",
+      "descriptionEn": "The learner can explain the formation of aldehydes, ketones, and carboxylic acids during oxidation of suitable alkanols."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-003-v1-a",
+      "campaignDigest": "sha256:978c14bb7b4e20d9b0754b4b001198cb332f9b414d3303ca7642925c494ece2b",
+      "roundId": "chemie-final-current-context-d-003-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-003-v1-independent-a",
+      "reviewInputFingerprint": "sha256:a8b4e136dc9c2b252755278e60a7cde25130d629087d5e6df627ef8b0ebc209b",
+      "goalReviewContextFingerprint": "sha256:5fd27778cbc8a5f44751fe2df57142a8a5e05455ee0e1689b388644966170661",
+      "batchId": "chemie-final-current-context-d-003-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch003-20261018",
+      "runManifestDigest": "sha256:d37e25ac9a9c3eaebef1ba6de0c6086c093b182aa3633bc23d659c25aa6b81d5",
+      "resultsDigest": "sha256:cd44a305e9111a4d099f9ab35d3f7b4ca03c9a7206727ef3bec5bcfd6a791a42",
+      "recordId": "codex-reviewer-a-final163-batch003-20261018.001",
+      "recordDigest": "sha256:79eaccfd909ba5c798494970c01ab870b91bf8a0f52cd8e337da348976db8778"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-003-v1-b",
+      "campaignDigest": "sha256:b2cbbd77c71b72dac1c440f755a8450ab64df323a6a8eacf430f5e2505f92701",
+      "roundId": "chemie-final-current-context-d-003-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-003-v1-independent-b",
+      "reviewInputFingerprint": "sha256:a8b4e136dc9c2b252755278e60a7cde25130d629087d5e6df627ef8b0ebc209b",
+      "goalReviewContextFingerprint": "sha256:5fd27778cbc8a5f44751fe2df57142a8a5e05455ee0e1689b388644966170661",
+      "batchId": "chemie-final-current-context-d-003-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-003-20261018",
+      "runManifestDigest": "sha256:1c929404c03d8c96aa74393ad00405392ee0c3ea13c265367e3ff364cdfdf004",
+      "resultsDigest": "sha256:82383b90ab0c51800931b86885a526c7c9c4e558a108be4aa5b0ed88c0da33ac",
+      "recordId": "chemie-final163-native-b-003-20261018:5851b53a-162b-5c17-9269-510ee54ad846",
+      "recordDigest": "sha256:f3f4c7fb442ffcc9e79c409a5943f771f4b1b15e16b4c365c775d8cd7cd0c4bb"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:ee73048c0284447ea4c17aa5f99fbb11d7041a800acc788f8e7ae8f7a9a22dbd"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-003-20261018-v1",
+    "manifestDigest": "sha256:ce11bd03356fcf672eba95ffbb1028e40d727aec4fd4c79452167746266299a5",
+    "manifestFingerprint": "sha256:4feab5b00ce92e39b208e49a59ef02b9a0bd75db7be760eeedd1bcad82254b99",
+    "decisionId": "chemie-final163-paired-D-only-003-20261018-v1-decision-001"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-003-20261018-v1-decision-001",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:26:58.995Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch003-20261018.001): Der bilinguale Text begrenzt die Produkte auf geeignete Alkanole. Das ganze P macht Ausgangsklasse und Bedingungen sichtbar; Nachweisversuche bleiben dem Nachfolger zugeordnet. B (chemie-final163-native-b-003-20261018:5851b53a-162b-5c17-9269-510ee54ad846): Geeignete Alkanole und Bildung der drei Produktklassen sind klar begrenzt; P verbindet lokale Struktur und Oxidationstiefe statt eine pauschale Gleichzeitigkeit zu lehren. Praktische Nachweise bleiben ein Nachfolger.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch003-20261018.001; chemie-final163-native-b-003-20261018:5851b53a-162b-5c17-9269-510ee54ad846). Their current English understanding evidence is retained: A: Alkanol class and oxidation extent constrain carbonyl and carboxylic-acid products. B: Local alkanol structure determines aldehyde or ketone formation; further aldehyde oxidation depends on conditions. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Alkanolklasse und Oxidationstiefe begrenzen Carbonyl- und Carbonsäureprodukte.",
+      "essentialUnderstandingEn": "Alkanol class and oxidation extent constrain carbonyl and carboxylic-acid products.",
+      "observablePerformanceDe": "Zeichnet Ethanal/Ethansäure aus Ethanol und erklärt die Änderungen am OH-tragenden C.",
+      "observablePerformanceEn": "Draws ethanal/ethanoic acid from ethanol and explains changes at the OH-bearing carbon.",
+      "transferExpectationDe": "Begründet Propanon aus Propan-2-ol und das Fehlen analoger milder Weiteroxidation bei erhaltenem C-Gerüst.",
+      "transferExpectationEn": "Justifies propanone from propan-2-ol and the absence of analogous mild further oxidation with the carbon skeleton retained."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-6c037c800e2236b9afd8bf66759a67ec4bf1f82b0234ffa5c554e1b2d348fc57",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:708faf041a437a9feb59d1f309b46aec6b836299ac5a10b74260baa4a6d976c2"
+}

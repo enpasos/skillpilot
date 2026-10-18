@@ -1,0 +1,115 @@
+{
+  "role": "INDEPENDENT_INFORMED_FIRST_MACHINE_CONTENT_AND_TWO_EXPLICIT_CONTAINS_RELATIONS",
+  "createdAtUTC": "2026-10-18T04:40:59.966816+00:00",
+  "reviewerId": "/root/chemie450_caption1_native_fresh_a",
+  "modelRevision": "unknown; not exposed",
+  "currentOtherReviewerVotesRead": false,
+  "ownCurrentPaperOrPlacementAuthorship": false,
+  "priorOwnSourceAuthorAndTechnicalIntegrationRolesDisclosed": true,
+  "canonical": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "sha256": "d09c746ec9393078736dcf9aabac0a0b3a22dc8756a8356c8cedb2f6d6cf866c",
+    "bytes": 3398981
+  },
+  "records": [
+    {
+      "goalId": "c5394fb8-9411-5533-b2af-831c4c67b4be",
+      "wholeCurrentObjectSHA256": "5b6512cb847a2739f9cf758543c8a27673c33fb2bf0cde6786cf549404fd3d7a",
+      "contentDecision": "KEEP",
+      "boundedCanonicalContainsDecision": "APPROVE_EXACT_TWO_CONTAINS_PROPOSAL_ONLY",
+      "wholeViewRouteDecision": "NOT_APPROVED_SEPARATE_ANNOUNCED_VIEW_INTEGRATION_REQUIRED",
+      "requires": [
+        "f9e6d689-6e59-59a4-9f21-8c2d44413244"
+      ],
+      "coveredGoalIds": [
+        "f9e6d689-6e59-59a4-9f21-8c2d44413244"
+      ],
+      "scoring": {
+        "maxPoints": 6,
+        "passingPoints": 6,
+        "steps": [
+          {
+            "id": "e1",
+            "points": 2,
+            "description": "2 Punkte: Erklärt für P und Q unterschiedliche enthaltene Stoffe und daraus die in U möglichen Freisetzungsfolgen; K begrenzt diese. 1 Punkt: Begründet die Freisetzungsfolge nur für P oder nur für Q. 0 Punkte: Nennt nur Batterietypen oder setzt beide Stoffzusammensetzungen gleich."
+          },
+          {
+            "id": "e2",
+            "points": 2,
+            "description": "2 Punkte: Trennt Erfassung von Rückgewinnung; erklärt Rohstoffnutzen aus 60/90 % und verbleibende Energie-/Reststofffolgen. 1 Punkt: Erklärt Rückgewinnungsnutzen, lässt aber Sammlung/Rückgewinnung oder verbleibende Folgen ungetrennt. 0 Punkte: Setzt Erfassung mit vollständiger Rückgewinnung oder Recycling mit Nullverbrauch gleich."
+          },
+          {
+            "id": "e3",
+            "points": 2,
+            "description": "2 Punkte: Begründet K gegenüber U und überträgt auf K*: vollständige Metallrückgewinnung entfernt nicht Energie-/Elektrolytfolgen. 1 Punkt: Beurteilt K begründet, beantwortet K* jedoch ohne die verbliebenen Folgen. 0 Punkte: Behauptet Umweltneutralität oder bevorzugt U ohne Bezug zu den Daten."
+          }
+        ]
+      },
+      "completeDEENRead": true,
+      "reasoning": [
+        "The whole DE/EN supplied paper, answers and German runtime scoring correspond exactly to the selected existing P-case1, including the new K-star condition. The English case rubric was read for language parity; no unprovided English runtime rubric is claimed.",
+        "Both a nonrechargeable zinc/manganese battery with alkaline electrolyte and a lead accumulator are actually analysed. Substance-specific environmental release consequences, controlled collection versus material recovery, remaining energy/residue burdens and a conditional disposal/recycling judgement are elicited.",
+        "The 60/90 percent return model leaves40/10 percent metal unreturned, respectively. Full Q metal return in K-star leaves positive energy and electrolyte-treatment consequences; metal return does not imply zero total effects. No real recovery plant or practical handling is asserted.",
+        "All e1/e2/e3 essential criteria have explicit2/1/0 levels;6/6 requires all three complete contributions including fresh K-star transfer. No equation, own experiment or independent search is silently required."
+      ],
+      "PBoundary": "Existing complete P is retained, not newly approved. One assessed written case and its changed condition can elicit the endpoint demand; passing this endpoint does not automatically set ordinary-goal mastery or claim all P demonstrations/execution.",
+      "placementBoundary": "Current parent jurisdiction labels do not themselves establish HH/MV projection. The announced eight-view successor has not been read or approved here. Actual applicable HB/HH/MV target projection remains a separate required integration check; no scope deletion or false route PASS."
+    },
+    {
+      "goalId": "4238e88b-7d6c-5eef-b94f-d6d87659649e",
+      "wholeCurrentObjectSHA256": "54797486a77e148aa3fa9fc2658b0b91ac5ac9544e4046d81e3ae0cb1a4094e7",
+      "contentDecision": "KEEP",
+      "boundedCanonicalContainsDecision": "APPROVE_EXACT_TWO_CONTAINS_PROPOSAL_ONLY",
+      "wholeViewRouteDecision": "NOT_APPROVED_SEPARATE_ANNOUNCED_VIEW_INTEGRATION_REQUIRED",
+      "requires": [
+        "f54b2c33-11f1-571f-aa1c-cf969cc141c4"
+      ],
+      "coveredGoalIds": [
+        "f54b2c33-11f1-571f-aa1c-cf969cc141c4"
+      ],
+      "scoring": {
+        "maxPoints": 6,
+        "passingPoints": 6,
+        "steps": [
+          {
+            "id": "e1",
+            "points": 2,
+            "description": "2 Punkte: Verbindet Gewinnung von M mit dem Elektrodenrohstoffbedarf und unterscheidet seltenes Metall von unbelegter Seltenerdklassifikation. 1 Punkt: Nennt den Bedarf, lässt die Klassifikationsgrenze jedoch offen. 0 Punkte: Setzt seltene Metalle pauschal mit Seltenerdmetallen gleich oder verliert den Spannungsquellenkontext."
+          },
+          {
+            "id": "e2",
+            "points": 2,
+            "description": "2 Punkte: Erklärt qualitativ den höheren Erzmaterialbedarf von B und die unterschiedlichen M-haltigen Wasser-/Reststofffolgen. 1 Punkt: Erklärt nur Erzgehalt oder nur Freisetzung. 0 Punkte: Behauptet bei gleichem Ertrag weniger Erzbedarf für B oder ignoriert die stofflichen Freisetzungsdaten."
+          },
+          {
+            "id": "e3",
+            "points": 2,
+            "description": "2 Punkte: Überträgt auf verbessertem B: Wasserfolge geändert, Erzbedarf bleibt; Fazit begrenzt durch fehlende Energie-/Transportangaben. 1 Punkt: Erkennt Wasserverbesserung, nennt aber keine verbliebene Folge oder Grenze. 0 Punkte: Leitet aus Wasserbehandlung die Gleichheit sämtlicher Gewinnungsfolgen ab."
+          }
+        ]
+      },
+      "completeDEENRead": true,
+      "reasoning": [
+        "The whole DE/EN paper and answers and German runtime rubric are exactly the existing selected P-case1. Rare metal is explicitly distinguished from rare-earth classification. The given model does not purport to identify a real mine or an unknown real substance hazard.",
+        "Equal1kg usable output, quality and extraction yield mean the0.05 percent ore option needs ten times the ore mass of0.5 percent: mA=1/(0.005 eta),mB=1/(0.0005 eta). No absolute ore mass is claimed without the unspecified common eta. Qualitative reasoning suffices in the exam.",
+        "The changed B controls the specified soluble associated-substance release as effectively as A but retains its lower ore grade/material burden. Missing energy and excluded transport prevent an overall environmental ranking. Neither a mining/metallurgical mechanism nor actual quantitative field data is invented.",
+        "The6/6 threshold is the conjunction of three2-point essential criteria, including transfer after changed water management and conditional limits. The problem does not demand an unprovided numerical life-cycle analysis."
+      ],
+      "PBoundary": "Existing complete P is retained, not newly approved. One assessed written case and its changed condition can elicit the endpoint demand; passing this endpoint does not automatically set ordinary-goal mastery or claim all P demonstrations/execution.",
+      "placementBoundary": "Current parent jurisdiction labels do not themselves establish HH/MV projection. The announced eight-view successor has not been read or approved here. Actual applicable HB/HH/MV target projection remains a separate required integration check; no scope deletion or false route PASS."
+    }
+  ],
+  "summary": {
+    "contentKEEP": 2,
+    "exactCanonicalContainsRelationsApproved": 2,
+    "viewCandidatesRead": 0,
+    "wholeRouteRelease": false
+  },
+  "normalWrites": 0,
+  "HumanApproval": false,
+  "HumanTrial": false,
+  "actualLearnerExecution": false,
+  "localSafetyRelease": false,
+  "noNewDPAMVVotes": true,
+  "noReleasedStatusFlip": true
+}

@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-001-v1-resolution-64b03eff-a967-54a1-ace3-89cb7650a65c",
+  "goal": {
+    "goalId": "64b03eff-a967-54a1-ace3-89cb7650a65c",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:23107fd252d6de260d1442743fd7c0634a63900dfaa6b8c4cc390cd552c383aa",
+    "pageFingerprint": "sha256:3328c659b45641c9bad35babf9264752dedf25552ad9740516f350b19bcf442b",
+    "goalReviewContextFingerprint": "sha256:36bbc22fd52265e0378c8f4f9bcc7be2751e11a43210443655ee70c90328eab2",
+    "finalText": {
+      "titleDe": "Substituenteneffekte in Farbstoff-Molekülen erklären",
+      "titleEn": "Explain substituent effects in dye molecules",
+      "descriptionDe": "Die lernende Person kann das Donator-Akzeptor-Konzept auf Farbstoff-Moleküle anwenden und den Einfluss funktioneller Gruppen auf die Farbigkeit der zugehörigen Stoffe erklären.",
+      "descriptionEn": "The learner can apply the donor-acceptor concept to dye molecules and explain how functional groups influence the color of the corresponding substances."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-001-v1-a",
+      "campaignDigest": "sha256:2941c1725b1002f885179bd598d21477e2ec26ea0c4b3f537ed35ac4384708a5",
+      "roundId": "chemie-final-current-context-d-001-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-001-v1-independent-a",
+      "reviewInputFingerprint": "sha256:f2836279f774b6d7ac0de6b0b52ca04aa45a51082c66f68073c387718689cecc",
+      "goalReviewContextFingerprint": "sha256:36bbc22fd52265e0378c8f4f9bcc7be2751e11a43210443655ee70c90328eab2",
+      "batchId": "chemie-final-current-context-d-001-v1-first-pass-a.batch-001",
+      "runId": "chemie-final-current450-native-independent-a-20261018-v1",
+      "runManifestDigest": "sha256:74c6a5f9c09fab256af6793d8b41e94c2764b98c64888722e30086ac7631e051",
+      "resultsDigest": "sha256:9c464209ee987e285e1a495bd9c982ebe188ffbf4a8e7ee11ac3844c02004b6e",
+      "recordId": "chemie-final-current450-native-independent-a-20261018-v1.004",
+      "recordDigest": "sha256:b97fa6ca798c0d7ce20e2a32f78da06ce3481cdf4212d9cb626e2fc2e85675e8"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-001-v1-b",
+      "campaignDigest": "sha256:ce4acdbee47ead3e24417caf6afab15e4576132d2af112ea6be9c644b33e4ea9",
+      "roundId": "chemie-final-current-context-d-001-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-001-v1-independent-b",
+      "reviewInputFingerprint": "sha256:f2836279f774b6d7ac0de6b0b52ca04aa45a51082c66f68073c387718689cecc",
+      "goalReviewContextFingerprint": "sha256:36bbc22fd52265e0378c8f4f9bcc7be2751e11a43210443655ee70c90328eab2",
+      "batchId": "chemie-final-current-context-d-001-v1-first-pass-b.batch-001",
+      "runId": "chemie-final-current-context-d-001-v1-stock-blind-b-run-001",
+      "runManifestDigest": "sha256:85984d5dec20852b6abd538a32678b7cd6960df44ed1b7d4da7a5afefd4a2ee4",
+      "resultsDigest": "sha256:68ce0d6885a7dc7291a15888aeb39083cc02c749eebe878a965cd4475f572d53",
+      "recordId": "chemie-final-current-context-d-001-v1-stock-blind-b-run-001.record-004",
+      "recordDigest": "sha256:3304c2f49bb01f5f48328df64582cd89c7d57c0a53841fcce4e7d54871127294"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:652c434974f81d112fcc8c780d6059874a6bae0715237d56f2b6d933f7fbb582"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final450-ten-actual-independent-pair-root-synthesis-20261018-v1",
+    "manifestDigest": "sha256:94c085048c8db126808865fc90c27cafa25458fa0be9b22697038041b33cb724",
+    "manifestFingerprint": "sha256:99377833b072f6e4ebe674fccfc5a9d89d68f603ad63442f96ebc1e55cd15b76",
+    "decisionId": "chemie-final450-ten-actual-independent-pair-root-synthesis-20261018-v1-decision-004"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final450-ten-actual-independent-pair-root-synthesis-20261018-v1-decision-004",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex maintainer; actual sealed independent A/B pair; machine review only",
+    "synthesizedAt": "2026-10-18T00:29:37.283Z",
+    "rationaleDe": "A trennt Absorptionsverschiebung und wahrgenommene Farbe und begrenzt historische HB-Begriffe auf den gegebenen Kontext. B bestätigt Kopplungsbruch und fehlende universelle Gruppenregel. Der gesonderte Bildbefund bleibt offen; dieses D-KEEP ist keine V-Freigabe.",
+    "rationaleEn": "A distinguishes absorption shift from perceived colour and bounds historical HB terms to the supplied context. B confirms coupling interruption and no universal substituent rule. The separate visual finding remains open; this D keep grants no V approval.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Donor- und Akzeptorgruppen verändern elektronische Übergänge nur in ihrer konkreten Kopplung an das π-System. Ein Amin-Elektronenpaar kann mesomer koppeln; Protonierung oder eine sp3-Unterbrechung verändert diese Kopplung. Die Verschiebung einer Absorptionsbande ist von der wahrgenommenen Farbe zu unterscheiden.",
+      "essentialUnderstandingEn": "Donor and acceptor groups alter electronic transitions through their specific coupling to the pi system. An amine lone pair can couple by resonance; protonation or an sp3 interruption changes that coupling. A shift in an absorption band must be distinguished from perceived colour.",
+      "observablePerformanceDe": "Die Person lokalisiert Donor, Akzeptor und gekoppelten Chromophor im vorgegebenen Modell, erklärt die angegebenen Protonierungs- und Spektrenänderungen und verbindet kürzere Wellenlänge mit größerer Übergangsenergie. Im ausdrücklich abgegrenzten HB-4.2-Kontext verwendet sie Auxochrom und Antiauxochrom als historische Rollen, ohne universelle disjunkte Stoffklassen zu erfinden.",
+      "observablePerformanceEn": "The learner locates donor, acceptor and coupled chromophore in the supplied model, explains its stated protonation and spectral changes and connects shorter wavelength with higher transition energy. Within the explicitly bounded HB 4.2 context they use auxochrome and antiauxochrome as historical roles without inventing universal disjoint substance classes.",
+      "transferExpectationDe": "Wird in einem frischen Modell die Vinylbrücke durch CH2–CH2 ersetzt, begründet sie den Abbruch der durchgehenden π-Kopplung und prüft eine gegebene UV-Bande neu; gleiche Endgruppen garantieren weder dieselbe Fernwirkung noch sichtbare Farbigkeit oder eine exakte Wahrnehmungsfarbe.",
+      "transferExpectationEn": "If a fresh model replaces the vinyl bridge with CH2–CH2, the learner explains the interruption of continuous pi coupling and reassesses a supplied UV band; identical end groups guarantee neither the same long-range effect nor visible colour or an exact perceived hue."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-6e094b4004430219876a3bf3fb9ea146ba3aa1378c662913582d6524f25b6120",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:10254c4dfcfdf1a574f864fb55815de4549fae51c078f5d60c0318323eca87b5"
+}

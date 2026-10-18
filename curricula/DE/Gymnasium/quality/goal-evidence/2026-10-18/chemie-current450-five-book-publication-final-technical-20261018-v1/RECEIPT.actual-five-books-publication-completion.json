@@ -1,0 +1,135 @@
+{
+  "artifactRole": "ACTUAL_LOCAL_ORIGINAL_PUBLICATION_FAMILY_EXECUTION",
+  "atUTC": "2026-10-18T04:19:06.588616+00:00",
+  "executor": "/root/chemie450_caption1_native_fresh_b",
+  "tool": "OpenAI Codex",
+  "modelRevision": null,
+  "status": "ALL_THREE_ORIGINAL_COMMANDS_EXIT_ZERO",
+  "commands": [
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "build:goal-books"
+      ],
+      "scriptName": "build:goal-books",
+      "packageScriptExact": "tsx scripts/buildGoalBookPublications.ts",
+      "exitCode": 0,
+      "startUTC": "2026-10-18T04:12:00.063056+00:00",
+      "endUTC": "2026-10-18T04:16:30.163966+00:00",
+      "actualWallDurationNs": 270100862505,
+      "actualWallDurationSeconds": 270.100862505,
+      "rawLog": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-five-book-publication-final-technical-20261018-v1/build-goal-books.stdout-stderr.raw.txt",
+        "sha256": "634a3b841168a7640a30dca17aaa0ad5f8478cd763b8d8d8524de157d9e62722",
+        "bytes": 1007
+      }
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:goal-book-publication"
+      ],
+      "scriptName": "check:goal-book-publication",
+      "packageScriptExact": "tsx scripts/checkGoalBookPublication.ts",
+      "exitCode": 0,
+      "startUTC": "2026-10-18T04:16:32.518994+00:00",
+      "endUTC": "2026-10-18T04:18:00.557410+00:00",
+      "actualWallDurationNs": 88038367793,
+      "actualWallDurationSeconds": 88.038367793,
+      "rawLog": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-five-book-publication-final-technical-20261018-v1/check-goal-book-publication.stdout-stderr.raw.txt",
+        "sha256": "f0bc98b090f8a3b5f33baa7d57a3047537fac4e08e9efcaf5d8daef2ec552689",
+        "bytes": 811
+      }
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "test:goal-book-original-sources"
+      ],
+      "scriptName": "test:goal-book-original-sources",
+      "packageScriptExact": "tsx scripts/testGoalBookOriginalSources.ts && tsx src/utils/goalBookOriginalSources.test.ts",
+      "exitCode": 0,
+      "startUTC": "2026-10-18T04:18:05.117371+00:00",
+      "endUTC": "2026-10-18T04:18:10.995404+00:00",
+      "actualWallDurationNs": 5878009079,
+      "actualWallDurationSeconds": 5.878009079,
+      "rawLog": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-five-book-publication-final-technical-20261018-v1/test-goal-book-original-sources.stdout-stderr.raw.txt",
+        "sha256": "3723d4aad61c38ed59627cc9f643a64319d88f3081b90dcb8b5cd399ca04ead6",
+        "bytes": 548
+      }
+    }
+  ],
+  "executionRecordPins": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-five-book-publication-final-technical-20261018-v1/RUN.build-goal-books.json",
+      "sha256": "babb6d10443180bfb8d8b2c24d7d6f7f027cec9a1d72833ac9b854f54e870571",
+      "bytes": 1741
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-five-book-publication-final-technical-20261018-v1/RUN.check-goal-book-publication.json",
+      "sha256": "d46819fb2765fad8343c6f9bbfb1a34483277f3e64335f8533098c6880bef032",
+      "bytes": 1779
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-five-book-publication-final-technical-20261018-v1/RUN.test-goal-book-original-sources.json",
+      "sha256": "a477a9828ab36e25ee800885a7689c47034df6731cac4a553a267f1d45a5a737",
+      "bytes": 2211
+    }
+  ],
+  "actualOutputObservation": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-five-book-publication-final-technical-20261018-v1/OBSERVATION.actual-five-book-output-manifest-pins.json",
+    "sha256": "03f44349483b235026529eb5c2df28961af670b9240bc9ec77a3210e1c6612af",
+    "bytes": 7435
+  },
+  "actualChemistryPaginationAndOriginalSources": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-five-book-publication-final-technical-20261018-v1/OBSERVATION.actual-chemistry-410-pagination-and-source-bindings.json",
+    "sha256": "7d2f37a46a1ad6183feb863104ed8733c57d7169de54d8931c3424729d717bef",
+    "bytes": 373931
+  },
+  "actualBooks": 5,
+  "actualNewlyRenderedBooks": [
+    "de-gym-chemie-bundesweit"
+  ],
+  "actualReusedBooks": [
+    "de-gym-mathematik-bundesweit",
+    "de-gym-physik-bundesweit",
+    "de-gym-biologie-bundesweit",
+    "de-gym-wirtschaftswissenschaften-bundesweit"
+  ],
+  "fourReusedBooksAllFourArtifactBytesUnchanged": true,
+  "chemistry": {
+    "uniqueGoalPages": 410,
+    "frontMatterPages": 5,
+    "physicalPages": 415,
+    "sourceDocuments": 30,
+    "sourceEvidenceEntries": 10887,
+    "actualSourceScopeRows": 7397,
+    "scopeRowsWithoutEvidence": 0,
+    "goalsWithoutAnyEvidence": [],
+    "sourceEvidenceObservationNotWholeOfficialCoverage": true
+  },
+  "originalPackageAndEntryScriptsUnchanged": true,
+  "extraArguments": [],
+  "forceBuilds": 0,
+  "subjectFilters": 0,
+  "stockSymlinkErrors": [],
+  "ownPackageSymlinks": 0,
+  "generatedOutputBytesCopiedIntoTechnicalPackage": 0,
+  "sourceCanonicalProfileViewCentralNormalIndexEditsByTask": 0,
+  "newScientificOrNativeVotes": 0,
+  "externalPublishDeployStageCommitCIRuns": 0,
+  "overallM7OrCIPassClaim": false,
+  "humanApprovalOrLearnerExecutionClaim": false,
+  "parallelRootStandardRunNotClaimed": true
+}

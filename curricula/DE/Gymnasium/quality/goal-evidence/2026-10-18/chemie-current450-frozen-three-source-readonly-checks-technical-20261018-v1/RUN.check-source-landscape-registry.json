@@ -1,0 +1,54 @@
+{
+  "artifactRole": "ACTUAL_ORIGINAL_READONLY_SOURCE_CHECK_EXECUTION",
+  "scriptName": "check:source-landscape-registry",
+  "command": [
+    "npm",
+    "--prefix",
+    "app",
+    "run",
+    "check:source-landscape-registry"
+  ],
+  "commandText": "npm --prefix app run check:source-landscape-registry",
+  "workingDirectory": "repository-root",
+  "packageScriptExact": "tsx scripts/checkSourceLandscapeRegistry.ts",
+  "startUTC": "2026-10-18T04:01:19.595355+00:00",
+  "endUTC": "2026-10-18T04:01:20.149359+00:00",
+  "actualWallDurationNs": 553971989,
+  "actualWallDurationSeconds": 0.553971989,
+  "exitCode": 0,
+  "processCompleted": true,
+  "packageAndEntryScriptBefore": [
+    {
+      "path": "app/package.json",
+      "sha256": "8f135f14a21f930ee69467bb111c11a5dc281a0140418255832ee44b8d0a8617",
+      "bytes": 29838
+    },
+    {
+      "path": "app/scripts/checkSourceLandscapeRegistry.ts",
+      "sha256": "b78b14a65d31202431fffd96a01ef515a436f946a45da56676876659d0b6c4c0",
+      "bytes": 5649
+    }
+  ],
+  "packageAndEntryScriptAfter": [
+    {
+      "path": "app/package.json",
+      "sha256": "8f135f14a21f930ee69467bb111c11a5dc281a0140418255832ee44b8d0a8617",
+      "bytes": 29838
+    },
+    {
+      "path": "app/scripts/checkSourceLandscapeRegistry.ts",
+      "sha256": "b78b14a65d31202431fffd96a01ef515a436f946a45da56676876659d0b6c4c0",
+      "bytes": 5649
+    }
+  ],
+  "packageAndEntryScriptUnchanged": true,
+  "rawCombinedStdoutStderr": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-frozen-three-source-readonly-checks-technical-20261018-v1/check-source-landscape-registry.stdout-stderr.raw.txt",
+    "sha256": "9f4a9ce2fc283b40c2c04ac14af9fb64db7893d7695fc82afe1488c7ebb17653",
+    "bytes": 162
+  },
+  "scientificVotes": 0,
+  "normalDataWritesByThisWrapper": 0,
+  "buildOrCompilerOrOtherChecksInvokedByThisWrapper": 0,
+  "overallM7OrCIPassClaim": false
+}

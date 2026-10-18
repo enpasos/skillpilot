@@ -1,0 +1,193 @@
+{
+  "artifactRole": "ACTUAL_ORIGINAL_STOCK_SOURCE_AUDIT_FAMILY_EXECUTION_TECHNICAL_ONLY",
+  "createdAtUTC": "2026-10-18T04:13:25.441069+00:00",
+  "actualOriginalScope": {
+    "landscapeIds": [
+      "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+      "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a"
+    ],
+    "subjects": [
+      "Mathematik",
+      "Physik"
+    ],
+    "ChemistryCQR003004Replacement": false,
+    "otherFourSubjectsReviewedAnew": false
+  },
+  "input": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-stock-source-audit-family-technical-20261018-v1/INPUT.actual-original-scripts-and-protected-current-bindings.json",
+    "sha256": "81de48136773e39f7399544027410f65590f3b792b66fc70ddfc191baac2e4fc",
+    "bytes": 3505
+  },
+  "execution": [
+    {
+      "command": "npm --prefix app run quality:source-coverage-audit",
+      "actualInvocationCount": 1,
+      "toolSessionId": 37568,
+      "exitCode": 0,
+      "log": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-stock-source-audit-family-technical-20261018-v1/LOG.actual-quality-source-coverage-audit.txt",
+        "sha256": "de62e59a2aa6c45f7f0fc8a1c796bb256f47014a403400993fcddaf2c123bd72",
+        "bytes": 296
+      }
+    },
+    {
+      "command": "npm --prefix app run quality:source-coverage-audit:check",
+      "actualInvocationCount": 1,
+      "toolSessionId": 93869,
+      "exitCode": 0,
+      "log": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-stock-source-audit-family-technical-20261018-v1/LOG.actual-quality-source-coverage-audit-check.txt",
+        "sha256": "c3ae20a56be8a2d7bf5f6978214756bfa482fd18ed018baeaae121e9925c87c0",
+        "bytes": 2291
+      },
+      "unchangedOriginalRegressionFixture": {
+        "tests": 9,
+        "pass": 9,
+        "fail": 0
+      },
+      "originalAuditCheck": "PASS"
+    }
+  ],
+  "reports": [
+    {
+      "path": "docs/qa-ci/status/curriculum-source-coverage-audit.json",
+      "before": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-stock-source-audit-family-technical-20261018-v1/before/docs/qa-ci/status/curriculum-source-coverage-audit.json",
+        "sha256": "0b8b412ecfa54bfc096c148bfaab5acac08082cffaf621f2780895689756db53",
+        "bytes": 213066
+      },
+      "after": {
+        "path": "docs/qa-ci/status/curriculum-source-coverage-audit.json",
+        "sha256": "29ef73559eeea8a1dd5c2adede31fb6d6bdf72ec3a1bf7ae64619cf9ecba3766",
+        "bytes": 213066
+      },
+      "wholeBytesEqual": false,
+      "exactOnlyChange": "Original generator timestamp from 2026-10-18T00:24:04.956Z to 2026-10-18T04:12:21.761Z"
+    },
+    {
+      "path": "docs/qa-ci/status/curriculum-source-coverage-audit.md",
+      "before": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-stock-source-audit-family-technical-20261018-v1/before/docs/qa-ci/status/curriculum-source-coverage-audit.md",
+        "sha256": "b54d72cfc44efd69bd80ca9f9cd41b3a75663d327cef39b790f6d4fea3e62881",
+        "bytes": 5838
+      },
+      "after": {
+        "path": "docs/qa-ci/status/curriculum-source-coverage-audit.md",
+        "sha256": "786322ee5b79ad355215ac39a0411a6258f486ba5c5a0f7079a1315a047f86de",
+        "bytes": 5838
+      },
+      "wholeBytesEqual": false,
+      "exactOnlyChange": "Original generator timestamp from 2026-10-18T00:24:04.956Z to 2026-10-18T04:12:21.761Z"
+    }
+  ],
+  "allSubstantiveAuditDataExactlyEqualBeforeAfter": true,
+  "allOtherTextBytesExactlyEqualAfterTimestampSubstitution": true,
+  "noHashBaselineCaptureOrExpectedValueUpdate": true,
+  "currentOriginalReportSummaries": [
+    {
+      "title": "Mathematik (Gymnasium, DE)",
+      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+      "totalAtomicGoals": 807,
+      "summary": {
+        "jurisdictions": 16,
+        "coveredJurisdictions": 0,
+        "partialJurisdictions": 16,
+        "errorJurisdictions": 0,
+        "coveredViews": 16,
+        "partialViews": 0,
+        "errorViews": 0,
+        "unsupportedVisibleAtomicGoals": 0,
+        "nonVisibleMissingSourceBackedAtomicGoals": 610
+      }
+    },
+    {
+      "title": "Physik (Gymnasium, DE)",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "totalAtomicGoals": 478,
+      "summary": {
+        "jurisdictions": 16,
+        "coveredJurisdictions": 0,
+        "partialJurisdictions": 16,
+        "errorJurisdictions": 0,
+        "coveredViews": 16,
+        "partialViews": 0,
+        "errorViews": 0,
+        "unsupportedVisibleAtomicGoals": 0,
+        "nonVisibleMissingSourceBackedAtomicGoals": 489
+      }
+    }
+  ],
+  "originalCodeAndProtectedInputsExactlyEqual": [
+    {
+      "path": "app/package.json",
+      "sha256": "8f135f14a21f930ee69467bb111c11a5dc281a0140418255832ee44b8d0a8617",
+      "bytes": 29838
+    },
+    {
+      "path": "app/scripts/generateCurriculumSourceCoverageAudit.ts",
+      "sha256": "c56e0522432213f666d785b16655057ff4d4cf3cc491346fd6bf2f39219f62c2",
+      "bytes": 21456
+    },
+    {
+      "path": "app/scripts/sourceCoverageAndApplicabilityRegression.test.ts",
+      "sha256": "3acb7a4eaef3713d051900f5ab2db95c1139dd8913b062d836dd27af07ca994d",
+      "bytes": 15514
+    },
+    {
+      "path": "app/scripts/sourceCoverageEvidence.ts",
+      "sha256": "1caf8a1db812aef91360f6aaffc38aab6cdd39649502ee3e5690bd18f9f28f4d",
+      "bytes": 3504
+    },
+    {
+      "path": "app/scripts/applicabilityCompiler.ts",
+      "sha256": "50f4a09007cece8119c53f665b6442e028e4ffb3910fda7b377e60f8cb6c81dd",
+      "bytes": 56784
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "sha256": "d09c746ec9393078736dcf9aabac0a0b3a22dc8756a8356c8cedb2f6d6cf866c",
+      "bytes": 3398981
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-book-publication/chemie.semantic-kinds.json",
+      "sha256": "b86aab9b396196a0441cf604275a1024b4b71e807eb97f622caf88803b3c5c2e",
+      "bytes": 212019
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "sha256": "6ee503fa9cb4d6b0ff9de9e864d830d04f6a7f2a26018b6729a65a9c8a6286e5",
+      "bytes": 679807
+    },
+    {
+      "path": "app/scripts/config/goal-books/de-gym-chemistry-national-atlas.inputs.json",
+      "sha256": "89729c9bef953287df8d0b7d039e64c22a2a3a9d0f580e0b1f2fae42239b994b",
+      "bytes": 16529
+    },
+    {
+      "path": "app/scripts/config/goal-books/de-gym-chemistry-national-atlas.sources.json",
+      "sha256": "14155d65d6c96a491ead24792149f2691b16197ae6014aaa6c1c84fd1aacc86c",
+      "bytes": 7320
+    },
+    {
+      "path": "app/scripts/config/goal-books/navigation/de-gym-chemistry-national-atlas.view.json",
+      "sha256": "ac23433bf16a66504590bf09c5e8139ddba506492e97a6e3626f7f375559b8df",
+      "bytes": 78378
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/source-projection.receipt.json",
+      "sha256": "6041fd3cacc7fdd1f44a587693712b6ca4359239a0642abef37a73aad71839c9",
+      "bytes": 7210866
+    }
+  ],
+  "writes": {
+    "normalCanonicalPViewCentralSourceAtlasFiles": 0,
+    "normalAuditReportsRegenerated": 2
+  },
+  "scienceBoundary": [
+    "This original general audit selects Mathematics and Physics only. It is not the Chemistry CQR003/004 gate and is not a new review of the protected four subjects.",
+    "No new source review, D/P/A/M/V vote, whole official-source completion, CI result, machine M7 result, Human Approval or Human Trial is claimed.",
+    "Covered views and zero unsupported visible goals are the original auditor result. Its unchanged partial jurisdiction/full-content values remain visible.",
+    "No further generators or tests started after the two requested commands; Root coordinates final documents/schema/central checks."
+  ],
+  "commitStagePush": false
+}

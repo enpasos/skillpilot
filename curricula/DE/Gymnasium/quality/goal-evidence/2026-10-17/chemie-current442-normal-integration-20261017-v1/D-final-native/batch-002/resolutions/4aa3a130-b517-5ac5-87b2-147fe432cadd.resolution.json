@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-002-v1-resolution-4aa3a130-b517-5ac5-87b2-147fe432cadd",
+  "goal": {
+    "goalId": "4aa3a130-b517-5ac5-87b2-147fe432cadd",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:e66d637f6a24d6598da4d720f9f9cd4308c43541fb974bc6a72d856c6c04acdd",
+    "pageFingerprint": "sha256:bf898326691fea0ddc5a7236a83a929a66e0814a5ca93f904618db397e36072a",
+    "goalReviewContextFingerprint": "sha256:87d22b469e37eca72b906de4f974f3ccedb08fa335a67e51e544c92d1d8c39e8",
+    "finalText": {
+      "titleDe": "Die Aussagekraft chemischer Daten beurteilen",
+      "titleEn": "Assess the evidential value of chemical data",
+      "descriptionDe": "Die lernende Person kann die Angemessenheit, Gültigkeit und Tragweite erhobener oder recherchierter chemischer Daten beurteilen, mögliche Mess- und Verfahrensfehler anhand der Untersuchungsbedingungen begründen und erklären, welche Schlussfolgerungen die Daten tragen und welche nicht.",
+      "descriptionEn": "The learner can assess the suitability, validity, and reach of experimental or researched chemical data, justify possible measurement and procedural errors using the investigation conditions, and explain which conclusions the data support and which they do not."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-002-v1-a",
+      "campaignDigest": "sha256:b715fd8a726cbbb7aaa20c5ec2078404f295bc90d3f8bc2a5d9f561cd958d38e",
+      "roundId": "chemie-final-current-context-d-002-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-002-v1-independent-a",
+      "reviewInputFingerprint": "sha256:d831530f4fe9ba4c7701b62a5c1bcea6bdf04d0ee9729de34f23dbad666c8a9f",
+      "goalReviewContextFingerprint": "sha256:87d22b469e37eca72b906de4f974f3ccedb08fa335a67e51e544c92d1d8c39e8",
+      "batchId": "chemie-final-current-context-d-002-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch002-20261018",
+      "runManifestDigest": "sha256:6ca66c1115aa27b4d2c73625e937471778c2db2938916b49f6ccc95a7860873d",
+      "resultsDigest": "sha256:ef5c73b963b42df01542d403d612c96c262c8a902a63b3774a35b2b9ec126b7c",
+      "recordId": "codex-reviewer-a-final163-batch002-20261018.015",
+      "recordDigest": "sha256:1d11a428fc61c703e9f33d1d31539f8ede2e93ff798d64f52e56131c0f88e949"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-002-v1-b",
+      "campaignDigest": "sha256:070e2daf91a611e1ffff2447e23f61558c7f9c9fa26cf87c154c53f406c8b793",
+      "roundId": "chemie-final-current-context-d-002-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-002-v1-independent-b",
+      "reviewInputFingerprint": "sha256:d831530f4fe9ba4c7701b62a5c1bcea6bdf04d0ee9729de34f23dbad666c8a9f",
+      "goalReviewContextFingerprint": "sha256:87d22b469e37eca72b906de4f974f3ccedb08fa335a67e51e544c92d1d8c39e8",
+      "batchId": "chemie-final-current-context-d-002-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-002-20261018",
+      "runManifestDigest": "sha256:c410bb8b0ad9e827901944da0e700a9181082c10d1bbd55ac65a836583b30c6e",
+      "resultsDigest": "sha256:ab8f5774eb6180f67af823d96057f3949f0fb175c7d25a6a52ba94e0874f30cc",
+      "recordId": "chemie-final163-native-b-002-20261018:4aa3a130-b517-5ac5-87b2-147fe432cadd",
+      "recordDigest": "sha256:1474cb41ad07dfc3f5300a2015ff9e91209197a0857baa242d099a805c1a0c77"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:d8fb237c4bfae646ace584c195b8d46e5310536aa5be0abf6e49298504cbd0d9"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-002-20261018-v1",
+    "manifestDigest": "sha256:067c0f4ea81884ab77197d8b88f8f555468ebc2707980d808fe8e93abaaa1073",
+    "manifestFingerprint": "sha256:015048c1d39b768cb2cc3bd33b3adb266d68832f23abfb86d580299bfc453bfc",
+    "decisionId": "chemie-final163-paired-D-only-002-20261018-v1-decision-015"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-002-20261018-v1-decision-015",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:25:09.454Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch002-20261018.015): Der bilinguale Text verlangt datenbezogene Gültigkeitsprüfung statt pauschaler Fehlerlisten. Das ganze P erklärt unspezifische Reaktionen und Matrixeffekte und behauptet nicht, jede beliebige zweite Apparatur garantiere Identität; umfassende Gültigkeitskriterien bleiben Nachfolger. B (chemie-final163-native-b-002-20261018:4aa3a130-b517-5ac5-87b2-147fe432cadd): Alle Textteile dienen derselben Tragweitenprüfung. P verlangt konkrete Fehlerursachen und verbietet das bloße Nennen einer zweiten Apparatur als Selektivitätsbeweis; der jüngste Geltungsbereich bleibt durch einfache Farb-/Leitfähigkeitsfälle zugänglich.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch002-20261018.015; chemie-final163-native-b-002-20261018:4aa3a130-b517-5ac5-87b2-147fe432cadd). Their current English understanding evidence is retained: A: Measurement responses support only conclusions for which selectivity, conditions and sample matrix are sufficiently controlled. B: Data support claims only within selectivity, measurement conditions and uncertainty; repeat scatter is not total uncertainty. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Messantworten tragen nur Schlussfolgerungen, für die Selektivität, Bedingungen und Probenmatrix ausreichend kontrolliert sind.",
+      "essentialUnderstandingEn": "Measurement responses support only conclusions for which selectivity, conditions and sample matrix are sufficiently controlled.",
+      "observablePerformanceDe": "Prüft Farbtest und Leitfähigkeitsdaten auf Kreuzreaktion, Blank und Temperaturkonfundierung und begründet die Aussagegrenzen.",
+      "observablePerformanceEn": "Checks colour tests and conductivity data for cross-reaction, blank and temperature confounding and justifies claim limits.",
+      "transferExpectationDe": "Entwickelt nach neuer Saccharosezugabe einen matrixgleichen Vergleich oder begrenzt den Nachweis trotz Ausschluss eines Kreuzreaktanten.",
+      "transferExpectationEn": "Develops a matrix-matched comparison after sucrose addition or limits identification despite excluding one cross-reactant."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-32b57aeb808bf05d8b221945821f4fb102288ab07a9fd111ae4e05d0a08fb4c7",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:46ecbcec8b6b25d2ebf880131857441e99c24f1969680827789e09f3671a4dae"
+}

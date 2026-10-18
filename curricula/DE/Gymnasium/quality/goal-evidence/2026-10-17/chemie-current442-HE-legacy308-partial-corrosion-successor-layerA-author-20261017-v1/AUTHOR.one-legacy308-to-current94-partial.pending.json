@@ -1,0 +1,337 @@
+{
+  "artifactType": "one-row-legacy-HE-compatibility-mapping-partial-successor-LayerA-author-proposal",
+  "createdAtUTC": "2026-10-17T21:16:05.511775+00:00",
+  "status": "AUTHOR_PENDING_ROOT_AND_INDEPENDENT_PEER_REVIEW",
+  "author": "Codex /root/chemie_visible_integration_route; author of this mapping proposal, not its independent approver",
+  "reviewAuthority": "ai_candidate",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "active": false,
+  "M7Claim": false,
+  "HumanApproval": false,
+  "HumanTrial": false,
+  "ownMaterialLicense": "CC-BY-4.0",
+  "scope": {
+    "subject": "Chemie",
+    "jurisdiction": "DE-HE",
+    "layer": "Layer A: one existing plain legacy source-to-canonical compatibility row",
+    "wholeSourceLegacyGoalId": "308f9f22-faf4-4f0f-92d9-e8d139c8c9b0",
+    "retiredCanonicalGoalId": "413c5ee5-7826-549f-ad76-63743c59b188",
+    "existingCurrentCanonicalGoalId": "94a62b39-d4a2-5882-99d1-6886ead07726",
+    "newGoalIds": 0,
+    "newRuntimeCode": false,
+    "newRuntimeWorkflow": false,
+    "normalMappingAlreadyChanged": false
+  },
+  "exactPatch": {
+    "file": {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_to_canonical_chemistry.json",
+      "sha256": "1742bfb8230ba7d6d61bc92ff20a3a0961a6743c9eb02964fdea251738d374e0",
+      "bytes": 31394
+    },
+    "jsonPointer": "/mappings/140",
+    "beforeExact": {
+      "legacyGoalId": "308f9f22-faf4-4f0f-92d9-e8d139c8c9b0",
+      "canonicalGoalId": "413c5ee5-7826-549f-ad76-63743c59b188",
+      "matchType": "exact"
+    },
+    "afterCandidate": {
+      "legacyGoalId": "308f9f22-faf4-4f0f-92d9-e8d139c8c9b0",
+      "canonicalGoalId": "94a62b39-d4a2-5882-99d1-6886ead07726",
+      "matchType": "partial"
+    },
+    "jsonPatch": [
+      {
+        "op": "test",
+        "path": "/mappings/140",
+        "value": {
+          "legacyGoalId": "308f9f22-faf4-4f0f-92d9-e8d139c8c9b0",
+          "canonicalGoalId": "413c5ee5-7826-549f-ad76-63743c59b188",
+          "matchType": "exact"
+        }
+      },
+      {
+        "op": "replace",
+        "path": "/mappings/140",
+        "value": {
+          "legacyGoalId": "308f9f22-faf4-4f0f-92d9-e8d139c8c9b0",
+          "canonicalGoalId": "94a62b39-d4a2-5882-99d1-6886ead07726",
+          "matchType": "partial"
+        }
+      }
+    ],
+    "mappingCountBefore": 187,
+    "mappingCountAfter": 187,
+    "allOther186RowsAndFileMetadataExact": true,
+    "proposedTypeCounts": {
+      "exact": 186,
+      "partial": 1
+    },
+    "noGlobalCanonical413AliasIntroduced": true
+  },
+  "actualWholeScientificInputs": {
+    "wholeLegacyAuthoredGoal": {
+      "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_CHEMIE.de.json.snapshot",
+      "sha256": "425d4d3a0b2da9834b1ae08d305fc70df7cb0eb4f65a46cc4e0ed731bbd31de2",
+      "bytes": 242245,
+      "jsonPointer": "/goals/140",
+      "objectSHA256": "18538ebca708db7ba9888125541ae5ba553f51831a519ce4970835905653db11"
+    },
+    "wholeCurrentC653Goal": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-C653-SEM653-paired-ten-requires-integration-20261017-v1/C653.Lower14-ten-paired-requires.PENDING-final-scope-context.json.snapshot",
+      "sha256": "cb3c432cc7b6875b55d8ea58acceb0048cdda7a532441dc122abb09a4b51c056",
+      "bytes": 2928297,
+      "jsonPointer": "/goals/434",
+      "objectSHA256": "9fd1cc435eb8d89d642a2ec5f0e7a9bebec4db0aa8deea00fee5ee4a5dcfab34"
+    },
+    "wholeSelectedProfile": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-five-paired-P-integration-20261017-v2/P439.CFC-HB-five-paired-material.inactive.jsonl",
+      "sha256": "404b83511b195891a1c348f3afef6c6fcb52791b6e170ab5b98a9b72384612ba",
+      "bytes": 4540234,
+      "format": "jsonl",
+      "lineOneBased": 268,
+      "jsonPointer": "/profile",
+      "objectSHA256": "8e933f8b0d91d8ab2e81624058deeb2538819340a02f029b8252ea202246b5a9"
+    },
+    "P442InputSelection": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-lower14-paired-C-P-M-source-integration-20261017-v1/P442.input-selection.PENDING-final-native-context.json",
+      "sha256": "c27f4ba91932a061aec8e944572760b4b8aed38f35825fc6981954a2c09f99e1",
+      "bytes": 116213
+    },
+    "profileSelectionFact": "94 has no override or new-profile record in P442; retain the whole P439 baseline profile exactly. Both complete q3-17-a/b materials, questions, answers, transfer and criteria are inline in this actual whole profile.",
+    "nativeRowStatusRetained": {
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1"
+    },
+    "newPOrDescriptionApprovalClaimed": false
+  },
+  "partialScientificAuthorRationale": {
+    "oldWholeDemandDe": "Die lernende Person kann Korrosionsschutzstrategien für Metalle/Legierungen bewerten.",
+    "importantCorrectionDe": "Das alte Ziel verlangt bereits Bewerten. Die Begründung beruht NICHT auf der falschen Gegenüberstellung eines bloßen alten Beschreibungsziels und einer erstmals neuen Bewertungskompetenz.",
+    "overlapDe": "Beide ganzen Ziele betreffen begründete Korrosionsschutzstrategien für Metall-/Legierungswerkstoffe. Deshalb ist der bereits wissenschaftlich begründet konsolidierte Zielgegenstand94 ein konkreter fachlicher Anschluss und kein bloß ähnlich klingender Ersatz.",
+    "whyNotExactDe": "Der alte eigenständige LK-Zielkörper spezifiziert weder die vollständige passive UND aktive Abdeckung noch alle benannten Mechanismen und beide ökologischen/ökonomischen Urteilsebenen. Ein alter generischer Mastery-Marker ist daher kein Nachweis aller vier verbindlichen Erwartungen des ganzen94-Profils. Eine Teilzuordnung hält den fachlichen Bezug fest, ohne Gleichwertigkeit oder automatischen aktuellen Abschluss zu behaupten.",
+    "wholeCurrentRequiredDutiesDe": [
+      "Passive Barriere/Schutzfilm und Defektgrenze einschließlich intakter/zerstörter Beschichtungen erklären.",
+      "Galvanische Polarität sowie Elektronen- UND Ionenweg im konkreten Cu-/Zn-/Fe-Defektfall begründen.",
+      "Opferanodenverbrauch, metallischen/ionischen Kontakt und Wartungsgrenzen erläutern.",
+      "Ökologische UND ökonomische Aussagen bedingt aus Materialdaten abwägen, fehlende Umweltdaten offenlassen und frische Schäden/Isolation sachgerecht übertragen."
+    ],
+    "actualMaterialGroundingDe": "Die zwei ganzen aktuellen Stahlteil-Fälle vergleichen Polymerbarriere, Zn-Opferanode, Cu-Defekt und Oxid-/Polymerfilm; Zn-Verbrauch oder elektrischer Kontaktverlust verändert die Schutzwirkung. Kosten2/3/2,5 sind fiktive Lehrdaten; ohne Umweltzahlen folgt kein universeller Sieger. Diese konkreten ganzen Anforderungen werden aus dem alten unspezifischen Marker nicht rekonstruiert.",
+    "whyRetainPartialInsteadOfDeleteDe": "Der bestehende fachliche Anschluss und eine mögliche Navigation/Eintrittskontinuität bleiben erhalten. Entfernen der Zeile würde auch diesen begründeten Bezug verlieren. Teilzuordnung verwendet die bereits vorhandene Runtime-Semantik und vermeidet neue Alias-/Migrationslogik.",
+    "officialWholeSourceCredit": false,
+    "oldLegacyNodeIsOfficialClauseApproval": false,
+    "currentSourceReviewDecisionsNotChanged": true,
+    "newCourseStageOrJurisdictionTags": false
+  },
+  "existingConsolidationEvidence": {
+    "authoringProtocol": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-413-current593-to592-whole-consolidation-authoring-id-successor-technical-20261016-v1/AUTHORING-ID-SUCCESSOR.protocol-v1.current593-413-to-protected94.inactive.json",
+      "sha256": "056285fbd6e8234ea96be1f49039fe08f681c0cf57cea68ce8d237a8e57528d0",
+      "bytes": 13516
+    },
+    "existingIndependentFIRST": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current592-413-to94-consolidation-fresh-independent-a-20261016-v1/FIRST.actual413-to-protected94-bounded-consolidation.science.frozen.json",
+      "sha256": "c2aad00652f264efd0e1c15b30cbbfafc9af4f3a75b53f27716e79b4b70bf595",
+      "bytes": 22848
+    },
+    "existingIndependentSelector": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current592-413-to94-consolidation-fresh-independent-a-20261016-v1/OUTPUTS.finite-current592-413-to94-independent-consolidation.selector.json",
+      "sha256": "b39bb803b54a95670fb2079ee16fa3aa2f2d98a106bf6d398ba70dbc09814c5d",
+      "bytes": 6454
+    },
+    "existingConclusion": "SUPPORTED_BOUNDED_CURRENT_AUTHORING_CONSOLIDATION_WITH_EXACT_BINDINGS; no intrinsic consolidation hold. Other source/course/terminal/M7 and actual future package-release gates stay open.",
+    "boundedRelation": "replacedBy",
+    "masteryPolicy": "reassess",
+    "historyPolicy": "preserve-with-successor-links",
+    "automaticMasteryTransfer": false,
+    "isStandardRuntimeMigrationArtifact": false,
+    "noNewIndependentConsolidationClaim": true,
+    "current94WholeGoalFieldsDifferingFromThatHistoricalProtectedObject": [
+      "requires"
+    ],
+    "differenceBoundary": "Only requires differs from the old protected consolidation object. The actual whole current C653 goal/profile are used above; no claim that old reviewers inspected this later prerequisite tuple and no new requires edit is proposed."
+  },
+  "existingHEOfficialSourceBoundary": {
+    "normalReview": {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "sha256": "57f713b35ca01251865287b39fc17d324876c89d94cc671b7c09fa2148bcf7fd",
+      "bytes": 170317
+    },
+    "actualOpferanodeDecision": {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "sha256": "57f713b35ca01251865287b39fc17d324876c89d94cc671b7c09fa2148bcf7fd",
+      "bytes": 170317,
+      "jsonPointer": "/decisions/167",
+      "objectSHA256": "5829e695e17a88f2abeb354d392cd8cb6dcb70cdc890092e09f50fb78334c0ed"
+    },
+    "actualTargetId": "642d5ea5-b62f-50c8-b0bd-cf132619725f",
+    "normal94DecisionExistsInThisReview": false,
+    "wholeOfficialSourceCreditFor94Claimed": false,
+    "interpretation": "This is a correction of a plain legacy compatibility mapping, not a new official source-extraction or whole-source union decision. The existing reviewed Opferanode relation stays unchanged."
+  },
+  "staticRuntimeVerification": {
+    "runtimeMode": {
+      "file": {
+        "path": "backend/src/main/resources/application.yml",
+        "sha256": "672c1a7af65cdf98378cd5f878db4c1e3280a6a2ba1584da13182d9a9acdf331",
+        "bytes": 11628
+      },
+      "lines": [
+        177,
+        181
+      ],
+      "finding": "Repository is the configured default via SKILLPILOT_CURRICULUM_SOURCE; deployment environment is not claimed to have been inspected."
+    },
+    "normalLoader": {
+      "file": {
+        "path": "backend/src/main/java/com/skillpilot/backend/landscape/GoalMappingService.java",
+        "sha256": "8d47f42d5254aeb5795ab85c3f5599ddd048b160fdfa3eb322cb6a90a2063fc6",
+        "bytes": 13937
+      },
+      "lines": [
+        157,
+        272,
+        281,
+        298,
+        321
+      ],
+      "finding": "Normal mapping/*.json without review/source-extraction markers is a live repository compatibility input. Loader explicitly permits exact and partial; quality dossiers and *.review.json are excluded."
+    },
+    "loaderExistingRegression": {
+      "file": {
+        "path": "backend/src/test/java/com/skillpilot/backend/landscape/GoalMappingServiceTest.java",
+        "sha256": "d56fad0679f8ea1bdb981a939c37503e6e3428fedce6093b06bff54a2f2567d0",
+        "bytes": 13952
+      },
+      "test": "loadsGoalMappingsAndIndexesByLegacyGoalId",
+      "finding": "Existing fixture contains both exact and partial rows and loads both. No new test execution claimed."
+    },
+    "numericMasteryProjection": {
+      "file": {
+        "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+        "sha256": "95763f336530cde3560e7456def1613bf5b687a6e8f68adc4644df29c2c0d195",
+        "bytes": 530272
+      },
+      "lines": [
+        1972,
+        1982,
+        2005,
+        2016
+      ],
+      "finding": "Both numeric and timestamped canonical mastery projections continue before reading legacy mastery whenever matchType is not exact. A partial308→94 row cannot project the old308 value onto94 through these paths."
+    },
+    "writeAliasAndFallback": {
+      "file": {
+        "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+        "sha256": "95763f336530cde3560e7456def1613bf5b687a6e8f68adc4644df29c2c0d195",
+        "bytes": 530272
+      },
+      "lines": [
+        2161,
+        2174,
+        2454,
+        2489,
+        2503
+      ],
+      "finding": "Mastery writes call mapGoalIdForVisibleGoals with allowPartial=false. That excludes a partial row. The actual C653 has no provenance.sourceGoalId equal to308, so the generic provenance fallback cannot turn this proposed partial row into a94 write alias. This is a concrete308/94 finding, not a claim that every partial mapping globally forbids every fallback."
+    },
+    "currentC653308ProvenanceMatches": [],
+    "navigationAndEntryContinuity": {
+      "file": {
+        "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+        "sha256": "95763f336530cde3560e7456def1613bf5b687a6e8f68adc4644df29c2c0d195",
+        "bytes": 530272
+      },
+      "lines": [
+        2174,
+        6310,
+        6341
+      ],
+      "finding": "allowPartial navigation and started-area continuity may use partial mappings, deliberately without setting canonical mastery. No learner records, stored old413 values or migration state are changed by this proposal."
+    },
+    "compiledMappingSchemaSupport": {
+      "file": {
+        "path": "contracts/curriculum-package/v1/source-to-canonical-mappings.schema.json",
+        "sha256": "47e8e8ad0b81eedd2bed46b98f82a6cc27402fd2caa88d97542ba1353a808b91",
+        "bytes": 3765
+      },
+      "jsonPointer": "/$defs/mappingEdge/properties/matchType",
+      "finding": "Publication edge schema supports exact or partial. It is not presented as direct validation of the differently wrapped plain version1 legacy file."
+    },
+    "existingCanonicalPartialRegression": {
+      "file": {
+        "path": "backend/src/test/java/com/skillpilot/backend/service/LearnerServiceCanonicalProjectionTest.java",
+        "sha256": "7646ab1d4b8ae2bc1eda245ef31dae1841b218b7570db8a65de8ee8f86640c8c",
+        "bytes": 68910
+      },
+      "test": "narrowedCentralDilationDoesNotInheritPartialLegacyMasteryOrAliasItsWriteId",
+      "finding": "Existing partial semantics regression in another subject; not acceptance of this unimplemented Chemistry row."
+    },
+    "testsRunForThisCandidate": false,
+    "noMasteryMigrationCodeOrDataMutation": true
+  },
+  "actualValidatorImpact": [
+    {
+      "file": {
+        "path": "backend/src/test/java/com/skillpilot/backend/landscape/GoalMappingRepositoryFixtureTest.java",
+        "sha256": "846ce2e8430798c36bc666303c76dfc9573b86b576a1e75a03f2f8837a0bacb9",
+        "bytes": 304078
+      },
+      "lines": [
+        2354,
+        2367
+      ],
+      "finding": "Current Chemistry fixture asserts187 rows all exact. A permitted integration must change that bounded fixture expectation to186 exact/1 partial and assert this exact308→94 partial row; keep187 rows."
+    },
+    {
+      "file": {
+        "path": "scripts/validate_curriculum_release_model.py",
+        "sha256": "2242b33878d01f2c9df54ac4065ae61bd57abbddfef3fe08e2ee4358dea8ec0f",
+        "bytes": 256345
+      },
+      "lines": [
+        2130,
+        2453,
+        2507,
+        3286
+      ],
+      "finding": "Authoritative reviewed edges reject unknown canonical targets. This separate plain legacy file is authoring-only input in publication projection, and its dangling targets are only authoringOnlyDiagnostics. It is therefore unsafe to claim a universal normal-validator failure for the present legacy row."
+    },
+    {
+      "file": {
+        "path": "backend/src/main/java/com/skillpilot/backend/curriculumpackage/PackageLandscapeMappingCompiler.java",
+        "sha256": "c04e28daf1cda2a2b84b32aca43b8db31cfadbd1e14a4784f6a2115e19df0f5f",
+        "bytes": 33083
+      },
+      "lines": [
+        179,
+        184
+      ],
+      "finding": "Compiled package edges reject unknown canonical IDs and support partial; package runtime uses compiled reviewed edges, not necessarily this repository plain file."
+    },
+    {
+      "file": {
+        "path": "backend/src/main/java/com/skillpilot/backend/landscape/LandscapeService.java",
+        "sha256": "1159e6a414dde455bed6fb9ee85b7baff435c200252dcfc7ec3df0caae1d29ac",
+        "bytes": 101466
+      },
+      "lines": [
+        385,
+        395
+      ],
+      "finding": "Repository jurisdiction coverage ignores a nonexistent target rather than throwing. Current413 is thus silently ineffective after removal; partial94 would supply only existing jurisdiction evidence, not whole official source approval."
+    }
+  ],
+  "requiredBeforeNormalIntegration": [
+    "Root and an independent peer must judge this exact one-row partial proposal against the whole legacy/C653/P bodies.",
+    "If accepted, change only canonicalGoalId and matchType in row140; preserve all other186 rows and metadata; no runtime implementation changes.",
+    "Adjust the bounded existing Chemistry mapping fixture to186 exact+1 partial and add or select a targeted regression proving legacy308/old413 mastery does not populate94 while actual canonical94 mastery remains intact.",
+    "Keep authoritative HE source reviews and their targets unchanged; do not reinterpret partial compatibility as official whole-source credit.",
+    "Final normal C653/view/profile bindings and package/release gates remain root-owned and separate."
+  ],
+  "normalWritesPerformed": false,
+  "newScientificApprovalClaimed": false,
+  "privateLearnerDataReadOrWritten": false
+}

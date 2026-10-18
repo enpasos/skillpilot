@@ -1,0 +1,7 @@
+# HE6eba: eine bereits fachlich angenommene Teilbindung nach echter Platzierungsreparatur
+
+Getrennter technischer Nachfolger zum exakt unveränderten C40-B-FIRST und zum versiegelten C40-Basispaket. Das alte FIRST hielt die aktuelle Platzierung bei bereits angenommener Quellenwissenschaft zurück. Root hat die vier HE-Views tatsächlich repariert; die eigene aktuelle Stock-pure-Prüfung zeigt zwei effektive LK-Targets und beide gewählten, graphverfügbaren Prerequisites in beiden Views.
+
+Genau eine inhaltliche Q2.2-Teilbeziehung in acht vorhandenen passenden Inhaltsaliasen ergänzt, je ein Partialtupel und rein additive aktuelle Annahmeprovenienz. Alte/current Quellenzellen bleiben epochengetrennt; keine neuen aktuellen2026-Standards werden in alte2024-Aliase geschrieben. Alle bisherigen Aliasrows und Decisionfelder/listenpräfixe bleiben exakt. Alle anderen72C40-Normaldateien, aktuelles ganzes C/P, beide Quelleninventare, Registry und vier Views bleiben exakt.
+
+Zusammen mit dem Basispaket:220Partialrelationen/197direkteLandespaare plus6bestehendeLiteralbindungen=203Landesbeiträge,544Alias-Appends. Keine neuen wissenschaftlichen/nativen D/P/A/M/V-Voten, keine ganze amtliche Quellenfreigabe, keine menschliche Freigabe oder Lernendenausführung. Die elf offenen Autorenpaare und die einzelne SL-Wassersiedepunktrelation bleiben HOLD. Keine Extraktions-/P-/Canonical-/DAG-/Registry-/Viewänderung durch diese Operation; kein AP, Compiler, Ganzschema, Build oder Commit. Genaue Modellrevision unbekannt.

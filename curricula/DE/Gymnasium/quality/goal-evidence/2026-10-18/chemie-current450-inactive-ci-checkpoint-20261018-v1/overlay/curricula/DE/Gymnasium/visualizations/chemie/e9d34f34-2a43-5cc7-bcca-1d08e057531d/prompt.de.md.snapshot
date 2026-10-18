@@ -1,0 +1,1 @@
+Preserve the entire image exactly, fix ONE chemically wrong superscript: in the TOP RIGHT formula under pH12, H₂N currently has an erroneous plus sign. REMOVE that plus so top right reads exactly H₂N—CH₂—COO⁻. All other charges and every other part unchanged. H₂N is neutral, COO is negative, overall −1. PNG16:9 same size.

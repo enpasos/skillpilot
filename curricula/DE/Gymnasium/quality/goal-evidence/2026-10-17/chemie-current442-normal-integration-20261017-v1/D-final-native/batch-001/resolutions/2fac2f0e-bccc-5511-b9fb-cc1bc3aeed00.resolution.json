@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-001-v1-resolution-2fac2f0e-bccc-5511-b9fb-cc1bc3aeed00",
+  "goal": {
+    "goalId": "2fac2f0e-bccc-5511-b9fb-cc1bc3aeed00",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:a9a41564174167296a3dd03b5ea1fc8645cf3157f26a93dcf8cddb36ae8be640",
+    "pageFingerprint": "sha256:3383b8e5dfa04efd7c4a4918c9f8e427193103b52a4e4c6ab20ab73923178c67",
+    "goalReviewContextFingerprint": "sha256:1f26faaf3bd0c83ae2c378dd7ed873a10dbff901b365cb8fd13c284d978c03bf",
+    "finalText": {
+      "titleDe": "Magensäurebildung und Protonenpumpen-Hemmer erklären",
+      "titleEn": "Explain gastric acid formation and proton pump inhibitors",
+      "descriptionDe": "Die lernende Person kann die Bildung von Magensäure chemisch beschreiben und daran die Wirkweise von Protonenpumpen-Hemmern erklären.",
+      "descriptionEn": "The learner can chemically describe gastric acid formation and use it to explain how proton pump inhibitors work."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-001-v1-a",
+      "campaignDigest": "sha256:96c597e11ef28d55b630202e1c2e03a243872e2f50e9cf9cc7c0df7a79d9cd3d",
+      "roundId": "chemie-final-current-context-d-001-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-001-v1-independent-a",
+      "reviewInputFingerprint": "sha256:84cb9df1bd7fef7e2302044cdb80cba5ac86f4d3a52db0bc7c6a09292793cfa8",
+      "goalReviewContextFingerprint": "sha256:1f26faaf3bd0c83ae2c378dd7ed873a10dbff901b365cb8fd13c284d978c03bf",
+      "batchId": "chemie-final-current-context-d-001-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch001-20261018",
+      "runManifestDigest": "sha256:b4b3f17dceb9e1e7c4c82361c9c800e5f7de932b46dcf704e3d6a847860b03be",
+      "resultsDigest": "sha256:c9861ef6d236ae81946747b3d1c7abde302f5f013b5c93ce5edad0870065fc31",
+      "recordId": "codex-reviewer-a-final163-batch001-20261018.017",
+      "recordDigest": "sha256:38429fbdb611e10ff962c2f9cb716489be863bc0bbc79254160193fa8f067de7"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-001-v1-b",
+      "campaignDigest": "sha256:1b8713019a8e252039fa354999df05261e1c78eedb890a563b29e531dc70ec46",
+      "roundId": "chemie-final-current-context-d-001-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-001-v1-independent-b",
+      "reviewInputFingerprint": "sha256:84cb9df1bd7fef7e2302044cdb80cba5ac86f4d3a52db0bc7c6a09292793cfa8",
+      "goalReviewContextFingerprint": "sha256:1f26faaf3bd0c83ae2c378dd7ed873a10dbff901b365cb8fd13c284d978c03bf",
+      "batchId": "chemie-final-current-context-d-001-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-001-20261018",
+      "runManifestDigest": "sha256:13eb6055a4aa8d4d04be4cfd1c0c77f4b206a289df96a67139c1efd68e08d32d",
+      "resultsDigest": "sha256:22da53163d50636a69ec31425cecc056999735ee0193be8470171a3f650414eb",
+      "recordId": "chemie-final163-native-b-001-20261018:2fac2f0e-bccc-5511-b9fb-cc1bc3aeed00",
+      "recordDigest": "sha256:ef9c9ff3d9159969ad2127258ea33f0ebe29b1bcc6734482ea00f42343d4aca2"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:706dc6e69548381d583e44f00cb7a2768b65125ce38e115ffeb99e090ece4f50"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-001-20261018-v1",
+    "manifestDigest": "sha256:2947637162d222247361434cafc2291ef0d74af62baa53f4b2c0b9ac2349ad89",
+    "manifestFingerprint": "sha256:240821b7f7c94c99aba57979178f196e85ea04ebc4d569c964de2f5230011117",
+    "decisionId": "chemie-final163-paired-D-only-001-20261018-v1-decision-016"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-001-20261018-v1-decision-016",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:22:46.792Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch001-20261018.017): Der aktuelle Text verbindet chemische Bildung kausal mit dem Hemmermechanismus. Beide vollständigen P-Fälle trennen Sekretion von Verbrauch, gelöste Ionen von HCl-Paketen sowie Schulbilanz von klinischer Wirkung; der Antazida-Nachfolger bleibt abgegrenzt. B (chemie-final163-native-b-001-20261018:2fac2f0e-bccc-5511-b9fb-cc1bc3aeed00): Beide Sprachen verlangen chemische Bildung und daraus abgeleitete Hemmerwirkung. P modelliert diesen Zusammenhang mit getrennten Flüssen und weist die Grenzen gegenüber klinischem Verlauf und dem nachfolgenden Antazidaziel aus.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch001-20261018.017; chemie-final163-native-b-001-20261018:2fac2f0e-bccc-5511-b9fb-cc1bc3aeed00). Their current English understanding evidence is retained: A: Gastric secretion couples proton formation, ATP-driven H+/K+ transport and chloride transport; pump inhibition reduces influx rather than neutralising existing acid. B: Gastric acid secretion couples proton production to ATP-driven transport; pump inhibition does not directly consume existing acid. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Magensäuresekretion koppelt Protonenbildung, ATP-abhängigen H+/K+-Transport und Chloridtransport; Pumpenhemmung vermindert Nachschub statt vorhandene Säure zu neutralisieren.",
+      "essentialUnderstandingEn": "Gastric secretion couples proton formation, ATP-driven H+/K+ transport and chloride transport; pump inhibition reduces influx rather than neutralising existing acid.",
+      "observablePerformanceDe": "Erklärt das Zell-Lumen-Modell und leitet aus dem Mechanismusbeleg die Wirkung auf neue Sekretion sowie eine begrenzte Modellbilanz ab.",
+      "observablePerformanceEn": "Explains the cell-lumen model and uses mechanism evidence to infer effects on new secretion and a bounded model balance.",
+      "transferExpectationDe": "Vergleicht bei verändertem Nachschub Pumpenhemmung mit stöchiometrischer Neutralisation, ohne die Modell-pH-Werte als Therapieentscheidung zu verwenden.",
+      "transferExpectationEn": "Compares pump inhibition with stoichiometric neutralisation under changed influx without treating model pH values as a treatment decision."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-b3382ab8d9d24b6fd60fa01199f2e7c9a7a8f837ed32a7ebeaa688ffd9fbc9af",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:47dc8c2c15ce79ab2a84b2f2827460d64128ca66ee4112eb56e1ad4a1ace7d5b"
+}

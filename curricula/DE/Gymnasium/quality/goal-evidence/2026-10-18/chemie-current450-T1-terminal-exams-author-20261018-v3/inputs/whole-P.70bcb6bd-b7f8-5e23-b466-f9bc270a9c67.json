@@ -1,0 +1,75 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+  "schemaVersion": 2,
+  "reviewId": "canonical-chemistry-positive-evidence-b003-q1-bonding-current-11-v2",
+  "goalFingerprintRuleVersion": "goal-evidence-v1",
+  "profileRuleVersion": "positive-understanding-evidence-v2",
+  "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+  "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+  "goalId": "70bcb6bd-b7f8-5e23-b466-f9bc270a9c67",
+  "goalFingerprint": "sha256:6a993f6a4a737baf55a4a18d8d138bba9dc5f0ba62a262241bb2065c61e396f9",
+  "reviewInputFingerprint": "sha256:008e0674789ce2577110652279524b65be6e25e511c520ec6492a81cf78502b4",
+  "profileFingerprint": "sha256:1ccb6d9c3c66c3b1ec1e9373b230b635d757ffa3caa272d8fa235b8dac8fedc4",
+  "status": "needs_human_review",
+  "reviewAuthority": "ai_candidate",
+  "reviewedAt": "2026-10-17T21:23:41.999975+00:00",
+  "reviewer": "Codex B technical current-input serialization; underlying scientific authors and reviewers remain recorded in the P442 selection/provenance",
+  "reason": "Das Ziel ist ein zusammenhängender LCAO-Modellschritt; die Bildgrafik liefert Beispiele, die eigene Phasen-/Symmetriebegründung nicht ersetzt. Zwei unabhängige, vom bestehenden Bild nicht ablesbare Fälle prüfen fachlichen Transfer. KI-Kandidat bleibt needs_human_review, keine menschliche Freigabe. Unabhängiger P-HOLD aus v1: Eine unklare „senkrechte“ Orientierung wurde durch den Unterschied zwischen orthogonalen p-Orbitalen und parallelen p-Orbitalen quer zur Kernachse ersetzt.",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "reviewRunIds": [],
+  "dissent": [],
+  "profile": {
+    "archetype": "representation",
+    "expectations": [
+      {
+        "id": "b003-70bcb6bd-core",
+        "essentialUnderstandingDe": "Atomorbitale vergleichbarer Energie und passender Symmetrie können durch Linearkombination bindende und antibindende Molekülorbitale mit unterschiedlicher Elektronendichte ergeben.",
+        "essentialUnderstandingEn": "Atomic orbitals of comparable energy and suitable symmetry can combine into bonding and antibonding molecular orbitals with different electron density.",
+        "observablePerformanceDe": "Die lernende Person skizziert für zwei 1s-Orbitale gleichphasige und gegenphasige Kombination und ordnet die Energieniveaus im H2-Modell zu.",
+        "observablePerformanceEn": "The learner sketches in-phase and out-of-phase combinations of two 1s orbitals and assigns their energy levels in an H2 model."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "b003-70bcb6bd-core"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "phase",
+        "textDe": "Gleich- und gegenphasige Überlappung werden kontrastiert.",
+        "textEn": "In-phase and out-of-phase overlap are contrasted."
+      },
+      {
+        "id": "symmetry",
+        "textDe": "Zueinander orthogonale p-Orbitale werden von parallelen p-Orbitalen quer zur Kernachse mit möglicher π-Überlappung getrennt.",
+        "textEn": "Mutually orthogonal p orbitals are distinguished from parallel p orbitals transverse to the internuclear axis, which may overlap as π orbitals."
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "hydrogen-1s-combinations",
+        "taskDemandDe": "Zwei vorgegebene H-1s-Orbitale werden einmal gleich- und einmal gegenphasig kombiniert. Skizziere Dichte zwischen den Kernen und ordne bindendes beziehungsweise antibindendes MO zu.",
+        "taskDemandEn": "Two supplied H 1s orbitals are combined in phase and out of phase. Sketch density between nuclei and classify bonding versus antibonding MOs.",
+        "expectedPerformanceDe": "Die lernende Person zeigt bei gleicher Phase erhöhte Dichte zwischen Kernen und niedrigere Energie, bei Gegenphase einen Knoten und höhere Energie.",
+        "expectedPerformanceEn": "The learner shows increased internuclear density and lower energy for in-phase overlap, and a node with higher energy for opposite phase.",
+        "understandingFocusDe": "Phasenlage erklärt Energieniveau-Aufspaltung.",
+        "understandingFocusEn": "Phase relation explains energy-level splitting."
+      },
+      {
+        "id": "fresh-p-orbital-sigma-pi-mismatch",
+        "taskDemandDe": "Drei neue 2p-Orbitalpaare sind skizziert: A beide entlang der Kernachse, B beide parallel zueinander quer zur Kernachse, C zueinander orthogonal. Entscheide, wo σ- beziehungsweise π-Überlappung möglich ist und wo Symmetrie-Mismatch eine bindende Kombination verhindert.",
+        "taskDemandEn": "Three fresh 2p orbital pairs are sketched: A both along the internuclear axis, B both parallel to one another transverse to that axis, and C mutually orthogonal. Decide where sigma or pi overlap is possible and where symmetry mismatch prevents a bonding combination.",
+        "expectedPerformanceDe": "Die lernende Person ordnet A einer möglichen σ- und B einer möglichen π-Überlappung zu. Nur die zueinander orthogonalen Orbitale C liefern in dieser vereinfachten Geometrie keine passende bindende Überlappung; quer zur Kernachse allein bedeutet nicht „keine Bindung“.",
+        "expectedPerformanceEn": "The learner identifies possible sigma overlap for A and pi overlap for B. Only the mutually orthogonal pair C lacks compatible bonding overlap in this simplified geometry; being transverse to the internuclear axis alone does not mean no bond.",
+        "understandingFocusDe": "Symmetrie hängt von der gegenseitigen Orbitalorientierung ab; parallele p-Orbitale quer zur Achse können π-MOs bilden.",
+        "understandingFocusEn": "Symmetry depends on orbital orientation relative to each other; parallel p orbitals transverse to the axis can form pi MOs."
+      }
+    ]
+  }
+}

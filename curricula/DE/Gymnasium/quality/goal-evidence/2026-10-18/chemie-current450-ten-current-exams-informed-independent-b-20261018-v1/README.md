@@ -1,0 +1,15 @@
+# Zehn aktuelle Chemieprüfungen – informierter unabhängiger B-Follow-up
+
+Das eigene FIRST wurde vor dem Lesen fremder aktueller10-Examurteile versiegelt. Frühere eigene Quellenautorschaft, HE/NW-Transporte, Quellen-/P-Kontextreviews und technische Publikationsarbeit sind im Leseprotokoll offengelegt. Keine Autorschaft dieser zehn Examkörper; kein Blindreview und keine menschliche Freigabe.
+
+Ergebnis: **acht begrenzte aktuelle Annahmen, zwei HOLDs ausschließlich für die aktuelle HE-Kurszulassung**. Die beiden HE44/27-Papierkörper bleiben fachlich KEEP. Es gibt keinen behaupteten aktuellen Graph-/Erreichbarkeitsbruch: alle bestehenden direkten Anforderungen sind ausgewählt und graphverfügbar.
+
+Die tatsächlichen älteren Reviewlocatoren belegen bereits für neun aktuelle Körper zwei Inhalts-KEEPs. Alle sieben kleinen Task/Solution/Scoring-Körper sind ganzobjektgleich zu den konkret geprüften älteren Autorenfassungen. Bei PLA und ABS wurden später nur8721 aus Zulassung und Coverage entfernt; diese begrenzten aktuellen Deltas sind fachlich angenommen. Die beiden HE-Aufgaben-/Lösungs-/Rubrikkörper einschließlich Teil5 und sieben Coverage-IDs sind ebenfalls exakt zum vorher beidseitig angenommenen Körper. Diese gültigen alten Stimmen werden nicht als neue FreshBody-Stimmen ausgegeben.
+
+Salicylat wurde neu vollständig in DE und EN geprüft: Materialien, Aufgaben, vollständige Lösungen, vier Rubriken und16/16-Punktregel. Eigene Atom-/Punktbilanzen, Zahlen und kausale Gegenbeispiele sind dokumentiert. Die Annahme gilt für den tatsächlich sichtbaren SH-Themenendpunkt, ohne neue HB-Routenfreigabe, gesamte Medikamentenpflicht, reale Durchführung oder klinische Aussage.
+
+Die HE-HOLDs betreffen die aktuelle Aussage zur gesamten Kurszulassung. Aktuell haben die tatsächlichen SekII-Views162 GK- und241 LK-curricularAtomic-Targets. Die eingefrorenen Requires-Listen enthalten153 beziehungsweise229 Einträge einschließlich der unteren Entsorgungsgrundlage805. Zehn beziehungsweise dreizehn aktuelle Targets fehlen in der ausdrücklich behaupteten direkten Kurszulassung. Die vollständigen endlichen Differenzlisten und kleine, nicht automatisch Kanten ergänzende Remedies stehen im FIRST. Aktuelle ganze Zielkörper der13 Vereinigungs-Deltas sind zusätzlich exakt eingefroren. Kein unveränderter Examkörper muss deshalb neu geschrieben werden.
+
+Es wurden ausschließlich eigene neutrale Inputs, gezielte Lese-/Rechen-/Interfacebelege und dieses Reviewpaket geschrieben. Keine Normaldaten-, Status-, P-, C-, View-, DAG- oder Quellenänderung; kein erneuter Gesamt-QS-/Compiler-/AP-/Buildlauf, keine Native-D/P/A/M/V-Stimme oder Gesamt-M7-/CI-Freigabe. Der vorherige Buchabschluss bleibt unverändert versiegelt.
+
+Die3 selbst gerenderten Primärseiten liegen nur temporär außerhalb von curricula; keine amtlichen Volltextkopien wurden als neue Verifikationsbelege aufgenommen. Historische tmp-Locatoren in den unveränderten neutralen Ganzobjekten bleiben originale Daten; die neu verwendeten Reviewautoritäten sind konkrete repository-relative N16-Dateien. Tatsächliche Webzugriffe und ihre Grenzen stehen im Primärleseprotokoll.

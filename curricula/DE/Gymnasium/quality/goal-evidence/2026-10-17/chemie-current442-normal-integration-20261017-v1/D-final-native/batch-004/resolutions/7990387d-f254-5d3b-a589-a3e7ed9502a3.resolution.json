@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-004-v1-resolution-7990387d-f254-5d3b-a589-a3e7ed9502a3",
+  "goal": {
+    "goalId": "7990387d-f254-5d3b-a589-a3e7ed9502a3",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:349da4fe6411645c8215be25716314458e0bf905833b0c3f6d18e0bf46b52c81",
+    "pageFingerprint": "sha256:458afb4e9f1fa202c7b2f19e175d451bcfef5155976f620e0be9284b03956c4c",
+    "goalReviewContextFingerprint": "sha256:5b71b651dc2223a975eafdabc7221d070285f943f66941ab298b752231393a67",
+    "finalText": {
+      "titleDe": "Sauerstoffhaltige organische Stoffklassen einteilen",
+      "titleEn": "Classify oxygenated organic compound classes",
+      "descriptionDe": "Die lernende Person kann Alkohole, Aldehyde, Ketone und Carbonsäuren anhand ihrer funktionellen Gruppen einteilen und alltags- oder techniknahe Vertreter dieser Stoffklassen zuordnen.",
+      "descriptionEn": "The learner can classify alcohols, aldehydes, ketones, and carboxylic acids by their functional groups and assign everyday or technical examples of these compound classes."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-004-v1-a",
+      "campaignDigest": "sha256:9f49c2740669f7ed36feb828f9f8fbf595137952444feadd39e6636d8aa89cee",
+      "roundId": "chemie-final-current-context-d-004-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-004-v1-independent-a",
+      "reviewInputFingerprint": "sha256:05932460b60d1d36324c4bd65a48bcd0a5fe66088c89302fdebe64beca38e104",
+      "goalReviewContextFingerprint": "sha256:5b71b651dc2223a975eafdabc7221d070285f943f66941ab298b752231393a67",
+      "batchId": "chemie-final-current-context-d-004-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch004-20261018",
+      "runManifestDigest": "sha256:860f1a557a07e28c6af90a01f00ebf8a49e6fb81e38ef37281b5dee695ee7891",
+      "resultsDigest": "sha256:33bf50a914eb196e9c1bc3a74a7a205b97c38e014eae746547ed2dfff792b039",
+      "recordId": "codex-reviewer-a-final163-batch004-20261018.001",
+      "recordDigest": "sha256:26dd972ac9a68af4fe31fac560fb8605e563547fb4a8749a59481cd3ddbecd98"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-004-v1-b",
+      "campaignDigest": "sha256:eb0a6a8bfd9326c9da6104480580f2824f20bebcd54ad258ec5b5ecedd511843",
+      "roundId": "chemie-final-current-context-d-004-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-004-v1-independent-b",
+      "reviewInputFingerprint": "sha256:05932460b60d1d36324c4bd65a48bcd0a5fe66088c89302fdebe64beca38e104",
+      "goalReviewContextFingerprint": "sha256:5b71b651dc2223a975eafdabc7221d070285f943f66941ab298b752231393a67",
+      "batchId": "chemie-final-current-context-d-004-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-004-20261018",
+      "runManifestDigest": "sha256:462a31ff8568ab194b6453b4a575269655a339fccdcaefe3a889f1c0386eb3eb",
+      "resultsDigest": "sha256:59784196a1346be76d18c8e2bb0dce57480d2a3daf93f3217588eb58d6cc6281",
+      "recordId": "chemie-final163-native-b-004-20261018:7990387d-f254-5d3b-a589-a3e7ed9502a3",
+      "recordDigest": "sha256:5d30ebb5a0d606bcae109f33dfeee38aca7fe272d0d893c6eaf6f03559da55c7"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:14644ad1dc6daad38fa105e8dcda4988764bf5544ad0303798c9afec70301ba8"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-004-20261018-v1",
+    "manifestDigest": "sha256:f8c23f4cfaabeda104b822b75b02eabbb05ae2a58f66246e6d76815c2be6f54a",
+    "manifestFingerprint": "sha256:47331b90b9c9747c454cd4e4bf2073fcf661e82b97577552be6a0e71defced6c",
+    "decisionId": "chemie-final163-paired-D-only-004-20261018-v1-decision-001"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-004-20261018-v1-decision-001",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:29:30.204Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch004-20261018.001): Der AB1-Text ist bilingual äquivalent. Das ganze P vermeidet Alkoholzuordnung des COOH-OH und erzwungene disjunkte Vierklassen; Synthese und Nachweise bleiben Nachfolger. B (chemie-final163-native-b-004-20261018:7990387d-f254-5d3b-a589-a3e7ed9502a3): Die Beschreibung fordert eine angemessene einfache Gruppenzuordnung. P enthält genau die charakteristischen Umgebungen und vermeidet eine künstlich vollständige oder disjunkte Einteilung aller organischen Stoffe.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch004-20261018.001; chemie-final163-native-b-004-20261018:7990387d-f254-5d3b-a589-a3e7ed9502a3). Their current English understanding evidence is retained: A: Functional-group connectivity distinguishes alcohol, aldehyde, ketone and carboxylic acid; oxygen content alone is insufficient. B: Functional groups and their connectivity determine compound classes; oxygen presence alone is insufficient. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Bindungsumgebung funktioneller Gruppen unterscheidet Alkohol, Aldehyd, Keton und Carbonsäure; O-Gehalt allein genügt nicht.",
+      "essentialUnderstandingEn": "Functional-group connectivity distinguishes alcohol, aldehyde, ketone and carboxylic acid; oxygen content alone is insufficient.",
+      "observablePerformanceDe": "Markiert Gruppen in vier Strukturbeispielen und begründet Carbonyl-/Carboxylzuordnung statt nach Verwendung zu raten.",
+      "observablePerformanceEn": "Marks groups in four structural examples and justifies carbonyl/carboxyl classification rather than guessing from use.",
+      "transferExpectationDe": "Erkennt an einer Hydroxycarbonsäure Mehrfunktionalität und am Ether die Grenze der vier Klassen.",
+      "transferExpectationEn": "Recognises multiple functionality in a hydroxycarboxylic acid and the four-class limit for an ether."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-f07f5bdff68d42614623837a769a1014fc9aa18dee20d36d55365e55b531281c",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:bfcb37a0add7132f68acd7fefd59cde756952bf19dd7d6cc989ce690c88fd212"
+}

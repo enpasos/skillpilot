@@ -1,0 +1,43 @@
+{
+  "artifactType": "Observed actual stock asset and visualization rollout checks after exact prompt restoration",
+  "inputs": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/chemie.qa.json",
+      "sha256": "13a8773e5cb03d464de96fae2af54ec3aa79df06ac452364e50bc1c2a7975e51"
+    },
+    {
+      "path": "scripts/config/historical-goal-visualization-assets.json",
+      "sha256": "3903dd75b7839e4975c8990cc6a8905e13fd1f92ed60c66fdae17f615aba9414"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-rollout-status.json",
+      "sha256": "694b5607dd95331f98c6b34f9d6302f7a8c86816e2c1aaabb76b3cb402e5c9fd"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-rollout-status.md",
+      "sha256": "1a107d37a09c87a539b7659fb40d8cad1619ce93d7bad51ab315eb9e693063bc"
+    }
+  ],
+  "checks": [
+    {
+      "command": "node scripts/check_goal_visualization_assets.mjs",
+      "exitCode": 0,
+      "outputFile": "tmp/chemie-current442-normal-assets-after-prompts.actual.log",
+      "observedSummary": "Goal visualization asset check passed for2555 links in21landscapes."
+    },
+    {
+      "command": "node --import ./app/node_modules/tsx/dist/loader.mjs app/scripts/reportGoalVisualizationRolloutStatus.ts --subject=chemie --check --require-coverage",
+      "exitCode": 0,
+      "observedSummary": "Current Chemistry rollout JSON and Markdown up to date."
+    },
+    {
+      "command": "node --import ./app/node_modules/tsx/dist/loader.mjs app/scripts/checkGoalVisualizationQaCoverageParity.ts",
+      "exitCode": 0,
+      "observedSummary": "Mathematics807+25overview,Physics478+31overview,Chemistry442+23overview parity; no deferred or regular missing images."
+    }
+  ],
+  "normalPromptFilesRestored": 74,
+  "newImageGenerations": 0,
+  "humanApprovalChanges": 0,
+  "M7Claim": false
+}

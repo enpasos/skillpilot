@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-006-v1-resolution-d2ccd1d5-56f7-583f-9724-e97441367f91",
+  "goal": {
+    "goalId": "d2ccd1d5-56f7-583f-9724-e97441367f91",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:ac9de7e503ad973109172b3c35acf3a6a29c588d2262d6a4b6eeaa436561dda3",
+    "pageFingerprint": "sha256:09fc46ad03931faa386d1ff4e356cdc89ddc2ac39f24cee0b9563926e8350dbf",
+    "goalReviewContextFingerprint": "sha256:d60370f0bbcf1e0725d21a1307ad995131f62bea5df7c5832d6f4ff1e6d55ae9",
+    "finalText": {
+      "titleDe": "Saure, alkalische und neutrale Lösungen unterscheiden",
+      "titleEn": "Distinguish acidic, alkaline, and neutral solutions",
+      "descriptionDe": "Die lernende Person kann saure, neutrale und alkalische Lösungen in geeigneten Schulversuchen anhand der Farbskala des jeweils verwendeten Indikators unterscheiden und die Ergebnisse groben pH-Bereichen zuordnen.",
+      "descriptionEn": "The learner can distinguish acidic, neutral and alkaline solutions in suitable school experiments using the colour scale for the indicator used and assign the results to broad pH ranges."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-006-v1-a",
+      "campaignDigest": "sha256:fac08f3e3e72b3fd65ead31deeafeff62268bea1795f229f19ce85a234e57356",
+      "roundId": "chemie-final-current-context-d-006-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-006-v1-independent-a",
+      "reviewInputFingerprint": "sha256:738c48a5d1a135a764fe483a52f078a241f0f4149b0c7e6ce492ebd53c660d26",
+      "goalReviewContextFingerprint": "sha256:d60370f0bbcf1e0725d21a1307ad995131f62bea5df7c5832d6f4ff1e6d55ae9",
+      "batchId": "chemie-final-current-context-d-006-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch006-20261018",
+      "runManifestDigest": "sha256:419ac41027d7c6085c20a41a7aab2cc5ee3abf5e395b843a596d9b21dbec3d58",
+      "resultsDigest": "sha256:cb07854e0ea40039098f3d266438ec683a808fb475249442535af494ff91bdbe",
+      "recordId": "codex-reviewer-a-final163-batch006-20261018.015",
+      "recordDigest": "sha256:3bfa15f20a5768b401a36402e9b2924046ea72cfbf1178e7972f1c9d6a863b00"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-006-v1-b",
+      "campaignDigest": "sha256:e6860f2b3431737a13818dccb510d68b769ac8de8183a266a418614495ba524a",
+      "roundId": "chemie-final-current-context-d-006-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-006-v1-independent-b",
+      "reviewInputFingerprint": "sha256:738c48a5d1a135a764fe483a52f078a241f0f4149b0c7e6ce492ebd53c660d26",
+      "goalReviewContextFingerprint": "sha256:d60370f0bbcf1e0725d21a1307ad995131f62bea5df7c5832d6f4ff1e6d55ae9",
+      "batchId": "chemie-final-current-context-d-006-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-006-20261018",
+      "runManifestDigest": "sha256:f5dff68c2824391cbd358b0efcda18f60656322f44c47dd579639b30eb8f1789",
+      "resultsDigest": "sha256:1905ddcd08914170e96a8288a0308e1390cdf5eb3bbb2c7eb917107830344a7f",
+      "recordId": "chemie-final163-native-b-006-20261018:d2ccd1d5-56f7-583f-9724-e97441367f91",
+      "recordDigest": "sha256:62a00bac05bff929522fdfeeb1b44994339feffc2d529b35b800bb20a49afb65"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:c423e5d81f53d59095437ae568e0caca6a758058bafd394031ce2cb0f01fc495"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-006-20261018-v1",
+    "manifestDigest": "sha256:841af7f6a231319d70d92e84fb977818248d5825b592e050c63ab4be72fe9634",
+    "manifestFingerprint": "sha256:8a70d3defa5ac0d85b5224774db191bed348f860796a294e7732ed4830512bfe",
+    "decisionId": "chemie-final163-paired-D-only-006-20261018-v1-decision-015"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-006-20261018-v1-decision-015",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:35:51.247Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch006-20261018.015): Die aktuelle bilinguale Beschreibung ist für SekI klar auf eigenen Schulversuch und grobe Bereiche begrenzt. Das vollständige P unterscheidet Beobachtung, Sollwert und Deutung sowie die beiden Originalskalen. Der zusätzlich tatsächlich gelesene HB-L031-Ganzfall stellt konkrete Lehrkraftverdünnungen, Leerprobe und Kontrolle bereit, erfindet keinen Reiniger-pH und fordert weder Mischungen noch eigenes Konzentratverdünnen. Vorgegebene Farben und Visuals ersetzen die eigene praktische Leistung ausdrücklich nicht. B (chemie-final163-native-b-006-20261018:d2ccd1d5-56f7-583f-9724-e97441367f91): Die knappe Sek-I-Beschreibung enthält den praktischen Operator bereits und vermeidet exakte pH-Versprechen. Das vollständige P und der vollständig gelesene operative HB-L031-Fall konkretisieren Freigabe, getrennte Aliquote, tatsächliche Rohfarben, Kontrolle und Originalskalen. Der HB-Zusatz ist ausdrücklich scopespezifisch; keine universelle Haushaltsreiniger- oder Sensorpflicht wird daraus. Beobachtete Durchführung bleibt erforderlich und wird nicht durch Musterantwort oder Visual ersetzt.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch006-20261018.015; chemie-final163-native-b-006-20261018:d2ccd1d5-56f7-583f-9724-e97441367f91). Their current English understanding evidence is retained: A: An indicator colour is interpreted through the scale of the product actually used and generally supports only a coarse pH classification under the observed conditions. B: Indicator colours support only the coarse pH classification justified by the matching product chart and actual conditions; reference values do not replace personal observations. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Eine Indikatorfarbe erhält ihre Bedeutung durch die Skala des tatsächlich verwendeten Produkts und erlaubt meist nur eine grobe pH-Zuordnung unter den beobachteten Bedingungen.",
+      "essentialUnderstandingEn": "An indicator colour is interpreted through the scale of the product actually used and generally supports only a coarse pH classification under the observed conditions.",
+      "observablePerformanceDe": "Untersucht freigegebene Proben selbst unter Aufsicht, dokumentiert unveränderte Rohfarben und Kontrolle und ordnet sie mit der passenden Originalskala sauer, ungefähr neutral oder alkalisch ein.",
+      "observablePerformanceEn": "Personally investigates released samples under supervision, records unaltered raw colours and a control and uses the matching original scale to classify them as acidic, approximately neutral or alkaline.",
+      "transferExpectationDe": "Wechselt zu neuem Indikatorpapier oder einer neu freigegebenen Reinigerverdünnung, erhebt neue eigene Beobachtungen und erklärt Skalen- und Auflösungsgrenzen ohne genaue pH-Werte zu erfinden.",
+      "transferExpectationEn": "Changes to a new indicator paper or freshly released cleaner dilution, obtains new own observations and explains scale and resolution limits without inventing precise pH values."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-b6bd40309770d912971068115c098b2cef2efc2232e688ab4c4e468f6c6a1431",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:0adf70acd9b21ac13583d31fa386bb0b7b101ed16172bc567c2c9201de7f38aa"
+}

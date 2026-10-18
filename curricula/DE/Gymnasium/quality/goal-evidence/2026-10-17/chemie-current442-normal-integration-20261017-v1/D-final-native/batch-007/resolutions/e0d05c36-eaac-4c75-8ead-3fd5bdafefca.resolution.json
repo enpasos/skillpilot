@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-007-v1-resolution-e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+  "goal": {
+    "goalId": "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:c525e885c9961f5a873940be26d6fdb55db0eaed9fc3d08cf5c5e2fdaa3b4c63",
+    "pageFingerprint": "sha256:feb680956f78f6eb9b5345e7b1bf1d57285a8b6654234e8e70a2f8b74d6fa58a",
+    "goalReviewContextFingerprint": "sha256:76f3abb8322560dfcddafdea41a9aa72d267720f0e2e817cdafebf6235866f6b",
+    "finalText": {
+      "titleDe": "Konstante Massenverhältnisse beschreiben",
+      "titleEn": "Describe constant mass proportions",
+      "descriptionDe": "Die lernende Person kann konstante Massenverhältnisse an einfachen Oxid- und Sulfidbildungen erkennen und fachlich beschreiben.",
+      "descriptionEn": "The learner can recognize and describe constant mass proportions in simple oxide and sulfide formation."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-007-v1-a",
+      "campaignDigest": "sha256:03e23ca7a839411ee0694d3ffc4c5304359bdbdb4885b890ef7f8def67d5e5a0",
+      "roundId": "chemie-final-current-context-d-007-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-007-v1-independent-a",
+      "reviewInputFingerprint": "sha256:9786177231bba01a5178b748443b7e2ac24b65d395c6cfda891b47d1838d8fd4",
+      "goalReviewContextFingerprint": "sha256:76f3abb8322560dfcddafdea41a9aa72d267720f0e2e817cdafebf6235866f6b",
+      "batchId": "chemie-final-current-context-d-007-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch007-20261018",
+      "runManifestDigest": "sha256:41b3803956cb0b8e3ceaa1b4c1224724037cd8f6fc9ff400cb30dc979ec172d0",
+      "resultsDigest": "sha256:2deca668c6059260417c15a3d4e706e9325f6ce3e8e0bef2d977983444354968",
+      "recordId": "codex-reviewer-a-final163-batch007-20261018.003",
+      "recordDigest": "sha256:c7e7ab43e490855230c4ef32cac9852f829cc78b69885f1023a8557196384ec4"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-007-v1-b",
+      "campaignDigest": "sha256:f96e78c8b5b03376c090596c68434afdda0adfb82adef282dc1a1a949aed2746",
+      "roundId": "chemie-final-current-context-d-007-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-007-v1-independent-b",
+      "reviewInputFingerprint": "sha256:9786177231bba01a5178b748443b7e2ac24b65d395c6cfda891b47d1838d8fd4",
+      "goalReviewContextFingerprint": "sha256:76f3abb8322560dfcddafdea41a9aa72d267720f0e2e817cdafebf6235866f6b",
+      "batchId": "chemie-final-current-context-d-007-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-007-20261018",
+      "runManifestDigest": "sha256:c21072a1baeec0fb475776827fd6bdcb51afcb70555317673d8fac140568d60f",
+      "resultsDigest": "sha256:f627bfdb86dcc4a0e7dec63f04ec892ed6ec7af463e3169bda439a10444338fd",
+      "recordId": "chemie-final163-native-b-007-20261018:e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+      "recordDigest": "sha256:da27ed2354fca3890f7023323f1b82d1a8a6dc841bc6d44635609dc10b2cf26e"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:9d01c3a2eaf6ff3168f19750d5b1780c3bd726f4c76d033ac9016e0d3a5debbf"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-007-20261018-v1",
+    "manifestDigest": "sha256:a002d58ade8fb14ebb3f915bed25f48fcfa287b2641be1e7a466d8abd811c99e",
+    "manifestFingerprint": "sha256:12732999b92050cc52642e0c0e4f1bd967da4b1b66528e696859794dba344986",
+    "decisionId": "chemie-final163-paired-D-only-007-20261018-v1-decision-003"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-007-20261018-v1-decision-003",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:39:49.306Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch007-20261018.003): Die D-Fassung ist für SekI auf Erkennen und Beschreiben an Oxiden und Sulfiden beschränkt. Das ganze P bietet beide Verbindungstypen mit konsistenter Massenbilanz. Insbesondere wird die gesamte Vorlage nicht als Produktanalyse missverstanden. Der spätere Formel-/Atommassen-Datengebrauch bleibt als eigener Nachfolger erkennbar; kein überzogener Anspruch an experimentelle Eigenarbeit. B (chemie-final163-native-b-007-20261018:e0d05c36-eaac-4c75-8ead-3fd5bdafefca): Das Sek-I-Ziel ist als Datenregel zu einfachen Oxiden und Sulfiden präzise und bereitet die nachfolgende Formelbestimmung vor. Das gesamte P liefert passende Produktdaten und einen substanziellen Überschussfall; der Unterschied zwischen Ansatz und reiner Verbindung wird ausdrücklich begründet. Eine praktische Herstellung oder zusätzliche stöchiometrische Theorie wird dem Text nicht hinzugefügt.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch007-20261018.003; chemie-final163-native-b-007-20261018:e0d05c36-eaac-4c75-8ead-3fd5bdafefca). Their current English understanding evidence is retained: A: A given pure compound has a constant elemental mass ratio; a different reactant charge may leave excess reactant rather than alter product composition. B: A specified pure compound has a constant elemental mass ratio; larger preparations or excess reactants do not change that product composition. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Eine bestimmte reine Verbindung besitzt ein konstantes Elementmassenverhältnis; eine andere Eduktvorlage kann unverbrauchten Überschuss statt anderer Produktzusammensetzung erzeugen.",
+      "essentialUnderstandingEn": "A given pure compound has a constant elemental mass ratio; a different reactant charge may leave excess reactant rather than alter product composition.",
+      "observablePerformanceDe": "Normiert die beiden CuO-Datensätze zu Cu:O=4:1 und erklärt die unveränderte Zusammensetzung bei verdoppelter Produktmasse.",
+      "observablePerformanceEn": "Normalises both CuO data sets to Cu:O=4:1 and explains unchanged composition when product mass doubles.",
+      "transferExpectationDe": "Trennt im neuen FeS-Ansatz das Verhältnis 7:4 im reinen Produkt von 7 g Eisenrest bei 14 g vorgelegtem Eisen.",
+      "transferExpectationEn": "Separates the 7:4 ratio in pure FeS from 7 g leftover iron when the fresh starting charge contains 14 g iron."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-7d6ce30846eb97f3cde489f7796f2cd61d12d86a3b284eeef8b4b6bd7dfeea4f",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:a55cd99595a2fd73e30a8dcabb3826cecdf5a13162d3f062b8480d903567ce12"
+}

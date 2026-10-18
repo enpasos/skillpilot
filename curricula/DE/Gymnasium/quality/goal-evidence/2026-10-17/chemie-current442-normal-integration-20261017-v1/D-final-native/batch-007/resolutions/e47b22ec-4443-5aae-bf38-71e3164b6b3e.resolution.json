@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-007-v1-resolution-e47b22ec-4443-5aae-bf38-71e3164b6b3e",
+  "goal": {
+    "goalId": "e47b22ec-4443-5aae-bf38-71e3164b6b3e",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:ed883497b3f233da608dc967065c540b757d76a0a3d2a1e0a3948b548c20ad15",
+    "pageFingerprint": "sha256:c60bee42bd68fb04df4377d2e5e730252b2d2bf0374a52611877d3e59edee4a6",
+    "goalReviewContextFingerprint": "sha256:982a95c341caa57d96d95cd1fc56d7787d176804d14a6349a7c9da8216094883",
+    "finalText": {
+      "titleDe": "Biopolymer-Abbau",
+      "titleEn": "Biopolymer degradation",
+      "descriptionDe": "Die lernende Person kann Abbaumechanismen und Bedingungen für Biopolymere erläutern.",
+      "descriptionEn": "The learner can explain degradation mechanisms and conditions for biopolymers."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-007-v1-a",
+      "campaignDigest": "sha256:03e23ca7a839411ee0694d3ffc4c5304359bdbdb4885b890ef7f8def67d5e5a0",
+      "roundId": "chemie-final-current-context-d-007-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-007-v1-independent-a",
+      "reviewInputFingerprint": "sha256:9786177231bba01a5178b748443b7e2ac24b65d395c6cfda891b47d1838d8fd4",
+      "goalReviewContextFingerprint": "sha256:982a95c341caa57d96d95cd1fc56d7787d176804d14a6349a7c9da8216094883",
+      "batchId": "chemie-final-current-context-d-007-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch007-20261018",
+      "runManifestDigest": "sha256:41b3803956cb0b8e3ceaa1b4c1224724037cd8f6fc9ff400cb30dc979ec172d0",
+      "resultsDigest": "sha256:2deca668c6059260417c15a3d4e706e9325f6ce3e8e0bef2d977983444354968",
+      "recordId": "codex-reviewer-a-final163-batch007-20261018.004",
+      "recordDigest": "sha256:78863c9f4e54ad49dd54fc7d15c6d3d811767cf0fed3526b5cac4b231b2dc88a"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-007-v1-b",
+      "campaignDigest": "sha256:f96e78c8b5b03376c090596c68434afdda0adfb82adef282dc1a1a949aed2746",
+      "roundId": "chemie-final-current-context-d-007-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-007-v1-independent-b",
+      "reviewInputFingerprint": "sha256:9786177231bba01a5178b748443b7e2ac24b65d395c6cfda891b47d1838d8fd4",
+      "goalReviewContextFingerprint": "sha256:982a95c341caa57d96d95cd1fc56d7787d176804d14a6349a7c9da8216094883",
+      "batchId": "chemie-final-current-context-d-007-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-007-20261018",
+      "runManifestDigest": "sha256:c21072a1baeec0fb475776827fd6bdcb51afcb70555317673d8fac140568d60f",
+      "resultsDigest": "sha256:f627bfdb86dcc4a0e7dec63f04ec892ed6ec7af463e3169bda439a10444338fd",
+      "recordId": "chemie-final163-native-b-007-20261018:e47b22ec-4443-5aae-bf38-71e3164b6b3e",
+      "recordDigest": "sha256:39ad8a3f5454868267f15cbc0cde9728b1c483a68b61d884c5a20cdcb3823e64"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:9d01c3a2eaf6ff3168f19750d5b1780c3bd726f4c76d033ac9016e0d3a5debbf"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-007-20261018-v1",
+    "manifestDigest": "sha256:a002d58ade8fb14ebb3f915bed25f48fcfa287b2641be1e7a466d8abd811c99e",
+    "manifestFingerprint": "sha256:12732999b92050cc52642e0c0e4f1bd967da4b1b66528e696859794dba344986",
+    "decisionId": "chemie-final163-paired-D-only-007-20261018-v1-decision-004"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-007-20261018-v1-decision-004",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:39:49.306Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch007-20261018.004): Das kurze bilinguale Ziel erhält durch das vollständige P einen fachlich klaren Mechanismus- und Bedingungsbezug. Die warm-trockene Kontrolle erlaubt keine isolierte Temperaturkausalität, und 60 bzw. 30 Prozent CO2 werden korrekt nur als Teilmineralisierung gewertet. Der Wechsel Ester/Glycosid und Warmtest/Gewässer erfordert echte Erklärung statt des Labels biologisch abbaubar; D kann bestehen bleiben. B (chemie-final163-native-b-007-20261018:e47b22ec-4443-5aae-bf38-71e3164b6b3e): Der knappe LK-Text bleibt fachlich tragfähig, weil das vollständige P die Mechanismen und Bedingungen an Ester- und glycosidischen Bindungen konkret festlegt. Beide tatsächlich vollständig gelesenen ursprünglichen Fälle liefern die Steril-/Feuchte- und Enzymkontrollen, auf die die Erwartungen Bezug nehmen. Molmassenabnahme und Zucker werden richtig von polymerbezogenem CO2 und vollständiger Kohlenstoffbilanz getrennt; der Kaltgewässertransfer prüft die Bedingungen. Die Bezeichnung Biopolymer wird nicht als universelles Abbaubarkeitsversprechen verwendet.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch007-20261018.004; chemie-final163-native-b-007-20261018:e47b22ec-4443-5aae-bf38-71e3164b6b3e). Their current English understanding evidence is retained: A: Hydrolytic or enzymatic chain cleavage and microbial mineralisation are distinct stages; linkage type and environmental conditions limit any degradation claim. B: Hydrolytic or enzymatic chain cleavage depends on linkages and environment and differs from microbial mineralisation and mere fragmentation. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Hydrolytische oder enzymatische Kettenspaltung und mikrobielle Mineralisierung sind verschiedene Stufen; Bindungstyp und Umgebungsbedingungen begrenzen jede Abbauaussage.",
+      "essentialUnderstandingEn": "Hydrolytic or enzymatic chain cleavage and microbial mineralisation are distinct stages; linkage type and environmental conditions limit any degradation claim.",
+      "observablePerformanceDe": "Erklärt sterile PLA-Molmassenabnahme durch Esterhydrolyse und die enzymatische Spaltung glycosidischer Bindungen, trennt lösliche Zucker oder Fragmente vom polymerbezogenen CO2-Nachweis.",
+      "observablePerformanceEn": "Explains sterile PLA molar-mass loss through ester hydrolysis and enzymatic cleavage of glycosidic bonds, separating soluble sugars or fragments from polymer-derived CO2 evidence.",
+      "transferExpectationDe": "Überträgt einen Warmtest begrenzt auf kaltes Gewässer und entwirft kontrollierte Proben und eine Kohlenstoffbilanz über CO2, Biomasse, gelöste Produkte und Restpolymer.",
+      "transferExpectationEn": "Makes a bounded transfer from a warm test to cold water and proposes controlled samples and a carbon balance over CO2, biomass, dissolved products and residual polymer."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-7f1140b62558e738bc09bdded65094b8cb3f9bcefd338373b359ead7342dc10d",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:9514ad62339648a0439f6a695a965ebd2e786db91c2bd2650ab74a498cdccfd3"
+}

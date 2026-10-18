@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-001-v1-resolution-018bec90-445f-4a88-b8bc-228f8335dee6",
+  "goal": {
+    "goalId": "018bec90-445f-4a88-b8bc-228f8335dee6",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:48b31d2af3d8bad4d8bca60b9f2207bd26e94f4a5f47ac324424b3c19f0561f6",
+    "pageFingerprint": "sha256:05b16a75d393bc186bf56f02a7ec893c4be1390dc1766a997ffedc5d3d0174f6",
+    "goalReviewContextFingerprint": "sha256:f83a9e86aa3adb01e1ff305a2d9336d40351d6f43de81810f4c3e3cf65d8415c",
+    "finalText": {
+      "titleDe": "Leitfähigkeit von Stoffen vergleichen",
+      "titleEn": "Compare conductivity of substances",
+      "descriptionDe": "Die lernende Person kann feste, flüssige und gelöste Stoffe im Hinblick auf elektrische Leitfähigkeit vergleichen und Leiter sowie Nichtleiter fachlich unterscheiden.",
+      "descriptionEn": "The learner can compare solid, liquid, and dissolved substances with respect to electrical conductivity and distinguish conductors from insulators."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-001-v1-a",
+      "campaignDigest": "sha256:96c597e11ef28d55b630202e1c2e03a243872e2f50e9cf9cc7c0df7a79d9cd3d",
+      "roundId": "chemie-final-current-context-d-001-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-001-v1-independent-a",
+      "reviewInputFingerprint": "sha256:84cb9df1bd7fef7e2302044cdb80cba5ac86f4d3a52db0bc7c6a09292793cfa8",
+      "goalReviewContextFingerprint": "sha256:f83a9e86aa3adb01e1ff305a2d9336d40351d6f43de81810f4c3e3cf65d8415c",
+      "batchId": "chemie-final-current-context-d-001-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch001-20261018",
+      "runManifestDigest": "sha256:b4b3f17dceb9e1e7c4c82361c9c800e5f7de932b46dcf704e3d6a847860b03be",
+      "resultsDigest": "sha256:c9861ef6d236ae81946747b3d1c7abde302f5f013b5c93ce5edad0870065fc31",
+      "recordId": "codex-reviewer-a-final163-batch001-20261018.001",
+      "recordDigest": "sha256:c1668a2e135844ae6c9a27a2f27fa88e99072ada7caf6581349390d57345c5f3"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-001-v1-b",
+      "campaignDigest": "sha256:1b8713019a8e252039fa354999df05261e1c78eedb890a563b29e531dc70ec46",
+      "roundId": "chemie-final-current-context-d-001-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-001-v1-independent-b",
+      "reviewInputFingerprint": "sha256:84cb9df1bd7fef7e2302044cdb80cba5ac86f4d3a52db0bc7c6a09292793cfa8",
+      "goalReviewContextFingerprint": "sha256:f83a9e86aa3adb01e1ff305a2d9336d40351d6f43de81810f4c3e3cf65d8415c",
+      "batchId": "chemie-final-current-context-d-001-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-001-20261018",
+      "runManifestDigest": "sha256:13eb6055a4aa8d4d04be4cfd1c0c77f4b206a289df96a67139c1efd68e08d32d",
+      "resultsDigest": "sha256:22da53163d50636a69ec31425cecc056999735ee0193be8470171a3f650414eb",
+      "recordId": "chemie-final163-native-b-001-20261018:018bec90-445f-4a88-b8bc-228f8335dee6",
+      "recordDigest": "sha256:43d709f2f04b81c4e98687fba8e3c63a5a9279b35d1a31e0bb5160f557593911"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:706dc6e69548381d583e44f00cb7a2768b65125ce38e115ffeb99e090ece4f50"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-001-20261018-v1",
+    "manifestDigest": "sha256:2947637162d222247361434cafc2291ef0d74af62baa53f4b2c0b9ac2349ad89",
+    "manifestFingerprint": "sha256:240821b7f7c94c99aba57979178f196e85ea04ebc4d569c964de2f5230011117",
+    "decisionId": "chemie-final163-paired-D-only-001-20261018-v1-decision-001"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-001-20261018-v1-decision-001",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:22:46.792Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch001-20261018.001): Der zweisprachige Vergleich nennt die Stoffzustände korrekt. Das vollständige P trennt mobile Elektronen/Ionen und neutrale Moleküle, einschließlich des sicheren papierbasierten KBr-Transfers; der Nachfolger zum Metallmodell wird nicht vorweggenommen. B (chemie-final163-native-b-001-20261018:018bec90-445f-4a88-b8bc-228f8335dee6): Fest/flüssig/gelöst und Leiter/Nichtleiter sind bilingual klar begrenzt; das aktuelle P konkretisiert Ladungsträger und einen sicheren Papiertransfer. Die folgende Metallmodellbildung wird nicht als neue Pflicht importiert.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch001-20261018.001; chemie-final163-native-b-001-20261018:018bec90-445f-4a88-b8bc-228f8335dee6). Their current English understanding evidence is retained: A: Conductivity depends on mobile charge carriers and substance state; being liquid does not automatically imply conduction. B: Conductivity depends on mobile charge carriers and physical state. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Leitfähigkeit hängt von beweglichen Ladungsträgern und vom Stoffzustand ab; flüssig bedeutet nicht automatisch leitend.",
+      "essentialUnderstandingEn": "Conductivity depends on mobile charge carriers and substance state; being liquid does not automatically imply conduction.",
+      "observablePerformanceDe": "Ordnet Metall, festes Salz, Salzlösung und Zuckerlösung anhand gleicher Messbedingungen und begründet die Unterschiede mit Elektronen oder Ionen.",
+      "observablePerformanceEn": "Classifies metal, solid salt, salt solution and sugar solution under matched measurement conditions and explains differences through electrons or ions.",
+      "transferExpectationDe": "Erklärt an einer neuen Salzschmelze gegenüber einer molekularen Flüssigkeit, weshalb Leitung auch ohne Wasser möglich ist.",
+      "transferExpectationEn": "Explains for a fresh salt melt versus a molecular liquid why conduction can occur without water."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-2e2d6f30c042d994c4fde95f95c250ea923d7a4aa1a89d3be5d109ba15f92a16",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:5deb25fc37e66a7b00dd8a6fcd627273de2098b28c857e901671918039c18991"
+}

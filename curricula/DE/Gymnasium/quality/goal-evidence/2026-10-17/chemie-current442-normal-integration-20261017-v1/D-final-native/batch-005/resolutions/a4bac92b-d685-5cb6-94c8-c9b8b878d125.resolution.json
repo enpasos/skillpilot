@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-005-v1-resolution-a4bac92b-d685-5cb6-94c8-c9b8b878d125",
+  "goal": {
+    "goalId": "a4bac92b-d685-5cb6-94c8-c9b8b878d125",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:01c3e35b80133e3fab9286e0b079727b5047fb22b6dac67344e0048dc4fd6365",
+    "pageFingerprint": "sha256:7f292010711a4a3fed831246cdb48826ee2ee942ef194fe52c61f28fdbf33369",
+    "goalReviewContextFingerprint": "sha256:1e1a9f5168ad36dae0895d6633f7dfeeb4aa04217f2f6cb1f2cca7d6575a014f",
+    "finalText": {
+      "titleDe": "Substitutionsmechanismen differenzieren (LK)",
+      "titleEn": "Differentiate substitution mechanisms (LK)",
+      "descriptionDe": "Die lernende Person kann SN1- und SN2-Mechanismen gegenüberstellen und sterische sowie induktive Effekte diskutieren.",
+      "descriptionEn": "The learner can contrast SN1 and SN2 mechanisms and discuss steric and inductive effects."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-005-v1-a",
+      "campaignDigest": "sha256:c8471cd797dec10abf7198c697339e7dc3a58537ed0f9852f8cf26345c1a666f",
+      "roundId": "chemie-final-current-context-d-005-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-005-v1-independent-a",
+      "reviewInputFingerprint": "sha256:ea93568bfdabdff3f714ec5d94b8dc59252520722e0aa10aa39a38e8541c8349",
+      "goalReviewContextFingerprint": "sha256:1e1a9f5168ad36dae0895d6633f7dfeeb4aa04217f2f6cb1f2cca7d6575a014f",
+      "batchId": "chemie-final-current-context-d-005-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch005-20261018",
+      "runManifestDigest": "sha256:e2259ed1b412c3e3898b1487d972c903b35f39252a4a42f584bb855b91d2a437",
+      "resultsDigest": "sha256:054b020007e1d870143eca58ebb28ac20242207e4abfe68fc54ca6d6352a547c",
+      "recordId": "codex-reviewer-a-final163-batch005-20261018.017",
+      "recordDigest": "sha256:9c431589c1600ed4c018b7d9dfac975a1cf17285c79aec7d3262a5a6f296cdf0"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-005-v1-b",
+      "campaignDigest": "sha256:48da8784d2bf2a022d5106050deb7e838bedbbf7dc15498f5e8f7fd019de0920",
+      "roundId": "chemie-final-current-context-d-005-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-005-v1-independent-b",
+      "reviewInputFingerprint": "sha256:ea93568bfdabdff3f714ec5d94b8dc59252520722e0aa10aa39a38e8541c8349",
+      "goalReviewContextFingerprint": "sha256:1e1a9f5168ad36dae0895d6633f7dfeeb4aa04217f2f6cb1f2cca7d6575a014f",
+      "batchId": "chemie-final-current-context-d-005-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-005-20261018",
+      "runManifestDigest": "sha256:f156ef3bbef741b54e4c6db6d00df3cf1d510ad9b05729f1ec91bff119669db0",
+      "resultsDigest": "sha256:cdef531d33939f213e22d20615076c31b4ce9a1347b09abc4ccd1a69e5fe8995",
+      "recordId": "chemie-final163-native-b-005-20261018:a4bac92b-d685-5cb6-94c8-c9b8b878d125",
+      "recordDigest": "sha256:49678e8734c3678aba457382c3ccd8febba543ace320d98ec6d2d92313659753"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:766e419b6962da8bae4b84dd677a6b7df18782647f13f0903d77a8bff87bdb82"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-005-20261018-v1",
+    "manifestDigest": "sha256:a41a2bc6b482499a6ca79542f7bbf5db10ee5ee2b8a366942cad9362acfb6f26",
+    "manifestFingerprint": "sha256:c531460d36cff13dc7321c382660c17c38c5ef6449bf726e255ffa0bb0e06d93",
+    "decisionId": "chemie-final163-paired-D-only-005-20261018-v1-decision-017"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-005-20261018-v1-decision-017",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:31:16.405Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch005-20261018.017): Die bilingualen LK-Fassungen nennen Mechanismen und beide Effektarten. Das ganze P verwendet ein echtes sterisches Gegenbeispiel statt bloßen Etikettentausch und behauptet keine absoluten Wege allein aus Substitution. B (chemie-final163-native-b-005-20261018:a4bac92b-d685-5cb6-94c8-c9b8b878d125): Die Beschreibung fokussiert die erklärenden Effekte gegenüber der vorausgesetzten allgemeinen Donator-/Akzeptorreaktion. P verlangt keine absolute Mechanismenausschließlichkeit und nutzt ein strukturell verändertes Gegenbeispiel statt bloßer Namensabfrage.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch005-20261018.017; chemie-final163-native-b-005-20261018:a4bac92b-d685-5cb6-94c8-c9b8b878d125). Their current English understanding evidence is retained: A: SN2 needs accessible backside attack; SN1 requires suitable carbocation stabilisation under appropriate conditions. B: SN2 needs spatial backside access and SN1 sufficiently favourable carbocation formation; steric and electronic contributions act together. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "SN2 braucht zugänglichen Rückseitenangriff; SN1 benötigt geeignete Carbokationstabilisierung unter passenden Bedingungen.",
+      "essentialUnderstandingEn": "SN2 needs accessible backside attack; SN1 requires suitable carbocation stabilisation under appropriate conditions.",
+      "observablePerformanceDe": "Vergleicht einstufige und Carbokationmechanismen und begründet sterische sowie induktive Beiträge an Substraten.",
+      "observablePerformanceEn": "Compares concerted and carbocation mechanisms and explains steric and inductive contributions for substrates.",
+      "transferExpectationDe": "Widerlegt an Neopentylbromid primär gleich immer schnelle SN2 und trennt Abschirmung von primärer Carbokationinstabilität.",
+      "transferExpectationEn": "Refutes primary equals always fast SN2 using neopentyl bromide and separates shielding from primary carbocation instability."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-0807a1e998edec476ad0095a0ac960818f03d575ac67ec1d45ac331032a28504",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:ce2a4ed93b88dc496f4da7d47b11492001e0e129670be6d9cab66a82cbaab26a"
+}

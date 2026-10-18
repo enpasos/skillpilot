@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-001-v1-resolution-02dc29ae-4046-556a-b048-d64a0feb8f16",
+  "goal": {
+    "goalId": "02dc29ae-4046-556a-b048-d64a0feb8f16",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:09e5cd176edc340413f74dff28f746aeae1913848577783c47ef0c3819fd5418",
+    "pageFingerprint": "sha256:fc130045aecb09997eaa954eac1cf41933779aa0f92e3ae7ee30ccce0cf10556",
+    "goalReviewContextFingerprint": "sha256:bf7fe7b7d3840b53dd15d0e2c5b2f05a68ffe246dea1f06f635eb394449e925b",
+    "finalText": {
+      "titleDe": "Stoffe nach Struktur und Eigenschaften ordnen",
+      "titleEn": "Classify substances by structure and properties",
+      "descriptionDe": "Die lernende Person kann Ordnungsprinzipien für Stoffe beschreiben und begründen, Stoffe auf Stoff- und Teilchenebene unterscheiden und Eigenschaften auf Basis chemischer Strukturen und Gesetzmäßigkeiten erklären oder vorhersagen.",
+      "descriptionEn": "The learner can describe and justify ordering principles for substances, distinguish between substance and particle levels, and explain or predict properties based on chemical structures and regularities."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-001-v1-a",
+      "campaignDigest": "sha256:96c597e11ef28d55b630202e1c2e03a243872e2f50e9cf9cc7c0df7a79d9cd3d",
+      "roundId": "chemie-final-current-context-d-001-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-001-v1-independent-a",
+      "reviewInputFingerprint": "sha256:84cb9df1bd7fef7e2302044cdb80cba5ac86f4d3a52db0bc7c6a09292793cfa8",
+      "goalReviewContextFingerprint": "sha256:bf7fe7b7d3840b53dd15d0e2c5b2f05a68ffe246dea1f06f635eb394449e925b",
+      "batchId": "chemie-final-current-context-d-001-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch001-20261018",
+      "runManifestDigest": "sha256:b4b3f17dceb9e1e7c4c82361c9c800e5f7de932b46dcf704e3d6a847860b03be",
+      "resultsDigest": "sha256:c9861ef6d236ae81946747b3d1c7abde302f5f013b5c93ce5edad0870065fc31",
+      "recordId": "codex-reviewer-a-final163-batch001-20261018.002",
+      "recordDigest": "sha256:00ae9e4a5b227f1c53e3747b081ca10b720755c4f355e3844cc5626ce5f7a3f6"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-001-v1-b",
+      "campaignDigest": "sha256:1b8713019a8e252039fa354999df05261e1c78eedb890a563b29e531dc70ec46",
+      "roundId": "chemie-final-current-context-d-001-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-001-v1-independent-b",
+      "reviewInputFingerprint": "sha256:84cb9df1bd7fef7e2302044cdb80cba5ac86f4d3a52db0bc7c6a09292793cfa8",
+      "goalReviewContextFingerprint": "sha256:bf7fe7b7d3840b53dd15d0e2c5b2f05a68ffe246dea1f06f635eb394449e925b",
+      "batchId": "chemie-final-current-context-d-001-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-001-20261018",
+      "runManifestDigest": "sha256:13eb6055a4aa8d4d04be4cfd1c0c77f4b206a289df96a67139c1efd68e08d32d",
+      "resultsDigest": "sha256:22da53163d50636a69ec31425cecc056999735ee0193be8470171a3f650414eb",
+      "recordId": "chemie-final163-native-b-001-20261018:02dc29ae-4046-556a-b048-d64a0feb8f16",
+      "recordDigest": "sha256:3bbd65922ad2f6409a3cea67f1c5c7eb8d7c51801d9377f24028fbbca7c7658e"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:706dc6e69548381d583e44f00cb7a2768b65125ce38e115ffeb99e090ece4f50"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-001-20261018-v1",
+    "manifestDigest": "sha256:2947637162d222247361434cafc2291ef0d74af62baa53f4b2c0b9ac2349ad89",
+    "manifestFingerprint": "sha256:240821b7f7c94c99aba57979178f196e85ea04ebc4d569c964de2f5230011117",
+    "decisionId": "chemie-final163-paired-D-only-001-20261018-v1-decision-002"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-001-20261018-v1-decision-002",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:22:46.792Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch001-20261018.002): Der Prozesskompetenztext verknüpft Ordnen und Vorhersagen sinnvoll über Struktur. Beide P-Fälle prüfen verschiedene Struktur-Eigenschafts-Beziehungen und vermeiden eine Identifikation allein aus Summenformel oder Löslichkeit; Fachsprache ist als Voraussetzung abgegrenzt. B (chemie-final163-native-b-001-20261018:02dc29ae-4046-556a-b048-d64a0feb8f16): Die Verben ordnen, unterscheiden und vorhersagen bilden eine zusammenhängende Struktur-Eigenschaftskompetenz. P prüft zwei verschiedene chemische Ordnungen und begrenzt die Vorhersage; die vorgelagerte Fachsprache genügt als Kontext.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch001-20261018.002; chemie-final163-native-b-001-20261018:02dc29ae-4046-556a-b048-d64a0feb8f16). Their current English understanding evidence is retained: A: Substance classes use justified structural criteria; macroscopic properties are explained through particle structure and interactions. B: Structure-based classification connects substance classes to justified property predictions; molecular formula and observation are not complete structural evidence. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Stoffklassen beruhen auf begründeten Strukturkriterien; makroskopische Eigenschaften werden mit Teilchenaufbau und Wechselwirkungen erklärt.",
+      "essentialUnderstandingEn": "Substance classes use justified structural criteria; macroscopic properties are explained through particle structure and interactions.",
+      "observablePerformanceDe": "Ordnet Kupfer, Salz und Zucker, trennt Leitfähigkeitsbefund von Teilchenmodell und begründet eine Eigenschaftsvorhersage.",
+      "observablePerformanceEn": "Classifies copper, salt and sugar, separates conductivity observations from particle models and justifies a property prediction.",
+      "transferExpectationDe": "Vergleicht isomere Moleküle mit verschiedener Wasserstoffbrückenfähigkeit und begrenzt die qualitative Siedepunktvorhersage.",
+      "transferExpectationEn": "Compares isomeric molecules with different hydrogen-bonding ability and limits the qualitative boiling-point prediction."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-18531e927bc639f0fba4207e37822cf2db3d80a399ace690e3116b7aa40a45e5",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:56685f5a5a4a2490fec95984994b36193027373bd4ccd8c235e3e1694187c2a5"
+}

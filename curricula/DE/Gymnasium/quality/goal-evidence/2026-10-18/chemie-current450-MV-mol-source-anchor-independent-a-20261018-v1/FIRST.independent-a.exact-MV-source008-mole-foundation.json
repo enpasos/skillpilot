@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "chemie-current450-MV-mol-source-anchor-independent-a-20261018-v1",
+  "reviewer": {
+    "reviewerId": "independent-a",
+    "role": "informed independent bounded source reviewer",
+    "tool": "Codex agent via exec_command, pdftoppm, pdftotext and actual view_image",
+    "provider": "OpenAI",
+    "model": "GPT-6 (Codex)",
+    "modelRevision": null
+  },
+  "createdAt": "2026-10-18T01:48:05.130596+00:00",
+  "decision": "APPROVE",
+  "active": false,
+  "scope": "Exactly one DE-MV source-to-existing-acquisition-foundation relationship; no normal activation and no new D/P/A/M/V judgment.",
+  "source": {
+    "sourceGoalId": "mv-chem-sekii-mv-ch-sekii-2022-erprobung-q-saeure-base-loeslichkeit-008-34c9321f",
+    "sourceLandscapeId": "4f98d47b-8536-5021-8bf1-09761eff8050",
+    "sourceFile": {
+      "path": "curricula/DE/Gymnasium/input/MV/upper-secondary/source-extraction/DE_MV_CHEMIE_SEKII_RAHMENPLAN_ERPROBUNGSFASSUNG_2022.source-extraction.json",
+      "sha256": "1781d86d4e930cac1047bb648070794e473253bfdef210d6bdca57ceae5d53a5",
+      "bytes": 236971
+    },
+    "pointer": "/sourceGoals/69",
+    "wholeSourceObjectInput": "INPUT.whole-two-current-goals-profiles-and-exact-source008.json#/wholeSourceGoal",
+    "physicalPage": 28,
+    "printedPage": 24,
+    "officialCourse": "Common GK/LK Qualifikationsphase; additional LK material begins on physical29/printed25.",
+    "selectedLiteralPrimaryBullet": "Berechnungen von Stoffmengenkonzentrationen, Stoffmengen sowie die Massen von Säuren und Basen",
+    "selectedPartOfWholeExtractedSource008": "Only the quantitative amount/concentration/mass bullet under Säure-Base-Titration; Source008 also includes indicators and strong-acid/base titration curves, which are not all credited to the mole foundation."
+  },
+  "relationship": {
+    "jurisdiction": "DE-MV",
+    "foundationGoalId": "1dc15fa2-fca4-56b0-b5c1-4d215613dde0",
+    "dependentGoalId": "02634fdd-c8ba-591a-b240-77129b1bebb8",
+    "existingRequiresEdge": {
+      "from": "02634fdd-c8ba-591a-b240-77129b1bebb8",
+      "to": "1dc15fa2-fca4-56b0-b5c1-4d215613dde0"
+    },
+    "semanticRole": "authored-acquisition-foundation",
+    "officialWholeSourceCredit": false,
+    "newOfficialLkDuty": false,
+    "sourceCoverage": "partial contextual acquisition foundation; whole source008 is not covered by goal1dc",
+    "existingCurrentGoalProfileUnchanged": true
+  },
+  "evidenceModel": {
+    "de": "Der konkrete gemeinsame Rechenauftrag verlangt bedeutungshaltige Stoffmengen mit eindeutiger Einheit mol. Das bestehende Ziel1dc mit ganzem aktuellen P klärt benannte Elementarteilchen, Molekül-/Atom-/Ionen-/Formeleinheitenbezug und die Grenze gleicher Stoffmenge gegenüber gleicher Masse. Dies ist eine passende Erwerbsgrundlage des bereits direkt abhängigen Titrationsziels02634. Dessen ganzes P lehrt die formale analytische Stoffmenge je ursprünglichem Probenvolumen und fordert eine begründete stöchiometrische Auswertung.",
+    "en": "The concrete common calculation demand requires meaningful amounts of substance expressed unambiguously in mol. Existing goal1dc and its whole current profile establish specified entities, molecule/atom/ion/formula-unit reference and the distinction between equal amounts and equal masses. This is a suitable acquisition foundation for already directly dependent titration goal02634. Its whole profile develops formal analytical amount per original sample volume and requires justified stoichiometric evaluation."
+  },
+  "actualPresentTransfer": {
+    "foundation": "O2/He equal entity amounts versus constituent O-atom amounts and unequal masses; fresh NaCl ionic-lattice case distinguishes formula units, each ion kind and combined-ion amount. No numerical Avogadro calculation is required by these actual two cases.",
+    "dependent": "Four whole current cases retain planning, supervised actual conduct, reaction/indicator transfer, acquired concentration reference, fresh aliquot and diprotic dilution/back-calculation. Paper-data cases explicitly provide no learner execution evidence.",
+    "boundedConclusion": "The source calculation bullet supports teaching the existing mole foundation in this MV route; it does not independently require each foundation entity example, cover all masses/calculation skills, or prove any learner mastered or performed them."
+  },
+  "limits": [
+    "No whole practical titration source approval: the separate SE Neutralisationstitration demand remains a real supervised conduct obligation.",
+    "No LK-only additional requirement is transferred from the next page; common calculation context only.",
+    "No exact official source equivalence for every whole1dc P case, numerical Avogadro conversion or all possible entity transfers.",
+    "No normal mapping, view, canonical, profile, applicability or registry mutation. No new image or science certification.",
+    "Earlier A/B current decisions and original-approval input were not read before this FIRST; only the specified neighboring raw source-cell file was read."
+  ],
+  "input": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-MV-mol-source-anchor-independent-a-20261018-v1/INPUT.whole-two-current-goals-profiles-and-exact-source008.json",
+    "sha256": "38d8c2a9bdf880f568043ac038d56d268e657b9df25cb4bcd1e1ee601af88150",
+    "bytes": 49720
+  },
+  "checks": {
+    "actualWholeCurrentCanonicalEqualsNeutral": true,
+    "actualNativeProfileRowsEqualWholeNeutralProfiles": true,
+    "actualWholeSource008EqualsPinnedRawCell": true,
+    "existingDirectRequiresEdge": true,
+    "wholeCurrentProfilesExactOldRawComparison": true,
+    "actualPrimaryPageViewed": true,
+    "firstBeforeOtherCurrentDecisions": true
+  }
+}

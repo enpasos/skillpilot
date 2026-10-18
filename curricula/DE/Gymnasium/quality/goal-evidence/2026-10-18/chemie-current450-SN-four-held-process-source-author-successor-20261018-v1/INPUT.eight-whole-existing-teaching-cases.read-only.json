@@ -1,0 +1,527 @@
+{
+  "role": "Whole existing authored teaching-case inputs, not new material or learner performance; actual current P supplies its current extended fresh-transfer demands.",
+  "cases": [
+    {
+      "sourceFile": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-targeted-material-corrections-author-v9/fifty-two-cases.de-en.author-candidate.json",
+        "sha256": "02df2de06850f30f6e57e6b6aeedb0565cf136b70aded857b9d01d6c958c2660",
+        "bytes": 315597
+      },
+      "jsonPointer": "/cases/12",
+      "wholeMaterial": {
+        "caseKey": "lower-chemical-data-interpretation-temperature-trend",
+        "candidateKey": "lower-chemical-data-interpretation",
+        "candidateGoalId": null,
+        "originalFamilyGoalId": "49b13b33-34b7-5e4e-861c-b21082cb9922",
+        "status": "ai_candidate",
+        "reviewStatus": "needs_human_review",
+        "evidenceLevel": "E1",
+        "generationLevel": "G1",
+        "materialOrigin": "SkillPilot-authored teaching scenario; numbers are supplied model/reference data, not learner measurements",
+        "learnerPerformanceRecorded": false,
+        "humanApproval": false,
+        "humanTrial": false,
+        "suppliedMaterial": {
+          "de": "Modellmessreihe: T = 20/30/40 °C; Auflösezeiten für 2,0 g Zucker in 50 mL bei gleichem Rühren = 90/65/48 s, Wiederholungen = 94/63/50 s. Vorgegebene Hypothese: Erhöhte Temperatur verkürzt unter diesen Bedingungen die Auflösezeit.",
+          "en": "Model measurement series: T = 20/30/40 °C; dissolution times for 2.0 g sugar in 50 mL at equal stirring = 90/65/48 s; repeats = 94/63/50 s. Supplied hypothesis: Increased temperature reduces dissolution time under these conditions."
+        },
+        "learnerTask": {
+          "de": "Erzeuge eine geeignete Tabelle und ein beschriftetes Diagramm, erläutere den Trend und beurteile die Hypothese mit den Wiederholungen. Unterscheide Geschwindigkeit und Löslichkeitsgrenze.",
+          "en": "Create an appropriate table and labelled graph, explain the trend and evaluate the hypothesis using repeats. Distinguish rate and solubility limit."
+        },
+        "expectedAnswer": {
+          "de": "Mittelwerte 92/64/49 s; T auf x-Achse, Zeit auf y-Achse mit Einheiten. Zeiten sinken wiederholt deutlich; das stützt die Hypothese im Bereich 20–40 °C. Keine lineare Abnahme für alle Temperaturen und keine größere maximal lösbare Masse sind nachgewiesen. Größere Wiederholungsstreuung wäre im Diagramm sichtbar zu machen.",
+          "en": "Means are 92/64/49 s; T on x-axis, time on y-axis with units. Times repeatedly fall clearly; this supports the hypothesis at 20–40 °C. Neither a linear decrease at all temperatures nor a larger maximum dissolvable mass is established. Larger repeat scatter should be visible in the graph."
+        },
+        "requiredAssessmentCriteria": [
+          {
+            "criterionKey": "lower-chemical-data-interpretation-temperature-trend-C1",
+            "meaning": {
+              "de": "Geeignete Darstellung mit richtigen Mittelwerten und Einheiten.",
+              "en": "Appropriate representation with correct means and units."
+            }
+          },
+          {
+            "criterionKey": "lower-chemical-data-interpretation-temperature-trend-C2",
+            "meaning": {
+              "de": "Trend wird erklärt und mit Wiederholungen auf die Hypothese bezogen.",
+              "en": "Trend is explained and related to the hypothesis using repeats."
+            }
+          },
+          {
+            "criterionKey": "lower-chemical-data-interpretation-temperature-trend-C3",
+            "meaning": {
+              "de": "Reichweite und nicht gemessene Löslichkeitsgrenze bleiben begrenzt.",
+              "en": "Scope and unmeasured solubility limit remain bounded."
+            }
+          }
+        ],
+        "transfer": {
+          "de": "Bei 50 °C werden 80/45 s gemessen: Erkläre, weshalb vor einer Trendbehauptung Versuchsbedingungen geprüft werden müssen.",
+          "en": "At 50 °C times are 80/45 s: explain why conditions must be checked before claiming a trend."
+        },
+        "sourceOperatorScopeContractDe": "BY C8/C9-Auswertung und C10-Trends/Beziehungen bleiben fallbezogen erhalten. Tabellen und digitale Erfassung können bereits SekI sein; das Werkzeug allein ist keine Oberstufenleistung. Der Quellenanspruch wird nicht auf rein grafisches Ablesen reduziert. Die ausgewertete Ausgangshypothese darf vorgegeben sein; ihre eigene Formulierung ist keine universelle Voraussetzung dieses anderen Leistungsprodukts.",
+        "nativeEvidenceApproved": false,
+        "strictCompletionsAdded": 0
+      }
+    },
+    {
+      "sourceFile": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-targeted-material-corrections-author-v9/fifty-two-cases.de-en.author-candidate.json",
+        "sha256": "02df2de06850f30f6e57e6b6aeedb0565cf136b70aded857b9d01d6c958c2660",
+        "bytes": 315597
+      },
+      "jsonPointer": "/cases/13",
+      "wholeMaterial": {
+        "caseKey": "lower-chemical-data-interpretation-conductivity-series",
+        "candidateKey": "lower-chemical-data-interpretation",
+        "candidateGoalId": null,
+        "originalFamilyGoalId": "49b13b33-34b7-5e4e-861c-b21082cb9922",
+        "status": "ai_candidate",
+        "reviewStatus": "needs_human_review",
+        "evidenceLevel": "E1",
+        "generationLevel": "G1",
+        "materialOrigin": "SkillPilot-authored teaching scenario; numbers are supplied model/reference data, not learner measurements",
+        "learnerPerformanceRecorded": false,
+        "humanApproval": false,
+        "humanTrial": false,
+        "suppliedMaterial": {
+          "de": "Physikalisch plausibel skalierte synthetische Lehrdaten bei 25 °C: c(NaCl) = 0,0/0,5/1,0/1,5 g/L; Leitfähigkeit κ = 3/1020/1990/2950 µS/cm. Eine Saccharoseprobe mit 1,0 g/L liefert 4 µS/cm. Die Blindprobe 3 und Vergleichsprobe 4 werden nicht mitskaliert. Als Plausibilitätsanker liefert ein herstellerbeschrifteter 1000-mg/L-NaCl-Standard 1990 µS/cm bei 25 °C; die Reihe bleibt eine eigene Lehrmodellreihe, keine echten Lernendenmessungen oder zertifizierte Kalibration. Hypothese: Mehr NaCl erhöht in dieser Reihe κ; nicht jede gelöste Substanz hat dieselbe Wirkung.",
+          "en": "Physically plausibly scaled synthetic teaching data at 25 °C: c(NaCl) = 0.0/0.5/1.0/1.5 g/L; conductivity κ = 3/1020/1990/2950 µS/cm. A sucrose sample at 1.0 g/L gives 4 µS/cm. The blank 3 and comparison 4 are not scaled. A manufacturer-labelled 1000-mg/L NaCl standard gives 1990 µS/cm at 25 °C as a plausibility anchor; this remains an own teaching-model series, not real learner measurements or certified calibration. Hypothesis: More NaCl raises κ in this series; not every dissolved substance has the same effect."
+        },
+        "learnerTask": {
+          "de": "Wähle eine passende Darstellung, beschreibe Beziehungen und erkläre mit beweglichen Ladungsträgern den Hypothesenbefund; prüfe die Rolle der Vergleichsprobe.",
+          "en": "Choose a suitable representation, describe relationships and explain the hypothesis finding using mobile charge carriers; assess the comparison sample."
+        },
+        "expectedAnswer": {
+          "de": "κ gegen c zeigt wachsende Leitfähigkeit, nahe linear in dieser kleinen Reihe. NaCl liefert bewegliche Ionen, Saccharose überwiegend ungeladene Moleküle; ihr Wert nahe Blindprobe widerlegt „jedes Gelöste leitet gleich“. Der Stoffvergleich unterstützt einen Ionenbezug, bestimmt aber keine unbekannte Salzidentität.",
+          "en": "κ against c shows increasing conductivity, approximately linear within this small series. NaCl supplies mobile ions, sucrose mainly uncharged molecules; its near-blank value contradicts “every dissolved substance conducts equally”. The comparison supports an ion interpretation but does not identify an unknown salt."
+        },
+        "requiredAssessmentCriteria": [
+          {
+            "criterionKey": "lower-chemical-data-interpretation-conductivity-series-C1",
+            "meaning": {
+              "de": "Achsen/Einheiten und Stoffvergleich sind korrekt.",
+              "en": "Axes/units and substance comparison are correct."
+            }
+          },
+          {
+            "criterionKey": "lower-chemical-data-interpretation-conductivity-series-C2",
+            "meaning": {
+              "de": "Datenbeziehung und chemische Deutung werden verbunden.",
+              "en": "Data relationship and chemical interpretation are connected."
+            }
+          },
+          {
+            "criterionKey": "lower-chemical-data-interpretation-conductivity-series-C3",
+            "meaning": {
+              "de": "Hypothesenstützung bleibt auf Bedingungen und Bereich beschränkt.",
+              "en": "Hypothesis support remains restricted to conditions and range."
+            }
+          }
+        ],
+        "transfer": {
+          "de": "Beschreibe, wie steigende Temperatur bei nur einer Probe die Interpretation stören könnte.",
+          "en": "Describe how rising temperature in just one sample could confound the interpretation."
+        },
+        "sourceOperatorScopeContractDe": "BY C8/C9-Auswertung und C10-Trends/Beziehungen bleiben fallbezogen erhalten. Tabellen und digitale Erfassung können bereits SekI sein; das Werkzeug allein ist keine Oberstufenleistung. Der Quellenanspruch wird nicht auf rein grafisches Ablesen reduziert. Die ausgewertete Ausgangshypothese darf vorgegeben sein; ihre eigene Formulierung ist keine universelle Voraussetzung dieses anderen Leistungsprodukts.",
+        "nativeEvidenceApproved": false,
+        "strictCompletionsAdded": 0
+      }
+    },
+    {
+      "sourceFile": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-targeted-material-corrections-author-v9/fifty-two-cases.de-en.author-candidate.json",
+        "sha256": "02df2de06850f30f6e57e6b6aeedb0565cf136b70aded857b9d01d6c958c2660",
+        "bytes": 315597
+      },
+      "jsonPointer": "/cases/16",
+      "wholeMaterial": {
+        "caseKey": "data-validity-test-not-proof",
+        "candidateKey": "data-validity",
+        "candidateGoalId": null,
+        "originalFamilyGoalId": "49b13b33-34b7-5e4e-861c-b21082cb9922",
+        "status": "ai_candidate",
+        "reviewStatus": "needs_human_review",
+        "evidenceLevel": "E1",
+        "generationLevel": "G1",
+        "materialOrigin": "SkillPilot-authored teaching scenario; numbers are supplied model/reference data, not learner measurements",
+        "learnerPerformanceRecorded": false,
+        "humanApproval": false,
+        "humanTrial": false,
+        "suppliedMaterial": {
+          "de": "Fiktiver Farbtest T soll Stoff X anzeigen. Validierungsblatt: Blindprobe Wasser farblos; bekannte X-Probe farbig; bekannte Y-Probe ebenfalls farbig; unbekannte U farbig. U wurde ohne dokumentierte Verdünnung erhitzt. Quelle S erklärt ausdrücklich Kreuzreaktion mit Y; Herstellertext H nennt nur „X-Test“. Keine Gesundheitsentscheidung.",
+          "en": "Fictional colour test T is intended to indicate substance X. Validation sheet: water blank colourless; known X sample coloured; known Y sample also coloured; unknown U coloured. U was heated without documented dilution. Source S explicitly explains cross-reaction with Y; manufacturer text H only says “X test”. No health decision."
+        },
+        "learnerTask": {
+          "de": "Beurteile Gültigkeit, geeignete Quellen, Blind-/Positivkontrollen und Tragweite von „U enthält X“. Benenne einen Verfahrensfehler und eine geeignete Folgemethode.",
+          "en": "Assess validity, suitable sources, blank/positive controls and the scope of “U contains X”. Identify a procedure error and a suitable follow-up method."
+        },
+        "expectedAnswer": {
+          "de": "Die Blank-/Positivkontrolle zeigt grundsätzliches Testansprechen; Y macht den Test nicht spezifisch. U-Farbe ist ein Hinweis auf eine reagierende Komponente, kein eindeutiger X-Nachweis. S ist für Spezifität relevanter als das verkürzte Etikett H; unbekannte Verdünnung/Erhitzung kann Signal verändern. Eine unabhängig spezifischere Analyse mit dokumentierten Bedingungen ist nötig. Blindproben korrigieren keinen grundsätzlich unspezifischen Reaktionsmechanismus. Weil X/Y hier keine Stoffidentitäten oder Trennmerkmale haben, darf kein benanntes Gerät ungeprüft als X-spezifisch gelten. Akzeptabel ist eine konkrete kontrollierte Wiederholung mit dokumentierter Verdünnung/Temperatur und eine begründete Planung zur Validierung einer ergänzenden Methode an bekannten X-, Y- und Blindproben. Für einen eindeutigen X-Nachweis muss deren Spezifität erst belegt werden; Wiederholung des unspezifischen Tests allein identifiziert X weiterhin nicht.",
+          "en": "Blank/positive controls show that the test responds in principle; Y makes it non-specific. U colour indicates a reacting component, not unique proof of X. S is more relevant to specificity than the shortened label H; unknown dilution/heating may alter the signal. An independent more specific analysis under documented conditions is needed. Blanks do not correct an inherently non-specific reaction mechanism. Because X/Y have no identities or discriminating properties here, no named instrument may be presumed X-specific. Accept a concrete controlled repeat with documented dilution/temperature and a justified plan to validate an additional method against known X, Y and blank samples. Its specificity must first be established for unique proof of X; repeating the non-specific test alone still does not identify X."
+        },
+        "requiredAssessmentCriteria": [
+          {
+            "criterionKey": "data-validity-test-not-proof-C1",
+            "meaning": {
+              "de": "Kontrollen, Kreuzreaktion und Verfahrensbedingungen werden ausgewertet.",
+              "en": "Controls, cross-reaction and procedure conditions are evaluated."
+            }
+          },
+          {
+            "criterionKey": "data-validity-test-not-proof-C2",
+            "meaning": {
+              "de": "Hinweis und eindeutiger Nachweis werden sauber unterschieden.",
+              "en": "Indication and unique proof are clearly distinguished."
+            }
+          },
+          {
+            "criterionKey": "data-validity-test-not-proof-C3",
+            "meaning": {
+              "de": "Quellenwahl und konkrete Folgemethode/Verbesserung sind begründet. Eine Folgemethode ist als zu validierender Vorschlag zu begründen; unbekannte X/Y-Eigenschaften begründen keine bereits bewiesene Gerätespezifität.",
+              "en": "Source choice and a specific follow-up method/improvement are justified. Justify a follow-up method as a proposal requiring validation; unknown X/Y properties do not establish instrument specificity."
+            }
+          }
+        ],
+        "transfer": {
+          "de": "Wenn Y ausgeschlossen wird, erkläre, welche weiteren Informationen vor einem eindeutigen Nachweis noch fehlen können.",
+          "en": "If Y is excluded, explain what further information may still be missing before unique proof."
+        },
+        "sourceOperatorScopeContractDe": "BY C9 Fehlerbezug, C10 Gültigkeit, C11 Mess-/Verfahrensfehler und C12/13 B3 Tragweite; C12.3.3 Testergebniswert benötigt im Fall zudem geeignete Quellen, Blindproben und Hinweis/Nachweis-Unterscheidung. Diese Spezialisierung ist nur partielle Prozessdeckung.",
+        "nativeEvidenceApproved": false,
+        "strictCompletionsAdded": 0
+      }
+    },
+    {
+      "sourceFile": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-targeted-material-corrections-author-v9/fifty-two-cases.de-en.author-candidate.json",
+        "sha256": "02df2de06850f30f6e57e6b6aeedb0565cf136b70aded857b9d01d6c958c2660",
+        "bytes": 315597
+      },
+      "jsonPointer": "/cases/17",
+      "wholeMaterial": {
+        "caseKey": "data-validity-temperature-confound",
+        "candidateKey": "data-validity",
+        "candidateGoalId": null,
+        "originalFamilyGoalId": "49b13b33-34b7-5e4e-861c-b21082cb9922",
+        "status": "ai_candidate",
+        "reviewStatus": "needs_human_review",
+        "evidenceLevel": "E1",
+        "generationLevel": "G1",
+        "materialOrigin": "SkillPilot-authored teaching scenario; numbers are supplied model/reference data, not learner measurements",
+        "learnerPerformanceRecorded": false,
+        "humanApproval": false,
+        "humanTrial": false,
+        "suppliedMaterial": {
+          "de": "Neu skaliertes synthetisches Lehrmodell zur Leitfähigkeit zweier NaCl-Proben: A 1,0 g/L bei 20 °C: 1800 µS/cm; B 1,0 g/L bei 35 °C: 2300 µS/cm. Messgerät ohne Temperaturkompensation; Kontrolle A bei 35 °C: 2298 µS/cm. Behauptung: B enthält deutlich mehr Salz. Für diese modellierte Messreihe bleibt die grobe Wiederholstreuung einer Einzelmessung ausdrücklich ±3 µS/cm; sie wurde nicht mit Konzentrations-/Leitfähigkeitskorrektur multipliziert und ist keine vollständige Messunsicherheit. Die Kontrollzahl 2298 ist gezielt neu angesetzt, damit temperaturgleiche Werte 2 µS/cm auseinanderliegen; es werden keine echten Messungen behauptet.",
+          "en": "Rescaled synthetic teaching model for conductivity of two NaCl samples: A 1.0 g/L at 20 °C: 1800 µS/cm; B 1.0 g/L at 35 °C: 2300 µS/cm. Meter lacks temperature compensation; control A at 35 °C: 2298 µS/cm. Claim: B contains much more salt. For this modelled measurement series one measurement explicitly retains the rough ±3 µS/cm repeat scatter; it was not multiplied with the concentration/conductivity correction and is not full measurement uncertainty. The control value 2298 is deliberately newly set so the matched-temperature values differ by 2 µS/cm; no real measurements are claimed."
+        },
+        "learnerTask": {
+          "de": "Prüfe, welche Folgerung durch Daten getragen wird, welche Störgröße vorliegt und wie ein gültiger Stoffmengenvergleich verbessert werden kann.",
+          "en": "Assess which conclusion the data support, the confounder present and how to improve a valid amount comparison."
+        },
+        "expectedAnswer": {
+          "de": "Die 500-µS/cm-Differenz ist mit Temperatur gekoppelt; Kontrolle A35 liegt innerhalb grober Streuung bei B35. Daten belegen kein Mehr an Salz in B. Gleiche Temperatur, Standards, Wiederholungen und bekannte Kompensation/gleiches Ionensystem sind nötig. Streuungsangabe ist nicht die vollständige Messunsicherheit; selbst temperaturgleiche Leitfähigkeit wäre bei unbekannten Ionensorten keine eindeutige NaCl-Konzentration.",
+          "en": "The 500-µS/cm difference is confounded by temperature; A35 control lies within rough scatter of B35. Data do not establish more salt in B. Equal temperature, standards, repeats and known compensation/the same ion system are needed. The scatter estimate is not full measurement uncertainty; even equal-temperature conductivity would not uniquely determine NaCl concentration for unknown ion species."
+        },
+        "requiredAssessmentCriteria": [
+          {
+            "criterionKey": "data-validity-temperature-confound-C1",
+            "meaning": {
+              "de": "Temperatur wird anhand der Kontrollmessung als Störgröße begründet.",
+              "en": "Temperature is justified as a confounder using the control."
+            }
+          },
+          {
+            "criterionKey": "data-validity-temperature-confound-C2",
+            "meaning": {
+              "de": "Nicht getragene Konzentrationsbehauptung wird zurückgewiesen.",
+              "en": "The unsupported concentration claim is rejected."
+            }
+          },
+          {
+            "criterionKey": "data-validity-temperature-confound-C3",
+            "meaning": {
+              "de": "Konkrete methodische Verbesserung und Reichweitengrenze werden genannt.",
+              "en": "Specific method improvement and scope limit are identified."
+            }
+          }
+        ],
+        "transfer": {
+          "de": "Plane den Vergleich, wenn Probe B zusätzlich Saccharose enthält; erläutere die Grenze reiner Leitfähigkeitsdaten.",
+          "en": "Plan the comparison if B additionally contains sucrose; explain the limit of conductivity-only data."
+        },
+        "sourceOperatorScopeContractDe": "BY C9 Fehlerbezug, C10 Gültigkeit, C11 Mess-/Verfahrensfehler und C12/13 B3 Tragweite; C12.3.3 Testergebniswert benötigt im Fall zudem geeignete Quellen, Blindproben und Hinweis/Nachweis-Unterscheidung. Diese Spezialisierung ist nur partielle Prozessdeckung.",
+        "nativeEvidenceApproved": false,
+        "strictCompletionsAdded": 0
+      }
+    },
+    {
+      "sourceFile": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-targeted-material-corrections-author-v9/fifty-two-cases.de-en.author-candidate.json",
+        "sha256": "02df2de06850f30f6e57e6b6aeedb0565cf136b70aded857b9d01d6c958c2660",
+        "bytes": 315597
+      },
+      "jsonPointer": "/cases/24",
+      "wholeMaterial": {
+        "caseKey": "sek1-source-information-cleaning-advice",
+        "candidateKey": "sek1-source-information",
+        "candidateGoalId": null,
+        "originalFamilyGoalId": "b6327e98-8ab9-5d7f-b826-4023bc1a56a7",
+        "status": "ai_candidate",
+        "reviewStatus": "needs_human_review",
+        "evidenceLevel": "E1",
+        "generationLevel": "G1",
+        "materialOrigin": "SkillPilot-authored teaching scenario; numbers are supplied model/reference data, not learner measurements",
+        "learnerPerformanceRecorded": false,
+        "humanApproval": false,
+        "humanTrial": false,
+        "suppliedMaterial": {
+          "de": "Eigene Unterrichtsquellen: S1, Infokarte „Kalk“: Kalk besteht hier aus Calciumcarbonat; geeignete verdünnte Säure kann mit Carbonat reagieren und Gas freisetzen. S2, Produktwerbung: „Extra stark reinigt alles“. S3, Sicherheitstext: säureempfindliche Oberflächen nicht mit säurehaltigem Mittel behandeln; keine Reiniger mischen; Gebrauchsanweisung beachten. S4, Versuchstabelle: gleiche Kalkproben, gleiche Flüssigkeitsmenge, nach 5 min sichtbare Restfläche Wasser 100 %, Mittel A 60 %, Mittel B 20 %. Alle Texte/Tabelle sind SkillPilot-Lehrmaterial, keine Empfehlung realer Marken.",
+          "en": "Own teaching sources: S1, “Limescale” information card: limescale here is calcium carbonate; suitable dilute acid can react with carbonate and release gas. S2, advertisement: “Extra strong cleans everything”. S3, safety text: do not treat acid-sensitive surfaces with acidic cleaner; never mix cleaners; follow instructions. S4, experiment table: equal scale samples/equal liquid quantities, after 5 min visible residual area water 100%, product A 60%, B 20%. All texts/table are SkillPilot teaching material, not real-brand recommendations."
+        },
+        "learnerTask": {
+          "de": "Wähle für eine kurze Information an eine jüngere Klasse relevante Aussagen aus den Quellen, strukturiere Erklärung/Versuchsbefund/Sicherheit und gib Quellen an. Unterscheide Werbespruch und belegten Vergleich; führe keine Reinigung aus.",
+          "en": "Select relevant statements for a short information note to a younger class, structure explanation/experiment finding/safety and cite sources. Distinguish advertising slogan from supported comparison; do not perform cleaning."
+        },
+        "expectedAnswer": {
+          "de": "S1 erklärt die chemische Reaktion; S4 zeigt unter den gegebenen Bedingungen weniger sichtbaren Kalk bei B, beweist nicht „reinigt alles“. S3 liefert notwendige Einschränkungen und Nichtmischen. Für die jüngere Klasse etwa: „Bestimmte Säuren reagieren mit Kalk. In unserem Vergleich blieb bei B weniger Kalk sichtbar. Nicht jede Oberfläche verträgt Säure, und Reiniger werden nie gemischt.“ S1/S3/S4 ausdrücklich belegen; S2 als Werbung kennzeichnen.",
+          "en": "S1 explains the chemical reaction; S4 shows less visible scale with B under the given conditions, not proof of “cleans everything”. S3 supplies necessary restrictions and no-mixing advice. For the younger class: “Some acids react with limescale. In our comparison B left less visible scale. Not every surface tolerates acid, and cleaners are never mixed.” Explicitly cite S1/S3/S4; identify S2 as advertising."
+        },
+        "requiredAssessmentCriteria": [
+          {
+            "criterionKey": "sek1-source-information-cleaning-advice-C1",
+            "meaning": {
+              "de": "Relevante Informationen werden selbst ausgewählt und fachlich strukturiert.",
+              "en": "Relevant information is independently selected and scientifically structured."
+            }
+          },
+          {
+            "criterionKey": "sek1-source-information-cleaning-advice-C2",
+            "meaning": {
+              "de": "Sprache passt zur jüngeren Klasse, ohne Reaktions-/Sicherheitsaussagen zu verfälschen.",
+              "en": "Language suits the younger class without distorting reaction/safety statements."
+            }
+          },
+          {
+            "criterionKey": "sek1-source-information-cleaning-advice-C3",
+            "meaning": {
+              "de": "Quellen und Grenzen des Datenvergleichs sind sichtbar.",
+              "en": "Sources and limits of comparison data are visible."
+            }
+          }
+        ],
+        "transfer": {
+          "de": "Passe die Information für ein Hausmeisterteam an: Welche Bedingung und Quellenangabe muss ausführlicher sein?",
+          "en": "Adapt the information for a caretaker team: which condition and source citation needs more detail?"
+        },
+        "sourceOperatorScopeContractDe": "BY C8/C9-CH einfache vorgegebene Quellen; C9-NTG selbst recherchierte und adressatenbewusste Arbeit; C10 Alltag/Fachsprache, Texte/Bilder und Bewertungskriterien. Keine komplexe pharmazeutische Wissenschaftsquelle als allgemeine Einstiegspflicht.",
+        "nativeEvidenceApproved": false,
+        "strictCompletionsAdded": 0
+      }
+    },
+    {
+      "sourceFile": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-targeted-material-corrections-author-v9/fifty-two-cases.de-en.author-candidate.json",
+        "sha256": "02df2de06850f30f6e57e6b6aeedb0565cf136b70aded857b9d01d6c958c2660",
+        "bytes": 315597
+      },
+      "jsonPointer": "/cases/25",
+      "wholeMaterial": {
+        "caseKey": "sek1-source-information-packaging-table",
+        "candidateKey": "sek1-source-information",
+        "candidateGoalId": null,
+        "originalFamilyGoalId": "b6327e98-8ab9-5d7f-b826-4023bc1a56a7",
+        "status": "ai_candidate",
+        "reviewStatus": "needs_human_review",
+        "evidenceLevel": "E1",
+        "generationLevel": "G1",
+        "materialOrigin": "SkillPilot-authored teaching scenario; numbers are supplied model/reference data, not learner measurements",
+        "learnerPerformanceRecorded": false,
+        "humanApproval": false,
+        "humanTrial": false,
+        "suppliedMaterial": {
+          "de": "Autoriertes Materialset: T1 beschreibt Glas als formstabilen Werkstoff und Metall als gut elektrisch leitend; T2 beschreibt ein freigegebenes Polymermodell als leicht und bei bestimmter Temperatur verformbar. Tabelle T3: Behälter je Stück Glas 200 g, Metall 40 g, Polymer 20 g; alle je 250 mL Volumen. T4 enthält eine schematische Prozessdarstellung „Rohstoff → Herstellung → Nutzung → Sammlung → Verarbeitung“, keine Umweltmesswerte. Urheber jeweils SkillPilot, Lehrmodell v1.",
+          "en": "Authored materials: T1 describes glass as dimensionally stable and metal as electrically conductive; T2 describes an authorised polymer model as light and deformable at a specified temperature. Table T3: container per item glass 200 g, metal 40 g, polymer 20 g; each holds 250 mL. T4 supplies schematic process “raw material → production → use → collection → processing”, with no environmental measurements. Each author is SkillPilot, teaching model v1."
+        },
+        "learnerTask": {
+          "de": "Wähle aus Text, Tabelle und Prozessdarstellung passende Informationen für die Frage „Was muss man beim Vergleich dieser Behälter beachten?“ Formuliere eine strukturierte Antwort für die Schülerzeitung und belege die genutzten Quellen.",
+          "en": "Select suitable information from text, table and process representation for “What must be considered when comparing these containers?” Write a structured answer for the school newspaper and cite the sources used."
+        },
+        "expectedAnswer": {
+          "de": "Gleiches Nutzvolumen ermöglicht einen Massenvergleich: Glas ist im Modell fünfmal so schwer wie Metall und zehnmal so schwer wie Polymer. Materialeigenschaften begrenzen Anwendungen, die Prozesskette zeigt weitere benötigte Lebenszyklusdaten. Aus Masse allein folgt keine Umweltbilanz. Quellen T1/T2 für Eigenschaften, T3 für Mengen und T4 für Prozessbezug nennen; fachliche Begriffe verständlich erklären.",
+          "en": "Equal useful volume permits mass comparison: in the model glass is five times as heavy as metal and ten times as heavy as polymer. Material properties limit uses; the process chain shows additional lifecycle data needed. Mass alone does not yield an environmental balance. Cite T1/T2 for properties, T3 for quantities and T4 for process context; explain technical terms accessibly."
+        },
+        "requiredAssessmentCriteria": [
+          {
+            "criterionKey": "sek1-source-information-packaging-table-C1",
+            "meaning": {
+              "de": "Text-/Tabellen-/Prozessinformationen werden relevant ausgewählt.",
+              "en": "Text/table/process information is selected for relevance."
+            }
+          },
+          {
+            "criterionKey": "sek1-source-information-packaging-table-C2",
+            "meaning": {
+              "de": "Massenvergleich ist korrekt und wird nicht zur unbelegten Umweltbilanz.",
+              "en": "Mass comparison is correct and is not turned into an unsupported environmental balance."
+            }
+          },
+          {
+            "criterionKey": "sek1-source-information-packaging-table-C3",
+            "meaning": {
+              "de": "Adressat und Quellen werden konkret berücksichtigt.",
+              "en": "Audience and sources are specifically considered."
+            }
+          }
+        ],
+        "transfer": {
+          "de": "Für einen mehrfach verwendeten Behälter: Welche zusätzliche Information ist wichtiger als Masse je Stück?",
+          "en": "For a reusable container: what additional information matters more than mass per item?"
+        },
+        "sourceOperatorScopeContractDe": "BY C8/C9-CH einfache vorgegebene Quellen; C9-NTG selbst recherchierte und adressatenbewusste Arbeit; C10 Alltag/Fachsprache, Texte/Bilder und Bewertungskriterien. Keine komplexe pharmazeutische Wissenschaftsquelle als allgemeine Einstiegspflicht.",
+        "nativeEvidenceApproved": false,
+        "strictCompletionsAdded": 0
+      }
+    },
+    {
+      "sourceFile": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-targeted-material-corrections-author-v9/fifty-two-cases.de-en.author-candidate.json",
+        "sha256": "02df2de06850f30f6e57e6b6aeedb0565cf136b70aded857b9d01d6c958c2660",
+        "bytes": 315597
+      },
+      "jsonPointer": "/cases/30",
+      "wholeMaterial": {
+        "caseKey": "criteria-arguments-water-treatment-options",
+        "candidateKey": "criteria-arguments",
+        "candidateGoalId": null,
+        "originalFamilyGoalId": "b6327e98-8ab9-5d7f-b826-4023bc1a56a7",
+        "status": "ai_candidate",
+        "reviewStatus": "needs_human_review",
+        "evidenceLevel": "E1",
+        "generationLevel": "G1",
+        "materialOrigin": "SkillPilot-authored teaching scenario; numbers are supplied model/reference data, not learner measurements",
+        "learnerPerformanceRecorded": false,
+        "humanApproval": false,
+        "humanTrial": false,
+        "suppliedMaterial": {
+          "de": "Autoriertes Datendossier, keine Pro-/Kontra-Liste: Filter F kostet 30 €/Jahr, entfernt im Modell 70 % Stoff X, verbraucht 20 kWh/Jahr, erzeugt 2 kg belastetes Sammelmaterial; Verfahren G kostet 45 €, entfernt 95 %, verbraucht 40 kWh und erzeugt 1 kg anders zu entsorgendes Material. Lokale sichere Reststoffsammlung ist für beide nötig. Vorgegebenes Argument: „Nimm immer das billigste“. Kein Trinkwasserversprechen.",
+          "en": "Authored data dossier, not a pro/con list: filter F costs €30/year, removes 70% of X in the model, consumes 20 kWh/year, produces 2 kg contaminated collection material; G costs €45, removes 95%, consumes 40 kWh and produces 1 kg material requiring different disposal. Both require safe local residue collection. Supplied argument: “Always take the cheapest”. No drinking-water promise."
+        },
+        "learnerTask": {
+          "de": "Leite selbst relevante Kriterien ab und finde eigene belegte Pro-/Kontra-Argumente für beide Verfahren. Vergleiche sie mit dem gelieferten Argument und wäge mit begründeten Gewichtungen ab.",
+          "en": "Derive relevant criteria and independently find evidence-backed pro/con arguments for both methods. Compare them with the supplied argument and weigh them using justified weights."
+        },
+        "expectedAnswer": {
+          "de": "Eigene Argumente: F spart 15 € und 20 kWh, entfernt aber weniger X; G erhöht Entfernung um 25 Prozentpunkte, kostet/energetisch belastet mehr; Restmasse allein bedeutet nicht weniger Risiko, weil Entsorgungsart verschieden. Kriterien Kosten, Entfernung, Energie und sichere Restbehandlung aus Daten ableiten. „Immer billigste“ ignoriert Zweck/Sicherheit. Begründete Wahl hängt von Mindestentfernung und Gewichtung ab; bei geforderten ≥90 % fällt F trotz Preisvorteil aus.",
+          "en": "Own arguments: F saves €15 and 20 kWh but removes less X; G improves removal by 25 percentage points but costs/consumes more; residue mass alone is not less risk because disposal differs. Derive cost, removal, energy and safe residue handling criteria from data. “Always cheapest” ignores purpose/safety. A justified choice depends on minimum removal and weights; if ≥90% is required F fails despite its price advantage."
+        },
+        "requiredAssessmentCriteria": [
+          {
+            "criterionKey": "criteria-arguments-water-treatment-options-C1",
+            "meaning": {
+              "de": "Eigene Kriterien und belegte Argumente werden tatsächlich aus Rohfakten entwickelt.",
+              "en": "Own criteria and supported arguments are actually developed from raw facts."
+            }
+          },
+          {
+            "criterionKey": "criteria-arguments-water-treatment-options-C2",
+            "meaning": {
+              "de": "Vorgegebenes Argument wird fachlich verglichen und kritisch begrenzt.",
+              "en": "The supplied argument is scientifically compared and critically bounded."
+            }
+          },
+          {
+            "criterionKey": "criteria-arguments-water-treatment-options-C3",
+            "meaning": {
+              "de": "Abwägung verwendet begründete Gewichtung/Mindestbedingungen.",
+              "en": "Weighing uses justified weights/minimum conditions."
+            }
+          }
+        ],
+        "transfer": {
+          "de": "G senkt seinen Energieverbrauch auf 18 kWh: Entwickle selbst das nun veränderte Argument und überprüfe dein Urteil.",
+          "en": "G reduces energy consumption to 18 kWh: independently develop the changed argument and review your judgment."
+        },
+        "sourceOperatorScopeContractDe": "BY C9-NTG.1 verlangt das selbstständige Finden und Vergleichen: hier verbindlich. Der angeleitete BY-C8-Einstieg mit vorgegebenen Argumenten bleibt ein erhaltener Teilbeitrag, kein vollständiger Abschluss dieses erweiterten selbstständigen Produkts. Ein bloßer Vergleich fertig vorgegebener Pro-/Kontra-Listen schließt die Eigenfindungsleistung nicht; exact/partial und Stufen-targets sind vor Integration separat zu prüfen.",
+        "nativeEvidenceApproved": false,
+        "strictCompletionsAdded": 0
+      }
+    },
+    {
+      "sourceFile": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-targeted-material-corrections-author-v9/fifty-two-cases.de-en.author-candidate.json",
+        "sha256": "02df2de06850f30f6e57e6b6aeedb0565cf136b70aded857b9d01d6c958c2660",
+        "bytes": 315597
+      },
+      "jsonPointer": "/cases/31",
+      "wholeMaterial": {
+        "caseKey": "criteria-arguments-packaging-evidence",
+        "candidateKey": "criteria-arguments",
+        "candidateGoalId": null,
+        "originalFamilyGoalId": "b6327e98-8ab9-5d7f-b826-4023bc1a56a7",
+        "status": "ai_candidate",
+        "reviewStatus": "needs_human_review",
+        "evidenceLevel": "E1",
+        "generationLevel": "G1",
+        "materialOrigin": "SkillPilot-authored teaching scenario; numbers are supplied model/reference data, not learner measurements",
+        "learnerPerformanceRecorded": false,
+        "humanApproval": false,
+        "humanTrial": false,
+        "suppliedMaterial": {
+          "de": "Autoriertes Rohdossier für 1000 Getränke: Einweg E benötigt 40 kg Material und 50 Transporteinheiten; Mehrweg M bei realisierten 10 Umläufen benötigt zugeordnet 20 kg Material, 80 Transporteinheiten und 30 Wascheinheiten; bei nur 2 Umläufen 100 kg Material. E kostet 100 €, M 120 €. Vorgegeben: „Mehrweg ist immer umweltfreundlicher“. Einheiten verschiedener Wirkung sind nicht addierbar.",
+          "en": "Authored raw dossier for 1000 drinks: single-use E needs 40 kg material and 50 transport units; reusable M with 10 actual cycles needs allocated 20 kg material, 80 transport units and 30 washing units; with only 2 cycles 100 kg material. E costs €100, M €120. Supplied: “Reusable is always greener”. Units of different effects are not directly additive."
+        },
+        "learnerTask": {
+          "de": "Finde selbst datengestützte Argumente und Kriterien, vergleiche sie mit der gelieferten Aussage und begründe eine Abwägung für 10 gegenüber 2 Umläufen.",
+          "en": "Independently find data-backed arguments and criteria, compare them with the supplied claim and justify weighing for 10 versus 2 cycles."
+        },
+        "expectedAnswer": {
+          "de": "Bei 10 Umläufen spart M 20 kg Material, braucht mehr Transport/Waschen und kostet mehr; bei 2 Umläufen braucht M sogar 60 kg mehr Material als E. Eigene Argumente verbinden chemische Werkstoff-/Reinigungsprozesse mit Nutzungsbedingungen. Allgemeine „immer“-Behauptung ist nicht getragen. Umwelteinheiten brauchen zusätzliche Wirkungsfaktoren; man kann begründete Prioritäten nennen, aber keine willkürliche Gesamtsumme bilden.",
+          "en": "At 10 cycles M saves 20 kg material, needs more transport/washing and costs more; at 2 cycles M even needs 60 kg more material than E. Own arguments connect chemical material/cleaning processes with usage conditions. The universal “always” claim is unsupported. Environmental units need additional impact factors; justified priorities can be stated, but no arbitrary overall sum formed."
+        },
+        "requiredAssessmentCriteria": [
+          {
+            "criterionKey": "criteria-arguments-packaging-evidence-C1",
+            "meaning": {
+              "de": "Argumente werden selbst aus Daten und chemischen Bedingungen gefunden.",
+              "en": "Arguments are independently found from data and chemical conditions."
+            }
+          },
+          {
+            "criterionKey": "criteria-arguments-packaging-evidence-C2",
+            "meaning": {
+              "de": "Vorgegebene Behauptung und tatsächliche Reichweite werden verglichen.",
+              "en": "Supplied claim and actual scope are compared."
+            }
+          },
+          {
+            "criterionKey": "criteria-arguments-packaging-evidence-C3",
+            "meaning": {
+              "de": "Kriteriengewichtung ist begründet und unvereinbare Einheiten werden nicht summiert.",
+              "en": "Criteria weights are justified and incompatible units are not summed."
+            }
+          }
+        ],
+        "transfer": {
+          "de": "Welche neue Information würde einen Vergleich von Transport- und Waschfolgen ermöglichen?",
+          "en": "What new information would allow comparison of transport and washing consequences?"
+        },
+        "sourceOperatorScopeContractDe": "BY C9-NTG.1 verlangt das selbstständige Finden und Vergleichen: hier verbindlich. Der angeleitete BY-C8-Einstieg mit vorgegebenen Argumenten bleibt ein erhaltener Teilbeitrag, kein vollständiger Abschluss dieses erweiterten selbstständigen Produkts. Ein bloßer Vergleich fertig vorgegebener Pro-/Kontra-Listen schließt die Eigenfindungsleistung nicht; exact/partial und Stufen-targets sind vor Integration separat zu prüfen.",
+        "nativeEvidenceApproved": false,
+        "strictCompletionsAdded": 0
+      }
+    }
+  ],
+  "currentProfileCaseIdsMatch": [
+    "lower-chemical-data-interpretation-temperature-trend",
+    "lower-chemical-data-interpretation-conductivity-series",
+    "data-validity-test-not-proof",
+    "data-validity-temperature-confound",
+    "sek1-source-information-cleaning-advice",
+    "sek1-source-information-packaging-table",
+    "criteria-arguments-water-treatment-options",
+    "criteria-arguments-packaging-evidence"
+  ]
+}

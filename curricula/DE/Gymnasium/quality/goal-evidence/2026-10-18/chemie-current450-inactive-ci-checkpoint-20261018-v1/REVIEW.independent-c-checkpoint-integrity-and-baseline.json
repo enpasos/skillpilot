@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "role": "Independent C bounded technical review of inactive checkpoint integrity and exact active baseline; no M7 science review",
+  "license": "Apache-2.0",
+  "reviewer": "/root/chemie450_t1_t2_terminal_author",
+  "createdAtUTC": "2026-10-18T05:31:20.069211+00:00",
+  "checkpoint": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-inactive-ci-checkpoint-20261018-v1",
+  "manifestSHA256": "02eadb6029df451e3d7d05562d1ff2bb4fe86f9707a750d2ef0dc28c4ab41d44",
+  "baselineCommit": "7f605a0a94d9a65ac093550586e7a124996ba8ec",
+  "actualGitHEADAtReview": "7f605a0a94d9a65ac093550586e7a124996ba8ec",
+  "verdict": "PASS_BOUNDED_CHECKPOINT_INTEGRITY_WITH_EXPLICIT_TRANSIENT_GENERATED_OUTPUT_FINDING",
+  "independence": {
+    "checkpointManifestOverlayVerifierAuthor": false,
+    "priorOwnAuthorshipDisclosed": [
+      "T1/T2 exam author packages",
+      "five target placement candidate",
+      "HE admission independent C review",
+      "T3 exam informed independent C review"
+    ],
+    "priorOwnScienceIndependentlyApprovedByThisReview": false,
+    "technicalChecksDoNotApproveAnyCandidateScience": true
+  },
+  "actualMethods": [
+    "Read README, manifest metadata, correction override, exact verifier and restore helper source code before executing.",
+    "Executed python -B verify_checkpoint.py: PASS, 600 overlay files, 6354 retained evidence, 56 regular aliases, active baseline verified.",
+    "Executed python -B restore_working_overlay.py with NO --apply: DRY_RUN_ONLY, 593 resumption files, no commit/push/M7 claim.",
+    "Independent Python read every overlay source byte and all 6354 retained-evidence byte streams, recomputed SHA-256 and length, checked unique original/stored paths and exact overlay path mapping, and compared the real overlay file set to the manifest set.",
+    "Independent git cat-file --batch read 227 baseline blobs directly from the pinned Git commit; checked Git blob IDs and independent SHA-256 against manifest baseline pins, without relying on the supplied verifier.",
+    "Checked all 56 materialized alias files are regular files and equal the bytes of their recorded original resolved repository targets.",
+    "Checked protected four canonical landscapes and floor policy against both pinned manifest digests and direct Git HEAD bytes.",
+    "Compared active config, canonical graphs, provenance, composition views, semantic publications, visualization QA and memory-review path families against Git HEAD: zero diff at the actual check.",
+    "Read generated current status: Chemistry M6 and Mathematics/Physics/Biology/Economics M7; this is local generated evidence, not GitHub CI acceptance.",
+    "Checked both original/restored and later regenerated M450 report variants against correction SHA pins and retained-evidence override.",
+    "Checked all 124 generated runtime-copy receipt entries refer to exact SHA-matching sources inside the main overlay."
+  ],
+  "actualResults": {
+    "overlaySnapshotFilesExactlyMappedAndHashed": 600,
+    "overlayExtraOrMissingFiles": 0,
+    "retainedEvidenceByteStreamsHashed": 6354,
+    "regularAliasesExactToRecordedTarget": 56,
+    "independentBaselineGitBlobEntries": 227,
+    "baselineLfsPointerEntries": 0,
+    "resumptionExistingActiveFilesExactToHEAD": 222,
+    "resumptionNewPathsCorrectlyAbsent": 371,
+    "dryRunResumptionFiles": 593,
+    "nonResumptionSnapshotEntries": 7,
+    "candidateCanonicalNodes": 662,
+    "candidateOrdinaryCurricularAtomicGoals": 450,
+    "candidateCanonicalSHA256": "4788d9034bc977b7f93681720a61efdba573a1550268e27973a507d72e26d575",
+    "activeBaselineCanonicalNodes": 523,
+    "protectedFourCanonicalAndFloorPolicyByteExactToHEAD": true,
+    "activeConfigGraphViewSemanticQARegistryDiffToHEADCount": 0,
+    "generatedMaturitiesAtCheck": {
+      "Chemie": "M6",
+      "Mathematik": "M7",
+      "Physik": "M7",
+      "Biologie": "M7",
+      "Wirtschaftswissenschaften": "M7"
+    },
+    "all124RuntimeCopiesHaveExactStoredSources": true,
+    "ownPackagesIncludedIn6354": [
+      {
+        "package": "chemie-current450-T1-terminal-exams-author-20261018-v5",
+        "allActualFilesCovered": 81
+      },
+      {
+        "package": "chemie-current450-T2-terminal-exams-author-20261018-v4",
+        "allActualFilesCovered": 143
+      },
+      {
+        "package": "chemie-current450-T3-terminal-exams-informed-independent-c-20261018-v1",
+        "allActualFilesCovered": 7
+      },
+      {
+        "package": "chemie-current450-five-terminal-target-placements-author-20261018-v1",
+        "allActualFilesCovered": 19
+      },
+      {
+        "package": "chemie-current450-two-HE-admission-remedy-independent-c-20261018-v1",
+        "allActualFilesCovered": 7
+      }
+    ]
+  },
+  "findings": [
+    {
+      "id": "CHECKPOINT-C-01",
+      "status": "EXPLICIT_TRANSIENT_OUTPUT_PENDING_ROOT_RESTORE",
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-CI-current-head-source-view-and-test-contract-root-v1/memory346.48-view-scopes.live-current.native-report.md",
+      "actualObservation": "At independent check, this non-resumption file differed from HEAD: memory-required view count 1376 became 1192 and several per-view totals changed. Manifest disposition says restore-exact-HEAD, but the supplied verifier intentionally skips active-baseline checks for non-resumption files.",
+      "rootExplanationAfterFinding": "The running quality:curriculum-status prequality step regenerates this raw report. Root will restore its HEAD bytes after the run and will not commit the regenerated historic raw log.",
+      "requiredFinalCondition": "Confirm final staged report bytes equal the pinned HEAD version. Keep captured working variant in the overlay. This finding does not alter protected graph/config hashes or scientific results."
+    },
+    {
+      "id": "CHECKPOINT-C-02",
+      "status": "COUNTS_CLARIFICATION_NO_DATA_LOSS",
+      "actualObservation": "Manifest has 227 baseline-existing entries: 222 resumption files and five explicitly non-resumption entries. The copied-before-restoration receipt names 226 restored existing files; .gitattributes and final checkpoint documentation have separate technical handling. 371 resumption paths are new, two additional new progress documents are non-resumption snapshots.",
+      "requiredFinalCondition": "Use manifest-derived exact categories for claims; do not interpret 226 as all baseline-present snapshot entries."
+    },
+    {
+      "id": "CHECKPOINT-C-03",
+      "status": "VERIFIED_BOTH_HISTORICAL_M450_VARIANTS_PRESERVED",
+      "actualObservation": "Original report path equals restoredReportSha256 761a53b81879203c23282746b08a8bf467e0d7dd429f40e707b1bb222fdd75bd. Separate regenerated variant equals preservedWorkingSha256 0f0199c736fb044720ccc33bb5d190d5b2761a3038b42e4b5ad0e9ca649c0361, matching the retained-evidence override. No variant was discarded."
+    }
+  ],
+  "inputPins": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-inactive-ci-checkpoint-20261018-v1/MANIFEST.inactive-current450.json",
+      "sha256": "02eadb6029df451e3d7d05562d1ff2bb4fe86f9707a750d2ef0dc28c4ab41d44"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-inactive-ci-checkpoint-20261018-v1/verify_checkpoint.py",
+      "sha256": "b4c1d793d0ff5561001344a5e30d174b89939ba2a5305b53dffcd639c4fd1130"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-inactive-ci-checkpoint-20261018-v1/restore_working_overlay.py",
+      "sha256": "933af6db035de49bd92e999b8798a683a99aefb854af01fb995e8cb0b2ccdf71"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-inactive-ci-checkpoint-20261018-v1/CORRECTIONS.immutable-generated-report.json",
+      "sha256": "babaaaabc3c199f10e5a07f84b073f0aef9756528118b692bf422a2d0d66824c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-inactive-ci-checkpoint-20261018-v1/RECEIPT.generated-runtime-copies-inactivated.json",
+      "sha256": "ec135ca972d196ae87a956512273162d6665939fb54f06d5c3f73ef2bcd38e98"
+    }
+  ],
+  "limits": [
+    "No apply, normal write, Git write, source change, image change or historical-byte mutation was performed by this reviewer.",
+    "No full QA, M7 gate suite, scientific review continuation or candidate integration was performed. M7 remains owner-paused.",
+    "This JSON is a new additive technical review file created after the frozen manifest. It does not modify or retroactively extend the fixed 600/6354/56 snapshot counts.",
+    "Root CI/status generation was still running; final GitHub CI acceptance and final staged historical-report restoration remain root responsibilities."
+  ],
+  "normalWrites": 0,
+  "restoreApplied": false,
+  "M7Claim": false,
+  "HumanApproval": false,
+  "HumanTrial": false,
+  "GitHubCIPassClaim": false
+}

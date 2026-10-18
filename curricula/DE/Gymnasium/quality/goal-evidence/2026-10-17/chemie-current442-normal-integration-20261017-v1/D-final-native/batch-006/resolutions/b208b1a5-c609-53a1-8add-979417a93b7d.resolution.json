@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-006-v1-resolution-b208b1a5-c609-53a1-8add-979417a93b7d",
+  "goal": {
+    "goalId": "b208b1a5-c609-53a1-8add-979417a93b7d",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:32f3fba0a5a8c6613330c6b7d7f33dc4cddb89782ad50947d68e72c66c1041ca",
+    "pageFingerprint": "sha256:d98a030e6e2f8d2d98fea25bba11403df22b42caf0b93ea0ed293982427ab9bd",
+    "goalReviewContextFingerprint": "sha256:22bd62eb89fcaa332d901d90488c3d86e6d98d0281eab53456f01cd02e3d4acc",
+    "finalText": {
+      "titleDe": "Textilfarbstoffe über Farbstoff-Faser-Wechselwirkungen beurteilen",
+      "titleEn": "Evaluate textile dyes through dye-fiber interactions",
+      "descriptionDe": "Die lernende Person kann ausgewählte Bindungs- und Wechselwirkungstypen zwischen Farbstoff-Molekülen und Faser-Molekülen beschreiben und die Eignung von Farbstoffen als Textilfarbstoff beurteilen.",
+      "descriptionEn": "The learner can describe selected bonding and interaction types between dye molecules and fiber molecules and evaluate the suitability of dyes as textile dyes."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-006-v1-a",
+      "campaignDigest": "sha256:fac08f3e3e72b3fd65ead31deeafeff62268bea1795f229f19ce85a234e57356",
+      "roundId": "chemie-final-current-context-d-006-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-006-v1-independent-a",
+      "reviewInputFingerprint": "sha256:738c48a5d1a135a764fe483a52f078a241f0f4149b0c7e6ce492ebd53c660d26",
+      "goalReviewContextFingerprint": "sha256:22bd62eb89fcaa332d901d90488c3d86e6d98d0281eab53456f01cd02e3d4acc",
+      "batchId": "chemie-final-current-context-d-006-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch006-20261018",
+      "runManifestDigest": "sha256:419ac41027d7c6085c20a41a7aab2cc5ee3abf5e395b843a596d9b21dbec3d58",
+      "resultsDigest": "sha256:cb07854e0ea40039098f3d266438ec683a808fb475249442535af494ff91bdbe",
+      "recordId": "codex-reviewer-a-final163-batch006-20261018.004",
+      "recordDigest": "sha256:9592cadfdfec38ff518f44e9d900c8fe0bfdb710444163740e228842f7a2e7fb"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-006-v1-b",
+      "campaignDigest": "sha256:e6860f2b3431737a13818dccb510d68b769ac8de8183a266a418614495ba524a",
+      "roundId": "chemie-final-current-context-d-006-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-006-v1-independent-b",
+      "reviewInputFingerprint": "sha256:738c48a5d1a135a764fe483a52f078a241f0f4149b0c7e6ce492ebd53c660d26",
+      "goalReviewContextFingerprint": "sha256:22bd62eb89fcaa332d901d90488c3d86e6d98d0281eab53456f01cd02e3d4acc",
+      "batchId": "chemie-final-current-context-d-006-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-006-20261018",
+      "runManifestDigest": "sha256:f5dff68c2824391cbd358b0efcda18f60656322f44c47dd579639b30eb8f1789",
+      "resultsDigest": "sha256:1905ddcd08914170e96a8288a0308e1390cdf5eb3bbb2c7eb917107830344a7f",
+      "recordId": "chemie-final163-native-b-006-20261018:b208b1a5-c609-53a1-8add-979417a93b7d",
+      "recordDigest": "sha256:f39b685dd1593d8f4c72d1865d4b0c2d0eb420acd8fedb48fdb7812a8817dbd2"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:c423e5d81f53d59095437ae568e0caca6a758058bafd394031ce2cb0f01fc495"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-006-20261018-v1",
+    "manifestDigest": "sha256:841af7f6a231319d70d92e84fb977818248d5825b592e050c63ab4be72fe9634",
+    "manifestFingerprint": "sha256:8a70d3defa5ac0d85b5224774db191bed348f860796a294e7732ed4830512bfe",
+    "decisionId": "chemie-final163-paired-D-only-006-20261018-v1-decision-004"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-006-20261018-v1-decision-004",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:35:51.247Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch006-20261018.004): Die bilingualen LK-Texte nennen begrenzte ausgewählte Bindungstypen. Das ganze P trennt neue Cell-O-C-Bindung und Einlagerung und macht Eignung nicht allein an OH-Zahl oder pauschaler Unveränderlichkeit fest. B (chemie-final163-native-b-006-20261018:b208b1a5-c609-53a1-8add-979417a93b7d): Die Beschreibung bietet eine beurteilbare Struktur–Faser-Verknüpfung im LK und nutzt die direkte Voraussetzung zu intermolekularen Kräften. Das gesamte P stellt passende Gruppen und Bedingungen bereit und kontrastiert Wollionenbindung, Cellulose-Reaktivbindung und unpolare Polyester-Affinität. Dadurch bleibt die Erklärung chemisch konkret und die Eignungsentscheidung bedingt statt eine pauschale Farbechtheitsbehauptung zu werden.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch006-20261018.004; chemie-final163-native-b-006-20261018:b208b1a5-c609-53a1-8add-979417a93b7d). Their current English understanding evidence is retained: A: Dye suitability depends on matching fibre/dye groups and conditions; ionic/hydrogen-bond interactions differ from covalent fixation. B: Dyeing suitability arises from dye and fibre functional groups and dyeing conditions; ionic attraction, hydrogen bonding and covalent fixation differ. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Färbereignung hängt von passenden Faser-/Farbstoffgruppen und Bedingungen ab; ionische/H-Brücken-Wechselwirkung unterscheidet sich von kovalenter Fixierung.",
+      "essentialUnderstandingEn": "Dye suitability depends on matching fibre/dye groups and conditions; ionic/hydrogen-bond interactions differ from covalent fixation.",
+      "observablePerformanceDe": "Ordnet Woll-/Cellulosekontakte zu und begründet eine Eignungswahl einschließlich Löslichkeits- und Waschgrenze.",
+      "observablePerformanceEn": "Assigns wool/cellulose contacts and justifies suitability including solubility and washing limits.",
+      "transferExpectationDe": "Überträgt den Vergleich auf Reaktivfarbstoff/Polyesterdispersion und erklärt, warum kovalente Fixierung photochemischen Abbau nicht ausschließt.",
+      "transferExpectationEn": "Transfers comparison to reactive dyes/polyester dispersion and explains why covalent fixation does not exclude photochemical degradation."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-74969e75fee8cc53982b3b6cea6443cfc5a0c1c12032b4eb0150c778d871467b",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:e8400d2cfc556911abc05bad4531cbab843095e1ad9b00a096dd0228c8d5d013"
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "name": "exact-prior-bindings",
+    "argv": [
+      "python3",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-ten-draft-exam-informed-independent-a-20261018-v1/tools/check-current-bodies-and-real-prior-bindings.py"
+    ],
+    "exitCode": 0,
+    "realDurationSeconds": 0.09544646400900092,
+    "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-ten-draft-exam-informed-independent-a-20261018-v1/raw/exact-prior-bindings.stdout.txt",
+    "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-ten-draft-exam-informed-independent-a-20261018-v1/raw/exact-prior-bindings.stderr.txt"
+  },
+  {
+    "name": "actual-ten-interface",
+    "argv": [
+      "app/node_modules/.bin/tsx",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-ten-draft-exam-informed-independent-a-20261018-v1/tools/check-current-ten-exam-interfaces.readonly.ts"
+    ],
+    "exitCode": 0,
+    "realDurationSeconds": 0.5870033990067896,
+    "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-ten-draft-exam-informed-independent-a-20261018-v1/raw/actual-ten-interface.stdout.txt",
+    "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-ten-draft-exam-informed-independent-a-20261018-v1/raw/actual-ten-interface.stderr.txt"
+  },
+  {
+    "name": "actual-stock-curriculum-symlink-errors-only",
+    "function": "scripts/validate_schemas.py:curriculum_symlink_errors",
+    "exitCode": 0,
+    "realDurationSeconds": 6.764752775998204,
+    "errors": [],
+    "fullSchemaMainInvoked": false
+  }
+]

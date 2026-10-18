@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-005-v1-resolution-9fc800d1-92d1-5ef6-81c1-33960ae034dd",
+  "goal": {
+    "goalId": "9fc800d1-92d1-5ef6-81c1-33960ae034dd",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:2aa9dab12809d30dca3bf4003bc71d9f861e08289a7c0b9270df816f9a6d1012",
+    "pageFingerprint": "sha256:1309a1ff40246048054b0c3828ebe6575b00f0737218645482b4a69def1cb18d",
+    "goalReviewContextFingerprint": "sha256:db6b3326c49763e1e8815ae4ce82417b229df12ff0df773b2d4be6a3a1cd5ea3",
+    "finalText": {
+      "titleDe": "Chemische Daten nachvollziehbar dokumentieren",
+      "titleEn": "Document chemical data transparently",
+      "descriptionDe": "Die lernende Person kann experimentell erhobene oder recherchierte chemische Daten strukturiert und nachvollziehbar dokumentieren, Größen und Einheiten, Herkunft und relevante Untersuchungsbedingungen angeben sowie beobachtende Beschreibung und deutende Erklärung unterscheiden.",
+      "descriptionEn": "The learner can document experimental or researched chemical data in a structured and transparent way, identify quantities, units, provenance, and relevant investigation conditions, and distinguish descriptive observation from explanatory interpretation."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-005-v1-a",
+      "campaignDigest": "sha256:c8471cd797dec10abf7198c697339e7dc3a58537ed0f9852f8cf26345c1a666f",
+      "roundId": "chemie-final-current-context-d-005-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-005-v1-independent-a",
+      "reviewInputFingerprint": "sha256:ea93568bfdabdff3f714ec5d94b8dc59252520722e0aa10aa39a38e8541c8349",
+      "goalReviewContextFingerprint": "sha256:db6b3326c49763e1e8815ae4ce82417b229df12ff0df773b2d4be6a3a1cd5ea3",
+      "batchId": "chemie-final-current-context-d-005-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch005-20261018",
+      "runManifestDigest": "sha256:e2259ed1b412c3e3898b1487d972c903b35f39252a4a42f584bb855b91d2a437",
+      "resultsDigest": "sha256:054b020007e1d870143eca58ebb28ac20242207e4abfe68fc54ca6d6352a547c",
+      "recordId": "codex-reviewer-a-final163-batch005-20261018.011",
+      "recordDigest": "sha256:93c4ca527ff6c6ea04db92e4fc7b029bce20c2684fdedbfb5c862c367afc00e2"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-005-v1-b",
+      "campaignDigest": "sha256:48da8784d2bf2a022d5106050deb7e838bedbbf7dc15498f5e8f7fd019de0920",
+      "roundId": "chemie-final-current-context-d-005-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-005-v1-independent-b",
+      "reviewInputFingerprint": "sha256:ea93568bfdabdff3f714ec5d94b8dc59252520722e0aa10aa39a38e8541c8349",
+      "goalReviewContextFingerprint": "sha256:db6b3326c49763e1e8815ae4ce82417b229df12ff0df773b2d4be6a3a1cd5ea3",
+      "batchId": "chemie-final-current-context-d-005-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-005-20261018",
+      "runManifestDigest": "sha256:f156ef3bbef741b54e4c6db6d00df3cf1d510ad9b05729f1ec91bff119669db0",
+      "resultsDigest": "sha256:cdef531d33939f213e22d20615076c31b4ce9a1347b09abc4ccd1a69e5fe8995",
+      "recordId": "chemie-final163-native-b-005-20261018:9fc800d1-92d1-5ef6-81c1-33960ae034dd",
+      "recordDigest": "sha256:c9eba41f8c913d824388954a741cc76bb4331f7e5f26242b7cd646f3d1063df5"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:766e419b6962da8bae4b84dd677a6b7df18782647f13f0903d77a8bff87bdb82"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-005-20261018-v1",
+    "manifestDigest": "sha256:a41a2bc6b482499a6ca79542f7bbf5db10ee5ee2b8a366942cad9362acfb6f26",
+    "manifestFingerprint": "sha256:c531460d36cff13dc7321c382660c17c38c5ef6449bf726e255ffa0bb0e06d93",
+    "decisionId": "chemie-final163-paired-D-only-005-20261018-v1-decision-011"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-005-20261018-v1-decision-011",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:31:16.405Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch005-20261018.011): Die bilingualen Texte nennen alle dokumentarischen Anforderungen. Das ganze P verhindert rückwirkende Bestätigung alter Proben durch neue Notizen und trennt Anzeigeauflösung, Messunsicherheit sowie berechnete Konzentration von Messdaten. B (chemie-final163-native-b-005-20261018:9fc800d1-92d1-5ef6-81c1-33960ae034dd): Die Beschreibung beansprucht Dokumentationskompetenz und die Beobachtungs-/Deutungstrennung. P unterscheidet tatsächliche Ereignisergänzung, Quellenkorrektur und neue Messung und hält Quellenhilfe sowie eigene Untersuchung als unabhängige Grenzen sichtbar.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch005-20261018.011; chemie-final163-native-b-005-20261018:9fc800d1-92d1-5ef6-81c1-33960ae034dd). Their current English understanding evidence is retained: A: Traceable documentation preserves raw data, sources, conditions and gaps and separates observation from interpretation or calculation. B: Traceable documentation preserves raw values, conditions and origin and marks interpretation and calculation separately. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Nachvollziehbare Dokumentation bewahrt Rohdaten, Quellen, Bedingungen und Fehlstellen und trennt Beobachtung von Interpretation oder Rechnung.",
+      "essentialUnderstandingEn": "Traceable documentation preserves raw data, sources, conditions and gaps and separates observation from interpretation or calculation.",
+      "observablePerformanceDe": "Erstellt ein eigenes strukturiertes Protokoll mit Einheiten und Herkunft, ohne fehlende Temperatur/Datumsangaben zu erfinden.",
+      "observablePerformanceEn": "Creates an own structured record with units and provenance without inventing missing temperature/date information.",
+      "transferExpectationDe": "Ergänzt ein neues Ereignis separat oder versioniert einen korrigierten Verdünnungsfaktor bei unveränderten Rohabsorbanzwerten.",
+      "transferExpectationEn": "Appends a new event separately or versions a corrected dilution factor while retaining original absorbance readings."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-6e758010dd51ddbc92c757d8e5734bd1b3928753d94936632386f5d266dd5233",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:06f3ef7af97bdbbfa89d61f5f47426f92039765fa5463d368250975e536d19af"
+}

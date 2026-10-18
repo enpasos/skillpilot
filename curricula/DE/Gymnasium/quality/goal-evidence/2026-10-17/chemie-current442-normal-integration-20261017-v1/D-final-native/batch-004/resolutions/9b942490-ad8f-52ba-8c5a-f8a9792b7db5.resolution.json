@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-004-v1-resolution-9b942490-ad8f-52ba-8c5a-f8a9792b7db5",
+  "goal": {
+    "goalId": "9b942490-ad8f-52ba-8c5a-f8a9792b7db5",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:407c7618aa1e59a3cc327b59db91bc44ea6327645c2a5bf75278d25628b04890",
+    "pageFingerprint": "sha256:e80fef7e8340df8be6b029dc213927b2ce5246454d0514e33c4b4b41f76bc390",
+    "goalReviewContextFingerprint": "sha256:48f2c3a143337683fe3cdca2744d0af05ace5e4b813a54a6053e18e534cac85b",
+    "finalText": {
+      "titleDe": "Polykondensation verstehen",
+      "titleEn": "Understand polycondensation",
+      "descriptionDe": "Die lernende Person kann Polykondensationen über das Nukleophil-Elektrophil-Konzept erklären, den Aufbau entsprechender Polymere ableiten und Reaktionsgleichungen für Polyester oder Polyamide formulieren.",
+      "descriptionEn": "The learner can explain polycondensation using the nucleophile-electrophile concept, derive corresponding polymer structures, and formulate equations for polyesters or polyamides."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-004-v1-a",
+      "campaignDigest": "sha256:9f49c2740669f7ed36feb828f9f8fbf595137952444feadd39e6636d8aa89cee",
+      "roundId": "chemie-final-current-context-d-004-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-004-v1-independent-a",
+      "reviewInputFingerprint": "sha256:05932460b60d1d36324c4bd65a48bcd0a5fe66088c89302fdebe64beca38e104",
+      "goalReviewContextFingerprint": "sha256:48f2c3a143337683fe3cdca2744d0af05ace5e4b813a54a6053e18e534cac85b",
+      "batchId": "chemie-final-current-context-d-004-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch004-20261018",
+      "runManifestDigest": "sha256:860f1a557a07e28c6af90a01f00ebf8a49e6fb81e38ef37281b5dee695ee7891",
+      "resultsDigest": "sha256:33bf50a914eb196e9c1bc3a74a7a205b97c38e014eae746547ed2dfff792b039",
+      "recordId": "codex-reviewer-a-final163-batch004-20261018.020",
+      "recordDigest": "sha256:3ad94890517c325bbd07d7c9073bff88bd793959ffc3ff89e9b5e4b27e8f8509"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-004-v1-b",
+      "campaignDigest": "sha256:eb0a6a8bfd9326c9da6104480580f2824f20bebcd54ad258ec5b5ecedd511843",
+      "roundId": "chemie-final-current-context-d-004-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-004-v1-independent-b",
+      "reviewInputFingerprint": "sha256:05932460b60d1d36324c4bd65a48bcd0a5fe66088c89302fdebe64beca38e104",
+      "goalReviewContextFingerprint": "sha256:48f2c3a143337683fe3cdca2744d0af05ace5e4b813a54a6053e18e534cac85b",
+      "batchId": "chemie-final-current-context-d-004-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-004-20261018",
+      "runManifestDigest": "sha256:462a31ff8568ab194b6453b4a575269655a339fccdcaefe3a889f1c0386eb3eb",
+      "resultsDigest": "sha256:59784196a1346be76d18c8e2bb0dce57480d2a3daf93f3217588eb58d6cc6281",
+      "recordId": "chemie-final163-native-b-004-20261018:9b942490-ad8f-52ba-8c5a-f8a9792b7db5",
+      "recordDigest": "sha256:ea8f322b26bd59207371fb112b2ec49fac7862d159448af3b5ffd98a9fcaaec6"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:14644ad1dc6daad38fa105e8dcda4988764bf5544ad0303798c9afec70301ba8"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-004-20261018-v1",
+    "manifestDigest": "sha256:f8c23f4cfaabeda104b822b75b02eabbb05ae2a58f66246e6d76815c2be6f54a",
+    "manifestFingerprint": "sha256:47331b90b9c9747c454cd4e4bf2073fcf661e82b97577552be6a0e71defced6c",
+    "decisionId": "chemie-final163-paired-D-only-004-20261018-v1-decision-018"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-004-20261018-v1-decision-018",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:29:30.204Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch004-20261018.020): Der bilinguale Text verbindet Zentren, Struktur und Gleichung. Das ganze P vermeidet eine falsche n-Wasserzahl bei endlicher Kette, trennt Nettoschema/Mechanismus und beansprucht keine reale Syntheseleistung. B (chemie-final163-native-b-004-20261018:9b942490-ad8f-52ba-8c5a-f8a9792b7db5): Die Beschreibung verbindet Erklärung, Strukturableitung und Gleichung als eine Polymerbildungsleistung. P zählt für vier Monomere drei Verknüpfungen korrekt und trennt Nettobilanz von vollständigem Mechanismus oder bewiesener Synthesedurchführung.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch004-20261018.020; chemie-final163-native-b-004-20261018:9b942490-ad8f-52ba-8c5a-f8a9792b7db5). Their current English understanding evidence is retained: A: Bifunctional O/N nucleophiles and acyl centres enable condensation chains; end groups determine exact byproduct balance. B: Bifunctional monomers repeatedly form acyl linkages; finite-chain balance includes actual end groups and the number of small byproducts. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Bifunktionelle O-/N-Nukleophile und Acylzentren ermöglichen Kondensationsketten; Endgruppen bestimmen die genaue Abspaltungsbilanz.",
+      "essentialUnderstandingEn": "Bifunctional O/N nucleophiles and acyl centres enable condensation chains; end groups determine exact byproduct balance.",
+      "observablePerformanceDe": "Leitet Polyester-/Polyamidmotiv ab und bilanziert einen endlichen viermonomeren Abschnitt mit drei Verknüpfungen.",
+      "observablePerformanceEn": "Derives polyester/polyamide motifs and balances a finite four-monomer segment with three links.",
+      "transferExpectationDe": "Überträgt Diol/Disäure auf Diamin/Disäurechlorid und begründet Wasser- gegenüber HCl-Abspaltung samt Aktivierungsgrenze.",
+      "transferExpectationEn": "Transfers diol/diacid to diamine/diacid chloride and explains water versus HCl elimination with activation limits."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-1d56ee392b3ff4386bb0a7a6fa36964bc6243a56e62ce97dea85db4173d11c57",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:2626dbb4c305ffffcaeb7e9956db4746b8bf67cb439e9983959470dbd85d81bc"
+}

@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-005-v1-resolution-a8800c36-d13c-5f63-962c-cf18c3795c63",
+  "goal": {
+    "goalId": "a8800c36-d13c-5f63-962c-cf18c3795c63",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:b7fcb0bf294ec17da0bdf822629b0499aec3e84e6ad50aa799fbc1dbda843ed7",
+    "pageFingerprint": "sha256:0800f0c1e635fe14fd6ead180222231f947ab9d6cd4008594b331930dc4c0211",
+    "goalReviewContextFingerprint": "sha256:43fee895eea7aec5b62d1b226169a82185dcae0162bb4af71a377f0309ffe79f",
+    "finalText": {
+      "titleDe": "Chemische Erkenntniswege und ihre Reichweite erklären",
+      "titleEn": "Explain chemical inquiry processes and their reach",
+      "descriptionDe": "Die lernende Person kann an einem vorgegebenen chemischen Erkenntnisweg erklären, wie Fragestellung, Methoden, Beobachtungen und Interpretation zusammenwirken, welche Fragen damit chemisch beantwortbar sind und welche Unsicherheiten oder Grenzen bestehen.",
+      "descriptionEn": "The learner can explain how questions, methods, observations, and interpretation work together in a given chemical inquiry process, which questions can be answered chemically through it, and which uncertainties or limitations remain."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-005-v1-a",
+      "campaignDigest": "sha256:c8471cd797dec10abf7198c697339e7dc3a58537ed0f9852f8cf26345c1a666f",
+      "roundId": "chemie-final-current-context-d-005-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-005-v1-independent-a",
+      "reviewInputFingerprint": "sha256:ea93568bfdabdff3f714ec5d94b8dc59252520722e0aa10aa39a38e8541c8349",
+      "goalReviewContextFingerprint": "sha256:43fee895eea7aec5b62d1b226169a82185dcae0162bb4af71a377f0309ffe79f",
+      "batchId": "chemie-final-current-context-d-005-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch005-20261018",
+      "runManifestDigest": "sha256:e2259ed1b412c3e3898b1487d972c903b35f39252a4a42f584bb855b91d2a437",
+      "resultsDigest": "sha256:054b020007e1d870143eca58ebb28ac20242207e4abfe68fc54ca6d6352a547c",
+      "recordId": "codex-reviewer-a-final163-batch005-20261018.019",
+      "recordDigest": "sha256:94dd6aa6fb68e001d19c5b2a398f033a62050975297aee536db304b434a57235"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-005-v1-b",
+      "campaignDigest": "sha256:48da8784d2bf2a022d5106050deb7e838bedbbf7dc15498f5e8f7fd019de0920",
+      "roundId": "chemie-final-current-context-d-005-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-005-v1-independent-b",
+      "reviewInputFingerprint": "sha256:ea93568bfdabdff3f714ec5d94b8dc59252520722e0aa10aa39a38e8541c8349",
+      "goalReviewContextFingerprint": "sha256:43fee895eea7aec5b62d1b226169a82185dcae0162bb4af71a377f0309ffe79f",
+      "batchId": "chemie-final-current-context-d-005-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-005-20261018",
+      "runManifestDigest": "sha256:f156ef3bbef741b54e4c6db6d00df3cf1d510ad9b05729f1ec91bff119669db0",
+      "resultsDigest": "sha256:cdef531d33939f213e22d20615076c31b4ce9a1347b09abc4ccd1a69e5fe8995",
+      "recordId": "chemie-final163-native-b-005-20261018:a8800c36-d13c-5f63-962c-cf18c3795c63",
+      "recordDigest": "sha256:b0ffd465d713ab19301c60b149fc29f595808a23ede01685154a60b2a0f0f85e"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:766e419b6962da8bae4b84dd677a6b7df18782647f13f0903d77a8bff87bdb82"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-005-20261018-v1",
+    "manifestDigest": "sha256:a41a2bc6b482499a6ca79542f7bbf5db10ee5ee2b8a366942cad9362acfb6f26",
+    "manifestFingerprint": "sha256:c531460d36cff13dc7321c382660c17c38c5ef6449bf726e255ffa0bb0e06d93",
+    "decisionId": "chemie-final163-paired-D-only-005-20261018-v1-decision-019"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-005-20261018-v1-decision-019",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:31:16.405Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch005-20261018.019): Die Sprachfassungen grenzen vorgegebenen Erkenntnisweg von eigener Reflexion ab. Das ganze P erklärt Kontamination als prüfbare Möglichkeit, nicht bewiesene Ursache, und trennt chemische Produktprüfung von gesellschaftlicher Risikoakzeptanz. B (chemie-final163-native-b-005-20261018:a8800c36-d13c-5f63-962c-cf18c3795c63): Die Beschreibung begrenzt sich bewusst auf einen vorgegebenen Erkenntnisweg. P verlangt keine eigene Durchführung oder vollständige Fünf-Kriterien-Reflexion und trennt Farb-/Gasindiz von Identität, Menge und Akzeptanz.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch005-20261018.019; chemie-final163-native-b-005-20261018:a8800c36-d13c-5f63-962c-cf18c3795c63). Their current English understanding evidence is retained: A: Inquiry connects question, control, observation and bounded interpretation; product identity, amount and societal judgment are different questions. B: A supplied inquiry connects question, comparison method and finding to bounded interpretation; identity and societal judgment are different claims. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Ein Erkenntnisweg verbindet Frage, Kontrolle, Beobachtung und begrenzte Deutung; Produktidentität, Menge und gesellschaftliche Wertung sind verschiedene Fragen.",
+      "essentialUnderstandingEn": "Inquiry connects question, control, observation and bounded interpretation; product identity, amount and societal judgment are different questions.",
+      "observablePerformanceDe": "Rekonstruiert einen vorgegebenen Metallverdrängungs- oder Gasnachweisweg und erklärt chemisch tragfähige Folgerungen sowie offene Fragen.",
+      "observablePerformanceEn": "Reconstructs a supplied metal-displacement or gas-test inquiry and explains defensible chemical inferences and unresolved questions.",
+      "transferExpectationDe": "Revidiert bei positiver Kontrollprobe die spezifische Zuordnung und schlägt eine passende zusätzliche Analyse ohne erfundene Befunde vor.",
+      "transferExpectationEn": "Revises specific attribution after a positive control and proposes suitable added analysis without invented findings."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-8baec0ec7942927df50835b62d9106e67ed2edb917a85d4e385d6ba2ba7a3b68",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:4b70b41146faddc3642756b8f3a15dc93e7fd7a8604fd4a9e0d5eed42b0c5118"
+}

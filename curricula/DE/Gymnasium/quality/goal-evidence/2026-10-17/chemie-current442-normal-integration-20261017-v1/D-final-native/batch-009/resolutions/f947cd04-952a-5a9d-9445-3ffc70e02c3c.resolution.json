@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-009-v1-resolution-f947cd04-952a-5a9d-9445-3ffc70e02c3c",
+  "goal": {
+    "goalId": "f947cd04-952a-5a9d-9445-3ffc70e02c3c",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:91ff858ec3b2ce6539b33fc7c9c2e3152398691edf57d8b37a877ef336ac97b4",
+    "pageFingerprint": "sha256:537a9b1848783944c4b26cec8eecb98e56baeaa1517d66d4bb2e4c05f8a1e8a4",
+    "goalReviewContextFingerprint": "sha256:c995bd24949bb0636fb8cdb560544c54e86bbbd87ceb05d73884248d6e321f17",
+    "finalText": {
+      "titleDe": "Polyadditionen analysieren (LK)",
+      "titleEn": "Analyze polyadditions (LK)",
+      "descriptionDe": "Die lernende Person kann die Bildung von Polyurethanen erläutern und Besonderheiten der Reaktionsführung erklären.",
+      "descriptionEn": "The learner can explain the formation of polyurethanes and particularities of the reaction control."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-009-v1-a",
+      "campaignDigest": "sha256:632b354acad11bd2ceb4f8d2bd47b47c3bf4767abe1ae4545b688e1cd2dea4eb",
+      "roundId": "chemie-final-current-context-d-009-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-009-v1-independent-a",
+      "reviewInputFingerprint": "sha256:2a493a1e4c90ad26e428da157ab06c92311c1ca6a2278ac42313b60978fcae01",
+      "goalReviewContextFingerprint": "sha256:c995bd24949bb0636fb8cdb560544c54e86bbbd87ceb05d73884248d6e321f17",
+      "batchId": "chemie-final-current-context-d-009-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch009-20261018",
+      "runManifestDigest": "sha256:b3add03b47589efc8870b1f5c6c4875c91289d66e92234c32584b3941ec0fd63",
+      "resultsDigest": "sha256:409146c0e239b09e760a7fd073410d5eeb3296925e3272634c4c436f56b25f75",
+      "recordId": "codex-reviewer-a-final163-batch009-20261018.002",
+      "recordDigest": "sha256:20640b15b5e595171b0eb3a5e7e9aed90b418d5adc1e2a3a0aad2420edccd02c"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-009-v1-b",
+      "campaignDigest": "sha256:c41e6189d07168f42d0d3f1bdc26b67e406feda7dc53ec05bd6433d1a8e363b0",
+      "roundId": "chemie-final-current-context-d-009-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-009-v1-independent-b",
+      "reviewInputFingerprint": "sha256:2a493a1e4c90ad26e428da157ab06c92311c1ca6a2278ac42313b60978fcae01",
+      "goalReviewContextFingerprint": "sha256:c995bd24949bb0636fb8cdb560544c54e86bbbd87ceb05d73884248d6e321f17",
+      "batchId": "chemie-final-current-context-d-009-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-009-20261018",
+      "runManifestDigest": "sha256:195e11bb3feed216b7af0380005218175787089a4dd2a2fa0eb15ed9e938b2d6",
+      "resultsDigest": "sha256:958a8e3c17b436f293902bdd9e7f34473167454229d86ac32b8478268bcd9d5e",
+      "recordId": "chemie-final163-native-b-009-20261018:f947cd04-952a-5a9d-9445-3ffc70e02c3c",
+      "recordDigest": "sha256:f7edce930f04f59cb87ba31d0a712126a4e9f8f19132a410aa30550ef1222c78"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:c838d90f65227c9284632df92cc9926969f995826465e4daa47e865174e57670"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-009-20261018-v1",
+    "manifestDigest": "sha256:e1302f9f8066f8ee773a3dd9aa9957a276db0998fdc46e7c37cf285b13732298",
+    "manifestFingerprint": "sha256:c85006d5e70f952dd3209898879920e7d4bc3384d1065d69eea78f2238b739ed",
+    "decisionId": "chemie-final163-paired-D-only-009-20261018-v1-decision-002"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-009-20261018-v1-decision-002",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:47:13.013Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch009-20261018.002): Die D-Fassung verlangt Bildung und Reaktionsführung zu erklären und passt zu allen drei P-Schwerpunkten. Der vollständige Body liefert einen ausdrücklich formalen valenzrichtigen Additions-/Protonenweg ohne Wasserabspaltung, keine Behauptung eines bewiesenen langlebigen Intermediats. 200/200 beziehungsweise 210/210 mol Gruppen und die Triolfunktionalität werden richtig behandelt. Der Wassernebenpfad lässt maximal 96 mmol NCO für OH; gleicher Äquivalentansatz allein beweist weder Vollumsatz noch Haftung oder formstabiles Netz. B (chemie-final163-native-b-009-20261018:f947cd04-952a-5a9d-9445-3ffc70e02c3c): Die knappe LK-Beschreibung hält Bildungsreaktion und Reaktionsführung unter dem Polyurethan-Synthesekern zusammen. Das ganze aktuelle P verlangt einen eigenen valenzrichtigen Mechanismus und Wiederholungsmotiv statt bloßer Reaktionstypnamen. Die tatsächlich vollständig gelesenen ursprünglichen Sachfälle liefern dazu Diol/Triol-Äquivalente und den Wasser-/Harnstoffpfad; die neuen Kontroll- und Gasverlustfragen sind wissenschaftlich passende Prozessdeutung. Das formale Zwischenmodell wird nicht als langlebige reale Zwischenstufe und die Netzwerktendenz nicht als garantierte Haftung oder Einsatzfestigkeit ausgegeben.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch009-20261018.002; chemie-final163-native-b-009-20261018:f947cd04-952a-5a9d-9445-3ffc70e02c3c). Their current English understanding evidence is retained: A: Polyurethane forms in the dry main reaction by alcohol addition to isocyanate with proton transfer; functionality, group equivalence and moisture affect chain/network formation. B: Isocyanate and alcohol form urethane links through addition and proton transfer without a small byproduct in the dry main reaction; functionality and group equivalents influence polymer structure. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Polyurethan entsteht in der trockenen Hauptreaktion durch Addition von Alkohol an Isocyanat mit Protonübertragung; Funktionalität, Gruppenäquivalenz und Feuchtigkeit beeinflussen die Ketten-/Netzbildung.",
+      "essentialUnderstandingEn": "Polyurethane forms in the dry main reaction by alcohol addition to isocyanate with proton transfer; functionality, group equivalence and moisture affect chain/network formation.",
+      "observablePerformanceDe": "Erklärt Alkohol-O als Nukleophil und NCO-C als Elektrophil, zeichnet valenzrichtig die Urethangruppe und Wiederholungseinheit und zählt OH/NCO statt nur Monomermoleküle.",
+      "observablePerformanceEn": "Explains alcohol O as nucleophile and NCO C as electrophile, draws the urethane linkage and repeat unit with correct valences and counts OH/NCO groups rather than merely monomer molecules.",
+      "transferExpectationDe": "Leitet für den frischen vollständigen Wasser-/Harnstoffpfad aus 2 mmol H2O bis 2 mmol CO2 und 4 mmol NCO-Verbrauch ab und beurteilt Blasen getrennt von Netzqualität und Restgruppenumsatz.",
+      "transferExpectationEn": "For the fresh complete water/urea route derives up to 2 mmol CO2 and 4 mmol NCO consumption from 2 mmol H2O and evaluates bubbles separately from network quality and residual-group conversion."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-e3136f1a1b7876cdf42948467be4cf9addabb94354f3b9df28d49ed6e51b0952",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:1913488ae7e8bd68b8147d44b75fa5e09da2e5cbe3f62020a48a6270746f6cfb"
+}

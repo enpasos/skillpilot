@@ -1,0 +1,147 @@
+{
+  "artifactRole": "ACTUAL_CHEMISTRY_ONLY_FINAL_SOURCE_ATLAS_TECHNICAL_INTEGRATION",
+  "createdAtUTC": "2026-10-18T04:09:22.964077+00:00",
+  "authorizedScope": "Root SOURCE-FREEZE-GO followed by explicit exactly-five C7 missing review metadata correction authorization; original source deriver and CLI preserved.",
+  "priorRoles": "Current technician previously authored C40/C7 and normal P/view transports. This assembly gives no independent source, D/P/A/M/V, Human Approval or learner-performance vote.",
+  "metadataCorrection": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-source-atlas-inputs-integration-technical-20261018-v1/metadata-correction/RECEIPT.actual-five-C7-missing-review-metadata-bound.json",
+    "sha256": "3a5416691e0fad7fc6572775ba2e6c3d1d07466eeeb25e44e7365a9ca5b77c5a",
+    "bytes": 26091
+  },
+  "firstRawGuardFailurePreserved": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-source-atlas-inputs-integration-technical-20261018-v1/dryrun/FAILURE.first-original-missing-MV-review-metadata.json",
+    "sha256": "6482857cce5bfad29e6eefc24db0a6f68369fa6c14373fbfac13774cc8f7f26f",
+    "bytes": 1593
+  },
+  "measuredOriginalCountAssertion": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-source-atlas-inputs-integration-technical-20261018-v1/dryrun/actual-original-count-or-contract-failures.json",
+    "sha256": "09d8db3c85eecca84f94fed8e1b69efa085b4ead0de9a76b5f61de22eb3c09e2",
+    "bytes": 1521
+  },
+  "inactiveMeasuredDelta": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-source-atlas-inputs-integration-technical-20261018-v1/dryrun/DELTA.actual-source-witnesses-scopes-and-union.json",
+    "sha256": "d3502a3f29d01f624d25c3b827bb9cd40aa64cdef7acc1b3d909d4a8d7064d1a",
+    "bytes": 637895
+  },
+  "qualifiedFiniteDelta": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-source-atlas-inputs-integration-technical-20261018-v1/QUALIFICATION.actual-ten-added-union-goals-and-twelve-witness-replacements.json",
+    "sha256": "212a84b943d268a4ab68bda6394d3945970fe60619bb0da9b521db9db22420a1",
+    "bytes": 99840
+  },
+  "beforeCounts": {
+    "canonicalCurricularAtomicGoals": 450,
+    "publishedCurricularAtomicGoals": 400,
+    "sourceViews": 48,
+    "unresolvedSourceScopeDecisions": 496,
+    "omittedGoals": 50
+  },
+  "afterCounts": {
+    "canonicalCurricularAtomicGoals": 450,
+    "publishedCurricularAtomicGoals": 410,
+    "sourceViews": 48,
+    "unresolvedSourceScopeDecisions": 496,
+    "omittedGoals": 40
+  },
+  "globalUnionAdded": [
+    "0e3f849b-133d-57da-882c-0d67c3eb05b8",
+    "2d16528c-1424-5999-b3d2-af4593a147fc",
+    "4955f745-b946-5d3d-82d6-5e52dc8549a3",
+    "8b2d351e-e44f-5385-9b89-13ef54b5918f",
+    "a25a19ed-aec3-59cc-ae28-31d98746cb9d",
+    "b7b5df21-78f3-5408-89f1-36deed450695",
+    "c61b2a7a-fb0f-5a76-92e9-771c789fa816",
+    "cc5a626a-dc85-57e2-b422-259f92901545",
+    "cd9ec99b-b694-5673-863c-55528e31250a",
+    "f57d53b0-5bdf-5998-81f4-8bfb2fc5bde7"
+  ],
+  "globalUnionRemoved": [],
+  "addedWitnesses": 830,
+  "removedWitnesses": 12,
+  "normalAtlasOutputs": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-source-atlas-inputs-integration-technical-20261018-v1/CHECK.actual-fifty-one-output-pins-and-four-book-protection.json",
+    "sha256": "1ba709a206294a1708d011583d41946a5f94a6adaa8c0053dec9ddeafb272b53",
+    "bytes": 25260
+  },
+  "currentInputsConfig": {
+    "path": "app/scripts/config/goal-books/de-gym-chemistry-national-atlas.inputs.json",
+    "sha256": "89729c9bef953287df8d0b7d039e64c22a2a3a9d0f580e0b1f2fae42239b994b",
+    "bytes": 16529
+  },
+  "currentTargetedTest": {
+    "path": "app/scripts/testGoalBookSourceAtlasInputs.ts",
+    "sha256": "973d11910cfbcf78807a9f50b14447a8b028d9d3e8d217fa928e650b0da2a926",
+    "bytes": 51598
+  },
+  "execution": [
+    {
+      "command": "./app/node_modules/.bin/tsx app/scripts/buildGoalBookSourceAtlasInputs.ts --config app/scripts/config/goal-books/de-gym-chemistry-national-atlas.inputs.json",
+      "toolSessionId": 64400,
+      "exitCode": 0,
+      "observedStdout": "Generated source atlas inputs: {\"canonicalCurricularAtomicGoals\":450,\"publishedCurricularAtomicGoals\":410,\"sourceViews\":48,\"unresolvedSourceScopeDecisions\":496,\"omittedGoals\":40}"
+    },
+    {
+      "command": "./app/node_modules/.bin/tsx -e \"import {testGoalBookSourceAtlasInputs} from './app/scripts/testGoalBookSourceAtlasInputs'; testGoalBookSourceAtlasInputs()\"",
+      "toolSessionId": 82667,
+      "exitCode": 0,
+      "log": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-source-atlas-inputs-integration-technical-20261018-v1/LOG.actual-invoked-original-stock-atlas-test.txt",
+        "sha256": "dcdf3d0ec05b843dbca234b9b93921089a5fc01af222ae6fc3483e66034337b8",
+        "bytes": 164
+      },
+      "actualFunctionInvocation": true,
+      "coverage": "Original exported stock test including fixture guards, current Biology/Chemistry, compact/expand equality, mandatory Git-tracked input closure and exact isolated-checkout derivation without declared download caches."
+    }
+  ],
+  "originalGenerator": {
+    "path": "app/scripts/buildGoalBookSourceAtlasInputs.ts",
+    "sha256": "d5c15b879d6f30e9de334ce0620077b94a63713e7c2cc4ed8d5357589b4184b2",
+    "bytes": 1132
+  },
+  "originalPureDeriver": {
+    "path": "app/scripts/goalBookSourceAtlasInputs.ts",
+    "sha256": "7f8636d2f41474841aa693d81dc2f419521a9ed6707b047fb080ed9dc444a3ed",
+    "bytes": 25775
+  },
+  "fourOtherBooks": [
+    {
+      "bookId": "de-gym-mathematik-bundesweit",
+      "exactProtectedFileCount": 86,
+      "allCurrentBytesEqualPreflight": true
+    },
+    {
+      "bookId": "de-gym-physik-bundesweit",
+      "exactProtectedFileCount": 67,
+      "allCurrentBytesEqualPreflight": true
+    },
+    {
+      "bookId": "de-gym-biologie-bundesweit",
+      "exactProtectedFileCount": 29,
+      "allCurrentBytesEqualPreflight": true
+    },
+    {
+      "bookId": "de-gym-wirtschaftswissenschaften-bundesweit",
+      "exactProtectedFileCount": 2,
+      "allCurrentBytesEqualPreflight": true
+    }
+  ],
+  "unchangedBoundaries": [
+    "450 ordinary Chemistry goals; canonical/SEM bytes unchanged.",
+    "No AP, central-registry, P/C, source-extraction, learner composition view or other-book mutation by atlas generation. Only separately authorized5 missing C7 reviewer/date bindings precede derivation.",
+    "Original source scope guard496 and unresolved goal omissions6 remain; no source confidence or whole-clause completion flag fabricated.",
+    "Original BW/HB/C10 direct source identities/course boundaries, HE LK-only Gibbs/paraben/ascorbic source atoms, C11 unresolved HOLD and quantitative-paraben no-witness omission remain asserted.",
+    "HE2026 E5/S15 general-standard contributions are separately accepted partial source witnesses; they do not alter normal learner-view target roles or assert actual learner execution.",
+    "New10 union atoms have47 exact independently accepted direct source witness rows. No universal official curriculum duty follows from partial witness publication."
+  ],
+  "normalWriteCounts": {
+    "selectedC7ReviewMetadataFiles": 5,
+    "generatedChemistryOutputPathsWritten": 51,
+    "generatedChemistryOutputFilesByteChanged": 49,
+    "chemistryInputExpectationFile": 1,
+    "targetedStockChemistryRegressionFile": 1
+  },
+  "commitStagePush": false,
+  "buildOrCentralReportExecuted": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "M7Claim": false
+}

@@ -1,0 +1,91 @@
+{
+  "artifactRole": "INACTIVE_AUTHOR_COMPLETE_SELECTED_PRIMARY_UNIT_APPEND_ONLY",
+  "activation": "pending-independent-source-review-and-root-integration",
+  "baseExtraction": {
+    "path": "curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_CHEMIE_SEKI_RAHMENPLAN_2021.source-extraction.json",
+    "sha256": "f8fe7064ab5d0b5f35bf6b05dced7d97ddbf7d1e4295719aeb52b4a16dfe78af",
+    "bytes": 213758
+  },
+  "proposedNormalExtractionPath": "curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_CHEMIE_SEKI_RAHMENPLAN_2021.source-extraction.json",
+  "sourceLandscapeId": "e19d84c3-efa8-5b74-8c78-b284fc65b26c",
+  "sourceDocument": {
+    "key": "MV-CH-SEKI-2021",
+    "title": "Rahmenplan Chemie Sekundarstufe I Gymnasium/Gesamtschule Mecklenburg-Vorpommern 2021",
+    "path": "curricula/DE/Gymnasium/input/MV/Chemie_Sekundarstufe_I_2021.pdf",
+    "url": "https://www.bildung-mv.de/export/sites/bildungsserver/.galleries/dokumente/unterricht/rahmenplaene/Anlage_9_RP_CHE_AHR-7-10_final1.pdf",
+    "official": true
+  },
+  "sourceDocumentPin": {
+    "path": "curricula/DE/Gymnasium/input/MV/Chemie_Sekundarstufe_I_2021.pdf",
+    "sha256": "eb8c6ef1db64e6a408c23a50c95e1e38d72b35fcbbcbf0fceb744c878c2ecdb7",
+    "bytes": 1511290
+  },
+  "passagesToAppend": [
+    {
+      "id": "mv-chemistry-seki-process-standard-e-data-patterns:whole-primary-context",
+      "topicCode": "3.2-E-DATA-PATTERNS",
+      "title": "Erkenntnisgewinnung: Datenmuster erklären und Schlüsse ziehen",
+      "text": "finden in erhobenen oder recherchieren Daten Trends, Strukturen und Beziehungen, erklären diese und ziehen geeignete Schlussfolgerungen",
+      "sourceDocumentKey": "MV-CH-SEKI-2021",
+      "sourceRef": "Rahmenplan Chemie Sekundarstufe I Gymnasium/Gesamtschule Mecklenburg-Vorpommern 2021, physical PDF p. 15",
+      "metadata": {
+        "unit": "whole bullet",
+        "primaryPageOneBased": 15,
+        "surroundingWholePageActuallyRead": true,
+        "contextBoundary": "General chemistry method within the stated lower-secondary scope; no official whole constant-composition-law mandate.",
+        "thirdPartyOfficialTextRetainsOriginalRights": true
+      }
+    }
+  ],
+  "sourceGoalsToAppend": [
+    {
+      "id": "mv-chemistry-seki-process-standard-e-data-patterns",
+      "passageId": "mv-chemistry-seki-process-standard-e-data-patterns:whole-primary-context",
+      "topicCode": "3.2-E-DATA-PATTERNS",
+      "title": "Erkenntnisgewinnung: Datenmuster erklären und Schlüsse ziehen",
+      "description": "finden in erhobenen oder recherchieren Daten Trends, Strukturen und Beziehungen, erklären diese und ziehen geeignete Schlussfolgerungen",
+      "sourceDocumentKey": "MV-CH-SEKI-2021",
+      "sourceText": "finden in erhobenen oder recherchieren Daten Trends, Strukturen und Beziehungen, erklären diese und ziehen geeignete Schlussfolgerungen",
+      "sourceSpan": {
+        "passageId": "mv-chemistry-seki-process-standard-e-data-patterns:whole-primary-context",
+        "label": "Rahmenplan Chemie Sekundarstufe I Gymnasium/Gesamtschule Mecklenburg-Vorpommern 2021, physical PDF p. 15; allgemeine SekI-Kompetenz"
+      },
+      "sourceRef": "Rahmenplan Chemie Sekundarstufe I Gymnasium/Gesamtschule Mecklenburg-Vorpommern 2021, physical PDF p. 15",
+      "courseLevel": "unspecified",
+      "granularity": "completeOfficialMethodBullet",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-MV",
+        "stage:SekI",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-whole-selected-official-unit-from-actual-local-PDF",
+        "physicalPageOneBased": 15,
+        "officialOperatorCode": null,
+        "scope": {
+          "stage": "SekI",
+          "sourcePhase": "allgemeine SekI-Kompetenz",
+          "courseLevel": "unspecified",
+          "scopeBoundary": "General chemistry method within the stated lower-secondary scope; no official whole constant-composition-law mandate."
+        },
+        "notNewOfficialLawGoal": true,
+        "noIndependentReviewInThisAuthorTransport": true
+      }
+    }
+  ],
+  "oldWholeSourceGoalCount": 114,
+  "oldSourceGoalsPassagesAndMetadataPreservedExactly": true,
+  "rebaseRule": "Object-wise ID lookup and absent-id append; preserve concurrent cells, passages, metadata and all old objects. Never activate a stale whole afterfile.",
+  "pipelineStatus": {
+    "newWholeSourceApprovals": 0,
+    "independentVotes": 0,
+    "normalWrites": 0
+  },
+  "sourceScopeBoundary": {
+    "stage": "SekI",
+    "sourcePhase": "allgemeine SekI-Kompetenz",
+    "courseLevel": "unspecified",
+    "scopeBoundary": "General chemistry method within the stated lower-secondary scope; no official whole constant-composition-law mandate."
+  }
+}

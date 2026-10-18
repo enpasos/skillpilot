@@ -1,0 +1,10 @@
+{
+  "command": [
+    "python3",
+    "-c",
+    "import sys,json;sys.path.insert(0,'scripts');from validate_schemas import curriculum_symlink_errors;e=curriculum_symlink_errors('.');print(json.dumps({'stockCurriculumSymlinkErrors':e,'technicalCheckpointPortabilityOnly':True,'contentReviewResumed':False}));raise SystemExit(bool(e))"
+  ],
+  "exitCode": 0,
+  "durationSeconds": 10.516509952009073,
+  "newContentChecks": 0
+}

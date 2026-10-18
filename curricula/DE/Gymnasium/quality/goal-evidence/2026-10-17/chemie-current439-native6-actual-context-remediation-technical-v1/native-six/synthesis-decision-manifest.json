@@ -1,0 +1,216 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "chemie-current439-native6-paired-root-synthesis-20261017-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex root synthesis after both blind independent current-input reviews; no human attestation",
+  "synthesizedAt": "2026-10-17T07:16:21.040Z",
+  "batch": {
+    "batchId": "chemie-current439-native6-actual-context-remediation-20261017-v1",
+    "batchManifestDigest": "sha256:b699c74eefa56f9417a011be597f5f49c74364cb3a945aeeef3bfed732902300",
+    "configDigest": "sha256:a99fc0d91999df7679f7c069e165ddcca185b2394e8edc7a169b2b37987c1daa",
+    "bundleFingerprint": "sha256:0bcf744cf07e019ebe15e3770668d9a401629fb86210ebfb3ff89c06421c9185",
+    "bookDigest": "sha256:bffe03b0c6af024ef583a1bf1ca21fef2ad2eaacb8ca6ec2b21fffff99841924",
+    "reviewInputFingerprint": "sha256:7fc31717628d3d664bd05b98f14f7976102de49fed1d2943d58414a1e11c1b9b",
+    "dualSummaryDigest": "sha256:a60df3f36799828c64a3e09074ce95b6b9083b70742629597e822c23cb9b14d4",
+    "canonicalLandscapeDigest": "sha256:e0af9e3dedc6db17b940ec7d4732a6c2bcced7d00f3a30df9db948b9936332a8"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-current439-native6-actual-context-remediation-20261017-v1-a",
+      "campaignDigest": "sha256:1a829c76b65783efddb8bb728cdd7ee4c786f99f12cc3a70450e6a2c90b8927a",
+      "roundId": "chemie-current439-native6-actual-context-remediation-20261017-v1-first-pass-a",
+      "independenceGroupId": "chemie-current439-native6-actual-context-remediation-20261017-v1-independent-a",
+      "reviewInputFingerprint": "sha256:7fc31717628d3d664bd05b98f14f7976102de49fed1d2943d58414a1e11c1b9b",
+      "batchId": "chemie-current439-native6-actual-context-remediation-20261017-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:ba92e783bf59a7b4d45d394cbc9684b410012367fc9125730a86f5be10373dd9",
+      "runId": "chemie-current439-native6-independent-a-v1",
+      "runManifestDigest": "sha256:0e5c8c80a9955cd141af4530272f86230502292f0fb469835ef61670cb4d187f",
+      "resultsDigest": "sha256:3d878b317f8444d00f72fd0cdb4cb58eab2ba60983a45d9a4c82418ab1428889"
+    },
+    "second": {
+      "campaignId": "chemie-current439-native6-actual-context-remediation-20261017-v1-b",
+      "campaignDigest": "sha256:e15f7917f34370e557986f84fbce7945deb20fc4bba61cb21972ba512e6fa6b6",
+      "roundId": "chemie-current439-native6-actual-context-remediation-20261017-v1-first-pass-b",
+      "independenceGroupId": "chemie-current439-native6-actual-context-remediation-20261017-v1-independent-b",
+      "reviewInputFingerprint": "sha256:7fc31717628d3d664bd05b98f14f7976102de49fed1d2943d58414a1e11c1b9b",
+      "batchId": "chemie-current439-native6-actual-context-remediation-20261017-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:1b0c636a496ebc0d5fa7fbe8007eb01e0b4d49065cd3a3a6a19cd2d08c471873",
+      "runId": "chemie-current439-native6-independent-b-20261017-v1-run",
+      "runManifestDigest": "sha256:946df12bf80130b8e1ebd0e9dcccc8f5269f3b363a4ecfde2cc2b395be05267e",
+      "resultsDigest": "sha256:f9b23742d5a540605da3193404603efc7a763993d07816b91e3d5a9513240c70"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "chemie-current439-native6-root-9b56d01e-c2d7-51d8-b78e-237592c1ed20-20261017-v1",
+      "goalId": "9b56d01e-c2d7-51d8-b78e-237592c1ed20",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f71621c4f2e0f579cd98db6c6036611adf4112ae572b40ea874dd0c5931741a9",
+      "pageFingerprint": "sha256:790e8b3275fb2d4692c279fdee63489bd1a493e2d07333548ce8ba23f6d8a1bf",
+      "goalReviewContextFingerprint": "sha256:6fd6d4f6989c57aa507d1533420e0f3e0e8249b5eb60c7c3883e1b2a389893b1",
+      "finalText": {
+        "titleDe": "Einfache Bindungswinkel mit dem EPA-Modell erklären",
+        "titleEn": "Explain simple bond angles using the VSEPR model",
+        "descriptionDe": "Die lernende Person kann zu bereits dargestellten Molekülgestalten und EPA-Elektronendomänen passende idealisierte einfache Bindungswinkel zuordnen, qualitative Winkelabweichungen durch freie Elektronenpaare begründen und die Grenzen solcher Modellwinkel gegenüber exakten Messwerten erläutern.",
+        "descriptionEn": "The learner can assign appropriate idealized simple bond angles to already depicted molecular shapes and VSEPR electron domains, explain qualitative angle deviations caused by lone pairs and distinguish the limits of such model angles from exact measured values."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-native6-independent-a-v1.record-001",
+          "recordDigest": "sha256:ed3198c016407b4979693931b59e7ac281e24311454a9db32698ccaed8b42124"
+        },
+        "second": {
+          "recordId": "chemie-current439-native6-independent-b-20261017-v1-run.record-001",
+          "recordDigest": "sha256:b3d418275c71c4e50eb26a2dec6b61dd88646dcc9d94a7c262650cdb417a3c49"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen den zusätzlichen Winkelschritt zu ausdrücklich gegebenen Gestalten und Domänen. Runde A trennt ihn von der Gestaltvorleistung und bindet freie-Paar-Abweichung sowie Modell-/Messgrenze; kein exakter Messwinkel wird aus EPA allein behauptet.",
+      "rationaleEn": "Both independent reviews confirm the additional angle step for explicitly supplied shapes and domains. Round A distinguishes it from prior shape classification and retains lone-pair deviation and model-versus-measurement limits; VSEPR alone is not claimed to yield an exact measured angle."
+    },
+    {
+      "decisionId": "chemie-current439-native6-root-6966df95-f125-5ecc-af8e-0442545d9f17-20261017-v1",
+      "goalId": "6966df95-f125-5ecc-af8e-0442545d9f17",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:8b8e10c8986185b84c28ed8f2287a62e3f0fb894dd9701e83a02702df90969ab",
+      "pageFingerprint": "sha256:5c250e263700e6b76275a4e44891d4eca6b118bf88bedde60087f29ee5522ddb",
+      "goalReviewContextFingerprint": "sha256:ff74d95f7ad343a721fe43b7ed1489cd3788f248e7d7142450def164acd82f34",
+      "finalText": {
+        "titleDe": "Micellenbildung deuten",
+        "titleEn": "Interpret micelle formation",
+        "descriptionDe": "Die lernende Person kann aus der amphiphilen Struktur von Seifen ihre Anordnung an Grenzflächen und in Micellen, ihre Emulgatorwirkung und die Verringerung der Oberflächenspannung von Wasser erklären.",
+        "descriptionEn": "The learner can use the amphiphilic structure of soaps to explain their arrangement at interfaces and in micelles, their emulsifying action, and the reduction of the surface tension of water."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-native6-independent-a-v1.record-002",
+          "recordDigest": "sha256:91b9cdfdbb4d2a26cf9440cb1b2938d8994acad6164776ef11a913c81ed51bbb"
+        },
+        "second": {
+          "recordId": "chemie-current439-native6-independent-b-20261017-v1-run.record-002",
+          "recordDigest": "sha256:10b622c71b53490c977d6c27e225747321456ba98edbcf5a47f56fc9dd499f8f"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen die gemeinsame amphiphile Struktur-Erklärung und unterscheiden normale Micellen von emulgiertem Öl. Runde A hält den neuen Phasenkontakt und die fehlende Stabilitätsgarantie ausdrücklich getrennt; fakultativer Quellenstatus bleibt erhalten.",
+      "rationaleEn": "Both rounds confirm the common amphiphilic structure explanation and distinguish normal micelles from emulsified oil. Round A explicitly separates the fresh phase contact from unsupported stability guarantees; official optionality remains intact."
+    },
+    {
+      "decisionId": "chemie-current439-native6-root-f0f67a7a-b06a-50b9-8edc-1f2a0d97520d-20261017-v1",
+      "goalId": "f0f67a7a-b06a-50b9-8edc-1f2a0d97520d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a3495abdaefddf46c400e84774722574347d7c6de61047b6f3e7cd6068c06aeb",
+      "pageFingerprint": "sha256:2d03d3dca340688480cf1ebb01a2dc5e345fb8d5a48f940c18fd0e9df4ee8457",
+      "goalReviewContextFingerprint": "sha256:9869a0dbdd1a64c4e08a68a80b22132e4e7b28d3cdc589b4663458e55c44b2e6",
+      "finalText": {
+        "titleDe": "Bindungsverhältnisse aromatischer Systeme modellieren",
+        "titleEn": "Model bonding in aromatic systems",
+        "descriptionDe": "Die lernende Person kann Bindungsverhältnisse aromatischer Systeme auch unter energetischen Aspekten mit Mesomeriemodell und erweitertem Orbitalmodell beschreiben.",
+        "descriptionEn": "The learner can describe bonding in aromatic systems, including energetic aspects, using resonance and extended orbital models."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-native6-independent-a-v1.record-003",
+          "recordDigest": "sha256:dfe20f0de900ef6d5560aea03c1ef1894b3cc01b0270a567ed6bbbf61a53a955"
+        },
+        "second": {
+          "recordId": "chemie-current439-native6-independent-b-20261017-v1-run.record-003",
+          "recordDigest": "sha256:dc8dc6e1203ad1cf7d643ee2b869139aba8b11e6dba9f6d9b823527e52ef46b6"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen Orbitalmodell, Mesomerie und gemeinsame energetische Vergleichsbasis. Runde A erhält den eigenständigen Zuwachs zur Resonanzvorleistung und den Diengegenfall; die konkreten 152-kJ-Fälle bleiben eigene Operationalisierung innerhalb der unterschiedlich detaillierten Länderquellen.",
+      "rationaleEn": "Both reviews confirm orbital model, resonance and a common energetic reference. Round A retains the advance beyond prior resonance work and the diene counterexample; the specific 152-kJ cases remain authored operationalisation within differently detailed jurisdiction sources."
+    },
+    {
+      "decisionId": "chemie-current439-native6-root-17ab1148-7383-5cab-8b91-73aff795f1e4-20261017-v1",
+      "goalId": "17ab1148-7383-5cab-8b91-73aff795f1e4",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:deb025b8d8357800d02b3623a83575770ab3ceb3b21941cd58ee78d9b15eebd7",
+      "pageFingerprint": "sha256:0a0a6b98aad8e3672e2245507df2b0672fbc288f8ad6ce06660405953994acfb",
+      "goalReviewContextFingerprint": "sha256:f1a7426b0c11b776360a10c5480d31c8ef34103b01bc59a0814e4a0f5fcc4038",
+      "finalText": {
+        "titleDe": "Elektrophile Substitution am Aromaten modellieren",
+        "titleEn": "Model electrophilic substitution on aromatics",
+        "descriptionDe": "Die lernende Person kann elektrophile Substitutionen am aromatischen Ring modellieren.",
+        "descriptionEn": "The learner can model electrophilic substitutions on aromatic rings."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-native6-independent-a-v1.record-004",
+          "recordDigest": "sha256:840f9956a92b25656e61e782f5ca4754c08055fca2dbac620c65b86e18d5a97e"
+        },
+        "second": {
+          "recordId": "chemie-current439-native6-independent-b-20261017-v1-run.record-004",
+          "recordDigest": "sha256:45c45f96ac8d295e386b8acbe5698684c531ef3a9dd28dd6a079ea62d30eb213"
+        }
+      },
+      "rationaleDe": "Beide Runden halten die kurze Benennung der elektrophilen aromatischen Substitution für eindeutig und das P für passend konkretisiert. Runde A bindet σ-Komplex, Protonenabgabe und Rearomatisierung; HE-LK-Bromierung und fakultativer gemeinsamer Q2.3-Kontext werden nicht zu einem universellen Q1-GK-Auftrag vermischt.",
+      "rationaleEn": "Both rounds find the concise named electrophilic aromatic substitution competence clear and appropriately operationalised by P. Round A retains sigma complex, proton loss and rearomatisation; HE advanced bromination and optional shared Q2.3 context are not conflated into a universal Q1 basic-course requirement."
+    },
+    {
+      "decisionId": "chemie-current439-native6-root-93b914d4-747d-5b22-90ff-ac6320514b44-20261017-v1",
+      "goalId": "93b914d4-747d-5b22-90ff-ac6320514b44",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:981de54dbaa2d90abdf5f021257edd598f3e0bc7997f1a6df32f2c8cab8ef4b8",
+      "pageFingerprint": "sha256:2958bfa0acd6288860942fb8173a03b380b9809a0dd20379530381444ae821fd",
+      "goalReviewContextFingerprint": "sha256:51b0c6a69f510f047bf68bd077cef556f8cda648ad319d9e7b27a45a00e2c120",
+      "finalText": {
+        "titleDe": "Wasserstoff als Energieträger beurteilen",
+        "titleEn": "Assess hydrogen as energy carrier",
+        "descriptionDe": "Die lernende Person kann Wasserstofferzeugung durch Elektrolyse mit regenerativen Energiequellen, physikalische und chemische Wasserstoffspeicherung sowie Effizienzfragen als Bausteine nachhaltiger Energiespeicherung beurteilen.",
+        "descriptionEn": "The learner can evaluate hydrogen production by electrolysis with renewable energy, physical and chemical hydrogen storage, and efficiency questions as components of sustainable energy storage."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-native6-independent-a-v1.record-005",
+          "recordDigest": "sha256:eebc717036c0327eef4104d0a1654d6e8eec9ef63027d2b2f676af9978b6d591"
+        },
+        "second": {
+          "recordId": "chemie-current439-native6-independent-b-20261017-v1-run.record-005",
+          "recordDigest": "sha256:0834757ab75da058e40aedcba22b71f4fbd99ed80df69f558feb4df14d8669ec"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Urteile bestätigen die zusammenhängende Wasserstoff-Speicherkettenbewertung. Runde A hält Energiequelle/Energieträger, gemeinsame Energiebasis und begrenztes Nachhaltigkeitsurteil getrennt; zusätzliche Speicherfälle sind keine allein aus einer Quellenklausel abgeleitete Vollpflicht.",
+      "rationaleEn": "Both independent judgments confirm the integrated hydrogen storage-chain assessment. Round A separates energy source from carrier, uses a common energy basis and bounds sustainability claims; additional storage cases are not a complete mandate inferred from one source clause."
+    },
+    {
+      "decisionId": "chemie-current439-native6-root-e22a34d4-ac1e-5afe-8f77-0dfa4fd9f44f-20261017-v1",
+      "goalId": "e22a34d4-ac1e-5afe-8f77-0dfa4fd9f44f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c91c13c50b3c16dfc07a8ca557cba38ff32b1410a3e087b7fab0ea39cbe010be",
+      "pageFingerprint": "sha256:ae31bbf2ff493edc9d1e043389edeb2a68e5548477f9bff283a937fbd49dc179",
+      "goalReviewContextFingerprint": "sha256:3135d1e9a2d8fbab523acfbca1254100a17a8fd2345028a86280e58aaa915cff",
+      "finalText": {
+        "titleDe": "Komplexometrische EDTA-Titrationen durchführen",
+        "titleEn": "Perform complexometric EDTA titrations",
+        "descriptionDe": "Die lernende Person kann komplexometrische Titrationen mit EDTA-Lösung durchführen und auswerten, um Konzentrationen von Metall-Kationen in wässrigen Lösungen zu bestimmen.",
+        "descriptionEn": "The learner can perform and evaluate complexometric titrations with EDTA solution to determine concentrations of metal cations in aqueous solutions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-native6-independent-a-v1.record-006",
+          "recordDigest": "sha256:cd6c0c3a02c9e16b112c9be1be27c65ca53ad345f0453100e9252268b64e9114"
+        },
+        "second": {
+          "recordId": "chemie-current439-native6-independent-b-20261017-v1-run.record-006",
+          "recordDigest": "sha256:c9d4fbb9f14365eefe9cdc7fa944d7e6f20cbb187680b453f7dfbf16318c2089"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen die neue eigenständig entwickelte Konzentrationsbilanz einschließlich Blindwert, Aliquot und Verdünnung. Runde B wird gewählt, weil der Transfer gute Wiederfindung ausdrücklich von Einzelmetallselektivität unterscheidet. Tatsächliche EDTA-Handhabung, örtliche Freigabe und BY-eA-Geltung bleiben verbindlich; Papierdaten erfüllen die Durchführung nicht.",
+      "rationaleEn": "Both rounds confirm the newly developed independent concentration balance including blank, aliquot and dilution. Round B is selected because its transfer explicitly distinguishes good recovery from individual-metal selectivity. Actual EDTA handling, local authorization and BY advanced-course scope remain required; paper data do not establish execution."
+    }
+  ],
+  "manifestFingerprint": "sha256:7f217c20cc1bbf85ecf2913277c87ae937444c172b5a56e8b0975f8bc997497f"
+}

@@ -1,0 +1,61 @@
+{
+  "artifactRole": "INACTIVE_MAPPING_CELL_APPEND_AUTHOR_CANDIDATE",
+  "activation": "independent-review-required",
+  "mappingPath": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_chemistry_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.json",
+  "beforeWholeFilePinForAuditNotGlobalCAS": {
+    "path": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_chemistry_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.json",
+    "sha256": "5a43166f9f6806182768bb6c9c881a2049dc39fa5609e64bcaac1a6b8f04c40f",
+    "bytes": 347927
+  },
+  "sourceExtractionPathAtAuthoring": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_CHEMIE_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+  "wholeUnrelatedRowsMustBePreserved": true,
+  "cellAppends": [
+    {
+      "pairAbsentExpectedBefore": {
+        "legacyGoalId": "64050036-5de4-5064-a598-68e50b5dd91b",
+        "canonicalGoalId": "e81a4aed-9695-533e-8eb7-7a0c714346ea"
+      },
+      "mappingToAppend": {
+        "legacyGoalId": "64050036-5de4-5064-a598-68e50b5dd91b",
+        "canonicalGoalId": "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+        "matchType": "partial"
+      },
+      "boundedAuthorWitness": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-author-20261018-v1/CANDIDATE.one-hundred-four-direct-partial-contributions.inactive.json",
+        "jsonPointer": "/mappings/45"
+      },
+      "existingAuthoritativeSourceDecisionsCAS": [
+        {
+          "jsonPointer": "/decisions/1",
+          "wholeDecision": {
+            "sourceGoalId": "64050036-5de4-5064-a598-68e50b5dd91b",
+            "topicCode": "C8.1",
+            "sourceSpan": "C8.1.2",
+            "decision": "mapped",
+            "canonicalGoalIds": [
+              "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+              "49b13b33-34b7-5e4e-861c-b21082cb9922",
+              "9fc800d1-92d1-5ef6-81c1-33960ae034dd"
+            ],
+            "rationale": "Das normalisierte BY-Source-Ziel ist inhaltlich vollständig durch mehrere kanonische Chemieziele abgedeckt; 1:n ist die Zuordnungsform, keine fachliche Lücke. Mehrfach vorkommende LehrplanPLUS-Formulierung wurde aus 2 Profil-/Jahrgangsfundstellen dedupliziert. Source24-Autorenkandidat (2026-10-10): zusätzliche explizite partial-Beiträge nur an 9fc800d1-92d1-5ef6-81c1-33960ae034dd. Eigene begrenzte Operationalisierung, noch keine unabhängige Quellenfreigabe; alte vollständige Quellpflicht und sämtliche ursprünglichen Partner bleiben erhalten.",
+            "reviewedAt": "2026-05-11",
+            "reviewer": "codex",
+            "authorCandidateBoundary": {
+              "authorRole": "technical_source_author_with_actual_primary_inspection",
+              "candidateCreatedAt": "2026-10-10",
+              "reviewedOriginalFieldsRetained": true,
+              "newPartialChildContributionsIndependentReviewPending": true,
+              "wholeSourceApproval": false,
+              "wholeCourseApproval": false,
+              "humanApproval": false
+            }
+          },
+          "sha256": "fafc38015f862e699947a73851454b90b4cd690b9df19b9e783d3d55ed8a271e"
+        }
+      ],
+      "decisionIntegrationBoundary": "Following specific independent acceptance, merge this bounded partial target contribution into the current authoritative source decision without dropping other targets or promoting whole-source coverage. A prior whole-originalHOLD/REJECT is not automatically reversed. New operator cells require their own finite partial decision; old decision/whole-source history remains."
+    }
+  ],
+  "wholeFileReplacement": false,
+  "wholeSourceCredit": false
+}

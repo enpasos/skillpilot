@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-003-v1-resolution-6eba90b5-d4a6-5625-be61-e7f30f7eb964",
+  "goal": {
+    "goalId": "6eba90b5-d4a6-5625-be61-e7f30f7eb964",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:98afcd0978d52897f8327602016470e3f4fb9eb7957ade37ab13f161349bf26a",
+    "pageFingerprint": "sha256:19d05f4b8bd29b533c686e4a627355a3e3fdc0c5aa8dffb9f18dffc8e6807228",
+    "goalReviewContextFingerprint": "sha256:ce51dd9a6e87aabf216f91a0c2f5a8dc248d3c9b63adf4df7b3c21310c168174",
+    "finalText": {
+      "titleDe": "Kunststoff-Verarbeitungsverfahren beschreiben",
+      "titleEn": "Describe plastic processing methods",
+      "descriptionDe": "Die lernende Person kann Verarbeitungsverfahren für Kunststoffe wie Spritzgießen, Tiefziehen, Kalandrieren und Extrudieren beschreiben und mit Materialeigenschaften verknüpfen.",
+      "descriptionEn": "The learner can describe plastic processing methods such as injection moulding, thermoforming, calendering, and extrusion and link them to material properties."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-003-v1-a",
+      "campaignDigest": "sha256:978c14bb7b4e20d9b0754b4b001198cb332f9b414d3303ca7642925c494ece2b",
+      "roundId": "chemie-final-current-context-d-003-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-003-v1-independent-a",
+      "reviewInputFingerprint": "sha256:a8b4e136dc9c2b252755278e60a7cde25130d629087d5e6df627ef8b0ebc209b",
+      "goalReviewContextFingerprint": "sha256:ce51dd9a6e87aabf216f91a0c2f5a8dc248d3c9b63adf4df7b3c21310c168174",
+      "batchId": "chemie-final-current-context-d-003-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch003-20261018",
+      "runManifestDigest": "sha256:d37e25ac9a9c3eaebef1ba6de0c6086c093b182aa3633bc23d659c25aa6b81d5",
+      "resultsDigest": "sha256:cd44a305e9111a4d099f9ab35d3f7b4ca03c9a7206727ef3bec5bcfd6a791a42",
+      "recordId": "codex-reviewer-a-final163-batch003-20261018.014",
+      "recordDigest": "sha256:ebb6166aa13900856d6eaa9ab41c78e2e21ec118a0a478b8a25d568cb6fabc35"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-003-v1-b",
+      "campaignDigest": "sha256:b2cbbd77c71b72dac1c440f755a8450ab64df323a6a8eacf430f5e2505f92701",
+      "roundId": "chemie-final-current-context-d-003-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-003-v1-independent-b",
+      "reviewInputFingerprint": "sha256:a8b4e136dc9c2b252755278e60a7cde25130d629087d5e6df627ef8b0ebc209b",
+      "goalReviewContextFingerprint": "sha256:ce51dd9a6e87aabf216f91a0c2f5a8dc248d3c9b63adf4df7b3c21310c168174",
+      "batchId": "chemie-final-current-context-d-003-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-003-20261018",
+      "runManifestDigest": "sha256:1c929404c03d8c96aa74393ad00405392ee0c3ea13c265367e3ff364cdfdf004",
+      "resultsDigest": "sha256:82383b90ab0c51800931b86885a526c7c9c4e558a108be4aa5b0ed88c0da33ac",
+      "recordId": "chemie-final163-native-b-003-20261018:6eba90b5-d4a6-5625-be61-e7f30f7eb964",
+      "recordDigest": "sha256:822302e7cc80a27e4d871729bbf3666e9497333737d2112dd4e6feb78e9efe54"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:ee73048c0284447ea4c17aa5f99fbb11d7041a800acc788f8e7ae8f7a9a22dbd"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-003-20261018-v1",
+    "manifestDigest": "sha256:ce11bd03356fcf672eba95ffbb1028e40d727aec4fd4c79452167746266299a5",
+    "manifestFingerprint": "sha256:4feab5b00ce92e39b208e49a59ef02b9a0bd75db7be760eeedd1bcad82254b99",
+    "decisionId": "chemie-final163-paired-D-only-003-20261018-v1-decision-014"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-003-20261018-v1-decision-014",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:26:58.995Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch003-20261018.014): Die bilingualen Fassungen nennen dieselben vier Verfahren. Das vollständige P unterscheidet Folienumformung, Schmelzfluss und Zersetzung und bewahrt materialabhängige Temperaturen; eine Geräteausführung wird im LK-Erklärziel nicht neu verlangt. B (chemie-final163-native-b-003-20261018:6eba90b5-d4a6-5625-be61-e7f30f7eb964): Die vier benannten Verfahren sind Vergleichsfälle einer Material-Verfahrenskompetenz. P berücksichtigt Prozessfenster und offene Kinetik statt blind übernommener Temperaturen; eine praktische Maschinenbedienung wird nicht importiert.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch003-20261018.014; chemie-final163-native-b-003-20261018:6eba90b5-d4a6-5625-be61-e7f30f7eb964). Their current English understanding evidence is retained: A: Shaping methods differ in starting state, tooling and continuity and require suitable material mobility within a thermal window. B: Processes differ in starting state, tool and continuous or discrete shaping; the material's thermal window limits suitability. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Formgebungsverfahren unterscheiden Ausgangszustand, Werkzeug und Kontinuität und brauchen passende Materialbeweglichkeit im thermischen Fenster.",
+      "essentialUnderstandingEn": "Shaping methods differ in starting state, tooling and continuity and require suitable material mobility within a thermal window.",
+      "observablePerformanceDe": "Beschreibt Spritzgießen, Tiefziehen, Kalandrieren und Extrusion und begründet Produkt-/Materialzuordnung.",
+      "observablePerformanceEn": "Describes injection moulding, thermoforming, calendering and extrusion and justifies product/material assignment.",
+      "transferExpectationDe": "Erklärt bei fertig vernetztem Material die fehlende Schmelzroute und prüft bedingt Formgebung vor Vernetzung.",
+      "transferExpectationEn": "Explains the absent melt route for a finished network and conditionally examines shaping before crosslinking."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-9ccf6d50aad1634b269c02672fdd3a10559ce1e4d39aec0e79e49cdfe967e95f",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:f1fa7fe9ee40d381e7c2535dafcb0c190d63da7c0d7552dabf7086db5862d76b"
+}

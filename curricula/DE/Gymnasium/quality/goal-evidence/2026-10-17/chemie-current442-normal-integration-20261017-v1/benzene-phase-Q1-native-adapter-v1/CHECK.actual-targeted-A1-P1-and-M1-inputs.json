@@ -1,0 +1,40 @@
+{
+  "artifactType": "Actual bounded native candidate validation; not normal acceptance",
+  "atUTC": "2026-10-17T22:35:34.462864+00:00",
+  "plan": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/benzene-phase-Q1-native-adapter-v1/PLAN.C1-SEM1-A1-M1-P1.PENDING-root-integration.json",
+    "sha256": "fe08fa02cf260b1a4e6e43d4d075a3f0fbd5fd2230a1132a03a29d88430feccc",
+    "bytes": 17621
+  },
+  "A1": {
+    "command": "app/node_modules/.bin/tsx app/scripts/semanticAtomicityReview.ts --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/benzene-phase-Q1-native-adapter-v1/A1.validation-candidate.config.json --mode=check",
+    "exitCode": 0,
+    "scopedContentLeaves": 1,
+    "currentReviewedAtomic": 1,
+    "missing": 0,
+    "stale": 0,
+    "obsolete": 0
+  },
+  "P1": {
+    "errors": [],
+    "counts": {
+      "approved": 0,
+      "needsHumanReview": 1,
+      "rejected": 0
+    }
+  },
+  "M1": {
+    "validation": "Actual unchanged stock fingerprintGoal declaration with original ruleVersion, exact current-before guard and explicit new no_memory_needed content science; other441originalJSONLlines byte-exact",
+    "fullMemoryGateRerun": false
+  },
+  "sharedBoundaries": {
+    "wholePBodyProfileFingerprintExact": "sha256:17745ab760b54905003675e422983b6702535adb808098555037445fc58a67d2",
+    "AResidualRowsExact": 14,
+    "PResidualRowsExact": 14,
+    "criteriaReviewIdRuleNamespacesPreserved": true,
+    "normalMutation": false,
+    "nativeDApproval": false,
+    "HumanApproval": false,
+    "M7Claim": false
+  }
+}

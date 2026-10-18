@@ -1,0 +1,91 @@
+{
+  "artifactRole": "INACTIVE_AUTHOR_COMPLETE_SELECTED_PRIMARY_UNIT_APPEND_ONLY",
+  "activation": "pending-independent-source-review-and-root-integration",
+  "baseExtraction": {
+    "path": "curricula/DE/Gymnasium/input/RP/lower-secondary/source-extraction/DE_RP_CHEMIE_SEKI_RAHMENLEHRPLAN_2014.source-extraction.json",
+    "sha256": "aef5035f5da0970fe5a4465f9633aed8c7b0815ec667a36dfcb77dfa1ae23701",
+    "bytes": 186202
+  },
+  "proposedNormalExtractionPath": "curricula/DE/Gymnasium/input/RP/lower-secondary/source-extraction/DE_RP_CHEMIE_SEKI_RAHMENLEHRPLAN_2014.source-extraction.json",
+  "sourceLandscapeId": "4eb03df6-9416-5dc8-8957-a9cd3d5ce6a9",
+  "sourceDocument": {
+    "key": "RP-CH-SEKI-2014",
+    "title": "Lehrplan Naturwissenschaftliche Fächer Biologie, Chemie, Physik Klassenstufen 7-10 Rheinland-Pfalz 2014",
+    "path": "curricula/DE/Gymnasium/input/RP/Chemie_Sekundarstufe_I_Biologie_Physik_Chemie_2014.pdf",
+    "url": "https://bildung.rlp.de/lehrplaene/?tx_rlpbase_download%5Bitem%5D=56515&type=432522",
+    "official": true
+  },
+  "sourceDocumentPin": {
+    "path": "curricula/DE/Gymnasium/input/RP/Chemie_Sekundarstufe_I_Biologie_Physik_Chemie_2014.pdf",
+    "sha256": "307f5d841072a1a34d846554c7397c9b8355a9c05d49c8c223ccd9c64d877350",
+    "bytes": 17378996
+  },
+  "passagesToAppend": [
+    {
+      "id": "rp-chemistry-seki-process-standard-5-3-2-e-data-model-conclusions:whole-primary-context",
+      "topicCode": "5.3.2-E-DATA-MODEL-CONCLUSIONS",
+      "title": "Erkenntnisgewinnung: Schlüsse aus Beobachtungen, Daten oder Modellen und ihre Grenzen",
+      "text": "Die Lernenden begegnen einem neuen Phänomen oder neuen Fragen. Dies erzeugt eine Erkenntnislücke, die geschlossen wird, indem die Schülerin oder der Schüler naturwissenschaftliche Methoden erlernt und anwendet. Im Mittelpunkt der Erkenntnisgewinnung steht die Fähigkeit, aus Beobachtungen, Daten oder Modellen Schlussfolgerungen zu ziehen und dabei auch die Grenzen ihrer Aussagefähigkeit zu erfassen.",
+      "sourceDocumentKey": "RP-CH-SEKI-2014",
+      "sourceRef": "Lehrplan Naturwissenschaftliche Fächer Biologie, Chemie, Physik Klassenstufen 7-10 Rheinland-Pfalz 2014, physical PDF p. 185",
+      "metadata": {
+        "unit": "whole paragraph",
+        "primaryPageOneBased": 185,
+        "surroundingWholePageActuallyRead": true,
+        "contextBoundary": "General chemistry method within the stated lower-secondary scope; no official whole constant-composition-law mandate.",
+        "thirdPartyOfficialTextRetainsOriginalRights": true
+      }
+    }
+  ],
+  "sourceGoalsToAppend": [
+    {
+      "id": "rp-chemistry-seki-process-standard-5-3-2-e-data-model-conclusions",
+      "passageId": "rp-chemistry-seki-process-standard-5-3-2-e-data-model-conclusions:whole-primary-context",
+      "topicCode": "5.3.2-E-DATA-MODEL-CONCLUSIONS",
+      "title": "Erkenntnisgewinnung: Schlüsse aus Beobachtungen, Daten oder Modellen und ihre Grenzen",
+      "description": "Die Lernenden begegnen einem neuen Phänomen oder neuen Fragen. Dies erzeugt eine Erkenntnislücke, die geschlossen wird, indem die Schülerin oder der Schüler naturwissenschaftliche Methoden erlernt und anwendet. Im Mittelpunkt der Erkenntnisgewinnung steht die Fähigkeit, aus Beobachtungen, Daten oder Modellen Schlussfolgerungen zu ziehen und dabei auch die Grenzen ihrer Aussagefähigkeit zu erfassen.",
+      "sourceDocumentKey": "RP-CH-SEKI-2014",
+      "sourceText": "Die Lernenden begegnen einem neuen Phänomen oder neuen Fragen. Dies erzeugt eine Erkenntnislücke, die geschlossen wird, indem die Schülerin oder der Schüler naturwissenschaftliche Methoden erlernt und anwendet. Im Mittelpunkt der Erkenntnisgewinnung steht die Fähigkeit, aus Beobachtungen, Daten oder Modellen Schlussfolgerungen zu ziehen und dabei auch die Grenzen ihrer Aussagefähigkeit zu erfassen.",
+      "sourceSpan": {
+        "passageId": "rp-chemistry-seki-process-standard-5-3-2-e-data-model-conclusions:whole-primary-context",
+        "label": "Lehrplan Naturwissenschaftliche Fächer Biologie, Chemie, Physik Klassenstufen 7-10 Rheinland-Pfalz 2014, physical PDF p. 185; allgemeine SekI-Kompetenz"
+      },
+      "sourceRef": "Lehrplan Naturwissenschaftliche Fächer Biologie, Chemie, Physik Klassenstufen 7-10 Rheinland-Pfalz 2014, physical PDF p. 185",
+      "courseLevel": "unspecified",
+      "granularity": "completeOfficialMethodParagraph",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-RP",
+        "stage:SekI",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-whole-selected-official-unit-from-actual-local-PDF",
+        "physicalPageOneBased": 185,
+        "officialOperatorCode": null,
+        "scope": {
+          "stage": "SekI",
+          "sourcePhase": "allgemeine SekI-Kompetenz",
+          "courseLevel": "unspecified",
+          "scopeBoundary": "General chemistry method within the stated lower-secondary scope; no official whole constant-composition-law mandate."
+        },
+        "notNewOfficialLawGoal": true,
+        "noIndependentReviewInThisAuthorTransport": true
+      }
+    }
+  ],
+  "oldWholeSourceGoalCount": 65,
+  "oldSourceGoalsPassagesAndMetadataPreservedExactly": true,
+  "rebaseRule": "Object-wise ID lookup and absent-id append; preserve concurrent cells, passages, metadata and all old objects. Never activate a stale whole afterfile.",
+  "pipelineStatus": {
+    "newWholeSourceApprovals": 0,
+    "independentVotes": 0,
+    "normalWrites": 0
+  },
+  "sourceScopeBoundary": {
+    "stage": "SekI",
+    "sourcePhase": "allgemeine SekI-Kompetenz",
+    "courseLevel": "unspecified",
+    "scopeBoundary": "General chemistry method within the stated lower-secondary scope; no official whole constant-composition-law mandate."
+  }
+}

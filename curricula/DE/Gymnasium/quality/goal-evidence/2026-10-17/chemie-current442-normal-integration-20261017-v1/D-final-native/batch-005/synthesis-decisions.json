@@ -1,0 +1,608 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "chemie-final163-paired-D-only-005-20261018-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+  "synthesizedAt": "2026-10-17T22:31:16.405Z",
+  "batch": {
+    "batchId": "chemie-final-current-context-d-005-v1",
+    "batchManifestDigest": "sha256:ef4f957cbe5fe8d39ddf7e4ab159431de7f7a79602b43f486f9282c2b9c9ec87",
+    "configDigest": "sha256:cafeb98ffe985daf567082be453b47bb6ae7729aa7e2ca5f795949d0a7a909ee",
+    "bundleFingerprint": "sha256:1adf01ab8e6248261d777bfd4c04f43aa56d0e50ca9c4aedf90d72b07c7fe68f",
+    "bookDigest": "sha256:da3fe2efe2bcf98530ebc0a9dc47c7700153f7b708f2bcc103541afc9b1441bf",
+    "reviewInputFingerprint": "sha256:ea93568bfdabdff3f714ec5d94b8dc59252520722e0aa10aa39a38e8541c8349",
+    "dualSummaryDigest": "sha256:766e419b6962da8bae4b84dd677a6b7df18782647f13f0903d77a8bff87bdb82",
+    "canonicalLandscapeDigest": "sha256:1334c2f7e637c23737c32fffcda9adc9273b83e0d61f536c2e6b404699eee262"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-005-v1-a",
+      "campaignDigest": "sha256:c8471cd797dec10abf7198c697339e7dc3a58537ed0f9852f8cf26345c1a666f",
+      "roundId": "chemie-final-current-context-d-005-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-005-v1-independent-a",
+      "reviewInputFingerprint": "sha256:ea93568bfdabdff3f714ec5d94b8dc59252520722e0aa10aa39a38e8541c8349",
+      "batchId": "chemie-final-current-context-d-005-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:f4a37f4999e4e6d077bd4035c2cb217342d07492f52a94969c9dece83495ed8b",
+      "runId": "codex-reviewer-a-final163-batch005-20261018",
+      "runManifestDigest": "sha256:e2259ed1b412c3e3898b1487d972c903b35f39252a4a42f584bb855b91d2a437",
+      "resultsDigest": "sha256:054b020007e1d870143eca58ebb28ac20242207e4abfe68fc54ca6d6352a547c"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-005-v1-b",
+      "campaignDigest": "sha256:48da8784d2bf2a022d5106050deb7e838bedbbf7dc15498f5e8f7fd019de0920",
+      "roundId": "chemie-final-current-context-d-005-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-005-v1-independent-b",
+      "reviewInputFingerprint": "sha256:ea93568bfdabdff3f714ec5d94b8dc59252520722e0aa10aa39a38e8541c8349",
+      "batchId": "chemie-final-current-context-d-005-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:347ec116c26f86c561f1b8b89af6d3bba42df158fbd74b8b3ea4bf470e0c6125",
+      "runId": "chemie-final163-native-b-005-20261018",
+      "runManifestDigest": "sha256:f156ef3bbef741b54e4c6db6d00df3cf1d510ad9b05729f1ec91bff119669db0",
+      "resultsDigest": "sha256:cdef531d33939f213e22d20615076c31b4ce9a1347b09abc4ccd1a69e5fe8995"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "chemie-final163-paired-D-only-005-20261018-v1-decision-001",
+      "goalId": "0278a515-8990-5a1c-8a1b-a03382a144a3",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:fcd4aec9ae67a9c3c0f6e4b84c57a18f1192a1a9afe574184b9154e77357dc68",
+      "pageFingerprint": "sha256:dde5781c393a424035fa00d9e9ce7d037a1b7a0659aaf928557550066c43a729",
+      "goalReviewContextFingerprint": "sha256:0092000f9b91031341161ff5ce72b56fae4ed1e1172eb5dac33c11fec5a6c572",
+      "finalText": {
+        "titleDe": "Biokunststoffe erläutern",
+        "titleEn": "Explain bioplastics",
+        "descriptionDe": "Die lernende Person kann Synthese und Eigenschaften von Polymilchsäure (PLA) beschreiben und Einsatzfelder nennen.",
+        "descriptionEn": "The learner can describe synthesis and properties of polylactic acid (PLA) and name fields of application."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-reviewer-a-final163-batch005-20261018.001",
+          "recordDigest": "sha256:c8a56067990359c8fe3fedaea7a6c9d124727f7a4dfbef1e6f54ae92d0c7956e"
+        },
+        "second": {
+          "recordId": "chemie-final163-native-b-005-20261018:0278a515-8990-5a1c-8a1b-a03382a144a3",
+          "recordDigest": "sha256:98d5da2fc14b83d28c620e5ddfeb3a886ed47d4646ba60ab4b1d69428a811b1f"
+        }
+      },
+      "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch005-20261018.001): D beschreibt Synthese/Eigenschaften und Einsatzfelder klar bilingual. Das ganze P fordert zusätzlich eigene geplante und ausgeführte PLA-Eigenschaftsexperimente; dieser praktische Operator ist im aktuellen D nicht beansprucht. P-Alignment für diese zusätzliche Abschlussbedingung prüfen, Beschreibung nicht stillschweigend erweitern. B (chemie-final163-native-b-005-20261018:0278a515-8990-5a1c-8a1b-a03382a144a3): Die aktuelle Beschreibung ist eine Erklärungsleistung zu Synthese, Eigenschaften und Anwendungen. Das P fügt als erforderliche Erwartung hb097 jedoch eine selbst geplante und tatsächlich vollzogene Eigenschaftsuntersuchung hinzu. Dieser praktische Operator ist durch beschreiben/nennen nicht beansprucht und lässt sich nicht aus einem fehlenden Labornachweis als Defizit dieses Ziels ableiten. P-Pflicht passend abgrenzen oder einem praktischen Ziel zuordnen; den Beschreibungsscope nicht dafür erweitern. Die ausdrücklich gemeldete P-Abgrenzung bleibt offen; diese D-Entscheidung schließt weder P noch das Fünf-Gate-Ziel ab.",
+      "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch005-20261018.001; chemie-final163-native-b-005-20261018:0278a515-8990-5a1c-8a1b-a03382a144a3). Their current English understanding evidence is retained: A: PLA forms through ester links; production, morphology and environment determine usable properties and degradation limits. B: PLA has ester chains; synthesis route, morphology and temperature affect properties, while biobased does not mean degradable everywhere. This is synthesis, not a new independent review. The explicitly recorded P-alignment finding remains open; this D decision closes neither P nor the five-gate goal."
+    },
+    {
+      "decisionId": "chemie-final163-paired-D-only-005-20261018-v1-decision-002",
+      "goalId": "7f8c990a-c207-5b86-a60f-860af295c0a9",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:2769efa9c7aa3bc036242aac3f154ac1094e2b91041cb8a95b099a82314860ca",
+      "pageFingerprint": "sha256:0bbec8bf21d8bf4e45fdc544b60ceae963f2d196318510c501a283d5863c6ae0",
+      "goalReviewContextFingerprint": "sha256:6fefe43611c2cbd24fc92008c9b09647484ce810e724dfd5cad7bf98f07cbd0b",
+      "finalText": {
+        "titleDe": "Copolymere verstehen",
+        "titleEn": "Understand copolymers",
+        "descriptionDe": "Die lernende Person kann Aufbau und Eigenschaften einfacher Copolymere erläutern und Vorteile gegenüber Homopolymeren diskutieren.",
+        "descriptionEn": "The learner can explain structure and properties of simple copolymers and discuss advantages over homopolymers."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-reviewer-a-final163-batch005-20261018.002",
+          "recordDigest": "sha256:5b4fbecc68c74a67ab53ed07157de6a5bf8dbad8cd825753cae15f7e756aae2a"
+        },
+        "second": {
+          "recordId": "chemie-final163-native-b-005-20261018:7f8c990a-c207-5b86-a60f-860af295c0a9",
+          "recordDigest": "sha256:74b41154fff4094e0d8156f03c4d7033813d2767f79921a351c6e144146cf25e"
+        }
+      },
+      "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch005-20261018.002): Die bilingualen Texte erlauben begründete Vorteile ohne universellen Gewinn. Das ganze P trennt Mischung/Kopolymer und physikalische Domäne/kovalenten Netzpunkt und erhält anwendungsbezogene Zielkonflikte. B (chemie-final163-native-b-005-20261018:7f8c990a-c207-5b86-a60f-860af295c0a9): Aufbau, Eigenschaften und Vorteile sind ein materialbezogener Vergleich. P begrenzt Vorteile durch Steifigkeit, Alterung und Temperatur und unterscheidet physikalische Domänen von kovalenter Vernetzung; keine universelle Verbesserung wird gelehrt.",
+      "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch005-20261018.002; chemie-final163-native-b-005-20261018:7f8c990a-c207-5b86-a60f-860af295c0a9). Their current English understanding evidence is retained: A: Copolymers covalently link different monomer types; composition, sequence and domains distinguish them from blends and shape properties. B: Copolymers covalently contain different monomer types; sequence and domains affect properties alongside composition. This is synthesis, not a new independent review."
+    },
+    {
+      "decisionId": "chemie-final163-paired-D-only-005-20261018-v1-decision-003",
+      "goalId": "4955f745-b946-5d3d-82d6-5e52dc8549a3",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f166da66b41783eb7d665a91dd9b259f9daa9f589a7f78bdbb4def8460d5638d",
+      "pageFingerprint": "sha256:77ccc9548e71cf944179d38227f2a3864e5866d91146d95f4002e2884ff0ccdd",
+      "goalReviewContextFingerprint": "sha256:a9bc99785254e6d7ee04ffa7312535c314b56431f1a7147c977e3b3980f02e5e",
+      "finalText": {
+        "titleDe": "Synthetischen Kautschuk und Vulkanisation erklären",
+        "titleEn": "Explain synthetic rubber and vulcanisation",
+        "descriptionDe": "Die lernende Person kann die Herstellung eines synthetischen Kautschuks an einem gegebenen Monomer erläutern und seine Elastizität sowie deren Veränderung durch Vulkanisation auf molekularer Ebene erklären.",
+        "descriptionEn": "The learner can explain the production of a synthetic rubber from a supplied monomer and explain its elasticity and the effects of vulcanisation at molecular level."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-reviewer-a-final163-batch005-20261018.003",
+          "recordDigest": "sha256:11baeb9845f3ba825c3dfc253e4903c6b0192cc49d0775a57c27c06c9b1ba450"
+        },
+        "second": {
+          "recordId": "chemie-final163-native-b-005-20261018:4955f745-b946-5d3d-82d6-5e52dc8549a3",
+          "recordDigest": "sha256:e9c7dc423c84909bb2b39c9124728f5705e27053945a190fc7a3e5173597e694"
+        }
+      },
+      "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch005-20261018.003): Der bilinguale LK-Text benennt Herstellung und molekulare Elastizität. Das ganze P gibt die Stoffidentität explizit, statt sie aus Restdehnung zu folgern, und vermeidet mehr Vernetzung gleich immer besser. B (chemie-final163-native-b-005-20261018:4955f745-b946-5d3d-82d6-5e52dc8549a3): Herstellung und Vulkanisationswirkung bilden dieselbe Ketten-Struktur-Erklärung. P erhält C-Atome und verbleibende Doppelbindung, nutzt ausdrücklich gegebene Identität und trennt Rückstellung von bloß geringer Restdehnung.",
+      "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch005-20261018.003; chemie-final163-native-b-005-20261018:4955f745-b946-5d3d-82d6-5e52dc8549a3). Their current English understanding evidence is retained: A: 1,4-addition forms rubber chains with residual double bonds; limited crosslinking and mobile segments enable recovery. B: 1,4 addition forms flexible chains with residual double bonds; limited vulcanisation links chains and supports recovery. This is synthesis, not a new independent review."
+    },
+    {
+      "decisionId": "chemie-final163-paired-D-only-005-20261018-v1-decision-004",
+      "goalId": "9f892457-c4e5-56da-830c-bf6cac0c98d7",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b7df27d84a21ad178404ecd40ff623e2f16904fe7083870db5b282da4f2e8885",
+      "pageFingerprint": "sha256:12f06d28ac88f7ecc78328de674634de299a5266f23ba0bb331556e91be2f4e8",
+      "goalReviewContextFingerprint": "sha256:d7502d824feaa6c0c249739206c3acbe16def8ef771721b85d77c25205c5c698",
+      "finalText": {
+        "titleDe": "Chemische Wirkungen in historischen und aktuellen Zusammenhängen bewerten",
+        "titleEn": "Assess chemical impacts in historical and current contexts",
+        "descriptionDe": "Die lernende Person kann gesellschaftliche und ökologische Bedeutung sowie Auswirkungen chemischer Produkte, Methoden, Verfahren und Erkenntnisse in historischen und aktuellen Zusammenhängen beschreiben und aus ökologischer, ökonomischer und sozialer Nachhaltigkeitsperspektive begründet bewerten. Dabei reflektiert sie auch mögliche Auswirkungen des eigenen Handelns.",
+        "descriptionEn": "The learner can describe the social and environmental significance and impacts of chemical products, methods, processes, and findings in historical and current contexts and assess them with justification from environmental, economic, and social sustainability perspectives. They also reflect on possible impacts of their own actions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-reviewer-a-final163-batch005-20261018.004",
+          "recordDigest": "sha256:e64f1353751d1a480998ae991b545609e7f452081dc9b3e36d036dcce24e6c1a"
+        },
+        "second": {
+          "recordId": "chemie-final163-native-b-005-20261018:9f892457-c4e5-56da-830c-bf6cac0c98d7",
+          "recordDigest": "sha256:3a959504ad1b40619457a0d52f2bc748b877297602c898ae908553efcaf50068"
+        }
+      },
+      "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch005-20261018.004): Die bilingualen Fassungen erhalten drei Perspektiven und eigene Reflexion. Das ganze P trennt Modellindikatoren, historische Befunde und fehlende Wirkungsdaten und behandelt soziale Wissensänderung nicht als chemische Mengenänderung. B (chemie-final163-native-b-005-20261018:9f892457-c4e5-56da-830c-bf6cac0c98d7): Der Text fordert explizit dieselbe historische/aktuelle Mehrperspektivenbewertung samt eigener Handlungsreflexion. P kennzeichnet Lehrindikatoren und fehlende Daten und leitet keine eigenmächtige chemische Handlung oder universelle Nachhaltigkeit ab.",
+      "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch005-20261018.004; chemie-final163-native-b-005-20261018:9f892457-c4e5-56da-830c-bf6cac0c98d7). Their current English understanding evidence is retained: A: Chemical impacts arise through historical/current product, method, process and knowledge chains; sustainability requires three justified perspectives. B: Chemical products, methods, processes and knowledge change societal impact chains; sustainability dimensions may point in different directions. This is synthesis, not a new independent review."
+    },
+    {
+      "decisionId": "chemie-final163-paired-D-only-005-20261018-v1-decision-005",
+      "goalId": "9fa7d857-451a-5c1b-b6f4-d4ff97d7f39f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:27b482798b04e63b6ed34c1f741514a765164a243284d52eebbb6aa93612cb03",
+      "pageFingerprint": "sha256:31249a726c494e88006ffe786f14e82f3d88640f1a070b67e320fbe3c7bfa9a1",
+      "goalReviewContextFingerprint": "sha256:0a715aabaacf9c73283f4d89ced94eec0beabeabbd6746b8e7b1a12646c9afc3",
+      "finalText": {
+        "titleDe": "Lebensmittelzusammensetzung recherchieren und kategorisieren",
+        "titleEn": "Research and classify food composition",
+        "descriptionDe": "Die lernende Person kann die Zusammensetzung von Lebensmitteln aus geeigneten Quellen recherchieren und Lebensmittel nach selbstgewählten chemisch begründeten Kriterien kategorisieren.",
+        "descriptionEn": "The learner can research the composition of foods from suitable sources and classify foods using self-selected chemically justified criteria."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-reviewer-a-final163-batch005-20261018.005",
+          "recordDigest": "sha256:aa9199341550ec19974c76a4b1a8389afe850109d7a0fdece54b5f3d5c00a56b"
+        },
+        "second": {
+          "recordId": "chemie-final163-native-b-005-20261018:9fa7d857-451a-5c1b-b6f4-d4ff97d7f39f",
+          "recordDigest": "sha256:b6d79e392b37b0044f2b2e0e0794f62ba548de9d2de8958ed123e0ea3c7ac61e"
+        }
+      },
+      "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch005-20261018.005): Der aktuelle bilinguale Text wahrt tatsächliche Recherche und eigene Kategorien. Das ganze P verlangt beschaffte Quellen und chemische Regeln und vermeidet Molekülidentität oder vollständige Vitamindaten aus einer Nährwertdeklaration. B (chemie-final163-native-b-005-20261018:9fa7d857-451a-5c1b-b6f4-d4ff97d7f39f): Selbstgewählte chemische Kriterien sind im Text eindeutig. P verlangt eigenen Suchweg, Regeln für Gleichstand/Lücken und Grenzen von Deklarationsdaten; Strukturklassifikation einzelner Inhaltsstoffe bleibt der Nachfolger.",
+      "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch005-20261018.005; chemie-final163-native-b-005-20261018:9fa7d857-451a-5c1b-b6f4-d4ff97d7f39f). Their current English understanding evidence is retained: A: Food categories depend on self-selected chemical criteria and comparable researched composition data. B: Chemical classification needs researched composition, common reference quantities and independently justified rules; missing values are not zero. This is synthesis, not a new independent review."
+    },
+    {
+      "decisionId": "chemie-final163-paired-D-only-005-20261018-v1-decision-006",
+      "goalId": "360fccb9-896d-5e67-bf5d-5732621604c9",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a7855c2a26ef7625f432dbaa6145b069f29e3ffa9fea23f172122c07af9da9c8",
+      "pageFingerprint": "sha256:5d481e4e62579a7c6a2f5c4a72fc60d7265e560bcf40fc4ca0135ce38f962fbe",
+      "goalReviewContextFingerprint": "sha256:8dba43d724833f0822367fd8f5351d1fdd83c59d9e097b43368c12836c1aeed8",
+      "finalText": {
+        "titleDe": "Nahrungsmittelinhaltsstoffe strukturbezogen einordnen",
+        "titleEn": "Classify food components by structure",
+        "descriptionDe": "Die lernende Person kann ausgewählte Inhaltsstoffe von Nahrungsmitteln anhand ihres submikroskopischen Baus vergleichen, Makro- und Mikronährstoffen zuordnen und ihre Bedeutung für den menschlichen Körper beschreiben.",
+        "descriptionEn": "The learner can compare selected food components by submicroscopic structure, assign them to macro- and micronutrients, and describe their significance for the human body."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-reviewer-a-final163-batch005-20261018.006",
+          "recordDigest": "sha256:a2d6ab2cd8ce5bdb61496eb87c459ba3325f844cb847dc6e852fea4dc0f30b46"
+        },
+        "second": {
+          "recordId": "chemie-final163-native-b-005-20261018:360fccb9-896d-5e67-bf5d-5732621604c9",
+          "recordDigest": "sha256:ec2996a589a9237fd65ec70ba8dc5ba821c370707cd94062f2d33358da60c7fd"
+        }
+      },
+      "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch005-20261018.006): Die Texte verknüpfen submikroskopischen Bau und alle ausgewählten Funktionen. Das ganze P unterscheidet Triacylglycerid/Membranlipid und Vitamin/Mineralstoff korrekt; detaillierte Resorption und Nachweise sind Nachfolger. B (chemie-final163-native-b-005-20261018:360fccb9-896d-5e67-bf5d-5732621604c9): Die Beschreibung verbindet Struktur, Einordnung und Bedeutung direkt. Das P ergänzt für alle ausgewählten Inhaltsstoffe echte Funktionen und vermeidet die falsche Gleichsetzung von Triglycerid mit Membranphospholipid sowie unverändert eingebautem Nahrungsprotein mit Körperenzym.",
+      "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch005-20261018.006; chemie-final163-native-b-005-20261018:360fccb9-896d-5e67-bf5d-5732621604c9). Their current English understanding evidence is retained: A: Nutrients differ in structure and bodily function; macro/micro concerns required amount rather than molecular size. B: Nutrient classes differ in units and bonds; macro/micro describes required amount rather than molecular size. This is synthesis, not a new independent review."
+    },
+    {
+      "decisionId": "chemie-final163-paired-D-only-005-20261018-v1-decision-007",
+      "goalId": "3681e688-7880-5bb4-9ab9-ef78289345c8",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:56f10e051562ab0853afaa2ad8e23beed467d9a5d34cbbdc9163ff481a81c720",
+      "pageFingerprint": "sha256:0596b7c7275a0cc1d3b069de1df876753e6fee75c3fe6bb9cf1356abcc259415",
+      "goalReviewContextFingerprint": "sha256:5f66ec7c876c52b768fd4984598f27101d49bd195d1d92b523b3599ee8ef4fdc",
+      "finalText": {
+        "titleDe": "Verdauungssäfte chemisch erklären",
+        "titleEn": "Explain digestive juices chemically",
+        "descriptionDe": "Die lernende Person kann die Bedeutung verschiedener Verdauungssäfte aus chemischer Sicht erklären und Bezüge zu pH-Wert, Löslichkeit und Stoffumwandlung herstellen.",
+        "descriptionEn": "The learner can explain the role of different digestive juices from a chemical perspective and relate them to pH, solubility, and substance transformation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-reviewer-a-final163-batch005-20261018.007",
+          "recordDigest": "sha256:714a385338c2a81dd9c836dfa4c6b41637a5d62993769fd2cc83bf79cc0b1895"
+        },
+        "second": {
+          "recordId": "chemie-final163-native-b-005-20261018:3681e688-7880-5bb4-9ab9-ef78289345c8",
+          "recordDigest": "sha256:ab34d6e2b13021c8408fc33d39e7bdeeeb3ed6fa45dde29a50e38583452a78d1"
+        }
+      },
+      "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch005-20261018.007): Die bilingualen Fassungen nennen pH, Löslichkeit und Stoffumwandlung. Das ganze P stellt Galle nicht als Ester-spaltendes Enzym dar und erhält enzymabhängige Bedingungen; individuelle Hilfsmittelbewertung bleibt Nachfolger. B (chemie-final163-native-b-005-20261018:3681e688-7880-5bb4-9ab9-ef78289345c8): Der Text verlangt chemische Rollen und keine individuelle medizinische Beratung. P unterscheidet Gallewirkung von Esterhydrolyse und Enzymbedingungen von allgemeiner Austauschbarkeit der Säfte; der nächste Resorptions-/Hilfsmittelbereich wird nicht vorweggenommen.",
+      "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch005-20261018.007; chemie-final163-native-b-005-20261018:3681e688-7880-5bb4-9ab9-ef78289345c8). Their current English understanding evidence is retained: A: Digestive fluids alter pH and substance accessibility; emulsification enlarges interfaces and is not enzymatic hydrolysis. B: Digestive fluids create different pH and interfacial conditions; emulsification, protonation and enzymatic hydrolysis differ. This is synthesis, not a new independent review."
+    },
+    {
+      "decisionId": "chemie-final163-paired-D-only-005-20261018-v1-decision-008",
+      "goalId": "47582f06-d724-5da9-acc6-16c91ab94f67",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e0f25f9795ea6248e9b58b024ff0e31e5632dd43b54ba8f1857e750a49cbdc4d",
+      "pageFingerprint": "sha256:e3ef533f1c5edaa6c1bf2a9dda31bb9da1a6bcf652afab07dfd380c1d3999506",
+      "goalReviewContextFingerprint": "sha256:f390bbc93b554db8b3f8791c2fe1ab44b802641d1e16ba6f53997e15160aaa54",
+      "finalText": {
+        "titleDe": "Lebensmittelauswahl chemisch und nachhaltig bewerten",
+        "titleEn": "Evaluate food choices chemically and sustainably",
+        "descriptionDe": "Die lernende Person kann verschiedene Möglichkeiten der Lebensmittelauswahl anhand chemischer Zusammensetzung, Ausgewogenheit, Nachhaltigkeit und Klimabezug vergleichen und dabei wissenschaftliche Erkenntnisse, tradiertes Wissen sowie Ernährungstrends reflektieren.",
+        "descriptionEn": "The learner can compare food choices using chemical composition, balance, sustainability, and climate relevance, while reflecting on scientific findings, traditional knowledge, and nutrition trends."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-reviewer-a-final163-batch005-20261018.008",
+          "recordDigest": "sha256:5beea14fe14eb1e88a5d8ed0545b032ff268a2ef6283569f6fccf4b8874fce7b"
+        },
+        "second": {
+          "recordId": "chemie-final163-native-b-005-20261018:47582f06-d724-5da9-acc6-16c91ab94f67",
+          "recordDigest": "sha256:016db5e4fd7f30e31db8bdd35b28e05811e1c278387965f73a5b87d05750f194"
+        }
+      },
+      "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch005-20261018.008): Der klare bilinguale Text verlangt reflektierten Vergleich. Das ganze P vermeidet ein universell bestes Lebensmittel und trennt wissenschaftliche Daten, traditionelle Erfahrung und pauschale Herkunftswerbung. B (chemie-final163-native-b-005-20261018:47582f06-d724-5da9-acc6-16c91ab94f67): Die Kriterien des Texts sind auf Vergleich und Reflexion begrenzt. P trennt Energie/Protein, Klimawert und Preis und zieht aus zwei Modellmahlzeiten keine individuelle oder universelle Ernährungsempfehlung.",
+      "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch005-20261018.008; chemie-final163-native-b-005-20261018:47582f06-d724-5da9-acc6-16c91ab94f67). Their current English understanding evidence is retained: A: Food choice connects nutrient balance, climate indicators and other sustainability criteria; tradition and advertising have limited evidential roles. B: Food choices weigh composition, environment and balance; science, tradition and advertising have different evidential roles. This is synthesis, not a new independent review."
+    },
+    {
+      "decisionId": "chemie-final163-paired-D-only-005-20261018-v1-decision-009",
+      "goalId": "8fe39739-2938-5e2c-8db2-08572b44569a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:196fb7db626d312dace2dec0a177930eefd42c44a7fc18149aad7e9b1013e36f",
+      "pageFingerprint": "sha256:9b851faf8c4e9654e64342216e6e4e62bac9a1e54fa2a2613385e478193cf6bd",
+      "goalReviewContextFingerprint": "sha256:adf2f1042df41ab1849bfa0a7cddb73d0c4fd2cc689cb2292bf599a73d2f59fb",
+      "finalText": {
+        "titleDe": "Lebensmittelinhaltsstoffe experimentell nachweisen",
+        "titleEn": "Experimentally detect food components",
+        "descriptionDe": "Die lernende Person kann experimentelle Untersuchungen an Lebensmitteln durchführen, um Makronährstoffe und weitere Bestandteile fachgerecht nachzuweisen.",
+        "descriptionEn": "The learner can perform experimental investigations of foods to detect macronutrients and other components appropriately."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-reviewer-a-final163-batch005-20261018.009",
+          "recordDigest": "sha256:2cd051e87deaf8a239bfd19f2498c46cddb34f606822e64fc45aea3b1e587626"
+        },
+        "second": {
+          "recordId": "chemie-final163-native-b-005-20261018:8fe39739-2938-5e2c-8db2-08572b44569a",
+          "recordDigest": "sha256:8d38b16811a6b60d57a0701a5b39ebd1bc304f0a7f3cc647b33d144a8654c1f2"
+        }
+      },
+      "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch005-20261018.009): Die bilingualen Texte erhalten experimentelle Durchführung. Das gesamte P konkretisiert weitere Bestandteile, verlangt echte Kontrolllogs und begrenzt Fettfleck/DCPIP; die quantitative Bestimmung bleibt eigener Nachfolger. B (chemie-final163-native-b-005-20261018:8fe39739-2938-5e2c-8db2-08572b44569a): Durchführen ist im Text verbindlich und im P mit getrennten Pipetten, Kontrollen und echten Beobachtungen konkret. Fettfleck und DCPIP bleiben begrenzte Hinweise; exakte Zusammensetzung und Glucosespezifität eines anderen Tests werden nicht verwechselt.",
+      "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch005-20261018.009; chemie-final163-native-b-005-20261018:8fe39739-2938-5e2c-8db2-08572b44569a). Their current English understanding evidence is retained: A: Food assays use controlled reactions with limited specificity; colour signals and labels replace neither execution nor complete analysis. B: A food assay requires a suitable reaction or measurement mechanism and controls; positive or negative findings have limited specificity. This is synthesis, not a new independent review."
+    },
+    {
+      "decisionId": "chemie-final163-paired-D-only-005-20261018-v1-decision-010",
+      "goalId": "8da5c5cf-d346-5df9-b4c9-26938fc80a88",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:88669bed33064c88ed05b4a23f759dc9f7c2784c52142c72fb86a22dc99f5168",
+      "pageFingerprint": "sha256:758060e93315392fbb49a6c0e7aa16b8fff5d629316b52f2be94da3c3354c51b",
+      "goalReviewContextFingerprint": "sha256:54a0c7adff3e0fc120819402906c44340f5b910c9dfe67d0a9e4f914cd35e915",
+      "finalText": {
+        "titleDe": "Lebensmittelinhaltsstoffe quantitativ bestimmen",
+        "titleEn": "Quantify food components",
+        "descriptionDe": "Die lernende Person kann geeignete experimentelle Verfahren auswählen und auswerten, um den Gehalt von Lebensmittelinhaltsstoffen zu bestimmen.",
+        "descriptionEn": "The learner can select and evaluate suitable experimental methods to determine the content of food components."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-reviewer-a-final163-batch005-20261018.010",
+          "recordDigest": "sha256:c0f76c00c05881c7982ac3025fd57bae2b692b2198f2f4c4757dea290841b869"
+        },
+        "second": {
+          "recordId": "chemie-final163-native-b-005-20261018:8da5c5cf-d346-5df9-b4c9-26938fc80a88",
+          "recordDigest": "sha256:299025a04d3960ef8d90e41347ad9c3569faeb5eef8304caba77043c4c645c3a"
+        }
+      },
+      "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch005-20261018.010): Der bilinguale Text verlangt Auswahl/Auswertung, keine unerwähnte Ausführung. Das ganze P rechnet Verdünnung und Vitamin-C-Stöchiometrie korrekt, trennt Glucose/Gesamtzucker sowie g/L/mol/L und bewahrt reale Matrixgrenzen. B (chemie-final163-native-b-005-20261018:8da5c5cf-d346-5df9-b4c9-26938fc80a88): Die Beschreibung fordert Auswahl/Auswertung und keine eigene Messdurchführung. P liefert korrekte quantitative Modelle und trennt Glucose von Gesamtzucker sowie Ascorbatmenge von unspezifischem Reduktionsvermögen.",
+      "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch005-20261018.010; chemie-final163-native-b-005-20261018:8da5c5cf-d346-5df9-b4c9-26938fc80a88). Their current English understanding evidence is retained: A: Quantitative composition analysis connects suitable selectivity, calibration, dilution and unambiguous mass/amount quantities. B: Quantification connects a selective method, calibration and reference quantity; colour alone is not concentration. This is synthesis, not a new independent review."
+    },
+    {
+      "decisionId": "chemie-final163-paired-D-only-005-20261018-v1-decision-011",
+      "goalId": "9fc800d1-92d1-5ef6-81c1-33960ae034dd",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:2aa9dab12809d30dca3bf4003bc71d9f861e08289a7c0b9270df816f9a6d1012",
+      "pageFingerprint": "sha256:1309a1ff40246048054b0c3828ebe6575b00f0737218645482b4a69def1cb18d",
+      "goalReviewContextFingerprint": "sha256:db6b3326c49763e1e8815ae4ce82417b229df12ff0df773b2d4be6a3a1cd5ea3",
+      "finalText": {
+        "titleDe": "Chemische Daten nachvollziehbar dokumentieren",
+        "titleEn": "Document chemical data transparently",
+        "descriptionDe": "Die lernende Person kann experimentell erhobene oder recherchierte chemische Daten strukturiert und nachvollziehbar dokumentieren, Größen und Einheiten, Herkunft und relevante Untersuchungsbedingungen angeben sowie beobachtende Beschreibung und deutende Erklärung unterscheiden.",
+        "descriptionEn": "The learner can document experimental or researched chemical data in a structured and transparent way, identify quantities, units, provenance, and relevant investigation conditions, and distinguish descriptive observation from explanatory interpretation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-reviewer-a-final163-batch005-20261018.011",
+          "recordDigest": "sha256:93c4ca527ff6c6ea04db92e4fc7b029bce20c2684fdedbfb5c862c367afc00e2"
+        },
+        "second": {
+          "recordId": "chemie-final163-native-b-005-20261018:9fc800d1-92d1-5ef6-81c1-33960ae034dd",
+          "recordDigest": "sha256:c9eba41f8c913d824388954a741cc76bb4331f7e5f26242b7cd646f3d1063df5"
+        }
+      },
+      "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch005-20261018.011): Die bilingualen Texte nennen alle dokumentarischen Anforderungen. Das ganze P verhindert rückwirkende Bestätigung alter Proben durch neue Notizen und trennt Anzeigeauflösung, Messunsicherheit sowie berechnete Konzentration von Messdaten. B (chemie-final163-native-b-005-20261018:9fc800d1-92d1-5ef6-81c1-33960ae034dd): Die Beschreibung beansprucht Dokumentationskompetenz und die Beobachtungs-/Deutungstrennung. P unterscheidet tatsächliche Ereignisergänzung, Quellenkorrektur und neue Messung und hält Quellenhilfe sowie eigene Untersuchung als unabhängige Grenzen sichtbar.",
+      "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch005-20261018.011; chemie-final163-native-b-005-20261018:9fc800d1-92d1-5ef6-81c1-33960ae034dd). Their current English understanding evidence is retained: A: Traceable documentation preserves raw data, sources, conditions and gaps and separates observation from interpretation or calculation. B: Traceable documentation preserves raw values, conditions and origin and marks interpretation and calculation separately. This is synthesis, not a new independent review."
+    },
+    {
+      "decisionId": "chemie-final163-paired-D-only-005-20261018-v1-decision-012",
+      "goalId": "7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:afe23ba7646722dc98db2ac6ba1182b7416971532c2e37c3ed7965f84fb26fca",
+      "pageFingerprint": "sha256:09524543ef76e25a6519f4ca4139f88dfa359d3b40c7d268e3342e7d8996b6e2",
+      "goalReviewContextFingerprint": "sha256:6ca21bdd4dca6a91dd842d592dbc662e3f62309573dc66479ef9e1356ecebc4b",
+      "finalText": {
+        "titleDe": "Chemische Daten auswerten und auf Hypothesen beziehen",
+        "titleEn": "Evaluate chemical data and relate them to hypotheses",
+        "descriptionDe": "Die lernende Person kann erhobene oder recherchierte chemische Daten in geeigneten Tabellen oder Diagrammen auswerten, erkennbare Trends und Beziehungen erläutern und begründen, inwiefern die Daten die Ausgangshypothese stützen oder ihr widersprechen.",
+        "descriptionEn": "The learner can evaluate experimental or researched chemical data in suitable tables or diagrams, explain observable trends and relationships, and justify how the data support or contradict the initial hypothesis."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-reviewer-a-final163-batch005-20261018.012",
+          "recordDigest": "sha256:cdc963f5df2998e0565db4b8ba86507ffb97f96938db744ecadfb0a659299432"
+        },
+        "second": {
+          "recordId": "chemie-final163-native-b-005-20261018:7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6",
+          "recordDigest": "sha256:acc00dccc2cfed6071df0740be83e7a6ceea659b0f63db2a28efb75520e1527f"
+        }
+      },
+      "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch005-20261018.012): Der bilinguale Text verbindet Auswertung mit der Ausgangshypothese. Das ganze P unterscheidet Geschwindigkeit/Löslichkeit, fordert einen eigenen Graphen im HB-Fall und vermeidet schönes Glätten oder erfundene Temperaturkorrektur. B (chemie-final163-native-b-005-20261018:7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6): Das P passt zur altersgerechten Auswertung und enthält einen sinnvollen neuen Streuungs-/Temperaturfall. Eigene Hypothesenformulierung ist keine zusätzliche universelle Pflicht dieser Auswertung; HB-Diagrammlesen/-erstellen ist auf die benannte Route begrenzt.",
+      "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch005-20261018.012; chemie-final163-native-b-005-20261018:7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6). Their current English understanding evidence is retained: A: Trends support hypotheses under controlled conditions; means must not hide raw scatter or alternative causes. B: Trends support hypotheses only under matching conditions; mean, spread and alternative influences limit inference. This is synthesis, not a new independent review."
+    },
+    {
+      "decisionId": "chemie-final163-paired-D-only-005-20261018-v1-decision-013",
+      "goalId": "99d41b0f-e958-54cf-a077-9bed1704a303",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:546357ed3d2196f07d1715bd98562fae53e9cb8224fd688b9af82b6aa9549e12",
+      "pageFingerprint": "sha256:cdbdb5f1ebce70ab8f279adeb9c63214363b350874ed2398f699e554c238f859",
+      "goalReviewContextFingerprint": "sha256:9b1298c11d31c15ebd177fd34c1a4f87ec023a65ee29a35fde90b11c2db55e88",
+      "finalText": {
+        "titleDe": "Eigene chemische Untersuchungen reflektieren",
+        "titleEn": "Reflect on chemical investigations of one's own",
+        "descriptionDe": "Die lernende Person kann die Ergebnisse einer eigenen chemischen Untersuchung auf ihre Ausgangsfrage und Hypothese beziehen, die angewandten Methoden und Vorgehensweisen begründen, erkennbare Unsicherheiten oder Grenzen erläutern und konkrete Verbesserungen für eine weitere Untersuchung ableiten.",
+        "descriptionEn": "The learner can relate the results of a chemical investigation of their own to its initial question and hypothesis, justify the methods and procedures used, explain observable uncertainties or limitations, and derive concrete improvements for a further investigation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-reviewer-a-final163-batch005-20261018.013",
+          "recordDigest": "sha256:a52f37e0d4789c159d5bff81dee319a600332f578910ee8e0cf04cf48e18b620"
+        },
+        "second": {
+          "recordId": "chemie-final163-native-b-005-20261018:99d41b0f-e958-54cf-a077-9bed1704a303",
+          "recordDigest": "sha256:2bf5ed8f83a04ce9b7d3f9239e53963e24dddf2a4d79d6d91d4b8583705d0401"
+        }
+      },
+      "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch005-20261018.013): Die bilingualen Fassungen nennen eigene Untersuchung ausdrücklich. Das vollständige P akzeptiert eigene angeleitete Durchführung, ohne eigene Planung zu fingieren, und verlangt echte Rohdaten statt allgemeiner Musterkritik; Präsentation bleibt Nachfolger. B (chemie-final163-native-b-005-20261018:99d41b0f-e958-54cf-a077-9bed1704a303): Eigene Untersuchung ist im Text eindeutig und wird durch das P nicht durch Fremdarchive ersetzt. Geleitete Durchführung kann eigener Reflexionsgegenstand sein; ein weiterer Versuch muss als geplant statt bereits erfolgt dokumentiert werden.",
+      "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch005-20261018.013; chemie-final163-native-b-005-20261018:99d41b0f-e958-54cf-a077-9bed1704a303). Their current English understanding evidence is retained: A: Reflection on own inquiry must connect actual own decisions and findings with question, method and remaining uncertainty. B: Reflection on own investigation connects actual decisions and findings to the hypothesis and remaining uncertainties. This is synthesis, not a new independent review."
+    },
+    {
+      "decisionId": "chemie-final163-paired-D-only-005-20261018-v1-decision-014",
+      "goalId": "9e3fae29-84d5-5600-bfb3-82d49ea3f1b5",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:408619305cdd19bcf108fe040dbfa37123e63ff33125ff45729764238cd6bcdf",
+      "pageFingerprint": "sha256:3da7dc24af534d17e2485d11af04d4568223a4a8332c1601be962743ed34cbf6",
+      "goalReviewContextFingerprint": "sha256:763e8f62334025d7ba45e9aa65b32527e01fcfc09db78f6a9d5b96b7fb98fbd8",
+      "finalText": {
+        "titleDe": "Chemische Daten quantitativ und hypothesenbezogen auswerten",
+        "titleEn": "Evaluate chemical data quantitatively in relation to hypotheses",
+        "descriptionDe": "Die lernende Person kann für eine chemische Fragestellung geeignete mathematische Auswertungsverfahren und digitale Werkzeuge auswählen und begründet anwenden, quantitative Zusammenhänge unter Beachtung der Untersuchungsbedingungen interpretieren und daraus fachübergreifend begründete Schlüsse zur Stützung oder Falsifizierung der Ausgangshypothese ziehen.",
+        "descriptionEn": "The learner can select and apply suitable mathematical analysis methods and digital tools with justification for a chemical question, interpret quantitative relationships while accounting for the investigation conditions, and derive justified interdisciplinary conclusions that support or falsify the initial hypothesis."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-reviewer-a-final163-batch005-20261018.014",
+          "recordDigest": "sha256:28a38ea5ca8c8a068d53e5cb9c56f0a6a045964c67902abddf8713315f764f3d"
+        },
+        "second": {
+          "recordId": "chemie-final163-native-b-005-20261018:9e3fae29-84d5-5600-bfb3-82d49ea3f1b5",
+          "recordDigest": "sha256:ec684d78b04e4b62f2fe8708be7d1baec0f0725f77206ab0b9005d0a158b1aa0"
+        }
+      },
+      "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch005-20261018.014): Der bilinguale Text wahrt Auswahl und digitale Anwendung. Das ganze P verlangt eigene Dateien und trennt Simulationserfassung/Messung sowie Konzentrations-/Inertgasdruckeffekt; reine Modellgenerierung bestätigt kein Naturgesetz. B (chemie-final163-native-b-005-20261018:9e3fae29-84d5-5600-bfb3-82d49ea3f1b5): Die Beschreibung fordert echte begründete Werkzeuganwendung und fachübergreifenden Schluss. Das ganze P enthält korrekte Bereichssperre, Versionierung und Neufit-Residualprüfung; der HB-Simulationsteil behauptet ausdrücklich keine sensorische Erfassung oder empirische Bestätigung.",
+      "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch005-20261018.014; chemie-final163-native-b-005-20261018:9e3fae29-84d5-5600-bfb3-82d49ea3f1b5). Their current English understanding evidence is retained: A: Quantitative hypothesis testing needs suitable mathematics, actual digital processing and chemically valid model conditions. B: Mathematical models and digital tools connect measurement/model data to bounded chemical hypotheses; a good fit proves no unique mechanism. This is synthesis, not a new independent review."
+    },
+    {
+      "decisionId": "chemie-final163-paired-D-only-005-20261018-v1-decision-015",
+      "goalId": "a0f6ba09-f072-5887-a797-fa369453c62a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:73d22ec9a80b75a3daf1efec2782e4cbbde8321f8be4a0c2372bb35515d52c37",
+      "pageFingerprint": "sha256:02189a2e1fd263eecf545197d6edb4800569a4ce2d82194c5ed26977f9d956f2",
+      "goalReviewContextFingerprint": "sha256:5fc669caf90c592b6341b957a4b162fea7124a22c47dd1eadf7ee00a53b03608",
+      "finalText": {
+        "titleDe": "Ein reversibles Austauschmodell zur Gleichgewichtseinstellung durchführen",
+        "titleEn": "Perform a reversible exchange model of equilibrium establishment",
+        "descriptionDe": "Die lernende Person kann ein vorgegebenes reversibles Austausch-Modellexperiment regelgetreu durchführen, den zeitlichen Verlauf beider Mengen und beider Übertragungsrichtungen protokollieren und den erreichten stationären Zustand anhand fortbestehender annähernd gleicher Übertragungsraten unter Angabe der Grenzen als Modell eines chemischen Gleichgewichts auswerten.",
+        "descriptionEn": "The learner can carry out a specified reversible-exchange model experiment according to its rules, record the time course of both amounts and both transfer directions, and evaluate the stationary state reached through continuing approximately equal transfer rates while stating the limits of the analogy to chemical equilibrium."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-reviewer-a-final163-batch005-20261018.015",
+          "recordDigest": "sha256:37de4b788dfae3dced011a1ad3b10d11923e7082cd23ed66ecbc7a7b36f43c5d"
+        },
+        "second": {
+          "recordId": "chemie-final163-native-b-005-20261018:a0f6ba09-f072-5887-a797-fa369453c62a",
+          "recordDigest": "sha256:f0be10a0d045bdb1255f7af390684b2a9504955b68f975780d26672dbd93386b"
+        }
+      },
+      "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch005-20261018.015): Die Beschreibung nennt Regeln, beide Richtungen und Analogiegrenzen gleichwertig bilingual. Das ganze P unterscheidet gleiche Raten/gleiche Mengen und Idealrechnung/ausgeführten Wasseraustausch; keine chemische Reaktion wird daraus behauptet. B (chemie-final163-native-b-005-20261018:a0f6ba09-f072-5887-a797-fa369453c62a): Die Beschreibung trennt materielle Modellhandlung und chemische Gleichgewichtsanalogie präzise. P verlangt simultan aus dem Rundenanfang ermittelte Transfers und echte Protokolle und macht weder gleiche Mengen noch Stillstand zum Gleichgewichtskriterium.",
+      "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch005-20261018.015; chemie-final163-native-b-005-20261018:a0f6ba09-f072-5887-a797-fa369453c62a). Their current English understanding evidence is retained: A: Reversible exchange can become stationary at unequal amounts while equal opposing transfers continue. B: Stationary amounts can coexist with continuing equal positive transfer rates; amount ratio is not rate ratio. This is synthesis, not a new independent review."
+    },
+    {
+      "decisionId": "chemie-final163-paired-D-only-005-20261018-v1-decision-016",
+      "goalId": "a3788e40-b540-5bed-be37-b33053528422",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7792898d5d7fc270f728cce983914e05270d20b754a561ebfc55d53cc67b5f6a",
+      "pageFingerprint": "sha256:eebbc77176b28e5c280b81319daa202cfd703b6db1e9f244460f369e630b864e",
+      "goalReviewContextFingerprint": "sha256:d96f413f2c2aa59a74f720bf17c1aa05e9bfb99ac199b27a106edcbfed2f3b26",
+      "finalText": {
+        "titleDe": "Carbonsäuren beschreiben",
+        "titleEn": "Describe carboxylic acids",
+        "descriptionDe": "Die lernende Person kann Carboxygruppen in Struktur- und Skelettformeln erkennen und ihren sauren Charakter anhand geeigneter Beobachtungen nachweisen, homologe Reihen darstellen und Strukturformeln schreiben.",
+        "descriptionEn": "The learner can recognize carboxyl groups in structural and skeletal formulas and demonstrate their acidic character using suitable observations, represent homologous series, and write structural formulas."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-reviewer-a-final163-batch005-20261018.016",
+          "recordDigest": "sha256:9d068450804ce54c48f9d1d683285207d81a8c95afe67e9490d0cf28daa7ae68"
+        },
+        "second": {
+          "recordId": "chemie-final163-native-b-005-20261018:a3788e40-b540-5bed-be37-b33053528422",
+          "recordDigest": "sha256:3f72d2d02ce3e9c9c13f383b70d6ea726b51aba28490dc147ef7e9b5c3e99a44"
+        }
+      },
+      "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch005-20261018.016): Der bilinguale Text verbindet Gruppe, Beobachtung und Reihe. Das ganze P erlaubt bereitgestellte Daten, erfindet keine Durchführung und grenzt Alkohol-OH sowie Ester von Carboxyl-OH ab. B (chemie-final163-native-b-005-20261018:a3788e40-b540-5bed-be37-b33053528422): Die beschriebenen Repräsentations- und Beobachtungsaspekte gehören zur Charakterisierung derselben Stoffklasse. P macht gegebenen Beobachtungsnachweis statt unbelegter eigener Durchführung deutlich und importiert die weiterführende Aciditätsbegründung nicht.",
+      "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch005-20261018.016; chemie-final163-native-b-005-20261018:a3788e40-b540-5bed-be37-b33053528422). Their current English understanding evidence is retained: A: COOH contains carbonyl and hydroxy on the same carbon; the homologous series retains it with CH2 increments. B: A carboxyl group combines carbonyl and hydroxyl at the same carbon; homologous saturated monocarboxylic acids differ by methylene. This is synthesis, not a new independent review."
+    },
+    {
+      "decisionId": "chemie-final163-paired-D-only-005-20261018-v1-decision-017",
+      "goalId": "a4bac92b-d685-5cb6-94c8-c9b8b878d125",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:01c3e35b80133e3fab9286e0b079727b5047fb22b6dac67344e0048dc4fd6365",
+      "pageFingerprint": "sha256:7f292010711a4a3fed831246cdb48826ee2ee942ef194fe52c61f28fdbf33369",
+      "goalReviewContextFingerprint": "sha256:1e1a9f5168ad36dae0895d6633f7dfeeb4aa04217f2f6cb1f2cca7d6575a014f",
+      "finalText": {
+        "titleDe": "Substitutionsmechanismen differenzieren (LK)",
+        "titleEn": "Differentiate substitution mechanisms (LK)",
+        "descriptionDe": "Die lernende Person kann SN1- und SN2-Mechanismen gegenüberstellen und sterische sowie induktive Effekte diskutieren.",
+        "descriptionEn": "The learner can contrast SN1 and SN2 mechanisms and discuss steric and inductive effects."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-reviewer-a-final163-batch005-20261018.017",
+          "recordDigest": "sha256:9c431589c1600ed4c018b7d9dfac975a1cf17285c79aec7d3262a5a6f296cdf0"
+        },
+        "second": {
+          "recordId": "chemie-final163-native-b-005-20261018:a4bac92b-d685-5cb6-94c8-c9b8b878d125",
+          "recordDigest": "sha256:49678e8734c3678aba457382c3ccd8febba543ace320d98ec6d2d92313659753"
+        }
+      },
+      "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch005-20261018.017): Die bilingualen LK-Fassungen nennen Mechanismen und beide Effektarten. Das ganze P verwendet ein echtes sterisches Gegenbeispiel statt bloßen Etikettentausch und behauptet keine absoluten Wege allein aus Substitution. B (chemie-final163-native-b-005-20261018:a4bac92b-d685-5cb6-94c8-c9b8b878d125): Die Beschreibung fokussiert die erklärenden Effekte gegenüber der vorausgesetzten allgemeinen Donator-/Akzeptorreaktion. P verlangt keine absolute Mechanismenausschließlichkeit und nutzt ein strukturell verändertes Gegenbeispiel statt bloßer Namensabfrage.",
+      "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch005-20261018.017; chemie-final163-native-b-005-20261018:a4bac92b-d685-5cb6-94c8-c9b8b878d125). Their current English understanding evidence is retained: A: SN2 needs accessible backside attack; SN1 requires suitable carbocation stabilisation under appropriate conditions. B: SN2 needs spatial backside access and SN1 sufficiently favourable carbocation formation; steric and electronic contributions act together. This is synthesis, not a new independent review."
+    },
+    {
+      "decisionId": "chemie-final163-paired-D-only-005-20261018-v1-decision-018",
+      "goalId": "a530ee7d-1002-5f02-ae05-a9d46410ac78",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:bb7d85e7c7d7644bbb970846f400ff133a0037f1b99506c2b40d135fc3508abd",
+      "pageFingerprint": "sha256:ca9db007fee765088ba9f72e13525866f3260bb8209131dba9ddaffc0ed59881",
+      "goalReviewContextFingerprint": "sha256:f37a25903ab7a01ca8a022819256c4b9e1a649ac36936fd9418fe15689819934",
+      "finalText": {
+        "titleDe": "Energieumsatz mit Bindungsänderungen erklären",
+        "titleEn": "Explain energy transfer using bond changes",
+        "descriptionDe": "Die lernende Person kann Energieänderungen bei chemischen Reaktionen qualitativ mit dem Spalten und Bilden chemischer Bindungen erklären.",
+        "descriptionEn": "The learner can qualitatively explain energy changes in chemical reactions by bond breaking and bond formation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-reviewer-a-final163-batch005-20261018.018",
+          "recordDigest": "sha256:a4a3883b9618a184d528b58256209a77d34b8fde3903d3346d54f3fda9cabcd8"
+        },
+        "second": {
+          "recordId": "chemie-final163-native-b-005-20261018:a530ee7d-1002-5f02-ae05-a9d46410ac78",
+          "recordDigest": "sha256:3a495f39b62adb2d448b669bd1b55aff7f85bd94cad4d9c5891af690f5110caa"
+        }
+      },
+      "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch005-20261018.018): Der knappe bilinguale Text ist korrekt qualitativ. Das ganze P trennt Nettobilanz und Teilschritt sowie Energiebuchhaltung und tatsächlichen Reaktionsweg; numerische Enthalpierechnung bleibt Nachfolger. B (chemie-final163-native-b-005-20261018:a530ee7d-1002-5f02-ae05-a9d46410ac78): Qualitative Bindungsenergie ist ausdrücklich der Anspruch. P liefert verschiedene Bindungssätze und entgegengesetzte Nettorichtungen, ohne Zahlenquote oder eigenständige Verbrennung/Elektrolyse; quantitative Reaktionsenthalpie bleibt Nachfolger.",
+      "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch005-20261018.018; chemie-final163-native-b-005-20261018:a530ee7d-1002-5f02-ae05-a9d46410ac78). Their current English understanding evidence is retained: A: Bond breaking requires energy and bond formation releases it; comparing both contributions determines the net direction. B: Bond breaking needs energy and bond formation releases it; net energy follows both contributions for the same reaction amount. This is synthesis, not a new independent review."
+    },
+    {
+      "decisionId": "chemie-final163-paired-D-only-005-20261018-v1-decision-019",
+      "goalId": "a8800c36-d13c-5f63-962c-cf18c3795c63",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b7fcb0bf294ec17da0bdf822629b0499aec3e84e6ad50aa799fbc1dbda843ed7",
+      "pageFingerprint": "sha256:0800f0c1e635fe14fd6ead180222231f947ab9d6cd4008594b331930dc4c0211",
+      "goalReviewContextFingerprint": "sha256:43fee895eea7aec5b62d1b226169a82185dcae0162bb4af71a377f0309ffe79f",
+      "finalText": {
+        "titleDe": "Chemische Erkenntniswege und ihre Reichweite erklären",
+        "titleEn": "Explain chemical inquiry processes and their reach",
+        "descriptionDe": "Die lernende Person kann an einem vorgegebenen chemischen Erkenntnisweg erklären, wie Fragestellung, Methoden, Beobachtungen und Interpretation zusammenwirken, welche Fragen damit chemisch beantwortbar sind und welche Unsicherheiten oder Grenzen bestehen.",
+        "descriptionEn": "The learner can explain how questions, methods, observations, and interpretation work together in a given chemical inquiry process, which questions can be answered chemically through it, and which uncertainties or limitations remain."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-reviewer-a-final163-batch005-20261018.019",
+          "recordDigest": "sha256:94dd6aa6fb68e001d19c5b2a398f033a62050975297aee536db304b434a57235"
+        },
+        "second": {
+          "recordId": "chemie-final163-native-b-005-20261018:a8800c36-d13c-5f63-962c-cf18c3795c63",
+          "recordDigest": "sha256:b0ffd465d713ab19301c60b149fc29f595808a23ede01685154a60b2a0f0f85e"
+        }
+      },
+      "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch005-20261018.019): Die Sprachfassungen grenzen vorgegebenen Erkenntnisweg von eigener Reflexion ab. Das ganze P erklärt Kontamination als prüfbare Möglichkeit, nicht bewiesene Ursache, und trennt chemische Produktprüfung von gesellschaftlicher Risikoakzeptanz. B (chemie-final163-native-b-005-20261018:a8800c36-d13c-5f63-962c-cf18c3795c63): Die Beschreibung begrenzt sich bewusst auf einen vorgegebenen Erkenntnisweg. P verlangt keine eigene Durchführung oder vollständige Fünf-Kriterien-Reflexion und trennt Farb-/Gasindiz von Identität, Menge und Akzeptanz.",
+      "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch005-20261018.019; chemie-final163-native-b-005-20261018:a8800c36-d13c-5f63-962c-cf18c3795c63). Their current English understanding evidence is retained: A: Inquiry connects question, control, observation and bounded interpretation; product identity, amount and societal judgment are different questions. B: A supplied inquiry connects question, comparison method and finding to bounded interpretation; identity and societal judgment are different claims. This is synthesis, not a new independent review."
+    },
+    {
+      "decisionId": "chemie-final163-paired-D-only-005-20261018-v1-decision-020",
+      "goalId": "a0080b5f-13ff-56bc-b8ff-2ff6273e2ec1",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b1ba1482ef851375cda4d58ccf4d968172e798c50f7f7d55f5015bd43648baa4",
+      "pageFingerprint": "sha256:2b031644234cccdcbc57c0444baaa49354625559f0f13ae67a4444243da2725a",
+      "goalReviewContextFingerprint": "sha256:0cbcf271ae6c9759b1f6e5c367b4bb6cf95435d4568686c2832a8740fbda6303",
+      "finalText": {
+        "titleDe": "Wissenschaftliche Gültigkeitskriterien anwenden",
+        "titleEn": "Apply criteria of scientific validity",
+        "descriptionDe": "Die lernende Person kann die Gültigkeit chemischer Erkenntnisse und die Möglichkeiten und Grenzen des Erkenntnisgewinnungsprozesses anhand von Reproduzierbarkeit, Falsifizierbarkeit, Intersubjektivität, logischer Konsistenz und Vorläufigkeit begründet reflektieren. Dabei unterscheidet sie belastbare Gegenbefunde von fehlgeschlagener Durchführung oder unzuverlässiger Messung.",
+        "descriptionEn": "The learner can reflect with justification on the validity of chemical findings and the possibilities and limits of inquiry using reproducibility, falsifiability, intersubjectivity, logical consistency, and provisionality. They distinguish robust counterevidence from failed procedures or unreliable measurements."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-reviewer-a-final163-batch005-20261018.020",
+          "recordDigest": "sha256:37d3b6476fcb48443a7fb050348739ac4cffd713225241e03e689f458e6b01d4"
+        },
+        "second": {
+          "recordId": "chemie-final163-native-b-005-20261018:a0080b5f-13ff-56bc-b8ff-2ff6273e2ec1",
+          "recordDigest": "sha256:b7926d87a0a3f4b9f8f38552d0c6bb30fad8cb052a6c8be61bf3d6fcf00cd470"
+        }
+      },
+      "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch005-20261018.020): Der aktuelle bilinguale Text nennt alle fünf Kriterien und die Gegenbefundgrenze ausdrücklich. Das ganze P hält wiederholten Messfehler von Reproduzierbarkeit und Q unmittelbar nach Zugabe von eingestelltem K getrennt. B (chemie-final163-native-b-005-20261018:a0080b5f-13ff-56bc-b8ff-2ff6273e2ec1): Die aktuelle Beschreibung enthält die entscheidende Trennung von belastbarer Falsifikation und Verfahrensversagen. P wendet alle Kriterien konkret an, trennt Q vor Einstellung von K und überträgt eine 25-Grad-Aussage nicht ungeprüft auf andere Temperaturen.",
+      "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch005-20261018.020; chemie-final163-native-b-005-20261018:a0080b5f-13ff-56bc-b8ff-2ff6273e2ec1). Their current English understanding evidence is retained: A: Scientific validity needs reproducible, intersubjectively testable, consistent and falsifiable claims with provisional scope. B: Scientific validity connects reproducible, testable and intersubjectively accessible findings with logical consistency and bounded scope. This is synthesis, not a new independent review."
+    }
+  ],
+  "manifestFingerprint": "sha256:c531460d36cff13dc7321c382660c17c38c5ef6449bf726e255ffa0bb0e06d93"
+}

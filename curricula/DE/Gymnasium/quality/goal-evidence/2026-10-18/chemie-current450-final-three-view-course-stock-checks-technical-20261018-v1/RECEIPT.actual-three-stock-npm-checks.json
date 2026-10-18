@@ -1,0 +1,194 @@
+{
+  "artifactRole": "ACTUAL_EXACT_THREE_AUTHORIZED_STOCK_NPM_CHECKS_NO_NEW_SCIENCE",
+  "startUTC": "2026-10-18T04:02:28.384243+00:00",
+  "endUTC": "2026-10-18T04:06:23.498740+00:00",
+  "allThreeActualWallDurationSeconds": 235.114484925,
+  "parallelExecution": true,
+  "records": [
+    {
+      "commandArgv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "validate:view-filters"
+      ],
+      "command": "npm --prefix app run validate:view-filters",
+      "packageScript": "tsx scripts/validateViewFilters.ts",
+      "cwd": "repository root",
+      "startUTC": "2026-10-18T04:02:28.386470+00:00",
+      "endUTC": "2026-10-18T04:02:43.899711+00:00",
+      "exitCode": 0,
+      "monotonicDurationNanoseconds": 15513220146,
+      "actualWallDurationSeconds": 15.513220146,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-three-view-course-stock-checks-technical-20261018-v1/raw/validate-view-filters.stdout.txt",
+        "sha256": "aafc9ca5e8c8717c7364319933428cebaffd37bd33079bbd6ecf53ad57ef583e",
+        "bytes": 1290
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-three-view-course-stock-checks-technical-20261018-v1/raw/validate-view-filters.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "environmentChanged": false,
+      "guardChanged": false
+    },
+    {
+      "commandArgv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "validate:composition-views"
+      ],
+      "command": "npm --prefix app run validate:composition-views",
+      "packageScript": "tsx scripts/validateCompositionViews.ts",
+      "cwd": "repository root",
+      "startUTC": "2026-10-18T04:02:28.387017+00:00",
+      "endUTC": "2026-10-18T04:06:23.495811+00:00",
+      "exitCode": 0,
+      "monotonicDurationNanoseconds": 235108780179,
+      "actualWallDurationSeconds": 235.108780179,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-three-view-course-stock-checks-technical-20261018-v1/raw/validate-composition-views.stdout.txt",
+        "sha256": "02cde313f2c6de9cd54bb19bb310357d23101fc09aa560481cb849f4834682fc",
+        "bytes": 782612
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-three-view-course-stock-checks-technical-20261018-v1/raw/validate-composition-views.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "environmentChanged": false,
+      "guardChanged": false
+    },
+    {
+      "commandArgv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "test:course-level-mapping-consistency"
+      ],
+      "command": "npm --prefix app run test:course-level-mapping-consistency",
+      "packageScript": "tsx scripts/testCourseLevelMappingConsistency.ts",
+      "cwd": "repository root",
+      "startUTC": "2026-10-18T04:02:28.388733+00:00",
+      "endUTC": "2026-10-18T04:02:28.974457+00:00",
+      "exitCode": 0,
+      "monotonicDurationNanoseconds": 585709930,
+      "actualWallDurationSeconds": 0.58570993,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-three-view-course-stock-checks-technical-20261018-v1/raw/test-course-level-mapping-consistency.stdout.txt",
+        "sha256": "03f9f6711595d5d474656bd4ad7b0b07ff5c3c258a8d2f4e0516c6528661dddf",
+        "bytes": 194
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-three-view-course-stock-checks-technical-20261018-v1/raw/test-course-level-mapping-consistency.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "environmentChanged": false,
+      "guardChanged": false
+    }
+  ],
+  "allExitCodesZero": true,
+  "originalGuardBeforePins": [
+    {
+      "path": "app/package.json",
+      "sha256": "8f135f14a21f930ee69467bb111c11a5dc281a0140418255832ee44b8d0a8617",
+      "bytes": 29838
+    },
+    {
+      "path": "app/scripts/validateViewFilters.ts",
+      "sha256": "01dffa3fde0fb4718dab7376f578e8a2b737d4ceebea628daba2cd395ac43211",
+      "bytes": 8786
+    },
+    {
+      "path": "app/scripts/validateCompositionViews.ts",
+      "sha256": "901530527fcbdd28658631c15e328a291dbc087d286e6dbf580471b4e9f69cf9",
+      "bytes": 42474
+    },
+    {
+      "path": "app/scripts/testCourseLevelMappingConsistency.ts",
+      "sha256": "92124851f1b6df36f9313a80ec2c9e1b01f879df1396d7d19f7662f0d260c648",
+      "bytes": 6095
+    },
+    {
+      "path": "app/scripts/applicabilityCompiler.ts",
+      "sha256": "50f4a09007cece8119c53f665b6442e028e4ffb3910fda7b377e60f8cb6c81dd",
+      "bytes": 56784
+    },
+    {
+      "path": "app/scripts/treeProjectionValidator.ts",
+      "sha256": "9e897dfe48727aa4b103c22abac48b84233cff15e833ccee51b49f9b34046545",
+      "bytes": 7244
+    },
+    {
+      "path": "app/scripts/generateCurriculumQualityStatus.ts",
+      "sha256": "e8dd1ee3df4054d4578109647d5f46fb5a83e5fe7de7e117a1865c39477c3fef",
+      "bytes": 275082
+    }
+  ],
+  "originalGuardAfterPins": [
+    {
+      "path": "app/package.json",
+      "sha256": "8f135f14a21f930ee69467bb111c11a5dc281a0140418255832ee44b8d0a8617",
+      "bytes": 29838
+    },
+    {
+      "path": "app/scripts/validateViewFilters.ts",
+      "sha256": "01dffa3fde0fb4718dab7376f578e8a2b737d4ceebea628daba2cd395ac43211",
+      "bytes": 8786
+    },
+    {
+      "path": "app/scripts/validateCompositionViews.ts",
+      "sha256": "901530527fcbdd28658631c15e328a291dbc087d286e6dbf580471b4e9f69cf9",
+      "bytes": 42474
+    },
+    {
+      "path": "app/scripts/testCourseLevelMappingConsistency.ts",
+      "sha256": "92124851f1b6df36f9313a80ec2c9e1b01f879df1396d7d19f7662f0d260c648",
+      "bytes": 6095
+    },
+    {
+      "path": "app/scripts/applicabilityCompiler.ts",
+      "sha256": "50f4a09007cece8119c53f665b6442e028e4ffb3910fda7b377e60f8cb6c81dd",
+      "bytes": 56784
+    },
+    {
+      "path": "app/scripts/treeProjectionValidator.ts",
+      "sha256": "9e897dfe48727aa4b103c22abac48b84233cff15e833ccee51b49f9b34046545",
+      "bytes": 7244
+    },
+    {
+      "path": "app/scripts/generateCurriculumQualityStatus.ts",
+      "sha256": "e8dd1ee3df4054d4578109647d5f46fb5a83e5fe7de7e117a1865c39477c3fef",
+      "bytes": 275082
+    }
+  ],
+  "allOriginalGuardsByteUnchanged": true,
+  "actualRelevantInheritedEnvironment": {
+    "APPLICABILITY_VALIDATION_SCOPE": null,
+    "APPLICABILITY_VERBOSE_WARNINGS": null
+  },
+  "environmentOverrides": {},
+  "declaredStockScratchEffects": [
+    {
+      "command": "validate:view-filters",
+      "path": "tmp/applicability",
+      "effect": "Unmodified stock validator builds applicability in memory and writes its ordinary scratch JSON reports; these are diagnostics, not normal source/C/P/View data or an extra command."
+    },
+    {
+      "command": "test:course-level-mapping-consistency",
+      "path": "os.tmpdir()/course-level-active-discovery-*",
+      "effect": "Unmodified fixture creates isolated temporary mapping fixtures and removes them in finally."
+    }
+  ],
+  "sourceAtlasGeneratedInputsRead": false,
+  "excludedUnreadDirectory": "app/scripts/config/goal-books/source-views",
+  "normalDataMutationByRunner": 0,
+  "newReviewVotes": 0,
+  "buildCommitStageRuns": 0
+}

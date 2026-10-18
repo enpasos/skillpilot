@@ -1,0 +1,804 @@
+{
+  "artifactType": "bounded-independent-technical-audit-lower14-paired-integration",
+  "atUTC": "2026-10-17T20:49:23.884408+00:00",
+  "role": "Technical integration verification only; author of Lower14 is disclosed. No new scientific approvals or rereview.",
+  "inputs": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-lower14-paired-C-P-M-source-integration-20261017-v1/C653.Lower14-paired.PENDING-final-scope-context.json.snapshot",
+      "sha256": "d96c37e43de70e289d50d676c39f7b7c34b825a1cf3805f8b95f39fd6cc1a77c",
+      "bytes": 2928555
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-lower14-paired-C-P-M-source-integration-20261017-v1/P442.input-selection.PENDING-final-native-context.json",
+      "sha256": "c27f4ba91932a061aec8e944572760b4b8aed38f35825fc6981954a2c09f99e1",
+      "bytes": 116213
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-lower14-paired-C-P-M-source-integration-20261017-v1/M442.scientific-input-selection.PENDING-final-native-context.json",
+      "sha256": "11163bdd6e8e93b108242073c8ff9e81e5b4544f126315703346aca88e5be312",
+      "bytes": 66601
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-lower14-paired-C-P-M-source-integration-20261017-v1/HB42.lower14-paired-mapping.PENDING-normal-integration.json.snapshot",
+      "sha256": "423a910869aa9133cda162bacc5b0634ac00b1389ee3174e85054c0fe462542f",
+      "bytes": 82651
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-lower14-paired-C-P-M-source-integration-20261017-v1/RECEIPT.paired-Lower14-C-P-M-source-integration.json",
+      "sha256": "7beb77afbdeecefab21243c0cbbec512afc7544b2e4acbfa8aa53dca07815d32",
+      "bytes": 29836
+    }
+  ],
+  "result": "PASS_FINITE_TECHNICAL_SELECTION_CHECKS",
+  "checksPassed": 77,
+  "checksFailed": 0,
+  "referenceAudit": {
+    "occurrences": 515,
+    "uniqueFiles": 105,
+    "brokenOrMismatched": []
+  },
+  "counts": {
+    "canonicalGoals": 653,
+    "selectedWholeProfiles": 442,
+    "selectedWholeMemoryDecisions": 442,
+    "lowerSourceDecisions": 42,
+    "lowerMappingEdges": 95,
+    "affectedSourceDecisions": 14,
+    "selectedPartialEdges": 15,
+    "unaffectedSourceDecisionsExact": 28,
+    "memoryRequired": 66,
+    "noMemoryNeeded": 376
+  },
+  "canonicalDeltas": {
+    "542822de-cb96-56cf-a487-0fc3b5820f57": [
+      "contains"
+    ],
+    "5338b54c-68bc-5892-907c-e025351ffde6": [
+      "descriptionEn",
+      "description"
+    ]
+  },
+  "lower13ActualProfileSelections": [
+    {
+      "goalId": "1bdaf7f2-ff3b-455a-a7fb-95a44642762a",
+      "v3EvidencePointer": "/records/0",
+      "selectedProfileObjectSHA256": "d908e29db790de074e4c4d350a2b3e360768999d1e2625bb992e615ced70003e",
+      "exactSelectedWholeProfile": true,
+      "authorUsesRetainedPointer": false
+    },
+    {
+      "goalId": "7f140b34-ed26-59e7-8ad2-ccb6b56bc9d6",
+      "v3EvidencePointer": "/records/1",
+      "selectedProfileObjectSHA256": "6a2c0d2c32701564f4c67be58baf67b98e2aa9dfa514e7eb45a712177172794a",
+      "exactSelectedWholeProfile": true,
+      "authorUsesRetainedPointer": false
+    },
+    {
+      "goalId": "7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6",
+      "v3EvidencePointer": "/records/2",
+      "selectedProfileObjectSHA256": "610c575c2141534faa88d0958b025b5657147621ca445033433cee2c0224bc0d",
+      "exactSelectedWholeProfile": true,
+      "authorUsesRetainedPointer": false
+    },
+    {
+      "goalId": "416dfd33-8b43-5c49-903c-9847b95e4208",
+      "v3EvidencePointer": "/records/3",
+      "selectedProfileObjectSHA256": "9d69cd2f0d5517567d6540a47b6195ac5b542487ee4a63f381f4bc3ea3328c1d",
+      "exactSelectedWholeProfile": true,
+      "authorUsesRetainedPointer": true
+    },
+    {
+      "goalId": "13d4f336-ab16-54a7-9479-c920b458f385",
+      "v3EvidencePointer": "/records/4",
+      "selectedProfileObjectSHA256": "fe6061012f9d88f20c0a03e8209a0f9a64e79a065e9c0eeaf17b427bf487724c",
+      "exactSelectedWholeProfile": true,
+      "authorUsesRetainedPointer": true
+    },
+    {
+      "goalId": "e675fa94-6e23-59c0-b376-4340bf44c00e",
+      "v3EvidencePointer": "/records/5",
+      "selectedProfileObjectSHA256": "f252ed54179f394c62fe4bc66f26b0e5c820a1b8cd3d3c2030680c19357987d5",
+      "exactSelectedWholeProfile": true,
+      "authorUsesRetainedPointer": true
+    },
+    {
+      "goalId": "8ceb1749-fce0-584f-a2b8-0a309282329a",
+      "v3EvidencePointer": "/records/6",
+      "selectedProfileObjectSHA256": "da3f0466e4b11df12996d6ae5482c1a36871e555f60bbacc91b71775d710962e",
+      "exactSelectedWholeProfile": true,
+      "authorUsesRetainedPointer": false
+    },
+    {
+      "goalId": "70b12d1c-abaf-45c6-ae9e-b571e9cbc126",
+      "v3EvidencePointer": "/records/7",
+      "selectedProfileObjectSHA256": "8337a329b8793ace122d622ac2c00e40fcc4b5ad51f6f637829e47457b4304c8",
+      "exactSelectedWholeProfile": true,
+      "authorUsesRetainedPointer": true
+    },
+    {
+      "goalId": "d2ccd1d5-56f7-583f-9724-e97441367f91",
+      "v3EvidencePointer": "/records/8",
+      "selectedProfileObjectSHA256": "b137eeecc671e386bc1ad39e148b229ae285975bc56535e0524381f9c3400a7b",
+      "exactSelectedWholeProfile": true,
+      "authorUsesRetainedPointer": false
+    },
+    {
+      "goalId": "5338b54c-68bc-5892-907c-e025351ffde6",
+      "v3EvidencePointer": "/records/9",
+      "selectedProfileObjectSHA256": "947328d820d6f79db352d1d7f57c6a77c3f44b6d9348bd34eb05cd3fd965d61b",
+      "exactSelectedWholeProfile": true,
+      "authorUsesRetainedPointer": false
+    },
+    {
+      "goalId": "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566",
+      "v3EvidencePointer": "/records/10",
+      "selectedProfileObjectSHA256": "84f78d8ec1f9fa86713652ee8bec80489da58d888a5572dac64ffae9b9ed5334",
+      "exactSelectedWholeProfile": true,
+      "authorUsesRetainedPointer": false
+    },
+    {
+      "goalId": "5a30273a-98d5-5163-bb16-c250b7ed4e7f",
+      "v3EvidencePointer": "/records/11",
+      "selectedProfileObjectSHA256": "93a35601a6506ed84e1531fd87bd5fe6e14e8788ca13501a6ece1aed9cde8fbb",
+      "exactSelectedWholeProfile": true,
+      "authorUsesRetainedPointer": true
+    },
+    {
+      "goalId": "04ebfc99-dbac-539e-95db-642addcaca8c",
+      "v3EvidencePointer": "/records/12",
+      "selectedProfileObjectSHA256": "b9113265823f618abd1dffb0a39b71f2ea1090e6ddd427277dfe49b51aad4e21",
+      "exactSelectedWholeProfile": true,
+      "authorUsesRetainedPointer": false
+    }
+  ],
+  "source14ExactPairedCarrierUnions": [
+    {
+      "sourceDecisionIndexZeroBased": 5,
+      "sourceGoalId": "hb-chemistry-seki-bp2006-2022-3-1-luft-feuer-006-e74eb1e2",
+      "partialCarrierUnionGoalIds": [
+        "1bdaf7f2-ff3b-455a-a7fb-95a44642762a"
+      ],
+      "matchesAuthorAndBothReviewers": true,
+      "reviewBOriginalDecision": "ACCEPT",
+      "targetedFollowupRequired": false
+    },
+    {
+      "sourceDecisionIndexZeroBased": 6,
+      "sourceGoalId": "hb-chemistry-seki-bp2006-2022-3-1-luft-feuer-007-124c93e2",
+      "partialCarrierUnionGoalIds": [
+        "7f140b34-ed26-59e7-8ad2-ccb6b56bc9d6"
+      ],
+      "matchesAuthorAndBothReviewers": true,
+      "reviewBOriginalDecision": "ACCEPT",
+      "targetedFollowupRequired": false
+    },
+    {
+      "sourceDecisionIndexZeroBased": 7,
+      "sourceGoalId": "hb-chemistry-seki-bp2006-2022-3-1-luft-feuer-008-001611fd",
+      "partialCarrierUnionGoalIds": [
+        "7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6"
+      ],
+      "matchesAuthorAndBothReviewers": true,
+      "reviewBOriginalDecision": "ACCEPT",
+      "targetedFollowupRequired": false
+    },
+    {
+      "sourceDecisionIndexZeroBased": 8,
+      "sourceGoalId": "hb-chemistry-seki-bp2006-2022-3-1-luft-feuer-009-53c9bfdf",
+      "partialCarrierUnionGoalIds": [
+        "416dfd33-8b43-5c49-903c-9847b95e4208",
+        "13d4f336-ab16-54a7-9479-c920b458f385"
+      ],
+      "matchesAuthorAndBothReviewers": true,
+      "reviewBOriginalDecision": "ACCEPT",
+      "targetedFollowupRequired": false
+    },
+    {
+      "sourceDecisionIndexZeroBased": 14,
+      "sourceGoalId": "hb-chemistry-seki-bp2006-2022-3-1-rohstoffe-015-2a0f7af4",
+      "partialCarrierUnionGoalIds": [
+        "e675fa94-6e23-59c0-b376-4340bf44c00e"
+      ],
+      "matchesAuthorAndBothReviewers": true,
+      "reviewBOriginalDecision": "ACCEPT",
+      "targetedFollowupRequired": false
+    },
+    {
+      "sourceDecisionIndexZeroBased": 18,
+      "sourceGoalId": "hb-chemistry-seki-bp2006-2022-3-1-rohstoffe-019-b92ddd8a",
+      "partialCarrierUnionGoalIds": [
+        "8ceb1749-fce0-584f-a2b8-0a309282329a"
+      ],
+      "matchesAuthorAndBothReviewers": true,
+      "reviewBOriginalDecision": "ACCEPT",
+      "targetedFollowupRequired": false
+    },
+    {
+      "sourceDecisionIndexZeroBased": 20,
+      "sourceGoalId": "hb-chemistry-seki-bp2006-2022-3-1-rohstoffe-021-9f07bfaf",
+      "partialCarrierUnionGoalIds": [
+        "8ceb1749-fce0-584f-a2b8-0a309282329a"
+      ],
+      "matchesAuthorAndBothReviewers": true,
+      "reviewBOriginalDecision": "ACCEPT",
+      "targetedFollowupRequired": false
+    },
+    {
+      "sourceDecisionIndexZeroBased": 21,
+      "sourceGoalId": "hb-chemistry-seki-bp2006-2022-3-1-rohstoffe-022-50e512d9",
+      "partialCarrierUnionGoalIds": [
+        "04ebfc99-dbac-539e-95db-642addcaca8c"
+      ],
+      "matchesAuthorAndBothReviewers": true,
+      "reviewBOriginalDecision": "ACCEPT",
+      "targetedFollowupRequired": false
+    },
+    {
+      "sourceDecisionIndexZeroBased": 26,
+      "sourceGoalId": "hb-chemistry-seki-bp2006-2022-3-2-haushalt-027-a5b544e5",
+      "partialCarrierUnionGoalIds": [
+        "70b12d1c-abaf-45c6-ae9e-b571e9cbc126"
+      ],
+      "matchesAuthorAndBothReviewers": true,
+      "reviewBOriginalDecision": "ACCEPT",
+      "targetedFollowupRequired": false
+    },
+    {
+      "sourceDecisionIndexZeroBased": 31,
+      "sourceGoalId": "hb-chemistry-seki-bp2006-2022-3-2-haushalt-032-852091bc",
+      "partialCarrierUnionGoalIds": [
+        "d2ccd1d5-56f7-583f-9724-e97441367f91"
+      ],
+      "matchesAuthorAndBothReviewers": true,
+      "reviewBOriginalDecision": "HOLD",
+      "targetedFollowupRequired": true
+    },
+    {
+      "sourceDecisionIndexZeroBased": 32,
+      "sourceGoalId": "hb-chemistry-seki-bp2006-2022-3-2-haushalt-033-8cc8c1e1",
+      "partialCarrierUnionGoalIds": [
+        "7f140b34-ed26-59e7-8ad2-ccb6b56bc9d6"
+      ],
+      "matchesAuthorAndBothReviewers": true,
+      "reviewBOriginalDecision": "ACCEPT",
+      "targetedFollowupRequired": false
+    },
+    {
+      "sourceDecisionIndexZeroBased": 37,
+      "sourceGoalId": "hb-chemistry-seki-bp2006-2022-3-2-wasser-loesungsmittel-038-cf2b32df",
+      "partialCarrierUnionGoalIds": [
+        "5338b54c-68bc-5892-907c-e025351ffde6"
+      ],
+      "matchesAuthorAndBothReviewers": true,
+      "reviewBOriginalDecision": "ACCEPT",
+      "targetedFollowupRequired": true
+    },
+    {
+      "sourceDecisionIndexZeroBased": 40,
+      "sourceGoalId": "hb-chemistry-seki-bp2006-2022-3-2-wasser-loesungsmittel-041-c45c53e8",
+      "partialCarrierUnionGoalIds": [
+        "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566"
+      ],
+      "matchesAuthorAndBothReviewers": true,
+      "reviewBOriginalDecision": "ACCEPT",
+      "targetedFollowupRequired": false
+    },
+    {
+      "sourceDecisionIndexZeroBased": 41,
+      "sourceGoalId": "hb-chemistry-seki-bp2006-2022-3-2-wasser-loesungsmittel-042-dc378339",
+      "partialCarrierUnionGoalIds": [
+        "5a30273a-98d5-5163-bb16-c250b7ed4e7f"
+      ],
+      "matchesAuthorAndBothReviewers": true,
+      "reviewBOriginalDecision": "ACCEPT",
+      "targetedFollowupRequired": false
+    }
+  ],
+  "actual002ThreeRoutes": [
+    {
+      "memoryGoalId": "e3e8582a-976b-5f0f-b31b-3cf59a4fff24",
+      "filterTags": [
+        "GK",
+        "LK"
+      ],
+      "actualSelectedCardIds": [
+        "chem_org_q1_001",
+        "chem_org_q1_002",
+        "chem_org_q1_003",
+        "chem_org_q1_004",
+        "chem_org_q1_005",
+        "chem_org_q1_006",
+        "chem_org_q1_007",
+        "chem_org_q1_008",
+        "chem_org_q1_009",
+        "chem_org_q1_010"
+      ],
+      "includes002": true
+    },
+    {
+      "memoryGoalId": "98781dda-8049-5173-899b-42a5c2902b86",
+      "filterTags": [
+        "select:chemistry-functional-groups-only"
+      ],
+      "actualSelectedCardIds": [
+        "chem_org_q1_002"
+      ],
+      "includes002": true
+    },
+    {
+      "memoryGoalId": "f6d7386c-dda4-501d-84da-0c881362e724",
+      "filterTags": [
+        "select:chemistry-bw-lk-organic_q1"
+      ],
+      "actualSelectedCardIds": [
+        "chem_org_q1_001",
+        "chem_org_q1_002",
+        "chem_org_q1_003",
+        "chem_org_q1_004"
+      ],
+      "includes002": true
+    }
+  ],
+  "resolvedTechnicalFindings": [
+    {
+      "id": "M04eb-B-actual-M-missing",
+      "originalInsufficientPointer": "original cd8904ae /wholeProfileRecords/12 was only P",
+      "resolution": "Fresh separatelysealed actual B M /record, no retrospective rewrite",
+      "currentReference": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-04eb-v3-whole-M-independent-b-20261017-v1/FIRST.independent-whole04eb-v3-M.json",
+        "sha256": "5a6a9bc7ccce5f0ec6ca3433b169cabf83f238f443c0ee6fe6741856f0f5b2dc",
+        "bytes": 8640
+      }
+    },
+    {
+      "id": "P442-writer-oldC652",
+      "resolution": "futureWriterContract/canonicalCandidatePath now exactC653"
+    },
+    {
+      "id": "M442-inherited-stale-current441-0959-excluded04eb",
+      "resolution": "Historical author metadata now identified as historical; actual fresh whole-M successors selected, included04eb, native442 remains pending"
+    }
+  ],
+  "checks": [
+    {
+      "check": "All finite structured file/line/object pins and JSON pointers resolve",
+      "pass": true,
+      "details": {
+        "referenceOccurrences": 515,
+        "uniqueReferencedFiles": 104,
+        "errors": []
+      }
+    },
+    {
+      "check": "Final P writer contract selects exact C653 candidate",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "C652 to C653 exactly one new goal and two existing changed bodies",
+      "pass": true,
+      "details": {
+        "542822de-cb96-56cf-a487-0fc3b5820f57": [
+          "contains"
+        ],
+        "5338b54c-68bc-5892-907c-e025351ffde6": [
+          "descriptionEn",
+          "description"
+        ]
+      }
+    },
+    {
+      "check": "C653 existing changes confined to clarified bilingual5338 D and one parent contains append",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Canonical metadata outside goals unchanged",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object 684ffe86-3a9f-5514-866a-47d16372f2d4",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object 127e2fc9-23f3-5ce8-a1c9-8c9e014c8a8a",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object dfaef897-dcd4-55d4-a1fe-3dd90b818853",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object 85342c52-9722-54b0-8fbb-513d9d648363",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object 92c99237-1c74-54fc-bf08-9191656afaa6",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object 065d764c-daec-5d35-95da-3e922d2029c7",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object 5a709938-e0f5-42b7-94f0-cfded08963a2",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object 2f3cdec5-f845-5b0f-841e-8b1d47de0281",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object 7371c82e-6668-5ddc-ba78-347113fcddf8",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object 5c8f0bbb-103a-579f-87fc-c997afe4fd18",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object 42391b16-bbae-5c77-84e1-d488e714167b",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object 16b24dc5-0e48-5e3b-8307-01289db8d1a9",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object 345fdca9-038f-51e2-9bea-b6ac416a734a",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object 448815cc-4127-54b7-96bf-e54b3d2a38c5",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object 48115ff7-7aca-5d0b-a9e7-7fc6c78434ef",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object 5a30273a-98d5-5163-bb16-c250b7ed4e7f",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object 882630ba-815c-5c6b-868c-2e6cd7eef459",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object 9e3fae29-84d5-5600-bfb3-82d49ea3f1b5",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object a44af1fa-5988-5b7d-b206-691c6bbf7dd4",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object c8844ac6-c414-5a0e-9fcd-7d0a82177d09",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object e0944fbb-0761-5f9c-afaa-3d4713ed1bed",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object fd7977bf-1d8e-5c5e-9c37-bd76bb2ffeef",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object 0278a515-8990-5a1c-8a1b-a03382a144a3",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object 2652caef-b557-58b9-9b28-70db62625ce5",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object 8721d943-8368-5304-bd3c-7d7944099662",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object dfbccd62-1203-5d1b-927d-65a4ca41bbad",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object d72cbb62-0b65-5b9a-aece-70c23d4e618a",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object 87d8cc68-fe82-5273-9e43-c18b566ecb6c",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object 64b03eff-a967-54a1-ace3-89cb7650a65c",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object 707998c1-872d-582d-a2d6-14e7d967cbdb",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object 3eb2a06c-d283-57aa-9eb4-088940c4801a",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object 0959eef2-3c7d-5b33-a109-ddf332a5dbd9",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object 8b98d8ba-65c6-58d7-92f0-45f4b2456573",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object ac8b6c0f-98b2-5092-806d-d9498efbfa35",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object 38e30bb9-6145-5da0-80b8-36e3c45e15d0",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object 9f892457-c4e5-56da-830c-bf6cac0c98d7",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object c21a611c-1069-5b32-b673-4f37a89b094f",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object 02634fdd-c8ba-591a-b240-77129b1bebb8",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object 1bdaf7f2-ff3b-455a-a7fb-95a44642762a",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object 7f140b34-ed26-59e7-8ad2-ccb6b56bc9d6",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object 7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object 8ceb1749-fce0-584f-a2b8-0a309282329a",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object d2ccd1d5-56f7-583f-9724-e97441367f91",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object 5338b54c-68bc-5892-907c-e025351ffde6",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object 8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object 31cce65a-480a-5111-ab3c-da2feb3d4065",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object abfa609d-9764-5bd8-999c-1d10a7eeac78",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Exact selected profile object 04ebfc99-dbac-539e-95db-642addcaca8c",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "P materialization count439 baseline45 overrides3 appended=442 unique",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "All13 actual wholeLower profile selections match finalv3 including5 deliberately retained complete profiles",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Clarified5338 whole goal exact v3",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "New04eb whole goal exactv3 except separately reviewed image resource",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "04eb resource names actual retainedPNG; normal import remains pending",
+      "pass": true,
+      "details": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-04eb-resource-conservation-image-author-20261017-v1/04ebfc99-dbac-539e-95db-642addcaca8c.png",
+        "sha256": "62e4a4470d0b90e506157ba9656ce5b253aea153d4af2ec46db5246502d0c7a1",
+        "bytes": 2031705
+      }
+    },
+    {
+      "check": "Only7 existing P whole bodies changed relative selected441 plus one newLower P",
+      "pass": true,
+      "details": [
+        "1bdaf7f2-ff3b-455a-a7fb-95a44642762a",
+        "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566",
+        "7f140b34-ed26-59e7-8ad2-ccb6b56bc9d6",
+        "7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6",
+        "d2ccd1d5-56f7-583f-9724-e97441367f91",
+        "5338b54c-68bc-5892-907c-e025351ffde6",
+        "8ceb1749-fce0-584f-a2b8-0a309282329a"
+      ]
+    },
+    {
+      "check": "Source31 operativeE2 locator intentionallyv2/cases6 and entirecase equalsv3; no v1 masked actor",
+      "pass": true,
+      "details": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-HB-lower14-current-whole-union-author-20261017-v2/materials/HB-lower14-ten-complete-DE-EN-cases.pending.json",
+          "sha256": "5456e37ae4df190a49e9aa1820d6c9580c9b46f8baa03e02a040dfe53125834b",
+          "bytes": 67300,
+          "jsonPointer": "/cases/6",
+          "objectSHA256": "e32e592675280a824b225e52e112db84d9cec0964d8f5931a378de6ce0bbcba1"
+        }
+      ]
+    },
+    {
+      "check": "14 exact current carrier unions match author and both actual FIRST objects; all15newedges partial",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "TargetedA/B actualv3 successor decisions resolve5338 and source31 rather than historicalFIRSTrewrite",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "42 decisions95 edges with unaffected28 decisions and every unmodified mapping byte-equivalent as parsed objects",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "42 sourceIDs topicCodes sourceSpans unchanged",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "NewM 31cce65a-480a-5111-ab3c-da2feb3d4065 actualtwo scientific M bodies exact",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "NewM abfa609d-9764-5bd8-999c-1d10a7eeac78 actualtwo scientific M bodies exact",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "M04eb selects actual separate currentB-M, not initial P record",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "M04eb A has explicit scientificMemoryDecision",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Actual442 M selected IDs and counts66 memory_required376 no_memory_needed",
+      "pass": true,
+      "details": {
+        "memory_required": 66,
+        "no_memory_needed": 376
+      }
+    },
+    {
+      "check": "Actual002 entirecard exact reviewed finalDecks80 object and retainedCards80 fingerprint witness",
+      "pass": true,
+      "details": {
+        "cardObjectSHA256": "da356d5a466de17b7794fc745d50125c2c837b2663ba973cae274bff245e9ef9",
+        "previousPublishedRuleTechnicalWitness": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-Cards80-portable-reviewed-decks-input-selection-technical-20261017-v1/DECKS80.portable-input-selection.json",
+          "sha256": "d6e7375c4460c5be08f9c4fe07a4f66d6625d233ef9ff97e5a976b3106667c9e",
+          "bytes": 349971
+        }
+      }
+    },
+    {
+      "check": "Actual002 route tags and selection e3e8582a-976b-5f0f-b31b-3cf59a4fff24",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Actual002 route tags and selection 98781dda-8049-5173-899b-42a5c2902b86",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Actual002 route tags and selection f6d7386c-dda4-501d-84da-0c881362e724",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "0959 current genuine pairedwholeM and three actual same-card access decisions; no triple completion quota",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Historical0959author/noadditional-rationale is separate from freshcurrentwholeM",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "No active/source/native/M7/Human closure claimed by this audit or selectedplans",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "Required curriculum_symlink_errors helper only",
+      "pass": true,
+      "details": []
+    }
+  ],
+  "remainingBoundaries": [
+    "EightHBprior and final four-view selection still pending; no new conclusion on those from this technical audit.",
+    "Final native SEM/D/P/A/M/V/page/context bindings and normal imports remain separate.",
+    "Actual002 supports three alternative existing access references; no three ordinary completion quotas and no claims that unrelated broader route cards are0959 duties."
+  ],
+  "normalFilesChangedByAuditor": 0,
+  "rootOutputsChangedByAuditor": 0,
+  "newScientificApprovals": 0,
+  "buildsOrFullQA": false,
+  "M7": false,
+  "HumanApproval": false,
+  "HumanTrial": false,
+  "license": "Apache-2.0"
+}

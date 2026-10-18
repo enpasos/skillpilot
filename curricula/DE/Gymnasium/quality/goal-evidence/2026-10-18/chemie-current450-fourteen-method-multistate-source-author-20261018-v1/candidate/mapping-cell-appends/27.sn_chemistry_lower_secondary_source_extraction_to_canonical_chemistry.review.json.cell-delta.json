@@ -1,0 +1,104 @@
+{
+  "artifactRole": "INACTIVE_MAPPING_CELL_APPEND_AUTHOR_CANDIDATE",
+  "activation": "independent-review-required",
+  "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+  "beforeWholeFilePinForAuditNotGlobalCAS": {
+    "path": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+    "sha256": "3e1de59bf675324de710e91c7d296ecef5867ddec7cc2505271ae146df7d408d",
+    "bytes": 372065
+  },
+  "sourceExtractionPathAtAuthoring": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_CHEMIE_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+  "wholeUnrelatedRowsMustBePreserved": true,
+  "cellAppends": [
+    {
+      "pairAbsentExpectedBefore": {
+        "legacyGoalId": "sn-chem-seki-sn-ch-klassenstufe-9-wb3-069-01-3c09d58a",
+        "canonicalGoalId": "1351706f-4ea6-56e9-951b-87b24cbcdee8"
+      },
+      "mappingToAppend": {
+        "legacyGoalId": "sn-chem-seki-sn-ch-klassenstufe-9-wb3-069-01-3c09d58a",
+        "canonicalGoalId": "1351706f-4ea6-56e9-951b-87b24cbcdee8",
+        "matchType": "partial"
+      },
+      "boundedAuthorWitness": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-author-20261018-v1/CANDIDATE.one-hundred-four-direct-partial-contributions.inactive.json",
+        "jsonPointer": "/mappings/10"
+      },
+      "existingAuthoritativeSourceDecisionsCAS": [
+        {
+          "jsonPointer": "/decisions/128",
+          "wholeDecision": {
+            "sourceGoalId": "sn-chem-seki-sn-ch-klassenstufe-9-wb3-069-01-3c09d58a",
+            "topicCode": "SN-CH-klassenstufe-9-WB3",
+            "sourceSpan": "Klassenstufe 9, Ansetzen und Mischen von Lösungen, PDF-S. 31",
+            "decision": "mapped",
+            "canonicalGoalIds": [
+              "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+              "cf2631d9-da24-50e8-9e50-db625e6efaad",
+              "f1ed86f0-534d-57d7-8952-a004a331cc54"
+            ],
+            "rationale": "Das amtliche Chemie-Source-Ziel ist inhaltlich durch mehrere kanonische Chemieziele abgedeckt; 1:n beschreibt die Zuordnungsform, nicht eine offene Lücke.\nAktuelle unabhängig angenommene partielle Quellenbeziehung: Stoffmengen und Stockvolumina werden für HCl und Ca(OH)₂ berechnet; definierte Lösungen und pH müssen wirklich beaufsichtigt hergestellt/gemessen werden. Der ein-/zweiwertige Wechsel und die extreme Wassergrenze verhindern bloße Musterrechnung. Drei getrennte SN-Quellenanteile: Klasse9-Wahlbereich-Herstellung bleibt optional; Klasse10 Konzentrationsmaß; Jahrgang11 Grundkurs vollständige Protolyse. Kein zusätzlicher LK-, Digital-, Titrations- oder Sättigungskredit daraus. Teilumfang und tatsächliche Primärgrenze: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-single-state-forward-direct-source-informed-independent-b-20261018-v1/REVIEW.fifty-three-rows-sixty-nine-pairs.FIRST.informed-independent-b.json. Keine ganze Quellenfreigabe, neue D/P/A/M/V-Stimme oder Lernendenausführung.",
+            "reviewedAt": "2026-05-11",
+            "reviewer": "codex",
+            "matchType": "partial"
+          },
+          "sha256": "bc692a15ffbd9b34588bd784dd72833c6cd0dfb62ac723319bdfa20b7b31c030"
+        }
+      ],
+      "decisionIntegrationBoundary": "Following specific independent acceptance, merge this bounded partial target contribution into the current authoritative source decision without dropping other targets or promoting whole-source coverage. A prior whole-originalHOLD/REJECT is not automatically reversed. New operator cells require their own finite partial decision; old decision/whole-source history remains."
+    },
+    {
+      "pairAbsentExpectedBefore": {
+        "legacyGoalId": "sn-chemistry-seki-process-standard-kl7-ziel-sicherheit",
+        "canonicalGoalId": "4b6d1824-20e4-597e-b639-fae401f740f0"
+      },
+      "mappingToAppend": {
+        "legacyGoalId": "sn-chemistry-seki-process-standard-kl7-ziel-sicherheit",
+        "canonicalGoalId": "4b6d1824-20e4-597e-b639-fae401f740f0",
+        "matchType": "partial"
+      },
+      "boundedAuthorWitness": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-author-20261018-v1/CANDIDATE.one-hundred-four-direct-partial-contributions.inactive.json",
+        "jsonPointer": "/mappings/21"
+      },
+      "existingAuthoritativeSourceDecisionsCAS": [],
+      "decisionIntegrationBoundary": "Following specific independent acceptance, merge this bounded partial target contribution into the current authoritative source decision without dropping other targets or promoting whole-source coverage. A prior whole-originalHOLD/REJECT is not automatically reversed. New operator cells require their own finite partial decision; old decision/whole-source history remains."
+    },
+    {
+      "pairAbsentExpectedBefore": {
+        "legacyGoalId": "sn-chemistry-seki-process-standard-kl7-lb1-simple-experiments",
+        "canonicalGoalId": "e81a4aed-9695-533e-8eb7-7a0c714346ea"
+      },
+      "mappingToAppend": {
+        "legacyGoalId": "sn-chemistry-seki-process-standard-kl7-lb1-simple-experiments",
+        "canonicalGoalId": "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+        "matchType": "partial"
+      },
+      "boundedAuthorWitness": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-author-20261018-v1/CANDIDATE.one-hundred-four-direct-partial-contributions.inactive.json",
+        "jsonPointer": "/mappings/55"
+      },
+      "existingAuthoritativeSourceDecisionsCAS": [],
+      "decisionIntegrationBoundary": "Following specific independent acceptance, merge this bounded partial target contribution into the current authoritative source decision without dropping other targets or promoting whole-source coverage. A prior whole-originalHOLD/REJECT is not automatically reversed. New operator cells require their own finite partial decision; old decision/whole-source history remains."
+    },
+    {
+      "pairAbsentExpectedBefore": {
+        "legacyGoalId": "sn-chemistry-seki-process-standard-kl7-ziel-umgang-entsorgung",
+        "canonicalGoalId": "805a2f58-29ce-55d0-8a85-42ee486239b3"
+      },
+      "mappingToAppend": {
+        "legacyGoalId": "sn-chemistry-seki-process-standard-kl7-ziel-umgang-entsorgung",
+        "canonicalGoalId": "805a2f58-29ce-55d0-8a85-42ee486239b3",
+        "matchType": "partial"
+      },
+      "boundedAuthorWitness": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-author-20261018-v1/CANDIDATE.one-hundred-four-direct-partial-contributions.inactive.json",
+        "jsonPointer": "/mappings/69"
+      },
+      "existingAuthoritativeSourceDecisionsCAS": [],
+      "decisionIntegrationBoundary": "Following specific independent acceptance, merge this bounded partial target contribution into the current authoritative source decision without dropping other targets or promoting whole-source coverage. A prior whole-originalHOLD/REJECT is not automatically reversed. New operator cells require their own finite partial decision; old decision/whole-source history remains."
+    }
+  ],
+  "wholeFileReplacement": false,
+  "wholeSourceCredit": false
+}

@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-006-v1-resolution-bbe038e9-86ed-5ec6-ab33-316758ddb16d",
+  "goal": {
+    "goalId": "bbe038e9-86ed-5ec6-ab33-316758ddb16d",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:8e0ac4d258392a934efea412757ec12bef301175362bc485e28a880598c6e912",
+    "pageFingerprint": "sha256:6c3f75b7ceed4cd9a855c439d1e6d638abcfb99b9310d1e58e87b3214e3cf17d",
+    "goalReviewContextFingerprint": "sha256:28817b0ba2139b9f3d910358e709c217d4f33d0b61780db6501e71c09897dfcd",
+    "finalText": {
+      "titleDe": "Elektronenpaarbindung mit Orbitalüberlappung erklären",
+      "titleEn": "Explain covalent bonding using orbital overlap",
+      "descriptionDe": "Die lernende Person kann den Zusammenhalt von Atomen in Molekülen im einfachen Elektronenpaarbindungsmodell durch Überlagerung einfach besetzter Orbitale erklären.",
+      "descriptionEn": "The learner can explain the cohesion of atoms in molecules in the simple electron-pair bonding model through the overlap of singly occupied orbitals."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-006-v1-a",
+      "campaignDigest": "sha256:fac08f3e3e72b3fd65ead31deeafeff62268bea1795f229f19ce85a234e57356",
+      "roundId": "chemie-final-current-context-d-006-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-006-v1-independent-a",
+      "reviewInputFingerprint": "sha256:738c48a5d1a135a764fe483a52f078a241f0f4149b0c7e6ce492ebd53c660d26",
+      "goalReviewContextFingerprint": "sha256:28817b0ba2139b9f3d910358e709c217d4f33d0b61780db6501e71c09897dfcd",
+      "batchId": "chemie-final-current-context-d-006-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch006-20261018",
+      "runManifestDigest": "sha256:419ac41027d7c6085c20a41a7aab2cc5ee3abf5e395b843a596d9b21dbec3d58",
+      "resultsDigest": "sha256:cb07854e0ea40039098f3d266438ec683a808fb475249442535af494ff91bdbe",
+      "recordId": "codex-reviewer-a-final163-batch006-20261018.006",
+      "recordDigest": "sha256:923c2773b3e92c09d507f8e3ab5a154ef25d72331685cf8bce27ca2411770c46"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-006-v1-b",
+      "campaignDigest": "sha256:e6860f2b3431737a13818dccb510d68b769ac8de8183a266a418614495ba524a",
+      "roundId": "chemie-final-current-context-d-006-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-006-v1-independent-b",
+      "reviewInputFingerprint": "sha256:738c48a5d1a135a764fe483a52f078a241f0f4149b0c7e6ce492ebd53c660d26",
+      "goalReviewContextFingerprint": "sha256:28817b0ba2139b9f3d910358e709c217d4f33d0b61780db6501e71c09897dfcd",
+      "batchId": "chemie-final-current-context-d-006-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-006-20261018",
+      "runManifestDigest": "sha256:f5dff68c2824391cbd358b0efcda18f60656322f44c47dd579639b30eb8f1789",
+      "resultsDigest": "sha256:1905ddcd08914170e96a8288a0308e1390cdf5eb3bbb2c7eb917107830344a7f",
+      "recordId": "chemie-final163-native-b-006-20261018:bbe038e9-86ed-5ec6-ab33-316758ddb16d",
+      "recordDigest": "sha256:95eca2eba5844932ac9adca903808bdacdc08cf87f672621e4836eb63ad3fce0"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:c423e5d81f53d59095437ae568e0caca6a758058bafd394031ce2cb0f01fc495"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-006-20261018-v1",
+    "manifestDigest": "sha256:841af7f6a231319d70d92e84fb977818248d5825b592e050c63ab4be72fe9634",
+    "manifestFingerprint": "sha256:8a70d3defa5ac0d85b5224774db191bed348f860796a294e7732ed4830512bfe",
+    "decisionId": "chemie-final163-paired-D-only-006-20261018-v1-decision-006"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-006-20261018-v1-decision-006",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:35:51.247Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch006-20261018.006): Die bilingualen Fassungen binden die Erklärung an ein einfaches Modell. Das ganze P erklärt Paarbesetzung und Abstand statt Wolkenkontakt und beansprucht keine universelle Entstehungsregel einschließlich koordinativer Bindungen. B (chemie-final163-native-b-006-20261018:bbe038e9-86ed-5ec6-ab33-316758ddb16d): Die deutsche und englische Beschreibung begrenzen sich ausdrücklich auf das einfache Modell und machen daraus keine universelle Entstehungsregel aller Bindungen. Das P konkretisiert H2 und einen echten HCl-Transfer einschließlich Abstoßung, Abstand und nichtbindenden Paaren. Damit ist die Sek-I-Kompetenz vor der Valenzstrich-Abrufkompetenz prüfbar, ohne exakte Bindungsenergien oder koordinative Bindungen hinzuzufügen.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch006-20261018.006; chemie-final163-native-b-006-20261018:bbe038e9-86ed-5ec6-ab33-316758ddb16d). Their current English understanding evidence is retained: A: Suitable singly occupied orbitals can form a shared bonding pair; attraction and repulsion yield a favourable nuclear separation. B: In the simple bonding model, suitable overlapping singly occupied orbitals can form a shared electron pair; attraction and repulsion give a favourable internuclear distance. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Passende einfach besetzte Orbitale können ein gemeinsames bindendes Paar bilden; Anziehung und Abstoßung ergeben günstigen Kernabstand.",
+      "essentialUnderstandingEn": "Suitable singly occupied orbitals can form a shared bonding pair; attraction and repulsion yield a favourable nuclear separation.",
+      "observablePerformanceDe": "Erklärt H2-Überlappung und Energieminimum und korrigiert näher gleich immer stabiler.",
+      "observablePerformanceEn": "Explains H2 overlap and energy minimum and corrects closer equals always more stable.",
+      "transferExpectationDe": "Überträgt auf H-Cl mit übrigen nichtbindenden Paaren und benennt Grenzen gegenüber vollständiger MO-/Energieberechnung.",
+      "transferExpectationEn": "Transfers to H-Cl with remaining nonbonding pairs and states limits relative to complete MO/energy calculations."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-17f0a25551ec90d7eea58d80551fd6ba0e0bcf6d7462733f0e74acecf9daa96d",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:7d3f3e6aec837b9279d26ee961d76677cd52eeded3124ac5bb2c0c7838e1364e"
+}

@@ -1,0 +1,33 @@
+{
+  "artifactRole": "INACTIVE_MAPPING_CELL_APPEND_AUTHOR_CANDIDATE",
+  "activation": "independent-review-required",
+  "mappingPath": "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+  "beforeWholeFilePinForAuditNotGlobalCAS": {
+    "path": "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+    "sha256": "ce11984dc98d6e30032500d7ac57bf0b88f28e10a9f60525a24118b428ef08da",
+    "bytes": 486075
+  },
+  "sourceExtractionPathAtAuthoring": "curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_CHEMIE_SEKI_LEHRPLAN_GYMNASIUM_2024.source-extraction.json",
+  "wholeUnrelatedRowsMustBePreserved": true,
+  "cellAppends": [
+    {
+      "pairAbsentExpectedBefore": {
+        "legacyGoalId": "th-chemistry-seki-process-standard-b-2-3",
+        "canonicalGoalId": "4b6d1824-20e4-597e-b639-fae401f740f0"
+      },
+      "mappingToAppend": {
+        "legacyGoalId": "th-chemistry-seki-process-standard-b-2-3",
+        "canonicalGoalId": "4b6d1824-20e4-597e-b639-fae401f740f0",
+        "matchType": "partial"
+      },
+      "boundedAuthorWitness": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-author-20261018-v1/CANDIDATE.one-hundred-four-direct-partial-contributions.inactive.json",
+        "jsonPointer": "/mappings/23"
+      },
+      "existingAuthoritativeSourceDecisionsCAS": [],
+      "decisionIntegrationBoundary": "Following specific independent acceptance, merge this bounded partial target contribution into the current authoritative source decision without dropping other targets or promoting whole-source coverage. A prior whole-originalHOLD/REJECT is not automatically reversed. New operator cells require their own finite partial decision; old decision/whole-source history remains."
+    }
+  ],
+  "wholeFileReplacement": false,
+  "wholeSourceCredit": false
+}

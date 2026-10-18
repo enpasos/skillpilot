@@ -1,0 +1,106 @@
+{
+  "artifactRole": "ACTUAL_THREE_FROZEN_ORIGINAL_READONLY_SOURCE_CHECKS",
+  "atUTC": "2026-10-18T04:01:57.181906+00:00",
+  "executor": "/root/chemie450_caption1_native_fresh_b",
+  "tool": "OpenAI Codex",
+  "modelRevision": null,
+  "authorization": "Parent SOURCE-FREEZE-GO received after final A-MVP002 normal3-file completion; no source write phase remained.",
+  "scope": "Exactly the three requested original npm scripts, using unmodified app/package.json and entry scripts.",
+  "status": "THREE_REQUESTED_COMMANDS_EXIT_ZERO",
+  "runs": [
+    {
+      "scriptName": "check:source-landscape-registry",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:source-landscape-registry"
+      ],
+      "packageScriptExact": "tsx scripts/checkSourceLandscapeRegistry.ts",
+      "startUTC": "2026-10-18T04:01:19.595355+00:00",
+      "endUTC": "2026-10-18T04:01:20.149359+00:00",
+      "actualWallDurationNs": 553971989,
+      "actualWallDurationSeconds": 0.553971989,
+      "exitCode": 0,
+      "rawLog": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-frozen-three-source-readonly-checks-technical-20261018-v1/check-source-landscape-registry.stdout-stderr.raw.txt",
+        "sha256": "9f4a9ce2fc283b40c2c04ac14af9fb64db7893d7695fc82afe1488c7ebb17653",
+        "bytes": 162
+      }
+    },
+    {
+      "scriptName": "test:repository-source-availability",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "test:repository-source-availability"
+      ],
+      "packageScriptExact": "tsx scripts/testRepositorySourceAvailability.ts",
+      "startUTC": "2026-10-18T04:01:19.597476+00:00",
+      "endUTC": "2026-10-18T04:01:20.129597+00:00",
+      "actualWallDurationNs": 532098212,
+      "actualWallDurationSeconds": 0.532098212,
+      "exitCode": 0,
+      "rawLog": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-frozen-three-source-readonly-checks-technical-20261018-v1/test-repository-source-availability.stdout-stderr.raw.txt",
+        "sha256": "9145a48d5379796eeaaad839a16dc67775d0a89539cf9ec5ee818c5336e31e8d",
+        "bytes": 222
+      }
+    },
+    {
+      "scriptName": "test:source-extraction-inventory",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "test:source-extraction-inventory"
+      ],
+      "packageScriptExact": "tsx scripts/testSourceExtractionInventory.ts",
+      "startUTC": "2026-10-18T04:01:19.597513+00:00",
+      "endUTC": "2026-10-18T04:01:20.783443+00:00",
+      "actualWallDurationNs": 1185913210,
+      "actualWallDurationSeconds": 1.18591321,
+      "exitCode": 0,
+      "rawLog": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-frozen-three-source-readonly-checks-technical-20261018-v1/test-source-extraction-inventory.stdout-stderr.raw.txt",
+        "sha256": "3e010853b52c26add373bb1b1f85bc3740fa3c4f552e21f4758071d59c4c799e",
+        "bytes": 195
+      }
+    }
+  ],
+  "executionRecords": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-frozen-three-source-readonly-checks-technical-20261018-v1/RUN.check-source-landscape-registry.json",
+      "sha256": "ca6643d0c5890cee6e7f393a012dbfc3febf0a1c0f0affae2f15cee30b214afa",
+      "bytes": 1908
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-frozen-three-source-readonly-checks-technical-20261018-v1/RUN.test-repository-source-availability.json",
+      "sha256": "b75eedefd9d4722556db6a847986b010a73d912706349d35b54927dbb16c6f3f",
+      "bytes": 1936
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-frozen-three-source-readonly-checks-technical-20261018-v1/RUN.test-source-extraction-inventory.json",
+      "sha256": "30d274a1cfc9e11fc244415df8c45d41b33d517bb2b0210d1ed3bbb40ffb9d6d",
+      "bytes": 1917
+    }
+  ],
+  "findings": [
+    "Source landscape registry check passed (302 registry entries).",
+    "Repository source availability tests passed: tracked inputs, ignored caches, literal paths and standalone sources.",
+    "Source-extraction component inventory and conservative explicit-reference regressions passed."
+  ],
+  "packageAndOriginalEntryScriptsUnchanged": true,
+  "originalCommandsExecuted": 3,
+  "extraRepositoryTestsOrChecks": 0,
+  "APCompilerGlobalBuildRuns": 0,
+  "normalSourceOrPOrCOrViewEditsByThisTask": 0,
+  "newScientificOrNativeVotes": 0,
+  "humanApprovalOrLearnerExecutionClaim": false,
+  "newM7OrCIPassClaim": false,
+  "parallelOtherAgentResultsNotClaimed": true
+}

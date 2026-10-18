@@ -1,0 +1,169 @@
+{
+  "retainedOriginalFailureAndRuns": true,
+  "initialInputs": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "sha256": "35f6c9dc6f7d51c4d9de0f0199b3d28d8eb123207c39f0e4d1994d2b1f9e974d",
+      "bytes": 3384774
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-book-publication/chemie.semantic-kinds.json",
+      "sha256": "30827006814f3c507e79d153dce30fc7d93b250a9fb1959da5745660fd2974f6",
+      "bytes": 211056
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/chemie.qa.json",
+      "sha256": "954a21ecd3c93c77d5ceb5d254eb0520be365dc7d56d2a6a70540a744c107284",
+      "bytes": 1372052
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "sha256": "5e60940b676fa7b601d64dbeb7ead5a97f14db4d681c4ee5ea295aa84e54dbd4",
+      "bytes": 661050
+    }
+  ],
+  "actualAfterMConfigInputs": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "sha256": "35f6c9dc6f7d51c4d9de0f0199b3d28d8eb123207c39f0e4d1994d2b1f9e974d",
+      "bytes": 3384774
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-book-publication/chemie.semantic-kinds.json",
+      "sha256": "30827006814f3c507e79d153dce30fc7d93b250a9fb1959da5745660fd2974f6",
+      "bytes": 211056
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/chemie.qa.json",
+      "sha256": "954a21ecd3c93c77d5ceb5d254eb0520be365dc7d56d2a6a70540a744c107284",
+      "bytes": 1372052
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "sha256": "5539a6f6f8ac43e8f080decaf84b4ffda7a2a72b2721ba348d82e6a17e096021",
+      "bytes": 661093
+    }
+  ],
+  "finalResults": [
+    {
+      "id": "schemas",
+      "argv": [
+        "python",
+        "scripts/validate_schemas.py"
+      ],
+      "exitCode": 0,
+      "seconds": 217.47,
+      "log": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/final-readonly-gates447-v1/schemas.actual.log"
+    },
+    {
+      "id": "goal-uuids",
+      "argv": [
+        "python",
+        "scripts/validate_goal_ids_uuid.py"
+      ],
+      "exitCode": 0,
+      "seconds": 2.28,
+      "log": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/final-readonly-gates447-v1/goal-uuids.actual.log"
+    },
+    {
+      "id": "graph",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "validate:graph"
+      ],
+      "exitCode": 0,
+      "seconds": 3.41,
+      "log": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/final-readonly-gates447-v1/graph.actual.log"
+    },
+    {
+      "id": "view-filters",
+      "exitCode": 0,
+      "seconds": 19.48,
+      "log": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/final-readonly-gates447-v1/view-filters.after-M-scope-fix.actual.log"
+    },
+    {
+      "id": "composition",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "validate:composition-views"
+      ],
+      "exitCode": 0,
+      "seconds": 240.45,
+      "log": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/final-readonly-gates447-v1/composition.actual.log"
+    },
+    {
+      "id": "projection-roles",
+      "exitCode": 0,
+      "seconds": 21.25,
+      "log": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/final-readonly-gates447-v1/projection-roles.after-M-scope-fix.actual.log"
+    },
+    {
+      "id": "course-consistency",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "test:course-level-mapping-consistency"
+      ],
+      "exitCode": 0,
+      "seconds": 0.57,
+      "log": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/final-readonly-gates447-v1/course-consistency.actual.log"
+    },
+    {
+      "id": "source-registry",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:source-landscape-registry"
+      ],
+      "exitCode": 0,
+      "seconds": 0.52,
+      "log": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/final-readonly-gates447-v1/source-registry.actual.log"
+    },
+    {
+      "id": "repository-sources",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "test:repository-source-availability"
+      ],
+      "exitCode": 0,
+      "seconds": 0.51,
+      "log": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/final-readonly-gates447-v1/repository-sources.actual.log"
+    },
+    {
+      "id": "source-inventory",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "test:source-extraction-inventory"
+      ],
+      "exitCode": 0,
+      "seconds": 1.22,
+      "log": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/final-readonly-gates447-v1/source-inventory.actual.log"
+    },
+    {
+      "id": "memory-all",
+      "exitCode": 0,
+      "seconds": 6.66,
+      "log": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/final-readonly-gates447-v1/memory-all.after-M-scope-fix.actual.log"
+    }
+  ],
+  "allElevenPassed": true,
+  "rerunPolicy": "Only the three gates blocked by the concrete Memory config scope discrepancy were repeated. Other inputs are unchanged for their respective checked contracts.",
+  "centralDAndFiveGateM7StillPending": true,
+  "M7Claim": false
+}

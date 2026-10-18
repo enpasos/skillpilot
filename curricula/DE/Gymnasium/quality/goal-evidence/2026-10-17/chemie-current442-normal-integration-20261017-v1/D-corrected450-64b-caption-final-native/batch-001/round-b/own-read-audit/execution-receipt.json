@@ -1,0 +1,40 @@
+{
+  "reviewerTask": "/root/chemie450_caption1_native_fresh_b",
+  "provider": "OpenAI",
+  "model": "Codex, GPT-6 family; exact serving model identifier unavailable",
+  "modelRevision": "unknown",
+  "toolsUsed": [
+    "functions.exec",
+    "exec_command",
+    "view_image"
+  ],
+  "nativePDF": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/D-corrected450-64b-caption-final-native/batch-001/bundle/book.pdf",
+    "sha256": "sha256:8a7e5e4fcf59fa501ae891d1cc8f75c5565a27c4ab4bfde5a57e77ea2e0b91d7",
+    "physicalGoalPage": 3,
+    "logicalGoalPage": 1,
+    "renderCommand": "pdftoppm -f 3 -singlefile -png -r 180 <bound book.pdf> /tmp/chemie450-caption1-native-fresh-b-goalpage",
+    "rendererVersion": "pdftoppm 22.02.0",
+    "renderExitCode": 0,
+    "viewImageActuallyCalled": true,
+    "storedRender": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/D-corrected450-64b-caption-final-native/batch-001/round-b/own-read-audit/native-goalpage-physical3.png",
+    "renderSHA256": "sha256:b7c63d054485cfa2b043a761d0d155f89ca6d817ced81520c2e2b53fc4dc5e43",
+    "initialNavigation": "Physical page1 was rendered/viewed first and identified as the cover; the actual goal on physical page3 was then rendered/viewed."
+  },
+  "primarySourceImagesActuallyViewed": [
+    35,
+    37
+  ],
+  "completeProfileRead": true,
+  "completeGoalSpecificMaterialRead": true,
+  "actualTransferPresent": {
+    "baseline": "planar para amine donor / nitro acceptor coupled model, given spectra and protonation",
+    "freshChange": "vinyl –CH=CH– becomes saturated –CH2–CH2–, given330 nm; learner must justify loss of continuous pi coupling without erasing local chromophores",
+    "executionBoundary": "Available authored task and expectation only. No actual learner answer was supplied or invented. Withhold solution/rubric until independent work; do not reuse an already answered identical case as fresh."
+  },
+  "sourceWrites": "Only own round-b results and own-read-audit; temporary renderer files in /tmp",
+  "nodeVersion": "v20.20.2",
+  "stockValidator": "app/scripts/validateGoalDescriptionReviewCampaignResults.ts",
+  "structuredOutputStartedAt": "2026-10-18T00:47:20.076385Z",
+  "receiptAt": "2026-10-18T00:47:20.098808Z"
+}

@@ -1,0 +1,50 @@
+{
+  "artifactRole": "INACTIVE_MAPPING_CELL_APPEND_AUTHOR_CANDIDATE",
+  "activation": "independent-review-required",
+  "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/upper-secondary/sl_chemistry_upper_secondary_to_canonical_chemistry.json",
+  "beforeWholeFilePinForAuditNotGlobalCAS": {
+    "path": "curricula/DE/Gymnasium/mapping/DE-SL/upper-secondary/sl_chemistry_upper_secondary_to_canonical_chemistry.json",
+    "sha256": "13adeb20ba83ced2905867d2c68459dcce89b3befcb167dbf180733fa227414e",
+    "bytes": 863542
+  },
+  "sourceExtractionPathAtAuthoring": "curricula/DE/Gymnasium/input/SL/upper-secondary/source-extraction/DE_SL_CHEMIE_SEKII_GOS_2023_2025.source-extraction.json",
+  "wholeUnrelatedRowsMustBePreserved": true,
+  "cellAppends": [
+    {
+      "pairAbsentExpectedBefore": {
+        "legacyGoalId": "sl-chem-sekii-sl-ch-sekii-ep-nw-2024-p025-005-85dedac5",
+        "canonicalGoalId": "3c9bfa10-9a13-50cc-96c8-6213e28d6c54"
+      },
+      "mappingToAppend": {
+        "legacyGoalId": "sl-chem-sekii-sl-ch-sekii-ep-nw-2024-p025-005-85dedac5",
+        "canonicalGoalId": "3c9bfa10-9a13-50cc-96c8-6213e28d6c54",
+        "matchType": "partial"
+      },
+      "boundedAuthorWitness": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SL-three-method-source-remediation-author-successor-20261018-v1/CANDIDATE.three-direct-partial-contributions.INACTIVE.json",
+        "jsonPointer": "/mappings/1"
+      },
+      "existingAuthoritativeSourceDecisionsCAS": [],
+      "decisionIntegrationBoundary": "Only after explicit independent acceptance: preserve all old canonical targets/whole decision history; append this individually bounded partial contribution and current accepted witness without any whole-source promotion. If unrelated additive integration changes whole-file SHA, recheck this full decision cell and tuple absence instead of restoring a historical after-file."
+    },
+    {
+      "pairAbsentExpectedBefore": {
+        "legacyGoalId": "sl-chem-sekii-sl-ch-sekii-ep-spr-2024-p025-005-e022fbd2",
+        "canonicalGoalId": "3c9bfa10-9a13-50cc-96c8-6213e28d6c54"
+      },
+      "mappingToAppend": {
+        "legacyGoalId": "sl-chem-sekii-sl-ch-sekii-ep-spr-2024-p025-005-e022fbd2",
+        "canonicalGoalId": "3c9bfa10-9a13-50cc-96c8-6213e28d6c54",
+        "matchType": "partial"
+      },
+      "boundedAuthorWitness": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SL-three-method-source-remediation-author-successor-20261018-v1/CANDIDATE.three-direct-partial-contributions.INACTIVE.json",
+        "jsonPointer": "/mappings/2"
+      },
+      "existingAuthoritativeSourceDecisionsCAS": [],
+      "decisionIntegrationBoundary": "Only after explicit independent acceptance: preserve all old canonical targets/whole decision history; append this individually bounded partial contribution and current accepted witness without any whole-source promotion. If unrelated additive integration changes whole-file SHA, recheck this full decision cell and tuple absence instead of restoring a historical after-file."
+    }
+  ],
+  "wholeFileReplacement": false,
+  "wholeSourceCredit": false
+}

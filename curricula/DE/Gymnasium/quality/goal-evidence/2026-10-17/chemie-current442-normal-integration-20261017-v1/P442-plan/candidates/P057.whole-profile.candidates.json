@@ -1,0 +1,552 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "chemie-q4-thermodynamics-eleven-author-20261012-v2",
+  "reviewedAt": "2026-10-17T21:23:41.999975+00:00",
+  "reviewer": "Codex B technical current-input serialization; underlying scientific authors and reviewers remain recorded in the P442 selection/provenance",
+  "goals": [
+    {
+      "goalId": "0a5a49f2-8e8a-5edb-b6ca-3f8636957a17",
+      "reason": "Eigene vollständige DE/EN-Fälle mit konkreten Materialien, Daten, Modellantworten und fachlichen Rubriken; Quellenoperatoren bleiben bindend. E1/G1; keine Laborausführung/Lernendenleistung oder menschliche Annahme behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "expectation-particle-distribution-and-phase",
+            "essentialUnderstandingDe": "Realisierungsmöglichkeiten und chemisch/physikalisch korrekte Entropieabschätzung verbinden.",
+            "essentialUnderstandingEn": "Connect realisations with chemically/physically correct entropy estimates.",
+            "observablePerformanceDe": "Das 2+2-Makrobild besitzt mehr Mikrozustände als 4+0. Verdampfung erhöht typischerweise Energie-/Raumverteilungsmöglichkeiten; B ist ein physikalischer Vorgang, kein Stoffumsatz zu einer neuen chemischen Substanz. Bei C entsteht Gas aus Feststoffen; ΔS_System ist typischerweise positiv. Entropie ist eine Zustandsgröße für zugängliche Realisierungen/Energieverteilung, keine bloße Bild-Unordnung. Hydratation/Bindungen/Temperatur können die einfache Teilchenzahlheuristik begrenzen. Spontanität verlangt System plus Umgebung, also den zweiten Hauptsatz für die Gesamtbilanz.",
+            "observablePerformanceEn": "The 2+2 macrostate has more microstates than 4+0. Vaporisation typically increases energy/spatial distribution possibilities; B is a physical process, not formation of a new chemical substance. C generates gas from solids, typically giving positive ΔS_system. Entropy describes accessible realisations/energy distribution, not merely visual disorder. Hydration/bonding/temperature limit simple particle-count heuristics. Spontaneity requires system plus surroundings, applying the second law to the total balance."
+          },
+          {
+            "id": "expectation-standard-reaction-entropy",
+            "essentialUnderstandingDe": "Qualitative Entropieabschätzung mit stöchiometrischer Standardrechnung und Gesamtbilanz prüfen.",
+            "essentialUnderstandingEn": "Check qualitative entropy estimates with stoichiometric standard calculations and total balance.",
+            "observablePerformanceDe": "ΔrS°m=(39,8+213,8)-92,9=+160,7 J/(mol K); bei 0,20 mol +32,14 J/K. Die positive Richtung passt zur Gasbildung. Bei 298 K: ΔS_Umg≈-178300/298=-598,32 J/(mol K), Gesamt≈-437,62 J/(mol K); unter den angegebenen Zustandsannahmen läuft die Vorwärtsreaktion nicht freiwillig. Standardentropien der Elemente sind nicht generell null. Die Umgebung ist entscheidend; extrapolierte H/S-Werte und anderer CO2-Druck brauchen zusätzliche Bedingungen.",
+            "observablePerformanceEn": "ΔrS°m=(39.8+213.8)-92.9=+160.7 J/(mol K); for 0.20 mol, +32.14 J/K. This agrees with gas formation. At 298 K, ΔS_sur≈-178300/298=-598.32 J/(mol K), total≈-437.62 J/(mol K); the forward process is not spontaneous under the stated state assumptions. Elements' standard entropies are not generally zero. Surroundings matter; extrapolated H/S values and a different CO2 pressure require additional conditions."
+          },
+          {
+            "id": "expectation-endothermic-dissolution-distribution",
+            "essentialUnderstandingDe": "Verteilung, Gitter/Hydratation und Entropiebilanz im endothermen Gegenfall verknüpfen.",
+            "essentialUnderstandingEn": "Relate distributions, lattice/hydration and entropy balance in an endothermic contrast.",
+            "observablePerformanceDe": "ΔH=+20 kJ/mol; Wärme wird aus der Umgebung aufgenommen. ΔS_Umg=-20000/300=-66,67 J/(mol K), Gesamt=+13,33 J/(mol K), mit freiwilligem Ablauf vereinbar. Die vorgegebene positive Systemänderung kann durch zusätzliche Verteilungsmöglichkeiten beim Lösen erklärt werden; Hydratation ordnet lokal Wasser und kann entgegenwirken. Der Zahlenwert ist Stoff-/Bedingungsabhängig, kein allgemeines Gesetz über jedes Salz. Endotherm beschreibt Wärmeaufnahme, nicht Unmöglichkeit freiwilliger Reaktion.",
+            "observablePerformanceEn": "ΔH=+20 kJ/mol; heat comes from surroundings. ΔS_sur=-20000/300=-66.67 J/(mol K), total=+13.33 J/(mol K), consistent with spontaneity. Additional distributions on dissolution can explain the given positive system term; hydration locally orders water and may oppose it. Values depend on species/conditions, not a rule for every salt. Endothermic describes heat uptake, not impossibility of spontaneity."
+          },
+          {
+            "id": "expectation-endothermic-spontaneous-execution",
+            "essentialUnderstandingDe": "Einen tatsächlich ausgeführten endothermen Vorgang anhand der vollständigen Entropiebilanz erklären.",
+            "essentialUnderstandingEn": "Explain an actually executed endothermic change through the full entropy balance.",
+            "observablePerformanceDe": "Reale Durchführung, eigene T(t)-Daten, Leerprobe/Wiederholung und korrekt interpretierte Abkühlung sind erforderlich. Der Lösungsvorgang zeigt unter den tatsächlichen Bedingungen eine endotherme spontan ablaufende Veränderung; bloßes Rühren liefert keine direkte ΔS-Messung. Modell: ΔS_Umg=-19680/293,15≈-67,13 J/(mol K), ΔS_gesamt≈+12,87 J/(mol K), ΔG=19680-293,15·80=-3772 J/mol. Ein positiver Systementropiebeitrag kann den negativen Umgebungsbeitrag überwiegen. Sättigung, Hydratation und Zusammensetzung begrenzen die Übertragung; sämtliche Modellzahlen bleiben synthetisch.",
+            "observablePerformanceEn": "Actual execution, original T(t) data, blank/repeats and correctly interpreted cooling are required. Under the actual conditions dissolution provides an endothermic spontaneously occurring change; stirring does not directly measure ΔS. Model: ΔS_sur=-19680/293.15≈-67.13 J/(mol K), ΔS_total≈+12.87 J/(mol K), ΔG=19680-293.15·80=-3772 J/mol. Positive system entropy can outweigh negative surroundings entropy. Saturation, hydration and composition limit transfer; all model numbers remain synthetic."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "expectation-particle-distribution-and-phase",
+            "expectation-standard-reaction-entropy",
+            "expectation-endothermic-dissolution-distribution",
+            "expectation-endothermic-spontaneous-execution"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "chemically-relevant-conditions",
+            "textDe": "Die vollständig gebundenen Fälle wechseln Reaktion, Systemgrenze, Temperatur, Aggregatzustand, Stoffmengen-/Energiebasis, Messverfahren oder Zusammensetzung. Tatsächliche Durchführung bleibt dort erforderlich, wo der konkrete Quellenoperator sie verlangt.",
+            "textEn": "The bound cases vary reaction, system boundary, temperature, phase, amount/energy basis, method or composition. Actual execution remains required where the specific source operator demands it."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "particle-distribution-and-phase",
+            "taskDemandDe": "Autorenmodelle: A = vier unterscheidbare Teilchen in zwei gleichen Boxen, Verteilung 2+2 hat 6 Realisierungsmöglichkeiten, 4+0 hat 1. B = H2O(l)->H2O(g) bei geeigneten Bedingungen. C = CaCO3(s)->CaO(s)+CO2(g). Keine der Skizzen liefert absolute Entropien oder Reaktionsgeschwindigkeiten. Vergleiche Verteilungsmöglichkeiten, schätze ΔS_System für B/C ab und unterscheide physikalischen Phasenübergang von chemischer Reaktion. Erkläre, warum bloße sichtbare Unordnung oder Gaszahl allein keine sichere Gesamt-Spontanitätsaussage ist.",
+            "taskDemandEn": "Author models: A = four distinguishable particles in equal boxes; a 2+2 distribution has 6 realisations, 4+0 has 1. B = H2O(l)->H2O(g) under suitable conditions. C = CaCO3(s)->CaO(s)+CO2(g). The sketches give neither absolute entropies nor reaction rates. Compare distribution possibilities, estimate ΔS_system for B/C and distinguish a physical phase transition from a chemical reaction. Explain why visual disorder or gas count alone cannot establish overall spontaneity.",
+            "expectedPerformanceDe": "Das 2+2-Makrobild besitzt mehr Mikrozustände als 4+0. Verdampfung erhöht typischerweise Energie-/Raumverteilungsmöglichkeiten; B ist ein physikalischer Vorgang, kein Stoffumsatz zu einer neuen chemischen Substanz. Bei C entsteht Gas aus Feststoffen; ΔS_System ist typischerweise positiv. Entropie ist eine Zustandsgröße für zugängliche Realisierungen/Energieverteilung, keine bloße Bild-Unordnung. Hydratation/Bindungen/Temperatur können die einfache Teilchenzahlheuristik begrenzen. Spontanität verlangt System plus Umgebung, also den zweiten Hauptsatz für die Gesamtbilanz.",
+            "expectedPerformanceEn": "The 2+2 macrostate has more microstates than 4+0. Vaporisation typically increases energy/spatial distribution possibilities; B is a physical process, not formation of a new chemical substance. C generates gas from solids, typically giving positive ΔS_system. Entropy describes accessible realisations/energy distribution, not merely visual disorder. Hydration/bonding/temperature limit simple particle-count heuristics. Spontaneity requires system plus surroundings, applying the second law to the total balance.",
+            "understandingFocusDe": "Realisierungsmöglichkeiten und chemisch/physikalisch korrekte Entropieabschätzung verbinden.",
+            "understandingFocusEn": "Connect realisations with chemically/physically correct entropy estimates."
+          },
+          {
+            "id": "standard-reaction-entropy",
+            "taskDemandDe": "Gerundete Standarddaten als Aufgabenwerte bei 298 K: S°m[CaCO3(s)]=92,9; CaO(s)=39,8; CO2(g)=213,8 J/(mol K). Reaktion CaCO3(s)->CaO(s)+CO2(g); ΔrH°m=+178,3 kJ/mol. Routen mit Berechnungsoperator verlangen die Rechnung, nicht nur eine Gaszahl-Heuristik. Berechne ΔrS°m aus der vollständigen Stoffgleichung und vergleiche mit der qualitativen Abschätzung. Bestimme für 0,20 mol die nichtmolare Systemänderung. Prüfe mit ΔS_Umg≈-ΔH/T, ob positive Systementropie bei 298 K bereits Gesamt-Spontanität beweist.",
+            "taskDemandEn": "Rounded standard task data at 298 K: S°m[CaCO3(s)]=92.9; CaO(s)=39.8; CO2(g)=213.8 J/(mol K). Reaction CaCO3(s)->CaO(s)+CO2(g); ΔrH°m=+178.3 kJ/mol. Routes requiring calculation need arithmetic, not just gas counting. Calculate ΔrS°m from the complete equation and compare the qualitative estimate. Find the nonmolar system change for 0.20 mol. Use ΔS_sur≈-ΔH/T to assess whether positive system entropy at 298 K proves overall spontaneity.",
+            "expectedPerformanceDe": "ΔrS°m=(39,8+213,8)-92,9=+160,7 J/(mol K); bei 0,20 mol +32,14 J/K. Die positive Richtung passt zur Gasbildung. Bei 298 K: ΔS_Umg≈-178300/298=-598,32 J/(mol K), Gesamt≈-437,62 J/(mol K); unter den angegebenen Zustandsannahmen läuft die Vorwärtsreaktion nicht freiwillig. Standardentropien der Elemente sind nicht generell null. Die Umgebung ist entscheidend; extrapolierte H/S-Werte und anderer CO2-Druck brauchen zusätzliche Bedingungen.",
+            "expectedPerformanceEn": "ΔrS°m=(39.8+213.8)-92.9=+160.7 J/(mol K); for 0.20 mol, +32.14 J/K. This agrees with gas formation. At 298 K, ΔS_sur≈-178300/298=-598.32 J/(mol K), total≈-437.62 J/(mol K); the forward process is not spontaneous under the stated state assumptions. Elements' standard entropies are not generally zero. Surroundings matter; extrapolated H/S values and a different CO2 pressure require additional conditions.",
+            "understandingFocusDe": "Qualitative Entropieabschätzung mit stöchiometrischer Standardrechnung und Gesamtbilanz prüfen.",
+            "understandingFocusEn": "Check qualitative entropy estimates with stoichiometric standard calculations and total balance."
+          },
+          {
+            "id": "endothermic-dissolution-distribution",
+            "taskDemandDe": "Synthetischer endothermer Salz-Löseprozess bei 300 K: Gitterauftrennung +750 kJ/mol, Hydratation -730 kJ/mol, ΔS_System=+80 J/(mol K); bei konstantem Druck ausschließlich Wärmeaustausch. Es werden gelöste Ionen/Wasserteilchen betrachtet, keine chemische Identitätsänderung der Ionen. Erkläre, weshalb ein abkühlender Lösevorgang trotzdem freiwillig sein kann, berechne die System-/Umgebungsbilanz und erläutere die Grenzen der Aussage gelöste Ionen bedeuten immer mehr Entropie.",
+            "taskDemandEn": "Synthetic endothermic salt dissolution at 300 K: lattice separation +750 kJ/mol, hydration -730 kJ/mol, ΔS_system=+80 J/(mol K); constant pressure with heat transfer only. Consider dissolved ions/water molecules; ionic chemical identities do not change. Explain why a cooling dissolution can still be spontaneous, calculate system/surroundings balance and bound the claim that dissolved ions always imply higher entropy.",
+            "expectedPerformanceDe": "ΔH=+20 kJ/mol; Wärme wird aus der Umgebung aufgenommen. ΔS_Umg=-20000/300=-66,67 J/(mol K), Gesamt=+13,33 J/(mol K), mit freiwilligem Ablauf vereinbar. Die vorgegebene positive Systemänderung kann durch zusätzliche Verteilungsmöglichkeiten beim Lösen erklärt werden; Hydratation ordnet lokal Wasser und kann entgegenwirken. Der Zahlenwert ist Stoff-/Bedingungsabhängig, kein allgemeines Gesetz über jedes Salz. Endotherm beschreibt Wärmeaufnahme, nicht Unmöglichkeit freiwilliger Reaktion.",
+            "expectedPerformanceEn": "ΔH=+20 kJ/mol; heat comes from surroundings. ΔS_sur=-20000/300=-66.67 J/(mol K), total=+13.33 J/(mol K), consistent with spontaneity. Additional distributions on dissolution can explain the given positive system term; hydration locally orders water and may oppose it. Values depend on species/conditions, not a rule for every salt. Endothermic describes heat uptake, not impossibility of spontaneity.",
+            "understandingFocusDe": "Verteilung, Gitter/Hydratation und Entropiebilanz im endothermen Gegenfall verknüpfen.",
+            "understandingFocusEn": "Relate distributions, lattice/hydration and entropy balance in an endothermic contrast."
+          },
+          {
+            "id": "endothermic-spontaneous-execution",
+            "taskDemandDe": "Lehrkraftfreigegebener Versuch nach dem benannten Göttinger Salzlösungs-Kalorimeterverfahren: 1,095 g CaCl2·6H2O in 40,00 g Wasser, offenes isoliertes Gefäß, Temperatursonde, Waage, Rührer, Schutzbrille. Leerprobe Wasser, gleiche Anfangstemperatur, Wiederholung. Das Salz wird vollständig unterhalb der Sättigungsgrenze gelöst. Separates synthetisches Thermodynamikmodell bei 293,15 K: ΔH=+19,68 kJ/mol, ΔS_System=+80,0 J/(mol K); diese ΔS ist kein Messwert des Versuchs. Plane und führe den Versuch aus. Dokumentiere eigene Temperatur-Zeit-Rohdaten, Stoffzustände und den ohne dauernde äußere Wärmezufuhr ablaufenden Lösungsvorgang. Erkläre, warum endotherm einen spontanen Ablauf nicht ausschließt. Prüfe das separate Modell mit System-/Umgebungsentropie und ΔG; unterscheide qualitative Beobachtung von direkter Entropiemessung.",
+            "taskDemandEn": "Teacher-authorised experiment using the named Göttingen salt-dissolution calorimeter method: dissolve 1.095 g CaCl2·6H2O in 40.00 g water using an open insulated vessel, thermometer, balance, stirrer and goggles. Water blank, equal initial temperature and repeats. Completely dissolve below saturation. A separate synthetic thermodynamic model at 293.15 K gives ΔH=+19.68 kJ/mol and ΔS_system=+80.0 J/(mol K); this ΔS is not measured by the experiment. Plan and execute the experiment. Submit actual temperature/time data, states and dissolution occurring without continuous external heating. Explain why endothermic does not exclude spontaneous change. Evaluate the separate model through system/surroundings entropy and ΔG, distinguishing qualitative observation from direct entropy measurement.",
+            "expectedPerformanceDe": "Reale Durchführung, eigene T(t)-Daten, Leerprobe/Wiederholung und korrekt interpretierte Abkühlung sind erforderlich. Der Lösungsvorgang zeigt unter den tatsächlichen Bedingungen eine endotherme spontan ablaufende Veränderung; bloßes Rühren liefert keine direkte ΔS-Messung. Modell: ΔS_Umg=-19680/293,15≈-67,13 J/(mol K), ΔS_gesamt≈+12,87 J/(mol K), ΔG=19680-293,15·80=-3772 J/mol. Ein positiver Systementropiebeitrag kann den negativen Umgebungsbeitrag überwiegen. Sättigung, Hydratation und Zusammensetzung begrenzen die Übertragung; sämtliche Modellzahlen bleiben synthetisch.",
+            "expectedPerformanceEn": "Actual execution, original T(t) data, blank/repeats and correctly interpreted cooling are required. Under the actual conditions dissolution provides an endothermic spontaneously occurring change; stirring does not directly measure ΔS. Model: ΔS_sur=-19680/293.15≈-67.13 J/(mol K), ΔS_total≈+12.87 J/(mol K), ΔG=19680-293.15·80=-3772 J/mol. Positive system entropy can outweigh negative surroundings entropy. Saturation, hydration and composition limit transfer; all model numbers remain synthetic.",
+            "understandingFocusDe": "Einen tatsächlich ausgeführten endothermen Vorgang anhand der vollständigen Entropiebilanz erklären.",
+            "understandingFocusEn": "Explain an actually executed endothermic change through the full entropy balance."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "56115f9d-1d32-5454-94b1-00dbc4a7bc6f",
+      "reason": "Eigene vollständige DE/EN-Fälle mit konkreten Materialien, Daten, Modellantworten und fachlichen Rubriken; Quellenoperatoren bleiben bindend. E1/G1; keine Laborausführung/Lernendenleistung oder menschliche Annahme behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "expectation-empirical-ten-kelvin-rate",
+            "essentialUnderstandingDe": "Empirische RGT-Anwendung mit Stoßtheorie und Unsicherheit verbinden.",
+            "essentialUnderstandingEn": "Connect empirical RGT application, collision theory and uncertainty.",
+            "observablePerformanceDe": "Je 10 K Faktor 2,50; über 20 K Faktor 6,25. Im Bereich ist eine 2- bis 4-fache Erhöhung pro 10 K als häufige Faustregel plausibel. Höhere T verändert die Energieverteilung; mehr geeignet orientierte Stöße können die Aktivierungsbarriere überwinden, nicht jede Kollision ist wirksam. Eine exakte universelle Verdopplung folgt weder aus Stoßtheorie noch aus diesen Messunsicherheiten. Konzentration/Oberfläche/Reaktionsmechanismus und begrenzter Temperaturbereich müssen kontrolliert werden.",
+            "observablePerformanceEn": "Each 10 K gives factor 2.50; 20 K gives 6.25. A commonly observed 2–4-fold rise per 10 K is a plausible rule of thumb here. Higher T changes energy distribution; more suitably oriented collisions can overcome the activation barrier, but not every collision is effective. Neither collision theory nor uncertain data gives a universal exact doubling. Control concentration/surface/mechanism and restrict temperature range."
+          },
+          {
+            "id": "expectation-changed-mechanism-rate-limit",
+            "essentialUnderstandingDe": "Beim geänderten Mechanismus die Grenze der RGT-Näherung selbstständig prüfen.",
+            "essentialUnderstandingEn": "Independently assess RGT limits when the mechanism changes.",
+            "observablePerformanceDe": "Hypothetisch: 0,052×2,60=0,1352 mol/(L min), gemessenes Aufgabenmodell 0,012. Der Rückgang ist mit veränderter wirksamer Katalysatormenge/Reaktionsroute vereinbar; ein konstanter Faktor ist dafür nicht gültig. Gleiche Konzentrationen allein sichern keinen unveränderten Mechanismus. Test: Temperaturreihe unterhalb/oberhalb 318 K, Ausfall quantitativ dokumentieren und Referenz ohne ausfallenden Katalysator bzw. konstante aktive Menge kontrollieren. Die Beobachtung stützt eine Hypothese, beweist deren alleinige Ursache nicht; RGT ist kein Naturgesetz.",
+            "observablePerformanceEn": "Hypothetical prediction: 0.052×2.60=0.1352 mol/(L min), versus task observation 0.012. Reduced active catalyst/changed pathway can explain the decrease; a constant factor no longer applies. Equal concentrations alone do not ensure an unchanged mechanism. Test a temperature series across 318 K, quantify precipitation and compare a nonprecipitating reference or constant active catalyst amount. The observation supports a hypothesis, not a unique cause; RGT is not a universal law."
+          },
+          {
+            "id": "expectation-temperature-rate-execution",
+            "essentialUnderstandingDe": "Temperaturabhängige Reaktionsrate tatsächlich kontrolliert messen und begrenzt mit RGT erklären.",
+            "essentialUnderstandingEn": "Actually measure controlled temperature-dependent rates and explain them through bounded RGT.",
+            "observablePerformanceDe": "Vollpunkte verlangen eigene Planung/Ausführung, Temperatur- und Gasvolumenrohwerte, Kontrollen sowie begründete Anfangsraten. Synthetische Steigungen sind 0,20/0,40/0,80 mL/s, Faktoren je 10 K 2,00 und über 20 K 4,00. Bei identischem Gaszustand sind Volumenraten proportional zu Stoffmengenraten. Unterschiedliche Gas-T/p, Oxidschicht, schrumpfende Oberfläche, Leckage und exotherme Eigenerwärmung verfälschen den Vergleich. Eine wiederholte Modellverdopplung beweist keine universelle Regel; höhere T erhöht den Anteil energetisch geeigneter Stöße unter gleichen übrigen Bedingungen.",
+            "observablePerformanceEn": "Full credit requires an original plan/execution, actual temperature and gas-volume readings, controls and justified initial rates. Synthetic slopes are 0.20/0.40/0.80 mL/s, factors 2.00 per 10 K and 4.00 over 20 K. At equal gas states, volume rates are proportional to amount rates. Unequal gas T/p, oxide layer, shrinking surface, leaks and reaction self-heating can distort comparisons. Repeated model doubling does not prove a universal rule; higher T increases the sufficiently energetic collision fraction under otherwise equal conditions."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "expectation-empirical-ten-kelvin-rate",
+            "expectation-changed-mechanism-rate-limit",
+            "expectation-temperature-rate-execution"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "chemically-relevant-conditions",
+            "textDe": "Die vollständig gebundenen Fälle wechseln Reaktion, Systemgrenze, Temperatur, Aggregatzustand, Stoffmengen-/Energiebasis, Messverfahren oder Zusammensetzung. Tatsächliche Durchführung bleibt dort erforderlich, wo der konkrete Quellenoperator sie verlangt.",
+            "textEn": "The bound cases vary reaction, system boundary, temperature, phase, amount/energy basis, method or composition. Actual execution remains required where the specific source operator demands it."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "empirical-ten-kelvin-rate",
+            "taskDemandDe": "Synthetische Anfangsraten bei identischen Konzentrationen, Oberfläche und gleichem Verfahren: 293 K: 0,0100 mol/(L min); 303 K: 0,0250; 313 K: 0,0625. Unsicherheit ±5% je Rate. Temperaturänderung 10 K entspricht 10 °C Differenz, nicht 10 °C absolut. Berechne die Faktoren pro 10 K und über 20 K, wende die empirische RGT-Regel im Datenbereich an und erkläre mit Stoßtheorie/energetisch wirksamen Stößen, warum die Geschwindigkeit zunimmt. Prüfe die Aussage jede Reaktion verdoppelt sich exakt pro 10 K.",
+            "taskDemandEn": "Synthetic initial rates with identical concentrations/surface/method: 293 K: 0.0100 mol/(L min); 303 K: 0.0250; 313 K: 0.0625. Uncertainty ±5% per rate. A 10 K increase equals a 10 °C difference, not an absolute 10 °C temperature. Calculate factors per 10 K and across 20 K, apply the empirical RGT rule within the data range and explain the increase through collision theory/energetically effective collisions. Assess the claim that every reaction exactly doubles per 10 K.",
+            "expectedPerformanceDe": "Je 10 K Faktor 2,50; über 20 K Faktor 6,25. Im Bereich ist eine 2- bis 4-fache Erhöhung pro 10 K als häufige Faustregel plausibel. Höhere T verändert die Energieverteilung; mehr geeignet orientierte Stöße können die Aktivierungsbarriere überwinden, nicht jede Kollision ist wirksam. Eine exakte universelle Verdopplung folgt weder aus Stoßtheorie noch aus diesen Messunsicherheiten. Konzentration/Oberfläche/Reaktionsmechanismus und begrenzter Temperaturbereich müssen kontrolliert werden.",
+            "expectedPerformanceEn": "Each 10 K gives factor 2.50; 20 K gives 6.25. A commonly observed 2–4-fold rise per 10 K is a plausible rule of thumb here. Higher T changes energy distribution; more suitably oriented collisions can overcome the activation barrier, but not every collision is effective. Neither collision theory nor uncertain data gives a universal exact doubling. Control concentration/surface/mechanism and restrict temperature range.",
+            "understandingFocusDe": "Empirische RGT-Anwendung mit Stoßtheorie und Unsicherheit verbinden.",
+            "understandingFocusEn": "Connect empirical RGT application, collision theory and uncertainty."
+          },
+          {
+            "id": "changed-mechanism-rate-limit",
+            "taskDemandDe": "Neuer synthetischer temperaturabhängiger Prozess: 303 K Rate 0,020; 313 K 0,052; 323 K 0,012 mol/(L min). Konzentrationen und Messmethode gleich; unabhängiger Zusatzbefund: oberhalb 318 K fällt ein Katalysator teilweise aus. Für einen rein hypothetischen unveränderten Prozess wäre der erste Faktor 2,60 fortzusetzen. Berechne die hypothetische Vorhersage und vergleiche den konkreten neuen Befund. Erkläre den Gegensatz zur RGT-Näherung ohne Energieerhaltung oder Stoßtheorie zu verwerfen; schlage einen kontrollierten Test der Ausfallursache vor.",
+            "taskDemandEn": "New synthetic temperature-dependent process: 303 K rate 0.020; 313 K 0.052; 323 K 0.012 mol/(L min). Equal concentrations/method; an independent observation shows partial catalyst precipitation above 318 K. Hypothetically, with an unchanged process, the first factor 2.60 would continue. Calculate the hypothetical prediction and compare the new observation. Explain disagreement with RGT without rejecting energy conservation/collision theory and propose a controlled test of the precipitation explanation.",
+            "expectedPerformanceDe": "Hypothetisch: 0,052×2,60=0,1352 mol/(L min), gemessenes Aufgabenmodell 0,012. Der Rückgang ist mit veränderter wirksamer Katalysatormenge/Reaktionsroute vereinbar; ein konstanter Faktor ist dafür nicht gültig. Gleiche Konzentrationen allein sichern keinen unveränderten Mechanismus. Test: Temperaturreihe unterhalb/oberhalb 318 K, Ausfall quantitativ dokumentieren und Referenz ohne ausfallenden Katalysator bzw. konstante aktive Menge kontrollieren. Die Beobachtung stützt eine Hypothese, beweist deren alleinige Ursache nicht; RGT ist kein Naturgesetz.",
+            "expectedPerformanceEn": "Hypothetical prediction: 0.052×2.60=0.1352 mol/(L min), versus task observation 0.012. Reduced active catalyst/changed pathway can explain the decrease; a constant factor no longer applies. Equal concentrations alone do not ensure an unchanged mechanism. Test a temperature series across 318 K, quantify precipitation and compare a nonprecipitating reference or constant active catalyst amount. The observation supports a hypothesis, not a unique cause; RGT is not a universal law.",
+            "understandingFocusDe": "Beim geänderten Mechanismus die Grenze der RGT-Näherung selbstständig prüfen.",
+            "understandingFocusEn": "Independently assess RGT limits when the mechanism changes."
+          },
+          {
+            "id": "temperature-rate-execution",
+            "taskDemandDe": "Lehrkraftfreigegebene Autorenanpassung des RSC/Nuffield-Verfahrens Magnesium mit Salzsäure: identische gereinigte Mg-Bandstücke von etwa 0,0200 g, je 50,0 mL HCl 0,20 mol/L, Wasserbäder 293/303/313 K. Gasvolumen über Wasser oder freigängiger Gasspritze, Zeitmessung, Temperatursonde. Schutzbrille, keine Zündquelle (H2), keine abgeschlossene starre Druckapparatur. Säureüberschuss und gleiche Oberfläche gewährleisten; tatsächliche T laufend erfassen. Synthetische Vergleichsdaten bei gleichem Gas-Messzustand: t=[0,5,10,15] s; V_293=[0,1,2,3], V_303=[0,2,4,6], V_313=[0,4,8,12] mL. Formuliere eine Temperaturhypothese, plane Kontrollen/Wiederholungen und führe alle drei Messungen aus. Zeichne eigene V(t)-Kurven und bestimme vergleichbare Anfangssteigungen; rechne unterschiedliche Gas-Messzustände ggf. mit pV=nRT auf eine Basis um. Vergleiche 10-K-Faktoren mit RGT und Stoßtheorie. Prüfe separat die synthetische Tabelle; diese ersetzt keine Messung.",
+            "taskDemandEn": "Teacher-authorised author adaptation of the RSC/Nuffield magnesium/hydrochloric-acid method: identical cleaned Mg strips about 0.0200 g, 50.0 mL HCl 0.20 mol/L per run, water baths 293/303/313 K. Collect gas over water or in a freely moving syringe; stopwatch and thermometer. Goggles, no ignition source (H2), no closed rigid pressure vessel. Ensure excess acid and equal surface; continuously record actual T. Synthetic comparison at equal gas measurement conditions: t=[0,5,10,15] s; V_293=[0,1,2,3], V_303=[0,2,4,6], V_313=[0,4,8,12] mL. State a temperature hypothesis, plan controls/repeats and execute all three measurements. Plot original V(t) curves and compare initial slopes; if gas measurement states differ, use pV=nRT for a common basis. Compare 10 K factors with RGT/collision theory. Separately analyse the synthetic table; it does not replace measurements.",
+            "expectedPerformanceDe": "Vollpunkte verlangen eigene Planung/Ausführung, Temperatur- und Gasvolumenrohwerte, Kontrollen sowie begründete Anfangsraten. Synthetische Steigungen sind 0,20/0,40/0,80 mL/s, Faktoren je 10 K 2,00 und über 20 K 4,00. Bei identischem Gaszustand sind Volumenraten proportional zu Stoffmengenraten. Unterschiedliche Gas-T/p, Oxidschicht, schrumpfende Oberfläche, Leckage und exotherme Eigenerwärmung verfälschen den Vergleich. Eine wiederholte Modellverdopplung beweist keine universelle Regel; höhere T erhöht den Anteil energetisch geeigneter Stöße unter gleichen übrigen Bedingungen.",
+            "expectedPerformanceEn": "Full credit requires an original plan/execution, actual temperature and gas-volume readings, controls and justified initial rates. Synthetic slopes are 0.20/0.40/0.80 mL/s, factors 2.00 per 10 K and 4.00 over 20 K. At equal gas states, volume rates are proportional to amount rates. Unequal gas T/p, oxide layer, shrinking surface, leaks and reaction self-heating can distort comparisons. Repeated model doubling does not prove a universal rule; higher T increases the sufficiently energetic collision fraction under otherwise equal conditions.",
+            "understandingFocusDe": "Temperaturabhängige Reaktionsrate tatsächlich kontrolliert messen und begrenzt mit RGT erklären.",
+            "understandingFocusEn": "Actually measure controlled temperature-dependent rates and explain them through bounded RGT."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "d4720a9a-65e2-5661-aaaa-c393d144419a",
+      "reason": "Eigene vollständige DE/EN-Fälle mit konkreten Materialien, Daten, Modellantworten und fachlichen Rubriken; Quellenoperatoren bleiben bindend. E1/G1; keine Laborausführung/Lernendenleistung oder menschliche Annahme behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "expectation-actual-boltzmann-curves",
+            "essentialUnderstandingDe": "Echte Verteilungsfigur über Fläche, Energiegrenze und konstante Teilchenzahl auswerten.",
+            "essentialUnderstandingEn": "Interpret an actual distribution plot using area, threshold and constant particle count.",
+            "observablePerformanceDe": "E_peak≈1,2471 bzw. 1,8707 kJ/mol; die wärmere Kurve ist breiter, ihr Maximum niedriger/weiter rechts, beide Gesamtflächen sind 1. Der normierte Flächenanteil über 15 kJ/mol ist bei 450 K größer, ohne dass alle Teilchen oberhalb liegen. Mehr energiereiche geeignete Kollisionen können höhere Reaktionsrate erklären. Fläche/Teilchenzahl darf nicht mit Kurvenhöhe verwechselt werden. Orientierung, Stoßhäufigkeit, Mechanismus und Reaktionspartner bleiben zusätzliche Bedingungen. Die CSV/Integrationsrechnung bindet die tatsächlichen Modellwerte. Konkrete Flächen: P300(E≥15)=0.00729; P450(E≥15)=0.04563.",
+            "observablePerformanceEn": "Peak energies are about 1.2471 and 1.8707 kJ/mol. The hotter curve is broader, with a lower/right-shifted peak; both total areas are 1. The fraction above 15 kJ/mol is greater at 450 K without putting every particle above it. More sufficiently energetic suitable collisions may explain a greater rate. Do not confuse area/particle fraction with curve height. Orientation, collision frequency, mechanism and partners remain additional conditions. The CSV/integration binds the actual model values. Concrete areas: P300(E≥15)=0.00729; P450(E≥15)=0.04563."
+          },
+          {
+            "id": "expectation-catalyst-threshold-transfer",
+            "essentialUnderstandingDe": "Verteilung unverändert halten und niedrigere Aktivierungsgrenze als anderen Weg deuten.",
+            "essentialUnderstandingEn": "Keep the distribution unchanged and interpret a lower threshold as an alternative pathway.",
+            "observablePerformanceDe": "Bei gleicher T bleibt f(E) samt Peak/Normierung unverändert. Die niedrigere Grenze 10 kJ/mol schließt mehr Teilchenenergiezustände ein als 15 kJ/mol; das ist eine Schwellen-/Wegänderung, keine Erwärmung. Die konkreten Flächen aus dem Integrationsbeleg werden verglichen. Eine vollständige Rate hängt zusätzlich von Orientierung/Präfaktoren, Konzentrationen und Mechanismus ab. Ein Katalysator ändert weder Reaktions-Gibbs-Energie noch Gleichgewichtskonstante; er ersetzt keinen thermodynamischen Antrieb. Konkrete Flächen bei300 K: P(E≥15)=0.00729; P(E≥10)=0.04563; Verhältnis≈6.261.",
+            "observablePerformanceEn": "At equal T, f(E), its peak and normalisation remain unchanged. The lower 10 kJ/mol threshold includes more energy states than 15 kJ/mol: pathway/threshold change, not heating. Compare the actual integrated areas in the receipt. Full rate also depends on orientation/prefactors, concentration and mechanism. Catalysis changes neither reaction Gibbs energy nor equilibrium constant and supplies no thermodynamic driving force. Concrete areas at300 K: P(E≥15)=0.00729; P(E≥10)=0.04563; ratio≈6.261."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "expectation-actual-boltzmann-curves",
+            "expectation-catalyst-threshold-transfer"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "chemically-relevant-conditions",
+            "textDe": "Die vollständig gebundenen Fälle wechseln Reaktion, Systemgrenze, Temperatur, Aggregatzustand, Stoffmengen-/Energiebasis, Messverfahren oder Zusammensetzung. Tatsächliche Durchführung bleibt dort erforderlich, wo der konkrete Quellenoperator sie verlangt.",
+            "textEn": "The bound cases vary reaction, system boundary, temperature, phase, amount/energy basis, method or composition. Actual execution remains required where the specific source operator demands it."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "actual-boltzmann-curves",
+            "taskDemandDe": "Gebundener Autorenplot und CSV: Maxwell-Boltzmann-Energieverteilung idealer Teilchen bei 300/450 K, gleiche Teilchenzahl, ∫f(E)dE=1; E in kJ/mol und f in (kJ/mol)^-1. Modell f(E)=2/sqrt(pi)·sqrt(E)/(RT)^(3/2)·exp(-E/(RT)), R=0,008314 kJ/(mol K). Aktivierungsgrenze E_a=15 kJ/mol. Die Verteilung ist eine berechnete Aufgabenfigur, keine Messung. Lies die tatsächlich beigefügten Kurven ab, vergleiche Maximum, Breite und Fläche oberhalb E_a. Berechne die Lage des Maximums mit E_peak=RT/2 und begründe den Temperatur-/Geschwindigkeitsbezug sowie die Grenzen einer Energiebereitschaftsprognose.",
+            "taskDemandEn": "Bound author plot/CSV: ideal-particle Maxwell-Boltzmann energy distributions at 300/450 K, equal particle numbers and ∫f(E)dE=1; E in kJ/mol, f in (kJ/mol)^-1. Model f(E)=2/sqrt(pi)·sqrt(E)/(RT)^(3/2)·exp(-E/(RT)); R=0.008314 kJ/(mol K). Threshold E_a=15 kJ/mol. This computed task figure is not a measurement. Read the actual attached curves and compare peak, width and area above E_a. Calculate the peak energy with E_peak=RT/2 and explain temperature/rate relations plus limits of energy-readiness predictions.",
+            "expectedPerformanceDe": "E_peak≈1,2471 bzw. 1,8707 kJ/mol; die wärmere Kurve ist breiter, ihr Maximum niedriger/weiter rechts, beide Gesamtflächen sind 1. Der normierte Flächenanteil über 15 kJ/mol ist bei 450 K größer, ohne dass alle Teilchen oberhalb liegen. Mehr energiereiche geeignete Kollisionen können höhere Reaktionsrate erklären. Fläche/Teilchenzahl darf nicht mit Kurvenhöhe verwechselt werden. Orientierung, Stoßhäufigkeit, Mechanismus und Reaktionspartner bleiben zusätzliche Bedingungen. Die CSV/Integrationsrechnung bindet die tatsächlichen Modellwerte. Konkrete Flächen: P300(E≥15)=0.00729; P450(E≥15)=0.04563.",
+            "expectedPerformanceEn": "Peak energies are about 1.2471 and 1.8707 kJ/mol. The hotter curve is broader, with a lower/right-shifted peak; both total areas are 1. The fraction above 15 kJ/mol is greater at 450 K without putting every particle above it. More sufficiently energetic suitable collisions may explain a greater rate. Do not confuse area/particle fraction with curve height. Orientation, collision frequency, mechanism and partners remain additional conditions. The CSV/integration binds the actual model values. Concrete areas: P300(E≥15)=0.00729; P450(E≥15)=0.04563.",
+            "understandingFocusDe": "Echte Verteilungsfigur über Fläche, Energiegrenze und konstante Teilchenzahl auswerten.",
+            "understandingFocusEn": "Interpret an actual distribution plot using area, threshold and constant particle count."
+          },
+          {
+            "id": "catalyst-threshold-transfer",
+            "taskDemandDe": "Zweiter gebundener Plot nutzt dieselbe 300-K-Verteilung und zwei Grenzen: E_a=15 bzw. 10 kJ/mol. Die berechneten normierten Flächen werden im CSV/Integrationsbeleg angegeben. Ein Katalysator bietet im Modell einen alternativen Weg mit niedrigerem E_a; die Temperatur und Teilchenzahl bleiben gleich. Vergleiche die beiden tatsächlich markierten Integrationsflächen und widerlege ein Katalysator macht alle Teilchen heißer. Erläutere, welche Verteilungsgröße unverändert bleibt und warum der Flächenfaktor allein keine vollständige Rate oder Gleichgewichtslage liefert.",
+            "taskDemandEn": "Second bound plot uses the same 300 K distribution with thresholds E_a=15 or 10 kJ/mol. Computed normalised areas are given in the CSV/integration receipt. A catalyst offers an alternative lower-E_a path in this model; temperature and particle count remain unchanged. Compare the actual marked integration areas and reject the claim that a catalyst heats every particle. Explain what remains unchanged and why the area ratio alone gives neither a complete rate nor equilibrium position.",
+            "expectedPerformanceDe": "Bei gleicher T bleibt f(E) samt Peak/Normierung unverändert. Die niedrigere Grenze 10 kJ/mol schließt mehr Teilchenenergiezustände ein als 15 kJ/mol; das ist eine Schwellen-/Wegänderung, keine Erwärmung. Die konkreten Flächen aus dem Integrationsbeleg werden verglichen. Eine vollständige Rate hängt zusätzlich von Orientierung/Präfaktoren, Konzentrationen und Mechanismus ab. Ein Katalysator ändert weder Reaktions-Gibbs-Energie noch Gleichgewichtskonstante; er ersetzt keinen thermodynamischen Antrieb. Konkrete Flächen bei300 K: P(E≥15)=0.00729; P(E≥10)=0.04563; Verhältnis≈6.261.",
+            "expectedPerformanceEn": "At equal T, f(E), its peak and normalisation remain unchanged. The lower 10 kJ/mol threshold includes more energy states than 15 kJ/mol: pathway/threshold change, not heating. Compare the actual integrated areas in the receipt. Full rate also depends on orientation/prefactors, concentration and mechanism. Catalysis changes neither reaction Gibbs energy nor equilibrium constant and supplies no thermodynamic driving force. Concrete areas at300 K: P(E≥15)=0.00729; P(E≥10)=0.04563; ratio≈6.261.",
+            "understandingFocusDe": "Verteilung unverändert halten und niedrigere Aktivierungsgrenze als anderen Weg deuten.",
+            "understandingFocusEn": "Keep the distribution unchanged and interpret a lower threshold as an alternative pathway."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "dc5173e8-6e63-58d3-a79b-bd74ef3cb98b",
+      "reason": "Eigene vollständige DE/EN-Fälle mit konkreten Materialien, Daten, Modellantworten und fachlichen Rubriken; Quellenoperatoren bleiben bindend. E1/G1; keine Laborausführung/Lernendenleistung oder menschliche Annahme behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "expectation-cyclic-engine-balance",
+            "essentialUnderstandingDe": "Zyklische Wärme-Arbeit-Grenze von Energieerhaltung unterscheiden.",
+            "essentialUnderstandingEn": "Distinguish cyclic heat/work limits from energy conservation.",
+            "observablePerformanceDe": "Zyklus: ΔU_Maschine=0, Q_out=1000-300=700 J; Energie bleibt erhalten. Reservoirsumme -1000/500+700/300=+0,333 J/K, mit dem 2. Hauptsatz vereinbar. Nutzarbeit ist 300 J, die anderen 700 J werden abgegeben, nicht vernichtet. Die behauptete Ein-Reservoir-Maschine wäre energetisch bilanziert, aber ihre einzige Umweltänderung hätte ΔS=-2 J/K; sie verletzt die Kelvin-Planck-Aussage. Die Einschränkung gilt für zyklische Wärmekraftmaschinen und vollständige Gesamtbilanz, nicht pauschal für jede einmalige Wärme-Arbeit-Umwandlung.",
+            "observablePerformanceEn": "Cycle: ΔU_engine=0 and Q_out=1000-300=700 J; energy is conserved. Reservoir sum -1000/500+700/300=+0.333 J/K is consistent with the second law. Useful work is 300 J; 700 J is transferred out, not destroyed. The claimed single-reservoir engine balances energy but its only environmental change has ΔS=-2 J/K, violating Kelvin-Planck. The restriction concerns cyclic heat engines and the full balance, not every one-time heat-to-work conversion."
+          },
+          {
+            "id": "expectation-finite-expansion-vs-cycle",
+            "essentialUnderstandingDe": "Eine einmalige reversible Expansion gegen den vollständigen Zyklus abgrenzen.",
+            "essentialUnderstandingEn": "Distinguish a single reversible expansion from a complete cycle.",
+            "observablePerformanceDe": "W_out≈1728,85 J und Q_in gleicher Betrag; ΔS_Gas=nR ln2≈5,763 J/K, ΔS_Reservoir=-5,763 J/K, Gesamt=0 im reversiblen Modell. Das Gasvolumen und seine Entropie haben sich verändert: kein Zyklus. Reversible Rückkompression bei derselben T benötigt entsprechende Arbeit und gibt Wärme ab; die vollständige Bilanz gewinnt keine Nettoarbeit aus einem einzigen Reservoir. Ein Kühlschrank braucht Arbeit zum Wärmetransport vom kalten zum warmen Reservoir. Energie bleibt erhalten, Bedingungen und Systemzustand bestimmen die Umwandlungsgrenze.",
+            "observablePerformanceEn": "W_out≈1728.85 J and Q_in has the same magnitude; ΔS_gas=nR ln2≈5.763 J/K, ΔS_reservoir=-5.763 J/K, total zero in the reversible model. Gas volume/entropy changed, so this is not a cycle. Reversible recompression at the same T needs corresponding work and rejects heat; the full cycle obtains no net work from one reservoir. A refrigerator needs work to move heat from cold to hot. Energy is conserved; conditions and system state define conversion limits."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "expectation-cyclic-engine-balance",
+            "expectation-finite-expansion-vs-cycle"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "chemically-relevant-conditions",
+            "textDe": "Die vollständig gebundenen Fälle wechseln Reaktion, Systemgrenze, Temperatur, Aggregatzustand, Stoffmengen-/Energiebasis, Messverfahren oder Zusammensetzung. Tatsächliche Durchführung bleibt dort erforderlich, wo der konkrete Quellenoperator sie verlangt.",
+            "textEn": "The bound cases vary reaction, system boundary, temperature, phase, amount/energy basis, method or composition. Actual execution remains required where the specific source operator demands it."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "cyclic-engine-balance",
+            "taskDemandDe": "Synthetische zyklische Wärmekraftmaschine: heißes Reservoir 500 K, kaltes Reservoir 300 K. Je Zyklus Q_in=1000 J, W_out=300 J. Die Maschine kehrt in denselben Zustand zurück. Zweite Behauptung: 1000 J aus nur einem Reservoir vollständig in Arbeit, keinerlei weitere Änderung. Bilanziere Abwärme, erkläre Energieverbrauch/-verlust und prüfe beide Aussagen mit 1. und 2. Hauptsatz. Berechne ergänzend die Reservoir-Entropieänderung; erläutere die Rolle des vollständigen Zyklus.",
+            "taskDemandEn": "Synthetic cyclic heat engine: hot reservoir 500 K, cold reservoir 300 K. Per cycle Q_in=1000 J and W_out=300 J; the machine returns to its initial state. Another claim: convert 1000 J from one reservoir entirely to work with no other change. Balance rejected heat, interpret energy consumption/loss and assess both claims with the first/second laws. Additionally calculate reservoir entropy change and explain why a complete cycle matters.",
+            "expectedPerformanceDe": "Zyklus: ΔU_Maschine=0, Q_out=1000-300=700 J; Energie bleibt erhalten. Reservoirsumme -1000/500+700/300=+0,333 J/K, mit dem 2. Hauptsatz vereinbar. Nutzarbeit ist 300 J, die anderen 700 J werden abgegeben, nicht vernichtet. Die behauptete Ein-Reservoir-Maschine wäre energetisch bilanziert, aber ihre einzige Umweltänderung hätte ΔS=-2 J/K; sie verletzt die Kelvin-Planck-Aussage. Die Einschränkung gilt für zyklische Wärmekraftmaschinen und vollständige Gesamtbilanz, nicht pauschal für jede einmalige Wärme-Arbeit-Umwandlung.",
+            "expectedPerformanceEn": "Cycle: ΔU_engine=0 and Q_out=1000-300=700 J; energy is conserved. Reservoir sum -1000/500+700/300=+0.333 J/K is consistent with the second law. Useful work is 300 J; 700 J is transferred out, not destroyed. The claimed single-reservoir engine balances energy but its only environmental change has ΔS=-2 J/K, violating Kelvin-Planck. The restriction concerns cyclic heat engines and the full balance, not every one-time heat-to-work conversion.",
+            "understandingFocusDe": "Zyklische Wärme-Arbeit-Grenze von Energieerhaltung unterscheiden.",
+            "understandingFocusEn": "Distinguish cyclic heat/work limits from energy conservation."
+          },
+          {
+            "id": "finite-expansion-vs-cycle",
+            "taskDemandDe": "Ideales Gas expandiert einmalig isotherm und reversibel bei 300 K von V auf 2V, n=1,00 mol, R=8,314 J/(mol K). Zugeführte Wärme wird bei ΔU=0 vollständig als Arbeit abgegeben; der Gaszustand ändert sich. Vergleich: Ein Zyklus muss anschließend denselben Anfangszustand wiederherstellen. Prüfe die vermeintliche Widerlegung des 2. Hauptsatzes, berechne W_out=nRT ln2 und die Entropieänderungen, und erkläre warum das Zurücksetzen nicht kostenlos ist. Ordne das Alltagsbild eines Kühlschranks/Wärmemotors fachlich ein.",
+            "taskDemandEn": "An ideal gas undergoes one reversible isothermal expansion at 300 K from V to 2V; n=1.00 mol, R=8.314 J/(mol K). With ΔU=0, supplied heat is all released as work, but gas state changes. Contrast: a cycle must subsequently restore its initial state. Assess the alleged violation of the second law, calculate W_out=nRT ln2 and entropy changes and explain why resetting is not free. Give a scientific interpretation of a refrigerator/heat-engine everyday model.",
+            "expectedPerformanceDe": "W_out≈1728,85 J und Q_in gleicher Betrag; ΔS_Gas=nR ln2≈5,763 J/K, ΔS_Reservoir=-5,763 J/K, Gesamt=0 im reversiblen Modell. Das Gasvolumen und seine Entropie haben sich verändert: kein Zyklus. Reversible Rückkompression bei derselben T benötigt entsprechende Arbeit und gibt Wärme ab; die vollständige Bilanz gewinnt keine Nettoarbeit aus einem einzigen Reservoir. Ein Kühlschrank braucht Arbeit zum Wärmetransport vom kalten zum warmen Reservoir. Energie bleibt erhalten, Bedingungen und Systemzustand bestimmen die Umwandlungsgrenze.",
+            "expectedPerformanceEn": "W_out≈1728.85 J and Q_in has the same magnitude; ΔS_gas=nR ln2≈5.763 J/K, ΔS_reservoir=-5.763 J/K, total zero in the reversible model. Gas volume/entropy changed, so this is not a cycle. Reversible recompression at the same T needs corresponding work and rejects heat; the full cycle obtains no net work from one reservoir. A refrigerator needs work to move heat from cold to hot. Energy is conserved; conditions and system state define conversion limits.",
+            "understandingFocusDe": "Eine einmalige reversible Expansion gegen den vollständigen Zyklus abgrenzen.",
+            "understandingFocusEn": "Distinguish a single reversible expansion from a complete cycle."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "dcbad4e4-e954-51d7-97ca-3bacb6f0d8d5",
+      "reason": "Eigene vollständige DE/EN-Fälle mit konkreten Materialien, Daten, Modellantworten und fachlichen Rubriken; Quellenoperatoren bleiben bindend. E1/G1; keine Laborausführung/Lernendenleistung oder menschliche Annahme behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "expectation-temperature-and-threshold",
+            "essentialUnderstandingDe": "Einheiten, Grenztemperatur und Standard-/Aktualzustand quantitativ trennen.",
+            "essentialUnderstandingEn": "Quantitatively distinguish units, threshold temperature and standard/current states.",
+            "observablePerformanceDe": "160,7 J/(mol K)=0,1607 kJ/(mol K). Bei 298 K ΔG°=+130,4114 kJ/mol, bei 1200 K -14,54 kJ/mol. T*=178,3/0,1607≈1109,52 K. Im Standardzustandsmodell wechselt das Vorzeichen; andere CO2-Aktivität/Zusammensetzung verlangt ΔrG=ΔrG°+RT lnQ. ΔrG=0 ist das chemische Gleichgewichtskriterium bei konstantem T,p, nicht generell ΔrG°=0. Kinetische Hemmung und temperaturabhängige Daten begrenzen Aussagen über tatsächlichen Ablauf.",
+            "observablePerformanceEn": "160.7 J/(mol K)=0.1607 kJ/(mol K). ΔG° at 298 K is +130.4114 kJ/mol and at 1200 K -14.54 kJ/mol. T*=178.3/0.1607≈1109.52 K. The reference-state model changes sign; different CO2 activity/composition requires ΔrG=ΔrG°+RT lnQ. At constant T,p, ΔrG=0 is the equilibrium criterion, not generally ΔrG°=0. Kinetic barriers and temperature-dependent data limit predictions of actual progress."
+          },
+          {
+            "id": "expectation-composition-quotient-equilibrium",
+            "essentialUnderstandingDe": "Reaktionsquotient, freie Standardenthalpie und tatsächliche Reaktionsrichtung verbinden.",
+            "essentialUnderstandingEn": "Connect reaction quotient, standard Gibbs energy and actual reaction direction.",
+            "observablePerformanceDe": "Q=1: ΔG=-4,30 kJ/mol. Q=100: RT ln100≈11,4096 kJ/mol, daher ΔG≈+7,1096 kJ/mol; die Rückrichtung ist begünstigt. K=exp(4300/(8,314·298))≈5,67; bei Q=K ΔG=0, Hin-/Rückreaktion im Gleichgewicht. Die Zusammensetzung ist entscheidend, Standardwerte allein reichen nicht. Ein erreichbarer Reaktionsweg und Zeit sind zusätzliche kinetische Voraussetzungen; ΔG=0 bedeutet keine Einstellungsgeschwindigkeit und keine Abwesenheit mikroskopischer Reaktionen.",
+            "observablePerformanceEn": "Q=1 gives ΔG=-4.30 kJ/mol. At Q=100, RT ln100≈11.4096 kJ/mol, so ΔG≈+7.1096 kJ/mol and reverse direction is favoured. K=exp(4300/(8.314·298))≈5.67; Q=K gives ΔG=0 with forward/reverse reactions in equilibrium. Composition matters; standard values alone are insufficient. An accessible pathway/time are additional kinetic requirements; ΔG=0 specifies neither equilibration rate nor absence of microscopic reactions."
+          },
+          {
+            "id": "expectation-standard-formation-g-and-extent",
+            "essentialUnderstandingDe": "Freie Bildungsgrößen stöchiometrisch und mit richtiger Umsatzbasis auswerten.",
+            "essentialUnderstandingEn": "Evaluate Gibbs formation values stoichiometrically on the correct extent basis.",
+            "observablePerformanceDe": "ΔrG°m=[-394,4+2(-237,1)]-[-50,8+2·0]=-817,8 kJ/mol Formelumsatz. Bei ξ=0,250 mol folgt im angegebenen Standarddatenmodell ΔG°=-204,45 kJ. Phasen/Stöchiometrie und molar/nichtmolar sind ausdrücklich zu unterscheiden; ein anderer Wasserzustand ändert die Daten. Für tatsächliches ΔrG fehlen Q/Aktivitäten und Zustandsbedingungen. Der große negative Standardwert belegt weder augenblickliche Verbrennung noch einen Versuch ohne Aktivierungsenergie.",
+            "observablePerformanceEn": "ΔrG°m=[-394.4+2(-237.1)]-[-50.8+2·0]=-817.8 kJ/mol reaction extent. For ξ=0.250 mol the stated reference-data model gives ΔG°=-204.45 kJ. Distinguish phases/stoichiometry and molar/nonmolar quantities; another water phase changes data. Actual ΔrG additionally needs Q/activities and state conditions. A strongly negative standard value proves neither instantaneous combustion nor absence of an activation barrier."
+          },
+          {
+            "id": "expectation-redox-data-thermodynamic-check",
+            "essentialUnderstandingDe": "Freie Reaktionsenthalpie aus elektrischen Daten und H/S unabhängig prüfen.",
+            "essentialUnderstandingEn": "Check reaction Gibbs energy independently from electrical and H/S data.",
+            "observablePerformanceDe": "Pro mol: q=n_eF=192970 C; reversible Arbeit qE=212267 J, daher ΔrG=-212,267 kJ/mol. H-T S=-200,347-298·0,0400=-212,267 kJ/mol bestätigt die Bilanz. ξ=0,0100: W_max=2122,67 J, W_Last=1640,245 J, Differenz=482,425 J. Bei gleicher T,p und entsprechend vollständiger Bilanz mindert Irreversibilität nutzbare Arbeit; Energie verschwindet nicht. Messdaten-/Ableitungsinterpretation ersetzt keine eigene galvanische Durchführung. Diese Leistung deckt den Gibbs-Teil der breiten Quellenklausel; Faraday-/Nernst-Partnerpflichten bleiben separat erhalten.",
+            "observablePerformanceEn": "Per mole q=n_eF=192970 C; reversible work qE=212267 J, hence ΔrG=-212.267 kJ/mol. H-T S=-200.347-298·0.0400=-212.267 kJ/mol confirms it. At ξ=0.0100: W_max=2122.67 J, W_loaded=1640.245 J, difference=482.425 J. At equal T,p with the complete balance, irreversibility reduces useful work; energy is not destroyed. Data interpretation/derivation does not replace actual galvanic execution. This addresses the Gibbs component of a broad source clause; separate Faraday/Nernst partner obligations are retained."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "expectation-temperature-and-threshold",
+            "expectation-composition-quotient-equilibrium",
+            "expectation-standard-formation-g-and-extent",
+            "expectation-redox-data-thermodynamic-check"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "chemically-relevant-conditions",
+            "textDe": "Die vollständig gebundenen Fälle wechseln Reaktion, Systemgrenze, Temperatur, Aggregatzustand, Stoffmengen-/Energiebasis, Messverfahren oder Zusammensetzung. Tatsächliche Durchführung bleibt dort erforderlich, wo der konkrete Quellenoperator sie verlangt.",
+            "textEn": "The bound cases vary reaction, system boundary, temperature, phase, amount/energy basis, method or composition. Actual execution remains required where the specific source operator demands it."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "temperature-and-threshold",
+            "taskDemandDe": "Aufgabenmodell CaCO3(s)->CaO(s)+CO2(g): ΔrH°m=178,3 kJ/mol und ΔrS°m=160,7 J/(mol K), als temperaturunabhängig angenähert, Phasen und CO2-Standardzustand fest. T=298 bzw. 1200 K. Berechne ΔrG°m und die Modell-Grenztemperatur. Erkläre die Vorwärts-/Rückwärtsrichtung und prüfe, ob T_Grenz allein für ein beliebiges Reaktionsgemisch Gleichgewicht beweist.",
+            "taskDemandEn": "Task model CaCO3(s)->CaO(s)+CO2(g): ΔrH°m=178.3 kJ/mol and ΔrS°m=160.7 J/(mol K), approximated temperature-independent with fixed phases/CO2 reference state. T=298 or 1200 K. Calculate ΔrG°m and the model threshold temperature. Explain forward/reverse direction and assess whether threshold T alone establishes equilibrium for any mixture.",
+            "expectedPerformanceDe": "160,7 J/(mol K)=0,1607 kJ/(mol K). Bei 298 K ΔG°=+130,4114 kJ/mol, bei 1200 K -14,54 kJ/mol. T*=178,3/0,1607≈1109,52 K. Im Standardzustandsmodell wechselt das Vorzeichen; andere CO2-Aktivität/Zusammensetzung verlangt ΔrG=ΔrG°+RT lnQ. ΔrG=0 ist das chemische Gleichgewichtskriterium bei konstantem T,p, nicht generell ΔrG°=0. Kinetische Hemmung und temperaturabhängige Daten begrenzen Aussagen über tatsächlichen Ablauf.",
+            "expectedPerformanceEn": "160.7 J/(mol K)=0.1607 kJ/(mol K). ΔG° at 298 K is +130.4114 kJ/mol and at 1200 K -14.54 kJ/mol. T*=178.3/0.1607≈1109.52 K. The reference-state model changes sign; different CO2 activity/composition requires ΔrG=ΔrG°+RT lnQ. At constant T,p, ΔrG=0 is the equilibrium criterion, not generally ΔrG°=0. Kinetic barriers and temperature-dependent data limit predictions of actual progress.",
+            "understandingFocusDe": "Einheiten, Grenztemperatur und Standard-/Aktualzustand quantitativ trennen.",
+            "understandingFocusEn": "Quantitatively distinguish units, threshold temperature and standard/current states."
+          },
+          {
+            "id": "composition-quotient-equilibrium",
+            "taskDemandDe": "Synthetische ideale Reaktion A<->B bei 298 K: ΔrG°m=-4,30 kJ/mol; R=8,314 J/(mol K); dimensionsloses Q=a_B/a_A. Drei Zustände: Q=1, Q=100 und Q=K. Es gilt ΔrG=ΔrG°+RT lnQ, ΔrG°=-RT lnK. Berechne die tatsächlichen ΔrG-Werte und K, entscheide über die Richtung und erläutere die Möglichkeit der Gleichgewichtseinstellung. Begründe, warum negatives ΔrG° nicht jede Anfangsmischung vorwärts treibt und keine Reaktionsgeschwindigkeit liefert.",
+            "taskDemandEn": "Synthetic ideal A<->B reaction at 298 K: ΔrG°m=-4.30 kJ/mol; R=8.314 J/(mol K); dimensionless Q=a_B/a_A. States Q=1, Q=100 and Q=K. Use ΔrG=ΔrG°+RT lnQ and ΔrG°=-RT lnK. Calculate actual ΔrG values and K, determine direction and discuss whether equilibrium can be reached. Explain why negative ΔrG° does not drive every initial mixture forward or specify a rate.",
+            "expectedPerformanceDe": "Q=1: ΔG=-4,30 kJ/mol. Q=100: RT ln100≈11,4096 kJ/mol, daher ΔG≈+7,1096 kJ/mol; die Rückrichtung ist begünstigt. K=exp(4300/(8,314·298))≈5,67; bei Q=K ΔG=0, Hin-/Rückreaktion im Gleichgewicht. Die Zusammensetzung ist entscheidend, Standardwerte allein reichen nicht. Ein erreichbarer Reaktionsweg und Zeit sind zusätzliche kinetische Voraussetzungen; ΔG=0 bedeutet keine Einstellungsgeschwindigkeit und keine Abwesenheit mikroskopischer Reaktionen.",
+            "expectedPerformanceEn": "Q=1 gives ΔG=-4.30 kJ/mol. At Q=100, RT ln100≈11.4096 kJ/mol, so ΔG≈+7.1096 kJ/mol and reverse direction is favoured. K=exp(4300/(8.314·298))≈5.67; Q=K gives ΔG=0 with forward/reverse reactions in equilibrium. Composition matters; standard values alone are insufficient. An accessible pathway/time are additional kinetic requirements; ΔG=0 specifies neither equilibration rate nor absence of microscopic reactions.",
+            "understandingFocusDe": "Reaktionsquotient, freie Standardenthalpie und tatsächliche Reaktionsrichtung verbinden.",
+            "understandingFocusEn": "Connect reaction quotient, standard Gibbs energy and actual reaction direction."
+          },
+          {
+            "id": "standard-formation-g-and-extent",
+            "taskDemandDe": "Gerundete Aufgabenwerte ΔfG°m in kJ/mol: CH4(g)=-50,8; O2(g)=0; CO2(g)=-394,4; H2O(l)=-237,1. Reaktion CH4+2O2->CO2+2H2O(l), Temperatur/Standardzustände identisch, Formelumsatz ξ=0,250 mol. Berechne die molare freie Standardreaktionsenthalpie aus Bildungsgrößen und die nichtmolare Änderung für den angegebenen Umsatz. Zeichne die Reaktionsbilanz und begründe, welche zusätzliche Information für eine tatsächliche Gemischrichtung fehlt.",
+            "taskDemandEn": "Rounded task ΔfG°m values in kJ/mol: CH4(g)=-50.8; O2(g)=0; CO2(g)=-394.4; H2O(l)=-237.1. Reaction CH4+2O2->CO2+2H2O(l), identical temperature/reference states and reaction extent ξ=0.250 mol. Calculate molar standard reaction Gibbs energy from formation values and the nonmolar change for the stated extent. Show the reaction balance and identify missing information for an actual mixture direction.",
+            "expectedPerformanceDe": "ΔrG°m=[-394,4+2(-237,1)]-[-50,8+2·0]=-817,8 kJ/mol Formelumsatz. Bei ξ=0,250 mol folgt im angegebenen Standarddatenmodell ΔG°=-204,45 kJ. Phasen/Stöchiometrie und molar/nichtmolar sind ausdrücklich zu unterscheiden; ein anderer Wasserzustand ändert die Daten. Für tatsächliches ΔrG fehlen Q/Aktivitäten und Zustandsbedingungen. Der große negative Standardwert belegt weder augenblickliche Verbrennung noch einen Versuch ohne Aktivierungsenergie.",
+            "expectedPerformanceEn": "ΔrG°m=[-394.4+2(-237.1)]-[-50.8+2·0]=-817.8 kJ/mol reaction extent. For ξ=0.250 mol the stated reference-data model gives ΔG°=-204.45 kJ. Distinguish phases/stoichiometry and molar/nonmolar quantities; another water phase changes data. Actual ΔrG additionally needs Q/activities and state conditions. A strongly negative standard value proves neither instantaneous combustion nor absence of an activation barrier.",
+            "understandingFocusDe": "Freie Bildungsgrößen stöchiometrisch und mit richtiger Umsatzbasis auswerten.",
+            "understandingFocusEn": "Evaluate Gibbs formation values stoichiometrically on the correct extent basis."
+          },
+          {
+            "id": "redox-data-thermodynamic-check",
+            "taskDemandDe": "Synthetisches galvanisches Datenmodell bei 298 K: pro mol Formelumsatz n_e=2, F=96485 C/mol, reversible Leerlaufspannung E=1,10 V. Thermochemische Vergleichsdaten ΔrH_m=-200,347 kJ/mol und ΔrS_m=+40,0 J/(mol K). Für ξ=0,0100 mol beträgt die Lastspannung 0,85 V. Bedingungen/Zusammensetzung sind fest, alle Werte ausdrücklich synthetisch. Leite aus Ladung und reversibler elektrischer Arbeit ΔrG=-n_eFE ab und vergleiche die Gibbs-Helmholtz-Rechnung. Berechne für den Umsatz maximale und tatsächliche elektrische Arbeit; begründe die Differenz als Dissipation unter den Modellbedingungen.",
+            "taskDemandEn": "Synthetic galvanic data model at 298 K: n_e=2 per mole reaction, F=96485 C/mol and reversible open-circuit E=1.10 V. Thermochemical comparison: ΔrH_m=-200.347 kJ/mol and ΔrS_m=+40.0 J/(mol K). At ξ=0.0100 mol, loaded voltage is 0.85 V. Conditions/composition are fixed; all values are explicitly synthetic. Derive ΔrG=-n_eFE from charge/reversible electrical work and compare Gibbs-Helmholtz. Calculate maximum/actual electrical work for the extent and explain the difference as dissipation under the model conditions.",
+            "expectedPerformanceDe": "Pro mol: q=n_eF=192970 C; reversible Arbeit qE=212267 J, daher ΔrG=-212,267 kJ/mol. H-T S=-200,347-298·0,0400=-212,267 kJ/mol bestätigt die Bilanz. ξ=0,0100: W_max=2122,67 J, W_Last=1640,245 J, Differenz=482,425 J. Bei gleicher T,p und entsprechend vollständiger Bilanz mindert Irreversibilität nutzbare Arbeit; Energie verschwindet nicht. Messdaten-/Ableitungsinterpretation ersetzt keine eigene galvanische Durchführung. Diese Leistung deckt den Gibbs-Teil der breiten Quellenklausel; Faraday-/Nernst-Partnerpflichten bleiben separat erhalten.",
+            "expectedPerformanceEn": "Per mole q=n_eF=192970 C; reversible work qE=212267 J, hence ΔrG=-212.267 kJ/mol. H-T S=-200.347-298·0.0400=-212.267 kJ/mol confirms it. At ξ=0.0100: W_max=2122.67 J, W_loaded=1640.245 J, difference=482.425 J. At equal T,p with the complete balance, irreversibility reduces useful work; energy is not destroyed. Data interpretation/derivation does not replace actual galvanic execution. This addresses the Gibbs component of a broad source clause; separate Faraday/Nernst partner obligations are retained.",
+            "understandingFocusDe": "Freie Reaktionsenthalpie aus elektrischen Daten und H/S unabhängig prüfen.",
+            "understandingFocusEn": "Check reaction Gibbs energy independently from electrical and H/S data."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "ecdc3c08-9ba3-56e5-ab00-4b02357867ac",
+      "reason": "Eigene vollständige DE/EN-Fälle mit konkreten Materialien, Daten, Modellantworten und fachlichen Rubriken; Quellenoperatoren bleiben bindend. E1/G1; keine Laborausführung/Lernendenleistung oder menschliche Annahme behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "expectation-fuel-dossier-common-energy-basis",
+            "essentialUnderstandingDe": "Brenn-/Heizwert und Brennstoffbewertung auf gleiche chemische und ökonomische Basis bringen.",
+            "essentialUnderstandingEn": "Compare gross/net fuel properties and evaluation on common chemical/economic bases.",
+            "observablePerformanceDe": "Heizwerte: H2 121, CH4 50,125, C 32,833 MJ/kg; Brennwerte 143/55,625/32,833. Je 1 MJ Heizwert: 8,26 g H2, 19,95 g CH4, 30,46 g C; Kosten etwa 0,0413/0,0200/0,00914 €. Direkte CO2-Massen: 0/54,86/111,68 g. Höherer massenbezogener Heizwert heißt weder niedrigster Preis noch gesamte Klimaneutralität. H2 bildet Wasser, CH4 zwei mol Wasser pro mol, reiner C kein Produktwasser: dessen Brenn-/Heizwertgleichheit erklärt die Grenze von Brennwert immer größer. Herstellung, Transport, Wirkungsgrad und Speichertechnik fehlen. Ein Urteil benennt Gewichte/Unsicherheit statt eine pauschale beste Energiequelle.",
+            "observablePerformanceEn": "Net values are H2 121, CH4 50.125, C 32.833 MJ/kg; gross values 143/55.625/32.833. For 1 MJ net energy: 8.26 g H2, 19.95 g CH4, 30.46 g C; cost about €0.0413/0.0200/0.00914. Direct CO2 is 0/54.86/111.68 g. Higher mass-specific net energy implies neither lowest price nor full climate neutrality. H2 produces water, CH4 two moles water per mole, pure C no product water; equal gross/net values for C bound the claim that gross is always greater. Production, transport, efficiency and storage technology are missing. A judgment makes criteria/weights/uncertainty explicit rather than naming an unqualified best source."
+          },
+          {
+            "id": "expectation-condensation-and-efficiency-basis",
+            "essentialUnderstandingDe": "Kondensationsenergie und Wirkungsgrad-Bezugsbasis im neuen Nutzungsfall prüfen.",
+            "essentialUnderstandingEn": "Assess condensation energy and efficiency basis in a changed use case.",
+            "observablePerformanceDe": "840/802≈1,0474=104,74% relativ zum Heizwert; 840/890≈0,9438=94,38% relativ zum Brennwert. Nutzwärme liegt unter der vollständigen Brennwertbasis; Energieerhaltung ist erfüllt. 88 kJ pro mol CH4 entsprechen im Modell 44 kJ pro mol kondensierten Produktwassers. Wasserdampf wird ohne Kondensation nicht vollständig energetisch genutzt. Wasser entsteht aus Wasserstoff im Brennstoff auch bei trockenem Ausgangsmaterial; Brennstofffeuchte ist ein zusätzlicher Einfluss. Ein Wirkungsgradvergleich ohne gleiche Heiz-/Brennwertbasis ist irreführend.",
+            "observablePerformanceEn": "840/802≈1.0474=104.74% on a net basis; 840/890≈0.9438=94.38% on a gross basis. Useful heat stays below total gross energy, conserving energy. The 88 kJ/mol CH4 difference corresponds here to 44 kJ/mol condensed product water. Without condensation, steam's heat is not fully recovered. Hydrogen in dry fuel still produces water; initial moisture is an additional factor. Comparing efficiencies on different gross/net bases is misleading."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "expectation-fuel-dossier-common-energy-basis",
+            "expectation-condensation-and-efficiency-basis"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "chemically-relevant-conditions",
+            "textDe": "Die vollständig gebundenen Fälle wechseln Reaktion, Systemgrenze, Temperatur, Aggregatzustand, Stoffmengen-/Energiebasis, Messverfahren oder Zusammensetzung. Tatsächliche Durchführung bleibt dort erforderlich, wo der konkrete Quellenoperator sie verlangt.",
+            "textEn": "The bound cases vary reaction, system boundary, temperature, phase, amount/energy basis, method or composition. Actual execution remains required where the specific source operator demands it."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "fuel-dossier-common-energy-basis",
+            "taskDemandDe": "Gerundetes synthetisches Brennstoffdossier pro mol: H2: M=2,00 g/mol, Brennwert 286, Heizwert 242 kJ/mol, Preis 5 €/kg; CH4: M=16,00, 890/802 kJ/mol, 1 €/kg; reiner C(Graphit): M=12,00, 394/394 kJ/mol, 0,30 €/kg. CO2 entsteht stöchiometrisch nur bei Kohlenstoffverbrennung; M(CO2)=44,00 g/mol. Dossier enthält keine Herstellung/Transport-Bilanz. Erkläre Brenn-/Heizwert anhand des Produktwassers, normiere auf kg und auf 1 MJ Heizwertenergie, berechne Brennstoffmasse, Preis und direkte CO2-Masse. Bewerte den Einsatz mit expliziten chemischen, ökologischen und ökonomischen Kriterien und benenne die Dossiergrenzen.",
+            "taskDemandEn": "Rounded synthetic fuel dossier per mole: H2 M=2.00 g/mol, gross 286/net 242 kJ/mol, price 5 €/kg; CH4 M=16.00, 890/802 kJ/mol, 1 €/kg; pure C(graphite) M=12.00, 394/394 kJ/mol, 0.30 €/kg. Stoichiometric CO2 arises from carbon combustion only; M(CO2)=44.00 g/mol. Production/transport impacts are not supplied. Explain gross/net values through product water, normalise per kg and per 1 MJ net energy and calculate fuel mass, cost and direct CO2 mass. Assess use with explicit chemical, ecological and economic criteria and state dossier limits.",
+            "expectedPerformanceDe": "Heizwerte: H2 121, CH4 50,125, C 32,833 MJ/kg; Brennwerte 143/55,625/32,833. Je 1 MJ Heizwert: 8,26 g H2, 19,95 g CH4, 30,46 g C; Kosten etwa 0,0413/0,0200/0,00914 €. Direkte CO2-Massen: 0/54,86/111,68 g. Höherer massenbezogener Heizwert heißt weder niedrigster Preis noch gesamte Klimaneutralität. H2 bildet Wasser, CH4 zwei mol Wasser pro mol, reiner C kein Produktwasser: dessen Brenn-/Heizwertgleichheit erklärt die Grenze von Brennwert immer größer. Herstellung, Transport, Wirkungsgrad und Speichertechnik fehlen. Ein Urteil benennt Gewichte/Unsicherheit statt eine pauschale beste Energiequelle.",
+            "expectedPerformanceEn": "Net values are H2 121, CH4 50.125, C 32.833 MJ/kg; gross values 143/55.625/32.833. For 1 MJ net energy: 8.26 g H2, 19.95 g CH4, 30.46 g C; cost about €0.0413/0.0200/0.00914. Direct CO2 is 0/54.86/111.68 g. Higher mass-specific net energy implies neither lowest price nor full climate neutrality. H2 produces water, CH4 two moles water per mole, pure C no product water; equal gross/net values for C bound the claim that gross is always greater. Production, transport, efficiency and storage technology are missing. A judgment makes criteria/weights/uncertainty explicit rather than naming an unqualified best source.",
+            "understandingFocusDe": "Brenn-/Heizwert und Brennstoffbewertung auf gleiche chemische und ökonomische Basis bringen.",
+            "understandingFocusEn": "Compare gross/net fuel properties and evaluation on common chemical/economic bases."
+          },
+          {
+            "id": "condensation-and-efficiency-basis",
+            "taskDemandDe": "Synthetischer Methan-Brennwertkessel pro mol CH4: chemische Wärmebasis Brennwert 890 kJ, Heizwert 802 kJ, Nutzwärme 840 kJ. Produkt 2 mol Wasser, Differenz Kondensationsbeitrag 88 kJ/mol CH4; externe Zusatzenergie ist im Modell ausgeschlossen. Vergleichskessel nutzt keine Kondensationswärme. Erkläre die Kondensation, berechne beide angegebenen Wirkungsgrade und prüfe 105% verletzt Energieerhaltung. Begründe, warum trockenes Ausgangsbrennmaterial nicht fehlendes Produktwasser bedeutet und die Bezugsbasis vor jedem Vergleich genannt werden muss.",
+            "taskDemandEn": "Synthetic condensing methane boiler per mole CH4: gross basis 890 kJ, net basis 802 kJ, useful heat 840 kJ. It produces 2 mol water, with condensation contribution 88 kJ/mol CH4; external extra energy is excluded. A comparison boiler does not use condensation heat. Explain condensation, calculate efficiencies on both bases and assess whether 105% violates energy conservation. Explain why dry fuel does not imply absent product water and why a common basis must be stated.",
+            "expectedPerformanceDe": "840/802≈1,0474=104,74% relativ zum Heizwert; 840/890≈0,9438=94,38% relativ zum Brennwert. Nutzwärme liegt unter der vollständigen Brennwertbasis; Energieerhaltung ist erfüllt. 88 kJ pro mol CH4 entsprechen im Modell 44 kJ pro mol kondensierten Produktwassers. Wasserdampf wird ohne Kondensation nicht vollständig energetisch genutzt. Wasser entsteht aus Wasserstoff im Brennstoff auch bei trockenem Ausgangsmaterial; Brennstofffeuchte ist ein zusätzlicher Einfluss. Ein Wirkungsgradvergleich ohne gleiche Heiz-/Brennwertbasis ist irreführend.",
+            "expectedPerformanceEn": "840/802≈1.0474=104.74% on a net basis; 840/890≈0.9438=94.38% on a gross basis. Useful heat stays below total gross energy, conserving energy. The 88 kJ/mol CH4 difference corresponds here to 44 kJ/mol condensed product water. Without condensation, steam's heat is not fully recovered. Hydrogen in dry fuel still produces water; initial moisture is an additional factor. Comparing efficiencies on different gross/net bases is misleading.",
+            "understandingFocusDe": "Kondensationsenergie und Wirkungsgrad-Bezugsbasis im neuen Nutzungsfall prüfen.",
+            "understandingFocusEn": "Assess condensation energy and efficiency basis in a changed use case."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "f7a335a7-265e-5d22-b2ba-08ee9a0326c6",
+      "reason": "Eigene vollständige DE/EN-Fälle mit konkreten Materialien, Daten, Modellantworten und fachlichen Rubriken; Quellenoperatoren bleiben bindend. E1/G1; keine Laborausführung/Lernendenleistung oder menschliche Annahme behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "expectation-four-enthalpy-entropy-signs",
+            "essentialUnderstandingDe": "Alle vier Vorzeichenkombinationen mit dem Temperaturterm begründet vergleichen.",
+            "essentialUnderstandingEn": "Compare all four sign combinations using the temperature term.",
+            "observablePerformanceDe": "A: ΔG<0 für alle positiven T im Modell; B: ΔG>0. C wird bei ausreichend großem T begünstigt; D bei kleinen T. In C/D konkurrieren beide Terme, ein Grenzwert ergibt sich bei ΔG=0. Exothermie allein genügt nicht, wenn ΔS negativ und TΔS betragsmäßig groß ist. Freiwillig betrifft die thermodynamische Richtung unter den Zustandsbedingungen, nicht Geschwindigkeit oder vollständigen Umsatz. Temperaturabhängige Daten/Phasenwechsel können das konstante-H/S-Modell begrenzen.",
+            "observablePerformanceEn": "A has ΔG<0 for every positive T in the model; B has ΔG>0. C is favoured at sufficiently high T; D at low T. Competing terms in C/D give a threshold at ΔG=0. Exothermicity alone is insufficient when ΔS is negative and TΔS is large in magnitude. Spontaneous means thermodynamic direction under specified conditions, not speed or complete conversion. Temperature-dependent data/phase changes limit the constant-H/S model."
+          },
+          {
+            "id": "expectation-salt-and-surroundings-transfer",
+            "essentialUnderstandingDe": "Qualitativen Gibbs-Vergleich auf einen endothermen/exothermen Gegenfall übertragen.",
+            "essentialUnderstandingEn": "Transfer qualitative Gibbs reasoning to an endothermic/exothermic contrast.",
+            "observablePerformanceDe": "Für X überwiegt TΔS=15 kJ/mol die positive ΔH: ΔG=-3 kJ/mol, Gesamtentropie +10 J/(mol K). Für Y ist ΔG=-12-(-15)=+3 kJ/mol, Gesamtentropie -10 J/(mol K). Wärmebeobachtung allein gibt nur den Enthalpieaspekt; Verteilung/Umgebung entscheiden mit. Die Aussagen gelten für diese Zustände und konstantes T,p; sie beweisen keine schnelle Auflösung oder bestimmte reale Salzidentität.",
+            "observablePerformanceEn": "For X, TΔS=15 kJ/mol outweighs positive ΔH: ΔG=-3 kJ/mol and total entropy +10 J/(mol K). Y has ΔG=-12-(-15)=+3 kJ/mol and total entropy -10 J/(mol K). Warming/cooling alone addresses enthalpy; distributions/surroundings also matter. Conclusions apply to these states at fixed T,p; they prove neither rapid dissolution nor a real salt identity."
+          },
+          {
+            "id": "expectation-metastability-catalysis-incomplete-conversion",
+            "essentialUnderstandingDe": "Metastabilität, beide Katalyseformen und unvollständigen Umsatz von thermodynamischer Richtung unterscheiden.",
+            "essentialUnderstandingEn": "Distinguish metastability, both catalyst types and incomplete conversion from thermodynamic direction.",
+            "observablePerformanceDe": "Bei Q=1 ist die Vorwärtsrichtung thermodynamisch begünstigt, kann aber durch eine Aktivierungsbarriere langsam bleiben (metastabiler Zustand). Gelöster Katalysator ist homogen, feste Oberfläche heterogen; beide ermöglichen andere schnellere Wege und ändern weder ΔG° noch den Gleichgewichts-Endwert. 85% ist mit Hin-/Rückreaktion und Q=K vereinbar; ΔG°<0 bedeutet nicht 100% Umsatz. Energie- und Geschwindigkeitsdiagramme beschreiben verschiedene Aspekte. Eigene Labordurchführung oder universelle Katalysatorleistung wird aus diesem synthetischen Dossier nicht behauptet.",
+            "observablePerformanceEn": "At Q=1 the forward direction is thermodynamically favoured, yet an activation barrier may keep it slow (metastability). Dissolved catalyst is homogeneous and a solid surface heterogeneous; both enable faster alternative paths without changing ΔG° or the equilibrium endpoint. 85% is consistent with forward/reverse reaction and Q=K; ΔG°<0 does not mean 100% conversion. Energy and rate diagrams describe different aspects. This synthetic dossier claims neither personal laboratory execution nor universal catalyst performance."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "expectation-four-enthalpy-entropy-signs",
+            "expectation-salt-and-surroundings-transfer",
+            "expectation-metastability-catalysis-incomplete-conversion"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "chemically-relevant-conditions",
+            "textDe": "Die vollständig gebundenen Fälle wechseln Reaktion, Systemgrenze, Temperatur, Aggregatzustand, Stoffmengen-/Energiebasis, Messverfahren oder Zusammensetzung. Tatsächliche Durchführung bleibt dort erforderlich, wo der konkrete Quellenoperator sie verlangt.",
+            "textEn": "The bound cases vary reaction, system boundary, temperature, phase, amount/energy basis, method or composition. Actual execution remains required where the specific source operator demands it."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "four-enthalpy-entropy-signs",
+            "taskDemandDe": "Synthetische Vorzeichentabelle unter konstantem T,p und für die betrachteten Zustände: A ΔH<0/ΔS>0; B ΔH>0/ΔS<0; C ΔH>0/ΔS>0; D ΔH<0/ΔS<0. H/S werden im betrachteten Temperaturbereich als konstant modelliert; T ist positiv in Kelvin. Ordne mit ΔG=ΔH-TΔS die freiwillige Richtung qualitativ zu und begründe, bei welchen Fällen ein Temperaturwechsel sie ändern kann. Prüfe die Behauptung exotherm bedeutet immer freiwillig.",
+            "taskDemandEn": "Synthetic sign table at constant T,p for the stated states: A ΔH<0/ΔS>0; B ΔH>0/ΔS<0; C ΔH>0/ΔS>0; D ΔH<0/ΔS<0. Treat H/S as constant in the stated range; T is positive in kelvin. Use ΔG=ΔH-TΔS to classify the spontaneous direction qualitatively and explain when changing temperature may reverse it. Assess the claim that exothermic always means spontaneous.",
+            "expectedPerformanceDe": "A: ΔG<0 für alle positiven T im Modell; B: ΔG>0. C wird bei ausreichend großem T begünstigt; D bei kleinen T. In C/D konkurrieren beide Terme, ein Grenzwert ergibt sich bei ΔG=0. Exothermie allein genügt nicht, wenn ΔS negativ und TΔS betragsmäßig groß ist. Freiwillig betrifft die thermodynamische Richtung unter den Zustandsbedingungen, nicht Geschwindigkeit oder vollständigen Umsatz. Temperaturabhängige Daten/Phasenwechsel können das konstante-H/S-Modell begrenzen.",
+            "expectedPerformanceEn": "A has ΔG<0 for every positive T in the model; B has ΔG>0. C is favoured at sufficiently high T; D at low T. Competing terms in C/D give a threshold at ΔG=0. Exothermicity alone is insufficient when ΔS is negative and TΔS is large in magnitude. Spontaneous means thermodynamic direction under specified conditions, not speed or complete conversion. Temperature-dependent data/phase changes limit the constant-H/S model.",
+            "understandingFocusDe": "Alle vier Vorzeichenkombinationen mit dem Temperaturterm begründet vergleichen.",
+            "understandingFocusEn": "Compare all four sign combinations using the temperature term."
+          },
+          {
+            "id": "salt-and-surroundings-transfer",
+            "taskDemandDe": "Synthetische Salz-Lösefälle bei 300 K: X ΔH=+12 kJ/mol und ΔS_System=+50 J/(mol K); Y ΔH=-12 kJ/mol und ΔS_System=-50 J/(mol K). Es gelten konstante T,p sowie die angegebenen Zusammensetzungen; keine kinetischen Daten liegen vor. Vergleiche qualitativ, kontrolliere die Entscheidung mit den angegebenen Zahlen und erkläre den Zusammenhang mit der Gesamtentropie. Begründe, warum ein abkühlender Vorgang nicht automatisch unfreiwillig und ein erwärmender nicht automatisch freiwillig ist.",
+            "taskDemandEn": "Synthetic salt-dissolution cases at 300 K: X ΔH=+12 kJ/mol and ΔS_system=+50 J/(mol K); Y ΔH=-12 kJ/mol and ΔS_system=-50 J/(mol K). T,p/compositions are specified; no kinetic data are given. Compare qualitatively, check using the given numbers and explain the total-entropy relation. Explain why cooling does not automatically mean nonspontaneous or warming spontaneous.",
+            "expectedPerformanceDe": "Für X überwiegt TΔS=15 kJ/mol die positive ΔH: ΔG=-3 kJ/mol, Gesamtentropie +10 J/(mol K). Für Y ist ΔG=-12-(-15)=+3 kJ/mol, Gesamtentropie -10 J/(mol K). Wärmebeobachtung allein gibt nur den Enthalpieaspekt; Verteilung/Umgebung entscheiden mit. Die Aussagen gelten für diese Zustände und konstantes T,p; sie beweisen keine schnelle Auflösung oder bestimmte reale Salzidentität.",
+            "expectedPerformanceEn": "For X, TΔS=15 kJ/mol outweighs positive ΔH: ΔG=-3 kJ/mol and total entropy +10 J/(mol K). Y has ΔG=-12-(-15)=+3 kJ/mol and total entropy -10 J/(mol K). Warming/cooling alone addresses enthalpy; distributions/surroundings also matter. Conclusions apply to these states at fixed T,p; they prove neither rapid dissolution nor a real salt identity.",
+            "understandingFocusDe": "Qualitativen Gibbs-Vergleich auf einen endothermen/exothermen Gegenfall übertragen.",
+            "understandingFocusEn": "Transfer qualitative Gibbs reasoning to an endothermic/exothermic contrast."
+          },
+          {
+            "id": "metastability-catalysis-incomplete-conversion",
+            "taskDemandDe": "Synthetischer idealer A<->B-Prozess bei 298 K: Anfang Q=a_B/a_A=1; ΔG°=-4,30 kJ/mol. Nach hinreichender Zeit etwa 85% B. Ohne Katalysator bleibt er in 1 h praktisch unverändert; gelöster Katalysator erreicht denselben Endwert in 5 min, fester Oberflächenkatalysator in 15 min. Katalysatoren verändern die Reaktionswege, nicht die Gleichgewichtskonstante. Diskutiere anhand der tatsächlichen Aufgabenbefunde die Grenzen einer energetischen Prognose: metastabiler Ausgangszustand, homogene/heterogene Katalyse und unvollständiger Umsatz. Prüfe freiwillig muss sofort vollständig ablaufen.",
+            "taskDemandEn": "Synthetic ideal A<->B process at 298 K: initially Q=a_B/a_A=1; ΔG°=-4.30 kJ/mol. After sufficient time there is about 85% B. Without catalyst practically no change occurs in 1 h; a dissolved catalyst reaches the same endpoint in 5 min, a solid surface catalyst in 15 min. Catalysts change pathways, not the equilibrium constant. Use the supplied facts to discuss limits of an energetic prediction: metastable initial state, homogeneous/heterogeneous catalysis and incomplete conversion. Assess whether spontaneous means immediately complete.",
+            "expectedPerformanceDe": "Bei Q=1 ist die Vorwärtsrichtung thermodynamisch begünstigt, kann aber durch eine Aktivierungsbarriere langsam bleiben (metastabiler Zustand). Gelöster Katalysator ist homogen, feste Oberfläche heterogen; beide ermöglichen andere schnellere Wege und ändern weder ΔG° noch den Gleichgewichts-Endwert. 85% ist mit Hin-/Rückreaktion und Q=K vereinbar; ΔG°<0 bedeutet nicht 100% Umsatz. Energie- und Geschwindigkeitsdiagramme beschreiben verschiedene Aspekte. Eigene Labordurchführung oder universelle Katalysatorleistung wird aus diesem synthetischen Dossier nicht behauptet.",
+            "expectedPerformanceEn": "At Q=1 the forward direction is thermodynamically favoured, yet an activation barrier may keep it slow (metastability). Dissolved catalyst is homogeneous and a solid surface heterogeneous; both enable faster alternative paths without changing ΔG° or the equilibrium endpoint. 85% is consistent with forward/reverse reaction and Q=K; ΔG°<0 does not mean 100% conversion. Energy and rate diagrams describe different aspects. This synthetic dossier claims neither personal laboratory execution nor universal catalyst performance.",
+            "understandingFocusDe": "Metastabilität, beide Katalyseformen und unvollständigen Umsatz von thermodynamischer Richtung unterscheiden.",
+            "understandingFocusEn": "Distinguish metastability, both catalyst types and incomplete conversion from thermodynamic direction."
+          }
+        ]
+      }
+    }
+  ]
+}

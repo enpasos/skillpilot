@@ -1,0 +1,91 @@
+{
+  "artifactRole": "INACTIVE_AUTHOR_COMPLETE_SELECTED_PRIMARY_UNIT_APPEND_ONLY",
+  "activation": "pending-independent-source-review-and-root-integration",
+  "baseExtraction": {
+    "path": "curricula/DE/Gymnasium/input/ST/upper-secondary/source-extraction/DE_ST_CHEMIE_SEKII_FACHLEHRPLAN_GYMNASIUM_2022.source-extraction.json",
+    "sha256": "18dfa0b0b5d745e6c5798ca5ef0fc9be28f7ef6d3691c0889ed34c5b7a05a226",
+    "bytes": 894786
+  },
+  "proposedNormalExtractionPath": "curricula/DE/Gymnasium/input/ST/upper-secondary/source-extraction/DE_ST_CHEMIE_SEKII_FACHLEHRPLAN_GYMNASIUM_2022.source-extraction.json",
+  "sourceLandscapeId": "86a99136-152f-5da7-84f2-3a0ed9f53697",
+  "sourceDocument": {
+    "key": "ST-CH-2022",
+    "title": "Fachlehrplan Gymnasium Chemie Sachsen-Anhalt 2022",
+    "path": "curricula/DE/Gymnasium/input/ST/FLP_Chemie_Gym_01082022_swd.pdf",
+    "official": true,
+    "url": "https://lisa.sachsen-anhalt.de/fileadmin/Bibliothek/Politik_und_Verwaltung/MK/LISA/Unterricht/Lehrplaene/Gym/Anpassung_2022/FLP_Chemie_Gym_01082022_swd.pdf"
+  },
+  "sourceDocumentPin": {
+    "path": "curricula/DE/Gymnasium/input/ST/FLP_Chemie_Gym_01082022_swd.pdf",
+    "sha256": "fcdbb0bdaf4ccad6d5384c256f77329a36bad299503076493ee368d486ab78b6",
+    "bytes": 741324
+  },
+  "passagesToAppend": [
+    {
+      "id": "st-chemistry-sekii-process-standard-q-e-mathematical-methods:whole-primary-context",
+      "topicCode": "Q-E-MATHEMATICAL-METHODS",
+      "title": "Qualifikationsphase: mathematische Methoden für chemische Aufgaben",
+      "text": "mathematische Methoden zur Lösung chemischer Aufgaben anwenden.",
+      "sourceDocumentKey": "ST-CH-2022",
+      "sourceRef": "Fachlehrplan Gymnasium Chemie Sachsen-Anhalt 2022, physical PDF p. 12",
+      "metadata": {
+        "unit": "whole bullet",
+        "primaryPageOneBased": 12,
+        "surroundingWholePageActuallyRead": true,
+        "contextBoundary": "ST right Q column only; no EP/SekI assignment or official whole-goal duty.",
+        "thirdPartyOfficialTextRetainsOriginalRights": true
+      }
+    }
+  ],
+  "sourceGoalsToAppend": [
+    {
+      "id": "st-chemistry-sekii-process-standard-q-e-mathematical-methods",
+      "passageId": "st-chemistry-sekii-process-standard-q-e-mathematical-methods:whole-primary-context",
+      "topicCode": "Q-E-MATHEMATICAL-METHODS",
+      "title": "Qualifikationsphase: mathematische Methoden für chemische Aufgaben",
+      "description": "mathematische Methoden zur Lösung chemischer Aufgaben anwenden.",
+      "sourceDocumentKey": "ST-CH-2022",
+      "sourceText": "mathematische Methoden zur Lösung chemischer Aufgaben anwenden.",
+      "sourceSpan": {
+        "passageId": "st-chemistry-sekii-process-standard-q-e-mathematical-methods:whole-primary-context",
+        "label": "Fachlehrplan Gymnasium Chemie Sachsen-Anhalt 2022, physical PDF p. 12; Q"
+      },
+      "sourceRef": "Fachlehrplan Gymnasium Chemie Sachsen-Anhalt 2022, physical PDF p. 12",
+      "courseLevel": "GK_LK",
+      "granularity": "completeOfficialMethodBullet",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-ST",
+        "stage:SekII",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-whole-selected-official-unit-from-actual-local-PDF",
+        "physicalPageOneBased": 12,
+        "officialOperatorCode": null,
+        "scope": {
+          "stage": "SekII",
+          "sourcePhase": "Q",
+          "courseLevel": "GK_LK",
+          "scopeBoundary": "ST right Q column only; no EP/SekI assignment or official whole-goal duty."
+        },
+        "notNewOfficialLawGoal": true,
+        "noIndependentReviewInThisAuthorTransport": true
+      }
+    }
+  ],
+  "oldWholeSourceGoalCount": 332,
+  "oldSourceGoalsPassagesAndMetadataPreservedExactly": true,
+  "rebaseRule": "Object-wise ID lookup and absent-id append; preserve concurrent cells, passages, metadata and all old objects. Never activate a stale whole afterfile.",
+  "pipelineStatus": {
+    "newWholeSourceApprovals": 0,
+    "independentVotes": 0,
+    "normalWrites": 0
+  },
+  "sourceScopeBoundary": {
+    "stage": "SekII",
+    "sourcePhase": "Q",
+    "courseLevel": "GK_LK",
+    "scopeBoundary": "ST right Q column only; no EP/SekI assignment or official whole-goal duty."
+  }
+}

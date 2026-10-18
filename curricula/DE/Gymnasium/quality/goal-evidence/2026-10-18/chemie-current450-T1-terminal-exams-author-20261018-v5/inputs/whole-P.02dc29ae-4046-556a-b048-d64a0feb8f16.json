@@ -1,0 +1,83 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+  "schemaVersion": 2,
+  "reviewId": "chemie-final18-current-paired-reviewed-body-binding-technical-20261007-v1",
+  "goalFingerprintRuleVersion": "goal-evidence-v1",
+  "profileRuleVersion": "positive-understanding-evidence-v2",
+  "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+  "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+  "goalId": "02dc29ae-4046-556a-b048-d64a0feb8f16",
+  "goalFingerprint": "sha256:09e5cd176edc340413f74dff28f746aeae1913848577783c47ef0c3819fd5418",
+  "reviewInputFingerprint": "sha256:eb39729306c4d83423a0938d76155eaede0a17b45694e1e5422e01534ae2b932",
+  "profileFingerprint": "sha256:40c345debce22fbd65fd6f4495ebc52ce4e48bc2b88b089796622951ed361d3a",
+  "status": "needs_human_review",
+  "reviewAuthority": "ai_candidate",
+  "reviewedAt": "2026-10-17T21:23:41.999975+00:00",
+  "reviewer": "Codex B technical current-input serialization; underlying scientific authors and reviewers remain recorded in the P442 selection/provenance",
+  "reason": "Exact supplied whole profile body retained from paired sealed scientific reviews, with exact current native image-inclusive review input. Prior17: blind A17/B16, and corrected P580b v3 independent B route; no new seventeen-profile science review. Human false, E1/G1 AI candidate; no generation approval or strict gain.",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "reviewRunIds": [],
+  "dissent": [],
+  "profile": {
+    "archetype": "concept",
+    "expectations": [
+      {
+        "id": "core-understanding",
+        "essentialUnderstandingDe": "Ordnungsprinzipien beruhen auf begründeten Struktur- und Eigenschaftskriterien. Stoffdaten und Teilchenmodelle ergänzen sich; Stoffklasse, Bindung und Wechselwirkung können Eigenschaften vorhersagen, aber eine einzige Eigenschaft oder Summenformel bestimmt nicht jede Eigenschaft.",
+        "essentialUnderstandingEn": "Classification uses justified structural and property criteria. Substance data and particle models complement each other; classes, bonding and interactions can predict properties, but one property or molecular formula does not determine every property.",
+        "observablePerformanceDe": "Kupfer ist metallisch; mobile Elektronen transportieren Ladung auch im Feststoff. NaCl ist ein Ionenkristall: im Feststoff sind Ionen ortsgebunden, in Lösung und Schmelze beweglich, sodass die Schmelze leiten sollte. Zucker ist ein molekularer Stoff; die vorgegebenen neutralen gelösten Moleküle liefern keine ausreichenden beweglichen Ionen für die hier betrachtete Leitfähigkeit. Sichtbares Verschwinden beim Lösen allein trennt Salz und Zucker nicht. Die Stoffeigenschaft Leitfähigkeit wird über Ladungsträger auf Teilchenebene begründet.",
+        "observablePerformanceEn": "Copper is metallic; mobile electrons transport charge even in the solid. NaCl is an ionic crystal: ions are fixed in the solid but mobile in solution and melt, so the melt should conduct. Sugar is a molecular substance; the supplied neutral dissolved molecules provide no sufficient mobile ions for the conductivity considered here. Visible disappearance during dissolution alone does not distinguish salt from sugar. Conductivity at substance level is explained using charge carriers at particle level."
+      },
+      {
+        "id": "fresh-transfer-and-limit",
+        "essentialUnderstandingDe": "Metall, Ionenkristall und molekularer Stoff gegenüber isomeren Molekülstoffen mit unterschiedlicher Wasserstoffbrückenfähigkeit. Ein funktionelles Strukturmerkmal erklärt einen kontrollierten Vergleich; es ersetzt keine vollständige Stoffidentifikation.",
+        "essentialUnderstandingEn": "A metal, ionic crystal and molecular substance versus isomeric molecular substances with different hydrogen-bonding ability. One functional structural feature explains a controlled comparison; it does not replace complete substance identification.",
+        "observablePerformanceDe": "Ethanol ist ein Alkohol, Dimethylether ein Ether; es handelt sich um Konstitutionsisomere. Ethanol-Moleküle können untereinander O−H···O-Wasserstoffbrücken bilden; Dimethylether-Moleküle besitzen dafür keinen passenden H-Donator. Beide haben weitere Wechselwirkungen. Bei ähnlich großer Molekülmasse ist für Ethanol deshalb eine höhere Siedetemperatur plausibel. Die Summenformel reicht nicht aus; die Bindungsanordnung ist entscheidend. Ohne Messung folgt daraus kein genauer Zahlenwert und keine universelle Rangregel für beliebig verschieden große Moleküle.",
+        "observablePerformanceEn": "Ethanol is an alcohol and dimethyl ether an ether; they are constitutional isomers. Ethanol molecules can form O−H···O hydrogen bonds with one another; dimethyl ether molecules lack a suitable hydrogen donor. Both have additional interactions. At similar molecular mass, a higher boiling point is therefore plausible for ethanol. The molecular formula alone is insufficient; connectivity matters. This does not yield a precise measured value or a universal ordering for molecules of very different sizes."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "core-understanding",
+        "fresh-transfer-and-limit"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "specific-system-variation",
+        "textDe": "Metall, Ionenkristall und molekularer Stoff gegenüber isomeren Molekülstoffen mit unterschiedlicher Wasserstoffbrückenfähigkeit.",
+        "textEn": "A metal, ionic crystal and molecular substance versus isomeric molecular substances with different hydrogen-bonding ability."
+      },
+      {
+        "id": "model-boundary",
+        "textDe": "Ein funktionelles Strukturmerkmal erklärt einen kontrollierten Vergleich; es ersetzt keine vollständige Stoffidentifikation.",
+        "textEn": "One functional structural feature explains a controlled comparison; it does not replace complete substance identification."
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "chem-next20-02dc29ae-case-1",
+        "taskDemandDe": "Vorgegebene Stoffe: Kupfer mit Metallgitter und beweglichen Elektronen; NaCl mit festem Na+/Cl−-Gitter; Zucker mit neutralen Molekülen. Im bereitgestellten Datensatz leitet Kupfer als Feststoff Strom, festes NaCl nicht; NaCl-Lösung leitet, reine Zuckerlösung nicht. Beide löslichen Feststoffe erscheinen nach dem Lösen nicht mehr als Kristalle. Ordne die Stoffe nach Aufbau und Leitfähigkeit. Trenne Beobachtung von Teilchenbegründung und sage für geschmolzenes NaCl unter dem gegebenen Modell die Leitfähigkeit voraus.",
+        "taskDemandEn": "Supplied substances: copper with a metallic lattice and mobile electrons; NaCl with a fixed Na+/Cl− lattice; sugar consisting of neutral molecules. The supplied dataset shows solid copper conducts, solid NaCl does not, NaCl solution conducts and pure sugar solution does not. Neither soluble solid remains visibly crystalline after dissolution. Classify by structure and conductivity. Separate observations from particle explanations and predict conductivity of molten NaCl using the supplied model.",
+        "expectedPerformanceDe": "Kupfer ist metallisch; mobile Elektronen transportieren Ladung auch im Feststoff. NaCl ist ein Ionenkristall: im Feststoff sind Ionen ortsgebunden, in Lösung und Schmelze beweglich, sodass die Schmelze leiten sollte. Zucker ist ein molekularer Stoff; die vorgegebenen neutralen gelösten Moleküle liefern keine ausreichenden beweglichen Ionen für die hier betrachtete Leitfähigkeit. Sichtbares Verschwinden beim Lösen allein trennt Salz und Zucker nicht. Die Stoffeigenschaft Leitfähigkeit wird über Ladungsträger auf Teilchenebene begründet.",
+        "expectedPerformanceEn": "Copper is metallic; mobile electrons transport charge even in the solid. NaCl is an ionic crystal: ions are fixed in the solid but mobile in solution and melt, so the melt should conduct. Sugar is a molecular substance; the supplied neutral dissolved molecules provide no sufficient mobile ions for the conductivity considered here. Visible disappearance during dissolution alone does not distinguish salt from sugar. Conductivity at substance level is explained using charge carriers at particle level.",
+        "understandingFocusDe": "Löslichkeit allein identifiziert keine Bindungsart; die Aussagen über reine Lösungen gelten für das ausdrücklich vorgegebene Modell.",
+        "understandingFocusEn": "Solubility alone does not identify bonding type; statements about pure solutions apply to the explicitly supplied model."
+      },
+      {
+        "id": "chem-next20-02dc29ae-case-2",
+        "taskDemandDe": "Frischer Strukturvergleich: Ethanol CH3CH2OH und Dimethylether CH3OCH3 besitzen beide C2H6O. Gleiche äußere Bedingungen werden angenommen. Ethanol hat eine O−H-Gruppe; Dimethylether besitzt am O freie Elektronenpaare, aber keine O−H-Bindung. Ein Schüler behauptet, beide müssten wegen gleicher Summenformel gleich hoch sieden. Ordne beide Stoffklassen zu und begründe eine qualitative Siedetemperatur-Voraussage aus ihren Strukturen. Kennzeichne die Grenzen der Vorhersage.",
+        "taskDemandEn": "Fresh structural comparison: ethanol CH3CH2OH and dimethyl ether CH3OCH3 both have C2H6O. Equal external conditions are assumed. Ethanol has an O−H group; dimethyl ether has oxygen lone pairs but no O−H bond. A learner claims they must have equal boiling points because their molecular formula is identical. Assign their compound classes and justify a qualitative boiling-point prediction from structure. State the prediction limits.",
+        "expectedPerformanceDe": "Ethanol ist ein Alkohol, Dimethylether ein Ether; es handelt sich um Konstitutionsisomere. Ethanol-Moleküle können untereinander O−H···O-Wasserstoffbrücken bilden; Dimethylether-Moleküle besitzen dafür keinen passenden H-Donator. Beide haben weitere Wechselwirkungen. Bei ähnlich großer Molekülmasse ist für Ethanol deshalb eine höhere Siedetemperatur plausibel. Die Summenformel reicht nicht aus; die Bindungsanordnung ist entscheidend. Ohne Messung folgt daraus kein genauer Zahlenwert und keine universelle Rangregel für beliebig verschieden große Moleküle.",
+        "expectedPerformanceEn": "Ethanol is an alcohol and dimethyl ether an ether; they are constitutional isomers. Ethanol molecules can form O−H···O hydrogen bonds with one another; dimethyl ether molecules lack a suitable hydrogen donor. Both have additional interactions. At similar molecular mass, a higher boiling point is therefore plausible for ethanol. The molecular formula alone is insufficient; connectivity matters. This does not yield a precise measured value or a universal ordering for molecules of very different sizes.",
+        "understandingFocusDe": "Ein funktionelles Strukturmerkmal erklärt einen kontrollierten Vergleich; es ersetzt keine vollständige Stoffidentifikation.",
+        "understandingFocusEn": "One functional structural feature explains a controlled comparison; it does not replace complete substance identification."
+      }
+    ]
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "role": "SHORT_SOURCE_CODE_INPUT_AND_STOCK_SIDE_EFFECT_CONFIRMATION",
+  "atUTC": "2026-10-18T04:03:07.467297+00:00",
+  "actualPackageScripts": {
+    "validate:view-filters": "tsx scripts/validateViewFilters.ts",
+    "validate:composition-views": "tsx scripts/validateCompositionViews.ts",
+    "test:course-level-mapping-consistency": "tsx scripts/testCourseLevelMappingConsistency.ts"
+  },
+  "inspectedEntryAndInputResolverCode": [
+    {
+      "path": "app/scripts/validateViewFilters.ts",
+      "sha256": "01dffa3fde0fb4718dab7376f578e8a2b737d4ceebea628daba2cd395ac43211",
+      "bytes": 8786
+    },
+    {
+      "path": "app/scripts/validateCompositionViews.ts",
+      "sha256": "901530527fcbdd28658631c15e328a291dbc087d286e6dbf580471b4e9f69cf9",
+      "bytes": 42474
+    },
+    {
+      "path": "app/scripts/testCourseLevelMappingConsistency.ts",
+      "sha256": "92124851f1b6df36f9313a80ec2c9e1b01f879df1396d7d19f7662f0d260c648",
+      "bytes": 6095
+    },
+    {
+      "path": "app/scripts/applicabilityCompiler.ts",
+      "sha256": "50f4a09007cece8119c53f665b6442e028e4ffb3910fda7b377e60f8cb6c81dd",
+      "bytes": 56784
+    },
+    {
+      "path": "app/scripts/treeProjectionValidator.ts",
+      "sha256": "9e897dfe48727aa4b103c22abac48b84233cff15e833ccee51b49f9b34046545",
+      "bytes": 7244
+    },
+    {
+      "path": "app/scripts/generateCurriculumQualityStatus.ts",
+      "sha256": "e8dd1ee3df4054d4578109647d5f46fb5a83e5fe7de7e117a1865c39477c3fef",
+      "bytes": 275082
+    }
+  ],
+  "confirmedStableInputBoundaries": {
+    "validate:view-filters": [
+      "curricula/** normal canonical landscapes and active mappings",
+      "curricula/DE/Gymnasium/provenance/source-landscape-registry.json",
+      "curricula/DE/Gymnasium/provenance/canonical-goal-provenance-registry.json",
+      "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json",
+      "active memory-card review configs/records discovered from normal config selection",
+      "curricula/DE/Gymnasium/composition-views",
+      "docs/qa-ci/applicability-accepted-warnings.json"
+    ],
+    "validate:composition-views": [
+      "curricula/DE/Gymnasium/canonical",
+      "curricula/DE/Gymnasium/composition-views",
+      "curricula/DE/Gymnasium/provenance/canonical-math-composition-fallback-policy.json",
+      "normal semantic-kind ledgers used by canonical authoring validation"
+    ],
+    "test:course-level-mapping-consistency": [
+      "inline fixtures in the unmodified test script",
+      "isolated os.tmpdir()/course-level-active-discovery-* fixture root"
+    ]
+  },
+  "atlasGeneratedInputsExcludedByInspectedResolverPaths": true,
+  "forbiddenDirectoryNotRead": "app/scripts/config/goal-books/source-views",
+  "guardScopeOverride": null,
+  "noCodeOrNormalInputChange": true,
+  "authorizedStockScratchOutputs": [
+    "tmp/applicability/*.json from validate:view-filters",
+    "temporary course-level-active-discovery-* fixture files, removed by the original test finally block"
+  ],
+  "noExtraCommandOrOptionalTest": true
+}

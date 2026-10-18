@@ -1,0 +1,378 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:1f358402e6bc93bb58383ba925b60dd1e9e9f3c3979716724c79d861cb93b35f",
+  "reviewInputFingerprint": "sha256:2f8c88255ca0176e4d5939d13dfe5f8d81a20b73e9f6fbc71c1f9683e291e99d",
+  "goalCount": 20,
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-001-v1-a",
+      "roundId": "chemie-final-current-context-d-001-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-001-v1-independent-a",
+      "runIds": [
+        "chemie-final-current-context-d-001-v1-a.actual-native-review-a"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 Codex::Exact revision unavailable in this session"
+      ]
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-001-v1-b",
+      "roundId": "chemie-final-current-context-d-001-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-001-v1-independent-b",
+      "runIds": [
+        "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 Codex::exact revision unavailable"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 20,
+    "unavailable": 0,
+    "requiresSynthesis": 20
+  },
+  "goals": [
+    {
+      "goalId": "02634fdd-c8ba-591a-b240-77129b1bebb8",
+      "firstRecordId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a.02634fdd-c8ba-591a-b240-77129b1bebb8",
+      "secondRecordId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b-001",
+      "firstRunId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a",
+      "secondRunId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "0278a515-8990-5a1c-8a1b-a03382a144a3",
+      "firstRecordId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a.0278a515-8990-5a1c-8a1b-a03382a144a3",
+      "secondRecordId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b-002",
+      "firstRunId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a",
+      "secondRunId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "065d764c-daec-5d35-95da-3e922d2029c7",
+      "firstRecordId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a.065d764c-daec-5d35-95da-3e922d2029c7",
+      "secondRecordId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b-003",
+      "firstRunId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a",
+      "secondRunId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "127e2fc9-23f3-5ce8-a1c9-8c9e014c8a8a",
+      "firstRecordId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a.127e2fc9-23f3-5ce8-a1c9-8c9e014c8a8a",
+      "secondRecordId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b-004",
+      "firstRunId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a",
+      "secondRunId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b",
+      "firstDecision": "block",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "223e33a4-5545-5332-ac4e-7d7a6cbc587c",
+      "firstRecordId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a.223e33a4-5545-5332-ac4e-7d7a6cbc587c",
+      "secondRecordId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b-005",
+      "firstRunId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a",
+      "secondRunId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "2f3cdec5-f845-5b0f-841e-8b1d47de0281",
+      "firstRecordId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a.2f3cdec5-f845-5b0f-841e-8b1d47de0281",
+      "secondRecordId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b-006",
+      "firstRunId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a",
+      "secondRunId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3eb2a06c-d283-57aa-9eb4-088940c4801a",
+      "firstRecordId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a.3eb2a06c-d283-57aa-9eb4-088940c4801a",
+      "secondRecordId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b-007",
+      "firstRunId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a",
+      "secondRunId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "48115ff7-7aca-5d0b-a9e7-7fc6c78434ef",
+      "firstRecordId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a.48115ff7-7aca-5d0b-a9e7-7fc6c78434ef",
+      "secondRecordId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b-008",
+      "firstRunId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a",
+      "secondRunId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "4965395d-e0c5-5e23-a408-a11712aab409",
+      "firstRecordId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a.4965395d-e0c5-5e23-a408-a11712aab409",
+      "secondRecordId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b-009",
+      "firstRunId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a",
+      "secondRunId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "4bd54a18-8dd2-59db-bddf-b4c34a10ba79",
+      "firstRecordId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a.4bd54a18-8dd2-59db-bddf-b4c34a10ba79",
+      "secondRecordId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b-010",
+      "firstRunId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a",
+      "secondRunId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "4bdbdf32-3021-5a0a-b412-b611166b2d21",
+      "firstRecordId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a.4bdbdf32-3021-5a0a-b412-b611166b2d21",
+      "secondRecordId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b-011",
+      "firstRunId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a",
+      "secondRunId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "684ffe86-3a9f-5514-866a-47d16372f2d4",
+      "firstRecordId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a.684ffe86-3a9f-5514-866a-47d16372f2d4",
+      "secondRecordId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b-012",
+      "firstRunId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a",
+      "secondRunId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "6fa55d29-9d79-5b80-92f2-01f9bb64ef35",
+      "firstRecordId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a.6fa55d29-9d79-5b80-92f2-01f9bb64ef35",
+      "secondRecordId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b-013",
+      "firstRunId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a",
+      "secondRunId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "72236f2c-771e-4ab6-933a-e549ee49d15b",
+      "firstRecordId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a.72236f2c-771e-4ab6-933a-e549ee49d15b",
+      "secondRecordId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b-014",
+      "firstRunId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a",
+      "secondRunId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "7371c82e-6668-5ddc-ba78-347113fcddf8",
+      "firstRecordId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a.7371c82e-6668-5ddc-ba78-347113fcddf8",
+      "secondRecordId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b-015",
+      "firstRunId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a",
+      "secondRunId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "0959eef2-3c7d-5b33-a109-ddf332a5dbd9",
+      "firstRecordId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a.0959eef2-3c7d-5b33-a109-ddf332a5dbd9",
+      "secondRecordId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b-016",
+      "firstRunId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a",
+      "secondRunId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "7f140b34-ed26-59e7-8ad2-ccb6b56bc9d6",
+      "firstRecordId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a.7f140b34-ed26-59e7-8ad2-ccb6b56bc9d6",
+      "secondRecordId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b-017",
+      "firstRunId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a",
+      "secondRunId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "85342c52-9722-54b0-8fbb-513d9d648363",
+      "firstRecordId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a.85342c52-9722-54b0-8fbb-513d9d648363",
+      "secondRecordId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b-018",
+      "firstRunId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a",
+      "secondRunId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "8721d943-8368-5304-bd3c-7d7944099662",
+      "firstRecordId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a.8721d943-8368-5304-bd3c-7d7944099662",
+      "secondRecordId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b-019",
+      "firstRunId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a",
+      "secondRunId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "87d8cc68-fe82-5273-9e43-c18b566ecb6c",
+      "firstRecordId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a.87d8cc68-fe82-5273-9e43-c18b566ecb6c",
+      "secondRecordId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b-020",
+      "firstRunId": "chemie-final-current-context-d-001-v1-a.actual-native-review-a",
+      "secondRunId": "chemie-final-current-context-d-001-v1-b-gpt6-codex-native-b",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

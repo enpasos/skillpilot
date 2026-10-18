@@ -1,0 +1,77 @@
+{
+  "role": "SUMMARY_OF_EXACT_ACTUAL_RAW_STOCK_OUTPUTS_NOT_EXTRA_VALIDATION",
+  "allThreeExitCodesZero": true,
+  "viewFilters": {
+    "errors": 0,
+    "activeWarnings": 0,
+    "diagnosticFindings": 27568,
+    "acceptedWarnings": 110
+  },
+  "compositionViews": {
+    "errors": 0,
+    "warnings": 2332,
+    "validatedCompositionViews": 352,
+    "canonicalLandscapeRegistrySize": 21,
+    "warningCodes": {
+      "CPV-102": 2332
+    }
+  },
+  "courseLevelFixture": {
+    "exitCode": 0,
+    "actualRawSuccessLine": "Course-level mapping union, active discovery and strict failure regressions passed.",
+    "scope": "Original fixture/discovery/failure regressions, not the actual-current-CQR004 measurement run by Root."
+  },
+  "records": [
+    {
+      "command": "npm --prefix app run validate:view-filters",
+      "exitCode": 0,
+      "actualWallDurationSeconds": 15.513220146,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-three-view-course-stock-checks-technical-20261018-v1/raw/validate-view-filters.stdout.txt",
+        "sha256": "aafc9ca5e8c8717c7364319933428cebaffd37bd33079bbd6ecf53ad57ef583e",
+        "bytes": 1290
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-three-view-course-stock-checks-technical-20261018-v1/raw/validate-view-filters.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "command": "npm --prefix app run validate:composition-views",
+      "exitCode": 0,
+      "actualWallDurationSeconds": 235.108780179,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-three-view-course-stock-checks-technical-20261018-v1/raw/validate-composition-views.stdout.txt",
+        "sha256": "02cde313f2c6de9cd54bb19bb310357d23101fc09aa560481cb849f4834682fc",
+        "bytes": 782612
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-three-view-course-stock-checks-technical-20261018-v1/raw/validate-composition-views.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "command": "npm --prefix app run test:course-level-mapping-consistency",
+      "exitCode": 0,
+      "actualWallDurationSeconds": 0.58570993,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-three-view-course-stock-checks-technical-20261018-v1/raw/test-course-level-mapping-consistency.stdout.txt",
+        "sha256": "03f9f6711595d5d474656bd4ad7b0b07ff5c3c258a8d2f4e0516c6528661dddf",
+        "bytes": 194
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-three-view-course-stock-checks-technical-20261018-v1/raw/test-course-level-mapping-consistency.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    }
+  ],
+  "allThreeActualWallDurationSeconds": 235.114484925,
+  "warningsPreservedAndNotHidden": true,
+  "noGuardOrEnvironmentScopeOverride": true,
+  "noNormalWritesByThisAgent": true,
+  "noAtlasGeneratedSourceViewInputRead": true,
+  "noWholeCurriculumOrM7ApprovalClaim": true
+}

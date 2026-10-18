@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-007-v1-resolution-4285d84a-2c9a-4d51-8250-8bed4daf2d2e",
+  "goal": {
+    "goalId": "4285d84a-2c9a-4d51-8250-8bed4daf2d2e",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:29d359f1dfdfe70d4283316175aa4e2977248948da4d2e6175673198a4b4020f",
+    "pageFingerprint": "sha256:13259d2d96a04651e1b3f0ca574bffe57f987644adca4a2a4653eed8a7e6773f",
+    "goalReviewContextFingerprint": "sha256:286403297fa0a55274ac95f658752c1b37df11e870b408c3403cb4b4a84493f9",
+    "finalText": {
+      "titleDe": "Ionen als Ladungsträger erklären",
+      "titleEn": "Explain ions as charge carriers",
+      "descriptionDe": "Die lernende Person kann Ionenbildung beschreiben, Kationen und Anionen unterscheiden und ihre Rolle als Ladungsträger in Lösungen fachlich erläutern.",
+      "descriptionEn": "The learner can describe ion formation, distinguish cations and anions, and explain their role as charge carriers in solutions."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-007-v1-a",
+      "campaignDigest": "sha256:03e23ca7a839411ee0694d3ffc4c5304359bdbdb4885b890ef7f8def67d5e5a0",
+      "roundId": "chemie-final-current-context-d-007-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-007-v1-independent-a",
+      "reviewInputFingerprint": "sha256:9786177231bba01a5178b748443b7e2ac24b65d395c6cfda891b47d1838d8fd4",
+      "goalReviewContextFingerprint": "sha256:286403297fa0a55274ac95f658752c1b37df11e870b408c3403cb4b4a84493f9",
+      "batchId": "chemie-final-current-context-d-007-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch007-20261018",
+      "runManifestDigest": "sha256:41b3803956cb0b8e3ceaa1b4c1224724037cd8f6fc9ff400cb30dc979ec172d0",
+      "resultsDigest": "sha256:2deca668c6059260417c15a3d4e706e9325f6ce3e8e0bef2d977983444354968",
+      "recordId": "codex-reviewer-a-final163-batch007-20261018.013",
+      "recordDigest": "sha256:d9b2bc9f81f4d5b21fbce5b65eaa7862a0c7f07a26e027a4b03ae5e2300ff8c9"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-007-v1-b",
+      "campaignDigest": "sha256:f96e78c8b5b03376c090596c68434afdda0adfb82adef282dc1a1a949aed2746",
+      "roundId": "chemie-final-current-context-d-007-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-007-v1-independent-b",
+      "reviewInputFingerprint": "sha256:9786177231bba01a5178b748443b7e2ac24b65d395c6cfda891b47d1838d8fd4",
+      "goalReviewContextFingerprint": "sha256:286403297fa0a55274ac95f658752c1b37df11e870b408c3403cb4b4a84493f9",
+      "batchId": "chemie-final-current-context-d-007-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-007-20261018",
+      "runManifestDigest": "sha256:c21072a1baeec0fb475776827fd6bdcb51afcb70555317673d8fac140568d60f",
+      "resultsDigest": "sha256:f627bfdb86dcc4a0e7dec63f04ec892ed6ec7af463e3169bda439a10444338fd",
+      "recordId": "chemie-final163-native-b-007-20261018:4285d84a-2c9a-4d51-8250-8bed4daf2d2e",
+      "recordDigest": "sha256:c50ea544b634e53f0c72477bdf966637a193447768605d89828787f34aabab4f"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:9d01c3a2eaf6ff3168f19750d5b1780c3bd726f4c76d033ac9016e0d3a5debbf"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-007-20261018-v1",
+    "manifestDigest": "sha256:a002d58ade8fb14ebb3f915bed25f48fcfa287b2641be1e7a466d8abd811c99e",
+    "manifestFingerprint": "sha256:12732999b92050cc52642e0c0e4f1bd967da4b1b66528e696859794dba344986",
+    "decisionId": "chemie-final163-paired-D-only-007-20261018-v1-decision-013"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-007-20261018-v1-decision-013",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:39:49.306Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch007-20261018.013): Die D-Fassung trennt Ionendefinition und Rolle in Lösung hinreichend. Das vollständige P unterscheidet explizit die vorherige Bildung aus Elementen vom Hydratisieren vorhandener Gitterionen. Ladungsbilanz und beide Wanderungsrichtungen stimmen; weder Protonenumwandlung noch freie Elektronenleitung durch Wasser werden behauptet. Die begrenzte Zuckerkontrolle vermeidet eine falsche Verallgemeinerung auf Säuren. B (chemie-final163-native-b-007-20261018:4285d84a-2c9a-4d51-8250-8bed4daf2d2e): Das D ist nach der Formelsprache eine zusammenhängende Teilchen-/Ladungsträgerkompetenz. Das ganze P erklärt Ionenbildung und Beweglichkeit, verwendet einen geänderten Ladungsfaktor und grenzt Salzlösen von Elektronenübertragung ab. Es behauptet aus der Zuckerlösung keine allgemeine Nichtionisierbarkeit aller molekularen Stoffe. Reale Elektrolyseprodukte gehören zu einem anderen Nachfolger und werden hier nicht vorausgesetzt.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch007-20261018.013; chemie-final163-native-b-007-20261018:4285d84a-2c9a-4d51-8250-8bed4daf2d2e). Their current English understanding evidence is retained: A: Atomic ions form by electron loss or gain with unchanged nuclei; mobile cations and anions both carry current in a salt solution. B: Atomic ions form through changed electron count with an unchanged nucleus; dissolved mobile cations and anions carry current whereas solid-lattice ions cannot move freely. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Atomionen entstehen durch Elektronenverlust oder -gewinn bei unverändertem Kern; bewegliche Kationen und Anionen tragen in einer Salzlösung beide zum Strom bei.",
+      "essentialUnderstandingEn": "Atomic ions form by electron loss or gain with unchanged nuclei; mobile cations and anions both carry current in a salt solution.",
+      "observablePerformanceDe": "Erklärt Na+/Cl−-Bildung, Ladungsvorzeichen und Wanderung zu negativem bzw. positivem Pol und begründet den Unterschied zwischen festem Gitter und gelösten Ionen.",
+      "observablePerformanceEn": "Explains Na+/Cl− formation, charge signs and migration to negative and positive poles respectively and distinguishes solid-lattice from dissolved ions.",
+      "transferExpectationDe": "Bilanziert MgCl2 mit einem Mg2+ und zwei Cl− und vergleicht die gegebene ungeladene Zuckerlösung, ohne Salzlösen als neue Elektronenübertragung oder alle Moleküle als grundsätzlich nichtionisierend zu deuten.",
+      "transferExpectationEn": "Balances MgCl2 with one Mg2+ and two Cl− and compares the supplied uncharged sugar solution without treating salt dissolution as new electron transfer or all molecules as necessarily nonionising."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-c93f7e3b023e712cd391481e9186208a42545b8c94716d32580819497d420035",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:79d60f1c42c8efee7bccd8e8c0a7cc6e35121c744350ac769ac7ead856ef477f"
+}

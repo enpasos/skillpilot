@@ -1,0 +1,91 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+  "schemaVersion": 2,
+  "reviewId": "chemie-carbonyl15-current422-informed-positive-profile-b-20261015-v1",
+  "goalFingerprintRuleVersion": "goal-evidence-v1",
+  "profileRuleVersion": "positive-understanding-evidence-v2",
+  "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+  "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+  "goalId": "539476ee-f9cd-5b66-9b2e-ab42c4ea7cf4",
+  "goalFingerprint": "sha256:022d4ffda66b0f18c7f9b2cc0dde2d83b2712a346ef50cf4e89ed2985a782ab3",
+  "reviewInputFingerprint": "sha256:8bbd5bf17c2f14d7a2d1e09a6b577622107fc2f22bc538c30168e5634dfc8879",
+  "profileFingerprint": "sha256:f04d836ab748250d6ee3fa0425c9b4cf5bbf5ecbee6eaddcdbb4e47b304f5c11",
+  "status": "needs_human_review",
+  "reviewAuthority": "ai_candidate",
+  "reviewedAt": "2026-10-17T21:23:41.999975+00:00",
+  "reviewer": "Codex B technical current-input serialization; underlying scientific authors and reviewers remain recorded in the P442 selection/provenance",
+  "reason": "Das modeling-Profil verbindet Disconnection, vollständige Bausteine und Vorwärtsprüfung. e3 beschreibt Plausibilitätsgrenzen, nicht die Durchführung einer zusätzlichen Wirkstoffsynthese. O-/N-Acylierung sind konkrete sinnvolle Variationsachsen. Die Fälle gehen ohne Bildvorlage. Transfer: Phenolester zu aromatischem Amid ändert Bindungstrennung und selektiven Angriffsort, nicht nur Molekülnamen. Operatoren: Ableiten von Edukten und Reaktionstyp wird sichtbar durch Zeichnung/Benennung, Vorwärtsbilanz und begründete Zurückweisung einer falschen Route. Vollständige Prüfung beider DE/EN-Fälle und Rubriken: PA.FIRST.independent-informed-science.json, Ziel 10.",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "reviewRunIds": [],
+  "dissent": [],
+  "profile": {
+    "archetype": "modeling",
+    "expectations": [
+      {
+        "id": "e1",
+        "essentialUnderstandingDe": "Retrosynthese trennt eine plausible Bindung und ergänzt vollständige Edukte.",
+        "essentialUnderstandingEn": "Retrosynthesis disconnects a plausible bond and supplies complete reactants.",
+        "observablePerformanceDe": "Kennzeichnet die retrosynthetische Acylbindung und leitet geeignete Edukte ab.",
+        "observablePerformanceEn": "Marks the retrosynthetic acyl bond and infers suitable reactants."
+      },
+      {
+        "id": "e2",
+        "essentialUnderstandingDe": "Vorwärtsreaktion und Nebenprodukt prüfen, ob die vorgeschlagenen Edukte stofflich passen.",
+        "essentialUnderstandingEn": "Forward reaction/byproduct test whether proposed reactants fit materially.",
+        "observablePerformanceDe": "Formuliert die bilanzierte Vorwärtsreaktion und den zugrunde liegenden Reaktionstyp.",
+        "observablePerformanceEn": "Writes the balanced forward reaction and underlying reaction type."
+      },
+      {
+        "id": "e3",
+        "essentialUnderstandingDe": "Mehrere Retrosynthesen können formal möglich sein; Chemoselektivität und Aktivierung begrenzen die Plausibilität.",
+        "essentialUnderstandingEn": "Several formal routes may exist; chemoselectivity/activation bound plausibility.",
+        "observablePerformanceDe": "Begründet den gewählten O-/N-Acylierungsweg und erkennt eine falsche Disconnection.",
+        "observablePerformanceEn": "Justifies the selected O/N acylation and detects an incorrect disconnection."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "e1",
+        "e2",
+        "e3"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "v1",
+        "textDe": "Phenolester oder aromatisches Amid",
+        "textEn": "Phenolic ester versus aromatic amide"
+      },
+      {
+        "id": "v2",
+        "textDe": "Acylanhydrid oder formale Säurekondensation",
+        "textEn": "Acyl anhydride versus formal acid condensation"
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "539476ee-case-1",
+        "taskDemandDe": "Daten und Bedingungen:\nProdukt: ASS 2-(CH₃COO)-C₆H₄-COOH. Auswahl möglicher Bausteine: Salicylsäure2-HO-C₆H₄-COOH; Ethansäureanhydrid(CH₃CO)₂O; EthanolCH₃CH₂OH; BenzoesäureC₆H₅COOH. Gegeben: aktiviertes Anhydrid überträgt einen CH₃CO-Rest auf Phenol-O, Nebenprodukt Ethansäure. Keine reale Synthese. Formaler Vergleich mit Essigsäure ist erlaubt, wenn notwendige Aktivierung/Gleichgewicht genannt werden.\nAufgaben:\n1. Markiere die zu trennende Acyl-C–O-Bindung und wähle vollständige geeignete Edukte.\n2. Bilanziere Vorwärtsreaktion samt Nebenprodukt und benenne den Reaktionstyp mechanistisch.\n3. Widerlege Benzoesäure plus Ethanol als Route zu ASS und bewerte eine formale Ethansäure-Alternative.",
+        "taskDemandEn": "Data and conditions:\nProduct ASA2-(CH₃COO)-C₆H₄-COOH. Candidate building blocks: salicylic acid2-HO-C₆H₄-COOH; ethanoic anhydride(CH₃CO)₂O; ethanolCH₃CH₂OH; benzoic acidC₆H₅COOH. Supplied rule: activated anhydride transfers CH₃CO to phenolic O, producing ethanoic acid. No actual synthesis. Formal comparison with ethanoic acid is allowed if activation/equilibrium requirements are acknowledged.\nTasks:\n1. Mark the acyl C–O disconnection and select complete suitable reactants.\n2. Balance the forward reaction/byproduct and name the mechanistic reaction type.\n3. Reject benzoic acid plus ethanol as a route to ASA and assess a formal ethanoic-acid alternative.",
+        "expectedPerformanceDe": "1. Getrennt wird Phenol-O–C(=O)CH₃; zurück bleiben Salicylsäure mit freiem Phenol-OH und ein CH₃CO-Donor. Salicylsäure plus Ethansäureanhydrid erfüllt dies. Die COOH am Ring bleibt Teil des Grundgerüsts.\n2. C₇H₆O₃ +(CH₃CO)₂O → C₉H₈O₄ +CH₃COOH: C11/H12/O6 beidseitig. O-Acylierung über nucleophile Acylsubstitution mit Addition/Eliminierung; beim gegebenen Anhydridweg entsteht Ethansäure, nicht Wasser.\n3. Benzoesäure/Ethanol würde Ethylbenzoat liefern, nicht ortho-acetyliertes Phenol mit freier COOH. Salicylsäure/Ethansäure wäre formal eine Wasser abspaltende O-Veresterung, braucht aber geeignete Aktivierung/Entwässerung und ist nicht automatisch gleich dem gegebenen Anhydridweg.",
+        "expectedPerformanceEn": "1. Disconnect phenolic O–C(=O)CH₃, leaving salicylic acid with free phenolic OH and an acetyl donor. Salicylic acid plus ethanoic anhydride supplies these. Ring COOH remains in the scaffold.\n2. C₇H₆O₃ +(CH₃CO)₂O → C₉H₈O₄ +CH₃COOH balances C11/H12/O6. O acylation proceeds by nucleophilic acyl substitution/addition-elimination; this anhydride route yields ethanoic acid rather than water.\n3. Benzoic acid/ethanol would yield ethyl benzoate, not an ortho acetylated phenol retaining COOH. Salicylic/ethanoic acid is a formal water-eliminating O esterification but needs suitable activation/dehydration and is not automatically equivalent to the supplied anhydride route.",
+        "understandingFocusDe": "Retrosynthese trennt eine plausible Bindung; vollständige Edukte und Vorwärtsbilanz prüfen die Plausibilität. Transfer: ASS- zu Paracetamol-Disconnection übertragen und konkurrierende O-/N-Acylierung unterscheiden. Zwei unabhängige Nachweisschritte können in einer integrierten Leistung auftreten; die zwei Fallvarianten sind keine Pflichtaufgabenquote. Sobald alle Aspekte und selbstständiger Transfer hinreichend gezeigt sind, endet die Prüfung.",
+        "understandingFocusEn": "Retrosynthesis disconnects a plausible bond; complete reactants and a forward balance test plausibility. Transfer: Transfer from ASA to paracetamol disconnection and distinguish competing O/N acylation. Two independent demonstration steps can occur in one integrated performance; the two case variants are not a mandatory task quota. Stop assessment once all aspects and independent transfer are sufficiently shown."
+      },
+      {
+        "id": "539476ee-case-2",
+        "taskDemandDe": "Daten und Bedingungen:\nProdukt HO-C₆H₄-NH-C(=O)CH₃, OH/NH para. Bausteine4-AminophenolHO-C₆H₄-NH₂, Ethansäureanhydrid(CH₃CO)₂O, AnilinC₆H₅NH₂, MethanolCH₃OH. Gegebenes selektives Modell acyliert Amino-N zu einem Amid; phenolisches OH bleibt frei. Mögliche O-Acylierung ist eine konkurrierende, separat zu kontrollierende Route. Keine Herstellungsanweisung.\nAufgaben:\n1. Kennzeichne die Amid-Disconnection und wähle geeignete vollständige Bausteine.\n2. Bilanziere Vorwärtsreaktion und ordne Amidbildung und Nebenprodukt zu.\n3. Erkläre, warum O-Acylierung ein anderes Produkt liefert und welche Grenze ein retrosynthetischer Vorschlag hat.",
+        "taskDemandEn": "Data and conditions:\nProduct HO-C₆H₄-NH-C(=O)CH₃, para OH/NH. Building blocks4-aminophenolHO-C₆H₄-NH₂, ethanoic anhydride(CH₃CO)₂O, anilineC₆H₅NH₂ and methanolCH₃OH. Supplied selective model acylates amino N to amide, retaining phenolic OH. Possible O acylation is a competing route requiring separate control. No manufacturing instruction.\nTasks:\n1. Identify the amide disconnection and choose complete suitable building blocks.\n2. Balance the forward reaction and identify amide formation/byproduct.\n3. Explain why O acylation gives a different product and state a limit of a retrosynthetic proposal.",
+        "expectedPerformanceDe": "1. N–C(=O)CH₃ wird getrennt.4-Aminophenol liefert Ring/OH/NH₂, Anhydrid den Acetylrest. Anilin fehlt das para-OH; Methanol liefert weder Ring noch Aminofunktion.\n2. C₆H₇NO +(CH₃CO)₂O → C₈H₉NO₂ +CH₃COOH: C10/H13/N1/O4 beidseitig. N-Acylierung durch nucleophile Acylsubstitution bildet NH-C(=O)-CH₃; Ethansäure ist Nebenprodukt. Eine Wasser-Kondensationsgleichung wäre für den tatsächlichen Anhydridweg falsch.\n3. O-Acylierung ergäbe CH₃COO-C₆H₄-NH₂, einen Phenolester mit freier Aminogruppe, nicht Paracetamol. Plausible Disconnection beweist noch keine Selektivität, Ausbeute oder tatsächliche Herstellung; die gegebenen selektiven Bedingungen sind Teil des Modells.",
+        "expectedPerformanceEn": "1. Disconnect N–C(=O)CH₃.4-Aminophenol supplies ring/OH/NH₂ and anhydride supplies acetyl. Aniline lacks para OH; methanol supplies neither ring nor amino function.\n2. C₆H₇NO +(CH₃CO)₂O → C₈H₉NO₂ +CH₃COOH balances C10/H13/N1/O4. N acylation by nucleophilic acyl substitution gives NH-C(=O)-CH₃, with ethanoic acid byproduct. A water-condensation equation would misrepresent this anhydride route.\n3. O acylation would give CH₃COO-C₆H₄-NH₂, a phenolic ester retaining amine, not paracetamol. Plausible disconnection proves no selectivity, yield or actual synthesis; supplied selective conditions belong to the model.",
+        "understandingFocusDe": "Retrosynthese trennt eine plausible Bindung; vollständige Edukte und Vorwärtsbilanz prüfen die Plausibilität. Transfer: ASS- zu Paracetamol-Disconnection übertragen und konkurrierende O-/N-Acylierung unterscheiden. Zwei unabhängige Nachweisschritte können in einer integrierten Leistung auftreten; die zwei Fallvarianten sind keine Pflichtaufgabenquote. Sobald alle Aspekte und selbstständiger Transfer hinreichend gezeigt sind, endet die Prüfung.",
+        "understandingFocusEn": "Retrosynthesis disconnects a plausible bond; complete reactants and a forward balance test plausibility. Transfer: Transfer from ASA to paracetamol disconnection and distinguish competing O/N acylation. Two independent demonstration steps can occur in one integrated performance; the two case variants are not a mandatory task quota. Stop assessment once all aspects and independent transfer are sufficiently shown."
+      }
+    ]
+  }
+}

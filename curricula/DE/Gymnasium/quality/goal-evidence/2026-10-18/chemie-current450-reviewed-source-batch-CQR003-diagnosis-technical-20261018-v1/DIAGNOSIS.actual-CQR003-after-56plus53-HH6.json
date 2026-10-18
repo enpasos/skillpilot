@@ -1,0 +1,5317 @@
+{
+  "atUTC": "2026-10-18T02:39:05.877Z",
+  "method": "Actual unchanged private stock CQR003 functions exposed through an exact temporary module copy plus export declarations; Chemistry report only. No source-gate modification or new scientific vote.",
+  "originalModule": {
+    "path": "app/scripts/generateCurriculumQualityStatus.ts",
+    "sha256": "e8dd1ee3df4054d4578109647d5f46fb5a83e5fe7de7e117a1865c39477c3fef",
+    "bytes": 275082
+  },
+  "applicabilityReport": {
+    "path": "tmp/applicability/c436b994-8f44-5134-b9f8-0c9f5d6a5ba0.json",
+    "sha256": "832c8b4853fdb943b8a669f88f9813e840645e381c69bcee8e970ec9e1854b9d",
+    "bytes": 7850844
+  },
+  "rule": {
+    "id": "CQR-003",
+    "status": "fail",
+    "summary": "0/16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.",
+    "metrics": {
+      "totalJurisdictions": 16,
+      "coveredJurisdictions": 16,
+      "sourceBackedJurisdictions": 16,
+      "sourceCompleteJurisdictions": 0,
+      "fullCoverageJurisdictions": 0,
+      "uncoveredJurisdictions": 0,
+      "incompleteJurisdictions": 16,
+      "unsupportedAssignmentJurisdictions": 16,
+      "sourceUnmappedJurisdictions": 3,
+      "unsupportedAssignedAtomicGoals": 304,
+      "unmappedSourceAtomicGoals": 4,
+      "sourceAtomicGoals": 6078,
+      "sourceMappedToViewAtomicGoals": 6074,
+      "sourceOriginalGoals": 6078,
+      "sourceFullyCoveredOriginalGoals": 6074,
+      "sourcePartiallyCoveredOriginalGoals": 0,
+      "sourceUncoveredOriginalGoals": 4,
+      "surrogateBackedAtomicGoals": 22,
+      "partialSourceLinkedAtomicGoals": 0,
+      "warningedJurisdictions": 0,
+      "cleanJurisdictions": 0,
+      "partialJurisdictions": 0,
+      "errorJurisdictions": 16,
+      "minSourceBackedAtomicGoals": 128,
+      "maxVisibleAtomicGoals": 349,
+      "maxSourceBackedAtomicGoals": 335,
+      "totalAtomicGoals": 379
+    },
+    "details": [
+      "DE-BW: 10 assigned atomic goal(s) without source-backed Lehrplan evidence",
+      "DE-HE: 14 assigned atomic goal(s) without source-backed Lehrplan evidence",
+      "DE-BY: 2 assigned atomic goal(s) without source-backed Lehrplan evidence",
+      "DE-BB: 27 assigned atomic goal(s) without source-backed Lehrplan evidence",
+      "DE-BE: 27 assigned atomic goal(s) without source-backed Lehrplan evidence",
+      "DE-NI: 14 assigned atomic goal(s) without source-backed Lehrplan evidence",
+      "DE-NW: 16 assigned atomic goal(s) without source-backed Lehrplan evidence",
+      "DE-SH: 20 assigned atomic goal(s) without source-backed Lehrplan evidence",
+      "DE-HB: 8 assigned atomic goal(s) without source-backed Lehrplan evidence",
+      "DE-HH: 22 assigned atomic goal(s) without source-backed Lehrplan evidence",
+      "DE-MV: 23 assigned atomic goal(s) without source-backed Lehrplan evidence",
+      "DE-RP: 26 assigned atomic goal(s) without source-backed Lehrplan evidence",
+      "DE-SL: 25 assigned atomic goal(s) without source-backed Lehrplan evidence",
+      "DE-SN: 28 assigned atomic goal(s) without source-backed Lehrplan evidence",
+      "DE-ST: 21 assigned atomic goal(s) without source-backed Lehrplan evidence",
+      "DE-TH: 21 assigned atomic goal(s) without source-backed Lehrplan evidence",
+      "DE-NI: 1 source Lehrplan atom(s) do not map into the Bundesland view",
+      "DE-MV: 1 source Lehrplan atom(s) do not map into the Bundesland view",
+      "DE-ST: 2 source Lehrplan atom(s) do not map into the Bundesland view",
+      "DE-BW: 180/190 source-backed view atomic goal(s)"
+    ]
+  },
+  "coverage": {
+    "dimension": "jurisdiction",
+    "totalJurisdictions": 16,
+    "totalAtomicGoals": 379,
+    "rawAtomicGoals": 561,
+    "coveredJurisdictions": 16,
+    "sourceBackedJurisdictions": 16,
+    "sourceCompleteJurisdictions": 0,
+    "cleanJurisdictions": 0,
+    "partialJurisdictions": 0,
+    "errorJurisdictions": 16,
+    "maxVisibleAtomicGoals": 349,
+    "maxSourceBackedAtomicGoals": 335,
+    "maxAtomicCoveragePercent": 92.1,
+    "maxSourceBackedCoveragePercent": 99.2,
+    "unsupportedAssignedAtomicGoals": 304,
+    "surrogateBackedAtomicGoals": 22,
+    "partialSourceLinkedAtomicGoals": 0,
+    "sourceAtomicGoals": 6078,
+    "sourceMappedToViewAtomicGoals": 6074,
+    "unmappedSourceAtomicGoals": 4,
+    "sourceExtractedGoals": 6078,
+    "sourceUnregisteredGoals": 0,
+    "sourceExtractedAtomicGoals": 6078,
+    "sourceUnregisteredAtomicGoals": 0,
+    "sourceOriginalGoals": 6078,
+    "sourceFullyCoveredOriginalGoals": 6074,
+    "sourcePartiallyCoveredOriginalGoals": 0,
+    "sourceUncoveredOriginalGoals": 4,
+    "jurisdictions": [
+      {
+        "jurisdiction": "DE-BW",
+        "labelDe": "Baden-Württemberg",
+        "labelEn": "Baden-Wuerttemberg",
+        "visibleGoals": 343,
+        "visibleAtomicGoals": 190,
+        "visibleClusterGoals": 153,
+        "viewAtomicGoals": 190,
+        "sourceBackedAtomicGoals": 180,
+        "surrogateBackedAtomicGoals": 3,
+        "unsupportedAssignedAtomicGoals": 10,
+        "partialSourceLinkedAtomicGoals": 0,
+        "sourceAtomicGoals": 191,
+        "sourceMappedToViewAtomicGoals": 191,
+        "unmappedSourceAtomicGoals": 0,
+        "sourceExtractedGoals": 191,
+        "sourceUnregisteredGoals": 0,
+        "sourceExtractedAtomicGoals": 191,
+        "sourceUnregisteredAtomicGoals": 0,
+        "sourceOriginalGoals": 191,
+        "sourceFullyCoveredOriginalGoals": 191,
+        "sourcePartiallyCoveredOriginalGoals": 0,
+        "sourceUncoveredOriginalGoals": 0,
+        "errors": 0,
+        "warnings": 0,
+        "diagnosticPartialOnlyWarnings": 110,
+        "atomicCoveragePercent": 50.1,
+        "sourceBackedCoveragePercent": 94.7,
+        "sourceReverseCoveragePercent": 100,
+        "status": "error"
+      },
+      {
+        "jurisdiction": "DE-HE",
+        "labelDe": "Hessen",
+        "labelEn": "Hesse",
+        "visibleGoals": 576,
+        "visibleAtomicGoals": 349,
+        "visibleClusterGoals": 227,
+        "viewAtomicGoals": 349,
+        "sourceBackedAtomicGoals": 335,
+        "surrogateBackedAtomicGoals": 0,
+        "unsupportedAssignedAtomicGoals": 14,
+        "partialSourceLinkedAtomicGoals": 0,
+        "sourceAtomicGoals": 325,
+        "sourceMappedToViewAtomicGoals": 325,
+        "unmappedSourceAtomicGoals": 0,
+        "sourceExtractedGoals": 325,
+        "sourceUnregisteredGoals": 0,
+        "sourceExtractedAtomicGoals": 325,
+        "sourceUnregisteredAtomicGoals": 0,
+        "sourceOriginalGoals": 325,
+        "sourceFullyCoveredOriginalGoals": 325,
+        "sourcePartiallyCoveredOriginalGoals": 0,
+        "sourceUncoveredOriginalGoals": 0,
+        "errors": 0,
+        "warnings": 0,
+        "diagnosticPartialOnlyWarnings": 25,
+        "atomicCoveragePercent": 92.1,
+        "sourceBackedCoveragePercent": 96,
+        "sourceReverseCoveragePercent": 100,
+        "status": "error"
+      },
+      {
+        "jurisdiction": "DE-BY",
+        "labelDe": "Bayern",
+        "labelEn": "Bavaria",
+        "visibleGoals": 594,
+        "visibleAtomicGoals": 259,
+        "visibleClusterGoals": 335,
+        "viewAtomicGoals": 259,
+        "sourceBackedAtomicGoals": 257,
+        "surrogateBackedAtomicGoals": 0,
+        "unsupportedAssignedAtomicGoals": 2,
+        "partialSourceLinkedAtomicGoals": 0,
+        "sourceAtomicGoals": 384,
+        "sourceMappedToViewAtomicGoals": 384,
+        "unmappedSourceAtomicGoals": 0,
+        "sourceExtractedGoals": 384,
+        "sourceUnregisteredGoals": 0,
+        "sourceExtractedAtomicGoals": 384,
+        "sourceUnregisteredAtomicGoals": 0,
+        "sourceOriginalGoals": 384,
+        "sourceFullyCoveredOriginalGoals": 384,
+        "sourcePartiallyCoveredOriginalGoals": 0,
+        "sourceUncoveredOriginalGoals": 0,
+        "errors": 0,
+        "warnings": 0,
+        "diagnosticPartialOnlyWarnings": 28,
+        "atomicCoveragePercent": 68.3,
+        "sourceBackedCoveragePercent": 99.2,
+        "sourceReverseCoveragePercent": 100,
+        "status": "error"
+      },
+      {
+        "jurisdiction": "DE-BB",
+        "labelDe": "Brandenburg",
+        "labelEn": "Brandenburg",
+        "visibleGoals": 390,
+        "visibleAtomicGoals": 221,
+        "visibleClusterGoals": 169,
+        "viewAtomicGoals": 221,
+        "sourceBackedAtomicGoals": 194,
+        "surrogateBackedAtomicGoals": 1,
+        "unsupportedAssignedAtomicGoals": 27,
+        "partialSourceLinkedAtomicGoals": 0,
+        "sourceAtomicGoals": 284,
+        "sourceMappedToViewAtomicGoals": 284,
+        "unmappedSourceAtomicGoals": 0,
+        "sourceExtractedGoals": 284,
+        "sourceUnregisteredGoals": 0,
+        "sourceExtractedAtomicGoals": 284,
+        "sourceUnregisteredAtomicGoals": 0,
+        "sourceOriginalGoals": 284,
+        "sourceFullyCoveredOriginalGoals": 284,
+        "sourcePartiallyCoveredOriginalGoals": 0,
+        "sourceUncoveredOriginalGoals": 0,
+        "errors": 0,
+        "warnings": 0,
+        "diagnosticPartialOnlyWarnings": 144,
+        "atomicCoveragePercent": 58.3,
+        "sourceBackedCoveragePercent": 87.8,
+        "sourceReverseCoveragePercent": 100,
+        "status": "error"
+      },
+      {
+        "jurisdiction": "DE-BE",
+        "labelDe": "Berlin",
+        "labelEn": "Berlin",
+        "visibleGoals": 390,
+        "visibleAtomicGoals": 221,
+        "visibleClusterGoals": 169,
+        "viewAtomicGoals": 221,
+        "sourceBackedAtomicGoals": 194,
+        "surrogateBackedAtomicGoals": 1,
+        "unsupportedAssignedAtomicGoals": 27,
+        "partialSourceLinkedAtomicGoals": 0,
+        "sourceAtomicGoals": 284,
+        "sourceMappedToViewAtomicGoals": 284,
+        "unmappedSourceAtomicGoals": 0,
+        "sourceExtractedGoals": 284,
+        "sourceUnregisteredGoals": 0,
+        "sourceExtractedAtomicGoals": 284,
+        "sourceUnregisteredAtomicGoals": 0,
+        "sourceOriginalGoals": 284,
+        "sourceFullyCoveredOriginalGoals": 284,
+        "sourcePartiallyCoveredOriginalGoals": 0,
+        "sourceUncoveredOriginalGoals": 0,
+        "errors": 0,
+        "warnings": 0,
+        "diagnosticPartialOnlyWarnings": 144,
+        "atomicCoveragePercent": 58.3,
+        "sourceBackedCoveragePercent": 87.8,
+        "sourceReverseCoveragePercent": 100,
+        "status": "error"
+      },
+      {
+        "jurisdiction": "DE-NI",
+        "labelDe": "Niedersachsen",
+        "labelEn": "Lower Saxony",
+        "visibleGoals": 388,
+        "visibleAtomicGoals": 251,
+        "visibleClusterGoals": 137,
+        "viewAtomicGoals": 251,
+        "sourceBackedAtomicGoals": 237,
+        "surrogateBackedAtomicGoals": 6,
+        "unsupportedAssignedAtomicGoals": 14,
+        "partialSourceLinkedAtomicGoals": 0,
+        "sourceAtomicGoals": 531,
+        "sourceMappedToViewAtomicGoals": 530,
+        "unmappedSourceAtomicGoals": 1,
+        "sourceExtractedGoals": 531,
+        "sourceUnregisteredGoals": 0,
+        "sourceExtractedAtomicGoals": 531,
+        "sourceUnregisteredAtomicGoals": 0,
+        "sourceOriginalGoals": 531,
+        "sourceFullyCoveredOriginalGoals": 530,
+        "sourcePartiallyCoveredOriginalGoals": 0,
+        "sourceUncoveredOriginalGoals": 1,
+        "errors": 0,
+        "warnings": 0,
+        "diagnosticPartialOnlyWarnings": 182,
+        "atomicCoveragePercent": 66.2,
+        "sourceBackedCoveragePercent": 94.4,
+        "sourceReverseCoveragePercent": 99.8,
+        "status": "error"
+      },
+      {
+        "jurisdiction": "DE-NW",
+        "labelDe": "Nordrhein-Westfalen",
+        "labelEn": "North Rhine-Westphalia",
+        "visibleGoals": 255,
+        "visibleAtomicGoals": 144,
+        "visibleClusterGoals": 111,
+        "viewAtomicGoals": 144,
+        "sourceBackedAtomicGoals": 128,
+        "surrogateBackedAtomicGoals": 2,
+        "unsupportedAssignedAtomicGoals": 16,
+        "partialSourceLinkedAtomicGoals": 0,
+        "sourceAtomicGoals": 240,
+        "sourceMappedToViewAtomicGoals": 240,
+        "unmappedSourceAtomicGoals": 0,
+        "sourceExtractedGoals": 240,
+        "sourceUnregisteredGoals": 0,
+        "sourceExtractedAtomicGoals": 240,
+        "sourceUnregisteredAtomicGoals": 0,
+        "sourceOriginalGoals": 240,
+        "sourceFullyCoveredOriginalGoals": 240,
+        "sourcePartiallyCoveredOriginalGoals": 0,
+        "sourceUncoveredOriginalGoals": 0,
+        "errors": 0,
+        "warnings": 0,
+        "diagnosticPartialOnlyWarnings": 127,
+        "atomicCoveragePercent": 38,
+        "sourceBackedCoveragePercent": 88.9,
+        "sourceReverseCoveragePercent": 100,
+        "status": "error"
+      },
+      {
+        "jurisdiction": "DE-SH",
+        "labelDe": "Schleswig-Holstein",
+        "labelEn": "Schleswig-Holstein",
+        "visibleGoals": 359,
+        "visibleAtomicGoals": 201,
+        "visibleClusterGoals": 158,
+        "viewAtomicGoals": 201,
+        "sourceBackedAtomicGoals": 181,
+        "surrogateBackedAtomicGoals": 2,
+        "unsupportedAssignedAtomicGoals": 20,
+        "partialSourceLinkedAtomicGoals": 0,
+        "sourceAtomicGoals": 321,
+        "sourceMappedToViewAtomicGoals": 321,
+        "unmappedSourceAtomicGoals": 0,
+        "sourceExtractedGoals": 321,
+        "sourceUnregisteredGoals": 0,
+        "sourceExtractedAtomicGoals": 321,
+        "sourceUnregisteredAtomicGoals": 0,
+        "sourceOriginalGoals": 321,
+        "sourceFullyCoveredOriginalGoals": 321,
+        "sourcePartiallyCoveredOriginalGoals": 0,
+        "sourceUncoveredOriginalGoals": 0,
+        "errors": 0,
+        "warnings": 0,
+        "diagnosticPartialOnlyWarnings": 180,
+        "atomicCoveragePercent": 53,
+        "sourceBackedCoveragePercent": 90,
+        "sourceReverseCoveragePercent": 100,
+        "status": "error"
+      },
+      {
+        "jurisdiction": "DE-HB",
+        "labelDe": "Bremen",
+        "labelEn": "Bremen",
+        "visibleGoals": 479,
+        "visibleAtomicGoals": 242,
+        "visibleClusterGoals": 237,
+        "viewAtomicGoals": 242,
+        "sourceBackedAtomicGoals": 234,
+        "surrogateBackedAtomicGoals": 0,
+        "unsupportedAssignedAtomicGoals": 8,
+        "partialSourceLinkedAtomicGoals": 0,
+        "sourceAtomicGoals": 274,
+        "sourceMappedToViewAtomicGoals": 274,
+        "unmappedSourceAtomicGoals": 0,
+        "sourceExtractedGoals": 274,
+        "sourceUnregisteredGoals": 0,
+        "sourceExtractedAtomicGoals": 274,
+        "sourceUnregisteredAtomicGoals": 0,
+        "sourceOriginalGoals": 274,
+        "sourceFullyCoveredOriginalGoals": 274,
+        "sourcePartiallyCoveredOriginalGoals": 0,
+        "sourceUncoveredOriginalGoals": 0,
+        "errors": 0,
+        "warnings": 0,
+        "diagnosticPartialOnlyWarnings": 293,
+        "atomicCoveragePercent": 63.9,
+        "sourceBackedCoveragePercent": 96.7,
+        "sourceReverseCoveragePercent": 100,
+        "status": "error"
+      },
+      {
+        "jurisdiction": "DE-HH",
+        "labelDe": "Hamburg",
+        "labelEn": "Hamburg",
+        "visibleGoals": 307,
+        "visibleAtomicGoals": 177,
+        "visibleClusterGoals": 130,
+        "viewAtomicGoals": 177,
+        "sourceBackedAtomicGoals": 155,
+        "surrogateBackedAtomicGoals": 2,
+        "unsupportedAssignedAtomicGoals": 22,
+        "partialSourceLinkedAtomicGoals": 0,
+        "sourceAtomicGoals": 170,
+        "sourceMappedToViewAtomicGoals": 170,
+        "unmappedSourceAtomicGoals": 0,
+        "sourceExtractedGoals": 170,
+        "sourceUnregisteredGoals": 0,
+        "sourceExtractedAtomicGoals": 170,
+        "sourceUnregisteredAtomicGoals": 0,
+        "sourceOriginalGoals": 170,
+        "sourceFullyCoveredOriginalGoals": 170,
+        "sourcePartiallyCoveredOriginalGoals": 0,
+        "sourceUncoveredOriginalGoals": 0,
+        "errors": 0,
+        "warnings": 0,
+        "diagnosticPartialOnlyWarnings": 148,
+        "atomicCoveragePercent": 46.7,
+        "sourceBackedCoveragePercent": 87.6,
+        "sourceReverseCoveragePercent": 100,
+        "status": "error"
+      },
+      {
+        "jurisdiction": "DE-MV",
+        "labelDe": "Mecklenburg-Vorpommern",
+        "labelEn": "Mecklenburg-Western Pomerania",
+        "visibleGoals": 319,
+        "visibleAtomicGoals": 185,
+        "visibleClusterGoals": 134,
+        "viewAtomicGoals": 185,
+        "sourceBackedAtomicGoals": 162,
+        "surrogateBackedAtomicGoals": 1,
+        "unsupportedAssignedAtomicGoals": 23,
+        "partialSourceLinkedAtomicGoals": 0,
+        "sourceAtomicGoals": 245,
+        "sourceMappedToViewAtomicGoals": 244,
+        "unmappedSourceAtomicGoals": 1,
+        "sourceExtractedGoals": 245,
+        "sourceUnregisteredGoals": 0,
+        "sourceExtractedAtomicGoals": 245,
+        "sourceUnregisteredAtomicGoals": 0,
+        "sourceOriginalGoals": 245,
+        "sourceFullyCoveredOriginalGoals": 244,
+        "sourcePartiallyCoveredOriginalGoals": 0,
+        "sourceUncoveredOriginalGoals": 1,
+        "errors": 0,
+        "warnings": 0,
+        "diagnosticPartialOnlyWarnings": 152,
+        "atomicCoveragePercent": 48.8,
+        "sourceBackedCoveragePercent": 87.6,
+        "sourceReverseCoveragePercent": 99.6,
+        "status": "error"
+      },
+      {
+        "jurisdiction": "DE-RP",
+        "labelDe": "Rheinland-Pfalz",
+        "labelEn": "Rhineland-Palatinate",
+        "visibleGoals": 356,
+        "visibleAtomicGoals": 202,
+        "visibleClusterGoals": 154,
+        "viewAtomicGoals": 202,
+        "sourceBackedAtomicGoals": 176,
+        "surrogateBackedAtomicGoals": 1,
+        "unsupportedAssignedAtomicGoals": 26,
+        "partialSourceLinkedAtomicGoals": 0,
+        "sourceAtomicGoals": 398,
+        "sourceMappedToViewAtomicGoals": 398,
+        "unmappedSourceAtomicGoals": 0,
+        "sourceExtractedGoals": 398,
+        "sourceUnregisteredGoals": 0,
+        "sourceExtractedAtomicGoals": 398,
+        "sourceUnregisteredAtomicGoals": 0,
+        "sourceOriginalGoals": 398,
+        "sourceFullyCoveredOriginalGoals": 398,
+        "sourcePartiallyCoveredOriginalGoals": 0,
+        "sourceUncoveredOriginalGoals": 0,
+        "errors": 0,
+        "warnings": 0,
+        "diagnosticPartialOnlyWarnings": 175,
+        "atomicCoveragePercent": 53.3,
+        "sourceBackedCoveragePercent": 87.1,
+        "sourceReverseCoveragePercent": 100,
+        "status": "error"
+      },
+      {
+        "jurisdiction": "DE-SL",
+        "labelDe": "Saarland",
+        "labelEn": "Saarland",
+        "visibleGoals": 339,
+        "visibleAtomicGoals": 199,
+        "visibleClusterGoals": 140,
+        "viewAtomicGoals": 199,
+        "sourceBackedAtomicGoals": 174,
+        "surrogateBackedAtomicGoals": 0,
+        "unsupportedAssignedAtomicGoals": 25,
+        "partialSourceLinkedAtomicGoals": 0,
+        "sourceAtomicGoals": 905,
+        "sourceMappedToViewAtomicGoals": 905,
+        "unmappedSourceAtomicGoals": 0,
+        "sourceExtractedGoals": 905,
+        "sourceUnregisteredGoals": 0,
+        "sourceExtractedAtomicGoals": 905,
+        "sourceUnregisteredAtomicGoals": 0,
+        "sourceOriginalGoals": 905,
+        "sourceFullyCoveredOriginalGoals": 905,
+        "sourcePartiallyCoveredOriginalGoals": 0,
+        "sourceUncoveredOriginalGoals": 0,
+        "errors": 0,
+        "warnings": 0,
+        "diagnosticPartialOnlyWarnings": 164,
+        "atomicCoveragePercent": 52.5,
+        "sourceBackedCoveragePercent": 87.4,
+        "sourceReverseCoveragePercent": 100,
+        "status": "error"
+      },
+      {
+        "jurisdiction": "DE-SN",
+        "labelDe": "Sachsen",
+        "labelEn": "Saxony",
+        "visibleGoals": 360,
+        "visibleAtomicGoals": 207,
+        "visibleClusterGoals": 153,
+        "viewAtomicGoals": 207,
+        "sourceBackedAtomicGoals": 179,
+        "surrogateBackedAtomicGoals": 0,
+        "unsupportedAssignedAtomicGoals": 28,
+        "partialSourceLinkedAtomicGoals": 0,
+        "sourceAtomicGoals": 479,
+        "sourceMappedToViewAtomicGoals": 479,
+        "unmappedSourceAtomicGoals": 0,
+        "sourceExtractedGoals": 479,
+        "sourceUnregisteredGoals": 0,
+        "sourceExtractedAtomicGoals": 479,
+        "sourceUnregisteredAtomicGoals": 0,
+        "sourceOriginalGoals": 479,
+        "sourceFullyCoveredOriginalGoals": 479,
+        "sourcePartiallyCoveredOriginalGoals": 0,
+        "sourceUncoveredOriginalGoals": 0,
+        "errors": 0,
+        "warnings": 0,
+        "diagnosticPartialOnlyWarnings": 177,
+        "atomicCoveragePercent": 54.6,
+        "sourceBackedCoveragePercent": 86.5,
+        "sourceReverseCoveragePercent": 100,
+        "status": "error"
+      },
+      {
+        "jurisdiction": "DE-ST",
+        "labelDe": "Sachsen-Anhalt",
+        "labelEn": "Saxony-Anhalt",
+        "visibleGoals": 317,
+        "visibleAtomicGoals": 180,
+        "visibleClusterGoals": 137,
+        "viewAtomicGoals": 180,
+        "sourceBackedAtomicGoals": 159,
+        "surrogateBackedAtomicGoals": 2,
+        "unsupportedAssignedAtomicGoals": 21,
+        "partialSourceLinkedAtomicGoals": 0,
+        "sourceAtomicGoals": 598,
+        "sourceMappedToViewAtomicGoals": 596,
+        "unmappedSourceAtomicGoals": 2,
+        "sourceExtractedGoals": 598,
+        "sourceUnregisteredGoals": 0,
+        "sourceExtractedAtomicGoals": 598,
+        "sourceUnregisteredAtomicGoals": 0,
+        "sourceOriginalGoals": 598,
+        "sourceFullyCoveredOriginalGoals": 596,
+        "sourcePartiallyCoveredOriginalGoals": 0,
+        "sourceUncoveredOriginalGoals": 2,
+        "errors": 0,
+        "warnings": 0,
+        "diagnosticPartialOnlyWarnings": 156,
+        "atomicCoveragePercent": 47.5,
+        "sourceBackedCoveragePercent": 88.3,
+        "sourceReverseCoveragePercent": 99.7,
+        "status": "error"
+      },
+      {
+        "jurisdiction": "DE-TH",
+        "labelDe": "Thüringen",
+        "labelEn": "Thuringia",
+        "visibleGoals": 330,
+        "visibleAtomicGoals": 193,
+        "visibleClusterGoals": 137,
+        "viewAtomicGoals": 193,
+        "sourceBackedAtomicGoals": 172,
+        "surrogateBackedAtomicGoals": 1,
+        "unsupportedAssignedAtomicGoals": 21,
+        "partialSourceLinkedAtomicGoals": 0,
+        "sourceAtomicGoals": 449,
+        "sourceMappedToViewAtomicGoals": 449,
+        "unmappedSourceAtomicGoals": 0,
+        "sourceExtractedGoals": 449,
+        "sourceUnregisteredGoals": 0,
+        "sourceExtractedAtomicGoals": 449,
+        "sourceUnregisteredAtomicGoals": 0,
+        "sourceOriginalGoals": 449,
+        "sourceFullyCoveredOriginalGoals": 449,
+        "sourcePartiallyCoveredOriginalGoals": 0,
+        "sourceUncoveredOriginalGoals": 0,
+        "errors": 0,
+        "warnings": 0,
+        "diagnosticPartialOnlyWarnings": 165,
+        "atomicCoveragePercent": 50.9,
+        "sourceBackedCoveragePercent": 89.1,
+        "sourceReverseCoveragePercent": 100,
+        "status": "error"
+      }
+    ]
+  },
+  "unsupported": [
+    {
+      "goalId": "416dfd33-8b43-5c49-903c-9847b95e4208",
+      "jurisdiction": "DE-BW",
+      "title": "Grundlegende Laborarbeitsweisen anwenden",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BW",
+          "kind": "requires-closure",
+          "source": "required by 266a2b2a-9ee2-52f6-ae09-59343da9a60b"
+        }
+      ]
+    },
+    {
+      "goalId": "9b5d6326-d27c-4ece-8c72-debda705464a",
+      "jurisdiction": "DE-BW",
+      "title": "Dalton-Modell und Modellcharakter erläutern",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BW",
+          "kind": "requires-closure",
+          "source": "required by 5c4788a7-6760-53dc-894e-e04bca6f8cd9"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BW",
+          "kind": "requires-closure",
+          "source": "required by fcaf8c9b-bd81-552e-9d91-43649895471e"
+        }
+      ]
+    },
+    {
+      "goalId": "5c4788a7-6760-53dc-894e-e04bca6f8cd9",
+      "jurisdiction": "DE-BW",
+      "title": "Gasverhalten mit dem kinetischen Teilchenmodell deuten",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BW",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#5c4788a7-6760-53dc-894e-e04bca6f8cd9"
+        }
+      ]
+    },
+    {
+      "goalId": "28bb9d15-f865-5843-a035-6066580fea64",
+      "jurisdiction": "DE-BW",
+      "title": "Arrhenius-Definitionen wiederholen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BW",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#28bb9d15-f865-5843-a035-6066580fea64"
+        }
+      ]
+    },
+    {
+      "goalId": "448815cc-4127-54b7-96bf-e54b3d2a38c5",
+      "jurisdiction": "DE-BW",
+      "title": "Bindungstypen sicher erläutern",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BW",
+          "kind": "requires-closure",
+          "source": "required by eb7537dd-d11b-50e9-a6d7-51a78e96fc4e"
+        }
+      ]
+    },
+    {
+      "goalId": "9b56d01e-c2d7-51d8-b78e-237592c1ed20",
+      "jurisdiction": "DE-BW",
+      "title": "Einfache Bindungswinkel mit dem EPA-Modell erklären",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BW",
+          "kind": "requires-closure",
+          "source": "required by eb7537dd-d11b-50e9-a6d7-51a78e96fc4e"
+        }
+      ]
+    },
+    {
+      "goalId": "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+      "jurisdiction": "DE-BW",
+      "title": "Angeleitete chemische Untersuchungen sicher durchführen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BW",
+          "kind": "requires-closure",
+          "source": "required by 1d2e7b80-653d-57b8-a284-8ede5a353b73"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BW",
+          "kind": "requires-closure",
+          "source": "required by 5c8f0bbb-103a-579f-87fc-c997afe4fd18"
+        }
+      ]
+    },
+    {
+      "goalId": "4b6d1824-20e4-597e-b639-fae401f740f0",
+      "jurisdiction": "DE-BW",
+      "title": "Stoffbezogene Schutzmaßnahmen begründen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BW",
+          "kind": "requires-closure",
+          "source": "required by ebaae4f5-cc13-5493-98b1-10e1abeb638f"
+        }
+      ]
+    },
+    {
+      "goalId": "1351706f-4ea6-56e9-951b-87b24cbcdee8",
+      "jurisdiction": "DE-BW",
+      "title": "Lösungen nach Arbeitsanweisung herstellen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BW",
+          "kind": "requires-closure",
+          "source": "required by f1ed86f0-534d-57d7-8952-a004a331cc54"
+        }
+      ]
+    },
+    {
+      "goalId": "a25a19ed-aec3-59cc-ae28-31d98746cb9d",
+      "jurisdiction": "DE-BW",
+      "title": "Ethanolwirkungen im Körper und Alltagsrisiken einordnen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BW",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#a25a19ed-aec3-59cc-ae28-31d98746cb9d"
+        }
+      ]
+    },
+    {
+      "goalId": "4b9810b0-5d3d-59d8-a948-c3f6dd6303c7",
+      "jurisdiction": "DE-HE",
+      "title": "Acidität und Basizität mit induktiven und mesomeren Effekten begründen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "requires-closure",
+          "source": "required by b856a8ac-5210-533d-b27f-e0aeeafcf962"
+        }
+      ]
+    },
+    {
+      "goalId": "e96771d3-fd72-59e6-8f4c-573ef8cbde0a",
+      "jurisdiction": "DE-HE",
+      "title": "Aromatische Verbindungen in Alltag, Industrie und Gesundheit bewerten",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "requires-closure",
+          "source": "required by b856a8ac-5210-533d-b27f-e0aeeafcf962"
+        }
+      ]
+    },
+    {
+      "goalId": "6eba90b5-d4a6-5625-be61-e7f30f7eb964",
+      "jurisdiction": "DE-HE",
+      "title": "Kunststoff-Verarbeitungsverfahren beschreiben",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "requires-closure",
+          "source": "required by afad3a68-c643-5c49-8583-e5d8b1d8b56c"
+        }
+      ]
+    },
+    {
+      "goalId": "36666b4a-97af-51fc-9983-56cdcc7a8229",
+      "jurisdiction": "DE-HE",
+      "title": "Chemische Quellen und Darstellungen kritisch prüfen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "requires-closure",
+          "source": "required by 14577339-9e0c-5b44-8e47-91e1a4947367"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "requires-closure",
+          "source": "required by 3c9bfa10-9a13-50cc-96c8-6213e28d6c54"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "requires-closure",
+          "source": "required by 8b98d8ba-65c6-58d7-92f0-45f4b2456573"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "requires-closure",
+          "source": "required by 9f892457-c4e5-56da-830c-bf6cac0c98d7"
+        }
+      ]
+    },
+    {
+      "goalId": "42391b16-bbae-5c77-84e1-d488e714167b",
+      "jurisdiction": "DE-HE",
+      "title": "Chemische Untersuchungen selbst planen und durchführen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "requires-closure",
+          "source": "required by 14577339-9e0c-5b44-8e47-91e1a4947367"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "requires-closure",
+          "source": "required by f79f15c0-e848-5e17-9eb5-26753d35c93b"
+        }
+      ]
+    },
+    {
+      "goalId": "503dedcb-0efc-5e6b-bbc9-20761a0951f5",
+      "jurisdiction": "DE-HE",
+      "title": "Chemische Fragestellungen und Hypothesen theoriegestützt formulieren",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "requires-closure",
+          "source": "required by 9e3fae29-84d5-5600-bfb3-82d49ea3f1b5"
+        }
+      ]
+    },
+    {
+      "goalId": "75e2eff1-f871-5461-9e3f-26d0b333ce2f",
+      "jurisdiction": "DE-HE",
+      "title": "Chemische Alltagsfragen und prüfbare Hypothesen formulieren",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "requires-closure",
+          "source": "required by 503dedcb-0efc-5e6b-bbc9-20761a0951f5"
+        }
+      ]
+    },
+    {
+      "goalId": "9e3fae29-84d5-5600-bfb3-82d49ea3f1b5",
+      "jurisdiction": "DE-HE",
+      "title": "Chemische Daten quantitativ und hypothesenbezogen auswerten",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides"
+        }
+      ]
+    },
+    {
+      "goalId": "ac8b6c0f-98b2-5092-806d-d9498efbfa35",
+      "jurisdiction": "DE-HE",
+      "title": "Komplexe chemische Quellen selbstständig erschließen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "requires-closure",
+          "source": "required by 14577339-9e0c-5b44-8e47-91e1a4947367"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "requires-closure",
+          "source": "required by 8b98d8ba-65c6-58d7-92f0-45f4b2456573"
+        }
+      ]
+    },
+    {
+      "goalId": "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+      "jurisdiction": "DE-HE",
+      "title": "Angeleitete chemische Untersuchungen sicher durchführen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "requires-closure",
+          "source": "required by 14577339-9e0c-5b44-8e47-91e1a4947367"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "requires-closure",
+          "source": "required by 1d2e7b80-653d-57b8-a284-8ede5a353b73"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "requires-closure",
+          "source": "required by 42391b16-bbae-5c77-84e1-d488e714167b"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "requires-closure",
+          "source": "required by 5c8f0bbb-103a-579f-87fc-c997afe4fd18"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "requires-closure",
+          "source": "required by 8fe39739-2938-5e2c-8db2-08572b44569a"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "requires-closure",
+          "source": "required by 99d41b0f-e958-54cf-a077-9bed1704a303"
+        }
+      ]
+    },
+    {
+      "goalId": "acdfc7d7-6d6b-5a1f-837c-79449c29a305",
+      "jurisdiction": "DE-HE",
+      "title": "pH-Werte starker und schwacher einprotoniger Säuren berechnen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "requires-closure",
+          "source": "required by 29742d91-732f-5da5-bc46-e963885f9a4a"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "requires-closure",
+          "source": "required by 33034876-8da5-5619-ad86-e1272e0304b0"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "requires-closure",
+          "source": "required by dc0470f1-0676-5949-a5cc-02783d478406"
+        }
+      ]
+    },
+    {
+      "goalId": "edcfc5f0-900d-5819-830f-3b14af2bc369",
+      "jurisdiction": "DE-HE",
+      "title": "pH-Werte starker und schwacher einprotoniger Basen berechnen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "requires-closure",
+          "source": "required by 29742d91-732f-5da5-bc46-e963885f9a4a"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "requires-closure",
+          "source": "required by 33034876-8da5-5619-ad86-e1272e0304b0"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "requires-closure",
+          "source": "required by dc0470f1-0676-5949-a5cc-02783d478406"
+        }
+      ]
+    },
+    {
+      "goalId": "a25a19ed-aec3-59cc-ae28-31d98746cb9d",
+      "jurisdiction": "DE-HE",
+      "title": "Ethanolwirkungen im Körper und Alltagsrisiken einordnen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "requires-closure",
+          "source": "required by 14577339-9e0c-5b44-8e47-91e1a4947367"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "requires-closure",
+          "source": "required by dd843c85-bf60-58c3-861b-fb531ba69b17"
+        }
+      ]
+    },
+    {
+      "goalId": "223e33a4-5545-5332-ac4e-7d7a6cbc587c",
+      "jurisdiction": "DE-HE",
+      "title": "Biotreibstoffe nach Rohstoff und Herstellungsweg unterscheiden",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#223e33a4-5545-5332-ac4e-7d7a6cbc587c"
+        }
+      ]
+    },
+    {
+      "goalId": "f0f67a7a-b06a-50b9-8edc-1f2a0d97520d",
+      "jurisdiction": "DE-BY",
+      "title": "Bindungsverhältnisse aromatischer Systeme modellieren",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "requires-closure",
+          "source": "required by ac700167-001f-5ff8-9a7d-85909f5daa4f"
+        }
+      ]
+    },
+    {
+      "goalId": "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+      "jurisdiction": "DE-BY",
+      "title": "Angeleitete chemische Untersuchungen sicher durchführen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "requires-closure",
+          "source": "required by 07bf5fab-9379-5b3c-a6fc-b892fcfa9a49"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "requires-closure",
+          "source": "required by 0f632595-5875-5a95-83d8-7de3180bdaa6"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "requires-closure",
+          "source": "required by 1d2e7b80-653d-57b8-a284-8ede5a353b73"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "requires-closure",
+          "source": "required by 42391b16-bbae-5c77-84e1-d488e714167b"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "requires-closure",
+          "source": "required by 4d16601e-fa57-5bcb-a5b6-f308d5b8036a"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "requires-closure",
+          "source": "required by 57d2c98d-30b8-5123-b823-e56a4f22b191"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "requires-closure",
+          "source": "required by 5c8f0bbb-103a-579f-87fc-c997afe4fd18"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "requires-closure",
+          "source": "required by 7b443158-8ca9-5b8e-8328-a8fa56f6e26f"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "requires-closure",
+          "source": "required by 7b80efe6-b77d-5ace-8886-973ba38e6f9e"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "requires-closure",
+          "source": "required by 843484b9-1acf-54e0-a030-bc214b3b0656"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "requires-closure",
+          "source": "required by 8fe39739-2938-5e2c-8db2-08572b44569a"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "requires-closure",
+          "source": "required by 99d41b0f-e958-54cf-a077-9bed1704a303"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "requires-closure",
+          "source": "required by 9d6e1966-b10c-5a70-b215-df7007c95b07"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "requires-closure",
+          "source": "required by c8198159-2109-5ad0-9d37-252ebac0219d"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "requires-closure",
+          "source": "required by cb7125b7-8734-51c6-8306-9163114dc0cc"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "requires-closure",
+          "source": "required by dc4a26c7-8304-529d-8705-7333b2f038fc"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "requires-closure",
+          "source": "required by dd59351e-3b16-5104-b7c6-ff9e402e4de7"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "requires-closure",
+          "source": "required by e6dcd3a0-264d-503b-aaac-a3e86eeb7059"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "requires-closure",
+          "source": "required by e7c3d20e-4b13-560b-b8ee-c5abca8cc624"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "requires-closure",
+          "source": "required by fec1563e-a34a-5fc1-93bb-03981f35ab13"
+        }
+      ]
+    },
+    {
+      "goalId": "416dfd33-8b43-5c49-903c-9847b95e4208",
+      "jurisdiction": "DE-BB",
+      "title": "Grundlegende Laborarbeitsweisen anwenden",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "requires-closure",
+          "source": "required by 266a2b2a-9ee2-52f6-ae09-59343da9a60b"
+        }
+      ]
+    },
+    {
+      "goalId": "fcc73fb5-7413-557f-aea3-b9692a66ee75",
+      "jurisdiction": "DE-BB",
+      "title": "Stoffe und Eigenschaften beschreiben",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "requires-closure",
+          "source": "required by 326d45bf-9f77-57d5-a054-93e76b034dd5"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "requires-closure",
+          "source": "required by 58486300-3f84-5aa1-9ed4-66186af62669"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "requires-closure",
+          "source": "required by 5a709938-e0f5-42b7-94f0-cfded08963a2"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "requires-closure",
+          "source": "required by 5e2eb826-6e60-5273-91d6-c23f6dfa33b1"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "requires-closure",
+          "source": "required by 62bdb5b1-4f67-59d4-bf5c-da80ee03eeb2"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "requires-closure",
+          "source": "required by e0e201bd-a1fd-5985-ab08-fd24c8655f3d"
+        }
+      ]
+    },
+    {
+      "goalId": "9e656697-fc05-5aa9-9aca-871af2e89eb7",
+      "jurisdiction": "DE-BB",
+      "title": "Gefahrstoffkennzeichnungen deuten",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "requires-closure",
+          "source": "required by 4b6d1824-20e4-597e-b639-fae401f740f0"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "requires-closure",
+          "source": "required by e7c3d20e-4b13-560b-b8ee-c5abca8cc624"
+        }
+      ]
+    },
+    {
+      "goalId": "ebaae4f5-cc13-5493-98b1-10e1abeb638f",
+      "jurisdiction": "DE-BB",
+      "title": "Gefahrenpotenziale beurteilen und reduzieren",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "requires-closure",
+          "source": "required by e7c3d20e-4b13-560b-b8ee-c5abca8cc624"
+        }
+      ]
+    },
+    {
+      "goalId": "1df17884-96ae-57d7-9da9-dbebd082596f",
+      "jurisdiction": "DE-BB",
+      "title": "Chemische Handlungsoptionen kriteriengeleitet bewerten",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides"
+        }
+      ]
+    },
+    {
+      "goalId": "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+      "jurisdiction": "DE-BB",
+      "title": "Konstante Massenverhältnisse beschreiben",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "requires-closure",
+          "source": "required by e675fa94-6e23-59c0-b376-4340bf44c00e"
+        }
+      ]
+    },
+    {
+      "goalId": "9b5d6326-d27c-4ece-8c72-debda705464a",
+      "jurisdiction": "DE-BB",
+      "title": "Dalton-Modell und Modellcharakter erläutern",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "requires-closure",
+          "source": "required by 5c4788a7-6760-53dc-894e-e04bca6f8cd9"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "requires-closure",
+          "source": "required by fcaf8c9b-bd81-552e-9d91-43649895471e"
+        }
+      ]
+    },
+    {
+      "goalId": "22133f29-ef02-4408-8f8d-2bbea3275d91",
+      "jurisdiction": "DE-BB",
+      "title": "Einfache Redoxgleichungen mit Oxidationszahlen erstellen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "requires-closure",
+          "source": "required by 70b12d1c-abaf-45c6-ae9e-b571e9cbc126"
+        }
+      ]
+    },
+    {
+      "goalId": "5c4788a7-6760-53dc-894e-e04bca6f8cd9",
+      "jurisdiction": "DE-BB",
+      "title": "Gasverhalten mit dem kinetischen Teilchenmodell deuten",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#5c4788a7-6760-53dc-894e-e04bca6f8cd9"
+        }
+      ]
+    },
+    {
+      "goalId": "1e5a4b89-69f1-5379-811e-c8ec76faad2a",
+      "jurisdiction": "DE-BB",
+      "title": "Avogadro-These fuer Gasvolumina erlaeutern",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "requires-closure",
+          "source": "required by 2924f784-5261-54e8-93ee-49ac3b3cd300"
+        }
+      ]
+    },
+    {
+      "goalId": "e74f5301-70d3-5869-bd3d-79a5763a1718",
+      "jurisdiction": "DE-BB",
+      "title": "Orbitalmodell und Valenzstrichschreibweise anwenden",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#e74f5301-70d3-5869-bd3d-79a5763a1718"
+        }
+      ]
+    },
+    {
+      "goalId": "23533087-89ea-5f29-8ec1-9f2e01197bb6",
+      "jurisdiction": "DE-BB",
+      "title": "Valenzstrichformeln und Mesomerie aufstellen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides"
+        }
+      ]
+    },
+    {
+      "goalId": "efa24b77-0f98-5835-9d82-3e539ab20253",
+      "jurisdiction": "DE-BB",
+      "title": "Freiwillige und erzwungene Redoxreaktionen vergleichen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "requires-closure",
+          "source": "required by 16b24dc5-0e48-5e3b-8307-01289db8d1a9"
+        }
+      ]
+    },
+    {
+      "goalId": "28bb9d15-f865-5843-a035-6066580fea64",
+      "jurisdiction": "DE-BB",
+      "title": "Arrhenius-Definitionen wiederholen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#28bb9d15-f865-5843-a035-6066580fea64"
+        }
+      ]
+    },
+    {
+      "goalId": "b759d50d-0e82-5b10-89a2-fe5271106e50",
+      "jurisdiction": "DE-BB",
+      "title": "Brennstoffzellen verstehen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "requires-closure",
+          "source": "required by ecce0306-13dc-5563-a097-afe69805a8d6"
+        }
+      ]
+    },
+    {
+      "goalId": "6966df95-f125-5ecc-af8e-0442545d9f17",
+      "jurisdiction": "DE-BB",
+      "title": "Micellenbildung deuten",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "requires-closure",
+          "source": "required by d742ecb0-0795-5446-a95d-9503d4618475"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "requires-closure",
+          "source": "required by e874ee60-4569-5830-81bf-11f86f0c63ac"
+        }
+      ]
+    },
+    {
+      "goalId": "cc803809-fa7f-517c-b356-9f2f7caf21a5",
+      "jurisdiction": "DE-BB",
+      "title": "Energiekonzept auf Donator-Akzeptor-Reaktionen anwenden",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides"
+        }
+      ]
+    },
+    {
+      "goalId": "c95f6059-d7c2-5bcd-b61e-95e3577efdb2",
+      "jurisdiction": "DE-BB",
+      "title": "Korrosionsverhalten von Metallen beurteilen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides"
+        }
+      ]
+    },
+    {
+      "goalId": "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+      "jurisdiction": "DE-BB",
+      "title": "Angeleitete chemische Untersuchungen sicher durchführen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "requires-closure",
+          "source": "required by e7c3d20e-4b13-560b-b8ee-c5abca8cc624"
+        }
+      ]
+    },
+    {
+      "goalId": "4b6d1824-20e4-597e-b639-fae401f740f0",
+      "jurisdiction": "DE-BB",
+      "title": "Stoffbezogene Schutzmaßnahmen begründen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "requires-closure",
+          "source": "required by 7be6f951-a614-52dc-94d3-2ce0d33765ff"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "requires-closure",
+          "source": "required by ebaae4f5-cc13-5493-98b1-10e1abeb638f"
+        }
+      ]
+    },
+    {
+      "goalId": "805a2f58-29ce-55d0-8a85-42ee486239b3",
+      "jurisdiction": "DE-BB",
+      "title": "Vorgegebene Entsorgungswege begründet auswählen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "requires-closure",
+          "source": "required by 7be6f951-a614-52dc-94d3-2ce0d33765ff"
+        }
+      ]
+    },
+    {
+      "goalId": "1351706f-4ea6-56e9-951b-87b24cbcdee8",
+      "jurisdiction": "DE-BB",
+      "title": "Lösungen nach Arbeitsanweisung herstellen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "requires-closure",
+          "source": "required by f1ed86f0-534d-57d7-8952-a004a331cc54"
+        }
+      ]
+    },
+    {
+      "goalId": "a25a19ed-aec3-59cc-ae28-31d98746cb9d",
+      "jurisdiction": "DE-BB",
+      "title": "Ethanolwirkungen im Körper und Alltagsrisiken einordnen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#a25a19ed-aec3-59cc-ae28-31d98746cb9d"
+        }
+      ]
+    },
+    {
+      "goalId": "0959eef2-3c7d-5b33-a109-ddf332a5dbd9",
+      "jurisdiction": "DE-BB",
+      "title": "Pflanzenölkraftstoffe strukturbezogen einordnen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#0959eef2-3c7d-5b33-a109-ddf332a5dbd9"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "requires-closure",
+          "source": "required by 4d9defde-d3bc-5c43-83ff-9cf6f2930643"
+        }
+      ]
+    },
+    {
+      "goalId": "4d9defde-d3bc-5c43-83ff-9cf6f2930643",
+      "jurisdiction": "DE-BB",
+      "title": "Biodieselgewinnung durch Umesterung erklären",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#4d9defde-d3bc-5c43-83ff-9cf6f2930643"
+        }
+      ]
+    },
+    {
+      "goalId": "0e3f849b-133d-57da-882c-0d67c3eb05b8",
+      "jurisdiction": "DE-BB",
+      "title": "Faraday-Gesetze qualitativ erklären",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "requires-closure",
+          "source": "required by b8c8f70f-64cb-50b1-970c-e0c4295da3fb"
+        }
+      ]
+    },
+    {
+      "goalId": "223e33a4-5545-5332-ac4e-7d7a6cbc587c",
+      "jurisdiction": "DE-BB",
+      "title": "Biotreibstoffe nach Rohstoff und Herstellungsweg unterscheiden",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#223e33a4-5545-5332-ac4e-7d7a6cbc587c"
+        }
+      ]
+    },
+    {
+      "goalId": "416dfd33-8b43-5c49-903c-9847b95e4208",
+      "jurisdiction": "DE-BE",
+      "title": "Grundlegende Laborarbeitsweisen anwenden",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "requires-closure",
+          "source": "required by 266a2b2a-9ee2-52f6-ae09-59343da9a60b"
+        }
+      ]
+    },
+    {
+      "goalId": "fcc73fb5-7413-557f-aea3-b9692a66ee75",
+      "jurisdiction": "DE-BE",
+      "title": "Stoffe und Eigenschaften beschreiben",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "requires-closure",
+          "source": "required by 326d45bf-9f77-57d5-a054-93e76b034dd5"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "requires-closure",
+          "source": "required by 58486300-3f84-5aa1-9ed4-66186af62669"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "requires-closure",
+          "source": "required by 5a709938-e0f5-42b7-94f0-cfded08963a2"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "requires-closure",
+          "source": "required by 5e2eb826-6e60-5273-91d6-c23f6dfa33b1"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "requires-closure",
+          "source": "required by 62bdb5b1-4f67-59d4-bf5c-da80ee03eeb2"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "requires-closure",
+          "source": "required by e0e201bd-a1fd-5985-ab08-fd24c8655f3d"
+        }
+      ]
+    },
+    {
+      "goalId": "9e656697-fc05-5aa9-9aca-871af2e89eb7",
+      "jurisdiction": "DE-BE",
+      "title": "Gefahrstoffkennzeichnungen deuten",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "requires-closure",
+          "source": "required by 4b6d1824-20e4-597e-b639-fae401f740f0"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "requires-closure",
+          "source": "required by e7c3d20e-4b13-560b-b8ee-c5abca8cc624"
+        }
+      ]
+    },
+    {
+      "goalId": "ebaae4f5-cc13-5493-98b1-10e1abeb638f",
+      "jurisdiction": "DE-BE",
+      "title": "Gefahrenpotenziale beurteilen und reduzieren",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "requires-closure",
+          "source": "required by e7c3d20e-4b13-560b-b8ee-c5abca8cc624"
+        }
+      ]
+    },
+    {
+      "goalId": "1df17884-96ae-57d7-9da9-dbebd082596f",
+      "jurisdiction": "DE-BE",
+      "title": "Chemische Handlungsoptionen kriteriengeleitet bewerten",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides"
+        }
+      ]
+    },
+    {
+      "goalId": "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+      "jurisdiction": "DE-BE",
+      "title": "Konstante Massenverhältnisse beschreiben",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "requires-closure",
+          "source": "required by e675fa94-6e23-59c0-b376-4340bf44c00e"
+        }
+      ]
+    },
+    {
+      "goalId": "9b5d6326-d27c-4ece-8c72-debda705464a",
+      "jurisdiction": "DE-BE",
+      "title": "Dalton-Modell und Modellcharakter erläutern",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "requires-closure",
+          "source": "required by 5c4788a7-6760-53dc-894e-e04bca6f8cd9"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "requires-closure",
+          "source": "required by fcaf8c9b-bd81-552e-9d91-43649895471e"
+        }
+      ]
+    },
+    {
+      "goalId": "22133f29-ef02-4408-8f8d-2bbea3275d91",
+      "jurisdiction": "DE-BE",
+      "title": "Einfache Redoxgleichungen mit Oxidationszahlen erstellen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "requires-closure",
+          "source": "required by 70b12d1c-abaf-45c6-ae9e-b571e9cbc126"
+        }
+      ]
+    },
+    {
+      "goalId": "5c4788a7-6760-53dc-894e-e04bca6f8cd9",
+      "jurisdiction": "DE-BE",
+      "title": "Gasverhalten mit dem kinetischen Teilchenmodell deuten",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#5c4788a7-6760-53dc-894e-e04bca6f8cd9"
+        }
+      ]
+    },
+    {
+      "goalId": "1e5a4b89-69f1-5379-811e-c8ec76faad2a",
+      "jurisdiction": "DE-BE",
+      "title": "Avogadro-These fuer Gasvolumina erlaeutern",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "requires-closure",
+          "source": "required by 2924f784-5261-54e8-93ee-49ac3b3cd300"
+        }
+      ]
+    },
+    {
+      "goalId": "e74f5301-70d3-5869-bd3d-79a5763a1718",
+      "jurisdiction": "DE-BE",
+      "title": "Orbitalmodell und Valenzstrichschreibweise anwenden",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#e74f5301-70d3-5869-bd3d-79a5763a1718"
+        }
+      ]
+    },
+    {
+      "goalId": "23533087-89ea-5f29-8ec1-9f2e01197bb6",
+      "jurisdiction": "DE-BE",
+      "title": "Valenzstrichformeln und Mesomerie aufstellen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides"
+        }
+      ]
+    },
+    {
+      "goalId": "efa24b77-0f98-5835-9d82-3e539ab20253",
+      "jurisdiction": "DE-BE",
+      "title": "Freiwillige und erzwungene Redoxreaktionen vergleichen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "requires-closure",
+          "source": "required by 16b24dc5-0e48-5e3b-8307-01289db8d1a9"
+        }
+      ]
+    },
+    {
+      "goalId": "28bb9d15-f865-5843-a035-6066580fea64",
+      "jurisdiction": "DE-BE",
+      "title": "Arrhenius-Definitionen wiederholen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#28bb9d15-f865-5843-a035-6066580fea64"
+        }
+      ]
+    },
+    {
+      "goalId": "b759d50d-0e82-5b10-89a2-fe5271106e50",
+      "jurisdiction": "DE-BE",
+      "title": "Brennstoffzellen verstehen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "requires-closure",
+          "source": "required by ecce0306-13dc-5563-a097-afe69805a8d6"
+        }
+      ]
+    },
+    {
+      "goalId": "6966df95-f125-5ecc-af8e-0442545d9f17",
+      "jurisdiction": "DE-BE",
+      "title": "Micellenbildung deuten",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "requires-closure",
+          "source": "required by d742ecb0-0795-5446-a95d-9503d4618475"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "requires-closure",
+          "source": "required by e874ee60-4569-5830-81bf-11f86f0c63ac"
+        }
+      ]
+    },
+    {
+      "goalId": "cc803809-fa7f-517c-b356-9f2f7caf21a5",
+      "jurisdiction": "DE-BE",
+      "title": "Energiekonzept auf Donator-Akzeptor-Reaktionen anwenden",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides"
+        }
+      ]
+    },
+    {
+      "goalId": "c95f6059-d7c2-5bcd-b61e-95e3577efdb2",
+      "jurisdiction": "DE-BE",
+      "title": "Korrosionsverhalten von Metallen beurteilen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides"
+        }
+      ]
+    },
+    {
+      "goalId": "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+      "jurisdiction": "DE-BE",
+      "title": "Angeleitete chemische Untersuchungen sicher durchführen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "requires-closure",
+          "source": "required by e7c3d20e-4b13-560b-b8ee-c5abca8cc624"
+        }
+      ]
+    },
+    {
+      "goalId": "4b6d1824-20e4-597e-b639-fae401f740f0",
+      "jurisdiction": "DE-BE",
+      "title": "Stoffbezogene Schutzmaßnahmen begründen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "requires-closure",
+          "source": "required by 7be6f951-a614-52dc-94d3-2ce0d33765ff"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "requires-closure",
+          "source": "required by ebaae4f5-cc13-5493-98b1-10e1abeb638f"
+        }
+      ]
+    },
+    {
+      "goalId": "805a2f58-29ce-55d0-8a85-42ee486239b3",
+      "jurisdiction": "DE-BE",
+      "title": "Vorgegebene Entsorgungswege begründet auswählen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "requires-closure",
+          "source": "required by 7be6f951-a614-52dc-94d3-2ce0d33765ff"
+        }
+      ]
+    },
+    {
+      "goalId": "1351706f-4ea6-56e9-951b-87b24cbcdee8",
+      "jurisdiction": "DE-BE",
+      "title": "Lösungen nach Arbeitsanweisung herstellen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "requires-closure",
+          "source": "required by f1ed86f0-534d-57d7-8952-a004a331cc54"
+        }
+      ]
+    },
+    {
+      "goalId": "a25a19ed-aec3-59cc-ae28-31d98746cb9d",
+      "jurisdiction": "DE-BE",
+      "title": "Ethanolwirkungen im Körper und Alltagsrisiken einordnen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#a25a19ed-aec3-59cc-ae28-31d98746cb9d"
+        }
+      ]
+    },
+    {
+      "goalId": "0959eef2-3c7d-5b33-a109-ddf332a5dbd9",
+      "jurisdiction": "DE-BE",
+      "title": "Pflanzenölkraftstoffe strukturbezogen einordnen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#0959eef2-3c7d-5b33-a109-ddf332a5dbd9"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "requires-closure",
+          "source": "required by 4d9defde-d3bc-5c43-83ff-9cf6f2930643"
+        }
+      ]
+    },
+    {
+      "goalId": "4d9defde-d3bc-5c43-83ff-9cf6f2930643",
+      "jurisdiction": "DE-BE",
+      "title": "Biodieselgewinnung durch Umesterung erklären",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#4d9defde-d3bc-5c43-83ff-9cf6f2930643"
+        }
+      ]
+    },
+    {
+      "goalId": "0e3f849b-133d-57da-882c-0d67c3eb05b8",
+      "jurisdiction": "DE-BE",
+      "title": "Faraday-Gesetze qualitativ erklären",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "requires-closure",
+          "source": "required by b8c8f70f-64cb-50b1-970c-e0c4295da3fb"
+        }
+      ]
+    },
+    {
+      "goalId": "223e33a4-5545-5332-ac4e-7d7a6cbc587c",
+      "jurisdiction": "DE-BE",
+      "title": "Biotreibstoffe nach Rohstoff und Herstellungsweg unterscheiden",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#223e33a4-5545-5332-ac4e-7d7a6cbc587c"
+        }
+      ]
+    },
+    {
+      "goalId": "416dfd33-8b43-5c49-903c-9847b95e4208",
+      "jurisdiction": "DE-NI",
+      "title": "Grundlegende Laborarbeitsweisen anwenden",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NI",
+          "kind": "requires-closure",
+          "source": "required by 266a2b2a-9ee2-52f6-ae09-59343da9a60b"
+        }
+      ]
+    },
+    {
+      "goalId": "28bb9d15-f865-5843-a035-6066580fea64",
+      "jurisdiction": "DE-NI",
+      "title": "Arrhenius-Definitionen wiederholen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NI",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#28bb9d15-f865-5843-a035-6066580fea64"
+        }
+      ]
+    },
+    {
+      "goalId": "91cd4728-b811-562a-970b-18b81dfb4bdf",
+      "jurisdiction": "DE-NI",
+      "title": "Polare Eigenschaften erklären",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NI",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#91cd4728-b811-562a-970b-18b81dfb4bdf"
+        }
+      ]
+    },
+    {
+      "goalId": "4b9810b0-5d3d-59d8-a948-c3f6dd6303c7",
+      "jurisdiction": "DE-NI",
+      "title": "Acidität und Basizität mit induktiven und mesomeren Effekten begründen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NI",
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides"
+        }
+      ]
+    },
+    {
+      "goalId": "e96771d3-fd72-59e6-8f4c-573ef8cbde0a",
+      "jurisdiction": "DE-NI",
+      "title": "Aromatische Verbindungen in Alltag, Industrie und Gesundheit bewerten",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NI",
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides"
+        }
+      ]
+    },
+    {
+      "goalId": "6eba90b5-d4a6-5625-be61-e7f30f7eb964",
+      "jurisdiction": "DE-NI",
+      "title": "Kunststoff-Verarbeitungsverfahren beschreiben",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NI",
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides"
+        }
+      ]
+    },
+    {
+      "goalId": "36666b4a-97af-51fc-9983-56cdcc7a8229",
+      "jurisdiction": "DE-NI",
+      "title": "Chemische Quellen und Darstellungen kritisch prüfen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NI",
+          "kind": "requires-closure",
+          "source": "required by 3c9bfa10-9a13-50cc-96c8-6213e28d6c54"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NI",
+          "kind": "requires-closure",
+          "source": "required by 8b98d8ba-65c6-58d7-92f0-45f4b2456573"
+        }
+      ]
+    },
+    {
+      "goalId": "42391b16-bbae-5c77-84e1-d488e714167b",
+      "jurisdiction": "DE-NI",
+      "title": "Chemische Untersuchungen selbst planen und durchführen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NI",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#42391b16-bbae-5c77-84e1-d488e714167b"
+        }
+      ]
+    },
+    {
+      "goalId": "ac8b6c0f-98b2-5092-806d-d9498efbfa35",
+      "jurisdiction": "DE-NI",
+      "title": "Komplexe chemische Quellen selbstständig erschließen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NI",
+          "kind": "requires-closure",
+          "source": "required by 8b98d8ba-65c6-58d7-92f0-45f4b2456573"
+        }
+      ]
+    },
+    {
+      "goalId": "1351706f-4ea6-56e9-951b-87b24cbcdee8",
+      "jurisdiction": "DE-NI",
+      "title": "Lösungen nach Arbeitsanweisung herstellen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NI",
+          "kind": "requires-closure",
+          "source": "required by f1ed86f0-534d-57d7-8952-a004a331cc54"
+        }
+      ]
+    },
+    {
+      "goalId": "acdfc7d7-6d6b-5a1f-837c-79449c29a305",
+      "jurisdiction": "DE-NI",
+      "title": "pH-Werte starker und schwacher einprotoniger Säuren berechnen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NI",
+          "kind": "requires-closure",
+          "source": "required by 29742d91-732f-5da5-bc46-e963885f9a4a"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NI",
+          "kind": "requires-closure",
+          "source": "required by dc0470f1-0676-5949-a5cc-02783d478406"
+        }
+      ]
+    },
+    {
+      "goalId": "edcfc5f0-900d-5819-830f-3b14af2bc369",
+      "jurisdiction": "DE-NI",
+      "title": "pH-Werte starker und schwacher einprotoniger Basen berechnen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NI",
+          "kind": "requires-closure",
+          "source": "required by 29742d91-732f-5da5-bc46-e963885f9a4a"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NI",
+          "kind": "requires-closure",
+          "source": "required by dc0470f1-0676-5949-a5cc-02783d478406"
+        }
+      ]
+    },
+    {
+      "goalId": "a25a19ed-aec3-59cc-ae28-31d98746cb9d",
+      "jurisdiction": "DE-NI",
+      "title": "Ethanolwirkungen im Körper und Alltagsrisiken einordnen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NI",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#a25a19ed-aec3-59cc-ae28-31d98746cb9d"
+        }
+      ]
+    },
+    {
+      "goalId": "0e3f849b-133d-57da-882c-0d67c3eb05b8",
+      "jurisdiction": "DE-NI",
+      "title": "Faraday-Gesetze qualitativ erklären",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NI",
+          "kind": "requires-closure",
+          "source": "required by b8c8f70f-64cb-50b1-970c-e0c4295da3fb"
+        }
+      ]
+    },
+    {
+      "goalId": "326d45bf-9f77-57d5-a054-93e76b034dd5",
+      "jurisdiction": "DE-NW",
+      "title": "Aggregatzustände und Übergänge deuten",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NW",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#326d45bf-9f77-57d5-a054-93e76b034dd5"
+        }
+      ]
+    },
+    {
+      "goalId": "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+      "jurisdiction": "DE-NW",
+      "title": "Konstante Massenverhältnisse beschreiben",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NW",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#e0d05c36-eaac-4c75-8ead-3fd5bdafefca"
+        }
+      ]
+    },
+    {
+      "goalId": "9b5d6326-d27c-4ece-8c72-debda705464a",
+      "jurisdiction": "DE-NW",
+      "title": "Dalton-Modell und Modellcharakter erläutern",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NW",
+          "kind": "requires-closure",
+          "source": "required by fcaf8c9b-bd81-552e-9d91-43649895471e"
+        }
+      ]
+    },
+    {
+      "goalId": "22133f29-ef02-4408-8f8d-2bbea3275d91",
+      "jurisdiction": "DE-NW",
+      "title": "Einfache Redoxgleichungen mit Oxidationszahlen erstellen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NW",
+          "kind": "requires-closure",
+          "source": "required by 70b12d1c-abaf-45c6-ae9e-b571e9cbc126"
+        }
+      ]
+    },
+    {
+      "goalId": "f5efab9d-2c61-44ea-b36a-87f873b51fd8",
+      "jurisdiction": "DE-NW",
+      "title": "Energiestufenmodell und Elektronenverteilung anwenden",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NW",
+          "kind": "requires-closure",
+          "source": "required by c441d9e8-d9d9-5e55-a189-a37345541321"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NW",
+          "kind": "requires-closure",
+          "source": "required by e74f5301-70d3-5869-bd3d-79a5763a1718"
+        }
+      ]
+    },
+    {
+      "goalId": "28bb9d15-f865-5843-a035-6066580fea64",
+      "jurisdiction": "DE-NW",
+      "title": "Arrhenius-Definitionen wiederholen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NW",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#28bb9d15-f865-5843-a035-6066580fea64"
+        }
+      ]
+    },
+    {
+      "goalId": "448815cc-4127-54b7-96bf-e54b3d2a38c5",
+      "jurisdiction": "DE-NW",
+      "title": "Bindungstypen sicher erläutern",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NW",
+          "kind": "requires-closure",
+          "source": "required by eb7537dd-d11b-50e9-a6d7-51a78e96fc4e"
+        }
+      ]
+    },
+    {
+      "goalId": "9b56d01e-c2d7-51d8-b78e-237592c1ed20",
+      "jurisdiction": "DE-NW",
+      "title": "Einfache Bindungswinkel mit dem EPA-Modell erklären",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NW",
+          "kind": "requires-closure",
+          "source": "required by eb7537dd-d11b-50e9-a6d7-51a78e96fc4e"
+        }
+      ]
+    },
+    {
+      "goalId": "5a30273a-98d5-5163-bb16-c250b7ed4e7f",
+      "jurisdiction": "DE-NW",
+      "title": "Struktur-Eigenschafts-Zusammenhänge ableiten",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NW",
+          "kind": "requires-closure",
+          "source": "required by 17acbdec-5274-510f-8588-0eac164ebbe5"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NW",
+          "kind": "requires-closure",
+          "source": "required by 536b48b2-7822-5b7e-9059-ad43400da7e0"
+        }
+      ]
+    },
+    {
+      "goalId": "17acbdec-5274-510f-8588-0eac164ebbe5",
+      "jurisdiction": "DE-NW",
+      "title": "Halogenreaktionen von Kohlenwasserstoffen vergleichen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NW",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#17acbdec-5274-510f-8588-0eac164ebbe5"
+        }
+      ]
+    },
+    {
+      "goalId": "91cd4728-b811-562a-970b-18b81dfb4bdf",
+      "jurisdiction": "DE-NW",
+      "title": "Polare Eigenschaften erklären",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NW",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#91cd4728-b811-562a-970b-18b81dfb4bdf"
+        }
+      ]
+    },
+    {
+      "goalId": "503dedcb-0efc-5e6b-bbc9-20761a0951f5",
+      "jurisdiction": "DE-NW",
+      "title": "Chemische Fragestellungen und Hypothesen theoriegestützt formulieren",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NW",
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides"
+        }
+      ]
+    },
+    {
+      "goalId": "75e2eff1-f871-5461-9e3f-26d0b333ce2f",
+      "jurisdiction": "DE-NW",
+      "title": "Chemische Alltagsfragen und prüfbare Hypothesen formulieren",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NW",
+          "kind": "requires-closure",
+          "source": "required by 503dedcb-0efc-5e6b-bbc9-20761a0951f5"
+        }
+      ]
+    },
+    {
+      "goalId": "ac8b6c0f-98b2-5092-806d-d9498efbfa35",
+      "jurisdiction": "DE-NW",
+      "title": "Komplexe chemische Quellen selbstständig erschließen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NW",
+          "kind": "requires-closure",
+          "source": "required by 8b98d8ba-65c6-58d7-92f0-45f4b2456573"
+        }
+      ]
+    },
+    {
+      "goalId": "1351706f-4ea6-56e9-951b-87b24cbcdee8",
+      "jurisdiction": "DE-NW",
+      "title": "Lösungen nach Arbeitsanweisung herstellen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NW",
+          "kind": "requires-closure",
+          "source": "required by f1ed86f0-534d-57d7-8952-a004a331cc54"
+        }
+      ]
+    },
+    {
+      "goalId": "a25a19ed-aec3-59cc-ae28-31d98746cb9d",
+      "jurisdiction": "DE-NW",
+      "title": "Ethanolwirkungen im Körper und Alltagsrisiken einordnen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NW",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#a25a19ed-aec3-59cc-ae28-31d98746cb9d"
+        }
+      ]
+    },
+    {
+      "goalId": "d2ccd1d5-56f7-583f-9724-e97441367f91",
+      "jurisdiction": "DE-SH",
+      "title": "Saure, alkalische und neutrale Lösungen unterscheiden",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SH",
+          "kind": "requires-closure",
+          "source": "required by 28bb9d15-f865-5843-a035-6066580fea64"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SH",
+          "kind": "requires-closure",
+          "source": "required by fd309753-4d48-5570-a4ec-09dfeb20ff9c"
+        }
+      ]
+    },
+    {
+      "goalId": "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+      "jurisdiction": "DE-SH",
+      "title": "Konstante Massenverhältnisse beschreiben",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SH",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#e0d05c36-eaac-4c75-8ead-3fd5bdafefca"
+        }
+      ]
+    },
+    {
+      "goalId": "22133f29-ef02-4408-8f8d-2bbea3275d91",
+      "jurisdiction": "DE-SH",
+      "title": "Einfache Redoxgleichungen mit Oxidationszahlen erstellen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SH",
+          "kind": "requires-closure",
+          "source": "required by 1051c091-a044-5a09-8946-60a4b5e5d185"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SH",
+          "kind": "requires-closure",
+          "source": "required by 70b12d1c-abaf-45c6-ae9e-b571e9cbc126"
+        }
+      ]
+    },
+    {
+      "goalId": "018bec90-445f-4a88-b8bc-228f8335dee6",
+      "jurisdiction": "DE-SH",
+      "title": "Leitfähigkeit von Stoffen vergleichen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SH",
+          "kind": "requires-closure",
+          "source": "required by fcaf8c9b-bd81-552e-9d91-43649895471e"
+        }
+      ]
+    },
+    {
+      "goalId": "f5efab9d-2c61-44ea-b36a-87f873b51fd8",
+      "jurisdiction": "DE-SH",
+      "title": "Energiestufenmodell und Elektronenverteilung anwenden",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SH",
+          "kind": "requires-closure",
+          "source": "required by e74f5301-70d3-5869-bd3d-79a5763a1718"
+        }
+      ]
+    },
+    {
+      "goalId": "92c99237-1c74-54fc-bf08-9191656afaa6",
+      "jurisdiction": "DE-SH",
+      "title": "Moleküldarstellungen situationsgerecht umwandeln",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SH",
+          "kind": "requires-closure",
+          "source": "required by d8eeed29-d1b7-5a48-94b5-343629f8e867"
+        }
+      ]
+    },
+    {
+      "goalId": "28bb9d15-f865-5843-a035-6066580fea64",
+      "jurisdiction": "DE-SH",
+      "title": "Arrhenius-Definitionen wiederholen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SH",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#28bb9d15-f865-5843-a035-6066580fea64"
+        }
+      ]
+    },
+    {
+      "goalId": "f0f67a7a-b06a-50b9-8edc-1f2a0d97520d",
+      "jurisdiction": "DE-SH",
+      "title": "Bindungsverhältnisse aromatischer Systeme modellieren",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SH",
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides"
+        }
+      ]
+    },
+    {
+      "goalId": "91cd4728-b811-562a-970b-18b81dfb4bdf",
+      "jurisdiction": "DE-SH",
+      "title": "Polare Eigenschaften erklären",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SH",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#91cd4728-b811-562a-970b-18b81dfb4bdf"
+        }
+      ]
+    },
+    {
+      "goalId": "36666b4a-97af-51fc-9983-56cdcc7a8229",
+      "jurisdiction": "DE-SH",
+      "title": "Chemische Quellen und Darstellungen kritisch prüfen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SH",
+          "kind": "requires-closure",
+          "source": "required by 3c9bfa10-9a13-50cc-96c8-6213e28d6c54"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SH",
+          "kind": "requires-closure",
+          "source": "required by 8b98d8ba-65c6-58d7-92f0-45f4b2456573"
+        }
+      ]
+    },
+    {
+      "goalId": "42391b16-bbae-5c77-84e1-d488e714167b",
+      "jurisdiction": "DE-SH",
+      "title": "Chemische Untersuchungen selbst planen und durchführen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SH",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#42391b16-bbae-5c77-84e1-d488e714167b"
+        }
+      ]
+    },
+    {
+      "goalId": "ac8b6c0f-98b2-5092-806d-d9498efbfa35",
+      "jurisdiction": "DE-SH",
+      "title": "Komplexe chemische Quellen selbstständig erschließen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SH",
+          "kind": "requires-closure",
+          "source": "required by 8b98d8ba-65c6-58d7-92f0-45f4b2456573"
+        }
+      ]
+    },
+    {
+      "goalId": "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+      "jurisdiction": "DE-SH",
+      "title": "Angeleitete chemische Untersuchungen sicher durchführen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SH",
+          "kind": "requires-closure",
+          "source": "required by 1d2e7b80-653d-57b8-a284-8ede5a353b73"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SH",
+          "kind": "requires-closure",
+          "source": "required by 42391b16-bbae-5c77-84e1-d488e714167b"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SH",
+          "kind": "requires-closure",
+          "source": "required by e7c3d20e-4b13-560b-b8ee-c5abca8cc624"
+        }
+      ]
+    },
+    {
+      "goalId": "4b6d1824-20e4-597e-b639-fae401f740f0",
+      "jurisdiction": "DE-SH",
+      "title": "Stoffbezogene Schutzmaßnahmen begründen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SH",
+          "kind": "requires-closure",
+          "source": "required by 7be6f951-a614-52dc-94d3-2ce0d33765ff"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SH",
+          "kind": "requires-closure",
+          "source": "required by ebaae4f5-cc13-5493-98b1-10e1abeb638f"
+        }
+      ]
+    },
+    {
+      "goalId": "1351706f-4ea6-56e9-951b-87b24cbcdee8",
+      "jurisdiction": "DE-SH",
+      "title": "Lösungen nach Arbeitsanweisung herstellen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SH",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#1351706f-4ea6-56e9-951b-87b24cbcdee8"
+        }
+      ]
+    },
+    {
+      "goalId": "2d16528c-1424-5999-b3d2-af4593a147fc",
+      "jurisdiction": "DE-SH",
+      "title": "Zeolith-Enthärter strukturell erklären",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SH",
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides"
+        }
+      ]
+    },
+    {
+      "goalId": "cc5a626a-dc85-57e2-b422-259f92901545",
+      "jurisdiction": "DE-SH",
+      "title": "Biologische Abbauwege von Tensiden beschreiben",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SH",
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides"
+        }
+      ]
+    },
+    {
+      "goalId": "0959eef2-3c7d-5b33-a109-ddf332a5dbd9",
+      "jurisdiction": "DE-SH",
+      "title": "Pflanzenölkraftstoffe strukturbezogen einordnen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SH",
+          "kind": "requires-closure",
+          "source": "required by 4d9defde-d3bc-5c43-83ff-9cf6f2930643"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SH",
+          "kind": "requires-closure",
+          "source": "required by e64a79df-7f21-5651-9b5d-e7d17580569e"
+        }
+      ]
+    },
+    {
+      "goalId": "4d9defde-d3bc-5c43-83ff-9cf6f2930643",
+      "jurisdiction": "DE-SH",
+      "title": "Biodieselgewinnung durch Umesterung erklären",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SH",
+          "kind": "requires-closure",
+          "source": "required by e64a79df-7f21-5651-9b5d-e7d17580569e"
+        }
+      ]
+    },
+    {
+      "goalId": "223e33a4-5545-5332-ac4e-7d7a6cbc587c",
+      "jurisdiction": "DE-SH",
+      "title": "Biotreibstoffe nach Rohstoff und Herstellungsweg unterscheiden",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SH",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#223e33a4-5545-5332-ac4e-7d7a6cbc587c"
+        }
+      ]
+    },
+    {
+      "goalId": "fcc73fb5-7413-557f-aea3-b9692a66ee75",
+      "jurisdiction": "DE-HB",
+      "title": "Stoffe und Eigenschaften beschreiben",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HB",
+          "kind": "requires-closure",
+          "source": "required by 326d45bf-9f77-57d5-a054-93e76b034dd5"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HB",
+          "kind": "requires-closure",
+          "source": "required by 58486300-3f84-5aa1-9ed4-66186af62669"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HB",
+          "kind": "requires-closure",
+          "source": "required by 5a709938-e0f5-42b7-94f0-cfded08963a2"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HB",
+          "kind": "requires-closure",
+          "source": "required by 5e2eb826-6e60-5273-91d6-c23f6dfa33b1"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HB",
+          "kind": "requires-closure",
+          "source": "required by 62bdb5b1-4f67-59d4-bf5c-da80ee03eeb2"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HB",
+          "kind": "requires-closure",
+          "source": "required by e0e201bd-a1fd-5985-ab08-fd24c8655f3d"
+        }
+      ]
+    },
+    {
+      "goalId": "326d45bf-9f77-57d5-a054-93e76b034dd5",
+      "jurisdiction": "DE-HB",
+      "title": "Aggregatzustände und Übergänge deuten",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HB",
+          "kind": "requires-closure",
+          "source": "required by 988888bb-1f88-55f9-9a44-f3f60469a297"
+        }
+      ]
+    },
+    {
+      "goalId": "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+      "jurisdiction": "DE-HB",
+      "title": "Konstante Massenverhältnisse beschreiben",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HB",
+          "kind": "requires-closure",
+          "source": "required by e675fa94-6e23-59c0-b376-4340bf44c00e"
+        }
+      ]
+    },
+    {
+      "goalId": "018bec90-445f-4a88-b8bc-228f8335dee6",
+      "jurisdiction": "DE-HB",
+      "title": "Leitfähigkeit von Stoffen vergleichen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HB",
+          "kind": "requires-closure",
+          "source": "required by fcaf8c9b-bd81-552e-9d91-43649895471e"
+        }
+      ]
+    },
+    {
+      "goalId": "28bb9d15-f865-5843-a035-6066580fea64",
+      "jurisdiction": "DE-HB",
+      "title": "Arrhenius-Definitionen wiederholen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HB",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#28bb9d15-f865-5843-a035-6066580fea64"
+        }
+      ]
+    },
+    {
+      "goalId": "17acbdec-5274-510f-8588-0eac164ebbe5",
+      "jurisdiction": "DE-HB",
+      "title": "Halogenreaktionen von Kohlenwasserstoffen vergleichen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HB",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#17acbdec-5274-510f-8588-0eac164ebbe5"
+        }
+      ]
+    },
+    {
+      "goalId": "1351706f-4ea6-56e9-951b-87b24cbcdee8",
+      "jurisdiction": "DE-HB",
+      "title": "Lösungen nach Arbeitsanweisung herstellen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HB",
+          "kind": "requires-closure",
+          "source": "required by f1ed86f0-534d-57d7-8952-a004a331cc54"
+        }
+      ]
+    },
+    {
+      "goalId": "0e3f849b-133d-57da-882c-0d67c3eb05b8",
+      "jurisdiction": "DE-HB",
+      "title": "Faraday-Gesetze qualitativ erklären",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HB",
+          "kind": "requires-closure",
+          "source": "required by b8c8f70f-64cb-50b1-970c-e0c4295da3fb"
+        }
+      ]
+    },
+    {
+      "goalId": "d2ccd1d5-56f7-583f-9724-e97441367f91",
+      "jurisdiction": "DE-HH",
+      "title": "Saure, alkalische und neutrale Lösungen unterscheiden",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HH",
+          "kind": "requires-closure",
+          "source": "required by 28bb9d15-f865-5843-a035-6066580fea64"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HH",
+          "kind": "requires-closure",
+          "source": "required by fd309753-4d48-5570-a4ec-09dfeb20ff9c"
+        }
+      ]
+    },
+    {
+      "goalId": "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+      "jurisdiction": "DE-HH",
+      "title": "Konstante Massenverhältnisse beschreiben",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HH",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#e0d05c36-eaac-4c75-8ead-3fd5bdafefca"
+        }
+      ]
+    },
+    {
+      "goalId": "9b5d6326-d27c-4ece-8c72-debda705464a",
+      "jurisdiction": "DE-HH",
+      "title": "Dalton-Modell und Modellcharakter erläutern",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HH",
+          "kind": "requires-closure",
+          "source": "required by fcaf8c9b-bd81-552e-9d91-43649895471e"
+        }
+      ]
+    },
+    {
+      "goalId": "22133f29-ef02-4408-8f8d-2bbea3275d91",
+      "jurisdiction": "DE-HH",
+      "title": "Einfache Redoxgleichungen mit Oxidationszahlen erstellen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HH",
+          "kind": "requires-closure",
+          "source": "required by 1051c091-a044-5a09-8946-60a4b5e5d185"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HH",
+          "kind": "requires-closure",
+          "source": "required by 70b12d1c-abaf-45c6-ae9e-b571e9cbc126"
+        }
+      ]
+    },
+    {
+      "goalId": "018bec90-445f-4a88-b8bc-228f8335dee6",
+      "jurisdiction": "DE-HH",
+      "title": "Leitfähigkeit von Stoffen vergleichen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HH",
+          "kind": "requires-closure",
+          "source": "required by fcaf8c9b-bd81-552e-9d91-43649895471e"
+        }
+      ]
+    },
+    {
+      "goalId": "70b12d1c-abaf-45c6-ae9e-b571e9cbc126",
+      "jurisdiction": "DE-HH",
+      "title": "Elektrolyse einfacher Salze deuten",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HH",
+          "kind": "requires-closure",
+          "source": "required by fd7977bf-1d8e-5c5e-9c37-bd76bb2ffeef"
+        }
+      ]
+    },
+    {
+      "goalId": "f5efab9d-2c61-44ea-b36a-87f873b51fd8",
+      "jurisdiction": "DE-HH",
+      "title": "Energiestufenmodell und Elektronenverteilung anwenden",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HH",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#f5efab9d-2c61-44ea-b36a-87f873b51fd8"
+        }
+      ]
+    },
+    {
+      "goalId": "92c99237-1c74-54fc-bf08-9191656afaa6",
+      "jurisdiction": "DE-HH",
+      "title": "Moleküldarstellungen situationsgerecht umwandeln",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HH",
+          "kind": "requires-closure",
+          "source": "required by d8eeed29-d1b7-5a48-94b5-343629f8e867"
+        }
+      ]
+    },
+    {
+      "goalId": "28bb9d15-f865-5843-a035-6066580fea64",
+      "jurisdiction": "DE-HH",
+      "title": "Arrhenius-Definitionen wiederholen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HH",
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides"
+        }
+      ]
+    },
+    {
+      "goalId": "91cd4728-b811-562a-970b-18b81dfb4bdf",
+      "jurisdiction": "DE-HH",
+      "title": "Polare Eigenschaften erklären",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HH",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#91cd4728-b811-562a-970b-18b81dfb4bdf"
+        }
+      ]
+    },
+    {
+      "goalId": "6966df95-f125-5ecc-af8e-0442545d9f17",
+      "jurisdiction": "DE-HH",
+      "title": "Micellenbildung deuten",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HH",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#6966df95-f125-5ecc-af8e-0442545d9f17"
+        }
+      ]
+    },
+    {
+      "goalId": "67cd332f-9db7-50e1-87f6-172ef3714300",
+      "jurisdiction": "DE-HH",
+      "title": "Molekülgeometrien mit dem EPA-Modell erklären",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HH",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#67cd332f-9db7-50e1-87f6-172ef3714300"
+        }
+      ]
+    },
+    {
+      "goalId": "36666b4a-97af-51fc-9983-56cdcc7a8229",
+      "jurisdiction": "DE-HH",
+      "title": "Chemische Quellen und Darstellungen kritisch prüfen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HH",
+          "kind": "requires-closure",
+          "source": "required by 3c9bfa10-9a13-50cc-96c8-6213e28d6c54"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HH",
+          "kind": "requires-closure",
+          "source": "required by 8b98d8ba-65c6-58d7-92f0-45f4b2456573"
+        }
+      ]
+    },
+    {
+      "goalId": "ac8b6c0f-98b2-5092-806d-d9498efbfa35",
+      "jurisdiction": "DE-HH",
+      "title": "Komplexe chemische Quellen selbstständig erschließen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HH",
+          "kind": "requires-closure",
+          "source": "required by 8b98d8ba-65c6-58d7-92f0-45f4b2456573"
+        }
+      ]
+    },
+    {
+      "goalId": "4b6d1824-20e4-597e-b639-fae401f740f0",
+      "jurisdiction": "DE-HH",
+      "title": "Stoffbezogene Schutzmaßnahmen begründen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HH",
+          "kind": "requires-closure",
+          "source": "required by 7be6f951-a614-52dc-94d3-2ce0d33765ff"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HH",
+          "kind": "requires-closure",
+          "source": "required by ebaae4f5-cc13-5493-98b1-10e1abeb638f"
+        }
+      ]
+    },
+    {
+      "goalId": "1351706f-4ea6-56e9-951b-87b24cbcdee8",
+      "jurisdiction": "DE-HH",
+      "title": "Lösungen nach Arbeitsanweisung herstellen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HH",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#1351706f-4ea6-56e9-951b-87b24cbcdee8"
+        }
+      ]
+    },
+    {
+      "goalId": "a25a19ed-aec3-59cc-ae28-31d98746cb9d",
+      "jurisdiction": "DE-HH",
+      "title": "Ethanolwirkungen im Körper und Alltagsrisiken einordnen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HH",
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides"
+        }
+      ]
+    },
+    {
+      "goalId": "2d16528c-1424-5999-b3d2-af4593a147fc",
+      "jurisdiction": "DE-HH",
+      "title": "Zeolith-Enthärter strukturell erklären",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HH",
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides"
+        }
+      ]
+    },
+    {
+      "goalId": "cc5a626a-dc85-57e2-b422-259f92901545",
+      "jurisdiction": "DE-HH",
+      "title": "Biologische Abbauwege von Tensiden beschreiben",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HH",
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides"
+        }
+      ]
+    },
+    {
+      "goalId": "0959eef2-3c7d-5b33-a109-ddf332a5dbd9",
+      "jurisdiction": "DE-HH",
+      "title": "Pflanzenölkraftstoffe strukturbezogen einordnen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HH",
+          "kind": "requires-closure",
+          "source": "required by 4d9defde-d3bc-5c43-83ff-9cf6f2930643"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HH",
+          "kind": "requires-closure",
+          "source": "required by e64a79df-7f21-5651-9b5d-e7d17580569e"
+        }
+      ]
+    },
+    {
+      "goalId": "4d9defde-d3bc-5c43-83ff-9cf6f2930643",
+      "jurisdiction": "DE-HH",
+      "title": "Biodieselgewinnung durch Umesterung erklären",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HH",
+          "kind": "requires-closure",
+          "source": "required by e64a79df-7f21-5651-9b5d-e7d17580569e"
+        }
+      ]
+    },
+    {
+      "goalId": "223e33a4-5545-5332-ac4e-7d7a6cbc587c",
+      "jurisdiction": "DE-HH",
+      "title": "Biotreibstoffe nach Rohstoff und Herstellungsweg unterscheiden",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HH",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#223e33a4-5545-5332-ac4e-7d7a6cbc587c"
+        }
+      ]
+    },
+    {
+      "goalId": "d2ccd1d5-56f7-583f-9724-e97441367f91",
+      "jurisdiction": "DE-MV",
+      "title": "Saure, alkalische und neutrale Lösungen unterscheiden",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-MV",
+          "kind": "requires-closure",
+          "source": "required by 28bb9d15-f865-5843-a035-6066580fea64"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-MV",
+          "kind": "requires-closure",
+          "source": "required by fd309753-4d48-5570-a4ec-09dfeb20ff9c"
+        }
+      ]
+    },
+    {
+      "goalId": "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+      "jurisdiction": "DE-MV",
+      "title": "Konstante Massenverhältnisse beschreiben",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-MV",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#e0d05c36-eaac-4c75-8ead-3fd5bdafefca"
+        }
+      ]
+    },
+    {
+      "goalId": "9b5d6326-d27c-4ece-8c72-debda705464a",
+      "jurisdiction": "DE-MV",
+      "title": "Dalton-Modell und Modellcharakter erläutern",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-MV",
+          "kind": "requires-closure",
+          "source": "required by fcaf8c9b-bd81-552e-9d91-43649895471e"
+        }
+      ]
+    },
+    {
+      "goalId": "22133f29-ef02-4408-8f8d-2bbea3275d91",
+      "jurisdiction": "DE-MV",
+      "title": "Einfache Redoxgleichungen mit Oxidationszahlen erstellen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-MV",
+          "kind": "requires-closure",
+          "source": "required by 1051c091-a044-5a09-8946-60a4b5e5d185"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-MV",
+          "kind": "requires-closure",
+          "source": "required by 70b12d1c-abaf-45c6-ae9e-b571e9cbc126"
+        }
+      ]
+    },
+    {
+      "goalId": "018bec90-445f-4a88-b8bc-228f8335dee6",
+      "jurisdiction": "DE-MV",
+      "title": "Leitfähigkeit von Stoffen vergleichen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-MV",
+          "kind": "requires-closure",
+          "source": "required by fcaf8c9b-bd81-552e-9d91-43649895471e"
+        }
+      ]
+    },
+    {
+      "goalId": "70b12d1c-abaf-45c6-ae9e-b571e9cbc126",
+      "jurisdiction": "DE-MV",
+      "title": "Elektrolyse einfacher Salze deuten",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-MV",
+          "kind": "requires-closure",
+          "source": "required by fd7977bf-1d8e-5c5e-9c37-bd76bb2ffeef"
+        }
+      ]
+    },
+    {
+      "goalId": "f5efab9d-2c61-44ea-b36a-87f873b51fd8",
+      "jurisdiction": "DE-MV",
+      "title": "Energiestufenmodell und Elektronenverteilung anwenden",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-MV",
+          "kind": "requires-closure",
+          "source": "required by e74f5301-70d3-5869-bd3d-79a5763a1718"
+        }
+      ]
+    },
+    {
+      "goalId": "92c99237-1c74-54fc-bf08-9191656afaa6",
+      "jurisdiction": "DE-MV",
+      "title": "Moleküldarstellungen situationsgerecht umwandeln",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-MV",
+          "kind": "requires-closure",
+          "source": "required by d8eeed29-d1b7-5a48-94b5-343629f8e867"
+        }
+      ]
+    },
+    {
+      "goalId": "28bb9d15-f865-5843-a035-6066580fea64",
+      "jurisdiction": "DE-MV",
+      "title": "Arrhenius-Definitionen wiederholen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-MV",
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides"
+        }
+      ]
+    },
+    {
+      "goalId": "91cd4728-b811-562a-970b-18b81dfb4bdf",
+      "jurisdiction": "DE-MV",
+      "title": "Polare Eigenschaften erklären",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-MV",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#91cd4728-b811-562a-970b-18b81dfb4bdf"
+        }
+      ]
+    },
+    {
+      "goalId": "6966df95-f125-5ecc-af8e-0442545d9f17",
+      "jurisdiction": "DE-MV",
+      "title": "Micellenbildung deuten",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-MV",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#6966df95-f125-5ecc-af8e-0442545d9f17"
+        }
+      ]
+    },
+    {
+      "goalId": "67cd332f-9db7-50e1-87f6-172ef3714300",
+      "jurisdiction": "DE-MV",
+      "title": "Molekülgeometrien mit dem EPA-Modell erklären",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-MV",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#67cd332f-9db7-50e1-87f6-172ef3714300"
+        }
+      ]
+    },
+    {
+      "goalId": "36666b4a-97af-51fc-9983-56cdcc7a8229",
+      "jurisdiction": "DE-MV",
+      "title": "Chemische Quellen und Darstellungen kritisch prüfen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-MV",
+          "kind": "requires-closure",
+          "source": "required by 3c9bfa10-9a13-50cc-96c8-6213e28d6c54"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-MV",
+          "kind": "requires-closure",
+          "source": "required by 8b98d8ba-65c6-58d7-92f0-45f4b2456573"
+        }
+      ]
+    },
+    {
+      "goalId": "ac8b6c0f-98b2-5092-806d-d9498efbfa35",
+      "jurisdiction": "DE-MV",
+      "title": "Komplexe chemische Quellen selbstständig erschließen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-MV",
+          "kind": "requires-closure",
+          "source": "required by 8b98d8ba-65c6-58d7-92f0-45f4b2456573"
+        }
+      ]
+    },
+    {
+      "goalId": "4b6d1824-20e4-597e-b639-fae401f740f0",
+      "jurisdiction": "DE-MV",
+      "title": "Stoffbezogene Schutzmaßnahmen begründen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-MV",
+          "kind": "requires-closure",
+          "source": "required by 7be6f951-a614-52dc-94d3-2ce0d33765ff"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-MV",
+          "kind": "requires-closure",
+          "source": "required by ebaae4f5-cc13-5493-98b1-10e1abeb638f"
+        }
+      ]
+    },
+    {
+      "goalId": "805a2f58-29ce-55d0-8a85-42ee486239b3",
+      "jurisdiction": "DE-MV",
+      "title": "Vorgegebene Entsorgungswege begründet auswählen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-MV",
+          "kind": "requires-closure",
+          "source": "required by 7be6f951-a614-52dc-94d3-2ce0d33765ff"
+        }
+      ]
+    },
+    {
+      "goalId": "1351706f-4ea6-56e9-951b-87b24cbcdee8",
+      "jurisdiction": "DE-MV",
+      "title": "Lösungen nach Arbeitsanweisung herstellen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-MV",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#1351706f-4ea6-56e9-951b-87b24cbcdee8"
+        }
+      ]
+    },
+    {
+      "goalId": "a25a19ed-aec3-59cc-ae28-31d98746cb9d",
+      "jurisdiction": "DE-MV",
+      "title": "Ethanolwirkungen im Körper und Alltagsrisiken einordnen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-MV",
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides"
+        }
+      ]
+    },
+    {
+      "goalId": "2d16528c-1424-5999-b3d2-af4593a147fc",
+      "jurisdiction": "DE-MV",
+      "title": "Zeolith-Enthärter strukturell erklären",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-MV",
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides"
+        }
+      ]
+    },
+    {
+      "goalId": "cc5a626a-dc85-57e2-b422-259f92901545",
+      "jurisdiction": "DE-MV",
+      "title": "Biologische Abbauwege von Tensiden beschreiben",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-MV",
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides"
+        }
+      ]
+    },
+    {
+      "goalId": "0959eef2-3c7d-5b33-a109-ddf332a5dbd9",
+      "jurisdiction": "DE-MV",
+      "title": "Pflanzenölkraftstoffe strukturbezogen einordnen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-MV",
+          "kind": "requires-closure",
+          "source": "required by 4d9defde-d3bc-5c43-83ff-9cf6f2930643"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-MV",
+          "kind": "requires-closure",
+          "source": "required by e64a79df-7f21-5651-9b5d-e7d17580569e"
+        }
+      ]
+    },
+    {
+      "goalId": "4d9defde-d3bc-5c43-83ff-9cf6f2930643",
+      "jurisdiction": "DE-MV",
+      "title": "Biodieselgewinnung durch Umesterung erklären",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-MV",
+          "kind": "requires-closure",
+          "source": "required by e64a79df-7f21-5651-9b5d-e7d17580569e"
+        }
+      ]
+    },
+    {
+      "goalId": "223e33a4-5545-5332-ac4e-7d7a6cbc587c",
+      "jurisdiction": "DE-MV",
+      "title": "Biotreibstoffe nach Rohstoff und Herstellungsweg unterscheiden",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-MV",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#223e33a4-5545-5332-ac4e-7d7a6cbc587c"
+        }
+      ]
+    },
+    {
+      "goalId": "326d45bf-9f77-57d5-a054-93e76b034dd5",
+      "jurisdiction": "DE-RP",
+      "title": "Aggregatzustände und Übergänge deuten",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-RP",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#326d45bf-9f77-57d5-a054-93e76b034dd5"
+        }
+      ]
+    },
+    {
+      "goalId": "d2ccd1d5-56f7-583f-9724-e97441367f91",
+      "jurisdiction": "DE-RP",
+      "title": "Saure, alkalische und neutrale Lösungen unterscheiden",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-RP",
+          "kind": "requires-closure",
+          "source": "required by 28bb9d15-f865-5843-a035-6066580fea64"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-RP",
+          "kind": "requires-closure",
+          "source": "required by fd309753-4d48-5570-a4ec-09dfeb20ff9c"
+        }
+      ]
+    },
+    {
+      "goalId": "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+      "jurisdiction": "DE-RP",
+      "title": "Konstante Massenverhältnisse beschreiben",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-RP",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#e0d05c36-eaac-4c75-8ead-3fd5bdafefca"
+        }
+      ]
+    },
+    {
+      "goalId": "9b5d6326-d27c-4ece-8c72-debda705464a",
+      "jurisdiction": "DE-RP",
+      "title": "Dalton-Modell und Modellcharakter erläutern",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-RP",
+          "kind": "requires-closure",
+          "source": "required by fcaf8c9b-bd81-552e-9d91-43649895471e"
+        }
+      ]
+    },
+    {
+      "goalId": "22133f29-ef02-4408-8f8d-2bbea3275d91",
+      "jurisdiction": "DE-RP",
+      "title": "Einfache Redoxgleichungen mit Oxidationszahlen erstellen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-RP",
+          "kind": "requires-closure",
+          "source": "required by 1051c091-a044-5a09-8946-60a4b5e5d185"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-RP",
+          "kind": "requires-closure",
+          "source": "required by 70b12d1c-abaf-45c6-ae9e-b571e9cbc126"
+        }
+      ]
+    },
+    {
+      "goalId": "018bec90-445f-4a88-b8bc-228f8335dee6",
+      "jurisdiction": "DE-RP",
+      "title": "Leitfähigkeit von Stoffen vergleichen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-RP",
+          "kind": "requires-closure",
+          "source": "required by fcaf8c9b-bd81-552e-9d91-43649895471e"
+        }
+      ]
+    },
+    {
+      "goalId": "70b12d1c-abaf-45c6-ae9e-b571e9cbc126",
+      "jurisdiction": "DE-RP",
+      "title": "Elektrolyse einfacher Salze deuten",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-RP",
+          "kind": "requires-closure",
+          "source": "required by fd7977bf-1d8e-5c5e-9c37-bd76bb2ffeef"
+        }
+      ]
+    },
+    {
+      "goalId": "1dc15fa2-fca4-56b0-b5c1-4d215613dde0",
+      "jurisdiction": "DE-RP",
+      "title": "Stoffmenge und Einheit Mol nutzen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-RP",
+          "kind": "requires-closure",
+          "source": "required by 02634fdd-c8ba-591a-b240-77129b1bebb8"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-RP",
+          "kind": "requires-closure",
+          "source": "required by e22a34d4-ac1e-5afe-8f77-0dfa4fd9f44f"
+        }
+      ]
+    },
+    {
+      "goalId": "f5efab9d-2c61-44ea-b36a-87f873b51fd8",
+      "jurisdiction": "DE-RP",
+      "title": "Energiestufenmodell und Elektronenverteilung anwenden",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-RP",
+          "kind": "requires-closure",
+          "source": "required by e74f5301-70d3-5869-bd3d-79a5763a1718"
+        }
+      ]
+    },
+    {
+      "goalId": "92c99237-1c74-54fc-bf08-9191656afaa6",
+      "jurisdiction": "DE-RP",
+      "title": "Moleküldarstellungen situationsgerecht umwandeln",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-RP",
+          "kind": "requires-closure",
+          "source": "required by d8eeed29-d1b7-5a48-94b5-343629f8e867"
+        }
+      ]
+    },
+    {
+      "goalId": "28bb9d15-f865-5843-a035-6066580fea64",
+      "jurisdiction": "DE-RP",
+      "title": "Arrhenius-Definitionen wiederholen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-RP",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#28bb9d15-f865-5843-a035-6066580fea64"
+        }
+      ]
+    },
+    {
+      "goalId": "91cd4728-b811-562a-970b-18b81dfb4bdf",
+      "jurisdiction": "DE-RP",
+      "title": "Polare Eigenschaften erklären",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-RP",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#91cd4728-b811-562a-970b-18b81dfb4bdf"
+        }
+      ]
+    },
+    {
+      "goalId": "6966df95-f125-5ecc-af8e-0442545d9f17",
+      "jurisdiction": "DE-RP",
+      "title": "Micellenbildung deuten",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-RP",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#6966df95-f125-5ecc-af8e-0442545d9f17"
+        }
+      ]
+    },
+    {
+      "goalId": "36666b4a-97af-51fc-9983-56cdcc7a8229",
+      "jurisdiction": "DE-RP",
+      "title": "Chemische Quellen und Darstellungen kritisch prüfen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-RP",
+          "kind": "requires-closure",
+          "source": "required by 3c9bfa10-9a13-50cc-96c8-6213e28d6c54"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-RP",
+          "kind": "requires-closure",
+          "source": "required by 8b98d8ba-65c6-58d7-92f0-45f4b2456573"
+        }
+      ]
+    },
+    {
+      "goalId": "503dedcb-0efc-5e6b-bbc9-20761a0951f5",
+      "jurisdiction": "DE-RP",
+      "title": "Chemische Fragestellungen und Hypothesen theoriegestützt formulieren",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-RP",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#503dedcb-0efc-5e6b-bbc9-20761a0951f5"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-RP",
+          "kind": "requires-closure",
+          "source": "required by 9e3fae29-84d5-5600-bfb3-82d49ea3f1b5"
+        }
+      ]
+    },
+    {
+      "goalId": "75e2eff1-f871-5461-9e3f-26d0b333ce2f",
+      "jurisdiction": "DE-RP",
+      "title": "Chemische Alltagsfragen und prüfbare Hypothesen formulieren",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-RP",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#75e2eff1-f871-5461-9e3f-26d0b333ce2f"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-RP",
+          "kind": "requires-closure",
+          "source": "required by 503dedcb-0efc-5e6b-bbc9-20761a0951f5"
+        }
+      ]
+    },
+    {
+      "goalId": "9e3fae29-84d5-5600-bfb3-82d49ea3f1b5",
+      "jurisdiction": "DE-RP",
+      "title": "Chemische Daten quantitativ und hypothesenbezogen auswerten",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-RP",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#9e3fae29-84d5-5600-bfb3-82d49ea3f1b5"
+        }
+      ]
+    },
+    {
+      "goalId": "ac8b6c0f-98b2-5092-806d-d9498efbfa35",
+      "jurisdiction": "DE-RP",
+      "title": "Komplexe chemische Quellen selbstständig erschließen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-RP",
+          "kind": "requires-closure",
+          "source": "required by 8b98d8ba-65c6-58d7-92f0-45f4b2456573"
+        }
+      ]
+    },
+    {
+      "goalId": "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+      "jurisdiction": "DE-RP",
+      "title": "Angeleitete chemische Untersuchungen sicher durchführen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-RP",
+          "kind": "requires-closure",
+          "source": "required by 1d2e7b80-653d-57b8-a284-8ede5a353b73"
+        }
+      ]
+    },
+    {
+      "goalId": "4b6d1824-20e4-597e-b639-fae401f740f0",
+      "jurisdiction": "DE-RP",
+      "title": "Stoffbezogene Schutzmaßnahmen begründen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-RP",
+          "kind": "requires-closure",
+          "source": "required by ebaae4f5-cc13-5493-98b1-10e1abeb638f"
+        }
+      ]
+    },
+    {
+      "goalId": "1351706f-4ea6-56e9-951b-87b24cbcdee8",
+      "jurisdiction": "DE-RP",
+      "title": "Lösungen nach Arbeitsanweisung herstellen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-RP",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#1351706f-4ea6-56e9-951b-87b24cbcdee8"
+        }
+      ]
+    },
+    {
+      "goalId": "2d16528c-1424-5999-b3d2-af4593a147fc",
+      "jurisdiction": "DE-RP",
+      "title": "Zeolith-Enthärter strukturell erklären",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-RP",
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides"
+        }
+      ]
+    },
+    {
+      "goalId": "cc5a626a-dc85-57e2-b422-259f92901545",
+      "jurisdiction": "DE-RP",
+      "title": "Biologische Abbauwege von Tensiden beschreiben",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-RP",
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides"
+        }
+      ]
+    },
+    {
+      "goalId": "0959eef2-3c7d-5b33-a109-ddf332a5dbd9",
+      "jurisdiction": "DE-RP",
+      "title": "Pflanzenölkraftstoffe strukturbezogen einordnen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-RP",
+          "kind": "requires-closure",
+          "source": "required by 4d9defde-d3bc-5c43-83ff-9cf6f2930643"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-RP",
+          "kind": "requires-closure",
+          "source": "required by e64a79df-7f21-5651-9b5d-e7d17580569e"
+        }
+      ]
+    },
+    {
+      "goalId": "4d9defde-d3bc-5c43-83ff-9cf6f2930643",
+      "jurisdiction": "DE-RP",
+      "title": "Biodieselgewinnung durch Umesterung erklären",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-RP",
+          "kind": "requires-closure",
+          "source": "required by e64a79df-7f21-5651-9b5d-e7d17580569e"
+        }
+      ]
+    },
+    {
+      "goalId": "223e33a4-5545-5332-ac4e-7d7a6cbc587c",
+      "jurisdiction": "DE-RP",
+      "title": "Biotreibstoffe nach Rohstoff und Herstellungsweg unterscheiden",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-RP",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#223e33a4-5545-5332-ac4e-7d7a6cbc587c"
+        }
+      ]
+    },
+    {
+      "goalId": "d2ccd1d5-56f7-583f-9724-e97441367f91",
+      "jurisdiction": "DE-SL",
+      "title": "Saure, alkalische und neutrale Lösungen unterscheiden",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SL",
+          "kind": "requires-closure",
+          "source": "required by 28bb9d15-f865-5843-a035-6066580fea64"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SL",
+          "kind": "requires-closure",
+          "source": "required by fd309753-4d48-5570-a4ec-09dfeb20ff9c"
+        }
+      ]
+    },
+    {
+      "goalId": "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+      "jurisdiction": "DE-SL",
+      "title": "Konstante Massenverhältnisse beschreiben",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SL",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#e0d05c36-eaac-4c75-8ead-3fd5bdafefca"
+        }
+      ]
+    },
+    {
+      "goalId": "22133f29-ef02-4408-8f8d-2bbea3275d91",
+      "jurisdiction": "DE-SL",
+      "title": "Einfache Redoxgleichungen mit Oxidationszahlen erstellen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SL",
+          "kind": "requires-closure",
+          "source": "required by 1051c091-a044-5a09-8946-60a4b5e5d185"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SL",
+          "kind": "requires-closure",
+          "source": "required by 70b12d1c-abaf-45c6-ae9e-b571e9cbc126"
+        }
+      ]
+    },
+    {
+      "goalId": "018bec90-445f-4a88-b8bc-228f8335dee6",
+      "jurisdiction": "DE-SL",
+      "title": "Leitfähigkeit von Stoffen vergleichen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SL",
+          "kind": "requires-closure",
+          "source": "required by fcaf8c9b-bd81-552e-9d91-43649895471e"
+        }
+      ]
+    },
+    {
+      "goalId": "70b12d1c-abaf-45c6-ae9e-b571e9cbc126",
+      "jurisdiction": "DE-SL",
+      "title": "Elektrolyse einfacher Salze deuten",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SL",
+          "kind": "requires-closure",
+          "source": "required by fd7977bf-1d8e-5c5e-9c37-bd76bb2ffeef"
+        }
+      ]
+    },
+    {
+      "goalId": "1dc15fa2-fca4-56b0-b5c1-4d215613dde0",
+      "jurisdiction": "DE-SL",
+      "title": "Stoffmenge und Einheit Mol nutzen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SL",
+          "kind": "requires-closure",
+          "source": "required by 02634fdd-c8ba-591a-b240-77129b1bebb8"
+        }
+      ]
+    },
+    {
+      "goalId": "f5efab9d-2c61-44ea-b36a-87f873b51fd8",
+      "jurisdiction": "DE-SL",
+      "title": "Energiestufenmodell und Elektronenverteilung anwenden",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SL",
+          "kind": "requires-closure",
+          "source": "required by e74f5301-70d3-5869-bd3d-79a5763a1718"
+        }
+      ]
+    },
+    {
+      "goalId": "28bb9d15-f865-5843-a035-6066580fea64",
+      "jurisdiction": "DE-SL",
+      "title": "Arrhenius-Definitionen wiederholen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SL",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#28bb9d15-f865-5843-a035-6066580fea64"
+        }
+      ]
+    },
+    {
+      "goalId": "448815cc-4127-54b7-96bf-e54b3d2a38c5",
+      "jurisdiction": "DE-SL",
+      "title": "Bindungstypen sicher erläutern",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SL",
+          "kind": "requires-closure",
+          "source": "required by eb7537dd-d11b-50e9-a6d7-51a78e96fc4e"
+        }
+      ]
+    },
+    {
+      "goalId": "9b56d01e-c2d7-51d8-b78e-237592c1ed20",
+      "jurisdiction": "DE-SL",
+      "title": "Einfache Bindungswinkel mit dem EPA-Modell erklären",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SL",
+          "kind": "requires-closure",
+          "source": "required by eb7537dd-d11b-50e9-a6d7-51a78e96fc4e"
+        }
+      ]
+    },
+    {
+      "goalId": "5a30273a-98d5-5163-bb16-c250b7ed4e7f",
+      "jurisdiction": "DE-SL",
+      "title": "Struktur-Eigenschafts-Zusammenhänge ableiten",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SL",
+          "kind": "requires-closure",
+          "source": "required by 17acbdec-5274-510f-8588-0eac164ebbe5"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SL",
+          "kind": "requires-closure",
+          "source": "required by 360fccb9-896d-5e67-bf5d-5732621604c9"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SL",
+          "kind": "requires-closure",
+          "source": "required by 536b48b2-7822-5b7e-9059-ad43400da7e0"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SL",
+          "kind": "requires-closure",
+          "source": "required by 9abd8069-17ad-5d30-9102-f8eff6055045"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SL",
+          "kind": "requires-closure",
+          "source": "required by b92bfa45-b500-5647-8fd2-a14b708aaf59"
+        }
+      ]
+    },
+    {
+      "goalId": "91cd4728-b811-562a-970b-18b81dfb4bdf",
+      "jurisdiction": "DE-SL",
+      "title": "Polare Eigenschaften erklären",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SL",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#91cd4728-b811-562a-970b-18b81dfb4bdf"
+        }
+      ]
+    },
+    {
+      "goalId": "6966df95-f125-5ecc-af8e-0442545d9f17",
+      "jurisdiction": "DE-SL",
+      "title": "Micellenbildung deuten",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SL",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#6966df95-f125-5ecc-af8e-0442545d9f17"
+        }
+      ]
+    },
+    {
+      "goalId": "36666b4a-97af-51fc-9983-56cdcc7a8229",
+      "jurisdiction": "DE-SL",
+      "title": "Chemische Quellen und Darstellungen kritisch prüfen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SL",
+          "kind": "requires-closure",
+          "source": "required by 3c9bfa10-9a13-50cc-96c8-6213e28d6c54"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SL",
+          "kind": "requires-closure",
+          "source": "required by 8b98d8ba-65c6-58d7-92f0-45f4b2456573"
+        }
+      ]
+    },
+    {
+      "goalId": "42391b16-bbae-5c77-84e1-d488e714167b",
+      "jurisdiction": "DE-SL",
+      "title": "Chemische Untersuchungen selbst planen und durchführen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SL",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#42391b16-bbae-5c77-84e1-d488e714167b"
+        }
+      ]
+    },
+    {
+      "goalId": "ac8b6c0f-98b2-5092-806d-d9498efbfa35",
+      "jurisdiction": "DE-SL",
+      "title": "Komplexe chemische Quellen selbstständig erschließen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SL",
+          "kind": "requires-closure",
+          "source": "required by 8b98d8ba-65c6-58d7-92f0-45f4b2456573"
+        }
+      ]
+    },
+    {
+      "goalId": "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+      "jurisdiction": "DE-SL",
+      "title": "Angeleitete chemische Untersuchungen sicher durchführen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SL",
+          "kind": "requires-closure",
+          "source": "required by 1d2e7b80-653d-57b8-a284-8ede5a353b73"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SL",
+          "kind": "requires-closure",
+          "source": "required by 42391b16-bbae-5c77-84e1-d488e714167b"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SL",
+          "kind": "requires-closure",
+          "source": "required by e7c3d20e-4b13-560b-b8ee-c5abca8cc624"
+        }
+      ]
+    },
+    {
+      "goalId": "4b6d1824-20e4-597e-b639-fae401f740f0",
+      "jurisdiction": "DE-SL",
+      "title": "Stoffbezogene Schutzmaßnahmen begründen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SL",
+          "kind": "requires-closure",
+          "source": "required by 7be6f951-a614-52dc-94d3-2ce0d33765ff"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SL",
+          "kind": "requires-closure",
+          "source": "required by ebaae4f5-cc13-5493-98b1-10e1abeb638f"
+        }
+      ]
+    },
+    {
+      "goalId": "805a2f58-29ce-55d0-8a85-42ee486239b3",
+      "jurisdiction": "DE-SL",
+      "title": "Vorgegebene Entsorgungswege begründet auswählen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SL",
+          "kind": "requires-closure",
+          "source": "required by 7be6f951-a614-52dc-94d3-2ce0d33765ff"
+        }
+      ]
+    },
+    {
+      "goalId": "1351706f-4ea6-56e9-951b-87b24cbcdee8",
+      "jurisdiction": "DE-SL",
+      "title": "Lösungen nach Arbeitsanweisung herstellen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SL",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#1351706f-4ea6-56e9-951b-87b24cbcdee8"
+        }
+      ]
+    },
+    {
+      "goalId": "2d16528c-1424-5999-b3d2-af4593a147fc",
+      "jurisdiction": "DE-SL",
+      "title": "Zeolith-Enthärter strukturell erklären",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SL",
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides"
+        }
+      ]
+    },
+    {
+      "goalId": "cc5a626a-dc85-57e2-b422-259f92901545",
+      "jurisdiction": "DE-SL",
+      "title": "Biologische Abbauwege von Tensiden beschreiben",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SL",
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides"
+        }
+      ]
+    },
+    {
+      "goalId": "0959eef2-3c7d-5b33-a109-ddf332a5dbd9",
+      "jurisdiction": "DE-SL",
+      "title": "Pflanzenölkraftstoffe strukturbezogen einordnen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SL",
+          "kind": "requires-closure",
+          "source": "required by 4d9defde-d3bc-5c43-83ff-9cf6f2930643"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SL",
+          "kind": "requires-closure",
+          "source": "required by e64a79df-7f21-5651-9b5d-e7d17580569e"
+        }
+      ]
+    },
+    {
+      "goalId": "4d9defde-d3bc-5c43-83ff-9cf6f2930643",
+      "jurisdiction": "DE-SL",
+      "title": "Biodieselgewinnung durch Umesterung erklären",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SL",
+          "kind": "requires-closure",
+          "source": "required by e64a79df-7f21-5651-9b5d-e7d17580569e"
+        }
+      ]
+    },
+    {
+      "goalId": "223e33a4-5545-5332-ac4e-7d7a6cbc587c",
+      "jurisdiction": "DE-SL",
+      "title": "Biotreibstoffe nach Rohstoff und Herstellungsweg unterscheiden",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SL",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#223e33a4-5545-5332-ac4e-7d7a6cbc587c"
+        }
+      ]
+    },
+    {
+      "goalId": "d2ccd1d5-56f7-583f-9724-e97441367f91",
+      "jurisdiction": "DE-SN",
+      "title": "Saure, alkalische und neutrale Lösungen unterscheiden",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "requires-closure",
+          "source": "required by 28bb9d15-f865-5843-a035-6066580fea64"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "requires-closure",
+          "source": "required by f1ed86f0-534d-57d7-8952-a004a331cc54"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "requires-closure",
+          "source": "required by fd309753-4d48-5570-a4ec-09dfeb20ff9c"
+        }
+      ]
+    },
+    {
+      "goalId": "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+      "jurisdiction": "DE-SN",
+      "title": "Konstante Massenverhältnisse beschreiben",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#e0d05c36-eaac-4c75-8ead-3fd5bdafefca"
+        }
+      ]
+    },
+    {
+      "goalId": "9b5d6326-d27c-4ece-8c72-debda705464a",
+      "jurisdiction": "DE-SN",
+      "title": "Dalton-Modell und Modellcharakter erläutern",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "requires-closure",
+          "source": "required by fcaf8c9b-bd81-552e-9d91-43649895471e"
+        }
+      ]
+    },
+    {
+      "goalId": "22133f29-ef02-4408-8f8d-2bbea3275d91",
+      "jurisdiction": "DE-SN",
+      "title": "Einfache Redoxgleichungen mit Oxidationszahlen erstellen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "requires-closure",
+          "source": "required by 1051c091-a044-5a09-8946-60a4b5e5d185"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "requires-closure",
+          "source": "required by 70b12d1c-abaf-45c6-ae9e-b571e9cbc126"
+        }
+      ]
+    },
+    {
+      "goalId": "018bec90-445f-4a88-b8bc-228f8335dee6",
+      "jurisdiction": "DE-SN",
+      "title": "Leitfähigkeit von Stoffen vergleichen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "requires-closure",
+          "source": "required by fcaf8c9b-bd81-552e-9d91-43649895471e"
+        }
+      ]
+    },
+    {
+      "goalId": "70b12d1c-abaf-45c6-ae9e-b571e9cbc126",
+      "jurisdiction": "DE-SN",
+      "title": "Elektrolyse einfacher Salze deuten",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "requires-closure",
+          "source": "required by fd7977bf-1d8e-5c5e-9c37-bd76bb2ffeef"
+        }
+      ]
+    },
+    {
+      "goalId": "1dc15fa2-fca4-56b0-b5c1-4d215613dde0",
+      "jurisdiction": "DE-SN",
+      "title": "Stoffmenge und Einheit Mol nutzen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "requires-closure",
+          "source": "required by 02634fdd-c8ba-591a-b240-77129b1bebb8"
+        }
+      ]
+    },
+    {
+      "goalId": "f5efab9d-2c61-44ea-b36a-87f873b51fd8",
+      "jurisdiction": "DE-SN",
+      "title": "Energiestufenmodell und Elektronenverteilung anwenden",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "requires-closure",
+          "source": "required by e74f5301-70d3-5869-bd3d-79a5763a1718"
+        }
+      ]
+    },
+    {
+      "goalId": "28bb9d15-f865-5843-a035-6066580fea64",
+      "jurisdiction": "DE-SN",
+      "title": "Arrhenius-Definitionen wiederholen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#28bb9d15-f865-5843-a035-6066580fea64"
+        }
+      ]
+    },
+    {
+      "goalId": "f0f67a7a-b06a-50b9-8edc-1f2a0d97520d",
+      "jurisdiction": "DE-SN",
+      "title": "Bindungsverhältnisse aromatischer Systeme modellieren",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides"
+        }
+      ]
+    },
+    {
+      "goalId": "91cd4728-b811-562a-970b-18b81dfb4bdf",
+      "jurisdiction": "DE-SN",
+      "title": "Polare Eigenschaften erklären",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#91cd4728-b811-562a-970b-18b81dfb4bdf"
+        }
+      ]
+    },
+    {
+      "goalId": "6966df95-f125-5ecc-af8e-0442545d9f17",
+      "jurisdiction": "DE-SN",
+      "title": "Micellenbildung deuten",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#6966df95-f125-5ecc-af8e-0442545d9f17"
+        }
+      ]
+    },
+    {
+      "goalId": "36666b4a-97af-51fc-9983-56cdcc7a8229",
+      "jurisdiction": "DE-SN",
+      "title": "Chemische Quellen und Darstellungen kritisch prüfen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "requires-closure",
+          "source": "required by 3c9bfa10-9a13-50cc-96c8-6213e28d6c54"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "requires-closure",
+          "source": "required by 8b98d8ba-65c6-58d7-92f0-45f4b2456573"
+        }
+      ]
+    },
+    {
+      "goalId": "42391b16-bbae-5c77-84e1-d488e714167b",
+      "jurisdiction": "DE-SN",
+      "title": "Chemische Untersuchungen selbst planen und durchführen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#42391b16-bbae-5c77-84e1-d488e714167b"
+        }
+      ]
+    },
+    {
+      "goalId": "431a0f03-f28a-5e56-a61f-000336d0b410",
+      "jurisdiction": "DE-SN",
+      "title": "Chemische Pro- und Kontra-Argumente abwägen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "requires-closure",
+          "source": "required by 1df17884-96ae-57d7-9da9-dbebd082596f"
+        }
+      ]
+    },
+    {
+      "goalId": "4aa3a130-b517-5ac5-87b2-147fe432cadd",
+      "jurisdiction": "DE-SN",
+      "title": "Die Aussagekraft chemischer Daten beurteilen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "requires-closure",
+          "source": "required by e313c1ee-a617-54ed-adea-c183da1e03d8"
+        }
+      ]
+    },
+    {
+      "goalId": "5b1bb5d9-07b1-5ba9-b320-cc97be917c60",
+      "jurisdiction": "DE-SN",
+      "title": "Chemische Informationen aus Quellen erschließen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "requires-closure",
+          "source": "required by 431a0f03-f28a-5e56-a61f-000336d0b410"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "requires-closure",
+          "source": "required by 9fa7d857-451a-5c1b-b6f4-d4ff97d7f39f"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "requires-closure",
+          "source": "required by a0e8f0f2-24e2-5945-a511-597d32e73796"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "requires-closure",
+          "source": "required by ac8b6c0f-98b2-5092-806d-d9498efbfa35"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "requires-closure",
+          "source": "required by f71a2c0a-3a6a-5b23-9fb4-1b57cfb68528"
+        }
+      ]
+    },
+    {
+      "goalId": "7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6",
+      "jurisdiction": "DE-SN",
+      "title": "Chemische Daten auswerten und auf Hypothesen beziehen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6"
+        }
+      ]
+    },
+    {
+      "goalId": "ac8b6c0f-98b2-5092-806d-d9498efbfa35",
+      "jurisdiction": "DE-SN",
+      "title": "Komplexe chemische Quellen selbstständig erschließen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "requires-closure",
+          "source": "required by 8b98d8ba-65c6-58d7-92f0-45f4b2456573"
+        }
+      ]
+    },
+    {
+      "goalId": "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+      "jurisdiction": "DE-SN",
+      "title": "Angeleitete chemische Untersuchungen sicher durchführen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "requires-closure",
+          "source": "required by 1d2e7b80-653d-57b8-a284-8ede5a353b73"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "requires-closure",
+          "source": "required by 42391b16-bbae-5c77-84e1-d488e714167b"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "requires-closure",
+          "source": "required by e7c3d20e-4b13-560b-b8ee-c5abca8cc624"
+        }
+      ]
+    },
+    {
+      "goalId": "4b6d1824-20e4-597e-b639-fae401f740f0",
+      "jurisdiction": "DE-SN",
+      "title": "Stoffbezogene Schutzmaßnahmen begründen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "requires-closure",
+          "source": "required by 7be6f951-a614-52dc-94d3-2ce0d33765ff"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "requires-closure",
+          "source": "required by ebaae4f5-cc13-5493-98b1-10e1abeb638f"
+        }
+      ]
+    },
+    {
+      "goalId": "805a2f58-29ce-55d0-8a85-42ee486239b3",
+      "jurisdiction": "DE-SN",
+      "title": "Vorgegebene Entsorgungswege begründet auswählen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "requires-closure",
+          "source": "required by 7be6f951-a614-52dc-94d3-2ce0d33765ff"
+        }
+      ]
+    },
+    {
+      "goalId": "1351706f-4ea6-56e9-951b-87b24cbcdee8",
+      "jurisdiction": "DE-SN",
+      "title": "Lösungen nach Arbeitsanweisung herstellen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#1351706f-4ea6-56e9-951b-87b24cbcdee8"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "requires-closure",
+          "source": "required by f1ed86f0-534d-57d7-8952-a004a331cc54"
+        }
+      ]
+    },
+    {
+      "goalId": "2d16528c-1424-5999-b3d2-af4593a147fc",
+      "jurisdiction": "DE-SN",
+      "title": "Zeolith-Enthärter strukturell erklären",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides"
+        }
+      ]
+    },
+    {
+      "goalId": "cc5a626a-dc85-57e2-b422-259f92901545",
+      "jurisdiction": "DE-SN",
+      "title": "Biologische Abbauwege von Tensiden beschreiben",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides"
+        }
+      ]
+    },
+    {
+      "goalId": "0959eef2-3c7d-5b33-a109-ddf332a5dbd9",
+      "jurisdiction": "DE-SN",
+      "title": "Pflanzenölkraftstoffe strukturbezogen einordnen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "requires-closure",
+          "source": "required by 4d9defde-d3bc-5c43-83ff-9cf6f2930643"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "requires-closure",
+          "source": "required by e64a79df-7f21-5651-9b5d-e7d17580569e"
+        }
+      ]
+    },
+    {
+      "goalId": "4d9defde-d3bc-5c43-83ff-9cf6f2930643",
+      "jurisdiction": "DE-SN",
+      "title": "Biodieselgewinnung durch Umesterung erklären",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "requires-closure",
+          "source": "required by e64a79df-7f21-5651-9b5d-e7d17580569e"
+        }
+      ]
+    },
+    {
+      "goalId": "223e33a4-5545-5332-ac4e-7d7a6cbc587c",
+      "jurisdiction": "DE-SN",
+      "title": "Biotreibstoffe nach Rohstoff und Herstellungsweg unterscheiden",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#223e33a4-5545-5332-ac4e-7d7a6cbc587c"
+        }
+      ]
+    },
+    {
+      "goalId": "d2ccd1d5-56f7-583f-9724-e97441367f91",
+      "jurisdiction": "DE-ST",
+      "title": "Saure, alkalische und neutrale Lösungen unterscheiden",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-ST",
+          "kind": "requires-closure",
+          "source": "required by 28bb9d15-f865-5843-a035-6066580fea64"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-ST",
+          "kind": "requires-closure",
+          "source": "required by fd309753-4d48-5570-a4ec-09dfeb20ff9c"
+        }
+      ]
+    },
+    {
+      "goalId": "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+      "jurisdiction": "DE-ST",
+      "title": "Konstante Massenverhältnisse beschreiben",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-ST",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#e0d05c36-eaac-4c75-8ead-3fd5bdafefca"
+        }
+      ]
+    },
+    {
+      "goalId": "9b5d6326-d27c-4ece-8c72-debda705464a",
+      "jurisdiction": "DE-ST",
+      "title": "Dalton-Modell und Modellcharakter erläutern",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-ST",
+          "kind": "requires-closure",
+          "source": "required by fcaf8c9b-bd81-552e-9d91-43649895471e"
+        }
+      ]
+    },
+    {
+      "goalId": "22133f29-ef02-4408-8f8d-2bbea3275d91",
+      "jurisdiction": "DE-ST",
+      "title": "Einfache Redoxgleichungen mit Oxidationszahlen erstellen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-ST",
+          "kind": "requires-closure",
+          "source": "required by 1051c091-a044-5a09-8946-60a4b5e5d185"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-ST",
+          "kind": "requires-closure",
+          "source": "required by 70b12d1c-abaf-45c6-ae9e-b571e9cbc126"
+        }
+      ]
+    },
+    {
+      "goalId": "018bec90-445f-4a88-b8bc-228f8335dee6",
+      "jurisdiction": "DE-ST",
+      "title": "Leitfähigkeit von Stoffen vergleichen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-ST",
+          "kind": "requires-closure",
+          "source": "required by fcaf8c9b-bd81-552e-9d91-43649895471e"
+        }
+      ]
+    },
+    {
+      "goalId": "70b12d1c-abaf-45c6-ae9e-b571e9cbc126",
+      "jurisdiction": "DE-ST",
+      "title": "Elektrolyse einfacher Salze deuten",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-ST",
+          "kind": "requires-closure",
+          "source": "required by fd7977bf-1d8e-5c5e-9c37-bd76bb2ffeef"
+        }
+      ]
+    },
+    {
+      "goalId": "f5efab9d-2c61-44ea-b36a-87f873b51fd8",
+      "jurisdiction": "DE-ST",
+      "title": "Energiestufenmodell und Elektronenverteilung anwenden",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-ST",
+          "kind": "requires-closure",
+          "source": "required by e74f5301-70d3-5869-bd3d-79a5763a1718"
+        }
+      ]
+    },
+    {
+      "goalId": "92c99237-1c74-54fc-bf08-9191656afaa6",
+      "jurisdiction": "DE-ST",
+      "title": "Moleküldarstellungen situationsgerecht umwandeln",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-ST",
+          "kind": "requires-closure",
+          "source": "required by d8eeed29-d1b7-5a48-94b5-343629f8e867"
+        }
+      ]
+    },
+    {
+      "goalId": "28bb9d15-f865-5843-a035-6066580fea64",
+      "jurisdiction": "DE-ST",
+      "title": "Arrhenius-Definitionen wiederholen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-ST",
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides"
+        }
+      ]
+    },
+    {
+      "goalId": "91cd4728-b811-562a-970b-18b81dfb4bdf",
+      "jurisdiction": "DE-ST",
+      "title": "Polare Eigenschaften erklären",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-ST",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#91cd4728-b811-562a-970b-18b81dfb4bdf"
+        }
+      ]
+    },
+    {
+      "goalId": "6966df95-f125-5ecc-af8e-0442545d9f17",
+      "jurisdiction": "DE-ST",
+      "title": "Micellenbildung deuten",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-ST",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#6966df95-f125-5ecc-af8e-0442545d9f17"
+        }
+      ]
+    },
+    {
+      "goalId": "36666b4a-97af-51fc-9983-56cdcc7a8229",
+      "jurisdiction": "DE-ST",
+      "title": "Chemische Quellen und Darstellungen kritisch prüfen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-ST",
+          "kind": "requires-closure",
+          "source": "required by 3c9bfa10-9a13-50cc-96c8-6213e28d6c54"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-ST",
+          "kind": "requires-closure",
+          "source": "required by 8b98d8ba-65c6-58d7-92f0-45f4b2456573"
+        }
+      ]
+    },
+    {
+      "goalId": "ac8b6c0f-98b2-5092-806d-d9498efbfa35",
+      "jurisdiction": "DE-ST",
+      "title": "Komplexe chemische Quellen selbstständig erschließen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-ST",
+          "kind": "requires-closure",
+          "source": "required by 8b98d8ba-65c6-58d7-92f0-45f4b2456573"
+        }
+      ]
+    },
+    {
+      "goalId": "4b6d1824-20e4-597e-b639-fae401f740f0",
+      "jurisdiction": "DE-ST",
+      "title": "Stoffbezogene Schutzmaßnahmen begründen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-ST",
+          "kind": "requires-closure",
+          "source": "required by 7be6f951-a614-52dc-94d3-2ce0d33765ff"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-ST",
+          "kind": "requires-closure",
+          "source": "required by ebaae4f5-cc13-5493-98b1-10e1abeb638f"
+        }
+      ]
+    },
+    {
+      "goalId": "805a2f58-29ce-55d0-8a85-42ee486239b3",
+      "jurisdiction": "DE-ST",
+      "title": "Vorgegebene Entsorgungswege begründet auswählen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-ST",
+          "kind": "requires-closure",
+          "source": "required by 7be6f951-a614-52dc-94d3-2ce0d33765ff"
+        }
+      ]
+    },
+    {
+      "goalId": "1351706f-4ea6-56e9-951b-87b24cbcdee8",
+      "jurisdiction": "DE-ST",
+      "title": "Lösungen nach Arbeitsanweisung herstellen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-ST",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#1351706f-4ea6-56e9-951b-87b24cbcdee8"
+        }
+      ]
+    },
+    {
+      "goalId": "2d16528c-1424-5999-b3d2-af4593a147fc",
+      "jurisdiction": "DE-ST",
+      "title": "Zeolith-Enthärter strukturell erklären",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-ST",
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides"
+        }
+      ]
+    },
+    {
+      "goalId": "cc5a626a-dc85-57e2-b422-259f92901545",
+      "jurisdiction": "DE-ST",
+      "title": "Biologische Abbauwege von Tensiden beschreiben",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-ST",
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides"
+        }
+      ]
+    },
+    {
+      "goalId": "0959eef2-3c7d-5b33-a109-ddf332a5dbd9",
+      "jurisdiction": "DE-ST",
+      "title": "Pflanzenölkraftstoffe strukturbezogen einordnen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-ST",
+          "kind": "requires-closure",
+          "source": "required by 4d9defde-d3bc-5c43-83ff-9cf6f2930643"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-ST",
+          "kind": "requires-closure",
+          "source": "required by e64a79df-7f21-5651-9b5d-e7d17580569e"
+        }
+      ]
+    },
+    {
+      "goalId": "4d9defde-d3bc-5c43-83ff-9cf6f2930643",
+      "jurisdiction": "DE-ST",
+      "title": "Biodieselgewinnung durch Umesterung erklären",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-ST",
+          "kind": "requires-closure",
+          "source": "required by e64a79df-7f21-5651-9b5d-e7d17580569e"
+        }
+      ]
+    },
+    {
+      "goalId": "223e33a4-5545-5332-ac4e-7d7a6cbc587c",
+      "jurisdiction": "DE-ST",
+      "title": "Biotreibstoffe nach Rohstoff und Herstellungsweg unterscheiden",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-ST",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#223e33a4-5545-5332-ac4e-7d7a6cbc587c"
+        }
+      ]
+    },
+    {
+      "goalId": "d2ccd1d5-56f7-583f-9724-e97441367f91",
+      "jurisdiction": "DE-TH",
+      "title": "Saure, alkalische und neutrale Lösungen unterscheiden",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "requires-closure",
+          "source": "required by 28bb9d15-f865-5843-a035-6066580fea64"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "requires-closure",
+          "source": "required by fd309753-4d48-5570-a4ec-09dfeb20ff9c"
+        }
+      ]
+    },
+    {
+      "goalId": "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+      "jurisdiction": "DE-TH",
+      "title": "Konstante Massenverhältnisse beschreiben",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#e0d05c36-eaac-4c75-8ead-3fd5bdafefca"
+        }
+      ]
+    },
+    {
+      "goalId": "9b5d6326-d27c-4ece-8c72-debda705464a",
+      "jurisdiction": "DE-TH",
+      "title": "Dalton-Modell und Modellcharakter erläutern",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "requires-closure",
+          "source": "required by fcaf8c9b-bd81-552e-9d91-43649895471e"
+        }
+      ]
+    },
+    {
+      "goalId": "22133f29-ef02-4408-8f8d-2bbea3275d91",
+      "jurisdiction": "DE-TH",
+      "title": "Einfache Redoxgleichungen mit Oxidationszahlen erstellen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "requires-closure",
+          "source": "required by 1051c091-a044-5a09-8946-60a4b5e5d185"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "requires-closure",
+          "source": "required by 70b12d1c-abaf-45c6-ae9e-b571e9cbc126"
+        }
+      ]
+    },
+    {
+      "goalId": "018bec90-445f-4a88-b8bc-228f8335dee6",
+      "jurisdiction": "DE-TH",
+      "title": "Leitfähigkeit von Stoffen vergleichen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "requires-closure",
+          "source": "required by fcaf8c9b-bd81-552e-9d91-43649895471e"
+        }
+      ]
+    },
+    {
+      "goalId": "70b12d1c-abaf-45c6-ae9e-b571e9cbc126",
+      "jurisdiction": "DE-TH",
+      "title": "Elektrolyse einfacher Salze deuten",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "requires-closure",
+          "source": "required by fd7977bf-1d8e-5c5e-9c37-bd76bb2ffeef"
+        }
+      ]
+    },
+    {
+      "goalId": "f5efab9d-2c61-44ea-b36a-87f873b51fd8",
+      "jurisdiction": "DE-TH",
+      "title": "Energiestufenmodell und Elektronenverteilung anwenden",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "requires-closure",
+          "source": "required by e74f5301-70d3-5869-bd3d-79a5763a1718"
+        }
+      ]
+    },
+    {
+      "goalId": "28bb9d15-f865-5843-a035-6066580fea64",
+      "jurisdiction": "DE-TH",
+      "title": "Arrhenius-Definitionen wiederholen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides"
+        }
+      ]
+    },
+    {
+      "goalId": "91cd4728-b811-562a-970b-18b81dfb4bdf",
+      "jurisdiction": "DE-TH",
+      "title": "Polare Eigenschaften erklären",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#91cd4728-b811-562a-970b-18b81dfb4bdf"
+        }
+      ]
+    },
+    {
+      "goalId": "6966df95-f125-5ecc-af8e-0442545d9f17",
+      "jurisdiction": "DE-TH",
+      "title": "Micellenbildung deuten",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#6966df95-f125-5ecc-af8e-0442545d9f17"
+        }
+      ]
+    },
+    {
+      "goalId": "36666b4a-97af-51fc-9983-56cdcc7a8229",
+      "jurisdiction": "DE-TH",
+      "title": "Chemische Quellen und Darstellungen kritisch prüfen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "requires-closure",
+          "source": "required by 3c9bfa10-9a13-50cc-96c8-6213e28d6c54"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "requires-closure",
+          "source": "required by 8b98d8ba-65c6-58d7-92f0-45f4b2456573"
+        }
+      ]
+    },
+    {
+      "goalId": "ac8b6c0f-98b2-5092-806d-d9498efbfa35",
+      "jurisdiction": "DE-TH",
+      "title": "Komplexe chemische Quellen selbstständig erschließen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "requires-closure",
+          "source": "required by 8b98d8ba-65c6-58d7-92f0-45f4b2456573"
+        }
+      ]
+    },
+    {
+      "goalId": "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+      "jurisdiction": "DE-TH",
+      "title": "Angeleitete chemische Untersuchungen sicher durchführen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "requires-closure",
+          "source": "required by 1d2e7b80-653d-57b8-a284-8ede5a353b73"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "requires-closure",
+          "source": "required by e7c3d20e-4b13-560b-b8ee-c5abca8cc624"
+        }
+      ]
+    },
+    {
+      "goalId": "4b6d1824-20e4-597e-b639-fae401f740f0",
+      "jurisdiction": "DE-TH",
+      "title": "Stoffbezogene Schutzmaßnahmen begründen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "requires-closure",
+          "source": "required by 7be6f951-a614-52dc-94d3-2ce0d33765ff"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "requires-closure",
+          "source": "required by ebaae4f5-cc13-5493-98b1-10e1abeb638f"
+        }
+      ]
+    },
+    {
+      "goalId": "805a2f58-29ce-55d0-8a85-42ee486239b3",
+      "jurisdiction": "DE-TH",
+      "title": "Vorgegebene Entsorgungswege begründet auswählen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "requires-closure",
+          "source": "required by 7be6f951-a614-52dc-94d3-2ce0d33765ff"
+        }
+      ]
+    },
+    {
+      "goalId": "1351706f-4ea6-56e9-951b-87b24cbcdee8",
+      "jurisdiction": "DE-TH",
+      "title": "Lösungen nach Arbeitsanweisung herstellen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#1351706f-4ea6-56e9-951b-87b24cbcdee8"
+        }
+      ]
+    },
+    {
+      "goalId": "2d16528c-1424-5999-b3d2-af4593a147fc",
+      "jurisdiction": "DE-TH",
+      "title": "Zeolith-Enthärter strukturell erklären",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides"
+        }
+      ]
+    },
+    {
+      "goalId": "cc5a626a-dc85-57e2-b422-259f92901545",
+      "jurisdiction": "DE-TH",
+      "title": "Biologische Abbauwege von Tensiden beschreiben",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides"
+        }
+      ]
+    },
+    {
+      "goalId": "0959eef2-3c7d-5b33-a109-ddf332a5dbd9",
+      "jurisdiction": "DE-TH",
+      "title": "Pflanzenölkraftstoffe strukturbezogen einordnen",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "requires-closure",
+          "source": "required by 4d9defde-d3bc-5c43-83ff-9cf6f2930643"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "requires-closure",
+          "source": "required by e64a79df-7f21-5651-9b5d-e7d17580569e"
+        }
+      ]
+    },
+    {
+      "goalId": "4d9defde-d3bc-5c43-83ff-9cf6f2930643",
+      "jurisdiction": "DE-TH",
+      "title": "Biodieselgewinnung durch Umesterung erklären",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "requires-closure",
+          "source": "required by e64a79df-7f21-5651-9b5d-e7d17580569e"
+        }
+      ]
+    },
+    {
+      "goalId": "223e33a4-5545-5332-ac4e-7d7a6cbc587c",
+      "jurisdiction": "DE-TH",
+      "title": "Biotreibstoffe nach Rohstoff und Herstellungsweg unterscheiden",
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "override",
+          "source": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json#223e33a4-5545-5332-ac4e-7d7a6cbc587c"
+        }
+      ]
+    }
+  ],
+  "unsupportedUniqueGoals": 58,
+  "normalWrites": 0,
+  "wholeCentralOrM7OrCIPass": false
+}

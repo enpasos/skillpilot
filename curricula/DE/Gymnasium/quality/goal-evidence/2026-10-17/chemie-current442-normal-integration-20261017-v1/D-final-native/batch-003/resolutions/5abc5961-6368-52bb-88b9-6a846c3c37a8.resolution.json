@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-003-v1-resolution-5abc5961-6368-52bb-88b9-6a846c3c37a8",
+  "goal": {
+    "goalId": "5abc5961-6368-52bb-88b9-6a846c3c37a8",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:754fcd77069e02bb867ccc3ee8a98245f786986ba7b9cffac27d76408a64e7b0",
+    "pageFingerprint": "sha256:9606b2a35b420aac3e425d0e959c49039c3fb311d1e7257ea14bee8aff34094f",
+    "goalReviewContextFingerprint": "sha256:5483bb09ac33fe9dca462990564eb9f4372da35ab970f84122c099fa8fbfe07f",
+    "finalText": {
+      "titleDe": "Lösen von Salzen energetisch erklären",
+      "titleEn": "Explain salt dissolution energetically",
+      "descriptionDe": "Die lernende Person kann den Lösevorgang von Salzen auf Teilchenebene beschreiben und die beteiligten Energiebeiträge, insbesondere Gitter- und Hydratationsenergie, qualitativ und quantitativ betrachten.",
+      "descriptionEn": "The learner can describe the dissolution of salts at particle level and consider the involved energy contributions, especially lattice and hydration energy, qualitatively and quantitatively."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-003-v1-a",
+      "campaignDigest": "sha256:978c14bb7b4e20d9b0754b4b001198cb332f9b414d3303ca7642925c494ece2b",
+      "roundId": "chemie-final-current-context-d-003-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-003-v1-independent-a",
+      "reviewInputFingerprint": "sha256:a8b4e136dc9c2b252755278e60a7cde25130d629087d5e6df627ef8b0ebc209b",
+      "goalReviewContextFingerprint": "sha256:5483bb09ac33fe9dca462990564eb9f4372da35ab970f84122c099fa8fbfe07f",
+      "batchId": "chemie-final-current-context-d-003-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch003-20261018",
+      "runManifestDigest": "sha256:d37e25ac9a9c3eaebef1ba6de0c6086c093b182aa3633bc23d659c25aa6b81d5",
+      "resultsDigest": "sha256:cd44a305e9111a4d099f9ab35d3f7b4ca03c9a7206727ef3bec5bcfd6a791a42",
+      "recordId": "codex-reviewer-a-final163-batch003-20261018.002",
+      "recordDigest": "sha256:995bc62fbf983aff45186f73e90b5bfea006c32058486c32142feaf014297124"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-003-v1-b",
+      "campaignDigest": "sha256:b2cbbd77c71b72dac1c440f755a8450ab64df323a6a8eacf430f5e2505f92701",
+      "roundId": "chemie-final-current-context-d-003-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-003-v1-independent-b",
+      "reviewInputFingerprint": "sha256:a8b4e136dc9c2b252755278e60a7cde25130d629087d5e6df627ef8b0ebc209b",
+      "goalReviewContextFingerprint": "sha256:5483bb09ac33fe9dca462990564eb9f4372da35ab970f84122c099fa8fbfe07f",
+      "batchId": "chemie-final-current-context-d-003-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-003-20261018",
+      "runManifestDigest": "sha256:1c929404c03d8c96aa74393ad00405392ee0c3ea13c265367e3ff364cdfdf004",
+      "resultsDigest": "sha256:82383b90ab0c51800931b86885a526c7c9c4e558a108be4aa5b0ed88c0da33ac",
+      "recordId": "chemie-final163-native-b-003-20261018:5abc5961-6368-52bb-88b9-6a846c3c37a8",
+      "recordDigest": "sha256:47dde2a2c0b99df8cb2262a9d0cdfee26cfc8201e77f6e654e81bd3d8e56e5c1"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:ee73048c0284447ea4c17aa5f99fbb11d7041a800acc788f8e7ae8f7a9a22dbd"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-003-20261018-v1",
+    "manifestDigest": "sha256:ce11bd03356fcf672eba95ffbb1028e40d727aec4fd4c79452167746266299a5",
+    "manifestFingerprint": "sha256:4feab5b00ce92e39b208e49a59ef02b9a0bd75db7be760eeedd1bcad82254b99",
+    "decisionId": "chemie-final163-paired-D-only-003-20261018-v1-decision-002"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-003-20261018-v1-decision-002",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:26:58.995Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch003-20261018.002): Beide Fassungen fordern qualitative und quantitative Energiebetrachtung. Das gesamte P trennt Gitterbildung/-trennung, rechnet beide Vorzeichenfälle korrekt und behauptet weder exakte Temperatur noch Löslichkeit aus ΔH allein. B (chemie-final163-native-b-003-20261018:5abc5961-6368-52bb-88b9-6a846c3c37a8): Teilchenmodell ist vorausgesetzt, der zusätzliche energetische Fokus ist ausdrücklich qualitativ und quantitativ. P legt Gittertrennung statt uneindeutiger Gitterbildungsenergie fest, bilanziert Beträge korrekt und verspricht keine aus ΔH allein ableitbare Löslichkeit.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch003-20261018.002; chemie-final163-native-b-003-20261018:5abc5961-6368-52bb-88b9-6a846c3c37a8). Their current English understanding evidence is retained: A: Lattice separation costs energy, hydration releases it; consistent signs yield dissolution enthalpy. B: Lattice separation absorbs energy and hydration releases it; their sum with a consistent sign convention determines the dissolution balance. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Gittertrennung kostet Energie, Hydratation setzt sie frei; konsistente Vorzeichen ergeben die Lösungsenthalpie.",
+      "essentialUnderstandingEn": "Lattice separation costs energy, hydration releases it; consistent signs yield dissolution enthalpy.",
+      "observablePerformanceDe": "Erklärt Wasserorientierung, addiert molare Beiträge und berechnet Aufnahme/Freisetzung für die betrachtete Stoffmenge.",
+      "observablePerformanceEn": "Explains water orientation, adds molar contributions and calculates uptake/release for the amount considered.",
+      "transferExpectationDe": "Widerlegt mit einer exothermen Salzmodellbilanz pauschale Abkühlung und grenzt daraus ableitbare Löslichkeit ab.",
+      "transferExpectationEn": "Refutes universal cooling with an exothermic salt model and limits resulting solubility claims."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-f3658ac0fc162365959848e5f8e8d7175039f2f5ed1e0e7c5227a581c616846a",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:308e50f74b51e20f90126b71c148edeb3bbf6294291fe37060dbd92fa072da63"
+}

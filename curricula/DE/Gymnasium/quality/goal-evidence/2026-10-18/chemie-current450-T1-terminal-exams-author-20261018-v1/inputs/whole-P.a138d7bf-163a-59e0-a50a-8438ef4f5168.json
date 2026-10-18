@@ -1,0 +1,83 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+  "schemaVersion": 2,
+  "reviewId": "chemie-next25-current-positive-independent-b-v2",
+  "goalFingerprintRuleVersion": "goal-evidence-v1",
+  "profileRuleVersion": "positive-understanding-evidence-v2",
+  "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+  "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+  "goalId": "a138d7bf-163a-59e0-a50a-8438ef4f5168",
+  "goalFingerprint": "sha256:18a26daefcf49d3f8bc4174eae2876942c1b186f134abeb7a9850c33ef777e2d",
+  "reviewInputFingerprint": "sha256:c70a17985f10d4db811eb2c9cdd1769c4249d451afdefc04fa1326a6a6a83768",
+  "profileFingerprint": "sha256:c85a669f4125dd35edc31107247371ead034d5cb0a314510013ae93ffdd0efa6",
+  "status": "needs_human_review",
+  "reviewAuthority": "ai_candidate",
+  "reviewedAt": "2026-10-17T21:23:41.999975+00:00",
+  "reviewer": "Codex B technical current-input serialization; underlying scientific authors and reviewers remain recorded in the P442 selection/provenance",
+  "reason": "Eigenständige ganze DE/EN-Profil- und Materialprüfung an aktuellen nativen Seiten. Fe2+[Ar]3d6/Fe3+3d5;Cu+[Ar]3d10/Cu2+3d9. Remove4s before3d. Half/full-d contribution is conditional and does not determine universal environmental stability or redox direction.",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "reviewRunIds": [],
+  "dissent": [],
+  "profile": {
+    "archetype": "concept",
+    "expectations": [
+      {
+        "id": "content-specific-understanding",
+        "essentialUnderstandingDe": "Bei einfachen Übergangsmetall-Ionen werden äußere4s-Elektronen vor3d entfernt; halb- bzw.vollbesetzte d-Konfigurationen können bestimmte Ladungsstufen begünstigen, während reale Stabilität auch von Umgebung und Energiebilanz abhängt.",
+        "essentialUnderstandingEn": "For simple transition-metal ions,outer4s electrons are removed before3d; half/full d configurations can favour certain charge states,but actual stability also depends on environment and the energy balance.",
+        "observablePerformanceDe": "Fe2+:[Ar]3d⁶;Fe3+:[Ar]3d⁵. Entfernung zweier4s und einesweiteren3d-Elektrons korrekt bilanziert;d5 ist im freien/einfachen Modell halb besetzt. Dieser energetische Beitrag unterstütztFe3+,aberFe2+ ist ebenfalls real häufig; keine allgemeine Medienstabilität wird ausd5 allein abgeleitet.",
+        "observablePerformanceEn": "Fe2+:[Ar]3d⁶;Fe3+:[Ar]3d⁵. Loss of two4s and one additional3d electron is balanced;d5 is half-filled in the free/simple model. This contribution supportsFe3+,butFe2+ is also common;d5 alone establishes no universal solvent stability."
+      },
+      {
+        "id": "fresh-transfer-and-model-boundary",
+        "essentialUnderstandingDe": "Der Konfigurationsbeitrag erklärt Abweichungen von einer einfachen Gruppenzahlregel; er sagt ohne Bedingungen keine universelle Ionenkonzentration oder Reaktionsrichtung voraus.",
+        "essentialUnderstandingEn": "Configuration contributes to departures from a simple group-number rule;without conditions it predicts no universal ion concentration or reaction direction.",
+        "observablePerformanceDe": "Cu+:[Ar]3d¹⁰ nach4s-Verlust;Cu2+:[Ar]3d⁹ nach zusätzlichemd-Verlust. d10 kannCu+ begünstigen,aberHydratation/Liganden und gesamteRedoxbilanz beeinflussenStabilität.2Cu+ Gesamtladung+2→Cu2++Cu ebenfalls+2;einCu wird oxidiert,eines reduziert.",
+        "observablePerformanceEn": "Cu+:[Ar]3d¹⁰ after4s loss;Cu2+:[Ar]3d⁹ after furtherd loss.d10 can favourCu+,but hydration/ligands and the full redox balance affect stability.2Cu+ total+2→Cu2++Cu also+2;oneCu oxidises,the other reduces."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "content-specific-understanding",
+        "fresh-transfer-and-model-boundary"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "specific-material-variation",
+        "textDe": "Fe2+/Fe3+ gegenüberCu+/Cu2+; d5/d10-Beitrag ohne universelle Stabilitätsrangfolge.",
+        "textEn": "Fe2+/Fe3+ versusCu+/Cu2+;d5/d10 contribution without a universal stability ranking."
+      },
+      {
+        "id": "specific-model-limit",
+        "textDe": "Der Konfigurationsbeitrag erklärt Abweichungen von einer einfachen Gruppenzahlregel; er sagt ohne Bedingungen keine universelle Ionenkonzentration oder Reaktionsrichtung voraus.",
+        "textEn": "Configuration contributes to departures from a simple group-number rule;without conditions it predicts no universal ion concentration or reaction direction."
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "chem-next25-a138d7bf-case-1",
+        "taskDemandDe": "Gegeben:Fe[Ar]3d⁶4s²; im betrachteten Ionenmodell werden4s zuerst entfernt. Beobachtbare häufige Stufen sindFe2+ undFe3+. Für die Interpretation wird kein bestimmtes Lösemittel festgelegt. Leite beideKonfigurationen ab und erkläre den d5-Beitrag zur häufigenFe3+-Stufe, ohneFe2+ als unmöglich zu bezeichnen.",
+        "taskDemandEn": "Given:Fe[Ar]3d⁶4s²;in this ionic model4s electrons are removed first. Common observed states areFe2+ andFe3+. No particular solvent is specified. Derive both configurations and explain the d5 contribution to commonFe3+,without callingFe2+ impossible.",
+        "expectedPerformanceDe": "Fe2+:[Ar]3d⁶;Fe3+:[Ar]3d⁵. Entfernung zweier4s und einesweiteren3d-Elektrons korrekt bilanziert;d5 ist im freien/einfachen Modell halb besetzt. Dieser energetische Beitrag unterstütztFe3+,aberFe2+ ist ebenfalls real häufig; keine allgemeine Medienstabilität wird ausd5 allein abgeleitet.",
+        "expectedPerformanceEn": "Fe2+:[Ar]3d⁶;Fe3+:[Ar]3d⁵. Loss of two4s and one additional3d electron is balanced;d5 is half-filled in the free/simple model. This contribution supportsFe3+,butFe2+ is also common;d5 alone establishes no universal solvent stability.",
+        "understandingFocusDe": "Eine zusätzliche Ionisierung kostet Energie; „halb besetzt“ ist keine kostenlose Elektronenabgabe.",
+        "understandingFocusEn": "Further ionisation costs energy;“half-filled”does not mean cost-free electron removal."
+      },
+      {
+        "id": "chem-next25-a138d7bf-case-2",
+        "taskDemandDe": "Frischer Fall:Cu[Ar]3d¹⁰4s¹;Cu+ undCu2+ treten beide auf. Gegebenes wässriges Beispiel erlaubt2Cu+→Cu2++Cu;andere Liganden könnenCu+ stabilisieren. Diese Fallinformation ist vorgegeben,keine neue Messung. ErkläreCu+-d10 undCu2+-d9 und widerlege„voll besetzt ist immer die einzig stabile Stufe“. Bilanziere die vorgegebene Reaktion.",
+        "taskDemandEn": "Fresh case:Cu[Ar]3d¹⁰4s¹;bothCu+ andCu2+ occur. A supplied aqueous example allows2Cu+→Cu2++Cu;other ligands may stabiliseCu+. This is supplied case information,not a new measurement. ExplainCu+-d10 andCu2+-d9;refute“full filling always gives the only stable state”. Balance the supplied reaction.",
+        "expectedPerformanceDe": "Cu+:[Ar]3d¹⁰ nach4s-Verlust;Cu2+:[Ar]3d⁹ nach zusätzlichemd-Verlust. d10 kannCu+ begünstigen,aberHydratation/Liganden und gesamteRedoxbilanz beeinflussenStabilität.2Cu+ Gesamtladung+2→Cu2++Cu ebenfalls+2;einCu wird oxidiert,eines reduziert.",
+        "expectedPerformanceEn": "Cu+:[Ar]3d¹⁰ after4s loss;Cu2+:[Ar]3d⁹ after furtherd loss.d10 can favourCu+,but hydration/ligands and the full redox balance affect stability.2Cu+ total+2→Cu2++Cu also+2;oneCu oxidises,the other reduces.",
+        "understandingFocusDe": "Der Konfigurationsbeitrag erklärt Abweichungen von einer einfachen Gruppenzahlregel; er sagt ohne Bedingungen keine universelle Ionenkonzentration oder Reaktionsrichtung voraus.",
+        "understandingFocusEn": "Configuration contributes to departures from a simple group-number rule;without conditions it predicts no universal ion concentration or reaction direction."
+      }
+    ]
+  }
+}

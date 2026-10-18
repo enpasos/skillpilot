@@ -1,0 +1,9 @@
+# Five missing Chemistry target placements: author-only candidate
+
+Ready for independent bounded placement review: six whole-view CAS proposals place0559 in TH-LK, ee78 in four HB GK/LK CrossStage/SekII views, and f4f7 in SN-GK11. HB/SN labels explicitly preserve optional Vertiefung/Wahlbereich status. Two additional RP GK/LK CAS proposals place4a7 only in optional elective2.3, using actual primaryPDF38. RP current extraction has wrong LK-only/page26 metadata and no current4a7 mapping; this is an open exact-source interface review requirement, not an inherited approval claim.
+
+All eight before/after views pass the current composition schema. Actual stock compiler, pure runtime projection and course/jurisdiction filters show exactly one added ordinary target per view, no removed ordinary target and the correct bound draft endpoint when available. All450 ordinary objects remain exact. Three T2 v4 task objects are reused without editing their bodies; no normal files changed.
+
+SN terminal remains awaiting actual T3 authored ID/body; its Astra-plan suggestion is a cross reference only. Grignard stays HOLD: a direct target entry in the existing national LK views is displayed despite its current applicabilityProjection=excluded marker, and stock filtering provides no separate voluntary opt-in boundary. No national Grignard CAS or runtime feature is proposed.
+
+These are static authored offer candidates. No actual school/class/learner optional selection, new official universal duty, native activation, source-science vote, D-science vote, human approval or learner performance is asserted. Historical source-content-fit judgments are transported with their original operative-selection HOLDs. Independent review must resolve the actual candidate placement/scope semantics before any normal write.

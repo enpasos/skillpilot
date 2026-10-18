@@ -1,0 +1,57 @@
+{
+  "role": "Actual author preparation and bounded consistency receipt",
+  "authorId": "/root/chemie450_caption1_native_fresh_b",
+  "model": "Codex, GPT-6 family; exact serving model identifier not exposed",
+  "exactModelRevision": "unknown",
+  "atUTC": "2026-10-18T01:23:45.083219+00:00",
+  "authorNotIndependentReviewerOfThisPacket": true,
+  "blindReviewClaim": false,
+  "commandsActuallyExecuted": [
+    {
+      "command": "app/node_modules/.bin/tsx curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-applicability-warning-binding-author-20261018-v1/scripts/read-current-authored-roles.mts",
+      "exitCode": 0,
+      "scope": "Stock authored-role collector and individual filter predicates only; no applicability/view compiler."
+    },
+    {
+      "command": "python curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-applicability-warning-binding-author-20261018-v1/scripts/prepare-warning-matrix.py",
+      "exitCode": 0,
+      "scope": "Finite author candidate assembly; directly used existing science, minimal exact current snapshots and byte-exact temporary originals."
+    },
+    {
+      "command": "python curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-applicability-warning-binding-author-20261018-v1/scripts/check-finite-warning-matrix.py",
+      "exitCode": 0,
+      "scope": "Finite 87/221 consistency only."
+    },
+    {
+      "command": "python curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-applicability-warning-binding-author-20261018-v1/scripts/check-finite-warning-matrix.py --no-write",
+      "exitCode": 0,
+      "scope": "Actual read-only consistency replay after adding the nonmutating reviewer CLI option."
+    }
+  ],
+  "counts": {
+    "warningKeys": 87,
+    "goalJurisdictionPairs": 221,
+    "proposedAcceptKeys": 87,
+    "holdKeys": 0,
+    "proposedAcceptPairs": 221,
+    "holdPairs": 0,
+    "currentOrdinaryProfileRecords": 85,
+    "viewObjectsReadWithoutCompiler": 41,
+    "byteExactTemporaryOriginalFiles": 11
+  },
+  "check": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-applicability-warning-binding-author-20261018-v1/CHECK.finite-current87-221-bindings.actual.json",
+    "sha256": "9ea20d673cf96217401d7c231ec1061bf880d503dda706e3101697934d7bcebc",
+    "bytes": 645
+  },
+  "normalRegistration": false,
+  "normalSourceViewOrScopeMutation": false,
+  "applicabilityCompilerRun": false,
+  "wholeReportFiveGateSchemaOrBuildRun": false,
+  "newDPAMVReview": false,
+  "officialWholeSourceCoverageClaim": false,
+  "wholeHETerminalRouteApproval": false,
+  "humanApproval": false,
+  "actualLearnerPerformanceClaim": false,
+  "nextStep": "Independent targeted binding review by A; Root integrates only after that review."
+}

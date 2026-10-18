@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-001-v1-resolution-13d4f336-ab16-54a7-9479-c920b458f385",
+  "goal": {
+    "goalId": "13d4f336-ab16-54a7-9479-c920b458f385",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:9216feff81724402c3c0d53f5d31a75c9c36a13467a05ac8b0d2e58cef9f813f",
+    "pageFingerprint": "sha256:88be5cf5c460f2eb6a66021d1df930d5ed569804373d0225aa5a2b5f88079890",
+    "goalReviewContextFingerprint": "sha256:6e48e70925bdcf0a05f99000adcf4ae82c18cdc2e3adad8f15e0aafcfe708eb3",
+    "finalText": {
+      "titleDe": "Allgemeine Sicherheitsregeln im Chemielabor anwenden",
+      "titleEn": "Apply general laboratory safety rules",
+      "descriptionDe": "Die lernende Person kann grundlegende Sicherheitsregeln im Chemielabor situationsbezogen anwenden.",
+      "descriptionEn": "The learner can apply basic safety rules in the chemistry laboratory in context."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-001-v1-a",
+      "campaignDigest": "sha256:96c597e11ef28d55b630202e1c2e03a243872e2f50e9cf9cc7c0df7a79d9cd3d",
+      "roundId": "chemie-final-current-context-d-001-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-001-v1-independent-a",
+      "reviewInputFingerprint": "sha256:84cb9df1bd7fef7e2302044cdb80cba5ac86f4d3a52db0bc7c6a09292793cfa8",
+      "goalReviewContextFingerprint": "sha256:6e48e70925bdcf0a05f99000adcf4ae82c18cdc2e3adad8f15e0aafcfe708eb3",
+      "batchId": "chemie-final-current-context-d-001-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch001-20261018",
+      "runManifestDigest": "sha256:b4b3f17dceb9e1e7c4c82361c9c800e5f7de932b46dcf704e3d6a847860b03be",
+      "resultsDigest": "sha256:c9861ef6d236ae81946747b3d1c7abde302f5f013b5c93ce5edad0870065fc31",
+      "recordId": "codex-reviewer-a-final163-batch001-20261018.007",
+      "recordDigest": "sha256:3028035bdac9c94a45ffbd55f12cfce0f1adb2aab9ac398de5c2515487494645"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-001-v1-b",
+      "campaignDigest": "sha256:1b8713019a8e252039fa354999df05261e1c78eedb890a563b29e531dc70ec46",
+      "roundId": "chemie-final-current-context-d-001-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-001-v1-independent-b",
+      "reviewInputFingerprint": "sha256:84cb9df1bd7fef7e2302044cdb80cba5ac86f4d3a52db0bc7c6a09292793cfa8",
+      "goalReviewContextFingerprint": "sha256:6e48e70925bdcf0a05f99000adcf4ae82c18cdc2e3adad8f15e0aafcfe708eb3",
+      "batchId": "chemie-final-current-context-d-001-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-001-20261018",
+      "runManifestDigest": "sha256:13eb6055a4aa8d4d04be4cfd1c0c77f4b206a289df96a67139c1efd68e08d32d",
+      "resultsDigest": "sha256:22da53163d50636a69ec31425cecc056999735ee0193be8470171a3f650414eb",
+      "recordId": "chemie-final163-native-b-001-20261018:13d4f336-ab16-54a7-9479-c920b458f385",
+      "recordDigest": "sha256:d8d53740e5860493d871f4fef7b374e1c1c8ef83305199eca585185cd2c19fe9"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:706dc6e69548381d583e44f00cb7a2768b65125ce38e115ffeb99e090ece4f50"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-001-20261018-v1",
+    "manifestDigest": "sha256:2947637162d222247361434cafc2291ef0d74af62baa53f4b2c0b9ac2349ad89",
+    "manifestFingerprint": "sha256:240821b7f7c94c99aba57979178f196e85ea04ebc4d569c964de2f5230011117",
+    "decisionId": "chemie-final163-paired-D-only-001-20261018-v1-decision-006"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-001-20261018-v1-decision-006",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:22:46.792Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch001-20261018.007): Die knappe bilinguale Handlungsbeschreibung passt zum AB1-Einstieg. Das ganze P prüft beobachtbare Vorbereitung und einen anderen Zwischenfall, einschließlich Haut/Kleidung; es gibt keine Freigabe für selbstständigen Umgang mit unbekannten Chemikalien. B (chemie-final163-native-b-001-20261018:13d4f336-ab16-54a7-9479-c920b458f385): Die kurze situationsbezogene Anwendung ist für das jüngste SekI-Niveau angemessen. P prüft beobachtete Vorbereitung und einen getrennten Kontaminationsfall, einschließlich Haut/Kleidung; gefährliche Eigenversuche werden nicht gefordert.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch001-20261018.007; chemie-final163-native-b-001-20261018:13d4f336-ab16-54a7-9479-c920b458f385). Their current English understanding evidence is retained: A: Laboratory safety connects specific risks with preparation, protection and appropriate immediate action during uncertainty or contamination. B: Eye protection, labels and a clear bench reduce specific risks; uncertainty and incidents require suitable immediate actions. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Laborsicherheit verknüpft konkrete Risiken mit Vorbereitung, Schutz und angemessenen sofortigen Handlungen bei Unsicherheit oder Kontamination.",
+      "essentialUnderstandingEn": "Laboratory safety connects specific risks with preparation, protection and appropriate immediate action during uncertainty or contamination.",
+      "observablePerformanceDe": "Richtet einen ungefährlichen betreuten Modellplatz sicher ein, prüft Kennzeichnung und Schutzbrille und meldet unklare Gefäße.",
+      "observablePerformanceEn": "Safely prepares a harmless supervised model station, checks labels and eye protection and reports unclear vessels.",
+      "transferExpectationDe": "Entscheidet bei einer neuen Spritzersituation über Arbeitsstopp, unverzügliche Hilfe und lokale Erste-Hilfe-Schritte für mögliche Kontamination.",
+      "transferExpectationEn": "Decides on stopping work, immediate help and local first-aid action for possible contamination in a fresh splash scenario."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-ead58f85b71a14a90f5f3d590d4f8319ffd0505f1821a547dfda43d390c3220e",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:7a3cb67779b1dbc6a2ecac80763049e436f410d4e16b0240d608d5f0f7ce75bd"
+}

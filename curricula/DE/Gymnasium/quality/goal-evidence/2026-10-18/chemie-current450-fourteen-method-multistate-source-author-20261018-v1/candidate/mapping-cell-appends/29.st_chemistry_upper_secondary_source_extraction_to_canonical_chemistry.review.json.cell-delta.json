@@ -1,0 +1,165 @@
+{
+  "artifactRole": "INACTIVE_MAPPING_CELL_APPEND_AUTHOR_CANDIDATE",
+  "activation": "independent-review-required",
+  "mappingPath": "curricula/DE/Gymnasium/mapping/DE-ST/upper-secondary/st_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+  "beforeWholeFilePinForAuditNotGlobalCAS": {
+    "path": "curricula/DE/Gymnasium/mapping/DE-ST/upper-secondary/st_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+    "sha256": "02f970461fd5ecc2d244ab8aa72b107e93ddaec78457dafc13cf8b679817a15f",
+    "bytes": 968810
+  },
+  "sourceExtractionPathAtAuthoring": "curricula/DE/Gymnasium/input/ST/upper-secondary/source-extraction/DE_ST_CHEMIE_SEKII_FACHLEHRPLAN_GYMNASIUM_2022.source-extraction.json",
+  "wholeUnrelatedRowsMustBePreserved": true,
+  "cellAppends": [
+    {
+      "pairAbsentExpectedBefore": {
+        "legacyGoalId": "st-chemistry-sekii-process-standard-ep-e-experiment",
+        "canonicalGoalId": "1351706f-4ea6-56e9-951b-87b24cbcdee8"
+      },
+      "mappingToAppend": {
+        "legacyGoalId": "st-chemistry-sekii-process-standard-ep-e-experiment",
+        "canonicalGoalId": "1351706f-4ea6-56e9-951b-87b24cbcdee8",
+        "matchType": "partial"
+      },
+      "boundedAuthorWitness": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-author-20261018-v1/CANDIDATE.one-hundred-four-direct-partial-contributions.inactive.json",
+        "jsonPointer": "/mappings/11"
+      },
+      "existingAuthoritativeSourceDecisionsCAS": [
+        {
+          "jsonPointer": "/decisions/325",
+          "wholeDecision": {
+            "sourceGoalId": "st-chemistry-sekii-process-standard-ep-e-experiment",
+            "topicCode": "Kapitel2 Erkenntnisgewinnung, Einführungsphase",
+            "sourceSpan": "physical PDF12, Kapitel2 Erkenntnisgewinnung, Einführungsphase, EP-E-Experiment",
+            "decision": "mapped",
+            "canonicalGoalIds": [
+              "9fc800d1-92d1-5ef6-81c1-33960ae034dd"
+            ],
+            "matchType": "partial",
+            "rationale": "Only the individually referenced independently accepted partial operator contributions are integrated. Whole-source, course, research and real execution duties remain separate and are not certified by these mappings.",
+            "reviewedAt": "2026-10-18",
+            "reviewer": "Independent source reviewer A; technical integration by Codex creates no scientific first decision",
+            "wholeSourceCredit": false,
+            "additionalAcceptedPartialContributions": [
+              {
+                "canonicalGoalId": "9fc800d1-92d1-5ef6-81c1-33960ae034dd",
+                "matchType": "partial",
+                "independentAcceptedRef": {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+                  "bytes": 269340,
+                  "jsonPointer": "/mappings/54"
+                },
+                "wholePrimaryOperator": "selbstständig Experimente unter Beachtung von Sicherheits- und Umweltaspekten durchführen, beobachten, auswerten und protokollieren",
+                "primaryPdf": {
+                  "path": "curricula/DE/Gymnasium/input/ST/FLP_Chemie_Gym_01082022_swd.pdf",
+                  "sha256": "fcdbb0bdaf4ccad6d5384c256f77329a36bad299503076493ee368d486ab78b6",
+                  "bytes": 741324
+                },
+                "physicalPrimaryPage": 12,
+                "sourceStageCourseContext": "Exact EP or Q column named on each added clause. No silent column or gAN/eAN conversion; practical duties on p11 remain open.",
+                "rationale": "Nachvollziehbare Protokollierung mit Einheiten, Herkunft, Bedingungen und sichtbaren fehlenden Angaben ist der direkte Teilbeitrag. Die neue Verdünnungskorrektur erhält Rohdaten und dokumentiert die Ableitungsänderung. Die Quelle wird nicht auf ihre Protokollwörter gekürzt: eigene Gewinnung, sicheres Durchführen oder Präsentieren im ganzen Satz bleiben zusätzlich offen.",
+                "boundaries": "Keine tatsächliche qualitative/quantitative sichere Experimentdurchführung aus vorgelegten Daten. E5 und entsprechende Mehrfachverben bleiben vollständig sichtbar; gebunden wird nur nachvollziehbare Protokollierung, ggf. Daten-/Deutungstrennung. Keine Behauptung vollständiger Präsentation.",
+                "individualBoundary": "",
+                "ownResearchEvidenceRequired": false,
+                "wholeSourceCredit": false,
+                "actualLearnerExecutionClaim": false,
+                "currentGoalSha256": "421a38c89b5e21d14aeab50e686ffe803ca542c02d0d455acaaf24416164e0c8",
+                "currentProfileBodySha256": "fa4ef4c7b277ac500d2714aa9caf980e619b9de9fb8a2dca4ca2cd758f06e746"
+              }
+            ]
+          },
+          "sha256": "7c0eeee248a7b11b65f92a17f3d5967a5ebbcece36899479415dd1306468f2b7"
+        }
+      ],
+      "decisionIntegrationBoundary": "Following specific independent acceptance, merge this bounded partial target contribution into the current authoritative source decision without dropping other targets or promoting whole-source coverage. A prior whole-originalHOLD/REJECT is not automatically reversed. New operator cells require their own finite partial decision; old decision/whole-source history remains."
+    },
+    {
+      "pairAbsentExpectedBefore": {
+        "legacyGoalId": "st-chemistry-sekii-process-standard-ep-b-sicher-handeln",
+        "canonicalGoalId": "4b6d1824-20e4-597e-b639-fae401f740f0"
+      },
+      "mappingToAppend": {
+        "legacyGoalId": "st-chemistry-sekii-process-standard-ep-b-sicher-handeln",
+        "canonicalGoalId": "4b6d1824-20e4-597e-b639-fae401f740f0",
+        "matchType": "partial"
+      },
+      "boundedAuthorWitness": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-author-20261018-v1/CANDIDATE.one-hundred-four-direct-partial-contributions.inactive.json",
+        "jsonPointer": "/mappings/22"
+      },
+      "existingAuthoritativeSourceDecisionsCAS": [],
+      "decisionIntegrationBoundary": "Following specific independent acceptance, merge this bounded partial target contribution into the current authoritative source decision without dropping other targets or promoting whole-source coverage. A prior whole-originalHOLD/REJECT is not automatically reversed. New operator cells require their own finite partial decision; old decision/whole-source history remains."
+    },
+    {
+      "pairAbsentExpectedBefore": {
+        "legacyGoalId": "st-chemistry-sekii-process-standard-ep-k-recherche",
+        "canonicalGoalId": "ac8b6c0f-98b2-5092-806d-d9498efbfa35"
+      },
+      "mappingToAppend": {
+        "legacyGoalId": "st-chemistry-sekii-process-standard-ep-k-recherche",
+        "canonicalGoalId": "ac8b6c0f-98b2-5092-806d-d9498efbfa35",
+        "matchType": "partial"
+      },
+      "boundedAuthorWitness": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-author-20261018-v1/CANDIDATE.one-hundred-four-direct-partial-contributions.inactive.json",
+        "jsonPointer": "/mappings/39"
+      },
+      "existingAuthoritativeSourceDecisionsCAS": [],
+      "decisionIntegrationBoundary": "Following specific independent acceptance, merge this bounded partial target contribution into the current authoritative source decision without dropping other targets or promoting whole-source coverage. A prior whole-originalHOLD/REJECT is not automatically reversed. New operator cells require their own finite partial decision; old decision/whole-source history remains."
+    },
+    {
+      "pairAbsentExpectedBefore": {
+        "legacyGoalId": "st-chemistry-sekii-process-standard-q-k-interpretation",
+        "canonicalGoalId": "ac8b6c0f-98b2-5092-806d-d9498efbfa35"
+      },
+      "mappingToAppend": {
+        "legacyGoalId": "st-chemistry-sekii-process-standard-q-k-interpretation",
+        "canonicalGoalId": "ac8b6c0f-98b2-5092-806d-d9498efbfa35",
+        "matchType": "partial"
+      },
+      "boundedAuthorWitness": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-author-20261018-v1/CANDIDATE.one-hundred-four-direct-partial-contributions.inactive.json",
+        "jsonPointer": "/mappings/40"
+      },
+      "existingAuthoritativeSourceDecisionsCAS": [],
+      "decisionIntegrationBoundary": "Following specific independent acceptance, merge this bounded partial target contribution into the current authoritative source decision without dropping other targets or promoting whole-source coverage. A prior whole-originalHOLD/REJECT is not automatically reversed. New operator cells require their own finite partial decision; old decision/whole-source history remains."
+    },
+    {
+      "pairAbsentExpectedBefore": {
+        "legacyGoalId": "st-chemistry-sekii-process-standard-ep-k-quellenpruefung",
+        "canonicalGoalId": "36666b4a-97af-51fc-9983-56cdcc7a8229"
+      },
+      "mappingToAppend": {
+        "legacyGoalId": "st-chemistry-sekii-process-standard-ep-k-quellenpruefung",
+        "canonicalGoalId": "36666b4a-97af-51fc-9983-56cdcc7a8229",
+        "matchType": "partial"
+      },
+      "boundedAuthorWitness": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-author-20261018-v1/CANDIDATE.one-hundred-four-direct-partial-contributions.inactive.json",
+        "jsonPointer": "/mappings/64"
+      },
+      "existingAuthoritativeSourceDecisionsCAS": [],
+      "decisionIntegrationBoundary": "Following specific independent acceptance, merge this bounded partial target contribution into the current authoritative source decision without dropping other targets or promoting whole-source coverage. A prior whole-originalHOLD/REJECT is not automatically reversed. New operator cells require their own finite partial decision; old decision/whole-source history remains."
+    },
+    {
+      "pairAbsentExpectedBefore": {
+        "legacyGoalId": "st-chemistry-sekii-process-standard-ep-b-sicher-handeln",
+        "canonicalGoalId": "805a2f58-29ce-55d0-8a85-42ee486239b3"
+      },
+      "mappingToAppend": {
+        "legacyGoalId": "st-chemistry-sekii-process-standard-ep-b-sicher-handeln",
+        "canonicalGoalId": "805a2f58-29ce-55d0-8a85-42ee486239b3",
+        "matchType": "partial"
+      },
+      "boundedAuthorWitness": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-author-20261018-v1/CANDIDATE.one-hundred-four-direct-partial-contributions.inactive.json",
+        "jsonPointer": "/mappings/70"
+      },
+      "existingAuthoritativeSourceDecisionsCAS": [],
+      "decisionIntegrationBoundary": "Following specific independent acceptance, merge this bounded partial target contribution into the current authoritative source decision without dropping other targets or promoting whole-source coverage. A prior whole-originalHOLD/REJECT is not automatically reversed. New operator cells require their own finite partial decision; old decision/whole-source history remains."
+    }
+  ],
+  "wholeFileReplacement": false,
+  "wholeSourceCredit": false
+}

@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-005-v1-resolution-360fccb9-896d-5e67-bf5d-5732621604c9",
+  "goal": {
+    "goalId": "360fccb9-896d-5e67-bf5d-5732621604c9",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:a7855c2a26ef7625f432dbaa6145b069f29e3ffa9fea23f172122c07af9da9c8",
+    "pageFingerprint": "sha256:5d481e4e62579a7c6a2f5c4a72fc60d7265e560bcf40fc4ca0135ce38f962fbe",
+    "goalReviewContextFingerprint": "sha256:8dba43d724833f0822367fd8f5351d1fdd83c59d9e097b43368c12836c1aeed8",
+    "finalText": {
+      "titleDe": "Nahrungsmittelinhaltsstoffe strukturbezogen einordnen",
+      "titleEn": "Classify food components by structure",
+      "descriptionDe": "Die lernende Person kann ausgewählte Inhaltsstoffe von Nahrungsmitteln anhand ihres submikroskopischen Baus vergleichen, Makro- und Mikronährstoffen zuordnen und ihre Bedeutung für den menschlichen Körper beschreiben.",
+      "descriptionEn": "The learner can compare selected food components by submicroscopic structure, assign them to macro- and micronutrients, and describe their significance for the human body."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-005-v1-a",
+      "campaignDigest": "sha256:c8471cd797dec10abf7198c697339e7dc3a58537ed0f9852f8cf26345c1a666f",
+      "roundId": "chemie-final-current-context-d-005-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-005-v1-independent-a",
+      "reviewInputFingerprint": "sha256:ea93568bfdabdff3f714ec5d94b8dc59252520722e0aa10aa39a38e8541c8349",
+      "goalReviewContextFingerprint": "sha256:8dba43d724833f0822367fd8f5351d1fdd83c59d9e097b43368c12836c1aeed8",
+      "batchId": "chemie-final-current-context-d-005-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch005-20261018",
+      "runManifestDigest": "sha256:e2259ed1b412c3e3898b1487d972c903b35f39252a4a42f584bb855b91d2a437",
+      "resultsDigest": "sha256:054b020007e1d870143eca58ebb28ac20242207e4abfe68fc54ca6d6352a547c",
+      "recordId": "codex-reviewer-a-final163-batch005-20261018.006",
+      "recordDigest": "sha256:a2d6ab2cd8ce5bdb61496eb87c459ba3325f844cb847dc6e852fea4dc0f30b46"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-005-v1-b",
+      "campaignDigest": "sha256:48da8784d2bf2a022d5106050deb7e838bedbbf7dc15498f5e8f7fd019de0920",
+      "roundId": "chemie-final-current-context-d-005-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-005-v1-independent-b",
+      "reviewInputFingerprint": "sha256:ea93568bfdabdff3f714ec5d94b8dc59252520722e0aa10aa39a38e8541c8349",
+      "goalReviewContextFingerprint": "sha256:8dba43d724833f0822367fd8f5351d1fdd83c59d9e097b43368c12836c1aeed8",
+      "batchId": "chemie-final-current-context-d-005-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-005-20261018",
+      "runManifestDigest": "sha256:f156ef3bbef741b54e4c6db6d00df3cf1d510ad9b05729f1ec91bff119669db0",
+      "resultsDigest": "sha256:cdef531d33939f213e22d20615076c31b4ce9a1347b09abc4ccd1a69e5fe8995",
+      "recordId": "chemie-final163-native-b-005-20261018:360fccb9-896d-5e67-bf5d-5732621604c9",
+      "recordDigest": "sha256:ec2996a589a9237fd65ec70ba8dc5ba821c370707cd94062f2d33358da60c7fd"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:766e419b6962da8bae4b84dd677a6b7df18782647f13f0903d77a8bff87bdb82"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-005-20261018-v1",
+    "manifestDigest": "sha256:a41a2bc6b482499a6ca79542f7bbf5db10ee5ee2b8a366942cad9362acfb6f26",
+    "manifestFingerprint": "sha256:c531460d36cff13dc7321c382660c17c38c5ef6449bf726e255ffa0bb0e06d93",
+    "decisionId": "chemie-final163-paired-D-only-005-20261018-v1-decision-006"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-005-20261018-v1-decision-006",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:31:16.405Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch005-20261018.006): Die Texte verknüpfen submikroskopischen Bau und alle ausgewählten Funktionen. Das ganze P unterscheidet Triacylglycerid/Membranlipid und Vitamin/Mineralstoff korrekt; detaillierte Resorption und Nachweise sind Nachfolger. B (chemie-final163-native-b-005-20261018:360fccb9-896d-5e67-bf5d-5732621604c9): Die Beschreibung verbindet Struktur, Einordnung und Bedeutung direkt. Das P ergänzt für alle ausgewählten Inhaltsstoffe echte Funktionen und vermeidet die falsche Gleichsetzung von Triglycerid mit Membranphospholipid sowie unverändert eingebautem Nahrungsprotein mit Körperenzym.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch005-20261018.006; chemie-final163-native-b-005-20261018:360fccb9-896d-5e67-bf5d-5732621604c9). Their current English understanding evidence is retained: A: Nutrients differ in structure and bodily function; macro/micro concerns required amount rather than molecular size. B: Nutrient classes differ in units and bonds; macro/micro describes required amount rather than molecular size. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Nährstoffe unterscheiden sich in Struktur und Körperfunktion; Makro/Mikro bezeichnet den Mengenbedarf statt Molekülgröße.",
+      "essentialUnderstandingEn": "Nutrients differ in structure and bodily function; macro/micro concerns required amount rather than molecular size.",
+      "observablePerformanceDe": "Vergleicht Fett-, Peptid-, Zucker-, Vitamin- und Mineralsalzmodelle und nennt für jeden ausgewählten Stoff eine konkrete Rolle.",
+      "observablePerformanceEn": "Compares fat, peptide, sugar, vitamin and mineral-salt models and gives a specific role for each selected substance.",
+      "transferExpectationDe": "Ordnet bei Vitamin B1, NaCl und Stärke neue Strukturen/Funktionen zu, ohne Protein als unverändert eingebautes Enzym zu deuten.",
+      "transferExpectationEn": "Assigns new structures/functions for vitamin B1, NaCl and starch without treating dietary protein as an unchanged incorporated enzyme."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-ec11982cc7059ae3e8c46d4ddaa309e8d89c99eafb4789f53a8c50256ac90a26",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:981e60c40f12a1a816d902ee00d9097736095c5dfea63a1b2a68e8a3c18b332e"
+}

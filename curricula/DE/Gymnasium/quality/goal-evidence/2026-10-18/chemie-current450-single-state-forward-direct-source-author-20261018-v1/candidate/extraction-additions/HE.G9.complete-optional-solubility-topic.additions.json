@@ -1,0 +1,110 @@
+{
+  "artifactRole": "INACTIVE_SOURCE_EXTRACTION_AUTHOR_CANDIDATE",
+  "activation": "inactive-independent-review-required",
+  "baseExtraction": {
+    "path": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_CHEMIE_SEKI_G9.source-extraction.json",
+    "sha256": "f8550a7ed67df1fa8b6eaea1104d3e2e6522b7770087497a0dd9ffd2a01a5ecc",
+    "bytes": 258337
+  },
+  "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+  "sourceDocument": {
+    "key": "G9",
+    "title": "Lehrplan Chemie Gymnasium Hessen G9",
+    "path": "curricula/DE/Gymnasium/input/HE/lower-secondary/g9-chemie.pdf",
+    "official": true,
+    "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-06/g9-chemie.pdf"
+  },
+  "sourceDocumentPin": {
+    "path": "curricula/DE/Gymnasium/input/HE/lower-secondary/g9-chemie.pdf",
+    "sha256": "f0a2c3795fcbcad1fee8d92d7ab9bc26810609bee0ef1fbd02c830e171220d2f",
+    "bytes": 324637
+  },
+  "passagesToAppend": [],
+  "existingPassageAppend": {
+    "passageId": "he-chem-seki:8.1",
+    "sourceGoalIdsToAppend": [
+      "he-chem-seki-8-1-f03-a01-e8972452"
+    ],
+    "shortTextToAppend": "[Fakultativ] Temperaturabhängigkeit der Löslichkeit Gesättigte, ungesättigte, konzentrierte und verdünnte Lösungen; Graphen zur Löslichkeit Versuche zur Kristallbildung"
+  },
+  "existingWholeSourceCellReuse": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-single-state-forward-direct-source-author-20261018-v1/history/F03.existing-exact-whole-source-cell.author-transport.json",
+    "sha256": "898ccc710c0eba6779e63a733b96f0efb362bac397ea5bca1a1571893bdc84c4",
+    "bytes": 4815
+  },
+  "sourceGoalsToAppend": [
+    {
+      "id": "he-chem-seki-8-1-f03-a01-e8972452",
+      "passageId": "he-chem-seki:8.1",
+      "topicCode": "8.1",
+      "bulletIndex": 3,
+      "aspectIndex": 1,
+      "title": "Fakultativ: Temperaturabhängigkeit der Löslichkeit",
+      "description": "Source-Ziel aus8.1, ausdrücklich fakultative Unterrichtsinhalte/Aufgaben, gedruckteS.12: Temperaturabhängigkeit der Löslichkeit Gesättigte, ungesättigte, konzentrierte und verdünnte Lösungen; Graphen zur Löslichkeit Versuche zur Kristallbildung",
+      "sourceText": "Temperaturabhängigkeit der Löslichkeit Gesättigte, ungesättigte, konzentrierte und verdünnte Lösungen; Graphen zur Löslichkeit Versuche zur Kristallbildung",
+      "sourceSpan": "8.1#F03A01",
+      "parentBulletText": "Temperaturabhängigkeit der Löslichkeit Gesättigte, ungesättigte, konzentrierte und verdünnte Lösungen; Graphen zur Löslichkeit Versuche zur Kristallbildung",
+      "sourceRef": "Lehrplan Chemie Gymnasium Hessen G9,8.1 Stoffe - Strukturen - Eigenschaften, gedruckteS.12, Fakultative Unterrichtsinhalte/Aufgaben, zu1.2",
+      "courseLevel": "unspecified",
+      "granularity": "officialContentRowAspect",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "subject:Chemie",
+        "stage:SekI",
+        "topic:8.1",
+        "courseLevel:unspecified",
+        "sourceOptional:fakultativ"
+      ],
+      "rawSourceText": "Temperaturabhängigkeit der Löslichkeit Gesättigte, ungesättigte, konzentrierte und verdünnte Lösungen; Graphen zur Löslichkeit Versuche zur Kristallbildung",
+      "rawSourceSpan": "8.1#F03A01",
+      "rawParentBulletText": "Temperaturabhängigkeit der Löslichkeit Gesättigte, ungesättigte, konzentrierte und verdünnte Lösungen; Graphen zur Löslichkeit Versuche zur Kristallbildung",
+      "page": 12,
+      "officialOptional": true,
+      "sourceSection": "Fakultative Unterrichtsinhalte/Aufgaben; zu1.2",
+      "officialScope": "Optional SekI row; no official GK/LK distinction and no universal upper-stage duty",
+      "authorProposal": {
+        "status": "draft-inactive-new-whole-F03-union-pending-two-nonauthor-reviews",
+        "science": {
+          "path": "tmp/chemie-m7-resumed-20261016/HE-G9-F03-one-coherent-solubility-crystallisation-investigation-author-candidate-v1/FIRST.AUTHOR.one-coherent-F03-experiment-source-and-atomicity-design.frozen.json",
+          "sha256": "sha256:19d63f3995f17d6538c9ebad8d3a7eed7b365793a1adc43351e034e205922b9f",
+          "bytes": 5473
+        },
+        "historical413OnlyAuthorProposalWhole": {
+          "status": "draft-inactive-unreviewed",
+          "science": {
+            "path": "tmp/chemie-m7-resumed-20261016/HE-LK413-optional-source-and-retained-crossstage-author-successor-v2/FIRST.AUTHOR.optional413-source-and-separate327-admission.science.frozen.json",
+            "sha256": "sha256:9dae151ea3c4c03fbf00fa4fdc0152b2795d44f3219d80459f1b383ee7c0f3c8",
+            "bytes": 6777
+          },
+          "fullOfficialRowPreserved": true,
+          "newCanonicalGoal": false,
+          "wholeSourceApproval": false,
+          "partialExistingCarrierGoalIds": [
+            "413040cd-ba74-5227-948c-a778b0bd0f56"
+          ],
+          "remainingOperatorCoverageHold": [
+            "temperature-dependence-of-solubility and solubility graph interpretation",
+            "performance of a crystal-formation experiment"
+          ],
+          "ownerPolicy": "Include the existing authored applicable component in both HE CrossStage GK/LK targets provisionally; no persisted selection or compulsory-source reclassification."
+        },
+        "fullOfficialRowPreserved": true,
+        "partialCarrierGoalIds": [
+          "413040cd-ba74-5227-948c-a778b0bd0f56",
+          "8b2d351e-e44f-5385-9b89-13ef54b5918f"
+        ],
+        "proposedFullSourceRowUnion": [
+          "413040cd-ba74-5227-948c-a778b0bd0f56",
+          "8b2d351e-e44f-5385-9b89-13ef54b5918f"
+        ],
+        "remainingOperatorCoverageHold": [],
+        "pendingIndependentCoverageReview": true,
+        "wholeSourceApproval": false,
+        "officialOptionalStatusExact": true,
+        "ownerTargetPolicy": "Same officialoptionalSekI component in applicableCrossStageGK/LK and genericSekI/CrossStage, no officialupperstage duty orsavedselection."
+      }
+    }
+  ],
+  "wholeOriginalSourceGoalsPreservedByReference": true,
+  "method": "Actual local primary PDF12–13 read. Existing exact whole F03 source-cell object reused, including historical author/pending metadata; no second ID created. Short optional row only, no official full PDF dump copied."
+}

@@ -1,0 +1,91 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+  "schemaVersion": 2,
+  "reviewId": "chemie-carbonyl15-current422-informed-positive-profile-b-20261015-v1",
+  "goalFingerprintRuleVersion": "goal-evidence-v1",
+  "profileRuleVersion": "positive-understanding-evidence-v2",
+  "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+  "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+  "goalId": "126c56ef-25ac-57b6-84df-111b79d01b8d",
+  "goalFingerprint": "sha256:746856a08dd0d60c30ed4d71453b6c21f5c6d7c85ce32a3126407ccc45489c81",
+  "reviewInputFingerprint": "sha256:77c40f3d84bfc12922c0c29c5161b15e8be726b19f19dad1d3fb8f3d4b93f7e5",
+  "profileFingerprint": "sha256:2177b7188f65f280d507234a57c639d994d0aeb05bddf71f9c7c9cdf847ebd36",
+  "status": "needs_human_review",
+  "reviewAuthority": "ai_candidate",
+  "reviewedAt": "2026-10-17T21:23:41.999975+00:00",
+  "reviewer": "Codex B technical current-input serialization; underlying scientific authors and reviewers remain recorded in the P442 selection/provenance",
+  "reason": "Das data-Profil enthält drei notwendige Teile derselben begründeten Bewertung: Stoffmengenprinzip, echte Zusammensetzungs-/Nebenwirkungsrecherche und Vergleich chemischer Eingriffspunkte. e2 fordert eine berichtete Möglichkeit und erfindet keine Häufigkeit. Die zusätzlich direkt gelesenen Rennie-Abschnitte2/4.8/5.1 bestätigen diese Grenze und die Produktidentität. Transfer: Carbonat/Hydroxid, aktive Prinzipien und fortgesetzter Säurezufluss ändern chemische Bewertung und Aussagegrenzen. Operatoren: Recherchieren, Beschreiben und Bewerten bleiben ausdrücklich gestellt. Die Differenzierung von Herstellerberichten und Modellchemie ist eine tatsächliche fachliche Leistung. Vollständige Prüfung beider DE/EN-Fälle und Rubriken: PA.FIRST.independent-informed-science.json, Ziel 9.",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "reviewRunIds": [],
+  "dissent": [],
+  "profile": {
+    "archetype": "data",
+    "expectations": [
+      {
+        "id": "e1",
+        "essentialUnderstandingDe": "Antazida verbrauchen vorhandene Säure; Kapazität hängt von Stöchiometrie und Stoffmenge ab.",
+        "essentialUnderstandingEn": "Antacids consume existing acid; capacity depends on stoichiometry and amount.",
+        "observablePerformanceDe": "Bilanziert unterschiedliche Neutralisationsreaktionen und berechnet modellierte Säurekapazität.",
+        "observablePerformanceEn": "Balances different neutralizations and calculates model acid capacity."
+      },
+      {
+        "id": "e2",
+        "essentialUnderstandingDe": "Zusammensetzung erzeugt unterschiedliche Produkte und mögliche unerwünschte Folgen.",
+        "essentialUnderstandingEn": "Composition produces different products and possible undesirable consequences.",
+        "observablePerformanceDe": "Recherchiert echte Wirkstoffzusammensetzung und mögliche Nebenwirkung aus benannten Label-/Behördenabschnitten, unterscheidet sie von Modellportion und stöchiometrischem Gas und erfindet keine Häufigkeit.",
+        "observablePerformanceEn": "Researches actual ingredient composition and a possible adverse effect in identified label/authority sections, distinguishes them from model portions and stoichiometric gas and invents no incidence."
+      },
+      {
+        "id": "e3",
+        "essentialUnderstandingDe": "Behandlungsmöglichkeiten unterscheiden sich chemisch nach Neutralisation, Barriere oder Sekretionshemmung.",
+        "essentialUnderstandingEn": "Treatment approaches differ chemically as neutralization, barrier formation or secretion inhibition.",
+        "observablePerformanceDe": "Bewertet Prinzipien unter gegebenen Modellbedingungen ohne persönliche Behandlung zu empfehlen.",
+        "observablePerformanceEn": "Evaluates principles under supplied model conditions without personal treatment advice."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "e1",
+        "e2",
+        "e3"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "v1",
+        "textDe": "Carbonat oder Hydroxid",
+        "textEn": "Carbonate versus hydroxide"
+      },
+      {
+        "id": "v2",
+        "textDe": "Kapazität oder Reaktionsgeschwindigkeit",
+        "textEn": "Capacity versus reaction rate"
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "126c56ef-case-1",
+        "taskDemandDe": "Daten und Bedingungen:\nChemisches Unterrichtsmodell: keine persönlichen Behandlungs-, Dosierungs- oder Einnahmeempfehlungen; erfundene Modellwerte sind keine klinischen Befunde. Getrennte Recherche: DailyMed CaCO₃-Label, Active ingredient/Purpose (https://www.dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=667ffb59-9bff-45a7-89f0-ccfa0d841909); Hersteller-SmPC Rennie Deflatine, 2/4.8/5.1 (https://www.medicines.org.uk/emc/product/13858/smpc); NHS „Antacids“, Funktionsweise/Nebenwirkungen (https://www.nhs.uk/medicines/antacids/). Das echte Kombinationspräparat enthält Calciumcarbonat, Magnesiumcarbonat und Simeticon, NICHT die folgende Modellportion Magnesiumhydroxid. Das SmPC nennt mögliche unerwünschte Wirkungen ohne daraus eine Häufigkeit für diese Modellversuche abzuleiten; NHS nennt unter anderem Blähungen sowie veränderten Stuhlgang. Diese Berichte sind keine gemessenen Folgen der Rechenportionen. Erfundene chemische Modellportionen: 500 mg CaCO₃, M=100.09 g/mol; 300 mg Mg(OH)₂, M=58.32 g/mol. Alle reaktive Substanz vollständig zugänglich; H⁺ im Überschuss. Carbonat setzt bei Neutralisation CO₂ frei, Hydroxid nicht. Alginatbarriere und PPI-Pumpenhemmung sind getrennte Prinzipien; NCI Omeprazole: https://www.cancer.gov/publications/dictionaries/cancer-drug/def/omeprazole.\nAufgaben:\n1. Bilanziere beide Neutralisationen mit H⁺ und berechne je Modellportion die maximale H⁺-Kapazität.\n2. Recherchiere CaCO₃ im DailyMed-Label und mögliche Nebenwirkungen in SmPC 4.8/NHS; dokumentiere Quellenorte, berechne das Modell-CO₂ und unterscheide chemische Erklärung, berichtete Möglichkeit und nicht bestimmte Häufigkeit.\n3. Vergleiche Neutralisation, Alginatbarriere und PPI als chemische Möglichkeiten; bewerte, ob die berechnete Kapazität die beste Behandlung festlegt.",
+        "taskDemandEn": "Data and conditions:\nChemistry teaching model: no personal treatment, dosing or administration recommendation; invented model values are not clinical findings. Separate research: DailyMed CaCO₃ label, Active ingredient/Purpose (https://www.dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=667ffb59-9bff-45a7-89f0-ccfa0d841909); manufacturer Rennie Deflatine SmPC, 2/4.8/5.1 (https://www.medicines.org.uk/emc/product/13858/smpc); NHS Antacids, action/adverse-effects sections (https://www.nhs.uk/medicines/antacids/). The real combination contains calcium carbonate, magnesium carbonate and simeticone, NOT the model portion of magnesium hydroxide below. The SmPC lists possible adverse effects without supplying an incidence for these teaching experiments; NHS lists effects including wind and altered bowel habit. These reports are not measured outcomes of the calculation portions. Invented chemical model portions: 500 mg CaCO₃, M=100.09 g/mol; 300 mg Mg(OH)₂, M=58.32 g/mol. All reactive solid accessible, H⁺ in excess. Carbonate neutralization releases CO₂, hydroxide does not. Alginate barrier and PPI pump inhibition are distinct principles; NCI Omeprazole: https://www.cancer.gov/publications/dictionaries/cancer-drug/def/omeprazole.\nTasks:\n1. Balance both neutralizations with H⁺ and calculate maximal H⁺ capacity per model portion.\n2. Research CaCO₃ in DailyMed and possible adverse effects in SmPC 4.8/NHS; record source locations, calculate model CO₂ and distinguish chemical explanation, reported possibility and undetermined incidence.\n3. Compare neutralization, alginate barrier and PPI as chemical options; assess whether capacity identifies best treatment.",
+        "expectedPerformanceDe": "1. CaCO₃ + 2 H⁺ → Ca²⁺ + CO₂ + H₂O; Mg(OH)₂ + 2 H⁺ → Mg²⁺ + 2 H₂O. CaCO₃:2×0.500/100.09=9.991 mmol H⁺; Mg(OH)₂:2×0.300/58.32=10.288 mmol. Atom-/Ladungsbilanz stimmt; gleiche Masse wäre keine gleiche Kapazität.\n2. DailyMed nennt Calciumcarbonat als Antacid. Die Modellreaktion ergibt 4.996 mmol CO₂; Gasfreisetzung ist ein plausibler chemischer Beitrag zu gasbezogenen Beschwerden, keine gemessene Nebenwirkung. NHS nennt Blähungen und veränderten Stuhlgang; SmPC 4.8 nennt unter anderem Verstopfung/Diarrhö als mögliche Berichte ohne zugehörige Modellhäufigkeit. Für Mg(OH)₂ entstehen stöchiometrisch 0 mmol CO₂; daraus folgt keine Nebenwirkungsfreiheit. Kein klinischer Risikovergleich folgt aus den Molzahlen.\n3. Neutralisation verbraucht vorhandene H⁺; Barriere verändert Refluxzugang; PPI vermindert neue Sekretion. Kapazität allein sagt nichts über Geschwindigkeit, Dauer, Verträglichkeit oder Diagnose. Daher lassen die Modellportionen keine individuelle Behandlungsauswahl zu.",
+        "expectedPerformanceEn": "1. CaCO₃ +2 H⁺ → Ca²⁺ +CO₂ +H₂O; Mg(OH)₂ +2 H⁺ → Mg²⁺ +2 H₂O. Capacities:9.991 mmol H⁺ for CaCO₃ and10.288 mmol for Mg(OH)₂. Atoms/charges balance; equal mass would not imply equal capacity.\n2. DailyMed identifies calcium carbonate as an antacid. The model reaction yields 4.996 mmol CO₂; gas release is a plausible chemical contribution to gas-related discomfort, not an observed adverse effect. NHS lists wind and altered bowel habit; SmPC 4.8 includes constipation/diarrhoea as possible reports without an associated teaching-model incidence. Mg(OH)₂ yields 0 mmol stoichiometric CO₂; this does not imply absence of adverse effects. Mole amounts establish no clinical risk ranking.\n3. Neutralization consumes existing H⁺; barrier changes reflux access; PPI reduces new secretion. Capacity alone gives no rate, duration, suitability or diagnosis information, so these model portions support no individual treatment selection.",
+        "understandingFocusDe": "Neutralisation, Refluxbarriere und Sekretionshemmung greifen an verschiedenen chemischen Stellen an. Transfer: Endliche Kapazität und fortgesetzten Zufluss vergleichen; aus Molmengen keine Nebenwirkungsrate ableiten. Zwei unabhängige Nachweisschritte können in einer integrierten Leistung auftreten; die zwei Fallvarianten sind keine Pflichtaufgabenquote. Sobald alle Aspekte und selbstständiger Transfer hinreichend gezeigt sind, endet die Prüfung.",
+        "understandingFocusEn": "Neutralization, reflux barrier and secretion inhibition act at different chemical points. Transfer: Compare finite capacity with continued influx without deriving adverse-event rates from mole quantities. Two independent demonstration steps can occur in one integrated performance; the two case variants are not a mandatory task quota. Stop assessment once all aspects and independent transfer are sufficiently shown."
+      },
+      {
+        "id": "126c56ef-case-2",
+        "taskDemandDe": "Daten und Bedingungen:\nChemisches Unterrichtsmodell: keine persönlichen Behandlungs-, Dosierungs- oder Einnahmeempfehlungen; erfundene Modellwerte sind keine klinischen Befunde. Getrennte Recherche: DailyMed CaCO₃-Label, Active ingredient/Purpose (https://www.dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=667ffb59-9bff-45a7-89f0-ccfa0d841909); Hersteller-SmPC Rennie Deflatine, 2/4.8/5.1 (https://www.medicines.org.uk/emc/product/13858/smpc); NHS „Antacids“, Funktionsweise/Nebenwirkungen (https://www.nhs.uk/medicines/antacids/). Das echte Kombinationspräparat enthält Calciumcarbonat, Magnesiumcarbonat und Simeticon, NICHT die folgende Modellportion Magnesiumhydroxid. Das SmPC nennt mögliche unerwünschte Wirkungen ohne daraus eine Häufigkeit für diese Modellversuche abzuleiten; NHS nennt unter anderem Blähungen sowie veränderten Stuhlgang. Diese Berichte sind keine gemessenen Folgen der Rechenportionen. Erfundene Portionen: 84.01 mg NaHCO₃ (M=84.01 g/mol), 58.32 mg Mg(OH)₂ (M=58.32 g/mol). Geschlossener idealer 0.1000-L-Raum enthält 5.00 mmol H⁺, kein Puffer, neuer Zufluss oder Volumeneffekt. Vollständige Reaktion; pH=−log₁₀(c(H⁺)/(1 mol/L)). NaHCO₃ liefert Na⁺ und CO₂, Mg(OH)₂ Mg²⁺ ohne CO₂. Rechenportionen sind keine Einnahmeangaben. NCI Omeprazole, https://www.cancer.gov/publications/dictionaries/cancer-drug/def/omeprazole, dient für den Pumpenmechanismus.\nAufgaben:\n1. Bilanziere NaHCO₃/H⁺ und Mg(OH)₂/H⁺; berechne Rest-H⁺ und pH beider Modelle.\n2. Recherchiere die Zusammensetzungen von DailyMed-Präparat und Rennie Deflatine sowie eine mögliche Nebenwirkung mit Quellenort. Vergleiche mit den Modellportionen, bilanziere deren Ionen/CO₂ und bewerte „kein CO₂ heißt nebenwirkungsfrei“.\n3. Bewerte bei fortgesetztem Säurenachschub den Unterschied zwischen endlicher Antacidkapazität und Pumpenhemmung; gib eine begrenzte chemische Schlussfolgerung.",
+        "taskDemandEn": "Data and conditions:\nChemistry teaching model: no personal treatment, dosing or administration recommendation; invented model values are not clinical findings. Separate research: DailyMed CaCO₃ label, Active ingredient/Purpose (https://www.dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=667ffb59-9bff-45a7-89f0-ccfa0d841909); manufacturer Rennie Deflatine SmPC, 2/4.8/5.1 (https://www.medicines.org.uk/emc/product/13858/smpc); NHS Antacids, action/adverse-effects sections (https://www.nhs.uk/medicines/antacids/). The real combination contains calcium carbonate, magnesium carbonate and simeticone, NOT the model portion of magnesium hydroxide below. The SmPC lists possible adverse effects without supplying an incidence for these teaching experiments; NHS lists effects including wind and altered bowel habit. These reports are not measured outcomes of the calculation portions. Invented portions: 84.01 mg NaHCO₃ (M=84.01 g/mol), 58.32 mg Mg(OH)₂ (M=58.32 g/mol). Closed ideal 0.1000-L space contains 5.00 mmol H⁺; no buffer, new influx or volume effect. Complete reaction; pH=−log₁₀(c(H⁺)/(1 mol/L)). NaHCO₃ yields Na⁺ and CO₂, Mg(OH)₂ Mg²⁺ without CO₂. These are calculation portions, not administration instructions. NCI Omeprazole, https://www.cancer.gov/publications/dictionaries/cancer-drug/def/omeprazole, supplies the pump mechanism.\nTasks:\n1. Balance NaHCO₃/H⁺ and Mg(OH)₂/H⁺; calculate remaining H⁺ and both model pH values.\n2. Research the compositions of the DailyMed product and Rennie Deflatine and a possible adverse effect with source location. Compare them with the model portions, balance their ions/CO₂ and evaluate “no CO₂ means no adverse effects.”\n3. Assess finite antacid capacity versus pump inhibition under continued acid influx and give a bounded chemical inference.",
+        "expectedPerformanceDe": "1. HCO₃⁻ + H⁺ → CO₂ + H₂O verbraucht1.00 mmol H⁺; Rest4.00 mmol, c0.0400 mol/L, pH1.398. Mg(OH)₂ +2 H⁺ → Mg²⁺ +2 H₂O verbraucht2.00 mmol; Rest3.00 mmol, c0.0300, pH1.523. Kein Modell neutralisiert die gesamte Last.\n2. DailyMed: Calciumcarbonat; Rennie Deflatine: Calciumcarbonat, Magnesiumcarbonat, Simeticon. Magnesiumcarbonat ist nicht Magnesiumhydroxid. Das Rechenmodell liefert mit NaHCO₃ je 1.00 mmol Na⁺/CO₂, mit Mg(OH)₂ 1.00 mmol Mg²⁺ und kein CO₂. SmPC 4.8 bzw. NHS nennen mögliche Verdauungsbeschwerden; die fehlende Gasbildung schließt andere Nebenwirkungen nicht aus. Weder Produktzusammensetzung noch Molbilanz gibt eine Nebenwirkungsrate dieser erfundenen Portionen an.\n3. Endliche Antacidmenge wird aufgebraucht und kann fortgesetzten H⁺-Zufluss nicht unbegrenzt binden. PPI greift laut NCI am Transportprotein an, keine stöchiometrische Neutralisation; Barriere ist ein drittes Prinzip. Die Bilanz vergleicht Mechanismen, bestimmt aber weder klinisch beste Behandlung noch Wirkungseintritt.",
+        "expectedPerformanceEn": "1. HCO₃⁻ +H⁺ → CO₂ +H₂O consumes1.00 mmol H⁺, leaving4.00 mmol:0.0400 mol/L, pH1.398. Mg(OH)₂ +2 H⁺ → Mg²⁺ +2 H₂O consumes2.00 mmol, leaving3.00 mmol:0.0300 mol/L, pH1.523. Neither neutralizes the whole load.\n2. DailyMed: calcium carbonate; Rennie Deflatine: calcium carbonate, magnesium carbonate, simeticone. Magnesium carbonate is not magnesium hydroxide. The calculation model yields 1.00 mmol each Na⁺/CO₂ from NaHCO₃ and 1.00 mmol Mg²⁺ with no CO₂ from Mg(OH)₂. SmPC 4.8 or NHS lists possible digestive effects; lack of gas generation excludes no other adverse effects. Neither the product composition nor mole balance gives an adverse-effect rate for these fictional portions.\n3. Finite antacid is exhausted and cannot consume continued H⁺ influx indefinitely. NCI identifies PPI action at the transport protein, not stoichiometric neutralization; barrier is a third mechanism. The balance compares principles without determining best treatment or clinical onset.",
+        "understandingFocusDe": "Neutralisation, Refluxbarriere und Sekretionshemmung greifen an verschiedenen chemischen Stellen an. Transfer: Endliche Kapazität und fortgesetzten Zufluss vergleichen; aus Molmengen keine Nebenwirkungsrate ableiten. Zwei unabhängige Nachweisschritte können in einer integrierten Leistung auftreten; die zwei Fallvarianten sind keine Pflichtaufgabenquote. Sobald alle Aspekte und selbstständiger Transfer hinreichend gezeigt sind, endet die Prüfung.",
+        "understandingFocusEn": "Neutralization, reflux barrier and secretion inhibition act at different chemical points. Transfer: Compare finite capacity with continued influx without deriving adverse-event rates from mole quantities. Two independent demonstration steps can occur in one integrated performance; the two case variants are not a mandatory task quota. Stop assessment once all aspects and independent transfer are sufficiently shown."
+      }
+    ]
+  }
+}

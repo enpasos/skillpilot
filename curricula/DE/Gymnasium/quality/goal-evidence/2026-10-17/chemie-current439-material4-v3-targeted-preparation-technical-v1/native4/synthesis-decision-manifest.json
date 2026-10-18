@@ -1,0 +1,160 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "chemie-current439-material4-v3-actual-paired-root-synthesis-20261017-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex root; exact independently authored scientific notes copied verbatim after actual current4 V3 A and B; no human attestation",
+  "synthesizedAt": "2026-10-17T09:06:50.356Z",
+  "batch": {
+    "batchId": "chemie-current439-material4-v3-targeted-20261017-v1",
+    "batchManifestDigest": "sha256:baa04f3fe9ebe14415973bd22a5ff25af362e23fadb0f8b0d007e1b5a75e1a47",
+    "configDigest": "sha256:4fc023deb1989f9357fce24c789883ffab18d3f847d7c99a70e032c867f80d3f",
+    "bundleFingerprint": "sha256:2b4d85280ea1c758aa980e8517f462b3c7b5533e79e38c5ad50c1592b5756762",
+    "bookDigest": "sha256:e501cc7cb865f079fd49eae07cd7e85923c9c0b6172fb38e410ef54a5020a6c1",
+    "reviewInputFingerprint": "sha256:13146c5cf0f3ca9588c7c127c5995f10e636cefc64d49a312e817fe1a58d4751",
+    "dualSummaryDigest": "sha256:bc48b589d97df094c7c53b671c3c3b505955d5d5daab644c46da501790ecf18b",
+    "canonicalLandscapeDigest": "sha256:38c437d5fa0e24f8587b26cbdb2e3f168f3ffaf915aaaef885f918ac22c668e0"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-current439-material4-v3-targeted-20261017-v1-a",
+      "campaignDigest": "sha256:dd807196e1e1e964e96069a3711760e6b0be0997ec24cab82396cd424d8f22b8",
+      "roundId": "chemie-current439-material4-v3-targeted-20261017-v1-first-pass-a",
+      "independenceGroupId": "chemie-current439-material4-v3-targeted-20261017-v1-independent-a",
+      "reviewInputFingerprint": "sha256:13146c5cf0f3ca9588c7c127c5995f10e636cefc64d49a312e817fe1a58d4751",
+      "batchId": "chemie-current439-material4-v3-targeted-20261017-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:efb3ed6d9bd62742a69fd04ed9bfcb499e0846d4941ac4d21dcf1bbd069dba23",
+      "runId": "chemie-material4-v3-independent-a-20261017-observed-science-v1",
+      "runManifestDigest": "sha256:dbc900cdc858f9267dda69274c534a21cd216cfcd7ae5da7efa8b08f688cc596",
+      "resultsDigest": "sha256:d956d88806699201fd3e4b0a6f82c46a85b3df60eed0db498025a3b5b7d59bb9"
+    },
+    "second": {
+      "campaignId": "chemie-current439-material4-v3-targeted-20261017-v1-b",
+      "campaignDigest": "sha256:7eef8320ecfac42fc05687bf9eda57cf3dc67c6b3031d6fb78eabd6d576d371b",
+      "roundId": "chemie-current439-material4-v3-targeted-20261017-v1-first-pass-b",
+      "independenceGroupId": "chemie-current439-material4-v3-targeted-20261017-v1-independent-b",
+      "reviewInputFingerprint": "sha256:13146c5cf0f3ca9588c7c127c5995f10e636cefc64d49a312e817fe1a58d4751",
+      "batchId": "chemie-current439-material4-v3-targeted-20261017-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:d8b3a8994617a496a9f1f031ff69000fd2a57bbd923185c621876030c4accc9b",
+      "runId": "chemie-material4-v3-fresh-independent-b-20261017-v1-native-D",
+      "runManifestDigest": "sha256:ffae0b02ae124fb46ab02b4587858f4d67c8541585ae87750644ccab04d69574",
+      "resultsDigest": "sha256:f732d6ceefb4c29f4915fc82a85138accdfa0f8550b9be5f8827776a971f9864"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "chemie-material4-v3-root-f85b4651-50ea-5b42-b193-3465c05257a7-20261017-v1",
+      "goalId": "f85b4651-50ea-5b42-b193-3465c05257a7",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:9ffb4363e6e864a302afd1ae4ae743606b402cdde234375ccc281b9043c34ac8",
+      "pageFingerprint": "sha256:d4da343674a34f2a6116e44273f5e6cd735f2fc4ba4d7b251732097bcb93aaa5",
+      "goalReviewContextFingerprint": "sha256:ded24a3f9717cb5a389afa5f6bd1f9f309a2b09c70c7b4d7b8ec61d36b33e600",
+      "finalText": {
+        "titleDe": "Molekülorbital-Modelle anwenden",
+        "titleEn": "Apply molecular orbital models",
+        "descriptionDe": "Die lernende Person kann einfache MO-Diagramme (z. B. O2, N2) interpretieren und Bindungsordnung ableiten.",
+        "descriptionEn": "The learner can interpret simple MO diagrams (e.g. O2, N2) and derive bond order."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-material4-v3-independent-a-20261017-observed-science-v1-01",
+          "recordDigest": "sha256:c4e1fe6fb9f864f805bd331b3bda50539ff6323d52d16f31143fa75afe268541"
+        },
+        "second": {
+          "recordId": "chemie-material4-v3-fresh-b-D-f85b4651-50ea-5b42-b193-3465c05257a7",
+          "recordDigest": "sha256:1c25b00d7dc30d0da09de15de31d8fd3446e8ba9af94b6b45f04ec072d5298da"
+        }
+      },
+      "rationaleDe": "Beide tatsächlichen unabhängigen aktuellen Runden bestätigen die MO-Deutung, Elektronenzählung und unterschiedlichen N2+/O2+-Transfer. Die beiden vollständigen Materialien verlangen jetzt eindeutig eine begründete Diagrammleistung ohne sachfremden chemischen Versuch. Das unveränderte Profil und alle übrigen Materialfelder bleiben erhalten; die frühere Praxis-Zusatzpflicht ist durch tatsächliche Materialkorrektur und erneute Prüfung geschlossen.",
+      "rationaleEn": "Both actual independent current rounds confirm MO interpretation, electron counting and the different nitrogen/oxygen cation transfer. Both complete materials now clearly require justified diagram work without an unrelated chemical experiment. The unchanged profile and all other material fields are retained; the former extra practical obligation is closed by actual material correction and renewed review."
+    },
+    {
+      "decisionId": "chemie-material4-v3-root-b8d3b453-d638-5518-aab0-d84ec2e8567c-20261017-v1",
+      "goalId": "b8d3b453-d638-5518-aab0-d84ec2e8567c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7cfe6610ec81b9510eebe1a403f40740cdb6cf50176512a16397f87b103a6358",
+      "pageFingerprint": "sha256:31ee65cebd597481035268a3b64c6c6e999db27fd6c0229db99b8cbff954d1e4",
+      "goalReviewContextFingerprint": "sha256:8b144ca1ac8d8c992f60fa40d91c6e1168614bdbf86419d9e3d24ef77bc1a20b",
+      "finalText": {
+        "titleDe": "Reaktivität aromatischer Systeme begründen",
+        "titleEn": "Explain aromatic reactivity",
+        "descriptionDe": "Die lernende Person kann die Reaktivität aromatischer Systeme anhand ihrer Elektronendelokalisierung begründen.",
+        "descriptionEn": "The learner can explain the reactivity of aromatic systems in terms of their electron delocalization."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-material4-v3-independent-a-20261017-observed-science-v1-02",
+          "recordDigest": "sha256:cc79cf16584d58c59f4359f9535676ce84ee8b527f3e4a4e644d8ff7752b61fa"
+        },
+        "second": {
+          "recordId": "chemie-material4-v3-fresh-b-D-b8d3b453-d638-5518-aab0-d84ec2e8567c",
+          "recordDigest": "sha256:269a9c38856cdcb10504c45db8e331a08c6ba503081114e9ec4daeb3e464b831"
+        }
+      },
+      "rationaleDe": "Beide aktuellen Runden bestätigen den ganzen Nitronium-Papierfall mit korrekter Stoff-/Ladungsbilanz, Rearomatisierung und ausdrücklich hypothetischer Abfangalternative. Die korrigierte zweisprachige Abschlussgrenze verlangt keine Nitrierung oder Hydrierung im Labor und keine zusätzliche Fallquote. Die gegebene Hydrierung bleibt ein begrenzter Gegenfall; eine reale Versuchsdurchführung oder menschliche Freigabe wird nicht behauptet.",
+      "rationaleEn": "Both current rounds confirm the complete nitronium paper case with correct atom/charge balance, rearomatization and explicitly hypothetical capture alternative. The corrected bilingual assessment boundary requires neither laboratory nitration or hydrogenation nor an additional case quota. Supplied hydrogenation remains a bounded counterexample; no actual experimental execution or human approval is claimed."
+    },
+    {
+      "decisionId": "chemie-material4-v3-root-28c90c6a-3020-5c51-ac40-d802f3f12d2d-20261017-v1",
+      "goalId": "28c90c6a-3020-5c51-ac40-d802f3f12d2d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:5e7666abb7cd2c4c761356fcd30cccad0080ed13ebcaeb84fb8683e8b420f9c5",
+      "pageFingerprint": "sha256:0615cd90f0de8d2fb0cc84970706807ab73000ac8fd1082a0db6344ef4030ee8",
+      "goalReviewContextFingerprint": "sha256:8698c33d52c24f077ef5aa847d60c77622bd22bd786529d9f6398a071c2159b9",
+      "finalText": {
+        "titleDe": "Titrationskurven datengestützt deuten",
+        "titleEn": "Interpret titration curves using data",
+        "descriptionDe": "Die lernende Person kann aus bereitgestellten Titrationsdaten den Verlauf einer Titrationskurve, den Äquivalenzbereich und vorhandene Halbäquivalenz- oder Pufferbereiche erkennen, mit den jeweils pH-bestimmenden Teilchen erklären und daraus begrenzte Aussagen zu Stoffklasse und geeigneten Indikatoren ableiten.",
+        "descriptionEn": "The learner can use supplied titration data to identify curve behaviour, the equivalence region and any half-equivalence or buffer regions, explain them using the pH-controlling species, and derive bounded conclusions about substance class and suitable indicators."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-material4-v3-independent-a-20261017-observed-science-v1-03",
+          "recordDigest": "sha256:fa4e5c3b6997dec0ea16e2823f34c4f343177042ccc25fb2cb17a9be3d43c8eb"
+        },
+        "second": {
+          "recordId": "chemie-material4-v3-fresh-b-D-28c90c6a-3020-5c51-ac40-d802f3f12d2d",
+          "recordDigest": "sha256:64f180420ee3ec215e4afa3cc53b100766d821a60ee04d932eeac2346e395e44"
+        }
+      },
+      "rationaleDe": "Beide aktuellen Runden bestätigen alle fünf tatsächlich gebundenen vollständigen Interpretationsfassungen und sämtliche zwanzig Rubrikzuordnungen. Runde B erhält die Grenzen von Temperaturneutralität, Halbäquivalenz, Glycinstufen und vier Stützpunkten. Die zwei falschen Zuordnungen sind im aktuellen Ganzmaterial fachlich korrigiert: Temperaturneutralität zählt zu q3, begrenzte Kurven-/Identitätsdeutung zu q1. Rechenoriginale bleiben getrennt; die operativen Aufgaben erben keine verpflichtenden pH-Rechnungen. BASE bleibt eine Alternative ohne neue Quote.",
+      "rationaleEn": "Both current rounds confirm all five actually bound complete interpretation versions and all twenty rubric links. Round B retains the limits of temperature neutrality, half-equivalence, glycine stages and four data points. The two false links are scientifically corrected in the current whole material: temperature neutrality contributes to q3, bounded curve/identity interpretation to q1. Quantitative originals remain separate; operative assignments inherit no required pH calculations. BASE remains an alternative without an extra quota."
+    },
+    {
+      "decisionId": "chemie-material4-v3-root-188bd684-e894-5753-8a50-798220b04d97-20261017-v1",
+      "goalId": "188bd684-e894-5753-8a50-798220b04d97",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e87f813cff7a6d79e6985fd630f3d60f484542c1e8184d82b14b410bab1db3fe",
+      "pageFingerprint": "sha256:8676d1f1a51ac1e3604e8622cf2631fb6128743d098f7a5d68521771234819a8",
+      "goalReviewContextFingerprint": "sha256:65c98f5c0bc6f4361408a1b549a0921957e8384b403723dd7aa1f538a7efd246",
+      "finalText": {
+        "titleDe": "Farbstoffe als Motor der chemischen Industrie beurteilen",
+        "titleEn": "Assess dyes as a driver of the chemical industry",
+        "descriptionDe": "Die lernende Person kann die wirtschaftliche Bedeutung der Farbstoffe für die Entwicklung der chemischen Industrie beurteilen.",
+        "descriptionEn": "The learner can assess the economic significance of dyes for the development of the chemical industry."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-material4-v3-independent-a-20261017-observed-science-v1-04",
+          "recordDigest": "sha256:534c6348eeefb30264f365bddc2f32629a631e11ed00f7f7ae78ec99cb00aa08"
+        },
+        "second": {
+          "recordId": "chemie-material4-v3-fresh-b-D-188bd684-e894-5753-8a50-798220b04d97",
+          "recordDigest": "sha256:87e90459dc7b3c5abebe2621b380ad41017f997554ff28d03da35382cedbd8a5"
+        }
+      },
+      "rationaleDe": "Beide aktuellen Runden bestätigen die vollständige korrigierte quellenkritische Wirtschaftsbeurteilung ohne chemische Versuchspflicht. Runde B trennt ausdrücklich erfundene Wirtschaftsmodelle vom realen BASF-/Museumsfall, zugeschriebene Investition von Gewinn und Firmeninteressen von umfassender Quellenbestätigung. Der tatsächliche Indanthren-Transfer bleibt erhalten; keine erfolgte Lernendenrecherche, neue Finanzprüfung oder menschliche Erprobung wird aus der Materialkorrektur abgeleitet.",
+      "rationaleEn": "Both current rounds confirm the complete corrected source-critical economic assessment without a chemical experiment requirement. Round B explicitly separates fictional economic models from the actual BASF/museum case, attributed investment from profit and company interests from comprehensive source verification. Actual Indanthrene transfer is retained; the material correction establishes neither learner research, a new financial audit nor human trial."
+    }
+  ],
+  "manifestFingerprint": "sha256:1fa20a221f69f86a3d5ae0aaf6f9303b36065a7477a0a71bd5de0088eb9e9aba"
+}

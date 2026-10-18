@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-002-v1-resolution-54bc6ca0-b770-5f10-ac54-bcc1d04298f5",
+  "goal": {
+    "goalId": "54bc6ca0-b770-5f10-ac54-bcc1d04298f5",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:b9c9472ff5537637a379c4ae545c8e237b4eb87cd4f774396b8046cad2e590a6",
+    "pageFingerprint": "sha256:6d8488fc16c3a927676f770ffe896c810684883798bcf532adb6796020d92926",
+    "goalReviewContextFingerprint": "sha256:c6a876a57d4cd2407fa1649b6eb16e7dd156c5bbd87f3ca89ba2e43da94b1b0a",
+    "finalText": {
+      "titleDe": "Emission und Absorption zur Farbigkeit unterscheiden",
+      "titleEn": "Distinguish emission and absorption for color",
+      "descriptionDe": "Die lernende Person kann zwischen Emission und Absorption verschiedener Lichtwellenlängen unterscheiden und damit Ursachen von Farbigkeit beschreiben.",
+      "descriptionEn": "The learner can distinguish between emission and absorption of different wavelengths of light and use this to describe causes of color."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-002-v1-a",
+      "campaignDigest": "sha256:b715fd8a726cbbb7aaa20c5ec2078404f295bc90d3f8bc2a5d9f561cd958d38e",
+      "roundId": "chemie-final-current-context-d-002-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-002-v1-independent-a",
+      "reviewInputFingerprint": "sha256:d831530f4fe9ba4c7701b62a5c1bcea6bdf04d0ee9729de34f23dbad666c8a9f",
+      "goalReviewContextFingerprint": "sha256:c6a876a57d4cd2407fa1649b6eb16e7dd156c5bbd87f3ca89ba2e43da94b1b0a",
+      "batchId": "chemie-final-current-context-d-002-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch002-20261018",
+      "runManifestDigest": "sha256:6ca66c1115aa27b4d2c73625e937471778c2db2938916b49f6ccc95a7860873d",
+      "resultsDigest": "sha256:ef5c73b963b42df01542d403d612c96c262c8a902a63b3774a35b2b9ec126b7c",
+      "recordId": "codex-reviewer-a-final163-batch002-20261018.020",
+      "recordDigest": "sha256:c19b50bb065b181faacc85442b005ce6a6375160657b3b61871c5c80c95d165a"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-002-v1-b",
+      "campaignDigest": "sha256:070e2daf91a611e1ffff2447e23f61558c7f9c9fa26cf87c154c53f406c8b793",
+      "roundId": "chemie-final-current-context-d-002-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-002-v1-independent-b",
+      "reviewInputFingerprint": "sha256:d831530f4fe9ba4c7701b62a5c1bcea6bdf04d0ee9729de34f23dbad666c8a9f",
+      "goalReviewContextFingerprint": "sha256:c6a876a57d4cd2407fa1649b6eb16e7dd156c5bbd87f3ca89ba2e43da94b1b0a",
+      "batchId": "chemie-final-current-context-d-002-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-002-20261018",
+      "runManifestDigest": "sha256:c410bb8b0ad9e827901944da0e700a9181082c10d1bbd55ac65a836583b30c6e",
+      "resultsDigest": "sha256:ab8f5774eb6180f67af823d96057f3949f0fb175c7d25a6a52ba94e0874f30cc",
+      "recordId": "chemie-final163-native-b-002-20261018:54bc6ca0-b770-5f10-ac54-bcc1d04298f5",
+      "recordDigest": "sha256:6a06a9f9b5dcca566fcae46fcdedab745000b6b44c0525a6525ffc31b375ff9d"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:d8fb237c4bfae646ace584c195b8d46e5310536aa5be0abf6e49298504cbd0d9"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-002-20261018-v1",
+    "manifestDigest": "sha256:067c0f4ea81884ab77197d8b88f8f555468ebc2707980d808fe8e93abaaa1073",
+    "manifestFingerprint": "sha256:015048c1d39b768cb2cc3bd33b3adb266d68832f23abfb86d580299bfc453bfc",
+    "decisionId": "chemie-final163-paired-D-only-002-20261018-v1-decision-020"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-002-20261018-v1-decision-020",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:25:09.454Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch002-20261018.020): Der AB1-Text ist bilingual klar und bleibt beim grundlegenden Emissions-/Absorptionsunterschied. Das vollständige P prüft Beleuchtungswechsel und Dunkelheit unter ausgeschlossener Fluoreszenz; delokalisierte Elektronensysteme werden nicht vorweggenommen. B (chemie-final163-native-b-002-20261018:54bc6ca0-b770-5f10-ac54-bcc1d04298f5): Die einfache Unterscheidungsbeschreibung passt zu AB1 und wird im P durch Energiefluss und neue Beleuchtung konkret. Absorption wird weder als Emission derselben Farbe noch als automatische Farbkonversion dargestellt; Delokalisierung folgt erst im Nachfolger.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch002-20261018.020; chemie-final163-native-b-002-20261018:54bc6ca0-b770-5f10-ac54-bcc1d04298f5). Their current English understanding evidence is retained: A: Emission releases light energy, absorption takes up selected wavelengths; observed colour follows outgoing light. B: Emission releases light energy, absorption takes up selected incident wavelengths; perceived colour depends on outgoing light. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Emission gibt Lichtenergie ab, Absorption nimmt bestimmte Wellenlängen auf; beobachtete Farbe folgt dem austretenden Licht.",
+      "essentialUnderstandingEn": "Emission releases light energy, absorption takes up selected wavelengths; observed colour follows outgoing light.",
+      "observablePerformanceDe": "Unterscheidet leuchtende LED und beleuchtete Lösung und begründet Energiefluss sowie Durchsichtfarbe aus dem Spektrum.",
+      "observablePerformanceEn": "Distinguishes a glowing LED from an illuminated solution and explains energy flow and transmitted colour from the spectrum.",
+      "transferExpectationDe": "Sagt bei geändertem monochromatischem Licht die Filterdurchsicht voraus, ohne Absorption als Farbumwandlung zu deuten.",
+      "transferExpectationEn": "Predicts filter transmission under changed monochromatic light without interpreting absorption as colour conversion."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-3cd2dbe7a72e401b6ead25bbe43c8949fc4066a2ab5ece4d167ffa01e28589ab",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:7fd5a360416dd0336593d6b161e90754678c3f3425f3643078a08414147a39e1"
+}

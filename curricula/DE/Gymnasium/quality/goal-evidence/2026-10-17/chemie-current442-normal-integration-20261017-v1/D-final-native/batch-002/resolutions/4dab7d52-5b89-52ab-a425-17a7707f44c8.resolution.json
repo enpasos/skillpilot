@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-002-v1-resolution-4dab7d52-5b89-52ab-a425-17a7707f44c8",
+  "goal": {
+    "goalId": "4dab7d52-5b89-52ab-a425-17a7707f44c8",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:4fd40f3f099b611118bf05f819bffa64afffcb62180626da74d2580d4f8bb5a7",
+    "pageFingerprint": "sha256:bd521bebfa73e7a04deaf04ed67feb2d9ea094acaf9377f9176af585499b25fe",
+    "goalReviewContextFingerprint": "sha256:f7cbab6bbcca0d36aa595a4f4341d251661dffa82e177501fe054e72824aac37",
+    "finalText": {
+      "titleDe": "CO2-Bilanz und Reaktionswärme von Brennstoffen vergleichen",
+      "titleEn": "Compare fuels by CO2 balance and heat of reaction",
+      "descriptionDe": "Die lernende Person kann die direkte CO₂-Abgabe und die freiwerdende Reaktionswärme bei der Verbrennung verschiedener Brennstoffe vergleichen und dabei für jede Größe eine einheitliche Bezugsgröße sowie dieselbe Systemgrenze verwenden.",
+      "descriptionEn": "The learner can compare the direct CO₂ emissions and heat released by the combustion of different fuels, using a consistent reference basis for each quantity and the same system boundary."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-002-v1-a",
+      "campaignDigest": "sha256:b715fd8a726cbbb7aaa20c5ec2078404f295bc90d3f8bc2a5d9f561cd958d38e",
+      "roundId": "chemie-final-current-context-d-002-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-002-v1-independent-a",
+      "reviewInputFingerprint": "sha256:d831530f4fe9ba4c7701b62a5c1bcea6bdf04d0ee9729de34f23dbad666c8a9f",
+      "goalReviewContextFingerprint": "sha256:f7cbab6bbcca0d36aa595a4f4341d251661dffa82e177501fe054e72824aac37",
+      "batchId": "chemie-final-current-context-d-002-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch002-20261018",
+      "runManifestDigest": "sha256:6ca66c1115aa27b4d2c73625e937471778c2db2938916b49f6ccc95a7860873d",
+      "resultsDigest": "sha256:ef5c73b963b42df01542d403d612c96c262c8a902a63b3774a35b2b9ec126b7c",
+      "recordId": "codex-reviewer-a-final163-batch002-20261018.016",
+      "recordDigest": "sha256:281fe4948644a15b7f0af0d94ff7c3e3288ab8140f12d5488a33b89c3ca2eaef"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-002-v1-b",
+      "campaignDigest": "sha256:070e2daf91a611e1ffff2447e23f61558c7f9c9fa26cf87c154c53f406c8b793",
+      "roundId": "chemie-final-current-context-d-002-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-002-v1-independent-b",
+      "reviewInputFingerprint": "sha256:d831530f4fe9ba4c7701b62a5c1bcea6bdf04d0ee9729de34f23dbad666c8a9f",
+      "goalReviewContextFingerprint": "sha256:f7cbab6bbcca0d36aa595a4f4341d251661dffa82e177501fe054e72824aac37",
+      "batchId": "chemie-final-current-context-d-002-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-002-20261018",
+      "runManifestDigest": "sha256:c410bb8b0ad9e827901944da0e700a9181082c10d1bbd55ac65a836583b30c6e",
+      "resultsDigest": "sha256:ab8f5774eb6180f67af823d96057f3949f0fb175c7d25a6a52ba94e0874f30cc",
+      "recordId": "chemie-final163-native-b-002-20261018:4dab7d52-5b89-52ab-a425-17a7707f44c8",
+      "recordDigest": "sha256:c3fee31879d8a159b258e098e9e9112791781a953e0b1edf08622b185a806646"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:d8fb237c4bfae646ace584c195b8d46e5310536aa5be0abf6e49298504cbd0d9"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-002-20261018-v1",
+    "manifestDigest": "sha256:067c0f4ea81884ab77197d8b88f8f555468ebc2707980d808fe8e93abaaa1073",
+    "manifestFingerprint": "sha256:015048c1d39b768cb2cc3bd33b3adb266d68832f23abfb86d580299bfc453bfc",
+    "decisionId": "chemie-final163-paired-D-only-002-20261018-v1-decision-016"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-002-20261018-v1-decision-016",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:25:09.454Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch002-20261018.016): Die Beschreibung fordert für jede Größe konsistente Bezüge und gleiche Grenze. Beide ganzen P-Fälle ändern Stoff und Datenstruktur, rechnen korrekt auf gemeinsame Wärme und vermeiden Klimaneutralität aus dem direkten H2-Nullwert. B (chemie-final163-native-b-002-20261018:4dab7d52-5b89-52ab-a425-17a7707f44c8): Die Beschreibung fordert explizit konsistente Bezugsgröße und identische Grenze. P ändert Brennstoffart und Datenform und verhindert, dass fehlender Brennstoffkohlenstoff als allgemeine Klimaneutralität ausgegeben wird.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch002-20261018.016; chemie-final163-native-b-002-20261018:4dab7d52-5b89-52ab-a425-17a7707f44c8). Their current English understanding evidence is retained: A: Direct CO2 amount and reaction heat need comparison per equal substance/energy quantity and identical combustion boundary. B: Direct carbon dioxide and reaction heat refer to the same fuel amount; equal heat and combustion boundaries make emissions comparable. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Direkte CO2-Menge und Reaktionswärme müssen pro gleicher Stoff-/Energiemenge und identischer Verbrennungsgrenze verglichen werden.",
+      "essentialUnderstandingEn": "Direct CO2 amount and reaction heat need comparison per equal substance/energy quantity and identical combustion boundary.",
+      "observablePerformanceDe": "Ordnet zusammengehörige Daten zu, vergleicht Wärme und berechnet direkte CO2-Masse je freigesetztem MJ.",
+      "observablePerformanceEn": "Pairs corresponding data, compares heat and calculates direct CO2 mass per released MJ.",
+      "transferExpectationDe": "Überträgt molare Daten auf ungleiche Massenproben mit Wasserstoff und trennt direkte Nullwerte von Vorkettenemissionen.",
+      "transferExpectationEn": "Transfers molar data to unequal mass samples including hydrogen and separates direct zero values from upstream emissions."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-67656e045f715e54d62216f39490cbcb55f2488690d4c30bce69988db07554ad",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:81179f76a022e408ccb4b90ba58cd16de0941bc90a452e4a0eb2e05ec57fa47c"
+}

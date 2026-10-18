@@ -1,0 +1,91 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+  "schemaVersion": 2,
+  "reviewId": "chemie-carbonyl15-current422-informed-positive-profile-b-20261015-v1",
+  "goalFingerprintRuleVersion": "goal-evidence-v1",
+  "profileRuleVersion": "positive-understanding-evidence-v2",
+  "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+  "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+  "goalId": "a853069e-2ebb-5a19-8edf-b767cdb41ed7",
+  "goalFingerprint": "sha256:395dbf4e2232ab88816c1823ce4d471a7c1fa1fb1beb6b13bb7c608d59e65d2e",
+  "reviewInputFingerprint": "sha256:5a4d84c1ddb720f7ba5338421a1b833e01b20199b110781fe6ce4a3050d16765",
+  "profileFingerprint": "sha256:7319427c2b9c5c9f99fef3ffa946607df19d4004d9b2604fd5ef39f549639af0",
+  "status": "needs_human_review",
+  "reviewAuthority": "ai_candidate",
+  "reviewedAt": "2026-10-17T21:23:41.999975+00:00",
+  "reviewer": "Codex B technical current-input serialization; underlying scientific authors and reviewers remain recorded in the P442 selection/provenance",
+  "reason": "Das data-Profil trennt Freisetzung von resultierender Konzentration, verlangt einen definierten Wirkungsschwellwert und begrenzt Schlussfolgerungen bei Matrix-/pH-Wechsel. Die beiden Zeitgrößen werden im selben Wirkungskriterium verglichen. Keine Form erhält eine universelle Rangordnung. Transfer: Wechsel von Konzentrationskurve zu In-vitro-Freisetzung und pH-/Matrixänderung verhindert mechanisches Übertragen der ersten Schwellenzeit. Operatoren: Vergleichen und Beurteilen von Eintritt/Dauer wird durch ein gemeinsam definiertes Kriterium und die begründete Nichtbestimmbarkeit im zweiten Modell geprüft. Vollständige Prüfung beider DE/EN-Fälle und Rubriken: PA.FIRST.independent-informed-science.json, Ziel 13.",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "reviewRunIds": [],
+  "dissent": [],
+  "profile": {
+    "archetype": "data",
+    "expectations": [
+      {
+        "id": "e1",
+        "essentialUnderstandingDe": "Darreichungsform beeinflusst Freisetzung; Resorption und Elimination bestimmen zusätzlich Konzentration.",
+        "essentialUnderstandingEn": "Dosage form affects release; absorption and elimination additionally determine concentration.",
+        "observablePerformanceDe": "Unterscheidet Freisetzungsdaten von einem ausdrücklich gegebenen Wirkmodell.",
+        "observablePerformanceEn": "Distinguishes release data from an explicitly supplied effect model."
+      },
+      {
+        "id": "e2",
+        "essentialUnderstandingDe": "Wirkungseintritt und Dauer benötigen ein definiertes Kriterium.",
+        "essentialUnderstandingEn": "Onset and duration require a defined criterion.",
+        "observablePerformanceDe": "Vergleicht Kurven nach derselben gegebenen Schwelle und Zeitbasis.",
+        "observablePerformanceEn": "Compares curves using the same supplied threshold/time basis."
+      },
+      {
+        "id": "e3",
+        "essentialUnderstandingDe": "Veränderte Form oder Matrix kann Freisetzung ändern; In-vitro-Daten sind keine persönliche Anwendungsentscheidung.",
+        "essentialUnderstandingEn": "Altering form/matrix can change release; in-vitro data are not personal use decisions.",
+        "observablePerformanceDe": "Bewertet veränderte Bedingungen und begrenzt klinische Schlussfolgerungen.",
+        "observablePerformanceEn": "Assesses altered conditions and bounds clinical inference."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "e1",
+        "e2",
+        "e3"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "v1",
+        "textDe": "Sofortige, verlängerte oder verzögerte Freisetzung",
+        "textEn": "Immediate, extended or delayed release"
+      },
+      {
+        "id": "v2",
+        "textDe": "Freisetzungskurve oder Wirkungskriterium",
+        "textEn": "Release curve versus effect criterion"
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "a853069e-case-1",
+        "taskDemandDe": "Daten und Bedingungen:\nChemisches Unterrichtsmodell: keine persönlichen Behandlungs-, Dosierungs- oder Einnahmeempfehlungen; erfundene Modellwerte sind keine klinischen Befunde. Drei erfundene Präparate desselben Modellwirkstoffs, identische Gesamtwirkstoffmenge: LösungL, sofort freisetzende TabletteI, RetardmatrixR. Modell-Plasmakonzentration in relativen Einheiten bei t=0/1/2/4/8h: L0/4/3/1/0, I0/2/4/2/0, R0/1/2/2/1. Zwischen Messpunkten linear. Unterrichtskriterium „Modellwirkung“: c≥2, ohne weitere Pharmakodynamik. R wird über Diffusion/Matrixerosion langsamer freigesetzt, L muss nicht erst zerfallen; reale Löslichkeit/Resorption/Elimination können abweichen.\nAufgaben:\n1. Erkläre die Freisetzungsunterschiede und warum Konzentration zusätzlich Resorption und Elimination enthält.\n2. Bestimme mit linearer Interpolation Wirkungseintritt und Dauer oberhalb der Modellschwelle für L/I/R.\n3. Bewerte welche Form im vorgegebenen Modell früher wirkt und ob daraus eine persönliche Wahl oder ein allgemeines Retardurteil folgt.",
+        "taskDemandEn": "Data and conditions:\nChemistry teaching model: no personal treatment, dosing or administration recommendation; invented model values are not clinical findings. Three invented preparations of the same model ingredient at equal total active amount: solutionL, immediate tabletI, extended-release matrixR. Model plasma concentration in relative units at0/1/2/4/8h: L0/4/3/1/0, I0/2/4/2/0, R0/1/2/2/1. Linear between points. Teaching “model effect” criterion:c≥2 with no further pharmacodynamics. R releases more slowly via diffusion/matrix erosion; L need not disintegrate first. Actual solubility/absorption/elimination may differ.\nTasks:\n1. Explain release differences and why concentration also includes absorption/elimination.\n2. Use linear interpolation to find onset/duration at the model threshold for L/I/R.\n3. Assess earlier onset within the model and whether it implies personal choice or a universal extended-release verdict.",
+        "expectedPerformanceDe": "1. L hat keinen Tablettenzerfall; I muss zerfallen/lösen; R begrenzt Freisetzung durch Matrix/Diffusion. Die gegebenen Plasmakurven sind daraus und aus Resorption/Elimination resultierende Modellgrößen; eine In-vitro-Freisetzungsquote allein ist nicht dieselbe Kurve.\n2. L erreicht2 bei0.5h, unterschreitet nach3h: Dauer2.5h. I erreicht2 bei1h und bleibt bis4h:3h. R erreicht2 bei2h und bleibt bis4h:2h. Die Retardbezeichnung allein garantiert unter dieser konkreten Schwelle keine längste Wirkdauer.\n3. L hat den frühesten Modellbeginn, I hier die längste Schwellenzeit. Das hängt an den vorgegebenen Kurven/Schwelle; andere Wirkstoffe oder Schwellen ändern den Vergleich. Keine individuelle Empfehlung oder universelle Wirksamkeitsrangfolge folgt.",
+        "expectedPerformanceEn": "1. L needs no tablet disintegration, I must disintegrate/dissolve, R limits release by matrix/diffusion. Supplied plasma curves are modeled outcomes including absorption/elimination; an in-vitro release fraction alone is not that curve.\n2. L reaches2 at0.5h and drops below after3h:2.5h. I reaches2 at1h and stays through4h:3h. R reaches2 at2h and stays through4h:2h. “Extended release” alone does not guarantee the longest duration at this specific threshold.\n3. L has earliest modeled onset and I the longest threshold duration here. Results depend on these curves/threshold; other ingredients or thresholds change the comparison. No personal recommendation/universal efficacy ranking follows.",
+        "understandingFocusDe": "Freisetzung, Resorption und Elimination bestimmen gemeinsam zeitliche Konzentrations- und Wirkungskriterien. Transfer: Magensaftresistenz von Retardwirkung trennen; Verlustfrei-Freisetzungsdaten liefern keine endliche Wirkungsdauer. Zwei unabhängige Nachweisschritte können in einer integrierten Leistung auftreten; die zwei Fallvarianten sind keine Pflichtaufgabenquote. Sobald alle Aspekte und selbstständiger Transfer hinreichend gezeigt sind, endet die Prüfung.",
+        "understandingFocusEn": "Release, absorption and elimination jointly determine time-dependent concentration/effect criteria. Transfer: Distinguish enteric delay from extended release; loss-free release data provide no finite duration. Two independent demonstration steps can occur in one integrated performance; the two case variants are not a mandatory task quota. Stop assessment once all aspects and independent transfer are sufficiently shown."
+      },
+      {
+        "id": "a853069e-case-2",
+        "taskDemandDe": "Daten und Bedingungen:\nChemisches Unterrichtsmodell: keine persönlichen Behandlungs-, Dosierungs- oder Einnahmeempfehlungen; erfundene Modellwerte sind keine klinischen Befunde. Erfundene In-vitro-Freisetzung desselben Wirkstoffs; Zeit t0/1/2/4/6h, zuerst pH1.5 bis2h, dann pH6.8. Magensaftresistente FormE:0/0/0/100/100%; RetardR:0/20/40/70/100%; zerkleinerte R-ModellmatrixZ:0/90/100/100/100%. Keine Plasmakonzentration. Gegebenes zusätzliches Wirkmodell: Resorption sofort nach Freisetzung, Wirkung ab50% kumulierter Freisetzung, kein Verlust; lineare Zwischenwerte. Dieses absichtlich vereinfachte Verlustfrei-Modell kann ein Ende der Wirkung nicht bestimmen. Primärquelle FDA https://www.fda.gov/media/169646/download: Manipulation kann Retardeigenschaften beeinträchtigen; diese Unterrichtsdaten sind keine Anweisung, Medikamente zu zerkleinern.\nAufgaben:\n1. Erkläre E gegenüber R mechanistisch und ordne die Z-Daten als veränderte Matrix ein.\n2. Berechne die50%-Zeit für E/R/Z und beurteile ausdrücklich, ob die Wirkungsdauer aus den gegebenen Daten bestimmbar ist.\n3. Prüfe „magensaftresistent bedeutet immer Retard“ und die Übertragbarkeit der Z-Kurve anhand der FDA-Quelle.",
+        "taskDemandEn": "Data and conditions:\nChemistry teaching model: no personal treatment, dosing or administration recommendation; invented model values are not clinical findings. Invented in-vitro release of one ingredient at0/1/2/4/6h: pH1.5 through2h, then6.8. EntericE:0/0/0/100/100%; extendedR:0/20/40/70/100%; crushed model matrixZ:0/90/100/100/100%. No plasma concentrations. Additional supplied effect model: immediate absorption on release, effect begins at50% cumulative release, no loss; linear between points. This deliberately loss-free model cannot determine effect termination. FDA primary source https://www.fda.gov/media/169646/download: manipulation may compromise extended-release properties; teaching data are not instructions to crush medicines.\nTasks:\n1. Explain E versus R mechanistically and interpret Z as an altered matrix.\n2. Calculate50%-time for E/R/Z and explicitly assess whether duration can be determined.\n3. Check “enteric always means extended release” and transferability of Z using the FDA source.",
+        "expectedPerformanceDe": "1. E hält Freisetzung im sauren Medium zurück und setzt nach pH-Wechsel frei: verzögerter Ort/Beginn. R setzt fortlaufend langsamer frei: verlängerte Freisetzung. Z zerstört im gegebenen Modell die Freisetzungsbarriere, daher früherer großer Anteil; nicht jedes reale Präparat verhält sich identisch.\n2. E:3h; R:2+(50−40)/(70−40)×2=2.667h; Z:50/90=0.556h. Unter dem Zusatzmodell sind das Modellbeginne. Ohne Elimination/Abfallkriterium ist kein endlicher Wirkungsendpunkt und damit keine Wirkungsdauer bestimmbar.\n3. E zeigt verzögerten Beginn mit danach schneller Freisetzung; dies ist nicht dieselbe Funktion wie R. FDA nennt mögliche Veränderung der Freisetzung durch Manipulation, keine universelle90%-Regel. Die Z-Kurve ist erfunden und keine klinische Einnahme-/Zerkleinerungsempfehlung.",
+        "expectedPerformanceEn": "1. E retains release in acid and releases after pH change: delayed location/onset. R releases continuously more slowly: extended release. Z disrupts the modeled barrier, giving an early large fraction; real products need not behave identically.\n2. E:3h; R:2+(50−40)/(70−40)×2=2.667h; Z:50/90=0.556h. Under the additional model these are onset times. Without elimination/decline criterion no finite termination/duration can be determined.\n3. E shows delayed onset followed by fast release, distinct from R. FDA describes possible release changes from manipulation, not a universal90% rule. Z is fictional and no clinical administration/crushing recommendation.",
+        "understandingFocusDe": "Freisetzung, Resorption und Elimination bestimmen gemeinsam zeitliche Konzentrations- und Wirkungskriterien. Transfer: Magensaftresistenz von Retardwirkung trennen; Verlustfrei-Freisetzungsdaten liefern keine endliche Wirkungsdauer. Zwei unabhängige Nachweisschritte können in einer integrierten Leistung auftreten; die zwei Fallvarianten sind keine Pflichtaufgabenquote. Sobald alle Aspekte und selbstständiger Transfer hinreichend gezeigt sind, endet die Prüfung.",
+        "understandingFocusEn": "Release, absorption and elimination jointly determine time-dependent concentration/effect criteria. Transfer: Distinguish enteric delay from extended release; loss-free release data provide no finite duration. Two independent demonstration steps can occur in one integrated performance; the two case variants are not a mandatory task quota. Stop assessment once all aspects and independent transfer are sufficiently shown."
+      }
+    ]
+  }
+}

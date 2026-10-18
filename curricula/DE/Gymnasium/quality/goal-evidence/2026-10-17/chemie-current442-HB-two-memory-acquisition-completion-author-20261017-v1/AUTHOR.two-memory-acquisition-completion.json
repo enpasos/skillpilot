@@ -1,0 +1,524 @@
+{
+  "artifactType": "Bounded Chemistry memory-acquisition completion author candidate",
+  "createdAtUTC": "2026-10-17T21:37:34.311282+00:00",
+  "author": "Codex root, informed current integration and prior energy memory reviewer",
+  "independentApproval": false,
+  "normalFilesChanged": false,
+  "M7Claim": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "inputs": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "sha256": "cb3c432cc7b6875b55d8ea58acceb0048cdda7a532441dc122abb09a4b51c056",
+      "bytes": 2928297
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-hb-lk.view.json",
+      "sha256": "07597d18c5adf3be097ae49b67a263ef3f60e7ad751fb241fb46622d43755526",
+      "bytes": 65158
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-hb-sekii-lk.view.json",
+      "sha256": "d660bf53711ae938128471ef7ffbc668af1dad74420b9a69c4d082d51ef32951",
+      "bytes": 59365
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/M442.review.jsonl",
+      "sha256": "43b5820ddc2995eee2e65b014f6e1cef9faca770c2d2916399f99e956f82fc2f",
+      "bytes": 480393
+    },
+    {
+      "path": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_chemistry_flashcards_energy_q4.de.json",
+      "sha256": "8cfc9af529b3678a76720c9f6e27817e7fe5b9b827bdc5e0aca4f129c46cc8ce",
+      "bytes": 3448
+    },
+    {
+      "path": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_chemistry_flashcards_equilibria_q3.de.json",
+      "sha256": "d2be3bf00128e7d0e9398bdf5fe84581e4ec52c6148b475466ef4c25c41be743",
+      "bytes": 7149
+    }
+  ],
+  "canonicalCandidate": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-HB-two-memory-acquisition-completion-author-20261017-v1/C654.memory68.ordinary442.author.json.snapshot",
+    "sha256": "04f20db82543e81c8a5ef5e4e0cc3856f3004ceef6697a1c2078bf72aa5bb15a",
+    "bytes": 2931692
+  },
+  "viewCandidates": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-HB-two-memory-acquisition-completion-author-20261017-v1/de-hb-lk.view.json",
+      "sha256": "6b9fdd52e25538aa26fda7d719be5c26fc7aeab1e3d86ad02d5aa2be070ae5ea",
+      "bytes": 65496
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-HB-two-memory-acquisition-completion-author-20261017-v1/de-hb-sekii-lk.view.json",
+      "sha256": "0c27a0c46af7087bce99f253cdf3041cb2a995a27f4b4c70b834b61292d10e02",
+      "bytes": 59703
+    }
+  ],
+  "memoryRecordCandidate": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-HB-two-memory-acquisition-completion-author-20261017-v1/M.ebfa.additive-narrow-reference.author.json",
+    "sha256": "489d1eb5fd73b82f11aad46db690ea7c3cf751c40377cd165bfd9ae703b44a5e",
+    "bytes": 2457
+  },
+  "newMemoryGoal": {
+    "id": "3cae397b-7018-5f49-90a8-403c66b069cd",
+    "shortKey": "canonical_chemistry_compact_recall_green_metrics",
+    "title": "Green-Chemistry-Kennzahlen abrufen",
+    "titleEn": "Recall Green Chemistry metrics",
+    "description": "Die lernende Person kann die Grundideen von Atomökonomie, E-Faktor und PMI mithilfe der zugehörigen Lernkarte sicher abrufen.",
+    "descriptionEn": "The learner can reliably recall the basic ideas of atom economy, E-factor and PMI using the associated flashcard.",
+    "weight": 0.5,
+    "tags": [
+      "memorization",
+      "srs-deck:de_gymnasium_chemistry_energy_q4",
+      "goal:ebfa2c18-0599-5282-bf7a-80c14d86331e"
+    ],
+    "nodeKind": "memory",
+    "type": "atomic",
+    "contains": [],
+    "requires": [
+      "ebfa2c18-0599-5282-bf7a-80c14d86331e"
+    ],
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-chemistry",
+      "demandLevel": "AB1",
+      "processCompetencies": [],
+      "guidingIdeas": [],
+      "phase": "GLOBAL",
+      "area": "Kompakte Chemie-Abrufroutinen"
+    },
+    "extendedData": {
+      "vocabularySource": "/data/de_gymnasium_chemistry_flashcards_energy_q4.de.json",
+      "memorySupportSelection": {
+        "authorRoot": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-HB-two-memory-acquisition-completion-author-20261017-v1",
+        "status": "AUTHOR-CANDIDATE-PENDING-TWO-INDEPENDENT-SCOPE-AND-M-REFERENCE-REVIEWS",
+        "selectedCardIds": [
+          "chem_energy_q4_005"
+        ],
+        "originGoalIds": [
+          "ebfa2c18-0599-5282-bf7a-80c14d86331e"
+        ],
+        "role": "Recall of previously taught compact content only. No ordinary competency, official source duty, acquisition performance or human evidence is certified.",
+        "selectionSemantics": "Unchanged getSrsFilterTags selects the single goal: tag; no GK/LK tag is added because the card matcher uses OR. Actual card selection must equal chem_energy_q4_005 only."
+      },
+      "authoredMemoryAcquisitionScopes": [
+        {
+          "viewId": "de-hb-gym-chemistry-lk",
+          "scope": {
+            "schoolForm": "Gymnasium",
+            "jurisdiction": "DE-HB",
+            "stage": "CrossStage",
+            "courseProfile": "LK"
+          }
+        },
+        {
+          "viewId": "de-hb-gym-sekii-chemistry-lk",
+          "scope": {
+            "schoolForm": "Gymnasium",
+            "jurisdiction": "DE-HB",
+            "stage": "SekII",
+            "courseProfile": "LK"
+          }
+        }
+      ]
+    },
+    "applicability": {
+      "courseProfile": [
+        "LK"
+      ],
+      "jurisdiction": [
+        "DE-HB"
+      ]
+    }
+  },
+  "existingKspMemoryGoalBefore": {
+    "id": "be848fa1-8f52-5099-923f-79b776f07f2f",
+    "shortKey": "canonical_chemistry_compact_recall_solubility_product",
+    "title": "Löslichkeitsprodukt abrufen",
+    "titleEn": "Recall the solubility product",
+    "description": "Die lernende Person kann die Grundidee des Löslichkeitsprodukts und die stöchiometrischen Exponenten der Ionenkonzentrationen im Kartenmodell mithilfe der zugehörigen Lernkarten sicher abrufen.",
+    "descriptionEn": "The learner can reliably recall the basic idea of the solubility product and the stoichiometric exponents of ionic concentrations in the card model using the associated flashcards.",
+    "weight": 0.5,
+    "tags": [
+      "memorization",
+      "srs-deck:de_gymnasium_chemistry_equilibria_q3",
+      "goal:ac1bcf34-169c-5339-92ba-efe8c3022560"
+    ],
+    "nodeKind": "memory",
+    "type": "atomic",
+    "contains": [],
+    "requires": [
+      "ac1bcf34-169c-5339-92ba-efe8c3022560"
+    ],
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-chemistry",
+      "demandLevel": "AB1",
+      "processCompetencies": [],
+      "guidingIdeas": [],
+      "phase": "GLOBAL",
+      "area": "Kompakte Chemie-Abrufroutinen"
+    },
+    "extendedData": {
+      "vocabularySource": "/data/de_gymnasium_chemistry_flashcards_equilibria_q3.de.json",
+      "memorySupportSelection": {
+        "authorRoot": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current435-shared-narrow-memory-units-and-acquisition-placement-author-successor-20261016-v1",
+        "status": "AUTHOR-CANDIDATE-PENDING-FOREIGN-INDEPENDENT-SELECTION-SCOPE-AND-M-REFERENCE-REVIEW",
+        "selectedCardIds": [
+          "chem_eq_q3_011"
+        ],
+        "originGoalIds": [
+          "ac1bcf34-169c-5339-92ba-efe8c3022560"
+        ],
+        "role": "Recall of previously taught compact content only. No ordinary competency, source duty, acquisition performance, or Human evidence is certified.",
+        "selectionSemantics": "Unchanged getSrsFilterTags returns the existing goal: tags because no GK/LK or new selector tag is added. The unchanged card filter uses their OR intersection; actual ordered cards are checked, not inferred from selectedCardIds."
+      },
+      "authoredMemoryAcquisitionScopes": [
+        {
+          "purposeIndex": 4,
+          "viewId": "de-bw-gym-chemistry-gk",
+          "scope": {
+            "schoolForm": "Gymnasium",
+            "jurisdiction": "DE-BW",
+            "stage": "CrossStage",
+            "courseProfile": "GK"
+          }
+        },
+        {
+          "purposeIndex": 21,
+          "viewId": "de-ni-gym-chemistry-gk",
+          "scope": {
+            "schoolForm": "Gymnasium",
+            "jurisdiction": "DE-NI",
+            "stage": "CrossStage",
+            "courseProfile": "GK"
+          }
+        },
+        {
+          "purposeIndex": 40,
+          "viewId": "de-by-gym-chemistry-lk-explicit-source-union-author",
+          "scope": {
+            "schoolForm": "Gymnasium",
+            "jurisdiction": "DE-BY",
+            "stage": "CrossStage",
+            "courseProfile": "LK"
+          }
+        }
+      ]
+    },
+    "applicability": {
+      "courseProfile": [
+        "GK",
+        "LK"
+      ],
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HE",
+        "DE-NI"
+      ]
+    }
+  },
+  "existingKspMemoryGoalAfter": {
+    "id": "be848fa1-8f52-5099-923f-79b776f07f2f",
+    "shortKey": "canonical_chemistry_compact_recall_solubility_product",
+    "title": "Löslichkeitsprodukt abrufen",
+    "titleEn": "Recall the solubility product",
+    "description": "Die lernende Person kann die Grundidee des Löslichkeitsprodukts und die stöchiometrischen Exponenten der Ionenkonzentrationen im Kartenmodell mithilfe der zugehörigen Lernkarten sicher abrufen.",
+    "descriptionEn": "The learner can reliably recall the basic idea of the solubility product and the stoichiometric exponents of ionic concentrations in the card model using the associated flashcards.",
+    "weight": 0.5,
+    "tags": [
+      "memorization",
+      "srs-deck:de_gymnasium_chemistry_equilibria_q3",
+      "goal:ac1bcf34-169c-5339-92ba-efe8c3022560"
+    ],
+    "nodeKind": "memory",
+    "type": "atomic",
+    "contains": [],
+    "requires": [
+      "ac1bcf34-169c-5339-92ba-efe8c3022560"
+    ],
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-chemistry",
+      "demandLevel": "AB1",
+      "processCompetencies": [],
+      "guidingIdeas": [],
+      "phase": "GLOBAL",
+      "area": "Kompakte Chemie-Abrufroutinen"
+    },
+    "extendedData": {
+      "vocabularySource": "/data/de_gymnasium_chemistry_flashcards_equilibria_q3.de.json",
+      "memorySupportSelection": {
+        "authorRoot": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current435-shared-narrow-memory-units-and-acquisition-placement-author-successor-20261016-v1",
+        "status": "AUTHOR-CANDIDATE-PENDING-FOREIGN-INDEPENDENT-SELECTION-SCOPE-AND-M-REFERENCE-REVIEW",
+        "selectedCardIds": [
+          "chem_eq_q3_011"
+        ],
+        "originGoalIds": [
+          "ac1bcf34-169c-5339-92ba-efe8c3022560"
+        ],
+        "role": "Recall of previously taught compact content only. No ordinary competency, source duty, acquisition performance, or Human evidence is certified.",
+        "selectionSemantics": "Unchanged getSrsFilterTags returns the existing goal: tags because no GK/LK or new selector tag is added. The unchanged card filter uses their OR intersection; actual ordered cards are checked, not inferred from selectedCardIds."
+      },
+      "authoredMemoryAcquisitionScopes": [
+        {
+          "purposeIndex": 4,
+          "viewId": "de-bw-gym-chemistry-gk",
+          "scope": {
+            "schoolForm": "Gymnasium",
+            "jurisdiction": "DE-BW",
+            "stage": "CrossStage",
+            "courseProfile": "GK"
+          }
+        },
+        {
+          "purposeIndex": 21,
+          "viewId": "de-ni-gym-chemistry-gk",
+          "scope": {
+            "schoolForm": "Gymnasium",
+            "jurisdiction": "DE-NI",
+            "stage": "CrossStage",
+            "courseProfile": "GK"
+          }
+        },
+        {
+          "purposeIndex": 40,
+          "viewId": "de-by-gym-chemistry-lk-explicit-source-union-author",
+          "scope": {
+            "schoolForm": "Gymnasium",
+            "jurisdiction": "DE-BY",
+            "stage": "CrossStage",
+            "courseProfile": "LK"
+          }
+        },
+        {
+          "viewId": "de-hb-gym-chemistry-lk",
+          "scope": {
+            "schoolForm": "Gymnasium",
+            "jurisdiction": "DE-HB",
+            "stage": "CrossStage",
+            "courseProfile": "LK"
+          }
+        },
+        {
+          "viewId": "de-hb-gym-sekii-chemistry-lk",
+          "scope": {
+            "schoolForm": "Gymnasium",
+            "jurisdiction": "DE-HB",
+            "stage": "SekII",
+            "courseProfile": "LK"
+          }
+        }
+      ]
+    },
+    "applicability": {
+      "courseProfile": [
+        "GK",
+        "LK"
+      ],
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-NI"
+      ]
+    }
+  },
+  "unchangedOrdinaryGoals": [
+    {
+      "id": "ebfa2c18-0599-5282-bf7a-80c14d86331e",
+      "title": "Green-Chemistry-Metriken",
+      "titleEn": "Green Chemistry metrics",
+      "description": "Die lernende Person kann die Atomökonomie einer bilanzierten Synthese einer Waschmittelkomponente sowie E-Faktor und PMI für deren Herstellung oder eine klar abgegrenzte Formulierung berechnen und die unterschiedlichen Bilanzgrenzen erläutern.",
+      "descriptionEn": "The learner can calculate atom economy for a balanced synthesis of a detergent component and E-factor and PMI for its production or a clearly bounded formulation,and explain the different accounting boundaries.",
+      "weight": 1.1,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-chemistry",
+        "demandLevel": "AB3",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "BC_REAKTION",
+          "BC_ENERGIE"
+        ],
+        "phase": "Q4"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+          "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+          "sourceGoalId": "8cb05348-af8a-4fe2-987f-8641827c8074"
+        }
+      },
+      "type": "atomic",
+      "examples": [],
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "ebfa2c18-0599-5282-bf7a-80c14d86331e",
+          "title": "Visualisierung: Green-Chemistry-Metriken",
+          "url": "/assets/goal-visualizations/chemie/ebfa2c18-0599-5282-bf7a-80c14d86331e/ebfa2c18-0599-5282-bf7a-80c14d86331e.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Green-Chemistry-Metriken.",
+          "altText": "Didaktische Infografik zu drei Green-Chemistry-Kennzahlen. Links zeigt ein idealisiertes stöchiometrisches Synthesemodell mit 100 u Ausgangsstoffen, 80 u Zielprodukt und 20 u Nebenprodukt eine Atomökonomie von 80 %. Getrennte Prozessbeispiele zeigen den E-Faktor 200 kg Abfall / 10 kg Produkt = 20 und PMI (100 + 400 + 10) kg Input / 10 kg Produkt = 51. Atomökonomie bezieht sich auf die bilanzierte Synthese einer Komponente, nicht auf bloßes Mischen einer Formulierung. E-Faktor und PMI benötigen jeweils offengelegte Produkt- und Massenbilanzgrenzen; die gezeigten Zahlen sind keine gemeinsame Prozessbilanz.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "ac1bcf34-169c-5339-92ba-efe8c3022560",
+      "shortKey": "canonical_chemistry_q3_solubility_equilibria",
+      "title": "Löslichkeitsgleichgewichte interpretieren",
+      "titleEn": "Interpret solubility equilibria",
+      "description": "Die lernende Person kann Löslichkeitsgleichgewichte als dynamisches Gleichgewicht von Ionen zwischen ungelöstem Niederschlag und Lösung beschreiben, das Löslichkeitsprodukt als besondere Form der Gleichgewichtskonstante anwenden und KL-Werte zur Erklärung unterschiedlicher Löslichkeiten ionischer Stoffe interpretieren.",
+      "descriptionEn": "The learner can describe solubility equilibria as dynamic equilibria of ions between an undissolved precipitate and solution, apply the solubility product as a special equilibrium constant, and interpret solubility product values to explain differing solubilities of ionic compounds.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "BC_AUFBAU"
+        ],
+        "phase": "Q3",
+        "area": "Chemisches Gleichgewicht",
+        "topicCode": "CANONICAL.CHEMISTRY.Q3.SOLUBILITY_EQUILIBRIA"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HE",
+          "DE-NI"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+          "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+          "sourceGoalId": "he-chem-sekii-q3-1-b09-a01-3c18b0a8"
+        }
+      },
+      "contains": [],
+      "requires": [
+        "20f92ba0-f7f4-5407-bb96-07e30da9002f"
+      ],
+      "type": "atomic",
+      "examples": [],
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "ac1bcf34-169c-5339-92ba-efe8c3022560",
+          "title": "Visualisierung: Löslichkeitsgleichgewichte interpretieren",
+          "url": "/assets/goal-visualizations/chemie/ac1bcf34-169c-5339-92ba-efe8c3022560/ac1bcf34-169c-5339-92ba-efe8c3022560.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "description": "Visualisierung zum Lernziel: Löslichkeitsgleichgewichte interpretieren.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Löslichkeitsgleichgewichte interpretieren\". Die lernende Person kann Löslichkeitsgleichgewichte als dynamisches Gleichgewicht von Ionen zwischen ungelöstem Niederschlag und Lösung beschreiben, das Löslichkeitsprodukt als besondere Form der Gleichgewichtskonstante anwenden und KL-Werte zur Erklärung unterschiedlicher Löslichkeiten ionischer Stoffe interpretieren.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "accepted"
+        }
+      ]
+    }
+  ],
+  "unchangedSelectedWholeCards": [
+    {
+      "deckPath": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_chemistry_flashcards_energy_q4.de.json",
+      "card": {
+        "id": "chem_energy_q4_005",
+        "front": "Green-Chemistry-Metriken: Atomökonomie, E-Faktor, PMI?",
+        "back": "Atomökonomie: Anteil der Eduktmasse im Zielprodukt\n\nE-Faktor: Abfallmasse pro Produktmasse\n\nPMI: gesamte eingesetzte Masse pro Produktmasse",
+        "category": "Chemie Q4 - Energie und Nachhaltigkeit",
+        "tags": [
+          "GK",
+          "LK",
+          "goal:ebfa2c18-0599-5282-bf7a-80c14d86331e"
+        ]
+      }
+    },
+    {
+      "deckPath": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_chemistry_flashcards_equilibria_q3.de.json",
+      "card": {
+        "id": "chem_eq_q3_011",
+        "front": "Löslichkeitsprodukt: Grundidee?",
+        "back": "Für ein Salzgleichgewicht ist $K_L$ das Produkt der Ionenkonzentrationen in der gesättigten Lösung, jeweils mit stöchiometrischem Exponenten.",
+        "category": "Chemie Q3 - Gleichgewichte, Säure-Base und Elektrochemie",
+        "tags": [
+          "GK",
+          "LK",
+          "goal:ac1bcf34-169c-5339-92ba-efe8c3022560",
+          "select:chemistry-bw-lk-equilibria_q3"
+        ]
+      }
+    }
+  ],
+  "intent": [
+    "Keep all442 current curricularAtomic goals and all existing ordinary scientific decisions unchanged.",
+    "Make the existing narrow solubility-product card acquisition target explicit in the two HB-LK views where its taught origin is already a target.",
+    "Add one narrow memory unit selecting only the already reviewed Green-Chemistry card005. Do not import energy cards006/007 whose origin goals are absent from these HB-LK targets.",
+    "Do not assert that source operators require memorization; recall units support the already reviewed ordinary competencies only.",
+    "The Green-Chemistry card is compact recall. Actual balanced synthesis, accounting boundaries, water treatment and applicability of PMI=E+1 remain assessed in the ordinary full profile; no broad formula validity is inferred from the short card.",
+    "The solubility card is the reviewed concentration-product school model, not an unlimited thermodynamic activity statement."
+  ],
+  "exactChanges": {
+    "canonicalNewMemoryGoals": 1,
+    "canonicalExistingMetadataOnly": [
+      "be848fa1-8f52-5099-923f-79b776f07f2f"
+    ],
+    "canonicalParentContainsAppend": "442c31c5-c561-5c7a-90bb-2335d779175c",
+    "ordinaryGoalBodiesChanged": 0,
+    "cardsChanged": 0,
+    "viewTargetEntriesAddedPerView": [
+      "be848fa1-8f52-5099-923f-79b776f07f2f",
+      "3cae397b-7018-5f49-90a8-403c66b069cd"
+    ],
+    "oldMemoryRefsRemoved": 0
+  },
+  "requiredIndependentChecks": [
+    "whole ordinary/current M relevance",
+    "exact runtime single-card selector",
+    "two explicit acquisition targets not prerequisite-only",
+    "no new ordinary target or unsupported other card",
+    "all other view entries and ordinary goal bodies preserved"
+  ]
+}

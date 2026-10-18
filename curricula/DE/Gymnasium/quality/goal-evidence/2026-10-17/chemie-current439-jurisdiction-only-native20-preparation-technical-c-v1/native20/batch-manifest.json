@@ -1,0 +1,73 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "chemie-current439-jurisdiction-only-native20-technical-c-20261017-v1",
+  "subject": "chemie",
+  "subjectLabel": "Chemie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-jurisdiction-only-native20-preparation-technical-c-v1/native20.batch.config.json",
+  "configDigest": "sha256:efad995fac1f261dca3e3efe49f0d9a9a697d9cc51b3a1702152be9a0c4b0a10",
+  "goalIds": [
+    "413040cd-ba74-5227-948c-a778b0bd0f56",
+    "a25a19ed-aec3-59cc-ae28-31d98746cb9d",
+    "a96e9b3d-a02d-54f8-a3d3-318e0ea5180c",
+    "6413429b-53d8-5ad1-9af6-d0e562cbf0f5",
+    "6eba90b5-d4a6-5625-be61-e7f30f7eb964",
+    "73cbd4d8-5da1-5e54-85ce-c88e7b1613fe",
+    "14f1fe97-0585-5738-845e-9c49173d8afa",
+    "4955f745-b946-5d3d-82d6-5e52dc8549a3",
+    "f57d53b0-5bdf-5998-81f4-8bfb2fc5bde7",
+    "e0944fbb-0761-5f9c-afaa-3d4713ed1bed",
+    "0e3f849b-133d-57da-882c-0d67c3eb05b8",
+    "c61b2a7a-fb0f-5a76-92e9-771c789fa816",
+    "2d16528c-1424-5999-b3d2-af4593a147fc",
+    "54bc6ca0-b770-5f10-ac54-bcc1d04298f5",
+    "87d8cc68-fe82-5273-9e43-c18b566ecb6c",
+    "c8f51eac-c131-58a8-8d00-0fcbbe4bc18c",
+    "61da9d34-cb35-5c2c-ac8e-83f48b6a4fd3",
+    "64b03eff-a967-54a1-ace3-89cb7650a65c",
+    "f0ba30a8-84b3-5915-bf85-6c3a176064d2",
+    "981242bb-a729-5701-b02d-c2f7f489e5af"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 439,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current650-all-seven-current439-native-central-preparation-technical-a-v1/base.full439.current-all-seven-HB7f.private.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "baseBookDigest": "sha256:4b97c2a295643d56546e38c394caa60f622eeeb0c2ea997dace1e6da12808a54"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:06bfda89cc000cbed4c62fad0daa4da094701c642a431cd281703440745a0ee9",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:3d60ee67c5b3ff260ca2d212c28b265dbd37df23ad26e1ae30cbcde73c592e6a",
+    "reviewInputFingerprint": "sha256:e07cced1e3a769c98abff26d06e4152a77cf522f85d0a5c00792f6042155d620",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "chemie-current439-jurisdiction-only-native20-technical-c-20261017-v1-a",
+        "campaignDigest": "sha256:c842c57996bdf34686f76bf47f52ae3a51bfa875b6c16dcbb01b86ddc2dfadc2",
+        "roundId": "chemie-current439-jurisdiction-only-native20-technical-c-20261017-v1-first-pass-a",
+        "independenceGroupId": "chemie-current439-jurisdiction-only-native20-technical-c-20261017-v1-independent-a",
+        "batchId": "chemie-current439-jurisdiction-only-native20-technical-c-20261017-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:0bbc7aac2097df3ea0a16faa3cceb4b173a666a23fc75f845abc4b2270025caf"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "chemie-current439-jurisdiction-only-native20-technical-c-20261017-v1-b",
+        "campaignDigest": "sha256:83d40a23a1ec36631c96088623e99f50d60dc8e02d3eee064729e47da45cdfe9",
+        "roundId": "chemie-current439-jurisdiction-only-native20-technical-c-20261017-v1-first-pass-b",
+        "independenceGroupId": "chemie-current439-jurisdiction-only-native20-technical-c-20261017-v1-independent-b",
+        "batchId": "chemie-current439-jurisdiction-only-native20-technical-c-20261017-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:1daa3f6a4211e8a5f1310c17bcf389a806a8f7f20ee45e1aa357729e6ccde82b"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-001-v1-resolution-1837690e-cfb1-5b1c-96c8-0fb40d6d5d69",
+  "goal": {
+    "goalId": "1837690e-cfb1-5b1c-96c8-0fb40d6d5d69",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:f5dc96676c6951d7d1cef87060a5ce7f1aebb7bf77f2fd772c4b3840ff71499d",
+    "pageFingerprint": "sha256:323b902ed3c3b6c70ca3a560865cfb347a88a29dbb50ce781c3b21cd1c665d8c",
+    "goalReviewContextFingerprint": "sha256:a904ee4966c016e1247caa1351e2b220c19e605f3098ace97135376d111403ef",
+    "finalText": {
+      "titleDe": "Waschvorgänge beeinflussen",
+      "titleEn": "Influence washing processes",
+      "descriptionDe": "Die lernende Person kann den Einfluss von Temperatur, Wasserhärte und Tensidkonzentration auf die Waschwirkung erklären und dabei Dispergiervermögen, Micellenbildung und die Bildung schwer löslicher Kalkseifen berücksichtigen.",
+      "descriptionEn": "The learner can explain the influence of temperature, water hardness, and surfactant concentration on washing action, taking dispersing capacity, micelle formation, and the formation of poorly soluble calcium and magnesium soaps into account."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-001-v1-a",
+      "campaignDigest": "sha256:96c597e11ef28d55b630202e1c2e03a243872e2f50e9cf9cc7c0df7a79d9cd3d",
+      "roundId": "chemie-final-current-context-d-001-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-001-v1-independent-a",
+      "reviewInputFingerprint": "sha256:84cb9df1bd7fef7e2302044cdb80cba5ac86f4d3a52db0bc7c6a09292793cfa8",
+      "goalReviewContextFingerprint": "sha256:a904ee4966c016e1247caa1351e2b220c19e605f3098ace97135376d111403ef",
+      "batchId": "chemie-final-current-context-d-001-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch001-20261018",
+      "runManifestDigest": "sha256:b4b3f17dceb9e1e7c4c82361c9c800e5f7de932b46dcf704e3d6a847860b03be",
+      "resultsDigest": "sha256:c9861ef6d236ae81946747b3d1c7abde302f5f013b5c93ce5edad0870065fc31",
+      "recordId": "codex-reviewer-a-final163-batch001-20261018.010",
+      "recordDigest": "sha256:2bc72cc0665b1b1b8f466aff443b9561c767b9112dc93a0d2e4659db3668def3"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-001-v1-b",
+      "campaignDigest": "sha256:1b8713019a8e252039fa354999df05261e1c78eedb890a563b29e531dc70ec46",
+      "roundId": "chemie-final-current-context-d-001-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-001-v1-independent-b",
+      "reviewInputFingerprint": "sha256:84cb9df1bd7fef7e2302044cdb80cba5ac86f4d3a52db0bc7c6a09292793cfa8",
+      "goalReviewContextFingerprint": "sha256:a904ee4966c016e1247caa1351e2b220c19e605f3098ace97135376d111403ef",
+      "batchId": "chemie-final-current-context-d-001-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-001-20261018",
+      "runManifestDigest": "sha256:13eb6055a4aa8d4d04be4cfd1c0c77f4b206a289df96a67139c1efd68e08d32d",
+      "resultsDigest": "sha256:22da53163d50636a69ec31425cecc056999735ee0193be8470171a3f650414eb",
+      "recordId": "chemie-final163-native-b-001-20261018:1837690e-cfb1-5b1c-96c8-0fb40d6d5d69",
+      "recordDigest": "sha256:462d4f46c8e55d65b37f70ed7170702a11ae8948ff342a2cabbc18f310572ae0"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:706dc6e69548381d583e44f00cb7a2768b65125ce38e115ffeb99e090ece4f50"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-001-20261018-v1",
+    "manifestDigest": "sha256:2947637162d222247361434cafc2291ef0d74af62baa53f4b2c0b9ac2349ad89",
+    "manifestFingerprint": "sha256:240821b7f7c94c99aba57979178f196e85ea04ebc4d569c964de2f5230011117",
+    "decisionId": "chemie-final163-paired-D-only-001-20261018-v1-decision-009"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-001-20261018-v1-decision-009",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:22:46.792Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch001-20261018.010): Beide Sprachfassungen nennen dieselben drei Einflussgrößen und Prozesse; die englische Explikation der Kalkseifen ist korrekt. Das vollständige P unterscheidet Schaum, Dispersion und Reinigung und vermeidet die falsche universelle Regel heißer sei immer besser. B (chemie-final163-native-b-001-20261018:1837690e-cfb1-5b1c-96c8-0fb40d6d5d69): Die drei Einflussgrößen werden als Mechanismen desselben Waschvorgangs behandelt; kein künstlicher Split nötig. P macht Kontrollbedingungen und begrenzte Temperatur-/Konzentrationswirkungen explizit und vermeidet Schaum als Ersatzbeleg.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch001-20261018.010; chemie-final163-native-b-001-20261018:1837690e-cfb1-5b1c-96c8-0fb40d6d5d69). Their current English understanding evidence is retained: A: Washing action involves interfacial adsorption, dispersion and micelles; hardness ions remove soap anions through poorly soluble salts. B: Washing action depends on dispersion and available surfactant; hardness ions can precipitate soap, while temperature and dose act conditionally. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Waschwirkung entsteht durch Grenzflächenbelegung, Dispergierung und Micellen; Härteionen entziehen Seifenanionen durch schwer lösliche Salze.",
+      "essentialUnderstandingEn": "Washing action involves interfacial adsorption, dispersion and micelles; hardness ions remove soap anions through poorly soluble salts.",
+      "observablePerformanceDe": "Deutet kontrollierte Konzentrations-, Härte- und Temperaturdaten, bilanziert Calciumseifenbildung und erklärt beobachtete Reinigungsgrenzen.",
+      "observablePerformanceEn": "Interprets controlled concentration, hardness and temperature data, balances calcium-soap formation and explains observed cleaning limits.",
+      "transferExpectationDe": "Plant bei geänderten Temperatur- oder Härtebedingungen einen Vergleich mit konstanten übrigen Faktoren und prüft pauschale Dosierregeln.",
+      "transferExpectationEn": "Plans a comparison under changed temperature or hardness while holding other factors constant and tests blanket dosing rules."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-32739b157388df8b044ad63070ab05185bcf50b9f2004f60f7fe51b44b06fdd7",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:e3c883881d70f7e9a2689b422fb4ff85b9917081ffb8a3efb8bab5914bbe2903"
+}

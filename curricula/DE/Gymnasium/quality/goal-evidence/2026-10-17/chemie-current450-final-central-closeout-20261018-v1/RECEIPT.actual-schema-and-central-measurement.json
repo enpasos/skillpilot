@@ -1,0 +1,60 @@
+{
+  "role": "Actual frozen current450 schema and standard central status command; exit success alone is not a completeness claim",
+  "inputs": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "sha256": "d09c746ec9393078736dcf9aabac0a0b3a22dc8756a8356c8cedb2f6d6cf866c",
+      "bytes": 3398981
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-book-publication/chemie.semantic-kinds.json",
+      "sha256": "b86aab9b396196a0441cf604275a1024b4b71e807eb97f622caf88803b3c5c2e",
+      "bytes": 212019
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "sha256": "3218464f89dbf689a8e004a4cdb28d709265e4630971d31ebb48ab744742041a",
+      "bytes": 678763
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/chemie.qa.json",
+      "sha256": "d25fc723d7f2277a7edc7260e049472e8d7a7ac7120f1b8e4492b59981ffea84",
+      "bytes": 1385757
+    }
+  ],
+  "results": [
+    {
+      "name": "schema",
+      "command": [
+        "python3",
+        "scripts/validate_schemas.py"
+      ],
+      "exitCode": 0,
+      "seconds": 285.041,
+      "log": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current450-final-central-closeout-20261018-v1/schema.actual.txt",
+        "sha256": "94496e8801ef3e9cc39830e626f0aa74ad5f142f23f4d3744be4520d3fb6e479",
+        "bytes": 181
+      }
+    },
+    {
+      "name": "central-status",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "quality:curriculum-status"
+      ],
+      "exitCode": 0,
+      "seconds": 332.649,
+      "log": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current450-final-central-closeout-20261018-v1/central-status.actual.txt",
+        "sha256": "23577d0ce25caba0e5d5851d7220090788ad467cb64de32a651090f30e94d711",
+        "bytes": 263237
+      }
+    }
+  ],
+  "humanApproval": false,
+  "humanTrial": false
+}

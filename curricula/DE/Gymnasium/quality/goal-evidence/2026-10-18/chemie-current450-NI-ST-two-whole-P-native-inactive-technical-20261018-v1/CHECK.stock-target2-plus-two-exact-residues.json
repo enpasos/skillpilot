@@ -1,0 +1,85 @@
+{
+  "status": "PASS",
+  "scope": "Stock target2 native P schema/fingerprints and exact5 residual records only; no448-profile scientific review",
+  "actualStockFunctions": [
+    "buildPositiveGoalEvidenceCandidateRecords",
+    "fingerprintGoalForPositiveEvidence",
+    "fingerprintPositiveGoalEvidenceReviewInput",
+    "fingerprintPositiveGoalEvidenceProfile",
+    "reviewPositiveGoalEvidenceConfig"
+  ],
+  "nativeTwoProfiles": [
+    {
+      "goalId": "8ceb1749-fce0-584f-a2b8-0a309282329a",
+      "goalFingerprint": "sha256:fd439e6043e209dd0c527be4c70810e318d2a0a812e589473802b03a43339e3b",
+      "reviewInputFingerprint": "sha256:faf8ab137388016f3d246889db9e8e8a76973dca5206fa9f030efaa1b32fda63",
+      "profileFingerprint": "sha256:80b4e39a0f85ea32f30c4ca82beca5c1db45ae3532761fb0c61810587347fd09",
+      "profileExactlyAcceptedWholeBody": true,
+      "goalAndReviewInputFingerprintsRemainCurrentAndUnchanged": true,
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewRunIds": []
+    },
+    {
+      "goalId": "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+      "goalFingerprint": "sha256:92f51b1cba59a6815ef76e9e008073166aafab689c672f39c20e8791e7e6c17d",
+      "reviewInputFingerprint": "sha256:6c27ec5c1747b4580dcac1075660d5aaaec78d9e5c9c9ac199cdc61553ba8482",
+      "profileFingerprint": "sha256:4ac3ef03869dce798a459867c7b0d5f883dcca3eb9638ae674a009284827917b",
+      "profileExactlyAcceptedWholeBody": true,
+      "goalAndReviewInputFingerprintsRemainCurrentAndUnchanged": true,
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewRunIds": []
+    }
+  ],
+  "stockChecks": [
+    {
+      "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-NI-ST-two-whole-P-native-inactive-technical-20261018-v1/config/P2.informed-whole-profiles.inactive.config.json",
+      "scopeGoalIds": [
+        "8ceb1749-fce0-584f-a2b8-0a309282329a",
+        "e81a4aed-9695-533e-8eb7-7a0c714346ea"
+      ],
+      "counts": {
+        "approved": 0,
+        "needsHumanReview": 2,
+        "rejected": 0
+      },
+      "stockSchemaAndFingerprintSemanticErrors": []
+    },
+    {
+      "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-NI-ST-two-whole-P-native-inactive-technical-20261018-v1/residual/P106.scope-without-remediated-goal.config.json",
+      "scopeGoalIds": [
+        "11bea4c6-7b8a-47e0-8293-2eb1ce34cf66",
+        "e0e201bd-a1fd-5985-ab08-fd24c8655f3d"
+      ],
+      "counts": {
+        "approved": 0,
+        "needsHumanReview": 2,
+        "rejected": 0
+      },
+      "stockSchemaAndFingerprintSemanticErrors": []
+    },
+    {
+      "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-NI-ST-two-whole-P-native-inactive-technical-20261018-v1/residual/P044.scope-without-remediated-goal.config.json",
+      "scopeGoalIds": [
+        "31781d00-8f20-5041-bd7f-e261b27af162",
+        "38e30bb9-6145-5da0-80b8-36e3c45e15d0",
+        "ebaae4f5-cc13-5493-98b1-10e1abeb638f"
+      ],
+      "counts": {
+        "approved": 0,
+        "needsHumanReview": 3,
+        "rejected": 0
+      },
+      "stockSchemaAndFingerprintSemanticErrors": []
+    }
+  ],
+  "newDDecisions": 0,
+  "newScientificFirstDecisions": 0,
+  "normalWrites": 0,
+  "apCompilerGlobalSchemaBuildRuns": 0
+}

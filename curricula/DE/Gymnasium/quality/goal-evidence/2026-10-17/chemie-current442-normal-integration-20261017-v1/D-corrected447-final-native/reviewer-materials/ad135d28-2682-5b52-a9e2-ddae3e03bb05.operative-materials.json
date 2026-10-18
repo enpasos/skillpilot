@@ -1,0 +1,63 @@
+{
+  "goalId": "ad135d28-2682-5b52-a9e2-ddae3e03bb05",
+  "kind": "Complete operative material supplements; full current native profile is separately present in each stock review input",
+  "materialObjects": [
+    {
+      "materialId": "hb148-given-aldose-formal-family-tree",
+      "source": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-five-P-scope-operator-remediation-author-20261018-v1/AUTHOR.complete-DE-EN-material-routes.pending.json",
+        "sha256": "f317295316db907a8afd64d32456e0d62e20ff921ec46ad402a0bb0f4e8157e9",
+        "bytes": 61793
+      },
+      "jsonPointer": "/materials/1",
+      "sourceWholeObjectSHA256": "58f6b3b119a21dc6483bc1cddb23a10fd2789ce69532151ee263c34eb43bd60f",
+      "omittedTopLevelTransportFields": [
+        "M7Claim",
+        "active",
+        "actualLearnerPerformanceRecorded",
+        "humanApproval",
+        "status"
+      ],
+      "scientificContent": {
+        "materialId": "hb148-given-aldose-formal-family-tree",
+        "goalIds": [
+          "ad135d28-2682-5b52-a9e2-ddae3e03bb05"
+        ],
+        "sourceOrdinals": [
+          148
+        ],
+        "mandatoryTermRef": "/mandatoryTermSets/11/terms/6",
+        "officialBoundary": "Selected HB2.1 vocabulary/stereochemistry context. The full supplied-aldose tree and C2 comparison are an explicit narrow SkillPilot operationalisation, not an extra verbatim universal official command.",
+        "givens": {
+          "de": "Fischer-Konvention: CHO oben, CH2OH unten; R/L hier nur OH rechts/links, keine CIP-Deskriptoren. Vollständige Muster (oberstes bis unterstes chirales C): D-Glycerinaldehyd R; D-Erythrose RR; D-Threose LR; D-Ribose RRR; D-Arabinose LRR; D-Xylose RLR; D-Lyxose LLR; D-Allose RRRR; D-Glucose RLRR; D-Mannose LLRR; D-Galactose RLLR. Beim formalen Stammbaum wird oben ein neues Stereozentrum eingefügt; der untere Musterrest bleibt erhalten. Dies ist eine Strukturordnung, keine behauptete Biosynthesekette. Materialkarten: Glucose = ein C6-Zucker mit vielen OH; Stärke = lange alpha-glycosidisch verknüpfte Glucoseketten, in heißem Wasser quellfähig/viskos; Cellulose = beta-1,4-verknüpfte Glucoseketten, wasserunlösliche zugfeste Fasern. Modellbetriebe: A benötigt fermentierbaren Zucker als mikrobiellen Ausgangsstoff, B eine quellfähige Papierleimung, C eine Faser für Papier. Mikroorganismus A kann die bereitgestellte Glucose umsetzen; seine Cellulase-Ausstattung ist unbekannt.",
+          "en": "Fischer convention: CHO at top, CH2OH at bottom; R/L here mean OH right/left, not CIP descriptors. Complete patterns, highest to lowest chiral carbon: D-glyceraldehyde R; D-erythrose RR; D-threose LR; D-ribose RRR; D-arabinose LRR; D-xylose RLR; D-lyxose LLR; D-allose RRRR; D-glucose RLRR; D-mannose LLRR; D-galactose RLLR. Formal extension inserts a new stereocentre at the top and retains the lower pattern. This is a structural classification, not a claimed biosynthetic sequence. Cards: glucose is one C6 sugar with many OH groups; starch contains long alpha-glycosidically linked glucose chains, swelling/becoming viscous in hot water; cellulose contains beta-1,4 glucose chains forming water-insoluble strong fibres. Model factories: A needs fermentable microbial feedstock, B a swelling paper-sizing material, C a papermaking fibre. Organism A can use supplied glucose; its cellulase capacity is unknown."
+        },
+        "learnerTask": {
+          "de": "Nutze die vollständig gegebenen OH-Muster und die erklärte formale Erweiterungsregel, um einen beschrifteten Aldosenstammbaum zu konstruieren. Verbinde D-Glucose und D-Mannose mit dem gemeinsamen Pentosemuster. Nummeriere die betreffenden C-Atome, bestimme ihren einzigen Konfigurationsunterschied und ordne D/L anhand des untersten Stereozentrums zu. Erläutere, weshalb der formale Elternpfeil weder eine organismische Biosynthese noch eine Drehungsrichtung behauptet.",
+          "en": "Use the complete supplied OH patterns and formal-extension rule to construct a labelled aldose family tree. Link D-glucose and D-mannose to their common pentose pattern. Number the relevant carbons, identify their sole configurational difference and assign D/L from the lowest stereocentre. Explain why a formal parent arrow establishes neither organismic biosynthesis nor optical-rotation sign."
+        },
+        "modelSolution": {
+          "de": "Glucose RLRR und Mannose LLRR haben den gemeinsamen unteren Rest LRR, also formal Arabinose als Pentose-Elternmuster. Sie unterscheiden sich nur am neu eingefügten C2 und sind C2-Epimere, keine Enantiomere und kein alpha/beta-Anomerenpaar. Beide bleiben D, weil das unterste OH rechts steht. R/L bezeichnet hier nur rechts/links, nicht CIP. Der Baum ordnet Strukturen; er beschreibt keinen tatsächlichen Syntheseweg.",
+          "en": "Glucose RLRR and mannose LLRR share lower pattern LRR, formally arabinose as pentose parent. They differ only at newly inserted C2 and are C2 epimers, neither enantiomers nor an alpha/beta anomer pair. Both are D because their lowest OH is right. R/L here means right/left, not CIP. The tree organises structures, not an actual biosynthetic route."
+        },
+        "freshTransfer": {
+          "task": {
+            "de": "Ordne jetzt D-Galactose RLLR und D-Xylose RLR unabhängig ein. Widersprich „D bedeutet jedes OH rechts“ und „Stammbaum bedeutet Fotosynthesekette“. Kein neuer Ringschluss wird verlangt.",
+            "en": "Now independently place D-galactose RLLR and D-xylose RLR. Refute “D means every OH is right” and “the tree is a photosynthesis sequence”. No additional ring closure is required."
+          },
+          "expected": {
+            "de": "Galactose passt formal unter Lyxose LLR, Xylose unter Threose LR. In beiden entscheidet das unterste OH über D. Der obere neue Rest darf nicht mit dem erhaltenen unteren Muster verwechselt werden; keine Biosynthese- oder Drehvorzeichenfolgerung.",
+            "en": "Galactose formally branches from lyxose LLR and xylose from threose LR. Their lowest OH determines D. Distinguish the new upper centre from the retained lower pattern; no biosynthesis or optical-sign inference."
+          }
+        },
+        "rubric": {
+          "de": "Eigener beschrifteter Baum, richtige Mustererhaltung/C2-Beziehung, D/L-Grenze und eigenständige neue Galactose-/Xylose-Zuordnung. Keine Industrie-/Ring-/Polarimeterpflicht.",
+          "en": "Own labelled tree, correct retained pattern/C2 relationship, D/L limits and independent new galactose/xylose placement. No industry, ring-closure or polarimetry duty."
+        },
+        "ownMaterialLicense": "CC-BY-4.0"
+      }
+    }
+  ],
+  "noSupplementMeans": null,
+  "providedModelsAreNotActualLearnerExecution": true
+}

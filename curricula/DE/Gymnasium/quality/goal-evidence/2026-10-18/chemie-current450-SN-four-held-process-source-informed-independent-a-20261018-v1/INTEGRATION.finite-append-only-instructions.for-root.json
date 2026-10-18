@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "active": false,
+  "acceptedRelations": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SN-four-held-process-source-informed-independent-a-20261018-v1/ACCEPTED.seven-partial-source-contributions.inactive.for-root.json",
+    "sha256": "d76676a4ef4d71c63f793f9836ec7ef5647dedef93266a405f6c19df122c059a",
+    "bytes": 22547
+  },
+  "wholeCellAdditionCandidate": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SN-four-held-process-source-author-successor-20261018-v1/candidate/SN.six-complete-general-competence-cells.additions.INACTIVE.json",
+    "sha256": "3eb4aba63efe7c22bb2ec2c4cff44f6141fb4b6d9201430a2743765102fe745d",
+    "bytes": 29695
+  },
+  "orderedOperations": [
+    {
+      "order": 1,
+      "path": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_CHEMIE_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+      "operation": "Append exactly six absent whole sourceGoals and five selected-unit passages by ID. Preserve all177 old source objects/old passages and source bodies. Keep genuine general scope and unspecified courseLevel. Update only truthful current selected-inventory counts/provenance; historical177-cell M3 status does not approve the added whole units.",
+      "expectedBeforePin": {
+        "path": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_CHEMIE_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+        "sha256": "7ca68563a169313ab1e5a5f49fa6d2aa7b8634d12f0c0952a4835a0819478d62",
+        "bytes": 415074
+      },
+      "sourceGoalIds": [
+        "sn-chemistry-gymnasium-general-competence-methods",
+        "sn-chemistry-gymnasium-general-competence-information-techniques",
+        "sn-chemistry-gymnasium-general-competence-experiment-results-hypotheses",
+        "sn-chemistry-gymnasium-general-competence-chemical-argumentation",
+        "sn-chemistry-gymnasium-general-competence-criteria-assessment",
+        "sn-chemistry-gymnasium-general-competence-chemical-media-information"
+      ],
+      "passageIds": [
+        "sn-chemistry-gymnasium-general:p7-methods",
+        "sn-chemistry-gymnasium-general:p12-information-techniques",
+        "sn-chemistry-gymnasium-general:p13-experiment-results-hypotheses",
+        "sn-chemistry-gymnasium-general:p13-subject-goals",
+        "sn-chemistry-gymnasium-general:p14-chemical-media-information"
+      ]
+    },
+    {
+      "order": 2,
+      "paths": [
+        {
+          "path": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+          "sha256": "3e1de59bf675324de710e91c7d296ecef5867ddec7cc2505271ae146df7d408d",
+          "bytes": 372065
+        },
+        {
+          "path": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_chemistry_lower_secondary_to_canonical_chemistry.json",
+          "sha256": "0f7204fb6d0cb2f04319ed4b2b9515c7fd7ec0d996a139ec563582d6adcb2c6a",
+          "bytes": 232122
+        }
+      ],
+      "operation": "Append exactly seven absent (legacyGoalId,canonicalGoalId,partial) tuples to both actual lower-inventory aliases. In the lower review append exactly six source decisions carrying their union target IDs and the bounded independent accepted refs. Preserve all old mapping/decision objects, whole-source false and all remaining duties. No upper inventory/upper alias duplication."
+    },
+    {
+      "order": 3,
+      "operation": "Keep four whole current C/P, views, DAG, normal source bodies and all historical HOLD/evidence bytes exact. If any live whole-file pin changes through other additive integrations, compare all selected old objects and re-anchor the append CAS; do not overwrite with historical whole after-files."
+    }
+  ],
+  "finiteChecksSeparatelyFromFixtures": {
+    "sourceProfileCommand": "python curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SN-four-held-process-source-informed-independent-a-20261018-v1/tools/check-finite-current-SN-source-and-profile-bindings.py",
+    "currentPureProjectionCommand": "app/node_modules/.bin/tsx curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SN-four-held-process-source-informed-independent-a-20261018-v1/tools/check-only-four-current-SN-view-pairs.ts",
+    "scope": "Actual selected current data only; source checker expects pre-integration absence and is a pre-CAS checker. After integration verify exact six source units/seven tuples and retained prior objects against the pinned candidate; this is not a new source or whole M7 pass."
+  },
+  "preservedScope": "General/progressive school/subject objectives, no GK/LK final-standard or real-execution closure.",
+  "normalWritesPerformed": 0
+}

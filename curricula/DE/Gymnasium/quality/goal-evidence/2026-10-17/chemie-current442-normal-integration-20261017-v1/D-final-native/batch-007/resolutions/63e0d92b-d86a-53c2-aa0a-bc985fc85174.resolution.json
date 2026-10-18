@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-007-v1-resolution-63e0d92b-d86a-53c2-aa0a-bc985fc85174",
+  "goal": {
+    "goalId": "63e0d92b-d86a-53c2-aa0a-bc985fc85174",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:7b6861fe873b14332ded154963efd347e39e11569b4dfd128d4ab3b430ca6a04",
+    "pageFingerprint": "sha256:79cc35054a1e5d7ee920c6a826b3cd0ded5fdec7f8be296fa3042d84f58a78b5",
+    "goalReviewContextFingerprint": "sha256:4ed3fc5a03ab8e520fb26fb4e26d0de1efc38761b8ee94d4521402e7b9d67315",
+    "finalText": {
+      "titleDe": "Küpenfärbung erklären und durchführen",
+      "titleEn": "Explain and carry out vat dyeing",
+      "descriptionDe": "Die lernende Person kann das Prinzip der Küpenfärbung erklären, eine Küpenfärbung durchführen und diese gegebenenfalls mit einer weiteren Färbemethode vergleichen.",
+      "descriptionEn": "The learner can explain the principle of vat dyeing, carry out vat dyeing, and, if appropriate, compare it with another dyeing method."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-007-v1-a",
+      "campaignDigest": "sha256:03e23ca7a839411ee0694d3ffc4c5304359bdbdb4885b890ef7f8def67d5e5a0",
+      "roundId": "chemie-final-current-context-d-007-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-007-v1-independent-a",
+      "reviewInputFingerprint": "sha256:9786177231bba01a5178b748443b7e2ac24b65d395c6cfda891b47d1838d8fd4",
+      "goalReviewContextFingerprint": "sha256:4ed3fc5a03ab8e520fb26fb4e26d0de1efc38761b8ee94d4521402e7b9d67315",
+      "batchId": "chemie-final-current-context-d-007-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch007-20261018",
+      "runManifestDigest": "sha256:41b3803956cb0b8e3ceaa1b4c1224724037cd8f6fc9ff400cb30dc979ec172d0",
+      "resultsDigest": "sha256:2deca668c6059260417c15a3d4e706e9325f6ce3e8e0bef2d977983444354968",
+      "recordId": "codex-reviewer-a-final163-batch007-20261018.018",
+      "recordDigest": "sha256:9063a6990ccace88e7eab67e171e2c8fe35192ba79e8670d268f0c18f8c73b56"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-007-v1-b",
+      "campaignDigest": "sha256:f96e78c8b5b03376c090596c68434afdda0adfb82adef282dc1a1a949aed2746",
+      "roundId": "chemie-final-current-context-d-007-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-007-v1-independent-b",
+      "reviewInputFingerprint": "sha256:9786177231bba01a5178b748443b7e2ac24b65d395c6cfda891b47d1838d8fd4",
+      "goalReviewContextFingerprint": "sha256:4ed3fc5a03ab8e520fb26fb4e26d0de1efc38761b8ee94d4521402e7b9d67315",
+      "batchId": "chemie-final-current-context-d-007-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-007-20261018",
+      "runManifestDigest": "sha256:c21072a1baeec0fb475776827fd6bdcb51afcb70555317673d8fac140568d60f",
+      "resultsDigest": "sha256:f627bfdb86dcc4a0e7dec63f04ec892ed6ec7af463e3169bda439a10444338fd",
+      "recordId": "chemie-final163-native-b-007-20261018:63e0d92b-d86a-53c2-aa0a-bc985fc85174",
+      "recordDigest": "sha256:9b0c11f6230c77ce8bfb09c88bc73a8a88f7b4bdbc419b1707e0505566ba10e7"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:9d01c3a2eaf6ff3168f19750d5b1780c3bd726f4c76d033ac9016e0d3a5debbf"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-007-20261018-v1",
+    "manifestDigest": "sha256:a002d58ade8fb14ebb3f915bed25f48fcfa287b2641be1e7a466d8abd811c99e",
+    "manifestFingerprint": "sha256:12732999b92050cc52642e0c0e4f1bd967da4b1b66528e696859794dba344986",
+    "decisionId": "chemie-final163-paired-D-only-007-20261018-v1-decision-018"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-007-20261018-v1-decision-018",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:39:49.306Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch007-20261018.018): Der bilinguale Gesamttext enthält den praktischen Operator ausdrücklich und belässt den weiteren Methodenvergleich bedingt. Das vollständige P konkretisiert reale eigene Handlung und Protokoll statt erwarteter Farben; I/Leukodianion und anschließende Luftoxidation sind im stark alkalischen Modell plausibel bilanziert. Subjektive Farbstärke wird nicht als quantitative Aufnahme ausgegeben, und das prospektive Mikro-SOP-Material behauptet keine bereits erfolgte Durchführung. B (chemie-final163-native-b-007-20261018:63e0d92b-d86a-53c2-aa0a-bc985fc85174): Die Beschreibung benennt Erklärung und Durchführung ausdrücklich und hält einen weiteren Methodenvergleich bedingt. Das ganze P spezifiziert künftige Mikroversuchsabläufe und klare Beobachtungsanforderungen für beide Fälle; erwartete Farben, leere Logs und Autorenplanung gelten nicht als Durchführung. Eine tatsächlich freigegebene lokale SOP bleibt Ausführungsvoraussetzung. Der Redox-Vorläufer wird mit Löslichkeit und Faseraufnahme fachlich verknüpft.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch007-20261018.018; chemie-final163-native-b-007-20261018:63e0d92b-d86a-53c2-aa0a-bc985fc85174). Their current English understanding evidence is retained: A: Vat dyeing switches by reduction to a soluble leuco form and, after fibre uptake, by oxidation back to the poorly soluble dye. B: Vat dyeing couples reduction to soluble leuco form, fibre uptake and oxidation back to poorly soluble dye; the sequence is central to the dyeing principle. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Küpenfärbung wechselt durch Reduktion zur löslichen Leukoform und nach Faseraufnahme durch Oxidation zurück zum schwer löslichen Farbstoff.",
+      "essentialUnderstandingEn": "Vat dyeing switches by reduction to a soluble leuco form and, after fibre uptake, by oxidation back to the poorly soluble dye.",
+      "observablePerformanceDe": "Erklärt die alkalische I+2e−⇌L2−-Bilanz und führt den tatsächlich freigegebenen Färbeablauf unter Aufsicht mit eigenen Rohbeobachtungen zu Bad, Faser, Luftkontakt und Spülung aus.",
+      "observablePerformanceEn": "Explains the alkaline I+2e−⇌L2− balance and actually performs the released dyeing procedure under supervision with own raw observations of bath, fibre, air exposure and rinsing.",
+      "transferExpectationDe": "Begründet eine nichtreduzierte oder ungefärbte Kontrolle und vergleicht bei geeignetem neuen Direktfarbstoff Redox-/Löslichkeitswechsel mit dessen intermolekularer Faserbindung.",
+      "transferExpectationEn": "Justifies an unreduced or undyed control and compares redox/solubility changes with intermolecular fibre affinity for a suitable fresh direct dye."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-7bada8c8e0287bb5bf8e80a4ad56bf5e913c3e04fce76a94c8ef657cd4c69837",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:b469000c3cf0640d5d7b3c7ef9d4d9389a8c3123f30350a6ec1d77ea8d8a4cf1"
+}

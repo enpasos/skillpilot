@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-001-v1-resolution-1f354a60-be44-512b-8f8b-f67c8c456035",
+  "goal": {
+    "goalId": "1f354a60-be44-512b-8f8b-f67c8c456035",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:144352c350400f3b537d5a9f4c0bfc74dcb12ece511ce00e1360d6b298dab59b",
+    "pageFingerprint": "sha256:e23ffa2108175cdf4cfc7a6825b6c6c45aeb0a73f63c6679fcbdf15865dd9bd5",
+    "goalReviewContextFingerprint": "sha256:76dde219ebe1dc3a6aea7a767a669f2ad05d36b68b735a13f1ad4daeb5ea9f2e",
+    "finalText": {
+      "titleDe": "Chemische Sachverhalte fachlich diskutieren",
+      "titleEn": "Discuss chemical issues scientifically",
+      "descriptionDe": "Die lernende Person kann chemische Sachverhalte fachlich schlüssig erklären, begründet argumentieren, sich konstruktiv austauschen und den eigenen Standpunkt anhand fachlicher Argumente reflektieren oder korrigieren.",
+      "descriptionEn": "The learner can explain chemical issues coherently, argue with justification, exchange ideas constructively, and reflect on or correct their own standpoint using scientific arguments."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-001-v1-a",
+      "campaignDigest": "sha256:96c597e11ef28d55b630202e1c2e03a243872e2f50e9cf9cc7c0df7a79d9cd3d",
+      "roundId": "chemie-final-current-context-d-001-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-001-v1-independent-a",
+      "reviewInputFingerprint": "sha256:84cb9df1bd7fef7e2302044cdb80cba5ac86f4d3a52db0bc7c6a09292793cfa8",
+      "goalReviewContextFingerprint": "sha256:76dde219ebe1dc3a6aea7a767a669f2ad05d36b68b735a13f1ad4daeb5ea9f2e",
+      "batchId": "chemie-final-current-context-d-001-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch001-20261018",
+      "runManifestDigest": "sha256:b4b3f17dceb9e1e7c4c82361c9c800e5f7de932b46dcf704e3d6a847860b03be",
+      "resultsDigest": "sha256:c9861ef6d236ae81946747b3d1c7abde302f5f013b5c93ce5edad0870065fc31",
+      "recordId": "codex-reviewer-a-final163-batch001-20261018.013",
+      "recordDigest": "sha256:d0a86055764d25d76623efbc0d12ac46d266d06742e335fece7a9638694c95dc"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-001-v1-b",
+      "campaignDigest": "sha256:1b8713019a8e252039fa354999df05261e1c78eedb890a563b29e531dc70ec46",
+      "roundId": "chemie-final-current-context-d-001-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-001-v1-independent-b",
+      "reviewInputFingerprint": "sha256:84cb9df1bd7fef7e2302044cdb80cba5ac86f4d3a52db0bc7c6a09292793cfa8",
+      "goalReviewContextFingerprint": "sha256:76dde219ebe1dc3a6aea7a767a669f2ad05d36b68b735a13f1ad4daeb5ea9f2e",
+      "batchId": "chemie-final-current-context-d-001-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-001-20261018",
+      "runManifestDigest": "sha256:13eb6055a4aa8d4d04be4cfd1c0c77f4b206a289df96a67139c1efd68e08d32d",
+      "resultsDigest": "sha256:22da53163d50636a69ec31425cecc056999735ee0193be8470171a3f650414eb",
+      "recordId": "chemie-final163-native-b-001-20261018:1f354a60-be44-512b-8f8b-f67c8c456035",
+      "recordDigest": "sha256:5f9599ab0ca582e1784db7bcd0b1515dbc9eb20aa657e5a2cc4da25a7d68f4a2"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:706dc6e69548381d583e44f00cb7a2768b65125ce38e115ffeb99e090ece4f50"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-001-20261018-v1",
+    "manifestDigest": "sha256:2947637162d222247361434cafc2291ef0d74af62baa53f4b2c0b9ac2349ad89",
+    "manifestFingerprint": "sha256:240821b7f7c94c99aba57979178f196e85ea04ebc4d569c964de2f5230011117",
+    "decisionId": "chemie-final163-paired-D-only-001-20261018-v1-decision-012"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-001-20261018-v1-decision-012",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:22:46.792Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch001-20261018.013): Die vier Verben beschreiben hier den zusammenhängenden fachlichen Diskurs. Das gesamte P verlangt wirkliche Wechselbeiträge und eigene Reflexion; vorgefertigte Dialoge werden nicht als Lernendenleistung ausgegeben. Geschwindigkeit/Gleichgewicht und Temperaturkonfundierung sind korrekt getrennt. B (chemie-final163-native-b-001-20261018:1f354a60-be44-512b-8f8b-f67c8c456035): Erklären, Argumentieren und Standpunktreflexion sind hier beobachtbare Teile desselben fachlichen Austauschs. Das P verlangt tatsächliche Wechselbeiträge und kennzeichnet Musterreaktionen als Referenz, nicht als bereits erfolgten Dialog.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch001-20261018.013; chemie-final163-native-b-001-20261018:1f354a60-be44-512b-8f8b-f67c8c456035). Their current English understanding evidence is retained: A: Scientific argument connects theory, controlled findings and inference; constructive exchange requires actual responses to others' contributions. B: Scientific discussion connects data and model conditions with actual responses to counterarguments and examination of one's position. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Fachliches Argumentieren verbindet Theorie, kontrollierte Befunde und Schlussfolgerung; konstruktiver Austausch verlangt echte Reaktion auf andere Beiträge.",
+      "essentialUnderstandingEn": "Scientific argument connects theory, controlled findings and inference; constructive exchange requires actual responses to others' contributions.",
+      "observablePerformanceDe": "Führt einen tatsächlichen Dialog über Katalyse oder Leitfähigkeit, fragt nach Bedingungen und prüft ausdrücklich die eigene Anfangsaussage.",
+      "observablePerformanceEn": "Conducts an actual dialogue about catalysis or conductivity, asks about conditions and explicitly examines the initial own claim.",
+      "transferExpectationDe": "Reagiert auf eine neue fachliche Gegenbehauptung oder kontrollierte Messdaten und korrigiert oder begrenzt den eigenen Standpunkt begründet.",
+      "transferExpectationEn": "Responds to a new scientific counterclaim or controlled measurements and justifiably corrects or restricts the own standpoint."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-3ed8f8058eac7f4006abc8ae49e4a0d4f6a89ed4037b7edbe09225a46f66f4e4",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:d677ada374ad78360362c400ca9e2979cd7059d39b5794b1dc15b0246b44d47b"
+}

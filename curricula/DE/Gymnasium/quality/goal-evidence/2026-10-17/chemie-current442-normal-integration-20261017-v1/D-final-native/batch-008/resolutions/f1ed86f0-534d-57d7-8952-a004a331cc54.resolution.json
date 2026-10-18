@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-008-v1-resolution-f1ed86f0-534d-57d7-8952-a004a331cc54",
+  "goal": {
+    "goalId": "f1ed86f0-534d-57d7-8952-a004a331cc54",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:78542036d20cea40c63b1971734d951f673b10e8fcd0b954a560a26fa9926235",
+    "pageFingerprint": "sha256:4c06262fb0b1933a43250d5c165d7a185872de0c367e8c5bc9740ef5e5044c1d",
+    "goalReviewContextFingerprint": "sha256:70838c67a480f21dd2fffb4634d2d83f3dc8347ead156becdf35c6b7c9662041",
+    "finalText": {
+      "titleDe": "Lösungen berechnen und pH bestimmen",
+      "titleEn": "Calculate solutions and determine pH",
+      "descriptionDe": "Die lernende Person kann Stoffmengen, Konzentrationen und pH-Werte starker Säuren und Basen berechnen, saure oder basische Lösungen definierter Stoffmengenkonzentration herstellen und Messergebnisse plausibilisieren.",
+      "descriptionEn": "The learner can calculate amounts of substance, molar concentrations, and pH values for strong acids and bases, prepare acidic or alkaline solutions of a specified molar concentration, and check measurements for plausibility."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-008-v1-a",
+      "campaignDigest": "sha256:bfc1b7bc3538c4dd17f4f184f0a3c6191751a8124732d1299f1f3201d5b9fa22",
+      "roundId": "chemie-final-current-context-d-008-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-008-v1-independent-a",
+      "reviewInputFingerprint": "sha256:3ac18dc51676cde29ff443c24a5b4a66fe4284e778b917d2a635b9e71961d3c3",
+      "goalReviewContextFingerprint": "sha256:70838c67a480f21dd2fffb4634d2d83f3dc8347ead156becdf35c6b7c9662041",
+      "batchId": "chemie-final-current-context-d-008-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch008-20261018",
+      "runManifestDigest": "sha256:1c83d9e9f75802490a373fc32cd5155852662ec2adeb44332b0e4ad3794a53f2",
+      "resultsDigest": "sha256:717572e69fa651d74b4efe4307f0c0f1eb2190475b1f5e1e8a20cdd410f01fcc",
+      "recordId": "codex-reviewer-a-final163-batch008-20261018.016",
+      "recordDigest": "sha256:3b8f9e5fc0118e8223cbb4ffada72c17df2b12b0189a5a4c67f9c6af2d7f2635"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-008-v1-b",
+      "campaignDigest": "sha256:8a870c0b67e894644fc8a8bc5a6e566b1b80eb253611ea8e45a3aec8e4e7ce2d",
+      "roundId": "chemie-final-current-context-d-008-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-008-v1-independent-b",
+      "reviewInputFingerprint": "sha256:3ac18dc51676cde29ff443c24a5b4a66fe4284e778b917d2a635b9e71961d3c3",
+      "goalReviewContextFingerprint": "sha256:70838c67a480f21dd2fffb4634d2d83f3dc8347ead156becdf35c6b7c9662041",
+      "batchId": "chemie-final-current-context-d-008-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-008-20261018",
+      "runManifestDigest": "sha256:aae64cd2428db704ad4ac245dcca064a12b9d0dc413b71f7a83725b0f7ddfec2",
+      "resultsDigest": "sha256:89514977b458bdd7656b1bb59d40d99ab77b3c500d848c381a3f4502abbe5fdc",
+      "recordId": "chemie-final163-native-b-008-20261018:f1ed86f0-534d-57d7-8952-a004a331cc54",
+      "recordDigest": "sha256:24a1ceb5170f37774c50051e66bbe7286714abd2a166bdfca11645a517d2261f"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:75131dbe4e2143b9a067c805d573de1f211b44cd088aeee05809347756b969ad"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-008-20261018-v1",
+    "manifestDigest": "sha256:5d8be7c440ce4b012a72c9f373aceb76f40ccdfbc79a0e00151adb203a96abb4",
+    "manifestFingerprint": "sha256:6064281f64c256108d7f70c1739582deaed451dc4e86366a0df71edb5d14bd13",
+    "decisionId": "chemie-final163-paired-D-only-008-20261018-v1-decision-016"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-008-20261018-v1-decision-016",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:46:21.803Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch008-20261018.016): D beansprucht Berechnen, eigene Herstellung und Messplausibilisierung konsistent. Das ganze P enthält dafür eine positive eigene Herstellungs-/Messbedingung. 25,00 mL HCl-Stock, 4,631 mg Ca(OH)2, pH 10,699 beziehungsweise NaOH 10,398 sind korrekt. Die Extremverdünnung ergibt mit Wasserbeitrag etwa 6,978 statt 8; der bereitgestellte Prüfwert 3,02 beweist keinen bestimmten Fehler. Keine Übertragung auf schwaches NH3 wird erzwungen. B (chemie-final163-native-b-008-20261018:f1ed86f0-534d-57d7-8952-a004a331cc54): Das D bildet eine ganze Lösungsherstellungs-/pH-Kompetenz nach angewiesener Herstellung und grober Indikatorzuordnung. Das vollständige P und beide tatsächlich vollständig gelesenen Originalmaterialien konkretisieren persönliche beaufsichtigte Verdünnung, Endvolumen, Kalibrierung und eigene Messdokumentation. Die Ca(OH)2-Stöchiometrie und theoretische Extremverdünnung sind wirkliche Änderungen der chemischen Annahmen; die bereitgestellte quadratische Bilanzhilfe fordert keine zusätzliche selbständige Lösungsmethode. Fremde Sollwerte oder Messabweichungen werden nicht als eigene Praxis oder festgestellte Fehlerursache ausgegeben.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch008-20261018.016; chemie-final163-native-b-008-20261018:f1ed86f0-534d-57d7-8952-a004a331cc54). Their current English understanding evidence is retained: A: Defined concentration follows from amount and final solution volume; strong-acid/base pH requires dissociation stoichiometry and, at extreme dilution, water's contribution. B: Dilution conserves analytical amount while defined final volume determines concentration; strong acid/base stoichiometry and water contribution limit the pH approximation. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Definierte Konzentration folgt aus Stoffmenge und endgültigem Lösungsvolumen; starker Säure-/Basen-pH benötigt Dissoziationsstöchiometrie und bei extremer Verdünnung den Wasserbeitrag.",
+      "essentialUnderstandingEn": "Defined concentration follows from amount and final solution volume; strong-acid/base pH requires dissociation stoichiometry and, at extreme dilution, water's contribution.",
+      "observablePerformanceDe": "Berechnet Stockvolumen und Stoffmenge, stellt die freigegebene Lösung tatsächlich unter Aufsicht her, misst kalibriert und plausibilisiert eigene Rohwerte statt nur den Soll-pH anzugeben.",
+      "observablePerformanceEn": "Calculates stock volume and amount, personally prepares the released solution under supervision, measures with calibration and assesses own readings instead of only stating target pH.",
+      "transferExpectationDe": "Wechselt zu Ca(OH)2 mit [OH−]=2c und zu einem idealen 10−8-M-HCl-Fall mit gegebener Bilanzlösung; prüft Abweichungen ohne eine einzelne Fehlerursache als bewiesen auszugeben.",
+      "transferExpectationEn": "Transfers to Ca(OH)2 with [OH−]=2c and ideal 10−8-M HCl using a supplied balance solution, investigating deviations without declaring one cause proven."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-d19f6b69c068beb0f82caaabadbf14719635a96cc866383159cb33254d7ed066",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:a2da6b4bad0e8374f791577d1b3b20bcc265906fa9ff2ce2a9b4daa4466817cf"
+}

@@ -1,0 +1,83 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+  "schemaVersion": 2,
+  "reviewId": "chemie-final18-current-paired-reviewed-body-binding-technical-20261007-v1",
+  "goalFingerprintRuleVersion": "goal-evidence-v1",
+  "profileRuleVersion": "positive-understanding-evidence-v2",
+  "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+  "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+  "goalId": "7a05a1ce-45d3-571e-be51-afcd8dfd33ca",
+  "goalFingerprint": "sha256:22f27448ae888ff2e55d7dacc04acf128abcf0d70770bb2d36f57b947e13f6c2",
+  "reviewInputFingerprint": "sha256:e2988e491b277ec6583291c3cf8e68c4235062ef377d7975d75e7788b3d1f7b3",
+  "profileFingerprint": "sha256:939fa5076ec97d55b5a8bc9eeb2f9f5510281c0a3f8cd2e8e440bbea8db9efda",
+  "status": "needs_human_review",
+  "reviewAuthority": "ai_candidate",
+  "reviewedAt": "2026-10-17T21:23:41.999975+00:00",
+  "reviewer": "Codex B technical current-input serialization; underlying scientific authors and reviewers remain recorded in the P442 selection/provenance",
+  "reason": "Exact supplied whole profile body retained from paired sealed scientific reviews, with exact current native image-inclusive review input. Prior17: blind A17/B16, and corrected P580b v3 independent B route; no new seventeen-profile science review. Human false, E1/G1 AI candidate; no generation approval or strict gain.",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "reviewRunIds": [],
+  "dissent": [],
+  "profile": {
+    "archetype": "modeling",
+    "expectations": [
+      {
+        "id": "core-understanding",
+        "essentialUnderstandingDe": "Reaktionstypen werden über Teilchenänderung, Mechanismus und übertragene Einheit eingeordnet. Eine Summengleichung allein beschreibt keinen vollständigen Mechanismus; Elektronen-, Protonen- und Elektronenpaar-Donator/Akzeptor müssen auseinandergehalten werden. Umkehrbarkeit hängt von Bedingungen ab.",
+        "essentialUnderstandingEn": "Reaction types are classified by particle changes, mechanism and the transferred entity. An overall equation does not specify a complete mechanism; electron, proton and electron-pair donor/acceptor roles must be distinguished. Reversibility depends on conditions.",
+        "observablePerformanceDe": "A ist Protonenübertragung: H3O+ ist Protonendonator, NH3 Protonenakzeptor. B ist Redox: Zn gibt zwei Elektronen ab, Cu2+ nimmt sie auf. C ist nucleophile Substitution: OH− ist Elektronenpaar-Donator, das elektrophile C Akzeptor; Br− ist die Abgangsgruppe. Rückseitenangriff und gleichzeitige Bindungsänderungen kennzeichnen den angegebenen SN2-Mechanismus. Die gleiche Produktbilanz könnte ohne weitere Information den Mechanismus nicht eindeutig festlegen. Ein Elektronenpaar-Donator ist nicht automatisch ein Reduktionsmittel.",
+        "observablePerformanceEn": "A transfers a proton: H3O+ donates and NH3 accepts it. B is redox: Zn loses two electrons and Cu2+ gains them. C is nucleophilic substitution: OH− donates an electron pair, electrophilic C accepts it and Br− is the leaving group. Backside attack with simultaneous bond changes identifies the specified SN2 mechanism. The same product balance alone would not establish a unique mechanism. An electron-pair donor is not automatically a reducing agent."
+      },
+      {
+        "id": "fresh-transfer-and-limit",
+        "essentialUnderstandingDe": "Protolyse und Redox gegenüber einer gegebenen SN2-Schrittfolge und elektrophiler Addition; Mechanismus, Bindungsänderung und Reversibilität. Die Beobachtung begründet Reversibilität in E; für D wird keine unbelegte kinetische oder Gleichgewichtsbehauptung ergänzt.",
+        "essentialUnderstandingEn": "Proton transfer and redox versus a supplied SN2 sequence and electrophilic addition; mechanism, bonding changes and reversibility. The observation supports reversibility in E; no unsupported kinetic or equilibrium claim is added for D.",
+        "observablePerformanceDe": "D ist elektrophile Addition: die C=C-π-Bindung wird aufgelöst, H und Br werden addiert; ein Protonierungsschritt ist Teil eines weitergehenden Mechanismus. E ist reversible Protolyse; H3O+ kann CH3COO− wieder protonieren, die Beobachtung passt dazu. Das Gleichgewichtssymbol beschreibt den zulässigen Rückweg, ohne gleiche Mengen oder Geschwindigkeiten zu behaupten. Für D fehlen Bedingungen, um leichte Rückumsetzung zu behaupten. Mechanistische Einordnung berücksichtigt den ganzen Vorgang und nicht nur das Auftreten von H+.",
+        "observablePerformanceEn": "D is electrophilic addition: the C=C π bond is consumed and H and Br are added; protonation is one step in a broader mechanism. E is reversible proton transfer; H3O+ can reprotonate CH3COO−, consistent with the observation. The equilibrium arrow indicates a possible reverse route without asserting equal amounts or rates. Conditions are missing to claim ready reversal of D. Classification uses the whole process rather than the mere presence of H+."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "core-understanding",
+        "fresh-transfer-and-limit"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "specific-system-variation",
+        "textDe": "Protolyse und Redox gegenüber einer gegebenen SN2-Schrittfolge und elektrophiler Addition; Mechanismus, Bindungsänderung und Reversibilität.",
+        "textEn": "Proton transfer and redox versus a supplied SN2 sequence and electrophilic addition; mechanism, bonding changes and reversibility."
+      },
+      {
+        "id": "model-boundary",
+        "textDe": "Die Beobachtung begründet Reversibilität in E; für D wird keine unbelegte kinetische oder Gleichgewichtsbehauptung ergänzt.",
+        "textEn": "The observation supports reversibility in E; no unsupported kinetic or equilibrium claim is added for D."
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "chem-next20-7a05a1ce-case-1",
+        "taskDemandDe": "Drei schriftliche Modelle: A: NH3 + H3O+ → NH4+ + H2O. B: Zn + Cu2+ → Zn2+ + Cu. C: OH− + CH3Br → CH3OH + Br−; für C ist ein konzertierter Rückseitenangriff des freien O-Elektronenpaars auf C unter gleichzeitiger C−Br-Spaltung angegeben. Es werden keine Versuche verlangt. Ordne die Reaktionstypen anhand der übertragenen Einheit zu. Erläutere für C, warum „SN2“ durch die gegebene Schrittfolge und nicht bloß durch die Formel bewiesen wird.",
+        "taskDemandEn": "Three written models: A: NH3 + H3O+ → NH4+ + H2O. B: Zn + Cu2+ → Zn2+ + Cu. C: OH− + CH3Br → CH3OH + Br−; C is specified as concerted backside attack of an oxygen lone pair at C with simultaneous C−Br cleavage. No experiments are requested. Classify by the transferred entity. Explain why “SN2” in C is supported by the supplied step sequence rather than the equation alone.",
+        "expectedPerformanceDe": "A ist Protonenübertragung: H3O+ ist Protonendonator, NH3 Protonenakzeptor. B ist Redox: Zn gibt zwei Elektronen ab, Cu2+ nimmt sie auf. C ist nucleophile Substitution: OH− ist Elektronenpaar-Donator, das elektrophile C Akzeptor; Br− ist die Abgangsgruppe. Rückseitenangriff und gleichzeitige Bindungsänderungen kennzeichnen den angegebenen SN2-Mechanismus. Die gleiche Produktbilanz könnte ohne weitere Information den Mechanismus nicht eindeutig festlegen. Ein Elektronenpaar-Donator ist nicht automatisch ein Reduktionsmittel.",
+        "expectedPerformanceEn": "A transfers a proton: H3O+ donates and NH3 accepts it. B is redox: Zn loses two electrons and Cu2+ gains them. C is nucleophilic substitution: OH− donates an electron pair, electrophilic C accepts it and Br− is the leaving group. Backside attack with simultaneous bond changes identifies the specified SN2 mechanism. The same product balance alone would not establish a unique mechanism. An electron-pair donor is not automatically a reducing agent.",
+        "understandingFocusDe": "Ein Reaktionstyp und ein bestimmter Mechanismus sind verschiedene Präzisionsstufen.",
+        "understandingFocusEn": "A reaction type and a particular mechanism are different levels of detail."
+      },
+      {
+        "id": "chem-next20-7a05a1ce-case-2",
+        "taskDemandDe": "Frischer Modellvergleich: D: CH2=CH2 + HBr → CH3CH2Br; zuerst bindet ein π-Elektronenpaar ein Proton, danach bindet Br− an das gebildete elektrophile C. E: CH3COOH + H2O ⇌ CH3COO− + H3O+. Für E wird gezeigt, dass Zugabe einer kleinen passenden Menge H3O+ den Anteil CH3COO− senkt. Randbedingungen für eine Umkehr von D sind nicht angegeben. Erkläre den Additionstyp bei D und die Protonen-Umkehrbarkeit bei E. Prüfe die Aussagen „Jede Protonenbeteiligung bedeutet reine Protolyse“ und „Jede gezeichnete Reaktion läuft leicht rückwärts“.",
+        "taskDemandEn": "Fresh model comparison: D: CH2=CH2 + HBr → CH3CH2Br; a π-electron pair first binds a proton and Br− subsequently binds to the electrophilic carbon. E: CH3COOH + H2O ⇌ CH3COO− + H3O+. Adding a small suitable amount of H3O+ is shown to reduce CH3COO− in E. Conditions for reversing D are not supplied. Explain addition in D and reversible proton transfer in E. Evaluate “Any proton involvement makes a reaction pure acid-base chemistry” and “Every drawn reaction readily reverses.”",
+        "expectedPerformanceDe": "D ist elektrophile Addition: die C=C-π-Bindung wird aufgelöst, H und Br werden addiert; ein Protonierungsschritt ist Teil eines weitergehenden Mechanismus. E ist reversible Protolyse; H3O+ kann CH3COO− wieder protonieren, die Beobachtung passt dazu. Das Gleichgewichtssymbol beschreibt den zulässigen Rückweg, ohne gleiche Mengen oder Geschwindigkeiten zu behaupten. Für D fehlen Bedingungen, um leichte Rückumsetzung zu behaupten. Mechanistische Einordnung berücksichtigt den ganzen Vorgang und nicht nur das Auftreten von H+.",
+        "expectedPerformanceEn": "D is electrophilic addition: the C=C π bond is consumed and H and Br are added; protonation is one step in a broader mechanism. E is reversible proton transfer; H3O+ can reprotonate CH3COO−, consistent with the observation. The equilibrium arrow indicates a possible reverse route without asserting equal amounts or rates. Conditions are missing to claim ready reversal of D. Classification uses the whole process rather than the mere presence of H+.",
+        "understandingFocusDe": "Die Beobachtung begründet Reversibilität in E; für D wird keine unbelegte kinetische oder Gleichgewichtsbehauptung ergänzt.",
+        "understandingFocusEn": "The observation supports reversibility in E; no unsupported kinetic or equilibrium claim is added for D."
+      }
+    ]
+  }
+}

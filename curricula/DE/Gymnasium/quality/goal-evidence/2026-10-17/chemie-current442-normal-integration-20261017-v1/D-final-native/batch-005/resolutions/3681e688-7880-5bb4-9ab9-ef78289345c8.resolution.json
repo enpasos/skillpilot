@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-005-v1-resolution-3681e688-7880-5bb4-9ab9-ef78289345c8",
+  "goal": {
+    "goalId": "3681e688-7880-5bb4-9ab9-ef78289345c8",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:56f10e051562ab0853afaa2ad8e23beed467d9a5d34cbbdc9163ff481a81c720",
+    "pageFingerprint": "sha256:0596b7c7275a0cc1d3b069de1df876753e6fee75c3fe6bb9cf1356abcc259415",
+    "goalReviewContextFingerprint": "sha256:5f66ec7c876c52b768fd4984598f27101d49bd195d1d92b523b3599ee8ef4fdc",
+    "finalText": {
+      "titleDe": "Verdauungssäfte chemisch erklären",
+      "titleEn": "Explain digestive juices chemically",
+      "descriptionDe": "Die lernende Person kann die Bedeutung verschiedener Verdauungssäfte aus chemischer Sicht erklären und Bezüge zu pH-Wert, Löslichkeit und Stoffumwandlung herstellen.",
+      "descriptionEn": "The learner can explain the role of different digestive juices from a chemical perspective and relate them to pH, solubility, and substance transformation."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-005-v1-a",
+      "campaignDigest": "sha256:c8471cd797dec10abf7198c697339e7dc3a58537ed0f9852f8cf26345c1a666f",
+      "roundId": "chemie-final-current-context-d-005-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-005-v1-independent-a",
+      "reviewInputFingerprint": "sha256:ea93568bfdabdff3f714ec5d94b8dc59252520722e0aa10aa39a38e8541c8349",
+      "goalReviewContextFingerprint": "sha256:5f66ec7c876c52b768fd4984598f27101d49bd195d1d92b523b3599ee8ef4fdc",
+      "batchId": "chemie-final-current-context-d-005-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch005-20261018",
+      "runManifestDigest": "sha256:e2259ed1b412c3e3898b1487d972c903b35f39252a4a42f584bb855b91d2a437",
+      "resultsDigest": "sha256:054b020007e1d870143eca58ebb28ac20242207e4abfe68fc54ca6d6352a547c",
+      "recordId": "codex-reviewer-a-final163-batch005-20261018.007",
+      "recordDigest": "sha256:714a385338c2a81dd9c836dfa4c6b41637a5d62993769fd2cc83bf79cc0b1895"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-005-v1-b",
+      "campaignDigest": "sha256:48da8784d2bf2a022d5106050deb7e838bedbbf7dc15498f5e8f7fd019de0920",
+      "roundId": "chemie-final-current-context-d-005-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-005-v1-independent-b",
+      "reviewInputFingerprint": "sha256:ea93568bfdabdff3f714ec5d94b8dc59252520722e0aa10aa39a38e8541c8349",
+      "goalReviewContextFingerprint": "sha256:5f66ec7c876c52b768fd4984598f27101d49bd195d1d92b523b3599ee8ef4fdc",
+      "batchId": "chemie-final-current-context-d-005-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-005-20261018",
+      "runManifestDigest": "sha256:f156ef3bbef741b54e4c6db6d00df3cf1d510ad9b05729f1ec91bff119669db0",
+      "resultsDigest": "sha256:cdef531d33939f213e22d20615076c31b4ce9a1347b09abc4ccd1a69e5fe8995",
+      "recordId": "chemie-final163-native-b-005-20261018:3681e688-7880-5bb4-9ab9-ef78289345c8",
+      "recordDigest": "sha256:ab34d6e2b13021c8408fc33d39e7bdeeeb3ed6fa45dde29a50e38583452a78d1"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:766e419b6962da8bae4b84dd677a6b7df18782647f13f0903d77a8bff87bdb82"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-005-20261018-v1",
+    "manifestDigest": "sha256:a41a2bc6b482499a6ca79542f7bbf5db10ee5ee2b8a366942cad9362acfb6f26",
+    "manifestFingerprint": "sha256:c531460d36cff13dc7321c382660c17c38c5ef6449bf726e255ffa0bb0e06d93",
+    "decisionId": "chemie-final163-paired-D-only-005-20261018-v1-decision-007"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-005-20261018-v1-decision-007",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:31:16.405Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch005-20261018.007): Die bilingualen Fassungen nennen pH, Löslichkeit und Stoffumwandlung. Das ganze P stellt Galle nicht als Ester-spaltendes Enzym dar und erhält enzymabhängige Bedingungen; individuelle Hilfsmittelbewertung bleibt Nachfolger. B (chemie-final163-native-b-005-20261018:3681e688-7880-5bb4-9ab9-ef78289345c8): Der Text verlangt chemische Rollen und keine individuelle medizinische Beratung. P unterscheidet Gallewirkung von Esterhydrolyse und Enzymbedingungen von allgemeiner Austauschbarkeit der Säfte; der nächste Resorptions-/Hilfsmittelbereich wird nicht vorweggenommen.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch005-20261018.007; chemie-final163-native-b-005-20261018:3681e688-7880-5bb4-9ab9-ef78289345c8). Their current English understanding evidence is retained: A: Digestive fluids alter pH and substance accessibility; emulsification enlarges interfaces and is not enzymatic hydrolysis. B: Digestive fluids create different pH and interfacial conditions; emulsification, protonation and enzymatic hydrolysis differ. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Verdauungssäfte verändern pH und Stoffzugänglichkeit; Emulgierung vergrößert Grenzflächen und ist keine enzymatische Hydrolyse.",
+      "essentialUnderstandingEn": "Digestive fluids alter pH and substance accessibility; emulsification enlarges interfaces and is not enzymatic hydrolysis.",
+      "observablePerformanceDe": "Erklärt Magensäure-/Pepsinbedingungen und Gallenwirkung am Fett und unterscheidet chemische Umwandlung von Dispersion.",
+      "observablePerformanceEn": "Explains stomach-acid/pepsin conditions and bile action on fat and distinguishes transformation from dispersion.",
+      "transferExpectationDe": "Begründet bei einem pH-empfindlichen Folgeenzym die Rolle alkalischer Pufferung statt Verdauungssäfte als austauschbar zu behandeln.",
+      "transferExpectationEn": "Explains alkaline buffering for a pH-sensitive downstream enzyme rather than treating digestive fluids as interchangeable."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-b71aee5d1313184a37e719c6b55a69c92515c31df3fd79dd0bb648eff1332fed",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:ca3ea4091b8a54e4facdda858720b81fe949f27636e9710c339a0bfa38f78126"
+}

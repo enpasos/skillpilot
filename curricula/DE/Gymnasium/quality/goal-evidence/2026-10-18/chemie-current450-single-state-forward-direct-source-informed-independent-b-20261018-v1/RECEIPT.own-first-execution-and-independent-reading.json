@@ -1,0 +1,63 @@
+{
+  "artifactRole": "OWN_FIRST_REVIEW_EXECUTION_AND_INDEPENDENCE_RECEIPT",
+  "reviewerId": "chemie450-single53-informed-independent-b",
+  "reviewMode": "informed_independent_final_sealed_author_input_first_pass",
+  "createdAtUTC": "2026-10-18T02:22:20.645802+00:00",
+  "finalSealedAuthorInputActuallyRead": true,
+  "otherCurrent53PeerResultsReadBeforeOwnSeal": false,
+  "informed": true,
+  "blindClaim": false,
+  "provider": "OpenAI",
+  "tool": "Codex; functions.exec with exec_command, view_image, web__run",
+  "modelFamily": "GPT-6",
+  "exactModelRevision": null,
+  "fullCAndOperativeDEENPRead": 53,
+  "wholeSelectedSourceObjectLocationsRead": 53,
+  "sourceCellFileContributions": 73,
+  "pairsActuallyJudged": 69,
+  "primaryPhysicalPagesActuallyRead": 72,
+  "actualViewImageCallsForOriginalPrimaryPages": 6,
+  "wholeAdditionalMaterialsRead": {
+    "BWpracticalDEENcases": 6,
+    "F03DEENcases": 2
+  },
+  "commandsActuallyExecuted": [
+    "python3 raw JSON selective full-object reads in bounded batches; reread all truncated portions explicitly",
+    "pdftotext -f PAGE -l PAGE -layout original PDF scratch text for the finite 72-page roster",
+    "pdftoppm -f PAGE -l PAGE -singlefile -scale-to 1500 -png original PDF scratch render (six actual primary pages)",
+    "tools.view_image on all six rendered original primary pages",
+    "web__run actual official BY C12 elevated LB5 and C10 branch sections; corrected ch-ntg after failed ntg URL",
+    "python3 tmp/chemie450-single53-independent-b/write-own-first.py"
+  ],
+  "actualExecutedWriter": {
+    "path": "tmp/chemie450-single53-independent-b/write-own-first.py",
+    "sha256": "78be8fd76f9142561e67a4f9fe68cc7e4f8e9334f4b6c550b2e1d9a9ea1860c9",
+    "bytes": 42992
+  },
+  "committableByteExactWriterCopy": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-single-state-forward-direct-source-informed-independent-b-20261018-v1/tools/write-own-first.py",
+    "sha256": "78be8fd76f9142561e67a4f9fe68cc7e4f8e9334f4b6c550b2e1d9a9ea1860c9",
+    "bytes": 42992
+  },
+  "finiteValidation": "Own finite checks: exact author seal payload pins, 53 current whole goal/profile pairs, 53 selected whole source locations, 37 current normal before-files, 74 before decisions, 183 partial mapping additions, 0 removals, 4 explicit rationale-text holds. Own output JSON parsed and counts asserted; no stock global compiler or build.",
+  "outputReview": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-single-state-forward-direct-source-informed-independent-b-20261018-v1/REVIEW.fifty-three-rows-sixty-nine-pairs.FIRST.informed-independent-b.json",
+    "sha256": "48223d19c4111fa225b15e10c1b374d13a366dfc7d354c756a5f83e8f669a2de",
+    "bytes": 309939
+  },
+  "finiteCheck": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-single-state-forward-direct-source-informed-independent-b-20261018-v1/CHECK.finite-current-inputs-and-thirty-seven-file-CAS.json",
+    "sha256": "8fbe5be883a813734485a2d58bf83aa25c1fd81fe8065e10e19a7f9608df4b33",
+    "bytes": 110090
+  },
+  "actualReading": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-single-state-forward-direct-source-informed-independent-b-20261018-v1/READ.actual-whole-inputs-and-primary-pages.json",
+    "sha256": "27b65a417ca09d369515b46bc824109e86ba1a53a3ad15a83e532335267c2c6b",
+    "bytes": 30803
+  },
+  "normalWrites": 0,
+  "compilerAPBuildRuns": 0,
+  "newNativeDPAMVVotes": 0,
+  "observedLearnerExecution": false,
+  "humanApproval": false
+}

@@ -1,0 +1,168 @@
+{
+  "role": "ACTUAL_STANDARD_CURRENT_CENTRAL_RUN_AFTER_FINAL_SOURCE_VIEW_P_AND_ATLAS_FREEZE",
+  "atUTC": "2026-10-18T04:16:24.142346+00:00",
+  "runs": [
+    {
+      "gate": "standard-current-central-quality",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "quality:curriculum-status"
+      ],
+      "startedAtUTC": "2026-10-18T04:10:11.592666+00:00",
+      "finishedAtUTC": "2026-10-18T04:16:23.640822+00:00",
+      "seconds": 372.04816351000045,
+      "exitCode": 0,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-source-complete-central-closeout-technical-20261018-v1/standard-current-central-quality.stdout.txt",
+        "sha256": "a33e76dc2cda30f9a44f3b90146902523ebcc0d023836d8b9b31fddf8a657e4d",
+        "bytes": 263237
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-source-complete-central-closeout-technical-20261018-v1/standard-current-central-quality.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "gate": "protected-maturity-floors",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:curriculum-maturity-floors"
+      ],
+      "startedAtUTC": "2026-10-18T04:16:23.642060+00:00",
+      "finishedAtUTC": "2026-10-18T04:16:24.103122+00:00",
+      "seconds": 0.46107383399794344,
+      "exitCode": 1,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-source-complete-central-closeout-technical-20261018-v1/protected-maturity-floors.stdout.txt",
+        "sha256": "1dbaeab210b2355bac0b945f255ecf91802084d61edba6e60e9e9ec47fddfd62",
+        "bytes": 101
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-source-complete-central-closeout-technical-20261018-v1/protected-maturity-floors.stderr.txt",
+        "sha256": "a0968711b546f2fbe5f8af668573e26a2cfaac0ed1b9592b1fe12a8f896874ce",
+        "bytes": 8879
+      }
+    }
+  ],
+  "canonicalBeforeAfterExact": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "sha256": "d09c746ec9393078736dcf9aabac0a0b3a22dc8756a8356c8cedb2f6d6cf866c",
+    "bytes": 3398981
+  },
+  "centralConfigBeforeAfterExact": {
+    "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+    "sha256": "6ee503fa9cb4d6b0ff9de9e864d830d04f6a7f2a26018b6729a65a9c8a6286e5",
+    "bytes": 679807
+  },
+  "status": {
+    "path": "docs/qa-ci/status/curriculum-quality-status.json",
+    "sha256": "78131fe7e002a053c2a774f8f512c16dfa82d80319f19bbdf4fd3311086bb44c",
+    "bytes": 2801446
+  },
+  "statusGeneratedAt": "2026-10-18T04:16:23.354Z",
+  "chemistry": {
+    "maturity": "M2",
+    "selectedRules": [
+      {
+        "id": "CQR-003",
+        "status": "pass",
+        "summary": "All 16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.",
+        "metrics": {
+          "totalJurisdictions": 16,
+          "coveredJurisdictions": 16,
+          "sourceBackedJurisdictions": 16,
+          "sourceCompleteJurisdictions": 16,
+          "fullCoverageJurisdictions": 16,
+          "uncoveredJurisdictions": 0,
+          "incompleteJurisdictions": 0,
+          "unsupportedAssignmentJurisdictions": 0,
+          "sourceUnmappedJurisdictions": 0,
+          "unsupportedAssignedAtomicGoals": 0,
+          "unmappedSourceAtomicGoals": 0,
+          "sourceAtomicGoals": 6134,
+          "sourceMappedToViewAtomicGoals": 6134,
+          "sourceOriginalGoals": 6134,
+          "sourceFullyCoveredOriginalGoals": 6134,
+          "sourcePartiallyCoveredOriginalGoals": 0,
+          "sourceUncoveredOriginalGoals": 0,
+          "surrogateBackedAtomicGoals": 31,
+          "partialSourceLinkedAtomicGoals": 0,
+          "warningedJurisdictions": 0,
+          "cleanJurisdictions": 16,
+          "partialJurisdictions": 0,
+          "errorJurisdictions": 0,
+          "minSourceBackedAtomicGoals": 144,
+          "maxVisibleAtomicGoals": 349,
+          "maxSourceBackedAtomicGoals": 349,
+          "totalAtomicGoals": 379
+        }
+      },
+      {
+        "id": "CQR-004",
+        "status": "pass",
+        "summary": "Course-level mapping is clean for 1881 upper-secondary source-to-canonical mapping edge(s), including 32 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+        "metrics": {
+          "configuredMappingFiles": 50,
+          "sourceGoals": 4287,
+          "sourceGoalsWithCourseLevel": 4287,
+          "gkLkSourceGoals": 2385,
+          "lkSourceGoals": 1409,
+          "unspecifiedSourceGoals": 406,
+          "checkedMappingEdges": 1881,
+          "defaultedUnspecifiedMappingEdges": 172,
+          "reviewedCourseLevelExceptions": 32,
+          "mismatches": 0,
+          "missingSourceGoals": 0,
+          "missingTargetGoals": 0,
+          "unmappedCourseLevelSourceGoals": 0
+        }
+      },
+      {
+        "id": "CQR-303",
+        "status": "pass",
+        "summary": "Deep curriculum QA is complete for all 450 current curricularAtomic goals.",
+        "metrics": {
+          "expectedGoals": 450,
+          "remaining": 0,
+          "strictComplete": 450,
+          "currentDescriptionResolutions": 450,
+          "currentPositiveEvidenceProfiles": 450,
+          "currentSemanticAtomicityDecisions": 450,
+          "currentMemoryReviewDecisions": 450,
+          "currentVisualizationQaRecords": 450,
+          "deferredVisualizations": 0,
+          "requiredChecksPassed": 6,
+          "requiredChecksTotal": 6,
+          "blockingIssues": 0
+        }
+      },
+      {
+        "id": "CQR-501",
+        "status": "pass",
+        "summary": "87 accepted applicability warning(s) are current and no active applicability warning debt is visible.",
+        "metrics": {
+          "activeWarnings": 0,
+          "rawActiveWarnings": 0,
+          "diagnosticPartialOnlyWarnings": 2668,
+          "acceptedWarnings": 87,
+          "obsoleteAcceptedWarnings": 0
+        },
+        "details": [
+          "non-blocking partial-only applicability diagnostics APV-202: 2668",
+          "diagnostic finding type APV-202: 2668",
+          "accepted current warning type APV-201: 87"
+        ]
+      }
+    ]
+  },
+  "wholeM7Measured": false,
+  "GitHubCIPass": false,
+  "humanApproval": false
+}

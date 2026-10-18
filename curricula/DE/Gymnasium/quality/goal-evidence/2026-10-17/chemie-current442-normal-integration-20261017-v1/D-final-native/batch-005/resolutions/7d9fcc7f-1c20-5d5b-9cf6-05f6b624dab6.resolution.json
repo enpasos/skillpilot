@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-005-v1-resolution-7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6",
+  "goal": {
+    "goalId": "7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:afe23ba7646722dc98db2ac6ba1182b7416971532c2e37c3ed7965f84fb26fca",
+    "pageFingerprint": "sha256:09524543ef76e25a6519f4ca4139f88dfa359d3b40c7d268e3342e7d8996b6e2",
+    "goalReviewContextFingerprint": "sha256:6ca21bdd4dca6a91dd842d592dbc662e3f62309573dc66479ef9e1356ecebc4b",
+    "finalText": {
+      "titleDe": "Chemische Daten auswerten und auf Hypothesen beziehen",
+      "titleEn": "Evaluate chemical data and relate them to hypotheses",
+      "descriptionDe": "Die lernende Person kann erhobene oder recherchierte chemische Daten in geeigneten Tabellen oder Diagrammen auswerten, erkennbare Trends und Beziehungen erläutern und begründen, inwiefern die Daten die Ausgangshypothese stützen oder ihr widersprechen.",
+      "descriptionEn": "The learner can evaluate experimental or researched chemical data in suitable tables or diagrams, explain observable trends and relationships, and justify how the data support or contradict the initial hypothesis."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-005-v1-a",
+      "campaignDigest": "sha256:c8471cd797dec10abf7198c697339e7dc3a58537ed0f9852f8cf26345c1a666f",
+      "roundId": "chemie-final-current-context-d-005-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-005-v1-independent-a",
+      "reviewInputFingerprint": "sha256:ea93568bfdabdff3f714ec5d94b8dc59252520722e0aa10aa39a38e8541c8349",
+      "goalReviewContextFingerprint": "sha256:6ca21bdd4dca6a91dd842d592dbc662e3f62309573dc66479ef9e1356ecebc4b",
+      "batchId": "chemie-final-current-context-d-005-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch005-20261018",
+      "runManifestDigest": "sha256:e2259ed1b412c3e3898b1487d972c903b35f39252a4a42f584bb855b91d2a437",
+      "resultsDigest": "sha256:054b020007e1d870143eca58ebb28ac20242207e4abfe68fc54ca6d6352a547c",
+      "recordId": "codex-reviewer-a-final163-batch005-20261018.012",
+      "recordDigest": "sha256:cdc963f5df2998e0565db4b8ba86507ffb97f96938db744ecadfb0a659299432"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-005-v1-b",
+      "campaignDigest": "sha256:48da8784d2bf2a022d5106050deb7e838bedbbf7dc15498f5e8f7fd019de0920",
+      "roundId": "chemie-final-current-context-d-005-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-005-v1-independent-b",
+      "reviewInputFingerprint": "sha256:ea93568bfdabdff3f714ec5d94b8dc59252520722e0aa10aa39a38e8541c8349",
+      "goalReviewContextFingerprint": "sha256:6ca21bdd4dca6a91dd842d592dbc662e3f62309573dc66479ef9e1356ecebc4b",
+      "batchId": "chemie-final-current-context-d-005-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-005-20261018",
+      "runManifestDigest": "sha256:f156ef3bbef741b54e4c6db6d00df3cf1d510ad9b05729f1ec91bff119669db0",
+      "resultsDigest": "sha256:cdef531d33939f213e22d20615076c31b4ce9a1347b09abc4ccd1a69e5fe8995",
+      "recordId": "chemie-final163-native-b-005-20261018:7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6",
+      "recordDigest": "sha256:acc00dccc2cfed6071df0740be83e7a6ceea659b0f63db2a28efb75520e1527f"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:766e419b6962da8bae4b84dd677a6b7df18782647f13f0903d77a8bff87bdb82"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-005-20261018-v1",
+    "manifestDigest": "sha256:a41a2bc6b482499a6ca79542f7bbf5db10ee5ee2b8a366942cad9362acfb6f26",
+    "manifestFingerprint": "sha256:c531460d36cff13dc7321c382660c17c38c5ef6449bf726e255ffa0bb0e06d93",
+    "decisionId": "chemie-final163-paired-D-only-005-20261018-v1-decision-012"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-005-20261018-v1-decision-012",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:31:16.405Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch005-20261018.012): Der bilinguale Text verbindet Auswertung mit der Ausgangshypothese. Das ganze P unterscheidet Geschwindigkeit/Löslichkeit, fordert einen eigenen Graphen im HB-Fall und vermeidet schönes Glätten oder erfundene Temperaturkorrektur. B (chemie-final163-native-b-005-20261018:7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6): Das P passt zur altersgerechten Auswertung und enthält einen sinnvollen neuen Streuungs-/Temperaturfall. Eigene Hypothesenformulierung ist keine zusätzliche universelle Pflicht dieser Auswertung; HB-Diagrammlesen/-erstellen ist auf die benannte Route begrenzt.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch005-20261018.012; chemie-final163-native-b-005-20261018:7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6). Their current English understanding evidence is retained: A: Trends support hypotheses under controlled conditions; means must not hide raw scatter or alternative causes. B: Trends support hypotheses only under matching conditions; mean, spread and alternative influences limit inference. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Trends stützen Hypothesen unter kontrollierten Bedingungen; Mittelwerte dürfen Rohstreuung und alternative Ursachen nicht verdecken.",
+      "essentialUnderstandingEn": "Trends support hypotheses under controlled conditions; means must not hide raw scatter or alternative causes.",
+      "observablePerformanceDe": "Erstellt beschriftete Tabelle/Diagramm und erklärt Temperatur-Zeit- oder Konzentrations-Leitfähigkeitstrend fachlich.",
+      "observablePerformanceEn": "Creates a labelled table/graph and explains a temperature-time or concentration-conductivity trend scientifically.",
+      "transferExpectationDe": "Bewertet neue streuende Wiederholungen oder eine wärmere Einzelprobe, bewahrt alle Rohwerte und begrenzt die Hypothesenaussage.",
+      "transferExpectationEn": "Assesses fresh scattered repeats or a warmer individual sample, preserves all raw values and limits the hypothesis claim."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-e8653e22f1d3bb91cb2a069593a6e221c83b4ea022df47c6c627a8b5d95c48a4",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:924232b608a868358d58808fc01d34791ea0b3bc1661154db373a28e2b9f38c3"
+}

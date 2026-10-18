@@ -53,6 +53,10 @@ Use this page by role: start with the overview documents, then jump to a review 
 
 ## Chemie/Biologie M7: datierte Arbeitsstände
 
+- [Chemie: stabiler CI-Zwischenstand und inaktiv gesicherter 450er-Arbeitsstand (18.10.2026)](chemie-current450-inactive-ci-checkpoint-2026-10-18.md)
+- [Chemie: historischer 450er-Integrationsbericht vor der Inaktivierung (18.10.2026)](chemie-current450-final-integration-progress-2026-10-18.md)
+- [Chemie: historischer 447er-Integrationsbericht (18.10.2026)](chemie-current447-final-integration-progress-2026-10-18.md)
+
 - [Chemie: sichtbarer Quellen- und Vorbedingungscheckpoint mit 439 fachlichen Zielen (17.10.2026)](chemie-current439-source-requires-checkpoint-2026-10-17.md)
 - [Chemie: inaktiver Arbeitsstand mit 439 fachlichen Zielen und zwei neuen Beschreibungsabschlüssen (16.10.2026)](chemie-current439-reviewed-working-checkpoint-2026-10-16.md)
 - [Chemie: Themenumfang, sechs aktuelle Seitenbindungen und offene Geltungsintegration (16.10.2026)](chemie-current437-source-scope-integration-checkpoint-2026-10-16.md)

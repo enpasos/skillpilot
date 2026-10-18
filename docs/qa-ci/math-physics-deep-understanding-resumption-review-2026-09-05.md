@@ -1,5 +1,9 @@
 # Mathematik/Physik: Wiederaufnahme- und Effizienzreview vom 5. September 2026
 
+## Chemie-Zwischenstand – 18. Oktober 2026
+
+Das M7-Ziel ist bis zum grünen GitHub-CI-Zwischenstand pausiert. Der [vollständige 450er-Arbeitsstand](chemie-current450-inactive-ci-checkpoint-2026-10-18.md) ist inaktiv und bytegeprüft gesichert. Die aktiven Chemiedateien bleiben beim geprüften M6-Stand; die geschützten M7-Fächer und alle Qualitätsgrenzen bleiben erhalten. Die folgenden Abschnitte sind historische Fortsetzungsstände.
+
 ## Aktuelle Fortsetzung: sichtbarer 439er-Arbeitsstand – 17. Oktober 2026
 
 Der [aktuelle Quellen-/Vorbedingungscheckpoint](chemie-current439-source-requires-checkpoint-2026-10-17.md)

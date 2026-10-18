@@ -1,0 +1,61 @@
+{
+  "goalId": "684ffe86-3a9f-5514-866a-47d16372f2d4",
+  "kind": "Complete operative material supplements; full current native profile is separately present in each stock review input",
+  "materialObjects": [
+    {
+      "materialId": "hb145-industrial-carbohydrate-classes-only",
+      "source": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-five-P-scope-operator-remediation-author-20261018-v1/AUTHOR.complete-DE-EN-material-routes.pending.json",
+        "sha256": "f317295316db907a8afd64d32456e0d62e20ff921ec46ad402a0bb0f4e8157e9",
+        "bytes": 61793
+      },
+      "jsonPointer": "/materials/0",
+      "sourceWholeObjectSHA256": "3e53fb0451e8719716c4e05a0f892fc1e90cc6150f53db6ee407a4242cf23b5f",
+      "omittedTopLevelTransportFields": [
+        "M7Claim",
+        "active",
+        "actualLearnerPerformanceRecorded",
+        "humanApproval",
+        "status"
+      ],
+      "scientificContent": {
+        "materialId": "hb145-industrial-carbohydrate-classes-only",
+        "goalIds": [
+          "684ffe86-3a9f-5514-866a-47d16372f2d4"
+        ],
+        "sourceOrdinals": [
+          145
+        ],
+        "givens": {
+          "de": "Fischer-Konvention: CHO oben, CH2OH unten; R/L hier nur OH rechts/links, keine CIP-Deskriptoren. Vollständige Muster (oberstes bis unterstes chirales C): D-Glycerinaldehyd R; D-Erythrose RR; D-Threose LR; D-Ribose RRR; D-Arabinose LRR; D-Xylose RLR; D-Lyxose LLR; D-Allose RRRR; D-Glucose RLRR; D-Mannose LLRR; D-Galactose RLLR. Beim formalen Stammbaum wird oben ein neues Stereozentrum eingefügt; der untere Musterrest bleibt erhalten. Dies ist eine Strukturordnung, keine behauptete Biosynthesekette. Materialkarten: Glucose = ein C6-Zucker mit vielen OH; Stärke = lange alpha-glycosidisch verknüpfte Glucoseketten, in heißem Wasser quellfähig/viskos; Cellulose = beta-1,4-verknüpfte Glucoseketten, wasserunlösliche zugfeste Fasern. Modellbetriebe: A benötigt fermentierbaren Zucker als mikrobiellen Ausgangsstoff, B eine quellfähige Papierleimung, C eine Faser für Papier. Mikroorganismus A kann die bereitgestellte Glucose umsetzen; seine Cellulase-Ausstattung ist unbekannt.",
+          "en": "Fischer convention: CHO at top, CH2OH at bottom; R/L here mean OH right/left, not CIP descriptors. Complete patterns, highest to lowest chiral carbon: D-glyceraldehyde R; D-erythrose RR; D-threose LR; D-ribose RRR; D-arabinose LRR; D-xylose RLR; D-lyxose LLR; D-allose RRRR; D-glucose RLRR; D-mannose LLRR; D-galactose RLLR. Formal extension inserts a new stereocentre at the top and retains the lower pattern. This is a structural classification, not a claimed biosynthetic sequence. Cards: glucose is one C6 sugar with many OH groups; starch contains long alpha-glycosidically linked glucose chains, swelling/becoming viscous in hot water; cellulose contains beta-1,4 glucose chains forming water-insoluble strong fibres. Model factories: A needs fermentable microbial feedstock, B a swelling paper-sizing material, C a papermaking fibre. Organism A can use supplied glucose; its cellulase capacity is unknown."
+        },
+        "learnerTask": {
+          "de": "Ordne Glucose, Stärke und Cellulose als Mono- bzw. Polysaccharide ein. Wähle anhand der gegebenen Struktur- und Eigenschaftskarten passende Rohstoffe für die Betriebe A–C und begründe mit Bausteinen, Bindungsart, Quellung/Viskosität bzw. Faserverband. Welche Aussage zur Cellulose-Fermentation bleibt ohne Enzymangaben offen? Der formale Zuckerstammbaum ist hier gegebener Hintergrund, kein zu zeichnendes oder zu bestehendes Zusatzkriterium.",
+          "en": "Classify glucose, starch and cellulose as mono- or polysaccharides. Use the supplied structural/property cards to choose feedstocks for factories A–C, explaining units, linkage, swelling/viscosity or fibre structure. Which cellulose-fermentation claim remains unresolved without enzyme information? The formal family tree is supplied context here, not an additional drawing or completion requirement."
+        },
+        "modelSolution": {
+          "de": "A: Glucose als zugängliches Monomer für den gegebenen Organismus; B: Stärke wegen Quellung/Viskosität; C: Cellulose wegen zugfestem Faserverband. Die alpha- bzw. beta-1,4-Verknüpfung beeinflusst Kettenorganisation und enzymatische Zugänglichkeit. Ohne Cellulaseangabe ist Cellulose als fermentierbarer Rohstoff nicht belegt. Fotosynthetische Bildung ist die eigene unveränderte Kompetenz 1051c091; weder deren ganze Leistung noch C2-Epimerie wird aus diesem Klassifikationsfall abgeleitet.",
+          "en": "A: glucose as an accessible monomer for the specified organism; B: starch for swelling/viscosity; C: cellulose for strong fibres. Alpha versus beta-1,4 linkage affects chain organisation and enzymatic accessibility. Cellulose fermentation is not established without cellulase information. Photosynthetic formation remains separate unchanged goal 1051c091; this case establishes neither that whole performance nor C2 epimerism."
+        },
+        "freshTransfer": {
+          "task": {
+            "de": "C benötigt jetzt keine Faser, sondern eine quellfähige Papierleimung. Begründe eine neue Auswahl anhand derselben Karten. Darf gleiche Glucose-Bausteinart gleiche Eigenschaften garantieren?",
+            "en": "C now needs a swelling paper-sizing material rather than a fibre. Justify a new choice using the same cards. Do identical glucose units guarantee identical properties?"
+          },
+          "expected": {
+            "de": "Stärke ist nach der gegebenen Quell-/Viskositätskarte plausibel, Cellulose als unlöslicher Faserstoff erfüllt das geänderte Kriterium nicht allein. Verknüpfung und Kettenanordnung bleiben entscheidend; keine neue reale Messung behaupten.",
+            "en": "Starch is plausible under the supplied swelling/viscosity card; insoluble cellulose fibres alone do not meet the changed criterion. Linkage and chain organisation remain decisive; no new measurement is claimed."
+          }
+        },
+        "rubric": {
+          "de": "Klassen, Struktur-Eigenschaftsbegründung für A–C und neuer Nutzungsfall; kein Stammbaum-/C2-Epimerie-Veto.",
+          "en": "Classes, structure-property reasoning for A–C and the changed-use transfer; no family-tree/C2-epimerism veto."
+        },
+        "ownMaterialLicense": "CC-BY-4.0"
+      }
+    }
+  ],
+  "noSupplementMeans": null,
+  "providedModelsAreNotActualLearnerExecution": true
+}

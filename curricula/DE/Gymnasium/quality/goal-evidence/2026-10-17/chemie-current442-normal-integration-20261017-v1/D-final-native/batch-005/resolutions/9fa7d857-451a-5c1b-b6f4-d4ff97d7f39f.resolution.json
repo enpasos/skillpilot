@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-005-v1-resolution-9fa7d857-451a-5c1b-b6f4-d4ff97d7f39f",
+  "goal": {
+    "goalId": "9fa7d857-451a-5c1b-b6f4-d4ff97d7f39f",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:27b482798b04e63b6ed34c1f741514a765164a243284d52eebbb6aa93612cb03",
+    "pageFingerprint": "sha256:31249a726c494e88006ffe786f14e82f3d88640f1a070b67e320fbe3c7bfa9a1",
+    "goalReviewContextFingerprint": "sha256:0a715aabaacf9c73283f4d89ced94eec0beabeabbd6746b8e7b1a12646c9afc3",
+    "finalText": {
+      "titleDe": "Lebensmittelzusammensetzung recherchieren und kategorisieren",
+      "titleEn": "Research and classify food composition",
+      "descriptionDe": "Die lernende Person kann die Zusammensetzung von Lebensmitteln aus geeigneten Quellen recherchieren und Lebensmittel nach selbstgewählten chemisch begründeten Kriterien kategorisieren.",
+      "descriptionEn": "The learner can research the composition of foods from suitable sources and classify foods using self-selected chemically justified criteria."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-005-v1-a",
+      "campaignDigest": "sha256:c8471cd797dec10abf7198c697339e7dc3a58537ed0f9852f8cf26345c1a666f",
+      "roundId": "chemie-final-current-context-d-005-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-005-v1-independent-a",
+      "reviewInputFingerprint": "sha256:ea93568bfdabdff3f714ec5d94b8dc59252520722e0aa10aa39a38e8541c8349",
+      "goalReviewContextFingerprint": "sha256:0a715aabaacf9c73283f4d89ced94eec0beabeabbd6746b8e7b1a12646c9afc3",
+      "batchId": "chemie-final-current-context-d-005-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch005-20261018",
+      "runManifestDigest": "sha256:e2259ed1b412c3e3898b1487d972c903b35f39252a4a42f584bb855b91d2a437",
+      "resultsDigest": "sha256:054b020007e1d870143eca58ebb28ac20242207e4abfe68fc54ca6d6352a547c",
+      "recordId": "codex-reviewer-a-final163-batch005-20261018.005",
+      "recordDigest": "sha256:aa9199341550ec19974c76a4b1a8389afe850109d7a0fdece54b5f3d5c00a56b"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-005-v1-b",
+      "campaignDigest": "sha256:48da8784d2bf2a022d5106050deb7e838bedbbf7dc15498f5e8f7fd019de0920",
+      "roundId": "chemie-final-current-context-d-005-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-005-v1-independent-b",
+      "reviewInputFingerprint": "sha256:ea93568bfdabdff3f714ec5d94b8dc59252520722e0aa10aa39a38e8541c8349",
+      "goalReviewContextFingerprint": "sha256:0a715aabaacf9c73283f4d89ced94eec0beabeabbd6746b8e7b1a12646c9afc3",
+      "batchId": "chemie-final-current-context-d-005-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-005-20261018",
+      "runManifestDigest": "sha256:f156ef3bbef741b54e4c6db6d00df3cf1d510ad9b05729f1ec91bff119669db0",
+      "resultsDigest": "sha256:cdef531d33939f213e22d20615076c31b4ce9a1347b09abc4ccd1a69e5fe8995",
+      "recordId": "chemie-final163-native-b-005-20261018:9fa7d857-451a-5c1b-b6f4-d4ff97d7f39f",
+      "recordDigest": "sha256:b6d79e392b37b0044f2b2e0e0794f62ba548de9d2de8958ed123e0ea3c7ac61e"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:766e419b6962da8bae4b84dd677a6b7df18782647f13f0903d77a8bff87bdb82"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-005-20261018-v1",
+    "manifestDigest": "sha256:a41a2bc6b482499a6ca79542f7bbf5db10ee5ee2b8a366942cad9362acfb6f26",
+    "manifestFingerprint": "sha256:c531460d36cff13dc7321c382660c17c38c5ef6449bf726e255ffa0bb0e06d93",
+    "decisionId": "chemie-final163-paired-D-only-005-20261018-v1-decision-005"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-005-20261018-v1-decision-005",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:31:16.405Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch005-20261018.005): Der aktuelle bilinguale Text wahrt tatsächliche Recherche und eigene Kategorien. Das ganze P verlangt beschaffte Quellen und chemische Regeln und vermeidet Molekülidentität oder vollständige Vitamindaten aus einer Nährwertdeklaration. B (chemie-final163-native-b-005-20261018:9fa7d857-451a-5c1b-b6f4-d4ff97d7f39f): Selbstgewählte chemische Kriterien sind im Text eindeutig. P verlangt eigenen Suchweg, Regeln für Gleichstand/Lücken und Grenzen von Deklarationsdaten; Strukturklassifikation einzelner Inhaltsstoffe bleibt der Nachfolger.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch005-20261018.005; chemie-final163-native-b-005-20261018:9fa7d857-451a-5c1b-b6f4-d4ff97d7f39f). Their current English understanding evidence is retained: A: Food categories depend on self-selected chemical criteria and comparable researched composition data. B: Chemical classification needs researched composition, common reference quantities and independently justified rules; missing values are not zero. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Lebensmittelkategorien beruhen auf selbstgewählten chemischen Kriterien und vergleichbaren recherchierten Zusammensetzungsdaten.",
+      "essentialUnderstandingEn": "Food categories depend on self-selected chemical criteria and comparable researched composition data.",
+      "observablePerformanceDe": "Beschafft Originaldeklarationen und unabhängige Daten, benennt Bezugsgrößen und ordnet Lebensmittel mit eigener offener Regel zu.",
+      "observablePerformanceEn": "Obtains original labels and independent data, states reference quantities and classifies foods using an own explicit rule.",
+      "transferExpectationDe": "Überprüft das System an einem anderen Paar mit abweichenden Portionen oder fehlender Angabe ohne unbekannt als null zu setzen.",
+      "transferExpectationEn": "Tests the system on another pair with different servings or missing values without treating unknown as zero."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-46ef3fa215e7afc803adffd161ff344589739e2934f7af91e3a31f4baae09c6f",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:cd516d6f1d257dd21724778ebe8380cfe2772c90171576bcff8f67bdc64a051f"
+}

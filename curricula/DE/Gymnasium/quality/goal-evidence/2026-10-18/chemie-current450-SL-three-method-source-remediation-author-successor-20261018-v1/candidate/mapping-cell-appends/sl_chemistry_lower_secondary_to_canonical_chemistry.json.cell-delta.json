@@ -1,0 +1,33 @@
+{
+  "artifactRole": "INACTIVE_MAPPING_CELL_APPEND_AUTHOR_CANDIDATE",
+  "activation": "independent-review-required",
+  "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_chemistry_lower_secondary_to_canonical_chemistry.json",
+  "beforeWholeFilePinForAuditNotGlobalCAS": {
+    "path": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_chemistry_lower_secondary_to_canonical_chemistry.json",
+    "sha256": "55b841c80be52b7a30b52a76555ccb0dbd4424dcf56df90ae88cd47103691a4f",
+    "bytes": 163046
+  },
+  "sourceExtractionPathAtAuthoring": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_CHEMIE_SEKI_GYM9_2024_2025.source-extraction.json",
+  "wholeUnrelatedRowsMustBePreserved": true,
+  "cellAppends": [
+    {
+      "pairAbsentExpectedBefore": {
+        "legacyGoalId": "sl-chem-seki-sl-ch-seki-9-2025-p012-006-c334c319",
+        "canonicalGoalId": "1351706f-4ea6-56e9-951b-87b24cbcdee8"
+      },
+      "mappingToAppend": {
+        "legacyGoalId": "sl-chem-seki-sl-ch-seki-9-2025-p012-006-c334c319",
+        "canonicalGoalId": "1351706f-4ea6-56e9-951b-87b24cbcdee8",
+        "matchType": "partial"
+      },
+      "boundedAuthorWitness": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SL-three-method-source-remediation-author-successor-20261018-v1/CANDIDATE.three-direct-partial-contributions.INACTIVE.json",
+        "jsonPointer": "/mappings/0"
+      },
+      "existingAuthoritativeSourceDecisionsCAS": [],
+      "decisionIntegrationBoundary": "Only after explicit independent acceptance: preserve all old canonical targets/whole decision history; append this individually bounded partial contribution and current accepted witness without any whole-source promotion. If unrelated additive integration changes whole-file SHA, recheck this full decision cell and tuple absence instead of restoring a historical after-file."
+    }
+  ],
+  "wholeFileReplacement": false,
+  "wholeSourceCredit": false
+}

@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-003-v1-resolution-6765f741-42a6-55c5-a218-81b883b1f5ae",
+  "goal": {
+    "goalId": "6765f741-42a6-55c5-a218-81b883b1f5ae",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:bbaa4abd92d234f414439e96203338dc3dc7ab71a3ac12dec4075c88c63f443a",
+    "pageFingerprint": "sha256:8469a224c668b9c29a54dba5ad7e706cb2d4e9a3d63b837d5c685f03a912c49e",
+    "goalReviewContextFingerprint": "sha256:346608540ecb84c6920a2170da171173ac40369f0d569cef8aa4f36e0ed9f524",
+    "finalText": {
+      "titleDe": "Seifen herstellen",
+      "titleEn": "Prepare soaps",
+      "descriptionDe": "Die lernende Person kann die alkalische Hydrolyse von Fetten zur Herstellung von Seife durchführen, die Bildung von Glycerin und Fettsäuresalzen anhand der Esterstruktur erklären und die Seife durch Aussalzen von der wässrigen Phase trennen.",
+      "descriptionEn": "The learner can carry out the alkaline hydrolysis of fats to prepare soap, explain the formation of glycerol and fatty acid salts using the ester structure, and separate the soap from the aqueous phase by salting out."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-003-v1-a",
+      "campaignDigest": "sha256:978c14bb7b4e20d9b0754b4b001198cb332f9b414d3303ca7642925c494ece2b",
+      "roundId": "chemie-final-current-context-d-003-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-003-v1-independent-a",
+      "reviewInputFingerprint": "sha256:a8b4e136dc9c2b252755278e60a7cde25130d629087d5e6df627ef8b0ebc209b",
+      "goalReviewContextFingerprint": "sha256:346608540ecb84c6920a2170da171173ac40369f0d569cef8aa4f36e0ed9f524",
+      "batchId": "chemie-final-current-context-d-003-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch003-20261018",
+      "runManifestDigest": "sha256:d37e25ac9a9c3eaebef1ba6de0c6086c093b182aa3633bc23d659c25aa6b81d5",
+      "resultsDigest": "sha256:cd44a305e9111a4d099f9ab35d3f7b4ca03c9a7206727ef3bec5bcfd6a791a42",
+      "recordId": "codex-reviewer-a-final163-batch003-20261018.009",
+      "recordDigest": "sha256:866faec8bbac45f60c9ef8cac2333e970788cf001f32d185f770e962bc0bf7f3"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-003-v1-b",
+      "campaignDigest": "sha256:b2cbbd77c71b72dac1c440f755a8450ab64df323a6a8eacf430f5e2505f92701",
+      "roundId": "chemie-final-current-context-d-003-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-003-v1-independent-b",
+      "reviewInputFingerprint": "sha256:a8b4e136dc9c2b252755278e60a7cde25130d629087d5e6df627ef8b0ebc209b",
+      "goalReviewContextFingerprint": "sha256:346608540ecb84c6920a2170da171173ac40369f0d569cef8aa4f36e0ed9f524",
+      "batchId": "chemie-final-current-context-d-003-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-003-20261018",
+      "runManifestDigest": "sha256:1c929404c03d8c96aa74393ad00405392ee0c3ea13c265367e3ff364cdfdf004",
+      "resultsDigest": "sha256:82383b90ab0c51800931b86885a526c7c9c4e558a108be4aa5b0ed88c0da33ac",
+      "recordId": "chemie-final163-native-b-003-20261018:6765f741-42a6-55c5-a218-81b883b1f5ae",
+      "recordDigest": "sha256:85467fcacd17df5f6a7ecf9e8e432384f33790b65b7c990bb70b940589de10ee"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:ee73048c0284447ea4c17aa5f99fbb11d7041a800acc788f8e7ae8f7a9a22dbd"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-003-20261018-v1",
+    "manifestDigest": "sha256:ce11bd03356fcf672eba95ffbb1028e40d727aec4fd4c79452167746266299a5",
+    "manifestFingerprint": "sha256:4feab5b00ce92e39b208e49a59ef02b9a0bd75db7be760eeedd1bcad82254b99",
+    "decisionId": "chemie-final163-paired-D-only-003-20261018-v1-decision-009"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-003-20261018-v1-decision-009",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:26:58.995Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch003-20261018.009): Die aktuelle bilinguale Fassung fordert Durchführung, Esterdeutung und Trennung. Beide vollständigen P-Fälle erhalten reale eigene Arbeit unter Aufsicht; Musterdaten erfüllen den praktischen Operator nicht. B (chemie-final163-native-b-003-20261018:6765f741-42a6-55c5-a218-81b883b1f5ae): Durchführung, Strukturbegründung und Aussalzen bilden denselben Herstellungsablauf. P verlangt Betreuung und vorgegebene Gefahrstoffmengen, klare Bilanz und echte Handlungen; ein vorhandener Datensatz wird nicht als Herstellung gewertet.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch003-20261018.009; chemie-final163-native-b-003-20261018:6765f741-42a6-55c5-a218-81b883b1f5ae). Their current English understanding evidence is retained: A: Alkaline ester hydrolysis yields glycerol/fatty-acid salts; salting-out separates formed soap rather than causing new fat cleavage. B: Alkaline ester hydrolysis produces glycerol and carboxylate salts; salting-out separates soap already formed from the aqueous phase. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Alkalische Esterhydrolyse liefert Glycerin/Fettsäuresalze; Aussalzen trennt entstandene Seife und bewirkt keine neue Fettspaltung.",
+      "essentialUnderstandingEn": "Alkaline ester hydrolysis yields glycerol/fatty-acid salts; salting-out separates formed soap rather than causing new fat cleavage.",
+      "observablePerformanceDe": "Führt eine freigegebene betreute Herstellung samt Aussalzen selbst aus und erklärt Produkte anhand eigener Phasenbeobachtungen.",
+      "observablePerformanceEn": "Personally performs approved supervised preparation and salting-out and explains products through own phase observations.",
+      "transferExpectationDe": "Vergleicht bei anderem Fett kontrolliert mit/ohne Salzzugabe und begründet Stoffverbleib und Trennwirkung.",
+      "transferExpectationEn": "Makes a controlled salt/no-salt comparison for a different fat and explains substance location and separation."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-e67d5f50060f10f1992aa19a48230cfee5593b0fe6938f5d7bf13069d9ee83c0",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:7ec25ca2a290285adc71b4fa0e861fe0bbbadc07a67413820e8efeefa4faf84e"
+}

@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-007-v1-resolution-e5aefd51-2de4-590c-903f-286d043a8c30",
+  "goal": {
+    "goalId": "e5aefd51-2de4-590c-903f-286d043a8c30",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:693e86a86c6a847b7e4c5ed68f83f1a103a1e8688d27a32d4517ecffdfc6b233",
+    "pageFingerprint": "sha256:50920c2193c3c6a7e72a50cf79ba6ef9bfce3df54de41c86d83bdd263e3dd7a5",
+    "goalReviewContextFingerprint": "sha256:816ebcdffe7f6d1685d3cc3da00309514999876e1972c88ddbedd11d17dae4fd",
+    "finalText": {
+      "titleDe": "Radikalische Substitution mechanistisch darstellen",
+      "titleEn": "Represent radical substitution mechanistically",
+      "descriptionDe": "Die lernende Person kann radikalische Substitutionen mechanistisch darstellen.",
+      "descriptionEn": "The learner can represent radical substitutions mechanistically."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-007-v1-a",
+      "campaignDigest": "sha256:03e23ca7a839411ee0694d3ffc4c5304359bdbdb4885b890ef7f8def67d5e5a0",
+      "roundId": "chemie-final-current-context-d-007-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-007-v1-independent-a",
+      "reviewInputFingerprint": "sha256:9786177231bba01a5178b748443b7e2ac24b65d395c6cfda891b47d1838d8fd4",
+      "goalReviewContextFingerprint": "sha256:816ebcdffe7f6d1685d3cc3da00309514999876e1972c88ddbedd11d17dae4fd",
+      "batchId": "chemie-final-current-context-d-007-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch007-20261018",
+      "runManifestDigest": "sha256:41b3803956cb0b8e3ceaa1b4c1224724037cd8f6fc9ff400cb30dc979ec172d0",
+      "resultsDigest": "sha256:2deca668c6059260417c15a3d4e706e9325f6ce3e8e0bef2d977983444354968",
+      "recordId": "codex-reviewer-a-final163-batch007-20261018.005",
+      "recordDigest": "sha256:1993c0d61d401a292c05aaa2823243cb99c3869fdf40106afcaf62702697bdc1"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-007-v1-b",
+      "campaignDigest": "sha256:f96e78c8b5b03376c090596c68434afdda0adfb82adef282dc1a1a949aed2746",
+      "roundId": "chemie-final-current-context-d-007-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-007-v1-independent-b",
+      "reviewInputFingerprint": "sha256:9786177231bba01a5178b748443b7e2ac24b65d395c6cfda891b47d1838d8fd4",
+      "goalReviewContextFingerprint": "sha256:816ebcdffe7f6d1685d3cc3da00309514999876e1972c88ddbedd11d17dae4fd",
+      "batchId": "chemie-final-current-context-d-007-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-007-20261018",
+      "runManifestDigest": "sha256:c21072a1baeec0fb475776827fd6bdcb51afcb70555317673d8fac140568d60f",
+      "resultsDigest": "sha256:f627bfdb86dcc4a0e7dec63f04ec892ed6ec7af463e3169bda439a10444338fd",
+      "recordId": "chemie-final163-native-b-007-20261018:e5aefd51-2de4-590c-903f-286d043a8c30",
+      "recordDigest": "sha256:1105827c83f449a09e848188987d0f3721c76afa9a70af02f8214d9045b8fb18"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:9d01c3a2eaf6ff3168f19750d5b1780c3bd726f4c76d033ac9016e0d3a5debbf"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-007-20261018-v1",
+    "manifestDigest": "sha256:a002d58ade8fb14ebb3f915bed25f48fcfa287b2641be1e7a466d8abd811c99e",
+    "manifestFingerprint": "sha256:12732999b92050cc52642e0c0e4f1bd967da4b1b66528e696859794dba344986",
+    "decisionId": "chemie-final163-paired-D-only-007-20261018-v1-decision-005"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-007-20261018-v1-decision-005",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:39:49.306Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch007-20261018.005): D fordert tatsächlich mechanistisches Darstellen. Das ganze P erfüllt diesen Operator mit vollständiger eigener Konstruktion statt Erkennen eines vorgegebenen Schritts. Beide Ketten sind atom- und ladungskonsistent; Radikale bleiben neutral und unterscheiden sich von Ionen. Produktreinheit wird nicht aus der Erstsubstitutionsgleichung gefolgert. Die Fälle sind ausdrücklich Papiermodelle, keine UV-/Halogenversuchsfreigabe. B (chemie-final163-native-b-007-20261018:e5aefd51-2de4-590c-903f-286d043a8c30): Die kurze bilinguale Beschreibung benennt eine klare Mechanismusleistung. Das vollständige P operationalisiert diese durch eigene Kettenkonstruktion statt Erkennen einzelner vorgegebener Propagationen. Der Wechsel von Methan/Chlor zu Ethan/Brom und der alternative Abbruch prüfen die Kettenlogik sowie die Produktgrenze; spätere Aromaten- und Reaktionstypziele bleiben eigenständige Anwendungen.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch007-20261018.005; chemie-final163-native-b-007-20261018:e5aefd51-2de4-590c-903f-286d043a8c30). Their current English understanding evidence is retained: A: A radical substitution chain begins with homolysis, regenerates its chain carrier during propagation and terminates through recombination without a new radical. B: Radical substitution is a chain reaction with homolytic initiation, radical regeneration during propagation and radical-consuming termination. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Eine radikalische Substitutionskette beginnt mit Homolyse, regeneriert den Kettenträger in der Fortpflanzung und endet bei Rekombination ohne neues Radikal.",
+      "essentialUnderstandingEn": "A radical substitution chain begins with homolysis, regenerates its chain carrier during propagation and terminates through recombination without a new radical.",
+      "observablePerformanceDe": "Konstruiert für Methan/Chlor selbst Initiierung, H-Abstraktion, Halogenübertragung und möglichen Abbruch mit ungepaarten Elektronen und überprüfter Stoffbilanz.",
+      "observablePerformanceEn": "Independently constructs initiation, H abstraction, halogen transfer and possible termination for methane/chlorine with unpaired electrons and a checked material balance.",
+      "transferExpectationDe": "Entwickelt die vollständige Ethan/Brom-Kette und den Abbruch zweier Ethylradikale zu Butan; erklärt, warum die Nettogleichung keine ausschließliche Bromoethanreinheit beweist.",
+      "transferExpectationEn": "Develops the complete ethane/bromine chain and termination of two ethyl radicals to butane, explaining why the net equation does not establish exclusively pure bromoethane."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-9333ddfafb43cb3a28e9c827c69b2bfb6109fb9c706e40d024b99cbe1dcf6ff8",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:515eeeb3b86ef5ba9bed5488c95ed1d50de46b8c60e1ad37d261084278da50c1"
+}

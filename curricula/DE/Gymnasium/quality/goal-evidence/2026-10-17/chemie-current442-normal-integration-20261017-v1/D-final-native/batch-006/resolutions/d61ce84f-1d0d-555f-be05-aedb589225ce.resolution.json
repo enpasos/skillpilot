@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-006-v1-resolution-d61ce84f-1d0d-555f-be05-aedb589225ce",
+  "goal": {
+    "goalId": "d61ce84f-1d0d-555f-be05-aedb589225ce",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:f76c8d7f548cc0499c48e29be2bd7d4810e0049a9bb32d1daf2db31528d669fe",
+    "pageFingerprint": "sha256:cd2eebe7a0a9eb1e94840c21fa7115bcd234fdb75bb983a263fe78ee36396e5c",
+    "goalReviewContextFingerprint": "sha256:1f73fc989574c3b82b423d1e8430aacb8ceaa1a90490244f7636f1bf4ec1d4a9",
+    "finalText": {
+      "titleDe": "Dirigierende Effekte analysieren (LK)",
+      "titleEn": "Analyze directing effects (LK)",
+      "descriptionDe": "Die lernende Person kann induktive und mesomere Effekte bei Zweitsubstitutionen erklären und die dirigierende Wirkung an Beispielen wie Toluol, Phenol, Anilin und Nitrobenzol diskutieren.",
+      "descriptionEn": "The learner can explain inductive and resonance effects in secondary substitutions and discuss the directing effects using examples such as toluene, phenol, aniline and nitrobenzene."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-006-v1-a",
+      "campaignDigest": "sha256:fac08f3e3e72b3fd65ead31deeafeff62268bea1795f229f19ce85a234e57356",
+      "roundId": "chemie-final-current-context-d-006-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-006-v1-independent-a",
+      "reviewInputFingerprint": "sha256:738c48a5d1a135a764fe483a52f078a241f0f4149b0c7e6ce492ebd53c660d26",
+      "goalReviewContextFingerprint": "sha256:1f73fc989574c3b82b423d1e8430aacb8ceaa1a90490244f7636f1bf4ec1d4a9",
+      "batchId": "chemie-final-current-context-d-006-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch006-20261018",
+      "runManifestDigest": "sha256:419ac41027d7c6085c20a41a7aab2cc5ee3abf5e395b843a596d9b21dbec3d58",
+      "resultsDigest": "sha256:cb07854e0ea40039098f3d266438ec683a808fb475249442535af494ff91bdbe",
+      "recordId": "codex-reviewer-a-final163-batch006-20261018.019",
+      "recordDigest": "sha256:38daace2af5431df0639d0e18a1c1956a4de1d61b78ba06e8c4c39a272dcd8e0"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-006-v1-b",
+      "campaignDigest": "sha256:e6860f2b3431737a13818dccb510d68b769ac8de8183a266a418614495ba524a",
+      "roundId": "chemie-final-current-context-d-006-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-006-v1-independent-b",
+      "reviewInputFingerprint": "sha256:738c48a5d1a135a764fe483a52f078a241f0f4149b0c7e6ce492ebd53c660d26",
+      "goalReviewContextFingerprint": "sha256:1f73fc989574c3b82b423d1e8430aacb8ceaa1a90490244f7636f1bf4ec1d4a9",
+      "batchId": "chemie-final-current-context-d-006-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-006-20261018",
+      "runManifestDigest": "sha256:f5dff68c2824391cbd358b0efcda18f60656322f44c47dd579639b30eb8f1789",
+      "resultsDigest": "sha256:1905ddcd08914170e96a8288a0308e1390cdf5eb3bbb2c7eb917107830344a7f",
+      "recordId": "chemie-final163-native-b-006-20261018:d61ce84f-1d0d-555f-be05-aedb589225ce",
+      "recordDigest": "sha256:0f9d3cf19a5a893bf98961477d020d49c525b91d5473272f297642d531888971"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:c423e5d81f53d59095437ae568e0caca6a758058bafd394031ce2cb0f01fc495"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-006-20261018-v1",
+    "manifestDigest": "sha256:841af7f6a231319d70d92e84fb977818248d5825b592e050c63ab4be72fe9634",
+    "manifestFingerprint": "sha256:8a70d3defa5ac0d85b5224774db191bed348f860796a294e7732ed4830512bfe",
+    "decisionId": "chemie-final163-paired-D-only-006-20261018-v1-decision-019"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-006-20261018-v1-decision-019",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:35:51.247Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch006-20261018.019): Die vier ausdrücklich genannten Beispiele der bilingualen D-Fassung sind vollständig im P vertreten. Der σ-Komplexvergleich erklärt zusätzliche N-Donorstabilisierung beziehungsweise zusätzliche Nitro-Destabilisierung korrekt. Der frische Protonierungsfall korrigiert den Geltungsbereich der neutralen Anilinregel innerhalb derselben Kompetenz; es wird keine reale Nitrierungsfreigabe behauptet. Der Grenzeintrag im canonicalContext beweist für sich keine Quellenabdeckung. B (chemie-final163-native-b-006-20261018:d61ce84f-1d0d-555f-be05-aedb589225ce): Die Beschreibung trifft nach Halogenierung/Nitrierung eine klar abgegrenzte LK-Vertiefung. Das vollständige P deckt alle vier genannten Beispiele ab und trennt Richtung, Aktivierung und Produktreinheit. Der Anilinium-Fall ist ein substanzieller Wechsel der Elektronenstruktur und macht eine unbedingte Anwendung der Anilin-Regel sichtbar; er erfordert keine tatsächliche gefährliche Nitrierung.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch006-20261018.019; chemie-final163-native-b-006-20261018:d61ce84f-1d0d-555f-be05-aedb589225ce). Their current English understanding evidence is retained: A: Orientation and activation follow relative sigma-complex stability and depend on the actual protonated or neutral substituent form. B: Secondary-substitution orientation follows relative sigma-complex stabilization; activation, orientation and actual protonation state must be examined separately. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Dirigierung und Aktivierung folgen der relativen Stabilität der σ-Komplexe und sind von der tatsächlich vorliegenden protonierten oder neutralen Substituentenform abhängig.",
+      "essentialUnderstandingEn": "Orientation and activation follow relative sigma-complex stability and depend on the actual protonated or neutral substituent form.",
+      "observablePerformanceDe": "Begründet Toluol, Phenol und neutrales Anilin als aktivierend ortho/para-dirigierend sowie Nitrobenzol als desaktivierend meta-dirigierend mit I/M-Effekten oder Hyperkonjugation und geeigneten Grenzformeln.",
+      "observablePerformanceEn": "Explains activating ortho/para orientation in toluene, phenol and neutral aniline and deactivating meta orientation in nitrobenzene using inductive/resonance effects or hyperconjugation and suitable contributors.",
+      "transferExpectationDe": "Überträgt die Begründung auf Anilinium ohne freies N-Paar und grenzt eine bevorzugte Substitutionsrichtung von garantiert reinen Produkten oder exakten Produktanteilen ab.",
+      "transferExpectationEn": "Transfers the reasoning to anilinium without a free N lone pair and distinguishes a preferred substitution orientation from guaranteed pure products or exact proportions."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-ed22dabe08b2fed71f2190f4366428ef541224a50ddcd4669a2342ae2877fe8c",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:9771e9fd8584fbe437847be6c405ad8472a365be5f0b3021584fb3c08e2f72b3"
+}

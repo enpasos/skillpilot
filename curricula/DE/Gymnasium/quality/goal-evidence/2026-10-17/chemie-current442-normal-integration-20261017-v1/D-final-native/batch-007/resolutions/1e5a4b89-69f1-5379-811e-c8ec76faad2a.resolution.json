@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-007-v1-resolution-1e5a4b89-69f1-5379-811e-c8ec76faad2a",
+  "goal": {
+    "goalId": "1e5a4b89-69f1-5379-811e-c8ec76faad2a",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:ecaf4ef4622870bdaecc40ee656d387d2e02349e97005b83d66dba98c1d538f0",
+    "pageFingerprint": "sha256:2f9ed03ca38bfe023ad991e2d6044270f6ad9e8143259b66a2169ffbe0c398d5",
+    "goalReviewContextFingerprint": "sha256:82a35978b8957829df6cba1431cea771ba5e890bd7f4cbf9a0ec1fbe10240674",
+    "finalText": {
+      "titleDe": "Avogadro-These fuer Gasvolumina erlaeutern",
+      "titleEn": "Explain Avogadro law for gas volumes",
+      "descriptionDe": "Die lernende Person kann mit der Avogadro-These erklären, warum gleiche Volumina verschiedener Gase bei gleicher Temperatur und gleichem Druck im idealen Gasmodell gleich viele Teilchen enthalten.",
+      "descriptionEn": "The learner can use Avogadro’s law to explain why equal volumes of different gases at the same temperature and pressure contain equal numbers of particles in the ideal-gas model."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-007-v1-a",
+      "campaignDigest": "sha256:03e23ca7a839411ee0694d3ffc4c5304359bdbdb4885b890ef7f8def67d5e5a0",
+      "roundId": "chemie-final-current-context-d-007-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-007-v1-independent-a",
+      "reviewInputFingerprint": "sha256:9786177231bba01a5178b748443b7e2ac24b65d395c6cfda891b47d1838d8fd4",
+      "goalReviewContextFingerprint": "sha256:82a35978b8957829df6cba1431cea771ba5e890bd7f4cbf9a0ec1fbe10240674",
+      "batchId": "chemie-final-current-context-d-007-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch007-20261018",
+      "runManifestDigest": "sha256:41b3803956cb0b8e3ceaa1b4c1224724037cd8f6fc9ff400cb30dc979ec172d0",
+      "resultsDigest": "sha256:2deca668c6059260417c15a3d4e706e9325f6ce3e8e0bef2d977983444354968",
+      "recordId": "codex-reviewer-a-final163-batch007-20261018.011",
+      "recordDigest": "sha256:0b2de0ae87580287dd96d2a15f0d947974c8b8114dcc59cc83293b1f67390259"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-007-v1-b",
+      "campaignDigest": "sha256:f96e78c8b5b03376c090596c68434afdda0adfb82adef282dc1a1a949aed2746",
+      "roundId": "chemie-final-current-context-d-007-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-007-v1-independent-b",
+      "reviewInputFingerprint": "sha256:9786177231bba01a5178b748443b7e2ac24b65d395c6cfda891b47d1838d8fd4",
+      "goalReviewContextFingerprint": "sha256:82a35978b8957829df6cba1431cea771ba5e890bd7f4cbf9a0ec1fbe10240674",
+      "batchId": "chemie-final-current-context-d-007-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-007-20261018",
+      "runManifestDigest": "sha256:c21072a1baeec0fb475776827fd6bdcb51afcb70555317673d8fac140568d60f",
+      "resultsDigest": "sha256:f627bfdb86dcc4a0e7dec63f04ec892ed6ec7af463e3169bda439a10444338fd",
+      "recordId": "chemie-final163-native-b-007-20261018:1e5a4b89-69f1-5379-811e-c8ec76faad2a",
+      "recordDigest": "sha256:11eff5459867ea82fba285bccc7f811f408f79ecf969ff1703bb4ad147b3b0df"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:9d01c3a2eaf6ff3168f19750d5b1780c3bd726f4c76d033ac9016e0d3a5debbf"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-007-20261018-v1",
+    "manifestDigest": "sha256:a002d58ade8fb14ebb3f915bed25f48fcfa287b2641be1e7a466d8abd811c99e",
+    "manifestFingerprint": "sha256:12732999b92050cc52642e0c0e4f1bd967da4b1b66528e696859794dba344986",
+    "decisionId": "chemie-final163-paired-D-only-007-20261018-v1-decision-011"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-007-20261018-v1-decision-011",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:39:49.306Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch007-20261018.011): Die D-Fassung nennt sämtliche Modellbedingungen und ist bilingual äquivalent. Das vollständige P benutzt den Stoffmengenbegriff als tatsächliche Voraussetzung und fordert keine zusätzliche Gasgesetzrechnung für unterschiedliche Temperaturen. Der 16-fache Massenvergleich und CO2/He-Atomzahltransfer zeigen gerade, warum die Aussage weder Massen- noch Atomgleichheit bedeutet. B (chemie-final163-native-b-007-20261018:1e5a4b89-69f1-5379-811e-c8ec76faad2a): Der vollständige bilinguale Satz enthält alle wesentlichen Avogadro-Bedingungen und die Modellgrenze. Das P nutzt die Stoffmengen-Voraussetzung und liefert einen echten Bedingungsfehler statt nur neue Volumenzahlen. Massen- und Atomzahlverwechslungen werden explizit geprüft, während absolute ideale Gasrechnungen dem folgenden molaren Volumen vorbehalten bleiben.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch007-20261018.011; chemie-final163-native-b-007-20261018:1e5a4b89-69f1-5379-811e-c8ec76faad2a). Their current English understanding evidence is retained: A: Equal ideal-gas volumes contain equal numbers of gas particles at the same temperature and pressure, independently of particle mass or constituent-atom count. B: In the ideal-gas model, equal volumes at matched temperature and pressure imply equal gas-particle counts; particle mass and constituent-atom count are separate quantities. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Gleiche ideale Gasvolumina enthalten bei gleicher Temperatur und gleichem Druck gleich viele Gasteilchen, unabhängig von deren Masse oder innerer Atomzahl.",
+      "essentialUnderstandingEn": "Equal ideal-gas volumes contain equal numbers of gas particles at the same temperature and pressure, independently of particle mass or constituent-atom count.",
+      "observablePerformanceDe": "Begründet bei je 1 L H2 und O2 mit gleichen T,p gleiche Molekülstoffmengen und anhand der gegebenen molaren Massen die 16-fache O2-Probenmasse.",
+      "observablePerformanceEn": "Explains equal molecular amounts in 1 L each of H2 and O2 at matched T,p and the sixteenfold O2 sample mass from supplied molar masses.",
+      "transferExpectationDe": "Verwirft beim frischen CO2/He-Vergleich mit 20 statt 40 Grad die Teilchenzahlgleichheit und unterscheidet auch unter gleichen Bedingungen Gasteilchenzahl von Gesamtatomzahl.",
+      "transferExpectationEn": "Rejects equal particle counts for fresh CO2/He at 20 versus 40 degrees and distinguishes gas-particle count from total atom count even under matched conditions."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-75a28f3e5b67b74a3e3c4c63493d982baf92bf82fa650099d3f2c08d5cd2fc97",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:731301285d03481bbd0bcbdc36b038ff026c983f54e2d43f16020140ccd2ab7b"
+}

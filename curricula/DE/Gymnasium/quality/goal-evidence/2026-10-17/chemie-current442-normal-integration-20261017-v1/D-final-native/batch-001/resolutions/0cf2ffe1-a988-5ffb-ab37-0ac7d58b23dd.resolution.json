@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-001-v1-resolution-0cf2ffe1-a988-5ffb-ab37-0ac7d58b23dd",
+  "goal": {
+    "goalId": "0cf2ffe1-a988-5ffb-ab37-0ac7d58b23dd",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:2b5b6fad12792e878035314c04c2acff06b97dcbae486b1c905c059f455ffe68",
+    "pageFingerprint": "sha256:7685266b5fc7c26cd2ad91cd70cbf2756adf741b6b39362485753efe040f9de9",
+    "goalReviewContextFingerprint": "sha256:140f9a204b1dafd639ecca0c7560f2887bd9c9ca591aec6fd0b960a4f81c3119",
+    "finalText": {
+      "titleDe": "Brennstoffzellen und Verbrennungskraftwerke multiperspektivisch bewerten",
+      "titleEn": "Evaluate fuel cells and combustion power plants from multiple perspectives",
+      "descriptionDe": "Die lernende Person kann Energieumwandlungen in Brennstoffzellen und Verbrennungskraftwerken vergleichen und ökologische, ökonomische sowie soziale Perspektiven in eine begründete Bewertung einbeziehen.",
+      "descriptionEn": "The learner can compare energy conversions in fuel cells and combustion power plants and include ecological, economic, and social perspectives in a justified evaluation."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-001-v1-a",
+      "campaignDigest": "sha256:96c597e11ef28d55b630202e1c2e03a243872e2f50e9cf9cc7c0df7a79d9cd3d",
+      "roundId": "chemie-final-current-context-d-001-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-001-v1-independent-a",
+      "reviewInputFingerprint": "sha256:84cb9df1bd7fef7e2302044cdb80cba5ac86f4d3a52db0bc7c6a09292793cfa8",
+      "goalReviewContextFingerprint": "sha256:140f9a204b1dafd639ecca0c7560f2887bd9c9ca591aec6fd0b960a4f81c3119",
+      "batchId": "chemie-final-current-context-d-001-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch001-20261018",
+      "runManifestDigest": "sha256:b4b3f17dceb9e1e7c4c82361c9c800e5f7de932b46dcf704e3d6a847860b03be",
+      "resultsDigest": "sha256:c9861ef6d236ae81946747b3d1c7abde302f5f013b5c93ce5edad0870065fc31",
+      "recordId": "codex-reviewer-a-final163-batch001-20261018.006",
+      "recordDigest": "sha256:4a86f4d63cbd685faae9ba4ca4a4be8399569f3fa27be802059f862e2859e4da"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-001-v1-b",
+      "campaignDigest": "sha256:1b8713019a8e252039fa354999df05261e1c78eedb890a563b29e531dc70ec46",
+      "roundId": "chemie-final-current-context-d-001-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-001-v1-independent-b",
+      "reviewInputFingerprint": "sha256:84cb9df1bd7fef7e2302044cdb80cba5ac86f4d3a52db0bc7c6a09292793cfa8",
+      "goalReviewContextFingerprint": "sha256:140f9a204b1dafd639ecca0c7560f2887bd9c9ca591aec6fd0b960a4f81c3119",
+      "batchId": "chemie-final-current-context-d-001-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-001-20261018",
+      "runManifestDigest": "sha256:13eb6055a4aa8d4d04be4cfd1c0c77f4b206a289df96a67139c1efd68e08d32d",
+      "resultsDigest": "sha256:22da53163d50636a69ec31425cecc056999735ee0193be8470171a3f650414eb",
+      "recordId": "chemie-final163-native-b-001-20261018:0cf2ffe1-a988-5ffb-ab37-0ac7d58b23dd",
+      "recordDigest": "sha256:13f9e6f55577b2a8f888b0ef665ea8127c520f7acea766525b1f2b729a36dd73"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:706dc6e69548381d583e44f00cb7a2768b65125ce38e115ffeb99e090ece4f50"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-001-20261018-v1",
+    "manifestDigest": "sha256:2947637162d222247361434cafc2291ef0d74af62baa53f4b2c0b9ac2349ad89",
+    "manifestFingerprint": "sha256:240821b7f7c94c99aba57979178f196e85ea04ebc4d569c964de2f5230011117",
+    "decisionId": "chemie-final163-paired-D-only-001-20261018-v1-decision-005"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-001-20261018-v1-decision-005",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:22:46.792Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch001-20261018.006): Der Text verlangt eine zusammenhängende multiperspektivische Bewertung auf bestehendem Energie- und Brennstoffzellenwissen. Beide vollständigen P-Fälle normieren den Nutzen und zählen ungenutzte Wärme nicht gut; ein universeller Technologiesieger wird fachlich vermieden. B (chemie-final163-native-b-001-20261018:0cf2ffe1-a988-5ffb-ab37-0ac7d58b23dd): Der Text fordert ein integriertes multiperspektivisches Urteil auf bereits vorausgesetzter Brennstoffzellen-/Enthalpiebasis. P normiert Ausgangsnutzen und nutzbare Wärme und lässt Kosten- oder Herkunftslücken ausdrücklich offen.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch001-20261018.006; chemie-final163-native-b-001-20261018:0cf2ffe1-a988-5ffb-ab37-0ac7d58b23dd). Their current English understanding evidence is retained: A: Fuel cells use redox work while combustion plants use a heat-work path; fair evaluation needs equal service, upstream chains and explicit criteria. B: Fuel cells and power plants use different energy paths; equal service and system boundaries are prerequisites for a fair judgment. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Brennstoffzellen nutzen Redoxarbeit, Verbrennungskraftwerke einen Wärme-Arbeit-Pfad; faire Bewertungen brauchen gleichen Nutzen, Vorketten und explizite Kriterien.",
+      "essentialUnderstandingEn": "Fuel cells use redox work while combustion plants use a heat-work path; fair evaluation needs equal service, upstream chains and explicit criteria.",
+      "observablePerformanceDe": "Vergleicht Energiepfade und tatsächlich genutzte Wärme, berechnet normierte Emissionen und begründet ökologische, wirtschaftliche sowie soziale Abwägungen.",
+      "observablePerformanceEn": "Compares energy paths and actually used heat, calculates normalised emissions and justifies environmental, economic and social trade-offs.",
+      "transferExpectationDe": "Bewertet einen geänderten Strommix oder Wärmenetzbedarf neu und unterscheidet dadurch veränderte Befunde von weiter offenen Kostenfragen.",
+      "transferExpectationEn": "Re-evaluates a changed electricity mix or heat-network demand, distinguishing changed findings from still unresolved cost questions."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-fa8730bce509087beb6bce8d15ecef4e574260aa97c379682a59411468e3a60b",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:6780dbf054e86bf749d016ab321737989aa007250abc277c2f875f956849b6ac"
+}

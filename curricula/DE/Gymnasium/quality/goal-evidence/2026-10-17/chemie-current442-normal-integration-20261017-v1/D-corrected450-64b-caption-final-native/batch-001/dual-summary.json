@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:9a74d72c5ed044d7d51df0603604fef208459c67fe54bd0acc42fab90c034255",
+  "reviewInputFingerprint": "sha256:9741a0c19b20b97f340df6ab197faf3f1ffe2e5bfffb16c2248cbe5b39a03ccf",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-001-v1-a",
+      "roundId": "chemie-final-current-context-d-001-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-001-v1-independent-a",
+      "runIds": [
+        "chemie450-caption1-native-fresh-a-20261018"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 (Codex)::unknown; exact served model revision not exposed"
+      ]
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-001-v1-b",
+      "roundId": "chemie-final-current-context-d-001-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-001-v1-independent-b",
+      "runIds": [
+        "chemie-caption1-native-fresh-b-64b0-20261018"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex, GPT-6 family; exact serving model identifier unavailable::unknown; not exposed"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "64b03eff-a967-54a1-ace3-89cb7650a65c",
+      "firstRecordId": "chemie450-caption1-native-fresh-a-20261018.64b03eff",
+      "secondRecordId": "chemie-caption1-native-fresh-b-64b0-20261018.64b0",
+      "firstRunId": "chemie450-caption1-native-fresh-a-20261018",
+      "secondRunId": "chemie-caption1-native-fresh-b-64b0-20261018",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

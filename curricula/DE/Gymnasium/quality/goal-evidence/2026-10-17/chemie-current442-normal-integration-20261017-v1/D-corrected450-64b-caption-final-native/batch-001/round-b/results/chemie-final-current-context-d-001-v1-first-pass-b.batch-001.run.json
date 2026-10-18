@@ -1,0 +1,47 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-caption1-native-fresh-b-64b0-20261018",
+  "campaignId": "chemie-final-current-context-d-001-v1-b",
+  "roundId": "chemie-final-current-context-d-001-v1-first-pass-b",
+  "batchId": "chemie-final-current-context-d-001-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:b034e0b3d255e4e63a85632a36c4d10c472190c108cff97c16e6ffa60d071224",
+  "bundleFingerprint": "sha256:9a74d72c5ed044d7d51df0603604fef208459c67fe54bd0acc42fab90c034255",
+  "bookDigest": "sha256:7056a7074602bb01f2882dac59de1adc7c8b5b3fca7507f622f2f6403086e087",
+  "provider": "OpenAI",
+  "model": "Codex, GPT-6 family; exact serving model identifier unavailable",
+  "modelVersion": "unknown; not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:f8898abd1d86553d5a18339f9524aa8fca61985823d9cb148e89437d9ea4e7cd",
+  "independenceGroupId": "chemie-final-current-context-d-001-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "64b03eff-a967-54a1-ace3-89cb7650a65c"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:8a7e5e4fcf59fa501ae891d1cc8f75c5565a27c4ab4bfde5a57e77ea2e0b91d7"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:b034e0b3d255e4e63a85632a36c4d10c472190c108cff97c16e6ffa60d071224"
+    }
+  ],
+  "startedAt": "2026-10-18T00:47:20.076385Z",
+  "completedAt": "2026-10-18T00:47:20.077309Z",
+  "status": "completed",
+  "outputDigest": "sha256:45463969972c8c859757fd27bab4576be2293ecfc315d3d9f3bd174507000e35",
+  "toolchainVersion": "git.7f605a0a94d9a65ac093550586e7a124996ba8ec"
+}

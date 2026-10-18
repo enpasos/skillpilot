@@ -1,0 +1,73 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "chemie-current439-requires-only-native20-technical-c-20261017-v1",
+  "subject": "chemie",
+  "subjectLabel": "Chemie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-requires-only-native20-preparation-technical-c-v1/requires20.batch.config.json",
+  "configDigest": "sha256:a2042699d847a4ec48963b72bcac04596b34454d73ea7bf5d8b4b30702edda68",
+  "goalIds": [
+    "bbe038e9-86ed-5ec6-ab33-316758ddb16d",
+    "92c99237-1c74-54fc-bf08-9191656afaa6",
+    "67cd332f-9db7-50e1-87f6-172ef3714300",
+    "c0f1bf09-5a70-5006-b1e9-e91f786a63bf",
+    "1c1420c2-a8e2-520f-8015-6df637a973bd",
+    "1f30d81c-8a26-5675-8c0a-1cb82e96d3ba",
+    "02634fdd-c8ba-591a-b240-77129b1bebb8",
+    "8ceb1749-fce0-584f-a2b8-0a309282329a",
+    "b95cdf98-fc97-5a94-b133-878922d28156",
+    "3e433dae-99f9-5a95-ad63-d5fa0b5f6836",
+    "91cd4728-b811-562a-970b-18b81dfb4bdf",
+    "363c5740-8a3c-50b8-8c3a-5548c80c36ea",
+    "e9d34f34-2a43-5cc7-bcca-1d08e057531d",
+    "cf270aaf-235a-55a7-94a2-c4d9d7570a6b",
+    "c21a611c-1069-5b32-b673-4f37a89b094f",
+    "81373fb7-2a4a-5b2c-acd0-b4e775acaa65",
+    "28c90c6a-3020-5c51-ac40-d802f3f12d2d",
+    "642d5ea5-b62f-50c8-b0bd-cf132619725f",
+    "96fd8608-8d98-53f0-9b86-1311c3220fd3",
+    "c8844ac6-c414-5a0e-9fcd-7d0a82177d09"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 439,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current650-all-seven-current439-native-central-preparation-technical-a-v1/base.full439.current-all-seven-HB7f.private.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "baseBookDigest": "sha256:4b97c2a295643d56546e38c394caa60f622eeeb0c2ea997dace1e6da12808a54"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:d5c005b363bb66e2db9c31cccd7acd98eadfdcaab186708a85ebcdadfbf953f2",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:44d046d36005c9d1a1c02fa80d8bdb094548904a9c87d69ac34fc41787c9d733",
+    "reviewInputFingerprint": "sha256:fa6aac63bdeec96751b9a67be7812dbf4606f3a109b93e7ccd5b26f417a65e51",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "chemie-current439-requires-only-native20-technical-c-20261017-v1-a",
+        "campaignDigest": "sha256:76d7bf082eeb6386c461d85775aaa07a26e9a158122fef6f148e9d43928d0360",
+        "roundId": "chemie-current439-requires-only-native20-technical-c-20261017-v1-first-pass-a",
+        "independenceGroupId": "chemie-current439-requires-only-native20-technical-c-20261017-v1-independent-a",
+        "batchId": "chemie-current439-requires-only-native20-technical-c-20261017-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:520b45fff33e5ec7dc3bc4bab24ab572ee31365b01d0f60e68445d05b7da9d7c"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "chemie-current439-requires-only-native20-technical-c-20261017-v1-b",
+        "campaignDigest": "sha256:80177cbfdedf7f0ba2d5c3c30a74ce932f016c597e640112e6045e2e40f8e7f5",
+        "roundId": "chemie-current439-requires-only-native20-technical-c-20261017-v1-first-pass-b",
+        "independenceGroupId": "chemie-current439-requires-only-native20-technical-c-20261017-v1-independent-b",
+        "batchId": "chemie-current439-requires-only-native20-technical-c-20261017-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:69caf51ebd0b91aa4c5b033fe0ceec152ef0bf90da05330cdd89b34aa2513a27"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

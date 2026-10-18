@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-002-v1-resolution-36666b4a-97af-51fc-9983-56cdcc7a8229",
+  "goal": {
+    "goalId": "36666b4a-97af-51fc-9983-56cdcc7a8229",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:48040c2af3eea2a65f19a4c76c20b2e420d1a46fa65da7e35c3f06c4732cea4b",
+    "pageFingerprint": "sha256:697025e5ea233248916ccb21e01d4a0d3ed15463a693b502dbebb6e8ab256328",
+    "goalReviewContextFingerprint": "sha256:01a009d31b8e369c5809bc71b73ef7e4d4c5b32652df3e82a041a87c7193e629",
+    "finalText": {
+      "titleDe": "Chemische Quellen und Darstellungen kritisch prüfen",
+      "titleEn": "Critically assess chemistry sources and representations",
+      "descriptionDe": "Die lernende Person kann analoge und digitale Quellen oder Darstellungsformen zu chemischen Sachverhalten hinsichtlich ihrer Aussagen, fachlichen Relevanz, Vertrauenswürdigkeit, Urheberschaft und Intention vergleichen und ihre Eignung und Validität für eine konkrete Frage begründet beurteilen.",
+      "descriptionEn": "The learner can compare analogue and digital sources or representations of chemical issues in terms of their claims, scientific relevance, trustworthiness, authorship, and intention, and justify their suitability and validity for a specific question."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-002-v1-a",
+      "campaignDigest": "sha256:b715fd8a726cbbb7aaa20c5ec2078404f295bc90d3f8bc2a5d9f561cd958d38e",
+      "roundId": "chemie-final-current-context-d-002-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-002-v1-independent-a",
+      "reviewInputFingerprint": "sha256:d831530f4fe9ba4c7701b62a5c1bcea6bdf04d0ee9729de34f23dbad666c8a9f",
+      "goalReviewContextFingerprint": "sha256:01a009d31b8e369c5809bc71b73ef7e4d4c5b32652df3e82a041a87c7193e629",
+      "batchId": "chemie-final-current-context-d-002-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch002-20261018",
+      "runManifestDigest": "sha256:6ca66c1115aa27b4d2c73625e937471778c2db2938916b49f6ccc95a7860873d",
+      "resultsDigest": "sha256:ef5c73b963b42df01542d403d612c96c262c8a902a63b3774a35b2b9ec126b7c",
+      "recordId": "codex-reviewer-a-final163-batch002-20261018.001",
+      "recordDigest": "sha256:482ff2dc377b5aa6ea1932fc513adfb38427b121d58f7bc702fa118a72fce90b"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-002-v1-b",
+      "campaignDigest": "sha256:070e2daf91a611e1ffff2447e23f61558c7f9c9fa26cf87c154c53f406c8b793",
+      "roundId": "chemie-final-current-context-d-002-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-002-v1-independent-b",
+      "reviewInputFingerprint": "sha256:d831530f4fe9ba4c7701b62a5c1bcea6bdf04d0ee9729de34f23dbad666c8a9f",
+      "goalReviewContextFingerprint": "sha256:01a009d31b8e369c5809bc71b73ef7e4d4c5b32652df3e82a041a87c7193e629",
+      "batchId": "chemie-final-current-context-d-002-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-002-20261018",
+      "runManifestDigest": "sha256:c410bb8b0ad9e827901944da0e700a9181082c10d1bbd55ac65a836583b30c6e",
+      "resultsDigest": "sha256:ab8f5774eb6180f67af823d96057f3949f0fb175c7d25a6a52ba94e0874f30cc",
+      "recordId": "chemie-final163-native-b-002-20261018:36666b4a-97af-51fc-9983-56cdcc7a8229",
+      "recordDigest": "sha256:b422296d779cbfc206521a559eae8cca58fb4c8be03799bb077a795fe1873860"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:d8fb237c4bfae646ace584c195b8d46e5310536aa5be0abf6e49298504cbd0d9"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-002-20261018-v1",
+    "manifestDigest": "sha256:067c0f4ea81884ab77197d8b88f8f555468ebc2707980d808fe8e93abaaa1073",
+    "manifestFingerprint": "sha256:015048c1d39b768cb2cc3bd33b3adb266d68832f23abfb86d580299bfc453bfc",
+    "decisionId": "chemie-final163-paired-D-only-002-20261018-v1-decision-001"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-002-20261018-v1-decision-001",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:25:09.454Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch002-20261018.001): Der präzise bilinguale Quellenvergleich passt zum Prozessziel. Das ganze P wahrt Analytumfang und Bezugsgröße und setzt Herstellerfinanzierung nicht mit Falschheit gleich; Anwendung auf Halogenstoffe bleibt Nachfolger. B (chemie-final163-native-b-002-20261018:36666b4a-97af-51fc-9983-56cdcc7a8229): Der Text bindet alle Prüfkriterien an eine konkrete Frage; P trennt Absorbanz/Löslichkeit von unbelegter Trinkbarkeit/Wirksamkeit und fordert begründete Revision statt Herkunftsetiketten. Das anschließende Halogenkohlenwasserstoffziel bleibt die fachliche Anwendung.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch002-20261018.001; chemie-final163-native-b-002-20261018:36666b4a-97af-51fc-9983-56cdcc7a8229). Their current English understanding evidence is retained: A: Source quality concerns specific claims and depends on method, author, interest and measurement limits. B: Source validity depends on claim and question; authorship and interest do not replace scrutiny of methods. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Quellengüte gilt für bestimmte Aussagen und hängt von Methode, Urheber, Interesse und Messgrenzen ab.",
+      "essentialUnderstandingEn": "Source quality concerns specific claims and depends on method, author, interest and measurement limits.",
+      "observablePerformanceDe": "Vergleicht Laborbericht, Werbung und Modelltext und trennt Absorbanz-/Löslichkeitsbefunde von unbelegter Sicherheits- oder Wirksamkeitsbehauptung.",
+      "observablePerformanceEn": "Compares laboratory report, advertising and model text, separating absorbance/solubility findings from unsupported safety or efficacy claims.",
+      "transferExpectationDe": "Passt das Urteil bei neuen unabhängigen Prüfdaten oder offengelegter Finanzierung begründet an.",
+      "transferExpectationEn": "Justifiably adjusts judgment for fresh independent test data or disclosed funding."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-d8b941ee2ca2e26e2c9a82760b074dc40379140e035775492de6befb5a575074",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:428fd9c0a0980dee2a09ebc3f59aaf538b2872bee4e2354c7ed3eea0b20d0e9b"
+}

@@ -1,0 +1,5 @@
+Usage: node --import ./app/node_modules/tsx/dist/loader.mjs curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/D-final-native-adapter/native-d-final-context-adapter.mjs --final-plan <root-final-pins.json> --phase <plan|prepare|validate-rounds|finalize|ownership-plan> [--execute] [--allow-bounded-pdf]
+Without --execute: validation and command preview only. No final inputs/pages/records are generated.
+prepare calls unchanged stock prepare/check and necessarily renders bounded <=20-goal PDFs; it additionally requires --allow-bounded-pdf.
+validate-rounds/finalize require actual new final-input reviewer records/runs and independently sealed truthful reviewer receipts.
+ownership-plan emits an additive terminal-owner/supersession proposal only; it never writes the normal registry.

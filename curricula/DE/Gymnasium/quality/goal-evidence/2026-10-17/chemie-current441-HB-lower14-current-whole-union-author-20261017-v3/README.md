@@ -1,0 +1,5 @@
+# Lower14 v3 – 5338 Ganzziel-/Profilscope kohärent
+
+Additiver Autoren-Nachfolger aus v2. Die unveränderte präzisierte D-Beschreibung verlangt kausales Salz/Wasser-Erklären im ganzen Ziel. Die neue kausale P-Erwartung gilt deshalb jetzt überall, wo dieses Ziel gilt; die frühere HB-only-Abschlussausnahme ist entfernt. Observable Leistung, Fallfokus und vollständige Materialrubrik tragen denselben Ganzzielbezug. HB37 bleibt allein die konkrete Quellenbindung; weitere amtliche Quellenpflichten oder Länder-/Kursgeltungen folgen daraus nicht. Keine Sättigungs-, Konzentrations- oder quantitative Energetikpflicht.
+
+Die12 übrigen Trägerrecords,13 übrigen Quellenrecords und alle Source31-Lehrkraft-E2-v2-Korrekturen sind exakt erhalten. Ganze aktualisierte P-/Materialkörper und präzise Deltas sind enthalten. Alte v1/v2- und beide FIRST-Dateien bleiben bytegleich. Autor pending; zwei gezielte unabhängige Followups und normaler finaler Kontext bleiben getrennt. Keine eigene Science-, M7- oder Human-Freigabe.

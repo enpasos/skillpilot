@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-006-v1-resolution-d465d82b-4bf2-5527-bb7c-dad5a92605fe",
+  "goal": {
+    "goalId": "d465d82b-4bf2-5527-bb7c-dad5a92605fe",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:1078ebec174b9aa1202224713c59cb92e953ef588b521148211f617c6a309cb5",
+    "pageFingerprint": "sha256:5be5cda3c231aa4469f4e6cb89c3ebd3c3c1830aed4c6203f8288eec79ed3f8f",
+    "goalReviewContextFingerprint": "sha256:1b66ea756048206f34dd4f13a8ef74470987547420b3e62c8b488fb64b75bcc8",
+    "finalText": {
+      "titleDe": "Tensidstrukturen analysieren",
+      "titleEn": "Analyze surfactant structures",
+      "descriptionDe": "Die lernende Person kann anionische, kationische und nichtionische Tenside anhand ihres Aufbaus charakterisieren.",
+      "descriptionEn": "The learner can characterize anionic, cationic, and nonionic surfactants based on their structure."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-006-v1-a",
+      "campaignDigest": "sha256:fac08f3e3e72b3fd65ead31deeafeff62268bea1795f229f19ce85a234e57356",
+      "roundId": "chemie-final-current-context-d-006-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-006-v1-independent-a",
+      "reviewInputFingerprint": "sha256:738c48a5d1a135a764fe483a52f078a241f0f4149b0c7e6ce492ebd53c660d26",
+      "goalReviewContextFingerprint": "sha256:1b66ea756048206f34dd4f13a8ef74470987547420b3e62c8b488fb64b75bcc8",
+      "batchId": "chemie-final-current-context-d-006-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch006-20261018",
+      "runManifestDigest": "sha256:419ac41027d7c6085c20a41a7aab2cc5ee3abf5e395b843a596d9b21dbec3d58",
+      "resultsDigest": "sha256:cb07854e0ea40039098f3d266438ec683a808fb475249442535af494ff91bdbe",
+      "recordId": "codex-reviewer-a-final163-batch006-20261018.017",
+      "recordDigest": "sha256:5a3f7daddba7c2c00f3c9b4b84faec5b92cc6cb03518a6f15d255eea1ae674bc"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-006-v1-b",
+      "campaignDigest": "sha256:e6860f2b3431737a13818dccb510d68b769ac8de8183a266a418614495ba524a",
+      "roundId": "chemie-final-current-context-d-006-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-006-v1-independent-b",
+      "reviewInputFingerprint": "sha256:738c48a5d1a135a764fe483a52f078a241f0f4149b0c7e6ce492ebd53c660d26",
+      "goalReviewContextFingerprint": "sha256:1b66ea756048206f34dd4f13a8ef74470987547420b3e62c8b488fb64b75bcc8",
+      "batchId": "chemie-final-current-context-d-006-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-006-20261018",
+      "runManifestDigest": "sha256:f5dff68c2824391cbd358b0efcda18f60656322f44c47dd579639b30eb8f1789",
+      "resultsDigest": "sha256:1905ddcd08914170e96a8288a0308e1390cdf5eb3bbb2c7eb917107830344a7f",
+      "recordId": "chemie-final163-native-b-006-20261018:d465d82b-4bf2-5527-bb7c-dad5a92605fe",
+      "recordDigest": "sha256:252732a59b5750a8c511fd0dd2ba44121e195fdd2cf8f350fdc99b8b52bbbabd"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:c423e5d81f53d59095437ae568e0caca6a758058bafd394031ce2cb0f01fc495"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-006-20261018-v1",
+    "manifestDigest": "sha256:841af7f6a231319d70d92e84fb977818248d5825b592e050c63ab4be72fe9634",
+    "manifestFingerprint": "sha256:8a70d3defa5ac0d85b5224774db191bed348f860796a294e7732ed4830512bfe",
+    "decisionId": "chemie-final163-paired-D-only-006-20261018-v1-decision-017"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-006-20261018-v1-decision-017",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:35:51.247Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch006-20261018.017): Das ganze bilinguale Ziel ist eine klar begrenzte Strukturklassifikation. Die vollständig gelesenen energy20-06-Karten liefern alle drei Klassen mit korrekten Kopf-/Gegenionunterschieden und konkretisieren die Hydratation nichtionischer Köpfe. Der pH-abhängige Zusatzfall ist als gegebene Stoffinformation gekennzeichnet; allgemeine Waschleistung oder Fällung jeder anionisch-kationischen Mischung wird zu Recht nicht aus der Klasse gefolgert. B (chemie-final163-native-b-006-20261018:d465d82b-4bf2-5527-bb7c-dad5a92605fe): Die beiden Sprachfassungen verlangen die drei passenden Strukturklassen und bleiben ein atomarer Aufbauvergleich. Die vollständig gelesenen Sachkarten zu beiden P-Fällen stellen alle Gruppen bereit und ermöglichen neue Kopfgruppen- und Gegenionenvergleiche. Das P verlangt keine pauschale Waschleistungs- oder Umweltklassifikation; quantitative Eigenschaften bleiben datenabhängig, der Amin-Zusatz dient einer klaren Klassifikationsgrenze.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch006-20261018.017; chemie-final163-native-b-006-20261018:d465d82b-4bf2-5527-bb7c-dad5a92605fe). Their current English understanding evidence is retained: A: Charge on the amphiphilic head determines anionic or cationic classification; uncharged OH/ether heads can nevertheless be polar and interact with water. B: Anionic, cationic and nonionic surfactants are classified by their amphiphilic head-group charge; counterions and overall salt neutrality do not change that class. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die Ladung der amphiphilen Kopfgruppe bestimmt anionische oder kationische Zuordnung; ungeladene OH-/Etherköpfe können dennoch stark polar und wasserwechselwirkend sein.",
+      "essentialUnderstandingEn": "Charge on the amphiphilic head determines anionic or cationic classification; uncharged OH/ether heads can nevertheless be polar and interact with water.",
+      "observablePerformanceDe": "Markiert bei Sulfatester, Sulfonat, quartärem Ammonium und Glucosid/Ethoxylat Kopf, Kette und Gegenion und begründet jede der drei Tensidklassen aus der Struktur.",
+      "observablePerformanceEn": "Marks head, tail and counterion in sulfate ester, sulfonate, quaternary ammonium and glucoside/ethoxylate examples and justifies the three surfactant classes from structure.",
+      "transferExpectationDe": "Erklärt, weshalb ein Na/K-Gegenionwechsel die Kopfklasse nicht ändert, eine Protonierung eines Aminokopfs dagegen ändern kann, und lässt quantitative Leistungsbehauptungen ohne Daten offen.",
+      "transferExpectationEn": "Explains why a Na/K counterion exchange leaves head class unchanged whereas protonation of an amine head can change it, leaving quantitative performance claims open without data."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-b1ab433e6bb662f7ba7d4097fe5983723f97e2a7dab59c88c240f7fefd99e53d",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:42ab87ec022c86b8c258819ba3b34ae511a2ed14a01dc89534a511a6449531be"
+}

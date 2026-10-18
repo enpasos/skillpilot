@@ -1,0 +1,570 @@
+{
+  "canonical": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "sha256": "d09c746ec9393078736dcf9aabac0a0b3a22dc8756a8356c8cedb2f6d6cf866c",
+    "bytes": 3398981
+  },
+  "centralOwnerRegistry": {
+    "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+    "sha256": "3218464f89dbf689a8e004a4cdb28d709265e4630971d31ebb48ab744742041a",
+    "bytes": 678763
+  },
+  "wholeCurrentGoalProfiles": [
+    {
+      "goalId": "48115ff7-7aca-5d0b-a9e7-7fc6c78434ef",
+      "wholeCurrentGoal": {
+        "id": "48115ff7-7aca-5d0b-a9e7-7fc6c78434ef",
+        "title": "pK-Werte nutzen",
+        "titleEn": "Use pK values",
+        "description": "Die lernende Person kann das Donator-Akzeptor- und Gleichgewichtskonzept auf Protolysereaktionen anwenden, Säure- und Basenstärken über das Massenwirkungsgesetz sowie pKS- und pKB-Werte vergleichen.",
+        "descriptionEn": "The learner can apply the donor-acceptor and equilibrium concepts to protolysis reactions and compare acid and base strengths using the law of mass action as well as pKa and pKb values.",
+        "weight": 1.1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "1c1420c2-a8e2-520f-8015-6df637a973bd"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-chemistry",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BC_REAKTION"
+          ],
+          "phase": "Q3"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+            "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "b52a6cbc-3260-4ff2-bd24-7835da1e7dad"
+          }
+        },
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "48115ff7-7aca-5d0b-a9e7-7fc6c78434ef",
+            "title": "Visualisierung: pK-Werte nutzen",
+            "url": "/assets/goal-visualizations/chemie/48115ff7-7aca-5d0b-a9e7-7fc6c78434ef/48115ff7-7aca-5d0b-a9e7-7fc6c78434ef.png",
+            "provider": "OpenAI / ChatGPT-Codex image generation",
+            "description": "Ausgeglichene Säure- und Base-Protolyse mit Massenwirkungsausdrücken und pK-Beziehung; keine Reaktion zwischen Vergleichsproben.",
+            "altText": "Zwei getrennte Protolysegleichgewichte: HA und Wasser ergeben korrespondierende Base und Oxonium, B und Wasser ergeben korrespondierende Säure und Hydroxid. Die jeweiligen Massenwirkungsausdrücke und negativen Zehnerlogarithmen verbinden K mit pK; kleinere pK-Werte bedeuten innerhalb des jeweiligen Säure- oder Basenvergleichs größere Stärke.",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeCurrentProfile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "g1",
+            "essentialUnderstandingDe": "Ka/Kb und pK beschreiben das jeweilige Protolysegleichgewicht bei definierter Wasser-Konvention.",
+            "essentialUnderstandingEn": "Ka, Kb and pK describe the respective protolysis equilibrium under a defined water convention.",
+            "observablePerformanceDe": "Stelle Säure- und Base-MWG auf, vergleiche Konstanten/pK und trenne formalen Gehalt von Stärke.",
+            "observablePerformanceEn": "Write acid and base mass-action expressions, compare constants and pK, and distinguish formal amount from strength."
+          },
+          {
+            "id": "g2",
+            "essentialUnderstandingDe": "Bei gleichem Gesamtgehalt zeigt Stärke sich an unterschiedlicher Protonenübertragung und Teilchenverteilung.",
+            "essentialUnderstandingEn": "At equal total content, strength gives different proton transfer and species distributions.",
+            "observablePerformanceDe": "Erkläre für Säuren UND Basen die Haupt-/Ionenteilchen bei gleichem Gehalt mit MWG; bloße Formelangabe oder pK-Vergleich reicht nicht.",
+            "observablePerformanceEn": "Explain main/ionic species for BOTH acids and bases at equal content using mass action; formulas/pK ranking alone are insufficient."
+          },
+          {
+            "id": "hb-hb133-hydrated-metal-coordinate-bond-acidity",
+            "essentialUnderstandingDe": "Nur HB LK im angegebenen Thema; keine zusätzliche GK-Pflicht. LK: Koordinative Bindung im Aquakomplex polarisiert Wasserliganden und ermöglicht deren Protolyse; Elektronenpaar- und Protonendonatorrollen sind verschieden.",
+            "essentialUnderstandingEn": "Only HB advanced course in the named topic; no additional basic-course duty. Advanced course: coordination in an aquacomplex polarises water ligands and enables their protolysis; electron-pair and proton-donor roles differ.",
+            "observablePerformanceDe": "Erkläre die saure Reaktion über koordinative Bindung, Polarisierung des gebundenen Wassers und Protonenübertragung an weiteres Wasser. Stelle die Gleichgewichtskonstante auf, vergleiche die vorgegebenen Stärken und identifiziere die jeweiligen Donator-/Akzeptorrollen. Prüfe die Ladungsbilanz. Das Metallion selbst gibt dabei kein Proton ab. Vollständiger verbindlicher Fall: HB133-hydrated-metal-coordinate-bond-acidity.",
+            "observablePerformanceEn": "Explain acidity explicitly through coordinate bonding, polarisation of bound water and proton transfer to another water. Write the equilibrium expression and compare stipulated strengths; identify donor/acceptor and charge balance. Do not treat the metal itself as donating H+. Full binding case: HB133-hydrated-metal-coordinate-bond-acidity."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "g1",
+            "g2",
+            "hb-hb133-hydrated-metal-coordinate-bond-acidity"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "acid-base-particles",
+            "textDe": "Bei gleichem formalem Gehalt Säure- und Basenpaare anhand ihrer Teilchenverteilungen vergleichen.",
+            "textEn": "Compare acid and base pairs through species distributions at equal formal content."
+          },
+          {
+            "id": "formal-strength",
+            "textDe": "Von einer pK-Rangfolge zur Erklärung von Protonenübertragung und Wasser-Konvention wechseln.",
+            "textEn": "Move from a pK ranking to explaining proton transfer and the water convention."
+          },
+          {
+            "id": "hb-hb133-hydrated-metal-coordinate-bond-acidity-fresh",
+            "textDe": "Frisch: Jemand zeichnet [Al(H2O)6]3+ → Al2+ + H+ und nennt Koordination und Protolyse dieselbe Elektronenübertragung. Prüfe Atome, Ladung und Prozess.",
+            "textEn": "Fresh: someone writes [Al(H2O)6]3+→Al2++H+ and calls coordination and protolysis the same electron transfer. Check atoms, charge and process."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "source-strength-acids",
+            "taskDemandDe": "Vergleiche im gegebenen 25-°C-Modell 0,100 M HCl und Essigsäure mit Ka=1,8·10−5. Stelle Protolyse und MWG auf und begründe die Haupt- und Ionenteilchenverteilung bei gleichem formalem Gehalt.",
+            "taskDemandEn": "Compare 0.100 M HCl and acetic acid with Ka=1.8·10−5 in the supplied 25 °C model. Write protolysis/mass action and explain main and ionic species at equal formal content.",
+            "expectedPerformanceDe": "HCl ist im Modell vollständig protolysiert; Essigsäure bleibt überwiegend HA. Ka=aH3O·aA/aHA enthält die Wasser-Konvention; kleineres pKa entspricht größerem Ka. Gleicher formaler Gehalt bedeutet keine gleiche Ionenkonzentration.",
+            "expectedPerformanceEn": "HCl is fully transferred in the model, while acetic acid largely remains HA. Ka=aH3O·aA/aHA includes the water convention; lower pKa means larger Ka. Equal formal content does not imply equal ionic concentration.",
+            "understandingFocusDe": "Stärke wird mit Protonenübertragung erklärt, nicht mit der Konzentration verwechselt.",
+            "understandingFocusEn": "Explain strength through proton transfer rather than conflating it with concentration."
+          },
+          {
+            "id": "source-strength-bases",
+            "taskDemandDe": "Vergleiche B1 und B2 bei je 0,100 M mit Kb1=1,8·10−5 und Kb2=1,8·10−9. Begründe Reaktionen, MWG, pKb-Folge und schematische B/BH+/OH−-Verteilung.",
+            "taskDemandEn": "Compare B1 and B2 at 0.100 M with Kb1=1.8·10−5 and Kb2=1.8·10−9. Explain reactions, mass action, pKb order and schematic B/BH+/OH− distributions.",
+            "expectedPerformanceDe": "B+H2O⇌BH++OH− und Kb=aBH·aOH/aB. In beiden überwiegt B; B1 bildet mehr BH+/OH− als B2. Schematische Zählungen sind Modelldarstellungen, keine gemessenen Ionenzahlen.",
+            "expectedPerformanceEn": "B+H2O⇌BH++OH− and Kb=aBH·aOH/aB. B dominates both; B1 produces more BH+/OH− than B2. Schematic counts are model representations rather than measured ion counts.",
+            "understandingFocusDe": "Selbstständiger Basentransfer mit korrektem Akzeptor- und Gleichgewichtsbezug.",
+            "understandingFocusEn": "Independent base transfer with correct acceptor and equilibrium reasoning."
+          },
+          {
+            "id": "hb133-hydrated-metal-coordinate-bond-acidity",
+            "taskDemandDe": "Erkläre die saure Reaktion über koordinative Bindung, Polarisierung des gebundenen Wassers und Protonenübertragung an weiteres Wasser. Stelle die Gleichgewichtskonstante auf, vergleiche die vorgegebenen Stärken und identifiziere die jeweiligen Donator-/Akzeptorrollen. Prüfe die Ladungsbilanz. Das Metallion selbst gibt dabei kein Proton ab.\nFrische Variation: Frisch: Jemand zeichnet [Al(H2O)6]3+ → Al2+ + H+ und nennt Koordination und Protolyse dieselbe Elektronenübertragung. Prüfe Atome, Ladung und Prozess.\nHB133-hydrated-metal-coordinate-bond-acidity",
+            "expectedPerformanceDe": "Der O-Ligand spendet bei der Koordination ein Elektronenpaar; das koordinierte Wasser ist bei der Protolyse Brønsted-Protonendonator. Die Ladung bleibt +3 = +2 +1. Ka = a(Hydroxo-Komplex) a(H3O+) / a(Aquakomplex), mit konventionsgemäß eingebauter Wasseraktivität. Ein kleinerer pKa bedeutet ein größeres Ka: Der Modell-Aquakomplex ist stärker als HA. Bei vergleichbarem formalem Gehalt kann mehr H3O+ entstehen; daraus folgt kein beliebiger universeller pH-Wert. Der Fehling-Tartratkomplex allein belegt diese Aquakomplex-Protolyse nicht.\nFrischer Transfer: Wasserliganden und O-Atome verschwinden; ein Wechsel der Metalloxidationszahl wird ohne Grundlage eingeführt. Die richtige erste Protolyse überträgt ein Ligandenproton auf Wasser, ohne das Metall zu reduzieren. Elektronenpaarbindung und Brønsted-Protolyse sind verschiedene Donator-Akzeptor-Prozesse.",
+            "understandingFocusDe": "LK: Koordinative Bindung im Aquakomplex polarisiert Wasserliganden und ermöglicht deren Protolyse; Elektronenpaar- und Protonendonatorrollen sind verschieden. Vollständige Aufgabe, Referenz, Transfer und Rubrik: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-lab-physical-material-author-20261017-v1/materials/HB133-hydrated-metal-coordinate-bond-acidity.DE-EN.json",
+            "taskDemandEn": "Explain acidity explicitly through coordinate bonding, polarisation of bound water and proton transfer to another water. Write the equilibrium expression and compare stipulated strengths; identify donor/acceptor and charge balance. Do not treat the metal itself as donating H+.\nFresh variation: Fresh: someone writes [Al(H2O)6]3+→Al2++H+ and calls coordination and protolysis the same electron transfer. Check atoms, charge and process.\nHB133-hydrated-metal-coordinate-bond-acidity",
+            "expectedPerformanceEn": "O ligand donates an electron pair during coordination; coordinated water donates a Brønsted proton during protolysis. Charge is+3 on each side(+2+1). Ka=a(hydroxo complex)a(H3O+)/a(aqua complex), with water activity included by convention. LowerpKa means greater Ka, so model aquacomplex is stronger than HA. Comparable formal amounts can give more hydronium, not identicalpH conclusions for arbitrary solutions. Fehling tartrate alone would not demonstrate this aquacomplex protolysis.\nFresh transfer: Ligands/O atoms vanish and a metal oxidation-state change is invented. Correct first protolysis removes a ligand proton without metal reduction and forms hydronium. Electron-pair bonding and Brønsted transfer are different donor–acceptor concepts.",
+            "understandingFocusEn": "Advanced course: coordination in an aquacomplex polarises water ligands and enables their protolysis; electron-pair and proton-donor roles differ. Complete task, reference, transfer and rubric: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-lab-physical-material-author-20261017-v1/materials/HB133-hydrated-metal-coordinate-bond-acidity.DE-EN.json"
+          }
+        ]
+      },
+      "nativeProfile": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-plan/records/P102.current-owner.review.jsonl",
+        "sha256": "4eb08ded32d743dc9ebb51bb696a2b835fa8e1690c1e57a8eba6d8a39e1473be",
+        "bytes": 109588
+      },
+      "nativeLine": 4,
+      "activeOwnerConfig": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-normal-source-configs/P102.normal-source.config.json",
+        "sha256": "b2e354e15431e297e44b847f8ad9547670ba6ee834058c66b69d5720d064046c",
+        "bytes": 1828
+      }
+    },
+    {
+      "goalId": "edcfc5f0-900d-5819-830f-3b14af2bc369",
+      "wholeCurrentGoal": {
+        "id": "edcfc5f0-900d-5819-830f-3b14af2bc369",
+        "shortKey": "canonical_chemistry_upper_initial_ph_strong_weak_monoprotic_bases",
+        "title": "pH-Werte starker und schwacher einprotoniger Basen berechnen",
+        "titleEn": "Calculate initial pH of strong and weak monoprotic bases",
+        "description": "Die lernende Person kann für wässrige Lösungen starker und schwacher einprotoniger Basen die Basenstärke von der formalen Konzentration unterscheiden, die Hydroxidionenkonzentration mit dem passenden Dissoziations- oder Protolysemodell bestimmen und den Anfangs-pH über pOH und das temperaturabhängige Ionenprodukt berechnen; Näherungen für schwache Basen leitet sie selbst aus dem MWG ab und prüft ihre Gültigkeit.",
+        "descriptionEn": "The learner can distinguish base strength from formal concentration in aqueous strong and weak monoprotic bases, determine hydroxide concentration using the appropriate dissociation or protolysis model, and calculate initial pH via pOH and the temperature-dependent water ion product; approximations for weak bases are independently derived from mass action and checked for validity.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical",
+          "SekII"
+        ],
+        "contains": [],
+        "requires": [
+          "48115ff7-7aca-5d0b-a9e7-7fc6c78434ef"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-chemistry",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "PK1_EXPERIMENTIEREN",
+            "PK2_MODELLIEREN",
+            "PK4_KOMMUNIZIEREN"
+          ],
+          "guidingIdeas": [
+            "BC_REAKTION"
+          ],
+          "phase": "Q3",
+          "area": "Protolysegleichgewichte",
+          "topicCode": "CANONICAL.CHEMISTRY.UPPER.ACID_BASE.STRONG_WEAK_MONOPROTIC_PH_APPROXIMATIONS"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+            "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+            "sourceGoalId": "0416b03c-e2e4-5f63-8de8-318d43fe4cc3"
+          },
+          "authorSplitOrigin": {
+            "retainedContextGoalId": "33034876-8da5-5619-ad86-e1272e0304b0",
+            "oneOldAtomReplacedByTwo": true,
+            "noAutomaticMasteryTransfer": true,
+            "courseBoundary": "Source and whole composition views select the required entire atom; no runtime conditional requires."
+          }
+        },
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "edcfc5f0-900d-5819-830f-3b14af2bc369",
+            "title": "Visualisierung: pH-Werte starker und schwacher einprotoniger Basen berechnen",
+            "url": "/assets/goal-visualizations/chemie/edcfc5f0-900d-5819-830f-3b14af2bc369/edcfc5f0-900d-5819-830f-3b14af2bc369.png",
+            "provider": "OpenAI / ChatGPT-Codex built-in image_gen (model version not exposed)",
+            "description": "Schematisches vollständiges Lösen von NaOH im Vergleich zur teilweisen Protolyse einer schwachen Base B. Je drei formale Baseneinheiten dienen dem qualitativen Modell; keine universelle pH/pOH-Zahl und kein zahlenmäßiger Protolyseanteil werden behauptet.",
+            "altText": "Teilchenfelder vergleichen gelöstes NaOH und eine schwache Base mit Wasser als implizitem Lösungsmittel. Die schematischen Anzahlen illustrieren Modellunterschiede und ersetzen keine Messung.",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "draft"
+          }
+        ]
+      },
+      "wholeCurrentProfile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "base-model",
+            "essentialUnderstandingDe": "Starke Dissoziation und schwache Base/Wasser-Protolyse liefern verschiedene Hydroxidkonzentrationen bei gleichem Gehalt.",
+            "essentialUnderstandingEn": "Strong dissociation and weak-base/water protolysis give different hydroxide concentrations at equal content.",
+            "observablePerformanceDe": "Begründe vollständige oder unvollständige Umsetzung und berechne Anfangs-[OH−],pOH undpH mit dem temperaturgebundenenpKw.",
+            "observablePerformanceEn": "Justify complete or incomplete conversion and calculate initial[OH−],pOH andpH using temperature-boundpKw."
+          },
+          {
+            "id": "base-derivation",
+            "essentialUnderstandingDe": "Die schwache Base erfordert ihr eigenes Kb-MWG und Stoffbilanz; kleine Umsetzung und Wasservernachlässigung sind zu prüfen.",
+            "essentialUnderstandingEn": "The weak base requires its own Kb mass action/balance, checking small conversion and neglected water.",
+            "observablePerformanceDe": "Leite positive quadratische Lösung und Wurzelnäherung selbst her, prüfe Umsetzungsgrad/Fehler und benenne Temperatur- und Extremverdünnungsgrenzen.",
+            "observablePerformanceEn": "Independently derive the positive quadratic and square-root approximations, check conversion/error and state temperature/extreme-dilution limits."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "base-model",
+            "base-derivation"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "strong-weak-base",
+            "textDe": "NaOH und NH3 beziehungsweise B bei gleichem formalen Gehalt vergleichen.",
+            "textEn": "Compare NaOH and NH3 or B at equal formal content."
+          },
+          {
+            "id": "temperature-and-water",
+            "textDe": "pOH→pH nur mit gegebenem temperaturabhängigem pKw verwenden und den Wasserbeitrag prüfen.",
+            "textEn": "ConvertpOH→pH with the supplied temperature-dependentpKw and check water contribution."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "weak-base-derivation",
+            "taskDemandDe": "Bearbeite nur den B-Zweig von WEAK-MODEL-C1:0,0100 M,pKb4,75 bei25°C. Leite B+H2O⇌BH++OH−, MWG und positive Lösung her und prüfe die Wurzelnäherung.",
+            "taskDemandEn": "Work only the B branch of WEAK-MODEL-C1:0.0100 M,pKb4.75 at25°C. Derive B+H2O⇌BH++OH−, mass action and positive solution, checking the square-root approximation.",
+            "expectedPerformanceDe": "Kb=x²/(c0−x),x≈4,1290·10−4 M,pH≈10,616 nachpOH; Wurzel≈10,625. Rund4,13% Umsetzung und der kleine Wasserbeitrag begründen die Rechnung.",
+            "expectedPerformanceEn": "Kb=x²/(c0−x),x≈4.1290·10−4 M,pH≈10.616 viapOH; square-root≈10.625. About4.13% conversion and small water contribution justify the calculation.",
+            "understandingFocusDe": "Eigener Basenzweig statt automatischer Übernahme der Säurerechnung.",
+            "understandingFocusEn": "A distinct base branch rather than automatic reuse of acid calculation."
+          },
+          {
+            "id": "initial-base-comparison",
+            "taskDemandDe": "Nutze im vollständigen BASE-Fall ausschließlichV=0 für0,100 M NaOH/NH3 und vergleiche die Modelle bei gleichem Gehalt. Erkläre, welche Angaben bei anderer Temperatur/extremer Verdünnung neu gebraucht würden.",
+            "taskDemandEn": "Use onlyV=0 of the complete BASE case for0.100 M NaOH/NH3 and compare models at equal content. Explain inputs needed at another temperature/extreme dilution.",
+            "expectedPerformanceDe": "NaOH ergibtpH13,00; NH3 mit eigenemKb-Gleichgewicht≈11,12–11,13. Stärke ist nicht Gehalt. pH=pKw−pOH; Wasser darf nahe neutralen Konzentrationen nicht einfach entfallen. Keine Halb-, Salz- oder Überschusspunktrechnung ist für diesen Anfangs-pH-Atom zusätzlich Pflicht.",
+            "expectedPerformanceEn": "NaOH givespH13.00; NH3 with its ownKb equilibrium≈11.12–11.13. Strength is not content.pH=pKw−pOH; water cannot simply be omitted near neutral concentrations. Half-, salt- and excess-point calculations are not added requirements of this initial-pH atom.",
+            "understandingFocusDe": "Unabhängiger Modellvergleich und klar begrenzter Anfangsoperator.",
+            "understandingFocusEn": "Independent model comparison and a bounded initial-pH operator."
+          }
+        ]
+      },
+      "nativeProfile": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-plan/records/P105.current-owner.review.jsonl",
+        "sha256": "503da4f89402dcd7df55e17968a2f9cbc6db4edfa40424519b45ae7da7ab5199",
+        "bytes": 17150
+      },
+      "nativeLine": 2,
+      "activeOwnerConfig": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-normal-source-configs/P105.normal-source.config.json",
+        "sha256": "cdd456c04414f9aae461848b8da2aab58cde21e9eb00751b10330b17e3022da7",
+        "bytes": 1324
+      }
+    }
+  ],
+  "memoryDecisionFile": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current450-final-delivery-and-term-scope-integration-technical-20261018-v1/M450.full-original-memory-refs.current-normal.review.jsonl",
+    "sha256": "cce4cfa36f175082faaaf32d13335e160ca9377e8821841c6725680cacdfcf1b",
+    "bytes": 501109
+  },
+  "wholeCurrentMemoryDecision": {
+    "schemaVersion": 1,
+    "reviewId": "canonical-chemistry-full",
+    "ruleVersion": "memory-card-review-v1",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "goalId": "edcfc5f0-900d-5819-830f-3b14af2bc369",
+    "fingerprint": "sha256:dda2261ae4f12ffc2e02a73933ede8db56b0579fba10b6748713cf7f0f8163cd",
+    "status": "memory_required",
+    "memoryUseful": true,
+    "memoryGoalIds": [
+      "1f2021c0-c633-5240-ae97-e58ecc9d48ca",
+      "045efaa4-a91a-5a91-add9-bff49cbed324",
+      "076cb333-3b61-5025-8f32-32afc16f9987"
+    ],
+    "deckIds": [
+      "de_gymnasium_chemistry_equilibria_q3"
+    ],
+    "reviewedAt": "2026-10-16T03:45:34.965Z",
+    "reviewer": "/root/chemie_three_targeted_am_20261016; actual informed machine chemistry followup; no fresh blind description vote",
+    "reason": "Der aktuelle vollständige Anfangs-pH-Weg benötigt den zuverlässigen Abruf von pOH=−log10(a(OH−)) und pH+pOH=pKw(T). Die bereits vorhandene Karte chem_eq_q3_004 deckt im ausdrücklich verdünnten wässrigen Konzentrationsmodell die negativen Logarithmen und den Spezialwert14 nur bei25°C ab. Der vollständige Zieltext verlangt weiterhin die Temperaturbindung; ein abweichendes vorgegebenes pKw wird eingesetzt und14 nicht universalisiert. Kb-MWG, positive quadratische Lösung, Wurzelnäherung, kleiner Umsatz und Wassergrenze bleiben Herleitungs-/Modellierungsleistung statt neuer Formelkarte. Die drei bisherigen MemoryGoals, das vorhandene Deck, sämtliche Kartenbytes und Auswahl-/Sichtbarkeitsbindungen bleiben fachlich passend; keine neue Karte oder Kursplatzierung wird verlangt.",
+    "scientificDecisionSource": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-three-native19-description-fixes-current-informed-A-M-kind-20261016-v1/SCIENCE.actual-current-three-A-M-kind-informed-judgments.json",
+      "sha256": "sha256:7084ac3bf760495ab16a1a4be7c6ae0ff0e53f5875d4e9db90ca0c120d0bed6b",
+      "bytes": 23195,
+      "jsonPointer": "/judgments/0"
+    },
+    "informedReview": true,
+    "freshBlindVote": false,
+    "humanApproval": false,
+    "humanTrial": false
+  },
+  "wholeReferencedMemoryGoals": [
+    {
+      "id": "1f2021c0-c633-5240-ae97-e58ecc9d48ca",
+      "title": "Lernkarten - Gleichgewichte und Elektrochemie",
+      "titleEn": "Flashcards - Equilibria and Electrochemistry",
+      "description": "Die lernende Person kann zentrale Gleichgewichts-, Säure-Base- und Elektrochemie-Gleichungen mithilfe von Lernkarten sicher abrufen.",
+      "descriptionEn": "The learner can reliably recall core equilibrium, acid-base, and electrochemistry equations using flashcards.",
+      "weight": 0.5,
+      "tags": [
+        "GK",
+        "LK",
+        "srs-deck:de_gymnasium_chemistry_equilibria_q3",
+        "memorization"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "vocabularySource": "/data/de_gymnasium_chemistry_flashcards_equilibria_q3.de.json"
+      },
+      "contains": [],
+      "requires": [
+        "20f92ba0-f7f4-5407-bb96-07e30da9002f",
+        "48115ff7-7aca-5d0b-a9e7-7fc6c78434ef",
+        "8be14f15-2258-58e6-ae4e-38953f5d0570"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q3",
+        "area": "Chemisches Gleichgewicht"
+      },
+      "nodeKind": "memory",
+      "type": "atomic"
+    },
+    {
+      "id": "045efaa4-a91a-5a91-add9-bff49cbed324",
+      "shortKey": "canonical_chemistry_memory_selection_bw_lk_equilibria_q3",
+      "title": "Lernkarten - Gleichgewichte und Elektrochemie – Kursauswahl",
+      "titleEn": "Flashcards - Equilibria and Electrochemistry – course selection",
+      "description": "Die lernende Person kann die ausgewählten kompakten Begriffe, Formeln und Regeln dieses Chemie-Kurses mithilfe der zugehörigen Lernkarten sicher abrufen.",
+      "descriptionEn": "The learner can reliably recall the selected compact terms, formulas and rules of this chemistry course using the associated flashcards.",
+      "weight": 0.5,
+      "tags": [
+        "GK",
+        "LK",
+        "srs-deck:de_gymnasium_chemistry_equilibria_q3",
+        "memorization",
+        "select:chemistry-bw-lk-equilibria_q3"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "vocabularySource": "/data/de_gymnasium_chemistry_flashcards_equilibria_q3.de.json",
+        "memorySupportSelection": {
+          "authorRoot": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-acid-two-pairs-complete-cases-source-memory-author-successor-20261016-v1",
+          "status": "whole-author-successor-pending-independent-M-review",
+          "selectedCardIds": [
+            "chem_eq_q3_001",
+            "chem_eq_q3_002",
+            "chem_eq_q3_003",
+            "chem_eq_q3_004",
+            "chem_eq_q3_005",
+            "chem_eq_q3_007",
+            "chem_eq_q3_009",
+            "chem_eq_q3_011",
+            "chem_eq_q3_006"
+          ],
+          "role": "Bounded recall practice for already visible ordinary goals; no ordinary content mastery or additional curricular target is certified."
+        }
+      },
+      "contains": [],
+      "requires": [
+        "20f92ba0-f7f4-5407-bb96-07e30da9002f",
+        "48115ff7-7aca-5d0b-a9e7-7fc6c78434ef",
+        "8be14f15-2258-58e6-ae4e-38953f5d0570"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q3",
+        "area": "Chemisches Gleichgewicht"
+      },
+      "nodeKind": "memory",
+      "type": "atomic"
+    },
+    {
+      "id": "076cb333-3b61-5025-8f32-32afc16f9987",
+      "shortKey": "canonical_chemistry_memory_selection_ph_poh_relations",
+      "title": "pH- und pOH-Beziehungen abrufen",
+      "titleEn": "Recall pH and pOH relationships",
+      "description": "Die lernende Person kann die bereits erlernten Definitionen von pH und pOH als negative dekadische Logarithmen der jeweiligen Ionenkonzentrationswerte sowie die Beziehung pH + pOH = 14 für das verdünnte wässrige Modell bei 25 °C mithilfe der zugehörigen Lernkarte sicher abrufen.",
+      "descriptionEn": "The learner can reliably recall the previously taught definitions of pH and pOH as negative base-ten logarithms of the respective ion concentration values and the relation pH + pOH = 14 for the dilute aqueous model at 25 °C using the associated flashcard.",
+      "weight": 0.5,
+      "tags": [
+        "GK",
+        "LK",
+        "srs-deck:de_gymnasium_chemistry_equilibria_q3",
+        "memorization",
+        "select:chemistry-ph-poh-relations-only"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "vocabularySource": "/data/de_gymnasium_chemistry_flashcards_equilibria_q3.de.json",
+        "memorySupportSelection": {
+          "authorRoot": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-ph-two-narrow-memory-selections-and-explicit-course-placements-author-20261016-v1",
+          "status": "authored-candidate-pending-root-and-informed-independent-review",
+          "selectedCardIds": [
+            "chem_eq_q3_004"
+          ],
+          "role": "Recall of an already taught relationship only; no calculation, practical-performance or ordinary-content mastery is certified."
+        }
+      },
+      "contains": [],
+      "requires": [
+        "28bb9d15-f865-5843-a035-6066580fea64"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-chemistry",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "BC_REAKTION"
+        ],
+        "phase": "Q3",
+        "area": "Säure-Base"
+      },
+      "nodeKind": "memory",
+      "type": "atomic"
+    }
+  ],
+  "oldWholeCandidatePatch": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-nonBY-eleven-source-binding-author-20261018-v1/PATCH.four-view-five-target-additions.pending.json",
+    "sha256": "5b115c6a2bab2434e64d3d09a96a678ae822c3691850d23129c6560950b4f019",
+    "bytes": 7360
+  }
+}

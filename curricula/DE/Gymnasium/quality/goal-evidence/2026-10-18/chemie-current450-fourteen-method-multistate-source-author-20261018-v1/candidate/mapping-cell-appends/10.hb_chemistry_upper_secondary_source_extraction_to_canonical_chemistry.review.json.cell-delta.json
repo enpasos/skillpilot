@@ -1,0 +1,74 @@
+{
+  "artifactRole": "INACTIVE_MAPPING_CELL_APPEND_AUTHOR_CANDIDATE",
+  "activation": "independent-review-required",
+  "mappingPath": "curricula/DE/Gymnasium/mapping/DE-HB/upper-secondary/hb_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+  "beforeWholeFilePinForAuditNotGlobalCAS": {
+    "path": "curricula/DE/Gymnasium/mapping/DE-HB/upper-secondary/hb_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+    "sha256": "2f8ea7eb3c8b4d3a3fe139d3fb0243185c86ef16d86aa68853885a37496cf1cf",
+    "bytes": 671461
+  },
+  "sourceExtractionPathAtAuthoring": "curricula/DE/Gymnasium/input/HB/upper-secondary/source-extraction/DE_HB_CHEMIE_SEKII_GYO_2022.source-extraction.json",
+  "wholeUnrelatedRowsMustBePreserved": true,
+  "cellAppends": [
+    {
+      "pairAbsentExpectedBefore": {
+        "legacyGoalId": "hb-chemistry-sekii-gyo2022-clause-p09-std-e-standard-e1-e12-gk_lk-05",
+        "canonicalGoalId": "1351706f-4ea6-56e9-951b-87b24cbcdee8"
+      },
+      "mappingToAppend": {
+        "legacyGoalId": "hb-chemistry-sekii-gyo2022-clause-p09-std-e-standard-e1-e12-gk_lk-05",
+        "canonicalGoalId": "1351706f-4ea6-56e9-951b-87b24cbcdee8",
+        "matchType": "partial"
+      },
+      "boundedAuthorWitness": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-author-20261018-v1/CANDIDATE.one-hundred-four-direct-partial-contributions.inactive.json",
+        "jsonPointer": "/mappings/6"
+      },
+      "existingAuthoritativeSourceDecisionsCAS": [
+        {
+          "jsonPointer": "/decisions/21",
+          "wholeDecision": {
+            "sourceGoalId": "hb-chemistry-sekii-gyo2022-clause-p09-std-e-standard-e1-e12-gk_lk-05",
+            "sourceClauseIds": [
+              "HB2022-p09-STD-E-standard-E1-E12-GK_LK-05"
+            ],
+            "topicCode": "STD-E",
+            "sourceSpan": "physical PDF9, printed 9; standard-E1-E12; GK_LK block item 5",
+            "sourceCourseLevel": "GK_LK",
+            "sourceScopeExact": {
+              "officialTopicStatus": "cross_topic_standard",
+              "selectionRule": null,
+              "selectedByLearner": null,
+              "universalOfficialRequirement": true
+            },
+            "decision": "mapped",
+            "canonicalGoalIds": [
+              "42391b16-bbae-5c77-84e1-d488e714167b",
+              "f79f15c0-e848-5e17-9eb5-26753d35c93b",
+              "99d41b0f-e958-54cf-a077-9bed1704a303"
+            ],
+            "matchType": "partial",
+            "rationale": "Whole source union scientifically confirmed by the two referenced independent machine judgments. Each listed carrier contributes only its documented part; course, topic-choice, context and actual-performance qualifications remain binding.",
+            "reviewedAt": "2026-10-17",
+            "reviewer": "paired independent AI source reviewers; technical integration does not add a scientific vote",
+            "scientificEvidence": [
+              {
+                "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-first70-source-binding-paired-synthesis-20261017-v1/RECEIPT.actual-paired-first70-source-bindings-65-accepted-5-held.json",
+                "jsonPointer": "/records/21"
+              }
+            ],
+            "currentUnionRef": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-HB232-final-source-mapping-integration-20261017-v1/SOURCE232.paired-current-unions.json",
+              "jsonPointer": "/rows/21"
+            },
+            "wholeSourceCompletionFromSingleGoalMasteryAllowed": false
+          },
+          "sha256": "a687f3a5bcd988cbb75278926752db7ac4f0cc98582d52fe4d00ee080e97c9fc"
+        }
+      ],
+      "decisionIntegrationBoundary": "Following specific independent acceptance, merge this bounded partial target contribution into the current authoritative source decision without dropping other targets or promoting whole-source coverage. A prior whole-originalHOLD/REJECT is not automatically reversed. New operator cells require their own finite partial decision; old decision/whole-source history remains."
+    }
+  ],
+  "wholeFileReplacement": false,
+  "wholeSourceCredit": false
+}

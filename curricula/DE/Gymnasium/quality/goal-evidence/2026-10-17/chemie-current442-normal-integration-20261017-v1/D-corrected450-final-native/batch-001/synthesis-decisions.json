@@ -1,0 +1,328 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "chemie-final450-ten-actual-independent-pair-root-synthesis-20261018-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex maintainer; actual sealed independent A/B pair; machine review only",
+  "synthesizedAt": "2026-10-18T00:29:37.283Z",
+  "batch": {
+    "batchId": "chemie-final-current-context-d-001-v1",
+    "batchManifestDigest": "sha256:e84b0d9628236c199fd9c158800e028c3851ddb16abbaabbbe38dd8614c30bda",
+    "configDigest": "sha256:57d846b64bcea3ef646b60d194bfc89f0c545683aa87ed8d49c5c527b5f9b122",
+    "bundleFingerprint": "sha256:780f958704c19be8e46e9333cab795801ede152385de210e7a7504be2e96681f",
+    "bookDigest": "sha256:7ca7bdcb41e8671d726c00aec7f8729975b9958923b6fa5b0f15a1047a600621",
+    "reviewInputFingerprint": "sha256:f2836279f774b6d7ac0de6b0b52ca04aa45a51082c66f68073c387718689cecc",
+    "dualSummaryDigest": "sha256:652c434974f81d112fcc8c780d6059874a6bae0715237d56f2b6d933f7fbb582",
+    "canonicalLandscapeDigest": "sha256:a60d2eff467548ef02f93b3a759e1e3bea10306b7876937fa7f038582b0208e4"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-001-v1-a",
+      "campaignDigest": "sha256:2941c1725b1002f885179bd598d21477e2ec26ea0c4b3f537ed35ac4384708a5",
+      "roundId": "chemie-final-current-context-d-001-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-001-v1-independent-a",
+      "reviewInputFingerprint": "sha256:f2836279f774b6d7ac0de6b0b52ca04aa45a51082c66f68073c387718689cecc",
+      "batchId": "chemie-final-current-context-d-001-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:7c7f9587e0dd442ecc0777d056f7d7b9a21a8a9c0c79acb2847e7c0aeee90690",
+      "runId": "chemie-final-current450-native-independent-a-20261018-v1",
+      "runManifestDigest": "sha256:74c6a5f9c09fab256af6793d8b41e94c2764b98c64888722e30086ac7631e051",
+      "resultsDigest": "sha256:9c464209ee987e285e1a495bd9c982ebe188ffbf4a8e7ee11ac3844c02004b6e"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-001-v1-b",
+      "campaignDigest": "sha256:ce4acdbee47ead3e24417caf6afab15e4576132d2af112ea6be9c644b33e4ea9",
+      "roundId": "chemie-final-current-context-d-001-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-001-v1-independent-b",
+      "reviewInputFingerprint": "sha256:f2836279f774b6d7ac0de6b0b52ca04aa45a51082c66f68073c387718689cecc",
+      "batchId": "chemie-final-current-context-d-001-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:2fb88890c0f041ad5be9322e8b6a490ec53c5e16762d1462d5e7d8ade1bf1aed",
+      "runId": "chemie-final-current-context-d-001-v1-stock-blind-b-run-001",
+      "runManifestDigest": "sha256:85984d5dec20852b6abd538a32678b7cd6960df44ed1b7d4da7a5afefd4a2ee4",
+      "resultsDigest": "sha256:68ce0d6885a7dc7291a15888aeb39083cc02c749eebe878a965cd4475f572d53"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "chemie-final450-ten-actual-independent-pair-root-synthesis-20261018-v1-decision-001",
+      "goalId": "127e2fc9-23f3-5ce8-a1c9-8c9e014c8a8a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:69216533559a13786b03fb06224b681fef5ccc572420b0beb323519ec03b759e",
+      "pageFingerprint": "sha256:07350904fcc02ef97721be417d474a7af46f50862fd98826ec453451f074f7d8",
+      "goalReviewContextFingerprint": "sha256:d3e963ca75bcdf1560036aa13ffd6cf2702cf0ae96ee6f0d3b63fab5857d547c",
+      "finalText": {
+        "titleDe": "Zucker in Alltag und Ernährung bewerten",
+        "titleEn": "Evaluate sugars in everyday life and nutrition",
+        "descriptionDe": "Die lernende Person kann die Verwendung und Bedeutung wichtiger Kohlenhydrate und Zucker im Alltag und in der Ernährung kriteriengeleitet bewerten.",
+        "descriptionEn": "The learner can evaluate the use and significance of important carbohydrates and sugars in everyday life and nutrition using criteria."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-final-current450-native-independent-a-20261018-v1.001",
+          "recordDigest": "sha256:94482a3fae49d46fd47e5125232171f5308c9089b7ddfe1b36554d0f13ca100b"
+        },
+        "second": {
+          "recordId": "chemie-final-current-context-d-001-v1-stock-blind-b-run-001.record-001",
+          "recordDigest": "sha256:27384a1ef3119fe2e9194bc8e986e8adbd3e85982ed023edca2883de690fc88c"
+        }
+      },
+      "rationaleDe": "A verbindet Menge, Lebensmittel-Funktion und Kriterien und trennt die industrielle Prozesskompetenz ausdrücklich. B bestätigt die beiden ganzen Fälle einschließlich 20/25-g-Vergleich. Beide aktuellen P-Empfehlungen sind none.",
+      "rationaleEn": "A connects quantity, food function and criteria while separating industrial process evaluation. B confirms both whole cases including the20/25g comparison; both current P recommendations are none."
+    },
+    {
+      "decisionId": "chemie-final450-ten-actual-independent-pair-root-synthesis-20261018-v1-decision-002",
+      "goalId": "2f3cdec5-f845-5b0f-841e-8b1d47de0281",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d461445003b11097f867ca49042832ed5e3f1b9def569704a37106dbef3d983e",
+      "pageFingerprint": "sha256:0f89a34dd7da45f330adab7b5ce1e8b0378437e05d4632626a3380dcc8eca9ff",
+      "goalReviewContextFingerprint": "sha256:8a2657d8b91bd2a2678c4903ad3b3b597da9a3f2dcd69c392674e0d54b08a25c",
+      "finalText": {
+        "titleDe": "Fette über Struktur und Eigenschaften erklären",
+        "titleEn": "Explain fats through structure and properties",
+        "descriptionDe": "Die lernende Person kann Triacylglyceride über Estergruppen identifizieren und ausgewählte physikalische Eigenschaften durch Fettsäurereste, Sättigung und räumlichen Bau erklären.",
+        "descriptionEn": "The learner can identify triacylglycerols using ester groups and explain selected physical properties through fatty acid residues, saturation and spatial structure."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-final-current450-native-independent-a-20261018-v1.002",
+          "recordDigest": "sha256:4bafc888ee7c23d7244a4d897267721ed1524cc1c18e0c86d2f8027cecae1f00"
+        },
+        "second": {
+          "recordId": "chemie-final-current-context-d-001-v1-stock-blind-b-run-001.record-002",
+          "recordDigest": "sha256:242258304854098c648c67b996071ef951d5996ceab7b1c714624ce462aeb1ed"
+        }
+      },
+      "rationaleDe": "A hält Packung und Löslichkeit als gemeinsame physikalische Struktur-Eigenschaftskompetenz zusammen. B bestätigt cis/trans- und Lösungsmitteltransfer; Fettkennzahlen und Hydrierung bleiben eigene Ziele.",
+      "rationaleEn": "A integrates packing and solubility as one physical structure-property competence. B confirms cis/trans and solvent transfer; fat indices and hydrogenation remain separate goals."
+    },
+    {
+      "decisionId": "chemie-final450-ten-actual-independent-pair-root-synthesis-20261018-v1-decision-003",
+      "goalId": "17772924-46b6-5747-a77b-a8c6944d109d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b65b7d1fe7e14cb19cde0d81bd78292060bbce2cac94c1be8251dd573bcfd2f5",
+      "pageFingerprint": "sha256:9049f9fd53808ec03152992548db599f0f2b52778739364cd0a2351604acf9a5",
+      "goalReviewContextFingerprint": "sha256:4179fbf9719f6c42dd3a76923824a99f83d47a8242e4b9bf7ab3b9b424ce6795",
+      "finalText": {
+        "titleDe": "Fetthärtung als katalytische Addition erklären",
+        "titleEn": "Explain fat hardening as catalytic addition",
+        "descriptionDe": "Die lernende Person kann die katalytische Hydrierung ungesättigter Fettsäurereste in einem gegebenen Fettmodell als Addition von Wasserstoff bilanzieren und aus dem veränderten Sättigungsgrad begrenzte Aussagen zu Packung und Konsistenz ableiten, wobei sie erhaltene Esterbindungen, vollständige und teilweise Hydrierung sowie die Grenzen von Gesundheits- und Eigenschaftsaussagen unterscheidet.",
+        "descriptionEn": "The learner can balance catalytic hydrogenation of unsaturated fatty-acid residues in a supplied fat model as hydrogen addition and infer bounded packing and consistency changes from altered saturation, distinguishing retained ester bonds, complete and partial hydrogenation, and limits of health and property conclusions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-final-current450-native-independent-a-20261018-v1.003",
+          "recordDigest": "sha256:ab4eee908df882e8d6a1fdd57f883e0d2f53ccb30f8423904383a73067f9de85"
+        },
+        "second": {
+          "recordId": "chemie-final-current-context-d-001-v1-stock-blind-b-run-001.record-003",
+          "recordDigest": "sha256:ac09c53246dcc778751feeaf11e4d3072334d784171de919f5aaad8dc17934ff"
+        }
+      },
+      "rationaleDe": "B konkretisiert die sechs neu gebundenen H-Atome und drei mol H2 bei vollständiger Addition; A bestätigt die erhaltenen Ester und Grenzen der Teilhydrierung. Modellleistung ist kein ausgeführter Versuch oder Gesundheitsnachweis.",
+      "rationaleEn": "B specifies six added H atoms and three molH2 for full addition; A confirms retained esters and partial-hydrogenation limits. Model work is not an executed experiment or health finding."
+    },
+    {
+      "decisionId": "chemie-final450-ten-actual-independent-pair-root-synthesis-20261018-v1-decision-004",
+      "goalId": "64b03eff-a967-54a1-ace3-89cb7650a65c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:23107fd252d6de260d1442743fd7c0634a63900dfaa6b8c4cc390cd552c383aa",
+      "pageFingerprint": "sha256:3328c659b45641c9bad35babf9264752dedf25552ad9740516f350b19bcf442b",
+      "goalReviewContextFingerprint": "sha256:36bbc22fd52265e0378c8f4f9bcc7be2751e11a43210443655ee70c90328eab2",
+      "finalText": {
+        "titleDe": "Substituenteneffekte in Farbstoff-Molekülen erklären",
+        "titleEn": "Explain substituent effects in dye molecules",
+        "descriptionDe": "Die lernende Person kann das Donator-Akzeptor-Konzept auf Farbstoff-Moleküle anwenden und den Einfluss funktioneller Gruppen auf die Farbigkeit der zugehörigen Stoffe erklären.",
+        "descriptionEn": "The learner can apply the donor-acceptor concept to dye molecules and explain how functional groups influence the color of the corresponding substances."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-final-current450-native-independent-a-20261018-v1.004",
+          "recordDigest": "sha256:b97fa6ca798c0d7ce20e2a32f78da06ce3481cdf4212d9cb626e2fc2e85675e8"
+        },
+        "second": {
+          "recordId": "chemie-final-current-context-d-001-v1-stock-blind-b-run-001.record-004",
+          "recordDigest": "sha256:3304c2f49bb01f5f48328df64582cd89c7d57c0a53841fcce4e7d54871127294"
+        }
+      },
+      "rationaleDe": "A trennt Absorptionsverschiebung und wahrgenommene Farbe und begrenzt historische HB-Begriffe auf den gegebenen Kontext. B bestätigt Kopplungsbruch und fehlende universelle Gruppenregel. Der gesonderte Bildbefund bleibt offen; dieses D-KEEP ist keine V-Freigabe.",
+      "rationaleEn": "A distinguishes absorption shift from perceived colour and bounds historical HB terms to the supplied context. B confirms coupling interruption and no universal substituent rule. The separate visual finding remains open; this D keep grants no V approval."
+    },
+    {
+      "decisionId": "chemie-final450-ten-actual-independent-pair-root-synthesis-20261018-v1-decision-005",
+      "goalId": "78621f85-a873-51ba-924a-2c9e077c5acb",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:1b9702eb8502d40eeada5415418c1d933c0a9ffc3b80c1a8818b4489f37518ef",
+      "pageFingerprint": "sha256:1fe58d8aa520a15b0ba3c7c5877952d548c258078b444f21268b3f739a5921f8",
+      "goalReviewContextFingerprint": "sha256:1779369ca8b19d46674be9b078b2af164e3daadfd7003d5e0edd5b379e09be4f",
+      "finalText": {
+        "titleDe": "Fettkennzahlen strukturbezogen auswerten",
+        "titleEn": "Interpret fat indices through molecular structure",
+        "descriptionDe": "Die lernende Person kann Verseifungszahl und Iodzahl aus gegebenen stöchiometrischen Modellen mit Einheiten herleiten und auswerten, die Kennzahlen mit Estergruppen und Doppelbindungen pro Fettmasse verknüpfen und daraus unter offengelegten Annahmen begrenzte Aussagen zu Zusammensetzung und oxidativer Haltbarkeit ableiten, ohne eine eindeutige Molekülstruktur, cis/trans-Verteilung oder Haltbarkeitsdauer vorzutäuschen.",
+        "descriptionEn": "The learner can derive and interpret saponification and iodine values with units from supplied stoichiometric models, connect them to ester groups and double bonds per mass of fat, and infer bounded composition and oxidative-stability statements under explicit assumptions without pretending to identify a unique molecular structure, cis/trans distribution or shelf-life duration."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-final-current450-native-independent-a-20261018-v1.005",
+          "recordDigest": "sha256:b3bfa5059eaf89f734bf84d1fa571dd0b5f15b6f46c332642e6b5bf374bfb2b9"
+        },
+        "second": {
+          "recordId": "chemie-final-current-context-d-001-v1-stock-blind-b-run-001.record-005",
+          "recordDigest": "sha256:23e4b57d8aafb5314cebe8a335c4404f8655dd860a6a9ec3e8f77a9f6a72b343"
+        }
+      },
+      "rationaleDe": "B kontrastiert die beiden massennormierten stöchiometrischen Größen sowie Mischung, freie Säuren und Lagergrenzen. A bestätigt Einheiten, Strukturbezug und echte veränderte Bedingungen. Beide sehen eine kohärente Deutungskompetenz.",
+      "rationaleEn": "B contrasts both mass-normalised stoichiometric quantities and mixture, free-acid and storage limits. A confirms units, structural interpretation and genuinely changed conditions. Both identify one coherent interpretation competence."
+    },
+    {
+      "decisionId": "chemie-final450-ten-actual-independent-pair-root-synthesis-20261018-v1-decision-006",
+      "goalId": "7f140b34-ed26-59e7-8ad2-ccb6b56bc9d6",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:5dfa0a7e6ce7ba85e71cba28ce8379619eded217571b43633d30188cd49e634a",
+      "pageFingerprint": "sha256:202148185aca352462fae439c1b26da4a585200206f7d367fe63a737820a1462",
+      "goalReviewContextFingerprint": "sha256:06f1902a333190de4a027ea710e3608eb9ada940e90d4ddb24107538dcdcc425",
+      "finalText": {
+        "titleDe": "Chemische Anwendungen und ihre gesellschaftliche Bedeutung diskutieren",
+        "titleEn": "Discuss chemical applications and their social significance",
+        "descriptionDe": "Die lernende Person kann Aufgaben und Anwendungsbereiche der Chemie an konkreten Beispielen beschreiben und ihre Bedeutung für Gesellschaft, Mensch und Umwelt fachlich begründet diskutieren.",
+        "descriptionEn": "The learner can describe tasks and application areas of chemistry using concrete examples and discuss their significance for society, people, and the environment with scientific justification."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-final-current450-native-independent-a-20261018-v1.006",
+          "recordDigest": "sha256:d4038644d6c46ae82a18022cbea5a6f06abd27c5b810833ca50a7cdcaaeb0211"
+        },
+        "second": {
+          "recordId": "chemie-final-current-context-d-001-v1-stock-blind-b-run-001.record-006",
+          "recordDigest": "sha256:4c5f83b5f8266030d7b8695cdc557682b984e5a9f962b2d66d12d16255cc75e9"
+        }
+      },
+      "rationaleDe": "A bindet die vollständigen Funktionskarten an fachlich begründete gesellschaftliche Folgen; B bestätigt echte veränderte Funktionsbedingungen. Die zusätzlichen HB-Teilrouten und eigene Erwerbserweiterungen ersetzen keine amtliche Vollabdeckung.",
+      "rationaleEn": "A connects the whole functional cards to scientifically justified societal consequences; B confirms genuinely changed functional conditions. Additional HB subroutes and own acquisition extensions confer no complete official source coverage."
+    },
+    {
+      "decisionId": "chemie-final450-ten-actual-independent-pair-root-synthesis-20261018-v1-decision-007",
+      "goalId": "87d8cc68-fe82-5273-9e43-c18b566ecb6c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:555bab57ba818a7dcd61c9a5be0ee6634aff9f9e384dd4de65a10010774d823f",
+      "pageFingerprint": "sha256:c3df36084cce65bf914f321ae60c6cd32ee148f778ef429e339cedd2d1b96d0f",
+      "goalReviewContextFingerprint": "sha256:2306208f5a2aa442032f7aea08f724b64bf75d33e3da0fd155e20edd23952d0c",
+      "finalText": {
+        "titleDe": "Farbigkeit durch delokalisierte Elektronen erklären",
+        "titleEn": "Explain color through delocalized electrons",
+        "descriptionDe": "Die lernende Person kann die Absorption bestimmter Lichtwellenlängen als Anregung delokalisierter Elektronen erklären und Farbigkeit mithilfe eines Energiestufenschemas begründen.",
+        "descriptionEn": "The learner can explain absorption of specific wavelengths as excitation of delocalized electrons and justify color using an energy-level scheme."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-final-current450-native-independent-a-20261018-v1.007",
+          "recordDigest": "sha256:6e3f500e720cb368e16674c61e8a3dc7c0b40acab8ef721f8c5fabea541ca037"
+        },
+        "second": {
+          "recordId": "chemie-final-current-context-d-001-v1-stock-blind-b-run-001.record-007",
+          "recordDigest": "sha256:a1a76967d9a39b13b2051c08e455b9849aca147bed3e4900983a7a4a3691f788"
+        }
+      },
+      "rationaleDe": "A formuliert erlaubte Anregung, inverse Energie-Wellenlängen-Beziehung und Grenzen der Farbaussage. B bestätigt die ganzen Energiefälle und Rechnungen. Eine zusätzliche Herkunfts-, Klassen- oder historische Begriffsprüfung wird nicht eingeführt.",
+      "rationaleEn": "A states allowed excitation, inverse energy-wavelength relation and limits of perceived-colour inference. B confirms whole energy cases and calculations. No additional origin, class or historical-term assessment is introduced."
+    },
+    {
+      "decisionId": "chemie-final450-ten-actual-independent-pair-root-synthesis-20261018-v1-decision-008",
+      "goalId": "92c99237-1c74-54fc-bf08-9191656afaa6",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:39172e4f75403e2596259761b48d10c53b798bd0809d43eab31ef1eefc6772ac",
+      "pageFingerprint": "sha256:31355f8a7a8e5a9758ed2997021df7372c4095efeb4bc111904cb0e823fb555e",
+      "goalReviewContextFingerprint": "sha256:55b08301ffa751be792f05b2b410022ee5446866050f9170cc558a219492ec4c",
+      "finalText": {
+        "titleDe": "Moleküldarstellungen situationsgerecht umwandeln",
+        "titleEn": "Convert molecular representations appropriately",
+        "descriptionDe": "Die lernende Person kann auf Grundlage ausreichender Strukturinformationen verschiedene Formeldarstellungen von Molekülen ineinander überführen und situationsgerecht eine geeignete Darstellung auswählen.",
+        "descriptionEn": "The learner can convert different formula representations of molecules into one another using sufficient structural information and select an appropriate representation for the situation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-final-current450-native-independent-a-20261018-v1.008",
+          "recordDigest": "sha256:74e861b576ba13a1fc429ebdd174dc80eb3ba26d4881f9233881e0cbe1dd11b2"
+        },
+        "second": {
+          "recordId": "chemie-final-current-context-d-001-v1-stock-blind-b-run-001.record-008",
+          "recordDigest": "sha256:1ab32410661a29e83a03f51f13e846e022e74f79710926a1d2ea91be1fa45bde"
+        }
+      },
+      "rationaleDe": "B erhält das methodenneutrale bundesweite Grundziel und die ausreichende Strukturinformation. A bestätigt den zusätzlichen, ausschließlich anwendbaren HB/SekII/Thema2.1-Nachweis mit beiden eigenen Werkzeugen und Produkten. Fehlende Voraussetzungen sind keine erbrachte Leistung.",
+      "rationaleEn": "B preserves the nationwide method-neutral foundation and sufficient structural information. A confirms the additional applicable HB/SekII/topic2.1 evidence using both own tools and products. Missing prerequisites never count as performed evidence."
+    },
+    {
+      "decisionId": "chemie-final450-ten-actual-independent-pair-root-synthesis-20261018-v1-decision-009",
+      "goalId": "c21a611c-1069-5b32-b673-4f37a89b094f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:afd1bdf2e964c984fd1179e4e22021e7d1fcc26b55f4ef70f4f9477173adecea",
+      "pageFingerprint": "sha256:cfc0bd78925c74293bb83660a8998401d1c54a9b75c819adc084ac2152eeae37",
+      "goalReviewContextFingerprint": "sha256:bfebb35ed2d35b79e58c699bd175472c4fa6462f27203ad5acf6aeb93eb4389d",
+      "finalText": {
+        "titleDe": "Kunststoffrohstoffe nachhaltig bewerten",
+        "titleEn": "Evaluate plastic raw materials sustainably",
+        "descriptionDe": "Die lernende Person kann ausgewählte Rohstoffe der Kunststoffproduktion hinsichtlich Nachhaltigkeit, Umweltschutz und Entsorgung vergleichen und bewerten.",
+        "descriptionEn": "The learner can compare and evaluate selected raw materials for plastic production in terms of sustainability, environmental protection, and disposal."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-final-current450-native-independent-a-20261018-v1.009",
+          "recordDigest": "sha256:c30cfdec28b04dcc791eee1a4bd0d1deb2d04a749b7b63388f956d37bb6d0f45"
+        },
+        "second": {
+          "recordId": "chemie-final-current-context-d-001-v1-stock-blind-b-run-001.record-009",
+          "recordDigest": "sha256:48143223a9cc6d8cd511e67173d4fedcfb87a40171ac000c75fc93c11c56cc0e"
+        }
+      },
+      "rationaleDe": "B konkretisiert die funktionale Einheit von insgesamt 20 kg je 1000 Beutel und trennt Herkunft, Polymerchemie und Verwertung. A bestätigt Mengenwechsel, Mikroplastikfall und Aussagegrenzen. Der aktuelle ganze P benötigt keine Revision.",
+      "rationaleEn": "B specifies the functional unit of20kg total per1000bags and distinguishes origin, polymer chemistry and recovery. A confirms usage changes, the microplastic case and inference limits. The current whole P requires no revision."
+    },
+    {
+      "decisionId": "chemie-final450-ten-actual-independent-pair-root-synthesis-20261018-v1-decision-010",
+      "goalId": "d786a03c-2378-5ff8-bac2-0c7b5091e412",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:2c572cfe20d2a0ff9850930caaabb014d840ccb56dc19f09a8bde21ada8e914b",
+      "pageFingerprint": "sha256:64b029c38e244381b36c04bc3f6e0853b76bda9698ee190559cef34e6b60c399",
+      "goalReviewContextFingerprint": "sha256:c4f1fae88d76312b7154737f13feab65cbcd4c0dc3f1e90bd4334f67a21d0063",
+      "finalText": {
+        "titleDe": "Industrielle Zuckergewinnung prozessbezogen bewerten",
+        "titleEn": "Evaluate industrial sugar production using its process",
+        "descriptionDe": "Die lernende Person kann eine bereitgestellte industrielle Rübenzucker-Prozesskette anhand ihrer Stoffänderungen und Trennprinzipien erklären und ihre Auswirkungen aus ökologischer, ökonomischer und sozialer Perspektive kriteriengeleitet bewerten, indem sie Vergleichsgrenzen, Unsicherheiten und veränderte Produktionsbedingungen berücksichtigt.",
+        "descriptionEn": "The learner can explain a supplied industrial beet-sugar process through substance changes and separation principles and evaluate its environmental, economic and social effects using explicit criteria, accounting for comparison limits, uncertainty and changed production conditions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-final-current450-native-independent-a-20261018-v1.010",
+          "recordDigest": "sha256:288c560bfadc12a15265f6cb69665de49525fb26f6d8235b03b3dfd5afb03a9d"
+        },
+        "second": {
+          "recordId": "chemie-final-current-context-d-001-v1-stock-blind-b-run-001.record-010",
+          "recordDigest": "sha256:a1671d3539f7f151009c1fb42e7261421fef597e48bf714d76ecaaf60ea1a28c"
+        }
+      },
+      "rationaleDe": "B verbindet die vollständige Prozesskette mit allen drei Bewertungsperspektiven und der erst anschließend vorgelegten Wasserkreislaufvariation. A bestätigt Stoff-/Trennprinzipien, Unsicherheiten und Grenzen der amtlichen Themenwahl.",
+      "rationaleEn": "B connects the whole process chain to all three evaluation perspectives and the subsequently supplied water-loop variation. A confirms substance/separation principles, uncertainty and official topic-choice limits."
+    }
+  ],
+  "manifestFingerprint": "sha256:99377833b072f6e4ebe674fccfc5a9d89d68f603ad63442f96ebc1e55cd15b76"
+}

@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-004-v1-resolution-96d3f50b-62f7-5db4-8426-43b4a0c26543",
+  "goal": {
+    "goalId": "96d3f50b-62f7-5db4-8426-43b4a0c26543",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:da6c553ec74b489415c5c222dbe4f647fb4d26468da342910952d98f6f2b2023",
+    "pageFingerprint": "sha256:bd4f789a467bf38878feec6796e1f0c38fa4c1ae8e15306f67ffddbd1324621d",
+    "goalReviewContextFingerprint": "sha256:05bfafa5ba2492b60a6f5c456a57eda171e170ba51656ef8c12404423a071a87",
+    "finalText": {
+      "titleDe": "Acetylsalicylsäure aus Schmerztabletten extrahieren und vergleichen",
+      "titleEn": "Extract and compare acetylsalicylic acid from pain tablets",
+      "descriptionDe": "Die lernende Person kann ein Experiment zur Extraktion von Acetylsalicylsäure aus Schmerztabletten planen und die Eigenschaften der extrahierten Substanz mit schulexperimentell hergestellter Acetylsalicylsäure vergleichen.",
+      "descriptionEn": "The learner can plan an experiment to extract acetylsalicylic acid from pain tablets and compare the extracted substance with acetylsalicylic acid prepared in a school experiment."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-004-v1-a",
+      "campaignDigest": "sha256:9f49c2740669f7ed36feb828f9f8fbf595137952444feadd39e6636d8aa89cee",
+      "roundId": "chemie-final-current-context-d-004-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-004-v1-independent-a",
+      "reviewInputFingerprint": "sha256:05932460b60d1d36324c4bd65a48bcd0a5fe66088c89302fdebe64beca38e104",
+      "goalReviewContextFingerprint": "sha256:05bfafa5ba2492b60a6f5c456a57eda171e170ba51656ef8c12404423a071a87",
+      "batchId": "chemie-final-current-context-d-004-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch004-20261018",
+      "runManifestDigest": "sha256:860f1a557a07e28c6af90a01f00ebf8a49e6fb81e38ef37281b5dee695ee7891",
+      "resultsDigest": "sha256:33bf50a914eb196e9c1bc3a74a7a205b97c38e014eae746547ed2dfff792b039",
+      "recordId": "codex-reviewer-a-final163-batch004-20261018.016",
+      "recordDigest": "sha256:29be484c503fb88ad69ba9460aba75923cfc43ab3c3b2b41a9c77e584026f3f9"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-004-v1-b",
+      "campaignDigest": "sha256:eb0a6a8bfd9326c9da6104480580f2824f20bebcd54ad258ec5b5ecedd511843",
+      "roundId": "chemie-final-current-context-d-004-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-004-v1-independent-b",
+      "reviewInputFingerprint": "sha256:05932460b60d1d36324c4bd65a48bcd0a5fe66088c89302fdebe64beca38e104",
+      "goalReviewContextFingerprint": "sha256:05bfafa5ba2492b60a6f5c456a57eda171e170ba51656ef8c12404423a071a87",
+      "batchId": "chemie-final-current-context-d-004-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-004-20261018",
+      "runManifestDigest": "sha256:462a31ff8568ab194b6453b4a575269655a339fccdcaefe3a889f1c0386eb3eb",
+      "resultsDigest": "sha256:59784196a1346be76d18c8e2bb0dce57480d2a3daf93f3217588eb58d6cc6281",
+      "recordId": "chemie-final163-native-b-004-20261018:96d3f50b-62f7-5db4-8426-43b4a0c26543",
+      "recordDigest": "sha256:34d0e250f01cabbb7c06936fcbbd04764e35266b22a9eca4ba2143508fbbb99e"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:14644ad1dc6daad38fa105e8dcda4988764bf5544ad0303798c9afec70301ba8"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-004-20261018-v1",
+    "manifestDigest": "sha256:f8c23f4cfaabeda104b822b75b02eabbb05ae2a58f66246e6d76815c2be6f54a",
+    "manifestFingerprint": "sha256:47331b90b9c9747c454cd4e4bf2073fcf661e82b97577552be6a0e71defced6c",
+    "decisionId": "chemie-final163-paired-D-only-004-20261018-v1-decision-014"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-004-20261018-v1-decision-014",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:29:30.204Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch004-20261018.016): Die Sprachfassungen verlangen Planung und Eigenschaftsvergleich, keine unevidenzierte Ausführung. Das ganze P bilanziert Hydrolyse korrekt mit zwei OH− und unterscheidet 96,8%-Modellrückgewinnung von Reinheit. B (chemie-final163-native-b-004-20261018:96d3f50b-62f7-5db4-8426-43b4a0c26543): Der Beschreibungstext fordert Planung und Vergleich, keine eigene Extraktionsdurchführung. P wahrt diese Grenze, begründet Schutz vor Hydrolyse und trennt 96,8%-Modellrückgewinnung von unbekannter Reinheit; beaufsichtigter flammenfreier Umgang bleibt Kontext des Plans.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch004-20261018.016; chemie-final163-native-b-004-20261018:96d3f50b-62f7-5db4-8426-43b4a0c26543). Their current English understanding evidence is retained: A: Extraction should preserve ASA through differential solubility; hydrolysis, recovery, identity and purity are distinct questions. B: Extraction uses solubility differences while retaining ingredient identity; recovery, purity and identity are distinct claims. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Extraktion soll ASS durch unterschiedliche Löslichkeit erhalten; chemische Hydrolyse, Rückgewinnung, Identität und Reinheit sind verschiedene Fragen.",
+      "essentialUnderstandingEn": "Extraction should preserve ASA through differential solubility; hydrolysis, recovery, identity and purity are distinct questions.",
+      "observablePerformanceDe": "Plant sichere Extraktion/Filtration/Kristallisation und vergleicht gegebene Schmelz-/TLC-Daten unter gleichen Bedingungen.",
+      "observablePerformanceEn": "Plans safe extraction/filtration/crystallisation and compares supplied melting/TLC data under matched conditions.",
+      "transferExpectationDe": "Erkennt bei basischer Fehlplanung Esterhydrolyse und widerlegt eine reine ASS-Ausbeute aus gesamter Trockenmasse.",
+      "transferExpectationEn": "Recognises ester hydrolysis in a basic misplan and refutes pure ASA yield from total dry mass."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-acba8d20877a2d1b02cc4649517c901d24d8ca488d25307343220410919b5d9f",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:19b4e2f69eba8bf549922f79addc9eda055d63d54828df56b0920611e7c4a0c3"
+}

@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-004-v1-resolution-9b5d6326-d27c-4ece-8c72-debda705464a",
+  "goal": {
+    "goalId": "9b5d6326-d27c-4ece-8c72-debda705464a",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:2ee89de7e796c06ad763e2a3f2be54947219fcdfe29fa9b39823035e8ee5d7e3",
+    "pageFingerprint": "sha256:ffd0d9c4ade9e390b30593da3e86234dc9dc35e902e54fa8d1c53bb31dccdfe0",
+    "goalReviewContextFingerprint": "sha256:783b8829330e45130d66fa496e998a34308caefa70157b173d2be33f176ec898",
+    "finalText": {
+      "titleDe": "Dalton-Modell und Modellcharakter erläutern",
+      "titleEn": "Explain Dalton's model and the nature of models",
+      "descriptionDe": "Die lernende Person kann Daltons Atomhypothese erläutern und den Modellcharakter gegenüber Gesetz und Hypothese fachlich abgrenzen.",
+      "descriptionEn": "The learner can explain Dalton's atomic hypothesis and distinguish the model character from laws and hypotheses."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-004-v1-a",
+      "campaignDigest": "sha256:9f49c2740669f7ed36feb828f9f8fbf595137952444feadd39e6636d8aa89cee",
+      "roundId": "chemie-final-current-context-d-004-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-004-v1-independent-a",
+      "reviewInputFingerprint": "sha256:05932460b60d1d36324c4bd65a48bcd0a5fe66088c89302fdebe64beca38e104",
+      "goalReviewContextFingerprint": "sha256:783b8829330e45130d66fa496e998a34308caefa70157b173d2be33f176ec898",
+      "batchId": "chemie-final-current-context-d-004-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch004-20261018",
+      "runManifestDigest": "sha256:860f1a557a07e28c6af90a01f00ebf8a49e6fb81e38ef37281b5dee695ee7891",
+      "resultsDigest": "sha256:33bf50a914eb196e9c1bc3a74a7a205b97c38e014eae746547ed2dfff792b039",
+      "recordId": "codex-reviewer-a-final163-batch004-20261018.019",
+      "recordDigest": "sha256:13565d803783c6b12cb4d82ddd0f4afe9c886b53056ac380de6cf00f5c1b977d"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-004-v1-b",
+      "campaignDigest": "sha256:eb0a6a8bfd9326c9da6104480580f2824f20bebcd54ad258ec5b5ecedd511843",
+      "roundId": "chemie-final-current-context-d-004-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-004-v1-independent-b",
+      "reviewInputFingerprint": "sha256:05932460b60d1d36324c4bd65a48bcd0a5fe66088c89302fdebe64beca38e104",
+      "goalReviewContextFingerprint": "sha256:783b8829330e45130d66fa496e998a34308caefa70157b173d2be33f176ec898",
+      "batchId": "chemie-final-current-context-d-004-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-004-20261018",
+      "runManifestDigest": "sha256:462a31ff8568ab194b6453b4a575269655a339fccdcaefe3a889f1c0386eb3eb",
+      "resultsDigest": "sha256:59784196a1346be76d18c8e2bb0dce57480d2a3daf93f3217588eb58d6cc6281",
+      "recordId": "chemie-final163-native-b-004-20261018:9b5d6326-d27c-4ece-8c72-debda705464a",
+      "recordDigest": "sha256:0dece94574f11ab1730f5a7eedc36b65f0f008f709f02e2f2d6c5d0c862dc234"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:14644ad1dc6daad38fa105e8dcda4988764bf5544ad0303798c9afec70301ba8"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-004-20261018-v1",
+    "manifestDigest": "sha256:f8c23f4cfaabeda104b822b75b02eabbb05ae2a58f66246e6d76815c2be6f54a",
+    "manifestFingerprint": "sha256:47331b90b9c9747c454cd4e4bf2073fcf661e82b97577552be6a0e71defced6c",
+    "decisionId": "chemie-final163-paired-D-only-004-20261018-v1-decision-017"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-004-20261018-v1-decision-017",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:29:30.204Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch004-20261018.019): Die bilingualen Fassungen sind fachlich klar. Das ganze P behandelt passende Befunde nicht als endgültigen Beweis und unterscheidet Elementidentität von gleicher Isotopenmasse; Kernreaktionen bleiben außerhalb des Modells. B (chemie-final163-native-b-004-20261018:9b5d6326-d27c-4ece-8c72-debda705464a): Die Beschreibung und P unterscheiden Aussagearten, ohne einen passenden Einzelversuch zum endgültigen Hypothesenbeweis zu machen. Historische gleiche Atommasse und Unteilbarkeit werden begrenzt, gewöhnliche chemische Umgruppierung bleibt davon sauber getrennt.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch004-20261018.019; chemie-final163-native-b-004-20261018:9b5d6326-d27c-4ece-8c72-debda705464a). Their current English understanding evidence is retained: A: Dalton explains chemical atom rearrangement; empirical law, testable hypothesis and bounded model are different kinds of statement. B: Dalton's rearrangement model explains chemical atom balances; laws, testable hypotheses and explanatory models play different roles. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Dalton erklärt chemische Atomumgruppierung; empirisches Gesetz, prüfbare Hypothese und begrenztes Modell sind verschiedene Aussagearten.",
+      "essentialUnderstandingEn": "Dalton explains chemical atom rearrangement; empirical law, testable hypothesis and bounded model are different kinds of statement.",
+      "observablePerformanceDe": "Trennt Produktmassenbeobachtung, Massenerhaltung und Atomerklärung und bilanziert die vorgegebene Wasserreaktion.",
+      "observablePerformanceEn": "Separates observed product mass, mass conservation and atomic explanation and balances the supplied water reaction.",
+      "transferExpectationDe": "Erklärt an Isotopen/subatomaren Befunden historische Modellgrenzen und fortbestehende Nützlichkeit chemischer Atombilanzen.",
+      "transferExpectationEn": "Explains historical model limits and retained usefulness of chemical atom balances using isotope/subatomic evidence."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-89e630b441e055a5ea70ecf652ac1493d3bed394dc3a7d77347fafd9e760bd8c",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:db21590fb465a78d13f575952abafc61307840cc04795d922838ba7022142ea8"
+}

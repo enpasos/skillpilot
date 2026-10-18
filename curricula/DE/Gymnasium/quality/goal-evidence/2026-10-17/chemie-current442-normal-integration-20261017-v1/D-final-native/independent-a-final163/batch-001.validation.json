@@ -1,0 +1,30 @@
+{
+  "command": [
+    "npx",
+    "--prefix",
+    "app",
+    "tsx",
+    "app/scripts/validateGoalDescriptionReviewCampaignResults.ts",
+    "--bundle",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/D-final-native/batch-001/round-a/review-bundle-manifest.json",
+    "--input",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/D-final-native/batch-001/round-a/description-review-input.json",
+    "--campaign",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/D-final-native/batch-001/round-a/description-review-campaign.json",
+    "--batches-dir",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/D-final-native/batch-001/round-a/batches",
+    "--results-dir",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/D-final-native/batch-001/round-a/results"
+  ],
+  "exitCode": 0,
+  "stdout": "Goal-description review campaign results valid: 20\n",
+  "stderr": "",
+  "actualBook": {
+    "path": "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/D-final-native/batch-001/bundle/book-model.json",
+    "sha256": "sha256:4c74527f57aaf4f0cc8f3a39fe3fb70519be709bdb0a4e7f62a31fe1214031b8",
+    "bytes": 324498,
+    "allAssignedPagesExactMatch": true
+  },
+  "ownPromptCriteriaSchemaIdenticalAndApplied": true,
+  "verificationOnlyNativeBytesPreserved": true
+}

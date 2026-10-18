@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "chemie-final450-one-actual-current-caption-pair-root-synthesis-20261018-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex maintainer; actual sealed independent A/B current one-page pair; machine review only",
+  "synthesizedAt": "2026-10-18T00:47:22.650Z",
+  "batch": {
+    "batchId": "chemie-final-current-context-d-001-v1",
+    "batchManifestDigest": "sha256:569db3c105c9602676163fd6290d20f0afb0bf013fb7a3e69324651edd7a76f8",
+    "configDigest": "sha256:08c1face90ca8a98e994e8a09af787d3437530c51a78ea17e198492067cf788d",
+    "bundleFingerprint": "sha256:9a74d72c5ed044d7d51df0603604fef208459c67fe54bd0acc42fab90c034255",
+    "bookDigest": "sha256:7056a7074602bb01f2882dac59de1adc7c8b5b3fca7507f622f2f6403086e087",
+    "reviewInputFingerprint": "sha256:9741a0c19b20b97f340df6ab197faf3f1ffe2e5bfffb16c2248cbe5b39a03ccf",
+    "dualSummaryDigest": "sha256:9942f7f963f86b33123c7493541e0576d0f4de9e1649e6e8896a2cb2ae156b06",
+    "canonicalLandscapeDigest": "sha256:d09c746ec9393078736dcf9aabac0a0b3a22dc8756a8356c8cedb2f6d6cf866c"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-001-v1-a",
+      "campaignDigest": "sha256:ddfb150f853c651c2df3f2ac996808ba5530d45716d09ba32a7b88799c442a39",
+      "roundId": "chemie-final-current-context-d-001-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-001-v1-independent-a",
+      "reviewInputFingerprint": "sha256:9741a0c19b20b97f340df6ab197faf3f1ffe2e5bfffb16c2248cbe5b39a03ccf",
+      "batchId": "chemie-final-current-context-d-001-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:9ec31ac4f397ac1c80bd153fad5aed9683dcff574176276381dfe550ab33eab8",
+      "runId": "chemie450-caption1-native-fresh-a-20261018",
+      "runManifestDigest": "sha256:cfc27134d795650f30a951352fe4dd49247351ded3f74380e84e08ca0ad28c43",
+      "resultsDigest": "sha256:28d9199f0933642a10fb9d8d50f4673cbadf0f0081bb4b2ed99860679f65bc85"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-001-v1-b",
+      "campaignDigest": "sha256:be43783633ed47fd79891d386d8e3d2de22f53bc3239f5b5f681536c9ea2e728",
+      "roundId": "chemie-final-current-context-d-001-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-001-v1-independent-b",
+      "reviewInputFingerprint": "sha256:9741a0c19b20b97f340df6ab197faf3f1ffe2e5bfffb16c2248cbe5b39a03ccf",
+      "batchId": "chemie-final-current-context-d-001-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:b034e0b3d255e4e63a85632a36c4d10c472190c108cff97c16e6ffa60d071224",
+      "runId": "chemie-caption1-native-fresh-b-64b0-20261018",
+      "runManifestDigest": "sha256:0094370d264b3ace27835271d8f822bad050444914e8e422cffddd3521d6fef9",
+      "resultsDigest": "sha256:45463969972c8c859757fd27bab4576be2293ecfc315d3d9f3bd174507000e35"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "chemie-final450-one-actual-current-caption-pair-root-synthesis-20261018-v1-decision-001",
+      "goalId": "64b03eff-a967-54a1-ace3-89cb7650a65c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:23107fd252d6de260d1442743fd7c0634a63900dfaa6b8c4cc390cd552c383aa",
+      "pageFingerprint": "sha256:83b08c4249885f6673dfe6b8f8d5fc74a4ad1524d5516381aa3959d0d1872147",
+      "goalReviewContextFingerprint": "sha256:8484f36a88ffc88648a73bc2d7deacdb708456b9a2b674d91d63fe0c7c3ae3b6",
+      "finalText": {
+        "titleDe": "Substituenteneffekte in Farbstoff-Molekülen erklären",
+        "titleEn": "Explain substituent effects in dye molecules",
+        "descriptionDe": "Die lernende Person kann das Donator-Akzeptor-Konzept auf Farbstoff-Moleküle anwenden und den Einfluss funktioneller Gruppen auf die Farbigkeit der zugehörigen Stoffe erklären.",
+        "descriptionEn": "The learner can apply the donor-acceptor concept to dye molecules and explain how functional groups influence the color of the corresponding substances."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie450-caption1-native-fresh-a-20261018.64b03eff",
+          "recordDigest": "sha256:4dec7c3f38c888865990aac6ee66576ef3ec21022e85e081df06c78e30d5b133"
+        },
+        "second": {
+          "recordId": "chemie-caption1-native-fresh-b-64b0-20261018.64b0",
+          "recordDigest": "sha256:001991288e1bcc47c1a1a817591766daa1169b92dc485cfb11a7fae2e67ad51a"
+        }
+      },
+      "rationaleDe": "Beide tatsächlichen unabhängigen Reviewer bestätigen die aktuelle native Seite mit der präzisen Beschriftung des Absorptionsmaximums, die vollständigen DE/EN-Texte und das ganze operative P-Material. A beschreibt die bedingten historischen HB-Rollen, Energie-Wellenlängen-Beziehung und den erst nach eigener Antwort vorgelegten frischen sp³-Kopplungsbruch ausdrücklich; B bestätigt diese Grenzen und die Trennung von Absorption und Wahrnehmungsfarbe. Daher wird As tatsächliches bilinguales Evidenzmodell gewählt. Beide P-Empfehlungen sind none. Dies erneuert nur den aktuellen Bild-/Seitenkontext; kein neuer fachlicher Erstabschluss, keine Lernendenausführung und keine menschliche Freigabe.",
+      "rationaleEn": "Both actual independent reviewers confirm the current native page with its precise absorption-maximum caption, the full DE/EN descriptions and the whole operative P material. A explicitly explains conditional historical HB roles, the energy-wavelength relation and the fresh sp3 coupling-interruption case supplied only after an independent response; B confirms these limits and the distinction between absorption and perceived colour. The synthesis therefore uses A’s actual bilingual evidence model. Both profile recommendations are none. This renews the current image/page context only, with no new first scientific completion, learner execution or human approval."
+    }
+  ],
+  "manifestFingerprint": "sha256:44afa5477a79bab964c7770eaaeb47fb7f66f7bb7a92f29dce0096142ddc3c73"
+}

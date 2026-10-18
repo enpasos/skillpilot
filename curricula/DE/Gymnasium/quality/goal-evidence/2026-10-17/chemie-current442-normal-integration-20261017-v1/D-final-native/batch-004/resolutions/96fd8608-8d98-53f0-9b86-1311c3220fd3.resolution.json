@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-004-v1-resolution-96fd8608-8d98-53f0-9b86-1311c3220fd3",
+  "goal": {
+    "goalId": "96fd8608-8d98-53f0-9b86-1311c3220fd3",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:39d8fc11a82ede4ce16c70218d7a06ffdbf1958e9e08f83250554cd55b6c607c",
+    "pageFingerprint": "sha256:06863b3a7084a7bea9048af411d8d913bc37c9413d1fc9f73685f52b27fb6fda",
+    "goalReviewContextFingerprint": "sha256:4f08a1c9beed87a5386b609a32066a099aea223ba5f4c3f7d05527f709f25648",
+    "finalText": {
+      "titleDe": "Elektrische Arbeit galvanischer Zellen ermitteln",
+      "titleEn": "Determine electrical work of galvanic cells",
+      "descriptionDe": "Die lernende Person kann die von galvanischen Zellen abgegebene elektrische Arbeit aus Spannungs-, Stromstärke- und Zeitmessungen bestimmen und unter den angegebenen Mess- und Modellbedingungen als umgewandelte chemische Energie einordnen.",
+      "descriptionEn": "The learner can determine the electrical work delivered by galvanic cells from voltage, current, and time measurements and interpret it as converted chemical energy under the stated measurement and model conditions."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-004-v1-a",
+      "campaignDigest": "sha256:9f49c2740669f7ed36feb828f9f8fbf595137952444feadd39e6636d8aa89cee",
+      "roundId": "chemie-final-current-context-d-004-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-004-v1-independent-a",
+      "reviewInputFingerprint": "sha256:05932460b60d1d36324c4bd65a48bcd0a5fe66088c89302fdebe64beca38e104",
+      "goalReviewContextFingerprint": "sha256:4f08a1c9beed87a5386b609a32066a099aea223ba5f4c3f7d05527f709f25648",
+      "batchId": "chemie-final-current-context-d-004-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch004-20261018",
+      "runManifestDigest": "sha256:860f1a557a07e28c6af90a01f00ebf8a49e6fb81e38ef37281b5dee695ee7891",
+      "resultsDigest": "sha256:33bf50a914eb196e9c1bc3a74a7a205b97c38e014eae746547ed2dfff792b039",
+      "recordId": "codex-reviewer-a-final163-batch004-20261018.013",
+      "recordDigest": "sha256:ef17c7eee1fe62f699a9f5b14b6feda68b629ce7a01dee992540d9c1dff7a18f"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-004-v1-b",
+      "campaignDigest": "sha256:eb0a6a8bfd9326c9da6104480580f2824f20bebcd54ad258ec5b5ecedd511843",
+      "roundId": "chemie-final-current-context-d-004-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-004-v1-independent-b",
+      "reviewInputFingerprint": "sha256:05932460b60d1d36324c4bd65a48bcd0a5fe66088c89302fdebe64beca38e104",
+      "goalReviewContextFingerprint": "sha256:4f08a1c9beed87a5386b609a32066a099aea223ba5f4c3f7d05527f709f25648",
+      "batchId": "chemie-final-current-context-d-004-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-004-20261018",
+      "runManifestDigest": "sha256:462a31ff8568ab194b6453b4a575269655a339fccdcaefe3a889f1c0386eb3eb",
+      "resultsDigest": "sha256:59784196a1346be76d18c8e2bb0dce57480d2a3daf93f3217588eb58d6cc6281",
+      "recordId": "chemie-final163-native-b-004-20261018:96fd8608-8d98-53f0-9b86-1311c3220fd3",
+      "recordDigest": "sha256:82786952dea74537126a1cc3d14cd28750651a80dcf17adc5f290cb3015328fb"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:14644ad1dc6daad38fa105e8dcda4988764bf5544ad0303798c9afec70301ba8"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-004-20261018-v1",
+    "manifestDigest": "sha256:f8c23f4cfaabeda104b822b75b02eabbb05ae2a58f66246e6d76815c2be6f54a",
+    "manifestFingerprint": "sha256:47331b90b9c9747c454cd4e4bf2073fcf661e82b97577552be6a0e71defced6c",
+    "decisionId": "chemie-final163-paired-D-only-004-20261018-v1-decision-011"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-004-20261018-v1-decision-011",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:29:30.204Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch004-20261018.013): Der aktuelle Text begrenzt die chemische Energiedeutung an Mess-/Modellbedingungen. Das gesamte P vermeidet ungewichtete Mittelwerte und W=−ΔH, erhält Lastmessung und verlangt keine behauptete reale Messdurchführung. B (chemie-final163-native-b-004-20261018:96fd8608-8d98-53f0-9b86-1311c3220fd3): Die Beschreibung nennt Mess-/Modellbedingungen und vermeidet die Gleichsetzung elektrischer Arbeit mit Enthalpie. Das ganze P dokumentiert simultane Messwerte, korrekte Intervallsumme und frischen Nullstromtransfer; eine tatsächliche Messdurchführung wird nicht unberechtigt gefordert.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch004-20261018.013; chemie-final163-native-b-004-20261018:96fd8608-8d98-53f0-9b86-1311c3220fd3). Their current English understanding evidence is retained: A: Electrical work is the time integral of simultaneous loaded voltage and current; voltage alone is not delivered energy. B: Delivered work follows the time product of simultaneous loaded voltage and current; it is neither open-circuit voltage nor total reaction enthalpy. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Elektrische Arbeit ist das Zeitintegral der gleichzeitigen belasteten Spannung und Stromstärke; Spannung allein ist keine gelieferte Energie.",
+      "essentialUnderstandingEn": "Electrical work is the time integral of simultaneous loaded voltage and current; voltage alone is not delivered energy.",
+      "observablePerformanceDe": "Berechnet P, Q und intervallweise W mit Einheiten und ordnet Arbeit gegenüber gegebenen ΔH-/ΔG-Bezugsportionen ein.",
+      "observablePerformanceEn": "Calculates P, Q and interval work with units and relates work to supplied ΔH/ΔG reference portions.",
+      "transferExpectationDe": "Erklärt bei offenem Außenkreis trotz Spannung W=0 und unterscheidet mögliche Selbstentladung als anderen Vorgang.",
+      "transferExpectationEn": "Explains W=0 despite voltage in an open circuit and distinguishes possible self-discharge as another process."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-3e4ff98100a7dadaec43f093ceb32306cd51d78431ddf4f1594a55e26c368c66",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:5a65fd144f4039b97263f637fc0cd810a522baa881ad202e9a75539527ca9a6b"
+}

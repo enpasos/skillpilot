@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-001-v1-resolution-188bd684-e894-5753-8a50-798220b04d97",
+  "goal": {
+    "goalId": "188bd684-e894-5753-8a50-798220b04d97",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:e87f813cff7a6d79e6985fd630f3d60f484542c1e8184d82b14b410bab1db3fe",
+    "pageFingerprint": "sha256:84c0261551210077c25def5878d21385289aba7175853859e25b57b780a0ec75",
+    "goalReviewContextFingerprint": "sha256:3589d401c7535754af9db08f4f9eef1937f829e386d2fc3d0acf588d50fd3345",
+    "finalText": {
+      "titleDe": "Farbstoffe als Motor der chemischen Industrie beurteilen",
+      "titleEn": "Assess dyes as a driver of the chemical industry",
+      "descriptionDe": "Die lernende Person kann die wirtschaftliche Bedeutung der Farbstoffe für die Entwicklung der chemischen Industrie beurteilen.",
+      "descriptionEn": "The learner can assess the economic significance of dyes for the development of the chemical industry."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-001-v1-a",
+      "campaignDigest": "sha256:96c597e11ef28d55b630202e1c2e03a243872e2f50e9cf9cc7c0df7a79d9cd3d",
+      "roundId": "chemie-final-current-context-d-001-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-001-v1-independent-a",
+      "reviewInputFingerprint": "sha256:84cb9df1bd7fef7e2302044cdb80cba5ac86f4d3a52db0bc7c6a09292793cfa8",
+      "goalReviewContextFingerprint": "sha256:3589d401c7535754af9db08f4f9eef1937f829e386d2fc3d0acf588d50fd3345",
+      "batchId": "chemie-final-current-context-d-001-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch001-20261018",
+      "runManifestDigest": "sha256:b4b3f17dceb9e1e7c4c82361c9c800e5f7de932b46dcf704e3d6a847860b03be",
+      "resultsDigest": "sha256:c9861ef6d236ae81946747b3d1c7abde302f5f013b5c93ce5edad0870065fc31",
+      "recordId": "codex-reviewer-a-final163-batch001-20261018.012",
+      "recordDigest": "sha256:3906aaa79d559b4dc2157be9c7501d2173b2f433f4c4410a4e1ae052f07132c5"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-001-v1-b",
+      "campaignDigest": "sha256:1b8713019a8e252039fa354999df05261e1c78eedb890a563b29e531dc70ec46",
+      "roundId": "chemie-final-current-context-d-001-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-001-v1-independent-b",
+      "reviewInputFingerprint": "sha256:84cb9df1bd7fef7e2302044cdb80cba5ac86f4d3a52db0bc7c6a09292793cfa8",
+      "goalReviewContextFingerprint": "sha256:3589d401c7535754af9db08f4f9eef1937f829e386d2fc3d0acf588d50fd3345",
+      "batchId": "chemie-final-current-context-d-001-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-001-20261018",
+      "runManifestDigest": "sha256:13eb6055a4aa8d4d04be4cfd1c0c77f4b206a289df96a67139c1efd68e08d32d",
+      "resultsDigest": "sha256:22da53163d50636a69ec31425cecc056999735ee0193be8470171a3f650414eb",
+      "recordId": "chemie-final163-native-b-001-20261018:188bd684-e894-5753-8a50-798220b04d97",
+      "recordDigest": "sha256:88755a941708bcbb4725ea6d523dd568c08623faa5345f5eb160a05e821924ea"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:706dc6e69548381d583e44f00cb7a2768b65125ce38e115ffeb99e090ece4f50"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-001-20261018-v1",
+    "manifestDigest": "sha256:2947637162d222247361434cafc2291ef0d74af62baa53f4b2c0b9ac2349ad89",
+    "manifestFingerprint": "sha256:240821b7f7c94c99aba57979178f196e85ea04ebc4d569c964de2f5230011117",
+    "decisionId": "chemie-final163-paired-D-only-001-20261018-v1-decision-011"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-001-20261018-v1-decision-011",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:22:46.792Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch001-20261018.012): Der wirtschaftshistorische LK-Text ist eng und bilingual klar. Das vollständige P ergänzt fiktive Modelle durch einen zugeordneten tatsächlichen Industriefall, trennt Firmen- und Museumsreichweite und vermeidet unbelegte Rendite- oder Alleinursachenbehauptungen. B (chemie-final163-native-b-001-20261018:188bd684-e894-5753-8a50-798220b04d97): Die Beschreibung beansprucht ein wirtschaftlich-historisches Urteil. P unterscheidet fiktive Übungsdaten und zugeschriebene reale Quellenkarten und verhindert die Gleichsetzung von Investitionssumme und Gewinn. Eine vollständige historische Quellenprüfung wird durch diesen D-Durchlauf nicht behauptet.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch001-20261018.012; chemie-final163-native-b-001-20261018:188bd684-e894-5753-8a50-798220b04d97). Their current English understanding evidence is retained: A: Dye chemistry can connect research, investment, production and markets; investment, revenue and profit are distinct economic quantities. B: Dye development can connect research, committed capital and new markets; investment, revenue and profit differ. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Farbstoffchemie kann Forschung, Investitionen, Produktion und Märkte verbinden; Investition, Erlös und Gewinn sind verschiedene wirtschaftliche Größen.",
+      "essentialUnderstandingEn": "Dye chemistry can connect research, investment, production and markets; investment, revenue and profit are distinct economic quantities.",
+      "observablePerformanceDe": "Beurteilt Forschungs- und Markteffekte anhand gekennzeichneter historischer Quellen und erklärt fehlende Kosten sowie alternative Wachstumsursachen.",
+      "observablePerformanceEn": "Assesses research and market effects using attributed historical sources and explains missing costs and alternative causes of growth.",
+      "transferExpectationDe": "Prüft bei einem neuen Farbstoff mit besseren Gebrauchseigenschaften die Behauptung dauerhaft unveränderter Märkte und begrenzt das Gewinnurteil.",
+      "transferExpectationEn": "Tests a claim of permanently unchanged markets for a new dye with improved service properties and limits profit conclusions."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-1ea01c7f0e907ecbd404699b24ed5f597bc59ae527fac9b3715d66f6dae47766",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:3cf768e97cd87cd56b6b0f2db260a9fe60b38be26fd83a15385a7d25826753bc"
+}

@@ -1,0 +1,445 @@
+# Chemie: integrierter 450er-Stand – 18. Oktober 2026
+
+> Historischer Integrationsbericht: Dieser spätere Arbeitsstand ist seit dem 18. Oktober 2026 vollständig inaktiv gesichert. Aktuell gilt der [stabile CI-Zwischenstand](chemie-current450-inactive-ci-checkpoint-2026-10-18.md); der M7-Auftrag ist während seiner CI-Prüfung pausiert.
+
+## Aktuellster Integrationsstand
+
+### Geprüfte Prüfungsnachfolger nach der letzten Gesamtmessung
+
+Zehn bestehende Aufgaben sind inzwischen nach tatsächlichen unabhängigen
+Inhalts- und Interfaceprüfungen maschinell freigegeben: acht der zehn vorherigen
+Drafts sowie zwei vollständig vorhandene Recycling-/Metallaufgaben. Gültige
+alte Körperreviews wurden exakt wiederverwendet; die Salicylat-Aufgabe erhielt
+zwei echte neue Inhaltsprüfungen. Das sind **keine neuen fachlichen
+Erstabschlüsse der 450 curricularAtomic-Ziele**.
+
+Zwei zusätzliche Contains-Verweise und 14 praktische Einträge in acht
+HB-/HH-/MV-Ansichten machen die beiden vorhandenen Aufgaben erreichbar.
+Die tatsächlichen ursprünglichen Projektions-, Baum- und Kursfilterfunktionen
+bestätigen die 14 Auftritte, keine Zielverluste, unveränderte gewöhnliche Ziele,
+Supportrollen und Memory-Sichtbarkeit sowie höchstens einen sichtbaren Parent.
+Die unveränderte originale Routeprüfung misst am integrierten Nachfolger
+**107 → 105 offene Terminalpfade** und **zehn → zwei unvollständige
+Prüfungsfreigaben**. Die 77 Motivationslücken bleiben offen. Alle 450 ganzen
+gewöhnlichen Zielobjekte, P-Profile und Bilder bleiben exakt; elf nicht
+gewöhnliche Quellenfingerprints sind gezielt nachgeführt.
+
+Die beiden HE-Abschlussaufgaben haben anschließend ebenfalls zwei tatsächliche
+unabhängige aktuelle Interfaceprüfungen bestanden. Genau zehn GK- und dreizehn
+LK-Kursziele sind ergänzt: 162 beziehungsweise 241 aktuelle Sek-II-Ziele plus
+die erhaltene Entsorgungsgrundlage ergeben 163 beziehungsweise 242
+Zulassungsvoraussetzungen. Je 90 weitere Sek-I-Ziele der CrossStage-Ansichten
+werden nicht pauschal übernommen. Die sieben tatsächlich geprüften Kompetenzen
+und der ganze 44/27-Papierkörper bleiben exakt. Das ist Kurszulassung, keine
+zusätzliche Aufgabenabdeckung oder indirekte Meisterung.
+
+Auch dieser Nachfolger ist normal integriert. Die unveränderte originale
+Routeprüfung bestätigt **105 → 103 fehlende Terminalpfade** und **zwei → null
+unvollständige Prüfungsfreigaben** bei 32 vorhandenen Endpunkten. Insgesamt
+sind damit vier bestehende Terminalpfade wiederhergestellt; neue fachliche
+Erstabschlüsse der gewöhnlichen Ziele: **null**. Die final betroffenen
+nativen D-Seiten-/Kontextbindungen sind nach dem gesamten Aufgabenpaket
+noch gezielt zu messen und zu prüfen.
+Der vollständige Zentralbericht wurde seit diesem begrenzten Nachfolger
+bewusst noch nicht neu erzeugt. **M7, die geschützte M6-Untergrenze und der
+neue GitHub-CI-Lauf sind weiterhin offen.**
+
+- [Integrierte Freigaben und tatsächlich gemessene zwei Routenwiederherstellungen](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-ten-machine-exam-releases-and-two-recovered-routes-integration-technical-20261018-v1/RECEIPT.actual-ten-reviewed-exam-releases-and-two-route-recoveries.json)
+- [Zwei unabhängig korrigierte und integrierte HE-Kurszulassungen](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-two-reviewed-HE-admissions-normal-integration-technical-20261018-v1/RECEIPT.actual-two-HE-admissions-integrated.json)
+- [Gezielte Prüfung der acht tatsächlichen Ansichtsprojektionen](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-two-existing-recycling-exams-view-check-technical-20261018-v1/CHECK.actual-original-projection-tree-and-course-filters.json)
+- [27 begrenzte Orientierungseinstiege: noch ungeprüfter Autorenkandidat](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-twenty-seven-orientation-entry-author-20261018-v1/README.md)
+- [Konkreter Plan für begrenzte Aufgabenpakete aus vorhandenen P-Fällen](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-route-exam-remediation-author-plan-20261018-v1/README.md)
+
+Das vom Nutzer angesprochene Wiesenbild zu `0f632595` ist unverändert
+erhalten. Die unabhängige Quellenprüfung bestätigt die Passung zum ökologischen
+Freilandziel des gesonderten freiwilligen bayerischen **Biologisch-chemischen
+Praktikums**. Dieses ergänzende Angebot unter Chemie ist keine allgemeine
+Chemie-GK-/LK-Pflicht. Die abgeschlossene Biologielandschaft und ihre
+semantischen und Bild-QA-Register sind exakt HEAD; es wurde keine neue
+Biologie-QS begonnen.
+
+### Vollständige Quellen- und Fünf-Gate-Messung vor dem Prüfungsnachfolger
+
+Die nachfolgende Quellenarbeit ist inzwischen weiter integriert: das geprüfte
+14er-Methodenpaket, zwei SL-Bindungen, 203 begrenzte Landesbeiträge aus dem
+40er-Inhaltspaket einschließlich der korrigierten HE-LK-Platzierung und sieben
+quantitative Datenoperator-Beiträge. Drei zusätzliche NI-/SL-Quellenbindungen
+verwenden gezielt ergänzte, unabhängig geprüfte Aufgabenprofile. Der letzte
+MV-Säurenkontext und die zwei neuen SH-/SL-Quellenanker sind ebenfalls
+normal integriert und geprüft. Dies sind Quellen- und Nachweisergänzungen an bestehenden
+Zielen, **keine neuen fachlichen Erstabschlüsse**.
+
+Vier ganze P-Nachfolger sind normal aktiviert: **138 Konfigurationen für
+450 eindeutige Ziele**, alle übrigen 446 ganzen P-Zeilen exakt erhalten.
+Acht gezielte Stockprüfungen bestehen. Sechs HE-/MV-Ansichten sind mit
+tatsächlichem Rollen-, Baum- und Kursfiltervergleich korrigiert: vier neue
+effektive Zielplatzierungen, kein Zielverlust, unveränderte Memory-Sichtbarkeit
+und unveränderte Supportrollen. Die erforderlichen direkten Voraussetzungen
+bleiben verfügbar. Die vier anderen zentralen M7-Subjektobjekte sowie ihre
+Landschaften, semantischen Register und Bild-QA-Dateien sind exakt HEAD.
+
+Die neue begrenzte Messung bestätigt **CQR-003 PASS und CQR-004 PASS**:
+null unbelegte Ziel-Land-Vorkommen, null Quellen-Rückwärtslücken und null
+Kursabweichungen. Gegenüber der letzten Messung sind damit alle 215 offenen
+Zuordnungsfälle bei 41 verschiedenen Zielen und die eine MV-Rückwärtslücke
+geschlossen. Die neue Geltungsberechnung besteht ohne Fehler und ohne
+Änderung kanonischer Geltungswerte. Das sind Quellenbindungen an vorhandenen
+Zielen, keine 215 neuen Lernziele oder neuen fachlichen Erstabschlüsse.
+
+Der anschließende vollständige Standardlauf bestätigt den aktuellen
+**CQR-303 PASS mit 450/450 streng abgeschlossenen Fachzielen**, sechs von
+sechs Pflichtprüfungen und null Fünf-Gate-Blockern. Auch CQR-003, CQR-004 und
+CQR-501 bestehen aktuell. **Die Gesamtreife ist trotzdem M2**, und die
+geschützte M6-Untergrenze scheitert: Im Sek-II-Lernwegprofil fehlen für 77
+ausgewählte Ziele Motivationspfade und für 107 Ziele Terminalpfade. Diese
+beiden Mengen dürfen nicht addiert werden. Zehn Prüfungsaufgaben sind noch
+als `draft` markiert und bestehen CQR-202 noch nicht. Ihr Status wird ohne
+tatsächliche aktuelle Inhalts- und Interfaceprüfungen nicht auf `released`
+gesetzt. Die 450 fachlichen Erstnachweise werden dafür nicht neu begonnen.
+
+Die Routeprüfung verwendet direkt den kanonischen Graphen. Diese Lücken
+stammen nicht aus der jüngsten Quellenatlas-Ableitung: Der davor vorhandene
+442er-Stand hatte bereits 74 fehlende Motivations- und 99 Terminalpfade.
+Die früher fachlich entfernten zu breiten Voraussetzungen werden deshalb
+nicht pauschal zurückgesetzt. Der nächste Schritt ist die gezielte
+Routenreparatur und der unabhängige Abschluss der tatsächlich offenen
+Prüfungsnachfolger; gültige unveränderte Vorreviews bleiben erhalten.
+
+Die mechanischen Vollständigkeitsfelder des Quellenprüfers ersetzen keine
+Einzelprüfung ganzer amtlicher Anforderungen. Die neuen partiellen
+Quellenbeiträge behalten ihre tatsächlichen Grenzen und ihren ausgeschlossenen
+Ganzquellenkredit. Menschliche Prüfung und tatsächliche Lernendenausführung
+werden weiterhin nicht behauptet. Buchbau, Publikationsprüfung und
+Originalquellenprüfung bestehen: Chemie hat 410 Zielseiten und fünf
+Vorspannseiten; vier andere Bücher sind exakt wiederverwendet. M7 und
+GitHub-CI-PASS sind wegen der genannten Lernweg-/Prüfungsblocker noch offen.
+
+Eine vorgeschlagene zusätzliche Voraussetzungskante ist nach einem
+substanziellen unabhängigen Gegenbeleg ausdrücklich zurückgezogen und war
+nie aktiv. Die ursprünglichen Kandidaten und die Ablehnung bleiben erhalten;
+die Landschaft und ihre Voraussetzungen wurden hierfür nicht verändert.
+
+- [Vier aktivierte P-Nachfolger](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-four-whole-P-successors-normal-integration-technical-20261018-v1/RECEIPT.actual-four-whole-P-normal-activation.json)
+- [Sechs geprüfte Ansichten](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-reviewed-HE-MV-view-placements-technical-20261018-v1/RECEIPT.actual-six-view-normal-integration.json)
+- [Drei neue partielle NI-/SL-Quellenbindungen](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-three-P-context-partial-source-normal-integration-technical-20261018-v1/RECEIPT.actual-three-P-source-relations-normal-integrated.json)
+- [Tatsächlich bestandene Quellen-, Kurs- und Geltungsgates](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-reviewed-source-gates-summary-technical-20261018-v1/RECEIPT.actual-source003-course004-and-AP-pass.json)
+- [Aktueller vollständiger Zentralbefund einschließlich gescheiterter Reifegrad-Untergrenze](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-final-source-complete-central-closeout-technical-20261018-v1/RECEIPT.actual-final-standard-central-quality-and-protected-floors.json)
+- [Ausdrücklich zurückgezogene Voraussetzungskante](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-rejected-speculative-edge-withdrawal-technical-20261018-v1/WITHDRAWAL.author-accepts-substantive-rejection.no-normal-edge.json)
+
+## Letzte vollständige Zentralmessung
+
+Die normale Landschaft enthält **450 aktuelle curricularAtomic-Ziele**,
+68 Memory-Ziele und insgesamt 662 Knoten. Die tatsächliche zentrale Messung
+vom 18. Oktober bestätigt **450/450 streng abgeschlossene Ziele**: D/P/A/M/V
+jeweils 450, sechs von sechs Pflichtprüfungen bestanden, keine offenen
+Fünf-Gate-Befunde und **CQR-303 PASS**.
+
+**M7 ist dennoch nicht erreicht.** Die vorgelagerten Quellen-/Geltungsregeln
+`CQR-003` und `CQR-004` scheitern in dieser zentralen Messung; sie weist deshalb
+**M1** aus. Die nachfolgende gezielte Kurskorrektur besteht inzwischen
+`CQR-004` mit null Befunden; eine neue Gesamtmessung steht noch aus.
+`CQR-501` meldet zusätzlich aktive Geltungswarnungen. Quellenatlas-
+Publizierbarkeit und fachliche Fünf-Gate-QS ersetzen diese Layer-A-Gates nicht.
+CI-PASS für diesen lokalen Stand ist noch nicht nachgewiesen.
+
+Das fachliche Paket ergänzt drei abgegrenzte Bremer Kompetenzen zu
+industrieller Zuckergewinnung, Fettkennzahlen und katalytischer Fetthärtung.
+Sie übernehmen zuvor falsch zugeordnete eigenständige Anforderungen.
+Sieben bestehende ganze Aufgabenprofile erhalten gezielte Nachfolger;
+440 unveränderte P-Nachweise und alle 447 bisherigen A-/M-Entscheidungen
+bleiben exakt erhalten. Diese Wiederverwendung ist kein neuer fachlicher
+Abschluss. Die drei neuen Kompetenzen und erneuerte Bestandsbindungen bleiben
+als unterschiedliche Beiträge ausgewiesen.
+
+## Integriert und tatsächlich geprüft
+
+- Ein Chemie-Compilerlauf besteht ohne Fehler und ohne weitere Änderungen
+  der Geltungswerte. Alle 41 Ansichten behalten ihre alten Ziel- und
+  Supportmengen; exakt 16 Bremer Zieltupel kommen hinzu. Andere Länder
+  und ihre Kursgrenzen bleiben erhalten. Die amtliche Themenwahl wird
+  weder zur universellen Pflicht noch zur behaupteten Lernendenwahl.
+- Native A/M/P-Registrierung: 450 eindeutige aktuelle Owner, 79 A- und
+  133 P-Konfigurationen sowie der M-Nachfolger mit exakt zwei Scope-Roots.
+  Die geänderten P10, A3 und M450 bestehen ihre unveränderten Stockchecks.
+- Drei tatsächliche PNGs bestehen die unabhängige Prüfung im Original
+  sowie bei 360/680 Pixeln. Die 473 normalen QA-Zeilen bestehen die
+  Frischeprüfung; beim Dreierpaket bleiben alle 470 bisherigen Zeilen exakt
+  erhalten. Die spätere Beschriftungskorrektur ändert gezielt eine weitere
+  Bildzeile unter Erhalt ihrer historischen Fassung.
+  Neue Bilder erhalten keine menschliche Freigabe.
+- Der Quellenatlas misst **400 quellenbelegte Ziele aus 450** bei 48 Views,
+  496 ungeklärten Quellenentscheidungen und weiterhin 50 ausdrücklich
+  ausgelassenen Zielen. Seine vollständige Regressionsfunktion besteht.
+- Der gemessene Transparenzbestand besteht: 2563 Visualisierungen,
+  2512 C2PA-Containerkennzeichnungen, 64 weitere Laufzeitbilder,
+  753 lokalisierte Karten und acht Audiodateien. Nur gemessene Bestands-,
+  Format- und Herkunftsfelder ändern sich; Richtlinien und menschliche
+  Prüffelder bleiben gleich.
+
+Die zehn endgültigen D-Kontexte sind von zwei neuen, getrennten Reviewern
+an den tatsächlichen vollständigen Zielen, Aufgaben, Materialien und Seiten
+geprüft: **10 KEEP/KEEP**, Stockvalidierung bestanden. Ein zusätzlicher
+Index mit sieben Nachfolgerbindungen ist registriert; drei Ziele erhalten
+ihren ersten Beschreibungsnachweis. Historische Nachweise bleiben erhalten.
+
+Dabei wurde ein konkreter Bildfehler gefunden: Eine Beschriftung zur
+Farbänderung bezeichnete ungenau die Verschiebung des Absorptionsmaximums.
+Ein gezielt korrigiertes PNG ist nach zwei tatsächlichen unabhängigen
+Bildprüfungen integriert; das alte JPG bleibt erhalten. Auch die betroffene
+aktuelle Buchseite ist mit einem neuen unabhängigen nativen D-Paar bestätigt
+und additiv registriert. Die bisherige fachliche
+P-Entscheidung bleibt erhalten; ihre Bild-Eingabebindung ist aktualisiert.
+Diese Nachbindung wird nicht als neuer fachlicher Erstabschluss gezählt.
+Es gibt keine offene D-Arbeitsreservierung mehr.
+
+Quellenatlas-Regression, Bildbestand, Transparenzinventar und
+Visualisierungsbericht bestehen auch nach dieser Korrektur. Der vollständige
+Quellenatlas enthält weiterhin ausdrücklich offene bzw. ausgelassene
+Quellenzuordnungen; diese werden nicht als amtliche Vollabdeckung ausgegeben.
+
+## Abschlussfolge
+
+1. Quellenbeziehungen, Bundesland-Geltung und Kurszuordnung anhand der
+   tatsächlichen CQR-003/-004-Befunde korrigieren; geänderte Bindungen gezielt
+   nachprüfen. Keine vollständige Wiederholung unveränderter Fachreviews.
+2. Vorgelagerte Layer-A-Gates schließen und M7 erst nach einem vollständigen
+   positiven Gesamtbericht ausweisen. Die anderen vier M7-Fächer sind in der
+   tatsächlichen Messung weiterhin vollständig und unverändert.
+3. Stabile Publikationsartefakte bauen, committen, pushen und GitHub-CI
+   genau dieses neuen Commits bis zum bestandenen Abschluss verfolgen.
+
+Mathematik, Physik, Biologie und Wirtschaftswissenschaften werden nicht neu
+bearbeitet. Maschinelle M7-QS, menschliche Freigabe/Erprobung und ein
+Produktionsrollout bleiben getrennte Nachweise.
+
+## Quellenfortschritt nach der Zentralmessung
+
+Die gezielte Korrektur von elf normalen Quellen-/Mappingdateien übernimmt
+vorhandene unabhängig geprüfte Grenzen für die hessischen biologischen Puffer
+und die schleswig-holsteinische Arzneimittel-Syntheseplanung. Die amtliche
+LK-Zuordnung der Syntheseplanung bleibt erhalten. Die beiden Beiträge werden
+nur als partielle Quellenbeziehungen geführt. Der unveränderte tatsächliche
+Chemie-Kursprüfer bestätigt **0 statt 9 Kursabweichungen**. Diese Korrektur
+ändert weder die 450 Lernziele noch deren D/P/A/M/V-Nachweise.
+
+Zwei weitere Quellenbeziehungen für Niedersachsen und Sachsen-Anhalt sind
+normal registriert: Die Quellenerschließung unterstützt die belegte Bewertung
+fossiler und nachwachsender Rohstoffe. Beide bestehenden unabhängigen Urteile,
+die vollständigen aktuellen Ziele und Aufgabenprofile sowie ihre Quellenzellen
+sind unverändert gebunden. Der unveränderte Coverage-Helfer bestätigt beide
+Beziehungen gegen die vorhandene aktuelle Geltungsevidenz. **Nettozuwachs:
+zwei wiederhergestellte Quellenbeziehungen, null neue fachliche Erstabschlüsse.**
+Die übrigen Quellenlücken sind damit nicht geschlossen; M7 und GitHub-CI-PASS
+werden weiterhin nicht behauptet. Eine neue Gesamtmessung wird erst nach der
+gebündelten Quellenintegration ausgeführt.
+
+Ein weiterer gezielter Fortgeltungsreview der späteren Änderungen bestätigt
+19 bereits beidseitig positiv geprüfte Quellenbeziehungen. Diese sind normal
+registriert und bestehen den unveränderten Coverage-Helfer gegen die aktuellen
+Ziele und Geltungsevidenzen. Zusammen sind damit **21 Quellenbeziehungen
+wiederhergestellt**, weiterhin **null neue fachliche Erstabschlüsse**.
+Neun der 19 Bindungen verwenden die tatsächlich gemeinsam qualifizierten
+Alternativanker; mechanische Auditanker bleiben unverändert historisch.
+Die MV-Mol-/Titrationsbeziehung blieb in diesem Paket mangels eines identischen
+beidseitig qualifizierten Ankers ausdrücklich offen. Drei geprüfte Aufgabenprofiländerungen
+sind auf HB begrenzt und erzeugen keine zusätzlichen NI-/SH-Pflichten.
+
+Zusätzlich sind **87 bewusste APV-201-Metadatenkontexte für 221 Ziel-Land-Paare**
+nach einer unabhängigen begrenzten Bindungsprüfung im bestehenden Warnregister
+erfasst. Alle 23 bisherigen Einträge anderer Fächer bleiben exakt erhalten.
+Ein tatsächlicher Join bestätigt, dass keiner der 87 aktuell vorhandenen
+APV-201-Schlüssel mehr unzugeordnet ist. Das ist keine neue Gesamtmessung von
+CQR-501. Die 2241 APV-202-Diagnosen bleiben unverändert; weder amtliche
+Quellendeckung noch ganze hessische Zulassungsrouten oder menschliche Freigaben
+werden aus der Kontextannahme abgeleitet.
+
+Ein frisches unabhängiges A qualifiziert inzwischen genau den schon von B
+geprüften MV-Source008-Rechenanteil. Die unveränderten ganzen P, die bestehende
+direkte Voraussetzung und der konkrete gemeinsame Anker sind technisch
+zusammengeführt. Der historische HOLD bleibt erhalten; der unveränderte
+Coverage-Helfer bestätigt die neue normale Beziehung. Damit sind
+**22 bestehende Quellenbeziehungen wiederhergestellt**, weiterhin **null neue
+fachliche Erstabschlüsse**. Ganze praktische Titration oder LK-Zusätze werden
+dadurch nicht als gedeckt erklärt.
+
+Die unabhängig geprüfte BY-LK-Ergänzung ist ebenfalls normal integriert:
+Für **62 zuvor im Lernweg nicht abgedeckte Quellenzeilen sind die bereits
+zugeordneten Ziele jetzt sichtbar: 41 bestehende gewöhnliche Ziele und drei
+Memory-Ziele kommen hinzu.**
+Drei vorhandene Kohlenhydratgrundlagen sind ausdrücklich verfasste Targets.
+Die tatsächliche Projektion bestätigt keine Zielverluste, keine fehlenden
+atomaren Voraussetzungen und passende bestehende Memory-Sichtbarkeit.
+Der getrennte optional angebotene BcP-Kurs und C11-NTG bleiben amtlich genau
+das; der breitere SkillPilot-Zielumfang erzeugt keine universelle amtliche
+Pflicht oder behauptete Themenwahl. Die 62 Platzierungen sind keine
+62 neuen fachlichen Zielabschlüsse oder ganzen Quellenfreigaben.
+
+Für BB und BE sind je **13 vollständige ausgewählte Prozessstandards** aus
+den bisher nur als Rohpassagen vorhandenen amtlichen Abschnitten ergänzt.
+26 unabhängig geprüfte partielle Kanten stellen **zwölf Ziel-Land-Beziehungen**
+her. Alle bisherigen 203 Quellenzellen je Land bleiben unverändert erhalten.
+Die heute 216 Zellen werden transparent nach alten Inhaltszellen und neuen
+Standards gezählt; die alte Inhaltsgranularitätsgrenze bleibt erhalten.
+Körperliche Experimente, soziale Diskussion und weitere nicht vollständig
+getragene amtliche Operatoren erhalten keine volle Quellenfreigabe.
+
+Weitere **sieben partielle Quellenrelationen in 19 normalen Mappingdateien**
+sind nach unabhängiger Prüfung über exakte Zeilenvergleiche integriert.
+Die neuen BB/BE-Standards bleiben dabei erhalten. Die hessische Faraday-Zeile
+bindet den tatsächlichen qualitativen LK-Anteil ohne Berechnungen; die
+mehrstufige Protolyse bleibt amtlich LK. Der tatsächliche Kurscheck besteht
+danach mit **null Abweichungen** bei 4178 Quellenzielen und 1883 geprüften
+Mappingkanten. Die getrennten BB/BE-LK-Platzierungs-HOLDs sind inzwischen
+durch einen eigens verfassten und unabhängig angenommenen Nachfolger
+aufgelöst: In vier normalen Views kommen insgesamt sieben bestehende Targets
+hinzu, darunter ausdrücklich der vollständige Anfangs-pH-Basenweg in BB-LK
+und BE-LK. Die tatsächliche Projektion bestätigt keine Verluste, keine
+fehlenden Voraussetzungen und vorhandene referenzierte Memory-Unterstützung.
+Die ganze quantitative Basenkompetenz bleibt eine eigene Erwerbsroute,
+keine zusätzlich behauptete universelle amtliche Rechenpflicht.
+
+Nicht jede Restlücke ist bloß ein fehlender Verweis: Für NI-Schemabenutzung
+und zwei vorgeschriebene ST-Schülerexperimente sind gezielte eigene Materialien
+vorbereitet. Zwei getrennte tatsächliche Inhaltsprüfungen nehmen inzwischen
+die drei begrenzten Quellenfälle und zwei additiven ganzen P-Entwürfe an.
+Sie sind inzwischen nativ übernommen; die vorhandenen ganzen
+P-Pflichten bleiben exakt erhalten. Die neuen Versuchsprotokolle enthalten
+keine behaupteten Lernendenhandlungen oder Messwerte. Der offene
+MV-SekI-Originalkontext bleibt erhalten.
+Eine erneute zentrale M7-Messung und GitHub-CI-PASS sind weiterhin ausstehend.
+
+Die anschließend gebündelte tatsächliche Geltungsberechnung dauert 39 Sekunden
+und findet keine Compilerfehler. Sie deckt jedoch **sechs unerwartete
+HH-Geltungsverluste** auf: Die sachlich korrigierte Fachsprachenzeile hatte
+zuvor einen ganzen Laborcluster fälschlich mitgetragen. Die sechs bestehenden
+Labor-/Versuchsziele brauchen nun ihre tatsächlichen HH-Quellen oder eine
+ausdrückliche eigene Umfangsbindung. Die Berechnung wird deshalb nicht als
+bestandene Integration gewertet; weder kanonische Geltung noch der bisherige
+normale Geltungsbericht werden überschrieben. Der bisherige 450er-C/P-Stand
+bleibt exakt erhalten. Die Wiederherstellung einer falschen Sammelquelle ist
+keine zulässige Abkürzung.
+
+Die gezielte unabhängige HH-Nachprüfung nimmt inzwischen drei tatsächliche
+partielle Quellenbeziehungen an: angeleitete Durchführung/Protokollierung,
+begründete örtliche Entsorgungsentscheidung und praktische Isolation/Reinigung
+mit Auswertung. Die beiden SekI-Standards gehören zur tatsächlichen
+Ende-8-Spalte; der SekII-Standard E5 gilt für beide Kursniveaus mit verschiedener
+Tiefe und Selbstständigkeit. Die drei bestehenden aufwärts gerichteten
+Clusterbeziehungen sind strukturell geprüft. Nur die Entsorgungsentscheidung
+ist bereits in den zwei HH-Lernwegen ausgewählt; es werden keine fünf weiteren
+Targets eingeführt. Das Paket enthält **drei angenommene partielle
+Quellenrelationen, null neue fachliche Erstabschlüsse**. Es ist inzwischen in
+fünf normalen Mappingdateien übernommen. Die anschließend tatsächlich
+ausgeführte Geltungsberechnung besteht in 40 Sekunden mit **null Fehlern und
+null Änderungen der kanonischen Geltungswerte**; die sechs HH-Verluste sind
+damit behoben. Die korrigierte Fachsprachenzeile bleibt unverändert erhalten.
+
+Das größere Prozessquellenpaket ist ebenfalls normal integriert: 70 neue
+vollständige ausgewählte Quellenzellen in elf Transporten sowie 78 unabhängig
+angenommene partielle Beziehungen für 56 Ziel-Land-Paare. 31 passende
+Mappingdateien erhalten 178 Zeilen. Alle bisherigen Quellenzellen und
+Zuordnungen bleiben erhalten; die beiden unterschiedlichen historischen
+TH-Verträge werden nicht vereinigt, und HE-2024 wird nicht in HE-2026 umbenannt.
+Zwölf der 70 Zellen dienen als gemeinsame Extraktion für andere geprüfte
+Pakete. Neue ganze amtliche Quellenabschlüsse werden nicht behauptet.
+
+Ein weiteres geprüftes Paket übernimmt 53 Ziel-Land-Zuordnungen mit 69
+verschiedenen Quellen-Ziel-Paaren: 183 zusätzliche partielle Kanten in 37
+Mappingdateien. Die vollständige fakultative HE-G9-F03-Zeile ist einmal
+ergänzt; ihr amtlich optionaler Status bleibt erhalten. Vier neue NW-Rationales
+benennen jetzt die tatsächlich vorhandenen Mg-/Chlor- und Na-/Wasser-Fälle;
+die historischen Autorenbytes bleiben unverändert. **Auch diese beiden Pakete
+erzeugen null neue fachliche Erstabschlüsse.**
+
+Die gezielte neue Messung der unveränderten tatsächlichen CQR-003-Funktionen
+misst danach **304 statt 448 unbelegte Ziel-Land-Zuordnungen**, also einen
+Nettoabbau von **144**. Betroffen sind noch 58 verschiedene Ziele.
+Die umgekehrten Quellenlücken sinken von **74 auf vier**: NI eins, MV eins
+und ST zwei. Das ist eine aktuelle begrenzte Quellenmessung, keine erneute
+zentrale M7-Gesamtprüfung. Der Kurscheck findet keine falschen Kurszuordnungen,
+aber noch eine neue HE-2026-S7-Quellenzelle ohne Mapping. Sie bleibt bis zu
+einer tatsächlichen passenden Zuordnung offen. Die zwei getrennten
+Autorenpakete mit 14 Methoden- und 40 Inhaltszielen sowie vier SN-Prozessfälle
+bearbeiten die verbliebenen Vorwärtslücken.
+
+Nach Abschluss der getrennten 86-Paar-Autorenarbeit sind die beiden geprüften
+NI/ST-P-Nachfolger und drei Quellenbindungen normal aktiviert. Die Registry
+enthält nun 134 P-Konfigurationen mit weiterhin 450 eindeutigen Ownern.
+**Alle anderen 448 ganzen P-Records bleiben exakt erhalten.** Die tatsächliche
+Stockprüfung der drei geänderten Konfigurationen bestätigt sieben Records
+ohne Fehler; die bisherige menschliche Prüfstufe und E1/G1 bleiben bestehen.
+Die fünf Quellen-Mappingdateien enthalten nur die sieben ausgewählten
+Zeilenersetzungen und vier partielle aktuelle Reviewentscheidungen; alle
+anderen Ergänzungen bleiben erhalten. Alte D-Paare bleiben unverändert,
+während die tatsächliche neue C/P-/Materialkontextprüfung gesondert gebunden ist.
+
+Die anschließende tatsächliche Geltungsberechnung besteht erneut mit null
+Fehlern und null kanonischen Geltungsänderungen. Die neue begrenzte
+CQR-003-Messung bestätigt **nur noch eine statt ursprünglich 74 umgekehrten
+Quellenlücken**, nämlich den ausdrücklich offenen MV-SekI-Kontext zu Säuren.
+Die 304 Vorwärtslücken bei 58 Zielen bleiben in den getrennten laufenden
+Quellenpaketen. Es gibt weiterhin keinen neuen fachlichen Erstabschluss,
+keine menschliche Unterrichtsfreigabe und noch keinen M7-/GitHub-CI-PASS.
+
+- [Zweiter tatsächlicher Inhaltsreview der drei NI/ST-Quellenfälle](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-NI-ST-three-operative-source-remediation-informed-root-review-20261018-v1/FIRST.root-informed-three-source-and-two-whole-profile-designs.json)
+- [Gezielter unabhängiger HH-Quellen-/Geltungsreview](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-HH-six-source-scope-informed-independent-root-20261018-v1/FIRST.three-partial-source-and-three-structural-relations.json)
+- [Integrierte Prozessquellen für 56 Ziel-Land-Paare](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-reviewed-source-integration-technical-20261018-v1/RECEIPT.actual-finite-normal-integration.json)
+- [Integrierte 53 Ziel-Land-Zuordnungen](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-single53-reviewed-source-integration-technical-20261018-v1/RECEIPT.actual-single53-source-CAS-integration.json)
+- [Integrierte HH-Quellenkorrektur](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-HH-six-reviewed-source-scope-integration-technical-20261018-v1/RECEIPT.actual-HH-three-partial-sources-and-six-availability-relations.json)
+- [Tatsächlich bestandene erneute Geltungsberechnung](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-reviewed-56plus53-and-HH6-source-applicability-technical-20261018-v1/RECEIPT.actual-reviewed-source-batch-applicability-check.json)
+- [Aktuelle begrenzte CQR-003-Messung](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-reviewed-source-batch-CQR003-diagnosis-technical-20261018-v1/DIAGNOSIS.actual-CQR003-after-56plus53-HH6.json)
+- [Normal aktivierte zwei P-Nachfolger und drei NI/ST-Quellenbindungen](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-NI-ST-two-reviewed-P-three-source-integration-technical-20261018-v1/RECEIPT.actual-two-P-and-three-source-bindings-integration.json)
+- [Tatsächliche native Prüfung nach Aktivierung](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-NI-ST-two-reviewed-P-three-source-integration-technical-20261018-v1/CHECK.actual-current-native-P2-and-five-residual-records.json)
+- [Bestandene Geltungsberechnung nach NI/ST-Übernahme](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-reviewed-NI-ST-three-source-applicability-technical-20261018-v1/RECEIPT.actual-NI-ST-source-batch-applicability-check.json)
+- [Aktuelle Quellenmessung mit einer verbleibenden MV-Rückwärtslücke](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-reviewed-NI-ST-source-CQR003-diagnosis-technical-20261018-v1/DIAGNOSIS.actual-CQR003-after-NI-ST-three-source-integration.json)
+
+- [Tatsächliche Kurskorrektur](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-source-course-binding-repair-20261018-v1/RECEIPT.actual-course-source-binding-integration.json)
+- [Zwei integrierte Quellenbeziehungen](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-two-source-surrogate-binding-integration-20261018-v1/RECEIPT.actual-two-source-bindings-integration.json)
+- [19 weitere geprüfte Quellenbindungen](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-nineteen-source-delta-bindings-integration-20261018-v1/RECEIPT.actual-nineteen-source-bindings-integration.json)
+- [87 begrenzt angenommene Metadatenkontexte](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-applicability-warning-context-integration-20261018-v1/RECEIPT.actual-eightyseven-reviewed-warning-contexts-integration.json)
+- [Gezielt geschlossene MV-Source008-Bindung](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-MV-source008-reviewed-binding-integration-20261018-v1/RECEIPT.actual-MV-source008-binding-integration.json)
+- [Geprüfte BY-LK-Quellenplatzierung](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-BY-reviewed-source-view-integration-20261018-v1/RECEIPT.actual-BY62-view-and-three-foundations-integration.json)
+- [BB/BE-Prozessquellenintegration](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-BB-BE-reviewed-process-sources-integration-20261018-v1/RECEIPT.actual-reviewed-BB-BE-process-source-integration.json)
+- [Sieben partielle Quellenrelationen](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-seven-nonBY-reviewed-source-row-integration-20261018-v1/RECEIPT.actual-seven-partial-source-row-CAS-integration.json)
+- [Vier integrierte Lernwege einschließlich der zwei Erwerbsgrundlagen](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-four-reviewed-nonBY-views-integration-20261018-v1/RECEIPT.actual-four-reviewed-views-and-two-foundation-targets.json)
+- [Tatsächliche Geltungsberechnung mit sechs offenen HH-Deltas](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-integrated-source-batch-applicability-technical-20261018-v1/RECEIPT.actual-source-batch-applicability-check.json)
+
+## Nachfolgende gezielte Quellenarbeit
+
+Die vier bisher gehaltenen SN-Prozesszuordnungen sind nach fremdem
+informiertem Review integriert. Sechs ganze allgemeine Quellenabschnitte
+und sieben partielle Relationen ergänzen die bestehenden Dateien; alle
+177 vorherigen Quellenobjekte und die vorhandenen Zuordnungen bleiben
+erhalten. Die begrenzte Prüfung der vier Ziel-Land-Paare in zwei aktuellen
+Views besteht. Dies sind zusätzliche Quellenbindungen, keine neuen
+fachlichen D/P/A/M/V-Erstabschlüsse. Eine neue vollständige CQR-003-Messung
+nach dieser Ergänzung liegt noch nicht vor.
+
+Der neue MV-Säurenkandidat behandelt die letzte gemessene Rückwärtslücke
+mit vollständigem Lehrkraft-DE-/Schüler-SE-Kontext. Er ergänzt das ganze
+bestehende Profil ausschließlich durch vier einzelne Array-Anhänge und
+enthält ein vollständiges zweisprachiges Material mit konkreten Mengen,
+Beobachtungsfenstern und leeren tatsächlichen Leistungsprotokollen.
+Profilschema, genaue Erhaltung des alten Profilkörpers, ausgewählte
+Quellenobjekte und Portabilität sind tatsächlich geprüft. Der Kandidat
+bleibt bis zum fremden Material-/Profil-/Quellenreview inaktiv; daraus
+folgen keine behauptete Versuchsdurchführung oder menschliche Freigabe.
+
+Auch das 40er-Inhaltspaket ist jetzt als inaktiver Autorenstand versiegelt:
+197 direkte partielle Ziel-Land-Vorschläge, sechs begrenzte Erwerbsrouten
+über vorhandene Voraussetzungen und elf konkrete HOLDs. Zwei getrennte
+fremde Prüfer bearbeiten je 20 ganze Ziele. Der bereits unabhängig geprüfte
+14er-Methodenstand wird getrennt technisch integriert; dieser laufende
+Schritt ist noch kein neuer Gesamtbericht oder GitHub-CI-PASS.
+
+- [Integrierte vier SN-Prozesszuordnungen](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SN-four-held-process-source-reviewed-integration-technical-20261018-v1/RECEIPT.actual-three-file-SN4-normal-integration.json)
+- [Inaktiver vollständiger MV-Säurenkandidat](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-MV-last-reverse-acid-practical-author-successor-20261018-v1/README.md)
+- [Versiegelter 40er-Quellenautorenstand](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-forty-content-multistate-source-author-20261018-v1/README.md)
+
+## Belege
+
+- [Zusammenhängende Normalintegration und D10-Übergabe](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current450-final-delivery-and-term-scope-integration-technical-20261018-v1/RECEIPT.final450-coherent-normal-integration-and-D10-handoff.actual.json)
+- [Tatsächlich gebundene Bildprüfungen](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current450-V473-actual-image-integration-20261018-v1/RECEIPT.actual-V473-three-accepted-new-rows.json)
+- [Tatsächliche abschließende Schema- und Zentralmessung](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current450-final-central-closeout-20261018-v1/RECEIPT.actual-schema-and-central-measurement.json)
+- [Aktueller Gesamtbericht mit offenen Layer-A-Gates](status/curriculum-quality-status.json)
+- [Vorheriger 447er-Zwischenstand](chemie-current447-final-integration-progress-2026-10-18.md)

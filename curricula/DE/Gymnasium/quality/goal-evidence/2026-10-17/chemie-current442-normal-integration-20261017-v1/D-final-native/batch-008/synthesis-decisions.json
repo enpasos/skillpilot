@@ -1,0 +1,608 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "chemie-final163-paired-D-only-008-20261018-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+  "synthesizedAt": "2026-10-17T22:46:21.803Z",
+  "batch": {
+    "batchId": "chemie-final-current-context-d-008-v1",
+    "batchManifestDigest": "sha256:ddc5add789df1c7d0b157b30a0c39e3eddb79d5a0a94d68eb592338c7c188260",
+    "configDigest": "sha256:a97343ac33f1a8894e9379900268eb3244fefb0089a18a7c45aa60fc3e951fb9",
+    "bundleFingerprint": "sha256:601c368d94434beda46812f3d7dba19e198c5e91ecef503a5405d7dd1a230cbc",
+    "bookDigest": "sha256:311563b78cd435d70579e8380f74c34d620a815eb8694ace4376159636b2b479",
+    "reviewInputFingerprint": "sha256:3ac18dc51676cde29ff443c24a5b4a66fe4284e778b917d2a635b9e71961d3c3",
+    "dualSummaryDigest": "sha256:75131dbe4e2143b9a067c805d573de1f211b44cd088aeee05809347756b969ad",
+    "canonicalLandscapeDigest": "sha256:1334c2f7e637c23737c32fffcda9adc9273b83e0d61f536c2e6b404699eee262"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-008-v1-a",
+      "campaignDigest": "sha256:bfc1b7bc3538c4dd17f4f184f0a3c6191751a8124732d1299f1f3201d5b9fa22",
+      "roundId": "chemie-final-current-context-d-008-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-008-v1-independent-a",
+      "reviewInputFingerprint": "sha256:3ac18dc51676cde29ff443c24a5b4a66fe4284e778b917d2a635b9e71961d3c3",
+      "batchId": "chemie-final-current-context-d-008-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:968d12e6d6c95ae4458c446c618a5b41ae5866cae5548e39694b7cd05d4d91fc",
+      "runId": "codex-reviewer-a-final163-batch008-20261018",
+      "runManifestDigest": "sha256:1c83d9e9f75802490a373fc32cd5155852662ec2adeb44332b0e4ad3794a53f2",
+      "resultsDigest": "sha256:717572e69fa651d74b4efe4307f0c0f1eb2190475b1f5e1e8a20cdd410f01fcc"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-008-v1-b",
+      "campaignDigest": "sha256:8a870c0b67e894644fc8a8bc5a6e566b1b80eb253611ea8e45a3aec8e4e7ce2d",
+      "roundId": "chemie-final-current-context-d-008-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-008-v1-independent-b",
+      "reviewInputFingerprint": "sha256:3ac18dc51676cde29ff443c24a5b4a66fe4284e778b917d2a635b9e71961d3c3",
+      "batchId": "chemie-final-current-context-d-008-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:c1d89d0bc5f42e5cc52bb9c7cf0b4c4b056a214a4e2b5df3771231d0cb787d2d",
+      "runId": "chemie-final163-native-b-008-20261018",
+      "runManifestDigest": "sha256:aae64cd2428db704ad4ac245dcca064a12b9d0dc413b71f7a83725b0f7ddfec2",
+      "resultsDigest": "sha256:89514977b458bdd7656b1bb59d40d99ab77b3c500d848c381a3f4502abbe5fdc"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "chemie-final163-paired-D-only-008-20261018-v1-decision-001",
+      "goalId": "981242bb-a729-5701-b02d-c2f7f489e5af",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:0be58bf33fa05f1b9682c236c8120bed257db35e3ea4b8d6333364670b55d5e4",
+      "pageFingerprint": "sha256:dc92393b730b52d3426e7c453b2ed0a8e5474c0990cec732a9f9c1ada51a4000",
+      "goalReviewContextFingerprint": "sha256:e33f0e5c87e13dcf50d0907b74b784cbee88ff179e1b248611b09791126de0e7",
+      "finalText": {
+        "titleDe": "Azofarbstoff-Synthese mechanistisch darstellen",
+        "titleEn": "Represent azo-dye synthesis mechanistically",
+        "descriptionDe": "Die lernende Person kann die vollständige Syntheseroute eines Azofarbstoffs aus einem aromatischen primären Amin über Diazotierung und anschließende Azokupplung auf Teilchenebene mechanistisch darstellen und den Bindungsaufbau sowie die Atom- und Ladungsbilanz erklären.",
+        "descriptionEn": "The learner can represent the complete synthesis route of an azo dye from an aromatic primary amine through diazotization and subsequent azo coupling mechanistically at particle level and explain bond formation and atom and charge balance."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-reviewer-a-final163-batch008-20261018.001",
+          "recordDigest": "sha256:6ef288e898842cdf5f4df81c2b59caabbc4d9a9c59257fa847ce3f39b9081c11"
+        },
+        "second": {
+          "recordId": "chemie-final163-native-b-008-20261018:981242bb-a729-5701-b02d-c2f7f489e5af",
+          "recordDigest": "sha256:52aedf29e66c797c47ffdb73558cbf25ea20d51bbae8bda60cce7153f95f4ced"
+        }
+      },
+      "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch008-20261018.001): D benennt die vollständige Route in beiden Sprachen, ohne praktische Synthese zu beanspruchen. Das ganze P zeigt Diazotierung mit ausdrücklich erlaubten Protonensammelschritten und Kupplung mit terminalem N-Angriff, Dreifach-zu-Doppelbindungsänderung und positivem σ-Komplex korrekt. Atom-/Ladungsbilanz +1 bleibt erhalten; die tatsächliche verfügbare neutrale Aminfraktion ist berücksichtigt. Der neue Partnerfall prüft denselben Mechanismus statt bloßer Namenswiedergabe. B (chemie-final163-native-b-008-20261018:981242bb-a729-5701-b02d-c2f7f489e5af): Das D macht die vollständige Zweistufenroute explizit und verlangt eine konsistente Teilchen-/Bindungsbilanz. Das gesamte P liefert begrenzte Diazotierungshilfen und fordert die eigene mechanistische Verknüpfung bis zur Kupplung; zusammengefasste Protonenschritte sind transparent zulässig. Der zweite Fall verändert Partner und Donorverfügbarkeit, statt nur die bereits gezeichnete Route zu wiederholen. Die direkten EAS-/Brønsted-Voraussetzungen passen; eine gefährliche Synthesedurchführung wird nicht verlangt.",
+      "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch008-20261018.001; chemie-final163-native-b-008-20261018:981242bb-a729-5701-b02d-c2f7f489e5af). Their current English understanding evidence is retained: A: Azo synthesis first forms an N–N bond during diazotisation and then couples an activated arene at terminal diazonium nitrogen with rearomatisation. B: A complete azo-dye route first forms a diazonium ion from a primary aromatic amine and then forms the ring–N=N linkage through azo coupling. This is synthesis, not a new independent review."
+    },
+    {
+      "decisionId": "chemie-final163-paired-D-only-008-20261018-v1-decision-002",
+      "goalId": "9f0d6d4c-f918-5a44-a9a2-7732c4e338f3",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:30cb3404ed0a25fe5ebf902f715bf5bc308563426621bf748a34784a4907b0d6",
+      "pageFingerprint": "sha256:d0dd3e6c9fbde8dcb8991ed6ea4988fc27d3ea9c921ea0bd366e231812a35a74",
+      "goalReviewContextFingerprint": "sha256:7a505399fedee4f7bb5a373c5ee2e82e854f502c06d88b38f57e4465db6afb79",
+      "finalText": {
+        "titleDe": "Kontaktkorrosion erklären",
+        "titleEn": "Explain contact corrosion",
+        "descriptionDe": "Die lernende Person kann Kontaktkorrosion als elektrochemisches Lokalelement zwischen unterschiedlichen Metallen erklären und Anode, Kathode sowie Elektronenfluss fachlich deuten.",
+        "descriptionEn": "The learner can explain contact corrosion as an electrochemical local cell between different metals and interpret anode, cathode, and electron flow."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-reviewer-a-final163-batch008-20261018.002",
+          "recordDigest": "sha256:a65a837b412c40595f04c29ce471cb9cede447cf65dfbeaf51dad3eb6e1ec124"
+        },
+        "second": {
+          "recordId": "chemie-final163-native-b-008-20261018:9f0d6d4c-f918-5a44-a9a2-7732c4e338f3",
+          "recordDigest": "sha256:ff80ae2dd8c7c302427c009981c764eed77d1ed1daa4e23dfb9669ab30857782"
+        }
+      },
+      "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch008-20261018.002): Die bilinguale Beschreibung erhält einen klaren lokalen Zellbezug auf Grundlage von Korrosion und Spannungsreihe. Das vollständige P verlangt zu Recht kein Cu2+ für Sauerstoffreduktion am Kupfer und erklärt beide Leitungswege. Der Zn-Transfer zeigt veränderte Rollen und die Flächenvariation bleibt bedingt; Standardpotenziale werden nicht zu tatsächlichen Korrosionsraten umgedeutet. B (chemie-final163-native-b-008-20261018:9f0d6d4c-f918-5a44-a9a2-7732c4e338f3): Das Ziel ist ein klarer elektrochemischer Erklärungskern nach Korrosion und Spannungsreihe; der nachfolgende Werkstoffvergleich bleibt ein anderes Bewertungsziel. Das vollständige P enthält beide Leitungswege, realistischen O2-Akzeptor und einen ausdrücklich bedingten Flächeneffekt. Der Zn-Transfer widerlegt die starre Aussage, Metallkontakt müsse Eisen stets schädigen, und Standardpotenziale werden nicht zur Korrosionsratenformel gemacht.",
+      "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch008-20261018.002; chemie-final163-native-b-008-20261018:9f0d6d4c-f918-5a44-a9a2-7732c4e338f3). Their current English understanding evidence is retained: A: Contact corrosion requires coupled anodic metal oxidation and cathodic reduction plus electronic and ionic conducting paths; the cathode metal need not itself supply the accepting metal ions. B: Contact corrosion needs a coupled local cell with a metallic electron path, ionic path and cathodic acceptor; the nobler metal is a reaction site and need not itself be reduced as an ion. This is synthesis, not a new independent review."
+    },
+    {
+      "decisionId": "chemie-final163-paired-D-only-008-20261018-v1-decision-003",
+      "goalId": "b781745a-256e-52b2-8d86-c1072845ccdd",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:770e684a68fdb6a8286d9c93d33178223ed1313be14bb63b7df6ecfeee582ef1",
+      "pageFingerprint": "sha256:c702a9592c59b67b1839e5079efa9f81429929cef83e91b844088e3d594aa73f",
+      "goalReviewContextFingerprint": "sha256:0895f092510cf74b1d45bee6f75b170347234776fd91a4e5edba1937fd752e98",
+      "finalText": {
+        "titleDe": "Standard-Wasserstoff-Halbzelle erklären",
+        "titleEn": "Explain the standard hydrogen half-cell",
+        "descriptionDe": "Die lernende Person kann Aufbau, Funktion und Bezugsrolle der Standard-Wasserstoff-Halbzelle erläutern und sie zur Einordnung von Standardpotenzialen nutzen.",
+        "descriptionEn": "The learner can explain the setup, function, and reference role of the standard hydrogen half-cell and use it to classify standard potentials."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-reviewer-a-final163-batch008-20261018.003",
+          "recordDigest": "sha256:545e461574981ef989fdc20c754c5aa5a2d74245604c98c3cb76ab6e800cd8c0"
+        },
+        "second": {
+          "recordId": "chemie-final163-native-b-008-20261018:b781745a-256e-52b2-8d86-c1072845ccdd",
+          "recordDigest": "sha256:d231aba7b0c015c8796b8b82a2709878c7bda9586ec5f15ca18cc43af225b515"
+        }
+      },
+      "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch008-20261018.003): Die D-Fassung ist eine kohärente Erklärung von Aufbau, Funktion und Referenzgebrauch. Die tatsächlich gelesenen vollständigen eqrk16-16-Fälle geben die pH-Potenzialbeziehung für den transferierenden Nichtstandardfall ausdrücklich vor; es wird keine eigenständige Nernstherleitung unterstellt. −0,17748 und +0,51748 V sowie die beiden SHE-Kopplungen stimmen. Pt wird nicht verbraucht und der gedachte Aufbau ist keine reale Gasversuchsfreigabe. B (chemie-final163-native-b-008-20261018:b781745a-256e-52b2-8d86-c1072845ccdd): Das D vertieft den Standardpotenzial-Vorläufer um tatsächlichen Aufbau, Funktion und Bezugsrolle, ohne eine eigene Gasapparatur zu fordern. Die zwei vollständig gelesenen Sachmaterialfälle tragen das aktuelle P mit Standardzuständen, Pt-Funktion und unterschiedlichen Kopplungen. Die Nichtstandardrechnung erhält ihre Beziehung ausdrücklich als Hilfsinformation und prüft die Referenzgrenze; sie ist keine Herleitung allgemeiner Nernst-pH-Fälle oder Behauptung realer Referenzqualität.",
+      "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch008-20261018.003; chemie-final163-native-b-008-20261018:b781745a-256e-52b2-8d86-c1072845ccdd). Their current English understanding evidence is retained: A: SHE is a defined H+/H2 reference state with a conducting catalytic Pt surface; assigned E°=0 is a convention rather than absence of redox function. B: The SHE combines a defined H+/H2 state with a conducting catalytic platinum surface and serves as the assigned relative zero reference while retaining redox function. This is synthesis, not a new independent review."
+    },
+    {
+      "decisionId": "chemie-final163-paired-D-only-008-20261018-v1-decision-004",
+      "goalId": "c95f6059-d7c2-5bcd-b61e-95e3577efdb2",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:5c748019730b688ac5e71e7c21b975b15c6c63e187e04061949672b099c4ac9e",
+      "pageFingerprint": "sha256:bfafe14836ec6dc58ac89ffc706e7583c96565e82cf300e193524b4a7d32987d",
+      "goalReviewContextFingerprint": "sha256:3c70a7e33bcb90eb89e695c53561f590f29e8a147c05cf189b70b6a18f57590c",
+      "finalText": {
+        "titleDe": "Korrosionsverhalten von Metallen beurteilen",
+        "titleEn": "Evaluate corrosion behavior of metals",
+        "descriptionDe": "Die lernende Person kann Abweichungen vom erwarteten Korrosionsverhalten erklären und daraus unterschiedliche Verwendungsmöglichkeiten von Metallen und Legierungen ableiten.",
+        "descriptionEn": "The learner can explain deviations from expected corrosion behavior and derive different uses of metals and alloys."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-reviewer-a-final163-batch008-20261018.004",
+          "recordDigest": "sha256:c51819ee910bfccebed3b53998745171f869acfe3c4e0fe345ec54cc7fb661c8"
+        },
+        "second": {
+          "recordId": "chemie-final163-native-b-008-20261018:c95f6059-d7c2-5bcd-b61e-95e3577efdb2",
+          "recordDigest": "sha256:97fc56ff7719c11587fe0cbefc88465e46f490e9e53d01f728419c2c61475b97"
+        }
+      },
+      "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch008-20261018.004): Der bilinguale D-Text verlangt begründetes Erklären einer Abweichung und darauf bezogenen Einsatz, keine absolute Werkstoffrangfolge. Das vollständige P hält dies konsequent ein: Schutzfilm hemmt Transport und Reaktion, ohne Standardpotenziale zu ändern. Die begrenzte belüftete Neutralanwendung und die lokale Spaltausnahme werden mit Kosten und Informationsgrenzen verknüpft; kein universelles rostfrei-Versprechen. B (chemie-final163-native-b-008-20261018:c95f6059-d7c2-5bcd-b61e-95e3577efdb2): Die Beschreibung hält Erklärung und Verwendungsurteil an derselben Werkstoff-Umgebungsbeziehung zusammen. Nach Kontaktkorrosion liefert das vollständige P konkrete Film- und Legierungsdaten, einen Kostenkonflikt und zwei echte Bedingungswechsel. Passivierung wird korrekt kinetisch gedeutet; Abweichungen widerlegen weder Standardpotenziale noch begründen sie universelle Rostfreiheit. Damit ist das Bewertungsziel positiv und ohne zusätzliche experimentelle Pflicht operationalisiert.",
+      "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch008-20261018.004; chemie-final163-native-b-008-20261018:c95f6059-d7c2-5bcd-b61e-95e3577efdb2). Their current English understanding evidence is retained: A: Thermodynamic baseness does not determine corrosion rate; dense passive films and their environment-dependent stability can substantially change observed behaviour. B: Standard potentials describe thermodynamic tendencies; passive films, local environments and alloy composition additionally affect observed corrosion resistance. This is synthesis, not a new independent review."
+    },
+    {
+      "decisionId": "chemie-final163-paired-D-only-008-20261018-v1-decision-005",
+      "goalId": "cc803809-fa7f-517c-b356-9f2f7caf21a5",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e6defba27ff178f7ee76b16c8c1a90153e6f8d0ca1c89eff5f64ed51f774e26f",
+      "pageFingerprint": "sha256:ac0abd7ba7e3c14c2b62855e423e5b1bc143a013c16a370baa1d4e2a87af0e8b",
+      "goalReviewContextFingerprint": "sha256:2f0f182e95ff645d07e9c0192b55c800ce22d4229a0434fad0114f5e1e568e9b",
+      "finalText": {
+        "titleDe": "Energiekonzept auf Donator-Akzeptor-Reaktionen anwenden",
+        "titleEn": "Apply the energy concept to donor-acceptor reactions",
+        "descriptionDe": "Die lernende Person kann das Energiekonzept auf Donator-Akzeptor-Reaktionen anwenden und Energieumsätze solcher Reaktionen durch thermometrische Messungen untersuchen.",
+        "descriptionEn": "The learner can apply the energy concept to donor-acceptor reactions and investigate energy changes in such reactions using thermometric measurements."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-reviewer-a-final163-batch008-20261018.005",
+          "recordDigest": "sha256:e45e21cb59bb15cffd8dbce7f6566d61d68f5d0666e06aff2878c4ae16b1a969"
+        },
+        "second": {
+          "recordId": "chemie-final163-native-b-008-20261018:cc803809-fa7f-517c-b356-9f2f7caf21a5",
+          "recordDigest": "sha256:6ec11244afcb6c8f7ad8dddf225431cc234118f61149dd9613cc3aa1c9d7507a"
+        }
+      },
+      "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch008-20261018.005): Die ganze D-Beschreibung verlangt in beiden Sprachen eine tatsächliche thermometrische Untersuchung und ist fachlich sinnvoll. Das vollständige P und beide tatsächlich gelesenen eqrk16-02-Ganzfälle liefern korrekte Redoxrollen und 887,4 J/−222 kJ mol−1 beziehungsweise 916/709,9 J. Sie fordern aber ausdrücklich Planung eines zukünftigen Versuchs und Modellrechnung; ein verbindliches beobachtbares eigenes thermometrisches Durchführen mit Rohdaten fehlt als Abschlussbedingung. Der Hinweis, Modellzahlen ersetzten keine Durchführung, füllt diese positive Beleglücke nicht. P-Ausrichtung revise, D KEEP. B (chemie-final163-native-b-008-20261018:cc803809-fa7f-517c-b356-9f2f7caf21a5): Die bilinguale Beschreibung verknüpft Energieanwenden und tatsächliches thermometrisches Untersuchen kohärent mit den Redox-/Enthalpie-Voraussetzungen. Das ganze P sowie beide vollständig gelesenen Sachfälle rechnen korrekt mit Systemvorzeichen, Umsatz und Verlustgrenzen. Die Aufgaben verlangen jedoch Messplanung für einen künftigen Versuch beziehungsweise Modellvergleich; kein Profilkriterium fordert ausdrücklich die eigene tatsächlich erhobene Temperaturreihe und beobachtete sichere Ausführung als notwendigen Nachweis. Der Satz, Modellwerte ersetzten keine Durchführung, allein schließt diese operative Lücke nicht. P revise betrifft den fehlenden positiven praktischen Nachweis, nicht zusätzliche Fachthemen oder eine Behauptung vorhandener Laborleistung. Die ausdrücklich gemeldete P-Abgrenzung bleibt offen; diese D-Entscheidung schließt weder P noch das Fünf-Gate-Ziel ab.",
+      "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch008-20261018.005; chemie-final163-native-b-008-20261018:cc803809-fa7f-517c-b356-9f2f7caf21a5). Their current English understanding evidence is retained: A: Redox roles describe electron transfer, whereas reaction heat follows from measured temperature change, heat capacity, system boundary and amount converted. B: Redox and heat balances describe the same conversion; temperature change yields bounded reaction heat only with heat capacity, system boundary and conversion. This is synthesis, not a new independent review. The explicitly recorded P-alignment finding remains open; this D decision closes neither P nor the five-gate goal."
+    },
+    {
+      "decisionId": "chemie-final163-paired-D-only-008-20261018-v1-decision-006",
+      "goalId": "e0944fbb-0761-5f9c-afaa-3d4713ed1bed",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:99dc2028f5f2cc9cba26b03e03a4f5f795c0b0d036f7cd6e16f0c246b5be6931",
+      "pageFingerprint": "sha256:5d3721c5c58b7cd31c3afdef9c8ae8788191f45d1c6c44fd310ec27233effee6",
+      "goalReviewContextFingerprint": "sha256:d32b96077c2f5e6ee27ea9668c654f2bfdb0a5b0d830e6b4b776a9f555b140e2",
+      "finalText": {
+        "titleDe": "pH-Titrationskurven experimentell aufnehmen und darstellen",
+        "titleEn": "Acquire and plot pH titration curves experimentally",
+        "descriptionDe": "Die lernende Person kann unter fachlicher Aufsicht pH-Titrationskurven einprotoniger starker und schwacher Säuren mit einem kalibrierten pH-Meter aufnehmen, Messbedingungen und Zugabevolumina protokollieren und die selbst erhobenen Daten mit geeigneter Auflösung als beschriftete Titrationskurven darstellen und den Halbäquivalenzpunkt der schwachen Säure aus den eigenen Messdaten mit begründeter Unsicherheit experimentell ermitteln.",
+        "descriptionEn": "The learner can, under subject-qualified supervision, acquire pH titration curves of strong and weak monoprotic acids using a calibrated pH meter, document conditions and added volumes, and plot the personally acquired data as labelled titration curves at suitable resolution and experimentally determine the weak acid half-equivalence point from personal measurements with justified uncertainty."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-reviewer-a-final163-batch008-20261018.006",
+          "recordDigest": "sha256:5dac9c7b1c82a762ab762625f0c147deb2e11fdba5c44d84985983277649f343"
+        },
+        "second": {
+          "recordId": "chemie-final163-native-b-008-20261018:e0944fbb-0761-5f9c-afaa-3d4713ed1bed",
+          "recordDigest": "sha256:b2e7c5cdf1cc66956f93e3fc08ef36b8112949739e6a8651976163220f3c1167"
+        }
+      },
+      "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch008-20261018.006): Die aktuelle bilinguale D-Fassung umfasst Messung, Darstellung und experimentellen Halbpunkt vollständig. Das ganze P verlangt dazu tatsächliche Rohdaten und Aufsicht statt Sollkurven. Der HB-spezifische digitale Weg operationalisiert die bereits beanspruchte Kurvendarstellung mit überprüfbaren Differenzenquotienten; ungleiche Schritte, Unsicherheit und die bedingte pHhalb≈pKa-Näherung sind korrekt. Eine ergänzende Konzentrationsrechnung wird nicht als zusätzlicher Abschlussoperator ausgegeben. B (chemie-final163-native-b-008-20261018:e0944fbb-0761-5f9c-afaa-3d4713ed1bed): Die ausführliche Beschreibung legt eigene starke und schwache Messkurve und den experimentellen Halbpunkt als zusammenhängende praktische Auswertung fest. Das vollständige P und der tatsächlich vollständig gelesene PRACTICAL-PH-CURVES-P1-Fall bieten konkrete Geräte, Kalibrierung, adaptive Schrittweiten, leere Rohfelder und beobachtete sichere Durchführung. Das ebenfalls vollständig gelesene HB134-Material setzt die digitale Fortsetzung ausdrücklich in den passenden HB-Scope und bewahrt Rohdaten/Unsicherheit; es fügt keine universelle Sensorautomatisierung hinzu. Der aktuelle P-Text macht zusätzliche Konzentrationsrechnung ausdrücklich ergänzend, sodass der Durchführungskern unverändert bleibt.",
+      "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch008-20261018.006; chemie-final163-native-b-008-20261018:e0944fbb-0761-5f9c-afaa-3d4713ed1bed). Their current English understanding evidence is retained: A: An experimental titration curve rests on personal calibrated pH/volume measurements; half-equivalence follows from personally established equivalence and is neither half the pH nor an exact literature point. B: Experimental pH curves rely on personally acquired calibrated pairs; resolution and uncertainty bound equivalence and the half-equivalence point derived from it. This is synthesis, not a new independent review."
+    },
+    {
+      "decisionId": "chemie-final163-paired-D-only-008-20261018-v1-decision-007",
+      "goalId": "e96771d3-fd72-59e6-8f4c-573ef8cbde0a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:834fe95ef2458643ad76c1aeebe106fca53a6a1b6a1d99df2e9387aa0715dfc8",
+      "pageFingerprint": "sha256:199d6dbfa56464c919127ca96f0f0146bf57b112b7962e8fa3087a48a7261382",
+      "goalReviewContextFingerprint": "sha256:b0f612c414fe3b8ce65fae06abe471568b8715bc9dba89fbee92660c6c86fbe5",
+      "finalText": {
+        "titleDe": "Aromatische Verbindungen in Alltag, Industrie und Gesundheit bewerten",
+        "titleEn": "Evaluate aromatic compounds in everyday life, industry, and health",
+        "descriptionDe": "Die lernende Person kann die Bedeutung aromatischer Verbindungen in Alltag und Industrie sowie damit verbundene Gesundheitsprobleme fachlich einordnen und kriteriengeleitet bewerten.",
+        "descriptionEn": "The learner can classify and evaluate the significance of aromatic compounds in everyday life and industry as well as associated health issues using criteria."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-reviewer-a-final163-batch008-20261018.007",
+          "recordDigest": "sha256:e767e80a42928e40a2a70317e6eb29e2e9be07595534b85325bcbd67808ee7d2"
+        },
+        "second": {
+          "recordId": "chemie-final163-native-b-008-20261018:e96771d3-fd72-59e6-8f4c-573ef8cbde0a",
+          "recordDigest": "sha256:e309f0e3a6386e4a509c7d229e10e506cdc70da981a04714143a6add57829953"
+        }
+      },
+      "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch008-20261018.007): Die bilinguale D-Beschreibung verbindet Bedeutung und Gesundheitsbewertung passend mit Struktur- und Bewertungsvoraussetzungen. Das vollständige P behandelt den bereitgestellten IARC-Gefährdungsstatus nicht als Dosisrisiko und gibt keine medizinische Empfehlung. Geschlossene Prozessführung wird nur bedingt günstig bewertet, die geeignete Alternative begründet Substitution im Modellfall. Fehlende Daten werden weder zu Sicherheit noch zu pauschaler Klassengefahr umgedeutet. B (chemie-final163-native-b-008-20261018:e96771d3-fd72-59e6-8f4c-573ef8cbde0a): Der LK-Text ist als kriteriengeleitete Stoffanwendungsbewertung nach Benzolstruktur und allgemeinen Bewertungskompetenzen klar. Das gesamte P trennt vorgegebenen Primärbeleg von erfundenen Entscheidungsdaten und Gefahrenstatus von Erkrankungswahrscheinlichkeit. Der neue Stoffvergleich fordert eine eigenständige bedingte Einordnung und lässt Datenlücken offen; daraus wird weder eine individuelle Gesundheitsberatung noch eine Betriebsfreigabe gemacht.",
+      "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch008-20261018.007; chemie-final163-native-b-008-20261018:e96771d3-fd72-59e6-8f4c-573ef8cbde0a). Their current English understanding evidence is retained: A: An aromatic structure alone determines no uniform hazard; chemical identity, exposure, benefit and available alternatives support a bounded judgment. B: An aromatic ring does not establish uniform hazard; a use judgment combines specific identity, function, hazard evidence and actual exposure. This is synthesis, not a new independent review."
+    },
+    {
+      "decisionId": "chemie-final163-paired-D-only-008-20261018-v1-decision-008",
+      "goalId": "e9d74940-1e0e-4511-9718-4851f49ad7a5",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7dbc505266696e9687e2ff526b1afd2bdedd67bb9a817074ce5ff7ae560f6a48",
+      "pageFingerprint": "sha256:54869e68a7179e83c413c7d613d5faf56ff6bbd2e203f4de0526f222dd8e0e42",
+      "goalReviewContextFingerprint": "sha256:743951ffa2d3abb0e033238784527acf48496df6bbc9191d2da5d477453cb6f7",
+      "finalText": {
+        "titleDe": "Periodensystem zur Strukturdeutung nutzen",
+        "titleEn": "Use the periodic table for structural interpretation",
+        "descriptionDe": "Die lernende Person kann Ordnungsprinzipien des Periodensystems anwenden, Ordnungszahl, Protonenzahl, Hauptgruppen und Valenzelektronenzahl entnehmen und daraus einfache Aussagen über Atome ableiten.",
+        "descriptionEn": "The learner can apply ordering principles of the periodic table, read atomic number, proton number, main groups, and valence electron count, and derive simple statements about atoms from them."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-reviewer-a-final163-batch008-20261018.008",
+          "recordDigest": "sha256:4f310354adc0c0f9c9d917bb377c2e51eff852789004c1400dc49901f931eb02"
+        },
+        "second": {
+          "recordId": "chemie-final163-native-b-008-20261018:e9d74940-1e0e-4511-9718-4851f49ad7a5",
+          "recordDigest": "sha256:b89280499e00206d16a6a1b8eccc59b10202ddd010cc8d8a5fef78bf333253d6"
+        }
+      },
+      "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch008-20261018.008): Der D-Text bleibt bei einfachen Aussagen aus dem PSE, in beiden Sprachen äquivalent. Das vollständige P stellt passende neue Hauptgruppenatome bereit und beschränkt Gleichheit von Elektronen- und Protonenzahl korrekt auf Neutralität. Gruppe 15 wird nicht als fünfzehn Valenzelektronen missverstanden. Unterstufen, Polarität und weitergehende Orbitaldarstellungen bleiben nachvollziehbar anschließende Ziele. B (chemie-final163-native-b-008-20261018:e9d74940-1e0e-4511-9718-4851f49ad7a5): Das Grundlagenziel bezeichnet die geforderten PSE-Bezüge eindeutig und bereitet die späteren Unterstufen-, Polaritäts- und Orbitalziele vor. Das vollständige P liefert zwei verschiedene neutrale Hauptgruppenatome und verlangt Begründung statt isolierter Zahlenablesung. Außenelektronen-/Schalenregel bleibt auf einfache Hauptgruppenfälle begrenzt; Ladungs- oder Spektrenanalysen werden hier nicht vorgezogen.",
+      "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch008-20261018.008; chemie-final163-native-b-008-20261018:e9d74940-1e0e-4511-9718-4851f49ad7a5). Their current English understanding evidence is retained: A: Atomic number counts protons and, for neutral atoms, electrons; group and period give outer electrons and occupied shells in the simple main-group model. B: Atomic number gives proton count and neutral-atom electron count; main group and period reveal outer electrons and occupied shells in the simple model. This is synthesis, not a new independent review."
+    },
+    {
+      "decisionId": "chemie-final163-paired-D-only-008-20261018-v1-decision-009",
+      "goalId": "49235cbe-6658-5e7e-8bd4-398416bcebdc",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:617c3d042534b25c18ecf445a3adac6d119f0b5b2f1a4d6605aec7c68f4e70dd",
+      "pageFingerprint": "sha256:9289148369e30f515ee3527125c621ca4ca6421b3bef1058c4d1a168bc1574df",
+      "goalReviewContextFingerprint": "sha256:cf935c5e0c5cf056ed3e763b39ddaaf971505fadc9cded1c8aec64e9ade80456",
+      "finalText": {
+        "titleDe": "Unterenergiestufen aus Spektren und Ionisierungsenergien ableiten",
+        "titleEn": "Infer sub-energy levels from spectra and ionization energies",
+        "descriptionDe": "Die lernende Person kann Emissionsspektren, Flammenfarben und erste Ionisierungsenergien ausgewählter Hauptgruppen-Atome als experimentelle Hinweise auf Unterenergiestufen deuten und daraus Haupt- und Nebenquantenzahl ableiten.",
+        "descriptionEn": "The learner can interpret emission spectra, flame colors, and first ionization energies of selected main-group atoms as experimental evidence for sub-energy levels and infer principal and angular-momentum quantum numbers."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-reviewer-a-final163-batch008-20261018.009",
+          "recordDigest": "sha256:89a5a7e1fe3712f882c90eb681a610a50374a5d05edab05b8bd9a378200d9741"
+        },
+        "second": {
+          "recordId": "chemie-final163-native-b-008-20261018:49235cbe-6658-5e7e-8bd4-398416bcebdc",
+          "recordDigest": "sha256:3af12f308bc34990740431ab48c9da4aade5c99824a722c378b3e1861aed84be"
+        }
+      },
+      "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch008-20261018.009): Das bilinguale Gesamtziel ist eine datengestützte Modellinterpretation und keine Durchführungspflicht. Im vollständigen P sind die gerundeten Energien und Konfigurationen konsistent; O bleibt trotz N/O-Abfall über C und Be. Flammenfarbe wird nur als begrenzter experimenteller Hinweis verwendet, Paarung nicht als neue Hauptschale. Damit werden Ableitung und Modellgrenze fachlich nachvollziehbar. B (chemie-final163-native-b-008-20261018:49235cbe-6658-5e7e-8bd4-398416bcebdc): Der Zieltext ist als Deutung experimenteller Hinweise nach der PSE-Grundlage verständlich. Das komplette P macht die erforderlichen Konfigurationen und Messwerte verfügbar und setzt eine klare Grenze gegen eindeutige Quantenzahlbestimmung aus gelber Flammenfarbe allein. Im unabhängigen Vergleich werden zwei verschiedene Abweichungsursachen erklärt; der folgende Quantenzahlen-/Besetzungsregel-Nachfolger wird vorbereitet, nicht vollständig vorweggenommen.",
+      "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch008-20261018.009; chemie-final163-native-b-008-20261018:49235cbe-6658-5e7e-8bd4-398416bcebdc). Their current English understanding evidence is retained: A: Spectral lines show discrete energy differences; departures in first-ionisation trends can support subshell and pairing effects without independently fixing every quantum number. B: Discrete lines and particular deviations in first ionization energies support a subshell model; n and l describe principal shell and subshell type rather than a classical electron path. This is synthesis, not a new independent review."
+    },
+    {
+      "decisionId": "chemie-final163-paired-D-only-008-20261018-v1-decision-010",
+      "goalId": "3bc48951-025c-5144-99b1-924db611a5f9",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ba55732abf93fced91c7d801a12f90f6d3e49892b75cc79f68d6ce4097cb4c0d",
+      "pageFingerprint": "sha256:fbaa78c8b9f7004b6fd8c60dfc97a23aab1be46690eb58e2e2c0955cd3bf2e50",
+      "goalReviewContextFingerprint": "sha256:1acf2032793a2da53c143abaacff7962f088f20ec2e53f141e4c83db742c4c93",
+      "finalText": {
+        "titleDe": "Quantenzahlen und Besetzungsregeln zur PSE-Anordnung nutzen",
+        "titleEn": "Use quantum numbers and occupation rules for periodic-table ordering",
+        "descriptionDe": "Die lernende Person kann aus der Natrium-Doppellinie die Erweiterung der Quantenzahlen begruenden, die Anordnung der Atome im vollstaendigen Periodensystem mit Aufbauprinzip, Pauli-Prinzip und Hundscher Regel beschreiben und Elektronenverteilungen in Atomen sowie Atom-Ionen erklaeren.",
+        "descriptionEn": "The learner can justify the extension of quantum numbers from the sodium doublet, describe the arrangement of atoms in the full periodic table using the Aufbau principle, Pauli exclusion principle, and Hund's rule, and explain electron distributions in atoms and atomic ions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-reviewer-a-final163-batch008-20261018.010",
+          "recordDigest": "sha256:30a117f1067f6f665118b191d48855ec236a508bd5bb71f46ea3091c5090db7c"
+        },
+        "second": {
+          "recordId": "chemie-final163-native-b-008-20261018:3bc48951-025c-5144-99b1-924db611a5f9",
+          "recordDigest": "sha256:61ea89df59b5b5187243d12b595bb89169855ca677f8617ad77e1aa97ffdc10f"
+        }
+      },
+      "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch008-20261018.010): Die D-Fassung nennt ausdrücklich das vollständige PSE und Atom-Ionen. Das ganze P deckt deshalb nachvollziehbar d/f, Lanthanoide/Actinoide und Blockkapazitäten zusätzlich zu s/p ab. Die Na-Aufspaltung wird anhand gegebener 3p-Feinstruktur eingeordnet, nicht fälschlich allein durch zwei Spins erklärt. Nd 4f4 6s2, Zr 4d2 5s2, Pauli-/Hund-Korrekturen und Elektronen-/Kernbilanz passen; Grenzkonventionen werden nicht aus einem Merkschema erzwungen. B (chemie-final163-native-b-008-20261018:3bc48951-025c-5144-99b1-924db611a5f9): Die Beschreibung integriert Spektralmodellbegründung und PSE-Anwendung eines gemeinsamen quantenmechanischen Besetzungsmodells. Das vollständige P trägt ausdrücklich auch d/f und herausgezogene Reihen, liefert Zr/Nd-Konfigurationen und verhindert unzulässige universelle Diagonalregeln. Die Na-Doppellinie wird nicht fälschlich allein mit zwei Elektronenspins erklärt; der vorausgesetzte Unterstufenbefund bleibt erhalten. Umfangreiche Referenzdaten sind Hilfen, keine Auswendiglernquote aller Ausnahmefälle.",
+      "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch008-20261018.010; chemie-final163-native-b-008-20261018:3bc48951-025c-5144-99b1-924db611a5f9). Their current English understanding evidence is retained: A: A refined state model and Aufbau, Pauli and Hund explain electron occupancy and periodic-table blocks; charge changes electron count rather than nuclear identity or element position. B: The sodium doublet calls for a finer state model; quantum numbers and Aufbau, Pauli and Hund rules organize electron distributions and explain bounded periodic-table block capacities. This is synthesis, not a new independent review."
+    },
+    {
+      "decisionId": "chemie-final163-paired-D-only-008-20261018-v1-decision-011",
+      "goalId": "747c5777-07d7-51a9-9be3-7d0d6f51d4e2",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ba242287f5b89ced182f401c6bc9de3d8d6dadbe1c4c7d7181b2196d12e2179a",
+      "pageFingerprint": "sha256:9ea91c73c30b6d19a8f3bb1d3481a84737e154951c89c50b666675e2d934f6ff",
+      "goalReviewContextFingerprint": "sha256:84a6b4478d44a4d311a0f4575ed40681a9bc2f6f030b3bd437a6ad08b6e501d4",
+      "finalText": {
+        "titleDe": "Bindungs- und Molekülpolarität ableiten",
+        "titleEn": "Derive bond and molecular polarity",
+        "descriptionDe": "Die lernende Person kann Elektronegativitätsunterschiede zur Erklärung von Bindungspolaritäten nutzen, daraus mit der Molekülgeometrie die Molekülpolarität ableiten und Elektronendichte- sowie ladungscodierte Oberflächendarstellungen interpretieren.",
+        "descriptionEn": "The learner can use electronegativity differences to explain bond polarities, derive molecular polarity from bond polarity and molecular geometry, and interpret electron-density and charge-coded surface representations."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-reviewer-a-final163-batch008-20261018.011",
+          "recordDigest": "sha256:c2f12e4b7289b47a461c65cf09937c3892ef6a89b6b0752f25324d4490e8aa32"
+        },
+        "second": {
+          "recordId": "chemie-final163-native-b-008-20261018:747c5777-07d7-51a9-9be3-7d0d6f51d4e2",
+          "recordDigest": "sha256:c4eb6449846e9f6ba65dee4ed319b4c7aaa1c88d692892c0be17f2335ab56188"
+        }
+      },
+      "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch008-20261018.011): Das bilinguale Ziel verbindet sinnvoll drei Darstellungs-/Deutungsschritte derselben Polaritätsfrage. Das vollständige P liefert Geometrie und EN-Werte, sodass der Schluss nicht auf undefinierten Visuals beruht. ΔEN 1,0/0,8/1,2 und die CO2-Vektoraufhebung sind korrekt; Dichte, elektrostatische Kodierung und Ionenladung werden nicht gleichgesetzt. Ein Bild allein wird nicht zum Lernleistungsbeweis. B (chemie-final163-native-b-008-20261018:747c5777-07d7-51a9-9be3-7d0d6f51d4e2): Das D hält die drei Darstellungs-/Erklärteile unter einem Polaritätskern zusammen; Molekülgeometrien sind im vollständigen P passend gegeben. Die beiden Fälle kontrastieren zweiatomig, linear und gewinkelt und wechseln im Transfer die Farblegende. Damit prüft P fachliche Ableitung und Darstellungsverständnis positiv, während das Wasser-Eigenschaftsziel als direkter Nachfolger die zwischenmolekulare Anwendung übernimmt.",
+      "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch008-20261018.011; chemie-final163-native-b-008-20261018:747c5777-07d7-51a9-9be3-7d0d6f51d4e2). Their current English understanding evidence is retained: A: Bond polarity follows electronegativity differences; a molecular dipole additionally depends on geometric combination of bond contributions, and surface colours require a legend. B: Bond dipoles arise from unequal electron attraction; their spatial combination determines molecular dipole and surface colours require a legend. This is synthesis, not a new independent review."
+    },
+    {
+      "decisionId": "chemie-final163-paired-D-only-008-20261018-v1-decision-012",
+      "goalId": "7a36f2a2-a97e-5a0b-a6e1-a80f72137640",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:00a45621a82a1a53fcea0cf98b4b9efafce2bf146e04d8f2339d0b9164350dfe",
+      "pageFingerprint": "sha256:d7eeeda3e9eccf35411d338121a1a477e590c6dc12179cfe7a9b9d47c3cf4131",
+      "goalReviewContextFingerprint": "sha256:ee46f7f27c2e60104c8644367ac09019c6d16490418e0f8354d3997cde10f7bd",
+      "finalText": {
+        "titleDe": "Eigenschaften von Wasser strukturbezogen erklären",
+        "titleEn": "Explain water properties from structure and hydrogen bonding",
+        "descriptionDe": "Die lernende Person kann besondere Eigenschaften von Wasser aus dem Bau des Wasser-Moleküls und den Wechselwirkungen zwischen Wasser-Molekülen erklären und daraus die Bedeutung von Wasser für Lebewesen begründen.",
+        "descriptionEn": "The learner can explain special properties of water from the structure of the water molecule and interactions between water molecules, and justify the importance of water for living organisms."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-reviewer-a-final163-batch008-20261018.012",
+          "recordDigest": "sha256:5d792ea71e644d358181844a7175bae851880b734dc2f79c6381c89b5ed20fac"
+        },
+        "second": {
+          "recordId": "chemie-final163-native-b-008-20261018:7a36f2a2-a97e-5a0b-a6e1-a80f72137640",
+          "recordDigest": "sha256:dfb132d46d9ddf46bce5c8bcd0e3604058b81f0d4b2caff057c634b14f492cd5"
+        }
+      },
+      "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch008-20261018.012): D formuliert die Struktur-Eigenschafts-Funktionskette in beiden Sprachen. Das ganze P benutzt korrekt intermolekulare H-Brücken statt zusätzlicher kovalenter O–H-Verknüpfung und begrenzt Eis-/Temperaturschutz auf die gegebenen Bedingungen. Der zweite Fall zeigt passende Ion-Dipol-Hydratation und Oberflächenspannung mit biologischem Bezug; es wird weder ein Universal-Lösemittel noch universelles Nichtgefrieren behauptet. B (chemie-final163-native-b-008-20261018:7a36f2a2-a97e-5a0b-a6e1-a80f72137640): Der Zieltext verknüpft die direkten Polaritäts- und Kräfte-Voraussetzungen mit einer Struktur–Eigenschaft–Biologie-Kette. Das komplette P prüft mehrere konkrete Eigenschaften an eigenständig veränderten Situationen und trennt H-Brücken von kovalenten O–H-Bindungen. Die offen gelegten Modellbedingungen verhindern universelles Nichtgefrieren, garantierte Salzlöslichkeit oder eine feste Oberflächenhaut. Versuche mit Öl oder Lebewesen werden nicht gefordert.",
+      "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch008-20261018.012; chemie-final163-native-b-008-20261018:7a36f2a2-a97e-5a0b-a6e1-a80f72137640). Their current English understanding evidence is retained: A: Bent polar water molecules and hydrogen bonding explain distinctive bulk properties that support biological functions under stated conditions. B: Bent polar H2O structure and hydrogen bonding explain special physical properties whose biological significance depends on specific conditions. This is synthesis, not a new independent review."
+    },
+    {
+      "decisionId": "chemie-final163-paired-D-only-008-20261018-v1-decision-013",
+      "goalId": "e74f5301-70d3-5869-bd3d-79a5763a1718",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:166593e1352bdd1131676cc495fb1cdfcf274239f7eaf12358a119819b00173a",
+      "pageFingerprint": "sha256:6414f80af5229b5c4806ae79bebdb879609334d89f92683ab4c6f22821f32651",
+      "goalReviewContextFingerprint": "sha256:a81a85a89568aef16a02b8841434825dee1cc1ab77660cdfa240c3794bd28318",
+      "finalText": {
+        "titleDe": "Orbitalmodell und Valenzstrichschreibweise anwenden",
+        "titleEn": "Apply orbital model and valence-line notation",
+        "descriptionDe": "Die lernende Person kann ein einfaches Orbitalmodell und die Valenzstrichschreibweise nutzen, um Valenzelektronenkonfigurationen von Atomen und Atom-Ionen darzustellen.",
+        "descriptionEn": "The learner can use a simple orbital model and valence-line notation to represent valence electron configurations of atoms and atomic ions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-reviewer-a-final163-batch008-20261018.013",
+          "recordDigest": "sha256:e56acd3875a4d3a045ac3f7fe7e4ee4a5cc374f42cf95c60d04caba6dabe5324"
+        },
+        "second": {
+          "recordId": "chemie-final163-native-b-008-20261018:e74f5301-70d3-5869-bd3d-79a5763a1718",
+          "recordDigest": "sha256:ddefa9399e7afe2b364829a7c0c86b4fd877fef22bcbf1c43a8679e7b8b09ab5"
+        }
+      },
+      "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch008-20261018.013): Die bilinguale Beschreibung bleibt klar beim Darstellen einfacher Valenzkonfigurationen. Das vollständige P hält Orbitale und Elektronenpunkte sowie Innen- und Außenelektronen auseinander. F 2p5, O 2p4 und die vollen Anionenschalen stimmen mit Hund/Pauli im angegebenen Modell; eine Ladungsaufschrift ersetzt keine Elektronenbilanz. Die Punktposition wird nicht als maßstäbliche räumliche Bahn ausgegeben. B (chemie-final163-native-b-008-20261018:e74f5301-70d3-5869-bd3d-79a5763a1718): Das Sek-I-D bleibt auf ein einfaches Darstellungsmodell von Atomen und Atomionen begrenzt und nutzt Energiestufen, PSE und Ionenbildung als Voraussetzungen. Das ganze P prüft beide Notationen sowie einen unabhängigen Ladungswechsel und verhindert die Verwechslung von Kästchen, Punkt und räumlicher Elektronenposition. Molekülbindung und Hybridisierung werden dadurch vorbereitet und nicht als zusätzliche Abschlussbedingung eingebaut.",
+      "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch008-20261018.013; chemie-final163-native-b-008-20261018:e74f5301-70d3-5869-bd3d-79a5763a1718). Their current English understanding evidence is retained: A: Orbital occupancy and Lewis valence notation abstract the same outer electrons; added electrons, pairing and charge must agree between representations for atomic ions. B: Orbital boxes and valence symbols represent the same outer electrons differently; paired/single occupancy and ion charge must match electron accounting. This is synthesis, not a new independent review."
+    },
+    {
+      "decisionId": "chemie-final163-paired-D-only-008-20261018-v1-decision-014",
+      "goalId": "ebfa2c18-0599-5282-bf7a-80c14d86331e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:2c96efc7d917c5bb573baffc35f0ffcfc0aba984f9a8f9c0030ddb00c5872f6d",
+      "pageFingerprint": "sha256:2d186886b381f0d331bd0757745a81e2ab906959b0aaafbea2b7cf4e2ab5588a",
+      "goalReviewContextFingerprint": "sha256:bbaeb3dcd3b257409e937d3b753340725cec51785230757a15ad8609657419a6",
+      "finalText": {
+        "titleDe": "Green-Chemistry-Metriken",
+        "titleEn": "Green Chemistry metrics",
+        "descriptionDe": "Die lernende Person kann die Atomökonomie einer bilanzierten Synthese einer Waschmittelkomponente sowie E-Faktor und PMI für deren Herstellung oder eine klar abgegrenzte Formulierung berechnen und die unterschiedlichen Bilanzgrenzen erläutern.",
+        "descriptionEn": "The learner can calculate atom economy for a balanced synthesis of a detergent component and E-factor and PMI for its production or a clearly bounded formulation,and explain the different accounting boundaries."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-reviewer-a-final163-batch008-20261018.014",
+          "recordDigest": "sha256:8f121a2ba7f8a1bff47b74a2141daa860971499ba6b5896cd556efe7fca717fb"
+        },
+        "second": {
+          "recordId": "chemie-final163-native-b-008-20261018:ebfa2c18-0599-5282-bf7a-80c14d86331e",
+          "recordDigest": "sha256:fb9eed260a756b09657baa864f63490912f570e73f79e083be501083f5d79652"
+        }
+      },
+      "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch008-20261018.014): Die D-Fassung nennt Reaktions- und Formulierungsgrenzen ausdrücklich und äquivalent. Die tatsächlich gelesenen vollständigen energy20-20-Materialangaben schließen beide Massenbilanzen: 940/340 g Input, 180 g Produkt, 760/160 g Abfall. PMI=E+1 gilt dort bedingt durch vollständige Bilanz, nicht allgemein mit beliebigen Recyclinggutschriften. Das vollständige P trennt auch idealen Nutzen von Toxizität, Energie und realer Waschleistung fachlich korrekt. B (chemie-final163-native-b-008-20261018:ebfa2c18-0599-5282-bf7a-80c14d86331e): Die Beschreibung benennt die verschiedenen Bilanzebenen ausdrücklich und macht damit eine sinnvolle atomare Methodenkompetenz prüfbar. Beide tatsächlich vollständig gelesenen Sachfälle liefern ausgeglichene Gleichungen und geschlossene Massenränder; alle angegebenen Kennzahlen sind konsistent. Das vollständige P hält PMI=E+1 an dessen Massenbilanzvoraussetzung und den Vergleich an Produkt/Nutzfunktion fest, ohne Nachhaltigkeit aus einem Einzelwert oder Atomökonomie für bloßes Mischen abzuleiten.",
+      "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch008-20261018.014; chemie-final163-native-b-008-20261018:ebfa2c18-0599-5282-bf7a-80c14d86331e). Their current English understanding evidence is retained: A: Atom economy evaluates ideal reaction stoichiometry; E-factor and PMI evaluate chosen actual process mass boundaries and are neither yield nor a full environmental assessment. B: Atom economy evaluates ideal reaction stoichiometry whereas E-factor and PMI use an explicitly defined process mass boundary; none is a complete environmental judgment. This is synthesis, not a new independent review."
+    },
+    {
+      "decisionId": "chemie-final163-paired-D-only-008-20261018-v1-decision-015",
+      "goalId": "f0ba30a8-84b3-5915-bf85-6c3a176064d2",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:9d7338844c738bd6e5a33d7b1733204211ebb3773ea3c4c7804ada6f1d1775f1",
+      "pageFingerprint": "sha256:0956f085a0159ea1c01efaa106ce4d4172e3e486270edf88d347560e91754447",
+      "goalReviewContextFingerprint": "sha256:29039a59fe2226b0e0f74aed0832d70f399991d5b1c38781b180c30ff89bf44f",
+      "finalText": {
+        "titleDe": "Absorptionsspektren von Farbstoffen auswerten",
+        "titleEn": "Evaluate absorption spectra of dyes",
+        "descriptionDe": "Die lernende Person kann aus Absorptionsspektren von Farbstoffen Wellenlängenbereiche, Absorptionsmaxima und Absorptionsstärke bestimmen und Unterschiede unter Berücksichtigung der Messbedingungen deuten.",
+        "descriptionEn": "The learner can identify wavelength regions, absorption maxima and absorption strength from dye absorption spectra and interpret differences while taking measurement conditions into account."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-reviewer-a-final163-batch008-20261018.015",
+          "recordDigest": "sha256:5a153bed9e690ccfeec8bf1e1afcc0c50fd1b62078493f0dc538f8cd3abec4d9"
+        },
+        "second": {
+          "recordId": "chemie-final163-native-b-008-20261018:f0ba30a8-84b3-5915-bf85-6c3a176064d2",
+          "recordDigest": "sha256:fe791c95d8383153cb57ec39c4b786e1f61dd7e68ff72980805b7bf271fed83a"
+        }
+      },
+      "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch008-20261018.015): Der bilinguale D-Text beschreibt eine konkrete Spektrenauswertung ohne notwendige eigene Messung. Das vollständige P liefert kontrollierte Konzentrations-/Küvettenbedingungen und trennt λ-Lage von A-Höhe. Die Summen 0,8/0,2/0,7 sind korrekt; exakte Maxima zwischen Rasterpunkten oder universelle Stoffidentität werden nicht erfunden. Dies ist fachlich passender Transfer statt reiner Maximalzahlablesung. B (chemie-final163-native-b-008-20261018:f0ba30a8-84b3-5915-bf85-6c3a176064d2): Das LK-Ziel formuliert eine einheitliche Spektrenauswertung mit Messbedingungen. Das vollständige P enthält sämtliche Zahlen und Bedingungen, unterscheidet tabelliertes von exaktem Zwischenstellenmaximum und bietet mit der Mischung einen neuen Anwendungsmodus. Die gegebene Lambert-Beer-Beziehung stützt die Intensitätsdeutung; aus Verdünnung werden weder Bandverschiebung noch eindeutige Gesamtidentität gefolgert.",
+      "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch008-20261018.015; chemie-final163-native-b-008-20261018:f0ba30a8-84b3-5915-bf85-6c3a176064d2). Their current English understanding evidence is retained: A: An absorption spectrum gives position and strength under defined conditions; an intensity change caused by concentration or path length is not automatically a band shift. B: Spectra distinguish wavelength position from absorption intensity; concentration, path length and chemical state limit comparisons. This is synthesis, not a new independent review."
+    },
+    {
+      "decisionId": "chemie-final163-paired-D-only-008-20261018-v1-decision-016",
+      "goalId": "f1ed86f0-534d-57d7-8952-a004a331cc54",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:78542036d20cea40c63b1971734d951f673b10e8fcd0b954a560a26fa9926235",
+      "pageFingerprint": "sha256:4c06262fb0b1933a43250d5c165d7a185872de0c367e8c5bc9740ef5e5044c1d",
+      "goalReviewContextFingerprint": "sha256:70838c67a480f21dd2fffb4634d2d83f3dc8347ead156becdf35c6b7c9662041",
+      "finalText": {
+        "titleDe": "Lösungen berechnen und pH bestimmen",
+        "titleEn": "Calculate solutions and determine pH",
+        "descriptionDe": "Die lernende Person kann Stoffmengen, Konzentrationen und pH-Werte starker Säuren und Basen berechnen, saure oder basische Lösungen definierter Stoffmengenkonzentration herstellen und Messergebnisse plausibilisieren.",
+        "descriptionEn": "The learner can calculate amounts of substance, molar concentrations, and pH values for strong acids and bases, prepare acidic or alkaline solutions of a specified molar concentration, and check measurements for plausibility."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-reviewer-a-final163-batch008-20261018.016",
+          "recordDigest": "sha256:3b8f9e5fc0118e8223cbb4ffada72c17df2b12b0189a5a4c67f9c6af2d7f2635"
+        },
+        "second": {
+          "recordId": "chemie-final163-native-b-008-20261018:f1ed86f0-534d-57d7-8952-a004a331cc54",
+          "recordDigest": "sha256:24a1ceb5170f37774c50051e66bbe7286714abd2a166bdfca11645a517d2261f"
+        }
+      },
+      "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch008-20261018.016): D beansprucht Berechnen, eigene Herstellung und Messplausibilisierung konsistent. Das ganze P enthält dafür eine positive eigene Herstellungs-/Messbedingung. 25,00 mL HCl-Stock, 4,631 mg Ca(OH)2, pH 10,699 beziehungsweise NaOH 10,398 sind korrekt. Die Extremverdünnung ergibt mit Wasserbeitrag etwa 6,978 statt 8; der bereitgestellte Prüfwert 3,02 beweist keinen bestimmten Fehler. Keine Übertragung auf schwaches NH3 wird erzwungen. B (chemie-final163-native-b-008-20261018:f1ed86f0-534d-57d7-8952-a004a331cc54): Das D bildet eine ganze Lösungsherstellungs-/pH-Kompetenz nach angewiesener Herstellung und grober Indikatorzuordnung. Das vollständige P und beide tatsächlich vollständig gelesenen Originalmaterialien konkretisieren persönliche beaufsichtigte Verdünnung, Endvolumen, Kalibrierung und eigene Messdokumentation. Die Ca(OH)2-Stöchiometrie und theoretische Extremverdünnung sind wirkliche Änderungen der chemischen Annahmen; die bereitgestellte quadratische Bilanzhilfe fordert keine zusätzliche selbständige Lösungsmethode. Fremde Sollwerte oder Messabweichungen werden nicht als eigene Praxis oder festgestellte Fehlerursache ausgegeben.",
+      "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch008-20261018.016; chemie-final163-native-b-008-20261018:f1ed86f0-534d-57d7-8952-a004a331cc54). Their current English understanding evidence is retained: A: Defined concentration follows from amount and final solution volume; strong-acid/base pH requires dissociation stoichiometry and, at extreme dilution, water's contribution. B: Dilution conserves analytical amount while defined final volume determines concentration; strong acid/base stoichiometry and water contribution limit the pH approximation. This is synthesis, not a new independent review."
+    },
+    {
+      "decisionId": "chemie-final163-paired-D-only-008-20261018-v1-decision-017",
+      "goalId": "7c0b944d-3f1f-5d26-84b0-2a359f689cf0",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d1862c85a12a38a057af7649a7b88b6115827b894c270ff05c9309a690f9dba1",
+      "pageFingerprint": "sha256:6475546947691bd5f0a08ade793d21fa9df611b73685b6d6d09860ae39b24750",
+      "goalReviewContextFingerprint": "sha256:716d221ae4b039a032b4fc8f2eb3e469c4a7e6c26fa24f8cad7df7ede7e1891c",
+      "finalText": {
+        "titleDe": "Konduktometrische Fällungstitrationen durchführen und auswerten",
+        "titleEn": "Perform and evaluate conductometric precipitation titrations",
+        "descriptionDe": "Die lernende Person kann eine konduktometrische Fällungstitration unter kontrollierten Messbedingungen durchführen, den Leitfähigkeitsverlauf mit den gelösten Ionen und ihrer Fällung erklären, den Äquivalenzpunkt aus den Messdaten bestimmen und daraus die Konzentration des bestimmten Ions stöchiometrisch berechnen.",
+        "descriptionEn": "The learner can perform a conductometric precipitation titration under controlled measurement conditions, explain the conductivity curve using the dissolved ions and their precipitation, determine the equivalence point from the measured data and use stoichiometry to calculate the concentration of the determined ion."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-reviewer-a-final163-batch008-20261018.017",
+          "recordDigest": "sha256:8023518cec469e2fdf06aa85cf7ba2c72b6634ffd84e2502d028dd0a3cdda38a"
+        },
+        "second": {
+          "recordId": "chemie-final163-native-b-008-20261018:7c0b944d-3f1f-5d26-84b0-2a359f689cf0",
+          "recordDigest": "sha256:c4293b7ef5e0c9ddfbacf80af5b7b81ad3ed68cb3ac4f94e3cc562d922b25b43"
+        }
+      },
+      "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch008-20261018.017): Die bilinguale D-Beschreibung ist eine klar abgegrenzte ganze Analysekompetenz. Das vollständige P fordert reale eigene Leitfähigkeitsdaten und deutet den Anfangsabfall korrekt als Cl−-Ersatz durch geringer leitendes Nitrat, nicht bloßen Ladungsträgerverlust. Fällungsreaktion und 1:2-Salzfaktor stimmen. Volumenkorrektur beseitigt nicht Temperatur-/Zellfehler; ein Chloridsignal ist ohne Matrixannahme kein Calciumnachweis. B (chemie-final163-native-b-008-20261018:7c0b944d-3f1f-5d26-84b0-2a359f689cf0): Der bilinguale Text verbindet tatsächliche kontrollierte Messung, ionische Deutung, Äquivalenz und Gehaltsrechnung in einer spezifischen analytischen Kompetenz. Das ganze P und das tatsächlich vollständig gelesene K1/K2-Material liefern konkrete Apparatur, Kalibrierkontrolle, Temperaturen, Schrittweiten, Tabellen und Ionenleitfähigkeiten. Anfangsabfall und Nachäquivalenzanstieg sowie die 25-mL-Schnittrechnung sind konsistent. Die neue CaCl2-Matrix prüft einen geänderten Stoffmengenbezug und Selektivitätsgrenzen; beobachtete eigene Ausführung bleibt getrennt von synthetischer Auswertung erforderlich.",
+      "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch008-20261018.017; chemie-final163-native-b-008-20261018:7c0b944d-3f1f-5d26-84b0-2a359f689cf0). Their current English understanding evidence is retained: A: During precipitation titration, removed and introduced dissolved ions change conductivity; bounded equivalence and reaction stoichiometry determine the content of the ion actually measured. B: A precipitation titration changes the types and numbers of dissolved conducting ions; a break or line intersection yields concentration only with controlled measurement and stoichiometry. This is synthesis, not a new independent review."
+    },
+    {
+      "decisionId": "chemie-final163-paired-D-only-008-20261018-v1-decision-018",
+      "goalId": "f4d5a02d-711b-5a6b-a41d-971359c1f64d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f562efa768e6a5157ba0cc797e35badfeb5c165f07d063c503b6fce26d4b21f7",
+      "pageFingerprint": "sha256:6200ec98b48899461bc943c7dfab7db19b38fd0b26938fcbb5099006e87102b6",
+      "goalReviewContextFingerprint": "sha256:15e4a146b996bfab22a0a775cb85f34025f043998fd8f697588fde44662e66d6",
+      "finalText": {
+        "titleDe": "Optische Aktivität und Polarimetrie auswerten",
+        "titleEn": "Evaluate optical activity and polarimetry",
+        "descriptionDe": "Die lernende Person kann optische Aktivität chiraler Naturstoffe erläutern, den spezifischen Drehwinkel als Kenneigenschaft beschreiben und Polarimetrie zur Charakterisierung optisch aktiver Substanzen fachlich einordnen.",
+        "descriptionEn": "The learner can explain optical activity of chiral natural substances, describe specific rotation as a characteristic property, and classify polarimetry for characterizing optically active substances."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-reviewer-a-final163-batch008-20261018.018",
+          "recordDigest": "sha256:bcf0515cd7177710fd132c9547ba63fa94796ce08fd9c451568c3293ad50646b"
+        },
+        "second": {
+          "recordId": "chemie-final163-native-b-008-20261018:f4d5a02d-711b-5a6b-a41d-971359c1f64d",
+          "recordDigest": "sha256:19b6b2a510eec594e2cedc4bb255738970926edd1884a267a54ad10c66f2c98a"
+        }
+      },
+      "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch008-20261018.018): Die bilinguale D-Fassung ist eine fachliche Einordnung und Auswertung, keine praktische Durchführungspflicht. Das vollständige P liefert die notwendigen Referenzbedingungen und unterscheidet +53±1 spezifische Rotation von beobachtetem Winkel. Auch 40,0±0,5 g/L Glucose und 30,0 g/L Fructose sind innerhalb der gesetzten Modelle konsistent. Nullsignal, positives Vorzeichen und passende Rotation werden nicht zu unzulässigen Konzentrations-, D/L- oder Universalidentitätsschlüssen. B (chemie-final163-native-b-008-20261018:f4d5a02d-711b-5a6b-a41d-971359c1f64d): Das D ist als Erklären optischer Aktivität, Beschreiben spezifischer Rotation und Einordnen der Charakterisierung klar. Das gesamte P und das vollständig gelesene A/B-Material erklären das Gerät korrekt, rechnen konsistent mit Blank und dm/g-mL-Konvention und begrenzen D/L- sowie Identitätsschlüsse. Die zusätzliche verpflichtende Erwartung carbohydrate-concentration-inversion verlangt jedoch die quantitative Bestimmung einer unbekannten Glucose- und Fructosekonzentration samt Unsicherheit. Diese eigenständige quantitative Analysenanwendung ist im geltenden D mit Beschreiben/Einordnen nicht festgelegt. P revise betrifft ihre verbindliche Zielzuordnung beziehungsweise Geltungsgrenze; den D nicht nur zur Aufnahme schon vorhandener Pflichtaufgaben erweitern. Keine reale Polarimetermessung wird beansprucht. Die ausdrücklich gemeldete P-Abgrenzung bleibt offen; diese D-Entscheidung schließt weder P noch das Fünf-Gate-Ziel ab.",
+      "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch008-20261018.018; chemie-final163-native-b-008-20261018:f4d5a02d-711b-5a6b-a41d-971359c1f64d). Their current English understanding evidence is retained: A: Optical activity rotates polarisation; specific rotation normalises angle by defined concentration and path length under matching reference conditions and alone establishes neither D/L nor arbitrary identity. B: Optical activity is rotation of linearly polarized light; specific rotation normalizes angle under defined conditions and does not universally identify a substance or D/L configuration. This is synthesis, not a new independent review. The explicitly recorded P-alignment finding remains open; this D decision closes neither P nor the five-gate goal."
+    },
+    {
+      "decisionId": "chemie-final163-paired-D-only-008-20261018-v1-decision-019",
+      "goalId": "f54b2c33-11f1-571f-aa1c-cf969cc141c4",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:72c9883a55c92b850b91603847495ca49c49a082420075a306870e3ec602b332",
+      "pageFingerprint": "sha256:6bbfcf6e1401426fc8ed0151ca88dc7f477d2fe1f8205eb3b709ac32fa82d0d6",
+      "goalReviewContextFingerprint": "sha256:e5319cfc6317361d1aa05b754514e0cf758d452be4e62a5793ef85236c8da45e",
+      "finalText": {
+        "titleDe": "Gewinnung seltener Metalle für Spannungsquellen diskutieren",
+        "titleEn": "Discuss extraction of rare metals for electrochemical sources",
+        "descriptionDe": "Die lernende Person kann die Rohstoffgewinnung seltener Metalle für elektrochemische Spannungsquellen an geeigneten Beispielen fachlich diskutieren.",
+        "descriptionEn": "The learner can discuss extraction of rare metals for electrochemical sources using suitable examples and scientific reasoning."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-reviewer-a-final163-batch008-20261018.019",
+          "recordDigest": "sha256:7a2ca4c0b1e9487852a603d91399060397b2a468a0f18ac2ef47c0f92857eb76"
+        },
+        "second": {
+          "recordId": "chemie-final163-native-b-008-20261018:f54b2c33-11f1-571f-aa1c-cf969cc141c4",
+          "recordDigest": "sha256:ebe5eb8503a75acd1ff66fb9658d2035403b9cbb3a182c1b38d931ec46f96e8f"
+        }
+      },
+      "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch008-20261018.019): Das bilinguale D-Ziel verlangt fachliches Diskutieren an geeigneten Fällen und keinen neuen Metallurgie-Mechanismus. Das ganze P setzt stoffliche, räumliche und mengenbezogene Argumente ein, statt allein moralisch zu urteilen. Verbesserte Wasserführung hebt geringen Erzgehalt nicht auf; Nebenprodukt bedeutet keine folgenlose Versorgung. Die unbekannte chemische Gruppenzugehörigkeit von M/N und ungleiche Energiegrenzen werden offen gehalten. B (chemie-final163-native-b-008-20261018:f54b2c33-11f1-571f-aa1c-cf969cc141c4): Das D fordert eine fachlich begründete Diskussion im konkreten Spannungsquellenkontext und keinen zusätzlichen Metallurgie- oder Mechanismuskatalog. Beide tatsächlich vollständig gelesenen M-/N-Sachfälle geben die deklarierte Seltenheit, Quellenbestandteile, Erzgehalte, Freisetzung und unterschiedlichen Bilanzgrenzen an; das gesamte P bindet die Diskussion daran. Wasserbehandlung, geringerer Erzgehalt und Nebenproduktzurechnung werden separat übertragen. Die anonymisierten Lehrmetalle belegen keine wirkliche Mine oder pauschale Seltenerdklassifikation; die bedingten Schlüsse sind im gesetzten Modell prüfbar.",
+      "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch008-20261018.019; chemie-final163-native-b-008-20261018:f54b2c33-11f1-571f-aa1c-cf969cc141c4). Their current English understanding evidence is retained: A: Raw-material extraction for electrochemical sources links a specified material need with ore, water and residue impacts; rare metals are not automatically rare-earth metals and partial metrics are no full balance. B: Raw-material extraction for a specified source component has material and site impacts; rare metal does not automatically mean rare earth and by-product production is not impact-free. This is synthesis, not a new independent review."
+    },
+    {
+      "decisionId": "chemie-final163-paired-D-only-008-20261018-v1-decision-020",
+      "goalId": "f57d53b0-5bdf-5998-81f4-8bfb2fc5bde7",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:25dac6a499bbf14ce18e1777d311037e33c258b9e1c32e0c47cab56c06212dd3",
+      "pageFingerprint": "sha256:91760814327118aa886ddd8dee8fdc85e7b68e628f6f8890e0004c42fa15c8fd",
+      "goalReviewContextFingerprint": "sha256:05c6e36d80f14d13ff4bf22451d0db73dbb25fe6f8fd8e31d16f993041a97969",
+      "finalText": {
+        "titleDe": "Viskose und Cellulosederivate als Textilfasern erklären",
+        "titleEn": "Explain viscose and cellulose derivatives as textile fibres",
+        "descriptionDe": "Die lernende Person kann Viskose als regenerierte Cellulose von chemisch modifizierten Cellulosederivaten unterscheiden und deren Herstellungskonzepte sowie gegebene Eigenschaften und Verwendung als Textilfasern strukturbezogen erläutern.",
+        "descriptionEn": "The learner can distinguish viscose as regenerated cellulose from chemically modified cellulose derivatives and explain their production concepts, supplied properties and uses as textile fibres from structure."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-reviewer-a-final163-batch008-20261018.020",
+          "recordDigest": "sha256:b0de86a14b042d3f7c5f061cd1e09eb4facf4fd2f292e8d9529f18feec1948f2"
+        },
+        "second": {
+          "recordId": "chemie-final163-native-b-008-20261018:f57d53b0-5bdf-5998-81f4-8bfb2fc5bde7",
+          "recordDigest": "sha256:ef2c98daa9c65bd9383e9a9e0435768d0be53921dfced5cdda7ca4ffe99c8866"
+        }
+      },
+      "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch008-20261018.020): Die aktuelle D-Fassung ist in beiden Sprachen klar auf Herstellkonzept, Stoffidentität und gegebene Faserverwendung begrenzt. Das vollständige P stellt lokale Acetylierung und vorübergehendes Xanthat korrekt dar, ohne Viskose als dauerhaftes Derivat oder Neupolymerisation zu erklären. Zwei beziehungsweise 0,5 mittlere OH-Gruppen sind richtig; gleiche Substitution garantiert keine gleiche Morphologie oder 3-Prozent-Wasseraufnahme. Keine reale Syntheseleistung wird behauptet. B (chemie-final163-native-b-008-20261018:f57d53b0-5bdf-5998-81f4-8bfb2fc5bde7): Das ganze D legt Stoffidentität, Herstellungskonzept und daraus begründete Faseranwendung passend zusammen. Das vollständige P stellt alle Reaktions-/Strukturinformationen bereit, fordert die eigene lokale Gleichung und liefert neue Substitutions-/Morphologiefälle. Es trennt Regeneration und dauerhafte Derivatisierung ohne universelle Löslichkeits- oder Festigkeitsregeln; die Textilentscheidung bleibt an gegebene Kriterien und fehlende Belastungsdaten gebunden. Eine reale Herstellung wird nicht mit der Papierbilanz verwechselt.",
+      "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch008-20261018.020; chemie-final163-native-b-008-20261018:f57d53b0-5bdf-5998-81f4-8bfb2fc5bde7). Their current English understanding evidence is retained: A: After a temporary soluble intermediate, viscose is cellulose again, whereas cellulose acetate retains modified OH groups on the preserved chain backbone. B: Viscose regenerates cellulose after a temporary soluble intermediate; cellulose acetate instead retains chemically modified hydroxyl groups on the preserved backbone. This is synthesis, not a new independent review."
+    }
+  ],
+  "manifestFingerprint": "sha256:6064281f64c256108d7f70c1739582deaed451dc4e86366a0df71edb5d14bd13"
+}

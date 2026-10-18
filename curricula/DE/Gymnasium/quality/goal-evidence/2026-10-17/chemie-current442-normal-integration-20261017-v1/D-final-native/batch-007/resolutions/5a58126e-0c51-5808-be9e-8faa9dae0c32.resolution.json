@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-007-v1-resolution-5a58126e-0c51-5808-be9e-8faa9dae0c32",
+  "goal": {
+    "goalId": "5a58126e-0c51-5808-be9e-8faa9dae0c32",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:73d99f116208262c6493c96a019f01bef96792c59a0f72010256369433e26b1f",
+    "pageFingerprint": "sha256:015f9ccbbfc5e84666c042ceb15d56e104fabfeaf65fa9d67de4d3a93aa65c45",
+    "goalReviewContextFingerprint": "sha256:4dff1aec2c5c74d76fc3768757d48e2343463f0cee9c18cc1401dd4ca10d0e18",
+    "finalText": {
+      "titleDe": "Offene Puffersysteme",
+      "titleEn": "Open buffer systems",
+      "descriptionDe": "Die lernende Person kann an Kohlensäure-Hydrogencarbonat- und Ammonium-Ammoniak-Puffern qualitativ erklären, wie Stoffaustausch mit der Umgebung die gekoppelten Gleichgewichte, die Pufferbestandteile und den pH beeinflusst.",
+      "descriptionEn": "The learner can use carbonic acid–bicarbonate and ammonium–ammonia buffers to explain qualitatively how matter exchange with the surroundings affects the coupled equilibria, buffer components and pH."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-007-v1-a",
+      "campaignDigest": "sha256:03e23ca7a839411ee0694d3ffc4c5304359bdbdb4885b890ef7f8def67d5e5a0",
+      "roundId": "chemie-final-current-context-d-007-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-007-v1-independent-a",
+      "reviewInputFingerprint": "sha256:9786177231bba01a5178b748443b7e2ac24b65d395c6cfda891b47d1838d8fd4",
+      "goalReviewContextFingerprint": "sha256:4dff1aec2c5c74d76fc3768757d48e2343463f0cee9c18cc1401dd4ca10d0e18",
+      "batchId": "chemie-final-current-context-d-007-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch007-20261018",
+      "runManifestDigest": "sha256:41b3803956cb0b8e3ceaa1b4c1224724037cd8f6fc9ff400cb30dc979ec172d0",
+      "resultsDigest": "sha256:2deca668c6059260417c15a3d4e706e9325f6ce3e8e0bef2d977983444354968",
+      "recordId": "codex-reviewer-a-final163-batch007-20261018.017",
+      "recordDigest": "sha256:6199bd3faf566acae8a668167c0b0af54f5556f7bf53fc698ece5e08d2b56e2e"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-007-v1-b",
+      "campaignDigest": "sha256:f96e78c8b5b03376c090596c68434afdda0adfb82adef282dc1a1a949aed2746",
+      "roundId": "chemie-final-current-context-d-007-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-007-v1-independent-b",
+      "reviewInputFingerprint": "sha256:9786177231bba01a5178b748443b7e2ac24b65d395c6cfda891b47d1838d8fd4",
+      "goalReviewContextFingerprint": "sha256:4dff1aec2c5c74d76fc3768757d48e2343463f0cee9c18cc1401dd4ca10d0e18",
+      "batchId": "chemie-final-current-context-d-007-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-007-20261018",
+      "runManifestDigest": "sha256:c21072a1baeec0fb475776827fd6bdcb51afcb70555317673d8fac140568d60f",
+      "resultsDigest": "sha256:f627bfdb86dcc4a0e7dec63f04ec892ed6ec7af463e3169bda439a10444338fd",
+      "recordId": "chemie-final163-native-b-007-20261018:5a58126e-0c51-5808-be9e-8faa9dae0c32",
+      "recordDigest": "sha256:174425dc05ef8792549cfa7bb3814a875b0e9aeff0a7f64cd1d63176d636ffd5"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:9d01c3a2eaf6ff3168f19750d5b1780c3bd726f4c76d033ac9016e0d3a5debbf"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-007-20261018-v1",
+    "manifestDigest": "sha256:a002d58ade8fb14ebb3f915bed25f48fcfa287b2641be1e7a466d8abd811c99e",
+    "manifestFingerprint": "sha256:12732999b92050cc52642e0c0e4f1bd967da4b1b66528e696859794dba344986",
+    "decisionId": "chemie-final163-paired-D-only-007-20261018-v1-decision-017"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-007-20261018-v1-decision-017",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:39:49.306Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch007-20261018.017): D formuliert beide Systeme ausdrücklich qualitativ und bleibt mit Brønsted und Le Chatelier als Voraussetzungen konsistent. Das vollständige P trennt veränderte Bilanz von weiterhin möglicher Aktivitätsbeziehung und Geschlossenheit von unbegrenzter Pufferreserve. CO2-Zufuhr bzw. NH3-Verlust werden unter angegebenen Bedingungen mit korrekten pH-Tendenzen erklärt; keine unbegründete HH-Zahlenrechnung wird verlangt. B (chemie-final163-native-b-007-20261018:5a58126e-0c51-5808-be9e-8faa9dae0c32): Beide ausdrücklich genannten Puffersysteme werden in D und vollständigem P als qualitative offene Bilanzkompetenz behandelt. Brønsted und Le Chatelier sind passende direkte Voraussetzungen. Die CO2- und NH3-Fälle verändern unterschiedliche Komponenten und Austauschrichtungen; Zahlen-pH oder unveränderte Henderson-Hasselbalch-Eingaben werden ohne Daten korrekt ausgeschlossen, sodass kein zusätzliches quantitatives Pufferziel entsteht.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch007-20261018.017; chemie-final163-native-b-007-20261018:5a58126e-0c51-5808-be9e-8faa9dae0c32). Their current English understanding evidence is retained: A: Open buffers exchange matter with their surroundings, changing coupled equilibria and component inventories even though relations between the actual species may still hold. B: In open buffers, gas supply or loss changes inventory and coupled equilibria; old component ratios do not remain unchanged after unknown exchange. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Offene Puffer tauschen Stoffe mit der Umgebung aus; dadurch ändern sich gekoppelte Gleichgewichte und Komponentenbestände, auch wenn die Beziehungen zwischen tatsächlich vorliegenden Spezies weiter gelten.",
+      "essentialUnderstandingEn": "Open buffers exchange matter with their surroundings, changing coupled equilibria and component inventories even though relations between the actual species may still hold.",
+      "observablePerformanceDe": "Verknüpft CO2-Gaslösung, Hydratation und Protolyse und erklärt qualitativ die entgegengesetzten pH-Tendenzen von CO2-Zufuhr und -Abfuhr bei sonst kontrollierten Bedingungen.",
+      "observablePerformanceEn": "Connects CO2 dissolution, hydration and protolysis and qualitatively explains opposite pH tendencies for CO2 supply and removal under otherwise controlled conditions.",
+      "transferExpectationDe": "Erklärt beim frischen NH3-Verlust die Abnahme der basischen Komponente und die begrenzte Wiederverwendbarkeit alter Pufferanteile; benennt fehlende Austauschdaten für einen Zahlen-pH.",
+      "transferExpectationEn": "Explains loss of the basic component during fresh NH3 escape and why old buffer proportions cannot simply be reused, identifying missing exchange data for a numerical pH."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-b4499d74f95ed48b9e54759701a0d2d297566e1cbbedcd51c80534c2a27d8a42",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:0d344810fb9a0e709d5ac785d3f03785e36fa5b153842208cf28a71d304f4e55"
+}

@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-002-v1-resolution-42a84bca-d27e-581f-a43a-eee424f0504d",
+  "goal": {
+    "goalId": "42a84bca-d27e-581f-a43a-eee424f0504d",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:cb2615bbcbaf11d17039a279480013c17f6aea1b8e8171b47f81d8008ba89b48",
+    "pageFingerprint": "sha256:073b7590afd9e16c611841dd911947c62ec18ca583654c0f1b3cfc2b7d612981",
+    "goalReviewContextFingerprint": "sha256:94d7804984ab97ed322bbcc1315f5a2a6560c58b3c8837ad308c17a225356ddf",
+    "finalText": {
+      "titleDe": "Elemente, Verbindungen und Gemische unterscheiden",
+      "titleEn": "Distinguish elements, compounds, and mixtures",
+      "descriptionDe": "Die lernende Person kann Reinstoffe, Stoffgemische, Elemente und Verbindungen fachlich voneinander abgrenzen und mit Teilchenvorstellungen beschreiben.",
+      "descriptionEn": "The learner can distinguish pure substances, mixtures, elements, and compounds and describe them using particle ideas."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-002-v1-a",
+      "campaignDigest": "sha256:b715fd8a726cbbb7aaa20c5ec2078404f295bc90d3f8bc2a5d9f561cd958d38e",
+      "roundId": "chemie-final-current-context-d-002-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-002-v1-independent-a",
+      "reviewInputFingerprint": "sha256:d831530f4fe9ba4c7701b62a5c1bcea6bdf04d0ee9729de34f23dbad666c8a9f",
+      "goalReviewContextFingerprint": "sha256:94d7804984ab97ed322bbcc1315f5a2a6560c58b3c8837ad308c17a225356ddf",
+      "batchId": "chemie-final-current-context-d-002-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch002-20261018",
+      "runManifestDigest": "sha256:6ca66c1115aa27b4d2c73625e937471778c2db2938916b49f6ccc95a7860873d",
+      "resultsDigest": "sha256:ef5c73b963b42df01542d403d612c96c262c8a902a63b3774a35b2b9ec126b7c",
+      "recordId": "codex-reviewer-a-final163-batch002-20261018.012",
+      "recordDigest": "sha256:03ebed056bf4ec278ad04439dbf6775488d37f70591562696259efad1c0657ce"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-002-v1-b",
+      "campaignDigest": "sha256:070e2daf91a611e1ffff2447e23f61558c7f9c9fa26cf87c154c53f406c8b793",
+      "roundId": "chemie-final-current-context-d-002-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-002-v1-independent-b",
+      "reviewInputFingerprint": "sha256:d831530f4fe9ba4c7701b62a5c1bcea6bdf04d0ee9729de34f23dbad666c8a9f",
+      "goalReviewContextFingerprint": "sha256:94d7804984ab97ed322bbcc1315f5a2a6560c58b3c8837ad308c17a225356ddf",
+      "batchId": "chemie-final-current-context-d-002-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-002-20261018",
+      "runManifestDigest": "sha256:c410bb8b0ad9e827901944da0e700a9181082c10d1bbd55ac65a836583b30c6e",
+      "resultsDigest": "sha256:ab8f5774eb6180f67af823d96057f3949f0fb175c7d25a6a52ba94e0874f30cc",
+      "recordId": "chemie-final163-native-b-002-20261018:42a84bca-d27e-581f-a43a-eee424f0504d",
+      "recordDigest": "sha256:baa5db00f0cca24bda9db5170f60302b0e964e3e122d56ee0164fbe4e2f47dc8"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:d8fb237c4bfae646ace584c195b8d46e5310536aa5be0abf6e49298504cbd0d9"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-002-20261018-v1",
+    "manifestDigest": "sha256:067c0f4ea81884ab77197d8b88f8f555468ebc2707980d808fe8e93abaaa1073",
+    "manifestFingerprint": "sha256:015048c1d39b768cb2cc3bd33b3adb266d68832f23abfb86d580299bfc453bfc",
+    "decisionId": "chemie-final163-paired-D-only-002-20261018-v1-decision-012"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-002-20261018-v1-decision-012",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:25:09.454Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch002-20261018.012): Die bilingualen Fassungen bilden die Kategorien korrekt ab. Das gesamte P begrenzt Ein-Teilchensorten-Regeln auf Atom-/Molekülbilder und vermeidet damit eine falsche allgemeine Definition für spätere Ionengitter. B (chemie-final163-native-b-002-20261018:42a84bca-d27e-581f-a43a-eee424f0504d): Die vier Begriffe und der Teilchenbezug sind bilingual korrekt. P begrenzt die Ein-Teilchensorten-Regel ausdrücklich auf Atom-/Molekülbilder, sodass spätere Ionengitter nicht durch eine falsche allgemeine Definition ausgeschlossen werden.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch002-20261018.012; chemie-final163-native-b-002-20261018:42a84bca-d27e-581f-a43a-eee424f0504d). Their current English understanding evidence is retained: A: Pure substance/mixture distinguishes substance count; element/compound distinguishes atom types and chemical bonding. B: Pure substance/mixture concerns the number of substances; element/compound concerns chemically bonded atom types. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Reinstoff/Gemisch unterscheidet Stoffanzahl; Element/Verbindung unterscheidet Atomsorten und chemische Bindung.",
+      "essentialUnderstandingEn": "Pure substance/mixture distinguishes substance count; element/compound distinguishes atom types and chemical bonding.",
+      "observablePerformanceDe": "Ordnet O2-, H2O- und gemischte Molekülkarten in die Hierarchie ein und begründet jede Zuordnung.",
+      "observablePerformanceEn": "Places O2, H2O and mixed molecular cards in the hierarchy and justifies each classification.",
+      "transferExpectationDe": "Erkennt ein Gemisch zweier Verbindungen und ein zweiatomiges Elementmolekül ohne Molekül mit Verbindung gleichzusetzen.",
+      "transferExpectationEn": "Recognises a mixture of two compounds and a diatomic element without equating molecule with compound."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-b01c036b5f835dac725a9c9d8eb78d772ed819e6ba4d64c677c356d6b0dcc5fb",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:ec6117ddbd75e4d77bd4a9f937061ecaccb5eced86c1c3fdb6ad7c43b0889ce0"
+}

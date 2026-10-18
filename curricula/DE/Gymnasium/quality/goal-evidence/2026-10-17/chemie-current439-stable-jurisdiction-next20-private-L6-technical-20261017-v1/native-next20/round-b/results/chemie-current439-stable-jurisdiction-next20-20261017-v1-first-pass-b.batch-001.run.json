@@ -1,0 +1,66 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-next20-current641-fresh-independent-b-20261017-actual-run-v1",
+  "campaignId": "chemie-current439-stable-jurisdiction-next20-20261017-v1-b",
+  "roundId": "chemie-current439-stable-jurisdiction-next20-20261017-v1-first-pass-b",
+  "batchId": "chemie-current439-stable-jurisdiction-next20-20261017-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:db4e88295a309f2abd88f848b0ec898cb5a77f3af33f9e60116b72dfb4a62cb8",
+  "bundleFingerprint": "sha256:8a65ca3fada0adb9af2196b4479efc48486bf61fd5ed416c3e9f8084d8fff129",
+  "bookDigest": "sha256:86a5bf02ebc5fea3170461aff76aee760e42eef027903047fb3600579bfd4f86",
+  "provider": "OpenAI",
+  "model": "unknown-not-exposed",
+  "modelVersion": "unknown-not-exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:6f54658eae0ab7e1d81f68b31dcfe93f1d7c651d642f2182f61274d66bb2551c",
+  "independenceGroupId": "chemie-current439-stable-jurisdiction-next20-20261017-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "c224281a-f8a3-58cd-8ca3-2c2e134d61ff",
+    "a449e874-6fec-502b-9667-6f078adc4d64",
+    "afa7dae7-9378-5687-aa8d-69a04afaa0d8",
+    "93b914d4-747d-5b22-90ff-ac6320514b44",
+    "5a58126e-0c51-5808-be9e-8faa9dae0c32",
+    "d465d82b-4bf2-5527-bb7c-dad5a92605fe",
+    "a78aacf9-92ea-5627-8776-a595111f754c",
+    "f85b4651-50ea-5b42-b193-3465c05257a7",
+    "b92bfa45-b500-5647-8fd2-a14b708aaf59",
+    "9decc36b-a69a-5599-a9f0-fcebdf0203d8",
+    "85342c52-9722-54b0-8fbb-513d9d648363",
+    "057a6826-f599-53b1-bdd1-5a83037a1494",
+    "9d97f628-c3ea-5dc0-8723-b17b16297af3",
+    "39c85aa0-b01f-56ec-a148-b8009bf650f5",
+    "e47b22ec-4443-5aae-bf38-71e3164b6b3e",
+    "29742d91-732f-5da5-bc46-e963885f9a4a",
+    "dc0470f1-0676-5949-a5cc-02783d478406",
+    "0c9fe376-0fbd-5dc1-b8d4-d56d658a00e3",
+    "e22a34d4-ac1e-5afe-8f77-0dfa4fd9f44f",
+    "059acb11-29b3-5645-ac4c-b4214dc41a2d"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:4eac25000f5c9a774d819ebea0a2b9617a02ca5416ce4e4c960f1ef4e0db04db"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:db4e88295a309f2abd88f848b0ec898cb5a77f3af33f9e60116b72dfb4a62cb8"
+    }
+  ],
+  "startedAt": "2026-10-17T02:20:11.281829+00:00",
+  "completedAt": "2026-10-17T02:24:23.134642+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:0bf1e57dfdcc22c7bb502219b2ab9d6bba77ebeddb099db953cc6bb762471f3b",
+  "toolchainVersion": "skillpilot-0.0.0"
+}

@@ -1,0 +1,608 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "chemie-current439-native20-paired-root-synthesis-20261017-v2",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex root synthesis after both blind independent current-input reviews; no human attestation",
+  "synthesizedAt": "2026-10-17T07:11:33.072Z",
+  "batch": {
+    "batchId": "chemie-current439-jurisdiction-only-native20-technical-c-20261017-v1",
+    "batchManifestDigest": "sha256:c3d97dded0238f77f3791793120dbe8d018441bd1a7c372ed5702b2d17256f61",
+    "configDigest": "sha256:efad995fac1f261dca3e3efe49f0d9a9a697d9cc51b3a1702152be9a0c4b0a10",
+    "bundleFingerprint": "sha256:3d60ee67c5b3ff260ca2d212c28b265dbd37df23ad26e1ae30cbcde73c592e6a",
+    "bookDigest": "sha256:06bfda89cc000cbed4c62fad0daa4da094701c642a431cd281703440745a0ee9",
+    "reviewInputFingerprint": "sha256:e07cced1e3a769c98abff26d06e4152a77cf522f85d0a5c00792f6042155d620",
+    "dualSummaryDigest": "sha256:c080eda23ca826f5d95273b627b34707c977ea67deeafd25998f43fba3d86bf1",
+    "canonicalLandscapeDigest": "sha256:e0af9e3dedc6db17b940ec7d4732a6c2bcced7d00f3a30df9db948b9936332a8"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-current439-jurisdiction-only-native20-technical-c-20261017-v1-a",
+      "campaignDigest": "sha256:c842c57996bdf34686f76bf47f52ae3a51bfa875b6c16dcbb01b86ddc2dfadc2",
+      "roundId": "chemie-current439-jurisdiction-only-native20-technical-c-20261017-v1-first-pass-a",
+      "independenceGroupId": "chemie-current439-jurisdiction-only-native20-technical-c-20261017-v1-independent-a",
+      "reviewInputFingerprint": "sha256:e07cced1e3a769c98abff26d06e4152a77cf522f85d0a5c00792f6042155d620",
+      "batchId": "chemie-current439-jurisdiction-only-native20-technical-c-20261017-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:0bbc7aac2097df3ea0a16faa3cceb4b173a666a23fc75f845abc4b2270025caf",
+      "runId": "chemie-current439-jurisdiction20-native-independent-a-v1",
+      "runManifestDigest": "sha256:1e7c46bfc034050ae780ac05be92576c306366bb50c4a86362e79f80f9957e0f",
+      "resultsDigest": "sha256:42172623ef97de097b99d9fff077be4daf375e0aa1b6650b4d88d317f5ff1941"
+    },
+    "second": {
+      "campaignId": "chemie-current439-jurisdiction-only-native20-technical-c-20261017-v1-b",
+      "campaignDigest": "sha256:83d40a23a1ec36631c96088623e99f50d60dc8e02d3eee064729e47da45cdfe9",
+      "roundId": "chemie-current439-jurisdiction-only-native20-technical-c-20261017-v1-first-pass-b",
+      "independenceGroupId": "chemie-current439-jurisdiction-only-native20-technical-c-20261017-v1-independent-b",
+      "reviewInputFingerprint": "sha256:e07cced1e3a769c98abff26d06e4152a77cf522f85d0a5c00792f6042155d620",
+      "batchId": "chemie-current439-jurisdiction-only-native20-technical-c-20261017-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:1daa3f6a4211e8a5f1310c17bcf389a806a8f7f20ee45e1aa357729e6ccde82b",
+      "runId": "chemie-current439-jurisdiction20-native-independent-b-20261017-v1-run",
+      "runManifestDigest": "sha256:879c4ff89280bb3e4f5aad214e781096b83be7e0372594ff7138ffc5c35a76d7",
+      "resultsDigest": "sha256:533805ee0d1a7758414b41cc716b6df3d1af8e5c72b29bb21f8e600a3fea620f"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "chemie-current439-native20-root-413040cd-ba74-5227-948c-a778b0bd0f56-20261017-v2",
+      "goalId": "413040cd-ba74-5227-948c-a778b0bd0f56",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:928b4de7f04bf78b3fc6178b54d20bc86f60b65f53c3f4102e50ba0ddceedaf7",
+      "pageFingerprint": "sha256:1044810e76e02d64308bb5a0146d4abfeab0068b63ef8572f388e06bb1c5c542",
+      "goalReviewContextFingerprint": "sha256:df7779cec6265c1feed4d6906617f46a209ce140b9c37e6fa658e7e1ed35625d",
+      "finalText": {
+        "titleDe": "Löslichkeit und Sättigung aus Daten erklären",
+        "titleEn": "Explain solubility and saturation from data",
+        "descriptionDe": "Die lernende Person kann für einen vorgegebenen Stoff, ein Lösungsmittel und eine Temperatur aus Mengen- und Beobachtungsdaten erklären, ob eine Lösung gesättigt oder ungesättigt ist und welche zusätzliche Stoffmenge sich unter diesen Bedingungen noch lösen kann.",
+        "descriptionEn": "For a specified substance, solvent and temperature, the learner can use quantities and observations to explain whether a solution is saturated or unsaturated and how much further solute can dissolve under those conditions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-jurisdiction20-native-independent-a-v1.record-001",
+          "recordDigest": "sha256:46ddc33c02609e6a196447bd65a97efcaad6e71fddadac8774d954f03d75ffc7"
+        },
+        "second": {
+          "recordId": "chemie-current439-jurisdiction20-native-independent-b-20261017-v1-run.record-001",
+          "recordDigest": "sha256:d2bde53363912fc84eb0052624cdce56c737e8a36340ec414443be81adcb8767"
+        }
+      },
+      "rationaleDe": "Beide Runden begründen dieselbe temperaturgebundene Löslichkeitsbilanz einschließlich klarer Sättigung und Restkapazität. Runde A hält zusätzlich Wasserzugabe und fehlende Temperaturdaten ausdrücklich auseinander.",
+      "rationaleEn": "Both rounds support the same temperature-bound solubility balance including clear saturation and remaining capacity. Round A explicitly separates solvent addition from missing temperature data."
+    },
+    {
+      "decisionId": "chemie-current439-native20-root-a25a19ed-aec3-59cc-ae28-31d98746cb9d-20261017-v2",
+      "goalId": "a25a19ed-aec3-59cc-ae28-31d98746cb9d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:481b784fe3b066675baf5739fecd465d4f51f0e37e910e853afd7d6199692a2c",
+      "pageFingerprint": "sha256:f2490693dd51d38332e0a72124a44e5281a2934876254429bc16319da1e32579",
+      "goalReviewContextFingerprint": "sha256:daeb447ee7daeba9b75e5b667d305e21eef11beaef3257a26f7c7a32b1bfb685",
+      "finalText": {
+        "titleDe": "Ethanolwirkungen im Körper und Alltagsrisiken einordnen",
+        "titleEn": "Interpret bodily effects of ethanol and everyday risks",
+        "descriptionDe": "Die lernende Person kann anhand bereitgestellter Informationen Wirkungen von Ethanol im menschlichen Körper und seinen schrittweisen oxidativen Abbau erläutern und daraus Gesundheits- und Sicherheitsrisiken einer konkreten Alltagssituation fachlich begründet beurteilen.",
+        "descriptionEn": "The learner can use supplied information to explain effects of ethanol in the human body and its stepwise oxidative metabolism, and use this to give a scientifically reasoned assessment of health and safety risks in a concrete everyday situation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-jurisdiction20-native-independent-a-v1.record-002",
+          "recordDigest": "sha256:ea158ee65bf5cd6e11ac930b41494662bc51c40aedb4aa0c8de998fca9b746e4"
+        },
+        "second": {
+          "recordId": "chemie-current439-jurisdiction20-native-independent-b-20261017-v1-run.record-002",
+          "recordDigest": "sha256:9a964341d15180f965e474fc185f992e93fd90d75f47253d3e4a049ca5bc4307"
+        }
+      },
+      "rationaleDe": "Beide Urteile verbinden Körperwirkung und schrittweisen Ethanolabbau zu einem begrenzten Alltagsrisikourteil. Runde A bewahrt ausdrücklich die Grenze zwischen äußeren Anwendungen, Konsum und unzulässiger sicherer Dosis oder Abbauzeit.",
+      "rationaleEn": "Both judgments connect bodily effects and stepwise ethanol metabolism to a bounded everyday risk assessment. Round A explicitly preserves distinctions between external use, consumption and unsupported safe-dose or elimination-time claims."
+    },
+    {
+      "decisionId": "chemie-current439-native20-root-a96e9b3d-a02d-54f8-a3d3-318e0ea5180c-20261017-v2",
+      "goalId": "a96e9b3d-a02d-54f8-a3d3-318e0ea5180c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c4467c26af2efc5dccc3c11ecb7372bdb0995598807842fd1bc0be91d2db974f",
+      "pageFingerprint": "sha256:2ff26a7a38f66458141be2c32d814b1a115344b591c92e173220a34bb7e3adb8",
+      "goalReviewContextFingerprint": "sha256:8b55ab603aae82cce701beb8e04c1b8ba3b1cc5afda48127c0f2ee646b15baa3",
+      "finalText": {
+        "titleDe": "Herstellung und Struktur von Silikonen für Polymervergleiche erklären",
+        "titleEn": "Explain silicone formation and structure for polymer comparison",
+        "descriptionDe": "Die lernende Person kann Herstellung und Bau von Silikonmolekülen beschreiben und daraus ihre Eigenschaften im Vergleich mit ausgewählten kohlenstoffbasierten Polymeren erklären.",
+        "descriptionEn": "The learner can describe production and structure of silicone molecules and use that account to explain their properties in comparison with selected carbon-based polymers."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-jurisdiction20-native-independent-a-v1.record-003",
+          "recordDigest": "sha256:25d6b2e618c9d3dac34cfda33fb9e5e24cadfb8d15a26d17f20a04359ce4f326"
+        },
+        "second": {
+          "recordId": "chemie-current439-jurisdiction20-native-independent-b-20261017-v1-run.record-003",
+          "recordDigest": "sha256:50b7191abde9ca520fe9f7341777819c18d45fcbe7dcd4dd3324674380a6b63e"
+        }
+      },
+      "rationaleDe": "Die Runden stimmen in Silanolkondensation, endlichen Ketten und begrenztem Struktur-Eigenschafts-Vergleich überein. Runde A erhält die konkrete Endgruppen- und Vernetzungsunterscheidung; praktische Synthese wird nicht behauptet.",
+      "rationaleEn": "The rounds agree on silanol condensation, finite chains and bounded structure-property comparisons. Round A retains the specific terminal-group and crosslink distinctions without claiming practical synthesis."
+    },
+    {
+      "decisionId": "chemie-current439-native20-root-6413429b-53d8-5ad1-9af6-d0e562cbf0f5-20261017-v2",
+      "goalId": "6413429b-53d8-5ad1-9af6-d0e562cbf0f5",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:48fc2d416ba8556f96420896abc0720d7642a85305f1bd6cc613e12e75efe8cc",
+      "pageFingerprint": "sha256:89aae327019594134f78bf44436f63f71cf5fdfea654aa39b7f8ca98234292ff",
+      "goalReviewContextFingerprint": "sha256:9bfead275cdf2e1cc4e7ee653c158e4eb4085a98a09b3512a8962dc94ca0798a",
+      "finalText": {
+        "titleDe": "Nanoskalige Silikonoberflächen materialgestützt beurteilen",
+        "titleEn": "Assess nanoscale silicone surfaces using material data",
+        "descriptionDe": "Die lernende Person kann die Bedeutung von Silikonen für nanoskalige Oberflächenanwendungen anhand von Materialdaten erläutern und Benetzungsbehauptungen beurteilen, indem sie Schichtdicke von Partikelgröße unterscheidet sowie Silikonchemie und Oberflächenstruktur berücksichtigt.",
+        "descriptionEn": "The learner can explain the relevance of silicones for nanoscale surface applications using material data and assess wetting claims by distinguishing film thickness from particle size and considering silicone chemistry and surface structure."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-jurisdiction20-native-independent-a-v1.record-004",
+          "recordDigest": "sha256:55d0122837ec2fbade890a7483cdf973115c20a1ab4a319847125411d4d95a95"
+        },
+        "second": {
+          "recordId": "chemie-current439-jurisdiction20-native-independent-b-20261017-v1-run.record-004",
+          "recordDigest": "sha256:211a331d357d75add08f419359554e15f78a03e0e24494c05ec8aa5ebf0ce0de"
+        }
+      },
+      "rationaleDe": "Beide Runden grenzen Schichtdicke, Partikelgröße, Chemie, Struktur sowie Kontakt- und Abrollwinkel konsistent ab. Runde A benennt den tatsächlichen Kontrollvergleich und verhindert einen unbelegten Selbstreinigungsnachweis.",
+      "rationaleEn": "Both rounds consistently separate film thickness, particle size, chemistry, structure, contact angle and roll-off angle. Round A identifies the actual controlled comparison and excludes unsupported proof of self-cleaning."
+    },
+    {
+      "decisionId": "chemie-current439-native20-root-6eba90b5-d4a6-5625-be61-e7f30f7eb964-20261017-v2",
+      "goalId": "6eba90b5-d4a6-5625-be61-e7f30f7eb964",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:98afcd0978d52897f8327602016470e3f4fb9eb7957ade37ab13f161349bf26a",
+      "pageFingerprint": "sha256:aadcd81b944906cb1e19b494204ed9da8776d80fcc0ce7ba3254b9f063cab23a",
+      "goalReviewContextFingerprint": "sha256:c2cfbc34189057a14f0d71b5af416e626dc787b85c91f835d907f212f49e3119",
+      "finalText": {
+        "titleDe": "Kunststoff-Verarbeitungsverfahren beschreiben",
+        "titleEn": "Describe plastic processing methods",
+        "descriptionDe": "Die lernende Person kann Verarbeitungsverfahren für Kunststoffe wie Spritzgießen, Tiefziehen, Kalandrieren und Extrudieren beschreiben und mit Materialeigenschaften verknüpfen.",
+        "descriptionEn": "The learner can describe plastic processing methods such as injection moulding, thermoforming, calendering, and extrusion and link them to material properties."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-jurisdiction20-native-independent-a-v1.record-005",
+          "recordDigest": "sha256:e5d50a1f1b78b1427b5166781089d29240a508d550b24196d6973b72d670f346"
+        },
+        "second": {
+          "recordId": "chemie-current439-jurisdiction20-native-independent-b-20261017-v1-run.record-005",
+          "recordDigest": "sha256:c1cd5ec469179baea3b85906786742266db0ec309e49e53190eb477d3e04e806"
+        }
+      },
+      "rationaleDe": "Vier Verfahren dienen in beiden Reviews einer gemeinsamen Prozess-Material-Zuordnung. Runde A übernimmt die Materialzustands- und Vorläufergrenze ausdrücklich; eine praktische Maschinenqualifikation wird nicht aus einer Beschreibung abgeleitet.",
+      "rationaleEn": "In both reviews the four processes serve one process-material assignment competence. Round A explicitly retains material-state and precursor limits without inferring practical machine qualification from description."
+    },
+    {
+      "decisionId": "chemie-current439-native20-root-73cbd4d8-5da1-5e54-85ce-c88e7b1613fe-20261017-v2",
+      "goalId": "73cbd4d8-5da1-5e54-85ce-c88e7b1613fe",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:8530a8854e088ee36698ab1e65fc88c52eddfa5b0c6dd759d848afb4a5d0d994",
+      "pageFingerprint": "sha256:4d7804a8e53d11345645d7495289fdb660f12e241ee524a91c2fd67196d3f621",
+      "goalReviewContextFingerprint": "sha256:18afad98229d9f23db088ea46a5e09128049f99a76fa8d2edfe03cdbe22a3a9f",
+      "finalText": {
+        "titleDe": "Leitfähige Kunststoffe über konjugierte Systeme erklären",
+        "titleEn": "Explain conductive plastics using conjugated systems",
+        "descriptionDe": "Die lernende Person kann die elektrische Leitfähigkeit ausgewählter Kunststoffe über ausgedehnte konjugierte Elektronensysteme in Polymermolekülen begründen.",
+        "descriptionEn": "The learner can justify electrical conductivity in selected plastics using extended conjugated electron systems in polymer molecules."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-jurisdiction20-native-independent-a-v1.record-006",
+          "recordDigest": "sha256:1988ab35b5d83611ca218215a15cf17da497e571832622d940623bf606f0a688"
+        },
+        "second": {
+          "recordId": "chemie-current439-jurisdiction20-native-independent-b-20261017-v1-run.record-006",
+          "recordDigest": "sha256:3da9e3df39927e0549107ca14c4471d527b122e3825866c9b5d8954b967f06e1"
+        }
+      },
+      "rationaleDe": "Beide Runden unterscheiden Konjugation, mobile Träger, Dotierung und reale Transportbedingungen. Runde A verknüpft die konkreten Gegenionen-, Unterbrechungs- und Kontaktkontrollen; beide verwerfen ein universelles Leitfähigkeitsversprechen.",
+      "rationaleEn": "Both rounds distinguish conjugation, mobile carriers, doping and real transport conditions. Round A connects the specific counterion, interruption and contact controls; neither promises universal conductivity."
+    },
+    {
+      "decisionId": "chemie-current439-native20-root-14f1fe97-0585-5738-845e-9c49173d8afa-20261017-v2",
+      "goalId": "14f1fe97-0585-5738-845e-9c49173d8afa",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d63b8bac423689f7ad3f4601ef40931e7c8ed6d1bcc5638214f497f957db9163",
+      "pageFingerprint": "sha256:821636bda0cc3ba2161c5982188c2226267f92a38b0c0e608d396523278de52f",
+      "goalReviewContextFingerprint": "sha256:7ed41368b88bf7d8a8a593fef202ff2bdd83fd4d1c26e3b35684e651aa0bcf59",
+      "finalText": {
+        "titleDe": "Leitfähige Kunststoffe anwenden und mit Metallen vergleichen",
+        "titleEn": "Apply conductive plastics and compare them with metals",
+        "descriptionDe": "Die lernende Person kann Einsatzmöglichkeiten elektrisch leitfähiger Kunststoffe beschreiben und Vorteile sowie Nachteile gegenüber metallischen Leitern beurteilen.",
+        "descriptionEn": "The learner can describe applications of electrically conductive plastics and evaluate advantages and disadvantages compared with metallic conductors."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-jurisdiction20-native-independent-a-v1.record-007",
+          "recordDigest": "sha256:6c01a0ddccd84c2da16df94aef5a881c80594bff5fdf41412b8fcb7b832ec2c0"
+        },
+        "second": {
+          "recordId": "chemie-current439-jurisdiction20-native-independent-b-20261017-v1-run.record-007",
+          "recordDigest": "sha256:aadc438231d2fa3ed39a510d329018e5985e9ba9f97257c3bac2246c371d319e"
+        }
+      },
+      "rationaleDe": "Die kriteriengebundene Werkstoffentscheidung ist in beiden Runden eine einzelne Kompetenz. Runde A erhält gleiche Geometrie, Alterung und Einsatzgrenzen als Begründungsbedingungen statt einer universellen Polymer-Metall-Rangfolge.",
+      "rationaleEn": "Both rounds treat the criteria-based material decision as one competence. Round A retains equal geometry, ageing and service limits instead of a universal polymer-versus-metal ranking."
+    },
+    {
+      "decisionId": "chemie-current439-native20-root-4955f745-b946-5d3d-82d6-5e52dc8549a3-20261017-v2",
+      "goalId": "4955f745-b946-5d3d-82d6-5e52dc8549a3",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f166da66b41783eb7d665a91dd9b259f9daa9f589a7f78bdbb4def8460d5638d",
+      "pageFingerprint": "sha256:bfd4982f377bd2fa9f6494ff3b0c7205da2557a03c0eb7af9ef91016ac8ae6d7",
+      "goalReviewContextFingerprint": "sha256:52baae2ca0bee7b2ecf5aa65d3041cc3580c4828e35ace18a2bd30ef8480daf0",
+      "finalText": {
+        "titleDe": "Synthetischen Kautschuk und Vulkanisation erklären",
+        "titleEn": "Explain synthetic rubber and vulcanisation",
+        "descriptionDe": "Die lernende Person kann die Herstellung eines synthetischen Kautschuks an einem gegebenen Monomer erläutern und seine Elastizität sowie deren Veränderung durch Vulkanisation auf molekularer Ebene erklären.",
+        "descriptionEn": "The learner can explain the production of a synthetic rubber from a supplied monomer and explain its elasticity and the effects of vulcanisation at molecular level."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-jurisdiction20-native-independent-a-v1.record-008",
+          "recordDigest": "sha256:dc1ae42d1e9bf07a7bc2c9084f3c0fddff52d93ba9e6ac5a65afc59746af17a9"
+        },
+        "second": {
+          "recordId": "chemie-current439-jurisdiction20-native-independent-b-20261017-v1-run.record-008",
+          "recordDigest": "sha256:933ac446a0ca24141a7f209a02579952a348e22867706c20a8fbb9dbaf6f7039"
+        }
+      },
+      "rationaleDe": "Beide Reviews verbinden 1,4-Addition, Restdoppelbindungen und Schwefelvernetzung mit begrenzter Elastizität. Runde A hält vorgegebene Materialidentität und die Temperaturgrenze relativ zu Tg sichtbar; kein Versuchsvollzug wird behauptet.",
+      "rationaleEn": "Both reviews connect 1,4 addition, residual double bonds and sulfur crosslinking to bounded elasticity. Round A retains supplied material identity and the temperature limit relative to Tg without claiming experimental execution."
+    },
+    {
+      "decisionId": "chemie-current439-native20-root-f57d53b0-5bdf-5998-81f4-8bfb2fc5bde7-20261017-v2",
+      "goalId": "f57d53b0-5bdf-5998-81f4-8bfb2fc5bde7",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:25dac6a499bbf14ce18e1777d311037e33c258b9e1c32e0c47cab56c06212dd3",
+      "pageFingerprint": "sha256:23aec7dc37b59060e3d234315717d0621f24fb307f825c211b953ce9cd0cdc97",
+      "goalReviewContextFingerprint": "sha256:bd665541e146df8c3dfb22247f6cb260118d07e7a1e202bf4f67c0eeb05989d9",
+      "finalText": {
+        "titleDe": "Viskose und Cellulosederivate als Textilfasern erklären",
+        "titleEn": "Explain viscose and cellulose derivatives as textile fibres",
+        "descriptionDe": "Die lernende Person kann Viskose als regenerierte Cellulose von chemisch modifizierten Cellulosederivaten unterscheiden und deren Herstellungskonzepte sowie gegebene Eigenschaften und Verwendung als Textilfasern strukturbezogen erläutern.",
+        "descriptionEn": "The learner can distinguish viscose as regenerated cellulose from chemically modified cellulose derivatives and explain their production concepts, supplied properties and uses as textile fibres from structure."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-jurisdiction20-native-independent-a-v1.record-009",
+          "recordDigest": "sha256:e4a5616180d6bbdc006fa3a8d661631ce5b236657a773141e388fa766e8631d6"
+        },
+        "second": {
+          "recordId": "chemie-current439-jurisdiction20-native-independent-b-20261017-v1-run.record-009",
+          "recordDigest": "sha256:493b5641aa2b77bd670523daf77b281e1c41f235011babb9e33ca1068c92312e"
+        }
+      },
+      "rationaleDe": "Die Runden bestätigen die Unterscheidung regenerierter Cellulose von dauerhaft acetylierter Cellulose. Runde A erhält lokale Stoffbilanz, vorübergehendes Xanthat und Morphologiegrenzen, die mit Runde B vereinbar sind.",
+      "rationaleEn": "The rounds confirm the distinction between regenerated and persistently acetylated cellulose. Round A retains local balance, temporary xanthate formation and morphology limits compatible with round B."
+    },
+    {
+      "decisionId": "chemie-current439-native20-root-e0944fbb-0761-5f9c-afaa-3d4713ed1bed-20261017-v2",
+      "goalId": "e0944fbb-0761-5f9c-afaa-3d4713ed1bed",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:99dc2028f5f2cc9cba26b03e03a4f5f795c0b0d036f7cd6e16f0c246b5be6931",
+      "pageFingerprint": "sha256:0e46b384ba4b507dab46718d8d0e07516a7843d10b89f46851e478b0eef5cefb",
+      "goalReviewContextFingerprint": "sha256:40b9147227ed2146db5d4aff905bf22a8885c663350cd19329ddc0066be1e488",
+      "finalText": {
+        "titleDe": "pH-Titrationskurven experimentell aufnehmen und darstellen",
+        "titleEn": "Acquire and plot pH titration curves experimentally",
+        "descriptionDe": "Die lernende Person kann unter fachlicher Aufsicht pH-Titrationskurven einprotoniger starker und schwacher Säuren mit einem kalibrierten pH-Meter aufnehmen, Messbedingungen und Zugabevolumina protokollieren und die selbst erhobenen Daten mit geeigneter Auflösung als beschriftete Titrationskurven darstellen und den Halbäquivalenzpunkt der schwachen Säure aus den eigenen Messdaten mit begründeter Unsicherheit experimentell ermitteln.",
+        "descriptionEn": "The learner can, under subject-qualified supervision, acquire pH titration curves of strong and weak monoprotic acids using a calibrated pH meter, document conditions and added volumes, and plot the personally acquired data as labelled titration curves at suitable resolution and experimentally determine the weak acid half-equivalence point from personal measurements with justified uncertainty."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-jurisdiction20-native-independent-a-v1.record-010",
+          "recordDigest": "sha256:d792c91dfb773c5eded07aca2403e062840f257bd534def824d1c34bd7ea63ea"
+        },
+        "second": {
+          "recordId": "chemie-current439-jurisdiction20-native-independent-b-20261017-v1-run.record-010",
+          "recordDigest": "sha256:4749abef9a1bb73612af45d82ebb51392c6a2e270f8fa5394f646b2778e2f5c2"
+        }
+      },
+      "rationaleDe": "Beide Runden verlangen wirkliche eigene starke und schwache Säurekurven unter Aufsicht. Runde A erhält Kalibrierung, Äquivalenzbefund und Unsicherheit; Schema und Näherung ersetzen weder Rohdaten noch Durchführung.",
+      "rationaleEn": "Both rounds require genuine personal strong- and weak-acid curves under supervision. Round A retains calibration, equivalence evidence and uncertainty; the diagram and approximation replace neither raw data nor execution."
+    },
+    {
+      "decisionId": "chemie-current439-native20-root-0e3f849b-133d-57da-882c-0d67c3eb05b8-20261017-v2",
+      "goalId": "0e3f849b-133d-57da-882c-0d67c3eb05b8",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:6aee5e3369ef8c8fe38c30ca406a8b52ef0af19412e676cc832b2fcdb59e7dd9",
+      "pageFingerprint": "sha256:aaab7c927a1276619ef48c875af4dcd50369349d00b3efc7f8eafa9e05e9e1a8",
+      "goalReviewContextFingerprint": "sha256:afcf11cd663c37d930c9bea9258980d53c1e1bc9ed53746d08c3b5c04004ca0c",
+      "finalText": {
+        "titleDe": "Faraday-Gesetze qualitativ erklären",
+        "titleEn": "Explain Faraday's laws qualitatively",
+        "descriptionDe": "Die lernende Person kann die Faraday-Gesetze ohne Berechnungen erklären, indem sie bei vollständig für die betrachtete Elektrodenreaktion genutzter Ladung den proportionalen Zusammenhang zwischen Ladung und Stoff- beziehungsweise Massenumsatz für denselben Stoff begründet und bei verschiedenen Stoffen den Einfluss der Elektronenzahl pro gebildetem Teilchen und der molaren Masse auf den Umsatz unterscheidet.",
+        "descriptionEn": "The learner can explain Faraday's laws without numerical calculations by justifying the proportional relationship between charge and amount or mass converted for a fixed substance, and distinguishing how electrons required per product particle and molar mass affect conversion across substances when all transferred charge drives the specified electrode reaction."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-jurisdiction20-native-independent-a-v1.record-011",
+          "recordDigest": "sha256:29c61f75fac6e36bef9579077664a85eaf26be9f697888bae1082e0008f21704"
+        },
+        "second": {
+          "recordId": "chemie-current439-jurisdiction20-native-independent-b-20261017-v1-run.record-011",
+          "recordDigest": "sha256:c524b9d27eb4582175e9cd5f10d1813c9ce54b5757a2a4720fc89d12272f30ea"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen den qualitativen reaktionswirksamen Ladungs-Stoffumsatz-Zusammenhang und die Nebenreaktionsgrenze. Runde A erhält die getrennte Stoffmengen-/Massendeutung. Der spätere Seitenverdacht ist durch Vergleich der exakten Primärversionen geklärt: Die kanonisch verlinkte Ausgabe _0.pdf SHA5952bf6889af enthält die qualitative LK-Klausel tatsächlich auf Seite45/Index44; die anderen gelieferten PDF-Varianten verwenden Seite47. Die bestehende kanonische Quellenangabe bleibt deshalb unverändert.",
+      "rationaleEn": "Both rounds confirm the qualitative reaction-effective charge-to-conversion relationship and side-reaction limit. Round A retains separate amount and mass interpretation. The later page concern is resolved by comparing exact primary versions: the canonically linked _0.pdf SHA5952bf6889af contains the qualitative advanced-course clause on page45/index44; the other supplied PDF variants use page47. The existing canonical locator therefore remains unchanged."
+    },
+    {
+      "decisionId": "chemie-current439-native20-root-c61b2a7a-fb0f-5a76-92e9-771c789fa816-20261017-v2",
+      "goalId": "c61b2a7a-fb0f-5a76-92e9-771c789fa816",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e91463bdecca10760ab77ad507be0745552caa295b2e7fb158193190004301c8",
+      "pageFingerprint": "sha256:b9b3c0e0456410936e5922a66cfa2644189dc20891fb40b32f70a04ee312eb8a",
+      "goalReviewContextFingerprint": "sha256:4f6749162d035a8adadc345d67560ec7d1b593d5e0ee0e75da56303b24e13118",
+      "finalText": {
+        "titleDe": "Pufferwirkung experimentell untersuchen",
+        "titleEn": "Investigate buffer action experimentally",
+        "descriptionDe": "Die lernende Person kann unter fachlicher Aufsicht eine vergleichende Untersuchung der Reaktion eines Puffers und einer ungepufferten Lösung auf begrenzte Säure- und Basenzugaben planen und durchführen, eigene pH-Messwerte dokumentieren und die beobachteten Änderungen mithilfe korrespondierender Säure-Base-Paare und endlicher Pufferreserven erklären.",
+        "descriptionEn": "The learner can, under subject-qualified supervision, plan and carry out a comparison of a buffer and an unbuffered solution under limited acid and base additions, document personally measured pH values, and explain the observed changes using conjugate acid-base pairs and finite buffer reserves."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-jurisdiction20-native-independent-a-v1.record-012",
+          "recordDigest": "sha256:08c43d7836db24f774cee9e2e5fc52f4b028e5ae22d40a3fa2d8b4af0130981e"
+        },
+        "second": {
+          "recordId": "chemie-current439-jurisdiction20-native-independent-b-20261017-v1-run.record-012",
+          "recordDigest": "sha256:eca556d31933f5427e42ef5c2cc69b09bac9ee5054ff8248217007f621245866"
+        }
+      },
+      "rationaleDe": "Beide Urteile bewahren die tatsächliche beaufsichtigte Pufferuntersuchung mit getrennten Proben. Runde A erhält Dosis-, Volumen- und Reservegrenzen; qualitative Bildpfeile sind weder persönliche Messung noch praktische Erfüllung.",
+      "rationaleEn": "Both judgments retain actual supervised buffer investigation using separate portions. Round A retains dose, volume and reserve limits; qualitative image arrows establish neither personal measurements nor practical attainment."
+    },
+    {
+      "decisionId": "chemie-current439-native20-root-2d16528c-1424-5999-b3d2-af4593a147fc-20261017-v2",
+      "goalId": "2d16528c-1424-5999-b3d2-af4593a147fc",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:4276cf31e1e33075bafb91d4450837691d86c750be296f2a1a4100b45e0304a1",
+      "pageFingerprint": "sha256:df0ce813960144d659291ff6190db4d702cde802a6629bc7cbdfcc02788b8e54",
+      "goalReviewContextFingerprint": "sha256:c084168c3bda32ed88820407d523cfb925fafec21398b5591309badb184d2e1d",
+      "finalText": {
+        "titleDe": "Zeolith-Enthärter strukturell erklären",
+        "titleEn": "Explain zeolite softeners structurally",
+        "descriptionDe": "Die lernende Person kann die vereinfachte Alumosilikatstruktur eines ionentauschenden Zeolith-Enthärters mit festen negativen Gerüstladungen und beweglichen Gegenionen erklären und damit den Austausch von Härteionen sowie die begrenzte Enthärtungskapazität begründen.",
+        "descriptionEn": "The learner can explain the simplified aluminosilicate structure of an ion-exchange zeolite softener with fixed negative framework charges and mobile counterions, using it to justify hardness-ion exchange and limited softening capacity."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-jurisdiction20-native-independent-a-v1.record-013",
+          "recordDigest": "sha256:27d2d73ea0d714602d34ba52d615913315af6ab6b88439c81833d1208e7b3b45"
+        },
+        "second": {
+          "recordId": "chemie-current439-jurisdiction20-native-independent-b-20261017-v1-run.record-013",
+          "recordDigest": "sha256:7ec4b9310eca8c67a344feb0611cba6c7f316fdd2f575d60bfec96baa966c30f"
+        }
+      },
+      "rationaleDe": "Beide Runden stimmen im endlichen, ladungserhaltenden Zeolith-Ionenaustausch überein. Runde B wird gewählt, weil sie die tatsächliche aktuelle HE-Rohgeltung ausdrücklich benennt. Die weiteren Quellenkontexte in Runde A werden dadurch nicht zu amtlicher Pflicht oder bereits geprüfter Länderprojektion erweitert.",
+      "rationaleEn": "Both rounds agree on finite, charge-conserving zeolite ion exchange. Round B is selected because it explicitly identifies the actual current HE raw applicability. Additional source contexts mentioned in round A do not become official requirements or an accepted jurisdiction projection."
+    },
+    {
+      "decisionId": "chemie-current439-native20-root-54bc6ca0-b770-5f10-ac54-bcc1d04298f5-20261017-v2",
+      "goalId": "54bc6ca0-b770-5f10-ac54-bcc1d04298f5",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b9c9472ff5537637a379c4ae545c8e237b4eb87cd4f774396b8046cad2e590a6",
+      "pageFingerprint": "sha256:b13eb59bea0c8b888f6f3c0d6a75a714d37f5576985b2b6605497061640abb3f",
+      "goalReviewContextFingerprint": "sha256:5ed4af2e4bbf654fc93305372f5d3b2c696c27f5caa35eb8e0b5dc71132d2921",
+      "finalText": {
+        "titleDe": "Emission und Absorption zur Farbigkeit unterscheiden",
+        "titleEn": "Distinguish emission and absorption for color",
+        "descriptionDe": "Die lernende Person kann zwischen Emission und Absorption verschiedener Lichtwellenlängen unterscheiden und damit Ursachen von Farbigkeit beschreiben.",
+        "descriptionEn": "The learner can distinguish between emission and absorption of different wavelengths of light and use this to describe causes of color."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-jurisdiction20-native-independent-a-v1.record-014",
+          "recordDigest": "sha256:4bbd6309d3df4cc3b22ea8cb069bf767f974e27d4280f51fe16604cd92ef6088"
+        },
+        "second": {
+          "recordId": "chemie-current439-jurisdiction20-native-independent-b-20261017-v1-run.record-014",
+          "recordDigest": "sha256:8ff32eb1249c5cc2183a01aee8bbd9347a61122dc587771313794453a542f701"
+        }
+      },
+      "rationaleDe": "Die Reviews bestätigen dieselbe Unterscheidung von Energieabgabe und selektiver Lichtaufnahme. Runde A hält Beleuchtungswechsel, nichtfluoreszierenden Fall und tatsächlich austretendes Licht getrennt; eine frühere zurückgezogene D-Bindung wird durch diese Synthese noch nicht administrativ entfernt.",
+      "rationaleEn": "The reviews confirm the same distinction between energy emission and selective light absorption. Round A separates source changes, nonfluorescent cases and actual outgoing light; this synthesis does not administratively remove a former withdrawn D binding."
+    },
+    {
+      "decisionId": "chemie-current439-native20-root-87d8cc68-fe82-5273-9e43-c18b566ecb6c-20261017-v2",
+      "goalId": "87d8cc68-fe82-5273-9e43-c18b566ecb6c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:555bab57ba818a7dcd61c9a5be0ee6634aff9f9e384dd4de65a10010774d823f",
+      "pageFingerprint": "sha256:f5de6545a2013463ac43d0a442bb18fbf7715c7870b6eeb5092865dd631ce57d",
+      "goalReviewContextFingerprint": "sha256:451374b8e8ac2a4b88307e1c80aefe93a7e8b408eda3819c3c4c13b92c18f6d3",
+      "finalText": {
+        "titleDe": "Farbigkeit durch delokalisierte Elektronen erklären",
+        "titleEn": "Explain color through delocalized electrons",
+        "descriptionDe": "Die lernende Person kann die Absorption bestimmter Lichtwellenlängen als Anregung delokalisierter Elektronen erklären und Farbigkeit mithilfe eines Energiestufenschemas begründen.",
+        "descriptionEn": "The learner can explain absorption of specific wavelengths as excitation of delocalized electrons and justify color using an energy-level scheme."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-jurisdiction20-native-independent-a-v1.record-015",
+          "recordDigest": "sha256:e1babfc69a115a54b8d4a9de0acd356b7273d0e41f09ebff6a725c40ec0fdcc0"
+        },
+        "second": {
+          "recordId": "chemie-current439-jurisdiction20-native-independent-b-20261017-v1-run.record-015",
+          "recordDigest": "sha256:02f9b489da9cfc31ca9244efa25b863a9f932993a8c2d4296e12c7f592f338ab"
+        }
+      },
+      "rationaleDe": "Beide Runden verbinden erlaubten Energieabstand, absorbierte Wellenlänge und Restlicht. Runde A erhält die sichtbare/UV-Grenze und die begrenzte Aussage einzelner Banden. Historische Rücknahmen und deren Nachfolgekette bleiben bis zur gesonderten Prüfung erhalten.",
+      "rationaleEn": "Both rounds connect allowed energy gaps, absorbed wavelength and remaining light. Round A retains visible-versus-UV limits and the bounded meaning of a single band. Historical withdrawals and their successor chain remain until separate validation."
+    },
+    {
+      "decisionId": "chemie-current439-native20-root-c8f51eac-c131-58a8-8d00-0fcbbe4bc18c-20261017-v2",
+      "goalId": "c8f51eac-c131-58a8-8d00-0fcbbe4bc18c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:cd36686dced257a906e8d93983856a56dfa93fe2e4bf675dc1ce5f137a036980",
+      "pageFingerprint": "sha256:b059335c38c4737465009e0bd6993e4f2e978bc44e83bcbf333893288dd301fe",
+      "goalReviewContextFingerprint": "sha256:83479ce7998b189458bcd8bb365ff7d7560fd0f3d9b82aa083fbe4579a6a0e62",
+      "finalText": {
+        "titleDe": "Absorbiertes und reflektiertes Licht verknüpfen",
+        "titleEn": "Relate absorbed and reflected light",
+        "descriptionDe": "Die lernende Person kann die Farbigkeit von Stoffen über den Zusammenhang zwischen absorbierten und reflektierten Lichtwellenlängen erklären.",
+        "descriptionEn": "The learner can explain the color of substances through the relationship between absorbed and reflected wavelengths of light."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-jurisdiction20-native-independent-a-v1.record-016",
+          "recordDigest": "sha256:9435544722d3a5384702dd48f67f4474dfb0715df183cf76ad36447489f78eb4"
+        },
+        "second": {
+          "recordId": "chemie-current439-jurisdiction20-native-independent-b-20261017-v1-run.record-016",
+          "recordDigest": "sha256:902a8c89aa7a0548f53f5a6b1e0f499d33c3402f71f51645acb4440220238f59"
+        }
+      },
+      "rationaleDe": "Die beiden Reviews stimmen für das ausdrücklich opake, nichtemittierende Reflexionsmodell überein. Runde A erhält Beleuchtung, fehlende Spektralanteile und begrenzte Dreipunktdaten, ohne eine exakte reale Farbkoordinate zu behaupten.",
+      "rationaleEn": "Both reviews agree for the explicitly opaque nonemitting reflection model. Round A retains illumination, absent spectral components and bounded three-point data without claiming an exact real colour coordinate."
+    },
+    {
+      "decisionId": "chemie-current439-native20-root-61da9d34-cb35-5c2c-ac8e-83f48b6a4fd3-20261017-v2",
+      "goalId": "61da9d34-cb35-5c2c-ac8e-83f48b6a4fd3",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:54ff9f8c55e0963dfa009f97f310bd88b175587a641bd5ecc2a78f1a493bfb0d",
+      "pageFingerprint": "sha256:810d90068e547983ebd9b459823dd009b8c8f13ed4067bc145b505f60c070eb6",
+      "goalReviewContextFingerprint": "sha256:702bbf6f4f4bd11470fa512d347494dc58167daa44676a826b42ccbc3c9e6d4a",
+      "finalText": {
+        "titleDe": "Farbstoffe im Alltag und Gesundheit bewerten",
+        "titleEn": "Evaluate dyes in everyday life and health contexts",
+        "descriptionDe": "Die lernende Person kann den Einsatz ausgewählter Farbstoffe im Alltag recherchieren und bewerten sowie Auswirkungen ihrer Verwendung auf die menschliche Gesundheit vergleichen und beurteilen.",
+        "descriptionEn": "The learner can research and evaluate the use of selected dyes in everyday life and compare and assess effects of their use on human health."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-jurisdiction20-native-independent-a-v1.record-017",
+          "recordDigest": "sha256:76ead6f4440ec024f5c3f3b717bf8b7ca5f10d61ba358cd58abf5f0e7e9edcdc"
+        },
+        "second": {
+          "recordId": "chemie-current439-jurisdiction20-native-independent-b-20261017-v1-run.record-017",
+          "recordDigest": "sha256:f764a0a877d3e529e506e1884d332a489b9d15e1fd34f0d5019e487a6cfbb320"
+        }
+      },
+      "rationaleDe": "Beide Runden verlangen stoffbezogene, expositionsgerechte Quellen statt eines Herkunftsurteils. Runde A hält den tatsächlichen Rechercheabruf, URL/Abschnitt/Datum und fehlende Daten ausdrücklich offen, wenn kein Beleg vorliegt; KI-QS ersetzt keine Lernendenrecherche.",
+      "rationaleEn": "Both rounds require substance-specific exposure-appropriate sources instead of an origin-based verdict. Round A explicitly requires actual retrieval, URL/section/date and acknowledges missing data; AI QA does not replace learner research."
+    },
+    {
+      "decisionId": "chemie-current439-native20-root-64b03eff-a967-54a1-ace3-89cb7650a65c-20261017-v2",
+      "goalId": "64b03eff-a967-54a1-ace3-89cb7650a65c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:5e06af7b7cdeaabd9372a807461720a8b882da7aa665c6b3d623eb2ca75646f1",
+      "pageFingerprint": "sha256:aa1396dbc045bec382e5e68895a46f81bcd8d3a97b96956e01cf474884e4db69",
+      "goalReviewContextFingerprint": "sha256:d1b109c28592c0bba6e895fd41594294c162607f9dd052b064c4434bfceac2d2",
+      "finalText": {
+        "titleDe": "Substituenteneffekte in Farbstoff-Molekülen erklären",
+        "titleEn": "Explain substituent effects in dye molecules",
+        "descriptionDe": "Die lernende Person kann das Donator-Akzeptor-Konzept auf Farbstoff-Moleküle anwenden und den Einfluss funktioneller Gruppen auf die Farbigkeit der zugehörigen Stoffe erklären.",
+        "descriptionEn": "The learner can apply the donor-acceptor concept to dye molecules and explain how functional groups influence the color of the corresponding substances."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-jurisdiction20-native-independent-a-v1.record-018",
+          "recordDigest": "sha256:d16201d22b8f8527a5608035dde3e8e9663368f3ecc4c47bad2e1c2507d5850e"
+        },
+        "second": {
+          "recordId": "chemie-current439-jurisdiction20-native-independent-b-20261017-v1-run.record-018",
+          "recordDigest": "sha256:37e4f44a6ee075b3dbb5cd88fc1cfafb8944c3085ef5b1e2428df88ea44b3ea5"
+        }
+      },
+      "rationaleDe": "Beide Urteile erklären Substituenten über die Kopplung des π-Systems und schließen ein universelles Rotverschiebungsgesetz aus. Runde A erhält Protonierungs- und sp³-Gegenfälle. Die historische D-Rücknahme wird erst nach gesondert gültiger Nachfolgekette behandelt.",
+      "rationaleEn": "Both judgments explain substituents through pi-system coupling and exclude a universal red-shift rule. Round A retains protonation and sp3 counterexamples. The historical D withdrawal requires a separately valid successor chain."
+    },
+    {
+      "decisionId": "chemie-current439-native20-root-f0ba30a8-84b3-5915-bf85-6c3a176064d2-20261017-v2",
+      "goalId": "f0ba30a8-84b3-5915-bf85-6c3a176064d2",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:9d7338844c738bd6e5a33d7b1733204211ebb3773ea3c4c7804ada6f1d1775f1",
+      "pageFingerprint": "sha256:ac4fd60fb90b23cd129947049680123aa7c66336528ea8f4a2a8f4446b3a1cc0",
+      "goalReviewContextFingerprint": "sha256:79e7ad264b6169ffa367dc0f6c8f9ef32a4be035c7ec62413463d555002bf271",
+      "finalText": {
+        "titleDe": "Absorptionsspektren von Farbstoffen auswerten",
+        "titleEn": "Evaluate absorption spectra of dyes",
+        "descriptionDe": "Die lernende Person kann aus Absorptionsspektren von Farbstoffen Wellenlängenbereiche, Absorptionsmaxima und Absorptionsstärke bestimmen und Unterschiede unter Berücksichtigung der Messbedingungen deuten.",
+        "descriptionEn": "The learner can identify wavelength regions, absorption maxima and absorption strength from dye absorption spectra and interpret differences while taking measurement conditions into account."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-jurisdiction20-native-independent-a-v1.record-019",
+          "recordDigest": "sha256:a81ff25e6d5bbfe4275e55114238837399c7dd68faa90e7505720e42a3d7a14e"
+        },
+        "second": {
+          "recordId": "chemie-current439-jurisdiction20-native-independent-b-20261017-v1-run.record-019",
+          "recordDigest": "sha256:b5a5b3a6429328ed2a906b4885efa83070c638755b8f1148a10970bb5b5a8847"
+        }
+      },
+      "rationaleDe": "Beide Runden trennen Bandenlage und Intensität sowie Messbedingungen und Modellzuordnung. Runde A erhält Konzentration, Weglänge, Überlagerung und Rastergrenzen; ein Beispielspektrum wird nicht als selbst durchgeführte Messung gewertet.",
+      "rationaleEn": "Both rounds separate band position, intensity, measurement conditions and model attribution. Round A retains concentration, path length, superposition and grid limits; an example spectrum is not treated as a personally performed measurement."
+    },
+    {
+      "decisionId": "chemie-current439-native20-root-981242bb-a729-5701-b02d-c2f7f489e5af-20261017-v2",
+      "goalId": "981242bb-a729-5701-b02d-c2f7f489e5af",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:0be58bf33fa05f1b9682c236c8120bed257db35e3ea4b8d6333364670b55d5e4",
+      "pageFingerprint": "sha256:dadc04c18ba07fc34cbae0082148b235fff41777aec4003e1fa5b24cd56980bc",
+      "goalReviewContextFingerprint": "sha256:3cd127a21b66b0bb6469bb0505765d2168c14a0db0c4b0878b0b17530f6a787e",
+      "finalText": {
+        "titleDe": "Azofarbstoff-Synthese mechanistisch darstellen",
+        "titleEn": "Represent azo-dye synthesis mechanistically",
+        "descriptionDe": "Die lernende Person kann die vollständige Syntheseroute eines Azofarbstoffs aus einem aromatischen primären Amin über Diazotierung und anschließende Azokupplung auf Teilchenebene mechanistisch darstellen und den Bindungsaufbau sowie die Atom- und Ladungsbilanz erklären.",
+        "descriptionEn": "The learner can represent the complete synthesis route of an azo dye from an aromatic primary amine through diazotization and subsequent azo coupling mechanistically at particle level and explain bond formation and atom and charge balance."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-jurisdiction20-native-independent-a-v1.record-020",
+          "recordDigest": "sha256:33da6823b5f9ef35ef5f719e3e51c3dc92effc114ff6fdfef2e503ff648d2fc3"
+        },
+        "second": {
+          "recordId": "chemie-current439-jurisdiction20-native-independent-b-20261017-v1-run.record-020",
+          "recordDigest": "sha256:cee82ef809aae7f2cbc4953570be31774397d8e41efff33cd9e4d95e64362756"
+        }
+      },
+      "rationaleDe": "Die Runden bestätigen Diazotierung und Kupplung als zusammengehörige Azoroute mit begründetem mechanistischem Abstraktionsgrad. Runde A hält bereitgestellte Zwischenstufen, Atom-/Ladungsbilanz und Rearomatisierung sichtbar; eine vereinfachte Bildroute ersetzt die Eigenleistung nicht.",
+      "rationaleEn": "The rounds confirm diazotisation and coupling as one azo route with a justified mechanistic abstraction level. Round A retains supplied intermediates, atom/charge balance and rearomatisation; a simplified image route does not replace personal performance."
+    }
+  ],
+  "manifestFingerprint": "sha256:621a2fdda971b279d3e6850648a83cab0aa42fac3164968ed511d3728f4f5d6a"
+}

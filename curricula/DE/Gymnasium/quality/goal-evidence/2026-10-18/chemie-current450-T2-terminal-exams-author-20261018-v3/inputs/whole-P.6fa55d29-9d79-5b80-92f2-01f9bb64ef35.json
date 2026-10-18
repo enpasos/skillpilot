@@ -1,0 +1,86 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+  "schemaVersion": 2,
+  "reviewId": "canonical-chemistry-current447-seventeen-paired-informed-positive-native-20261018-v1",
+  "goalFingerprintRuleVersion": "goal-evidence-v1",
+  "profileRuleVersion": "positive-understanding-evidence-v2",
+  "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+  "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+  "goalId": "6fa55d29-9d79-5b80-92f2-01f9bb64ef35",
+  "goalFingerprint": "sha256:9a1ea47ec62e33c32037d96d7cb0909e1310fdef9e74def0c401caa1e2330a6a",
+  "reviewInputFingerprint": "sha256:69517e4769d21134482a4bcafb943a8364bb63fc02ce1bfc7285b6cf04a4ff49",
+  "profileFingerprint": "sha256:35cfdc42ce786a145e8191774bc45063bae98ab6d9fbaba659a4a40cd0e7fdde",
+  "status": "needs_human_review",
+  "reviewAuthority": "ai_candidate",
+  "reviewedAt": "2026-10-17T23:22:49.296Z",
+  "reviewer": "codex-technical-native-serialization-from-actual-paired-informed-science",
+  "reason": "Technical native serialization from two actually sealed informed scientific judgments; no new reviewer vote. A: accept_narrow_author_candidate | B: Die ausdrücklich praktische Leistung erhält die volle reale PLA-Eigenschaftsuntersuchung. Identifizierte biobasierte Proben, kontrollierter Streifenvergleich, eigene Rohwerte/Einheiten/Unsicherheit und begrenzte Schlussfolgerung gehören zusammen. Gleiche Breite/Spannweite/Last, tatsächliche Dicke und Konditionierung werden kontrolliert. Dickere Probe kann geometrisch steifer sein; daraus folgt weder andere Chemie noch Abbaubarkeit. Neue unbekannte Weichmacher-/Konditionierungsänderung verhindert einfache Dicken-Kausalität. Fehlende Freigabe/Probe/Rohdaten lässt Durchführung offen. Exact source pins and pointers: PROVENANCE.actual-paired-science.json#/6fa55d29-9d79-5b80-92f2-01f9bb64ef35/P. Full paired source pins/pointers: PROVENANCE.actual-paired-science.json /goals/6fa55d29-9d79-5b80-92f2-01f9bb64ef35/P.",
+  "evidenceLevel": "E0",
+  "maximumClaimScope": "G0",
+  "reviewRunIds": [],
+  "dissent": [],
+  "profile": {
+    "archetype": "experiment",
+    "expectations": [
+      {
+        "id": "plan-and-real-execution",
+        "essentialUnderstandingDe": "Kontrollierter Versuchsplan, reale Freigabe und eigene beobachtbare Durchführung; keine Musterdaten ersetzen Rohdaten.",
+        "essentialUnderstandingEn": "Controlled plan, actual release and observable own execution; model data never replace raw readings.",
+        "observablePerformanceDe": "Plane und begründe Messgröße, unabhängige Variable und Konstanten. Führe den freigegebenen Vergleich selbst durch. Dokumentiere reale Rohwerte samt Einheit, Wiederholbarkeit, Unsicherheit und Abweichungen; zeichne Aufbau und eigene Ergebnisdarstellung. Erkläre Geometrie/Werkstoffeigenschaft und prüfe, welche Herkunftsaussage der reale Nachweis trägt.",
+        "observablePerformanceEn": "Plan and justify measurement, independent variable and constants. Actually perform the approved comparison yourself. Record real raw values with units, repeatability, uncertainty and deviations; draw setup and own results. Explain geometry/material property and assess which provenance claim actual documentation supports."
+      },
+      {
+        "id": "data-and-bounded-property",
+        "essentialUnderstandingDe": "Größere Dicke kann unter sonst gleichen Bedingungen die Biegesteifigkeit erhöhen; tatsächliche Richtung/Größe folgt nur aus eigenen Daten. Durchbiegung allein beweist weder chemisch anderes Material noch biologischen Abbau. Biobasiert beschreibt Herkunft, nicht schnellen Gewässerabbau. Modellzahlen dürfen nicht als eigene Beobachtung dienen.",
+        "essentialUnderstandingEn": "Greater thickness can increase bending stiffness under otherwise equal conditions; actual direction/magnitude must come from own data. Deflection proves neither different chemistry nor biodegradation. Biobased describes provenance, not rapid degradation in water. Model numbers cannot stand in for own observations.",
+        "observablePerformanceDe": "Größere Dicke kann unter sonst gleichen Bedingungen die Biegesteifigkeit erhöhen; tatsächliche Richtung/Größe folgt nur aus eigenen Daten. Durchbiegung allein beweist weder chemisch anderes Material noch biologischen Abbau. Biobasiert beschreibt Herkunft, nicht schnellen Gewässerabbau. Modellzahlen dürfen nicht als eigene Beobachtung dienen.",
+        "observablePerformanceEn": "Greater thickness can increase bending stiffness under otherwise equal conditions; actual direction/magnitude must come from own data. Deflection proves neither different chemistry nor biodegradation. Biobased describes provenance, not rapid degradation in water. Model numbers cannot stand in for own observations."
+      },
+      {
+        "id": "independent-confounder-transfer",
+        "essentialUnderstandingDe": "Nein, Zusammensetzung/Konditionierung sind Störgrößen. Gleiche Charge/Konditionierung oder kontrollierter Faktorvergleich nötig; ohne Daten bleibt die Kausalzuordnung offen.",
+        "essentialUnderstandingEn": "No, composition/conditioning are confounders. Matched batch/conditioning or controlled factor comparison is needed; causal attribution remains unresolved without data.",
+        "observablePerformanceDe": "Neue Probe ist dicker, anders konditioniert und enthält unbekannten Weichmacher. Darf die Durchbiegung allein der Dicke zugeschrieben werden? Entwirf kontrollierte Verbesserung; kein zusätzlicher realer Durchlauf allein wegen dieser Variation verlangt.",
+        "observablePerformanceEn": "New sample is thicker, conditioned differently and contains unknown plasticizer. May deflection be attributed only to thickness? Design a controlled improvement; this variation alone imposes no extra physical trial."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "plan-and-real-execution",
+        "data-and-bounded-property",
+        "independent-confounder-transfer"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "conditioning-geometry-composition",
+        "textDe": "Neue Probe ist dicker, anders konditioniert und enthält unbekannten Weichmacher. Darf die Durchbiegung allein der Dicke zugeschrieben werden? Entwirf kontrollierte Verbesserung; kein zusätzlicher realer Durchlauf allein wegen dieser Variation verlangt.",
+        "textEn": "New sample is thicker, conditioned differently and contains unknown plasticizer. May deflection be attributed only to thickness? Design a controlled improvement; this variation alone imposes no extra physical trial."
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "actual-controlled-pla-investigation",
+        "taskDemandDe": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-five-P-scope-operator-remediation-author-20261018-v1/AUTHOR.complete-DE-EN-material-routes.pending.json#/materials/2. Plane und begründe Messgröße, unabhängige Variable und Konstanten. Führe den freigegebenen Vergleich selbst durch. Dokumentiere reale Rohwerte samt Einheit, Wiederholbarkeit, Unsicherheit und Abweichungen; zeichne Aufbau und eigene Ergebnisdarstellung. Erkläre Geometrie/Werkstoffeigenschaft und prüfe, welche Herkunftsaussage der reale Nachweis trägt.",
+        "taskDemandEn": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-five-P-scope-operator-remediation-author-20261018-v1/AUTHOR.complete-DE-EN-material-routes.pending.json#/materials/2. Plan and justify measurement, independent variable and constants. Actually perform the approved comparison yourself. Record real raw values with units, repeatability, uncertainty and deviations; draw setup and own results. Explain geometry/material property and assess which provenance claim actual documentation supports.",
+        "expectedPerformanceDe": "Größere Dicke kann unter sonst gleichen Bedingungen die Biegesteifigkeit erhöhen; tatsächliche Richtung/Größe folgt nur aus eigenen Daten. Durchbiegung allein beweist weder chemisch anderes Material noch biologischen Abbau. Biobasiert beschreibt Herkunft, nicht schnellen Gewässerabbau. Modellzahlen dürfen nicht als eigene Beobachtung dienen.",
+        "expectedPerformanceEn": "Greater thickness can increase bending stiffness under otherwise equal conditions; actual direction/magnitude must come from own data. Deflection proves neither different chemistry nor biodegradation. Biobased describes provenance, not rapid degradation in water. Model numbers cannot stand in for own observations.",
+        "understandingFocusDe": "Eigene tatsächliche Untersuchung und begrenzte Datenaussage.",
+        "understandingFocusEn": "Actual personal investigation and bounded interpretation."
+      },
+      {
+        "id": "pla-confounder-fresh-transfer",
+        "taskDemandDe": "Neue Probe ist dicker, anders konditioniert und enthält unbekannten Weichmacher. Darf die Durchbiegung allein der Dicke zugeschrieben werden? Entwirf kontrollierte Verbesserung; kein zusätzlicher realer Durchlauf allein wegen dieser Variation verlangt.",
+        "taskDemandEn": "New sample is thicker, conditioned differently and contains unknown plasticizer. May deflection be attributed only to thickness? Design a controlled improvement; this variation alone imposes no extra physical trial.",
+        "expectedPerformanceDe": "Nein, Zusammensetzung/Konditionierung sind Störgrößen. Gleiche Charge/Konditionierung oder kontrollierter Faktorvergleich nötig; ohne Daten bleibt die Kausalzuordnung offen.",
+        "expectedPerformanceEn": "No, composition/conditioning are confounders. Matched batch/conditioning or controlled factor comparison is needed; causal attribution remains unresolved without data.",
+        "understandingFocusDe": "Störgrößen sind eigenständig zu begründen; kein zusätzlicher realer Versuch allein wegen der Variation.",
+        "understandingFocusEn": "Explain confounders independently; the variation alone requires no extra physical trial."
+      }
+    ]
+  }
+}

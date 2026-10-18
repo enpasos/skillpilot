@@ -1,0 +1,608 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "chemie-current439-native20-actual-paired-context-synthesis-root-20261017-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex root informed synthesis after reading both actual independent goal rationales and transfer findings; machine only",
+  "synthesizedAt": "2026-10-16T21:23:09.560Z",
+  "batch": {
+    "batchId": "chemie-current439-stable-jurisdiction-only-first20-20261016-v1",
+    "batchManifestDigest": "sha256:cd75785f0c1c80d0d68b00ebf10c3b6395bffe602df8f66d94d48d61059258b8",
+    "configDigest": "sha256:05a0b7ea54d87bd23e384513b3e758559a986bf90f0c1f6dae2ac0d7df4d523b",
+    "bundleFingerprint": "sha256:a9a163349c8f76db10215928c717ccc9480ff037b95a7a37c1ce4c16b133a65e",
+    "bookDigest": "sha256:a0661184c3dd3474e8ae006337739db0be22983cdbc94aeff7798e343d9221c6",
+    "reviewInputFingerprint": "sha256:977629c061ebe9ffb8f164dbdcc5ca656644e5defa81648f395f583b2e63b34c",
+    "dualSummaryDigest": "sha256:4cd0ff31a1b0dc96316b48b72aa411ec6458c02ffc36f333271aa1053b499edd",
+    "canonicalLandscapeDigest": "sha256:ae53884b26285d9483b315f030216566b74fb7067e9fc962610e493aadeb3fb2"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-current439-stable-jurisdiction-only-first20-20261016-v1-a",
+      "campaignDigest": "sha256:d50e3cd567afb160e2e35e38a1fc440df4ea229e92cd498a574861f66ee50b51",
+      "roundId": "chemie-current439-stable-jurisdiction-only-first20-20261016-v1-first-pass-a",
+      "independenceGroupId": "chemie-current439-stable-jurisdiction-only-first20-20261016-v1-independent-a",
+      "reviewInputFingerprint": "sha256:977629c061ebe9ffb8f164dbdcc5ca656644e5defa81648f395f583b2e63b34c",
+      "batchId": "chemie-current439-stable-jurisdiction-only-first20-20261016-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:d2df77dcc77001a549c893f27a97546304ae6ca2369862e309c90625342719c2",
+      "runId": "chemie-native20-jurisdiction-context-independent-a-20261016-v1",
+      "runManifestDigest": "sha256:a04220e14fa9426ab8629e23dd9d40060d51369c817ba8ba85a59c8eb9af4c0b",
+      "resultsDigest": "sha256:d1a5b1f9ff3b5b8af0d5280407af22af59f08a8e7c830af25e5a23a6ac112920"
+    },
+    "second": {
+      "campaignId": "chemie-current439-stable-jurisdiction-only-first20-20261016-v1-b",
+      "campaignDigest": "sha256:5f77b76961e7d155eee78b9400cf2efc4df73244864e12800f7c3cbd07d18ba8",
+      "roundId": "chemie-current439-stable-jurisdiction-only-first20-20261016-v1-first-pass-b",
+      "independenceGroupId": "chemie-current439-stable-jurisdiction-only-first20-20261016-v1-independent-b",
+      "reviewInputFingerprint": "sha256:977629c061ebe9ffb8f164dbdcc5ca656644e5defa81648f395f583b2e63b34c",
+      "batchId": "chemie-current439-stable-jurisdiction-only-first20-20261016-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:c50af812167ea273a717a9ce7498793c2a79c051271b86665b8eb4bf1fffc841",
+      "runId": "chemie-native20-jurisdiction-context-independent-b-25d6585a-5baf-4a2e-b37d-02acc67f565b",
+      "runManifestDigest": "sha256:7178451eb1c9956cac10f0194edf7bab5e7dfafb98fae24f2659e5a7014bee73",
+      "resultsDigest": "sha256:f8258f0abc16851d160876c85699b5c761b1b6012b824c8db4d89a0fb00525bc"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "chemie-current439-native20-actual-paired-context-synthesis-root-20261017-v1-decision-001",
+      "goalId": "9fc800d1-92d1-5ef6-81c1-33960ae034dd",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:2aa9dab12809d30dca3bf4003bc71d9f861e08289a7c0b9270df816f9a6d1012",
+      "pageFingerprint": "sha256:ae39cde3503754755568fefd699291f657e713896060d4a6eb522e100ae6f014",
+      "goalReviewContextFingerprint": "sha256:e93e1cd3c413870f9390bba704f9b9af4855f548de6614c4a4d3cd69e4e7fe58",
+      "finalText": {
+        "titleDe": "Chemische Daten nachvollziehbar dokumentieren",
+        "titleEn": "Document chemical data transparently",
+        "descriptionDe": "Die lernende Person kann experimentell erhobene oder recherchierte chemische Daten strukturiert und nachvollziehbar dokumentieren, Größen und Einheiten, Herkunft und relevante Untersuchungsbedingungen angeben sowie beobachtende Beschreibung und deutende Erklärung unterscheiden.",
+        "descriptionEn": "The learner can document experimental or researched chemical data in a structured and transparent way, identify quantities, units, provenance, and relevant investigation conditions, and distinguish descriptive observation from explanatory interpretation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-native20-jurisdiction-context-independent-a-20261016-v1.01",
+          "recordDigest": "sha256:babde25727dd1200d2b595b9f9661367cc5d21fb1a413f70067e30da1da453e2"
+        },
+        "second": {
+          "recordId": "chemie-native20-jurisdiction-context-independent-b-25d6585a-5baf-4a2e-b37d-02acc67f565b.001",
+          "recordDigest": "sha256:529cd80f47a5ad1972d832dfaae76dc06aadfe5ec1a09dbeabe4e02b2e6c38ed"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen aktuellen Reviews bestätigen die unveränderte Beschreibung, die tatsächlich betrachtete native Seite und die begrenzte Geltungskompatibilität. Rohdaten, R1/R2-Ereignisse und versionierte Kalibrations-/Verdünnungsrechnungen bleiben getrennt; BW folgt der dokumentierten Voraussetzungskette, ohne BY-Hilfestellungen als neue Pflicht zu übertragen. Das vollständige bisherige P-Profil bleibt erhalten. Diese Synthese stellt nur aktuelle D-/Seiten-/Kontextbindungen wieder her; sie behauptet keine neue Voll-P-/V-Prüfung, WholeSourceCoverage, Lernendenleistung oder menschliche Freigabe.",
+      "rationaleEn": "Both independent current reviews confirm the unchanged description, the actually inspected native page and bounded jurisdiction-context compatibility. Raw data, R1/R2 events and versioned calibration/dilution calculations remain distinct; BW follows the documented prerequisite chain without transferring BY-specific scaffolding as a new duty. The existing whole P profile is retained. This synthesis restores only current D/page/context bindings; it asserts no new full P/V review, whole-source coverage, learner performance or human approval."
+    },
+    {
+      "decisionId": "chemie-current439-native20-actual-paired-context-synthesis-root-20261017-v1-decision-002",
+      "goalId": "7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:afe23ba7646722dc98db2ac6ba1182b7416971532c2e37c3ed7965f84fb26fca",
+      "pageFingerprint": "sha256:127ac9e9acc2aabf698796343a6c9032947da9d57bc48e09f7233ec26506c0c6",
+      "goalReviewContextFingerprint": "sha256:8299bfd252169df1241939370497eb26b6e6e79b5d88c8ad184a8aaef6aeb370",
+      "finalText": {
+        "titleDe": "Chemische Daten auswerten und auf Hypothesen beziehen",
+        "titleEn": "Evaluate chemical data and relate them to hypotheses",
+        "descriptionDe": "Die lernende Person kann erhobene oder recherchierte chemische Daten in geeigneten Tabellen oder Diagrammen auswerten, erkennbare Trends und Beziehungen erläutern und begründen, inwiefern die Daten die Ausgangshypothese stützen oder ihr widersprechen.",
+        "descriptionEn": "The learner can evaluate experimental or researched chemical data in suitable tables or diagrams, explain observable trends and relationships, and justify how the data support or contradict the initial hypothesis."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-native20-jurisdiction-context-independent-a-20261016-v1.02",
+          "recordDigest": "sha256:d2809cd5e5de70aaae552f2c1111eb822e03ee2619850cb90272dac12a50c737"
+        },
+        "second": {
+          "recordId": "chemie-native20-jurisdiction-context-independent-b-25d6585a-5baf-4a2e-b37d-02acc67f565b.002",
+          "recordDigest": "sha256:5c1b41fd50b4ce189b47c1c743d48ddef758170113850467a5791fcea89b23ac"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen aktuellen Reviews bestätigen die unveränderte Beschreibung, die tatsächlich betrachtete native Seite und die begrenzte Geltungskompatibilität. Zeit-/Leitfähigkeitsdaten tragen Hypothesenbezug mit erhaltenen Streuwerten und Temperaturkontrolle; BW-Verfügbarkeit macht aus einer vorgegebenen Hypothese keinen universellen Eigenformulierungsauftrag. Das vollständige bisherige P-Profil bleibt erhalten. Diese Synthese stellt nur aktuelle D-/Seiten-/Kontextbindungen wieder her; sie behauptet keine neue Voll-P-/V-Prüfung, WholeSourceCoverage, Lernendenleistung oder menschliche Freigabe.",
+      "rationaleEn": "Both independent current reviews confirm the unchanged description, the actually inspected native page and bounded jurisdiction-context compatibility. Timing/conductivity data support hypothesis-related interpretation while preserving spread and temperature controls; BW availability does not require universally self-formulated hypotheses. The existing whole P profile is retained. This synthesis restores only current D/page/context bindings; it asserts no new full P/V review, whole-source coverage, learner performance or human approval."
+    },
+    {
+      "decisionId": "chemie-current439-native20-actual-paired-context-synthesis-root-20261017-v1-decision-003",
+      "goalId": "4aa3a130-b517-5ac5-87b2-147fe432cadd",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e66d637f6a24d6598da4d720f9f9cd4308c43541fb974bc6a72d856c6c04acdd",
+      "pageFingerprint": "sha256:0f30c55b70dd81a86635c471588dbd0cd2a525c7cd02f4ed006758f064ab701a",
+      "goalReviewContextFingerprint": "sha256:fff37c9b4f73cf5ed9c70deaa59e36fc60aacd9b2df685415a15e5a6dc147cfa",
+      "finalText": {
+        "titleDe": "Die Aussagekraft chemischer Daten beurteilen",
+        "titleEn": "Assess the evidential value of chemical data",
+        "descriptionDe": "Die lernende Person kann die Angemessenheit, Gültigkeit und Tragweite erhobener oder recherchierter chemischer Daten beurteilen, mögliche Mess- und Verfahrensfehler anhand der Untersuchungsbedingungen begründen und erklären, welche Schlussfolgerungen die Daten tragen und welche nicht.",
+        "descriptionEn": "The learner can assess the suitability, validity, and reach of experimental or researched chemical data, justify possible measurement and procedural errors using the investigation conditions, and explain which conclusions the data support and which they do not."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-native20-jurisdiction-context-independent-a-20261016-v1.03",
+          "recordDigest": "sha256:5a2025d4ec1d3e37661d569ee9d76edb67b67a2693bd09a26cb12070a89cc127"
+        },
+        "second": {
+          "recordId": "chemie-native20-jurisdiction-context-independent-b-25d6585a-5baf-4a2e-b37d-02acc67f565b.003",
+          "recordDigest": "sha256:acedcfc221e66df0a7eeaef70c8f353e37c0565e3b6f2602943f54e9bf8e96e1"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen aktuellen Reviews bestätigen die unveränderte Beschreibung, die tatsächlich betrachtete native Seite und die begrenzte Geltungskompatibilität. Kreuzreaktion, Blankgrenze und Matrix-/Temperaturkontrollen begrenzen die Aussagekraft. Der BW-EDTA-Voraussetzungsschluss belegt keine amtliche Vollabdeckung und keine absolute Selektivität nach nur einem Kontrolltest. Das vollständige bisherige P-Profil bleibt erhalten. Diese Synthese stellt nur aktuelle D-/Seiten-/Kontextbindungen wieder her; sie behauptet keine neue Voll-P-/V-Prüfung, WholeSourceCoverage, Lernendenleistung oder menschliche Freigabe.",
+      "rationaleEn": "Both independent current reviews confirm the unchanged description, the actually inspected native page and bounded jurisdiction-context compatibility. Cross-reaction, blank limits and matrix/temperature controls bound validity. The BW EDTA prerequisite closure proves neither official whole-goal coverage nor absolute selectivity from one control. The existing whole P profile is retained. This synthesis restores only current D/page/context bindings; it asserts no new full P/V review, whole-source coverage, learner performance or human approval."
+    },
+    {
+      "decisionId": "chemie-current439-native20-actual-paired-context-synthesis-root-20261017-v1-decision-004",
+      "goalId": "c441d9e8-d9d9-5e55-a189-a37345541321",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ebc2025dad09c32208bcfa5b629570111f78963ee258d2af72290bbaa2d9be43",
+      "pageFingerprint": "sha256:7c9010c6246d8cec21ce58c1255ba822775b31fed88673c411fb513865a0aa7c",
+      "goalReviewContextFingerprint": "sha256:94e194c5790864092323d1d26c9b620fe3ed89ea342f8b1283b79711b5e0479e",
+      "finalText": {
+        "titleDe": "Salzbildung energetisch mit Gitterenergie erklären",
+        "titleEn": "Explain salt formation energetically using lattice energy",
+        "descriptionDe": "Die lernende Person kann Salzbildung aus Elementen als Ionenbildung mit Elektronenübergang beschreiben, die Edelgaskonfiguration mithilfe des Energiestufenmodells begründen und den exothermen Verlauf über Gitterenergie als Triebkraft erklären.",
+        "descriptionEn": "The learner can describe salt formation from elements as ion formation through electron transfer, justify noble-gas configuration using the energy level model, and explain the exothermic course through lattice energy as the driving force."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-native20-jurisdiction-context-independent-a-20261016-v1.04",
+          "recordDigest": "sha256:329ca47cd60c41c6d48d7bfa55a487e39e9782ec26938530157d616f20953b26"
+        },
+        "second": {
+          "recordId": "chemie-native20-jurisdiction-context-independent-b-25d6585a-5baf-4a2e-b37d-02acc67f565b.004",
+          "recordDigest": "sha256:22d8a666fa63344ab6f3137beee2da29b87c0326bb357181be62994802f620d0"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen aktuellen Reviews bestätigen die unveränderte Beschreibung, die tatsächlich betrachtete native Seite und die begrenzte Geltungskompatibilität. NaCl- und illustrative MgO-Gesamtbilanzen halten Ionisierungsbedarf und Gitterfreisetzung auseinander; die engere Ländergeltung verändert weder Sek-I-Operator noch die Grenzen von Modellweg und Spontaneitätsaussagen. Das vollständige bisherige P-Profil bleibt erhalten. Diese Synthese stellt nur aktuelle D-/Seiten-/Kontextbindungen wieder her; sie behauptet keine neue Voll-P-/V-Prüfung, WholeSourceCoverage, Lernendenleistung oder menschliche Freigabe.",
+      "rationaleEn": "Both independent current reviews confirm the unchanged description, the actually inspected native page and bounded jurisdiction-context compatibility. NaCl and illustrative MgO balances distinguish ionisation input from lattice release; narrower jurisdiction does not change the lower-secondary operator or justify claims about actual pathways or spontaneity. The existing whole P profile is retained. This synthesis restores only current D/page/context bindings; it asserts no new full P/V review, whole-source coverage, learner performance or human approval."
+    },
+    {
+      "decisionId": "chemie-current439-native20-actual-paired-context-synthesis-root-20261017-v1-decision-005",
+      "goalId": "fcaf8c9b-bd81-552e-9d91-43649895471e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e0ebbc5d24f20e56a1ed3245d0d0fd2a6c10a59ec8ce4957c3fbeb1c1a92606c",
+      "pageFingerprint": "sha256:1d6e0958ac76c25e82143131b3cb7f2a2648576fe523d342044fb84b8f6bb5e2",
+      "goalReviewContextFingerprint": "sha256:a6e368e80b78aae6b36050a50c93188c43b75c75812771ff6b03911787b8488d",
+      "finalText": {
+        "titleDe": "Metallmodell aus Stoffeigenschaften entwickeln",
+        "titleEn": "Develop a metal model from substance properties",
+        "descriptionDe": "Die lernende Person kann Eigenschaften von Metallen nutzen, um Grenzen des Dalton-Modells zu begründen und ein einfaches Modell für den Bau von Metallen zu entwickeln.",
+        "descriptionEn": "The learner can use properties of metals to justify limitations of Dalton’s model and develop a simple model of metallic structure."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-native20-jurisdiction-context-independent-a-20261016-v1.05",
+          "recordDigest": "sha256:06dc79bcfab1f8c0069c9d29018f71781cda9696f0c801a99c6d11442ef5eb0d"
+        },
+        "second": {
+          "recordId": "chemie-native20-jurisdiction-context-independent-b-25d6585a-5baf-4a2e-b37d-02acc67f565b.005",
+          "recordDigest": "sha256:a438190b74fcb050d756ddae662ea2fa43211df67c7c747cb836e1a4f71a1b04"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen aktuellen Reviews bestätigen die unveränderte Beschreibung, die tatsächlich betrachtete native Seite und die begrenzte Geltungskompatibilität. Leitfähigkeit und Verformbarkeit begründen gemeinsam das einfache Metallmodell; Graphit begrenzt den Umkehrschluss vom Leiter zum Metall. NI-Entfall ändert weder Zieltext noch Anspruch an Bandmodelle. Das vollständige bisherige P-Profil bleibt erhalten. Diese Synthese stellt nur aktuelle D-/Seiten-/Kontextbindungen wieder her; sie behauptet keine neue Voll-P-/V-Prüfung, WholeSourceCoverage, Lernendenleistung oder menschliche Freigabe.",
+      "rationaleEn": "Both independent current reviews confirm the unchanged description, the actually inspected native page and bounded jurisdiction-context compatibility. Conductivity and malleability jointly motivate the simple metallic model; graphite limits the conductor-to-metal inference. Removing NI changes neither the goal text nor the bounded band-model demand. The existing whole P profile is retained. This synthesis restores only current D/page/context bindings; it asserts no new full P/V review, whole-source coverage, learner performance or human approval."
+    },
+    {
+      "decisionId": "chemie-current439-native20-actual-paired-context-synthesis-root-20261017-v1-decision-006",
+      "goalId": "79db6d68-b402-5563-a348-f2784fed8867",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a181942aca9b4f5e8f0b17b83c84f46d50475435cef7ab6ae5634106f3e2330d",
+      "pageFingerprint": "sha256:c57bd759c389d91fe821dc808f81b4f6745c6e349ac04a7999394152f58ccb61",
+      "goalReviewContextFingerprint": "sha256:1077b119d89d28b6778e913653d6560aad83470e54bda045955dfe7f63212411",
+      "finalText": {
+        "titleDe": "Molekulare und ionogene Verbindungen unterscheiden",
+        "titleEn": "Distinguish molecular and ionic compounds",
+        "descriptionDe": "Die lernende Person kann binäre molekulare und ionogene Verbindungen anhand der beteiligten Elemente, Reaktionstypen und Teilchenvorstellungen unterscheiden.",
+        "descriptionEn": "The learner can distinguish binary molecular and ionic compounds using the elements involved, reaction types, and particle models."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-native20-jurisdiction-context-independent-a-20261016-v1.06",
+          "recordDigest": "sha256:eca8cc2271cd173cfc012694783bd87f15daffeb81bfcd37655ecfc0b529bba8"
+        },
+        "second": {
+          "recordId": "chemie-native20-jurisdiction-context-independent-b-25d6585a-5baf-4a2e-b37d-02acc67f565b.006",
+          "recordDigest": "sha256:7333ec95a3011df7e79c3eb78196ea433acbc5183abf0d656da8b655806c5c63"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen aktuellen Reviews bestätigen die unveränderte Beschreibung, die tatsächlich betrachtete native Seite und die begrenzte Geltungskompatibilität. Diskrete H2O-/CO2-Moleküle und NaCl-/MgO-Gitter begrenzen die binäre Elementfaustregel; die reduzierte Länderliste macht daraus keine universelle Bindungsklassifikation. Das vollständige bisherige P-Profil bleibt erhalten. Diese Synthese stellt nur aktuelle D-/Seiten-/Kontextbindungen wieder her; sie behauptet keine neue Voll-P-/V-Prüfung, WholeSourceCoverage, Lernendenleistung oder menschliche Freigabe.",
+      "rationaleEn": "Both independent current reviews confirm the unchanged description, the actually inspected native page and bounded jurisdiction-context compatibility. Discrete H2O/CO2 molecules and NaCl/MgO lattices bound the simple binary-element heuristic; the reduced jurisdiction list does not make it a universal bond classification. The existing whole P profile is retained. This synthesis restores only current D/page/context bindings; it asserts no new full P/V review, whole-source coverage, learner performance or human approval."
+    },
+    {
+      "decisionId": "chemie-current439-native20-actual-paired-context-synthesis-root-20261017-v1-decision-007",
+      "goalId": "7964cb36-e9b1-5176-9426-a82041a5b72f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ae36d1a4b6e48ed652f3f08f38d04432c555d42c9dc1733575728032d8309254",
+      "pageFingerprint": "sha256:759c7226f47fb508603f92b689413c67d3add4a3d7686e8c14872033c76bd2ec",
+      "goalReviewContextFingerprint": "sha256:10f3c5e5d6be624e1558883336824c590cb7ff5db5fd044da0a1335977476d8b",
+      "finalText": {
+        "titleDe": "Molekülformeln und Verhältnisformeln unterscheiden",
+        "titleEn": "Distinguish molecular formulas and empirical ionic formulas",
+        "descriptionDe": "Die lernende Person kann gerichtete Anziehung in Molekülen und ungerichtete Anziehung in Ionengittern nutzen, um Molekülformeln von Verhältnisformeln zu unterscheiden.",
+        "descriptionEn": "The learner can use directed attraction in molecules and non-directional attraction in ionic lattices to distinguish molecular formulas from ionic ratio formulas."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-native20-jurisdiction-context-independent-a-20261016-v1.07",
+          "recordDigest": "sha256:b200d167105e98df3050b6a2583b54e03ad60a8e5b0582ac90f59e490ffe3449"
+        },
+        "second": {
+          "recordId": "chemie-native20-jurisdiction-context-independent-b-25d6585a-5baf-4a2e-b37d-02acc67f565b.007",
+          "recordDigest": "sha256:8a8ee5051e1512cf6e5753e2698ad7843eb68742742f672a38287b4e62fe5f08"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen aktuellen Reviews bestätigen die unveränderte Beschreibung, die tatsächlich betrachtete native Seite und die begrenzte Geltungskompatibilität. Gleiche 1:2-Indizes bei CO2 und CaF2 beweisen keine gleiche Struktur oder Salz-Moleküle. Beschreibung und vollständiges Profil erhalten diese Abgrenzung im unveränderten Sek-I-Kontext. Das vollständige bisherige P-Profil bleibt erhalten. Diese Synthese stellt nur aktuelle D-/Seiten-/Kontextbindungen wieder her; sie behauptet keine neue Voll-P-/V-Prüfung, WholeSourceCoverage, Lernendenleistung oder menschliche Freigabe.",
+      "rationaleEn": "Both independent current reviews confirm the unchanged description, the actually inspected native page and bounded jurisdiction-context compatibility. Equal 1:2 indices in CO2 and CaF2 prove neither equal structure nor salt molecules. The description and whole profile preserve this distinction within the unchanged lower-secondary context. The existing whole P profile is retained. This synthesis restores only current D/page/context bindings; it asserts no new full P/V review, whole-source coverage, learner performance or human approval."
+    },
+    {
+      "decisionId": "chemie-current439-native20-actual-paired-context-synthesis-root-20261017-v1-decision-008",
+      "goalId": "965ca297-5dbf-5e58-b5f0-6559a4433646",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a2fcc547b32a1135d607f24f7eceb7f0b5cface70cf4a1d0182812c215af99b9",
+      "pageFingerprint": "sha256:277fc0447f69bdff8bee365a0d3eb3091930895fdb42a37474aebda30ba94d4d",
+      "goalReviewContextFingerprint": "sha256:b20800f1da791d86d077cd76699670548e83d141f1817b6132103856ae513b18",
+      "finalText": {
+        "titleDe": "Salzformeln aus Ionenladungen ableiten",
+        "titleEn": "Derive salt formulas from ion charges",
+        "descriptionDe": "Die lernende Person kann aus Ionenladungen und Molekül-Ionen Verhältnisformeln von Salzen ableiten, Salznamen und Formeln ineinander überführen und Eigenschaften von Salzen aus dem Ionenaufbau erklären.",
+        "descriptionEn": "The learner can derive salt ratio formulas from ion charges and molecular ions, translate between salt names and formulas, and explain salt properties from ionic structure."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-native20-jurisdiction-context-independent-a-20261016-v1.08",
+          "recordDigest": "sha256:b425a09bade54489e58bba42eb3a691b5afca2883f95602943ee179db0c7388a"
+        },
+        "second": {
+          "recordId": "chemie-native20-jurisdiction-context-independent-b-25d6585a-5baf-4a2e-b37d-02acc67f565b.008",
+          "recordDigest": "sha256:adc4c52427690b59b7d6b984780c73814d4b3c1e8bf97d5c009629bb45fcd6ab"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen aktuellen Reviews bestätigen die unveränderte Beschreibung, die tatsächlich betrachtete native Seite und die begrenzte Geltungskompatibilität. Ladungsneutralität, intakte mehratomige Ionen und Klammern tragen Formel- und Namensableitung; die begrenzte Länderzuordnung begründet keine garantierte Wasserlöslichkeit oder neuen Stufenanspruch. Das vollständige bisherige P-Profil bleibt erhalten. Diese Synthese stellt nur aktuelle D-/Seiten-/Kontextbindungen wieder her; sie behauptet keine neue Voll-P-/V-Prüfung, WholeSourceCoverage, Lernendenleistung oder menschliche Freigabe.",
+      "rationaleEn": "Both independent current reviews confirm the unchanged description, the actually inspected native page and bounded jurisdiction-context compatibility. Charge neutrality, intact polyatomic ions and brackets support formula/name derivation; limited jurisdiction implies neither guaranteed water solubility nor a new stage demand. The existing whole P profile is retained. This synthesis restores only current D/page/context bindings; it asserts no new full P/V review, whole-source coverage, learner performance or human approval."
+    },
+    {
+      "decisionId": "chemie-current439-native20-actual-paired-context-synthesis-root-20261017-v1-decision-009",
+      "goalId": "b4777001-f4ed-5fe9-9d98-02319abdea09",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:0a305eca237674d462046fe8a6d980667988fcde46bbd9427db1509a6eccd0f9",
+      "pageFingerprint": "sha256:5e7ffb799be2c4719e94567128d62ee973644a1bf740e00ce87b1a89c59609ef",
+      "goalReviewContextFingerprint": "sha256:e5af257307388ea76bc29c9e92ab357ff3673ab2cc8e69412d872751906f680f",
+      "finalText": {
+        "titleDe": "Säure-Base-Paare vergleichen",
+        "titleEn": "Compare acid-base pairs",
+        "descriptionDe": "Die lernende Person kann die bevorzugte Richtung einer Protonenübertragung für vorgegebene korrespondierende Säure-Base-Paare anhand angegebener relativer Säure- und Basenstärken begründen, die partnerabhängigen Protonendonator- und Protonenakzeptorrollen auch bei Ampholyten vergleichen und die Grenzen dieser qualitativen Modellvorhersage erläutern.",
+        "descriptionEn": "The learner can justify the favored direction of a proton transfer for supplied conjugate acid-base pairs using stated relative acid and base strengths, compare partner-dependent proton-donor and proton-acceptor roles including amphiprotic species, and explain the limits of this qualitative model prediction."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-native20-jurisdiction-context-independent-a-20261016-v1.09",
+          "recordDigest": "sha256:df8f12abf569175ad7a21b442bcd1cf491de5fd7059a7991f8ada756d5d6a6e4"
+        },
+        "second": {
+          "recordId": "chemie-native20-jurisdiction-context-independent-b-25d6585a-5baf-4a2e-b37d-02acc67f565b.009",
+          "recordDigest": "sha256:56cd564cdd5b814b5b05c83b6d4ecee131138ea44e6d8f8eb16a0033e67c5c04"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen aktuellen Reviews bestätigen die unveränderte Beschreibung, die tatsächlich betrachtete native Seite und die begrenzte Geltungskompatibilität. Qualitative Stärkenordnung und Ampholytrollen bleiben von Geschwindigkeit und Gleichgewichtszusammensetzung getrennt. HCO3-Reaktionen und offene CO2-Systemgrenze begründen Transfer ohne erfundene Konstanten. Das vollständige bisherige P-Profil bleibt erhalten. Diese Synthese stellt nur aktuelle D-/Seiten-/Kontextbindungen wieder her; sie behauptet keine neue Voll-P-/V-Prüfung, WholeSourceCoverage, Lernendenleistung oder menschliche Freigabe.",
+      "rationaleEn": "Both independent current reviews confirm the unchanged description, the actually inspected native page and bounded jurisdiction-context compatibility. Qualitative strength order and ampholyte roles remain separate from rate and equilibrium composition. HCO3 reactions and the open CO2 boundary support transfer without invented constants. The existing whole P profile is retained. This synthesis restores only current D/page/context bindings; it asserts no new full P/V review, whole-source coverage, learner performance or human approval."
+    },
+    {
+      "decisionId": "chemie-current439-native20-actual-paired-context-synthesis-root-20261017-v1-decision-010",
+      "goalId": "cd9ec99b-b694-5673-863c-55528e31250a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d81a2f84f6cb80d616dd0a891bb97333042374059902802edcf808e49e397ac1",
+      "pageFingerprint": "sha256:91cbdcaac65ef64a41addd035da63c639d8dc12dd60225bcd32664af8d813f40",
+      "goalReviewContextFingerprint": "sha256:9651f32888a728d3b0724fe4e4b097da152106041ad3a3169568640f4fffb33e",
+      "finalText": {
+        "titleDe": "Gesundheitliche und gesellschaftliche Alkoholrisiken beurteilen",
+        "titleEn": "Assess health and social risks of alcohol",
+        "descriptionDe": "Die lernende Person kann körperliche Schädigungen durch alkoholhaltige Getränke, Gefährdungen unter Alkoholeinfluss und Ursachen von Abhängigkeit beschreiben sowie Risiken im Alltag beurteilen.",
+        "descriptionEn": "The learner can describe physical harms from alcoholic beverages, dangers under alcohol influence, and causes of addiction, and assess everyday risks."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-native20-jurisdiction-context-independent-a-20261016-v1.10",
+          "recordDigest": "sha256:5536cda1f356296a41ba8dd14aa16bcc52e385f6fa0765dc89eb6c52b6e5c688"
+        },
+        "second": {
+          "recordId": "chemie-native20-jurisdiction-context-independent-b-25d6585a-5baf-4a2e-b37d-02acc67f565b.010",
+          "recordDigest": "sha256:e2176ae78007b2f2b828c017d5d57f5df93fd28eb3568f6928761467cca69b06"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen aktuellen Reviews bestätigen die unveränderte Beschreibung, die tatsächlich betrachtete native Seite und die begrenzte Geltungskompatibilität. Körperliche, akute und abhängigkeitsbezogene Alkoholrisiken werden ohne Schuldzuweisung bewertet. Der HE-Voraussetzungsschluss ändert keine Stufe und begründet weder persönliche Diagnose noch sichere Konsummenge. Das vollständige bisherige P-Profil bleibt erhalten. Diese Synthese stellt nur aktuelle D-/Seiten-/Kontextbindungen wieder her; sie behauptet keine neue Voll-P-/V-Prüfung, WholeSourceCoverage, Lernendenleistung oder menschliche Freigabe.",
+      "rationaleEn": "Both independent current reviews confirm the unchanged description, the actually inspected native page and bounded jurisdiction-context compatibility. Physical, acute and dependence-related alcohol risks are evaluated without blame. HE prerequisite closure changes no stage and implies neither personal diagnosis nor a safe consumption amount. The existing whole P profile is retained. This synthesis restores only current D/page/context bindings; it asserts no new full P/V review, whole-source coverage, learner performance or human approval."
+    },
+    {
+      "decisionId": "chemie-current439-native20-actual-paired-context-synthesis-root-20261017-v1-decision-011",
+      "goalId": "f0f67a7a-b06a-50b9-8edc-1f2a0d97520d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a3495abdaefddf46c400e84774722574347d7c6de61047b6f3e7cd6068c06aeb",
+      "pageFingerprint": "sha256:84ad1ecd64126f3098fc6a465d02759e4aedc20f234fe4c7b05b7d09b66e19ce",
+      "goalReviewContextFingerprint": "sha256:fd3b83cc5f74c1e6f988d1e442bc51ec807b7cc4dab205bc81b50c32c96c511b",
+      "finalText": {
+        "titleDe": "Bindungsverhältnisse aromatischer Systeme modellieren",
+        "titleEn": "Model bonding in aromatic systems",
+        "descriptionDe": "Die lernende Person kann Bindungsverhältnisse aromatischer Systeme auch unter energetischen Aspekten mit Mesomeriemodell und erweitertem Orbitalmodell beschreiben.",
+        "descriptionEn": "The learner can describe bonding in aromatic systems, including energetic aspects, using resonance and extended orbital models."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-native20-jurisdiction-context-independent-a-20261016-v1.11",
+          "recordDigest": "sha256:b2c9b18e0f02cd14e113fce04ac9e4e59c8b981c36cbd50fcb651d048573e4ac"
+        },
+        "second": {
+          "recordId": "chemie-native20-jurisdiction-context-independent-b-25d6585a-5baf-4a2e-b37d-02acc67f565b.011",
+          "recordDigest": "sha256:37a1c02d6199316b7fd3ef17368abfe05944ce914f1e884707afaebbec776927"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen aktuellen Reviews bestätigen die unveränderte Beschreibung, die tatsächlich betrachtete native Seite und die begrenzte Geltungskompatibilität. Delokalisierung, sechs p-Orbitale und die 152-kJ-Modellstabilisierung begrenzen den aromatischen Vergleich. BY/HE-Geltung erhält den LK-Operator und setzt Landes-Kursnamen nicht gleich. Das vollständige bisherige P-Profil bleibt erhalten. Diese Synthese stellt nur aktuelle D-/Seiten-/Kontextbindungen wieder her; sie behauptet keine neue Voll-P-/V-Prüfung, WholeSourceCoverage, Lernendenleistung oder menschliche Freigabe.",
+      "rationaleEn": "Both independent current reviews confirm the unchanged description, the actually inspected native page and bounded jurisdiction-context compatibility. Delocalisation, six p orbitals and the 152-kJ model stabilisation bound aromatic comparison. BY/HE availability preserves the advanced operator without equating local course names. The existing whole P profile is retained. This synthesis restores only current D/page/context bindings; it asserts no new full P/V review, whole-source coverage, learner performance or human approval."
+    },
+    {
+      "decisionId": "chemie-current439-native20-actual-paired-context-synthesis-root-20261017-v1-decision-012",
+      "goalId": "41396457-d97b-55f3-9804-2af1bb188e79",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:47d0c86d818239c266fda78eaf08ff3fe3a9fbfc44b957e0132f262d4604d213",
+      "pageFingerprint": "sha256:8ce2de2305525c7d1f4a4e4d42fdf8b2f7d96c1899fd9f569ce6a9a53c0c0292",
+      "goalReviewContextFingerprint": "sha256:bd401adf96fce2ba880623d8bce9f1d31456f4981e5a420bf8f1b0a012d5756e",
+      "finalText": {
+        "titleDe": "Halogenidionen-Nachweise deuten",
+        "titleEn": "Interpret halide ion tests",
+        "descriptionDe": "Die lernende Person kann Nachweise für Halogenidionen im Kontext nukleophiler Substitution fachlich deuten.",
+        "descriptionEn": "The learner can interpret tests for halide ions in the context of nucleophilic substitution."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-native20-jurisdiction-context-independent-a-20261016-v1.12",
+          "recordDigest": "sha256:cc10749f588dbb04f0666d976e7bce484f5ca4de40c8cd7b32ca57c83339780b"
+        },
+        "second": {
+          "recordId": "chemie-native20-jurisdiction-context-independent-b-25d6585a-5baf-4a2e-b37d-02acc67f565b.012",
+          "recordDigest": "sha256:b5f883be69951169d9b0cea1373f575ed58cbdf581081e5021d5fb36bf999b1b"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen aktuellen Reviews bestätigen die unveränderte Beschreibung, die tatsächlich betrachtete native Seite und die begrenzte Geltungskompatibilität. Halogenidbefunde stützen im Substitutionskontext nur die jeweilige Teilbehauptung; Vorher-/Blindprobe kontrolliert bereits vorhandenes Chlorid. Neue partielle BB/BE-Belege sind keine Vollabdeckung der Substitution. Das vollständige bisherige P-Profil bleibt erhalten. Diese Synthese stellt nur aktuelle D-/Seiten-/Kontextbindungen wieder her; sie behauptet keine neue Voll-P-/V-Prüfung, WholeSourceCoverage, Lernendenleistung oder menschliche Freigabe.",
+      "rationaleEn": "Both independent current reviews confirm the unchanged description, the actually inspected native page and bounded jurisdiction-context compatibility. Halide observations support only the relevant subclaim in substitution; baseline/blank controls account for pre-existing chloride. New partial BB/BE evidence is not whole-substitution coverage. The existing whole P profile is retained. This synthesis restores only current D/page/context bindings; it asserts no new full P/V review, whole-source coverage, learner performance or human approval."
+    },
+    {
+      "decisionId": "chemie-current439-native20-actual-paired-context-synthesis-root-20261017-v1-decision-013",
+      "goalId": "bd36dc58-c93e-5247-9e82-da2f9e4e2bed",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:13e57adc1c2ca4b566ae973c7a9c87111c9ea49f5d395933fabc91652df87ce3",
+      "pageFingerprint": "sha256:4f694f7a1c62881d7b0ccb6c5d07453dc4a4a79ab9e4577e74752fb5834363d1",
+      "goalReviewContextFingerprint": "sha256:ae085e67b7541dcacc492f51f62f9b74f87536d346adf9e3f71cff2bc0155929",
+      "finalText": {
+        "titleDe": "Di- und Tricarbonsäuren strukturell beschreiben (LK)",
+        "titleEn": "Describe di- and tricarboxylic acids structurally (LK)",
+        "descriptionDe": "Die lernende Person kann Di- und Tricarbonsäuren anhand mehrerer Carboxylgruppen strukturell beschreiben und geeignete Strukturformeln verwenden.",
+        "descriptionEn": "The learner can structurally describe di- and tricarboxylic acids using multiple carboxyl groups and suitable structural formulas."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-native20-jurisdiction-context-independent-a-20261016-v1.13",
+          "recordDigest": "sha256:e0761b6ceb085ddc3b52188d8f934f80a0e6e211f6353ca10404591db80d0817"
+        },
+        "second": {
+          "recordId": "chemie-native20-jurisdiction-context-independent-b-25d6585a-5baf-4a2e-b37d-02acc67f565b.013",
+          "recordDigest": "sha256:e0bcd5a322a1d81cf3926be0ba1726058e30dee82e4e2eb3c8929b2b3960c82f"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen aktuellen Reviews bestätigen die unveränderte Beschreibung, die tatsächlich betrachtete native Seite und die begrenzte Geltungskompatibilität. Vollständige COOH-Gruppen und valenzrichtige Strukturen unterscheiden Di-/Tricarbonsäuren von zusätzlichen Hydroxygruppen; BY/HE-Geltung fügt dem LK-Ziel keine Synthese- oder Rechenpflicht hinzu. Das vollständige bisherige P-Profil bleibt erhalten. Diese Synthese stellt nur aktuelle D-/Seiten-/Kontextbindungen wieder her; sie behauptet keine neue Voll-P-/V-Prüfung, WholeSourceCoverage, Lernendenleistung oder menschliche Freigabe.",
+      "rationaleEn": "Both independent current reviews confirm the unchanged description, the actually inspected native page and bounded jurisdiction-context compatibility. Complete COOH groups and valid valences distinguish di-/tricarboxylic acids from extra hydroxyl groups; BY/HE availability adds no synthesis or calculation duty to the advanced goal. The existing whole P profile is retained. This synthesis restores only current D/page/context bindings; it asserts no new full P/V review, whole-source coverage, learner performance or human approval."
+    },
+    {
+      "decisionId": "chemie-current439-native20-actual-paired-context-synthesis-root-20261017-v1-decision-014",
+      "goalId": "4da0839d-ab6d-53c1-ac21-c9872555ae16",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:fc624b930c46df30af35588cf5c7b4c756d4aa7b49330b40cadb1fdfe1e62ac6",
+      "pageFingerprint": "sha256:7eccf5b9aa6ed9dea74bcc0f7463c541ec13b445e22b77273b776e0341a4206b",
+      "goalReviewContextFingerprint": "sha256:73850707bbddba72f19c66f4b1a3ae1fe56db54545fe9b216aa6c5223c91da00",
+      "finalText": {
+        "titleDe": "Alkalische Esterhydrolyse mechanistisch vertiefen (LK)",
+        "titleEn": "Deepen the mechanism of alkaline ester hydrolysis (LK)",
+        "descriptionDe": "Die lernende Person kann Mechanismen der alkalischen Esterhydrolyse mit geeigneten Zwischenstufen und Reaktionsschritten vertiefend deuten.",
+        "descriptionEn": "The learner can interpret mechanisms of alkaline ester hydrolysis in depth using suitable intermediates and reaction steps."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-native20-jurisdiction-context-independent-a-20261016-v1.14",
+          "recordDigest": "sha256:e1fc3e2b349cfe6b52c39d0a08d5a6b611e2208200c756f62275326480e3382e"
+        },
+        "second": {
+          "recordId": "chemie-native20-jurisdiction-context-independent-b-25d6585a-5baf-4a2e-b37d-02acc67f565b.014",
+          "recordDigest": "sha256:7c5146c85499207d962d51c93632390734e2806ee18a77cea53d37735e9d366b"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen aktuellen Reviews bestätigen die unveränderte Beschreibung, die tatsächlich betrachtete native Seite und die begrenzte Geltungskompatibilität. OH-Angriff, tetraedrische O-Zwischenladung, Kollaps und Protonentransfer erklären den vorgegebenen Acylweg. Carboxylat ist alkalisches Endprodukt; die BY/HE-Begrenzung behauptet keinen Ausschluss sämtlicher Nebenwege. Das vollständige bisherige P-Profil bleibt erhalten. Diese Synthese stellt nur aktuelle D-/Seiten-/Kontextbindungen wieder her; sie behauptet keine neue Voll-P-/V-Prüfung, WholeSourceCoverage, Lernendenleistung oder menschliche Freigabe.",
+      "rationaleEn": "Both independent current reviews confirm the unchanged description, the actually inspected native page and bounded jurisdiction-context compatibility. OH attack, tetrahedral O charge, collapse and proton transfer explain the given acyl route. Carboxylate is the alkaline end product; BY/HE scope does not rule out every alternative pathway. The existing whole P profile is retained. This synthesis restores only current D/page/context bindings; it asserts no new full P/V review, whole-source coverage, learner performance or human approval."
+    },
+    {
+      "decisionId": "chemie-current439-native20-actual-paired-context-synthesis-root-20261017-v1-decision-015",
+      "goalId": "6765f741-42a6-55c5-a218-81b883b1f5ae",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:bbaa4abd92d234f414439e96203338dc3dc7ab71a3ac12dec4075c88c63f443a",
+      "pageFingerprint": "sha256:3597b046f8c2f717fff2f4bd70b63bc20872344e672fc659b0d4fb824a2b0ab4",
+      "goalReviewContextFingerprint": "sha256:f1cabb37349b5feac5a0264ff3f20e6bec01c8e091239a1ae85950985cc7d8c7",
+      "finalText": {
+        "titleDe": "Seifen herstellen",
+        "titleEn": "Prepare soaps",
+        "descriptionDe": "Die lernende Person kann die alkalische Hydrolyse von Fetten zur Herstellung von Seife durchführen, die Bildung von Glycerin und Fettsäuresalzen anhand der Esterstruktur erklären und die Seife durch Aussalzen von der wässrigen Phase trennen.",
+        "descriptionEn": "The learner can carry out the alkaline hydrolysis of fats to prepare soap, explain the formation of glycerol and fatty acid salts using the ester structure, and separate the soap from the aqueous phase by salting out."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-native20-jurisdiction-context-independent-a-20261016-v1.15",
+          "recordDigest": "sha256:61fd03707edd26c0db293553de88aa2a54c1694a1033093342b2e0d4005804cb"
+        },
+        "second": {
+          "recordId": "chemie-native20-jurisdiction-context-independent-b-25d6585a-5baf-4a2e-b37d-02acc67f565b.015",
+          "recordDigest": "sha256:5388a61264a76e016debce8221af718587042776c310dddd928abd3abb4b0752"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen aktuellen Reviews bestätigen die unveränderte Beschreibung, die tatsächlich betrachtete native Seite und die begrenzte Geltungskompatibilität. Eigene betreute Herstellung und Beobachtung bleiben erforderlich; vorgelegte Logs ersetzen sie nicht. Drei NaOH pro Fettmolekül und Aussalzen als Trennung bleiben korrekt, auch bei BW-Voraussetzungsverfügbarkeit. Das vollständige bisherige P-Profil bleibt erhalten. Diese Synthese stellt nur aktuelle D-/Seiten-/Kontextbindungen wieder her; sie behauptet keine neue Voll-P-/V-Prüfung, WholeSourceCoverage, Lernendenleistung oder menschliche Freigabe.",
+      "rationaleEn": "Both independent current reviews confirm the unchanged description, the actually inspected native page and bounded jurisdiction-context compatibility. Actual supervised production and observation remain required; supplied logs do not replace them. Three NaOH per fat molecule and salting out as separation remain correct with BW prerequisite availability. The existing whole P profile is retained. This synthesis restores only current D/page/context bindings; it asserts no new full P/V review, whole-source coverage, learner performance or human approval."
+    },
+    {
+      "decisionId": "chemie-current439-native20-actual-paired-context-synthesis-root-20261017-v1-decision-016",
+      "goalId": "6966df95-f125-5ecc-af8e-0442545d9f17",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:8b8e10c8986185b84c28ed8f2287a62e3f0fb894dd9701e83a02702df90969ab",
+      "pageFingerprint": "sha256:a4c978d456f85604b4f675b001ffab5eba88855445efb7ee993ebe9289cd9d64",
+      "goalReviewContextFingerprint": "sha256:0d196b3d1434253ef9499181e03094fbaa1a6c4107d05c33a33d41c66d462c44",
+      "finalText": {
+        "titleDe": "Micellenbildung deuten",
+        "titleEn": "Interpret micelle formation",
+        "descriptionDe": "Die lernende Person kann aus der amphiphilen Struktur von Seifen ihre Anordnung an Grenzflächen und in Micellen, ihre Emulgatorwirkung und die Verringerung der Oberflächenspannung von Wasser erklären.",
+        "descriptionEn": "The learner can use the amphiphilic structure of soaps to explain their arrangement at interfaces and in micelles, their emulsifying action, and the reduction of the surface tension of water."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-native20-jurisdiction-context-independent-a-20261016-v1.16",
+          "recordDigest": "sha256:a7f2f5e38fd57129d2c3291551213b5aac098f677bfa1000903773e717398060"
+        },
+        "second": {
+          "recordId": "chemie-native20-jurisdiction-context-independent-b-25d6585a-5baf-4a2e-b37d-02acc67f565b.016",
+          "recordDigest": "sha256:496bc0996e793ea03cad79a154c90a999c31610d69a88298ac4b5a520c81a588"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen aktuellen Reviews bestätigen die unveränderte Beschreibung, die tatsächlich betrachtete native Seite und die begrenzte Geltungskompatibilität. Amphiphile Orientierung erklärt Micelle und Grenzfläche; normale Micelle und emulgiertes Tröpfchen bleiben getrennt. Das inverse Modell belegt keine Stabilität, und BW-Erweiterung erzeugt keine neue Bildfreigabe. Das vollständige bisherige P-Profil bleibt erhalten. Diese Synthese stellt nur aktuelle D-/Seiten-/Kontextbindungen wieder her; sie behauptet keine neue Voll-P-/V-Prüfung, WholeSourceCoverage, Lernendenleistung oder menschliche Freigabe.",
+      "rationaleEn": "Both independent current reviews confirm the unchanged description, the actually inspected native page and bounded jurisdiction-context compatibility. Amphiphilic orientation explains micelles and interfaces while distinguishing normal micelles from emulsified droplets. An inverse sketch proves no stability, and BW availability creates no new image approval. The existing whole P profile is retained. This synthesis restores only current D/page/context bindings; it asserts no new full P/V review, whole-source coverage, learner performance or human approval."
+    },
+    {
+      "decisionId": "chemie-current439-native20-actual-paired-context-synthesis-root-20261017-v1-decision-017",
+      "goalId": "f71a2c0a-3a6a-5b23-9fb4-1b57cfb68528",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d8a7baad30f3064f86cd7b055a5adc71a74732ee26248813d91b5023027be3fa",
+      "pageFingerprint": "sha256:0056b56b87ca53b2acc6c3b933714b9eaa0205079bed714070cc4a71c15c58a4",
+      "goalReviewContextFingerprint": "sha256:4f26dddb69c177684df7ad802e1585929707e8fb8edd6f706d9ed90e21bc49ff",
+      "finalText": {
+        "titleDe": "Schmerzmittelwirkstoffe chemisch einordnen",
+        "titleEn": "Classify analgesic active ingredients chemically",
+        "descriptionDe": "Die lernende Person kann Zusammensetzung, Konsum und Anwendung rezeptfreier Schmerzmittel recherchieren, Wirkstoff-Moleküle wie Acetylsalicylsäure, Ibuprofen und Paracetamol anhand chemischer Strukturmerkmale einordnen und die Anwendung der Schmerzmittel anhand der recherchierten Informationen zur Chemie der Wirkstoffe bewerten.",
+        "descriptionEn": "The learner can research the composition, consumption, and use of over-the-counter analgesics, classify active ingredient molecules such as acetylsalicylic acid, ibuprofen, and paracetamol by chemical structural features, and evaluate the use of the analgesics using the researched information about the chemistry of their active ingredients."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-native20-jurisdiction-context-independent-a-20261016-v1.17",
+          "recordDigest": "sha256:14b9de64ac3ec26d8b9527716b0f76fbcc5b4c4508d4e8b0c0b02b6dad9251f7"
+        },
+        "second": {
+          "recordId": "chemie-native20-jurisdiction-context-independent-b-25d6585a-5baf-4a2e-b37d-02acc67f565b.017",
+          "recordDigest": "sha256:acf630def16e9ae48d4e452d2fcc7857ddd01c6967ab3eea82a661c1847e62e6"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen aktuellen Reviews bestätigen die unveränderte Beschreibung, die tatsächlich betrachtete native Seite und die begrenzte Geltungskompatibilität. ASS-/Ibuprofen-/Paracetamol-Strukturen, historische Nenner und Anwendungsgrenzen bleiben vollständig. Neue partielle BW/HB-Verfügbarkeit erhält SH-Optionalität und ist keine persönliche Behandlungs- oder aktuelle Prävalenzaussage. Das vollständige bisherige P-Profil bleibt erhalten. Diese Synthese stellt nur aktuelle D-/Seiten-/Kontextbindungen wieder her; sie behauptet keine neue Voll-P-/V-Prüfung, WholeSourceCoverage, Lernendenleistung oder menschliche Freigabe.",
+      "rationaleEn": "Both independent current reviews confirm the unchanged description, the actually inspected native page and bounded jurisdiction-context compatibility. ASS/ibuprofen/paracetamol structures, historical denominators and application limits remain complete. Partial BW/HB availability preserves SH optionality and implies no personal treatment advice or current prevalence claim. The existing whole P profile is retained. This synthesis restores only current D/page/context bindings; it asserts no new full P/V review, whole-source coverage, learner performance or human approval."
+    },
+    {
+      "decisionId": "chemie-current439-native20-actual-paired-context-synthesis-root-20261017-v1-decision-018",
+      "goalId": "f947cd04-952a-5a9d-9445-3ffc70e02c3c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:91ff858ec3b2ce6539b33fc7c9c2e3152398691edf57d8b37a877ef336ac97b4",
+      "pageFingerprint": "sha256:2e2767922d0a8d1231c6702ce1615c659d684abbcf4fe5de953b3afafb57ea9a",
+      "goalReviewContextFingerprint": "sha256:640cfc8b3ad610bf4454636cbb18b9ffd32a1e169e7c89ea74530621a472af63",
+      "finalText": {
+        "titleDe": "Polyadditionen analysieren (LK)",
+        "titleEn": "Analyze polyadditions (LK)",
+        "descriptionDe": "Die lernende Person kann die Bildung von Polyurethanen erläutern und Besonderheiten der Reaktionsführung erklären.",
+        "descriptionEn": "The learner can explain the formation of polyurethanes and particularities of the reaction control."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-native20-jurisdiction-context-independent-a-20261016-v1.18",
+          "recordDigest": "sha256:ab3732b322e1f5ced7265f24bf861953f95d3d3ba11fbb0daf7c2c2cf3f84f35"
+        },
+        "second": {
+          "recordId": "chemie-native20-jurisdiction-context-independent-b-25d6585a-5baf-4a2e-b37d-02acc67f565b.018",
+          "recordDigest": "sha256:9561e76bd7afe359278c31c88903a777560382708982a73f6b6a8cccdf110d03"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen aktuellen Reviews bestätigen die unveränderte Beschreibung, die tatsächlich betrachtete native Seite und die begrenzte Geltungskompatibilität. Trockene Urethanbildung und der getrennte Wasser-CO2-/Harnstoffpfad erhalten Äquivalent- und Funktionsgruppenlogik. Sechs partielle Länderbelege ändern den Q2-/LK-Anspruch nicht; Blasen beweisen keine Netzqualität. Das vollständige bisherige P-Profil bleibt erhalten. Diese Synthese stellt nur aktuelle D-/Seiten-/Kontextbindungen wieder her; sie behauptet keine neue Voll-P-/V-Prüfung, WholeSourceCoverage, Lernendenleistung oder menschliche Freigabe.",
+      "rationaleEn": "Both independent current reviews confirm the unchanged description, the actually inspected native page and bounded jurisdiction-context compatibility. Dry urethane formation and the separate water/CO2/urea pathway preserve equivalent and functional-group reasoning. Six partial jurisdiction references do not lower the advanced Q2 demand; bubbles prove no network quality. The existing whole P profile is retained. This synthesis restores only current D/page/context bindings; it asserts no new full P/V review, whole-source coverage, learner performance or human approval."
+    },
+    {
+      "decisionId": "chemie-current439-native20-actual-paired-context-synthesis-root-20261017-v1-decision-019",
+      "goalId": "0278a515-8990-5a1c-8a1b-a03382a144a3",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:fcd4aec9ae67a9c3c0f6e4b84c57a18f1192a1a9afe574184b9154e77357dc68",
+      "pageFingerprint": "sha256:c217a15a0eb3d756093cc53e8509b6773548081859188d97fe3513a5ad49a690",
+      "goalReviewContextFingerprint": "sha256:29a92571ce27aec77775bb093f5fa9373cac9e9c9dfa0e9877c39cfb1a25360e",
+      "finalText": {
+        "titleDe": "Biokunststoffe erläutern",
+        "titleEn": "Explain bioplastics",
+        "descriptionDe": "Die lernende Person kann Synthese und Eigenschaften von Polymilchsäure (PLA) beschreiben und Einsatzfelder nennen.",
+        "descriptionEn": "The learner can describe synthesis and properties of polylactic acid (PLA) and name fields of application."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-native20-jurisdiction-context-independent-a-20261016-v1.19",
+          "recordDigest": "sha256:898b1ab078937cd02f867b9cef7b4d6d159363db50db0f697672a9c122b9d3c7"
+        },
+        "second": {
+          "recordId": "chemie-native20-jurisdiction-context-independent-b-25d6585a-5baf-4a2e-b37d-02acc67f565b.019",
+          "recordDigest": "sha256:a3b09249d81bd6d15ddec5b2b6bbcf56bbdfcc99962e0d7a4782279b029beedf"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen aktuellen Reviews bestätigen die unveränderte Beschreibung, die tatsächlich betrachtete native Seite und die begrenzte Geltungskompatibilität. Milchsäurekondensation, Lactid-Ringöffnung und konkrete PLA-Einsatz-/Abbaubedingungen bleiben getrennt. Der BY-Entfall ändert keine GK-/LK-Kompetenz und überträgt industrielle Folienbefunde nicht auf beliebige Formteile. Das vollständige bisherige P-Profil bleibt erhalten. Diese Synthese stellt nur aktuelle D-/Seiten-/Kontextbindungen wieder her; sie behauptet keine neue Voll-P-/V-Prüfung, WholeSourceCoverage, Lernendenleistung oder menschliche Freigabe.",
+      "rationaleEn": "Both independent current reviews confirm the unchanged description, the actually inspected native page and bounded jurisdiction-context compatibility. Lactic-acid condensation, lactide ring opening and concrete PLA use/degradation conditions remain distinct. Removing BY changes no general/advanced competence and does not generalise industrial film evidence to every moulded item. The existing whole P profile is retained. This synthesis restores only current D/page/context bindings; it asserts no new full P/V review, whole-source coverage, learner performance or human approval."
+    },
+    {
+      "decisionId": "chemie-current439-native20-actual-paired-context-synthesis-root-20261017-v1-decision-020",
+      "goalId": "7f8c990a-c207-5b86-a60f-860af295c0a9",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:2769efa9c7aa3bc036242aac3f154ac1094e2b91041cb8a95b099a82314860ca",
+      "pageFingerprint": "sha256:9681921054cb449aaa057c00536682a354df4349970ae36f19374a1d005ae378",
+      "goalReviewContextFingerprint": "sha256:ed6b6174f83061a04775f6ca824ef2efc481e9e452d6e02c86943534ebb06c31",
+      "finalText": {
+        "titleDe": "Copolymere verstehen",
+        "titleEn": "Understand copolymers",
+        "descriptionDe": "Die lernende Person kann Aufbau und Eigenschaften einfacher Copolymere erläutern und Vorteile gegenüber Homopolymeren diskutieren.",
+        "descriptionEn": "The learner can explain structure and properties of simple copolymers and discuss advantages over homopolymers."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-native20-jurisdiction-context-independent-a-20261016-v1.20",
+          "recordDigest": "sha256:2912a1166f88507680c2e5ec55e8ab449c07b50a6893a1776876756fa23921c5"
+        },
+        "second": {
+          "recordId": "chemie-native20-jurisdiction-context-independent-b-25d6585a-5baf-4a2e-b37d-02acc67f565b.020",
+          "recordDigest": "sha256:cd1ceee985a524377b247d422e339497fcdc60686ea0d49aa8b39851ecb3147c"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen aktuellen Reviews bestätigen die unveränderte Beschreibung, die tatsächlich betrachtete native Seite und die begrenzte Geltungskompatibilität. Kovalente Copolymerarchitektur unterscheidet sich von einem Blend; gleiche Monomeranteile sind keine gleiche Morphologie. Neue 100-Grad-Belastung erfordert Daten, und die engere Geltung garantiert keine universelle Materialverbesserung. Das vollständige bisherige P-Profil bleibt erhalten. Diese Synthese stellt nur aktuelle D-/Seiten-/Kontextbindungen wieder her; sie behauptet keine neue Voll-P-/V-Prüfung, WholeSourceCoverage, Lernendenleistung oder menschliche Freigabe.",
+      "rationaleEn": "Both independent current reviews confirm the unchanged description, the actually inspected native page and bounded jurisdiction-context compatibility. Covalent copolymer architecture differs from a blend; equal monomer fractions do not imply equal morphology. A new 100-degree load needs data, and narrower availability guarantees no universal improvement. The existing whole P profile is retained. This synthesis restores only current D/page/context bindings; it asserts no new full P/V review, whole-source coverage, learner performance or human approval."
+    }
+  ],
+  "manifestFingerprint": "sha256:d4ea9aa05f5362a84d42fda2cb1de8f9f2ed25947d47401c3ece5b839fba2d3a"
+}

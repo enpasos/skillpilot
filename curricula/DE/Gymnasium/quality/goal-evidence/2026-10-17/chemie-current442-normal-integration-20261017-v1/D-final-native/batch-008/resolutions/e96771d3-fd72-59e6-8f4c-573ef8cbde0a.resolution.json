@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-008-v1-resolution-e96771d3-fd72-59e6-8f4c-573ef8cbde0a",
+  "goal": {
+    "goalId": "e96771d3-fd72-59e6-8f4c-573ef8cbde0a",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:834fe95ef2458643ad76c1aeebe106fca53a6a1b6a1d99df2e9387aa0715dfc8",
+    "pageFingerprint": "sha256:199d6dbfa56464c919127ca96f0f0146bf57b112b7962e8fa3087a48a7261382",
+    "goalReviewContextFingerprint": "sha256:b0f612c414fe3b8ce65fae06abe471568b8715bc9dba89fbee92660c6c86fbe5",
+    "finalText": {
+      "titleDe": "Aromatische Verbindungen in Alltag, Industrie und Gesundheit bewerten",
+      "titleEn": "Evaluate aromatic compounds in everyday life, industry, and health",
+      "descriptionDe": "Die lernende Person kann die Bedeutung aromatischer Verbindungen in Alltag und Industrie sowie damit verbundene Gesundheitsprobleme fachlich einordnen und kriteriengeleitet bewerten.",
+      "descriptionEn": "The learner can classify and evaluate the significance of aromatic compounds in everyday life and industry as well as associated health issues using criteria."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-008-v1-a",
+      "campaignDigest": "sha256:bfc1b7bc3538c4dd17f4f184f0a3c6191751a8124732d1299f1f3201d5b9fa22",
+      "roundId": "chemie-final-current-context-d-008-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-008-v1-independent-a",
+      "reviewInputFingerprint": "sha256:3ac18dc51676cde29ff443c24a5b4a66fe4284e778b917d2a635b9e71961d3c3",
+      "goalReviewContextFingerprint": "sha256:b0f612c414fe3b8ce65fae06abe471568b8715bc9dba89fbee92660c6c86fbe5",
+      "batchId": "chemie-final-current-context-d-008-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch008-20261018",
+      "runManifestDigest": "sha256:1c83d9e9f75802490a373fc32cd5155852662ec2adeb44332b0e4ad3794a53f2",
+      "resultsDigest": "sha256:717572e69fa651d74b4efe4307f0c0f1eb2190475b1f5e1e8a20cdd410f01fcc",
+      "recordId": "codex-reviewer-a-final163-batch008-20261018.007",
+      "recordDigest": "sha256:e767e80a42928e40a2a70317e6eb29e2e9be07595534b85325bcbd67808ee7d2"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-008-v1-b",
+      "campaignDigest": "sha256:8a870c0b67e894644fc8a8bc5a6e566b1b80eb253611ea8e45a3aec8e4e7ce2d",
+      "roundId": "chemie-final-current-context-d-008-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-008-v1-independent-b",
+      "reviewInputFingerprint": "sha256:3ac18dc51676cde29ff443c24a5b4a66fe4284e778b917d2a635b9e71961d3c3",
+      "goalReviewContextFingerprint": "sha256:b0f612c414fe3b8ce65fae06abe471568b8715bc9dba89fbee92660c6c86fbe5",
+      "batchId": "chemie-final-current-context-d-008-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-008-20261018",
+      "runManifestDigest": "sha256:aae64cd2428db704ad4ac245dcca064a12b9d0dc413b71f7a83725b0f7ddfec2",
+      "resultsDigest": "sha256:89514977b458bdd7656b1bb59d40d99ab77b3c500d848c381a3f4502abbe5fdc",
+      "recordId": "chemie-final163-native-b-008-20261018:e96771d3-fd72-59e6-8f4c-573ef8cbde0a",
+      "recordDigest": "sha256:e309f0e3a6386e4a509c7d229e10e506cdc70da981a04714143a6add57829953"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:75131dbe4e2143b9a067c805d573de1f211b44cd088aeee05809347756b969ad"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-008-20261018-v1",
+    "manifestDigest": "sha256:5d8be7c440ce4b012a72c9f373aceb76f40ccdfbc79a0e00151adb203a96abb4",
+    "manifestFingerprint": "sha256:6064281f64c256108d7f70c1739582deaed451dc4e86366a0df71edb5d14bd13",
+    "decisionId": "chemie-final163-paired-D-only-008-20261018-v1-decision-007"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-008-20261018-v1-decision-007",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:46:21.803Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch008-20261018.007): Die bilinguale D-Beschreibung verbindet Bedeutung und Gesundheitsbewertung passend mit Struktur- und Bewertungsvoraussetzungen. Das vollständige P behandelt den bereitgestellten IARC-Gefährdungsstatus nicht als Dosisrisiko und gibt keine medizinische Empfehlung. Geschlossene Prozessführung wird nur bedingt günstig bewertet, die geeignete Alternative begründet Substitution im Modellfall. Fehlende Daten werden weder zu Sicherheit noch zu pauschaler Klassengefahr umgedeutet. B (chemie-final163-native-b-008-20261018:e96771d3-fd72-59e6-8f4c-573ef8cbde0a): Der LK-Text ist als kriteriengeleitete Stoffanwendungsbewertung nach Benzolstruktur und allgemeinen Bewertungskompetenzen klar. Das gesamte P trennt vorgegebenen Primärbeleg von erfundenen Entscheidungsdaten und Gefahrenstatus von Erkrankungswahrscheinlichkeit. Der neue Stoffvergleich fordert eine eigenständige bedingte Einordnung und lässt Datenlücken offen; daraus wird weder eine individuelle Gesundheitsberatung noch eine Betriebsfreigabe gemacht.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch008-20261018.007; chemie-final163-native-b-008-20261018:e96771d3-fd72-59e6-8f4c-573ef8cbde0a). Their current English understanding evidence is retained: A: An aromatic structure alone determines no uniform hazard; chemical identity, exposure, benefit and available alternatives support a bounded judgment. B: An aromatic ring does not establish uniform hazard; a use judgment combines specific identity, function, hazard evidence and actual exposure. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Aromatische Struktur allein bestimmt keine einheitliche Gefährlichkeit; Stoffidentität, Exposition, Nutzen und verfügbare Alternativen tragen ein begrenztes Urteil.",
+      "essentialUnderstandingEn": "An aromatic structure alone determines no uniform hazard; chemical identity, exposure, benefit and available alternatives support a bounded judgment.",
+      "observablePerformanceDe": "Trennt beim gelieferten Benzolfall belegte Gefährdung von unbekannter Erkrankungswahrscheinlichkeit und bewertet geschlossenen Rohstoffprozess sowie offene Reinigung anhand konkreter Kriterien.",
+      "observablePerformanceEn": "Separates supplied benzene hazard evidence from unknown disease probability and evaluates closed feedstock processing and open cleaning using concrete criteria.",
+      "transferExpectationDe": "Verwirft bei frischen unbekannten Aromaten die Übertragung aller Benzoldaten, unterscheidet Dampf- und Staubexposition und nennt fehlende toxikologische beziehungsweise Expositionsdaten.",
+      "transferExpectationEn": "Rejects transferring all benzene findings to fresh unknown aromatics, distinguishes vapour and dust exposure and identifies missing toxicological or exposure data."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-f2301e9da2733b5dc61df8bbcf995b667676a6d196c04386599d708526dab69e",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:58b15119a8dcebbf64be73d275350ae97cef3d12dfdecd632d80fdae1465ec80"
+}

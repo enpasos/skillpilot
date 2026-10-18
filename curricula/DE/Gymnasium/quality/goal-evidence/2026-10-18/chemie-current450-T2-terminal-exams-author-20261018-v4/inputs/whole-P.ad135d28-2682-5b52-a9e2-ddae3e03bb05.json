@@ -1,0 +1,78 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+  "schemaVersion": 2,
+  "reviewId": "canonical-chemistry-current447-seventeen-paired-informed-positive-native-20261018-v1",
+  "goalFingerprintRuleVersion": "goal-evidence-v1",
+  "profileRuleVersion": "positive-understanding-evidence-v2",
+  "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+  "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+  "goalId": "ad135d28-2682-5b52-a9e2-ddae3e03bb05",
+  "goalFingerprint": "sha256:a140e4846ce878a2937a5330a96214bd3dab5c2326715d7d6c7a39158e962316",
+  "reviewInputFingerprint": "sha256:ebf0cb42c0940109bc208aa620e906730b4278aa877ba1d0b47475af6853af6d",
+  "profileFingerprint": "sha256:3c73c463ee878a0cb51eff166ec9eb789d7fdd79f21e75cbabcf2ee69934d808",
+  "status": "needs_human_review",
+  "reviewAuthority": "ai_candidate",
+  "reviewedAt": "2026-10-17T23:22:49.296Z",
+  "reviewer": "codex-technical-native-serialization-from-actual-paired-informed-science",
+  "reason": "Technical native serialization from two actually sealed informed scientific judgments; no new reviewer vote. A: accept_narrow_author_candidate | B: Ein zusammenhängendes formales Konfigurationsmodell: beim Hinzufügen des oberen Stereozentrums bleibt das untere Muster erhalten. GlucoseRLRR/MannoseLLRR teilenLRR, unterscheiden sich anC2; GalactoseRLLR folgtLLR, XyloseRLR folgtLR. D/L folgt dem letzten relevanten Stereozentrum, weder allenOH noch Drehvorzeichen. Der selbst gezeichnete beschriftete Stammbaum und frische Musterzuordnung sind prüfbar. Keine Biosynthese, industrielle Nutzung oder Glucose/Fructose-Ringpflicht wird angehängt. Exact source pins and pointers: PROVENANCE.actual-paired-science.json#/ad135d28-2682-5b52-a9e2-ddae3e03bb05/P. Full paired source pins/pointers: PROVENANCE.actual-paired-science.json /goals/ad135d28-2682-5b52-a9e2-ddae3e03bb05/P.",
+  "evidenceLevel": "E0",
+  "maximumClaimScope": "G0",
+  "reviewRunIds": [],
+  "dissent": [],
+  "profile": {
+    "archetype": "representation",
+    "expectations": [
+      {
+        "id": "formal-pattern-and-configuration",
+        "essentialUnderstandingDe": "Glucose RLRR und Mannose LLRR haben den gemeinsamen unteren Rest LRR, also formal Arabinose als Pentose-Elternmuster. Sie unterscheiden sich nur am neu eingefügten C2 und sind C2-Epimere, keine Enantiomere und kein alpha/beta-Anomerenpaar. Beide bleiben D, weil das unterste OH rechts steht. R/L bezeichnet hier nur rechts/links, nicht CIP. Der Baum ordnet Strukturen; er beschreibt keinen tatsächlichen Syntheseweg.",
+        "essentialUnderstandingEn": "Glucose RLRR and mannose LLRR share lower pattern LRR, formally arabinose as pentose parent. They differ only at newly inserted C2 and are C2 epimers, neither enantiomers nor an alpha/beta anomer pair. Both are D because their lowest OH is right. R/L here means right/left, not CIP. The tree organises structures, not an actual biosynthetic route.",
+        "observablePerformanceDe": "Nutze die vollständig gegebenen OH-Muster und die erklärte formale Erweiterungsregel, um einen beschrifteten Aldosenstammbaum zu konstruieren. Verbinde D-Glucose und D-Mannose mit dem gemeinsamen Pentosemuster. Nummeriere die betreffenden C-Atome, bestimme ihren einzigen Konfigurationsunterschied und ordne D/L anhand des untersten Stereozentrums zu. Erläutere, weshalb der formale Elternpfeil weder eine organismische Biosynthese noch eine Drehungsrichtung behauptet.",
+        "observablePerformanceEn": "Use the complete supplied OH patterns and formal-extension rule to construct a labelled aldose family tree. Link D-glucose and D-mannose to their common pentose pattern. Number the relevant carbons, identify their sole configurational difference and assign D/L from the lowest stereocentre. Explain why a formal parent arrow establishes neither organismic biosynthesis nor optical-rotation sign."
+      },
+      {
+        "id": "new-pattern-transfer-and-limit",
+        "essentialUnderstandingDe": "Galactose passt formal unter Lyxose LLR, Xylose unter Threose LR. In beiden entscheidet das unterste OH über D. Der obere neue Rest darf nicht mit dem erhaltenen unteren Muster verwechselt werden; keine Biosynthese- oder Drehvorzeichenfolgerung.",
+        "essentialUnderstandingEn": "Galactose formally branches from lyxose LLR and xylose from threose LR. Their lowest OH determines D. Distinguish the new upper centre from the retained lower pattern; no biosynthesis or optical-sign inference.",
+        "observablePerformanceDe": "Ordne jetzt D-Galactose RLLR und D-Xylose RLR unabhängig ein. Widersprich „D bedeutet jedes OH rechts“ und „Stammbaum bedeutet Fotosynthesekette“. Kein neuer Ringschluss wird verlangt.",
+        "observablePerformanceEn": "Now independently place D-galactose RLLR and D-xylose RLR. Refute “D means every OH is right” and “the tree is a photosynthesis sequence”. No additional ring closure is required."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "formal-pattern-and-configuration",
+        "new-pattern-transfer-and-limit"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "new-aldose-pattern",
+        "textDe": "Neue OH-Folge bei erhaltener formaler Regel; D/L, Epimerie und Biosynthese unterscheiden.",
+        "textEn": "New OH pattern under the same formal rule; distinguish D/L, epimerism and biosynthesis."
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "given-aldose-tree-initial",
+        "taskDemandDe": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-five-P-scope-operator-remediation-author-20261018-v1/AUTHOR.complete-DE-EN-material-routes.pending.json#/materials/1. Nutze die vollständig gegebenen OH-Muster und die erklärte formale Erweiterungsregel, um einen beschrifteten Aldosenstammbaum zu konstruieren. Verbinde D-Glucose und D-Mannose mit dem gemeinsamen Pentosemuster. Nummeriere die betreffenden C-Atome, bestimme ihren einzigen Konfigurationsunterschied und ordne D/L anhand des untersten Stereozentrums zu. Erläutere, weshalb der formale Elternpfeil weder eine organismische Biosynthese noch eine Drehungsrichtung behauptet.",
+        "taskDemandEn": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-five-P-scope-operator-remediation-author-20261018-v1/AUTHOR.complete-DE-EN-material-routes.pending.json#/materials/1. Use the complete supplied OH patterns and formal-extension rule to construct a labelled aldose family tree. Link D-glucose and D-mannose to their common pentose pattern. Number the relevant carbons, identify their sole configurational difference and assign D/L from the lowest stereocentre. Explain why a formal parent arrow establishes neither organismic biosynthesis nor optical-rotation sign.",
+        "expectedPerformanceDe": "Glucose RLRR und Mannose LLRR haben den gemeinsamen unteren Rest LRR, also formal Arabinose als Pentose-Elternmuster. Sie unterscheiden sich nur am neu eingefügten C2 und sind C2-Epimere, keine Enantiomere und kein alpha/beta-Anomerenpaar. Beide bleiben D, weil das unterste OH rechts steht. R/L bezeichnet hier nur rechts/links, nicht CIP. Der Baum ordnet Strukturen; er beschreibt keinen tatsächlichen Syntheseweg.",
+        "expectedPerformanceEn": "Glucose RLRR and mannose LLRR share lower pattern LRR, formally arabinose as pentose parent. They differ only at newly inserted C2 and are C2 epimers, neither enantiomers nor an alpha/beta anomer pair. Both are D because their lowest OH is right. R/L here means right/left, not CIP. The tree organises structures, not an actual biosynthetic route.",
+        "understandingFocusDe": "Ein zusammenhängendes formales Konfigurationsmodell.",
+        "understandingFocusEn": "One connected formal configurational model."
+      },
+      {
+        "id": "given-aldose-tree-fresh-transfer",
+        "taskDemandDe": "Ordne jetzt D-Galactose RLLR und D-Xylose RLR unabhängig ein. Widersprich „D bedeutet jedes OH rechts“ und „Stammbaum bedeutet Fotosynthesekette“. Kein neuer Ringschluss wird verlangt.",
+        "taskDemandEn": "Now independently place D-galactose RLLR and D-xylose RLR. Refute “D means every OH is right” and “the tree is a photosynthesis sequence”. No additional ring closure is required.",
+        "expectedPerformanceDe": "Galactose passt formal unter Lyxose LLR, Xylose unter Threose LR. In beiden entscheidet das unterste OH über D. Der obere neue Rest darf nicht mit dem erhaltenen unteren Muster verwechselt werden; keine Biosynthese- oder Drehvorzeichenfolgerung.",
+        "expectedPerformanceEn": "Galactose formally branches from lyxose LLR and xylose from threose LR. Their lowest OH determines D. Distinguish the new upper centre from the retained lower pattern; no biosynthesis or optical-sign inference.",
+        "understandingFocusDe": "Neue Muster unabhängig aus der Erweiterungsregel zuordnen.",
+        "understandingFocusEn": "Independently assign new patterns using the extension rule."
+      }
+    ]
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+  "schemaVersion": 2,
+  "reviewId": "canonical-chemistry-positive-evidence-b001-sek1-reactions-energy-current-7-v2",
+  "goalFingerprintRuleVersion": "goal-evidence-v1",
+  "profileRuleVersion": "positive-understanding-evidence-v2",
+  "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+  "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+  "goalId": "945d69d5-92a7-5195-8f78-4e56f8e7b633",
+  "goalFingerprint": "sha256:a8b53c0194a8877886e5ecda2a87ad511747442ce3eb497c6a8b401efa2faecd",
+  "reviewInputFingerprint": "sha256:e1b43e596aba960e0067a6b79dee2ba915e49a926fc98ad1acb72e4c746e9f41",
+  "profileFingerprint": "sha256:1764875d35e9f2c193ff44fbd059a2e4f2db63a3856405c6afe29b388e45f37d",
+  "status": "needs_human_review",
+  "reviewAuthority": "ai_candidate",
+  "reviewedAt": "2026-10-17T21:23:41.999975+00:00",
+  "reviewer": "Codex B technical current-input serialization; underlying scientific authors and reviewers remain recorded in the P442 selection/provenance",
+  "reason": "Das Profil trennt die Startbarriere vom Energieunterschied der Reaktion. Es prüft einen Katalysator in exothermem und endothermem Kontext sowie den Unterschied zwischen Erwärmen und alternativem Reaktionsweg; beide Fälle funktionieren ohne die vorhandene Grafik.",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "reviewRunIds": [],
+  "dissent": [],
+  "profile": {
+    "archetype": "concept",
+    "expectations": [
+      {
+        "id": "activation-barrier-versus-reaction-energy",
+        "essentialUnderstandingDe": "Aktivierungsenergie ist die zu überwindende Barriere vom Eduktzustand zum reaktionsfähigen Übergangsbereich. Endotherm beschreibt dagegen eine höhere Produkt- als Eduktenergie. Ein Katalysator senkt die Barriere über einen anderen Weg, nicht die Differenz der Anfangs- und Endniveaus.",
+        "essentialUnderstandingEn": "Activation energy is the barrier from reactants toward the reactive transition region. Endothermic instead means that products have a higher energy level than reactants. A catalyst lowers the barrier by another path, not the difference between initial and final levels.",
+        "observablePerformanceDe": "Die lernende Person vergleicht Energieprofile, markiert Barriere und Reaktionsenergie getrennt und erklärt, weshalb Erwärmen und Katalysieren unterschiedliche Eingriffe sind.",
+        "observablePerformanceEn": "The learner compares energy profiles, marks barrier and reaction energy separately, and explains why heating and catalysis are different interventions."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "activation-barrier-versus-reaction-energy"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "thermic-direction",
+        "textDe": "Exotherme und endotherme Produktniveaus werden variiert.",
+        "textEn": "Exothermic and endothermic product levels are varied."
+      },
+      {
+        "id": "intervention",
+        "textDe": "Katalysator und Wärmezufuhr werden als unterschiedliche Eingriffe betrachtet.",
+        "textEn": "Catalyst and heat supply are considered as different interventions."
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "exothermic-catalyst-comparison",
+        "taskDemandDe": "Für eine neue exotherme Reaktion liegen zwei qualitative Profile mit denselben Edukt- und Produktniveaus, aber verschiedenen Gipfelhöhen vor. Erkläre, welches Profil einen katalysierten Weg darstellen kann und warum beide exotherm bleiben.",
+        "taskDemandEn": "For a fresh exothermic reaction, two qualitative profiles have the same reactant and product levels but different peak heights. Explain which can represent a catalyzed path and why both remain exothermic.",
+        "expectedPerformanceDe": "Die lernende Person ordnet den niedrigeren Gipfel dem katalysierten Weg zu, misst die Aktivierungsbarriere vom Eduktniveau und erklärt, dass die unveränderte niedrigere Produktlage dieselbe exotherme Reaktionsenergie bedeutet.",
+        "expectedPerformanceEn": "The learner assigns the lower peak to the catalyzed path, measures the activation barrier from the reactant level, and explains that unchanged lower products mean the same exothermic reaction energy.",
+        "understandingFocusDe": "Barriere und Reaktionsenergie sind verschiedene Profilmerkmale.",
+        "understandingFocusEn": "Barrier and reaction energy are different profile features."
+      },
+      {
+        "id": "fresh-endothermic-heating-versus-catalyst",
+        "taskDemandDe": "Eine unabhängig beschriebene endotherme Reaktion startet bei 20 °C langsam. Zwei Vorschläge lauten: erwärmen oder einen passenden Katalysator verwenden. Erkläre mit einem qualitativen Profil, welche Barriereänderung nur der Katalysator bewirkt und warum die Reaktion in beiden Fällen endotherm bleibt.",
+        "taskDemandEn": "An independently described endothermic reaction is slow at 20 °C. Two proposals are heating it or using a suitable catalyst. Use a qualitative profile to explain which barrier change only the catalyst causes and why the reaction stays endothermic in both cases.",
+        "expectedPerformanceDe": "Die lernende Person hält das Produktniveau über dem Eduktniveau fest, beschreibt Erwärmen als zusätzliche verfügbare thermische Energie und den Katalysator als alternativen Weg mit niedrigerer Barriere. Sie setzt beides nicht mit einer geänderten Reaktionsenergie gleich.",
+        "expectedPerformanceEn": "The learner keeps products above reactants, describes heating as providing more thermal energy and the catalyst as an alternative lower-barrier path, and does not equate either with changing reaction energy.",
+        "understandingFocusDe": "Kinetische Zugänglichkeit und energetische Bilanz werden getrennt.",
+        "understandingFocusEn": "Kinetic accessibility and energy balance are kept separate."
+      }
+    ]
+  }
+}

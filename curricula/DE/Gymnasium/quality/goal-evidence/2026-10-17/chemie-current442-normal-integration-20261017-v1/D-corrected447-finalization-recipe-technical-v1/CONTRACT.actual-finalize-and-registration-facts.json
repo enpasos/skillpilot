@@ -1,0 +1,94 @@
+{
+  "role": "Read-only contract facts before either fresh D result was opened",
+  "stockSourcePins": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/D-final-native-adapter/native-d-final-context-adapter.mjs",
+      "sha256": "050434ca38bb73d27f1daf4ace2c0d3326f810dff65c53e3f685ff83695de6c0",
+      "bytes": 12215
+    },
+    {
+      "path": "app/scripts/materializeGoalDescriptionRolloutSynthesisManifest.ts",
+      "sha256": "85f7cd520d172e4619bfbc3224a64358b30fbb5a524c9a8bef500fe6cc2f5404",
+      "bytes": 14700
+    },
+    {
+      "path": "app/scripts/materializeGoalDescriptionRolloutResolutions.ts",
+      "sha256": "02b70b61d59542869626caedfa875c4b291c6c9c741d570a982ac82c3b0e99cc",
+      "bytes": 12440
+    },
+    {
+      "path": "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+      "sha256": "eff84dcf0d823c15b0827cb898b30d44f29c7ee219b67b4d2505b134536529cf",
+      "bytes": 64228
+    },
+    {
+      "path": "app/scripts/validateGoalDescriptionRolloutSynthesisDecisionManifest.ts",
+      "sha256": "8c5d600dc4453068bc50cc23fd4b6e635a227e7c4fa39294440af9feb5e23079",
+      "bytes": 16944
+    },
+    {
+      "path": "app/scripts/reportDeepUnderstandingRollout.ts",
+      "sha256": "a13dff507b0df8e3d78aea16002300ed283ba943a5da184380cc53c818af8e80",
+      "bytes": 83166
+    },
+    {
+      "path": "tmp/chemie442_integrate_actual_D159.mts",
+      "sha256": "1279f8e579f74ce9b2da894e9e6da26e7850500728b915ff1bab68e7a417752c",
+      "bytes": 6282
+    }
+  ],
+  "freshReviewerJudgmentsRead": false,
+  "commands": {
+    "validateRounds": "native-d-final-context-adapter.mjs --final-plan <actual-receipt-pinned-plan> --phase validate-rounds --execute",
+    "finalize": "native-d-final-context-adapter.mjs --final-plan <actual-receipt-and-root-synthesis-pinned-plan> --phase finalize --execute",
+    "ownership": "native-d-final-context-adapter.mjs --final-plan <same-plan> --phase ownership-plan --execute"
+  },
+  "actualReviewerReceiptRequirements": {
+    "perBatch": 2,
+    "totalForTwoBatches": 4,
+    "requiredFields": [
+      "reviewerId",
+      "reviewMode=stock_blind_final_input_first_pass",
+      "finalInputActuallyRead=true",
+      "peerResultsReadBeforeOwnSeal=false",
+      "nativeRun exact pin",
+      "nativeRecords exact pin"
+    ],
+    "runRequirements": [
+      "status=completed",
+      "blindToOtherRuns=true"
+    ],
+    "distinctReviewerIdsPerBatch": true,
+    "realSealsRequiredBeforeReadingJudgments": true
+  },
+  "synthesisAuthoringContract": {
+    "location": "Inside the exact batch-001 or batch-002 standalone directory",
+    "schemaVersion": 1,
+    "requiredFields": [
+      "manifestId",
+      "synthesizedBy",
+      "decisions"
+    ],
+    "decisionFields": [
+      "goalId",
+      "evidenceRound=first|second",
+      "rationaleDe",
+      "rationaleEn",
+      "optional resolutionDecision",
+      "optional exact revisionDissent"
+    ],
+    "ordering": "Ordered decisions plus ordered explicit deferredGoals must partition configured goalIds exactly",
+    "keepNotPrepopulated": true,
+    "sourceDecisionRules": "Two actual current keep records; or keep_current with exactly one actual current keep and one actual current revise plus exact rejected-revision dissent and actual substantive synthesis. block/split/unresolved revise cannot silently complete."
+  },
+  "adapterOwnershipBoundary": "ownership-plan currently requires all configured goals strictDescriptionComplete. If any actual deferral occurs, use stock partial finalize and actual index rows with the established D159 guarded registration pattern; never force a completion or weaken that assertion.",
+  "registrationHelperReuse": "tmp/chemie442_integrate_actual_D159.mts is a prior guarded implementation reference only. It hardcodes442/159 and old paths, so cannot be run unchanged. The smallest later edit uses447/the actual completed row count/new progress and two index pins; all existing preservation assertions remain.",
+  "normalRegistryAllowedFieldsOnly": [
+    "chemie.resolutionIndexPaths append exact new complete indexes",
+    "chemie.resolutionSupersessions append exact current-terminal to replacement edges"
+  ],
+  "laterCheckCLI": "reportDeepUnderstandingRollout.ts --config=<config> --mode=check --format=json; it has no --subject filter. Root owns timing of any later full central check.",
+  "existingAdapterAndStockScriptsNeedChanges": false,
+  "normalWrites": false,
+  "newScientificDecisions": 0
+}

@@ -1,0 +1,30 @@
+import fs from 'node:fs';
+import crypto from 'node:crypto';
+import path from 'node:path';
+import {collectCompositionProjectionRoleGoalIds} from '/home/enpasos/projects/skillpilot/app/src/utils/authoring/compositionViewAuthoring.ts';
+const base='curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-five-description-two-duty-split-author-20261017-v1';
+const out=path.dirname(process.argv[1]);
+const c=JSON.parse(fs.readFileSync('curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json','utf8'));
+const a=JSON.parse(fs.readFileSync(base+'/AUTHOR.five-current-remediations-and-two-narrow-duty-candidates.pending.json','utf8'));
+const s=JSON.parse(fs.readFileSync(base+'/SCOPE.two-duty-partitions-and-core-retentions.pending.json','utf8'));
+const g=new Map(c.goals.map((x:any)=>[x.id,x]));
+const next=new Map(c.goals.map((x:any)=>[x.id,structuredClone(x)]));
+a.newCandidateGoals.forEach((x:any)=>next.set(x.goalId,structuredClone(x.afterGoal)));
+s.canonicalPlacementProposals.forEach((x:any)=>{ const p:any=next.get(x.parentGoalId);p.contains.splice(p.contains.indexOf(x.insertAfterGoalId)+1,0,x.newChildGoalId);});
+const parentIds=new Set(c.goals.flatMap((x:any)=>x.contains??[]));
+const root=c.goals.find((x:any)=>x.id===c.rootGoalId)||c.goals.find((x:any)=>!parentIds.has(x.id));
+const roots=new Map([[c.landscapeId,root.id]]);
+const ids=[...a.records.map((x:any)=>x.goalId),...a.newCandidateGoals.map((x:any)=>x.goalId)];
+const rows:any[]=[];
+for(const file of fs.readdirSync('curricula/DE/Gymnasium/composition-views/chemie').filter(x=>x.endsWith('.view.json')).sort()){
+ const p='curricula/DE/Gymnasium/composition-views/chemie/'+file;
+ const bytes=fs.readFileSync(p);const v=JSON.parse(bytes.toString());
+ const role=collectCompositionProjectionRoleGoalIds(v.rootNodes,g as any,roots);
+ const vNext=structuredClone(v);
+ s.rows.filter((r:any)=>r.viewId===v.viewId).forEach((r:any)=>vNext.rootNodes.push({kind:'goalEntry',goalId:r.separateDutyGoalId,projectionRole:'target'}));
+ const shadow=collectCompositionProjectionRoleGoalIds(vNext.rootNodes,next as any,roots);
+ const getRole=(r:any,id:string)=>r.targetGoalIds.has(id)?'target':r.prerequisiteOnlyGoalIds.has(id)?'prerequisiteOnly':'absent';
+ rows.push({viewId:v.viewId,scope:v.scope,pin:{path:p,sha256:crypto.createHash('sha256').update(bytes).digest('hex'),bytes:bytes.length},current:Object.fromEntries(ids.map((id:string)=>[id,getRole(role,id)])),shadowAfterListedPlacements:Object.fromEntries(ids.map((id:string)=>[id,getRole(shadow,id)]))});
+}
+const report={artifactType:'independent-readonly-stock-role-collector-and-explicit-scope-plan-simulation',stockFunction:'collectCompositionProjectionRoleGoalIds',viewCount:rows.length,scopeFilteringOrRuntimeProjectionClaim:false,simulationBoundary:'In-memory canonical child insertions and explicit target entries at only the listed coordinates; no normal writes or duplicate-tree/coverage/native acceptance claim.',rows,counts: Object.fromEntries(ids.map((id:string)=>[id,{currentTarget:rows.filter(r=>r.current[id]==='target').length,shadowTarget:rows.filter(r=>r.shadowAfterListedPlacements[id]==='target').length}]))};
+fs.writeFileSync(out+'/CHECK.actual-41-view-roles-and-proposed-coordinates.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({viewCount:report.viewCount,counts:report.counts,scopeFilteringOrRuntimeProjectionClaim:false}));

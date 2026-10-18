@@ -1,0 +1,139 @@
+{
+  "id": "479e4194-b5a8-56a1-b95a-829a3057cf25",
+  "shortKey": "canonical_chemistry_T3_assessment_479e4194",
+  "title": "Prüfung: Boltzmann/Statistik",
+  "titleEn": "Assessment: Boltzmann/Statistics",
+  "description": "Die lernende Person kann die vollständig bereitgestellten Modellfälle selbstständig auswerten, fachlich begründen und die geänderten Bedingungen mit ihren Aussagegrenzen beurteilen.",
+  "descriptionEn": "The learner can independently analyse the complete supplied model cases, justify scientific reasoning and evaluate changed conditions within their stated limits.",
+  "type": "atomic",
+  "weight": 1,
+  "core": false,
+  "tags": [
+    "LK",
+    "Practice",
+    "Assessment",
+    "SekII",
+    "canonical"
+  ],
+  "contains": [],
+  "requires": [
+    "d4720a9a-65e2-5661-aaaa-c393d144419a"
+  ],
+  "applicability": {
+    "jurisdiction": [
+      "DE-BY",
+      "DE-HB",
+      "DE-HE",
+      "DE-HH",
+      "DE-MV",
+      "DE-RP",
+      "DE-SH",
+      "DE-SL",
+      "DE-SN",
+      "DE-ST",
+      "DE-TH"
+    ]
+  },
+  "phase": "Q4",
+  "dimensionTags": {
+    "framework": "canonical-gymnasium-chemistry",
+    "demandLevel": "AB3",
+    "processCompetencies": [
+      "PK2_MODELLIEREN",
+      "PK3_MATHEMATISIEREN"
+    ],
+    "guidingIdeas": [
+      "BC_ENERGIE",
+      "BC_REAKTION"
+    ],
+    "phase": "Q4",
+    "area": "Übungen",
+    "topicCode": "CANONICAL.CHEMISTRY.T3.479E4194"
+  },
+  "extendedData": {
+    "applicabilityFromRequires": true,
+    "applicabilityMappingInheritance": "boundary",
+    "semanticKindProposal": "practiceAssessment",
+    "authorProposal": {
+      "status": "INACTIVE_DRAFT_PENDING_FOREIGN_CONTENT_INTERFACE_REVIEWS",
+      "package": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-T3-terminal-exams-author-20261018-v2",
+      "familyId": "T3-1",
+      "scopeVariant": "single-current-scope",
+      "nativeCurrentProfilesAreReusedNotReapproved": true,
+      "newOrdinaryGoals": 0,
+      "practicalExecutionRequired": false,
+      "performanceStatus": "proposed_not_learner_executed",
+      "actualLearnerObservations": [],
+      "humanApproval": false,
+      "humanTrial": false,
+      "localSafetyRelease": false,
+      "officialWholeSourceCredit": false,
+      "officialOptionalityPreserved": true,
+      "scopeBoundary": "Own local assessment consumer of the stated already applicable goals. No universal official obligation, automatic prerequisite mastery, new topic selector or experimental credit from paper data.",
+      "courseBoundary": "HB-specific digital strong/weak extension exists only in its separate HB endpoint; other scopes receive no HB-only mandatory criterion.",
+      "sourcePInputObjects": [
+        {
+          "goalId": "d4720a9a-65e2-5661-aaaa-c393d144419a",
+          "wholeOrdinaryObjectSHA256": "0ca1a384b52a9a9ff613b273111a93fb72d1fb7701a53fe00b9e18d5e30c27ee",
+          "nativeRecord": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-plan/records/P057.current-owner.review.jsonl",
+            "sha256": "bd2eba8c99bedb482a44b0406821371c903190222ed2c8ee9cc778a51c8641d7",
+            "bytes": 90558
+          },
+          "lineOneBased": 3,
+          "wholeProfileSHA256": "0b09f4df579fb81dfbdec9ee89e3b89e8b2ff555a5a7a4a439a94493f50aec5b"
+        }
+      ]
+    }
+  },
+  "examData": {
+    "reviewStatus": "draft",
+    "coveredGoalIds": [
+      "d4720a9a-65e2-5661-aaaa-c393d144419a"
+    ],
+    "coveredStrands": [
+      "BC_ENERGIE",
+      "BC_REAKTION"
+    ],
+    "demandLevels": [
+      "AB3"
+    ],
+    "sourceArtifactPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-T3-terminal-exams-author-20261018-v2/materials/LEARNER.complete-normalized-cases.DE-EN.author.json",
+    "taskContent": "Bearbeite alle folgenden Teile selbstständig. Alle angegebenen Zahlen und Diagramme sind Unterrichtsmodelle, ausgenommen Daten, die ausdrücklich selbst zu erheben sind.\n\n## Teil 1\n\n![Berechnetes Modell, keine Messung](/assets/assessment-materials/chemie/T3/Boltzmann.temperature.de.png)\n\n[Gegebene Modell-CSV](/assets/assessment-materials/chemie/T3/Boltzmann.normalized-energy-data.synthetic.csv). Modell-Integrale: P300(E≥15)=0,00729; P450(E≥15)=0,04563; P300(E≥10)=0,04563.\n\nGebundener Autorenplot und CSV: Maxwell-Boltzmann-Energieverteilung idealer Teilchen bei 300/450 K, gleiche Teilchenzahl, ∫f(E)dE=1; E in kJ/mol und f in (kJ/mol)^-1. Modell f(E)=2/sqrt(pi)·sqrt(E)/(RT)^(3/2)·exp(-E/(RT)), R=0,008314 kJ/(mol K). Aktivierungsgrenze E_a=15 kJ/mol. Die Verteilung ist eine berechnete Aufgabenfigur, keine Messung. Lies die tatsächlich beigefügten Kurven ab, vergleiche Maximum, Breite und Fläche oberhalb E_a. Berechne die Lage des Maximums mit E_peak=RT/2 und begründe den Temperatur-/Geschwindigkeitsbezug sowie die Grenzen einer Energiebereitschaftsprognose.\n\n## Teil 2\n\n![Berechnetes Modell, keine Messung](/assets/assessment-materials/chemie/T3/Boltzmann.catalyst.de.png)\n\n[Gegebene Modell-CSV](/assets/assessment-materials/chemie/T3/Boltzmann.normalized-energy-data.synthetic.csv). Modell-Integrale: P300(E≥15)=0,00729; P450(E≥15)=0,04563; P300(E≥10)=0,04563.\n\nZweiter gebundener Plot nutzt dieselbe 300-K-Verteilung und zwei Grenzen: E_a=15 bzw. 10 kJ/mol. Die berechneten normierten Flächen werden im CSV/Integrationsbeleg angegeben. Ein Katalysator bietet im Modell einen alternativen Weg mit niedrigerem E_a; die Temperatur und Teilchenzahl bleiben gleich. Vergleiche die beiden tatsächlich markierten Integrationsflächen und widerlege ein Katalysator macht alle Teilchen heißer. Erläutere, welche Verteilungsgröße unverändert bleibt und warum der Flächenfaktor allein keine vollständige Rate oder Gleichgewichtslage liefert.",
+    "taskContentEn": "Complete all following parts independently. All supplied numerical data and figures are teaching models except data explicitly required to be acquired personally.\n\n## Part 1\n\n![Calculated model, not measurements](/assets/assessment-materials/chemie/T3/Boltzmann.temperature.en.png)\n\n[Supplied model CSV](/assets/assessment-materials/chemie/T3/Boltzmann.normalized-energy-data.synthetic.csv). Model integrals: P300(E≥15)=0.00729; P450(E≥15)=0.04563; P300(E≥10)=0.04563.\n\nBound author plot/CSV: ideal-particle Maxwell-Boltzmann energy distributions at 300/450 K, equal particle numbers and ∫f(E)dE=1; E in kJ/mol, f in (kJ/mol)^-1. Model f(E)=2/sqrt(pi)·sqrt(E)/(RT)^(3/2)·exp(-E/(RT)); R=0.008314 kJ/(mol K). Threshold E_a=15 kJ/mol. This computed task figure is not a measurement. Read the actual attached curves and compare peak, width and area above E_a. Calculate the peak energy with E_peak=RT/2 and explain temperature/rate relations plus limits of energy-readiness predictions.\n\n## Part 2\n\n![Calculated model, not measurements](/assets/assessment-materials/chemie/T3/Boltzmann.catalyst.en.png)\n\n[Supplied model CSV](/assets/assessment-materials/chemie/T3/Boltzmann.normalized-energy-data.synthetic.csv). Model integrals: P300(E≥15)=0.00729; P450(E≥15)=0.04563; P300(E≥10)=0.04563.\n\nSecond bound plot uses the same 300 K distribution with thresholds E_a=15 or 10 kJ/mol. Computed normalised areas are given in the CSV/integration receipt. A catalyst offers an alternative lower-E_a path in this model; temperature and particle count remain unchanged. Compare the actual marked integration areas and reject the claim that a catalyst heats every particle. Explain what remains unchanged and why the area ratio alone gives neither a complete rate nor equilibrium position.",
+    "solutionContent": "## Teil 1\n\nE_peak≈1,2471 bzw. 1,8707 kJ/mol; die wärmere Kurve ist breiter, ihr Maximum niedriger/weiter rechts, beide Gesamtflächen sind 1. Der normierte Flächenanteil über 15 kJ/mol ist bei 450 K größer, ohne dass alle Teilchen oberhalb liegen. Mehr energiereiche geeignete Kollisionen können höhere Reaktionsrate erklären. Fläche/Teilchenzahl darf nicht mit Kurvenhöhe verwechselt werden. Orientierung, Stoßhäufigkeit, Mechanismus und Reaktionspartner bleiben zusätzliche Bedingungen. Die CSV/Integrationsrechnung bindet die tatsächlichen Modellwerte. Konkrete Flächen: P300(E≥15)=0.00729; P450(E≥15)=0.04563.\n\n## Teil 2\n\nBei gleicher T bleibt f(E) samt Peak/Normierung unverändert. Die niedrigere Grenze 10 kJ/mol schließt mehr Teilchenenergiezustände ein als 15 kJ/mol; das ist eine Schwellen-/Wegänderung, keine Erwärmung. Die konkreten Flächen aus dem Integrationsbeleg werden verglichen. Eine vollständige Rate hängt zusätzlich von Orientierung/Präfaktoren, Konzentrationen und Mechanismus ab. Ein Katalysator ändert weder Reaktions-Gibbs-Energie noch Gleichgewichtskonstante; er ersetzt keinen thermodynamischen Antrieb. Konkrete Flächen bei300 K: P(E≥15)=0.00729; P(E≥10)=0.04563; Verhältnis≈6.261.\n\n## Bewertung\n\nZum Bestehen müssen alle ausdrücklich genannten wesentlichen Kriterien vollständig erfüllt sein. Gleichwertige fachliche Lösungswege und sachgerechte Rundungen sind zulässig. Eigene Messungen und beobachtete Handlungen bleiben dort erforderlich, wo verlangt.\n\n2 Punkte: Die tatsächlich gegebenen Figuren anhand von Maximum, Breite, gleicher Gesamtfläche und Teilchenzahl auswerten; RT/2 ergibt 1,2471 und 1,87065 kJ/mol. Gleichwertige Herleitungen und sachgerechte Rundungen zulassen. 1 Punkt: fachlich sinnvoller, aber unvollständiger Teil. 0 Punkte: fehlt oder fachlich falsch. Bei geforderter eigener Durchführung geben Modellwerte oder ein Plan keinen Durchführungskredit.\n\n2 Punkte: Normierte Flächen über 15 kJ/mol (0,00729/0,04563) von Kurvenhöhe unterscheiden und ihren begrenzten Geschwindigkeitsbezug erklären. Gleichwertige Herleitungen und sachgerechte Rundungen zulassen. 1 Punkt: fachlich sinnvoller, aber unvollständiger Teil. 0 Punkte: fehlt oder fachlich falsch. Bei geforderter eigener Durchführung geben Modellwerte oder ein Plan keinen Durchführungskredit.\n\n2 Punkte: Bei gleicher 300-K-Verteilung die Grenzen 10/15 kJ/mol und den Flächenfaktor ≈ 6,261 erklären; keine Erwärmung behaupten. Gleichwertige Herleitungen und sachgerechte Rundungen zulassen. 1 Punkt: fachlich sinnvoller, aber unvollständiger Teil. 0 Punkte: fehlt oder fachlich falsch. Bei geforderter eigener Durchführung geben Modellwerte oder ein Plan keinen Durchführungskredit.\n\n2 Punkte: Zusätzliche kinetische Bedingungen und unveränderte Gleichgewichtslage durch Katalyse benennen. Gleichwertige Herleitungen und sachgerechte Rundungen zulassen. 1 Punkt: fachlich sinnvoller, aber unvollständiger Teil. 0 Punkte: fehlt oder fachlich falsch. Bei geforderter eigener Durchführung geben Modellwerte oder ein Plan keinen Durchführungskredit.",
+    "solutionContentEn": "## Part 1\n\nPeak energies are about 1.2471 and 1.8707 kJ/mol. The hotter curve is broader, with a lower/right-shifted peak; both total areas are 1. The fraction above 15 kJ/mol is greater at 450 K without putting every particle above it. More sufficiently energetic suitable collisions may explain a greater rate. Do not confuse area/particle fraction with curve height. Orientation, collision frequency, mechanism and partners remain additional conditions. The CSV/integration binds the actual model values. Concrete areas: P300(E≥15)=0.00729; P450(E≥15)=0.04563.\n\n## Part 2\n\nAt equal T, f(E), its peak and normalisation remain unchanged. The lower 10 kJ/mol threshold includes more energy states than 15 kJ/mol: pathway/threshold change, not heating. Compare the actual integrated areas in the receipt. Full rate also depends on orientation/prefactors, concentration and mechanism. Catalysis changes neither reaction Gibbs energy nor equilibrium constant and supplies no thermodynamic driving force. Concrete areas at300 K: P(E≥15)=0.00729; P(E≥10)=0.04563; ratio≈6.261.\n\n## Scoring\n\nPassing requires every explicitly identified essential criterion. Accept equivalent scientific approaches and reasonable rounding. Required personal measurements and observed actions remain mandatory.\n\n2 points: Interpret the actual figures using peak, width, equal total area and particle count; RT/2 gives 1.2471 and 1.87065 kJ/mol. Accept equivalent derivations and reasonable rounding. 1 point: scientifically meaningful but incomplete contribution. 0 points: missing or incorrect. Where personal execution is required, model values or a plan earn no execution credit.\n\n2 points: Distinguish tail areas above 15 kJ/mol (0.00729/0.04563) from curve height and explain their bounded rate relevance. Accept equivalent derivations and reasonable rounding. 1 point: scientifically meaningful but incomplete contribution. 0 points: missing or incorrect. Where personal execution is required, model values or a plan earn no execution credit.\n\n2 points: Explain the 10/15 kJ/mol thresholds and area ratio ≈ 6.261 at the same 300 K distribution, without claiming heating. Accept equivalent derivations and reasonable rounding. 1 point: scientifically meaningful but incomplete contribution. 0 points: missing or incorrect. Where personal execution is required, model values or a plan earn no execution credit.\n\n2 points: Identify additional kinetic conditions and the unchanged equilibrium under catalysis. Accept equivalent derivations and reasonable rounding. 1 point: scientifically meaningful but incomplete contribution. 0 points: missing or incorrect. Where personal execution is required, model values or a plan earn no execution credit.",
+    "scoring": {
+      "maxPoints": 8,
+      "passingPoints": 8,
+      "steps": [
+        {
+          "id": "d4720a9a-essential-1",
+          "points": 2,
+          "description": "2 Punkte: Die tatsächlich gegebenen Figuren anhand von Maximum, Breite, gleicher Gesamtfläche und Teilchenzahl auswerten; RT/2 ergibt 1,2471 und 1,87065 kJ/mol. Gleichwertige Herleitungen und sachgerechte Rundungen zulassen. 1 Punkt: fachlich sinnvoller, aber unvollständiger Teil. 0 Punkte: fehlt oder fachlich falsch. Bei geforderter eigener Durchführung geben Modellwerte oder ein Plan keinen Durchführungskredit.",
+          "descriptionEn": "2 points: Interpret the actual figures using peak, width, equal total area and particle count; RT/2 gives 1.2471 and 1.87065 kJ/mol. Accept equivalent derivations and reasonable rounding. 1 point: scientifically meaningful but incomplete contribution. 0 points: missing or incorrect. Where personal execution is required, model values or a plan earn no execution credit."
+        },
+        {
+          "id": "d4720a9a-essential-2",
+          "points": 2,
+          "description": "2 Punkte: Normierte Flächen über 15 kJ/mol (0,00729/0,04563) von Kurvenhöhe unterscheiden und ihren begrenzten Geschwindigkeitsbezug erklären. Gleichwertige Herleitungen und sachgerechte Rundungen zulassen. 1 Punkt: fachlich sinnvoller, aber unvollständiger Teil. 0 Punkte: fehlt oder fachlich falsch. Bei geforderter eigener Durchführung geben Modellwerte oder ein Plan keinen Durchführungskredit.",
+          "descriptionEn": "2 points: Distinguish tail areas above 15 kJ/mol (0.00729/0.04563) from curve height and explain their bounded rate relevance. Accept equivalent derivations and reasonable rounding. 1 point: scientifically meaningful but incomplete contribution. 0 points: missing or incorrect. Where personal execution is required, model values or a plan earn no execution credit."
+        },
+        {
+          "id": "d4720a9a-essential-3",
+          "points": 2,
+          "description": "2 Punkte: Bei gleicher 300-K-Verteilung die Grenzen 10/15 kJ/mol und den Flächenfaktor ≈ 6,261 erklären; keine Erwärmung behaupten. Gleichwertige Herleitungen und sachgerechte Rundungen zulassen. 1 Punkt: fachlich sinnvoller, aber unvollständiger Teil. 0 Punkte: fehlt oder fachlich falsch. Bei geforderter eigener Durchführung geben Modellwerte oder ein Plan keinen Durchführungskredit.",
+          "descriptionEn": "2 points: Explain the 10/15 kJ/mol thresholds and area ratio ≈ 6.261 at the same 300 K distribution, without claiming heating. Accept equivalent derivations and reasonable rounding. 1 point: scientifically meaningful but incomplete contribution. 0 points: missing or incorrect. Where personal execution is required, model values or a plan earn no execution credit."
+        },
+        {
+          "id": "d4720a9a-essential-4",
+          "points": 2,
+          "description": "2 Punkte: Zusätzliche kinetische Bedingungen und unveränderte Gleichgewichtslage durch Katalyse benennen. Gleichwertige Herleitungen und sachgerechte Rundungen zulassen. 1 Punkt: fachlich sinnvoller, aber unvollständiger Teil. 0 Punkte: fehlt oder fachlich falsch. Bei geforderter eigener Durchführung geben Modellwerte oder ein Plan keinen Durchführungskredit.",
+          "descriptionEn": "2 points: Identify additional kinetic conditions and the unchanged equilibrium under catalysis. Accept equivalent derivations and reasonable rounding. 1 point: scientifically meaningful but incomplete contribution. 0 points: missing or incorrect. Where personal execution is required, model values or a plan earn no execution credit."
+        }
+      ]
+    }
+  },
+  "examples": [],
+  "resourceLinks": []
+}

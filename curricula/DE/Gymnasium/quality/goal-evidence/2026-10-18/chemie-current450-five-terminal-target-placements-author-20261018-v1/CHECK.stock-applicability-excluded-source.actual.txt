@@ -1,0 +1,12 @@
+304: function isApplicabilityProjectionExcluded(goal: LearningGoal): boolean {
+305:   if (!goal.extendedData || typeof goal.extendedData !== 'object') return false
+306:   return (goal.extendedData as Record<string, unknown>).applicabilityProjection === 'excluded'
+307: }
+1008:       if (isApplicabilityProjectionExcluded(goal)) {
+1009:         const empty: ApplicabilityMap = {}
+1010:         compiledByGoalId.set(key, empty)
+1011:         evidenceByGoalId.set(key, [])
+1012:         visiting.delete(key)
+1013:         return empty
+1014:       }
+1015: 

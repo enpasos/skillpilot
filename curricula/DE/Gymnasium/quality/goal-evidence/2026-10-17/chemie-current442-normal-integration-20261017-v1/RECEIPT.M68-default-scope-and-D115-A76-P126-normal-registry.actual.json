@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "actual-coherent-normal-default-memory68-and-chemistry-D115-A76-P126-registry-routing-integration",
+  "createdAtUTC": "2026-10-17T21:48:26.675164+00:00",
+  "state": "WIP_CURRENT_NORMAL_INTEGRATION_D65_STILL_OPEN",
+  "M7Claim": false,
+  "HumanApproval": false,
+  "newScientificJudgments": 0,
+  "normalDefaultOnlyScopeChanged": true,
+  "normalRegistryOtherFourSubjectsExact": true,
+  "oldDefaultScopeRetainedAsSubset": true,
+  "scopeRootAndExistingOrphan": [
+    "442c31c5-c561-5c7a-90bb-2335d779175c",
+    "8edee6b6-9ead-515e-93f5-feada64522b2"
+  ],
+  "finalMConfig": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/M442.memory68.full-original-root-plus-current-orphan.config.json",
+    "sha256": "d57dcb4c7f10cf4919629317b6b047320e6385d4fed61a99c52893ce693eb741",
+    "bytes": 7077
+  },
+  "actualFinalCanonical": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "sha256": "04f20db82543e81c8a5ef5e4e0cc3856f3004ceef6697a1c2078bf72aa5bb15a",
+    "bytes": 2931692
+  },
+  "actualFinalSEM": {
+    "path": "curricula/DE/Gymnasium/quality/goal-book-publication/chemie.semantic-kinds.json",
+    "sha256": "e4c41a56fac3e064e8f8ab5d27a6b82ac9e334223cb6c9283461d5ac5169efd3",
+    "bytes": 209519
+  },
+  "actualMLedger": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/M442.memory68.review.jsonl",
+    "sha256": "92f60c4846aa38ea975b5714341af37936b869dbbcbab1d4d017b37482dd5eee",
+    "bytes": 481553
+  },
+  "actualCard80Ledger": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-M441-portable-actual-input-selection-technical-20261017-v1/retained/cards80.current-with-five-successors.byte-exact.jsonl",
+    "sha256": "095bb0782e9d55e85d428bc4041c28fec074651c8dff80196b4d4a38fc6f2671",
+    "bytes": 97048
+  },
+  "stockMCheck": {
+    "exitCode": 0,
+    "command": "node --import ./app/node_modules/tsx/dist/loader.mjs app/scripts/memoryCardReview.ts --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/M442.memory68.full-original-root-plus-current-orphan.config.json --mode=check --write-report",
+    "rawOutput": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/CHECK.M442.memory68.fullscope-stock.actual.txt",
+      "sha256": "71d75e8e7bdf7b7f5225ac51ecb739d53c2fc284c7604c8144288eea4fd13386",
+      "bytes": 48218
+    },
+    "generatedReport": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/M442.memory68.stock-report.md",
+      "sha256": "de96ff2eda40e76eea4eaeee71015100a170f3f8d9c911c402db94ef55695fb7",
+      "bytes": 649024
+    },
+    "ordinaryGoals": 442,
+    "memoryGoals": 68,
+    "visibilityScopes": 41,
+    "noMemoryDecisions": 376,
+    "memoryRequiredDecisions": 66,
+    "missingOrStaleRecords": 0,
+    "missingOrStaleCardRecords": 0,
+    "missingVisibleMemoryGoals": 0
+  },
+  "rootContainsClosureScopeProof": {
+    "scopeNodeCount": 654,
+    "canonicalNodeCount": 654,
+    "all442SEMAtomicTargetsCovered": true,
+    "all68MemoryNodesCovered": true,
+    "noPracticeOrStructureOrOtherExistingScopeMemberRemoved": true
+  },
+  "registryRouting": {
+    "DresolutionIndexes": 115,
+    "AsemanticAtomicityConfigs": 76,
+    "PpositiveEvidenceNamespaceConfigs": 126,
+    "Mpath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/M442.memory68.full-original-root-plus-current-orphan.config.json",
+    "SEMpath": "curricula/DE/Gymnasium/quality/goal-book-publication/chemie.semantic-kinds.json"
+  },
+  "operations": [
+    {
+      "normalPath": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-chemistry-full.config.json",
+      "before": {
+        "sha256": "27d63e5773462c91fd97ae1d9e2787f1e9e2e2618db9199c4be9acffff63f706",
+        "bytes": 1308
+      },
+      "exactHistory": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/history/curricula/DE/Gymnasium/quality/memory-card-review/canonical-chemistry-full.config.json.snapshot",
+        "sha256": "27d63e5773462c91fd97ae1d9e2787f1e9e2e2618db9199c4be9acffff63f706",
+        "bytes": 1308
+      },
+      "after": {
+        "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-chemistry-full.config.json",
+        "sha256": "6d2c1f088013bcf0d5d1312a72593b7458064b9cc7a3c01a40d22c4b6dbbc14f",
+        "bytes": 1354
+      }
+    },
+    {
+      "normalPath": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "before": {
+        "sha256": "bec65facfab17c5ff933ea1713864b069fef770b3f2c2c1cc3f7ddc1248b8adb",
+        "bytes": 418853
+      },
+      "exactHistory": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/history/curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json.snapshot",
+        "sha256": "bec65facfab17c5ff933ea1713864b069fef770b3f2c2c1cc3f7ddc1248b8adb",
+        "bytes": 418853
+      },
+      "after": {
+        "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+        "sha256": "86203b4c7ef715f6645d222d29ba595854f168e60c45478666483e84c2bc6292",
+        "bytes": 584506
+      }
+    }
+  ],
+  "existingD65Diagnosis": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/DIAGNOSIS.D115-current442-after-regular-files-and-normal-SEM.actual.json",
+  "notes": [
+    "D65 current native successor work remains open; this coherent routing does not turn it into completed description evidence.",
+    "Final compiled applicability is deliberately not applied by this task.",
+    "Individual stock M check is actual machine validation only; no human acceptance or M7 completion follows."
+  ],
+  "actualNormalStockDiscovery": {
+    "function": "discoverActiveMemoryCardReviewConfigs()",
+    "status": "PASS",
+    "selectedConfigCount": 10,
+    "chemistry": {
+      "reviewId": "canonical-chemistry-full",
+      "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/M442.memory68.full-original-root-plus-current-orphan.config.json",
+      "reportPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/M442.memory68.stock-report.md"
+    },
+    "normalDefaultScopeEqualsActiveScope": true,
+    "threeOriginalVisibilityObjectsAreExactPrefix": true,
+    "all41ViewsUnique": true,
+    "requiredCoverage": true
+  }
+}

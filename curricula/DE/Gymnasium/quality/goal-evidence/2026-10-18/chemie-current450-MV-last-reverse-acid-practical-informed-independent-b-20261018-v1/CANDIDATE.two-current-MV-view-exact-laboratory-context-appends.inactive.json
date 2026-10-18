@@ -1,0 +1,87 @@
+{
+  "artifactRole": "INACTIVE_POST_FIRST_VIEW_PLACEMENT_AUTHOR_HINT_NO_INDEPENDENT_SELF_APPROVAL",
+  "scienceFirst": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-MV-last-reverse-acid-practical-informed-independent-b-20261018-v1/FIRST.independent-informed-MV-whole-material-P-and-source.json",
+    "sha256": "8a172da1f6ac42a0fd19aee3512d54ef765edbbffd4859e26e6b8722b088b86e",
+    "bytes": 12052
+  },
+  "goalId": "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+  "sourceGoalId": "mv-chem-seki-mv-ch-seki-2021-j9-saeuren-002-023f102d",
+  "operations": [
+    {
+      "currentView": {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-mv-gk.view.json",
+        "sha256": "b4346275f4dea4fdf221e60af76a9f918503ca9724589b8f45bdcbbcc2a68ee5",
+        "bytes": 42364
+      },
+      "currentScope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-MV",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "existingLaboratoryContextPointer": "/rootNodes/0/children/4",
+      "wholeParentBefore": {
+        "kind": "structure",
+        "id": "chemistry-author-practical-terminal-completion",
+        "label": "Praktische Chemie: eigene Durchführung und Auswertung",
+        "children": [
+          {
+            "kind": "goalEntry",
+            "goalId": "7fece532-d052-5633-b24e-ca5595fd76d0",
+            "projectionRole": "target"
+          }
+        ]
+      },
+      "operation": "append_exact_one_lower_guided_investigation_target",
+      "jsonPointer": "/rootNodes/0/children/4/children/-",
+      "after": {
+        "kind": "goalEntry",
+        "goalId": "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+        "projectionRole": "target"
+      },
+      "scopeBoundary": "Original source year9/SekI. GK/LK are technical CrossStage projection labels, not official lower-secondary courses; no upper experiment requirement or source whole credit."
+    },
+    {
+      "currentView": {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-mv-lk.view.json",
+        "sha256": "2cdf9ad704e0f776a257c898086cfb0e83a0cff0730fc76fb454ee2d09dabc78",
+        "bytes": 48179
+      },
+      "currentScope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-MV",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "existingLaboratoryContextPointer": "/rootNodes/0/children/4",
+      "wholeParentBefore": {
+        "kind": "structure",
+        "id": "chemistry-author-practical-terminal-completion",
+        "label": "Praktische Chemie: eigene Durchführung und Auswertung",
+        "children": [
+          {
+            "kind": "goalEntry",
+            "goalId": "7fece532-d052-5633-b24e-ca5595fd76d0",
+            "projectionRole": "target"
+          },
+          {
+            "kind": "goalEntry",
+            "goalId": "4cbcfc86-ae8c-5152-87cf-9dabd1a5f954",
+            "projectionRole": "target"
+          }
+        ]
+      },
+      "operation": "append_exact_one_lower_guided_investigation_target",
+      "jsonPointer": "/rootNodes/0/children/4/children/-",
+      "after": {
+        "kind": "goalEntry",
+        "goalId": "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+        "projectionRole": "target"
+      },
+      "scopeBoundary": "Original source year9/SekI. GK/LK are technical CrossStage projection labels, not official lower-secondary courses; no upper experiment requirement or source whole credit."
+    }
+  ],
+  "normalWrites": 0,
+  "needsSeparateReviewedActualViewIntegration": true
+}

@@ -1,0 +1,899 @@
+{
+  "artifactType": "Read-only prepared finite final-gates command and dependency plan",
+  "preparedAtUTC": "2026-10-17T22:17:54.997898+00:00",
+  "executionStatus": "NOT_EXECUTED",
+  "requestedProfile": "minimal-integrated-standard-status-CQR303",
+  "rootDirectory": ".",
+  "preconditions": [
+    {
+      "id": "final-input-freeze",
+      "required": true,
+      "description": "Root completes paired Source42/112 scope integration and final compiler apply, then two actual fresh final-context/page D rounds, native D synthesis/validation and normal D ownership routing. Pin the final C/SEM/views/decks/registry and retain protected four subject inputs. This plan does not execute or substitute any prerequisite."
+    }
+  ],
+  "commands": [
+    {
+      "id": "schemas",
+      "cwd": ".",
+      "argv": [
+        "python",
+        "scripts/validate_schemas.py"
+      ],
+      "dependsOn": [
+        "final-input-freeze"
+      ],
+      "scope": "All committed curriculum JSON and portable symlink constraints",
+      "kind": "check",
+      "writes": [],
+      "evidenceIds": [
+        "ci"
+      ],
+      "notes": []
+    },
+    {
+      "id": "goal-uuids",
+      "cwd": ".",
+      "argv": [
+        "python",
+        "scripts/validate_goal_ids_uuid.py"
+      ],
+      "dependsOn": [
+        "final-input-freeze"
+      ],
+      "scope": "Current goal UUID integrity",
+      "kind": "check",
+      "writes": [],
+      "evidenceIds": [
+        "ci"
+      ],
+      "notes": []
+    },
+    {
+      "id": "graph",
+      "cwd": ".",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "validate:graph"
+      ],
+      "dependsOn": [
+        "final-input-freeze"
+      ],
+      "scope": "Normal graph integrity, requires/contains/effective DAG",
+      "kind": "check",
+      "writes": [],
+      "evidenceIds": [
+        "package",
+        "ci",
+        "graph_rules"
+      ],
+      "notes": []
+    },
+    {
+      "id": "view-filters",
+      "cwd": ".",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "validate:view-filters"
+      ],
+      "dependsOn": [
+        "final-input-freeze"
+      ],
+      "scope": "Normal projected filtered graphs",
+      "kind": "check",
+      "writes": [],
+      "evidenceIds": [
+        "package",
+        "ci",
+        "graph_rules"
+      ],
+      "notes": []
+    },
+    {
+      "id": "composition",
+      "cwd": ".",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "validate:composition-views"
+      ],
+      "dependsOn": [
+        "final-input-freeze"
+      ],
+      "scope": "Normal composition views including current Chemistry41",
+      "kind": "check",
+      "writes": [],
+      "evidenceIds": [
+        "package",
+        "ci",
+        "graph_rules"
+      ],
+      "notes": []
+    },
+    {
+      "id": "projection-roles",
+      "cwd": ".",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "test:composition-projection-roles"
+      ],
+      "dependsOn": [
+        "final-input-freeze"
+      ],
+      "scope": "Target/prerequisiteOnly regression; no mastery transfer",
+      "kind": "check",
+      "writes": [],
+      "evidenceIds": [
+        "package",
+        "ci"
+      ],
+      "notes": []
+    },
+    {
+      "id": "course-consistency",
+      "cwd": ".",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "test:course-level-mapping-consistency"
+      ],
+      "dependsOn": [
+        "final-input-freeze"
+      ],
+      "scope": "Normal source/course/view consistency",
+      "kind": "check",
+      "writes": [],
+      "evidenceIds": [
+        "package",
+        "ci"
+      ],
+      "notes": []
+    },
+    {
+      "id": "source-registry",
+      "cwd": ".",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:source-landscape-registry"
+      ],
+      "dependsOn": [
+        "final-input-freeze"
+      ],
+      "scope": "Normal source registry payload/path/identity integrity",
+      "kind": "check",
+      "writes": [],
+      "evidenceIds": [
+        "package",
+        "ci"
+      ],
+      "notes": []
+    },
+    {
+      "id": "source-coverage-refresh",
+      "cwd": ".",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "quality:source-coverage-audit"
+      ],
+      "dependsOn": [
+        "final-input-freeze"
+      ],
+      "scope": "Regenerate normal audit against frozen source mappings",
+      "kind": "generated-report",
+      "writes": [
+        "docs/qa-ci/status/curriculum-source-coverage-audit.json",
+        "docs/qa-ci/status/curriculum-source-coverage-audit.md"
+      ],
+      "evidenceIds": [
+        "package",
+        "ci"
+      ],
+      "notes": []
+    },
+    {
+      "id": "source-coverage-check",
+      "cwd": ".",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "quality:source-coverage-audit:check"
+      ],
+      "dependsOn": [
+        "source-coverage-refresh"
+      ],
+      "scope": "Existing source/applicability regression plus generated audit freshness",
+      "kind": "check",
+      "writes": [],
+      "evidenceIds": [
+        "package",
+        "ci"
+      ],
+      "notes": [
+        "This package script already runs quality:source-coverage-evidence:test. Do not schedule that test separately."
+      ]
+    },
+    {
+      "id": "repository-sources",
+      "cwd": ".",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "test:repository-source-availability"
+      ],
+      "dependsOn": [
+        "final-input-freeze"
+      ],
+      "scope": "Repository-backed source availability contract",
+      "kind": "check",
+      "writes": [],
+      "evidenceIds": [
+        "package",
+        "ci"
+      ],
+      "notes": []
+    },
+    {
+      "id": "source-inventory",
+      "cwd": ".",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "test:source-extraction-inventory"
+      ],
+      "dependsOn": [
+        "final-input-freeze"
+      ],
+      "scope": "Actual registered source-extraction inventory",
+      "kind": "check",
+      "writes": [],
+      "evidenceIds": [
+        "package",
+        "ci"
+      ],
+      "notes": []
+    },
+    {
+      "id": "memory-all",
+      "cwd": ".",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "quality:memory-card-review:check:all"
+      ],
+      "dependsOn": [
+        "final-input-freeze"
+      ],
+      "scope": "All active normal memory configurations, exact cards/decks/origins and view visibility",
+      "kind": "check",
+      "writes": [],
+      "evidenceIds": [
+        "package",
+        "ci",
+        "memory_runner",
+        "memory"
+      ],
+      "notes": [
+        "Covers active configurations beyond the five central subjects. Existing Chemistry M68 PASS is retained; no additional isolated M68 run is scheduled."
+      ]
+    },
+    {
+      "id": "layer-a-inventory",
+      "cwd": ".",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:ai-transparency-inventory"
+      ],
+      "dependsOn": [
+        "final-input-freeze"
+      ],
+      "scope": "Measured live Layer-A landscape, image and memory inventory",
+      "kind": "check",
+      "writes": [],
+      "evidenceIds": [
+        "package",
+        "ci",
+        "inventory"
+      ],
+      "notes": [
+        "If measured fields are stale, stop and prepare an exact measured correction; do not weaken policy, provenance or human fields. No automatic --emit-layer-a-patch/apply is scheduled."
+      ]
+    },
+    {
+      "id": "chemistry-atlas-inputs",
+      "cwd": ".",
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/buildGoalBookSourceAtlasInputs.ts",
+        "--config",
+        "app/scripts/config/goal-books/de-gym-chemistry-national-atlas.inputs.json"
+      ],
+      "dependsOn": [
+        "source-coverage-check",
+        "composition"
+      ],
+      "scope": "Only current Chemistry book-local source inputs",
+      "kind": "generated-publication-inputs",
+      "writes": [
+        "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/",
+        "app/scripts/config/goal-books/de-gym-chemistry-national-atlas.sources.json",
+        "app/scripts/config/goal-books/navigation/de-gym-chemistry-national-atlas.view.json"
+      ],
+      "evidenceIds": [
+        "book_readme",
+        "book_builder",
+        "book_verifier"
+      ],
+      "notes": [
+        "Requires current explicit book-local semantic-kind/source inputs. Generator does not confer new source credit or scientific approval. Do not regenerate unaffected Biology inputs."
+      ]
+    },
+    {
+      "id": "runtime-assets",
+      "cwd": ".",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "prepare:runtime-assets"
+      ],
+      "dependsOn": [
+        "chemistry-atlas-inputs",
+        "memory-all"
+      ],
+      "scope": "Normal generated runtime asset preparation before publication",
+      "kind": "generated-runtime-assets",
+      "writes": [
+        "Generated app/public curriculum assets"
+      ],
+      "evidenceIds": [
+        "package",
+        "ci"
+      ],
+      "notes": [
+        "Execute once after final inputs. May be reused only with an existing exact final-input preparation receipt; publication is not a deployment."
+      ]
+    },
+    {
+      "id": "publication-build",
+      "cwd": ".",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "build:goal-books"
+      ],
+      "dependsOn": [
+        "runtime-assets",
+        "schemas",
+        "graph",
+        "view-filters"
+      ],
+      "scope": "All registered native book models, PDFs, source sidecars and index",
+      "kind": "publication-build",
+      "writes": [
+        "app/public/lernzielbuch/"
+      ],
+      "evidenceIds": [
+        "package",
+        "ci",
+        "book_builder",
+        "book_readme"
+      ],
+      "notes": [
+        "Cache-aware local build validates input/environment/asset bindings before reusing unchanged books. Do not run concurrently with another book build. Unchanged CI later uses --force. Requires installed pinned Chromium/fonts/poppler as in CI. No full application/backend build is scheduled."
+      ]
+    },
+    {
+      "id": "publication-check",
+      "cwd": ".",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:goal-book-publication"
+      ],
+      "dependsOn": [
+        "publication-build"
+      ],
+      "scope": "Current publication registry and exact model/PDF/manifest/source bindings",
+      "kind": "check",
+      "writes": [],
+      "evidenceIds": [
+        "package",
+        "ci",
+        "book_verifier"
+      ],
+      "notes": [
+        "Builder also verifies staged books internally; this named final verification matches the existing CI gate. No separate duplicate source-atlas --check is needed."
+      ]
+    },
+    {
+      "id": "status-all5",
+      "cwd": ".",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "quality:curriculum-status"
+      ],
+      "dependsOn": [
+        "schemas",
+        "goal-uuids",
+        "graph",
+        "view-filters",
+        "composition",
+        "projection-roles",
+        "course-consistency",
+        "source-registry",
+        "source-coverage-check",
+        "repository-sources",
+        "source-inventory",
+        "memory-all",
+        "layer-a-inventory"
+      ],
+      "scope": "Existing normal all-curriculum Layer-A/CQR status, including one actual all5 D/P/A/M/V calculation",
+      "kind": "central-report-and-status",
+      "writes": [
+        "Active memory Markdown reports (npm prequality hook)",
+        "docs/qa-ci/status/curriculum-quality-status.json",
+        "docs/qa-ci/status/curriculum-quality-status.md"
+      ],
+      "evidenceIds": [
+        "package",
+        "status",
+        "central",
+        "maturity",
+        "memory_runner"
+      ],
+      "notes": [
+        "The npm prequality hook regenerates all active memory reports in report mode. It is not a blocking check; memory-all remains required. Do not schedule report:all separately.",
+        "The generator calls generateDeepUnderstandingRollout exactly once, internally validates the five subjects, and stores their CQR-303 projection. It does not persist the complete raw strictCompleteGoalIds report.",
+        "Do not add quality:deep-understanding-rollout, its :check variant, quality:curriculum-status:check or test:deep-understanding-rollout to this local minimal pass: each would calculate all5 again.",
+        "Exit 0 only means generation succeeded. Explicit assertions below decide completion; warnings or incomplete coverage are not success."
+      ]
+    },
+    {
+      "id": "maturity-floors",
+      "cwd": ".",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:curriculum-maturity-floors"
+      ],
+      "dependsOn": [
+        "status-all5"
+      ],
+      "scope": "All protected normal maturity floors",
+      "kind": "check",
+      "writes": [],
+      "evidenceIds": [
+        "package",
+        "ci",
+        "maturity"
+      ],
+      "notes": []
+    }
+  ],
+  "parallelism": {
+    "safeReadOnlyGroup": [
+      "schemas",
+      "goal-uuids",
+      "graph",
+      "view-filters",
+      "composition",
+      "projection-roles",
+      "course-consistency",
+      "source-registry",
+      "repository-sources",
+      "source-inventory",
+      "memory-all",
+      "layer-a-inventory"
+    ],
+    "mutationSerialization": "Run generated-report/runtime/publication writers sequentially after their dependencies; run the central status only once after input freeze. Do not run book builds concurrently.",
+    "terminalJoin": [
+      "publication-check",
+      "maturity-floors",
+      "completion-assertions"
+    ]
+  },
+  "completionAssertions": {
+    "id": "completion-assertions",
+    "dependsOn": [
+      "status-all5",
+      "maturity-floors",
+      "publication-check"
+    ],
+    "statusPath": "docs/qa-ci/status/curriculum-quality-status.json",
+    "chemistryLandscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "expectedChemistry": {
+      "maturity": "M7",
+      "CQR-303.status": "pass",
+      "CQR-303.metrics.expectedGoals": 442,
+      "CQR-303.metrics.strictComplete": 442,
+      "CQR-303.metrics.remaining": 0,
+      "CQR-303.metrics.currentDescriptionResolutions": 442,
+      "CQR-303.metrics.currentPositiveEvidenceProfiles": 442,
+      "CQR-303.metrics.currentSemanticAtomicityDecisions": 442,
+      "CQR-303.metrics.currentMemoryReviewDecisions": 442,
+      "CQR-303.metrics.currentVisualizationQaRecords": 442,
+      "CQR-303.metrics.requiredChecksPassed": 6,
+      "CQR-303.metrics.requiredChecksTotal": 6,
+      "CQR-303.metrics.blockingIssues": 0,
+      "CQR-302.status": "pass"
+    },
+    "allFiveSubjects": [
+      "mathematik",
+      "physik",
+      "chemie",
+      "biologie",
+      "wirtschaftswissenschaften"
+    ],
+    "otherFour": "Compare each current CQR-303 strict/gate/check metric and maturity against the protected pre-integration baseline. No floor or denominator reduction; all four retained inputs remain exact.",
+    "notProvenByExitZero": "Central --mode=check fails only on blockingIssueCount > 0, not on incomplete strict coverage. Status generation also can exit 0 while CQR-303 is warn.",
+    "humanBoundary": "Machine completion never grants Human Approval, Human Trial, deployment or publication to an external service."
+  },
+  "duplicateAvoidance": {
+    "localAll5Calculations": 1,
+    "separateRawReport": false,
+    "separateRawReportReason": "Root selected the integrated normal status/CQR303 run. Existing status CLI has no report-cache input; a raw report CLI would calculate all5 again.",
+    "isolatedA77M68V442Reruns": false,
+    "memoryReports": "The existing status npm prehook already regenerates active memory reports.",
+    "laterCI": "Unchanged CI executes test:deep-understanding-rollout (itself calls the live all5 report at line250) and quality:curriculum-status. Those later CI recomputations are explicit and are not part of this minimal local pass."
+  },
+  "reusedPassedChecks": [
+    {
+      "id": "existing-assets-and-V",
+      "evidence": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/CHECK.assets-and-V-rollout-current442.actual.json",
+        "sha256": "01e63c68cdf2b8e2c53402e962d8a0d3bd3096028db9592a48b3981664babfda",
+        "bytes": 1882
+      },
+      "checks": [
+        {
+          "command": "node scripts/check_goal_visualization_assets.mjs",
+          "exitCode": 0,
+          "outputFile": "tmp/chemie-current442-normal-assets-after-prompts.actual.log",
+          "observedSummary": "Goal visualization asset check passed for2555 links in21landscapes."
+        },
+        {
+          "command": "node --import ./app/node_modules/tsx/dist/loader.mjs app/scripts/reportGoalVisualizationRolloutStatus.ts --subject=chemie --check --require-coverage",
+          "exitCode": 0,
+          "observedSummary": "Current Chemistry rollout JSON and Markdown up to date."
+        },
+        {
+          "command": "node --import ./app/node_modules/tsx/dist/loader.mjs app/scripts/checkGoalVisualizationQaCoverageParity.ts",
+          "exitCode": 0,
+          "observedSummary": "Mathematics807+25overview,Physics478+31overview,Chemistry442+23overview parity; no deferred or regular missing images."
+        }
+      ],
+      "reexecute": false,
+      "condition": "Retain existing exact asset/QA/rollout bindings. Final applicability-only metadata does not itself create a new image review; if an actual contract input changes, refresh only the affected existing report/check."
+    },
+    {
+      "id": "existing-backend-GoalMappingRepositoryFixtureTest",
+      "evidence": {
+        "path": "tmp/chemie442-he308-targeted-backend/test-results/test/TEST-com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest.xml",
+        "sha256": "5b060bd1459c8196b3c9242a726dc9270689707a0bb8eec0caa0af797e3a725f",
+        "bytes": 525
+      },
+      "observed": {
+        "tests": "1",
+        "failures": "0",
+        "errors": "0"
+      },
+      "caseNames": [
+        "parsesRepositoryBackedCanonicalChemistryMappingFixture()"
+      ],
+      "reexecute": false,
+      "condition": "Exact HE308 partial mapping and tested runtime/mastery semantics remain unchanged; final applicability-only updates do not require rerunning these focused tests."
+    },
+    {
+      "id": "existing-backend-LearnerServiceCanonicalProjectionTest",
+      "evidence": {
+        "path": "tmp/chemie442-he308-targeted-backend/test-results/test/TEST-com.skillpilot.backend.service.LearnerServiceCanonicalProjectionTest.xml",
+        "sha256": "36eee01a2bbb69d0770f27c017e59d80b4d5ae7e0bf5cfeec5f9c6eef6fec692",
+        "bytes": 22022
+      },
+      "observed": {
+        "tests": "1",
+        "failures": "0",
+        "errors": "0"
+      },
+      "caseNames": [
+        "consolidatedCorrosionProtectionRequiresReassessmentWithoutAliasingLegacyWrites()"
+      ],
+      "reexecute": false,
+      "condition": "Exact HE308 partial mapping and tested runtime/mastery semantics remain unchanged; final applicability-only updates do not require rerunning these focused tests."
+    }
+  ],
+  "laterUnchangedCIGates": [
+    {
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "test:deep-understanding-rollout"
+      ],
+      "evidenceIds": [
+        "ci",
+        "regression"
+      ],
+      "reason": "Required existing CI regression; defer to final CI instead of adding an extra local all5 run."
+    },
+    {
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "build:goal-books",
+        "--",
+        "--force"
+      ],
+      "evidenceIds": [
+        "ci"
+      ],
+      "reason": "Existing independent same-run publication producer; unchanged CI remains authoritative."
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--exit-code",
+        "--",
+        "docs/qa-ci/status"
+      ],
+      "dependsOn": [
+        "status-all5"
+      ],
+      "evidenceIds": [
+        "ci"
+      ],
+      "reason": "CI checks committed generated status freshness. Before committing local intended regenerated outputs, an ordinary nonzero diff is expected and is not a science failure."
+    },
+    {
+      "argv": [
+        "git",
+        "ls-files",
+        "--others",
+        "--exclude-standard",
+        "--",
+        "docs/qa-ci/status"
+      ],
+      "expectedStdout": "",
+      "evidenceIds": [
+        "ci"
+      ],
+      "reason": "CI also rejects untracked generated status files."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "package",
+      "path": "app/package.json",
+      "sha256": "8f135f14a21f930ee69467bb111c11a5dc281a0140418255832ee44b8d0a8617",
+      "bytes": 29838,
+      "readRelevantLineAnchors": [
+        10,
+        21,
+        82,
+        119,
+        127,
+        133,
+        170,
+        195
+      ]
+    },
+    {
+      "id": "ci",
+      "path": ".github/workflows/ci.yml",
+      "sha256": "73bb53ebf9d5568c409223eb466998fa63cb8e77408e725882f5c2f5018381d6",
+      "bytes": 32447,
+      "readRelevantLineAnchors": [
+        207,
+        246,
+        380,
+        381,
+        438,
+        535,
+        604,
+        606
+      ]
+    },
+    {
+      "id": "central",
+      "path": "app/scripts/reportDeepUnderstandingRollout.ts",
+      "sha256": "a13dff507b0df8e3d78aea16002300ed283ba943a5da184380cc53c818af8e80",
+      "bytes": 83166,
+      "readRelevantLineAnchors": [
+        1878,
+        1946,
+        1951,
+        1988
+      ]
+    },
+    {
+      "id": "status",
+      "path": "app/scripts/generateCurriculumQualityStatus.ts",
+      "sha256": "e8dd1ee3df4054d4578109647d5f46fb5a83e5fe7de7e117a1865c39477c3fef",
+      "bytes": 275082,
+      "readRelevantLineAnchors": [
+        3846,
+        3891,
+        6126,
+        6262
+      ]
+    },
+    {
+      "id": "maturity",
+      "path": "docs/qa-ci/curriculum-quality-maturity-and-routes.md",
+      "sha256": "59d3f835fbe02a833e4e0b5ca5e3116a745db8f8910902c9c1199bd0c0e27618",
+      "bytes": 56934,
+      "readRelevantLineAnchors": [
+        221,
+        261,
+        653,
+        753
+      ]
+    },
+    {
+      "id": "rollout_readme",
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/README.md",
+      "sha256": "39307b4cc2683592930f1c9ada798e8fe4d87738bb9dad9fe5086974ee2545b0",
+      "bytes": 15718,
+      "readRelevantLineAnchors": [
+        1,
+        48,
+        190,
+        227
+      ]
+    },
+    {
+      "id": "book_readme",
+      "path": "curricula/DE/Gymnasium/quality/goal-book-publication/README.md",
+      "sha256": "81c84e0fb4eacc1ffe60163530f9e34ad51c80b9b5f264f84621ecb4d1f52806",
+      "bytes": 7297,
+      "readRelevantLineAnchors": [
+        75,
+        100
+      ]
+    },
+    {
+      "id": "book_builder",
+      "path": "app/scripts/buildGoalBookPublications.ts",
+      "sha256": "876bbc63f1cd83d82f26c8925019962d46b027c7895a02296d1dabe9e617fe25",
+      "bytes": 15288,
+      "readRelevantLineAnchors": [
+        193,
+        300
+      ]
+    },
+    {
+      "id": "book_verifier",
+      "path": "app/scripts/checkGoalBookPublication.ts",
+      "sha256": "e7db3c99ecda54e68f0a37995bfae33ff9c9e3045dd377986cd946da18f5bd7c",
+      "bytes": 21828,
+      "readRelevantLineAnchors": [
+        317,
+        340,
+        503,
+        509
+      ]
+    },
+    {
+      "id": "memory_runner",
+      "path": "app/scripts/runMemoryCardReviewConfigs.ts",
+      "sha256": "31ddeaa7ff5049f4cef1d47dbe82223d8d2ed11c791033007211c3a58ea398e3",
+      "bytes": 2264,
+      "readRelevantLineAnchors": [
+        62,
+        89
+      ]
+    },
+    {
+      "id": "memory",
+      "path": "app/scripts/memoryCardReview.ts",
+      "sha256": "e42b154d8557e4ccff249c7cb41ac26b7c40560dd150dbd3255923cd038446f5",
+      "bytes": 49377,
+      "readRelevantLineAnchors": [
+        1156,
+        1185
+      ]
+    },
+    {
+      "id": "regression",
+      "path": "app/scripts/testDeepUnderstandingRollout.ts",
+      "sha256": "02573d8f07f2d84f70226df6aa672f0db1961e01ed82e42aa4d283eeb57a670e",
+      "bytes": 21039,
+      "readRelevantLineAnchors": [
+        250,
+        331
+      ]
+    },
+    {
+      "id": "graph_rules",
+      "path": "docs/qa-ci/graph-validation-rules.md",
+      "sha256": "fe34b0e386188e951cefea59cb79694362db78a4ecd6bc5e6f219b61a47d3214",
+      "bytes": 41279,
+      "readRelevantLineAnchors": [
+        1,
+        23,
+        90,
+        109
+      ]
+    },
+    {
+      "id": "inventory",
+      "path": "scripts/check_ai_transparency_inventory.mjs",
+      "sha256": "648c7efb203ca206dc4ad1b0923cfc68abce44ded3673a58af87d9336b665ae9",
+      "bytes": 14603,
+      "readRelevantLineAnchors": [
+        23,
+        44
+      ]
+    },
+    {
+      "id": "current_readme",
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/README.md",
+      "sha256": "bd896651ed059c210e485015599b65de3e813d8bbdf09a5a283b35779eb2f014",
+      "bytes": 8724,
+      "readRelevantLineAnchors": [
+        1,
+        65
+      ]
+    }
+  ],
+  "prohibitedDuringPreparation": [
+    "gate execution",
+    "tests",
+    "builds",
+    "apply",
+    "normal file mutations"
+  ],
+  "claims": {
+    "newScientificReviews": 0,
+    "testsExecuted": 0,
+    "buildsExecuted": 0,
+    "appliesExecuted": 0,
+    "normalFilesChanged": 0,
+    "currentM7Claim": false,
+    "humanApproval": false,
+    "humanTrial": false
+  }
+}

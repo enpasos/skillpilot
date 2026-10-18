@@ -1,0 +1,341 @@
+{
+  "central": {
+    "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+    "sha256": "6ee503fa9cb4d6b0ff9de9e864d830d04f6a7f2a26018b6729a65a9c8a6286e5",
+    "bytes": 679807
+  },
+  "purpose": "Coverage clarification only; no new native P decision",
+  "records": [
+    {
+      "goalId": "3e9eb5d0-3407-5a1e-9492-ad87f98d303d",
+      "config": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current447-native-A-M-P-serialization-technical-20261018-v1/P/residual/P060.config.json",
+        "sha256": "c85c3d1347c66842eb8f72f03f8f563cbca6d0a270dc17d08a0a9d7360432e99",
+        "bytes": 1779
+      },
+      "nativeLedger": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current447-native-A-M-P-serialization-technical-20261018-v1/P/residual/P060.review.jsonl",
+        "sha256": "fcb7b578e376e9a2bf158871ebaf74e33c47dbe845fff243c8451523a1d99525",
+        "bytes": 99200
+      },
+      "lineOneBased": 1,
+      "wholeNativeRecord": {
+        "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+        "schemaVersion": 2,
+        "reviewId": "chemie-polymers-six-visual40-rubric-author-successor-20261013-v3",
+        "goalFingerprintRuleVersion": "goal-evidence-v1",
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "3e9eb5d0-3407-5a1e-9492-ad87f98d303d",
+        "goalFingerprint": "sha256:0627eecd3d32bb7d9ce351c66925fce630f82fcdf8ee1809a7f41030857c2666",
+        "reviewInputFingerprint": "sha256:2518c3e173ccb3f74542573b52a5c944b8d95bf86a41f431f937025edbd9b065",
+        "profileFingerprint": "sha256:ece4b0680fc30cf0577c2483b4d8cf66d20e91a8fd2a08ce3b9bf7f7c9f9022a",
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "reviewedAt": "2026-10-17T21:23:41.999975+00:00",
+        "reviewer": "Codex B technical current-input serialization; underlying scientific authors and reviewers remain recorded in the P442 selection/provenance",
+        "reason": "Additive bilingual author successor with corrected images where evidenced and actual case-specific rubric joins. Await fresh independent whole-goal review.",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1",
+        "reviewRunIds": [],
+        "dissent": [],
+        "profile": {
+          "archetype": "concept",
+          "expectations": [
+            {
+              "id": "e1",
+              "essentialUnderstandingDe": "Bei den hier gegebenen konventionellen Kunststoffmodellen unterscheiden dauerhafte kovalente Netzpunkte Thermoplaste, Elastomere und Duroplaste; unvernetzte Ketten können linear oder verzweigt sein. Thermoplastische Elastomere können dagegen thermoreversible physikalische Netzwerke besitzen: kovalenter Vernetzungsgrad allein ist kein universelles Klassengesetz.",
+              "essentialUnderstandingEn": "For the supplied conventional plastic models, permanent covalent network points distinguish thermoplastics, elastomers and thermosets; uncrosslinked chains may be linear or branched. Thermoplastic elastomers can instead have thermoreversible physical networks: covalent crosslink density alone is not a universal classification law.",
+              "observablePerformanceDe": "Ordnet die vorgegebenen konventionellen Ketten-/Netzstrukturen anhand thermischer und mechanischer Daten begründet zu und begrenzt die Zuordnung, wenn die Daten keine eindeutige Klasse belegen.",
+              "observablePerformanceEn": "Classifies the supplied conventional chain/network structures using thermal and mechanical evidence and limits the classification when the data do not establish a unique class."
+            },
+            {
+              "id": "e2",
+              "essentialUnderstandingDe": "Erwärmen ermöglicht bei geeigneten Thermoplasten Kettenbewegung; kovalente Netzwerke schmelzen nicht zu frei fließenden Ketten.",
+              "essentialUnderstandingEn": "Heating enables chain motion in suitable thermoplastics; covalent networks do not melt into freely flowing chains.",
+              "observablePerformanceDe": "Erklärt Schmelzverarbeitung, Rückstellung und Formstabilität aus den jeweiligen Kettenmodellen.",
+              "observablePerformanceEn": "Explains melt processing, elastic recovery and shape stability from the respective chain models."
+            },
+            {
+              "id": "e3",
+              "essentialUnderstandingDe": "Die Klasse grenzt Anwendungen ein, ersetzt aber keine anwendungsbezogenen Belastungsdaten.",
+              "essentialUnderstandingEn": "Class constrains applications but does not replace application-specific load data.",
+              "observablePerformanceDe": "Wählt ein Material für eine neue Anwendung und nennt eine noch zu prüfende Einsatzgrenze.",
+              "observablePerformanceEn": "Selects a material for a new application and identifies a remaining service limit to test."
+            }
+          ],
+          "coverageExpectations": {
+            "requiredExpectationIds": [
+              "e1",
+              "e2",
+              "e3"
+            ],
+            "alternativeExpectationGroups": [],
+            "minimumIndependentDemonstrations": 2,
+            "freshVariationRequired": true,
+            "independentTransferRequired": true
+          },
+          "variationAxes": [
+            {
+              "id": "v1",
+              "textDe": "Vernetzung und Verzweigung",
+              "textEn": "Crosslinking and branching"
+            },
+            {
+              "id": "v2",
+              "textDe": "Temperatur und Belastung",
+              "textEn": "Temperature and loading"
+            },
+            {
+              "id": "v3",
+              "textDe": "Anforderung des Bauteils",
+              "textEn": "Component requirements"
+            }
+          ],
+          "applicationCaseBriefs": [
+            {
+              "id": "3e9eb5d0-case-1",
+              "taskDemandDe": "Ordne A–C zu. Erkläre je ein Verhalten auf Teilchenebene. Wähle für einen spritzgegossenen Verschluss, eine rückstellende Dichtung und einen starren warmen Griff; nenne je eine offene Prüffrage.",
+              "taskDemandEn": "Classify A–C. Explain one behaviour of each at particle level. Select for an injection-moulded cap, a recovering seal and a rigid warm handle; identify one untested requirement for each.",
+              "expectedPerformanceDe": "A Thermoplast: Verzweigung ist keine Vernetzung, Ketten können gegeneinander gleiten. B Elastomer: wenige Netzpunkte verhindern dauerhaftes Abgleiten und ermöglichen Rückstellung. C Duroplast: dichtes Netz verhindert Schmelzfluss; Zersetzung ist kein Schmelzen. A Verschluss, B Dichtung, C Griff sind begründete Vorauswahlen. Medienbeständigkeit/Dichtungsalterung/Grifftemperatur müssen separat geprüft werden.",
+              "expectedPerformanceEn": "A thermoplastic: branching is not crosslinking; chains can slide. B elastomer: sparse network points prevent permanent sliding and permit recovery. C thermoset: dense network prevents melt flow; decomposition is not melting. A cap, B seal and C handle are reasoned preliminary selections. Chemical resistance, seal ageing and handle temperature require separate tests.",
+              "understandingFocusDe": "Fallbezogene Aspekte: A Thermoplast, B Elastomer, C Duroplast; Daten zu Fließen, Rückstellung und dichtem Netz begründen die Zuordnung. / A-Ketten gleiten; wenige B-Netzpunkte ermöglichen Rückstellung; C zersetzt sich statt zu schmelzen. / A Verschluss, B Dichtung, C Griff als Vorauswahl; je eine konkrete fehlende Medien-, Alterungs- oder Temperaturprüfung. Die Verknüpfung zu Erwartungs-IDs behauptet keine vollständige Erfüllung jeder Gesamtprofilerwartung in diesem Einzelfall.",
+              "understandingFocusEn": "Case-specific aspects: A thermoplastic, B elastomer, C thermoset; flow, recovery and dense-network data justify the classification. / A chains slide; sparse B network permits recovery; C decomposes rather than melting. / A cap, B seal, C handle as preliminary choices; one specific missing chemical-resistance, ageing or temperature test each. Links to expectation IDs do not assert complete fulfilment of every whole-profile expectation in this one case."
+            },
+            {
+              "id": "3e9eb5d0-case-2",
+              "taskDemandDe": "Erkläre die Änderung, ordne X und Y soweit die Daten reichen zu und beurteile beide Verwendungen. Kann die geringe bleibende Dehnung allein ein engmaschiges Duroplastnetz beweisen?",
+              "taskDemandEn": "Explain the change, classify X and Y as far as evidence permits and assess both uses. Does low permanent strain alone prove a dense thermoset network?",
+              "expectedPerformanceDe": "X ist thermoplastisch und für Einschmelzen grundsätzlich geeignet. Y zeigt vernetzungsbedingt weniger Kettengleiten; elastomere Eignung verlangt zusätzlich reversible Dehnung und passende Temperatur.5% Restdehnung beweist keine bestimmte Netzmaschenweite und keinen Duroplast. Für die Manschette Rückstellung über mehrere Zyklen testen; für das Gehäuse thermische Stabilität des X beim Wiederaufschmelzen prüfen.",
+              "expectedPerformanceEn": "X is thermoplastic and potentially suitable for remelting. Y has less chain sliding due to crosslinking; elastomer suitability additionally requires reversible extension at the intended temperature.5% permanent strain proves neither a particular network density nor a thermoset. Test repeated recovery for the sleeve and thermal stability of X during remelting for the housing.",
+              "understandingFocusDe": "Fallbezogene Aspekte: X ist anhand der Daten thermoplastisch; die Daten bestimmen Y nicht eindeutig als Elastomer oder Duroplast. / Vernetzung vermindert dauerhaftes Kettengleiten; 5% Restdehnung beweist weder Netzmaschenweite noch reversible Elastizität. / X für Wiederaufschmelzen prüfen; für Y-Manschette Rückstellung und Temperatur über Zyklen prüfen. Die Verknüpfung zu Erwartungs-IDs behauptet keine vollständige Erfüllung jeder Gesamtprofilerwartung in diesem Einzelfall.",
+              "understandingFocusEn": "Case-specific aspects: Data support thermoplastic X; they do not uniquely classify Y as elastomer or thermoset. / Crosslinking reduces permanent chain sliding; 5% residual strain proves neither network density nor reversible elasticity. / Test X for remelting; test recovery and temperature over cycles for a Y sleeve. Links to expectation IDs do not assert complete fulfilment of every whole-profile expectation in this one case."
+            }
+          ]
+        }
+      },
+      "wholeRecordSHA256": "1395209fc5344499bc819bdf4c920404f4ca3ec1cc90ad69789c944869a414d4",
+      "wholeProfileSHA256": "647a76bd90d15acdb8fcaad3a67942731fdaca57a5f2355049a90e2bf38e78ad"
+    },
+    {
+      "goalId": "3eb2a06c-d283-57aa-9eb4-088940c4801a",
+      "config": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current450-author-v3-complete-inactive-integration-technical-20261018-v1/P/residual/P125.same-owner.config.json",
+        "sha256": "fc308ad3eb927aceb2ea8d1c3c0460871f5b1c5af0a8f3bda0528072092a59a1",
+        "bytes": 1809
+      },
+      "nativeLedger": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current450-author-v3-complete-inactive-integration-technical-20261018-v1/P/residual/P125.exact-current-rest.jsonl",
+        "sha256": "0cd865a9349925b97cade8935734d0ba91e1ee4f75dc7a8c4b3fc63001b60a6f",
+        "bytes": 189937
+      },
+      "lineOneBased": 10,
+      "wholeNativeRecord": {
+        "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+        "schemaVersion": 2,
+        "reviewId": "canonical-chemistry-current447-seventeen-paired-informed-positive-native-20261018-v1",
+        "goalFingerprintRuleVersion": "goal-evidence-v1",
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "3eb2a06c-d283-57aa-9eb4-088940c4801a",
+        "goalFingerprint": "sha256:b3e166a93f10b040137da02018368f874e0f545e38b22cf03fce6bd681eb6476",
+        "reviewInputFingerprint": "sha256:2380d744382a3276be256bdb5ed186139badfc4a9046d31c8cefa329126146b8",
+        "profileFingerprint": "sha256:455caadb926763f8be82df575aa577ee296c57b39ae9abfa6ca2910ad86a7bc6",
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "reviewedAt": "2026-10-17T23:22:49.296Z",
+        "reviewer": "codex-technical-native-serialization-from-actual-paired-informed-science",
+        "reason": "Technical native serialization from two actually sealed informed scientific judgments; no new reviewer vote. A: Die Forschung→Labor→Anlage→Vermarktung-Kette wird an einem einzigen Salicylatvorhaben kausal verbunden, nicht nur als Stationsliste. Beide vollständigen operativen Fälle samt gemeinsamen Texten, Lösungen, Rubriken und frischen Transfers sind gelesen. ASS40% gegenüber Salicylsäure70% Restaktivität begründet nur die weitere Prüfung unter dem zellfreien Modelltest. Reaktion C7H6O3+C4H6O3→C9H8O4+C2H4O2 ist bilanziert;1,50/2,00=75% isolierte Modellausbeute. Geometrisch×1000Volumen gegen×100Wand erhöht das Wärmefreisetzung/Abfuhr-Verhältnis×10; es liefert keine neue Ausbeute.1kg ASS ermöglicht100Packungen,80gefragte Packungen280Euro Umsatz/120Euro Deckungsbeitrag ohne Gewinnbehauptung. Der unabhängige0,60kg-Befund reduziert auf60Packungen und90Euro Beitrag. Im zweiten Fall erfüllen99/1und98/2 die gegebenen97/3-Grenzen unmittelbar,92/8 nicht; spätere94/6 verletzen die später verlangten Grenzen. Wasser-/Kontaktzeit ist eine prüfbare, nicht isoliert bewiesene Ursache; Designpräferenz80/120 und0,40Euro Mehrkosten liefern weder Wirk- noch Gesamtwirtschaftlichkeitsnachweise. Gesellschaftliche Wirkung/Zugang wird als unabhängige Urteilsleistung vollständig zu4965 getrennt. | B: Die vollständige zusammenhängende Forschung→Labor→Anlage→Vermarktung bleibt mit vier Erwartungen und beiden ganzen nichtisomorphen Salicylatfällen. Im ersten Fall75%Ausbeute; geometrisch1000fach Wärmefreisetzung gegen100fach Wandfläche ist kein Anlagenlauf.1kg ergibt100 mögliche Packungen;80 angenommene Verkäufe ergeben280Euro Umsatz und120Euro Deckung Full paired source pins/pointers: PROVENANCE.actual-paired-science.json /goals/3eb2a06c-d283-57aa-9eb4-088940c4801a/P.",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1",
+        "reviewRunIds": [],
+        "dissent": [
+          "Inactive AI candidate; final normal integration and all independent D/source/M7/human gates remain separate."
+        ],
+        "profile": {
+          "archetype": "modeling",
+          "expectations": [
+            {
+              "id": "research-development-evidence",
+              "essentialUnderstandingDe": "Eine Forschungsfrage wird durch charakterisierte Stoffe und passende Vergleiche bearbeitet; ein Modelltest begründet weitere Entwicklung, nicht bereits menschlichen Nutzen.",
+              "essentialUnderstandingEn": "A research question is addressed using characterised substances and suitable comparisons; a model test supports further development, not yet human benefit.",
+              "observablePerformanceDe": "Forschungsfrage, konkreten Befund und angemessene Entwicklungsentscheidung verbinden; Modell-/Laborbelege von klinischen Aussagen abgrenzen.",
+              "observablePerformanceEn": "Connect research question, concrete finding and an appropriate development decision; distinguish model/laboratory evidence from clinical claims."
+            },
+            {
+              "id": "laboratory-industrial-comparison",
+              "essentialUnderstandingDe": "Herstellung umfasst Stoffumwandlung und nachfolgende Trennung/Produktprüfung; bei Übertragung können Wärmeabfuhr, Kontakt und Qualität vom kleinen Laborfall abweichen.",
+              "essentialUnderstandingEn": "Manufacture combines transformation with later separation/product testing; heat removal, contact and quality can differ when transferred from a small laboratory case.",
+              "observablePerformanceDe": "Chemische Umwandlung und Aufarbeitung/Formulierung unterscheiden und die fallbezogene Labor-/Anlagendifferenz mit den bereitgestellten Daten fachlich erklären.",
+              "observablePerformanceEn": "Distinguish chemical transformation and work-up/formulation and explain the case-specific laboratory/plant difference using the supplied data."
+            },
+            {
+              "id": "marketing-product-evidence",
+              "essentialUnderstandingDe": "Vermarktung verbindet Produkt, verfügbare Menge/Qualität, Bedarf, Kosten und begründbare Information; Verkauf und Werbung sind andere Belege als Stoffprüfung oder klinische Ergebnisse.",
+              "essentialUnderstandingEn": "Marketing connects product, available amount/quality, demand, cost and supportable information; sales and advertising are different evidence from chemical tests or clinical results.",
+              "observablePerformanceDe": "Produktmenge oder Produktqualität mit Absatz-/Informationsentscheidung verbinden; Nachfrage, Kosten, Werbeaussage und klinische Beleggrenze korrekt unterscheiden.",
+              "observablePerformanceEn": "Relate product amount or quality to a sales/information decision; correctly distinguish demand, cost, advertising claims and clinical evidence limits."
+            },
+            {
+              "id": "connected-feedback-transfer",
+              "essentialUnderstandingDe": "Forschung, Labor, Anlage und Vermarktung gehören zu demselben Entwicklungszusammenhang; ein neuer Stoff- oder Prozessbefund kann frühere Entscheidungen und Produktversprechen verändern.",
+              "essentialUnderstandingEn": "Research, laboratory, plant and marketing belong to the same development context; a new substance/process finding can change earlier decisions and product promises.",
+              "observablePerformanceDe": "Alle Stationen am selben Wirkstoffgruppenbeispiel begründet verbinden und nach dem frischen Befund einen konkreten Rückkopplungsschritt samt Folgen für das Vorhaben selbstständig ableiten.",
+              "observablePerformanceEn": "Connect all stages using the same drug-group example and independently derive a concrete feedback step and project consequences after the fresh finding."
+            }
+          ],
+          "coverageExpectations": {
+            "requiredExpectationIds": [
+              "research-development-evidence",
+              "laboratory-industrial-comparison",
+              "marketing-product-evidence",
+              "connected-feedback-transfer"
+            ],
+            "alternativeExpectationGroups": [],
+            "minimumIndependentDemonstrations": 2,
+            "freshVariationRequired": true,
+            "independentTransferRequired": true
+          },
+          "variationAxes": [
+            {
+              "id": "scale-and-accepted-supply",
+              "textDe": "Veränderte Wärmeabfuhr oder neue Verunreinigung ändert Produktionsnachweis, akzeptierte Menge und Lieferbegründung.",
+              "textEn": "Changed heat removal or a new impurity changes production evidence, accepted supply and delivery justification."
+            },
+            {
+              "id": "identity-and-storage-feedback",
+              "textDe": "Neuer Stoffbefund oder Lagerzeitpunkt trennt unmittelbare Zusammensetzung, Haltbarkeit und Werbeversprechen.",
+              "textEn": "A new substance finding or storage time point separates immediate composition, shelf-life and advertising promises."
+            }
+          ],
+          "applicationCaseBriefs": [
+            {
+              "id": "sh032-salicylate-scale-market",
+              "taskDemandDe": "Vollständiges eigenständiges Material, Aufgaben, Lösungen, frischer Transfer und Rubrik: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-SH032-one-coherent-selected-theme-process-chain-author-successor-20261016-v1/materials/TWO.complete-nonisomorphic-DE-EN-cases-and-fresh-transfers.AUTHOR.inactive.json #sh032-salicylate-scale-market. 1. Verknüpfe Forschungsfrage, Befund und einen begründeten nächsten Entwicklungsschritt. Was zeigt der Vergleich und welche wichtige Folgerung zeigt er nicht?\n2. Erkläre am gegebenen Prozess, wo ein neuer Stoff entsteht und wo vorhandene Stoffe getrennt werden. Berechne die isolierte Modellausbeute. Erkläre mit den Geometriedaten, warum bloßes Vervielfachen für die geplante Übertragung nicht genügt; benenne eine dafür nötige neue Prüfung.\n3. Prüfe die mengenmäßige Erfüllbarkeit des internen Absatzplans. Berechne maximal mögliche Packungen, Umsatz und Stückbeitrag für die angenommene Nachfrage. Ordne die Werbeaussage mit den gegebenen Belegen ein.\n4. Erstelle eine begründete zusammenhängende Darstellung des Vorhabens: Welche Übergänge sind belegt, welche bleiben offen und welche Information kann eine frühere Entwicklungsentscheidung verändern? Unterscheide den abgeschlossenen Modellchargenbefund vom ungeprüften Übertragungsplan.",
+              "taskDemandEn": "Complete self-contained material, tasks, solutions, fresh transfer and rubric: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-SH032-one-coherent-selected-theme-process-chain-author-successor-20261016-v1/materials/TWO.complete-nonisomorphic-DE-EN-cases-and-fresh-transfers.AUTHOR.inactive.json #sh032-salicylate-scale-market. 1. Connect the research question, finding and a justified next development step. What does the comparison show, and what important inference does it not establish?\n2. Explain where the supplied process forms a new substance and where it separates existing substances. Calculate the isolated model yield. Use the geometry to explain why multiplication alone is insufficient for the proposed transfer; identify a new check needed.\n3. Check whether the internal sales plan can be supplied. Calculate maximum packs, revenue and contribution for assumed demand. Assess the advertising claim using the supplied evidence.\n4. Give a reasoned connected account of the project: which transitions have evidence, which remain open and what information could change an earlier development decision? Distinguish the completed model-batch finding from the untested transfer plan.",
+              "expectedPerformanceDe": "Forschungskandidat begrenzt wählen; Reaktion/Aufarbeitung unterscheiden;75%Modellausbeute; geometrische Wärmeabfuhrgrenze erklären;100 mögliche/80 verlangte Packungen,280Euro Umsatz und120Euro Deckungsbeitrag ohne Gewinnbehauptung; chemische und klinische Aussagen trennen. Frischer Transfer: Ursache der Verunreinigung untersuchen,60 statt80 Packungen,90Euro hypothetischer Beitrag, Produktions-/Vermarktungsplan rückkoppeln.",
+              "expectedPerformanceEn": "Choose a bounded research candidate; distinguish reaction/work-up;75%model yield; explain geometric heat-removal limitation;100possible/80demanded packs,280euro revenue and120euro contribution without claiming profit; distinguish chemical and clinical evidence. Fresh transfer: investigate impurity cause,60rather than80packs,90euro hypothetical contribution, feed back production/marketing plans.",
+              "understandingFocusDe": "Ein durchgängiger Salicylatfall verbindet alle vier Anforderungen; der frische Transfer muss die neue Befundlage eigenständig auf denselben Entwicklungszusammenhang beziehen.",
+              "understandingFocusEn": "One connected salicylate case combines all four requirements; fresh transfer must independently relate the new finding to that development context."
+            },
+            {
+              "id": "sh032-salicylate-stability-feedback",
+              "taskDemandDe": "Vollständiges eigenständiges Material, Aufgaben, Lösungen, frischer Transfer und Rubrik: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-SH032-one-coherent-selected-theme-process-chain-author-successor-20261016-v1/materials/TWO.complete-nonisomorphic-DE-EN-cases-and-fresh-transfers.AUTHOR.inactive.json #sh032-salicylate-stability-feedback. 1. Formuliere die konkrete Entwicklungsfrage und erkläre, weshalb der größere Ansatz neue Forschungs-/Prozessarbeit auslöst, obwohl das Labormuster die Fallgrenzen erfüllt.\n2. Ordne Formulierung und die durch die Tabelle gestützte Stoffumwandlung zu. Prüfe die drei Muster gegen beide Fallanforderungen. Begründe, welche Ursachenvergleiche und zusätzlichen Befunde vor einer Übertragung vonY benötigt werden.\n3. Ordne die Befragung und den Preisunterschied in eine Vermarktungsentscheidung ein. Welche Aussage trägt die Befragung, welche Herstellungs- oder Wirkaussage trägt sie nicht? Lässt sich entscheiden, obY insgesamt wirtschaftlicher ist?\n4. Entwirf eine zusammenhängende nächste Entscheidung für das Vorhaben und eine begrenzte interne Produktinformation. Verknüpfe die chemischen Befunde, den Unterschied zwischen Labor und Anlage und die Folgen für den Vermarktungsplan.",
+              "taskDemandEn": "Complete self-contained material, tasks, solutions, fresh transfer and rubric: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-SH032-one-coherent-selected-theme-process-chain-author-successor-20261016-v1/materials/TWO.complete-nonisomorphic-DE-EN-cases-and-fresh-transfers.AUTHOR.inactive.json #sh032-salicylate-stability-feedback. 1. State the specific development question and explain why enlargement triggers new research/process work even though the laboratory sample meets the case limits.\n2. Identify formulation and the substance change supported by the table. Check all three samples against both requirements. Explain which causal comparisons and additional findings are needed before transferringY.\n3. Relate the survey and cost difference to a marketing decision. What statement does the survey support, and what manufacturing or therapeutic statement does it not support? Can you decide whetherY is economically preferable overall?\n4. Design a connected next project decision and a bounded internal product statement. Connect the chemistry, the laboratory/plant difference and the implications for the marketing plan.",
+              "expectedPerformanceDe": "Hydrolyse und Formulierung unterscheiden;99/1 und98/2 erfüllen unmittelbare97/3-Grenzen,92/8 nicht. Kontaktzeithypothese begrenzt prüfen, PilotY nicht als validiert ausgeben.80/120≈66,7%Designpräferenz belegt keine Nachfrage/Qualität/Wirkdauer;0,40Euro Mehrkosten entscheiden keine Gesamtwirtschaftlichkeit. Frischer94/6-Lagerbefund ruft Formulierung/Verpackung und Werbeversprechen zurück in die Entwicklung.",
+              "expectedPerformanceEn": "Distinguish hydrolysis and formulation;99/1and98/2meet immediate97/3limits,92/8does not. Test contact-duration hypothesis with limits and do not call pilotYvalidated.80/120≈66.7%design preference proves neither demand, quality nor duration of action;0.40euro higher cost does not decide overall economics. Fresh94/6storage data feed formulation/packaging and advertising back into development.",
+              "understandingFocusDe": "Ein durchgängiger Salicylatfall verbindet alle vier Anforderungen; der frische Transfer muss die neue Befundlage eigenständig auf denselben Entwicklungszusammenhang beziehen.",
+              "understandingFocusEn": "One connected salicylate case combines all four requirements; fresh transfer must independently relate the new finding to that development context."
+            }
+          ]
+        }
+      },
+      "wholeRecordSHA256": "7194ac1bce5545a875006d9e1f4d27dba6cedda0873a04e03d613c4dd0775132",
+      "wholeProfileSHA256": "afd6a10e2c2b4b7a372eabe423b2a1c87f2a97e1c20b4b34452a814cbb769b2a"
+    },
+    {
+      "goalId": "a25a19ed-aec3-59cc-ae28-31d98746cb9d",
+      "config": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-normal-source-configs/P102.normal-source.config.json",
+        "sha256": "b2e354e15431e297e44b847f8ad9547670ba6ee834058c66b69d5720d064046c",
+        "bytes": 1828
+      },
+      "nativeLedger": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-plan/records/P102.current-owner.review.jsonl",
+        "sha256": "4eb08ded32d743dc9ebb51bb696a2b835fa8e1690c1e57a8eba6d8a39e1473be",
+        "bytes": 109588
+      },
+      "lineOneBased": 13,
+      "wholeNativeRecord": {
+        "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+        "schemaVersion": 2,
+        "reviewId": "chemie-current-p19-genuine-informed-artifact-science-20261016-v1",
+        "goalFingerprintRuleVersion": "goal-evidence-v1",
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "a25a19ed-aec3-59cc-ae28-31d98746cb9d",
+        "goalFingerprint": "sha256:481b784fe3b066675baf5739fecd465d4f51f0e37e910e853afd7d6199692a2c",
+        "reviewInputFingerprint": "sha256:fbd49bedbd0e5f6696ba990bd76b01f9b035ecb9c8702825def302836e287027",
+        "profileFingerprint": "sha256:1e95f9bc9961e2a792030f750d207e55c610613da9b1bae363a5dac329402532",
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "reviewedAt": "2026-10-17T21:23:41.999975+00:00",
+        "reviewer": "Codex B technical current-input serialization; underlying scientific authors and reviewers remain recorded in the P442 selection/provenance",
+        "reason": "Bereitgestellte Körper- und Abbauinformationen werden mit einer konkreten Alltagsentscheidung und begründeten Aussagegrenzen verbunden. Auswendig gelernte Cofaktorbiochemie wird nicht verlangt.\nScope: Ethanol→Ethanal→Acetat ist ein Teilweg ohne Abbauzeit. Keine Individualdiagnose, sichere Menge oder klinische Wirksamkeitsbehauptung.\nActual informed artifact judgment source: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current-nineteen-genuine-informed-P-design-bindings-20261016-v1/CANDIDATES.prospective-normal-P-profile-bodies.json",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1",
+        "reviewRunIds": [],
+        "dissent": [],
+        "profile": {
+          "archetype": "concept",
+          "expectations": [
+            {
+              "id": "e1",
+              "essentialUnderstandingDe": "Akute Funktionsbeeinträchtigung und mögliche längerfristige Schädigung sind unterschiedliche körperliche Folgen. Ein zweckgebundener Nutzen äußerer Anwendung belegt keine Harmlosigkeit beim Konsum.",
+              "essentialUnderstandingEn": "Acute functional impairment and possible longer-term harm are distinct bodily effects. Purpose-specific benefits of external application do not establish harmlessness of consumption.",
+              "observablePerformanceDe": "Erklärt anhand der gegebenen Informationen Körperwirkung und Risikobezug und unterscheidet vorgesehene Anwendung von Konsum.",
+              "observablePerformanceEn": "Uses the supplied information to explain bodily effects and risk, distinguishing intended external use from consumption."
+            },
+            {
+              "id": "e2",
+              "essentialUnderstandingDe": "Die Metabolisierbarkeit von Ethanol bedeutet nicht sofortige Unschädlichkeit; ein Teilweg kann schädliche Zwischenprodukte enthalten.",
+              "essentialUnderstandingEn": "Being metabolizable does not make ethanol immediately harmless; a partial pathway can contain harmful intermediates.",
+              "observablePerformanceDe": "Deutet das bereitgestellte Ethanol–Ethanal–Acetat-Schema als schrittweise Oxidation und begrenzt seine Aussage zur Körperwirkung; keine auswendig gelernte Biochemie.",
+              "observablePerformanceEn": "Interprets the supplied ethanol–ethanal–acetate scheme as stepwise oxidation and explains its limits concerning bodily effects; no memorized biochemistry."
+            },
+            {
+              "id": "e3",
+              "essentialUnderstandingDe": "Eine fachliche Alltagsentscheidung braucht Wirkungsbezug, begrenzte Belege und klare Sicherheitskriterien.",
+              "essentialUnderstandingEn": "A scientifically reasoned everyday decision needs a link to bodily effects, bounded evidence and clear safety criteria.",
+              "observablePerformanceDe": "Begründet eine konkrete Sicherheits-/Gesundheitsentscheidung in der frischen Situation und kennzeichnet nicht belegte Individualdiagnosen, sichere Mengen und genaue Abbauzeiten.",
+              "observablePerformanceEn": "Justifies a concrete health/safety response in the fresh situation and identifies unsupported diagnoses, safe amounts and exact elimination times."
+            }
+          ],
+          "coverageExpectations": {
+            "requiredExpectationIds": [
+              "e1",
+              "e2",
+              "e3"
+            ],
+            "alternativeExpectationGroups": [],
+            "minimumIndependentDemonstrations": 2,
+            "freshVariationRequired": true,
+            "independentTransferRequired": true
+          },
+          "variationAxes": [
+            {
+              "id": "context-and-inference",
+              "textDe": "Von Verkehrssituation zu sachlicher Werbung/zweckgebundener äußerer Anwendung wechseln; fehlerhafte Schlüsse aus Herkunft, Metabolisierbarkeit oder Nutzen prüfen.",
+              "textEn": "Change between traffic, factual advertising and purpose-specific external application; assess faulty inferences from origin, metabolism or benefit."
+            }
+          ],
+          "applicationCaseBriefs": [
+            {
+              "id": "ethanol-effects-successor-a",
+              "taskDemandDe": "Erläutere an K1 und K2 den Unterschied zwischen einer akuten Funktionsbeeinträchtigung und einer möglichen längerfristigen Schädigung. Deute den bereitgestellten Abbauweg als schrittweise Oxidation und erkläre, weshalb er weder sofortige Unbedenklichkeit noch eine Abfahrtszeit beweist. Begründe für den Fall einen Heimweg, bei dem die betroffene Person kein Fahrzeug führt, und nenne die Grenzen der Aussage. Ordne außerdem mit Karte D den Nutzen der vorgesehenen äußeren Anwendung ein und widerlege begründet den Schluss, dieser Nutzen mache die Einnahme harmlos.",
+              "taskDemandEn": "Use C1 and C2 to explain the difference between acute impairment and possible longer-term harm. Interpret the supplied pathway as stepwise oxidation and explain why it demonstrates neither immediate harmlessness nor a departure time. Justify a journey in which the affected person does not operate a vehicle, and state the limits of the conclusion. Also use card D to interpret the benefit of the intended external application and explain why that benefit does not make ingestion harmless.",
+              "expectedPerformanceDe": "Akut kann das gestörte Denken oder die gestörte Koordination schon die aktuelle Verkehrssituation riskant machen; eine mögliche langfristige Organschädigung ist eine andere Zeitebene. Der rechte Kohlenstoff wird von −I zu +I und +III oxidiert; die Enzyme bewirken mehrere Schritte, und das Zwischenprodukt Ethanal ist selbst schädlich. Das Schema ist keine Uhr und zeigt keine gemessene aktuelle Fähigkeit. Ein geplanter Heimweg etwa durch Abholung mit einer verlässlich nüchternen verantwortlichen Person vermeidet eigene Fahrzeugführung. Ob eine bestimmte Person eine Krankheit hat, wie viel sie konsumiert hat oder ab wann sie wieder fahrtüchtig ist, folgt nicht. Die Keimreduktion bezieht sich auf eine vorgesehene äußere Anwendung. Ein Nutzen für diesen Zweck ist mit Risiken der Aufnahme in den Körper vereinbar und beweist keine Harmlosigkeit beim Trinken; unterschiedliche Aufnahmewege und Verwendungszwecke dürfen nicht gleichgesetzt werden.",
+              "expectedPerformanceEn": "Disrupted thinking or coordination can make the present traffic situation risky; possible longer-term organ damage occurs on a different time scale. The right-hand carbon is oxidized from −I to +I to +III; enzymes mediate several steps, and the intermediate ethanal is itself harmful. The scheme is not a clock and reports no measured current ability. A planned journey such as collection by a reliably sober responsible person avoids operating a vehicle. The information does not establish personal illness, intake or a time when the person becomes fit to drive. Reducing microbes concerns a specified external application. A benefit for that purpose can coexist with risks from intake into the body and does not establish harmlessness of drinking; different routes of exposure and purposes must not be equated.",
+              "understandingFocusDe": "Neue Situation: Eine Getränkewerbung behauptet „Natürlich vergoren und deshalb für alle risikofrei“. Prüfe die Schlussfolgerung an den Karten und begründe, welche Art von Beleg fehlt, ohne eine sichere Menge zu erfinden.",
+              "understandingFocusEn": "Fresh situation: a drinks advertisement claims “Naturally fermented, therefore risk-free for everyone”. Assess the inference using the cards and explain what kind of evidence is missing without inventing a safe amount."
+            },
+            {
+              "id": "ethanol-effects-successor-b",
+              "taskDemandDe": "Erkläre am Material, weshalb der Nutzen einer vorgesehenen äußeren Anwendung und gesundheitliche Risiken beim Konsum nebeneinander bestehen können. Korrigiere beide Plakate mit einer Begründung zu Körperwirkung und zum schrittweisen Abbau. Unterscheide eine begründete allgemeine Risikoaussage von einer unbelegten individuellen Diagnose. Formuliere eine sachliche Beschriftung für eine Schulausstellung.",
+              "taskDemandEn": "Explain from the material why benefits of intended external use can coexist with health risks of consumption. Correct both posters with reasoning about bodily effects and stepwise metabolism. Distinguish a justified general risk statement from an unsupported personal diagnosis. Write a factual caption for a school exhibition.",
+              "expectedPerformanceDe": "D betrifft einen bestimmten äußeren Verwendungszweck; daraus folgt keine Unbedenklichkeit einer Aufnahme in den Körper. Ethanol kann Denken und Koordination beeinträchtigen und bei wiederholtem starkem Konsum unter anderem die Leber schädigen. Der Abbau ist schrittweise und erzeugt mit Ethanal ein schädliches Zwischenprodukt; Metabolisierbarkeit bedeutet daher keine sofortige Unschädlichkeit. Q macht aus einem möglichen Risiko eine angeblich sichere aktuelle Diagnose und ist durch die Karten nicht gedeckt. Eine passende Beschriftung nennt den zweckgebundenen Nutzen und grenzt ihn von Konsumrisiken ab. Sie behauptet weder eine sichere Konsummenge noch eine Erkrankung aller Konsumierenden.",
+              "expectedPerformanceEn": "D concerns a specific external purpose and does not establish that intake into the body is harmless. Ethanol can impair thinking and coordination and repeated heavy consumption can damage the liver, among other organs. Metabolism occurs in steps and produces the harmful intermediate ethanal; being metabolizable does not mean immediate harmlessness. Q turns a possible risk into a supposedly certain current diagnosis, which the cards do not support. A suitable caption identifies the purpose-specific benefit and distinguishes it from consumption risks, without claiming a safe intake or illness in every consumer.",
+              "understandingFocusDe": "Neue Situation: Für einen schulischen Ausflug soll aus dem Satz „Nach einiger Zeit ist Ethanol abgebaut“ eine feste Wartezeit bis zum Fahrradfahren abgeleitet werden. Begründe selbstständig, weshalb das Material diese Zeit nicht festlegt und welche Sicherheitsentscheidung trotzdem vertretbar ist.",
+              "understandingFocusEn": "Fresh situation: on a school outing, the statement “Ethanol is broken down after some time” is used to infer a fixed waiting time before cycling. Independently explain why this material does not establish that time and what safety response is still defensible."
+            }
+          ]
+        }
+      },
+      "wholeRecordSHA256": "4889344fa438a933f4acdb1098226dab11683effdc300df9ecc29117f62de93e",
+      "wholeProfileSHA256": "b7131945eb499d60b217de77d2594a60adbd5f2f931ab51de4b6fad3eb28d0db"
+    }
+  ]
+}

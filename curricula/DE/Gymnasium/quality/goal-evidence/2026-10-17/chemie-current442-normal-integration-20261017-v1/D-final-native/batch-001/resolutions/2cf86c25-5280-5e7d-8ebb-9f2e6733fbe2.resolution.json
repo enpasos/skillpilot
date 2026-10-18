@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-001-v1-resolution-2cf86c25-5280-5e7d-8ebb-9f2e6733fbe2",
+  "goal": {
+    "goalId": "2cf86c25-5280-5e7d-8ebb-9f2e6733fbe2",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:edbdafdbd022843e9a43b1fc29ee20eaddb23e991fdf50b62124edd1dea3c941",
+    "pageFingerprint": "sha256:9842607d87a30d4832116a7c2df6ef830e31f37596c3d7453f120a0f656f6215",
+    "goalReviewContextFingerprint": "sha256:2c6bc8c825f32a09e08444cfe8c714e68482108f8e80fcd312e2d8785beb40aa",
+    "finalText": {
+      "titleDe": "Makromoleküle und Kunststoffproduktion gesellschaftlich bewerten",
+      "titleEn": "Evaluate macromolecules and plastic production socially",
+      "descriptionDe": "Die lernende Person kann die Bedeutung von Makromolekülen und Kunststoffproduktion für Alltag, Technik, Wirtschaft und Gesellschaft fachlich begründet beurteilen.",
+      "descriptionEn": "The learner can evaluate the significance of macromolecules and plastic production for everyday life, technology, economy, and society with chemical reasoning."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-001-v1-a",
+      "campaignDigest": "sha256:96c597e11ef28d55b630202e1c2e03a243872e2f50e9cf9cc7c0df7a79d9cd3d",
+      "roundId": "chemie-final-current-context-d-001-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-001-v1-independent-a",
+      "reviewInputFingerprint": "sha256:84cb9df1bd7fef7e2302044cdb80cba5ac86f4d3a52db0bc7c6a09292793cfa8",
+      "goalReviewContextFingerprint": "sha256:2c6bc8c825f32a09e08444cfe8c714e68482108f8e80fcd312e2d8785beb40aa",
+      "batchId": "chemie-final-current-context-d-001-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch001-20261018",
+      "runManifestDigest": "sha256:b4b3f17dceb9e1e7c4c82361c9c800e5f7de932b46dcf704e3d6a847860b03be",
+      "resultsDigest": "sha256:c9861ef6d236ae81946747b3d1c7abde302f5f013b5c93ce5edad0870065fc31",
+      "recordId": "codex-reviewer-a-final163-batch001-20261018.015",
+      "recordDigest": "sha256:ef12aee80a69e7c9e1647aaea3bd9713c9e9c9cc2b23a3dab9b861185e4c97ea"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-001-v1-b",
+      "campaignDigest": "sha256:1b8713019a8e252039fa354999df05261e1c78eedb890a563b29e531dc70ec46",
+      "roundId": "chemie-final-current-context-d-001-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-001-v1-independent-b",
+      "reviewInputFingerprint": "sha256:84cb9df1bd7fef7e2302044cdb80cba5ac86f4d3a52db0bc7c6a09292793cfa8",
+      "goalReviewContextFingerprint": "sha256:2c6bc8c825f32a09e08444cfe8c714e68482108f8e80fcd312e2d8785beb40aa",
+      "batchId": "chemie-final-current-context-d-001-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-001-20261018",
+      "runManifestDigest": "sha256:13eb6055a4aa8d4d04be4cfd1c0c77f4b206a289df96a67139c1efd68e08d32d",
+      "resultsDigest": "sha256:22da53163d50636a69ec31425cecc056999735ee0193be8470171a3f650414eb",
+      "recordId": "chemie-final163-native-b-001-20261018:2cf86c25-5280-5e7d-8ebb-9f2e6733fbe2",
+      "recordDigest": "sha256:77e2ee0fcba4d46b0e03af76bfb17ffd57050f57f2f0fca52f2756526f6c254b"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:706dc6e69548381d583e44f00cb7a2768b65125ce38e115ffeb99e090ece4f50"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-001-20261018-v1",
+    "manifestDigest": "sha256:2947637162d222247361434cafc2291ef0d74af62baa53f4b2c0b9ac2349ad89",
+    "manifestFingerprint": "sha256:240821b7f7c94c99aba57979178f196e85ea04ebc4d569c964de2f5230011117",
+    "decisionId": "chemie-final163-paired-D-only-001-20261018-v1-decision-014"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-001-20261018-v1-decision-014",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:22:46.792Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch001-20261018.015): Das Urteil über Bedeutung bleibt ein integrierter Struktur-Nutzen-Gesellschaftsbezug. Das ganze P prüft Mehrweg und Verbundmaterial unabhängig, trennt Kaufmaterial von Abfall sowie Pilot-Rückgewinnung von einer vollständigen Ökobilanz. B (chemie-final163-native-b-001-20261018:2cf86c25-5280-5e7d-8ebb-9f2e6733fbe2): Der aktuelle Text ist eine integrierte Bewertungsleistung auf vorausgesetzter Rohstoffbewertung. P liefert funktional vergleichbare PP-/Verbundfälle, Betroffenengruppen und Datenlücken, sodass bloße Produktaufzählung nicht genügt.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch001-20261018.015; chemie-final163-native-b-001-20261018:2cf86c25-5280-5e7d-8ebb-9f2e6733fbe2). Their current English understanding evidence is retained: A: Polymer structure enables specific functions; societal assessment connects these with lifetime, costs, resources and affected groups. B: Macromolecular structure enables functions whose societal benefit must be weighed against costs, service life and distribution of burdens. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Polymerstruktur ermöglicht konkrete Funktionen; gesellschaftliche Bewertung verbindet diese mit Lebensdauer, Kosten, Ressourcen und Betroffenengruppen.",
+      "essentialUnderstandingEn": "Polymer structure enables specific functions; societal assessment connects these with lifetime, costs, resources and affected groups.",
+      "observablePerformanceDe": "Erklärt PP-Formbarkeit oder Faser-Matrix-Funktion, rechnet auf gleiche Nutzung und begründet Zielkonflikte anhand der Daten.",
+      "observablePerformanceEn": "Explains PP formability or fibre-matrix function, calculates equal service and justifies trade-offs from the data.",
+      "transferExpectationDe": "Ändert die Empfehlung bei kürzerer Nutzungsdauer oder geringer Rücklaufquote und erläutert verbleibende Bilanz- und Verteilungsgrenzen.",
+      "transferExpectationEn": "Changes a recommendation for shorter service life or lower return rates and explains remaining accounting and distributional limits."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-35c9781d4a3d74fc04351fa90eb36522213ecbd26798f92d7449b8d74cee1207",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:5d952244559299ef08d53cf892a72c6b5092ea44d4e6e02988b153edad49f1c0"
+}

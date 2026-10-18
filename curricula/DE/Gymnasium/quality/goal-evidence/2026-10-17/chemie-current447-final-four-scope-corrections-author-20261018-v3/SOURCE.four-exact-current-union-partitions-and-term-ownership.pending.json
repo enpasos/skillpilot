@@ -1,0 +1,750 @@
+{
+  "schemaVersion": 1,
+  "status": "inactive_author_candidate_pending_independent_review",
+  "reviewAuthority": "ai_candidate",
+  "active": false,
+  "M7Claim": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "actualLearnerPerformanceRecorded": false,
+  "sourceExtractionExact": {
+    "path": "curricula/DE/Gymnasium/input/HB/upper-secondary/source-extraction/DE_HB_CHEMIE_SEKII_GYO_2022.source-extraction.json",
+    "sha256": "450762dab17a3015aec21eb7593698e4f49130996f7cf8b6b5af652dc4573f91",
+    "bytes": 757515
+  },
+  "mappingExact": {
+    "path": "curricula/DE/Gymnasium/mapping/DE-HB/upper-secondary/hb_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+    "sha256": "82fca52da01710c4cf2a8cc4c4efb9b933eae4964e4d0e9108c6d29fd4b4c395",
+    "bytes": 640726
+  },
+  "sourceInventoryUnchanged": true,
+  "sourceScopeRulesUnchanged": {
+    "HB15-HB21-frames": {
+      "thick": "Mandatory content, terminology and process competencies within applicable course/topic",
+      "thin": "Optional contexts, Vertiefungen and experiment suggestions; a separately mandatory process may still require practical activity without mandating every listed example."
+    },
+    "HB37-all-courses": [
+      "1.1",
+      "1.2",
+      "1.3",
+      "3.1",
+      "3.2",
+      "3.3",
+      "4.1"
+    ],
+    "HB37-LK-additional": [
+      "4.3"
+    ],
+    "HB37-choice": {
+      "from": [
+        "2.1",
+        "2.2",
+        "2.3",
+        "4.2"
+      ],
+      "GK": 1,
+      "LK": 2,
+      "authority": "Official topic choices fixed in advance by Abitur-year Schwerpunktkatalog; school subject conference determines sequence within rules. No learner selection or current Schwerpunkt inferred."
+    },
+    "skillpilotTargetPolicy": "PO may include all authored applicable topics in broader target. This does not convert official choices or thin-frame suggestions into universal curriculum duties, and does not establish persisted learner selection.",
+    "courseDimensions": "Original in-table LK markers and overall p37 topic applicability are independent. Introductory topics precede GK/LK; compatibility GK_LK means shared introductory requirement. Topic4.3 unlabelled rows are within-topic common, but p37 requires that topic only for LK."
+  },
+  "rows": [
+    {
+      "ordinalOneBased": 155,
+      "wholeSourceGoal": {
+        "id": "hb-chemistry-sekii-gyo2022-3-3-2-1-kohlenhydrate-049-4631095f",
+        "passageId": "hb-chemistry-sekii:2022-primary-p26-2.1",
+        "topicCode": "2.1",
+        "bulletIndex": 4,
+        "aspectIndex": 1,
+        "title": "Industrielle Zuckergewinnung ökologisch, ökonomisch und sozial beurteilen und bewerten",
+        "description": "Die lernende Person kann industrielle Zuckergewinnung ökologisch, ökonomisch und sozial beurteilen und bewerten.",
+        "sourceText": "Industrielle Zuckergewinnung ökologisch, ökonomisch und sozial beurteilen und bewerten",
+        "sourceTextKind": "author_paraphrase_not_verbatim",
+        "sourceSpan": "physical PDF26, printed 26; process; GK_LK block item 4",
+        "sourceDocumentKey": "HB-GYO-CHEMIE-2022",
+        "parentBulletText": "Industrielle Zuckergewinnung ökologisch, ökonomisch und sozial beurteilen und bewerten",
+        "parentBulletTextKind": "author_paraphrase_not_verbatim",
+        "sourceRef": "Bremen Bildungsplan Chemie Gymnasiale Oberstufe 2022, PDF/printed p26, 2.1, process, GK_LK, item 4",
+        "courseLevel": "GK_LK",
+        "granularity": "primaryClauseParaphrase",
+        "sourceClauseIds": [
+          "HB2022-p26-2.1-process-GK_LK-04"
+        ],
+        "tags": [
+          "source:bremen",
+          "stage:SekII",
+          "phase:Q",
+          "topic:2.1",
+          "course:GK_LK"
+        ]
+      },
+      "wholeCurrentDecision": {
+        "sourceGoalId": "hb-chemistry-sekii-gyo2022-3-3-2-1-kohlenhydrate-049-4631095f",
+        "sourceClauseIds": [
+          "HB2022-p26-2.1-process-GK_LK-04"
+        ],
+        "topicCode": "2.1",
+        "sourceSpan": "physical PDF26, printed 26; process; GK_LK block item 4",
+        "sourceCourseLevel": "GK_LK",
+        "sourceScopeExact": {
+          "officialTopicStatus": "selected_topic_requirement",
+          "selectionRule": "HB37-GK-one-LK-two-from-2.1-2.2-2.3-4.2",
+          "selectedByLearner": null,
+          "universalOfficialRequirement": false
+        },
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "127e2fc9-23f3-5ce8-a1c9-8c9e014c8a8a",
+          "9f892457-c4e5-56da-830c-bf6cac0c98d7"
+        ],
+        "matchType": "partial",
+        "rationale": "Whole source union scientifically confirmed by the two referenced independent machine judgments. Each listed carrier contributes only its documented part; course, topic-choice, context and actual-performance qualifications remain binding.",
+        "reviewedAt": "2026-10-17",
+        "reviewer": "paired independent AI source reviewers; technical integration does not add a scientific vote",
+        "scientificEvidence": [
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-HB23-whole-source-union-independent-a-20261017-v1/FIRST.json",
+            "sha256": "0a9dabb4a35caf2bcfc5c39043581d0d3e1e7e1311f82b24675915d79ea933ae",
+            "bytes": 583536,
+            "jsonPointer": "/decisions/11",
+            "objectSHA256": "9b6de76fa70b72b5a9d7d570015c65dc0e34742376f74f40e8879341ce7979f9"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-HB23-whole-source-union-independent-b-20261017-v1/FIRST.independent-whole-source-unions.json",
+            "sha256": "687902fef0f1178dad411436734b5052fcb5fbff298472af76cc1034b3ff87bb",
+            "bytes": 410654,
+            "jsonPointer": "/sourceUnionDecisions/11",
+            "objectSHA256": "391bf5ccd1c246c9669216394bfcc840b7f4a1a01320c6111ca5be023734ad2c"
+          }
+        ],
+        "currentUnionRef": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-HB232-final-source-mapping-integration-20261017-v1/SOURCE232.paired-current-unions.json",
+          "jsonPointer": "/rows/154"
+        },
+        "wholeSourceCompletionFromSingleGoalMasteryAllowed": false
+      },
+      "wholeProposedDecision": {
+        "sourceGoalId": "hb-chemistry-sekii-gyo2022-3-3-2-1-kohlenhydrate-049-4631095f",
+        "sourceClauseIds": [
+          "HB2022-p26-2.1-process-GK_LK-04"
+        ],
+        "topicCode": "2.1",
+        "sourceSpan": "physical PDF26, printed 26; process; GK_LK block item 4",
+        "sourceCourseLevel": "GK_LK",
+        "sourceScopeExact": {
+          "officialTopicStatus": "selected_topic_requirement",
+          "selectionRule": "HB37-GK-one-LK-two-from-2.1-2.2-2.3-4.2",
+          "selectedByLearner": null,
+          "universalOfficialRequirement": false
+        },
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "d786a03c-2378-5ff8-bac2-0c7b5091e412",
+          "9f892457-c4e5-56da-830c-bf6cac0c98d7"
+        ],
+        "matchType": "partial",
+        "rationale": "AUTHOR candidate: reassign the previously mandatory full operative material to its explicit semantically coherent goal; preserve other existing contextual carriers, original course/topic selection boundaries and partial union semantics. Pending independent science, not an approval.",
+        "reviewedAt": "2026-10-17",
+        "reviewer": "author corrective proposal, not independent scientific reviewer",
+        "scientificEvidence": [],
+        "wholeSourceCompletionFromSingleGoalMasteryAllowed": false,
+        "predecessorWholeDecisionForHistory": {
+          "sourceGoalId": "hb-chemistry-sekii-gyo2022-3-3-2-1-kohlenhydrate-049-4631095f",
+          "sourceClauseIds": [
+            "HB2022-p26-2.1-process-GK_LK-04"
+          ],
+          "topicCode": "2.1",
+          "sourceSpan": "physical PDF26, printed 26; process; GK_LK block item 4",
+          "sourceCourseLevel": "GK_LK",
+          "sourceScopeExact": {
+            "officialTopicStatus": "selected_topic_requirement",
+            "selectionRule": "HB37-GK-one-LK-two-from-2.1-2.2-2.3-4.2",
+            "selectedByLearner": null,
+            "universalOfficialRequirement": false
+          },
+          "decision": "mapped",
+          "canonicalGoalIds": [
+            "127e2fc9-23f3-5ce8-a1c9-8c9e014c8a8a",
+            "9f892457-c4e5-56da-830c-bf6cac0c98d7"
+          ],
+          "matchType": "partial",
+          "rationale": "Whole source union scientifically confirmed by the two referenced independent machine judgments. Each listed carrier contributes only its documented part; course, topic-choice, context and actual-performance qualifications remain binding.",
+          "reviewedAt": "2026-10-17",
+          "reviewer": "paired independent AI source reviewers; technical integration does not add a scientific vote",
+          "scientificEvidence": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-HB23-whole-source-union-independent-a-20261017-v1/FIRST.json",
+              "sha256": "0a9dabb4a35caf2bcfc5c39043581d0d3e1e7e1311f82b24675915d79ea933ae",
+              "bytes": 583536,
+              "jsonPointer": "/decisions/11",
+              "objectSHA256": "9b6de76fa70b72b5a9d7d570015c65dc0e34742376f74f40e8879341ce7979f9"
+            },
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-HB23-whole-source-union-independent-b-20261017-v1/FIRST.independent-whole-source-unions.json",
+              "sha256": "687902fef0f1178dad411436734b5052fcb5fbff298472af76cc1034b3ff87bb",
+              "bytes": 410654,
+              "jsonPointer": "/sourceUnionDecisions/11",
+              "objectSHA256": "391bf5ccd1c246c9669216394bfcc840b7f4a1a01320c6111ca5be023734ad2c"
+            }
+          ],
+          "currentUnionRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-HB232-final-source-mapping-integration-20261017-v1/SOURCE232.paired-current-unions.json",
+            "jsonPointer": "/rows/154"
+          },
+          "wholeSourceCompletionFromSingleGoalMasteryAllowed": false
+        }
+      },
+      "removeOnlyReassignedCarrier": "127e2fc9-23f3-5ce8-a1c9-8c9e014c8a8a",
+      "replacementCarrier": "d786a03c-2378-5ff8-bac2-0c7b5091e412",
+      "effectiveMatchType": "partial",
+      "officialScopeExact": {
+        "officialTopicStatus": "selected_topic_requirement",
+        "selectionRule": "HB37-GK-one-LK-two-from-2.1-2.2-2.3-4.2",
+        "selectedByLearner": null,
+        "universalOfficialRequirement": false
+      },
+      "wholeSourceCompletionFromSingleGoalMasteryAllowed": false,
+      "requiredCurrentWholeMaterialIds": [
+        "hb-bio-beet-sugar-production-three-criteria"
+      ]
+    },
+    {
+      "ordinalOneBased": 169,
+      "wholeSourceGoal": {
+        "id": "hb-chemistry-sekii-gyo2022-clause-p28-2.3-content-gk_lk-04",
+        "passageId": "hb-chemistry-sekii:2022-primary-p28-2.3",
+        "topicCode": "2.3",
+        "bulletIndex": 4,
+        "aspectIndex": 1,
+        "title": "Fettkennzahlen mit der Molekülstruktur verknüpft darstellen",
+        "description": "Die lernende Person kann Fettkennzahlen mit der Molekülstruktur verknüpft darstellen.",
+        "sourceText": "Fettkennzahlen mit der Molekülstruktur verknüpft darstellen",
+        "sourceTextKind": "author_paraphrase_not_verbatim",
+        "sourceSpan": "physical PDF28, printed 28; content; GK_LK block item 4",
+        "sourceDocumentKey": "HB-GYO-CHEMIE-2022",
+        "parentBulletText": "Fettkennzahlen mit der Molekülstruktur verknüpft darstellen",
+        "parentBulletTextKind": "author_paraphrase_not_verbatim",
+        "sourceRef": "Bremen Bildungsplan Chemie Gymnasiale Oberstufe 2022, PDF/printed p28, 2.3, content, GK_LK, item 4",
+        "courseLevel": "GK_LK",
+        "granularity": "primaryClauseParaphrase",
+        "sourceClauseIds": [
+          "HB2022-p28-2.3-content-GK_LK-04"
+        ],
+        "tags": [
+          "source:bremen",
+          "stage:SekII",
+          "phase:Q",
+          "topic:2.3",
+          "course:GK_LK"
+        ]
+      },
+      "wholeCurrentDecision": {
+        "sourceGoalId": "hb-chemistry-sekii-gyo2022-clause-p28-2.3-content-gk_lk-04",
+        "sourceClauseIds": [
+          "HB2022-p28-2.3-content-GK_LK-04"
+        ],
+        "topicCode": "2.3",
+        "sourceSpan": "physical PDF28, printed 28; content; GK_LK block item 4",
+        "sourceCourseLevel": "GK_LK",
+        "sourceScopeExact": {
+          "officialTopicStatus": "selected_topic_requirement",
+          "selectionRule": "HB37-GK-one-LK-two-from-2.1-2.2-2.3-4.2",
+          "selectedByLearner": null,
+          "universalOfficialRequirement": false
+        },
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "2f3cdec5-f845-5b0f-841e-8b1d47de0281",
+          "7371c82e-6668-5ddc-ba78-347113fcddf8"
+        ],
+        "matchType": "partial",
+        "rationale": "Whole source union scientifically confirmed by the two referenced independent machine judgments. Each listed carrier contributes only its documented part; course, topic-choice, context and actual-performance qualifications remain binding.",
+        "reviewedAt": "2026-10-17",
+        "reviewer": "paired independent AI source reviewers; technical integration does not add a scientific vote",
+        "scientificEvidence": [
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-HB23-whole-source-union-independent-a-20261017-v1/FIRST.json",
+            "sha256": "0a9dabb4a35caf2bcfc5c39043581d0d3e1e7e1311f82b24675915d79ea933ae",
+            "bytes": 583536,
+            "jsonPointer": "/decisions/16",
+            "objectSHA256": "299d6883db100c3c8e176b69492f3b6a5dcf35e4d11f49c0fc07d69b4cf15b68"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-HB23-whole-source-union-independent-b-20261017-v1/FIRST.independent-whole-source-unions.json",
+            "sha256": "687902fef0f1178dad411436734b5052fcb5fbff298472af76cc1034b3ff87bb",
+            "bytes": 410654,
+            "jsonPointer": "/sourceUnionDecisions/16",
+            "objectSHA256": "91f9d8165f5298a94ecc5c3b30719210ec30f024da4f73df099dfd91306e3346"
+          }
+        ],
+        "currentUnionRef": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-HB232-final-source-mapping-integration-20261017-v1/SOURCE232.paired-current-unions.json",
+          "jsonPointer": "/rows/168"
+        },
+        "wholeSourceCompletionFromSingleGoalMasteryAllowed": false
+      },
+      "wholeProposedDecision": {
+        "sourceGoalId": "hb-chemistry-sekii-gyo2022-clause-p28-2.3-content-gk_lk-04",
+        "sourceClauseIds": [
+          "HB2022-p28-2.3-content-GK_LK-04"
+        ],
+        "topicCode": "2.3",
+        "sourceSpan": "physical PDF28, printed 28; content; GK_LK block item 4",
+        "sourceCourseLevel": "GK_LK",
+        "sourceScopeExact": {
+          "officialTopicStatus": "selected_topic_requirement",
+          "selectionRule": "HB37-GK-one-LK-two-from-2.1-2.2-2.3-4.2",
+          "selectedByLearner": null,
+          "universalOfficialRequirement": false
+        },
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "78621f85-a873-51ba-924a-2c9e077c5acb",
+          "7371c82e-6668-5ddc-ba78-347113fcddf8"
+        ],
+        "matchType": "partial",
+        "rationale": "AUTHOR candidate: reassign the previously mandatory full operative material to its explicit semantically coherent goal; preserve other existing contextual carriers, original course/topic selection boundaries and partial union semantics. Pending independent science, not an approval.",
+        "reviewedAt": "2026-10-17",
+        "reviewer": "author corrective proposal, not independent scientific reviewer",
+        "scientificEvidence": [],
+        "wholeSourceCompletionFromSingleGoalMasteryAllowed": false,
+        "predecessorWholeDecisionForHistory": {
+          "sourceGoalId": "hb-chemistry-sekii-gyo2022-clause-p28-2.3-content-gk_lk-04",
+          "sourceClauseIds": [
+            "HB2022-p28-2.3-content-GK_LK-04"
+          ],
+          "topicCode": "2.3",
+          "sourceSpan": "physical PDF28, printed 28; content; GK_LK block item 4",
+          "sourceCourseLevel": "GK_LK",
+          "sourceScopeExact": {
+            "officialTopicStatus": "selected_topic_requirement",
+            "selectionRule": "HB37-GK-one-LK-two-from-2.1-2.2-2.3-4.2",
+            "selectedByLearner": null,
+            "universalOfficialRequirement": false
+          },
+          "decision": "mapped",
+          "canonicalGoalIds": [
+            "2f3cdec5-f845-5b0f-841e-8b1d47de0281",
+            "7371c82e-6668-5ddc-ba78-347113fcddf8"
+          ],
+          "matchType": "partial",
+          "rationale": "Whole source union scientifically confirmed by the two referenced independent machine judgments. Each listed carrier contributes only its documented part; course, topic-choice, context and actual-performance qualifications remain binding.",
+          "reviewedAt": "2026-10-17",
+          "reviewer": "paired independent AI source reviewers; technical integration does not add a scientific vote",
+          "scientificEvidence": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-HB23-whole-source-union-independent-a-20261017-v1/FIRST.json",
+              "sha256": "0a9dabb4a35caf2bcfc5c39043581d0d3e1e7e1311f82b24675915d79ea933ae",
+              "bytes": 583536,
+              "jsonPointer": "/decisions/16",
+              "objectSHA256": "299d6883db100c3c8e176b69492f3b6a5dcf35e4d11f49c0fc07d69b4cf15b68"
+            },
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-HB23-whole-source-union-independent-b-20261017-v1/FIRST.independent-whole-source-unions.json",
+              "sha256": "687902fef0f1178dad411436734b5052fcb5fbff298472af76cc1034b3ff87bb",
+              "bytes": 410654,
+              "jsonPointer": "/sourceUnionDecisions/16",
+              "objectSHA256": "91f9d8165f5298a94ecc5c3b30719210ec30f024da4f73df099dfd91306e3346"
+            }
+          ],
+          "currentUnionRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-HB232-final-source-mapping-integration-20261017-v1/SOURCE232.paired-current-unions.json",
+            "jsonPointer": "/rows/168"
+          },
+          "wholeSourceCompletionFromSingleGoalMasteryAllowed": false
+        }
+      },
+      "removeOnlyReassignedCarrier": "2f3cdec5-f845-5b0f-841e-8b1d47de0281",
+      "replacementCarrier": "78621f85-a873-51ba-924a-2c9e077c5acb",
+      "effectiveMatchType": "partial",
+      "officialScopeExact": {
+        "officialTopicStatus": "selected_topic_requirement",
+        "selectionRule": "HB37-GK-one-LK-two-from-2.1-2.2-2.3-4.2",
+        "selectedByLearner": null,
+        "universalOfficialRequirement": false
+      },
+      "wholeSourceCompletionFromSingleGoalMasteryAllowed": false,
+      "requiredCurrentWholeMaterialIds": [
+        "hb-bio-fat-indices-structure-stoichiometry",
+        "hb-bio-fat-indices-composition-durability-transfer"
+      ]
+    },
+    {
+      "ordinalOneBased": 170,
+      "wholeSourceGoal": {
+        "id": "hb-chemistry-sekii-gyo2022-clause-p28-2.3-content-gk_lk-05",
+        "passageId": "hb-chemistry-sekii:2022-primary-p28-2.3",
+        "topicCode": "2.3",
+        "bulletIndex": 5,
+        "aspectIndex": 1,
+        "title": "Fetthärtung durch Hydrierung als Additionsreaktion darstellen",
+        "description": "Die lernende Person kann Fetthärtung durch Hydrierung als Additionsreaktion darstellen.",
+        "sourceText": "Fetthärtung durch Hydrierung als Additionsreaktion darstellen",
+        "sourceTextKind": "author_paraphrase_not_verbatim",
+        "sourceSpan": "physical PDF28, printed 28; content; GK_LK block item 5",
+        "sourceDocumentKey": "HB-GYO-CHEMIE-2022",
+        "parentBulletText": "Fetthärtung durch Hydrierung als Additionsreaktion darstellen",
+        "parentBulletTextKind": "author_paraphrase_not_verbatim",
+        "sourceRef": "Bremen Bildungsplan Chemie Gymnasiale Oberstufe 2022, PDF/printed p28, 2.3, content, GK_LK, item 5",
+        "courseLevel": "GK_LK",
+        "granularity": "primaryClauseParaphrase",
+        "sourceClauseIds": [
+          "HB2022-p28-2.3-content-GK_LK-05"
+        ],
+        "tags": [
+          "source:bremen",
+          "stage:SekII",
+          "phase:Q",
+          "topic:2.3",
+          "course:GK_LK"
+        ]
+      },
+      "wholeCurrentDecision": {
+        "sourceGoalId": "hb-chemistry-sekii-gyo2022-clause-p28-2.3-content-gk_lk-05",
+        "sourceClauseIds": [
+          "HB2022-p28-2.3-content-GK_LK-05"
+        ],
+        "topicCode": "2.3",
+        "sourceSpan": "physical PDF28, printed 28; content; GK_LK block item 5",
+        "sourceCourseLevel": "GK_LK",
+        "sourceScopeExact": {
+          "officialTopicStatus": "selected_topic_requirement",
+          "selectionRule": "HB37-GK-one-LK-two-from-2.1-2.2-2.3-4.2",
+          "selectedByLearner": null,
+          "universalOfficialRequirement": false
+        },
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "2f3cdec5-f845-5b0f-841e-8b1d47de0281",
+          "3fb7dea4-f832-5e23-b518-68b13a655b92"
+        ],
+        "matchType": "partial",
+        "rationale": "Whole source union scientifically confirmed by the two referenced independent machine judgments. Each listed carrier contributes only its documented part; course, topic-choice, context and actual-performance qualifications remain binding.",
+        "reviewedAt": "2026-10-17",
+        "reviewer": "paired independent AI source reviewers; technical integration does not add a scientific vote",
+        "scientificEvidence": [
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-HB23-whole-source-union-independent-a-20261017-v1/FIRST.json",
+            "sha256": "0a9dabb4a35caf2bcfc5c39043581d0d3e1e7e1311f82b24675915d79ea933ae",
+            "bytes": 583536,
+            "jsonPointer": "/decisions/17",
+            "objectSHA256": "b64c580ccfda0f974790ef3af7f825fd7704cdd957980f0cd967060018821074"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-HB23-whole-source-union-independent-b-20261017-v1/FIRST.independent-whole-source-unions.json",
+            "sha256": "687902fef0f1178dad411436734b5052fcb5fbff298472af76cc1034b3ff87bb",
+            "bytes": 410654,
+            "jsonPointer": "/sourceUnionDecisions/17",
+            "objectSHA256": "f775ffc3272a926e2bcae20fa9f7e6acace13bd2faf58dd8d82ffe43e287a07b"
+          }
+        ],
+        "currentUnionRef": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-HB232-final-source-mapping-integration-20261017-v1/SOURCE232.paired-current-unions.json",
+          "jsonPointer": "/rows/169"
+        },
+        "wholeSourceCompletionFromSingleGoalMasteryAllowed": false
+      },
+      "wholeProposedDecision": {
+        "sourceGoalId": "hb-chemistry-sekii-gyo2022-clause-p28-2.3-content-gk_lk-05",
+        "sourceClauseIds": [
+          "HB2022-p28-2.3-content-GK_LK-05"
+        ],
+        "topicCode": "2.3",
+        "sourceSpan": "physical PDF28, printed 28; content; GK_LK block item 5",
+        "sourceCourseLevel": "GK_LK",
+        "sourceScopeExact": {
+          "officialTopicStatus": "selected_topic_requirement",
+          "selectionRule": "HB37-GK-one-LK-two-from-2.1-2.2-2.3-4.2",
+          "selectedByLearner": null,
+          "universalOfficialRequirement": false
+        },
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "17772924-46b6-5747-a77b-a8c6944d109d",
+          "3fb7dea4-f832-5e23-b518-68b13a655b92"
+        ],
+        "matchType": "partial",
+        "rationale": "AUTHOR candidate: reassign the previously mandatory full operative material to its explicit semantically coherent goal; preserve other existing contextual carriers, original course/topic selection boundaries and partial union semantics. Pending independent science, not an approval.",
+        "reviewedAt": "2026-10-17",
+        "reviewer": "author corrective proposal, not independent scientific reviewer",
+        "scientificEvidence": [],
+        "wholeSourceCompletionFromSingleGoalMasteryAllowed": false,
+        "predecessorWholeDecisionForHistory": {
+          "sourceGoalId": "hb-chemistry-sekii-gyo2022-clause-p28-2.3-content-gk_lk-05",
+          "sourceClauseIds": [
+            "HB2022-p28-2.3-content-GK_LK-05"
+          ],
+          "topicCode": "2.3",
+          "sourceSpan": "physical PDF28, printed 28; content; GK_LK block item 5",
+          "sourceCourseLevel": "GK_LK",
+          "sourceScopeExact": {
+            "officialTopicStatus": "selected_topic_requirement",
+            "selectionRule": "HB37-GK-one-LK-two-from-2.1-2.2-2.3-4.2",
+            "selectedByLearner": null,
+            "universalOfficialRequirement": false
+          },
+          "decision": "mapped",
+          "canonicalGoalIds": [
+            "2f3cdec5-f845-5b0f-841e-8b1d47de0281",
+            "3fb7dea4-f832-5e23-b518-68b13a655b92"
+          ],
+          "matchType": "partial",
+          "rationale": "Whole source union scientifically confirmed by the two referenced independent machine judgments. Each listed carrier contributes only its documented part; course, topic-choice, context and actual-performance qualifications remain binding.",
+          "reviewedAt": "2026-10-17",
+          "reviewer": "paired independent AI source reviewers; technical integration does not add a scientific vote",
+          "scientificEvidence": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-HB23-whole-source-union-independent-a-20261017-v1/FIRST.json",
+              "sha256": "0a9dabb4a35caf2bcfc5c39043581d0d3e1e7e1311f82b24675915d79ea933ae",
+              "bytes": 583536,
+              "jsonPointer": "/decisions/17",
+              "objectSHA256": "b64c580ccfda0f974790ef3af7f825fd7704cdd957980f0cd967060018821074"
+            },
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-HB23-whole-source-union-independent-b-20261017-v1/FIRST.independent-whole-source-unions.json",
+              "sha256": "687902fef0f1178dad411436734b5052fcb5fbff298472af76cc1034b3ff87bb",
+              "bytes": 410654,
+              "jsonPointer": "/sourceUnionDecisions/17",
+              "objectSHA256": "f775ffc3272a926e2bcae20fa9f7e6acace13bd2faf58dd8d82ffe43e287a07b"
+            }
+          ],
+          "currentUnionRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-HB232-final-source-mapping-integration-20261017-v1/SOURCE232.paired-current-unions.json",
+            "jsonPointer": "/rows/169"
+          },
+          "wholeSourceCompletionFromSingleGoalMasteryAllowed": false
+        }
+      },
+      "removeOnlyReassignedCarrier": "2f3cdec5-f845-5b0f-841e-8b1d47de0281",
+      "replacementCarrier": "17772924-46b6-5747-a77b-a8c6944d109d",
+      "effectiveMatchType": "partial",
+      "officialScopeExact": {
+        "officialTopicStatus": "selected_topic_requirement",
+        "selectionRule": "HB37-GK-one-LK-two-from-2.1-2.2-2.3-4.2",
+        "selectedByLearner": null,
+        "universalOfficialRequirement": false
+      },
+      "wholeSourceCompletionFromSingleGoalMasteryAllowed": false,
+      "requiredCurrentWholeMaterialIds": [
+        "hb-bio-fat-hydrogenation-addition-and-packing"
+      ]
+    },
+    {
+      "ordinalOneBased": 172,
+      "wholeSourceGoal": {
+        "id": "hb-chemistry-sekii-gyo2022-clause-p28-2.3-process-gk_lk-02",
+        "passageId": "hb-chemistry-sekii:2022-primary-p28-2.3",
+        "topicCode": "2.3",
+        "bulletIndex": 2,
+        "aspectIndex": 1,
+        "title": "Aus Fettkennzahlen Aussagen zu Zusammensetzung und Haltbarkeit ableiten",
+        "description": "Die lernende Person kann aus Fettkennzahlen Aussagen zu Zusammensetzung und Haltbarkeit ableiten.",
+        "sourceText": "Aus Fettkennzahlen Aussagen zu Zusammensetzung und Haltbarkeit ableiten",
+        "sourceTextKind": "author_paraphrase_not_verbatim",
+        "sourceSpan": "physical PDF28, printed 28; process; GK_LK block item 2",
+        "sourceDocumentKey": "HB-GYO-CHEMIE-2022",
+        "parentBulletText": "Aus Fettkennzahlen Aussagen zu Zusammensetzung und Haltbarkeit ableiten",
+        "parentBulletTextKind": "author_paraphrase_not_verbatim",
+        "sourceRef": "Bremen Bildungsplan Chemie Gymnasiale Oberstufe 2022, PDF/printed p28, 2.3, process, GK_LK, item 2",
+        "courseLevel": "GK_LK",
+        "granularity": "primaryClauseParaphrase",
+        "sourceClauseIds": [
+          "HB2022-p28-2.3-process-GK_LK-02"
+        ],
+        "tags": [
+          "source:bremen",
+          "stage:SekII",
+          "phase:Q",
+          "topic:2.3",
+          "course:GK_LK"
+        ]
+      },
+      "wholeCurrentDecision": {
+        "sourceGoalId": "hb-chemistry-sekii-gyo2022-clause-p28-2.3-process-gk_lk-02",
+        "sourceClauseIds": [
+          "HB2022-p28-2.3-process-GK_LK-02"
+        ],
+        "topicCode": "2.3",
+        "sourceSpan": "physical PDF28, printed 28; process; GK_LK block item 2",
+        "sourceCourseLevel": "GK_LK",
+        "sourceScopeExact": {
+          "officialTopicStatus": "selected_topic_requirement",
+          "selectionRule": "HB37-GK-one-LK-two-from-2.1-2.2-2.3-4.2",
+          "selectedByLearner": null,
+          "universalOfficialRequirement": false
+        },
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "7371c82e-6668-5ddc-ba78-347113fcddf8",
+          "2f3cdec5-f845-5b0f-841e-8b1d47de0281"
+        ],
+        "matchType": "partial",
+        "rationale": "Whole source union scientifically confirmed by the two referenced independent machine judgments. Each listed carrier contributes only its documented part; course, topic-choice, context and actual-performance qualifications remain binding.",
+        "reviewedAt": "2026-10-17",
+        "reviewer": "paired independent AI source reviewers; technical integration does not add a scientific vote",
+        "scientificEvidence": [
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-HB23-whole-source-union-independent-a-20261017-v1/FIRST.json",
+            "sha256": "0a9dabb4a35caf2bcfc5c39043581d0d3e1e7e1311f82b24675915d79ea933ae",
+            "bytes": 583536,
+            "jsonPointer": "/decisions/19",
+            "objectSHA256": "e124abc26a59effcc26c268a2af0ec5c991495fad11fc785bddc4214c08df9c5"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-HB23-whole-source-union-independent-b-20261017-v1/FIRST.independent-whole-source-unions.json",
+            "sha256": "687902fef0f1178dad411436734b5052fcb5fbff298472af76cc1034b3ff87bb",
+            "bytes": 410654,
+            "jsonPointer": "/sourceUnionDecisions/19",
+            "objectSHA256": "89c9806bdfa19ecea147ef244d696eba2c4a45f1881f00fcbfea62460968c041"
+          }
+        ],
+        "currentUnionRef": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-HB232-final-source-mapping-integration-20261017-v1/SOURCE232.paired-current-unions.json",
+          "jsonPointer": "/rows/171"
+        },
+        "wholeSourceCompletionFromSingleGoalMasteryAllowed": false
+      },
+      "wholeProposedDecision": {
+        "sourceGoalId": "hb-chemistry-sekii-gyo2022-clause-p28-2.3-process-gk_lk-02",
+        "sourceClauseIds": [
+          "HB2022-p28-2.3-process-GK_LK-02"
+        ],
+        "topicCode": "2.3",
+        "sourceSpan": "physical PDF28, printed 28; process; GK_LK block item 2",
+        "sourceCourseLevel": "GK_LK",
+        "sourceScopeExact": {
+          "officialTopicStatus": "selected_topic_requirement",
+          "selectionRule": "HB37-GK-one-LK-two-from-2.1-2.2-2.3-4.2",
+          "selectedByLearner": null,
+          "universalOfficialRequirement": false
+        },
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "7371c82e-6668-5ddc-ba78-347113fcddf8",
+          "78621f85-a873-51ba-924a-2c9e077c5acb"
+        ],
+        "matchType": "partial",
+        "rationale": "AUTHOR candidate: reassign the previously mandatory full operative material to its explicit semantically coherent goal; preserve other existing contextual carriers, original course/topic selection boundaries and partial union semantics. Pending independent science, not an approval.",
+        "reviewedAt": "2026-10-17",
+        "reviewer": "author corrective proposal, not independent scientific reviewer",
+        "scientificEvidence": [],
+        "wholeSourceCompletionFromSingleGoalMasteryAllowed": false,
+        "predecessorWholeDecisionForHistory": {
+          "sourceGoalId": "hb-chemistry-sekii-gyo2022-clause-p28-2.3-process-gk_lk-02",
+          "sourceClauseIds": [
+            "HB2022-p28-2.3-process-GK_LK-02"
+          ],
+          "topicCode": "2.3",
+          "sourceSpan": "physical PDF28, printed 28; process; GK_LK block item 2",
+          "sourceCourseLevel": "GK_LK",
+          "sourceScopeExact": {
+            "officialTopicStatus": "selected_topic_requirement",
+            "selectionRule": "HB37-GK-one-LK-two-from-2.1-2.2-2.3-4.2",
+            "selectedByLearner": null,
+            "universalOfficialRequirement": false
+          },
+          "decision": "mapped",
+          "canonicalGoalIds": [
+            "7371c82e-6668-5ddc-ba78-347113fcddf8",
+            "2f3cdec5-f845-5b0f-841e-8b1d47de0281"
+          ],
+          "matchType": "partial",
+          "rationale": "Whole source union scientifically confirmed by the two referenced independent machine judgments. Each listed carrier contributes only its documented part; course, topic-choice, context and actual-performance qualifications remain binding.",
+          "reviewedAt": "2026-10-17",
+          "reviewer": "paired independent AI source reviewers; technical integration does not add a scientific vote",
+          "scientificEvidence": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-HB23-whole-source-union-independent-a-20261017-v1/FIRST.json",
+              "sha256": "0a9dabb4a35caf2bcfc5c39043581d0d3e1e7e1311f82b24675915d79ea933ae",
+              "bytes": 583536,
+              "jsonPointer": "/decisions/19",
+              "objectSHA256": "e124abc26a59effcc26c268a2af0ec5c991495fad11fc785bddc4214c08df9c5"
+            },
+            {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-HB23-whole-source-union-independent-b-20261017-v1/FIRST.independent-whole-source-unions.json",
+              "sha256": "687902fef0f1178dad411436734b5052fcb5fbff298472af76cc1034b3ff87bb",
+              "bytes": 410654,
+              "jsonPointer": "/sourceUnionDecisions/19",
+              "objectSHA256": "89c9806bdfa19ecea147ef244d696eba2c4a45f1881f00fcbfea62460968c041"
+            }
+          ],
+          "currentUnionRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-HB232-final-source-mapping-integration-20261017-v1/SOURCE232.paired-current-unions.json",
+            "jsonPointer": "/rows/171"
+          },
+          "wholeSourceCompletionFromSingleGoalMasteryAllowed": false
+        }
+      },
+      "removeOnlyReassignedCarrier": "2f3cdec5-f845-5b0f-841e-8b1d47de0281",
+      "replacementCarrier": "78621f85-a873-51ba-924a-2c9e077c5acb",
+      "effectiveMatchType": "partial",
+      "officialScopeExact": {
+        "officialTopicStatus": "selected_topic_requirement",
+        "selectionRule": "HB37-GK-one-LK-two-from-2.1-2.2-2.3-4.2",
+        "selectedByLearner": null,
+        "universalOfficialRequirement": false
+      },
+      "wholeSourceCompletionFromSingleGoalMasteryAllowed": false,
+      "requiredCurrentWholeMaterialIds": [
+        "hb-bio-fat-indices-structure-stoichiometry",
+        "hb-bio-fat-indices-composition-durability-transfer"
+      ]
+    }
+  ],
+  "mandatoryTermOwnership": [
+    {
+      "terms": [
+        "Kennzahlen von Fetten",
+        "Verseifungszahl",
+        "Iodzahl"
+      ],
+      "goalId": "78621f85-a873-51ba-924a-2c9e077c5acb",
+      "topic": "2.3",
+      "course": "GK_LK",
+      "wholeMaterialIds": [
+        "hb-bio-fat-indices-structure-stoichiometry",
+        "hb-bio-fat-indices-composition-durability-transfer"
+      ]
+    },
+    {
+      "terms": [
+        "Fetthärtung"
+      ],
+      "goalId": "17772924-46b6-5747-a77b-a8c6944d109d",
+      "topic": "2.3",
+      "course": "GK_LK",
+      "wholeMaterialIds": [
+        "hb-bio-fat-hydrogenation-addition-and-packing"
+      ]
+    },
+    {
+      "terms": [
+        "Chromophor",
+        "Auxochrom",
+        "Antiauxochrom"
+      ],
+      "goalId": "64b03eff-a967-54a1-ace3-89cb7650a65c",
+      "topic": "4.2",
+      "course": "GK_LK",
+      "wholeMaterialIds": [
+        "hb-colour-three-terms"
+      ],
+      "boundary": "Historical school-model donor/acceptor roles, not modern disjoint molecular families. Original worksheet intact. Not assigned to d72 family-classification goal."
+    },
+    {
+      "terms": [
+        "Chromophor"
+      ],
+      "goalId": "87d8cc68-fe82-5273-9e43-c18b566ecb6c",
+      "topic": "4.2",
+      "course": "GK_LK",
+      "wholeMaterialIds": [
+        "hb-colour-energy-only-current87d8"
+      ],
+      "boundary": "Band-specific energy role only; no historical Auxochrom/Antiauxochrom naming or classification criterion."
+    }
+  ],
+  "noNewOfficialTermOrUniversalDuty": true
+}

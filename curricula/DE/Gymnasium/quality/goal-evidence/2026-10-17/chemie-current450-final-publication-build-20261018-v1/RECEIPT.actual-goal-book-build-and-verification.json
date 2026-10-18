@@ -1,0 +1,35 @@
+{
+  "role": "Actual stable current450 publication build and verification; not deployment or human acceptance",
+  "results": [
+    {
+      "name": "build",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "build:goal-books"
+      ],
+      "exitCode": 0,
+      "seconds": 711.712,
+      "log": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current450-final-publication-build-20261018-v1/build.actual.txt",
+      "sha256": "479a337e8931c6e80e04a488a6e80e52e2e7b5052fa29bd594fe21d12abba179"
+    },
+    {
+      "name": "check",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:goal-book-publication"
+      ],
+      "exitCode": 0,
+      "seconds": 72.802,
+      "log": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current450-final-publication-build-20261018-v1/check.actual.txt",
+      "sha256": "fa81f55871a070ffe3a3f0160ed129d380016a48db6861d16b36662be1046aa2"
+    }
+  ],
+  "humanApproval": false,
+  "productionDeployment": false
+}

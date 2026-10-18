@@ -1,0 +1,365 @@
+{
+  "schema": "skillpilot-independent-four-candidate-visual-FIRST-v1",
+  "reviewerTask": "/root/chemie_four_corrected_images_fresh_visual_b_20261017",
+  "reviewerRole": "Fresh independent Chemistry visual reviewer B",
+  "sealedAtUtc": "2026-10-17T02:35:17.606343+00:00",
+  "reviewIdentity": {
+    "assistant": "Codex",
+    "exactConfiguredModel": "unknown; not exposed by review tool metadata",
+    "configuredAiRunId": null,
+    "sdkValidationRunId": null
+  },
+  "stage": "independent FIRST; no generation provenance, author outcome, peer outcome, old V result or selector metadata read",
+  "allowedInput": {
+    "path": "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/next20-four-documented-image-corrections-author-root-v1/INPUT.content-only-four-candidate-PNGs-for-independent-FIRST.json",
+    "sha256": "sha256:543ec36692f22aa4bd33a21956fdb75f8f34330bba7f33dc123d7f33bdb8e003",
+    "wholeBilingualGoalCount": 4,
+    "actualPngCount": 12
+  },
+  "criteriaRead": [
+    {
+      "path": "/home/enpasos/projects/skillpilot/AGENTS.md",
+      "sha256": "sha256:c9d0b7d9f86b7deb3900b358769530d7759b90f89ac3feaba6a6fd1c4c79816b",
+      "relevantSections": [
+        "0 and licensing",
+        "2.3",
+        "7.3 Atomic goal visualizations",
+        "9 agent behavior"
+      ]
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/docs/concept/skill-graph/atomic-goal-visualizations.md",
+      "sha256": "sha256:3acc382f20acf3fcbfe668ecafcf98f4be23aee00a372b169b2d1c392c7a4e7e"
+    }
+  ],
+  "inspectionMethod": "Actually viewed each of the 4 native PNGs and each of the 8 supplied actual-browser 360/680 screenshots with tools.view_image(detail=original); rehashed all 12 bytes and checked PNG dimensions. No replacement resize was substituted for a supplied screenshot.",
+  "allInputPinsMatch": true,
+  "actualViewImageCount": 12,
+  "independence": {
+    "authorFindingsReadBeforeFIRST": false,
+    "peerFindingsReadBeforeFIRST": false,
+    "oldVisualApprovalsReadBeforeFIRST": false,
+    "generationOrSelectorApprovalReadBeforeFIRST": false,
+    "noAutomaticKeepFromGenerationOrParity": true,
+    "noForcedFindingQuota": true
+  },
+  "summary": {
+    "KEEP": 4,
+    "revise": 0,
+    "block": 0
+  },
+  "AIcandidate": true,
+  "HumanApproval": false,
+  "HumanTrial": false,
+  "M7": false,
+  "boundaries": {
+    "pixelsEdited": false,
+    "sourceOrNormalOrLevel6Edited": false,
+    "actualQaRowsIntegrated": false,
+    "POrGlobalMOrAPVOrCentralOrBuildRuns": false,
+    "candidateActivated": false,
+    "provenanceInspected": false,
+    "externalStylePoolInspected": false
+  },
+  "limitations": "These decisions are visual/chemical AI candidate judgments for the exact provided pixels and goal texts. They do not verify source coverage, licensing provenance, alt text, runtime integration, human acceptance or M7. Screenshot generation origin is supplied context; this reviewer inspected the screenshot files and did not rerun Chromium.",
+  "reviews": [
+    {
+      "decision": "KEEP",
+      "decisionMeaning": "Positive independent visual AI review candidate for these exact unactivated PNG bytes; no QA-row integration or release acceptance.",
+      "blockingFinding": false,
+      "concreteRequiredFix": null,
+      "nativeFormat": "PNG 1672 x 941, near-native 16:9 (ratio 1.776833); no format exception required.",
+      "screenshotGeometry": "Provided actual-browser PNGs are 360 x 203 and 680 x 383; the complete image is visible without cropping.",
+      "AIcandidate": true,
+      "HumanApproval": false,
+      "HumanTrial": false,
+      "M7": false,
+      "goalId": "d465d82b-4bf2-5527-bb7c-dad5a92605fe",
+      "science": [
+        "The general head/tail drawing correctly distinguishes a polar hydrophilic head from a nonpolar hydrophobic hydrocarbon tail; water and oil association is consistent with amphiphilic behavior.",
+        "The anionic example is an alkyl sulfate: alkyl-O-S(=O)2-O minus with Na plus. Sulfur has the indicated two S=O bonds and two single S-O bonds; the negative charge is on the terminal oxygen. There is no extra oxygen valence or missing headgroup charge in the visible example.",
+        "The cationic example has an alkyl group and three methyl groups attached to quaternary N plus, with Cl minus as counterion; four N-C bonds and the positive charge are mutually consistent.",
+        "The nonionic example is an alkyl poly(oxyethylene) ether R-O-(CH2-CH2-O)n-H. The repeated ether oxygens/terminal hydroxyl support a polar uncharged head; the formula does not put an unmarked ionic charge onto the nonionic structure."
+      ],
+      "operatorFit": "The three labeled head classes, explicit plus/minus/uncharged distinction and molecular examples directly orient characterization of anionic, cationic and nonionic surfactants from their construction. The German and English whole goal descriptions request the same comparison.",
+      "nativeAnd680": "At native resolution and 680 px the sulfate group, four substituents on N, counterions and nonionic repeat group are visible. The large contrasting heads make the classification faster to see than formula reading alone.",
+      "phone360": "All four columns remain complete; the large minus and plus signs, uncharged polar head, hydrophilic/hydrophobic split and class titles remain distinguishable. Small atom labels, counterion typography and the exact repeat-group subscript are too small for comfortable independent formula analysis at this size. They are supporting examples here; the essential classification is independently shown by the larger charged/uncharged heads and labels.",
+      "styleAndAge": "Rounded forms, colored frames and a friendly abstract head/tail model are approachable without turning the chemical examples into unrelated decoration. Suitable as an overview for learners working on the supplied surfactant goal; exact age/phase is not provided.",
+      "limitations": [
+        "No claim that every small formula character is comfortably readable at 360 px. The image supports orientation and cannot replace molecular-structure explanation or assessment.",
+        "No alt text or curriculum age metadata was supplied in the permitted FIRST input; those were not verified."
+      ],
+      "wholeGoalText": {
+        "titleDe": "Tensidstrukturen analysieren",
+        "titleEn": "Analyze surfactant structures",
+        "descriptionDe": "Die lernende Person kann anionische, kationische und nichtionische Tenside anhand ihres Aufbaus charakterisieren.",
+        "descriptionEn": "The learner can characterize anionic, cationic, and nonionic surfactants based on their structure."
+      },
+      "assetPins": [
+        {
+          "goalId": "d465d82b-4bf2-5527-bb7c-dad5a92605fe",
+          "role": "nativePNG",
+          "path": "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/next20-four-documented-image-corrections-author-root-v1/candidate-image-author/d465d82b-4bf2-5527-bb7c-dad5a92605fe.candidate-v1.png",
+          "sha256": "sha256:0b37bfaa6613f7d0ec1f260ac4bb0402e79d73f3a6f309a939f2396825af2bbf",
+          "bytes": 1511818,
+          "width": 1672,
+          "height": 941,
+          "format": "PNG",
+          "inputPinMatches": true,
+          "actuallyInspectedWith": "tools.view_image(detail=original)",
+          "viewed": true
+        },
+        {
+          "goalId": "d465d82b-4bf2-5527-bb7c-dad5a92605fe",
+          "role": "actualBrowser360",
+          "path": "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/next20-four-documented-image-corrections-author-root-v1/candidate-image-author/d465d82b-4bf2-5527-bb7c-dad5a92605fe.inspection-only-360.png",
+          "sha256": "sha256:151f0213e8af0853caac0a11b656ef481e0c6f22305e9a80a2893a3de0eb6ec3",
+          "bytes": 86616,
+          "width": 360,
+          "height": 203,
+          "format": "PNG",
+          "inputPinMatches": true,
+          "actuallyInspectedWith": "tools.view_image(detail=original)",
+          "viewed": true
+        },
+        {
+          "goalId": "d465d82b-4bf2-5527-bb7c-dad5a92605fe",
+          "role": "actualBrowser680",
+          "path": "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/next20-four-documented-image-corrections-author-root-v1/candidate-image-author/d465d82b-4bf2-5527-bb7c-dad5a92605fe.inspection-only-680.png",
+          "sha256": "sha256:0c13ad6d25e20457b2dc12632a646b2c4464f9ac10b8ceeb33d771bde89e50e0",
+          "bytes": 273177,
+          "width": 680,
+          "height": 383,
+          "format": "PNG",
+          "inputPinMatches": true,
+          "actuallyInspectedWith": "tools.view_image(detail=original)",
+          "viewed": true
+        }
+      ]
+    },
+    {
+      "decision": "KEEP",
+      "decisionMeaning": "Positive independent visual AI review candidate for these exact unactivated PNG bytes; no QA-row integration or release acceptance.",
+      "blockingFinding": false,
+      "concreteRequiredFix": null,
+      "nativeFormat": "PNG 1672 x 941, near-native 16:9 (ratio 1.776833); no format exception required.",
+      "screenshotGeometry": "Provided actual-browser PNGs are 360 x 203 and 680 x 383; the complete image is visible without cropping.",
+      "AIcandidate": true,
+      "HumanApproval": false,
+      "HumanTrial": false,
+      "M7": false,
+      "goalId": "a78aacf9-92ea-5627-8776-a595111f754c",
+      "science": [
+        "Builder/softener binds Ca2+ and Mg2+ in the first panel; both depicted ion charges are correct and the caption states the relevant function.",
+        "The bleach panel explicitly names peroxides and oxidation of colored stains. The single O-O linkage in the generic peroxide symbol and the arrow toward loss of a colored stain are consistent with oxidative bleaching. The cause is not ascribed to UV light or blue emission.",
+        "Separate enzyme symbols target protein, fat and starch, with the caption that suitable substances are split. This is a defensible simple representation of substrate-specific enzymatic stain removal, not a claim that one pictured enzyme splits every class.",
+        "UV input and blue output are confined to optical brighteners in the auxiliaries panel. This correctly distinguishes fluorescence/optical brightening from the oxidative bleach panel. Foam regulation, fragrance and corrosion protection are plausible auxiliary functions."
+      ],
+      "operatorFit": "All four categories named in both whole goal descriptions are present and paired with a function, so the image supports explaining their roles in a detergent rather than merely naming ingredient classes.",
+      "nativeAnd680": "The category headings, ion binding, peroxide-to-stain arrow, three enzyme/substrate pairs and UV-to-blue brightening distinction are visible. There is no hidden chemistry behind an incorrect decorative bleach effect.",
+      "phone360": "The complete four-panel overview, large category headings, bound ion badges, bleach stain transition and three enzyme/substrate rows remain recognizable. Auxiliary captions and the bottom causal captions are compact and less comfortable than at 680 px; they remain supplementary to the large distinct functional pictures. The phone overview does not support detailed chemical mechanism reading.",
+      "styleAndAge": "Friendly comic symbols and a restrained blue background suit an explanatory overview. The enzyme and ion characters are simplified teaching symbols; they do not introduce an incorrect equation, molecular structure or safety instruction.",
+      "limitations": [
+        "The softener symbol is a generic ion-binding illustration, not an exact builder molecule. The peroxide icon does not specify the complete bleaching system or all chemical partners, which the orientation image is not required to teach.",
+        "Small auxiliary text is not equally comfortable at phone and desktop sizes; no claim of complete lesson-level explanation on the phone.",
+        "No supplied alt text or exact learner age was verified."
+      ],
+      "wholeGoalText": {
+        "titleDe": "Zusammensetzung moderner Waschmittel",
+        "titleEn": "Composition of modern detergents",
+        "descriptionDe": "Die lernende Person kann Funktionen von Enthärtern, Bleichsystemen, Enzymen und Hilfsstoffen erklären.",
+        "descriptionEn": "The learner can explain functions of softeners, bleaching systems, enzymes, and auxiliaries."
+      },
+      "assetPins": [
+        {
+          "goalId": "a78aacf9-92ea-5627-8776-a595111f754c",
+          "role": "nativePNG",
+          "path": "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/next20-four-documented-image-corrections-author-root-v1/candidate-image-author/a78aacf9-92ea-5627-8776-a595111f754c.candidate-v1.png",
+          "sha256": "sha256:9ad781067fc046566c0619e636373c8551f200e84ecd43124dc353d5dae9147f",
+          "bytes": 1844685,
+          "width": 1672,
+          "height": 941,
+          "format": "PNG",
+          "inputPinMatches": true,
+          "actuallyInspectedWith": "tools.view_image(detail=original)",
+          "viewed": true
+        },
+        {
+          "goalId": "a78aacf9-92ea-5627-8776-a595111f754c",
+          "role": "actualBrowser360",
+          "path": "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/next20-four-documented-image-corrections-author-root-v1/candidate-image-author/a78aacf9-92ea-5627-8776-a595111f754c.inspection-only-360.png",
+          "sha256": "sha256:a637702a7d99c0fda93fb30be7407be3f17f5962ac19ab37851fde1922a1fcd5",
+          "bytes": 109413,
+          "width": 360,
+          "height": 203,
+          "format": "PNG",
+          "inputPinMatches": true,
+          "actuallyInspectedWith": "tools.view_image(detail=original)",
+          "viewed": true
+        },
+        {
+          "goalId": "a78aacf9-92ea-5627-8776-a595111f754c",
+          "role": "actualBrowser680",
+          "path": "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/next20-four-documented-image-corrections-author-root-v1/candidate-image-author/a78aacf9-92ea-5627-8776-a595111f754c.inspection-only-680.png",
+          "sha256": "sha256:eb251ea3d6ed8e714668472c1018710501006663461cdd6cf8da3644ff32e5b5",
+          "bytes": 335646,
+          "width": 680,
+          "height": 383,
+          "format": "PNG",
+          "inputPinMatches": true,
+          "actuallyInspectedWith": "tools.view_image(detail=original)",
+          "viewed": true
+        }
+      ]
+    },
+    {
+      "decision": "KEEP",
+      "decisionMeaning": "Positive independent visual AI review candidate for these exact unactivated PNG bytes; no QA-row integration or release acceptance.",
+      "blockingFinding": false,
+      "concreteRequiredFix": null,
+      "nativeFormat": "PNG 1672 x 941, near-native 16:9 (ratio 1.776833); no format exception required.",
+      "screenshotGeometry": "Provided actual-browser PNGs are 360 x 203 and 680 x 383; the complete image is visible without cropping.",
+      "AIcandidate": true,
+      "HumanApproval": false,
+      "HumanTrial": false,
+      "M7": false,
+      "goalId": "f85b4651-50ea-5b42-b193-3465c05257a7",
+      "science": [
+        "For O2 the visible valence MO ordering is sigma2s < sigma*2s < sigma2pz < degenerate pi2px/pi2py < degenerate pi*2px/pi*2py < sigma*2pz. With the displayed z bond axis this is the appropriate O2 ordering.",
+        "The occupation is 2 in sigma2s, 2 in sigma*2s, 2 in sigma2pz, 4 across the two bonding pi orbitals and one electron in each antibonding pi orbital; sigma*2pz is empty. That is twelve valence electrons with paired arrows in filled orbitals and parallel unpaired arrows in the two degenerate pi* orbitals.",
+        "Bonding electron count 2+2+4=8 and antibonding count 2+2=4 agree with the boxes. The displayed (8-4)/2=2 is correct.",
+        "The two unpaired electrons support the displayed paramagnetism. Omission of the cancelling 1s core pair is a normal valence-MO simplification, not an inconsistent total-electron count."
+      ],
+      "operatorFit": "A complete simple O2 MO example directly serves interpreting a diagram and deriving bond order. N2 is an optional example in both whole goal descriptions, so its absence does not narrow away a mandatory separate example. Paramagnetism follows from the visible occupation and stays close to the central model.",
+      "nativeAnd680": "Energy increases upward, the level grouping and degeneracies are clear, every occupation arrow is countable and the right-side counts match the diagram. The diagram is an instructional orientation example, not evidence of learner mastery.",
+      "phone360": "Even at 360 px the paired versus single arrows, empty top level, two parallel pi* electrons and bond-order fraction remain distinguishable. Orbital subscripts are small but separable; the large color-coded totals and result are clear. This is materially clearer than a dense two-molecule/AO-to-MO comparison would be at the same width.",
+      "styleAndAge": "This is a technical diagram with warm background and large type. The learning goal demonstrably requires exact MO levels, occupations and a calculation, so the technical representation is appropriate; lack of comic figures alone is not a reason to regenerate it. Appropriate to learners reaching the supplied advanced molecular-orbital goal; exact phase is not supplied.",
+      "limitations": [
+        "The image gives one O2 valence diagram, not the changed N2 2p ordering or an AO-to-MO construction. It does not purport to be a universal MO ordering for every diatomic molecule.",
+        "Exact style continuity with an external landscape reference pool and alt text were not assessed because the FIRST input is restricted to these four images and whole goals."
+      ],
+      "wholeGoalText": {
+        "titleDe": "Molekülorbital-Modelle anwenden",
+        "titleEn": "Apply molecular orbital models",
+        "descriptionDe": "Die lernende Person kann einfache MO-Diagramme (z. B. O2, N2) interpretieren und Bindungsordnung ableiten.",
+        "descriptionEn": "The learner can interpret simple MO diagrams (e.g. O2, N2) and derive bond order."
+      },
+      "assetPins": [
+        {
+          "goalId": "f85b4651-50ea-5b42-b193-3465c05257a7",
+          "role": "nativePNG",
+          "path": "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/next20-four-documented-image-corrections-author-root-v1/candidate-image-author/f85b4651-50ea-5b42-b193-3465c05257a7.candidate-v1.png",
+          "sha256": "sha256:d8b752125f594e5625263c576708b83394923b9f5feddab2fe167cf92f016aa8",
+          "bytes": 1367937,
+          "width": 1672,
+          "height": 941,
+          "format": "PNG",
+          "inputPinMatches": true,
+          "actuallyInspectedWith": "tools.view_image(detail=original)",
+          "viewed": true
+        },
+        {
+          "goalId": "f85b4651-50ea-5b42-b193-3465c05257a7",
+          "role": "actualBrowser360",
+          "path": "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/next20-four-documented-image-corrections-author-root-v1/candidate-image-author/f85b4651-50ea-5b42-b193-3465c05257a7.inspection-only-360.png",
+          "sha256": "sha256:a3b865ba93fdb967ab183813d755c68416152fadae6d1b8d9e0f31ac77290ed8",
+          "bytes": 78896,
+          "width": 360,
+          "height": 203,
+          "format": "PNG",
+          "inputPinMatches": true,
+          "actuallyInspectedWith": "tools.view_image(detail=original)",
+          "viewed": true
+        },
+        {
+          "goalId": "f85b4651-50ea-5b42-b193-3465c05257a7",
+          "role": "actualBrowser680",
+          "path": "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/next20-four-documented-image-corrections-author-root-v1/candidate-image-author/f85b4651-50ea-5b42-b193-3465c05257a7.inspection-only-680.png",
+          "sha256": "sha256:2b612fdfd60b4b568947ef89860ec9ab1b77db4c114390399201ebf9eb9c4b84",
+          "bytes": 249501,
+          "width": 680,
+          "height": 383,
+          "format": "PNG",
+          "inputPinMatches": true,
+          "actuallyInspectedWith": "tools.view_image(detail=original)",
+          "viewed": true
+        }
+      ]
+    },
+    {
+      "decision": "KEEP",
+      "decisionMeaning": "Positive independent visual AI review candidate for these exact unactivated PNG bytes; no QA-row integration or release acceptance.",
+      "blockingFinding": false,
+      "concreteRequiredFix": null,
+      "nativeFormat": "PNG 1672 x 941, near-native 16:9 (ratio 1.776833); no format exception required.",
+      "screenshotGeometry": "Provided actual-browser PNGs are 360 x 203 and 680 x 383; the complete image is visible without cropping.",
+      "AIcandidate": true,
+      "HumanApproval": false,
+      "HumanTrial": false,
+      "M7": false,
+      "goalId": "9decc36b-a69a-5599-a9f0-fcebdf0203d8",
+      "science": [
+        "The Newman pair shows ethane with six H substituents in each drawing. In the staggered view the front and rear sets alternate; the eclipsed view shows the three corresponding H pairs aligned/overlapping. The arrows identify rotation about the single bond, rather than a conversion into an E/Z pair.",
+        "The central carbon in the mirror panel has four different substituents: CH3, C2H5, H and Br. H is behind on a dashed bond and Br in front on a solid wedge. Across the vertical mirror, the left/right positions and wedge/dash geometry are reflected while the distinct upper/lower groups remain fixed. This is a genuine opposite-configuration, nonsuperposable mirror pair; it is not produced merely by relabeling identical groups.",
+        "Both alkene drawings have one Cl and one H on each double-bond carbon. In the left drawing the higher-priority Cl groups are opposite: E/trans. In the right they are on the same side: Z/cis. The drawings have the same constitution and are not mirror partners; the diastereomer label is correct.",
+        "The cis/trans wording is valid for this specific dichloroethene example; the drawing does not assert that E always means trans for every possible substituted alkene."
+      ],
+      "operatorFit": "The supplied molecular pairs and explanations show how spatial arrangement supports assigning conformer, enantiomer or diastereomer within a shared constitution. The paired drawings support the reasoning operator in both whole goal descriptions. The image is an overview rather than an unlabeled assessment.",
+      "nativeAnd680": "The six-H Newman depictions, distinct CH3/C2H5 groups, mirrored wedge and dash, and Cl/H positions around each C=C are inspectable. The central mirror is real, and no free single-bond rotation is implied for the E/Z pair.",
+      "phone360": "All three pair panels and their headings remain distinct. The four labels around each chiral center and the filled/dashed bonds are small but visible; the large Cl/H markers retain the opposite-versus-same-side distinction. The slightly overlapping H pairs intentionally distinguish eclipsed from staggered and remain recognizable. Reading the explanatory subtitle requires more care than on desktop.",
+      "styleAndAge": "Rounded colored panels and large atom/group discs are approachable while retaining the stereochemical notation needed for the goal. There are no irrelevant comic props competing with the spatial relationship.",
+      "limitations": [
+        "Newman eclipsing is drawn with slight display offsets/overlap so both hydrogens can be seen, rather than exact superposition hiding the rear labels. This is a recognizable schematic, not a numerical torsion-angle diagram.",
+        "A nonisomeric rotation of the whole molecule is not separately shown. The whole goal does not require every possible negative case in its orientation image.",
+        "No exact learner phase or alt text was supplied."
+      ],
+      "wholeGoalText": {
+        "titleDe": "Stereoisomerietypen zuordnen",
+        "titleEn": "Assign stereoisomer types",
+        "descriptionDe": "Die lernende Person kann an vorgegebenen Molekülpaaren mit gleicher Konstitution anhand ihrer räumlichen Anordnung begründen, ob Stereoisomerie vorliegt, und gegebenenfalls den passenden Stereoisomerietyp zuordnen.",
+        "descriptionEn": "The learner can use supplied pairs of molecules with the same constitution to explain from their spatial arrangements whether stereoisomerism is present and, where applicable, assign the appropriate type of stereoisomerism."
+      },
+      "assetPins": [
+        {
+          "goalId": "9decc36b-a69a-5599-a9f0-fcebdf0203d8",
+          "role": "nativePNG",
+          "path": "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/next20-four-documented-image-corrections-author-root-v1/candidate-image-author/9decc36b-a69a-5599-a9f0-fcebdf0203d8.candidate-v1.png",
+          "sha256": "sha256:11cd739874de87fd9ebf8ca3e40a9c65677b5dfc22297a89683b4ade91af697a",
+          "bytes": 1548750,
+          "width": 1672,
+          "height": 941,
+          "format": "PNG",
+          "inputPinMatches": true,
+          "actuallyInspectedWith": "tools.view_image(detail=original)",
+          "viewed": true
+        },
+        {
+          "goalId": "9decc36b-a69a-5599-a9f0-fcebdf0203d8",
+          "role": "actualBrowser360",
+          "path": "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/next20-four-documented-image-corrections-author-root-v1/candidate-image-author/9decc36b-a69a-5599-a9f0-fcebdf0203d8.inspection-only-360.png",
+          "sha256": "sha256:fb5cdb5b0ac2af509c7c3dc3fb1af9d435d50596c00aacdd9f06d7d09d678335",
+          "bytes": 87010,
+          "width": 360,
+          "height": 203,
+          "format": "PNG",
+          "inputPinMatches": true,
+          "actuallyInspectedWith": "tools.view_image(detail=original)",
+          "viewed": true
+        },
+        {
+          "goalId": "9decc36b-a69a-5599-a9f0-fcebdf0203d8",
+          "role": "actualBrowser680",
+          "path": "/home/enpasos/projects/skillpilot/tmp/chemie-m7-resumed-20261016/next20-four-documented-image-corrections-author-root-v1/candidate-image-author/9decc36b-a69a-5599-a9f0-fcebdf0203d8.inspection-only-680.png",
+          "sha256": "sha256:8bcc04bb33bae28a2ba2984419992b8cee515a41aac9c8dcd8031b4d9f10b8bb",
+          "bytes": 274087,
+          "width": 680,
+          "height": 383,
+          "format": "PNG",
+          "inputPinMatches": true,
+          "actuallyInspectedWith": "tools.view_image(detail=original)",
+          "viewed": true
+        }
+      ]
+    }
+  ]
+}

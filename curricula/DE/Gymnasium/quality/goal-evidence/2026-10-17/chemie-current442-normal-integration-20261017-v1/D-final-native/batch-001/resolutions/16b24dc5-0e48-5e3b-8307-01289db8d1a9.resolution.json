@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-001-v1-resolution-16b24dc5-0e48-5e3b-8307-01289db8d1a9",
+  "goal": {
+    "goalId": "16b24dc5-0e48-5e3b-8307-01289db8d1a9",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:2a2b8e8ee5341752181010fc97a84cc51a8a7d06570f92156c1fc1e2c10d640b",
+    "pageFingerprint": "sha256:2a8724b49da8a45baa2149d01669368ab5e32fbc21f6916d0e794bbe34b52987",
+    "goalReviewContextFingerprint": "sha256:324241ef96a2a47c1dfc51a9bea7a2302f9954dc2e4ab6c1e067cc6df930f479",
+    "finalText": {
+      "titleDe": "Sekundärzellen quellenkritisch bewerten",
+      "titleEn": "Evaluate secondary cells using source critique",
+      "descriptionDe": "Die lernende Person kann zu alltagsrelevanten Sekundärzellen recherchieren, ihr Bauprinzip beschreiben, Funktionsweise und Energetik erläutern und Einsatzmöglichkeiten bewerten; dabei prüft sie Vertrauenswürdigkeit und Urheberschaft der Quellen und kennzeichnet Zitate.",
+      "descriptionEn": "The learner can research everyday secondary cells, describe their construction principle, explain their function and energetics, and evaluate possible uses, while checking source trustworthiness and authorship and marking quotations."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-001-v1-a",
+      "campaignDigest": "sha256:96c597e11ef28d55b630202e1c2e03a243872e2f50e9cf9cc7c0df7a79d9cd3d",
+      "roundId": "chemie-final-current-context-d-001-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-001-v1-independent-a",
+      "reviewInputFingerprint": "sha256:84cb9df1bd7fef7e2302044cdb80cba5ac86f4d3a52db0bc7c6a09292793cfa8",
+      "goalReviewContextFingerprint": "sha256:324241ef96a2a47c1dfc51a9bea7a2302f9954dc2e4ab6c1e067cc6df930f479",
+      "batchId": "chemie-final-current-context-d-001-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch001-20261018",
+      "runManifestDigest": "sha256:b4b3f17dceb9e1e7c4c82361c9c800e5f7de932b46dcf704e3d6a847860b03be",
+      "resultsDigest": "sha256:c9861ef6d236ae81946747b3d1c7abde302f5f013b5c93ce5edad0870065fc31",
+      "recordId": "codex-reviewer-a-final163-batch001-20261018.008",
+      "recordDigest": "sha256:2a459ff497834bbbf6151729897c9ece3c92ae2befac609239342458138842e1"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-001-v1-b",
+      "campaignDigest": "sha256:1b8713019a8e252039fa354999df05261e1c78eedb890a563b29e531dc70ec46",
+      "roundId": "chemie-final-current-context-d-001-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-001-v1-independent-b",
+      "reviewInputFingerprint": "sha256:84cb9df1bd7fef7e2302044cdb80cba5ac86f4d3a52db0bc7c6a09292793cfa8",
+      "goalReviewContextFingerprint": "sha256:324241ef96a2a47c1dfc51a9bea7a2302f9954dc2e4ab6c1e067cc6df930f479",
+      "batchId": "chemie-final-current-context-d-001-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-001-20261018",
+      "runManifestDigest": "sha256:13eb6055a4aa8d4d04be4cfd1c0c77f4b206a289df96a67139c1efd68e08d32d",
+      "resultsDigest": "sha256:22da53163d50636a69ec31425cecc056999735ee0193be8470171a3f650414eb",
+      "recordId": "chemie-final163-native-b-001-20261018:16b24dc5-0e48-5e3b-8307-01289db8d1a9",
+      "recordDigest": "sha256:129cb071ba5db61a1321f64b71ae1cb20ea851c9c550cfeb46996adcda904e94"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:706dc6e69548381d583e44f00cb7a2768b65125ce38e115ffeb99e090ece4f50"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-001-20261018-v1",
+    "manifestDigest": "sha256:2947637162d222247361434cafc2291ef0d74af62baa53f4b2c0b9ac2349ad89",
+    "manifestFingerprint": "sha256:240821b7f7c94c99aba57979178f196e85ea04ebc4d569c964de2f5230011117",
+    "decisionId": "chemie-final163-paired-D-only-001-20261018-v1-decision-007"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-001-20261018-v1-decision-007",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:22:46.792Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch001-20261018.008): Die Beschreibung integriert Bauprinzip, Energetik und Quellenkritik in ein begründetes Einsatzurteil. Das gesamte P verlangt eigene Recherche statt Dossierwiederholung, berücksichtigt sichere Modelle und kennzeichnet zusätzliche HB-Schemata beziehungsweise HB-LK-Überspannung ausdrücklich als begrenzte Scopes. B (chemie-final163-native-b-001-20261018:16b24dc5-0e48-5e3b-8307-01289db8d1a9): Recherche, Bauprinzip und Energetik tragen hier gemeinsam die quellenkritische Einsatzbewertung; P ersetzt eigene Recherche nicht durch Musterantworten. HB-Schemata und HB-LK-Überspannung sind im P ausdrücklich konditioniert, keine hier verifizierte allgemeine Projektionspflicht.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch001-20261018.008; chemie-final163-native-b-001-20261018:16b24dc5-0e48-5e3b-8307-01289db8d1a9). Their current English understanding evidence is retained: A: Secondary cells couple separate electron/ion paths with reversible redox chemistry; charging requires energy and use judgments need reliable sources and test conditions. B: Secondary cells couple reversible redox processes to separate transport paths; charge, energy and source reliability govern use judgments. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Sekundärzellen koppeln getrennte Elektronen-/Ionenwege mit reversibler Redoxchemie; Laden erfordert Energie und Einsatzurteile brauchen belastbare Quellen und Testbedingungen.",
+      "essentialUnderstandingEn": "Secondary cells couple separate electron/ion paths with reversible redox chemistry; charging requires energy and use judgments need reliable sources and test conditions.",
+      "observablePerformanceDe": "Recherchiert eine überprüfbare Quelle, kennzeichnet Zitate, erklärt Aufbau und Lade-/Entladevorgänge und unterscheidet Ah, Wh und Leistung.",
+      "observablePerformanceEn": "Researches a verifiable source, marks quotations, explains construction and charging/discharging and distinguishes Ah, Wh and power.",
+      "transferExpectationDe": "Begründet eine neue Einsatzeinschätzung bei Kälte oder hohem Anlaufstrom und prüft die Übertragbarkeit der recherchierten Daten.",
+      "transferExpectationEn": "Justifies a fresh use assessment under cold conditions or high starting current and checks transferability of researched data."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-a42e65e233c465cbf1a01a58bc860646b5a8ff7ec120add7614d14c19ad53088",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:4d90ae1ad861374d4674855773c21414fc2ecbc349f3fe3d0d6ee457feb7fa77"
+}

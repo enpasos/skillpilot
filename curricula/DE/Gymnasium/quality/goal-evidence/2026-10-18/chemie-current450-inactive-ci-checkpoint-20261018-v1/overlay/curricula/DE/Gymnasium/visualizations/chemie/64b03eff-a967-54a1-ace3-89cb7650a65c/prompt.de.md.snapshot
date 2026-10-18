@@ -1,0 +1,6 @@
+Use case: text-localization. Edit target: the provided existing German Chemistry learning illustration. Correct ONLY the scientifically misleading caption at the lower right over the absorption graph. Replace exactly the old text "Folge: Farbänderung zu längeren Wellenlängen" with exactly these three centered lines:
+Absorptionsmaximum:
+Verschiebung zu längeren
+Wellenlängen
+
+Preserve the entire existing illustration, its white graph-paper backdrop, pale blue two-panel layout, title, colored donor/acceptor/π-system blocks, all other wording, orbital energy-level diagrams and absorption curves. The right red absorption band must remain at a longer wavelength than its blue reference. Keep λmax, HOMO/LUMO and absorption-axis meanings correct. This is a caption correction to distinguish absorption from perceived colour, not a redesign. Preserve every other scientific relationship and color; do not invent chemical structures, change any arrows or add objects. Keep the present wide ~16:9 composition, no crop or new borders, readable large lettering. Output PNG with opaque background, near-native ~1600x900 is acceptable. Do not add photorealism, a watermark, labels, or explanatory footnotes.

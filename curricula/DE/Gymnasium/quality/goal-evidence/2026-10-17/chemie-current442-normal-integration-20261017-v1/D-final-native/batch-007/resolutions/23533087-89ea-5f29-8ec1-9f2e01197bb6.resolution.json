@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-007-v1-resolution-23533087-89ea-5f29-8ec1-9f2e01197bb6",
+  "goal": {
+    "goalId": "23533087-89ea-5f29-8ec1-9f2e01197bb6",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:dccbcde1bbd5362b74a082f595ca8c4ff0635f17ae390319ff3ccda0dcac784d",
+    "pageFingerprint": "sha256:3ac7499f9bbfafc0f8615b966ebb96deb62d3d1b7ebc1a162201aceccd2c76b5",
+    "goalReviewContextFingerprint": "sha256:804bbb6a3e8c3acb7ea376a62c8f66b519ace3aa7d2013dead1e53f8ab1dee52",
+    "finalText": {
+      "titleDe": "Valenzstrichformeln und Mesomerie aufstellen",
+      "titleEn": "Construct valence-line and mesomeric formulas",
+      "descriptionDe": "Die lernende Person kann mithilfe der Edelgasregel die Bindigkeit von Nichtmetall-Atomen vorhersagen und Valenzstrichformeln von Molekülen sowie ausgewählten Molekül-Ionen unter Einbezug mesomerer Grenzstrukturen aufstellen.",
+      "descriptionEn": "The learner can predict the valency of nonmetal atoms using the noble-gas rule and construct valence-line formulas of molecules and selected molecular ions including mesomeric resonance structures."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-007-v1-a",
+      "campaignDigest": "sha256:03e23ca7a839411ee0694d3ffc4c5304359bdbdb4885b890ef7f8def67d5e5a0",
+      "roundId": "chemie-final-current-context-d-007-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-007-v1-independent-a",
+      "reviewInputFingerprint": "sha256:9786177231bba01a5178b748443b7e2ac24b65d395c6cfda891b47d1838d8fd4",
+      "goalReviewContextFingerprint": "sha256:804bbb6a3e8c3acb7ea376a62c8f66b519ace3aa7d2013dead1e53f8ab1dee52",
+      "batchId": "chemie-final-current-context-d-007-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch007-20261018",
+      "runManifestDigest": "sha256:41b3803956cb0b8e3ceaa1b4c1224724037cd8f6fc9ff400cb30dc979ec172d0",
+      "resultsDigest": "sha256:2deca668c6059260417c15a3d4e706e9325f6ce3e8e0bef2d977983444354968",
+      "recordId": "codex-reviewer-a-final163-batch007-20261018.012",
+      "recordDigest": "sha256:402a835c7481206e77bb08aeb144be22e6c134cdd08ca350af5cfa0b280e9f97"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-007-v1-b",
+      "campaignDigest": "sha256:f96e78c8b5b03376c090596c68434afdda0adfb82adef282dc1a1a949aed2746",
+      "roundId": "chemie-final-current-context-d-007-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-007-v1-independent-b",
+      "reviewInputFingerprint": "sha256:9786177231bba01a5178b748443b7e2ac24b65d395c6cfda891b47d1838d8fd4",
+      "goalReviewContextFingerprint": "sha256:804bbb6a3e8c3acb7ea376a62c8f66b519ace3aa7d2013dead1e53f8ab1dee52",
+      "batchId": "chemie-final-current-context-d-007-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-007-20261018",
+      "runManifestDigest": "sha256:c21072a1baeec0fb475776827fd6bdcb51afcb70555317673d8fac140568d60f",
+      "resultsDigest": "sha256:f627bfdb86dcc4a0e7dec63f04ec892ed6ec7af463e3169bda439a10444338fd",
+      "recordId": "chemie-final163-native-b-007-20261018:23533087-89ea-5f29-8ec1-9f2e01197bb6",
+      "recordDigest": "sha256:10479b77340197f62c7e13816589b517c0a77febe04d367c120dece46857de8e"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:9d01c3a2eaf6ff3168f19750d5b1780c3bd726f4c76d033ac9016e0d3a5debbf"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-007-20261018-v1",
+    "manifestDigest": "sha256:a002d58ade8fb14ebb3f915bed25f48fcfa287b2641be1e7a466d8abd811c99e",
+    "manifestFingerprint": "sha256:12732999b92050cc52642e0c0e4f1bd967da4b1b66528e696859794dba344986",
+    "decisionId": "chemie-final163-paired-D-only-007-20261018-v1-decision-012"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-007-20261018-v1-decision-012",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:39:49.306Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch007-20261018.012): Das ganze bilinguale Ziel ist für ausgewählte einfache Moleküle und Molekülionen verständlich operationalisiert. Das vollständige P stimmt in Elektronenzählung, Formalladungen und Oktetten für Nitrat und Carbonat; die mittlere Bindungsordnung 4/3 wird ausdrücklich als Modell verwendet. Es schützt vor dem fachlich falschen zeitlichen Wechsel verschiedener Molekülsorten und macht die Edelgasregel nicht universell. B (chemie-final163-native-b-007-20261018:23533087-89ea-5f29-8ec1-9f2e01197bb6): Die Beschreibung verbindet die einfache Bindigkeitsregel und Lewis-Konstruktion sinnvoll; ausgewählte Molekülionen begrenzen den Anspruch. Das vollständige P fordert eigene vollständige Strukturen, freie Paare, Elektronenbilanz und Mesomeriedeutung in beiden Fällen. Damit besteht gegenüber den nachfolgenden Abrufzielen ein positiver Konstruktionsnachweis, ohne die Oktettregel für sämtliche Nichtmetallverbindungen zu verabsolutieren.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch007-20261018.012; chemie-final163-native-b-007-20261018:23533087-89ea-5f29-8ec1-9f2e01197bb6). Their current English understanding evidence is retained: A: Lewis structures conserve valence electrons and charge; resonance contributors vary electron distribution at a fixed skeleton and describe one shared hybrid. B: Lewis structures conserve valence electrons and charge; resonance contributors change electron distribution on a fixed atom framework and are not alternating molecular species. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Lewisformeln erhalten Valenzelektronen und Ladung; mesomere Grenzstrukturen variieren Elektronenverteilung bei gleichem Atomgerüst und beschreiben einen gemeinsamen Hybrid.",
+      "essentialUnderstandingEn": "Lewis structures conserve valence electrons and charge; resonance contributors vary electron distribution at a fixed skeleton and describe one shared hybrid.",
+      "observablePerformanceDe": "Leitet einfache C-/O-Bindigkeit mit der Edelgasregel her, zeichnet H2O und CO2 mit freien Paaren und konstruiert die drei Nitratstrukturen mit 24 Elektronen und Gesamtladung −1.",
+      "observablePerformanceEn": "Derives simple C/O valence using the noble-gas rule, draws H2O and CO2 with lone pairs and constructs three nitrate contributors with 24 electrons and total charge −1.",
+      "transferExpectationDe": "Vervollständigt beim frischen Carbonat die drei Formeln mit freien Paaren und Ladungen und erklärt gleichwertige Bindungen statt eines dauerhaft ausgewählten Doppelbindungs-O.",
+      "transferExpectationEn": "Completes the three fresh carbonate contributors with lone pairs and charges and explains equivalent bonds rather than one permanently selected double-bonded oxygen."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-04292f656a10e8ade2ed04bf3c815ec6571b7f434c5aa569f0d10c8e55bd4ea1",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:5cfaedc97912f6b11d4253910d9c52216604336ae9ed2279cc483ff018bf5e5c"
+}

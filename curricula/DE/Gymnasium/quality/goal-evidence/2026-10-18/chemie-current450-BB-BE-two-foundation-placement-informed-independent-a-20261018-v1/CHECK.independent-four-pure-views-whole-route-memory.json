@@ -1,0 +1,273 @@
+{
+  "status": "PASS",
+  "method": "Independent unchanged pure normalization/roles/projection/tree/country-course filters and explicit finite atomic requires closures; no compiler/AP/build",
+  "counts": {
+    "views": 4,
+    "totalTargetTuplesAdded": 7,
+    "successorOnlyAdded": 2,
+    "removed": 0,
+    "missingNewDirectPrerequisites": 0,
+    "missingFoundationTransitivePrerequisites": 0
+  },
+  "rows": [
+    {
+      "viewId": "de-bb-gym-chemistry-lk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BB",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "normalBefore": {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-bb-lk.view.json",
+        "sha256": "4891dea3b85080f739472f97f2c451f92bdcef7a3e8478bb8161969e62964644",
+        "bytes": 50609
+      },
+      "candidateAfter": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-BB-BE-two-foundation-placement-author-successor-20261018-v1/views/de-bb-lk.view.json",
+        "sha256": "3c3f334073679498851b3d7fd8a660f3e9909b8926f3c11b4e6d37a2490b31e7",
+        "bytes": 50987
+      },
+      "beforeTargetCount": 263,
+      "afterTargetCount": 265,
+      "added": [
+        "dc0470f1-0676-5949-a5cc-02783d478406",
+        "edcfc5f0-900d-5819-830f-3b14af2bc369"
+      ],
+      "removed": [],
+      "successorOnlyDelta": [
+        "edcfc5f0-900d-5819-830f-3b14af2bc369"
+      ],
+      "directRequiresChecks": [
+        {
+          "goalId": "dc0470f1-0676-5949-a5cc-02783d478406",
+          "directRequires": [
+            "acdfc7d7-6d6b-5a1f-837c-79449c29a305",
+            "edcfc5f0-900d-5819-830f-3b14af2bc369",
+            "28c90c6a-3020-5c51-ac40-d802f3f12d2d"
+          ],
+          "directPrerequisiteAtoms": [
+            "28c90c6a-3020-5c51-ac40-d802f3f12d2d",
+            "acdfc7d7-6d6b-5a1f-837c-79449c29a305",
+            "edcfc5f0-900d-5819-830f-3b14af2bc369"
+          ],
+          "missingDirectAtoms": []
+        },
+        {
+          "goalId": "edcfc5f0-900d-5819-830f-3b14af2bc369",
+          "directRequires": [
+            "48115ff7-7aca-5d0b-a9e7-7fc6c78434ef"
+          ],
+          "directPrerequisiteAtoms": [
+            "48115ff7-7aca-5d0b-a9e7-7fc6c78434ef"
+          ],
+          "missingDirectAtoms": []
+        }
+      ],
+      "wholeFoundationRoute": {
+        "dependentGoalId": "dc0470f1-0676-5949-a5cc-02783d478406",
+        "newFoundationGoalId": "edcfc5f0-900d-5819-830f-3b14af2bc369",
+        "alreadyTargetedFoundationGoalId": "48115ff7-7aca-5d0b-a9e7-7fc6c78434ef",
+        "wholeTransitivePrerequisiteAtomicIds": [
+          "1c1420c2-a8e2-520f-8015-6df637a973bd",
+          "48115ff7-7aca-5d0b-a9e7-7fc6c78434ef",
+          "e7c363d4-e02d-4895-8750-ba62c2eb63fe"
+        ],
+        "missingTransitiveAtoms": [],
+        "explicitTargetRole": true,
+        "prerequisiteOnlyRole": false,
+        "stateAndCourseFilterPass": true
+      },
+      "memoryRequiredAddedGoals": [
+        {
+          "goalId": "edcfc5f0-900d-5819-830f-3b14af2bc369",
+          "referencedMemoryGoalIds": [
+            "1f2021c0-c633-5240-ae97-e58ecc9d48ca",
+            "045efaa4-a91a-5a91-add9-bff49cbed324",
+            "076cb333-3b61-5025-8f32-32afc16f9987"
+          ],
+          "visibleReferencedMemoryGoalIds": [
+            "1f2021c0-c633-5240-ae97-e58ecc9d48ca"
+          ]
+        }
+      ]
+    },
+    {
+      "viewId": "de-be-gym-chemistry-lk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BE",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "normalBefore": {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-be-lk.view.json",
+        "sha256": "e205c8f219498dc4f4b919de39a67742d82817d6fdcc0af1768fc9ac1d4fc123",
+        "bytes": 50609
+      },
+      "candidateAfter": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-BB-BE-two-foundation-placement-author-successor-20261018-v1/views/de-be-lk.view.json",
+        "sha256": "017b6bd7a6df0f36d7008567a59f052408dbb12834766f2368c675c68c935aac",
+        "bytes": 50987
+      },
+      "beforeTargetCount": 263,
+      "afterTargetCount": 265,
+      "added": [
+        "dc0470f1-0676-5949-a5cc-02783d478406",
+        "edcfc5f0-900d-5819-830f-3b14af2bc369"
+      ],
+      "removed": [],
+      "successorOnlyDelta": [
+        "edcfc5f0-900d-5819-830f-3b14af2bc369"
+      ],
+      "directRequiresChecks": [
+        {
+          "goalId": "dc0470f1-0676-5949-a5cc-02783d478406",
+          "directRequires": [
+            "acdfc7d7-6d6b-5a1f-837c-79449c29a305",
+            "edcfc5f0-900d-5819-830f-3b14af2bc369",
+            "28c90c6a-3020-5c51-ac40-d802f3f12d2d"
+          ],
+          "directPrerequisiteAtoms": [
+            "28c90c6a-3020-5c51-ac40-d802f3f12d2d",
+            "acdfc7d7-6d6b-5a1f-837c-79449c29a305",
+            "edcfc5f0-900d-5819-830f-3b14af2bc369"
+          ],
+          "missingDirectAtoms": []
+        },
+        {
+          "goalId": "edcfc5f0-900d-5819-830f-3b14af2bc369",
+          "directRequires": [
+            "48115ff7-7aca-5d0b-a9e7-7fc6c78434ef"
+          ],
+          "directPrerequisiteAtoms": [
+            "48115ff7-7aca-5d0b-a9e7-7fc6c78434ef"
+          ],
+          "missingDirectAtoms": []
+        }
+      ],
+      "wholeFoundationRoute": {
+        "dependentGoalId": "dc0470f1-0676-5949-a5cc-02783d478406",
+        "newFoundationGoalId": "edcfc5f0-900d-5819-830f-3b14af2bc369",
+        "alreadyTargetedFoundationGoalId": "48115ff7-7aca-5d0b-a9e7-7fc6c78434ef",
+        "wholeTransitivePrerequisiteAtomicIds": [
+          "1c1420c2-a8e2-520f-8015-6df637a973bd",
+          "48115ff7-7aca-5d0b-a9e7-7fc6c78434ef",
+          "e7c363d4-e02d-4895-8750-ba62c2eb63fe"
+        ],
+        "missingTransitiveAtoms": [],
+        "explicitTargetRole": true,
+        "prerequisiteOnlyRole": false,
+        "stateAndCourseFilterPass": true
+      },
+      "memoryRequiredAddedGoals": [
+        {
+          "goalId": "edcfc5f0-900d-5819-830f-3b14af2bc369",
+          "referencedMemoryGoalIds": [
+            "1f2021c0-c633-5240-ae97-e58ecc9d48ca",
+            "045efaa4-a91a-5a91-add9-bff49cbed324",
+            "076cb333-3b61-5025-8f32-32afc16f9987"
+          ],
+          "visibleReferencedMemoryGoalIds": [
+            "1f2021c0-c633-5240-ae97-e58ecc9d48ca"
+          ]
+        }
+      ]
+    },
+    {
+      "viewId": "de-bw-gym-chemistry-lk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BW",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "normalBefore": {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-bw-lk.view.json",
+        "sha256": "2661ca8d18958802d104943e19ec3b4c97a65b3a83857092cf38e107766bfadd",
+        "bytes": 41824
+      },
+      "candidateAfter": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-BB-BE-two-foundation-placement-author-successor-20261018-v1/views/de-bw-lk.view.json",
+        "sha256": "9ec10f2cd36bfc689cf92f2a0c3bcf17a5b100ad2a9af1ec91e69aa31663d9c1",
+        "bytes": 42202
+      },
+      "beforeTargetCount": 213,
+      "afterTargetCount": 215,
+      "added": [
+        "3be2d0b7-c22f-57d4-886a-10fc04a629f5",
+        "dc0470f1-0676-5949-a5cc-02783d478406"
+      ],
+      "removed": [],
+      "successorOnlyDelta": [],
+      "directRequiresChecks": [
+        {
+          "goalId": "3be2d0b7-c22f-57d4-886a-10fc04a629f5",
+          "directRequires": [
+            "dd58c029-176f-5d99-923e-1c1fda6cf58e"
+          ],
+          "directPrerequisiteAtoms": [
+            "dd58c029-176f-5d99-923e-1c1fda6cf58e"
+          ],
+          "missingDirectAtoms": []
+        },
+        {
+          "goalId": "dc0470f1-0676-5949-a5cc-02783d478406",
+          "directRequires": [
+            "acdfc7d7-6d6b-5a1f-837c-79449c29a305",
+            "edcfc5f0-900d-5819-830f-3b14af2bc369",
+            "28c90c6a-3020-5c51-ac40-d802f3f12d2d"
+          ],
+          "directPrerequisiteAtoms": [
+            "28c90c6a-3020-5c51-ac40-d802f3f12d2d",
+            "acdfc7d7-6d6b-5a1f-837c-79449c29a305",
+            "edcfc5f0-900d-5819-830f-3b14af2bc369"
+          ],
+          "missingDirectAtoms": []
+        }
+      ],
+      "wholeFoundationRoute": null,
+      "memoryRequiredAddedGoals": []
+    },
+    {
+      "viewId": "de-bw-gym-chemistry-gk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BW",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "normalBefore": {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-bw-gk.view.json",
+        "sha256": "5c8dc3b3bdbb9d466c23a8c2f4f55ffb8cee46a76008c1629db50066917b1266",
+        "bytes": 42078
+      },
+      "candidateAfter": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-BB-BE-two-foundation-placement-author-successor-20261018-v1/views/de-bw-gk.view.json",
+        "sha256": "b709e538ab472efef00162849980a616d38944b3c5d3778db056804aa0fc28b4",
+        "bytes": 42267
+      },
+      "beforeTargetCount": 208,
+      "afterTargetCount": 209,
+      "added": [
+        "3be2d0b7-c22f-57d4-886a-10fc04a629f5"
+      ],
+      "removed": [],
+      "successorOnlyDelta": [],
+      "directRequiresChecks": [
+        {
+          "goalId": "3be2d0b7-c22f-57d4-886a-10fc04a629f5",
+          "directRequires": [
+            "dd58c029-176f-5d99-923e-1c1fda6cf58e"
+          ],
+          "directPrerequisiteAtoms": [
+            "dd58c029-176f-5d99-923e-1c1fda6cf58e"
+          ],
+          "missingDirectAtoms": []
+        }
+      ],
+      "wholeFoundationRoute": null,
+      "memoryRequiredAddedGoals": []
+    }
+  ]
+}

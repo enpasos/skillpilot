@@ -1,0 +1,440 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "chemie-current439-native14-paired-root-synthesis-20261017-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex root synthesis after both blind independent current-input reviews; no human attestation",
+  "synthesizedAt": "2026-10-17T07:27:15.171Z",
+  "batch": {
+    "batchId": "chemie-current439-jurisdiction-only-native14-technical-c-20261017-v1",
+    "batchManifestDigest": "sha256:60960fa2b349d6dcaa1f9b53abff1d9b44b9ecdc4dd7c166560a7e968e177a3a",
+    "configDigest": "sha256:dfc9e8c9e089c6200b16a77d3a60fbea34560b3fdbd33e120ec5c08ffda8a500",
+    "bundleFingerprint": "sha256:7afc9ebb49d98efb3c5fcb72224f0fb3598697462a53913fec12cd8b489dc4d5",
+    "bookDigest": "sha256:fd4b4d812cc4e1acfcbefbd6966cf6fe98d4b1bc77a208423529bbec2090e9f3",
+    "reviewInputFingerprint": "sha256:e30dc48548e66640eee534559aa4c76e5c2aa996eeff3c363a6d2f41eecc6f44",
+    "dualSummaryDigest": "sha256:af0ccba6de13b584e79884a044d7cd6ecaf275c1e7eff7d3dcc6ca969b9b8967",
+    "canonicalLandscapeDigest": "sha256:e0af9e3dedc6db17b940ec7d4732a6c2bcced7d00f3a30df9db948b9936332a8"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-current439-jurisdiction-only-native14-technical-c-20261017-v1-a",
+      "campaignDigest": "sha256:e7c2aef9e0b263a4bcdf1525d030f2d53f5723d3680e7e7093c9404f8877d346",
+      "roundId": "chemie-current439-jurisdiction-only-native14-technical-c-20261017-v1-first-pass-a",
+      "independenceGroupId": "chemie-current439-jurisdiction-only-native14-technical-c-20261017-v1-independent-a",
+      "reviewInputFingerprint": "sha256:e30dc48548e66640eee534559aa4c76e5c2aa996eeff3c363a6d2f41eecc6f44",
+      "batchId": "chemie-current439-jurisdiction-only-native14-technical-c-20261017-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:733c7c90d4d60443e945fbf751f3d33708c347980787491ece097b66e3a4447f",
+      "runId": "chemie-current439-native14-independent-a-v1",
+      "runManifestDigest": "sha256:ff2aaf8662635d69bdcc532e63ecda4b9ecee0ca5cecdcea47acd24276687b41",
+      "resultsDigest": "sha256:6482586127d85c5dcc51ae2481aeb4cbebda3e96734f2be8ec7620705b2193bc"
+    },
+    "second": {
+      "campaignId": "chemie-current439-jurisdiction-only-native14-technical-c-20261017-v1-b",
+      "campaignDigest": "sha256:5acecc0d91eed4f54d51e2453414983f59ab72fb7142a6877d6811e01955e59c",
+      "roundId": "chemie-current439-jurisdiction-only-native14-technical-c-20261017-v1-first-pass-b",
+      "independenceGroupId": "chemie-current439-jurisdiction-only-native14-technical-c-20261017-v1-independent-b",
+      "reviewInputFingerprint": "sha256:e30dc48548e66640eee534559aa4c76e5c2aa996eeff3c363a6d2f41eecc6f44",
+      "batchId": "chemie-current439-jurisdiction-only-native14-technical-c-20261017-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:6e921cf16da3d54d79b747a5cd01a79094febd9aad34f4f3e3f447f2545512c6",
+      "runId": "chemie-current439-native14-independent-b-20261017-v1-run",
+      "runManifestDigest": "sha256:b74354e490a0582986c0b2ec695d827da5dc422fe59296208c64885873023689",
+      "resultsDigest": "sha256:f0fed65c9b54f68124d7bc2800f0b517a54cc5fba803178fa7c5783f99e236cd"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "chemie-current439-native14-root-53db04a0-ea76-5810-9526-c8639100e497-20261017-v1",
+      "goalId": "53db04a0-ea76-5810-9526-c8639100e497",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:22652fd19fca2ba96da08b964a2880b43ce14a034fbedbdaa0af66a7fb1306ae",
+      "pageFingerprint": "sha256:6486190545a94eb5ce22952b7f367f6ff5ca4da5753f78bf2a7481826f597891",
+      "goalReviewContextFingerprint": "sha256:d016700417b08d7ee930eb3ce2e815429890cd67d26e1a6ab43123ac914f3678",
+      "finalText": {
+        "titleDe": "Triphenylmethanfarbstoff-Synthese mechanistisch darstellen",
+        "titleEn": "Represent triphenylmethane-dye synthesis mechanistically",
+        "descriptionDe": "Die lernende Person kann die vollständige Syntheseroute eines Triphenylmethanfarbstoffs aus einem aromatischen Aldehyd und aktivierten aromatischen Kupplungspartnern über säurekatalysierte Kondensation zur Leukoverbindung und anschließende Oxidation zum Farbstoffkation auf Teilchenebene mechanistisch darstellen und die Reaktions- und Ladungsbilanz erklären.",
+        "descriptionEn": "The learner can represent the complete synthesis route of a triphenylmethane dye from an aromatic aldehyde and activated aromatic coupling partners through acid-catalyzed condensation to the leuco compound and subsequent oxidation to the dye cation mechanistically at particle level and explain reaction and charge balance."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-native14-independent-a-v1.record-001",
+          "recordDigest": "sha256:dc142589390d599bcbc13470b5dbcab0f48418d18fe9eaa2c2be0fee28b5286d"
+        },
+        "second": {
+          "recordId": "chemie-current439-native14-independent-b-20261017-v1-run.record-001",
+          "recordDigest": "sha256:43423073a4fdde8b96d4dcca00b9146bad067d7ff8d282597569fe13388d812f"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen eine zusammenhängende Aldehyd-Kondensations-/Oxidationsroute mit atom- und ladungserhaltender Leuko-/Farbstoffunterscheidung. Runde A hält die vier beziehungsweise drei Zentral-C-Bindungen und den begrenzten Mechanismusumfang sichtbar; eine universelle Herstellungsvorschrift oder tatsächliche Synthese wird nicht behauptet.",
+      "rationaleEn": "Both reviews confirm one aldehyde-condensation/oxidation route with atom- and charge-conserving leuco/dye distinctions. Round A retains four versus three central-carbon bonds and the bounded mechanistic scope without claiming a universal procedure or actual synthesis."
+    },
+    {
+      "decisionId": "chemie-current439-native14-root-63e0d92b-d86a-53c2-aa0a-bc985fc85174-20261017-v1",
+      "goalId": "63e0d92b-d86a-53c2-aa0a-bc985fc85174",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7b6861fe873b14332ded154963efd347e39e11569b4dfd128d4ab3b430ca6a04",
+      "pageFingerprint": "sha256:98fac496e86e308e9ca66c708a97ecfba08f14f0d0a32a9fec5928cf8d008d5d",
+      "goalReviewContextFingerprint": "sha256:02813ee8798b9f5ce5e252d68b4a4aea0460f35712d10563cd4e838d0177f199",
+      "finalText": {
+        "titleDe": "Küpenfärbung erklären und durchführen",
+        "titleEn": "Explain and carry out vat dyeing",
+        "descriptionDe": "Die lernende Person kann das Prinzip der Küpenfärbung erklären, eine Küpenfärbung durchführen und diese gegebenenfalls mit einer weiteren Färbemethode vergleichen.",
+        "descriptionEn": "The learner can explain the principle of vat dyeing, carry out vat dyeing, and, if appropriate, compare it with another dyeing method."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-native14-independent-a-v1.record-002",
+          "recordDigest": "sha256:ecef18362e22a4a3cf54be1fa9a958f885cd15abbbb6c68652c083ec81418473"
+        },
+        "second": {
+          "recordId": "chemie-current439-native14-independent-b-20261017-v1-run.record-002",
+          "recordDigest": "sha256:00a6991ddcc0a68bf5275e80ef5ded34dff7561966cb8304c04f05466acbabda"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden erhalten wirkliche eigene Küpenfärbung und den nur optionalen Methodenvergleich. Runde A hält alkalische Löslichkeit, Reduktion und Luftoxidation auseinander; das bestehende Bild und bereitgestellte Zahlen ersetzen keine Originalbeobachtungen.",
+      "rationaleEn": "Both independent rounds retain actual personal vat dyeing and the optional method comparison. Round A distinguishes alkaline solubility, reduction and air oxidation; the existing image and supplied numbers do not replace original observations."
+    },
+    {
+      "decisionId": "chemie-current439-native14-root-34da1a4c-5082-54c8-9084-a94826fd36cd-20261017-v1",
+      "goalId": "34da1a4c-5082-54c8-9084-a94826fd36cd",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e01bc7ab7489d246be6c0e46ff434fabdec23508ae6c4308ab665ab386776de9",
+      "pageFingerprint": "sha256:b0e09fc33cf9a11d6e14ea6bfc4362d4f6272fa842f3e07273434ecae5a4c33d",
+      "goalReviewContextFingerprint": "sha256:30b718a76ee411120452004825366f05408f0f03bd60e6f22f4198653cc7d67f",
+      "finalText": {
+        "titleDe": "Indikatorfarbstoffe über Strukturänderungen erklären",
+        "titleEn": "Explain indicator dyes through structural changes",
+        "descriptionDe": "Die lernende Person kann erklären, wie Säure-Base- oder Redoxreaktionen delokalisierte Elektronensysteme verändern, und damit die Funktionsweise von Indikatoren beschreiben.",
+        "descriptionEn": "The learner can explain how acid-base or redox reactions change delocalized electron systems and use this to describe the function of indicators."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-native14-independent-a-v1.record-003",
+          "recordDigest": "sha256:175419593ff44ff0e461cf2bb4f5108d7df57e389eb2819b982c7312ab318342"
+        },
+        "second": {
+          "recordId": "chemie-current439-native14-independent-b-20261017-v1-run.record-003",
+          "recordDigest": "sha256:fc89b7ee9828982dd40d7be16fa3218baeeef2d455ce41198fa69ffbb4cb3152"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen Struktur-Farbigkeit und die Trennung chemischer Spezies von Resonanzbildern. Runde B erhält die Säure-Base-/Redoxgrenze und den begrenzten Kredit einzelner Länderquellen besonders ausdrücklich. Der separate SL-Lieferpartnerbeleg bleibt eine gezielte Quellenklärung; fehlende gelieferte Originale begründen weder einen erfundenen Beschreibungsfehler noch amtliche Vollabdeckung.",
+      "rationaleEn": "Both rounds confirm structure-colour relations and distinguish chemical species from resonance contributors. Round B explicitly retains acid-base versus redox limits and partial jurisdiction-source credit. The separate SL delivery-partner evidence requires targeted source clarification; missing supplied originals establish neither an invented description defect nor full official coverage."
+    },
+    {
+      "decisionId": "chemie-current439-native14-root-75e2eff1-f871-5461-9e3f-26d0b333ce2f-20261017-v1",
+      "goalId": "75e2eff1-f871-5461-9e3f-26d0b333ce2f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:24f113b4d6c70c2329545d546f481f485a03f30e19157b50f6c5aa43cd186c6a",
+      "pageFingerprint": "sha256:1268da72b73a88b7a24ae9dfec8b5cde41df6ef4a6d72740e4c26b0bde990d56",
+      "goalReviewContextFingerprint": "sha256:7e2192b4961e44447536a09e9d9153f663986d37fa2068cb8a9e9d4d0125a0a7",
+      "finalText": {
+        "titleDe": "Chemische Alltagsfragen und prüfbare Hypothesen formulieren",
+        "titleEn": "Formulate everyday chemical questions and testable hypotheses",
+        "descriptionDe": "Die lernende Person kann zu einem beobachtbaren Alltags- oder Technikphänomen eine chemisch untersuchbare Frage und eine durch Beobachtungen prüfbare Hypothese selbst formulieren, die Hypothese begründen und angeben, welcher erwartbare Befund dafür oder dagegen spräche.",
+        "descriptionEn": "The learner can independently formulate a chemically investigable question and an observation-testable hypothesis about an observable everyday or technological phenomenon, justify the hypothesis and specify an expected finding that would support or contradict it."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-native14-independent-a-v1.record-004",
+          "recordDigest": "sha256:c0f5482deb8025e3fcd13475bd567673c6ee82b5a51512f91c19e0c8b4e98b5d"
+        },
+        "second": {
+          "recordId": "chemie-current439-native14-independent-b-20261017-v1-run.record-004",
+          "recordDigest": "sha256:1aede084c9f5497238385f3670ed64fadb6e9da4b9943cf3c38e3ff976bd40db"
+        }
+      },
+      "rationaleDe": "Beide Urteile grenzen die eigene prüfbare Anfangshypothese von einer vollständigen Untersuchung und von Theorievertiefung ab. Runde A hält mögliche Gegenbefunde und den Unterschied zwischen Löserate und Gleichgewichtslöslichkeit sichtbar; eine vorgemalte Hypothese ist keine eigene Leistung.",
+      "rationaleEn": "Both judgments distinguish a personally formulated testable initial hypothesis from a full investigation and deeper theoretical derivation. Round A retains possible counterevidence and the difference between dissolving rate and equilibrium solubility; a pre-drawn hypothesis is not personal performance."
+    },
+    {
+      "decisionId": "chemie-current439-native14-root-503dedcb-0efc-5e6b-bbc9-20761a0951f5-20261017-v1",
+      "goalId": "503dedcb-0efc-5e6b-bbc9-20761a0951f5",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:150c279741ea5efdd881d45ad2cff4f5942c2d9122e6e887dd227c7077cba542",
+      "pageFingerprint": "sha256:653d3956f0a8f96705f08de1e354cc96f5d0d0766bdcd60159b020e02ac44560",
+      "goalReviewContextFingerprint": "sha256:1e20db03c941eaef548f83d92b46afbe3e821c2217475cd17b2a13f16e5f938d",
+      "finalText": {
+        "titleDe": "Chemische Fragestellungen und Hypothesen theoriegestützt formulieren",
+        "titleEn": "Formulate chemical questions and hypotheses using theory",
+        "descriptionDe": "Die lernende Person kann aus einer Alltags- oder Techniksituation selbst eine chemisch untersuchbare Fragestellung identifizieren und formulieren, unter Verwendung geeigneter Konzepte oder Theorien eine prüfbare Hypothese selbst formulieren und begründen, daraus einen erwartbaren Befund ableiten und erklären, wie ein geeigneter Gegenbefund der Hypothese widersprechen würde.",
+        "descriptionEn": "The learner can independently identify and formulate a chemically investigable question from an everyday or technological situation, formulate and justify a testable hypothesis using appropriate concepts or theories, derive an expected finding and explain how a suitable counter-finding would contradict the hypothesis."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-native14-independent-a-v1.record-005",
+          "recordDigest": "sha256:56e9e05aeac797bcccb697c1e494967768810e2a2978c7eb012d5c91641d88e7"
+        },
+        "second": {
+          "recordId": "chemie-current439-native14-independent-b-20261017-v1-run.record-005",
+          "recordDigest": "sha256:a228366940d119d4316f0229607f3e01c2fd7fb39f69eeb19a9364de7a0936b9"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen den zusätzlichen theoriegestützten Schluss gegenüber der unteren Fragekompetenz. Runde A erhält Näherungsbedingungen für die schwache Säure sowie Q/K und Katalysatorgrenzen; die konkreten Fälle werden nicht zu universellen amtlichen GK-Pflichten umgedeutet.",
+      "rationaleEn": "Both reviews confirm the additional theory-based inference beyond the introductory question competence. Round A retains weak-acid approximation conditions, Q/K and catalyst limits; the specific cases are not recast as universal official basic-course requirements."
+    },
+    {
+      "decisionId": "chemie-current439-native14-root-e7c3d20e-4b13-560b-b8ee-c5abca8cc624-20261017-v1",
+      "goalId": "e7c3d20e-4b13-560b-b8ee-c5abca8cc624",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:491990b5ed7e48ce4cdc7bb0eda47b92fcd6240e14a3968dbb0f75d14d8fad80",
+      "pageFingerprint": "sha256:22e95cf5f0386d2fef6f33b54c00648ece2a434da1f81cae5858e2de9d2a8f5e",
+      "goalReviewContextFingerprint": "sha256:b178d9bce63f998bcba8da19f3e3f903052b861f54beefde9077bc1864278540",
+      "finalText": {
+        "titleDe": "Stoffe isolieren, reinigen und Ausbeute beurteilen",
+        "titleEn": "Isolate, purify, and evaluate yields of substances",
+        "descriptionDe": "Die lernende Person kann auf Grundlage physikalischer und chemischer Stoffeigenschaften geeignete Isolierungs- und Reinigungsverfahren auswaehlen, sicher durchfuehren, Reinheit und Ausbeute pruefen sowie die Taetigkeit dokumentieren.",
+        "descriptionEn": "The learner can select and safely carry out isolation and purification methods based on physical and chemical substance properties, check purity and yield, and document the work."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-native14-independent-a-v1.record-006",
+          "recordDigest": "sha256:fa038f6c97d185792a98d5f8afa4ee1156da64210b824522736c9501308cf8e5"
+        },
+        "second": {
+          "recordId": "chemie-current439-native14-independent-b-20261017-v1-run.record-006",
+          "recordDigest": "sha256:8f1c551991cc36e9284bd17dd347c2b646f8fd111abc1e77d7e7f6ce3efa1761"
+        }
+      },
+      "rationaleDe": "Beide Runden haben das vollständig erstmals im D-Input eingebettete bestehende P tatsächlich gelesen. Runde B erhält die getrennten Bezugsgrößen von Reinheit, isolierter Ausbeute und Teilansatzrückgewinnung samt realen Handlungen und analytischen Kontrollgrenzen. Die neue Einbettung ist keine neue P-Evidenzstufe; die ASS-Präparation bleibt ein projektbezogenes Beispiel.",
+      "rationaleEn": "Both rounds actually read the whole existing P newly embedded in the D input. Round B retains distinct denominators for purity, isolated yield and partial-batch recovery together with real handling and analytical-control limits. New embedding creates no new P evidence level; aspirin preparation remains a project-specific example."
+    },
+    {
+      "decisionId": "chemie-current439-native14-root-9e3fae29-84d5-5600-bfb3-82d49ea3f1b5-20261017-v1",
+      "goalId": "9e3fae29-84d5-5600-bfb3-82d49ea3f1b5",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:408619305cdd19bcf108fe040dbfa37123e63ff33125ff45729764238cd6bcdf",
+      "pageFingerprint": "sha256:0d8569a9c585e2c7ddcd96c2213be9ab26ec7054e1affe6975c1fa360e8d0593",
+      "goalReviewContextFingerprint": "sha256:690e69ba8fb00b4bf2019f5744d3e8ef17450ec9c8b632625bf68a713f2b80cc",
+      "finalText": {
+        "titleDe": "Chemische Daten quantitativ und hypothesenbezogen auswerten",
+        "titleEn": "Evaluate chemical data quantitatively in relation to hypotheses",
+        "descriptionDe": "Die lernende Person kann für eine chemische Fragestellung geeignete mathematische Auswertungsverfahren und digitale Werkzeuge auswählen und begründet anwenden, quantitative Zusammenhänge unter Beachtung der Untersuchungsbedingungen interpretieren und daraus fachübergreifend begründete Schlüsse zur Stützung oder Falsifizierung der Ausgangshypothese ziehen.",
+        "descriptionEn": "The learner can select and apply suitable mathematical analysis methods and digital tools with justification for a chemical question, interpret quantitative relationships while accounting for the investigation conditions, and derive justified interdisciplinary conclusions that support or falsify the initial hypothesis."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-native14-independent-a-v1.record-007",
+          "recordDigest": "sha256:de2c93fb8bcabfaf13301ede2d0f20c9f23291d9d263ed4f6f9b1b996eb3362e"
+        },
+        "second": {
+          "recordId": "chemie-current439-native14-independent-b-20261017-v1-run.record-007",
+          "recordDigest": "sha256:fd737efd2642506fecd979b71dfd9b89fe42e24661abe403ab477e0e3f0986ac"
+        }
+      },
+      "rationaleDe": "Beide Runden fordern eigene nachvollziehbare digitale Verarbeitung und hypothesenbezogene Interpretation. Runde A bindet Kalibration, Verdünnung, gültigen Bereich und Residuen; Modellpassung wird weder durch ein gedrucktes Diagramm noch durch blinde Extrapolation ersetzt.",
+      "rationaleEn": "Both rounds require personal reproducible digital processing and hypothesis-based interpretation. Round A retains calibration, dilution, valid range and residuals; a printed diagram or blind extrapolation cannot replace model assessment."
+    },
+    {
+      "decisionId": "chemie-current439-native14-root-a8800c36-d13c-5f63-962c-cf18c3795c63-20261017-v1",
+      "goalId": "a8800c36-d13c-5f63-962c-cf18c3795c63",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b7fcb0bf294ec17da0bdf822629b0499aec3e84e6ad50aa799fbc1dbda843ed7",
+      "pageFingerprint": "sha256:ec802ce92034dcc88d16652de6ff258da2a41e322266b6acfc4ae662d158d9cd",
+      "goalReviewContextFingerprint": "sha256:e8a9174ad28fccb290178be47ea96ac3ffb17dac03186b125b5b70e63673192d",
+      "finalText": {
+        "titleDe": "Chemische Erkenntniswege und ihre Reichweite erklären",
+        "titleEn": "Explain chemical inquiry processes and their reach",
+        "descriptionDe": "Die lernende Person kann an einem vorgegebenen chemischen Erkenntnisweg erklären, wie Fragestellung, Methoden, Beobachtungen und Interpretation zusammenwirken, welche Fragen damit chemisch beantwortbar sind und welche Unsicherheiten oder Grenzen bestehen.",
+        "descriptionEn": "The learner can explain how questions, methods, observations, and interpretation work together in a given chemical inquiry process, which questions can be answered chemically through it, and which uncertainties or limitations remain."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-native14-independent-a-v1.record-008",
+          "recordDigest": "sha256:0f61461dbc66495b17d7cf3be3825bdf38dba4d25c83443938f230846dd1692f"
+        },
+        "second": {
+          "recordId": "chemie-current439-native14-independent-b-20261017-v1-run.record-008",
+          "recordDigest": "sha256:b62c6416d5aecda6a26da82727b70d8145a63ea17f397b49c6ac1ca343de6478"
+        }
+      },
+      "rationaleDe": "Beide Runden unterscheiden vorgegebenen Erkenntnisweg von eigener umfassender Versuchsausführung. Runde A erhält Beobachtung, Deutung, alternative Ursachen und Kontrollgrenzen; chemische Daten allein entscheiden keine gesellschaftlichen Wertfragen.",
+      "rationaleEn": "Both rounds distinguish explanation of a supplied inquiry from personally conducting a full experiment. Round A retains observation, interpretation, alternative causes and control limits; chemical data alone do not decide social value questions."
+    },
+    {
+      "decisionId": "chemie-current439-native14-root-31781d00-8f20-5041-bd7f-e261b27af162-20261017-v1",
+      "goalId": "31781d00-8f20-5041-bd7f-e261b27af162",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:2798bbc4ba797d5ae01ed0532a783b53087294e1ffe2ccd725671b65ce7e7ace",
+      "pageFingerprint": "sha256:cd4d988344a1ca56219736114f63943646f7013a925e70d6b9f2025a449996ef",
+      "goalReviewContextFingerprint": "sha256:68118d39185b3b24795dc8133b8d33f86a92149daaaa397ba4be3a31064dff03",
+      "finalText": {
+        "titleDe": "Chemische Informationen in geeignete Darstellungen überführen",
+        "titleEn": "Transform chemical information into suitable representations",
+        "descriptionDe": "Die lernende Person kann chemische Informationen sach-, adressaten- und situationsgerecht in eine geeignete Darstellungsform überführen, dabei Fachsprache und Bezugsgrößen korrekt verwenden und die Darstellungswahl sowie erhaltene und begrenzte Aussagen begründen.",
+        "descriptionEn": "The learner can transform chemical information into a representation suited to its content, audience and situation, use scientific language and reference quantities correctly and justify the choice and the statements retained or limited by that representation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-native14-independent-a-v1.record-009",
+          "recordDigest": "sha256:8f7b9a9a164899fd94490b435d1c81595d8aab7eeef6eb05687a692d1a6577bc"
+        },
+        "second": {
+          "recordId": "chemie-current439-native14-independent-b-20261017-v1-run.record-009",
+          "recordDigest": "sha256:755b0a451173a2f11c7ac5d0b7c46ad21c9f35541cf45ebc8fcc16156071ab5f"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen den sach- und adressatengerechten Darstellungswechsel mit eigenen Produkten. Runde A hält Ionenzahl, Ladung, Einheiten und getrennte Kennzahlen korrekt; ein Lehrbild liefert noch kein eigenes Darstellungsartefakt.",
+      "rationaleEn": "Both reviews confirm content-preserving audience-appropriate representation changes through personal products. Round A retains ion count, charge, units and separate indicators; an instructional image does not supply a personal representation artifact."
+    },
+    {
+      "decisionId": "chemie-current439-native14-root-7f140b34-ed26-59e7-8ad2-ccb6b56bc9d6-20261017-v1",
+      "goalId": "7f140b34-ed26-59e7-8ad2-ccb6b56bc9d6",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:5dfa0a7e6ce7ba85e71cba28ce8379619eded217571b43633d30188cd49e634a",
+      "pageFingerprint": "sha256:53258daee27c9acc57819669e8cb64b0b95f5157c9375c2b519454845493af9a",
+      "goalReviewContextFingerprint": "sha256:da109c69dc0799d340332c51c27537543888816aceddda3d26c450dbf8e98408",
+      "finalText": {
+        "titleDe": "Chemische Anwendungen und ihre gesellschaftliche Bedeutung diskutieren",
+        "titleEn": "Discuss chemical applications and their social significance",
+        "descriptionDe": "Die lernende Person kann Aufgaben und Anwendungsbereiche der Chemie an konkreten Beispielen beschreiben und ihre Bedeutung für Gesellschaft, Mensch und Umwelt fachlich begründet diskutieren.",
+        "descriptionEn": "The learner can describe tasks and application areas of chemistry using concrete examples and discuss their significance for society, people, and the environment with scientific justification."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-native14-independent-a-v1.record-010",
+          "recordDigest": "sha256:5654d18b3cb1ec4393f14357162a4446d26fb1d3718ef5c2b50f03cbdf202d29"
+        },
+        "second": {
+          "recordId": "chemie-current439-native14-independent-b-20261017-v1-run.record-010",
+          "recordDigest": "sha256:5d795652a752ca45247df5f011c74196e264dac53691ccd0cfa4f204a1704373"
+        }
+      },
+      "rationaleDe": "Beide Urteile verbinden konkrete Stofffunktion mit begrenzter gesellschaftlicher Anwendungsbewertung. Runde A erhält Nutzen, Expositions-/Nutzungsbedingungen und verbleibende Umweltgrenzen; Flockung ist kein Trinkwassernachweis und Fragmentierung kein vollständiger biologischer Abbau.",
+      "rationaleEn": "Both judgments connect a specific substance function with a bounded social application assessment. Round A retains benefits, exposure/service conditions and remaining environmental limits; flocculation is not proof of drinking-water safety and fragmentation is not complete biodegradation."
+    },
+    {
+      "decisionId": "chemie-current439-native14-root-e5a5dcd8-053c-55fd-b5c7-bba93779da53-20261017-v1",
+      "goalId": "e5a5dcd8-053c-55fd-b5c7-bba93779da53",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:9073c842efd80e56ab3c4b9b4d68470c2867b4f0a94ae5b09570b3f3b0b55eea",
+      "pageFingerprint": "sha256:aa2e30c7fdcb7d2af1487200d9dbc6657e936f4c58ebacfcb202cb11f02bfdbe",
+      "goalReviewContextFingerprint": "sha256:3295bcf926d170070fefa757f85a372a9f791f430ce8014d06b2a3480cbc7cbe",
+      "finalText": {
+        "titleDe": "Einflüsse auf die Entwicklung chemischen Wissens bewerten",
+        "titleEn": "Assess influences on the development of chemical knowledge",
+        "descriptionDe": "Die lernende Person kann an chemischen Beispielen soziale, kulturelle, technologische, historische, ökologische und ökonomische Einflüsse auf die Entwicklung naturwissenschaftlichen Wissens beschreiben und begründet bewerten, ohne empirische Gültigkeit mit gesellschaftlicher Zustimmung gleichzusetzen.",
+        "descriptionEn": "The learner can describe and assess social, cultural, technological, historical, environmental, and economic influences on the development of scientific knowledge using chemistry examples, without equating empirical validity with social approval."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-native14-independent-a-v1.record-011",
+          "recordDigest": "sha256:074fab35059b25849f196ef2f90ced2022002f776c8a241d1daddbc860736590"
+        },
+        "second": {
+          "recordId": "chemie-current439-native14-independent-b-20261017-v1-run.record-011",
+          "recordDigest": "sha256:fb63c291763cb579634ee9db84c562d2ada2f180de06012202664471fce55269"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen die gemeinsame wissensgeschichtliche Frage und trennen gesellschaftliche Einflüsse von empirischer Gültigkeit. Runde A erhält belegte Informationen, konstruierte Modellkarten und eigene Schlussfolgerungen; die erstmals eingebettete alte P-Fassung gewinnt dadurch keine neue Evidenzstufe.",
+      "rationaleEn": "Both rounds confirm the common history-of-knowledge question and separate social influences from empirical validity. Round A retains evidenced information, constructed model cards and personal inference; first embedding of the old P creates no new evidence level."
+    },
+    {
+      "decisionId": "chemie-current439-native14-root-9f892457-c4e5-56da-830c-bf6cac0c98d7-20261017-v1",
+      "goalId": "9f892457-c4e5-56da-830c-bf6cac0c98d7",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b7df27d84a21ad178404ecd40ff623e2f16904fe7083870db5b282da4f2e8885",
+      "pageFingerprint": "sha256:a00f8dc86719578587954500f791bab4df44f898eb747f6689b5466a3ce8378a",
+      "goalReviewContextFingerprint": "sha256:58e991365cf25ee984fe66d225a2a2ba9fa5eff7940758a09caf5b86ee14b0bf",
+      "finalText": {
+        "titleDe": "Chemische Wirkungen in historischen und aktuellen Zusammenhängen bewerten",
+        "titleEn": "Assess chemical impacts in historical and current contexts",
+        "descriptionDe": "Die lernende Person kann gesellschaftliche und ökologische Bedeutung sowie Auswirkungen chemischer Produkte, Methoden, Verfahren und Erkenntnisse in historischen und aktuellen Zusammenhängen beschreiben und aus ökologischer, ökonomischer und sozialer Nachhaltigkeitsperspektive begründet bewerten. Dabei reflektiert sie auch mögliche Auswirkungen des eigenen Handelns.",
+        "descriptionEn": "The learner can describe the social and environmental significance and impacts of chemical products, methods, processes, and findings in historical and current contexts and assess them with justification from environmental, economic, and social sustainability perspectives. They also reflect on possible impacts of their own actions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-native14-independent-a-v1.record-012",
+          "recordDigest": "sha256:4179918ac3acf797aad66303bb7c84be6aa40469e60147ff405256ac024b3795"
+        },
+        "second": {
+          "recordId": "chemie-current439-native14-independent-b-20261017-v1-run.record-012",
+          "recordDigest": "sha256:293b429391be775fe1299f4b9ec7c504226e419ee24d001c3b8ccac8cad47a29"
+        }
+      },
+      "rationaleDe": "Beide Reviews halten historische und aktuelle Folgen sowie drei Nachhaltigkeitsperspektiven in einer gemeinsamen Abwägung zusammen. Runde A erhält konstruierte Szenariodaten, vergleichbare Bezugsgrößen und verantwortbares eigenes Handeln statt einer amtlichen technischen Rangliste.",
+      "rationaleEn": "Both reviews combine historical and current consequences with three sustainability perspectives in one assessment. Round A retains constructed scenario data, comparable reference quantities and responsible personal action rather than an official technical ranking."
+    },
+    {
+      "decisionId": "chemie-current439-native14-root-6c7ce93c-7675-51da-bc0c-7d0257f7ff7d-20261017-v1",
+      "goalId": "6c7ce93c-7675-51da-bc0c-7d0257f7ff7d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:512f64ab6581d0afea08dee825b7dfcbb2d9375ac6ff1595195d1ba830a96796",
+      "pageFingerprint": "sha256:8f9c758dc275bdb6858613d00df390287dbf80a41f2290358961f3cdc614f81f",
+      "goalReviewContextFingerprint": "sha256:6041de7d667012b80fa489af7532ea1b21915775b28f9defb338a7d77138b563",
+      "finalText": {
+        "titleDe": "Chemische Modelle nutzen und kritisch vergleichen",
+        "titleEn": "Use and critically compare chemistry models",
+        "descriptionDe": "Die lernende Person kann für eine chemische Fragestellung hypothesengeleitet geeignete analoge oder digitale Modelle und Simulationen zu Materie, chemischen Reaktionen, Bindungen und Wechselwirkungen auswählen und nutzen, ihre Aussagen mit Beobachtungen und miteinander vergleichen, Grenzen benennen und begründen, weshalb ein Modell hinterfragt oder weiterentwickelt werden muss.",
+        "descriptionEn": "The learner can select and use suitable analogue or digital models and simulations of matter, chemical reactions, bonding and interactions in a hypothesis-guided investigation of a chemical question, compare their predictions with observations and with each other, identify limitations and justify why a model should be questioned or developed further."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-native14-independent-a-v1.record-013",
+          "recordDigest": "sha256:f0e043fe80b3cfe609118ad8d07679225e92aba6914b6ac1d4d433034bc6a25e"
+        },
+        "second": {
+          "recordId": "chemie-current439-native14-independent-b-20261017-v1-run.record-013",
+          "recordDigest": "sha256:099deb3f2aa8e600866f5a0e933857b964f677fb9d91203dded6dc833e4a3e6a"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen einen zusammenhängenden Modellierungs- und Kritikvorgang mit eigenem analogem oder digitalem Artefakt. Runde A hält unterschiedliche Struktur-, Ladungs- und Energiefragen sowie den Unterschied zwischen erkanntem Entwicklungsbedarf und tatsächlich erfolgter Modellerweiterung sichtbar.",
+      "rationaleEn": "Both rounds confirm a coherent modelling-and-critique process with a personal analogue or digital artifact. Round A retains distinct structural, charge and energy questions and separates recognizing development needs from actually extending a model."
+    },
+    {
+      "decisionId": "chemie-current439-native14-root-5cd8b2a2-2c90-5e29-8061-dd5e3a682f9d-20261017-v1",
+      "goalId": "5cd8b2a2-2c90-5e29-8061-dd5e3a682f9d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f5e2effcb70c72befbeb0b8d93d432a9511847a093e1110f19201f5ceff78658",
+      "pageFingerprint": "sha256:29739cd8181bc6dec01b90c111def741949c72c5cb75dd68d4ac37c8674a4c35",
+      "goalReviewContextFingerprint": "sha256:fbe7c07890d3ef31b257f06f0875aa7eccfefb1de71483b5db7a98e95943e31e",
+      "finalText": {
+        "titleDe": "Gaschromatografische Trennung erklären und Chromatogramme deuten",
+        "titleEn": "Explain gas chromatographic separation and interpret chromatograms",
+        "descriptionDe": "Die lernende Person kann das Prinzip der Gaschromatografie über Trägergas, stationäre Phase und unterschiedliche zwischenmolekulare Wechselwirkungen erklären und Gaschromatogramme durch Retentionszeitvergleiche mit Referenzen unter gleichen Bedingungen zur begrenzten Identifizierung von Gemischbestandteilen auswerten.",
+        "descriptionEn": "The learner can explain gas chromatography using carrier gas, stationary phase and differing intermolecular interactions, and interpret gas chromatograms by comparing retention times with references under matched conditions for bounded identification of mixture components."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current439-native14-independent-a-v1.record-014",
+          "recordDigest": "sha256:6dc3df7fce9e32deddf4a642340ded271187c5ca6d5f0b60040475fd04b384a3"
+        },
+        "second": {
+          "recordId": "chemie-current439-native14-independent-b-20261017-v1-run.record-014",
+          "recordDigest": "sha256:9d8c2aa130fb9662ca8e03807f58dc71b525b8629dd29f715e56ca58de35a0ed"
+        }
+      },
+      "rationaleDe": "Beide Reviews verbinden GC-Prinzip mit begrenzter Chromatogrammdeutung und gleichen Referenzbedingungen. Runde A erhält Koelution, Kalibrations-/Nachweisgrenzen und die Trennung von Erklärung und eigenem Gerätebetrieb; Wahlbereichs- und Kursgrenzen bleiben bestehen.",
+      "rationaleEn": "Both reviews connect the GC principle with bounded chromatogram interpretation under matched reference conditions. Round A retains coelution, calibration/detection limits and the distinction between explanation and personal instrument operation; optional-area and course limits remain intact."
+    }
+  ],
+  "manifestFingerprint": "sha256:18d72b53dbbddba224d07975113cef446e6b3b9b648ec11873e624f6b16011cb"
+}

@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-001-v1-resolution-34da1a4c-5082-54c8-9084-a94826fd36cd",
+  "goal": {
+    "goalId": "34da1a4c-5082-54c8-9084-a94826fd36cd",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:e01bc7ab7489d246be6c0e46ff434fabdec23508ae6c4308ab665ab386776de9",
+    "pageFingerprint": "sha256:db85bcc1c260c1ce90bd316bdfa2440fa858cb69417fb3b0ad4911a4dea47a95",
+    "goalReviewContextFingerprint": "sha256:96a551dad2fd7937259937737fd062cbaab427067d5e9f7e8e8ce098927f9336",
+    "finalText": {
+      "titleDe": "Indikatorfarbstoffe über Strukturänderungen erklären",
+      "titleEn": "Explain indicator dyes through structural changes",
+      "descriptionDe": "Die lernende Person kann erklären, wie Säure-Base- oder Redoxreaktionen delokalisierte Elektronensysteme verändern, und damit die Funktionsweise von Indikatoren beschreiben.",
+      "descriptionEn": "The learner can explain how acid-base or redox reactions change delocalized electron systems and use this to describe the function of indicators."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-001-v1-a",
+      "campaignDigest": "sha256:96c597e11ef28d55b630202e1c2e03a243872e2f50e9cf9cc7c0df7a79d9cd3d",
+      "roundId": "chemie-final-current-context-d-001-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-001-v1-independent-a",
+      "reviewInputFingerprint": "sha256:84cb9df1bd7fef7e2302044cdb80cba5ac86f4d3a52db0bc7c6a09292793cfa8",
+      "goalReviewContextFingerprint": "sha256:96a551dad2fd7937259937737fd062cbaab427067d5e9f7e8e8ce098927f9336",
+      "batchId": "chemie-final-current-context-d-001-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch001-20261018",
+      "runManifestDigest": "sha256:b4b3f17dceb9e1e7c4c82361c9c800e5f7de932b46dcf704e3d6a847860b03be",
+      "resultsDigest": "sha256:c9861ef6d236ae81946747b3d1c7abde302f5f013b5c93ce5edad0870065fc31",
+      "recordId": "codex-reviewer-a-final163-batch001-20261018.019",
+      "recordDigest": "sha256:48be5169950b090a306b74d648afd78f9dde42dab80408a593dfb6f8b46fd600"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-001-v1-b",
+      "campaignDigest": "sha256:1b8713019a8e252039fa354999df05261e1c78eedb890a563b29e531dc70ec46",
+      "roundId": "chemie-final-current-context-d-001-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-001-v1-independent-b",
+      "reviewInputFingerprint": "sha256:84cb9df1bd7fef7e2302044cdb80cba5ac86f4d3a52db0bc7c6a09292793cfa8",
+      "goalReviewContextFingerprint": "sha256:96a551dad2fd7937259937737fd062cbaab427067d5e9f7e8e8ce098927f9336",
+      "batchId": "chemie-final-current-context-d-001-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-001-20261018",
+      "runManifestDigest": "sha256:13eb6055a4aa8d4d04be4cfd1c0c77f4b206a289df96a67139c1efd68e08d32d",
+      "resultsDigest": "sha256:22da53163d50636a69ec31425cecc056999735ee0193be8470171a3f650414eb",
+      "recordId": "chemie-final163-native-b-001-20261018:34da1a4c-5082-54c8-9084-a94826fd36cd",
+      "recordDigest": "sha256:9cb9942072d80c402726f2589e49b86b267a5ecfc4f884279b6dfecd3a56f93c"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:706dc6e69548381d583e44f00cb7a2768b65125ce38e115ffeb99e090ece4f50"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-001-20261018-v1",
+    "manifestDigest": "sha256:2947637162d222247361434cafc2291ef0d74af62baa53f4b2c0b9ac2349ad89",
+    "manifestFingerprint": "sha256:240821b7f7c94c99aba57979178f196e85ea04ebc4d569c964de2f5230011117",
+    "decisionId": "chemie-final163-paired-D-only-001-20261018-v1-decision-018"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-001-20261018-v1-decision-018",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:22:46.792Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch001-20261018.019): Beide Sprachfassungen treffen dieselbe Struktur-Funktionsbeziehung. Das vollständige P unterscheidet echte protolytische Formen von Mesomerie, bilanziert den Redoxwechsel und leitet Erscheinungsfarbe aus verbleibendem Licht statt aus einer beliebigen Farbregel ab. B (chemie-final163-native-b-001-20261018:34da1a4c-5082-54c8-9084-a94826fd36cd): Der Text beschränkt sich auf denselben Struktur-Farb-Mechanismus in Säure-Base- oder Redoxfällen. P bilanziert Protonen/Elektronen und grenzt graduellen Umschlag sowie pH-Eindeutigkeit korrekt ein; keine eigenständige allgemeine Spektroskopieprüfung wird ergänzt.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch001-20261018.019; chemie-final163-native-b-001-20261018:34da1a4c-5082-54c8-9084-a94826fd36cd). Their current English understanding evidence is retained: A: Protolysis or redox changes alter an indicator's particle form and delocalisation and therefore its visible absorption. B: Protolysis or redox changes actual indicator forms and their delocalisation, hence absorption and observed colour. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Protolyse oder Redoxwechsel verändern Teilchenform und Delokalisierung eines Indikators und damit seine sichtbare Absorption.",
+      "essentialUnderstandingEn": "Protolysis or redox changes alter an indicator's particle form and delocalisation and therefore its visible absorption.",
+      "observablePerformanceDe": "Verknüpft vorgegebene Strukturformen, chemisches Gleichgewicht und Spektrum und begründet die dominante Form sowie Farbumschlagrichtung.",
+      "observablePerformanceEn": "Connects supplied structural forms, chemical equilibrium and spectrum and justifies the dominant form and colour-change direction.",
+      "transferExpectationDe": "Erklärt beim Wechsel vom Säure-Base- zum Redoxindikator Entfärbung/Rückfärbung und weshalb die Farbe keinen eindeutigen pH garantiert.",
+      "transferExpectationEn": "Explains decolouring/recolouring when moving from an acid-base to a redox indicator and why colour does not guarantee a unique pH."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-0c2624e20de836efa0ca52f8976b22897c4bbd25bfdc78bb70ba21957a2f39df",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:f010f6d55b88fc472ebe9d61ad692d7e64cfe54d69c5e6f00eee317e099899ee"
+}

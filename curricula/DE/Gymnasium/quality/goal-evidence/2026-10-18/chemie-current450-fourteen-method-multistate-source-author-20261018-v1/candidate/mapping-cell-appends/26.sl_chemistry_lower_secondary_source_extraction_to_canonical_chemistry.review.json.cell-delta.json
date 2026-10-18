@@ -1,0 +1,379 @@
+{
+  "artifactRole": "INACTIVE_MAPPING_CELL_APPEND_AUTHOR_CANDIDATE",
+  "activation": "independent-review-required",
+  "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+  "beforeWholeFilePinForAuditNotGlobalCAS": {
+    "path": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+    "sha256": "904b7d4c48eb7eafe2c7853c116c67664735c4a59d78a2ce88b2c21a9cbbf1b8",
+    "bytes": 299843
+  },
+  "sourceExtractionPathAtAuthoring": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_CHEMIE_SEKI_GYM9_2024_2025.source-extraction.json",
+  "wholeUnrelatedRowsMustBePreserved": true,
+  "cellAppends": [
+    {
+      "pairAbsentExpectedBefore": {
+        "legacyGoalId": "sl-chem-seki-sl-ch-seki-8-2024-p012-003-756e8da4",
+        "canonicalGoalId": "4b6d1824-20e4-597e-b639-fae401f740f0"
+      },
+      "mappingToAppend": {
+        "legacyGoalId": "sl-chem-seki-sl-ch-seki-8-2024-p012-003-756e8da4",
+        "canonicalGoalId": "4b6d1824-20e4-597e-b639-fae401f740f0",
+        "matchType": "partial"
+      },
+      "boundedAuthorWitness": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-author-20261018-v1/CANDIDATE.one-hundred-four-direct-partial-contributions.inactive.json",
+        "jsonPointer": "/mappings/20"
+      },
+      "existingAuthoritativeSourceDecisionsCAS": [
+        {
+          "jsonPointer": "/decisions/2",
+          "wholeDecision": {
+            "sourceGoalId": "sl-chem-seki-sl-ch-seki-8-2024-p012-003-756e8da4",
+            "topicCode": "SL-CH-SEKI-8-2024-P012",
+            "sourceSpan": "Klasse 8, S. 12, Source-Ziel 3",
+            "decision": "mapped",
+            "canonicalGoalIds": [
+              "1df17884-96ae-57d7-9da9-dbebd082596f",
+              "c7d4d9f7-d23f-44fc-bf22-3872e0f2b9a0",
+              "e20d205f-03a4-5f96-b456-9b20460605a2",
+              "ebfa2c18-0599-5282-bf7a-80c14d86331e"
+            ],
+            "rationale": "Das amtliche Chemie-Source-Ziel ist inhaltlich durch mehrere kanonische Chemieziele abgedeckt; 1:n beschreibt die Zuordnungsform, nicht eine offene Lücke.",
+            "reviewedAt": "2026-05-11",
+            "reviewer": "codex"
+          },
+          "sha256": "8319fc4245c4f0524b70f8d0608fef8875d9cab29f55e0a0ac6f211df0ecd19f"
+        }
+      ],
+      "decisionIntegrationBoundary": "Following specific independent acceptance, merge this bounded partial target contribution into the current authoritative source decision without dropping other targets or promoting whole-source coverage. A prior whole-originalHOLD/REJECT is not automatically reversed. New operator cells require their own finite partial decision; old decision/whole-source history remains."
+    },
+    {
+      "pairAbsentExpectedBefore": {
+        "legacyGoalId": "sl-chemistry-seki-process-standard-msa-kommunikation-definition",
+        "canonicalGoalId": "ac8b6c0f-98b2-5092-806d-d9498efbfa35"
+      },
+      "mappingToAppend": {
+        "legacyGoalId": "sl-chemistry-seki-process-standard-msa-kommunikation-definition",
+        "canonicalGoalId": "ac8b6c0f-98b2-5092-806d-d9498efbfa35",
+        "matchType": "partial"
+      },
+      "boundedAuthorWitness": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-author-20261018-v1/CANDIDATE.one-hundred-four-direct-partial-contributions.inactive.json",
+        "jsonPointer": "/mappings/37"
+      },
+      "existingAuthoritativeSourceDecisionsCAS": [
+        {
+          "jsonPointer": "/decisions/191",
+          "wholeDecision": {
+            "sourceGoalId": "sl-chemistry-seki-process-standard-msa-kommunikation-definition",
+            "topicCode": "Kompetenzbereiche des Fachs Chemie",
+            "sourceSpan": "physical PDF7, Kompetenzbereiche des Fachs Chemie, MSA-Kommunikation-definition",
+            "decision": "mapped",
+            "canonicalGoalIds": [
+              "5b1bb5d9-07b1-5ba9-b320-cc97be917c60"
+            ],
+            "matchType": "partial",
+            "rationale": "Only the individually referenced independently accepted partial operator contributions are integrated. Whole-source, course, research and real execution duties remain separate and are not certified by these mappings.",
+            "reviewedAt": "2026-10-18",
+            "reviewer": "Independent source reviewer A; technical integration by Codex creates no scientific first decision",
+            "wholeSourceCredit": false,
+            "additionalAcceptedPartialContributions": [
+              {
+                "canonicalGoalId": "5b1bb5d9-07b1-5ba9-b320-cc97be917c60",
+                "matchType": "partial",
+                "independentAcceptedRef": {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+                  "bytes": 269340,
+                  "jsonPointer": "/mappings/58"
+                },
+                "wholePrimaryOperator": "Die Kommunikationskompetenz der Lernenden zeigt sich in der Kenntnis von Fachsprache und fachtypischen Darstellungen verbunden mit der Fähigkeit, daraus fachbezogene Informationen zu erschließen, diese adressaten- und situationsgerecht aufzubereiten und sich argumentativ auszutauschen. Im Fach Chemie spielt die Nutzung der Formelsprache dabei eine wichtige Rolle.",
+                "primaryPdf": {
+                  "path": "curricula/DE/Gymnasium/input/SL/Chemie_Gymnasium_G9_Klasse_8_2024_red_2025.pdf",
+                  "sha256": "3e5d6fb2463e059d2b8006c20b0905bbd95da96eb445a6fb398a07ef0b8a34d7",
+                  "bytes": 969436
+                },
+                "physicalPrimaryPage": 7,
+                "sourceStageCourseContext": "MSA-oriented competency definitions in Klasse8 plan; abstract definitions only, not subject-topic or complete SekII standards.",
+                "rationale": "Der wörtliche Informations-/Strukturierungs-/Adressatenanteil trägt die Auswahl und Aufbereitung der S/T-Quellen für den neuen Adressaten. Beim SL-Definitionstext werden argumentativer sozialer Austausch und gesamte Kommunikationskompetenz ausdrücklich nicht beansprucht; Recherche wird daraus nicht erfunden.",
+                "boundaries": "Gegebene Quellen allein erfüllen K1-Recherche nicht. Kein Nachweis der ganzen analogen UND digitalen Recherchebreite, sämtlicher komplexer Darstellungen, realer Präsentation, Gruppenarbeit oder vollständiger Urheber-/Zitatprüfung. Bei nicht geforderter Recherche wird nur Informationserschließung beansprucht.",
+                "individualBoundary": "",
+                "ownResearchEvidenceRequired": false,
+                "wholeSourceCredit": false,
+                "actualLearnerExecutionClaim": false,
+                "currentGoalSha256": "43a37d326f0a7b23366815243f41ae36c94c76a94010ef0859698040043a738d",
+                "currentProfileBodySha256": "a68307f93eee1518c3fe4602402a9968c1a404493d5f5bd96f0b36350efa7e46"
+              }
+            ]
+          },
+          "sha256": "bae459e9a8be9d23a3afe51648a951608131bb6458e2e1a06090f06ad0bcad85"
+        }
+      ],
+      "decisionIntegrationBoundary": "Following specific independent acceptance, merge this bounded partial target contribution into the current authoritative source decision without dropping other targets or promoting whole-source coverage. A prior whole-originalHOLD/REJECT is not automatically reversed. New operator cells require their own finite partial decision; old decision/whole-source history remains."
+    },
+    {
+      "pairAbsentExpectedBefore": {
+        "legacyGoalId": "sl-chem-seki-sl-ch-seki-8-2024-p012-003-756e8da4",
+        "canonicalGoalId": "e81a4aed-9695-533e-8eb7-7a0c714346ea"
+      },
+      "mappingToAppend": {
+        "legacyGoalId": "sl-chem-seki-sl-ch-seki-8-2024-p012-003-756e8da4",
+        "canonicalGoalId": "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+        "matchType": "partial"
+      },
+      "boundedAuthorWitness": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-author-20261018-v1/CANDIDATE.one-hundred-four-direct-partial-contributions.inactive.json",
+        "jsonPointer": "/mappings/52"
+      },
+      "existingAuthoritativeSourceDecisionsCAS": [
+        {
+          "jsonPointer": "/decisions/2",
+          "wholeDecision": {
+            "sourceGoalId": "sl-chem-seki-sl-ch-seki-8-2024-p012-003-756e8da4",
+            "topicCode": "SL-CH-SEKI-8-2024-P012",
+            "sourceSpan": "Klasse 8, S. 12, Source-Ziel 3",
+            "decision": "mapped",
+            "canonicalGoalIds": [
+              "1df17884-96ae-57d7-9da9-dbebd082596f",
+              "c7d4d9f7-d23f-44fc-bf22-3872e0f2b9a0",
+              "e20d205f-03a4-5f96-b456-9b20460605a2",
+              "ebfa2c18-0599-5282-bf7a-80c14d86331e"
+            ],
+            "rationale": "Das amtliche Chemie-Source-Ziel ist inhaltlich durch mehrere kanonische Chemieziele abgedeckt; 1:n beschreibt die Zuordnungsform, nicht eine offene Lücke.",
+            "reviewedAt": "2026-05-11",
+            "reviewer": "codex"
+          },
+          "sha256": "8319fc4245c4f0524b70f8d0608fef8875d9cab29f55e0a0ac6f211df0ecd19f"
+        }
+      ],
+      "decisionIntegrationBoundary": "Following specific independent acceptance, merge this bounded partial target contribution into the current authoritative source decision without dropping other targets or promoting whole-source coverage. A prior whole-originalHOLD/REJECT is not automatically reversed. New operator cells require their own finite partial decision; old decision/whole-source history remains."
+    },
+    {
+      "pairAbsentExpectedBefore": {
+        "legacyGoalId": "sl-chem-seki-sl-ch-seki-8-2024-p013-004-e3b97259",
+        "canonicalGoalId": "e81a4aed-9695-533e-8eb7-7a0c714346ea"
+      },
+      "mappingToAppend": {
+        "legacyGoalId": "sl-chem-seki-sl-ch-seki-8-2024-p013-004-e3b97259",
+        "canonicalGoalId": "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+        "matchType": "partial"
+      },
+      "boundedAuthorWitness": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-author-20261018-v1/CANDIDATE.one-hundred-four-direct-partial-contributions.inactive.json",
+        "jsonPointer": "/mappings/53"
+      },
+      "existingAuthoritativeSourceDecisionsCAS": [
+        {
+          "jsonPointer": "/decisions/7",
+          "wholeDecision": {
+            "sourceGoalId": "sl-chem-seki-sl-ch-seki-8-2024-p013-004-e3b97259",
+            "topicCode": "SL-CH-SEKI-8-2024-P013",
+            "sourceSpan": "Klasse 8, S. 13, Source-Ziel 4",
+            "decision": "mapped",
+            "canonicalGoalIds": [
+              "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+              "7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6"
+            ],
+            "rationale": "Das amtliche Chemie-Source-Ziel ist inhaltlich durch ein kanonisches Chemieziel abgedeckt.",
+            "reviewedAt": "2026-05-11",
+            "reviewer": "codex",
+            "additionalAcceptedPartialContributions": [
+              {
+                "canonicalGoalId": "7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6",
+                "matchType": "partial",
+                "independentAcceptedRef": {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+                  "bytes": 269340,
+                  "jsonPointer": "/mappings/60"
+                },
+                "wholePrimaryOperator": "unterscheiden beim Experimentieren zwischen Durchführung des Versuchs, Beobachtung und Erklärung,",
+                "primaryPdf": {
+                  "path": "curricula/DE/Gymnasium/input/SL/Chemie_Gymnasium_G9_Klasse_8_2024_red_2025.pdf",
+                  "sha256": "3e5d6fb2463e059d2b8006c20b0905bbd95da96eb445a6fb398a07ef0b8a34d7",
+                  "bytes": 969436
+                },
+                "physicalPrimaryPage": 13,
+                "sourceStageCourseContext": "DE-SL SekI Klasse8, concrete A2: distinguish conduct, observation and explanation, physical/printed13. This is a concrete topic competence expectation, not one of the three unnumbered MSA competence definitions on page7. No official upper-course label is inferred.",
+                "rationale": "Die direkte Teilbeziehung ist ausschließlich die tatsächliche Unterscheidung von Versuchsablauf, beobachtenden Angaben und erklärender Deutung am Datenfall. Ein ganzer eigener Hypothesentest oder eine Durchführung wird aus diesem Quellenbullet ausdrücklich nicht behauptet.",
+                "boundaries": "Keine eigene Datenerhebung, keine neue Experimentdurchführung und keine vollständige selbst entworfene Hypothese. Die HB-spezifische zusätzliche Diagrammerstellung wird außerhalb HB nicht behauptet. Breitere Quellenstandards tragen nur die explizite Daten-/Deutungs-Teilkompetenz.",
+                "individualBoundary": "Allein Trennung von Durchführung, Beobachtung und Erklärung; kein kompletter Hypothesentest oder echte Versuchsdurchführung.",
+                "ownResearchEvidenceRequired": false,
+                "wholeSourceCredit": false,
+                "actualLearnerExecutionClaim": false,
+                "currentGoalSha256": "fd108aac38406a4dc61531d73d777d42e47a36eabdfee81f348cd7e51addf652",
+                "currentProfileBodySha256": "610c575c2141534faa88d0958b025b5657147621ca445033433cee2c0224bc0d"
+              }
+            ]
+          },
+          "sha256": "8d6c27f7cddac8228d92ea9fe655a975dad6a9da0df87ac1c2f6958b2b967c9d"
+        }
+      ],
+      "decisionIntegrationBoundary": "Following specific independent acceptance, merge this bounded partial target contribution into the current authoritative source decision without dropping other targets or promoting whole-source coverage. A prior whole-originalHOLD/REJECT is not automatically reversed. New operator cells require their own finite partial decision; old decision/whole-source history remains."
+    },
+    {
+      "pairAbsentExpectedBefore": {
+        "legacyGoalId": "sl-chem-seki-sl-ch-seki-8-2024-p013-005-88752ad8",
+        "canonicalGoalId": "e81a4aed-9695-533e-8eb7-7a0c714346ea"
+      },
+      "mappingToAppend": {
+        "legacyGoalId": "sl-chem-seki-sl-ch-seki-8-2024-p013-005-88752ad8",
+        "canonicalGoalId": "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+        "matchType": "partial"
+      },
+      "boundedAuthorWitness": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-author-20261018-v1/CANDIDATE.one-hundred-four-direct-partial-contributions.inactive.json",
+        "jsonPointer": "/mappings/54"
+      },
+      "existingAuthoritativeSourceDecisionsCAS": [
+        {
+          "jsonPointer": "/decisions/8",
+          "wholeDecision": {
+            "sourceGoalId": "sl-chem-seki-sl-ch-seki-8-2024-p013-005-88752ad8",
+            "topicCode": "SL-CH-SEKI-8-2024-P013",
+            "sourceSpan": "Klasse 8, S. 13, Source-Ziel 5",
+            "decision": "mapped",
+            "canonicalGoalIds": [
+              "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+              "cf2631d9-da24-50e8-9e50-db625e6efaad",
+              "9fc800d1-92d1-5ef6-81c1-33960ae034dd"
+            ],
+            "rationale": "Das amtliche Chemie-Source-Ziel ist inhaltlich durch mehrere kanonische Chemieziele abgedeckt; 1:n beschreibt die Zuordnungsform, nicht eine offene Lücke.",
+            "reviewedAt": "2026-05-11",
+            "reviewer": "codex",
+            "additionalAcceptedPartialContributions": [
+              {
+                "canonicalGoalId": "9fc800d1-92d1-5ef6-81c1-33960ae034dd",
+                "matchType": "partial",
+                "independentAcceptedRef": {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+                  "bytes": 269340,
+                  "jsonPointer": "/mappings/61"
+                },
+                "wholePrimaryOperator": "fertigen selbständig Versuchsprotokolle an,",
+                "primaryPdf": {
+                  "path": "curricula/DE/Gymnasium/input/SL/Chemie_Gymnasium_G9_Klasse_8_2024_red_2025.pdf",
+                  "sha256": "3e5d6fb2463e059d2b8006c20b0905bbd95da96eb445a6fb398a07ef0b8a34d7",
+                  "bytes": 969436
+                },
+                "physicalPrimaryPage": 13,
+                "sourceStageCourseContext": "DE-SL SekI Klasse8, concrete A2: independently prepare experiment records, physical/printed13. This is a concrete topic competence expectation, not one of the three unnumbered MSA competence definitions on page7. No official upper-course label is inferred.",
+                "rationale": "Nachvollziehbare Protokollierung mit Einheiten, Herkunft, Bedingungen und sichtbaren fehlenden Angaben ist der direkte Teilbeitrag. Die neue Verdünnungskorrektur erhält Rohdaten und dokumentiert die Ableitungsänderung. Die Quelle wird nicht auf ihre Protokollwörter gekürzt: eigene Gewinnung, sicheres Durchführen oder Präsentieren im ganzen Satz bleiben zusätzlich offen.",
+                "boundaries": "Keine tatsächliche qualitative/quantitative sichere Experimentdurchführung aus vorgelegten Daten. E5 und entsprechende Mehrfachverben bleiben vollständig sichtbar; gebunden wird nur nachvollziehbare Protokollierung, ggf. Daten-/Deutungstrennung. Keine Behauptung vollständiger Präsentation.",
+                "individualBoundary": "",
+                "ownResearchEvidenceRequired": false,
+                "wholeSourceCredit": false,
+                "actualLearnerExecutionClaim": false,
+                "currentGoalSha256": "421a38c89b5e21d14aeab50e686ffe803ca542c02d0d455acaaf24416164e0c8",
+                "currentProfileBodySha256": "fa4ef4c7b277ac500d2714aa9caf980e619b9de9fb8a2dca4ca2cd758f06e746"
+              }
+            ]
+          },
+          "sha256": "da48f9ddf81812548bdda709879cc293a413e1fbb6b53e322cadb3a8156ebd54"
+        }
+      ],
+      "decisionIntegrationBoundary": "Following specific independent acceptance, merge this bounded partial target contribution into the current authoritative source decision without dropping other targets or promoting whole-source coverage. A prior whole-originalHOLD/REJECT is not automatically reversed. New operator cells require their own finite partial decision; old decision/whole-source history remains."
+    },
+    {
+      "pairAbsentExpectedBefore": {
+        "legacyGoalId": "sl-chem-seki-sl-ch-seki-8-2024-p013-006-ae4ffb3d",
+        "canonicalGoalId": "42391b16-bbae-5c77-84e1-d488e714167b"
+      },
+      "mappingToAppend": {
+        "legacyGoalId": "sl-chem-seki-sl-ch-seki-8-2024-p013-006-ae4ffb3d",
+        "canonicalGoalId": "42391b16-bbae-5c77-84e1-d488e714167b",
+        "matchType": "partial"
+      },
+      "boundedAuthorWitness": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-author-20261018-v1/CANDIDATE.one-hundred-four-direct-partial-contributions.inactive.json",
+        "jsonPointer": "/mappings/79"
+      },
+      "existingAuthoritativeSourceDecisionsCAS": [
+        {
+          "jsonPointer": "/decisions/9",
+          "wholeDecision": {
+            "sourceGoalId": "sl-chem-seki-sl-ch-seki-8-2024-p013-006-ae4ffb3d",
+            "topicCode": "SL-CH-SEKI-8-2024-P013",
+            "sourceSpan": "Klasse 8, S. 13, Source-Ziel 6",
+            "decision": "mapped",
+            "canonicalGoalIds": [
+              "266a2b2a-9ee2-52f6-ae09-59343da9a60b"
+            ],
+            "rationale": "Das amtliche Chemie-Source-Ziel ist inhaltlich durch ein kanonisches Chemieziel abgedeckt.",
+            "reviewedAt": "2026-05-11",
+            "reviewer": "codex"
+          },
+          "sha256": "ddcc9be2231b05b7897be84bb686d1c9a59b2314c8bd24627415ee5fc5656fb9"
+        }
+      ],
+      "decisionIntegrationBoundary": "Following specific independent acceptance, merge this bounded partial target contribution into the current authoritative source decision without dropping other targets or promoting whole-source coverage. A prior whole-originalHOLD/REJECT is not automatically reversed. New operator cells require their own finite partial decision; old decision/whole-source history remains."
+    },
+    {
+      "pairAbsentExpectedBefore": {
+        "legacyGoalId": "sl-chem-seki-sl-ch-seki-8-2024-p013-005-88752ad8",
+        "canonicalGoalId": "42391b16-bbae-5c77-84e1-d488e714167b"
+      },
+      "mappingToAppend": {
+        "legacyGoalId": "sl-chem-seki-sl-ch-seki-8-2024-p013-005-88752ad8",
+        "canonicalGoalId": "42391b16-bbae-5c77-84e1-d488e714167b",
+        "matchType": "partial"
+      },
+      "boundedAuthorWitness": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-author-20261018-v1/CANDIDATE.one-hundred-four-direct-partial-contributions.inactive.json",
+        "jsonPointer": "/mappings/80"
+      },
+      "existingAuthoritativeSourceDecisionsCAS": [
+        {
+          "jsonPointer": "/decisions/8",
+          "wholeDecision": {
+            "sourceGoalId": "sl-chem-seki-sl-ch-seki-8-2024-p013-005-88752ad8",
+            "topicCode": "SL-CH-SEKI-8-2024-P013",
+            "sourceSpan": "Klasse 8, S. 13, Source-Ziel 5",
+            "decision": "mapped",
+            "canonicalGoalIds": [
+              "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+              "cf2631d9-da24-50e8-9e50-db625e6efaad",
+              "9fc800d1-92d1-5ef6-81c1-33960ae034dd"
+            ],
+            "rationale": "Das amtliche Chemie-Source-Ziel ist inhaltlich durch mehrere kanonische Chemieziele abgedeckt; 1:n beschreibt die Zuordnungsform, nicht eine offene Lücke.",
+            "reviewedAt": "2026-05-11",
+            "reviewer": "codex",
+            "additionalAcceptedPartialContributions": [
+              {
+                "canonicalGoalId": "9fc800d1-92d1-5ef6-81c1-33960ae034dd",
+                "matchType": "partial",
+                "independentAcceptedRef": {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+                  "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+                  "bytes": 269340,
+                  "jsonPointer": "/mappings/61"
+                },
+                "wholePrimaryOperator": "fertigen selbständig Versuchsprotokolle an,",
+                "primaryPdf": {
+                  "path": "curricula/DE/Gymnasium/input/SL/Chemie_Gymnasium_G9_Klasse_8_2024_red_2025.pdf",
+                  "sha256": "3e5d6fb2463e059d2b8006c20b0905bbd95da96eb445a6fb398a07ef0b8a34d7",
+                  "bytes": 969436
+                },
+                "physicalPrimaryPage": 13,
+                "sourceStageCourseContext": "DE-SL SekI Klasse8, concrete A2: independently prepare experiment records, physical/printed13. This is a concrete topic competence expectation, not one of the three unnumbered MSA competence definitions on page7. No official upper-course label is inferred.",
+                "rationale": "Nachvollziehbare Protokollierung mit Einheiten, Herkunft, Bedingungen und sichtbaren fehlenden Angaben ist der direkte Teilbeitrag. Die neue Verdünnungskorrektur erhält Rohdaten und dokumentiert die Ableitungsänderung. Die Quelle wird nicht auf ihre Protokollwörter gekürzt: eigene Gewinnung, sicheres Durchführen oder Präsentieren im ganzen Satz bleiben zusätzlich offen.",
+                "boundaries": "Keine tatsächliche qualitative/quantitative sichere Experimentdurchführung aus vorgelegten Daten. E5 und entsprechende Mehrfachverben bleiben vollständig sichtbar; gebunden wird nur nachvollziehbare Protokollierung, ggf. Daten-/Deutungstrennung. Keine Behauptung vollständiger Präsentation.",
+                "individualBoundary": "",
+                "ownResearchEvidenceRequired": false,
+                "wholeSourceCredit": false,
+                "actualLearnerExecutionClaim": false,
+                "currentGoalSha256": "421a38c89b5e21d14aeab50e686ffe803ca542c02d0d455acaaf24416164e0c8",
+                "currentProfileBodySha256": "fa4ef4c7b277ac500d2714aa9caf980e619b9de9fb8a2dca4ca2cd758f06e746"
+              }
+            ]
+          },
+          "sha256": "da48f9ddf81812548bdda709879cc293a413e1fbb6b53e322cadb3a8156ebd54"
+        }
+      ],
+      "decisionIntegrationBoundary": "Following specific independent acceptance, merge this bounded partial target contribution into the current authoritative source decision without dropping other targets or promoting whole-source coverage. A prior whole-originalHOLD/REJECT is not automatically reversed. New operator cells require their own finite partial decision; old decision/whole-source history remains."
+    }
+  ],
+  "wholeFileReplacement": false,
+  "wholeSourceCredit": false
+}

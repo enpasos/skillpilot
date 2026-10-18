@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:2b4d85280ea1c758aa980e8517f462b3c7b5533e79e38c5ad50c1592b5756762",
+  "reviewInputFingerprint": "sha256:13146c5cf0f3ca9588c7c127c5995f10e636cefc64d49a312e817fe1a58d4751",
+  "goalCount": 4,
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-current439-material4-v3-targeted-20261017-v1-a",
+      "roundId": "chemie-current439-material4-v3-targeted-20261017-v1-first-pass-a",
+      "independenceGroupId": "chemie-current439-material4-v3-targeted-20261017-v1-independent-a",
+      "runIds": [
+        "chemie-material4-v3-independent-a-20261017-observed-science-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 (Codex agent; exact model snapshot not exposed)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "chemie-current439-material4-v3-targeted-20261017-v1-b",
+      "roundId": "chemie-current439-material4-v3-targeted-20261017-v1-first-pass-b",
+      "independenceGroupId": "chemie-current439-material4-v3-targeted-20261017-v1-independent-b",
+      "runIds": [
+        "chemie-material4-v3-fresh-independent-b-20261017-v1-native-D"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex based on GPT-6; exact deployment identifier not exposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 4,
+    "unavailable": 0,
+    "requiresSynthesis": 4
+  },
+  "goals": [
+    {
+      "goalId": "f85b4651-50ea-5b42-b193-3465c05257a7",
+      "firstRecordId": "chemie-material4-v3-independent-a-20261017-observed-science-v1-01",
+      "secondRecordId": "chemie-material4-v3-fresh-b-D-f85b4651-50ea-5b42-b193-3465c05257a7",
+      "firstRunId": "chemie-material4-v3-independent-a-20261017-observed-science-v1",
+      "secondRunId": "chemie-material4-v3-fresh-independent-b-20261017-v1-native-D",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "b8d3b453-d638-5518-aab0-d84ec2e8567c",
+      "firstRecordId": "chemie-material4-v3-independent-a-20261017-observed-science-v1-02",
+      "secondRecordId": "chemie-material4-v3-fresh-b-D-b8d3b453-d638-5518-aab0-d84ec2e8567c",
+      "firstRunId": "chemie-material4-v3-independent-a-20261017-observed-science-v1",
+      "secondRunId": "chemie-material4-v3-fresh-independent-b-20261017-v1-native-D",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "28c90c6a-3020-5c51-ac40-d802f3f12d2d",
+      "firstRecordId": "chemie-material4-v3-independent-a-20261017-observed-science-v1-03",
+      "secondRecordId": "chemie-material4-v3-fresh-b-D-28c90c6a-3020-5c51-ac40-d802f3f12d2d",
+      "firstRunId": "chemie-material4-v3-independent-a-20261017-observed-science-v1",
+      "secondRunId": "chemie-material4-v3-fresh-independent-b-20261017-v1-native-D",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "188bd684-e894-5753-8a50-798220b04d97",
+      "firstRecordId": "chemie-material4-v3-independent-a-20261017-observed-science-v1-04",
+      "secondRecordId": "chemie-material4-v3-fresh-b-D-188bd684-e894-5753-8a50-798220b04d97",
+      "firstRunId": "chemie-material4-v3-independent-a-20261017-observed-science-v1",
+      "secondRunId": "chemie-material4-v3-fresh-independent-b-20261017-v1-native-D",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

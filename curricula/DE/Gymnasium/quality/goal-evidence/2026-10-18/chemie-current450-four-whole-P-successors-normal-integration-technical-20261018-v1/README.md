@@ -1,0 +1,7 @@
+# Actual P4 central activation
+
+Root GO authorized precisely four disjoint whole-P successors: sealed MV P1 plus sealed NI/SL P3. Normal central Chemistry P-array now138configs/450unique ordinary owners. Every other446 whole native record/profile is exact. The four original owner residuals retain1/2/5/3 rows and their original namespaces, criteria and rules. Historical prepared files, including names containing inactive, retain exact bytes; central selection now activates those existing paths without rewriting their original role statements.
+
+Only the actual Chemistry positiveEvidenceConfigPaths byte span was changed. Literal prefix/suffix bytes outside that array, D128indexes/561edges/2withdrawals, all non-P fields and all four other subjects are exact. Exact prior central bytes are archived in history. Four changed and four residual stock checks PASS; no205-check replay or full central pass is claimed.
+
+Science/material linkage names actual existing FIRSTs. MV has two genuine independent informed science reviews; its second historical view HOLD remains immutable and is separately resolved by Root’s actual six-view integration receipt. The three new contexts use the actual informed B FIRST; Root author/GO is not a fabricated peer. No sources/mappings, C, views, QA or A/M/D fields were written; no AP/build/commit/stage, new scientific vote, new native D, whole-source completion, human release or actual learner execution.

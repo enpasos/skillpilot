@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-009-v1-resolution-f79f15c0-e848-5e17-9eb5-26753d35c93b",
+  "goal": {
+    "goalId": "f79f15c0-e848-5e17-9eb5-26753d35c93b",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:7fbda887bd502458a1f81ff9c2a7668f1a9793347dc537a8b20793002f80cbc4",
+    "pageFingerprint": "sha256:8870786fe124bcf8b3453e739ee5a792e5201f4c5f3f1ba605cd3922488f5384",
+    "goalReviewContextFingerprint": "sha256:21510cb14fc3a680ec5ab06b1430f5ccaa562ee31dbb8e216546b328e4f0feee",
+    "finalText": {
+      "titleDe": "Anspruchsvolle chemische Experimente selbstständig durchführen",
+      "titleEn": "Carry out advanced chemical experiments independently",
+      "descriptionDe": "Die lernende Person kann hypothesengeleitete qualitative und quantitative Experimente überwiegend selbstständig planen, geeignete Analysenmethoden wählen, unter den Sicherheitsbestimmungen tatsächlich durchführen und nachvollziehbar protokollieren.",
+      "descriptionEn": "The learner can largely independently plan hypothesis-guided qualitative and quantitative experiments, select suitable analytical methods, actually perform them under the safety requirements and document them transparently."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-009-v1-a",
+      "campaignDigest": "sha256:632b354acad11bd2ceb4f8d2bd47b47c3bf4767abe1ae4545b688e1cd2dea4eb",
+      "roundId": "chemie-final-current-context-d-009-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-009-v1-independent-a",
+      "reviewInputFingerprint": "sha256:2a493a1e4c90ad26e428da157ab06c92311c1ca6a2278ac42313b60978fcae01",
+      "goalReviewContextFingerprint": "sha256:21510cb14fc3a680ec5ab06b1430f5ccaa562ee31dbb8e216546b328e4f0feee",
+      "batchId": "chemie-final-current-context-d-009-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch009-20261018",
+      "runManifestDigest": "sha256:b3add03b47589efc8870b1f5c6c4875c91289d66e92234c32584b3941ec0fd63",
+      "resultsDigest": "sha256:409146c0e239b09e760a7fd073410d5eeb3296925e3272634c4c436f56b25f75",
+      "recordId": "codex-reviewer-a-final163-batch009-20261018.001",
+      "recordDigest": "sha256:4dba86af5766792bb4c4a9cc5f6d98ed333e865f765c6deb8ce82a5fefa2e795"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-009-v1-b",
+      "campaignDigest": "sha256:c41e6189d07168f42d0d3f1bdc26b67e406feda7dc53ec05bd6433d1a8e363b0",
+      "roundId": "chemie-final-current-context-d-009-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-009-v1-independent-b",
+      "reviewInputFingerprint": "sha256:2a493a1e4c90ad26e428da157ab06c92311c1ca6a2278ac42313b60978fcae01",
+      "goalReviewContextFingerprint": "sha256:21510cb14fc3a680ec5ab06b1430f5ccaa562ee31dbb8e216546b328e4f0feee",
+      "batchId": "chemie-final-current-context-d-009-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-009-20261018",
+      "runManifestDigest": "sha256:195e11bb3feed216b7af0380005218175787089a4dd2a2fa0eb15ed9e938b2d6",
+      "resultsDigest": "sha256:958a8e3c17b436f293902bdd9e7f34473167454229d86ac32b8478268bcd9d5e",
+      "recordId": "chemie-final163-native-b-009-20261018:f79f15c0-e848-5e17-9eb5-26753d35c93b",
+      "recordDigest": "sha256:411a44279ebb827f47c811e2af7a73fc0bac6886a978736fedfce2ead72d6a79"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:c838d90f65227c9284632df92cc9926969f995826465e4daa47e865174e57670"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-009-20261018-v1",
+    "manifestDigest": "sha256:e1302f9f8066f8ee773a3dd9aa9957a276db0998fdc46e7c37cf285b13732298",
+    "manifestFingerprint": "sha256:c85006d5e70f952dd3209898879920e7d4bc3384d1065d69eea78f2238b739ed",
+    "decisionId": "chemie-final163-paired-D-only-009-20261018-v1-decision-001"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-009-20261018-v1-decision-001",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:47:13.013Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch009-20261018.001): Der bilinguale D-Text bewahrt eigenständige Planung, qualitative UND quantitative Methode, reale Handlung und Dokumentation als zusammenhängende Kompetenz. Das vollständige P enthält ausdrücklich eigene Rohdaten und Freigabe; synthetische Referenzen ersetzen diese nicht. Die 11,1-Prozent-Standardüberschätzung und bedingte Verhältnisrobustheit sind korrekt. Auch die Kalibriergrenze 0–6 mg/L wird respektiert: Faktor 2 ist nur ein erster Verdünnungsversuch, kein garantierter neuer Messwert. Kein M7-/Musterprotokoll wird zu Lernendenleistung erklärt. B (chemie-final163-native-b-009-20261018:f79f15c0-e848-5e17-9eb5-26753d35c93b): Das D formuliert eine gemeinsame selbständige Untersuchungskompetenz nach allgemeiner Versuchsplanung und lässt Sicherheitsfreigabe mit didaktischer Selbständigkeit vereinbar. Das ganze aktuelle P sichert qualitative und quantitative Arbeit, tatsächliche Ausführung und individuelle Rohaufzeichnung. Die gezielt gelesenen tatsächlichen Säure- und Brilliant-Blue-Sachkarten liefern konkrete Stoffe, Indikator-/Geräteangaben, Kalibrierbedingungen und Volumenfehler. Frische Standarddrift und Kalibrierbereichsfälle prüfen Gültigkeit; ein nominaler Faktor 2 garantiert ausdrücklich noch keine In-Bereich-Messung. Keine Musterwerte werden als persönliche Durchführung gewertet.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch009-20261018.001; chemie-final163-native-b-009-20261018:f79f15c0-e848-5e17-9eb5-26753d35c93b). Their current English understanding evidence is retained: A: A personal hypothesis-led investigation combines suitable qualitative and quantitative analyses, safe actual execution and checkable raw data; standard and calibration limits bound its result. B: A hypothesis-guided qualitative and quantitative investigation connects justified method choice, personal controlled execution and valid analysis; reference data cannot replace personal measurements. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Eine hypothesengeleitete eigene Untersuchung verbindet geeignete qualitative und quantitative Analysen, sichere tatsächliche Durchführung sowie überprüfbare Rohdaten; Standard- und Kalibriergrenzen begrenzen das Ergebnis.",
+      "essentialUnderstandingEn": "A personal hypothesis-led investigation combines suitable qualitative and quantitative analyses, safe actual execution and checkable raw data; standard and calibration limits bound its result.",
+      "observablePerformanceDe": "Plant weitgehend selbst Säure- oder Farbstoffanalyse mit begründeter Methodenwahl, Kontroll-/Blindproben und Wiederholung, führt den freigegebenen Plan tatsächlich aus und wertet das eigene Protokoll zur Hypothese aus.",
+      "observablePerformanceEn": "Largely independently plans acid or dye analysis with justified method selection, controls/blanks and repeats, actually performs the released plan and evaluates personal records against the hypothesis.",
+      "transferExpectationDe": "Erklärt im frischen Fall die bedingte Kürzung eines gemeinsamen Maßlösungsfehlers im Verhältnis oder veranlasst nach A=0,810 eine bekannte Verdünnung und neue gültige Messung statt Extrapolation.",
+      "transferExpectationEn": "Explains conditional cancellation of a common titrant error in a fresh ratio comparison or, after A=0.810, uses known dilution and a new valid reading rather than extrapolation."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-dda5879cee88e0c93dbff5c88c4c9662543d951e25e770863617eae3af089625",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:21da8982abb56cdc3f8796631ba7e3b1d65aad03149d1aa2ff96a59243f314a9"
+}

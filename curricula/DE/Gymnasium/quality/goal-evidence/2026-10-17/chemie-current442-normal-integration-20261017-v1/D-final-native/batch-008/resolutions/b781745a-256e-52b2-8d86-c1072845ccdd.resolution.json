@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "chemie-final-current-context-d-008-v1-resolution-b781745a-256e-52b2-8d86-c1072845ccdd",
+  "goal": {
+    "goalId": "b781745a-256e-52b2-8d86-c1072845ccdd",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:770e684a68fdb6a8286d9c93d33178223ed1313be14bb63b7df6ecfeee582ef1",
+    "pageFingerprint": "sha256:c702a9592c59b67b1839e5079efa9f81429929cef83e91b844088e3d594aa73f",
+    "goalReviewContextFingerprint": "sha256:0895f092510cf74b1d45bee6f75b170347234776fd91a4e5edba1937fd752e98",
+    "finalText": {
+      "titleDe": "Standard-Wasserstoff-Halbzelle erklären",
+      "titleEn": "Explain the standard hydrogen half-cell",
+      "descriptionDe": "Die lernende Person kann Aufbau, Funktion und Bezugsrolle der Standard-Wasserstoff-Halbzelle erläutern und sie zur Einordnung von Standardpotenzialen nutzen.",
+      "descriptionEn": "The learner can explain the setup, function, and reference role of the standard hydrogen half-cell and use it to classify standard potentials."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-final-current-context-d-008-v1-a",
+      "campaignDigest": "sha256:bfc1b7bc3538c4dd17f4f184f0a3c6191751a8124732d1299f1f3201d5b9fa22",
+      "roundId": "chemie-final-current-context-d-008-v1-first-pass-a",
+      "independenceGroupId": "chemie-final-current-context-d-008-v1-independent-a",
+      "reviewInputFingerprint": "sha256:3ac18dc51676cde29ff443c24a5b4a66fe4284e778b917d2a635b9e71961d3c3",
+      "goalReviewContextFingerprint": "sha256:0895f092510cf74b1d45bee6f75b170347234776fd91a4e5edba1937fd752e98",
+      "batchId": "chemie-final-current-context-d-008-v1-first-pass-a.batch-001",
+      "runId": "codex-reviewer-a-final163-batch008-20261018",
+      "runManifestDigest": "sha256:1c83d9e9f75802490a373fc32cd5155852662ec2adeb44332b0e4ad3794a53f2",
+      "resultsDigest": "sha256:717572e69fa651d74b4efe4307f0c0f1eb2190475b1f5e1e8a20cdd410f01fcc",
+      "recordId": "codex-reviewer-a-final163-batch008-20261018.003",
+      "recordDigest": "sha256:545e461574981ef989fdc20c754c5aa5a2d74245604c98c3cb76ab6e800cd8c0"
+    },
+    "second": {
+      "campaignId": "chemie-final-current-context-d-008-v1-b",
+      "campaignDigest": "sha256:8a870c0b67e894644fc8a8bc5a6e566b1b80eb253611ea8e45a3aec8e4e7ce2d",
+      "roundId": "chemie-final-current-context-d-008-v1-first-pass-b",
+      "independenceGroupId": "chemie-final-current-context-d-008-v1-independent-b",
+      "reviewInputFingerprint": "sha256:3ac18dc51676cde29ff443c24a5b4a66fe4284e778b917d2a635b9e71961d3c3",
+      "goalReviewContextFingerprint": "sha256:0895f092510cf74b1d45bee6f75b170347234776fd91a4e5edba1937fd752e98",
+      "batchId": "chemie-final-current-context-d-008-v1-first-pass-b.batch-001",
+      "runId": "chemie-final163-native-b-008-20261018",
+      "runManifestDigest": "sha256:aae64cd2428db704ad4ac245dcca064a12b9d0dc413b71f7a83725b0f7ddfec2",
+      "resultsDigest": "sha256:89514977b458bdd7656b1bb59d40d99ab77b3c500d848c381a3f4502abbe5fdc",
+      "recordId": "chemie-final163-native-b-008-20261018:b781745a-256e-52b2-8d86-c1072845ccdd",
+      "recordDigest": "sha256:d231aba7b0c015c8796b8b82a2709878c7bda9586ec5f15ca18cc43af225b515"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:75131dbe4e2143b9a067c805d573de1f211b44cd088aeee05809347756b969ad"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "chemie-final163-paired-D-only-008-20261018-v1",
+    "manifestDigest": "sha256:5d8be7c440ce4b012a72c9f373aceb76f40ccdfbc79a0e00151adb203a96abb4",
+    "manifestFingerprint": "sha256:6064281f64c256108d7f70c1739582deaed451dc4e86366a0df71edb5d14bd13",
+    "decisionId": "chemie-final163-paired-D-only-008-20261018-v1-decision-003"
+  },
+  "synthesis": {
+    "synthesisId": "chemie-final163-paired-D-only-008-20261018-v1-decision-003",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; additive synthesis of actual sealed independent A/B records, no new independent review",
+    "synthesizedAt": "2026-10-17T22:46:21.803Z",
+    "rationaleDe": "D-Synthese der beiden tatsächlichen unabhängigen KEEP-Ergebnisse; keine neue Fachprüfung. A (codex-reviewer-a-final163-batch008-20261018.003): Die D-Fassung ist eine kohärente Erklärung von Aufbau, Funktion und Referenzgebrauch. Die tatsächlich gelesenen vollständigen eqrk16-16-Fälle geben die pH-Potenzialbeziehung für den transferierenden Nichtstandardfall ausdrücklich vor; es wird keine eigenständige Nernstherleitung unterstellt. −0,17748 und +0,51748 V sowie die beiden SHE-Kopplungen stimmen. Pt wird nicht verbraucht und der gedachte Aufbau ist keine reale Gasversuchsfreigabe. B (chemie-final163-native-b-008-20261018:b781745a-256e-52b2-8d86-c1072845ccdd): Das D vertieft den Standardpotenzial-Vorläufer um tatsächlichen Aufbau, Funktion und Bezugsrolle, ohne eine eigene Gasapparatur zu fordern. Die zwei vollständig gelesenen Sachmaterialfälle tragen das aktuelle P mit Standardzuständen, Pt-Funktion und unterschiedlichen Kopplungen. Die Nichtstandardrechnung erhält ihre Beziehung ausdrücklich als Hilfsinformation und prüft die Referenzgrenze; sie ist keine Herleitung allgemeiner Nernst-pH-Fälle oder Behauptung realer Referenzqualität.",
+    "rationaleEn": "D-only synthesis retains both actual independent KEEP judgments (codex-reviewer-a-final163-batch008-20261018.003; chemie-final163-native-b-008-20261018:b781745a-256e-52b2-8d86-c1072845ccdd). Their current English understanding evidence is retained: A: SHE is a defined H+/H2 reference state with a conducting catalytic Pt surface; assigned E°=0 is a convention rather than absence of redox function. B: The SHE combines a defined H+/H2 state with a conducting catalytic platinum surface and serves as the assigned relative zero reference while retaining redox function. This is synthesis, not a new independent review.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die SHE ist ein definierter H+/H2-Referenzzustand mit leitender katalytischer Pt-Oberfläche; ihr zugewiesenes E°=0 beschreibt eine Konvention und keine fehlende Reaktionsfunktion.",
+      "essentialUnderstandingEn": "SHE is a defined H+/H2 reference state with a conducting catalytic Pt surface; assigned E°=0 is a convention rather than absence of redox function.",
+      "observablePerformanceDe": "Beschriftet Pt, H2 bei 1 bar, Protonenaktivität 1 und getrennte Ladungswege, erklärt beide Kopplungen mit Cu oder Zn und rekonstruiert deren relative Standardwerte.",
+      "observablePerformanceEn": "Labels Pt, H2 at 1 bar, unit proton activity and separate charge paths, explains coupling to Cu or Zn and reconstructs their relative standard values.",
+      "transferExpectationDe": "Erkennt bei neuer Protonenaktivität oder H2-Druckänderung eine Wasserstoffelektrode außerhalb des Standardzustands und trennt aktuelles Potenzial, E°-Konvention und Kabelvorzeichen.",
+      "transferExpectationEn": "Recognises a hydrogen electrode outside the standard state when proton activity or H2 pressure changes and separates actual potential, E° convention and lead sign."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-1c375ed4c8b2cdffe3312eeaa8b1317eccb55d23eabd94d081ca77d7a28def48",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:261631f14dd5d8acd995bfa2505a98d49534309695715db5f31ae2fcbf2b078d"
+}
