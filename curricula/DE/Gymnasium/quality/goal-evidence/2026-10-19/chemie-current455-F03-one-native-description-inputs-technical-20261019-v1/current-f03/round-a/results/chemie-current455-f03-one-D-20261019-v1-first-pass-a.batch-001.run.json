@@ -1,0 +1,46 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-current455-f03-one-D-20261019-v1-a-current-independent-run-001",
+  "campaignId": "chemie-current455-f03-one-D-20261019-v1-a",
+  "roundId": "chemie-current455-f03-one-D-20261019-v1-first-pass-a",
+  "batchId": "chemie-current455-f03-one-D-20261019-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:40977bdf35192b2dca20e22b773e0b726f8d016018d11212881b9fec92d2c443",
+  "bundleFingerprint": "sha256:bfe4e031d0dbc22378baec9b1e0295857a4e4c4b1e662a4c79d64c2bed29f17b",
+  "bookDigest": "sha256:7452d75ecdf3886adf50061841f2de11431ccf4f8511380bd6649d2cbc359c10",
+  "provider": "OpenAI",
+  "model": "GPT-6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "skillpilot-goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:55ac5f6bf38d1550f5f1c85bd1011b6938a6224403307fc846f98202734731b2",
+  "independenceGroupId": "chemie-current455-f03-one-D-20261019-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "8b2d351e-e44f-5385-9b89-13ef54b5918f"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:36666e23c38c84af1b934172d66eb3ff55d3b42ffcb16b9a60abe8aa8022c1e7"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:40977bdf35192b2dca20e22b773e0b726f8d016018d11212881b9fec92d2c443"
+    }
+  ],
+  "startedAt": "2026-10-19T00:14:49.901656+00:00",
+  "completedAt": "2026-10-19T00:16:11.422480+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:ef027345cbff0b8a037b40d942a9549177d9660e98221e29fc8bdb664dce7f8e",
+  "toolchainVersion": "codex-node20.20.2-tsx4.21.0-python3.12.9"
+}

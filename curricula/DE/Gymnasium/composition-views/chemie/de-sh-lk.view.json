@@ -1,16 +1,7 @@
 {
-  "viewId": "de-sh-gym-chemistry-lk",
   "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
-  "scope": {
-    "schoolForm": "Gymnasium",
-    "jurisdiction": "DE-SH",
-    "stage": "CrossStage",
-    "courseProfile": "LK"
-  },
   "rootNodes": [
     {
-      "kind": "structure",
-      "id": "chemistry-root",
       "label": "Chemie",
       "children": [
         {
@@ -19,8 +10,6 @@
           "displayLabel": "Warum Chemie?"
         },
         {
-          "kind": "structure",
-          "id": "chemistry-de-sh-lk-source-backed",
           "label": "Chemie-Lernziele (DE-SH, LK)",
           "children": [
             {
@@ -344,11 +333,20 @@
                 },
                 {
                   "kind": "goalEntry",
+                  "goalId": "dc146a38-994d-58ec-b6a0-5210118b93ae"
+                },
+                {
+                  "kind": "goalEntry",
                   "goalId": "ca216bc6-5205-5b46-abbd-fd5628e4ca5b"
                 },
                 {
                   "kind": "goalEntry",
                   "goalId": "70b34ae7-4481-590c-9a02-516464750832"
+                },
+                {
+                  "kind": "goalEntry",
+                  "goalId": "62de1c6e-8581-5345-a0a6-773427cb6db7",
+                  "projectionRole": "target"
                 },
                 {
                   "kind": "goalEntry",
@@ -440,6 +438,10 @@
                 {
                   "kind": "goalEntry",
                   "goalId": "8721d943-8368-5304-bd3c-7d7944099662"
+                },
+                {
+                  "kind": "goalEntry",
+                  "goalId": "69f2ecbb-ac0a-5d3a-8084-2142706e1161"
                 },
                 {
                   "kind": "goalEntry",
@@ -712,6 +714,11 @@
                 },
                 {
                   "kind": "goalEntry",
+                  "goalId": "b732c780-beb8-55f3-8503-edd6b8677a3a",
+                  "projectionRole": "target"
+                },
+                {
+                  "kind": "goalEntry",
                   "goalId": "2339b9b1-39c8-59f1-9108-c46966ecf1fd",
                   "projectionRole": "target"
                 }
@@ -804,7 +811,9 @@
                 }
               ]
             }
-          ]
+          ],
+          "id": "chemistry-de-sh-lk-source-backed",
+          "kind": "structure"
         },
         {
           "kind": "structure",
@@ -1370,7 +1379,9 @@
             }
           ]
         }
-      ]
+      ],
+      "id": "chemistry-root",
+      "kind": "structure"
     },
     {
       "kind": "structure",
@@ -1555,6 +1566,13 @@
     }
   ],
   "$schema": "https://skillpilot.com/schemas/curriculum-package/v1/composition-view.schema.json",
+  "language": "de",
+  "viewId": "de-sh-gym-chemistry-lk",
   "viewFormatVersion": "1.0",
-  "language": "de"
+  "scope": {
+    "schoolForm": "Gymnasium",
+    "jurisdiction": "DE-SH",
+    "stage": "CrossStage",
+    "courseProfile": "LK"
+  }
 }

@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/tmp/chemie_recycling_author_check.py", line 76, in <module>
+    for i,z in enumerate(vals):v.validate(z);check('schema_fragment:'+key+':'+str(i),True)
+                               ^^^^^^^^^^^^^
+  File "/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/site-packages/jsonschema/validators.py", line 450, in validate
+    raise error
+jsonschema.exceptions.ValidationError: 'changed-polyester-and-PE-linkages' does not match '^[a-z0-9]+(?:-[a-z0-9]+)*$'
+
+Failed validating 'pattern' in schema['properties']['variationAxes']['items']['properties']['id']:
+    {'type': 'string',
+     'minLength': 1,
+     'maxLength': 100,
+     'pattern': '^[a-z0-9]+(?:-[a-z0-9]+)*$'}
+
+On instance['variationAxes'][0]['id']:
+    'changed-polyester-and-PE-linkages'

@@ -1,0 +1,54 @@
+{
+  "role": "INDEPENDENT_INFORMED_TARGETED_COMPONENT_REVIEWER_B",
+  "status": "needs_human_review",
+  "reviewAuthority": "ai_candidate",
+  "active": false,
+  "humanApproval": false,
+  "actualLearnerPerformanceRecorded": false,
+  "nativeBlindDClaim": false,
+  "nativeReviewSerializationClaim": false,
+  "M7OrReleaseClaim": false,
+  "readAtUTC": "2026-10-18T19:04:03.480634+00:00",
+  "actualCurrentWebRead": true,
+  "actualResponseDigest": {
+    "method": "SHA256 of JSON.stringify(actual web tool result) plus final newline, UTF8; contains both independently opened official sources",
+    "sha256": "f600535efc0779eebe7522d13876946b62b60ac04cf50ff1a9d87237758d09a3",
+    "bytes": 30507
+  },
+  "sources": [
+    {
+      "url": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/11/chemie#292130",
+      "title": "LehrplanPLUS Gymnasium Chemie11(NTG)",
+      "exactLocation": "C11 3.1 Arzneimittel im Verdauungssystem, first and second competence bullets; official C11 3.2 heading is Schmerzmittel",
+      "repositoryObjects": [
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_CHEMIE_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+            "sha256": "d8f6b835b00729a089452e7f2b58f1b5b94a870d3dd8096b558755dc49cd5056",
+            "bytes": 1154770
+          },
+          "jsonPointer": "/sourceGoals/158",
+          "sourceGoalId": "66d5f91e-3527-5782-a5c3-3ab2650a5a1c"
+        },
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_CHEMIE_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+            "sha256": "d8f6b835b00729a089452e7f2b58f1b5b94a870d3dd8096b558755dc49cd5056",
+            "bytes": 1154770
+          },
+          "jsonPointer": "/sourceGoals/159",
+          "sourceGoalId": "3760b84d-1efe-577f-9d69-53fd89c7cb51"
+        }
+      ],
+      "findingDe": "Erste Bullet: Magensäurebildung/PPI erklären. Zweite: Antazida recherchieren und bewerten. Flache Extraktionslabels C11.3.1/.2 sind keine Gleichsetzung mit den offiziellen Unterabschnitten; keine amtliche pH-Rechenpflicht aus der ersten Bullet abgeleitet."
+    },
+    {
+      "url": "https://www.cancer.gov/publications/dictionaries/cancer-drug/def/omeprazole",
+      "title": "NCI Drug Dictionary: omeprazole",
+      "exactLocation": "heading omeprazole; first definition paragraph",
+      "shortExactExcerpt": "suppressing gastric acid secretion",
+      "findingDe": "Der tatsächlich gelesene Absatz nennt das Pumpenprotein auf Belegzellen und unterdrückten H+-Transport ins Lumen. Er liefert keine Unterrichtsmengen, Modell-pH-Werte oder Behandlungsvorhersage. Institutionelle Definition, kein klinischer Primärversuch."
+    }
+  ],
+  "fullThirdPartyTextRepublished": false
+}

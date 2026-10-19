@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "role": "technical_derived_applicability_candidate",
+  "createdAtUtc": "2026-10-19T00:10:20.593791+00:00",
+  "normalActivationPerformed": false,
+  "scientificReviewPerformed": false,
+  "warningAcceptanceAdded": false,
+  "gatePolicyChanged": false,
+  "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+  "expectedWholeBeforeSHA256": "8f10f0928a9cae57e671097a1d8ede587eee2d9d74287952a58db0bb39a2d15c",
+  "projectedWholeAfterSHA256": "a3994ef18ce0f7e060f1d4d63370af2d04e76c489e1785913a60fdf3e1cf686f",
+  "projectedWholeAfterBytes": 5436583,
+  "operations": [
+    {
+      "goalId": "c5394fb8-9411-5533-b2af-831c4c67b4be",
+      "goalIndex": 527,
+      "jsonPointer": "/goals/527/applicability",
+      "expectedWholeBeforeField": {
+        "jurisdiction": [
+          "DE-HB",
+          "DE-HH",
+          "DE-MV"
+        ]
+      },
+      "replacementWholeField": {
+        "jurisdiction": [
+          "DE-HB",
+          "DE-HH",
+          "DE-MV",
+          "DE-TH"
+        ]
+      },
+      "oldWholeGoalRawSHA256": "b152bdf00cdf562c65c317e25d9504e50438cd116a8dcea04655498521386527",
+      "newWholeGoalRawSHA256": "833657c4d00cf534baa4088f351eb06a7ee9b035854ebaa0036f755f4cc22590",
+      "beforeWholeGoalPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-two-derived-assessment-applicability-technical-candidate-20261019-v1/before/c5394fb8.whole-goal.EXACT.json",
+      "afterWholeGoalPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-two-derived-assessment-applicability-technical-candidate-20261019-v1/candidate/c5394fb8.whole-goal.applicability-only.json"
+    },
+    {
+      "goalId": "ee494d08-9514-54f2-ac5e-eebc20ca8725",
+      "goalIndex": 529,
+      "jsonPointer": "/goals/529/applicability",
+      "expectedWholeBeforeField": {
+        "jurisdiction": [
+          "DE-NW"
+        ]
+      },
+      "replacementWholeField": {
+        "jurisdiction": [
+          "DE-NW",
+          "DE-SN"
+        ]
+      },
+      "oldWholeGoalRawSHA256": "eaca66858924362c1126af92339e6ddc294eb87f6d65c643b6323be2ccc81533",
+      "newWholeGoalRawSHA256": "f6330494af7cdcdea9eae052edefc397472ac5c8de03ffdcf5a22678c2bcb007",
+      "beforeWholeGoalPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-two-derived-assessment-applicability-technical-candidate-20261019-v1/before/ee494d08.whole-goal.EXACT.json",
+      "afterWholeGoalPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-two-derived-assessment-applicability-technical-candidate-20261019-v1/candidate/ee494d08.whole-goal.applicability-only.json"
+    }
+  ],
+  "originalCompilerRawPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-two-derived-assessment-applicability-technical-candidate-20261019-v1/checks/ORIGINAL.buildApplicabilityCompilation.chemie.raw.json",
+  "derivation": "Exactly the existing applicabilityFromRequires=true intersection computed by the unchanged original compiler, with assessment-requires evidence only for both endpoints; no source coverage credit.",
+  "postIntegrationRequired": "Root applies the two guarded fields before D1 freeze and reruns the original applicability compiler/CQR; no final M7 or post-activation result is claimed here."
+}

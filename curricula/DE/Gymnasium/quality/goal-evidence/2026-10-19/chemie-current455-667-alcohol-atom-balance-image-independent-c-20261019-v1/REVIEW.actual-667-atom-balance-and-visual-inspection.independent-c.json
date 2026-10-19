@@ -1,0 +1,96 @@
+{
+  "role": "INDEPENDENT_INFORMED_IMAGE_COMPONENT_QA_C",
+  "reviewAuthority": "ai_candidate",
+  "status": "needs_human_review",
+  "active": false,
+  "normalWrites": 0,
+  "nativeDApproval": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "M7Claim": false,
+  "normalApplyAuthorized": false,
+  "reviewedAtUTC": "2026-10-18T23:05:17.303422+00:00",
+  "reviewer": "OpenAI Codex; exact model/version and hidden generation parameters not exposed",
+  "blind": false,
+  "noOtherNewPeerImageReviewsRead": true,
+  "priorRoles": "Own ester image/graph-view/source-component QA and earlier Chemistry context/source/technical work. Not author of this667 correction. Author inspection judgments were not used as authority. NativeD FIRST inputs remain untouched.",
+  "inputPins": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-667-alcohol-atom-balance-image-independent-c-20261019-v1/INPUT.actual-bound-image-and-provenance-pins.json",
+    "sha256": "876b15f451397e0cb9ed7fa89d9859cf679a279b4435ff9fa450dd73136f4652",
+    "bytes": 3338
+  },
+  "decision": "accept",
+  "acceptedCandidate": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-667-alcohol-atom-balance-image-author-20261019-v1/candidate/667bc303-e9b8-570b-84f1-61cc8bdfd006.png",
+    "sha256": "2b4a549d3619f0c6a6cd2fe634cb785f1ba0adbf7d8f6945bbb0b6f289b1c34e",
+    "bytes": 1626671
+  },
+  "nativePixelSize": [
+    1672,
+    940
+  ],
+  "nativeBytesKEEP": true,
+  "actualViews": {
+    "candidateNative": "Viewed actual PNG with view_image original detail.",
+    "originalJPG": "Viewed actual normal JPG with view_image; tool displayed a downsampled2048-wide copy of native2752x1536.",
+    "resampled": [
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-667-alcohol-atom-balance-image-independent-c-20261019-v1/actual-viewed/667.width-360.QA-only.png",
+        "sha256": "963c3959d2159370bae785fcca0ff2af3a8d6f8ba213acd08dc9c374e17b696f",
+        "bytes": 99248,
+        "actualPixelSize": [
+          360,
+          202
+        ],
+        "viewedWith": "view_image original detail",
+        "qaResamplingOnly": true
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-667-alcohol-atom-balance-image-independent-c-20261019-v1/actual-viewed/667.width-680.QA-only.png",
+        "sha256": "007d360190b6b0c2d59d4931e4aac7f9e58ae92b51d3269167a412a96d5abf17",
+        "bytes": 317203,
+        "actualPixelSize": [
+          680,
+          382
+        ],
+        "viewedWith": "view_image original detail",
+        "qaResamplingOnly": true
+      }
+    ]
+  },
+  "findings": [
+    {
+      "id": "C667-01",
+      "decision": "accept",
+      "pointer": "candidate image:upper-left alcohol; lower-left acidic product alcohol; lower-right alkaline product alcohol",
+      "reasonDe": "Alle drei Alkohole zeigen jetzt genau eine gerade Einfachbindung vom unveränderten grünen R′ direkt zur OH-Gruppe. Es gibt keinen unbeschrifteten Knick/CH2 zwischen R′ und O. Das alte JPG zeigt diesen zusätzlichen Kohlenstoff tatsächlich dreimal. Die Ester behalten jeweils R–C(=O)–O–R′; daher sind R- und R′-Reste in beiden Reaktionsrichtungen erhalten."
+    },
+    {
+      "id": "C667-02",
+      "decision": "accept",
+      "pointer": "candidate image:upper reaction andlower acidic panel",
+      "reasonDe": "Carbonsäure R–C(=O)–OH plus R′–OH ergibt formal Ester plus H2O; Rückhydrolyse entsprechend. Carbonyl-C hat Bindungsordnung4, Ester-O zwei Einfachbindungen; H–O–H ist korrekt. H+ steht als Katalysator über den entgegengesetzten Pfeilen, nicht als verbrauchtes Nettoreagenz. Keine falsche Ketonstruktur oder behauptete experimentelle Atommarkierung."
+    },
+    {
+      "id": "C667-03",
+      "decision": "accept",
+      "pointer": "candidate image:lower-right alkaline panel andcondition caption",
+      "reasonDe": "Die Nettogleichung Ester+OH−→Carboxylat+Alkohol hat dieselben R/R′, drei O auf beiden Seiten, ein übertragbares H und Gesamtladung−1. Na+ ist das zu NaOH passende ausdrücklich gezeigte Gegenion, kein kovalent gebundenes Atom; die ionische Nettogleichung lässt dieses Zuschauerion weg. Die einfache Vorwärtspfeildarstellung ist jetzt ausdrücklich auf unter alkalischen Bedingungen praktisch irreversibel begrenzt. Kein absoluter Unumkehrbarkeitsclaim über veränderte Reaktionsbedingungen hinweg."
+    },
+    {
+      "id": "C667-04",
+      "decision": "accept",
+      "pointer": "candidate image:bottom everyday examples",
+      "reasonDe": "Fruchtaromen/Parfüms/Lebensmittelaromen sind passende Beispiele. Oft flüchtige, wohlriechende Verbindungen ist als Häufigkeitsangabe begrenzt und behauptet weder universellen Geruch noch Essbarkeit oder Zulassung. Das vorhandene anschauliche Stil-/Panelkonzept kann bleiben."
+    },
+    {
+      "id": "C667-05",
+      "severity": "low",
+      "decision": "accept_with_readability_limit",
+      "pointer": "actual-viewed/667.width-360.QA-only.png:small lower labels andcondition caption",
+      "reasonDe": "Bei360px sind kleine Formelindizes, Katalysator-/Basenhinweise und die vollständige Bedingungsbeschriftung ohne Vergrößerung nicht sicher lesbar. Titel, grobe Reaktionsrichtungen und direkte R′–OH-Verknüpfungen bleiben erkennbar. Bei680px sind die Formeln und die Bedingung gut prüfbar, nativ klar. Deshalb keine Behauptung, sämtliche Texte seien bei360px lesbar; der fachlich korrigierte Rasterkandidat wird mit dieser dokumentierten Darstellungsgrenze angenommen."
+    }
+  ],
+  "scienceScope": "Only the actual raster and provenance boundary; no new goal/P/source/nativeD judgment, empirical experiment, learner evidence or Human release.",
+  "generationApprovalNotAssumed": true
+}

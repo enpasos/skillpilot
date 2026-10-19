@@ -1,0 +1,32 @@
+{
+  "counts": {
+    "canonicalCurricularAtomicGoals": 454,
+    "publishedCurricularAtomicGoals": 422,
+    "sourceViews": 48,
+    "unresolvedSourceScopeDecisions": 504,
+    "omittedGoals": 32
+  },
+  "omittedByReason": {
+    "no-reviewed-mapped-source-witness": 26,
+    "unresolved-source-scope": 6
+  },
+  "changedInputBindings": 31,
+  "outputs": 51,
+  "changedOutputs": 35,
+  "actualExpectationChanges": [
+    {
+      "attempt": 1,
+      "field": "expectedUnresolvedScopeDecisionCount",
+      "before": 496,
+      "actualReportedByOriginalModel": 504,
+      "assertion": "Source-scope uncertainty changed; inspect rather than guess\n\n504 !== 496\n"
+    },
+    {
+      "attempt": 2,
+      "field": "expectedCurricularAtomicGoalCount",
+      "before": 413,
+      "actualReportedByOriginalModel": 422,
+      "assertion": "Source-supported atlas goal count changed\n\n422 !== 413\n"
+    }
+  ]
+}

@@ -886,7 +886,13 @@
     {
       "legacyGoalId": "fb4e484f-8706-5617-8ee7-19874a83bea7",
       "canonicalGoalId": "70b34ae7-4481-590c-9a02-516464750832",
-      "matchType": "exact",
+      "matchType": "partial",
+      "reviewDecisionId": "fb4e484f-8706-5617-8ee7-19874a83bea7"
+    },
+    {
+      "legacyGoalId": "fb4e484f-8706-5617-8ee7-19874a83bea7",
+      "canonicalGoalId": "62de1c6e-8581-5345-a0a6-773427cb6db7",
+      "matchType": "partial",
       "reviewDecisionId": "fb4e484f-8706-5617-8ee7-19874a83bea7"
     },
     {
@@ -897,7 +903,7 @@
     },
     {
       "legacyGoalId": "962d6d01-aed9-5412-b72a-9f91f82f535d",
-      "canonicalGoalId": "70b34ae7-4481-590c-9a02-516464750832",
+      "canonicalGoalId": "62de1c6e-8581-5345-a0a6-773427cb6db7",
       "matchType": "partial",
       "reviewDecisionId": "962d6d01-aed9-5412-b72a-9f91f82f535d"
     },
@@ -4652,11 +4658,46 @@
       "sourceSpan": "C10-HG_SG_MUG_WWG_SWG.6.3",
       "decision": "mapped",
       "canonicalGoalIds": [
-        "70b34ae7-4481-590c-9a02-516464750832"
+        "70b34ae7-4481-590c-9a02-516464750832",
+        "62de1c6e-8581-5345-a0a6-773427cb6db7"
       ],
-      "rationale": "Das normalisierte BY-Source-Ziel ist inhaltlich vollständig durch das kanonische Chemieziel abgedeckt. Mehrfach vorkommende LehrplanPLUS-Formulierung wurde aus 2 Profil-/Jahrgangsfundstellen dedupliziert.",
-      "reviewedAt": "2026-05-11",
-      "reviewer": "codex"
+      "rationale": "AUTHOR CANDIDATE ONLY. 70b übernimmt genau den Beobachtung→Kondensationsschluss;62de genau den Struktur/IMF→Eigenschaftsschluss. Beide Originalvorkommen wurden als ganze Originalknoten gelesen. Verbleibende Originalpflicht: Jede einzelne Kante bleibt Teilbeitrag. Keine eigene Experimentausführung aus gelieferter Analytik; zwei P-Verträge bleiben unabhängig prüfbar. Alle übrigen vorhandenen Zielzuordnungen bleiben exakt; sie werden mit diesem begrenzten Split nicht erneut fachlich freigegeben.",
+      "reviewedAt": "2026-10-18T22:51:38.560548+00:00",
+      "reviewer": "/root/chemie_context28_fresh_blind_b",
+      "matchType": "partial",
+      "authorCandidate70Split": {
+        "authoredAt": "2026-10-18T22:45:54.764075+00:00",
+        "reviewAuthority": "ai_candidate",
+        "independentApproval": false,
+        "wholeSourceCredit": false,
+        "sourceGoalUnchanged": true,
+        "contributionTargetIds": [
+          "70b34ae7-4481-590c-9a02-516464750832",
+          "62de1c6e-8581-5345-a0a6-773427cb6db7"
+        ],
+        "actualOriginalDutyDe": "BYC10-HG6.3 und C10-NTG4.1: aus experimentellen Beobachtungen Esterbildung ableiten UND Stoffeigenschaften durch IMF begründen.",
+        "remainingOriginalDutyDe": "Jede einzelne Kante bleibt Teilbeitrag. Keine eigene Experimentausführung aus gelieferter Analytik; zwei P-Verträge bleiben unabhängig prüfbar.",
+        "originalDecisionRetainedInCASBefore": true,
+        "oldReviewedAtAndReviewerHistoricalOnly": true
+      },
+      "boundedIndependentMachineReview": {
+        "reviewAuthority": "ai_candidate",
+        "status": "needs_human_review",
+        "decision": "accept_bounded_split_contributions_only",
+        "independentAcceptedCAS": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-source117-independent-c-20261019-v1/components/01-BB-BE-BW-BY-HB-HE-rows000-022/ACCEPTED-CAS.selected-source-group-operations.independent-c.json",
+          "sha256": "b66edd30c5096c3ac88c736f8f1865e1aa25f80761a79b45706ce6531356d153",
+          "bytes": 9719
+        },
+        "sourceIdentityRowIndex": 19,
+        "authorAcceptedDecisionPayloadSHA256": "a036c6798419bb7c0db066df634446c1672386a8a2d8546340ee1abd20d08ebd",
+        "originalOfficialClauseAndScopeUnchanged": true,
+        "allOtherTargetRowsPreservedNotReapproved": true,
+        "wholeSourceApproval": false,
+        "remainingWholeOfficialDuties": "open unless separately proven by their current valid owners",
+        "humanApproval": false,
+        "actualLearnerPerformanceClaim": false
+      }
     },
     {
       "sourceGoalId": "159f8941-517f-5161-90a9-cfb488db1d4c",
@@ -4676,12 +4717,45 @@
       "sourceSpan": "C10-HG_SG_MUG_WWG_SWG.6.5",
       "decision": "mapped",
       "canonicalGoalIds": [
-        "70b34ae7-4481-590c-9a02-516464750832",
+        "62de1c6e-8581-5345-a0a6-773427cb6db7",
         "bebea164-dfd7-51d9-a54a-7029c78b7f5f"
       ],
-      "rationale": "Das normalisierte BY-Source-Ziel ist inhaltlich vollständig durch mehrere kanonische Chemieziele abgedeckt; 1:n ist die Zuordnungsform, keine fachliche Lücke. Mehrfach vorkommende LehrplanPLUS-Formulierung wurde aus 2 Profil-/Jahrgangsfundstellen dedupliziert.",
-      "reviewedAt": "2026-05-11",
-      "reviewer": "codex"
+      "rationale": "AUTHOR CANDIDATE ONLY. 62de begründet konkreten Modell-Aroma-/Lösemittel-/Extraktionseinsatz aus vorliegenden Daten. Verbleibende Originalpflicht: Fettidentifikation als Triester ist im neuen P nicht enthalten;2f3 behandelt tatsächlich die Fettstruktur. Alle übrigen vorhandenen Zielzuordnungen bleiben exakt; sie werden mit diesem begrenzten Split nicht erneut fachlich freigegeben.",
+      "reviewedAt": "2026-10-18T22:51:38.560548+00:00",
+      "reviewer": "/root/chemie_context28_fresh_blind_b",
+      "matchType": "partial",
+      "authorCandidate70Split": {
+        "authoredAt": "2026-10-18T22:45:54.764075+00:00",
+        "reviewAuthority": "ai_candidate",
+        "independentApproval": false,
+        "wholeSourceCredit": false,
+        "sourceGoalUnchanged": true,
+        "contributionTargetIds": [
+          "62de1c6e-8581-5345-a0a6-773427cb6db7"
+        ],
+        "actualOriginalDutyDe": "BYC10-HG6.5 und C10-NTG4.3: Estereinsatz Alltag/Technik erkennen UND Fette über Estergruppe identifizieren.",
+        "remainingOriginalDutyDe": "Fettidentifikation als Triester ist im neuen P nicht enthalten;2f3 behandelt tatsächlich die Fettstruktur.",
+        "originalDecisionRetainedInCASBefore": true,
+        "oldReviewedAtAndReviewerHistoricalOnly": true
+      },
+      "boundedIndependentMachineReview": {
+        "reviewAuthority": "ai_candidate",
+        "status": "needs_human_review",
+        "decision": "accept_bounded_split_contributions_only",
+        "independentAcceptedCAS": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-source117-independent-c-20261019-v1/components/01-BB-BE-BW-BY-HB-HE-rows000-022/ACCEPTED-CAS.selected-source-group-operations.independent-c.json",
+          "sha256": "b66edd30c5096c3ac88c736f8f1865e1aa25f80761a79b45706ce6531356d153",
+          "bytes": 9719
+        },
+        "sourceIdentityRowIndex": 20,
+        "authorAcceptedDecisionPayloadSHA256": "45efa41e3583d98ad7e465e1ad334d431a3cc5438490d92b735eba84f7ed5338",
+        "originalOfficialClauseAndScopeUnchanged": true,
+        "allOtherTargetRowsPreservedNotReapproved": true,
+        "wholeSourceApproval": false,
+        "remainingWholeOfficialDuties": "open unless separately proven by their current valid owners",
+        "humanApproval": false,
+        "actualLearnerPerformanceClaim": false
+      }
     },
     {
       "sourceGoalId": "914ca563-f1f1-5043-8bd3-9ebfee74d39b",

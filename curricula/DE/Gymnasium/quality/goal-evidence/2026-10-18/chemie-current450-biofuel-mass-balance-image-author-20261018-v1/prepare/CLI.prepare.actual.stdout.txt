@@ -1,0 +1,11 @@
+
+> skillpilot@0.0.0 visualization:prepare
+> node ../scripts/prepare_goal_visualization.mjs b732c780-beb8-55f3-8503-edd6b8677a3a --landscape=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-biofuel-atomicity-source-author-20261018-v1/candidate/landscape.after.INACTIVE.json --subject=chemie --provider=OpenAI / built-in image_gen.imagegen --review-status=needs_external_review
+
+Prepared prompt package for: Massenbilanzen physikalischer Trennungen prüfen
+SkillPilot ID: b732c780-beb8-55f3-8503-edd6b8677a3a
+Prompt: tmp/goal-visualizations/b732c780-beb8-55f3-8503-edd6b8677a3a/nano-banana-prompt.de.md
+Metadata: tmp/goal-visualizations/b732c780-beb8-55f3-8503-edd6b8677a3a/metadata.json
+
+After generating and downloading the image, import it with:
+npm --prefix app run visualization:import -- b732c780-beb8-55f3-8503-edd6b8677a3a "<downloaded-image-path>"

@@ -1,0 +1,589 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "chemie-current454-d-001-32-original-input-D-keep-informed-synthesis-20261018-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex informed synthesis by original first-pass reviewer A (/root/chemie454_current35_fresh_description_a); sealed A/B records, open P findings preserved, no new blind review or votes",
+  "synthesizedAt": "2026-10-18T21:15:19.000Z",
+  "batch": {
+    "batchId": "chemie-current454-current-edit-native-d-001-20261018-v1",
+    "batchManifestDigest": "sha256:0f39a9b8418775b1afc47a65a818348498c8ef01ed1456e1cb5d98c6e2f514f6",
+    "configDigest": "sha256:637dbf0ab21ded88fbfaaa0499003ee21cce135021f61f3dfa4bccaf539df21d",
+    "bundleFingerprint": "sha256:1f5783b8bb5ff494044a337e02cc50d56525579f68e13e0d1d1787c2a6408a0f",
+    "bookDigest": "sha256:aeabf68f2929b22b58f15800abe0653760733397617529b70f4e7f10604b6feb",
+    "reviewInputFingerprint": "sha256:dc057e107e2885aabe979a1055d065f7af83a6fadcba6f79e66be3fb66bd3cb1",
+    "dualSummaryDigest": "sha256:49afc2da254d6940361ac287fcfa05f2556d3e7d1d8c3e4356181bd1d6c3a2b3",
+    "canonicalLandscapeDigest": "sha256:08f31e7169d617f0e2e1f18fde7b5a3b2c3f1a45536a477479858cb4571d69f8"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-current454-current-edit-native-d-001-20261018-v1-a",
+      "campaignDigest": "sha256:f02459721f4694ae51ad540278a3c86327ea85329a527ca7e6f3972630beae9e",
+      "roundId": "chemie-current454-current-edit-native-d-001-20261018-v1-first-pass-a",
+      "independenceGroupId": "chemie-current454-current-edit-native-d-001-20261018-v1-independent-a",
+      "reviewInputFingerprint": "sha256:dc057e107e2885aabe979a1055d065f7af83a6fadcba6f79e66be3fb66bd3cb1",
+      "batchId": "chemie-current454-current-edit-native-d-001-20261018-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:81dd660156819cb3e974ac9e0d2a8ee2281d79a3e29735733534716b667e452a",
+      "runId": "chemie-current454-current-edit-native-d-001-20261018-v1-a-codex-current35-a-first-pass",
+      "runManifestDigest": "sha256:6802560fa948c499319d2e17123a9ef0a8f40b1e41b1903cf7db6f927d1d2384",
+      "resultsDigest": "sha256:059aac7c2c33978496863a87bb6ae2e980b6f8f01574999f3cccf265baa50c78"
+    },
+    "second": {
+      "campaignId": "chemie-current454-current-edit-native-d-001-20261018-v1-b",
+      "campaignDigest": "sha256:3600522a560c4513b52f2ab715570a4ac4389998a308577365eb00869875784e",
+      "roundId": "chemie-current454-current-edit-native-d-001-20261018-v1-first-pass-b",
+      "independenceGroupId": "chemie-current454-current-edit-native-d-001-20261018-v1-independent-b",
+      "reviewInputFingerprint": "sha256:dc057e107e2885aabe979a1055d065f7af83a6fadcba6f79e66be3fb66bd3cb1",
+      "batchId": "chemie-current454-current-edit-native-d-001-20261018-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:0e59e55333e21d8cc6fe5449a148a41f550ce3883d34d7b034ded698f36eea34",
+      "runId": "chemie-current454-current-edit-native-d-001-20261018-v1-first-pass-b.run-b-20261018T210306Z",
+      "runManifestDigest": "sha256:33435604dc930bae6a2bc7d3d31c4dfc860a8381cf1e941fabd99f88bc8b9787",
+      "resultsDigest": "sha256:ac549051434187906cb100a87849fb4afec1824ebc8cf7e43a347c5be4521e7b"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "chemie-current454-d-001-32-original-input-D-keep-informed-synthesis-20261018-v1-decision-001",
+      "goalId": "0bf26276-2780-506c-ac34-35dd44a29409",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3f6c5f65311208c740c0b595bc889fa8b23d4cab3c5ba475ae15e63b1e1cd0ce",
+      "pageFingerprint": "sha256:9ddeb72b196da7fe39c966b17dac5c6589bfc9ff807cf5e9721d7605e0bffd24",
+      "goalReviewContextFingerprint": "sha256:3bdfe46cbadd6b9476b41509d969dc375a3a845abd86c6db7567859566c80e3e",
+      "finalText": {
+        "titleDe": "pH-Werte in Alltag, Technik und Biologie erörtern",
+        "titleEn": "Discuss pH values in everyday life, technology, and biology",
+        "descriptionDe": "Die lernende Person kann die Bedeutung saurer und basischer Lösungen in Alltag, Technik und biologischen Systemen erörtern und Folgen von pH-Wert-Änderungen fachlich abschätzen.",
+        "descriptionEn": "The learner can discuss the significance of acidic and basic solutions in everyday life, technology, and biological systems and assess consequences of pH changes scientifically."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current454-current-edit-native-d-001-20261018-v1-a-codex-current35-a-first-pass.001",
+          "recordDigest": "sha256:f8180492270958b7f4d45b1939148b94eeb8fb9044dc18a988674216b2602237"
+        },
+        "second": {
+          "recordId": "chemie-current454-current-edit-native-d-001-20261018-v1-first-pass-b.run-b-20261018T210306Z.g01",
+          "recordDigest": "sha256:415c28764240a19e10a5ed4260c274abdb3d14b8553e53a77172ae94453f5010"
+        }
+      },
+      "rationaleDe": "A und B behalten den aktuellen D-Wortlaut einer situationsbezogenen pH-Beurteilung. A legt saure/basische Folgen und fehlende Mengen-/Pufferdaten ausdrücklich dar und empfiehlt P-revise, weil die basische technische/biologische Leistung noch nicht ausdrücklich in den Pflichtbeobachtungen verankert ist; B sieht die vorhandenen drei Fälle als ausreichend. Runde first wird gewählt und ihre P-Revisionsempfehlung bleibt offen. Dies ist ausschließlich die gemeinsame D-Keep-Synthese gegen die versiegelten Originalinputs, keine aktuelle P-/M7-Freigabe und keine Auflösung der P-Differenz. Der frische gesonderte Nachfolger muss diesen alten Input später linear ersetzen.",
+      "rationaleEn": "A and B retain the current description of context-specific pH judgment. A explicitly covers acidic/alkaline effects and missing quantity/buffer data and recommends profile revision because required observations do not yet explicitly anchor alkaline technical/biological reasoning; B considers the existing three cases sufficient. Select first and preserve its open profile-revision recommendation. This synthesizes only the shared description keep against sealed original inputs, without current profile/M7 approval or adjudication of their profile difference. The separate fresh successor must later linearly supersede this old input."
+    },
+    {
+      "decisionId": "chemie-current454-d-001-32-original-input-D-keep-informed-synthesis-20261018-v1-decision-002",
+      "goalId": "1286f2fe-89b7-4454-8e11-85b6abd6e278",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:98dd4034f4ac33c798f6ba9c878c8f933f16c30edc89dd4d115a6f7628eb661e",
+      "pageFingerprint": "sha256:6a2e13c40dd41509390cdfd35940cd4813b77118700d794813d4aafd53333239",
+      "goalReviewContextFingerprint": "sha256:71a311ee5a7a28ad458765f73d19aeec6ed14ccc9cb858491cc04d79e06b3e5f",
+      "finalText": {
+        "titleDe": "Exotherme und endotherme Reaktionen unterscheiden",
+        "titleEn": "Distinguish exothermic and endothermic reactions",
+        "descriptionDe": "Die lernende Person kann exotherme und endotherme Reaktionen anhand ihrer Netto-Energieabgabe an die Umgebung beziehungsweise Netto-Energieaufnahme aus der Umgebung unterscheiden und typische Beispiele zuordnen.",
+        "descriptionEn": "The learner can distinguish exothermic and endothermic reactions by their net energy release to the surroundings or net energy uptake from the surroundings and classify typical examples."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current454-current-edit-native-d-001-20261018-v1-a-codex-current35-a-first-pass.002",
+          "recordDigest": "sha256:ee8da1e556925ae6f7b22e8ea8e05bc26062506ad7f2f600e5d6ef619bddaba9"
+        },
+        "second": {
+          "recordId": "chemie-current454-current-edit-native-d-001-20261018-v1-first-pass-b.run-b-20261018T210306Z.g02",
+          "recordDigest": "sha256:d0b8108a86ae340bea113f4b2db4c07cef6d3c8f9c7881233b5f2814010f9739"
+        }
+      },
+      "rationaleDe": "A und B behalten den Wortlaut: Nettoenergiefluss, Zündbedarf und Edukt-/Produktniveau bleiben getrennt. B gewichtet den Transfer zur Carbonatzersetzung, A benennt zusätzlich den Brausetablettenbefund samt Misch-/Löseanteil und ungeklärter Systemgrenze. Das sind ergänzende Prüfstellen desselben Verständnisses, kein Ergebnisdissens. Runde first wird wegen dieser expliziten Grenze der Temperaturbeobachtung übernommen.",
+      "rationaleEn": "A and B retain the wording and distinguish net energy flow, ignition and reactant/product levels. B emphasizes transfer to carbonate decomposition; A additionally identifies the tablet cooling observation, mixing/dissolution and unresolved system boundary. These are complementary checks, not conflicting outcomes. Select first for its explicit limit on temperature-only inference."
+    },
+    {
+      "decisionId": "chemie-current454-d-001-32-original-input-D-keep-informed-synthesis-20261018-v1-decision-003",
+      "goalId": "1351706f-4ea6-56e9-951b-87b24cbcdee8",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:75bfaba547c9270be76a5d8a2e73ade591fc020850b85f831966658b5cc293bb",
+      "pageFingerprint": "sha256:9dc327e212e01c2e788bb5a806edff7c489e7f5701473c6dd60381692152f3da",
+      "goalReviewContextFingerprint": "sha256:0ff7e3d46bc0df99d3a67f4d3c53fbd3bbda4004c4e81fb47696123fb0934489",
+      "finalText": {
+        "titleDe": "Lösungen nach Arbeitsanweisung herstellen",
+        "titleEn": "Prepare solutions from a working instruction",
+        "descriptionDe": "Die lernende Person kann mit zugelassenen Stoffen und einer bereitgestellten Arbeitsanweisung eine homogene Lösung herstellen und die ausgeführten Arbeitsschritte sowie das Ergebnis dokumentieren.",
+        "descriptionEn": "Using permitted substances and a supplied working instruction, the learner can prepare a homogeneous solution and document the performed steps and result."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-current454-current-edit-native-d-001-20261018-v1-a-codex-current35-a-first-pass.003",
+          "recordDigest": "sha256:7df07735e252fbfda5847ce59338f6ce90394ccb1ed9432a316a92ee122d67ca"
+        },
+        "second": {
+          "recordId": "chemie-current454-current-edit-native-d-001-20261018-v1-first-pass-b.run-b-20261018T210306Z.g03",
+          "recordDigest": "sha256:05a305589c48743667c744c86ca1865cdb4f6e6a46265eed182e72cf8504ea55"
+        }
+      },
+      "rationaleDe": "Beide Keep-Urteile verbinden vorgegebene Reihenfolge, homogenen Endzustand und eigenes Handlungs-/Rückmeldungsprotokoll. A konkretisiert Mengen und Fehlerstopp, B fasst die unveränderten L/S/G-Variationen ohne Bindung an nur ein Zahlenbeispiel zusammen. Beide trennen Simulatornachweis von realer Laborfertigkeit. Runde second trägt den vollständigen, methodenneutralen Beschreibungsumfang besonders klar; die zusätzlichen A-Details begründen keine neue Pflicht.",
+      "rationaleEn": "Both keep records connect the prescribed sequence, homogeneous endpoint and personal action/feedback log. A specifies quantities and error stops; B covers the unchanged liquid/solid/gas variations without narrowing the goal to one numerical example. Both distinguish simulator evidence from real laboratory skill. Select second for its clear coverage of the full method-neutral wording; A's details impose no additional duty."
+    },
+    {
+      "decisionId": "chemie-current454-d-001-32-original-input-D-keep-informed-synthesis-20261018-v1-decision-004",
+      "goalId": "14f1fe97-0585-5738-845e-9c49173d8afa",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d63b8bac423689f7ad3f4601ef40931e7c8ed6d1bcc5638214f497f957db9163",
+      "pageFingerprint": "sha256:ecd632b3a1e9aaaca60b298b12a4569aafe664de74a06318e10e57cdbe8f5f71",
+      "goalReviewContextFingerprint": "sha256:852539caeeb24287f99abcd6927cb42a6e2a580ac02f7edd83b8159525bf163c",
+      "finalText": {
+        "titleDe": "Leitfähige Kunststoffe anwenden und mit Metallen vergleichen",
+        "titleEn": "Apply conductive plastics and compare them with metals",
+        "descriptionDe": "Die lernende Person kann Einsatzmöglichkeiten elektrisch leitfähiger Kunststoffe beschreiben und Vorteile sowie Nachteile gegenüber metallischen Leitern beurteilen.",
+        "descriptionEn": "The learner can describe applications of electrically conductive plastics and evaluate advantages and disadvantages compared with metallic conductors."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current454-current-edit-native-d-001-20261018-v1-a-codex-current35-a-first-pass.004",
+          "recordDigest": "sha256:b02f0d93fb59a448f6e95a1b73de4b2a7f21c204c17621eafa5ba89b37559fd0"
+        },
+        "second": {
+          "recordId": "chemie-current454-current-edit-native-d-001-20261018-v1-first-pass-b.run-b-20261018T210306Z.g04",
+          "recordDigest": "sha256:5586c3938122af0a0f2c61c3c07b088dbd48c9663b64c4249c9e6a49f409e951"
+        }
+      },
+      "rationaleDe": "A und B stimmen in Widerstands-/Massenrechnung, funktionsbezogener Materialwahl und dem Scheitern beider gealterter Filme überein. A legt die vereinfachte Bildtendenz „Metalle starr“ ausdrücklich als nicht universell offen; B beschreibt dieselbe Begrenzung als typische Vergleichsaspekte. Der vollständige P bindet das Urteil an Geometrie, Kontakte und Alterung. Runde first wird wegen dieser sichtbaren Bild-/Modellgrenze gewählt; es bleibt kein fachlicher Grund für eine Beschreibungsänderung.",
+      "rationaleEn": "A and B agree on resistance/mass calculations, function-specific material selection and failure of both aged films. A explicitly flags the simplified image tendency that metals are rigid as non-universal; B likewise treats image comparisons as typical aspects. The full profile bounds judgments by geometry, contacts and ageing. Select first for its explicit image/model limitation; no unresolved reason to alter the description remains."
+    },
+    {
+      "decisionId": "chemie-current454-d-001-32-original-input-D-keep-informed-synthesis-20261018-v1-decision-005",
+      "goalId": "197bc2c5-835e-59e7-9263-5684e89799cc",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f571d9f3ec12d344df9c5db2a16247390514909b1712351be808dceb3404d587",
+      "pageFingerprint": "sha256:71ce255f6605089c9cc16ac736c2a5c24ff9d20bc223d828b03c80f1d92168e5",
+      "goalReviewContextFingerprint": "sha256:b9002cb2e1f7618412ea6352a44cc97eeba5ae018c6dd9f91cb3d52860e59be8",
+      "finalText": {
+        "titleDe": "Peptidbindungen erklären",
+        "titleEn": "Explain peptide bonds",
+        "descriptionDe": "Die lernende Person kann Kondensationsreaktionen zwischen Aminosäuren formulieren, Peptidbindungen als Verknüpfungsprinzip der Primärstruktur erklären und deren räumlichen Bau sowie Stabilität mit Mesomerie deuten.",
+        "descriptionEn": "The learner can formulate condensation reactions between amino acids, explain peptide bonds as the linkage principle of primary structure, and interpret their spatial structure and stability using resonance."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-current454-current-edit-native-d-001-20261018-v1-a-codex-current35-a-first-pass.005",
+          "recordDigest": "sha256:3b172984f1a0a9ee5593628bc7d6f537e895fe80fb51c720d29384aec87fabdd"
+        },
+        "second": {
+          "recordId": "chemie-current454-current-edit-native-d-001-20261018-v1-first-pass-b.run-b-20261018T210306Z.g05",
+          "recordDigest": "sha256:8bad8afa081541039613823c1cbd8cf8bcbaee4ede7005a35434d09e97ba8d4e"
+        }
+      },
+      "rationaleDe": "Beide Keep-Urteile verbinden formale Kondensation, gerichtete Primärsequenz und lokale Amidmesomerie zu einer Kompetenz. A erläutert die Seitenketten-OH-Erhaltung, B benennt im Transfer zusätzlich die umgekehrte Sequenz und die Grenze zur Gesamtfaltung. Beide schließen spontane wässrige Synthese und globale Starrheit aus. Runde second wird wegen der vollständig ausgesprochenen Sequenz-/Faltungsgrenze ausgewählt.",
+      "rationaleEn": "Both keep records integrate formal condensation, directed primary sequence and local amide resonance. A explains preservation of the side-chain OH; B additionally states the reversed sequence and limit on whole-fold inference in its transfer evidence. Both exclude spontaneous aqueous synthesis and global rigidity. Select second for its explicit sequence/folding boundary."
+    },
+    {
+      "decisionId": "chemie-current454-d-001-32-original-input-D-keep-informed-synthesis-20261018-v1-decision-006",
+      "goalId": "1bdaf7f2-ff3b-455a-a7fb-95a44642762a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:2c0a50fc63f6d45ce572ce72c3fa4a527c88fd2a6b79508fd534560d4779359b",
+      "pageFingerprint": "sha256:95ee27ecee966af9fbafa142036cfb2ae6c01d0ee1a435643c323e9a96a9ad22",
+      "goalReviewContextFingerprint": "sha256:92db85d5435f5308d4443c48521c2ec74411c6b5ea97ec28ff94a7573bed9620",
+      "finalText": {
+        "titleDe": "Massenerhaltung bei Reaktionen erklären",
+        "titleEn": "Explain conservation of mass in reactions",
+        "descriptionDe": "Die lernende Person kann einfache Massenbilanz-Versuche unter Berücksichtigung der mitgewogenen Systemgrenze und der erfassten Stoffe auswerten und das Gesetz der Massenerhaltung bei chemischen Reaktionen erklären.",
+        "descriptionEn": "The learner can evaluate simple mass-balance experiments while accounting for the weighed system boundary and the substances included and explain conservation of mass in chemical reactions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current454-current-edit-native-d-001-20261018-v1-a-codex-current35-a-first-pass.006",
+          "recordDigest": "sha256:6fec0d3e9e755a3e6390c9d74f7d8cdb63ef7de5e50508ff0bf826ace4be4e07"
+        },
+        "second": {
+          "recordId": "chemie-current454-current-edit-native-d-001-20261018-v1-first-pass-b.run-b-20261018T210306Z.g06",
+          "recordDigest": "sha256:0edf5d0bd4d8d3f622f8d70dd66cc8d35e417442c3224ceda51570663b4cb601"
+        }
+      },
+      "rationaleDe": "A und B erklären geschlossene und offene Waagenwerte durch Atomerhaltung und Stoffaustausch; der frische Stahlwollefall erfordert Sauerstoffaufnahme. B komprimiert die Daten, A hält die ausdrücklich identifizierten CO2-/O2-Ströme und die erweiterte Bilanzgrenze fest. Diese unterschiedliche Detailtiefe ändert das gemeinsame Keep nicht. Runde first wird gewählt, weil damit kein unbekannter Gasverlust als nachgewiesene Identität ausgegeben wird.",
+      "rationaleEn": "A and B explain closed/open balance readings through atom conservation and material exchange; the fresh steel-wool case requires oxygen uptake. B compresses the data, while A preserves the explicitly identified CO2/O2 flows and expanded boundary. The detail difference does not change their shared keep judgment. Select first for its explicit reliance on identified material flows."
+    },
+    {
+      "decisionId": "chemie-current454-d-001-32-original-input-D-keep-informed-synthesis-20261018-v1-decision-007",
+      "goalId": "223e33a4-5545-5332-ac4e-7d7a6cbc587c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:1c2eb30897760a5cbd0727d367bb6642b20e7ef416f6688e62d528bc4cd250c6",
+      "pageFingerprint": "sha256:b5463d384fce60848ffc13a3e4d1f1ea420d2f59ddb8729f61cd74a8b557d90d",
+      "goalReviewContextFingerprint": "sha256:a45506bbaa5f023e020cce97c3a6f068b2aac1631ef56a63ee14e0cc1504df60",
+      "finalText": {
+        "titleDe": "Biotreibstoffe nach Rohstoff und Herstellungsweg unterscheiden",
+        "titleEn": "Distinguish biofuels by feedstock and production route",
+        "descriptionDe": "Die lernende Person kann anhand bereitgestellter Stoff- und Prozessdaten Pflanzenöl, Biodiesel und Bioethanol nach Rohstoff, Stoffklasse sowie Gewinnungs- beziehungsweise Herstellungsweg unterscheiden, dabei physikalische Trennung und chemische Umwandlung erklären, die Wege nach einer angegebenen Rohstoff-/Prozesskonvention der ersten oder zweiten Treibstoffgeneration zuordnen, ohne daraus eine automatische Klimaneutralität abzuleiten.",
+        "descriptionEn": "Using supplied substance and process data, the learner can distinguish vegetable oil, biodiesel and bioethanol by feedstock, substance class and extraction or production route, explain physical separation and chemical conversion, assign routes to first or second fuel generations using a stated feedstock/process convention without inferring automatic climate neutrality."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-current454-current-edit-native-d-001-20261018-v1-a-codex-current35-a-first-pass.007",
+          "recordDigest": "sha256:3620eeae8bf725f8cfe39d9229574713a62fe57e58800e944a8a3bb5ba8a6910"
+        },
+        "second": {
+          "recordId": "chemie-current454-current-edit-native-d-001-20261018-v1-first-pass-b.run-b-20261018T210306Z.g07",
+          "recordDigest": "sha256:5f949d77f7d22964a3571f9d89cb8960c634177b0a5757410aeefb53848ddaaa"
+        }
+      },
+      "rationaleDe": "Beide Urteile behalten den zusammenhängenden Rohstoff-/Prozessvergleich und unterscheiden Trennung, Umesterung und Gärung. A führt Kontextmassen und fehlende Lebenszyklusdaten aus; B bündelt dieselben Aussagen um Generationenkonvention, Restholz und die falsche Biodiesel-/Klimawerbung. Keine Runde fordert zusätzliche GK-FT-Details oder Klimaneutralität. Runde second gibt diesen unveränderten Umfang knapp und vollständig wieder.",
+      "rationaleEn": "Both retain the connected feedstock/process comparison and distinguish separation, transesterification and fermentation. A details contextual masses and missing life-cycle data; B expresses the same reasoning through generation conventions, waste wood and false biodiesel/climate claims. Neither adds basic-course FT detail or carbon-neutrality credit. Select second for concise, complete coverage of the unchanged scope."
+    },
+    {
+      "decisionId": "chemie-current454-d-001-32-original-input-D-keep-informed-synthesis-20261018-v1-decision-008",
+      "goalId": "25729c34-33d5-553a-a723-046113a7da47",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:0add63e8e94af77dbb1bb0d14fe9622de510a10e86e59fb707d71ecc0e722356",
+      "pageFingerprint": "sha256:95bb3d14a9602eced6bbb75f91a42e4c8999a1ec40d58493573556b738e09b27",
+      "goalReviewContextFingerprint": "sha256:255c00dfad244345f01684deb979094ea559df0daa231156480ade40360da6ac",
+      "finalText": {
+        "titleDe": "Säure-Base-Puffer erklären, auswählen und bewerten",
+        "titleEn": "Explain, select, and evaluate acid-base buffers",
+        "descriptionDe": "Die lernende Person kann die Wirkung von Säure-Base-Puffern erklären, geeignete Puffersysteme zur Einstellung von pH-Werten wässriger Lösungen auswählen und Einsatzmöglichkeiten in Medizin, Umwelt und Technik quellenkritisch bewerten.",
+        "descriptionEn": "The learner can explain the effect of acid-base buffers, select suitable buffer systems for setting pH values of aqueous solutions, and evaluate applications in medicine, environment, and technology using source critique."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-current454-current-edit-native-d-001-20261018-v1-a-codex-current35-a-first-pass.008",
+          "recordDigest": "sha256:eb9f6f6191743b6265d5dba17f3f145fd10787621d43d5739059c636296f4ac2"
+        },
+        "second": {
+          "recordId": "chemie-current454-current-edit-native-d-001-20261018-v1-first-pass-b.run-b-20261018T210306Z.g08",
+          "recordDigest": "sha256:b7eecdc4e5fb4bf9ff8740907fb1cc20dadda2f3157b186eaf48f019d25ed0b1"
+        }
+      },
+      "rationaleDe": "A und B stimmen über endliche Pufferreserve, korrespondierende Partner und die unzureichende pKa-Passung allein überein. A nennt den neuen 100-mL-Umweltfall, B fasst Calciumfällung, Analytverlust und die nicht zulässige Übertragung auf Medizin/offene Gewässer zusammen. Das sind unterschiedliche Ausschnitte derselben integrierten Auswahl- und Quellenbewertung. Runde second wird wegen der klaren gemeinsamen Matrix-/Reichweitengrenze gewählt.",
+      "rationaleEn": "A and B agree on finite buffer reserves, conjugate partners and the insufficiency of pKa matching alone. A specifies the fresh100mL environmental case; B combines calcium precipitation, analyte loss and limits on extrapolation to medicine/open water. These are different emphases within the same integrated selection and source appraisal. Select second for its clear combined matrix/scope boundary."
+    },
+    {
+      "decisionId": "chemie-current454-d-001-32-original-input-D-keep-informed-synthesis-20261018-v1-decision-009",
+      "goalId": "28bb9d15-f865-5843-a035-6066580fea64",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3e5559e1a403aae6be59a0b4e4b5b63433d482c9904f0c4c9ac3a9797c92cd97",
+      "pageFingerprint": "sha256:9bb3fd09c552fe0d4bba809a2fa776be7f6bdf0ed006488fa191c81a688fe024",
+      "goalReviewContextFingerprint": "sha256:4559dcd4682562011b0ce5818c6f6564c890aa5f19108c08f7d7777dd297c96e",
+      "finalText": {
+        "titleDe": "Arrhenius-Definitionen wiederholen",
+        "titleEn": "Review Arrhenius definitions",
+        "descriptionDe": "Die lernende Person kann typische anorganische Säuren und Basen mit Namen und Formeln angeben und ihre Wirkung in Wasser nach dem Arrhenius-Konzept erklären.",
+        "descriptionEn": "The learner can state the names and formulas of typical inorganic acids and bases and explain their behaviour in water using the Arrhenius concept."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current454-current-edit-native-d-001-20261018-v1-a-codex-current35-a-first-pass.009",
+          "recordDigest": "sha256:8f92fcfe8414159a789faf286c57db838f6901fa3c44752d82de016e42cdedca"
+        },
+        "second": {
+          "recordId": "chemie-current454-current-edit-native-d-001-20261018-v1-first-pass-b.run-b-20261018T210306Z.g09",
+          "recordDigest": "sha256:1c4e569f4450335c130af421e6cd297faf34669dc398312739235262382d9276"
+        }
+      },
+      "rationaleDe": "Beide Keep-Gründe verbinden typische Namen/Formeln mit wässriger H3O+/OH−-Wirkung und begrenzten Dissoziationsannahmen. B hebt den Hydroxidwechsel und die unbekannte pH4-Probe hervor; A nennt zusätzlich die unzulässige Übertragung des wässrigen pH auf trockenes HCl. Das ist eine ergänzende Modellgrenze, keine zusätzliche Kompetenz. Runde first wird wegen dieser präzisen Wasser-/Stoffgrenze übernommen.",
+      "rationaleEn": "Both keep rationales connect typical names/formulas to aqueous H3O+/OH− effects and bounded dissociation assumptions. B emphasizes the hydroxide change and unknown pH4 sample; A additionally excludes transferring aqueous pH to dry HCl. This complements the same model boundary without adding a competence. Select first for the precise water/substance distinction."
+    },
+    {
+      "decisionId": "chemie-current454-d-001-32-original-input-D-keep-informed-synthesis-20261018-v1-decision-010",
+      "goalId": "2fac2f0e-bccc-5511-b9fb-cc1bc3aeed00",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:252b07f9c1baf25eaa4c5a9d7828786a20cdf33552e7857da08f420fc0f8a4e4",
+      "pageFingerprint": "sha256:bdc7c0466b4fc0c1c5492892262e9baaf002e860eca5c2afde605f8a673c300e",
+      "goalReviewContextFingerprint": "sha256:deb797f3d2b6641da144048b3f50a5ca287c909bb1d7132db9d03e96ef8ed1c6",
+      "finalText": {
+        "titleDe": "Magensäurebildung und Protonenpumpen-Hemmer erklären",
+        "titleEn": "Explain gastric acid formation and proton pump inhibitors",
+        "descriptionDe": "Die lernende Person kann die Bildung von Magensäure chemisch beschreiben und daran die Wirkweise von Protonenpumpen-Hemmern erklären, indem sie einen bereitgestellten Mechanismusbeleg auswertet, im vorgegebenen idealen Stoffmengen-, Konzentrations- und pH-Modell Protonennachlieferung von Neutralisation unterscheidet und die Grenzen gegenüber klinischen Aussagen benennt.",
+        "descriptionEn": "The learner can chemically describe gastric acid formation and use it to explain proton pump inhibitors by interpreting supplied mechanism evidence, distinguishing proton influx from neutralization in a given ideal amount, concentration and pH model, and stating the limits on clinical inference."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current454-current-edit-native-d-001-20261018-v1-a-codex-current35-a-first-pass.010",
+          "recordDigest": "sha256:81373743bf702ad3baf7f49889ee6fdcc8402227d1281868ca5ed6a68e1ad045"
+        },
+        "second": {
+          "recordId": "chemie-current454-current-edit-native-d-001-20261018-v1-first-pass-b.run-b-20261018T210306Z.g10",
+          "recordDigest": "sha256:c9abfc51d091595c7d9bc6cc83b3e661182dc4345456b4db53c2fe369e12897c"
+        }
+      },
+      "rationaleDe": "A und B stimmen zu Protonenquelle, getrenntem Transport, Pumpenhemmung statt Neutralisation und beiden Modell-pH-Paaren überein. B komprimiert die Mechanismuskette; A benennt die anfängliche Säuremenge und begrenzt die NCI-Quelle ausdrücklich auf Zielprotein/Transport statt Modellparameter oder klinischen Wirkeintritt. Runde first wird wegen dieser Daten-/Quellenreichweite gewählt. Die Rechnung bleibt Bestandteil desselben Mechanismusziels.",
+      "rationaleEn": "A and B agree on proton source, separate transport, pump inhibition rather than neutralization and both model pH pairs. B compresses the mechanism chain; A states initial acid and explicitly limits the NCI source to target/transport rather than model parameters or clinical onset. Select first for this data/source boundary. Calculation remains integrated into the same mechanism competence."
+    },
+    {
+      "decisionId": "chemie-current454-d-001-32-original-input-D-keep-informed-synthesis-20261018-v1-decision-011",
+      "goalId": "31cce65a-480a-5111-ab3c-da2feb3d4065",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:67367e0117facc9bb874bdd31008157bd1a2ef4c73caf360027fdf7f7c950b43",
+      "pageFingerprint": "sha256:dec65a46445701e9a0c7465d92a02a9b8a105ce1993350206a76d147bc6e73e6",
+      "goalReviewContextFingerprint": "sha256:3b888b8273ce35fb6ab987886aa7650bed50199a8b6989bd25fc7630a788d9e7",
+      "finalText": {
+        "titleDe": "Treibhauseffekt über die Strahlungsbilanz erklären",
+        "titleEn": "Explain the greenhouse effect through radiation balance",
+        "descriptionDe": "Die lernende Person kann den natürlichen und anthropogenen Treibhauseffekt am Energiehaushalt der Erde durch kurzwellige Einstrahlung sowie langwellige Absorption und Emission erklären und aus angegebenen Energieflüssen die anfängliche Energiebilanz und deren physikalische Bedeutung unter den jeweiligen Bedingungen herleiten.",
+        "descriptionEn": "The learner can explain natural and anthropogenic greenhouse effects through Earth’s energy budget, shortwave input and longwave absorption and emission, and derive the initial energy balance and its physical meaning from supplied energy fluxes under the stated conditions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-current454-current-edit-native-d-001-20261018-v1-a-codex-current35-a-first-pass.011",
+          "recordDigest": "sha256:9959c88d85aaecffd7dd6fe4a98ee15de54548bfdd1f2e7e09cadcb4482bb202"
+        },
+        "second": {
+          "recordId": "chemie-current454-current-edit-native-d-001-20261018-v1-first-pass-b.run-b-20261018T210306Z.g11",
+          "recordDigest": "sha256:37ed5a9372561515c9b722b19485d4d2676d49e44e12446d0066bf086e5e67f2"
+        }
+      },
+      "rationaleDe": "Beide Urteile behalten den physikalischen Bilanzoperator: 0, anfänglich +2 und nach erhöhter Reflexion −1 sind unter den gesetzten Flüssen konsistent. A führt CO2-Bestandszufluss und fehlende lokale Temperaturprognose aus; B bündelt den neuen Albedofall mit derselben Grenze. Beide trennen das nachfolgende Minderungsurteil. Runde second wird gewählt, weil ihre Evidenz den vollständigen Bilanztransfer ohne zusätzliche gesellschaftliche Abschlusspflicht ausdrückt.",
+      "rationaleEn": "Both retain the physical energy-balance competence:0, initial+2 and−1 after increased reflection are consistent under the stipulated flows. A details CO2 stock input and limits on local temperature prediction; B combines the fresh albedo case with the same limit. Both separate the following mitigation judgment. Select second for explicit balance transfer without an additional societal assessment duty."
+    },
+    {
+      "decisionId": "chemie-current454-d-001-32-original-input-D-keep-informed-synthesis-20261018-v1-decision-012",
+      "goalId": "3ec31fe1-e01b-5edd-bd9a-936191d67639",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:db73276e663e0b39427ff56b33ab08e8c27141c9e1b0a159456ade76dfe19f53",
+      "pageFingerprint": "sha256:397122f773db6c01a2ac486d1dac85d4ba8b8f6ffc56b68f5c579d096e890c90",
+      "goalReviewContextFingerprint": "sha256:b5967ecea2fe11ad0087c7071523c2dbe7901792785b5cfa48d7ba1c46200739",
+      "finalText": {
+        "titleDe": "Wirkungsgrade vergleichen",
+        "titleEn": "Compare efficiencies",
+        "descriptionDe": "Die lernende Person kann Wirkungsgrade verschiedener Energiewandler als Verhältnis nutzbarer zu zugeführter Energie berechnen und unter offengelegten Nutzfunktionen, Energiebezugsgrößen und Systemgrenzen vergleichen.",
+        "descriptionEn": "The learner can calculate efficiencies of different energy converters as the ratio of useful energy to supplied energy and compare them with explicitly stated useful functions, energy reference bases and system boundaries."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-current454-current-edit-native-d-001-20261018-v1-a-codex-current35-a-first-pass.012",
+          "recordDigest": "sha256:28f4954549ba5f0994c6e815d4b74754f97dd2d26c00f0f31992af7a2429fe40"
+        },
+        "second": {
+          "recordId": "chemie-current454-current-edit-native-d-001-20261018-v1-first-pass-b.run-b-20261018T210306Z.g12",
+          "recordDigest": "sha256:c3e2716811d3090e195025d51089e619d3280047a0b3e78869a7617758b08370"
+        }
+      },
+      "rationaleDe": "A und B bestätigen dieselben Wirkungsgradzahlen, Fehlergrenzen und Grenzen der Nutzfunktion. A nennt mehrere einzelne Kennwerte, B formuliert den gemeinsamen Datenbedarf als Nutzleistungsnormierung, Systemgrenze und Primärenergiekonvention. Der scheinbare Umfangsunterschied ist eine Zusammenfassung derselben Fälle, keine abweichende Bewertung. Runde second trägt den allgemeinen Beschreibungsoperator einschließlich frischem Bedarfs-/Stromwechsel am klarsten.",
+      "rationaleEn": "A and B confirm the same efficiencies, uncertainty bounds and useful-service limitations. A lists individual metrics; B expresses their shared data requirements as service normalization, system boundary and primary-energy convention. This is a difference of summarization, not judgment. Select second for clear coverage of the general operator and fresh demand/electricity change."
+    },
+    {
+      "decisionId": "chemie-current454-d-001-32-original-input-D-keep-informed-synthesis-20261018-v1-decision-013",
+      "goalId": "707998c1-872d-582d-a2d6-14e7d967cbdb",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e9e2a83a3c62ecc8b946f688ffd7f623702d1522ef8999b4f884fc660f65e1e2",
+      "pageFingerprint": "sha256:f1be9effc52502dbf4b58b8e5231d129cca38c1b70af0e1e55a24bc2478539ca",
+      "goalReviewContextFingerprint": "sha256:b8138f4da53edadea680096fc89040d6169b4dcea4384be638da46838fe76ecd",
+      "finalText": {
+        "titleDe": "Organische Moleküle mit Molecular Modelling darstellen",
+        "titleEn": "Represent organic molecules with molecular modelling",
+        "descriptionDe": "Die lernende Person kann einfache organische Moleküle durch computerbasiertes Molecular Modelling darstellen.",
+        "descriptionEn": "The learner can represent simple organic molecules using computer-based molecular modelling."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current454-current-edit-native-d-001-20261018-v1-a-codex-current35-a-first-pass.014",
+          "recordDigest": "sha256:ea0c2912722a5190086c2a3875f7d751647a719bfd10552b6046e3ae797c2372"
+        },
+        "second": {
+          "recordId": "chemie-current454-current-edit-native-d-001-20261018-v1-first-pass-b.run-b-20261018T210306Z.g14",
+          "recordDigest": "sha256:1ec70dcb5f633e5a76ca51b627183e0ff48e6c3acdb811e540f0d928a843f4bc"
+        }
+      },
+      "rationaleDe": "Beide Keep-Urteile verlangen eigene digitale Bearbeitung, korrekte Konstitution und nachvollziehbare Ansichten/Dateien; ein fertiger Screenshot oder eine Geometrieausgabe ersetzt weder Handlung noch Messung. B fasst die Strukturwechsel zusammen, A nennt zusätzlich die Abhängigkeit vom tatsächlich verfügbaren Werkzeug. Runde first wird wegen dieses ehrlichen Ausführungs- und Modellvorbehalts gewählt; der Wortlaut bleibt anbieterneutral.",
+      "rationaleEn": "Both keep records require personal digital editing, correct connectivity and traceable views/files; a ready-made screenshot or geometry output substitutes for neither action nor measurement. B summarizes structural changes, while A also states dependence on an actually available tool. Select first for this honest execution/model limitation; the wording remains vendor-neutral."
+    },
+    {
+      "decisionId": "chemie-current454-d-001-32-original-input-D-keep-informed-synthesis-20261018-v1-decision-014",
+      "goalId": "858d56e0-ab8f-51a4-b07e-7d9d94cab8e2",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e2abfd07efd9cb4f91c52b77916bd728f0d25c6117212ec14a7af8b988cf685f",
+      "pageFingerprint": "sha256:ede1e9c4ba27c83b6af0dab9c3e036620660ce3036fea7f28d652c11114233c4",
+      "goalReviewContextFingerprint": "sha256:616d55562f314fc80c4d22b245b3e9bab97a280f46fb1b87b3e019fc03d7e287",
+      "finalText": {
+        "titleDe": "Oxidierbarkeit von Alkanolen vergleichen",
+        "titleEn": "Compare oxidizability of alkanols",
+        "descriptionDe": "Die lernende Person kann primäre, sekundäre und tertiäre Alkanole hinsichtlich ihrer Oxidierbarkeit unter angegebenen Reaktionsbedingungen anhand der Struktur am OH-tragenden Kohlenstoffatom begründet vergleichen.",
+        "descriptionEn": "The learner can compare the oxidizability of primary, secondary and tertiary alkanols under stated reaction conditions and justify the comparison using the structure at the OH-bearing carbon atom."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current454-current-edit-native-d-001-20261018-v1-a-codex-current35-a-first-pass.015",
+          "recordDigest": "sha256:9806ab143d92d048ef9780443dc15b4327b2020b719fb0bbabd7bb1994aa0c9d"
+        },
+        "second": {
+          "recordId": "chemie-current454-current-edit-native-d-001-20261018-v1-first-pass-b.run-b-20261018T210306Z.g15",
+          "recordDigest": "sha256:93971883d351b24eae748e9bf9dacb4538ff17bd9aa3c034cb2e64a64ca57ae7"
+        }
+      },
+      "rationaleDe": "A und B stimmen über das notwendige H am OH-tragenden C, milde Bedingungen und den Transfer zu verzweigten Isomeren überein. A benennt zusätzlich ausdrücklich, dass daraus keine Geschwindigkeitsrangfolge folgt; B konzentriert sich auf lokale Struktur statt bloße Verzweigung. Diese Aussagen sind vereinbar. Runde first wird wegen der präzisen Bedingungs-/Geschwindigkeitsgrenze übernommen.",
+      "rationaleEn": "A and B agree on the needed hydrogen at the OH-bearing carbon, mild conditions and fresh branched isomers. A additionally excludes inferring a rate ranking; B emphasizes local structure rather than branching alone. These statements are compatible. Select first for its explicit condition/rate boundary."
+    },
+    {
+      "decisionId": "chemie-current454-d-001-32-original-input-D-keep-informed-synthesis-20261018-v1-decision-015",
+      "goalId": "8e6b5d11-8c1b-5220-af20-549a870dbd8c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:61e4061ad6ddd0293d93b3fb190203896ad57c060cac0d685cc043d18430bed3",
+      "pageFingerprint": "sha256:99cda2a0f4d5bb958b77036f25c88be8de42f14637568cd5be28e8624e4dbc90",
+      "goalReviewContextFingerprint": "sha256:f06c75def56e2b430c2b54ab16bbda599a58bb1837bb5c9eb8acb0b47db1bda9",
+      "finalText": {
+        "titleDe": "Klimafolgen und Minderungsentscheidungen begründen",
+        "titleEn": "Justify climate-impact and mitigation decisions",
+        "descriptionDe": "Die lernende Person kann in einem materialgestützten Fall eine Minderungsentscheidung anhand offengelegter Wirksamkeits-, Zeit-, Umsetzungs- und Verteilungskriterien begründen und kommunizieren, indem sie den fossilen CO₂-Zufluss über die bekannte Strahlungswirkung mit Klimafolgen verknüpft und die Bedingungen und Aussagegrenzen der bereitgestellten Angaben berücksichtigt.",
+        "descriptionEn": "In a material-based case, the learner can justify and communicate a mitigation decision using explicit effectiveness, timing, feasibility and distribution criteria, linking fossil CO₂ input through the known radiative mechanism to climate impacts and respecting the conditions and inference limits of the supplied information."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-current454-current-edit-native-d-001-20261018-v1-a-codex-current35-a-first-pass.016",
+          "recordDigest": "sha256:475d52c1b7e65f9338feee9d9bf3907a02593f99b4dcceaaca7a26767c92e7dc"
+        },
+        "second": {
+          "recordId": "chemie-current454-current-edit-native-d-001-20261018-v1-first-pass-b.run-b-20261018T210306Z.g16",
+          "recordDigest": "sha256:f860ae271fee8538f608bba6ff98f0099d6e97e31f9911b78bb5a871d89b6e37"
+        }
+      },
+      "rationaleDe": "Beide Keep-Urteile fordern ein begründetes A/B-Urteil bei gleicher Wärmefunktion und offengelegte Wirksamkeits-, Zeit-, Umsetzungs- und Teilhabekriterien. A beschreibt die vorausgesetzte Wirkungskette ausführlicher; B konzentriert den Transfer auf gleichzeitig besseren Zugang und geringere Vermeidung. Das ändert die Gewichtung, nicht den vorausgesetzten physikalischen Operator. Runde second wird für diesen eigenständigen Entscheidungstransfer gewählt; ein fester Sieger wird nicht eingeführt.",
+      "rationaleEn": "Both keep records require a reasoned A/B judgment at equal thermal service with explicit effectiveness, timing, feasibility and access criteria. A details the prerequisite causal chain; B concentrates transfer on improved access together with reduced avoidance. This changes weighting, not the prerequisite physical competence. Select second for that independent decision transfer without prescribing a winner."
+    },
+    {
+      "decisionId": "chemie-current454-d-001-32-original-input-D-keep-informed-synthesis-20261018-v1-decision-016",
+      "goalId": "a3788e40-b540-5bed-be37-b33053528422",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:29d60ae0d0c6dd4c0e9deaa409a5d7d7322dcf90d49732ab132c3bc098c628d9",
+      "pageFingerprint": "sha256:8f962626d73d05488b313696ea7c3483fba5496b796b95cfeadc59b40754c187",
+      "goalReviewContextFingerprint": "sha256:9c1a80c178937612af98e66b73bdf61caac1585eb64c821fc064af90905cac9d",
+      "finalText": {
+        "titleDe": "Carbonsäurestrukturen und homologe Reihen darstellen",
+        "titleEn": "Represent carboxylic-acid structures and homologous series",
+        "descriptionDe": "Die lernende Person kann die Carboxygruppe in Struktur- und Skelettformeln erkennen und Carbonsäuren über ihre Strukturformeln zu homologen Reihen ordnen und darstellen.",
+        "descriptionEn": "The learner can recognize the carboxyl group in structural and skeletal formulas and use structural formulas to classify and represent carboxylic acids in homologous series."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-current454-current-edit-native-d-001-20261018-v1-a-codex-current35-a-first-pass.017",
+          "recordDigest": "sha256:2a4e486135920cda20a8793ba995008d5d1ebcd8458d8346ce90031644d67a88"
+        },
+        "second": {
+          "recordId": "chemie-current454-current-edit-native-d-001-20261018-v1-first-pass-b.run-b-20261018T210306Z.g17",
+          "recordDigest": "sha256:59c6e3d4636b9b6276ad4ccbcc48b01a460f787d76c245a294fff0a5eaf7c2f8"
+        }
+      },
+      "rationaleDe": "A und B bestätigen COOH, CH2-Abstände der homologen Reihe und den tatsächlichen Butansäure-/Ethylethanoat-Skeletttransfer trotz gleicher Summenformel. A beschreibt die einzelnen Anfangsglieder und die Nachweisgrafik, B grenzt den gesonderten Säurebeobachtungsoperator ausdrücklich ab. Es besteht kein Struktur- oder Umfangsdissens. Runde second wird wegen der klaren Begrenzung auf Struktur und Darstellungswechsel gewählt.",
+      "rationaleEn": "A and B confirm COOH, CH2 increments and the actual butanoic-acid/ethyl-ethanoate skeleton transfer despite equal molecular formula. A details initial members and the observation graphic; B explicitly separates the acid-observation competence. There is no structural or scope disagreement. Select second for clear focus on structure and representation change."
+    },
+    {
+      "decisionId": "chemie-current454-d-001-32-original-input-D-keep-informed-synthesis-20261018-v1-decision-017",
+      "goalId": "abfa609d-9764-5bd8-999c-1d10a7eeac78",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:1f136eb60180bc36fc14415f5ed688e4033d94eaa2d73939ee85282f3f1991c5",
+      "pageFingerprint": "sha256:332c68f875714fd3d98c371e9fa9e275aa393df3ff26439bea6a656f9336567e",
+      "goalReviewContextFingerprint": "sha256:1f6f361a63f239e8cd5a04bf024706a0adecd891a159f9f0fbd9a4cf57e7f28e",
+      "finalText": {
+        "titleDe": "BTL-Kraftstoffe über Fischer–Tropsch erklären",
+        "titleEn": "Explain BTL fuels through Fischer–Tropsch",
+        "descriptionDe": "Die lernende Person kann die Herstellung von BTL-Treibstoff aus Biomasse über Vergasung, Synthesegasreinigung/-einstellung, Fischer–Tropsch-Synthese und Gemischaufarbeitung erklären, eine angegebene ideale Synthesebilanz prüfen und den Weg von Pflanzenöl, Biodiesel und anderen Rohstoff-/Generationskontexten sowie pauschalen CO2-Neutralitätsbehauptungen abgrenzen.",
+        "descriptionEn": "The learner can explain BTL manufacture from biomass through gasification, syngas cleanup/conditioning, Fischer–Tropsch synthesis and mixture upgrading, check a specified ideal balance, and distinguish this route from plant oil, biodiesel and other feedstock/generation contexts and blanket carbon-neutrality claims."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current454-current-edit-native-d-001-20261018-v1-a-codex-current35-a-first-pass.018",
+          "recordDigest": "sha256:0657147c79119cf2bb8b62fb8a0ae01222ab94b40abf4f8164625a67e22b0a2d"
+        },
+        "second": {
+          "recordId": "chemie-current454-current-edit-native-d-001-20261018-v1-first-pass-b.run-b-20261018T210306Z.g18",
+          "recordDigest": "sha256:0d88c3b06a90e7d4302ee78dfc98ab7202dfd68812aa29fa1111c91a8e0dffff"
+        }
+      },
+      "rationaleDe": "Beide Urteile bestätigen Prozessfunktionen, C8-Bilanz, Gemischrealität und den Wechsel von Biomasse/CO-Limitierung zu Kohle/H2-Limitierung. B fasst den Transfer als Namens-/Limitierungsprüfung, A hält die Mengen und Grenzen von Selektivität, FAME und fehlender LCA explizit fest. Runde first wird wegen dieser nachvollziehbaren Bilanz- und Behauptungsgrenzen gewählt; keine reale Anlage oder zusätzliche Einzelroutine wird behauptet.",
+      "rationaleEn": "Both confirm process functions, C8 balance, mixture reality and the change from biomass/CO limitation to coal/H2 limitation. B summarizes naming/limiting-reagent checks; A explicitly preserves amounts and limits on selectivity, FAME and absent LCA. Select first for traceable balance and claim boundaries without claiming real plant operation or an added separate routine."
+    },
+    {
+      "decisionId": "chemie-current454-d-001-32-original-input-D-keep-informed-synthesis-20261018-v1-decision-018",
+      "goalId": "b732c780-beb8-55f3-8503-edd6b8677a3a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:30945a6d116a6a0b418a89e3acaeef4f452d13bea452deed38348834987b323a",
+      "pageFingerprint": "sha256:863a313829617618f20153cca3f72e6a8df2bf48700622ff2c420a4e585a62de",
+      "goalReviewContextFingerprint": "sha256:160c4ca8cafe8c8ef0535960e4a41ac6b07328dbc3074503484404ae3ab673dd",
+      "finalText": {
+        "titleDe": "Massenbilanzen physikalischer Trennungen prüfen",
+        "titleEn": "Check mass accounting for physical separations",
+        "descriptionDe": "Die lernende Person kann bei einer physikalischen Stofftrennung aus vollständig bereitgestellten Massenangaben die Gesamtmassenbilanz für eine ausdrücklich benannte Erfassungsgrenze prüfen, scheinbare Fehlmassen bei nachgewiesenen Stoffabgängen erklären und die gewonnene Stoffmasse von einem ohne Anfangsgehalt nicht bestimmbaren Rückgewinnungsgrad unterscheiden.",
+        "descriptionEn": "For a physical separation, the learner can check total-mass accounting from fully supplied masses for an explicitly stated accounting boundary, explain apparent missing mass through identified material outputs, and distinguish recovered substance mass from a recovery fraction that cannot be determined without its initial content."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current454-current-edit-native-d-001-20261018-v1-a-codex-current35-a-first-pass.019",
+          "recordDigest": "sha256:bc0d739760530d9ade88574bae5a3966fcbf918976c8ce99a420e5bd3bd84649"
+        },
+        "second": {
+          "recordId": "chemie-current454-current-edit-native-d-001-20261018-v1-first-pass-b.run-b-20261018T210306Z.g19",
+          "recordDigest": "sha256:7f3e8d659e05a9ebe2af40c0474ff495fbe0986a9a3df8daf5f7713c185b1720"
+        }
+      },
+      "rationaleDe": "A und B unterscheiden vollständige Gesamtmassenbilanz von Komponentenrückgewinnung und erklären die 98-kg-Erfassung durch nachgewiesene 2 kg außerhalb der Grenze. B komprimiert das Ergebnis, A benennt zusätzlich den unbekannten ursprünglichen Ölbestand und verwirft die daraus unzulässige Vollrückgewinnung. Runde first hält diesen unterschiedlichen Datenbedarf besonders eindeutig fest. Kein Konflikt zum unveränderten Trennoperator bleibt.",
+      "rationaleEn": "A and B distinguish closing total mass from component recovery and explain the98kg record through identified2kg outside the boundary. B compresses the finding; A also states the unknown initial oil inventory and rejects unsupported full recovery. Select first for explicit distinction of data requirements. No unresolved conflict with the unchanged separation competence remains."
+    },
+    {
+      "decisionId": "chemie-current454-d-001-32-original-input-D-keep-informed-synthesis-20261018-v1-decision-019",
+      "goalId": "b759d50d-0e82-5b10-89a2-fe5271106e50",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ba2c0bf28adf64d8b55b6e81294c95b83a23c82b4a5ba5aab87a1512556ee613",
+      "pageFingerprint": "sha256:5dbe75dac318c490f02b2a7a74fe97aa5690e6d71a586921087ebde07c62fbae",
+      "goalReviewContextFingerprint": "sha256:cee163a2030d0067ac5d745b4325c1514e68ddd00922836e210617734803fb3d",
+      "finalText": {
+        "titleDe": "Brennstoffzellen verstehen",
+        "titleEn": "Understand fuel cells",
+        "descriptionDe": "Die lernende Person kann die Vorgänge an den Elektroden einer Wasserstoff-Sauerstoff-Brennstoffzelle beschreiben, die ablaufenden Reaktionen geeignet darstellen und ihren Einsatz als Energiewandler mit Wasserstoff als gespeichertem Energieträger erläutern.",
+        "descriptionEn": "The learner can describe the electrode processes in a hydrogen–oxygen fuel cell, represent the chemical reactions appropriately and explain its use as an energy converter with hydrogen as the stored energy carrier."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-current454-current-edit-native-d-001-20261018-v1-a-codex-current35-a-first-pass.020",
+          "recordDigest": "sha256:03fafdcdc8d223aa419f805856166bda042028de228ef21b99e8b6d44625448e"
+        },
+        "second": {
+          "recordId": "chemie-current454-current-edit-native-d-001-20261018-v1-first-pass-b.run-b-20261018T210306Z.g20",
+          "recordDigest": "sha256:a738b096d94ebdf73518b3e02477152fce6a59a5a27a0702f80790c923593759"
+        }
+      },
+      "rationaleDe": "Beide Keep-Gründe bestätigen atom-/ladungserhaltene Elektrodenreaktionen, äußeren Elektronen- und inneren Protonenweg sowie Tank/Wandler-Trennung. A nennt Bauteile und Reaktionsende nach H2-Verbrauch ausführlicher; B bündelt die unabhängige Herleitung bei vertauschter Lage und blockierter Membran. Das sind kompatible Ergänzungen desselben Zellmodells. Runde second wird wegen des klaren frischen Störungs-/Richtungstransfers gewählt.",
+      "rationaleEn": "Both keep rationales confirm atom/charge-conserving electrode reactions, external electron/internal proton routes and storage/converter distinction. A details components and termination after hydrogen depletion; B combines independent derivation with reversed position and blocked membrane. These are compatible aspects of the same cell model. Select second for clear fresh disturbance/direction transfer."
+    }
+  ],
+  "deferredGoals": [
+    {
+      "goalId": "5851b53a-162b-5c17-9269-510ee54ad846",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "rationaleDe": "A und B blockieren übereinstimmend den Valenzfehler im gebundenen Ethanolbild. Der Bildnachfolger und seine neue Bindung werden gesondert geprüft; die passende D/P-Beurteilung ersetzt diese Prüfung nicht.",
+      "rationaleEn": "A and B both block the valence error in the bound ethanol image. Its image successor and new binding require separate review; the suitable description/profile judgment cannot replace it."
+    }
+  ],
+  "manifestFingerprint": "sha256:44d673e2593eb3ef6cbf0b5cf634ba9a86a47c2b5f8ea5a48eb9bd16dc5be844"
+}

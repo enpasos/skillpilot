@@ -1,0 +1,221 @@
+{
+  "artifactType": "whole-bilingual-author-candidate-material",
+  "goalId": "39c85aa0-b01f-56ec-a148-b8009bf650f5",
+  "createdAt": "2026-10-18T23:15:07.696058+00:00",
+  "license": "CC-BY-4.0",
+  "status": "AUTHOR candidate, pending independent component review",
+  "dataStatus": {
+    "de": "Alle Zahlen sind eigens konstruierte, in sich konsistente Lehrmodelle, keine Messwerte oder Literaturausbeuten. Strukturen sind explizit; die mathematischen Zweizustandsmodelle vereinfachen reale Nebenreaktionen, Protonierung und Wasserabhängigkeit.",
+    "en": "All numbers are purpose-built internally consistent teaching models, not measurements or literature yields. Structures are explicit; the mathematical two-state models simplify real side reactions, protonation and water dependence."
+  },
+  "common": {
+    "conditions": {
+      "de": "Vergleichsbasis beider Tabellen:jeweils getrennte ideale verdünnte Lösung bei25.0°C, festgehaltenem pH2.00 und derselben Wasseraktivität(aW=1 im Modell), gleichem Lösungsmittel und gleicher Ionenstärke. Anfangs insgesamt10.00mmol/L Hydroxycarbonsäure, kein Lacton. Stoffmenge der jeweiligen Säure+ihres Lactons bleibt konstant; keine Oligomere oder Nebenprodukte. Wasser ist Reservoir, im Reaktionsschema entsteht formal1H2O. Keine reale Synthese wird verlangt.",
+      "en": "Comparison basis of both tables: separate ideal dilute solutions at25.0°C, fixed pH2.00 and the same water activity(aW=1 in the model), solvent and ionic strength. Initially10.00mmol/L total hydroxycarboxylic acid and no lactone. The amount of each acid plus its own lactone remains constant; no oligomers or side products. Water is a reservoir; formally1H2O forms in the reaction scheme. No actual synthesis is requested."
+    },
+    "meaningOfStability": {
+      "de": "Lactonanteil f=[L]/([H]+[L]); bedingtes Kapp=[L]/[H]=f/(1−f) bei festgehaltenem Wasser/pH. Das vergleicht innerhalb jedes Säure/Lacton-Paares die unter diesen Bedingungen bevorzugte Seite. Größeres Kapp bedeutet stärkere Begünstigung der Ringform relativ zur jeweils eigenen offenen Säure; es ist weder ein absoluter Vergleich der Energien unterschiedlicher Moleküle noch ein isoliertes Maß für Ringspannung. Bildungstendenz aus Gleichgewicht und Anfangsgeschwindigkeit als kinetische Größe getrennt ausweisen.",
+      "en": "Lactone fraction f=[L]/([H]+[L]); conditional Kapp=[L]/[H]=f/(1−f) at fixed water/pH. This compares the favoured side within each acid/lactone pair under these conditions. Larger Kapp means stronger preference for the ring form relative to its own open acid; it is neither an absolute energy comparison of different molecules nor an isolated measure of ring strain. Report equilibrium formation tendency separately from initial rate as a kinetic quantity."
+    }
+  },
+  "cases": [
+    {
+      "caseId": "three-hydroxy-acids-ring-count",
+      "learnerTask": {
+        "de": "Zeichne für jede Zeile die intramolekulare Esterbildung einschließlich Wasser, markiere beide reagierenden Gruppen und zähle sämtliche Ringatome. Nutze die unter identischen Modellbedingungen gegebenen Gleichgewichtsanteile, um die bedingte Ringbildung zu vergleichen. Prüfe die Aussage:„Fünfringe sind deshalb immer am stabilsten.“",
+        "en": "Draw intramolecular ester formation including water for each row, mark both reacting groups and count every ring atom. Use the equilibrium fractions under identical model conditions to compare conditional ring formation. Assess:“Five-membered rings are therefore always the most stable.”"
+      },
+      "table": {
+        "columns": {
+          "acid": {
+            "de": "Ausgangssäure",
+            "en": "Starting acid"
+          },
+          "lactoneFractionPercent": {
+            "de": "Lactonanteil im Gleichgewicht/%",
+            "en": "Equilibrium lactone fraction/%"
+          }
+        },
+        "rows": [
+          {
+            "id": "H3",
+            "acid": "HO–CH2–CH2–C(=O)–OH",
+            "acidFormula": "C3H6O3",
+            "lactoneFractionPercent": 5
+          },
+          {
+            "id": "H4",
+            "acid": "HO–CH2–CH2–CH2–C(=O)–OH",
+            "acidFormula": "C4H8O3",
+            "lactoneFractionPercent": 70
+          },
+          {
+            "id": "H5",
+            "acid": "HO–CH2–CH2–CH2–CH2–C(=O)–OH",
+            "acidFormula": "C5H10O3",
+            "lactoneFractionPercent": 60
+          }
+        ]
+      },
+      "expectedProducts": [
+        {
+          "id": "H3",
+          "productSMILES": "O=C1CCO1",
+          "lactoneFormula": "C3H4O2",
+          "ringAtoms": 4,
+          "Kapp": 0.05263157894736842
+        },
+        {
+          "id": "H4",
+          "productSMILES": "O=C1CCCO1",
+          "lactoneFormula": "C4H6O2",
+          "ringAtoms": 5,
+          "Kapp": 2.3333333333333335
+        },
+        {
+          "id": "H5",
+          "productSMILES": "O=C1CCCCO1",
+          "lactoneFormula": "C5H8O2",
+          "ringAtoms": 6,
+          "Kapp": 1.5
+        }
+      ],
+      "expectedReasoning": {
+        "de": "Ester-O und Carbonyl-C gehören zum Ring; nCH2+2 ergibt4/5/6Ringatome. Jeweils Säure→Lacton+H2O, Atome ausgeglichen. Im gesetzten Modell ist Ringbildung beim H4-Paar(70%,Kapp≈2.33) stärker begünstigt als bei H5(60%,1.50) und H3(5%,0.0526). Vierring-Ringspannung ist eine plausible Teilbegründung; die Zahlen beweisen weder eine universelle Fünf-/Sechsringregel noch gleiche Ausgangssäuren oder alleinige Ringspannungskausalität.",
+        "en": "Ester O and carbonyl C belong to the ring; nCH2+2 gives4/5/6ring atoms. In each case acid→lactone+H2O with balanced atoms. In this model ring formation is more favoured in H4(70%,Kapp≈2.33) than H5(60%,1.50) or H3(5%,0.0526). Four-ring strain is a plausible partial explanation; the figures prove neither a universal five/six-ring rule nor identical starting acids or ring strain as the sole cause."
+      },
+      "rubric": [
+        {
+          "id": "structure",
+          "de": "Alle drei korrekten Ringprodukte und Wasserbilanzen, Ringatome mit O/Carbonyl-C.",
+          "en": "All three correct ring products/water balances, including O/carbonyl C in ring count."
+        },
+        {
+          "id": "conditional-comparison",
+          "de": "Rangfolge korrekt als Säure/Lacton-Paarvergleich unter gleichen Bedingungen, keine absolute Universalstabilität.",
+          "en": "Correct ranking as an acid/lactone-pair comparison under common conditions; no absolute universal stability."
+        }
+      ]
+    },
+    {
+      "caseId": "fresh-substituted-lactone-and-rate",
+      "learnerTask": {
+        "de": "Leite die Ringprodukte der neuen methylsubstituierten Säuren A und B ab. Werte Anfangsgeschwindigkeit und Gleichgewicht getrennt aus. Beurteile:1„A bildet sich anfänglich schneller.“2„A muss deshalb im Gleichgewicht stärker bevorzugt sein.“ Gib die passende Vergleichsbasis und Grenzen an. Begründe, warum veränderte Wasseraktivität/pH oder Substitution eine neue Vergleichstabelle erfordern können.",
+        "en": "Derive ring products of the fresh methyl-substituted acids A and B. Evaluate initial rate and equilibrium separately. Assess:1“A initially forms faster.”2“A must therefore be more favoured at equilibrium.” State the appropriate comparison basis and limits. Explain why changed water activity/pH or substitution can require a new comparison table."
+      },
+      "structures": [
+        {
+          "id": "A",
+          "name": {
+            "de": "4-Hydroxy-3-methylbutansäure",
+            "en": "4-Hydroxy-3-methylbutanoic acid"
+          },
+          "condensed": "HO–CH2–CH(CH3)–CH2–C(=O)–OH",
+          "acidSMILES": "O=C(O)CC(C)CO",
+          "acidFormula": "C5H10O3"
+        },
+        {
+          "id": "B",
+          "name": {
+            "de": "5-Hydroxy-3-methylpentansäure",
+            "en": "5-Hydroxy-3-methylpentanoic acid"
+          },
+          "condensed": "HO–CH2–CH2–CH(CH3)–CH2–C(=O)–OH",
+          "acidSMILES": "O=C(O)CC(C)CCO",
+          "acidFormula": "C6H12O3"
+        }
+      ],
+      "initialRateTable": {
+        "basis": {
+          "de": "d[L]/dt bei t=0; gleiche anfängliche Säurekonzentration10.00mmol/L.",
+          "en": "d[L]/dt at t=0; equal initial acid concentration10.00mmol/L."
+        },
+        "unit": "mmol L^-1 min^-1",
+        "rows": [
+          {
+            "id": "A",
+            "initialRate": 0.8
+          },
+          {
+            "id": "B",
+            "initialRate": 0.3
+          }
+        ]
+      },
+      "equilibriumTable": {
+        "basis": {
+          "de": "Nach vollständiger Gleichgewichtseinstellung, gleiche Bedingungen wie Anfangsgeschwindigkeit.",
+          "en": "After full equilibration under the same conditions as the initial rates."
+        },
+        "rows": [
+          {
+            "id": "A",
+            "acidMMolL": 6.0,
+            "lactoneMMolL": 4.0,
+            "lactoneFractionPercent": 40
+          },
+          {
+            "id": "B",
+            "acidMMolL": 2.5,
+            "lactoneMMolL": 7.5,
+            "lactoneFractionPercent": 75
+          }
+        ]
+      },
+      "modelConsistencyNote": {
+        "equation": "d[L]/dt=kf[H]−kr[L]",
+        "rows": [
+          {
+            "id": "A",
+            "kfPerMin": 0.08,
+            "krPerMin": 0.12
+          },
+          {
+            "id": "B",
+            "kfPerMin": 0.03,
+            "krPerMin": 0.01
+          }
+        ],
+        "meaning": {
+          "de": "Diese optionalen Modellparameter machen die Tabellen überprüfbar:v0=kf×10 und f=kf/(kf+kr). Sie sind keine identifizierten realen Geschwindigkeitskonstanten. Für die Hauptaufgabe reicht die getrennte Tabelleninterpretation; das Differentialgesetz muss nicht gelöst werden.",
+          "en": "These optional model parameters make the tables checkable:v0=kf×10 and f=kf/(kf+kr). They are not identified real rate constants. Separate table interpretation suffices for the main task; solving the differential equation is not required."
+        }
+      },
+      "expectedProducts": [
+        {
+          "id": "A",
+          "productSMILES": "O=C1CC(C)CO1",
+          "lactoneFormula": "C5H8O2",
+          "ringAtoms": 5
+        },
+        {
+          "id": "B",
+          "productSMILES": "O=C1CC(C)CCO1",
+          "lactoneFormula": "C6H10O2",
+          "ringAtoms": 6
+        }
+      ],
+      "expectedReasoning": {
+        "de": "A bildet einen methylsubstituierten Fünfring, B einen methylsubstituierten Sechsring; das exocyclische CH3 zählt nicht zum Ring. Je1H2O entsteht formal. A ist anfangs schneller(0.80>0.30), B hat aber den größeren Gleichgewichtsanteil(75>40%) und Kapp=3 gegenüber2/3 für A. Die zweite Aussage ist falsch. Relative Bevorzugung meint jeweils Lacton gegenüber seiner eigenen Säure, bei gleichen gesetzten Bedingungen, keine absolute Stabilität zwischen A- und B-Molekülen. Wasseraktivität ändert die Gleichgewichtsbasis; pH kann Protonierung/Katalyse und Substitution Struktur-/Konformations- und Wechselwirkungseffekte verändern. Ein bloßer Katalysatoreffekt bei unverändertem System verschiebt das Gleichgewicht nicht.",
+        "en": "A forms a methyl-substituted five-membered ring and B a methyl-substituted six-membered ring; exocyclic CH3 is not counted. Each formally releases1H2O. A is initially faster(0.80>0.30), but B has the larger equilibrium fraction(75>40%) and Kapp=3 versus2/3 for A. The second statement is false. Relative preference means lactone versus its own acid under the common specified conditions, not absolute stability between A and B molecules. Water activity changes the equilibrium basis; pH can affect protonation/catalysis, while substitution can change conformation/interactions. A solely catalytic effect in an otherwise unchanged system does not shift equilibrium."
+      },
+      "rubric": [
+        {
+          "id": "fresh-structure",
+          "de": "Substituierte Produkte atomrichtig, exocyclisches CH3 von Ringatomen getrennt.",
+          "en": "Atom-correct substituted products; exocyclic CH3 distinguished from ring atoms."
+        },
+        {
+          "id": "independent-data",
+          "de": "Geschwindigkeit und Gleichgewicht getrennt begründet; schnellerA, stärkere bedingte RingbevorzugungB.",
+          "en": "Independently justified rate and equilibrium conclusions: fasterA, stronger conditional ring preferenceB."
+        },
+        {
+          "id": "basis-limits",
+          "de": "Gleiche Anfangs-/Bedingungsbasis und paarrelative Bedeutung erläutert; keine Ringspannungs-/Katalysator-Universalregel.",
+          "en": "Explains common starting/condition basis and pair-relative meaning; no universal ring-strain/catalyst rule."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,300 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "chemie-current455-current-nine-informed-synthesis-20261019-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex informed synthesis; /root; exact model revision and sampling parameters not exposed",
+  "synthesizedAt": "2026-10-18T23:45:31.574Z",
+  "batch": {
+    "batchId": "chemie-current455-final-nine-D-20261019-v1",
+    "batchManifestDigest": "sha256:3bae9e1efeebc5be2c85d80fe8c5f44b44058aebf7c4db98c984d65497127971",
+    "configDigest": "sha256:5785a5919cce53d00161e14bf48e3336a03be89345436e2f0b8d8f16fe88270b",
+    "bundleFingerprint": "sha256:12a7044270c3264942acc3804213103aa81407ecbfd36867e4bab0444a0c707d",
+    "bookDigest": "sha256:a7fcf6f324f344714dd10657e24bc2023fea0a0feda095110103b04377aec824",
+    "reviewInputFingerprint": "sha256:62577249b40768cf1362c399a151dbb8c65cfaf1bb3fa91f793962f320d74427",
+    "dualSummaryDigest": "sha256:d09b5c5c916bafdad0eb9d6d57d9754a9b4c5bedbfd7a842e6c03a8025d30869",
+    "canonicalLandscapeDigest": "sha256:8f10f0928a9cae57e671097a1d8ede587eee2d9d74287952a58db0bb39a2d15c"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-current455-final-nine-D-20261019-v1-a",
+      "campaignDigest": "sha256:f96a29656863b43b57c8cdeb3bf90ee5333e0ae76f8db6566665bf960a7cf335",
+      "roundId": "chemie-current455-final-nine-D-20261019-v1-first-pass-a",
+      "independenceGroupId": "chemie-current455-final-nine-D-20261019-v1-independent-a",
+      "reviewInputFingerprint": "sha256:62577249b40768cf1362c399a151dbb8c65cfaf1bb3fa91f793962f320d74427",
+      "batchId": "chemie-current455-final-nine-D-20261019-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:525a44b8c9b20fdd657af4a04a118d21de7413e7c19ac0f63ca00440c9ae37a0",
+      "runId": "chemie-current455-final-nine-D-20261019-v1-first-pass-a.actual-codex-subject-001",
+      "runManifestDigest": "sha256:83a869e313376df3f27764aad743dfa92b9d06f5660e89a99a4e103daea1e9ea",
+      "resultsDigest": "sha256:3017aa6c231903ba7b850f8fb1a97e62b25e91409744b4a85001eeb8086086a7"
+    },
+    "second": {
+      "campaignId": "chemie-current455-final-nine-D-20261019-v1-b",
+      "campaignDigest": "sha256:ecd2f57d63ea1c3322bbeedbf83a757a94506cc060ed2eae9895d668ad724090",
+      "roundId": "chemie-current455-final-nine-D-20261019-v1-first-pass-b",
+      "independenceGroupId": "chemie-current455-final-nine-D-20261019-v1-independent-b",
+      "reviewInputFingerprint": "sha256:62577249b40768cf1362c399a151dbb8c65cfaf1bb3fa91f793962f320d74427",
+      "batchId": "chemie-current455-final-nine-D-20261019-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:ee6e58e18a0d460fc3c8cdd588fdd673328fab5ec287b4ba1ba0b622e2754175",
+      "runId": "chemie-current455-final-nine-D-20261019-v1-first-pass-b.native-b-subject-01",
+      "runManifestDigest": "sha256:ddb13de3391af246588341762d421a71df018b4519f7e23ae18a2a28df85b44b",
+      "resultsDigest": "sha256:5aaf201f73c1520c75fe7e7a214b9e1137fc9c9f1395bed6b9cce579442abc63"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "chemie-current455-current-nine-informed-synthesis-20261019-v1-decision-001",
+      "goalId": "18819a59-2442-530f-a7c3-26755398ec66",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d4c56d08d03e4a56e9f2d218f82e29688bc97e3cdce521881684cfb65a00f06a",
+      "pageFingerprint": "sha256:2dc0649304e196a906ecc674ae6cfaf4ad436ab440ef8f11006fb79f27b5b0ff",
+      "goalReviewContextFingerprint": "sha256:047442d8937b5b00718586558368448623748f93ed61b1bda47a6d7d4bbdbc79",
+      "finalText": {
+        "titleDe": "Vorgegebenen Paraben-Ester quantitativ bestimmen (LK)",
+        "titleEn": "Determine a specified paraben ester quantitatively (LK)",
+        "descriptionDe": "Die lernende Person kann eine geeignete quantitative Bestimmung eines vorgegebenen p-Hydroxybenzoesäureesters anhand seiner Molekülstruktur auswählen, mit Kontrollproben planen und durchführen und den Gehalt unter Berücksichtigung von Kalibrierung oder Reaktionsstöchiometrie, Verdünnung und Verfahrensgrenzen bestimmen.",
+        "descriptionEn": "The learner can select a suitable quantitative determination of a specified p-hydroxybenzoic acid ester using its molecular structure, plan and carry it out with control samples, and determine the content while accounting for calibration or reaction stoichiometry, dilution, and method limitations."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current455-final-nine-D-20261019-v1-first-pass-a.actual-codex-subject-001.goal-001",
+          "recordDigest": "sha256:124978c3862dc41406237f2dde662110046cdaaf9cb04a7f39ab1a91a04f6553"
+        },
+        "second": {
+          "recordId": "chemie-current455-final-nine-D-20261019-v1-first-pass-b.native-b-subject-01.18819a59-2442-530f-a7c3-26755398ec66",
+          "recordDigest": "sha256:597958f80f7746d40ff504f5863d62d10336f0f09cb5d528b51e13dbd414b42e"
+        }
+      },
+      "rationaleDe": "Beide tatsächlichen unabhängigen aktuellen Erstpässe behalten die gleichwertigen DE-/EN-Beschreibungen und melden keinen konkreten D-, P- oder Bildbefund. Die fachlichen Begründungen sind vereinbar. Das vorhandene ganze Verständnis-/Leistungs-/Transferfeld aus first wird unverändert wegen dieser beobachtbaren Abgrenzung gewählt: struktur- und matrixbegründete Methodenwahl, eigene kontrollierte Quantifizierung und neue analytspezifische Kalibrierung; synthetische Rechenkarten ersetzen keine eigene Durchführung. Beide Reviewer haben die ganzen gebundenen P-/Materialkörper und tatsächlichen Bilder/Seiten geprüft. Ihre offengelegte Sichtbarkeit eingebetteter historischer Metadaten wird nicht als vollständige historische Blindheit dargestellt; die jeweils andere aktuelle Runde blieb unbekannt. Dies ist eine D-Synthese auf den exakten aktuellen Eingaben, keine neue Reviewer-Stimme, ausgeführte Lernendenleistung, menschliche Freigabe oder vorweggenommene M7-Abschlussbehauptung.",
+      "rationaleEn": "Both actual independent current first passes retain the equivalent bilingual descriptions and report no concrete D, P or image finding. Their scientific rationales are compatible. The existing whole understanding/performance/transfer field from first is selected unchanged for this observable boundary: structure- and matrix-based method choice, original controlled quantification and fresh analyte-specific calibration; synthetic calculation cards do not replace personal execution. Both reviewers examined complete bound P/material bodies and actual images/pages. Their disclosed exposure to embedded historical metadata is not presented as full historical blindness; the opposite current round remained unknown. This is D synthesis on exact current inputs, not a new reviewer vote, performed learner work, human approval or an advance M7 completion claim."
+    },
+    {
+      "decisionId": "chemie-current455-current-nine-informed-synthesis-20261019-v1-decision-002",
+      "goalId": "39c85aa0-b01f-56ec-a148-b8009bf650f5",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:1351af161544eaf7ba77032f78776e12002673d9c37cfb4c15791ed5610c192a",
+      "pageFingerprint": "sha256:8ab978f72ca7834ee23e1ae07068e2ac67ba6e4c2c6f52a3e85a21913ef6bcc1",
+      "goalReviewContextFingerprint": "sha256:48dcf6e70e01679b70c4752896b03c1b5d0c8750c62b3cbdabcb77518ae6aa07",
+      "finalText": {
+        "titleDe": "Ringbildung und Lactone",
+        "titleEn": "Ring formation and lactones",
+        "descriptionDe": "Die lernende Person kann die intramolekulare Esterbildung aus vorgegebenen Hydroxycarbonsäuren anhand von Strukturformeln erklären und Bildungstendenz sowie relative Stabilität der entstehenden Lactone unter angegebenen Bedingungen anhand von Ringstruktur und Vergleichsdaten begründen.",
+        "descriptionEn": "The learner can explain intramolecular ester formation from specified hydroxycarboxylic acids using structural formulas and justify the formation tendency and relative stability of the resulting lactones under stated conditions using ring structure and comparative data."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current455-final-nine-D-20261019-v1-first-pass-a.actual-codex-subject-001.goal-002",
+          "recordDigest": "sha256:61a3f41666a4ce694373e04527bb8a67fcb67a93b24f968ca20ac2bd05db3e33"
+        },
+        "second": {
+          "recordId": "chemie-current455-final-nine-D-20261019-v1-first-pass-b.native-b-subject-01.39c85aa0-b01f-56ec-a148-b8009bf650f5",
+          "recordDigest": "sha256:b4a2762d7d54e503682d6c1c505ddb0067bba552a1e507f12f50ea0cebf03441"
+        }
+      },
+      "rationaleDe": "Beide tatsächlichen unabhängigen aktuellen Erstpässe behalten die gleichwertigen DE-/EN-Beschreibungen und melden keinen konkreten D-, P- oder Bildbefund. Die fachlichen Begründungen sind vereinbar. Das vorhandene ganze Verständnis-/Leistungs-/Transferfeld aus first wird unverändert wegen dieser beobachtbaren Abgrenzung gewählt: atomrichtige Lactonbildung und paarrelative Ringbevorzugung unter gegebenen Bedingungen; getrennte Geschwindigkeits- und Gleichgewichtsdaten statt universeller Ringgrößenregel. Beide Reviewer haben die ganzen gebundenen P-/Materialkörper und tatsächlichen Bilder/Seiten geprüft. Ihre offengelegte Sichtbarkeit eingebetteter historischer Metadaten wird nicht als vollständige historische Blindheit dargestellt; die jeweils andere aktuelle Runde blieb unbekannt. Dies ist eine D-Synthese auf den exakten aktuellen Eingaben, keine neue Reviewer-Stimme, ausgeführte Lernendenleistung, menschliche Freigabe oder vorweggenommene M7-Abschlussbehauptung.",
+      "rationaleEn": "Both actual independent current first passes retain the equivalent bilingual descriptions and report no concrete D, P or image finding. Their scientific rationales are compatible. The existing whole understanding/performance/transfer field from first is selected unchanged for this observable boundary: atom-correct lactone formation and pair-relative ring preference under stated conditions; separate rate and equilibrium data instead of a universal ring-size rule. Both reviewers examined complete bound P/material bodies and actual images/pages. Their disclosed exposure to embedded historical metadata is not presented as full historical blindness; the opposite current round remained unknown. This is D synthesis on exact current inputs, not a new reviewer vote, performed learner work, human approval or an advance M7 completion claim."
+    },
+    {
+      "decisionId": "chemie-current455-current-nine-informed-synthesis-20261019-v1-decision-003",
+      "goalId": "667bc303-e9b8-570b-84f1-61cc8bdfd006",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:53f8b3fe772a4b48a5b16f7143ba3b7497dea90edbf235b8d7f465955d11975a",
+      "pageFingerprint": "sha256:98fb4abb4451539ff0711ef807483e59d4f5330b5dbf0d74e8d85963e7c8ce89",
+      "goalReviewContextFingerprint": "sha256:8edb7a96d38334958bf0d79fe874184fc155f0820e70e05ce58eb3924462b966",
+      "finalText": {
+        "titleDe": "Esterreaktionen und ihre Reversibilität deuten",
+        "titleEn": "Interpret ester reactions and their reversibility",
+        "descriptionDe": "Die lernende Person kann Veresterung und saure Esterhydrolyse als reversible Reaktionen deuten, sie von der unter alkalischen Bedingungen praktisch irreversiblen Bildung von Carboxylatsalzen unterscheiden, Reaktionsprodukte bilanzieren und damit Alltagsbeobachtungen zu Estern erklären.",
+        "descriptionEn": "The learner can interpret esterification and acidic ester hydrolysis as reversible reactions, distinguish them from the effectively irreversible formation of carboxylate salts under alkaline conditions, balance reaction products, and use this distinction to explain everyday observations involving esters."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current455-final-nine-D-20261019-v1-first-pass-a.actual-codex-subject-001.goal-003",
+          "recordDigest": "sha256:039afcdf5a59f4e9de33fe03a4f73c254fb1c2082367a159924412518513506e"
+        },
+        "second": {
+          "recordId": "chemie-current455-final-nine-D-20261019-v1-first-pass-b.native-b-subject-01.667bc303-e9b8-570b-84f1-61cc8bdfd006",
+          "recordDigest": "sha256:734067dbe13e328cf246b0f5c5a3bd46dacc577e3122699d5d54ed6ff91ab83b"
+        }
+      },
+      "rationaleDe": "Beide tatsächlichen unabhängigen aktuellen Erstpässe behalten die gleichwertigen DE-/EN-Beschreibungen und melden keinen konkreten D-, P- oder Bildbefund. Die fachlichen Begründungen sind vereinbar. Das vorhandene ganze Verständnis-/Leistungs-/Transferfeld aus first wird unverändert wegen dieser beobachtbaren Abgrenzung gewählt: reversible saure Hydrolyse gegenüber Hydroxidverbrauch und Carboxylatbindung bei alkalischer Hydrolyse, mit aktueller atomrichtiger Alkoholabbildung und begrenzten Anwendungsdaten. Beide Reviewer haben die ganzen gebundenen P-/Materialkörper und tatsächlichen Bilder/Seiten geprüft. Ihre offengelegte Sichtbarkeit eingebetteter historischer Metadaten wird nicht als vollständige historische Blindheit dargestellt; die jeweils andere aktuelle Runde blieb unbekannt. Dies ist eine D-Synthese auf den exakten aktuellen Eingaben, keine neue Reviewer-Stimme, ausgeführte Lernendenleistung, menschliche Freigabe oder vorweggenommene M7-Abschlussbehauptung.",
+      "rationaleEn": "Both actual independent current first passes retain the equivalent bilingual descriptions and report no concrete D, P or image finding. Their scientific rationales are compatible. The existing whole understanding/performance/transfer field from first is selected unchanged for this observable boundary: reversible acidic hydrolysis versus hydroxide consumption and carboxylate trapping in alkaline hydrolysis, with the current atom-correct alcohol illustration and bounded application data. Both reviewers examined complete bound P/material bodies and actual images/pages. Their disclosed exposure to embedded historical metadata is not presented as full historical blindness; the opposite current round remained unknown. This is D synthesis on exact current inputs, not a new reviewer vote, performed learner work, human approval or an advance M7 completion claim."
+    },
+    {
+      "decisionId": "chemie-current455-current-nine-informed-synthesis-20261019-v1-decision-004",
+      "goalId": "98ae3f8e-4800-5ff3-bd2c-89434c006143",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f82f2c28c6cd778bef02334af6c92cca51a9842df3ab59763f873a90ae757ab8",
+      "pageFingerprint": "sha256:25ceafb3c4da26215550ebceb59032b4b87e702dcd397148ad772e139638ce72",
+      "goalReviewContextFingerprint": "sha256:ec6be1284d6cef19a0b86bf5a3e20a8d0cc22f3422348ef64ada92037189604e",
+      "finalText": {
+        "titleDe": "Carbonsäureester und Carbonsäureamide durch Kondensation bilden",
+        "titleEn": "Form carboxylic esters and amides by condensation",
+        "descriptionDe": "Die lernende Person kann die Ester- und Amidbildung am Acylkohlenstoff durch nucleophilen Angriff, Protonenübertragungen und Eliminierung unter geeigneten Bedingungen erklären, bei der säurekatalysierten Esterbildung die Katalysatorregeneration darstellen und Amidbildung von Salzbildung unterscheiden.",
+        "descriptionEn": "The learner can explain ester and amide formation at the acyl carbon through nucleophilic attack, proton transfers and elimination under suitable conditions, show catalyst regeneration in acid-catalysed ester formation and distinguish amide formation from salt formation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current455-final-nine-D-20261019-v1-first-pass-a.actual-codex-subject-001.goal-004",
+          "recordDigest": "sha256:deae4660fbf450b497ffd789d1c357aed952c6d25e3215171d871e38f3548e86"
+        },
+        "second": {
+          "recordId": "chemie-current455-final-nine-D-20261019-v1-first-pass-b.native-b-subject-01.98ae3f8e-4800-5ff3-bd2c-89434c006143",
+          "recordDigest": "sha256:f5b2033ed08fa3cd3273b538805506e12816dcf92fdea2a90987e7241c7b7249"
+        }
+      },
+      "rationaleDe": "Beide tatsächlichen unabhängigen aktuellen Erstpässe behalten die gleichwertigen DE-/EN-Beschreibungen und melden keinen konkreten D-, P- oder Bildbefund. Die fachlichen Begründungen sind vereinbar. Das vorhandene ganze Verständnis-/Leistungs-/Transferfeld aus first wird unverändert wegen dieser beobachtbaren Abgrenzung gewählt: bedingtes Acylsubstitutionsmodell mit tetraedrischen Valenzen, Ester-Katalysatorregeneration und ausdrücklich getrennter Salz- beziehungsweise aktivierter Amidbildung. Beide Reviewer haben die ganzen gebundenen P-/Materialkörper und tatsächlichen Bilder/Seiten geprüft. Ihre offengelegte Sichtbarkeit eingebetteter historischer Metadaten wird nicht als vollständige historische Blindheit dargestellt; die jeweils andere aktuelle Runde blieb unbekannt. Dies ist eine D-Synthese auf den exakten aktuellen Eingaben, keine neue Reviewer-Stimme, ausgeführte Lernendenleistung, menschliche Freigabe oder vorweggenommene M7-Abschlussbehauptung.",
+      "rationaleEn": "Both actual independent current first passes retain the equivalent bilingual descriptions and report no concrete D, P or image finding. Their scientific rationales are compatible. The existing whole understanding/performance/transfer field from first is selected unchanged for this observable boundary: conditional acyl-substitution model with tetrahedral valences, ester catalyst regeneration and an explicit distinction between salt formation and activated amide formation. Both reviewers examined complete bound P/material bodies and actual images/pages. Their disclosed exposure to embedded historical metadata is not presented as full historical blindness; the opposite current round remained unknown. This is D synthesis on exact current inputs, not a new reviewer vote, performed learner work, human approval or an advance M7 completion claim."
+    },
+    {
+      "decisionId": "chemie-current455-current-nine-informed-synthesis-20261019-v1-decision-005",
+      "goalId": "9d97f628-c3ea-5dc0-8723-b17b16297af3",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:58e9fc381113f4ea7aa4f65b12ca601410aba0588bb2d1346e511fff446993a0",
+      "pageFingerprint": "sha256:bf0f38f5478ede55b76e437a20bb0ec7a31581e2b0fc4a9ec23d7861ead9f072",
+      "goalReviewContextFingerprint": "sha256:90e62cb332a11abfe6d74384830affc72221105e2d735eb2fddde3e97d38578c",
+      "finalText": {
+        "titleDe": "Transesterifizierung planen",
+        "titleEn": "Plan transesterification",
+        "descriptionDe": "Die lernende Person kann Umesterungen als Austausch des Alkoholrests eines Esters planen und anhand gegebener Reaktions- und Trennbedingungen begründen, wie Alkoholüberschuss oder Produktentzug das Gleichgewicht beeinflussen.",
+        "descriptionEn": "The learner can plan transesterifications as exchange of an ester’s alcohol-derived group and use supplied reaction and separation conditions to explain how excess alcohol or product removal affects equilibrium."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current455-final-nine-D-20261019-v1-first-pass-a.actual-codex-subject-001.goal-005",
+          "recordDigest": "sha256:6c705d535137dadcf7c91bb49a6c0f3f2b338ac8bdc1dc450a4cff2192d40c5b"
+        },
+        "second": {
+          "recordId": "chemie-current455-final-nine-D-20261019-v1-first-pass-b.native-b-subject-01.9d97f628-c3ea-5dc0-8723-b17b16297af3",
+          "recordDigest": "sha256:8b30c721805a561e9adf983c7a6e3695aa6653f4e512488ceecb604452bf12fe"
+        }
+      },
+      "rationaleDe": "Beide tatsächlichen unabhängigen aktuellen Erstpässe behalten die gleichwertigen DE-/EN-Beschreibungen und melden keinen konkreten D-, P- oder Bildbefund. Die fachlichen Begründungen sind vereinbar. Das vorhandene ganze Verständnis-/Leistungs-/Transferfeld aus first wird unverändert wegen dieser beobachtbaren Abgrenzung gewählt: Alkoholresttausch mit drei Estergruppen im Fettmodell, vollständigen Phasen-/Rückführdaten und frischem wasser-/säurereichem Zulauf; kein übertragenes Monoester-K oder erfundener Endumsatz. Beide Reviewer haben die ganzen gebundenen P-/Materialkörper und tatsächlichen Bilder/Seiten geprüft. Ihre offengelegte Sichtbarkeit eingebetteter historischer Metadaten wird nicht als vollständige historische Blindheit dargestellt; die jeweils andere aktuelle Runde blieb unbekannt. Dies ist eine D-Synthese auf den exakten aktuellen Eingaben, keine neue Reviewer-Stimme, ausgeführte Lernendenleistung, menschliche Freigabe oder vorweggenommene M7-Abschlussbehauptung.",
+      "rationaleEn": "Both actual independent current first passes retain the equivalent bilingual descriptions and report no concrete D, P or image finding. Their scientific rationales are compatible. The existing whole understanding/performance/transfer field from first is selected unchanged for this observable boundary: alcohol-group exchange involving three ester groups in the fat model, complete phase/recovery data and fresh water/acid-rich feed; no transferred monoester K or invented final conversion. Both reviewers examined complete bound P/material bodies and actual images/pages. Their disclosed exposure to embedded historical metadata is not presented as full historical blindness; the opposite current round remained unknown. This is D synthesis on exact current inputs, not a new reviewer vote, performed learner work, human approval or an advance M7 completion claim."
+    },
+    {
+      "decisionId": "chemie-current455-current-nine-informed-synthesis-20261019-v1-decision-006",
+      "goalId": "3de28598-672f-5753-8a45-8f559c2f9dc2",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:1b11bece526f7df90875ef267edc210d994ffe5038b6ddfaa9d0be23b35370af",
+      "pageFingerprint": "sha256:2b41330ebfe69b7d64024f952739190514eb78c9fd9a6cdb2869131362940dea",
+      "goalReviewContextFingerprint": "sha256:4af86de2b8f2e84d81d1604d02a8898e8e1e05e64377d00c4548e2b2f1394c69",
+      "finalText": {
+        "titleDe": "Funktionelle Gruppen qualitativ nachweisen",
+        "titleEn": "Qualitatively detect functional groups",
+        "descriptionDe": "Die lernende Person kann geeignete qualitative Nachweisreaktionen auswählen, durchführen und deuten, um charakteristische funktionelle Gruppen oder Strukturelemente ausgewählter organischer Verbindungsklassen wie Alkene, Alkohole, Aldehyde, Ketone, Carbonsäuren und Ester zu identifizieren.",
+        "descriptionEn": "The learner can select, carry out, and interpret suitable qualitative detection reactions to identify characteristic functional groups or structural elements of selected organic compound classes such as alkenes, alcohols, aldehydes, ketones, carboxylic acids, and esters."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-current455-final-nine-D-20261019-v1-first-pass-a.actual-codex-subject-001.goal-006",
+          "recordDigest": "sha256:52431fa5c3f1ddb06835646c65cd82525d0a6c8d920897238fb5cd2aca168913"
+        },
+        "second": {
+          "recordId": "chemie-current455-final-nine-D-20261019-v1-first-pass-b.native-b-subject-01.3de28598-672f-5753-8a45-8f559c2f9dc2",
+          "recordDigest": "sha256:f7c3629d13cb25d814118742e70166566b42c50405944b4fd4e9c27d19777914"
+        }
+      },
+      "rationaleDe": "Beide tatsächlichen unabhängigen aktuellen Erstpässe behalten die gleichwertigen DE-/EN-Beschreibungen und melden keinen konkreten D-, P- oder Bildbefund. Die fachlichen Begründungen sind vereinbar. Das vorhandene ganze Verständnis-/Leistungs-/Transferfeld aus second wird unverändert wegen dieser beobachtbaren Abgrenzung gewählt: begründete Testwahl im begrenzten Kandidatenraum, Kontrollen, Reaktionsbilanz und getrennte echte Nachweishandlung; ein negativer Test ist kein allgemeiner Hydroxygruppen- oder Identitätsbeweis. Beide Reviewer haben die ganzen gebundenen P-/Materialkörper und tatsächlichen Bilder/Seiten geprüft. Ihre offengelegte Sichtbarkeit eingebetteter historischer Metadaten wird nicht als vollständige historische Blindheit dargestellt; die jeweils andere aktuelle Runde blieb unbekannt. Dies ist eine D-Synthese auf den exakten aktuellen Eingaben, keine neue Reviewer-Stimme, ausgeführte Lernendenleistung, menschliche Freigabe oder vorweggenommene M7-Abschlussbehauptung.",
+      "rationaleEn": "Both actual independent current first passes retain the equivalent bilingual descriptions and report no concrete D, P or image finding. Their scientific rationales are compatible. The existing whole understanding/performance/transfer field from second is selected unchanged for this observable boundary: justified test choice within a bounded candidate set, controls, reaction balance and a separate actual testing procedure; a negative test is no universal hydroxy-group or identity proof. Both reviewers examined complete bound P/material bodies and actual images/pages. Their disclosed exposure to embedded historical metadata is not presented as full historical blindness; the opposite current round remained unknown. This is D synthesis on exact current inputs, not a new reviewer vote, performed learner work, human approval or an advance M7 completion claim."
+    },
+    {
+      "decisionId": "chemie-current455-current-nine-informed-synthesis-20261019-v1-decision-007",
+      "goalId": "0d59b62e-d3f9-5969-b961-0c5e26316c04",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a5d98247414830af6d1889ef5df056963ca99998168a5cb7438f40dc92d1ee83",
+      "pageFingerprint": "sha256:ff744875da8f61c8e1bd31df1ff1827eb24b719783085569141f064e0edcf545",
+      "goalReviewContextFingerprint": "sha256:f8283f9a324e21fdc4833e33e39cc3e8d3e6596745a7823e895f595928105e2d",
+      "finalText": {
+        "titleDe": "Verwendung von Parabenen beurteilen (LK)",
+        "titleEn": "Evaluate the use of parabens (LK)",
+        "descriptionDe": "Die lernende Person kann den Einsatz vorgegebener p-Hydroxybenzoesäureester als Konservierungsstoffe anhand ihrer Molekülstruktur, bereitgestellter Wirkungs- und Löslichkeitsdaten sowie datierter produktbezogener Verwendungsbedingungen beurteilen und die Grenzen des Materials benennen.",
+        "descriptionEn": "The learner can evaluate the use of specified p-hydroxybenzoic acid esters as preservatives using their molecular structures, supplied efficacy and solubility data, and dated product-specific conditions of use, and identify the limits of the material."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current455-final-nine-D-20261019-v1-first-pass-a.actual-codex-subject-001.goal-007",
+          "recordDigest": "sha256:f8a38fb640508fd14e7c71203a942f4c3fa951f95d2056ec2cf2e77e6a40e529"
+        },
+        "second": {
+          "recordId": "chemie-current455-final-nine-D-20261019-v1-first-pass-b.native-b-subject-01.0d59b62e-d3f9-5969-b961-0c5e26316c04",
+          "recordDigest": "sha256:e37730ca02a7a58a04be861a9c7d56f5b6eddc07aa17f5cc165f1c2c1771e289"
+        }
+      },
+      "rationaleDe": "Beide tatsächlichen unabhängigen aktuellen Erstpässe behalten die gleichwertigen DE-/EN-Beschreibungen und melden keinen konkreten D-, P- oder Bildbefund. Die fachlichen Begründungen sind vereinbar. Das vorhandene ganze Verständnis-/Leistungs-/Transferfeld aus first wird unverändert wegen dieser beobachtbaren Abgrenzung gewählt: vollständige datierte Originalzeilen und Fußnoten, getrennte Gruppen-/PHB-Teilgrenzen sowie löslichkeitsbegrenzter frischer Modellfall; keine Übertragung auf gegenwärtige Rechtsgeltung oder andere Produktkategorien. Beide Reviewer haben die ganzen gebundenen P-/Materialkörper und tatsächlichen Bilder/Seiten geprüft. Ihre offengelegte Sichtbarkeit eingebetteter historischer Metadaten wird nicht als vollständige historische Blindheit dargestellt; die jeweils andere aktuelle Runde blieb unbekannt. Dies ist eine D-Synthese auf den exakten aktuellen Eingaben, keine neue Reviewer-Stimme, ausgeführte Lernendenleistung, menschliche Freigabe oder vorweggenommene M7-Abschlussbehauptung.",
+      "rationaleEn": "Both actual independent current first passes retain the equivalent bilingual descriptions and report no concrete D, P or image finding. Their scientific rationales are compatible. The existing whole understanding/performance/transfer field from first is selected unchanged for this observable boundary: complete dated original rows and footnotes, separate group/PHB sublimits and a fresh solubility-limited model case; no transfer to current legal applicability or other product categories. Both reviewers examined complete bound P/material bodies and actual images/pages. Their disclosed exposure to embedded historical metadata is not presented as full historical blindness; the opposite current round remained unknown. This is D synthesis on exact current inputs, not a new reviewer vote, performed learner work, human approval or an advance M7 completion claim."
+    },
+    {
+      "decisionId": "chemie-current455-current-nine-informed-synthesis-20261019-v1-decision-008",
+      "goalId": "2f3cdec5-f845-5b0f-841e-8b1d47de0281",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a6651ccd42879d6aacc1b2b4392e63f4575679408d689cbb4d5eb44181a0775e",
+      "pageFingerprint": "sha256:ef58c5932cc294aee1f19d43656a303e8c349251a077d174a5e6fdfdd53a29f7",
+      "goalReviewContextFingerprint": "sha256:d65b73f4d5587139d9f2f8eb271a9dacbd11b397caf8f6077973ff369b28c0f9",
+      "finalText": {
+        "titleDe": "Fette über Struktur und Eigenschaften erklären",
+        "titleEn": "Explain fats through structure and properties",
+        "descriptionDe": "Die lernende Person kann Triacylglyceride als Glycerintriester mit drei Fettsäureresten identifizieren und ausgewählte physikalische Eigenschaften anhand der Fettsäurereste, ihres Sättigungsgrads und räumlichen Baus erklären.",
+        "descriptionEn": "The learner can identify triacylglycerols as glycerol triesters with three fatty-acid residues and explain selected physical properties through those residues, their degree of saturation and spatial structure."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-current455-final-nine-D-20261019-v1-first-pass-a.actual-codex-subject-001.goal-008",
+          "recordDigest": "sha256:562f9216336a1844d2854b3d84d94d54ef34e8bcd71369f1a9aeef24f419fede"
+        },
+        "second": {
+          "recordId": "chemie-current455-final-nine-D-20261019-v1-first-pass-b.native-b-subject-01.2f3cdec5-f845-5b0f-841e-8b1d47de0281",
+          "recordDigest": "sha256:175db24af4416d188be5f3c471f27c3e504004c64f665b68e1d382dccb8ee0fb"
+        }
+      },
+      "rationaleDe": "Beide tatsächlichen unabhängigen aktuellen Erstpässe behalten die gleichwertigen DE-/EN-Beschreibungen und melden keinen konkreten D-, P- oder Bildbefund. Die fachlichen Begründungen sind vereinbar. Das vorhandene ganze Verständnis-/Leistungs-/Transferfeld aus second wird unverändert wegen dieser beobachtbaren Abgrenzung gewählt: genau drei Fettsäurereste am Glycerintriester, kontrollierte cis/trans-Packungsvergleiche und begrenzte Schmelz-/Löslichkeitsaussagen statt Schluss aus Doppelbindungszahl oder Estergruppe allein. Beide Reviewer haben die ganzen gebundenen P-/Materialkörper und tatsächlichen Bilder/Seiten geprüft. Ihre offengelegte Sichtbarkeit eingebetteter historischer Metadaten wird nicht als vollständige historische Blindheit dargestellt; die jeweils andere aktuelle Runde blieb unbekannt. Dies ist eine D-Synthese auf den exakten aktuellen Eingaben, keine neue Reviewer-Stimme, ausgeführte Lernendenleistung, menschliche Freigabe oder vorweggenommene M7-Abschlussbehauptung.",
+      "rationaleEn": "Both actual independent current first passes retain the equivalent bilingual descriptions and report no concrete D, P or image finding. Their scientific rationales are compatible. The existing whole understanding/performance/transfer field from second is selected unchanged for this observable boundary: exactly three fatty-acid residues on the glycerol triester, controlled cis/trans packing comparisons and bounded melting/solubility claims rather than inference from double-bond count or ester linkage alone. Both reviewers examined complete bound P/material bodies and actual images/pages. Their disclosed exposure to embedded historical metadata is not presented as full historical blindness; the opposite current round remained unknown. This is D synthesis on exact current inputs, not a new reviewer vote, performed learner work, human approval or an advance M7 completion claim."
+    },
+    {
+      "decisionId": "chemie-current455-current-nine-informed-synthesis-20261019-v1-decision-009",
+      "goalId": "e7c3d20e-4b13-560b-b8ee-c5abca8cc624",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:45b67fa872ec6e8bb79154e2998acc55ef7b85eb2028ed069b4ade83c7481468",
+      "pageFingerprint": "sha256:d3ae87d0f74fc225faa76363d30bdc0350c64394f004023942b5fc2bc6a785e7",
+      "goalReviewContextFingerprint": "sha256:cc30cb948e61e7df916e839749a25e8ee0e50b05db5456cc716c137d088ffba7",
+      "finalText": {
+        "titleDe": "Stoffe isolieren, reinigen und Ausbeute beurteilen",
+        "titleEn": "Isolate, purify, and evaluate yields of substances",
+        "descriptionDe": "Die lernende Person kann auf Grundlage physikalischer und chemischer Stoffeigenschaften geeignete Isolierungs- und Reinigungsverfahren auswählen, sicher durchführen, Reinheit und Ausbeute prüfen sowie die Tätigkeit dokumentieren.",
+        "descriptionEn": "The learner can select and safely carry out isolation and purification methods based on physical and chemical substance properties, check purity and yield, and document the work."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-current455-final-nine-D-20261019-v1-first-pass-a.actual-codex-subject-001.goal-009",
+          "recordDigest": "sha256:40d63b822c83243a0d331c5112b07eb3ba1c8dd6ac26a7124a31d7c5c3573cba"
+        },
+        "second": {
+          "recordId": "chemie-current455-final-nine-D-20261019-v1-first-pass-b.native-b-subject-01.e7c3d20e-4b13-560b-b8ee-c5abca8cc624",
+          "recordDigest": "sha256:493dd5ba4baa52e6e878abb531b3f506a125471eec4ebf2203c37f159344d1c3"
+        }
+      },
+      "rationaleDe": "Beide tatsächlichen unabhängigen aktuellen Erstpässe behalten die gleichwertigen DE-/EN-Beschreibungen und melden keinen konkreten D-, P- oder Bildbefund. Die fachlichen Begründungen sind vereinbar. Das vorhandene ganze Verständnis-/Leistungs-/Transferfeld aus second wird unverändert wegen dieser beobachtbaren Abgrenzung gewählt: methodenneutrale eigene Aufarbeitung, gezielte Reinheitsprüfung, Originaldokumentation und richtige Ausbeutebezüge; eigene Präparatherstellung bleibt getrennt, der schematische Peak ist kein Reinheitsbeweis. Beide Reviewer haben die ganzen gebundenen P-/Materialkörper und tatsächlichen Bilder/Seiten geprüft. Ihre offengelegte Sichtbarkeit eingebetteter historischer Metadaten wird nicht als vollständige historische Blindheit dargestellt; die jeweils andere aktuelle Runde blieb unbekannt. Dies ist eine D-Synthese auf den exakten aktuellen Eingaben, keine neue Reviewer-Stimme, ausgeführte Lernendenleistung, menschliche Freigabe oder vorweggenommene M7-Abschlussbehauptung.",
+      "rationaleEn": "Both actual independent current first passes retain the equivalent bilingual descriptions and report no concrete D, P or image finding. Their scientific rationales are compatible. The existing whole understanding/performance/transfer field from second is selected unchanged for this observable boundary: method-neutral personal work-up, targeted purity testing, original documentation and correct yield reference quantities; personal preparation remains separate and the schematic peak is no purity proof. Both reviewers examined complete bound P/material bodies and actual images/pages. Their disclosed exposure to embedded historical metadata is not presented as full historical blindness; the opposite current round remained unknown. This is D synthesis on exact current inputs, not a new reviewer vote, performed learner work, human approval or an advance M7 completion claim."
+    }
+  ],
+  "manifestFingerprint": "sha256:95e9f81d0ec234bd8cb8adba4a1c0b5de9170caf2208188bdc08d1b703cc178a"
+}

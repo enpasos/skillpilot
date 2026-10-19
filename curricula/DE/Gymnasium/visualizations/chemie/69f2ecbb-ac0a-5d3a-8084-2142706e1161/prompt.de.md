@@ -1,0 +1,37 @@
+# Lernzielvisualisierung: Polymerhydrolyse aus Bindungen und Produkten erklären
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `69f2ecbb-ac0a-5d3a-8084-2142706e1161`
+- Titel: Polymerhydrolyse aus Bindungen und Produkten erklären
+- Beschreibung: Die lernende Person kann die Hydrolyse geeigneter Polykondensate an vorgegebenen Strukturen als Spaltung passender Bindungen durch Wasser erklären, die entstehenden Strukturfragmente beziehungsweise Monomere unter den angegebenen Bedingungen ableiten und begründen, weshalb Polyethylen ohne solche Bindungsstellen nicht entsprechend hydrolysiert wird.
+
+## Generator
+
+- Provider: OpenAI / Codex built-in image_gen; model version not exposed
+- Status: needs_review
+- Quellbild: `69f2ecbb-ac0a-5d3a-8084-2142706e1161.png`
+- Public Asset: `/assets/goal-visualizations/chemie/69f2ecbb-ac0a-5d3a-8084-2142706e1161/69f2ecbb-ac0a-5d3a-8084-2142706e1161.png`
+
+## Prompt
+
+```text
+Use case: scientific-educational
+Asset type: a chemistry orientation illustration of ONE ester-bond hydrolysis in a polyester segment. Chemical bonds and valences take priority over decoration.
+Generate a native PNG about 1600 × 900 pixels, close to 16:9 landscape. Friendly abstract comic style, rounded restrained blue/green shapes, light warm background, clean thick dark bonds, large clear atom letters. Very spacious, no tiny print. The actual ester linkage, water and neutral product end groups must remain identifiable at 360 px and 680 px width.
+Composition: two main chemistry rows. Top row shows ONE generic polyester chain segment plus ONE water molecule. Bottom row shows exactly TWO resulting chain fragments separated by a plus sign. A broad downward reaction arrow between the rows carries the short condition "saure Hydrolyse". This is a schematic paper model, not a laboratory or industrial process.
+EXACT CHEMISTRY:
+Top reactant segment is R–C(=O)–O–R′. Draw carbonyl O ABOVE carbonyl C with a clear DOUBLE bond. Carbonyl C has a single bond to R on the left and a single bond to the bridging O on the right; the bridging O has one further single bond to R′. Mark only the SINGLE acyl-C–O bond between carbonyl C and bridging O with a modest orange halo as the cleavage site; keep that original bond visibly intact in the reactant drawing. Do not mark C=O or O–R′ for cleavage.
+Next to this reactant draw a large plus sign and water explicitly H–O–H, with exactly two O–H single bonds.
+Bottom LEFT product is R–C(=O)–O–H, the neutral carboxylic-acid chain end. Again carbonyl O is above C with a DOUBLE bond; C has single bonds to R and to hydroxyl O; hydroxyl O has a single bond to H.
+Bottom RIGHT product is H–O–R′, the neutral alcohol chain end. Oxygen has exactly two single bonds, one to H and one to R′.
+Every ordinary carbonyl carbon has bond-order total FOUR; every neutral oxygen has bond-order total TWO; every H has ONE bond. No charges, carboxylate ions, extra H on carbonyl C, broken C–C bonds, or double bond to the hydroxyl O. One ester plus one water yields these two neutral fragments. Water supplies OH on the acyl side and H on the alcohol-oxygen side. No electron-pair mechanism or curved electron arrows.
+Represent R and R′ as the SAME two abstract differently colored rounded chain-rest blocks before and after the reaction, each with a large R or R′ inside and its correct single attachment bond. They are extended unspecified CHAIN REMAINDERS, not elemental atoms or whole new monomers. Do not add unexplained decorative molecular atoms. The products are chain fragments from ONE cleavage, never complete diol/dicarboxylic-acid monomers from a single cut.
+Text (verbatim; only these phrases plus the chemical symbols, bonds, plus signs and reaction arrow): "Eine Esterstelle + Wasser"; "saure Hydrolyse"; "neutrale Fragmentenden"; "R, R′ = Kettenreste"; "PE: keine Esterstelle für diesen Weg".
+Use the top phrase as a large heading. Keep the "neutrale Fragmentenden" caption next to the two products. Put the chain-rest legend and bounded PE note in two short large footer lines. The PE note is only a limitation of THIS ester-hydrolysis route; do not depict PE as generally unrecyclable.
+Avoid: full PET repeat units, benzene rings, dense polymer formulas, multiple cleavage sites, full bifunctional monomer products, percentage yields, guaranteed complete conversion, purification or repolymerisation claims, energy/process comparison, factories, recycling symbols meaning universal success/failure, people, laboratory procedure, task numbering, solution rubric, logos, watermarks or technical IDs.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

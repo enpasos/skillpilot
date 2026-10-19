@@ -1,0 +1,84 @@
+{
+  "recordedAtUTC": "2026-10-18T21:46:14.736313+00:00",
+  "authorSealAndBothArtifactPinsMatch": true,
+  "sourceWholePinMatches": true,
+  "materialOnlyNewField": "/wholeOperativeCase/suppliedChargePairs",
+  "everyOriginalOperativeFieldExact": true,
+  "actualProfileDeltas": [
+    {
+      "jsonPointer": "/applicationCaseBriefs/1/taskDemandDe",
+      "before": "Wähle für die vorgegebene Hypothese die analoge ODER die digitale Route. Analog: ordne selbst die unveränderten gedruckten Wasser-/Na⁺-/Cl⁻-/U-Karten an, prüfe die sechs vorgegebenen Ladungspaarungen manuell und vergleiche mit dem einfacheren M1/M2-Modell und der Lösungsbeobachtung. Digital: führe den ursprünglichen digitalen Fall vollständig aus; implementiere die Regel selbst in einer Tabelle und prüfe alle sechs Fälle mit eigener Formel und Datei. Begründe jeweils Aussagen und Grenzen. Neue Variation: Warum widerlegt ein schlecht lösliches Salz nicht automatisch die Ladungsregel? Benenne fehlende Modellanteile.",
+      "after": "Wähle für die vorgegebene Hypothese die analoge ODER die digitale Route. Analog: ordne selbst die unveränderten gedruckten Wasser-/Na⁺-/Cl⁻-/U-Karten an, prüfe die sechs vorgegebenen Ladungspaarungen manuell und vergleiche mit dem einfacheren M1/M2-Modell und der Lösungsbeobachtung. Digital: führe den ursprünglichen digitalen Fall vollständig aus; implementiere die Regel selbst in einer Tabelle und prüfe alle sechs Fälle mit eigener Formel und Datei. Begründe jeweils Aussagen und Grenzen. Neue Variation: Warum widerlegt ein schlecht lösliches Salz nicht automatisch die Ladungsregel? Benenne fehlende Modellanteile.\nVollständiger unveränderter zweiter Materialfall mit den sechs nummerierten Eingaben: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-6c7-six-explicit-model-inputs-author-20261018-v1/MATERIAL.one-whole-operative-case.with-six-input-rows.author.json#/wholeOperativeCase. Der zusätzliche frische Stimulus im ersten P-Fall bleibt unverändert."
+    },
+    {
+      "jsonPointer": "/applicationCaseBriefs/1/taskDemandEn",
+      "before": "Select the analogue OR digital route for the supplied hypothesis. Analogue: arrange the unchanged printed water/Na⁺/Cl⁻/U cards yourself, manually test the six supplied charge pairs and compare with the simpler M1/M2 model and dissolution observation. Digital: perform the whole original digital case, implement the rule yourself in a table and test all six cases with own formula and file. Justify statements and limits in either route. Fresh variation: Why does a poorly soluble salt not automatically refute the charge rule? Identify missing model components.",
+      "after": "Select the analogue OR digital route for the supplied hypothesis. Analogue: arrange the unchanged printed water/Na⁺/Cl⁻/U cards yourself, manually test the six supplied charge pairs and compare with the simpler M1/M2 model and dissolution observation. Digital: perform the whole original digital case, implement the rule yourself in a table and test all six cases with own formula and file. Justify statements and limits in either route. Fresh variation: Why does a poorly soluble salt not automatically refute the charge rule? Identify missing model components.\nComplete unchanged second material case with the six numbered inputs: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-6c7-six-explicit-model-inputs-author-20261018-v1/MATERIAL.one-whole-operative-case.with-six-input-rows.author.json#/wholeOperativeCase. The additional fresh stimulus in the first P case remains unchanged."
+    }
+  ],
+  "firstCaseAndFreshStimulusExact": true,
+  "expectationsCoverageVariationRulesExact": true,
+  "sixModelRowsIndependentlyChecked": [
+    {
+      "testId": 1,
+      "ion": "Na+",
+      "facingEndDe": "O-Ende eines Wassermoleküls",
+      "inputSigns": [
+        "+",
+        "-"
+      ],
+      "independentlyDerivedModelResult": "attraction"
+    },
+    {
+      "testId": 2,
+      "ion": "Na+",
+      "facingEndDe": "H-Ende eines Wassermoleküls",
+      "inputSigns": [
+        "+",
+        "+"
+      ],
+      "independentlyDerivedModelResult": "repulsion"
+    },
+    {
+      "testId": 3,
+      "ion": "Cl-",
+      "facingEndDe": "O-Ende eines Wassermoleküls",
+      "inputSigns": [
+        "-",
+        "-"
+      ],
+      "independentlyDerivedModelResult": "repulsion"
+    },
+    {
+      "testId": 4,
+      "ion": "Cl-",
+      "facingEndDe": "H-Ende eines Wassermoleküls",
+      "inputSigns": [
+        "-",
+        "+"
+      ],
+      "independentlyDerivedModelResult": "attraction"
+    },
+    {
+      "testId": 5,
+      "ion": "Na+",
+      "facingEndDe": "Neutrales Ende der Vergleichskarte U",
+      "inputSigns": [
+        "+",
+        "0"
+      ],
+      "independentlyDerivedModelResult": "undetermined"
+    },
+    {
+      "testId": 6,
+      "ion": "Cl-",
+      "facingEndDe": "Neutrales Ende der Vergleichskarte U",
+      "inputSigns": [
+        "-",
+        "0"
+      ],
+      "independentlyDerivedModelResult": "undetermined"
+    }
+  ],
+  "allWrittenJSONParsed": true
+}

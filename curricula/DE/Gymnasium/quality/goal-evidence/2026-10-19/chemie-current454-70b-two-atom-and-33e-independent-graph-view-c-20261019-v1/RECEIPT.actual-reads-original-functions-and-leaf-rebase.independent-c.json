@@ -1,0 +1,112 @@
+{
+  "role": "ACTUAL_INDEPENDENT_GRAPH_VIEW_C_RECEIPT",
+  "reviewAuthority": "ai_candidate",
+  "status": "needs_human_review",
+  "active": false,
+  "nativeDApproval": false,
+  "nativeAApproval": false,
+  "nativeMApproval": false,
+  "nativeVApproval": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "M7Claim": false,
+  "sourceAllocationApprovalClaim": false,
+  "wholePackageFinalityClaim": false,
+  "normalWrites": 0,
+  "recordedAt": "2026-10-18T22:41:31.810456+00:00",
+  "authorSealChecks": [
+    {
+      "seal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-two-atom-and-33e-text-author-20261019-v1/SEAL.core-component-only.json",
+        "sha256": "98e499a136bc8d096fd512768093af6fef3b19ba3c2d9c026a9340f859cacc5e",
+        "bytes": 6221
+      },
+      "boundFilesVerified": 9
+    },
+    {
+      "seal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-two-atom-and-33e-text-author-20261019-v1/SEAL.graph-view-component-only.json",
+        "sha256": "7c6818c17b575f6d0c6a268dfce9c6dbfa3d3fb397a3178e1ab75cead423683a",
+        "bytes": 13207
+      },
+      "boundFilesVerified": 41
+    }
+  ],
+  "finalRawPinsRechecked": true,
+  "normalCanonicalAtReadAndSeal": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "sha256": "e74a647d4f8cd4ba07cbdab5b53e0deb3453514822b265196870482af44180f5",
+    "bytes": 5428508
+  },
+  "currentTargetedPInputs": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-two-atom-and-33e-independent-graph-view-c-20261019-v1/inputs/ACTUAL.targeted-current-whole-P-owners.json",
+    "sha256": "77a30854ca6a8294df82ade6bc97faba4f2d13c93c938428b551897ba5393b00",
+    "bytes": 103991
+  },
+  "scientificDecisionSource": "Actual whole core goals/P, all3 complete DE/EN materials,11 whole current selected P profiles and10 reverse whole goals; no new peer core review.",
+  "originalFunctionsExecuted": [
+    "validateCanonicalLandscape(normalizeCanonicalLandscape(candidate))",
+    "compileCompositionView before/after for exactly39 affected views",
+    "collectCompositionProjectionRoleGoalIds before/after for exactly39 affected views",
+    "production collectAuthoritativeTargetAtomicGoalIds for exactly39 affected views",
+    "curriculum_symlink_errors (portability only)"
+  ],
+  "supplementalChecks": [
+    "Raw/sealed author pins and exact whole goal/view CAS",
+    "Complete actual reverse-reference enumeration against70b (10)",
+    "requires referential closure and directed-cycle check",
+    "Every old goal body and view target/support role preserved outside exact cells",
+    "Property prerequisite closure in each view, no direct or indirect70b requirement",
+    "Both HE whole examData exactly unchanged",
+    "Actual current P owner selection and whole-profile equality",
+    "Every written JSON reparsed before seal"
+  ],
+  "actualResults": {
+    "existingGoalCellsChanged": 7,
+    "newGoalCells": 1,
+    "unrelatedExistingGoalsExact": 734,
+    "normalGoalCount": 741,
+    "candidateGoalCount": 742,
+    "viewsCompiled": 39,
+    "viewErrors": 0,
+    "viewWarningsPreexistingExact": 22,
+    "requiresCycles": 0,
+    "missingRequires": 0,
+    "currentWholePRead": 11,
+    "viewSuccessorFiles": 33,
+    "parentInheritanceCoordinates": 6
+  },
+  "originalFirstRawWholeGuard": {
+    "exitCode": 1,
+    "reason": "Unrelated current E7 leaf changed after historical whole author baseline; raw stderr preserved. Not bypassed: exact historical raw reconstruction verified and all8 current leaf-before bodies matched; only rebased leaf selection accepted."
+  },
+  "subsequentCurrentLeafGuardAndOriginalFunctions": {
+    "exitCode": 0,
+    "stdout": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-two-atom-and-33e-independent-graph-view-c-20261019-v1/checks/chemie-70b-graph-view-independent-c.rebased.stdout.txt",
+      "sha256": "5871fd12f2374eb4b572d3b1bd9460ec0b473ed3dc5e914f1a55744dd31a7b78",
+      "bytes": 562
+    },
+    "stderr": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-two-atom-and-33e-independent-graph-view-c-20261019-v1/checks/chemie-70b-graph-view-independent-c.rebased.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  },
+  "generationParameters": {
+    "model": "OpenAI Codex; exact model/version not exposed",
+    "temperature": "not exposed",
+    "seed": "not exposed",
+    "hiddenParameters": "not exposed; none invented"
+  },
+  "helper": {
+    "path": "tmp/chemie-70b-graph-view-independent-c.mts",
+    "sha256": "6db53e7d706edd8e5d7e797c267955b79ef0c0b8d30d4667c016070e3ef9a9ad",
+    "bytes": 15896
+  },
+  "acceptedCAS": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-two-atom-and-33e-independent-graph-view-c-20261019-v1/ACCEPTED-CAS.exact-eight-goal-cells-and-thirty-three-views.independent-c.json",
+    "sha256": "0bef1a4770a349a8dfa425ad94fe9e27ea23b038cd2c0f56935cba2dba9b7d28",
+    "bytes": 42496
+  }
+}

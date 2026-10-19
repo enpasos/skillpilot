@@ -4,7 +4,42 @@ This directory configures the central deterministic five-gate report for
 Mathematics, Physics, Chemistry, Biology and Economics. Current work targets
 Chemistry only; the achieved Mathematics, Physics and Biology M7 floors remain protected.
 
-Current Chemistry continuation:
+Current local Chemistry completion, 19 October:
+[455/455 completion, machine M7 and remaining source boundaries](../../../../../docs/qa-ci/chemie-current455-integration-progress-2026-10-19.md).
+The final original five-subject report measures Chemistry 455/455, all five
+D/P/A/M/V counts 455, six required checks passed, readiness true and zero
+blocking issues. Mathematics retains 807/807, Physics 478/478, Biology 397/397
+and Economics 346/346. The CQR generated at 2026-10-19T00:27:10.291Z reports
+global Chemistry M7 with all global rules passing, including CQR-303/501.
+The separate route scope remains M4 under its maximum-M4 model; all six scope
+rules pass.
+
+There are 136 registered D indexes, 635 successor edges, 158 P configurations
+and 80 A configurations; the in-flight ledger is empty. The increase from 414
+to 455 comprises four direct D9 count gains and 37 renewed dependent bindings,
+with no new goals in the closeout. The final portable F03 locator binding has two
+actual current independent rounds and adds zero completions. Historical raw
+review metadata, judgments, artifacts, image bytes and prompts are retained.
+
+Original build/check passes for all five books: Chemistry has 423 newly
+rendered goal pages; the other four retain their hashes. Atlas build/check and
+the actual offline export test pass with 455 canonical goals, 423 published
+goals, 48 source views, 504 unresolved source-scope decisions and 32 omissions.
+The 3,717 target-country bindings comprise 3,658 direct bindings and 59 through
+reviewed prerequisites. Fulfillment of every official clause remains unproven.
+Human review, approval, trials and learner performance remain separate.
+This work is local and uncommitted; the 24 green checks for the earlier
+`41a37acd…` commit do not establish CI for this work.
+
+Earlier Chemistry continuation, 19 October, before the final F03 binding:
+[455-goal integration and final current reviews](../../../../../docs/qa-ci/chemie-current455-integration-progress-2026-10-19.md).
+The reviewed normal checkout contains 455 current ordinary goals. All nine
+final current description resolutions have passed the original native workflow
+and are registered; the complete central report and CQR-303/M7 closeout are
+being measured. Source bindings cover all 3,717 actual target-country pairs.
+This is not yet a new M7 or GitHub CI completion claim.
+
+Previous Chemistry continuation, 18 October:
 [Route completion after the green checkpoint, 18 October](../../../../../docs/qa-ci/chemie-current450-route-completion-resumption-2026-10-18.md).
 The 450-goal working overlay is restored directly in the normal checkout.
 Reviewed orientation and 75 local assessment designs are now integrated;

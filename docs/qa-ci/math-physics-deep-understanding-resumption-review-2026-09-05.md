@@ -1,6 +1,47 @@
 # Mathematik/Physik: Wiederaufnahme- und Effizienzreview vom 5. September 2026
 
-## Chemie wieder aufgenommen – 18. Oktober 2026
+## Lokaler Chemie-Abschluss – 19. Oktober 2026
+
+Der [455er-Abschlussstand](chemie-current455-integration-progress-2026-10-19.md)
+ist vollständig lokal gemessen: **455/455 strenge Abschlüsse**, D/P/A/M/V
+jeweils 455, sechs Pflichtprüfungen PASS, `strictCompletionReady=true` und
+keine Blocker. Mathematik 807/807, Physik 478/478, Biologie 397/397 und
+Wirtschaftswissenschaften 346/346 bleiben jeweils bei 100 %.
+
+Der [CQR vom 19. Oktober, 00:27:10.291 UTC](status/curriculum-quality-status.json)
+weist Chemie global als **M7** aus; alle globalen Regeln einschließlich
+CQR-303/501 bestehen. Der getrennte Routen-Scope bleibt nach seinem
+bis M4 reichenden Modell **M4**, bei sechs bestandenen Scope-Regeln.
+Der aktuelle Bestand umfasst 136 D-Indizes, 635 Nachfolgerkanten, 158 P- und
+80 A-Konfigurationen; der In-flight-Ledger ist leer.
+
+Der Zuwachs von 414 auf 455 umfasst vier direkte D9-Zählzuwächse und 37 erneuerte
+abhängige Bindungen. Die abschließende portable F03-Bindung mit zwei echten
+aktuellen unabhängigen Runden bringt netto 0; in der Abschlussintegration
+wurden keine neuen Ziele angelegt. Der originale Buchbuild und Buchcheck
+bestehen für fünf Bücher: Chemie 423 Zielseiten neu, vier Bücher hashgleich
+wiederverwendet. Der Atlas bleibt bei 423/455 publizierten Zielen,
+48 Quellsichten, 32 Omissionen und 504 offenen Scopeentscheidungen.
+3717 technische Ziel-Land-Bindungen sind keine vollständige amtliche
+Quellklauselabdeckung.
+
+Der Stand ist noch nicht committet oder gepusht und hat noch keinen eigenen
+GitHub-CI-Pass. Die 24 grünen Checks gehören zum früher belegten
+`main`-Commit `41a37acd…`. Menschliche Prüfung, Freigabe, Erprobung und
+tatsächliche Lernendenleistungen werden nicht behauptet. Die nachstehenden
+445er-/450er-Stände und die 414er-Zwischenmessung bleiben datierte Geschichte.
+
+## Historischer Zwischenstand vor der Chemie-Abschlussmessung – 19. Oktober 2026
+
+Der [sichtbare 455er-Integrationsstand](chemie-current455-integration-progress-2026-10-19.md)
+enthält die unabhängig geprüften aktuellen Text-, Material-, Bild- und
+Quellennachfolger. Die letzten neun nativen D-Resolutionen sind abgeschlossen
+und zentral registriert. Der vollständige zentrale Bericht und CQR-303/M7
+werden aktuell gemessen; ein neuer M7- oder GitHub-CI-Abschluss wird daraus
+noch nicht behauptet. Mathematik-, Physik- und Biologie-M7 bleiben geschützt.
+Die folgenden Pausen- und Zwischenstände sind historische Messungen.
+
+## Vorherige Chemie-Fortsetzung – 18. Oktober 2026
 
 Der Zwischenstand `6754609e9` hat alle 14 GitHub-Checks bestanden. Der
 [450er-Arbeitsstand und die gezielte Lernwegfortsetzung](chemie-current450-route-completion-resumption-2026-10-18.md)

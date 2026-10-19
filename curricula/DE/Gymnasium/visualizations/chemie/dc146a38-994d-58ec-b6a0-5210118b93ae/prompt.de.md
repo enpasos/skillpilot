@@ -1,0 +1,34 @@
+# Lernzielvisualisierung: Sauren Carbonsäurecharakter an Beobachtungen belegen
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `dc146a38-994d-58ec-b6a0-5210118b93ae`
+- Titel: Sauren Carbonsäurecharakter an Beobachtungen belegen
+- Beschreibung: Die lernende Person kann den sauren Charakter strukturell bekannter Carbonsäuren anhand vorgegebener Indikator- und Reaktionsbeobachtungen mit geeigneten Vergleichsproben begründet belegen und die Aussagegrenze gegenüber einem eindeutigen Strukturbeweis benennen.
+
+## Generator
+
+- Provider: OpenAI / Codex built-in image_gen; model version not exposed
+- Status: needs_review
+- Quellbild: `dc146a38-994d-58ec-b6a0-5210118b93ae.png`
+- Public Asset: `/assets/goal-visualizations/chemie/dc146a38-994d-58ec-b6a0-5210118b93ae/dc146a38-994d-58ec-b6a0-5210118b93ae.png`
+
+## Prompt
+
+```text
+Use case: scientific-educational
+Asset type: one chemistry orientation illustration for interpreting supplied observations, NOT an experiment or task.
+Create a new native PNG near 1600 × 900 pixels, close to 16:9 landscape. Friendly abstract comic style, broad clean outlines, rounded paper observation cards, light warm background, restrained blue/green accents and large dark navy rounded lettering. Spacious and legible at 360 px and 680 px width; no photorealism or dense technical chart.
+Scene: TWO large side-by-side supplied observation cards, labeled "Ethansäure" and "Ethanol". These represent separately provided data for known compounds in comparably dilute aqueous samples under mild conditions. No people, hands, pouring, droppers, active test instructions or equipment operation.
+Each card has two large observation groups:
+1) "Blauer Lackmus": show two large paper-strip icons connected by a short observation arrow. On the Ethansäure card the first strip is BLUE and the second strip RED. On the Ethanol control card BOTH strips are BLUE. This is specifically initially BLUE LITMUS PAPER, never a universal indicator. Keep the liquid samples themselves colorless: litmus colors belong to paper strips only.
+2) "Hydrogencarbonat": show one big simple transparent test-tube icon of a COLORLESS aqueous sample. On the Ethansäure card, show several clearly outlined, colorless gas-volume bubbles WITHIN the liquid, labeled "Gasblasen". On the Ethanol control card, show no gas bubbles, labeled "keine Gasblasen".
+Gas accuracy: bubbles are schematic interfaces of colorless gas in liquid. They are NOT colored CO2, visible gas molecules, smoke, vapor, cloudy precipitate, or colored chemical liquid. Draw NO gas cloud, plume or floating CO2 molecule. The underlying supplied data name CO2, but the image does not infer a gas's identity from a bubble's appearance. No reaction equations or chemical formulas are needed.
+Text (verbatim; only these labels, repetitions allowed): "Vorgegebene Befunde"; "Ethansäure"; "Ethanol"; "Blauer Lackmus"; "Hydrogencarbonat"; "Gasblasen"; "keine Gasblasen"; "Milde wässrige Proben"; "Beleg ≠ Strukturbeweis".
+Place "Vorgegebene Befunde" as a large top heading. Put "Milde wässrige Proben" and the short boundary "Beleg ≠ Strukturbeweis" in a clear large footer. Keep the comparison objects and color differences prominent. The final boundary means that these supplied observations support acidic character for the known compounds under the stated conditions, but do not uniquely prove a carboxyl structure.
+Constraints: do not imply all acids are carboxylic acids, ethanol is alkaline, an OH group proves acidic character, or gas bubbles uniquely identify a functional group. Do not show a universal-indicator color wheel, rainbow strip, pH scale, numeric concentration, chemical equation, lab procedure, real learner execution, extra substances, task numbering, solution rubric, logos, watermarks or technical IDs. This is a bounded illustration of provided observations, not assessment evidence or practical competence.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

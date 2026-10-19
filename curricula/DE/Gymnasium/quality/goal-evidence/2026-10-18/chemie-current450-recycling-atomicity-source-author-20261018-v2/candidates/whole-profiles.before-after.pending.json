@@ -1,0 +1,483 @@
+{
+  "role": "INFORMED_AUTHOR_CANDIDATE_NOT_INDEPENDENT_REVIEW",
+  "status": "pending_separate_independent_review",
+  "active": false,
+  "reviewAuthority": "ai_candidate",
+  "humanApproval": false,
+  "actualLearnerPerformanceRecorded": false,
+  "M7Claim": false,
+  "beforeWholeCurrentRecord": {
+    "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "schemaVersion": 2,
+    "reviewId": "canonical-chemistry-current447-seventeen-paired-informed-positive-native-20261018-v1",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "goalId": "8721d943-8368-5304-bd3c-7d7944099662",
+    "goalFingerprint": "sha256:76edec10515d64c0b933874f2b9d3907bf2d85f990765c275744b032134a1d0f",
+    "reviewInputFingerprint": "sha256:08b9aec26c53bff890ad9cb0c0764a5f220ea11db19dcf16b81b03458353598b",
+    "profileFingerprint": "sha256:854a7a3d13d2b156b0ea358a4c28eb6b68633d25d519c3092f5cc03811b562a5",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "reviewedAt": "2026-10-17T23:22:49.296Z",
+    "reviewer": "codex-technical-native-serialization-from-actual-paired-informed-science",
+    "reason": "Technical native serialization from two actually sealed informed scientific judgments; no new reviewer vote. A: Hydrolyse geeigneter Polymerbindungen wird richtig innerhalb rohstofflicher Verfahren eingeordnet. Das vollständige P bleibt exakt und unterscheidet mechanische Kettenerhaltung, chemische Spaltung und energetische Verwertung; Letztere wird nicht zu stofflichem Recycling. Die ganzen PET-Fälle liefern40/80=0,50 und100/75≈1,33kWh/kg gleichwertiges PET. Pyrolyse-Feedstock ist noch kein fertiges PET. Im Mischfall ergeben35*0,8=28kg PET und50*0,9=45kg PE;27kg des100kg-Ausgangs fehlen im Zielprodukt. PE ohne passende Esterbindungen wird nicht durch die gegebene PET-Hydrolyse aufgeschlossen. Die Platte erfüllt einen anderen Bedarf. Im ganzen hb208-Fall ergeben100*44=4400MJ,244,4kWh Strom,488,9kWh genutzte Wärme und ideal314,3kg direktesCO2; fehlende Inputs und Systemgrenzen verbieten eine LCA-Gesamtrangfolge. Der neue unbekannte PVC/PE-Mischfall darf diese reinen PE-Zahlen nicht übernehmen. | B: Hydrolyse geeigneter Polymere wird korrekt als rohstofflicher Weg untergeordnet. Ganze P/Materialien bleiben exakt: mechanische Kettenerhaltung, PET-Esterhydrolyse, Pyrolyse-Feedstock und energetische Oxidation sind unterschieden.40/80=0,50 und100/75≈1,33kWh/kg äquivalentes PET;35·0,8+50·0,9=73kg Zielprodukte,27kg außerhalb. PE hat kein PET-artiges Estergerüst. Im separaten100kg-PE-Modell4400MJ→880MJ Strom und1760MJ genutzte Wärme; direkteCO2-Masse100·44/14≈314,3kg. Das sind verschiedene Funktionen, keine fertige LCA-Rangliste. Unbekannter PVC/PE-Mischabfall verhindert Übernahme der Rein-PE-Bilanz. Exact source pins and pointers: Full paired source pins/pointers: PROVENANCE.actual-paired-science.json /goals/8721d943-8368-5304-bd3c-7d7944099662/P.",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": [],
+    "dissent": [
+      "Inactive AI candidate; final normal integration and all independent D/source/M7/human gates remain separate."
+    ],
+    "profile": {
+      "archetype": "data",
+      "expectations": [
+        {
+          "id": "e1",
+          "essentialUnderstandingDe": "Werkstoffliches Recycling erhält Polymerketten überwiegend; rohstoffliche Verfahren spalten sie, Hydrolyse betrifft passende Bindungen.",
+          "essentialUnderstandingEn": "Mechanical recycling largely retains polymer chains; feedstock routes split them, and hydrolysis requires suitable linkages.",
+          "observablePerformanceDe": "Beschreibt drei Prozesswege einschließlich PET-Hydrolyse und PE-Grenze.",
+          "observablePerformanceEn": "Describes three routes including PET hydrolysis and the limitation for PE."
+        },
+        {
+          "id": "e2",
+          "essentialUnderstandingDe": "Ausbeute, Energie und Produktqualität müssen auf denselben funktionalen Bedarf und Systemgrenzen bezogen werden.",
+          "essentialUnderstandingEn": "Yield, energy and quality must be compared for the same functional demand and system boundary.",
+          "observablePerformanceDe": "Rechnet bereitgestellte Massen- und Energieflüsse mit Verlusten transparent um.",
+          "observablePerformanceEn": "Calculates supplied mass and energy flows transparently including losses."
+        },
+        {
+          "id": "e3",
+          "essentialUnderstandingDe": "Quellenkritik und Kontext entscheiden über tragfähige ökologische/ökonomische Urteile.",
+          "essentialUnderstandingEn": "Source criticism and context determine defensible environmental/economic judgements.",
+          "observablePerformanceDe": "Begründet einen Kreislauf und revidiert ihn bei geänderter Sortierung oder Produktanforderung.",
+          "observablePerformanceEn": "Justifies a cycle and revises it under changed sorting or product requirements."
+        },
+        {
+          "id": "hb208-energy-recovery-distinction",
+          "essentialUnderstandingDe": "Energetische Verwertung oxidiert Kunststoff zur Energienutzung und schließt keinen Stoffkreislauf; Vergleich braucht gleiche Funktion/Systemgrenze.",
+          "essentialUnderstandingEn": "Energy recovery oxidizes plastic for useful energy and closes no material cycle; comparison needs equal function/boundary.",
+          "observablePerformanceDe": "Die lernende Person erklärt die drei Wege, bilanziert den PE-Modellfall und begrenzt den Transfer auf unbekannte Gemische.",
+          "observablePerformanceEn": "The learner explains three routes, balances the PE model and limits transfer to unknown mixtures."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "e1",
+          "e2",
+          "e3",
+          "hb208-energy-recovery-distinction"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "v1",
+          "textDe": "Sortenreinheit",
+          "textEn": "Sorting purity"
+        },
+        {
+          "id": "v2",
+          "textDe": "Produktqualität und Bedarf",
+          "textEn": "Product quality and demand"
+        },
+        {
+          "id": "v3",
+          "textDe": "Energie-/Quellengrenzen",
+          "textEn": "Energy and source boundaries"
+        },
+        {
+          "id": "hb208-energy-recovery-distinction-transfer",
+          "textDe": "Bedingungswechsel im vollständigen Transfer selbstständig berücksichtigen.",
+          "textEn": "Independently account for changed conditions in the complete transfer."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "8721d943-case-1",
+          "taskDemandDe": "Erkläre die Wege und Esterhydrolyse. Berechne Betriebsenergie je kg geeignetem PET für die ersten beiden Wege. Wähle bei ausreichender Regranulatqualität vorläufig und bewerte den Prospektsatz.",
+          "taskDemandEn": "Explain routes and ester hydrolysis. Calculate operational energy per kg of suitable PET for the first two routes. Make a provisional choice if regranulate quality suffices and assess the brochure claim.",
+          "expectedPerformanceDe": "Mechanisch waschen/zerkleinern/aufschmelzen, Ketten weitgehend erhalten; Hydrolyse spaltet Ester in Säure-/Alkoholprodukte, gereinigt erneut polymerisierbar.0.50 versus 1.33 k Wh/kg geeignetes PET. Mechanisch vorläufig günstiger für diesen Bedarf. Feedstock ist noch kein gleichwertiges PET; Pyrolysezahl daher nicht direkt vergleichbar. Strommix, Qualität, Transport, Chemikalien, Verluste, Kosten und Anbieterinteresse fehlen: „immer“ unbelegt.",
+          "expectedPerformanceEn": "Mechanical washing/shredding/remelting largely preserves chains; hydrolysis cleaves ester links into acid/alcohol products, which can be purified and repolymerised.0.50 versus 1.33 k Wh/kg suitable PET. Mechanical recycling is provisionally preferable for this demand. Feedstock is not yet equivalent PET, so pyrolysis is not directly comparable. Electricity mix, quality, transport, reagents, losses, costs and vendor interest remain unresolved: “always” is unsupported.",
+          "understandingFocusDe": "Fallbezogene Aspekte: Mechanische Kettenerhaltung, PET-Esterhydrolyse und Pyrolyse-Feedstock von fertigem PET trennen. / 40/80=0.50 und 100/75≈1.33 kWh/kg geeignetes PET; Pyrolyseprodukt nicht gleichwertig. / Mechanisch vorläufig bei geeigneter Qualität; Strommix, Chemikalien/Transport und Prospektinteresse verhindern Immer-Urteil. Die Verknüpfung zu Erwartungs-IDs behauptet keine vollständige Erfüllung jeder Gesamtprofilerwartung in diesem Einzelfall.",
+          "understandingFocusEn": "Case-specific aspects: Distinguish mechanical chain retention, PET ester hydrolysis and pyrolysis feedstock from finished PET. / 40/80=0.50 and 100/75≈1.33 kWh/kg suitable PET; pyrolysis product not equivalent. / Mechanical provisionally at adequate quality; electricity mix, chemicals/transport and prospectus interest preclude an always claim. Links to expectation IDs do not assert complete fulfilment of every whole-profile expectation in this one case."
+        },
+        {
+          "id": "8721d943-case-2",
+          "taskDemandDe": "Berechne zurückgewonnenes PET/PE und Verluste. Erkläre warum PE nicht wie PET hydrolysierbar ist. Bewerte Kreislauf versus Platte und welche Daten die Auswahl entscheiden.",
+          "taskDemandEn": "Calculate recovered PET/PE and losses. Explain why PE cannot be hydrolysed like PET. Compare the cycle with the board route and identify deciding evidence.",
+          "expectedPerformanceDe": "PET 28 kg, PE 45 kg, zusammen 73 kg; 27 kg des ursprünglichen 100 kg nicht im Zielprodukt. PE-C–C-Rückgrat besitzt keine Esterhydrolysestellen. Sortierung plus materialgerechte Wege stützt sortenreinen Kreislauf; Platte erfüllt anderen Bedarf und kann ebenfalls sinnvoll sein. Reststoffbehandlung, Qualität/Neumaterialersatz, Energie/Kosten und reale Nachfrage entscheiden; kein vollständig geschlossener Nullverlustkreislauf.",
+          "expectedPerformanceEn": "PET 28 kg, PE 45 kg, total 73 kg; 27 kg of the initial 100 kg is outside target products. PE has a C–C backbone without ester-hydrolysis sites. Sorting plus material-specific routes supports a single-polymer cycle; the board serves another demand and may also be useful. Residue treatment, quality/virgin-material displacement, energy/cost and actual demand decide; this is not a loss-free closed cycle.",
+          "understandingFocusDe": "Fallbezogene Aspekte: PET-Ester hydrolysierbar; PE-C–C ohne Esterstellen, materialgerechte Wege nach Sortierung. / 35·0.8=28 kg PET, 50·0.9=45 kg PE, 73 kg Zielprodukt und 27 kg nicht darin. / 73 kg sortenreines Produkt versus 70 kg Platte erfüllen andere Nachfrage; Qualität, Ersatz, Energie/Kosten/Reststrom entscheiden. Die Verknüpfung zu Erwartungs-IDs behauptet keine vollständige Erfüllung jeder Gesamtprofilerwartung in diesem Einzelfall.",
+          "understandingFocusEn": "Case-specific aspects: PET esters hydrolysable; PE C–C lacks ester sites, material-specific routes after sorting. / 35·0.8=28 kg PET, 50·0.9=45 kg PE, 73 kg target product and 27 kg outside it. / 73 kg pure products versus 70 kg sheet serve different demand; quality, substitution, energy/cost/residue determine choice. Links to expectation IDs do not assert complete fulfilment of every whole-profile expectation in this one case."
+        },
+        {
+          "id": "hb208-recovery-routes-8721",
+          "taskDemandDe": "Bearbeite den vollständigen PE-Stoff-/Energievergleich und neuen Mischabfall.",
+          "taskDemandEn": "Handle the complete PE material/energy comparison and new mixed waste.",
+          "expectedPerformanceDe": "Energienutzung, Stoffrückgewinnung und LCA-Urteil unterscheiden.",
+          "expectedPerformanceEn": "Distinguish energy use, material recovery and LCA judgment.",
+          "understandingFocusDe": "Energetische Verwertung oxidiert Kunststoff zur Energienutzung und schließt keinen Stoffkreislauf; Vergleich braucht gleiche Funktion/Systemgrenze.",
+          "understandingFocusEn": "Energy recovery oxidizes plastic for useful energy and closes no material cycle; comparison needs equal function/boundary."
+        }
+      ]
+    }
+  },
+  "after": [
+    {
+      "goalId": "8721d943-8368-5304-bd3c-7d7944099662",
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Werkstoffliches Recycling erhält Polymerketten überwiegend; rohstoffliche Verfahren liefern durch Kettenspaltung Rohstoffe. Energetische Verwertung liefert eine andere Funktion. Die chemische Bindungs-/Produktableitung der Hydrolyse bleibt vollständig beim getrennten Hydrolyseatom.",
+            "essentialUnderstandingEn": "Mechanical recycling largely retains chains; feedstock routes obtain raw materials through chain cleavage. Energy recovery supplies a different function. Chemical hydrolysis linkage/product derivation remains fully with the separate hydrolysis atom.",
+            "observablePerformanceDe": "Ordnet die gegebenen Prozesswege und Stoffprodukte fallbezogen ein, unterscheidet fertiges geeignetes Polymer von Rohstoff und energetischer Nutzung und nutzt die separat begründete PET/PE-Hydrolysegrenze im Urteil.",
+            "observablePerformanceEn": "Classifies supplied routes and material products in context, distinguishes suitable finished polymer from feedstock and energy use, and uses the separately justified PET/PE hydrolysis limitation in the judgment."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Ausbeute, Energie und Produktqualität müssen auf denselben funktionalen Bedarf und Systemgrenzen bezogen werden.",
+            "essentialUnderstandingEn": "Yield, energy and quality must be compared for the same functional demand and system boundary.",
+            "observablePerformanceDe": "Rechnet bereitgestellte Massen- und Energieflüsse mit Verlusten transparent um.",
+            "observablePerformanceEn": "Calculates supplied mass and energy flows transparently including losses."
+          },
+          {
+            "id": "e3",
+            "essentialUnderstandingDe": "Quellenkritik und Kontext entscheiden über tragfähige ökologische/ökonomische Urteile.",
+            "essentialUnderstandingEn": "Source criticism and context determine defensible environmental/economic judgements.",
+            "observablePerformanceDe": "Begründet einen Kreislauf und revidiert ihn bei geänderter Sortierung oder Produktanforderung.",
+            "observablePerformanceEn": "Justifies a cycle and revises it under changed sorting or product requirements."
+          },
+          {
+            "id": "hb208-energy-recovery-distinction",
+            "essentialUnderstandingDe": "Energetische Verwertung oxidiert Kunststoff zur Energienutzung und schließt keinen Stoffkreislauf; Vergleich braucht gleiche Funktion/Systemgrenze.",
+            "essentialUnderstandingEn": "Energy recovery oxidizes plastic for useful energy and closes no material cycle; comparison needs equal function/boundary.",
+            "observablePerformanceDe": "Die lernende Person erklärt die drei Wege, bilanziert den PE-Modellfall und begrenzt den Transfer auf unbekannte Gemische.",
+            "observablePerformanceEn": "The learner explains three routes, balances the PE model and limits transfer to unknown mixtures."
+          },
+          {
+            "id": "composting-conditions-and-route-judgment",
+            "essentialUnderstandingDe": "Kompostierung ist bedingungsabhängiger aerober biologischer Abbau; sie erhält nicht automatisch Polymer als Werkstoff. Biobasierte Herkunft, Esterstellen oder CO2-Freisetzung beweisen weder beliebige Abbaubarkeit noch Klimaneutralität. Vierwege-Abwägung verwendet passende Stoff-/Energie-/Kosten-/Funktionsgrenzen. Dieser zusätzliche Aspekt wird als eigener authored Umfang im bestehenden breiteren SkillPilot-Ziel erhalten; die amtlichen Nachweise hier sind genau zwei BW-Klauseln, keine bundesweite Vierwegepflicht.",
+            "essentialUnderstandingEn": "Composting is condition-dependent aerobic biodegradation and does not automatically retain polymer material. Biobased origin, ester sites or CO2 release establish neither arbitrary degradability nor climate neutrality. Four-route judgment needs appropriate material/energy/cost/function boundaries. This added aspect is retained as own authored content in the existing broader SkillPilot goal; official support here is exactly two BW clauses, not a nationwide four-route duty.",
+            "observablePerformanceDe": "Unterscheidet werkstoffliches und rohstoffliches Recycling, energetische Verwertung und Kompostierung an den vollständigen Fällen; begründet Kompostierbedingungen und Rest-/Energie-/Kostenfolgen, prüft Anbieter-/Annahmekarten und leitet ein begrenztes ökologisch-wirtschaftliches Urteil ab. Im frischen biobasierten PE-Fall verwirft sie unbelegte Kompostierbarkeit/Zahlenübernahme und begründet die Grenzen selbst. Alle alten PE-Kreislauf-, HB-Energie-, Quellen- und Transferpflichten bleiben zusätzlich erhalten.",
+            "observablePerformanceEn": "Distinguishes mechanical/feedstock recycling, energy recovery and composting in the complete cases; explains conditions and residue/energy/cost consequences, checks provider/acceptance cards and derives a limited environmental/economic judgment. In fresh biobased PE rejects unsupported compostability/numerical transfer and independently explains limits. All old PE-loop, HB-energy, source and transfer duties remain."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2",
+            "e3",
+            "hb208-energy-recovery-distinction",
+            "composting-conditions-and-route-judgment"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "v1",
+            "textDe": "Sortenreinheit",
+            "textEn": "Sorting purity"
+          },
+          {
+            "id": "v2",
+            "textDe": "Produktqualität und Bedarf",
+            "textEn": "Product quality and demand"
+          },
+          {
+            "id": "v3",
+            "textDe": "Energie-/Quellengrenzen",
+            "textEn": "Energy and source boundaries"
+          },
+          {
+            "id": "hb208-energy-recovery-distinction-transfer",
+            "textDe": "Bedingungswechsel im vollständigen Transfer selbstständig berücksichtigen.",
+            "textEn": "Independently account for changed conditions in the complete transfer."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "8721d943-case-1",
+            "taskDemandDe": "Erkläre die Wege und Esterhydrolyse. Berechne Betriebsenergie je kg geeignetem PET für die ersten beiden Wege. Wähle bei ausreichender Regranulatqualität vorläufig und bewerte den Prospektsatz. Gemeinsamer Originalfall; die selbstständige chemische Hydrolyseableitung wird beim neuen Atom69f2ecbb erfasst. Nutze für Quellenkritik die vollständig bereitgestellten Quellenkarten main/fresh in curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-recycling-atomicity-source-author-20261018-v1/materials/recycling-source-cards.learner.DE-EN.pending.json.",
+            "taskDemandEn": "Explain routes and ester hydrolysis. Calculate operational energy per kg of suitable PET for the first two routes. Make a provisional choice if regranulate quality suffices and assess the brochure claim. Joint original case; independent chemical hydrolysis derivation is recorded at new atom69f2ecbb. For source criticism use the complete supplied main/fresh source cards in curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-recycling-atomicity-source-author-20261018-v1/materials/recycling-source-cards.learner.DE-EN.pending.json.",
+            "expectedPerformanceDe": "Mechanisch waschen/zerkleinern/aufschmelzen, Ketten weitgehend erhalten; Hydrolyse spaltet Ester in Säure-/Alkoholprodukte, gereinigt erneut polymerisierbar.0.50 versus 1.33 k Wh/kg geeignetes PET. Mechanisch vorläufig günstiger für diesen Bedarf. Feedstock ist noch kein gleichwertiges PET; Pyrolysezahl daher nicht direkt vergleichbar. Strommix, Qualität, Transport, Chemikalien, Verluste, Kosten und Anbieterinteresse fehlen: „immer“ unbelegt. Die chemischen Aussagen sind der gemeinsame Kontext; ihr unabhängiger Struktur-/Produktnachweis gehört zum neuen Hydrolyseatom. Quellenkarten mit Urheberschaft/Absatz belegen und Zahlen, Bedingungen, Vertrauenswürdigkeit prüfen.",
+            "expectedPerformanceEn": "Mechanical washing/shredding/remelting largely preserves chains; hydrolysis cleaves ester links into acid/alcohol products, which can be purified and repolymerised.0.50 versus 1.33 k Wh/kg suitable PET. Mechanical recycling is provisionally preferable for this demand. Feedstock is not yet equivalent PET, so pyrolysis is not directly comparable. Electricity mix, quality, transport, reagents, losses, costs and vendor interest remain unresolved: “always” is unsupported. Chemical statements are shared context; independent structure/product demonstration belongs to the new hydrolysis atom. Document source-card authorship/paragraph and check figures, conditions and trustworthiness.",
+            "understandingFocusDe": "Fallbezogene Aspekte: Mechanische Kettenerhaltung, PET-Esterhydrolyse und Pyrolyse-Feedstock von fertigem PET trennen. / 40/80=0.50 und 100/75≈1.33 kWh/kg geeignetes PET; Pyrolyseprodukt nicht gleichwertig. / Mechanisch vorläufig bei geeigneter Qualität; Strommix, Chemikalien/Transport und Prospektinteresse verhindern Immer-Urteil. Die Verknüpfung zu Erwartungs-IDs behauptet keine vollständige Erfüllung jeder Gesamtprofilerwartung in diesem Einzelfall.",
+            "understandingFocusEn": "Case-specific aspects: Distinguish mechanical chain retention, PET ester hydrolysis and pyrolysis feedstock from finished PET. / 40/80=0.50 and 100/75≈1.33 kWh/kg suitable PET; pyrolysis product not equivalent. / Mechanical provisionally at adequate quality; electricity mix, chemicals/transport and prospectus interest preclude an always claim. Links to expectation IDs do not assert complete fulfilment of every whole-profile expectation in this one case."
+          },
+          {
+            "id": "8721d943-case-2",
+            "taskDemandDe": "Berechne zurückgewonnenes PET/PE und Verluste. Erkläre warum PE nicht wie PET hydrolysierbar ist. Bewerte Kreislauf versus Platte und welche Daten die Auswahl entscheiden. Gemeinsamer Originalfall; die selbstständige chemische Hydrolyseableitung wird beim neuen Atom69f2ecbb erfasst. Nutze für Quellenkritik die vollständig bereitgestellten Quellenkarten main/fresh in curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-recycling-atomicity-source-author-20261018-v1/materials/recycling-source-cards.learner.DE-EN.pending.json.",
+            "taskDemandEn": "Calculate recovered PET/PE and losses. Explain why PE cannot be hydrolysed like PET. Compare the cycle with the board route and identify deciding evidence. Joint original case; independent chemical hydrolysis derivation is recorded at new atom69f2ecbb. For source criticism use the complete supplied main/fresh source cards in curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-recycling-atomicity-source-author-20261018-v1/materials/recycling-source-cards.learner.DE-EN.pending.json.",
+            "expectedPerformanceDe": "PET 28 kg, PE 45 kg, zusammen 73 kg; 27 kg des ursprünglichen 100 kg nicht im Zielprodukt. PE-C–C-Rückgrat besitzt keine Esterhydrolysestellen. Sortierung plus materialgerechte Wege stützt sortenreinen Kreislauf; Platte erfüllt anderen Bedarf und kann ebenfalls sinnvoll sein. Reststoffbehandlung, Qualität/Neumaterialersatz, Energie/Kosten und reale Nachfrage entscheiden; kein vollständig geschlossener Nullverlustkreislauf. Die chemischen Aussagen sind der gemeinsame Kontext; ihr unabhängiger Struktur-/Produktnachweis gehört zum neuen Hydrolyseatom. Quellenkarten mit Urheberschaft/Absatz belegen und Zahlen, Bedingungen, Vertrauenswürdigkeit prüfen.",
+            "expectedPerformanceEn": "PET 28 kg, PE 45 kg, total 73 kg; 27 kg of the initial 100 kg is outside target products. PE has a C–C backbone without ester-hydrolysis sites. Sorting plus material-specific routes supports a single-polymer cycle; the board serves another demand and may also be useful. Residue treatment, quality/virgin-material displacement, energy/cost and actual demand decide; this is not a loss-free closed cycle. Chemical statements are shared context; independent structure/product demonstration belongs to the new hydrolysis atom. Document source-card authorship/paragraph and check figures, conditions and trustworthiness.",
+            "understandingFocusDe": "Fallbezogene Aspekte: PET-Ester hydrolysierbar; PE-C–C ohne Esterstellen, materialgerechte Wege nach Sortierung. / 35·0.8=28 kg PET, 50·0.9=45 kg PE, 73 kg Zielprodukt und 27 kg nicht darin. / 73 kg sortenreines Produkt versus 70 kg Platte erfüllen andere Nachfrage; Qualität, Ersatz, Energie/Kosten/Reststrom entscheiden. Die Verknüpfung zu Erwartungs-IDs behauptet keine vollständige Erfüllung jeder Gesamtprofilerwartung in diesem Einzelfall.",
+            "understandingFocusEn": "Case-specific aspects: PET esters hydrolysable; PE C–C lacks ester sites, material-specific routes after sorting. / 35·0.8=28 kg PET, 50·0.9=45 kg PE, 73 kg target product and 27 kg outside it. / 73 kg pure products versus 70 kg sheet serve different demand; quality, substitution, energy/cost/residue determine choice. Links to expectation IDs do not assert complete fulfilment of every whole-profile expectation in this one case."
+          },
+          {
+            "id": "hb208-recovery-routes-8721",
+            "taskDemandDe": "Bearbeite den vollständigen PE-Stoff-/Energievergleich und neuen Mischabfall.",
+            "taskDemandEn": "Handle the complete PE material/energy comparison and new mixed waste.",
+            "expectedPerformanceDe": "Energienutzung, Stoffrückgewinnung und LCA-Urteil unterscheiden.",
+            "expectedPerformanceEn": "Distinguish energy use, material recovery and LCA judgment.",
+            "understandingFocusDe": "Energetische Verwertung oxidiert Kunststoff zur Energienutzung und schließt keinen Stoffkreislauf; Vergleich braucht gleiche Funktion/Systemgrenze.",
+            "understandingFocusEn": "Energy recovery oxidizes plastic for useful energy and closes no material cycle; comparison needs equal function/boundary."
+          },
+          {
+            "id": "compostable-polyester-four-route-judgment",
+            "taskDemandDe": "Vergleiche M, R, E und K unter diesen Angaben: Was wird stofflich zurückgeführt, was energetisch genutzt, was biologisch abgebaut? Beurteile je eine ökologische und wirtschaftliche Folge, erörtere mindestens einen begründeten Zielkonflikt und formuliere ein bedingtes Urteil. Eine Rechenquote oder pauschale Rangfolge wird nicht verlangt. Prüfe CYCLE-C hinsichtlich Autor/Interesse, Datenpassung und Aussagegrenzen. Was fehlt für einen Vergleich bei gleicher Produktfunktion? Vollständige Vorgaben: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-recycling-atomicity-source-author-20261018-v2/materials/composting-four-route.learner.DE-EN.pending.json#/cases/0",
+            "taskDemandEn": "Compare M, R, E and K using these data: what is returned as material, used for energy or biologically degraded? Assess one environmental and economic consequence, discuss at least one reasoned trade-off and give a conditional judgment. No calculation quota or blanket ranking is required. Evaluate CYCLE-C by authorship/interest, fit to data and limits. What is missing for comparison at equal product function? Full givens: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-recycling-atomicity-source-author-20261018-v2/materials/composting-four-route.learner.DE-EN.pending.json#/cases/0",
+            "expectedPerformanceDe": "M und R liefern hier verwertbares Polymer, aber unterschiedliche Ausbeute und Prozessaufwand; 80/75 kg sind keine verlustfreien Kreisläufe. E wandelt chemische Energie um und liefert Strom/Wärme statt Polymer. K baut unter den gegebenen geeigneten aeroben Bedingungen biologisch ab: CO2/Biomasse/Rest sind keine 100 kg recyceltes Polymer und die C-Prozente sind keine Gesamtmassenbilanz. K braucht Prozessstrom; Biobasiertheit beseitigt weder Freisetzung noch Prozessfolgen. M bietet hier mehr passendes Polymer bei geringerem Prozessstrom und geringeren Behandlungskosten als R; K und E bieten andere Funktionen. Nach Abfallbehandlungskosten allein ist E am niedrigsten, aber das beweist keine ökologische oder wirtschaftliche Gesamtüberlegenheit, da Produkterlöse, Wärmebedarf, Ersatznutzen, Transport und weitere Folgen fehlen. Ein begründetes bedingtes Urteil kann bei gewünschtem Polymer M bevorzugen oder unter anderem Bedarf eine andere begrenzte Gewichtung offenlegen; die Begründung muss alle vier Wege unterscheiden und K-Daten/Prozessbedingungen berücksichtigen. Anbieterinteresse ist ein Prüfhinweis, kein automatischer Falschheitsbeweis. Die All-Aussage/Neutralität sind durch die Karte nicht belegt.",
+            "expectedPerformanceEn": "M and R produce usable polymer but with different yield/process effort; 80/75 kg are not loss-free cycles. E converts chemical energy and supplies electricity/heat rather than polymer. K biodegrades under the stipulated suitable aerobic conditions: CO2/biomass/residue are not 100 kg recycled polymer, and carbon percentages are not a total mass balance. K uses electricity; biobased origin removes neither releases nor process impacts. M provides more suitable polymer with lower process electricity and treatment cost than R here; K and E provide other functions. E has the lowest stated treatment cost, but product revenue, heat demand, substitution benefits, transport and other impacts are missing, so this proves no overall environmental/economic superiority. A reasoned conditional judgment can favor M for polymer demand or state another limited weighting for different needs; it must distinguish all four routes and consider K data/conditions. Provider interest is a reason to check, not automatic disproof. The universal/neutrality claims are unsupported.",
+            "understandingFocusDe": "Fachlich integriertes Vierwegeurteil mit eigenem Quellen-/Bedingungstransfer; Aufgabenanzahl ist keine Quote.",
+            "understandingFocusEn": "Integrated four-route judgment with independent source/condition transfer; task count is no quota."
+          },
+          {
+            "id": "fresh-biobased-pe-and-missing-compost-conditions",
+            "taskDemandDe": "Beurteile die vier angebotenen Wege jetzt für PE und die gewünschte PE-Funktion. Welche Vergleiche sind unmittelbar belegt, welche Wege/Produktmengen bleiben unbestimmt? Prüfe die Übernahme der K-Zahlen und beide Quellen nach Autor, Zuständigkeit und Belegen. Begründe eine Änderung oder Bestätigung deines vorherigen Urteils. Erkläre, warum weder biobasiert noch eine Esterbindung allein eine Kompostiergarantie unter beliebigen Bedingungen ist; die selbständige Hydrolyseroutine gehört weiterhin zum getrennten Ziel. Vollständige Vorgaben: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-recycling-atomicity-source-author-20261018-v2/materials/composting-four-route.learner.DE-EN.pending.json#/cases/1",
+            "taskDemandEn": "Assess the four proposed routes for PE and the desired PE function. Which comparisons are supported directly and which routes/product amounts remain undetermined? Evaluate copied K figures and both sources by authorship, remit and evidence. Justify changing or maintaining the previous judgment. Explain why neither biobased origin nor an ester bond alone guarantees composting under arbitrary conditions; the independent hydrolysis routine remains in the separate goal. Full givens: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-recycling-atomicity-source-author-20261018-v2/materials/composting-four-route.learner.DE-EN.pending.json#/cases/1",
+            "expectedPerformanceDe": "M stellt 80 kg passendes PE bereit; 20 kg verbleiben außerhalb des Produktkreislaufs. R liefert Rohstoff, nicht 60 kg fertiges PE. E liefert Energie statt Stoffkreislauf; kein alter Heizwert oder CO2-Wert anderer Kunststoffe wird ohne Fallangaben übernommen. Für K sind die Polyesterwerte nicht auf PE übertragbar; biobasierte Herkunft ändert nicht automatisch die angegebene PE-Struktur oder schafft Abbaubefunde. Zudem erfüllen 25 °C/2 Wochen nicht die Bedingungen des ersten Falls. Die kommunale Karte belegt begrenzt die örtliche Annahmeentscheidung, keine universelle Stoffeigenschaft; der Verkäufer liefert keinen passenden Gegenbeleg. Bei gewünschtem PE ist M nach den gegebenen Daten ein begründeter bedingter Vorschlag; Gesamtklima-/Wirtschaftsurteil bleibt offen. K wird als hier nicht belegter/zugelassener Weg eingeordnet, nicht durch erfundene Ausbeute aufgewertet. Auch ein Polyester mit Esterstellen ist nicht ohne passende Mikroorganismen, Zeit und Bedingungen garantiert kompostierbar. Unterschiedliche Nachfrage kann die Gewichtung ändern; kein zusätzlicher Chemie-Mechanismus wird verlangt.",
+            "expectedPerformanceEn": "M supplies 80 kg suitable PE; 20 kg remains outside the product cycle. R provides feedstock, not 60 kg finished PE. E supplies energy rather than a material loop; heating values or CO2 figures for other plastics are not copied without case data. Polyester K values do not transfer to PE; biobased origin does not automatically change the stated PE structure or create degradation evidence. Also, 25 °C/2 weeks does not meet the previous conditions. The municipal card supports its limited local acceptance decision, not a universal material property; the seller supplies no matching counter-evidence. For PE demand M is a defensible conditional proposal from these data; overall climate/economic ranking remains open. K is classified as unsupported/not accepted here rather than given an invented yield. Even ester-containing polyester is not guaranteed compostable without suitable organisms, time and conditions. Different demand can change weighting; no additional chemical mechanism is required.",
+            "understandingFocusDe": "Fachlich integriertes Vierwegeurteil mit eigenem Quellen-/Bedingungstransfer; Aufgabenanzahl ist keine Quote.",
+            "understandingFocusEn": "Integrated four-route judgment with independent source/condition transfer; task count is no quota."
+          }
+        ]
+      },
+      "profileSemanticSHA256": "82ca24713cc458a43e8d200c344f3eef449d3a250cb0269cc5e73790a99555ac"
+    },
+    {
+      "goalId": "69f2ecbb-ac0a-5d3a-8084-2142706e1161",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "polymer-hydrolysis-linkages-products",
+            "essentialUnderstandingDe": "Hydrolyse spaltet passende Verknüpfungen unter Wasseraufnahme und liefert zu den angegebenen Bedingungen passende Endgruppen; Esterbindungen geeigneter Polykondensate lassen sich so auf Monomerbausteine zurückführen. C–C/C–H-Gerüste wiePE besitzen diese Esterstellen nicht. Eine Produktstruktur allein beweist keine technische Ausbeute, Reinheit oder neue Polymerproduktion.",
+            "essentialUnderstandingEn": "Hydrolysis cleaves appropriate linkages with water uptake and forms endpoint groups appropriate to stated conditions; ester links in suitable polycondensates can thereby be traced back to monomer building blocks. C–C/C–H skeletons such asPE lack these ester sites. Product structure alone proves neither industrial yield/purity nor new polymer production.",
+            "observablePerformanceDe": "Markiert passende Kettenbindungen, ordnet Wasseranteile/Produktgruppen strukturgerecht zu und leitet PET- sowie frische Polyesterbausteine selbstständig ab; begründet die begrenzte PE-Negativaussage statt eines pauschalen Nichtverwertbarkeitsurteils.",
+            "observablePerformanceEn": "Marks appropriate chain bonds, correctly allocates water/products and independently derivesPET and fresh polyester building blocks; explains the bounded negativePE conclusion rather than claimingPE cannot be recovered."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "polymer-hydrolysis-linkages-products"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "changed-polyester-and-pe-linkages",
+            "textDe": "Andere vorgegebene Polyesterbausteine und PE-Grenzfall unter explizit gleichen sauren Modellbedingungen; keine Übertragung bloß nach Polymername.",
+            "textEn": "Different supplied polyester building blocks and a limitingPE case under explicitly identical acidic model conditions; no transfer based only on a polymer name."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "polymer-hydrolysis-pet-main",
+            "taskDemandDe": "Bearbeite die vollständigen commonGivens und main-Angaben in curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-recycling-atomicity-source-author-20261018-v1/materials/polymer-hydrolysis.learner.DE-EN.pending.json. Die getrennte Lehrerlösung darf nicht vor der eigenständigen Bearbeitung vorliegen.",
+            "taskDemandEn": "Use the complete commonGivens and main givens in curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-recycling-atomicity-source-author-20261018-v1/materials/polymer-hydrolysis.learner.DE-EN.pending.json. Withhold the separate teacher solution until independent work.",
+            "expectedPerformanceDe": "PET liefert HO–CH2–CH2–OH und HO–C(=O)–C6H4–C(=O)–OH in1,4-Anordnung. Beide Esterverknüpfungen pro symbolischer Wiederholeinheit werden in den Kettenbindungen berücksichtigt; das Carbonyl-C bleibt mit C6H4 verbunden, der Alkohol-O bleibt am Ethylenteil. Eine einzelne Esterhydrolyse verbraucht Wasser; zwei passend gespaltene Verknüpfungen ergeben die beiden bifunktionellen Monomerarten. Keine C–C- oder Ringspaltung. Aufarbeitung/Repolymerisation sind zusätzliche Schritte, keine automatische Folge einer gezeichneten Produktformel.75kg bleiben Prozessvorgabe.",
+            "expectedPerformanceEn": "PET gives HO–CH2–CH2–OH and HO–C(=O)–C6H4–C(=O)–OH with1,4-substitution. Account for both ester links of the symbolic repeat unit along the chain; carbonyl carbon stays attached to C6H4 and alcohol oxygen to the ethylene part. Individual ester hydrolysis consumes water; cleaving the appropriate two links gives the two bifunctional monomer types. No C–C or ring cleavage. Work-up/repolymerisation are further steps, not automatic results of drawing products.75kg remains a process given.",
+            "understandingFocusDe": "Ein zusammenhängender chemischer Hydrolysenachweis; Recycling-/Quellenurteil liegt getrennt bei8721. Zwei unabhängige Demonstrationen können in einer integrierten Leistung liegen, keine zusätzliche Aufgabenquote.",
+            "understandingFocusEn": "One coherent chemical hydrolysis explanation; recycling/source judgment is recorded separately under8721. Two independent demonstrations may occur within one integrated performance, with no extra task quota."
+          },
+          {
+            "id": "polymer-hydrolysis-aliphatic-polyester-fresh",
+            "taskDemandDe": "Bearbeite die vollständigen commonGivens und fresh-Angaben in curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-recycling-atomicity-source-author-20261018-v1/materials/polymer-hydrolysis.learner.DE-EN.pending.json. Die getrennte Lehrerlösung darf nicht vor der eigenständigen Bearbeitung vorliegen.",
+            "taskDemandEn": "Use the complete commonGivens and fresh givens in curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-recycling-atomicity-source-author-20261018-v1/materials/polymer-hydrolysis.learner.DE-EN.pending.json. Withhold the separate teacher solution until independent work.",
+            "expectedPerformanceDe": "Der frische Polyester liefert HO–(CH2)4–OH und HO–C(=O)–(CH2)2–C(=O)–OH. Die Hauptkettenabschnitte des neuen Polyesters werden erhalten, keine PET-Monomere blind übernommen. PE enthält im vorgegebenen C–C/C–H-Gerüst keine Ester- oder entsprechende hydrolysierbare Heterobindung. Unter diesem Weg liefert Wasser deshalb keine analogen Monomere. Daraus folgt nicht, dass PE weder mechanisch noch durch andere chemische oder oxidative Prozesse verwertbar wäre.",
+            "expectedPerformanceEn": "The fresh polyester gives HO–(CH2)4–OH and HO–C(=O)–(CH2)2–C(=O)–OH. Retain the new chain groups rather than copying PET monomers. The supplied PE C–C/C–H skeleton has no ester or corresponding hydrolysable hetero-linkage. This water-based route therefore gives no analogous monomers. That does not rule out mechanical recovery or other chemical/oxidative processes for PE.",
+            "understandingFocusDe": "Ein zusammenhängender chemischer Hydrolysenachweis; Recycling-/Quellenurteil liegt getrennt bei8721. Zwei unabhängige Demonstrationen können in einer integrierten Leistung liegen, keine zusätzliche Aufgabenquote.",
+            "understandingFocusEn": "One coherent chemical hydrolysis explanation; recycling/source judgment is recorded separately under8721. Two independent demonstrations may occur within one integrated performance, with no extra task quota."
+          }
+        ]
+      },
+      "profileSemanticSHA256": "7eea8b70038b3080a2d697c3247b272942580a3f7867dbf6b34be6b9eb82d679"
+    },
+    {
+      "goalId": "b759d50d-0e82-5b10-89a2-fe5271106e50",
+      "beforeWholeCurrentRecord": {
+        "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+        "schemaVersion": 2,
+        "reviewId": "chemie-energy8-reviewed-current-20261005-v3",
+        "goalFingerprintRuleVersion": "goal-evidence-v1",
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "b759d50d-0e82-5b10-89a2-fe5271106e50",
+        "goalFingerprint": "sha256:ba2c0bf28adf64d8b55b6e81294c95b83a23c82b4a5ba5aab87a1512556ee613",
+        "reviewInputFingerprint": "sha256:eb199263090c7bd3c286916ff95db9fd2695af250fd690abe002e630a5856049",
+        "profileFingerprint": "sha256:d5954d385d038c19fd89e57297eff14bce22ecc5bae9ffe47abba92828eddb6b",
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "reviewedAt": "2026-10-17T21:23:41.999975+00:00",
+        "reviewer": "Codex B technical current-input serialization; underlying scientific authors and reviewers remain recorded in the P442 selection/provenance",
+        "reason": "Aktuelle zwei unabhängige Beschreibungsreviews behalten den Zell-Funktionsumfang. Dieser P-Nachfolger entfernt verpflichtende Wasserstoff-Herstellung und Akkuvergleich, die der getrennten Elektrolyse-/Speicherkompetenz gehören. Zwei Fälle verlangen Elektrodenchemie, Ladungswege sowie zugeführten Energieträger und Wandlerrolle. Das aktuelle PNG ist tatsächlich geprüft; die zurückgenommenen alten Polungs-/Membranbehauptungen werden nicht wiederholt. AI-Kandidat needs_human_review, E1/G1; keine menschliche Freigabe.",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1",
+        "reviewRunIds": [],
+        "dissent": [],
+        "profile": {
+          "archetype": "concept",
+          "expectations": [
+            {
+              "id": "fuel-cell-electrodes-and-storage-role",
+              "essentialUnderstandingDe": "In einer Wasserstoff-Sauerstoff-Brennstoffzelle wird Wasserstoff oxidiert und Sauerstoff reduziert; die Gesamtreaktion 2 H2 + O2 → 2 H2O setzt chemische Energie als elektrische Energie und Wärme frei. Im PEM-Modell gelangen Elektronen über den Außenkreis und Protonen durch die Membran. Die Zelle ist ein Energiewandler; der zugeführte gespeicherte Wasserstoff trägt die chemische Energie und wird mit Sauerstoff umgesetzt.",
+              "essentialUnderstandingEn": "In a hydrogen–oxygen fuel cell hydrogen is oxidized and oxygen reduced; the overall reaction 2 H2 + O2 → 2 H2O releases chemical energy as electrical energy and heat. In the PEM model electrons travel through the external circuit and protons through the membrane. The cell is an energy converter; supplied stored hydrogen carries chemical energy and reacts with oxygen.",
+              "observablePerformanceDe": "Die lernende Person stellt die Elektroden- und Gesamtreaktion für eine benannte Wasserstoff-Sauerstoff-Zelle geeignet dar, erklärt getrennte Ladungswege und unterscheidet in einem neuen Anwendungssystem zugeführten Wasserstoffspeicher und Energiewandler. Die Hilfegrenze des ersten Falls bleibt ausdrücklich sichtbar: vorgegebene Halbgleichungen allein belegen keine ungelenkte Formulierung.",
+              "observablePerformanceEn": "The learner suitably represents electrode and overall reactions for an identified hydrogen–oxygen cell, explains separate charge pathways and distinguishes supplied hydrogen storage from the energy converter in a fresh application system. The assistance boundary in the first case is explicit: supplied half-equations alone do not prove uncued formulation."
+            }
+          ],
+          "coverageExpectations": {
+            "requiredExpectationIds": [
+              "fuel-cell-electrodes-and-storage-role"
+            ],
+            "alternativeExpectationGroups": [],
+            "minimumIndependentDemonstrations": 2,
+            "freshVariationRequired": true,
+            "independentTransferRequired": true
+          },
+          "variationAxes": [
+            {
+              "id": "charge-route",
+              "textDe": "Elektronischer Außenweg und protonischer Membranweg werden mit einem fehlerhaften Kurzschlussmodell kontrastiert.",
+              "textEn": "The external electron route and protonic membrane route are contrasted with an erroneous short-circuit model."
+            },
+            {
+              "id": "system-role",
+              "textDe": "Eine neue Anordnung und Unterbrechung des inneren Ionenwegs prüfen Zellfunktion sowie die Unterscheidung von Wasserstoffvorrat, zugeführten Stoffen und Energiewandler. Wasserstoffherstellung oder Akkuvergleich sind keine Pflichtleistung dieses Ziels.",
+              "textEn": "A fresh layout and interrupted internal ion route probe cell function and the distinction between hydrogen stock, supplied reactants and converter. Hydrogen production or battery comparison is not a required performance for this goal."
+            }
+          ],
+          "applicationCaseBriefs": [
+            {
+              "id": "pem-device-and-reaction-balancing",
+              "taskDemandDe": "Erstelle ohne Vorlage ein einfaches PEM-Modell mit H2-Zufuhr an der Anode, O2-Zufuhr an der Kathode und Lampe im äußeren Kreis. Beschreibe Oxidation/Reduktion, ergänze H2 → 2 H+ + 2 e− und O2 + 4 H+ + 4 e− → 2 H2O zur gemeinsamen Elektronenbilanz und Gesamtreaktion. Warum dürfen die Elektronen nicht durch die Membran zur Kathode abkürzen?",
+              "taskDemandEn": "Without a template, construct a simple PEM model with H2 supplied at the anode, O2 at the cathode and a lamp in the external circuit. Explain oxidation/reduction, align H2 → 2 H+ + 2 e− and O2 + 4 H+ + 4 e− → 2 H2O to a common electron balance and derive the overall reaction. Why must electrons not bypass the lamp through the membrane?",
+              "expectedPerformanceDe": "Die lernende Person verdoppelt die Anodenreaktion, erhält 2 H2 + O2 → 2 H2O und erklärt H+-Transport durch PEM sowie e−-Fluss von Anode über Lampe zur Kathode. Sie bezeichnet Wasserstoff als Elektronendonator und Sauerstoff als Akzeptor und erkennt, dass ein elektronisch leitender Membranweg den nutzbaren Außenstrom kurzschließen würde.",
+              "expectedPerformanceEn": "The learner doubles the anode reaction, obtains 2 H2 + O2 → 2 H2O and explains H+ transport through the PEM and electron flow from anode through the lamp to cathode. They identify hydrogen as donor and oxygen as acceptor and explain that an electronically conducting membrane would bypass the useful external circuit.",
+              "understandingFocusDe": "Bilanz und getrennte Ladungswege erklären den Umwandler.",
+              "understandingFocusEn": "Balance and separate charge routes explain the converter."
+            },
+            {
+              "id": "fresh-reversed-layout-and-blocked-ion-route",
+              "taskDemandDe": "Ein unabhängiger Modellfall zeigt eine PEM-Brennstoffzelle mit Sauerstoffelektrode links, Wasserstoffelektrode rechts, H2-Tank und Außenverbraucher. Die Membran lässt nur H+-Transport zu. Stelle ohne die Gleichungen des ersten Falls die Elektroden- und Gesamtreaktion geeignet dar und leite die äußere Elektronenrichtung ab. Erkläre, was bei blockiertem H+-Weg trotz angeschlossenem Außenleiter geschieht und was nach unterbrochener H2-Zufuhr folgt. Wo liegt der gespeicherte Energieträger, welches Bauteil wandelt dessen chemische Energie um?",
+              "taskDemandEn": "An independent model shows a PEM fuel cell with the oxygen electrode on the left, hydrogen electrode on the right, an H2 tank and an external load. The membrane only permits H+ transport. Without the first case’s equations, suitably represent electrode and overall reactions and infer external electron direction. Explain what happens if H+ transport is blocked despite an intact external conductor and what follows if H2 supply stops. Where is the stored energy carrier and which component converts its chemical energy?",
+              "expectedPerformanceDe": "Die lernende Person formuliert H2 → 2 H+ + 2 e−, O2 + 4 H+ + 4 e− → 2 H2O und die ausgeglichene Gesamtreaktion 2 H2 + O2 → 2 H2O; eine äquivalente Darstellung mit erhaltenen Atomen und Ladungen ist zulässig. Sie leitet e−-Fluss von der rechten H2-Anode über den Verbraucher zur linken O2-Kathode ab. Ohne inneren Ladungstransport ist kein dauerhafter Außenstrom möglich. Ohne weitere H2-Zufuhr endet die Umsetzung nach Verbrauch des verbliebenen Wasserstoffs; vorhandener oder weiter zugeführter Sauerstoff muss nicht vollständig verbraucht sein. Der Tank enthält den gespeicherten Energieträger; die Zelle wandelt zugeführte chemische Energie um. Eine Erklärung der Wasserstoffherstellung oder des Akkus wird nicht verlangt.",
+              "expectedPerformanceEn": "The learner formulates H2 → 2 H+ + 2 e−, O2 + 4 H+ + 4 e− → 2 H2O and the balanced overall reaction 2 H2 + O2 → 2 H2O; equivalent atom- and charge-conserving representations are allowed. They infer electron flow from the right-hand H2 anode through the load to the left-hand O2 cathode. Without internal charge transport no sustained external current is possible. Without H2 resupply reaction ends after the residual hydrogen is consumed; any excess or continuing oxygen supply need not be exhausted. The tank contains the stored energy carrier; the cell converts supplied chemical energy. Explanation of hydrogen production or a battery is not required.",
+              "understandingFocusDe": "Neue Elektrodenlage, ein gestörter Ladungsweg und die begrenzte Stoffzufuhr prüfen das Zellprinzip und die Wandlerrolle unabhängig von der Lehrvorlage.",
+              "understandingFocusEn": "A fresh electrode layout, interrupted charge route and finite reactant supply probe cell principles and converter role independently of the teaching example."
+            }
+          ]
+        }
+      },
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "fuel-cell-electrodes-and-storage-role",
+            "essentialUnderstandingDe": "In einer Wasserstoff-Sauerstoff-Brennstoffzelle wird Wasserstoff oxidiert und Sauerstoff reduziert; die Gesamtreaktion 2 H2 + O2 → 2 H2O setzt chemische Energie als elektrische Energie und Wärme frei. Im PEM-Modell gelangen Elektronen über den Außenkreis und Protonen durch die Membran. Die Zelle ist ein Energiewandler; der zugeführte gespeicherte Wasserstoff trägt die chemische Energie und wird mit Sauerstoff umgesetzt. Aufbauzusatz: Die vollständige Karte verbindet katalytische Elektrodenschichten, gasverteilende leitende Diffusionslagen und Gas-/Wärme-/Kontaktfunktionen der Bipolar-/Trägerplatten mit diesem selben Zellprinzip.",
+            "essentialUnderstandingEn": "In a hydrogen–oxygen fuel cell hydrogen is oxidized and oxygen reduced; the overall reaction 2 H2 + O2 → 2 H2O releases chemical energy as electrical energy and heat. In the PEM model electrons travel through the external circuit and protons through the membrane. The cell is an energy converter; supplied stored hydrogen carries chemical energy and reacts with oxygen. Construction supplement: the complete card links catalytic electrode layers, conducting gas-distribution layers and gas/heat/contact roles of bipolar/support plates to this same cell principle.",
+            "observablePerformanceDe": "Die lernende Person stellt die Elektroden- und Gesamtreaktion für eine benannte Wasserstoff-Sauerstoff-Zelle geeignet dar, erklärt getrennte Ladungswege und unterscheidet in einem neuen Anwendungssystem zugeführten Wasserstoffspeicher und Energiewandler. Die Hilfegrenze des ersten Falls bleibt ausdrücklich sichtbar: vorgegebene Halbgleichungen allein belegen keine ungelenkte Formulierung. Erklärt diese Bauteilfunktionen am gegebenen vollständigen PEM-Modell kausal und wendet die Trennung von innerem Ionenweg und äußerem Elektronenweg im frischen Störfall selbst an.",
+            "observablePerformanceEn": "The learner suitably represents electrode and overall reactions for an identified hydrogen–oxygen cell, explains separate charge pathways and distinguishes supplied hydrogen storage from the energy converter in a fresh application system. The assistance boundary in the first case is explicit: supplied half-equations alone do not prove uncued formulation. Causally explains these component roles in the complete supplied PEM model and independently applies internal ion/external electron separation to the fresh failure case."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "fuel-cell-electrodes-and-storage-role"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "charge-route",
+            "textDe": "Elektronischer Außenweg und protonischer Membranweg werden mit einem fehlerhaften Kurzschlussmodell kontrastiert.",
+            "textEn": "The external electron route and protonic membrane route are contrasted with an erroneous short-circuit model."
+          },
+          {
+            "id": "system-role",
+            "textDe": "Eine neue Anordnung und Unterbrechung des inneren Ionenwegs prüfen Zellfunktion sowie die Unterscheidung von Wasserstoffvorrat, zugeführten Stoffen und Energiewandler. Wasserstoffherstellung oder Akkuvergleich sind keine Pflichtleistung dieses Ziels.",
+            "textEn": "A fresh layout and interrupted internal ion route probe cell function and the distinction between hydrogen stock, supplied reactants and converter. Hydrogen production or battery comparison is not a required performance for this goal."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "pem-device-and-reaction-balancing",
+            "taskDemandDe": "Erstelle ohne Vorlage ein einfaches PEM-Modell mit H2-Zufuhr an der Anode, O2-Zufuhr an der Kathode und Lampe im äußeren Kreis. Beschreibe Oxidation/Reduktion, ergänze H2 → 2 H+ + 2 e− und O2 + 4 H+ + 4 e− → 2 H2O zur gemeinsamen Elektronenbilanz und Gesamtreaktion. Warum dürfen die Elektronen nicht durch die Membran zur Kathode abkürzen? Ergänzend ist die vollständige PEM-Bauteilkarte verbindlich: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-recycling-atomicity-source-author-20261018-v2/materials/PEM-complete-components.learner.DE-EN.pending.json. Erkläre die dort benannten Bauteilfunktionen im selben Fall.",
+            "taskDemandEn": "Without a template, construct a simple PEM model with H2 supplied at the anode, O2 at the cathode and a lamp in the external circuit. Explain oxidation/reduction, align H2 → 2 H+ + 2 e− and O2 + 4 H+ + 4 e− → 2 H2O to a common electron balance and derive the overall reaction. Why must electrons not bypass the lamp through the membrane? The complete PEM component card is additionally binding: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-recycling-atomicity-source-author-20261018-v2/materials/PEM-complete-components.learner.DE-EN.pending.json. Explain its named component roles within this case.",
+            "expectedPerformanceDe": "Die lernende Person verdoppelt die Anodenreaktion, erhält 2 H2 + O2 → 2 H2O und erklärt H+-Transport durch PEM sowie e−-Fluss von Anode über Lampe zur Kathode. Sie bezeichnet Wasserstoff als Elektronendonator und Sauerstoff als Akzeptor und erkennt, dass ein elektronisch leitender Membranweg den nutzbaren Außenstrom kurzschließen würde. Membran trägt H+ von der Anode zur Kathode, nicht Elektronen; Katalysatorschichten ermöglichen die getrennten Elektrodenreaktionen. Gasdiffusionslagen führen Gase zu und Elektronen ab/zu; Bipolar-/Trägerplatten kontaktieren elektrisch und führen Gase/Wärme. 2H2 → 4H+ + 4e−, O2 + 4H+ + 4e− → 2H2O, gesamt 2H2 + O2 → 2H2O. Im frischen Fall fließen äußere Elektronen rechts(H2)→Verbraucher→links(O2). Ein äußeres leitendes Bauteil ersetzt keinen inneren H+-Transport: ohne inneren Ladungsausgleich kein dauernder Strom. H2-Tank speichert den Energieträger, die Zelle wandelt zugeführte chemische Energie um. Die Hilfegrenze der vorgegebenen ersten Halbgleichungen bleibt; erst die neue unabhängige Herleitung zeigt ungeführte Darstellung.",
+            "expectedPerformanceEn": "The learner doubles the anode reaction, obtains 2 H2 + O2 → 2 H2O and explains H+ transport through the PEM and electron flow from anode through the lamp to cathode. They identify hydrogen as donor and oxygen as acceptor and explain that an electronically conducting membrane would bypass the useful external circuit. Membrane transports H+ from anode to cathode, not electrons; catalyst layers enable separate electrode reactions. Gas-diffusion layers supply gases and conduct electrons; bipolar/support plates provide electrical contact and gas/heat paths. 2H2 → 4H+ + 4e−, O2 + 4H+ + 4e− → 2H2O, overall 2H2 + O2 → 2H2O. Fresh external electrons go right(H2)→load→left(O2). An external conductor cannot replace internal H+ transport: no sustained current without internal charge compensation. H2 tank stores the carrier and cell converts supplied chemical energy. Supplied first half-equations retain their assistance limit; only fresh independent derivation demonstrates uncued representation.",
+            "understandingFocusDe": "Bilanz und getrennte Ladungswege erklären den Umwandler.",
+            "understandingFocusEn": "Balance and separate charge routes explain the converter."
+          },
+          {
+            "id": "fresh-reversed-layout-and-blocked-ion-route",
+            "taskDemandDe": "Ein unabhängiger Modellfall zeigt eine PEM-Brennstoffzelle mit Sauerstoffelektrode links, Wasserstoffelektrode rechts, H2-Tank und Außenverbraucher. Die Membran lässt nur H+-Transport zu. Stelle ohne die Gleichungen des ersten Falls die Elektroden- und Gesamtreaktion geeignet dar und leite die äußere Elektronenrichtung ab. Erkläre, was bei blockiertem H+-Weg trotz angeschlossenem Außenleiter geschieht und was nach unterbrochener H2-Zufuhr folgt. Wo liegt der gespeicherte Energieträger, welches Bauteil wandelt dessen chemische Energie um? Ergänzend ist die vollständige PEM-Bauteilkarte verbindlich: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-recycling-atomicity-source-author-20261018-v2/materials/PEM-complete-components.learner.DE-EN.pending.json. Erkläre die dort benannten Bauteilfunktionen im selben Fall.",
+            "taskDemandEn": "An independent model shows a PEM fuel cell with the oxygen electrode on the left, hydrogen electrode on the right, an H2 tank and an external load. The membrane only permits H+ transport. Without the first case’s equations, suitably represent electrode and overall reactions and infer external electron direction. Explain what happens if H+ transport is blocked despite an intact external conductor and what follows if H2 supply stops. Where is the stored energy carrier and which component converts its chemical energy? The complete PEM component card is additionally binding: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-recycling-atomicity-source-author-20261018-v2/materials/PEM-complete-components.learner.DE-EN.pending.json. Explain its named component roles within this case.",
+            "expectedPerformanceDe": "Die lernende Person formuliert H2 → 2 H+ + 2 e−, O2 + 4 H+ + 4 e− → 2 H2O und die ausgeglichene Gesamtreaktion 2 H2 + O2 → 2 H2O; eine äquivalente Darstellung mit erhaltenen Atomen und Ladungen ist zulässig. Sie leitet e−-Fluss von der rechten H2-Anode über den Verbraucher zur linken O2-Kathode ab. Ohne inneren Ladungstransport ist kein dauerhafter Außenstrom möglich. Ohne weitere H2-Zufuhr endet die Umsetzung nach Verbrauch des verbliebenen Wasserstoffs; vorhandener oder weiter zugeführter Sauerstoff muss nicht vollständig verbraucht sein. Der Tank enthält den gespeicherten Energieträger; die Zelle wandelt zugeführte chemische Energie um. Eine Erklärung der Wasserstoffherstellung oder des Akkus wird nicht verlangt. Membran trägt H+ von der Anode zur Kathode, nicht Elektronen; Katalysatorschichten ermöglichen die getrennten Elektrodenreaktionen. Gasdiffusionslagen führen Gase zu und Elektronen ab/zu; Bipolar-/Trägerplatten kontaktieren elektrisch und führen Gase/Wärme. 2H2 → 4H+ + 4e−, O2 + 4H+ + 4e− → 2H2O, gesamt 2H2 + O2 → 2H2O. Im frischen Fall fließen äußere Elektronen rechts(H2)→Verbraucher→links(O2). Ein äußeres leitendes Bauteil ersetzt keinen inneren H+-Transport: ohne inneren Ladungsausgleich kein dauernder Strom. H2-Tank speichert den Energieträger, die Zelle wandelt zugeführte chemische Energie um. Die Hilfegrenze der vorgegebenen ersten Halbgleichungen bleibt; erst die neue unabhängige Herleitung zeigt ungeführte Darstellung.",
+            "expectedPerformanceEn": "The learner formulates H2 → 2 H+ + 2 e−, O2 + 4 H+ + 4 e− → 2 H2O and the balanced overall reaction 2 H2 + O2 → 2 H2O; equivalent atom- and charge-conserving representations are allowed. They infer electron flow from the right-hand H2 anode through the load to the left-hand O2 cathode. Without internal charge transport no sustained external current is possible. Without H2 resupply reaction ends after the residual hydrogen is consumed; any excess or continuing oxygen supply need not be exhausted. The tank contains the stored energy carrier; the cell converts supplied chemical energy. Explanation of hydrogen production or a battery is not required. Membrane transports H+ from anode to cathode, not electrons; catalyst layers enable separate electrode reactions. Gas-diffusion layers supply gases and conduct electrons; bipolar/support plates provide electrical contact and gas/heat paths. 2H2 → 4H+ + 4e−, O2 + 4H+ + 4e− → 2H2O, overall 2H2 + O2 → 2H2O. Fresh external electrons go right(H2)→load→left(O2). An external conductor cannot replace internal H+ transport: no sustained current without internal charge compensation. H2 tank stores the carrier and cell converts supplied chemical energy. Supplied first half-equations retain their assistance limit; only fresh independent derivation demonstrates uncued representation.",
+            "understandingFocusDe": "Neue Elektrodenlage, ein gestörter Ladungsweg und die begrenzte Stoffzufuhr prüfen das Zellprinzip und die Wandlerrolle unabhängig von der Lehrvorlage.",
+            "understandingFocusEn": "A fresh electrode layout, interrupted charge route and finite reactant supply probe cell principles and converter role independently of the teaching example."
+          }
+        ]
+      },
+      "wholeCoverageUnchanged": true
+    }
+  ],
+  "wholeRequiredCoverageAt8721ExactPreserved": false,
+  "oldExpectationContributionMap": [
+    {
+      "originalExpectationId": "e1",
+      "survivingGoalId": "8721d943-8368-5304-bd3c-7d7944099662",
+      "subduty": "Mechanical/feedstock/energy route and product classification in a bounded decision"
+    },
+    {
+      "originalExpectationId": "e1",
+      "newGoalId": "69f2ecbb-ac0a-5d3a-8084-2142706e1161",
+      "subduty": "Independent suitable polymer hydrolysis and PE linkage limitation"
+    },
+    {
+      "originalExpectationIds": [
+        "e2",
+        "e3",
+        "hb208-energy-recovery-distinction"
+      ],
+      "survivingGoalId": "8721d943-8368-5304-bd3c-7d7944099662",
+      "subduty": "Complete mass/energy/product/PEcycle/source/economic/environmental judgment, exact original expectations"
+    }
+  ],
+  "unchangedExistingReuseProfiles": [
+    {
+      "goalId": "4da0839d-ab6d-53c1-ac21-c9872555ae16",
+      "profileSemanticSHA256": "25d84aa945228402bb6ed1cefb157ab3813b4e56f195e3736aa17f9672beb8e1"
+    },
+    {
+      "goalId": "b7ae47da-6afa-5651-977a-3139af7d6eab",
+      "profileSemanticSHA256": "e23e25fe3b87cc6dabc969cf65818e7a9e44916222af25e30e4d8c53f1e0adee"
+    },
+    {
+      "goalId": "459724db-9f9a-5967-8d9a-2b6277415275",
+      "profileSemanticSHA256": "a390f7986c8a8d3e99ca5522f221082834ec85773f64e91a80bea7728ed26a7d"
+    }
+  ],
+  "originalJointMaterialsWholeUnchanged": true,
+  "newChemicalAndSourceDataFullyProvided": true,
+  "noAdditionalTaskQuota": true,
+  "nativeRecordHeadersNotReusedForEditedGoals": true,
+  "wholeOldRequiredCoverageAt8721PreservedAsPrefix": true,
+  "explicitOwnAdditionalRequiredAspect": "composting-conditions-and-route-judgment"
+}

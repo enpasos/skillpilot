@@ -1,0 +1,118 @@
+{
+  "role": "Independent informed core reviewer A receipt; core only, not native FIRST",
+  "startedAtUTC": "2026-10-18T22:28:12.197Z",
+  "completedAtUTC": "2026-10-18T22:32:10.251Z",
+  "localDate": "2026-10-19 Europe/Berlin",
+  "provider": "OpenAI",
+  "model": "unknown",
+  "modelBuild": "unknown",
+  "temperature": "unknown",
+  "reviewAuthority": "ai_candidate",
+  "counts": {
+    "coreGoals": 3,
+    "wholeProfiles": 3,
+    "complete70Cases": 4,
+    "complete33Tables": 2,
+    "coreAccept": 3,
+    "coreHold": 0,
+    "A_atomic": 3,
+    "M_no_memory_needed": 3,
+    "exactPNGsInspected": 2
+  },
+  "independence": "No current core reviewer or image reviewer output was opened. Image-review-seal references already present in the author handoff were not used as evidence of correctness. This is a new informed component judgment, never a fabricated blind FIRST. Historical A/M records for old70b/33e were read only as context; current decisions were made from exact proposed semantics.",
+  "actualWholeInputsAndImages": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-two-atom-and-33e-text-author-20261019-v1/AUTHOR.THREE.whole-goal-candidates.pending.json",
+      "sha256": "43f072eabe72cfc24030664a35b569021624b50addc10a63807222049251c473",
+      "bytes": 17202
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-two-atom-and-33e-text-author-20261019-v1/P.THREE.whole-profile-author-candidates.pending.json",
+      "sha256": "f4edb38c962e76880af5833b8ba96aa9331679cb7af040af8ad6f22557d9fcd1",
+      "bytes": 28109
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-two-atom-and-33e-text-author-20261019-v1/AUTHOR.duty-conservation-and-AM-proposals.pending.json",
+      "sha256": "876e8d8ca86478f302b4cc22aa25d5fdb6119d0571c52058d245971ed6723245",
+      "bytes": 4966
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-two-atom-and-33e-text-author-20261019-v1/inputs/WHOLE.current-two-goals-and-positive-profiles.json",
+      "sha256": "9edeab0440392a2582f0a186b709463f50796297c677565f328bb3f5e57902a4",
+      "bytes": 41156
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-two-atom-and-33e-text-author-20261019-v1/materials/TWO.whole-formation-cases.DE-EN.pending.json",
+      "sha256": "5b09cfc00f23e5e3db35469063e91141a3c0af487ef00cae39534d501edcd33b",
+      "bytes": 10146
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-two-atom-and-33e-text-author-20261019-v1/materials/TWO.whole-property-use-cases.DE-EN.pending.json",
+      "sha256": "541185a404de3d6765ae313284d12aaaaaa5eb70eae4e7f904c43b5b292cd37f",
+      "bytes": 14242
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-two-atom-and-33e-text-author-20261019-v1/materials/TWO.whole-33e-unchanged-cases.EXACT.json",
+      "sha256": "9bb2e1dde619358e5719c6847d82dd3357492b3a286ba7ff45a13d4c7c002712",
+      "bytes": 12247
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-ester-two-focused-image-author-20261019-v1/candidate/formation.png",
+      "sha256": "65b6986d082563faa2b4cfa7e8b260380a17925c733f4bb67cb90ff1ca3aabc5",
+      "bytes": 1373128
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-ester-two-focused-image-author-20261019-v1/candidate/properties-corrected.png",
+      "sha256": "c3f7c2f262e42ed6921a8a0ea3b48a1987ad909419de56d1179963396ecc8c6d",
+      "bytes": 1694540
+    }
+  ],
+  "mechanicalChecks": {
+    "authorCoreSealHashMatched": true,
+    "allSealedCoreFilesHashMatched": true,
+    "twoExpectationObjectsExactlyPartitioned": true,
+    "bothPropertyTablesAndABPartitionExactlyConserved": true,
+    "whole33PExactlyUnchanged": true,
+    "whole33CaseTablesExactlyUnchanged": true,
+    "twoPNGSizesAndHashesExact": true,
+    "eachProfileHasTwoCasesMin2FreshAndIndependentTransfer": true
+  },
+  "historicalAMContextRead": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-chemistry-q1-acids-derivatives.review.jsonl",
+      "goalId": "70b34ae7-4481-590c-9a02-516464750832"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-chemistry-q1-preservatives.review.jsonl",
+      "goalId": "33e845cc-1a7b-50d5-99b3-8079575c4e6a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-chemistry-full.review.jsonl",
+      "goalIds": [
+        "70b34ae7-4481-590c-9a02-516464750832",
+        "33e845cc-1a7b-50d5-99b3-8079575c4e6a"
+      ]
+    }
+  ],
+  "findings": "No blocking core finding. The old ester goal’s formation and structure/property expectations are retained as two independently assessable content atoms. Both fresh ester cases require independent reasoning; property uses remain bounded to given data.33e adds no new topic. All three M judgments use the actual no_memory_needed decision type, with goal-specific reasons; this does not treat any content goal as orientation or as SRS-derived mastery.",
+  "validation": {
+    "schema": "contracts/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "productionSemantics": "app/scripts/positiveGoalEvidenceProfileModel.ts",
+    "wholeCoreProfilesValid": 3,
+    "errors": 0,
+    "candidateImagesBoundToProspectiveURLsOnly": true,
+    "fullBuildRun": false
+  },
+  "componentArtifact": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-two-atom-and-33e-core-indep-a-20261019-v1/COMPONENT-A.three-whole-core-P-and-D-A-M-decisions.json",
+    "sha256": "eb8cad4bbabe6ef5d5ff5b3aebd753766675bfceb132d3ac01ab7a78337f95d8",
+    "bytes": 39864
+  },
+  "validationRawOutput": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-two-atom-and-33e-core-indep-a-20261019-v1/VALIDATION.original-production-schema-and-semantics.txt",
+    "sha256": "5b111aef7b98dd4cb619f3246c6635103972515bbd05bdd6607f960e839645cb",
+    "bytes": 1494
+  },
+  "excluded": "Source/view/reverse-graph appendices and new-ID scope are not reviewed or accepted. Requires in the provided goals are unapproved author context. No normal writes, native D7 amendment, final D campaign, native V/AM ledger authority, Human Approval, Human Trial, actual learner act or M7 award.",
+  "D7FirstARecordsDigestPreserved": "sha256:a9970e3eb7f20162b674d103271e25923c2e7a50253c05ed29dd15d9e1e46db7"
+}

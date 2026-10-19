@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "role": "informed_independent_second_component_review",
+  "reviewer": "independent-A",
+  "overall": "revise",
+  "reviewedAuthorPackages": [
+    "chemie-current450-recycling-atomicity-source-author-20261018-v2",
+    "chemie-current450-recycling-MV-partial-author-20261018-v3"
+  ],
+  "memberDecisionCount": 97,
+  "acceptedComponentDispositions": 95,
+  "revisionCount": 2,
+  "proposedDeletionsAfterV3": 78,
+  "acceptedDeletions": 76,
+  "otherAcceptedRetainAddDispositions": 19,
+  "findings": [
+    {
+      "id": "REC-A-SL-87",
+      "severity": "major_component_revision",
+      "status": "revise",
+      "memberIndex": 45,
+      "sourceGoalId": "sl-chem-sekii-sl-ch-sekii-gk-2023-2025-p045-004-de8c6ddd",
+      "canonicalGoalId": "f4fa58e7-5c6c-58dd-82db-19e7e0abe822",
+      "sourceLocator": {
+        "path": "curricula/DE/Gymnasium/input/SL/upper-secondary/source-extraction/DE_SL_CHEMIE_SEKII_GOS_2023_2025.source-extraction.json",
+        "sha256": "442c3d3780e2549cc01eb9e8f74d43d0bf1a8c511980deaf28b5ece932cd080d",
+        "bytes": 1259551,
+        "jsonPointer": "/sourceGoals/436"
+      },
+      "currentMappingLocator": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-SL/upper-secondary/sl_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+        "sha256": "45351eb4ed7bf1b316ca4f46c5b2650c6e99e3c54761f29726439076dbf0e730",
+        "bytes": 1409481,
+        "jsonPointer": "/mappings/1806"
+      },
+      "candidateOperationPointer": "/operations/8/after",
+      "wholeUnionPointer": "/wholeChangedUnions/5",
+      "memberDecisionPointer": "/memberDecisions/45",
+      "reasonDe": "Die aktuelle partial-Kante zum Cluster f4fa58e7 hat einen belegten Funktionsbeitrag durch f4fa58e7 → e4f2332c → ecce0306. Ganzes aktuelles ecce-Ziel/P und der gebundene Fall energy20-01-a fordern saure H2/O2-Halb-/Gesamtreaktionen, getrennten inneren Protonen-/äußeren Elektronenweg und erklären eine blockierte Membran. Genau dieser Teil gehört zur SL-PEM-Funktion. Die Breite des übrigen Clusters oder eine weitere passende direkte Kante macht diesen Beitrag nicht fachfremd.",
+      "requestedRevisionDe": "Vorhandene partial-Kante erhalten und den tatsächlichen Funktionsanteil ausdrücklich begrenzen; Waschmittel, allgemeine Thermodynamik, alkalische Zelle, Herstellung und Nutzungsbewertung nicht zu Pflichten der Einzelzeile machen. Eine spätere begründete Umlokalisierung wäre separat prüfbar; diese pauschale false-contribution-Löschung wird nicht angenommen.",
+      "proof": "WITNESS.actual-SL-PEM-partial-counterexample.whole.json"
+    },
+    {
+      "id": "REC-A-SL-92",
+      "severity": "major_component_revision",
+      "status": "revise",
+      "memberIndex": 58,
+      "sourceGoalId": "sl-chem-sekii-sl-ch-sekii-lk-2023-2025-p064-004-8d7de71b",
+      "canonicalGoalId": "f4fa58e7-5c6c-58dd-82db-19e7e0abe822",
+      "sourceLocator": {
+        "path": "curricula/DE/Gymnasium/input/SL/upper-secondary/source-extraction/DE_SL_CHEMIE_SEKII_GOS_2023_2025.source-extraction.json",
+        "sha256": "442c3d3780e2549cc01eb9e8f74d43d0bf1a8c511980deaf28b5ece932cd080d",
+        "bytes": 1259551,
+        "jsonPointer": "/sourceGoals/652"
+      },
+      "currentMappingLocator": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-SL/upper-secondary/sl_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+        "sha256": "45351eb4ed7bf1b316ca4f46c5b2650c6e99e3c54761f29726439076dbf0e730",
+        "bytes": 1409481,
+        "jsonPointer": "/mappings/2818"
+      },
+      "candidateOperationPointer": "/operations/8/after",
+      "wholeUnionPointer": "/wholeChangedUnions/6",
+      "memberDecisionPointer": "/memberDecisions/58",
+      "reasonDe": "Die aktuelle partial-Kante zum Cluster f4fa58e7 hat einen belegten Funktionsbeitrag durch f4fa58e7 → e4f2332c → ecce0306. Ganzes aktuelles ecce-Ziel/P und der gebundene Fall energy20-01-a fordern saure H2/O2-Halb-/Gesamtreaktionen, getrennten inneren Protonen-/äußeren Elektronenweg und erklären eine blockierte Membran. Genau dieser Teil gehört zur SL-PEM-Funktion. Die Breite des übrigen Clusters oder eine weitere passende direkte Kante macht diesen Beitrag nicht fachfremd.",
+      "requestedRevisionDe": "Vorhandene partial-Kante erhalten und den tatsächlichen Funktionsanteil ausdrücklich begrenzen; Waschmittel, allgemeine Thermodynamik, alkalische Zelle, Herstellung und Nutzungsbewertung nicht zu Pflichten der Einzelzeile machen. Eine spätere begründete Umlokalisierung wäre separat prüfbar; diese pauschale false-contribution-Löschung wird nicht angenommen.",
+      "proof": "WITNESS.actual-SL-PEM-partial-counterexample.whole.json"
+    }
+  ],
+  "acceptedComponents": [
+    "whole composting goal/P/DE-EN learner/teacher additions; old duties retained",
+    "whole PEM P/DE-EN component cards; old duties and assistance limits retained",
+    "69f2 main-chain terminology correction only",
+    "BW28/38, RP36 and TH48/physical53 exact source successors",
+    "HH/MV/TH battery and MV rare-metal existing whole material carriers",
+    "RP-LK polarimetry existing whole material carrier with official optional/own broad scope distinction",
+    "MV V3 bounded b6327e98 existing partial",
+    "eight legitimate old V1 partial mapping records exact",
+    "41 old view roles preserved; RP-LK polarimetry plus TH-GK/LK battery target placements only"
+  ],
+  "remainingSourceHOLDs": [
+    103,
+    108,
+    114
+  ],
+  "priorOwnV1JudgmentUnchanged": true,
+  "noOtherNewPeerReviewRead": true,
+  "noNewCandidateBuilt": true,
+  "normalFilesEdited": false,
+  "fullChecksRun": false,
+  "blindNativeDClaim": false,
+  "newNativePApproval": false,
+  "M7Claim": false,
+  "assessmentReleaseClaim": false,
+  "humanApproval": false,
+  "actualLearnerPerformanceObserved": false
+}

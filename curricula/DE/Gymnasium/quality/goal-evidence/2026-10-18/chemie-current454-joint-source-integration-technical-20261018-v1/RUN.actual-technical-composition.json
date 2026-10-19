@@ -1,0 +1,39 @@
+{
+  "role": "Actual technical integration preparation only",
+  "startedAtUTC": "2026-10-18T19:43:55.650062+00:00",
+  "completedAtUTC": "2026-10-18T19:58:42.621880+00:00",
+  "model": "Codex (GPT-6 family; exact serving identifier/version not exposed)",
+  "hiddenGenerationParameters": "not exposed; not invented",
+  "headObserved": "41a37acd0016c7ac9613edb87de283e5a918f543",
+  "actualCommands": [
+    {
+      "command": "python /tmp/chemie_joint454_build.py",
+      "cwd": "/home/enpasos/projects/skillpilot",
+      "exitCode": 0,
+      "stdout": "checks/build.stdout.txt",
+      "stderr": "checks/build.stderr.txt"
+    },
+    {
+      "command": "python /tmp/chemie_joint454_loader_fixture.py",
+      "cwd": "/home/enpasos/projects/skillpilot",
+      "exitCode": 0,
+      "stdout": "checks/loader-fixture.stdout.txt",
+      "stderr": "checks/loader-fixture.stderr.txt"
+    },
+    {
+      "command": "node --import tsx /tmp/chemie_joint454_actual_loaders.mts",
+      "cwd": "/home/enpasos/projects/skillpilot/app",
+      "exitCode": 0,
+      "stdout": "checks/actual-loaders.stdout.txt",
+      "stderr": "checks/actual-loaders.stderr.txt"
+    }
+  ],
+  "helpers": "/tmp only; no normal code edits",
+  "actualNarrowLoaderScopes": "All82 actually discovered current Chemistry mapping bodies copied byte-exact into separate before/after /tmp fixtures,22 selected wholebody replacements applied only in after fixture. Real production CQR and citation/extraction APIs executed; unchanged private AP/export declarations extracted/transpiled to permit isolated read roots. No full applicability compilation, quality-status generation, export package build or Atlas build.",
+  "normalWrites": false,
+  "oldPackageWrites": false,
+  "newScientificVote": false,
+  "nativeDApproval": false,
+  "M7Claim": false,
+  "activeIntegration": false
+}

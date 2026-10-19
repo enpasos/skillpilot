@@ -1,0 +1,19 @@
+
+> skillpilot@0.0.0 validate:view-filters
+> tsx scripts/validateViewFilters.ts
+
+
+Warnings:
+⚠️ [c436b994-8f44-5134-b9f8-0c9f5d6a5ba0] [APV-203] c5394fb8-9411-5533-b2af-831c4c67b4be Compiled applicability differs from the currently committed applicability field.
+⚠️ [c436b994-8f44-5134-b9f8-0c9f5d6a5ba0] [APV-203] ee494d08-9514-54f2-ac5e-eebc20ca8725 Compiled applicability differs from the currently committed applicability field.
+
+0 error(s), 2 warning(s), 27650 diagnostic finding(s), 111 accepted warning(s).
+Diagnostic findings are not warning debt. APV-202 means applicability is backed only by partial mappings; this is useful for mapping-shape review, but not by itself a source-coverage gap.
+Warning types: APV-203: 2
+Warning landscapes: Chemie (Gymnasium, DE): 2
+Diagnostic finding types: APV-202: 27650
+Diagnostic finding landscapes: Mathematik (Gymnasium, DE): 9415, Physik (Gymnasium, DE): 6341, Chemie (Gymnasium, DE): 2750, Geschichte (Gymnasium, DE): 2137, Politik und Wirtschaft (Gymnasium, DE): 1572, Wirtschaftswissenschaften (Gymnasium, DE): 1485, Biologie (Gymnasium, DE): 1380, Informatik (Gymnasium, DE): 1132, Deutsch (Gymnasium, DE): 959, Latein (Gymnasium, DE): 479
+Accepted warning types: APV-201: 101, APV-203: 10
+Validation scope: reviewed canonical DE Gymnasium set (Mathematik, Physik, Chemie, Biologie, Informatik, Deutsch, Englisch, Französisch, Griechisch, Chinesisch, Geschichte, Politik und Wirtschaft, Musik, Latein, Spanisch, Italienisch, Russisch, Polnisch, Tschechisch, Wirtschaft, Overview).
+Accepted warning registry: /home/enpasos/projects/skillpilot/docs/qa-ci/applicability-accepted-warnings.json
+Reports written to /home/enpasos/projects/skillpilot/tmp/applicability

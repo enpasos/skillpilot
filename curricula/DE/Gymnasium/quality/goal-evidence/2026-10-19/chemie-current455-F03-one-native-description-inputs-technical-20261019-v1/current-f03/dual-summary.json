@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:bfe4e031d0dbc22378baec9b1e0295857a4e4c4b1e662a4c79d64c2bed29f17b",
+  "reviewInputFingerprint": "sha256:939625beb80fd05f48fe91d8b4583e947da304b71eb9c2139c4a2b39c3a9f35f",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-current455-f03-one-D-20261019-v1-a",
+      "roundId": "chemie-current455-f03-one-D-20261019-v1-first-pass-a",
+      "independenceGroupId": "chemie-current455-f03-one-D-20261019-v1-independent-a",
+      "runIds": [
+        "chemie-current455-f03-one-D-20261019-v1-a-current-independent-run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "chemie-current455-f03-one-D-20261019-v1-b",
+      "roundId": "chemie-current455-f03-one-D-20261019-v1-first-pass-b",
+      "independenceGroupId": "chemie-current455-f03-one-D-20261019-v1-independent-b",
+      "runIds": [
+        "chemie-current455-f03-one-D-20261019-v1-b-native-independent-20261019T001449Z"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 (system description; exact serving identifier and revision not exposed)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "8b2d351e-e44f-5385-9b89-13ef54b5918f",
+      "firstRecordId": "chemie-current455-f03-one-D-20261019-v1-a-F03-record-001",
+      "secondRecordId": "chemie-current455-f03-one-D-20261019-v1-b-F03-native-independent",
+      "firstRunId": "chemie-current455-f03-one-D-20261019-v1-a-current-independent-run-001",
+      "secondRunId": "chemie-current455-f03-one-D-20261019-v1-b-native-independent-20261019T001449Z",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

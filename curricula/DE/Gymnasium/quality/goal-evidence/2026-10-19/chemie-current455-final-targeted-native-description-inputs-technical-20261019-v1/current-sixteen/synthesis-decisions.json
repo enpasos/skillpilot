@@ -1,0 +1,414 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "chemie-current455-current16-twelve-D-keep-four-deferrals-informed-synthesis-20261019-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex informed synthesis; /root; exact model revision and sampling parameters not exposed",
+  "synthesizedAt": "2026-10-18T23:03:21.180Z",
+  "batch": {
+    "batchId": "chemie-current455-final-targeted-sixteen-D-20261019-v1",
+    "batchManifestDigest": "sha256:82a84b5b449f8d837d7a218fbe32e9f1080f9b4d0a449ba758d6cce7ef3daf29",
+    "configDigest": "sha256:9baaf38970ec29ca96fe564dd2811eee632dbcb35634202ce50a01c07f4f865c",
+    "bundleFingerprint": "sha256:8454462a911d81774b5690542280144536744c981e307aa8b77d4a5d5fb2a4c7",
+    "bookDigest": "sha256:83eed0dda33fa6db0c6fe00f78b8efb1aeaf1613eb0b8b533131963ea44dd1a2",
+    "reviewInputFingerprint": "sha256:abbe8beedfdb35918d1f80e150d4d834b5858dabfd6d5cc24db554b15eb9c981",
+    "dualSummaryDigest": "sha256:c43739c01fac7d407ca7456b0ce953c72aa48138669148e1b5511fea4dbdf878",
+    "canonicalLandscapeDigest": "sha256:3c42ecb80332d7fce4d5b6a8622b9a8a02f34826ed16d07aa78bfc8fba37ce9e"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-current455-final-targeted-sixteen-D-20261019-v1-a",
+      "campaignDigest": "sha256:b250c70c2e3791946cbf2a478a4a7114331353284aeedc28a88f94c1fbbdf05c",
+      "roundId": "chemie-current455-final-targeted-sixteen-D-20261019-v1-first-pass-a",
+      "independenceGroupId": "chemie-current455-final-targeted-sixteen-D-20261019-v1-independent-a",
+      "reviewInputFingerprint": "sha256:abbe8beedfdb35918d1f80e150d4d834b5858dabfd6d5cc24db554b15eb9c981",
+      "batchId": "chemie-current455-final-targeted-sixteen-D-20261019-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:3ca95e8e9e6e00e6bd574e5ccaaf082c5766736d30c0d8d72e5a384f58a9d0ab",
+      "runId": "chemie-current455-final-sixteen-native-d-reviewer-a-20261019-v1",
+      "runManifestDigest": "sha256:3560ba4203c9020f97e530da7e01262793aba41159d69afe1b3867468fe1085e",
+      "resultsDigest": "sha256:fd4a1577306f3a79b2e66632556031733b606e2f8bc4f29b4ca1912e5bc5368f"
+    },
+    "second": {
+      "campaignId": "chemie-current455-final-targeted-sixteen-D-20261019-v1-b",
+      "campaignDigest": "sha256:057b3f090628b19eb45c3c6600e0c4e980aec83b7cfab1ce62e07b81419f8a60",
+      "roundId": "chemie-current455-final-targeted-sixteen-D-20261019-v1-first-pass-b",
+      "independenceGroupId": "chemie-current455-final-targeted-sixteen-D-20261019-v1-independent-b",
+      "reviewInputFingerprint": "sha256:abbe8beedfdb35918d1f80e150d4d834b5858dabfd6d5cc24db554b15eb9c981",
+      "batchId": "chemie-current455-final-targeted-sixteen-D-20261019-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:03ade1c19c9d2c0aeb763c6e733d654225e116a45b43b45607383b3b16313053",
+      "runId": "chemie455-final16-native-description-b-20261019-v1",
+      "runManifestDigest": "sha256:21d30cdc1f6a76e715ad5a0b47e9d8a928c8ab23571a195fe7b8a4ac68cbadaf",
+      "resultsDigest": "sha256:fbcaaa7e80c8c7857a6358a8e8a385b07cfe8a34ea1be1535d54ee2407ab20ea"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "chemie-current455-current16-twelve-D-keep-four-deferrals-informed-synthesis-20261019-v1-decision-001",
+      "goalId": "6c7ce93c-7675-51da-bc0c-7d0257f7ff7d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:512f64ab6581d0afea08dee825b7dfcbb2d9375ac6ff1595195d1ba830a96796",
+      "pageFingerprint": "sha256:80d9cb84627a9a124c071422d66853bd84128ffaba60a03e0abef05b99dbaecb",
+      "goalReviewContextFingerprint": "sha256:5f3a6054c3e7b3d38a5bfb74d98f5b7041058aea11ad7827a1d725c7e72cd20c",
+      "finalText": {
+        "titleDe": "Chemische Modelle nutzen und kritisch vergleichen",
+        "titleEn": "Use and critically compare chemistry models",
+        "descriptionDe": "Die lernende Person kann für eine chemische Fragestellung hypothesengeleitet geeignete analoge oder digitale Modelle und Simulationen zu Materie, chemischen Reaktionen, Bindungen und Wechselwirkungen auswählen und nutzen, ihre Aussagen mit Beobachtungen und miteinander vergleichen, Grenzen benennen und begründen, weshalb ein Modell hinterfragt oder weiterentwickelt werden muss.",
+        "descriptionEn": "The learner can select and use suitable analogue or digital models and simulations of matter, chemical reactions, bonding and interactions in a hypothesis-guided investigation of a chemical question, compare their predictions with observations and with each other, identify limitations and justify why a model should be questioned or developed further."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-current455-final-sixteen-native-d-reviewer-a-20261019-v1-01",
+          "recordDigest": "sha256:f6de5107b0732ba6e5f6069fb40a55878ead3a1690bf65a0281b4ed8d5d68857"
+        },
+        "second": {
+          "recordId": "chemie455-final16-native-description-b-20261019-v1.goal-01",
+          "recordDigest": "sha256:3f85fe05a4a3591bc7d54978be0695764255d1317dd18ab15e5328e5a5f341bb"
+        }
+      },
+      "rationaleDe": "Beide tatsächlichen unabhängigen Erstpässe behalten die aktuellen gleichwertigen DE/EN-Beschreibungen. Ihre Schwerpunkte sind für D vereinbar. Das unveränderte vorhandene Verständnis-/Leistungs-/Transferfeld aus second wird wegen folgender konkret beobachtbarer Abgrenzung gewählt: hypothesengeleitete eigene M1/M2-Nutzung mit sechs Ladungspaaren und begrenzter Modellkritik. Beide aktuellen P-Empfehlungen lauten none; die ganzen im Erstpass gebundenen Fälle wurden tatsächlich geprüft. Dies ist nur eine D-Synthese auf den exakt eingefrorenen Inputs; keine menschliche Freigabe, ausgeführte Lernendenleistung oder aktuelle M7-Vollständigkeit wird behauptet.",
+      "rationaleEn": "Both actual independent first passes retain the current equivalent bilingual descriptions. Their emphases are compatible for D. The existing whole unchanged understanding/performance/transfer fields from second are selected for this observable boundary: hypothesis-guided personal M1/M2 use with six charge pairs and bounded model criticism. Both current P recommendations are none; complete first-pass-bound cases were actually reviewed. This is only D synthesis on exact frozen inputs, not human approval, performed learner work or a current M7 completion claim."
+    },
+    {
+      "decisionId": "chemie-current455-current16-twelve-D-keep-four-deferrals-informed-synthesis-20261019-v1-decision-002",
+      "goalId": "a3788e40-b540-5bed-be37-b33053528422",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:29d60ae0d0c6dd4c0e9deaa409a5d7d7322dcf90d49732ab132c3bc098c628d9",
+      "pageFingerprint": "sha256:a89d7acc86df4f5b89f474d22377642fcfe07d91d970521bc02912661dfed28c",
+      "goalReviewContextFingerprint": "sha256:fb1be9f15b7eeebb854acbd9e2cc8617040a2b9d0e0cd6c6e79d6b36be68bf93",
+      "finalText": {
+        "titleDe": "Carbonsäurestrukturen und homologe Reihen darstellen",
+        "titleEn": "Represent carboxylic-acid structures and homologous series",
+        "descriptionDe": "Die lernende Person kann die Carboxygruppe in Struktur- und Skelettformeln erkennen und Carbonsäuren über ihre Strukturformeln zu homologen Reihen ordnen und darstellen.",
+        "descriptionEn": "The learner can recognize the carboxyl group in structural and skeletal formulas and use structural formulas to classify and represent carboxylic acids in homologous series."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current455-final-sixteen-native-d-reviewer-a-20261019-v1-02",
+          "recordDigest": "sha256:5649ebce506f22fc15a97bcd2b24255820ec7baf101ea84ea515271a38af55e2"
+        },
+        "second": {
+          "recordId": "chemie455-final16-native-description-b-20261019-v1.goal-02",
+          "recordDigest": "sha256:4fa752ab546edf51ae317c4fd411751f3fc969f6b1fb89979f5dc60148e94c2e"
+        }
+      },
+      "rationaleDe": "Beide tatsächlichen unabhängigen Erstpässe behalten die aktuellen gleichwertigen DE/EN-Beschreibungen. Ihre Schwerpunkte sind für D vereinbar. Das unveränderte vorhandene Verständnis-/Leistungs-/Transferfeld aus first wird wegen folgender konkret beobachtbarer Abgrenzung gewählt: Carboxygruppe, homologe Reihe und frischer Strukturisomervergleich; kein zusätzlicher Säurenachweis. Beide aktuellen P-Empfehlungen lauten none; die ganzen im Erstpass gebundenen Fälle wurden tatsächlich geprüft. Dies ist nur eine D-Synthese auf den exakt eingefrorenen Inputs; keine menschliche Freigabe, ausgeführte Lernendenleistung oder aktuelle M7-Vollständigkeit wird behauptet.",
+      "rationaleEn": "Both actual independent first passes retain the current equivalent bilingual descriptions. Their emphases are compatible for D. The existing whole unchanged understanding/performance/transfer fields from first are selected for this observable boundary: carboxyl group, homologous series and fresh structural-isomer comparison; no additional acid test. Both current P recommendations are none; complete first-pass-bound cases were actually reviewed. This is only D synthesis on exact frozen inputs, not human approval, performed learner work or a current M7 completion claim."
+    },
+    {
+      "decisionId": "chemie-current455-current16-twelve-D-keep-four-deferrals-informed-synthesis-20261019-v1-decision-003",
+      "goalId": "dc146a38-994d-58ec-b6a0-5210118b93ae",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:73bbd1ba1e72675e1e987893204997267bf8290ff9f50deafbd170ae41df6f5b",
+      "pageFingerprint": "sha256:4df019374182ffc8a0f0ba2d25abff681e475072b8299eddffe1a7fcea8604de",
+      "goalReviewContextFingerprint": "sha256:d228a0225ea30f9d3f379da1ca73eb99d2dd7b66e0d6ddcc7945677f1026a8c6",
+      "finalText": {
+        "titleDe": "Sauren Carbonsäurecharakter an Beobachtungen belegen",
+        "titleEn": "Support carboxylic-acid character with observations",
+        "descriptionDe": "Die lernende Person kann den sauren Charakter strukturell bekannter Carbonsäuren anhand vorgegebener Indikator- und Reaktionsbeobachtungen mit geeigneten Vergleichsproben begründet belegen und die Aussagegrenze gegenüber einem eindeutigen Strukturbeweis benennen.",
+        "descriptionEn": "The learner can use supplied indicator and reaction observations with suitable comparison samples to support the acidic character of structurally known carboxylic acids and state why these observations are not a unique structural proof."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-current455-final-sixteen-native-d-reviewer-a-20261019-v1-03",
+          "recordDigest": "sha256:2e201d7907779a5f1adba912783760013cb1332b2f5479c836e20bb08e060b3e"
+        },
+        "second": {
+          "recordId": "chemie455-final16-native-description-b-20261019-v1.goal-03",
+          "recordDigest": "sha256:d11800eba86d7ceed7cbc88498fa93d8753efc9b4015fa565336f060e93e9482"
+        }
+      },
+      "rationaleDe": "Beide tatsächlichen unabhängigen Erstpässe behalten die aktuellen gleichwertigen DE/EN-Beschreibungen. Ihre Schwerpunkte sind für D vereinbar. Das unveränderte vorhandene Verständnis-/Leistungs-/Transferfeld aus second wird wegen folgender konkret beobachtbarer Abgrenzung gewählt: bereitgestellte Beobachtungskarten mit bekannten Strukturen; Gasblasen allein identifizieren keinCO2. Beide aktuellen P-Empfehlungen lauten none; die ganzen im Erstpass gebundenen Fälle wurden tatsächlich geprüft. Dies ist nur eine D-Synthese auf den exakt eingefrorenen Inputs; keine menschliche Freigabe, ausgeführte Lernendenleistung oder aktuelle M7-Vollständigkeit wird behauptet.",
+      "rationaleEn": "Both actual independent first passes retain the current equivalent bilingual descriptions. Their emphases are compatible for D. The existing whole unchanged understanding/performance/transfer fields from second are selected for this observable boundary: supplied observation cards with known structures; bubbles alone do not identifyCO2. Both current P recommendations are none; complete first-pass-bound cases were actually reviewed. This is only D synthesis on exact frozen inputs, not human approval, performed learner work or a current M7 completion claim."
+    },
+    {
+      "decisionId": "chemie-current455-current16-twelve-D-keep-four-deferrals-informed-synthesis-20261019-v1-decision-004",
+      "goalId": "33e845cc-1a7b-50d5-99b3-8079575c4e6a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b8a8010dc9a659af438f228231addf0608d12dd07842f97c272bab69e6a51648",
+      "pageFingerprint": "sha256:791016e2ff2542f28e10a3b446398d1089c64402e941a82674922d5da433cbaf",
+      "goalReviewContextFingerprint": "sha256:6b87b1be7a27b785f0e62fcabacc18aa96feb4dd14f5c34c2c7b12a257116782",
+      "finalText": {
+        "titleDe": "Konservierungsmethoden vergleichen",
+        "titleEn": "Compare preservation methods",
+        "descriptionDe": "Die lernende Person kann historische und moderne Verfahren der Lebensmittelkonservierung anhand ihrer Wirkprinzipien vergleichen und bedingungsabhängige Risiken benennen.",
+        "descriptionEn": "The learner can compare historical and modern food preservation methods using their mechanisms and name risks that depend on the conditions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-current455-final-sixteen-native-d-reviewer-a-20261019-v1-04",
+          "recordDigest": "sha256:a0aa9436a8b7f2c8778a2b16d716273d7acd6a7994f29a1cc0e50b3d517a5b64"
+        },
+        "second": {
+          "recordId": "chemie455-final16-native-description-b-20261019-v1.goal-04",
+          "recordDigest": "sha256:4d49621e8f53dfc0f758f532ad428bb8a0a06195693b6bca3b1d23e0e3d94459"
+        }
+      },
+      "rationaleDe": "Beide tatsächlichen unabhängigen Erstpässe behalten die aktuellen gleichwertigen DE/EN-Beschreibungen. Ihre Schwerpunkte sind für D vereinbar. Das unveränderte vorhandene Verständnis-/Leistungs-/Transferfeld aus second wird wegen folgender konkret beobachtbarer Abgrenzung gewählt: Wirkprinzipien und bedingte Risiken anhand der getrennten ganzen S0/S1- und GA/GB-Modelltabellen. Beide aktuellen P-Empfehlungen lauten none; die ganzen im Erstpass gebundenen Fälle wurden tatsächlich geprüft. Dies ist nur eine D-Synthese auf den exakt eingefrorenen Inputs; keine menschliche Freigabe, ausgeführte Lernendenleistung oder aktuelle M7-Vollständigkeit wird behauptet.",
+      "rationaleEn": "Both actual independent first passes retain the current equivalent bilingual descriptions. Their emphases are compatible for D. The existing whole unchanged understanding/performance/transfer fields from second are selected for this observable boundary: mechanisms and conditional risks using the separate complete S0/S1 and GA/GB model tables. Both current P recommendations are none; complete first-pass-bound cases were actually reviewed. This is only D synthesis on exact frozen inputs, not human approval, performed learner work or a current M7 completion claim."
+    },
+    {
+      "decisionId": "chemie-current455-current16-twelve-D-keep-four-deferrals-informed-synthesis-20261019-v1-decision-005",
+      "goalId": "70b34ae7-4481-590c-9a02-516464750832",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:24b3006569ae997179ab35a02b07807023ac9b57fac066e031bb0d66ee07ee47",
+      "pageFingerprint": "sha256:a1efbd936216c053b4b3deb565ca1d54c23f6f447236ef89dd0062feb6c85eda",
+      "goalReviewContextFingerprint": "sha256:275a9ab9a4f8ed4f09c5d32ac684a7fec55f896bd55768cad707f202fd8aaa83",
+      "finalText": {
+        "titleDe": "Esterbildung aus Beobachtungen ableiten",
+        "titleEn": "Infer ester formation from observations",
+        "descriptionDe": "Die lernende Person kann die Bildung von Estern aus Alkoholen und Carbonsäuren aus experimentellen Beobachtungen ableiten und passende Kondensationsreaktionen formulieren.",
+        "descriptionEn": "The learner can infer the formation of esters from alcohols and carboxylic acids using experimental observations and formulate matching condensation reactions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-current455-final-sixteen-native-d-reviewer-a-20261019-v1-05",
+          "recordDigest": "sha256:73fa202ca3e53bbb710bd26435c167ffd9df63d5f051304973c76560c39d963c"
+        },
+        "second": {
+          "recordId": "chemie455-final16-native-description-b-20261019-v1.goal-05",
+          "recordDigest": "sha256:558ba236040be3b13335e46ff8db69adac10b5a1e2351619eecf2cab65a0e81c"
+        }
+      },
+      "rationaleDe": "Beide tatsächlichen unabhängigen Erstpässe behalten die aktuellen gleichwertigen DE/EN-Beschreibungen. Ihre Schwerpunkte sind für D vereinbar. Das unveränderte vorhandene Verständnis-/Leistungs-/Transferfeld aus second wird wegen folgender konkret beobachtbarer Abgrenzung gewählt: getrennte Bildungsinferenz, korrekte Acyl-/Alkoxyzuordnung und atomrichtige Kondensation aus analytisch gegebenen Produkten. Beide aktuellen P-Empfehlungen lauten none; die ganzen im Erstpass gebundenen Fälle wurden tatsächlich geprüft. Dies ist nur eine D-Synthese auf den exakt eingefrorenen Inputs; keine menschliche Freigabe, ausgeführte Lernendenleistung oder aktuelle M7-Vollständigkeit wird behauptet.",
+      "rationaleEn": "Both actual independent first passes retain the current equivalent bilingual descriptions. Their emphases are compatible for D. The existing whole unchanged understanding/performance/transfer fields from second are selected for this observable boundary: separate formation inference, correct acyl/alkoxy assignment and atom-balanced condensation from analytically supplied products. Both current P recommendations are none; complete first-pass-bound cases were actually reviewed. This is only D synthesis on exact frozen inputs, not human approval, performed learner work or a current M7 completion claim."
+    },
+    {
+      "decisionId": "chemie-current455-current16-twelve-D-keep-four-deferrals-informed-synthesis-20261019-v1-decision-006",
+      "goalId": "18819a59-2442-530f-a7c3-26755398ec66",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d4c56d08d03e4a56e9f2d218f82e29688bc97e3cdce521881684cfb65a00f06a",
+      "pageFingerprint": "sha256:f4170f0b437a26deadd4b8f977975b008308e60c85c4a7540be404f665aa742f",
+      "goalReviewContextFingerprint": "sha256:ce1738be1db7776de5879509556e31c59df61c0dec1246730ec5362d21111c6e",
+      "finalText": {
+        "titleDe": "Vorgegebenen Paraben-Ester quantitativ bestimmen (LK)",
+        "titleEn": "Determine a specified paraben ester quantitatively (LK)",
+        "descriptionDe": "Die lernende Person kann eine geeignete quantitative Bestimmung eines vorgegebenen p-Hydroxybenzoesäureesters anhand seiner Molekülstruktur auswählen, mit Kontrollproben planen und durchführen und den Gehalt unter Berücksichtigung von Kalibrierung oder Reaktionsstöchiometrie, Verdünnung und Verfahrensgrenzen bestimmen.",
+        "descriptionEn": "The learner can select a suitable quantitative determination of a specified p-hydroxybenzoic acid ester using its molecular structure, plan and carry it out with control samples, and determine the content while accounting for calibration or reaction stoichiometry, dilution, and method limitations."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-current455-final-sixteen-native-d-reviewer-a-20261019-v1-06",
+          "recordDigest": "sha256:6e408852d87786dd10a165f05a43c7e50bf07caaad57695375472e77af02fb89"
+        },
+        "second": {
+          "recordId": "chemie455-final16-native-description-b-20261019-v1.goal-06",
+          "recordDigest": "sha256:9e3d002420c4359a6e541fbefe71eebcbca92dc1a3c62dc4a34f1d646e9ee66e"
+        }
+      },
+      "rationaleDe": "Beide tatsächlichen unabhängigen Erstpässe behalten die aktuellen gleichwertigen DE/EN-Beschreibungen. Ihre Schwerpunkte sind für D vereinbar. Das unveränderte vorhandene Verständnis-/Leistungs-/Transferfeld aus second wird wegen folgender konkret beobachtbarer Abgrenzung gewählt: methodenneutrale Auswahl, eigene Bestimmung, Kalibrierung und begrenzte Auswertung; kein bloßer Rechenabschluss. Die P-Empfehlungen unterscheiden sich beziehungsweise bleiben offen (A=revise,B=revise); das gemeinsame D-keep schließt keinen P-Befund. Dies ist nur eine D-Synthese auf den exakt eingefrorenen Inputs; keine menschliche Freigabe, ausgeführte Lernendenleistung oder aktuelle M7-Vollständigkeit wird behauptet.",
+      "rationaleEn": "Both actual independent first passes retain the current equivalent bilingual descriptions. Their emphases are compatible for D. The existing whole unchanged understanding/performance/transfer fields from second are selected for this observable boundary: method-neutral selection, personal determination, calibration and bounded evaluation; no completion from calculations alone. P recommendations differ or remain open (A=revise,B=revise); shared D keep resolves no P finding. This is only D synthesis on exact frozen inputs, not human approval, performed learner work or a current M7 completion claim."
+    },
+    {
+      "decisionId": "chemie-current455-current16-twelve-D-keep-four-deferrals-informed-synthesis-20261019-v1-decision-007",
+      "goalId": "39c85aa0-b01f-56ec-a148-b8009bf650f5",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:1351af161544eaf7ba77032f78776e12002673d9c37cfb4c15791ed5610c192a",
+      "pageFingerprint": "sha256:a1c287228cadcf7f30b1520e43951bdfc46ffaab4c5158d31748313092bb2fc1",
+      "goalReviewContextFingerprint": "sha256:85348325b65b400e659671bffaafdd7b4f44d750ffcc6151c352f216eff865e5",
+      "finalText": {
+        "titleDe": "Ringbildung und Lactone",
+        "titleEn": "Ring formation and lactones",
+        "descriptionDe": "Die lernende Person kann die intramolekulare Esterbildung aus vorgegebenen Hydroxycarbonsäuren anhand von Strukturformeln erklären und Bildungstendenz sowie relative Stabilität der entstehenden Lactone unter angegebenen Bedingungen anhand von Ringstruktur und Vergleichsdaten begründen.",
+        "descriptionEn": "The learner can explain intramolecular ester formation from specified hydroxycarboxylic acids using structural formulas and justify the formation tendency and relative stability of the resulting lactones under stated conditions using ring structure and comparative data."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-current455-final-sixteen-native-d-reviewer-a-20261019-v1-07",
+          "recordDigest": "sha256:3f8399964e982cdbaa17a5241405117a56ce8674f17fb2283065b52f098ed92c"
+        },
+        "second": {
+          "recordId": "chemie455-final16-native-description-b-20261019-v1.goal-07",
+          "recordDigest": "sha256:6b232ba5302009ae6371b0e2c1fe82546c19fcc53cc956d6f550f1add77d09d2"
+        }
+      },
+      "rationaleDe": "Beide tatsächlichen unabhängigen Erstpässe behalten die aktuellen gleichwertigen DE/EN-Beschreibungen. Ihre Schwerpunkte sind für D vereinbar. Das unveränderte vorhandene Verständnis-/Leistungs-/Transferfeld aus second wird wegen folgender konkret beobachtbarer Abgrenzung gewählt: bedingter Strukturvergleich mit getrennter Geschwindigkeits-/Gleichgewichtsbasis; keine universelle Ringgrößenregel. Die P-Empfehlungen unterscheiden sich beziehungsweise bleiben offen (A=revise,B=revise); das gemeinsame D-keep schließt keinen P-Befund. Dies ist nur eine D-Synthese auf den exakt eingefrorenen Inputs; keine menschliche Freigabe, ausgeführte Lernendenleistung oder aktuelle M7-Vollständigkeit wird behauptet.",
+      "rationaleEn": "Both actual independent first passes retain the current equivalent bilingual descriptions. Their emphases are compatible for D. The existing whole unchanged understanding/performance/transfer fields from second are selected for this observable boundary: conditional structural comparison with separate rate/equilibrium basis; no universal ring-size rule. P recommendations differ or remain open (A=revise,B=revise); shared D keep resolves no P finding. This is only D synthesis on exact frozen inputs, not human approval, performed learner work or a current M7 completion claim."
+    },
+    {
+      "decisionId": "chemie-current455-current16-twelve-D-keep-four-deferrals-informed-synthesis-20261019-v1-decision-008",
+      "goalId": "667bc303-e9b8-570b-84f1-61cc8bdfd006",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:53f8b3fe772a4b48a5b16f7143ba3b7497dea90edbf235b8d7f465955d11975a",
+      "pageFingerprint": "sha256:7f243e9b17475b9c58a0a3fd02f86fcb6494d0438bda2e00a60fc5ee0af8020f",
+      "goalReviewContextFingerprint": "sha256:2d7e9b10f40c39b2bbbd98943ef0bc0e4914ed4651c87b5cff565bae1b49b253",
+      "finalText": {
+        "titleDe": "Esterreaktionen und ihre Reversibilität deuten",
+        "titleEn": "Interpret ester reactions and their reversibility",
+        "descriptionDe": "Die lernende Person kann Veresterung und saure Esterhydrolyse als reversible Reaktionen deuten, sie von der unter alkalischen Bedingungen praktisch irreversiblen Bildung von Carboxylatsalzen unterscheiden, Reaktionsprodukte bilanzieren und damit Alltagsbeobachtungen zu Estern erklären.",
+        "descriptionEn": "The learner can interpret esterification and acidic ester hydrolysis as reversible reactions, distinguish them from the effectively irreversible formation of carboxylate salts under alkaline conditions, balance reaction products, and use this distinction to explain everyday observations involving esters."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-current455-final-sixteen-native-d-reviewer-a-20261019-v1-08",
+          "recordDigest": "sha256:7f37223a7a4365ff61d5305cbbfc1c3c46a47f2fc2343eae463f836c733ee121"
+        },
+        "second": {
+          "recordId": "chemie455-final16-native-description-b-20261019-v1.goal-08",
+          "recordDigest": "sha256:3fce102fbd661f45204a14be506c8dc9240cddd6cb6c2f89d9447abfec854557"
+        }
+      },
+      "rationaleDe": "Beide tatsächlichen unabhängigen Erstpässe behalten die aktuellen gleichwertigen DE/EN-Beschreibungen. Ihre Schwerpunkte sind für D vereinbar. Das unveränderte vorhandene Verständnis-/Leistungs-/Transferfeld aus first wird wegen folgender konkret beobachtbarer Abgrenzung gewählt: reversible saure Hydrolyse versus unter alkalischen Bedingungen praktisch unterdrückte Rückveresterung. Die P-Empfehlungen unterscheiden sich beziehungsweise bleiben offen (A=revise,B=none); das gemeinsame D-keep schließt keinen P-Befund. Der zusätzliche Kohlenstoffknick und absolute Rückreaktionstext im alten Bild bleiben getrennte V-Befunde; der Korrekturkandidat ist kein nachträglicher Bestandteil dieser eingefrorenen Erstpässe. Dies ist nur eine D-Synthese auf den exakt eingefrorenen Inputs; keine menschliche Freigabe, ausgeführte Lernendenleistung oder aktuelle M7-Vollständigkeit wird behauptet.",
+      "rationaleEn": "Both actual independent first passes retain the current equivalent bilingual descriptions. Their emphases are compatible for D. The existing whole unchanged understanding/performance/transfer fields from first are selected for this observable boundary: reversible acidic hydrolysis versus reverse esterification practically suppressed under alkaline conditions. P recommendations differ or remain open (A=revise,B=none); shared D keep resolves no P finding. The extra carbon corner and absolute reverse-reaction caption in the old image remain separate V findings; the correction candidate is not retroactively part of these frozen first passes. This is only D synthesis on exact frozen inputs, not human approval, performed learner work or a current M7 completion claim."
+    },
+    {
+      "decisionId": "chemie-current455-current16-twelve-D-keep-four-deferrals-informed-synthesis-20261019-v1-decision-009",
+      "goalId": "91cd4728-b811-562a-970b-18b81dfb4bdf",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a13ea12c7c844f97972eca0447b82a6c7a63503e1afd8fc262ea6d1fcc6c2280",
+      "pageFingerprint": "sha256:db472adc4ddcbe7c1144d0699f6b451e1aa8c268e3ec14966078ce684b1a72c9",
+      "goalReviewContextFingerprint": "sha256:3811e7694f3260c0994b76f12b0ca2672d2a997a1d39043484193483bb51c15c",
+      "finalText": {
+        "titleDe": "Polare Eigenschaften erklären",
+        "titleEn": "Explain polar properties",
+        "descriptionDe": "Die lernende Person kann Dipol-Dipol-Wechselwirkungen und Wasserstoffbrücken zur Deutung von Löslichkeit und Siedetemperatur heranziehen.",
+        "descriptionEn": "The learner can use dipole-dipole interactions and hydrogen bonds to interpret solubility and boiling temperature."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-current455-final-sixteen-native-d-reviewer-a-20261019-v1-12",
+          "recordDigest": "sha256:8c464a7ef6b19f35daa46c62d9b5ae6278d886f32c742ffb4e9b612f8437939c"
+        },
+        "second": {
+          "recordId": "chemie455-final16-native-description-b-20261019-v1.goal-12",
+          "recordDigest": "sha256:b5f64aaa19142acad4e64f9c295eee8ccc6432907514aa940ebfd14bbd69e4d7"
+        }
+      },
+      "rationaleDe": "Beide tatsächlichen unabhängigen Erstpässe behalten die aktuellen gleichwertigen DE/EN-Beschreibungen. Ihre Schwerpunkte sind für D vereinbar. Das unveränderte vorhandene Verständnis-/Leistungs-/Transferfeld aus second wird wegen folgender konkret beobachtbarer Abgrenzung gewählt: permanente Dipole, Donor-/Akzeptorpartner und frischer Ether/Wasser-Vergleich; keine Erklärung aus O-Atom oder ähnlicher Masse allein. Beide aktuellen P-Empfehlungen lauten none; die ganzen im Erstpass gebundenen Fälle wurden tatsächlich geprüft. Dies ist nur eine D-Synthese auf den exakt eingefrorenen Inputs; keine menschliche Freigabe, ausgeführte Lernendenleistung oder aktuelle M7-Vollständigkeit wird behauptet.",
+      "rationaleEn": "Both actual independent first passes retain the current equivalent bilingual descriptions. Their emphases are compatible for D. The existing whole unchanged understanding/performance/transfer fields from second are selected for this observable boundary: permanent dipoles, donor/acceptor partners and fresh ether/water comparison; no explanation from an O atom or similar mass alone. Both current P recommendations are none; complete first-pass-bound cases were actually reviewed. This is only D synthesis on exact frozen inputs, not human approval, performed learner work or a current M7 completion claim."
+    },
+    {
+      "decisionId": "chemie-current455-current16-twelve-D-keep-four-deferrals-informed-synthesis-20261019-v1-decision-010",
+      "goalId": "62de1c6e-8581-5345-a0a6-773427cb6db7",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:6e8af4bcd124fdb21e4649c4081ba168c7be989ebfc59939e1a156e02377d2f3",
+      "pageFingerprint": "sha256:32bb86da05634ccd7c4045be3a7b585af6c91e061d1176299a11b7aceb79eef9",
+      "goalReviewContextFingerprint": "sha256:87176c77dbac1b09d25786ee1c5a2a32a65dc3d0a950418ed4ee2386c03a1783",
+      "finalText": {
+        "titleDe": "Estereigenschaften erklären und Verwendungen begründen",
+        "titleEn": "Explain ester properties and justify uses",
+        "descriptionDe": "Die lernende Person kann Stoffeigenschaften einfacher Carbonsäureester anhand ihrer Molekülstruktur und zwischenmolekularer Wechselwirkungen erklären und anhand gegebener Daten Einsatzbereiche in Alltagsprodukten und Technik begründen.",
+        "descriptionEn": "The learner can explain properties of simple carboxylic esters through their molecular structure and intermolecular interactions and use supplied data to justify applications in everyday products and technology."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-current455-final-sixteen-native-d-reviewer-a-20261019-v1-13",
+          "recordDigest": "sha256:b1adee8e343a274e604b4fafb5fc16af276ac3ff6df1641ce700208b8e7e6d3e"
+        },
+        "second": {
+          "recordId": "chemie455-final16-native-description-b-20261019-v1.goal-13",
+          "recordDigest": "sha256:2b5939243216861bfb7758d43741e46146cf868c361d059c1cddc32d131fc40d"
+        }
+      },
+      "rationaleDe": "Beide tatsächlichen unabhängigen Erstpässe behalten die aktuellen gleichwertigen DE/EN-Beschreibungen. Ihre Schwerpunkte sind für D vereinbar. Das unveränderte vorhandene Verständnis-/Leistungs-/Transferfeld aus second wird wegen folgender konkret beobachtbarer Abgrenzung gewählt: getrennte datenbezogene Ester-Eigenschafts-/Verwendungskompetenz mit A80/20- und B5/95-Verteilungen. Beide aktuellen P-Empfehlungen lauten none; die ganzen im Erstpass gebundenen Fälle wurden tatsächlich geprüft. Dies ist nur eine D-Synthese auf den exakt eingefrorenen Inputs; keine menschliche Freigabe, ausgeführte Lernendenleistung oder aktuelle M7-Vollständigkeit wird behauptet.",
+      "rationaleEn": "Both actual independent first passes retain the current equivalent bilingual descriptions. Their emphases are compatible for D. The existing whole unchanged understanding/performance/transfer fields from second are selected for this observable boundary: separate data-based ester property/use reasoning with A80/20 and B5/95 partitions. Both current P recommendations are none; complete first-pass-bound cases were actually reviewed. This is only D synthesis on exact frozen inputs, not human approval, performed learner work or a current M7 completion claim."
+    },
+    {
+      "decisionId": "chemie-current455-current16-twelve-D-keep-four-deferrals-informed-synthesis-20261019-v1-decision-011",
+      "goalId": "0d59b62e-d3f9-5969-b961-0c5e26316c04",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a5d98247414830af6d1889ef5df056963ca99998168a5cb7438f40dc92d1ee83",
+      "pageFingerprint": "sha256:5adbba24c56980ff4b64db8cbcf21af46808a6a9439172956fda442f74ac8911",
+      "goalReviewContextFingerprint": "sha256:0c4d32b3f5aac4a5c0669d37ccb5c193438f77e6ad8d0be76f59660aa009690a",
+      "finalText": {
+        "titleDe": "Verwendung von Parabenen beurteilen (LK)",
+        "titleEn": "Evaluate the use of parabens (LK)",
+        "descriptionDe": "Die lernende Person kann den Einsatz vorgegebener p-Hydroxybenzoesäureester als Konservierungsstoffe anhand ihrer Molekülstruktur, bereitgestellter Wirkungs- und Löslichkeitsdaten sowie datierter produktbezogener Verwendungsbedingungen beurteilen und die Grenzen des Materials benennen.",
+        "descriptionEn": "The learner can evaluate the use of specified p-hydroxybenzoic acid esters as preservatives using their molecular structures, supplied efficacy and solubility data, and dated product-specific conditions of use, and identify the limits of the material."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-current455-final-sixteen-native-d-reviewer-a-20261019-v1-14",
+          "recordDigest": "sha256:0a51c3cca81cf18587f95dad3e908c40bc00b71ccb05e0e7b6ebebcbd3957673"
+        },
+        "second": {
+          "recordId": "chemie455-final16-native-description-b-20261019-v1.goal-14",
+          "recordDigest": "sha256:b1f5b01ec18dccb0fa302f811df1f8f62dc463fc8f6b045604562fc2c4576eb0"
+        }
+      },
+      "rationaleDe": "Beide tatsächlichen unabhängigen Erstpässe behalten die aktuellen gleichwertigen DE/EN-Beschreibungen. Ihre Schwerpunkte sind für D vereinbar. Das unveränderte vorhandene Verständnis-/Leistungs-/Transferfeld aus second wird wegen folgender konkret beobachtbarer Abgrenzung gewählt: material- und datumsgebundenes Urteil aus Struktur, Wirkung, Löslichkeit und Produktbedingungen. Die P-Empfehlungen unterscheiden sich beziehungsweise bleiben offen (A=revise,B=revise); das gemeinsame D-keep schließt keinen P-Befund. Dies ist nur eine D-Synthese auf den exakt eingefrorenen Inputs; keine menschliche Freigabe, ausgeführte Lernendenleistung oder aktuelle M7-Vollständigkeit wird behauptet.",
+      "rationaleEn": "Both actual independent first passes retain the current equivalent bilingual descriptions. Their emphases are compatible for D. The existing whole unchanged understanding/performance/transfer fields from second are selected for this observable boundary: material- and date-bound judgment using structure, efficacy, solubility and product conditions. P recommendations differ or remain open (A=revise,B=revise); shared D keep resolves no P finding. This is only D synthesis on exact frozen inputs, not human approval, performed learner work or a current M7 completion claim."
+    },
+    {
+      "decisionId": "chemie-current455-current16-twelve-D-keep-four-deferrals-informed-synthesis-20261019-v1-decision-012",
+      "goalId": "e7c3d20e-4b13-560b-b8ee-c5abca8cc624",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:45b67fa872ec6e8bb79154e2998acc55ef7b85eb2028ed069b4ade83c7481468",
+      "pageFingerprint": "sha256:61e2aa9f1ef09fd9a40148ade040de825d47b1186659970641223b2b2ef44e4b",
+      "goalReviewContextFingerprint": "sha256:5fe232a5191bc29910b9a1ef1db8b56d79e87124d66374ce22a69baecad4e21b",
+      "finalText": {
+        "titleDe": "Stoffe isolieren, reinigen und Ausbeute beurteilen",
+        "titleEn": "Isolate, purify, and evaluate yields of substances",
+        "descriptionDe": "Die lernende Person kann auf Grundlage physikalischer und chemischer Stoffeigenschaften geeignete Isolierungs- und Reinigungsverfahren auswählen, sicher durchführen, Reinheit und Ausbeute prüfen sowie die Tätigkeit dokumentieren.",
+        "descriptionEn": "The learner can select and safely carry out isolation and purification methods based on physical and chemical substance properties, check purity and yield, and document the work."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-current455-final-sixteen-native-d-reviewer-a-20261019-v1-16",
+          "recordDigest": "sha256:6fd244895eebc7202c066d085ded6c45ea59bf335a9a673a94294ceb749d1e2d"
+        },
+        "second": {
+          "recordId": "chemie455-final16-native-description-b-20261019-v1.goal-16",
+          "recordDigest": "sha256:e19de6ada364d52695920c2b0ae3b3db7656014b6455c5d6a096361a344d7ef7"
+        }
+      },
+      "rationaleDe": "Beide tatsächlichen unabhängigen Erstpässe behalten die aktuellen gleichwertigen DE/EN-Beschreibungen. Ihre Schwerpunkte sind für D vereinbar. Das unveränderte vorhandene Verständnis-/Leistungs-/Transferfeld aus second wird wegen folgender konkret beobachtbarer Abgrenzung gewählt: allgemeiner eigener Auswahl-/Reinigungs-/Prüf-/Dokumentationsprozess mit getrennten Massenbezügen und Herstellungs-Vorkontext. Die P-Empfehlungen unterscheiden sich beziehungsweise bleiben offen (A=revise,B=none); das gemeinsame D-keep schließt keinen P-Befund. Dies ist nur eine D-Synthese auf den exakt eingefrorenen Inputs; keine menschliche Freigabe, ausgeführte Lernendenleistung oder aktuelle M7-Vollständigkeit wird behauptet.",
+      "rationaleEn": "Both actual independent first passes retain the current equivalent bilingual descriptions. Their emphases are compatible for D. The existing whole unchanged understanding/performance/transfer fields from second are selected for this observable boundary: general personal selection/purification/checking/documentation process with separate mass references and synthesis precontext. P recommendations differ or remain open (A=revise,B=none); shared D keep resolves no P finding. This is only D synthesis on exact frozen inputs, not human approval, performed learner work or a current M7 completion claim."
+    }
+  ],
+  "deferredGoals": [
+    {
+      "goalId": "98ae3f8e-4800-5ff3-bd2c-89434c006143",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "rationaleDe": "Der tatsächliche D-ErstpassA urteilt revise, ErstpassB revise. Der offene Beschreibungsbefund wird nicht automatisch überstimmt. A: D-Befund: „den Mechanismus von Kondensationsreaktionen“ lässt einen universellen Mechanismus und fehlende Bedingungen erwarten. Die lokale Präzisierung nennt den bereits beanspruchten Acyl-Mechanismus und die im gelieferten P ausdrücklich notwendige Abgrenzung zur bloßen Salzbildung. Kein neuer Syntheseoperator wird hinzugefügt. P: Beide vollständigen Papierfälle sind konkret, Valenzen/Nettoformeln stimmen, Aktivierung und neutrale Aminfraktion sind benannt; kein praktischer Synthesekredit wird beansprucht. B: D: „den Mechanismus von Kondensationsreaktionen“ benennt weder den gemeinten Acylmechanismus noch dessen notwendige unterschiedlichen Bedingungen und kann einen universellen Kondensationsmechanismus nahelegen. Die lokale Präzisierung nennt die bereits im Ziel beanspruchte mechanistische Erklärung; sie ergänzt keine Herstellungspflicht. P: Beide ganzen Papierfälle enthalten richtige Produkte, Ladungen, Protonierungs-/Salzgrenze und ausdrücklich gesetzte Aktivierung. O-/N-Nucleophile bilden einen gemeinsamen Mechanismenvergleich; kein bloßes Aufteilen nach Stoffnamen ist nötig. Eine gezielte fachliche Klärung oder unabhängig geprüfte aktuelle Nachfolgefassung bleibt erforderlich; kein aktueller D-/M7-Abschluss folgt.",
+      "rationaleEn": "Actual first-passA decides revise and first-passB revise. The open description finding is not automatically overruled. Targeted scientific clarification or an independently reviewed current successor is required. Native first findings and separate P issues remain intact; no current D/M7 completion follows."
+    },
+    {
+      "goalId": "9d97f628-c3ea-5dc0-8723-b17b16297af3",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "rationaleDe": "Der tatsächliche D-ErstpassA urteilt revise, ErstpassB revise. Der offene Beschreibungsbefund wird nicht automatisch überstimmt. A: D-Befund: Der Ausgangstext wiederholt mit „planen und Gleichgewichte beurteilen“ fast nur den Titel; welche chemische Beziehung beurteilt wird, bleibt unklar. Die begrenzte Präzisierung macht Resttausch und Gleichgewichtseingriffe sichtbar. P-Befund: K=1-Rechnungen0,5/0,8mol sind stimmig; der frische Fall kündigt jedoch ein Triglycerid und Glycerin-Abtrenndaten an, ohne Struktur oder Trenn-/Nebenreaktionsdaten tatsächlich zu geben oder zu binden. Die verlangte Planbeurteilung ist dadurch nur angekündigt und muss konkretisiert werden. B: D: Der aktuelle Text bleibt beim Aufgabennamen und lässt den chemischen Resttausch sowie den Gegenstand der Gleichgewichtsbeurteilung offen. Die knappe Präzisierung macht diese bereits beanspruchte Beziehung sichtbar. P-Befund P-B03: Das K=1-Modell ist rechnerisch stimmig (0,5 bzw.0,8 mol aus 1 mol Ester). Im frischen Triglyceridfall werden Abtrennungs- und Nebenreaktionsdaten angekündigt, aber weder konkret genannt noch gebunden. Ein begründeter Vergleich realer Planalternativen braucht diese Angaben; das allgemeine Schema allein belegt diesen Transfer nicht. Eine gezielte fachliche Klärung oder unabhängig geprüfte aktuelle Nachfolgefassung bleibt erforderlich; kein aktueller D-/M7-Abschluss folgt.",
+      "rationaleEn": "Actual first-passA decides revise and first-passB revise. The open description finding is not automatically overruled. Targeted scientific clarification or an independently reviewed current successor is required. Native first findings and separate P issues remain intact; no current D/M7 completion follows."
+    },
+    {
+      "goalId": "3de28598-672f-5753-8a45-8f559c2f9dc2",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "rationaleDe": "Der tatsächliche D-ErstpassA urteilt revise, ErstpassB keep. Der offene Beschreibungsbefund wird nicht automatisch überstimmt. A: D-Befund: Die unbeschränkte Identifikationsformulierung lässt die im ganzen P ausdrücklich notwendige Begrenzung durch Kontrollen und Nachweisgrenzen offen. Eine lokale, methodenneutrale Präzisierung macht diese bereits beanspruchte Nachweiskompetenz wahrheitsgemäß. P: Beide vollständigen Kandidatenfälle liefern konkrete Regeln, Befunde und getrennte reale Kanäle; die Cu-Gleichung erhält Atome/Ladung. DNPH/Bromwasser bleiben Papierdaten, Ausführung und Kontrollen müssen später tatsächlich beobachtet werden. B: D: Die Beschreibung benennt ausgewählte Stoffklassen und die integrierte Auswahl-Ausführung-Deutung. Sie verlangt keinen universellen einzelnen Nachweis für alle genannten Klassen. P: Beide ganzen Fälle liefern begrenzte Kandidaten, passende Kontrollen, korrekte Bilanzen und einen getrennten beaufsichtigten realen Handlungskanal. In der Cu(II)-Gleichung sind Atome und Gesamtladung −1 erhalten; komplexierte Reagenzien sind als Modellgrenze benannt. DNPH/Bromwasser bleiben Datenkanäle und gelten nicht als selbst ausgeführt. Eine gezielte fachliche Klärung oder unabhängig geprüfte aktuelle Nachfolgefassung bleibt erforderlich; kein aktueller D-/M7-Abschluss folgt.",
+      "rationaleEn": "Actual first-passA decides revise and first-passB keep. The open description finding is not automatically overruled. Targeted scientific clarification or an independently reviewed current successor is required. Native first findings and separate P issues remain intact; no current D/M7 completion follows."
+    },
+    {
+      "goalId": "2f3cdec5-f845-5b0f-841e-8b1d47de0281",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "rationaleDe": "Der tatsächliche D-ErstpassA urteilt keep, ErstpassB revise. Der offene Beschreibungsbefund wird nicht automatisch überstimmt. A: D: Strukturidentifikation und physikalische Eigenschaftserklärung bilden einen kohärenten, vom nachfolgenden Verwendungs-/Kennzahlenziel abgegrenzten Kern. P: Beide Fälle enthalten konkrete C18-Struktureigenschaften, Schmelzbereiche, Temperatur und Phasenangaben. Der zweite Fall ändert räumliche Konfiguration und Lösungsmittel; er ist kein bloßer Zahlentausch. Die stark vereinfachte Bildsymbolik ersetzt ausdrücklich keine vollständige Triacylglycerid-Strukturformel. B: D: Estergruppen allein identifizieren kein Triacylglycerid. Die knappe Präzisierung nennt das bereits beanspruchte Glycerintriester-Gerüst und verhindert die Zuordnung eines beliebigen Esters als Fett. P: Beide ganzen Fälle sind fachlich konkret und kontrollieren Kettenlänge, Sättigung/Konfiguration sowie Lösungsmittel. Die Daten werden ausdrücklich als synthetische Vergleichsfälle behandelt; natürliche Gemische und Kristallform bleiben als Grenzen erhalten. P-Inhalt passt bereits zur präzisierten Identifikation. Eine gezielte fachliche Klärung oder unabhängig geprüfte aktuelle Nachfolgefassung bleibt erforderlich; kein aktueller D-/M7-Abschluss folgt.",
+      "rationaleEn": "Actual first-passA decides keep and first-passB revise. The open description finding is not automatically overruled. Targeted scientific clarification or an independently reviewed current successor is required. Native first findings and separate P issues remain intact; no current D/M7 completion follows."
+    }
+  ],
+  "manifestFingerprint": "sha256:5231a6906a0047c79462ae0fa87e97a8f2570747e604d31fcd4a6b10922d985d"
+}

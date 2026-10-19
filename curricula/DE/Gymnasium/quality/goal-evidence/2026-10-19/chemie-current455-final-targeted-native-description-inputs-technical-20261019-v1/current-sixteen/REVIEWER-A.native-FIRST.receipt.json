@@ -1,0 +1,599 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "chemie455-final16-reviewer-a-native-first-20261019-v1",
+  "reviewerTaskIdentity": "/root/chemie455_final16_fresh_d_a",
+  "scope": "Independent native description reviewer A; all16 current bound goals, no historical restart of439 other goals",
+  "campaignId": "chemie-current455-final-targeted-sixteen-D-20261019-v1-a",
+  "roundId": "chemie-current455-final-targeted-sixteen-D-20261019-v1-first-pass-a",
+  "runId": "chemie-current455-final-sixteen-native-d-reviewer-a-20261019-v1",
+  "reviewPass": "first_pass",
+  "independenceGroupId": "chemie-current455-final-targeted-sixteen-D-20261019-v1-independent-a",
+  "blindToOtherReviews": true,
+  "otherReviewerOutputsInspected": false,
+  "earlierChemistryReviewsInspected": false,
+  "authorshipOrTechnicalLogsTreatedAsApproval": false,
+  "reviewAuthority": "ai_candidate",
+  "recordStatus": "candidate",
+  "humanApproval": false,
+  "humanTrial": false,
+  "learnerPerformanceRecorded": false,
+  "nativeBundleFingerprint": "sha256:8454462a911d81774b5690542280144536744c981e307aa8b77d4a5d5fb2a4c7",
+  "bookDigest": "sha256:83eed0dda33fa6db0c6fe00f78b8efb1aeaf1613eb0b8b533131963ea44dd1a2",
+  "nativeRunManifestPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-final-targeted-native-description-inputs-technical-20261019-v1/current-sixteen/round-a/results/chemie-current455-final-targeted-sixteen-D-20261019-v1-first-pass-a.batch-001.run.json",
+  "nativeRecordsPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-final-targeted-native-description-inputs-technical-20261019-v1/current-sixteen/round-a/results/chemie-current455-final-targeted-sixteen-D-20261019-v1-first-pass-a.batch-001.records.jsonl",
+  "generationMetadataAvailability": {
+    "kind": "native-runtime-metadata-availability-disclosure",
+    "execution": "Codex native independent first pass",
+    "provider": "OpenAI",
+    "exposedModelFamily": "GPT-6",
+    "modelVersion": null,
+    "samplingParameters": null,
+    "reasoningEffort": null,
+    "availabilityNote": "Exact model revision, sampling values and reasoning-effort setting are not exposed to this reviewer. Null means unavailable, not a chosen generation value."
+  },
+  "generationParametersFingerprint": "sha256:373a7005854c0a3d2a63d45dd4546fd50023979c381e65d901d02a8d6d5cf48b",
+  "timeProvenance": {
+    "runRecordMaterializationStartedAt": "2026-10-18T22:59:37.906939Z",
+    "runRecordMaterializationCompletedAt": "2026-10-18T23:03:20.180019Z",
+    "manifestTimestampSemantics": "These instrumented timestamps delimit native record authoring after preparatory input, material and image inspection. The earlier inspection start was not instrumented; no precise earlier timestamp is invented."
+  },
+  "instructionsRead": [
+    "AGENTS.md sections7.4 and9",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-final-targeted-native-description-inputs-technical-20261019-v1/current-sixteen/round-a/prompt.md",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-final-targeted-native-description-inputs-technical-20261019-v1/current-sixteen/round-a/criteria.md",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-final-targeted-native-description-inputs-technical-20261019-v1/current-sixteen/round-a/contracts/goal-description-review-record.schema.json"
+  ],
+  "counts": {
+    "goals": 16,
+    "Dkeep": 13,
+    "Drevise": 3,
+    "DsplitReview": 0,
+    "Dblock": 0,
+    "Pnone": 10,
+    "Previse": 6
+  },
+  "scopeBoundary": "Bound review-only technical QA projection, not source/composition-view clearance or actual learner acceptance. Raw applicability/sourceRef and author assertions do not establish complete official mappings. No publication, canonical mutation, profile mutation or source/view closure is authorised by this receipt.",
+  "materialBodiesRead": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-whole-P26-native-continuation-author-20261010-v1/materials/whole26-current-operative-materials-and-profiles.exact-assembly.json",
+      "readScope": "/entries/25/wholeOperativeCases/0/wholeOperativeCase",
+      "sha256": "sha256:3c4a4a7a019d5d9fae3e0d9fddae30b15cf792a3ea405c0ba1c63ce5ee4b0eb8",
+      "bytes": 1168041,
+      "completeFileParsed": true,
+      "thirdPartyReferencesNotNewlyVerified": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-6c7-six-explicit-model-inputs-author-20261018-v1/MATERIAL.one-whole-operative-case.with-six-input-rows.author.json",
+      "readScope": "/wholeOperativeCase",
+      "sha256": "sha256:a181147215a36a83090592500875120a27bb5d7364d96b3c044c2dd45b09253d",
+      "bytes": 14360,
+      "completeFileParsed": true,
+      "thirdPartyReferencesNotNewlyVerified": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-carboxylic-atomicity-source-author-20261018-v1/materials/carboxyl-supplied-observations.DE-EN.pending.json",
+      "readScope": "/case1 and /freshCase2",
+      "sha256": "sha256:828ea8ff1b560c3e2ba2f0b3f3f09eb5ae3e1c39db3122216f7c33f3caa599d8",
+      "bytes": 2862,
+      "completeFileParsed": true,
+      "thirdPartyReferencesNotNewlyVerified": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-five-native-findings-targeted-author-20261018-v1/materials/33e.complete-two-DE-EN-model-tables.author.json",
+      "readScope": "/cases/0 and /cases/1",
+      "sha256": "sha256:9bb2e1dde619358e5719c6847d82dd3357492b3a286ba7ff45a13d4c7c002712",
+      "bytes": 12247,
+      "completeFileParsed": true,
+      "thirdPartyReferencesNotNewlyVerified": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-two-atom-and-33e-text-author-20261019-v1/materials/TWO.whole-formation-cases.DE-EN.pending.json",
+      "readScope": "/cases/0 and /cases/1",
+      "sha256": "sha256:5b09cfc00f23e5e3db35469063e91141a3c0af487ef00cae39534d501edcd33b",
+      "bytes": 10146,
+      "completeFileParsed": true,
+      "thirdPartyReferencesNotNewlyVerified": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-two-atom-and-33e-text-author-20261019-v1/materials/TWO.whole-property-use-cases.DE-EN.pending.json",
+      "readScope": "/cases/0 and /cases/1",
+      "sha256": "sha256:541185a404de3d6765ae313284d12aaaaaa5eb70eae4e7f904c43b5b292cd37f",
+      "bytes": 14242,
+      "completeFileParsed": true,
+      "thirdPartyReferencesNotNewlyVerified": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-D7-two-material-binding-and-scope-author-20261019-v1/materials/e7.two-whole-cases.workup-scope-and-expectation-alignment.author.json",
+      "readScope": "/cases/0 and /cases/1",
+      "sha256": "sha256:30a47514a5cf42bfa1a0b8b1f838ad0c7ca9d9c1eb0f02a5ac47a5b3654389f2",
+      "bytes": 40046,
+      "completeFileParsed": true,
+      "thirdPartyReferencesNotNewlyVerified": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-D7-two-material-binding-and-scope-author-20261019-v1/materials/e7.primary-method-references-and-required-record.author.json",
+      "readScope": "/",
+      "sha256": "sha256:103732d7f3e2c6a68fc45dbe960ad5b4830dc87895c6b22747a47d18dc637056",
+      "bytes": 4251,
+      "completeFileParsed": true,
+      "thirdPartyReferencesNotNewlyVerified": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-D7-two-material-binding-and-scope-author-20261019-v1/materials/e7.complete-stock-and-own-record.blank.author.json",
+      "readScope": "/",
+      "sha256": "sha256:fa8070f76642401ab4b6a975462ea4700d99efda7dd4234562f5800a648b41b3",
+      "bytes": 4738,
+      "completeFileParsed": true,
+      "thirdPartyReferencesNotNewlyVerified": false
+    }
+  ],
+  "visualInspection": [
+    {
+      "goalId": "6c7ce93c-7675-51da-bc0c-7d0257f7ff7d",
+      "sourcePath": "app/public/assets/goal-visualizations/chemie/6c7ce93c-7675-51da-bc0c-7d0257f7ff7d/6c7ce93c-7675-51da-bc0c-7d0257f7ff7d.jpg",
+      "sha256": "sha256:add6f10b3fccddca4cce0c1f467e036aa25e7090f0c7717f4a07a94a5467030c",
+      "nativeOriginalViewed": true,
+      "width360PreviewViewed": true,
+      "width680PreviewViewed": true,
+      "physicalPdfPageViewed": 3,
+      "logicalGoalPage": 1,
+      "pdfGoalPageCompleteWithoutVisibleClipping": true,
+      "imagesAndAssetsMutated": false
+    },
+    {
+      "goalId": "a3788e40-b540-5bed-be37-b33053528422",
+      "sourcePath": "app/public/assets/goal-visualizations/chemie/a3788e40-b540-5bed-be37-b33053528422/a3788e40-b540-5bed-be37-b33053528422.jpg",
+      "sha256": "sha256:3e70a69c75619fdfb8cdfa185a82fed851168f704463eb1e7a1f3fae5672ab5f",
+      "nativeOriginalViewed": true,
+      "width360PreviewViewed": true,
+      "width680PreviewViewed": true,
+      "physicalPdfPageViewed": 4,
+      "logicalGoalPage": 2,
+      "pdfGoalPageCompleteWithoutVisibleClipping": true,
+      "imagesAndAssetsMutated": false
+    },
+    {
+      "goalId": "dc146a38-994d-58ec-b6a0-5210118b93ae",
+      "sourcePath": "app/public/assets/goal-visualizations/chemie/dc146a38-994d-58ec-b6a0-5210118b93ae/dc146a38-994d-58ec-b6a0-5210118b93ae.png",
+      "sha256": "sha256:e38ca121688d23bcec3843113daf5a2e371836f3dbcd6a614ac95d8b6adfe800",
+      "nativeOriginalViewed": true,
+      "width360PreviewViewed": true,
+      "width680PreviewViewed": true,
+      "physicalPdfPageViewed": 5,
+      "logicalGoalPage": 3,
+      "pdfGoalPageCompleteWithoutVisibleClipping": true,
+      "imagesAndAssetsMutated": false
+    },
+    {
+      "goalId": "33e845cc-1a7b-50d5-99b3-8079575c4e6a",
+      "sourcePath": "app/public/assets/goal-visualizations/chemie/33e845cc-1a7b-50d5-99b3-8079575c4e6a/33e845cc-1a7b-50d5-99b3-8079575c4e6a.jpg",
+      "sha256": "sha256:125252a43e161e8eced3665105faea9fef2acd279fca362184168447024a660b",
+      "nativeOriginalViewed": true,
+      "width360PreviewViewed": true,
+      "width680PreviewViewed": true,
+      "physicalPdfPageViewed": 6,
+      "logicalGoalPage": 4,
+      "pdfGoalPageCompleteWithoutVisibleClipping": true,
+      "imagesAndAssetsMutated": false
+    },
+    {
+      "goalId": "70b34ae7-4481-590c-9a02-516464750832",
+      "sourcePath": "app/public/assets/goal-visualizations/chemie/70b34ae7-4481-590c-9a02-516464750832/70b34ae7-4481-590c-9a02-516464750832.png",
+      "sha256": "sha256:65b6986d082563faa2b4cfa7e8b260380a17925c733f4bb67cb90ff1ca3aabc5",
+      "nativeOriginalViewed": true,
+      "width360PreviewViewed": true,
+      "width680PreviewViewed": true,
+      "physicalPdfPageViewed": 7,
+      "logicalGoalPage": 5,
+      "pdfGoalPageCompleteWithoutVisibleClipping": true,
+      "imagesAndAssetsMutated": false
+    },
+    {
+      "goalId": "18819a59-2442-530f-a7c3-26755398ec66",
+      "sourcePath": "app/public/assets/goal-visualizations/chemie/18819a59-2442-530f-a7c3-26755398ec66/18819a59-2442-530f-a7c3-26755398ec66.png",
+      "sha256": "sha256:4d6ed1da92e782e558a5f217343bf47ab339462b2d99bf10dd0d22a122442f3d",
+      "nativeOriginalViewed": true,
+      "width360PreviewViewed": true,
+      "width680PreviewViewed": true,
+      "physicalPdfPageViewed": 8,
+      "logicalGoalPage": 6,
+      "pdfGoalPageCompleteWithoutVisibleClipping": true,
+      "imagesAndAssetsMutated": false
+    },
+    {
+      "goalId": "39c85aa0-b01f-56ec-a148-b8009bf650f5",
+      "sourcePath": "app/public/assets/goal-visualizations/chemie/39c85aa0-b01f-56ec-a148-b8009bf650f5/39c85aa0-b01f-56ec-a148-b8009bf650f5.jpg",
+      "sha256": "sha256:03b179c4fa8cf3797ab25095ece873af2663f0b336f792b8e75d076fbd5e19ee",
+      "nativeOriginalViewed": true,
+      "width360PreviewViewed": true,
+      "width680PreviewViewed": true,
+      "physicalPdfPageViewed": 9,
+      "logicalGoalPage": 7,
+      "pdfGoalPageCompleteWithoutVisibleClipping": true,
+      "imagesAndAssetsMutated": false
+    },
+    {
+      "goalId": "667bc303-e9b8-570b-84f1-61cc8bdfd006",
+      "sourcePath": "app/public/assets/goal-visualizations/chemie/667bc303-e9b8-570b-84f1-61cc8bdfd006/667bc303-e9b8-570b-84f1-61cc8bdfd006.jpg",
+      "sha256": "sha256:52b3b4ec10999943d2a92456adb3b1db7266c10b791fe16971147e0e86be3c8f",
+      "nativeOriginalViewed": true,
+      "width360PreviewViewed": true,
+      "width680PreviewViewed": true,
+      "physicalPdfPageViewed": 10,
+      "logicalGoalPage": 8,
+      "pdfGoalPageCompleteWithoutVisibleClipping": true,
+      "imagesAndAssetsMutated": false
+    },
+    {
+      "goalId": "98ae3f8e-4800-5ff3-bd2c-89434c006143",
+      "sourcePath": "app/public/assets/goal-visualizations/chemie/98ae3f8e-4800-5ff3-bd2c-89434c006143/98ae3f8e-4800-5ff3-bd2c-89434c006143.jpg",
+      "sha256": "sha256:a1f09267e6bf8df271b75c4a7b5f61618c352023bbf9308ea7d1eeb087552502",
+      "nativeOriginalViewed": true,
+      "width360PreviewViewed": true,
+      "width680PreviewViewed": true,
+      "physicalPdfPageViewed": 11,
+      "logicalGoalPage": 9,
+      "pdfGoalPageCompleteWithoutVisibleClipping": true,
+      "imagesAndAssetsMutated": false
+    },
+    {
+      "goalId": "9d97f628-c3ea-5dc0-8723-b17b16297af3",
+      "sourcePath": "app/public/assets/goal-visualizations/chemie/9d97f628-c3ea-5dc0-8723-b17b16297af3/9d97f628-c3ea-5dc0-8723-b17b16297af3.jpg",
+      "sha256": "sha256:bf40b98f72a0f46303a4b37d112438e0887cbde8a2236624d3b7bd2f7403b9f7",
+      "nativeOriginalViewed": true,
+      "width360PreviewViewed": true,
+      "width680PreviewViewed": true,
+      "physicalPdfPageViewed": 12,
+      "logicalGoalPage": 10,
+      "pdfGoalPageCompleteWithoutVisibleClipping": true,
+      "imagesAndAssetsMutated": false
+    },
+    {
+      "goalId": "3de28598-672f-5753-8a45-8f559c2f9dc2",
+      "sourcePath": "app/public/assets/goal-visualizations/chemie/3de28598-672f-5753-8a45-8f559c2f9dc2/3de28598-672f-5753-8a45-8f559c2f9dc2.png",
+      "sha256": "sha256:a80f4270530620836c323cc40f7b046df4a529fdb7cb4f10310ef52c7c8b1fde",
+      "nativeOriginalViewed": true,
+      "width360PreviewViewed": true,
+      "width680PreviewViewed": true,
+      "physicalPdfPageViewed": 13,
+      "logicalGoalPage": 11,
+      "pdfGoalPageCompleteWithoutVisibleClipping": true,
+      "imagesAndAssetsMutated": false
+    },
+    {
+      "goalId": "91cd4728-b811-562a-970b-18b81dfb4bdf",
+      "sourcePath": "app/public/assets/goal-visualizations/chemie/91cd4728-b811-562a-970b-18b81dfb4bdf/91cd4728-b811-562a-970b-18b81dfb4bdf.jpg",
+      "sha256": "sha256:9d6437defc950e367d49d9d31afecccc7bcffedef21ef0707f86bfda934300ef",
+      "nativeOriginalViewed": true,
+      "width360PreviewViewed": true,
+      "width680PreviewViewed": true,
+      "physicalPdfPageViewed": 14,
+      "logicalGoalPage": 12,
+      "pdfGoalPageCompleteWithoutVisibleClipping": true,
+      "imagesAndAssetsMutated": false
+    },
+    {
+      "goalId": "62de1c6e-8581-5345-a0a6-773427cb6db7",
+      "sourcePath": "app/public/assets/goal-visualizations/chemie/62de1c6e-8581-5345-a0a6-773427cb6db7/62de1c6e-8581-5345-a0a6-773427cb6db7.png",
+      "sha256": "sha256:c3f7c2f262e42ed6921a8a0ea3b48a1987ad909419de56d1179963396ecc8c6d",
+      "nativeOriginalViewed": true,
+      "width360PreviewViewed": true,
+      "width680PreviewViewed": true,
+      "physicalPdfPageViewed": 15,
+      "logicalGoalPage": 13,
+      "pdfGoalPageCompleteWithoutVisibleClipping": true,
+      "imagesAndAssetsMutated": false
+    },
+    {
+      "goalId": "0d59b62e-d3f9-5969-b961-0c5e26316c04",
+      "sourcePath": "app/public/assets/goal-visualizations/chemie/0d59b62e-d3f9-5969-b961-0c5e26316c04/0d59b62e-d3f9-5969-b961-0c5e26316c04.png",
+      "sha256": "sha256:548d06ad5a4eadd1fbed115e86b4482bfdb453d396ed23d9e8f2edcf23a85adb",
+      "nativeOriginalViewed": true,
+      "width360PreviewViewed": true,
+      "width680PreviewViewed": true,
+      "physicalPdfPageViewed": 16,
+      "logicalGoalPage": 14,
+      "pdfGoalPageCompleteWithoutVisibleClipping": true,
+      "imagesAndAssetsMutated": false
+    },
+    {
+      "goalId": "2f3cdec5-f845-5b0f-841e-8b1d47de0281",
+      "sourcePath": "app/public/assets/goal-visualizations/chemie/2f3cdec5-f845-5b0f-841e-8b1d47de0281/2f3cdec5-f845-5b0f-841e-8b1d47de0281.png",
+      "sha256": "sha256:0e15e39fbff32f0f95820e38289d60dee919f816499b31d3d312a52b42ced083",
+      "nativeOriginalViewed": true,
+      "width360PreviewViewed": true,
+      "width680PreviewViewed": true,
+      "physicalPdfPageViewed": 17,
+      "logicalGoalPage": 15,
+      "pdfGoalPageCompleteWithoutVisibleClipping": true,
+      "imagesAndAssetsMutated": false
+    },
+    {
+      "goalId": "e7c3d20e-4b13-560b-b8ee-c5abca8cc624",
+      "sourcePath": "app/public/assets/goal-visualizations/chemie/e7c3d20e-4b13-560b-b8ee-c5abca8cc624/e7c3d20e-4b13-560b-b8ee-c5abca8cc624.jpg",
+      "sha256": "sha256:1c0884bee3c121f53b184c1bfe8e1964e986eda3bc4446141da6bdaa766a3694",
+      "nativeOriginalViewed": true,
+      "width360PreviewViewed": true,
+      "width680PreviewViewed": true,
+      "physicalPdfPageViewed": 18,
+      "logicalGoalPage": 16,
+      "pdfGoalPageCompleteWithoutVisibleClipping": true,
+      "imagesAndAssetsMutated": false
+    }
+  ],
+  "separateProfileFindings": [
+    {
+      "goalId": "18819a59-2442-530f-a7c3-26755398ec66",
+      "recordId": "chemie-current455-final-sixteen-native-d-reviewer-a-20261019-v1-06",
+      "finding": " Die Kontrollrechnungen sind stimmig (24 beziehungsweise36mg/L Original), aber das angeblich bereitstehende freigegebene HPLC-Verfahren sowie die bereitgestellten Strukturen/Matrix- und Trennangaben sind im gebundenen Profil nicht konkret enthalten oder als ganzer Materialkörper verlinkt. Für eine vollständig operative praktische Aufgabe müssen diese Angaben und passende Sicherheits-/Handhabungsbedingungen tatsächlich bereitgestellt werden. Das anschauliche HPLC-Bild ersetzt sie nicht.",
+      "recommendation": "revise",
+      "independentCandidateOnly": true
+    },
+    {
+      "goalId": "39c85aa0-b01f-56ec-a148-b8009bf650f5",
+      "recordId": "chemie-current455-final-sixteen-native-d-reviewer-a-20261019-v1-07",
+      "finding": " Der erste Fall ist mit drei Formeln und5/70/60%-Modellanteilen bearbeitbar; im zweiten Fall werden zwei substituierte Strukturformeln und getrennte Geschwindigkeits-/Gleichgewichtstabellen lediglich als bereitgestellt angekündigt. Sie fehlen im ganzen gebundenen Profil, ebenso ein Materialverweis. Der konkrete frische Transfer ist so noch nicht ausführbar; benötigte Strukturen, Werte und Bedingungen müssen ergänzt werden.",
+      "recommendation": "revise",
+      "independentCandidateOnly": true
+    },
+    {
+      "goalId": "667bc303-e9b8-570b-84f1-61cc8bdfd006",
+      "recordId": "chemie-current455-final-sixteen-native-d-reviewer-a-20261019-v1-08",
+      "finding": " Die verlangten bereitgestellten Ethylethanoat-Protokolle und Ester-/Wasserdaten fehlen als konkrete Beobachtungskörper; auch der Reinigungsfall nennt keine tatsächliche Alltagsbeobachtung. Die symbolischen Teilaufgaben sind bearbeitbar, die vollständige beobachtungsgebundene Deutung noch nicht. Getrennter Bildbefund: R′–CH₂–OH wird dem Ester O–R′ gegenübergestellt; der unbeschriftete Kohlenstoffknick verletzt die konsistente Rest-/Atombilanz. Zudem ist „Keine Rückreaktion“ zu absolut.",
+      "recommendation": "revise",
+      "independentCandidateOnly": true
+    },
+    {
+      "goalId": "9d97f628-c3ea-5dc0-8723-b17b16297af3",
+      "recordId": "chemie-current455-final-sixteen-native-d-reviewer-a-20261019-v1-10",
+      "finding": " K=1-Rechnungen0,5/0,8mol sind stimmig; der frische Fall kündigt jedoch ein Triglycerid und Glycerin-Abtrenndaten an, ohne Struktur oder Trenn-/Nebenreaktionsdaten tatsächlich zu geben oder zu binden. Die verlangte Planbeurteilung ist dadurch nur angekündigt und muss konkretisiert werden.",
+      "recommendation": "revise",
+      "independentCandidateOnly": true
+    },
+    {
+      "goalId": "0d59b62e-d3f9-5969-b961-0c5e26316c04",
+      "recordId": "chemie-current455-final-sixteen-native-d-reviewer-a-20261019-v1-14",
+      "finding": " Die Grenzwertrechnung720<1500 bei320>300 ist innerhalb der gesetzten Zahlen richtig. Die angekündigten Methyl-/Ethylstrukturen und Wirkungs-/Löslichkeitstabellen sowie der konkrete längere Ester und seine frischen Daten fehlen jedoch als ganze Aufgabenmaterialien/Verweise. Der behauptete datierte EU-Auszug ist ebenfalls nicht als überprüfbarer ganzer Auszug gebunden. Damit ist der vollständige struktur- und datenbezogene Beurteilungsfall nicht belegt; keine aktuelle Rechtsfidelität wurde geprüft.",
+      "recommendation": "revise",
+      "independentCandidateOnly": true
+    },
+    {
+      "goalId": "e7c3d20e-4b13-560b-b8ee-c5abca8cc624",
+      "recordId": "chemie-current455-final-sixteen-native-d-reviewer-a-20261019-v1-16",
+      "finding": " Der gesamte Pflichtvertrag fordert beide konkreten Praktikumsfälle und als universelle e4-Erwartung speziell freie-SA-Analyse/Schmelztests. Das bindet das allgemeine Reinigungsziel an ASS und eine feste Fallkombination, obwohl ausreichende Kompetenz in einer anderen geeigneten integrierten Leistung gezeigt werden kann. Materialbeispiele und source-spezifische BCP-Pflichten müssen erhalten bleiben, die allgemeine Abdeckung aber methodenneutral beziehungsweise durch geeignete Alternativen formuliert werden. Keine pauschale Quellenfreigabe folgt.",
+      "recommendation": "revise",
+      "independentCandidateOnly": true
+    }
+  ],
+  "separateImageFindings": [
+    {
+      "goalId": "667bc303-e9b8-570b-84f1-61cc8bdfd006",
+      "severity": "requires_correction",
+      "assetSha256": "sha256:52b3b4ec10999943d2a92456adb3b1db7266c10b791fe16971147e0e86be3c8f",
+      "findingDe": "Der Alkohol ist oben und in beiden unteren Produktbildern als R′–CH₂–OH gezeichnet: Zwischen R′ und OH liegt ein unbeschrifteter Skelettknick. Im zugehörigen Ester steht dagegen unmittelbar O–R′. Der zusätzliche Kohlenstoff ist bei gleicher Restbezeichnung nicht bilanziert. Außerdem lautet die alkalische Bildaussage absolut „Keine Rückreaktion“, während der korrekte Zieltext ausdrücklich praktisch/unter diesen Bedingungen begrenzt.",
+      "actionBoundary": "Image correction/review required separately; no asset change performed; D keep is limited to the current bilingual description."
+    },
+    {
+      "goalId": "a3788e40-b540-5bed-be37-b33053528422",
+      "severity": "scope_alignment_advisory",
+      "findingDe": "Die erhaltene Illustration heißt weiterhin Carbonsäuren beschreiben und enthält Carboxylgruppe & Nachweis samt Indikator/Hydrogencarbonat. Der aktuelle Zieltext ist auf Struktur/Reihen begrenzt; der Säurebeleg gehört in den separaten Nachbarn. Kein zusätzlicher Lernnachweis oder eindeutiger COOH-Beweis wird aus diesem Bild angenommen.",
+      "actionBoundary": "Separate scope alignment review, not a change to the D/P scope."
+    },
+    {
+      "goalId": "e7c3d20e-4b13-560b-b8ee-c5abca8cc624",
+      "severity": "representation_advisory",
+      "findingDe": "Der unbeschriftete Peak mit der Bezeichnung Schmelzpunkt-Graph besitzt keine Achsen-/Messprinzipangabe. Er ist als Symbol nutzbar, aber kein auswertbarer Schmelzbereichsdatensatz und kein Reinheitsbeweis. Fine print requires enlargement at360px.",
+      "actionBoundary": "Do not use the decorative graph as data or a performed purity test."
+    }
+  ],
+  "validation": {
+    "pending": false,
+    "originalNativeValidators": [
+      {
+        "name": "native-batch",
+        "command": [
+          "npm",
+          "run",
+          "validate:goal-description-review",
+          "--",
+          "--bundle",
+          "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-final-targeted-native-description-inputs-technical-20261019-v1/current-sixteen/bundle/manifest.json",
+          "--input",
+          "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-final-targeted-native-description-inputs-technical-20261019-v1/current-sixteen/round-a/description-review-input.json",
+          "--campaign",
+          "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-final-targeted-native-description-inputs-technical-20261019-v1/current-sixteen/round-a/description-review-campaign.json",
+          "--run",
+          "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-final-targeted-native-description-inputs-technical-20261019-v1/current-sixteen/round-a/results/chemie-current455-final-targeted-sixteen-D-20261019-v1-first-pass-a.batch-001.run.json",
+          "--batch-input",
+          "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-final-targeted-native-description-inputs-technical-20261019-v1/current-sixteen/round-a/batches/chemie-current455-final-targeted-sixteen-D-20261019-v1-first-pass-a.batch-001.input.jsonl",
+          "--records",
+          "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-final-targeted-native-description-inputs-technical-20261019-v1/current-sixteen/round-a/results/chemie-current455-final-targeted-sixteen-D-20261019-v1-first-pass-a.batch-001.records.jsonl"
+        ],
+        "cwd": "app",
+        "exitCode": 0,
+        "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-final-targeted-native-description-inputs-technical-20261019-v1/current-sixteen/REVIEWER-A.native-FIRST.native-batch.txt"
+      },
+      {
+        "name": "native-campaign",
+        "command": [
+          "npm",
+          "run",
+          "validate:goal-description-review-campaign",
+          "--",
+          "--bundle",
+          "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-final-targeted-native-description-inputs-technical-20261019-v1/current-sixteen/bundle/manifest.json",
+          "--input",
+          "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-final-targeted-native-description-inputs-technical-20261019-v1/current-sixteen/round-a/description-review-input.json",
+          "--campaign",
+          "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-final-targeted-native-description-inputs-technical-20261019-v1/current-sixteen/round-a/description-review-campaign.json",
+          "--batches-dir",
+          "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-final-targeted-native-description-inputs-technical-20261019-v1/current-sixteen/round-a/batches",
+          "--results-dir",
+          "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-final-targeted-native-description-inputs-technical-20261019-v1/current-sixteen/round-a/results"
+        ],
+        "cwd": "app",
+        "exitCode": 0,
+        "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-final-targeted-native-description-inputs-technical-20261019-v1/current-sixteen/REVIEWER-A.native-FIRST.native-campaign.txt"
+      }
+    ],
+    "originalPortabilityValidator": {
+      "command": [
+        "python",
+        "-c",
+        "import importlib.util,json,sys; s=importlib.util.spec_from_file_location('schema_check','scripts/validate_schemas.py'); m=importlib.util.module_from_spec(s); s.loader.exec_module(m); e=m.curriculum_symlink_errors('.'); print(json.dumps({'checker':'scripts/validate_schemas.py:curriculum_symlink_errors','errors':e},ensure_ascii=False,indent=2)); sys.exit(bool(e))"
+      ],
+      "cwd": ".",
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-final-targeted-native-description-inputs-technical-20261019-v1/current-sixteen/REVIEWER-A.native-FIRST.portability.txt"
+    },
+    "completeJsonParsing": {
+      "files": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-final-targeted-native-description-inputs-technical-20261019-v1/current-sixteen/round-a/results/chemie-current455-final-targeted-sixteen-D-20261019-v1-first-pass-a.batch-001.run.json",
+          "records": 1,
+          "completeParse": true,
+          "actualLF": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-final-targeted-native-description-inputs-technical-20261019-v1/current-sixteen/round-a/results/chemie-current455-final-targeted-sixteen-D-20261019-v1-first-pass-a.batch-001.records.jsonl",
+          "records": 16,
+          "completeParse": true,
+          "actualLF": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-final-targeted-native-description-inputs-technical-20261019-v1/current-sixteen/round-a/description-review-input.json",
+          "records": 1,
+          "completeParse": true,
+          "actualLF": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-final-targeted-native-description-inputs-technical-20261019-v1/current-sixteen/round-a/description-review-campaign.json",
+          "records": 1,
+          "completeParse": true,
+          "actualLF": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-final-targeted-native-description-inputs-technical-20261019-v1/current-sixteen/round-a/batches/chemie-current455-final-targeted-sixteen-D-20261019-v1-first-pass-a.batch-001.input.jsonl",
+          "records": 16,
+          "completeParse": true,
+          "actualLF": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-final-targeted-native-description-inputs-technical-20261019-v1/current-sixteen/bundle/manifest.json",
+          "records": 1,
+          "completeParse": true,
+          "actualLF": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-final-targeted-native-description-inputs-technical-20261019-v1/current-sixteen/bundle/book-model.json",
+          "records": 1,
+          "completeParse": true,
+          "actualLF": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-final-targeted-native-description-inputs-technical-20261019-v1/current-sixteen/bundle/review-input.json",
+          "records": 1,
+          "completeParse": true,
+          "actualLF": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-final-targeted-native-description-inputs-technical-20261019-v1/current-sixteen/bundle/review-input.jsonl",
+          "records": 16,
+          "completeParse": true,
+          "actualLF": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-final-targeted-native-description-inputs-technical-20261019-v1/current-sixteen/REVIEWER-A.native-FIRST.receipt.json",
+          "records": 1,
+          "completeParse": true,
+          "actualLF": true
+        }
+      ],
+      "errors": []
+    },
+    "referencedFilePortability": {
+      "filesChecked": 43,
+      "errors": [],
+      "absolutePaths": false,
+      "ignoredScratchTargets": false
+    },
+    "allChecksPassed": true,
+    "parseAndReferenceRawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-final-targeted-native-description-inputs-technical-20261019-v1/current-sixteen/REVIEWER-A.native-FIRST.parse-and-reference-check.txt"
+  },
+  "inputArtifacts": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-final-targeted-native-description-inputs-technical-20261019-v1/current-sixteen/bundle/manifest.json",
+      "sha256": "sha256:2055cd7c65a1c29709d5518cf2e4d2ce553cb1288a820bb8bc00c10f4c63094f",
+      "bytes": 15008
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-final-targeted-native-description-inputs-technical-20261019-v1/current-sixteen/bundle/book-model.json",
+      "sha256": "sha256:d8d90fe23756e8daa29b44e0d5956437a3d0a499a8767d3a788eddd3841db1d1",
+      "bytes": 371641
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-final-targeted-native-description-inputs-technical-20261019-v1/current-sixteen/bundle/book.pdf",
+      "sha256": "sha256:d7368a42f049c3998f4236383d84bd9edcea06d22e795bf328620af5e2fe3549",
+      "bytes": 1729874
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-final-targeted-native-description-inputs-technical-20261019-v1/current-sixteen/bundle/book.html",
+      "sha256": "sha256:7744fdc2cbedbaae2896f2e5d78d37b38d717c667cccdd46ed3dac2d075202b2",
+      "bytes": 105606
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-final-targeted-native-description-inputs-technical-20261019-v1/current-sixteen/bundle/book.pdf.render-manifest.json",
+      "sha256": "sha256:347c9fed5f45991cfc54673268b5b786031d7d9117d122665235d898879b04c6",
+      "bytes": 17990
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-final-targeted-native-description-inputs-technical-20261019-v1/current-sixteen/round-a/description-review-input.json",
+      "sha256": "sha256:e895e498b0335a92c3dc9fac8f2e9e60fde9446cd0586588c12592d02e2ec843",
+      "bytes": 295853
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-final-targeted-native-description-inputs-technical-20261019-v1/current-sixteen/round-a/description-review-campaign.json",
+      "sha256": "sha256:d5948ba4e73d56f20a9a06e951782ae37f764ef408d412e6a7d9ac9ef5807f9f",
+      "bytes": 2383
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-final-targeted-native-description-inputs-technical-20261019-v1/current-sixteen/round-a/batches/chemie-current455-final-targeted-sixteen-D-20261019-v1-first-pass-a.batch-001.input.jsonl",
+      "sha256": "sha256:3ca95e8e9e6e00e6bd574e5ccaaf082c5766736d30c0d8d72e5a384f58a9d0ab",
+      "bytes": 266998
+    }
+  ],
+  "directPrerequisiteContext": {
+    "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "externalDirectPrerequisiteCount": 14,
+    "goalIds": [
+      "9e656697-fc05-5aa9-9aca-871af2e89eb7",
+      "7be6f951-a614-52dc-94d3-2ce0d33765ff",
+      "ebaae4f5-cc13-5493-98b1-10e1abeb638f",
+      "9b5d6326-d27c-4ece-8c72-debda705464a",
+      "a9c22adc-b543-5b0c-a2d8-3189facdff08",
+      "dd58c029-176f-5d99-923e-1c1fda6cf58e",
+      "eb7537dd-d11b-50e9-a6d7-51a78e96fc4e",
+      "973c12d9-d863-5292-8c68-9c80cdacf9e2",
+      "7990387d-f254-5d3b-a589-a3e7ed9502a3",
+      "d76b80a2-5156-54f4-b3a1-546beddf0e14",
+      "197bc2c5-835e-59e7-9263-5684e89799cc",
+      "9fc800d1-92d1-5ef6-81c1-33960ae034dd",
+      "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+      "b732c780-beb8-55f3-8503-edd6b8677a3a"
+    ],
+    "readFields": "Complete bilingual goal core, requires, contains, tags, applicability, dimension tags; no review judgments read",
+    "selectedCoreContextDigest": "sha256:0be77ea9f50a90e44057fe27fbe1797c4840d8862cf1f605b2d57f39a19404b2",
+    "inBatchPrerequisitesReadThroughCompleteAssignedGoals": true,
+    "containingContext": "The bound book contains one technical QA root; no actual curriculum composition-view parentage was inferred from it."
+  },
+  "visualInspectionSupplement": {
+    "assessmentImagePath": "app/public/assets/assessment-materials/chemie/00139854-e5a7-5c12-ab50-2268c80bf776/structural-isomers.A-B.png",
+    "assessmentImageSha256": "sha256:6c7488f7de4bbe8126b455d2da670e5e33b80067053b0bd1ddf53d948f14a010",
+    "native360And680Viewed": true,
+    "pdfRendering": "Actual supplied PDF rendered with Poppler pdftoppm at1200-pixel long edge; physical pages1–18 including all16 goal pages visually inspected. QA previews are ephemeral; no scratch artifact is referenced as committable evidence.",
+    "responsiveLegibilityBoundary": "At360px, fine print in several multi-panel images is not independently legible, especially dense images2,4,6,8,9,14,16. At680px much improves. No blanket claim that every fine label is readable at360px is made; text descriptions remain separate accessible content."
+  },
+  "reviewComplete": true,
+  "completedAtUTC": "2026-10-18T23:04:46.637778Z",
+  "acceptanceBoundary": "Complete independent machine-QA first pass only; unresolved profile/image findings remain unresolved. This seal is not a human signature, approval, M7 completion, learner evidence or permission to mutate canonical content."
+}

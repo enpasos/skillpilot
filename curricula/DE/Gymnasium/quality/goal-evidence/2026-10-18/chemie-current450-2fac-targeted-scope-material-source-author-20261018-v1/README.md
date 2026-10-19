@@ -1,0 +1,15 @@
+# 2fac: begrenzter Autorenkandidat für Nachweisumfang, Material und Quellen
+
+**Autorenentscheid: ein zusammenhängendes Mechanismusziel behalten; bisherige Bilanz-/pH-/Quellenpflichten ausdrücklich als eigenen Nachweisumfang erhalten. Fremd-QS ist der nächste Schritt.**
+
+Die ganze vorherige Kompetenz erklärt Magensäurebildung und Protonenpumpen-Hemmung. Beide vorhandenen Fälle trennen neu zugeführte von verbrauchter Säure. Die neue Fassung bindet e3 ausdrücklich an diesen kausalen Unterschied. Umrechnung, Konzentrationsformel, logarithmische Auswertung und konkrete Quellenfundstelle werden vollständig bereitgestellt; richtige Zahlen oder abgeschriebene Quelle allein reichen nicht. Alle Zahlen, e1/e2/e3, die drei2-Punkte-Kriterien je Fall, zwei unabhängigen Demonstrationen, frische Variation und unabhängiger Transfer bleiben. Kein bloßes Löschen oder Umbenennen eines zusätzlichen Nachweises.
+
+Die amtliche BY-Stelle158 verlangt die Mechanismuserklärung, keine dort ausdrückliche pH-/Recherchepflicht. Die benachbarte Antazida-Recherchepflicht wird nicht übernommen. Die Repository-Bezeichnungen C11.3.1/C11.3.2 sind flache Listenpunktkürzel: beide stehen aktuell unter [C11 3.1 Arzneimittel im Verdauungssystem](https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/11/chemie#292130); amtliches C11 3.2 heißt Schmerzmittel. Die tatsächliche [NCI-Definition](https://www.cancer.gov/publications/dictionaries/cancer-drug/def/omeprazole), erster Absatz, stützt Zielprotein und Transportfolge, keine Unterrichtszahlen oder klinische Prognose.
+
+Der breitere schon bestehende eigene Erwerbsumfang wird in der ganzen Zielbeschreibung und eigener Scope-Metadokumentation sichtbar. Sieben bisherige Geltungen, ID, Tags, Voraussetzung, beide unabhängigen Demonstrations-/Transferregeln und sämtliche41Sichten bleiben unverändert; keine Themenwahl oder zusätzliche amtliche Quellenabdeckung wird erfunden. Nur der unzutreffende Ausdruck geschlossener Modellraum wird zu abgegrenzter Modellraum korrigiert: Der vorgegebene Sekretionszufluss bleibt vollständig erhalten.
+
+Ganze Vorher-/Nachherkörper, zwei vollständige getrennte Lernenden-/Lehrerkörper und genaue inaktive CAS-Vorschläge liegen vor. Die Kurzfelder im P binden die ganzen Materialkörper konkret; keine Angaben verschwinden wegen Schema-Textlängen. Alte P-Reviewdatei, ursprüngliche30Fall-Datei und früheres Autorenpaket bleiben unverändert. Keine historische Freigabe oder Fingerprints werden auf den neuen Körper übertragen.
+
+Dieser informierte AUTHOR-Kandidat ist keine unabhängige Stimme und schließt keinen nativen D-/P-/M7-HOLD selbst. Ein echter verbleibender Atomaritätswiderspruch muss in der getrennten Prüfung offenbleiben und gegebenenfalls durch echte Trägertrennung behoben werden. Keine Normal-, Framework-, Registry-, Runtime-, Quellenmapping- oder Bilddatei wird geändert; keine Vollchecks und keine menschliche Freigabe.
+
+Eigene Lerninhalte CC-BY-4.0, technische Dokumentation Apache-2.0; fremde Quellen behalten ihre Rechte.

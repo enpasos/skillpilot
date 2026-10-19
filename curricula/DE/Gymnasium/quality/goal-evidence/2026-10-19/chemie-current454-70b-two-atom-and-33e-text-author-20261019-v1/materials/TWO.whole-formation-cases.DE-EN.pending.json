@@ -1,0 +1,84 @@
+{
+  "role": "AUTHOR_CANDIDATE_ONLY",
+  "reviewAuthority": "ai_candidate",
+  "active": false,
+  "independentApproval": false,
+  "nativeDApproval": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "actualLearnerPerformanceClaim": false,
+  "M7Claim": false,
+  "goalId": "70b34ae7-4481-590c-9a02-516464750832",
+  "predecessorMaterial": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-five-native-findings-targeted-author-20261018-v1/materials/70b.complete-two-DE-EN-property-and-use-cases.author.json",
+    "sha256": "7426ae2d3b83745eaa2ef872491d02c64d5e01b275e2349da49f550fe4515064",
+    "bytes": 11349
+  },
+  "ownMaterialLicense": "CC-BY-4.0",
+  "cases": [
+    {
+      "caseId": "70b-formation-ethyl-ethanoate",
+      "predecessorCaseId": "ethyl-ethanoate-observations",
+      "givensDe": "Ein vorgegebenes didaktisches Auswertungsprotokoll nennt als Edukte Ethansäure und Ethanol. Seine Produktanalytik ist als Fallvorgabe unabhängig von Geruch ausgewiesen: Ethylethanoat und Wasser sind nachgewiesen; Restedukte können verbleiben. Unter geeignet sauren Bedingungen stellt sich ein Gleichgewicht ein, keine garantierte vollständige Umsetzung.",
+      "givensEn": "A supplied educational analysis record lists ethanoic acid and ethanol as reactants. Its product analysis is an explicit given independent of odor: ethyl ethanoate and water are detected; reactants may remain. Suitable acidic conditions establish an equilibrium, not guaranteed complete conversion.",
+      "taskDe": "Leite aus den vorgegebenen Edukten und analytischen Produktbefunden die Esterbildung ab. Formuliere eine atomrichtig ausgeglichene Kondensationsgleichung mit korrekter Esterverknüpfung, benenne das abgespaltene kleine Molekül und kennzeichne den vorgegebenen sauren Gleichgewichtsrahmen. Erkläre, warum Geruch allein den Reaktionsschluss nicht trägt.",
+      "taskEn": "Infer ester formation from the supplied reactants and analytical product findings. Write an atom-balanced condensation equation with the correct ester linkage, name the eliminated small molecule and indicate the supplied acidic equilibrium context. Explain why odour alone does not support the reaction inference.",
+      "expectedDe": "CH3COOH + HOCH2CH3 ⇌ CH3COOCH2CH3 + H2O; in Strukturformeln CH3–C(=O)–OH + HO–CH2–CH3 ⇌ CH3–C(=O)–O–CH2–CH3 + H2O. Die Alkoholseite ist über O an den Carbonylkohlenstoff gebunden. Wasser entsteht als Kondensationsprodukt. Die analytisch vorgegebenen Identitäten tragen den Schluss; Geruch ist nicht eindeutig. Geeignet saure Bedingungen sind der vorgegebene Rahmen, keine Garantie vollständiger Umsetzung und keine selbst durchgeführte Synthese.",
+      "expectedEn": "CH3COOH + HOCH2CH3 ⇌ CH3COOCH2CH3 + H2O; structurally CH3–C(=O)–OH + HO–CH2–CH3 ⇌ CH3–C(=O)–O–CH2–CH3 + H2O. The alcohol portion is linked through O to the carbonyl carbon. Water is the condensation product. The supplied analytical identities support the inference; odour is not unique. Suitable acidic conditions are the supplied context, not a guarantee of complete conversion or a personally performed synthesis.",
+      "dataOrigin": {
+        "de": "Eigene didaktische Referenz- und synthetische Verteilungsangaben zum vorhandenen Papierfall. Kein neu durchgeführter Versuch, kein echtes Rohprotokoll und kein Lernendennachweis. Qualitative Stoffeigenschaften sind Fallvorgaben; die Modellverteilung wird nicht als empirischer Stoffkennwert ausgegeben.",
+        "en": "Own educational reference and synthetic partition givens for the existing paper case. No new experiment, actual raw log or learner evidence. Qualitative substance properties are case givens; model partition values are not presented as empirical material constants."
+      },
+      "independenceConditionsDe": "Aufgaben-/Datenkörper vorlegen; Erwartung und Rubrik bis nach der eigenständigen Antwort zurückhalten. Die frische Variation muss selbstständig begründet werden. Keine zusätzliche starre Aufgabenquote und keine doppelte Zählung derselben Antwort als unabhängig.",
+      "independenceConditionsEn": "Supply tasks/data; withhold expectations and rubric until after the independent response. Fresh variation requires independent reasoning. No extra fixed task quota and no counting the same answer twice as independent.",
+      "rubric": [
+        {
+          "criterionDe": "Fachlich richtige fallbezogene Erklärung anhand der vollständig gegebenen Daten; keine bloße Nennung.",
+          "criterionEn": "Scientifically correct case-specific explanation using all relevant givens, rather than naming only.",
+          "maximumPoints": 2
+        },
+        {
+          "criterionDe": "Eigenständige begründete Verknüpfung mit dem Vergleich/Anwendungsfall und seinen ausdrücklich gegebenen Aussagegrenzen.",
+          "criterionEn": "Independent reasoned connection to the comparison/application and its explicit inference limits.",
+          "maximumPoints": 2
+        }
+      ],
+      "maximumPoints": 4,
+      "gradingBoundaryDe": "Die Punkte betreffen nur diesen Papierfall. Kein tatsächlicher Versuch, keine Lernendenleistung und keine vollständige Meisterung werden behauptet. Der zweite Fall ist eine frische eigenständig zu begründende Variation.",
+      "gradingBoundaryEn": "Points concern this paper case only. No actual experiment, learner performance or complete mastery is claimed. The second case is a fresh variation requiring independent reasons.",
+      "assessedExpectationId": "condensation-evidence"
+    },
+    {
+      "caseId": "70b-formation-methyl-butanoate-transfer",
+      "predecessorCaseId": "methyl-butanoate-transfer",
+      "givensDe": "Frischer Fall: Butansäure und Methanol liefern unter geeigneten Bedingungen im Gleichgewicht Methylbutanoat und Wasser. Produktidentitäten sind analytische Fallvorgaben und werden nicht aus Geruch hergeleitet. Keine eigene Synthese wird behauptet oder verlangt.",
+      "givensEn": "Fresh case: under suitable conditions butanoic acid and methanol form methyl butanoate and water at equilibrium. Product identities are analytical givens, not inferred from odour. No personal synthesis is claimed or required.",
+      "taskDe": "Zeichne aus dem frischen Eduktpaar das Esterprodukt und formuliere die atomrichtig ausgeglichene Kondensationsgleichung. Zeige ausdrücklich, über welches Atom die Methanolseite an den Carbonylkohlenstoff gebunden ist. Begründe anhand der vorgegebenen Produktanalytik den Reaktionsschluss und begrenze die Aussage über den Stoffumsatz.",
+      "taskEn": "Draw the ester product for the fresh reactant pair and write the atom-balanced condensation equation. Show explicitly which atom links the methanol portion to the carbonyl carbon. Use the supplied product analysis to justify the reaction inference and limit the claim about conversion.",
+      "expectedDe": "CH3CH2CH2COOH + CH3OH ⇌ CH3CH2CH2COOCH3 + H2O; strukturell CH3–CH2–CH2–C(=O)–O–CH3. Die Methoxyseite ist über O gebunden und nicht als C direkt an den Carbonylkohlenstoff angehängt. Das analytisch vorgegebene Ester/Wasser-Paar trägt den Kondensationsschluss; Gleichgewicht und mögliche Restedukte bleiben erhalten. Kein universeller Geruchsnachweis oder vollständiger Umsatz wird abgeleitet.",
+      "expectedEn": "CH3CH2CH2COOH + CH3OH ⇌ CH3CH2CH2COOCH3 + H2O; structurally CH3–CH2–CH2–C(=O)–O–CH3. The methoxy portion is linked through O, not as carbon directly to the carbonyl carbon. The supplied ester/water analysis supports condensation; equilibrium and possible remaining reactants are retained. No universal odour identification or complete conversion is inferred.",
+      "dataOrigin": {
+        "de": "Eigene didaktische Referenz- und synthetische Verteilungsangaben zum vorhandenen Papierfall. Kein neu durchgeführter Versuch, kein echtes Rohprotokoll und kein Lernendennachweis. Qualitative Stoffeigenschaften sind Fallvorgaben; die Modellverteilung wird nicht als empirischer Stoffkennwert ausgegeben.",
+        "en": "Own educational reference and synthetic partition givens for the existing paper case. No new experiment, actual raw log or learner evidence. Qualitative substance properties are case givens; model partition values are not presented as empirical material constants."
+      },
+      "independenceConditionsDe": "Aufgaben-/Datenkörper vorlegen; Erwartung und Rubrik bis nach der eigenständigen Antwort zurückhalten. Die frische Variation muss selbstständig begründet werden. Keine zusätzliche starre Aufgabenquote und keine doppelte Zählung derselben Antwort als unabhängig.",
+      "independenceConditionsEn": "Supply tasks/data; withhold expectations and rubric until after the independent response. Fresh variation requires independent reasoning. No extra fixed task quota and no counting the same answer twice as independent.",
+      "rubric": [
+        {
+          "criterionDe": "Fachlich richtige fallbezogene Erklärung anhand der vollständig gegebenen Daten; keine bloße Nennung.",
+          "criterionEn": "Scientifically correct case-specific explanation using all relevant givens, rather than naming only.",
+          "maximumPoints": 2
+        },
+        {
+          "criterionDe": "Eigenständige begründete Verknüpfung mit dem Vergleich/Anwendungsfall und seinen ausdrücklich gegebenen Aussagegrenzen.",
+          "criterionEn": "Independent reasoned connection to the comparison/application and its explicit inference limits.",
+          "maximumPoints": 2
+        }
+      ],
+      "maximumPoints": 4,
+      "gradingBoundaryDe": "Die Punkte betreffen nur diesen Papierfall. Kein tatsächlicher Versuch, keine Lernendenleistung und keine vollständige Meisterung werden behauptet. Der zweite Fall ist eine frische eigenständig zu begründende Variation.",
+      "gradingBoundaryEn": "Points concern this paper case only. No actual experiment, learner performance or complete mastery is claimed. The second case is a fresh variation requiring independent reasons.",
+      "assessedExpectationId": "condensation-evidence"
+    }
+  ]
+}

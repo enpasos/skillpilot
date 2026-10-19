@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "role": "technical_candidate_serializer",
+  "agentTask": "/root/chemie454_current35_fresh_description_b",
+  "provider": "OpenAI",
+  "exactModelBuild": "not exposed",
+  "startedAtUtc": "2026-10-19T00:06:00.560131+00:00",
+  "finishedAtUtc": "2026-10-19T00:06:51.158213+00:00",
+  "candidateStatus": "pending_root_compare_and_activation",
+  "scope": "One existing whole F03 P record, four exact material-locator replacements and derived profileFingerprint only; exact old whole record/config/material archives; no chemistry or evidence judgment.",
+  "normalActivationPerformed": false,
+  "scientificReviewPerformed": false,
+  "newScientificVote": false,
+  "humanApprovalClaim": false,
+  "materialSHA256": "074fbc72b5f0ccc4eabec2c20eaee5c43ae5aeb88de85bb2ca989dabd35f617a",
+  "guardPinsPreserved": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-normal-source-configs/P125.normal-source.config.json",
+      "sha256": "0021706a9dcf8e5a0930ce90a214baeeaf21bdcf7e8507a9b1c09bff6154c10b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-plan/records/P125.current-owner.review.jsonl",
+      "sha256": "6b06423ee320b6fd395ac4144d8b4c75d1fee971e14714789c6248738f154d68"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current439-reviewed-inactive-checkpoint-20261016-v1/evidence/HE-G9-F03-one-coherent-solubility-crystallisation-investigation-author-candidate-v1/MATERIALS.two-whole-different-DE-EN-F03-cases.AUTHOR.inactive.json",
+      "sha256": "074fbc72b5f0ccc4eabec2c20eaee5c43ae5aeb88de85bb2ca989dabd35f617a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "sha256": "8f10f0928a9cae57e671097a1d8ede587eee2d9d74287952a58db0bb39a2d15c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "sha256": "d20475d46f5e356886ad615ce90cdb5b108dfad720e9178751ef0cc1a979355a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current439-new459-and-F03-native-two-private-L6-technical-20261016-v1/native-two/resolution-index.json",
+      "sha256": "52e1647db250c8b875fe217c98686c4c72f364d7e3769e2dd53aa70972d1bc1b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current439-new459-and-F03-native-two-private-L6-technical-20261016-v1/native-two/resolutions/8b2d351e-e44f-5385-9b89-13ef54b5918f.resolution.json",
+      "sha256": "846630a78e84be437ba0d0493526f8b7c2d00ff12f2e8c8c1718e88547bf43f3"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current439-new459-and-F03-native-two-private-L6-technical-20261016-v1/native-two/dual-summary.json",
+      "sha256": "472193c63943987b6edc5ada98b0d595d43f31767a6de304d78a6afcf4d34d37"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current439-new459-and-F03-native-two-private-L6-technical-20261016-v1/native-two/synthesis-decisions.json",
+      "sha256": "b173d0c00f1d93ca4317842684ba7c28b7ad76d362c66c4b1e8a9d827f35f36a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current439-new459-and-F03-native-two-private-L6-technical-20261016-v1/native-two/round-a/description-review-input.json",
+      "sha256": "50b3cfdcf6fb05c8d29bd68971369308bb5b7cf85123e26d7d48954c84d367f2"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current439-new459-and-F03-native-two-private-L6-technical-20261016-v1/native-two/round-b/description-review-input.json",
+      "sha256": "50b3cfdcf6fb05c8d29bd68971369308bb5b7cf85123e26d7d48954c84d367f2"
+    }
+  ],
+  "exactDiffPointers": [
+    "/profileFingerprint",
+    "/profile/applicationCaseBriefs/0/taskDemandDe",
+    "/profile/applicationCaseBriefs/0/taskDemandEn",
+    "/profile/applicationCaseBriefs/1/taskDemandDe",
+    "/profile/applicationCaseBriefs/1/taskDemandEn"
+  ],
+  "caseCharacterCounts": [
+    {
+      "caseId": "f03-a-temperature-capacity-and-cooling",
+      "taskDemandDe": 1667,
+      "taskDemandEn": 1491
+    },
+    {
+      "caseId": "f03-b-flat-curve-and-solvent-loss-controls",
+      "taskDemandDe": 1536,
+      "taskDemandEn": 1385
+    }
+  ],
+  "originalNativeSchemaAndSemanticCheck": {
+    "schemaVersion": 1,
+    "role": "original_validator_execution",
+    "argv": [
+      "app/node_modules/.bin/tsx",
+      "app/scripts/positiveGoalEvidenceReview.ts",
+      "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-F03-material-locator-portability-technical-candidate-20261019-v1/P/F03.four-material-locators-only.config.json",
+      "--mode=check"
+    ],
+    "startedAtUtc": "2026-10-19T00:06:11.167046+00:00",
+    "finishedAtUtc": "2026-10-19T00:06:11.879151+00:00",
+    "exitCode": 0,
+    "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-F03-material-locator-portability-technical-candidate-20261019-v1/checks/ORIGINAL.positiveGoalEvidenceReview.stdout.txt",
+    "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-F03-material-locator-portability-technical-candidate-20261019-v1/checks/ORIGINAL.positiveGoalEvidenceReview.stderr.txt",
+    "scientificReviewPerformed": false
+  },
+  "CASPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-F03-material-locator-portability-technical-candidate-20261019-v1/CAS.exact-four-F03-material-locator-fields.pending.json",
+  "CASSHA256": "f45492758fc5f76e23ca2ef6ef04445375e7473a2d75c867c720444f5521b221",
+  "frozenNativeDescriptionArtifactsUnchanged": true,
+  "independentCurrentOneGoalDescriptionRoundsStillRequiredBeforeClaimingNewPageBinding": true
+}

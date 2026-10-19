@@ -1,0 +1,460 @@
+{
+  "role": "INFORMED_AUTHOR_CANDIDATE",
+  "active": false,
+  "reviewAuthority": "ai_candidate",
+  "sourceWholeFile": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-15/chemie-carbonyl-pharmacy15-current422-whole-material-author-20261015-v1/materials/whole30.current422.bilingual-cases.author.json",
+    "sha256": "39eb9afd3a0cee9b46962e70ff39ebb6ca660a0b7f42417ad4ca55d86422df1f",
+    "bytes": 383139
+  },
+  "records": [
+    {
+      "sourcePointer": "/cases/4",
+      "beforeSemanticSHA256": "f08f5c8c7cad17e3cd0168fa4d4abfc79393faf4cb5571a238886d268919a5d2",
+      "before": {
+        "caseId": "2fac2f0e-case-1",
+        "goalId": "2fac2f0e-bccc-5511-b9fb-cc1bc3aeed00",
+        "title": "Beleg für einen Pumpenmechanismus",
+        "dataOrigin": "Original fictional teaching data; supplied primary-source paraphrases identified separately; no observed learner/lab/clinical result",
+        "languageParity": "Complete DE/EN supplied data, task, model answer and explicit case-specific rubric",
+        "dataDe": "Chemisches Unterrichtsmodell: keine persönlichen Behandlungs-, Dosierungs- oder Einnahmeempfehlungen; erfundene Modellwerte sind keine klinischen Befunde. Primärdossier: NCI Drug Dictionary, Omeprazole, https://www.cancer.gov/publications/dictionaries/cancer-drug/def/omeprazole. Inhaltsparaphrase: aktive Form bindet an H⁺/K⁺-ATPase und hemmt den finalen H⁺/K⁺-Austausch in das Lumen. Schulmodell: CO₂ + H₂O ⇌ H₂CO₃ ⇌ H⁺ + HCO₃⁻; H⁺ wird aus der Belegzelle gegen K⁺ ins Lumen transportiert, Cl⁻ gelangt separat hinein. Geschlossener idealer 1.00-L-Modellraum ohne Puffer/Volumenänderung: anfangs 10.0 mmol H⁺; normalerweise weitere 2.00 mmol; Modellhemmer lässt nur 10% dieses Zusatzflusses zu. HCl vollständig dissoziiert, pH=−log₁₀(c(H⁺)/(1 mol/L)).",
+        "dataEn": "Chemistry teaching model: no personal treatment, dosing or administration recommendation; invented model values are not clinical findings. Primary dossier: NCI Drug Dictionary, Omeprazole, https://www.cancer.gov/publications/dictionaries/cancer-drug/def/omeprazole. Paraphrase: active form binds H⁺/K⁺-ATPase and inhibits final H⁺/K⁺ exchange into the lumen. School model: CO₂ + H₂O ⇌ H₂CO₃ ⇌ H⁺ + HCO₃⁻; H⁺ leaves the parietal cell for the lumen in exchange for K⁺, and Cl⁻ enters separately. Closed ideal 1.00-L model without buffer/volume change: initially 10.0 mmol H⁺; normally 2.00 mmol more; model inhibitor permits 10% of this extra flux. HCl is fully dissociated, pH=−log₁₀(c(H⁺)/(1 mol/L)).",
+        "taskDe": "Daten und Bedingungen:\nChemisches Unterrichtsmodell: keine persönlichen Behandlungs-, Dosierungs- oder Einnahmeempfehlungen; erfundene Modellwerte sind keine klinischen Befunde. Primärdossier: NCI Drug Dictionary, Omeprazole, https://www.cancer.gov/publications/dictionaries/cancer-drug/def/omeprazole. Inhaltsparaphrase: aktive Form bindet an H⁺/K⁺-ATPase und hemmt den finalen H⁺/K⁺-Austausch in das Lumen. Schulmodell: CO₂ + H₂O ⇌ H₂CO₃ ⇌ H⁺ + HCO₃⁻; H⁺ wird aus der Belegzelle gegen K⁺ ins Lumen transportiert, Cl⁻ gelangt separat hinein. Geschlossener idealer 1.00-L-Modellraum ohne Puffer/Volumenänderung: anfangs 10.0 mmol H⁺; normalerweise weitere 2.00 mmol; Modellhemmer lässt nur 10% dieses Zusatzflusses zu. HCl vollständig dissoziiert, pH=−log₁₀(c(H⁺)/(1 mol/L)).\nAufgaben:\n1. Erkläre chemische Protonenquelle, ATP-Pumpe und Cl⁻-Transport; unterscheide HCl im Wasser von intakten HCl-Molekülen.\n2. Identifiziere im Primärdossier Zielprotein und Transportfolge der Hemmung; belege die Aussage mit URL und Abschnitt, ohne einen Neutralisationsmechanismus zu erfinden.\n3. Berechne Modell-pH mit und ohne Hemmung und erläutere, warum daraus keine individuelle Wirkungseintrittszeit folgt.",
+        "taskEn": "Data and conditions:\nChemistry teaching model: no personal treatment, dosing or administration recommendation; invented model values are not clinical findings. Primary dossier: NCI Drug Dictionary, Omeprazole, https://www.cancer.gov/publications/dictionaries/cancer-drug/def/omeprazole. Paraphrase: active form binds H⁺/K⁺-ATPase and inhibits final H⁺/K⁺ exchange into the lumen. School model: CO₂ + H₂O ⇌ H₂CO₃ ⇌ H⁺ + HCO₃⁻; H⁺ leaves the parietal cell for the lumen in exchange for K⁺, and Cl⁻ enters separately. Closed ideal 1.00-L model without buffer/volume change: initially 10.0 mmol H⁺; normally 2.00 mmol more; model inhibitor permits 10% of this extra flux. HCl is fully dissociated, pH=−log₁₀(c(H⁺)/(1 mol/L)).\nTasks:\n1. Explain proton source, ATP-driven pump and chloride transport; distinguish aqueous HCl from intact HCl molecules.\n2. Identify target protein and transport consequence in the primary dossier; cite URL/section without inventing neutralization.\n3. Calculate model pH with/without inhibition and explain why it does not establish an individual onset time.",
+        "modelAnswerDe": "1. CO₂/H₂O liefert über das Kohlensäuregleichgewicht H⁺/HCO₃⁻. ATP-Kopplung treibt H⁺ gegen sein Gefälle, während K⁺ zurückgetauscht wird; Cl⁻ kommt separat. Im Wasser sind hydratisierte H⁺ (vereinfacht H₃O⁺) und Cl⁻ vorhanden; HCl wird nicht als Molekülpaket gepumpt.\n2. Die NCI-Definition unter der angegebenen URL beschreibt H⁺/K⁺-ATPase als Ziel und weniger H⁺-Transport ins Lumen als Folge. Die vorhandenen 10.0 mmol Säure verschwinden dadurch nicht. Recherchebeleg ist die benannte Definition/URL; dieses Paket behauptet keine tatsächliche Lernendenrecherche.\n3. Ohne Hemmung: 12.0 mmol/L=0.0120 mol/L, pH 1.921. Mit Hemmung: 10.2 mmol/L=0.0102 mol/L, pH 1.991. Das Modell hemmt nur neuen Zufluss; Puffer, Entleerung, Pharmakokinetik und echte Behandlungsverläufe fehlen, daher keine klinische Zeit-/Wirksamkeitsprognose.",
+        "modelAnswerEn": "1. CO₂/water supplies H⁺/HCO₃⁻ through carbonic-acid equilibrium. ATP coupling drives H⁺ against its gradient in exchange for K⁺; chloride moves separately. Aqueous acid contains hydrated H⁺ (simplified as H₃O⁺) and Cl⁻; intact HCl packets are not pumped.\n2. The NCI definition at the supplied URL identifies H⁺/K⁺-ATPase and reduced H⁺ transport into the lumen. Existing 10.0 mmol acid does not disappear. The evidence location is the named definition/URL; this package claims no actual learner research.\n3. Without inhibition: 0.0120 mol/L, pH 1.921. With inhibition: 0.0102 mol/L, pH 1.991. Only new influx is inhibited; buffers, emptying, pharmacokinetics and actual treatment trajectories are absent, so no clinical time/efficacy prediction follows.",
+        "expectationIds": [
+          "e1",
+          "e2",
+          "e3"
+        ],
+        "visualizationRequired": false,
+        "executionClaim": "No actual execution occurred. Real authorized observed operations are required for practical criteria; paper/model data cannot earn them.",
+        "practicalExecutionRequired": false,
+        "rubric": [
+          {
+            "criterionId": "2fac2f0e-case-1-r1",
+            "expectationIds": [
+              "e1"
+            ],
+            "taskClauseDe": "Erkläre chemische Protonenquelle, ATP-Pumpe und Cl⁻-Transport; unterscheide HCl im Wasser von intakten HCl-Molekülen.",
+            "taskClauseEn": "Explain proton source, ATP-driven pump and chloride transport; distinguish aqueous HCl from intact HCl molecules.",
+            "criterionDe": "CO₂/H₂O liefert über das Kohlensäuregleichgewicht H⁺/HCO₃⁻. ATP-Kopplung treibt H⁺ gegen sein Gefälle, während K⁺ zurückgetauscht wird; Cl⁻ kommt separat. Im Wasser sind hydratisierte H⁺ (vereinfacht H₃O⁺) und Cl⁻ vorhanden; HCl wird nicht als Molekülpaket gepumpt.",
+            "criterionEn": "CO₂/water supplies H⁺/HCO₃⁻ through carbonic-acid equilibrium. ATP coupling drives H⁺ against its gradient in exchange for K⁺; chloride moves separately. Aqueous acid contains hydrated H⁺ (simplified as H₃O⁺) and Cl⁻; intact HCl packets are not pumped.",
+            "maximumPoints": 2,
+            "partialCreditDe": "2 Punkte für den vollständigen ausdrücklich verlangten Kriteriumsnachweis;1 für einen fachlich richtigen Teil;0 bei fehlendem/falschem Nachweis. Praktisches Kriterium: ohne tatsächliche Beobachtung0, unabhängig von Papierantworten.",
+            "partialCreditEn": "2 points for the complete explicitly requested criterion;1 for a scientifically correct part;0 when absent/wrong. Practical criterion:0 without actual observation, regardless of written answers.",
+            "creditBasis": "written-explicit-task"
+          },
+          {
+            "criterionId": "2fac2f0e-case-1-r2",
+            "expectationIds": [
+              "e2"
+            ],
+            "taskClauseDe": "Identifiziere im Primärdossier Zielprotein und Transportfolge der Hemmung; belege die Aussage mit URL und Abschnitt, ohne einen Neutralisationsmechanismus zu erfinden.",
+            "taskClauseEn": "Identify target protein and transport consequence in the primary dossier; cite URL/section without inventing neutralization.",
+            "criterionDe": "Die NCI-Definition unter der angegebenen URL beschreibt H⁺/K⁺-ATPase als Ziel und weniger H⁺-Transport ins Lumen als Folge. Die vorhandenen 10.0 mmol Säure verschwinden dadurch nicht. Recherchebeleg ist die benannte Definition/URL; dieses Paket behauptet keine tatsächliche Lernendenrecherche.",
+            "criterionEn": "The NCI definition at the supplied URL identifies H⁺/K⁺-ATPase and reduced H⁺ transport into the lumen. Existing 10.0 mmol acid does not disappear. The evidence location is the named definition/URL; this package claims no actual learner research.",
+            "maximumPoints": 2,
+            "partialCreditDe": "2 Punkte für den vollständigen ausdrücklich verlangten Kriteriumsnachweis;1 für einen fachlich richtigen Teil;0 bei fehlendem/falschem Nachweis. Praktisches Kriterium: ohne tatsächliche Beobachtung0, unabhängig von Papierantworten.",
+            "partialCreditEn": "2 points for the complete explicitly requested criterion;1 for a scientifically correct part;0 when absent/wrong. Practical criterion:0 without actual observation, regardless of written answers.",
+            "creditBasis": "written-explicit-task"
+          },
+          {
+            "criterionId": "2fac2f0e-case-1-r3",
+            "expectationIds": [
+              "e3"
+            ],
+            "taskClauseDe": "Berechne Modell-pH mit und ohne Hemmung und erläutere, warum daraus keine individuelle Wirkungseintrittszeit folgt.",
+            "taskClauseEn": "Calculate model pH with/without inhibition and explain why it does not establish an individual onset time.",
+            "criterionDe": "Ohne Hemmung: 12.0 mmol/L=0.0120 mol/L, pH 1.921. Mit Hemmung: 10.2 mmol/L=0.0102 mol/L, pH 1.991. Das Modell hemmt nur neuen Zufluss; Puffer, Entleerung, Pharmakokinetik und echte Behandlungsverläufe fehlen, daher keine klinische Zeit-/Wirksamkeitsprognose.",
+            "criterionEn": "Without inhibition: 0.0120 mol/L, pH 1.921. With inhibition: 0.0102 mol/L, pH 1.991. Only new influx is inhibited; buffers, emptying, pharmacokinetics and actual treatment trajectories are absent, so no clinical time/efficacy prediction follows.",
+            "maximumPoints": 2,
+            "partialCreditDe": "2 Punkte für den vollständigen ausdrücklich verlangten Kriteriumsnachweis;1 für einen fachlich richtigen Teil;0 bei fehlendem/falschem Nachweis. Praktisches Kriterium: ohne tatsächliche Beobachtung0, unabhängig von Papierantworten.",
+            "partialCreditEn": "2 points for the complete explicitly requested criterion;1 for a scientifically correct part;0 when absent/wrong. Practical criterion:0 without actual observation, regardless of written answers.",
+            "creditBasis": "written-explicit-task"
+          }
+        ],
+        "maximumPoints": 6,
+        "gradingBoundary": "Credit only explicitly requested task/data evidence. Practical operations require actual observation. No undisclosed measurement/model-limit quota; no clinical or human approval/performance claim.",
+        "expectationCoverage": [
+          {
+            "expectationId": "e1",
+            "coverage": "case-specific explicitly asked aspect",
+            "observableTaskClauseDe": "Erkläre chemische Protonenquelle, ATP-Pumpe und Cl⁻-Transport; unterscheide HCl im Wasser von intakten HCl-Molekülen.",
+            "observableTaskClauseEn": "Explain proton source, ATP-driven pump and chloride transport; distinguish aqueous HCl from intact HCl molecules."
+          },
+          {
+            "expectationId": "e2",
+            "coverage": "case-specific explicitly asked aspect",
+            "observableTaskClauseDe": "Identifiziere im Primärdossier Zielprotein und Transportfolge der Hemmung; belege die Aussage mit URL und Abschnitt, ohne einen Neutralisationsmechanismus zu erfinden.",
+            "observableTaskClauseEn": "Identify target protein and transport consequence in the primary dossier; cite URL/section without inventing neutralization."
+          },
+          {
+            "expectationId": "e3",
+            "coverage": "case-specific explicitly asked aspect",
+            "observableTaskClauseDe": "Berechne Modell-pH mit und ohne Hemmung und erläutere, warum daraus keine individuelle Wirkungseintrittszeit folgt.",
+            "observableTaskClauseEn": "Calculate model pH with/without inhibition and explain why it does not establish an individual onset time."
+          }
+        ]
+      },
+      "afterSemanticSHA256": "deb2aacbf42bb79022110077c1da56ef7bfb60a3e22e623e204bd7f26bd310ea",
+      "after": {
+        "caseId": "2fac2f0e-case-1",
+        "goalId": "2fac2f0e-bccc-5511-b9fb-cc1bc3aeed00",
+        "title": "Beleg für einen Pumpenmechanismus",
+        "dataOrigin": "Original fictional teaching data; supplied primary-source paraphrases identified separately; no observed learner/lab/clinical result",
+        "languageParity": "Complete DE/EN supplied data, task, model answer and explicit case-specific rubric",
+        "dataDe": "Chemisches Unterrichtsmodell: keine persönlichen Behandlungs-, Dosierungs- oder Einnahmeempfehlungen; erfundene Modellwerte sind keine klinischen Befunde. Primärdossier: NCI Drug Dictionary, Omeprazole, https://www.cancer.gov/publications/dictionaries/cancer-drug/def/omeprazole. Inhaltsparaphrase: aktive Form bindet an H⁺/K⁺-ATPase und hemmt den finalen H⁺/K⁺-Austausch in das Lumen. Schulmodell: CO₂ + H₂O ⇌ H₂CO₃ ⇌ H⁺ + HCO₃⁻; H⁺ wird aus der Belegzelle gegen K⁺ ins Lumen transportiert, Cl⁻ gelangt separat hinein. Abgegrenzter idealer 1.00-L-Modellraum ohne Puffer/Volumenänderung: anfangs 10.0 mmol H⁺; normalerweise weitere 2.00 mmol; Modellhemmer lässt nur 10% dieses Zusatzflusses zu. HCl vollständig dissoziiert, pH=−log₁₀(c(H⁺)/(1 mol/L)).",
+        "dataEn": "Chemistry teaching model: no personal treatment, dosing or administration recommendation; invented model values are not clinical findings. Primary dossier: NCI Drug Dictionary, Omeprazole, https://www.cancer.gov/publications/dictionaries/cancer-drug/def/omeprazole. Paraphrase: active form binds H⁺/K⁺-ATPase and inhibits final H⁺/K⁺ exchange into the lumen. School model: CO₂ + H₂O ⇌ H₂CO₃ ⇌ H⁺ + HCO₃⁻; H⁺ leaves the parietal cell for the lumen in exchange for K⁺, and Cl⁻ enters separately. Bounded ideal 1.00-L model without buffer/volume change: initially 10.0 mmol H⁺; normally 2.00 mmol more; model inhibitor permits 10% of this extra flux. HCl is fully dissociated, pH=−log₁₀(c(H⁺)/(1 mol/L)).",
+        "taskDe": "Daten und Bedingungen:\nChemisches Unterrichtsmodell: keine persönlichen Behandlungs-, Dosierungs- oder Einnahmeempfehlungen; erfundene Modellwerte sind keine klinischen Befunde. Primärdossier: NCI Drug Dictionary, Omeprazole, https://www.cancer.gov/publications/dictionaries/cancer-drug/def/omeprazole. Inhaltsparaphrase: aktive Form bindet an H⁺/K⁺-ATPase und hemmt den finalen H⁺/K⁺-Austausch in das Lumen. Schulmodell: CO₂ + H₂O ⇌ H₂CO₃ ⇌ H⁺ + HCO₃⁻; H⁺ wird aus der Belegzelle gegen K⁺ ins Lumen transportiert, Cl⁻ gelangt separat hinein. Abgegrenzter idealer 1.00-L-Modellraum ohne Puffer/Volumenänderung: anfangs 10.0 mmol H⁺; normalerweise weitere 2.00 mmol; Modellhemmer lässt nur 10% dieses Zusatzflusses zu. HCl vollständig dissoziiert, pH=−log₁₀(c(H⁺)/(1 mol/L)).\nAufgaben:\n1. Erkläre chemische Protonenquelle, ATP-Pumpe und Cl⁻-Transport; unterscheide HCl im Wasser von intakten HCl-Molekülen.\n2. Identifiziere im Primärdossier Zielprotein und Transportfolge der Hemmung; belege die Aussage mit URL und Abschnitt, ohne einen Neutralisationsmechanismus zu erfinden.\n3. Berechne Modell-pH mit und ohne Hemmung und erläutere, warum daraus keine individuelle Wirkungseintrittszeit folgt.\n\nBereitgestellte Rechenkarte:1mmol=0,001mol; c(H⁺)=n(H⁺)/V. Für das ideale ungepufferte Modell gilt pH=−log₁₀(c(H⁺)/(1mol/L)); ein wissenschaftlicher Rechner mit log₁₀ darf benutzt werden. Bilanzieren und unterscheiden musst du selbst: Welche vorgegebene Größe gehört zu bereits vorhandener Säure, neuer Sekretion oder stöchiometrischem Verbrauch? Die Karte liefert keine Endmengen, Konzentrations- oder pH-Ergebnisse. Forme keine allgemeine pH-Näherungsformel her und führe keine klinische Dosis- oder Zeitrechnung durch.\n\nÖffne die angegebene Definition, lies den ersten Definitionsabsatz und belege Zielprotein sowie Transportfolge mit URL und Absatz. Nutze die bereitgestellte Quellenkarte zur eindeutigen Fundstelle. Es ist keine freie Internetsuche oder Recherche zu Antazida erforderlich.\n\nVerbinde die Rechnung ausdrücklich mit dem Mechanismus: Zeige an deinen bilanzierten Größen, warum die Hemmung nur die neue Nachlieferung verkleinert und die Anfangssäure nicht verbraucht. Erkläre die begrenzte pH-Änderung als Folge genau dieses Unterrichtsmodells.",
+        "taskEn": "Data and conditions:\nChemistry teaching model: no personal treatment, dosing or administration recommendation; invented model values are not clinical findings. Primary dossier: NCI Drug Dictionary, Omeprazole, https://www.cancer.gov/publications/dictionaries/cancer-drug/def/omeprazole. Paraphrase: active form binds H⁺/K⁺-ATPase and inhibits final H⁺/K⁺ exchange into the lumen. School model: CO₂ + H₂O ⇌ H₂CO₃ ⇌ H⁺ + HCO₃⁻; H⁺ leaves the parietal cell for the lumen in exchange for K⁺, and Cl⁻ enters separately. Bounded ideal 1.00-L model without buffer/volume change: initially 10.0 mmol H⁺; normally 2.00 mmol more; model inhibitor permits 10% of this extra flux. HCl is fully dissociated, pH=−log₁₀(c(H⁺)/(1 mol/L)).\nTasks:\n1. Explain proton source, ATP-driven pump and chloride transport; distinguish aqueous HCl from intact HCl molecules.\n2. Identify target protein and transport consequence in the primary dossier; cite URL/section without inventing neutralization.\n3. Calculate model pH with/without inhibition and explain why it does not establish an individual onset time.\n\nSupplied calculation card:1mmol=0.001mol; c(H⁺)=n(H⁺)/V. In the ideal unbuffered model use pH=−log₁₀(c(H⁺)/(1mol/L)); a scientific calculator with log₁₀ is allowed. Independently distinguish and balance the supplied existing acid, new secretion and stoichiometric consumption. The card gives no final amounts, concentrations or pH answers. Do not derive a general pH approximation or perform a clinical dose/time calculation.\n\nOpen the supplied definition, read its first definition paragraph and cite the target protein and transport consequence using URL and paragraph. Use the supplied source card to locate it precisely. No open internet search or antacid research is required.\n\nExplicitly connect calculation and mechanism: use your balanced quantities to show that inhibition reduces only the new influx and consumes none of the initial acid. Explain the bounded pH change as a consequence of this teaching model.",
+        "modelAnswerDe": "1. CO₂/H₂O liefert über das Kohlensäuregleichgewicht H⁺/HCO₃⁻. ATP-Kopplung treibt H⁺ gegen sein Gefälle, während K⁺ zurückgetauscht wird; Cl⁻ kommt separat. Im Wasser sind hydratisierte H⁺ (vereinfacht H₃O⁺) und Cl⁻ vorhanden; HCl wird nicht als Molekülpaket gepumpt.\n2. Die NCI-Definition unter der angegebenen URL beschreibt H⁺/K⁺-ATPase als Ziel und weniger H⁺-Transport ins Lumen als Folge. Die vorhandenen 10.0 mmol Säure verschwinden dadurch nicht. Recherchebeleg ist die benannte Definition/URL; dieses Paket behauptet keine tatsächliche Lernendenrecherche.\n3. Ohne Hemmung: 12.0 mmol/L=0.0120 mol/L, pH 1.921. Mit Hemmung: 10.2 mmol/L=0.0102 mol/L, pH 1.991. Das Modell hemmt nur neuen Zufluss; Puffer, Entleerung, Pharmakokinetik und echte Behandlungsverläufe fehlen, daher keine klinische Zeit-/Wirksamkeitsprognose.\n\nDie Endmenge enthält jeweils die unverbrauchte Anfangssäure; die um1,8mmol verminderte zusätzliche Sekretion ist kein Verbrauch der10,0mmol Anfangssäure. Die pH-Werte sind die vorgegebene ideale Darstellung dieser unterschiedlichen Endkonzentrationen.",
+        "modelAnswerEn": "1. CO₂/water supplies H⁺/HCO₃⁻ through carbonic-acid equilibrium. ATP coupling drives H⁺ against its gradient in exchange for K⁺; chloride moves separately. Aqueous acid contains hydrated H⁺ (simplified as H₃O⁺) and Cl⁻; intact HCl packets are not pumped.\n2. The NCI definition at the supplied URL identifies H⁺/K⁺-ATPase and reduced H⁺ transport into the lumen. Existing 10.0 mmol acid does not disappear. The evidence location is the named definition/URL; this package claims no actual learner research.\n3. Without inhibition: 0.0120 mol/L, pH 1.921. With inhibition: 0.0102 mol/L, pH 1.991. Only new influx is inhibited; buffers, emptying, pharmacokinetics and actual treatment trajectories are absent, so no clinical time/efficacy prediction follows.\n\nBoth final amounts include the unconsumed initial acid; reducing extra secretion by1.8mmol does not consume the initial10.0mmol. The pH values are the specified ideal representation of these different final concentrations.",
+        "expectationIds": [
+          "e1",
+          "e2",
+          "e3"
+        ],
+        "visualizationRequired": false,
+        "executionClaim": "No actual execution occurred. Real authorized observed operations are required for practical criteria; paper/model data cannot earn them.",
+        "practicalExecutionRequired": false,
+        "rubric": [
+          {
+            "criterionId": "2fac2f0e-case-1-r1",
+            "expectationIds": [
+              "e1"
+            ],
+            "taskClauseDe": "Erkläre chemische Protonenquelle, ATP-Pumpe und Cl⁻-Transport; unterscheide HCl im Wasser von intakten HCl-Molekülen.",
+            "taskClauseEn": "Explain proton source, ATP-driven pump and chloride transport; distinguish aqueous HCl from intact HCl molecules.",
+            "criterionDe": "CO₂/H₂O liefert über das Kohlensäuregleichgewicht H⁺/HCO₃⁻. ATP-Kopplung treibt H⁺ gegen sein Gefälle, während K⁺ zurückgetauscht wird; Cl⁻ kommt separat. Im Wasser sind hydratisierte H⁺ (vereinfacht H₃O⁺) und Cl⁻ vorhanden; HCl wird nicht als Molekülpaket gepumpt.",
+            "criterionEn": "CO₂/water supplies H⁺/HCO₃⁻ through carbonic-acid equilibrium. ATP coupling drives H⁺ against its gradient in exchange for K⁺; chloride moves separately. Aqueous acid contains hydrated H⁺ (simplified as H₃O⁺) and Cl⁻; intact HCl packets are not pumped.",
+            "maximumPoints": 2,
+            "partialCreditDe": "2 Punkte für den vollständigen ausdrücklich verlangten Kriteriumsnachweis;1 für einen fachlich richtigen Teil;0 bei fehlendem/falschem Nachweis. Praktisches Kriterium: ohne tatsächliche Beobachtung0, unabhängig von Papierantworten.",
+            "partialCreditEn": "2 points for the complete explicitly requested criterion;1 for a scientifically correct part;0 when absent/wrong. Practical criterion:0 without actual observation, regardless of written answers.",
+            "creditBasis": "written-explicit-task"
+          },
+          {
+            "criterionId": "2fac2f0e-case-1-r2",
+            "expectationIds": [
+              "e2"
+            ],
+            "taskClauseDe": "Identifiziere im Primärdossier Zielprotein und Transportfolge der Hemmung; belege die Aussage mit URL und Abschnitt, ohne einen Neutralisationsmechanismus zu erfinden.",
+            "taskClauseEn": "Identify target protein and transport consequence in the primary dossier; cite URL/section without inventing neutralization.",
+            "criterionDe": "Die NCI-Definition unter der angegebenen URL beschreibt H⁺/K⁺-ATPase als Ziel und weniger H⁺-Transport ins Lumen als Folge. Die vorhandenen 10.0 mmol Säure verschwinden dadurch nicht. Recherchebeleg ist die benannte Definition/URL; dieses Paket behauptet keine tatsächliche Lernendenrecherche.",
+            "criterionEn": "The NCI definition at the supplied URL identifies H⁺/K⁺-ATPase and reduced H⁺ transport into the lumen. Existing 10.0 mmol acid does not disappear. The evidence location is the named definition/URL; this package claims no actual learner research.",
+            "maximumPoints": 2,
+            "partialCreditDe": "2 Punkte für den vollständigen ausdrücklich verlangten Kriteriumsnachweis;1 für einen fachlich richtigen Teil;0 bei fehlendem/falschem Nachweis. Praktisches Kriterium: ohne tatsächliche Beobachtung0, unabhängig von Papierantworten.",
+            "partialCreditEn": "2 points for the complete explicitly requested criterion;1 for a scientifically correct part;0 when absent/wrong. Practical criterion:0 without actual observation, regardless of written answers.",
+            "creditBasis": "written-explicit-task"
+          },
+          {
+            "criterionId": "2fac2f0e-case-1-r3",
+            "expectationIds": [
+              "e3"
+            ],
+            "taskClauseDe": "Berechne Modell-pH mit und ohne Hemmung und erläutere, warum daraus keine individuelle Wirkungseintrittszeit folgt. Verbinde die Rechnung ausdrücklich mit dem Mechanismus: Zeige an deinen bilanzierten Größen, warum die Hemmung nur die neue Nachlieferung verkleinert und die Anfangssäure nicht verbraucht. Erkläre die begrenzte pH-Änderung als Folge genau dieses Unterrichtsmodells.",
+            "taskClauseEn": "Calculate model pH with/without inhibition and explain why it does not establish an individual onset time. Explicitly connect calculation and mechanism: use your balanced quantities to show that inhibition reduces only the new influx and consumes none of the initial acid. Explain the bounded pH change as a consequence of this teaching model.",
+            "criterionDe": "Ohne Hemmung: 12.0 mmol/L=0.0120 mol/L, pH 1.921. Mit Hemmung: 10.2 mmol/L=0.0102 mol/L, pH 1.991. Das Modell hemmt nur neuen Zufluss; Puffer, Entleerung, Pharmakokinetik und echte Behandlungsverläufe fehlen, daher keine klinische Zeit-/Wirksamkeitsprognose. Volle2Punkte für die bereits verlangte korrekte Rechnung und begrenzte Schlussfolgerung benötigen den ausdrücklich auf diese Bilanz bezogenen Mechanismusvergleich; Zahlen oder Quellenabschrift allein reichen nicht.",
+            "criterionEn": "Without inhibition: 0.0120 mol/L, pH 1.921. With inhibition: 0.0102 mol/L, pH 1.991. Only new influx is inhibited; buffers, emptying, pharmacokinetics and actual treatment trajectories are absent, so no clinical time/efficacy prediction follows. Full2points for the already required correct calculation and bounded inference require an explicit mechanism comparison tied to this balance; numbers or copied source text alone do not suffice.",
+            "maximumPoints": 2,
+            "partialCreditDe": "2 Punkte für den vollständigen ausdrücklich verlangten Kriteriumsnachweis;1 für einen fachlich richtigen Teil;0 bei fehlendem/falschem Nachweis. Praktisches Kriterium: ohne tatsächliche Beobachtung0, unabhängig von Papierantworten.",
+            "partialCreditEn": "2 points for the complete explicitly requested criterion;1 for a scientifically correct part;0 when absent/wrong. Practical criterion:0 without actual observation, regardless of written answers.",
+            "creditBasis": "written-explicit-task"
+          }
+        ],
+        "maximumPoints": 6,
+        "gradingBoundary": "Credit only explicitly requested task/data evidence. Practical operations require actual observation. No undisclosed measurement/model-limit quota; no clinical or human approval/performance claim.",
+        "expectationCoverage": [
+          {
+            "expectationId": "e1",
+            "coverage": "case-specific explicitly asked aspect",
+            "observableTaskClauseDe": "Erkläre chemische Protonenquelle, ATP-Pumpe und Cl⁻-Transport; unterscheide HCl im Wasser von intakten HCl-Molekülen.",
+            "observableTaskClauseEn": "Explain proton source, ATP-driven pump and chloride transport; distinguish aqueous HCl from intact HCl molecules."
+          },
+          {
+            "expectationId": "e2",
+            "coverage": "case-specific explicitly asked aspect",
+            "observableTaskClauseDe": "Identifiziere im Primärdossier Zielprotein und Transportfolge der Hemmung; belege die Aussage mit URL und Abschnitt, ohne einen Neutralisationsmechanismus zu erfinden.",
+            "observableTaskClauseEn": "Identify target protein and transport consequence in the primary dossier; cite URL/section without inventing neutralization."
+          },
+          {
+            "expectationId": "e3",
+            "coverage": "case-specific explicitly asked aspect",
+            "observableTaskClauseDe": "Berechne Modell-pH mit und ohne Hemmung und erläutere, warum daraus keine individuelle Wirkungseintrittszeit folgt. Verbinde die Rechnung ausdrücklich mit dem Mechanismus: Zeige an deinen bilanzierten Größen, warum die Hemmung nur die neue Nachlieferung verkleinert und die Anfangssäure nicht verbraucht. Erkläre die begrenzte pH-Änderung als Folge genau dieses Unterrichtsmodells.",
+            "observableTaskClauseEn": "Calculate model pH with/without inhibition and explain why it does not establish an individual onset time. Explicitly connect calculation and mechanism: use your balanced quantities to show that inhibition reduces only the new influx and consumes none of the initial acid. Explain the bounded pH change as a consequence of this teaching model."
+          }
+        ],
+        "suppliedSupport": {
+          "calculationCard": {
+            "de": "Bereitgestellte Rechenkarte:1mmol=0,001mol; c(H⁺)=n(H⁺)/V. Für das ideale ungepufferte Modell gilt pH=−log₁₀(c(H⁺)/(1mol/L)); ein wissenschaftlicher Rechner mit log₁₀ darf benutzt werden. Bilanzieren und unterscheiden musst du selbst: Welche vorgegebene Größe gehört zu bereits vorhandener Säure, neuer Sekretion oder stöchiometrischem Verbrauch? Die Karte liefert keine Endmengen, Konzentrations- oder pH-Ergebnisse. Forme keine allgemeine pH-Näherungsformel her und führe keine klinische Dosis- oder Zeitrechnung durch.",
+            "en": "Supplied calculation card:1mmol=0.001mol; c(H⁺)=n(H⁺)/V. In the ideal unbuffered model use pH=−log₁₀(c(H⁺)/(1mol/L)); a scientific calculator with log₁₀ is allowed. Independently distinguish and balance the supplied existing acid, new secretion and stoichiometric consumption. The card gives no final amounts, concentrations or pH answers. Do not derive a general pH approximation or perform a clinical dose/time calculation."
+          },
+          "mechanismSourceCard": {
+            "materialId": "2fac-supplied-mechanism-source-card-20261018-v1",
+            "sourceType": "Provided first-party institutional drug-dictionary definition, not a primary clinical experiment",
+            "url": "https://www.cancer.gov/publications/dictionaries/cancer-drug/def/omeprazole",
+            "locator": {
+              "heading": "omeprazole",
+              "paragraphOneBased": 1,
+              "scope": "First definition paragraph immediately beneath the heading"
+            },
+            "retrievedAt": "2026-10-18T18:53:06.750962+00:00",
+            "actuallyReadMethod": "web.run rendered definition, not the JavaScript-only generic shell returned by a separate ordinary HTTP request",
+            "actualRenderedResponseDigest": {
+              "sha256": "2736bd1fc3214a5046c26be3bcc982a2dec46f0d643667b232f9916530e605a6",
+              "bytes": 3816
+            },
+            "shortExactExcerpt": "suppressing gastric acid secretion",
+            "paraphraseDe": "Die NCI-Definition beschreibt eine Bindung von Omeprazol an die H⁺/K⁺-ATPase auf der sekretorischen Oberfläche von Belegzellen und eine Hemmung des abschließenden H⁺-Transports im Austausch gegen K⁺ in das Magenlumen.",
+            "paraphraseEn": "The NCI definition describes omeprazole binding to H⁺/K⁺-ATPase on the secretory surface of parietal cells and inhibition of final H⁺ transport in exchange for K⁺ into the gastric lumen.",
+            "evidenceLimitDe": "Die Definition stützt Zielprotein und Transportfolge. Die Unterrichtsmengen, Volumina, Hemmanteile und pH-Werte stammen aus dem eigenen idealen Modell. Dass weniger Zufluss keine stöchiometrische Entfernung vorhandener Säure ist, wird aus Mechanismus und Modell begründet; es ist keine dort wörtlich gegebene Neutralisationsrechnung.",
+            "evidenceLimitEn": "The definition supports the protein target and transport consequence. Teaching amounts, volumes, inhibition fractions and pH values belong to the own ideal model. Reduced influx is distinguished from stoichiometric removal of existing acid by reasoning from mechanism and model; the definition supplies no such neutralization calculation.",
+            "learnerDemandDe": "Öffne die angegebene Definition, lies den ersten Definitionsabsatz und belege Zielprotein sowie Transportfolge mit URL und Absatz. Nutze die bereitgestellte Quellenkarte zur eindeutigen Fundstelle. Es ist keine freie Internetsuche oder Recherche zu Antazida erforderlich.",
+            "learnerDemandEn": "Open the supplied definition, read its first definition paragraph and cite the target protein and transport consequence using URL and paragraph. Use the supplied source card to locate it precisely. No open internet search or antacid research is required.",
+            "learnerActivityClaim": false,
+            "clinicalRecommendation": false
+          },
+          "mechanismLink": {
+            "de": "Verbinde die Rechnung ausdrücklich mit dem Mechanismus: Zeige an deinen bilanzierten Größen, warum die Hemmung nur die neue Nachlieferung verkleinert und die Anfangssäure nicht verbraucht. Erkläre die begrenzte pH-Änderung als Folge genau dieses Unterrichtsmodells.",
+            "en": "Explicitly connect calculation and mechanism: use your balanced quantities to show that inhibition reduces only the new influx and consumes none of the initial acid. Explain the bounded pH change as a consequence of this teaching model."
+          },
+          "systemBoundaryClarification": {
+            "de": "Abgegrenzt bedeutet: Nur die ausdrücklich vorgegebene Sekretion bzw. der Verbrauch werden bilanziert; keine zusätzlichen ungenannten Zu-/Abflüsse und keine Volumenänderung. Wegen der genannten Sekretion ist dies kein stofflich geschlossenes thermodynamisches System.",
+            "en": "Bounded means that only the expressly supplied secretion and consumption are balanced, with no additional unspecified flows or volume change. The specified secretion means this is not a materially closed thermodynamic system."
+          }
+        }
+      }
+    },
+    {
+      "sourcePointer": "/cases/5",
+      "beforeSemanticSHA256": "de755905f909dc3b010a59fb707efdf6921330b723b2a7605269daafe03bc538",
+      "before": {
+        "caseId": "2fac2f0e-case-2",
+        "goalId": "2fac2f0e-bccc-5511-b9fb-cc1bc3aeed00",
+        "title": "Nachlieferung gegenüber Neutralisation",
+        "dataOrigin": "Original fictional teaching data; supplied primary-source paraphrases identified separately; no observed learner/lab/clinical result",
+        "languageParity": "Complete DE/EN supplied data, task, model answer and explicit case-specific rubric",
+        "dataDe": "Chemisches Unterrichtsmodell: keine persönlichen Behandlungs-, Dosierungs- oder Einnahmeempfehlungen; erfundene Modellwerte sind keine klinischen Befunde. Gleiches NCI-Primärdossier https://www.cancer.gov/publications/dictionaries/cancer-drug/def/omeprazole mit derselben Mechanismusparaphrase. Idealraum 0.500 L enthält 4.00 mmol H⁺. Variante N verbraucht durch Modellbase 3.00 mmol H⁺, anschließend liefert eine aktive Pumpe 2.00 mmol nach. Variante P enthält keine Base; blockierter Modellpumpenzufluss ist null. Kein weiterer Stofffluss/Puffer; pH=−log₁₀(c(H⁺)/(1 mol/L)).",
+        "dataEn": "Chemistry teaching model: no personal treatment, dosing or administration recommendation; invented model values are not clinical findings. Same primary NCI dossier https://www.cancer.gov/publications/dictionaries/cancer-drug/def/omeprazole and mechanism paraphrase. Ideal 0.500-L space contains 4.00 mmol H⁺. Variant N consumes 3.00 mmol H⁺ with a model base, followed by 2.00 mmol from an active pump. Variant P contains no base and has zero blocked model pump influx. No other flow/buffer; pH=−log₁₀(c(H⁺)/(1 mol/L)).",
+        "taskDe": "Daten und Bedingungen:\nChemisches Unterrichtsmodell: keine persönlichen Behandlungs-, Dosierungs- oder Einnahmeempfehlungen; erfundene Modellwerte sind keine klinischen Befunde. Gleiches NCI-Primärdossier https://www.cancer.gov/publications/dictionaries/cancer-drug/def/omeprazole mit derselben Mechanismusparaphrase. Idealraum 0.500 L enthält 4.00 mmol H⁺. Variante N verbraucht durch Modellbase 3.00 mmol H⁺, anschließend liefert eine aktive Pumpe 2.00 mmol nach. Variante P enthält keine Base; blockierter Modellpumpenzufluss ist null. Kein weiterer Stofffluss/Puffer; pH=−log₁₀(c(H⁺)/(1 mol/L)).\nAufgaben:\n1. Erkläre, warum die aktive Pumpe bei N weiterhin Säure liefern kann, obwohl vorher H⁺ neutralisiert wurde.\n2. Prüfe die Aussage „P ist nur eine andere Neutralisationsbase“ anhand des Primärdossiers; gib einen Quellenbeleg an.\n3. Berechne beide End-pH-Werte und entscheide, ob die kleinere Modell-H⁺-Menge eine reale Therapieentscheidung rechtfertigt.",
+        "taskEn": "Data and conditions:\nChemistry teaching model: no personal treatment, dosing or administration recommendation; invented model values are not clinical findings. Same primary NCI dossier https://www.cancer.gov/publications/dictionaries/cancer-drug/def/omeprazole and mechanism paraphrase. Ideal 0.500-L space contains 4.00 mmol H⁺. Variant N consumes 3.00 mmol H⁺ with a model base, followed by 2.00 mmol from an active pump. Variant P contains no base and has zero blocked model pump influx. No other flow/buffer; pH=−log₁₀(c(H⁺)/(1 mol/L)).\nTasks:\n1. Explain why an active pump in N can still supply acid after earlier neutralization.\n2. Check “P is just another neutralizing base” against the primary dossier and cite the source.\n3. Calculate both final pH values and decide whether lower model H⁺ justifies an actual treatment choice.",
+        "modelAnswerDe": "1. Neutralisation entfernt Lumensäure, schaltet aber nicht automatisch die ATP-gekoppelte H⁺/K⁺-ATPase ab. Neue H⁺-Sekretion mit Cl⁻-Begleittransport bleibt im Modell möglich. Die Protonenquelle und der Transport sind vom Verbrauch im Lumen getrennt.\n2. Falsch: Die NCI-Definition beschreibt Hemmung des Pumpenproteins und H⁺-Transports, keine 1:1-Verbrauchsreaktion mit Lumensäure. Die Mechanismen können daher zeitlich verschiedene Modellbilanzen erzeugen. Beleg: NCI Drug Dictionary, Definition Omeprazole, angegebene URL.\n3. N: (4−3+2)/0.500=6.00 mmol/L, pH 2.222. P: 4/0.500=8.00 mmol/L, pH 2.097. N hat im gewählten Zeitpunkt weniger H⁺; das ist nur die vorgegebene Bilanz. Dauer, Nebenwirkungen, Indikation und reale Sekretion sind nicht modelliert und erlauben keine Therapieempfehlung.",
+        "modelAnswerEn": "1. Neutralization consumes luminal acid without automatically disabling ATP-coupled H⁺/K⁺-ATPase. New H⁺ secretion with chloride transport remains possible. Proton production/transport is separate from luminal consumption.\n2. False: NCI describes inhibition of pump protein/H⁺ transport, not a 1:1 acid-consumption reaction. The mechanisms can produce different time-dependent model balances. Citation: NCI Drug Dictionary, Omeprazole definition, supplied URL.\n3. N: (4−3+2)/0.500=6.00 mmol/L, pH 2.222. P: 4/0.500=8.00 mmol/L, pH 2.097. N has less H⁺ at the chosen instant, solely from the supplied balance. Duration, adverse effects, indications and actual secretion are unmodeled; no treatment recommendation follows.",
+        "expectationIds": [
+          "e1",
+          "e2",
+          "e3"
+        ],
+        "visualizationRequired": false,
+        "executionClaim": "No actual execution occurred. Real authorized observed operations are required for practical criteria; paper/model data cannot earn them.",
+        "practicalExecutionRequired": false,
+        "rubric": [
+          {
+            "criterionId": "2fac2f0e-case-2-r1",
+            "expectationIds": [
+              "e1"
+            ],
+            "taskClauseDe": "Erkläre, warum die aktive Pumpe bei N weiterhin Säure liefern kann, obwohl vorher H⁺ neutralisiert wurde.",
+            "taskClauseEn": "Explain why an active pump in N can still supply acid after earlier neutralization.",
+            "criterionDe": "Neutralisation entfernt Lumensäure, schaltet aber nicht automatisch die ATP-gekoppelte H⁺/K⁺-ATPase ab. Neue H⁺-Sekretion mit Cl⁻-Begleittransport bleibt im Modell möglich. Die Protonenquelle und der Transport sind vom Verbrauch im Lumen getrennt.",
+            "criterionEn": "Neutralization consumes luminal acid without automatically disabling ATP-coupled H⁺/K⁺-ATPase. New H⁺ secretion with chloride transport remains possible. Proton production/transport is separate from luminal consumption.",
+            "maximumPoints": 2,
+            "partialCreditDe": "2 Punkte für den vollständigen ausdrücklich verlangten Kriteriumsnachweis;1 für einen fachlich richtigen Teil;0 bei fehlendem/falschem Nachweis. Praktisches Kriterium: ohne tatsächliche Beobachtung0, unabhängig von Papierantworten.",
+            "partialCreditEn": "2 points for the complete explicitly requested criterion;1 for a scientifically correct part;0 when absent/wrong. Practical criterion:0 without actual observation, regardless of written answers.",
+            "creditBasis": "written-explicit-task"
+          },
+          {
+            "criterionId": "2fac2f0e-case-2-r2",
+            "expectationIds": [
+              "e2"
+            ],
+            "taskClauseDe": "Prüfe die Aussage „P ist nur eine andere Neutralisationsbase“ anhand des Primärdossiers; gib einen Quellenbeleg an.",
+            "taskClauseEn": "Check “P is just another neutralizing base” against the primary dossier and cite the source.",
+            "criterionDe": "Falsch: Die NCI-Definition beschreibt Hemmung des Pumpenproteins und H⁺-Transports, keine 1:1-Verbrauchsreaktion mit Lumensäure. Die Mechanismen können daher zeitlich verschiedene Modellbilanzen erzeugen. Beleg: NCI Drug Dictionary, Definition Omeprazole, angegebene URL.",
+            "criterionEn": "False: NCI describes inhibition of pump protein/H⁺ transport, not a 1:1 acid-consumption reaction. The mechanisms can produce different time-dependent model balances. Citation: NCI Drug Dictionary, Omeprazole definition, supplied URL.",
+            "maximumPoints": 2,
+            "partialCreditDe": "2 Punkte für den vollständigen ausdrücklich verlangten Kriteriumsnachweis;1 für einen fachlich richtigen Teil;0 bei fehlendem/falschem Nachweis. Praktisches Kriterium: ohne tatsächliche Beobachtung0, unabhängig von Papierantworten.",
+            "partialCreditEn": "2 points for the complete explicitly requested criterion;1 for a scientifically correct part;0 when absent/wrong. Practical criterion:0 without actual observation, regardless of written answers.",
+            "creditBasis": "written-explicit-task"
+          },
+          {
+            "criterionId": "2fac2f0e-case-2-r3",
+            "expectationIds": [
+              "e3"
+            ],
+            "taskClauseDe": "Berechne beide End-pH-Werte und entscheide, ob die kleinere Modell-H⁺-Menge eine reale Therapieentscheidung rechtfertigt.",
+            "taskClauseEn": "Calculate both final pH values and decide whether lower model H⁺ justifies an actual treatment choice.",
+            "criterionDe": "N: (4−3+2)/0.500=6.00 mmol/L, pH 2.222. P: 4/0.500=8.00 mmol/L, pH 2.097. N hat im gewählten Zeitpunkt weniger H⁺; das ist nur die vorgegebene Bilanz. Dauer, Nebenwirkungen, Indikation und reale Sekretion sind nicht modelliert und erlauben keine Therapieempfehlung.",
+            "criterionEn": "N: (4−3+2)/0.500=6.00 mmol/L, pH 2.222. P: 4/0.500=8.00 mmol/L, pH 2.097. N has less H⁺ at the chosen instant, solely from the supplied balance. Duration, adverse effects, indications and actual secretion are unmodeled; no treatment recommendation follows.",
+            "maximumPoints": 2,
+            "partialCreditDe": "2 Punkte für den vollständigen ausdrücklich verlangten Kriteriumsnachweis;1 für einen fachlich richtigen Teil;0 bei fehlendem/falschem Nachweis. Praktisches Kriterium: ohne tatsächliche Beobachtung0, unabhängig von Papierantworten.",
+            "partialCreditEn": "2 points for the complete explicitly requested criterion;1 for a scientifically correct part;0 when absent/wrong. Practical criterion:0 without actual observation, regardless of written answers.",
+            "creditBasis": "written-explicit-task"
+          }
+        ],
+        "maximumPoints": 6,
+        "gradingBoundary": "Credit only explicitly requested task/data evidence. Practical operations require actual observation. No undisclosed measurement/model-limit quota; no clinical or human approval/performance claim.",
+        "expectationCoverage": [
+          {
+            "expectationId": "e1",
+            "coverage": "case-specific explicitly asked aspect",
+            "observableTaskClauseDe": "Erkläre, warum die aktive Pumpe bei N weiterhin Säure liefern kann, obwohl vorher H⁺ neutralisiert wurde.",
+            "observableTaskClauseEn": "Explain why an active pump in N can still supply acid after earlier neutralization."
+          },
+          {
+            "expectationId": "e2",
+            "coverage": "case-specific explicitly asked aspect",
+            "observableTaskClauseDe": "Prüfe die Aussage „P ist nur eine andere Neutralisationsbase“ anhand des Primärdossiers; gib einen Quellenbeleg an.",
+            "observableTaskClauseEn": "Check “P is just another neutralizing base” against the primary dossier and cite the source."
+          },
+          {
+            "expectationId": "e3",
+            "coverage": "case-specific explicitly asked aspect",
+            "observableTaskClauseDe": "Berechne beide End-pH-Werte und entscheide, ob die kleinere Modell-H⁺-Menge eine reale Therapieentscheidung rechtfertigt.",
+            "observableTaskClauseEn": "Calculate both final pH values and decide whether lower model H⁺ justifies an actual treatment choice."
+          }
+        ]
+      },
+      "afterSemanticSHA256": "166eb67729efdf9ecea1c3e51052cc1e1df53394c7c99a5efc472422af8bf909",
+      "after": {
+        "caseId": "2fac2f0e-case-2",
+        "goalId": "2fac2f0e-bccc-5511-b9fb-cc1bc3aeed00",
+        "title": "Nachlieferung gegenüber Neutralisation",
+        "dataOrigin": "Original fictional teaching data; supplied primary-source paraphrases identified separately; no observed learner/lab/clinical result",
+        "languageParity": "Complete DE/EN supplied data, task, model answer and explicit case-specific rubric",
+        "dataDe": "Chemisches Unterrichtsmodell: keine persönlichen Behandlungs-, Dosierungs- oder Einnahmeempfehlungen; erfundene Modellwerte sind keine klinischen Befunde. Gleiches NCI-Primärdossier https://www.cancer.gov/publications/dictionaries/cancer-drug/def/omeprazole mit derselben Mechanismusparaphrase. Idealraum 0.500 L enthält 4.00 mmol H⁺. Variante N verbraucht durch Modellbase 3.00 mmol H⁺, anschließend liefert eine aktive Pumpe 2.00 mmol nach. Variante P enthält keine Base; blockierter Modellpumpenzufluss ist null. Kein weiterer Stofffluss/Puffer; pH=−log₁₀(c(H⁺)/(1 mol/L)).",
+        "dataEn": "Chemistry teaching model: no personal treatment, dosing or administration recommendation; invented model values are not clinical findings. Same primary NCI dossier https://www.cancer.gov/publications/dictionaries/cancer-drug/def/omeprazole and mechanism paraphrase. Ideal 0.500-L space contains 4.00 mmol H⁺. Variant N consumes 3.00 mmol H⁺ with a model base, followed by 2.00 mmol from an active pump. Variant P contains no base and has zero blocked model pump influx. No other flow/buffer; pH=−log₁₀(c(H⁺)/(1 mol/L)).",
+        "taskDe": "Daten und Bedingungen:\nChemisches Unterrichtsmodell: keine persönlichen Behandlungs-, Dosierungs- oder Einnahmeempfehlungen; erfundene Modellwerte sind keine klinischen Befunde. Gleiches NCI-Primärdossier https://www.cancer.gov/publications/dictionaries/cancer-drug/def/omeprazole mit derselben Mechanismusparaphrase. Idealraum 0.500 L enthält 4.00 mmol H⁺. Variante N verbraucht durch Modellbase 3.00 mmol H⁺, anschließend liefert eine aktive Pumpe 2.00 mmol nach. Variante P enthält keine Base; blockierter Modellpumpenzufluss ist null. Kein weiterer Stofffluss/Puffer; pH=−log₁₀(c(H⁺)/(1 mol/L)).\nAufgaben:\n1. Erkläre, warum die aktive Pumpe bei N weiterhin Säure liefern kann, obwohl vorher H⁺ neutralisiert wurde.\n2. Prüfe die Aussage „P ist nur eine andere Neutralisationsbase“ anhand des Primärdossiers; gib einen Quellenbeleg an.\n3. Berechne beide End-pH-Werte und entscheide, ob die kleinere Modell-H⁺-Menge eine reale Therapieentscheidung rechtfertigt.\n\nBereitgestellte Rechenkarte:1mmol=0,001mol; c(H⁺)=n(H⁺)/V. Für das ideale ungepufferte Modell gilt pH=−log₁₀(c(H⁺)/(1mol/L)); ein wissenschaftlicher Rechner mit log₁₀ darf benutzt werden. Bilanzieren und unterscheiden musst du selbst: Welche vorgegebene Größe gehört zu bereits vorhandener Säure, neuer Sekretion oder stöchiometrischem Verbrauch? Die Karte liefert keine Endmengen, Konzentrations- oder pH-Ergebnisse. Forme keine allgemeine pH-Näherungsformel her und führe keine klinische Dosis- oder Zeitrechnung durch.\n\nÖffne die angegebene Definition, lies den ersten Definitionsabsatz und belege Zielprotein sowie Transportfolge mit URL und Absatz. Nutze die bereitgestellte Quellenkarte zur eindeutigen Fundstelle. Es ist keine freie Internetsuche oder Recherche zu Antazida erforderlich.\n\nVerbinde die Rechnung ausdrücklich mit dem Mechanismus: Ordne den Verbrauch nurN und den blockierten neuen Zufluss nurP zu. Erkläre, warumN am vorgegebenen Zeitpunkt weniger H⁺ enthalten kann, ohneP zu einer Neutralisationsbase zu machen oder eine klinische Rangfolge zu beweisen.",
+        "taskEn": "Data and conditions:\nChemistry teaching model: no personal treatment, dosing or administration recommendation; invented model values are not clinical findings. Same primary NCI dossier https://www.cancer.gov/publications/dictionaries/cancer-drug/def/omeprazole and mechanism paraphrase. Ideal 0.500-L space contains 4.00 mmol H⁺. Variant N consumes 3.00 mmol H⁺ with a model base, followed by 2.00 mmol from an active pump. Variant P contains no base and has zero blocked model pump influx. No other flow/buffer; pH=−log₁₀(c(H⁺)/(1 mol/L)).\nTasks:\n1. Explain why an active pump in N can still supply acid after earlier neutralization.\n2. Check “P is just another neutralizing base” against the primary dossier and cite the source.\n3. Calculate both final pH values and decide whether lower model H⁺ justifies an actual treatment choice.\n\nSupplied calculation card:1mmol=0.001mol; c(H⁺)=n(H⁺)/V. In the ideal unbuffered model use pH=−log₁₀(c(H⁺)/(1mol/L)); a scientific calculator with log₁₀ is allowed. Independently distinguish and balance the supplied existing acid, new secretion and stoichiometric consumption. The card gives no final amounts, concentrations or pH answers. Do not derive a general pH approximation or perform a clinical dose/time calculation.\n\nOpen the supplied definition, read its first definition paragraph and cite the target protein and transport consequence using URL and paragraph. Use the supplied source card to locate it precisely. No open internet search or antacid research is required.\n\nExplicitly connect calculation and mechanism: allocate consumption only toN and blocked new influx only toP. Explain whyN can contain less H⁺ at the given instant without turningP into a neutralizing base or proving a clinical ranking.",
+        "modelAnswerDe": "1. Neutralisation entfernt Lumensäure, schaltet aber nicht automatisch die ATP-gekoppelte H⁺/K⁺-ATPase ab. Neue H⁺-Sekretion mit Cl⁻-Begleittransport bleibt im Modell möglich. Die Protonenquelle und der Transport sind vom Verbrauch im Lumen getrennt.\n2. Falsch: Die NCI-Definition beschreibt Hemmung des Pumpenproteins und H⁺-Transports, keine 1:1-Verbrauchsreaktion mit Lumensäure. Die Mechanismen können daher zeitlich verschiedene Modellbilanzen erzeugen. Beleg: NCI Drug Dictionary, Definition Omeprazole, angegebene URL.\n3. N: (4−3+2)/0.500=6.00 mmol/L, pH 2.222. P: 4/0.500=8.00 mmol/L, pH 2.097. N hat im gewählten Zeitpunkt weniger H⁺; das ist nur die vorgegebene Bilanz. Dauer, Nebenwirkungen, Indikation und reale Sekretion sind nicht modelliert und erlauben keine Therapieempfehlung.\n\nDie Stoffmenge wird beiN durch den angegebenen Verbrauch verkleinert und anschließend wieder erhöht; beiP bleibt die Anfangsmenge ohne neuen Zufluss erhalten. Die Reihenfolge der End-pH-Werte beschreibt diese Vorgaben, keine andere Wirkweise des Pumpenhemmers.",
+        "modelAnswerEn": "1. Neutralization consumes luminal acid without automatically disabling ATP-coupled H⁺/K⁺-ATPase. New H⁺ secretion with chloride transport remains possible. Proton production/transport is separate from luminal consumption.\n2. False: NCI describes inhibition of pump protein/H⁺ transport, not a 1:1 acid-consumption reaction. The mechanisms can produce different time-dependent model balances. Citation: NCI Drug Dictionary, Omeprazole definition, supplied URL.\n3. N: (4−3+2)/0.500=6.00 mmol/L, pH 2.222. P: 4/0.500=8.00 mmol/L, pH 2.097. N has less H⁺ at the chosen instant, solely from the supplied balance. Duration, adverse effects, indications and actual secretion are unmodeled; no treatment recommendation follows.\n\nInN the supplied consumption reduces the amount and later influx raises it; inP the initial amount remains with no new influx. The final-pH ordering describes those givens, not a different pump-inhibitor mechanism.",
+        "expectationIds": [
+          "e1",
+          "e2",
+          "e3"
+        ],
+        "visualizationRequired": false,
+        "executionClaim": "No actual execution occurred. Real authorized observed operations are required for practical criteria; paper/model data cannot earn them.",
+        "practicalExecutionRequired": false,
+        "rubric": [
+          {
+            "criterionId": "2fac2f0e-case-2-r1",
+            "expectationIds": [
+              "e1"
+            ],
+            "taskClauseDe": "Erkläre, warum die aktive Pumpe bei N weiterhin Säure liefern kann, obwohl vorher H⁺ neutralisiert wurde.",
+            "taskClauseEn": "Explain why an active pump in N can still supply acid after earlier neutralization.",
+            "criterionDe": "Neutralisation entfernt Lumensäure, schaltet aber nicht automatisch die ATP-gekoppelte H⁺/K⁺-ATPase ab. Neue H⁺-Sekretion mit Cl⁻-Begleittransport bleibt im Modell möglich. Die Protonenquelle und der Transport sind vom Verbrauch im Lumen getrennt.",
+            "criterionEn": "Neutralization consumes luminal acid without automatically disabling ATP-coupled H⁺/K⁺-ATPase. New H⁺ secretion with chloride transport remains possible. Proton production/transport is separate from luminal consumption.",
+            "maximumPoints": 2,
+            "partialCreditDe": "2 Punkte für den vollständigen ausdrücklich verlangten Kriteriumsnachweis;1 für einen fachlich richtigen Teil;0 bei fehlendem/falschem Nachweis. Praktisches Kriterium: ohne tatsächliche Beobachtung0, unabhängig von Papierantworten.",
+            "partialCreditEn": "2 points for the complete explicitly requested criterion;1 for a scientifically correct part;0 when absent/wrong. Practical criterion:0 without actual observation, regardless of written answers.",
+            "creditBasis": "written-explicit-task"
+          },
+          {
+            "criterionId": "2fac2f0e-case-2-r2",
+            "expectationIds": [
+              "e2"
+            ],
+            "taskClauseDe": "Prüfe die Aussage „P ist nur eine andere Neutralisationsbase“ anhand des Primärdossiers; gib einen Quellenbeleg an.",
+            "taskClauseEn": "Check “P is just another neutralizing base” against the primary dossier and cite the source.",
+            "criterionDe": "Falsch: Die NCI-Definition beschreibt Hemmung des Pumpenproteins und H⁺-Transports, keine 1:1-Verbrauchsreaktion mit Lumensäure. Die Mechanismen können daher zeitlich verschiedene Modellbilanzen erzeugen. Beleg: NCI Drug Dictionary, Definition Omeprazole, angegebene URL.",
+            "criterionEn": "False: NCI describes inhibition of pump protein/H⁺ transport, not a 1:1 acid-consumption reaction. The mechanisms can produce different time-dependent model balances. Citation: NCI Drug Dictionary, Omeprazole definition, supplied URL.",
+            "maximumPoints": 2,
+            "partialCreditDe": "2 Punkte für den vollständigen ausdrücklich verlangten Kriteriumsnachweis;1 für einen fachlich richtigen Teil;0 bei fehlendem/falschem Nachweis. Praktisches Kriterium: ohne tatsächliche Beobachtung0, unabhängig von Papierantworten.",
+            "partialCreditEn": "2 points for the complete explicitly requested criterion;1 for a scientifically correct part;0 when absent/wrong. Practical criterion:0 without actual observation, regardless of written answers.",
+            "creditBasis": "written-explicit-task"
+          },
+          {
+            "criterionId": "2fac2f0e-case-2-r3",
+            "expectationIds": [
+              "e3"
+            ],
+            "taskClauseDe": "Berechne beide End-pH-Werte und entscheide, ob die kleinere Modell-H⁺-Menge eine reale Therapieentscheidung rechtfertigt. Verbinde die Rechnung ausdrücklich mit dem Mechanismus: Ordne den Verbrauch nurN und den blockierten neuen Zufluss nurP zu. Erkläre, warumN am vorgegebenen Zeitpunkt weniger H⁺ enthalten kann, ohneP zu einer Neutralisationsbase zu machen oder eine klinische Rangfolge zu beweisen.",
+            "taskClauseEn": "Calculate both final pH values and decide whether lower model H⁺ justifies an actual treatment choice. Explicitly connect calculation and mechanism: allocate consumption only toN and blocked new influx only toP. Explain whyN can contain less H⁺ at the given instant without turningP into a neutralizing base or proving a clinical ranking.",
+            "criterionDe": "N: (4−3+2)/0.500=6.00 mmol/L, pH 2.222. P: 4/0.500=8.00 mmol/L, pH 2.097. N hat im gewählten Zeitpunkt weniger H⁺; das ist nur die vorgegebene Bilanz. Dauer, Nebenwirkungen, Indikation und reale Sekretion sind nicht modelliert und erlauben keine Therapieempfehlung. Volle2Punkte für die bereits verlangte korrekte Rechnung und begrenzte Schlussfolgerung benötigen den ausdrücklich auf diese Bilanz bezogenen Mechanismusvergleich; Zahlen oder Quellenabschrift allein reichen nicht.",
+            "criterionEn": "N: (4−3+2)/0.500=6.00 mmol/L, pH 2.222. P: 4/0.500=8.00 mmol/L, pH 2.097. N has less H⁺ at the chosen instant, solely from the supplied balance. Duration, adverse effects, indications and actual secretion are unmodeled; no treatment recommendation follows. Full2points for the already required correct calculation and bounded inference require an explicit mechanism comparison tied to this balance; numbers or copied source text alone do not suffice.",
+            "maximumPoints": 2,
+            "partialCreditDe": "2 Punkte für den vollständigen ausdrücklich verlangten Kriteriumsnachweis;1 für einen fachlich richtigen Teil;0 bei fehlendem/falschem Nachweis. Praktisches Kriterium: ohne tatsächliche Beobachtung0, unabhängig von Papierantworten.",
+            "partialCreditEn": "2 points for the complete explicitly requested criterion;1 for a scientifically correct part;0 when absent/wrong. Practical criterion:0 without actual observation, regardless of written answers.",
+            "creditBasis": "written-explicit-task"
+          }
+        ],
+        "maximumPoints": 6,
+        "gradingBoundary": "Credit only explicitly requested task/data evidence. Practical operations require actual observation. No undisclosed measurement/model-limit quota; no clinical or human approval/performance claim.",
+        "expectationCoverage": [
+          {
+            "expectationId": "e1",
+            "coverage": "case-specific explicitly asked aspect",
+            "observableTaskClauseDe": "Erkläre, warum die aktive Pumpe bei N weiterhin Säure liefern kann, obwohl vorher H⁺ neutralisiert wurde.",
+            "observableTaskClauseEn": "Explain why an active pump in N can still supply acid after earlier neutralization."
+          },
+          {
+            "expectationId": "e2",
+            "coverage": "case-specific explicitly asked aspect",
+            "observableTaskClauseDe": "Prüfe die Aussage „P ist nur eine andere Neutralisationsbase“ anhand des Primärdossiers; gib einen Quellenbeleg an.",
+            "observableTaskClauseEn": "Check “P is just another neutralizing base” against the primary dossier and cite the source."
+          },
+          {
+            "expectationId": "e3",
+            "coverage": "case-specific explicitly asked aspect",
+            "observableTaskClauseDe": "Berechne beide End-pH-Werte und entscheide, ob die kleinere Modell-H⁺-Menge eine reale Therapieentscheidung rechtfertigt. Verbinde die Rechnung ausdrücklich mit dem Mechanismus: Ordne den Verbrauch nurN und den blockierten neuen Zufluss nurP zu. Erkläre, warumN am vorgegebenen Zeitpunkt weniger H⁺ enthalten kann, ohneP zu einer Neutralisationsbase zu machen oder eine klinische Rangfolge zu beweisen.",
+            "observableTaskClauseEn": "Calculate both final pH values and decide whether lower model H⁺ justifies an actual treatment choice. Explicitly connect calculation and mechanism: allocate consumption only toN and blocked new influx only toP. Explain whyN can contain less H⁺ at the given instant without turningP into a neutralizing base or proving a clinical ranking."
+          }
+        ],
+        "suppliedSupport": {
+          "calculationCard": {
+            "de": "Bereitgestellte Rechenkarte:1mmol=0,001mol; c(H⁺)=n(H⁺)/V. Für das ideale ungepufferte Modell gilt pH=−log₁₀(c(H⁺)/(1mol/L)); ein wissenschaftlicher Rechner mit log₁₀ darf benutzt werden. Bilanzieren und unterscheiden musst du selbst: Welche vorgegebene Größe gehört zu bereits vorhandener Säure, neuer Sekretion oder stöchiometrischem Verbrauch? Die Karte liefert keine Endmengen, Konzentrations- oder pH-Ergebnisse. Forme keine allgemeine pH-Näherungsformel her und führe keine klinische Dosis- oder Zeitrechnung durch.",
+            "en": "Supplied calculation card:1mmol=0.001mol; c(H⁺)=n(H⁺)/V. In the ideal unbuffered model use pH=−log₁₀(c(H⁺)/(1mol/L)); a scientific calculator with log₁₀ is allowed. Independently distinguish and balance the supplied existing acid, new secretion and stoichiometric consumption. The card gives no final amounts, concentrations or pH answers. Do not derive a general pH approximation or perform a clinical dose/time calculation."
+          },
+          "mechanismSourceCard": {
+            "materialId": "2fac-supplied-mechanism-source-card-20261018-v1",
+            "sourceType": "Provided first-party institutional drug-dictionary definition, not a primary clinical experiment",
+            "url": "https://www.cancer.gov/publications/dictionaries/cancer-drug/def/omeprazole",
+            "locator": {
+              "heading": "omeprazole",
+              "paragraphOneBased": 1,
+              "scope": "First definition paragraph immediately beneath the heading"
+            },
+            "retrievedAt": "2026-10-18T18:53:06.750962+00:00",
+            "actuallyReadMethod": "web.run rendered definition, not the JavaScript-only generic shell returned by a separate ordinary HTTP request",
+            "actualRenderedResponseDigest": {
+              "sha256": "2736bd1fc3214a5046c26be3bcc982a2dec46f0d643667b232f9916530e605a6",
+              "bytes": 3816
+            },
+            "shortExactExcerpt": "suppressing gastric acid secretion",
+            "paraphraseDe": "Die NCI-Definition beschreibt eine Bindung von Omeprazol an die H⁺/K⁺-ATPase auf der sekretorischen Oberfläche von Belegzellen und eine Hemmung des abschließenden H⁺-Transports im Austausch gegen K⁺ in das Magenlumen.",
+            "paraphraseEn": "The NCI definition describes omeprazole binding to H⁺/K⁺-ATPase on the secretory surface of parietal cells and inhibition of final H⁺ transport in exchange for K⁺ into the gastric lumen.",
+            "evidenceLimitDe": "Die Definition stützt Zielprotein und Transportfolge. Die Unterrichtsmengen, Volumina, Hemmanteile und pH-Werte stammen aus dem eigenen idealen Modell. Dass weniger Zufluss keine stöchiometrische Entfernung vorhandener Säure ist, wird aus Mechanismus und Modell begründet; es ist keine dort wörtlich gegebene Neutralisationsrechnung.",
+            "evidenceLimitEn": "The definition supports the protein target and transport consequence. Teaching amounts, volumes, inhibition fractions and pH values belong to the own ideal model. Reduced influx is distinguished from stoichiometric removal of existing acid by reasoning from mechanism and model; the definition supplies no such neutralization calculation.",
+            "learnerDemandDe": "Öffne die angegebene Definition, lies den ersten Definitionsabsatz und belege Zielprotein sowie Transportfolge mit URL und Absatz. Nutze die bereitgestellte Quellenkarte zur eindeutigen Fundstelle. Es ist keine freie Internetsuche oder Recherche zu Antazida erforderlich.",
+            "learnerDemandEn": "Open the supplied definition, read its first definition paragraph and cite the target protein and transport consequence using URL and paragraph. Use the supplied source card to locate it precisely. No open internet search or antacid research is required.",
+            "learnerActivityClaim": false,
+            "clinicalRecommendation": false
+          },
+          "mechanismLink": {
+            "de": "Verbinde die Rechnung ausdrücklich mit dem Mechanismus: Ordne den Verbrauch nurN und den blockierten neuen Zufluss nurP zu. Erkläre, warumN am vorgegebenen Zeitpunkt weniger H⁺ enthalten kann, ohneP zu einer Neutralisationsbase zu machen oder eine klinische Rangfolge zu beweisen.",
+            "en": "Explicitly connect calculation and mechanism: allocate consumption only toN and blocked new influx only toP. Explain whyN can contain less H⁺ at the given instant without turningP into a neutralizing base or proving a clinical ranking."
+          },
+          "systemBoundaryClarification": {
+            "de": "Abgegrenzt bedeutet: Nur die ausdrücklich vorgegebene Sekretion bzw. der Verbrauch werden bilanziert; keine zusätzlichen ungenannten Zu-/Abflüsse und keine Volumenänderung. Wegen der genannten Sekretion ist dies kein stofflich geschlossenes thermodynamisches System.",
+            "en": "Bounded means that only the expressly supplied secretion and consumption are balanced, with no additional unspecified flows or volume change. The specified secretion means this is not a materially closed thermodynamic system."
+          }
+        }
+      }
+    }
+  ],
+  "originalThirtyCaseFileRemainsUnchanged": true,
+  "newLearnerBody": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-2fac-targeted-scope-material-source-author-20261018-v1/materials/ppi-two-whole-cases.learner.DE-EN.pending.json",
+    "sha256": "714faea7f82e65fafae2dbfb27a9fc2ea5d278b102b0568c008f6483511eb53c",
+    "bytes": 26422
+  },
+  "newTeacherBody": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-2fac-targeted-scope-material-source-author-20261018-v1/materials/ppi-two-whole-cases.teacher.DE-EN.pending.json",
+    "sha256": "5d57dd1fe9b4164f6da8fd27afb7799ddc321079b5d2390e03f9d8bdb597f610",
+    "bytes": 20264
+  },
+  "sourceCardAndCalculationAreOwnBoundedSupports": true
+}

@@ -1,0 +1,88 @@
+{
+  "role": "ACTUAL_AUTHOR_VISUAL_CHEMISTRY_READING_NOT_INDEPENDENT_V",
+  "goalId": "69f2ecbb-ac0a-5d3a-8084-2142706e1161",
+  "candidateSHA256": "9b2145733949ff42ae062bd1a9b149c37ba812c0e6b269bd15a8c8fcf7075b7a",
+  "basis": {
+    "materialPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-recycling-atomicity-source-author-20261018-v1/materials/polymer-hydrolysis.learner.DE-EN.pending.json",
+    "pointer": "/commonGivens",
+    "condition": "acidic ester hydrolysis and neutral molecular product representation, not alkaline carboxylate endpoints"
+  },
+  "actualVisualReading": {
+    "reactantTopLeft": "R–C(=O)–O–R′",
+    "waterTopRight": "H–O–H",
+    "leftProductBottom": "R–C(=O)–O–H",
+    "rightProductBottom": "H–O–R′",
+    "markedCleavage": "only the original single acyl-C–O bond; orange halo does not remove the drawn starting bond",
+    "reactionExtent": "one representative cleavage and two chain fragments; no full bifunctional monomer pair"
+  },
+  "manualAtomBondAudit": [
+    {
+      "part": "reactant carbonyl C",
+      "neighbors": "R single + O double + bridging O single",
+      "bondOrderTotal": 4
+    },
+    {
+      "part": "reactant carbonyl O",
+      "neighbors": "carbonyl C double",
+      "bondOrderTotal": 2
+    },
+    {
+      "part": "reactant bridging O",
+      "neighbors": "carbonyl C single + R′ single",
+      "bondOrderTotal": 2
+    },
+    {
+      "part": "water O",
+      "neighbors": "H single + H single",
+      "bondOrderTotal": 2
+    },
+    {
+      "part": "acid product carbonyl C",
+      "neighbors": "R single + carbonyl O double + hydroxyl O single",
+      "bondOrderTotal": 4
+    },
+    {
+      "part": "acid product carbonyl O",
+      "neighbors": "carbonyl C double",
+      "bondOrderTotal": 2
+    },
+    {
+      "part": "acid product hydroxyl O",
+      "neighbors": "carbonyl C single + H single",
+      "bondOrderTotal": 2
+    },
+    {
+      "part": "alcohol product O",
+      "neighbors": "H single + R′ single",
+      "bondOrderTotal": 2
+    }
+  ],
+  "manualAtomConservation": {
+    "oxygenBefore": {
+      "ester": 2,
+      "water": 1,
+      "total": 3
+    },
+    "oxygenAfter": {
+      "acidFragment": 2,
+      "alcoholFragment": 1,
+      "total": 3
+    },
+    "explicitHydrogenBefore": 2,
+    "explicitHydrogenAfter": 2,
+    "carbonylCarbonBeforeAndAfter": 1,
+    "RBeforeAndAfter": 1,
+    "RPrimeBeforeAndAfter": 1
+  },
+  "boundariesDe": [
+    "Das ursprüngliche Alkohol-O bleibt mit R′ verbunden; Wasser ergänzt im angegebenen Modell OH auf der Acylseite und H an der Alkohol-O-Seite. Gezeigt ist die Nettostruktur, kein Elektronenpaarmechanismus.",
+    "Rot hebt Endgruppen-/Wasser-Sauerstoff hervor; die Farbe ist keine atomindividuelle Isotopen- oder Herkunftskartierung. Die tatsächlichen Bindungen und die Atomanzahl ergeben die Stoffbilanz.",
+    "Neutrale Fragmentenden bezeichnet hier formal ungeladene COOH- und OH-Gruppen der vorgegebenen Produktdarstellung, keinen gemessenen pH 7 und keine alkalische Verseifung.",
+    "R und R′ sind die ausdrücklich bezeichneten fortgesetzten Kettenreste. Aus einem Schnitt werden zwei Fragmente, keine vollständig freigesetzten Diol-/Dicarbonsäuremonomere behauptet.",
+    "Die PE-Notiz lautet keine Esterstelle für diesen Weg. Andere mechanische oder chemische PE-Verwertungen werden weder ausgeschlossen noch dargestellt.",
+    "Die symbolische Nettodarstellung ist kein Nachweis technischer Vollumsetzung, Reinheit, Ausbeute, neuer Polymerproduktion oder realer Durchführung."
+  ],
+  "wholeGoalCoverageClaim": false,
+  "sourceOrProfileChanged": false,
+  "approval": false
+}

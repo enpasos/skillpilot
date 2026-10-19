@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "role": "original_function_technical_invariance_check",
+  "argv": [
+    "app/node_modules/.bin/tsx",
+    "-e",
+    "import {readFileSync} from \"node:fs\"; import {fingerprintSemanticKindSourceGoal} from \"./app/scripts/goalBookModel.ts\"; const b=\"curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-two-derived-assessment-applicability-technical-candidate-20261019-v1\";const c=JSON.parse(readFileSync(b+\"/candidate/TWO.whole-goals.before-after.applicability-only.json\",\"utf8\"));const sem=JSON.parse(readFileSync(\"curricula/DE/Gymnasium/quality/goal-book-publication/chemie.semantic-kinds.json\",\"utf8\"));const out=c.records.map((r)=>{const before=fingerprintSemanticKindSourceGoal(r.wholeBefore),after=fingerprintSemanticKindSourceGoal(r.wholeAfter),decision=sem.decisions.find((d)=>d.goalId===r.goalId);if(before!==after||before!==decision.sourceFingerprint||decision.semanticKind!==\"practiceAssessment\")throw new Error(\"Unexpected semantic binding change\");return {goalId:r.goalId,semanticKind:decision.semanticKind,beforeSourceFingerprint:before,afterSourceFingerprint:after,ledgerSourceFingerprint:decision.sourceFingerprint,unchanged:true};});console.log(JSON.stringify({originalFunction:\"app/scripts/goalBookModel.ts#fingerprintSemanticKindSourceGoal\",records:out},null,2));"
+  ],
+  "startedAtUtc": "2026-10-19T00:10:44.455635+00:00",
+  "finishedAtUtc": "2026-10-19T00:10:44.888298+00:00",
+  "exitCode": 0,
+  "normalWritesPerformed": false,
+  "scientificReviewPerformed": false,
+  "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-two-derived-assessment-applicability-technical-candidate-20261019-v1/checks/ORIGINAL.semantic-fingerprint-invariance.raw.json",
+  "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-two-derived-assessment-applicability-technical-candidate-20261019-v1/checks/ORIGINAL.semantic-fingerprint-invariance.stderr.txt"
+}

@@ -1,0 +1,286 @@
+{
+  "role": "INDEPENDENT_INFORMED_CORE_REVIEW_B_RECEIPT",
+  "status": "completed-sealed",
+  "startedAtUTC": "2026-10-18T22:28:22Z",
+  "completedAtUTC": "2026-10-18T22:31:44.226436Z",
+  "localDate": "2026-10-19 Europe/Berlin",
+  "provider": "OpenAI",
+  "model": "unknown",
+  "modelBuild": "unknown",
+  "temperature": "unknown",
+  "blindnessBoundary": "Informed component review after own D7 FIRST; no current peer core/image reviewer vote or result was opened. Handoff references to other image-review seals were routing metadata only. Old70b/33e A/M records explicitly allowed by the task were read as history, not treated as current approval.",
+  "readAndCheckSummary": {
+    "wholeCoreGoalInputs": 3,
+    "wholePositiveProfileBodies": 3,
+    "wholeEsterCases": 4,
+    "wholePreservationCasesAndTables": 2,
+    "nativePNGsActuallyViewed": 2,
+    "nativePixelSize": [
+      1672,
+      941
+    ],
+    "screenWidthsActuallyViewedPx": [
+      360,
+      680
+    ]
+  },
+  "decisions": [
+    {
+      "goalId": "70b34ae7-4481-590c-9a02-516464750832",
+      "D": "accept_core_wording",
+      "P": "accept_core_profile_and_two_cases",
+      "A": "curricularAtomic",
+      "M": "no_memory_needed",
+      "reasonDe": "Aus analytisch vorgegebenen Produktbefunden die Esterbildung ableiten und dieselbe Stoffumwandlung als richtige Kondensationsgleichung darstellen sind ein Erkenntnis-/Darstellungszusammenhang. Beide Fälle erhalten Alkohol/Säure, richtige O-verknüpfte Alkoholseite, Wasser, Atom-/Stoffbilanz und den sauren Gleichgewichtsrahmen. Der neue Methanol/Butansäure-Fall ändert die Zuordnung beider Reste und prüft strukturellen Transfer. Bereitgestellte analytische Identitäten sind Unterrichtsdaten; keine eigene Synthese oder tatsächliche Lernendenleistung wird daraus behauptet. Das Ziel verlangt Erklärung/Anwendung und kein isoliertes Faktenrezitieren; kein neues Memorieratom/Deck nötig.",
+      "imageDecision": "accept_exact_image_component_within_simple_ester_scope",
+      "blockingFindings": []
+    },
+    {
+      "goalId": "62de1c6e-8581-5345-a0a6-773427cb6db7",
+      "D": "accept_core_wording",
+      "P": "accept_core_profile_and_two_cases",
+      "A": "curricularAtomic",
+      "M": "no_memory_needed",
+      "reasonDe": "Struktur und Wechselwirkungen erklären die gegebenen makroskopischen Eigenschaften; deren datengestützter Verwendungsbezug ist dieselbe fachliche Anwendungskette. Keine Synthese wird als Voraussetzung oder Ersatzleistung eingeführt. Die erste Tabelle behält den konkreten Ethylethanoat/Ethansäure-Siedevergleich und Beschichtungszweck. Der frische Methylbutanoat-Fall verlangt ein neues Struktur-/Datenurteil: A80% Ester/20% Wasser, B5% Ester/95% Wasser bei gleichen Phasenvolumina. Damit ist A unter genau diesen Bedingungen geeigneter extrahierbar; weder Wassermischbarkeit noch Geruch liefern universelle Verwendung, Identität, Harmlosigkeit oder Zulassung. Die unabhängige Anwendung supplied data begründet no_memory_needed; Kernbegriffe können unterstützend abgerufen werden, sind aber kein zusätzliches SRS-Ziel.",
+      "imageDecision": "accept_exact_image_component_within_simple_ester_scope",
+      "blockingFindings": []
+    },
+    {
+      "goalId": "33e845cc-1a7b-50d5-99b3-8079575c4e6a",
+      "D": "accept_bounded_description_revision",
+      "P": "retain_exact_whole_profile_and_two_tables",
+      "A": "curricularAtomic",
+      "M": "no_memory_needed",
+      "reasonDe": "Wirkprinzipien und bedingungsabhängige Risiken machen die bereits beanspruchte Vergleichsleistung deutlicher. Risikobenennung bleibt erhalten; keine neue Haltbarkeitsberechnung, Organismenuntersuchung oder spezielle Sorbin-/Ascorbinsäurekompetenz wird hinzugefügt. Die unveränderten ganzen P-/Materialkörper unterscheiden Hemmung von anfänglicher Inaktivierung, S0/S1 von Zuwachs sowie Sauerstoffeffekte bei zwei Modellorganismen. Restwachstum belegt keine Sterilität. Das ist ein bedingter Verfahrensvergleich und keine gesonderte memorierbare Stoffliste.",
+      "imageDecision": "no_new_33e_image_component_assessed",
+      "blockingFindings": []
+    }
+  ],
+  "counts": {
+    "coreDPAccepted": 3,
+    "atomicityJudgments": 3,
+    "noMemoryNeededJudgments": 3,
+    "exactPNGComponentsAccepted": 2,
+    "blockingFindings": 0
+  },
+  "actualChecks": {
+    "sealExactHash": true,
+    "allCoreFilesMatchSeal": true,
+    "allImageBytesMatchSeal": true,
+    "twoOldEsterExpectationsExactPartition": true,
+    "allThreeKeepMin2FreshTransfer": true,
+    "twoCasesEach": true,
+    "preservationWholeProfileExactlyRetained": true,
+    "preservationMaterialExactOriginal": true,
+    "old70MaterialHashMatch": true,
+    "propertyTableExactRetained": true,
+    "propertyUseTableExactRetained": true,
+    "ABPartitionExactRetained": true,
+    "ABPercentTotals": [
+      100,
+      100
+    ],
+    "TWO.whole-formation-cases.DE-EN.pending.jsonCasesMatchP": true,
+    "TWO.whole-property-use-cases.DE-EN.pending.jsonCasesMatchP": true,
+    "D7RecordsRemainExact": true
+  },
+  "originalSchemaAndSemantics": {
+    "mode": "Temporary validation capsules; no native final record, source approval or activation is created",
+    "schema": "contracts/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "semanticValidator": "app/scripts/positiveGoalEvidenceProfileModel.ts#validatePositiveGoalEvidenceRecordSemantics",
+    "results": [
+      {
+        "goalId": "70b34ae7-4481-590c-9a02-516464750832",
+        "profileFingerprint": "sha256:9f985790cc786573cf1de0d7a29ef80e5292c42e263b5dfec9c9b74a086a9c74",
+        "goalFingerprint": "sha256:24b3006569ae997179ab35a02b07807023ac9b57fac066e031bb0d66ee07ee47",
+        "bodyValid": true,
+        "bodyErrors": [],
+        "recordValid": true,
+        "recordErrors": [],
+        "semanticErrors": []
+      },
+      {
+        "goalId": "62de1c6e-8581-5345-a0a6-773427cb6db7",
+        "profileFingerprint": "sha256:3cc4b5879e9d3604f5d6789bd9aca708047d5c6bb2e042c36fb2009c4781ab35",
+        "goalFingerprint": "sha256:6e8af4bcd124fdb21e4649c4081ba168c7be989ebfc59939e1a156e02377d2f3",
+        "bodyValid": true,
+        "bodyErrors": [],
+        "recordValid": true,
+        "recordErrors": [],
+        "semanticErrors": []
+      },
+      {
+        "goalId": "33e845cc-1a7b-50d5-99b3-8079575c4e6a",
+        "profileFingerprint": "sha256:e36a82a045bbcf7d9a1aaab81811a762813a25b18a82bba8dcef9d8c7ffaf16c",
+        "goalFingerprint": "sha256:b8a8010dc9a659af438f228231addf0608d12dd07842f97c272bab69e6a51648",
+        "bodyValid": true,
+        "bodyErrors": [],
+        "recordValid": true,
+        "recordErrors": [],
+        "semanticErrors": []
+      }
+    ]
+  },
+  "oldAMContextActuallyRead": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-chemistry-q1-acids-derivatives.review.jsonl",
+      "wholeReadRecord": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-chemistry-q1-acids-derivatives",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "70b34ae7-4481-590c-9a02-516464750832",
+        "fingerprint": "sha256:490458fd9004a1d002f8d56c912d08f6e4340422f170c4ec3d6aee0849e521d9",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-05-12",
+        "reviewer": "codex",
+        "reason": "Q1 acids-derivatives review: one integrated ester-formation and structure-property routine; observation-based derivation, condensation equation, intermolecular-property explanation, and typical uses are linked around initial ester competence.",
+        "suggestedSplit": []
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-chemistry-q1-preservatives.review.jsonl",
+      "wholeReadRecord": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-chemistry-q1-preservatives",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "33e845cc-1a7b-50d5-99b3-8079575c4e6a",
+        "fingerprint": "sha256:020415f7d11803278d1c573bd33fa8e4249fd5908546fd873f8c239d3d5cc675",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-05-12",
+        "reviewer": "codex",
+        "reason": "Q1 preservatives review: one comparative preservation-method routine; contrasting historical and modern procedures and naming risks are coupled parts of the same evaluation goal.",
+        "suggestedSplit": []
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-chemistry-full.review.jsonl",
+      "wholeReadRecord": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-chemistry-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "70b34ae7-4481-590c-9a02-516464750832",
+        "fingerprint": "sha256:fd00c61d240f2bc966ae264e752e0e06040dc444500393dfa6e9515e77e9f47c",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-05-17",
+        "reviewer": "codex-chemistry-memory-review",
+        "reason": "Konservative Chemie-Entscheidung: Dieses Lernziel wird primär über Modellverständnis, Experimente, Auswertung, Argumentation oder Aufgabenpraxis verankert; eine eigene Memorycard ist hier nicht notwendig."
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-chemistry-full.review.jsonl",
+      "wholeReadRecord": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-chemistry-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "33e845cc-1a7b-50d5-99b3-8079575c4e6a",
+        "fingerprint": "sha256:24ca0de7bc23ca75ee1190834a0a7123090833c38051dc11f687b3e58491348d",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-05-17",
+        "reviewer": "codex-chemistry-memory-review",
+        "reason": "Konservative Chemie-Entscheidung: Dieses Lernziel wird primär über Modellverständnis, Experimente, Auswertung, Argumentation oder Aufgabenpraxis verankert; eine eigene Memorycard ist hier nicht notwendig."
+      }
+    }
+  ],
+  "ownAtomicityReasoning": "The old May atomicity row described a combined ester routine. Current separate evidence contracts show that reaction inference/equation performance and intermolecular property/use reasoning can succeed or fail independently; preserving them as two assessed atoms resolves that boundary. Within each new atom the remaining actions are evidence/expression or application of the same chemical relation. This does not rewrite the historical row.",
+  "dutyPreservation": "The whole two old expectation objects partition exactly across the two ester profiles. Each profile retains2 independent demonstrations,fresh variation,independent transfer and2 cases. All original qualitative property/use tables and A/B partition objects are exact. The33e whole profile and material file are exact; its whole goal differs only in DE/EN descriptions and the matching alt text. Supplied experiment/product data are interpretation material, not actual student action.",
+  "actualImageInspection": "Formation: correct R–C(=O)–OH + H–O–R′ ⇌ R–C(=O)–O–R′ + H2O, H+ context and ester-group inset; no C valence or connectivity defect seen. Property image: correct ester linkage, carbonyl Oδ− to Cδ+ interaction, no own OH donor for the stated simple ester scope, manche Duftstoffe and passendes Lösungsmittel avoid universal use. At360px sublabels are smaller but the key relation and labels remain readable;680px is clearer. Molecular geometry and interaction arrow are schematic, not measured geometry. Images supply no learner evidence.",
+  "visualRenderEvidence": [
+    {
+      "goalId": "70b34ae7-4481-590c-9a02-516464750832",
+      "widthPx": 360,
+      "naturalWidth": 1672,
+      "naturalHeight": 941,
+      "width": 360,
+      "height": 203,
+      "alt": "",
+      "screenshot": "/tmp/skillpilot-d7-core-b/70b34ae7-4481-590c-9a02-516464750832-360.png"
+    },
+    {
+      "goalId": "70b34ae7-4481-590c-9a02-516464750832",
+      "widthPx": 680,
+      "naturalWidth": 1672,
+      "naturalHeight": 941,
+      "width": 680,
+      "height": 383,
+      "alt": "",
+      "screenshot": "/tmp/skillpilot-d7-core-b/70b34ae7-4481-590c-9a02-516464750832-680.png"
+    },
+    {
+      "goalId": "62de1c6e-8581-5345-a0a6-773427cb6db7",
+      "widthPx": 360,
+      "naturalWidth": 1672,
+      "naturalHeight": 941,
+      "width": 360,
+      "height": 203,
+      "alt": "",
+      "screenshot": "/tmp/skillpilot-d7-core-b/62de1c6e-8581-5345-a0a6-773427cb6db7-360.png"
+    },
+    {
+      "goalId": "62de1c6e-8581-5345-a0a6-773427cb6db7",
+      "widthPx": 680,
+      "naturalWidth": 1672,
+      "naturalHeight": 941,
+      "width": 680,
+      "height": 383,
+      "alt": "",
+      "screenshot": "/tmp/skillpilot-d7-core-b/62de1c6e-8581-5345-a0a6-773427cb6db7-680.png"
+    }
+  ],
+  "coreInputBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-two-atom-and-33e-text-author-20261019-v1/AUTHOR.THREE.whole-goal-candidates.pending.json",
+      "sha256": "43f072eabe72cfc24030664a35b569021624b50addc10a63807222049251c473",
+      "bytes": 17202
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-two-atom-and-33e-text-author-20261019-v1/P.THREE.whole-profile-author-candidates.pending.json",
+      "sha256": "f4edb38c962e76880af5833b8ba96aa9331679cb7af040af8ad6f22557d9fcd1",
+      "bytes": 28109
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-two-atom-and-33e-text-author-20261019-v1/AUTHOR.duty-conservation-and-AM-proposals.pending.json",
+      "sha256": "876e8d8ca86478f302b4cc22aa25d5fdb6119d0571c52058d245971ed6723245",
+      "bytes": 4966
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-two-atom-and-33e-text-author-20261019-v1/inputs/WHOLE.current-two-goals-and-positive-profiles.json",
+      "sha256": "9edeab0440392a2582f0a186b709463f50796297c677565f328bb3f5e57902a4",
+      "bytes": 41156
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-two-atom-and-33e-text-author-20261019-v1/materials/TWO.whole-formation-cases.DE-EN.pending.json",
+      "sha256": "5b09cfc00f23e5e3db35469063e91141a3c0af487ef00cae39534d501edcd33b",
+      "bytes": 10146
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-two-atom-and-33e-text-author-20261019-v1/materials/TWO.whole-property-use-cases.DE-EN.pending.json",
+      "sha256": "541185a404de3d6765ae313284d12aaaaaa5eb70eae4e7f904c43b5b292cd37f",
+      "bytes": 14242
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-two-atom-and-33e-text-author-20261019-v1/materials/TWO.whole-33e-unchanged-cases.EXACT.json",
+      "sha256": "9bb2e1dde619358e5719c6847d82dd3357492b3a286ba7ff45a13d4c7c002712",
+      "bytes": 12247
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-two-atom-and-33e-text-author-20261019-v1/CORE.HANDOFF.three-goals-three-P-four-cases-two-exact-PNGs.json",
+      "sha256": "d619063bf1f81afef126b9749e031dad91f68d1b8b9a01609c66eb6c0ad55b4a",
+      "bytes": 5813
+    }
+  ],
+  "sourceViewGraphAppendices": "Excluded and not examined; source39/view/target-support/reverse-graph finality is not accepted. The current-support roster was not opened. Requires in the whole core objects are unaccepted graph proposals.",
+  "CAS": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-two-atom-and-33e-text-author-20261019-v1/indep-b-core/ACCEPT-CAS.three-core-components.independent-b.json",
+    "sha256": "f77751fc047914ec8594e61898494ff3595658cdb60d7fd5a865d2f78cf3428e"
+  },
+  "authorityBoundary": "AI component candidate judgments only; no Human Approval, Human Trial, learner performance, whole-package/M7 claim, normal write, registry change, final FIRST record or commit/push. Original D7 outputs remain unchanged.",
+  "temporaryChecks": "/tmp/skillpilot-d7-core-b holds screenshots and temporary original-validator capsules; these capsules are not final native evidence."
+}

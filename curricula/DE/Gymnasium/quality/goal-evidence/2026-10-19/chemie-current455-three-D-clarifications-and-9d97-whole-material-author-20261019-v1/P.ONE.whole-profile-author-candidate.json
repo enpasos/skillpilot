@@ -1,0 +1,158 @@
+{
+  "role": "AUTHOR_CANDIDATE_ONLY",
+  "reviewAuthority": "ai_candidate",
+  "active": false,
+  "independentApproval": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "nativeDApproval": false,
+  "AMVApproval": false,
+  "actualLearnerOrLaboratoryExecutionClaim": false,
+  "M7Claim": false,
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "createdAtUTC": "2026-10-18T23:13:02.834556+00:00",
+  "goalId": "9d97f628-c3ea-5dc0-8723-b17b16297af3",
+  "profile": {
+    "archetype": "modeling",
+    "expectations": [
+      {
+        "id": "alcohol-exchange-plan",
+        "essentialUnderstandingDe": "Transesterifizierung tauscht den Alkoholrest eines Esters durch einen anderen Alkohol aus. Sie bildet im idealen Nettofall keinen Wasser-Nebenproduktstrom.",
+        "essentialUnderstandingEn": "Transesterification exchanges an ester alcohol group using another alcohol. The ideal net reaction does not produce water.",
+        "observablePerformanceDe": "Aus bereitgestellten Stoffen ein geeignetes Reaktions-/Trennkonzept mit ausgeglichener Gleichung planen.",
+        "observablePerformanceEn": "Plan a suitable reaction/separation concept from supplied substances with a balanced equation."
+      },
+      {
+        "id": "equilibrium-intervention",
+        "essentialUnderstandingDe": "Alkoholüberschuss oder Produktentzug kann bei gegebenen Bedingungen die Gleichgewichtslage beeinflussen. Ein Katalysator verändert die Geschwindigkeit, nicht die thermodynamische Gleichgewichtskonstante.",
+        "essentialUnderstandingEn": "Alcohol excess or product removal can affect equilibrium under given conditions. A catalyst changes rate, not the thermodynamic equilibrium constant.",
+        "observablePerformanceDe": "Alternative Pläne über Mengen, Gleichgewicht und bereitgestellte Trennbedingungen beurteilen, ohne reale Ausbeute zu erfinden.",
+        "observablePerformanceEn": "Evaluate plans using amounts, equilibrium and supplied separation conditions without inventing real yields."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "alcohol-exchange-plan",
+        "equilibrium-intervention"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "changed-chemical-case",
+        "textDe": "Andere Alkohole und Ester bis zu einem vorgegebenen Fettmodell; Mengenüberschuss versus Produktentzug statt gleicher Zahleneinsetzung.",
+        "textEn": "Different alcohols/esters up to a supplied fat model; excess versus product withdrawal rather than simple numeric substitution."
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "methyl-ethanoate-ethanol-plan",
+        "taskDemandDe": "Plane im bereitgestellten geschlossenen Modell Methylacetat/Ethanol → Ethylacetat/Methanol. Bei idealisiertem K=1 vergleiche äquimolaren Start mit vierfachem Ethanol; unterscheide Katalyse vom Gleichgewichtseingriff.",
+        "taskDemandEn": "Plan supplied closed-model methyl acetate/ethanol → ethyl acetate/methanol. At idealized K=1 compare equimolar start with fourfold ethanol; distinguish catalysis from equilibrium intervention.",
+        "expectedPerformanceDe": "Ausgeglichener Resttausch ohne Wasser. Äquimolar ergeben sich modellhaft0,5molUmsatz aus1molEster; mit4molEthanol0,8mol, da x²/((1−x)(4−x))=1. Das ist Modellvorhersage, keine gemessene Ausbeute; Katalysator erhöht nicht K.",
+        "expectedPerformanceEn": "Balanced group exchange without water. Model conversion is0.5mol from1mol ester equimolarly, versus0.8mol with4mol ethanol because x²/((1−x)(4−x))=1. This is model prediction, not measured yield; catalyst does not increase K.",
+        "understandingFocusDe": "Mengen-/Gleichgewichtsplanung.",
+        "understandingFocusEn": "Amount and equilibrium planning."
+      },
+      {
+        "id": "triglyceride-methanol-product-withdrawal",
+        "taskDemandDe": "Ganzes synthetisches Papiermaterial: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-three-D-clarifications-and-9d97-whole-material-author-20261019-v1/materials/MATERIAL.whole-fresh-triglyceride-separation-and-side-reaction-case.DE-EN.json#/learnerMaterial. Gegeben sind vollständige Triacylglycerid-/Methanol-/Produktstrukturen, zwei Mengenpläne, eine ganze Phasen- und Rückgewinnungstabelle sowie die frische Wasser/Fettsäure-Matrix V. Formuliere den Resttausch und vergleiche Alkoholüberschuss mit Glycerinentzug unter den tatsächlich gegebenen Mitentnahme-/Nebenreaktionsbedingungen. Prüfe den Wechsel U→V und begrenze Gleichgewichts-, Trenn- und Ausbeuteaussagen. Keine eigene Synthese oder Messung.",
+        "taskDemandEn": "Complete synthetic paper material: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-three-D-clarifications-and-9d97-whole-material-author-20261019-v1/materials/MATERIAL.whole-fresh-triglyceride-separation-and-side-reaction-case.DE-EN.json#/learnerMaterial. Supplied are full triacylglycerol/methanol/product structures, two amount plans, complete phase/recovery tables and fresh water/free-acid matrix V. Write the group exchange and compare excess alcohol with glycerol withdrawal under the actual co-removal/side-reaction givens. Evaluate U→V and bound equilibrium, separation and yield claims. No own synthesis or measurement.",
+        "expectedPerformanceDe": "T+3Methanol⇌3Fettsäuremethylester+Glycerin, kein Wasser als Netto-Hauptprodukt. A nutzt Methanolüberschuss. B entnimmt95% des vorgegebenen Glycerins, aber auch Methanol/Ester/T und80% der katalytischen Aktivität; nach gesetzter Rückführung T3,99/M11,10/E17,91/G0,30mmol. Der Produktentzug ist nur mit konkretem Retentions-/Rückführungskonzept zu begründen; K steigt bei gleicher Temperatur nicht. Für V sind die U-Phasen-/Rückgewinnungszahlen ungültig: Wasser/freie Säure, Carboxylatsignal und Emulsion erfordern neue passende Kontrollen/Plananpassung. Seife ist kein Methylester. Keine endgültige Umsatzrangfolge,100%-Ausbeute, übernommenes Monoester-K=1 oder eigene Ausführung behaupten. Ganze Lösung und Grenzen stehen im Material.",
+        "expectedPerformanceEn": "T+3methanol⇌3fatty-acid methyl esters+glycerol, with no water as net main product. A uses excess methanol. B withdraws95% of supplied glycerol but also methanol/ester/T and80% of catalytic activity; after stipulated recycling T3.99/M11.10/E17.91/G0.30mmol. Justify removal only with concrete retention/recovery; K does not rise at fixed temperature. U phase/recovery values are invalid for V: water/free acid, carboxylate signal and emulsion require new matched checks/plan adaptation. Soap is not methyl ester. Claim no final conversion ranking,100% yield, transferred monoester K=1 or own execution. Full solution and limits are in the material.",
+        "understandingFocusDe": "Frisches Fett-/Trennkonzept.",
+        "understandingFocusEn": "Fresh fat and separation concept."
+      }
+    ]
+  },
+  "wholeBeforeSelectedRecord": {
+    "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "schemaVersion": 2,
+    "reviewId": "chemie-q1-fourteen-current-20261005-p-author-v2",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "goalId": "9d97f628-c3ea-5dc0-8723-b17b16297af3",
+    "goalFingerprint": "sha256:9386dc45590d5f118b2624b916e0d44d8e2d92dc826a47786de662e5bed325e1",
+    "reviewInputFingerprint": "sha256:f210228c0915a613cb504e553cb87c02e864ba53f40cdafd8493053fc0549799",
+    "profileFingerprint": "sha256:17ac498416ec8d0bb95b9b344ad3ec42b0310e5c688ec29d53a7632e717cbe59",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "reviewedAt": "2026-10-17T21:23:41.999975+00:00",
+    "reviewer": "Codex B technical current-input serialization; underlying scientific authors and reviewers remain recorded in the P442 selection/provenance",
+    "reason": "Hand authored, content-specific bilingual P-v2 candidate for the frozen future goal. Independent scientific review and current native binding/check pending. E1/G1 ai_candidate/needs_human_review; no observed learner or laboratory performance, human approval or statutory clearance claimed.",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": [],
+    "dissent": [],
+    "profile": {
+      "archetype": "modeling",
+      "expectations": [
+        {
+          "id": "alcohol-exchange-plan",
+          "essentialUnderstandingDe": "Transesterifizierung tauscht den Alkoholrest eines Esters durch einen anderen Alkohol aus. Sie bildet im idealen Nettofall keinen Wasser-Nebenproduktstrom.",
+          "essentialUnderstandingEn": "Transesterification exchanges an ester alcohol group using another alcohol. The ideal net reaction does not produce water.",
+          "observablePerformanceDe": "Aus bereitgestellten Stoffen ein geeignetes Reaktions-/Trennkonzept mit ausgeglichener Gleichung planen.",
+          "observablePerformanceEn": "Plan a suitable reaction/separation concept from supplied substances with a balanced equation."
+        },
+        {
+          "id": "equilibrium-intervention",
+          "essentialUnderstandingDe": "Alkoholüberschuss oder Produktentzug kann bei gegebenen Bedingungen die Gleichgewichtslage beeinflussen. Ein Katalysator verändert die Geschwindigkeit, nicht die thermodynamische Gleichgewichtskonstante.",
+          "essentialUnderstandingEn": "Alcohol excess or product removal can affect equilibrium under given conditions. A catalyst changes rate, not the thermodynamic equilibrium constant.",
+          "observablePerformanceDe": "Alternative Pläne über Mengen, Gleichgewicht und bereitgestellte Trennbedingungen beurteilen, ohne reale Ausbeute zu erfinden.",
+          "observablePerformanceEn": "Evaluate plans using amounts, equilibrium and supplied separation conditions without inventing real yields."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "alcohol-exchange-plan",
+          "equilibrium-intervention"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "changed-chemical-case",
+          "textDe": "Andere Alkohole und Ester bis zu einem vorgegebenen Fettmodell; Mengenüberschuss versus Produktentzug statt gleicher Zahleneinsetzung.",
+          "textEn": "Different alcohols/esters up to a supplied fat model; excess versus product withdrawal rather than simple numeric substitution."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "methyl-ethanoate-ethanol-plan",
+          "taskDemandDe": "Plane im bereitgestellten geschlossenen Modell Methylacetat/Ethanol → Ethylacetat/Methanol. Bei idealisiertem K=1 vergleiche äquimolaren Start mit vierfachem Ethanol; unterscheide Katalyse vom Gleichgewichtseingriff.",
+          "taskDemandEn": "Plan supplied closed-model methyl acetate/ethanol → ethyl acetate/methanol. At idealized K=1 compare equimolar start with fourfold ethanol; distinguish catalysis from equilibrium intervention.",
+          "expectedPerformanceDe": "Ausgeglichener Resttausch ohne Wasser. Äquimolar ergeben sich modellhaft0,5molUmsatz aus1molEster; mit4molEthanol0,8mol, da x²/((1−x)(4−x))=1. Das ist Modellvorhersage, keine gemessene Ausbeute; Katalysator erhöht nicht K.",
+          "expectedPerformanceEn": "Balanced group exchange without water. Model conversion is0.5mol from1mol ester equimolarly, versus0.8mol with4mol ethanol because x²/((1−x)(4−x))=1. This is model prediction, not measured yield; catalyst does not increase K.",
+          "understandingFocusDe": "Mengen-/Gleichgewichtsplanung.",
+          "understandingFocusEn": "Amount and equilibrium planning."
+        },
+        {
+          "id": "triglyceride-methanol-product-withdrawal",
+          "taskDemandDe": "Frisch gegeben sind ein Triglycerid, Methanol und Daten zur Abtrennung von Glycerin. Formuliere das idealisierte Umesterungsschema und vergleiche Alkoholüberschuss mit Produktabtrennung; kein eigenständiger Gefahrstoffversuch.",
+          "taskDemandEn": "Fresh inputs are a triglyceride, methanol and glycerol-separation data. Write the idealized exchange scheme and compare alcohol excess with product removal; no unsupervised hazardous experiment.",
+          "expectedPerformanceDe": "Triglycerid +3Methanol ⇌3Fettsäuremethylester +Glycerin. Beide bereitgestellten Eingriffe können den Umsatz begünstigen; Trennbarkeit und Nebenreaktionsdaten begrenzen den Plan. Es entstehen nicht Fettsäuresalze wie bei alkalischer Hydrolyse, und keine garantierte100%-Ausbeute.",
+          "expectedPerformanceEn": "Triglyceride +3methanol ⇌3fatty-acid methyl esters +glycerol. Both supplied interventions can favor conversion; separation and side-reaction data constrain the plan. Products are not carboxylate salts as in alkaline hydrolysis, and100%yield is not guaranteed.",
+          "understandingFocusDe": "Frisches Fett-/Trennkonzept.",
+          "understandingFocusEn": "Fresh fat and separation concept."
+        }
+      ]
+    }
+  },
+  "changedProfileScope": "Only four DE/EN demand/expected-performance fields of existing fresh case2; expectations, coverage, variation axes, complete case1, case2ID and focus remain exact.",
+  "material": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-three-D-clarifications-and-9d97-whole-material-author-20261019-v1/materials/MATERIAL.whole-fresh-triglyceride-separation-and-side-reaction-case.DE-EN.json",
+    "sha256": "4efada39bb848bf3c16c49552b2a2b486a26db18edeeb777a4ecfa3177e4951c",
+    "bytes": 16379
+  },
+  "nativeFingerprintBindingPending": true,
+  "noNewReviewerRunOrHistoricalVoteAttributed": true
+}

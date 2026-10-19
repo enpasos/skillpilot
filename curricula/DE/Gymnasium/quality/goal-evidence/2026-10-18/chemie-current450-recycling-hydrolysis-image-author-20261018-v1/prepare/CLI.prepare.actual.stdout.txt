@@ -1,0 +1,11 @@
+
+> skillpilot@0.0.0 visualization:prepare
+> node ../scripts/prepare_goal_visualization.mjs 69f2ecbb-ac0a-5d3a-8084-2142706e1161 --landscape=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-recycling-hydrolysis-image-author-20261018-v1/inputs/landscape.image-prepare.INACTIVE.json --subject=chemie --provider=OpenAI / built-in image_gen.imagegen --review-status=needs_external_review
+
+Prepared prompt package for: Polymerhydrolyse aus Bindungen und Produkten erklären
+SkillPilot ID: 69f2ecbb-ac0a-5d3a-8084-2142706e1161
+Prompt: tmp/goal-visualizations/69f2ecbb-ac0a-5d3a-8084-2142706e1161/nano-banana-prompt.de.md
+Metadata: tmp/goal-visualizations/69f2ecbb-ac0a-5d3a-8084-2142706e1161/metadata.json
+
+After generating and downloading the image, import it with:
+npm --prefix app run visualization:import -- 69f2ecbb-ac0a-5d3a-8084-2142706e1161 "<downloaded-image-path>"

@@ -1,0 +1,116 @@
+{
+  "reviewId": "chemie-current454-6c7-six-explicit-model-inputs-independent-a-20261018-v1",
+  "role": "bounded independent informed reviewer A",
+  "agentTask": "/root/chemie454_current35_fresh_description_a",
+  "decision": "accept_bounded_material_and_profile_successor_candidate",
+  "goalId": "6c7ce93c-7675-51da-bc0c-7d0257f7ff7d",
+  "authorSeal": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-6c7-six-explicit-model-inputs-author-20261018-v1/SEAL.author-one-material-and-one-profile.json",
+    "sha256": "c4cc1f479aca752d26f840f446fd85ea626a74b6fdd4114b6ab0847d79a18e52",
+    "bytes": 796
+  },
+  "sixChecks": [
+    {
+      "suppliedInput": {
+        "testId": 1,
+        "ion": "Na+",
+        "ionChargeSign": "+",
+        "facingEndDe": "O-Ende eines Wassermoleküls",
+        "facingEndEn": "O end of a water molecule",
+        "endSign": "-"
+      },
+      "independentlyDerivedModelResult": "attraction",
+      "matchesOldExpectedAnswer": true
+    },
+    {
+      "suppliedInput": {
+        "testId": 2,
+        "ion": "Na+",
+        "ionChargeSign": "+",
+        "facingEndDe": "H-Ende eines Wassermoleküls",
+        "facingEndEn": "H end of a water molecule",
+        "endSign": "+"
+      },
+      "independentlyDerivedModelResult": "repulsion",
+      "matchesOldExpectedAnswer": true
+    },
+    {
+      "suppliedInput": {
+        "testId": 3,
+        "ion": "Cl-",
+        "ionChargeSign": "-",
+        "facingEndDe": "O-Ende eines Wassermoleküls",
+        "facingEndEn": "O end of a water molecule",
+        "endSign": "-"
+      },
+      "independentlyDerivedModelResult": "repulsion",
+      "matchesOldExpectedAnswer": true
+    },
+    {
+      "suppliedInput": {
+        "testId": 4,
+        "ion": "Cl-",
+        "ionChargeSign": "-",
+        "facingEndDe": "H-Ende eines Wassermoleküls",
+        "facingEndEn": "H end of a water molecule",
+        "endSign": "+"
+      },
+      "independentlyDerivedModelResult": "attraction",
+      "matchesOldExpectedAnswer": true
+    },
+    {
+      "suppliedInput": {
+        "testId": 5,
+        "ion": "Na+",
+        "ionChargeSign": "+",
+        "facingEndDe": "Neutrales Ende der Vergleichskarte U",
+        "facingEndEn": "Neutral end of comparison card U",
+        "endSign": "0"
+      },
+      "independentlyDerivedModelResult": "undetermined",
+      "matchesOldExpectedAnswer": true
+    },
+    {
+      "suppliedInput": {
+        "testId": 6,
+        "ion": "Cl-",
+        "ionChargeSign": "-",
+        "facingEndDe": "Neutrales Ende der Vergleichskarte U",
+        "facingEndEn": "Neutral end of comparison card U",
+        "endSign": "0"
+      },
+      "independentlyDerivedModelResult": "undetermined",
+      "matchesOldExpectedAnswer": true
+    }
+  ],
+  "scientificRationaleDe": "Die sechs Eingaben schließen die konkrete Eingabelücke, ohne die erwarteten Ergebnisse vorzugeben. Na+ gegenüber Oδ− und Cl− gegenüber Hδ+ sind im definierten Vorzeichenmodell anziehend; die umgekehrten Seiten ergeben im lokalen Endenmodell Abstoßung. Die Wasserenden bleiben ausdrücklich Partialladungsseiten, keine ganzen Wasser-Ionenladungen. U/0 bedeutet fehlende Aussage dieses Modells und nicht Wechselwirkungsfreiheit. Dispersion, induzierte Dipole und die Gesamtkräfte-/Energie-/Löslichkeitsbilanz werden aus diesen sechs Vorzeichenchecks nicht abgeleitet. Die Tabellenzeilen sind bereitgestellte Modelleingaben, weder Messwerte noch eigener Leistungsnachweis.",
+  "scientificRationaleEn": "The six inputs close the specific input gap without supplying the expected outputs. Na+ facing Oδ− and Cl− facing Hδ+ attract under the defined sign rule; reversed ends repel within that local-end model. Water ends remain partial-charge sides, not whole ionic charges. U/0 means this model does not determine the result, not that no interactions exist. Dispersion, induced dipoles and total force/energy/solubility balances are not inferred from these six sign checks. These rows are supplied model inputs, not measurements or evidence of personal performance.",
+  "preservedDuties": [
+    "Analogue OR digital route remains a real choice.",
+    "Own analogue arrangement/manual checks remain required; selected original digital route retains own analogue arrangement AND own implementation/formula/file and all six digital checks.",
+    "Hypothesis, model comparison, independent transfer and justification of model limits remain unchanged.",
+    "Poor-solubility transfer still needs lattice separation, total solvation and other thermodynamic contributions; a single attraction does not decide equilibrium.",
+    "No new task/run quota; minimumIndependentDemonstrations2 and fresh/independent-transfer requirements remain exact."
+  ],
+  "exactDelta": {
+    "materialAddedFieldOnly": "/wholeOperativeCase/suppliedChargePairs",
+    "allOtherOriginalMaterialFieldsExact": true,
+    "profileChangedFieldsOnly": [
+      "/applicationCaseBriefs/1/taskDemandDe",
+      "/applicationCaseBriefs/1/taskDemandEn"
+    ],
+    "changesAreExactPathAppendicesOnly": true,
+    "allExpectationsCoverageVariationFirstCaseAndExpectedAnswersExact": true
+  },
+  "notClaimed": [
+    "General validation of the whole model-family curriculum/source scope",
+    "New native evidence or M7 closure",
+    "Actual learner analogue/digital execution",
+    "Empirical experiment or implementation already performed"
+  ],
+  "reviewAuthority": "ai_candidate",
+  "humanApproval": false,
+  "humanTrial": false,
+  "actualLearnerPerformanceClaim": false,
+  "completedAtUTC": "2026-10-18T21:48:48.961754+00:00"
+}

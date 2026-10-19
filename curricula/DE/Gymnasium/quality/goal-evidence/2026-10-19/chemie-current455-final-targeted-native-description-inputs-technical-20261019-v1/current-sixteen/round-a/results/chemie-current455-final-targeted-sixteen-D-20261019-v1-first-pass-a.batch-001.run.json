@@ -1,0 +1,97 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-current455-final-sixteen-native-d-reviewer-a-20261019-v1",
+  "campaignId": "chemie-current455-final-targeted-sixteen-D-20261019-v1-a",
+  "roundId": "chemie-current455-final-targeted-sixteen-D-20261019-v1-first-pass-a",
+  "batchId": "chemie-current455-final-targeted-sixteen-D-20261019-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:3ca95e8e9e6e00e6bd574e5ccaaf082c5766736d30c0d8d72e5a384f58a9d0ab",
+  "bundleFingerprint": "sha256:8454462a911d81774b5690542280144536744c981e307aa8b77d4a5d5fb2a4c7",
+  "bookDigest": "sha256:83eed0dda33fa6db0c6fe00f78b8efb1aeaf1613eb0b8b533131963ea44dd1a2",
+  "provider": "OpenAI",
+  "model": "GPT-6 (Codex native runtime; exact revision not exposed)",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:373a7005854c0a3d2a63d45dd4546fd50023979c381e65d901d02a8d6d5cf48b",
+  "independenceGroupId": "chemie-current455-final-targeted-sixteen-D-20261019-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "6c7ce93c-7675-51da-bc0c-7d0257f7ff7d",
+    "a3788e40-b540-5bed-be37-b33053528422",
+    "dc146a38-994d-58ec-b6a0-5210118b93ae",
+    "33e845cc-1a7b-50d5-99b3-8079575c4e6a",
+    "70b34ae7-4481-590c-9a02-516464750832",
+    "18819a59-2442-530f-a7c3-26755398ec66",
+    "39c85aa0-b01f-56ec-a148-b8009bf650f5",
+    "667bc303-e9b8-570b-84f1-61cc8bdfd006",
+    "98ae3f8e-4800-5ff3-bd2c-89434c006143",
+    "9d97f628-c3ea-5dc0-8723-b17b16297af3",
+    "3de28598-672f-5753-8a45-8f559c2f9dc2",
+    "91cd4728-b811-562a-970b-18b81dfb4bdf",
+    "62de1c6e-8581-5345-a0a6-773427cb6db7",
+    "0d59b62e-d3f9-5969-b961-0c5e26316c04",
+    "2f3cdec5-f845-5b0f-841e-8b1d47de0281",
+    "e7c3d20e-4b13-560b-b8ee-c5abca8cc624"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:d8d90fe23756e8daa29b44e0d5956437a3d0a499a8767d3a788eddd3841db1d1"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:d7368a42f049c3998f4236383d84bd9edcea06d22e795bf328620af5e2fe3549"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:347c9fed5f45991cfc54673268b5b786031d7d9117d122665235d898879b04c6"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:7744fdc2cbedbaae2896f2e5d78d37b38d717c667cccdd46ed3dac2d075202b2"
+    },
+    {
+      "role": "book_html_render_manifest",
+      "digest": "sha256:364d2009d1f47c7c63b7d11039ba8e08a0a7877d546daf0ea93261c873f6b594"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:c2225e039634377c78de0411f7373a81d18813b605fa8284712147ddbbe11ac2"
+    },
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:c2aa165dd64ad25d4cdf3210c8d27a302629b7eb2fc684291dbcc4545d027808"
+    },
+    {
+      "role": "review_markdown",
+      "digest": "sha256:fa63296fb9a0b377e1edb59b0ace02f996fea79c7ff232a8741e72cd5a18149d"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "finding_schema",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:3ca95e8e9e6e00e6bd574e5ccaaf082c5766736d30c0d8d72e5a384f58a9d0ab"
+    }
+  ],
+  "startedAt": "2026-10-18T22:59:37.906939Z",
+  "completedAt": "2026-10-18T23:03:20.180019Z",
+  "status": "completed",
+  "outputDigest": "sha256:fd4a1577306f3a79b2e66632556031733b606e2f8bc4f29b4ca1912e5bc5368f",
+  "toolchainVersion": "goal-description-review-v1"
+}

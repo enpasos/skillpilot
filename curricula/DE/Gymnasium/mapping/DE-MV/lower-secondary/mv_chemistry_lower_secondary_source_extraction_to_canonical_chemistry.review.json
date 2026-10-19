@@ -2662,6 +2662,12 @@
       "reviewDecisionId": "mv-chem-seki-mv-ch-seki-2021-j10-funktionelle-gruppen-012-6fe4c0ac"
     },
     {
+      "legacyGoalId": "mv-chem-seki-mv-ch-seki-2021-j10-funktionelle-gruppen-012-6fe4c0ac",
+      "canonicalGoalId": "4d9defde-d3bc-5c43-83ff-9cf6f2930643",
+      "matchType": "partial",
+      "reviewDecisionId": "mv-chem-seki-mv-ch-seki-2021-j10-funktionelle-gruppen-012-6fe4c0ac"
+    },
+    {
       "legacyGoalId": "mv-chem-seki-mv-ch-seki-2021-j10-funktionelle-gruppen-013-4ac1d0cf",
       "canonicalGoalId": "3de28598-672f-5753-8a45-8f559c2f9dc2",
       "matchType": "partial",
@@ -2675,7 +2681,7 @@
     },
     {
       "legacyGoalId": "mv-chem-seki-mv-ch-seki-2021-j10-funktionelle-gruppen-013-4ac1d0cf",
-      "canonicalGoalId": "70b34ae7-4481-590c-9a02-516464750832",
+      "canonicalGoalId": "62de1c6e-8581-5345-a0a6-773427cb6db7",
       "matchType": "partial",
       "reviewDecisionId": "mv-chem-seki-mv-ch-seki-2021-j10-funktionelle-gruppen-013-4ac1d0cf"
     },
@@ -2702,12 +2708,6 @@
       "canonicalGoalId": "223e33a4-5545-5332-ac4e-7d7a6cbc587c",
       "matchType": "partial",
       "reviewDecisionId": "mv-chem-seki-mv-ch-seki-2021-j10-funktionelle-gruppen-004-861a0396"
-    },
-    {
-      "legacyGoalId": "mv-chem-seki-mv-ch-seki-2021-j10-funktionelle-gruppen-012-6fe4c0ac",
-      "canonicalGoalId": "4d9defde-d3bc-5c43-83ff-9cf6f2930643",
-      "matchType": "partial",
-      "reviewDecisionId": "mv-chem-seki-mv-ch-seki-2021-j10-funktionelle-gruppen-012-6fe4c0ac"
     },
     {
       "legacyGoalId": "mv-chem-seki-mv-ch-seki-2021-j10-funktionelle-gruppen-003-19a7860c",
@@ -4646,9 +4646,9 @@
         "e8c02335-d4e5-565c-8830-628067ce51c3",
         "4d9defde-d3bc-5c43-83ff-9cf6f2930643"
       ],
-      "rationale": "Das amtliche Chemie-Source-Ziel ist inhaltlich durch mehrere kanonische Chemieziele abgedeckt; 1:n beschreibt die Zuordnungsform, nicht eine offene Lücke.",
-      "reviewedAt": "2026-05-11",
-      "reviewer": "codex",
+      "rationale": "AUTHOR CANDIDATE ONLY. 70b liefert den Ethansäure/Ethanol-Kondensationsanteil und einen frischen anderen Ester. Verbleibende Originalpflicht: Wasser/Metalle/Metallhydroxide, Hydrolyse und Schülerexperiment mit Ethanol bleiben getrennte Bestandteile. Alle übrigen vorhandenen Zielzuordnungen bleiben exakt; sie werden mit diesem begrenzten Split nicht erneut fachlich freigegeben.",
+      "reviewedAt": "2026-10-18T22:55:06.336434+00:00",
+      "reviewer": "/root/chemie_context28_fresh_blind_b",
       "additionalAcceptedPartialContributions": [
         {
           "canonicalGoalId": "4d9defde-d3bc-5c43-83ff-9cf6f2930643",
@@ -4662,7 +4662,40 @@
           "rationale": "Whole P explains triglyceride/methanol transesterification and1:3→3:1 stoichiometry and explicitly contrasts free-acid neutralisation, ester hydrolysis and alkaline cleavage. Exact selected official operator: Reaktionen der Ethansäure mit Wasser, Metallen, Metallhydroxiden und Alkanolen sowie Esterbildung und Hydrolyse beschreiben Boundary: Only the corresponding production/ester-cleavage component is proposed. No real methanol experiment, no equation of transesterification with hydrolysis, no full mechanistic arrows unless present in whole P.",
           "wholeSourceCompletionFromSingleGoalMasteryAllowed": false
         }
-      ]
+      ],
+      "matchType": "partial",
+      "authorCandidate70Split": {
+        "authoredAt": "2026-10-18T22:46:34.795648+00:00",
+        "reviewAuthority": "ai_candidate",
+        "independentApproval": false,
+        "wholeSourceCredit": false,
+        "sourceGoalUnchanged": true,
+        "contributionTargetIds": [
+          "70b34ae7-4481-590c-9a02-516464750832"
+        ],
+        "actualOriginalDutyDe": "MV-SekI gedruckt32: Reaktionen der Ethansäure, einschließlich Alkanol/Esterbildung und Hydrolyse; Reaktionsgleichungen.",
+        "remainingOriginalDutyDe": "Wasser/Metalle/Metallhydroxide, Hydrolyse und Schülerexperiment mit Ethanol bleiben getrennte Bestandteile.",
+        "originalDecisionRetainedInCASBefore": true,
+        "oldReviewedAtAndReviewerHistoricalOnly": true
+      },
+      "boundedIndependentMachineReview": {
+        "reviewAuthority": "ai_candidate",
+        "status": "needs_human_review",
+        "decision": "accept_bounded_split_contributions_only",
+        "independentAcceptedCAS": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-source117-independent-c-20261019-v1/components/02-HH-MV-NI-NW-rows023-045/ACCEPTED-CAS.selected-source-group-operations.independent-c.json",
+          "sha256": "c55ab1141f479d2412671cb53ab09c5efd53f9f6afb1547c1debd50e5cf7b583",
+          "bytes": 10441
+        },
+        "sourceIdentityRowIndex": 27,
+        "authorAcceptedDecisionPayloadSHA256": "0bbc4ac609aa2eeef051db162ea4d0a233d86e16bdef38a393cf375b814d3a5e",
+        "originalOfficialClauseAndScopeUnchanged": true,
+        "allOtherTargetRowsPreservedNotReapproved": true,
+        "wholeSourceApproval": false,
+        "remainingWholeOfficialDuties": "open unless separately proven by their current valid owners",
+        "humanApproval": false,
+        "actualLearnerPerformanceClaim": false
+      }
     },
     {
       "sourceGoalId": "mv-chem-seki-mv-ch-seki-2021-j10-funktionelle-gruppen-013-4ac1d0cf",
@@ -4672,14 +4705,47 @@
       "canonicalGoalIds": [
         "3de28598-672f-5753-8a45-8f559c2f9dc2",
         "667bc303-e9b8-570b-84f1-61cc8bdfd006",
-        "70b34ae7-4481-590c-9a02-516464750832",
+        "62de1c6e-8581-5345-a0a6-773427cb6db7",
         "7990387d-f254-5d3b-a589-a3e7ed9502a3",
         "b71d69bd-78d0-5a32-9755-b87e2cc989ea",
         "bebea164-dfd7-51d9-a54a-7029c78b7f5f"
       ],
-      "rationale": "Das amtliche Chemie-Source-Ziel ist inhaltlich durch mehrere kanonische Chemieziele abgedeckt; 1:n beschreibt die Zuordnungsform, nicht eine offene Lücke.",
-      "reviewedAt": "2026-05-11",
-      "reviewer": "codex"
+      "rationale": "AUTHOR CANDIDATE ONLY. 62de erklärt die richtige einfache Esterfunktion und begründet eine vorgegebene Modell-Aromaanwendung. Verbleibende Originalpflicht: Fettstruktur, tatsächliche Naturvorkommen und zulässige Lebensmittelverwendung folgen nicht aus synthetischen Aromadaten. Alle übrigen vorhandenen Zielzuordnungen bleiben exakt; sie werden mit diesem begrenzten Split nicht erneut fachlich freigegeben.",
+      "reviewedAt": "2026-10-18T22:55:06.336434+00:00",
+      "reviewer": "/root/chemie_context28_fresh_blind_b",
+      "matchType": "partial",
+      "authorCandidate70Split": {
+        "authoredAt": "2026-10-18T22:46:34.795648+00:00",
+        "reviewAuthority": "ai_candidate",
+        "independentApproval": false,
+        "wholeSourceCredit": false,
+        "sourceGoalUnchanged": true,
+        "contributionTargetIds": [
+          "62de1c6e-8581-5345-a0a6-773427cb6db7"
+        ],
+        "actualOriginalDutyDe": "MV-SekI gedruckt33: Estergruppe, Vorkommen/Bedeutung; Hinweis Fette und Natur-/Lebensmittelaromastoffe.",
+        "remainingOriginalDutyDe": "Fettstruktur, tatsächliche Naturvorkommen und zulässige Lebensmittelverwendung folgen nicht aus synthetischen Aromadaten.",
+        "originalDecisionRetainedInCASBefore": true,
+        "oldReviewedAtAndReviewerHistoricalOnly": true
+      },
+      "boundedIndependentMachineReview": {
+        "reviewAuthority": "ai_candidate",
+        "status": "needs_human_review",
+        "decision": "accept_bounded_split_contributions_only",
+        "independentAcceptedCAS": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-source117-independent-c-20261019-v1/components/02-HH-MV-NI-NW-rows023-045/ACCEPTED-CAS.selected-source-group-operations.independent-c.json",
+          "sha256": "c55ab1141f479d2412671cb53ab09c5efd53f9f6afb1547c1debd50e5cf7b583",
+          "bytes": 10441
+        },
+        "sourceIdentityRowIndex": 28,
+        "authorAcceptedDecisionPayloadSHA256": "f1f16b0fb1e60aca1f2f8b8c212a8753632d52704a495eafaafe6dd9078aa822",
+        "originalOfficialClauseAndScopeUnchanged": true,
+        "allOtherTargetRowsPreservedNotReapproved": true,
+        "wholeSourceApproval": false,
+        "remainingWholeOfficialDuties": "open unless separately proven by their current valid owners",
+        "humanApproval": false,
+        "actualLearnerPerformanceClaim": false
+      }
     },
     {
       "sourceGoalId": "mv-chemistry-seki-process-standard-e-data-patterns",

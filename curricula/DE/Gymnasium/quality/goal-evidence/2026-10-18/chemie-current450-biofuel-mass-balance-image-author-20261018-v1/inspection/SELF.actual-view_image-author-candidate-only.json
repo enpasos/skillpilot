@@ -1,0 +1,69 @@
+{
+  "role": "AUTHOR_SELF_INSPECTION_ONLY_NOT_INDEPENDENT_OR_GATE_V",
+  "goalId": "b732c780-beb8-55f3-8503-edd6b8677a3a",
+  "inspectedAtUTC": "2026-10-18T18:26:09.056Z",
+  "tool": "functions tools.view_image; actual native image and actual 360/680 px derivative PNGs viewed",
+  "candidateSHA256": "fed2d21cb975e5091e8400eddaad78ed291c5b9b6abe89e7feb293fc024e8ee4",
+  "decision": "needs_external_review",
+  "authorDisposition": "selected inactive corrected candidate for independent review; no obvious remaining blocker in author self-inspection",
+  "views": [
+    {
+      "path": "candidate/b732c780-beb8-55f3-8503-edd6b8677a3a.png",
+      "width": 1672,
+      "height": 941,
+      "detail": "original",
+      "actuallyViewed": true
+    },
+    {
+      "path": "inspection/actual-display-360px.png",
+      "width": 360,
+      "height": 203,
+      "detail": "original",
+      "actuallyViewed": true,
+      "observationDe": "100 kg Saat, getrennte 30 kg Öl und 70 kg Presskuchen, Hauptgleichung und unbekannter Anfangsöl-/Rückgewinnungsstatus erkennbar. Das Wort Presskuchen ist kleiner als seine Massenzahl, aber lesbar; kein winziger Pflichttext außerhalb dieser Labels."
+    },
+    {
+      "path": "inspection/actual-display-680px.png",
+      "width": 680,
+      "height": 383,
+      "detail": "original",
+      "actuallyViewed": true,
+      "observationDe": "Alle Labels klar lesbar; volle Bildbreite innerhalb der 448-px-Höhenkappe, keine Ausschnitte erforderlich."
+    }
+  ],
+  "previewDerivatives": {
+    "purpose": "display-size author inspection only",
+    "method": "Pillow Lanczos resampling of final raw PNG",
+    "usedAsFinalCandidate": false,
+    "rawCandidateNotEdited": true
+  },
+  "actualChecksDe": [
+    "Der Sack bezeichnet die gesamte Saatmasse, nicht den anfänglichen Ölvorrat. Ein Eingangs- und zwei Ausgangspfeile trennen die große Saatdarstellung von Öl und Presskuchen.",
+    "Die einzige gemeinsame gestrichelte Erfassungsgrenze umschließt die dargestellten Stoffströme. 100 kg = 30 kg + 70 kg ist rechnerisch und dimensional richtig.",
+    "Die vereinfachten Behälter sind keine maßstäblichen Volumen- oder Dichtedarstellungen. Die Saat im Einfülltrichter veranschaulicht denselben Eingangsstrom, keine zusätzliche Charge.",
+    "Die Fragen Öl anfangs: ? und Rückgewinnung: ? sind erhalten; kein Prozentsatz, vollständige Ölrückgewinnung, ölfreier Presskuchen oder anfänglicher 30-kg-Ölbestand werden behauptet.",
+    "Die lose Saat und Krümel des ersten Entwurfs sind im tatsächlich geöffneten zweiten Bild entfernt. Keine ungeklärten dekorativen Stoffmengen liegen neben Sack oder Auffangschale.",
+    "Die Presse und Pfeile sind eine schematische physikalische Trennung im beschrifteten Modell; keine Reaktionsgleichung, Gärung, Umesterung, Verbrennung oder ausgeführte praktische Lernendenleistung.",
+    "Freundliche klare Konturen und wenige große farbige Objekte passen zur tatsächlich gesichteten bestehenden Biofuel-Routenillustration; diese wurde nur lokal als Stilreferenz gesehen und nicht als Provider-Eingabebild übertragen.",
+    "Keine erkennbaren Logos, fremden Figuren, sichtbaren technischen IDs oder Wasserzeichen. Kein abgebildeter Bediener mit fehleranfälliger Instrumentenperspektive."
+  ],
+  "firstAttempt": {
+    "path": "generation/attempt-01.raw.png",
+    "sha256": "0a0b6c42caac8d7088ff64d768775a7cadab59eb963d04e4f1a486e568e739b7",
+    "disposition": "rejected_regenerate",
+    "actualDefectDe": "Lose Samen neben dem Sack und Krümel neben der Auffangschale konnten als ungezählter Stoffbestand missverstanden werden; gezielt durch built-in Edit entfernt."
+  },
+  "limits": [
+    "Orientation image does not assess the complete goal or its open-protocol transfer case.",
+    "Raw PNG caBX/C2PA data preserved; signature authenticity/trust not externally validated.",
+    "No runtime/cockpit/actual-host rendering acceptance established.",
+    "Independent V, current D/P/A/M/SEM binding, normal integration and human release gates remain separate."
+  ],
+  "independentReview": false,
+  "gateVApproval": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "actualLearnerPerformance": false,
+  "normalActivation": false,
+  "ownMaterialLicense": "CC-BY-4.0"
+}

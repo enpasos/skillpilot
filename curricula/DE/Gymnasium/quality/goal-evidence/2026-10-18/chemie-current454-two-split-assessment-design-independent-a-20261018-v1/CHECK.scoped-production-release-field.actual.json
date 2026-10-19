@@ -1,0 +1,34 @@
+{
+  "role": "Actual unchanged stock examReleaseCoverageIssues helper on exactly two whole designs, in-memory released clones only; not full CQR203 or route/runtime acceptance",
+  "sourcePath": "app/scripts/generateCurriculumQualityStatus.ts",
+  "functionBodies": [
+    {
+      "name": "stringArray",
+      "source": "function stringArray(value: unknown): string[] {\n  return Array.isArray(value)\n    ? value.filter((entry): entry is string => typeof entry === 'string' && entry.trim().length > 0)\n    : []\n}\n"
+    },
+    {
+      "name": "examReleaseCoverageIssues",
+      "source": "function examReleaseCoverageIssues(goal: LearningGoal): string[] {\n  if (!goal.examData) return ['missing examData']\n  const issues: string[] = []\n  if (String(goal.examData.reviewStatus ?? '').trim().toLowerCase() !== 'released') {\n    issues.push('reviewStatus is not released')\n  }\n  if (stringArray(goal.examData.coveredGoalIds).length === 0) {\n    issues.push('missing coveredGoalIds')\n  }\n  if (stringArray(goal.examData.coveredStrands).length === 0) {\n    issues.push('missing coveredStrands')\n  }\n  if (stringArray(goal.examData.demandLevels).length === 0) {\n    issues.push('missing demandLevels')\n  }\n  return issues\n}\n"
+    }
+  ],
+  "records": [
+    {
+      "goalId": "2339b9b1-39c8-59f1-9108-c46966ecf1fd",
+      "actualCurrentReviewStatus": "draft",
+      "currentScopedReleaseCoverageIssues": [
+        "reviewStatus is not released"
+      ],
+      "metadataOnlyReleasedCloneIssues": [],
+      "normalFileWrite": false
+    },
+    {
+      "goalId": "42a2eaf1-fbb2-5879-b205-7f74dfb1eafa",
+      "actualCurrentReviewStatus": "draft",
+      "currentScopedReleaseCoverageIssues": [
+        "reviewStatus is not released"
+      ],
+      "metadataOnlyReleasedCloneIssues": [],
+      "normalFileWrite": false
+    }
+  ]
+}

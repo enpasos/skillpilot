@@ -1,0 +1,187 @@
+{
+  "role": "AUTHOR_CANDIDATE_ONLY",
+  "reviewAuthority": "ai_candidate",
+  "active": false,
+  "independentApproval": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "nativeDApproval": false,
+  "AMVApproval": false,
+  "actualLearnerOrLaboratoryExecutionClaim": false,
+  "M7Claim": false,
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "schemaVersion": 1,
+  "license": "CC-BY-4.0",
+  "caseId": "triglyceride-methanol-product-withdrawal",
+  "goalId": "9d97f628-c3ea-5dc0-8723-b17b16297af3",
+  "dataNatureDe": "Vollständig synthetisches didaktisches Planungs- und Auswertungsmaterial. Strukturformeln beschreiben chemische Stoffarten; alle Mengen-, Phasen-, Rückgewinnungs- und Kontrolldaten sind erfundene, in sich konsistente Fallvorgaben. Kein realer Versuch, keine gemessene Ausbeute, keine Lernendenleistung.",
+  "dataNatureEn": "Entirely synthetic educational planning and interpretation material. Structural formulas specify chemical species; all amount, phase, recovery and control data are invented internally consistent givens. No actual experiment, measured yield or learner performance.",
+  "learnerMaterial": {
+    "structures": {
+      "R": {
+        "formula": "(CH2)7–CH=CH–(CH2)7–CH3",
+        "doubleBondGeometry": "cis",
+        "meaningDe": "C17-Kohlenwasserstoffrest des C18-Fettsäureacylrests; Carbonyl-C kommt zusätzlich hinzu. Alle drei R sind gleich.",
+        "meaningEn": "C17 hydrocarbon residue of the C18 fatty-acyl group; carbonyl C is additional. All three R groups are identical."
+      },
+      "T": {
+        "nameDe": "Modelltriacylglycerid mit drei Oleoylresten",
+        "nameEn": "Model triacylglycerol with three oleoyl residues",
+        "molecularFormula": "C57H104O6",
+        "condensedBackbone": "CH2–O–C(=O)–R\n |\nCH–O–C(=O)–R\n |\nCH2–O–C(=O)–R",
+        "connectivityDe": "Die vertikalen Bindungen verbinden die drei Glycerin-C-Atome. An jedem sitzt O–C(=O)–R; kein R ist unmittelbar an ein Glycerin-C gebunden.",
+        "connectivityEn": "Vertical bonds connect the three glycerol carbons. Each bears O–C(=O)–R; no R is attached directly to a glycerol carbon."
+      },
+      "M": {
+        "nameDe": "Methanol",
+        "nameEn": "Methanol",
+        "formula": "CH3OH"
+      },
+      "E": {
+        "nameDe": "Fettsäuremethylester des gegebenen R",
+        "nameEn": "Fatty-acid methyl ester of supplied R",
+        "structuralFormula": "R–C(=O)–O–CH3",
+        "molecularFormula": "C19H36O2"
+      },
+      "G": {
+        "nameDe": "Glycerin",
+        "nameEn": "Glycerol",
+        "structuralFormula": "HO–CH2–CH(OH)–CH2–OH",
+        "molecularFormula": "C3H8O3"
+      },
+      "FFA": {
+        "nameDe": "freie Fettsäure",
+        "nameEn": "free fatty acid",
+        "structuralFormula": "R–C(=O)–OH"
+      },
+      "soap": {
+        "nameDe": "Carboxylatsalz als mögliches Nebenprodukt im gegebenen basischen System",
+        "nameEn": "Carboxylate salt as possible side product in the supplied basic system",
+        "structuralFormula": "R–C(=O)–O− Na+"
+      }
+    },
+    "reactionContextDe": "Papierplanung bei derselben vorgegebenen Temperatur40°C. Ein geeigneter basischer Katalysator ist als verfügbar gesetzt; seine Aktivität beeinflusst die Einstellungsgeschwindigkeit, bei gleicher Temperatur nicht K. Die Haupt-Umesterung ist vereinfacht als Gesamtreaktion T/M zu E/G zu behandeln. Reale Mono-/Diglycerid-Zwischenstufen werden in dieser Mengenfixture nicht getrennt modelliert. Kein globales K und keine Aktivitätskoeffizienten sind gegeben; das K=1 des gehaltenen ersten Monoesterfalls darf hier nicht übernommen werden.",
+    "reactionContextEn": "Paper planning at the same supplied temperature40°C. A suitable basic catalyst is stipulated available; its activity affects approach rate, not K at fixed temperature. Treat the main transesterification as a simplified overall T/M to E/G reaction. Actual mono-/diglyceride intermediates are not separately modelled in this amount fixture. No global K or activity coefficients are supplied; do not transfer K=1 from the retained first monoester case.",
+    "plans": [
+      {
+        "id": "A",
+        "start_mmol": {
+          "T": 10.0,
+          "M": 60.0,
+          "E": 0.0,
+          "G": 0.0
+        },
+        "stepsDe": "Geschlossenes Reaktionsmodell ohne Produktentzug; doppelte stöchiometrische Methanolmenge. Methanol verbleibt während des Vergleichs im System und müsste später zurückgewonnen werden.",
+        "stepsEn": "Closed reaction model without product withdrawal; twice the stoichiometric methanol amount. Methanol remains during comparison and would need later recovery."
+      },
+      {
+        "id": "B",
+        "start_mmol": {
+          "T": 10.0,
+          "M": 30.0,
+          "E": 0.0,
+          "G": 0.0
+        },
+        "stepsDe": "Stöchiometrischer Methanolstart. An dem unten genau angegebenen Modellzustand Phasentrennung nutzen, glycerinreiche Phase entnehmen und die vorgegebene Rückgewinnung anwenden. Zurückgeführte Komponenten werden wieder bei40°C betrachtet; die spätere Reaktionszeit ist nicht festgelegt.",
+        "stepsEn": "Stoichiometric methanol start. At the exact model state below use phase separation, remove the glycerol-rich phase and apply the supplied recovery. Consider returned components again at40°C; subsequent reaction time is unspecified."
+      }
+    ],
+    "phaseTable": {
+      "appliesToFeed": "U-dry",
+      "unit": "mmol per entire specified aliquot",
+      "stateDe": "Ein vorgegebener Modellzustand, nicht als gemessenes Gleichgewicht ausgegeben. Vor Abtrennung insgesamt T4,00/M12,00/E18,00/G6,00 mmol; alle Komponenten aus demselben Aliquot.",
+      "stateEn": "A supplied model state, not a measured equilibrium. Before withdrawal total T4.00/M12.00/E18.00/G6.00 mmol; all components belong to the same aliquot.",
+      "rows": [
+        {
+          "phase": "ester-rich upper",
+          "T": 3.99,
+          "M": 3.0,
+          "E": 17.82,
+          "G": 0.3,
+          "fractionOfCurrentCatalyticActivity": 0.2
+        },
+        {
+          "phase": "glycerol-rich lower",
+          "T": 0.01,
+          "M": 9.0,
+          "E": 0.18,
+          "G": 5.7,
+          "fractionOfCurrentCatalyticActivity": 0.8
+        }
+      ],
+      "cautionDe": "Die Trennung ist keine selektive Glycerinentnahme ohne Verluste: Methanol, Ester und Katalysatoranteil werden mitentnommen. Die Verteilung ist eine gesetzte Fallvorgabe, keine allgemeine Stoffkonstante.",
+      "cautionEn": "Withdrawal is not selective glycerol removal without losses: methanol, ester and catalyst activity leave with it. Partitioning is a stipulated case value, not a universal material constant."
+    },
+    "recoveryTable": {
+      "source": "removed glycerol-rich lower phase of U-dry only",
+      "unit": "mmol returned to ester-rich phase",
+      "returns": {
+        "T": 0.0,
+        "M": 8.1,
+        "E": 0.09,
+        "G": 0.0
+      },
+      "catalystActivityReturned": 0.0,
+      "meaningDe": "Für dieses Papiermodell ist eine vorbereitete Trenneinheit mit genau diesen Rückführmengen gegeben. Sie hält das Glycerin im abgetrennten Strom zurück. Es ist keine reale Apparate-/Betriebsanleitung und keine garantierte industrielle Trennleistung.",
+      "meaningEn": "This paper model stipulates a prepared separation unit returning exactly these amounts and retaining glycerol in the withdrawn stream. It is not an actual apparatus/operating procedure or guaranteed industrial separation performance."
+    },
+    "feedAndSideReactionTable": {
+      "rows": [
+        {
+          "feed": "U-dry",
+          "water_mass_percent": 0.02,
+          "freeFattyAcid_mmol_per_10mmol_T": 0.02,
+          "phaseObservationDe": "Zwei abtrennbare Phasen wie oben vorgegeben.",
+          "phaseObservationEn": "Two separable phases as stipulated above.",
+          "carboxylateControlDe": "Niedriges Carboxylatsignal im Modell; Hauptumsatz darf als Umesterungsplanung diskutiert werden, nicht als Beweis fehlender Nebenreaktionen.",
+          "carboxylateControlEn": "Low model carboxylate signal; the main process may be discussed as transesterification planning, not proof of zero side reactions.",
+          "phaseAndRecoveryTablesApplicable": true
+        },
+        {
+          "feed": "V-wet-acidic-fresh-change",
+          "water_mass_percent": 2.0,
+          "freeFattyAcid_mmol_per_10mmol_T": 1.0,
+          "phaseObservationDe": "Anhaltende Emulsion; nach derselben vorgesehenen Trennstufe keine eindeutig entnehmbare glycerinreiche Phase.",
+          "phaseObservationEn": "Persistent emulsion; the same proposed separation stage yields no unambiguously withdrawable glycerol-rich phase.",
+          "carboxylateControlDe": "Deutliches Carboxylatsignal. Für diese neue Matrix sind keine Wiederfindungs- oder Phasenanteile validiert; U-Zahlen dürfen nicht übertragen werden.",
+          "carboxylateControlEn": "Clear carboxylate signal. No phase fractions or recoveries are validated for this changed matrix; U values must not be transferred.",
+          "phaseAndRecoveryTablesApplicable": false
+        }
+      ],
+      "chemistryGivensDe": "Im vorgegebenen basischen System verbrauchen freie Fettsäuren Base und bilden Carboxylatsalze. Wasser kann Esterhydrolyse/Nebenreaktionen begünstigen; Carboxylatsalze können die Phasentrennung durch Emulsionsbildung stören. Ein Carboxylatsalz ist kein Fettsäuremethylester. Diese Hinweise erlauben keine quantitative Nebenreaktions- oder Ausbeuteberechnung.",
+      "chemistryGivensEn": "In the supplied basic system free fatty acids consume base and form carboxylate salts. Water can favour ester hydrolysis/side reactions; carboxylate salts can disrupt phase separation through emulsions. A carboxylate salt is not a fatty-acid methyl ester. These givens do not supply a quantitative side-reaction or yield calculation."
+    },
+    "taskDe": [
+      "Formuliere aus den ganzen Strukturen die atomrichtig ausgeglichene Haupt-Umesterung. Zeige den Alkoholresttausch und entscheide, ob Wasser ein stöchiometrisches Netto-Hauptprodukt ist.",
+      "Vergleiche A und B: Erkläre den möglichen Gleichgewichtsbeitrag von Methanolüberschuss und von Glycerinentzug bei gleicher Temperatur. Nutze beide Tabellen konkret, um Mitentnahme, Rückgewinnung und verbleibende Katalysatoraktivität zu beurteilen. Begründe ein bedingtes Reaktions-/Trennkonzept; behaupte weder eine numerische Endausbeute noch eine sichere Rangfolge der Endumsätze.",
+      "Frisch wechselt nur die Zulauf-/Matrixbedingung zu V. Prüfe, ob die für U geplante Glycerinabtrennung und Rückführung weiter begründet ist. Unterscheide Methylester von Verseifungsprodukten, benenne die nötige erneute Phasen-/Kontrollprüfung und begrenze den Plan."
+    ],
+    "taskEn": [
+      "Use the complete structures to write the atom-balanced main transesterification. Show alcohol-group exchange and decide whether water is a stoichiometric net main product.",
+      "Compare A and B: explain possible equilibrium effects of excess methanol and glycerol withdrawal at fixed temperature. Use both tables to evaluate co-removal, recovery and remaining catalyst activity. Justify a conditional reaction/separation concept without claiming numerical final yield or a guaranteed conversion ranking.",
+      "Fresh change: only feed/matrix conditions switch to V. Evaluate whether U-based glycerol withdrawal and recycling remain supported. Distinguish methyl ester from saponification products, identify needed new phase/control checks and qualify the plan."
+    ]
+  },
+  "expectedPerformanceDe": [
+    "T+3CH3OH⇌3R–C(=O)–O–CH3+HOCH2–CH(OH)–CH2OH. Die Alkoholseite wechselt vom Glycerinrest zum Methylrest; E und G sind die Hauptprodukte. Im idealisierten Umesterungsnetto entsteht kein Wasser. Die gegebenen Summenformeln ergeben auf beiden Seiten C60H116O9.",
+    "A setzt60 statt30mmol Methanol je10mmol T ein; ein Alkoholüberschuss kann den Gleichgewichtszustand zur Produktseite begünstigen, ist aber kein erhöhter K-Wert und kein gemessener Mehrertrag. B entnimmt5,70 von6,00mmol Glycerin, zugleich9,00mmol Methanol,0,18mmol E und0,01mmol T. Nach der gesetzten Rückführung enthält die verbleibende Mischung T3,99/M11,10/E17,91/G0,30mmol; netto gingen0,90mmol Methanol,0,09mmol E und0,01mmol T neben G verloren. Nur20% der zuvor vorhandenen katalytischen Aktivität bleiben. Glycerinentzug kann bei hinreichender Retention/Rückführung der anderen Komponenten die Produktbildung begünstigen; Mitentnahme und Aktivitätsverlust begrenzen die praktische Planbehauptung. K bleibt bei gleicher Temperatur unverändert; geringere Aktivität kann die Annäherung verlangsamen. Ohne Aktivitäten, Phasenvolumina, globale K-/Kinetikdaten und erneute Reaktionsauswertung werden weder endgültiger Umsatz noch A/B-Rangfolge oder100% Ausbeute berechnet. Die gegebenen Rückführmengen dürfen als Fallplan verwendet, nicht als selbst geprüfte Apparateleistung ausgegeben werden.",
+    "V hat mehr Wasser/freie Fettsäure, ein Carboxylatsignal und keine eindeutig trennbare Glycerinphase. Daher ist die U-Trenn- und Rückgewinnungstabelle hier keine gültige Planbasis. Mehr Methanol allein behebt weder die Emulsion noch den Baseverbrauch sicher. Im gegebenen basischen Kontext sind Hydrolyse/Carboxylatbildung plausible Nebenreaktionsgrenzen; Seife und Methylester unterscheiden sich an O−/Gegenion gegenüber O–CH3. Vor Übernahme des U-Plans braucht es eine tatsächlich für V gültige Phasen-/Wiederfindungs-/Nebenreaktionsprüfung oder begründete Anpassung der Matrix. Keine Durchführung, neue Messung oder Stoffzulassung ist behauptet."
+  ],
+  "expectedPerformanceEn": [
+    "T+3CH3OH⇌3R–C(=O)–O–CH3+HOCH2–CH(OH)–CH2OH. The alcohol-derived part changes from glycerol to methyl; E and G are the main products. No water is produced in the ideal net transesterification. Supplied molecular formulas give C60H116O9 on each side.",
+    "A uses60 rather than30mmol methanol per10mmol T; excess alcohol can favour the product-side equilibrium state, not a higher K or measured yield. B removes5.70 of6.00mmol glycerol together with9.00mmol methanol,0.18mmol E and0.01mmol T. After stipulated recycling the remaining mixture has T3.99/M11.10/E17.91/G0.30mmol; net methanol/E/T losses are0.90/0.09/0.01mmol. Only20% of previous catalytic activity remains. Glycerol withdrawal can favour product formation if other components are sufficiently retained/recycled; co-removal and activity loss constrain the practical claim. At fixed temperature K is unchanged; lower activity can slow equilibration. Without activities, phase volumes, global K/kinetic data and a new reaction assessment, calculate neither final conversion, an A/B ranking nor100% yield. Recovery amounts are usable model givens, not independently verified apparatus performance.",
+    "V contains more water/free acid, a carboxylate signal and no unambiguous glycerol phase. U-based partition and recovery values are therefore unsupported for V. More methanol alone does not reliably repair emulsion or base consumption. Hydrolysis/carboxylate formation are plausible side-reaction limits in the supplied basic context. Soap O−/counterion differs from methyl ester O–CH3. Reusing U requires phase/recovery/side-reaction checks actually valid for V or justified matrix adaptation. No execution, new measurement or material approval is claimed."
+  ],
+  "coverageUse": {
+    "requiredExpectationIdsExactly": [
+      "alcohol-exchange-plan",
+      "equilibrium-intervention"
+    ],
+    "unchangedMinimumIndependentDemonstrations": 2,
+    "freshVariationRequired": true,
+    "independentTransferRequired": true,
+    "noMandatoryCaseLabelQuotaDe": "Der gehaltene Monoesterfall und dieser frische Fett-/Trennfall konkretisieren die vorhandenen Erwartungen. Unabhängige Nachweisschritte können innerhalb einer integrierten Leistung auftreten; bei hinreichender Evidenz endet die Prüfung, keine zusätzliche Aufgabenquote.",
+    "noMandatoryCaseLabelQuotaEn": "The retained monoester case and this fresh fat/separation case instantiate existing expectations. Independent demonstration steps can occur within one integrated performance; stop when evidence is sufficient, with no extra task quota."
+  }
+}

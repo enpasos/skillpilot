@@ -1,0 +1,713 @@
+{
+  "role": "Actual two existing source unions, no new approval",
+  "rows": [
+    {
+      "index": 103,
+      "jurisdiction": "DE-SN",
+      "stage": "SekII",
+      "mapping": {
+        "file": {
+          "path": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+          "sha256": "24ceb827664a4e0609497eeb5ef501b1a30fe36c3031737a727480d236d1fbf7",
+          "bytes": 813566
+        },
+        "jsonPointer": "/mappings/432",
+        "wholeObjectSHA256": "c8ad974ee60f12ff00333f93e43b300ed2f07204124400d873742aa204ea7462",
+        "object": {
+          "legacyGoalId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-grundkurs-lb1-018-10-8d3f47cb",
+          "canonicalGoalId": "8721d943-8368-5304-bd3c-7d7944099662",
+          "matchType": "partial",
+          "reviewDecisionId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-grundkurs-lb1-018-10-8d3f47cb"
+        }
+      },
+      "sourceGoals": [
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/input/SN/upper-secondary/source-extraction/DE_SN_CHEMIE_SEKII_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+            "sha256": "6ea85d0c818b8d25ef1c7c035b2992e2bfe02a00206ab73f7582eb1a96a5c723",
+            "bytes": 828791
+          },
+          "jsonPointer": "/sourceGoals/68",
+          "wholeObjectSHA256": "aabee7fb02f9390d87afc4e40b7d3ef12352ccea864b631481ecc82344fbfc04",
+          "object": {
+            "id": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-grundkurs-lb1-018-10-8d3f47cb",
+            "passageId": "sn-chemistry-sekii:sn-ch-jahrgangsstufe-12-grundkurs-lb1",
+            "topicCode": "SN-CH-jahrgangsstufe-12-grundkurs-LB1",
+            "bulletIndex": 18,
+            "aspectIndex": 10,
+            "title": "Übertragen des Wissens über Redoxreaktionen auf elektrochemische Vorgänge Basiskonzepte: Konzept der chemischen Reaktion, Energiekonzept: experimentelles Untersuchen von elektro...",
+            "description": "Die lernende Person kann Übertragen des Wissens über Redoxreaktionen auf elektrochemische Vorgänge Basiskonzepte: Konzept der chemischen Reaktion, Energiekonzept: experimentelles Untersuchen von elektrochemischen Fällungsreaktionen Zementation, Metallrecycling.",
+            "sourceText": "Übertragen des Wissens über Redoxreaktionen auf elektrochemische Vorgänge Basiskonzepte: Konzept der chemischen Reaktion, Energiekonzept: experimentelles Untersuchen von elektrochemischen Fällungsreaktionen Zementation, Metallrecycling",
+            "sourceSpan": "Jahrgangsstufe 12 Grundkurs, Elektrochemische Reaktionen, PDF-S. 43",
+            "parentBulletText": "Übertragen des Wissens über Redoxreaktionen auf elektrochemische Vorgänge Basiskonzepte: Konzept der chemischen Reaktion, Energiekonzept",
+            "sourceRef": "Lehrplan Gymnasium Chemie Sachsen 2025, Jahrgangsstufe 12 Grundkurs, Elektrochemische Reaktionen, PDF-S. 43",
+            "courseLevel": "GK",
+            "granularity": "officialCompetencyAspect",
+            "tags": [
+              "source:sachsen",
+              "subject:Chemie",
+              "stage:SekII",
+              "topic:sn-ch-jahrgangsstufe-12-grundkurs-lb1",
+              "course:GK",
+              "sourceDocument:SN-CH-2025"
+            ],
+            "rawSourceText": "Übertragen des Wissens über Redoxreaktionen auf elektrochemische Vorgänge Basiskonzepte: Konzept der chemischen Reaktion, Energiekonzept: experimentelles Untersuchen von elektrochemischen Fällungsreaktionen Zementation, Metallrecycling",
+            "rawSourceSpan": "Jahrgangsstufe 12 Grundkurs, Elektrochemische Reaktionen, PDF-S. 43",
+            "rawParentBulletText": "Übertragen des Wissens über Redoxreaktionen auf elektrochemische Vorgänge Basiskonzepte: Konzept der chemischen Reaktion, Energiekonzept"
+          }
+        }
+      ],
+      "decisions": [
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+            "sha256": "24ceb827664a4e0609497eeb5ef501b1a30fe36c3031737a727480d236d1fbf7",
+            "bytes": 813566
+          },
+          "jsonPointer": "/decisions/68",
+          "wholeObjectSHA256": "9f16cf427cc31c34948706bb1f4bfa6727de03fc0c544f29f588f82802f718f0",
+          "object": {
+            "sourceGoalId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-grundkurs-lb1-018-10-8d3f47cb",
+            "topicCode": "SN-CH-jahrgangsstufe-12-grundkurs-LB1",
+            "sourceSpan": "Jahrgangsstufe 12 Grundkurs, Elektrochemische Reaktionen, PDF-S. 43",
+            "decision": "mapped",
+            "canonicalGoalIds": [
+              "04fa0ba1-eb6e-53c8-93d4-dfa28bb4b162",
+              "1f30d81c-8a26-5675-8c0a-1cb82e96d3ba",
+              "3aef6d91-04ff-5ec7-b92e-ccf330d9816a",
+              "3e9eb5d0-3407-5a1e-9492-ad87f98d303d",
+              "4961130b-1ee8-58f2-a319-dff0a864db6a",
+              "6eb14e47-187c-5ba1-8b08-a0ee95ad88a9",
+              "8721d943-8368-5304-bd3c-7d7944099662",
+              "c8844ac6-c414-5a0e-9fcd-7d0a82177d09",
+              "f0939f88-a6af-5334-ac4d-5d54732af25a",
+              "fd7977bf-1d8e-5c5e-9c37-bd76bb2ffeef"
+            ],
+            "rationale": "Das amtliche Chemie-Source-Ziel ist inhaltlich durch mehrere kanonische Chemieziele abgedeckt; 1:n beschreibt die Zuordnungsform, nicht eine offene Lücke.",
+            "reviewedAt": "2026-05-11",
+            "reviewer": "codex"
+          }
+        }
+      ],
+      "sameSourceMappingSiblings": [
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+            "sha256": "24ceb827664a4e0609497eeb5ef501b1a30fe36c3031737a727480d236d1fbf7",
+            "bytes": 813566
+          },
+          "jsonPointer": "/mappings/426",
+          "wholeObjectSHA256": "1ab6482e1cc1f240cf634dc492e1e9dcf3b151c204857a63bfedc93b01757a51",
+          "object": {
+            "legacyGoalId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-grundkurs-lb1-018-10-8d3f47cb",
+            "canonicalGoalId": "04fa0ba1-eb6e-53c8-93d4-dfa28bb4b162",
+            "matchType": "partial",
+            "reviewDecisionId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-grundkurs-lb1-018-10-8d3f47cb"
+          }
+        },
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+            "sha256": "24ceb827664a4e0609497eeb5ef501b1a30fe36c3031737a727480d236d1fbf7",
+            "bytes": 813566
+          },
+          "jsonPointer": "/mappings/427",
+          "wholeObjectSHA256": "bd02e9db706c8da48fb6b88d8ebea728e3e51e178ab17299481e588b7de34d2a",
+          "object": {
+            "legacyGoalId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-grundkurs-lb1-018-10-8d3f47cb",
+            "canonicalGoalId": "1f30d81c-8a26-5675-8c0a-1cb82e96d3ba",
+            "matchType": "partial",
+            "reviewDecisionId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-grundkurs-lb1-018-10-8d3f47cb"
+          }
+        },
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+            "sha256": "24ceb827664a4e0609497eeb5ef501b1a30fe36c3031737a727480d236d1fbf7",
+            "bytes": 813566
+          },
+          "jsonPointer": "/mappings/428",
+          "wholeObjectSHA256": "75a2b9d607bd59d34da920b55188a3bd16ea24a4eacbdda8f299040f623bcce1",
+          "object": {
+            "legacyGoalId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-grundkurs-lb1-018-10-8d3f47cb",
+            "canonicalGoalId": "3aef6d91-04ff-5ec7-b92e-ccf330d9816a",
+            "matchType": "partial",
+            "reviewDecisionId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-grundkurs-lb1-018-10-8d3f47cb"
+          }
+        },
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+            "sha256": "24ceb827664a4e0609497eeb5ef501b1a30fe36c3031737a727480d236d1fbf7",
+            "bytes": 813566
+          },
+          "jsonPointer": "/mappings/429",
+          "wholeObjectSHA256": "7af49ddc67c233693a7a7b1a0435f614784c7e780c82ca0d42b7b87b2428ad9b",
+          "object": {
+            "legacyGoalId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-grundkurs-lb1-018-10-8d3f47cb",
+            "canonicalGoalId": "3e9eb5d0-3407-5a1e-9492-ad87f98d303d",
+            "matchType": "partial",
+            "reviewDecisionId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-grundkurs-lb1-018-10-8d3f47cb"
+          }
+        },
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+            "sha256": "24ceb827664a4e0609497eeb5ef501b1a30fe36c3031737a727480d236d1fbf7",
+            "bytes": 813566
+          },
+          "jsonPointer": "/mappings/430",
+          "wholeObjectSHA256": "cce2eb179c147c6f6c6a3039b67e50b279acc94d9b1e2a5a9db4c21ffa481bec",
+          "object": {
+            "legacyGoalId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-grundkurs-lb1-018-10-8d3f47cb",
+            "canonicalGoalId": "4961130b-1ee8-58f2-a319-dff0a864db6a",
+            "matchType": "partial",
+            "reviewDecisionId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-grundkurs-lb1-018-10-8d3f47cb"
+          }
+        },
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+            "sha256": "24ceb827664a4e0609497eeb5ef501b1a30fe36c3031737a727480d236d1fbf7",
+            "bytes": 813566
+          },
+          "jsonPointer": "/mappings/431",
+          "wholeObjectSHA256": "6620d2eeac5ceb76d4e4b65833421c7ff0f3199d44953381c1b4a42fb97c873f",
+          "object": {
+            "legacyGoalId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-grundkurs-lb1-018-10-8d3f47cb",
+            "canonicalGoalId": "6eb14e47-187c-5ba1-8b08-a0ee95ad88a9",
+            "matchType": "partial",
+            "reviewDecisionId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-grundkurs-lb1-018-10-8d3f47cb"
+          }
+        },
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+            "sha256": "24ceb827664a4e0609497eeb5ef501b1a30fe36c3031737a727480d236d1fbf7",
+            "bytes": 813566
+          },
+          "jsonPointer": "/mappings/432",
+          "wholeObjectSHA256": "c8ad974ee60f12ff00333f93e43b300ed2f07204124400d873742aa204ea7462",
+          "object": {
+            "legacyGoalId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-grundkurs-lb1-018-10-8d3f47cb",
+            "canonicalGoalId": "8721d943-8368-5304-bd3c-7d7944099662",
+            "matchType": "partial",
+            "reviewDecisionId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-grundkurs-lb1-018-10-8d3f47cb"
+          }
+        },
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+            "sha256": "24ceb827664a4e0609497eeb5ef501b1a30fe36c3031737a727480d236d1fbf7",
+            "bytes": 813566
+          },
+          "jsonPointer": "/mappings/433",
+          "wholeObjectSHA256": "5a891a3b07e1b030543c76ac354110acc38e8ec3a0b4fb3a9074621d5396e6b1",
+          "object": {
+            "legacyGoalId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-grundkurs-lb1-018-10-8d3f47cb",
+            "canonicalGoalId": "c8844ac6-c414-5a0e-9fcd-7d0a82177d09",
+            "matchType": "partial",
+            "reviewDecisionId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-grundkurs-lb1-018-10-8d3f47cb"
+          }
+        },
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+            "sha256": "24ceb827664a4e0609497eeb5ef501b1a30fe36c3031737a727480d236d1fbf7",
+            "bytes": 813566
+          },
+          "jsonPointer": "/mappings/434",
+          "wholeObjectSHA256": "8e12124ff8a995088273f5011b9efcc2f2c666add7f596b8ae62ba5f6a350d92",
+          "object": {
+            "legacyGoalId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-grundkurs-lb1-018-10-8d3f47cb",
+            "canonicalGoalId": "f0939f88-a6af-5334-ac4d-5d54732af25a",
+            "matchType": "partial",
+            "reviewDecisionId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-grundkurs-lb1-018-10-8d3f47cb"
+          }
+        },
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+            "sha256": "24ceb827664a4e0609497eeb5ef501b1a30fe36c3031737a727480d236d1fbf7",
+            "bytes": 813566
+          },
+          "jsonPointer": "/mappings/435",
+          "wholeObjectSHA256": "f0db0ba37ee29d184e7fd1cae6e2fdde89af21d7f46b32d1b87879b2e720dd43",
+          "object": {
+            "legacyGoalId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-grundkurs-lb1-018-10-8d3f47cb",
+            "canonicalGoalId": "fd7977bf-1d8e-5c5e-9c37-bd76bb2ffeef",
+            "matchType": "partial",
+            "reviewDecisionId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-grundkurs-lb1-018-10-8d3f47cb"
+          }
+        }
+      ],
+      "siblingCanonicalTargets": [
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+            "sha256": "4a98ea0fadda602b7b04e4117e02aef986c127ed36074d3e700a1777f08a1901",
+            "bytes": 5354349
+          },
+          "jsonPointer": "/goals/108",
+          "wholeObjectSHA256": "6f2629025cee5a81b6a728da167d40fb90b5c698ef0f427a102dbb0e53923da5",
+          "goalId": "04fa0ba1-eb6e-53c8-93d4-dfa28bb4b162",
+          "title": "Redoxbegriffe sicher anwenden"
+        },
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+            "sha256": "4a98ea0fadda602b7b04e4117e02aef986c127ed36074d3e700a1777f08a1901",
+            "bytes": 5354349
+          },
+          "jsonPointer": "/goals/58",
+          "wholeObjectSHA256": "31ae33f024b2718886a421e24cf6edd56bea955e5f27074bda4ae5378a0ff7f0",
+          "goalId": "1f30d81c-8a26-5675-8c0a-1cb82e96d3ba",
+          "title": "Redox- und Säure-Base-Reaktionen unterscheiden"
+        },
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+            "sha256": "4a98ea0fadda602b7b04e4117e02aef986c127ed36074d3e700a1777f08a1901",
+            "bytes": 5354349
+          },
+          "jsonPointer": "/goals/339",
+          "wholeObjectSHA256": "c7e18fbed3a771e0a042a8b62359b47f309d9b5ab61d73ef50e632884fc90cfb",
+          "goalId": "3aef6d91-04ff-5ec7-b92e-ccf330d9816a",
+          "title": "Thermisches Verhalten von Kunststoffen erklären"
+        },
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+            "sha256": "4a98ea0fadda602b7b04e4117e02aef986c127ed36074d3e700a1777f08a1901",
+            "bytes": 5354349
+          },
+          "jsonPointer": "/goals/245",
+          "wholeObjectSHA256": "30e8870ca423972933bc25a7a0069bb8510da04e139d56aa998a650038a3d3e0",
+          "goalId": "3e9eb5d0-3407-5a1e-9492-ad87f98d303d",
+          "title": "Kunststoffe einteilen"
+        },
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+            "sha256": "4a98ea0fadda602b7b04e4117e02aef986c127ed36074d3e700a1777f08a1901",
+            "bytes": 5354349
+          },
+          "jsonPointer": "/goals/109",
+          "wholeObjectSHA256": "531102b6cdffa42c7dac169ad5fd270583acabd400dce1cba5bb07a2ec0ee117",
+          "goalId": "4961130b-1ee8-58f2-a319-dff0a864db6a",
+          "title": "Oxidationszahlen bestimmen und bilanzieren"
+        },
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+            "sha256": "4a98ea0fadda602b7b04e4117e02aef986c127ed36074d3e700a1777f08a1901",
+            "bytes": 5354349
+          },
+          "jsonPointer": "/goals/246",
+          "wholeObjectSHA256": "9f22e3197f5d4b1919b7484589cc87ae0c20f9f819152191b8038008eb8530a6",
+          "goalId": "6eb14e47-187c-5ba1-8b08-a0ee95ad88a9",
+          "title": "Radikalische Polymerisation beschreiben"
+        },
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+            "sha256": "4a98ea0fadda602b7b04e4117e02aef986c127ed36074d3e700a1777f08a1901",
+            "bytes": 5354349
+          },
+          "jsonPointer": "/goals/248",
+          "wholeObjectSHA256": "0232524ee5e091cc95ee46a54f3b7a88a77f92918c46ef2b34dcd5cbbaa3c539",
+          "goalId": "8721d943-8368-5304-bd3c-7d7944099662",
+          "title": "Recyclingstrategien abwägen"
+        },
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+            "sha256": "4a98ea0fadda602b7b04e4117e02aef986c127ed36074d3e700a1777f08a1901",
+            "bytes": 5354349
+          },
+          "jsonPointer": "/goals/285",
+          "wholeObjectSHA256": "7e72125ddc1fef84c58ba7c53008331fed387b75d136a38fe173ca7ea74ee983",
+          "goalId": "c8844ac6-c414-5a0e-9fcd-7d0a82177d09",
+          "title": "Primärzellen und Batterietypen fachlich beurteilen"
+        },
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+            "sha256": "4a98ea0fadda602b7b04e4117e02aef986c127ed36074d3e700a1777f08a1901",
+            "bytes": 5354349
+          },
+          "jsonPointer": "/goals/111",
+          "wholeObjectSHA256": "773fbf654e54a42fe626d56653997225e611dcaedfb43e028259785fe3e3852e",
+          "goalId": "f0939f88-a6af-5334-ac4d-5d54732af25a",
+          "title": "Galvanische Elemente deuten"
+        },
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+            "sha256": "4a98ea0fadda602b7b04e4117e02aef986c127ed36074d3e700a1777f08a1901",
+            "bytes": 5354349
+          },
+          "jsonPointer": "/goals/112",
+          "wholeObjectSHA256": "6dc19488f9cd485bfdadea39b114e3570aebf5272b1e8037ee95a50b40095d18",
+          "goalId": "fd7977bf-1d8e-5c5e-9c37-bd76bb2ffeef",
+          "title": "Elektrolyse beschreiben"
+        }
+      ],
+      "sourceChapterBodiesNotRecopied": "Exact existing source-file pin and clause pointer bind the whole current object; broader chapters remain in the source files."
+    },
+    {
+      "index": 114,
+      "jurisdiction": "DE-SN",
+      "stage": "SekII",
+      "mapping": {
+        "file": {
+          "path": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+          "sha256": "24ceb827664a4e0609497eeb5ef501b1a30fe36c3031737a727480d236d1fbf7",
+          "bytes": 813566
+        },
+        "jsonPointer": "/mappings/1195",
+        "wholeObjectSHA256": "84ffedbcd18bedf4ecca4b9a2d227856167f76a7ea6da69243baaa26baa89296",
+        "object": {
+          "legacyGoalId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-leistungskurs-lb1-068-02-242c8aa2",
+          "canonicalGoalId": "8721d943-8368-5304-bd3c-7d7944099662",
+          "matchType": "partial",
+          "reviewDecisionId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-leistungskurs-lb1-068-02-242c8aa2"
+        }
+      },
+      "sourceGoals": [
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/input/SN/upper-secondary/source-extraction/DE_SN_CHEMIE_SEKII_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+            "sha256": "6ea85d0c818b8d25ef1c7c035b2992e2bfe02a00206ab73f7582eb1a96a5c723",
+            "bytes": 828791
+          },
+          "jsonPointer": "/sourceGoals/207",
+          "wholeObjectSHA256": "2414b6af72ed3761b8f2d404593f94d2d69e0de425a7c781c54e67769bc48759",
+          "object": {
+            "id": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-leistungskurs-lb1-068-02-242c8aa2",
+            "passageId": "sn-chemistry-sekii:sn-ch-jahrgangsstufe-12-leistungskurs-lb1",
+            "topicCode": "SN-CH-jahrgangsstufe-12-leistungskurs-LB1",
+            "bulletIndex": 68,
+            "aspectIndex": 2,
+            "title": "Kennen der Redoxreihe der Metalle: elektrochemische Fällungsreaktionen SE Zementation, Metallrecycling",
+            "description": "Die lernende Person kann Kennen der Redoxreihe der Metalle: elektrochemische Fällungsreaktionen SE Zementation, Metallrecycling.",
+            "sourceText": "Kennen der Redoxreihe der Metalle: elektrochemische Fällungsreaktionen SE Zementation, Metallrecycling",
+            "sourceSpan": "Jahrgangsstufe 12 Leistungskurs, Elektrochemische Reaktionen, PDF-S. 56",
+            "parentBulletText": "Kennen der Redoxreihe der Metalle",
+            "sourceRef": "Lehrplan Gymnasium Chemie Sachsen 2025, Jahrgangsstufe 12 Leistungskurs, Elektrochemische Reaktionen, PDF-S. 56",
+            "courseLevel": "LK",
+            "granularity": "officialCompetencyAspect",
+            "tags": [
+              "source:sachsen",
+              "subject:Chemie",
+              "stage:SekII",
+              "topic:sn-ch-jahrgangsstufe-12-leistungskurs-lb1",
+              "course:LK",
+              "sourceDocument:SN-CH-2025"
+            ],
+            "rawSourceText": "Kennen der Redoxreihe der Metalle: elektrochemische Fällungsreaktionen SE Zementation, Metallrecycling",
+            "rawSourceSpan": "Jahrgangsstufe 12 Leistungskurs, Elektrochemische Reaktionen, PDF-S. 56",
+            "rawParentBulletText": "Kennen der Redoxreihe der Metalle"
+          }
+        }
+      ],
+      "decisions": [
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+            "sha256": "24ceb827664a4e0609497eeb5ef501b1a30fe36c3031737a727480d236d1fbf7",
+            "bytes": 813566
+          },
+          "jsonPointer": "/decisions/207",
+          "wholeObjectSHA256": "9a9c05853a3f20ab84c1886161b6224e44b0ee2e2fc59e7ac50d916b25a7a1f3",
+          "object": {
+            "sourceGoalId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-leistungskurs-lb1-068-02-242c8aa2",
+            "topicCode": "SN-CH-jahrgangsstufe-12-leistungskurs-LB1",
+            "sourceSpan": "Jahrgangsstufe 12 Leistungskurs, Elektrochemische Reaktionen, PDF-S. 56",
+            "decision": "mapped",
+            "canonicalGoalIds": [
+              "04fa0ba1-eb6e-53c8-93d4-dfa28bb4b162",
+              "1f30d81c-8a26-5675-8c0a-1cb82e96d3ba",
+              "3aef6d91-04ff-5ec7-b92e-ccf330d9816a",
+              "3e9eb5d0-3407-5a1e-9492-ad87f98d303d",
+              "4961130b-1ee8-58f2-a319-dff0a864db6a",
+              "6eb14e47-187c-5ba1-8b08-a0ee95ad88a9",
+              "8721d943-8368-5304-bd3c-7d7944099662",
+              "c8844ac6-c414-5a0e-9fcd-7d0a82177d09",
+              "f0939f88-a6af-5334-ac4d-5d54732af25a",
+              "fd7977bf-1d8e-5c5e-9c37-bd76bb2ffeef"
+            ],
+            "rationale": "Das amtliche Chemie-Source-Ziel ist inhaltlich durch mehrere kanonische Chemieziele abgedeckt; 1:n beschreibt die Zuordnungsform, nicht eine offene Lücke.",
+            "reviewedAt": "2026-05-11",
+            "reviewer": "codex"
+          }
+        }
+      ],
+      "sameSourceMappingSiblings": [
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+            "sha256": "24ceb827664a4e0609497eeb5ef501b1a30fe36c3031737a727480d236d1fbf7",
+            "bytes": 813566
+          },
+          "jsonPointer": "/mappings/1189",
+          "wholeObjectSHA256": "a500e06e610af0d98fa0c757c489962c73e36c065169fc5bc76864e3eed3fe49",
+          "object": {
+            "legacyGoalId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-leistungskurs-lb1-068-02-242c8aa2",
+            "canonicalGoalId": "04fa0ba1-eb6e-53c8-93d4-dfa28bb4b162",
+            "matchType": "partial",
+            "reviewDecisionId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-leistungskurs-lb1-068-02-242c8aa2"
+          }
+        },
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+            "sha256": "24ceb827664a4e0609497eeb5ef501b1a30fe36c3031737a727480d236d1fbf7",
+            "bytes": 813566
+          },
+          "jsonPointer": "/mappings/1190",
+          "wholeObjectSHA256": "0ffdfd6a48f5f0cb15bbc366c8df433c31144586de419cacfc58f0e005755da7",
+          "object": {
+            "legacyGoalId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-leistungskurs-lb1-068-02-242c8aa2",
+            "canonicalGoalId": "1f30d81c-8a26-5675-8c0a-1cb82e96d3ba",
+            "matchType": "partial",
+            "reviewDecisionId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-leistungskurs-lb1-068-02-242c8aa2"
+          }
+        },
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+            "sha256": "24ceb827664a4e0609497eeb5ef501b1a30fe36c3031737a727480d236d1fbf7",
+            "bytes": 813566
+          },
+          "jsonPointer": "/mappings/1191",
+          "wholeObjectSHA256": "b553a322206da1bb6daac39157677aa5cfc500865305644da09cf740ca2ea484",
+          "object": {
+            "legacyGoalId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-leistungskurs-lb1-068-02-242c8aa2",
+            "canonicalGoalId": "3aef6d91-04ff-5ec7-b92e-ccf330d9816a",
+            "matchType": "partial",
+            "reviewDecisionId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-leistungskurs-lb1-068-02-242c8aa2"
+          }
+        },
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+            "sha256": "24ceb827664a4e0609497eeb5ef501b1a30fe36c3031737a727480d236d1fbf7",
+            "bytes": 813566
+          },
+          "jsonPointer": "/mappings/1192",
+          "wholeObjectSHA256": "cb8d39a08e5ec31fc012ec57d4ec866d547570876bf837ec6db64612bb57b652",
+          "object": {
+            "legacyGoalId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-leistungskurs-lb1-068-02-242c8aa2",
+            "canonicalGoalId": "3e9eb5d0-3407-5a1e-9492-ad87f98d303d",
+            "matchType": "partial",
+            "reviewDecisionId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-leistungskurs-lb1-068-02-242c8aa2"
+          }
+        },
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+            "sha256": "24ceb827664a4e0609497eeb5ef501b1a30fe36c3031737a727480d236d1fbf7",
+            "bytes": 813566
+          },
+          "jsonPointer": "/mappings/1193",
+          "wholeObjectSHA256": "d0c5ba59d62ea9db62211c427e46d1cea429aa5ddde462a12936ba0e604fb2eb",
+          "object": {
+            "legacyGoalId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-leistungskurs-lb1-068-02-242c8aa2",
+            "canonicalGoalId": "4961130b-1ee8-58f2-a319-dff0a864db6a",
+            "matchType": "partial",
+            "reviewDecisionId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-leistungskurs-lb1-068-02-242c8aa2"
+          }
+        },
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+            "sha256": "24ceb827664a4e0609497eeb5ef501b1a30fe36c3031737a727480d236d1fbf7",
+            "bytes": 813566
+          },
+          "jsonPointer": "/mappings/1194",
+          "wholeObjectSHA256": "4ee5877ddea548c846843eb0b76b7883bd5d78f72c4403abf71e8a8e16802e1b",
+          "object": {
+            "legacyGoalId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-leistungskurs-lb1-068-02-242c8aa2",
+            "canonicalGoalId": "6eb14e47-187c-5ba1-8b08-a0ee95ad88a9",
+            "matchType": "partial",
+            "reviewDecisionId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-leistungskurs-lb1-068-02-242c8aa2"
+          }
+        },
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+            "sha256": "24ceb827664a4e0609497eeb5ef501b1a30fe36c3031737a727480d236d1fbf7",
+            "bytes": 813566
+          },
+          "jsonPointer": "/mappings/1195",
+          "wholeObjectSHA256": "84ffedbcd18bedf4ecca4b9a2d227856167f76a7ea6da69243baaa26baa89296",
+          "object": {
+            "legacyGoalId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-leistungskurs-lb1-068-02-242c8aa2",
+            "canonicalGoalId": "8721d943-8368-5304-bd3c-7d7944099662",
+            "matchType": "partial",
+            "reviewDecisionId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-leistungskurs-lb1-068-02-242c8aa2"
+          }
+        },
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+            "sha256": "24ceb827664a4e0609497eeb5ef501b1a30fe36c3031737a727480d236d1fbf7",
+            "bytes": 813566
+          },
+          "jsonPointer": "/mappings/1196",
+          "wholeObjectSHA256": "103016790d39899228d1e7a8a8b1e21288686c981e11749e2ac610c7a9c22ee7",
+          "object": {
+            "legacyGoalId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-leistungskurs-lb1-068-02-242c8aa2",
+            "canonicalGoalId": "c8844ac6-c414-5a0e-9fcd-7d0a82177d09",
+            "matchType": "partial",
+            "reviewDecisionId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-leistungskurs-lb1-068-02-242c8aa2"
+          }
+        },
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+            "sha256": "24ceb827664a4e0609497eeb5ef501b1a30fe36c3031737a727480d236d1fbf7",
+            "bytes": 813566
+          },
+          "jsonPointer": "/mappings/1197",
+          "wholeObjectSHA256": "8fbda08ae91a95efa5de63da28674eb47c995496b5c52df136b2700907054cf2",
+          "object": {
+            "legacyGoalId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-leistungskurs-lb1-068-02-242c8aa2",
+            "canonicalGoalId": "f0939f88-a6af-5334-ac4d-5d54732af25a",
+            "matchType": "partial",
+            "reviewDecisionId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-leistungskurs-lb1-068-02-242c8aa2"
+          }
+        },
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+            "sha256": "24ceb827664a4e0609497eeb5ef501b1a30fe36c3031737a727480d236d1fbf7",
+            "bytes": 813566
+          },
+          "jsonPointer": "/mappings/1198",
+          "wholeObjectSHA256": "5118e37ed47702e8dfff021d3d2865b0a711652e32e6172bc1f71a6038b36fcf",
+          "object": {
+            "legacyGoalId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-leistungskurs-lb1-068-02-242c8aa2",
+            "canonicalGoalId": "fd7977bf-1d8e-5c5e-9c37-bd76bb2ffeef",
+            "matchType": "partial",
+            "reviewDecisionId": "sn-chem-sekii-sn-ch-jahrgangsstufe-12-leistungskurs-lb1-068-02-242c8aa2"
+          }
+        }
+      ],
+      "siblingCanonicalTargets": [
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+            "sha256": "4a98ea0fadda602b7b04e4117e02aef986c127ed36074d3e700a1777f08a1901",
+            "bytes": 5354349
+          },
+          "jsonPointer": "/goals/108",
+          "wholeObjectSHA256": "6f2629025cee5a81b6a728da167d40fb90b5c698ef0f427a102dbb0e53923da5",
+          "goalId": "04fa0ba1-eb6e-53c8-93d4-dfa28bb4b162",
+          "title": "Redoxbegriffe sicher anwenden"
+        },
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+            "sha256": "4a98ea0fadda602b7b04e4117e02aef986c127ed36074d3e700a1777f08a1901",
+            "bytes": 5354349
+          },
+          "jsonPointer": "/goals/58",
+          "wholeObjectSHA256": "31ae33f024b2718886a421e24cf6edd56bea955e5f27074bda4ae5378a0ff7f0",
+          "goalId": "1f30d81c-8a26-5675-8c0a-1cb82e96d3ba",
+          "title": "Redox- und Säure-Base-Reaktionen unterscheiden"
+        },
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+            "sha256": "4a98ea0fadda602b7b04e4117e02aef986c127ed36074d3e700a1777f08a1901",
+            "bytes": 5354349
+          },
+          "jsonPointer": "/goals/339",
+          "wholeObjectSHA256": "c7e18fbed3a771e0a042a8b62359b47f309d9b5ab61d73ef50e632884fc90cfb",
+          "goalId": "3aef6d91-04ff-5ec7-b92e-ccf330d9816a",
+          "title": "Thermisches Verhalten von Kunststoffen erklären"
+        },
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+            "sha256": "4a98ea0fadda602b7b04e4117e02aef986c127ed36074d3e700a1777f08a1901",
+            "bytes": 5354349
+          },
+          "jsonPointer": "/goals/245",
+          "wholeObjectSHA256": "30e8870ca423972933bc25a7a0069bb8510da04e139d56aa998a650038a3d3e0",
+          "goalId": "3e9eb5d0-3407-5a1e-9492-ad87f98d303d",
+          "title": "Kunststoffe einteilen"
+        },
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+            "sha256": "4a98ea0fadda602b7b04e4117e02aef986c127ed36074d3e700a1777f08a1901",
+            "bytes": 5354349
+          },
+          "jsonPointer": "/goals/109",
+          "wholeObjectSHA256": "531102b6cdffa42c7dac169ad5fd270583acabd400dce1cba5bb07a2ec0ee117",
+          "goalId": "4961130b-1ee8-58f2-a319-dff0a864db6a",
+          "title": "Oxidationszahlen bestimmen und bilanzieren"
+        },
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+            "sha256": "4a98ea0fadda602b7b04e4117e02aef986c127ed36074d3e700a1777f08a1901",
+            "bytes": 5354349
+          },
+          "jsonPointer": "/goals/246",
+          "wholeObjectSHA256": "9f22e3197f5d4b1919b7484589cc87ae0c20f9f819152191b8038008eb8530a6",
+          "goalId": "6eb14e47-187c-5ba1-8b08-a0ee95ad88a9",
+          "title": "Radikalische Polymerisation beschreiben"
+        },
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+            "sha256": "4a98ea0fadda602b7b04e4117e02aef986c127ed36074d3e700a1777f08a1901",
+            "bytes": 5354349
+          },
+          "jsonPointer": "/goals/248",
+          "wholeObjectSHA256": "0232524ee5e091cc95ee46a54f3b7a88a77f92918c46ef2b34dcd5cbbaa3c539",
+          "goalId": "8721d943-8368-5304-bd3c-7d7944099662",
+          "title": "Recyclingstrategien abwägen"
+        },
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+            "sha256": "4a98ea0fadda602b7b04e4117e02aef986c127ed36074d3e700a1777f08a1901",
+            "bytes": 5354349
+          },
+          "jsonPointer": "/goals/285",
+          "wholeObjectSHA256": "7e72125ddc1fef84c58ba7c53008331fed387b75d136a38fe173ca7ea74ee983",
+          "goalId": "c8844ac6-c414-5a0e-9fcd-7d0a82177d09",
+          "title": "Primärzellen und Batterietypen fachlich beurteilen"
+        },
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+            "sha256": "4a98ea0fadda602b7b04e4117e02aef986c127ed36074d3e700a1777f08a1901",
+            "bytes": 5354349
+          },
+          "jsonPointer": "/goals/111",
+          "wholeObjectSHA256": "773fbf654e54a42fe626d56653997225e611dcaedfb43e028259785fe3e3852e",
+          "goalId": "f0939f88-a6af-5334-ac4d-5d54732af25a",
+          "title": "Galvanische Elemente deuten"
+        },
+        {
+          "file": {
+            "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+            "sha256": "4a98ea0fadda602b7b04e4117e02aef986c127ed36074d3e700a1777f08a1901",
+            "bytes": 5354349
+          },
+          "jsonPointer": "/goals/112",
+          "wholeObjectSHA256": "6dc19488f9cd485bfdadea39b114e3570aebf5272b1e8037ee95a50b40095d18",
+          "goalId": "fd7977bf-1d8e-5c5e-9c37-bd76bb2ffeef",
+          "title": "Elektrolyse beschreiben"
+        }
+      ],
+      "sourceChapterBodiesNotRecopied": "Exact existing source-file pin and clause pointer bind the whole current object; broader chapters remain in the source files."
+    }
+  ]
+}

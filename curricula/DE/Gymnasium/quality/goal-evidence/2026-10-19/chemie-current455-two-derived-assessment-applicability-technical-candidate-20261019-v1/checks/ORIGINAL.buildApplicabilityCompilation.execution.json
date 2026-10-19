@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "role": "original_read_only_compiler_execution",
+  "argv": [
+    "app/node_modules/.bin/tsx",
+    "-e",
+    "import { buildApplicabilityCompilation } from \"./app/scripts/applicabilityCompiler.ts\"; const result=buildApplicabilityCompilation(); const report=result.reports.find((r)=>r.landscapeId===\"c436b994-8f44-5134-b9f8-0c9f5d6a5ba0\"); if(!report) throw new Error(\"Missing Chemistry applicability report\"); console.log(JSON.stringify(report,null,2));"
+  ],
+  "startedAtUtc": "2026-10-19T00:08:32.684826+00:00",
+  "finishedAtUtc": "2026-10-19T00:08:57.095018+00:00",
+  "exitCode": 0,
+  "originalFunction": "app/scripts/applicabilityCompiler.ts#buildApplicabilityCompilation",
+  "writeApplicabilityReportsCalled": false,
+  "applyApplicabilityNotCalled": true,
+  "normalWritesPerformed": false,
+  "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-two-derived-assessment-applicability-technical-candidate-20261019-v1/checks/ORIGINAL.buildApplicabilityCompilation.chemie.raw.json",
+  "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-two-derived-assessment-applicability-technical-candidate-20261019-v1/checks/ORIGINAL.buildApplicabilityCompilation.stderr.txt"
+}

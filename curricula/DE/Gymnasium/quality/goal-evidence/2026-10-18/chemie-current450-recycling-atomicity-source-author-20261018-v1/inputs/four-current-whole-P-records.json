@@ -1,0 +1,415 @@
+{
+  "role": "AUTHOR_CURRENT_EXACT_BOUND_INPUTS",
+  "records": [
+    {
+      "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-P27-orientation-context-transport-author-20261018-v1/configs/P026.residual.config.json",
+      "reviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-P27-orientation-context-transport-author-20261018-v1/records/P026.residual.review.jsonl",
+      "line": 3,
+      "record": {
+        "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+        "schemaVersion": 2,
+        "reviewId": "chemie-q1-fourteen-current-20261005-p-author-v2",
+        "goalFingerprintRuleVersion": "goal-evidence-v1",
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "4da0839d-ab6d-53c1-ac21-c9872555ae16",
+        "goalFingerprint": "sha256:fc624b930c46df30af35588cf5c7b4c756d4aa7b49330b40cadb1fdfe1e62ac6",
+        "reviewInputFingerprint": "sha256:281c39b2211735481fe01b53adfd991d73e9996c39a75e5e4ac2456c3234bc4c",
+        "profileFingerprint": "sha256:dfa5882cf080dd54b1a0c87f22bf07aba7c7ec72c1c7fdc9a8799be56ad977f3",
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "reviewedAt": "2026-10-17T21:23:41.999975+00:00",
+        "reviewer": "Codex B technical current-input serialization; underlying scientific authors and reviewers remain recorded in the P442 selection/provenance",
+        "reason": "Hand authored, content-specific bilingual P-v2 candidate for the frozen future goal. Independent scientific review and current native binding/check pending. E1/G1 ai_candidate/needs_human_review; no observed learner or laboratory performance, human approval or statutory clearance claimed.",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1",
+        "reviewRunIds": [],
+        "dissent": [],
+        "profile": {
+          "archetype": "representation",
+          "expectations": [
+            {
+              "id": "nucleophilic-acyl-steps",
+              "essentialUnderstandingDe": "OH⁻ greift den elektrophilen Carbonylkohlenstoff an; eine tetraedrische Zwischenstufe und anschließende Abspaltung beschreiben nukleophile Acylsubstitution.",
+              "essentialUnderstandingEn": "OH⁻ attacks electrophilic carbonyl carbon; a tetrahedral intermediate and subsequent elimination describe nucleophilic acyl substitution.",
+              "observablePerformanceDe": "Elektronenpaarpfeile, Bindungsänderungen, Zwischenstufen und Ladungen eines vorgegebenen alkalischen Estermechanismus korrekt darstellen.",
+              "observablePerformanceEn": "Correctly show electron-pair arrows, bond changes, intermediates and charges for a supplied alkaline ester mechanism."
+            },
+            {
+              "id": "final-proton-transfer",
+              "essentialUnderstandingDe": "Protonenübertragung liefert Carboxylat und Alkohol. Das Nettoschema verbraucht OH⁻ und erklärt, weshalb unter alkalischen Bedingungen freie Carbonsäure nicht das Endprodukt ist.",
+              "essentialUnderstandingEn": "Proton transfer gives carboxylate and alcohol. The net scheme consumes OH⁻ and explains why free carboxylic acid is not the alkaline endpoint.",
+              "observablePerformanceDe": "Mechanismus und Nettobilanz verbinden und einen mechanistisch falschen oder unvollständigen Vorschlag begründet korrigieren.",
+              "observablePerformanceEn": "Connect mechanism to net balance and correct a mechanistically wrong or incomplete proposal with reasons."
+            }
+          ],
+          "coverageExpectations": {
+            "requiredExpectationIds": [
+              "nucleophilic-acyl-steps",
+              "final-proton-transfer"
+            ],
+            "alternativeExpectationGroups": [],
+            "minimumIndependentDemonstrations": 2,
+            "freshVariationRequired": true,
+            "independentTransferRequired": true
+          },
+          "variationAxes": [
+            {
+              "id": "changed-chemical-case",
+              "textDe": "Andere Esterseiten, fehlerhafte Pfeile/Ladungen oder fehlender Protonenschritt; keine reinen auswendig gelernten Bildkopien.",
+              "textEn": "Different ester groups, wrong arrows/charges or missing proton step; no mere memorized diagram copying."
+            }
+          ],
+          "applicationCaseBriefs": [
+            {
+              "id": "ethyl-ethanoate-mechanism",
+              "taskDemandDe": "Skizziere für Ethylethanoat/OH⁻ Angriff, tetraedrische Zwischenstufe, Kollaps und Protonenübertragung. Prüfe Ladung und Stoffbilanz jedes Schritts.",
+              "taskDemandEn": "Sketch OH⁻ attack, tetrahedral intermediate, collapse and proton transfer for ethyl ethanoate. Check charge and atom balance at every step.",
+              "expectedPerformanceDe": "Pfeil vom freien Elektronenpaar des OH⁻ zum Carbonyl-C, π-Elektronen zu O; Zwischenstufe CH₃C(OH)(O⁻)(OEt). Rückbildung C=O verdrängt Ethoxid; CH₃COOH überträgt H⁺ auf Ethoxid. Endprodukte CH₃COO⁻/Ethanol, netto OH⁻ verbraucht.",
+              "expectedPerformanceEn": "Arrow from OH⁻ lone pair to carbonyl C, π electrons to O; intermediate CH₃C(OH)(O⁻)(OEt). Re-forming C=O expels ethoxide; CH₃COOH protonates ethoxide. Final CH₃COO⁻/ethanol, with net OH⁻ consumption.",
+              "understandingFocusDe": "Elektronenfluss und terminaler Protonenschritt.",
+              "understandingFocusEn": "Electron flow and terminal proton step."
+            },
+            {
+              "id": "methyl-propanoate-error-transfer",
+              "taskDemandDe": "Ein frischer Vorschlag für Methylpropanoat zeigt OH⁻-Angriff am Methyl-C, eine positive tetraedrische O-Zwischenstufe und Propansäure als alkalisches Endprodukt. Korrigiere den vorgegebenen Acylhydrolyseweg und begründe die Änderungen.",
+              "taskDemandEn": "A fresh methyl propanoate proposal shows OH⁻ attack at methyl C, a positive tetrahedral O intermediate and propanoic acid as alkaline endpoint. Correct the specified acyl-hydrolysis pathway and explain changes.",
+              "expectedPerformanceDe": "Im verlangten Acylweg erfolgt Angriff am Carbonyl-C, das ehemalige Carbonyl-O trägt −1. Nach Kollaps entsteht Methoxid; Protonenübertragung liefert Propanoat/Methanol. Angriffsort, Elektronenquelle und Ladungsbilanz werden erklärt, nicht nur Endprodukte ersetzt.",
+              "expectedPerformanceEn": "For the specified acyl pathway attack is at carbonyl C; the former carbonyl O has charge−1. Collapse yields methoxide; proton transfer gives propanoate/methanol. Explain site, electron source and charge balance rather than merely swapping products.",
+              "understandingFocusDe": "Mechanistische Fehlerdiagnose bei neuem Ester.",
+              "understandingFocusEn": "Mechanistic error diagnosis for another ester."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-normal-source-configs/P065.normal-source.config.json",
+      "reviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-plan/records/P065.current-owner.review.jsonl",
+      "line": 3,
+      "record": {
+        "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+        "schemaVersion": 2,
+        "reviewId": "chemie-three-recycling-duty-positive-profile-author-20261013-v1",
+        "goalFingerprintRuleVersion": "goal-evidence-v1",
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "b7ae47da-6afa-5651-977a-3139af7d6eab",
+        "goalFingerprint": "sha256:06d14ad626d5f1c25a50d3c237e0aafb9dd24efd3f75a0c9bb2411112b7c9132",
+        "reviewInputFingerprint": "sha256:ae6df3b07dcf4bc74047f8b07a4e1aae68f728eb9e2c7e9967731695cd8aace9",
+        "profileFingerprint": "sha256:c4d034d5be0e064e13873d6a0a0ba72f0540bc21fc49bbcda9ab6d1de04d3531",
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "reviewedAt": "2026-10-17T21:23:41.999975+00:00",
+        "reviewer": "Codex B technical current-input serialization; underlying scientific authors and reviewers remain recorded in the P442 selection/provenance",
+        "reason": "New whole-duty bilingual data-based profile and two complete fresh transfer case designs for the unchanged frozen goal. Independent case/profile review and final compiler/SEM/image/page input binding remain pending; no human or mastery evidence.",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1",
+        "reviewRunIds": [],
+        "dissent": [],
+        "profile": {
+          "archetype": "data",
+          "expectations": [
+            {
+              "id": "e1",
+              "essentialUnderstandingDe": "Metallrecycling führt bereits genutztes Metall als nutzbaren Rohstoff zurück und kann dadurch die Gewinnung neuen Metallrohstoffs vermindern. Verluste und notwendige Ergänzungen können verbleiben; Rückgewinnung macht zusätzlichen Konsum nicht automatisch ressourcenneutral.",
+              "essentialUnderstandingEn": "Metal recycling returns previously used metal as a usable raw material and can reduce extraction of new metal resources. Losses and required new-material additions may remain; recovery does not automatically make extra consumption resource-neutral.",
+              "observablePerformanceDe": "Beschreibt anhand einer vorgegebenen Vergleichsbasis, wie Rückgewinnung den Bedarf an neu gewonnenem Metall beeinflusst, und erläutert die Bedeutung für eine eigene oder selbst gewählte hypothetische Konsumentscheidung.",
+              "observablePerformanceEn": "Describes how recovery changes demand for newly extracted metal on a supplied comparison basis and explains the significance for a personal or self-chosen hypothetical consumption decision."
+            },
+            {
+              "id": "e2",
+              "essentialUnderstandingDe": "Die erneute Bereitstellung von Metall kann gegenüber der Gewinnung aus Erzen Energie einsparen. Eine belastbare Vergleichsaussage benötigt dieselbe nutzbare Metallmenge und eine benannte Grenze; Recycling benötigt selbst Energie und ein anderer Weg kann den Energievergleich ändern.",
+              "essentialUnderstandingEn": "Supplying metal again can save energy compared with extraction from ores. A defensible comparison needs the same usable metal quantity and a stated boundary; recycling itself uses energy and another route can change the energy comparison.",
+              "observablePerformanceDe": "Erklärt aus gegebenen Daten die Bedeutung möglicher Energieeinsparung, trennt Einsparung von Nullverbrauch und begrenzt das Urteil bei einer geänderten Vergleichssituation. Eine quantitative Ökobilanz oder Beschreibung von Recyclingmaschinen ist nicht erforderlich.",
+              "observablePerformanceEn": "Explains the significance of potential energy saving from supplied data, distinguishes saving from zero use and limits the judgment under a changed comparison situation. Quantitative life-cycle assessment or descriptions of recycling machinery are not required."
+            },
+            {
+              "id": "e3",
+              "essentialUnderstandingDe": "Die Bewertung von Konsum und Entsorgung muss auf dem Ressourcen- und Energiebezug beruhen. Metallrückgabe und Vermeidung unnötiger Neubeschaffung können zusammenwirken; eine bloße Recycling-Parole ersetzt diese Begründung nicht.",
+              "essentialUnderstandingEn": "Assessment of consumption and disposal must be based on resource and energy reasoning. Returning metal and avoiding unnecessary new purchases may work together; a recycling slogan does not replace this justification.",
+              "observablePerformanceDe": "Wählt und begründet eine hypothetische Konsum- und Entsorgungsoption mit beiden fachlichen Bezügen und überträgt die Entscheidung auf neue Angaben, ohne private Haushaltsdaten anzugeben oder eine universelle Rangfolge zu behaupten.",
+              "observablePerformanceEn": "Chooses and justifies a hypothetical consumption and disposal option using both scientific links and transfers the decision to new information without disclosing private household data or claiming a universal ranking."
+            }
+          ],
+          "coverageExpectations": {
+            "requiredExpectationIds": [
+              "e1",
+              "e2",
+              "e3"
+            ],
+            "alternativeExpectationGroups": [],
+            "minimumIndependentDemonstrations": 2,
+            "freshVariationRequired": true,
+            "independentTransferRequired": true
+          },
+          "variationAxes": [
+            {
+              "id": "v1",
+              "textDe": "Metall X/Y und nutzbare gemeinsame Vergleichsmenge",
+              "textEn": "Metal X/Y and a common usable comparison amount"
+            },
+            {
+              "id": "v2",
+              "textDe": "Rohstoffergänzung, Rückgewinnung und geänderter Energieaufwand",
+              "textEn": "New-material addition, recovery and changed energy effort"
+            },
+            {
+              "id": "v3",
+              "textDe": "Notwendiger Konsum, zusätzliche Nachfrage und Entsorgungswahl",
+              "textEn": "Necessary consumption, extra demand and disposal choice"
+            }
+          ],
+          "applicationCaseBriefs": [
+            {
+              "id": "b7ae47da-case-1",
+              "taskDemandDe": "1. Beschreibe die Bedeutung des Recyclingwegs für Ressourcenschonung und Energieeinsparung gegenüber dem Primärweg. Vergleiche qualitativ; eine Rechnung oder Anlagenbeschreibung ist nicht nötig. 2. Wähle eine eigene, aber frei erfundene Konsum-/Entsorgungsentscheidung C oder D und begründe beide Teile mit den Daten. 3. Übertrage deine Begründung auf die zusätzliche Anschaffung: Widerlege oder begrenze die Behauptung. Keine Angaben zu deinem wirklichen Haushalt sind verlangt.",
+              "taskDemandEn": "1. Describe the recycling route's significance for resource conservation and energy saving compared with the primary route. A qualitative comparison suffices; no calculation or plant description is needed. 2. Choose C or D for a personal but freely invented consumption/disposal situation and justify both parts from the data. 3. Transfer your reasoning to an additional purchase: refute or limit the claim. No information about your actual household is requested.",
+              "expectedPerformanceDe": "Rückgewonnenes X ersetzt im Modell einen Teil neuen Rohstoffs: statt 1 kg werden 0,2 kg neu benötigt. Auf derselben nutzbaren Mengenbasis ist 35 kleiner als 100; erneute Metallbereitstellung spart hier Energie, benötigt aber weiterhin Energie. Nicht vollständig nutzbare Rückgewinnung und Ergänzung bleiben. C vermeidet eine unnötige neue Metallnachfrage während der Nutzungszeit und hält am Ende den Stoff für Rückgewinnung verfügbar. D schafft zusätzliche Nachfrage und verliert laut Material die spätere Rückgewinnungsmöglichkeit. Für die frei gewählte Situation ist C mit beiden Bezügen begründet. Ein zusätzliches Produkt benötigt trotz Recycling mindestens die angegebenen Ergänzungsrohstoffe und Energie für Bereitstellung; Recycling macht überflüssige Käufe nicht ressourcen- oder energieneutral. Diese Schlussfolgerung erklärt die Bedeutung des gegebenen Metallrecyclings, nicht jede reale Anlage oder jedes Produkt.",
+              "expectedPerformanceEn": "Recovered X replaces part of the new raw material in this model: only 0.2 kg rather than 1 kg is newly required. On the same usable-quantity basis, 35 is lower than 100; supplying metal again saves energy here but still uses energy. Incomplete useful recovery and new-material additions remain. C avoids unnecessary new metal demand during use and keeps the material available for recovery at end of use. D creates extra demand and loses the later recovery opportunity according to the material. C is justified through both links for the freely chosen situation. An extra product still requires the stated new-material additions and supply energy; recycling does not make unnecessary purchases resource- or energy-neutral. This explains the significance of the supplied metal-recycling case, not every actual plant or product.",
+              "understandingFocusDe": "Erklärt Ersatz neuen Metallrohstoffs durch 0,8 kg Rückgewinnung sowie verbleibende 0,2 kg Ergänzung. / Verbindet 35 gegenüber 100 mit gleicher nutzbarer Menge und positiv verbleibendem Energieverbrauch. / Begründet C für Konsum UND Entsorgung mit Ressourcen/Energie und widerlegt die Neutralitätsbehauptung zur Zusatzanschaffung.",
+              "understandingFocusEn": "Explains replacement of new metal raw material by 0.8 kg recovery and remaining 0.2 kg addition. / Links 35 versus 100 to the same usable quantity and remaining positive energy use. / Justifies C for BOTH consumption and disposal through resources/energy and refutes neutrality of an extra purchase."
+            },
+            {
+              "id": "b7ae47da-case-2",
+              "taskDemandDe": "1. Beschreibe für R1 die Bedeutung des Metallrecyclings für Ressourcenschonung und Energieeinsparung. 2. Übertrage auf R2: Was bleibt gleich, was ändert sich gegenüber P? Darf „Recycling spart immer Energie“ gelten? 3. Begründe für deine frei erfundene Entscheidung sowohl den Konsumteil (benötigter Ersatz oder zusätzliche Anschaffung) als auch den Entsorgungsteil (Erfassung oder gemischter Reststrom), zunächst mit R1 und dann mit R2. Formuliere eine begrenzte Entscheidung; eine Ökobilanz oder Maschinenbeschreibung ist nicht gefordert.",
+              "taskDemandEn": "1. Describe R1 metal recycling's significance for conserving resources and saving energy. 2. Transfer to R2: what stays the same and what changes compared with P? Is “recycling always saves energy” justified? 3. For your freely invented decision, justify both consumption (needed replacement or extra purchase) and disposal (collection or mixed residue), initially for R1 and then R2. Give a limited decision; no life-cycle calculation or machinery description is required.",
+              "expectedPerformanceDe": "R1 liefert 0,8 kg aus vorher genutztem Metall zurück und benötigt nur 0,2 kg neuen Rohstoff statt 1 kg bei P. Auf gleicher Nutzbasis spart Index 30 gegenüber 55 Energie, ohne Energieverbrauch auf null zu setzen. R2 hat denselben Ressourcenschonungsbezug, spart innerhalb dieser Grenze aber keine Energie gegenüber P: 60 liegt über 55. Der zusätzliche Aufwand kann den ursprünglichen Energievorteil ändern; ein universelles „immer“ ist widerlegt. Für die hypothetische Entscheidung ist der benötigte Ersatz anders zu beurteilen als ein überflüssiger Zusatzkauf. Verzicht auf den Zusatzkauf vermeidet weitere Metallnachfrage. Erfassung eröffnet in beiden Recyclingvarianten Rückgewinnung; im Reststrom geht sie laut Daten verloren. Mit R1 sprechen Ressourcen und Energie gemeinsam für die gegebene Rückführung. Mit R2 muss der Ressourcennutzen gegen den höheren angegebenen Energieaufwand abgewogen werden; Sammlung bleibt keine Behauptung eines Gesamtenergievorteils. Weitere Umweltfolgen sind nicht angegeben, deshalb ist keine universelle Gesamtumweltrangfolge belegt.",
+              "expectedPerformanceEn": "R1 returns 0.8 kg of previously used metal and requires only 0.2 kg new raw material rather than P's 1 kg. On the same usable basis, index 30 saves energy against 55 without making energy use zero. R2 has the same resource-conservation link but saves no energy against P within this boundary: 60 exceeds 55. Extra effort can change the original energy advantage, disproving a universal “always.” For the hypothetical choice, a needed replacement differs from an unnecessary extra purchase. Avoiding the extra purchase prevents further metal demand. Collection permits recovery for both recycling variants; the residue stream loses it according to the data. With R1, resource and energy links jointly favor the supplied return route. With R2, resource benefit must be weighed against the higher stated energy effort; collection does not establish an overall energy advantage. Other impacts are unspecified, so no universal overall environmental ranking is proven.",
+              "understandingFocusDe": "Erklärt für R1/R2 gleichermaßen Rückgewinnung und geringeren neuen Rohstoffbedarf; Zusatzkauf erzeugt weitere Nachfrage. / Begrenzt R1-Energieeinsparung auf gleiche Nutzbasis und erklärt, weshalb R2 gegenüber P keine Einsparung zeigt. / Begründet Konsum UND Entsorgung für beide Kontexte und benennt den R2-Ressourcen-/Energiekonflikt sowie die Urteilsgrenze.",
+              "understandingFocusEn": "Explains recovery and lower new raw-material demand for both R1/R2; an extra purchase creates further demand. / Bounds R1 energy saving to the same usable basis and explains why R2 shows no saving against P. / Justifies BOTH consumption and disposal for both contexts and identifies the R2 resource/energy trade-off and conclusion limit."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-normal-source-configs/P124.normal-source.config.json",
+      "reviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-plan/records/P124.current-owner.review.jsonl",
+      "line": 1,
+      "record": {
+        "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+        "schemaVersion": 2,
+        "reviewId": "he-shared-recycling459-final-bound-reviewed-design-independent-a-20261016-v2",
+        "goalFingerprintRuleVersion": "goal-evidence-v1",
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "459724db-9f9a-5967-8d9a-2b6277415275",
+        "goalFingerprint": "sha256:383313b108c51f3f50a5c146e4c60b1f3e45d457c687d14fadcb5039f07c5e70",
+        "reviewInputFingerprint": "sha256:459afff492cf1e793f98f450b54386fe938368d710abe057c027ef4f541cbe09",
+        "profileFingerprint": "sha256:ff57ee07135494cd4cd936828f3a53c44ff590eee83288753cf0018071ed0281",
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "reviewedAt": "2026-10-17T21:23:41.999975+00:00",
+        "reviewer": "Codex B technical current-input serialization; underlying scientific authors and reviewers remain recorded in the P442 selection/provenance",
+        "reason": "e1 chain/model understanding, e2 equivalent functional denominator and consistent inventory, e3 reasoned conditional evaluation each have observable demands and case-specific rubrics. PMMA/MMA identity/repeat-unit model and quantitative data are completely supplied. The second case changes usable-quality constraints, requires virgin blend input and inverse yield calculation, and gives a true energy/cost trade-off; repeating A ranking fails. No actual experiment or learner evidence is asserted. Frozen actual independent science tmp/chemie-m7-resumed-20261016/HE-shared-recycling459-independent-a-v1/FIRST.new459-whole-source-P-A-M-V.independent-a.science.frozen.json sha256:cf8900f18c7970e6789fb6d55fd921aa0c8eac735449ff322909a708da0b465f. Final L6 resource binding only; unchanged science date, no new review from fingerprint changes. Evidence classification corrected additively: E1 is supported by own anchored inspection and independent calculation of the whole identified goal, both complete bilingual material cases/solutions/rubrics and exact bound PNG, already preserved in the original FIRST; G1 bounds this to that single goal and artifacts. No actual learner performance, human review, completed model-run manifest or final NativeD is claimed. The earlier E0/G0 conflated these missing higher forms of evidence with the actual artifact observations. Separate clarification tmp/chemie-m7-resumed-20261016/HE-shared-recycling459-independent-a-v1/final-bound-l6-reviewed-design-P-only-addendum-v1/FIRST.additive-E1G1-evidence-scope-clarification.before-P-serialization.json sha256:522450497db7e4a626a4f046bd6ab6c983c7c8e4a53bc406214837485823e6d7.",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1",
+        "reviewRunIds": [],
+        "dissent": [],
+        "profile": {
+          "archetype": "data",
+          "expectations": [
+            {
+              "id": "e1",
+              "essentialUnderstandingDe": "Werkstoffliche Aufbereitung erhält Polymerketten überwiegend; rohstoffliche Monomerrückgewinnung spaltet Ketten, benötigt Aufreinigung und für neues Polymer erneute Polymerisation.",
+              "essentialUnderstandingEn": "Mechanical processing largely retains polymer chains; feedstock monomer recovery breaks chains and requires purification and repolymerisation for new polymer.",
+              "observablePerformanceDe": "Erklärt beide Wege am gegebenen PMMA/MMA-Modell und trennt Monomer, wiederverwendbares Polymer und nicht zurückgewonnenes Material.",
+              "observablePerformanceEn": "Explains both routes using the supplied PMMA/MMA model and distinguishes monomer, usable polymer and unrecovered material."
+            },
+            {
+              "id": "e2",
+              "essentialUnderstandingDe": "Ökologische/ökonomische Größen werden erst bei gleichem spezifikationsgerechtem Produktbedarf, transparenten Ausbeuten und konsistenten Grenzen vergleichbar.",
+              "essentialUnderstandingEn": "Environmental/economic quantities become comparable only for the same specification-compliant demand with explicit yields and consistent boundaries.",
+              "observablePerformanceDe": "Rechnet bereitgestellte Massen-, Energie- und Kostenwerte auf dieselbe geeignete Produktmenge um und berücksichtigt im Transfer den gegebenen Qualitätsbedarf samt nötigem Neumaterial.",
+              "observablePerformanceEn": "Converts supplied mass, energy and cost data to the same suitable output and, in transfer, accounts for the stated quality requirement and necessary virgin material."
+            },
+            {
+              "id": "e3",
+              "essentialUnderstandingDe": "Eine Routenwahl folgt begründeten Kriterien und Daten, keine Methode ist durch den Routennamen pauschal ökologisch und ökonomisch überlegen.",
+              "essentialUnderstandingEn": "A route choice follows explicit criteria and evidence; no route name establishes universal environmental and economic superiority.",
+              "observablePerformanceDe": "Begründet eine bedingte Routenwahl, bearbeitet einen Zielkonflikt und begrenzt interessengebundene Immer-Behauptungen mit tatsächlichen Bilanzlücken.",
+              "observablePerformanceEn": "Justifies a conditional route choice, weighs a trade-off and bounds interested always claims with actual accounting gaps."
+            }
+          ],
+          "coverageExpectations": {
+            "requiredExpectationIds": [
+              "e1",
+              "e2",
+              "e3"
+            ],
+            "alternativeExpectationGroups": [],
+            "minimumIndependentDemonstrations": 2,
+            "freshVariationRequired": true,
+            "independentTransferRequired": true
+          },
+          "variationAxes": [
+            {
+              "id": "quality",
+              "textDe": "Gleiche gesicherte Qualität versus geprüfte Mischung mit notwendigem Neumaterial",
+              "textEn": "Same verified quality versus a tested blend requiring virgin material"
+            },
+            {
+              "id": "normalisation",
+              "textDe": "Pro-kg-Normierung versus inverse Ertrags- und Mischungsbilanz",
+              "textEn": "Per-kg normalisation versus inverse yield and blend balance"
+            },
+            {
+              "id": "decision",
+              "textDe": "Gleichgerichtete Energiekosten und Kosten versus tatsächlicher Zielkonflikt",
+              "textEn": "Aligned energy and cost results versus an actual trade-off"
+            }
+          ],
+          "applicationCaseBriefs": [
+            {
+              "id": "common-recycling-pmma-equivalent-granulate",
+              "taskDemandDe": "Erkläre an den Ketten-/Monomerangaben beide Wege. Berechne Energie und betrachtete Kosten je1kg gleichwertigem PMMA-Granulat. Wähle vorläufig für den gegebenen Bedarf und prüfe den Werbesatz anhand der Zahlen, Bilanzgrenzen und Quelle.",
+              "taskDemandEn": "Explain both routes using the supplied chain/monomer information. Calculate energy and specified costs per1kg equivalent PMMA granulate. Make a provisional choice for this demand and assess the advertising claim using the data, boundaries and source.",
+              "expectedPerformanceDe": "Mechanisch bleiben die Ketten überwiegend erhalten; gereinigte Thermoplaste werden erneut aufgeschmolzen. Rohstofflich werden Ketten zu MMA gespalten, MMA wird aufgereinigt und erneut zu PMMA polymerisiert; MMA selbst ist noch kein gleichwertiges Granulat. Mechanisch:40/80=0,50kWh/kg und120/80=1,50Euro/kg. Monomerroute:100/75=1,33kWh/kg und225/75=3,00Euro/kg. Für die gegebenen gleichen Qualitätsanforderungen spricht die betrachtete Energie-/Betriebskostenbilanz vorläufig für die mechanische Route.Mechanisch20kg und bei der Monomerroute25kg liegen außerhalb des jeweiligen Zielprodukts; vollständige geschlossene Rückgewinnung ist nicht gezeigt. Der Immer-Satz widerspricht hier den Betriebskosten und ist ökologisch unbelegt: Energieträger/Emissionen, Hilfsstoffe, Reststoffbehandlung und Transport fehlen; der Anbieter hat ein wirtschaftliches Interesse. Gleiche Qualität und gleiche Grenzen sind Bedingungen des Vergleichs, kein universelles Urteil.",
+              "expectedPerformanceEn": "Mechanical recycling largely retains the chains and remelts the cleaned thermoplastic. Feedstock recycling breaks chains into MMA, purifies the MMA and polymerises it back into PMMA; MMA alone is not equivalent granulate. Mechanical:40/80=0.50kWh/kg and120/80=1.50euros/kg. Monomer route:100/75=1.33kWh/kg and225/75=3.00euros/kg. For these identical quality requirements, the stated operating-energy/cost comparison provisionally favours mechanical recycling.Mechanical recycling leaves20kg and the monomer route25kg outside their respective target products; complete closed recovery is not demonstrated. The “always” claim conflicts with these operating costs and is environmentally unsupported: energy sources/emissions, auxiliaries, residues and transport are missing; the vendor has a commercial interest. Equal quality and boundaries are conditions of this comparison, not a universal conclusion.",
+              "understandingFocusDe": "Nur die konkret ausgewiesenen Aspekte der Rubrik werten. Das PMMA/MMA-Modell wird geliefert; geprüft sind Erklärung, gleicher Bedarf, Zahlenbezug und begründete Urteilsgrenzen.",
+              "understandingFocusEn": "Score only the aspects explicitly listed in the rubric. The PMMA/MMA model is supplied; explanation, the same demand, numerical reference and justified decision limits are assessed."
+            },
+            {
+              "id": "common-recycling-pmma-quality-blend-transfer",
+              "taskDemandDe": "Stelle für beide Wege60kg spezifikationsgerechtes Granulat bereit. Berechne bei der mechanischen Route Regranulat-/Neumaterialmassen, nötigen Abfalleinsatz, Gesamtenergie und Kosten; berechne dieselben relevanten Größen für die Monomerroute. Erkläre den stofflichen Unterschied und prüfe beide Betreiberaussagen. Begründe eine bedingte ökologische/ökonomische Entscheidung für denselben Gehäusebedarf.",
+              "taskDemandEn": "Supply60kg specification-compliant granulate by each route. For the mechanical route, calculate regranulate/virgin masses, waste required, total energy and costs; calculate the corresponding quantities for the monomer route. Explain the substance-level difference and assess both operator claims. Justify a conditional environmental/economic choice for the same housing demand.",
+              "expectedPerformanceDe": "Mechanisch braucht man45kg Regranulat+15kg Neumaterial. Für45kg bei90%Ertrag sind50kg Abfall nötig. Energie45·0,40+15·3,00+60·0,10=69kWh; Kosten45·1,00+15·2,00+60·0,20=87Euro. Monomerroute:60/0,85=70,59kg Abfall; Energie60·(85/85)=60kWh; Kosten60·(127,50/85)=90Euro. Mechanisch wird weitgehend dieselbe Kette erneut geformt, die Monomerroute spaltet Ketten und polymerisiert gereinigtes MMA erneut. Beide erfüllen den gegebenen gleichen Bedarf, aber nur mit15kg neuem PMMA im mechanischen Gemisch. Die mechanische Wahl spart im Modell3Euro, die Monomerroute9kWh. Eine Entscheidung hängt daher von offengelegter Gewichtung und fehlenden Umweltdaten ab; beide begründeten bedingten Entscheidungen sind zulässig. Annahmemasse ist keine Produktmasse: pro100kg nur90kg Regranulat oder85kg Monomerroute-PMMA, nicht100kg. Die Energiebehauptung ist im gegebenen Qualitätsfall falsch. Die neuen15kg sowie Restströme widerlegen einen verlustfreien vollständig geschlossenen Kreislauf; Energie ist zudem keine vollständige Ökobilanz.",
+              "expectedPerformanceEn": "Mechanical route:45kg regranulate+15kg virgin PMMA. At90%yield,45kg regranulate requires50kg waste. Energy45·0.40+15·3.00+60·0.10=69kWh; costs45·1.00+15·2.00+60·0.20=87euros. Monomer route:60/0.85=70.59kg waste; energy60·(85/85)=60kWh; cost60·(127.50/85)=90euros. Mechanical recycling mainly reforms the same chains; the monomer route breaks chains and polymerises purified MMA again. Both satisfy the same supplied demand, but the mechanical blend needs15kg virgin PMMA. Mechanical saves3euros in this model; the monomer route saves9kWh. The choice therefore depends on stated weighting and missing environmental data; either justified conditional choice is acceptable. Reception mass is not product mass:100kg yields90kg regranulate or85kg monomer-route PMMA, not100kg. The energy claim fails for this quality case. The15kg virgin input and residual streams refute a loss-free fully closed cycle; energy is not a complete environmental assessment.",
+              "understandingFocusDe": "Nur die konkret ausgewiesenen Aspekte der Rubrik werten. Das PMMA/MMA-Modell wird geliefert; geprüft sind Erklärung, gleicher Bedarf, Zahlenbezug und begründete Urteilsgrenzen.",
+              "understandingFocusEn": "Score only the aspects explicitly listed in the rubric. The PMMA/MMA model is supplied; explanation, the same demand, numerical reference and justified decision limits are assessed."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-P27-orientation-context-transport-author-20261018-v1/configs/P130.transported.config.json",
+      "reviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-P27-orientation-context-transport-author-20261018-v1/records/P130.transported.review.jsonl",
+      "line": 1,
+      "record": {
+        "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+        "schemaVersion": 2,
+        "reviewId": "canonical-chemistry-current447-seventeen-paired-informed-positive-native-20261018-v1",
+        "goalFingerprintRuleVersion": "goal-evidence-v1",
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "8721d943-8368-5304-bd3c-7d7944099662",
+        "goalFingerprint": "sha256:76edec10515d64c0b933874f2b9d3907bf2d85f990765c275744b032134a1d0f",
+        "reviewInputFingerprint": "sha256:08b9aec26c53bff890ad9cb0c0764a5f220ea11db19dcf16b81b03458353598b",
+        "profileFingerprint": "sha256:854a7a3d13d2b156b0ea358a4c28eb6b68633d25d519c3092f5cc03811b562a5",
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "reviewedAt": "2026-10-17T23:22:49.296Z",
+        "reviewer": "codex-technical-native-serialization-from-actual-paired-informed-science",
+        "reason": "Technical native serialization from two actually sealed informed scientific judgments; no new reviewer vote. A: Hydrolyse geeigneter Polymerbindungen wird richtig innerhalb rohstofflicher Verfahren eingeordnet. Das vollständige P bleibt exakt und unterscheidet mechanische Kettenerhaltung, chemische Spaltung und energetische Verwertung; Letztere wird nicht zu stofflichem Recycling. Die ganzen PET-Fälle liefern40/80=0,50 und100/75≈1,33kWh/kg gleichwertiges PET. Pyrolyse-Feedstock ist noch kein fertiges PET. Im Mischfall ergeben35*0,8=28kg PET und50*0,9=45kg PE;27kg des100kg-Ausgangs fehlen im Zielprodukt. PE ohne passende Esterbindungen wird nicht durch die gegebene PET-Hydrolyse aufgeschlossen. Die Platte erfüllt einen anderen Bedarf. Im ganzen hb208-Fall ergeben100*44=4400MJ,244,4kWh Strom,488,9kWh genutzte Wärme und ideal314,3kg direktesCO2; fehlende Inputs und Systemgrenzen verbieten eine LCA-Gesamtrangfolge. Der neue unbekannte PVC/PE-Mischfall darf diese reinen PE-Zahlen nicht übernehmen. | B: Hydrolyse geeigneter Polymere wird korrekt als rohstofflicher Weg untergeordnet. Ganze P/Materialien bleiben exakt: mechanische Kettenerhaltung, PET-Esterhydrolyse, Pyrolyse-Feedstock und energetische Oxidation sind unterschieden.40/80=0,50 und100/75≈1,33kWh/kg äquivalentes PET;35·0,8+50·0,9=73kg Zielprodukte,27kg außerhalb. PE hat kein PET-artiges Estergerüst. Im separaten100kg-PE-Modell4400MJ→880MJ Strom und1760MJ genutzte Wärme; direkteCO2-Masse100·44/14≈314,3kg. Das sind verschiedene Funktionen, keine fertige LCA-Rangliste. Unbekannter PVC/PE-Mischabfall verhindert Übernahme der Rein-PE-Bilanz. Exact source pins and pointers: Full paired source pins/pointers: PROVENANCE.actual-paired-science.json /goals/8721d943-8368-5304-bd3c-7d7944099662/P.",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1",
+        "reviewRunIds": [],
+        "dissent": [
+          "Inactive AI candidate; final normal integration and all independent D/source/M7/human gates remain separate."
+        ],
+        "profile": {
+          "archetype": "data",
+          "expectations": [
+            {
+              "id": "e1",
+              "essentialUnderstandingDe": "Werkstoffliches Recycling erhält Polymerketten überwiegend; rohstoffliche Verfahren spalten sie, Hydrolyse betrifft passende Bindungen.",
+              "essentialUnderstandingEn": "Mechanical recycling largely retains polymer chains; feedstock routes split them, and hydrolysis requires suitable linkages.",
+              "observablePerformanceDe": "Beschreibt drei Prozesswege einschließlich PET-Hydrolyse und PE-Grenze.",
+              "observablePerformanceEn": "Describes three routes including PET hydrolysis and the limitation for PE."
+            },
+            {
+              "id": "e2",
+              "essentialUnderstandingDe": "Ausbeute, Energie und Produktqualität müssen auf denselben funktionalen Bedarf und Systemgrenzen bezogen werden.",
+              "essentialUnderstandingEn": "Yield, energy and quality must be compared for the same functional demand and system boundary.",
+              "observablePerformanceDe": "Rechnet bereitgestellte Massen- und Energieflüsse mit Verlusten transparent um.",
+              "observablePerformanceEn": "Calculates supplied mass and energy flows transparently including losses."
+            },
+            {
+              "id": "e3",
+              "essentialUnderstandingDe": "Quellenkritik und Kontext entscheiden über tragfähige ökologische/ökonomische Urteile.",
+              "essentialUnderstandingEn": "Source criticism and context determine defensible environmental/economic judgements.",
+              "observablePerformanceDe": "Begründet einen Kreislauf und revidiert ihn bei geänderter Sortierung oder Produktanforderung.",
+              "observablePerformanceEn": "Justifies a cycle and revises it under changed sorting or product requirements."
+            },
+            {
+              "id": "hb208-energy-recovery-distinction",
+              "essentialUnderstandingDe": "Energetische Verwertung oxidiert Kunststoff zur Energienutzung und schließt keinen Stoffkreislauf; Vergleich braucht gleiche Funktion/Systemgrenze.",
+              "essentialUnderstandingEn": "Energy recovery oxidizes plastic for useful energy and closes no material cycle; comparison needs equal function/boundary.",
+              "observablePerformanceDe": "Die lernende Person erklärt die drei Wege, bilanziert den PE-Modellfall und begrenzt den Transfer auf unbekannte Gemische.",
+              "observablePerformanceEn": "The learner explains three routes, balances the PE model and limits transfer to unknown mixtures."
+            }
+          ],
+          "coverageExpectations": {
+            "requiredExpectationIds": [
+              "e1",
+              "e2",
+              "e3",
+              "hb208-energy-recovery-distinction"
+            ],
+            "alternativeExpectationGroups": [],
+            "minimumIndependentDemonstrations": 2,
+            "freshVariationRequired": true,
+            "independentTransferRequired": true
+          },
+          "variationAxes": [
+            {
+              "id": "v1",
+              "textDe": "Sortenreinheit",
+              "textEn": "Sorting purity"
+            },
+            {
+              "id": "v2",
+              "textDe": "Produktqualität und Bedarf",
+              "textEn": "Product quality and demand"
+            },
+            {
+              "id": "v3",
+              "textDe": "Energie-/Quellengrenzen",
+              "textEn": "Energy and source boundaries"
+            },
+            {
+              "id": "hb208-energy-recovery-distinction-transfer",
+              "textDe": "Bedingungswechsel im vollständigen Transfer selbstständig berücksichtigen.",
+              "textEn": "Independently account for changed conditions in the complete transfer."
+            }
+          ],
+          "applicationCaseBriefs": [
+            {
+              "id": "8721d943-case-1",
+              "taskDemandDe": "Erkläre die Wege und Esterhydrolyse. Berechne Betriebsenergie je kg geeignetem PET für die ersten beiden Wege. Wähle bei ausreichender Regranulatqualität vorläufig und bewerte den Prospektsatz.",
+              "taskDemandEn": "Explain routes and ester hydrolysis. Calculate operational energy per kg of suitable PET for the first two routes. Make a provisional choice if regranulate quality suffices and assess the brochure claim.",
+              "expectedPerformanceDe": "Mechanisch waschen/zerkleinern/aufschmelzen, Ketten weitgehend erhalten; Hydrolyse spaltet Ester in Säure-/Alkoholprodukte, gereinigt erneut polymerisierbar.0.50 versus 1.33 k Wh/kg geeignetes PET. Mechanisch vorläufig günstiger für diesen Bedarf. Feedstock ist noch kein gleichwertiges PET; Pyrolysezahl daher nicht direkt vergleichbar. Strommix, Qualität, Transport, Chemikalien, Verluste, Kosten und Anbieterinteresse fehlen: „immer“ unbelegt.",
+              "expectedPerformanceEn": "Mechanical washing/shredding/remelting largely preserves chains; hydrolysis cleaves ester links into acid/alcohol products, which can be purified and repolymerised.0.50 versus 1.33 k Wh/kg suitable PET. Mechanical recycling is provisionally preferable for this demand. Feedstock is not yet equivalent PET, so pyrolysis is not directly comparable. Electricity mix, quality, transport, reagents, losses, costs and vendor interest remain unresolved: “always” is unsupported.",
+              "understandingFocusDe": "Fallbezogene Aspekte: Mechanische Kettenerhaltung, PET-Esterhydrolyse und Pyrolyse-Feedstock von fertigem PET trennen. / 40/80=0.50 und 100/75≈1.33 kWh/kg geeignetes PET; Pyrolyseprodukt nicht gleichwertig. / Mechanisch vorläufig bei geeigneter Qualität; Strommix, Chemikalien/Transport und Prospektinteresse verhindern Immer-Urteil. Die Verknüpfung zu Erwartungs-IDs behauptet keine vollständige Erfüllung jeder Gesamtprofilerwartung in diesem Einzelfall.",
+              "understandingFocusEn": "Case-specific aspects: Distinguish mechanical chain retention, PET ester hydrolysis and pyrolysis feedstock from finished PET. / 40/80=0.50 and 100/75≈1.33 kWh/kg suitable PET; pyrolysis product not equivalent. / Mechanical provisionally at adequate quality; electricity mix, chemicals/transport and prospectus interest preclude an always claim. Links to expectation IDs do not assert complete fulfilment of every whole-profile expectation in this one case."
+            },
+            {
+              "id": "8721d943-case-2",
+              "taskDemandDe": "Berechne zurückgewonnenes PET/PE und Verluste. Erkläre warum PE nicht wie PET hydrolysierbar ist. Bewerte Kreislauf versus Platte und welche Daten die Auswahl entscheiden.",
+              "taskDemandEn": "Calculate recovered PET/PE and losses. Explain why PE cannot be hydrolysed like PET. Compare the cycle with the board route and identify deciding evidence.",
+              "expectedPerformanceDe": "PET 28 kg, PE 45 kg, zusammen 73 kg; 27 kg des ursprünglichen 100 kg nicht im Zielprodukt. PE-C–C-Rückgrat besitzt keine Esterhydrolysestellen. Sortierung plus materialgerechte Wege stützt sortenreinen Kreislauf; Platte erfüllt anderen Bedarf und kann ebenfalls sinnvoll sein. Reststoffbehandlung, Qualität/Neumaterialersatz, Energie/Kosten und reale Nachfrage entscheiden; kein vollständig geschlossener Nullverlustkreislauf.",
+              "expectedPerformanceEn": "PET 28 kg, PE 45 kg, total 73 kg; 27 kg of the initial 100 kg is outside target products. PE has a C–C backbone without ester-hydrolysis sites. Sorting plus material-specific routes supports a single-polymer cycle; the board serves another demand and may also be useful. Residue treatment, quality/virgin-material displacement, energy/cost and actual demand decide; this is not a loss-free closed cycle.",
+              "understandingFocusDe": "Fallbezogene Aspekte: PET-Ester hydrolysierbar; PE-C–C ohne Esterstellen, materialgerechte Wege nach Sortierung. / 35·0.8=28 kg PET, 50·0.9=45 kg PE, 73 kg Zielprodukt und 27 kg nicht darin. / 73 kg sortenreines Produkt versus 70 kg Platte erfüllen andere Nachfrage; Qualität, Ersatz, Energie/Kosten/Reststrom entscheiden. Die Verknüpfung zu Erwartungs-IDs behauptet keine vollständige Erfüllung jeder Gesamtprofilerwartung in diesem Einzelfall.",
+              "understandingFocusEn": "Case-specific aspects: PET esters hydrolysable; PE C–C lacks ester sites, material-specific routes after sorting. / 35·0.8=28 kg PET, 50·0.9=45 kg PE, 73 kg target product and 27 kg outside it. / 73 kg pure products versus 70 kg sheet serve different demand; quality, substitution, energy/cost/residue determine choice. Links to expectation IDs do not assert complete fulfilment of every whole-profile expectation in this one case."
+            },
+            {
+              "id": "hb208-recovery-routes-8721",
+              "taskDemandDe": "Bearbeite den vollständigen PE-Stoff-/Energievergleich und neuen Mischabfall.",
+              "taskDemandEn": "Handle the complete PE material/energy comparison and new mixed waste.",
+              "expectedPerformanceDe": "Energienutzung, Stoffrückgewinnung und LCA-Urteil unterscheiden.",
+              "expectedPerformanceEn": "Distinguish energy use, material recovery and LCA judgment.",
+              "understandingFocusDe": "Energetische Verwertung oxidiert Kunststoff zur Energienutzung und schließt keinen Stoffkreislauf; Vergleich braucht gleiche Funktion/Systemgrenze.",
+              "understandingFocusEn": "Energy recovery oxidizes plastic for useful energy and closes no material cycle; comparison needs equal function/boundary."
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

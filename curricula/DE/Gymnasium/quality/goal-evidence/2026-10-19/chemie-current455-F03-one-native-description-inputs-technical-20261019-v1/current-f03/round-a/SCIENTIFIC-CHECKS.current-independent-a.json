@@ -1,0 +1,101 @@
+{
+  "role": "CURRENT_INDEPENDENT_MACHINE_SCIENCE_CHECK_NOT_HUMAN_ACCEPTANCE",
+  "goalId": "8b2d351e-e44f-5385-9b89-13ef54b5918f",
+  "recordId": "chemie-current455-f03-one-D-20261019-v1-a-F03-record-001",
+  "A_decimal_recalculation": {
+    "normalisationFactor": "20",
+    "normalisedIntervals": [
+      [
+        "31.00",
+        "33.00"
+      ],
+      [
+        "45.00",
+        "47.00"
+      ],
+      [
+        "63.00",
+        "65.00"
+      ]
+    ],
+    "capacity40": "3.2",
+    "dissolved20": "1.6",
+    "crystals20": "1.4",
+    "crystalRange20": [
+      "1.35",
+      "1.45"
+    ],
+    "S35Local": "55.0",
+    "dissolved35Local": "2.75",
+    "crystals35Local": "0.25",
+    "concentration40": "60.0",
+    "saturationLimit40": "64",
+    "saturationLimit20": "32",
+    "capacityWith10Water20": "3.2",
+    "crystalsWith10Water20": "0",
+    "remainingCapacityWith10Water20": "0.2"
+  },
+  "B_decimal_recalculation": {
+    "normalisedEndpointUncertainty": "1.00",
+    "modelTemperatureDifference": "0.6",
+    "C": {
+      "capacity": "1.8",
+      "dissolved": "1.70",
+      "crystals": "0",
+      "remainingCapacity": "0.10"
+    },
+    "E": {
+      "water": "4.00",
+      "capacity": "1.44",
+      "dissolved": "1.44",
+      "crystals": "0.26",
+      "remainingCapacity": "0",
+      "totalMass": "5.70",
+      "totalLoadingRatio": "42.500",
+      "dissolvedRatio": "36.0"
+    },
+    "FConcentration": "10.00",
+    "CConcentration": "34.00",
+    "R": {
+      "capacity40": "1",
+      "capacity20": "2",
+      "dissolvedAfterCooling": "1.00",
+      "crystalsAfterCooling": "0",
+      "remainingCapacity20": "1"
+    }
+  },
+  "interpretations": [
+    "A compares dissolved solute per solvent mass with a temperature-specific saturation boundary; 60 at 40C is unsaturated yet exceeds the concentration of the saturated 32-at-20C comparison.",
+    "A 35C result is the explicitly permitted local interpolation, not a universal line; uncertainty interval reverses endpoints when calculating crystal mass.",
+    "A a clear cooled solution can be supersaturated; a photograph does not certify either unsaturation or an observed 1.40g dry crystal yield.",
+    "B a 0.6 solubility change is below the given plus/minus1.0 single-endpoint resolution; matching endpoints do not prove exact temperature independence.",
+    "B both controls have the same final temperature; the documented solvent loss changes E capacity while conserving solute. Total loading including solid is not dissolved concentration.",
+    "B changed R has decreasing S(T); cooling increases capacity, so no equilibrium crystals are required. A material balance requires the stated assumptions of no solute loss/reaction and adequate equilibration.",
+    "Practical endpoints require actual own observations and controls. Supplied synthetic values, full solutions and rubrics are design material and cannot satisfy e1.",
+    "All four criteria are coherent aspects of one investigation; complete aspects and meaningful transfer matter, without an additional automatic practical/task quota."
+  ],
+  "descriptionDecision": "keep",
+  "profileRecommendation": "none",
+  "substantiveCurrentProfileDefects": [],
+  "imageAssessment": {
+    "originalDimensions": [
+      1672,
+      941
+    ],
+    "viewsActuallySeen": [
+      360,
+      680
+    ],
+    "physicalPDFPageSeen": 3,
+    "physicalPDFPageCount": 3,
+    "frontmatterVerifiedByPerPageText": 2,
+    "actualDefects": [],
+    "observations": "Warm/cold vessels, cooling arrow, cold crystals and rising example curve with descending cooling arrow are legible at both widths. The full PDF page includes the complete description and both external prerequisite links with no clipping.",
+    "scopeLimitations": "PNG is a qualitative example, without numeric ticks or a printed universal-slope disclaimer; bound alt text explicitly states example-substance/schematic/nonmeasured status, and full materials supply flat/decreasing countercases. It shows cooling, not the entire solvent-loss case. It is neither quantitative data nor learner evidence."
+  },
+  "unknowns": [
+    "No actual learner/laboratory execution was observed.",
+    "No external complete source mapping/effective learner projection was verified.",
+    "No human approval or human trial is claimed."
+  ]
+}

@@ -1,0 +1,11 @@
+
+> skillpilot@0.0.0 visualization:prepare
+> node ../scripts/prepare_goal_visualization.mjs 8e6b5d11-8c1b-5220-af20-549a870dbd8c --landscape curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-greenhouse-atomicity-source-author-20261018-v2/candidate/landscape.proposed-not-active.json --subject chemie --provider OpenAI / ChatGPT-Codex built-in image_gen; model version not exposed --review-status needs_review
+
+Prepared prompt package for: Klimafolgen und Minderungsentscheidungen begründen
+SkillPilot ID: 8e6b5d11-8c1b-5220-af20-549a870dbd8c
+Prompt: tmp/goal-visualizations/8e6b5d11-8c1b-5220-af20-549a870dbd8c/nano-banana-prompt.de.md
+Metadata: tmp/goal-visualizations/8e6b5d11-8c1b-5220-af20-549a870dbd8c/metadata.json
+
+After generating and downloading the image, import it with:
+npm --prefix app run visualization:import -- 8e6b5d11-8c1b-5220-af20-549a870dbd8c "<downloaded-image-path>"

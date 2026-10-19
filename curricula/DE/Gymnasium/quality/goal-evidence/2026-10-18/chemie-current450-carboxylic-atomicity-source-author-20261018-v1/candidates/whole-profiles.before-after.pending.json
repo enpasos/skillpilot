@@ -1,0 +1,206 @@
+{
+  "role": "informed_AUTHOR_candidate_not_independent_review",
+  "status": "pending_separate_independent_review",
+  "active": false,
+  "reviewAuthority": "ai_candidate",
+  "humanApproval": false,
+  "actualLearnerPerformanceRecorded": false,
+  "M7Claim": false,
+  "before": {
+    "goalId": "a3788e40-b540-5bed-be37-b33053528422",
+    "profile": {
+      "archetype": "representation",
+      "expectations": [
+        {
+          "id": "carboxyl-acid-evidence",
+          "essentialUnderstandingDe": "Die Carboxygruppe enthält C=O und O–H am selben Kohlenstoff. Geeignete Beobachtungen belegen den sauren Charakter; Geruch oder ein beliebiges O–H reichen nicht.",
+          "essentialUnderstandingEn": "A carboxyl group has C=O and O–H on the same carbon. Suitable observations support acidity; smell or an arbitrary O–H do not suffice.",
+          "observablePerformanceDe": "Carboxygruppen in Struktur- und Skelettformeln markieren und bereitgestellte Indikator-/Reaktionsdaten stoffbezogen deuten.",
+          "observablePerformanceEn": "Mark carboxyl groups in structural and skeletal formulas and interpret supplied indicator/reaction data for each substance."
+        },
+        {
+          "id": "homologous-formulas",
+          "essentialUnderstandingDe": "Benachbarte unverzweigte gesättigte Monocarbonsäuren unterscheiden sich um CH₂. Ihre Strukturformeln behalten die Carboxygruppe.",
+          "essentialUnderstandingEn": "Adjacent unbranched saturated monocarboxylic acids differ by CH₂. Their structural formulas retain the carboxyl group.",
+          "observablePerformanceDe": "Eine passende homologe Reihe zeichnen und Carbonsäuren von isomeren Estern oder anderen sauerstoffhaltigen Stoffen unterscheiden.",
+          "observablePerformanceEn": "Draw a suitable homologous series and distinguish carboxylic acids from isomeric esters or other oxygen-containing compounds."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "carboxyl-acid-evidence",
+          "homologous-formulas"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "changed-chemical-case",
+          "textDe": "Andere Kettenlänge und Darstellungsform; funktionelle Gruppe statt bloßer Summenformel; frische Beobachtungsdaten.",
+          "textEn": "Change chain length and representation; functional group rather than molecular formula alone; fresh observation data."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "three-acids-and-ethanol",
+          "taskDemandDe": "Gegeben sind HCOOH, CH₃COOH, CH₃CH₂COOH und CH₃CH₂OH sowie Indikatordaten ihrer vergleichbar konzentrierten Lösungen. Markiere Carboxygruppen, begründe die sauren Befunde und zeichne die homologe Reihe.",
+          "taskDemandEn": "Given HCOOH, CH₃COOH, CH₃CH₂COOH and CH₃CH₂OH with indicator data for comparably concentrated solutions, mark carboxyl groups, explain acidic observations and draw the homologous series.",
+          "expectedPerformanceDe": "Nur die ersten drei enthalten COOH; ihr CH₂-Zuwachs definiert diese Reihe. Ethanol besitzt OH ohne benachbartes Carbonyl. Die bereitgestellten sauren Indikatorbefunde stützen die Zuordnung, nicht ein bloßer Stoffname.",
+          "expectedPerformanceEn": "Only the first three contain COOH; their CH₂ increments define this series. Ethanol has OH without an adjacent carbonyl. Supplied acidic indicator observations support the assignment rather than a substance name alone.",
+          "understandingFocusDe": "Gruppenerkennung, Beobachtung und homologe Struktur.",
+          "understandingFocusEn": "Group recognition, observation and homologous structure."
+        },
+        {
+          "id": "butanoic-acid-versus-ester",
+          "taskDemandDe": "Frisch gegeben sind Skelettformeln von Butansäure und Ethylethanoat, beide C₄H₈O₂. Zeichne vollständige Strukturformeln; ordne getrennte Indikatordaten zu und begründe, weshalb die gleiche Summenformel keine gleiche Stoffklasse beweist.",
+          "taskDemandEn": "Fresh skeletal formulas show butanoic acid and ethyl ethanoate, both C₄H₈O₂. Draw full structural formulas, assign separate indicator data and explain why equal molecular formulas do not imply the same class.",
+          "expectedPerformanceDe": "CH₃CH₂CH₂COOH setzt die unverzweigte Reihe fort und besitzt COOH; CH₃COOCH₂CH₃ ist ein Ester ohne Carboxy-OH. Formeln und bereitgestellte Beobachtungen müssen übereinstimmen; keine pauschale Acidität aller sauerstoffhaltigen Stoffe.",
+          "expectedPerformanceEn": "CH₃CH₂CH₂COOH continues the unbranched series and has COOH; CH₃COOCH₂CH₃ is an ester without a carboxyl OH. Formulas and supplied observations must agree; not all oxygen-containing compounds are acidic.",
+          "understandingFocusDe": "Frischer Isomer-/Darstellungstransfer.",
+          "understandingFocusEn": "Fresh isomer and representation transfer."
+        }
+      ]
+    },
+    "profileSemanticSHA256": "a93d0faf56716ee996b51246b314d38369353d412021665545db2d8a5e470d28"
+  },
+  "after": [
+    {
+      "goalId": "a3788e40-b540-5bed-be37-b33053528422",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "carboxyl-structure",
+            "essentialUnderstandingDe": "Die Carboxygruppe enthält C=O und O–H am selben Kohlenstoff; ein beliebiges O–H und eine Summenformel allein bestimmen die Stoffklasse nicht.",
+            "essentialUnderstandingEn": "A carboxyl group has C=O and O–H on the same carbon; an arbitrary O–H or molecular formula alone does not establish the class.",
+            "observablePerformanceDe": "Carboxygruppen in Struktur- und Skelettformeln markieren und vollständige bindungs- und H-richtige Strukturformeln schreiben.",
+            "observablePerformanceEn": "Mark carboxyl groups in structural and skeletal formulas and draw complete structures with correct bonds and hydrogens."
+          },
+          {
+            "id": "homologous-formulas",
+            "essentialUnderstandingDe": "Benachbarte unverzweigte gesättigte Monocarbonsäuren unterscheiden sich um CH₂. Ihre Strukturformeln behalten die Carboxygruppe.",
+            "essentialUnderstandingEn": "Adjacent unbranched saturated monocarboxylic acids differ by CH₂. Their structural formulas retain the carboxyl group.",
+            "observablePerformanceDe": "Eine passende homologe Reihe zeichnen und Carbonsäuren von isomeren Estern oder anderen sauerstoffhaltigen Stoffen unterscheiden.",
+            "observablePerformanceEn": "Draw a suitable homologous series and distinguish carboxylic acids from isomeric esters or other oxygen-containing compounds."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "carboxyl-structure",
+            "homologous-formulas"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "changed-chemical-case",
+            "textDe": "Andere Kettenlänge und Darstellungsform; funktionelle Gruppe statt bloßer Summenformel; frischer Säure-/Ester-Isomerfall.",
+            "textEn": "Change chain length and representation; functional group rather than molecular formula alone; fresh acid/ester isomer case."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "three-acids-and-ethanol",
+            "taskDemandDe": "Gegeben sind HCOOH, CH3COOH, CH3CH2COOH und CH3CH2OH. Markiere die Carboxygruppen und zeichne die unverzweigte gesättigte Monocarbonsäurereihe von Methan- bis Butansäure als vollständige Strukturformeln; erläutere den Unterschied zu Ethanol und den CH2-Zuwachs.",
+            "taskDemandEn": "Given HCOOH, CH3COOH, CH3CH2COOH and CH3CH2OH, mark carboxyl groups and draw complete structural formulas for the unbranched saturated methanoic-to-butanoic-acid series; explain the ethanol difference and CH2 increments.",
+            "expectedPerformanceDe": "HCOOH, CH3COOH, CH3CH2COOH und CH3CH2CH2COOH besitzen C=O und OH am selben C. Benachbarte Glieder unterscheiden sich um CH2. Ethanol hat OH ohne benachbartes Carbonyl. Alle Bindungen/H sind richtig, keine bloßen Summenformeln.",
+            "expectedPerformanceEn": "HCOOH, CH3COOH, CH3CH2COOH and CH3CH2CH2COOH have C=O and OH on the same carbon. Adjacent members differ by CH2. Ethanol has OH without an adjacent carbonyl. Bonds/hydrogens are correct; molecular formulas alone do not suffice.",
+            "understandingFocusDe": "Kohärente strukturelle Darstellung einer homologen Stoffklasse; die getrennte Säurebeobachtungspflicht wird im neuen Atom geprüft.",
+            "understandingFocusEn": "Coherent structural representation of a homologous class; the separate acidic-observation duty is assessed in the new atom."
+          },
+          {
+            "id": "butanoic-acid-versus-ester",
+            "taskDemandDe": "Die tatsächlich vorhandene Abbildung /assets/assessment-materials/chemie/00139854-e5a7-5c12-ab50-2268c80bf776/structural-isomers.A-B.png zeigt frische Skelettformeln A und B mit C4H8O2. Zeichne vollständige Strukturformeln, markiere gegebenenfalls die Carboxygruppe und begründe die verschiedenen Stoffklassen.",
+            "taskDemandEn": "The actual existing image /assets/assessment-materials/chemie/00139854-e5a7-5c12-ab50-2268c80bf776/structural-isomers.A-B.png gives fresh skeletal formulas A/B with C4H8O2. Draw complete structures, mark any carboxyl group and explain the different classes.",
+            "expectedPerformanceDe": "A=CH3CH2CH2C(=O)OH ist Butansäure und setzt die homologe Reihe fort. B=CH3C(=O)OCH2CH3 ist ein Ester ohne Carboxy-OH. Gleiche Summenformel beweist keine gleiche Klasse; die dargestellten Bindungen entscheiden.",
+            "expectedPerformanceEn": "A=CH3CH2CH2C(=O)OH is butanoic acid and continues the series. B=CH3C(=O)OCH2CH3 is an ester without carboxyl OH. Equal molecular formulas do not establish the same class; displayed bonds decide.",
+            "understandingFocusDe": "Frischer Isomer-/Darstellungstransfer.",
+            "understandingFocusEn": "Fresh isomer/representation transfer."
+          }
+        ]
+      },
+      "profileSemanticSHA256": "9c515cf18d21e3bb0e5d650aa727cc0710b18b60a3151169614f42b9d9490513"
+    },
+    {
+      "goalId": "dc146a38-994d-58ec-b6a0-5210118b93ae",
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "carboxyl-acid-evidence",
+            "essentialUnderstandingDe": "Geeignete Indikator- und Hydrogencarbonatbefunde mit Vergleichsproben stützen den sauren Charakter strukturell bekannter Carbonsäuren. Geruch oder ein beliebiges OH reichen nicht; die Beobachtungen allein identifizieren die Carboxygruppe nicht eindeutig.",
+            "essentialUnderstandingEn": "Suitable indicator and hydrogencarbonate observations with comparison samples support the acidic character of structurally known carboxylic acids. Smell or an arbitrary OH does not suffice; observations alone do not uniquely identify a carboxyl group.",
+            "observablePerformanceDe": "Bereitgestellte Indikator-/Reaktionsbefunde stoffbezogen deuten, passende Kontrollen heranziehen und Beobachtungsnachweis von eigenem Experiment und eindeutigem Strukturbeweis unterscheiden.",
+            "observablePerformanceEn": "Interpret supplied indicator/reaction observations for each substance, use relevant controls and distinguish observational support from a personal experiment and unique structural proof."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "carboxyl-acid-evidence"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "changed-acid-observation-case",
+            "textDe": "Drei bekannte Säuren/Ethanol und frischer C4H8O2-Säure-/Esterfall unter angegebenen milden Bedingungen.",
+            "textEn": "Three known acids/ethanol and a fresh C4H8O2 acid/ester case under stated mild conditions."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "three-acids-and-ethanol-acid-evidence",
+            "taskDemandDe": "Verwende die vollständige gebundene Beobachtungskarte curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-carboxylic-atomicity-source-author-20261018-v1/materials/carboxyl-supplied-observations.DE-EN.pending.json#/case1. Begründe mit den bereitgestellten Indikator-/Hydrogencarbonatbefunden und Vergleichsproben, welche bekannten Stoffe unter diesen Bedingungen sauren Charakter zeigen. Erkläre, was die Befunde belegen und weshalb weder eine eindeutige Strukturidentifikation noch eigene Versuchsdurchführung folgt.",
+            "taskDemandEn": "Use the complete bound observation card curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-carboxylic-atomicity-source-author-20261018-v1/materials/carboxyl-supplied-observations.DE-EN.pending.json#/case1. Use supplied indicator/hydrogencarbonate observations and comparisons to justify which known substances show acidic character under these conditions. Explain what the observations support and why neither unique structural identification nor personally performed experimentation follows.",
+            "expectedPerformanceDe": "Die ersten drei bekannten Carbonsäuren zeigen die passenden sauren Befunde; die Ethanolkontrolle zeigt sie unter den gesetzten Bedingungen nicht. Der Beleg gilt für die angegebenen Proben/Bedingungen. Indikator/CO2-Befund allein ist kein spezifischer COOH-Strukturbeweis; bereitgestellte Daten sind kein eigener Versuch.",
+            "expectedPerformanceEn": "The first three known carboxylic acids show the appropriate acidic observations; ethanol control does not under the stated conditions. The support is bounded by the stated samples/conditions. Indicator/CO2 observations alone are not specific COOH structural proof; supplied data are not a personal experiment.",
+            "understandingFocusDe": "Ein begründeter empirischer Säurebeleg mit ehrlicher Grenze, ohne die gesonderten realen Nachweis-Handlungen des bestehenden Trägers3de28598 zu beanspruchen. Zwei unabhängige Nachweisschritte können in einer integrierten Leistung liegen; die zwei Fälle sind keine zusätzliche Pflichtaufgabenquote.",
+            "understandingFocusEn": "Reasoned empirical support for acidic character with clear limits, without claiming the separate real detection actions of existing goal3de28598. Two independent demonstration steps may occur within one integrated performance; the two cases are not an additional task quota."
+          },
+          {
+            "id": "butanoic-acid-versus-ester-acid-evidence",
+            "taskDemandDe": "Verwende die vollständige gebundene Beobachtungskarte curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-carboxylic-atomicity-source-author-20261018-v1/materials/carboxyl-supplied-observations.DE-EN.pending.json#/freshCase2. Begründe mit den bereitgestellten Indikator-/Hydrogencarbonatbefunden und Vergleichsproben, welche bekannten Stoffe unter diesen Bedingungen sauren Charakter zeigen. Erkläre, was die Befunde belegen und weshalb weder eine eindeutige Strukturidentifikation noch eigene Versuchsdurchführung folgt.",
+            "taskDemandEn": "Use the complete bound observation card curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-carboxylic-atomicity-source-author-20261018-v1/materials/carboxyl-supplied-observations.DE-EN.pending.json#/freshCase2. Use supplied indicator/hydrogencarbonate observations and comparisons to justify which known substances show acidic character under these conditions. Explain what the observations support and why neither unique structural identification nor personally performed experimentation follows.",
+            "expectedPerformanceDe": "Die vorgegebenen sauren Befunde von A passen zur separat bekannten Butansäurestruktur; B ist der Ester und zeigt unter denselben milden Bedingungen keinen entsprechenden Befund. Die Summenformel C4H8O2 allein entscheidet nicht. Der Beleg gilt für die angegebenen Proben/Bedingungen. Indikator/CO2-Befund allein ist kein spezifischer COOH-Strukturbeweis; bereitgestellte Daten sind kein eigener Versuch.",
+            "expectedPerformanceEn": "The supplied acidic observations for A fit its separately known butanoic-acid structure; B is the ester and lacks corresponding responses under the same mild conditions. The C4H8O2 formula alone does not decide. The support is bounded by the stated samples/conditions. Indicator/CO2 observations alone are not specific COOH structural proof; supplied data are not a personal experiment.",
+            "understandingFocusDe": "Ein begründeter empirischer Säurebeleg mit ehrlicher Grenze, ohne die gesonderten realen Nachweis-Handlungen des bestehenden Trägers3de28598 zu beanspruchen. Zwei unabhängige Nachweisschritte können in einer integrierten Leistung liegen; die zwei Fälle sind keine zusätzliche Pflichtaufgabenquote.",
+            "understandingFocusEn": "Reasoned empirical support for acidic character with clear limits, without claiming the separate real detection actions of existing goal3de28598. Two independent demonstration steps may occur within one integrated performance; the two cases are not an additional task quota."
+          }
+        ]
+      },
+      "profileSemanticSHA256": "5f17154a6b362c610cdf17a441aa40f1352cf9b81107b486dc76f3ba58ace7c0"
+    }
+  ],
+  "dutyConservation": [
+    {
+      "originalExpectationId": "carboxyl-acid-evidence",
+      "originalSubduty": "COOH in structural/skeletal formulas recognize and mark",
+      "newGoalId": "a3788e40-b540-5bed-be37-b33053528422",
+      "newExpectationId": "carboxyl-structure"
+    },
+    {
+      "originalExpectationId": "carboxyl-acid-evidence",
+      "originalSubduty": "interpret suitable supplied acidic observations and evidence limits",
+      "newGoalId": "dc146a38-994d-58ec-b6a0-5210118b93ae",
+      "newExpectationId": "carboxyl-acid-evidence"
+    },
+    {
+      "originalExpectationId": "homologous-formulas",
+      "originalSubduty": "complete structural formulas, CH2 progression, isomer/class distinction",
+      "newGoalId": "a3788e40-b540-5bed-be37-b33053528422",
+      "newExpectationId": "homologous-formulas"
+    }
+  ],
+  "noDeletedRequiredDuty": true,
+  "independentDemonstrationsFreshVariationAndTransferRemainRequired": true,
+  "noExtraTaskQuota": "Both aspects can be demonstrated within the existing integrated task6. Two case briefs are variants, never a mandatory count of separately assigned tasks."
+}

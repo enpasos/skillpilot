@@ -1,0 +1,74 @@
+{
+  "role": "BOUNDED_RUNTIME_ALIAS_DATA_PROJECTION_FIX_NOT_NEW_SCIENTIFIC_REVIEW",
+  "recordedAtUTC": "2026-10-19T00:47:00.161776+00:00",
+  "actualPreFixFixtureRun": {
+    "tests": 87,
+    "passed": 86,
+    "failed": 1
+  },
+  "aliasPath": "curricula/DE/Gymnasium/mapping/DE-SL/upper-secondary/sl_chemistry_upper_secondary_to_canonical_chemistry.json",
+  "beforeSha256": "233bb3d98c0ddd4d9bf160ab6c791d5783dd2509c01539c6913d6978f1d5768b",
+  "afterSha256": "d0cf37bcda234955341ea21ffafb85068071dd51a2eb3a2d1b4e54b975913624",
+  "removedRuntimeOnlyPartialRows": [
+    {
+      "legacyGoalId": "sl-chem-sekii-sl-ch-sekii-gk-2023-2025-p045-004-de8c6ddd",
+      "canonicalGoalId": "f0939f88-a6af-5334-ac4d-5d54732af25a",
+      "matchType": "partial",
+      "reviewDecisionId": "sl-chem-sekii-sl-ch-sekii-gk-2023-2025-p045-004-de8c6ddd"
+    },
+    {
+      "legacyGoalId": "sl-chem-sekii-sl-ch-sekii-lk-2023-2025-p064-004-8d7de71b",
+      "canonicalGoalId": "f0939f88-a6af-5334-ac4d-5d54732af25a",
+      "matchType": "partial",
+      "reviewDecisionId": "sl-chem-sekii-sl-ch-sekii-lk-2023-2025-p064-004-8d7de71b"
+    },
+    {
+      "legacyGoalId": "sl-chem-sekii-sl-ch-sekii-gk-2023-2025-p045-004-de8c6ddd",
+      "canonicalGoalId": "ecce0306-13dc-5563-a097-afe69805a8d6",
+      "matchType": "partial",
+      "reviewDecisionId": "sl-chem-sekii-sl-ch-sekii-gk-2023-2025-p045-004-de8c6ddd"
+    },
+    {
+      "legacyGoalId": "sl-chem-sekii-sl-ch-sekii-lk-2023-2025-p064-004-8d7de71b",
+      "canonicalGoalId": "ecce0306-13dc-5563-a097-afe69805a8d6",
+      "matchType": "partial",
+      "reviewDecisionId": "sl-chem-sekii-sl-ch-sekii-lk-2023-2025-p064-004-8d7de71b"
+    }
+  ],
+  "remainingExactRows": 139,
+  "remainingPartialRows": 3004,
+  "totalRows": 3143,
+  "allOtherAliasJsonFieldsAndRowsExact": true,
+  "unchangedAuthoritativeScientificAndAtlasInputs": [
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-SL/upper-secondary/sl_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "sha256": "b605c824ebf691698eb31cdd41506b158f8eb12b9d1000c952047305b33a619f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "sha256": "a3994ef18ce0f7e060f1d4d63370af2d04e76c489e1785913a60fdf3e1cf686f"
+    },
+    {
+      "path": "app/scripts/config/goal-books/de-gym-chemistry-national-atlas.inputs.json",
+      "sha256": "bdec48ff20b713f6d6bf1a922efa50bbd95e444da47444e9b889c1388ec6ba0d"
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/source-projection.receipt.json",
+      "sha256": "7601d1584a499f3ed7020405495821230f638a15a09adb6c0295476df300e317"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "sha256": "5df2c9d8358e7a2a1d948c1b32d46240646045bc79893dfcda6bcd1d38a6465f"
+    }
+  ],
+  "independentReadOnlyRecommendation": {
+    "agent": "/root/chemie454_current35_fresh_description_b",
+    "recommendation": "Remove exactly the four supplementary partial entries from the runtime alias; preserve both exact b759 mappings and every source-review/Atlas contribution.",
+    "basis": "Both whole official GK p45 and LK p64-65 clauses concern H2/O2 PEM construction and operation. The complete b759 profile binds all required components and matter/charge paths. Supplementary f093/ecce contributions remain in the authoritative review. The runtime loader excludes .review.json and requires exclusive exact mappings."
+  },
+  "runtimeCodeChanged": false,
+  "scientificMappingsDemoted": false,
+  "newScientificCompletionCount": 0,
+  "GitHubAcceptanceClaimed": false,
+  "humanApprovalClaimed": false
+}

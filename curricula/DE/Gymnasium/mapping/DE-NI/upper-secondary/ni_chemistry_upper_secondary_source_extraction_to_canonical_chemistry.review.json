@@ -3925,8 +3925,8 @@
     },
     {
       "legacyGoalId": "ni-chemistry-sekii-kc2022-q-organik-3-kompetenz-002-18fe3556",
-      "canonicalGoalId": "70b34ae7-4481-590c-9a02-516464750832",
-      "matchType": "exact",
+      "canonicalGoalId": "98ae3f8e-4800-5ff3-bd2c-89434c006143",
+      "matchType": "partial",
       "reviewDecisionId": "ni-chemistry-sekii-kc2022-q-organik-3-kompetenz-002-18fe3556"
     },
     {
@@ -8803,11 +8803,76 @@
       "sourceSpan": "Kompetenz: beschreiben den Mechanismus der Ester-Synthese (eA).",
       "decision": "mapped",
       "canonicalGoalIds": [
-        "70b34ae7-4481-590c-9a02-516464750832"
+        "98ae3f8e-4800-5ff3-bd2c-89434c006143"
       ],
-      "rationale": "Das NI-Source-Ziel ist inhaltlich vollständig durch das zugeordnete kanonische Chemie-Ziel abgedeckt.",
-      "reviewedAt": "2026-05-11",
-      "reviewer": "codex"
+      "rationale": "ACCEPT existing98ae as a partial source-to-broader-goal mechanism contribution. Whole original physical/printed30 explicitly requires ester-synthesis mechanism at eA. Root read both whole current98ae P cases: carbonyl protonation, alcohol attack, tetrahedral state, proton transfer, water elimination and H+ regeneration; current bilingual D now names the same conditional acyl process. Actual NI-LK view directly targets98ae. Neither net condensation70b nor property62de is substituted for this mechanism. Additional amide, cold-salt and activation scope in98ae is not inferred from this NI clause; existing broader GK placement does not turn the official eA clause into a GK requirement. No actual synthesis execution or whole-source completion is claimed.",
+      "reviewedAt": "2026-10-18T23:36:28.505753+00:00",
+      "reviewer": "/root informed independent source-component review",
+      "matchType": "partial",
+      "authorAdditionalPartialContribution": {
+        "role": "AUTHOR_ONLY_PENDING_INDEPENDENT_ROOT_QS",
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "active": false,
+        "normalWrites": 0,
+        "independentApproval": false,
+        "humanApproval": false,
+        "nativeDApproval": false,
+        "M7Claim": false,
+        "wholeSourceApprovalClaim": false,
+        "normalApplyAuthorized": false,
+        "authoredAtUTC": "2026-10-18T23:32:52.027245+00:00",
+        "canonicalGoalId": "98ae3f8e-4800-5ff3-bd2c-89434c006143",
+        "matchType": "partial",
+        "actualOriginalClause": "beschreiben den Mechanismus der Ester-Synthese (eA).",
+        "officialCourseLevel": "LK",
+        "officialEAOnly": true,
+        "actualContributionDe": "Die vollständige NI-Sachkompetenzklausel physical/printed30 verlangt auf eA das Beschreiben des Estersynthese-Mechanismus. Das aktuelle ganze98ae-Ziel und sein ganzes P tragen genau diesen Vorgang: Carbonylprotonierung, Alkohol-O-Angriff, tetraedrisches Zwischenprodukt, Protonentransfer, Wasserabgang/C=O-Wiederbildung und H+-Regeneration. Zwei konkrete Esterfälle sind enthalten. Der Mechanismus wird daher nicht mit der bloßen70b-Nettokondensation oder62de-Eigenschaftsdeutung verwechselt.",
+        "limitsDe": "Partielle Source→breiteres98ae-Ziel-Bindung ausschließlich für den säurekatalysierten Estermechanismus. Die zusätzliche98ae-Amidbildung, ihre Aktivierungs-/Salzbildungsgrenzen und andere Originalseitenoperatoren werden aus dieser NI-Klausel nicht als amtliche Pflicht abgeleitet. eA/LK bleibt Originalpflicht; die bestehende GK-Targetplatzierung bleibt breiterer eigener SkillPilot-Umfang gemäß PO16.10/AGENTS2.3, keine universelle offizielle GK-Pflicht. Keine reale Syntheseausführung oder vollständige NI-Quellenfreigabe behauptet.",
+        "actualWholeInputs": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-62de-three-source-bridges-and-NI-open-author-20261019-v2/inputs/ACTUAL.NI-whole-operator-current98ae-goal-P-and-GK-LK-views.json",
+          "sha256": "11b5294690df91a56f635b559768e1abeef2a891b6407c507bcc1db3741bc413",
+          "bytes": 171199
+        },
+        "wholeCurrentGoalObjectSHA256": "4e1d91a82e62edbae8b7e69a5b9df8b8d7b7662a8a9417e5d0b6e81a2a7b0d99",
+        "wholeCurrentPBodyObjectSHA256": "65d5d60f06f1ad5e42a14046ae4e86b90d47b742eb29cf51d19effbfc79a2535",
+        "fullPActuallyRead": true,
+        "originalClauseAndAllOtherSourceGoalsUnchanged": true,
+        "actualNI_LKTargetWitness": {
+          "viewPin": {
+            "path": "curricula/DE/Gymnasium/composition-views/chemie/de-ni-lk.view.json",
+            "sha256": "56db806e143d42e3d16f414707575f9bf86dd6af8270778d54324bbf4c47f6b0",
+            "bytes": 59282
+          },
+          "pointer": "/rootNodes/0/children/1/children/12/children/20"
+        },
+        "existingNI_GKTargetIsBroaderAuthoredScopeNotOfficialGKRequirement": true,
+        "oldC117ReviewAndAuthorMetadataRemainHistoryNotApprovalOfNew98aeContribution": true,
+        "newIndependentRootQSRequired": true
+      },
+      "boundedIndependentMachineReview": {
+        "reviewAuthority": "ai_candidate",
+        "status": "needs_human_review",
+        "decision": "accept_actual_bounded_component_only",
+        "reviewedAtUTC": "2026-10-18T23:36:28.505753+00:00",
+        "reviewer": "/root",
+        "actualIndependentReview": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-three-property-and-NI-mechanism-source-integration-independent-root-20261019-v1/REVIEW.actual-three-property-and-NI-mechanism.independent-root.json",
+          "sha256": "74c0e3acec122a9575ec41f435de343ec029d24c198134c5cfa5686b0364be0c",
+          "bytes": 7905
+        },
+        "authorCAS": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-62de-three-source-bridges-and-NI-open-author-20261019-v2/operations/THREE.NI-existing98ae-mechanism-whole-group.pending-CAS.json",
+          "sha256": "d23239d2917fd9c68907c77739bbca4b55987facb052d797862499c9450f0c8d",
+          "bytes": 46352
+        },
+        "authorOperationId": "NI-review-mirror-replace-false70b-with98ae-partial",
+        "officialClauseAndCourseScopeUnchanged": true,
+        "otherGroupMembersRetainedNotReapproved": true,
+        "wholeSourceApproval": false,
+        "humanApproval": false,
+        "actualLearnerPerformanceClaim": false
+      }
     },
     {
       "sourceGoalId": "ni-chemistry-sekii-kc2022-q-organik-3-kompetenz-003-d2928ea0",

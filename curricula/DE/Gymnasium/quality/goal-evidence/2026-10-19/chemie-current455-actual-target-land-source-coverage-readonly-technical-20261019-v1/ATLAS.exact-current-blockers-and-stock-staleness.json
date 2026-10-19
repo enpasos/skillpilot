@@ -1,0 +1,353 @@
+{
+  "role": "BOUNDED_READ_ONLY_DIAGNOSIS_AFTER_ORIGINAL_ATLAS_FAILURE",
+  "actualUTC": "2026-10-18T23:19:36.435860+00:00",
+  "config": {
+    "path": "app/scripts/config/goal-books/de-gym-chemistry-national-atlas.inputs.json",
+    "sha256": "b8a570034b8dc7f13c4b13ceaaf2129448be9bc02f5278754a94960b8215aff5",
+    "bytes": 16529
+  },
+  "emptyMappedDecisionCount": 1,
+  "emptyMappedDecisions": [
+    {
+      "mappingFileAtRead": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.m7-manganometry-three-route-corrections-20261012-v1.review.json",
+        "sha256": "819be366be3e5f29c638132b6b4495ef0ebe16e6e9536b06a61524b7a2f536df",
+        "bytes": 505993
+      },
+      "decisionIndex": 282,
+      "sourceExtractionAtRead": {
+        "path": "curricula/DE/Gymnasium/input/NI/upper-secondary/source-extraction/DE_NI_CHEMIE_SEKII_KC2022.source-extraction.json",
+        "sha256": "2ad06989bd935933d8df3b984baff34cb9697c22fdf1db25e5461bbe3fa744bd",
+        "bytes": 498869
+      },
+      "wholeCurrentDecision": {
+        "sourceGoalId": "ni-chemistry-sekii-kc2022-q-organik-3-kompetenz-002-18fe3556",
+        "topicCode": "Q-ORGANIK-3",
+        "sourceSpan": "Kompetenz: beschreiben den Mechanismus der Ester-Synthese (eA).",
+        "decision": "mapped",
+        "canonicalGoalIds": [],
+        "rationale": "AUTHOR CANDIDATE ONLY. Nettoreaktion/Wechselwirkungen ersetzen keinen Mechanismus. Verbleibende Originalpflicht: 98ae ist echter mehrstufiger Estermechanismus-Träger; vollständige Quellbindung bleibt eigenständig. Alle übrigen vorhandenen Zielzuordnungen bleiben exakt; sie werden mit diesem begrenzten Split nicht erneut fachlich freigegeben.",
+        "reviewedAt": "2026-10-18T22:55:06.336434+00:00",
+        "reviewer": "/root/chemie_context28_fresh_blind_b",
+        "matchType": "partial",
+        "authorCandidate70Split": {
+          "authoredAt": "2026-10-18T22:46:34.795648+00:00",
+          "reviewAuthority": "ai_candidate",
+          "independentApproval": false,
+          "wholeSourceCredit": false,
+          "sourceGoalUnchanged": true,
+          "contributionTargetIds": [],
+          "actualOriginalDutyDe": "NI30 Sachkompetenz eA: Mechanismus der Ester-Synthese beschreiben.",
+          "remainingOriginalDutyDe": "98ae ist echter mehrstufiger Estermechanismus-Träger; vollständige Quellbindung bleibt eigenständig.",
+          "originalDecisionRetainedInCASBefore": true,
+          "oldReviewedAtAndReviewerHistoricalOnly": true
+        },
+        "boundedIndependentMachineReview": {
+          "reviewAuthority": "ai_candidate",
+          "status": "needs_human_review",
+          "decision": "accept_bounded_split_contributions_only",
+          "independentAcceptedCAS": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-source117-independent-c-20261019-v1/components/02-HH-MV-NI-NW-rows023-045/ACCEPTED-CAS.selected-source-group-operations.independent-c.json",
+            "sha256": "c55ab1141f479d2412671cb53ab09c5efd53f9f6afb1547c1debd50e5cf7b583",
+            "bytes": 10441
+          },
+          "sourceIdentityRowIndex": 37,
+          "authorAcceptedDecisionPayloadSHA256": "0878fd47ba95ae27470e9ea97995e747a09f9b21c10658864fb47be997e549ef",
+          "originalOfficialClauseAndScopeUnchanged": true,
+          "allOtherTargetRowsPreservedNotReapproved": true,
+          "wholeSourceApproval": false,
+          "remainingWholeOfficialDuties": "open unless separately proven by their current valid owners",
+          "humanApproval": false,
+          "actualLearnerPerformanceClaim": false
+        }
+      },
+      "wholeCurrentSourceGoal": {
+        "id": "ni-chemistry-sekii-kc2022-q-organik-3-kompetenz-002-18fe3556",
+        "passageId": "ni-chemistry-sekii-kc2022-q-organik-3",
+        "topicCode": "Q-ORGANIK-3",
+        "topicTitle": "Organische Verbindungen und ihre Reaktionswege",
+        "category": "Kompetenz",
+        "title": "beschreiben den Mechanismus der Ester-Synthese (eA).",
+        "description": "Die lernende Person kann beschreiben den Mechanismus der Ester-Synthese (eA)..",
+        "sourceDocumentKey": "NI-KC-CHEMIE-SEKII-2022",
+        "sourceRef": "Niedersachsen Kerncurriculum Chemie gymnasiale Oberstufe 2022, Organische Verbindungen und ihre Reaktionswege, S. 30.",
+        "sourceText": "beschreiben den Mechanismus der Ester-Synthese (eA).",
+        "sourceSpan": {
+          "passageId": "ni-chemistry-sekii-kc2022-q-organik-3",
+          "label": "Kompetenz: beschreiben den Mechanismus der Ester-Synthese (eA)."
+        },
+        "courseLevel": "LK",
+        "tags": [
+          "subject:Chemie",
+          "jurisdiction:DE-NI",
+          "stage:SekII",
+          "topic:Q-ORGANIK-3",
+          "courseLevel:LK"
+        ],
+        "metadata": {
+          "extractionMethod": "pdftotext-raw-official-pdf-competence-table-bullet-extraction"
+        }
+      },
+      "validationError": "Mapped decision without targets; unchanged pure-model assert requires non-empty target set. No technical or scientific remedy applied."
+    }
+  ],
+  "stockReceipt": {
+    "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/source-projection.receipt.json",
+    "sha256": "e62324a9f36cf24e24fe644329a07eae4da9847dd4b7e63b029aa1931a0c6fad",
+    "bytes": 7214421
+  },
+  "stockCountsHistoricalNotCurrentDerivation": {
+    "canonicalCurricularAtomicGoals": 454,
+    "publishedCurricularAtomicGoals": 422,
+    "sourceViews": 48,
+    "unresolvedSourceScopeDecisions": 504,
+    "omittedGoals": 32
+  },
+  "stockUnresolvedRows": 504,
+  "stockScopeRows": 48,
+  "stockOmittedByReason": {
+    "no-reviewed-mapped-source-witness": 26,
+    "unresolved-source-scope": 6
+  },
+  "stockInputsNoLongerMatchCount": 26,
+  "stockInputsNoLongerMatch": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "stockSHA256": "sha256:042afe2fe8e86a5a4a539109db0a8bd5d616270ca12a777b4051db2ec4561685",
+      "current": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+        "sha256": "3c42ecb80332d7fce4d5b6a8622b9a8a02f34826ed16d07aa78bfc8fba37ce9e",
+        "bytes": 5435740
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-bb-gk.view.json",
+      "stockSHA256": "sha256:322fa2759cb34a58976551bbb8ee1034dd36a8ea4a591d639c335371833ebda7",
+      "current": {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-bb-gk.view.json",
+        "sha256": "c86a43186d62e0a49f5efb2733d5a2a89bb139911277112f3a5fbff4a9ae05e5",
+        "bytes": 49059
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-bb-lk.view.json",
+      "stockSHA256": "sha256:3878aebfa17ee2fa87afc1393de143b52630fd98800b5959f9700efb046556db",
+      "current": {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-bb-lk.view.json",
+        "sha256": "ae3448fabc9feb9235a71f70eea9e9111981399ef11025a9e50decb92a3e4468",
+        "bytes": 56750
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-be-gk.view.json",
+      "stockSHA256": "sha256:434a4b8688264ea428a65c14e4ba21bec433b9c148d0e754619b085139f632ac",
+      "current": {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-be-gk.view.json",
+        "sha256": "a3202805f65133c3c61b9486aad369d3ead8042f687fce8949b18da85ffe3d2d",
+        "bytes": 49059
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-be-lk.view.json",
+      "stockSHA256": "sha256:38b1a0cd8b4223e938c51f78db5d5a146bcc9d8d6fa4ec8d0454713d59a92168",
+      "current": {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-be-lk.view.json",
+        "sha256": "d50fb9699a8efc3905f5e4ce710bf9e7657bede27b47c3bdc382b17481ecead0",
+        "bytes": 56750
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BB/lower-secondary/bb_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "stockSHA256": "sha256:3ad247b7c9b3943fbb7e4f41c568756a797ac7208cad52c0444403a2081963e0",
+      "current": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-BB/lower-secondary/bb_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+        "sha256": "1837b8e6a4501ec6d649f10745e2c01bdc6c5c3e1125f2d0c1e5ab3e3cdf82d3",
+        "bytes": 121605
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BE/lower-secondary/be_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "stockSHA256": "sha256:47e2ec4bb8652974313557c552801d85da92fb009d178535f49ad769e46a1803",
+      "current": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-BE/lower-secondary/be_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+        "sha256": "a031146bddd80b4d50196e80b9f901d54eb2aa3817003cc1fa10cdf03bcb78f3",
+        "bytes": 121602
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BW/lower-secondary/bw_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "stockSHA256": "sha256:e6cf8b278deed5563f1f758ebc295b1a01140eba5bfd445052dc0c96c8debffe",
+      "current": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-BW/lower-secondary/bw_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+        "sha256": "aa2bece02111bba055fb0134f13e96789663e8f6610e076bfa68d9ad76ca8a1f",
+        "bytes": 85406
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "stockSHA256": "sha256:09e4017ebaa801b2df6d8c3f278303f6acc213dc8e4e3482bd68db6e01b06ca3",
+      "current": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+        "sha256": "1754fbb1b7b8ef8e2d2c87fe0d3b4f8e766b1d261c2a6b078e4b6076df0f7373",
+        "bytes": 239188
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_chemistry_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.json",
+      "stockSHA256": "sha256:5ac6427fd7d24e0ba2500844ea22dd659813fc10035b608ca3713b0bb6fe51fd",
+      "current": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_chemistry_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.json",
+        "sha256": "0574b416d7c9650e10bd6bedf64e493aaf22fc94d4f6b31b7467ecc7fdfdb53d",
+        "bytes": 357118
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HB/upper-secondary/hb_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "stockSHA256": "sha256:26cbc5f5cc251e8ddb13748b518cf3478d9d7d3fa69a76f4708062191766bb33",
+      "current": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-HB/upper-secondary/hb_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+        "sha256": "8d6314ed5e9d8738a1cdd3639029f22c43131b5ded3ca5246df81ce39dbbf5a7",
+        "bytes": 703961
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.q1-atomic-split-author-proposal-20261005-v1.q4-four-bounded-reviewed-20261013-v1.review.json",
+      "stockSHA256": "sha256:4fbd827db6a34f011b765f78ef3bbacb76bf896aeba7856a6c74882277ea47c3",
+      "current": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.q1-atomic-split-author-proposal-20261005-v1.q4-four-bounded-reviewed-20261013-v1.review.json",
+        "sha256": "59583c12a72b1a2e59a5ebb2817df90a768473e1fc070fc2ce9ea017666d26a8",
+        "bytes": 295393
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HH/upper-secondary/hh_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.q4-four-bounded-reviewed-20261013-v1.review.json",
+      "stockSHA256": "sha256:9dd6014e7f91134011530244f45be4021836f4d1e095516cbeee20be7dd612b2",
+      "current": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-HH/upper-secondary/hh_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.q4-four-bounded-reviewed-20261013-v1.review.json",
+        "sha256": "d8b63ffb27a0e294676b2fd2da2139412e28a6a93879b08be466d8bec8b9af9b",
+        "bytes": 249142
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "stockSHA256": "sha256:87dcb2f3166579d78778c669b8a30ad3d491d1cdbf22503ed1483d24064e3ad3",
+      "current": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+        "sha256": "6604142dfe9153a3f8e7864c91c4fde664dc0a52a133d97829621ad17609ca83",
+        "bytes": 241879
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-MV/upper-secondary/mv_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "stockSHA256": "sha256:60013e22bac146afca7ea007bc39603cfa8be7497dccae15e90ec30526cfc191",
+      "current": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-MV/upper-secondary/mv_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+        "sha256": "277a6eec59d0410edf1bbe8d0bb4ac7964958019588b89dd8921153e6f6e26e1",
+        "bytes": 350379
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.m7-manganometry-three-route-corrections-20261012-v1.review.json",
+      "stockSHA256": "sha256:4938d3032dc93b3488803cf8c46e275176b1006efb698d05c904d0999b929f91",
+      "current": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.m7-manganometry-three-route-corrections-20261012-v1.review.json",
+        "sha256": "819be366be3e5f29c638132b6b4495ef0ebe16e6e9536b06a61524b7a2f536df",
+        "bytes": 505993
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.q4-four-bounded-reviewed-20261013-v1.review.json",
+      "stockSHA256": "sha256:00960344cb1ffab6235d34d403c4ec7ea8536aad932abd9cd2122cc4d8491186",
+      "current": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.q4-four-bounded-reviewed-20261013-v1.review.json",
+        "sha256": "c4ad184f2afdfdc45fc80067c40c0b67af86b391fc8e218cd5a2641e5a029b07",
+        "bytes": 794294
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "stockSHA256": "sha256:06f2ec16d5efc7507eea4836080ba3981166889fbcc8d6d3330b1165689e93cf",
+      "current": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+        "sha256": "983423b6b0cc4168721e039a643ed26b537516bc9a9d61eace37715092277f14",
+        "bytes": 723584
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-SH/upper-secondary/sh_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.m7-micelle-correction-20261012-v1.review.json",
+      "stockSHA256": "sha256:1fa00a699e5a0632361010045c6ebd40f06596e13fd942f462c81f620e95547d",
+      "current": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-SH/upper-secondary/sh_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.m7-micelle-correction-20261012-v1.review.json",
+        "sha256": "04df79e86ca12297e5465690361cce0efec6da104ea9abe5e6ff151e842ea252",
+        "bytes": 396282
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-SL/upper-secondary/sl_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "stockSHA256": "sha256:845c888f0566c57dd160a52b2163aeeb99327f3227d91c071c6a2eb1fddb2d06",
+      "current": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-SL/upper-secondary/sl_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+        "sha256": "b605c824ebf691698eb31cdd41506b158f8eb12b9d1000c952047305b33a619f",
+        "bytes": 1440085
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "stockSHA256": "sha256:0b08a91c3dc7f324835d516eff71168b92ce4ed1d897707a2914e1cee30df629",
+      "current": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+        "sha256": "5d6929b1a5358d2e70e012b2477304609817da24347e6cb38363bc7abdd556fe",
+        "bytes": 477469
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "stockSHA256": "sha256:35ba24aecd247b634dc8576fd1e7eeaddf4ed655bf1f9bf75539a72020c00226",
+      "current": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+        "sha256": "08ac85fc79e5053b76afdec118320d4c381889853655aa0231d31718a97edfa7",
+        "bytes": 889594
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-ST/lower-secondary/st_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "stockSHA256": "sha256:b8a408427f4b486132d574c12b912d673264f631ecfbc19fbad6b46291651b5c",
+      "current": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-ST/lower-secondary/st_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+        "sha256": "fe4560e56899092fa1709d8d60aaefae688245516f40e3e1c5baf5724c1ce31b",
+        "bytes": 637912
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-ST/upper-secondary/st_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "stockSHA256": "sha256:9ea5da20c7434437075911d9c294987027244a58dbf52e79b70837aa301606c9",
+      "current": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-ST/upper-secondary/st_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+        "sha256": "5de40f0262e3e34d197a0068c7ce0665b7b68b01124f5650ac9c86c841508965",
+        "bytes": 1067265
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-TH/upper-secondary/th_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.json",
+      "stockSHA256": "sha256:93a505211333cc7ff1a45528c9d4d1456540be8c3aed462faace61b150c1e6c7",
+      "current": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-TH/upper-secondary/th_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.json",
+        "sha256": "66bd3f656a9eda3a0728ce1b47dea7c97f5fb26b75ca4c01d3433b51e0b3b6fd",
+        "bytes": 571170
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-book-publication/chemie.semantic-kinds.json",
+      "stockSHA256": "sha256:ace17ad3a2cc23ffff0b244a16118d6393ddc8ca78bd99b7cc0c864b3eae4f5a",
+      "current": {
+        "path": "curricula/DE/Gymnasium/quality/goal-book-publication/chemie.semantic-kinds.json",
+        "sha256": "783025e40008f549279e417a974e177abc5d802236cdce7f5ac9a1eba8ff6a9a",
+        "bytes": 237945
+      }
+    }
+  ],
+  "currentAtlasPublicationScopeOmissionCountsEstablished": false,
+  "normalWrites": 0,
+  "inMemoryEmptyDecisionRepairOrGateBypass": false,
+  "scientificClaim": "Empty mapped targets are a technical consistency defect. This diagnosis neither restores the removed Ester edge nor approves a replacement scientific source/whole clause."
+}

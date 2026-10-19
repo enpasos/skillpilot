@@ -1,0 +1,14 @@
+/home/enpasos/projects/skillpilot/tmp/chemie-70b-graph-view-independent-c.mts:14
+const must = (x: unknown, s: string) => { if(!x) throw new Error(s) }
+                                                       ^
+
+
+Error: raw pin curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json
+    at must (/home/enpasos/projects/skillpilot/tmp/chemie-70b-graph-view-independent-c.mts:14:56)
+    at verifyPin (/home/enpasos/projects/skillpilot/tmp/chemie-70b-graph-view-independent-c.mts:16:58)
+    at <anonymous> (/home/enpasos/projects/skillpilot/tmp/chemie-70b-graph-view-independent-c.mts:19:12)
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+
+Node.js v20.20.2

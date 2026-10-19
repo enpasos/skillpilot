@@ -1,5 +1,9 @@
 # Chemie: Lernwegabschluss nach bestandenem CI-Zwischenstand
 
+> Fortsetzung: Der [aktuelle 454er-Arbeitsstand](chemie-current454-integration-progress-2026-10-18.md)
+> dokumentiert die spätere lokale Integration und ihre noch offenen Prüfungen.
+> Die folgenden 450er-Messungen bleiben als datierter Verlauf erhalten.
+
 ## Aktuelle Fortsetzung nach dem grünen Commit `c9f951f7`
 
 Der [GitHub-Lauf für `c9f951f7`](https://github.com/enpasos/skillpilot/actions/runs/39140420885)

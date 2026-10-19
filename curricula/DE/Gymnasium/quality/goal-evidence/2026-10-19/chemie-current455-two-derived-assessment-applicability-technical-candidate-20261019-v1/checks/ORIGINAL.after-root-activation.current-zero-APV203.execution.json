@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "role": "original_read_only_post_root_activation_compiler_check",
+  "argv": [
+    "app/node_modules/.bin/tsx",
+    "-e",
+    "import {buildApplicabilityCompilation} from \"./app/scripts/applicabilityCompiler.ts\";const report=buildApplicabilityCompilation().reports.find((r)=>r.landscapeId===\"c436b994-8f44-5134-b9f8-0c9f5d6a5ba0\");if(!report)throw new Error(\"Missing Chemistry report\");const ids=[\"c5394fb8-9411-5533-b2af-831c4c67b4be\",\"ee494d08-9514-54f2-ac5e-eebc20ca8725\",\"f9e6d689-6e59-59a4-9f21-8c2d44413244\",\"b7ae47da-6afa-5651-977a-3139af7d6eab\"];const apv203=report.findings.filter((f)=>f.code===\"APV-203\");console.log(JSON.stringify({landscapeId:report.landscapeId,summary:report.summary,APV203:apv203,goals:report.goals.filter((g)=>ids.includes(g.goalId))},null,2));if(apv203.length!==0)throw new Error(\"Current Chemistry still has APV-203\");"
+  ],
+  "startedAtUtc": "2026-10-19T00:12:13.517263+00:00",
+  "finishedAtUtc": "2026-10-19T00:12:28.313870+00:00",
+  "exitCode": 0,
+  "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-two-derived-assessment-applicability-technical-candidate-20261019-v1/checks/ORIGINAL.after-root-activation.current-zero-APV203.raw.json",
+  "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-two-derived-assessment-applicability-technical-candidate-20261019-v1/checks/ORIGINAL.after-root-activation.current-zero-APV203.stderr.txt",
+  "normalWritesPerformed": false,
+  "scientificReviewPerformed": false,
+  "writeApplicabilityReportsCalled": false,
+  "scope": "Actual current Chemistry APV-203 findings and four existing endpoint/prerequisite compiler rows only."
+}

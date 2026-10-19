@@ -1,0 +1,50 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-current455-f03-one-D-20261019-v1-b-native-independent-20261019T001449Z",
+  "campaignId": "chemie-current455-f03-one-D-20261019-v1-b",
+  "roundId": "chemie-current455-f03-one-D-20261019-v1-first-pass-b",
+  "batchId": "chemie-current455-f03-one-D-20261019-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:2a0926c9fe1310bbc445e00d1424d8f8b3d0a1b4cacbf408a9fb1a1ea59fbe56",
+  "bundleFingerprint": "sha256:bfe4e031d0dbc22378baec9b1e0295857a4e4c4b1e662a4c79d64c2bed29f17b",
+  "bookDigest": "sha256:7452d75ecdf3886adf50061841f2de11431ccf4f8511380bd6649d2cbc359c10",
+  "provider": "OpenAI",
+  "model": "GPT-6 (system description; exact serving identifier and revision not exposed)",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:f86a4d1221a21fdabe5d162dd42b19a542c1219e271c455ae14e95148c90322e",
+  "independenceGroupId": "chemie-current455-f03-one-D-20261019-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "8b2d351e-e44f-5385-9b89-13ef54b5918f"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:36666e23c38c84af1b934172d66eb3ff55d3b42ffcb16b9a60abe8aa8022c1e7"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:0a62d75fcde7836a0095f5c3617062a3b63ff7ebc6dbb5e91fade1ce6255b741"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:2a0926c9fe1310bbc445e00d1424d8f8b3d0a1b4cacbf408a9fb1a1ea59fbe56"
+    }
+  ],
+  "startedAt": "2026-10-19T00:14:49.482136+00:00",
+  "completedAt": "2026-10-19T00:17:15.974289+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:f7ee73527d2a3d037a7efcaa533fa386370a6a36f96fbeaa899a80320142dac7",
+  "toolchainVersion": "codex-native-session-node20.20.2-python3.12.9-chromium147"
+}

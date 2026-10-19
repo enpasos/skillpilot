@@ -1,0 +1,194 @@
+{
+  "role": "AUTHOR",
+  "status": "needs_human_review",
+  "reviewAuthority": "ai_candidate",
+  "normalMappingPath": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+  "mappingRawBefore": {
+    "path": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+    "sha256": "470a5927d7e426219f0c3c85f6bfe9bd67e93abb44790683775cf9685ef5f852",
+    "bytes": 812699,
+    "role": "exact-current-normal-mapping-CAS"
+  },
+  "sourceCloneInput": {
+    "path": "curricula/DE/Gymnasium/input/SN/upper-secondary/source-extraction/DE_SN_CHEMIE_SEKII_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+    "sha256": "6ea85d0c818b8d25ef1c7c035b2992e2bfe02a00206ab73f7582eb1a96a5c723",
+    "bytes": 828791,
+    "role": "exact-current-whole-source-clone-CAS"
+  },
+  "sourceCloneOutput": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-sn-critical-judgment-source-author-20261018-v3/candidate/SN.whole-current-source-clone.one-general-critical-unit.pending.json",
+  "sourceCloneOutputSHA256": "96cd186c51acfb94d55ec3c5612fbea6c56df1c9b0c9d6081820d0d913af31b8",
+  "originalSourceMustRemainUnchanged": true,
+  "wholeOldSourcePrefix": {
+    "count": 304,
+    "canonicalObjectArraySHA256": "70c50674f8e59e7a70b9c33de21cd8235b145b901f45a5866359ca4c9d201e27"
+  },
+  "wholeOldPassagePrefix": {
+    "count": 35,
+    "canonicalObjectArraySHA256": "f3dc05f51997687323f004171e48299e93e71ee0e27135b29a7c1ac17c71f5d6"
+  },
+  "wholeOldMappingPrefix": {
+    "count": 1746,
+    "canonicalObjectArraySHA256": "988a312684e0f085279be73cfbff6b0303b6106f8b4f1f7c0429a97aa38a722f"
+  },
+  "wholeOldDecisionPrefix": {
+    "count": 304,
+    "canonicalObjectArraySHA256": "bba2a35c2c645db10ab095eefc8fbb96dd5192df7c7a1c092b9af6cdc123ffc0"
+  },
+  "wholeMappingHeaderBefore": {
+    "version": 1,
+    "reviewId": "DE-SN-CHEMIE-SEKII-LEHRPLAN-GYMNASIUM-2025-MAPPING-3-SOURCE-EXTRACTION-1",
+    "sourceLandscapeId": "4629b4f3-95eb-5166-8b6b-056632d0f270",
+    "targetLandscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "sourceExtractionPath": "curricula/DE/Gymnasium/input/SN/upper-secondary/source-extraction/DE_SN_CHEMIE_SEKII_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+    "status": {
+      "scope": "DE-SN - Chemie Jahrgangsstufen 11/12 (Sachsen, Lehrplan Gymnasium 2025 Source-Extraction) / amtliche Source-Extraction",
+      "reviewedSourceGoals": 302,
+      "mappedSourceGoals": 302,
+      "needsViewPlacementReview": 0,
+      "needsCanonicalGoal": 0,
+      "totalSourceGoals": 302,
+      "explicitNeedsCanonicalGoal": 0,
+      "notes": "Das Chemie-Source-Inventar wurde gegen die amtliche Source-Extraction fachlich abgedeckt. MatchType partial bedeutet 1:n-Abdeckung, nicht fachliche Offenheit."
+    },
+    "fourteenMethodPartialIntegration": {
+      "independentAcceptedRef": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/ACCEPTED.exact104-direct-partial-two-literal-three-held.json",
+        "sha256": "9958d0a23bb96b4cce0ed69f2018631764f5fe943d87ed8136ef2ba070457119",
+        "bytes": 99336
+      },
+      "newPartialMappingRows": 3,
+      "newSourceDecisionIds": [
+        "sn-chemistry-sekii-process-standard-gk-ziel-textanalyse",
+        "sn-chemistry-sekii-process-standard-gk-ziel-own-experiments"
+      ],
+      "allOldMappingRowsAndOldDecisionFieldsPreserved": true,
+      "wholeSourceCoverageEstablished": false,
+      "newScientificFirstDecisionsByTechnicalIntegrator": 0
+    }
+  },
+  "wholeCandidateMappingSHA256": "7189a2bc46396cd6273bd7885be470ab1cae42b2c90b980d6d5b11b3bb22726f",
+  "patch": [
+    {
+      "op": "test",
+      "path": "/sourceExtractionPath",
+      "value": "curricula/DE/Gymnasium/input/SN/upper-secondary/source-extraction/DE_SN_CHEMIE_SEKII_LEHRPLAN_GYMNASIUM_2025.source-extraction.json"
+    },
+    {
+      "op": "replace",
+      "path": "/sourceExtractionPath",
+      "value": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-sn-critical-judgment-source-author-20261018-v3/candidate/SN.whole-current-source-clone.one-general-critical-unit.pending.json"
+    },
+    {
+      "op": "add",
+      "path": "/mappings/-",
+      "value": {
+        "legacyGoalId": "sn-chemistry-general-reflection-discourse-critical-solutions-whole-p08-p09",
+        "canonicalGoalId": "b732c780-beb8-55f3-8503-edd6b8677a3a",
+        "matchType": "partial",
+        "reviewDecisionId": "sn-chemistry-general-reflection-discourse-critical-solutions-whole-p08-p09"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/decisions/-",
+      "value": {
+        "sourceGoalId": "sn-chemistry-general-reflection-discourse-critical-solutions-whole-p08-p09",
+        "topicCode": "general-Gymnasium-reflection-and-discourse",
+        "sourceSpan": "Sachsen Lehrplan Gymnasium Chemie2025, Ziele und Aufgaben des Gymnasiums: ganze beschriftete Einheit Reflexions- und Diskursfähigkeit, physisch8–9/gedrucktVIII–IX; verbindender Geltungskontext überfachlicher Ziele in jedem Fach auf physisch7/gedrucktVII.",
+        "sourceCourseLevel": "unspecified",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "b732c780-beb8-55f3-8503-edd6b8677a3a"
+        ],
+        "matchType": "partial",
+        "rationale": "Die tatsächliche Leistung ist die eigenständig begründete kritische Prüfung zweier ausdrücklich falscher fremder Urteile im frischen Fall. Die Lernenden prüfen den vorgeschlagenen Schluss98kg→2kg chemisch vernichtet an der vollständigen Erfassungsgrenze mit nachgewiesenem2kg-Stoffabgang und weisen ihn begründet zurück. Ebenso widerlegen sie30kg Öl→vollständige Rückgewinnung, weil die Anfangsölmenge fehlt. Die Kritik beurteilt damit konkrete Positionen/Lösungswege anhand von Givens und sachlich zutreffender Begründung. Das vollzieht den kritischen Urteils-/Begründungsanteil der ganzen allgemeinen Reflexions-/Diskurseinheit tatsächlich; bloß richtige Summenbildung würde dafür nicht genügen. Der Originalkontext7 verlangt die Umsetzung der überfachlichen Ziele in jedem Fach. Es ist keine amtliche spezielle Bilanz-/Saatölpflicht und kein ganzer Diskurs-, Lebensführungs- oder mündlich-und-schriftlich-Präsentationsabschluss.",
+        "reviewedAt": "2026-10-18T20:51:05.293866+00:00",
+        "reviewer": "Codex AUTHOR; separate independent scientific review required",
+        "reviewStatus": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "wholeSourceCredit": false,
+        "wholeSourceCompletionFromSingleGoalMasteryAllowed": false,
+        "actualLearnerExecutionClaim": false,
+        "officialB732SpecialTopicRequirementClaim": false,
+        "unfulfilledWholeSourceComponents": [
+          "gesamte vertiefte Reflexions- und Diskursfähigkeit über komplexe Lebens-/Fachsituationen",
+          "selbstbestimmte verantwortliche Lebensführung als gesamtes Bildungsziel",
+          "komplexe Sachverhalte sowohl mündlich als auch schriftlich stringent darlegen",
+          "ganze amtliche Reflexions-/Diskurseinheit erfüllen"
+        ],
+        "currentUnionRef": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-sn-critical-judgment-source-author-20261018-v3/AUTHOR.one-whole-general-critical-judgment-component.pending.json",
+          "jsonPointer": "/rows/0"
+        }
+      }
+    },
+    {
+      "op": "test",
+      "path": "/status",
+      "value": {
+        "scope": "DE-SN - Chemie Jahrgangsstufen 11/12 (Sachsen, Lehrplan Gymnasium 2025 Source-Extraction) / amtliche Source-Extraction",
+        "reviewedSourceGoals": 302,
+        "mappedSourceGoals": 302,
+        "needsViewPlacementReview": 0,
+        "needsCanonicalGoal": 0,
+        "totalSourceGoals": 302,
+        "explicitNeedsCanonicalGoal": 0,
+        "notes": "Das Chemie-Source-Inventar wurde gegen die amtliche Source-Extraction fachlich abgedeckt. MatchType partial bedeutet 1:n-Abdeckung, nicht fachliche Offenheit."
+      }
+    },
+    {
+      "op": "replace",
+      "path": "/status",
+      "value": {
+        "scope": "DE-SN - Chemie Jahrgangsstufen 11/12 (Sachsen, Lehrplan Gymnasium 2025 Source-Extraction) / amtliche Source-Extraction",
+        "reviewedSourceGoals": 302,
+        "mappedSourceGoals": 302,
+        "needsViewPlacementReview": 0,
+        "needsCanonicalGoal": 0,
+        "totalSourceGoals": 305,
+        "explicitNeedsCanonicalGoal": 0,
+        "notes": "Das Chemie-Source-Inventar wurde gegen die amtliche Source-Extraction fachlich abgedeckt. MatchType partial bedeutet 1:n-Abdeckung, nicht fachliche Offenheit. Additive AUTHOR V3 proposes one complete general reflection/discourse unit and only an actual critical-claim-judgment contribution. Old accepted counts concern their previous scope; no whole-source completion or new independent decision.",
+        "newAuthorPendingPartialSourceGoals": 1,
+        "newAuthorWholeSourceGoalsCovered": 0
+      }
+    },
+    {
+      "op": "add",
+      "path": "/b732GeneralCriticalJudgmentAuthorV3",
+      "value": {
+        "role": "AUTHOR",
+        "reviewStatus": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "previousStatusHistorical": {
+          "scope": "DE-SN - Chemie Jahrgangsstufen 11/12 (Sachsen, Lehrplan Gymnasium 2025 Source-Extraction) / amtliche Source-Extraction",
+          "reviewedSourceGoals": 302,
+          "mappedSourceGoals": 302,
+          "needsViewPlacementReview": 0,
+          "needsCanonicalGoal": 0,
+          "totalSourceGoals": 302,
+          "explicitNeedsCanonicalGoal": 0,
+          "notes": "Das Chemie-Source-Inventar wurde gegen die amtliche Source-Extraction fachlich abgedeckt. MatchType partial bedeutet 1:n-Abdeckung, nicht fachliche Offenheit."
+        },
+        "rejectedV2DirectRelationRemainsUnselected": "sn-chemistry-sekii-process-standard-gk-lk-mathematical-methods-and-digital-tools-whole",
+        "newWholeSourceUnitId": "sn-chemistry-general-reflection-discourse-critical-solutions-whole-p08-p09",
+        "newPartialFindingRef": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-sn-critical-judgment-source-author-20261018-v3/AUTHOR.one-whole-general-critical-judgment-component.pending.json",
+          "jsonPointer": "/rows/0"
+        },
+        "allOldMappingsAndDecisionsRetainedExactly": true,
+        "wholeSourceCredit": false
+      }
+    }
+  ],
+  "counts": {
+    "sourceBefore": 304,
+    "sourceAfter": 305,
+    "mappingBefore": 1746,
+    "mappingAfter": 1747,
+    "decisionsBefore": 304,
+    "decisionsAfter": 305,
+    "oldSourceObjectsOrMappingsOrDecisionsChanged": 0,
+    "newRequiresOrCanonicalGoalsOrViews": 0
+  },
+  "mergeBoundary": "Exact current SN leaf only. No rejected V2 source/header/row may be imported. All old arrays/whole objects must remain exact. No activation before separate review."
+}

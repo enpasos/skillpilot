@@ -1,0 +1,32 @@
+{
+  "id": "SEM-COUNTS-01",
+  "decision": "revise",
+  "scope": "Inactive technical candidate serialization only",
+  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-biofuel-atomicity-source-author-20261018-v1/candidate/semantic-kinds.after.INACTIVE.json",
+  "actualStoredCounts": {
+    "programStructure": 3,
+    "curricularArea": 89,
+    "curricularAtomic": 450,
+    "orientation": 1,
+    "practiceAssessment": 126,
+    "memory": 68,
+    "runtimeSupport": 0,
+    "total": 737
+  },
+  "expectedCounts": {
+    "programStructure": 3,
+    "curricularArea": 89,
+    "curricularAtomic": 451,
+    "orientation": 1,
+    "practiceAssessment": 126,
+    "memory": 68,
+    "runtimeSupport": 0,
+    "total": 738
+  },
+  "changedCountPointers": [
+    "/counts/curricularAtomic",
+    "/counts/total"
+  ],
+  "reason": "Candidate rows contain451curricularAtomic and738total but storedcounts remain450/737. Update the two counters in an additive author successor; the current normal450denominator is unchanged.",
+  "scientificGoalDecisionsAffected": false
+}

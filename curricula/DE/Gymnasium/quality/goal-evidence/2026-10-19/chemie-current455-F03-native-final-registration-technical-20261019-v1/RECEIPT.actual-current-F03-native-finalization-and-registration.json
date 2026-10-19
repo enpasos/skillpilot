@@ -1,0 +1,108 @@
+{
+  "role": "ACTUAL_ONE_GOAL_CURRENT_NATIVE_D_FINALIZATION_AND_BOUNDED_REGISTRATION",
+  "recordedAtUTC": "2026-10-19T00:21:02.676708+00:00",
+  "actualIndependentReviewSeals": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-F03-one-native-description-inputs-technical-20261019-v1/current-f03/round-a/SEAL.current-independent-a.json",
+      "sha256": "72e798aae05d4914e153c863a14624530aed67e759870f3781acfccbfc0f1d5a",
+      "bytes": 13702
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-F03-one-native-description-inputs-technical-20261019-v1/current-f03/round-b/SEAL.native-independent-b.json",
+      "sha256": "a1923bfe64ea032aec35df93bc43ac4f2ffa3711650b97d71e0cfce67ea84f17",
+      "bytes": 12347
+    }
+  ],
+  "actualOriginalIndex": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-F03-one-native-description-inputs-technical-20261019-v1/current-f03/resolution-index.json",
+    "sha256": "dd99f0f4ceb8473ecfd5c06857472f0cc798d7cd129ed352b184e05e6f604e83",
+    "bytes": 1389
+  },
+  "originalExecutions": [
+    {
+      "name": "summarize",
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "summarize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-F03-one-native-description-inputs-technical-20261019-v1/current-f03.prerequisite-safe.config.json",
+        "--write"
+      ],
+      "actualExitCode": 0,
+      "completedAtUTC": "2026-10-19T00:20:58.885569+00:00"
+    },
+    {
+      "name": "synthesis",
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutSynthesisManifest.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-F03-one-native-description-inputs-technical-20261019-v1/current-f03.prerequisite-safe.config.json",
+        "--authoring",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-F03-one-native-description-inputs-technical-20261019-v1/current-f03/synthesis-authoring.actual-current-F03-keep.json",
+        "--write"
+      ],
+      "actualExitCode": 0,
+      "completedAtUTC": "2026-10-19T00:20:59.842573+00:00"
+    },
+    {
+      "name": "resolutions",
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutResolutions.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-F03-one-native-description-inputs-technical-20261019-v1/current-f03.prerequisite-safe.config.json",
+        "--synthesis-manifest",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-F03-one-native-description-inputs-technical-20261019-v1/current-f03/synthesis-decisions.json",
+        "--write"
+      ],
+      "actualExitCode": 0,
+      "completedAtUTC": "2026-10-19T00:21:01.094779+00:00"
+    },
+    {
+      "name": "finalize",
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-F03-one-native-description-inputs-technical-20261019-v1/current-f03.prerequisite-safe.config.json",
+        "--write"
+      ],
+      "actualExitCode": 0,
+      "completedAtUTC": "2026-10-19T00:21:02.613583+00:00"
+    }
+  ],
+  "registeredOnlyOneCurrentResolution": "8b2d351e-e44f-5385-9b89-13ef54b5918f",
+  "supersession": {
+    "goalId": "8b2d351e-e44f-5385-9b89-13ef54b5918f",
+    "supersededIndexPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-16/chemie-current439-new459-and-F03-native-two-private-L6-technical-20261016-v1/native-two/resolution-index.json",
+    "replacementIndexPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-F03-one-native-description-inputs-technical-20261019-v1/current-f03/resolution-index.json"
+  },
+  "actualIndices": 136,
+  "actualEdges": 635,
+  "allPrior135IndicesAnd634EdgesRetained": true,
+  "ordinaryGoalCount": 455,
+  "uniqueOrdinaryOwners": 455,
+  "otherFourSubjectsExact": true,
+  "finalizedInFlightLedgerEmpty": true,
+  "actualRegistryAfter": {
+    "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+    "sha256": "5df2c9d8358e7a2a1d948c1b32d46240646045bc79893dfcda6bcd1d38a6465f",
+    "bytes": 720710
+  },
+  "actualLedgerAfter": {
+    "path": "curricula/DE/Gymnasium/quality/goal-description-review/in-flight-work-ledger.json",
+    "sha256": "aacc7d0687c5ed49a58e9a220b02ea4f59794b26117f2a4502efa6fa236c96b3",
+    "bytes": 253
+  },
+  "newReviewerVotesBySynthesis": 0,
+  "newAuthoredGoals": 0,
+  "newScientificFirstCompletionsClaimed": 0,
+  "currentPageBindingRestoredOnly": true,
+  "historicalMetadataExposureDisclosed": true,
+  "humanApproval": false,
+  "learnerPerformanceClaimed": false,
+  "fullCurrentReportAndCQRStillRequired": true
+}

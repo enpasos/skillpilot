@@ -1,16 +1,7 @@
 {
-  "viewId": "de-bw-gym-chemistry-gk",
   "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
-  "scope": {
-    "schoolForm": "Gymnasium",
-    "jurisdiction": "DE-BW",
-    "stage": "CrossStage",
-    "courseProfile": "GK"
-  },
   "rootNodes": [
     {
-      "kind": "structure",
-      "id": "chemistry-root",
       "label": "Chemie",
       "children": [
         {
@@ -407,6 +398,11 @@
                 },
                 {
                   "kind": "goalEntry",
+                  "goalId": "62de1c6e-8581-5345-a0a6-773427cb6db7",
+                  "projectionRole": "target"
+                },
+                {
+                  "kind": "goalEntry",
                   "goalId": "363c5740-8a3c-50b8-8c3a-5548c80c36ea"
                 }
               ]
@@ -451,6 +447,10 @@
                 {
                   "kind": "goalEntry",
                   "goalId": "8721d943-8368-5304-bd3c-7d7944099662"
+                },
+                {
+                  "kind": "goalEntry",
+                  "goalId": "69f2ecbb-ac0a-5d3a-8084-2142706e1161"
                 },
                 {
                   "kind": "goalEntry",
@@ -1221,6 +1221,11 @@
           "projectionRole": "prerequisiteOnly"
         },
         {
+          "kind": "goalEntry",
+          "goalId": "dc146a38-994d-58ec-b6a0-5210118b93ae",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
           "kind": "structure",
           "id": "de-bw-gym-chemistry-gk-t2-material-practice-20261018-v6",
           "label": "Eigenständige Materialaufgaben",
@@ -1289,10 +1294,19 @@
           "goalId": "dc5173e8-6e63-58d3-a79b-bd74ef3cb98b",
           "projectionRole": "prerequisiteOnly"
         }
-      ]
+      ],
+      "id": "chemistry-root",
+      "kind": "structure"
     }
   ],
   "$schema": "https://skillpilot.com/schemas/curriculum-package/v1/composition-view.schema.json",
+  "language": "de",
+  "viewId": "de-bw-gym-chemistry-gk",
   "viewFormatVersion": "1.0",
-  "language": "de"
+  "scope": {
+    "schoolForm": "Gymnasium",
+    "jurisdiction": "DE-BW",
+    "stage": "CrossStage",
+    "courseProfile": "GK"
+  }
 }

@@ -1,0 +1,323 @@
+{
+  "role": "INFORMED_AUTHOR_CANDIDATE_NOT_INDEPENDENT_REVIEW",
+  "status": "pending_separate_independent_review",
+  "active": false,
+  "reviewAuthority": "ai_candidate",
+  "humanApproval": false,
+  "actualLearnerPerformanceRecorded": false,
+  "M7Claim": false,
+  "beforeWholeCurrentRecord": {
+    "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "schemaVersion": 2,
+    "reviewId": "canonical-chemistry-current447-seventeen-paired-informed-positive-native-20261018-v1",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "goalId": "8721d943-8368-5304-bd3c-7d7944099662",
+    "goalFingerprint": "sha256:76edec10515d64c0b933874f2b9d3907bf2d85f990765c275744b032134a1d0f",
+    "reviewInputFingerprint": "sha256:08b9aec26c53bff890ad9cb0c0764a5f220ea11db19dcf16b81b03458353598b",
+    "profileFingerprint": "sha256:854a7a3d13d2b156b0ea358a4c28eb6b68633d25d519c3092f5cc03811b562a5",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "reviewedAt": "2026-10-17T23:22:49.296Z",
+    "reviewer": "codex-technical-native-serialization-from-actual-paired-informed-science",
+    "reason": "Technical native serialization from two actually sealed informed scientific judgments; no new reviewer vote. A: Hydrolyse geeigneter Polymerbindungen wird richtig innerhalb rohstofflicher Verfahren eingeordnet. Das vollständige P bleibt exakt und unterscheidet mechanische Kettenerhaltung, chemische Spaltung und energetische Verwertung; Letztere wird nicht zu stofflichem Recycling. Die ganzen PET-Fälle liefern40/80=0,50 und100/75≈1,33kWh/kg gleichwertiges PET. Pyrolyse-Feedstock ist noch kein fertiges PET. Im Mischfall ergeben35*0,8=28kg PET und50*0,9=45kg PE;27kg des100kg-Ausgangs fehlen im Zielprodukt. PE ohne passende Esterbindungen wird nicht durch die gegebene PET-Hydrolyse aufgeschlossen. Die Platte erfüllt einen anderen Bedarf. Im ganzen hb208-Fall ergeben100*44=4400MJ,244,4kWh Strom,488,9kWh genutzte Wärme und ideal314,3kg direktesCO2; fehlende Inputs und Systemgrenzen verbieten eine LCA-Gesamtrangfolge. Der neue unbekannte PVC/PE-Mischfall darf diese reinen PE-Zahlen nicht übernehmen. | B: Hydrolyse geeigneter Polymere wird korrekt als rohstofflicher Weg untergeordnet. Ganze P/Materialien bleiben exakt: mechanische Kettenerhaltung, PET-Esterhydrolyse, Pyrolyse-Feedstock und energetische Oxidation sind unterschieden.40/80=0,50 und100/75≈1,33kWh/kg äquivalentes PET;35·0,8+50·0,9=73kg Zielprodukte,27kg außerhalb. PE hat kein PET-artiges Estergerüst. Im separaten100kg-PE-Modell4400MJ→880MJ Strom und1760MJ genutzte Wärme; direkteCO2-Masse100·44/14≈314,3kg. Das sind verschiedene Funktionen, keine fertige LCA-Rangliste. Unbekannter PVC/PE-Mischabfall verhindert Übernahme der Rein-PE-Bilanz. Exact source pins and pointers: Full paired source pins/pointers: PROVENANCE.actual-paired-science.json /goals/8721d943-8368-5304-bd3c-7d7944099662/P.",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": [],
+    "dissent": [
+      "Inactive AI candidate; final normal integration and all independent D/source/M7/human gates remain separate."
+    ],
+    "profile": {
+      "archetype": "data",
+      "expectations": [
+        {
+          "id": "e1",
+          "essentialUnderstandingDe": "Werkstoffliches Recycling erhält Polymerketten überwiegend; rohstoffliche Verfahren spalten sie, Hydrolyse betrifft passende Bindungen.",
+          "essentialUnderstandingEn": "Mechanical recycling largely retains polymer chains; feedstock routes split them, and hydrolysis requires suitable linkages.",
+          "observablePerformanceDe": "Beschreibt drei Prozesswege einschließlich PET-Hydrolyse und PE-Grenze.",
+          "observablePerformanceEn": "Describes three routes including PET hydrolysis and the limitation for PE."
+        },
+        {
+          "id": "e2",
+          "essentialUnderstandingDe": "Ausbeute, Energie und Produktqualität müssen auf denselben funktionalen Bedarf und Systemgrenzen bezogen werden.",
+          "essentialUnderstandingEn": "Yield, energy and quality must be compared for the same functional demand and system boundary.",
+          "observablePerformanceDe": "Rechnet bereitgestellte Massen- und Energieflüsse mit Verlusten transparent um.",
+          "observablePerformanceEn": "Calculates supplied mass and energy flows transparently including losses."
+        },
+        {
+          "id": "e3",
+          "essentialUnderstandingDe": "Quellenkritik und Kontext entscheiden über tragfähige ökologische/ökonomische Urteile.",
+          "essentialUnderstandingEn": "Source criticism and context determine defensible environmental/economic judgements.",
+          "observablePerformanceDe": "Begründet einen Kreislauf und revidiert ihn bei geänderter Sortierung oder Produktanforderung.",
+          "observablePerformanceEn": "Justifies a cycle and revises it under changed sorting or product requirements."
+        },
+        {
+          "id": "hb208-energy-recovery-distinction",
+          "essentialUnderstandingDe": "Energetische Verwertung oxidiert Kunststoff zur Energienutzung und schließt keinen Stoffkreislauf; Vergleich braucht gleiche Funktion/Systemgrenze.",
+          "essentialUnderstandingEn": "Energy recovery oxidizes plastic for useful energy and closes no material cycle; comparison needs equal function/boundary.",
+          "observablePerformanceDe": "Die lernende Person erklärt die drei Wege, bilanziert den PE-Modellfall und begrenzt den Transfer auf unbekannte Gemische.",
+          "observablePerformanceEn": "The learner explains three routes, balances the PE model and limits transfer to unknown mixtures."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "e1",
+          "e2",
+          "e3",
+          "hb208-energy-recovery-distinction"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "v1",
+          "textDe": "Sortenreinheit",
+          "textEn": "Sorting purity"
+        },
+        {
+          "id": "v2",
+          "textDe": "Produktqualität und Bedarf",
+          "textEn": "Product quality and demand"
+        },
+        {
+          "id": "v3",
+          "textDe": "Energie-/Quellengrenzen",
+          "textEn": "Energy and source boundaries"
+        },
+        {
+          "id": "hb208-energy-recovery-distinction-transfer",
+          "textDe": "Bedingungswechsel im vollständigen Transfer selbstständig berücksichtigen.",
+          "textEn": "Independently account for changed conditions in the complete transfer."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "8721d943-case-1",
+          "taskDemandDe": "Erkläre die Wege und Esterhydrolyse. Berechne Betriebsenergie je kg geeignetem PET für die ersten beiden Wege. Wähle bei ausreichender Regranulatqualität vorläufig und bewerte den Prospektsatz.",
+          "taskDemandEn": "Explain routes and ester hydrolysis. Calculate operational energy per kg of suitable PET for the first two routes. Make a provisional choice if regranulate quality suffices and assess the brochure claim.",
+          "expectedPerformanceDe": "Mechanisch waschen/zerkleinern/aufschmelzen, Ketten weitgehend erhalten; Hydrolyse spaltet Ester in Säure-/Alkoholprodukte, gereinigt erneut polymerisierbar.0.50 versus 1.33 k Wh/kg geeignetes PET. Mechanisch vorläufig günstiger für diesen Bedarf. Feedstock ist noch kein gleichwertiges PET; Pyrolysezahl daher nicht direkt vergleichbar. Strommix, Qualität, Transport, Chemikalien, Verluste, Kosten und Anbieterinteresse fehlen: „immer“ unbelegt.",
+          "expectedPerformanceEn": "Mechanical washing/shredding/remelting largely preserves chains; hydrolysis cleaves ester links into acid/alcohol products, which can be purified and repolymerised.0.50 versus 1.33 k Wh/kg suitable PET. Mechanical recycling is provisionally preferable for this demand. Feedstock is not yet equivalent PET, so pyrolysis is not directly comparable. Electricity mix, quality, transport, reagents, losses, costs and vendor interest remain unresolved: “always” is unsupported.",
+          "understandingFocusDe": "Fallbezogene Aspekte: Mechanische Kettenerhaltung, PET-Esterhydrolyse und Pyrolyse-Feedstock von fertigem PET trennen. / 40/80=0.50 und 100/75≈1.33 kWh/kg geeignetes PET; Pyrolyseprodukt nicht gleichwertig. / Mechanisch vorläufig bei geeigneter Qualität; Strommix, Chemikalien/Transport und Prospektinteresse verhindern Immer-Urteil. Die Verknüpfung zu Erwartungs-IDs behauptet keine vollständige Erfüllung jeder Gesamtprofilerwartung in diesem Einzelfall.",
+          "understandingFocusEn": "Case-specific aspects: Distinguish mechanical chain retention, PET ester hydrolysis and pyrolysis feedstock from finished PET. / 40/80=0.50 and 100/75≈1.33 kWh/kg suitable PET; pyrolysis product not equivalent. / Mechanical provisionally at adequate quality; electricity mix, chemicals/transport and prospectus interest preclude an always claim. Links to expectation IDs do not assert complete fulfilment of every whole-profile expectation in this one case."
+        },
+        {
+          "id": "8721d943-case-2",
+          "taskDemandDe": "Berechne zurückgewonnenes PET/PE und Verluste. Erkläre warum PE nicht wie PET hydrolysierbar ist. Bewerte Kreislauf versus Platte und welche Daten die Auswahl entscheiden.",
+          "taskDemandEn": "Calculate recovered PET/PE and losses. Explain why PE cannot be hydrolysed like PET. Compare the cycle with the board route and identify deciding evidence.",
+          "expectedPerformanceDe": "PET 28 kg, PE 45 kg, zusammen 73 kg; 27 kg des ursprünglichen 100 kg nicht im Zielprodukt. PE-C–C-Rückgrat besitzt keine Esterhydrolysestellen. Sortierung plus materialgerechte Wege stützt sortenreinen Kreislauf; Platte erfüllt anderen Bedarf und kann ebenfalls sinnvoll sein. Reststoffbehandlung, Qualität/Neumaterialersatz, Energie/Kosten und reale Nachfrage entscheiden; kein vollständig geschlossener Nullverlustkreislauf.",
+          "expectedPerformanceEn": "PET 28 kg, PE 45 kg, total 73 kg; 27 kg of the initial 100 kg is outside target products. PE has a C–C backbone without ester-hydrolysis sites. Sorting plus material-specific routes supports a single-polymer cycle; the board serves another demand and may also be useful. Residue treatment, quality/virgin-material displacement, energy/cost and actual demand decide; this is not a loss-free closed cycle.",
+          "understandingFocusDe": "Fallbezogene Aspekte: PET-Ester hydrolysierbar; PE-C–C ohne Esterstellen, materialgerechte Wege nach Sortierung. / 35·0.8=28 kg PET, 50·0.9=45 kg PE, 73 kg Zielprodukt und 27 kg nicht darin. / 73 kg sortenreines Produkt versus 70 kg Platte erfüllen andere Nachfrage; Qualität, Ersatz, Energie/Kosten/Reststrom entscheiden. Die Verknüpfung zu Erwartungs-IDs behauptet keine vollständige Erfüllung jeder Gesamtprofilerwartung in diesem Einzelfall.",
+          "understandingFocusEn": "Case-specific aspects: PET esters hydrolysable; PE C–C lacks ester sites, material-specific routes after sorting. / 35·0.8=28 kg PET, 50·0.9=45 kg PE, 73 kg target product and 27 kg outside it. / 73 kg pure products versus 70 kg sheet serve different demand; quality, substitution, energy/cost/residue determine choice. Links to expectation IDs do not assert complete fulfilment of every whole-profile expectation in this one case."
+        },
+        {
+          "id": "hb208-recovery-routes-8721",
+          "taskDemandDe": "Bearbeite den vollständigen PE-Stoff-/Energievergleich und neuen Mischabfall.",
+          "taskDemandEn": "Handle the complete PE material/energy comparison and new mixed waste.",
+          "expectedPerformanceDe": "Energienutzung, Stoffrückgewinnung und LCA-Urteil unterscheiden.",
+          "expectedPerformanceEn": "Distinguish energy use, material recovery and LCA judgment.",
+          "understandingFocusDe": "Energetische Verwertung oxidiert Kunststoff zur Energienutzung und schließt keinen Stoffkreislauf; Vergleich braucht gleiche Funktion/Systemgrenze.",
+          "understandingFocusEn": "Energy recovery oxidizes plastic for useful energy and closes no material cycle; comparison needs equal function/boundary."
+        }
+      ]
+    }
+  },
+  "after": [
+    {
+      "goalId": "8721d943-8368-5304-bd3c-7d7944099662",
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Werkstoffliches Recycling erhält Polymerketten überwiegend; rohstoffliche Verfahren liefern durch Kettenspaltung Rohstoffe. Energetische Verwertung liefert eine andere Funktion. Die chemische Bindungs-/Produktableitung der Hydrolyse bleibt vollständig beim getrennten Hydrolyseatom.",
+            "essentialUnderstandingEn": "Mechanical recycling largely retains chains; feedstock routes obtain raw materials through chain cleavage. Energy recovery supplies a different function. Chemical hydrolysis linkage/product derivation remains fully with the separate hydrolysis atom.",
+            "observablePerformanceDe": "Ordnet die gegebenen Prozesswege und Stoffprodukte fallbezogen ein, unterscheidet fertiges geeignetes Polymer von Rohstoff und energetischer Nutzung und nutzt die separat begründete PET/PE-Hydrolysegrenze im Urteil.",
+            "observablePerformanceEn": "Classifies supplied routes and material products in context, distinguishes suitable finished polymer from feedstock and energy use, and uses the separately justified PET/PE hydrolysis limitation in the judgment."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Ausbeute, Energie und Produktqualität müssen auf denselben funktionalen Bedarf und Systemgrenzen bezogen werden.",
+            "essentialUnderstandingEn": "Yield, energy and quality must be compared for the same functional demand and system boundary.",
+            "observablePerformanceDe": "Rechnet bereitgestellte Massen- und Energieflüsse mit Verlusten transparent um.",
+            "observablePerformanceEn": "Calculates supplied mass and energy flows transparently including losses."
+          },
+          {
+            "id": "e3",
+            "essentialUnderstandingDe": "Quellenkritik und Kontext entscheiden über tragfähige ökologische/ökonomische Urteile.",
+            "essentialUnderstandingEn": "Source criticism and context determine defensible environmental/economic judgements.",
+            "observablePerformanceDe": "Begründet einen Kreislauf und revidiert ihn bei geänderter Sortierung oder Produktanforderung.",
+            "observablePerformanceEn": "Justifies a cycle and revises it under changed sorting or product requirements."
+          },
+          {
+            "id": "hb208-energy-recovery-distinction",
+            "essentialUnderstandingDe": "Energetische Verwertung oxidiert Kunststoff zur Energienutzung und schließt keinen Stoffkreislauf; Vergleich braucht gleiche Funktion/Systemgrenze.",
+            "essentialUnderstandingEn": "Energy recovery oxidizes plastic for useful energy and closes no material cycle; comparison needs equal function/boundary.",
+            "observablePerformanceDe": "Die lernende Person erklärt die drei Wege, bilanziert den PE-Modellfall und begrenzt den Transfer auf unbekannte Gemische.",
+            "observablePerformanceEn": "The learner explains three routes, balances the PE model and limits transfer to unknown mixtures."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2",
+            "e3",
+            "hb208-energy-recovery-distinction"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "v1",
+            "textDe": "Sortenreinheit",
+            "textEn": "Sorting purity"
+          },
+          {
+            "id": "v2",
+            "textDe": "Produktqualität und Bedarf",
+            "textEn": "Product quality and demand"
+          },
+          {
+            "id": "v3",
+            "textDe": "Energie-/Quellengrenzen",
+            "textEn": "Energy and source boundaries"
+          },
+          {
+            "id": "hb208-energy-recovery-distinction-transfer",
+            "textDe": "Bedingungswechsel im vollständigen Transfer selbstständig berücksichtigen.",
+            "textEn": "Independently account for changed conditions in the complete transfer."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "8721d943-case-1",
+            "taskDemandDe": "Erkläre die Wege und Esterhydrolyse. Berechne Betriebsenergie je kg geeignetem PET für die ersten beiden Wege. Wähle bei ausreichender Regranulatqualität vorläufig und bewerte den Prospektsatz. Gemeinsamer Originalfall; die selbstständige chemische Hydrolyseableitung wird beim neuen Atom69f2ecbb erfasst. Nutze für Quellenkritik die vollständig bereitgestellten Quellenkarten main/fresh in curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-recycling-atomicity-source-author-20261018-v1/materials/recycling-source-cards.learner.DE-EN.pending.json.",
+            "taskDemandEn": "Explain routes and ester hydrolysis. Calculate operational energy per kg of suitable PET for the first two routes. Make a provisional choice if regranulate quality suffices and assess the brochure claim. Joint original case; independent chemical hydrolysis derivation is recorded at new atom69f2ecbb. For source criticism use the complete supplied main/fresh source cards in curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-recycling-atomicity-source-author-20261018-v1/materials/recycling-source-cards.learner.DE-EN.pending.json.",
+            "expectedPerformanceDe": "Mechanisch waschen/zerkleinern/aufschmelzen, Ketten weitgehend erhalten; Hydrolyse spaltet Ester in Säure-/Alkoholprodukte, gereinigt erneut polymerisierbar.0.50 versus 1.33 k Wh/kg geeignetes PET. Mechanisch vorläufig günstiger für diesen Bedarf. Feedstock ist noch kein gleichwertiges PET; Pyrolysezahl daher nicht direkt vergleichbar. Strommix, Qualität, Transport, Chemikalien, Verluste, Kosten und Anbieterinteresse fehlen: „immer“ unbelegt. Die chemischen Aussagen sind der gemeinsame Kontext; ihr unabhängiger Struktur-/Produktnachweis gehört zum neuen Hydrolyseatom. Quellenkarten mit Urheberschaft/Absatz belegen und Zahlen, Bedingungen, Vertrauenswürdigkeit prüfen.",
+            "expectedPerformanceEn": "Mechanical washing/shredding/remelting largely preserves chains; hydrolysis cleaves ester links into acid/alcohol products, which can be purified and repolymerised.0.50 versus 1.33 k Wh/kg suitable PET. Mechanical recycling is provisionally preferable for this demand. Feedstock is not yet equivalent PET, so pyrolysis is not directly comparable. Electricity mix, quality, transport, reagents, losses, costs and vendor interest remain unresolved: “always” is unsupported. Chemical statements are shared context; independent structure/product demonstration belongs to the new hydrolysis atom. Document source-card authorship/paragraph and check figures, conditions and trustworthiness.",
+            "understandingFocusDe": "Fallbezogene Aspekte: Mechanische Kettenerhaltung, PET-Esterhydrolyse und Pyrolyse-Feedstock von fertigem PET trennen. / 40/80=0.50 und 100/75≈1.33 kWh/kg geeignetes PET; Pyrolyseprodukt nicht gleichwertig. / Mechanisch vorläufig bei geeigneter Qualität; Strommix, Chemikalien/Transport und Prospektinteresse verhindern Immer-Urteil. Die Verknüpfung zu Erwartungs-IDs behauptet keine vollständige Erfüllung jeder Gesamtprofilerwartung in diesem Einzelfall.",
+            "understandingFocusEn": "Case-specific aspects: Distinguish mechanical chain retention, PET ester hydrolysis and pyrolysis feedstock from finished PET. / 40/80=0.50 and 100/75≈1.33 kWh/kg suitable PET; pyrolysis product not equivalent. / Mechanical provisionally at adequate quality; electricity mix, chemicals/transport and prospectus interest preclude an always claim. Links to expectation IDs do not assert complete fulfilment of every whole-profile expectation in this one case."
+          },
+          {
+            "id": "8721d943-case-2",
+            "taskDemandDe": "Berechne zurückgewonnenes PET/PE und Verluste. Erkläre warum PE nicht wie PET hydrolysierbar ist. Bewerte Kreislauf versus Platte und welche Daten die Auswahl entscheiden. Gemeinsamer Originalfall; die selbstständige chemische Hydrolyseableitung wird beim neuen Atom69f2ecbb erfasst. Nutze für Quellenkritik die vollständig bereitgestellten Quellenkarten main/fresh in curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-recycling-atomicity-source-author-20261018-v1/materials/recycling-source-cards.learner.DE-EN.pending.json.",
+            "taskDemandEn": "Calculate recovered PET/PE and losses. Explain why PE cannot be hydrolysed like PET. Compare the cycle with the board route and identify deciding evidence. Joint original case; independent chemical hydrolysis derivation is recorded at new atom69f2ecbb. For source criticism use the complete supplied main/fresh source cards in curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-recycling-atomicity-source-author-20261018-v1/materials/recycling-source-cards.learner.DE-EN.pending.json.",
+            "expectedPerformanceDe": "PET 28 kg, PE 45 kg, zusammen 73 kg; 27 kg des ursprünglichen 100 kg nicht im Zielprodukt. PE-C–C-Rückgrat besitzt keine Esterhydrolysestellen. Sortierung plus materialgerechte Wege stützt sortenreinen Kreislauf; Platte erfüllt anderen Bedarf und kann ebenfalls sinnvoll sein. Reststoffbehandlung, Qualität/Neumaterialersatz, Energie/Kosten und reale Nachfrage entscheiden; kein vollständig geschlossener Nullverlustkreislauf. Die chemischen Aussagen sind der gemeinsame Kontext; ihr unabhängiger Struktur-/Produktnachweis gehört zum neuen Hydrolyseatom. Quellenkarten mit Urheberschaft/Absatz belegen und Zahlen, Bedingungen, Vertrauenswürdigkeit prüfen.",
+            "expectedPerformanceEn": "PET 28 kg, PE 45 kg, total 73 kg; 27 kg of the initial 100 kg is outside target products. PE has a C–C backbone without ester-hydrolysis sites. Sorting plus material-specific routes supports a single-polymer cycle; the board serves another demand and may also be useful. Residue treatment, quality/virgin-material displacement, energy/cost and actual demand decide; this is not a loss-free closed cycle. Chemical statements are shared context; independent structure/product demonstration belongs to the new hydrolysis atom. Document source-card authorship/paragraph and check figures, conditions and trustworthiness.",
+            "understandingFocusDe": "Fallbezogene Aspekte: PET-Ester hydrolysierbar; PE-C–C ohne Esterstellen, materialgerechte Wege nach Sortierung. / 35·0.8=28 kg PET, 50·0.9=45 kg PE, 73 kg Zielprodukt und 27 kg nicht darin. / 73 kg sortenreines Produkt versus 70 kg Platte erfüllen andere Nachfrage; Qualität, Ersatz, Energie/Kosten/Reststrom entscheiden. Die Verknüpfung zu Erwartungs-IDs behauptet keine vollständige Erfüllung jeder Gesamtprofilerwartung in diesem Einzelfall.",
+            "understandingFocusEn": "Case-specific aspects: PET esters hydrolysable; PE C–C lacks ester sites, material-specific routes after sorting. / 35·0.8=28 kg PET, 50·0.9=45 kg PE, 73 kg target product and 27 kg outside it. / 73 kg pure products versus 70 kg sheet serve different demand; quality, substitution, energy/cost/residue determine choice. Links to expectation IDs do not assert complete fulfilment of every whole-profile expectation in this one case."
+          },
+          {
+            "id": "hb208-recovery-routes-8721",
+            "taskDemandDe": "Bearbeite den vollständigen PE-Stoff-/Energievergleich und neuen Mischabfall.",
+            "taskDemandEn": "Handle the complete PE material/energy comparison and new mixed waste.",
+            "expectedPerformanceDe": "Energienutzung, Stoffrückgewinnung und LCA-Urteil unterscheiden.",
+            "expectedPerformanceEn": "Distinguish energy use, material recovery and LCA judgment.",
+            "understandingFocusDe": "Energetische Verwertung oxidiert Kunststoff zur Energienutzung und schließt keinen Stoffkreislauf; Vergleich braucht gleiche Funktion/Systemgrenze.",
+            "understandingFocusEn": "Energy recovery oxidizes plastic for useful energy and closes no material cycle; comparison needs equal function/boundary."
+          }
+        ]
+      },
+      "profileSemanticSHA256": "82ca24713cc458a43e8d200c344f3eef449d3a250cb0269cc5e73790a99555ac"
+    },
+    {
+      "goalId": "69f2ecbb-ac0a-5d3a-8084-2142706e1161",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "polymer-hydrolysis-linkages-products",
+            "essentialUnderstandingDe": "Hydrolyse spaltet passende Verknüpfungen unter Wasseraufnahme und liefert zu den angegebenen Bedingungen passende Endgruppen; Esterbindungen geeigneter Polykondensate lassen sich so auf Monomerbausteine zurückführen. C–C/C–H-Gerüste wiePE besitzen diese Esterstellen nicht. Eine Produktstruktur allein beweist keine technische Ausbeute, Reinheit oder neue Polymerproduktion.",
+            "essentialUnderstandingEn": "Hydrolysis cleaves appropriate linkages with water uptake and forms endpoint groups appropriate to stated conditions; ester links in suitable polycondensates can thereby be traced back to monomer building blocks. C–C/C–H skeletons such asPE lack these ester sites. Product structure alone proves neither industrial yield/purity nor new polymer production.",
+            "observablePerformanceDe": "Markiert passende Kettenbindungen, ordnet Wasseranteile/Produktgruppen strukturgerecht zu und leitet PET- sowie frische Polyesterbausteine selbstständig ab; begründet die begrenzte PE-Negativaussage statt eines pauschalen Nichtverwertbarkeitsurteils.",
+            "observablePerformanceEn": "Marks appropriate chain bonds, correctly allocates water/products and independently derivesPET and fresh polyester building blocks; explains the bounded negativePE conclusion rather than claimingPE cannot be recovered."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "polymer-hydrolysis-linkages-products"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "changed-polyester-and-pe-linkages",
+            "textDe": "Andere vorgegebene Polyesterbausteine und PE-Grenzfall unter explizit gleichen sauren Modellbedingungen; keine Übertragung bloß nach Polymername.",
+            "textEn": "Different supplied polyester building blocks and a limitingPE case under explicitly identical acidic model conditions; no transfer based only on a polymer name."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "polymer-hydrolysis-pet-main",
+            "taskDemandDe": "Bearbeite die vollständigen commonGivens und main-Angaben in curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-recycling-atomicity-source-author-20261018-v1/materials/polymer-hydrolysis.learner.DE-EN.pending.json. Die getrennte Lehrerlösung darf nicht vor der eigenständigen Bearbeitung vorliegen.",
+            "taskDemandEn": "Use the complete commonGivens and main givens in curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-recycling-atomicity-source-author-20261018-v1/materials/polymer-hydrolysis.learner.DE-EN.pending.json. Withhold the separate teacher solution until independent work.",
+            "expectedPerformanceDe": "PET liefert HO–CH2–CH2–OH und HO–C(=O)–C6H4–C(=O)–OH in1,4-Anordnung. Beide Esterverknüpfungen pro symbolischer Wiederholeinheit werden in den Kettenbindungen berücksichtigt; das Carbonyl-C bleibt mit C6H4 verbunden, der Alkohol-O bleibt am Ethylenteil. Eine einzelne Esterhydrolyse verbraucht Wasser; zwei passend gespaltene Verknüpfungen ergeben die beiden bifunktionellen Monomerarten. Keine C–C- oder Ringspaltung. Aufarbeitung/Repolymerisation sind zusätzliche Schritte, keine automatische Folge einer gezeichneten Produktformel.75kg bleiben Prozessvorgabe.",
+            "expectedPerformanceEn": "PET gives HO–CH2–CH2–OH and HO–C(=O)–C6H4–C(=O)–OH with1,4-substitution. Account for both ester links of the symbolic repeat unit along the chain; carbonyl carbon stays attached to C6H4 and alcohol oxygen to the ethylene part. Individual ester hydrolysis consumes water; cleaving the appropriate two links gives the two bifunctional monomer types. No C–C or ring cleavage. Work-up/repolymerisation are further steps, not automatic results of drawing products.75kg remains a process given.",
+            "understandingFocusDe": "Ein zusammenhängender chemischer Hydrolysenachweis; Recycling-/Quellenurteil liegt getrennt bei8721. Zwei unabhängige Demonstrationen können in einer integrierten Leistung liegen, keine zusätzliche Aufgabenquote.",
+            "understandingFocusEn": "One coherent chemical hydrolysis explanation; recycling/source judgment is recorded separately under8721. Two independent demonstrations may occur within one integrated performance, with no extra task quota."
+          },
+          {
+            "id": "polymer-hydrolysis-aliphatic-polyester-fresh",
+            "taskDemandDe": "Bearbeite die vollständigen commonGivens und fresh-Angaben in curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-recycling-atomicity-source-author-20261018-v1/materials/polymer-hydrolysis.learner.DE-EN.pending.json. Die getrennte Lehrerlösung darf nicht vor der eigenständigen Bearbeitung vorliegen.",
+            "taskDemandEn": "Use the complete commonGivens and fresh givens in curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-recycling-atomicity-source-author-20261018-v1/materials/polymer-hydrolysis.learner.DE-EN.pending.json. Withhold the separate teacher solution until independent work.",
+            "expectedPerformanceDe": "Der frische Polyester liefert HO–(CH2)4–OH und HO–C(=O)–(CH2)2–C(=O)–OH. Die Hauptkettenabschnitte des neuen Polyesters werden erhalten, keine PET-Monomere blind übernommen. PE enthält im vorgegebenen C–C/C–H-Gerüst keine Ester- oder entsprechende hydrolysierbare Heterobindung. Unter diesem Weg liefert Wasser deshalb keine analogen Monomere. Daraus folgt nicht, dass PE weder mechanisch noch durch andere chemische oder oxidative Prozesse verwertbar wäre.",
+            "expectedPerformanceEn": "The fresh polyester gives HO–(CH2)4–OH and HO–C(=O)–(CH2)2–C(=O)–OH. Retain the new chain groups rather than copying PET monomers. The supplied PE C–C/C–H skeleton has no ester or corresponding hydrolysable hetero-linkage. This water-based route therefore gives no analogous monomers. That does not rule out mechanical recovery or other chemical/oxidative processes for PE.",
+            "understandingFocusDe": "Ein zusammenhängender chemischer Hydrolysenachweis; Recycling-/Quellenurteil liegt getrennt bei8721. Zwei unabhängige Demonstrationen können in einer integrierten Leistung liegen, keine zusätzliche Aufgabenquote.",
+            "understandingFocusEn": "One coherent chemical hydrolysis explanation; recycling/source judgment is recorded separately under8721. Two independent demonstrations may occur within one integrated performance, with no extra task quota."
+          }
+        ]
+      },
+      "profileSemanticSHA256": "7eea8b70038b3080a2d697c3247b272942580a3f7867dbf6b34be6b9eb82d679"
+    }
+  ],
+  "wholeRequiredCoverageAt8721ExactPreserved": true,
+  "oldExpectationContributionMap": [
+    {
+      "originalExpectationId": "e1",
+      "survivingGoalId": "8721d943-8368-5304-bd3c-7d7944099662",
+      "subduty": "Mechanical/feedstock/energy route and product classification in a bounded decision"
+    },
+    {
+      "originalExpectationId": "e1",
+      "newGoalId": "69f2ecbb-ac0a-5d3a-8084-2142706e1161",
+      "subduty": "Independent suitable polymer hydrolysis and PE linkage limitation"
+    },
+    {
+      "originalExpectationIds": [
+        "e2",
+        "e3",
+        "hb208-energy-recovery-distinction"
+      ],
+      "survivingGoalId": "8721d943-8368-5304-bd3c-7d7944099662",
+      "subduty": "Complete mass/energy/product/PEcycle/source/economic/environmental judgment, exact original expectations"
+    }
+  ],
+  "unchangedExistingReuseProfiles": [
+    {
+      "goalId": "4da0839d-ab6d-53c1-ac21-c9872555ae16",
+      "profileSemanticSHA256": "25d84aa945228402bb6ed1cefb157ab3813b4e56f195e3736aa17f9672beb8e1"
+    },
+    {
+      "goalId": "b7ae47da-6afa-5651-977a-3139af7d6eab",
+      "profileSemanticSHA256": "e23e25fe3b87cc6dabc969cf65818e7a9e44916222af25e30e4d8c53f1e0adee"
+    },
+    {
+      "goalId": "459724db-9f9a-5967-8d9a-2b6277415275",
+      "profileSemanticSHA256": "a390f7986c8a8d3e99ca5522f221082834ec85773f64e91a80bea7728ed26a7d"
+    }
+  ],
+  "originalJointMaterialsWholeUnchanged": true,
+  "newChemicalAndSourceDataFullyProvided": true,
+  "noAdditionalTaskQuota": true,
+  "nativeRecordHeadersNotReusedForEditedGoals": true
+}

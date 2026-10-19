@@ -1,0 +1,11 @@
+
+> skillpilot@0.0.0 visualization:prepare
+> node ../scripts/prepare_goal_visualization.mjs dc146a38-994d-58ec-b6a0-5210118b93ae --landscape=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-carboxylic-observation-image-author-20261018-v1/inputs/landscape.image-prepare.INACTIVE.json --subject=chemie --provider=OpenAI / built-in image_gen.imagegen --review-status=needs_external_review
+
+Prepared prompt package for: Sauren Carbonsäurecharakter an Beobachtungen belegen
+SkillPilot ID: dc146a38-994d-58ec-b6a0-5210118b93ae
+Prompt: tmp/goal-visualizations/dc146a38-994d-58ec-b6a0-5210118b93ae/nano-banana-prompt.de.md
+Metadata: tmp/goal-visualizations/dc146a38-994d-58ec-b6a0-5210118b93ae/metadata.json
+
+After generating and downloading the image, import it with:
+npm --prefix app run visualization:import -- dc146a38-994d-58ec-b6a0-5210118b93ae "<downloaded-image-path>"

@@ -1,0 +1,116 @@
+node:assert:90
+  throw new AssertionError(obj);
+  ^
+
+AssertionError [ERR_ASSERTION]: The checkpoint must retain only the four reviewed RP GK/LK, SN GK and TH LK source witnesses
++ actual - expected ... Lines skipped
+
+  [
+    [
+...
+      'source-metadata',
+      'curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json',
++     'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-nineteen-target-source-gaps-author-20261018-v1/components/02-colour-and-context-components/candidate/sources/DE-SN.whole-selected-source-plus-whole-clauses.pending.json'
+-     'curricula/DE/Gymnasium/input/SN/upper-secondary/source-extraction/DE_SN_CHEMIE_SEKII_LEHRPLAN_GYMNASIUM_2025.source-extraction.json'
+    ],
+...
+      'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-joint-source-integration-technical-20261018-v1/candidate/sources/21.TH.current235.selected-conditions-LK.source-extraction.json'
+    ]
+  ]
+    at testGoalBookSourceAtlasInputs (/home/enpasos/projects/skillpilot/app/scripts/testGoalBookSourceAtlasInputs.ts:547:10)
+    at [eval]:2:72
+    at runScriptInThisContext (node:internal/vm:209:10)
+    at node:internal/process/execution:118:14
+    at [eval]-wrapper:6:24
+    at runScript (node:internal/process/execution:101:62)
+    at asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:11) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: [
+    [
+      'DE-RP/SekII/GK',
+      'rp-chem-sekii-rp-ch-sekii-2022-baustein-2-3-005-6ff85354',
+      '4a7dee38-1056-5e27-acec-e6a12f58109f',
+      '4a7dee38-1056-5e27-acec-e6a12f58109f',
+      'direct',
+      'source-metadata',
+      'curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json',
+      'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-joint-source-integration-technical-20261018-v1/candidate/sources/20.RP.selected-unit23-quality-GK-LK.source-extraction.json'
+    ],
+    [
+      'DE-RP/SekII/LK',
+      'rp-chem-sekii-rp-ch-sekii-2022-baustein-2-3-005-6ff85354',
+      '4a7dee38-1056-5e27-acec-e6a12f58109f',
+      '4a7dee38-1056-5e27-acec-e6a12f58109f',
+      'direct',
+      'source-metadata',
+      'curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json',
+      'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-joint-source-integration-technical-20261018-v1/candidate/sources/20.RP.selected-unit23-quality-GK-LK.source-extraction.json'
+    ],
+    [
+      'DE-SN/SekII/GK',
+      'sn-chem-sekii-sn-ch-jahrgangsstufe-11-grundkurs-wb1-011-01-81755658',
+      'f4f7f028-10db-53f9-bdae-456e0c6d0896',
+      'f4f7f028-10db-53f9-bdae-456e0c6d0896',
+      'direct',
+      'source-metadata',
+      'curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json',
+      'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-nineteen-target-source-gaps-author-20261018-v1/components/02-colour-and-context-components/candidate/sources/DE-SN.whole-selected-source-plus-whole-clauses.pending.json'
+    ],
+    [
+      'DE-TH/SekII/LK',
+      'th-chem-sekii-th-ch-sekii-4-1-8-synthesen-171-03-99c1b0d0',
+      '0559cec7-330b-57f1-a409-31cf1b4ac9fb',
+      '0559cec7-330b-57f1-a409-31cf1b4ac9fb',
+      'direct',
+      'source-metadata',
+      'curricula/DE/Gymnasium/mapping/DE-TH/upper-secondary/th_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.json',
+      'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-joint-source-integration-technical-20261018-v1/candidate/sources/21.TH.current235.selected-conditions-LK.source-extraction.json'
+    ]
+  ],
+  expected: [
+    [
+      'DE-RP/SekII/GK',
+      'rp-chem-sekii-rp-ch-sekii-2022-baustein-2-3-005-6ff85354',
+      '4a7dee38-1056-5e27-acec-e6a12f58109f',
+      '4a7dee38-1056-5e27-acec-e6a12f58109f',
+      'direct',
+      'source-metadata',
+      'curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json',
+      'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-joint-source-integration-technical-20261018-v1/candidate/sources/20.RP.selected-unit23-quality-GK-LK.source-extraction.json'
+    ],
+    [
+      'DE-RP/SekII/LK',
+      'rp-chem-sekii-rp-ch-sekii-2022-baustein-2-3-005-6ff85354',
+      '4a7dee38-1056-5e27-acec-e6a12f58109f',
+      '4a7dee38-1056-5e27-acec-e6a12f58109f',
+      'direct',
+      'source-metadata',
+      'curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json',
+      'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-joint-source-integration-technical-20261018-v1/candidate/sources/20.RP.selected-unit23-quality-GK-LK.source-extraction.json'
+    ],
+    [
+      'DE-SN/SekII/GK',
+      'sn-chem-sekii-sn-ch-jahrgangsstufe-11-grundkurs-wb1-011-01-81755658',
+      'f4f7f028-10db-53f9-bdae-456e0c6d0896',
+      'f4f7f028-10db-53f9-bdae-456e0c6d0896',
+      'direct',
+      'source-metadata',
+      'curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json',
+      'curricula/DE/Gymnasium/input/SN/upper-secondary/source-extraction/DE_SN_CHEMIE_SEKII_LEHRPLAN_GYMNASIUM_2025.source-extraction.json'
+    ],
+    [
+      'DE-TH/SekII/LK',
+      'th-chem-sekii-th-ch-sekii-4-1-8-synthesen-171-03-99c1b0d0',
+      '0559cec7-330b-57f1-a409-31cf1b4ac9fb',
+      '0559cec7-330b-57f1-a409-31cf1b4ac9fb',
+      'direct',
+      'source-metadata',
+      'curricula/DE/Gymnasium/mapping/DE-TH/upper-secondary/th_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.json',
+      'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-joint-source-integration-technical-20261018-v1/candidate/sources/21.TH.current235.selected-conditions-LK.source-extraction.json'
+    ]
+  ],
+  operator: 'deepStrictEqual'
+}
+
+Node.js v20.20.2

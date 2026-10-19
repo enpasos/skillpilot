@@ -1,0 +1,96 @@
+{
+  "recordType": "independent-informed-image-component-review",
+  "reviewId": "chemie-5851-image-independent-c-20261018-v1",
+  "reviewer": {
+    "agentTask": "/root/chemie454_current35_fresh_description_b",
+    "componentRole": "independent informed scientific and visual reviewer C",
+    "provider": "OpenAI",
+    "model": "GPT-6 family via Codex; exact model/build not exposed",
+    "authority": "ai_candidate",
+    "humanApprovalClaimed": false
+  },
+  "startedAtUTC": "2026-10-18T21:21:19+00:00",
+  "completedAtUTC": "2026-10-18T21:22:21.602185+00:00",
+  "status": "candidate",
+  "decision": "accept_component_candidate",
+  "goalId": "5851b53a-162b-5c17-9269-510ee54ad846",
+  "goalContext": {
+    "title": "Oxidationsprodukte von Alkanolen erklären",
+    "description": "Die lernende Person kann die Bildung von Aldehyden, Ketonen und Carbonsäuren bei der Oxidation geeigneter Alkanole erklären.",
+    "source": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json"
+  },
+  "inputs": [
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/chemie/5851b53a-162b-5c17-9269-510ee54ad846/5851b53a-162b-5c17-9269-510ee54ad846.jpg",
+      "sha256": "sha256:17070847465ffc8507f9aaf0dad7722f397350015f73a7357c5e8d7620114ae5",
+      "inspection": "actual view_image at original resolution"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-5851-ethanol-valence-image-author-20261018-v1/candidate/5851b53a-162b-5c17-9269-510ee54ad846.png",
+      "sha256": "sha256:380955a86c4f7f3a970e216d8851aad87edbf5e4949d0fc668491fca711263c9",
+      "inspection": "actual view_image at original resolution"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-5851-ethanol-valence-image-author-20261018-v1/captures/360-pixel-width.actual.png",
+      "sha256": "sha256:7bbd4445b1113c4bf6c428864c3b66a33896cc93caf114962bf2d09fa6178ad6",
+      "inspection": "actual view_image at original resolution"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-5851-ethanol-valence-image-author-20261018-v1/captures/680-pixel-width.actual.png",
+      "sha256": "sha256:66421f3b94d0e83b9c1bc23b49f65ba3d61a2138fb2194381d317ab29a380038",
+      "inspection": "actual view_image at original resolution"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-5851-ethanol-valence-image-author-20261018-v1/generation/prompt.actual.md",
+      "sha256": "sha256:f792b24daa756857728f6520548f5b5a7faedc58b61713989bb0b09bb5113b57",
+      "inspection": "whole text read"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-5851-ethanol-valence-image-author-20261018-v1/generation/GENERATION.actual-receipt.json",
+      "sha256": "sha256:f7f399881df71ace9cf01418d5566ee624e2b0ce026d40d7cc3bcfdc1889586f",
+      "inspection": "whole text read"
+    }
+  ],
+  "findings": [
+    {
+      "aspect": "ethanol valence",
+      "decision": "corrected",
+      "evidence": "Candidate ethanol explicitly shows CH3–CH2–OH: first C bonds to three H and second C; second C bonds to first C, upper H, right H and lower OH. Original source lacks the right H/bond at the OH-bearing carbon."
+    },
+    {
+      "aspect": "other molecules and concrete products",
+      "decision": "correct",
+      "evidence": "Ethanal/acetaldehyde CH3–CHO, ethanoic acid CH3–COOH, propan-2-ol (CH3)2CH–OH, propanone (CH3)2C=O and tert-butanol (CH3)3C–OH preserve C valence four, O valence two and H valence one. Product class labels fit the explicitly depicted examples."
+    },
+    {
+      "aspect": "tertiary oxidation scope",
+      "decision": "corrected",
+      "evidence": "Keine Carbonylbildung (ohne C–C-Spaltung) correctly limits the illustrated alcohol-to-carbonyl conversion. It does not make an absolute claim that tertiary alcohols cannot react under any conditions."
+    },
+    {
+      "aspect": "oxidation notation",
+      "decision": "acceptable schematic",
+      "evidence": "+[O] and arrows communicate oxidation classes. They are not balanced complete chemical reaction equations; no quantitative stoichiometry is claimed. The primary column depicts successive oxidation to aldehyde then acid."
+    },
+    {
+      "aspect": "360-pixel capture",
+      "decision": "acceptable",
+      "evidence": "Actually viewed 360×201 capture: explicit additional ethanol H and bond, double C=O bonds, CH3 groups, three alcohol classes, product labels and the C–C-cleavage condition remain distinguishable. This is compact illustration text; full native image remains preferable for detailed inspection."
+    },
+    {
+      "aspect": "680-pixel capture and native candidate",
+      "decision": "acceptable",
+      "evidence": "Actually viewed 680×380 and 1678×937 images: no clipping or collided bonds; the tertiary condition and complete ethanol structure are clear. Three-column friendly style and white background remain consistent with the original."
+    }
+  ],
+  "remainingGates": [
+    "Candidate only; not activated by this review.",
+    "Bind exact accepted image bytes to normal visualization source/public asset and affected current D/P/V evidence, then inspect the affected final goal page.",
+    "No learner execution, host display acceptance or human approval is established."
+  ],
+  "independence": {
+    "newBlindFirstPass": false,
+    "informedBy": "Own sealed B first-pass defect and root component task; author generation prompt/receipt read. Author inspection judgment was not used as independent evidence.",
+    "normalFilesChanged": false
+  }
+}

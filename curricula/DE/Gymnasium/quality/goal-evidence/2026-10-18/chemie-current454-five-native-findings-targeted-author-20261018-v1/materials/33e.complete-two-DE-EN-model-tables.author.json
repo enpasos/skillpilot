@@ -1,0 +1,221 @@
+{
+  "role": "AUTHOR complete bilingual case material; pending independent review",
+  "goalId": "33e845cc-1a7b-50d5-99b3-8079575c4e6a",
+  "dataOrigin": {
+    "de": "Eigene synthetische didaktische Modellangaben. Keine tatsächlich beobachteten Labor-, Lebensmittel-, Gesundheits- oder Lernendendaten. Alle Zahlen gelten ausschließlich innerhalb des ausdrücklich gegebenen Modells; keine reale Haltbarkeits- oder Sicherheitsbewertung.",
+    "en": "Own synthetic educational model givens. These are not observed laboratory, food, health or learner data. All figures apply only inside the explicitly supplied model; they establish no actual shelf life or safety assessment."
+  },
+  "cases": [
+    {
+      "caseId": "historical-and-modern-comparison",
+      "givensDe": "Ein einzelner fiktiver Modellorganismus A wird bei gleichem Ausgangsbestand verglichen. Wasseraktivität aw und pH sind dimensionslos. S0 ist der relative lebende Bestand unmittelbar nach dem Verfahren; S1 derselbe Bestand nach einem gleich langen Modell-Beobachtungsschritt bei der angegebenen Beobachtungstemperatur. Ein kleinerer positiver Bestand bedeutet keine vollständige Keimfreiheit. H bezeichnet einen vorgegebenen Wärmeprozess mit dem tabellierten unmittelbaren Effekt; es wird keine reale Prozessanleitung vorgegeben.",
+      "givensEn": "One fictional model organism A is compared from equal starting populations. Water activity aw and pH are dimensionless. S0 is the relative viable population immediately after the process; S1 is that population after an equal model observation interval at the stated observation temperature. A smaller positive population does not establish sterility. H denotes a supplied heat process with the tabulated immediate effect; no actual process procedure is specified.",
+      "table": {
+        "columns": [
+          {
+            "key": "method",
+            "labelDe": "Verfahren",
+            "labelEn": "Method"
+          },
+          {
+            "key": "aw",
+            "labelDe": "Wasseraktivität",
+            "labelEn": "Water activity",
+            "unit": "1"
+          },
+          {
+            "key": "pH",
+            "labelDe": "pH",
+            "labelEn": "pH",
+            "unit": "1"
+          },
+          {
+            "key": "temperatureC",
+            "labelDe": "Beobachtungstemperatur",
+            "labelEn": "Observation temperature",
+            "unit": "degC"
+          },
+          {
+            "key": "S0",
+            "labelDe": "Bestand direkt nach Verfahren",
+            "labelEn": "Population immediately after process",
+            "unit": "relative"
+          },
+          {
+            "key": "S1",
+            "labelDe": "Bestand nach Modellschritt",
+            "labelEn": "Population after model interval",
+            "unit": "relative"
+          }
+        ],
+        "rows": [
+          {
+            "methodDe": "Unbehandelte Referenz",
+            "methodEn": "Untreated reference",
+            "aw": 0.99,
+            "pH": 6.5,
+            "temperatureC": 20,
+            "S0": 1.0,
+            "S1": 1.5
+          },
+          {
+            "methodDe": "Trocknen/Salzen: erniedrigte aw",
+            "methodEn": "Drying/salting: reduced aw",
+            "aw": 0.8,
+            "pH": 6.5,
+            "temperatureC": 20,
+            "S0": 1.0,
+            "S1": 1.05
+          },
+          {
+            "methodDe": "Säuern",
+            "methodEn": "Acidification",
+            "aw": 0.99,
+            "pH": 3.5,
+            "temperatureC": 20,
+            "S0": 1.0,
+            "S1": 1.02
+          },
+          {
+            "methodDe": "Kühlen",
+            "methodEn": "Cooling",
+            "aw": 0.99,
+            "pH": 6.5,
+            "temperatureC": 4,
+            "S0": 1.0,
+            "S1": 1.04
+          },
+          {
+            "methodDe": "Wärmeprozess H, danach Beobachtung bei20 Grad C",
+            "methodEn": "Heat process H, then observation at20 degrees C",
+            "aw": 0.99,
+            "pH": 6.5,
+            "temperatureC": 20,
+            "S0": 0.05,
+            "S1": 0.08
+          }
+        ]
+      },
+      "taskDe": "Vergleiche die historisch verbreiteten Methoden Trocknen/Salzen und Säuern mit Kühlung und H. Ordne den jeweils geänderten Faktor dem passenden Wirkprinzip zu. Unterscheide Wachstumshemmung von unmittelbarer Inaktivierung und benenne für jedes Verfahren eine durch diese Daten begründete Grenze. Begründe, weshalb aus historisch/modern allein keine Sicherheitsrangfolge und aus diesen Angaben keine reale Haltbarkeit folgt.",
+      "taskEn": "Compare historically widespread drying/salting and acidification with cooling and H. Link each changed factor to its mechanism. Distinguish growth inhibition from immediate inactivation and state a data-supported limitation for every method. Explain why historical/modern labels alone establish no safety ranking and these givens establish no actual shelf life.",
+      "expectedDe": "Verringerte aw, niedrigerer pH und niedrigere Temperatur hemmen im Modell das Wachstum, ohne den anfänglichen Bestand S0 zu beseitigen. H senkt S0, lässt aber einen positiven Rest, der anschließend zunimmt. Alle fünf S1 sind positiv; für A wird keine Sterilität gezeigt. Die Aussagen gelten für A und die gegebenen Bedingungen; andere Organismen, andere Bedingungen oder Wiederverunreinigung sind nicht geprüft.",
+      "expectedEn": "Reduced aw, lower pH and lower temperature inhibit model growth without removing the initial S0 population. H reduces S0 but leaves a positive remainder which then grows. All five S1 values are positive; no sterility is demonstrated for A. Claims are limited to A and the supplied conditions; other organisms, conditions or recontamination were not tested.",
+      "rubric": [
+        {
+          "criterionDe": "Fachlich richtige fallbezogene Erklärung anhand der vollständig gegebenen Daten; keine bloße Nennung.",
+          "criterionEn": "Scientifically correct case-specific explanation using all relevant givens, rather than naming only.",
+          "maximumPoints": 2
+        },
+        {
+          "criterionDe": "Eigenständige begründete Verknüpfung mit dem Vergleich/Anwendungsfall und seinen ausdrücklich gegebenen Aussagegrenzen.",
+          "criterionEn": "Independent reasoned connection to the comparison/application and its explicit inference limits.",
+          "maximumPoints": 2
+        }
+      ],
+      "maximumPoints": 4,
+      "gradingBoundaryDe": "Die Punkte betreffen nur diesen Papierfall. Kein tatsächlicher Versuch, keine Lernendenleistung und keine vollständige Meisterung werden behauptet. Der zweite Fall ist eine frische eigenständig zu begründende Variation.",
+      "gradingBoundaryEn": "Points concern this paper case only. No actual experiment, learner performance or complete mastery is claimed. The second case is a fresh variation requiring independent reasons."
+    },
+    {
+      "caseId": "changed-packaging-organisms",
+      "givensDe": "Frische, unabhängige Modellreihe: Zwei verschiedene fiktive Organismen A und B starten jeweils mit relativem Bestand1.00. Die Werte GA und GB sind ausschließlich der relative Zuwachs nach demselben Modellzeitraum, nicht die Gesamtbestände. Sauerstoffangaben sind Volumenanteile; alle Reihen haben20 Grad C. Die Organismenbezeichnungen werden nicht mit realen Spezies gleichgesetzt.",
+      "givensEn": "Fresh independent model series: Two different fictional organisms A and B each start at relative population1.00. GA and GB are only relative increases after the same model interval, not total populations. Oxygen figures are volume fractions; every row is at20 degrees C. Organism labels do not identify actual species.",
+      "table": {
+        "columns": [
+          {
+            "key": "method",
+            "labelDe": "Verfahren",
+            "labelEn": "Method"
+          },
+          {
+            "key": "oxygenPercent",
+            "labelDe": "Sauerstoff",
+            "labelEn": "Oxygen",
+            "unit": "vol%"
+          },
+          {
+            "key": "aw",
+            "labelDe": "Wasseraktivität",
+            "labelEn": "Water activity",
+            "unit": "1"
+          },
+          {
+            "key": "pH",
+            "labelDe": "pH",
+            "labelEn": "pH",
+            "unit": "1"
+          },
+          {
+            "key": "GA",
+            "labelDe": "Relativer Zuwachs A",
+            "labelEn": "Relative increase A",
+            "unit": "relative"
+          },
+          {
+            "key": "GB",
+            "labelDe": "Relativer Zuwachs B",
+            "labelEn": "Relative increase B",
+            "unit": "relative"
+          }
+        ],
+        "rows": [
+          {
+            "methodDe": "Referenzverpackung",
+            "methodEn": "Reference packaging",
+            "oxygenPercent": 21,
+            "aw": 0.99,
+            "pH": 6.5,
+            "GA": 0.8,
+            "GB": 0.6
+          },
+          {
+            "methodDe": "Sauerstoffarme Modellverpackung",
+            "methodEn": "Low-oxygen model packaging",
+            "oxygenPercent": 2,
+            "aw": 0.99,
+            "pH": 6.5,
+            "GA": 0.05,
+            "GB": 0.7
+          },
+          {
+            "methodDe": "Säuern",
+            "methodEn": "Acidification",
+            "oxygenPercent": 21,
+            "aw": 0.99,
+            "pH": 3.5,
+            "GA": 0.1,
+            "GB": 0.08
+          },
+          {
+            "methodDe": "Trocknen",
+            "methodEn": "Drying",
+            "oxygenPercent": 21,
+            "aw": 0.8,
+            "pH": 6.5,
+            "GA": 0.08,
+            "GB": 0.06
+          }
+        ]
+      },
+      "taskDe": "Vergleiche die sauerstoffarme Verpackung mit Säuern und Trocknen. Erkläre die unterschiedlichen Wirkfaktoren und prüfe die Behauptung: Weniger Sauerstoff verhindert jedes Wachstum. Begründe mit beiden Organismen eine Grenze. Übertrage Zahlen aus Fall1 nicht auf diese frische Modellreihe; eine Kombination wurde hier nicht untersucht.",
+      "taskEn": "Compare low-oxygen packaging with acidification and drying. Explain their different factors and assess the claim that less oxygen prevents all growth. Use both organisms to justify a limitation. Do not transfer figures from case1 to this fresh model series; no combination was tested here.",
+      "expectedDe": "GA sinkt bei weniger Sauerstoff stark, GB steigt gegenüber der Referenz. Sauerstoffminderung wirkt deshalb nicht auf beide Modellorganismen gleich. Säuern und Trocknen ändern pH bzw.aw und hemmen beide in den gegebenen Reihen, ohne Wachstum null zu zeigen. Weder Sterilität noch eine sichere Kombination oder reale Haltbarkeit sind nachgewiesen.",
+      "expectedEn": "GA falls sharply with reduced oxygen while GB rises above its reference. Oxygen reduction therefore does not affect both model organisms equally. Acidification and drying change pH and aw respectively and inhibit both in these rows without showing zero growth. Neither sterility, a safe combination nor actual shelf life is established.",
+      "rubric": [
+        {
+          "criterionDe": "Fachlich richtige fallbezogene Erklärung anhand der vollständig gegebenen Daten; keine bloße Nennung.",
+          "criterionEn": "Scientifically correct case-specific explanation using all relevant givens, rather than naming only.",
+          "maximumPoints": 2
+        },
+        {
+          "criterionDe": "Eigenständige begründete Verknüpfung mit dem Vergleich/Anwendungsfall und seinen ausdrücklich gegebenen Aussagegrenzen.",
+          "criterionEn": "Independent reasoned connection to the comparison/application and its explicit inference limits.",
+          "maximumPoints": 2
+        }
+      ],
+      "maximumPoints": 4,
+      "gradingBoundaryDe": "Die Punkte betreffen nur diesen Papierfall. Kein tatsächlicher Versuch, keine Lernendenleistung und keine vollständige Meisterung werden behauptet. Der zweite Fall ist eine frische eigenständig zu begründende Variation.",
+      "gradingBoundaryEn": "Points concern this paper case only. No actual experiment, learner performance or complete mastery is claimed. The second case is a fresh variation requiring independent reasons."
+    }
+  ]
+}

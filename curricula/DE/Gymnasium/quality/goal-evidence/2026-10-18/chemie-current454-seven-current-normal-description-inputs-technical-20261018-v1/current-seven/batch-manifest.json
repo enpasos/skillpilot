@@ -1,0 +1,60 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "chemie-current454-seven-current-normal-D-20261018-v1",
+  "subject": "chemie",
+  "subjectLabel": "Chemie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-seven-current-normal-description-inputs-technical-20261018-v1/current-seven.config.json",
+  "configDigest": "sha256:cbe8de6377a26f9478c755b877a2d53a4475165d11ae040f5a61e8c1a1e5650f",
+  "goalIds": [
+    "5851b53a-162b-5c17-9269-510ee54ad846",
+    "6c7ce93c-7675-51da-bc0c-7d0257f7ff7d",
+    "0bf26276-2780-506c-ac34-35dd44a29409",
+    "33e845cc-1a7b-50d5-99b3-8079575c4e6a",
+    "70b34ae7-4481-590c-9a02-516464750832",
+    "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+    "e7c3d20e-4b13-560b-b8ee-c5abca8cc624"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 454,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-seven-current-normal-description-inputs-technical-20261018-v1/BASE.current454-QA.review.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "baseBookDigest": "sha256:322f1068026972be40139d5c2b3d5d68eb884504342703ca4c7c3330961666cf"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:352eda1a90105c5ce088dfff2e3bddcea54ed8bb5aec6b2274395ccdc95d3826",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:10fb533799b887943e233aabb5c2f935022ba97c2ab2b328a382c39075da76f6",
+    "reviewInputFingerprint": "sha256:673ce9bee15d6de557fc1c636da8d3b79aecc16422288120c75ceae2712a70de",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "chemie-current454-seven-current-normal-D-20261018-v1-a",
+        "campaignDigest": "sha256:b443a41753861c5c7ad3baf672e2353e725cbef887470eefc2d64d2896c203c1",
+        "roundId": "chemie-current454-seven-current-normal-D-20261018-v1-first-pass-a",
+        "independenceGroupId": "chemie-current454-seven-current-normal-D-20261018-v1-independent-a",
+        "batchId": "chemie-current454-seven-current-normal-D-20261018-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:3f541102334546273ac4337ce25495c93a535e27d2874d684ffed93b17d6af98"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "chemie-current454-seven-current-normal-D-20261018-v1-b",
+        "campaignDigest": "sha256:3c0a0874c5ef3e545ff84b3d7c2f68b681ac7b4f0d231301d16b44a0e8afa035",
+        "roundId": "chemie-current454-seven-current-normal-D-20261018-v1-first-pass-b",
+        "independenceGroupId": "chemie-current454-seven-current-normal-D-20261018-v1-independent-b",
+        "batchId": "chemie-current454-seven-current-normal-D-20261018-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:835d301039ef764bae65b79210f5399d409c528a21ae50ccfe6462290e1221e1"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

@@ -1,39 +1,11 @@
-# Lernzielvisualisierung: Esterbildung und Estereigenschaften erklären
+# Tatsächlich verwendete Bildgenerierung
 
-## SkillPilot-Ziel
+OpenAI / Codex built-in image_gen; genaue Modellversion nicht exponiert.
+Eigenes didaktisches Bild: CC-BY-4.0. Native PNG-Größe: 1672 × 941.
+Ausgewählte Bilddatei SHA-256: `65b6986d082563faa2b4cfa7e8b260380a17925c733f4bb67cb90ff1ca3aabc5`.
 
-- SkillPilot-ID: `70b34ae7-4481-590c-9a02-516464750832`
-- Titel: Esterbildung und Estereigenschaften erklären
-- Beschreibung: Die lernende Person kann die Bildung von Estern aus Alkoholen und Carbonsäuren aus experimentellen Beobachtungen ableiten, Kondensationsreaktionen formulieren, Stoffeigenschaften mithilfe zwischenmolekularer Wechselwirkungen begründen und Einsatzbereiche von Estern in Alltagsprodukten und Technik nennen.
+Die Erzeugung ersetzt keine fachliche oder visuelle Prüfung. Die tatsächliche unabhängige Bildprüfung und die nativen 360-/680-Pixel-Sichtungen sind im datierten Evidence-Paket erhalten.
 
-## Generator
+## Unveränderter tatsächlicher Prompt: formation.prompt.actual.md
 
-- Provider: Google Gemini / Nano Banana Pro
-- Status: pilot
-- Quellbild: `70b34ae7-4481-590c-9a02-516464750832.jpg`
-- Public Asset: `/assets/goal-visualizations/chemie/70b34ae7-4481-590c-9a02-516464750832/70b34ae7-4481-590c-9a02-516464750832.jpg`
-
-## Prompt
-
-```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Esterbildung und Estereigenschaften erklären
-Beschreibung: Die lernende Person kann die Bildung von Estern aus Alkoholen und Carbonsäuren aus experimentellen Beobachtungen ableiten, Kondensationsreaktionen formulieren, Stoffeigenschaften mithilfe zwischenmolekularer Wechselwirkungen begründen und Einsatzbereiche von Estern in Alltagsprodukten und Technik nennen.
-
-Zusatzanweisung:
-Show the reversible esterification R-C(=O)-OH + H-O-R′ ⇌ R-C(=O)-O-R′ + H2O with acid catalysis. Use safe reflux or indirect heating on a heating mantle or hot-water bath. Do not show an open flame near alcohols, esters, or organic vapors. Relate ester structure to a typical odor without claiming all esters smell pleasant.
-```
-
-## Review-Notiz
-
-Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.
+Create a new focused didactic PNG illustration based on the visual style of the attached SkillPilot chemistry infographic, preserving friendly clear cartoon linework, rounded panels, soft pastel blue/green background and simple colourful molecule icons. This is a necessary correction of an inaccurate chemistry picture and separation of its bundled subjects. Output landscape near 1600x900 or close native 16:9. Asset A teaches ONLY ester formation, with the short heading 'Esterbildung'. Use a clean large central reaction diagram, not laboratory apparatus. Display exactly the chemically correct reversible acid-catalysed condensation: R–C(=O)–OH + HO–R′ ⇌ R–C(=O)–O–R′ + H₂O. The carbonyl oxygen must be double bonded; the linking ester oxygen single bonded to carbonyl carbon and R′; all valences correct. Use bold large easy-to-distinguish red oxygen atoms, blue R and green R′ groups. Visually pair the reacting OH and alcohol H with the water product, while clearly preserving the alcohol O in the ester. Place 'H⁺' ABOVE the equilibrium arrow as catalyst, not a reactant. Very short labels only: 'Carbonsäure', 'Alkohol', 'Ester', 'Wasser'; optional single concise label 'Gleichgewicht'. One simple magnified rounded inset can highlight the single ester group –C(=O)–O– without introducing another reaction. No smell, property, applications panels, no task solutions, no unbalanced reaction, no ketone instead of ester, no apparatus or flame, no tiny print. Main motif and correct ester linkage remain recognizable at 360px total width; short labels have generous large lettering. No photorealism, no technical CAD appearance, no watermark.

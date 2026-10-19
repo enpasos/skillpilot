@@ -1,0 +1,302 @@
+{
+  "artifactType": "whole-bilingual-author-candidate-material",
+  "goalId": "18819a59-2442-530f-a7c3-26755398ec66",
+  "createdAt": "2026-10-18T23:15:07.696058+00:00",
+  "license": "CC-BY-4.0 for own teaching material; cited third-party source retains its rights",
+  "status": "AUTHOR candidate, pending independent component review",
+  "dataStatus": {
+    "de": "Alle Rechen-, Peak- und Kontrollzahlen sind ausdrücklich synthetische Lehr-/Planungsdaten. Es wird keine tatsächlich ausgeführte Messung, bestehende Schulprobe oder lokale Freigabe behauptet. Die eigenen praktischen Nachweise müssen bei der späteren Durchführung neu entstehen; die Zahlenkarten ersetzen sie nicht.",
+    "en": "All calculation, peak and control figures are explicitly synthetic teaching/planning data. No performed measurement, existing school sample or local authorisation is asserted. The learner’s practical evidence must be generated in the later actual procedure; the number cards do not replace it."
+  },
+  "common": {
+    "structures": [
+      {
+        "id": "MEP",
+        "name": {
+          "de": "Methyl-4-hydroxybenzoat (Methylparaben)",
+          "en": "Methyl4-hydroxybenzoate (methylparaben)"
+        },
+        "condensed": "4-HO–C6H4–C(=O)–O–CH3",
+        "SMILES": "COC(=O)c1ccc(O)cc1",
+        "formula": "C8H8O3"
+      },
+      {
+        "id": "ETP",
+        "name": {
+          "de": "Ethyl-4-hydroxybenzoat (Ethylparaben)",
+          "en": "Ethyl4-hydroxybenzoate (ethylparaben)"
+        },
+        "condensed": "4-HO–C6H4–C(=O)–O–CH2–CH3",
+        "SMILES": "CCOC(=O)c1ccc(O)cc1",
+        "formula": "C9H10O3"
+      }
+    ],
+    "structureKey": {
+      "de": "Das C6H4-Symbol steht für einen Benzolring mit zwei Substituenten: phenolisches O–H an C1 und direkt ringgebundenes C(=O)–OR an C4. Carbonyl-C hat Doppelbindung zu O und Einfachbindungen zu Ring-C und Ester-O; Ester-O ist an Carbonyl-C und Alkyl-C gebunden. Die alkylseitige Kette ersetzt nicht die para-OH-Gruppe. Die neutral gezeichneten Moleküle können abhängig vom pH ionisieren; keine unbegrenzte pH-Unabhängigkeit.",
+      "en": "C6H4 denotes a benzene ring with two substituents: phenolic O–H at C1 and directly ring-bound C(=O)–OR at C4. Carbonyl C has a double bond to O and single bonds to ring C and ester O; ester O bonds to carbonyl C and alkyl C. The alkyl chain does not replace the para-OH group. The drawn neutral molecules can ionise depending on pH; no unlimited pH independence is implied."
+    },
+    "methodSource": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-three-whole-material-gaps-author-20261019-v1/references/HPLC.method-primary-source-summary.json",
+      "sha256": "sha256:b458c32ddd369158427286450bd49152436515f02cee0a4200c43bb9b5c79538",
+      "bytes": 1761
+    },
+    "workingSolvent": {
+      "de": "D: Wasser/Methanol62:38(v/v), HPLC-Qualität, homogen gemischt und vom Labor bereitgestellt. Alle Standards, Modellproben und Verdünnungen sind in D; dadurch ändern die Verdünnungen die Lösungsmittelstärke nicht.",
+      "en": "D: water/methanol62:38(v/v), HPLC grade, mixed homogeneously and supplied by the laboratory. All standards, model samples and dilutions use D, so dilution does not change solvent strength."
+    },
+    "matrixRecipes": [
+      {
+        "id": "M-MEP",
+        "perFinalLitre": {
+          "glycerolG": 1.0,
+          "sucroseG": 5.0,
+          "solvent": "D to1.000L"
+        },
+        "analyte": "MEP",
+        "description": {
+          "de": "Vom Labor frisch bereitete und codierte analytische Modellprobe; Methylparabenzusatz aus rückverfolgbarem Vorrat. Die Konzentration des echten Unbekannten bleibt Lernenden verborgen. Matrixblank enthält dieselben Komponenten ohne Paraben. Keine Lebensmittelprobe, kein Verzehr.",
+          "en": "Fresh laboratory-prepared coded analytical model sample, with methylparaben added from a traceable stock. The actual unknown concentration is withheld from the learner. Matrix blank contains the same components without paraben. Not a food sample; do not ingest."
+        }
+      },
+      {
+        "id": "M-ETP",
+        "perFinalLitre": {
+          "glycerolG": 2.0,
+          "sucroseG": 2.0,
+          "phenoxyethanolMg": 20.0,
+          "solvent": "D to1.000L"
+        },
+        "analyte": "ETP",
+        "description": {
+          "de": "Frische codierte Modellprobe mit Ethylparaben statt Methylparaben und2-Phenoxyethanol als bekannter möglicher Matrixstörer. Struktur des Störers:C6H5–O–CH2–CH2–OH. Ein passender Matrixblank enthält auch diesen Störer, aber kein Ethylparaben. Die geringe Gesamtzusatzmenge verändert D im Modell nicht wesentlich.",
+          "en": "Fresh coded model sample with ethylparaben instead of methylparaben and2-phenoxyethanol as a known potential matrix interferent. Interferent structure:C6H5–O–CH2–CH2–OH. A matching matrix blank includes this interferent but no ethylparaben. The small added amount does not materially change D in the model."
+        }
+      }
+    ],
+    "candidateSOP": {
+      "methodId": "MP1",
+      "publishedInstrumentExample": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-three-whole-material-gaps-author-20261019-v1/references/HPLC.method-primary-source-summary.json",
+      "instrument": {
+        "de": "HPLC mit Gradientenpumpe, UV-Detektor254nm, Autosampler, kompatibler C18-Säule150×4.6mm/3.5µm,40°C; Wasser(A)/Methanol(B),0.8mL/min,5µL Injektion. Verwendete Säule und Systemgrenzen mit dem Gerätehandbuch abgleichen.",
+        "en": "HPLC with gradient pump, UV254nm, autosampler, compatible150×4.6mm/3.5µm C18 column at40°C; water(A)/methanol(B),0.8mL/min,5µL injection. Check the actual column and system limits against the instrument manual."
+      },
+      "gradientTimeMinAndBPercent": [
+        [
+          0,
+          38
+        ],
+        [
+          5,
+          38
+        ],
+        [
+          6,
+          60
+        ],
+        [
+          16,
+          60
+        ],
+        [
+          17,
+          62
+        ],
+        [
+          20,
+          38
+        ]
+      ],
+      "afterGradient": {
+        "de": "Nach20min bei38%B weiter äquilibrieren, zunächst10min als Planungsvorgabe; erst fortfahren, wenn Druck/Basislinie und Kontrollretention stabil sind. Gesamtzyklus zunächst30min. Bei unzureichender Stabilität verlängern und dokumentieren; nicht einfach verkürzen.",
+        "en": "After20min continue equilibrating at38%B, initially10min as a planning specification; proceed only when pressure/baseline and check retention are stable. Initial total cycle30min. Extend and document if stability is inadequate; do not simply shorten it."
+      },
+      "laboratoryConditions": {
+        "de": "Nur in einem entsprechend ausgestatteten beaufsichtigten Labor nach tatsächlicher lokaler Gefährdungsbeurteilung und schriftlicher Methodenfreigabe. Methanol ist toxisch und entzündlich: Laborpersonal bereitet Vorräte/Eluenten im geeigneten Abzug, Sicherheitsdatenblätter und örtliche Schutz-/Abfallregeln gelten; Schutzbrille, Labormantel, geeignete Handschuhe, keine Zündquellen. Lernende bedienen keine offene Hochdruckleitung; Gerätetraining und zulässiger Druck müssen dokumentiert sein. Methanolhaltigen Abfall getrennt sammeln. Ohne Ausstattung/Freigabe bleibt praktische Evidenz offen; eine freigegebene gleich geeignete quantitative Methode ist möglich und muss dieselben Nachweise liefern.",
+        "en": "Only in a suitably equipped supervised laboratory after an actual local risk assessment and written method authorisation. Methanol is toxic and flammable: laboratory personnel prepare stocks/eluents in a suitable fume hood; safety data sheets and local protection/waste rules apply. Use goggles, lab coat and suitable gloves, with no ignition sources. Learners must not handle open high-pressure lines; instrument training and allowed pressure must be recorded. Collect methanol-containing waste separately. Without equipment/authorisation practical evidence remains open; a locally authorised equally suitable quantitative method may be used and must supply the same evidence."
+      },
+      "sampleHandling": {
+        "de": "Homogene Modellproben in sauberen Glasgefäßen mischen, eindeutig beschriften und am selben Labortag bearbeiten. Keine unbekannten Realprodukte extrahieren. Bei Partikeln erst nach geprüfter analytspezifischer Wiederfindung durch einen kompatiblen0.45µm-Filter filtrieren; ansonsten keinen unbelegten Filterverlust einführen. Keine Erwärmung, Hydrolyse oder pH-Änderung als heimliche Probenvorbereitung.",
+        "en": "Mix homogeneous model samples in clean glassware, label unambiguously and analyse on the same laboratory day. Do not extract unspecified real products. If particulates occur, filter through a compatible0.45µm filter only after checking analyte-specific recovery; otherwise do not introduce an unverified filtration loss. Do not silently introduce heating, hydrolysis or pH changes as sample preparation."
+      },
+      "stocks": {
+        "de": "Labor liefert getrennte zertifikats-/ansatzrückverfolgbare10.00mg/L-MEP- und ETP-Arbeitsvorräte in D sowie unabhängig angesetzte Kontrollvorräte. Konzentration, Reinheit, Ansatz-/Verfallsdatum und Hersteller/Charge oder Wäge-/Volumenprotokoll dokumentieren. Beide Analyten werden mit eigener Kalibrierung bestimmt.",
+        "en": "The laboratory supplies separate certificate/preparation-traceable10.00mg/L MEP and ETP working stocks in D and independently prepared QC stocks. Record concentration, purity, preparation/expiry date and supplier/lot or weighing/volume record. Each analyte uses its own calibration."
+      },
+      "calibrationPreparation": {
+        "finalVolumeML": 20.0,
+        "stockMgL": 10.0,
+        "MEP": {
+          "stockVolumesML": [
+            1.0,
+            4.0,
+            10.0
+          ],
+          "finalConcentrationsMgL": [
+            0.5,
+            2.0,
+            5.0
+          ]
+        },
+        "ETP": {
+          "stockVolumesML": [
+            1.0,
+            2.0,
+            4.0,
+            8.0
+          ],
+          "finalConcentrationsMgL": [
+            0.5,
+            1.0,
+            2.0,
+            4.0
+          ]
+        },
+        "instruction": {
+          "de": "Kalibrierte Pipetten/Messkolben verwenden; jeweils mit D bis zur Marke auffüllen, mischen. Eigene Istvolumina und Unsicherheitsgrenzen protokollieren. Unabhängige QCs:MEP3.00mg/L und ETP1.50mg/L, aus anderem Kontrollvorrat, nicht aus der Kalibriergeraden erzeugte Zahlen.",
+          "en": "Use calibrated pipettes/volumetric flasks; fill to the mark with D and mix. Record actual volumes and uncertainty limits. Independent QCs:MEP3.00mg/L and ETP1.50mg/L from a separate QC stock, not figures generated from the calibration line."
+        }
+      },
+      "sequence": {
+        "de": "D-Blank → analytspezifische Standards niedrig/hoch einschließlich Zwischenstandards → unabhängiger QC → Matrixblank → mindestens zwei unabhängige Probenverdünnungen mit Doppel-Injektionen → passende aufgestockte Probe → QC erneut → D-Blank nach hoher Probe zur Verschleppungskontrolle. Standards und Proben gleich integrieren. Kalibrierung mit Achsenabschnitt verwenden; Blank nicht zusätzlich abziehen, sofern nicht eine neue konsistent blankkorrigierte Kalibrierung erstellt wird.",
+        "en": "D blank → analyte-specific standards low/high including intermediate levels → independent QC → matrix blank → at least two independently prepared sample dilutions with duplicate injections → matching spiked sample → QC again → D blank after the high sample for carryover. Integrate standards and samples consistently. Use calibration with intercept; do not additionally subtract blank unless a new consistently blank-corrected calibration is made."
+      },
+      "authorTeachingAcceptanceRules": {
+        "de": "Vorgegebene Lehr-Eignungskriterien, keine vollständige analytische Validierung:Alle Standards im jeweils angegebenen Arbeitsbereich; rückgerechnete Standards/QC90–110% des Ansatzwerts; Doppel-Injektions-RSD≤5%; Blank/Verschleppung nach Interceptkorrektur<0.10mg/L; aufgestockte Wiederfindung90–110%; Rs≥1.5 zum bekannten Nachbarpeak. Rs=2(tR2−tR1)/(w1+w2) mit Basisbreiten. Aufstockung1.00mg/L mit Endvolumen-/Verdünnungskorrektur; Wiederfindung=(caufgestockt−cunaufgestockt)/1.00×100%. Gleiche Retentionszeit/Spike allein schließen unbekannte Koelution nicht aus. Bei verletztem Kriterium Ursache bearbeiten, passende Trennung/weitere Verdünnung wählen und tatsächlich neu messen. Ohne Selektivitätsbeleg keine präzise analytspezifische Aussage.",
+        "en": "Specified teaching suitability criteria, not complete analytical validation: all standards within the stated analyte range; back-calculated standards/QC90–110% of prepared value; duplicate-injection RSD≤5%; blank/carryover after intercept correction<0.10mg/L; spike recovery90–110%; Rs≥1.5 from the known neighbouring peak. Rs=2(tR2−tR1)/(w1+w2), using baseline widths. Spike1.00mg/L with final-volume/dilution correction; recovery=(cspiked−cunspiked)/1.00×100%. Matching retention/spiking alone does not exclude unknown coelution. If a criterion fails, address its cause, choose suitable separation/further dilution and actually remeasure. No precise analyte-specific claim without selectivity evidence."
+      },
+      "recordsRequired": {
+        "de": "Abgabe: begründete Methodenwahl; unterschriebene lokale Freigabe als Umgebungsnachweis, nicht als fachlicher Lernerfolg; eigene Planfassung; Stoff-/Ansatz-/Verdünnungsprotokolle; tatsächlich verwendete Geräteparameter; vollständige originale Chromatogramme/Integrationen mit Achsen/Einheiten; eigene Kontrollauswertungen; gültige Kalibrierung und Gehalt mit Unsicherheit/Grenzen. Kopierte Lehrzahlen dürfen niemals als diese Rohdaten beschriftet werden.",
+        "en": "Submit: justified method choice; signed local authorisation as environmental evidence, not subject mastery; own plan; reagent/preparation/dilution records; actual instrument settings; complete original chromatograms/integrations with axes/units; own control evaluations; valid calibration and content with uncertainty/limits. Copied teaching figures must never be labelled as these raw data."
+      }
+    }
+  },
+  "cases": [
+    {
+      "caseId": "fresh-specified-methylparaben-own-calibrated-assay",
+      "learnerTask": {
+        "de": "Nutze M-MEP und die MEP-Struktur. Begründe eine quantitative Methode aus UV-aktivem aromatischem Gerüst und nötiger Matrixtrennung. Plane Probenvorbereitung, Standards und Kontrollen selbst und führe nach tatsächlicher Laborfreigabe die Bestimmung aus. Eine mögliche Verdünnung ist2.50mL auf20.00mL in D (Faktor8); wähle sie anhand deiner eigenen Signale. Trenne die nachstehende synthetische Rechenkontrolle vollständig von deiner praktischen Dokumentation.",
+        "en": "Use M-MEP and the MEP structure. Justify a quantitative method from its UV-active aromatic framework and required matrix separation. Plan sample preparation, standards and controls yourself and perform the assay after actual laboratory authorisation. One possible dilution is2.50mL to20.00mL in D (factor8); choose it from your own signals. Keep the following synthetic calculation check wholly separate from your practical records."
+      },
+      "calculationCard": {
+        "status": "synthetic; not actual learner readings",
+        "standards": {
+          "cMgL": [
+            0.5,
+            2.0,
+            5.0
+          ],
+          "areaAU": [
+            65,
+            200,
+            470
+          ]
+        },
+        "validRangeMgL": [
+          0.5,
+          5.0
+        ],
+        "sampleAreaAU": 290,
+        "dilution": 8,
+        "screening": {
+          "method": "MP1",
+          "MEP_tRMin": 4.0,
+          "MEP_baseWidthMin": 0.3,
+          "nearestKnownMatrix_tRMin": 6.8,
+          "nearestKnownMatrix_baseWidthMin": 0.3,
+          "matrixBlankAreaAtMEP": 20,
+          "interceptAreaAU": 20
+        }
+      },
+      "expectedReasoning": {
+        "de": "Para-OH und Ester korrekt, aromatisches UV-Signal und Trennung begründet; die C18-Interaktion hängt auch von Alkylrest und Bedingungen ab. A=90c+20 liefert(290−20)/90=3.00mg/L und mit Faktor8 den Modellwert24.0mg/L. Rs=9.33 gegenüber dem angegebenen bekannten Peak, im Modell kein Blank-Zusatzsignal über Intercept; dies beweist keine unbekannten Störer. Die tatsächliche Durchführung und Gültigkeit erfordern eigene Kontrollen/Rohdaten. Keine Konzentration aus tR und keine doppelte Blankkorrektur.",
+        "en": "Correct para-OH and ester, justified aromatic UV response and separation; C18 interaction also depends on alkyl substituent and conditions. A=90c+20 gives(290−20)/90=3.00mg/L and factor8 gives the model value24.0mg/L. Rs=9.33 from the stated known peak, with no model blank response above intercept; this does not prove absence of unknown interference. Actual execution and validity require original controls/readings. Do not obtain concentration from tR or subtract blank twice."
+      },
+      "rubric": [
+        {
+          "id": "method",
+          "de": "Struktur, Matrix und geeignete quantitative Methode begründet; HPLC nicht universell vorausgesetzt.",
+          "en": "Justifies structure, matrix and suitable quantitative method; HPLC not universally assumed."
+        },
+        {
+          "id": "own-execution",
+          "de": "Eigene tatsächliche Planung UND Durchführung mit rückverfolgbaren Standards, Blank/Matrix/QC und Rohprotokollen; ohne diese bleibt diese Pflicht offen.",
+          "en": "Own actual planning AND execution with traceable standards, blank/matrix/QC and raw records; this duty remains open without them."
+        },
+        {
+          "id": "quantitation",
+          "de": "Kalibrierung, Arbeitsbereich, Faktor8, Einheiten und Selektivitätsgrenzen nachvollziehbar; Modellrechnung getrennt.",
+          "en": "Traceable calibration, range, factor8, units and selectivity limits; model calculation separate."
+        }
+      ]
+    },
+    {
+      "caseId": "fresh-specified-ethylparaben-range-and-matrix-remeasurement",
+      "learnerTask": {
+        "de": "Nutze die neue ETP-Struktur und M-ETP mit bekanntem2-Phenoxyethanol. Begründe Methode und neue ETP-Standards eigenständig. Prüfe den unten angegebenen Vorversuch P0 und plane eine überprüfte Alternative, etwa MP1. Eine erste Verdünnung5.00mL auf30.00mL ergibt Faktor6; bei weiterem Bedarf10.00mL dieser Lösung auf30.00mL ergeben nochmals Faktor3. Führe Selektivitätskontrollen und notwendige erneute Verdünnung/Messung tatsächlich aus und dokumentiere eigene Werte. Die Kartenwerte unten bleiben bloße Lehrkontrollen.",
+        "en": "Use the new ETP structure and M-ETP with known2-phenoxyethanol. Independently justify method and fresh ETP standards. Check the P0 screening trial below and plan a tested alternative such as MP1. An initial5.00mL to30.00mL dilution gives factor6; if further needed,10.00mL of this solution to30.00mL gives another factor3. Actually perform selectivity controls and any necessary new dilution/measurement and document original values. The card figures below remain teaching checks only."
+      },
+      "calculationCard": {
+        "status": "synthetic; not actual learner readings",
+        "standards": {
+          "cMgL": [
+            0.5,
+            1.0,
+            2.0,
+            4.0
+          ],
+          "areaAU": [
+            47.5,
+            85,
+            160,
+            310
+          ]
+        },
+        "validRangeMgL": [
+          0.5,
+          4.0
+        ],
+        "initialDilution": 6,
+        "initialSampleAreaAU": 460,
+        "additionalDilution": 3,
+        "afterSuitableSeparationAreaAU": 160,
+        "screeningRows": [
+          {
+            "method": "P0: illustrative short isocratic60%B screen, not proposed assay",
+            "ETP_tRMin": 3.2,
+            "ETP_baseWidthMin": 0.2,
+            "phenoxyethanol_tRMin": 3.25,
+            "phenoxyethanol_baseWidthMin": 0.24
+          },
+          {
+            "method": "MP1: synthetic suitability example, not vendor retention data",
+            "ETP_tRMin": 8.2,
+            "ETP_baseWidthMin": 0.3,
+            "phenoxyethanol_tRMin": 7.2,
+            "phenoxyethanol_baseWidthMin": 0.3
+          }
+        ]
+      },
+      "expectedReasoning": {
+        "de": "P0 ergibt Rs≈0.23 und ist für den bekannten Störer ungeeignet; MP1-Karte ergibt Rs≈3.33, muss aber im echten Lauf neu geprüft werden. A=75c+10:(460−10)/75=6.00mg/L liegt außerhalb0.5–4.0mg/L; keine gültige quantitative Extrapolation, zumal anfängliche Koelution möglich ist. Nur im separat gegebenen Modell nach geeigneter Trennung:(160−10)/75=2.00mg/L; Faktor6×3=18, Original36.0mg/L. Größere Alkylkette bedeutet nicht identische UV-Antwort/Retentionszeit; MEP-Gerade nicht übernehmen. Tatsächlicher Gehalt folgt ausschließlich aus der neuen gültigen eigenen Messung mit Kontrollen, nicht aus dem Kartenwert.",
+        "en": "P0 gives Rs≈0.23 and is unsuitable for the known interferent; the MP1 card gives Rs≈3.33 but must be checked again in the real run. A=75c+10:(460−10)/75=6.00mg/L is outside0.5–4.0mg/L; no valid quantitative extrapolation, especially with possible initial coelution. Only in the separately supplied model after suitable separation:(160−10)/75=2.00mg/L; factor6×3=18 gives36.0mg/L original. A longer alkyl chain does not imply identical UV response/retention; do not reuse the MEP line. Actual content follows only from a new valid original measurement with controls, not the card figure."
+      },
+      "rubric": [
+        {
+          "id": "fresh-method",
+          "de": "Neue Struktur/Matrix, analytspezifische Standards und die misslungene Ersttrennung eigenständig auswerten.",
+          "en": "Independently assess the fresh structure/matrix, analyte-specific standards and failed initial separation."
+        },
+        {
+          "id": "actual-transfer",
+          "de": "Eigene Kontrollen und tatsächlich geeignete erneute Messung nach notwendiger Verdünnung belegen; bloße Neuplanung/Lehrzahlen reichen nicht.",
+          "en": "Evidence original controls and actual suitable remeasurement after any needed dilution; replanning/teaching figures alone do not suffice."
+        },
+        {
+          "id": "range-selectivity",
+          "de": "Außerhalb des Bereichs und Koelution getrennt erkennen; gültige Gesamtdilution und bedingten Modellwert erklären.",
+          "en": "Identify range failure and coelution separately; explain valid total dilution and conditional model value."
+        }
+      ]
+    }
+  ]
+}

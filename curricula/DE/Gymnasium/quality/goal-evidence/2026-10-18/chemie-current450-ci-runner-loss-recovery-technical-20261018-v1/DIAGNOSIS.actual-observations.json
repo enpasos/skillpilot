@@ -1,0 +1,30 @@
+{
+  "role": "ACTUAL_CI_RUNNER_LOSS_DIAGNOSIS_AND_TARGETED_RETRY",
+  "observedAt": "2026-10-18T19:12:41.992102+00:00",
+  "commit": "41a37acd0016c7ac9613edb87de283e5a918f543",
+  "runUrl": "https://github.com/enpasos/skillpilot/actions/runs/39150685727",
+  "originalJobId": 117748266743,
+  "originalTerminalConclusion": "failure",
+  "originalFailedTestAssertionAvailable": false,
+  "githubReportedReason": "The hosted runner lost communication with the server.",
+  "underlyingLossCauseProven": false,
+  "localExactSelfTest": {
+    "exitCode": 0,
+    "wallSeconds": 285.72,
+    "maximumResidentKiB": 384584,
+    "swaps": 0
+  },
+  "authorizedRecovery": {
+    "request": "POST repos/enpasos/skillpilot/actions/jobs/117748266743/rerun",
+    "sameCommit": true,
+    "attempt": 2,
+    "currentJobId": 117764082829,
+    "stateAtObservation": "in_progress"
+  },
+  "qualityThresholdsChanged": false,
+  "sourceOrTestChangesForRecovery": false,
+  "CIOverallPassedClaim": false,
+  "strictChemistryCountStill": 328,
+  "currentOrdinaryDenominator": 450,
+  "newStrictClosures": 0
+}

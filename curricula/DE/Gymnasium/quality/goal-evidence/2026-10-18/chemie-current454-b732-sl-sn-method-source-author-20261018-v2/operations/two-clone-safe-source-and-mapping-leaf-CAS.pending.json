@@ -1,0 +1,416 @@
+{
+  "role": "AUTHOR",
+  "status": "needs_human_review",
+  "reviewAuthority": "ai_candidate",
+  "mutateOriginalSourceFiles": false,
+  "newNormalFilesWritten": 0,
+  "newRequiresEdges": 0,
+  "newCanonicalAtoms": 0,
+  "oldTargetScopeRemoved": 0,
+  "operations": [
+    {
+      "normalMappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/upper-secondary/sl_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "mappingRawBefore": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-SL/upper-secondary/sl_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+        "sha256": "3e8c8ad6030d7394d4814348e4f116ccfbb79d6709daa4cb0c50b07e51d2adc1",
+        "bytes": 1406996,
+        "role": "exact-current-mapping-raw-CAS"
+      },
+      "sourceCloneInput": {
+        "path": "curricula/DE/Gymnasium/input/SL/upper-secondary/source-extraction/DE_SL_CHEMIE_SEKII_GOS_2023_2025.source-extraction.json",
+        "sha256": "442c3d3780e2549cc01eb9e8f74d43d0bf1a8c511980deaf28b5ece932cd080d",
+        "bytes": 1259551,
+        "role": "exact-current-source-raw-clone-CAS"
+      },
+      "sourceCloneOutput": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-sl-sn-method-source-author-20261018-v2/candidate/sources/DE-SL.whole-source-clone.one-sentence-added.pending.json",
+      "wholeSourceCloneOutputSHA256": "157492d36be471be0e2ff458cef7c7036003e52cbc2bd02bb7ce3dfe3dafd77e",
+      "originalSourcePathMustRemainUnchanged": true,
+      "sourceGoalWholePrefix": {
+        "count": 713,
+        "canonicalObjectArraySHA256": "71313c8418ab373339017a44cb23897b5ca81fb9933d6da88122249bb3d2264a"
+      },
+      "passageWholePrefix": {
+        "count": 161,
+        "canonicalObjectArraySHA256": "7ee90b1f1bd549cc33aceaff771b2fb149e8c7b5927fede4778f1f62d5afbe88"
+      },
+      "mappingWholePrefix": {
+        "count": 3153,
+        "canonicalObjectArraySHA256": "98eff3c378d6004a27ef81e53064cec60f58b356fa93ce2148292fb22fd1bd69"
+      },
+      "decisionWholePrefix": {
+        "count": 713,
+        "canonicalObjectArraySHA256": "7592c26bc5d8a013989ca133bb6d747b841849ebdddf99142ac08ad3698a9771"
+      },
+      "exactHeaderBefore": {
+        "version": 1,
+        "reviewId": "DE-SL-CHEMIE-SEKII-GOS-2023-2025-MAPPING-3-SOURCE-EXTRACTION-1",
+        "sourceLandscapeId": "7aae5eef-c2ae-5365-8091-955d96b89ad8",
+        "targetLandscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/SL/upper-secondary/source-extraction/DE_SL_CHEMIE_SEKII_GOS_2023_2025.source-extraction.json",
+        "status": {
+          "scope": "DE-SL - Chemie Gymnasiale Oberstufe (Saarland, GOS 2023/2025 Source-Extraction) / amtliche Source-Extraction",
+          "reviewedSourceGoals": 712,
+          "mappedSourceGoals": 712,
+          "needsViewPlacementReview": 0,
+          "needsCanonicalGoal": 0,
+          "totalSourceGoals": 713,
+          "explicitNeedsCanonicalGoal": 0,
+          "notes": "Historical pre-existing coverage counts remain unchanged. One separately reviewed bounded model-use relation is added; the complete new LK unit is not wholly covered. No historical C40 HOLD is rewritten.",
+          "newAcceptedPartialSourceGoals": 1,
+          "newWholeSourceGoalsCovered": 0,
+          "remainingWholeSourceReviewRequiredForNewUnit": true
+        },
+        "twoSourcePartialIntegration": {
+          "previousStatusHistorical": {
+            "scope": "DE-SL - Chemie Gymnasiale Oberstufe (Saarland, GOS 2023/2025 Source-Extraction) / amtliche Source-Extraction",
+            "reviewedSourceGoals": 712,
+            "mappedSourceGoals": 712,
+            "needsViewPlacementReview": 0,
+            "needsCanonicalGoal": 0,
+            "totalSourceGoals": 712,
+            "explicitNeedsCanonicalGoal": 0,
+            "notes": "Das Chemie-Source-Inventar wurde gegen die amtliche Source-Extraction fachlich abgedeckt. MatchType partial bedeutet 1:n-Abdeckung, nicht fachliche Offenheit."
+          },
+          "independentAcceptedRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SH-SL-two-source-informed-independent-root-20261018-v1/FIRST.informed-independent-root-two-whole-profiles-and-original-source-scope.json",
+            "sha256": "0da4bc8e67fd3d44dc5a472f86e041ef80a1d2c2ed26e2057ca16ffbd31e28a6",
+            "bytes": 6549,
+            "jsonPointer": "/decisions/1"
+          },
+          "newPartialMappings": 1,
+          "newWholeSourceCoverage": 0,
+          "wholeSourceCoverageEstablished": false
+        }
+      },
+      "wholeCandidateMappingObjectSHA256": "243df82990f3993d338c0c720fc24f1f0714e50c8e9dfd59bf88ce33f4b13328",
+      "patch": [
+        {
+          "op": "test",
+          "path": "/sourceExtractionPath",
+          "value": "curricula/DE/Gymnasium/input/SL/upper-secondary/source-extraction/DE_SL_CHEMIE_SEKII_GOS_2023_2025.source-extraction.json"
+        },
+        {
+          "op": "replace",
+          "path": "/sourceExtractionPath",
+          "value": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-sl-sn-method-source-author-20261018-v2/candidate/sources/DE-SL.whole-source-clone.one-sentence-added.pending.json"
+        },
+        {
+          "op": "add",
+          "path": "/mappings/-",
+          "value": {
+            "legacyGoalId": "sl-chemistry-sekii-general-mathematical-symbolic-interpretation-and-models-whole-p05",
+            "canonicalGoalId": "b732c780-beb8-55f3-8503-edd6b8677a3a",
+            "matchType": "partial",
+            "reviewDecisionId": "sl-chemistry-sekii-general-mathematical-symbolic-interpretation-and-models-whole-p05"
+          }
+        },
+        {
+          "op": "add",
+          "path": "/decisions/-",
+          "value": {
+            "sourceGoalId": "sl-chemistry-sekii-general-mathematical-symbolic-interpretation-and-models-whole-p05",
+            "topicCode": "general-mathematical-symbolic-interpretation-and-models",
+            "sourceSpan": "Saarland Chemie Hauptphase GK und LK2023, redaktionell2025/abAbitur2027, beide physisch/gedruckt5, Der Beitrag des Faches Chemie zur gymnasialen Bildung; derselbe ganze Satz mit Beobachtungen/Untersuchungen, Fragestellungen, mathematisch-symbolischer Interpretation und Modellen/Theorien.",
+            "sourceCourseLevel": "GK_LK",
+            "decision": "mapped",
+            "canonicalGoalIds": [
+              "b732c780-beb8-55f3-8503-edd6b8677a3a"
+            ],
+            "matchType": "partial",
+            "rationale": "Der tatsächlich geprüfte Teil ist die chemische Interpretation mathematisch formulierter Zusammenhänge und die Anwendung eines vorgegebenen Bilanzmodells: 30+70=100kg, im frischen Fall die Unterscheidung von98kg enger Erfassung und2kg nachgewiesenem Abgang sowie die Grenze der Schlussfolgerung aus30kg Öl ohne Anfangsölbestand. Diese konkrete mathematik-/modellbezogene Anwendung erfüllt einen begrenzten Teil der ganzen amtlichen allgemeinen Methoden-Satzklausel. Die ganze Klausel bleibt einschließlich Beobachtungen, Untersuchungen, eigenen chemischen Fragestellungen sowie Entwicklung/Anwendung von Modellen und Theorien erhalten; daraus wird weder tatsächliches Experimentieren noch die ganze allgemeine Methodenkompetenz abgeleitet.",
+            "reviewedAt": "2026-10-18T20:35:39.173840+00:00",
+            "reviewer": "Codex AUTHOR; independent scientific review still pending",
+            "reviewStatus": "needs_human_review",
+            "reviewAuthority": "ai_candidate",
+            "wholeSourceCredit": false,
+            "wholeSourceCompletionFromSingleGoalMasteryAllowed": false,
+            "actualLearnerExecutionClaim": false,
+            "officialB732SpecialTopicRequirementClaim": false,
+            "currentUnionRef": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-sl-sn-method-source-author-20261018-v2/AUTHOR.two-whole-method-source-contributions.pending.json",
+              "jsonPointer": "/rows/0"
+            },
+            "unfulfilledWholeSourceComponents": [
+              "eigene Beobachtungen und Untersuchungen",
+              "eigene chemische Fragestellungen formulieren",
+              "Modelle oder Theorien selbst entwickeln",
+              "gesamte allgemeine Methodenkompetenz"
+            ]
+          }
+        },
+        {
+          "op": "test",
+          "path": "/status",
+          "value": {
+            "scope": "DE-SL - Chemie Gymnasiale Oberstufe (Saarland, GOS 2023/2025 Source-Extraction) / amtliche Source-Extraction",
+            "reviewedSourceGoals": 712,
+            "mappedSourceGoals": 712,
+            "needsViewPlacementReview": 0,
+            "needsCanonicalGoal": 0,
+            "totalSourceGoals": 713,
+            "explicitNeedsCanonicalGoal": 0,
+            "notes": "Historical pre-existing coverage counts remain unchanged. One separately reviewed bounded model-use relation is added; the complete new LK unit is not wholly covered. No historical C40 HOLD is rewritten.",
+            "newAcceptedPartialSourceGoals": 1,
+            "newWholeSourceGoalsCovered": 0,
+            "remainingWholeSourceReviewRequiredForNewUnit": true
+          }
+        },
+        {
+          "op": "replace",
+          "path": "/status",
+          "value": {
+            "scope": "DE-SL - Chemie Gymnasiale Oberstufe (Saarland, GOS 2023/2025 Source-Extraction) / amtliche Source-Extraction",
+            "reviewedSourceGoals": 712,
+            "mappedSourceGoals": 712,
+            "needsViewPlacementReview": 0,
+            "needsCanonicalGoal": 0,
+            "totalSourceGoals": 714,
+            "explicitNeedsCanonicalGoal": 0,
+            "notes": "Historical pre-existing coverage counts remain unchanged. One separately reviewed bounded model-use relation is added; the complete new LK unit is not wholly covered. No historical C40 HOLD is rewritten. AUTHOR additive source successor: one full official sentence is appended and only a bounded mathematical component is proposed. Existing reviewed/mapped counts concern their original scope; this adds no accepted scientific decision or full source completion.",
+            "newAcceptedPartialSourceGoals": 1,
+            "newWholeSourceGoalsCovered": 0,
+            "remainingWholeSourceReviewRequiredForNewUnit": true,
+            "newAuthorPendingPartialSourceGoals": 1,
+            "newAuthorWholeSourceGoalsCovered": 0,
+            "remainingWholeSourceReviewRequiredForNewAuthorUnit": true
+          }
+        },
+        {
+          "op": "add",
+          "path": "/b732WholeMethodAuthorAddition",
+          "value": {
+            "role": "AUTHOR",
+            "status": "needs_human_review",
+            "reviewAuthority": "ai_candidate",
+            "previousStatusHistorical": {
+              "scope": "DE-SL - Chemie Gymnasiale Oberstufe (Saarland, GOS 2023/2025 Source-Extraction) / amtliche Source-Extraction",
+              "reviewedSourceGoals": 712,
+              "mappedSourceGoals": 712,
+              "needsViewPlacementReview": 0,
+              "needsCanonicalGoal": 0,
+              "totalSourceGoals": 713,
+              "explicitNeedsCanonicalGoal": 0,
+              "notes": "Historical pre-existing coverage counts remain unchanged. One separately reviewed bounded model-use relation is added; the complete new LK unit is not wholly covered. No historical C40 HOLD is rewritten.",
+              "newAcceptedPartialSourceGoals": 1,
+              "newWholeSourceGoalsCovered": 0,
+              "remainingWholeSourceReviewRequiredForNewUnit": true
+            },
+            "newWholeSourceSentenceId": "sl-chemistry-sekii-general-mathematical-symbolic-interpretation-and-models-whole-p05",
+            "newPartialRelationFindingRef": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-sl-sn-method-source-author-20261018-v2/AUTHOR.two-whole-method-source-contributions.pending.json",
+              "jsonPointer": "/rows/0"
+            },
+            "wholeOldMappingRowsAndDecisionsRetainedExactly": true,
+            "wholeSourceCredit": false
+          }
+        }
+      ],
+      "mergeRule": "Guard exact current raw mapping bytes and source clone base. If disjoint current work intervenes, rebase by whole existing prefix/identity under explicit review; never overwrite another successor. This operation appends one new source identity and preserves every old decision/row.",
+      "counts": {
+        "sourceGoalsBefore": 713,
+        "sourceGoalsAfter": 714,
+        "passagesBefore": 161,
+        "passagesAfter": 162,
+        "mappingRowsBefore": 3153,
+        "mappingRowsAfter": 3154,
+        "decisionsBefore": 713,
+        "decisionsAfter": 714,
+        "oldMappingRowsRemovedOrModified": 0,
+        "oldSourceGoalObjectsModified": 0
+      }
+    },
+    {
+      "normalMappingPath": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "mappingRawBefore": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+        "sha256": "470a5927d7e426219f0c3c85f6bfe9bd67e93abb44790683775cf9685ef5f852",
+        "bytes": 812699,
+        "role": "exact-current-mapping-raw-CAS"
+      },
+      "sourceCloneInput": {
+        "path": "curricula/DE/Gymnasium/input/SN/upper-secondary/source-extraction/DE_SN_CHEMIE_SEKII_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+        "sha256": "6ea85d0c818b8d25ef1c7c035b2992e2bfe02a00206ab73f7582eb1a96a5c723",
+        "bytes": 828791,
+        "role": "exact-current-source-raw-clone-CAS"
+      },
+      "sourceCloneOutput": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-sl-sn-method-source-author-20261018-v2/candidate/sources/DE-SN.whole-source-clone.one-sentence-added.pending.json",
+      "wholeSourceCloneOutputSHA256": "54d67c5cb9ae8ad102a6420da941b61adba1a34e04c3b1e91ba4e4da320c918c",
+      "originalSourcePathMustRemainUnchanged": true,
+      "sourceGoalWholePrefix": {
+        "count": 304,
+        "canonicalObjectArraySHA256": "70c50674f8e59e7a70b9c33de21cd8235b145b901f45a5866359ca4c9d201e27"
+      },
+      "passageWholePrefix": {
+        "count": 35,
+        "canonicalObjectArraySHA256": "f3dc05f51997687323f004171e48299e93e71ee0e27135b29a7c1ac17c71f5d6"
+      },
+      "mappingWholePrefix": {
+        "count": 1746,
+        "canonicalObjectArraySHA256": "988a312684e0f085279be73cfbff6b0303b6106f8b4f1f7c0429a97aa38a722f"
+      },
+      "decisionWholePrefix": {
+        "count": 304,
+        "canonicalObjectArraySHA256": "bba2a35c2c645db10ab095eefc8fbb96dd5192df7c7a1c092b9af6cdc123ffc0"
+      },
+      "exactHeaderBefore": {
+        "version": 1,
+        "reviewId": "DE-SN-CHEMIE-SEKII-LEHRPLAN-GYMNASIUM-2025-MAPPING-3-SOURCE-EXTRACTION-1",
+        "sourceLandscapeId": "4629b4f3-95eb-5166-8b6b-056632d0f270",
+        "targetLandscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/SN/upper-secondary/source-extraction/DE_SN_CHEMIE_SEKII_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+        "status": {
+          "scope": "DE-SN - Chemie Jahrgangsstufen 11/12 (Sachsen, Lehrplan Gymnasium 2025 Source-Extraction) / amtliche Source-Extraction",
+          "reviewedSourceGoals": 302,
+          "mappedSourceGoals": 302,
+          "needsViewPlacementReview": 0,
+          "needsCanonicalGoal": 0,
+          "totalSourceGoals": 302,
+          "explicitNeedsCanonicalGoal": 0,
+          "notes": "Das Chemie-Source-Inventar wurde gegen die amtliche Source-Extraction fachlich abgedeckt. MatchType partial bedeutet 1:n-Abdeckung, nicht fachliche Offenheit."
+        },
+        "fourteenMethodPartialIntegration": {
+          "independentAcceptedRef": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-fourteen-method-multistate-source-informed-independent-b-20261018-v1/ACCEPTED.exact104-direct-partial-two-literal-three-held.json",
+            "sha256": "9958d0a23bb96b4cce0ed69f2018631764f5fe943d87ed8136ef2ba070457119",
+            "bytes": 99336
+          },
+          "newPartialMappingRows": 3,
+          "newSourceDecisionIds": [
+            "sn-chemistry-sekii-process-standard-gk-ziel-textanalyse",
+            "sn-chemistry-sekii-process-standard-gk-ziel-own-experiments"
+          ],
+          "allOldMappingRowsAndOldDecisionFieldsPreserved": true,
+          "wholeSourceCoverageEstablished": false,
+          "newScientificFirstDecisionsByTechnicalIntegrator": 0
+        }
+      },
+      "wholeCandidateMappingObjectSHA256": "6f02aa7ceaa9cbfac94d837e88c5cadb12c16312ea4607b5d8589e163894f9ef",
+      "patch": [
+        {
+          "op": "test",
+          "path": "/sourceExtractionPath",
+          "value": "curricula/DE/Gymnasium/input/SN/upper-secondary/source-extraction/DE_SN_CHEMIE_SEKII_LEHRPLAN_GYMNASIUM_2025.source-extraction.json"
+        },
+        {
+          "op": "replace",
+          "path": "/sourceExtractionPath",
+          "value": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-sl-sn-method-source-author-20261018-v2/candidate/sources/DE-SN.whole-source-clone.one-sentence-added.pending.json"
+        },
+        {
+          "op": "add",
+          "path": "/mappings/-",
+          "value": {
+            "legacyGoalId": "sn-chemistry-sekii-process-standard-gk-lk-mathematical-methods-and-digital-tools-whole",
+            "canonicalGoalId": "b732c780-beb8-55f3-8503-edd6b8677a3a",
+            "matchType": "partial",
+            "reviewDecisionId": "sn-chemistry-sekii-process-standard-gk-lk-mathematical-methods-and-digital-tools-whole"
+          }
+        },
+        {
+          "op": "add",
+          "path": "/decisions/-",
+          "value": {
+            "sourceGoalId": "sn-chemistry-sekii-process-standard-gk-lk-mathematical-methods-and-digital-tools-whole",
+            "topicCode": "GK-LK11-12-mathematical-methods-and-digital-tools-objective",
+            "sourceSpan": "Sachsen Gymnasium Chemie2025, Ziele J11/12: GK physisch37/gedruckt25 und LK physisch47/gedruckt35; derselbe ganze Satz mit mathematischen Verfahren UND geeigneten digitalen Werkzeugen zum Berechnen von Stoff- und Energieumsätzen.",
+            "sourceCourseLevel": "GK_LK",
+            "decision": "mapped",
+            "canonicalGoalIds": [
+              "b732c780-beb8-55f3-8503-edd6b8677a3a"
+            ],
+            "matchType": "partial",
+            "rationale": "Der gemeinsame tatsächlich ausgeführte Methodenanteil ist die Anwendung bekannter mathematischer Verfahren auf einen quantitativen chemischen Sachverhalt: vorgegebene Massen addieren, dieselbe Erfassungsgrenze verwenden, einen identifizierten Abgang einbeziehen und einen unbestimmten Komponentenrückgewinnungsanteil von gewonnener Masse unterscheiden. B732s physikalische Trennung wird ausdrücklich nicht mit dem ganzen zweckgerichteten Stoff-/Energieumsatzauftrag gleichgesetzt. Die vollständige amtliche Satzklausel inklusive digitaler Werkzeuge und ihres Stoff-/Energieumsatzzwecks bleibt unverändert; dieser begrenzte mathematische Teilbeitrag erfüllt weder diese weiteren Bestandteile noch den ganzen Quellensatz. Es entsteht kein amtlicher spezieller Saatöl-Bilanzauftrag.",
+            "reviewedAt": "2026-10-18T20:35:39.173840+00:00",
+            "reviewer": "Codex AUTHOR; independent scientific review still pending",
+            "reviewStatus": "needs_human_review",
+            "reviewAuthority": "ai_candidate",
+            "wholeSourceCredit": false,
+            "wholeSourceCompletionFromSingleGoalMasteryAllowed": false,
+            "actualLearnerExecutionClaim": false,
+            "officialB732SpecialTopicRequirementClaim": false,
+            "currentUnionRef": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-sl-sn-method-source-author-20261018-v2/AUTHOR.two-whole-method-source-contributions.pending.json",
+              "jsonPointer": "/rows/1"
+            },
+            "unfulfilledWholeSourceComponents": [
+              "geeignete digitale Werkzeuge beherrschen",
+              "chemische Stoffumsätze berechnen",
+              "Energieumsätze berechnen",
+              "gesamten zweckgebundenen Quellensatz erfüllen"
+            ]
+          }
+        },
+        {
+          "op": "test",
+          "path": "/status",
+          "value": {
+            "scope": "DE-SN - Chemie Jahrgangsstufen 11/12 (Sachsen, Lehrplan Gymnasium 2025 Source-Extraction) / amtliche Source-Extraction",
+            "reviewedSourceGoals": 302,
+            "mappedSourceGoals": 302,
+            "needsViewPlacementReview": 0,
+            "needsCanonicalGoal": 0,
+            "totalSourceGoals": 302,
+            "explicitNeedsCanonicalGoal": 0,
+            "notes": "Das Chemie-Source-Inventar wurde gegen die amtliche Source-Extraction fachlich abgedeckt. MatchType partial bedeutet 1:n-Abdeckung, nicht fachliche Offenheit."
+          }
+        },
+        {
+          "op": "replace",
+          "path": "/status",
+          "value": {
+            "scope": "DE-SN - Chemie Jahrgangsstufen 11/12 (Sachsen, Lehrplan Gymnasium 2025 Source-Extraction) / amtliche Source-Extraction",
+            "reviewedSourceGoals": 302,
+            "mappedSourceGoals": 302,
+            "needsViewPlacementReview": 0,
+            "needsCanonicalGoal": 0,
+            "totalSourceGoals": 305,
+            "explicitNeedsCanonicalGoal": 0,
+            "notes": "Das Chemie-Source-Inventar wurde gegen die amtliche Source-Extraction fachlich abgedeckt. MatchType partial bedeutet 1:n-Abdeckung, nicht fachliche Offenheit. AUTHOR additive source successor: one full official sentence is appended and only a bounded mathematical component is proposed. Existing reviewed/mapped counts concern their original scope; this adds no accepted scientific decision or full source completion.",
+            "newAuthorPendingPartialSourceGoals": 1,
+            "newAuthorWholeSourceGoalsCovered": 0,
+            "remainingWholeSourceReviewRequiredForNewAuthorUnit": true
+          }
+        },
+        {
+          "op": "add",
+          "path": "/b732WholeMethodAuthorAddition",
+          "value": {
+            "role": "AUTHOR",
+            "status": "needs_human_review",
+            "reviewAuthority": "ai_candidate",
+            "previousStatusHistorical": {
+              "scope": "DE-SN - Chemie Jahrgangsstufen 11/12 (Sachsen, Lehrplan Gymnasium 2025 Source-Extraction) / amtliche Source-Extraction",
+              "reviewedSourceGoals": 302,
+              "mappedSourceGoals": 302,
+              "needsViewPlacementReview": 0,
+              "needsCanonicalGoal": 0,
+              "totalSourceGoals": 302,
+              "explicitNeedsCanonicalGoal": 0,
+              "notes": "Das Chemie-Source-Inventar wurde gegen die amtliche Source-Extraction fachlich abgedeckt. MatchType partial bedeutet 1:n-Abdeckung, nicht fachliche Offenheit."
+            },
+            "newWholeSourceSentenceId": "sn-chemistry-sekii-process-standard-gk-lk-mathematical-methods-and-digital-tools-whole",
+            "newPartialRelationFindingRef": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-sl-sn-method-source-author-20261018-v2/AUTHOR.two-whole-method-source-contributions.pending.json",
+              "jsonPointer": "/rows/1"
+            },
+            "wholeOldMappingRowsAndDecisionsRetainedExactly": true,
+            "wholeSourceCredit": false
+          }
+        }
+      ],
+      "mergeRule": "Guard exact current raw mapping bytes and source clone base. If disjoint current work intervenes, rebase by whole existing prefix/identity under explicit review; never overwrite another successor. This operation appends one new source identity and preserves every old decision/row.",
+      "counts": {
+        "sourceGoalsBefore": 304,
+        "sourceGoalsAfter": 305,
+        "passagesBefore": 35,
+        "passagesAfter": 36,
+        "mappingRowsBefore": 1746,
+        "mappingRowsAfter": 1747,
+        "decisionsBefore": 304,
+        "decisionsAfter": 305,
+        "oldMappingRowsRemovedOrModified": 0,
+        "oldSourceGoalObjectsModified": 0
+      }
+    }
+  ]
+}

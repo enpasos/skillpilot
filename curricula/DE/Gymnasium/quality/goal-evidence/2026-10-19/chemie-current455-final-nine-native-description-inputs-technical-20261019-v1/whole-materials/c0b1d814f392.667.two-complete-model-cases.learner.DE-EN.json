@@ -1,0 +1,217 @@
+{
+  "schemaVersion": 1,
+  "contentLicense": "CC-BY-4.0",
+  "role": "AUTHOR_ONLY_PENDING_INDEPENDENT_REVIEW",
+  "status": "needs_human_review",
+  "reviewAuthority": "ai_candidate",
+  "goalId": "667bc303-e9b8-570b-84f1-61cc8bdfd006",
+  "provenance": {
+    "de": "Eigene synthetische didaktische Modellangaben; alle Zahlen sind konstruiert, keine Mess-, Lernenden- oder amtlichen Daten. Kein Versuch wurde ausgeführt.",
+    "en": "Original synthetic teaching-model givens; all numbers are constructed, not measurements, learner data or official data. No experiment was performed."
+  },
+  "audience": "learner",
+  "caseReleaseRule": {
+    "de": "Zuerst Fall1 ohne Lösung/Rubrik. Fall2 erst nach der ersten unabhängigen Antwort als frische Variation freigeben. Zwei unabhängige Demonstrationen können Teil einer integrierten Leistung sein; keine feste Zwei-Aufgabenquote.",
+    "en": "Release case1 without solutions/rubric first; release case2 as a fresh variation only after the first independent response. Two independent demonstrations can occur within one integrated performance; no fixed two-task quota."
+  },
+  "modelBoundary": {
+    "de": "Geschlossene didaktische Modellansätze bei jeweils fester Temperatur und festem Volumen; keine Stoffzugabe/-entnahme zwischen den Tabellenzeilen. Die Säureansätze enthalten denselben symbolisch kleinen H+-Katalysatorbestand, der nicht in die Nettostoffmengen eingeht. Mengen in mmol, Zeiten sind nur geordnete Modellstadien ohne reale Geschwindigkeitsbehauptung. Keine Geruchs-/Geschmacksprobe, keine Durchführung oder sichere Reinigungsrezeptur. Die Zahlen definieren nur diese Modelle, keine universellen Gleichgewichtskonstanten. Die Phasenverteilung wird nicht aufgelöst; die Tabellen nennen Gesamtstoffmengen über alle Phasen, keine aus diesen Zahlen berechnete reale Konzentration.",
+    "en": "Closed teaching-model batches at fixed temperature and volume; no additions/withdrawals between table rows. Acidic batches contain the same symbolically small H+ catalyst amount, omitted from net quantities. Amounts are mmol; times are ordered model stages without a real-rate claim. No smelling/tasting, practical execution or safe cleaning recipe. Numbers define only these models, not universal equilibrium constants. Phase distribution is not resolved; tables give total species amounts over all phases, not real concentrations computed from these values."
+  },
+  "cases": [
+    {
+      "caseId": "ethyl-ethanoate-acid-versus-base",
+      "givenStructures": {
+        "ester": "CH3–C(=O)–O–CH2CH3",
+        "ethanoicAcid": "CH3–C(=O)–OH",
+        "ethanol": "CH3CH2–OH",
+        "ethanoate": "CH3–C(=O)–O−"
+      },
+      "suppliedModelProtocol": {
+        "de": "Drei getrennte Ansätze; Ergebnisse gelten als unabhängig identifizierte synthetische Speziesdaten, nicht als Geruchsnachweis. S startet mit Ester/Wasser unter sauren Bedingungen; R mit Ethansäure/Ethanol/Wasser unter denselben sauren Bedingungen. Ihre Gesamtbestände an Atomen und beiden organischen Resten sind gleich. B startet mit Ester und überschüssigem OH−, ohne H+-Katalysator. Sein Alkaliüberschuss bleibt bis zum Ende erhalten; Na+ wäre nur Zuschauerion.",
+        "en": "Three separate batches; results are independently identified synthetic species data, not an odour assay. S starts with ester/water under acid conditions; R with ethanoic acid/ethanol/water under the same acidic conditions. Their total atoms and both organic residues match. B starts with ester and excess OH−, without H+ catalyst. Alkali excess persists to the end; Na+ would be a spectator ion."
+      },
+      "acidData": {
+        "columns": [
+          "stage",
+          "ethylEthanoate_mmol",
+          "water_mmol",
+          "ethanoicAcid_mmol",
+          "ethanol_mmol"
+        ],
+        "S": [
+          [
+            "start",
+            1,
+            4,
+            0,
+            0
+          ],
+          [
+            "intermediate",
+            0.7,
+            3.7,
+            0.3,
+            0.3
+          ],
+          [
+            "late",
+            0.5,
+            3.5,
+            0.5,
+            0.5
+          ],
+          [
+            "later",
+            0.5,
+            3.5,
+            0.5,
+            0.5
+          ]
+        ],
+        "R": [
+          [
+            "start",
+            0,
+            3,
+            1,
+            1
+          ],
+          [
+            "intermediate",
+            0.3,
+            3.3,
+            0.7,
+            0.7
+          ],
+          [
+            "late",
+            0.5,
+            3.5,
+            0.5,
+            0.5
+          ],
+          [
+            "later",
+            0.5,
+            3.5,
+            0.5,
+            0.5
+          ]
+        ]
+      },
+      "alkalineData": {
+        "columns": [
+          "stage",
+          "ethylEthanoate_mmol",
+          "hydroxide_mmol",
+          "ethanoate_mmol",
+          "ethanol_mmol"
+        ],
+        "B": [
+          [
+            "start",
+            1,
+            1.2,
+            0,
+            0
+          ],
+          [
+            "intermediate",
+            0.1,
+            0.3,
+            0.9,
+            0.9
+          ],
+          [
+            "late",
+            0,
+            0.2,
+            1,
+            1
+          ]
+        ]
+      },
+      "everydayModelObservation": {
+        "de": "Ein fiktiver Esterrest wird in zwei geschlossenen Kontaktmodellen behandelt. Die getrennte Stoffanalyse meldet im sauren Modell verbleibenden neutralen Ester neben Säure/Alkohol, im alkalischen Modell keinen Esterrest und einen geladenen Carboxylatanteil. Dies ist ein vorgegebener enger Vergleich, keine Aussage über jedes Fett, jede Oberfläche oder die Wirkung eines realen Reinigers.",
+        "en": "A fictional ester residue is treated in two closed contact models. Separate species analysis reports neutral ester remaining beside acid/alcohol in the acidic model, but no ester residue and a charged carboxylate component in the alkaline model. This is a supplied narrow comparison, not a claim about every fat, surface or real cleaner."
+      },
+      "tasks": {
+        "de": "1. Bilanziere Veresterung und saure Hydrolyse mit Strukturformeln; deute alle S/R-Tabellenzeilen einschließlich Wasserbestand und beider Startrichtungen. Ist ein Plateau allein ein Beweis für Stillstand? 2. Bilanziere B einschließlich OH− und Ladung. Begründe die unterschiedliche Form des Säureanteils und die Rolle von H+ beziehungsweise OH−.3. Erkläre die vorgegebene Modellbeobachtung mit den Reaktionsbedingungen; benenne eine Grenze der Übertragung auf reale Reinigung.",
+        "en": "1. Balance esterification and acidic hydrolysis using structural formulas; interpret all S/R rows including water and both starting directions. Does a plateau alone prove standstill?2. Balance B including OH− and charge. Explain the different acid-derived species and the roles of H+ versus OH−.3. Explain the supplied model observation using conditions and state one limit on transfer to real cleaning."
+      }
+    },
+    {
+      "caseId": "propyl-butanoate-cleaning-model",
+      "releaseAfterFirstIndependentResponse": true,
+      "givenStructures": {
+        "ester": "CH3CH2CH2–C(=O)–O–CH2CH2CH3",
+        "butanoicAcid": "CH3CH2CH2–C(=O)–OH",
+        "butanoate": "CH3CH2CH2–C(=O)–O−",
+        "propan1ol": "CH3CH2CH2–OH"
+      },
+      "suppliedModelProtocol": {
+        "de": "Frischer Modellrest: Propylbutanoat statt Ethylethanoat. A ist ein geschlossener saurer Wasseransatz, B ein getrennter geschlossener Ansatz mit überschüssigem OH−. Identifizierte Stoffe werden in der folgenden synthetischen Endpunkttabelle berichtet. Der Esterrest ist ein Modell kleiner Moleküle, kein Triacylglycerol und keine vollständige Fett-/Tensidrezeptur.",
+        "en": "Fresh model residue: propyl butanoate instead of ethyl ethanoate. A is a closed acidic aqueous batch; B is a separate closed batch with excess OH−. Identified species are reported in the synthetic endpoint table. This small-molecule ester residue is not a triacylglycerol or a complete fat/surfactant recipe."
+      },
+      "acidComparison": {
+        "columns": [
+          "stage",
+          "propylButanoate_mmol",
+          "water_mmol",
+          "butanoicAcid_mmol",
+          "propan1ol_mmol"
+        ],
+        "A": [
+          [
+            "start",
+            1,
+            4,
+            0,
+            0
+          ],
+          [
+            "late",
+            0.6,
+            3.6,
+            0.4,
+            0.4
+          ]
+        ]
+      },
+      "alkalineComparison": {
+        "columns": [
+          "stage",
+          "propylButanoate_mmol",
+          "hydroxide_mmol",
+          "butanoate_mmol",
+          "propan1ol_mmol"
+        ],
+        "B": [
+          [
+            "start",
+            1,
+            1.2,
+            0,
+            0
+          ],
+          [
+            "late",
+            0,
+            0.2,
+            1,
+            1
+          ]
+        ]
+      },
+      "everydayModelObservation": {
+        "de": "Die fiktive Analysenmeldung zum Reinigungsmodell lautet: unter A bleibt ein Teil des neutralen Esterrests bestehen; unter B liegt der ursprüngliche Säurebaustein als geladenes Butanoat vor und der Esterrest ist in diesem Modell umgesetzt. Kein Lösevorgang oder universeller Reinigungsrang ist damit gemessen.",
+        "en": "The fictional cleaning-model analysis reports that A retains some neutral ester residue, whereas B contains the original acid-derived component as charged butanoate and has converted the ester residue in this model. This measures neither dissolution nor a universal cleaning ranking."
+      },
+      "tasks": {
+        "de": "Ordne unabhängig die vier C des Säurebausteins und drei C des Alkoholbausteins den Produkten zu. Formuliere beide Nettogleichungen mit H2O beziehungsweise OH− und prüfe Atome/Ladung. Erkläre anhand der gegebenen Tabellen, weshalb Esterabnahme nicht in beiden Fällen denselben unmittelbaren Rückweg bedeutet. Begründe die eng vorgegebene Reinigungsmodell-Beobachtung und erkläre, was die Daten über reale Fettentfernung nicht aussagen.",
+        "en": "Independently assign the four acid-derived carbons and three alcohol-derived carbons to products. Write both net equations using H2O or OH− and check atoms/charge. Use the supplied tables to explain why ester loss does not imply the same direct reverse path in both cases. Explain the narrowly supplied cleaning-model observation and what the data do not establish about real fat removal."
+      }
+    }
+  ]
+}

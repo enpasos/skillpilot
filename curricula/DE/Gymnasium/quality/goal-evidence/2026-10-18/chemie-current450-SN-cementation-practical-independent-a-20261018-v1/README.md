@@ -1,0 +1,9 @@
+# Unabhängige Komponentensicht A: SN-Zementation
+
+**REVISE für Inventar, Neuatom-Notwendigkeit und die darauf aufbauenden ce0-CAS.** Das vorhandene e81-Ziel wurde im Autoreninventar ausgelassen. Sein ganzer aktueller Operator und P enthalten echte angeleitete Durchführung mit eigenen Rohdaten und bereits scoped Pflichtversuche; es ist in beiden SN-GK/LK-Sichten bereits target. Ein gebundener SN-J12-P-/Materialnachfolger dort plus vorhandene Redoxträger ist deshalb vor einer neuen ID konkret zu prüfen. Eine bloß bislang fehlende SOP belegt keine neue Kompetenz. Das echte cc803-Thermometrie-Gegenbeispiel wurde vollständig berücksichtigt und erzwingt keine zusätzliche Thermometriepflicht.
+
+**Kandidatenkörper fachlich bestätigt:** DE/EN-SOP mit aktuellem Hersteller-/RiSU-/DGUV-Abgleich, Lehrerreferenz, vollständig leeres Rohprotokoll, eigene positive/negative Kontrollbefunde und unabhängiger frischer Transfer. Der Praxisanteil kann durch Papierdaten nicht ersetzt werden. Eine reale Vorprobe mit genau den gewählten Stoff-/Gefäß-/Zeitbedingungen und örtliche Freigabe bleiben erforderlich und werden nicht behauptet.
+
+Die41Sichten wurden unabhängig tatsächlich mit dem Produktionscompiler geprüft; die vorgeschlagenen neuen Rollen sind technisch konsistent. Das ist keine inhaltliche Notwendigkeitsfreigabe der neuen ID. Alle ursprünglichen Quellen-/Material-/P-/Reviewdateien bleiben unverändert; keine Normalaktivierung, Bilder, Fullchecks oder nativeD/V-/Assessment-/M7-/Humanfreigabe. SN108 Aluminium bleibt HOLD.
+
+Die konkreten Gründe stehen in `FIRST.component-decisions.independent-a.json`, aktuelle Primärquellen- und Seitenpins in `PRIMARY.actual-independent-live-safety-and-SN-readings.json`, der ganze zusätzliche e81-Gegenbeleg in `INPUT.e81-current-whole-goal-and-selected-P.EXACT.json` und die tatsächliche41-Sicht-Prüfung in `CHECK.actual-independent-41-view-compilation.json`.

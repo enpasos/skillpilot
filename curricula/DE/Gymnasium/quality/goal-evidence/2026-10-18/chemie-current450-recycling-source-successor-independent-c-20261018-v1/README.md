@@ -1,0 +1,15 @@
+# Unabhängige informierte Quellen-/Komponentenprüfung C
+
+Gesamtentscheidung: **REVISE für genau eine partial-Kantenlöschung; drei SN-HOLDs bleiben offen.** Die acht reparierten Klauselkörper sind fachlich gedeckt. Dies ist ein inaktiver KI-Prüfkandidat, keine blinde D-Erststimme, native D/P/V-Freigabe, M7-, Human- oder Assessmentfreigabe.
+
+Die konkrete Revision betrifft MV32 → b6327e98: Der aktuelle ganze Quellen-/Argumentekörper enthält ausdrücklich Bewertungskriterien und Pro-/Kontra-Abwägung. Dieser methodische Teil passt zum Originaloperator „diskutieren“. Dass andere Teile der breiten Kompetenz hier nicht amtlich verlangt werden, rechtfertigt keine Löschung der bestehenden **partial**-Kante. Sie soll eng begrenzt erhalten bleiben. Von 79 vorgeschlagenen Löschungen werden78 bestätigt und diese eine zur Revision gegeben; insgesamt sind96 von97 konkreten Kantenentscheidungen bestätigt.
+
+Bestätigt sind die zwei Hauptkettenkorrekturen, vollständige Kompostierungs-/PEM-Nachfolger, vorhandene Batterie-/Rohstoff- und Polarimetriekörper mit kompletten Materialien sowie die genaue TH-Satzvervollständigung. Amtlicher BW-Vierwegeumfang, optionaler RP-Vertiefungsstatus, technische lokale RP-LK-Bindung, getrennte TH-GK/LK-Sichten und der amtliche SN-Aluminium-Wahlbereich bleiben unterschieden. Alle alten Recycling-/HB-Energie-/PE-Kreislauf-/Quellenpflichten bleiben zusätzlich erhalten.
+
+SN103 und114 brauchen weiterhin tatsächliche eigene beaufsichtigte Zementation mit eigenem Rohprotokoll;16da-Papierdaten leisten nur Theorie/Auswertung. SN108 braucht die spezifische Aluminium-Eigenschafts-/Einsatz-/Verpackungsrecyclingkomponente. Der generische Metallträgerb7ae und allgemeine Elektrolyse schließen sie nicht.
+
+Original-PDF-Seiten wurden vollständig lokal gelesen; vollständige Seitenextraktionen werden hier nicht gespeichert. Die maschinellen Prüfungen sind auf exakte Inputs, ganze betroffene Körper und Erhaltung begrenzt. Der vorhandene Compilerbericht ist ein gebundener Autorenbeleg, keine eigene Compilerdurchführung. Keine neue Gesamtfreigabe der6134Quellen und kein Umschreiben gültiger unveränderter ScientificRefs. Keine Normal-/Registry-/Framework-/Runtimeänderung und keine Fullchecks.
+
+Artefakte: `REVIEW.component-decisions.independent-c.json`, `REVIEW.all97-direct-edge-decisions.independent-c.json`, `PRIMARY.actual-independent-source-reading.json`, `CHECKS.independent-bounded-current-body-preservation.json`, `INPUTS.exact-actually-checked-pins.independent-c.json`, `SEAL.independent-c.json`.
+
+Der erste technische Erhaltungsvergleich übersah bei der Abgrenzung die ausdrücklich kombinierte alte RP-Hydrolyse-Teilklausel aus V1. Dieser Fehlvergleich und sein damaliger Roh-Seal bleiben als `CHECKS.initial-helper-comparison.raw.json` und `SEAL.initial-helper-run.raw.json` archiviert; sie sind keine gültige aktuelle Versiegelung. Die korrigierte Abgrenzung vergleicht diese RP-Zeile exakt mit dem gebundenen V1-Nachherkörper und sämtliche alten verschachtelten ScientificRefs separat. Das wissenschaftliche MV32-REVISE wurde dadurch nicht geändert.

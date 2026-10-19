@@ -370,9 +370,21 @@ export const testGoalBookSourceAtlasInputs = (): void => {
   // Current450 retains the three distinct HB industrial-sugar/fat duties.
   // The later independently reviewed source bindings add ten existing atoms;
   // The integrated RP elective quality, SN GK film-fixing and TH LK comparison
-  // source bindings add three existing atoms; 37 remain omitted and all496
-  // source-scope HOLDs remain. This refresh adds no source decision.
-  assert.deepEqual(chemistry.receipt.counts, { canonicalCurricularAtomicGoals: 450, publishedCurricularAtomicGoals: 413, sourceViews: 48, unresolvedSourceScopeDecisions: 496, omittedGoals: 37 })
+  // source bindings add three existing atoms. Current454 retains the reviewed
+  // source additions and the narrow ST Q-method correction. Current455 adds
+  // the ester property atom and preserves its reviewed source components;
+  // 32 goals remain omitted and all504 source-scope HOLDs remain.
+  assert.deepEqual(chemistry.receipt.counts, { canonicalCurricularAtomicGoals: 455, publishedCurricularAtomicGoals: 423, sourceViews: 48, unresolvedSourceScopeDecisions: 504, omittedGoals: 32 })
+  const stEnergyGoalId = '87d8cc68-fe82-5273-9e43-c18b566ecb6c'
+  const stMathematicalMethodsSourceId = 'st-chemistry-sekii-process-standard-q-e-mathematical-methods'
+  assert.deepEqual(chemistry.receipt.scopes.filter(scope => scope.jurisdiction === 'DE-ST')
+    .flatMap(scope => scope.witnesses.filter(w => w.goalId === stEnergyGoalId)
+      .map(w => [scope.key, w.sourceGoalId, w.mappedTargetGoalId, w.coverage, w.profileBasis])), [
+    ['DE-ST/SekII/GK', stMathematicalMethodsSourceId, stEnergyGoalId, 'direct', 'source-metadata'],
+    ['DE-ST/SekII/LK', stMathematicalMethodsSourceId, stEnergyGoalId, 'direct', 'source-metadata'],
+  ], 'ST supports only the reviewed Q lambda/DeltaE method component; chromatography supplies no87d8 witness')
+  assert.ok(!chemistry.receipt.scopes.find(scope => scope.key === 'DE-ST/SekI/')!.goalIds.includes(stEnergyGoalId),
+    'The unsupported chromatography relation must not retain87d8 in the ST SekI source projection')
   // Keep the reviewed C10 child routes when newer process-competency mappings
   // are integrated. Visibility inherited from their parent cannot replace
   // these direct, bounded source witnesses.
@@ -433,7 +445,7 @@ export const testGoalBookSourceAtlasInputs = (): void => {
     && row.canonicalGoalId === 'd2d735de-bede-5310-8aeb-8bb7562c7b75').map(row => row.matchType), ['partial'],
   'The concentration investigation must not become exact coverage of the whole pressure/temperature/concentration duty')
   assert.equal(chemistry.receipt.omittedGoals.filter(g => g.reason === 'unresolved-source-scope').length, 6)
-  assert.equal(chemistry.receipt.omittedGoals.filter(g => g.reason === 'no-reviewed-mapped-source-witness').length, 31)
+  assert.equal(chemistry.receipt.omittedGoals.filter(g => g.reason === 'no-reviewed-mapped-source-witness').length, 26)
   const knowledgeInfluencesGoalId = 'e5a5dcd8-053c-55fd-b5c7-bba93779da53'
   assert.deepEqual(chemistry.receipt.omittedGoals.filter(g => g.goalId === knowledgeInfluencesGoalId), [
     { goalId: knowledgeInfluencesGoalId, reason: 'unresolved-source-scope' },
@@ -520,16 +532,16 @@ export const testGoalBookSourceAtlasInputs = (): void => {
   const checkpointChemistryWitnesses = [
     ['DE-RP/SekII/GK', 'rp-chem-sekii-rp-ch-sekii-2022-baustein-2-3-005-6ff85354', '4a7dee38-1056-5e27-acec-e6a12f58109f',
       'curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json',
-      'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-T2-terminal-exams-interface-author-20261018-v6/sources/RP.selected-unit23-quality-GK-LK.source-extraction.json'],
+      'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-joint-source-integration-technical-20261018-v1/candidate/sources/20.RP.selected-unit23-quality-GK-LK.source-extraction.json'],
     ['DE-RP/SekII/LK', 'rp-chem-sekii-rp-ch-sekii-2022-baustein-2-3-005-6ff85354', '4a7dee38-1056-5e27-acec-e6a12f58109f',
       'curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json',
-      'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-T2-terminal-exams-interface-author-20261018-v6/sources/RP.selected-unit23-quality-GK-LK.source-extraction.json'],
+      'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-joint-source-integration-technical-20261018-v1/candidate/sources/20.RP.selected-unit23-quality-GK-LK.source-extraction.json'],
     ['DE-SN/SekII/GK', 'sn-chem-sekii-sn-ch-jahrgangsstufe-11-grundkurs-wb1-011-01-81755658', 'f4f7f028-10db-53f9-bdae-456e0c6d0896',
       'curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json',
-      'curricula/DE/Gymnasium/input/SN/upper-secondary/source-extraction/DE_SN_CHEMIE_SEKII_LEHRPLAN_GYMNASIUM_2025.source-extraction.json'],
+      'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-nineteen-target-source-gaps-author-20261018-v1/components/02-colour-and-context-components/candidate/sources/DE-SN.whole-selected-source-plus-whole-clauses.pending.json'],
     ['DE-TH/SekII/LK', 'th-chem-sekii-th-ch-sekii-4-1-8-synthesen-171-03-99c1b0d0', '0559cec7-330b-57f1-a409-31cf1b4ac9fb',
       'curricula/DE/Gymnasium/mapping/DE-TH/upper-secondary/th_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.json',
-      'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-T2-terminal-exams-interface-author-20261018-v6/sources/TH.current235.selected-conditions-LK.source-extraction.json'],
+      'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-62de-three-source-bridges-and-NI-open-author-20261019-v1/candidate/sources/TH.current236-plus-one-whole-property-clause.source-extraction.json'],
   ] as const
   const checkpointChemistryGoalIds = new Set<string>(checkpointChemistryWitnesses.map(row => row[2]))
   assert.equal(checkpointChemistryGoalIds.size, 3)
@@ -573,7 +585,7 @@ export const testGoalBookSourceAtlasInputs = (): void => {
   assert.ok(!chemistry.receipt.scopes.find(s => s.key === 'DE-HE/SekII/GK')!.goalIds.includes(quantitativeGibbsGoalId),
     'The reviewed LK calculation must not widen the HE GK scope')
   assert.deepEqual(chemistry.receipt.scopes.filter(s => s.jurisdiction === 'DE-BY' || (s.jurisdiction === 'DE-HE' && s.stage === 'SekII')).map(s => [s.key, s.goalIds.length]), [
-    ['DE-BY/SekI/', 100], ['DE-BY/SekII/GK', 118], ['DE-BY/SekII/LK', 149], ['DE-HE/SekII/GK', 146], ['DE-HE/SekII/LK', 173],
+    ['DE-BY/SekI/', 101], ['DE-BY/SekII/GK', 118], ['DE-BY/SekII/LK', 149], ['DE-HE/SekII/GK', 149], ['DE-HE/SekII/LK', 177],
   ], 'Reviewed Chemistry routes must retain their exact BY/HE source scopes')
   assert.deepEqual([...new Set(chemistry.receipt.scopes.flatMap(s => s.witnesses.filter(w => w.profileBasis === 'authored-view').map(() => s.jurisdiction)))].sort(), ['DE-BB', 'DE-BE'])
   // Every grouped witness expands back to the exact original provenance record.

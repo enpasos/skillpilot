@@ -1,0 +1,77 @@
+{
+  "recordType": "independent-informed-existing-acquisition-relation-review",
+  "reviewer": {
+    "agentTask": "/root/chemie454_current35_fresh_description_b",
+    "componentRole": "independent informed scientific components reviewer C",
+    "provider": "OpenAI",
+    "model": "GPT-6 family via Codex; exact model/build not exposed",
+    "authority": "ai_candidate",
+    "newBlindFirstPass": false,
+    "humanApprovalClaimed": false
+  },
+  "reviewedAtUTC": "2026-10-18T21:32:39.180424+00:00",
+  "decision": "accept_existing_requires_acquisition_relation_conditioned_on_exact_source_carrier",
+  "status": "candidate",
+  "jurisdiction": "DE-NW",
+  "goalId": "54bc6ca0-b770-5f10-ac54-bcc1d04298f5",
+  "requiredByGoalId": "87d8cc68-fe82-5273-9e43-c18b566ecb6c",
+  "canonicalAndViewInputs": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "sha256": "sha256:08f31e7169d617f0e2e1f18fde7b5a3b2c3f1a45536a477479858cb4571d69f8",
+      "bytes": 5428451
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-nw-lk.view.json",
+      "sha256": "sha256:c2b6db885d43b6843e73d4cd23b7fa162711d91a7e56344aeca344e9a48fa0c7",
+      "bytes": 38738
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-book-publication/chemie.semantic-kinds.json",
+      "sha256": "sha256:ace17ad3a2cc23ffff0b244a16118d6393ddc8ca78bd99b7cc0c864b3eae4f5a",
+      "bytes": 237620
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-nineteen-target-source-gaps-author-20261018-v1/inputs/P/54bc6ca0-b770-5f10-ac54-bcc1d04298f5.whole-goal-and-current-P.json",
+      "sha256": "sha256:9c97da50f09db4b71043ef618cd9b5665db93555f5d65188ad8356a4c9110999",
+      "bytes": 25701
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-nineteen-target-source-gaps-author-20261018-v1/inputs/P/87d8cc68-fe82-5273-9e43-c18b566ecb6c.whole-goal-and-current-P.json",
+      "sha256": "sha256:c33613acb1d923cf0514e050a0cec8e8629d9128c57b48ccec74bc5630005382",
+      "bytes": 43905
+    }
+  ],
+  "actualCanonicalRequires": [
+    "54bc6ca0-b770-5f10-ac54-bcc1d04298f5"
+  ],
+  "actualDirectTargetViewPointers": [
+    {
+      "goalId": "54bc6ca0-b770-5f10-ac54-bcc1d04298f5",
+      "pointer": "/rootNodes/0/children/2/children/0",
+      "role": "target (omitted projectionRole defaults to target)"
+    },
+    {
+      "goalId": "87d8cc68-fe82-5273-9e43-c18b566ecb6c",
+      "pointer": "/rootNodes/0/children/2/children/1",
+      "role": "target (omitted projectionRole defaults to target)"
+    }
+  ],
+  "actualSemanticKindPointers": [
+    "/decisions/399",
+    "/decisions/400"
+  ],
+  "scientificReasonDe": "Die tatsächliche kanonische Kante ist 87d8.requires=[54bc]. Beide vollständigen DE/EN-Ziele und P-Profile wurden gelesen. 54bc etabliert Energiefluss Emission/Absorption und beobachtetes Restlicht durch LED/Lösung sowie geänderte Quelle/Filter. 87d8 verwendet genau diese Absorptionsrichtung, Photonen-Energieaufnahme und Unterscheidung zwischen absorbiertem Photon und austretender Farbe, bevor erlaubte Energielücken und Delokalisierung erklärt werden. Das ist eine tatsächliche Erwerbsgrundlage, keine bloß transitive Graphbehauptung. Die zusätzliche Emissionskontrastierung dient der begrifflichen Trennung; sie wird nicht als separater NRW-Originalbullet erfunden. Beide sind echte direkte NW-LK-Targets und curricularAtomic, nicht lediglich aus ihrer requires-Kante sichtbar gemacht.",
+  "sourceCarrierReviewRef": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-source-gaps-component01-independent-c-20261018-v1/REVIEW.twelve-partial-contributions.independent-c.jsonl",
+    "authorContributionId": "component01-source-01"
+  },
+  "activationConditions": [
+    "Exact NW partial source contribution component01-source-01 must be separately selected and integrated under its CAS pin.",
+    "Bind this independent acquisition review to the surrogate entry without claiming current active coverage before integration.",
+    "No full NRW source, course, learner performance, Human approval or automatic mastery is established."
+  ],
+  "wholeSourceCredit": false,
+  "normalRegistryChanged": false,
+  "runtimeOrMasteryClaim": false
+}

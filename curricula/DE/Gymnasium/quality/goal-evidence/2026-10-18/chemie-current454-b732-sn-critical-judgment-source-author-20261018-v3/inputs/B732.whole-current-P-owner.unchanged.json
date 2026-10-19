@@ -1,0 +1,76 @@
+{
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-targeted-P-owner-selection-technical-20261018-v1/config/active/P31-group04.preserved-criteria-path.config.json",
+  "recordPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-targeted-P-owner-selection-technical-20261018-v1/records/P31-group04.native-input-lines.EXACT.jsonl",
+  "wholeRecord": {
+    "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "schemaVersion": 2,
+    "reviewId": "chemie-joint-integration-native-input-candidate-20261018-v1",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "goalId": "b732c780-beb8-55f3-8503-edd6b8677a3a",
+    "goalFingerprint": "sha256:30945a6d116a6a0b418a89e3acaeef4f452d13bea452deed38348834987b323a",
+    "reviewInputFingerprint": "sha256:acb70ab8ea57416be6bda872508431071d57149180e1485d8e83cc9862dda98b",
+    "profileFingerprint": "sha256:099fe0807cb32a1af702d25b403ba056974449aed4c430b32c9eab500a5d6b0b",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "reviewedAt": "2026-10-18T19:58:22.985Z",
+    "reviewer": "Codex root technical serialization of explicit author/review bodies; no new scientific or human vote",
+    "reason": "Inactive joint candidate. Whole profile body and exact current candidate goal/image inputs serialized with unchanged production fingerprint functions and parsed with the V2 loader. Scientific author/review provenance and open items remain in the joint selection manifest. This record establishes no D/A/M/V approval, actual learner performance, source completion or M7.",
+    "evidenceLevel": "E0",
+    "maximumClaimScope": "G0",
+    "reviewRunIds": [],
+    "dissent": [
+      "Technical candidate only; independent final native description reviews and integration checks remain required."
+    ],
+    "profile": {
+      "archetype": "data",
+      "expectations": [
+        {
+          "id": "physical-separation-accounting-boundary",
+          "essentialUnderstandingDe": "Bei einer physikalischen Trennung werden vorhandene Stoffe verteilt. Vollständige Gesamtmassenbilanz und Komponentenrückgewinnung sind verschiedene Aussagen: Die erste braucht alle Stoffströme derselben Grenze, die zweite zusätzlich den ursprünglichen Komponentenbestand.",
+          "essentialUnderstandingEn": "Physical separation redistributes existing substances. Complete total-mass accounting and component recovery are different claims: the former needs all material flows across one boundary; the latter also needs the original component inventory.",
+          "observablePerformanceDe": "Die lernende Person schließt die bereitgestellte 100/30/70-Bilanz, begründet eine offen erfasste Fehlmasse aus einem nachgewiesenen Abgang und lehnt eine aus dem unbekannten Anfangsölgehalt nicht ableitbare Rückgewinnungsquote ab.",
+          "observablePerformanceEn": "The learner closes the supplied 100/30/70 accounting, explains a missing mass in an open record through an identified output, and rejects a recovery fraction unsupported by the unknown initial oil inventory."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "physical-separation-accounting-boundary"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "complete-versus-open-accounting",
+          "textDe": "Vollständig erfasste Ströme versus enges Protokoll mit nachgewiesenem, nicht mitgewogenem Abgang; gleiche Trennung ohne neue Stoffe.",
+          "textEn": "Complete material flows versus a narrow record with an identified unweighed output; the same physical separation without new substances."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "physical-seed-complete-accounting",
+          "taskDemandDe": "Eigenes ideales Papiermodell, kein Versuch: Ein vollständig erfasstes Trennsystem nimmt 100 kg trockene Saat auf und liefert 30 kg Öl und 70 kg Presskuchen. Es gibt keine weiteren Zu- oder Abgänge; Stoffe werden getrennt, keine neuen gebildet. Der ursprüngliche Saatölgehalt ist unbekannt. Benenne die Erfassungsgrenze und prüfe die Gesamtmassenbilanz. Welche Ölmasse wurde gewonnen? Kannst du bestimmen, welcher Anteil des ursprünglich enthaltenen Öls zurückgewonnen wurde? Begründe die Grenze deiner Aussage.",
+          "taskDemandEn": "Own ideal paper model, not an experiment: a completely accounted separation system takes in 100 kg dry seed and produces 30 kg oil and 70 kg press cake. There are no other inputs or outputs; existing substances are separated without new ones forming. The original seed oil content is unknown. State the accounting boundary and check total-mass accounting. What oil mass was obtained? Can you determine what fraction of the original oil was recovered? Explain the limit of your conclusion.",
+          "expectedPerformanceDe": "Für das ganze angegebene System gilt 30 + 70 = 100 kg. Die gewonnene Ölmasse beträgt 30 kg. Der ursprüngliche Ölvorrat in der Saat fehlt; daher ist der Rückgewinnungsgrad des Öls unbestimmt. 30 % bezogen auf die Saatmasse ist nicht der Rückgewinnungsgrad des anfangs vorhandenen Öls. Keine chemische Umwandlung und keinen ausgeführten Versuch behaupten.",
+          "expectedPerformanceEn": "For the whole specified system, 30 + 70 = 100 kg. The recovered oil mass is 30 kg. The original oil inventory is missing, so its recovery fraction is undetermined. 30% of seed mass is not the fraction recovered from the initial oil inventory. Claim neither chemical conversion nor a performed experiment.",
+          "understandingFocusDe": "Eine Gesamtmassenbilanz zählt alle angegebenen Stoffströme innerhalb derselben Grenze; sie bestimmt keinen fehlenden Anfangsgehalt.",
+          "understandingFocusEn": "Total-mass accounting counts all supplied material flows across the same boundary; it cannot determine a missing initial content."
+        },
+        {
+          "id": "physical-separation-open-accounting-transfer",
+          "taskDemandDe": "Frisches eigenes Papiermodell einer rein physikalischen Trennung: 100 kg Saat gehen ein. Das enge Wiegeprotokoll erfasst 30 kg Öl und 68 kg Presskuchen. Weitere 2 kg verschütteter Presskuchen liegen ausdrücklich nachgewiesen außerhalb dieser Waagengrenze; weitere Stoffströme gibt es nicht. Eine Anbieterin behauptet: Die fehlenden 2 kg wurden chemisch vernichtet, und die 30 kg Öl beweisen vollständige Ölrückgewinnung. Prüfe beide Behauptungen, indem du enge und vollständige Erfassungsgrenze vergleichst. Der ursprüngliche Saatölgehalt bleibt unbekannt.",
+          "taskDemandEn": "Fresh own paper model of a purely physical separation: 100 kg seed enters. The narrow weighing record includes 30 kg oil and 68 kg press cake. An additional 2 kg spilled press cake is explicitly identified outside that weighing boundary; there are no other material flows. A supplier claims that the missing 2 kg were chemically destroyed and that 30 kg oil proves complete oil recovery. Assess both claims by comparing narrow and complete accounting boundaries. The original seed oil content remains unknown.",
+          "expectedPerformanceDe": "Das enge Protokoll zählt 98 kg; einschließlich der nachgewiesenen 2 kg außerhalb seiner Grenze sind 100 kg erfasst. Die Daten zeigen einen ausgelassenen Stoffstrom, keine Vernichtung und keine chemische Reaktion. 30 kg Öl ist eine gewonnene Masse; vollständige Ölrückgewinnung ist ohne ursprünglichen Ölbestand nicht belegbar. Der Bedingungswechsel ist die unvollständige Erfassung mit ausdrücklich lokalisiertem Abgang, nicht nur ein neuer Zahlenwert.",
+          "expectedPerformanceEn": "The narrow record counts 98 kg; including the identified 2 kg outside its boundary accounts for 100 kg. The data show an omitted material flow, not destruction or chemical reaction. 30 kg oil is a recovered mass; complete recovery cannot be established without the original oil inventory. The changed condition is incomplete accounting with an explicitly located output, not merely new numbers.",
+          "understandingFocusDe": "Eine Fehlmasse im offenen Protokoll ist von Stoffvernichtung zu unterscheiden. Ein Gesamtmassenabschluss beweist keine vollständige Komponentenrückgewinnung.",
+          "understandingFocusEn": "Missing mass in an open record differs from destruction. Closing total-mass accounting does not prove full component recovery."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "role": "READ_ONLY_TECHNICAL_SELECTION_REVIEW_NOT_D_OR_SCIENCE_VOTE",
+  "reviewAuthority": "ai_candidate",
+  "head": "41a37acd0016c7ac9613edb87de283e5a918f543",
+  "observedBaseline": {
+    "model": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-post-CI-description-resumption-20261018-v1/full450.current.review.book-model.json",
+      "sha256": "a0192db160e88438f5b606240d6c164caa331eee7f6a0058feec0d7d3d2aeee5",
+      "bytes": 1799149
+    },
+    "committedHEADFileBytesExact": true,
+    "ordinaryPages": 450,
+    "selectedHEADPOwners": 450,
+    "pageGoalFingerprintVersusHEADSelectedPMismatches": 0,
+    "pageEvidenceSummaryVersusHEADSelectedPMismatches": 0,
+    "summaryFieldsCompared": [
+      "reviewId",
+      "status",
+      "reviewInputFingerprint",
+      "profileFingerprint",
+      "evidenceLevel",
+      "maximumClaimScope"
+    ]
+  },
+  "observedCurrent": {
+    "model": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-final-native-description-inputs-technical-20261018-v2/full-current-ordinary.review.book-model.json",
+      "sha256": "92fa385ca51a238512e70331974427c5cba160335eaf7d2520d783525f567ee7",
+      "bytes": 1936443
+    },
+    "ordinaryPages": 454,
+    "nativeMeasurement": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-final-native-description-inputs-technical-20261018-v2/MEASUREMENT.actual-current-owner-and-page-deltas.json",
+      "sha256": "35f7a72e54dfcd49b6eabc37f3dad621ea84c0e322b6641ac61becaea90da19a",
+      "bytes": 2495593
+    },
+    "reportedProductionNativeReady": 429,
+    "reportedProductionNativeNotReadyOrMissing": 25,
+    "reportedHelperSelection": 320,
+    "nativeReadinessProvenance": "Existing actual helper execution of unchanged validateResolutionIndex; this read-only review inspected its result and source, and did not rerun every index."
+  },
+  "actual450to454PageComparison": {
+    "oldPagesWithOnlyNavigationOrLinkTransportDelta": 421,
+    "oldPagesWithPayloadOrLogicalRefDelta": 29,
+    "newPages": 4,
+    "additionalLogicalRefNeighborsOutsideDirect34": 1,
+    "additionalNeighbor": {
+      "goalId": "667bc303-e9b8-570b-84f1-61cc8bdfd006",
+      "title": "Esterreaktionen und ihre Reversibilität deuten",
+      "ownTextPOrVisualizationChanged": false,
+      "forwardReferencesChanged": false,
+      "newReverseReference": {
+        "goalId": "69f2ecbb-ac0a-5d3a-8084-2142706e1161",
+        "title": "Polymerhydrolyse aus Bindungen und Produkten erklären",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0"
+      },
+      "currentCanonicalDependentRequiresTheNeighbor": true,
+      "oldNativeOwnerReportedValid": true
+    }
+  },
+  "normalWrites": 0,
+  "newModelBuildsByThisReview": 0,
+  "newFullOrNativeIndexRunsByThisReview": 0,
+  "newDVote": false,
+  "stockContractFinding": {
+    "sourceFunction": "app/scripts/reportDeepUnderstandingRollout.ts:1466",
+    "behavior": "validateResolutionIndex supplies the bound historical group.first.input plus the current canonical landscape; it does not reconstruct today's complete page/P context. Own canonicalContext/text/goalFingerprint and original evidence chain remain checked.",
+    "perGoalContextDigest": "app/scripts/validateGoalDescriptionDualRoundResolution.ts:208 fingerprints the complete supplied goal including page and whole evidenceProfile.",
+    "currentBindings": "app/scripts/validateGoalDescriptionDualRoundResolution.ts:704 checks own current canonical context and text; historical page/profile internal bindings remain exact.",
+    "profileCompatibility": "contracts/goal-description-review/v3/goal-description-review-input.schema.json accepts V1 or V2 profile or null. A historic upgrade alone does not revoke a valid D owner.",
+    "freshImageHash": "app/scripts/goalBookModel.ts:2623 reads actual asset bytes; page.visualization.originalDigest is part of a fresh page/context fingerprint."
+  },
+  "risks": [
+    "429 stock-valid alone does not cover genuinely new P bodies or new image bytes. Those direct current deltas must be included; e81 is a concrete retained-text/new-P example.",
+    "Comparing current full454 against each much older D input mixes historic P/schema/metadata and assessment/link additions into today's changes and incorrectly escalates320 goals.",
+    "Transport-only page classification does not override a changed own canonicalContext or P body; the direct34 union remains independently binding.",
+    "Fresh contexts must use current whole inputs; old D fingerprints must never be patched to claim a fresh review."
+  ]
+}

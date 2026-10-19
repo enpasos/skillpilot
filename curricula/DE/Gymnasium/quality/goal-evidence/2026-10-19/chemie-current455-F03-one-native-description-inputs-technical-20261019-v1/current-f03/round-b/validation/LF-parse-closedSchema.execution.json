@@ -1,0 +1,12 @@
+{
+  "command": [
+    "node",
+    "--input-type=module",
+    "--eval",
+    "\nimport {readFile} from 'node:fs/promises';\nimport Ajv2020 from 'ajv/dist/2020.js';\nimport addFormats from 'ajv-formats';\nconst root='/home/enpasos/projects/skillpilot';\nconst r=root+'/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-F03-one-native-description-inputs-technical-20261019-v1/current-f03/round-b';\nconst batch='chemie-current455-f03-one-D-20261019-v1-first-pass-b.batch-001';\nconst bytes=await readFile(r+'/results/'+batch+'.records.jsonl');\nif (bytes.includes(13)||bytes.at(-1)!==10) throw new Error('Records require real terminal LF and no CR');\nconst lines=bytes.toString('utf8').split('\\n');\nif(lines.length!==2||lines[1]!==''||!lines[0]) throw new Error('Exactly one real JSONL record required');\nconst record=JSON.parse(lines[0]);\nconst schema=JSON.parse(await readFile(r+'/contracts/goal-description-review-record.schema.json','utf8'));\nif(schema.additionalProperties!==false)throw new Error('Closed record schema expected');\nconst ajv=new Ajv2020({allErrors:true});addFormats(ajv);\nconst validate=ajv.compile(schema);if(!validate(record))throw new Error(ajv.errorsText(validate.errors));\nconst runSchema=JSON.parse(await readFile(root+'/contracts/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json','utf8'));\nif(runSchema.additionalProperties!==false)throw new Error('Closed run schema expected');\nconst validateRun=ajv.compile(runSchema);const run=JSON.parse(await readFile(r+'/results/'+batch+'.run.json','utf8'));if(!validateRun(run))throw new Error(ajv.errorsText(validateRun.errors));\nconsole.log(JSON.stringify({realTerminalLF:true,noCR:true,exactlyOneRecord:true,jsonParse:true,recordClosedSchema:true,runClosedSchema:true,recordStatus:record.recordStatus,reviewAuthority:record.reviewAuthority}));\n"
+  ],
+  "cwd": "/home/enpasos/projects/skillpilot/app",
+  "startedAt": "2026-10-19T00:17:58.053545+00:00",
+  "completedAt": "2026-10-19T00:17:58.283932+00:00",
+  "exitCode": 0
+}

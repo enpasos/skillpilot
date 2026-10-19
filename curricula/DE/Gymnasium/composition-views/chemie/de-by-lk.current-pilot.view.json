@@ -1,19 +1,16 @@
 {
-  "viewFormatVersion": "1.0",
-  "viewId": "de-by-gym-chemistry-lk-explicit-source-union-author",
-  "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
-  "language": "de-DE",
   "title": "Chemie Bayern – expliziter Lernweg, Autorenvorschlag",
+  "$schema": "https://skillpilot.com/schemas/curriculum-package/v1/composition-view.schema.json",
+  "viewFormatVersion": "1.0",
   "scope": {
     "schoolForm": "Gymnasium",
     "jurisdiction": "DE-BY",
     "stage": "CrossStage",
     "courseProfile": "LK"
   },
+  "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
   "rootNodes": [
     {
-      "kind": "structure",
-      "id": "chemistry-by-source-stage-union",
       "label": "Chemie – Quellen und Lernweggrundlagen",
       "children": [
         {
@@ -495,6 +492,11 @@
         },
         {
           "kind": "goalEntry",
+          "goalId": "62de1c6e-8581-5345-a0a6-773427cb6db7",
+          "projectionRole": "target"
+        },
+        {
+          "kind": "goalEntry",
           "goalId": "70bcb6bd-b7f8-5e23-b466-f9bc270a9c67"
         },
         {
@@ -568,6 +570,10 @@
         {
           "kind": "goalEntry",
           "goalId": "8721d943-8368-5304-bd3c-7d7944099662"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "69f2ecbb-ac0a-5d3a-8084-2142706e1161"
         },
         {
           "kind": "goalEntry",
@@ -1362,6 +1368,11 @@
                   "kind": "goalEntry",
                   "goalId": "a3788e40-b540-5bed-be37-b33053528422",
                   "projectionRole": "target"
+                },
+                {
+                  "kind": "goalEntry",
+                  "goalId": "dc146a38-994d-58ec-b6a0-5210118b93ae",
+                  "projectionRole": "target"
                 }
               ]
             },
@@ -1503,6 +1514,11 @@
             {
               "kind": "canonicalSubtree",
               "goalId": "ebe2f6db-95a3-5157-a27d-2624f6c82e4e",
+              "projectionRole": "target"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "b732c780-beb8-55f3-8503-edd6b8677a3a",
               "projectionRole": "target"
             }
           ]
@@ -1746,7 +1762,9 @@
             }
           ]
         }
-      ]
+      ],
+      "id": "chemistry-by-source-stage-union",
+      "kind": "structure"
     },
     {
       "kind": "goalEntry",
@@ -1794,5 +1812,6 @@
       "projectionRole": "prerequisiteOnly"
     }
   ],
-  "$schema": "https://skillpilot.com/schemas/curriculum-package/v1/composition-view.schema.json"
+  "language": "de-DE",
+  "viewId": "de-by-gym-chemistry-lk-explicit-source-union-author"
 }

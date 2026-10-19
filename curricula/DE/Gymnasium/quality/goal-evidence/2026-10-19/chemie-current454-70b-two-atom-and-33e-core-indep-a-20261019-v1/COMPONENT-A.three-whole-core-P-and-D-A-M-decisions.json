@@ -1,0 +1,396 @@
+{
+  "role": "INDEPENDENT_INFORMED_CORE_REVIEW_A_COMPONENT_DECISIONS",
+  "createdAtUTC": "2026-10-18T22:32:10.251Z",
+  "reviewAuthority": "ai_candidate",
+  "active": false,
+  "provider": "OpenAI",
+  "model": "unknown",
+  "modelBuild": "unknown",
+  "temperature": "unknown",
+  "informedReviewNotNativeDescriptionFirstPass": true,
+  "peerReviewsConsulted": false,
+  "authorCoreHandoff": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-two-atom-and-33e-text-author-20261019-v1/CORE.HANDOFF.three-goals-three-P-four-cases-two-exact-PNGs.json",
+    "sha256": "d619063bf1f81afef126b9749e031dad91f68d1b8b9a01609c66eb6c0ad55b4a",
+    "bytes": 5813
+  },
+  "authorCoreSeal": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-two-atom-and-33e-text-author-20261019-v1/SEAL.core-component-only.json",
+    "sha256": "98e499a136bc8d096fd512768093af6fef3b19ba3c2d9c026a9340f859cacc5e",
+    "bytes": 6221
+  },
+  "acceptedScopeOnly": [
+    "D: provided titles and descriptions as core wording",
+    "P: complete provided three whole profile bodies and their six case bodies",
+    "A: semantic content atomicity of these core competencies",
+    "M: independent need for a memorization goal/deck",
+    "Exact two PNGs: chemical correctness and fit to stated core scope at native/360/680 display widths"
+  ],
+  "deferredOutsideAcceptance": [
+    "all source/operator allocations and complete source claims",
+    "new-ID applicability and39-view integration",
+    "requires/reverse-requires graph review",
+    "normal image copy and native evidence bindings",
+    "native final D campaign after integration"
+  ],
+  "rows": [
+    {
+      "goalId": "70b34ae7-4481-590c-9a02-516464750832",
+      "coreDecision": "accept_bounded_core_candidate",
+      "wholeGoalReference": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-two-atom-and-33e-text-author-20261019-v1/AUTHOR.THREE.whole-goal-candidates.pending.json",
+        "sha256": "43f072eabe72cfc24030664a35b569021624b50addc10a63807222049251c473",
+        "bytes": 17202,
+        "jsonPointer": "/goals/0"
+      },
+      "reviewedCoreText": {
+        "id": "70b34ae7-4481-590c-9a02-516464750832",
+        "title": "Esterbildung aus Beobachtungen ableiten",
+        "titleEn": "Infer ester formation from observations",
+        "description": "Die lernende Person kann die Bildung von Estern aus Alkoholen und Carbonsäuren aus experimentellen Beobachtungen ableiten und passende Kondensationsreaktionen formulieren.",
+        "descriptionEn": "The learner can infer the formation of esters from alcohols and carboxylic acids using experimental observations and formulate matching condensation reactions.",
+        "type": "atomic"
+      },
+      "wholeProfileReference": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-two-atom-and-33e-text-author-20261019-v1/P.THREE.whole-profile-author-candidates.pending.json",
+        "sha256": "f4edb38c962e76880af5833b8ba96aa9331679cb7af040af8ad6f22557d9fcd1",
+        "bytes": 28109,
+        "jsonPointer": "/records/0/profile"
+      },
+      "wholeReviewedProfile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "condensation-evidence",
+            "essentialUnderstandingDe": "Alkohol und Carbonsäure können unter geeigneten Bedingungen Ester und Wasser bilden. Zusammensetzung, Nachweisdaten und Stoffbilanz tragen die Schlussfolgerung; Geruch allein identifiziert keinen Ester.",
+            "essentialUnderstandingEn": "Alcohol and carboxylic acid can form ester and water under suitable conditions. Composition, detection data and balance support the inference; odor alone does not identify an ester.",
+            "observablePerformanceDe": "Bereitgestellte experimentelle Daten auswerten und eine passende Kondensationsgleichung mit richtiger Esterbindung formulieren.",
+            "observablePerformanceEn": "Interpret supplied experimental data and write a matching condensation equation with the correct ester linkage."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "condensation-evidence"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "changed-chemical-case",
+            "textDe": "Andere Alkohol-/Säurekombination bei gleicher atomrichtiger Esterbildung; analytische Produktvorgabe und Gleichgewichtsgrenze erhalten.",
+            "textEn": "Fresh alcohol/acid combination with atom-correct ester formation; retain analytical product givens and the equilibrium limit."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "70b-formation-ethyl-ethanoate",
+            "taskDemandDe": "Ein vorgegebenes didaktisches Auswertungsprotokoll nennt als Edukte Ethansäure und Ethanol. Seine Produktanalytik ist als Fallvorgabe unabhängig von Geruch ausgewiesen: Ethylethanoat und Wasser sind nachgewiesen; Restedukte können verbleiben. Unter geeignet sauren Bedingungen stellt sich ein Gleichgewicht ein, keine garantierte vollständige Umsetzung.\nLeite aus den vorgegebenen Edukten und analytischen Produktbefunden die Esterbildung ab. Formuliere eine atomrichtig ausgeglichene Kondensationsgleichung mit korrekter Esterverknüpfung, benenne das abgespaltene kleine Molekül und kennzeichne den vorgegebenen sauren Gleichgewichtsrahmen. Erkläre, warum Geruch allein den Reaktionsschluss nicht trägt.\nVollständiger Aufgaben-/Tabellenkörper: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-two-atom-and-33e-text-author-20261019-v1/materials/TWO.whole-formation-cases.DE-EN.pending.json#/cases/0",
+            "taskDemandEn": "A supplied educational analysis record lists ethanoic acid and ethanol as reactants. Its product analysis is an explicit given independent of odor: ethyl ethanoate and water are detected; reactants may remain. Suitable acidic conditions establish an equilibrium, not guaranteed complete conversion.\nInfer ester formation from the supplied reactants and analytical product findings. Write an atom-balanced condensation equation with the correct ester linkage, name the eliminated small molecule and indicate the supplied acidic equilibrium context. Explain why odour alone does not support the reaction inference.\nComplete task/table body: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-two-atom-and-33e-text-author-20261019-v1/materials/TWO.whole-formation-cases.DE-EN.pending.json#/cases/0",
+            "expectedPerformanceDe": "CH3COOH + HOCH2CH3 ⇌ CH3COOCH2CH3 + H2O; in Strukturformeln CH3–C(=O)–OH + HO–CH2–CH3 ⇌ CH3–C(=O)–O–CH2–CH3 + H2O. Die Alkoholseite ist über O an den Carbonylkohlenstoff gebunden. Wasser entsteht als Kondensationsprodukt. Die analytisch vorgegebenen Identitäten tragen den Schluss; Geruch ist nicht eindeutig. Geeignet saure Bedingungen sind der vorgegebene Rahmen, keine Garantie vollständiger Umsetzung und keine selbst durchgeführte Synthese.",
+            "expectedPerformanceEn": "CH3COOH + HOCH2CH3 ⇌ CH3COOCH2CH3 + H2O; structurally CH3–C(=O)–OH + HO–CH2–CH3 ⇌ CH3–C(=O)–O–CH2–CH3 + H2O. The alcohol portion is linked through O to the carbonyl carbon. Water is the condensation product. The supplied analytical identities support the inference; odour is not unique. Suitable acidic conditions are the supplied context, not a guarantee of complete conversion or a personally performed synthesis.",
+            "understandingFocusDe": "Alkohol und Carbonsäure können unter geeigneten Bedingungen Ester und Wasser bilden. Zusammensetzung, Nachweisdaten und Stoffbilanz tragen die Schlussfolgerung; Geruch allein identifiziert keinen Ester.",
+            "understandingFocusEn": "Alcohol and carboxylic acid can form ester and water under suitable conditions. Composition, detection data and balance support the inference; odor alone does not identify an ester."
+          },
+          {
+            "id": "70b-formation-methyl-butanoate-transfer",
+            "taskDemandDe": "Frischer Fall: Butansäure und Methanol liefern unter geeigneten Bedingungen im Gleichgewicht Methylbutanoat und Wasser. Produktidentitäten sind analytische Fallvorgaben und werden nicht aus Geruch hergeleitet. Keine eigene Synthese wird behauptet oder verlangt.\nZeichne aus dem frischen Eduktpaar das Esterprodukt und formuliere die atomrichtig ausgeglichene Kondensationsgleichung. Zeige ausdrücklich, über welches Atom die Methanolseite an den Carbonylkohlenstoff gebunden ist. Begründe anhand der vorgegebenen Produktanalytik den Reaktionsschluss und begrenze die Aussage über den Stoffumsatz.\nVollständiger Aufgaben-/Tabellenkörper: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-two-atom-and-33e-text-author-20261019-v1/materials/TWO.whole-formation-cases.DE-EN.pending.json#/cases/1",
+            "taskDemandEn": "Fresh case: under suitable conditions butanoic acid and methanol form methyl butanoate and water at equilibrium. Product identities are analytical givens, not inferred from odour. No personal synthesis is claimed or required.\nDraw the ester product for the fresh reactant pair and write the atom-balanced condensation equation. Show explicitly which atom links the methanol portion to the carbonyl carbon. Use the supplied product analysis to justify the reaction inference and limit the claim about conversion.\nComplete task/table body: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-two-atom-and-33e-text-author-20261019-v1/materials/TWO.whole-formation-cases.DE-EN.pending.json#/cases/1",
+            "expectedPerformanceDe": "CH3CH2CH2COOH + CH3OH ⇌ CH3CH2CH2COOCH3 + H2O; strukturell CH3–CH2–CH2–C(=O)–O–CH3. Die Methoxyseite ist über O gebunden und nicht als C direkt an den Carbonylkohlenstoff angehängt. Das analytisch vorgegebene Ester/Wasser-Paar trägt den Kondensationsschluss; Gleichgewicht und mögliche Restedukte bleiben erhalten. Kein universeller Geruchsnachweis oder vollständiger Umsatz wird abgeleitet.",
+            "expectedPerformanceEn": "CH3CH2CH2COOH + CH3OH ⇌ CH3CH2CH2COOCH3 + H2O; structurally CH3–CH2–CH2–C(=O)–O–CH3. The methoxy portion is linked through O, not as carbon directly to the carbonyl carbon. The supplied ester/water analysis supports condensation; equilibrium and possible remaining reactants are retained. No universal odour identification or complete conversion is inferred.",
+            "understandingFocusDe": "Alkohol und Carbonsäure können unter geeigneten Bedingungen Ester und Wasser bilden. Zusammensetzung, Nachweisdaten und Stoffbilanz tragen die Schlussfolgerung; Geruch allein identifiziert keinen Ester.",
+            "understandingFocusEn": "Alcohol and carboxylic acid can form ester and water under suitable conditions. Composition, detection data and balance support the inference; odor alone does not identify an ester."
+          }
+        ]
+      },
+      "D": {
+        "decision": "accept_current_candidate_wording",
+        "reason": "Die DE/EN-Beschreibung bezeichnet eine bestimmte Bildungskompetenz. Produktbefunde aus vorgelegten experimentellen Unterrichtsdaten werden mit einer atomrichtigen Kondensationsgleichung verbunden; eine eigene Synthese ist nicht beansprucht. Alkoholseite über O, Wasserbildung und Gleichgewichtsgrenze sind klar prüfbar."
+      },
+      "P": {
+        "decision": "accept_whole_core_profile_and_cases",
+        "reason": "Zwei vollständige Fälle erhalten Ethansäure/Ethanol und die frische Kombination Butansäure/Methanol. Die geänderte Verteilung der C-Ketten auf Säure- und Alkoholseite verlangt eine neue korrekte O-Verknüpfung. Produktanalytik und mögliche Restedukte tragen nur den begrenzten Reaktionsschluss; kein Geruchsnachweis, vollständiger Umsatz oder tatsächlicher Lernendenversuch wird erfunden."
+      },
+      "A": {
+        "status": "atomic",
+        "semanticAtomic": true,
+        "candidateOnly": true,
+        "reason": "atomic: Das Ableiten des Produktzusammenhangs und dessen stoff-/atomrichtige Darstellung als Kondensationsgleichung sind Befund und Darstellung derselben Reaktionskompetenz. Der getrennte Struktur-Eigenschafts-Teil wird hier nicht zusätzlich verlangt."
+      },
+      "M": {
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "candidateOnly": true,
+        "reason": "no_memory_needed: Die Person muss die Bindungsumordnung und Stoffbilanz im jeweils gegebenen Strukturfall konstruieren und erklären. Eine auswendig gelernte Beispielgleichung oder Merkliste identifiziert keinen neuen Produktzusammenhang; ein eigener obligatorischer Faktenabrufvertrag ist für diesen Atomumfang nicht erforderlich.",
+        "notOrientation": true,
+        "notSRSMastery": true,
+        "doesNotAlterExistingSupportDecks": true
+      },
+      "originalProductionValidation": {
+        "goalId": "70b34ae7-4481-590c-9a02-516464750832",
+        "goalFingerprint": "sha256:24b3006569ae997179ab35a02b07807023ac9b57fac066e031bb0d66ee07ee47",
+        "reviewInputFingerprint": "sha256:57e20009498f110ae5b426ae1ff6c952f7f98b57d3d825cba3415e6540da13a9",
+        "profileFingerprint": "sha256:9f985790cc786573cf1de0d7a29ef80e5292c42e263b5dfec9c9b74a086a9c74",
+        "schemaValid": true,
+        "originalSemanticValidatorErrors": []
+      },
+      "imageCoreFit": {
+        "decision": "accept_exact_png_fit_to_core_scope",
+        "candidateImage": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-ester-two-focused-image-author-20261019-v1/candidate/formation.png",
+          "sha256": "65b6986d082563faa2b4cfa7e8b260380a17925c733f4bb67cb90ff1ca3aabc5",
+          "bytes": 1373128
+        },
+        "nativePixelSize": [
+          1672,
+          941
+        ],
+        "actualVisualInspectionWidths": [
+          1672,
+          680,
+          360
+        ],
+        "reason": "Gezeichnete Estergruppen sind in allen Darstellungen R–C(=O)–O–R′; keine Ketonstruktur als Ester. Bildung zeigt H+-katalysiertes Gleichgewicht und Wasser; Eigenschaftsbild zeigt polare Carbonylgruppen, schematische Dipolanziehung und bedingte Verwendungen. Die einfache Esterstruktur trägt keine eigene OH-Donorgruppe. Die Hauptaussagen bleiben bei360px erkennbar; kleine Zwischenüberschriften brauchen gegebenenfalls Vergrößerung. Kein nativer V- oder Runtime-Display-Claim."
+      }
+    },
+    {
+      "goalId": "62de1c6e-8581-5345-a0a6-773427cb6db7",
+      "coreDecision": "accept_bounded_core_candidate",
+      "wholeGoalReference": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-two-atom-and-33e-text-author-20261019-v1/AUTHOR.THREE.whole-goal-candidates.pending.json",
+        "sha256": "43f072eabe72cfc24030664a35b569021624b50addc10a63807222049251c473",
+        "bytes": 17202,
+        "jsonPointer": "/goals/1"
+      },
+      "reviewedCoreText": {
+        "id": "62de1c6e-8581-5345-a0a6-773427cb6db7",
+        "title": "Estereigenschaften erklären und Verwendungen begründen",
+        "titleEn": "Explain ester properties and justify uses",
+        "description": "Die lernende Person kann Stoffeigenschaften einfacher Carbonsäureester anhand ihrer Molekülstruktur und zwischenmolekularer Wechselwirkungen erklären und anhand gegebener Daten Einsatzbereiche in Alltagsprodukten und Technik begründen.",
+        "descriptionEn": "The learner can explain properties of simple carboxylic esters through their molecular structure and intermolecular interactions and use supplied data to justify applications in everyday products and technology.",
+        "type": "atomic"
+      },
+      "wholeProfileReference": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-two-atom-and-33e-text-author-20261019-v1/P.THREE.whole-profile-author-candidates.pending.json",
+        "sha256": "f4edb38c962e76880af5833b8ba96aa9331679cb7af040af8ad6f22557d9fcd1",
+        "bytes": 28109,
+        "jsonPointer": "/records/1/profile"
+      },
+      "wholeReviewedProfile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "properties-and-use",
+            "essentialUnderstandingDe": "Ester haben polare Gruppen, aber einfache Ester ohne weitere OH-Gruppe sind untereinander keine Wasserstoffbrückendonoren. Größe und gesamte Struktur beeinflussen Stoffeigenschaften und Einsatz.",
+            "essentialUnderstandingEn": "Esters have polar groups, but simple esters without another OH are not hydrogen-bond donors to each other. Size and overall structure affect properties and use.",
+            "observablePerformanceDe": "Gegebene Löslichkeits-/Siededaten durch Wechselwirkungen erklären und passende Alltags-/Technikverwendungen begründen.",
+            "observablePerformanceEn": "Explain supplied solubility/boiling data through interactions and justify suitable everyday/technical uses."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "properties-and-use"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "changed-chemical-case",
+            "textDe": "Andere Esterstruktur, Geruchs-/Anwendungs- und frische A/B-Verteilungsdaten; keine pauschalen Duft-, Löslichkeits- oder Siederegeln.",
+            "textEn": "Different ester structure, odour/use and fresh A/B partition data; no universal smell, solubility or boiling rules."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "62de-property-ethyl-ethanoate",
+            "taskDemandDe": "Vorgegebene Strukturen: Ethylethanoat CH3–C(=O)–O–CH2–CH3 und Ethansäure CH3–C(=O)–OH. Nutze die vollständige folgende Eigenschafts-/Anwendungstabelle. Die Stoffidentitäten sind vorgegeben; eine Synthese oder eigene Messung wird nicht verlangt.\nErkläre anhand der vorgegebenen Strukturen und Tabelle die begrenzte Wassermischbarkeit des Esters und den konkreten Siedevergleich. Unterscheide polare Estergruppe, unpolaren Rest, Wasserstoffbrückenakzeptor und fehlende eigene OH-Donorfunktion. Begründe den angegebenen Beschichtungs-Lösungsmitteleinsatz und das gewünschte Verdunsten; begrenze die Aussage auf die gegebenen Stoff-/Verwendungsdaten.\nVollständiger Aufgaben-/Tabellenkörper: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-two-atom-and-33e-text-author-20261019-v1/materials/TWO.whole-property-use-cases.DE-EN.pending.json#/cases/0",
+            "taskDemandEn": "Supplied structures: ethyl ethanoate CH3–C(=O)–O–CH2–CH3 and ethanoic acid CH3–C(=O)–OH. Use the complete following property/application table. Substance identities are supplied; synthesis or personal measurement is not required.\nUse the supplied structures and table to explain the ester’s limited water miscibility and this specific boiling comparison. Distinguish the polar ester group, nonpolar remainder, hydrogen-bond acceptance and lack of an own OH donor. Justify the stated coating-solvent use and desired evaporation, restricting the claim to the supplied substance/use data.\nComplete task/table body: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-two-atom-and-33e-text-author-20261019-v1/materials/TWO.whole-property-use-cases.DE-EN.pending.json#/cases/0",
+            "expectedPerformanceDe": "Die Estergruppe ist polar und kann Wasserstoffbrücken von Wasser akzeptieren, besitzt hier aber keine eigene OH-Donorgruppe. Der unpolare Anteil begrenzt die Mischbarkeit. Ethansäure kann starke Wasserstoffbrücken/Assoziate bilden; der Ester ist in diesem vorgegebenen Vergleich leichter flüchtig. Das vorgegebene Lösen des Beschichtungsbestandteils und anschließende Verdunsten tragen den genannten Einsatz. Daraus folgen weder universelle Esterlöslichkeit oder Siederegeln noch Harmlosigkeit.",
+            "expectedPerformanceEn": "The ester group is polar and can accept hydrogen bonds from water but has no own OH donor here. Its nonpolar part limits miscibility. Ethanoic acid can form strong hydrogen bonds/associates; the ester is more volatile in this supplied comparison. The stated coating-component dissolution and subsequent evaporation support that use. Neither universal ester solubility/boiling rules nor harmlessness follows.",
+            "understandingFocusDe": "Ester haben polare Gruppen, aber einfache Ester ohne weitere OH-Gruppe sind untereinander keine Wasserstoffbrückendonoren. Größe und gesamte Struktur beeinflussen Stoffeigenschaften und Einsatz.",
+            "understandingFocusEn": "Esters have polar groups, but simple esters without another OH are not hydrogen-bond donors to each other. Size and overall structure affect properties and use."
+          },
+          {
+            "id": "62de-property-methyl-butanoate-transfer",
+            "taskDemandDe": "Frischer Eigenschafts-/Verwendungsfall: Methylbutanoat hat die vorgegebene Struktur CH3–CH2–CH2–C(=O)–O–CH3. Die vollständige folgende Tabelle und Modellverteilung sind gegeben. Kein eigenes Riechen oder Verkosten gehört zum Auftrag. Die Synthesereaktion ist kein Prüfteil dieses Falls.\nErkläre die begrenzte Wassermischbarkeit anhand von Estergruppe und Molekülrest. Verknüpfe die bereitgestellte Geruchsangabe mit der Aromafunktion und die A/B-Verteilungsdaten getrennt mit der Extraktionsfunktion. Begründe, für welches Modellgelöste der Ester unter den gegebenen Bedingungen geeigneter ist und weshalb begrenzte Wassermischbarkeit keine allgemeine Extraktionseignung, Identität oder Zulassung beweist.\nVollständiger Aufgaben-/Tabellenkörper: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-two-atom-and-33e-text-author-20261019-v1/materials/TWO.whole-property-use-cases.DE-EN.pending.json#/cases/1",
+            "taskDemandEn": "Fresh property/use case: methyl butanoate has the supplied structure CH3–CH2–CH2–C(=O)–O–CH3. The complete following table and model partition are supplied. Smelling or tasting is not part of the task. The synthesis reaction is not assessed in this case.\nExplain limited water miscibility using the ester group and molecular remainder. Link the supplied odour description to aroma function and separately link the A/B partition data to extraction function. Explain which model solute the ester suits better under the supplied conditions and why limited water miscibility establishes neither universal extraction suitability, identity nor authorisation.\nComplete task/table body: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-two-atom-and-33e-text-author-20261019-v1/materials/TWO.whole-property-use-cases.DE-EN.pending.json#/cases/1",
+            "expectedPerformanceDe": "Polare Estergruppe mit Akzeptorfunktion und unpolare Kette begrenzen die Mischbarkeit; ohne weitere OH-Gruppe gibt es keine eigene OH-Donorfunktion. Der fruchtige Referenzgeruch stützt nur die gegebene Aromafunktion, nicht Identität oder Lebensmittelzulassung. A verteilt sich zu80% in die Esterphase und20% ins Wasser, B zu5% in die Esterphase und95% ins Wasser. Unter genau diesen Bedingungen ist der Ester zur Extraktion von A geeigneter als von B. Die zwei Anwendungen beruhen auf unterschiedlichen Daten; aus begrenzter Wassermischbarkeit allein folgt keine allgemeine Lösungs-/Extraktionswirkung.",
+            "expectedPerformanceEn": "The polar hydrogen-bond-accepting ester group and nonpolar chain limit miscibility; without an additional OH group there is no own OH donor. Fruity reference odour supports only the stated aroma function, not identity or food authorisation. A partitions80% into ester and20% into water, while B partitions5% into ester and95% into water. Under precisely these conditions the ester suits extraction of A better than B. The two uses rest on different data; limited water miscibility alone establishes no universal solvent/extraction action.",
+            "understandingFocusDe": "Ester haben polare Gruppen, aber einfache Ester ohne weitere OH-Gruppe sind untereinander keine Wasserstoffbrückendonoren. Größe und gesamte Struktur beeinflussen Stoffeigenschaften und Einsatz.",
+            "understandingFocusEn": "Esters have polar groups, but simple esters without another OH are not hydrogen-bond donors to each other. Size and overall structure affect properties and use."
+          }
+        ]
+      },
+      "D": {
+        "decision": "accept_current_candidate_wording",
+        "reason": "DE/EN begrenzen die neue Kompetenz auf einfache Carbonsäureester und eine kausale Struktur–Wechselwirkung–Eigenschaft–Verwendungskette anhand gegebener Daten. Eine Synthese, Stoffidentifikation oder freie Sicherheits-/Zulassungsbewertung wird nicht hineingelesen."
+      },
+      "P": {
+        "decision": "accept_whole_core_profile_and_cases",
+        "reason": "Beide vollständigen Tabellenfälle sind eigenständig lösbar. Ethylethanoat/Ethansäure erlauben den begrenzten Siedevergleich durch Säureassoziate und fehlende OH-Donorfunktion des einfachen Esters. Der frische Methylbutanoatfall unterscheidet Geruchs- und Extraktionsfunktion; A80% Ester/20% Wasser und B5% Ester/95% Wasser bleiben exakt. Schlechte allgemeine Folgerungen aus Mischbarkeit, Duft oder einer einzigen Struktur werden ausdrücklich begrenzt."
+      },
+      "A": {
+        "status": "atomic",
+        "semanticAtomic": true,
+        "candidateOnly": true,
+        "reason": "atomic: Eigenschaftserklärung und die daran begrenzte Verwendungsbegründung sind Erklärung und Anwendung eines Struktur-Eigenschafts-Zusammenhangs. Die Anwendungsbegründung importiert keine eigenständige Synthese-, sensorische oder medizinische Kompetenz. Die Aromafunktion nutzt die gegebene Geruchsinformation; eine Rezeptorchemie-Erklärung wird nicht gefordert."
+      },
+      "M": {
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "candidateOnly": true,
+        "reason": "no_memory_needed: Benötigt sind das Begründen der vorgegebenen Siede-/Mischbarkeitsdaten und die Auswertung einer neuen Verteilung. Ein eigener Deck mit Esteranwendungen oder einer pauschalen Siederegel wäre für diese Leistung ungeeignet. Funktionsgruppen-/Wechselwirkungswissen kann als vorhandene Grundlage geübt werden; dieser Kern begründet keine zusätzliche obligatorische Memorierkompetenz.",
+        "notOrientation": true,
+        "notSRSMastery": true,
+        "doesNotAlterExistingSupportDecks": true
+      },
+      "originalProductionValidation": {
+        "goalId": "62de1c6e-8581-5345-a0a6-773427cb6db7",
+        "goalFingerprint": "sha256:6e8af4bcd124fdb21e4649c4081ba168c7be989ebfc59939e1a156e02377d2f3",
+        "reviewInputFingerprint": "sha256:6fee4f9930563931b92d62b539700e15454278e1230c6709fefbaa6fb5bc75ec",
+        "profileFingerprint": "sha256:3cc4b5879e9d3604f5d6789bd9aca708047d5c6bb2e042c36fb2009c4781ab35",
+        "schemaValid": true,
+        "originalSemanticValidatorErrors": []
+      },
+      "imageCoreFit": {
+        "decision": "accept_exact_png_fit_to_core_scope",
+        "candidateImage": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-ester-two-focused-image-author-20261019-v1/candidate/properties-corrected.png",
+          "sha256": "c3f7c2f262e42ed6921a8a0ea3b48a1987ad909419de56d1179963396ecc8c6d",
+          "bytes": 1694540
+        },
+        "nativePixelSize": [
+          1672,
+          941
+        ],
+        "actualVisualInspectionWidths": [
+          1672,
+          680,
+          360
+        ],
+        "reason": "Gezeichnete Estergruppen sind in allen Darstellungen R–C(=O)–O–R′; keine Ketonstruktur als Ester. Bildung zeigt H+-katalysiertes Gleichgewicht und Wasser; Eigenschaftsbild zeigt polare Carbonylgruppen, schematische Dipolanziehung und bedingte Verwendungen. Die einfache Esterstruktur trägt keine eigene OH-Donorgruppe. Die Hauptaussagen bleiben bei360px erkennbar; kleine Zwischenüberschriften brauchen gegebenenfalls Vergrößerung. Kein nativer V- oder Runtime-Display-Claim."
+      }
+    },
+    {
+      "goalId": "33e845cc-1a7b-50d5-99b3-8079575c4e6a",
+      "coreDecision": "accept_bounded_core_candidate",
+      "wholeGoalReference": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-two-atom-and-33e-text-author-20261019-v1/AUTHOR.THREE.whole-goal-candidates.pending.json",
+        "sha256": "43f072eabe72cfc24030664a35b569021624b50addc10a63807222049251c473",
+        "bytes": 17202,
+        "jsonPointer": "/goals/2"
+      },
+      "reviewedCoreText": {
+        "id": "33e845cc-1a7b-50d5-99b3-8079575c4e6a",
+        "title": "Konservierungsmethoden vergleichen",
+        "titleEn": "Compare preservation methods",
+        "description": "Die lernende Person kann historische und moderne Verfahren der Lebensmittelkonservierung anhand ihrer Wirkprinzipien vergleichen und bedingungsabhängige Risiken benennen.",
+        "descriptionEn": "The learner can compare historical and modern food preservation methods using their mechanisms and name risks that depend on the conditions.",
+        "type": "atomic"
+      },
+      "wholeProfileReference": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current454-70b-two-atom-and-33e-text-author-20261019-v1/P.THREE.whole-profile-author-candidates.pending.json",
+        "sha256": "f4edb38c962e76880af5833b8ba96aa9331679cb7af040af8ad6f22557d9fcd1",
+        "bytes": 28109,
+        "jsonPointer": "/records/2/profile"
+      },
+      "wholeReviewedProfile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "preservation-mechanisms",
+            "essentialUnderstandingDe": "Historisch verbreitete Verfahren wie Trocknen, Salzen oder Säuern und moderne Prozess-/Verpackungstechniken beeinflussen Wasserverfügbarkeit, pH, Temperatur oder Gasumgebung. Die Einordnung historisch/modern allein erklärt keine Wirkung.",
+            "essentialUnderstandingEn": "Historically widespread drying, salting or acidification and modern processing/packaging affect water availability, pH, temperature or gas composition. Historical/modern labels alone do not explain action.",
+            "observablePerformanceDe": "Vorgegebene Verfahren gegenüberstellen und die zum jeweiligen Modell passende Wachstumshemmung bzw. thermische Inaktivierung erklären.",
+            "observablePerformanceEn": "Compare supplied procedures and explain model-specific growth inhibition or thermal inactivation."
+          },
+          {
+            "id": "conditional-risk-comparison",
+            "essentialUnderstandingDe": "Konservierungswirkung ist bedingt durch Verfahren, Ausgangsprodukt und Organismen. Hemmung ist nicht notwendig Sterilisation; Risiken können etwa verbleibendes Wachstum, Wiederverunreinigung oder Qualitätsänderung sein.",
+            "essentialUnderstandingEn": "Preservation depends on process, initial product and organisms. Inhibition is not necessarily sterilization; risks include remaining growth, recontamination or quality changes.",
+            "observablePerformanceDe": "Aus bereitgestellten Prozess-/Beobachtungsdaten Grenzen und Risiken verschiedener Methoden benennen, ohne Haltbarkeitsfristen oder Gesundheitsfreigaben zu erfinden.",
+            "observablePerformanceEn": "Identify limitations and risks from supplied process/observation data without inventing shelf lives or health clearance."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "preservation-mechanisms",
+            "conditional-risk-comparison"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "changed-chemical-case",
+            "textDe": "Neue Lebensmittelmodelle und Verfahrenskombinationen; Wirkmechanismus und belegte Grenzen statt pauschale Sicherheitsrangfolge.",
+            "textEn": "Use fresh food models and process combinations; compare mechanisms and evidenced limits instead of a blanket safety ranking."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "historical-and-modern-comparison",
+            "taskDemandDe": "Eine didaktische Tabelle vergleicht Trocknen/Salzen und Säuern mit Kühlung und einem vorgegebenen Wärmeprozess. Messdaten zu Wasseraktivität, pH, Temperatur und modellhaftem Wachstum liegen vor. Ordne Wirkprinzipien zu und benenne für jedes Verfahren eine durch die Daten begründete Grenze.\nVollständige aktuelle didaktische Fallangaben: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-five-native-findings-targeted-author-20261018-v1/materials/33e.complete-two-DE-EN-model-tables.author.json#/cases/0. Synthetische Modell-/Referenzangaben, keine tatsächlich beobachteten Labor- oder Lernendendaten.",
+            "taskDemandEn": "An educational table compares drying/salting and acidification with cooling and a supplied heat process. Water activity, pH, temperature and model growth data are given. Assign mechanisms and identify a data-supported limit for each.\nComplete current educational case givens: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-five-native-findings-targeted-author-20261018-v1/materials/33e.complete-two-DE-EN-model-tables.author.json#/cases/0. Synthetic model/reference givens, not observed laboratory or learner data.",
+            "expectedPerformanceDe": "Trocknen/Salzen vermindert verfügbare Wasseraktivität, Säuern verändert pH, Kühlung verlangsamt im gegebenen Modell Wachstum, Wärme kann Organismen gemäß den vorgegebenen Daten inaktivieren. Hemmung wird nicht mit vollständiger Keimfreiheit gleichgesetzt; Restwachstum, Wiederverunreinigung oder Qualitätsänderung werden stoff-/prozessbezogen erklärt.",
+            "expectedPerformanceEn": "Drying/salting lowers available water activity, acidification changes pH, cooling slows model growth, and heat can inactivate organisms according to supplied data. Inhibition is not equated with sterility; remaining growth, recontamination or quality change are explained for the product/process.",
+            "understandingFocusDe": "Wirkmechanismen und Grenzen vergleichen.",
+            "understandingFocusEn": "Compare mechanisms and limits."
+          },
+          {
+            "id": "changed-packaging-organisms",
+            "taskDemandDe": "Frische Modellverpackungsdaten zeigen weniger Sauerstoff und geringeres Wachstum eines aeroben Organismus, aber Wachstum eines ausdrücklich vorgegebenen anderen Organismus. Vergleiche dieses moderne Verfahren mit Säuern/Trocknen anhand einer zweiten Datentabelle und begründe eine Grenze; keine Anwendungsempfehlung oder reale Haltbarkeit.\nVollständige aktuelle didaktische Fallangaben: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-five-native-findings-targeted-author-20261018-v1/materials/33e.complete-two-DE-EN-model-tables.author.json#/cases/1. Synthetische Modell-/Referenzangaben, keine tatsächlich beobachteten Labor- oder Lernendendaten.",
+            "taskDemandEn": "Fresh packaging-model data show lower oxygen and reduced growth of an aerobic organism but growth of another explicitly supplied organism. Compare the modern process with acidification/drying using a second table and explain a limitation; no application advice or actual shelf life.\nComplete current educational case givens: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-five-native-findings-targeted-author-20261018-v1/materials/33e.complete-two-DE-EN-model-tables.author.json#/cases/1. Synthetic model/reference givens, not observed laboratory or learner data.",
+            "expectedPerformanceDe": "Verminderter Sauerstoff betrifft bestimmte Wachstumsbedingungen, nicht alle Organismen gleichermaßen. Die vorgegebenen Daten widerlegen einen allgemeinen Sterilitätsanspruch. Säuern/Trocknen wirken über andere Bedingungen; Kombinationen sind nur im Umfang vorhandener Daten bewertbar, nicht automatisch sicher.",
+            "expectedPerformanceEn": "Lower oxygen affects particular growth conditions rather than every organism equally. Supplied data contradict a universal sterility claim. Acidification/drying act through other conditions; combinations can be evaluated only within available data and are not automatically safe.",
+            "understandingFocusDe": "Frischer Organismen-/Verfahrensvergleich.",
+            "understandingFocusEn": "Fresh organism and process comparison."
+          }
+        ]
+      },
+      "D": {
+        "decision": "accept_current_candidate_wording",
+        "reason": "Die begrenzte DE/EN-Revision macht den fachlichen Verfahrensvergleich anhand von Wirkprinzipien und die bereits beanspruchte bedingte Risikonennung sichtbar. Sie verlangt weder ein neues praktisches Verfahren noch eine Haltbarkeitsberechnung oder neue Konservierungsstoff-Spezialkenntnisse."
+      },
+      "P": {
+        "decision": "accept_whole_core_profile_and_cases",
+        "reason": "Das gesamte V2-Profil und beide vollständigen Modelltabellen sind unverändert. S0/S1 unterscheiden unmittelbare Inaktivierung und anschließendes Wachstum; die frische sauerstoffarme Verpackung betrifft A und B verschieden. positive Restbestände und positive Zuwächse ergeben keine Sterilität oder Sicherheitsfreigabe. Die Sachgrenzen gelten für die vorgegebenen Organismen/Bedingungen."
+      },
+      "A": {
+        "status": "atomic",
+        "semanticAtomic": true,
+        "candidateOnly": true,
+        "reason": "atomic: Historisch/moderne Verfahren und deren bedingte Risiken sind zusammengehörige Gegenstände eines fachlichen Vergleichs. Die Textpräzisierung fügt keinen unabhängig zu prüfenden Labor- oder Risikobewertungsoperator hinzu."
+      },
+      "M": {
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "candidateOnly": true,
+        "reason": "no_memory_needed: Der Nachweis entsteht aus dem Zuordnen veränderter Bedingungen zu Wirkprinzipien und dem Interpretieren neuer Wachstumsdaten. Das Erinnern einer Methodenliste oder eines pauschalen Gefahrenrankings ersetzt dies nicht; ein notwendiger eigener Fakten-/SRS-Vertrag wird vom aktuellen Umfang nicht verlangt.",
+        "notOrientation": true,
+        "notSRSMastery": true,
+        "doesNotAlterExistingSupportDecks": true
+      },
+      "originalProductionValidation": {
+        "goalId": "33e845cc-1a7b-50d5-99b3-8079575c4e6a",
+        "goalFingerprint": "sha256:b8a8010dc9a659af438f228231addf0608d12dd07842f97c272bab69e6a51648",
+        "reviewInputFingerprint": "sha256:fc007bc928c4174a2a6efe074cc55d97d9531bc4219a413e8895015a3f88e47a",
+        "profileFingerprint": "sha256:e36a82a045bbcf7d9a1aaab81811a762813a25b18a82bba8dcef9d8c7ffaf16c",
+        "schemaValid": true,
+        "originalSemanticValidatorErrors": []
+      }
+    }
+  ],
+  "humanApproval": false,
+  "humanTrial": false,
+  "actualLearnerPerformanceClaim": false,
+  "M7Claim": false,
+  "normalWrites": false
+}

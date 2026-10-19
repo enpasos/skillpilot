@@ -1,0 +1,53 @@
+{
+  "maxConcurrentOriginalChecks": 2,
+  "exactCheckCount": 3,
+  "executions": [
+    {
+      "name": "goal-visualization-assets",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:goal-visualization-assets"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot",
+      "startedAt": "2026-10-19T00:29:12.096625+00:00",
+      "completedAt": "2026-10-19T00:29:54.818003+00:00",
+      "exitCode": 1,
+      "stdoutPath": "tmp/chemie455-final-assets-original-checks/goal-visualization-assets.stdout.txt",
+      "stderrPath": "tmp/chemie455-final-assets-original-checks/goal-visualization-assets.stderr.txt"
+    },
+    {
+      "name": "goal-visualization-qa-chemie",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:goal-visualization-qa",
+        "--",
+        "--subjects=chemie"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot",
+      "startedAt": "2026-10-19T00:29:12.097576+00:00",
+      "completedAt": "2026-10-19T00:29:15.067441+00:00",
+      "exitCode": 0,
+      "stdoutPath": "tmp/chemie455-final-assets-original-checks/goal-visualization-qa-chemie.stdout.txt",
+      "stderrPath": "tmp/chemie455-final-assets-original-checks/goal-visualization-qa-chemie.stderr.txt"
+    },
+    {
+      "name": "ai-transparency-inventory",
+      "argv": [
+        "node",
+        "scripts/check_ai_transparency_inventory.mjs"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot",
+      "startedAt": "2026-10-19T00:29:54.818925+00:00",
+      "completedAt": "2026-10-19T00:30:20.946968+00:00",
+      "exitCode": 0,
+      "stdoutPath": "tmp/chemie455-final-assets-original-checks/ai-transparency-inventory.stdout.txt",
+      "stderrPath": "tmp/chemie455-final-assets-original-checks/ai-transparency-inventory.stderr.txt"
+    }
+  ]
+}

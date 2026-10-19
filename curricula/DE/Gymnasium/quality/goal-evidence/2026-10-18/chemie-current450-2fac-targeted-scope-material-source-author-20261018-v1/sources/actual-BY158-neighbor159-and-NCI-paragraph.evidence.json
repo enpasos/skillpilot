@@ -1,0 +1,63 @@
+{
+  "role": "AUTHOR_ACTUAL_SOURCE_POSITIONS_NOT_INDEPENDENT_APPROVAL",
+  "capturedAt": "2026-10-18T18:53:06.750962+00:00",
+  "BY": {
+    "url": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/11/chemie#292130",
+    "actuallyReadVia": [
+      "web.run official page",
+      "actual HTTP HTML body parsed with BeautifulSoup"
+    ],
+    "actualHTMLSHA256": "59d8c6c8d272e87bea15cc914416df90b508b0e62012f5e8c85f1c4019ac9bff",
+    "actualHTMLBytes": 113922,
+    "shortExactMechanismQuote": "beschreiben die Bildung von Magensäure und erklären daran die Wirkweise von Protonenpumpen-Hemmern.",
+    "sourceExtractionFile": {
+      "path": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_CHEMIE_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+      "sha256": "d8f6b835b00729a089452e7f2b58f1b5b94a870d3dd8096b558755dc49cd5056",
+      "bytes": 1154770
+    },
+    "source158": {
+      "jsonPointer": "/sourceGoals/158",
+      "id": "66d5f91e-3527-5782-a5c3-3ab2650a5a1c",
+      "wholeObjectSemanticSHA256": "e96c1cc477ce32bb67477e886f78c84ab366abf9f0d128ed801798b2e529e025",
+      "extractionLabel": "C11.3.1",
+      "actualOfficialPosition": "C11 3.1 Arzneimittel im Verdauungssystem, first competence bullet"
+    },
+    "neighbor159": {
+      "jsonPointer": "/sourceGoals/159",
+      "id": "3760b84d-1efe-577f-9d69-53fd89c7cb51",
+      "wholeObjectSemanticSHA256": "c60470a898ad8a785d34c5ea0d17d9b930f8860209b0bc0b66c9f47bab3807cc",
+      "extractionLabel": "C11.3.2",
+      "actualOfficialPosition": "same C11 3.1 section, second competence bullet",
+      "ownParaphrase": "The next bullet asks research and appraisal of antacids, including action, adverse effects and options for heartburn. It is not the same competence as the preceding PPI mechanism explanation."
+    },
+    "aliasBoundary": "C11.3.1 and C11.3.2 in this extraction are flat competency bullet labels. Current official C11 3.2 names Schmerzmittel, not this antacid bullet.",
+    "finding": "No explicit pH calculation or research routine is stated in the first mechanism bullet. The following antacid research/appraisal duty is neither removed from its own source nor borrowed as this goal’s official duty. Broader process context is not converted into a new universal official requirement."
+  },
+  "NCI": {
+    "materialId": "2fac-supplied-mechanism-source-card-20261018-v1",
+    "sourceType": "Provided first-party institutional drug-dictionary definition, not a primary clinical experiment",
+    "url": "https://www.cancer.gov/publications/dictionaries/cancer-drug/def/omeprazole",
+    "locator": {
+      "heading": "omeprazole",
+      "paragraphOneBased": 1,
+      "scope": "First definition paragraph immediately beneath the heading"
+    },
+    "retrievedAt": "2026-10-18T18:53:06.750962+00:00",
+    "actuallyReadMethod": "web.run rendered definition, not the JavaScript-only generic shell returned by a separate ordinary HTTP request",
+    "actualRenderedResponseDigest": {
+      "sha256": "2736bd1fc3214a5046c26be3bcc982a2dec46f0d643667b232f9916530e605a6",
+      "bytes": 3816
+    },
+    "shortExactExcerpt": "suppressing gastric acid secretion",
+    "paraphraseDe": "Die NCI-Definition beschreibt eine Bindung von Omeprazol an die H⁺/K⁺-ATPase auf der sekretorischen Oberfläche von Belegzellen und eine Hemmung des abschließenden H⁺-Transports im Austausch gegen K⁺ in das Magenlumen.",
+    "paraphraseEn": "The NCI definition describes omeprazole binding to H⁺/K⁺-ATPase on the secretory surface of parietal cells and inhibition of final H⁺ transport in exchange for K⁺ into the gastric lumen.",
+    "evidenceLimitDe": "Die Definition stützt Zielprotein und Transportfolge. Die Unterrichtsmengen, Volumina, Hemmanteile und pH-Werte stammen aus dem eigenen idealen Modell. Dass weniger Zufluss keine stöchiometrische Entfernung vorhandener Säure ist, wird aus Mechanismus und Modell begründet; es ist keine dort wörtlich gegebene Neutralisationsrechnung.",
+    "evidenceLimitEn": "The definition supports the protein target and transport consequence. Teaching amounts, volumes, inhibition fractions and pH values belong to the own ideal model. Reduced influx is distinguished from stoichiometric removal of existing acid by reasoning from mechanism and model; the definition supplies no such neutralization calculation.",
+    "learnerDemandDe": "Öffne die angegebene Definition, lies den ersten Definitionsabsatz und belege Zielprotein sowie Transportfolge mit URL und Absatz. Nutze die bereitgestellte Quellenkarte zur eindeutigen Fundstelle. Es ist keine freie Internetsuche oder Recherche zu Antazida erforderlich.",
+    "learnerDemandEn": "Open the supplied definition, read its first definition paragraph and cite the target protein and transport consequence using URL and paragraph. Use the supplied source card to locate it precisely. No open internet search or antacid research is required.",
+    "learnerActivityClaim": false,
+    "clinicalRecommendation": false
+  },
+  "sourceVersusOwnModel": "NCI supports target and transport. All numbers and ideal boundary choices are own teaching givens. BY identifies the official mechanism component; the retained calculation/source-proof extent is explicitly own already-authored acquisition scope.",
+  "liveRawReceiptBoundary": "Only short excerpts, exact page/paragraph positions and response digests are copied. Raw complete web pages and rendered tool response are not portable package dependencies or republished source texts."
+}

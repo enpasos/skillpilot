@@ -1,0 +1,19 @@
+# Carbonsäuren: atomare Trennung als Autorenkandidat
+
+Der offene HOLD wird mit zwei getrennten Kompetenzen bearbeitet:
+
+| Träger | Pflicht |
+| --- | --- |
+| `a3788e40-b540-5bed-be37-b33053528422` bleibt erhalten | Carboxygruppen in Struktur-/Skelettformeln erkennen; vollständige Formeln und homologe Reihen darstellen |
+| `dc146a38-994d-58ec-b6a0-5210118b93ae` ist neu | Sauren Charakter bekannter Carbonsäuren aus vorgegebenen geeigneten Beobachtungen mit Vergleichsproben belegen und Aussagegrenzen benennen |
+| `3de28598-672f-5753-8a45-8f559c2f9dc2` bleibt eigener praktischer Träger | Nachweisreaktionen auswählen, tatsächlich durchführen und deuten; keine Gleichsetzung mit vorgegebenen Daten |
+
+Die HE-Komponente61 wird durch zwei direkte partielle Beiträge gemeinsam getragen. Die HE-Komponenten62/63 bleiben beim Strukturatom. Das Paket enthält alle **68 tatsächlich gefundenen aktuellen direkten a378-Mappings** aus der aktuellen Atlas-Auswahl: drei HE-Kernkomponenten und65 weitere. Die vorgegebene Zahl wird nicht als Filter benutzt. Bestehende direkte Mappings werden nicht gelöscht. Neun ergänzende direkte Teilbeiträge machen den Beobachtungsanteil in den ausdrücklich untersuchten Nachweis-/Analysekontexten sichtbar; praktische, quantitative und andere Stoffklassenpflichten verbleiben bei den bereits mitgemappten Fachträgern. Die unveränderten umfassenderen Quellenzuordnungen erhalten durch diese Arbeit keine neue unabhängige Gesamtfreigabe.
+
+Die vollständigen bisherigen Quellklauseln, Mappingeinträge und Entscheidungen stehen in `inputs/current-direct68-source-components-and-whole-mapping-objects.json`. `candidates/whole-goals.before-after.pending.json` enthält vollständige Vorher-/Nachherobjekte samt stabilen IDs. Die drei Dateien unter `operations/` beschreiben genaue CAS-Vorschläge für Kanon, direkte Mappings und explizite Kompositionsreferenzen. Alle33 betroffenen expliziten Sichtreferenzen behalten für beide Teilkompetenzen exakt ihre bisherige target-/prerequisiteOnly-Rolle; diese wird nicht aus Voraussetzungen oder Jahrgang abgeleitet. Die ursprünglichen Voraussetzungen werden erhalten und die abgetrennte Pflicht für die bisherigen sieben Nachfolger ausdrücklich ergänzt.
+
+Die vollständige Fruchtsaftaufgabe00139854 samt Materialien, Lösungen, Zahlen und Bewertung bleibt unverändert. Aufgabe6 trägt weiterhin beide Papierkompetenzen. Nur `requires` und `coveredGoalIds` sowie die entsprechende Inhaltsreferenz werden im Kandidaten ergänzt. Die alte Profilanforderung nach getrennten frischen A/B-Indikatordaten war im ursprünglichen Material6 fürA nicht ausdrücklich ausgedruckt. Eine kleine neue, ausdrücklich fiktive Beobachtungskarte stellt genau diese Daten bereit; sie wird nicht als alte Quelle oder eigener Versuch ausgegeben. Die zwei Profilkandidaten erhalten sämtliche bisherigen Teilpflichten und Variations-/Transferregeln. Beide Kompetenzen können in einer integrierten Leistung gezeigt werden; es gibt keine zusätzliche Pflichtaufgabenquote.
+
+Vorhandene Bilder wurden für diese Entscheidung direkt betrachtet und nicht geändert. Das bisherige Carbonsäurebild bleibt im Kandidaten als zutreffende breitere Orientierung verlinkt; die vorhandene A/B-Formelabbildung wird unverändert benutzt. Für das neue Atom wird keine Bildfreigabe erfunden. Die unabhängigen A/D/P/M/V-/Quell- und Bindungsprüfungen bleiben spätere Schritte.
+
+Dies ist **informierte Autorarbeit**, keine unabhängige Stimme, keine Aktivierung und keine menschliche Freigabe. Keine Normaldatei, Registry, Framework, Runtime oder Bilddatei wurde geändert. Geprüft wurden die exakten lokalen CAS-Voraussetzungen, Pflicht-/ID-Erhaltung, die beiden DAG-Relationen im Kandidaten, zehn vollständige Zielobjekte gegen das Ziel-Schema sowie JSON und Portabilität. Es wurden keine Vollbuilds oder vollständigen Qualitätsläufe gestartet.

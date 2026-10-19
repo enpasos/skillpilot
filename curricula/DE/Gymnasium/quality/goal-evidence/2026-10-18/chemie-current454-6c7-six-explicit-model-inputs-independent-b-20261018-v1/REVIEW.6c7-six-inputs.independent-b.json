@@ -1,0 +1,125 @@
+{
+  "recordType": "independent-informed-targeted-material-and-P-review",
+  "reviewer": {
+    "agentTask": "/root/chemie454_current35_fresh_description_b",
+    "currentRole": "independent informed targeted P/material reviewer B",
+    "priorRoles": [
+      "sealed blind current35 native description reviewer B",
+      "informed component01 source reviewer C who documented the missing six-input list",
+      "informed 5851 image reviewer C and five-correction component reviewer B"
+    ],
+    "provider": "OpenAI",
+    "model": "GPT-6 family via Codex; exact model/build not exposed",
+    "reviewAuthority": "ai_candidate",
+    "newBlindFirstPass": false,
+    "humanApprovalClaimed": false
+  },
+  "reviewedAtUTC": "2026-10-18T21:46:14.721054+00:00",
+  "goalId": "6c7ce93c-7675-51da-bc0c-7d0257f7ff7d",
+  "status": "candidate",
+  "decision": "accept_component_candidate",
+  "selectedWholeMaterial": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-6c7-six-explicit-model-inputs-author-20261018-v1/MATERIAL.one-whole-operative-case.with-six-input-rows.author.json",
+    "sha256": "sha256:a181147215a36a83090592500875120a27bb5d7364d96b3c044c2dd45b09253d",
+    "bytes": 14360,
+    "jsonPointer": "/wholeOperativeCase"
+  },
+  "selectedWholeProfile": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-6c7-six-explicit-model-inputs-author-20261018-v1/AUTHOR.one-whole-profile.exact-second-case-binding.pending.json",
+    "sha256": "sha256:4015e2034760e019787a876dda4dacb0712da52d01f996970a96e7aec7114d22",
+    "bytes": 34890,
+    "jsonPointer": "/afterWholeProfile"
+  },
+  "scientificFindings": [
+    {
+      "aspect": "six actual inputs and existing expected answers",
+      "decision": "correct",
+      "reasonDe": "Na+/O-Ende(−) und Cl−/H-Ende(+) sind im ausdrücklich gegebenen Vorzeichenmodell die Anziehungsfälle1/4. Gleiche Vorzeichen Na+/H-Ende(+) und Cl−/O-Ende(−) ergeben Abstoßung2/3. Na+/U0 und Cl−/U0 sind die Fälle5/6, für die die Modellregel bewusst keine Wechselwirkungsentscheidung trifft. Alle sechs konkreten Eingaben stimmen mit den schon vorhandenen Antworten überein."
+    },
+    {
+      "aspect": "partial-charge and model limits",
+      "decision": "correct",
+      "reasonDe": "Die bilinguale Feldgrenze erklärt ausdrücklich: Wasserenden sind Partialladungsseiten, keine ganzen Ionenladungen; +/− sind nur Modell-Eingabevorzeichen. U0 bedeutet hier unbestimmt, nicht wechselwirkungsfrei. Die bestehenden Hinweise zu Gittertrennung, Solvatation, Entropie, Geometrie- und Löslichkeitsgrenzen bleiben erhalten. Keine quantitative Coulomb-, Energie- oder Löslichkeitsvorhersage wird aus der Vorzeichentabelle abgeleitet."
+    },
+    {
+      "aspect": "whole task and P binding",
+      "decision": "correct",
+      "reasonDe": "Der ganze ursprüngliche zweite Fall wurde gegen den ganzen Nachfolger gelesen. Die zusätzliche Eingabetabelle ergänzt die tatsächlich fehlende nummerierte Zuordnung und löst diesen engen C01-Materialbefund. Eigene analoge Karten-/Regelprüfung ODER eigener digitaler Originalweg bleiben erforderlich; Eingaben selbst sind kein Leistungsnachweis. Die genau zwei DE/EN-P-Demandstrings binden diesen vollständigen Fall eindeutig. Erster Fall samt Abkühlungsstimulus, alle Erwartungen, Kriterien, Coverage, Quoten und frischer Schlechtlöslichkeits-Transfer bleiben unverändert."
+    },
+    {
+      "aspect": "DE/EN equivalence",
+      "decision": "correct",
+      "reasonDe": "Die sechs zweisprachigen Modellseiten, die Begrenzung des Inputmodells und die beiden P-Bindungszusätze sind semantisch gleichwertig. Keine zusätzliche universelle Digital- oder Ausführungsbedingung wird eingeführt."
+    }
+  ],
+  "independentModelResults": [
+    {
+      "testId": 1,
+      "ion": "Na+",
+      "facingEndDe": "O-Ende eines Wassermoleküls",
+      "inputSigns": [
+        "+",
+        "-"
+      ],
+      "independentlyDerivedModelResult": "attraction"
+    },
+    {
+      "testId": 2,
+      "ion": "Na+",
+      "facingEndDe": "H-Ende eines Wassermoleküls",
+      "inputSigns": [
+        "+",
+        "+"
+      ],
+      "independentlyDerivedModelResult": "repulsion"
+    },
+    {
+      "testId": 3,
+      "ion": "Cl-",
+      "facingEndDe": "O-Ende eines Wassermoleküls",
+      "inputSigns": [
+        "-",
+        "-"
+      ],
+      "independentlyDerivedModelResult": "repulsion"
+    },
+    {
+      "testId": 4,
+      "ion": "Cl-",
+      "facingEndDe": "H-Ende eines Wassermoleküls",
+      "inputSigns": [
+        "-",
+        "+"
+      ],
+      "independentlyDerivedModelResult": "attraction"
+    },
+    {
+      "testId": 5,
+      "ion": "Na+",
+      "facingEndDe": "Neutrales Ende der Vergleichskarte U",
+      "inputSigns": [
+        "+",
+        "0"
+      ],
+      "independentlyDerivedModelResult": "undetermined"
+    },
+    {
+      "testId": 6,
+      "ion": "Cl-",
+      "facingEndDe": "Neutrales Ende der Vergleichskarte U",
+      "inputSigns": [
+        "-",
+        "0"
+      ],
+      "independentlyDerivedModelResult": "undetermined"
+    }
+  ],
+  "resolvesOnlyPriorFinding": "SH-six-fixed-tests-not-fully-listed / current6c7 second-case numbered input list",
+  "remainingTargetedFindings": [],
+  "claimLimits": [
+    "This is a selected AI component candidate, not a native P run or a complete source/course/goal approval.",
+    "No learner act, implemented app, digital artifact, human approval or normal activation is established.",
+    "Final native current D/P/material binding and original validators remain later gates."
+  ],
+  "normalFilesChanged": false
+}

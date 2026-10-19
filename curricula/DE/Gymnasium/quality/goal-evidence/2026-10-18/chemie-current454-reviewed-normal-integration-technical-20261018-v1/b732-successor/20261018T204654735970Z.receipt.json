@@ -1,0 +1,1535 @@
+{
+  "plan": {
+    "mode": "apply",
+    "normalTargets": [
+      "curricula/DE/Gymnasium/mapping/DE-BB/upper-secondary/bb_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "curricula/DE/Gymnasium/mapping/DE-BE/upper-secondary/be_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "curricula/DE/Gymnasium/mapping/DE-HB/upper-secondary/hb_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.q1-atomic-split-author-proposal-20261005-v1.q4-four-bounded-reviewed-20261013-v1.review.json",
+      "curricula/DE/Gymnasium/mapping/DE-HH/upper-secondary/hh_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.q4-four-bounded-reviewed-20261013-v1.review.json",
+      "curricula/DE/Gymnasium/mapping/DE-MV/upper-secondary/mv_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "curricula/DE/Gymnasium/mapping/DE-ST/upper-secondary/st_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "curricula/DE/Gymnasium/mapping/DE-TH/upper-secondary/th_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.json",
+      "curricula/DE/Gymnasium/mapping/DE-SL/upper-secondary/sl_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "curricula/DE/Gymnasium/composition-views/chemie/de-by-lk.current-pilot.view.json",
+      "curricula/DE/Gymnasium/provenance/canonical-goal-surrogate-evidence-registry.json"
+    ],
+    "mappingMutations": 10,
+    "canonicalWholeBodies": 2,
+    "BYLKViews": 1,
+    "surrogateBefore": 394,
+    "surrogateAfter": 396,
+    "sourceClonesWritten": 0,
+    "SLCloneRouted": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-sl-sn-method-source-author-20261018-v2/candidate/sources/DE-SL.whole-source-clone.one-sentence-added.pending.json",
+    "SNNotActivated": true,
+    "C1Seal": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-independent-c-20261018-v1/SEAL.informed-independent-b732-components.json",
+      "sha256": "e171e32179f27ecc885fe882115aca536ce4be3b322f1f0808c7c0841db42940",
+      "bytes": 4588
+    },
+    "C2Seal": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-independent-c-20261018-v1/v2-addendum/SEAL.independent-c-v2-source-addendum.json",
+      "sha256": "47b6ef62489c4ba8a706337801a9b8b9fde031b68f3758efb897409f559fa0a3",
+      "bytes": 3031
+    },
+    "C2ExactDecisionRefs": {
+      "DE-SL": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-independent-c-20261018-v1/v2-addendum/FIRST.sl-accept-sn-revise.independent-c.json",
+        "sha256": "810f83d55bc927ef67237a95e797d4b8ed65c3c9fd0363b2a252fd6ea46cfea7",
+        "bytes": 15359,
+        "jsonPointer": "/rows/0"
+      },
+      "DE-SN": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-independent-c-20261018-v1/v2-addendum/FIRST.sl-accept-sn-revise.independent-c.json",
+        "sha256": "810f83d55bc927ef67237a95e797d4b8ed65c3c9fd0363b2a252fd6ea46cfea7",
+        "bytes": 15359,
+        "jsonPointer": "/rows/1"
+      }
+    },
+    "originalSourcesUntouched": [
+      "curricula/DE/Gymnasium/input/BB/upper-secondary/source-extraction/DE_BB_CHEMIE_SEKII_RLP_GOST_2022.source-extraction.json",
+      "curricula/DE/Gymnasium/input/BE/upper-secondary/source-extraction/DE_BE_CHEMIE_SEKII_RLP_GOST_2022.source-extraction.json",
+      "curricula/DE/Gymnasium/input/HB/upper-secondary/source-extraction/DE_HB_CHEMIE_SEKII_GYO_2022.source-extraction.json",
+      "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_CHEMIE_SEKII_KC2024_CURRENT2026.source-extraction.json",
+      "curricula/DE/Gymnasium/input/HH/upper-secondary/source-extraction/DE_HH_CHEMIE_SEKII_BILDUNGSPLAN_2022.source-extraction.json",
+      "curricula/DE/Gymnasium/input/MV/upper-secondary/source-extraction/DE_MV_CHEMIE_SEKII_RAHMENPLAN_ERPROBUNGSFASSUNG_2022.source-extraction.json",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-joint-source-integration-technical-20261018-v1/candidate/sources/20.RP.selected-unit23-quality-GK-LK.source-extraction.json",
+      "curricula/DE/Gymnasium/input/ST/upper-secondary/source-extraction/DE_ST_CHEMIE_SEKII_FACHLEHRPLAN_GYMNASIUM_2022.source-extraction.json",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-joint-source-integration-technical-20261018-v1/candidate/sources/21.TH.current235.selected-conditions-LK.source-extraction.json",
+      "curricula/DE/Gymnasium/input/SL/upper-secondary/source-extraction/DE_SL_CHEMIE_SEKII_GOS_2023_2025.source-extraction.json",
+      "curricula/DE/Gymnasium/input/SN/upper-secondary/source-extraction/DE_SN_CHEMIE_SEKII_LEHRPLAN_GYMNASIUM_2025.source-extraction.json"
+    ],
+    "SEM_P_A_M_V_ownerWrites": 0,
+    "receiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-reviewed-normal-integration-technical-20261018-v1/b732-successor/20261018T204654735970Z.receipt.json"
+  },
+  "mappingUnions": [
+    {
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-BB/upper-secondary/bb_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "sourceGoalId": "bb-chemistry-sekii-rlp-2-2-4-standard-b3-2eb9fbca",
+      "wholeBeforeUnion": [
+        {
+          "legacyGoalId": "bb-chemistry-sekii-rlp-2-2-4-standard-b3-2eb9fbca",
+          "canonicalGoalId": "4aa3a130-b517-5ac5-87b2-147fe432cadd",
+          "matchType": "partial",
+          "reviewDecisionId": "bb-chemistry-sekii-rlp-2-2-4-standard-b3-2eb9fbca"
+        }
+      ],
+      "wholeAfterUnion": [
+        {
+          "legacyGoalId": "bb-chemistry-sekii-rlp-2-2-4-standard-b3-2eb9fbca",
+          "canonicalGoalId": "4aa3a130-b517-5ac5-87b2-147fe432cadd",
+          "matchType": "partial",
+          "reviewDecisionId": "bb-chemistry-sekii-rlp-2-2-4-standard-b3-2eb9fbca"
+        },
+        {
+          "legacyGoalId": "bb-chemistry-sekii-rlp-2-2-4-standard-b3-2eb9fbca",
+          "canonicalGoalId": "b732c780-beb8-55f3-8503-edd6b8677a3a",
+          "matchType": "partial",
+          "reviewDecisionId": "bb-chemistry-sekii-rlp-2-2-4-standard-b3-2eb9fbca"
+        }
+      ],
+      "wholeAfterDecision": {
+        "sourceGoalId": "bb-chemistry-sekii-rlp-2-2-4-standard-b3-2eb9fbca",
+        "topicCode": "2.2.4",
+        "sourceSpan": "Standard B3: beurteilen Informationen und Daten hinsichtlich ihrer Angemessenheit, Grenzen und Tragweite",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "4aa3a130-b517-5ac5-87b2-147fe432cadd",
+          "b732c780-beb8-55f3-8503-edd6b8677a3a"
+        ],
+        "rationale": "Aktuelle vollständige Aufgabenprofile prüfen Datenselektivität, Temperatur-/Matrixkonfundierung sowie unterstützte und nicht unterstützte Aussagen; damit direkter begrenzter fachlicher Datenbeurteilungsbeitrag. Dies ist nur eine partielle Quellenbeziehung; keine Ganzquellenfreigabe und keine tatsächliche Lernendenleistung. Tatsächliches unabhängiges Teilquellenurteil: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-BB-BE-six-process-source-informed-independent-b-20261018-v1/REVIEW.twenty-six-partial-source-relations.informed-independent-b.json#/decisions/11; keine ganze amtliche Operatorerfüllung.\nAUTHOR-Nachfolger: Im vollständigen Papierfall ist der Anfangsölbestand unbekannt: 30 kg gewonnenes Öl und 30 % der Saatmasse belegen keinen Rückgewinnungsgrad. Im frischen Fall werden 98 kg im engen Protokoll und der nachgewiesene 2-kg-Abgang unterschieden; die Vernichtungs- und Vollrückgewinnungsbehauptungen werden anhand der Reichweite der Daten zurückgewiesen. Nur begrenzter eigener Anwendungsbeitrag. Keine amtliche Spezialpflicht zur Saatölbilanz, kein Ganzquellenabschluss, keine vollständige Prozesskompetenz, keine tatsächliche Messung oder Durchführung; übrige bestehende Quellenbeiträge bleiben exakt erhalten.",
+        "reviewedAt": "2026-10-18T20:24:27.764136+00:00",
+        "reviewer": "Codex AUTHOR; new partial component needs separate independent review",
+        "reviewStatus": "needs_human_review",
+        "reviewAuthority": "ai_review",
+        "wholeSourceCompletionFromSingleGoalMasteryAllowed": false,
+        "authorPendingPartialContributions": [
+          {
+            "canonicalGoalId": "b732c780-beb8-55f3-8503-edd6b8677a3a",
+            "matchType": "partial",
+            "authorFindingRef": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-author-20261018-v1/AUTHOR.nine-partial-method-components.pending.json",
+              "jsonPointer": "/rows/0"
+            },
+            "status": "needs_human_review",
+            "reviewAuthority": "ai_candidate",
+            "wholeSourceCredit": false
+          }
+        ],
+        "predecessorReviewMetadataPreservedForExistingMembers": {
+          "reviewer": "Root author + informed independent source-binding reviewer B; ai_review, partial only",
+          "reviewedAt": "2026-10-18"
+        },
+        "currentUnionRef": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-reviewed-normal-integration-technical-20261018-v1/b732-successor/20261018T204654735970Z.receipt.json",
+          "jsonPointer": "/mappingUnions/0"
+        },
+        "additionalAcceptedPartialContributions": [
+          {
+            "canonicalGoalId": "b732c780-beb8-55f3-8503-edd6b8677a3a",
+            "matchType": "partial",
+            "independentAcceptedRef": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-independent-c-20261018-v1/ACCEPTED.nine-partial-source-components.independent-c.json",
+              "sha256": "f3938be1165390226096d40c7a72b6360b4304163652e46a88b82ad33d4d1558",
+              "bytes": 37110,
+              "jsonPointer": "/records/0"
+            },
+            "independentReviewSeal": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-independent-c-20261018-v1/SEAL.informed-independent-b732-components.json",
+              "sha256": "e171e32179f27ecc885fe882115aca536ce4be3b322f1f0808c7c0841db42940",
+              "bytes": 4588
+            },
+            "rationale": "Der ganze B732-P fordert über die Summenbildung hinaus eine begründete Begrenzung der Datenaussage:30kg gewonnenes Öl belegt ohne Anfangsölbestand keine Rückgewinnungsquote; im frischen offenen Protokoll erklären ausdrücklich nachgewiesene2kg Abgang die Fehlmasse, ohne Stoffvernichtung zu erfinden. Diese eigenständig begründete Prüfung der Reichweite der Daten ist ein tatsächlicher begrenzter Beitrag des ganzen Originaloperators. Sie erfüllt nicht pauschal sämtliche Bewertungs-/Kurskompetenzen.",
+            "wholeSourceCredit": false,
+            "actualLearnerExecutionClaim": false,
+            "humanReviewStatus": "needs_human_review",
+            "authorOperationHistory": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-author-20261018-v1/operations/nine-current-whole-source-union-CAS.pending.json",
+              "sha256": "66fc0d324762e03ef20f73a2782b4e843e812c9b53cd88afbf8e1ba87599996f",
+              "bytes": 90328,
+              "jsonPointer": "/operations/0"
+            }
+          }
+        ],
+        "authorPendingMetadataRole": "Historical AUTHOR snapshot; actual bounded independent acceptance is separately referenced in additionalAcceptedPartialContributions.",
+        "preAcceptanceCurrentUnionRef": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-author-20261018-v1/AUTHOR.nine-partial-method-components.pending.json",
+          "jsonPointer": "/rows/0"
+        }
+      },
+      "acceptedRef": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-independent-c-20261018-v1/ACCEPTED.nine-partial-source-components.independent-c.json",
+        "sha256": "f3938be1165390226096d40c7a72b6360b4304163652e46a88b82ad33d4d1558",
+        "bytes": 37110,
+        "jsonPointer": "/records/0"
+      },
+      "wholeSourceCompletion": false
+    },
+    {
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-BE/upper-secondary/be_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "sourceGoalId": "be-chemistry-sekii-rlp-2-2-4-standard-b3-2eb9fbca",
+      "wholeBeforeUnion": [
+        {
+          "legacyGoalId": "be-chemistry-sekii-rlp-2-2-4-standard-b3-2eb9fbca",
+          "canonicalGoalId": "4aa3a130-b517-5ac5-87b2-147fe432cadd",
+          "matchType": "partial",
+          "reviewDecisionId": "be-chemistry-sekii-rlp-2-2-4-standard-b3-2eb9fbca"
+        }
+      ],
+      "wholeAfterUnion": [
+        {
+          "legacyGoalId": "be-chemistry-sekii-rlp-2-2-4-standard-b3-2eb9fbca",
+          "canonicalGoalId": "4aa3a130-b517-5ac5-87b2-147fe432cadd",
+          "matchType": "partial",
+          "reviewDecisionId": "be-chemistry-sekii-rlp-2-2-4-standard-b3-2eb9fbca"
+        },
+        {
+          "legacyGoalId": "be-chemistry-sekii-rlp-2-2-4-standard-b3-2eb9fbca",
+          "canonicalGoalId": "b732c780-beb8-55f3-8503-edd6b8677a3a",
+          "matchType": "partial",
+          "reviewDecisionId": "be-chemistry-sekii-rlp-2-2-4-standard-b3-2eb9fbca"
+        }
+      ],
+      "wholeAfterDecision": {
+        "sourceGoalId": "be-chemistry-sekii-rlp-2-2-4-standard-b3-2eb9fbca",
+        "topicCode": "2.2.4",
+        "sourceSpan": "Standard B3: beurteilen Informationen und Daten hinsichtlich ihrer Angemessenheit, Grenzen und Tragweite",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "4aa3a130-b517-5ac5-87b2-147fe432cadd",
+          "b732c780-beb8-55f3-8503-edd6b8677a3a"
+        ],
+        "rationale": "Aktuelle vollständige Aufgabenprofile prüfen Datenselektivität, Temperatur-/Matrixkonfundierung sowie unterstützte und nicht unterstützte Aussagen; damit direkter begrenzter fachlicher Datenbeurteilungsbeitrag. Dies ist nur eine partielle Quellenbeziehung; keine Ganzquellenfreigabe und keine tatsächliche Lernendenleistung. Tatsächliches unabhängiges Teilquellenurteil: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-BB-BE-six-process-source-informed-independent-b-20261018-v1/REVIEW.twenty-six-partial-source-relations.informed-independent-b.json#/decisions/24; keine ganze amtliche Operatorerfüllung.\nAUTHOR-Nachfolger: Im vollständigen Papierfall ist der Anfangsölbestand unbekannt: 30 kg gewonnenes Öl und 30 % der Saatmasse belegen keinen Rückgewinnungsgrad. Im frischen Fall werden 98 kg im engen Protokoll und der nachgewiesene 2-kg-Abgang unterschieden; die Vernichtungs- und Vollrückgewinnungsbehauptungen werden anhand der Reichweite der Daten zurückgewiesen. Nur begrenzter eigener Anwendungsbeitrag. Keine amtliche Spezialpflicht zur Saatölbilanz, kein Ganzquellenabschluss, keine vollständige Prozesskompetenz, keine tatsächliche Messung oder Durchführung; übrige bestehende Quellenbeiträge bleiben exakt erhalten.",
+        "reviewedAt": "2026-10-18T20:24:27.764136+00:00",
+        "reviewer": "Codex AUTHOR; new partial component needs separate independent review",
+        "reviewStatus": "needs_human_review",
+        "reviewAuthority": "ai_review",
+        "wholeSourceCompletionFromSingleGoalMasteryAllowed": false,
+        "authorPendingPartialContributions": [
+          {
+            "canonicalGoalId": "b732c780-beb8-55f3-8503-edd6b8677a3a",
+            "matchType": "partial",
+            "authorFindingRef": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-author-20261018-v1/AUTHOR.nine-partial-method-components.pending.json",
+              "jsonPointer": "/rows/1"
+            },
+            "status": "needs_human_review",
+            "reviewAuthority": "ai_candidate",
+            "wholeSourceCredit": false
+          }
+        ],
+        "predecessorReviewMetadataPreservedForExistingMembers": {
+          "reviewer": "Root author + informed independent source-binding reviewer B; ai_review, partial only",
+          "reviewedAt": "2026-10-18"
+        },
+        "currentUnionRef": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-reviewed-normal-integration-technical-20261018-v1/b732-successor/20261018T204654735970Z.receipt.json",
+          "jsonPointer": "/mappingUnions/1"
+        },
+        "additionalAcceptedPartialContributions": [
+          {
+            "canonicalGoalId": "b732c780-beb8-55f3-8503-edd6b8677a3a",
+            "matchType": "partial",
+            "independentAcceptedRef": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-independent-c-20261018-v1/ACCEPTED.nine-partial-source-components.independent-c.json",
+              "sha256": "f3938be1165390226096d40c7a72b6360b4304163652e46a88b82ad33d4d1558",
+              "bytes": 37110,
+              "jsonPointer": "/records/1"
+            },
+            "independentReviewSeal": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-independent-c-20261018-v1/SEAL.informed-independent-b732-components.json",
+              "sha256": "e171e32179f27ecc885fe882115aca536ce4be3b322f1f0808c7c0841db42940",
+              "bytes": 4588
+            },
+            "rationale": "Der ganze B732-P fordert über die Summenbildung hinaus eine begründete Begrenzung der Datenaussage:30kg gewonnenes Öl belegt ohne Anfangsölbestand keine Rückgewinnungsquote; im frischen offenen Protokoll erklären ausdrücklich nachgewiesene2kg Abgang die Fehlmasse, ohne Stoffvernichtung zu erfinden. Diese eigenständig begründete Prüfung der Reichweite der Daten ist ein tatsächlicher begrenzter Beitrag des ganzen Originaloperators. Sie erfüllt nicht pauschal sämtliche Bewertungs-/Kurskompetenzen.",
+            "wholeSourceCredit": false,
+            "actualLearnerExecutionClaim": false,
+            "humanReviewStatus": "needs_human_review",
+            "authorOperationHistory": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-author-20261018-v1/operations/nine-current-whole-source-union-CAS.pending.json",
+              "sha256": "66fc0d324762e03ef20f73a2782b4e843e812c9b53cd88afbf8e1ba87599996f",
+              "bytes": 90328,
+              "jsonPointer": "/operations/1"
+            }
+          }
+        ],
+        "authorPendingMetadataRole": "Historical AUTHOR snapshot; actual bounded independent acceptance is separately referenced in additionalAcceptedPartialContributions.",
+        "preAcceptanceCurrentUnionRef": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-author-20261018-v1/AUTHOR.nine-partial-method-components.pending.json",
+          "jsonPointer": "/rows/1"
+        }
+      },
+      "acceptedRef": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-independent-c-20261018-v1/ACCEPTED.nine-partial-source-components.independent-c.json",
+        "sha256": "f3938be1165390226096d40c7a72b6360b4304163652e46a88b82ad33d4d1558",
+        "bytes": 37110,
+        "jsonPointer": "/records/1"
+      },
+      "wholeSourceCompletion": false
+    },
+    {
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-HB/upper-secondary/hb_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "sourceGoalId": "hb-chemistry-sekii-gyo2022-clause-p08-std-s-standard-s11-s17-gk_lk-07",
+      "wholeBeforeUnion": [
+        {
+          "legacyGoalId": "hb-chemistry-sekii-gyo2022-clause-p08-std-s-standard-s11-s17-gk_lk-07",
+          "canonicalGoalId": "02634fdd-c8ba-591a-b240-77129b1bebb8",
+          "matchType": "partial",
+          "reviewDecisionId": "hb-chemistry-sekii-gyo2022-clause-p08-std-s-standard-s11-s17-gk_lk-07"
+        },
+        {
+          "legacyGoalId": "hb-chemistry-sekii-gyo2022-clause-p08-std-s-standard-s11-s17-gk_lk-07",
+          "canonicalGoalId": "20f92ba0-f7f4-5407-bb96-07e30da9002f",
+          "matchType": "partial",
+          "reviewDecisionId": "hb-chemistry-sekii-gyo2022-clause-p08-std-s-standard-s11-s17-gk_lk-07"
+        },
+        {
+          "legacyGoalId": "hb-chemistry-sekii-gyo2022-clause-p08-std-s-standard-s11-s17-gk_lk-07",
+          "canonicalGoalId": "56bc6377-1291-58bc-b433-5b9f673888e9",
+          "matchType": "partial",
+          "reviewDecisionId": "hb-chemistry-sekii-gyo2022-clause-p08-std-s-standard-s11-s17-gk_lk-07"
+        },
+        {
+          "legacyGoalId": "hb-chemistry-sekii-gyo2022-clause-p08-std-s-standard-s11-s17-gk_lk-07",
+          "canonicalGoalId": "9e3fae29-84d5-5600-bfb3-82d49ea3f1b5",
+          "matchType": "partial",
+          "reviewDecisionId": "hb-chemistry-sekii-gyo2022-clause-p08-std-s-standard-s11-s17-gk_lk-07"
+        }
+      ],
+      "wholeAfterUnion": [
+        {
+          "legacyGoalId": "hb-chemistry-sekii-gyo2022-clause-p08-std-s-standard-s11-s17-gk_lk-07",
+          "canonicalGoalId": "02634fdd-c8ba-591a-b240-77129b1bebb8",
+          "matchType": "partial",
+          "reviewDecisionId": "hb-chemistry-sekii-gyo2022-clause-p08-std-s-standard-s11-s17-gk_lk-07"
+        },
+        {
+          "legacyGoalId": "hb-chemistry-sekii-gyo2022-clause-p08-std-s-standard-s11-s17-gk_lk-07",
+          "canonicalGoalId": "20f92ba0-f7f4-5407-bb96-07e30da9002f",
+          "matchType": "partial",
+          "reviewDecisionId": "hb-chemistry-sekii-gyo2022-clause-p08-std-s-standard-s11-s17-gk_lk-07"
+        },
+        {
+          "legacyGoalId": "hb-chemistry-sekii-gyo2022-clause-p08-std-s-standard-s11-s17-gk_lk-07",
+          "canonicalGoalId": "56bc6377-1291-58bc-b433-5b9f673888e9",
+          "matchType": "partial",
+          "reviewDecisionId": "hb-chemistry-sekii-gyo2022-clause-p08-std-s-standard-s11-s17-gk_lk-07"
+        },
+        {
+          "legacyGoalId": "hb-chemistry-sekii-gyo2022-clause-p08-std-s-standard-s11-s17-gk_lk-07",
+          "canonicalGoalId": "9e3fae29-84d5-5600-bfb3-82d49ea3f1b5",
+          "matchType": "partial",
+          "reviewDecisionId": "hb-chemistry-sekii-gyo2022-clause-p08-std-s-standard-s11-s17-gk_lk-07"
+        },
+        {
+          "legacyGoalId": "hb-chemistry-sekii-gyo2022-clause-p08-std-s-standard-s11-s17-gk_lk-07",
+          "canonicalGoalId": "b732c780-beb8-55f3-8503-edd6b8677a3a",
+          "matchType": "partial",
+          "reviewDecisionId": "hb-chemistry-sekii-gyo2022-clause-p08-std-s-standard-s11-s17-gk_lk-07"
+        }
+      ],
+      "wholeAfterDecision": {
+        "sourceGoalId": "hb-chemistry-sekii-gyo2022-clause-p08-std-s-standard-s11-s17-gk_lk-07",
+        "sourceClauseIds": [
+          "HB2022-p08-STD-S-standard-S11-S17-GK_LK-07"
+        ],
+        "topicCode": "STD-S",
+        "sourceSpan": "physical PDF8, printed 8; standard-S11-S17; GK_LK block item 7",
+        "sourceCourseLevel": "GK_LK",
+        "sourceScopeExact": {
+          "officialTopicStatus": "cross_topic_standard",
+          "selectionRule": null,
+          "selectedByLearner": null,
+          "universalOfficialRequirement": true
+        },
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "02634fdd-c8ba-591a-b240-77129b1bebb8",
+          "20f92ba0-f7f4-5407-bb96-07e30da9002f",
+          "56bc6377-1291-58bc-b433-5b9f673888e9",
+          "9e3fae29-84d5-5600-bfb3-82d49ea3f1b5",
+          "b732c780-beb8-55f3-8503-edd6b8677a3a"
+        ],
+        "matchType": "partial",
+        "rationale": "Scoped partial carrier union retained/partitioned from the two actual independent author-successor acceptances. Technical serialization adds no scientific vote, official universal duty, actual learner performance or single-goal whole-source completion.\nAUTHOR-Nachfolger: Die Lernenden prüfen im vollständig vorgegebenen physikalischen Trennmodell 30+70=100 kg und im frischen offenen Protokoll 30+68+2=100 kg. Sie bestimmen den Bezugsbereich jeder Summe und unterscheiden 30 kg gewonnene Ölmasse von einem ohne Anfangsölbestand nicht berechenbaren Rückgewinnungsanteil. Das ist eine begrenzte mathematische Anwendung auf eine chemische Stofftrennung, keine Reaktionsstöchiometrie. Nur begrenzter eigener Anwendungsbeitrag. Keine amtliche Spezialpflicht zur Saatölbilanz, kein Ganzquellenabschluss, keine vollständige Prozesskompetenz, keine tatsächliche Messung oder Durchführung; übrige bestehende Quellenbeiträge bleiben exakt erhalten.",
+        "reviewedAt": "2026-10-18T20:24:27.764136+00:00",
+        "reviewer": "Codex AUTHOR; new partial component needs separate independent review",
+        "scientificEvidence": [
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-five-P-scope-operator-remediation-independent-a-20261018-v1/REVIEW.P5-informed-author-proposal.independent-a.json",
+            "sha256": "48a5dcab5872620e6f8a3f69d557752c8a5ac29bad605f848929f81aa0ca2b33",
+            "bytes": 49010,
+            "jsonPointer": "/partialSourceUnionReviews/0",
+            "wholeObjectSHA256": "aa3e03304fc4228cb7572a3f6460427505e9d5d26a52e7a21e29264a6741dc38",
+            "role": "actual_A_scope_qualified_partial_union"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-five-P-scope-operator-remediation-independent-b-20261018-v1/REVIEW.informed-P5.independent-b.json",
+            "sha256": "0e48159f35198b3c324d4919f930414e10241ed11627f89860e6f99000d043eb",
+            "bytes": 55658,
+            "jsonPointer": "/sourceUnionFindings/0",
+            "wholeObjectSHA256": "abb6633e16d03426702784ef75bafb5f36635da8b0e6fdd57154028b2035e3cb",
+            "role": "actual_B_scope_qualified_partial_union"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/PAIRED.P5-six-existing-three-new-science.actual.json",
+            "sha256": "425e35c8ea0c8f98558e94ec940a4ed707eb3592aa7fbed7c9849f554c11dd5d",
+            "bytes": 2601,
+            "role": "Root_pair_selection_of_two_actual_scientific_reviews"
+          }
+        ],
+        "currentUnionRef": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-reviewed-normal-integration-technical-20261018-v1/b732-successor/20261018T204654735970Z.receipt.json",
+          "jsonPointer": "/mappingUnions/2"
+        },
+        "wholeSourceCompletionFromSingleGoalMasteryAllowed": false,
+        "predecessorScientificEvidence": [
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-HB-first70-source-binding-paired-synthesis-20261017-v1/RECEIPT.actual-paired-first70-source-bindings-65-accepted-5-held.json",
+            "jsonPointer": "/records/16"
+          }
+        ],
+        "predecessorUnionRef": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current441-HB232-final-source-mapping-integration-20261017-v1/SOURCE232.paired-current-unions.json",
+          "jsonPointer": "/rows/16"
+        },
+        "reviewStatus": "needs_human_review",
+        "reviewAuthority": "ai_review",
+        "authorPendingPartialContributions": [
+          {
+            "canonicalGoalId": "b732c780-beb8-55f3-8503-edd6b8677a3a",
+            "matchType": "partial",
+            "authorFindingRef": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-author-20261018-v1/AUTHOR.nine-partial-method-components.pending.json",
+              "jsonPointer": "/rows/2"
+            },
+            "status": "needs_human_review",
+            "reviewAuthority": "ai_candidate",
+            "wholeSourceCredit": false
+          }
+        ],
+        "predecessorReviewMetadataPreservedForExistingMembers": {
+          "reviewer": "actual paired independent informed scientific reviewers; technical installation by separate assigned assembler",
+          "reviewedAt": "2026-10-18"
+        },
+        "scientificEvidenceCoverage": {
+          "onlyExistingCanonicalGoalIds": [
+            "02634fdd-c8ba-591a-b240-77129b1bebb8",
+            "20f92ba0-f7f4-5407-bb96-07e30da9002f",
+            "56bc6377-1291-58bc-b433-5b9f673888e9",
+            "9e3fae29-84d5-5600-bfb3-82d49ea3f1b5"
+          ],
+          "doesNotReviewNewCanonicalGoalId": "b732c780-beb8-55f3-8503-edd6b8677a3a",
+          "newComponentAuthority": "AUTHOR only"
+        },
+        "predecessorCurrentUnionRef": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/core447-normal-and-single-chemistry-AP-v1/SOURCE232.actual-current447-normal-partial-bindings.json",
+          "jsonPointer": "/rows/16"
+        },
+        "additionalAcceptedPartialContributions": [
+          {
+            "canonicalGoalId": "b732c780-beb8-55f3-8503-edd6b8677a3a",
+            "matchType": "partial",
+            "independentAcceptedRef": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-independent-c-20261018-v1/ACCEPTED.nine-partial-source-components.independent-c.json",
+              "sha256": "f3938be1165390226096d40c7a72b6360b4304163652e46a88b82ad33d4d1558",
+              "bytes": 37110,
+              "jsonPointer": "/records/2"
+            },
+            "independentReviewSeal": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-independent-c-20261018-v1/SEAL.informed-independent-b732-components.json",
+              "sha256": "e171e32179f27ecc885fe882115aca536ce4be3b322f1f0808c7c0841db42940",
+              "bytes": 4588
+            },
+            "rationale": "Die vollständige Primärseite trennt den allgemeinen mathematischen Operator von benachbarter Reaktionsgleichung/Stöchiometrie beziehungsweise anderer Phasenspalte. Summieren derselben Erfassungsgrenze und Deuten der nicht bestimmten Komponentenquote wenden Mathematik auf eine stoffliche Trennung an. Kein Reaktionsumsatz, Digitalwerkzeug oder eigener Versuch wird daraus behauptet.",
+            "wholeSourceCredit": false,
+            "actualLearnerExecutionClaim": false,
+            "humanReviewStatus": "needs_human_review",
+            "authorOperationHistory": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-author-20261018-v1/operations/nine-current-whole-source-union-CAS.pending.json",
+              "sha256": "66fc0d324762e03ef20f73a2782b4e843e812c9b53cd88afbf8e1ba87599996f",
+              "bytes": 90328,
+              "jsonPointer": "/operations/2"
+            }
+          }
+        ],
+        "authorPendingMetadataRole": "Historical AUTHOR snapshot; actual bounded independent acceptance is separately referenced in additionalAcceptedPartialContributions.",
+        "preAcceptanceCurrentUnionRef": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-author-20261018-v1/AUTHOR.nine-partial-method-components.pending.json",
+          "jsonPointer": "/rows/2"
+        }
+      },
+      "acceptedRef": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-independent-c-20261018-v1/ACCEPTED.nine-partial-source-components.independent-c.json",
+        "sha256": "f3938be1165390226096d40c7a72b6360b4304163652e46a88b82ad33d4d1558",
+        "bytes": 37110,
+        "jsonPointer": "/records/2"
+      },
+      "wholeSourceCompletion": false
+    },
+    {
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.q1-atomic-split-author-proposal-20261005-v1.q4-four-bounded-reviewed-20261013-v1.review.json",
+      "sourceGoalId": "he-chemistry-sekii-kc2024-current2026-standard-b3",
+      "wholeBeforeUnion": [
+        {
+          "legacyGoalId": "he-chemistry-sekii-kc2024-current2026-standard-b3",
+          "canonicalGoalId": "4aa3a130-b517-5ac5-87b2-147fe432cadd",
+          "matchType": "partial",
+          "reviewDecisionId": "he-chemistry-sekii-kc2024-current2026-standard-b3"
+        }
+      ],
+      "wholeAfterUnion": [
+        {
+          "legacyGoalId": "he-chemistry-sekii-kc2024-current2026-standard-b3",
+          "canonicalGoalId": "4aa3a130-b517-5ac5-87b2-147fe432cadd",
+          "matchType": "partial",
+          "reviewDecisionId": "he-chemistry-sekii-kc2024-current2026-standard-b3"
+        },
+        {
+          "legacyGoalId": "he-chemistry-sekii-kc2024-current2026-standard-b3",
+          "canonicalGoalId": "b732c780-beb8-55f3-8503-edd6b8677a3a",
+          "matchType": "partial",
+          "reviewDecisionId": "he-chemistry-sekii-kc2024-current2026-standard-b3"
+        }
+      ],
+      "wholeAfterDecision": {
+        "sourceGoalId": "he-chemistry-sekii-kc2024-current2026-standard-b3",
+        "topicCode": "3.2",
+        "sourceSpan": "physical PDF27, 3.2, B3",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "4aa3a130-b517-5ac5-87b2-147fe432cadd",
+          "b732c780-beb8-55f3-8503-edd6b8677a3a"
+        ],
+        "matchType": "partial",
+        "rationale": "Only the individually referenced independently accepted partial operator contributions are integrated. Whole-source, course, research and real execution duties remain separate and are not certified by these mappings.\nAUTHOR-Nachfolger: Im vollständigen Papierfall ist der Anfangsölbestand unbekannt: 30 kg gewonnenes Öl und 30 % der Saatmasse belegen keinen Rückgewinnungsgrad. Im frischen Fall werden 98 kg im engen Protokoll und der nachgewiesene 2-kg-Abgang unterschieden; die Vernichtungs- und Vollrückgewinnungsbehauptungen werden anhand der Reichweite der Daten zurückgewiesen. Nur begrenzter eigener Anwendungsbeitrag. Keine amtliche Spezialpflicht zur Saatölbilanz, kein Ganzquellenabschluss, keine vollständige Prozesskompetenz, keine tatsächliche Messung oder Durchführung; übrige bestehende Quellenbeiträge bleiben exakt erhalten.",
+        "reviewedAt": "2026-10-18T20:24:27.764136+00:00",
+        "reviewer": "Codex AUTHOR; new partial component needs separate independent review",
+        "wholeSourceCredit": false,
+        "additionalAcceptedPartialContributions": [
+          {
+            "canonicalGoalId": "4aa3a130-b517-5ac5-87b2-147fe432cadd",
+            "matchType": "partial",
+            "independentAcceptedRef": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+              "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+              "bytes": 269340,
+              "jsonPointer": "/mappings/6"
+            },
+            "wholePrimaryOperator": "beurteilen Informationen und Daten hinsichtlich ihrer Angemessenheit, Grenzen und Tragweite",
+            "primaryPdf": {
+              "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kcgo_chemie_21.04.2026.pdf",
+              "sha256": "628c84dbaadebccf93c6854c58e00a337fd855985aaadc8b998de3dcb1243c3e",
+              "bytes": 527976
+            },
+            "physicalPrimaryPage": 27,
+            "sourceStageCourseContext": "SekII, end of Qualifikationsphase; common GK/LK standards, course depth/self-direction differ; no whole-course completion",
+            "rationale": "Die Route begründet Kreuzreaktion, Kontrollen und Temperatur-/Matrixeinfluss und grenzt erlaubte Schlüsse ein. Für NI trägt nur das Beschreiben/Deuten von Datenabweichungen; für BW die Aussagekraft der vorliegenden Darstellung; für ST/SL der konkrete Methoden-/Erkenntnisgrenzenanteil. Keine universelle Fehlerrechnung oder tatsächlich ausgeführte Messung.",
+            "boundaries": "Papierdaten sind keine eigene Messung und keine gesamte quantitative Messunsicherheitsrechnung. Nur die tatsächlich geforderte Fehler-/Verfahrens- und Schlussfolgerungskritik trägt; keine universelle Methodologie oder komplette Modellkritik.",
+            "individualBoundary": "",
+            "ownResearchEvidenceRequired": false,
+            "wholeSourceCredit": false,
+            "actualLearnerExecutionClaim": false,
+            "currentGoalSha256": "ecf0bb6b770b73105be0de6e7228bd979dda04e986874cb9a6676986c1c2475e",
+            "currentProfileBodySha256": "59cfee3a21094f52bead68471c96f814c1551e27882a34f0ea5eeb7eb0c60708"
+          },
+          {
+            "canonicalGoalId": "b732c780-beb8-55f3-8503-edd6b8677a3a",
+            "matchType": "partial",
+            "independentAcceptedRef": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-independent-c-20261018-v1/ACCEPTED.nine-partial-source-components.independent-c.json",
+              "sha256": "f3938be1165390226096d40c7a72b6360b4304163652e46a88b82ad33d4d1558",
+              "bytes": 37110,
+              "jsonPointer": "/records/3"
+            },
+            "independentReviewSeal": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-independent-c-20261018-v1/SEAL.informed-independent-b732-components.json",
+              "sha256": "e171e32179f27ecc885fe882115aca536ce4be3b322f1f0808c7c0841db42940",
+              "bytes": 4588
+            },
+            "rationale": "Der ganze B732-P fordert über die Summenbildung hinaus eine begründete Begrenzung der Datenaussage:30kg gewonnenes Öl belegt ohne Anfangsölbestand keine Rückgewinnungsquote; im frischen offenen Protokoll erklären ausdrücklich nachgewiesene2kg Abgang die Fehlmasse, ohne Stoffvernichtung zu erfinden. Diese eigenständig begründete Prüfung der Reichweite der Daten ist ein tatsächlicher begrenzter Beitrag des ganzen Originaloperators. Sie erfüllt nicht pauschal sämtliche Bewertungs-/Kurskompetenzen.",
+            "wholeSourceCredit": false,
+            "actualLearnerExecutionClaim": false,
+            "humanReviewStatus": "needs_human_review",
+            "authorOperationHistory": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-author-20261018-v1/operations/nine-current-whole-source-union-CAS.pending.json",
+              "sha256": "66fc0d324762e03ef20f73a2782b4e843e812c9b53cd88afbf8e1ba87599996f",
+              "bytes": 90328,
+              "jsonPointer": "/operations/3"
+            }
+          }
+        ],
+        "reviewStatus": "needs_human_review",
+        "reviewAuthority": "ai_review",
+        "wholeSourceCompletionFromSingleGoalMasteryAllowed": false,
+        "authorPendingPartialContributions": [
+          {
+            "canonicalGoalId": "b732c780-beb8-55f3-8503-edd6b8677a3a",
+            "matchType": "partial",
+            "authorFindingRef": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-author-20261018-v1/AUTHOR.nine-partial-method-components.pending.json",
+              "jsonPointer": "/rows/3"
+            },
+            "status": "needs_human_review",
+            "reviewAuthority": "ai_candidate",
+            "wholeSourceCredit": false
+          }
+        ],
+        "predecessorReviewMetadataPreservedForExistingMembers": {
+          "reviewer": "Independent source reviewer A; technical integration by Codex creates no scientific first decision",
+          "reviewedAt": "2026-10-18"
+        },
+        "currentUnionRef": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-reviewed-normal-integration-technical-20261018-v1/b732-successor/20261018T204654735970Z.receipt.json",
+          "jsonPointer": "/mappingUnions/3"
+        },
+        "authorPendingMetadataRole": "Historical AUTHOR snapshot; actual bounded independent acceptance is separately referenced in additionalAcceptedPartialContributions.",
+        "preAcceptanceCurrentUnionRef": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-author-20261018-v1/AUTHOR.nine-partial-method-components.pending.json",
+          "jsonPointer": "/rows/3"
+        }
+      },
+      "acceptedRef": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-independent-c-20261018-v1/ACCEPTED.nine-partial-source-components.independent-c.json",
+        "sha256": "f3938be1165390226096d40c7a72b6360b4304163652e46a88b82ad33d4d1558",
+        "bytes": 37110,
+        "jsonPointer": "/records/3"
+      },
+      "wholeSourceCompletion": false
+    },
+    {
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-HH/upper-secondary/hh_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.q4-four-bounded-reviewed-20261013-v1.review.json",
+      "sourceGoalId": "hh-chemistry-sekii-process-standard-b3",
+      "wholeBeforeUnion": [
+        {
+          "legacyGoalId": "hh-chemistry-sekii-process-standard-b3",
+          "canonicalGoalId": "4aa3a130-b517-5ac5-87b2-147fe432cadd",
+          "matchType": "partial",
+          "reviewDecisionId": "hh-chemistry-sekii-process-standard-b3"
+        }
+      ],
+      "wholeAfterUnion": [
+        {
+          "legacyGoalId": "hh-chemistry-sekii-process-standard-b3",
+          "canonicalGoalId": "4aa3a130-b517-5ac5-87b2-147fe432cadd",
+          "matchType": "partial",
+          "reviewDecisionId": "hh-chemistry-sekii-process-standard-b3"
+        },
+        {
+          "legacyGoalId": "hh-chemistry-sekii-process-standard-b3",
+          "canonicalGoalId": "b732c780-beb8-55f3-8503-edd6b8677a3a",
+          "matchType": "partial",
+          "reviewDecisionId": "hh-chemistry-sekii-process-standard-b3"
+        }
+      ],
+      "wholeAfterDecision": {
+        "sourceGoalId": "hh-chemistry-sekii-process-standard-b3",
+        "topicCode": "2.2",
+        "sourceSpan": "physical PDF21, 2.2, B3",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "4aa3a130-b517-5ac5-87b2-147fe432cadd",
+          "b732c780-beb8-55f3-8503-edd6b8677a3a"
+        ],
+        "matchType": "partial",
+        "rationale": "Only the individually referenced independently accepted partial operator contributions are integrated. Whole-source, course, research and real execution duties remain separate and are not certified by these mappings.\nAUTHOR-Nachfolger: Im vollständigen Papierfall ist der Anfangsölbestand unbekannt: 30 kg gewonnenes Öl und 30 % der Saatmasse belegen keinen Rückgewinnungsgrad. Im frischen Fall werden 98 kg im engen Protokoll und der nachgewiesene 2-kg-Abgang unterschieden; die Vernichtungs- und Vollrückgewinnungsbehauptungen werden anhand der Reichweite der Daten zurückgewiesen. Nur begrenzter eigener Anwendungsbeitrag. Keine amtliche Spezialpflicht zur Saatölbilanz, kein Ganzquellenabschluss, keine vollständige Prozesskompetenz, keine tatsächliche Messung oder Durchführung; übrige bestehende Quellenbeiträge bleiben exakt erhalten.",
+        "reviewedAt": "2026-10-18T20:24:27.764136+00:00",
+        "reviewer": "Codex AUTHOR; new partial component needs separate independent review",
+        "wholeSourceCredit": false,
+        "additionalAcceptedPartialContributions": [
+          {
+            "canonicalGoalId": "4aa3a130-b517-5ac5-87b2-147fe432cadd",
+            "matchType": "partial",
+            "independentAcceptedRef": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+              "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+              "bytes": 269340,
+              "jsonPointer": "/mappings/14"
+            },
+            "wholePrimaryOperator": "beurteilen Informationen und Daten hinsichtlich ihrer Angemessenheit, Grenzen und Tragweite",
+            "primaryPdf": {
+              "path": "curricula/DE/Gymnasium/input/HH/chemie-gyo-2022-data.pdf",
+              "sha256": "4f452d282fdef5f282a2b56f5553d117d12ef17a194d469c34c90658377ccba3",
+              "bytes": 580404
+            },
+            "physicalPrimaryPage": 21,
+            "sourceStageCourseContext": "SekII, end of Qualifikationsphase; common GK/LK standards, course depth/self-direction differ; no whole-course completion",
+            "rationale": "Die Route begründet Kreuzreaktion, Kontrollen und Temperatur-/Matrixeinfluss und grenzt erlaubte Schlüsse ein. Für NI trägt nur das Beschreiben/Deuten von Datenabweichungen; für BW die Aussagekraft der vorliegenden Darstellung; für ST/SL der konkrete Methoden-/Erkenntnisgrenzenanteil. Keine universelle Fehlerrechnung oder tatsächlich ausgeführte Messung.",
+            "boundaries": "Papierdaten sind keine eigene Messung und keine gesamte quantitative Messunsicherheitsrechnung. Nur die tatsächlich geforderte Fehler-/Verfahrens- und Schlussfolgerungskritik trägt; keine universelle Methodologie oder komplette Modellkritik.",
+            "individualBoundary": "",
+            "ownResearchEvidenceRequired": false,
+            "wholeSourceCredit": false,
+            "actualLearnerExecutionClaim": false,
+            "currentGoalSha256": "ecf0bb6b770b73105be0de6e7228bd979dda04e986874cb9a6676986c1c2475e",
+            "currentProfileBodySha256": "59cfee3a21094f52bead68471c96f814c1551e27882a34f0ea5eeb7eb0c60708"
+          },
+          {
+            "canonicalGoalId": "b732c780-beb8-55f3-8503-edd6b8677a3a",
+            "matchType": "partial",
+            "independentAcceptedRef": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-independent-c-20261018-v1/ACCEPTED.nine-partial-source-components.independent-c.json",
+              "sha256": "f3938be1165390226096d40c7a72b6360b4304163652e46a88b82ad33d4d1558",
+              "bytes": 37110,
+              "jsonPointer": "/records/4"
+            },
+            "independentReviewSeal": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-independent-c-20261018-v1/SEAL.informed-independent-b732-components.json",
+              "sha256": "e171e32179f27ecc885fe882115aca536ce4be3b322f1f0808c7c0841db42940",
+              "bytes": 4588
+            },
+            "rationale": "Der ganze B732-P fordert über die Summenbildung hinaus eine begründete Begrenzung der Datenaussage:30kg gewonnenes Öl belegt ohne Anfangsölbestand keine Rückgewinnungsquote; im frischen offenen Protokoll erklären ausdrücklich nachgewiesene2kg Abgang die Fehlmasse, ohne Stoffvernichtung zu erfinden. Diese eigenständig begründete Prüfung der Reichweite der Daten ist ein tatsächlicher begrenzter Beitrag des ganzen Originaloperators. Sie erfüllt nicht pauschal sämtliche Bewertungs-/Kurskompetenzen.",
+            "wholeSourceCredit": false,
+            "actualLearnerExecutionClaim": false,
+            "humanReviewStatus": "needs_human_review",
+            "authorOperationHistory": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-author-20261018-v1/operations/nine-current-whole-source-union-CAS.pending.json",
+              "sha256": "66fc0d324762e03ef20f73a2782b4e843e812c9b53cd88afbf8e1ba87599996f",
+              "bytes": 90328,
+              "jsonPointer": "/operations/4"
+            }
+          }
+        ],
+        "reviewStatus": "needs_human_review",
+        "reviewAuthority": "ai_review",
+        "wholeSourceCompletionFromSingleGoalMasteryAllowed": false,
+        "authorPendingPartialContributions": [
+          {
+            "canonicalGoalId": "b732c780-beb8-55f3-8503-edd6b8677a3a",
+            "matchType": "partial",
+            "authorFindingRef": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-author-20261018-v1/AUTHOR.nine-partial-method-components.pending.json",
+              "jsonPointer": "/rows/4"
+            },
+            "status": "needs_human_review",
+            "reviewAuthority": "ai_candidate",
+            "wholeSourceCredit": false
+          }
+        ],
+        "predecessorReviewMetadataPreservedForExistingMembers": {
+          "reviewer": "Independent source reviewer A; technical integration by Codex creates no scientific first decision",
+          "reviewedAt": "2026-10-18"
+        },
+        "currentUnionRef": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-reviewed-normal-integration-technical-20261018-v1/b732-successor/20261018T204654735970Z.receipt.json",
+          "jsonPointer": "/mappingUnions/4"
+        },
+        "authorPendingMetadataRole": "Historical AUTHOR snapshot; actual bounded independent acceptance is separately referenced in additionalAcceptedPartialContributions.",
+        "preAcceptanceCurrentUnionRef": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-author-20261018-v1/AUTHOR.nine-partial-method-components.pending.json",
+          "jsonPointer": "/rows/4"
+        }
+      },
+      "acceptedRef": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-independent-c-20261018-v1/ACCEPTED.nine-partial-source-components.independent-c.json",
+        "sha256": "f3938be1165390226096d40c7a72b6360b4304163652e46a88b82ad33d4d1558",
+        "bytes": 37110,
+        "jsonPointer": "/records/4"
+      },
+      "wholeSourceCompletion": false
+    },
+    {
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-MV/upper-secondary/mv_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "sourceGoalId": "mv-chemistry-sekii-process-standard-b-beurteilen-bullet3",
+      "wholeBeforeUnion": [
+        {
+          "legacyGoalId": "mv-chemistry-sekii-process-standard-b-beurteilen-bullet3",
+          "canonicalGoalId": "4aa3a130-b517-5ac5-87b2-147fe432cadd",
+          "matchType": "partial",
+          "reviewDecisionId": "mv-chemistry-sekii-process-standard-b-beurteilen-bullet3"
+        }
+      ],
+      "wholeAfterUnion": [
+        {
+          "legacyGoalId": "mv-chemistry-sekii-process-standard-b-beurteilen-bullet3",
+          "canonicalGoalId": "4aa3a130-b517-5ac5-87b2-147fe432cadd",
+          "matchType": "partial",
+          "reviewDecisionId": "mv-chemistry-sekii-process-standard-b-beurteilen-bullet3"
+        },
+        {
+          "legacyGoalId": "mv-chemistry-sekii-process-standard-b-beurteilen-bullet3",
+          "canonicalGoalId": "b732c780-beb8-55f3-8503-edd6b8677a3a",
+          "matchType": "partial",
+          "reviewDecisionId": "mv-chemistry-sekii-process-standard-b-beurteilen-bullet3"
+        }
+      ],
+      "wholeAfterDecision": {
+        "sourceGoalId": "mv-chemistry-sekii-process-standard-b-beurteilen-bullet3",
+        "topicCode": "3.1 Abschlussbezogene Standards",
+        "sourceSpan": "physical PDF16, 3.1 Abschlussbezogene Standards, B-beurteilen-bullet3",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "4aa3a130-b517-5ac5-87b2-147fe432cadd",
+          "b732c780-beb8-55f3-8503-edd6b8677a3a"
+        ],
+        "matchType": "partial",
+        "rationale": "Only the individually referenced independently accepted partial operator contributions are integrated. Whole-source, course, research and real execution duties remain separate and are not certified by these mappings.\nAUTHOR-Nachfolger: Im vollständigen Papierfall ist der Anfangsölbestand unbekannt: 30 kg gewonnenes Öl und 30 % der Saatmasse belegen keinen Rückgewinnungsgrad. Im frischen Fall werden 98 kg im engen Protokoll und der nachgewiesene 2-kg-Abgang unterschieden; die Vernichtungs- und Vollrückgewinnungsbehauptungen werden anhand der Reichweite der Daten zurückgewiesen. Nur begrenzter eigener Anwendungsbeitrag. Keine amtliche Spezialpflicht zur Saatölbilanz, kein Ganzquellenabschluss, keine vollständige Prozesskompetenz, keine tatsächliche Messung oder Durchführung; übrige bestehende Quellenbeiträge bleiben exakt erhalten.",
+        "reviewedAt": "2026-10-18T20:24:27.764136+00:00",
+        "reviewer": "Codex AUTHOR; new partial component needs separate independent review",
+        "wholeSourceCredit": false,
+        "additionalAcceptedPartialContributions": [
+          {
+            "canonicalGoalId": "4aa3a130-b517-5ac5-87b2-147fe432cadd",
+            "matchType": "partial",
+            "independentAcceptedRef": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+              "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+              "bytes": 269340,
+              "jsonPointer": "/mappings/39"
+            },
+            "wholePrimaryOperator": "Informationen und Daten hinsichtlich ihrer Angemessenheit, Grenzen und Tragweite beurteilen",
+            "primaryPdf": {
+              "path": "curricula/DE/Gymnasium/input/MV/Chemie_Gymnasium_11_12_Erprobungsfassung.pdf",
+              "sha256": "dcc123a0291510ae149c98a2129fef196fa76686174859cca24b96e03a1de769",
+              "bytes": 1770524
+            },
+            "physicalPrimaryPage": 16,
+            "sourceStageCourseContext": "SekII, end of Qualifikationsphase; common GK/LK standards, course depth/self-direction differ; no whole-course completion",
+            "rationale": "Die Route begründet Kreuzreaktion, Kontrollen und Temperatur-/Matrixeinfluss und grenzt erlaubte Schlüsse ein. Für NI trägt nur das Beschreiben/Deuten von Datenabweichungen; für BW die Aussagekraft der vorliegenden Darstellung; für ST/SL der konkrete Methoden-/Erkenntnisgrenzenanteil. Keine universelle Fehlerrechnung oder tatsächlich ausgeführte Messung.",
+            "boundaries": "Papierdaten sind keine eigene Messung und keine gesamte quantitative Messunsicherheitsrechnung. Nur die tatsächlich geforderte Fehler-/Verfahrens- und Schlussfolgerungskritik trägt; keine universelle Methodologie oder komplette Modellkritik.",
+            "individualBoundary": "",
+            "ownResearchEvidenceRequired": false,
+            "wholeSourceCredit": false,
+            "actualLearnerExecutionClaim": false,
+            "currentGoalSha256": "ecf0bb6b770b73105be0de6e7228bd979dda04e986874cb9a6676986c1c2475e",
+            "currentProfileBodySha256": "59cfee3a21094f52bead68471c96f814c1551e27882a34f0ea5eeb7eb0c60708"
+          },
+          {
+            "canonicalGoalId": "b732c780-beb8-55f3-8503-edd6b8677a3a",
+            "matchType": "partial",
+            "independentAcceptedRef": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-independent-c-20261018-v1/ACCEPTED.nine-partial-source-components.independent-c.json",
+              "sha256": "f3938be1165390226096d40c7a72b6360b4304163652e46a88b82ad33d4d1558",
+              "bytes": 37110,
+              "jsonPointer": "/records/5"
+            },
+            "independentReviewSeal": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-independent-c-20261018-v1/SEAL.informed-independent-b732-components.json",
+              "sha256": "e171e32179f27ecc885fe882115aca536ce4be3b322f1f0808c7c0841db42940",
+              "bytes": 4588
+            },
+            "rationale": "Der ganze B732-P fordert über die Summenbildung hinaus eine begründete Begrenzung der Datenaussage:30kg gewonnenes Öl belegt ohne Anfangsölbestand keine Rückgewinnungsquote; im frischen offenen Protokoll erklären ausdrücklich nachgewiesene2kg Abgang die Fehlmasse, ohne Stoffvernichtung zu erfinden. Diese eigenständig begründete Prüfung der Reichweite der Daten ist ein tatsächlicher begrenzter Beitrag des ganzen Originaloperators. Sie erfüllt nicht pauschal sämtliche Bewertungs-/Kurskompetenzen.",
+            "wholeSourceCredit": false,
+            "actualLearnerExecutionClaim": false,
+            "humanReviewStatus": "needs_human_review",
+            "authorOperationHistory": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-author-20261018-v1/operations/nine-current-whole-source-union-CAS.pending.json",
+              "sha256": "66fc0d324762e03ef20f73a2782b4e843e812c9b53cd88afbf8e1ba87599996f",
+              "bytes": 90328,
+              "jsonPointer": "/operations/5"
+            }
+          }
+        ],
+        "reviewStatus": "needs_human_review",
+        "reviewAuthority": "ai_review",
+        "wholeSourceCompletionFromSingleGoalMasteryAllowed": false,
+        "authorPendingPartialContributions": [
+          {
+            "canonicalGoalId": "b732c780-beb8-55f3-8503-edd6b8677a3a",
+            "matchType": "partial",
+            "authorFindingRef": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-author-20261018-v1/AUTHOR.nine-partial-method-components.pending.json",
+              "jsonPointer": "/rows/5"
+            },
+            "status": "needs_human_review",
+            "reviewAuthority": "ai_candidate",
+            "wholeSourceCredit": false
+          }
+        ],
+        "predecessorReviewMetadataPreservedForExistingMembers": {
+          "reviewer": "Independent source reviewer A; technical integration by Codex creates no scientific first decision",
+          "reviewedAt": "2026-10-18"
+        },
+        "currentUnionRef": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-reviewed-normal-integration-technical-20261018-v1/b732-successor/20261018T204654735970Z.receipt.json",
+          "jsonPointer": "/mappingUnions/5"
+        },
+        "authorPendingMetadataRole": "Historical AUTHOR snapshot; actual bounded independent acceptance is separately referenced in additionalAcceptedPartialContributions.",
+        "preAcceptanceCurrentUnionRef": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-author-20261018-v1/AUTHOR.nine-partial-method-components.pending.json",
+          "jsonPointer": "/rows/5"
+        }
+      },
+      "acceptedRef": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-independent-c-20261018-v1/ACCEPTED.nine-partial-source-components.independent-c.json",
+        "sha256": "f3938be1165390226096d40c7a72b6360b4304163652e46a88b82ad33d4d1558",
+        "bytes": 37110,
+        "jsonPointer": "/records/5"
+      },
+      "wholeSourceCompletion": false
+    },
+    {
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "sourceGoalId": "rp-chemistry-sekii-process-standard-b3",
+      "wholeBeforeUnion": [
+        {
+          "legacyGoalId": "rp-chemistry-sekii-process-standard-b3",
+          "canonicalGoalId": "4aa3a130-b517-5ac5-87b2-147fe432cadd",
+          "matchType": "partial",
+          "reviewDecisionId": "rp-chemistry-sekii-process-standard-b3"
+        }
+      ],
+      "wholeAfterUnion": [
+        {
+          "legacyGoalId": "rp-chemistry-sekii-process-standard-b3",
+          "canonicalGoalId": "4aa3a130-b517-5ac5-87b2-147fe432cadd",
+          "matchType": "partial",
+          "reviewDecisionId": "rp-chemistry-sekii-process-standard-b3"
+        },
+        {
+          "legacyGoalId": "rp-chemistry-sekii-process-standard-b3",
+          "canonicalGoalId": "b732c780-beb8-55f3-8503-edd6b8677a3a",
+          "matchType": "partial",
+          "reviewDecisionId": "rp-chemistry-sekii-process-standard-b3"
+        }
+      ],
+      "wholeAfterDecision": {
+        "sourceGoalId": "rp-chemistry-sekii-process-standard-b3",
+        "topicCode": "2.4",
+        "sourceSpan": "physical PDF15, 2.4, B3",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "4aa3a130-b517-5ac5-87b2-147fe432cadd",
+          "b732c780-beb8-55f3-8503-edd6b8677a3a"
+        ],
+        "matchType": "partial",
+        "rationale": "Only the individually referenced independently accepted partial operator contributions are integrated. Whole-source, course, research and real execution duties remain separate and are not certified by these mappings.\nAUTHOR-Nachfolger: Im vollständigen Papierfall ist der Anfangsölbestand unbekannt: 30 kg gewonnenes Öl und 30 % der Saatmasse belegen keinen Rückgewinnungsgrad. Im frischen Fall werden 98 kg im engen Protokoll und der nachgewiesene 2-kg-Abgang unterschieden; die Vernichtungs- und Vollrückgewinnungsbehauptungen werden anhand der Reichweite der Daten zurückgewiesen. Nur begrenzter eigener Anwendungsbeitrag. Keine amtliche Spezialpflicht zur Saatölbilanz, kein Ganzquellenabschluss, keine vollständige Prozesskompetenz, keine tatsächliche Messung oder Durchführung; übrige bestehende Quellenbeiträge bleiben exakt erhalten.",
+        "reviewedAt": "2026-10-18T20:24:27.764136+00:00",
+        "reviewer": "Codex AUTHOR; new partial component needs separate independent review",
+        "wholeSourceCredit": false,
+        "additionalAcceptedPartialContributions": [
+          {
+            "canonicalGoalId": "4aa3a130-b517-5ac5-87b2-147fe432cadd",
+            "matchType": "partial",
+            "independentAcceptedRef": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+              "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+              "bytes": 269340,
+              "jsonPointer": "/mappings/22"
+            },
+            "wholePrimaryOperator": "beurteilen Informationen und Daten hinsichtlich ihrer Angemessenheit, Grenzen und Tragweite",
+            "primaryPdf": {
+              "path": "curricula/DE/Gymnasium/input/RP/Chemie_Sekundarstufe_II_MSS_2022.pdf",
+              "sha256": "8d701aad7c4de870d6e20075ec49c04601d5cb51a90f51443a15be8efd62c4e3",
+              "bytes": 1915019
+            },
+            "physicalPrimaryPage": 15,
+            "sourceStageCourseContext": "SekII, end of Qualifikationsphase; common GK/LK standards, course depth/self-direction differ; no whole-course completion",
+            "rationale": "Die Route begründet Kreuzreaktion, Kontrollen und Temperatur-/Matrixeinfluss und grenzt erlaubte Schlüsse ein. Für NI trägt nur das Beschreiben/Deuten von Datenabweichungen; für BW die Aussagekraft der vorliegenden Darstellung; für ST/SL der konkrete Methoden-/Erkenntnisgrenzenanteil. Keine universelle Fehlerrechnung oder tatsächlich ausgeführte Messung.",
+            "boundaries": "Papierdaten sind keine eigene Messung und keine gesamte quantitative Messunsicherheitsrechnung. Nur die tatsächlich geforderte Fehler-/Verfahrens- und Schlussfolgerungskritik trägt; keine universelle Methodologie oder komplette Modellkritik.",
+            "individualBoundary": "",
+            "ownResearchEvidenceRequired": false,
+            "wholeSourceCredit": false,
+            "actualLearnerExecutionClaim": false,
+            "currentGoalSha256": "ecf0bb6b770b73105be0de6e7228bd979dda04e986874cb9a6676986c1c2475e",
+            "currentProfileBodySha256": "59cfee3a21094f52bead68471c96f814c1551e27882a34f0ea5eeb7eb0c60708"
+          },
+          {
+            "canonicalGoalId": "b732c780-beb8-55f3-8503-edd6b8677a3a",
+            "matchType": "partial",
+            "independentAcceptedRef": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-independent-c-20261018-v1/ACCEPTED.nine-partial-source-components.independent-c.json",
+              "sha256": "f3938be1165390226096d40c7a72b6360b4304163652e46a88b82ad33d4d1558",
+              "bytes": 37110,
+              "jsonPointer": "/records/6"
+            },
+            "independentReviewSeal": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-independent-c-20261018-v1/SEAL.informed-independent-b732-components.json",
+              "sha256": "e171e32179f27ecc885fe882115aca536ce4be3b322f1f0808c7c0841db42940",
+              "bytes": 4588
+            },
+            "rationale": "Der ganze B732-P fordert über die Summenbildung hinaus eine begründete Begrenzung der Datenaussage:30kg gewonnenes Öl belegt ohne Anfangsölbestand keine Rückgewinnungsquote; im frischen offenen Protokoll erklären ausdrücklich nachgewiesene2kg Abgang die Fehlmasse, ohne Stoffvernichtung zu erfinden. Diese eigenständig begründete Prüfung der Reichweite der Daten ist ein tatsächlicher begrenzter Beitrag des ganzen Originaloperators. Sie erfüllt nicht pauschal sämtliche Bewertungs-/Kurskompetenzen.",
+            "wholeSourceCredit": false,
+            "actualLearnerExecutionClaim": false,
+            "humanReviewStatus": "needs_human_review",
+            "authorOperationHistory": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-author-20261018-v1/operations/nine-current-whole-source-union-CAS.pending.json",
+              "sha256": "66fc0d324762e03ef20f73a2782b4e843e812c9b53cd88afbf8e1ba87599996f",
+              "bytes": 90328,
+              "jsonPointer": "/operations/6"
+            }
+          }
+        ],
+        "reviewStatus": "needs_human_review",
+        "reviewAuthority": "ai_review",
+        "wholeSourceCompletionFromSingleGoalMasteryAllowed": false,
+        "authorPendingPartialContributions": [
+          {
+            "canonicalGoalId": "b732c780-beb8-55f3-8503-edd6b8677a3a",
+            "matchType": "partial",
+            "authorFindingRef": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-author-20261018-v1/AUTHOR.nine-partial-method-components.pending.json",
+              "jsonPointer": "/rows/6"
+            },
+            "status": "needs_human_review",
+            "reviewAuthority": "ai_candidate",
+            "wholeSourceCredit": false
+          }
+        ],
+        "predecessorReviewMetadataPreservedForExistingMembers": {
+          "reviewer": "Independent source reviewer A; technical integration by Codex creates no scientific first decision",
+          "reviewedAt": "2026-10-18"
+        },
+        "currentUnionRef": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-reviewed-normal-integration-technical-20261018-v1/b732-successor/20261018T204654735970Z.receipt.json",
+          "jsonPointer": "/mappingUnions/6"
+        },
+        "authorPendingMetadataRole": "Historical AUTHOR snapshot; actual bounded independent acceptance is separately referenced in additionalAcceptedPartialContributions.",
+        "preAcceptanceCurrentUnionRef": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-author-20261018-v1/AUTHOR.nine-partial-method-components.pending.json",
+          "jsonPointer": "/rows/6"
+        }
+      },
+      "acceptedRef": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-independent-c-20261018-v1/ACCEPTED.nine-partial-source-components.independent-c.json",
+        "sha256": "f3938be1165390226096d40c7a72b6360b4304163652e46a88b82ad33d4d1558",
+        "bytes": 37110,
+        "jsonPointer": "/records/6"
+      },
+      "wholeSourceCompletion": false
+    },
+    {
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-ST/upper-secondary/st_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "sourceGoalId": "st-chemistry-sekii-process-standard-q-e-mathematical-methods",
+      "wholeBeforeUnion": [
+        {
+          "legacyGoalId": "st-chemistry-sekii-process-standard-q-e-mathematical-methods",
+          "canonicalGoalId": "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+          "matchType": "partial",
+          "reviewDecisionId": "st-chemistry-sekii-process-standard-q-e-mathematical-methods"
+        }
+      ],
+      "wholeAfterUnion": [
+        {
+          "legacyGoalId": "st-chemistry-sekii-process-standard-q-e-mathematical-methods",
+          "canonicalGoalId": "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+          "matchType": "partial",
+          "reviewDecisionId": "st-chemistry-sekii-process-standard-q-e-mathematical-methods"
+        },
+        {
+          "legacyGoalId": "st-chemistry-sekii-process-standard-q-e-mathematical-methods",
+          "canonicalGoalId": "b732c780-beb8-55f3-8503-edd6b8677a3a",
+          "matchType": "partial",
+          "reviewDecisionId": "st-chemistry-sekii-process-standard-q-e-mathematical-methods"
+        }
+      ],
+      "wholeAfterDecision": {
+        "sourceGoalId": "st-chemistry-sekii-process-standard-q-e-mathematical-methods",
+        "topicCode": "Q-E-MATHEMATICAL-METHODS",
+        "sourceSpan": "Fachlehrplan Gymnasium Chemie Sachsen-Anhalt 2022, physical PDF p. 12",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+          "b732c780-beb8-55f3-8503-edd6b8677a3a"
+        ],
+        "rationale": "Ausschließlich die rechte Qualifikationsphasen-Spalte auf Original-PDF12 trägt den mathematischen Operator. Das vorhandene P enthält die wirkliche mathematische Anwendung auf chemische Aufgaben (normierte Produktmassenverhältnisse und Abgrenzung des Rest-Edukts). Vorgeschlagen ist nur ein enger eigener grundlegender Anwendungsbeitrag zum allgemeinen Q-Methodenoperator innerhalb der bestehenden CrossStage-GK/LK-Zielauswahl. Das macht die ganze Unterstufen-Massenverhältnis-Kompetenz nicht zur amtlichen Q-Pflicht und überträgt den Q-Operator nicht in die linke EP-Spalte oder auf SekI. Nur partial: eigene authored-topic-Anwendung eines allgemeinen Chemieoperators, keine amtliche Pflicht zur ganzen Kompetenz Konstante Massenverhältnisse, kein Universalgesetz- oder Ganzquellenabschluss, keine tatsächliche Lernerausführung. C/P/Requires/Views bleiben unverändert; unabhängige Quellenprüfung steht aus. Technischer Nachtrag: Die begrenzte Partialbeziehung ist inzwischen im unabhängigen FIRST curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-eight-constant-composition-general-data-source-informed-independent-a-20261018-v1/FIRST.independent-a.seven-quantitative-data-source-contributions.json angenommen. Der vorangestellte Autorenhinweis auf eine damals ausstehende Prüfung bleibt historische Begründung; hier entsteht kein Ganzquellenabschluss und keine neue fachliche Stimme des technischen Integrators.\nAUTHOR-Nachfolger: Die Lernenden prüfen im vollständig vorgegebenen physikalischen Trennmodell 30+70=100 kg und im frischen offenen Protokoll 30+68+2=100 kg. Sie bestimmen den Bezugsbereich jeder Summe und unterscheiden 30 kg gewonnene Ölmasse von einem ohne Anfangsölbestand nicht berechenbaren Rückgewinnungsanteil. Das ist eine begrenzte mathematische Anwendung auf eine chemische Stofftrennung, keine Reaktionsstöchiometrie. Nur begrenzter eigener Anwendungsbeitrag. Keine amtliche Spezialpflicht zur Saatölbilanz, kein Ganzquellenabschluss, keine vollständige Prozesskompetenz, keine tatsächliche Messung oder Durchführung; übrige bestehende Quellenbeiträge bleiben exakt erhalten.",
+        "reviewer": "Codex AUTHOR; new partial component needs separate independent review",
+        "reviewedAt": "2026-10-18T20:24:27.764136+00:00",
+        "reviewStatus": "needs_human_review",
+        "reviewAuthority": "ai_review",
+        "wholeSourceCompletionFromSingleGoalMasteryAllowed": false,
+        "authorPendingPartialContributions": [
+          {
+            "canonicalGoalId": "b732c780-beb8-55f3-8503-edd6b8677a3a",
+            "matchType": "partial",
+            "authorFindingRef": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-author-20261018-v1/AUTHOR.nine-partial-method-components.pending.json",
+              "jsonPointer": "/rows/7"
+            },
+            "status": "needs_human_review",
+            "reviewAuthority": "ai_candidate",
+            "wholeSourceCredit": false
+          }
+        ],
+        "predecessorReviewMetadataPreservedForExistingMembers": {
+          "reviewer": "/root/chemie450_caption1_native_fresh_a",
+          "reviewedAt": "2026-10-18"
+        },
+        "currentUnionRef": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-reviewed-normal-integration-technical-20261018-v1/b732-successor/20261018T204654735970Z.receipt.json",
+          "jsonPointer": "/mappingUnions/7"
+        },
+        "additionalAcceptedPartialContributions": [
+          {
+            "canonicalGoalId": "b732c780-beb8-55f3-8503-edd6b8677a3a",
+            "matchType": "partial",
+            "independentAcceptedRef": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-independent-c-20261018-v1/ACCEPTED.nine-partial-source-components.independent-c.json",
+              "sha256": "f3938be1165390226096d40c7a72b6360b4304163652e46a88b82ad33d4d1558",
+              "bytes": 37110,
+              "jsonPointer": "/records/7"
+            },
+            "independentReviewSeal": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-independent-c-20261018-v1/SEAL.informed-independent-b732-components.json",
+              "sha256": "e171e32179f27ecc885fe882115aca536ce4be3b322f1f0808c7c0841db42940",
+              "bytes": 4588
+            },
+            "rationale": "Die vollständige Primärseite trennt den allgemeinen mathematischen Operator von benachbarter Reaktionsgleichung/Stöchiometrie beziehungsweise anderer Phasenspalte. Summieren derselben Erfassungsgrenze und Deuten der nicht bestimmten Komponentenquote wenden Mathematik auf eine stoffliche Trennung an. Kein Reaktionsumsatz, Digitalwerkzeug oder eigener Versuch wird daraus behauptet.",
+            "wholeSourceCredit": false,
+            "actualLearnerExecutionClaim": false,
+            "humanReviewStatus": "needs_human_review",
+            "authorOperationHistory": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-author-20261018-v1/operations/nine-current-whole-source-union-CAS.pending.json",
+              "sha256": "66fc0d324762e03ef20f73a2782b4e843e812c9b53cd88afbf8e1ba87599996f",
+              "bytes": 90328,
+              "jsonPointer": "/operations/7"
+            }
+          }
+        ],
+        "authorPendingMetadataRole": "Historical AUTHOR snapshot; actual bounded independent acceptance is separately referenced in additionalAcceptedPartialContributions.",
+        "preAcceptanceCurrentUnionRef": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-author-20261018-v1/AUTHOR.nine-partial-method-components.pending.json",
+          "jsonPointer": "/rows/7"
+        }
+      },
+      "acceptedRef": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-independent-c-20261018-v1/ACCEPTED.nine-partial-source-components.independent-c.json",
+        "sha256": "f3938be1165390226096d40c7a72b6360b4304163652e46a88b82ad33d4d1558",
+        "bytes": 37110,
+        "jsonPointer": "/records/7"
+      },
+      "wholeSourceCompletion": false
+    },
+    {
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-TH/upper-secondary/th_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.json",
+      "sourceGoalId": "th-chemistry-sekii-process-standard-b3",
+      "wholeBeforeUnion": [
+        {
+          "legacyGoalId": "th-chemistry-sekii-process-standard-b3",
+          "canonicalGoalId": "4aa3a130-b517-5ac5-87b2-147fe432cadd",
+          "matchType": "partial",
+          "reviewDecisionId": "th-chemistry-sekii-process-standard-b3"
+        }
+      ],
+      "wholeAfterUnion": [
+        {
+          "legacyGoalId": "th-chemistry-sekii-process-standard-b3",
+          "canonicalGoalId": "4aa3a130-b517-5ac5-87b2-147fe432cadd",
+          "matchType": "partial",
+          "reviewDecisionId": "th-chemistry-sekii-process-standard-b3"
+        },
+        {
+          "legacyGoalId": "th-chemistry-sekii-process-standard-b3",
+          "canonicalGoalId": "b732c780-beb8-55f3-8503-edd6b8677a3a",
+          "matchType": "partial",
+          "reviewDecisionId": "th-chemistry-sekii-process-standard-b3"
+        }
+      ],
+      "wholeAfterDecision": {
+        "sourceGoalId": "th-chemistry-sekii-process-standard-b3",
+        "topicCode": "4 Kompetenzerwerb Qualifikationsphase",
+        "sourceSpan": "physical PDF42, 4 Kompetenzerwerb Qualifikationsphase, B3",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "4aa3a130-b517-5ac5-87b2-147fe432cadd",
+          "b732c780-beb8-55f3-8503-edd6b8677a3a"
+        ],
+        "matchType": "partial",
+        "rationale": "Only the individually referenced independently accepted partial operator contributions are integrated. Whole-source, course, research and real execution duties remain separate and are not certified by these mappings.\nAUTHOR-Nachfolger: Im vollständigen Papierfall ist der Anfangsölbestand unbekannt: 30 kg gewonnenes Öl und 30 % der Saatmasse belegen keinen Rückgewinnungsgrad. Im frischen Fall werden 98 kg im engen Protokoll und der nachgewiesene 2-kg-Abgang unterschieden; die Vernichtungs- und Vollrückgewinnungsbehauptungen werden anhand der Reichweite der Daten zurückgewiesen. Nur begrenzter eigener Anwendungsbeitrag. Keine amtliche Spezialpflicht zur Saatölbilanz, kein Ganzquellenabschluss, keine vollständige Prozesskompetenz, keine tatsächliche Messung oder Durchführung; übrige bestehende Quellenbeiträge bleiben exakt erhalten.",
+        "reviewedAt": "2026-10-18T20:24:27.764136+00:00",
+        "reviewer": "Codex AUTHOR; new partial component needs separate independent review",
+        "wholeSourceCredit": false,
+        "additionalAcceptedPartialContributions": [
+          {
+            "canonicalGoalId": "4aa3a130-b517-5ac5-87b2-147fe432cadd",
+            "matchType": "partial",
+            "independentAcceptedRef": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-six-process-remaining-states-direct-source-informed-independent-a-20261018-v1/ACCEPTED.seventy-eight-partial-source-contributions.inactive.for-root.json",
+              "sha256": "f0928f6eb0ebd8c14f8e4af5abff82193aafef2544786c2137c425d1c0378024",
+              "bytes": 269340,
+              "jsonPointer": "/mappings/30"
+            },
+            "wholePrimaryOperator": "Informationen und Daten hinsichtlich ihrer Angemessenheit, Grenzen und Tragweite beurteilen",
+            "primaryPdf": {
+              "path": "curricula/DE/Gymnasium/input/TH/LP_GY_Chemie_2024.pdf",
+              "sha256": "f89768dabb9f273d3086c5c16008759c7010244ccab1ebb0b3b44b138411c8d7",
+              "bytes": 1569418
+            },
+            "physicalPrimaryPage": 42,
+            "sourceStageCourseContext": "SekII, end of Qualifikationsphase; common GK/LK standards, course depth/self-direction differ; no whole-course completion",
+            "rationale": "Die Route begründet Kreuzreaktion, Kontrollen und Temperatur-/Matrixeinfluss und grenzt erlaubte Schlüsse ein. Für NI trägt nur das Beschreiben/Deuten von Datenabweichungen; für BW die Aussagekraft der vorliegenden Darstellung; für ST/SL der konkrete Methoden-/Erkenntnisgrenzenanteil. Keine universelle Fehlerrechnung oder tatsächlich ausgeführte Messung.",
+            "boundaries": "Papierdaten sind keine eigene Messung und keine gesamte quantitative Messunsicherheitsrechnung. Nur die tatsächlich geforderte Fehler-/Verfahrens- und Schlussfolgerungskritik trägt; keine universelle Methodologie oder komplette Modellkritik.",
+            "individualBoundary": "",
+            "ownResearchEvidenceRequired": false,
+            "wholeSourceCredit": false,
+            "actualLearnerExecutionClaim": false,
+            "currentGoalSha256": "ecf0bb6b770b73105be0de6e7228bd979dda04e986874cb9a6676986c1c2475e",
+            "currentProfileBodySha256": "59cfee3a21094f52bead68471c96f814c1551e27882a34f0ea5eeb7eb0c60708"
+          },
+          {
+            "canonicalGoalId": "b732c780-beb8-55f3-8503-edd6b8677a3a",
+            "matchType": "partial",
+            "independentAcceptedRef": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-independent-c-20261018-v1/ACCEPTED.nine-partial-source-components.independent-c.json",
+              "sha256": "f3938be1165390226096d40c7a72b6360b4304163652e46a88b82ad33d4d1558",
+              "bytes": 37110,
+              "jsonPointer": "/records/8"
+            },
+            "independentReviewSeal": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-independent-c-20261018-v1/SEAL.informed-independent-b732-components.json",
+              "sha256": "e171e32179f27ecc885fe882115aca536ce4be3b322f1f0808c7c0841db42940",
+              "bytes": 4588
+            },
+            "rationale": "Der ganze B732-P fordert über die Summenbildung hinaus eine begründete Begrenzung der Datenaussage:30kg gewonnenes Öl belegt ohne Anfangsölbestand keine Rückgewinnungsquote; im frischen offenen Protokoll erklären ausdrücklich nachgewiesene2kg Abgang die Fehlmasse, ohne Stoffvernichtung zu erfinden. Diese eigenständig begründete Prüfung der Reichweite der Daten ist ein tatsächlicher begrenzter Beitrag des ganzen Originaloperators. Sie erfüllt nicht pauschal sämtliche Bewertungs-/Kurskompetenzen.",
+            "wholeSourceCredit": false,
+            "actualLearnerExecutionClaim": false,
+            "humanReviewStatus": "needs_human_review",
+            "authorOperationHistory": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-author-20261018-v1/operations/nine-current-whole-source-union-CAS.pending.json",
+              "sha256": "66fc0d324762e03ef20f73a2782b4e843e812c9b53cd88afbf8e1ba87599996f",
+              "bytes": 90328,
+              "jsonPointer": "/operations/8"
+            }
+          }
+        ],
+        "reviewStatus": "needs_human_review",
+        "reviewAuthority": "ai_review",
+        "wholeSourceCompletionFromSingleGoalMasteryAllowed": false,
+        "authorPendingPartialContributions": [
+          {
+            "canonicalGoalId": "b732c780-beb8-55f3-8503-edd6b8677a3a",
+            "matchType": "partial",
+            "authorFindingRef": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-author-20261018-v1/AUTHOR.nine-partial-method-components.pending.json",
+              "jsonPointer": "/rows/8"
+            },
+            "status": "needs_human_review",
+            "reviewAuthority": "ai_candidate",
+            "wholeSourceCredit": false
+          }
+        ],
+        "predecessorReviewMetadataPreservedForExistingMembers": {
+          "reviewer": "Independent source reviewer A; technical integration by Codex creates no scientific first decision",
+          "reviewedAt": "2026-10-18"
+        },
+        "currentUnionRef": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-reviewed-normal-integration-technical-20261018-v1/b732-successor/20261018T204654735970Z.receipt.json",
+          "jsonPointer": "/mappingUnions/8"
+        },
+        "authorPendingMetadataRole": "Historical AUTHOR snapshot; actual bounded independent acceptance is separately referenced in additionalAcceptedPartialContributions.",
+        "preAcceptanceCurrentUnionRef": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-author-20261018-v1/AUTHOR.nine-partial-method-components.pending.json",
+          "jsonPointer": "/rows/8"
+        }
+      },
+      "acceptedRef": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-independent-c-20261018-v1/ACCEPTED.nine-partial-source-components.independent-c.json",
+        "sha256": "f3938be1165390226096d40c7a72b6360b4304163652e46a88b82ad33d4d1558",
+        "bytes": 37110,
+        "jsonPointer": "/records/8"
+      },
+      "wholeSourceCompletion": false
+    },
+    {
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/upper-secondary/sl_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "sourceGoalId": "sl-chemistry-sekii-general-mathematical-symbolic-interpretation-and-models-whole-p05",
+      "wholeBeforeUnion": [],
+      "wholeAfterUnion": [
+        {
+          "legacyGoalId": "sl-chemistry-sekii-general-mathematical-symbolic-interpretation-and-models-whole-p05",
+          "canonicalGoalId": "b732c780-beb8-55f3-8503-edd6b8677a3a",
+          "matchType": "partial",
+          "reviewDecisionId": "sl-chemistry-sekii-general-mathematical-symbolic-interpretation-and-models-whole-p05"
+        }
+      ],
+      "wholeAfterDecision": {
+        "sourceGoalId": "sl-chemistry-sekii-general-mathematical-symbolic-interpretation-and-models-whole-p05",
+        "topicCode": "general-mathematical-symbolic-interpretation-and-models",
+        "sourceSpan": "Saarland Chemie Hauptphase GK und LK2023, redaktionell2025/abAbitur2027, beide physisch/gedruckt5, Der Beitrag des Faches Chemie zur gymnasialen Bildung; derselbe ganze Satz mit Beobachtungen/Untersuchungen, Fragestellungen, mathematisch-symbolischer Interpretation und Modellen/Theorien.",
+        "sourceCourseLevel": "GK_LK",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "b732c780-beb8-55f3-8503-edd6b8677a3a"
+        ],
+        "matchType": "partial",
+        "rationale": "Der tatsächlich geprüfte Teil ist die chemische Interpretation mathematisch formulierter Zusammenhänge und die Anwendung eines vorgegebenen Bilanzmodells: 30+70=100kg, im frischen Fall die Unterscheidung von98kg enger Erfassung und2kg nachgewiesenem Abgang sowie die Grenze der Schlussfolgerung aus30kg Öl ohne Anfangsölbestand. Diese konkrete mathematik-/modellbezogene Anwendung erfüllt einen begrenzten Teil der ganzen amtlichen allgemeinen Methoden-Satzklausel. Die ganze Klausel bleibt einschließlich Beobachtungen, Untersuchungen, eigenen chemischen Fragestellungen sowie Entwicklung/Anwendung von Modellen und Theorien erhalten; daraus wird weder tatsächliches Experimentieren noch die ganze allgemeine Methodenkompetenz abgeleitet.",
+        "reviewedAt": "2026-10-18T20:35:39.173840+00:00",
+        "reviewer": "Codex AUTHOR; independent scientific review still pending",
+        "reviewStatus": "needs_human_review",
+        "reviewAuthority": "ai_review",
+        "wholeSourceCredit": false,
+        "wholeSourceCompletionFromSingleGoalMasteryAllowed": false,
+        "actualLearnerExecutionClaim": false,
+        "officialB732SpecialTopicRequirementClaim": false,
+        "currentUnionRef": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-reviewed-normal-integration-technical-20261018-v1/b732-successor/20261018T204654735970Z.receipt.json",
+          "jsonPointer": "/mappingUnions/9"
+        },
+        "unfulfilledWholeSourceComponents": [
+          "eigene Beobachtungen und Untersuchungen",
+          "eigene chemische Fragestellungen formulieren",
+          "Modelle oder Theorien selbst entwickeln",
+          "gesamte allgemeine Methodenkompetenz"
+        ],
+        "additionalAcceptedPartialContributions": [
+          {
+            "canonicalGoalId": "b732c780-beb8-55f3-8503-edd6b8677a3a",
+            "matchType": "partial",
+            "independentAcceptedRef": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-independent-c-20261018-v1/v2-addendum/FIRST.sl-accept-sn-revise.independent-c.json",
+              "sha256": "810f83d55bc927ef67237a95e797d4b8ed65c3c9fd0363b2a252fd6ea46cfea7",
+              "bytes": 15359,
+              "jsonPointer": "/rows/0"
+            },
+            "independentReviewSeal": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-independent-c-20261018-v1/v2-addendum/SEAL.independent-c-v2-source-addendum.json",
+              "sha256": "47b6ef62489c4ba8a706337801a9b8b9fde031b68f3758efb897409f559fa0a3",
+              "bytes": 3031
+            },
+            "rationale": "Die beiden ganzen Originalseiten5 enthalten denselben unnummerierten Satz. Er nennt ausdrücklich die chemische Interpretation mathematisch bzw. symbolisch formulierter Zusammenhänge sowie die Anwendung von Modellen. Der ganze unveränderte B732-P verlangt genau eine begründete Bilanzmodell-Anwendung im stofflichen Trennkontext:100=30+70, beim geänderten Erfassungsbereich98+2=100 und die Unterscheidung gewonnener Ölmasse von nicht bestimmbarer Komponentenquote. Das ist ein tatsächlicher begrenzter mathematisch-symbolischer Interpretationsanteil. Eigene Beobachtungen/Untersuchungen, Fragestellungen, Modellentwicklung, Theorien und sicheres Experimentieren werden dadurch nicht vollständig erfüllt oder ausgeführt. Der allgemeine Satz wird nicht zum amtlichen speziellen Saatölthema erklärt.",
+            "wholeSourceCredit": false,
+            "actualLearnerExecutionClaim": false,
+            "humanReviewStatus": "needs_human_review",
+            "authorOperationHistory": {
+              "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-sl-sn-method-source-author-20261018-v2/operations/two-clone-safe-source-and-mapping-leaf-CAS.pending.json",
+              "jsonPointer": "/operations/0"
+            }
+          }
+        ],
+        "authorPendingMetadataRole": "Historical AUTHOR snapshot; actual bounded independent acceptance is separately referenced in additionalAcceptedPartialContributions.",
+        "preAcceptanceCurrentUnionRef": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-sl-sn-method-source-author-20261018-v2/AUTHOR.two-whole-method-source-contributions.pending.json",
+          "jsonPointer": "/rows/0"
+        }
+      },
+      "acceptedRef": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-independent-c-20261018-v1/v2-addendum/FIRST.sl-accept-sn-revise.independent-c.json",
+        "sha256": "810f83d55bc927ef67237a95e797d4b8ed65c3c9fd0363b2a252fd6ea46cfea7",
+        "bytes": 15359,
+        "jsonPointer": "/rows/0"
+      },
+      "wholeSourceCompletion": false
+    }
+  ],
+  "acceptedBYSHEntries": [
+    {
+      "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+      "goalId": "b732c780-beb8-55f3-8503-edd6b8677a3a",
+      "jurisdiction": "DE-BY",
+      "evidenceType": "requires-closure",
+      "requiredByGoalId": "e7c3d20e-4b13-560b-b8ee-c5abca8cc624",
+      "status": "accepted",
+      "rationale": "Der ganze e7-P verlangt in required e5 alle tatsächlichen analytischen Abzweigungen und in e6 unterschiedliche Nenner. Vor seiner tatsächlichen praktischen Anwendung ist die Erfassungs-/Bestandsgrenze eine reale fachliche Grundlage:0,2470g Rohprodukt minus0,0520g Analysenentnahme ergibt0,1950g gereinigte Portion;0,1600/0,1950≈82,1% ist deren Rückgewinnung.0,1600/0,2470 wäre dafür die falsche Grenze. Im NaCl-Fall sind2,565/2,70=95% Reinheit und2,565/3,00=85,5% Komponentenrückgewinnung verschiedene Aussagen. B732 verlangt diese grundlegende Unterscheidung mit eigenen vorgegebenen physischen Trennfällen und ehrlichen Nichtbestimmbarkeiten. Das ist eine echte vorbereitende Erwerbsbeziehung, keine Umbenennung der praktischen Gesamtroutine oder nachträglich erfundene Kante allein für CQR. Der bestehende getrennte BcP-Kurs enthält Isolierung/Reinigung sowie Reinheits-/Ausbeuteprüfung und selbst hergestellte Präparate. Die aktuellen ganzen e7-NaCl-/ASA-Fälle sind konkrete eigene Realisierungen dieses Kontexts. Die neue explizite BY-LK-Targetrolle ist eine Grundlage des bereits sichtbaren zusätzlichen Angebots. Amtlich werden mindestens drei der sechs Bereiche2–7 gewählt; Inhalte sind Anregungen und nicht insgesamt verpflichtend. Dies begründet weder einen allgemeinen gewöhnlichen GK/LK-Praktikumskurs noch eine tatsächlich erfolgte Themenwahl. Tatsächliches unabhängiges informiertes Komponentenurteil: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-independent-c-20261018-v1/REVIEW.informed-independent-components.json#/acquisitionRoutes/0. Keine Ganzquellenfreigabe, menschliche Freigabe oder tatsächliche Schülerleistung; Nachfolgermastery beweist keine Vorkenntnismastery."
+    },
+    {
+      "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+      "goalId": "b732c780-beb8-55f3-8503-edd6b8677a3a",
+      "jurisdiction": "DE-SH",
+      "evidenceType": "requires-closure",
+      "requiredByGoalId": "e7c3d20e-4b13-560b-b8ee-c5abca8cc624",
+      "status": "accepted",
+      "rationale": "Der ganze e7-P verlangt in required e5 alle tatsächlichen analytischen Abzweigungen und in e6 unterschiedliche Nenner. Vor seiner tatsächlichen praktischen Anwendung ist die Erfassungs-/Bestandsgrenze eine reale fachliche Grundlage:0,2470g Rohprodukt minus0,0520g Analysenentnahme ergibt0,1950g gereinigte Portion;0,1600/0,1950≈82,1% ist deren Rückgewinnung.0,1600/0,2470 wäre dafür die falsche Grenze. Im NaCl-Fall sind2,565/2,70=95% Reinheit und2,565/3,00=85,5% Komponentenrückgewinnung verschiedene Aussagen. B732 verlangt diese grundlegende Unterscheidung mit eigenen vorgegebenen physischen Trennfällen und ehrlichen Nichtbestimmbarkeiten. Das ist eine echte vorbereitende Erwerbsbeziehung, keine Umbenennung der praktischen Gesamtroutine oder nachträglich erfundene Kante allein für CQR. SH69 erlaubt zusätzliche Themen, darunter Medikamente; SH71 nennt konkret die Laborherstellung einer exemplarischen Wirkstoffgruppe. Der ganze vorhandene e7-ASA-Synthese-/Aufarbeitungs-/Analysefall ist dafür ein konkreter Laborherstellungsbeitrag. Die quantitative Aufarbeitung braucht die Bilanzgrundlage. Der geerbte technische Pfad allein genügt nicht: Die fachliche Passung wird hier an dieser tatsächlichen ASA-Routine begründet. E7 bleibt in den regionalen SH-Views kein Target; der Surrogatbeleg bindet den vorhandenen gleichländrigen gewöhnlichen Source-Träger, ohne die ganze Routine oder Medikamentenauswahl zum amtlichen Muss zu machen. Forschung, großtechnische Produktion und Vermarktung sind dadurch nicht erfüllt. Tatsächliches unabhängiges informiertes Komponentenurteil: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-independent-c-20261018-v1/REVIEW.informed-independent-components.json#/acquisitionRoutes/1. Keine Ganzquellenfreigabe, menschliche Freigabe oder tatsächliche Schülerleistung; Nachfolgermastery beweist keine Vorkenntnismastery."
+    }
+  ],
+  "C2SNRejectedDecisionRef": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-physical-mass-source-independent-c-20261018-v1/v2-addendum/FIRST.sl-accept-sn-revise.independent-c.json",
+    "sha256": "810f83d55bc927ef67237a95e797d4b8ed65c3c9fd0363b2a252fd6ea46cfea7",
+    "bytes": 15359,
+    "jsonPointer": "/rows/1"
+  },
+  "C2SNRejectedDecision": {
+    "jurisdiction": "DE-SN",
+    "decision": "revise_remove_unsupported_direct_mapping_keep_territorial_HOLD",
+    "canonicalGoalId": "b732c780-beb8-55f3-8503-edd6b8677a3a",
+    "sourceGoalId": "sn-chemistry-sekii-process-standard-gk-lk-mathematical-methods-and-digital-tools-whole",
+    "wholeSourceClause": {
+      "id": "sn-chemistry-sekii-process-standard-gk-lk-mathematical-methods-and-digital-tools-whole",
+      "passageId": "sn-chemistry-sekii-process-standard-gk-lk-mathematical-methods-and-digital-tools-whole:same-whole-sentence-current-GK-LK",
+      "topicCode": "GK-LK11-12-mathematical-methods-and-digital-tools-objective",
+      "title": "Mathematische Verfahren und digitale Werkzeuge für Stoff-/Energieumsätze nutzen – ganze GK/LK-Satzklausel",
+      "description": "Sie nutzen mathematische Verfahren und beherrschen geeignete digitale Werkzeuge, um Stoff- und Energieumsätze zu berechnen.",
+      "sourceDocumentKey": "SN-CH-2025",
+      "sourceText": "Sie nutzen mathematische Verfahren und beherrschen geeignete digitale Werkzeuge, um Stoff- und Energieumsätze zu berechnen.",
+      "parentBulletText": "Sie nutzen mathematische Verfahren und beherrschen geeignete digitale Werkzeuge, um Stoff- und Energieumsätze zu berechnen.",
+      "rawSourceText": "Sie nutzen mathematische Verfahren und beherrschen geeignete digitale Werkzeuge, um Stoff- und Energieumsätze zu berechnen.",
+      "sourceTextKind": "complete_verbatim_selected_official_sentence_linewrap_only_normalized",
+      "sourceRef": "Sachsen Gymnasium Chemie2025, Ziele J11/12: GK physisch37/gedruckt25 und LK physisch47/gedruckt35; derselbe ganze Satz mit mathematischen Verfahren UND geeigneten digitalen Werkzeugen zum Berechnen von Stoff- und Energieumsätzen.",
+      "sourceSpan": {
+        "passageId": "sn-chemistry-sekii-process-standard-gk-lk-mathematical-methods-and-digital-tools-whole:same-whole-sentence-current-GK-LK",
+        "label": "Sachsen Gymnasium Chemie2025, Ziele J11/12: GK physisch37/gedruckt25 und LK physisch47/gedruckt35; derselbe ganze Satz mit mathematischen Verfahren UND geeigneten digitalen Werkzeugen zum Berechnen von Stoff- und Energieumsätzen."
+      },
+      "courseLevel": "GK_LK",
+      "granularity": "completeSelectedOfficialSentence",
+      "sourceOccurrences": [
+        {
+          "sourceDocumentKey": "SN-CH-2025",
+          "courseLevel": "GK",
+          "physicalPdfPage": 37,
+          "printedPage": 25,
+          "primaryDocumentPin": {
+            "path": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-chemie-sachsen-2025.pdf",
+            "sha256": "3a74886e7ee9492b003d4916719e2b4644aef5fdfe8331cdefd8151fe0e86051",
+            "bytes": 824141,
+            "role": "actual-read-GK-LK-original"
+          }
+        },
+        {
+          "sourceDocumentKey": "SN-CH-2025",
+          "courseLevel": "LK",
+          "physicalPdfPage": 47,
+          "printedPage": 35,
+          "primaryDocumentPin": {
+            "path": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-chemie-sachsen-2025.pdf",
+            "sha256": "3a74886e7ee9492b003d4916719e2b4644aef5fdfe8331cdefd8151fe0e86051",
+            "bytes": 824141,
+            "role": "actual-read-GK-LK-original"
+          }
+        }
+      ],
+      "tags": [
+        "jurisdiction:DE-SN",
+        "subject:Chemie",
+        "stage:SekII",
+        "course:GK_LK"
+      ],
+      "metadata": {
+        "notOfficiallyNumbered": true,
+        "localIdIsNotOfficialStandardCode": true,
+        "allConjunctsAndPurposePreserved": true,
+        "identicalWholeSentenceInBothCourseLocations": true,
+        "authorStatus": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "authorFindingRef": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-sl-sn-method-source-author-20261018-v2/AUTHOR.two-whole-method-source-contributions.pending.json",
+          "jsonPointer": "/rows/1"
+        },
+        "wholeSourceCredit": false
+      }
+    },
+    "rationaleDe": "Der vollständige Originalsatz in GK37/gedruckt25 und LK47/gedruckt35 hat einen ausdrücklichen Zweck: Stoff- und Energieumsätze berechnen. Die mathematischen Verfahren und die digitalen Werkzeuge sind auf diesen Gegenstand bezogen; daraus darf kein frei schwebender Mathematikoperator gemacht werden. Die unveränderten ganzen B732-Fälle bilanzieren ausdrücklich die rein physikalische Verteilung vorhandener Stoffe und einen bereits nachgewiesenen Abgang; sie berechnen keinen Reaktions-Stoffumsatz oder Energieumsatz. Auch die Komponentenrückgewinnungsquote ist dort gerade nicht berechenbar, weil der Anfangsölbestand fehlt. Addieren und Nennergrenzen können Vorbereitungswissen für eine spätere Umsatzrechnung sein; sie sind hier kein tatsächlich geforderter Teilvollzug des zweckgebundenen Quelloperators. Dass digitale Werkzeugbeherrschung als unvollständig benannt bleibt, behebt diesen fehlenden Gegenstandsbezug nicht. Das partial-Etikett erhält den Wortlaut, trägt aber die neue direkte Kante fachlich nicht.",
+    "wholeSourceExtractionLiteralAndCourseIdentity": "accept_literal_transport_only",
+    "wholeSourceCompletion": false,
+    "ownPracticalOrDigitalExecution": false,
+    "exactAuthorOperation": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-sl-sn-method-source-author-20261018-v2/operations/two-clone-safe-source-and-mapping-leaf-CAS.pending.json",
+      "sha256": "9640045d769bf24e8b9fa0b75d0d35025f5c8b86b1a238ce8f1114ff6725dc76",
+      "bytes": 24389,
+      "jsonPointer": "/operations/1"
+    },
+    "exactAuthorSourceRow": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-sl-sn-method-source-author-20261018-v2/AUTHOR.two-whole-method-source-contributions.pending.json",
+      "sha256": "23998bcb010681fb13b9ac62f7c2a576ae132d85090908f52e2500638a29b5d2",
+      "bytes": 25498,
+      "jsonPointer": "/rows/1"
+    },
+    "sourceClone": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-b732-sl-sn-method-source-author-20261018-v2/candidate/sources/DE-SN.whole-source-clone.one-sentence-added.pending.json",
+      "sha256": "54d67c5cb9ae8ad102a6420da941b61adba1a34e04c3b1e91ba4e4da320c918c",
+      "bytes": 843731
+    },
+    "allowedNormalActivation": false
+  },
+  "normalFiles": [
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BB/upper-secondary/bb_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "beforeSHA256": "bce0aefea963382a103dda677ec1ebb3dded93e0e63fa23a74dcdd2c9a89f0ff",
+      "afterSHA256": "c5185f63827eb29d7ba0fa8cee567b2354dabf972f08d907b6f81d4bb19c5f38",
+      "beforeBytes": 242904,
+      "afterBytes": 247565,
+      "beforeArchivePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-reviewed-normal-integration-technical-20261018-v1/before/b732-successor/20261018T204654735970Z/curricula/DE/Gymnasium/mapping/DE-BB/upper-secondary/bb_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BE/upper-secondary/be_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "beforeSHA256": "2b3b63aa4eebdcf8100598dd61ab13a8276e8902e1226164fb9bc9e46784c02b",
+      "afterSHA256": "3f529086dac25054d604755f374024741b8a74667d255389a933f8797e44097e",
+      "beforeBytes": 242915,
+      "afterBytes": 247576,
+      "beforeArchivePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-reviewed-normal-integration-technical-20261018-v1/before/b732-successor/20261018T204654735970Z/curricula/DE/Gymnasium/mapping/DE-BE/upper-secondary/be_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HB/upper-secondary/hb_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "beforeSHA256": "daea41af63035f94ccafc6b2bbb6a02d7d9fb43fe8ffdc6c358f71bf5a308a23",
+      "afterSHA256": "6443c70204db3e10a882315d00e5e49dca6ec841404bc61e43a4227c966e1c54",
+      "beforeBytes": 690029,
+      "afterBytes": 695039,
+      "beforeArchivePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-reviewed-normal-integration-technical-20261018-v1/before/b732-successor/20261018T204654735970Z/curricula/DE/Gymnasium/mapping/DE-HB/upper-secondary/hb_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.q1-atomic-split-author-proposal-20261005-v1.q4-four-bounded-reviewed-20261013-v1.review.json",
+      "beforeSHA256": "47b509edb915249631b924eecc7686975c280b221f122af86870356aebefb107",
+      "afterSHA256": "4fbd827db6a34f011b765f78ef3bbacb76bf896aeba7856a6c74882277ea47c3",
+      "beforeBytes": 288237,
+      "afterBytes": 292840,
+      "beforeArchivePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-reviewed-normal-integration-technical-20261018-v1/before/b732-successor/20261018T204654735970Z/curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.q1-atomic-split-author-proposal-20261005-v1.q4-four-bounded-reviewed-20261013-v1.review.json"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HH/upper-secondary/hh_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.q4-four-bounded-reviewed-20261013-v1.review.json",
+      "beforeSHA256": "587aa6dbeb476da66dba1267969735733d30afe42f864a7daa35737a4d13bb4c",
+      "afterSHA256": "9dd6014e7f91134011530244f45be4021836f4d1e095516cbeee20be7dd612b2",
+      "beforeBytes": 237337,
+      "afterBytes": 241918,
+      "beforeArchivePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-reviewed-normal-integration-technical-20261018-v1/before/b732-successor/20261018T204654735970Z/curricula/DE/Gymnasium/mapping/DE-HH/upper-secondary/hh_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.q4-four-bounded-reviewed-20261013-v1.review.json"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-MV/upper-secondary/mv_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "beforeSHA256": "c65b162fd6404d1652cc06acecbdb6728d26a3f7d49c34bcfdba39fb81f90712",
+      "afterSHA256": "60013e22bac146afca7ea007bc39603cfa8be7497dccae15e90ec30526cfc191",
+      "beforeBytes": 338116,
+      "afterBytes": 342733,
+      "beforeArchivePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-reviewed-normal-integration-technical-20261018-v1/before/b732-successor/20261018T204654735970Z/curricula/DE/Gymnasium/mapping/DE-MV/upper-secondary/mv_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "beforeSHA256": "2b9af0334ae996373ad430c0ccfd0c74992f087882f6d1d295ba6aa1c89992d4",
+      "afterSHA256": "dde974ef543a65d846fc92bc041992702c998593da52c099322c233fbf754863",
+      "beforeBytes": 656046,
+      "afterBytes": 660627,
+      "beforeArchivePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-reviewed-normal-integration-technical-20261018-v1/before/b732-successor/20261018T204654735970Z/curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-ST/upper-secondary/st_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "beforeSHA256": "1775708bf1296b679630e423bdb9084b247a82de772117b56da850b97330270e",
+      "afterSHA256": "24c1934cef89d58b564b2a252a6a48a57ece4a29623b4a6414153fa0791e1447",
+      "beforeBytes": 1006386,
+      "afterBytes": 1011004,
+      "beforeArchivePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-reviewed-normal-integration-technical-20261018-v1/before/b732-successor/20261018T204654735970Z/curricula/DE/Gymnasium/mapping/DE-ST/upper-secondary/st_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-TH/upper-secondary/th_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.json",
+      "beforeSHA256": "cef90b93fa931c8b93e4ad7c7de33e8ef006b255ab0b34e12f405dc8987504fd",
+      "afterSHA256": "93a505211333cc7ff1a45528c9d4d1456540be8c3aed462faace61b150c1e6c7",
+      "beforeBytes": 557623,
+      "afterBytes": 562204,
+      "beforeArchivePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-reviewed-normal-integration-technical-20261018-v1/before/b732-successor/20261018T204654735970Z/curricula/DE/Gymnasium/mapping/DE-TH/upper-secondary/th_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.json"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-SL/upper-secondary/sl_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "beforeSHA256": "3e8c8ad6030d7394d4814348e4f116ccfbb79d6709daa4cb0c50b07e51d2adc1",
+      "afterSHA256": "845c888f0566c57dd160a52b2163aeeb99327f3227d91c071c6a2eb1fddb2d06",
+      "beforeBytes": 1406996,
+      "afterBytes": 1414257,
+      "beforeArchivePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-reviewed-normal-integration-technical-20261018-v1/before/b732-successor/20261018T204654735970Z/curricula/DE/Gymnasium/mapping/DE-SL/upper-secondary/sl_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "beforeSHA256": "206256cf7fcfd1a9766fcb63e19fbbacdb707f49bc04fed76ccd559862cf975e",
+      "afterSHA256": "08f31e7169d617f0e2e1f18fde7b5a3b2c3f1a45536a477479858cb4571d69f8",
+      "beforeBytes": 5426868,
+      "afterBytes": 5428451,
+      "beforeArchivePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-reviewed-normal-integration-technical-20261018-v1/before/b732-successor/20261018T204654735970Z/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/chemie/de-by-lk.current-pilot.view.json",
+      "beforeSHA256": "6995c0f552ec74be044c1d1c65b3a17d435a112605c6f6e413dd989ef526ba52",
+      "afterSHA256": "0d180e6b3c2bcc426320734d0116f47ce9dcf9349050bba9007cc95625f23417",
+      "beforeBytes": 56172,
+      "afterBytes": 56341,
+      "beforeArchivePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-reviewed-normal-integration-technical-20261018-v1/before/b732-successor/20261018T204654735970Z/curricula/DE/Gymnasium/composition-views/chemie/de-by-lk.current-pilot.view.json"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/provenance/canonical-goal-surrogate-evidence-registry.json",
+      "beforeSHA256": "7808d3f175f7d29435229fe727fd994a94cafdb18c46cd071a9b1d38dfa3f127",
+      "afterSHA256": "0b9e1c2e30c92b911d351b80ea1f3fa3bf4d0f12b1d8b5ca2f18aca072bf6147",
+      "beforeBytes": 317832,
+      "afterBytes": 322171,
+      "beforeArchivePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-reviewed-normal-integration-technical-20261018-v1/before/b732-successor/20261018T204654735970Z/curricula/DE/Gymnasium/provenance/canonical-goal-surrogate-evidence-registry.json"
+    }
+  ],
+  "status": "committed",
+  "technicalOnly": true,
+  "humanApproval": false,
+  "M7Claim": false,
+  "followup": "Root separately rebinds production SEM2/e7 P and any actual dependent fingerprints. V1 exact source-boundary metadata is retained as its reviewed snapshot; no extra unreviewed canonical edit.",
+  "committedAtUTC": "2026-10-18T20:46:55.585727+00:00"
+}

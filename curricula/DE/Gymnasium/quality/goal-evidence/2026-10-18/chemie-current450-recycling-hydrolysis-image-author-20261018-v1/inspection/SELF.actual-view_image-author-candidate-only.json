@@ -1,0 +1,63 @@
+{
+  "role": "ACTUAL_AUTHOR_SELF_INSPECTION_ONLY_NOT_V_OR_HUMAN_APPROVAL",
+  "goalId": "69f2ecbb-ac0a-5d3a-8084-2142706e1161",
+  "inspectedAtUTC": "2026-10-18T18:40:03.992Z",
+  "tool": "tools.view_image; actual original native PNG and 360/680 px review derivatives",
+  "candidateSHA256": "9b2145733949ff42ae062bd1a9b149c37ba812c0e6b269bd15a8c8fcf7075b7a",
+  "attempts": 1,
+  "decision": "needs_external_review",
+  "authorDisposition": "single candidate selected after actual scientific self-inspection; no obvious remaining blocker",
+  "views": [
+    {
+      "path": "candidate/69f2ecbb-ac0a-5d3a-8084-2142706e1161.png",
+      "width": 1672,
+      "height": 941,
+      "detail": "original",
+      "actuallyViewed": true
+    },
+    {
+      "path": "inspection/actual-display-360px.png",
+      "width": 360,
+      "height": 203,
+      "detail": "original",
+      "actuallyViewed": true,
+      "observationDe": "Esterbindung, H–O–H und die zwei getrennten Endgruppen sind erkennbar; Carbonyl-Doppelbindungen und R/R′ sind trotz kleiner Darstellung unterscheidbar. Die PE-Bedingung steht im sichtbaren Footer; keine unlesbare Kleinschrift für notwendige chemische Details."
+    },
+    {
+      "path": "inspection/actual-display-680px.png",
+      "width": 680,
+      "height": 383,
+      "detail": "original",
+      "actuallyViewed": true,
+      "observationDe": "Bindungen, Atombuchstaben, Bedingung und beide kurzen Footer gut lesbar. Volle 680-px-Breite bei weniger als 448 px Höhe, kein Crop nötig."
+    }
+  ],
+  "previewDerivatives": {
+    "purpose": "actual display-size review only",
+    "method": "Pillow Lanczos resampling of original candidate",
+    "usedAsFinalCandidate": false,
+    "rawCandidateUnmodified": true
+  },
+  "actualChecksDe": [
+    "Die schematische Einzelspaltung folgt dem vollständig gelesenen neuen Ziel/P und dem sauren Strukturmodell; korrekte Atom-/Bindungsprüfung steht im separaten CHEMISTRY-Befund.",
+    "Die orange hervorgehobene Startbindung ist Acyl-C–O, nicht C=O, O–R′ oder eine C–C-Verknüpfung. Die ursprüngliche Esterbindung ist sichtbar, bevor das Produktpaar darunter folgt.",
+    "Ein H–O–H steht als Eingang neben dem Ester. Die Produkte zeigen genau R–COOH und HO–R′ als neutrale Endgruppen mit erhaltenen Kettenresten.",
+    "Es erscheinen keine ganzen PET-Strukturen, Ringe, falsche fertige bifunktionelle Monomere, tieferen Elektronenpaarpfeile oder alkalischen Ionen.",
+    "Der PE-Hinweis ist auf diesen Hydrolyseweg begrenzt und zeigt kein allgemeines Verwertungsverbot.",
+    "Freundliche klare Konturen, große R-Blöcke und wenige Farben passen zur tatsächlich lokal gesichteten bestehenden Recycling-Übersicht. Kein bestehendes Bild wurde ersetzt oder als Provider-Eingabe übertragen.",
+    "Keine Zahlen zu Ausbeute/Energie, kein technischer Prozess oder tatsächliche Labor-/Lernendenhandlung; keine sichtbaren Logos, technischen IDs oder Wasserzeichen."
+  ],
+  "limits": [
+    "Image supports one core representative ester-cleavage orientation, not full PET/fresh-polyester independent monomer derivation or complete goal assessment.",
+    "Original author metadata newVisualizationQa:not_started remains V1-exact; image authoring/self-inspection is not a new gate-V review.",
+    "No independent AI visual review or human approval, native D/P/A/SEM/M/V refresh or runtime/host acceptance.",
+    "C2PA raw bytes retained but signature authenticity/trust not externally verified."
+  ],
+  "independentReview": false,
+  "gateVApproval": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "actualLearnerPerformance": false,
+  "normalActivation": false,
+  "ownDidacticImageLicense": "CC-BY-4.0"
+}

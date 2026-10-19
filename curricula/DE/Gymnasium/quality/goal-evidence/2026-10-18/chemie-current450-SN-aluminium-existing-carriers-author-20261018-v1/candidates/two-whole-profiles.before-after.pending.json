@@ -1,0 +1,405 @@
+{
+  "role": "AUTHOR",
+  "status": "pending_separate_independent_review",
+  "active": false,
+  "reviewAuthority": "ai_candidate",
+  "humanApproval": false,
+  "actualLearnerPerformanceRecorded": false,
+  "M7Claim": false,
+  "records": [
+    {
+      "goalId": "fcc73fb5-7413-557f-aea3-b9692a66ee75",
+      "beforeWholeCurrentRecord": {
+        "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+        "schemaVersion": 2,
+        "reviewId": "canonical-chemistry-positive-evidence-b007r-fcc-current-png-v2",
+        "goalFingerprintRuleVersion": "goal-evidence-v1",
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "fcc73fb5-7413-557f-aea3-b9692a66ee75",
+        "goalFingerprint": "sha256:6f0e432626ddfe21d61e8ebfa35fc812211258768ea5091c872b269a6319cf1f",
+        "reviewInputFingerprint": "sha256:b4f705d9c87eed3815f8e2eaabe6a9cb92cfce1237e5cd813589df0ac9b5bed5",
+        "profileFingerprint": "sha256:6a1b0e25e285c73cab162e61602ce0bcada2a346c81282ba94a0729e9eba1c40",
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "reviewedAt": "2026-10-17T21:23:41.999975+00:00",
+        "reviewer": "Codex B technical current-input serialization; underlying scientific authors and reviewers remain recorded in the P442 selection/provenance",
+        "reason": "Aktuelles PNG SHA256 08dfb667c479d8fa03c59c6f1521bb698be9d1d36a801ce9b7d237ab119cb62b tatsächlich gesehen: Zucker verteilt sich in Wasser ohne Bodensatz, Sand bleibt liegen; die Bildlupe ist ein Schema, keine reale Molekülbeobachtung. Der Kern folgt dem direkten HE-J8-Ziel zu Stoffeigenschaften. Die Fälle nutzen andere Stoffe, Eigenschaften und vorgegebene Beobachtungsdaten, sodass bloßes Wiedererkennen der Zucker-Sand-Seite nicht genügt. KI-Kandidat mit needs_human_review, keine menschliche Freigabe. V2 ergänzt einen kontrollierten Löslichkeitsfall mit Zucker, Sand und Salz bei gleicher Wassermenge/Temperatur: geteilte Löslichkeit von Zucker und Salz zeigt die Grenze des Einzelmerkmals; die früheren zwei unabhängigen Transferfälle bleiben erhalten.",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1",
+        "reviewRunIds": [],
+        "dissent": [],
+        "profile": {
+          "archetype": "concept",
+          "expectations": [
+            {
+              "id": "b007r-fcc-properties-core",
+              "essentialUnderstandingDe": "Stoffe werden durch beobachtete oder unter vergleichbaren Bedingungen bestimmte Eigenschaften beschrieben und nach begründeten Kriterien geordnet. Farbe oder ein anderer Einzelbefund allein sichert eine Stoffidentität oft nicht; Stoffname und Eigenschaft sind verschieden. Aussagen zu Löslichkeit nennen das Lösungsmittel und die Bedingungen.",
+              "essentialUnderstandingEn": "Substances are described by observed properties or properties determined under comparable conditions and classified using justified criteria. Colour or another single observation often does not establish identity; a substance name and a property differ. Solubility claims specify the solvent and conditions.",
+              "observablePerformanceDe": "Die lernende Person erstellt aus sicheren vorgegebenen Beobachtungen eine kleine Eigenschaftsübersicht, ordnet Proben nach einem genannten Merkmal und erklärt die Grenze einer Zuordnung aus nur einem Merkmal.",
+              "observablePerformanceEn": "The learner builds a small property summary from safe supplied observations, groups samples by a named property and explains the limit of classification from one property alone."
+            }
+          ],
+          "coverageExpectations": {
+            "requiredExpectationIds": [
+              "b007r-fcc-properties-core"
+            ],
+            "alternativeExpectationGroups": [],
+            "minimumIndependentDemonstrations": 2,
+            "freshVariationRequired": true,
+            "independentTransferRequired": true
+          },
+          "variationAxes": [
+            {
+              "id": "sample-property",
+              "textDe": "Magnetismus und Oberflächenglanz bei Feststoffen wechseln zu Dichte und Fließverhalten bei Flüssigkeiten.",
+              "textEn": "Magnetism and surface lustre for solids change to density and flow behaviour for liquids."
+            },
+            {
+              "id": "evidence-strength",
+              "textDe": "Ein einzelnes gemeinsames Merkmal wird gegen eine Kombination unterscheidender Merkmale geprüft.",
+              "textEn": "A single shared property is checked against a combination of distinguishing properties."
+            },
+            {
+              "id": "controlled-solvent-conditions",
+              "textDe": "Gleiches Wasser, gleiche Stoffmenge und Temperatur sind für die konkrete Löslichkeitsaussage gebunden.",
+              "textEn": "The same water, material amount and temperature are tied to the specific solubility claim."
+            }
+          ],
+          "applicationCaseBriefs": [
+            {
+              "id": "new-solid-sample-table",
+              "taskDemandDe": "Drei sichere, vorbereitete Feststoffproben A, B, C sind gegeben: A ist dunkelgrau, glänzend und wird von einem Magneten angezogen; B ist silbrig glänzend und nicht magnetisch; C ist hell, körnig, matt und nicht magnetisch. Erstelle eine Eigenschaftstabelle, ordne die Proben nach Magnetismus und begründe, weshalb ‚nicht magnetisch‘ B und C nicht gleichsetzt. Keine unbekannte Probe anfassen oder schmecken.",
+              "taskDemandEn": "Three safe prepared solid samples A, B and C have supplied observations: A is dark grey, shiny and attracted by a magnet; B is silvery and shiny but non-magnetic; C is light-coloured, granular, dull and non-magnetic. Make a property table, group them by magnetism and explain why 'non-magnetic' does not make B and C the same substance. Do not handle or taste unknown samples.",
+              "expectedPerformanceDe": "A wird als magnetisch, B und C werden als nicht magnetisch geordnet. Die Person hält Farbe/Glanz/Körnigkeit getrennt fest und erklärt, dass B und C trotz gemeinsamer Nichtmagnetisierung in anderen Merkmalen verschieden sind; aus diesen wenigen Befunden wird keine sichere Stoffidentität behauptet.",
+              "expectedPerformanceEn": "A is grouped as magnetic, B and C as non-magnetic. The learner records colour, lustre and graininess separately and explains that B and C differ in other properties despite their shared non-magnetism; they do not claim certain identity from these limited observations.",
+              "understandingFocusDe": "Eigenschaften beschreiben, nach einem expliziten Kriterium ordnen und die Grenze eines Einzelmerkmals erklären.",
+              "understandingFocusEn": "Describe properties, classify by an explicit criterion and explain the limit of a single property."
+            },
+            {
+              "id": "fresh-colourless-liquid-data",
+              "taskDemandDe": "Zwei neue, verschlossene und beschriftete Flüssigkeitsproben X und Y sind beide farblos und klar. Vorgegebene Messdaten bei 20 °C: X hat 1,00 g/mL und fließt leicht, Y hat 1,26 g/mL und fließt deutlich zäher. Beschreibe und ordne die Proben anhand von zwei geeigneten Eigenschaften; begründe, weshalb die gleiche Farbe keine Gleichheit belegt. Keine eigene Geschmacks- oder Geruchsprobe.",
+              "taskDemandEn": "Two new sealed, labelled liquid samples X and Y are both colourless and clear. Supplied data at 20 °C say X has density 1.00 g/mL and flows readily; Y has density 1.26 g/mL and flows much more slowly. Describe and compare the samples using two suitable properties and explain why the same colour does not prove identity. No tasting or smelling samples.",
+              "expectedPerformanceDe": "Beide sind farblos/klar, aber Y ist bei gleicher Temperatur dichter und zähflüssiger als X. Die Person trennt gemeinsame von unterscheidenden Eigenschaften, nennt die 20-°C-Bedingung und vergibt ohne weitere Daten keine Stoffnamen.",
+              "expectedPerformanceEn": "Both are colourless and clear, but Y is denser and more viscous than X at the same temperature. The learner separates shared from distinguishing properties, states the 20 °C condition and does not assign substance names without more evidence.",
+              "understandingFocusDe": "Unabhängiger Transfer von Feststoffbeobachtungen auf Flüssigkeitsdaten und Vergleich unter gleichen Bedingungen.",
+              "understandingFocusEn": "Independent transfer from solid observations to liquid data and comparison under common conditions."
+            },
+            {
+              "id": "controlled-solubility-three-solids",
+              "taskDemandDe": "Drei ungefährliche, beschriftete Feststoffe werden jeweils mit 5 g in getrennte Becher mit 100 mL Wasser bei 20 °C gegeben und gleich lang gerührt. Vorgegebene Beobachtungen: Zucker verschwindet ohne Bodensatz, Sand bleibt sichtbar am Boden, Speisesalz verschwindet ohne Bodensatz. Ordne nach Wasserlöslichkeit unter diesen Bedingungen und erkläre, welche Stoffe du durch dieses eine Merkmal noch nicht voneinander unterscheiden kannst. Keine Geschmacksprobe.",
+              "taskDemandEn": "Three harmless labelled solids are added separately, 5 g each, to 100 mL of water at 20 °C and stirred for the same time. Supplied observations: sugar disappears with no sediment, sand remains visible at the bottom, table salt disappears with no sediment. Group them by solubility in water under these conditions and explain which materials this one property still fails to distinguish. No tasting.",
+              "expectedPerformanceDe": "Zucker und Speisesalz werden als in dieser Menge und bei 20 °C wasserlöslich, Sand als nicht merklich wasserlöslich geordnet. Die Person nennt Wasser, gleiche Menge und Temperatur als Vergleichsbedingungen und behauptet nicht, Zucker und Salz durch Löslichkeit allein unterscheiden zu können.",
+              "expectedPerformanceEn": "Sugar and table salt are grouped as soluble in water at the stated amount and 20 °C, while sand is not noticeably soluble. The learner states water, equal amounts and temperature as comparison conditions and does not claim that solubility alone distinguishes sugar from salt.",
+              "understandingFocusDe": "Kontrollierter Löslichkeitsvergleich, zweiter löslicher Stoff und Grenze der Stoffidentifikation aus einem Merkmal.",
+              "understandingFocusEn": "Controlled solubility comparison, a second soluble material and the limit of identification from one property."
+            }
+          ]
+        }
+      },
+      "beforeWholeCurrentRecordPin": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-plan/records/P012.current-owner.review.jsonl",
+        "sha256": "99788ede143a476a951ca83d3eaa23b5146b1e51e2f7610abde9b3e0d5bdcd0f",
+        "bytes": 9359,
+        "lineOneBased": 1
+      },
+      "beforeWholeProfileSemanticSHA256": "eb29783d7d14e650ea9465efb19eaa471c95d92bea9df9aad34bd679be37522d",
+      "afterProfile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "b007r-fcc-properties-core",
+            "essentialUnderstandingDe": "Stoffe werden durch beobachtete oder unter vergleichbaren Bedingungen bestimmte Eigenschaften beschrieben und nach begründeten Kriterien geordnet. Farbe oder ein anderer Einzelbefund allein sichert eine Stoffidentität oft nicht; Stoffname und Eigenschaft sind verschieden. Aussagen zu Löslichkeit nennen das Lösungsmittel und die Bedingungen.",
+            "essentialUnderstandingEn": "Substances are described by observed properties or properties determined under comparable conditions and classified using justified criteria. Colour or another single observation often does not establish identity; a substance name and a property differ. Solubility claims specify the solvent and conditions.",
+            "observablePerformanceDe": "Die lernende Person erstellt aus sicheren vorgegebenen Beobachtungen eine kleine Eigenschaftsübersicht, ordnet Proben nach einem genannten Merkmal und erklärt die Grenze einer Zuordnung aus nur einem Merkmal.",
+            "observablePerformanceEn": "The learner builds a small property summary from safe supplied observations, groups samples by a named property and explains the limit of classification from one property alone."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "b007r-fcc-properties-core"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "sample-property",
+            "textDe": "Magnetismus und Oberflächenglanz bei Feststoffen wechseln zu Dichte und Fließverhalten bei Flüssigkeiten.",
+            "textEn": "Magnetism and surface lustre for solids change to density and flow behaviour for liquids."
+          },
+          {
+            "id": "evidence-strength",
+            "textDe": "Ein einzelnes gemeinsames Merkmal wird gegen eine Kombination unterscheidender Merkmale geprüft.",
+            "textEn": "A single shared property is checked against a combination of distinguishing properties."
+          },
+          {
+            "id": "controlled-solvent-conditions",
+            "textDe": "Gleiches Wasser, gleiche Stoffmenge und Temperatur sind für die konkrete Löslichkeitsaussage gebunden.",
+            "textEn": "The same water, material amount and temperature are tied to the specific solubility claim."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "new-solid-sample-table",
+            "taskDemandDe": "Drei sichere, vorbereitete Feststoffproben A, B, C sind gegeben: A ist dunkelgrau, glänzend und wird von einem Magneten angezogen; B ist silbrig glänzend und nicht magnetisch; C ist hell, körnig, matt und nicht magnetisch. Erstelle eine Eigenschaftstabelle, ordne die Proben nach Magnetismus und begründe, weshalb ‚nicht magnetisch‘ B und C nicht gleichsetzt. Keine unbekannte Probe anfassen oder schmecken.",
+            "taskDemandEn": "Three safe prepared solid samples A, B and C have supplied observations: A is dark grey, shiny and attracted by a magnet; B is silvery and shiny but non-magnetic; C is light-coloured, granular, dull and non-magnetic. Make a property table, group them by magnetism and explain why 'non-magnetic' does not make B and C the same substance. Do not handle or taste unknown samples.",
+            "expectedPerformanceDe": "A wird als magnetisch, B und C werden als nicht magnetisch geordnet. Die Person hält Farbe/Glanz/Körnigkeit getrennt fest und erklärt, dass B und C trotz gemeinsamer Nichtmagnetisierung in anderen Merkmalen verschieden sind; aus diesen wenigen Befunden wird keine sichere Stoffidentität behauptet.",
+            "expectedPerformanceEn": "A is grouped as magnetic, B and C as non-magnetic. The learner records colour, lustre and graininess separately and explains that B and C differ in other properties despite their shared non-magnetism; they do not claim certain identity from these limited observations.",
+            "understandingFocusDe": "Eigenschaften beschreiben, nach einem expliziten Kriterium ordnen und die Grenze eines Einzelmerkmals erklären.",
+            "understandingFocusEn": "Describe properties, classify by an explicit criterion and explain the limit of a single property."
+          },
+          {
+            "id": "fresh-colourless-liquid-data",
+            "taskDemandDe": "Zwei neue, verschlossene und beschriftete Flüssigkeitsproben X und Y sind beide farblos und klar. Vorgegebene Messdaten bei 20 °C: X hat 1,00 g/mL und fließt leicht, Y hat 1,26 g/mL und fließt deutlich zäher. Beschreibe und ordne die Proben anhand von zwei geeigneten Eigenschaften; begründe, weshalb die gleiche Farbe keine Gleichheit belegt. Keine eigene Geschmacks- oder Geruchsprobe.",
+            "taskDemandEn": "Two new sealed, labelled liquid samples X and Y are both colourless and clear. Supplied data at 20 °C say X has density 1.00 g/mL and flows readily; Y has density 1.26 g/mL and flows much more slowly. Describe and compare the samples using two suitable properties and explain why the same colour does not prove identity. No tasting or smelling samples.",
+            "expectedPerformanceDe": "Beide sind farblos/klar, aber Y ist bei gleicher Temperatur dichter und zähflüssiger als X. Die Person trennt gemeinsame von unterscheidenden Eigenschaften, nennt die 20-°C-Bedingung und vergibt ohne weitere Daten keine Stoffnamen.",
+            "expectedPerformanceEn": "Both are colourless and clear, but Y is denser and more viscous than X at the same temperature. The learner separates shared from distinguishing properties, states the 20 °C condition and does not assign substance names without more evidence.",
+            "understandingFocusDe": "Unabhängiger Transfer von Feststoffbeobachtungen auf Flüssigkeitsdaten und Vergleich unter gleichen Bedingungen.",
+            "understandingFocusEn": "Independent transfer from solid observations to liquid data and comparison under common conditions."
+          },
+          {
+            "id": "controlled-solubility-three-solids",
+            "taskDemandDe": "Drei ungefährliche, beschriftete Feststoffe werden jeweils mit 5 g in getrennte Becher mit 100 mL Wasser bei 20 °C gegeben und gleich lang gerührt. Vorgegebene Beobachtungen: Zucker verschwindet ohne Bodensatz, Sand bleibt sichtbar am Boden, Speisesalz verschwindet ohne Bodensatz. Ordne nach Wasserlöslichkeit unter diesen Bedingungen und erkläre, welche Stoffe du durch dieses eine Merkmal noch nicht voneinander unterscheiden kannst. Keine Geschmacksprobe.",
+            "taskDemandEn": "Three harmless labelled solids are added separately, 5 g each, to 100 mL of water at 20 °C and stirred for the same time. Supplied observations: sugar disappears with no sediment, sand remains visible at the bottom, table salt disappears with no sediment. Group them by solubility in water under these conditions and explain which materials this one property still fails to distinguish. No tasting.",
+            "expectedPerformanceDe": "Zucker und Speisesalz werden als in dieser Menge und bei 20 °C wasserlöslich, Sand als nicht merklich wasserlöslich geordnet. Die Person nennt Wasser, gleiche Menge und Temperatur als Vergleichsbedingungen und behauptet nicht, Zucker und Salz durch Löslichkeit allein unterscheiden zu können.",
+            "expectedPerformanceEn": "Sugar and table salt are grouped as soluble in water at the stated amount and 20 °C, while sand is not noticeably soluble. The learner states water, equal amounts and temperature as comparison conditions and does not claim that solubility alone distinguishes sugar from salt.",
+            "understandingFocusDe": "Kontrollierter Löslichkeitsvergleich, zweiter löslicher Stoff und Grenze der Stoffidentifikation aus einem Merkmal.",
+            "understandingFocusEn": "Controlled solubility comparison, a second soluble material and the limit of identification from one property."
+          },
+          {
+            "id": "aluminium-lightweight-property-classification",
+            "taskDemandDe": "Erstelle eine Eigenschaftstabelle und ordne nach Leitfähigkeit, Masse und der vollständig gegebenen Einsatzgruppe Leichtbau-L. Welche Eigenschaften und welcher weitere Befund tragen die Einordnung von A? Prüfe: „Der leichteste Werkstoff passt immer“ und „A und B sind wegen gleicher Leitfähigkeit derselbe Stoff“. Begründe nur aus den gegebenen Daten; konstruiere kein neues Bauteil. Vollständige Angaben: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SN-aluminium-existing-carriers-author-20261018-v1/materials/aluminium-property-use.learner.DE-EN.pending.json#/cases/0",
+            "taskDemandEn": "Make a property table and classify by conductivity, mass and the fully specified Lightweight-L group. Which properties and additional finding support A? Evaluate “the lightest material always fits” and “A and B are the same substance because both conduct.” Reason only from supplied data; design no new component. Complete givens: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SN-aluminium-existing-carriers-author-20261018-v1/materials/aluminium-property-use.learner.DE-EN.pending.json#/cases/0",
+            "expectedPerformanceDe": "A und B sind leitend, C isolierend. Nach Bauteilmasse C<A<B. Nur A erfüllt gleichzeitig L und höchstens 1,00 kg; B erfüllt L, überschreitet die Massengrenze, C unterschreitet die Masse, verfehlt aber L. Die Leichtbaueinordnung von A verbindet niedrige gegebene Masse mit positiver gleicher Funktionsqualifikation. Geringe Masse allein und gemeinsame Leitfähigkeit belegen weder Eignung noch Stoffidentität. Keine universelle Festigkeits-/Dichteaussage aus den Bauteilwerten.",
+            "expectedPerformanceEn": "A/B conduct; C insulates. Component mass order is C<A<B. Only A meets BOTH L and at most 1.00 kg; B meets L but exceeds mass limit, C meets mass limit but fails L. A fits lightweight use through low supplied mass plus qualification for the same function. Low mass alone or shared conductivity establishes neither suitability nor identity. Component values establish no universal strength/density claim.",
+            "understandingFocusDe": "Ganze bestehende Kompetenz auf diesen konkreten Al-Kontext anwenden; frischer Fall/Variation verlangt eigene Begründung. min2/fresh/independent bleiben, Fallzahl ist keine Aufgabenquote.",
+            "understandingFocusEn": "Apply the whole existing competence to this specific Al context; fresh context/variation requires independent reasoning. min2/fresh/independent remain; case count is no task quota."
+          },
+          {
+            "id": "fresh-aluminium-composite-layer-properties",
+            "taskDemandDe": "Ordne jeder Schicht die durch ihre angegebenen Eigenschaften erfüllte Verpackungsfunktion zu. Ordne U, V und U* nach dem vollständig angegebenen Eignungskriterium und nenne die Grenze der Zuordnung allein aus dem Namen Aluminium oder der Masse. Welche zusätzliche Eigenschaftsinformation verändert U* gegenüber U? Es geht um Beschreiben/Ordnen vorgegebener Eigenschaften, nicht um eine Ökobilanz oder Herstellungsvorschrift. Vollständige Angaben: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SN-aluminium-existing-carriers-author-20261018-v1/materials/aluminium-property-use.learner.DE-EN.pending.json#/cases/1",
+            "taskDemandEn": "Match each layer to the packaging function supported by its given properties. Classify U, V and U* by the fully specified suitability criterion and explain why aluminium identity or mass alone is insufficient. Which changed property information distinguishes U* from U? Describe/classify supplied properties; produce neither a life-cycle assessment nor a manufacturing procedure. Complete givens: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SN-aluminium-existing-carriers-author-20261018-v1/materials/aluminium-property-use.learner.DE-EN.pending.json#/cases/1",
+            "expectedPerformanceDe": "Karton trägt im gegebenen Modell Form/Bedruckbarkeit; PE Flüssigkeitsbarriere und Siegelbarkeit; durchgehende Al-Folie die geprüfte Licht-/Sauerstoffbarriere. U erfüllt die vorgegebenen Kriterien. V und U* verfehlen das Sauerstoffkriterium; gleiche Materialnamen bzw. Masse von U/U* ersetzen den Testbefund nicht. Die Unterbrechung und der positive Durchtritt ändern die relevante Barriereeigenschaft. Keine Aussage, nur Al könne jede Barriere erfüllen, jeder Getränkekarton enthalte Al oder U sei allgemein lebensmitteltauglich. Die Schlussfolgerung bleibt an den gegebenen Test gebunden.",
+            "expectedPerformanceEn": "In this model cardboard provides shape/printability, PE liquid barrier/sealing and continuous Al foil the tested light/oxygen barrier. U meets the specified criteria; V/U* fail the oxygen criterion. Identical material names or mass for U/U* do not replace property evidence. Interruption and positive passage change relevant barrier behavior. This establishes neither that only Al can provide any barrier, that all cartons contain Al, nor general food suitability. Inference stays within the given test.",
+            "understandingFocusDe": "Ganze bestehende Kompetenz auf diesen konkreten Al-Kontext anwenden; frischer Fall/Variation verlangt eigene Begründung. min2/fresh/independent bleiben, Fallzahl ist keine Aufgabenquote.",
+            "understandingFocusEn": "Apply the whole existing competence to this specific Al context; fresh context/variation requires independent reasoning. min2/fresh/independent remain; case count is no task quota."
+          }
+        ]
+      },
+      "afterWholeProfileSemanticSHA256": "43e9d069289016d726766b6af5f8da689bcdd7f3a1d0fa6b533e84ce0fc1f169",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "nativeHeadersNotInherited": true,
+      "oldRequiredCoverageAndAllWholeOldBodiesExact": true
+    },
+    {
+      "goalId": "b7ae47da-6afa-5651-977a-3139af7d6eab",
+      "beforeWholeCurrentRecord": {
+        "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+        "schemaVersion": 2,
+        "reviewId": "chemie-three-recycling-duty-positive-profile-author-20261013-v1",
+        "goalFingerprintRuleVersion": "goal-evidence-v1",
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "b7ae47da-6afa-5651-977a-3139af7d6eab",
+        "goalFingerprint": "sha256:06d14ad626d5f1c25a50d3c237e0aafb9dd24efd3f75a0c9bb2411112b7c9132",
+        "reviewInputFingerprint": "sha256:ae6df3b07dcf4bc74047f8b07a4e1aae68f728eb9e2c7e9967731695cd8aace9",
+        "profileFingerprint": "sha256:c4d034d5be0e064e13873d6a0a0ba72f0540bc21fc49bbcda9ab6d1de04d3531",
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "reviewedAt": "2026-10-17T21:23:41.999975+00:00",
+        "reviewer": "Codex B technical current-input serialization; underlying scientific authors and reviewers remain recorded in the P442 selection/provenance",
+        "reason": "New whole-duty bilingual data-based profile and two complete fresh transfer case designs for the unchanged frozen goal. Independent case/profile review and final compiler/SEM/image/page input binding remain pending; no human or mastery evidence.",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1",
+        "reviewRunIds": [],
+        "dissent": [],
+        "profile": {
+          "archetype": "data",
+          "expectations": [
+            {
+              "id": "e1",
+              "essentialUnderstandingDe": "Metallrecycling führt bereits genutztes Metall als nutzbaren Rohstoff zurück und kann dadurch die Gewinnung neuen Metallrohstoffs vermindern. Verluste und notwendige Ergänzungen können verbleiben; Rückgewinnung macht zusätzlichen Konsum nicht automatisch ressourcenneutral.",
+              "essentialUnderstandingEn": "Metal recycling returns previously used metal as a usable raw material and can reduce extraction of new metal resources. Losses and required new-material additions may remain; recovery does not automatically make extra consumption resource-neutral.",
+              "observablePerformanceDe": "Beschreibt anhand einer vorgegebenen Vergleichsbasis, wie Rückgewinnung den Bedarf an neu gewonnenem Metall beeinflusst, und erläutert die Bedeutung für eine eigene oder selbst gewählte hypothetische Konsumentscheidung.",
+              "observablePerformanceEn": "Describes how recovery changes demand for newly extracted metal on a supplied comparison basis and explains the significance for a personal or self-chosen hypothetical consumption decision."
+            },
+            {
+              "id": "e2",
+              "essentialUnderstandingDe": "Die erneute Bereitstellung von Metall kann gegenüber der Gewinnung aus Erzen Energie einsparen. Eine belastbare Vergleichsaussage benötigt dieselbe nutzbare Metallmenge und eine benannte Grenze; Recycling benötigt selbst Energie und ein anderer Weg kann den Energievergleich ändern.",
+              "essentialUnderstandingEn": "Supplying metal again can save energy compared with extraction from ores. A defensible comparison needs the same usable metal quantity and a stated boundary; recycling itself uses energy and another route can change the energy comparison.",
+              "observablePerformanceDe": "Erklärt aus gegebenen Daten die Bedeutung möglicher Energieeinsparung, trennt Einsparung von Nullverbrauch und begrenzt das Urteil bei einer geänderten Vergleichssituation. Eine quantitative Ökobilanz oder Beschreibung von Recyclingmaschinen ist nicht erforderlich.",
+              "observablePerformanceEn": "Explains the significance of potential energy saving from supplied data, distinguishes saving from zero use and limits the judgment under a changed comparison situation. Quantitative life-cycle assessment or descriptions of recycling machinery are not required."
+            },
+            {
+              "id": "e3",
+              "essentialUnderstandingDe": "Die Bewertung von Konsum und Entsorgung muss auf dem Ressourcen- und Energiebezug beruhen. Metallrückgabe und Vermeidung unnötiger Neubeschaffung können zusammenwirken; eine bloße Recycling-Parole ersetzt diese Begründung nicht.",
+              "essentialUnderstandingEn": "Assessment of consumption and disposal must be based on resource and energy reasoning. Returning metal and avoiding unnecessary new purchases may work together; a recycling slogan does not replace this justification.",
+              "observablePerformanceDe": "Wählt und begründet eine hypothetische Konsum- und Entsorgungsoption mit beiden fachlichen Bezügen und überträgt die Entscheidung auf neue Angaben, ohne private Haushaltsdaten anzugeben oder eine universelle Rangfolge zu behaupten.",
+              "observablePerformanceEn": "Chooses and justifies a hypothetical consumption and disposal option using both scientific links and transfers the decision to new information without disclosing private household data or claiming a universal ranking."
+            }
+          ],
+          "coverageExpectations": {
+            "requiredExpectationIds": [
+              "e1",
+              "e2",
+              "e3"
+            ],
+            "alternativeExpectationGroups": [],
+            "minimumIndependentDemonstrations": 2,
+            "freshVariationRequired": true,
+            "independentTransferRequired": true
+          },
+          "variationAxes": [
+            {
+              "id": "v1",
+              "textDe": "Metall X/Y und nutzbare gemeinsame Vergleichsmenge",
+              "textEn": "Metal X/Y and a common usable comparison amount"
+            },
+            {
+              "id": "v2",
+              "textDe": "Rohstoffergänzung, Rückgewinnung und geänderter Energieaufwand",
+              "textEn": "New-material addition, recovery and changed energy effort"
+            },
+            {
+              "id": "v3",
+              "textDe": "Notwendiger Konsum, zusätzliche Nachfrage und Entsorgungswahl",
+              "textEn": "Necessary consumption, extra demand and disposal choice"
+            }
+          ],
+          "applicationCaseBriefs": [
+            {
+              "id": "b7ae47da-case-1",
+              "taskDemandDe": "1. Beschreibe die Bedeutung des Recyclingwegs für Ressourcenschonung und Energieeinsparung gegenüber dem Primärweg. Vergleiche qualitativ; eine Rechnung oder Anlagenbeschreibung ist nicht nötig. 2. Wähle eine eigene, aber frei erfundene Konsum-/Entsorgungsentscheidung C oder D und begründe beide Teile mit den Daten. 3. Übertrage deine Begründung auf die zusätzliche Anschaffung: Widerlege oder begrenze die Behauptung. Keine Angaben zu deinem wirklichen Haushalt sind verlangt.",
+              "taskDemandEn": "1. Describe the recycling route's significance for resource conservation and energy saving compared with the primary route. A qualitative comparison suffices; no calculation or plant description is needed. 2. Choose C or D for a personal but freely invented consumption/disposal situation and justify both parts from the data. 3. Transfer your reasoning to an additional purchase: refute or limit the claim. No information about your actual household is requested.",
+              "expectedPerformanceDe": "Rückgewonnenes X ersetzt im Modell einen Teil neuen Rohstoffs: statt 1 kg werden 0,2 kg neu benötigt. Auf derselben nutzbaren Mengenbasis ist 35 kleiner als 100; erneute Metallbereitstellung spart hier Energie, benötigt aber weiterhin Energie. Nicht vollständig nutzbare Rückgewinnung und Ergänzung bleiben. C vermeidet eine unnötige neue Metallnachfrage während der Nutzungszeit und hält am Ende den Stoff für Rückgewinnung verfügbar. D schafft zusätzliche Nachfrage und verliert laut Material die spätere Rückgewinnungsmöglichkeit. Für die frei gewählte Situation ist C mit beiden Bezügen begründet. Ein zusätzliches Produkt benötigt trotz Recycling mindestens die angegebenen Ergänzungsrohstoffe und Energie für Bereitstellung; Recycling macht überflüssige Käufe nicht ressourcen- oder energieneutral. Diese Schlussfolgerung erklärt die Bedeutung des gegebenen Metallrecyclings, nicht jede reale Anlage oder jedes Produkt.",
+              "expectedPerformanceEn": "Recovered X replaces part of the new raw material in this model: only 0.2 kg rather than 1 kg is newly required. On the same usable-quantity basis, 35 is lower than 100; supplying metal again saves energy here but still uses energy. Incomplete useful recovery and new-material additions remain. C avoids unnecessary new metal demand during use and keeps the material available for recovery at end of use. D creates extra demand and loses the later recovery opportunity according to the material. C is justified through both links for the freely chosen situation. An extra product still requires the stated new-material additions and supply energy; recycling does not make unnecessary purchases resource- or energy-neutral. This explains the significance of the supplied metal-recycling case, not every actual plant or product.",
+              "understandingFocusDe": "Erklärt Ersatz neuen Metallrohstoffs durch 0,8 kg Rückgewinnung sowie verbleibende 0,2 kg Ergänzung. / Verbindet 35 gegenüber 100 mit gleicher nutzbarer Menge und positiv verbleibendem Energieverbrauch. / Begründet C für Konsum UND Entsorgung mit Ressourcen/Energie und widerlegt die Neutralitätsbehauptung zur Zusatzanschaffung.",
+              "understandingFocusEn": "Explains replacement of new metal raw material by 0.8 kg recovery and remaining 0.2 kg addition. / Links 35 versus 100 to the same usable quantity and remaining positive energy use. / Justifies C for BOTH consumption and disposal through resources/energy and refutes neutrality of an extra purchase."
+            },
+            {
+              "id": "b7ae47da-case-2",
+              "taskDemandDe": "1. Beschreibe für R1 die Bedeutung des Metallrecyclings für Ressourcenschonung und Energieeinsparung. 2. Übertrage auf R2: Was bleibt gleich, was ändert sich gegenüber P? Darf „Recycling spart immer Energie“ gelten? 3. Begründe für deine frei erfundene Entscheidung sowohl den Konsumteil (benötigter Ersatz oder zusätzliche Anschaffung) als auch den Entsorgungsteil (Erfassung oder gemischter Reststrom), zunächst mit R1 und dann mit R2. Formuliere eine begrenzte Entscheidung; eine Ökobilanz oder Maschinenbeschreibung ist nicht gefordert.",
+              "taskDemandEn": "1. Describe R1 metal recycling's significance for conserving resources and saving energy. 2. Transfer to R2: what stays the same and what changes compared with P? Is “recycling always saves energy” justified? 3. For your freely invented decision, justify both consumption (needed replacement or extra purchase) and disposal (collection or mixed residue), initially for R1 and then R2. Give a limited decision; no life-cycle calculation or machinery description is required.",
+              "expectedPerformanceDe": "R1 liefert 0,8 kg aus vorher genutztem Metall zurück und benötigt nur 0,2 kg neuen Rohstoff statt 1 kg bei P. Auf gleicher Nutzbasis spart Index 30 gegenüber 55 Energie, ohne Energieverbrauch auf null zu setzen. R2 hat denselben Ressourcenschonungsbezug, spart innerhalb dieser Grenze aber keine Energie gegenüber P: 60 liegt über 55. Der zusätzliche Aufwand kann den ursprünglichen Energievorteil ändern; ein universelles „immer“ ist widerlegt. Für die hypothetische Entscheidung ist der benötigte Ersatz anders zu beurteilen als ein überflüssiger Zusatzkauf. Verzicht auf den Zusatzkauf vermeidet weitere Metallnachfrage. Erfassung eröffnet in beiden Recyclingvarianten Rückgewinnung; im Reststrom geht sie laut Daten verloren. Mit R1 sprechen Ressourcen und Energie gemeinsam für die gegebene Rückführung. Mit R2 muss der Ressourcennutzen gegen den höheren angegebenen Energieaufwand abgewogen werden; Sammlung bleibt keine Behauptung eines Gesamtenergievorteils. Weitere Umweltfolgen sind nicht angegeben, deshalb ist keine universelle Gesamtumweltrangfolge belegt.",
+              "expectedPerformanceEn": "R1 returns 0.8 kg of previously used metal and requires only 0.2 kg new raw material rather than P's 1 kg. On the same usable basis, index 30 saves energy against 55 without making energy use zero. R2 has the same resource-conservation link but saves no energy against P within this boundary: 60 exceeds 55. Extra effort can change the original energy advantage, disproving a universal “always.” For the hypothetical choice, a needed replacement differs from an unnecessary extra purchase. Avoiding the extra purchase prevents further metal demand. Collection permits recovery for both recycling variants; the residue stream loses it according to the data. With R1, resource and energy links jointly favor the supplied return route. With R2, resource benefit must be weighed against the higher stated energy effort; collection does not establish an overall energy advantage. Other impacts are unspecified, so no universal overall environmental ranking is proven.",
+              "understandingFocusDe": "Erklärt für R1/R2 gleichermaßen Rückgewinnung und geringeren neuen Rohstoffbedarf; Zusatzkauf erzeugt weitere Nachfrage. / Begrenzt R1-Energieeinsparung auf gleiche Nutzbasis und erklärt, weshalb R2 gegenüber P keine Einsparung zeigt. / Begründet Konsum UND Entsorgung für beide Kontexte und benennt den R2-Ressourcen-/Energiekonflikt sowie die Urteilsgrenze.",
+              "understandingFocusEn": "Explains recovery and lower new raw-material demand for both R1/R2; an extra purchase creates further demand. / Bounds R1 energy saving to the same usable basis and explains why R2 shows no saving against P. / Justifies BOTH consumption and disposal for both contexts and identifies the R2 resource/energy trade-off and conclusion limit."
+            }
+          ]
+        }
+      },
+      "beforeWholeCurrentRecordPin": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current442-normal-integration-20261017-v1/P442-plan/records/P065.current-owner.review.jsonl",
+        "sha256": "5f880c5c668da6af5ead32088aac3e6007c0338bfa9c3d3b1a7805384ead0648",
+        "bytes": 38627,
+        "lineOneBased": 3
+      },
+      "beforeWholeProfileSemanticSHA256": "e23e25fe3b87cc6dabc969cf65818e7a9e44916222af25e30e4d8c53f1e0adee",
+      "afterProfile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Metallrecycling führt bereits genutztes Metall als nutzbaren Rohstoff zurück und kann dadurch die Gewinnung neuen Metallrohstoffs vermindern. Verluste und notwendige Ergänzungen können verbleiben; Rückgewinnung macht zusätzlichen Konsum nicht automatisch ressourcenneutral.",
+            "essentialUnderstandingEn": "Metal recycling returns previously used metal as a usable raw material and can reduce extraction of new metal resources. Losses and required new-material additions may remain; recovery does not automatically make extra consumption resource-neutral.",
+            "observablePerformanceDe": "Beschreibt anhand einer vorgegebenen Vergleichsbasis, wie Rückgewinnung den Bedarf an neu gewonnenem Metall beeinflusst, und erläutert die Bedeutung für eine eigene oder selbst gewählte hypothetische Konsumentscheidung.",
+            "observablePerformanceEn": "Describes how recovery changes demand for newly extracted metal on a supplied comparison basis and explains the significance for a personal or self-chosen hypothetical consumption decision."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Die erneute Bereitstellung von Metall kann gegenüber der Gewinnung aus Erzen Energie einsparen. Eine belastbare Vergleichsaussage benötigt dieselbe nutzbare Metallmenge und eine benannte Grenze; Recycling benötigt selbst Energie und ein anderer Weg kann den Energievergleich ändern.",
+            "essentialUnderstandingEn": "Supplying metal again can save energy compared with extraction from ores. A defensible comparison needs the same usable metal quantity and a stated boundary; recycling itself uses energy and another route can change the energy comparison.",
+            "observablePerformanceDe": "Erklärt aus gegebenen Daten die Bedeutung möglicher Energieeinsparung, trennt Einsparung von Nullverbrauch und begrenzt das Urteil bei einer geänderten Vergleichssituation. Eine quantitative Ökobilanz oder Beschreibung von Recyclingmaschinen ist nicht erforderlich.",
+            "observablePerformanceEn": "Explains the significance of potential energy saving from supplied data, distinguishes saving from zero use and limits the judgment under a changed comparison situation. Quantitative life-cycle assessment or descriptions of recycling machinery are not required."
+          },
+          {
+            "id": "e3",
+            "essentialUnderstandingDe": "Die Bewertung von Konsum und Entsorgung muss auf dem Ressourcen- und Energiebezug beruhen. Metallrückgabe und Vermeidung unnötiger Neubeschaffung können zusammenwirken; eine bloße Recycling-Parole ersetzt diese Begründung nicht.",
+            "essentialUnderstandingEn": "Assessment of consumption and disposal must be based on resource and energy reasoning. Returning metal and avoiding unnecessary new purchases may work together; a recycling slogan does not replace this justification.",
+            "observablePerformanceDe": "Wählt und begründet eine hypothetische Konsum- und Entsorgungsoption mit beiden fachlichen Bezügen und überträgt die Entscheidung auf neue Angaben, ohne private Haushaltsdaten anzugeben oder eine universelle Rangfolge zu behaupten.",
+            "observablePerformanceEn": "Chooses and justifies a hypothetical consumption and disposal option using both scientific links and transfers the decision to new information without disclosing private household data or claiming a universal ranking."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2",
+            "e3"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "v1",
+            "textDe": "Metall X/Y und nutzbare gemeinsame Vergleichsmenge",
+            "textEn": "Metal X/Y and a common usable comparison amount"
+          },
+          {
+            "id": "v2",
+            "textDe": "Rohstoffergänzung, Rückgewinnung und geänderter Energieaufwand",
+            "textEn": "New-material addition, recovery and changed energy effort"
+          },
+          {
+            "id": "v3",
+            "textDe": "Notwendiger Konsum, zusätzliche Nachfrage und Entsorgungswahl",
+            "textEn": "Necessary consumption, extra demand and disposal choice"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "b7ae47da-case-1",
+            "taskDemandDe": "1. Beschreibe die Bedeutung des Recyclingwegs für Ressourcenschonung und Energieeinsparung gegenüber dem Primärweg. Vergleiche qualitativ; eine Rechnung oder Anlagenbeschreibung ist nicht nötig. 2. Wähle eine eigene, aber frei erfundene Konsum-/Entsorgungsentscheidung C oder D und begründe beide Teile mit den Daten. 3. Übertrage deine Begründung auf die zusätzliche Anschaffung: Widerlege oder begrenze die Behauptung. Keine Angaben zu deinem wirklichen Haushalt sind verlangt.",
+            "taskDemandEn": "1. Describe the recycling route's significance for resource conservation and energy saving compared with the primary route. A qualitative comparison suffices; no calculation or plant description is needed. 2. Choose C or D for a personal but freely invented consumption/disposal situation and justify both parts from the data. 3. Transfer your reasoning to an additional purchase: refute or limit the claim. No information about your actual household is requested.",
+            "expectedPerformanceDe": "Rückgewonnenes X ersetzt im Modell einen Teil neuen Rohstoffs: statt 1 kg werden 0,2 kg neu benötigt. Auf derselben nutzbaren Mengenbasis ist 35 kleiner als 100; erneute Metallbereitstellung spart hier Energie, benötigt aber weiterhin Energie. Nicht vollständig nutzbare Rückgewinnung und Ergänzung bleiben. C vermeidet eine unnötige neue Metallnachfrage während der Nutzungszeit und hält am Ende den Stoff für Rückgewinnung verfügbar. D schafft zusätzliche Nachfrage und verliert laut Material die spätere Rückgewinnungsmöglichkeit. Für die frei gewählte Situation ist C mit beiden Bezügen begründet. Ein zusätzliches Produkt benötigt trotz Recycling mindestens die angegebenen Ergänzungsrohstoffe und Energie für Bereitstellung; Recycling macht überflüssige Käufe nicht ressourcen- oder energieneutral. Diese Schlussfolgerung erklärt die Bedeutung des gegebenen Metallrecyclings, nicht jede reale Anlage oder jedes Produkt.",
+            "expectedPerformanceEn": "Recovered X replaces part of the new raw material in this model: only 0.2 kg rather than 1 kg is newly required. On the same usable-quantity basis, 35 is lower than 100; supplying metal again saves energy here but still uses energy. Incomplete useful recovery and new-material additions remain. C avoids unnecessary new metal demand during use and keeps the material available for recovery at end of use. D creates extra demand and loses the later recovery opportunity according to the material. C is justified through both links for the freely chosen situation. An extra product still requires the stated new-material additions and supply energy; recycling does not make unnecessary purchases resource- or energy-neutral. This explains the significance of the supplied metal-recycling case, not every actual plant or product.",
+            "understandingFocusDe": "Erklärt Ersatz neuen Metallrohstoffs durch 0,8 kg Rückgewinnung sowie verbleibende 0,2 kg Ergänzung. / Verbindet 35 gegenüber 100 mit gleicher nutzbarer Menge und positiv verbleibendem Energieverbrauch. / Begründet C für Konsum UND Entsorgung mit Ressourcen/Energie und widerlegt die Neutralitätsbehauptung zur Zusatzanschaffung.",
+            "understandingFocusEn": "Explains replacement of new metal raw material by 0.8 kg recovery and remaining 0.2 kg addition. / Links 35 versus 100 to the same usable quantity and remaining positive energy use. / Justifies C for BOTH consumption and disposal through resources/energy and refutes neutrality of an extra purchase."
+          },
+          {
+            "id": "b7ae47da-case-2",
+            "taskDemandDe": "1. Beschreibe für R1 die Bedeutung des Metallrecyclings für Ressourcenschonung und Energieeinsparung. 2. Übertrage auf R2: Was bleibt gleich, was ändert sich gegenüber P? Darf „Recycling spart immer Energie“ gelten? 3. Begründe für deine frei erfundene Entscheidung sowohl den Konsumteil (benötigter Ersatz oder zusätzliche Anschaffung) als auch den Entsorgungsteil (Erfassung oder gemischter Reststrom), zunächst mit R1 und dann mit R2. Formuliere eine begrenzte Entscheidung; eine Ökobilanz oder Maschinenbeschreibung ist nicht gefordert.",
+            "taskDemandEn": "1. Describe R1 metal recycling's significance for conserving resources and saving energy. 2. Transfer to R2: what stays the same and what changes compared with P? Is “recycling always saves energy” justified? 3. For your freely invented decision, justify both consumption (needed replacement or extra purchase) and disposal (collection or mixed residue), initially for R1 and then R2. Give a limited decision; no life-cycle calculation or machinery description is required.",
+            "expectedPerformanceDe": "R1 liefert 0,8 kg aus vorher genutztem Metall zurück und benötigt nur 0,2 kg neuen Rohstoff statt 1 kg bei P. Auf gleicher Nutzbasis spart Index 30 gegenüber 55 Energie, ohne Energieverbrauch auf null zu setzen. R2 hat denselben Ressourcenschonungsbezug, spart innerhalb dieser Grenze aber keine Energie gegenüber P: 60 liegt über 55. Der zusätzliche Aufwand kann den ursprünglichen Energievorteil ändern; ein universelles „immer“ ist widerlegt. Für die hypothetische Entscheidung ist der benötigte Ersatz anders zu beurteilen als ein überflüssiger Zusatzkauf. Verzicht auf den Zusatzkauf vermeidet weitere Metallnachfrage. Erfassung eröffnet in beiden Recyclingvarianten Rückgewinnung; im Reststrom geht sie laut Daten verloren. Mit R1 sprechen Ressourcen und Energie gemeinsam für die gegebene Rückführung. Mit R2 muss der Ressourcennutzen gegen den höheren angegebenen Energieaufwand abgewogen werden; Sammlung bleibt keine Behauptung eines Gesamtenergievorteils. Weitere Umweltfolgen sind nicht angegeben, deshalb ist keine universelle Gesamtumweltrangfolge belegt.",
+            "expectedPerformanceEn": "R1 returns 0.8 kg of previously used metal and requires only 0.2 kg new raw material rather than P's 1 kg. On the same usable basis, index 30 saves energy against 55 without making energy use zero. R2 has the same resource-conservation link but saves no energy against P within this boundary: 60 exceeds 55. Extra effort can change the original energy advantage, disproving a universal “always.” For the hypothetical choice, a needed replacement differs from an unnecessary extra purchase. Avoiding the extra purchase prevents further metal demand. Collection permits recovery for both recycling variants; the residue stream loses it according to the data. With R1, resource and energy links jointly favor the supplied return route. With R2, resource benefit must be weighed against the higher stated energy effort; collection does not establish an overall energy advantage. Other impacts are unspecified, so no universal overall environmental ranking is proven.",
+            "understandingFocusDe": "Erklärt für R1/R2 gleichermaßen Rückgewinnung und geringeren neuen Rohstoffbedarf; Zusatzkauf erzeugt weitere Nachfrage. / Begrenzt R1-Energieeinsparung auf gleiche Nutzbasis und erklärt, weshalb R2 gegenüber P keine Einsparung zeigt. / Begründet Konsum UND Entsorgung für beide Kontexte und benennt den R2-Ressourcen-/Energiekonflikt sowie die Urteilsgrenze.",
+            "understandingFocusEn": "Explains recovery and lower new raw-material demand for both R1/R2; an extra purchase creates further demand. / Bounds R1 energy saving to the same usable basis and explains why R2 shows no saving against P. / Justifies BOTH consumption and disposal for both contexts and identifies the R2 resource/energy trade-off and conclusion limit."
+          },
+          {
+            "id": "aluminium-return-resource-energy-choice",
+            "taskDemandDe": "Beschreibe Ressourcenschonung und mögliche Energieeinsparung von R gegenüber P bei gleicher nutzbarer Al-Menge. Unterscheide Erfassung, echte Rückgewinnung, verbleibende Verluste und Ergänzung. Begründe für deine frei gewählte hypothetische Situation Konsum UND Entsorgung bei C/D. Prüfe „Al ist beliebig vollständig im Kreislauf, daher ist jeder Zusatzkauf folgenlos“. Ein qualitativer Mengen-/Energievergleich genügt, keine neue Rechen- oder Ökobilanzquote. Vollständige Angaben: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SN-aluminium-existing-carriers-author-20261018-v1/materials/aluminium-recycling.learner.DE-EN.pending.json#/cases/0",
+            "taskDemandEn": "Explain resource conservation and possible energy saving for R versus P at equal usable Al quantity. Distinguish collection, actual recovery, remaining losses and new addition. Justify BOTH consumption and disposal for C/D in a freely chosen hypothetical situation. Evaluate “Al is always completely in a loop, so any extra purchase is impact-free.” Qualitative material/energy comparison suffices; no added calculation/life-cycle quota. Complete givens: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SN-aluminium-existing-carriers-author-20261018-v1/materials/aluminium-recycling.learner.DE-EN.pending.json#/cases/0",
+            "expectedPerformanceDe": "R ersetzt 0,80 kg neuen Al-Rohstoff, benötigt aber 0,20 kg Primärergänzung und lässt 0,20 kg Alt-Al außerhalb des nutzbaren Produktstroms. 35<100 zeigt innerhalb derselben gegebenen Grenze eine Energieeinsparung, keinen Nullverbrauch oder vollständigen Kreislauf. C vermeidet unnötigen neuen Bedarf und eröffnet am Nutzungsende Rückgewinnung über G; D erzeugt Zusatzbedarf und verliert im vorgegebenen Restweg nutzbares Al. Auch ein Zusatzprodukt aus R braucht Ergänzung und positive Energie. Sammlung ist eine Voraussetzung, nicht der fertige Produktstrom. Die begründete Entscheidung bleibt an die erfüllte Funktion und Modelldaten gebunden; keine universelle Klima-/Anlagenrangfolge.",
+            "expectedPerformanceEn": "R replaces 0.80 kg new Al resource but needs 0.20 kg primary addition and leaves 0.20 kg waste Al outside usable output. 35<100 shows energy saving within the same given boundary, not zero use or a complete loop. C avoids unnecessary new demand and permits later recovery through G; D adds demand and loses usable Al through the specified residue route. An extra R product still needs new addition and positive energy. Collection is a prerequisite, not finished recovered output. Judgment stays with the required function/model data, not a universal climate/plant ranking.",
+            "understandingFocusDe": "Ganze bestehende Kompetenz auf diesen konkreten Al-Kontext anwenden; frischer Fall/Variation verlangt eigene Begründung. min2/fresh/independent bleiben, Fallzahl ist keine Aufgabenquote.",
+            "understandingFocusEn": "Apply the whole existing competence to this specific Al context; fresh context/variation requires independent reasoning. min2/fresh/independent remain; case count is no task quota."
+          },
+          {
+            "id": "fresh-composite-aluminium-separation-and-limits",
+            "taskDemandDe": "Erkläre anhand der ganzen Kette, warum die Sammlung nicht automatisch 5 kg Al-Rückgewinnung bedeutet und welcher Primärbedarf bleibt. Ordne die einzelnen gegebenen Stoffströme dem Verbundtrennproblem zu; qualitative Erläuterung genügt. Vergleiche den Ressourcen- und Energiebezug der gleich nutzbaren 5 kg Al in der ausdrücklich gegebenen Rechnung. Begründe Konsum UND Entsorgung in einer frei erfundenen Situation, ohne aus einer Kennzahl die Gesamtumweltrangfolge aller Verpackungen abzuleiten. Übertrage anschließend auf das Gebiet ohne Folgetrennung: Was ist für den Metallkreislauf nicht mehr belegt, was bleibt über Fasergewinnung bekannt, und welche Angaben fehlen? Es ist keine echte Entsorgung oder Anlage zu betreiben. Vollständige Angaben: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SN-aluminium-existing-carriers-author-20261018-v1/materials/aluminium-recycling.learner.DE-EN.pending.json#/cases/1",
+            "taskDemandEn": "Use the whole chain to explain why collection does not guarantee 5 kg Al recovery and what primary demand remains. Relate supplied flows to composite separation; qualitative reasoning suffices. Compare resource and energy implications for the same5kg usable Al under the expressly supplied account. Justify BOTH consumption and disposal in a fictional situation without turning one indicator into an overall ranking of all packaging. Transfer to the area lacking specialist separation: what no longer supports the metal loop, what remains known about fibre recovery and which data are missing? Perform no actual disposal or plant operation. Complete givens: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current450-SN-aluminium-existing-carriers-author-20261018-v1/materials/aluminium-recycling.learner.DE-EN.pending.json#/cases/1",
+            "expectedPerformanceDe": "Die ankommenden 80 kg enthalten nur 4 kg der ursprünglichen 5 kg Al; 1 kg Al liegt bereits im nicht erfassten Teil. Fasergewinnung allein trennt Al noch nicht als nutzbaren Strom. Die Folgetrennung gewinnt 3 kg Al, während 1 kg Al im Anlagenrest bleibt. Zusammen bleiben 2 kg Alt-Al ohne nutzbaren Al-Produktstrom; für 5 kg gleiches Halbzeug sind 2 kg Primärergänzung nötig. 50+12+3+15+20=100 kg bilanziert die vorgegebenen Endfraktionen, nicht einen hundertprozentigen Metallkreislauf. R spart nach Al-Menge Primärrohstoff (2 statt5 kg), spart in der hier ausdrücklich gegebenen Al-Rechnung aber keine Energie:550>500. Der Ressourcennutzen ist gegen den höheren angegebenen Energiebezug abzuwägen; weder Zahl beweist eine Gesamt-LCA. Unnötiger Zusatzkauf schafft weiteren Bedarf; bei notwendigem Ersatz bleibt der getrennte gegebene Weg G die Möglichkeit zur Rückgewinnung. Im Gebiet ohne Folgetrennung bleibt 50 kg Fasergewinnung bekannt, aber kein separierter nutzbarer Al-Strom. 3 kg/550 sind dort unbelegt; neue tatsächliche Verfahrens-, Produkt-/Qualitäts- und Energieangaben sind erforderlich. Energetische Restverwertung ist kein ausgewiesenes Al-Recycling. Keine allgemeine Aussage über alle Anlagen oder Verpackungen.",
+            "expectedPerformanceEn": "The 80 kg collected portion contains only 4 of the original 5 kg Al; 1 kg lies in uncollected waste. Fibre recovery alone supplies no separated usable Al. Specialist separation recovers 3 kg, leaving 1 kg in plant residue. Thus 2 kg original Al fails to return as usable output and 5 kg identical stock needs 2 kg primary addition. 50+12+3+15+20=100 kg balances given end fractions, not a complete metal loop. R reduces new Al demand(2 rather than 5 kg) but saves no energy under the expressly given Al account: 550>500. Weigh resource benefits against higher stated energy; neither is an overall LCA. Unnecessary extra purchase adds demand; for needed replacement G remains the supplied recovery opportunity. Without specialist separation 50 kg fibre recovery remains known but no separated usable Al output. Copying 3 kg/550 is unsupported; matching actual process, output-quality and energy information is needed. Residue energy recovery is no declared Al recycling. Do not generalize to all plants or packaging.",
+            "understandingFocusDe": "Ganze bestehende Kompetenz auf diesen konkreten Al-Kontext anwenden; frischer Fall/Variation verlangt eigene Begründung. min2/fresh/independent bleiben, Fallzahl ist keine Aufgabenquote.",
+            "understandingFocusEn": "Apply the whole existing competence to this specific Al context; fresh context/variation requires independent reasoning. min2/fresh/independent remain; case count is no task quota."
+          }
+        ]
+      },
+      "afterWholeProfileSemanticSHA256": "2e849dddbad915de0939e45b9d573237b4aa93f51de9b10b5b8cfe9f6c07d06b",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "nativeHeadersNotInherited": true,
+      "oldRequiredCoverageAndAllWholeOldBodiesExact": true
+    }
+  ],
+  "newGoalIds": [],
+  "noIndependentVoteOrNativePClaim": true
+}

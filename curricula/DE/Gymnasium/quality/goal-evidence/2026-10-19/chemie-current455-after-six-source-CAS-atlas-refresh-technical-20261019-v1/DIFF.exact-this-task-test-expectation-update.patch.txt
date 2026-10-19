@@ -1,0 +1,34 @@
+--- before-test
++++ after-test
+@@ -371,9 +371,10 @@
+   // The later independently reviewed source bindings add ten existing atoms;
+   // The integrated RP elective quality, SN GK film-fixing and TH LK comparison
+   // source bindings add three existing atoms. Current454 retains the reviewed
+-  // source additions and the narrow ST Q-method correction; 32 goals remain
+-  // omitted and all504 source-scope HOLDs remain.
+-  assert.deepEqual(chemistry.receipt.counts, { canonicalCurricularAtomicGoals: 454, publishedCurricularAtomicGoals: 422, sourceViews: 48, unresolvedSourceScopeDecisions: 504, omittedGoals: 32 })
++  // source additions and the narrow ST Q-method correction. Current455 adds
++  // the ester property atom and preserves its reviewed source components;
++  // 32 goals remain omitted and all504 source-scope HOLDs remain.
++  assert.deepEqual(chemistry.receipt.counts, { canonicalCurricularAtomicGoals: 455, publishedCurricularAtomicGoals: 423, sourceViews: 48, unresolvedSourceScopeDecisions: 504, omittedGoals: 32 })
+   const stEnergyGoalId = '87d8cc68-fe82-5273-9e43-c18b566ecb6c'
+   const stMathematicalMethodsSourceId = 'st-chemistry-sekii-process-standard-q-e-mathematical-methods'
+   assert.deepEqual(chemistry.receipt.scopes.filter(scope => scope.jurisdiction === 'DE-ST')
+@@ -540,7 +541,7 @@
+       'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-nineteen-target-source-gaps-author-20261018-v1/components/02-colour-and-context-components/candidate/sources/DE-SN.whole-selected-source-plus-whole-clauses.pending.json'],
+     ['DE-TH/SekII/LK', 'th-chem-sekii-th-ch-sekii-4-1-8-synthesen-171-03-99c1b0d0', '0559cec7-330b-57f1-a409-31cf1b4ac9fb',
+       'curricula/DE/Gymnasium/mapping/DE-TH/upper-secondary/th_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.json',
+-      'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-18/chemie-current454-joint-source-integration-technical-20261018-v1/candidate/sources/21.TH.current235.selected-conditions-LK.source-extraction.json'],
++      'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-62de-three-source-bridges-and-NI-open-author-20261019-v1/candidate/sources/TH.current236-plus-one-whole-property-clause.source-extraction.json'],
+   ] as const
+   const checkpointChemistryGoalIds = new Set<string>(checkpointChemistryWitnesses.map(row => row[2]))
+   assert.equal(checkpointChemistryGoalIds.size, 3)
+@@ -584,7 +585,7 @@
+   assert.ok(!chemistry.receipt.scopes.find(s => s.key === 'DE-HE/SekII/GK')!.goalIds.includes(quantitativeGibbsGoalId),
+     'The reviewed LK calculation must not widen the HE GK scope')
+   assert.deepEqual(chemistry.receipt.scopes.filter(s => s.jurisdiction === 'DE-BY' || (s.jurisdiction === 'DE-HE' && s.stage === 'SekII')).map(s => [s.key, s.goalIds.length]), [
+-    ['DE-BY/SekI/', 100], ['DE-BY/SekII/GK', 118], ['DE-BY/SekII/LK', 149], ['DE-HE/SekII/GK', 148], ['DE-HE/SekII/LK', 176],
++    ['DE-BY/SekI/', 101], ['DE-BY/SekII/GK', 118], ['DE-BY/SekII/LK', 149], ['DE-HE/SekII/GK', 149], ['DE-HE/SekII/LK', 177],
+   ], 'Reviewed Chemistry routes must retain their exact BY/HE source scopes')
+   assert.deepEqual([...new Set(chemistry.receipt.scopes.flatMap(s => s.witnesses.filter(w => w.profileBasis === 'authored-view').map(() => s.jurisdiction)))].sort(), ['DE-BB', 'DE-BE'])
+   // Every grouped witness expands back to the exact original provenance record.

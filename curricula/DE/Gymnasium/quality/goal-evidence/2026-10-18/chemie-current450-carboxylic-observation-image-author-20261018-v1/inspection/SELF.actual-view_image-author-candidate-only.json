@@ -1,0 +1,65 @@
+{
+  "role": "ACTUAL_AUTHOR_SELF_INSPECTION_ONLY_NOT_V_OR_HUMAN_APPROVAL",
+  "goalId": "dc146a38-994d-58ec-b6a0-5210118b93ae",
+  "inspectedAtUTC": "2026-10-18T18:33:07.890Z",
+  "tool": "tools.view_image; actual native candidate and actual 360/680 display derivatives",
+  "candidateSHA256": "e38ca121688d23bcec3843113daf5a2e371836f3dbcd6a614ac95d8b6adfe800",
+  "attempts": 1,
+  "decision": "needs_external_review",
+  "authorDisposition": "single supplied-observation candidate selected for independent review; no obvious scientific blocker in actual author self-view",
+  "actualViews": [
+    {
+      "path": "candidate/dc146a38-994d-58ec-b6a0-5210118b93ae.png",
+      "width": 1672,
+      "height": 941,
+      "detail": "original",
+      "actuallyViewed": true
+    },
+    {
+      "path": "inspection/actual-display-360px.png",
+      "width": 360,
+      "height": 203,
+      "detail": "original",
+      "actuallyViewed": true,
+      "observationDe": "Große Stofftitel und Vorgegebene Befunde lesbar; blau→rot versus blau→blau, Blasen versus keine Blasen klar unterscheidbar. Hydrogencarbonat und Gasblasen sind die kleineren Zusatzlabels; die Hauptaussage benötigt kein winziges Rechen-/Formeldetail."
+    },
+    {
+      "path": "inspection/actual-display-680px.png",
+      "width": 680,
+      "height": 383,
+      "detail": "original",
+      "actuallyViewed": true,
+      "observationDe": "Alle Labels klar lesbar; Darstellung bleibt unter der 448-px-Höhenkappe ohne Crop."
+    }
+  ],
+  "previewDerivatives": {
+    "purpose": "author display-size inspection only",
+    "method": "Pillow Lanczos resampling",
+    "usedAsFinalCandidate": false,
+    "rawCandidatePreserved": true
+  },
+  "actualChecksDe": [
+    "Die Überschrift Vorgegebene Befunde markiert fertige Beobachtungsdaten. Keine Hände, Lernenden, Dosierhandlung oder nummerierte Ausführungsroutine erscheinen.",
+    "Ethansäureprobe: anfangs blauer Lackmus wird rot. Bekannte Ethanolkontrolle: blauer Lackmus bleibt blau. Dies ist ausdrücklich Lackmus, kein Universalindikator-Farbschema.",
+    "Die Flüssigkeit ist farblos mit schematischen Glasreflexen. Links sind konturierte Gasblasen innerhalb der Flüssigkeit sichtbar; rechts fehlen die entsprechenden Blasen. Es gibt keinen Rauch, keine farbige Gaswolke und keine dargestellten CO2-Moleküle.",
+    "Die Gasidentität wird nicht aus einer Blasenfarbe bestimmt; der Kontext nennt CO2 als bereitgestellte Stoffangabe. Sichtbares Gasvolumen und farbloses Gas werden nicht verwechselt.",
+    "Milde wässrige Proben begrenzt die Darstellung. Der unveränderte Lackmus der Kontrolle ist keine pH-7-Messung oder allgemeine Alkalitäts-/Neutralitätsaussage.",
+    "Beleg ≠ Strukturbeweis verhindert eine exklusive Carboxygruppen-Identifikation aus diesen zwei Befunden. Vorab bekannte Stoffidentitäten werden nicht als aus den Beobachtungen neu bewiesen ausgegeben.",
+    "Keine chemische Reaktionsgleichung, neue symbolische Pflicht, praktisch ausgeführte Routine oder tatsächliche Lernendenleistung wird dargestellt.",
+    "Freundliche runde Formen und große klare Konturen passen zu den tatsächlich lokal gesehenen bestehenden Struktur-/Praxisbildern. Beide bisherigen Bilder und Links bleiben unverändert; keines wurde als Provider-Eingabe übertragen.",
+    "Keine sichtbaren Logos, technischen IDs, Wasserzeichen oder erkennbaren fremden Figuren. Kein abgebildeter Bediener mit Instrumentenperspektive."
+  ],
+  "limitations": [
+    "Orientation only; does not replace complete goal/P duty or fresh acid/ester transfer.",
+    "No independent visual review, current V record, native D/P/A/SEM/M binding or human approval established.",
+    "No cockpit/browser/host runtime acceptance tested.",
+    "C2PA caBX raw bytes preserved but signature authenticity/trust not externally verified."
+  ],
+  "independentReview": false,
+  "gateVApproval": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "actualLearnerPerformance": false,
+  "normalActivation": false,
+  "ownDidacticImageLicense": "CC-BY-4.0"
+}

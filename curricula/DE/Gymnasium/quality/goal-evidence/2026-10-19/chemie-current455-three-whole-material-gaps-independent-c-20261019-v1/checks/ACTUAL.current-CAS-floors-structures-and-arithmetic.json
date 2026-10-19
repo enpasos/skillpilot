@@ -1,0 +1,87 @@
+{
+  "role": "ACTUAL_INDEPENDENT_COMPONENT_CONTENT_AND_CAS_GUARDS",
+  "reviewAuthority": "ai_candidate",
+  "status": "needs_human_review",
+  "active": false,
+  "normalWrites": 0,
+  "blind": false,
+  "nativeDApproval": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "M7Claim": false,
+  "wholeSourceApprovalClaim": false,
+  "normalApplyAuthorized": false,
+  "recordedAtUTC": "2026-10-18T23:21:21.299461+00:00",
+  "input": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-three-whole-material-gaps-independent-c-20261019-v1/inputs/ACTUAL.three-current-whole-goals-before-after-P-and-pins.json",
+    "sha256": "8a444f9346d9189953185f3e4234617e6d2d93d512a23b11063e6f1d406f50cc",
+    "bytes": 78871
+  },
+  "arithmetic": {
+    "HPLC": {
+      "MEP_slope": 90.0,
+      "MEP_intercept": 20.0,
+      "MEP_sampleMgL": 3.0,
+      "MEP_originalMgL": 24.0,
+      "MEP_Rs": 9.333333333333334,
+      "ETP_initialApparentMgL_notValid": 6.0,
+      "ETP_validAfterSeparationMgL": 2.0,
+      "ETP_originalConditionalMgL": 36.0,
+      "ETP_failed_Rs": 0.22727272727272646,
+      "ETP_suitableModel_Rs": 3.3333333333333304,
+      "MEP_standardDilutionsMgL": [
+        0.5,
+        2.0,
+        5.0
+      ],
+      "ETP_standardDilutionsMgL": [
+        0.5,
+        1.0,
+        2.0,
+        4.0
+      ]
+    },
+    "lactones": {
+      "Kapp_4_5_6": [
+        0.052631578947368425,
+        2.3333333333333335,
+        1.4999999999999998
+      ],
+      "freshA_initialRate": 0.8,
+      "freshB_initialRate": 0.3,
+      "freshA_fraction": 0.39999999999999997,
+      "freshB_fraction": 0.75,
+      "freshA_Kapp": 0.6666666666666667,
+      "freshB_Kapp": 3.0
+    },
+    "parabens": {
+      "PHB_MgKg": 320,
+      "groupMgKg": 720,
+      "I25_MEP_ETP_BTP": [
+        20.0,
+        33.333333333333336,
+        71.42857142857143
+      ],
+      "c90_MEP_ETP_BTP": [
+        900,
+        450,
+        90
+      ],
+      "BTP_Imax": 85.71428571428571
+    }
+  },
+  "structuresActuallyChecked": {
+    "parabens": "MEP C8H8O3, ETP C9H10O3, nBTP C11H14O3; para phenolicOH and aryl-C(=O)-O-alkyl, correct ester C/O valences. Phenoxyethanol C6H5-O-CH2CH2-OH is not a paraben ester.",
+    "lactones": "HO(CH2)nCOOH→lactone+H2O,n2/3/4 gives ring4/5/6 including esterO/carbonylC. Acids C3H6O3/C4H8O3/C5H10O3 give C3H4O2/C4H6O2/C5H8O2. FreshA C5H10O3→C5H8O2+H2O has5ringatoms;freshB C6H12O3→C6H10O2+H2O has6. Exocyclic methyl stays outside ring. All supplied SMILES have the correct connectivity."
+  },
+  "allThreeExistingExpectationIDsCaseIDsAndCoverageFloorsExact": true,
+  "actualCurrentOwnerRowsExact": true,
+  "allOtherProfileFieldsExactExcept14ExplicitAuthorLeafChanges": true,
+  "authorPinnedNativeCheckNotMisrepresentedAsOwnRerun": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-three-whole-material-gaps-author-20261019-v1/checks/ORIGINAL.native-three-P-check.json",
+    "sha256": "009e0969e87fa5478bc7d081bcfb74d1b77cef56f7415c1b3ad5083744639154",
+    "bytes": 3024
+  },
+  "ownNativeValidationRerun": false,
+  "fullBuildOrUnrelatedTestsRun": false
+}
