@@ -8,8 +8,9 @@ Official OpenAI submission and production GUI/server deployment are separate.
 
 ## Current candidate and evidence
 
-Canonical package and current public Git release: **SkillPilot Coach v1
-1.1.2**. The matching backend/resource rollout remains with the Product Owner.
+Current local package: **SkillPilot Coach v1 1.1.3**. Current recorded public
+Git release: **1.1.2**. The current backend/resource rollout remains a separate
+operation; the 19 October trace below identifies the actually served resource.
 Public Git source:
 [enpasos/skillpilot-chatgpt-marketplace](https://github.com/enpasos/skillpilot-chatgpt-marketplace).
 Marketplace identity: `skillpilot-chatgpt-marketplace`; plugin identity:
@@ -36,6 +37,69 @@ The local receipts live in ignored
 `tmp/skillpilot-openai-deploy-4qe82egm/receipt/`. They use synthetic update
 fixtures and contain no live learner capability. They are local evidence,
 not a directory release or a desktop learning-flow pass.
+
+### Local 1.1.3 continuation candidate — 19 October 2026
+
+The owner reports three faults in a new ChatGPT coaching session: the second
+goal image is missing in Voice, the coach asks for a free topic choice after
+saved mastery despite an already selected successor, and a suggested next
+message supplies the answer to the coach's question.
+
+The subsequently supplied **19 October** production trace resolves the missing
+server evidence for this new attempt. Under backend build `fd1f419769c9…`,
+mastery succeeds at **11:50:26.927 UTC**, advances state 141 to 142 and triggers
+`LEARNING_PLAN_AUTO_HANDOFF`. A fresh context at **11:51:25.999 UTC** still
+offers the image. At **11:51:35.894 UTC**, the successor renderer succeeds for
+the same pseudonymized session and state 142. At **11:51:30.865 UTC**, while the
+renderer was pending, the server successfully served the corrected active UI
+`08030bd956b6`; later reads serve the same hash. Resource reads themselves have
+no session correlator and do not prove component execution or display.
+
+The corrected resource is therefore deployed and served, and an omitted
+successor renderer does not explain this attempt. The reported second goal
+also has its canonical image and the public asset returns HTTP 200. The
+renderer receipt's `goalVisualizationOffered=false` is expected: this flag
+describes image authorization in full contexts, not image-display success.
+The accompanying MCP `401` and `notifications/initialized` warnings do not
+establish the cause of the later successful renderer's missing display.
+Client receipt, component events, image loading and visible display remain
+unobserved. This is new evidence, separate from the 5 October incident.
+
+Local lifecycle and actual bundled-SDK reproduction also found a conditional
+race: if the standard UI handshake rejects before a delayed ChatGPT
+compatibility result arrives, the widget requests closure while that result
+channel could still deliver the image. The production trace does not show
+such a handshake failure; five seconds of tool latency alone is not the SDK's
+60-second timeout. The local 1.1.3 correction now keeps that hidden compatibility
+channel eligible for a delayed result; actual image errors still close the UI.
+Its new resource is `9c09821e96ab…`; the deployed `08030…` bytes remain retained
+unchanged. This is not an established cause or a successful host fix for the
+Voice incident. No raw
+session correlators, learner capabilities or chat excerpts are recorded here.
+
+Candidate **1.1.3** removes the conflicting ban on naming a selected successor
+before continuation: offer its exact title after confirmed mastery, wait for
+the learner, then render and teach. It also forbids authored answer-bearing
+reply suggestions and preserves independent mastery evidence. The image-only
+widget does not author follow-up messages;
+the current [OpenAI component reference](https://developers.openai.com/apps-sdk/reference)
+documents component-authored messages but no control used here for disabling
+ChatGPT's own reply suggestions. Suppression of those suggestions and the
+Voice image sequence still require actual host verification.
+
+The 19 October deployment modernization additionally produces the documented
+submission ZIP, with current review fields and release notes derived from the
+canonical sources. Git import remains Desktop only; the public remote-MCP
+directory route targets Web and mobile as well. The local Chromium image
+smoke passed at 1280, 390 and 320 pixels, with two successive images both after
+a normal start and after rejected standard initialization. This is responsive
+fixture evidence, not ChatGPT web, iOS or Android acceptance. See the
+[current deployment runbook](openai-plugin-v1-release.md#11-zieloberflächen-und-der-aktuelle-zip-weg)
+and the [major-version assessment](../concept/runtime-workflows/openai-plugin-versioning-and-lifecycle.md#neubewertung-vom-19-oktober-2026-eine-dauerhafte-plugin-identität).
+
+This is local preparation, not a Git rollout, backend deployment, portal
+submission, or client acceptance. Preserve the published 1.1.2 install bytes
+and all prior drafts.
 
 ### Recorded 1.1.1 Git deployment
 

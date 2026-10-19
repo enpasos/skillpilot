@@ -335,14 +335,21 @@ test("a compatibility payload can arrive after thirty seconds without being disc
   assert.equal(harness.context.__teardownCount, 0);
 });
 
-test("a failed host connection dismisses the empty component", async () => {
+test("a failed standards handshake leaves the hidden component pending for compatibility delivery", async () => {
   const harness = createHarness(undefined, { bridgeReady: false });
   harness.rejectBridge(new Error("Host connection failed"));
   await flushPromises();
   assert.equal(harness.rootElement.hidden, true);
   assert.deepEqual(harness.rootElement.children, []);
-  assert.equal(harness.context.__closeCount, 1);
-  assert.equal(harness.context.__teardownCount, 1);
+  assert.equal(harness.context.__closeCount, 0);
+  assert.equal(harness.context.__teardownCount, 0);
+
+  harness.emitGlobals({ toolOutput: visualization("AFTER_HANDSHAKE_FAILURE") });
+  const image = harness.images[0];
+  image.dispatch("load");
+  assert.equal(harness.rootElement.hidden, false);
+  assert.equal(harness.context.__closeCount, 0);
+  assert.equal(harness.context.__teardownCount, 0);
 });
 
 test("a failed standards handshake retains an already supplied compatibility image", async () => {

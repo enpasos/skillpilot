@@ -1,6 +1,6 @@
 # SkillPilot Coach v1: OpenAI-Submission-Dossier
 
-**Stand:** 5. Oktober 2026 · **Nachfolgekandidat:** `1.1.1`
+**Stand:** 19. Oktober 2026 · **Nachfolgekandidat:** `1.1.3`
 
 Für dauerhafte Verhaltensprüfungen vor und nach der Einreichung siehe
 [automatische API-Dialogregression](../qa-ci/openai-dialog-regression.md).
@@ -8,11 +8,11 @@ Sie ergänzt die einmalige manuelle ChatGPT-Abnahme und ersetzt keine Host-Evide
 
 **Status:** lokal vorbereitete Neueinreichung, **DRAFT**, nicht eingereicht,
 nicht genehmigt und nicht im OpenAI-Verzeichnis veröffentlicht. Das Git-Paket
-**1.1.1** ist separat für die Desktop-Beta veröffentlicht. Der vorgelegte Portalexport nennt für
+**1.1.2** ist separat für die Desktop-Beta veröffentlicht. Der vorgelegte Portalexport nennt für
 `1.0.0` ausdrücklich `REJECTED`, aber weder eine konkrete Ablehnungsbegründung
 noch einen fehlgeschlagenen Test oder Reviewer-Trace. Die ausdrückliche
 Product-Owner-Freigabe vom 9. September erlaubte die Weiterentwicklung der
-Nachfolgerlinie `1.1`; der aktuelle Kandidat ist `1.1.1`. Die begrenzten
+Nachfolgerlinie `1.1`; der aktuelle Kandidat ist `1.1.3`. Die begrenzten
 späteren Aufträge vom 24. September und 5. Oktober betreffen Archiv/native CIMD
 und die bestehende Git-/Desktop-Beta mit normalem GUI-Start. Sie ersetzen keine
 offizielle Portal-Einreichung oder vollständige Hostabnahme. Der abgelehnte
@@ -20,8 +20,10 @@ historische Snapshot bleibt unverändert. Siehe
 [Review-Entscheidung](openai-plugin-v1-review-freeze.md).
 
 Dieses Dossier und die erzeugten JSON-Dateien sind **keine Portal-Abgabe**.
-Credentials, OAuth-Clientwerte, Länderfreigaben und rechtliche Attestierungen
-bleiben ausschließlich im angemeldeten Portalprozess. Kein lokaler Befehl
+Credentials und rechtliche Attestierungen bleiben ausschließlich im
+angemeldeten Portalprozess. Die öffentliche OAuth-Konfiguration steht in
+`.mcp.json`; private Zugangsdaten gehören nie ins ZIP. Länderfreigaben werden
+hier nicht gesetzt. Kein lokaler Befehl
 bestätigt eine externe Einreichung, Veröffentlichung oder Abnahme.
 
 ## 1. Verbindliche Quellen
@@ -32,8 +34,9 @@ Unter `ai/openai plugin/skillpilot-coach-v1/` liegen:
 | --- | --- |
 | `.codex-plugin/plugin.json` | aktuelle Version, Listing, Rechtstext-URLs und Starter Prompt |
 | `.mcp.json` | tatsächliche öffentliche MCP-URL |
-| `submission/portal-metadata.json` | öffentlicher Supportlink und noch notwendige manuelle Schritte |
+| `submission/portal-metadata.json` | öffentlicher Supportlink, optional eine ausdrücklich versionsgebundene aktuelle Demo und noch notwendige manuelle Schritte |
 | `submission/review-cases.json` | Fixtures, wörtliche Benutzer-Turns, vollständige Musterantworten, Toolregeln, sichtbare Ergebnisse und ausführbare Testzuordnung |
+| `release-notes/<Version>.md` | aktuelle, unverändert als Veröffentlichungshinweise übernommene Versionsbeschreibung |
 
 Der frisch erzeugte Export unter
 `contracts/drafts/openai/skillpilot-coach-v1/<Version>-SNAPSHOT/contract/contract.json`
@@ -48,17 +51,49 @@ liefert Tools, Schemas, Annotationen, Metadaten und UI-Ressourcen.
   mit Ausgangsdaten, geordneten Turns und Prüfkriterien für alle 14 Fälle;
 - `submission/generated/trace-template.json`: leere Vorlage ohne beobachtete
   Ereignisse oder Freigaben; sie kann unverändert keine Abnahme bestehen.
+- `submission/generated/submission-plugin.json`: Manifest für das offizielle
+  Codex-ZIP mit `extensions.com.openai.review` und `.publication`;
+- `submission/generated/submission-package.json`: ZIP-Hash, Hashes der acht
+  enthaltenen Dateien und ihrer Quellen sowie ausdrücklich offene Nachweise.
+
+`package` schreibt zusätzlich ein tatsächlich lesbares, reproduzierbares
+`skillpilot-coach-v1-<Version>-submission.zip` nach `tmp/openai-submission/`
+oder in das gewählte `--out-dir`. Die sieben ausdrücklich erlaubten
+Installationsdateien liegen direkt an der ZIP-Wurzel, ergänzt um die
+Repository-`LICENSE`. Nur das enthaltene Manifest wird für den Upload um die
+Reviewfälle und Veröffentlichungshinweise erweitert. Die übrigen sieben
+Dateien behalten ihre exakten Quellbytes. Der Bericht unterscheidet
+Quell- und ZIP-Manifesthash. Unbekannte Dateien, Arbeitsunterlagen, echte
+Sessionwerte und Zugangsdaten werden nicht als Archivinput übernommen.
+Der bestehende TAR-Snapshot und die Git-Installationspakete behalten ihre
+eigenen Aufgaben und werden durch diesen Export nicht überschrieben.
+
+Das ZIP verwendet die dokumentierten Felder `prompt` und `expected_behavior`.
+Sie entstehen aus denselben geprüften Fällen wie `user_prompt` und
+`expected_output` der älteren Vergleichsvorlage. Fünf positive und drei
+negative Fälle werden vollständig übernommen; die sechs internen Fälle
+bleiben in der Abnahmeanleitung. Der Export setzt keine Länderfreigabe und
+übernimmt kein altes Reviewvideo. Ohne eine ausdrücklich mit der aktuellen
+Version verknüpfte `demoRecording` in `portal-metadata.json` enthält
+`review.demo_recording_url` ausdrücklich die leere Zeichenfolge. Das löscht
+beim erneuten Upload eine möglicherweise gespeicherte historische Demo;
+ein weggelassenes Feld würde laut OpenAI den alten Portalwert erhalten.
+Der Bericht benennt die fehlende aktuelle Demo als offenen Nachweis.
+Eine historische interne Versionsroute oder der bekannte Hash der abgelehnten
+`1.0.0`-Aufnahme wird auch bei umetikettierter Metadatenversion abgewiesen.
+Auch ein gebautes ZIP bleibt `PREPARED_NOT_SUBMITTED` und `ready: false`,
+bis die getrennten externen Prüfungen erledigt sind.
 
 Für den nächsten echten Test mit der
 [erzeugten Abnahmeanleitung](https://github.com/enpasos/skillpilot/blob/main/ai/openai%20plugin/skillpilot-coach-v1/submission/generated/acceptance-guide.md)
 beginnen. Ergebnisse ausschließlich in einer separaten lokalen Kopie unter
 `tmp/` dokumentieren. Der OpenAI-CI-Job stellt nach seinen erfolgreichen
-Prüfungen nur diese vier unveränderten Vorbereitungsdateien als
-`openai-submission-worksheet-<commit>` bereit, keine privaten Testaufzeichnungen.
+Prüfungen die ausdrücklich erlaubten Vorbereitungsdateien sowie das ZIP und
+seinen Prüfbericht bereit, keine privaten Testaufzeichnungen.
 
-Das ist eine Arbeits- und Vergleichsvorlage, **kein behauptetes offizielles
-Portal-Importformat**. Es werden keine undokumentierten Portal-APIs verwendet.
-Lokaler Contractexport und Draft-Erzeugung ändern weder Produktion noch Portal.
+`portal-draft.json` bleibt eine Arbeits- und Vergleichsvorlage. Das ZIP ist
+das dokumentierte Uploadformat. Es werden keine undokumentierten Portal-APIs
+verwendet. Lokaler Export und ZIP-Erzeugung ändern weder Produktion noch Portal.
 
 ## 2. Nachgewiesene Mängel des abgelehnten Exports
 
@@ -108,26 +143,34 @@ doppelten Writes oder eigenständigen Fokusverengungen.
 
 1. Kandidaten prüfen, Produktion separat ausrollen und den tatsächlichen
    öffentlichen Endpunkt verifizieren. Ein lokaler Export beweist keinen Rollout.
-2. **With MCP** und die Remote-URL aus `.mcp.json` verwenden; keine bestehende
-   Developer-Mode-Integration-ID übernehmen. Die Paketquelle enthält keine
-   `.app.json`-Referenz mehr.
-3. Tools frisch scannen und Namen, Schemas, Annotationen, Security Schemes und
-   Ressourcenbindungen gegen den aktuellen Export vergleichen, einschließlich
-   der beiden Planwerkzeuge.
-4. Exakte aktuelle Skillbytes über den angebotenen Import-/Uploadweg einbringen
-   und den Snapshot kontrollieren. Die aktuelle offizielle Anleitung beschreibt
-   auch per Scan importierte Skills; daher nicht pauschal behaupten, ein MCP-Scan
-   könne nie Skills importieren. Nach Änderungen den alten Snapshot ersetzen.
-5. Listing und Tests aus dem Draft übertragen. Starter Prompt aus
-   `preparation.json` separat kontrollieren: Der untersuchte Export hatte
-   dafür kein entsprechendes Top-Level-Feld. Keine alten IDs, Geheimnisse,
-   Statuswerte, Attestierungen oder Demo-URLs kopieren.
+2. ZIP erzeugen und mit `audit-zip` gegen die aktuellen Quellen prüfen. Unter
+   **Plugins → Upload new or existing plugin → Upload plugin** über
+   **With MCP** das vollständige ZIP auswählen. Bei einer erneuten Einreichung
+   das bestehende Plugin wählen. Keine bestehende Developer-Mode-Integration-ID
+   oder `.app.json` übernehmen.
+3. Unter **Metadata & Skills** die importierte Version, das Listing und die
+   Skills prüfen. Pflichtfehler im Quellpaket korrigieren und das vollständige
+   ZIP neu hochladen. Änderungen an Skills oder Metadaten benötigen ein neues
+   ZIP; ein MCP-Rescan aktualisiert diese Paketbestandteile nicht.
+4. Unter **MCPs** den einen Server verbinden. Die aus `.mcp.json` importierte
+   OAuth-Konfiguration prüfen, Domainchallenge und Authentifizierung abschließen
+   und den Toolscan abwarten. Namen, Schemas, Annotationen, Security Schemes und
+   Ressourcenbindungen gegen den aktuellen Export vergleichen. Ein öffentlicher
+   CIMD-Client ersetzt weder OAuth noch die getrennte Lernsession und ist kein
+   Fallback für fehlgeschlagene vertrauliche Authentifizierung.
+5. Unter **Review information → Review details** die importierten fünf positiven
+   und drei negativen Fälle, die aktuelle Demo und Veröffentlichungshinweise
+   prüfen. ZIP-verwaltete Testfälle sind dort schreibgeschützt: Änderungen in
+   der Quelle vornehmen und erneut hochladen. Starter Prompt und weitere
+   Einstellungen direkt kontrollieren. Keine historischen IDs, Geheimnisse,
+   Statuswerte, Attestierungen oder Demo-URLs übernehmen.
 6. Reviewerzugang nur im Portal hinterlegen und ohne MFA, SMS-/E-Mail-Bestätigung
    oder private Netzwerkverbindung testen. Zustandsbehaftete Fälle verwenden je
    einen neuen Wegwerf-Lernstand aus dem öffentlichen `CREATE`-Ablauf.
 7. Sämtliche Fälle ausführen, Hostoberfläche und aktuelle Demo abnehmen,
-   rechtliche Angaben freigeben und einen **frisch gespeicherten Portalexport**
-   erneut vergleichen.
+   rechtliche Angaben freigeben und alle gespeicherten Angaben kontrollieren.
+   Falls ein frischer Portalexport verfügbar ist, diesen ausschließlich lokal
+   erneut mit der Vergleichsvorlage prüfen.
 8. Erst nach ausdrücklicher Freigabe einreichen. Eine spätere Genehmigung ist
    noch keine Veröffentlichung; **Publish** bleibt eine eigene Aktion.
 
@@ -164,8 +207,11 @@ oder Fokusoption wird das Fixture frisch validiert, nicht mit alten Zahlen erzwu
 
 ```bash
 node --test scripts/openai_plugin_submission.test.mjs
+node --test scripts/reproducible_plugin_zip.test.mjs
 node scripts/openai_plugin_submission.mjs prepare
 node scripts/openai_plugin_submission.mjs check
+node scripts/openai_plugin_submission.mjs package --out-dir tmp/openai-submission
+node scripts/openai_plugin_submission.mjs audit-zip --zip tmp/openai-submission/skillpilot-coach-v1-1.1.3-submission.zip
 node scripts/openai_plugin_submission.mjs audit-export --export /exact/local/path/to/fresh-export.json
 node scripts/openai_plugin_submission.mjs validate-trace --trace /exact/local/path/to/sanitized-trace.json
 ```
@@ -175,6 +221,10 @@ node scripts/openai_plugin_submission.mjs validate-trace --trace /exact/local/pa
 `--out-dir PATH` trennt temporäre Arbeitsartefakte. Keine dieser Aktionen
 rollt aus oder ruft das Portal auf. Der Exportvergleich meldet lediglich
 abweichende Feldpfade und Fehlerklassen, niemals Credentials oder Feldwerte.
+`audit-zip` vergleicht das gesamte Archiv bytegenau mit dem frisch aus den
+aktuellen Quellen erzeugten Soll-ZIP. Die Archivprüfung verwirft unter anderem
+Pfadtraversal, Namenskollisionen, Symlinks, nicht erlaubte Eingabedateien,
+Zugangsdaten und nicht leere MCP-Header. Sie ersetzt nicht die Portalvalidierung.
 
 Vier Ebenen bleiben getrennt:
 
@@ -208,11 +258,16 @@ Widget-Domain und CSP; keine zusätzlichen Domains werden vorsorglich
 freigegeben. Private Fragen/Antworten der normalen Kartenübung gehören nicht
 in die Modellprojektion.
 
-Der aktuelle Git-Betastand ist **1.1.1**; Installation und Lernstart in
+Der aktuelle Git-Betastand ist **1.1.2**; Installation und Lernstart in
 **Windows ChatGPT Desktop** sind vom Product Owner bestätigt. Die
 Einreichungsabnahme und der Aufnahmeplan für **ChatGPT im Webbrowser** bleiben
 separate Nachweise. Der Desktop-Betastart bestätigt keine vollständige Host-/UI-Abnahme.
-Browser-, iOS- oder Android-Unterstützung ist nicht zugesagt. Für die vollständige Einreichungsabnahme liegt weiterhin **kein bestandener Realhost-Test** vor.
+Der ZIP-Upload ist der dokumentierte Weg zur Verzeichnisveröffentlichung und
+damit zu weiteren von OpenAI unterstützten Oberflächen. Konkrete Verfügbarkeit
+und das Zusammenspiel von Skill, Startnachricht und Widgets im Web, unter iOS
+und unter Android müssen jeweils geprüft werden; der lokale Export schaltet
+diese Oberflächen nicht frei. Für die vollständige Einreichungsabnahme liegt
+weiterhin **kein bestandener Realhost-Test** vor.
 Ein möglicherweise leeres
 Widget nach Kontext und anschließendem Renderer ist eine zu prüfende Hypothese,
 keine bewiesene Ablehnungsursache.

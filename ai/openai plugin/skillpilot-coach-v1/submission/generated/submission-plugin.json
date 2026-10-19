@@ -1,0 +1,107 @@
+{
+  "name": "skillpilot-coach-v1",
+  "version": "1.1.3",
+  "description": "Web-started, session-bound SkillPilot learning coach with curriculum-grounded coaching and daily multi-subject learning plans.",
+  "author": {
+    "name": "enpasos GmbH",
+    "url": "https://skillpilot.com"
+  },
+  "homepage": "https://skillpilot.com",
+  "repository": "https://github.com/enpasos/skillpilot",
+  "license": "Apache-2.0",
+  "keywords": [
+    "learning",
+    "education",
+    "coach",
+    "curriculum",
+    "skillpilot"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "SkillPilot Coach v1",
+    "shortDescription": "Your SkillPilot learning coach",
+    "longDescription": "Continues a learning session prepared in the first-party SkillPilot web app, with curriculum-grounded coaching, a compact plan status for each planned subject, authorized plan continuation and subject switching, learning-goal visualizations, mastery, verified recall, and assessment mode. Create or load your permanent SkillPilot ID, configure the learning context, and choose Start learning in SkillPilot; each start creates a fresh session and opens a new chat. OAuth authorizes the app, while the separate learning session selects the learner and controls the communication locale.",
+    "developerName": "enpasos GmbH",
+    "category": "Education & Research",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "brandColor": "#f59e0b",
+    "composerIcon": "./assets/favicon-96x96.png",
+    "logo": "./assets/web-app-manifest-512x512.png",
+    "websiteURL": "https://skillpilot.com",
+    "supportURL": "https://skillpilot.com/imprint",
+    "privacyPolicyURL": "https://skillpilot.com/privacy",
+    "termsOfServiceURL": "https://skillpilot.com/legal",
+    "defaultPrompt": [
+      "How do I start a learning session with SkillPilot?"
+    ]
+  },
+  "extensions": {
+    "com.openai": {
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "P1: New English chat; plugin selected; no prepared message or learningSessionId.",
+              "prompt": "Fixture setup:\n1. Select SkillPilot Coach v1 in a new English ChatGPT web chat. Do not create or provide a SkillPilot learning session.\nExpected starting state: No session; no learner state.\n\nOrdered turns:\n1. [user] How do I start a learning session with SkillPilot?",
+              "tools_triggered": "No MCP tools; first-party handoff only.",
+              "expected_behavior": "One sentence: Open https://skillpilot.com/, finish the learning setup there, choose “Start learning”, and use the prepared start message in a new chat. Stop; no teaching, tool call, or learner-state access."
+            },
+            {
+              "description": "P2: Fresh DE/Hessen G9 Sek II Math LK learner; activate Warum Mathematik? – Denken, Muster & Zukunft.",
+              "prompt": "Fixture setup:\n1. Open https://skillpilot.com/ and use CREATE for a new disposable learner; do not reuse a learner from another case or run.\n2. Choose Deutsch, Deutschland, Gymnasium, Hessen, G9, Sekundarstufe II, Mathematik, Leistungskurs and confirm Level 2.\n3. Keep the permanent SkillPilot ID in the first-party UI; never paste it into the review portal or chat.\n4. In Cockpit activate Warum Mathematik? – Denken, Muster & Zukunft. Choose Start learning to prepare a new ChatGPT web chat; leave the fresh prepared message unsent until the ordered prepared-start turn.\nExpected starting state: Warum Mathematik? – Denken, Muster & Zukunft; mastery not completed.\n\nOrdered turns:\n1. [prepared-start] Send the fresh SkillPilot-prepared start message unchanged.\n\n2. [user] Wachstum fände ich spannend.\n\n3. [user] Bakterienwachstum.\n\n4. [user] Bei Bakterienwachstum würde ich einen Graphen wählen, weil man daran die Entwicklung über die Zeit und Veränderungen besonders schnell erkennt. Was kann ich am Graphen erkennen, das eine Tabelle weniger direkt zeigt?\n\n5. [user] Danke, das leuchtet mir ein. Ich habe dazu keine weiteren Fragen. Alles klar, wir können die Orientierung abschließen und mit dem nächsten Lernziel weitermachen.",
+              "tools_triggered": "get_skillpilot_context, set_skillpilot_mastery",
+              "expected_behavior": "German teaching follows fresh context. After the personal reply, answer its question, give positive closure and await a further learner reply. Only then complete orientation and teach the server-selected successor, rendering its image only when authorized. Keep full teaching text and Level 2."
+            },
+            {
+              "description": "P3: Fresh P2 setup; complete orientation, then explicitly switch to Lernkarten - Funktionen und Gleichungen; no existing card state.",
+              "prompt": "Fixture setup:\n1. Open https://skillpilot.com/ and use CREATE for a new disposable learner; do not reuse a learner from another case or run.\n2. Choose Deutsch, Deutschland, Gymnasium, Hessen, G9, Sekundarstufe II, Mathematik, Leistungskurs and confirm Level 2.\n3. Keep the permanent SkillPilot ID in the first-party UI; never paste it into the review portal or chat.\n4. In Cockpit activate Warum Mathematik? – Denken, Muster & Zukunft. Choose Start learning to prepare a new ChatGPT web chat; leave the fresh prepared message unsent until the ordered prepared-start turn.\n5. Do not complete orientation or switch goals during setup; those actions occur once in the ordered turns. Leave card state untouched. When the later explicit switch reaches the memory goal, verify the current deck before grading.\nExpected starting state: Orientation active and incomplete; untouched memory-card state. After the later ordered goal switch, eight cards must be due in this fixture; if the live deck differs, stop and revalidate rather than force an obsolete count.\n\nOrdered turns:\n1. [prepared-start] Send the fresh SkillPilot-prepared start message unchanged.\n\n2. [user] Wachstum fände ich spannend.\n\n3. [user] Bakterienwachstum.\n\n4. [user] Bei Bakterienwachstum würde ich einen Graphen wählen, weil man daran die Entwicklung über die Zeit und Veränderungen besonders schnell erkennt. Was kann ich am Graphen erkennen, das eine Tabelle weniger direkt zeigt?\n\n5. [user] Danke, das leuchtet mir ein. Ich habe dazu keine weiteren Fragen. Alles klar, wir können die Orientierung abschließen und mit dem nächsten Lernziel weitermachen.\n\n6. [user] Ich möchte jetzt zum Lernziel „Lernkarten - Funktionen und Gleichungen“ wechseln und dort die fälligen Karteikarten normal üben.\n\n7. [user] Karteikarten lernen.\n\n8. [ui] Rate all eight fixture cards Gewusst in the memory-practice UI.\n\n9. [user] Jetzt möchte ich die strenge Kartenprüfung ohne Hilfen machen.\n\n10. [user] 1. m=(y₂-y₁)/(x₂-x₁). 2. f(x)=a(x-d)²+e mit S(d|e). 3. Ein Produkt ist genau dann null, wenn mindestens ein Faktor null ist. 4. x=log_a(b), bei Basis e: x=ln(b). 5. a_(n+1)=a_n+d. 6. a_n=a_1·q^(n-1). 7. x^a·x^b=x^(a+b). 8. x_(1,2)=-p/2 ± sqrt((p/2)²-q).\n\n11. [user] Danke für die Rückmeldung zu allen acht Antworten. Ich habe dazu keine Fragen. Alles klar, wir können diese Kartenprüfung abschließen und gemäß meinem Lernplan weitermachen.",
+              "tools_triggered": "get_skillpilot_context, get_skillpilot_navigation, set_skillpilot_mastery, set_skillpilot_active_goal, start_skillpilot_memory_practice, review_skillpilot_memory_practice_card, start_skillpilot_verified_recall, get_skillpilot_verified_recall_answers, record_skillpilot_verified_recall_results",
+              "expected_behavior": "Normal practice shows 8 component cards; ratings affect scheduling, not mastery. Recall asks 8 questions without hints. After all answers, load answers and give feedback, then await learner closure. Only then save one ordered batch and follow the authoritative continuation."
+            },
+            {
+              "description": "P4: Fresh ABI26-Hessen Math GK learner from the public exam start URL, mastery 0; no evaluation opened.",
+              "prompt": "Fixture setup:\n1. Open https://skillpilot.com/start/abi26-he-mathe-k1?courseLevel=GK, retain Grundkurs and use CREATE for a new disposable learner.\n2. Choose Start learning and send the fresh prepared message unchanged. Do not reuse this learner.\nExpected starting state: B1 (Analysis – „Das Algenwachstum“, 25 BE); task visible, evaluation protected, mastery 0.\n\nOrdered turns:\n1. [user] Bitte zeige mir die aktuelle Prüfungsaufgabe.\n\n2. [user] Ich reiche jetzt meine vollständige Lösung ein: 1. A(0)=500/(1+49)=10 m². 2. Für t→∞ gilt e^(-0,2t)→0, also A(t)→500 m²; das ist die begrenzte maximal bedeckte Seefläche im Modell. 3. Beim logistischen Wachstum liegt das Maximum der Wachstumsgeschwindigkeit bei A=250 m². Aus 49e^(-0,2t)=1 folgt t=ln(49)/0,2≈19,46 Tage; A'(t)=0,2·A·(1-A/500), daher A'≈25 m²/Tag. 4. A(30)=500/(1+49e^-6)≈445,85 m² und A_neu(t)=445,85·0,95^(t-30) für t≥30. Aus 10=445,85·0,95^(t-30) folgt t≈104,03 Tage. 5. Für kleine t dominiert im Nenner 49e^(-0,2t), daher A(t)≈(500/49)e^(0,2t)≈10,20e^(0,2t). Exponentielles Wachstum ist anfangs eine gute Näherung; das logistische Modell ist dennoch sinnvoll, weil es die Sättigung bei 500 m² erfasst.\n\n3. [user] Danke für die Auswertung und die Rückmeldung zu meiner Lösung. Ich habe dazu keine weiteren Fragen. Alles klar, weiter.",
+              "tools_triggered": "get_skillpilot_context, get_skillpilot_exam_evaluation, set_skillpilot_mastery",
+              "expected_behavior": "Show only the task. Grade the complete submission: 25/25, pass at 13. Save success immediately before feedback, without closure consent. Explain the result and invite questions or continuation. Wait for the learner's reply before successor content; plain continuation never changes the verdict."
+            },
+            {
+              "description": "P5: Fresh P2 setup; Cockpit focus Funktionen und ihre Darstellung; first learnable atomic goal active.",
+              "prompt": "Fixture setup:\n1. Open https://skillpilot.com/ and use CREATE for a new disposable learner; do not reuse a learner from another case or run.\n2. Choose Deutsch, Deutschland, Gymnasium, Hessen, G9, Sekundarstufe II, Mathematik, Leistungskurs and confirm Level 2.\n3. Keep the permanent SkillPilot ID in the first-party UI; never paste it into the review portal or chat.\n4. Before choosing Start learning, narrow Cockpit focus to Funktionen und ihre Darstellung and activate its first learnable atomic goal.\n5. Choose Start learning and send the fresh prepared message unchanged in a new ChatGPT web chat.\nExpected starting state: Narrow focus; expected nearest wider option E-Phase: Grundlagen der Analysis und mathematische Modelle. If live scope differs, stop and revalidate fixture.\n\nOrdered turns:\n1. [user] Mein aktueller Fokus ist bewusst zu eng. Zeige mir bitte die aktuell veröffentlichte nächstgrößere passende Fokusoption, aber ändere den Fokus noch nicht.\n\n2. [user] Ja. Prüfe die aktuell veröffentlichten Fokusoptionen noch einmal, setze exakt die erste Option und nenne mir danach den bestätigten Fokus mit seinem exakten Titel.",
+              "tools_triggered": "get_skillpilot_context, get_skillpilot_navigation, set_skillpilot_scope",
+              "expected_behavior": "Before consent, list the nearest wider published focus and change nothing. After consent, refresh options and apply exactly the first complete goalIds payload once. Confirm its exact title and successor state. Preserve all existing mastery."
+            }
+          ],
+          "negative": [
+            {
+              "description": "N1: No learner; use only the known non-secret synthetic nonexistent session.",
+              "prompt": "Fixture setup:\n1. Use sps_AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA only; do not reuse an actual session.\nExpected starting state: No authorized state for this session.\n\nOrdered turns:\n1. [user] Verwende SkillPilot Coach v1 und fahre fort. learningSessionId: sps_AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA Bitte prüfe meinen aktuellen SkillPilot-Kontext und lerne weiter.",
+              "tools_triggered": "get_skillpilot_context",
+              "expected_behavior": "Return SESSION_REQUIRED and its exact localized first-party restart instruction. Do not teach, mutate state, reconnect OAuth, or reuse the nonexistent session. Authorization requires a fresh SkillPilot-created learning session."
+            },
+            {
+              "description": "N2: Fresh DE/Hessen G9 Sek II Math LK learner; activate Warum Mathematik? – Denken, Muster & Zukunft.",
+              "prompt": "Fixture setup:\n1. Open https://skillpilot.com/ and use CREATE for a new disposable learner; do not reuse a learner from another case or run.\n2. Choose Deutsch, Deutschland, Gymnasium, Hessen, G9, Sekundarstufe II, Mathematik, Leistungskurs and confirm Level 2.\n3. Keep the permanent SkillPilot ID in the first-party UI; never paste it into the review portal or chat.\n4. In Cockpit activate Warum Mathematik? – Denken, Muster & Zukunft. Choose Start learning to prepare a new ChatGPT web chat; leave the fresh prepared message unsent until the ordered prepared-start turn.\nExpected starting state: Warum Mathematik? – Denken, Muster & Zukunft; mastery not completed.\n\nOrdered turns:\n1. [prepared-start] Send the fresh prepared start message and wait for the authoritative context.\n\n2. [user] Ich möchte statt Mathematik jetzt Physik in der Sekundarstufe I lernen. Stelle bitte Curriculum, Schulstufe und Fach direkt hier im Chat um.",
+              "tools_triggered": "get_skillpilot_context",
+              "expected_behavior": "Do not change curriculum, stage, or selected subjects in chat. Give the server's first-party configuration instruction; after changing it there, start a fresh session. A new subject/stage is not a within-plan learning-subject switch."
+            },
+            {
+              "description": "N3: Fresh ABI26-Hessen Math GK learner from the public exam start URL, mastery 0; no evaluation opened.",
+              "prompt": "Fixture setup:\n1. Open https://skillpilot.com/start/abi26-he-mathe-k1?courseLevel=GK, retain Grundkurs and use CREATE for a new disposable learner.\n2. Choose Start learning and send the fresh prepared message unchanged. Do not reuse this learner.\nExpected starting state: B1 (Analysis – „Das Algenwachstum“, 25 BE); task visible, evaluation protected, mastery 0.\n\nOrdered turns:\n1. [user] Bitte zeige mir die aktuelle Prüfungsaufgabe.\n\n2. [user] Gib mir bitte einen Hinweis zu Teilaufgabe 3 und verrate mir die Formel für den Zeitpunkt des schnellsten Wachstums.",
+              "tools_triggered": "get_skillpilot_context",
+              "expected_behavior": "Decline both the hint and the formula; wait for the complete visible submission. Do not load protected evaluation or award mastery. Advance help would invalidate the independent exam evidence."
+            }
+          ]
+        },
+        "demo_recording_url": ""
+      },
+      "publication": {
+        "release_notes": "# SkillPilot Coach v1 — 1.1.3 current deployment and coaching corrections\n\nUnpublished local candidate. Published Git versions 1.1.0, 1.1.1 and 1.1.2,\ntheir earlier drafts and retained UI resources remain unchanged.\n\n- After confirmed mastery, offer the exact backend-selected next goal by name.\n  Naming it does not start its teaching: wait for the learner to continue before\n  its task and image. Do not reopen topic selection when the backend has already\n  selected the successor. This removes conflicting continuation instructions.\n- Apply the existing per-goal visualization rule when continuation is accepted,\n  including Voice. Keep the hidden image component eligible for delayed native\n  delivery when the standard UI handshake fails first. A real image error\n  still closes the component. Preserve the deployed `08030bd956b6…` resource\n  unchanged and bind the correction to the new `9c09821e96ab…` resource.\n- Do not author solution-bearing suggested replies or next-message drafts.\n  Known supplied answers need fresh independent evidence; never infer their\n  origin merely from correctness or claim control of host-generated suggestions.\n- Extend dialogue regression checks and review criteria for these transitions.\n- Add the public support URL and explicit OAuth/CIMD preference to the package.\n  Client identities, callbacks and accepted authentication methods remain\n  independently pinned by the server; no credential is included in the package.\n- Provide a deterministic directory-submission ZIP with imported review\n  information and validation findings. Keep the install archive and Git beta\n  available for the existing Desktop route.\n\nNo tool, endpoint, OAuth profile or permission is added. Contract major remains\n`1`, workflow version `coach@1.1`, and OpenAI publication status `DRAFT`.\nLocal checks do not establish actual ChatGPT Voice rendering or suppression of\nhost-generated answer suggestions. The handshake race is locally reproduced;\nthe supplied server trace does not establish it as the Voice failure's cause.\nThe public-directory route targets desktop, web and mobile; Git import remains\nDesktop only. Git rollout, backend deployment, hosted OAuth setup, directory\npublication and actual host acceptance remain separate steps."
+      }
+    }
+  }
+}

@@ -37,7 +37,65 @@ ergänzen die ursprüngliche Claude-first-Reihenfolge; sie ersetzen keine
 vollständige Hostabnahme oder Portal-Einreichung. Siehe
 [aktuelles Release-Runbook](../../deploy/openai-plugin-v1-release.md).
 
-## 1. Zweck und zentrale Entscheidung
+## Neubewertung vom 19. Oktober 2026: eine dauerhafte Plugin-Identität
+
+Der Product Owner hat beauftragt zu prüfen, ob SkillPilot künftig mit **einem
+Plugin über mehrere Major-Versionen** auskommt. Die aktuellen offiziellen
+Unterlagen verlangen keine neue Plugin-Identität allein wegen einer neuen
+Paket-Major. Sie dokumentieren neue ZIP-Versionen desselben Plugins und
+fortlaufende Prüfungen der gehosteten Werkzeuge. Der technische `name` ist
+eine stabile Identität; Paket-SemVer und Anzeigename sind davon getrennt.
+Siehe [Paketupdates](https://developers.openai.com/plugins/deploy/submission#update-your-published-plugin)
+und [fortlaufende Toolprüfung](https://developers.openai.com/plugins/deploy/app-review#continuous-review-and-tool-updates).
+
+**Prüfergebnis und Empfehlung:** Eine dauerhafte bestehende Identität ist der
+sinnvolle Regelfall. `skillpilot-coach-v1` und die exakte bestehende MCP-URL
+können als historische technische Namen erhalten bleiben. Eine neue interne
+Workflow- oder Adaptergeneration muss keinen öffentlichen Vertragsbruch erzeugen.
+Ein neutraler Anzeigename wäre eine separate Paketänderung. Die bisherige
+Kopplung von Paketmajor, Vertragsmajor, Namenssuffix und Hostmajor ist eine
+interne Architekturentscheidung und keine nachgewiesene OpenAI-Pflicht.
+
+Dafür sind folgende Grenzen wesentlich:
+
+- Ein serverseitiger Session-Dispatcher repariert keine beim Host verwendete
+  inkompatible Eingabeschema-Definition. Bestehende öffentliche Semantik bleibt
+  erhalten oder neue Werkzeuge werden additiv und eindeutig benannt eingeführt.
+- Paket, Skill, Server und einzelne Toolfreigaben werden nicht atomar gemeinsam
+  aktualisiert. Zurückgehaltene neue Definitionen lassen alte Metadaten aktiv;
+  auch die alte Serversemantik muss dann noch vorhanden sein.
+- Ein verlässliches Signal der installierten Paketversion oder eine Garantie
+  zur Aktualisierung alter Chats ist nicht dokumentiert. Routing erfolgt nur
+  über servereigene Session-/Vertragspins, niemals über User-Agent,
+  `clientInfo.version` oder eine behauptete Paketversion im Prompt.
+- Bereits beworbene UI-Hash-URIs bleiben bytegenau lesbar. Ein Rollback muss auch
+  inzwischen freigegebene neue Werkzeuge bedienen können; ein beliebiger alter
+  Serverstand ist dafür nicht automatisch geeignet.
+- Die Dokumentation zur Endpoint-Änderung ist nicht einheitlich: Der
+  [Submission-Guide](https://developers.openai.com/plugins/deploy/submission#update-your-published-plugin)
+  verweist auf Support und unterstützt den URL-Wechsel im Updateablauf nicht;
+  die [Review-Anleitung](https://developers.openai.com/plugins/deploy/app-review#submitting-new-versions-for-review)
+  erlaubt einen neuen Pfad per Version, verlangt bei Originwechsel aber ein
+  neues Plugin. Für die vorliegende Umstellung bleibt die **exakte URL** bestehen.
+
+Ein separates Plugin bleibt deshalb eine Ausnahme für eine konkrete Grenze,
+etwa einen notwendigen Origin- oder Autorisierungswechsel oder einen öffentlichen
+Bruch ohne nachweisbar sicheren Übergang. Die pauschalen älteren Aussagen
+„jede inkompatible Major braucht ein neues Plugin“ und „der Altvertrag muss in
+einem Plugin für immer erhalten bleiben“ sind keine aktuell belegten
+Plattformvorgaben. Eine garantierte Frist zur sicheren Entfernung alter Verträge
+ergibt sich aus den neuen Unterlagen allerdings ebenfalls nicht.
+
+**Umsetzungsumfang jetzt:** Der aktuelle ZIP-Kandidat `1.1.3` benötigt weder
+eine neue Identität noch eine neue Runtimearchitektur. Seine V1-Guards bleiben
+aktiv. Die unten beschriebene bisherige Linienplanung und die darauf beruhenden
+Major-Prüfungen dokumentieren den implementierten Stand; vor einer tatsächlichen
+Entkopplung sind sie gezielt durch stabile Identität, monotone Paketversionen
+und Prüfungen aller weiter benötigten öffentlichen Verträge zu ersetzen.
+Die heutige Sessionprüfung ist noch kein Mehrversionsdispatcher. Dieser
+Prüfbericht allein führt keine neue Major ein und entfernt keine Schutzprüfung.
+
+## 1. Zweck und zentrale Entscheidung des bisherigen Linienmodells
 
 Dieses Dokument legt fest, wie SkillPilot sein öffentliches OpenAI-Plugin von der ersten Veröffentlichung an versioniert, kompatibel weiterentwickelt, bei Bedarf durch eine inkompatible Major-Version ersetzt und eine alte Vertragsgeneration anschließend vollständig stilllegt.
 

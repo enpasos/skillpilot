@@ -1,16 +1,16 @@
-# ChatGPT-Abnahme: SkillPilot Coach v1 1.1.2
+# ChatGPT-Abnahme: SkillPilot Coach v1 1.1.3
 
 Automatisch aus den aktuellen Einreichungsquellen erzeugt. Nicht hier bearbeiten; Änderungen an den Quellen prüfen und erneut `prepare` ausführen.
 
 **Status: NICHT AUSGEFÜHRT.** Diese Anleitung und die leere Trace-Vorlage sind keine bestandenen Tests, keine Rollout-Bestätigung und keine Einreichung.
 
-Kandidat: `1.1.2` · MCP-Endpunkt: `https://mcp-coach-v1.skillpilot.com/mcp`
+Kandidat: `1.1.3` · MCP-Endpunkt: `https://mcp-coach-v1.skillpilot.com/mcp`
 
-Testsuite-SHA-256: `abcfdbc5f9e53ec159099589a8c0fd771efceea7e55c68447f06c3fa8ce05617`
+Testsuite-SHA-256: `e795150b9a85ccf57b2caa9f465ffac852f8d5204abf27e13acf2a58138bde2c`
 
-Vertrags-SHA-256: `8c6d1bd86d013175ab5aa8e2e323e50b03d8c3cc76e444f1b5f245ac2684846c`
+Vertrags-SHA-256: `919c40e00da1134af2d4a6b33a8fa4bc735fffb0dc37bc51af962aef7c56bac6`
 
-Paket-Snapshot-SHA-256: `595222c1e1054161411dd704217300f2d17b7fce4a4a1e16a1d38d24578e8680`
+Paket-Snapshot-SHA-256: `910eebe8f632307f067dc3e71b3138938d85a39d834c0c1226bb648420f6e0b5`
 
 ## Vorbereitung
 
@@ -126,9 +126,11 @@ Vorgegebene Werkzeugreihenfolge: `get_skillpilot_context` → `set_skillpilot_ma
 
 - [ ] `closure-gate` — Inhaltlich/visuell prüfen: The response to continue contains no successor lesson, task or successor image. Only after closure may the coach complete orientation and begin the next goal; do not add a second confirmation round.
 
-- [ ] `successor` — Inhaltlich/visuell prüfen: Use the authoritative successor and one authorized image with exact goalId and stateVersion; no blank component if not authorized.
+- [ ] `successor` — Inhaltlich/visuell prüfen: After accepted closure, teach the authoritative successor without asking the learner to choose another topic. Render each newly authorized goal/version pair before teaching, even when an earlier goal had an image; unchanged pairs do not trigger another call and unavailable images stay absent. Confirm actual second-image display separately in the host, including Voice.
 
 - [ ] `full-text` — Inhaltlich/visuell prüfen: A rendered image never replaces complete German teaching text. Level 2 stays unchanged.
+
+- [ ] `learner-owned-answers` — Inhaltlich/visuell prüfen: When the coach asks an assessable question, no coach-authored suggested learner reply, answer chip or prefilled message supplies its answer, intermediate result or required reasoning. Neutral help, pause and continuation actions are allowed. In the real host, separately inspect native message suggestions; API dialogue alone cannot accept those suggestions.
 
 ### Zugeordnete automatisierte Tests
 
@@ -227,7 +229,7 @@ Vorgegebene Werkzeugreihenfolge: `set_skillpilot_mastery` → `set_skillpilot_ac
 
 - [ ] `one-result` — `record_skillpilot_verified_recall_results`: mindestens 1, höchstens 1 Aufrufe.
 
-- [ ] `continuation` — Inhaltlich/visuell prüfen: After recall-closure, apply exactly one confirmed authoritative continuation; no arbitrary next batch or invented goal.
+- [ ] `continuation` — Inhaltlich/visuell prüfen: After recall-closure, apply exactly one confirmed authoritative continuation; no arbitrary next batch, invented goal or generic topic-choice question. If the returned continuation prescribes a successor renderer, execute it before teaching with the exact server arguments.
 
 ### Zugeordnete automatisierte Tests
 
@@ -279,7 +281,7 @@ Vorgegebene Werkzeugreihenfolge: `get_skillpilot_context` → `get_skillpilot_ex
 
 - [ ] `complete-scoring` — Inhaltlich/visuell prüfen: The submission includes area-limit interpretation, units, model approximation and all five criteria; expected 25/25 with passingScore 13.
 
-- [ ] `exam-save-and-continuation` — Inhaltlich/visuell prüfen: After assessing the complete submission privately, save the passing result immediately before result feedback, without requiring closure consent. Then explain what the five criteria show and invite questions or continuation. Do not introduce another task or render an image until the separate learner continuation reply. Plain continuation does not reassess this verdict.
+- [ ] `exam-save-and-continuation` — Inhaltlich/visuell prüfen: After assessing the complete submission privately, save the passing result immediately before result feedback, without requiring closure consent. Explain what the five criteria show and offer the backend-selected successor by title if available, allowing questions before continuation; do not ask the learner to invent the next topic. Do not introduce another task or render an image until the separate learner continuation reply. After closure, teach the fresh backend-selected goal and render its newly authorized image first. Plain continuation does not reassess this verdict.
 
 - [ ] `one-evaluation` — `get_skillpilot_exam_evaluation`: mindestens 1, höchstens 1 Aufrufe.
 
@@ -495,6 +497,8 @@ Verbotene Werkzeuge: keine zusätzlichen Verbote.
 - [ ] `daily-counts` — Inhaltlich/visuell prüfen: Compare the visible plan status with authoritative learningPlanToday.text: it is quoted verbatim, once, in the session language, with no counts, totals, percentages or overall judgement added by the coach. A reached period target is never presented as nothing left, an unevaluable plan is never shown as 0 of 0, and an unchanged status is not repeated during exercises.
 
 - [ ] `safe-warning` — Inhaltlich/visuell prüfen: Unavailable plans get an explicit safe partial-data warning without internal identifiers; never represent missing plans as all-clear.
+
+- [ ] `learner-owned-answers` — Inhaltlich/visuell prüfen: When the coach asks an assessable question, no coach-authored suggested learner reply, answer chip or prefilled message supplies its answer, intermediate result or required reasoning. Neutral help, pause and continuation actions are allowed. In the real host, separately inspect native message suggestions; API dialogue alone cannot accept those suggestions.
 
 ### Zugeordnete automatisierte Tests
 
@@ -727,13 +731,14 @@ Verbotene Werkzeuge: `set_skillpilot_mastery`, `get_skillpilot_navigation`, `set
 Für eine aktuelle Demo aus den bestandenen Fällen den Einstieg, Bild/Unterricht, Tagesplan/Fachwechsel und Karteikarten zeigen. Die vollständigen Prüf- und Fehlerfälle behalten eigene Nachweise; eine Demo ersetzt die Testsuite nicht. Die echte Aufnahme auf private Werte prüfen und unter einem neuen content-addressierten Namen bereitstellen, ohne ältere Aufnahmen zu überschreiben.
 
 - [ ] Roll out and verify the actual current candidate at the source-defined public MCP endpoint before a fresh portal scan; a local export does not update production.
-- [ ] Use With MCP and the public remote URL; do not reuse a development integration ID or OAuth client from a previous export.
-- [ ] Verify the current portal's skill import/upload workflow and rescan/reimport the exact reviewed skill bytes. Scanned skills are snapshots.
+- [ ] Build and audit the complete current-candidate submission ZIP, select Upload new or existing plugin, and upload it through With MCP. Do not reuse a development integration ID or OAuth client from a previous export.
+- [ ] Inspect imported Metadata & Skills, review cases and release notes. Resolve automated package/skill findings by updating the source and uploading a new complete ZIP; an MCP rescan does not update packaged skills.
+- [ ] Connect the one declared public MCP server, inspect the package-imported OAuth configuration, complete domain verification and authentication, and resolve MCP setup/tool-scan findings. Never weaken client-profile or learner-session checks.
 - [ ] Provide working reviewer credentials only in the authenticated portal; test without MFA, SMS, email verification or private network access.
 - [ ] Run every positive, negative and internal daily-plan case against the current backend and the real claimed ChatGPT host; retain sanitized evidence.
 - [ ] Record or explicitly approve a current-candidate demo. The rejected 1.0.0 recording is historical evidence, not acceptance of the current candidate.
 - [ ] Decide countries, age/guardian boundaries and legal attestations separately; this generator makes no attestations and grants no approval.
-- [ ] Compare a fresh saved portal export with the generated draft, resolve every mismatch and re-check the saved values before an explicitly authorized submission.
+- [ ] Inspect ZIP-managed test cases in Review information; edit their source and upload again to change them. Where a saved portal export is available, audit it locally against the worksheet and check remaining settings directly.
 - [ ] Approval, submission and publication are external actions; none is performed or inferred by this generator.
 
 Den frisch gespeicherten Portalexport ausschließlich lokal mit `node scripts/openai_plugin_submission.mjs audit-export --export tmp/<lauf>/portal-export.json` vergleichen. Das Roh-JSON kann Geheimnisse enthalten: weder committen noch als CI-Artefakt hochladen. Starter Prompt und nicht exportierte Portalangaben zusätzlich direkt kontrollieren.

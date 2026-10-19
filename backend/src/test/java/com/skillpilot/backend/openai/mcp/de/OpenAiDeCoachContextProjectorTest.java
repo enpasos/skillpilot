@@ -446,6 +446,15 @@ class OpenAiDeCoachContextProjectorTest {
                         ? "Eine neue Aufgabe oder ihr Lernbild erscheint erst nach erkennbarer Zustimmung zum Weitergehen"
                         : "Show the next task or its image only after recognizable agreement to continue");
                 assertThat(policies).contains(locale.equals("de")
+                        ? "den exakten Titel des vom Backend aktivierten Nachfolgers"
+                        : "the exact backend-activated successor title");
+                assertThat(policies).contains(locale.equals("de")
+                        ? "nicht offen nach einem neuen Thema"
+                        : "never openly for a new topic");
+                assertThat(policies).contains(locale.equals("de")
+                        ? "Ohne aktiven Nachfolger folge nur den gelieferten Abschluss-, Planhinweisen und Optionen"
+                        : "Without an active successor, follow only the returned completion or learning-plan guidance and options");
+                assertThat(policies).contains(locale.equals("de")
                         ? "speichere belegten Erfolg sofort, ohne separate Abschlusszustimmung"
                         : "save warranted success immediately, without separate closure consent");
                 assertThat(policies).contains(locale.equals("de")

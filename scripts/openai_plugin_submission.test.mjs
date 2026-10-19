@@ -1,9 +1,12 @@
 import assert from 'node:assert/strict'
-import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
-import { join } from 'node:path'
+import { mkdirSync, mkdtempSync, readFileSync, rmSync, symlinkSync, writeFileSync } from 'node:fs'
+import { dirname, join, resolve } from 'node:path'
+import { spawnSync } from 'node:child_process'
+import { createHash } from 'node:crypto'
 import { fileURLToPath } from 'node:url'
 import { test } from 'node:test'
-import { assertNoSecrets, auditExport, digest, generateSubmission, main, validateExecutionMappings, validateSuite, validateTrace as validateBoundTrace } from './openai_plugin_submission.mjs'
+import { assertNoSecrets, auditExport, buildSubmissionZip, digest, generateSubmission, generateSubmissionPackageManifest, main, validateExecutionMappings, validateSubmissionSnapshotSources, validateSuite, validateTrace as validateBoundTrace } from './openai_plugin_submission.mjs'
+import { OPENAI_PLUGIN_INSTALL_FILES } from './lib/openai_plugin_install_files.mjs'
 
 const suite = JSON.parse(readFileSync(new URL('../ai/openai plugin/skillpilot-coach-v1/submission/review-cases.json', import.meta.url)))
 const manifest = {
@@ -116,20 +119,160 @@ test('prepared trace has no fabricated observations or approvals and cannot pass
   assert.doesNotThrow(() => assertNoSecrets(trace))
 })
 
-test('prepare and check bind all four prepared files and detect modified operator materials', t => {
+test('prepare and check bind all six prepared files and detect modified operator materials', t => {
   const temporaryRoot = fileURLToPath(new URL('../tmp/', import.meta.url))
   mkdirSync(temporaryRoot, { recursive: true })
   const output = mkdtempSync(join(temporaryRoot, 'openai-submission-test-'))
   t.after(() => rmSync(output, { recursive: true, force: true }))
   main(['prepare', '--out-dir', output])
   assert.doesNotThrow(() => main(['check', '--out-dir', output]))
-  for (const name of ['portal-draft.json', 'preparation.json', 'acceptance-guide.md', 'trace-template.json']) {
+  for (const name of ['portal-draft.json', 'preparation.json', 'acceptance-guide.md', 'trace-template.json', 'submission-plugin.json', 'submission-package.json']) {
     const path = join(output, name)
     const original = readFileSync(path, 'utf8')
     writeFileSync(path, `${original}\nSTALE\n`)
     assert.throws(() => main(['check', '--out-dir', output]), /is stale/u)
     writeFileSync(path, original)
   }
+})
+
+test('submission manifest imports reviewed cases and current release notes using documented ZIP field names', () => {
+  const source = { ...clone(manifest), skills: './skills/', mcpServers: './.mcp.json' }
+  const draft = generateSubmission(input).draft
+  const result = generateSubmissionPackageManifest({ manifest: source, draft, metadata, releaseNotes: '# Current release\n\nCurrent changes.\n' })
+  assert.equal(source.extensions, undefined)
+  assert.equal(result.interface.supportURL, metadata.customerSupportUrl)
+  const extension = result.extensions['com.openai']
+  assert.equal(extension.review.test_cases.positive.length, 5)
+  assert.equal(extension.review.test_cases.negative.length, 3)
+  assert.equal(extension.review.demo_recording_url, '')
+  assert.equal(extension.publication.release_notes, '# Current release\n\nCurrent changes.')
+  for (const [index, entry] of extension.review.test_cases.positive.entries()) {
+    assert.equal(entry.prompt, draft.test_cases[index].user_prompt)
+    assert.equal(entry.expected_behavior, draft.test_cases[index].expected_output)
+    assert.equal(entry.tools_triggered, draft.test_cases[index].tools_triggered)
+    assert.equal(entry.user_prompt, undefined)
+    assert.equal(entry.expected_output, undefined)
+  }
+  for (const bad of [{ apps: './.app.json' }, { hooks: {} }, { mcpServers: '../external.json' }]) assert.throws(() => generateSubmissionPackageManifest({ manifest: { ...source, ...bad }, draft, metadata, releaseNotes: 'Current changes.' }))
+  const withDemo = { ...metadata, demoRecording: { candidateVersion: source.version, url: 'https://fixture.example/current-demo.mp4' } }
+  const demo = generateSubmissionPackageManifest({ manifest: source, draft, metadata: withDemo, releaseNotes: 'Current changes.' })
+  assert.equal(demo.extensions['com.openai'].review.demo_recording_url, withDemo.demoRecording.url)
+  withDemo.demoRecording.candidateVersion = '1.0.0'
+  assert.throws(() => generateSubmissionPackageManifest({ manifest: source, draft, metadata: withDemo, releaseNotes: 'Current changes.' }), /current candidate/u)
+  for (const url of [
+    'https://skillpilot.com/api/public/openai/review/skillpilot-coach-v1/1.0.0/sha256-20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb.mp4',
+    `https://skillpilot.com/api/public/openai/review/skillpilot-coach-v1/${source.version}/sha256-20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb.mp4`,
+  ]) {
+    assert.throws(() => generateSubmissionPackageManifest({ manifest: source, draft, metadata: { ...metadata, demoRecording: { candidateVersion: source.version, url } }, releaseNotes: 'Current changes.' }), /historical candidate|Rejected 1.0.0/u)
+  }
+  for (const data of [{ ...metadata, reviewer_instructions: 'private' }, { ...metadata, clientSecret: 'private' }, { ...metadata, demoRecording: { candidateVersion: source.version, url: 'https://fixture.example/demo?token=private' } }]) {
+    assert.throws(() => generateSubmissionPackageManifest({ manifest: source, draft, metadata: data, releaseNotes: 'Current changes.' }), /Secret|credential|Signed URL/u)
+  }
+})
+
+function packageFixture(t) {
+  const temporaryRoot = fileURLToPath(new URL('../tmp/', import.meta.url))
+  mkdirSync(temporaryRoot, { recursive: true })
+  const repositoryRoot = mkdtempSync(join(temporaryRoot, 'openai-zip-test-'))
+  t.after(() => rmSync(repositoryRoot, { recursive: true, force: true }))
+  const pluginRoot = join(repositoryRoot, 'plugin')
+  const sourceRoot = fileURLToPath(new URL('../ai/openai plugin/skillpilot-coach-v1/', import.meta.url))
+  for (const path of OPENAI_PLUGIN_INSTALL_FILES) {
+    const target = join(pluginRoot, path)
+    mkdirSync(dirname(target), { recursive: true })
+    writeFileSync(target, readFileSync(join(sourceRoot, path)))
+  }
+  writeFileSync(join(repositoryRoot, 'LICENSE'), readFileSync(new URL('../LICENSE', import.meta.url)))
+  for (const args of [['init', '--quiet'], ['add', '--', 'plugin', 'LICENSE']]) assert.equal(spawnSync('git', args, { cwd: repositoryRoot, encoding: 'utf8' }).status, 0)
+  const canonical = JSON.parse(readFileSync(join(pluginRoot, '.codex-plugin/plugin.json')))
+  const fixtureMetadata = { ...metadata, customerSupportUrl: canonical.interface.supportURL ?? metadata.customerSupportUrl }
+  const draft = generateSubmission({ ...input, manifest: canonical, metadata: fixtureMetadata }).draft
+  const submissionManifest = generateSubmissionPackageManifest({ manifest: canonical, draft, metadata: fixtureMetadata, releaseNotes: 'Current reviewed changes.' })
+  const build = () => buildSubmissionZip({ repositoryRoot, pluginRoot, manifest: canonical, submissionManifest, sourceBindings: bindings })
+  return { repositoryRoot, pluginRoot, canonical, submissionManifest, build }
+}
+
+test('submission ZIP has exactly seven install files plus LICENSE, binds hashes, and missing demo never claims readiness', t => {
+  const { pluginRoot, build } = packageFixture(t)
+  mkdirSync(join(pluginRoot, 'submission'))
+  writeFileSync(join(pluginRoot, 'submission', 'private-credentials.json'), '{"password":"DO_NOT_PACKAGE"}')
+  writeFileSync(join(pluginRoot, '.env'), 'DO_NOT_PACKAGE')
+  const first = build()
+  const second = build()
+  assert.ok(first.archive.equals(second.archive))
+  assert.deepEqual(first.report, second.report)
+  assert.deepEqual(first.report.files.map(file => file.path), [...OPENAI_PLUGIN_INSTALL_FILES, 'LICENSE'])
+  assert.equal(first.report.submissionReadiness.ready, false)
+  assert.ok(first.report.submissionReadiness.pending.includes('current-candidate-demo'))
+  assert.equal(first.report.reviewInformation.currentCandidateDemoProvided, false)
+  assert.ok(!first.archive.includes(Buffer.from('DO_NOT_PACKAGE')))
+  assert.ok(!first.archive.includes(Buffer.from('submission/private-credentials.json')))
+  const members = new Map()
+  let cursor = 0
+  while (first.archive.readUInt32LE(cursor) === 0x04034b50) {
+    const size = first.archive.readUInt32LE(cursor + 18)
+    const nameLength = first.archive.readUInt16LE(cursor + 26)
+    const extraLength = first.archive.readUInt16LE(cursor + 28)
+    const path = first.archive.subarray(cursor + 30, cursor + 30 + nameLength).toString('utf8')
+    const start = cursor + 30 + nameLength + extraLength
+    members.set(path, first.archive.subarray(start, start + size))
+    cursor = start + size
+  }
+  assert.deepEqual([...members.keys()].sort(), [...OPENAI_PLUGIN_INSTALL_FILES, 'LICENSE'].sort())
+  for (const file of first.report.files) assert.equal(createHash('sha256').update(members.get(file.path)).digest('hex'), file.sha256)
+  const packagedManifest = JSON.parse(members.get('.codex-plugin/plugin.json'))
+  assert.equal(packagedManifest.extensions['com.openai'].review.test_cases.positive.length, 5)
+  assert.equal(packagedManifest.extensions['com.openai'].review.test_cases.negative.length, 3)
+  assert.equal(members.get('LICENSE').toString(), readFileSync(new URL('../LICENSE', import.meta.url), 'utf8'))
+  const generated = first.report.files.find(file => file.generated)
+  assert.equal(generated.path, '.codex-plugin/plugin.json')
+  assert.notEqual(generated.sourceSha256, generated.sha256)
+  assert.ok(first.report.files.filter(file => !file.generated).every(file => file.sourceSha256 === file.sha256))
+  const skill = join(pluginRoot, 'skills/skillpilot-coach-v1/SKILL.md')
+  writeFileSync(skill, `${readFileSync(skill, 'utf8')}\nReviewed follow-up instruction.\n`)
+  const changed = build()
+  assert.notEqual(changed.report.archiveSha256, first.report.archiveSha256)
+  assert.notEqual(changed.report.files.find(file => file.path.endsWith('SKILL.md')).sourceSha256, first.report.files.find(file => file.path.endsWith('SKILL.md')).sourceSha256)
+})
+
+test('ZIP packaging rejects secrets, nonempty server headers, missing tracked input and symlinked ancestors', t => {
+  const { pluginRoot, build } = packageFixture(t)
+  const mcpPath = join(pluginRoot, '.mcp.json')
+  const original = readFileSync(mcpPath)
+  const current = JSON.parse(original)
+  const server = Object.values(current.mcpServers)[0]
+  server.headers = { 'X-Test': 'value' }
+  writeFileSync(mcpPath, JSON.stringify(current))
+  assert.throws(build, /nonempty server headers/u)
+  delete server.headers
+  server.authentication = { clientSecret: 'DO_NOT_PACKAGE' }
+  writeFileSync(mcpPath, JSON.stringify(current))
+  assert.throws(build, /Secret/u)
+  writeFileSync(mcpPath, original)
+  const skill = join(pluginRoot, 'skills/skillpilot-coach-v1/SKILL.md')
+  writeFileSync(skill, `Private session sps_${'B'.repeat(43)}`)
+  assert.throws(build, /Real session identifier/u)
+  rmSync(join(pluginRoot, 'skills'), { recursive: true })
+  symlinkSync(resolve(pluginRoot, '../elsewhere'), join(pluginRoot, 'skills'))
+  assert.throws(build, /symbolic links/u)
+  rmSync(join(pluginRoot, 'skills'))
+  assert.equal(spawnSync('git', ['rm', '--cached', '--', 'plugin/.mcp.json'], { cwd: resolve(pluginRoot, '..'), encoding: 'utf8' }).status, 0)
+  assert.throws(build, /Git-tracked/u)
+})
+
+test('package and audit-zip produce and verify exact ZIP bytes and reject corruption', t => {
+  const temporaryRoot = fileURLToPath(new URL('../tmp/', import.meta.url))
+  mkdirSync(temporaryRoot, { recursive: true })
+  const output = mkdtempSync(join(temporaryRoot, 'openai-zip-cli-test-'))
+  t.after(() => rmSync(output, { recursive: true, force: true }))
+  main(['package', '--out-dir', output])
+  const report = JSON.parse(readFileSync(join(output, 'submission-package.json')))
+  const path = join(output, report.archiveName)
+  assert.doesNotThrow(() => main(['audit-zip', '--zip', path]))
+  const bytes = readFileSync(path)
+  bytes[40] ^= 1
+  writeFileSync(path, bytes)
+  assert.throws(() => main(['audit-zip', '--zip', path]), /differs from the current reviewed source/u)
 })
 
 test('alternate contract input must match its adjacent candidate snapshot bytes and identity', t => {
@@ -144,6 +287,7 @@ test('alternate contract input must match its adjacent candidate snapshot bytes 
   const snapshot = JSON.parse(readFileSync(new URL('snapshot-manifest.json', source), 'utf8'))
   writeFileSync(localContract, bytes)
   writeFileSync(join(output, 'plugin.json'), readFileSync(new URL('plugin.json', source)))
+  writeFileSync(join(output, 'skills-bundle.json'), readFileSync(new URL('skills-bundle.json', source)))
   const snapshotPath = join(output, 'snapshot-manifest.json')
   writeFileSync(snapshotPath, JSON.stringify(snapshot))
   const prepare = () => main(['prepare', '--contract', localContract, '--out-dir', join(output, 'generated')])
@@ -157,6 +301,48 @@ test('alternate contract input must match its adjacent candidate snapshot bytes 
   }
   writeFileSync(snapshotPath, JSON.stringify({ ...snapshot, files: [] }))
   assert.throws(prepare, /exactly one current contract/u)
+})
+
+test('same-version install sources and adjacent manifest must match the snapshot before CLI packaging', t => {
+  const { pluginRoot, canonical } = packageFixture(t)
+  const snapshotRoot = join(pluginRoot, '../snapshot')
+  mkdirSync(snapshotRoot)
+  const sha256 = bytes => createHash('sha256').update(bytes).digest('hex')
+  const record = (path, bytes) => ({ path, bytes: bytes.length, sha256: sha256(bytes) })
+  const files = []
+  const targets = [
+    ['.codex-plugin/plugin.json', 'plugin.json'], ['.mcp.json', 'mcp.json'],
+    ['assets/favicon-96x96.png', 'assets/favicon-96x96.png'],
+    ['assets/web-app-manifest-512x512.png', 'assets/web-app-manifest-512x512.png'],
+    [`release-notes/${canonical.version}.md`, 'release-notes.md'],
+  ]
+  mkdirSync(join(pluginRoot, 'release-notes'))
+  writeFileSync(join(pluginRoot, `release-notes/${canonical.version}.md`), 'Current reviewed release.\n')
+  for (const [source, expected] of targets) {
+    const bytes = readFileSync(join(pluginRoot, source))
+    files.push(record(expected, bytes))
+    if (expected === 'plugin.json') writeFileSync(join(snapshotRoot, expected), bytes)
+  }
+  const skills = OPENAI_PLUGIN_INSTALL_FILES.filter(path => path.startsWith('skills/'))
+  const bundleBytes = Buffer.from(JSON.stringify({ schemaVersion: 1, files: skills.map(path => record(path.slice(7), readFileSync(join(pluginRoot, path)))) }))
+  writeFileSync(join(snapshotRoot, 'skills-bundle.json'), bundleBytes)
+  files.push(record('skills-bundle.json', bundleBytes))
+  const snapshot = { files }
+  const validate = () => validateSubmissionSnapshotSources({ pluginRoot, snapshotRoot, snapshot, manifest: canonical })
+  assert.doesNotThrow(validate)
+  for (const source of [...targets.map(([source]) => join(pluginRoot, source)), ...skills.map(source => join(pluginRoot, source)), join(snapshotRoot, 'plugin.json'), join(snapshotRoot, 'skills-bundle.json')]) {
+    const original = readFileSync(source)
+    // Same length, same candidate version; a size-only/version-only guard
+    // would miss this change to MCP, skill, release notes or manifest bytes.
+    const changed = Buffer.from(original)
+    const index = source.endsWith('plugin.json') ? original.indexOf(Buffer.from('learning')) : original.length - 2
+    assert.ok(index >= 0)
+    changed[index] ^= 1
+    writeFileSync(source, changed)
+    assert.throws(validate, /hash differs from candidate snapshot/u)
+    writeFileSync(source, original)
+    assert.doesNotThrow(validate)
+  }
 })
 
 test('missing cases, duplicate IDs, stale versions and unknown tools fail closed', () => {

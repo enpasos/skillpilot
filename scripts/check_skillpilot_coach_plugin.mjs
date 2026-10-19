@@ -202,7 +202,8 @@ assert.match(submissionDossier, /submission\/review-cases\.json/u);
 assert.match(submissionDossier, /openai_plugin_submission\.mjs/u);
 assert.match(submissionDossier, /ChatGPT im Webbrowser/u);
 assert.match(submissionDossier, /kein bestandener Realhost-Test/u);
-assert.match(submissionDossier, /Android-Unterstützung ist nicht zugesagt/u);
+assert.match(submissionDossier, /Web, unter iOS[\s\S]+unter Android müssen jeweils geprüft werden/u);
+assert.match(submissionDossier, /der lokale Export schaltet[\s\S]+diese Oberflächen nicht frei/u);
 const currentTermsVersion = legalTermsVersion.match(
   /export const CURRENT_TERMS_VERSION = ['"]((?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*))['"]/u,
 )?.[1];
@@ -432,6 +433,7 @@ assert.ok(
 );
 for (const field of [
   "websiteURL",
+  "supportURL",
   "privacyPolicyURL",
   "termsOfServiceURL",
 ]) {
@@ -441,8 +443,8 @@ for (const field of [
     1024,
   );
 }
-assert.equal(Object.hasOwn(pluginInterface, "supportURL"), false,
-  "The plugin manifest schema does not accept supportURL; submission branding owns the support contact.");
+assert.equal(pluginInterface.supportURL, "https://skillpilot.com/imprint",
+  "The public directory manifest must carry the canonical support URL.");
 assert.equal(pluginInterface.brandColor, "#f59e0b");
 assert.equal(pluginInterface.composerIcon, "./assets/favicon-96x96.png");
 assert.equal(pluginInterface.logo, "./assets/web-app-manifest-512x512.png");
@@ -505,6 +507,11 @@ assert.deepEqual(mcpConfig, {
     "skillpilot-coach-v1": {
       type: "http",
       url: "https://mcp-coach-v1.skillpilot.com/mcp",
+      extensions: {
+        "com.openai": {
+          auth: { type: "oauth", client: { mode: "cimd" } },
+        },
+      },
     },
   },
 });
@@ -1537,8 +1544,8 @@ assertBehaviorFragments(
 assertBehaviorFragments(
   compactWhitespace(policy),
   [
-    /autopilot on or off[\s\S]+next task,[\s\S]+goal, and their image must not appear in the feedback response/u,
-    /next task,[\s\S]+goal, and their image[\s\S]+must not appear in the feedback response/u,
+    /autopilot on or off[\s\S]+next goal's teaching, task, and image must not appear in the feedback response/u,
+    /exact backend-selected title may identify the continuation offer/u,
     /orientation completion evidence, not advance consent[\s\S]+wait for a separate learner answer\s+before persisting or showing the next goal/u,
     /Give concrete feedback on the complete graded batch[\s\S]+wait for the learner's answer[\s\S]+After consent, call `record_skillpilot_verified_recall_results/u,
   ],

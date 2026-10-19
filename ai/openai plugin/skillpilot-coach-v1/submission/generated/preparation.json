@@ -2,22 +2,22 @@
   "schemaVersion": 1,
   "state": "PREPARED_NOT_SUBMITTED",
   "pluginIdentity": "skillpilot-coach-v1",
-  "candidateVersion": "1.1.2",
+  "candidateVersion": "1.1.3",
   "format": "Portal-shaped non-secret review worksheet; no documented portal JSON import/API is assumed.",
   "sourceBindings": {
-    "contractPath": "contracts/drafts/openai/skillpilot-coach-v1/1.1.2-SNAPSHOT/contract/contract.json",
+    "contractPath": "contracts/drafts/openai/skillpilot-coach-v1/1.1.3-SNAPSHOT/contract/contract.json",
     "suitePath": "ai/openai plugin/skillpilot-coach-v1/submission/review-cases.json",
     "manifestPath": "ai/openai plugin/skillpilot-coach-v1/.codex-plugin/plugin.json",
     "metadataPath": "ai/openai plugin/skillpilot-coach-v1/submission/portal-metadata.json",
-    "snapshotManifestPath": "contracts/drafts/openai/skillpilot-coach-v1/1.1.2-SNAPSHOT/snapshot-manifest.json",
-    "snapshotManifestSha256": "595222c1e1054161411dd704217300f2d17b7fce4a4a1e16a1d38d24578e8680",
-    "suiteSha256": "abcfdbc5f9e53ec159099589a8c0fd771efceea7e55c68447f06c3fa8ce05617",
-    "contractSha256": "8c6d1bd86d013175ab5aa8e2e323e50b03d8c3cc76e444f1b5f245ac2684846c",
-    "manifestSha256": "5cbf234f5f258daa3cc5e4f7f7880143f4aa65df5cd96abcf4ae1f23c0c1cd0f",
-    "mcpSha256": "951550967891b1091b27f175fa9c83c5b3f47eb45cffd4b5654423039a06829c",
-    "metadataSha256": "0518b0b103587e9c52eeb5253b0e8001c7d7d9c9e864edc78cc121a4a95959fe"
+    "snapshotManifestPath": "contracts/drafts/openai/skillpilot-coach-v1/1.1.3-SNAPSHOT/snapshot-manifest.json",
+    "snapshotManifestSha256": "910eebe8f632307f067dc3e71b3138938d85a39d834c0c1226bb648420f6e0b5",
+    "suiteSha256": "e795150b9a85ccf57b2caa9f465ffac852f8d5204abf27e13acf2a58138bde2c",
+    "contractSha256": "919c40e00da1134af2d4a6b33a8fa4bc735fffb0dc37bc51af962aef7c56bac6",
+    "manifestSha256": "9a2e42d2d468f1c69c4f8103f525fbe346353cf0223bbc7c884e3075738fdf88",
+    "mcpSha256": "99a55782166224103f410f7bbc374341f0b0887c3532090702fd6b7c2e7a2f8a",
+    "metadataSha256": "820828afb6c4de3081c3fe2d5e85a15099a8730ccec235ad5cdf355a106dc42b"
   },
-  "generatedDraftSha256": "eb5ec781ad94a70d1576fac296fbdb0f9aecb8444eb332a5b08d61901512c995",
+  "generatedDraftSha256": "ff7374e74fb282d316439ac02980ffd30f5253ab3454f413732402a739c66f82",
   "starterPrompts": [
     "How do I start a learning session with SkillPilot?"
   ],
@@ -96,7 +96,7 @@
         }
       },
       "mimeType": "text/html;profile=mcp-app",
-      "name": "skillpilot-goal-visualization-v1-current",
+      "name": "skillpilot-goal-visualization-v1-retained-08030bd9",
       "title": "SkillPilot learning-goal image",
       "uri": "ui://skillpilot/coach/v1/sha256-08030bd956b68b816523f4971b6d18ab154eef01381882b01d7f1991cc643391/goal-visualization.html"
     },
@@ -304,6 +304,36 @@
         }
       },
       "mimeType": "text/html;profile=mcp-app",
+      "name": "skillpilot-goal-visualization-v1-current",
+      "title": "SkillPilot learning-goal image",
+      "uri": "ui://skillpilot/coach/v1/sha256-9c09821e96abadfccb08d07b62367d47963420c3a5cc51021ba801e2d6019fe4/goal-visualization.html"
+    },
+    {
+      "description": "Displays the approved image for the active atomic learning goal.",
+      "icons": [],
+      "meta": {
+        "openai/widgetCSP": {
+          "redirect_domains": [
+            "https://skillpilot.com"
+          ],
+          "resource_domains": [
+            "https://skillpilot.com"
+          ]
+        },
+        "openai/widgetDescription": "Approved didactic visualisation for the active SkillPilot learning goal.",
+        "openai/widgetDomain": "https://mcp-coach-v1.skillpilot.com",
+        "openai/widgetPrefersBorder": false,
+        "ui": {
+          "csp": {
+            "resourceDomains": [
+              "https://skillpilot.com"
+            ]
+          },
+          "domain": "https://mcp-coach-v1.skillpilot.com",
+          "prefersBorder": false
+        }
+      },
+      "mimeType": "text/html;profile=mcp-app",
       "name": "skillpilot-goal-visualization-v1-retained-bed59e4c",
       "title": "SkillPilot learning-goal image",
       "uri": "ui://skillpilot/coach/v1/sha256-bed59e4cd9b2cd00c31523c6bcc110db7c396f676704730e3a2a9055f0a0555c/goal-visualization.html"
@@ -341,13 +371,14 @@
   ],
   "manualStepsRequired": [
     "Roll out and verify the actual current candidate at the source-defined public MCP endpoint before a fresh portal scan; a local export does not update production.",
-    "Use With MCP and the public remote URL; do not reuse a development integration ID or OAuth client from a previous export.",
-    "Verify the current portal's skill import/upload workflow and rescan/reimport the exact reviewed skill bytes. Scanned skills are snapshots.",
+    "Build and audit the complete current-candidate submission ZIP, select Upload new or existing plugin, and upload it through With MCP. Do not reuse a development integration ID or OAuth client from a previous export.",
+    "Inspect imported Metadata & Skills, review cases and release notes. Resolve automated package/skill findings by updating the source and uploading a new complete ZIP; an MCP rescan does not update packaged skills.",
+    "Connect the one declared public MCP server, inspect the package-imported OAuth configuration, complete domain verification and authentication, and resolve MCP setup/tool-scan findings. Never weaken client-profile or learner-session checks.",
     "Provide working reviewer credentials only in the authenticated portal; test without MFA, SMS, email verification or private network access.",
     "Run every positive, negative and internal daily-plan case against the current backend and the real claimed ChatGPT host; retain sanitized evidence.",
     "Record or explicitly approve a current-candidate demo. The rejected 1.0.0 recording is historical evidence, not acceptance of the current candidate.",
     "Decide countries, age/guardian boundaries and legal attestations separately; this generator makes no attestations and grants no approval.",
-    "Compare a fresh saved portal export with the generated draft, resolve every mismatch and re-check the saved values before an explicitly authorized submission.",
+    "Inspect ZIP-managed test cases in Review information; edit their source and upload again to change them. Where a saved portal export is available, audit it locally against the worksheet and check remaining settings directly.",
     "Approval, submission and publication are external actions; none is performed or inferred by this generator."
   ],
   "evidence": {

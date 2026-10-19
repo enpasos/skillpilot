@@ -207,6 +207,97 @@ test('image authority and version are not inferred from a successful renderer re
   assert.equal(failed(evaluateDialogCase(c, events), 'fresh-version'), true)
 })
 
+test('accepted successor teaching requires its new authorized image before the reply', () => {
+  const c = getCase('P2')
+  const render = (turnId, goalId, version) => tool(turnId, 'render_skillpilot_goal_visualization', {}, { goalId, expectedStateVersion: version })
+  const visual = goalId => ({ activeGoal: { goalId }, goalVisualization: { goalId }, nextAllowedTools: ['render_skillpilot_goal_visualization'] })
+  const good = base(c)
+  Object.assign(good[1].result.structuredContent, visual('g1'))
+  insert(good, 'start', render('start', 'g1', 1))
+  insert(good, 'closure', tool('closure', 'set_skillpilot_mastery', { context: { learningState: 'ACTIVE', ...visual('g2') }, stateVersion: 2 }, { expectedStateVersion: 1 }), render('closure', 'g2', 2))
+  assert.equal(evaluateDialogCase(c, good).passed, true)
+
+  const missing = good.filter(event => !(event.name === 'render_skillpilot_goal_visualization' && event.turnId === 'closure'))
+  assert.equal(failed(evaluateDialogCase(c, missing), 'render-before-reply:closure'), true)
+  const late = structuredClone(missing)
+  late.push(render('closure', 'g2', 2))
+  assert.equal(failed(evaluateDialogCase(c, late), 'render-before-reply:closure'), true)
+  const stale = structuredClone(good)
+  stale.find(event => event.name === 'render_skillpilot_goal_visualization' && event.turnId === 'closure').arguments.expectedStateVersion = 1
+  assert.equal(failed(evaluateDialogCase(c, stale), 'render-before-reply:closure'), true)
+  const intervening = structuredClone(missing)
+  insert(intervening, 'closure', tool('closure', 'get_skillpilot_navigation'), render('closure', 'g2', 2))
+  assert.equal(failed(evaluateDialogCase(c, intervening), 'render-before-reply:closure'), true)
+
+  // An unchanged pair is already presented, even when the next explicit
+  // continuation arrives in a later learner turn.
+  const unchanged = good.filter(event => !(event.name === 'render_skillpilot_goal_visualization' && event.turnId === 'closure'))
+  const write = unchanged.find(event => event.name === 'set_skillpilot_mastery')
+  write.result.structuredContent = { stateVersion: 2 }
+  Object.assign(unchanged.find(event => event.name === 'get_skillpilot_context' && event.turnId === 'closure').result.structuredContent, visual('g1'))
+  assert.equal(failed(evaluateDialogCase(c, unchanged), 'render-before-reply'), false)
+
+  // Same goal with a newly authorized version is a new presentation pair.
+  write.result.structuredContent = { context: { learningState: 'ACTIVE', ...visual('g1') }, stateVersion: 2 }
+  assert.equal(failed(evaluateDialogCase(c, unchanged), 'render-before-reply:closure'), true)
+})
+
+test('image requirements respect fresh permission, absent images and feedback or pause turns', () => {
+  const d1 = getCase('D1')
+  const noPermission = base(d1)
+  noPermission[1].result.structuredContent.goalVisualization = { goalId: 'g1' }
+  assert.equal(failed(evaluateDialogCase(d1, noPermission), 'render-before-reply'), false)
+  const noImage = base(d1)
+  noImage[1].result.structuredContent.nextAllowedTools = ['render_skillpilot_goal_visualization']
+  assert.equal(failed(evaluateDialogCase(d1, noImage), 'render-before-reply'), false)
+
+  const p2 = getCase('P2')
+  const withdrawn = base(p2)
+  Object.assign(withdrawn.find(event => event.name === 'get_skillpilot_context' && event.turnId === 'closure').result.structuredContent,
+    { goalVisualization: { goalId: 'g1' }, nextAllowedTools: ['render_skillpilot_goal_visualization'] })
+  insert(withdrawn, 'closure', tool('closure', 'set_skillpilot_mastery', { context: { learningState: 'ACTIVE', activeGoal: { goalId: 'g2' } }, stateVersion: 2 }, { expectedStateVersion: 1 }))
+  assert.equal(evaluateDialogCase(p2, withdrawn).passed, true)
+
+  for (const [id, turnId] of [['P4', 'submission'], ['D5', 'request'], ['D6', 'request']]) {
+    const c = getCase(id)
+    const events = base(c)
+    const event = events.find(event => event.name === 'get_skillpilot_context' && event.turnId === turnId)
+    assert.ok(event, `${id}/${turnId} is an authored feedback/status/pause turn`)
+    Object.assign(event.result.structuredContent, { goalVisualization: { goalId: 'g1' }, nextAllowedTools: ['render_skillpilot_goal_visualization'] })
+    assert.equal(failed(evaluateDialogCase(c, events), 'render-before-reply'), false)
+  }
+})
+
+test('an accepted terminal recall continuation owns its exact renderer call', () => {
+  const c = getCase('P3')
+  const events = base(c)
+  const args = { goalId: 'recall-successor', expectedStateVersion: 2 }
+  const record = tool('recall-closure', 'record_skillpilot_verified_recall_results', {
+    stateVersion: 2,
+    continuation: { action: 'renderGoalVisualizationThenTeachActiveGoal', toolCall: { name: 'render_skillpilot_goal_visualization', arguments: args } },
+  })
+  insert(events, 'recall-closure', record)
+  assert.equal(failed(evaluateDialogCase(c, events), 'render-before-reply:recall-closure'), true)
+  insert(events, 'recall-closure', tool('recall-closure', 'render_skillpilot_goal_visualization', {}, args))
+  assert.equal(failed(evaluateDialogCase(c, events), 'render-before-reply:recall-closure'), false)
+})
+
+test('a failed authorized renderer attempt permits teaching and does not authorize a retry', () => {
+  const c = getCase('P2')
+  c.assertions.push({ id: 'expected-render-failure', kind: 'tool-error', tool: 'render_skillpilot_goal_visualization', code: 'RENDER_UNAVAILABLE' })
+  const events = base(c)
+  const visual = { goalVisualization: { goalId: 'g1' }, nextAllowedTools: ['render_skillpilot_goal_visualization'] }
+  Object.assign(events[1].result.structuredContent, visual)
+  const attempted = tool('start', 'render_skillpilot_goal_visualization', { code: 'RENDER_UNAVAILABLE' }, { goalId: 'g1', expectedStateVersion: 1 })
+  attempted.result.isError = true
+  insert(events, 'start', attempted)
+  Object.assign(events.find(event => event.name === 'get_skillpilot_context' && event.turnId === 'closure').result.structuredContent, visual)
+  insert(events, 'closure', tool('closure', 'set_skillpilot_mastery', { stateVersion: 2 }, { expectedStateVersion: 1 }))
+  assert.equal(evaluateDialogCase(c, events).passed, true)
+  insert(events, 'closure', { ...structuredClone(attempted), turnId: 'closure' })
+  assert.equal(failed(evaluateDialogCase(c, events), 'render-no-repeat:closure'), true)
+})
+
 test('paired fixture snapshots detect silent state mutations despite read-only tool names', () => {
   const c = getCase('D5')
   const events = base(c)
@@ -269,6 +360,19 @@ test('judge results require every semantic criterion, actual evidence and explic
     assert.equal(validateJudgeResult(c, changed, events).passed, false)
   }
   assert.equal(validateJudgeResult(c, null, events).passed, false)
+})
+
+test('successor choice and authored answer suggestions are explicit semantic criteria, with host limits', () => {
+  const p2 = getCase('P2')
+  const criteria = JSON.parse(buildJudgeRequest(p2, base(p2)).input).criteria
+  assert.match(criteria.find(criterion => criterion.assertionId === 'successor').criterion, /without asking them to choose a topic again/u)
+  const suggestions = criteria.find(criterion => criterion.assertionId === 'learner-owned-answers')
+  assert.match(suggestions.criterion, /must not also author a suggested learner reply/u)
+  assert.match(suggestions.criterion, /Native ChatGPT-generated suggestions are outside this API transcript/u)
+  const p4 = getCase('P4')
+  const afterExam = JSON.parse(buildJudgeRequest(p4, base(p4)).input).criteria.find(criterion => criterion.assertionId === 'exam-save-and-continuation')
+  assert.match(afterExam.criterion, /backend-selected successor by title/u)
+  assert.match(afterExam.criterion, /separate learner continuation reply/u)
 })
 
 test('every current case uses only the known Structured Outputs schema subset', () => {

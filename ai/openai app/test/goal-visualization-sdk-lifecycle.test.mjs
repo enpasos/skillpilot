@@ -105,6 +105,45 @@ test("real SDK and canonical ChatGPT metadata delivery share successors without 
   assert.equal(host.teardowns(), 0);
 });
 
+test("a rejected real SDK handshake preserves delayed compatibility delivery on a host that honors close", async () => {
+  const host = mount({ compatibility: true });
+  const initialize = await host.waitForMessage("ui/initialize");
+  host.advance(1_000);
+  host.receive({ jsonrpc: "2.0", id: initialize.id, error: {
+    code: -32601, message: "Method not found"
+  } });
+  await host.flush();
+
+  assert.equal(host.isClosed(), false, "standard initialization failure must not close the live compatibility channel");
+  assert.equal(host.teardowns(), 0);
+  assert.equal(host.closes(), 0);
+  assert.equal(host.root.hidden, true);
+  assert.equal(host.root.children.length, 0);
+
+  host.advance(4_000);
+  host.emitGlobals({ toolResponseMetadata: {
+    status: "complete", mcp_tool_result: { content: [], structuredContent: visualization("DELAYED") }
+  } });
+  const image = host.root.children[0];
+  assert.ok(image, "a real closing host must still receive the delayed compatibility result");
+  assert.equal(image.src, "https://skillpilot.com/DELAYED.png");
+  assert.equal(host.root.hidden, true);
+  image.emit("load");
+  assert.equal(host.root.hidden, false);
+  assert.equal(host.isClosed(), false);
+
+  image.emit("error");
+  image.emit("error");
+  await host.flush();
+  assert.equal(host.root.hidden, true);
+  assert.equal(host.root.children.length, 0);
+  assert.equal(host.teardowns(), 0, "the failed SDK transport cannot send standard teardown");
+  assert.equal(host.closes(), 1, "an actual image failure still requests compatibility closure exactly once");
+  assert.equal(host.isClosed(), true);
+  host.emitGlobals({ toolOutput: visualization("AFTER_CLOSE") });
+  assert.equal(host.root.children.length, 0, "the simulated host must discard delivery after honoring closure");
+});
+
 function visualization(goalId) {
   return { goalVisualization: {
     goalId, title: "Learning goal", imageUrl: `https://skillpilot.com/${goalId}.png`,
@@ -112,14 +151,24 @@ function visualization(goalId) {
   } };
 }
 
-function mount() {
+function mount({ compatibility = false } = {}) {
   const root = new Element();
   const messages = [];
   const listeners = new Map();
   const timers = new Map();
   let nextTimerId = 1;
   let now = 0;
-  const parent = { postMessage(message) { messages.push(message); } };
+  let closed = false;
+  let closeCount = 0;
+  const close = () => {
+    closed = true;
+    listeners.clear();
+    timers.clear();
+  };
+  const parent = { postMessage(message) {
+    messages.push(message);
+    if (message.method === "ui/notifications/request-teardown") close();
+  } };
   const schedule = (callback, delay = 0) => {
     const id = nextTimerId++;
     timers.set(id, { callback, at: now + delay });
@@ -145,17 +194,22 @@ function mount() {
   };
   context.window = context;
   context.globalThis = context;
+  if (compatibility) context.openai = { requestClose() { closeCount += 1; close(); } };
   vm.runInNewContext(script, context, { filename: "goal-visualization-real-sdk.test-bundle.js" });
   const receive = data => {
+    if (closed) return;
     for (const listener of listeners.get("message") ?? []) listener({ source: parent, data });
   };
   const flush = async () => { for (let i = 0; i < 20; i += 1) await Promise.resolve(); };
   return {
     root, context, receive, flush,
     emitGlobals(globals) {
+      if (closed) return;
       for (const listener of listeners.get("openai:set_globals") ?? []) listener({ detail: { globals } });
     },
     teardowns: () => messages.filter(message => message.method === "ui/notifications/request-teardown").length,
+    closes: () => closeCount,
+    isClosed: () => closed,
     async waitForMessage(method) {
       await flush();
       const message = messages.find(value => value.method === method);

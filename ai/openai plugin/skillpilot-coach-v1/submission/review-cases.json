@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "pluginIdentity": "skillpilot-coach-v1",
-  "candidateVersion": "1.1.2",
-  "scope": "Current unpublished ChatGPT 1.1.2 delayed goal-image loading correction and OpenAI submission candidate; local checks and historical rejected 1.0.0 evidence are not real-host acceptance.",
+  "candidateVersion": "1.1.3",
+  "scope": "Current unpublished ChatGPT 1.1.3 plan-continuation and answer-suggestion correction candidate with successor-renderer regression coverage; local checks and historical rejected 1.0.0 evidence are not real-host acceptance.",
   "portalBudgets": {
     "description": 200,
     "tools_triggered": 300,
@@ -239,12 +239,17 @@
         {
           "id": "successor",
           "kind": "manual",
-          "description": "Use the authoritative successor and one authorized image with exact goalId and stateVersion; no blank component if not authorized."
+          "description": "After accepted closure, teach the authoritative successor without asking the learner to choose another topic. Render each newly authorized goal/version pair before teaching, even when an earlier goal had an image; unchanged pairs do not trigger another call and unavailable images stay absent. Confirm actual second-image display separately in the host, including Voice."
         },
         {
           "id": "full-text",
           "kind": "manual",
           "description": "A rendered image never replaces complete German teaching text. Level 2 stays unchanged."
+        },
+        {
+          "id": "learner-owned-answers",
+          "kind": "manual",
+          "description": "When the coach asks an assessable question, no coach-authored suggested learner reply, answer chip or prefilled message supplies its answer, intermediate result or required reasoning. Neutral help, pause and continuation actions are allowed. In the real host, separately inspect native message suggestions; API dialogue alone cannot accept those suggestions."
         }
       ],
       "execution": {
@@ -416,7 +421,7 @@
         {
           "id": "continuation",
           "kind": "manual",
-          "description": "After recall-closure, apply exactly one confirmed authoritative continuation; no arbitrary next batch or invented goal."
+          "description": "After recall-closure, apply exactly one confirmed authoritative continuation; no arbitrary next batch, invented goal or generic topic-choice question. If the returned continuation prescribes a successor renderer, execute it before teaching with the exact server arguments."
         }
       ],
       "execution": {
@@ -502,7 +507,7 @@
         {
           "id": "exam-save-and-continuation",
           "kind": "manual",
-          "description": "After assessing the complete submission privately, save the passing result immediately before result feedback, without requiring closure consent. Then explain what the five criteria show and invite questions or continuation. Do not introduce another task or render an image until the separate learner continuation reply. Plain continuation does not reassess this verdict."
+          "description": "After assessing the complete submission privately, save the passing result immediately before result feedback, without requiring closure consent. Explain what the five criteria show and offer the backend-selected successor by title if available, allowing questions before continuation; do not ask the learner to invent the next topic. Do not introduce another task or render an image until the separate learner continuation reply. After closure, teach the fresh backend-selected goal and render its newly authorized image first. Plain continuation does not reassess this verdict."
         },
         {
           "id": "one-evaluation",
@@ -833,6 +838,11 @@
           "id": "safe-warning",
           "kind": "manual",
           "description": "Unavailable plans get an explicit safe partial-data warning without internal identifiers; never represent missing plans as all-clear."
+        },
+        {
+          "id": "learner-owned-answers",
+          "kind": "manual",
+          "description": "When the coach asks an assessable question, no coach-authored suggested learner reply, answer chip or prefilled message supplies its answer, intermediate result or required reasoning. Neutral help, pause and continuation actions are allowed. In the real host, separately inspect native message suggestions; API dialogue alone cannot accept those suggestions."
         }
       ],
       "execution": {

@@ -16,6 +16,17 @@ const SWITCH = 'switch_skillpilot_learning_plan_subject'
 const object = value => value !== null && typeof value === 'object' && !Array.isArray(value)
 const nonempty = value => typeof value === 'string' && value.trim().length > 0
 
+// These authored turns explicitly begin/continue teaching. Do not infer consent
+// from transcript keywords or require a successor image during feedback/pause.
+const teachingTurns = {
+  P2: ['start', 'closure'],
+  P3: ['start', 'orientation-closure', 'recall-closure'],
+  P4: ['closure'],
+  D1: ['start'],
+  D2: ['start'],
+  D3: ['start', 'switch'],
+}
+
 // Never treat missing/malformed tool output as a successful operation.
 export function dialogToolPayload(event) {
   if (object(event.result?.structuredContent)) return event.result.structuredContent
@@ -166,6 +177,38 @@ export function evaluateDialogCase(testCase, events) {
     if (next) authority = next
     if (success(event) && Number.isSafeInteger(payload?.stateVersion)) newestVersion = payload.stateVersion
   }
+  for (const turnId of teachingTurns[testCase.id] ?? []) {
+    const firstReply = events.findIndex(event => event.turnId === turnId && event.type === 'assistant')
+    let requirement
+    for (let index = 0; index < firstReply; index++) {
+      const event = events[index]
+      if (event.turnId !== turnId || event.type !== 'tool' || !model(event) || !success(event)) continue
+      const context = contextOf(event)
+      const payload = dialogToolPayload(event)
+      const continuation = payload?.continuation
+      if (context || continuation) {
+        // A newer full context with no offered/permitted image revokes any
+        // older expectation, including when images are disabled by preference.
+        requirement = undefined
+        const prescribed = continuation?.action === 'renderGoalVisualizationThenTeachActiveGoal'
+          && continuation.toolCall?.name === RENDER ? continuation.toolCall.arguments : undefined
+        const args = prescribed ?? (Array.isArray(context?.nextAllowedTools) && context.nextAllowedTools.includes(RENDER)
+          && context?.goalVisualization?.goalId === context?.activeGoal?.goalId
+          ? { goalId: context?.goalVisualization?.goalId, expectedStateVersion: payload?.stateVersion }
+          : undefined)
+        if (nonempty(args?.goalId) && Number.isSafeInteger(args?.expectedStateVersion)) requirement = { index, args }
+      }
+    }
+    if (!requirement) continue
+    const matches = event => event.type === 'tool' && model(event) && event.name === RENDER && !event.blocked && object(event.result)
+      && Object.entries(requirement.args).every(([name, value]) => isDeepStrictEqual(event.arguments?.[name], value))
+    if (events.slice(0, requirement.index).some(matches)) {
+      check(`render-no-repeat:${turnId}`, !events.slice(requirement.index + 1).some(event => event.turnId === turnId && matches(event)), 'An already attempted pair creates no automatic retry, including after a failed renderer; these authored turns do not request image redisplay.')
+      continue
+    }
+    const next = events.slice(requirement.index + 1, firstReply).find(event => event.type === 'tool' && model(event))
+    check(`render-before-reply:${turnId}`, Boolean(next && matches(next)), 'An explicitly accepted teaching turn renders each newly authorized goal/version pair as the immediate next tool before replying; this proves a call, not host display.')
+  }
   if (testCase.id === 'P3') check('eight-component-ratings', tools.filter(event => event.name === REVIEW && event.actor === 'component' && event.turnId === 'rate' && success(event)).length === 8, 'All eight explicit fixture ratings occur through component operations.')
   if (['D2', 'D4'].includes(testCase.id)) {
     const first = tools.find(event => event.name === CONTEXT && success(event))
@@ -202,18 +245,19 @@ const safeSnapshot = state => {
 }
 const apiCriteria = {
   'P1/no-state-change': 'No tool attempt or learner/session credential request or disclosure in the visible handoff. This does not verify first-party UI or real learner persistence.',
-  'P2/successor': 'Use the successor and renderer arguments from the actual public authoritative context; when rendering is unavailable, do not claim an image was shown. Evaluate the attempted calls and accompanying teaching, not actual widget pixels.',
+  'P2/successor': 'Use the successor and renderer arguments from the actual public authoritative context. The learner has already accepted continuation in closure: teach that selected goal without asking them to choose a topic again. Render each newly authorized goal/version pair before teaching; a prior goal image never satisfies the successor. When rendering is unavailable, do not claim an image was shown. Evaluate attempted calls and teaching, not actual widget pixels.',
   'P2/full-text': 'The assistant supplies complete German teaching even when it requests an image. Any supplied simulated fixture personal-curriculum snapshots remain unchanged. Actual rendering and production persistence are not assessed.',
   'P3/private-cards': 'Before strict recall, public normal-practice outputs and assistant text do not expose card questions/answers or turn cards into an inline chat lesson. Later authorized recall prompts/answers are a separate mode. Hidden component metadata placement and rendering are covered elsewhere, not proven by this transcript.',
   'P3/explicit-ratings': 'Only the driver component performs explicit normal-practice rating operations; the model does not claim those simulated ratings establish mastery. Compare available simulated mastery counters/state. Physical UI interaction and real scheduling persistence are not assessed.',
   'P5/unchanged-mastery': 'Compare available simulated mastery snapshots and exact scope option payloads: widening preserves existing mastery and independent roots. Do not invent mastery or describe newly included unmastered targets as mastered. This does not prove real learner persistence or the global prerequisite algorithm.',
   'P5/manual-not-auto': 'Describe the observed widening as the result of the explicit user request/consent, not as proof of automatic widening or focus completion.',
+  '*/learner-owned-answers': 'When the assistant asks an assessable question, it must not also author a suggested learner reply, answer chip or prefilled message containing the answer, intermediate result or reasoning needed to solve it. Neutral help, pause or continuation actions are allowed. Judge only observable assistant-authored text and public tool results. Native ChatGPT-generated suggestions are outside this API transcript and remain untested; their absence here does not establish host acceptance.',
 }
 
 export function buildJudgeRequest(testCase, events) {
   const criteria = testCase.assertions.filter(assertion => assertion.kind === 'manual').map(assertion => ({
     assertionId: assertion.id,
-    criterion: apiCriteria[`${testCase.id}/${assertion.id}`] ?? assertion.description,
+    criterion: apiCriteria[`${testCase.id}/${assertion.id}`] ?? apiCriteria[`*/${assertion.id}`] ?? assertion.description,
     originalHostCriterion: assertion.description,
     scope: 'Only observable model dialog, attempted tools and public fixture results; no human or native-host acceptance.',
   }))

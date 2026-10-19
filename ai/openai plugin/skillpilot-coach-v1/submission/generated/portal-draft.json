@@ -1,5 +1,5 @@
 {
-  "version": "1.1.2",
+  "version": "1.1.3",
   "display_name": "SkillPilot Coach v1",
   "developer_name": "enpasos GmbH",
   "plugin_category": "education & research",
@@ -1878,7 +1878,7 @@
           "title": "Display the learning-goal image"
         },
         "metadata": {
-          "openai/outputTemplate": "ui://skillpilot/coach/v1/sha256-08030bd956b68b816523f4971b6d18ab154eef01381882b01d7f1991cc643391/goal-visualization.html",
+          "openai/outputTemplate": "ui://skillpilot/coach/v1/sha256-9c09821e96abadfccb08d07b62367d47963420c3a5cc51021ba801e2d6019fe4/goal-visualization.html",
           "securitySchemes": [
             {
               "scopes": [
@@ -1888,7 +1888,7 @@
             }
           ],
           "ui": {
-            "resourceUri": "ui://skillpilot/coach/v1/sha256-08030bd956b68b816523f4971b6d18ab154eef01381882b01d7f1991cc643391/goal-visualization.html"
+            "resourceUri": "ui://skillpilot/coach/v1/sha256-9c09821e96abadfccb08d07b62367d47963420c3a5cc51021ba801e2d6019fe4/goal-visualization.html"
           }
         }
       },
@@ -3272,7 +3272,7 @@
       {
         "name": "set_skillpilot_mastery",
         "title": "Finalize evaluated learning goal",
-        "description": "Completes exactly the confirmed active atomic goal with the technical value 1.0. Call immediately after adequate ordinary-goal evidence or a final passing exam evaluation, without separate closure consent. A solved task alone does not prove mastery. After successful persistence, give feedback and invite questions or continuation; wait for the learner's reply before new content or a successor image. Send only structured completion facts and concurrency data; learner work, assessment reasoning and feedback stay in the conversation. After confirmed success, begin the exact successor from context.activeGoal only if the learner also agreed to continue; otherwise respect the pause or end. Never load navigation or set an already active successor again. For interactionMode=orientation, use orientationOutlook as the complete authoritative learning map. A reply that merely names one supplied path starts the tailored motivational follow-up and must not call this tool. Resolve a free-form interest to a path only when the match is unique; otherwise ask which path was meant. First connect two to four supplied milestones from that path to its supplied practical contexts, ask one active non-assessing follow-up, and wait for meaningful engagement. After that engagement or an explicit request to continue directly, give a positive summary, invite questions or closure and await the learner's next answer. Call only after that separate closure reply; a content-free acknowledgement or bare path choice alone is insufficient. When a path was selected, pass its exact pathId unchanged as orientationPathId. SkillPilot activates its first reviewed entry only when currently available; otherwise completion succeeds and the normal available foundations return without an active goal. Omit it only for an explicit direct continuation. Do not invent content, test details, jump straight to unrelated frontier options, or claim subject mastery. For ordinary content goals, call only after two independent visible checks or genuine multi-step transfer in a changed context covering all aspects. Never use for clusters, memorisation/SRS goals, self-assessment, repetition, or the same worked case. For exam goals, first call get_skillpilot_exam_evaluation. Copy its evaluationCapability unchanged, pass earnedPoints from the completed rubric, and call only when earnedPoints reaches passingPoints.",
+        "description": "Completes exactly the confirmed active atomic goal with the technical value 1.0. Call immediately after adequate ordinary-goal evidence or a final passing exam evaluation, without separate closure consent. A solved task alone does not prove mastery. After successful persistence, give feedback and, unless the learner asks to pause or end, offer the exact returned successor title if available, rather than asking for a new topic choice; wait for the learner's reply before new content or a successor image. Send only structured completion facts and concurrency data; learner work, assessment reasoning and feedback stay in the conversation. After confirmed success, begin the exact successor from context.activeGoal only if the learner also agreed to continue; otherwise respect the pause or end. Never load navigation or set an already active successor again. For interactionMode=orientation, use orientationOutlook as the complete authoritative learning map. A reply that merely names one supplied path starts the tailored motivational follow-up and must not call this tool. Resolve a free-form interest to a path only when the match is unique; otherwise ask which path was meant. First connect two to four supplied milestones from that path to its supplied practical contexts, ask one active non-assessing follow-up, and wait for meaningful engagement. After that engagement or an explicit request to continue directly, give a positive summary, invite questions or closure and await the learner's next answer. Call only after that separate closure reply; a content-free acknowledgement or bare path choice alone is insufficient. When a path was selected, pass its exact pathId unchanged as orientationPathId. SkillPilot activates its first reviewed entry only when currently available; otherwise completion succeeds and the normal available foundations return without an active goal. Omit it only for an explicit direct continuation. Do not invent content, test details, jump straight to unrelated frontier options, or claim subject mastery. For ordinary content goals, call only after two independent visible checks or genuine multi-step transfer in a changed context covering all aspects. Never use for clusters, memorisation/SRS goals, self-assessment, repetition, or the same worked case. For exam goals, first call get_skillpilot_exam_evaluation. Copy its evaluationCapability unchanged, pass earnedPoints from the completed rubric, and call only when earnedPoints reaches passingPoints.",
         "input_json_schema": {
           "additionalProperties": false,
           "properties": {
@@ -3325,7 +3325,7 @@
             },
             "completionHandoff": {
               "additionalProperties": false,
-              "description": "Server-owned completion facts. Generate learner-facing feedback from the conversation in chat before naming or teaching the successor; no chat content is transmitted or echoed through this handoff.",
+              "description": "Server-owned completion facts. Generate learner-facing feedback in chat, then offer the exact successor title when present. Wait for agreement before teaching the successor or rendering its image. No chat content is transmitted or echoed through this handoff.",
               "properties": {
                 "completedGoalId": {
                   "type": "string"
@@ -7303,7 +7303,7 @@
         "title": "Display the learning-goal image"
       },
       "metadata": {
-        "openai/outputTemplate": "ui://skillpilot/coach/v1/sha256-08030bd956b68b816523f4971b6d18ab154eef01381882b01d7f1991cc643391/goal-visualization.html",
+        "openai/outputTemplate": "ui://skillpilot/coach/v1/sha256-9c09821e96abadfccb08d07b62367d47963420c3a5cc51021ba801e2d6019fe4/goal-visualization.html",
         "securitySchemes": [
           {
             "scopes": [
@@ -7313,7 +7313,7 @@
           }
         ],
         "ui": {
-          "resourceUri": "ui://skillpilot/coach/v1/sha256-08030bd956b68b816523f4971b6d18ab154eef01381882b01d7f1991cc643391/goal-visualization.html"
+          "resourceUri": "ui://skillpilot/coach/v1/sha256-9c09821e96abadfccb08d07b62367d47963420c3a5cc51021ba801e2d6019fe4/goal-visualization.html"
         }
       }
     },
@@ -8697,7 +8697,7 @@
     {
       "name": "set_skillpilot_mastery",
       "title": "Finalize evaluated learning goal",
-      "description": "Completes exactly the confirmed active atomic goal with the technical value 1.0. Call immediately after adequate ordinary-goal evidence or a final passing exam evaluation, without separate closure consent. A solved task alone does not prove mastery. After successful persistence, give feedback and invite questions or continuation; wait for the learner's reply before new content or a successor image. Send only structured completion facts and concurrency data; learner work, assessment reasoning and feedback stay in the conversation. After confirmed success, begin the exact successor from context.activeGoal only if the learner also agreed to continue; otherwise respect the pause or end. Never load navigation or set an already active successor again. For interactionMode=orientation, use orientationOutlook as the complete authoritative learning map. A reply that merely names one supplied path starts the tailored motivational follow-up and must not call this tool. Resolve a free-form interest to a path only when the match is unique; otherwise ask which path was meant. First connect two to four supplied milestones from that path to its supplied practical contexts, ask one active non-assessing follow-up, and wait for meaningful engagement. After that engagement or an explicit request to continue directly, give a positive summary, invite questions or closure and await the learner's next answer. Call only after that separate closure reply; a content-free acknowledgement or bare path choice alone is insufficient. When a path was selected, pass its exact pathId unchanged as orientationPathId. SkillPilot activates its first reviewed entry only when currently available; otherwise completion succeeds and the normal available foundations return without an active goal. Omit it only for an explicit direct continuation. Do not invent content, test details, jump straight to unrelated frontier options, or claim subject mastery. For ordinary content goals, call only after two independent visible checks or genuine multi-step transfer in a changed context covering all aspects. Never use for clusters, memorisation/SRS goals, self-assessment, repetition, or the same worked case. For exam goals, first call get_skillpilot_exam_evaluation. Copy its evaluationCapability unchanged, pass earnedPoints from the completed rubric, and call only when earnedPoints reaches passingPoints.",
+      "description": "Completes exactly the confirmed active atomic goal with the technical value 1.0. Call immediately after adequate ordinary-goal evidence or a final passing exam evaluation, without separate closure consent. A solved task alone does not prove mastery. After successful persistence, give feedback and, unless the learner asks to pause or end, offer the exact returned successor title if available, rather than asking for a new topic choice; wait for the learner's reply before new content or a successor image. Send only structured completion facts and concurrency data; learner work, assessment reasoning and feedback stay in the conversation. After confirmed success, begin the exact successor from context.activeGoal only if the learner also agreed to continue; otherwise respect the pause or end. Never load navigation or set an already active successor again. For interactionMode=orientation, use orientationOutlook as the complete authoritative learning map. A reply that merely names one supplied path starts the tailored motivational follow-up and must not call this tool. Resolve a free-form interest to a path only when the match is unique; otherwise ask which path was meant. First connect two to four supplied milestones from that path to its supplied practical contexts, ask one active non-assessing follow-up, and wait for meaningful engagement. After that engagement or an explicit request to continue directly, give a positive summary, invite questions or closure and await the learner's next answer. Call only after that separate closure reply; a content-free acknowledgement or bare path choice alone is insufficient. When a path was selected, pass its exact pathId unchanged as orientationPathId. SkillPilot activates its first reviewed entry only when currently available; otherwise completion succeeds and the normal available foundations return without an active goal. Omit it only for an explicit direct continuation. Do not invent content, test details, jump straight to unrelated frontier options, or claim subject mastery. For ordinary content goals, call only after two independent visible checks or genuine multi-step transfer in a changed context covering all aspects. Never use for clusters, memorisation/SRS goals, self-assessment, repetition, or the same worked case. For exam goals, first call get_skillpilot_exam_evaluation. Copy its evaluationCapability unchanged, pass earnedPoints from the completed rubric, and call only when earnedPoints reaches passingPoints.",
       "input_json_schema": {
         "additionalProperties": false,
         "properties": {
@@ -8750,7 +8750,7 @@
           },
           "completionHandoff": {
             "additionalProperties": false,
-            "description": "Server-owned completion facts. Generate learner-facing feedback from the conversation in chat before naming or teaching the successor; no chat content is transmitted or echoed through this handoff.",
+            "description": "Server-owned completion facts. Generate learner-facing feedback in chat, then offer the exact successor title when present. Wait for agreement before teaching the successor or rendering its image. No chat content is transmitted or echoed through this handoff.",
             "properties": {
               "completedGoalId": {
                 "type": "string"

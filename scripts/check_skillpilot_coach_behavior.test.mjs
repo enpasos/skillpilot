@@ -75,6 +75,29 @@ test("a pause must not discard already demonstrated success", () => {
   assert.throws(() => assertCurrentCoachBehavior(changed("skill", /still records that success first/u, "must never save that success")), /A pause must preserve/u);
 });
 
+test("continuation offers name the selected successor without reopening topic selection", () => {
+  for (const [before, reason] of [
+    [/name its\s+exact localized title as the continuation offer and wait/u, /successor must be named/u],
+    [/Do not reopen subject or topic selection\s+with an open question when the backend has already selected the next goal/u, /preserve the backend-selected/u],
+    [/Apply the visualization rule below to that goal before its first teaching\s+response, including in voice mode/u, /renderer rule to the successor/u],
+  ]) {
+    assert.throws(() => assertCurrentCoachBehavior(changed("skill", before, "Ask what to do next")), reason);
+  }
+  assert.throws(() => assertCurrentCoachBehavior(changed("skill", "## Current-turn workflow",
+    "## Current-turn workflow\n\nUse the handoff without announcing a successor until the learner chooses to continue.")), /conflicting continuation rule/u);
+});
+
+test("suggested replies cannot supply answers or become independent mastery evidence", () => {
+  for (const [before, reason] of [
+    [/Never supply the answer to a pending learning question through suggested\s+replies, next-message drafts, clickable prompts, or text written in the\s+learner's voice/u, /must not reveal the task answer/u],
+    [/An answer known to have been\s+supplied by the coach or a host suggestion is not independent mastery\s+evidence/u, /fresh independent evidence/u],
+    [/Do not guess how an otherwise valid learner answer was produced/u, /provenance must not be inferred/u],
+    [/Host\s+suggestions may be outside the coach's control; never claim to disable them/u, /control over host suggestions/u],
+  ]) {
+    assert.throws(() => assertCurrentCoachBehavior(changed("skill", before, "Supply a complete answer")), reason);
+  }
+});
+
 test("inline exams cannot become dependent on a host reference lookup again", () => {
   assert.throws(() => assertCurrentCoachBehavior(changed("skill", /Exams are fully specified[\s\S]*?reference-file lookup\./u, "Read a separate exam reference before starting any exam.")), /Exam startup must not depend/u);
   assert.throws(() => assertCurrentCoachBehavior(changed("skill", "## Exams", "## External exams")), /Missing coach instruction section: Exams/u);

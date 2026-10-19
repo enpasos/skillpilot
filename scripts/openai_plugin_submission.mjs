@@ -1,8 +1,12 @@
 import assert from 'node:assert/strict'
 import { createHash } from 'node:crypto'
-import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs'
+import { existsSync, lstatSync, mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs'
 import { dirname, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { spawnSync } from 'node:child_process'
+import { OPENAI_PLUGIN_INSTALL_FILES } from './lib/openai_plugin_install_files.mjs'
+import { readTrackedInventory } from './lib/reproducible_plugin_archive.mjs'
+import { createReproduciblePluginZip } from './lib/reproducible_plugin_zip.mjs'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const plugin = resolve(root, 'ai/openai plugin/skillpilot-coach-v1')
@@ -17,6 +21,7 @@ const readJson = path => {
 const nonempty = (value, label) => assert.ok(typeof value === 'string' && value.trim().length > 0, `${label} must be nonempty`)
 const unique = (values, label) => assert.equal(new Set(values).size, values.length, `${label} contains duplicates`)
 const sourcePath = path => relative(root, path).replaceAll('\\', '/')
+const bytesDigest = value => createHash('sha256').update(value).digest('hex')
 
 function validateAssertions(testCase, toolNames) {
   assert.ok(Array.isArray(testCase.assertions) && testCase.assertions.length > 0, `${testCase.id}: missing semantic assertions`)
@@ -64,7 +69,7 @@ export function assertNoSecrets(value) {
     } else if (Array.isArray(item)) item.forEach(visit)
     else if (item && typeof item === 'object') {
       for (const [key, entry] of Object.entries(item)) {
-        assert.ok(!/^(?:client_secret|access_token|refresh_token|password|test_credentials|oauth_client|learningSessionId|learnerId|skillpilotId)$/iu.test(key), 'Secret or learner identity field in public artifact')
+        assert.ok(!/^(?:client_?secret|access_?token|refresh_?token|password|test_credentials|reviewer_instructions|oauth_client|learningSessionId|learnerId|skillpilotId)$/iu.test(key), 'Secret or learner identity field in public artifact')
         visit(entry)
       }
     }
@@ -206,6 +211,180 @@ export function generateSubmission({ manifest, mcp, contract, suite, metadata, b
     evidence: { sourceValidation: 'generated', backendAndComponentTests: 'run separately and retain their actual reports', liveModelReplay: 'not run by generator', chatgptWebAcceptance: 'pending', nativeMobileAcceptance: 'not claimed', submission: 'not performed', publication: 'not performed' },
   }
   return { draft, preparation, ...generateAcceptanceMaterials(suite, draft, preparation) }
+}
+
+// The canonical install/Git manifest remains the source. Only the submission
+// ZIP enriches it with the current documented review/publication extensions.
+export function generateSubmissionPackageManifest({ manifest, draft, metadata, releaseNotes }) {
+  nonempty(releaseNotes, 'Current candidate release notes')
+  assertNoSecrets(manifest)
+  assertNoSecrets(metadata)
+  assertNoSecrets(releaseNotes)
+  assert.equal(manifest.apps, undefined, 'Public submission must not reference apps')
+  assert.equal(manifest.hooks, undefined, 'Public submission must not include lifecycle hooks')
+  assert.equal(manifest.mcpServers, './.mcp.json', 'Submission must use the bundled direct MCP configuration')
+  assert.equal(manifest.skills, './skills/', 'Submission must use the bundled skills directory')
+  assert.equal(draft.version, manifest.version, 'Review worksheet/candidate version mismatch')
+  assert.equal(draft.test_cases.length, 5, 'Initial review requires exactly five positive cases')
+  assert.equal(draft.negative_test_cases.length, 3, 'Initial review requires exactly three negative cases')
+  const convert = testCase => ({
+    description: testCase.description,
+    prompt: testCase.user_prompt,
+    tools_triggered: testCase.tools_triggered,
+    expected_behavior: testCase.expected_output,
+  })
+  const review = {
+    test_cases: { positive: draft.test_cases.map(convert), negative: draft.negative_test_cases.map(convert) },
+    // Omission preserves an existing dashboard value. Explicitly clear the old
+    // recording when a new candidate has no reviewed demo of its own.
+    demo_recording_url: '',
+  }
+  if (metadata.demoRecording !== undefined) {
+    assert.equal(metadata.demoRecording.candidateVersion, manifest.version, 'Demo must be explicitly bound to the current candidate')
+    review.demo_recording_url = publicHttpsUrl(metadata.demoRecording.url, 'Current candidate demo URL')
+    const demo = new URL(review.demo_recording_url)
+    const internalReview = /^\/api\/public\/openai\/review\/([^/]+)\/([^/]+)\//u.exec(demo.pathname)
+    if (internalReview) {
+      assert.equal(internalReview[1], manifest.name, 'Demo route belongs to a different plugin')
+      assert.equal(internalReview[2], manifest.version, 'Demo route belongs to a historical candidate')
+    }
+    assert.ok(!demo.pathname.includes('20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb'), 'Rejected 1.0.0 recording cannot serve as the current candidate demo')
+  }
+  const result = structuredClone(manifest)
+  result.interface.supportURL ??= metadata.customerSupportUrl
+  assert.equal(result.interface.supportURL, metadata.customerSupportUrl, 'Support metadata differs from the canonical listing')
+  for (const key of ['websiteURL', 'supportURL', 'privacyPolicyURL', 'termsOfServiceURL']) publicHttpsUrl(result.interface[key], `Listing ${key}`)
+  result.extensions ??= {}
+  result.extensions['com.openai'] ??= {}
+  const openai = result.extensions['com.openai']
+  assert.equal(openai.review, undefined, 'Review information must be derived from the reviewed source cases')
+  assert.equal(openai.publication, undefined, 'Publication information must be derived from the current release notes')
+  openai.review = review
+  openai.publication = { release_notes: releaseNotes.trim() }
+  assertNoSecrets(result)
+  return result
+}
+
+function publicHttpsUrl(value, label) {
+  nonempty(value, label)
+  const url = new URL(value)
+  assert.ok(url.protocol === 'https:' && url.host && !url.username && !url.password && value.length <= 1024, `${label} must be a public HTTPS URL without credentials`)
+  assertNoSecrets(value)
+  return value
+}
+
+// A version label alone cannot bind a package: every install source and the
+// adjacent exported manifest must still match the same candidate snapshot.
+export function validateSubmissionSnapshotSources({ pluginRoot = plugin, snapshotRoot, snapshot, manifest }) {
+  const boundFile = (path, expectedPath) => {
+    const entries = snapshot.files?.filter(entry => entry.path === expectedPath)
+    assert.equal(entries?.length, 1, `Snapshot must bind exactly one ${expectedPath}`)
+    const stat = lstatSync(path)
+    assert.ok(stat.isFile() && !stat.isSymbolicLink(), `Snapshot-bound input must be a regular file: ${expectedPath}`)
+    assert.ok(stat.size <= 100 * 1024 * 1024, 'Snapshot-bound input exceeds the member size limit')
+    const bytes = readFileSync(path)
+    assert.equal(bytes.length, entries[0].bytes, `Source bytes differ from candidate snapshot: ${expectedPath}`)
+    assert.equal(bytesDigest(bytes), entries[0].sha256, `Source hash differs from candidate snapshot: ${expectedPath}`)
+    return bytes
+  }
+  boundFile(resolve(snapshotRoot, 'plugin.json'), 'plugin.json')
+  for (const [source, expected] of [
+    ['.codex-plugin/plugin.json', 'plugin.json'],
+    ['.mcp.json', 'mcp.json'],
+    ['assets/favicon-96x96.png', 'assets/favicon-96x96.png'],
+    ['assets/web-app-manifest-512x512.png', 'assets/web-app-manifest-512x512.png'],
+    [`release-notes/${manifest.version}.md`, 'release-notes.md'],
+  ]) boundFile(resolve(pluginRoot, source), expected)
+  const bundle = JSON.parse(boundFile(resolve(snapshotRoot, 'skills-bundle.json'), 'skills-bundle.json'))
+  assert.equal(bundle.schemaVersion, 1, 'Unsupported snapshot skill bundle')
+  const skillPaths = OPENAI_PLUGIN_INSTALL_FILES.filter(path => path.startsWith('skills/'))
+  assert.ok(Array.isArray(bundle.files), 'Snapshot skill bundle requires files')
+  assert.deepEqual(bundle.files.map(entry => entry.path).sort(), skillPaths.map(path => path.slice('skills/'.length)).sort(), 'Snapshot skill bundle must bind exactly the packaged skill files')
+  for (const source of skillPaths) {
+    const path = resolve(pluginRoot, source)
+    const expected = bundle.files.find(entry => entry.path === source.slice('skills/'.length))
+    const stat = lstatSync(path)
+    assert.ok(stat.isFile() && !stat.isSymbolicLink(), `Snapshot-bound skill must be a regular file: ${source}`)
+    assert.ok(stat.size <= 100 * 1024 * 1024, 'Snapshot-bound skill exceeds the member size limit')
+    const bytes = readFileSync(path)
+    assert.equal(bytes.length, expected.bytes, `Skill bytes differ from candidate snapshot: ${source}`)
+    assert.equal(bytesDigest(bytes), expected.sha256, `Skill hash differs from candidate snapshot: ${source}`)
+  }
+}
+
+export function buildSubmissionZip({ repositoryRoot = root, pluginRoot = plugin, manifest, submissionManifest, sourceBindings }) {
+  assertNoSecrets(submissionManifest)
+  assert.equal(submissionManifest.name, manifest.name, 'ZIP manifest identity mismatch')
+  assert.equal(submissionManifest.version, manifest.version, 'ZIP manifest version mismatch')
+  const inventory = new Map(readTrackedInventory(repositoryRoot, pluginRoot).map(entry => [entry.archivePath.replaceAll('\\', '/'), entry]))
+  const files = []
+  const entries = OPENAI_PLUGIN_INSTALL_FILES.map(path => {
+    const tracked = inventory.get(path)
+    assert.ok(tracked, `Submission path must be Git-tracked: ${path}`)
+    // lstat every ancestor as well as the member: a symlinked directory must
+    // never turn the explicit allowlist into a read outside the plugin root.
+    for (const suffix of ['', ...path.split('/').map((_, index, parts) => parts.slice(0, index + 1).join('/'))]) {
+      const stat = lstatSync(resolve(pluginRoot, suffix))
+      assert.ok(!stat.isSymbolicLink(), 'Submission path must not traverse symbolic links')
+    }
+    const absolute = resolve(pluginRoot, path)
+    assert.ok(lstatSync(absolute).isFile(), 'Submission input must be a regular file')
+    assert.ok(statSync(absolute).size <= 100 * 1024 * 1024, 'Submission input exceeds member size limit')
+    const source = readFileSync(absolute)
+    if (!path.endsWith('.png')) {
+      const text = source.toString('utf8')
+      assertNoSecrets(text)
+      if (path.endsWith('.json')) assertNoSecrets(JSON.parse(text))
+      if (path === '.codex-plugin/plugin.json') assert.deepEqual(JSON.parse(text), manifest, 'Canonical manifest bytes changed during packaging')
+      if (path === '.mcp.json') validateSubmissionMcp(JSON.parse(text))
+    }
+    const content = path === '.codex-plugin/plugin.json' ? Buffer.from(json(submissionManifest)) : source
+    files.push({ path, bytes: content.length, sha256: bytesDigest(content), sourcePath: relative(repositoryRoot, absolute).replaceAll('\\', '/'), sourceBytes: source.length, sourceSha256: bytesDigest(source), generated: path === '.codex-plugin/plugin.json' })
+    return { path, content, mode: tracked.fileMode }
+  })
+  const licensePath = resolve(repositoryRoot, 'LICENSE')
+  const trackedLicense = spawnSync('git', ['ls-files', '--error-unmatch', '--', 'LICENSE'], { cwd: repositoryRoot, encoding: 'utf8' })
+  assert.equal(trackedLicense.status, 0, 'Repository LICENSE must be Git-tracked')
+  const licenseStat = lstatSync(licensePath)
+  assert.ok(licenseStat.isFile() && !licenseStat.isSymbolicLink(), 'Repository LICENSE must be a regular file')
+  const license = readFileSync(licensePath)
+  entries.push({ path: 'LICENSE', content: license, mode: 0o644 })
+  files.push({ path: 'LICENSE', bytes: license.length, sha256: bytesDigest(license), sourcePath: 'LICENSE', sourceBytes: license.length, sourceSha256: bytesDigest(license), generated: false })
+  const archive = createReproduciblePluginZip(entries)
+  const report = {
+    schemaVersion: 1,
+    state: 'PREPARED_NOT_SUBMITTED',
+    pluginIdentity: manifest.name,
+    candidateVersion: manifest.version,
+    archiveName: `${manifest.name}-${manifest.version}-submission.zip`,
+    archiveBytes: archive.length,
+    archiveSha256: bytesDigest(archive),
+    format: 'Codex plugin ZIP; one plugin root at archive root; stored members with fixed 1980 timestamps.',
+    sourceBindings,
+    files,
+    reviewInformation: { positiveCases: 5, negativeCases: 3, currentCandidateDemoProvided: !!submissionManifest.extensions['com.openai'].review.demo_recording_url },
+    submissionReadiness: {
+      ready: false,
+      pending: [
+        ...(!submissionManifest.extensions['com.openai'].review.demo_recording_url ? ['current-candidate-demo'] : []),
+        'deployed-candidate-verification', 'real-host-acceptance', 'portal-mcp-connection-and-scans',
+        'secure-reviewer-access', 'legal-attestations-and-explicit-submission-authorization',
+      ],
+      caveat: 'Local package validation does not establish portal validation, deployment, host acceptance, submission or publication.',
+    },
+  }
+  return { archive, report }
+}
+
+function validateSubmissionMcp(mcp) {
+  assertNoSecrets(mcp)
+  assert.ok(mcp.mcpServers && Object.keys(mcp.mcpServers).length === 1, 'Submission requires exactly one remote MCP server')
+  const server = Object.values(mcp.mcpServers)[0]
+  publicHttpsUrl(server.url, 'Submission MCP endpoint')
+  assert.equal(new URL(server.url).search, '', 'MCP endpoint must not contain query parameters')
+  assert.ok(server.type === undefined || ['http', 'streamable-http'].includes(server.type), 'Submission requires remote HTTP transport')
+  assert.ok(!server.headers || (typeof server.headers === 'object' && !Array.isArray(server.headers) && Object.keys(server.headers).length === 0), 'Public submission rejects nonempty server headers')
+  for (const key of ['command', 'args', 'env', 'test_cases']) assert.equal(server[key], undefined, `Unsupported or conflicting submission MCP field: ${key}`)
 }
 
 // Derive the operator worksheet from the same reviewed cases as the portal.
@@ -404,13 +583,13 @@ function argumentsFor(argv) {
     assert.ok(rest[index].startsWith('--') && rest[index + 1] && !rest[index + 1].startsWith('--'), 'Options require --name value')
     options[rest[index].slice(2)] = rest[index + 1]
   }
-  for (const key of Object.keys(options)) assert.ok(['contract', 'out-dir', 'export', 'trace'].includes(key), `Unknown option ${key}`)
+  for (const key of Object.keys(options)) assert.ok(['contract', 'out-dir', 'export', 'trace', 'zip'].includes(key), `Unknown option ${key}`)
   return { command, options }
 }
 
 export function main(argv = process.argv.slice(2)) {
   const { command, options } = argumentsFor(argv)
-  assert.ok(['prepare', 'check', 'audit-export', 'validate-trace'].includes(command), 'Usage: openai_plugin_submission.mjs prepare|check|audit-export --export PATH|validate-trace --trace PATH [--contract PATH] [--out-dir PATH]')
+  assert.ok(['prepare', 'check', 'package', 'audit-zip', 'audit-export', 'validate-trace'].includes(command), 'Usage: openai_plugin_submission.mjs prepare|check|package|audit-zip --zip PATH|audit-export --export PATH|validate-trace --trace PATH [--contract PATH] [--out-dir PATH]')
   const manifestPath = resolve(plugin, '.codex-plugin/plugin.json')
   const manifest = readJson(manifestPath)
   const suitePath = resolve(submission, 'review-cases.json')
@@ -427,6 +606,7 @@ export function main(argv = process.argv.slice(2)) {
   const contractEntry = snapshot.files?.filter(entry => entry.path === contractRelativePath)
   assert.equal(contractEntry?.length, 1, 'Snapshot must bind exactly one current contract file')
   assert.equal(contractEntry[0].sha256, digest(readFileSync(contractPath, 'utf8')), 'Contract bytes differ from the candidate snapshot')
+  validateSubmissionSnapshotSources({ pluginRoot: plugin, snapshotRoot: dirname(snapshotManifestPath), snapshot, manifest })
   const mcpPath = resolve(plugin, '.mcp.json')
   const metadataPath = resolve(submission, 'portal-metadata.json')
   const result = generateSubmission({ manifest, mcp: readJson(mcpPath), contract: readJson(contractPath), suite, metadata: readJson(metadataPath), bindings: { contractPath: sourcePath(contractPath), suitePath: sourcePath(suitePath), manifestPath: sourcePath(manifestPath), metadataPath: sourcePath(metadataPath), snapshotManifestPath: sourcePath(snapshotManifestPath), snapshotManifestSha256: digest(readFileSync(snapshotManifestPath, 'utf8')) } })
@@ -438,7 +618,7 @@ export function main(argv = process.argv.slice(2)) {
     if (!traceResult.passed) process.exitCode = 1
     return traceResult
   }
-  const out = resolve(options['out-dir'] ?? resolve(submission, 'generated'))
+  const out = resolve(options['out-dir'] ?? (command === 'package' ? resolve(root, 'tmp/openai-submission') : resolve(submission, 'generated')))
   if (command === 'audit-export') {
     assert.ok(options.export, '--export is required')
     const audit = auditExport(result.draft, readJson(resolve(options.export)))
@@ -446,15 +626,36 @@ export function main(argv = process.argv.slice(2)) {
     if (!audit.matches) process.exitCode = 1
     return audit
   }
+  const releaseNotesPath = resolve(plugin, 'release-notes', `${manifest.version}.md`)
+  const releaseNotes = readFileSync(releaseNotesPath, 'utf8')
+  const submissionManifest = generateSubmissionPackageManifest({ manifest, draft: result.draft, metadata: readJson(metadataPath), releaseNotes })
+  const bundle = buildSubmissionZip({ manifest, submissionManifest, sourceBindings: {
+    ...result.preparation.sourceBindings,
+    releaseNotesPath: sourcePath(releaseNotesPath), releaseNotesSha256: bytesDigest(Buffer.from(releaseNotes)),
+  } })
+  if (command === 'audit-zip') {
+    assert.ok(options.zip, '--zip is required')
+    assert.ok(statSync(resolve(options.zip)).size <= 100 * 1000 * 1000, 'ZIP exceeds the 100 MB upload limit')
+    assert.ok(readFileSync(resolve(options.zip)).equals(bundle.archive), 'ZIP differs from the current reviewed source files and generated submission metadata')
+    console.log(`CHECK openai_plugin_submission ZIP PASS ${bundle.report.archiveSha256} state=PREPARED_NOT_SUBMITTED ready=false`)
+    return bundle.report
+  }
   for (const [name, content] of [
     ['portal-draft.json', json(result.draft)],
     ['preparation.json', json(result.preparation)],
     ['acceptance-guide.md', result.acceptanceGuide],
     ['trace-template.json', json(result.traceTemplate)],
+    ['submission-plugin.json', json(submissionManifest)],
+    ['submission-package.json', json(bundle.report)],
   ]) {
     const path = resolve(out, name)
     if (command === 'check') assert.equal(readFileSync(path, 'utf8'), content, `${name} is stale; run prepare after reviewing the current sources`)
     else { mkdirSync(out, { recursive: true }); writeFileSync(path, content) }
+  }
+  if (command === 'package') {
+    const archivePath = resolve(out, bundle.report.archiveName)
+    writeFileSync(archivePath, bundle.archive)
+    console.log(`ZIP ${sourcePath(archivePath)} sha256=${bundle.report.archiveSha256} ready=false`)
   }
   console.log(`CHECK openai_plugin_submission PASS ${manifest.name} ${manifest.version} cases=${suite.cases.length} portal=5+3 state=PREPARED_NOT_SUBMITTED`)
   return result

@@ -71,10 +71,9 @@ renderFirstStructuredContent(
 // The host can mount the app while a tool or image is still loading. Keep the
 // empty component hidden instead of asking the host to discard its pending
 // result after a local deadline. Compatibility delivery may work even when
-// the standards-first handshake fails, so retain any valid result it supplied.
-void bridge.ready.catch(() => {
-  if (!currentVisualization) dismissUnavailableUi();
-});
+// the standards-first handshake fails, including when its result arrives
+// after that failure. Handshake rejection alone must not close that channel.
+void bridge.ready.catch(() => undefined);
 
 function applyToolResult(result: GoalVisualizationToolResult): void {
   renderStructuredContent(result);

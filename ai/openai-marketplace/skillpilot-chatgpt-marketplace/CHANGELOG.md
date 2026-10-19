@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.1.3 — current deployment candidate
+
+- Offer the backend-selected next topic by name after saved mastery, and wait
+  for continuation before teaching or showing its image.
+- Reject solution-bearing authored reply suggestions as independent evidence.
+- Declare OAuth/CIMD preference and the public support URL. Existing native and
+  hosted server-side client profiles retain their independent authentication.
+- Prepare the separate public-directory ZIP workflow for desktop, web and
+  mobile. This Git package remains a Desktop route and creates no directory
+  publication or host-acceptance claim.
+- The matching backend corrects premature widget closure after a failed
+  standard handshake. Actual Voice image-sequence acceptance remains pending.
+
 ## 1.1.2 — delayed learning-image correction
 
 - Update the plugin version to match the backend's corrected image renderer.

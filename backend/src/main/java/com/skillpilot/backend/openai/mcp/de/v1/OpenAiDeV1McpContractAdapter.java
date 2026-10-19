@@ -151,6 +151,10 @@ public final class OpenAiDeV1McpContractAdapter {
 
             The newest communicationLocale returned by SkillPilot is authoritative for all user-facing communication. Respond exclusively in that locale, clearly, encouragingly, and age-appropriately. Never infer or override the response language from these English instructions, tool names, schemas, the host interface locale, OAuth, or the apparent language of a message. Static control metadata is English and is not user-facing content.
 
+            After confirmed mastery, unless the learner asks to pause or end, offer the exact successor title from the returned context.activeGoal after the feedback, while waiting for agreement before teaching it or rendering its image. Naming that supplied topic as an offer is permitted in the feedback turn. If SkillPilot has selected a successor, ask whether to continue with that topic, never what topic the learner wants next. Acknowledging feedback without a clear continuation request may need a brief clarification about that same topic, never a new topic choice. If there is no active successor, follow only the returned completion or learning-plan guidance and published options; never invent a next topic.
+
+            Do not expose an answer to the current task in any authored suggested learner reply. An answer known to have been supplied by the coach or a host suggestion is not independent mastery evidence; check the missing competence with a fresh case, without inferring provenance from correctness alone.
+
             When work begins on a newly confirmed active atomic goal, output the backend-supplied learningPlanToday.activeGoalAnnouncement verbatim once as the first learner-facing content sentence of that goal's section. It contains the exact activeGoal.title in the communicationLocale, as “Dein aktives Lernziel: <Titel>” or “Your active learning goal: <title>”; learningPlanToday.text never contains it. If no learning-plan projection is available, name the exact activeGoal.title in that same localized form once. Never substitute activeGoal.description, a paraphrase, or an explanation for that title sentence. After mastery, the mandatory completionHandoff for the previous goal must appear before this new-goal section and is not an explanation of the successor.
 
             If no current learningSessionId is available, do not call a SkillPilot tool and do not begin teaching. In this narrow case no authoritative session locale exists, so output exactly one matching fixed sentence from the conversation language: German: “Öffne SkillPilot unter https://skillpilot.com/, schließe dort die Lernkonfiguration ab, wähle „Lernen starten“ und verwende die vorbereitete Startnachricht in einem neuen Chat.” English: “Open https://skillpilot.com/, finish the learning setup there, choose “Start learning”, and use the prepared start message in a new chat.” Do not translate either sentence or invent another recovery. Never ask for, accept, repeat, or expose a permanent SkillPilot ID, PIN, password, or OAuth value in chat. OAuth authorizes only the App connection and never selects a learner or learning session.
@@ -641,7 +645,9 @@ public final class OpenAiDeV1McpContractAdapter {
                         "Completes exactly the confirmed active atomic goal with the technical value 1.0. Call "
                                 + "immediately after adequate ordinary-goal evidence or a final passing exam evaluation, "
                                 + "without separate closure consent. A solved task alone does not prove mastery. "
-                                + "After successful persistence, give feedback and invite questions or continuation; "
+                                + "After successful persistence, give feedback and, unless the learner asks to pause "
+                                + "or end, offer the exact returned successor "
+                                + "title if available, rather than asking for a new topic choice; "
                                 + "wait for the learner's reply before new content or a successor image. Send only "
                                 + "structured completion facts and concurrency data; learner work, assessment "
                                 + "reasoning and feedback stay in the conversation. After confirmed success, "
@@ -2266,13 +2272,14 @@ public final class OpenAiDeV1McpContractAdapter {
                                 : localized(metadata,
                                         "Der Erfolg ist gespeichert. Gib jetzt konkrete fachliche Rückmeldung, bei "
                                                 + "Prüfungen die vollständige kriteriumsbezogene Bewertung und Punktzahl. "
-                                                + "Biete Rückfragen oder Weitergehen an und warte auf die Antwort. "
+                                                + completionContinuationInstruction(successorTitle, metadata)
                                                 + "Zeige im Rückmeldungsturn keine Nachfolgeraufgabe und kein Lernbild. "
                                                 + "Respektiere eine Pause. Gesprächsinhalte bleiben im Chat. Keine Antwort "
                                                 + "vor der Aktivierung des Nachfolgers zählt als Evidenz für dessen Lernziel.",
                                         "Success is saved. Now give concrete subject feedback, including the full "
-                                                + "criterion-by-criterion evaluation and score for an exam. Invite questions "
-                                                + "or continuation and wait for the answer. Do not show a successor task "
+                                                + "criterion-by-criterion evaluation and score for an exam. "
+                                                + completionContinuationInstruction(successorTitle, metadata)
+                                                + "Do not show a successor task "
                                                 + "or image in this feedback turn. Respect a pause. Conversation content "
                                                 + "stays in chat. No answer before the successor's activation counts as "
                                                 + "evidence for its learning goal."),
@@ -2316,6 +2323,34 @@ public final class OpenAiDeV1McpContractAdapter {
         return successResult(
                 successSummary,
                 response);
+    }
+
+    private String completionContinuationInstruction(
+            String successorTitle,
+            OpenAiDeV1SessionMetadata metadata) {
+        if (successorTitle == null || successorTitle.isBlank()) {
+            return localized(metadata,
+                    "Es ist kein Nachfolgeziel aktiv. Sofern keine Pause und kein Ende gewünscht ist, biete "
+                            + "Rückfragen an und folge ausschließlich den "
+                            + "Abschluss-, Planhinweisen oder Auswahloptionen im Folgezustand; erfinde kein "
+                            + "nächstes Thema. Warte auf die Antwort. ",
+                    "No successor goal is active. Unless the learner asks to pause or end, invite questions "
+                            + "and follow only the completion or "
+                            + "learning-plan guidance or published options in the successor context; never "
+                            + "invent a next topic. Wait for the answer. ");
+        }
+        return localized(metadata,
+                "Sofern keine Pause und kein Ende gewünscht ist, biete nach der Rückmeldung konkret an: "
+                        + "Als Nächstes ist „" + successorTitle
+                        + "“ vorgesehen. Frage, ob dazu weitergegangen werden soll oder noch eine Rückfrage "
+                        + "zum abgeschlossenen Ziel besteht, und warte auf die Antwort. Frage nicht offen, "
+                        + "welches Thema als Nächstes gewünscht ist. Der Titel ist ein Angebot; beginne Inhalt "
+                        + "und Lernbild erst nach Zustimmung zum Weitergehen. ",
+                "Unless the learner asks to pause or end, after the feedback offer the selected next topic "
+                        + "explicitly: “" + successorTitle
+                        + "”. Ask whether to continue with it or discuss a question about the completed goal, "
+                        + "and wait for the answer. Do not ask which topic the learner wants next. The title "
+                        + "is an offer; begin its content and image only after agreement to continue. ");
     }
 
     private String completionSummary(
@@ -3642,9 +3677,10 @@ public final class OpenAiDeV1McpContractAdapter {
                         "savedMastery", numberSchema(0.0, 1.0),
                         "completionHandoff", describedSchema(
                                 completionHandoffSchema(),
-                                "Server-owned completion facts. Generate learner-facing feedback from the "
-                                        + "conversation in chat before naming or teaching the successor; no chat "
-                                        + "content is transmitted or echoed through this handoff."),
+                                "Server-owned completion facts. Generate learner-facing feedback in chat, then "
+                                        + "offer the exact successor title when present. Wait for agreement before "
+                                        + "teaching the successor or rendering its image. No chat content is "
+                                        + "transmitted or echoed through this handoff."),
                         "context", describedSchema(
                                 contextSchema(),
                                 "Fresh authoritative successor state. It invalidates every goal option from "

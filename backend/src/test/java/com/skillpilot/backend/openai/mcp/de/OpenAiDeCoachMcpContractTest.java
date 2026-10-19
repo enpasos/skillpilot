@@ -63,6 +63,7 @@ import java.security.NoSuchAlgorithmException;
 import java.time.Instant;
 import java.util.HexFormat;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
@@ -87,7 +88,8 @@ class OpenAiDeCoachMcpContractTest {
             "45e1f58df32ef6cc194a7cdc6353bbd5bfc93ead407dd213cb5a64ff65b9faed",
             "157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c",
             "c890cf271307d815256450a2b20b27d57015a84e9f4e39c97532eaefc4e30c26",
-            "12762009bd8e00c392e06aefac685e17653f50a5e7efeb21f865429a9fab641e");
+                "12762009bd8e00c392e06aefac685e17653f50a5e7efeb21f865429a9fab641e",
+                "08030bd956b68b816523f4971b6d18ab154eef01381882b01d7f1991cc643391");
     private static final String LEGACY_GOAL_VISUALIZATION_RESOURCE_URI =
             "ui://skillpilot/coach/v1/1.0.0/goal-visualization.html";
     private static final String LEGACY_GOAL_VISUALIZATION_ARTIFACT_SHA256 =
@@ -1193,6 +1195,12 @@ class OpenAiDeCoachMcpContractTest {
                 .contains("A natural reply such as “Alles klar, weiter”")
                 .contains("During feedback or while task/goal closure is awaiting a reply, do not render")
                 .contains("completionHandoff contains only confirmed completion facts")
+                .contains("offer the exact successor title from the returned context.activeGoal after the feedback")
+                .contains("Naming that supplied topic as an offer is permitted in the feedback turn")
+                .contains("never what topic the learner wants next")
+                .contains("Do not expose an answer to the current task in any authored suggested learner reply")
+                .contains("known to have been supplied by the coach or a host suggestion is not independent mastery evidence")
+                .contains("without inferring provenance from correctness alone")
                 .contains("Wait for the learner's explicit continuation after result feedback before rendering the successor")
                 .contains("if the same message supplies sufficient ordinary-goal evidence or passes an exam")
                 .contains("Do not call get_skillpilot_navigation or set_skillpilot_active_goal")
@@ -1584,7 +1592,8 @@ class OpenAiDeCoachMcpContractTest {
         assertThat(payload.completionHandoff().successorGoalTitle()).isEqualTo(successor.title());
         assertThat(payload.completionHandoff().instruction())
                 .contains("Der Erfolg ist gespeichert", "Gib jetzt konkrete fachliche Rückmeldung",
-                        "warte auf die Antwort", "keine Nachfolgeraufgabe und kein Lernbild")
+                        "warte auf die Antwort", "keine Nachfolgeraufgabe und kein Lernbild",
+                        successor.title(), "Frage nicht offen", "erst nach Zustimmung zum Weitergehen")
                 .doesNotContain("Rückfragen erfolgten vor diesem Speichern");
         assertThat(payload.completionHandoff().successorEvidenceReset()).isTrue();
         assertThat(payload.completionHandoff().earnedPoints()).isNull();
@@ -1627,6 +1636,62 @@ class OpenAiDeCoachMcpContractTest {
         assertThat(accidentalNavigation.content().toString())
                 .contains("keine Lernzielauswahl geöffnet", "Frühere Zieloptionen sind ungültig")
                 .doesNotContain("Navigationsoptionen für goal geladen", unrelated.title());
+        verify(coachTools, never()).setActiveGoal(any(), any());
+    }
+
+    @Test
+    void completionOfferNamesOnlyAnActiveSuccessorInBothLocales() {
+        useCurrentContract();
+        FrontierGoal completed = contentGoal("completed-goal", "Energieversorgung fachlich bewerten");
+        FrontierGoal next = contentGoal("successor-goal", "Aggregatzustandsänderungen im Teilchenmodell");
+        UnifiedLearnerStateResponse before = state("teachActiveGoal", completed);
+        for (String locale : List.of("de", "en")) {
+            sessionCommunicationLocale = locale;
+            for (boolean activeSuccessor : List.of(true, false)) {
+                // A published option alone is not a backend-selected successor.
+                UnifiedLearnerStateResponse after = activeSuccessor
+                        ? state("teachActiveGoal", next)
+                        : goalSelectionState(next);
+                when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(before, after);
+                when(coachTools.setMastery(eq(LEARNER_ID), any(MasteryUpdateRequest.class)))
+                        .thenReturn(new CoachToolFacade.MasteryResult(
+                                CoachToolFacade.MasteryStatus.UPDATED,
+                                new MasteryUpdateResponse(true, completed.id(), 1.0,
+                                        after.frontier(), after.nextAllowedActions(), after.learningState(),
+                                        after.activeGoal(), after.stateMachine(), after.goals()),
+                                null, null));
+
+                McpSchema.CallToolResult result = call(
+                        OpenAiDeV1McpContractAdapter.SET_MASTERY, masteryArguments(completed.id()));
+
+                assertThat(result.isError()).isFalse();
+                OpenAiDeV1McpContractAdapter.MasteryToolResult payload = structured(
+                        result, OpenAiDeV1McpContractAdapter.MasteryToolResult.class);
+                String instruction = payload.completionHandoff().instruction();
+                assertThat(instruction.toLowerCase(Locale.ROOT)).contains(locale.equals("de")
+                        ? "sofern keine pause und kein ende gewünscht ist"
+                        : "unless the learner asks to pause or end");
+                if (activeSuccessor) {
+                    assertThat(payload.completionHandoff().successorGoalTitle()).isEqualTo(next.title());
+                    assertThat(instruction).contains(next.title()).contains(locale.equals("de")
+                            ? "Frage nicht offen, welches Thema als Nächstes gewünscht ist"
+                            : "Do not ask which topic the learner wants next");
+                    assertThat(instruction).contains(locale.equals("de")
+                            ? "erst nach Zustimmung zum Weitergehen"
+                            : "only after agreement to continue");
+                } else {
+                    assertThat(payload.completionHandoff().successorGoalTitle()).isNull();
+                    assertThat(payload.context().activeGoal()).isNull();
+                    assertThat(payload.context().options()).isNotEmpty();
+                    assertThat(instruction).doesNotContain(next.title()).contains(locale.equals("de")
+                            ? "Es ist kein Nachfolgeziel aktiv"
+                            : "No successor goal is active");
+                }
+                assertThat(instruction).contains(locale.equals("de")
+                        ? "keine Nachfolgeraufgabe und kein Lernbild"
+                        : "Do not show a successor task or image in this feedback turn");
+            }
+        }
         verify(coachTools, never()).setActiveGoal(any(), any());
     }
 

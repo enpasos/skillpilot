@@ -1,7 +1,7 @@
 # SkillPilot for ChatGPT Desktop — beta Git marketplace
 
 This repository distributes **SkillPilot Coach v1** with its coaching skill and
-remote SkillPilot MCP connection. The package version is **1.1.2**. A source
+remote SkillPilot MCP connection. The package version in this export is **1.1.3**. A source
 checkout or local export does not establish publication or host acceptance.
 See the operator runbook for the recorded deployment status. This beta
 uses the desktop plugin installer. Start the plugin in the desktop app's
@@ -40,16 +40,18 @@ start offers **ChatGPT Desktop (Beta)**. Detailed OAuth/tool traces, saved progr
 continuation, token renewal and desktop automatic updates remain separate
 acceptance checks. This confirmation applies to the tested Windows route.
 
-The owner's subsequent Voice test in Windows **Work** reports working learning
-and apparent success saving, but only the first learning image displayed. The
-local **1.1.2** candidate corrects premature timeout closure of delayed images,
-matching the existing Claude fix. Successive images still need checking in
-the actual desktop host after the owner deploys the matching backend and plugin.
+The owner's Voice test in Windows **Work** reports learning and saved success,
+but missing successor images. The 19 October server trace confirms successful
+rendering and delivery of the `08030…` UI resource without proving display.
+The **1.1.3** candidate additionally keeps delayed compatibility delivery alive
+after a standard UI handshake failure; that race is reproduced locally, but is
+not proven to be the cause of the reported Voice failure. Successive images
+still need checking in the actual desktop host after the matching deployment.
 
 ## Update
 
 Use the marketplace's refresh/update action in ChatGPT Desktop, check that
-**1.1.2** is installed after its publication, then start a new conversation in **Work** with a freshly
+the expected published version is installed, then start a new conversation in **Work** with a freshly
 generated ChatGPT message. Existing archive installations need a Git-marketplace
 installation to receive Git updates. Avoid enabling two SkillPilot copies in one
 conversation.

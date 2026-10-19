@@ -2,7 +2,17 @@
   "mcpServers": {
     "skillpilot-coach-v1": {
       "type": "http",
-      "url": "https://mcp-coach-v1.skillpilot.com/mcp"
+      "url": "https://mcp-coach-v1.skillpilot.com/mcp",
+      "extensions": {
+        "com.openai": {
+          "auth": {
+            "type": "oauth",
+            "client": {
+              "mode": "cimd"
+            }
+          }
+        }
+      }
     }
   }
 }

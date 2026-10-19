@@ -155,6 +155,32 @@ the advertised `12762009...` bytes remain retained unchanged. This is a local
 backend/resource correction with actual Desktop/Voice acceptance pending.
 The seven published Git install files and package version **1.1.2** are unchanged.
 
+The **19 October 2026** production trace now confirms deployment and serving of
+the corrected active image resource `08030bd956b6` under backend build
+`fd1f419769c9…`. Mastery succeeds at **11:50:26.927 UTC**, advances state to 142,
+and triggers the learning-plan handoff. A fresh context still offers an image;
+the successor renderer succeeds at **11:51:35.894 UTC** for the same session
+and state. The owner still reports no successor image in Voice. This newer
+incident is therefore not explained by an absent renderer call or the old
+backend resource. Resource reads do not prove component execution or display;
+the actual client event/image-loading failure remains unobserved. Preserve
+the older trace as history and use the current incident record in
+`docs/deploy/openai-personal-marketplace-release.md` for further diagnosis.
+
+On **19 October 2026**, the Product Owner requested modernization of the
+deployment workflow, including mobile and web wherever supported, and an
+assessment of one durable plugin across package major versions. The current
+local **1.1.3** candidate adds the deterministic directory-submission ZIP and
+explicit package OAuth/CIMD preference. A separately reproduced pending-image
+handshake race is corrected with new resource `9c09821e96ab…`; deployed
+`08030…` remains retained unchanged. Git-imported direct-MCP plugins remain
+Desktop only; Web and mobile are targets of the hosted directory route and
+require actual host acceptance. Local Chromium viewport checks are not client
+acceptance. The major-version assessment in
+`docs/concept/runtime-workflows/openai-plugin-versioning-and-lifecycle.md`
+recommends a durable existing identity and exact endpoint; the current V1
+guards remain in force until an explicit future versioning implementation.
+
 This document is the **long-term memory** for SkillPilot, including the skill-graph explorer.  
 It captures the *concepts and design decisions* that are **not obvious from the code alone**, so humans and LLMs can extend the project consistently across different learning domains.
 

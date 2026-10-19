@@ -1,14 +1,16 @@
 # SkillPilot Coach v1: Release, Rollback und Stilllegung
 
-**Stand:** 5. Oktober 2026
+**Stand:** 19. Oktober 2026
 
 **Status:** 1.0.0 wurde abgelehnt; sämtliche ChatGPT/OpenAI-Review-
-Entwicklungssperren sind ausdrücklich aufgehoben. Aktueller Paketstand:
-**1.1.2**, geprüft und über den Git-Marketplace für die Desktop-Beta
-veröffentlicht. Die neue Korrektur
-übernimmt Claudes Fix für verspätet geladene Lernbilder. Der aktuelle
-Windows-Work/Voice-Bericht bestätigt ein erstes Bild, weitere Bilder fehlen
-noch; die Abnahme des Fixes im Desktop steht aus.
+Entwicklungssperren sind ausdrücklich aufgehoben. Aktueller lokaler Paketstand:
+**1.1.3**, mit dem aktuellen ZIP-Verfahren vorbereitet. Öffentlich über den
+Git-Marketplace ist weiterhin **1.1.2** dokumentiert. Der neue Kandidat umfasst
+die korrigierte Fortsetzung nach Zielabschluss, Regeln gegen lösungshaltige
+Antwortvorschläge und die lokal reproduzierte Korrektur für einen fehlgeschlagenen
+UI-Handshake vor verspäteter Bildzustellung. Der aktuelle Windows-Work/Voice-
+Bericht zeigt weiterhin keine vollständige Bildfolge; ein erfolgreicher
+Renderer-Aufruf mit dem bereits ausgerollten älteren Widget ist nachgewiesen.
 Installation und Lernstart in Windows ChatGPT Desktop sind vom Product Owner
 bestätigt. Die offizielle OpenAI-Einreichung bleibt **DRAFT**, nicht eingereicht
 und nicht im OpenAI-Verzeichnis veröffentlicht. Der GUI-/Serverrollout wird
@@ -20,7 +22,10 @@ Betrieb stabilisieren, dann den bewährten Kandidaten gezielt im echten ChatGPT-
 Host abnehmen und anschließend einreichen. Die begrenzten späteren Aufträge vom
 24. September für Archivinstallation/native CIMD und vom 5. Oktober für die
 bestehende Git-/Desktop-Beta samt normalem GUI-Start ergänzen diese Reihenfolge.
-Weitere Verteilungsworkarounds sind nicht beauftragt. Die folgenden Release-
+Am **19. Oktober** beauftragte der Product Owner die Umstellung auf das aktuelle
+Deployment-Verfahren und die Prüfung von Mobilgeräten und Web. Ziel ist das
+Remote-MCP-Plugin mit gebündeltem Skill im öffentlichen Verzeichnis. Die
+Git-Beta bleibt der bestehende Desktopweg. Die folgenden Release-
 Schritte gelten innerhalb dieser [verbindlichen Entwicklervorgabe](claude-beta-chatgpt-release-strategy.md);
 Sicherheitsprüfungen und Einreichungsnachweise bleiben unverändert.
 
@@ -34,7 +39,7 @@ operativ um. Es gilt für `skillpilot-coach-v1`.
 | --- | --- |
 | Plugin-Identität | `skillpilot-coach-v1` |
 | Anzeigename | `SkillPilot Coach v1` |
-| aktueller Paketstand | `1.1.2` (Git-/Desktop-Beta veröffentlicht; OpenAI-Portal `DRAFT`) |
+| aktueller Paketstand | `1.1.3` lokal vorbereitet; Git-/Desktop-Beta `1.1.2` veröffentlicht; OpenAI-Portal `DRAFT` |
 | Contract Major | `1` |
 | Lifecycle-Policy | `policyRevision=5` |
 | öffentlicher MCP-Endpunkt und OAuth Resource/Audience | `https://mcp-coach-v1.skillpilot.com/mcp` |
@@ -43,7 +48,7 @@ operativ um. Es gilt für `skillpilot-coach-v1`.
 | aktive MCP-Apps-UIs | genau zwei: Lernzielbild und Karteikartenlernen |
 | Support-URL | `https://skillpilot.com/imprint` |
 | Historisches Reviewvideo | `https://skillpilot.com/api/public/openai/review/skillpilot-coach-v1/1.0.0/sha256-20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb.mp4` (keine Abnahme des aktuellen Kandidaten) |
-| Veröffentlichungsstatus | Git-Beta `1.1.2` veröffentlicht; aktueller Portal-Draft `1.1.2-SNAPSHOT` unveröffentlicht; Git `1.1.1`, alter `1.1.1-SNAPSHOT` und abgelehntes `1.0.0-SNAPSHOT` bleiben unverändert |
+| Veröffentlichungsstatus | Git-Beta `1.1.2` veröffentlicht; aktueller Draft `1.1.3-SNAPSHOT` unveröffentlicht; frühere veröffentlichte Git-Pakete und Snapshots bleiben erhalten |
 | Quellpaket | `ai/openai plugin/skillpilot-coach-v1/` |
 
 Permanente SkillPilot-ID, CREATE/EXISTING, Providerhinweis sowie Curriculum,
@@ -78,7 +83,7 @@ Der Draft bindet genau zwei aktive content-addressierte MCP-Apps-Ressourcen:
 - `start_skillpilot_memory_practice` bindet ausschließlich die aktive
   Karteikartenressource; die Kartenbewertung bleibt app-only und ungebunden.
 
-Der aktuelle 1.1.2-Kandidat hat 14 Werkzeuge. Vollständige Kontextantworten
+Der aktuelle 1.1.3-Kandidat hat 14 Werkzeuge. Vollständige Kontextantworten
 enthalten den fertigen Lernplanstatus als `learningPlanToday` für die dauerhaft
 gewählte Tages- oder Wochenbasis; jedes Fach wird unabhängig ausgewertet.
 `resume_skillpilot_learning_plan` und `switch_skillpilot_learning_plan_subject`
@@ -132,10 +137,87 @@ Maschinenlesbare Quellen der Wahrheit sind:
   tatsächlich im OpenAI-Portal veröffentlichte Versionen.
 
 Der Product Owner hat die Review-Sperre nach der Ablehnung ausdrücklich
-beendet. `1.1.2` besitzt einen eigenen kohärenten Portal-Draft; `1.0.0` wird nicht
+beendet. `1.1.3` besitzt einen eigenen kohärenten Draft; `1.0.0` wird nicht
 umetikettiert oder überschrieben. Eine künftige reale Veröffentlichung
 versiegelt genau die veröffentlichte Version dauerhaft. Aktuelle fachliche,
 Sicherheits- und Kompatibilitätstests ersetzen keine echte Client-Abnahme.
+
+## 1.1 Zieloberflächen und der aktuelle ZIP-Weg
+
+Der [aktuelle Submission-Guide](https://developers.openai.com/plugins/deploy/submission)
+unterstützt unser Codex-Paketformat mit `.codex-plugin/plugin.json`,
+`.mcp.json` und gebündeltem Skill. Ein neues Agent-Plugins-Format ist dafür
+nicht nötig. Review-Fälle und Release Notes werden im ZIP-Manifest unter
+`extensions.com.openai.review` beziehungsweise `publication` importiert.
+
+| Weg | Verfügbarkeit und aktueller Nachweis |
+| --- | --- |
+| Bestehender Git-Marketplace | Desktop; Windows-Installation und Lernstart vom Owner bestätigt, vollständige Voice-Bildfolge weiter offen |
+| Benutzerdefiniertes Remote-MCP-Plugin im eigenen Konto | Dokumentierter Weg für gezielte Web-Verbindungstests; Kontoberechtigung, exaktes hosted OAuth-Profil und tatsächlich geladene Skillbytes prüfen |
+| Veröffentlichtes Remote-MCP-Verzeichnis-Plugin | Ziel für Desktop, Web und mobile ChatGPT-App; erst nach Review, Veröffentlichung und eigener Abnahme anbieten |
+| Lokale schmale Browseransichten | Technische Vorprüfung der UI, keine Abnahme von iOS, Android oder ChatGPT Web |
+
+OpenAI markiert über Git importierte Plugins mit einer direkten MCP-Deklaration
+als **Desktop only**, auch bei einer HTTPS-URL. Ein Workspace-Import desselben
+Git-Pakets erweitert diesen Weg nicht auf Web oder Mobilgeräte. Die bestehende
+GUI-Auswahl bleibt deshalb bis zu nachgewiesener Verfügbarkeit
+**ChatGPT Desktop (Beta)**. Siehe
+[Pluginverwaltung](https://learn.chatgpt.com/docs/enterprise/plugin-management#desktop-only-plugins)
+und [öffentliche Plugin-Oberflächen](https://learn.chatgpt.com/docs/plugins).
+
+Die aktuelle deterministische Vorbereitung lautet vom Repository-Root aus:
+
+```bash
+node scripts/openai_plugin_release.mjs prepare
+node scripts/openai_plugin_submission.mjs prepare
+node scripts/openai_plugin_submission.mjs check
+node scripts/openai_plugin_submission.mjs package --out-dir tmp/openai-submission-package
+node scripts/openai_plugin_submission.mjs audit-zip --zip tmp/openai-submission-package/skillpilot-coach-v1-1.1.3-submission.zip
+```
+
+Das ZIP und `submission-package.json` sind die konkreten Übergabeartefakte.
+Der Bericht bindet alle acht Mitglieder und ihre Quellen mit SHA-256 und
+benennt offene Schritte. Eine fehlende aktuelle Demo leert den importierten
+Demo-Link ausdrücklich, damit das alte Video des abgelehnten Kandidaten nicht
+unbemerkt erhalten bleibt. CI baut und prüft dasselbe ZIP und stellt es als
+Artefakt bereit; die öffentliche Verzeichnis-Einreichung erfolgt dadurch nicht.
+
+### Hosted OAuth für Web und Mobil prüfen
+
+Das Paket erklärt OAuth mit `client.mode=cimd`. Diese Registrierungspräferenz
+wählt keinen Lernenden, erzeugt keinen neuen Client und lockert keine
+serverseitige Bindung. Der native Client unter `/oauth/codex/...` mit
+Loopback-Callback bleibt sein eigener Public-Client mit PKCE. Für den hosted
+Client gelten dessen exakt konfigurierte CIMD-Identität, JWKS und Callback.
+
+Die [aktuelle Auth-Anleitung](https://developers.openai.com/plugins/build/auth)
+beschreibt für hosted CIMD OpenAIs verwaltete Signierschlüssel und öffentliche
+JWKS. Die fehlende Schlüssel-Eingabemaske für einen manuell vorregistrierten
+JWT-Client ist damit keine grundsätzliche Sperre für automatisches CIMD.
+
+Für die tatsächliche Verbindung:
+
+1. Im vorgesehenen Konto den dokumentierten
+   [Remote-MCP-Testweg](https://developers.openai.com/plugins/deploy/connect-chatgpt#add-the-mcp-server)
+   verwenden, beziehungsweise den Remote-Server des hochgeladenen ZIPs verbinden.
+   Der Endpunkt bleibt exakt `https://mcp-coach-v1.skillpilot.com/mcp`.
+2. Die tatsächlich angezeigte hosted CIMD-URL und Redirect-URI mit der
+   geschützten Serverkonfiguration vergleichen. Aktuelle Verbindungen können
+   callback-spezifische URLs besitzen. Weder eine neue ID erraten noch den
+   nativen Desktop-Pin dafür verwenden. Öffentliche Discovery beweist nicht,
+   welcher konkrete hosted Client im Betrieb konfiguriert ist.
+3. OAuth-Verbindung und Erneuerung, tatsächlich geladenen Coach-Skill,
+   Werkzeugaufrufe, bestätigte Speicherung und Fortsetzung mit zwei Bildern
+   gegen den real deployten Kandidaten prüfen. Erst ein geladener Remote-Server
+   ohne den richtigen Skill belegt noch keinen vollständigen Coach.
+4. Web, iOS und Android jeweils separat protokollieren. Text und Voice sind
+   getrennte Prüfungen; lokale Browsergrößen ersetzen sie nicht. Keine echten
+   Lernendenkonten oder Session-Capabilities in öffentliche Nachweise übernehmen.
+
+Die technische Voraussetzung ist weiter ein einziger öffentlicher MCP-Endpunkt
+mit getrennten, exakt gebundenen OAuth-Profilen und unabhängiger Lernsession.
+Portalzugänge, Geheimnisse, Produktionseinstellungen und die eigentliche
+Veröffentlichung bleiben explizite operative Schritte nach den lokalen Prüfungen.
 
 ## 2. Release vorbereiten
 
@@ -145,13 +227,14 @@ und tatsächlich veröffentlichte Versionen, nicht alte Live-Dateihashes.
 
 1. Release Notes, Lifecycle, Listing, Skill, Policy, Serververtrag, aktuelle
    Testfälle und zentrale Dokumentation gemeinsam für den aktuellen Kandidaten
-   `1.1.2` prüfen. Bereits veröffentlichte Git-Paketbytes bleiben unverändert;
+   `1.1.3` prüfen. Bereits veröffentlichte Git-Paketbytes bleiben unverändert;
    weitere Paketkorrekturen benötigen eine neue Version.
    Die aktuelle Veröffentlichung verwendet ausschließlich den MCP-Server;
    die frühere `.app.json`-Referenz gehört nicht in das neue Installationspaket.
-   `submission/**` und andere Review-/Release-Unterlagen werden niemals mit
-   dem öffentlichen Installationspaket ausgeliefert: dessen Allowlist enthält
-   nur Pluginmanifest, MCP-Konfiguration, Skilldateien und öffentliche Icons.
+   Das Installationsarchiv behält seine eigene Allowlist. Der neue Submission-
+   ZIP enthält dieselben Installationsdateien sowie `LICENSE`; allein sein
+   Manifest erhält die aus den geprüften Quellen abgeleiteten öffentlichen
+   Review-Felder und Release Notes. Private Review-Zugänge gehören nicht hinein.
 2. Die V1-URLs bleiben feste Vertragswerte im Backend-Artefakt. Geheimnisse und
    OAuth-Clientwerte bleiben ausschließlich in geschützter Konfiguration.
 3. Generische und versionsspezifische Gates ausführen:

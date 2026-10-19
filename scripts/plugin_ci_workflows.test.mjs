@@ -126,7 +126,7 @@ test('Claude package and publication validation remains independent', () => {
   ]) assert(marketplace.includes(command), `Marketplace check missing: ${command}`)
 })
 
-test('CI retains only reproducible non-secret submission worksheets after validation and audit', () => {
+test('CI retains reproducible non-secret submission worksheets and ZIP after validation and audit', () => {
   const upload = ci.match(/      - name: Retain checked OpenAI submission worksheets\n([\s\S]*?)(?=\n  [\w-]+:)/u)?.[1]
   assert.ok(upload, 'Missing prepared submission artifact')
   assert.match(upload, /uses: actions\/upload-artifact@v6/u)
@@ -134,8 +134,19 @@ test('CI retains only reproducible non-secret submission worksheets after valida
   assert.doesNotMatch(upload, /if:.*always\(/u)
   const paths = upload.match(/          path: \|\n((?:            .+\n)+)/u)?.[1]
     .trim().split('\n').map(line => line.trim())
-  assert.deepEqual(paths, ['portal-draft.json', 'preparation.json', 'acceptance-guide.md', 'trace-template.json']
+  assert.deepEqual(paths, ['portal-draft.json', 'preparation.json', 'acceptance-guide.md', 'trace-template.json', 'submission-plugin.json', 'submission-package.json']
     .map(name => `ai/openai plugin/skillpilot-coach-v1/submission/generated/${name}`))
   assert.ok(ci.indexOf('scripts/openai_plugin_submission.mjs check') < ci.indexOf('Audit MCP App dependencies'))
   assert.ok(ci.indexOf('Audit MCP App dependencies') < ci.indexOf('Retain checked OpenAI submission worksheets'))
+  assert.match(ci, /node --test scripts\/openai_plugin_submission\.test\.mjs scripts\/reproducible_plugin_zip\.test\.mjs/u)
+  assert.match(ci, /node scripts\/openai_plugin_submission\.mjs package --out-dir tmp\/openai-submission-package/u)
+  assert.match(ci, /node scripts\/openai_plugin_submission\.mjs audit-zip --zip "\$archive"/u)
+  const zipUpload = ci.match(/      - name: Retain checked OpenAI submission ZIP\n([\s\S]*?)(?=\n  [\w-]+:)/u)?.[1]
+  assert.ok(zipUpload, 'Missing reproducible ZIP artifact')
+  assert.doesNotMatch(zipUpload, /if:.*always\(/u)
+  assert.match(zipUpload, /tmp\/openai-submission-package\/\*-submission\.zip/u)
+  assert.match(zipUpload, /tmp\/openai-submission-package\/submission-package\.json/u)
+  assert.match(zipUpload, /if-no-files-found: error/u)
+  assert.ok(ci.indexOf('Build current OpenAI submission ZIP') < ci.indexOf('Retain checked OpenAI submission ZIP'))
+  assert.ok(ci.indexOf('Audit MCP App dependencies') < ci.indexOf('Retain checked OpenAI submission ZIP'))
 })

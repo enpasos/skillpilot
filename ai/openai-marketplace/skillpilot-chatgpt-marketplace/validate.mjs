@@ -60,7 +60,11 @@ export function validatePlugin(manifest, mcp) {
   assert.equal(manifest.mcpServers, "./.mcp.json");
   const keys = ["name", "version", "description", "author", "homepage", "repository", "license", "keywords", "skills", "mcpServers", "interface"];
   assert.ok(Object.keys(manifest).every(key => keys.includes(key)), "Unknown manifest field or app/hook reference");
-  assert.deepEqual(mcp, { mcpServers: { [identity]: { type: "http", url: endpoint } } }, "Only the protected production MCP endpoint is allowed; no headers, secrets, commands or alternate providers");
+  assert.deepEqual(mcp, { mcpServers: { [identity]: {
+    type: "http", url: endpoint,
+    extensions: { "com.openai": { auth: { type: "oauth", client: { mode: "cimd" } } } },
+  } } }, "Only the protected production MCP endpoint with OAuth/CIMD is allowed; no headers, secrets, commands or alternate providers");
+  assert.equal(manifest.interface.supportURL, "https://skillpilot.com/imprint");
   assert.equal(manifest.interface.composerIcon, "./assets/favicon-96x96.png");
   assert.equal(manifest.interface.logo, "./assets/web-app-manifest-512x512.png");
 }
