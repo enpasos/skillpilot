@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-10-18T15:10:15.152Z
+Generated: 2026-10-19T03:56:09.591Z
 
 Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 
@@ -16,11 +16,11 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Alle Ziele in der Landschaft | 737 |
-| Atomare Ziele im Visualisierungs-Scope | 450 |
-| Ziele mit primaerem Visualisierungslink | 450 |
+| Alle Ziele in der Landschaft | 742 |
+| Atomare Ziele im Visualisierungs-Scope | 455 |
+| Ziele mit primaerem Visualisierungslink | 455 |
 | Coverage | 100.0% |
-| Durch Asset oder dokumentierte Deferred-Entscheidung erfasste Ziele | 450 |
+| Durch Asset oder dokumentierte Deferred-Entscheidung erfasste Ziele | 455 |
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
@@ -30,7 +30,7 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 0 |
 | Regulaere unvisualisierte Ziele ohne Deferred-Status | 0 |
-| Verlinkt ohne akzeptierende Review-Entscheidung | 120 |
+| Verlinkt ohne akzeptierende Review-Entscheidung | 125 |
 | Akzeptierende Review-Entscheidung ohne Link | 0 |
 
 ## Linked Review Status
@@ -43,9 +43,9 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 | `ai-reviewed` | 5 |
 | `candidate` | 10 |
 | `draft` | 16 |
-| `needs_review` | 2 |
+| `needs_review` | 9 |
 | `pending-independent-actual-review` | 7 |
-| `pilot` | 301 |
+| `pilot` | 299 |
 
 ## Ledger Decisions
 
@@ -144,7 +144,7 @@ Keine Eintraege.
 | `6c7ce93c-7675-51da-bc0c-7d0257f7ff7d` | Chemische Modelle nutzen und kritisch vergleichen | `pilot` | - |
 | `86d34f1f-692d-5522-a9a4-a71c65b24de7` | Chemische Modelle theoriegestützt nutzen und kritisch vergleichen | `pilot` | - |
 
-Weitere 90 Eintraege stehen in der JSON-Begleitdatei.
+Weitere 95 Eintraege stehen in der JSON-Begleitdatei.
 
 ### Accepted Review Without Link
 
