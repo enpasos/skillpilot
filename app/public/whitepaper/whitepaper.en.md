@@ -1,12 +1,12 @@
 # SkillPilot Whitepaper (EN)
 
-**Version:** 1.0.26 · **Project:** SkillPilot · *Some illustrations are AI-generated.*
+**Version:** 1.0.27 · **Project:** SkillPilot · *Some illustrations are AI-generated.*
 
 ---
 
 **Knowledge you can build on. One learning goal at a time.**
 
-Mathematics and Physics across the full upper-secondary stage of Germany’s Gymnasium – guided learning is already available with the Claude-based SkillPilot coach, including on your phone. After setup, SkillPilot automatically guides you through your Personal Curriculum, based on the selected official curriculum. Each learning goal builds on the foundations it requires.
+Mathematics, Physics, Chemistry, Biology, and Economics in Germany’s Gymnasium – guided learning is already available with the Claude-based SkillPilot coach, including on your phone. After setup, SkillPilot automatically guides you through your Personal Curriculum, based on the selected official curriculum. Each learning goal builds on the foundations it requires.
 
 ![A learner works with the coach on her phone; a house of learning-goal building blocks illustrates solid progress in Mathematics and Physics](learning-house.png)
 
@@ -14,29 +14,17 @@ Like a well-built house, each building block you understand supports what comes 
 
 ## Summary
 
-**High educational expectations and individual support belong together.** SkillPilot aims to help learners actually achieve curricular goals: with solid foundations, an understanding of connections, and independent application. To do this, it turns existing curricula into a personal learning map. An AI learning coach explains, practices with learners, and discusses their solutions; SkillPilot manages learning progress and checks which state changes are permitted.
+**High educational expectations and individual support belong together.** SkillPilot turns existing curricula into a personal learning map. It connects three questions: What should I learn, which foundations do I need, and which step is within reach now? Expectations remain high; support follows the learner’s recorded progress.
 
-The foundation remains the **applicable curricula**, such as state curricula, module handbooks, or language standards. These are translated into a versioned **skill graph**: specific learning goals with subject-specific prerequisites. Progress is stored for individual goals and aggregated for broader topics. The current focus is on **Gymnasium in Germany**.
+The foundation is the **applicable curricula**, such as state curricula, module handbooks, or language standards. The **skill graph** derived from them connects specific learning goals to their prerequisites. In the web interface, learners select the scope that matches their educational context and subjects. These connections already cross subject boundaries: Physics goals build on the mathematical foundations they need (section 3.1).
 
-**Learning plans add a time frame to this navigation:** Which parts of the Personal Curriculum should be achieved by when? SkillPilot shows the **daily or weekly workload**, backlog, and work ahead for all planned subjects. Each subject is evaluated independently. The coach reports the status in chat and guides the learner to the next learnable goal, without requiring learners to manage plan sections or learning goals themselves (see section 3.4).
+**The coach supports work on the next goal; SkillPilot records progress.** The AI explains, offers hints, and discusses learners’ own attempts at a solution. SkillPilot manages learning state and determines which goals are reachable next. A **learning plan** adds a daily or weekly workload. It shows backlog or work ahead separately for each subject, turning the curriculum into manageable everyday learning (sections 3.2–3.4).
 
-**Find the right material for the next learning step:** We are working to connect books, YouTube videos, and other learning materials to learning goals and plans. Teachers and learners should be able to choose suitable resources themselves. We are starting with Physik Libre (section 5.2).
+**Mathematics, Physics, Chemistry, Biology, and Economics have reached M7 for their currently reviewed Gymnasium curricula**, meaning fully completed machine quality assurance. Human trials by Curriculum Champions are reported separately; M7 does not certify human approval or classroom effectiveness (section 5.1).
 
-Quality assurance combines traceable **automated checks** with **separately reported human trials** by Curriculum Champions. Changes and findings are handled through the **open-source workflow** (Issues/Pull Requests).
+The next area of development is to connect **suitable learning materials**, such as books, videos, and exercises, to these goals and learning plans. Teachers and learners should be able to choose suitable resources themselves. We are starting with Physik Libre (section 5.2).
 
-### From Curriculum to Personal Learning Map
-
-In the web interface, learners select their educational context and subjects. This creates their Personal Curriculum. Their current learning focus can later change without losing progress already recorded.
-
-### Join the Beta: Claude or ChatGPT Desktop
-
-**SkillPilot itself is free. The Claude learning coach requires your own Claude Pro account; this beta route is open to anyone interested aged 18 or over.** That subscription is purchased separately from Anthropic. The age limit comes from the [requirements for personal Claude accounts](https://support.claude.com/en/articles/8114491-get-started-with-claude).
-
-**Learning in Claude chat already works on your phone — including Voice Mode.** After working independently with pen and paper, you can photograph your solution with your phone, share it with the SkillPilot coach in chat, and discuss it. Typing, speaking, and showing your own work complement each other.
-
-Claude access is through the SkillPilot marketplace; the [5-minute Quickstart](https://skillpilot.com/quickstart/en) explains the setup. In SkillPilot’s responsive web interface, you select your Personal Curriculum, view your progress, and start the learning session. **[Try it now](https://skillpilot.com/quickstart/en)** and help shape the beta.
-
-**SkillPilot is not tied to one particular AI.** Plugins and dedicated provider adapters connect the independent subject-matter core to each AI chat. Alongside the Claude beta, **ChatGPT Desktop (Beta)** is available through the [SkillPilot Git marketplace](https://github.com/enpasos/skillpilot-chatgpt-marketplace). Installation and learning start have been confirmed on Windows. Choose **ChatGPT Desktop** in SkillPilot, prepare its start message and send it in a new desktop chat. The [plugin guide](https://skillpilot.com/plugins#chatgpt-desktop) explains setup and updates. Browser and mobile ChatGPT access have not been confirmed for this route. Further integrations depend on suitable interfaces and reliably supported capabilities at the provider.
+The [5-minute Quickstart](https://skillpilot.com/quickstart/en) explains how to try SkillPilot. Section 6 describes the available beta routes through Claude and ChatGPT Desktop and their requirements.
 
 ---
 
@@ -62,9 +50,7 @@ The goals remain ambitious; the support adapts to each learner’s starting poin
 
 ## 2. The Division of Responsibilities: AI Explains, SkillPilot Manages Learning State
 
-**Shared preparation, individual learning support.** The skill landscape is built before learners use it, reviewed under the defined quality procedures, and then maintained continuously (section 5.1). Particularly capable AI systems can be used for the demanding work of analyzing and structuring curricula. This reusable groundwork benefits all learners. It does not have to be repeated for each person or in every learning session.
-
-The AI that supports learners during learning is a separate choice. It must meet SkillPilot’s subject-matter, pedagogical, and technical requirements for learning guidance. It does not have to be the same system used to develop the skill landscape. The quality requirements for learning support apply regardless of that choice.
+**The AI learning coach supports the dialogue; SkillPilot manages the learning path.** They have different responsibilities and work with the same learning goals.
 
 Language-based AI can explain concepts, formulate tasks, discuss solutions, and respond to questions in natural language. In a learning dialogue, it offers different approaches to a topic and adapts explanations to the learner’s responses.
 
@@ -72,77 +58,60 @@ Reliable learning guidance also needs an authoritative foundation: which goals b
 
 The learning coach accesses these **authoritative backend rules** through defined tools. SkillPilot calculates reachable learning goals and plan status, checks permitted state changes, and stores confirmed progress. Subject-specific assessment in the dialogue remains an AI judgment and can contain errors; technical validation of a state change is not independent proof that a solution is correct.
 
+**Shared preparation, individual learning support:** The skill landscape is built before use, reviewed under defined quality procedures, and maintained continuously (section 5.1). Particularly capable AI systems can help with the demanding work of interpreting curricula. This reusable work benefits all learners. The AI used for the subsequent learning dialogue need not be the same; it must meet the subject-matter, pedagogical, and technical requirements for learning guidance.
+
 The **plugin and adapter architecture decouples the subject-matter core from any particular AI provider**. Provider adapters expose tools through the **Model Context Protocol (MCP)**. A new AI integration must, among other things, load coach instructions, call tools reliably, handle authentication and learning sessions securely, and display the required images and learning cards. MCP standardizes tool access but does not guarantee these capabilities. Authoritative decisions about learning state, permissions, and navigation remain in the shared SkillPilot core; each specific integration is tested separately.
 
 **The goal is freedom to choose among suitable AI environments.** In the future, this could include AI running locally on a learner’s own device, provided it has the required capabilities and a validated integration. Today’s Claude access is a concrete starting point, not a permanent architectural commitment to that provider. This does not imply that a local learning-coach integration is already available.
-
-**SkillPilot is therefore a hybrid application:** The AI learning coach handles language understanding, explanations, and subject-specific feedback. Conventional software is responsible for learning state, permissions, navigation, and progress management.
 
 ---
 
 ## 3. The Product: How SkillPilot Works
 
-The learning map becomes tangible when someone works on a goal, attempts their own solution, and discusses it. SkillPilot records which progress has been confirmed and which next steps are possible. This is how the graph, coach, and learning plan work together.
+Everyday learning brings four steps together: **choose a reachable goal, work on it, record progress, and plan further learning.** The following sections trace this path from the Personal Curriculum to the daily or weekly workload.
 
 ### 3.1 From Curriculum to the Next Learning Goal
 
-SkillPilot replaces linear lists with a connected graph.
-
-The separation of layers matters: the official curriculum remains the **normative source**. The versioned **skill graph** is the derived **operational model**. At runtime, the **backend state** is authoritative for current learning progress, the Personal Curriculum, current focus, active goal, and permitted transitions.
+The official curriculum sets the requirements. SkillPilot translates them into specific learning goals and prerequisites. This learning map, the selected personal scope, and recorded progress determine which goals are reachable next.
 
 ![Current Cockpit view with focus, active learning goal, and progress](current-cockpit.png)
 
 *From the application: the Cockpit shows the learning map alongside the current goal. A large task becomes a concrete next step. German curriculum shown.*
 
+#### From Curriculum to Learning Map
+
+Curricula, module handbooks, and standards provide the authoritative requirements. The learning goals derived from them remain linked to their sources, sections, and versions. The **skill graph** makes these requirements actionable:
+
+- **Learning goals and topics:** Individual, assessable abilities form atomic goals. Clusters group them into broader topics or modules.
+- **Prerequisites (`requires`):** A goal refers to the foundations it needs.
+- **Composition (`contains`):** A topic refers to the learning goals it includes.
+
+This creates several possible learning paths rather than one fixed sequence. Formal checks safeguard the structure, for example against cycles. Content quality assurance also checks whether goals are correct in their subject and their prerequisites make educational sense (section 5.1). The [graph definition](https://enpasos.github.io/skillpilot/concept/skill-graph/graph-definition/) explains the formal model; changes are versioned and reviewed (section 6).
+
+#### Cross-Subject Prerequisites: Mathematics and Physics
+
+**The learning map already connects Mathematics and Physics through specific `requires` links.** For example, “Describe motions using distance-time diagrams” requires “Read axes, scales and units,” among other foundations. The more advanced Physics goal “Investigate Motions with Diagrams” builds on “Calculate and interpret average rate of change,” among other goals.
+
+The mathematical foundations retain their own learning-goal IDs and previously recorded progress. SkillPilot can therefore take that progress into account when learning Physics too. Which goals belong to the personal selection and which serve only as prerequisites is explicitly defined.
+
 #### Four Levels of Personalization
 
-SkillPilot separates the lasting learning scope from the current step:
+The shared learning map becomes a personal learning path. SkillPilot distinguishes the lasting scope, the current step, and progress already achieved:
 
-1. **Base Curriculum (Level 1):** The selected base curriculum, such as “Gymnasium (DE),” provides the available set of goals.
+1. **Base Curriculum (Level 1):** The selected base curriculum, such as “Gymnasium (DE),” provides the available learning goals.
 2. **Personal Curriculum (Level 2):** Federal state, school stage, subjects, and, where applicable, duration and course model determine the personal learning scope. This selection is made in the SkillPilot web app, not in the coach chat.
 3. **Learning Focus and Active Goal (Level 3):** A temporarily selected subset and exactly one current learning goal guide the ongoing work. The coach uses the options offered by the backend. Widening the focus requires consent; within confirmed plan-guided or autopilot learning, the next permitted goal can be selected automatically.
 4. **Learning Progress / Mastery (Level 4):** Progress is stored against stable learning-goal IDs and is retained when the view or focus changes.
 
-A subject-specific **composition view** arranges the canonical goals for the selected educational context. It distinguishes **learning goals within the personal scope (`target`)** from **prerequisites only (`prerequisiteOnly`)**. Only the former count toward the visible learning tree, goal selection, progress, and completion. Prerequisite-only goals retain their global mastery for prerequisite checks without becoming additional learning goals in that scope. For example, lower-secondary foundations can serve as prerequisites in an upper-secondary view where that role is explicitly modeled. Moving to a new school stage does not automatically certify these foundations; including them as learning goals in their own right requires an appropriately selected personal scope.
+A subject-specific **composition view** arranges the shared goals for the selected educational context. It distinguishes **goals to be learned (`target`)** from **prerequisites only (`prerequisiteOnly`)**. Only target goals count toward the visible learning tree, goal selection, progress, and completion of this scope. Prerequisite-only goals retain their recorded progress for prerequisite checks.
 
-#### Connecting to Existing Curricula (Raw Input & Traceability)
+Lower-secondary foundations can therefore be taken into account in an upper-secondary view, or mathematical foundations when learning Physics, where that role is explicitly modeled. Including them as learning goals in their own right requires an appropriately selected personal scope. Neither moving to a new school stage nor a cross-subject link certifies their mastery.
 
-SkillPilot does not “invent” curricula: curricula, module handbooks, or standards serve as **raw input** and are translated into a skill graph.
+#### Frontier: Which Goals Are Reachable Now
 
-A formal mathematical specification and associated checks safeguard the structure, for example against cycles and contradictory dependencies. Whether a learning goal is correct in its subject and a prerequisite makes educational sense also requires content quality assurance (section 5.1).
+The backend calculates the **frontier** from the learning scope and recorded progress: goals not yet mastered whose effective prerequisites are met. The checks also include foundations explicitly modeled as `prerequisiteOnly` outside the visible learning scope. Optional **Strict Mode** additionally checks prerequisites globally.
 
-This involves:
-
-- **Operationalization:** Curricular requirements are translated into clearly defined subject-specific learning goals. The curriculum remains the standard, rather than automatically lowering expectations to match progress so far.
-- **Source references:** Curricular goals are mapped to their sources, sections, and versions; the quality status reports the coverage achieved.
-- **Navigability:** Prerequisites and hierarchies are modeled explicitly so that paths can be planned. The **overall graph** allows multiple educationally meaningful routes. Within a **selected scope** or a **modeled target route**, SkillPilot narrows the next steps to the appropriate subset. Explicitly modeled `prerequisiteOnly` foundations remain effective outside the learning focus as well. Optional **Strict Mode** additionally checks prerequisites globally.
-- **Governance:** Changes currently flow through GitHub (Issues/PRs), with versioning through GitHub history (see section 6).
-
-#### The Map: Nodes & Edges
-
-- **Nodes:** Atomic skills (“can explain/apply X”) and clusters (topics/modules).
-- **Edges:**
-  - **Prerequisites:** “A before B”
-  - **Contains/Part-of:** “X includes Y and Z”
-
-#### Learning Modes: What Is Learned at a Node
-
-Content learning goals, memorization nodes, and practice or assessment nodes place different demands on learners:
-
-- **Understanding:** Ordinary content learning goals are explained and practiced with the AI learning coach.
-- **Memorization:** Individual facts are memorized selectively using a modern flashcard approach.
-- **Independent problem solving:** Practice and assessment tasks require independent work, for example on paper followed by a photo upload. In lower-secondary mathematics, year-level exams are organized under “Exams for Year …”; upper-secondary education adds appropriate course and Abitur exam tasks. The learning coach discusses solutions and assesses them according to the requirements of each task.
-
-The graph can also include **orientation nodes for motivation and relevance**. These show concrete possibilities offered by the next topic and invite a personal response; they do not test subject knowledge. Their completion marker represents engagement with the orientation or an explicit wish to continue, not subject mastery. Merely selecting a suggested interest first starts the corresponding follow-up.
-
-The **didactic route** in section 3.3 connects these nodes into a learning path. It describes how they work together, not an additional node type.
-
-**Formal specification:** The mathematical definition of the graph, including acyclicity and Effective Requires, is publicly documented:
-[Graph definition](https://enpasos.github.io/skillpilot/concept/skill-graph/graph-definition/)
-
-#### Frontier: Next Reachable Steps
-
-The **frontier** is calculated by the backend, not proposed by the AI: it comprises goals within the active learning scope that are not yet mastered and whose effective prerequisites are met. Prerequisite checks also include foundations explicitly modeled as `prerequisiteOnly` outside the visible learning scope. This computational unlocking of goals is not a psychological assessment of an individual’s learning potential.
+This selection sets the boundaries for the coach’s next learning step. It reflects the recorded state and is not a psychological assessment of an individual’s learning potential.
 
 ### 3.2 Learning Through Dialogue and Recording Progress
 
@@ -158,15 +127,13 @@ The **SkillPilot Learning Coach** turns the selected goal into a concrete learni
 
 For subject-specific understanding goals, the coach asks for reasoning and explanations in the learner’s own words rather than only correct final answers. Drawing on Socratic dialogue and the **Feynman technique**, this approach aims to reveal gaps in understanding and support targeted further practice. It is a teaching approach, not evidence of the effectiveness of the overall system. This knowledge assessment explicitly does not apply to orientation nodes.
 
-#### Mastery: Progress as an Evidence Model
+#### Mastery: Recording Achieved Progress
 
-The current Cockpit view separates ordinary flashcard practice from evidence-bearing **Verified Recall**.
+Work on a task provides evidence of whether a learning goal has been understood. For ordinary learning goals, the coach makes a completion decision under the applicable evidence rules; SkillPilot checks and stores the permitted state change. The Cockpit shows the recorded progress, which is taken into account when selecting further learning goals.
 
-**Mastery** is the backend-owned learning state for atomic goals, not a chat log. For ordinary learning goals, the coach reports a completion decision under the applicable evidence rules; the backend checks and stores the permitted state change. The Cockpit shows the recorded state. Orientation nodes use only a completion marker and do not certify subject mastery. For memorization nodes, mastery is derived from server-side card state and **Verified Recall**; ordinary flashcard practice changes only the repetition schedule. Cluster progress is a weighted aggregate of the contained goals.
+This learning state is called **mastery**. It belongs to individual learning goals; progress in broader topics is calculated as a weighted aggregate. Orientation and memorization have their own completion rules (section 3.3).
 
-The central state remains separate from complete dialogues and additional artifacts. Institutions can supplement it with further evidence through artifacts or references.
-
-> SkillPilot makes progress visible — the institution decides which evidence has which consequences.
+The stored learning state remains separate from complete dialogues and additional artifacts. Institutions can add further evidence and decide which evidence has which consequences.
 
 #### A Short Path from Feedback to Improvement
 
@@ -176,24 +143,21 @@ Does an explanation miss the point, is an exercise unclear, or does the coach be
 
 Learning Velocity shows how many **atomic goals** are newly recorded as mastered per week. It is an indicator of progress over time, not a measure of intelligence or a fixed trait of a child; learning goals can also require different amounts of effort. When new abilities become apparent after a longer initial learning phase, further steps can become available. **Recorded learning progress determines the next step — it is not a judgment of a child’s potential.** An earlier pace does not limit subsequent learning.
 
-### 3.3 The Hybrid Learning Loop: Understanding + Memorizing + Practice
+### 3.3 Understanding, Memorizing, and Applying Independently
 
-Not every learning goal is learned in the same way: concepts need understanding and application, facts need repetition, and many skills require **active work**, such as programming, calculating, or writing. Exams require precisely this kind of independent problem solving.
+The path to a learning goal depends on what needs to be learned. SkillPilot combines different forms of learning:
 
-Within a context such as “Mathematics, Year 7” or “Advanced Physics Course, Hesse, Abitur Preparation,” **modeled learning routes** connect foundations to increasingly independent application. They are paths within the larger graph, not its only possible route.
+- **Understanding:** The coach explains concepts, supports learners’ own attempts at a solution, and asks for reasoning.
+- **Memorization:** Vocabulary, notation, or selected formulas are reviewed as needed.
+- **Independent application:** Practice and assessment tasks require independent work, for example on paper followed by a photo upload. The coach discusses and assesses solutions according to the requirements of each task.
 
-One possible route leads from **orientation** through **guided understanding** to **independent application**. Necessary memorization can run in parallel; not every topic needs flashcards or its own orientation node. The prerequisites in the graph and the current learning state determine the next permitted step, not a rigid four-step sequence.
+Within a context such as “Mathematics, Year 7” or “Advanced Physics Course, Hesse, Abitur Preparation,” **modeled learning routes** connect these forms of learning. One possible route leads from orientation through guided understanding to independent application. Necessary memorization can run in parallel. Prerequisites and the current learning state determine the next permitted step; there is no rigid four-step sequence. The appendix provides a schematic example.
 
-The schematic example in the appendix shows such a route from orientation through understanding to application, with memorization running in parallel, as it can be modeled in SkillPilot and exported as a PDF.
+**Orientation** helps learners experience the purpose of a topic and the concrete possibilities it offers. It invites personal engagement and does not test subject knowledge. Merely selecting a suggested interest first starts the corresponding follow-up. Its separate completion marker records completed orientation, not subject mastery.
 
-For content that needs to be recalled reliably — such as vocabulary, notation, or selected formulas — **spaced repetition** complements work with explanations and tasks. It replaces neither subject understanding nor independent application.
+For content that needs to be memorized, **spaced repetition** complements work with explanations and tasks: the flashcard system (SRS) schedules when cards are reviewed, while the skill graph determines the next learning goals. Ordinary flashcard practice changes only the review schedule. Mastery of a memorization goal is derived from server-side card state and the separate **Verified Recall**, an unaided recall check. This distinction also remains visible in the Cockpit.
 
-SkillPilot integrates a **flashcard drill engine** (SRS) for this purpose:
-
-- **Competence loop:** The skill graph defines *what* comes next.
-- **Memorization loop:** The drill engine controls *when* cards are reviewed (intervals, prioritization; for example, SuperMemo-2).
-
-SkillPilot already includes practice and assessment nodes for suitable scopes. Their review status is part of the respective curriculum’s quality assurance. Further task formats, for example for programming, writing, or speaking, can be added.
+**Practice and assessment nodes** lead to independent application. In lower-secondary mathematics, year-level exams are organized under “Exams for Year …”; upper-secondary education adds appropriate course and Abitur exam tasks. Their review status is part of the respective curriculum’s quality assurance. Further task formats, for example for programming, writing, or speaking, can be added.
 
 ### 3.4 From Curriculum to Everyday Learning: Learning Plans and Coach Guidance
 
@@ -222,20 +186,21 @@ Learners choose between **1 day** and **1 week**. This setting applies consisten
 - **Daily resolution:** The workload covers the current calendar day.
 - **Weekly resolution:** The workload covers the current calendar week from Monday to Sunday. Learners can complete it at the start of the week, over the weekend, or spread it out. Earlier days within the same week do not create additional backlog.
 
-The choice is saved for the SkillPilot ID; weekly resolution is the default. Switching changes the time frame of the evaluation while preserving plan dates and achieved learning progress. **Period workload and backlog are separate statements:** A daily or weekly target can be reached while backlog remains. Work ahead is taken into account within the same subject.
+The choice is saved for the SkillPilot ID; weekly resolution is the default. Switching changes the time frame of the evaluation while preserving plan dates and achieved learning progress.
 
 #### Plan Status in the Cockpit: Workload, Overall Progress, and Plan Balance
 
-In plan mode, the Cockpit displays **two gauges with needles** for each subject. The left gauge shows the completed daily or weekly workload. Above the right gauge is the number of goals achieved across that subject's Personal Curriculum; its needle separately shows progress against the subject plan.
+In plan mode, the Cockpit displays **two gauges with needles** for each subject. They bring together three different measures: the current workload, overall progress, and work ahead or backlog against the plan.
 
 ![Cockpit in weekly mode: Mathematics 10 of 10 this week, 10 of 364 overall and 2 ahead; Physics 12 of 12, 18 of 128 overall and 1 ahead](learning-plan-cockpit.en.png "width=360")
 
 *Weekly Cockpit view with example data: both weekly workloads are complete. The numbers above the right gauges show overall progress; the needles and short labels below them show work ahead. Physics is the current subject.*
 
-- **“Today” or “This week”:** The left gauge shows the fulfilled share of the daily or weekly workload as “x of y.” Blue represents the fulfilled share, grey the remaining share. Work completed ahead of time is credited, so the display does not count only goals newly completed during the current period.
-- **“Overall: x of y”:** The number above the right gauge counts achieved atomic goals in the subject's current Personal Curriculum. Goals achieved before the learning plan began are included; each goal is counted only once within the subject. The needle below shows the **plan balance**: backlog on the left, “on track” in the neutral centre, and work ahead on the right. Its scale runs from red through grey to green and takes the subject's typical daily or weekly workload into account. The short label below the gauge gives the actual backlog or work ahead, even when the needle reaches either end of the scale. Missing source data is never presented as zero overall progress.
+- **Current workload — “Today” or “This week”:** The left gauge shows the completed share as “x of y.” Work already done ahead of schedule counts toward it, so the display does not count only goals newly completed during this period.
+- **Overall progress — “Overall: x of y”:** The number above the right gauge counts all achieved atomic goals in the subject’s current Personal Curriculum, including goals completed before the learning plan began. Each goal counts once.
+- **Plan balance — behind, on track, or ahead:** The right needle and the text below show progress against the subject plan. Work ahead is taken into account within the same subject.
 
-**Meeting the period workload does not automatically mean an older backlog has been cleared.** Likewise, a workload still open today or this week does not by itself create cumulative backlog. Each subject keeps its own balance. The active learning goal remains separately visible; an offered subject switch and expandable **“Plan details”** provide further orientation. The displays and status texts use the values calculated by SkillPilot that also inform the coach.
+**A completed daily or weekly workload can coexist with older backlog.** Conversely, a currently unfinished workload alone does not create additional backlog. Subject balances remain separate. The active goal, offered subject switches, and expandable **“Plan details”** complete the overview. The Cockpit and coach use the same values calculated by SkillPilot.
 
 #### The Learner Works in Chat
 
@@ -265,11 +230,11 @@ This turns the curriculum into a guided learning path: **The teacher is responsi
 
 ---
 
-## 4. Trust Architecture: Security & Integrity
+## 4. Trust: Protecting Learning Data and Understanding Evidence
 
 Anyone who entrusts their learning journey to a digital system should know which data goes where — and what the recorded evidence actually shows.
 
-### 4.1 Data Approach: Security, Privacy & Sovereignty by Design
+### 4.1 Which Data Goes Where
 
 The data used in the learning process serve different purposes and require different protections. SkillPilot separates **permanent pseudonymous identity**, the **short-lived learning session**, **authorization of the AI integration**, and **authoritative learning state**. The chat service receives the learning context it needs, not the permanent SkillPilot ID.
 
@@ -277,7 +242,7 @@ The data used in the learning process serve different purposes and require diffe
 
 Learning progress is managed under a permanent **pseudonymous SkillPilot ID**. This does not require registering a name or email address with SkillPilot. The ID also serves as a secret access key to the learning profile: it should be backed up as a protected ID file and must not be shared in chats or public feedback. The coach integration does not send it to the AI provider. The chat service requires its own account, and its access conditions also apply.
 
-#### Session Shielding Toward the AI Frontend
+#### A Separate Session for the Learning Chat
 
 Starting the **SkillPilot Learning Coach** from the SkillPilot web app creates a new random `learningSessionId` with an absolute lifetime of 24 hours. It connects the prepared chat to the confirmed learning context without exposing the permanent SkillPilot ID. The learner does not need to copy or manage any technical value. Its lifetime is extended neither by use nor by an OAuth refresh. The session uses the German or English communication language set in the confirmed context. OAuth authorizes the integration; the learning session determines the learning context.
 
@@ -296,11 +261,11 @@ Set clear guidelines on which data should not be shared in learning-coach chats 
 
 The mapping “who is which pseudonym?” stays with the institution or teacher and is stored **locally**, for example in protected storage — not centrally.
 
-#### AI Frontend / Provider Boundary
+#### Separate Access for Each AI Provider
 
 Claude and ChatGPT have separate adapters with their own authentication and session boundaries. Each provider is responsible for operating the chat and processing the dialogue. The shared SkillPilot core remains responsible for the curriculum, learning state, and learning rules.
 
-Separating the domain core from provider integrations keeps learning state and rules independent of the chat provider. Other hosts can build on this core but require their own validated integration. MCP alone guarantees neither compatible behavior nor suitability in terms of data protection or institutional requirements. Every integration must meet the requirements for tool use, privacy, session separation, and reliable learning guidance.
+A technical integration alone does not establish suitability in terms of data protection or institutional requirements. Each integration is tested separately against the requirements for tool access, privacy, session separation, and reliable learning guidance.
 
 ### 4.2 Backing Up Learning Progress: Integrity and Provenance Information
 
@@ -312,17 +277,15 @@ On import, existing source profiles and import timestamps can be retained as **p
 
 ---
 
-## 5. The Ecosystem: Content & Standards
+## 5. The Foundation: Reviewed Learning Goals and Suitable Materials
+
+Protected data and traceable progress are one side of trust. Equally important is the quality of the goals on which the learning path is built. This section describes the review status achieved, the role of human trials, and the planned addition of further materials.
 
 ### 5.1 Current Focus: Gymnasium in Germany
 
 SkillPilot’s current development and content focus is **Gymnasium, Germany’s academic secondary school track, across all 16 federal states**. The shared “Gymnasium (DE)” entry provides access to subject-level skill graphs through state-specific mappings and views. Shared competencies are grouped by subject, while differences between state curricula, school stages, and course profiles remain represented. Shared learning goals are therefore maintained once rather than separately for every federal state; subject-specific improvements can benefit all state views built on those goals.
 
-The extent of development varies by subject:
-
-- **Mathematics and Physics** are the most advanced. They are the main focus of development across lower and upper secondary education.
-- **Chemistry and Biology** are the next priorities. They also have shared subject curricula with state-specific mappings, but their development is not yet as broad.
-- **Other Gymnasium subjects** are present at varying stages of development and are being expanded gradually.
+**Mathematics, Physics, Chemistry, Biology, and Economics have reached M7**, the highest machine-assessed maturity level. Machine quality assurance is complete for each subject’s current set of content goals. All five are maintained as shared subject curricula with state-specific mappings. Other Gymnasium subjects are at varying stages of development and are being expanded gradually.
 
 Coverage and quality are reported by subject, year group, and federal state. The current subject coverage and quality evidence for the specific area selected are reported in the [Curriculum Directory](https://skillpilot.com/curricula) and the generated quality status.
 
@@ -336,13 +299,11 @@ The machine-readable maturity levels **M0 to M7** assess, among other things, gr
 - **M — Memory:** A justified decision on whether any content needs to be memorized and, if so, which content.
 - **V — Visualizations:** A subject-specific AI image review of the current image with valid content bindings, or an explicitly permitted subject-specific exception.
 
-What counts is the **intersection of all five gates across the current goal set**, together with passed final validation checks and no open M7 blockers. Evidence is bound to the reviewed content and context; changes may require targeted re-review. **Physics (Gymnasium, Germany) has reached M7.** The currently valid status remains verifiable in the [quality report](https://enpasos.github.io/skillpilot/qa-ci/status/curriculum-quality-status/).
+What counts is the **intersection of all five gates across the current goal set**, together with passed final validation checks and no open M7 blockers. Evidence is bound to the reviewed content and context; changes may require targeted re-review. The M7 status of the five subjects remains verifiable in the [quality report](https://enpasos.github.io/skillpilot/qa-ci/status/curriculum-quality-status/).
 
 100% means complete coverage by this QA process, not guaranteed freedom from errors or demonstrated classroom effectiveness. The [quality and human-trial concept](https://enpasos.github.io/skillpilot/concept/curriculum-quality-and-human-trial/) explains the binding rules.
 
-The repository also contains content for other school types, higher education, and CEFR-based language learning. These illustrate how the approach transfers to other settings, but they are not the current development focus.
-
-**Curriculum Champions (a link to practice):**
+**How the reviewed goals work in actual learning is tested separately.** **Curriculum Champions** contribute their subject expertise to this process:
 
 - Champions take responsibility for a curriculum or a **clearly scoped topic area**.
 - They **work through learning goals themselves** and report errors or unclear content directly on the relevant goal wherever a feedback entry is available.
@@ -357,6 +318,8 @@ The QA process covers more than curricula: the SkillPilot AI learning coach is c
 > A clearer learning route can begin with your feedback. Choose a manageable topic area, work through the goals yourself, and report where questions remain. **[Become a Curriculum Champion](https://skillpilot.com/curricula)** and contribute your subject expertise to our shared development work.
 
 ### 5.2 One Goal, Different Approaches: Finding Suitable Materials
+
+A clearly described learning goal leaves room for the explanation or exercise that helps each person most. This is where the planned integration of additional materials comes in.
 
 **One learning goal. Different ways to understand.**
 
@@ -376,16 +339,18 @@ The architectural framework is defined. The details of mappings and exchange for
 
 *Further reading: [Content integration architecture](https://github.com/enpasos/skillpilot/blob/main/docs/concept/skill-graph/content-integration.md).*
 
-### 5.3 SkillPilot in the Bologna/EHEA Context (Short Overview)
+### 5.3 Outlook: Applying the Approach to Higher Education
 
-Beyond the current Gymnasium focus, the model can also be applied to higher education. Bologna/EHEA sets the framework for **outcomes, transparency, recognition, and quality** in higher education. SkillPilot can support these goals, but it does not replace institutional decisions.
+The repository also contains content for other school types, higher education, and CEFR-based language learning. These illustrate how the approach transfers to other settings, but they are not the current development focus.
+
+Bologna/EHEA sets the framework for **outcomes, transparency, recognition, and quality** in higher education. SkillPilot can support these goals, but it does not replace institutional decisions.
 
 - **Learning outcomes / competencies:** Contribution: Make outcomes navigable as a skill graph and progress visible. Limits/prerequisites: Sound modeling, source references, and versioning.
 - **Credits/workload (ECTS logic):** Contribution: Support paths, prerequisites, and workload transparency. Limits/prerequisites: **No credit awarding**; rules remain institutional.
 - **Recognition/mobility:** Integrity-protected exports support the transfer of documented learning progress. They are not publicly verifiable achievement certificates; recognition remains an institutional process with its own evidence requirements (section 4.2).
 - **Quality assurance:** Contribution: Signals about obstacles and paths to inform teaching development. Limits/prerequisites: QA processes and transparent AI rules are required.
 
-## 6. Governance & Community: Open Source & Invitation
+## 6. Developing and Testing Together
 
 **Better together. Join in.**
 
@@ -403,7 +368,7 @@ Openness extends beyond software: it and the technical infrastructure are availa
 
 Changes to curricula and software are versioned and reviewed through **GitHub and pull requests**. The quality evidence and practical feedback described in section 5.1 provide the basis; additional institutional subject reviews can build on them.
 
-Good individual learning support should not depend on how much help parents can provide themselves or afford privately. **SkillPilot itself is free.** Current Claude access lets adults aged 18 or over try the approach today; the required Claude Pro subscription is paid for separately.
+Good individual learning support should not depend on how much help parents can provide themselves or afford privately.
 
 **The long-term goal is age-appropriate learning support that is free for school students, including the AI it requires.** This needs suitable access arrangements and sustainable funding that does not depend on payments from families. The current trial access does not yet achieve that goal. Paid supplementary resources can remain an optional choice but must not become a prerequisite for a learning path that can be used free of charge.
 
@@ -411,12 +376,18 @@ Good individual learning support should not depend on how much help parents can 
 
 School-led use remains an important application and requires suitable access, including age-appropriate arrangements. Across the different learning settings, evaluation must establish whether SkillPilot improves understanding, independent problem solving, and lasting learning, and whether it effectively supports learners whose potential has previously been underestimated. Technical functionality, initial user experiences, and completed curriculum QA do not establish that evidence in advance.
 
+### Join the Beta: Claude or ChatGPT Desktop
+
+**SkillPilot itself is free. The Claude learning coach requires your own Claude Pro account; this beta route is open to anyone interested aged 18 or over.** That subscription is purchased separately from Anthropic. The age limit comes from the [requirements for personal Claude accounts](https://support.claude.com/en/articles/8114491-get-started-with-claude).
+
+**Learning in Claude chat already works on your phone — including Voice Mode.** After working independently with pen and paper, you can photograph your solution with your phone, share it with the SkillPilot coach in chat, and discuss it. Typing, speaking, and showing your own work complement each other.
+
+Claude access is through the SkillPilot marketplace; the [5-minute Quickstart](https://skillpilot.com/quickstart/en) explains the setup. In SkillPilot’s responsive web interface, you select your Personal Curriculum, view your progress, and start the learning session. **[Try it now](https://skillpilot.com/quickstart/en)** and help shape the beta.
+
+**SkillPilot is not tied to one particular AI.** Plugins and dedicated provider adapters connect the independent subject-matter core to each AI chat. Alongside the Claude beta, **ChatGPT Desktop (Beta)** is available through the [SkillPilot Git marketplace](https://github.com/enpasos/skillpilot-chatgpt-marketplace). Installation and learning start have been confirmed on Windows. Choose **ChatGPT Desktop** in SkillPilot, prepare its start message and send it in a new desktop chat. The [plugin guide](https://skillpilot.com/plugins#chatgpt-desktop) explains setup and updates. Browser and mobile ChatGPT access have not been confirmed for this route. Further integrations depend on suitable interfaces and reliably supported capabilities at the provider.
+
 **Initiator:**
 The organization behind SkillPilot is **enpasos GmbH**. We invite partners to develop SkillPilot further together — in subject content, teaching, and technology.
-
-**Try it and help shape it:** The [Quickstart](https://skillpilot.com/quickstart/en) guides you through the open Claude beta. Create or load your SkillPilot ID, back it up as a protected ID file, and select your Personal Curriculum. No additional registration with a name or email address is required at SkillPilot.
-
-**Keep your ID file safe:** The ID grants access to the learning profile and must not be shared publicly.
 
 **More transparency:**
 [GitHub](https://github.com/enpasos/skillpilot)

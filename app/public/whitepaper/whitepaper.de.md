@@ -1,12 +1,12 @@
 # SkillPilot Whitepaper (DE)
 
-**Version:** 1.0.26 · **Projekt:** SkillPilot · *Ein Teil der Illustrationen ist KI-generiert.*
+**Version:** 1.0.27 · **Projekt:** SkillPilot · *Ein Teil der Illustrationen ist KI-generiert.*
 
 ---
 
 **Wissen, das trägt. Lernziel für Lernziel.**
 
-Mathematik und Physik für die gesamte gymnasiale Oberstufe – schon heute geführt lernen mit dem Claude-basierten SkillPilot-Coach, auch auf dem Handy. Nach der Einrichtung führt SkillPilot automatisch durch das persönliche Curriculum auf Grundlage des gewählten offiziellen Lehrplans. Dabei bauen die Lernziele auf den jeweils benötigten Grundlagen auf.
+Mathematik, Physik, Chemie, Biologie und Wirtschaftswissenschaften im Gymnasium – schon heute geführt lernen mit dem Claude-basierten SkillPilot-Coach, auch auf dem Handy. Nach der Einrichtung führt SkillPilot automatisch durch das persönliche Curriculum auf Grundlage des gewählten offiziellen Lehrplans. Dabei bauen die Lernziele auf den jeweils benötigten Grundlagen auf.
 
 ![Eine Lernende arbeitet mit dem Coach am Handy; ein Haus aus aufeinander aufbauenden Lernzielbausteinen veranschaulicht tragfähigen Fortschritt in Mathematik und Physik](learning-house.png)
 
@@ -14,29 +14,17 @@ Wie bei einem soliden Haus: Jeder verstandene Baustein trägt das Weitere. Der C
 
 ## Zusammenfassung
 
-**Anspruchsvolle Bildung und individuelle Unterstützung gehören zusammen.** SkillPilot soll helfen, curriculare Ziele tatsächlich zu erreichen: mit tragfähigen Grundlagen, verstandenen Zusammenhängen und selbstständiger Anwendung. Dafür macht es aus bestehenden Lehrplänen eine persönliche Lernlandkarte. Ein KI-Lerncoach erklärt, übt mit den Lernenden und bespricht ihre Lösungen; SkillPilot verwaltet den Lernstand und prüft, welche Zustandsänderungen zulässig sind.
+**Anspruchsvolle Bildung und individuelle Unterstützung gehören zusammen.** SkillPilot macht aus bestehenden Lehrplänen eine persönliche Lernlandkarte. Sie verbindet drei Fragen: Was soll ich lernen, welche Grundlagen brauche ich dafür und welcher Schritt ist jetzt erreichbar? Der Anspruch bleibt, die Unterstützung richtet sich nach dem dokumentierten Lernstand.
 
-Grundlage bleiben die **geltenden Curricula**, etwa staatliche Lehrpläne, Modulhandbücher oder Sprachstandards. Sie werden in einen versionierten **Skill-Graph** übersetzt: konkrete Lernziele mit fachlichen Voraussetzungen. Fortschritt wird an einzelnen Zielen gespeichert und für größere Themen zusammengefasst. Der aktuelle Schwerpunkt liegt auf dem **Gymnasium in Deutschland**.
+Grundlage sind die **geltenden Curricula**, etwa staatliche Lehrpläne, Modulhandbücher oder Sprachstandards. Der daraus abgeleitete **Skill-Graph** verbindet konkrete Lernziele mit ihren Voraussetzungen. In der Weboberfläche wählen Lernende daraus den zu ihrem Bildungskontext und ihren Fächern passenden Umfang. Bereits heute reichen die Verbindungen über Fachgrenzen hinweg: Physikziele bauen auf passenden mathematischen Grundlagen auf (Abschnitt 3.1).
 
-**Lernpläne ergänzen diese Navigation um den zeitlichen Rahmen:** Welche Teile des persönlichen Curriculums sollen bis wann erreicht werden? SkillPilot zeigt für alle geplanten Fächer das **Tages- oder Wochenpensum** sowie Rückstand oder Vorarbeit. Jedes Fach wird dabei einzeln ausgewertet. Der Coach zeigt den Stand im Chat und führt zum nächsten lernbaren Ziel, ohne dass Lernende selbst Planabschnitte oder Lernziele verwalten müssen (siehe Abschnitt 3.4).
+**Der Coach begleitet die Arbeit am nächsten Ziel; SkillPilot hält den Fortschritt fest.** Die KI erklärt, gibt Hinweise und bespricht eigene Lösungsversuche. SkillPilot verwaltet den Lernstand und bestimmt die erreichbaren nächsten Ziele. Ein **Lernplan** ergänzt diesen Weg um das Tages- oder Wochenpensum. Er zeigt Rückstand oder Vorarbeit für jedes Fach getrennt, damit aus dem Lehrplan ein überschaubarer Lernalltag wird (Abschnitte 3.2–3.4).
 
-**Das passende Material zum nächsten Lernschritt finden:** Wir arbeiten daran, Bücher, YouTube-Videos und andere Lernmaterialien an Lernziele und Lernpläne anzubinden. Lehrkräfte und Lernende sollen die passenden Angebote selbst auswählen können. Wir beginnen gerade mit Physik Libre (Abschnitt 5.2).
+**Mathematik, Physik, Chemie, Biologie und Wirtschaftswissenschaften haben für ihre aktuell geprüften Gymnasialcurricula M7 erreicht**, den vollständig abgeschlossenen maschinellen QS-Stand. Die menschliche Erprobung durch Curriculum Champions wird separat ausgewiesen; M7 bescheinigt keine menschliche Freigabe oder Unterrichtswirksamkeit (Abschnitt 5.1).
 
-Die Qualitätssicherung verbindet nachvollziehbare **maschinelle Prüfungen** mit einer **separat ausgewiesenen menschlichen Erprobung** durch Curriculum Champions. Änderungen und Befunde werden über den **Open-Source-Workflow** (Issues/Pull Requests) bearbeitet.
+Als nächster Ausbau sollen **passende Lernmaterialien** wie Bücher, Videos und Übungen an diese Ziele und Lernpläne angebunden werden. Lehrkräfte und Lernende sollen geeignete Angebote selbst auswählen können. Wir beginnen mit Physik Libre (Abschnitt 5.2).
 
-### Vom Curriculum zur persönlichen Lernlandkarte
-
-In der Weboberfläche wählen Lernende ihren Bildungskontext und die passenden Fächer. Daraus entsteht ihr persönliches Curriculum. Der aktuelle Lernfokus kann später wechseln, ohne bereits gespeicherten Fortschritt zu verlieren.
-
-### Jetzt mitmachen: Beta mit Claude oder ChatGPT Desktop
-
-**SkillPilot selbst ist kostenlos. Für den Claude-Lerncoach wird ein eigener Claude-Pro-Account benötigt; dieser Betaweg steht allen Interessierten ab 18 Jahren offen.** Dessen Abonnement wird separat bei Anthropic abgeschlossen. Die Altersgrenze ergibt sich aus den [Voraussetzungen für persönliche Claude-Konten](https://support.claude.com/en/articles/8114491-get-started-with-claude).
-
-**Schon heute funktioniert das Lernen im Claude-Chat auch auf dem Handy – einschließlich Voice Mode.** Wer eine Aufgabe selbst mit Papier und Stift bearbeitet, kann den Lösungsweg mit der Handykamera fotografieren, im Chat mit dem SkillPilot-Coach teilen und besprechen. Tippen, sprechen und eigene Arbeit zeigen ergänzen sich dabei.
-
-Der Claude-Einstieg erfolgt über den SkillPilot-Marketplace; die Einrichtung zeigt der [5-Minuten-Kurzstart](https://skillpilot.com/quickstart/de). In der responsiven SkillPilot-Weboberfläche wählen Sie Ihr persönliches Curriculum, sehen den Fortschritt und starten die Lernsession. **[Jetzt ausprobieren](https://skillpilot.com/quickstart/de)** und den Beta-Test mitgestalten.
-
-**SkillPilot ist nicht auf eine bestimmte KI festgelegt.** Plugins und eigene Provideradapter verbinden den unabhängigen fachlichen Kern mit dem jeweiligen KI-Chat. Zusätzlich zur Claude-Beta ist **ChatGPT Desktop (Beta)** über den [SkillPilot-Git-Marketplace](https://github.com/enpasos/skillpilot-chatgpt-marketplace) verfügbar. Installation und Lernstart sind unter Windows bestätigt. Wählen Sie in SkillPilot **ChatGPT Desktop**, bereiten Sie seine Startnachricht vor und senden Sie sie in einem neuen Desktop-Chat. Die [Plugin-Anleitung](https://skillpilot.com/plugins#chatgpt-desktop) erklärt Einrichtung und Updates. Browser und mobile ChatGPT-App sind für diesen Weg noch nicht bestätigt. Weitere Anbindungen setzen geeignete Schnittstellen und zuverlässig unterstützte Funktionen beim jeweiligen Anbieter voraus.
+Zum Ausprobieren führt der [5-Minuten-Kurzstart](https://skillpilot.com/quickstart/de). Die verfügbaren Beta-Zugänge mit Claude und ChatGPT Desktop sowie ihre Voraussetzungen beschreibt Abschnitt 6.
 
 ---
 
@@ -62,9 +50,7 @@ Die Ziele bleiben anspruchsvoll; die Unterstützung passt sich dem Ausgangspunkt
 
 ## 2. Die Arbeitsteilung: KI erklärt, SkillPilot führt den Lernstand
 
-**Gemeinsame Vorarbeit, individuelle Lernbegleitung.** Die Skill-Landschaft wird vor ihrer individuellen Nutzung aufgebaut, nach den festgelegten Qualitätsverfahren geprüft und anschließend fortlaufend gepflegt (Abschnitt 5.1). Für die anspruchsvolle Erschließung und Strukturierung der Lehrpläne können besonders leistungsfähige KI-Systeme eingesetzt werden. Diese wiederverwendbare Vorarbeit kommt allen Lernenden zugute. Sie muss nicht für jede Person oder in jeder Lernsession erneut erbracht werden.
-
-Davon getrennt ist die KI, die beim Lernen begleitet. Sie muss die fachlichen, didaktischen und technischen Anforderungen der SkillPilot-Lernbegleitung erfüllen. Dafür muss sie nicht mit den Systemen identisch sein, die zur Erarbeitung der Skill-Landschaft eingesetzt werden. Die Qualitätsanforderungen an die Lernbegleitung gelten unabhängig von dieser Wahl.
+**Der KI-Lerncoach begleitet den Dialog; SkillPilot verwaltet den Lernweg.** Beide übernehmen unterschiedliche Aufgaben und greifen dabei auf dieselben Lernziele zurück.
 
 Sprachbasierte KI kann Begriffe erklären, Aufgaben formulieren, Lösungswege besprechen und auf Fragen in natürlicher Sprache eingehen. Im Lerndialog macht sie unterschiedliche Zugänge zu einem Thema möglich und passt Erklärungen an die Antworten der lernenden Person an.
 
@@ -72,77 +58,60 @@ Für verlässliche Lernführung braucht es daneben eine eindeutige Grundlage: We
 
 Über definierte Werkzeuge greift der Lerncoach auf diese **verbindlichen Backendregeln** zu. SkillPilot berechnet erreichbare Lernziele und den Planstand, prüft zulässige Zustandsänderungen und speichert bestätigten Fortschritt. Die fachliche Beurteilung im Dialog bleibt eine KI-Leistung und kann Fehler enthalten; die technische Zustandsprüfung ist kein unabhängiger Beweis für die Richtigkeit einer Lösung.
 
+**Gemeinsame Vorarbeit, individuelle Lernbegleitung:** Die Skill-Landschaft wird vor ihrer Nutzung aufgebaut, nach festgelegten Qualitätsverfahren geprüft und fortlaufend gepflegt (Abschnitt 5.1). Besonders leistungsfähige KI-Systeme können bei der anspruchsvollen Erschließung der Lehrpläne helfen. Diese wiederverwendbare Arbeit kommt allen Lernenden zugute. Die KI für den späteren Lerndialog muss dafür nicht dieselbe sein; sie muss die fachlichen, didaktischen und technischen Anforderungen der Lernbegleitung erfüllen.
+
 Die **Plugin- und Adapterarchitektur entkoppelt den fachlichen Kern vom konkreten KI-Anbieter**. Die Provideradapter stellen die Werkzeuge über das **Model Context Protocol (MCP)** bereit. Eine neue KI-Anbindung muss unter anderem Coach-Anweisungen laden, Werkzeuge zuverlässig aufrufen, Authentisierung und Lernsession sicher handhaben sowie die benötigten Bilder und Lernkarten darstellen können. MCP standardisiert den Werkzeugzugriff, garantiert diese Fähigkeiten aber nicht. Verbindliche Entscheidungen über Lernzustand, Berechtigungen und Navigation bleiben im gemeinsamen SkillPilot-Kern; jede konkrete Anbindung wird gesondert geprüft.
 
 **Ziel ist die Wahlfreiheit unter geeigneten KI-Umgebungen.** Perspektivisch kann dazu auch eine lokal auf dem eigenen Gerät betriebene KI gehören, sofern die erforderlichen Fähigkeiten und eine geprüfte Anbindung vorhanden sind. Der heutige Claude-Zugang ist ein konkreter Einstieg, keine dauerhafte Festlegung der Architektur auf diesen Anbieter. Eine bereits verfügbare lokale Lerncoach-Anbindung wird damit nicht behauptet.
-
-**SkillPilot ist damit eine hybride Anwendung:** Der KI-Lerncoach übernimmt das sprachliche Verstehen, Erklären und fachliche Feedback. Die klassische Software verantwortet Lernzustand, Berechtigungen, Navigation und Fortschrittsverwaltung.
 
 ---
 
 ## 3. Das Produkt: Wie SkillPilot funktioniert
 
-Die Lernlandkarte wird konkret, wenn jemand ein Ziel bearbeitet, eine eigene Lösung versucht und darüber spricht. SkillPilot hält dabei fest, welcher Fortschritt bestätigt ist und welche nächsten Schritte möglich sind. So greifen Graph, Coach und Lernplan ineinander.
+Im Lernalltag greifen vier Schritte ineinander: **ein erreichbares Ziel auswählen, daran arbeiten, Fortschritt festhalten und das weitere Lernen planen.** Die folgenden Abschnitte gehen diesen Weg vom persönlichen Curriculum bis zum Tages- oder Wochenpensum durch.
 
 ### 3.1 Vom Curriculum zum nächsten Lernziel
 
-SkillPilot ersetzt lineare Listen durch einen vernetzten Graphen.
-
-Wichtig ist dabei die Trennung der Ebenen: Das offizielle Curriculum bleibt die **normative Quelle**. Der versionierte **Skill-Graph** ist das daraus abgeleitete **operative Modell**. Im Laufzeitbetrieb ist der **Backend-State** die maßgebliche Instanz für aktuellen Lernstand, Persönliches Curriculum, aktuellen Fokus, aktives Ziel und erlaubte Übergänge.
+Der offizielle Lehrplan bestimmt die Anforderungen. SkillPilot übersetzt sie in konkrete Lernziele und ihre Voraussetzungen. Aus dieser Lernlandkarte, dem gewählten persönlichen Umfang und dem gespeicherten Lernstand ergibt sich, welche Ziele als Nächstes erreichbar sind.
 
 ![Aktuelle Cockpit-Ansicht mit Fokus, aktivem Lernziel und Lernfortschritt](current-cockpit.png)
 
 *Aus der Anwendung: Im Cockpit stehen Lernlandkarte und aktuelles Ziel nebeneinander. Eine große Aufgabe wird zu einem konkreten nächsten Schritt.*
 
+#### Vom Lehrplan zur Lernlandkarte
+
+Lehrpläne, Modulhandbücher und Standards liefern die verbindlichen Anforderungen. Die daraus abgeleiteten Lernziele bleiben ihren Quellen, Abschnitten und Versionen zugeordnet. Der **Skill-Graph** macht diese Anforderungen bearbeitbar:
+
+- **Lernziele und Themen:** Einzelne, überprüfbare Fähigkeiten bilden die atomaren Ziele. Cluster bündeln sie zu größeren Themen oder Modulen.
+- **Voraussetzungen (`requires`):** Ein Ziel verweist auf die Grundlagen, die es benötigt.
+- **Zusammensetzung (`contains`):** Ein Thema verweist auf die Lernziele, die zu ihm gehören.
+
+So entstehen mehrere mögliche Lernwege statt einer einzigen starren Reihenfolge. Formale Prüfungen sichern die Struktur ab, etwa gegen Zirkelbezüge. Die inhaltliche Qualitätssicherung prüft darüber hinaus, ob die Ziele fachlich richtig und ihre Voraussetzungen didaktisch sinnvoll sind (Abschnitt 5.1). Die [Graph-Definition](https://enpasos.github.io/skillpilot/concept/skill-graph/graph-definition/) erläutert das formale Modell; Änderungen werden versioniert und geprüft (Abschnitt 6).
+
+#### Fachübergreifende Voraussetzungen: Mathematik und Physik
+
+**Die Lernlandkarte verbindet bereits Mathematik und Physik durch konkrete `requires`-Verknüpfungen.** So setzt „Bewegungen mit Weg-Zeit-Diagrammen beschreiben“ unter anderem „Achsen, Skalen und Einheiten lesen“ voraus. Das weiterführende Physikziel „Bewegungen mit Diagrammen untersuchen“ baut unter anderem auf „Mittlere Änderungsrate berechnen und deuten“ auf.
+
+Die mathematischen Grundlagen behalten ihre eigenen Lernziel-IDs und den bereits gespeicherten Lernstand. SkillPilot kann diesen Stand dadurch auch beim Lernen in Physik berücksichtigen. Welche Ziele zur persönlichen Auswahl gehören und welche nur als Voraussetzung dienen, wird ausdrücklich festgelegt.
+
 #### Vier Ebenen der Personalisierung
 
-SkillPilot trennt den dauerhaften Lernumfang vom aktuellen Arbeitsschritt:
+Aus der gemeinsamen Lernlandkarte wird ein persönlicher Lernweg. SkillPilot unterscheidet dabei den dauerhaften Umfang, den aktuellen Arbeitsschritt und den bereits erreichten Fortschritt:
 
-1. **Basis-Curriculum (Level 1):** Das gewählte Grundcurriculum, etwa „Gymnasium (DE)“, stellt den verfügbaren Zielraum bereit.
+1. **Basis-Curriculum (Level 1):** Das gewählte Grundcurriculum, etwa „Gymnasium (DE)“, stellt die verfügbaren Lernziele bereit.
 2. **Persönliches Curriculum (Level 2):** Bundesland, Schulstufe, Fächer und gegebenenfalls Dauer- und Kursmodell bestimmen den persönlichen Lernumfang. Diese Auswahl wird in der SkillPilot-Weboberfläche festgelegt, nicht im Coach-Chat.
 3. **Lernfokus und aktives Ziel (Level 3):** Ein vorübergehend gewählter Ausschnitt und genau ein aktuelles Lernziel steuern die laufende Arbeit. Der Coach nutzt dafür die vom Backend angebotenen Optionen. Eine Fokusausweitung benötigt Zustimmung; innerhalb einer bestätigten Plan- oder Autopilotführung kann das nächste zulässige Ziel automatisch gewählt werden.
 4. **Lernstand / Mastery (Level 4):** Fortschritt wird an stabilen Lernziel-IDs gespeichert und bleibt bei einem Wechsel von Ansicht oder Fokus erhalten.
 
-Eine fachlich definierte **Kompositionssicht** ordnet die kanonischen Ziele für den gewählten Bildungskontext an. Dabei unterscheidet sie **Lernziele im persönlichen Umfang (`target`)** von **reinen Voraussetzungen (`prerequisiteOnly`)**. Nur die ersten zählen zu sichtbarem Lernbaum, Zielauswahl, Fortschritt und Abschluss. Reine Voraussetzungen behalten ihre globale Mastery für die Voraussetzungsprüfung, ohne dadurch zusätzliche Lernziele dieses Umfangs zu werden. So können etwa Sek-I-Grundlagen in einer Sek-II-Sicht als Voraussetzungen berücksichtigt werden, wenn diese Rolle dort ausdrücklich modelliert ist. Ein Stufenwechsel bescheinigt diese Grundlagen nicht automatisch; ihre Aufnahme als eigene Lernziele erfordert einen entsprechend gewählten persönlichen Umfang.
+Eine fachlich definierte **Kompositionssicht** ordnet die gemeinsamen Ziele für den gewählten Bildungskontext an. Sie unterscheidet **eigene Lernziele (`target`)** von **reinen Voraussetzungen (`prerequisiteOnly`)**. Nur eigene Lernziele zählen zum sichtbaren Lernbaum, zur Zielauswahl, zum Fortschritt und zum Abschluss dieses Umfangs. Reine Voraussetzungen behalten ihren gespeicherten Lernstand für die Voraussetzungsprüfung.
 
-#### Andocken an bestehende Curricula (Rohinput & Traceability)
+So können Sek-I-Grundlagen in einer Sek-II-Sicht oder mathematische Grundlagen beim Lernen in Physik berücksichtigt werden, wenn diese Rolle dort ausdrücklich modelliert ist. Ihre Aufnahme als eigene Lernziele erfordert einen entsprechend gewählten persönlichen Umfang. Weder ein Stufenwechsel noch eine fachübergreifende Verknüpfung bescheinigt ihre Beherrschung.
 
-SkillPilot „erfindet“ keine Curricula: Lehrpläne, Modulhandbücher oder Standards dienen als **Rohinput** und werden in einen Skill-Graph übersetzt.
+#### Frontier: Welche Ziele jetzt erreichbar sind
 
-Eine formale mathematische Spezifikation und zugehörige Prüfungen sichern die Struktur ab, etwa gegen Zirkelbezüge und widersprüchliche Abhängigkeiten. Ob ein Lernziel fachlich richtig und eine Voraussetzung didaktisch sinnvoll ist, benötigt darüber hinaus inhaltliche QS (Abschnitt 5.1).
+Das Backend berechnet aus Umfang und Lernstand die **Frontier**: noch nicht beherrschte Ziele, deren wirksame Voraussetzungen erfüllt sind. Auch ausdrücklich als `prerequisiteOnly` modellierte Grundlagen außerhalb des sichtbaren Lernumfangs zählen bei dieser Prüfung. Der optionale **Strict Mode** prüft Voraussetzungen darüber hinaus global.
 
-Dabei geht es um:
-
-- **Operationalisierung:** Curriculare Anforderungen werden in fachlich umrissene Lernziele übersetzt. Maßstab bleibt der Lehrplan, nicht eine automatische Absenkung auf den bisherigen Lernstand.
-- **Quellenbezug:** Curriculare Ziele werden ihren Quellen, Abschnitten und Versionen zugeordnet; die erreichte Abdeckung wird im Qualitätsstatus ausgewiesen.
-- **Navigierbarkeit:** Voraussetzungen und Hierarchien werden explizit modelliert, damit Pfade planbar werden. Der **Gesamtgraph** erlaubt mehrere didaktisch sinnvolle Wege. Innerhalb eines **gewählten Umfangs** oder einer **modellierten Ziel-Route** schränkt SkillPilot die nächsten Schritte auf die passende Teilmenge ein. Dabei bleiben ausdrücklich modellierte `prerequisiteOnly`-Grundlagen auch außerhalb des Lernfokus wirksam. Der optionale **Strict Mode** prüft Voraussetzungen darüber hinaus global.
-- **Governance:** Änderungen laufen aktuell über GitHub (Issues/PRs), Versionierung über die GitHub-Historie (siehe Abschnitt 6).
-
-#### Landkarte: Knoten & Kanten
-
-- **Knoten:** atomare Skills („kann X erklären/anwenden“) und Cluster (Themen/Module).
-- **Kanten:**
-  - **Prerequisites:** „A vor B“
-  - **Contains/Part-of:** „X umfasst Y und Z“
-
-#### Lernmodi: Was an einem Knoten gelernt wird
-
-Inhaltliche Lernziele, Memorierknoten und Übungs- bzw. Prüfungsknoten stellen unterschiedliche Anforderungen:
-
-- **Verstehen:** Gewöhnliche inhaltliche Lernziele werden vom KI-Lerncoach erklärt und eingeübt.
-- **Sich merken:** Einzelne Fakten werden gezielt memoriert (modernes Karteikastenprinzip).
-- **Selbstständig Probleme lösen:** Übungs- und Prüfungsaufgaben verlangen eine eigenständige Bearbeitung, etwa auf Papier mit anschließendem Foto-Upload. In Mathematik Sek I sind Jahrgangsprüfungen unter „Prüfungen Jahrgangsstufe …“ eingeordnet; in Sek II kommen passende Klausur- und Abituraufgaben hinzu. Der Lerncoach bespricht Lösungen und bewertet sie nach den jeweiligen Aufgabenvorgaben.
-
-Ergänzend können **Orientierungsknoten zur Motivation und Sinnstiftung** modelliert sein. Sie zeigen konkrete Möglichkeiten des folgenden Themas und laden zur persönlichen Auseinandersetzung ein; sie prüfen kein Fachwissen. Ihr Abschlussmarker steht für eine bearbeitete Orientierung oder den ausdrücklichen Wunsch weiterzugehen, nicht für fachliche Beherrschung. Die bloße Auswahl eines vorgeschlagenen Interesses startet zunächst die dazu passende Vertiefung.
-
-Die **didaktische Route** in Abschnitt 3.3 verbindet diese Knoten zu einem Lernweg. Sie beschreibt deren Zusammenspiel, nicht einen zusätzlichen Knotentyp.
-
-**Formale Spezifikation:** Die mathematische Definition des Graphen (u.a. Acyclicity, Effective Requires) ist öffentlich dokumentiert:
-[Graph-Definition](https://enpasos.github.io/skillpilot/concept/skill-graph/graph-definition/)
-
-#### Frontier: Nächste erreichbare Schritte
-
-Die **Frontier** wird vom Backend berechnet, nicht von der KI vorgeschlagen: Sie umfasst noch nicht beherrschte Ziele im aktiven Lernumfang, deren wirksame Voraussetzungen erfüllt sind. Bei der Voraussetzungsprüfung zählen auch ausdrücklich als `prerequisiteOnly` modellierte Grundlagen außerhalb des sichtbaren Lernumfangs. Diese rechnerische Freischaltung ist keine psychologische Diagnose des individuellen Lernpotenzials.
+Diese Auswahl gibt dem Coach den Rahmen für den nächsten Lernschritt. Sie beschreibt den dokumentierten Stand und ist keine psychologische Diagnose des individuellen Lernpotenzials.
 
 ### 3.2 Im Dialog lernen und Fortschritt festhalten
 
@@ -158,15 +127,13 @@ Der **SkillPilot-Lerncoach** macht aus dem gewählten Ziel eine konkrete Lernauf
 
 Bei fachlichen Verständniszielen fragt der Coach nach Begründungen und Erklärungen in eigenen Worten, statt nur richtige Endergebnisse abzufragen. Diese Anlehnung an sokratische Gesprächsführung und die **Feynman-Technik** soll Lücken im Verständnis erkennbar machen und gezieltes Weiterüben ermöglichen. Sie ist ein didaktischer Ansatz, kein Wirksamkeitsnachweis für das Gesamtsystem. Für Orientierungsknoten gilt diese Wissensprüfung ausdrücklich nicht.
 
-#### Mastery: Fortschritt als Evidenzmodell
+#### Mastery: Erreichten Fortschritt festhalten
 
-Die aktuelle Cockpit-Ansicht trennt gewöhnliches Karteikartenüben vom evidenzwirksamen **Verified Recall**.
+Eine bearbeitete Aufgabe liefert Hinweise darauf, ob ein Lernziel verstanden wurde. Bei gewöhnlichen Lernzielen trifft der Coach anhand der geltenden Evidenzregeln eine Abschlussentscheidung; SkillPilot prüft und speichert die zulässige Zustandsänderung. Das Cockpit zeigt den gespeicherten Stand, der bei der Auswahl weiterer Lernziele berücksichtigt wird.
 
-**Mastery** ist der backendseitige Lernzustand auf atomaren Zielen, kein Chatprotokoll. Bei gewöhnlichen Lernzielen meldet der Coach nach den geltenden Evidenzregeln eine Abschlussentscheidung; das Backend prüft und speichert die zulässige Zustandsänderung. Das Cockpit zeigt den gespeicherten Stand. Orientierungsknoten verwenden nur einen Abschlussmarker und bescheinigen keine fachliche Beherrschung. Bei Memorierknoten wird Mastery aus dem serverseitigen Kartenstatus und dem **Verified Recall** abgeleitet; gewöhnliches Karteikartenüben verändert nur den Wiederholungsplan. Clusterfortschritt wird gewichtet aus den enthaltenen Zielen aggregiert.
+Dieser Lernzustand heißt **Mastery**. Er gehört zu einzelnen Lernzielen; der Fortschritt größerer Themen wird daraus gewichtet zusammengefasst. Orientierung und Memorieren haben eigene Abschlussregeln (Abschnitt 3.3).
 
-Der zentrale Zustand bleibt von vollständigen Dialogen und zusätzlichen Artefakten getrennt. Weitergehende Nachweise können institutionell über Artefakte oder Referenzen ergänzt werden.
-
-> SkillPilot macht Fortschritt sichtbar – die Institution entscheidet, welche Evidenz welche Konsequenz hat.
+Der gespeicherte Lernzustand bleibt von vollständigen Dialogen und zusätzlichen Artefakten getrennt. Institutionen können weitere Nachweise ergänzen und entscheiden, welche Evidenz welche Konsequenz hat.
 
 #### Kurze Wege für Feedback
 
@@ -176,24 +143,21 @@ Eine Erklärung passt nicht, eine Aufgabe ist unklar oder der Coach verhält sic
 
 Learning Velocity zeigt, wie viele **atomare Ziele** pro Woche neu als gemeistert gelten. Das ist ein Verlaufsindikator, kein Intelligenzmaß und keine feste Eigenschaft eines Kindes; Lernziele können zudem unterschiedlich aufwendig sein. Wenn nach einer längeren Anlaufphase neue Fähigkeiten sichtbar werden, können weitere Schritte freigeschaltet werden. **Der dokumentierte Lernstand bestimmt den nächsten Schritt – er ist kein Urteil über das Potenzial eines Kindes.** Eine frühere Geschwindigkeit begrenzt das weitere Lernen nicht.
 
-### 3.3 Der hybride Lernkreislauf: Verstehen + Memorieren + Üben
+### 3.3 Verstehen, Memorieren und selbstständig Anwenden
 
-Nicht jedes Lernziel lernt man gleich: Konzepte brauchen Verständnis und Anwendung, Fakten brauchen Wiederholung, und viele Skills brauchen **aktives Tun** (z.B. Programmieren, Rechnen, Schreiben). In Prüfungen wird genau dieses selbstständige Problemlösen verlangt.
+Der Weg zum Lernziel hängt davon ab, was gelernt werden soll. SkillPilot verbindet dafür unterschiedliche Lernformen:
 
-In einem Kontext wie „Mathematik, Jahrgangsstufe 7“ oder „Leistungskurs Physik, Hessen, Abiturvorbereitung“ verbinden **modellierte Lernrouten** die Grundlagen mit zunehmend selbstständiger Anwendung. Sie sind Teilwege im größeren Graphen, nicht dessen einzig möglicher Pfad.
+- **Verstehen:** Der Coach erklärt Konzepte, begleitet eigene Lösungsversuche und fragt nach Begründungen.
+- **Sich merken:** Vokabeln, Notation oder ausgewählte Formeln werden bei Bedarf gezielt wiederholt.
+- **Selbstständig Anwenden:** Übungs- und Prüfungsaufgaben verlangen eine eigenständige Bearbeitung, etwa auf Papier mit anschließendem Foto-Upload. Der Coach bespricht und bewertet Lösungen nach den jeweiligen Aufgabenvorgaben.
 
-Eine mögliche Route führt von einer **Orientierung** über **angeleitetes Verstehen** zum **selbstständigen Anwenden**. Notwendiges Memorieren kann parallel laufen; nicht jedes Thema benötigt Karteikarten oder einen eigenen Orientierungsknoten. Die Voraussetzungen im Graphen und der aktuelle Lernstand bestimmen den nächsten zulässigen Schritt, nicht ein starrer Vier-Schritte-Ablauf.
+In einem Kontext wie „Mathematik, Jahrgangsstufe 7“ oder „Leistungskurs Physik, Hessen, Abiturvorbereitung“ verbinden **modellierte Lernrouten** diese Lernformen. Eine mögliche Route führt von Orientierung über angeleitetes Verstehen zur selbstständigen Anwendung. Notwendiges Memorieren kann parallel laufen. Die Voraussetzungen und der aktuelle Lernstand bestimmen den nächsten zulässigen Schritt; es gibt keinen starren Vier-Schritte-Ablauf. Ein schematisches Beispiel zeigt der Anhang.
 
-Ein schematisches Beispiel im Anhang zeigt eine solche Route aus Orientierung, Verstehen und Anwenden mit parallelem Memorieren, wie sie in SkillPilot modelliert und als PDF exportiert werden kann.
+**Orientierung** macht den Sinn eines Themas und seine konkreten Möglichkeiten erfahrbar. Sie lädt zur persönlichen Auseinandersetzung ein und prüft kein Fachwissen. Die bloße Auswahl eines vorgeschlagenen Interesses startet zunächst die dazu passende Vertiefung. Ihr gesonderter Abschlussmarker bescheinigt eine abgeschlossene Orientierung, keine fachliche Beherrschung.
 
-Für Inhalte, die zuverlässig abrufbar sein sollen – etwa Vokabeln, Notation oder ausgewählte Formeln –, ergänzt **Spaced Repetition** die Arbeit mit Erklärungen und Aufgaben. Es ersetzt weder fachliches Verständnis noch die selbstständige Anwendung.
+Für notwendige Merkinhalte ergänzt **Spaced Repetition** die Arbeit mit Erklärungen und Aufgaben: Das Karteikartensystem (SRS) plant, wann Karten wiederholt werden, während der Skill-Graph die nächsten Lernziele bestimmt. Gewöhnliches Karteikartenüben verändert nur den Wiederholungsplan. Die Beherrschung eines Memorierziels wird aus dem serverseitigen Kartenstatus und dem gesonderten **Verified Recall**, einem Abruf ohne Hilfen, abgeleitet. Diese Trennung bleibt auch im Cockpit sichtbar.
 
-SkillPilot integriert dafür eine **Flashcard Drill Engine** (SRS):
-
-- **Kompetenz-Loop:** Der Skill-Graph definiert, *was* als Nächstes dran ist.
-- **Memorisier-Loop:** Die Drill Engine steuert, *wann* Karten wiederholt werden (Intervalle, Priorisierung; z.B. SuperMemo-2).
-
-SkillPilot enthält bereits Übungs- und Prüfungsknoten für passende Umfänge. Ihr Prüfstand gehört zur jeweiligen Curriculum-QS. Weitere Aufgabenformate, etwa für Programmieren, Schreiben oder Sprechen, bleiben ausbaubar.
+**Übungs- und Prüfungsknoten** führen zur eigenständigen Anwendung. In Mathematik Sek I sind Jahrgangsprüfungen unter „Prüfungen Jahrgangsstufe …“ eingeordnet; in Sek II kommen passende Klausur- und Abituraufgaben hinzu. Ihr Prüfstand gehört zur jeweiligen Curriculum-QS. Weitere Aufgabenformate, etwa für Programmieren, Schreiben oder Sprechen, bleiben ausbaubar.
 
 ### 3.4 Vom Lehrplan zum Lernalltag: Lernplan und geführter Coach
 
@@ -222,20 +186,21 @@ Lernende wählen zwischen **1 Tag** und **1 Woche**. Diese Einstellung gilt geme
 - **Tagesauflösung:** Das Pensum bezieht sich auf den aktuellen Kalendertag.
 - **Wochenauflösung:** Das Pensum umfasst die laufende Kalenderwoche von Montag bis Sonntag. Lernende können es zu Wochenbeginn, am Wochenende oder verteilt erfüllen. Vergangene Tage innerhalb derselben Woche erzeugen keinen zusätzlichen Rückstand.
 
-Die Auswahl wird für die SkillPilot-ID gespeichert; ohne eigene Auswahl gilt die Wochenauflösung. Ein Wechsel verändert den zeitlichen Bezug der Auswertung, während Plantermine und erreichter Lernfortschritt erhalten bleiben. **Periodenpensum und Rückstand sind getrennte Aussagen:** Ein Tages- oder Wochenziel kann erreicht sein, obwohl noch Rückstand besteht. Vorarbeit wird innerhalb desselben Fachs berücksichtigt.
+Die Auswahl wird für die SkillPilot-ID gespeichert; ohne eigene Auswahl gilt die Wochenauflösung. Ein Wechsel verändert den zeitlichen Bezug der Auswertung, während Plantermine und erreichter Lernfortschritt erhalten bleiben.
 
 #### Planstand im Cockpit: Pensum, Gesamtfortschritt und Plansaldo
 
-Im Plan-Modus zeigt das Cockpit für jedes Fach **zwei Scheiben mit Nadeln**. Links steht das erfüllte Tages- oder Wochenpensum. Rechts steht über der Scheibe, wie viele Ziele des persönlichen Curriculums in diesem Fach insgesamt erreicht sind; die Nadel zeigt getrennt davon den Stand zum Fachplan.
+Im Plan-Modus zeigt das Cockpit für jedes Fach **zwei Scheiben mit Nadeln**. Sie verbinden drei unterschiedliche Aussagen: das aktuelle Pensum, den Gesamtfortschritt und den Vorsprung oder Rückstand gegenüber dem Plan.
 
 ![Cockpit im Wochenmodus: Mathematik 10 von 10 diese Woche, gesamt 10 von 364 und 2 vorgearbeitet; Physik 12 von 12, gesamt 18 von 128 und 1 vorgearbeitet](learning-plan-cockpit.de.png "width=360")
 
 *Wochenansicht mit Beispieldaten: Beide Wochenpensen sind erfüllt. Die Zahlen über den rechten Scheiben zeigen den Gesamtfortschritt; die Nadeln und die kurzen Texte darunter zeigen die Vorarbeit. Physik ist das aktuelle Fach.*
 
-- **„Heute“ beziehungsweise „Diese Woche“:** Die linke Scheibe zeigt den erfüllten Anteil des Tages- oder Wochenpensums als „x von y“. Blau steht für den erfüllten, Grau für den noch offenen Anteil. Bereits geleistete Vorarbeit wird angerechnet; die Anzeige zählt deshalb nicht nur Ziele, die in der laufenden Periode neu abgeschlossen wurden.
-- **„Gesamt: x von y“:** Die Zahl über der rechten Scheibe zählt die erreichten atomaren Ziele des aktuellen persönlichen Curriculums in diesem Fach. Auch vor Beginn des Lernplans erreichte Ziele zählen mit; ein Ziel wird innerhalb des Fachs nur einmal gezählt. Die Nadel darunter zeigt den **Plansaldo**: Rückstand links, „im Plan“ in der neutralen Mitte, Vorarbeit rechts. Die Skala reicht von Rot über Grau bis Grün und berücksichtigt das typische Tages- oder Wochenpensum dieses Fachs. Der kurze Text unter der Scheibe nennt den tatsächlichen Rückstand oder Vorsprung, auch wenn die Nadel einen Anschlag erreicht. Bei fehlender Datengrundlage wird keine Null als Gesamtfortschritt ausgegeben.
+- **Aktuelles Pensum – „Heute“ oder „Diese Woche“:** Die linke Scheibe zeigt den erfüllten Anteil als „x von y“. Bereits geleistete Vorarbeit wird angerechnet; die Anzeige zählt deshalb nicht nur neu abgeschlossene Ziele dieser Periode.
+- **Gesamtfortschritt – „Gesamt: x von y“:** Die Zahl über der rechten Scheibe zählt alle erreichten atomaren Ziele des aktuellen persönlichen Curriculums in diesem Fach, auch Abschlüsse vor Beginn des Lernplans. Jedes Ziel zählt einmal.
+- **Plansaldo – Rückstand, im Plan oder vorgearbeitet:** Die rechte Nadel und der Text darunter zeigen den Stand gegenüber dem Fachplan. Vorarbeit wird innerhalb desselben Fachs berücksichtigt.
 
-**Ein erfülltes Periodenpensum bedeutet nicht automatisch, dass ein älterer Rückstand aufgeholt ist.** Ebenso erzeugt ein heute oder diese Woche noch offenes Pensum allein keinen kumulierten Rückstand. Die Fachbilanzen bleiben getrennt. Das aktive Lernziel ist separat sichtbar; ein angebotener Fachwechsel und die aufklappbaren **„Plandetails“** ermöglichen die weitere Orientierung. Anzeigen und Statustexte beruhen auf den von SkillPilot berechneten Werten, die auch der Coach verwendet.
+**Ein erfülltes Tages- oder Wochenpensum kann mit älterem Rückstand zusammenfallen.** Umgekehrt erzeugt ein aktuell noch offenes Pensum allein keinen zusätzlichen Rückstand. Die Fachbilanzen bleiben getrennt. Das aktive Lernziel, angebotene Fachwechsel und aufklappbare **„Plandetails“** ergänzen die Übersicht. Cockpit und Coach verwenden dieselben von SkillPilot berechneten Werte.
 
 #### Der Schüler lernt im Chat
 
@@ -265,11 +230,11 @@ Damit wird der Lehrplan zu einem begleiteten Lernweg: **Die Lehrkraft verantwort
 
 ---
 
-## 4. Vertrauensarchitektur: Security & Integrity
+## 4. Vertrauen: Lerndaten schützen und Nachweise einordnen
 
 Wer seinen Lernweg einem digitalen System anvertraut, sollte wissen, welche Daten wohin gelangen — und was die gespeicherten Nachweise tatsächlich aussagen.
 
-### 4.1 Datenansatz: Sicherheit, Datenschutz & Souveränität by Design
+### 4.1 Welche Daten wohin gelangen
 
 Die im Lernablauf verwendeten Daten haben unterschiedliche Aufgaben und Schutzbedarfe. SkillPilot trennt die **dauerhafte pseudonyme Identität**, die **kurzlebige Lernsession**, die **Autorisierung der KI-Anbindung** und den **verbindlichen Lernzustand**. Der Chatdienst erhält den benötigten Lernkontext, nicht die dauerhafte SkillPilot-ID.
 
@@ -277,7 +242,7 @@ Die im Lernablauf verwendeten Daten haben unterschiedliche Aufgaben und Schutzbe
 
 Lernstände werden unter einer dauerhaften **pseudonymen SkillPilot-ID** geführt. Dafür ist bei SkillPilot keine Registrierung mit Name oder E-Mail-Adresse erforderlich. Die ID ist zugleich ein geheimer Zugriffsschlüssel zum Lernprofil: Sie sollte als geschützte ID-Datei gesichert werden und gehört weder in Chats noch in öffentliche Rückmeldungen. Die Coach-Anbindung übermittelt sie nicht an den KI-Anbieter. Für den Chatdienst wird dessen eigenes Konto benötigt; seine Zugangsbedingungen gelten zusätzlich.
 
-#### Session-Abschirmung gegenüber dem KI-Frontend
+#### Eine eigene Session für den Lernchat
 
 Beim Start des **SkillPilot-Lerncoachs** aus der SkillPilot-Weboberfläche wird eine neue zufällige `learningSessionId` mit einer absoluten Gültigkeit von 24 Stunden erzeugt. Sie verbindet den vorbereiteten Chat mit dem bestätigten Lernkontext, ohne die dauerhafte SkillPilot-ID offenzulegen. Die lernende Person muss keinen technischen Wert kopieren oder verwalten. Die Gültigkeit wird weder durch Nutzung noch durch eine OAuth-Aktualisierung verlängert. Die Session übernimmt die im bestätigten Kontext festgelegte Kommunikationssprache Deutsch oder Englisch. OAuth autorisiert die jeweilige Anbindung; die Lernsession bestimmt den Lernkontext.
 
@@ -296,11 +261,11 @@ Klare Guidelines, welche Daten im Lerncoach-Chat nicht hineingehören (sensibles
 
 Die Zuordnung „Wer ist welches Pseudonym?“ liegt bei der Institution/Lehrkraft und wird **lokal** gespeichert (z.B. in geschützter Ablage) – nicht zentral.
 
-#### KI-Frontend / Providergrenze
+#### Getrennte Zugänge für die KI-Anbieter
 
 Claude und ChatGPT haben getrennte Adapter mit eigenen Authentisierungs- und Sessiongrenzen. Der jeweilige Anbieter verantwortet den Chatbetrieb und die Verarbeitung des Dialogs. Der gemeinsame SkillPilot-Kern bleibt für Curriculum, Lernstand und Lernregeln zuständig.
 
-Die Trennung von fachlichem Kern und Provideranbindung hält Lernzustand und Lernregeln unabhängig vom Chat-Anbieter. Weitere Hosts können auf diesem Kern aufbauen, benötigen aber eine eigene geprüfte Anbindung. MCP allein garantiert weder kompatibles Verhalten noch eine datenschutzrechtliche oder institutionelle Eignung. Jede Anbindung muss die Anforderungen an Tool-Nutzung, Datenschutz, Sessiontrennung und zuverlässige Lernführung erfüllen.
+Die technische Anbindung allein belegt keine datenschutzrechtliche oder institutionelle Eignung. Jede Anbindung wird gesondert auf die Anforderungen an Werkzeugzugriff, Datenschutz, Sessiontrennung und zuverlässige Lernführung geprüft.
 
 ### 4.2 Lernstände sichern: Integrität und Herkunftshinweise
 
@@ -312,17 +277,15 @@ Beim Import können vorhandene Quellenprofile und Übernahmezeitpunkte als **Hin
 
 ---
 
-## 5. Das Ökosystem: Inhalte & Standards
+## 5. Die Grundlage: geprüfte Lernziele und passende Materialien
+
+Geschützte Daten und nachvollziehbarer Fortschritt sind eine Seite des Vertrauens. Ebenso entscheidend ist die Qualität der Ziele, auf denen der Lernweg aufbaut. Dieser Abschnitt zeigt den erreichten Prüfstand, die Rolle menschlicher Erprobung und den geplanten Ausbau um zusätzliche Materialien.
 
 ### 5.1 Aktueller Schwerpunkt: Gymnasium Deutschland
 
 Der aktuelle Entwicklungs- und Inhaltsschwerpunkt von SkillPilot liegt auf dem **Gymnasium in Deutschland – für alle 16 Bundesländer**. Der gemeinsame Einstieg „Gymnasium (DE)“ erschließt fachliche Skill-Graphen über länderspezifische Zuordnungen und Ansichten. Gemeinsame Kompetenzen werden dabei fachlich gebündelt; Unterschiede der Landeslehrpläne, Schulstufen und Kursprofile bleiben berücksichtigt. Gemeinsame Lernziele werden dadurch einmal gepflegt statt für jedes Bundesland erneut; fachliche Verbesserungen können allen darauf aufbauenden Ländersichten zugutekommen.
 
-Der Ausbau ist je Fach unterschiedlich weit fortgeschritten:
-
-- **Mathematik und Physik** sind am weitesten entwickelt. Sie bilden den Schwerpunkt des Ausbaus über Sekundarstufe I und II hinweg.
-- **Chemie und Biologie** folgen als nächste Schwerpunkte. Auch für sie bestehen gemeinsame Fachcurricula mit Bundesland-Zuordnungen; ihr Ausbau ist noch weniger breit.
-- **Weitere Gymnasialfächer** sind mit unterschiedlichen Ausbauständen angelegt und werden schrittweise weiterentwickelt.
+**Mathematik, Physik, Chemie, Biologie und Wirtschaftswissenschaften haben M7 erreicht**, den höchsten maschinellen Reifegrad. Die maschinelle Qualitätssicherung ist für die jeweils aktuelle fachliche Zielmenge abgeschlossen. Alle fünf sind als gemeinsame Fachcurricula mit Bundesland-Zuordnungen angelegt. Weitere Gymnasialfächer haben unterschiedliche Ausbaustände und werden schrittweise weiterentwickelt.
 
 Umfang und Qualität werden je Fach, Jahrgangsstufe und Bundesland ausgewiesen. Der jeweils aktuelle fachliche Umfang und die Qualitätsnachweise des konkret gewählten Bereichs sind im [Curriculum-Verzeichnis](https://skillpilot.com/curricula) und im generierten Qualitätsstatus ausgewiesen.
 
@@ -336,13 +299,11 @@ Die maschinenlesbaren Reifegrade **M0 bis M7** bewerten unter anderem Graphinteg
 - **M – Memory:** Eine begründete Entscheidung, ob und welche Merkinhalte nötig sind.
 - **V – Visualisierungen:** Eine fachliche KI-Bildprüfung am aktuellen Bild mit gültigen Inhaltsbindungen oder eine ausdrücklich zulässige fachliche Ausnahme.
 
-Maßgeblich ist die **Schnittmenge aller fünf Gates für die aktuelle Zielmenge**, zusammen mit bestandenen Abschlussprüfungen und ohne offene M7-Blocker. Nachweise sind an den geprüften Inhalt und Kontext gebunden; Änderungen können eine gezielte Nachprüfung erforderlich machen. **Physik (Gymnasium, DE) hat M7 erreicht.** Der jeweils gültige Stand bleibt im [Qualitätsbericht](https://enpasos.github.io/skillpilot/qa-ci/status/curriculum-quality-status/) nachprüfbar.
+Maßgeblich ist die **Schnittmenge aller fünf Gates für die aktuelle Zielmenge**, zusammen mit bestandenen Abschlussprüfungen und ohne offene M7-Blocker. Nachweise sind an den geprüften Inhalt und Kontext gebunden; Änderungen können eine gezielte Nachprüfung erforderlich machen. Der erreichte M7-Stand der fünf Fächer bleibt im [Qualitätsbericht](https://enpasos.github.io/skillpilot/qa-ci/status/curriculum-quality-status/) nachprüfbar.
 
 100 % steht für die vollständige Abdeckung dieses QS-Verfahrens, nicht für garantierte Fehlerfreiheit oder nachgewiesene Unterrichtswirksamkeit. Die verbindlichen Regeln erläutert das [Qualitäts- und Erprobungskonzept](https://enpasos.github.io/skillpilot/concept/curriculum-quality-and-human-trial/).
 
-Ergänzend enthält das Repository bereits Inhalte für weitere Schulformen, Hochschulcurricula und Sprachlernen nach CEFR. Sie zeigen die Übertragbarkeit des Ansatzes, stehen derzeit aber nicht im Zentrum der Entwicklung.
-
-**Curriculum Champions (Praxisanker):**
+**Wie sich die geprüften Ziele beim tatsächlichen Lernen bewähren, wird separat erprobt.** Dafür bringen **Curriculum Champions** ihre fachliche Erfahrung ein:
 
 - Champions übernehmen Verantwortung für ein Curriculum oder einen **klaren Themen-Scope**.
 - Sie **lernen Ziele selbst durch** und melden Fehler oder Unklarheiten direkt am betreffenden Lernziel, sofern ein Feedbackeinstieg verfügbar ist.
@@ -357,6 +318,8 @@ Der QS-Prozess bezieht sich nicht nur auf Curricula: Der SkillPilot KI-Lerncoach
 > Eine verständlichere Lernroute kann mit Ihrer Rückmeldung beginnen. Wählen Sie einen überschaubaren Themenbereich, bearbeiten Sie die Ziele selbst und melden Sie, wo Fragen offenbleiben. **[Werden Sie Curriculum Champion](https://skillpilot.com/curricula)** und bringen Sie Ihre fachliche Erfahrung in die gemeinsame Weiterentwicklung ein.
 
 ### 5.2 Ein Lernziel, verschiedene Zugänge: passende Materialien finden
+
+Ein klar beschriebenes Lernziel lässt offen, welche Erklärung oder Übung einer Person besonders hilft. An dieser Stelle setzt die geplante Anbindung zusätzlicher Materialien an.
 
 **Ein Lernziel. Verschiedene Wege zum Verstehen.**
 
@@ -376,16 +339,18 @@ Den Architekturrahmen haben wir festgelegt. Die konkrete Ausgestaltung von Zuord
 
 *Vertiefung: [Architekturrahmen für die Contentanbindung](https://github.com/enpasos/skillpilot/blob/main/docs/concept/skill-graph/content-integration.md).*
 
-### 5.3 SkillPilot im Kontext Bologna/EHEA (Kurzüberblick)
+### 5.3 Ausblick: Übertragbarkeit auf Hochschulen
 
-Über den aktuellen Gymnasium-Schwerpunkt hinaus ist das Modell auch auf Hochschulen übertragbar. Bologna/EHEA setzt im Hochschulraum den Rahmen für **Outcomes, Transparenz, Anerkennung und Qualität**. SkillPilot kann diese Ziele unterstützen – ersetzt aber keine institutionellen Entscheidungen.
+Das Repository enthält auch Inhalte für weitere Schulformen, Hochschulcurricula und Sprachlernen nach CEFR. Sie zeigen die Übertragbarkeit des Ansatzes, stehen derzeit aber nicht im Zentrum der Entwicklung.
+
+Für die Hochschule setzt Bologna/EHEA den Rahmen für **Outcomes, Transparenz, Anerkennung und Qualität**. SkillPilot kann diese Ziele unterstützen – ersetzt aber keine institutionellen Entscheidungen.
 
 - **Learning Outcomes / Kompetenzen:** Beitrag: Outcomes als Skill-Graph navigierbar machen; Fortschritt sichtbar. Dafür nötig: saubere Modellierung, Quellenbezug, Versionierung.
 - **Credits/Workload (ECTS-Logik):** Beitrag: Pfade/Prereqs und Workload-Transparenz unterstützen. Grenze: **Keine Credit-Vergabe**; Regeln bleiben institutionell.
 - **Anerkennung/Mobilität:** Integritätsgeschützte Exporte unterstützen die Übernahme dokumentierter Lernstände. Sie sind keine öffentlich verifizierbaren Leistungszertifikate; Anerkennung bleibt ein institutioneller Prozess mit eigenen Nachweisen (Abschnitt 4.2).
 - **Qualitätssicherung:** Beitrag: Signale über Hürden/Pfade für Lehrentwicklung. Dafür nötig: QA-Prozesse und transparente KI-Regeln.
 
-## 6. Governance & Community: Open Source & Einladung
+## 6. Gemeinsam entwickeln und erproben
 
 **Gemeinsam wird es besser. Mach mit.**
 
@@ -403,7 +368,7 @@ Offen ist nicht nur die Software: Sie und die technische Infrastruktur stehen un
 
 Änderungen an Curricula und Software werden über **GitHub und Pull Requests** versioniert und geprüft. Die in Abschnitt 5.1 beschriebenen Qualitätsnachweise und Praxisrückmeldungen geben dafür die Grundlage; zusätzliche institutionelle Fachreviews können darauf aufbauen.
 
-Gute individuelle Lernbegleitung soll nicht davon abhängen, wie viel Unterstützung Eltern selbst leisten oder privat finanzieren können. **SkillPilot selbst ist kostenlos.** Der gegenwärtige Claude-Zugang ermöglicht Erwachsenen ab 18 Jahren, den Ansatz bereits heute zu erproben; das dafür erforderliche Claude-Pro-Abonnement wird separat bezahlt.
+Gute individuelle Lernbegleitung soll nicht davon abhängen, wie viel Unterstützung Eltern selbst leisten oder privat finanzieren können.
 
 **Langfristiges Ziel ist eine altersgerechte, für Schülerinnen und Schüler kostenlose Lernbegleitung einschließlich der dafür benötigten KI.** Dafür müssen geeignete Zugänge und eine tragfähige Finanzierung entstehen, die nicht auf Zahlungen der Familien angewiesen ist. Dieses Ziel ist noch nicht mit dem heutigen Erprobungszugang erreicht. Kostenpflichtige Zusatzmaterialien können eine freiwillige Wahl bleiben, dürfen aber nicht Voraussetzung eines kostenlos nutzbaren Lernwegs sein.
 
@@ -411,12 +376,18 @@ Gute individuelle Lernbegleitung soll nicht davon abhängen, wie viel Unterstüt
 
 Ein schulisch verantworteter Einsatz bleibt ein wichtiges Anwendungsfeld und benötigt dafür geeignete, insbesondere auch altersgerechte Zugänge. Über die unterschiedlichen Lernkontexte hinweg ist zu prüfen, ob SkillPilot Verständnis, selbstständiges Problemlösen und nachhaltiges Lernen verbessert und bislang unterschätzte Lernende wirksam unterstützt. Technische Funktionsfähigkeit, erste Nutzungserfahrungen und abgeschlossene Curriculum-QS nehmen diesen Wirksamkeitsnachweis nicht vorweg.
 
+### Jetzt mitmachen: Beta mit Claude oder ChatGPT Desktop
+
+**SkillPilot selbst ist kostenlos. Für den Claude-Lerncoach wird ein eigener Claude-Pro-Account benötigt; dieser Betaweg steht allen Interessierten ab 18 Jahren offen.** Dessen Abonnement wird separat bei Anthropic abgeschlossen. Die Altersgrenze ergibt sich aus den [Voraussetzungen für persönliche Claude-Konten](https://support.claude.com/en/articles/8114491-get-started-with-claude).
+
+**Schon heute funktioniert das Lernen im Claude-Chat auch auf dem Handy – einschließlich Voice Mode.** Wer eine Aufgabe selbst mit Papier und Stift bearbeitet, kann den Lösungsweg mit der Handykamera fotografieren, im Chat mit dem SkillPilot-Coach teilen und besprechen. Tippen, sprechen und eigene Arbeit zeigen ergänzen sich dabei.
+
+Der Claude-Einstieg erfolgt über den SkillPilot-Marketplace; die Einrichtung zeigt der [5-Minuten-Kurzstart](https://skillpilot.com/quickstart/de). In der responsiven SkillPilot-Weboberfläche wählen Sie Ihr persönliches Curriculum, sehen den Fortschritt und starten die Lernsession. **[Jetzt ausprobieren](https://skillpilot.com/quickstart/de)** und den Beta-Test mitgestalten.
+
+**SkillPilot ist nicht auf eine bestimmte KI festgelegt.** Plugins und eigene Provideradapter verbinden den unabhängigen fachlichen Kern mit dem jeweiligen KI-Chat. Zusätzlich zur Claude-Beta ist **ChatGPT Desktop (Beta)** über den [SkillPilot-Git-Marketplace](https://github.com/enpasos/skillpilot-chatgpt-marketplace) verfügbar. Installation und Lernstart sind unter Windows bestätigt. Wählen Sie in SkillPilot **ChatGPT Desktop**, bereiten Sie seine Startnachricht vor und senden Sie sie in einem neuen Desktop-Chat. Die [Plugin-Anleitung](https://skillpilot.com/plugins#chatgpt-desktop) erklärt Einrichtung und Updates. Browser und mobile ChatGPT-App sind für diesen Weg noch nicht bestätigt. Weitere Anbindungen setzen geeignete Schnittstellen und zuverlässig unterstützte Funktionen beim jeweiligen Anbieter voraus.
+
 **Initiator:**
 Träger ist die **enpasos GmbH**. Wir laden Partner ein, SkillPilot gemeinsam weiterzuentwickeln – fachlich, didaktisch und technisch.
-
-**Probieren Sie es aus und gestalten Sie mit:** Der [Kurzstart](https://skillpilot.com/quickstart/de) führt durch den offenen Claude-Beta-Test. Sie erstellen oder laden Ihre SkillPilot-ID, sichern sie als geschützte ID-Datei und wählen Ihr Persönliches Curriculum. Dafür ist keine zusätzliche Registrierung mit Name oder E-Mail bei SkillPilot nötig.
-
-**Bewahren Sie Ihre ID-Datei sicher auf:** Die ID gewährt Zugriff auf das Lernprofil und darf nicht öffentlich geteilt werden.
 
 **Mehr Transparenz:**
 [GitHub](https://github.com/enpasos/skillpilot)
