@@ -174,13 +174,7 @@ openssl verify -trusted "${ROOT_CA}" -no-CApath -no-CAstore -x509_strict \
 assert_certificate_valid_for_cutover "${ROOT_CA}"
 assert_certificate_valid_for_cutover "${INTERMEDIATE_CA}"
 
-assert_openai_v1_mtls_secure_path \
-  "$(dirname -- "${SERVICE_ENV_FILE}")" \
-  directory \
-  "Backend EnvironmentFile directory"
-assert_openai_v1_mtls_secret_file \
-  "${SERVICE_ENV_FILE}" \
-  "Backend EnvironmentFile"
+assert_openai_v1_service_environment_file "${SERVICE_ENV_FILE}"
 assert_existing_secure_target \
   "${INSTALL_DIR}" \
   directory \

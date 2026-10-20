@@ -216,7 +216,11 @@ Der Betreiber ändert ausschließlich die folgenden nicht geheimen Werte in
 der bestehenden rootgeschützten systemd-EnvironmentFile, normalerweise
 `/etc/skillpilot/skillpilot.env`. Die Datei niemals ausgeben oder als Shellcode
 einlesen. Andere Zugangsdaten und die bestehenden Providerprofile bleiben
-erhalten. Die Datei muss weiterhin Root gehören und Modus `0600` haben.
+erhalten. Standard bleibt `root:root` mit Modus `0600`. Für den ausdrücklich
+eingerichteten direkten Admin-Zugriff ist ausschließlich die kanonische Datei
+auch als `root:skillpilot-admin` mit `0660` zulässig; ihr Verzeichnis muss dann
+`root:skillpilot-admin` mit `0750` haben. Die Einrichtung und der erneute
+WinSCP-Login stehen in [Admin-Dateizugriff](admin-file-access.md).
 
 ```bash
 sudoedit /etc/skillpilot/skillpilot.env

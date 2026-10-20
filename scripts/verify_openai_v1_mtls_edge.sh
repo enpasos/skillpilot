@@ -143,8 +143,10 @@ run_static_checks() {
     "${intermediate_ca}" >/dev/null
   assert_certificate_valid_for_cutover "${root_ca}"
   assert_certificate_valid_for_cutover "${intermediate_ca}"
-  PYTHONDONTWRITEBYTECODE=1 python3 -B -m unittest -v \
-    "${ROOT_DIR}/scripts/test_openai_v1_mtls_edge.py"
+  PYTHONDONTWRITEBYTECODE=1 python3 -B \
+    "${ROOT_DIR}/scripts/test_openai_v1_mtls_edge.py" -v
+  PYTHONDONTWRITEBYTECODE=1 python3 -B \
+    "${ROOT_DIR}/scripts/test_service_environment_permissions.py" -v
   PYTHONDONTWRITEBYTECODE=1 python3 -B \
     "${ROOT_DIR}/scripts/verify_openai_v1_mtls_nginx_contract.py" \
     --help >/dev/null
@@ -177,13 +179,7 @@ read_active_mode() {
 
 assert_backend_mode_matches_edge() {
   local backend_mode
-  assert_openai_v1_mtls_secure_path \
-    "$(dirname -- "${SERVICE_ENV_FILE}")" \
-    directory \
-    "Backend EnvironmentFile directory"
-  assert_openai_v1_mtls_secret_file \
-    "${SERVICE_ENV_FILE}" \
-    "Backend EnvironmentFile"
+  assert_openai_v1_service_environment_file "${SERVICE_ENV_FILE}"
   backend_mode="$(read_openai_v1_mtls_backend_mode "${SERVICE_ENV_FILE}")"
   if [[ "${backend_mode}" != "${EXPECTED_MODE}" ]]; then
     echo "CHECK mtls_mode_drift FAIL backend=${backend_mode} edge=${EXPECTED_MODE}" >&2

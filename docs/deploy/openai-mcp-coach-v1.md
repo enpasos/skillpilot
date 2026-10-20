@@ -589,8 +589,11 @@ Ist die eine EnvironmentFile in systemd optional (`ignore_errors=yes`) und
 fehlt, akzeptiert der Preflight nach Prüfung der übrigen Umgebungskanäle die
 kanonischen V1-Defaults. Eine fehlende verpflichtende Datei
 (`ignore_errors=no`) bleibt ein Fehler.
-Eine EnvironmentFile mit OAuth- oder Datenbank-Secrets bleibt `root:root` und
-`0600`. Ihre Rechte dürfen für den Deployment-Preflight nicht gelockert werden.
+Eine EnvironmentFile mit OAuth- oder Datenbank-Secrets bleibt standardmäßig
+`root:root` mit `0600`. Die einzige ausdrücklich unterstützte Gruppenfreigabe
+ist der [Admin-Dateizugriff](admin-file-access.md) auf die kanonische
+`/etc/skillpilot/skillpilot.env`; sie erlaubt keine allgemeine Gruppenfreigabe
+anderer Secrets oder Konfigurationsverzeichnisse.
 Kann der Deploy-Benutzer die root-geschützte Datei oder einen Elternordner nicht
 lesen beziehungsweise durchlaufen, meldet der Preflight diesen Inhaltscheck
 sichtbar als `SKIP`; die exakte Spring-Startprüfung bleibt die finale

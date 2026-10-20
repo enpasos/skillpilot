@@ -412,7 +412,11 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
   other environment channels have been checked. A missing required file
   (`ignore_errors=no`) remains a deployment error.
 - Keep an environment file containing OAuth or database secrets root-owned and
-  mode `0600`. Do not weaken it to make the deployment preflight read it. When
+  mode `0600` by default. The explicitly configured admin group profile permits
+  only `/etc/skillpilot/skillpilot.env` as `root:skillpilot-admin` with `0660`,
+  under `/etc/skillpilot` with the same owner/group and `0750`; see
+  [direct admin file access](admin-file-access.md). Other groups, other paths
+  with group access, and group-writable directories remain rejected. When
   the deploy user cannot traverse or read the root-protected file, the
   allowlisted content check is reported as `SKIP`; Spring's exact V1 startup
   validation remains the final fail-closed boundary. Unit-level and global
