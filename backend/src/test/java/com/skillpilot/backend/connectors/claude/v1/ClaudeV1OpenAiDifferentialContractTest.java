@@ -55,17 +55,17 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
         "skillpilot.openai.coach.v1.mcp.enabled=true",
         "skillpilot.openai.coach.v1.oauth.enabled=true",
         "skillpilot.openai.coach.v1.oauth.redirect-uris=https://chatgpt.com/connector/oauth/callback",
-        "skillpilot.openai.coach.v1.mcp-url=https://mcp-coach-v1.skillpilot.com/mcp",
-        "skillpilot.openai.coach.v1.oauth-resource=https://mcp-coach-v1.skillpilot.com/mcp"
+        "skillpilot.openai.coach.v1.mcp-url=https://mcp-openai.skillpilot.com/mcp",
+        "skillpilot.openai.coach.v1.oauth-resource=https://mcp-openai.skillpilot.com/mcp"
 })
 class ClaudeV1OpenAiDifferentialContractTest {
 
     // Read the independently committed candidate, never regenerate it from the runtime under test.
     // Keeping a second literal digest here would drift whenever the authorized draft is refreshed.
     private static final Path OPENAI_PLUGIN_MANIFEST = Path.of(
-            "../ai/openai plugin/skillpilot-coach-v1/.codex-plugin/plugin.json");
+            "../ai/openai plugin/skillpilot-coach/.codex-plugin/plugin.json");
     private static final Path OPENAI_CANDIDATE_ROOT = Path.of(
-            "../contracts/drafts/openai/skillpilot-coach-v1");
+            "../contracts/drafts/openai/skillpilot-coach");
 
     private static final Set<String> OPENAI_CANDIDATE_TOOL_NAMES = Set.of(
             "get_skillpilot_context",
@@ -94,9 +94,9 @@ class ClaudeV1OpenAiDifferentialContractTest {
 
     @Test
     void openAiCandidateIdentityRemainsIndependentOfClaude() throws IOException {
-        assertEquals("skillpilot-coach-v1", OpenAiDeV1ContractMetadata.PLUGIN_IDENTITY);
+        assertEquals("skillpilot-coach", OpenAiDeV1ContractMetadata.PLUGIN_IDENTITY);
         assertEquals(currentCandidateVersion(), OpenAiDeV1ContractMetadata.PLUGIN_VERSION);
-        assertEquals("https://mcp-coach-v1.skillpilot.com/mcp", OpenAiDeV1ContractMetadata.PUBLIC_MCP_ENDPOINT);
+        assertEquals("https://mcp-openai.skillpilot.com/mcp", OpenAiDeV1ContractMetadata.PUBLIC_MCP_ENDPOINT);
         assertEquals("/internal/openai/v1/mcp", OpenAiDeV1ContractMetadata.INTERNAL_MCP_PATH);
     }
 
@@ -144,7 +144,7 @@ class ClaudeV1OpenAiDifferentialContractTest {
         assertTrue(Files.isRegularFile(OPENAI_PLUGIN_MANIFEST),
                 "The independent canonical OpenAI plugin manifest must be checked in");
         JsonNode manifest = new ObjectMapper().readTree(Files.readString(OPENAI_PLUGIN_MANIFEST));
-        assertEquals("skillpilot-coach-v1", manifest.path("name").asText());
+        assertEquals("skillpilot-coach", manifest.path("name").asText());
         JsonNode version = manifest.path("version");
         assertTrue(version.isTextual()
                         && version.asText().matches("(?:0|[1-9]\\d*)\\.(?:0|[1-9]\\d*)\\.(?:0|[1-9]\\d*)"),
@@ -159,7 +159,7 @@ class ClaudeV1OpenAiDifferentialContractTest {
                 "The independently prepared contract for the current OpenAI candidate must be checked in");
         JsonNode candidate = new ObjectMapper().readTree(Files.readString(contract));
         assertEquals(1, candidate.path("schemaVersion").asInt());
-        assertEquals("skillpilot-coach-v1", candidate.path("pluginIdentity").asText());
+        assertEquals("skillpilot-coach", candidate.path("pluginIdentity").asText());
         assertEquals(1, candidate.path("contractMajor").asInt());
         String fingerprint = candidate.path("contractSha256").asText();
         assertTrue(fingerprint.matches("[0-9a-f]{64}"),

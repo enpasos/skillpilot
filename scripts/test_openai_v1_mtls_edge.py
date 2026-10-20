@@ -500,7 +500,7 @@ class VerifierHttpContractTest(CertificateFixture):
 class NginxActiveBindingContractTest(unittest.TestCase):
     EXPECTED_FILE = "/etc/nginx/skillpilot-mcp-coaches.conf"
     OTHER_FILE = "/etc/nginx/conf.d/other.conf"
-    HOST = "mcp-coach-v1.skillpilot.com"
+    HOST = "mcp-openai.skillpilot.com"
     MAIN_DENY_FILE = "/etc/nginx/skillpilot-main-vhost-openai-deny-locations.conf"
     MAIN_VHOST_FILE = "/etc/nginx/sites-enabled/skillpilot.conf"
     MAIN_HOST = "skillpilot.com"
@@ -569,7 +569,8 @@ server {{
     def with_valid_main_binding(cls, configuration: str) -> str:
         return configuration + cls.valid_main_binding()
 
-    def run_contract(self, configuration: str) -> subprocess.CompletedProcess[str]:
+    def run_contract(self, configuration: str, *, retired_hosts: tuple[str, ...] = ()) -> subprocess.CompletedProcess[str]:
+        retirement_args = [item for host in retired_hosts for item in ("--retired-host", host)]
         return subprocess.run(
             [
                 sys.executable,
@@ -583,6 +584,7 @@ server {{
                 self.MAIN_DENY_FILE,
                 "--main-host",
                 self.MAIN_HOST,
+                *retirement_args,
             ],
             input=configuration,
             check=False,
@@ -599,6 +601,45 @@ server {{
         result = self.run_contract(configuration)
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertIn("uniquely bound", result.stdout)
+
+    def test_retired_v1_cannot_proxy_or_redirect_to_neutral_resource(self) -> None:
+        host = "mcp-coach-v1.skillpilot.com"
+        for body, valid in (
+            ("location / { return 404; }", True),
+            ("location / { return 308 https://mcp-openai.skillpilot.com$request_uri; }", False),
+            ("location / { proxy_pass http://127.0.0.1:8787; return 404; }", False),
+        ):
+            retired = f"server {{ listen 443 ssl; server_name {host}; {body} }}"
+            configuration = self.with_valid_main_binding(self.section(
+                self.EXPECTED_FILE, self.active_server() + retired))
+            with self.subTest(body=body):
+                result = self.run_contract(configuration, retired_hosts=(host,))
+                self.assertEqual(result.returncode == 0, valid, result.stderr)
+
+    def test_missing_or_foreign_retirement_binding_is_rejected(self) -> None:
+        host = "mcp-coach-v1.skillpilot.com"
+        neutral = self.section(self.EXPECTED_FILE, self.active_server())
+        for other in ("", self.section(self.OTHER_FILE,
+                f"server {{ listen 443 ssl; server_name {host}; location / {{ return 404; }} }}")):
+            result = self.run_contract(self.with_valid_main_binding(neutral + other), retired_hosts=(host,))
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("retired host", result.stderr)
+
+    def test_bootstrap_must_be_included_once_and_never_proxy(self) -> None:
+        source = (ROOT / "deploy/nginx/skillpilot-openai-stable-acme.conf").read_text()
+        target = "/etc/nginx/conf.d/skillpilot-openai-stable-acme.conf"
+        for content, valid in (
+            (self.section(target, source), True),
+            (self.section(self.OTHER_FILE, source), False),
+            (self.section(target, source) + self.section(self.OTHER_FILE, source), False),
+            (self.section(target, source.replace("return 404;", "proxy_pass http://127.0.0.1:8787;")), False),
+        ):
+            with self.subTest(valid=valid, content=content):
+                result = subprocess.run([
+                    sys.executable, "-B", str(NGINX_CONTRACT_PATH),
+                    "--bootstrap-only", "--expected-file", target, "--host", self.HOST,
+                ], input=content, text=True, capture_output=True, check=False, timeout=10)
+                self.assertEqual(result.returncode == 0, valid, result.stderr)
 
     def test_rejects_missing_or_duplicate_expected_file_marker(self) -> None:
         missing = self.with_valid_main_binding(
@@ -637,7 +678,7 @@ server {{
         incomplete = """
 server {
     listen 443 ssl;
-    server_name mcp-coach-v1.skillpilot.com;
+    server_name mcp-openai.skillpilot.com;
     ssl_verify_client optional;
 }
 """
@@ -1151,7 +1192,7 @@ class RepositoryContractTest(unittest.TestCase):
         )
         self.assertNotIn("OPENAI_DE", combined)
         self.assertNotIn("/api/openai/de/mcp", combined)
-        self.assertIn("mcp-coach-v1.skillpilot.com", combined)
+        self.assertIn("mcp-openai.skillpilot.com", combined)
         self.assertIn("/mcp", combined)
 
     def test_installer_never_edits_or_reloads_nginx(self) -> None:

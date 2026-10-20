@@ -4,14 +4,14 @@ import { lstatSync, readFileSync, readdirSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
-export const identity = "skillpilot-coach-v1";
+export const identity = "skillpilot-coach";
 export const marketplaceName = "skillpilot-chatgpt-marketplace";
-export const endpoint = "https://mcp-coach-v1.skillpilot.com/mcp";
+export const endpoint = "https://mcp-openai.skillpilot.com/mcp";
 export const pluginFiles = [
   ".codex-plugin/plugin.json", ".mcp.json",
-  "skills/skillpilot-coach-v1/SKILL.md",
-  "skills/skillpilot-coach-v1/agents/openai.yaml",
-  "skills/skillpilot-coach-v1/references/coaching-policy.md",
+  "skills/skillpilot-coach/SKILL.md",
+  "skills/skillpilot-coach/agents/openai.yaml",
+  "skills/skillpilot-coach/references/coaching-policy.md",
   "assets/favicon-96x96.png", "assets/web-app-manifest-512x512.png",
 ];
 export const catalogFile = ".agents/plugins/marketplace.json";
@@ -83,7 +83,7 @@ export function validateMarketplace(root) {
   assert.equal(receipt.plugin, identity);
   assert.equal(receipt.status, "experimental");
   assert.deepEqual(receipt.hostAcceptance, acceptance, "Generated package cannot certify host acceptance");
-  assert.deepEqual(receipt.source, { repository: "https://github.com/enpasos/skillpilot", path: "ai/openai plugin/skillpilot-coach-v1" });
+  assert.deepEqual(receipt.source, { repository: "https://github.com/enpasos/skillpilot", path: "ai/openai plugin/skillpilot-coach" });
   assert.deepEqual(Object.keys(receipt.files).sort(), payloadFiles);
   for (const path of payloadFiles) {
     const content = readFileSync(resolve(root, path));

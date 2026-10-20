@@ -166,6 +166,20 @@ owner under the approved incident process.
 
 ## Restricted Revocation Tool Contract
 
+The separately installed tool retains its `root:root 0600` requirement for
+the shared EnvironmentFile. If [direct admin file access](admin-file-access.md)
+has been enabled, restore that exact file before running either plan or execute:
+
+```bash
+sudo chown root:root /etc/skillpilot/skillpilot.env
+sudo chmod 0600 /etc/skillpilot/skillpilot.env
+```
+
+The root-owned, non-group-writable `/etc/skillpilot` directory may retain
+`root:skillpilot-admin 0750`. Direct WinSCP editing is suspended until the
+admin profile is explicitly restored after the incident procedure. This
+permission change does not change the installed tool or its approval/hash.
+
 `SP-CLAUDE-V1-IR-001` is a root-only, one-shot incident tool, not a daemon,
 endpoint or normal deployment step. Install only the reviewed source from the
 exact approved commit. First verify that this path is unchanged in that commit,

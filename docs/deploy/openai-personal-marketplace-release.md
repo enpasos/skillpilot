@@ -1,5 +1,47 @@
 # SkillPilot ChatGPT Desktop beta: Git marketplace and updates
 
+## Current neutral plugin candidate — 19 October 2026
+
+The current editable source is `ai/openai plugin/skillpilot-coach/`:
+**SkillPilot Coach**, identity `skillpilot-coach`, package **1.1.3**, exact MCP
+endpoint `https://mcp-openai.skillpilot.com/mcp`, runtime contract major **1**.
+The identity and endpoint persist across future package major versions;
+package SemVer is independent of the runtime contract major. This new candidate
+is local and unpublished. Historical `skillpilot-coach-v1` installations and
+Windows/Voice reports do not establish acceptance of this new identity.
+Existing installations do not automatically migrate. Learning starts use fresh
+WebGUI messages in new chats.
+
+Use the [current deployment and cutover runbook](openai-stable-origin.md) for
+endpoint deployment and OAuth/edge verification, and the
+[current submission dossier](openai-plugin-v1-submission.md) for the separate
+directory ZIP route. Current Git preparation is:
+
+```bash
+node --test scripts/openai_marketplace_release.test.mjs
+node scripts/openai_marketplace_release.mjs check
+marketplace_export_dir=$(mktemp -d /tmp/skillpilot-chatgpt-marketplace.XXXXXXXX)
+node scripts/openai_marketplace_release.mjs prepare --output "$marketplace_export_dir"
+node scripts/openai_marketplace_release.mjs verify --output "$marketplace_export_dir"
+```
+
+The generated catalog selects `skillpilot-coach`; its seven install files come
+only from the neutral canonical source. Preparation writes local files and
+performs no Git publication, server deployment, portal operation or host
+acceptance. Fresh clone verification and actual client checks follow a
+separately authorized publication. Git import remains a Desktop route; Web
+and mobile require the hosted directory route and their own host evidence.
+Preserve every previously published commit, tag, archive and content-addressed
+resource byte.
+
+## Historical v1 beta record and former operating instructions
+
+Everything below records the earlier `skillpilot-coach-v1` route, including its
+old canonical paths and endpoint. It remains historical evidence. For current
+preparation use the neutral source and runbook above; do not apply the old
+installation commands or historical acceptance claims to the new identity.
+
+
 **Active Product Owner request of 5 October 2026.** Update the existing Git
 marketplace for rapid fixes and include **ChatGPT Desktop (Beta)** in the
 WebGUI. This supersedes the September distribution pause for this concrete

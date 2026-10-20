@@ -43,6 +43,17 @@ class OpenAiDeOAuthConfigurationTest {
     private final OpenAiDeOAuthConfiguration configuration = new OpenAiDeOAuthConfiguration();
 
     @Test
+    void neutralResourceCutoverChangesPolicyFingerprintWithoutChangingIssuer() {
+        OpenAiDeProperties properties = configuredPrivateKeyJwtProperties();
+        properties.setOauthResource("https://mcp-coach-v1.skillpilot.com/mcp");
+        String previousPolicy = OpenAiDeOAuthConfiguration.policyFingerprint(properties);
+        properties.setOauthResource(OpenAiDeV1ContractMetadata.OAUTH_RESOURCE);
+        assertThat(OpenAiDeOAuthConfiguration.policyFingerprint(properties)).isNotEqualTo(previousPolicy);
+        assertThat(configuration.openAiDeAuthorizationServerSettings("https://skillpilot.com").getIssuer())
+                .isEqualTo("https://skillpilot.com/api/openai/v1");
+    }
+
+    @Test
     void authenticatedPolicyRejectsDowngradesForeignPinsAndWrongAssertionAudience() {
         String issuer = "https://skillpilot.com/api/openai/v1";
         for (String method : List.of("none", "client_secret_basic", "client_secret_post")) {

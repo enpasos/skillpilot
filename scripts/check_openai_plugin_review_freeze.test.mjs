@@ -10,6 +10,7 @@ import {
   loadRejectedOpenAiReviewRecord,
   rejectedReviewRecordRelativePath,
   reviewFreezeRelativePath,
+  neutralReleaseAuthorizationRelativePath,
   resolveAuthorizedRuntimeExceptionChains,
   resolveAuthorizedProtectedTreeExceptionChains,
   resolveAuthorizedSupplementalFileChains,
@@ -26,6 +27,8 @@ function fixture(action) {
       reviewFreezeRelativePath, rejectedReviewRecordRelativePath,
       historical.frozenDraftPath, historical.reviewVideoPath,
       "contracts/openai/skillpilot-coach-v1/release-index.json",
+      "contracts/openai/skillpilot-coach/release-index.json",
+      neutralReleaseAuthorizationRelativePath,
     ]) {
       const target = resolve(root, path);
       mkdirSync(dirname(target), { recursive: true });
@@ -186,4 +189,41 @@ test("archival resolvers retain valid chains and reject discontinuous history", 
   const modified = structuredClone(historical.authorizedRuntimeExceptions);
   modified.at(-1).additionalFiles[0].priorAuthorizedSha256 = "0".repeat(64);
   assert.throws(() => resolveAuthorizedSupplementalFileChains(modified, historical.authorizedCopyClarifications), /discontinuous|wrong prior/u);
+});
+
+
+test("neutral identity prepares future package majors independently of contract major", () => {
+  for (const pluginVersion of ["1.1.3", "2.0.0", "3.4.5"]) {
+    assert.doesNotThrow(() => assertOpenAiPluginReleaseMutationAllowed({
+      repositoryRoot, pluginIdentity: "skillpilot-coach", pluginVersion, command: "prepare",
+    }));
+  }
+  for (const pluginVersion of ["1.1.3-beta.1", "01.2.0", "../2.0.0"]) {
+    assert.throws(() => assertOpenAiPluginReleaseMutationAllowed({
+      repositoryRoot, pluginIdentity: "skillpilot-coach", pluginVersion, command: "prepare",
+    }), /stable semantic package version/u);
+  }
+});
+
+test("neutral authorization preserves publication restrictions and published bytes", () => {
+  const options = { pluginIdentity: "skillpilot-coach", pluginVersion: "2.0.0", command: "prepare" };
+  assert.throws(() => assertOpenAiPluginReleaseMutationAllowed({
+    ...options, repositoryRoot, command: "record-published",
+  }), /separate publication-recording authorization/u);
+  fixture(root => {
+    const path = resolve(root, "contracts/openai/skillpilot-coach/release-index.json");
+    const index = JSON.parse(readFileSync(path, "utf8"));
+    index.publishedVersions = ["2.0.0"];
+    writeFileSync(path, JSON.stringify(index));
+    assert.throws(() => assertOpenAiPluginReleaseMutationAllowed({ ...options, repositoryRoot: root }),
+      /published version remains immutable/u);
+  });
+  fixture(root => {
+    const path = resolve(root, neutralReleaseAuthorizationRelativePath);
+    const record = JSON.parse(readFileSync(path, "utf8"));
+    record.portalMutationAllowed = true;
+    writeFileSync(path, JSON.stringify(record));
+    assert.throws(() => assertOpenAiPluginReleaseMutationAllowed({ ...options, repositoryRoot: root }),
+      /exact explicit Product Owner decision/u);
+  });
 });

@@ -72,11 +72,11 @@ import org.springframework.test.context.TestPropertySource;
         "skillpilot.openai.coach.v1.cleanup-interval-ms=1",
         "skillpilot.openai.coach.v1.mcp.enabled=false",
         "skillpilot.public-base-url=https://skillpilot.test",
-        "skillpilot.openai.coach.v1.mcp-url=https://mcp-coach-v1.skillpilot.com/mcp",
-        "skillpilot.openai.coach.v1.oauth-resource=https://mcp-coach-v1.skillpilot.com/mcp",
+        "skillpilot.openai.coach.v1.mcp-url=https://mcp-openai.skillpilot.com/mcp",
+        "skillpilot.openai.coach.v1.oauth-resource=https://mcp-openai.skillpilot.com/mcp",
         "skillpilot.openai.coach.v1.oauth.client-id=chatgpt-test-client",
         "skillpilot.openai.coach.v1.oauth.redirect-uris=https://chatgpt.com/connector/oauth/test-callback",
-        "skillpilot.openai.coach.v1.oauth.protected-resource-metadata=https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp"
+        "skillpilot.openai.coach.v1.oauth.protected-resource-metadata=https://mcp-openai.skillpilot.com/.well-known/oauth-protected-resource/mcp"
 })
 class OpenAiDeOAuthFlowIntegrationTest {
 
@@ -250,7 +250,7 @@ class OpenAiDeOAuthFlowIntegrationTest {
         HttpResponse<String> consent = get(consentUri.toString());
         assertThat(consent.statusCode()).isEqualTo(200);
         assertThat(consent.body())
-                .contains("Authorize SkillPilot Coach v1")
+                .contains("Authorize SkillPilot Coach")
                 .contains("OAuth authorizes only the app")
                 .contains(OpenAiDeOAuthConfiguration.READ_SCOPE)
                 .doesNotContain(SKILLPILOT_ID)

@@ -24,7 +24,7 @@ class OpenAiDeCoachUiControllerTest {
     private static final String LEARNING_SESSION_ID =
             "sps_AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
     private static final String PROMPT =
-            "Verwende SkillPilot Coach v1 und fahre fort.\nlearningSessionId: "
+            "Verwende SkillPilot Coach und fahre fort.\nlearningSessionId: "
                     + LEARNING_SESSION_ID;
 
     private OpenAiDeCoachConnectionService connectionService;

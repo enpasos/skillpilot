@@ -9,18 +9,26 @@ SCRIPT_PATH="$(readlink -f "${BASH_SOURCE[0]}")"
 SCRIPT_DIR="$(cd "$(dirname "${SCRIPT_PATH}")" && pwd)"
 
 coach_variant="openai-mcp"
+stable_origin_cutover=0
 
 usage() {
   cat <<'EOF'
 Usage: ./deploy_skillpilot.sh [--coach-variant <openai-mcp|visible-session|legacy>]
+       [--openai-stable-origin-cutover]
 
 Without arguments, production is deployed with the openai-mcp coach.
 Use --coach-variant only for an intentional canary or rollback.
+The one-time --openai-stable-origin-cutover validates staged neutral Nginx,
+then reloads it after backend readiness and before the public edge checks.
 EOF
 }
 
 while [ "$#" -gt 0 ]; do
   case "$1" in
+    --openai-stable-origin-cutover)
+      stable_origin_cutover=1
+      shift
+      ;;
     --coach-variant)
       if [ "$#" -lt 2 ]; then
         echo "Abbruch: --coach-variant benötigt einen Wert." >&2
@@ -56,6 +64,12 @@ case "${coach_variant}" in
     ;;
 esac
 
+if [[ "${stable_origin_cutover}" = 1 && "${coach_variant}" != openai-mcp ]]; then
+  echo "Abbruch: --openai-stable-origin-cutover erfordert openai-mcp." >&2
+  exit 2
+fi
+
 export VITE_SKILLPILOT_COACH_VARIANT="${coach_variant}"
+export SKILLPILOT_OPENAI_STABLE_ORIGIN_CUTOVER="${stable_origin_cutover}"
 
 exec "${SCRIPT_DIR}/scripts/deploy.sh"

@@ -181,8 +181,8 @@ try {
     const chatGptGuide = page.getByTestId('chatgpt-desktop-plugin-guide')
     assert(await chatGptGuide.count() === 1,
       'ChatGPT Desktop has an independent guide alongside the Claude publication')
-    assert((await chatGptGuide.getByTestId('chatgpt-desktop-version').innerText()).includes('1.1.1')
-      && (await chatGptGuide.innerText()).includes(language === 'de' ? 'mindestens Version 1.1.1' : 'at least version 1.1.1'),
+    assert((await chatGptGuide.getByTestId('chatgpt-desktop-version').innerText()).includes('1.1.3')
+      && (await chatGptGuide.innerText()).includes(language === 'de' ? 'mindestens Version 1.1.3' : 'at least version 1.1.3'),
       'the Desktop guide defines a minimum supported version and permits later marketplace fixes')
     const chatGptRepository = chatGptGuide.getByRole('textbox')
     assert.equal(await chatGptRepository.inputValue(),
@@ -470,7 +470,7 @@ try {
     await page.getByRole('alert').waitFor()
     await assertUnavailableVersionSafety()
     assert.equal(await downloadLink.count(), 0, 'failed index load offers no stale download')
-    assert((await chatGptGuide.getByTestId('chatgpt-desktop-version').innerText()).includes('1.1.1'),
+    assert((await chatGptGuide.getByTestId('chatgpt-desktop-version').innerText()).includes('1.1.3'),
       'Claude publication failure does not hide or rebind the independent ChatGPT package guide')
     assert.doesNotMatch(await page.locator('#claude-plugin').innerText(), /\b[0-9]+\.[0-9]+\.[0-9]+\b/u,
       'failed index load offers no stale or guessed version')

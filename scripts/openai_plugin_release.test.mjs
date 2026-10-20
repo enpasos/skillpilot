@@ -101,6 +101,8 @@ test("plugin archive name cannot be confused with the shared Spring server", () 
     pluginInstallBundleArchiveName("skillpilot-coach-v1", "1.0.0"),
     "skillpilot-openai-plugin-coach-v1-1.0.0.tar",
   );
+  assert.equal(pluginInstallBundleArchiveName("skillpilot-coach", "2.0.0"),
+    "skillpilot-openai-plugin-coach-2.0.0.tar");
   assert.throws(
     () => pluginInstallBundleArchiveName("skillpilot-server", "1.0.0"),
     /Invalid SkillPilot plugin identity/,
@@ -422,7 +424,7 @@ test("recording a successor advances latestPublishedVersion while preserving bas
   );
 });
 
-test("published index rejects downgrades and contract-major changes", () => {
+test("published index rejects downgrades and wrong contract metadata independently of package majors", () => {
   const index = {
     ...publishedIndex(),
     latestPublishedVersion: "1.2.0",
@@ -434,10 +436,46 @@ test("published index rejects downgrades and contract-major changes", () => {
     () => determineReleaseVerificationMode("1.1.9", index),
     /older than latestPublishedVersion/,
   );
-  assert.throws(
-    () => determineReleaseVerificationMode("2.0.0", index),
-    /outside contract major/,
-  );
+  assert.equal(determineReleaseVerificationMode("2.0.0", index), "compatible-successor");
+  assert.throws(() => validatePublishedIndex(index, "skillpilot-coach-v1", 2),
+    /contract major disagrees/);
+});
+
+test("the durable plugin keeps contract major 1 across package major releases", () => {
+  const index = {
+    schemaVersion: 2, pluginIdentity: "skillpilot-coach", contractMajor: 1,
+    latestPublishedVersion: "2.0.0", publishedVersions: ["1.1.3", "2.0.0"],
+    baselinePath: "contracts/published/openai/skillpilot-coach/2.0.0",
+  };
+  assert.doesNotThrow(() => validatePublishedIndex(index, "skillpilot-coach", 1));
+  assert.equal(determineReleaseVerificationMode("2.0.0", index), "exact-published");
+  assert.equal(determineReleaseVerificationMode("3.0.0", index), "compatible-successor");
+  const next = advancePublishedIndex(index, "3.0.0", "contracts/published/openai/skillpilot-coach/3.0.0");
+  assert.equal(next.contractMajor, 1);
+  assert.deepEqual(next.publishedVersions, ["1.1.3", "2.0.0", "3.0.0"]);
+  assert.throws(() => validatePublishedIndex({ ...index, publishedVersions: ["2.0.0", "1.1.3"] }, "skillpilot-coach", 1),
+    /strictly increasing/);
+});
+
+test("a package major increase satisfies additive versioning but never bypasses contract compatibility", () => {
+  withTemporaryDirectory(root => {
+    const baselineRoot = resolve(root, "baseline");
+    const additiveRoot = resolve(root, "additive");
+    const incompatibleRoot = resolve(root, "incompatible");
+    const additive = structuredClone(fixture.baseline);
+    additive.contract.tools[0].inputSchema.properties.locale = { type: "string" };
+    const incompatible = structuredClone(fixture.baseline);
+    incompatible.contract.tools = [];
+    incompatible.securitySchemes = {};
+    incompatible.errorCatalog.contractMajor = 2;
+    writeRelease(baselineRoot, fixture.baseline);
+    writeRelease(additiveRoot, additive);
+    writeRelease(incompatibleRoot, incompatible);
+    assert.doesNotThrow(() => assertReleaseCompatible(baselineRoot, additiveRoot));
+    assert.doesNotThrow(() => assertSuccessorVersionClassification("1.1.3", "2.1.0", baselineRoot, additiveRoot));
+    assert.throws(() => assertReleaseCompatible(baselineRoot, incompatibleRoot),
+      /published tool was removed|public error catalog major changed/);
+  });
 });
 
 test("PATCH accepts wording corrections but rejects additive public fields", () => {

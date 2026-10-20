@@ -1,5 +1,11 @@
 # ChatGPT desktop plugin: native CIMD on the existing V1 endpoint
 
+**New setup from 19 October 2026:** use the [stable OpenAI origin runbook](openai-stable-origin.md)
+for `SkillPilot Coach` at `https://mcp-openai.skillpilot.com/mcp`, including its
+new exact native client and callback. The V1 host and client values below document
+the earlier integration; they must not be copied into the new setup. Published
+V1 package bytes and their evidence remain historical records.
+
 The Product Owner authorized this integration on **24 September 2026**, after
 successfully importing and installing the `1.1.0` plugin archive in ChatGPT.
 The connection failed when **Authenticate** was selected. The desktop UI

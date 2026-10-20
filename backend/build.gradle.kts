@@ -95,13 +95,13 @@ tasks.test {
     // The provider-isolation test selects its independent, checked-in baseline from the manifest.
     // Manifest and current-draft updates must invalidate local test results as well as fresh CI runs.
     val openAiCandidateManifest = layout.projectDirectory.file(
-        "../ai/openai plugin/skillpilot-coach-v1/.codex-plugin/plugin.json"
+        "../ai/openai plugin/skillpilot-coach/.codex-plugin/plugin.json"
     )
     val openAiCandidateVersion = providers.fileContents(openAiCandidateManifest).asText.map { text ->
         val manifest = groovy.json.JsonSlurper().parseText(text) as? Map<*, *>
             ?: error("The canonical OpenAI plugin manifest must be a JSON object")
-        require(manifest["name"] == "skillpilot-coach-v1") {
-            "The canonical OpenAI plugin manifest must identify skillpilot-coach-v1"
+        require(manifest["name"] == "skillpilot-coach") {
+            "The canonical OpenAI plugin manifest must identify skillpilot-coach"
         }
         val candidateVersion = manifest["version"] as? String
             ?: error("The canonical OpenAI plugin manifest must specify a version")
@@ -111,7 +111,7 @@ tasks.test {
         candidateVersion
     }
     val openAiCandidateContract = layout.projectDirectory.file(openAiCandidateVersion.map { version ->
-        "../contracts/drafts/openai/skillpilot-coach-v1/${version}-SNAPSHOT/contract/contract.json"
+        "../contracts/drafts/openai/skillpilot-coach/${version}-SNAPSHOT/contract/contract.json"
     })
     inputs.file(openAiCandidateManifest).withPropertyName("openAiCoachV1CandidateManifest")
         .withPathSensitivity(PathSensitivity.RELATIVE)

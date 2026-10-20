@@ -8,9 +8,9 @@ import { test } from 'node:test'
 import { assertNoSecrets, auditExport, buildSubmissionZip, digest, generateSubmission, generateSubmissionPackageManifest, main, validateExecutionMappings, validateSubmissionSnapshotSources, validateSuite, validateTrace as validateBoundTrace } from './openai_plugin_submission.mjs'
 import { OPENAI_PLUGIN_INSTALL_FILES } from './lib/openai_plugin_install_files.mjs'
 
-const suite = JSON.parse(readFileSync(new URL('../ai/openai plugin/skillpilot-coach-v1/submission/review-cases.json', import.meta.url)))
+const suite = JSON.parse(readFileSync(new URL('../ai/openai plugin/skillpilot-coach/submission/review-cases.json', import.meta.url)))
 const manifest = {
-  name: 'skillpilot-coach-v1', version: suite.candidateVersion,
+  name: 'skillpilot-coach', version: suite.candidateVersion,
   interface: { displayName: 'Fixture coach', shortDescription: 'Fixture description', longDescription: 'Fixture longer description.', developerName: 'Fixture developer', category: 'Education & Research', websiteURL: 'https://fixture.example', privacyPolicyURL: 'https://fixture.example/privacy', termsOfServiceURL: 'https://fixture.example/terms', brandColor: '#123456', defaultPrompt: ['Fixture start?'] },
 }
 const toolNames = [...new Set(suite.cases.flatMap(entry => [...entry.tools.required, ...entry.tools.forbidden]).filter(name => name !== '*'))]
@@ -159,11 +159,12 @@ test('submission manifest imports reviewed cases and current release notes using
   assert.equal(demo.extensions['com.openai'].review.demo_recording_url, withDemo.demoRecording.url)
   withDemo.demoRecording.candidateVersion = '1.0.0'
   assert.throws(() => generateSubmissionPackageManifest({ manifest: source, draft, metadata: withDemo, releaseNotes: 'Current changes.' }), /current candidate/u)
-  for (const url of [
-    'https://skillpilot.com/api/public/openai/review/skillpilot-coach-v1/1.0.0/sha256-20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb.mp4',
-    `https://skillpilot.com/api/public/openai/review/skillpilot-coach-v1/${source.version}/sha256-20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb.mp4`,
+  for (const [url, expected] of [
+    ['https://skillpilot.com/api/public/openai/review/skillpilot-coach-v1/1.0.0/sha256-20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb.mp4', /different plugin/u],
+    ['https://skillpilot.com/api/public/openai/review/skillpilot-coach/1.0.0/sha256-20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb.mp4', /historical candidate/u],
+    [`https://skillpilot.com/api/public/openai/review/skillpilot-coach/${source.version}/sha256-20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb.mp4`, /Rejected 1.0.0/u],
   ]) {
-    assert.throws(() => generateSubmissionPackageManifest({ manifest: source, draft, metadata: { ...metadata, demoRecording: { candidateVersion: source.version, url } }, releaseNotes: 'Current changes.' }), /historical candidate|Rejected 1.0.0/u)
+    assert.throws(() => generateSubmissionPackageManifest({ manifest: source, draft, metadata: { ...metadata, demoRecording: { candidateVersion: source.version, url } }, releaseNotes: 'Current changes.' }), expected)
   }
   for (const data of [{ ...metadata, reviewer_instructions: 'private' }, { ...metadata, clientSecret: 'private' }, { ...metadata, demoRecording: { candidateVersion: source.version, url: 'https://fixture.example/demo?token=private' } }]) {
     assert.throws(() => generateSubmissionPackageManifest({ manifest: source, draft, metadata: data, releaseNotes: 'Current changes.' }), /Secret|credential|Signed URL/u)
@@ -176,7 +177,7 @@ function packageFixture(t) {
   const repositoryRoot = mkdtempSync(join(temporaryRoot, 'openai-zip-test-'))
   t.after(() => rmSync(repositoryRoot, { recursive: true, force: true }))
   const pluginRoot = join(repositoryRoot, 'plugin')
-  const sourceRoot = fileURLToPath(new URL('../ai/openai plugin/skillpilot-coach-v1/', import.meta.url))
+  const sourceRoot = fileURLToPath(new URL('../ai/openai plugin/skillpilot-coach/', import.meta.url))
   for (const path of OPENAI_PLUGIN_INSTALL_FILES) {
     const target = join(pluginRoot, path)
     mkdirSync(dirname(target), { recursive: true })
@@ -228,7 +229,7 @@ test('submission ZIP has exactly seven install files plus LICENSE, binds hashes,
   assert.equal(generated.path, '.codex-plugin/plugin.json')
   assert.notEqual(generated.sourceSha256, generated.sha256)
   assert.ok(first.report.files.filter(file => !file.generated).every(file => file.sourceSha256 === file.sha256))
-  const skill = join(pluginRoot, 'skills/skillpilot-coach-v1/SKILL.md')
+  const skill = join(pluginRoot, 'skills/skillpilot-coach/SKILL.md')
   writeFileSync(skill, `${readFileSync(skill, 'utf8')}\nReviewed follow-up instruction.\n`)
   const changed = build()
   assert.notEqual(changed.report.archiveSha256, first.report.archiveSha256)
@@ -249,7 +250,7 @@ test('ZIP packaging rejects secrets, nonempty server headers, missing tracked in
   writeFileSync(mcpPath, JSON.stringify(current))
   assert.throws(build, /Secret/u)
   writeFileSync(mcpPath, original)
-  const skill = join(pluginRoot, 'skills/skillpilot-coach-v1/SKILL.md')
+  const skill = join(pluginRoot, 'skills/skillpilot-coach/SKILL.md')
   writeFileSync(skill, `Private session sps_${'B'.repeat(43)}`)
   assert.throws(build, /Real session identifier/u)
   rmSync(join(pluginRoot, 'skills'), { recursive: true })
@@ -280,7 +281,7 @@ test('alternate contract input must match its adjacent candidate snapshot bytes 
   mkdirSync(temporaryRoot, { recursive: true })
   const output = mkdtempSync(join(temporaryRoot, 'openai-contract-binding-test-'))
   t.after(() => rmSync(output, { recursive: true, force: true }))
-  const source = new URL(`../contracts/drafts/openai/skillpilot-coach-v1/${suite.candidateVersion}-SNAPSHOT/`, import.meta.url)
+  const source = new URL(`../contracts/drafts/openai/skillpilot-coach/${suite.candidateVersion}-SNAPSHOT/`, import.meta.url)
   const localContract = join(output, 'contract/contract.json')
   mkdirSync(join(output, 'contract'))
   const bytes = readFileSync(new URL('contract/contract.json', source), 'utf8')

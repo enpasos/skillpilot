@@ -116,10 +116,10 @@ skillpilot:
         # Defense-in-depth assertion for the root-owned Nginx mTLS edge mode.
         mtls-edge-mode: ${SKILLPILOT_OPENAI_COACH_V1_MTLS_EDGE_MODE:disabled}
         cleanup-interval-ms: ${SKILLPILOT_OPENAI_CLEANUP_INTERVAL_MS:3600000}
-        # Public endpoints are immutable parts of the language-neutral V1
-        # contract. Nginx maps this origin to its internal route in this JVM.
-        mcp-url: https://mcp-coach-v1.skillpilot.com/mcp
-        oauth-resource: https://mcp-coach-v1.skillpilot.com/mcp
+        # The permanent public plugin address is independent of package and
+        # contract versions. Nginx maps it to the current internal V1 route.
+        mcp-url: https://mcp-openai.skillpilot.com/mcp
+        oauth-resource: https://mcp-openai.skillpilot.com/mcp
         server-build: "@skillpilotServerBuild@"
         # Optional assertion only. The effective revision is derived from the
         # loaded repository JSON or active package generation at startup.
@@ -141,7 +141,7 @@ skillpilot:
           max-client-buckets: ${SKILLPILOT_OPENAI_RATE_LIMIT_MAX_CLIENT_BUCKETS:10000}
         mcp:
           enabled: ${SKILLPILOT_OPENAI_COACH_V1_MCP_ENABLED:${SKILLPILOT_OPENAI_COACH_V1_ENABLED:false}}
-          server-name: skillpilot-coach-v1
+          server-name: skillpilot-coach
           server-version: "@skillpilotServerBuild@"
           request-timeout: PT30S
         oauth:
@@ -161,8 +161,8 @@ skillpilot:
           authorization-policy-version: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_AUTHORIZATION_POLICY_VERSION:1}
           native-cimd:
             enabled: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_NATIVE_CIMD_ENABLED:false}
-            client-id: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_NATIVE_CIMD_CLIENT_ID:https://chatgpt.com/oauth/codex/Su4_F3uWAhkS/client.json}
-            authorization-policy-version: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_NATIVE_CIMD_AUTHORIZATION_POLICY_VERSION:native-cimd-v1}
+            client-id: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_NATIVE_CIMD_CLIENT_ID:https://chatgpt.com/oauth/codex/7yTcOAOqrumX/client.json}
+            authorization-policy-version: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_NATIVE_CIMD_AUTHORIZATION_POLICY_VERSION:native-cimd-stable-origin-v1}
           transitional-basic:
             enabled: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_TRANSITIONAL_BASIC_ENABLED:false}
             authorization-policy-version: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_TRANSITIONAL_BASIC_AUTHORIZATION_POLICY_VERSION:1}
@@ -171,7 +171,7 @@ skillpilot:
             redirect-uris: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_TRANSITIONAL_BASIC_REDIRECT_URIS:}
           # Exact former draft client IDs accepted only by the one-way cutover.
           legacy-client-ids: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_LEGACY_CLIENT_IDS:}
-          protected-resource-metadata: https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp
+          protected-resource-metadata: https://mcp-openai.skillpilot.com/.well-known/oauth-protected-resource/mcp
           access-token-ttl: ${SKILLPILOT_OPENAI_OAUTH_ACCESS_TOKEN_TTL:PT1H}
           refresh-token-ttl: ${SKILLPILOT_OPENAI_OAUTH_REFRESH_TOKEN_TTL:P30D}
   curriculum:

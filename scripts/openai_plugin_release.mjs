@@ -1,3 +1,4 @@
+import { OPENAI_PLUGIN } from "./lib/openai_plugin_config.mjs";
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
 import { createHash } from "node:crypto";
@@ -38,7 +39,7 @@ import { openAiPluginInstallFiles } from "./lib/openai_plugin_install_files.mjs"
 const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const pluginRoot = resolve(
   repositoryRoot,
-  "ai/openai plugin/skillpilot-coach-v1",
+  OPENAI_PLUGIN.sourcePath,
 );
 const manifest = readJson(resolve(pluginRoot, ".codex-plugin/plugin.json"));
 const line = readJson(resolve(pluginRoot, "release/line.json"));

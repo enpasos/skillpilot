@@ -174,13 +174,7 @@ openssl verify -trusted "${ROOT_CA}" -no-CApath -no-CAstore -x509_strict \
 assert_certificate_valid_for_cutover "${ROOT_CA}"
 assert_certificate_valid_for_cutover "${INTERMEDIATE_CA}"
 
-assert_openai_v1_mtls_secure_path \
-  "$(dirname -- "${SERVICE_ENV_FILE}")" \
-  directory \
-  "Backend EnvironmentFile directory"
-assert_openai_v1_mtls_secret_file \
-  "${SERVICE_ENV_FILE}" \
-  "Backend EnvironmentFile"
+assert_openai_v1_service_environment_file "${SERVICE_ENV_FILE}"
 assert_existing_secure_target \
   "${INSTALL_DIR}" \
   directory \
@@ -282,7 +276,7 @@ No active Nginx file was edited or reloaded. The dedicated V1 TLS server must:
   include ${INSTALL_DIR}/mode.conf;
   trust ${INSTALL_DIR}/openai-client-ca-bundle.pem;
   call http://127.0.0.1:8792/verify only through an internal auth_request;
-  protect exactly https://mcp-coach-v1.skillpilot.com/mcp.
+  protect exactly https://mcp-openai.skillpilot.com/mcp.
 
 Next, validate the reviewed Nginx configuration, reload it, and run:
   sudo ./scripts/verify_openai_v1_mtls_edge.sh --preflight

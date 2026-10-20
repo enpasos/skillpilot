@@ -85,11 +85,11 @@ import org.springframework.test.context.TestPropertySource;
         "skillpilot.openai.coach.v1.oauth.enabled=true",
         "skillpilot.openai.coach.v1.oauth.native-cimd.enabled=true",
         "skillpilot.openai.coach.v1.mcp.enabled=true",
-        "skillpilot.openai.coach.v1.mcp-url=https://mcp-coach-v1.skillpilot.com/mcp",
-        "skillpilot.openai.coach.v1.oauth-resource=https://mcp-coach-v1.skillpilot.com/mcp",
+        "skillpilot.openai.coach.v1.mcp-url=https://mcp-openai.skillpilot.com/mcp",
+        "skillpilot.openai.coach.v1.oauth-resource=https://mcp-openai.skillpilot.com/mcp",
         "skillpilot.openai.coach.v1.oauth.client-id=chatgpt-e2e-client",
         "skillpilot.openai.coach.v1.oauth.redirect-uris=https://chatgpt.com/connector/oauth/e2e-callback",
-        "skillpilot.openai.coach.v1.oauth.protected-resource-metadata=https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp"
+        "skillpilot.openai.coach.v1.oauth.protected-resource-metadata=https://mcp-openai.skillpilot.com/.well-known/oauth-protected-resource/mcp"
 })
 class OpenAiDeCoachEndToEndIntegrationTest {
 
@@ -488,7 +488,7 @@ class OpenAiDeCoachEndToEndIntegrationTest {
     void appOnlyOAuthAndExplicitLearningSessionPersistLearnerStateWithoutExposingPermanentId(boolean nativeClient)
             throws Exception {
         String activeClientId = nativeClient ? com.skillpilot.backend.openai.de.OpenAiDeProperties.OAuth.NativeCimd.CLIENT_ID : CLIENT_ID;
-        String activeCallback = nativeClient ? "http://127.0.0.1:49173/callback/Su4_F3uWAhkS" : CALLBACK;
+        String activeCallback = nativeClient ? "http://127.0.0.1:49173/callback/7yTcOAOqrumX" : CALLBACK;
         assertLegacyStateIsEmpty();
 
         String externalState = "chatgpt-e2e-state";
@@ -515,7 +515,7 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         HttpResponse<String> consent = get(consentUri.toString());
         assertThat(consent.statusCode()).isEqualTo(200);
         assertThat(consent.body())
-                .contains("Authorize SkillPilot Coach v1")
+                .contains("Authorize SkillPilot Coach")
                 .contains("OAuth authorizes only the app")
                 .doesNotContain(PERMANENT_SKILLPILOT_ID);
 

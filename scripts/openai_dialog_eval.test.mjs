@@ -13,7 +13,7 @@ test('build, Git and verification children never inherit API or production crede
 })
 
 test('the success path executes a separate complete judge without manufacturing host acceptance', async () => {
-  const suite = JSON.parse(readFileSync(new URL('../ai/openai plugin/skillpilot-coach-v1/submission/review-cases.json', import.meta.url)))
+  const suite = JSON.parse(readFileSync(new URL('../ai/openai plugin/skillpilot-coach/submission/review-cases.json', import.meta.url)))
   const testCase = suite.cases.find(entry => entry.id === 'P1')
   const bridge = { async request(request) {
     if (request.action === 'reset') return { caseId: 'P1', evidenceLayer: 'model-api-with-simulated-domain', tools: [], serverInstructions: 'Server policy' }
@@ -121,7 +121,7 @@ test('missing, duplicated, failed or error repetitions cannot yield all-pass', (
 })
 
 test('actor chooses calls without receiving the hidden oracle; forbidden attempts are retained and never dispatched', async () => {
-  const suite = JSON.parse(readFileSync(new URL('../ai/openai plugin/skillpilot-coach-v1/submission/review-cases.json', import.meta.url)))
+  const suite = JSON.parse(readFileSync(new URL('../ai/openai plugin/skillpilot-coach/submission/review-cases.json', import.meta.url)))
   const testCase = structuredClone(suite.cases.find(entry => entry.id === 'P1'))
   testCase.portalSummary = 'HIDDEN_ORACLE_SENTINEL'
   let dispatched = false

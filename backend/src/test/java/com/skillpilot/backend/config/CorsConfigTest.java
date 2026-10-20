@@ -34,7 +34,7 @@ class CorsConfigTest {
 
         CorsConfiguration visualization = mappings.get("/assets/goal-visualizations/**");
         assertThat(visualization).isNotNull();
-        assertThat(visualization.checkOrigin("https://mcp-coach-v1.skillpilot.com"))
+        assertThat(visualization.checkOrigin("https://mcp-openai.skillpilot.com"))
                 .isEqualTo("*");
         assertThat(visualization.checkOrigin("https://example.web-sandbox.oaiusercontent.com"))
                 .isEqualTo("*");

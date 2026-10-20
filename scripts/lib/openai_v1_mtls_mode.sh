@@ -101,6 +101,15 @@ assert_openai_v1_mtls_secret_file() {
   fi
 }
 
+# The shared backend EnvironmentFile also permits the explicitly scoped admin
+# group profile. Public CA/config checks and other secret files remain strict.
+assert_openai_v1_service_environment_file() {
+  local path="$1"
+  local library_directory
+  library_directory="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+  python3 -I "${library_directory}/service_environment_permissions.py" "${path}"
+}
+
 read_openai_v1_mtls_backend_mode() {
   local environment_file="$1"
   if [[ "${environment_file}" != /* \

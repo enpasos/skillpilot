@@ -409,7 +409,7 @@ class OpenAiDeCoachConnectionServiceTest {
         verify(learningSessions).save(persisted.capture());
         assertThat(persisted.getValue().getCommunicationLocale()).isEqualTo("en-GB");
         assertThat(response.prompt())
-                .contains("Use SkillPilot Coach v1 and continue.", "learningSessionId: ")
+                .contains("Use SkillPilot Coach and continue.", "learningSessionId: ")
                 .doesNotContain("Verwende die App", SKILLPILOT_ID);
     }
 
@@ -448,35 +448,35 @@ class OpenAiDeCoachConnectionServiceTest {
                 Arguments.of(
                         "de",
                         new LaunchIntent(LaunchIntentType.CURRENT_UNIT, null, null, null),
-                        "Verwende SkillPilot Coach v1 und fahre fort."),
+                        "Verwende SkillPilot Coach und fahre fort."),
                 Arguments.of(
                         "en",
                         new LaunchIntent(LaunchIntentType.CURRENT_UNIT, null, null, null),
-                        "Use SkillPilot Coach v1 and continue."),
+                        "Use SkillPilot Coach and continue."),
                 Arguments.of(
                         "de",
                         new LaunchIntent(LaunchIntentType.VERIFIED_RECALL, "memory-goal", 7, null),
-                        "Verwende SkillPilot Coach v1 und starte die harte Kartenprüfung."),
+                        "Verwende SkillPilot Coach und starte die harte Kartenprüfung."),
                 Arguments.of(
                         "en",
                         new LaunchIntent(LaunchIntentType.VERIFIED_RECALL, "memory-goal", 7, null),
-                        "Use SkillPilot Coach v1 and start the strict recall check."),
+                        "Use SkillPilot Coach and start the strict recall check."),
                 Arguments.of(
                         "de",
                         new LaunchIntent(LaunchIntentType.ABI26_EXAM, ABI26_GK_GOAL_ID, null, "GK"),
-                        "Verwende SkillPilot Coach v1 und starte die Mathematik-Abiturprüfung (Grundkurs)."),
+                        "Verwende SkillPilot Coach und starte die Mathematik-Abiturprüfung (Grundkurs)."),
                 Arguments.of(
                         "de",
                         new LaunchIntent(LaunchIntentType.ABI26_EXAM, ABI26_LK_GOAL_ID, null, "LK"),
-                        "Verwende SkillPilot Coach v1 und starte die Mathematik-Abiturprüfung (Leistungskurs)."),
+                        "Verwende SkillPilot Coach und starte die Mathematik-Abiturprüfung (Leistungskurs)."),
                 Arguments.of(
                         "en",
                         new LaunchIntent(LaunchIntentType.ABI26_EXAM, ABI26_GK_GOAL_ID, null, "GK"),
-                        "Use SkillPilot Coach v1 and start the mathematics Abitur exam (basic course)."),
+                        "Use SkillPilot Coach and start the mathematics Abitur exam (basic course)."),
                 Arguments.of(
                         "en",
                         new LaunchIntent(LaunchIntentType.ABI26_EXAM, ABI26_LK_GOAL_ID, null, "LK"),
-                        "Use SkillPilot Coach v1 and start the mathematics Abitur exam (advanced course)."));
+                        "Use SkillPilot Coach and start the mathematics Abitur exam (advanced course)."));
     }
 
     private static Stream<PersonalizationPlan> incompletePersonalizationPlans() {

@@ -179,7 +179,7 @@ class OpenAiDeMcpTelemetryTest {
                 .asString()
                 .contains(
                         "contractMajor=1",
-                        "pluginLine=skillpilot-coach-v1",
+                        "pluginLine=skillpilot-coach",
                         "serverBuild=build-17",
                         "tool=" + OpenAiDeV1McpContractAdapter.GET_CONTEXT,
                         "status=success",
@@ -406,7 +406,7 @@ class OpenAiDeMcpTelemetryTest {
                 .allSatisfy(message -> assertThat(message)
                         .contains(
                                 "contractMajor=1",
-                                "pluginLine=skillpilot-coach-v1",
+                                "pluginLine=skillpilot-coach",
                                 "serverBuild=build-17",
                                 "latencyMs=")
                         .doesNotContain(

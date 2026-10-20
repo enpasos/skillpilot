@@ -1,3 +1,4 @@
+import { OPENAI_PLUGIN } from "./lib/openai_plugin_config.mjs";
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import {
@@ -116,20 +117,47 @@ export function verifyOpenAiPluginReviewFreeze({ repositoryRoot = defaultReposit
   };
 }
 
+export const neutralReleaseAuthorizationRelativePath =
+  "contracts/openai/skillpilot-coach/development-authorization.json";
+const expectedNeutralReleaseAuthorization = Object.freeze({
+  "schemaVersion": 1,
+  "pluginIdentity": "skillpilot-coach",
+  "contractMajor": 1,
+  "publicMcpEndpoint": "https://mcp-openai.skillpilot.com/mcp",
+  "decisionDate": "2026-10-19",
+  "approvedBy": "Product Owner",
+  "decision": "Create the durable SkillPilot Coach plugin with a neutral identity and endpoint; package SemVer is independent of the runtime contract major. New chats use the current workflow. Historical published packages and review evidence remain intact.",
+  "prepareAllowed": true,
+  "publicationRecordingAllowed": false,
+  "portalMutationAllowed": false,
+  "externalDeploymentAllowed": false
+});
+
 export function assertOpenAiPluginReleaseMutationAllowed({
   repositoryRoot = defaultRepositoryRoot, pluginIdentity, pluginVersion, command,
 }) {
   verifyOpenAiPluginReviewFreeze({ repositoryRoot });
-  assert.equal(pluginIdentity, expectedRetirementRecord.pluginIdentity,
-    "Release identity must match the authorized OpenAI line.");
   assert.equal(command, "prepare",
     "Actual OpenAI publication and separate publication-recording authorization are still required; development approval does not authorize record-published.");
-  assert.match(pluginVersion, /^1\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)$/u,
-    "Only stable successor candidates in OpenAI contract major 1 are authorized.");
-  const [, minor] = pluginVersion.split(".").map(Number);
-  assert.ok(minor >= 1,
-    "Rejected 1.0.0 and its old minor line cannot be rewritten; prepare a new successor from 1.1.0.");
-  const indexPath = safeRepositoryPath(repositoryRoot, "contracts/openai/skillpilot-coach-v1/release-index.json");
+  assert.ok([expectedRetirementRecord.pluginIdentity, OPENAI_PLUGIN.identity].includes(pluginIdentity),
+    "Release identity must match an explicitly authorized OpenAI line.");
+  if (pluginIdentity === OPENAI_PLUGIN.identity) {
+    const authorizationPath = safeRepositoryPath(repositoryRoot, neutralReleaseAuthorizationRelativePath);
+    assert.equal(lstatSync(authorizationPath).isSymbolicLink(), false,
+      "Neutral development authorization must not be a symlink.");
+    const authorization = JSON.parse(readFileSync(authorizationPath, "utf8"));
+    assert.deepEqual(authorization, expectedNeutralReleaseAuthorization,
+      "Neutral plugin preparation requires the exact explicit Product Owner decision.");
+    assert.match(pluginVersion, /^(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)$/u,
+      "The durable plugin requires a stable semantic package version.");
+  } else {
+    assert.match(pluginVersion, /^1\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)$/u,
+      "Only stable successor candidates in the historical OpenAI contract major 1 are authorized.");
+    const [, minor] = pluginVersion.split(".").map(Number);
+    assert.ok(minor >= 1,
+      "Rejected 1.0.0 and its old minor line cannot be rewritten; prepare a new successor from 1.1.0.");
+  }
+  const indexPath = safeRepositoryPath(repositoryRoot, `contracts/openai/${pluginIdentity}/release-index.json`);
   const index = JSON.parse(readFileSync(indexPath, "utf8"));
   assert.equal(index.pluginIdentity, pluginIdentity);
   assert.equal(index.contractMajor, 1);

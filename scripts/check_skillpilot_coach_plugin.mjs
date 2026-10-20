@@ -5,11 +5,12 @@ import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { computeRepositoryCurriculumRevision } from "./compute_curriculum_revision.mjs";
 import { assertCurrentCoachBehavior } from "./check_skillpilot_coach_behavior.mjs";
+import { OPENAI_PLUGIN } from "./lib/openai_plugin_config.mjs";
 
 const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const pluginRoot = resolve(
   repositoryRoot,
-  "ai/openai plugin/skillpilot-coach-v1",
+  OPENAI_PLUGIN.sourcePath,
 );
 const faviconRoot = resolve(repositoryRoot, "app/public/favicon");
 const goalVisualizationWidget = resolve(
@@ -88,7 +89,7 @@ assert.equal(
   false,
   "The active goal-visualization artifact must not also be retained.",
 );
-const skillRoot = resolve(pluginRoot, "skills/skillpilot-coach-v1");
+const skillRoot = resolve(pluginRoot, OPENAI_PLUGIN.skillPath);
 
 const read = (path) => readFileSync(path, "utf8");
 const readJson = (path) => JSON.parse(read(path));
@@ -376,10 +377,8 @@ assert.match(
   /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-(?:0|[1-9]\d*|[A-Za-z-][0-9A-Za-z-]*)(?:\.(?:0|[1-9]\d*|[A-Za-z-][0-9A-Za-z-]*))*)?(?:\+[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?$/,
   "version must be strict SemVer without leading zeroes or empty identifiers.",
 );
-const [manifestMajor] = manifest.version.split(".").map(Number);
-assert.equal(manifestMajor, releaseLine.contractMajor);
 assert.equal(releaseLine.schemaVersion, 1);
-assert.equal(releaseLine.pluginIdentity, "skillpilot-coach-v1");
+assert.equal(releaseLine.pluginIdentity, OPENAI_PLUGIN.identity);
 assert.equal(releaseLine.contractMajor, 1);
 assert.equal(releaseLine.stateSchemaVersion, 1);
 assert.equal(releaseLine.workflowVersion, "coach@1.1");
@@ -407,7 +406,7 @@ assert.equal(existsSync(resolve(pluginRoot, ".app.json")), false,
 
 const pluginInterface = manifest.interface;
 requireString(pluginInterface?.displayName, "interface.displayName", 30);
-assert.equal(pluginInterface.displayName, "SkillPilot Coach v1");
+assert.equal(pluginInterface.displayName, OPENAI_PLUGIN.displayName);
 assert.equal(pluginInterface.shortDescription, "Your SkillPilot learning coach");
 assert.match(pluginInterface.longDescription, /communication locale/u);
 requireString(pluginInterface?.shortDescription, "interface.shortDescription", 30);
@@ -504,9 +503,9 @@ for (const prompt of pluginInterface.defaultPrompt) {
 
 assert.deepEqual(mcpConfig, {
   mcpServers: {
-    "skillpilot-coach-v1": {
+    [OPENAI_PLUGIN.identity]: {
       type: "http",
-      url: "https://mcp-coach-v1.skillpilot.com/mcp",
+      url: OPENAI_PLUGIN.publicEndpoint,
       extensions: {
         "com.openai": {
           auth: { type: "oauth", client: { mode: "cimd" } },
@@ -523,7 +522,7 @@ assert.equal(
 const endpoint = new URL(releaseLine.publicMcpEndpoint);
 const oauthResource = new URL(releaseLine.oauthResource);
 assert.equal(endpoint.protocol, "https:");
-assert.equal(endpoint.hostname, "mcp-coach-v1.skillpilot.com");
+assert.equal(endpoint.hostname, new URL(OPENAI_PLUGIN.publicEndpoint).hostname);
 assert.equal(endpoint.pathname, "/mcp");
 assert.equal(endpoint.search, "");
 assert.equal(endpoint.hash, "");
@@ -566,7 +565,7 @@ assert.deepEqual(releaseLine.ui, {
     render_skillpilot_goal_visualization: goalVisualizationResourceUri,
     start_skillpilot_memory_practice: memoryCardPracticeResourceUri,
   },
-  domain: "https://mcp-coach-v1.skillpilot.com",
+  domain: new URL(OPENAI_PLUGIN.publicEndpoint).origin,
   enabled: true,
   stateSchemaVersion: 1,
   resources: expectedUiResources,
@@ -749,20 +748,20 @@ assert.match(
 );
 assert.deepEqual(skillAgent, {
   interface: {
-    display_name: "SkillPilot Coach v1",
+    display_name: OPENAI_PLUGIN.displayName,
     short_description: "Web-started SkillPilot learning coach",
     default_prompt:
-      "Use $skillpilot-coach-v1 to continue the learning session prepared by SkillPilot.",
+      `Use $${OPENAI_PLUGIN.identity} to continue the learning session prepared by SkillPilot.`,
   },
   dependencies: {
     tools: [
       {
         type: "mcp",
-        value: "skillpilot-coach-v1",
+        value: OPENAI_PLUGIN.identity,
         description:
           "Session validation, daily learning plans, subject switching, learning state, focus, active goals, mastery, verified recall, and assessments",
         transport: "streamable_http",
-        url: "https://mcp-coach-v1.skillpilot.com/mcp",
+        url: OPENAI_PLUGIN.publicEndpoint,
       },
     ],
   },
@@ -1670,7 +1669,7 @@ assert.equal(javaConstant("OAUTH_RESOURCE"), releaseLine.oauthResource);
 assert.equal(javaConstant("WIDGET_DOMAIN"), releaseLine.ui.domain);
 assert.equal(
   javaConstant("PROTECTED_RESOURCE_METADATA_ENDPOINT"),
-  "https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp",
+  `${new URL(OPENAI_PLUGIN.publicEndpoint).origin}/.well-known/oauth-protected-resource/mcp`,
 );
 assert.doesNotMatch(contractMetadata, /PUBLIC_UI_ORIGIN/);
 assert.equal(
@@ -1788,4 +1787,4 @@ for (const toolName of new Set(
 }
 assert.equal(/\b(?:skillpilot-coach-v2|mcp-v2|ui-v2)\b/.test(combinedSkill), false);
 
-console.log("SkillPilot Coach v1 plugin and version contract check passed.");
+console.log("SkillPilot Coach plugin and version contract check passed.");

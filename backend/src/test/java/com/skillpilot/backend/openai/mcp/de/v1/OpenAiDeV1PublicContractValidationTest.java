@@ -22,7 +22,7 @@ class OpenAiDeV1PublicContractValidationTest {
     @Test
     void pinsTheV1WidgetToTheDedicatedPublicMcpOrigin() {
         assertThat(OpenAiDeV1ContractMetadata.PUBLIC_MCP_ORIGIN)
-                .isEqualTo("https://mcp-coach-v1.skillpilot.com");
+                .isEqualTo("https://mcp-openai.skillpilot.com");
         assertThat(OpenAiDeV1ContractMetadata.WIDGET_DOMAIN)
                 .isEqualTo(OpenAiDeV1ContractMetadata.PUBLIC_MCP_ORIGIN);
     }
@@ -38,6 +38,16 @@ class OpenAiDeV1PublicContractValidationTest {
 
     @Test
     void rejectsEveryCrossMajorOrLegacyPublicBoundary() {
+        assertMismatch(
+                properties -> properties.setMcpUrl("https://mcp-coach-v1.skillpilot.com/mcp"),
+                "public MCP endpoint");
+        assertMismatch(
+                properties -> properties.setOauthResource("https://mcp-coach-v1.skillpilot.com/mcp"),
+                "OAuth resource");
+        assertMismatch(
+                properties -> properties.getOauth().setProtectedResourceMetadata(
+                        "https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp"),
+                "protected-resource metadata URL");
         assertMismatch(
                 properties -> properties.setMcpUrl("https://mcp-v2.skillpilot.com/mcp"),
                 "public MCP endpoint");

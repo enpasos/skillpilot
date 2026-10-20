@@ -45,7 +45,7 @@ public final class OpenAiDeMtlsEdgeClassificationFilter extends OncePerRequestFi
     public static final String MODE_HEADER = "X-SkillPilot-OpenAI-mTLS-Mode";
     public static final String SAN_HEADER = "X-SkillPilot-OpenAI-mTLS-SAN";
     public static final String EXPECTED_OPENAI_SAN = "mtls.prod.connectors.openai.com";
-    public static final String EXPECTED_EDGE_HOST = "mcp-coach-v1.skillpilot.com";
+    public static final String EXPECTED_EDGE_HOST = "mcp-openai.skillpilot.com";
 
     static final String VERIFIED = "VERIFIED";
     static final String OBSERVE_NO_CERT = "OBSERVE_NO_CERT";

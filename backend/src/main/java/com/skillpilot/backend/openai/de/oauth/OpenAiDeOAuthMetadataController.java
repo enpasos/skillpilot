@@ -107,9 +107,9 @@ public class OpenAiDeOAuthMetadataController {
     public ResponseEntity<String> connectRequired(@RequestParam(required = false) String reason) {
         String detail = "expired".equals(reason)
                 ? "The app authorization has expired or is no longer valid."
-                : "SkillPilot Coach v1 is not yet authorized to access the SkillPilot MCP backend.";
+                : "SkillPilot Coach is not yet authorized to access the SkillPilot MCP backend.";
         return htmlPage(
-                "Authorize SkillPilot Coach v1",
+                "Authorize SkillPilot Coach",
                 "<p>" + HtmlUtils.htmlEscape(detail) + "</p>"
                         + "<p>This authorization neither selects a learner nor creates a learning session. "
                         + "A learning session is created only after the learner finishes the configuration in the "
@@ -144,7 +144,7 @@ public class OpenAiDeOAuthMetadataController {
         visibleScopes.append("</ul>");
 
         StringBuilder form = new StringBuilder();
-        form.append("<p>You authorize SkillPilot Coach v1 to access the SkillPilot MCP backend with the following permissions.</p>")
+        form.append("<p>You authorize SkillPilot Coach to access the SkillPilot MCP backend with the following permissions.</p>")
                 .append(visibleScopes)
                 .append("<p>OAuth authorizes only the app. It neither selects a learner nor creates a learning session. "
                         + "Only a short-lived learning session created separately through “Start learning” in "
@@ -164,7 +164,7 @@ public class OpenAiDeOAuthMetadataController {
         form.append(hiddenScopes)
                 .append("<button class=\"button\" type=\"submit\">Authorize app</button>")
                 .append("</form>");
-        return htmlPage("Authorize SkillPilot Coach v1", form.toString());
+        return htmlPage("Authorize SkillPilot Coach", form.toString());
     }
 
     private List<String> splitScopes(String scope) {
