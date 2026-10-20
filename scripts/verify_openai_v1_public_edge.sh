@@ -2,7 +2,7 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-MCP_ORIGIN="https://mcp-coach-v1.skillpilot.com"
+MCP_ORIGIN="https://mcp-openai.skillpilot.com"
 AUTHORIZATION_ORIGIN="${SKILLPILOT_PUBLIC_BASE_URL:-https://skillpilot.com}"
 AUTHORIZATION_ORIGIN="${AUTHORIZATION_ORIGIN%/}"
 MCP_URL="${MCP_ORIGIN}/mcp"
@@ -18,7 +18,8 @@ INTERNAL_METADATA_URL="${AUTHORIZATION_ORIGIN}/internal/openai/v1/protected-reso
 INTERNAL_CHALLENGE_URL="${AUTHORIZATION_ORIGIN}/internal/openai/v1/openai-apps-challenge"
 REMOVED_COMMON_METADATA_URL="${AUTHORIZATION_ORIGIN}/.well-known/oauth-protected-resource"
 REMOVED_COMMON_CHALLENGE_URL="${AUTHORIZATION_ORIGIN}/.well-known/openai-apps-challenge"
-RESERVED_MCP_ORIGINS=(
+RETIRED_MCP_ORIGINS=(
+  "https://mcp-coach-v1.skillpilot.com"
   "https://mcp-coach-v2.skillpilot.com"
   "https://mcp-coach-v3.skillpilot.com"
   "https://mcp-coach-v4.skillpilot.com"
@@ -83,12 +84,12 @@ validate_https_url "authorization origin" "${AUTHORIZATION_ORIGIN}" false
 validate_https_url "MCP URL" "${MCP_URL}" true
 validate_https_url "OAuth resource" "${EXPECTED_RESOURCE}" true
 validate_https_url "protected-resource metadata URL" "${METADATA_URL}" true
-for reserved_origin in "${RESERVED_MCP_ORIGINS[@]}"; do
-  validate_https_url "reserved MCP origin" "${reserved_origin}" false
+for retired_origin in "${RETIRED_MCP_ORIGINS[@]}"; do
+  validate_https_url "reserved MCP origin" "${retired_origin}" false
 done
 
-if [[ "${MCP_ORIGIN}" != "https://mcp-coach-v1.skillpilot.com" ]]; then
-  echo "CHECK public_edge_configuration FAIL MCP origin must equal https://mcp-coach-v1.skillpilot.com" >&2
+if [[ "${MCP_ORIGIN}" != "https://mcp-openai.skillpilot.com" ]]; then
+  echo "CHECK public_edge_configuration FAIL MCP origin must equal https://mcp-openai.skillpilot.com" >&2
   exit 2
 fi
 if [[ "${AUTHORIZATION_ORIGIN}" != "https://skillpilot.com" ]]; then
@@ -457,37 +458,44 @@ assert_removed_get_route removed_common_protected_resource_metadata_route \
 assert_removed_get_route removed_common_openai_apps_challenge_route \
   "${REMOVED_COMMON_CHALLENGE_URL}"
 
-assert_reserved_origin() {
+assert_retired_origin() {
   local origin="$1"
   local host="${origin#https://}"
-  local url="${origin}/mcp"
-  local output_file="${temporary_dir}/reserved-${host}.body"
+  local output_file="${temporary_dir}/retired-${host}.body"
   local result
   local status
   local effective_url
   local tls_verify_result
-  result="$(
-    "${curl_common[@]}" \
-      --request POST \
-      --header 'Accept: application/json, text/event-stream' \
-      --header 'Content-Type: application/json' \
-      --data '{"jsonrpc":"2.0","id":"reserved-origin-smoke","method":"initialize","params":{}}' \
-      --output "${output_file}" \
-      --write-out '%{http_code}|%{url_effective}|%{ssl_verify_result}' \
-      "${url}"
-  )"
-  IFS='|' read -r status effective_url tls_verify_result <<<"${result}"
-  if [[ "${tls_verify_result}" != "0" ]]; then
-    echo "CHECK reserved_origin_tls FAIL ${host} certificate verification result ${tls_verify_result}" >&2
-    exit 1
-  fi
-  if [[ "${status}" != "404" || "${effective_url}" != "${url}" ]]; then
-    echo "CHECK reserved_origin_fail_closed FAIL expected direct HTTP 404 for ${url}, got ${status} at ${effective_url}" >&2
-    exit 1
-  fi
-  echo "CHECK reserved_origin_fail_closed PASS ${host} HTTPS/TLS and HTTP 404"
+  local path url
+  local request_args=()
+  for path in /mcp /.well-known/oauth-protected-resource/mcp /.well-known/openai-apps-challenge /unknown; do
+    url="${origin}${path}"
+    request_args=()
+    if [[ "${path}" = /mcp ]]; then
+      request_args=(--request POST
+        --header 'Accept: application/json, text/event-stream'
+        --header 'Content-Type: application/json'
+        --data '{"jsonrpc":"2.0","id":"retired-origin-smoke","method":"initialize","params":{}}')
+    fi
+    result="$(
+      "${curl_common[@]}" "${request_args[@]}" \
+        --output "${output_file}" \
+        --write-out '%{http_code}|%{url_effective}|%{ssl_verify_result}' \
+        "${url}"
+    )"
+    IFS='|' read -r status effective_url tls_verify_result <<<"${result}"
+    if [[ "${tls_verify_result}" != "0" ]]; then
+      echo "CHECK retired_origin_tls FAIL ${host} certificate verification result ${tls_verify_result}" >&2
+      exit 1
+    fi
+    if [[ "${status}" != "404" || "${effective_url}" != "${url}" ]]; then
+      echo "CHECK retired_origin_fail_closed FAIL expected direct HTTP 404 for ${url}, got ${status} at ${effective_url}" >&2
+      exit 1
+    fi
+    echo "CHECK retired_origin_fail_closed PASS ${url} HTTPS/TLS and HTTP 404"
+  done
 }
 
-for reserved_origin in "${RESERVED_MCP_ORIGINS[@]}"; do
-  assert_reserved_origin "${reserved_origin}"
+for retired_origin in "${RETIRED_MCP_ORIGINS[@]}"; do
+  assert_retired_origin "${retired_origin}"
 done

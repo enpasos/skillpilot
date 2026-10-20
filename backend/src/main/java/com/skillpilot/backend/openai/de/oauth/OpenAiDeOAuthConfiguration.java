@@ -290,7 +290,7 @@ public class OpenAiDeOAuthConfiguration {
                 .clientSecret(clientSecretBasic
                         ? encodedClientSecret(existing, properties.getOauth().getClientSecret())
                         : null)
-                .clientName("ChatGPT / SkillPilot Coach v1")
+                .clientName("ChatGPT / SkillPilot Coach")
                 .clientAuthenticationMethods(methods -> {
                     methods.clear();
                     methods.add(clientAuthenticationMethod);

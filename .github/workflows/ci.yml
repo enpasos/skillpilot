@@ -133,7 +133,7 @@ jobs:
           node --test scripts/openai_plugin_release.test.mjs scripts/plugin_ci_workflows.test.mjs scripts/compute_curriculum_revision.test.mjs scripts/check_skillpilot_coach_behavior.test.mjs scripts/audit_npm_dependencies.test.mjs
       - name: Validate SkillPilot Coach source and current submission contract
         run: node scripts/check_openai_plugin_versioning.mjs
-      - name: Validate current OpenAI 1.1 plan contract
+      - name: Validate current OpenAI daily-plan contract
         run: node --test scripts/check_openai_coach_v11_candidate.test.mjs
       - name: Test submission generation, export audit and trace validation
         run: |
@@ -157,12 +157,12 @@ jobs:
         with:
           name: openai-submission-worksheet-${{ github.sha }}
           path: |
-            ai/openai plugin/skillpilot-coach-v1/submission/generated/portal-draft.json
-            ai/openai plugin/skillpilot-coach-v1/submission/generated/preparation.json
-            ai/openai plugin/skillpilot-coach-v1/submission/generated/acceptance-guide.md
-            ai/openai plugin/skillpilot-coach-v1/submission/generated/trace-template.json
-            ai/openai plugin/skillpilot-coach-v1/submission/generated/submission-plugin.json
-            ai/openai plugin/skillpilot-coach-v1/submission/generated/submission-package.json
+            ai/openai plugin/skillpilot-coach/submission/generated/portal-draft.json
+            ai/openai plugin/skillpilot-coach/submission/generated/preparation.json
+            ai/openai plugin/skillpilot-coach/submission/generated/acceptance-guide.md
+            ai/openai plugin/skillpilot-coach/submission/generated/trace-template.json
+            ai/openai plugin/skillpilot-coach/submission/generated/submission-plugin.json
+            ai/openai plugin/skillpilot-coach/submission/generated/submission-package.json
           if-no-files-found: error
       - name: Retain checked OpenAI submission ZIP
         uses: actions/upload-artifact@v6

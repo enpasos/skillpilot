@@ -62,7 +62,7 @@ public final class OpenAiDialogReplayFixture {
     public LearnerPlanTodayStatus planStatus = com.skillpilot.backend.api.LearnerPlanTodayStatusFixtures
             .status(LocalDate.parse("2026-09-09"), false, false);
     public boolean sessionValid = true;
-    public String preparedMessage = "Bitte verwende SkillPilot Coach v1 und lade meinen aktuellen Kontext. "
+    public String preparedMessage = "Bitte verwende SkillPilot Coach und lade meinen aktuellen Kontext. "
             + "learningSessionId: " + SESSION_ID;
     public List<Map<String, Object>> priorConversation = List.of();
     public Function<String, List<McpSchema.CallToolResult>> uiDriver = turnId -> {

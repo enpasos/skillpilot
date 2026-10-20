@@ -176,10 +176,32 @@ handshake race is corrected with new resource `9c09821e96ab…`; deployed
 `08030…` remains retained unchanged. Git-imported direct-MCP plugins remain
 Desktop only; Web and mobile are targets of the hosted directory route and
 require actual host acceptance. Local Chromium viewport checks are not client
-acceptance. The major-version assessment in
-`docs/concept/runtime-workflows/openai-plugin-versioning-and-lifecycle.md`
-recommends a durable existing identity and exact endpoint; the current V1
-guards remain in force until an explicit future versioning implementation.
+acceptance.
+
+In the same **19 October 2026** session, the Product Owner explicitly chose a
+fresh permanent plugin **SkillPilot Coach**, technical name **`skillpilot-coach`**,
+with the neutral endpoint **`https://mcp-openai.skillpilot.com/mcp`** before the
+new submission. This supersedes both the initial recommendation to retain the
+old public identity/endpoint and the former one-plugin-per-major plan. Package
+SemVer may change across majors while this identity and exact endpoint remain
+stable. The existing OAuth issuer **`https://skillpilot.com/api/openai/v1`**,
+internal V1 adapter, scopes and session isolation remain; public Resource/Audience,
+widget origin, discovery and edge pins move together to the neutral origin.
+Native CIMD uses the exact new resource-specific `7yTcOAOqrumX` client/callback.
+Do not introduce dual audiences or multiple public runtime origins for this cutover.
+
+The owner expressly excluded old chats: no chat continuation, session migration
+or continued old MCP runtime is required. Reconnection and a fresh learning start
+are acceptable; preserve durable learner progress. Published Git-beta bytes,
+historical archives and previously advertised UI artifact bytes remain immutable.
+The owner handles deletion of the unpublished portal draft. Local preparation is
+authorized; this decision does not itself deploy, submit or publish anything.
+The resource change activates a new OAuth profile fingerprint and retires the old
+one; a rollback needs a new explicit policy revision and fresh authorization.
+Future tool changes must respect the host's separately reviewed live definitions;
+one stable plugin does not make arbitrary incompatible schema changes safe or
+require every old tool forever. See the binding current decision in
+`docs/concept/runtime-workflows/openai-plugin-versioning-and-lifecycle.md`.
 
 This document is the **long-term memory** for SkillPilot, including the skill-graph explorer.  
 It captures the *concepts and design decisions* that are **not obvious from the code alone**, so humans and LLMs can extend the project consistently across different learning domains.

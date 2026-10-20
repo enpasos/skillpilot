@@ -98,9 +98,10 @@ The deployment process currently does all of the following:
 2.  Check that the target `systemd` service is reachable, that the exact
     restart command has a passwordless `sudo` grant, and that the required PDF
     validation tools are available.
-3.  Stash local working-tree changes.
+3.  Stash local working-tree changes unless `SKILLPILOT_SKIP_GIT_UPDATE=1`
+    pins the deployment to an already verified commit and working tree.
 4.  Pull the latest code from Git and, if `HEAD` changed, restart the freshly
-    checked-out deployment engine.
+    checked-out deployment engine, unless the Git update was explicitly skipped.
 5.  Validate the OpenAI V1 release contract and any explicit public-URL
     overrides before copying assets, building, or restarting the service.
 6.  Deploy **curriculum decks** from `curricula/.../json/` into both frontend and backend static data folders.
@@ -261,7 +262,10 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
 3.  **`git stash` + `git pull`**: the current script assumes deployment happens
     from a possibly dirty working tree and protects the pull by stashing first.
     If the pull changes `HEAD`, it restarts the newly checked-out deployment
-    engine before continuing.
+    engine before continuing. For the coordinated stable-origin cutover, first
+    preserve generated server files and prepare the exact verified source, then
+    use `SKILLPILOT_SKIP_GIT_UPDATE=1` to avoid stashing or changing that source.
+    See the [cutover runbook](openai-stable-origin.md).
 4.  **OpenAI V1 preflight**: the checked-in release contract is validated
     before asset copying, build and restart. The three canonical V1 public URL
     variables may be absent, in which case the versioned application defaults
@@ -306,13 +310,14 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
     private configuration and activation steps.
 14. **Mandatory OpenAI V1 public-contract smoke** runs after readiness for
     every `openai-mcp` deployment. It verifies the dedicated
-    `mcp-coach-v1.skillpilot.com` TLS certificate, direct responses without
+    `mcp-openai.skillpilot.com` TLS certificate, direct responses without
     redirects, HTTP `200` plus the exact resource in path-specific
     protected-resource metadata, and HTTP `401` plus the exact
     `WWW-Authenticate` metadata reference at
-    `https://mcp-coach-v1.skillpilot.com/mcp`. The discarded main-origin
-    routes and the internal transport route must return HTTP `404`; all five
-    reserved sibling hosts must remain fail-closed with HTTP `404`.
+    `https://mcp-openai.skillpilot.com/mcp`. The discarded main-origin
+    routes and the internal transport route must return HTTP `404`; the retired
+    `mcp-coach-v1` through `mcp-coach-v9` hosts must return HTTP `404`.
+    The first activation requires the [coordinated backend/edge cutover](openai-stable-origin.md).
 15. **Further deployment smoke tests** check that the public host serves the intended
     coach variant in both version metadata and HTML and contains the reviewed
     DE/EN audio, coach, and legal transparency copy. The source-rationale smoke

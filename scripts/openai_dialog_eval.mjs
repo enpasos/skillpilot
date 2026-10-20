@@ -1,3 +1,4 @@
+import { OPENAI_PLUGIN } from "./lib/openai_plugin_config.mjs";
 /** Test-only API actor + independent judge. Never imported by the runtime coach. */
 import assert from 'node:assert/strict'
 import { createHash } from 'node:crypto'
@@ -10,7 +11,7 @@ import { digest, validateSuite } from './openai_plugin_submission.mjs'
 import { evaluateDialogCase, buildJudgeRequest, validateJudgeResult } from './openai_dialog_assertions.mjs'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
-const plugin = resolve(root, 'ai/openai plugin/skillpilot-coach-v1')
+const plugin = resolve(root, OPENAI_PLUGIN.sourcePath)
 const readJson = path => JSON.parse(readFileSync(path, 'utf8'))
 const sha = data => createHash('sha256').update(data).digest('hex')
 const API_URL = 'https://api.openai.com/v1/responses'
@@ -274,8 +275,8 @@ function checkedSources(config) {
   const contract = readJson(resolve(snapshot, 'contract/contract.json'))
   const suite = readJson(resolve(plugin, 'submission/review-cases.json'))
   validateSuite(suite, manifest, contract)
-  const skillPath = resolve(plugin, 'skills/skillpilot-coach-v1/SKILL.md')
-  const policyPath = resolve(plugin, 'skills/skillpilot-coach-v1/references/coaching-policy.md')
+  const skillPath = resolve(plugin, OPENAI_PLUGIN.skillPath, 'SKILL.md')
+  const policyPath = resolve(plugin, OPENAI_PLUGIN.skillPath, 'references/coaching-policy.md')
   const files = ['scripts/openai_dialog_eval.mjs', 'scripts/openai_dialog_assertions.mjs', 'scripts/config/openai-dialog-eval.json', 'backend/build.gradle.kts']
   const harnessDir = resolve(root, 'backend/src/test/java/com/skillpilot/backend/openai/mcp/de')
   files.push(...readdirSync(harnessDir).filter(name => name.startsWith('OpenAiDialogReplay')).map(name => relative(root, resolve(harnessDir, name))))

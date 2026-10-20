@@ -282,7 +282,7 @@ No active Nginx file was edited or reloaded. The dedicated V1 TLS server must:
   include ${INSTALL_DIR}/mode.conf;
   trust ${INSTALL_DIR}/openai-client-ca-bundle.pem;
   call http://127.0.0.1:8792/verify only through an internal auth_request;
-  protect exactly https://mcp-coach-v1.skillpilot.com/mcp.
+  protect exactly https://mcp-openai.skillpilot.com/mcp.
 
 Next, validate the reviewed Nginx configuration, reload it, and run:
   sudo ./scripts/verify_openai_v1_mtls_edge.sh --preflight

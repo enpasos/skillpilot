@@ -514,17 +514,17 @@ public class OpenAiDeCoachConnectionService {
         String instruction = switch (launch.type()) {
             case CURRENT_UNIT ->
                     english
-                            ? "Use SkillPilot Coach v1 and continue."
-                            : "Verwende SkillPilot Coach v1 und fahre fort.";
+                            ? "Use SkillPilot Coach and continue."
+                            : "Verwende SkillPilot Coach und fahre fort.";
             case VERIFIED_RECALL ->
                     english
-                            ? "Use SkillPilot Coach v1 and start the strict recall check."
-                            : "Verwende SkillPilot Coach v1 und starte die harte Kartenprüfung.";
+                            ? "Use SkillPilot Coach and start the strict recall check."
+                            : "Verwende SkillPilot Coach und starte die harte Kartenprüfung.";
             case ABI26_EXAM ->
                     english
-                            ? "Use SkillPilot Coach v1 and start the mathematics Abitur exam ("
+                            ? "Use SkillPilot Coach and start the mathematics Abitur exam ("
                                     + ("LK".equals(launch.courseLevel()) ? "advanced course)." : "basic course).")
-                            : "Verwende SkillPilot Coach v1 und starte die Mathematik-Abiturprüfung ("
+                            : "Verwende SkillPilot Coach und starte die Mathematik-Abiturprüfung ("
                                     + ("LK".equals(launch.courseLevel()) ? "Leistungskurs)." : "Grundkurs).");
         };
         return instruction

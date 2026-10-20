@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    "skillpilot-coach": {
+      "type": "http",
+      "url": "https://mcp-openai.skillpilot.com/mcp",
+      "extensions": {
+        "com.openai": {
+          "auth": {
+            "type": "oauth",
+            "client": {
+              "mode": "cimd"
+            }
+          }
+        }
+      }
+    }
+  }
+}

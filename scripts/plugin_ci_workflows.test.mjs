@@ -135,7 +135,7 @@ test('CI retains reproducible non-secret submission worksheets and ZIP after val
   const paths = upload.match(/          path: \|\n((?:            .+\n)+)/u)?.[1]
     .trim().split('\n').map(line => line.trim())
   assert.deepEqual(paths, ['portal-draft.json', 'preparation.json', 'acceptance-guide.md', 'trace-template.json', 'submission-plugin.json', 'submission-package.json']
-    .map(name => `ai/openai plugin/skillpilot-coach-v1/submission/generated/${name}`))
+    .map(name => `ai/openai plugin/skillpilot-coach/submission/generated/${name}`))
   assert.ok(ci.indexOf('scripts/openai_plugin_submission.mjs check') < ci.indexOf('Audit MCP App dependencies'))
   assert.ok(ci.indexOf('Audit MCP App dependencies') < ci.indexOf('Retain checked OpenAI submission worksheets'))
   assert.match(ci, /node --test scripts\/openai_plugin_submission\.test\.mjs scripts\/reproducible_plugin_zip\.test\.mjs/u)

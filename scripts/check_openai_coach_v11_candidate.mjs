@@ -1,3 +1,4 @@
+import { OPENAI_PLUGIN } from "./lib/openai_plugin_config.mjs";
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
 import { createHash } from "node:crypto";
@@ -19,13 +20,13 @@ const sha256 = (bytes) => createHash("sha256").update(bytes).digest("hex");
 
 export function verifyDescriptor(descriptor, expectedCandidateVersion = descriptor.candidateVersion) {
   assert.equal(descriptor.schemaVersion, 2);
-  assert.equal(descriptor.pluginIdentity, "skillpilot-coach-v1");
-  assert.match(descriptor.candidateVersion, /^1\.1\.(?:0|[1-9]\d*)$/u,
-    "The plan-first candidate must use a stable 1.1.x package version.");
+  assert.equal(descriptor.pluginIdentity, OPENAI_PLUGIN.identity);
+  assert.match(descriptor.candidateVersion, /^(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)$/u,
+    "The current candidate must use a stable semantic package version.");
   assert.equal(descriptor.candidateVersion, expectedCandidateVersion,
     "Candidate descriptor version must match the current manifest.");
   assert.equal(descriptor.status, "PROMOTED_TO_CURRENT_DRAFT");
-  assert.equal(descriptor.sourceRoot, "ai/openai plugin/skillpilot-coach-v1");
+  assert.equal(descriptor.sourceRoot, OPENAI_PLUGIN.sourcePath);
   assert.deepEqual(descriptor.baseContract, {
     version: "1.0.0",
     status: "REJECTED",
@@ -71,12 +72,12 @@ export function verifyHistoricalBaseline(root, baseContract) {
 }
 
 export function loadAndVerifyCandidate(root = repositoryRoot) {
-  const sourceRoot = resolve(root, "ai/openai plugin/skillpilot-coach-v1");
+  const sourceRoot = resolve(root, OPENAI_PLUGIN.sourcePath);
   const manifest = readJson(resolve(sourceRoot, ".codex-plugin/plugin.json"));
-  assert.match(manifest.version, /^1\.1\.(?:0|[1-9]\d*)$/u,
-    "The current plan-first manifest must use a stable 1.1.x package version.");
+  assert.match(manifest.version, /^(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)$/u,
+    "The current manifest must use a stable semantic package version.");
   const descriptorPath = resolve(root,
-    `ai/openai candidates/skillpilot-coach-v1/${manifest.version}/candidate.json`);
+    `${OPENAI_PLUGIN.candidatePath}/${manifest.version}/candidate.json`);
   assert.ok(existsSync(descriptorPath),
     `Missing candidate descriptor for current package ${manifest.version}.`);
   const descriptor = verifyDescriptor(readJson(descriptorPath), manifest.version);
@@ -92,7 +93,7 @@ export function loadAndVerifyCandidate(root = repositoryRoot) {
   assert.equal(lifecycle.contractLine.publicationStatus, "DRAFT");
   assert.equal(lifecycle.contractLine.policyRevision, 5);
   const activeSkill = readFileSync(resolve(sourceRoot,
-    "skills/skillpilot-coach-v1/SKILL.md"), "utf8");
+    `${OPENAI_PLUGIN.skillPath}/SKILL.md`), "utf8");
   assert.ok(activeSkill.includes("learningPlanToday"));
   for (const name of descriptor.toolSurface.addedTools) assert.ok(activeSkill.includes(name));
   assert.equal(activeSkill.includes("get_skillpilot_daily_plan"), false,

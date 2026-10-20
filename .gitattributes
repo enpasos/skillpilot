@@ -263,3 +263,7 @@ curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-machin
 
 # Preserve the actual failed and successful focused fixture logs.
 curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-SL-exclusive-runtime-alias-technical-20261019-v1/original-fixture-runs/*.txt -text -whitespace
+
+# MCP snapshot UI artifacts retain their hash-bound renderer/SDK bytes.
+# Whitespace is validated through the artifact hashes, not authored formatting.
+contracts/drafts/openai/skillpilot-coach/*-SNAPSHOT/ui/** -text -whitespace

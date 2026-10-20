@@ -50,9 +50,9 @@ import org.springframework.test.context.TestPropertySource;
         "skillpilot.openai.coach.v1.oauth.enabled=false",
         "skillpilot.openai.coach.v1.mcp.enabled=false",
         "skillpilot.public-base-url=https://skillpilot.test",
-        "skillpilot.openai.coach.v1.mcp-url=https://mcp-coach-v1.skillpilot.com/mcp",
-        "skillpilot.openai.coach.v1.oauth-resource=https://mcp-coach-v1.skillpilot.com/mcp",
-        "skillpilot.openai.coach.v1.oauth.protected-resource-metadata=https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp",
+        "skillpilot.openai.coach.v1.mcp-url=https://mcp-openai.skillpilot.com/mcp",
+        "skillpilot.openai.coach.v1.oauth-resource=https://mcp-openai.skillpilot.com/mcp",
+        "skillpilot.openai.coach.v1.oauth.protected-resource-metadata=https://mcp-openai.skillpilot.com/.well-known/oauth-protected-resource/mcp",
         "skillpilot.openai.coach.v1.rate-limit.mcp-requests=5"
 })
 class OpenAiDeOAuthDiscoveryBootstrapIntegrationTest {

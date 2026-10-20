@@ -1,23 +1,28 @@
-# SkillPilot Coach v1: OpenAI-Submission-Dossier
+# SkillPilot Coach: OpenAI-Submission-Dossier
 
-**Stand:** 19. Oktober 2026 · **Nachfolgekandidat:** `1.1.3`
+**Stand:** 19. Oktober 2026 · **Neues Plugin:** `skillpilot-coach` ·
+**Paketkandidat:** `1.1.3` · **Runtime Contract Major:** `1`
+
+**Status:** lokal vorbereiteter neuer Plugin-Kandidat, **DRAFT**, nicht
+eingereicht, nicht genehmigt und nicht im OpenAI-Verzeichnis veröffentlicht.
+Der dauerhafte Name ist **SkillPilot Coach**; der exakte MCP-Endpunkt ist
+`https://mcp-openai.skillpilot.com/mcp`. Identität und Endpunkt bleiben über
+künftige Paket-Major-Versionen erhalten. Paket-SemVer und Runtime-Vertrag sind
+unabhängig. Der [Cutover- und Deployment-Ablauf](openai-stable-origin.md)
+beschreibt den separat auszuführenden Rollout. Jeder Lernstart verwendet eine
+frische WebGUI-Startnachricht in einem neuen Chat.
+
+Das frühere Plugin `skillpilot-coach-v1` hat getrennte historische Nachweise:
+Git **1.1.2** wurde für die Desktop-Beta veröffentlicht; Portal **1.0.0** wurde
+abgelehnt. Dessen Export nennt keine konkrete Ablehnungsbegründung oder
+Reviewer-Traces. Diese Veröffentlichungen, Snapshots und Aufnahmen bleiben
+unverändert. Sie belegen weder die Bereitstellung des neuen Endpunkts noch die
+Hostabnahme des neuen Plugins. Siehe
+[Review-Historie](openai-plugin-v1-review-freeze.md).
 
 Für dauerhafte Verhaltensprüfungen vor und nach der Einreichung siehe
 [automatische API-Dialogregression](../qa-ci/openai-dialog-regression.md).
-Sie ergänzt die einmalige manuelle ChatGPT-Abnahme und ersetzt keine Host-Evidenz.
-
-**Status:** lokal vorbereitete Neueinreichung, **DRAFT**, nicht eingereicht,
-nicht genehmigt und nicht im OpenAI-Verzeichnis veröffentlicht. Das Git-Paket
-**1.1.2** ist separat für die Desktop-Beta veröffentlicht. Der vorgelegte Portalexport nennt für
-`1.0.0` ausdrücklich `REJECTED`, aber weder eine konkrete Ablehnungsbegründung
-noch einen fehlgeschlagenen Test oder Reviewer-Trace. Die ausdrückliche
-Product-Owner-Freigabe vom 9. September erlaubte die Weiterentwicklung der
-Nachfolgerlinie `1.1`; der aktuelle Kandidat ist `1.1.3`. Die begrenzten
-späteren Aufträge vom 24. September und 5. Oktober betreffen Archiv/native CIMD
-und die bestehende Git-/Desktop-Beta mit normalem GUI-Start. Sie ersetzen keine
-offizielle Portal-Einreichung oder vollständige Hostabnahme. Der abgelehnte
-historische Snapshot bleibt unverändert. Siehe
-[Review-Entscheidung](openai-plugin-v1-review-freeze.md).
+Sie ergänzt die manuelle ChatGPT-Abnahme und ersetzt keine Host-Evidenz.
 
 Dieses Dossier und die erzeugten JSON-Dateien sind **keine Portal-Abgabe**.
 Credentials und rechtliche Attestierungen bleiben ausschließlich im
@@ -28,7 +33,7 @@ bestätigt eine externe Einreichung, Veröffentlichung oder Abnahme.
 
 ## 1. Verbindliche Quellen
 
-Unter `ai/openai plugin/skillpilot-coach-v1/` liegen:
+Unter `ai/openai plugin/skillpilot-coach/` liegen:
 
 | Quelle | Bedeutung |
 | --- | --- |
@@ -39,7 +44,7 @@ Unter `ai/openai plugin/skillpilot-coach-v1/` liegen:
 | `release-notes/<Version>.md` | aktuelle, unverändert als Veröffentlichungshinweise übernommene Versionsbeschreibung |
 
 Der frisch erzeugte Export unter
-`contracts/drafts/openai/skillpilot-coach-v1/<Version>-SNAPSHOT/contract/contract.json`
+`contracts/drafts/openai/skillpilot-coach/<Version>-SNAPSHOT/contract/contract.json`
 liefert Tools, Schemas, Annotationen, Metadaten und UI-Ressourcen.
 `scripts/openai_plugin_submission.mjs` erzeugt deterministisch:
 
@@ -57,7 +62,7 @@ liefert Tools, Schemas, Annotationen, Metadaten und UI-Ressourcen.
   enthaltenen Dateien und ihrer Quellen sowie ausdrücklich offene Nachweise.
 
 `package` schreibt zusätzlich ein tatsächlich lesbares, reproduzierbares
-`skillpilot-coach-v1-<Version>-submission.zip` nach `tmp/openai-submission/`
+`skillpilot-coach-<Version>-submission.zip` nach `tmp/openai-submission/`
 oder in das gewählte `--out-dir`. Die sieben ausdrücklich erlaubten
 Installationsdateien liegen direkt an der ZIP-Wurzel, ergänzt um die
 Repository-`LICENSE`. Nur das enthaltene Manifest wird für den Upload um die
@@ -85,7 +90,7 @@ Auch ein gebautes ZIP bleibt `PREPARED_NOT_SUBMITTED` und `ready: false`,
 bis die getrennten externen Prüfungen erledigt sind.
 
 Für den nächsten echten Test mit der
-[erzeugten Abnahmeanleitung](https://github.com/enpasos/skillpilot/blob/main/ai/openai%20plugin/skillpilot-coach-v1/submission/generated/acceptance-guide.md)
+[erzeugten Abnahmeanleitung](https://github.com/enpasos/skillpilot/blob/main/ai/openai%20plugin/skillpilot-coach/submission/generated/acceptance-guide.md)
 beginnen. Ergebnisse ausschließlich in einer separaten lokalen Kopie unter
 `tmp/` dokumentieren. Der OpenAI-CI-Job stellt nach seinen erfolgreichen
 Prüfungen die ausdrücklich erlaubten Vorbereitungsdateien sowie das ZIP und
@@ -98,7 +103,8 @@ verwendet. Lokaler Export und ZIP-Erzeugung ändern weder Produktion noch Portal
 ## 2. Nachgewiesene Mängel des abgelehnten Exports
 
 Die bereinigte Befundliste steht in
-`submission/history/rejected-1.0.0-export-audit.json`. Der private Originalexport
+`ai/openai plugin/skillpilot-coach-v1/submission/history/rejected-1.0.0-export-audit.json`.
+Der private Originalexport
 enthält OAuth- und Review-Zugangsinformationen und wird nicht eingecheckt.
 
 - P3 hatte in `expected_output` dieselbe Toolliste wie in `tools_triggered`.
@@ -145,8 +151,10 @@ doppelten Writes oder eigenständigen Fokusverengungen.
    öffentlichen Endpunkt verifizieren. Ein lokaler Export beweist keinen Rollout.
 2. ZIP erzeugen und mit `audit-zip` gegen die aktuellen Quellen prüfen. Unter
    **Plugins → Upload new or existing plugin → Upload plugin** über
-   **With MCP** das vollständige ZIP auswählen. Bei einer erneuten Einreichung
-   das bestehende Plugin wählen. Keine bestehende Developer-Mode-Integration-ID
+   **With MCP** das vollständige ZIP für das neue Plugin `skillpilot-coach`
+   auswählen. Das historische `skillpilot-coach-v1` nicht umbenennen oder
+   überschreiben. Spätere Updates gehören zur bestehenden neutralen Identität.
+   Keine bestehende Developer-Mode-Integration-ID
    oder `.app.json` übernehmen.
 3. Unter **Metadata & Skills** die importierte Version, das Listing und die
    Skills prüfen. Pflichtfehler im Quellpaket korrigieren und das vollständige
@@ -206,12 +214,14 @@ oder Fokusoption wird das Fixture frisch validiert, nicht mit alten Zahlen erzwu
 ## 6. Automatisierung und Beweisgrenzen
 
 ```bash
+node scripts/openai_plugin_release.mjs prepare
+node scripts/openai_plugin_release.mjs verify
 node --test scripts/openai_plugin_submission.test.mjs
 node --test scripts/reproducible_plugin_zip.test.mjs
 node scripts/openai_plugin_submission.mjs prepare
 node scripts/openai_plugin_submission.mjs check
 node scripts/openai_plugin_submission.mjs package --out-dir tmp/openai-submission
-node scripts/openai_plugin_submission.mjs audit-zip --zip tmp/openai-submission/skillpilot-coach-v1-1.1.3-submission.zip
+node scripts/openai_plugin_submission.mjs audit-zip --zip tmp/openai-submission/skillpilot-coach-1.1.3-submission.zip
 node scripts/openai_plugin_submission.mjs audit-export --export /exact/local/path/to/fresh-export.json
 node scripts/openai_plugin_submission.mjs validate-trace --trace /exact/local/path/to/sanitized-trace.json
 ```
@@ -258,8 +268,9 @@ Widget-Domain und CSP; keine zusätzlichen Domains werden vorsorglich
 freigegeben. Private Fragen/Antworten der normalen Kartenübung gehören nicht
 in die Modellprojektion.
 
-Der aktuelle Git-Betastand ist **1.1.2**; Installation und Lernstart in
-**Windows ChatGPT Desktop** sind vom Product Owner bestätigt. Die
+Für das historische `skillpilot-coach-v1` sind Git **1.1.2** sowie Installation
+und Lernstart in **Windows ChatGPT Desktop** vom Product Owner bestätigt.
+Für das neue `skillpilot-coach` stehen diese Nachweise noch aus. Die
 Einreichungsabnahme und der Aufnahmeplan für **ChatGPT im Webbrowser** bleiben
 separate Nachweise. Der Desktop-Betastart bestätigt keine vollständige Host-/UI-Abnahme.
 Der ZIP-Upload ist der dokumentierte Weg zur Verzeichnisveröffentlichung und

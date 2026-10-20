@@ -1,3 +1,4 @@
+import { OPENAI_PLUGIN } from "./lib/openai_plugin_config.mjs";
 import assert from 'node:assert/strict'
 import { createHash } from 'node:crypto'
 import { existsSync, lstatSync, mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs'
@@ -9,7 +10,7 @@ import { readTrackedInventory } from './lib/reproducible_plugin_archive.mjs'
 import { createReproduciblePluginZip } from './lib/reproducible_plugin_zip.mjs'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
-const plugin = resolve(root, 'ai/openai plugin/skillpilot-coach-v1')
+const plugin = resolve(root, OPENAI_PLUGIN.sourcePath)
 const submission = resolve(plugin, 'submission')
 const requiredPortalIds = ['P1', 'P2', 'P3', 'P4', 'P5', 'N1', 'N2', 'N3']
 const json = value => `${JSON.stringify(value, null, 2)}\n`

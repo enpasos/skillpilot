@@ -334,11 +334,11 @@ public class OpenAiDeProperties {
 
         /** Native desktop is a distinct public OAuth client on the same protected resource. */
         public static class NativeCimd {
-            public static final String CLIENT_ID = "https://chatgpt.com/oauth/codex/Su4_F3uWAhkS/client.json";
-            public static final String REDIRECT_URI = "http://127.0.0.1/callback/Su4_F3uWAhkS";
+            public static final String CLIENT_ID = "https://chatgpt.com/oauth/codex/7yTcOAOqrumX/client.json";
+            public static final String REDIRECT_URI = "http://127.0.0.1/callback/7yTcOAOqrumX";
             private boolean enabled;
             private String clientId = CLIENT_ID;
-            private String authorizationPolicyVersion = "native-cimd-v1";
+            private String authorizationPolicyVersion = "native-cimd-stable-origin-v1";
             public boolean isEnabled() { return enabled; }
             public void setEnabled(boolean value) { enabled = value; }
             public String getClientId() { return clientId; }

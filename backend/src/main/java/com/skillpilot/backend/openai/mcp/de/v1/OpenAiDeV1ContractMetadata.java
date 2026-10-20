@@ -4,23 +4,23 @@ import java.time.Duration;
 import java.util.List;
 
 /**
- * Stable public identity and independently moving state versions for the
- * OpenAI Coach V1 contract.
+ * Permanent public plugin identity with independent package and contract versions.
+ * The current runtime implements the OpenAI Coach V1 contract.
  *
  * <p>The matching release descriptor lives in
- * {@code ai/openai plugin/skillpilot-coach-v1/release/line.json}. CI checks
+ * {@code ai/openai plugin/skillpilot-coach/release/line.json}. CI checks
  * both sources against the submitted plugin manifest.</p>
  */
 public final class OpenAiDeV1ContractMetadata {
 
-    public static final String PLUGIN_IDENTITY = "skillpilot-coach-v1";
+    public static final String PLUGIN_IDENTITY = "skillpilot-coach";
     public static final String PLUGIN_VERSION = "1.1.3";
     public static final int CONTRACT_MAJOR = 1;
     public static final long POLICY_REVISION = 5L;
     public static final String SUPPORT_LIFECYCLE = "CURRENT";
     public static final String PUBLICATION_STATUS = "DRAFT";
     public static final String NEW_SESSION_POLICY = "ALLOW";
-    public static final String PUBLIC_MCP_ORIGIN = "https://mcp-coach-v1.skillpilot.com";
+    public static final String PUBLIC_MCP_ORIGIN = "https://mcp-openai.skillpilot.com";
     /** Dedicated, plugin-unique origin required for the submitted MCP App UI. */
     public static final String WIDGET_DOMAIN = PUBLIC_MCP_ORIGIN;
     public static final String PUBLIC_MCP_PATH = "/mcp";

@@ -284,7 +284,7 @@ export function assertActiveUiBindings(activeBindings, resources, tools) {
 
 /**
  * Returns all reasons why candidate cannot be released as a backwards
- * compatible minor/patch update of baseline within the same contract major.
+ * compatible package update of baseline within the same runtime contract major.
  */
 export function collectCompatibilityProblems(baseline, candidate) {
   const problems = [];
@@ -504,6 +504,7 @@ export function assertSuccessorVersionClassification(
   const candidate = loadReleaseContract(candidateRoot);
   const changes = collectPublicSurfaceChanges(baseline, candidate);
   if (
+    candidateSemver.major === baselineSemver.major &&
     candidateSemver.minor === baselineSemver.minor &&
     changes.minorRequired.length > 0
   ) {
@@ -626,11 +627,6 @@ export function validatePublishedIndex(index, expectedIdentity, contractMajor) {
   let previous = null;
   for (const version of index.publishedVersions) {
     parseStableSemver(version);
-    assert.equal(
-      version.split(".")[0],
-      String(contractMajor),
-      `Published version ${version} is outside the contract major.`,
-    );
     if (previous !== null) {
       assert.equal(
         compareSemver(
@@ -658,11 +654,6 @@ export function validatePublishedIndex(index, expectedIdentity, contractMajor) {
   }
   parseStableSemver(index.latestPublishedVersion);
   assert.equal(
-    index.latestPublishedVersion.split(".")[0],
-    String(contractMajor),
-    "Latest published version is outside the contract major.",
-  );
-  assert.equal(
     index.publishedVersions.at(-1),
     index.latestPublishedVersion,
     "Latest published version must be the final publishedVersions entry.",
@@ -684,11 +675,6 @@ export function determineReleaseVerificationMode(
   publishedIndex,
 ) {
   const candidate = parseStableSemver(candidateVersion);
-  assert.equal(
-    candidate.major,
-    publishedIndex.contractMajor,
-    `Candidate ${candidateVersion} is outside contract major ${publishedIndex.contractMajor}.`,
-  );
   if (publishedIndex.latestPublishedVersion === null) {
     return "initial-draft";
   }

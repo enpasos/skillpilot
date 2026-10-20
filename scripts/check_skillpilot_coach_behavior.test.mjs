@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 import test from "node:test";
 import { assertCurrentCoachBehavior } from "./check_skillpilot_coach_behavior.mjs";
 
-const skillRoot = new URL("../ai/openai plugin/skillpilot-coach-v1/skills/skillpilot-coach-v1/", import.meta.url);
+const skillRoot = new URL("../ai/openai plugin/skillpilot-coach/skills/skillpilot-coach/", import.meta.url);
 const source = {
   skill: readFileSync(new URL("SKILL.md", skillRoot), "utf8"),
   policy: readFileSync(new URL("references/coaching-policy.md", skillRoot), "utf8"),

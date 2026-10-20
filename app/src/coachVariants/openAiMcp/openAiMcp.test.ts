@@ -42,7 +42,7 @@ const promptWithSession = (message: string, learningSessionId = LEARNING_SESSION
   `${message}\nlearningSessionId: ${learningSessionId}`
 
 const compactCurrentUnitPrompt = promptWithSession(
-  'Verwende SkillPilot Coach v1 und fahre fort.',
+  'Verwende SkillPilot Coach und fahre fort.',
 )
 
 assertEqual(
@@ -94,7 +94,7 @@ const launch = await requestOpenAiMcpStart({
     launchCalls.push({ url: String(input), init })
     return new Response(JSON.stringify({
       prompt: promptWithSession(
-        'Verwende SkillPilot Coach v1 und starte eine harte Kartenprüfung mit 7 Karten.',
+        'Verwende SkillPilot Coach und starte eine harte Kartenprüfung mit 7 Karten.',
       ),
       webUrl: 'https://chatgpt.com/',
       learningSessionId: LEARNING_SESSION_A,
@@ -111,7 +111,7 @@ assertEqual(launch.learningSessionId, LEARNING_SESSION_A, 'returns newly issued 
 assertEqual(
   launch.prompt,
   promptWithSession(
-    'Verwende SkillPilot Coach v1 und starte eine harte Kartenprüfung mit 7 Karten.',
+    'Verwende SkillPilot Coach und starte eine harte Kartenprüfung mit 7 Karten.',
   ),
   'accepts the compact launch prompt',
 )
@@ -190,7 +190,7 @@ await requestOpenAiMcpStart({
   fetchImpl: async (input, init) => {
     englishLaunchCalls.push({ url: String(input), init })
     return new Response(JSON.stringify({
-      prompt: promptWithSession('Use SkillPilot Coach v1 and continue.'),
+      prompt: promptWithSession('Use SkillPilot Coach and continue.'),
       webUrl: 'https://chatgpt.com/',
       learningSessionId: LEARNING_SESSION_A,
       expiresAt: '2026-07-22T20:00:00Z',
@@ -247,7 +247,7 @@ await assertRejects(
     providerEligibilityConfirmed: true,
   }, {
     fetchImpl: async () => new Response(JSON.stringify({
-      prompt: `${promptWithSession('Verwende SkillPilot Coach v1 und fahre fort.', LEARNING_SESSION_A)}\n${LEARNING_SESSION_A}`,
+      prompt: `${promptWithSession('Verwende SkillPilot Coach und fahre fort.', LEARNING_SESSION_A)}\n${LEARNING_SESSION_A}`,
       webUrl: 'https://chatgpt.com/',
       learningSessionId: LEARNING_SESSION_A,
       expiresAt: '2026-07-22T20:00:00Z',

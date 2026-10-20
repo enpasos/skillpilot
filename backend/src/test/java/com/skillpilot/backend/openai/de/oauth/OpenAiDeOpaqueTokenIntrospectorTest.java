@@ -25,7 +25,7 @@ import org.springframework.security.oauth2.server.resource.introspection.BadOpaq
 class OpenAiDeOpaqueTokenIntrospectorTest {
 
     private static final String CLIENT_ID = "chatgpt-client";
-    private static final String MCP_URL = "https://mcp-coach-v1.skillpilot.test/mcp";
+    private static final String MCP_URL = "https://mcp-openai.skillpilot.com/mcp";
     private static final String TOKEN = "opaque-access-token";
     private static final String SUBJECT = "spod_subject";
 
@@ -59,6 +59,14 @@ class OpenAiDeOpaqueTokenIntrospectorTest {
     void rejectsTokenWhosePersistedAuthorizationResourceDiffers() {
         Fixture fixture = fixture(MCP_URL + "/", true);
 
+        assertThatExceptionOfType(BadOpaqueTokenException.class)
+                .isThrownBy(() -> fixture.introspector().introspect(TOKEN))
+                .withMessageContaining("protected resource");
+    }
+
+    @Test
+    void rejectsPreviousOriginTokenEvenForTheSameRegisteredClient() {
+        Fixture fixture = fixture("https://mcp-coach-v1.skillpilot.com/mcp", true);
         assertThatExceptionOfType(BadOpaqueTokenException.class)
                 .isThrownBy(() -> fixture.introspector().introspect(TOKEN))
                 .withMessageContaining("protected resource");

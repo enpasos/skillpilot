@@ -1,3 +1,4 @@
+import { OPENAI_PLUGIN } from "./lib/openai_plugin_config.mjs";
 import assert from "node:assert/strict";
 import { existsSync, lstatSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { dirname, relative, resolve, sep } from "node:path";
@@ -11,7 +12,7 @@ import {
 } from "../ai/openai-marketplace/skillpilot-chatgpt-marketplace/validate.mjs";
 
 export const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const sourceRelative = "ai/openai plugin/skillpilot-coach-v1";
+const sourceRelative = OPENAI_PLUGIN.sourcePath;
 const templateRelative = "ai/openai-marketplace/skillpilot-chatgpt-marketplace";
 
 function regularFile(root, path) {

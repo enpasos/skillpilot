@@ -53,7 +53,7 @@ class OpenAiDeClientAssertionDecoderFactoryTest {
         List<Consumer<JWTClaimsSet.Builder>> invalidClaims = List.of(
                 builder -> builder.issuer("https://attacker.test/client.json"),
                 builder -> builder.subject("wrong-client"),
-                builder -> builder.audience("https://mcp-coach-v1.skillpilot.com/mcp"),
+                builder -> builder.audience("https://mcp-openai.skillpilot.com/mcp"),
                 builder -> builder.audience("https://skillpilot.test/api/openai/v1/api/openai/v1/oauth2/token"),
                 builder -> builder.audience(List.of(AUDIENCE, "https://attacker.test")),
                 builder -> builder.expirationTime(null),

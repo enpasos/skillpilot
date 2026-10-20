@@ -8,15 +8,15 @@ import { loadAndVerifyCandidate, verifyDescriptor, verifyHistoricalBaseline } fr
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const currentManifest = () => JSON.parse(readFileSync(resolve(root,
-  "ai/openai plugin/skillpilot-coach-v1/.codex-plugin/plugin.json"), "utf8"));
+  "ai/openai plugin/skillpilot-coach/.codex-plugin/plugin.json"), "utf8"));
 const actualDescriptor = () => JSON.parse(readFileSync(resolve(root,
-  `ai/openai candidates/skillpilot-coach-v1/${currentManifest().version}/candidate.json`), "utf8"));
+  `ai/openai candidates/skillpilot-coach/${currentManifest().version}/candidate.json`), "utf8"));
 
 function candidateFixture(t) {
   const fixture = mkdtempSync(resolve(tmpdir(), "skillpilot-openai-candidate-test-"));
   t.after(() => rmSync(fixture, { recursive: true, force: true }));
   const manifestDirectory = resolve(fixture,
-    "ai/openai plugin/skillpilot-coach-v1/.codex-plugin");
+    "ai/openai plugin/skillpilot-coach/.codex-plugin");
   mkdirSync(manifestDirectory, { recursive: true });
   writeFileSync(resolve(manifestDirectory, "plugin.json"), JSON.stringify(currentManifest()));
   return fixture;
@@ -66,7 +66,7 @@ test("the current descriptor version must match the manifest without rebinding h
   const descriptor = actualDescriptor();
   descriptor.candidateVersion = "1.1.0";
   const directory = resolve(fixture,
-    `ai/openai candidates/skillpilot-coach-v1/${manifest.version}`);
+    `ai/openai candidates/skillpilot-coach/${manifest.version}`);
   mkdirSync(directory, { recursive: true });
   writeFileSync(resolve(directory, "candidate.json"), JSON.stringify(descriptor));
   assert.throws(() => loadAndVerifyCandidate(fixture),
@@ -86,9 +86,12 @@ test("a missing current descriptor cannot silently fall back to the earlier cand
     { message: `Missing candidate descriptor for current package ${currentManifest().version}.` });
 });
 
-test("candidate versions stay on the stable 1.1 line", () => {
-  for (const candidateVersion of ["1.1.01", "1.1.1-beta.1", "1.2.0", "../1.1.1"]) {
+test("candidate package majors are independent while versions stay stable and path-safe", () => {
+  for (const candidateVersion of ["1.1.01", "1.1.1-beta.1", "01.2.0", "../1.1.1"]) {
     assert.throws(() => verifyDescriptor({ ...actualDescriptor(), candidateVersion }),
-      /stable 1\.1\.x package version/u);
+      /stable semantic package version/u);
+  }
+  for (const candidateVersion of ["1.2.0", "2.0.0", "3.4.5"]) {
+    assert.doesNotThrow(() => verifyDescriptor({ ...actualDescriptor(), candidateVersion }));
   }
 });

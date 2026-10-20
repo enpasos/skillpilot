@@ -5,10 +5,11 @@ import { tmpdir } from "node:os";
 import { dirname, resolve } from "node:path";
 import test from "node:test";
 import { buildMarketplaceFiles, prepareMarketplace, repositoryRoot, verifyMarketplace } from "./openai_marketplace_release.mjs";
+import { OPENAI_PLUGIN } from "./lib/openai_plugin_config.mjs";
 import { OPENAI_PLUGIN_INSTALL_FILES, openAiPluginInstallFiles } from "./lib/openai_plugin_install_files.mjs";
-import { acceptance, identity, json, listFiles, templateFiles, validateMarketplace } from "../ai/openai-marketplace/skillpilot-chatgpt-marketplace/validate.mjs";
+import { acceptance, endpoint, identity, json, listFiles, templateFiles, validateMarketplace } from "../ai/openai-marketplace/skillpilot-chatgpt-marketplace/validate.mjs";
 
-const canonical = "ai/openai plugin/skillpilot-coach-v1";
+const canonical = "ai/openai plugin/skillpilot-coach";
 const templates = "ai/openai-marketplace/skillpilot-chatgpt-marketplace";
 function put(root, path, value) {
   mkdirSync(dirname(resolve(root, path)), { recursive: true });
@@ -30,6 +31,8 @@ function fixture(t) {
 }
 
 test("marketplace uses the portal allowlist while preserving historical archive behavior", () => {
+  assert.equal(identity, OPENAI_PLUGIN.identity);
+  assert.equal(endpoint, OPENAI_PLUGIN.publicEndpoint);
   assert.equal(OPENAI_PLUGIN_INSTALL_FILES.length, 7);
   assert.deepEqual(openAiPluginInstallFiles({}), [...OPENAI_PLUGIN_INSTALL_FILES]);
   assert.equal(openAiPluginInstallFiles({ apps: "./.app.json" })[2], ".app.json");

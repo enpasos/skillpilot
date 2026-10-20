@@ -14,10 +14,10 @@ const sourceApplicationPath = resolve(
 );
 
 export const OPENAI_V1_PUBLIC_CONTRACT = Object.freeze({
-  "mcp-url": "https://mcp-coach-v1.skillpilot.com/mcp",
-  "oauth-resource": "https://mcp-coach-v1.skillpilot.com/mcp",
+  "mcp-url": "https://mcp-openai.skillpilot.com/mcp",
+  "oauth-resource": "https://mcp-openai.skillpilot.com/mcp",
   "protected-resource-metadata":
-    "https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp",
+    "https://mcp-openai.skillpilot.com/.well-known/oauth-protected-resource/mcp",
 });
 
 // These names look plausible, but making a public contract URL configurable
@@ -297,11 +297,11 @@ export function validateBuiltApplication(applicationYaml, deployedCommit) {
   );
 
   const openAiServerVersionMatch = applicationYaml.match(
-    /^[ \t]*server-name:[ \t]*skillpilot-coach-v1[ \t]*(?:#.*)?\r?\n[ \t]*server-version:[ \t]*(?:"([^"]*)"|'([^']*)'|([^#\s]+))[ \t]*(?:#.*)?$/m,
+    /^[ \t]*server-name:[ \t]*skillpilot-coach[ \t]*(?:#.*)?\r?\n[ \t]*server-version:[ \t]*(?:"([^"]*)"|'([^']*)'|([^#\s]+))[ \t]*(?:#.*)?$/m,
   );
   assert.ok(
     openAiServerVersionMatch,
-    "Built application.yml must contain the SkillPilot Coach V1 MCP server version.",
+    "Built application.yml must contain the SkillPilot Coach MCP server version.",
   );
   assert.equal(
     openAiServerVersionMatch[1] ??

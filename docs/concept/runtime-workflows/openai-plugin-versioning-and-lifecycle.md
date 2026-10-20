@@ -1,9 +1,9 @@
 ---
 title: "SkillPilot: Versionierungs- und Lebenszyklusplan für das OpenAI-Plugin"
 subtitle: "MCP-API, dedizierte hashgebundene MCP-Apps-UIs, Skills und Lifecycle"
-document_version: "1.1"
+document_version: "1.2"
 status: "Verbindliche Architekturgrundlage"
-date: "2026-08-09"
+date: "2026-10-19"
 audience: "Codex- und SkillPilot-Entwicklung"
 ---
 
@@ -13,87 +13,120 @@ audience: "Codex- und SkillPilot-Entwicklung"
 jeweils dediziert an genau ein UI-Werkzeug gebundenen, hashgebundenen
 MCP-Apps-Ressourcen im V1-Vertrag
 
-**Dokumentversion:** 1.1
+**Dokumentversion:** 1.2
 
-**Stand:** 9. August 2026
+**Stand:** 19. Oktober 2026
 
 **Status:** Verbindliche interne Architekturgrundlage; einzelne Plattformfragen sind noch nicht offiziell von OpenAI geklärt.  
 **Adressaten:** Codex, Backend-, MCP-, UI-, Auth- und Release-Entwicklung
 
-**Aktuelle Release-Einordnung, 5. Oktober 2026:** Das kanonische Manifest führt
-`1.1.2`, geprüft und über den Git-Marketplace für die ChatGPT-Desktop-Beta
-veröffentlicht, mit Claudes Fix für verspätete Lernbilder. Der zugehörige
-Backend-Rollout erfolgt separat durch den Product Owner. Installation und
-Lernstart von `1.1.1` unter Windows sind vom Product Owner bestätigt.
-Sein Work/Voice-Test zeigt ein erstes Bild, aber
-keine vollständige Bildfolge; die Abnahme von `1.1.2` im Desktop steht aus.
-Die offizielle OpenAI-Einreichung bleibt `DRAFT`, das
-OpenAI-Verzeichnis unveröffentlicht. Der aktuelle Portal-Draft heißt
-`1.1.2-SNAPSHOT`; der alte `1.1.1-SNAPSHOT` bleibt unverändert.
-Eine Git-Veröffentlichung wird nicht mit `record-published` in den
-OpenAI-Portalindex eingetragen; ihre veröffentlichten Installationsbytes bleiben
-trotzdem unveränderlich. Die begrenzten Aufträge vom 24. September und 5. Oktober
-ergänzen die ursprüngliche Claude-first-Reihenfolge; sie ersetzen keine
-vollständige Hostabnahme oder Portal-Einreichung. Siehe
-[aktuelles Release-Runbook](../../deploy/openai-plugin-v1-release.md).
+**Release-Einordnung:** Die veröffentlichte Git-Beta `skillpilot-coach-v1`
+`1.1.2` und ihre Installationsbytes bleiben unverändert erhalten. Die folgende
+Entscheidung betrifft den neuen lokalen Kandidaten `1.1.3` vor seiner ersten
+Verzeichniseinreichung. Sie ist weder Deployment noch Veröffentlichung oder
+Hostabnahme. Die Voice-Bildfolge bleibt trotz des am 19. Oktober nachgewiesenen
+Backend-Rollouts von `08030…` ohne erfolgreiche Abnahme; der zusätzliche
+Handshake-Fix `9c09821e96ab…` ist lokal vorbereitet.
 
-## Neubewertung vom 19. Oktober 2026: eine dauerhafte Plugin-Identität
+## Entscheidung vom 19. Oktober 2026: ein dauerhaftes neutrales Plugin
 
-Der Product Owner hat beauftragt zu prüfen, ob SkillPilot künftig mit **einem
-Plugin über mehrere Major-Versionen** auskommt. Die aktuellen offiziellen
-Unterlagen verlangen keine neue Plugin-Identität allein wegen einer neuen
-Paket-Major. Sie dokumentieren neue ZIP-Versionen desselben Plugins und
-fortlaufende Prüfungen der gehosteten Werkzeuge. Der technische `name` ist
-eine stabile Identität; Paket-SemVer und Anzeigename sind davon getrennt.
+Der Product Owner hat nach der ersten Bewertung ausdrücklich ein neues,
+dauerhaftes Plugin **SkillPilot Coach** mit dem technischen Namen
+**`skillpilot-coach`** und einem neutralen MCP-Origin beauftragt. Alte Chats
+sollen bei dieser Umstellung weder fortgeführt noch migriert werden. Diese
+Entscheidung ersetzt die erste Empfehlung, den Namen `skillpilot-coach-v1`
+und dessen Endpoint beizubehalten, sowie das frühere Modell einer eigenen
+Plugin-Identität pro Major-Version.
+
+| Grenze | Dauerhafte Festlegung |
+|---|---|
+| Technischer Paketname | `skillpilot-coach` |
+| Anzeigename | `SkillPilot Coach` |
+| Öffentlicher MCP-Endpoint und OAuth Resource/Audience | `https://mcp-openai.skillpilot.com/mcp` |
+| Widget-Origin | `https://mcp-openai.skillpilot.com` |
+| Protected Resource Metadata | `https://mcp-openai.skillpilot.com/.well-known/oauth-protected-resource/mcp` |
+| Bestehender OAuth-Issuer | `https://skillpilot.com/api/openai/v1` |
+| Aktueller interner Adapter | `/internal/openai/v1/mcp`, `contractMajor = 1` |
+
+Paket-SemVer, öffentliche Identität und fachlicher Toolvertrag sind getrennt.
+Eine spätere Paketversion `2.x` kann denselben Toolvertrag verwenden; eine neue
+interne Workflowgeneration benötigt keinen neuen öffentlichen Namen oder
+Origin. Die exakte öffentliche URL bleibt auch bei künftigen Paket-Majors
+gleich. Die aktuellen offiziellen Unterlagen beschreiben Updates desselben
+Plugins und verlangen bei einem Originwechsel ein neues Plugin. Der
+Submission-Guide unterstützt URL-Wechsel im Updateablauf derzeit gar nicht.
+Der einmalige neue Origin wird deshalb **vor der neuen Einreichung** festgelegt.
 Siehe [Paketupdates](https://developers.openai.com/plugins/deploy/submission#update-your-published-plugin)
-und [fortlaufende Toolprüfung](https://developers.openai.com/plugins/deploy/app-review#continuous-review-and-tool-updates).
+und [Origin-Regel](https://developers.openai.com/plugins/deploy/app-review#submitting-new-versions-for-review).
 
-**Prüfergebnis und Empfehlung:** Eine dauerhafte bestehende Identität ist der
-sinnvolle Regelfall. `skillpilot-coach-v1` und die exakte bestehende MCP-URL
-können als historische technische Namen erhalten bleiben. Eine neue interne
-Workflow- oder Adaptergeneration muss keinen öffentlichen Vertragsbruch erzeugen.
-Ein neutraler Anzeigename wäre eine separate Paketänderung. Die bisherige
-Kopplung von Paketmajor, Vertragsmajor, Namenssuffix und Hostmajor ist eine
-interne Architekturentscheidung und keine nachgewiesene OpenAI-Pflicht.
+### Begrenzter technischer Umbau
 
-Dafür sind folgende Grenzen wesentlich:
+Der vorhandene V1-Adapter, die internen Pfade, Scopes und Sessionprüfungen
+bleiben bestehen. Das `v1` im OAuth-Issuer bezeichnet die bestehende
+Autorisierungsinstanz und ist keine Vorgabe für die öffentliche Paket-Major.
+Die neue Protected Resource Metadata verweist auf diesen exakten Issuer.
+MCP-URL, Resource/Audience, Widget-Origin, Metadata-URL und vertrauenswürdiger
+Edge-Host werden dagegen gemeinsam auf die neue öffentliche Adresse gebunden.
+Es gibt genau eine aktive Resource, keine zweite akzeptierte Audience und
+keinen Dispatcher für alte und neue Origins. Die exakten Sicherheitsprüfungen
+bleiben erhalten. Die Trennung zwischen Resource und Issuer entspricht der
+[OAuth-Metadatenbeschreibung](https://developers.openai.com/plugins/build/auth#publish-oauth-metadata-from-your-authorization-server).
 
-- Ein serverseitiger Session-Dispatcher repariert keine beim Host verwendete
-  inkompatible Eingabeschema-Definition. Bestehende öffentliche Semantik bleibt
-  erhalten oder neue Werkzeuge werden additiv und eindeutig benannt eingeführt.
-- Paket, Skill, Server und einzelne Toolfreigaben werden nicht atomar gemeinsam
-  aktualisiert. Zurückgehaltene neue Definitionen lassen alte Metadaten aktiv;
-  auch die alte Serversemantik muss dann noch vorhanden sein.
-- Ein verlässliches Signal der installierten Paketversion oder eine Garantie
-  zur Aktualisierung alter Chats ist nicht dokumentiert. Routing erfolgt nur
-  über servereigene Session-/Vertragspins, niemals über User-Agent,
-  `clientInfo.version` oder eine behauptete Paketversion im Prompt.
-- Bereits beworbene UI-Hash-URIs bleiben bytegenau lesbar. Ein Rollback muss auch
-  inzwischen freigegebene neue Werkzeuge bedienen können; ein beliebiger alter
-  Serverstand ist dafür nicht automatisch geeignet.
-- Die Dokumentation zur Endpoint-Änderung ist nicht einheitlich: Der
-  [Submission-Guide](https://developers.openai.com/plugins/deploy/submission#update-your-published-plugin)
-  verweist auf Support und unterstützt den URL-Wechsel im Updateablauf nicht;
-  die [Review-Anleitung](https://developers.openai.com/plugins/deploy/app-review#submitting-new-versions-for-review)
-  erlaubt einen neuen Pfad per Version, verlangt bei Originwechsel aber ein
-  neues Plugin. Für die vorliegende Umstellung bleibt die **exakte URL** bestehen.
+Native Desktop-CIMD erhält den zur neuen MCP-URL gehörenden exakten Client
+`https://chatgpt.com/oauth/codex/7yTcOAOqrumX/client.json` und den Callback-Pfad
+`http://127.0.0.1/callback/7yTcOAOqrumX` mit dynamischem Port. Das neue Dokument
+wurde am 19. Oktober erfolgreich abgerufen und bestätigt native Anwendung,
+`none`, Authorization Code und Refresh Token. Die getrennten öffentlichen und
+vertraulichen Clientprofile sowie S256-PKCE bleiben bestehen; fehlgeschlagene
+vertrauliche Authentifizierung erhält keinen Public-Client-Fallback.
 
-Ein separates Plugin bleibt deshalb eine Ausnahme für eine konkrete Grenze,
-etwa einen notwendigen Origin- oder Autorisierungswechsel oder einen öffentlichen
-Bruch ohne nachweisbar sicheren Übergang. Die pauschalen älteren Aussagen
-„jede inkompatible Major braucht ein neues Plugin“ und „der Altvertrag muss in
-einem Plugin für immer erhalten bleiben“ sind keine aktuell belegten
-Plattformvorgaben. Eine garantierte Frist zur sicheren Entfernung alter Verträge
-ergibt sich aus den neuen Unterlagen allerdings ebenfalls nicht.
+### Umstellung und Rollback
 
-**Umsetzungsumfang jetzt:** Der aktuelle ZIP-Kandidat `1.1.3` benötigt weder
-eine neue Identität noch eine neue Runtimearchitektur. Seine V1-Guards bleiben
-aktiv. Die unten beschriebene bisherige Linienplanung und die darauf beruhenden
-Major-Prüfungen dokumentieren den implementierten Stand; vor einer tatsächlichen
-Entkopplung sind sie gezielt durch stabile Identität, monotone Paketversionen
-und Prüfungen aller weiter benötigten öffentlichen Verträge zu ersetzen.
-Die heutige Sessionprüfung ist noch kein Mehrversionsdispatcher. Dieser
-Prüfbericht allein führt keine neue Major ein und entfernt keine Schutzprüfung.
+Der neue Einstieg verlangt eine neue Verbindung und einen neuen Lernstart.
+Eine Fortführung alter Chats, Übernahme ihrer Lernsession oder gleichzeitiger
+Betrieb der alten MCP-Runtime ist kein Abnahmekriterium. Dauerhafte Lernstände
+bleiben erhalten; OAuth und die kurzlebige Lernsession bleiben getrennte
+Berechtigungen. Veröffentlichte Git-Pakete, verworfene Review-Unterlagen und
+bereits beworbene UI-Artefaktbytes bleiben unverändert archiviert. Das Löschen
+des unveröffentlichten Portal-Drafts übernimmt der Product Owner.
+
+Die OAuth-Resource gehört bereits zum Fingerprint jedes Clientprofils.
+`AuthenticatedClientPolicy` aktiviert nach erfolgreicher Startvalidierung den
+neuen Fingerprint und sperrt den vorherigen; dessen Grants werden nicht auf
+die neue Resource umgeschrieben. Dafür ist keine gesonderte Grant-Migration
+vorgesehen. Alte und neue Instanzen dürfen beim Cutover nicht mit verschiedenen
+aktiven Profilen dieselbe Datenbank bedienen. Ein Rollback auf einen bereits
+stillgelegten Fingerprint wird absichtlich verweigert: Er benötigt eine neue
+explizite Policy-Revision und erneute Autorisierung, keinen Eingriff zum
+Entfernen der Sperre. Der Rollback muss außerdem alle zu diesem Zeitpunkt
+freigegebenen Tooldefinitionen bedienen können.
+
+### Spätere Änderungen innerhalb derselben Identität
+
+Die dauerhafte Identität garantiert keine beliebigen sofortigen Vertragsbrüche.
+Paket, Skills, Server und einzelne Tooldefinitionen aktualisieren sich getrennt.
+Während eine geänderte Definition geprüft wird, kann die vorherige weiterhin
+aktiv sein, auch in einem neuen Chat. Für einen tatsächlichen inkompatiblen
+Toolwechsel werden daher eindeutig benannte Ersatzwerkzeuge oder ein begrenzter
+kompatibler Adapter verwendet, bis die tatsächlich freigegebenen Definitionen
+den nächsten Schritt erlauben. Ein serverseitiger Session-Dispatcher repariert
+kein inkompatibles Host-Eingabeschema. Ein verlässliches Signal der installierten
+Paketversion ist nicht belegt; User-Agent, `clientInfo.version` und Prompttext
+begründen keine Autorisierung oder Vertragsauswahl.
+
+OpenAI dokumentiert, dass ein erkannter gelöschter Tool-Eintrag aus der
+veröffentlichten Liste entfernt wird. Daraus folgt keine Pflicht, jeden alten
+Toolvertrag für immer zu betreiben, aber auch keine garantierte Frist oder
+atomare Umschaltung für dessen sichere Entfernung. Die konkrete Ablösung wird
+anhand des dann aktuellen Hostverhaltens und der freigegebenen Definitionen
+geprüft. Siehe [fortlaufende Toolprüfung](https://developers.openai.com/plugins/deploy/app-review#continuous-review-and-tool-updates).
+
+**Geltung des folgenden Anhangs:** Die nummerierten Abschnitte ab Abschnitt 1
+dokumentieren das **historische, abgelöste Linienmodell**. Insbesondere sind
+deren Kopplung von Paketmajor, Pluginname und Host sowie die geplante
+Chat-/Sessionmigration keine aktuellen Anforderungen. Für die gegenwärtige
+Umsetzung gilt die Entscheidung oben; historische Beispiele und damalige
+Plattformannahmen begründen keine zusätzliche Runtime oder neue Freigabeschranke.
 
 ## 1. Zweck und zentrale Entscheidung des bisherigen Linienmodells
 
@@ -142,7 +175,9 @@ Veröffentlichungs- und Stilllegungslebenszyklus.
 
 ## 2. Status dieser Entscheidung
 
-Diese Architektur ist der **aktuelle verbindliche interne Plan**. Sie ist eine belastbare Konsequenz aus den derzeit dokumentierten OpenAI-Regeln, aber noch nicht ausdrücklich als offizielle OpenAI-Best-Practice bestätigt.
+Diese Architektur war der **bisherige interne Plan**. Sie ist durch die
+Entscheidung vom 19. Oktober 2026 oben abgelöst; die folgenden Aussagen halten
+den damaligen Planungsstand fest und sind keine aktuellen Plattformzusagen.
 
 Die offene Plattformfrage wurde am 31. Juli 2026 im OpenAI Developer Forum veröffentlicht:
 

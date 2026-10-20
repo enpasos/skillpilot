@@ -4,8 +4,10 @@
 from __future__ import annotations
 
 import importlib.util
+import os
 from pathlib import Path
 import subprocess
+import tempfile
 import unittest
 
 
@@ -45,7 +47,7 @@ def effective_nginx_lines(config: str) -> list[str]:
 
 
 class OAuthMetadataContractTest(unittest.TestCase):
-    MCP_ORIGIN = "https://mcp-coach-v1.skillpilot.com"
+    MCP_ORIGIN = "https://mcp-openai.skillpilot.com"
     AUTHORIZATION_ORIGIN = "https://skillpilot.com"
     V1_RESOURCE = f"{MCP_ORIGIN}/mcp"
 
@@ -145,8 +147,8 @@ class OAuthMetadataContractTest(unittest.TestCase):
 
 
 class PublicEdgeDeploymentContractTest(unittest.TestCase):
-    RESERVED_HOSTS = tuple(
-        f"mcp-coach-v{major}.skillpilot.com" for major in range(2, 10)
+    RETIRED_HOSTS = tuple(
+        f"mcp-coach-v{major}.skillpilot.com" for major in range(1, 10)
     )
 
     @staticmethod
@@ -159,7 +161,7 @@ class PublicEdgeDeploymentContractTest(unittest.TestCase):
     def active_v1_server(cls) -> str:
         coaches = cls.coaches_config()
         start = coaches.index("# The only currently active public plugin contract.")
-        end = coaches.index("# Reserved future major versions.")
+        end = coaches.index("# Retired and reserved major origins.")
         return coaches[start:end]
 
     def test_nginx_routes_public_v1_endpoints_to_line_scoped_internal_paths(self) -> None:
@@ -183,20 +185,21 @@ class PublicEdgeDeploymentContractTest(unittest.TestCase):
             "proxy_pass http://127.0.0.1:8787/.well-known/", coaches
         )
         self.assertEqual(
-            coaches.count("server_name mcp-coach-v1.skillpilot.com;"),
+            coaches.count("server_name mcp-openai.skillpilot.com;"),
             1,
         )
         http_redirect = coaches.split(
             "# The only currently active public plugin contract.", 1
         )[0]
-        self.assertIn("mcp-coach-v1.skillpilot.com", http_redirect)
-        for reserved_host in self.RESERVED_HOSTS:
-            self.assertEqual(coaches.count(reserved_host), 2)
+        self.assertNotIn("mcp-openai.skillpilot.com", http_redirect)
+        for retired_host in self.RETIRED_HOSTS:
+            self.assertEqual(coaches.count(retired_host), 2)
         self.assertNotIn("mcp-coach-de-v", coaches)
         self.assertNotIn("mcp-coach-en-v", coaches)
 
     def test_v1_vhost_requests_and_verifies_the_openai_client_certificate(self) -> None:
         active = self.active_v1_server()
+        self.assertIn("/etc/letsencrypt/live/mcp-openai.skillpilot.com/fullchain.pem", active)
         self.assertIn(
             "ssl_client_certificate "
             "/etc/skillpilot/openai-mtls/openai-client-ca-bundle.pem;",
@@ -223,7 +226,7 @@ class PublicEdgeDeploymentContractTest(unittest.TestCase):
         self.assertIn("return 403;", rejected)
 
         reserved = self.coaches_config().split(
-            "# Reserved future major versions.", 1
+            "# Retired and reserved major origins.", 1
         )[1]
         self.assertNotIn("ssl_verify_client", reserved)
         self.assertNotIn("openai-client-ca-bundle.pem", reserved)
@@ -357,7 +360,7 @@ class PublicEdgeDeploymentContractTest(unittest.TestCase):
     def test_mcp_overwrites_forwarding_and_certificate_aliases(self) -> None:
         mcp = nginx_location(self.active_v1_server(), "location = /mcp {")
         self.assertIn(
-            "proxy_set_header Host mcp-coach-v1.skillpilot.com;",
+            "proxy_set_header Host mcp-openai.skillpilot.com;",
             mcp,
         )
         self.assertIn("proxy_set_header X-Forwarded-For $remote_addr;", mcp)
@@ -454,20 +457,79 @@ class PublicEdgeDeploymentContractTest(unittest.TestCase):
             self.assertIn(f"location = {path} {{", deny)
 
     def test_public_edge_script_is_valid_shell(self) -> None:
-        completed = subprocess.run(
-            ["bash", "-n", str(ROOT / "scripts" / "verify_openai_v1_public_edge.sh")],
-            check=False,
-            capture_output=True,
-            text=True,
-        )
-        self.assertEqual(completed.returncode, 0, completed.stderr)
+        for script in ("verify_openai_v1_public_edge.sh", "install_openai_stable_origin_edge.sh", "verify_openai_stable_origin_certificate.sh"):
+            completed = subprocess.run(
+                ["bash", "-n", str(ROOT / "scripts" / script)],
+                check=False, capture_output=True, text=True,
+            )
+            self.assertEqual(completed.returncode, 0, completed.stderr)
+
+    def test_stable_origin_certificate_rejects_unexpired_wrong_host_and_near_expiry(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            for name, host, days, expected in (
+                ("matching", "mcp-openai.skillpilot.com", 2, 0),
+                ("wrong", "mcp-coach-v1.skillpilot.com", 2, 1),
+                ("near-expiry", "mcp-openai.skillpilot.com", 1, 1),
+            ):
+                certificate = Path(directory) / f"{name}.pem"
+                subprocess.run([
+                    "openssl", "req", "-x509", "-newkey", "ec", "-pkeyopt",
+                    "ec_paramgen_curve:P-256", "-nodes", "-days", str(days),
+                    "-subj", f"/CN={host}", "-addext", f"subjectAltName=DNS:{host}",
+                    "-keyout", str(Path(directory) / f"{name}.key"), "-out", str(certificate),
+                ], check=True, capture_output=True, text=True, timeout=10)
+                result = subprocess.run([
+                    "bash", str(ROOT / "scripts/verify_openai_stable_origin_certificate.sh"),
+                    str(certificate),
+                ], capture_output=True, text=True, timeout=10)
+                with self.subTest(name=name):
+                    self.assertEqual(result.returncode, expected, result.stdout + result.stderr)
+
+    def test_old_ingress_and_discovery_fail_closed_without_redirects(self) -> None:
+        coaches = self.coaches_config()
+        retired = coaches.split("# Retired and reserved major origins.", 1)[1]
+        self.assertNotIn("proxy_pass", retired)
+        self.assertIn("return 404;", retired)
+        self.assertNotIn("return 308", coaches)
+        for retired_host in self.RETIRED_HOSTS:
+            self.assertIn(retired_host, retired)
+
+    def test_cutover_requires_explicit_wrapper_option_and_openai_variant(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            checkout = Path(directory)
+            wrapper = checkout / "deploy_skillpilot.sh"
+            wrapper.write_text((ROOT / "deploy_skillpilot.sh").read_text())
+            (checkout / "scripts").mkdir()
+            engine = checkout / "scripts/deploy.sh"
+            engine.write_text('#!/bin/bash\nprintf "%s|%s\\n" "$VITE_SKILLPILOT_COACH_VARIANT" "$SKILLPILOT_OPENAI_STABLE_ORIGIN_CUTOVER"\n')
+            engine.chmod(0o755)
+            env = {**os.environ, "SKILLPILOT_OPENAI_STABLE_ORIGIN_CUTOVER": "1"}
+            for arguments, expected in (([], "openai-mcp|0"), (["--openai-stable-origin-cutover"], "openai-mcp|1")):
+                result = subprocess.run(["bash", str(wrapper), *arguments], capture_output=True, text=True, env=env)
+                self.assertEqual(result.returncode, 0, result.stderr)
+                self.assertEqual(result.stdout.strip(), expected)
+            rejected = subprocess.run(["bash", str(wrapper), "--openai-stable-origin-cutover", "--coach-variant", "legacy"], capture_output=True, text=True, env=env)
+            self.assertEqual(rejected.returncode, 2)
+
+    def test_cutover_preflight_precedes_build_and_reload_follows_backend_readiness(self) -> None:
+        script = (ROOT / "scripts/deploy.sh").read_text()
+        prepare = script.rindex("prepare_openai_stable_origin_cutover")
+        build = script.index('echo "Deploying Vocabulary Decks..."')
+        ready = script.rindex('wait_for_public_readiness "${SMOKE_BASE_URL}"')
+        activate = script.rindex("activate_openai_stable_origin_cutover")
+        smoke = script.rindex("verify_openai_v1_mtls_edge.sh --runtime")
+        self.assertLess(prepare, build)
+        self.assertLess(ready, activate)
+        self.assertLess(activate, smoke)
+        self.assertIn('sudo -k -n -l -- "${SYSTEMCTL_BIN}" reload nginx', script)
+        self.assertIn('run_cutover_privileged "${NGINX_BIN}" -t', script)
 
     def test_public_edge_smoke_checks_exact_dedicated_origin_contract(self) -> None:
         script = (ROOT / "scripts" / "verify_openai_v1_public_edge.sh").read_text(
             encoding="utf-8"
         )
         self.assertIn(
-            'MCP_ORIGIN="https://mcp-coach-v1.skillpilot.com"', script
+            'MCP_ORIGIN="https://mcp-openai.skillpilot.com"', script
         )
         self.assertIn(
             'MCP_URL="${MCP_ORIGIN}/mcp"', script
@@ -532,11 +594,11 @@ class PublicEdgeDeploymentContractTest(unittest.TestCase):
         self.assertIn("--header 'Origin: null'", script)
         self.assertIn("expected Access-Control-Allow-Origin *", script)
         self.assertIn("public image response must not allow credentials", script)
-        for reserved_host in self.RESERVED_HOSTS:
-            self.assertIn(f'"https://{reserved_host}"', script)
-        self.assertIn("assert_reserved_origin", script)
-        self.assertIn("reserved_origin_tls", script)
-        self.assertIn("reserved_origin_fail_closed", script)
+        for retired_host in self.RETIRED_HOSTS:
+            self.assertIn(f'"https://{retired_host}"', script)
+        self.assertIn("assert_retired_origin", script)
+        self.assertIn("retired_origin_tls", script)
+        self.assertIn("retired_origin_fail_closed", script)
         self.assertIn("%{ssl_verify_result}", script)
         self.assertIn('if [[ "${status}" != "404"', script)
         self.assertNotIn("mcp-v1.skillpilot.com", script)

@@ -39,7 +39,7 @@ skillpilot:
         oauth-resource: ${OPENAI_V1_PUBLIC_CONTRACT["oauth-resource"]}
         server-build: "${serverBuild}"
         mcp:
-          server-name: skillpilot-coach-v1
+          server-name: skillpilot-coach
           server-version: "${serverVersion}"
         oauth:
           protected-resource-metadata: ${OPENAI_V1_PUBLIC_CONTRACT["protected-resource-metadata"]}
@@ -577,6 +577,11 @@ test("built application pins server build and MCP server version to the commit",
   assert.doesNotThrow(() =>
     validateBuiltApplication(builtApplication, COMMIT),
   );
+});
+
+test("the actual application template supports the deployment build check", () => {
+  const actualTemplate = readFileSync(new URL("../backend/src/main/resources/application.yml", import.meta.url), "utf8");
+  validateBuiltApplication(actualTemplate.replaceAll("@skillpilotServerBuild@", COMMIT), COMMIT);
 });
 
 test("built application rejects stale SHAs and unresolved build placeholders", () => {

@@ -59,7 +59,7 @@ import org.springframework.test.context.TestPropertySource;
         "skillpilot.openai.coach.v1.mtls-edge-mode=disabled"
 })
 class CombinedProviderOAuthIsolationIntegrationTest {
-    private static final String OPENAI_RESOURCE = "https://mcp-coach-v1.skillpilot.com/mcp";
+    private static final String OPENAI_RESOURCE = "https://mcp-openai.skillpilot.com/mcp";
     private static final String CLAUDE_RESOURCE = ClaudeV1Contract.DEFAULT_PUBLIC_MCP_URL;
     private static final ObjectMapper JSON = new ObjectMapper();
     @LocalServerPort private int port;

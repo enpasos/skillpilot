@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs'
 import { test } from 'node:test'
 import { buildJudgeRequest, dialogToolPayload, evaluateDialogCase, validateJudgeResult } from './openai_dialog_assertions.mjs'
 
-const suite = JSON.parse(readFileSync(new URL('../ai/openai plugin/skillpilot-coach-v1/submission/review-cases.json', import.meta.url), 'utf8'))
+const suite = JSON.parse(readFileSync(new URL('../ai/openai plugin/skillpilot-coach/submission/review-cases.json', import.meta.url), 'utf8'))
 const getCase = id => structuredClone(suite.cases.find(entry => entry.id === id))
 const user = (turnId, text = 'fixture turn', actor = 'user') => ({ type: actor === 'component' ? 'ui' : 'user', turnId, actor, text })
 const reply = (turnId, text = 'Observed answer.') => ({ type: 'assistant', turnId, actor: 'model', text })

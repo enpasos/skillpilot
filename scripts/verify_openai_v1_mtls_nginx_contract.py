@@ -177,6 +177,13 @@ def is_tls_443_listener(arguments: tuple[str, ...]) -> bool:
     return has_tls and has_port
 
 
+def is_http_80_listener(arguments: tuple[str, ...]) -> bool:
+    return "ssl" not in arguments and any(
+        argument == "80" or re.search(r":80\Z", argument) is not None
+        for argument in arguments
+    )
+
+
 def binds_host_on_tls_443(block: ServerBlock, host: str) -> bool:
     direct = directives(block.tokens, direct_only=True)
     names = {
@@ -211,6 +218,7 @@ def verify_contract(
     host: str,
     main_deny_file: str,
     main_host: str,
+    retired_hosts: tuple[str, ...] = (),
 ) -> None:
     require_exact_marker(configuration, expected_file)
     require_exact_marker(configuration, main_deny_file)
@@ -249,6 +257,21 @@ def verify_contract(
             + ", ".join(missing)
         )
 
+    for retired_host in retired_hosts:
+        retired = [block for block in blocks if binds_host_on_tls_443(block, retired_host)]
+        if len(retired) != 1 or retired[0].source_file != expected_file:
+            raise ContractError(
+                f"retired host {retired_host} must have exactly one TLS-443 "
+                f"binding in {expected_file}"
+            )
+        retired_directives = directives(retired[0].tokens, direct_only=False)
+        if any(item[0] == "proxy_pass" for item in retired_directives) or [
+            item for item in retired_directives if item[0] == "return"
+        ] != [("return", "404")]:
+            raise ContractError(
+                f"retired host {retired_host} must return only 404 without proxying or redirecting"
+            )
+
     main_candidates = [
         block for block in blocks if binds_host_on_tls_443(block, main_host)
     ]
@@ -266,44 +289,84 @@ def verify_contract(
         )
 
 
+def verify_bootstrap_contract(configuration: str, expected_file: str, host: str) -> None:
+    require_exact_marker(configuration, expected_file)
+    candidates = []
+    for source_file, section in configuration_sections(configuration):
+        for block in server_blocks(source_file, section):
+            direct = directives(block.tokens, direct_only=True)
+            names = {name for item in direct if item[0] == "server_name" for name in item[1:]}
+            if host in names and any(
+                item[0] == "listen" and is_http_80_listener(item[1:])
+                for item in direct
+            ):
+                candidates.append(block)
+    if len(candidates) != 1 or candidates[0].source_file != expected_file:
+        raise ContractError(f"expected one HTTP-80 bootstrap binding for {host} in {expected_file}")
+    block = candidates[0]
+    all_directives = directives(block.tokens, direct_only=False)
+    if any(item[0] == "proxy_pass" for item in all_directives):
+        raise ContractError("HTTP bootstrap must never proxy application traffic")
+    for required in (
+        ("root", "/var/lib/skillpilot-openai-acme"),
+        ("try_files", "$uri", "=404"),
+        ("return", "404"),
+    ):
+        if required not in all_directives:
+            raise ContractError("HTTP bootstrap is missing " + " ".join(required))
+
+
 def parse_args(arguments: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--expected-file", required=True)
     parser.add_argument("--host", required=True)
-    parser.add_argument("--main-deny-file", required=True)
-    parser.add_argument("--main-host", required=True)
+    parser.add_argument("--main-deny-file")
+    parser.add_argument("--main-host")
+    parser.add_argument("--retired-host", action="append", default=[])
+    parser.add_argument("--bootstrap-only", action="store_true")
     args = parser.parse_args(arguments)
+    if not args.bootstrap_only and (not args.main_deny_file or not args.main_host):
+        parser.error("--main-deny-file and --main-host are required for the TLS contract")
     for option, value in (
         ("--expected-file", args.expected_file),
         ("--main-deny-file", args.main_deny_file),
     ):
-        if not value.startswith("/"):
+        if value is not None and not value.startswith("/"):
             parser.error(f"{option} must be an absolute path")
     for attribute, option in (("host", "--host"), ("main_host", "--main-host")):
+        if getattr(args, attribute) is None:
+            continue
         value = getattr(args, attribute).rstrip(".").lower()
         if HOST_NAME.fullmatch(value) is None:
             parser.error(f"{option} must be an exact DNS host name")
         setattr(args, attribute, value)
+    for value in args.retired_host:
+        if HOST_NAME.fullmatch(value) is None:
+            parser.error("--retired-host must be an exact DNS host name")
     return args
 
 
 def main(arguments: list[str] | None = None) -> int:
     args = parse_args(arguments)
     try:
-        verify_contract(
-            sys.stdin.read(),
-            args.expected_file,
-            args.host,
-            args.main_deny_file,
-            args.main_host,
-        )
+        configuration = sys.stdin.read()
+        if args.bootstrap_only:
+            verify_bootstrap_contract(configuration, args.expected_file, args.host)
+        else:
+            verify_contract(
+                configuration,
+                args.expected_file,
+                args.host,
+                args.main_deny_file,
+                args.main_host,
+                tuple(args.retired_host),
+            )
     except ContractError as exception:
         print(f"CHECK mtls_nginx_active_binding FAIL {exception}", file=sys.stderr)
         return 1
     print(
         "CHECK mtls_nginx_active_binding PASS "
-        f"{args.host} is uniquely bound by {args.expected_file}; "
-        f"{args.main_host} includes {args.main_deny_file}"
+        f"{args.host} is uniquely bound by {args.expected_file}"
     )
     return 0
 

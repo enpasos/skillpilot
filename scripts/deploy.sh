@@ -14,6 +14,8 @@ SERVICE_ENV_FILE="${SKILLPILOT_SERVICE_ENV_FILE:-/etc/skillpilot/skillpilot.env}
 SMOKE_BASE_URL="${SKILLPILOT_BASE_URL:-https://skillpilot.com}"
 DEPLOY_BACKEND_BUILD_DIR="${PROJECT_ROOT}/tmp/deploy/backend-build"
 SYSTEMCTL_BIN=""
+NGINX_BIN=""
+STABLE_ORIGIN_CUTOVER="${SKILLPILOT_OPENAI_STABLE_ORIGIN_CUTOVER:-0}"
 
 require_explicit_coach_variant() {
   local configured_variant="${VITE_SKILLPILOT_COACH_VARIANT:-}"
@@ -129,6 +131,46 @@ ensure_restart_possible() {
     echo "  ${SYSTEMCTL_BIN} restart ${SERVICE_NAME}" >&2
     exit 1
   fi
+}
+
+run_cutover_privileged() {
+  if [[ "$(id -u)" -eq 0 ]]; then
+    "$@"
+  else
+    sudo -n -- "$@"
+  fi
+}
+
+prepare_openai_stable_origin_cutover() {
+  [[ "${STABLE_ORIGIN_CUTOVER}" = 1 ]] || return 0
+  if [[ "${VITE_SKILLPILOT_COACH_VARIANT}" != openai-mcp ]]; then
+    echo "Abbruch: neutraler OpenAI-Cutover erfordert openai-mcp." >&2
+    exit 1
+  fi
+  NGINX_BIN="$(command -v nginx)"
+  local preflight="${PROJECT_ROOT}/scripts/verify_openai_v1_mtls_edge.sh"
+  if [[ "$(id -u)" -ne 0 ]]; then
+    if ! sudo -k -n -l -- "${SYSTEMCTL_BIN}" reload nginx >/dev/null 2>&1 \
+      || ! sudo -k -n -l -- "${NGINX_BIN}" -t >/dev/null 2>&1 \
+      || ! sudo -k -n -l -- "${preflight}" --preflight --expected-mode observe \
+        --service-environment-file "${SERVICE_ENV_FILE}" >/dev/null 2>&1; then
+      echo "Abbruch: expliziter Cutover benötigt sudo für den geprüften Edge-Preflight, nginx -t und systemctl reload nginx." >&2
+      exit 1
+    fi
+  fi
+  run_cutover_privileged "${preflight}" --preflight --expected-mode observe \
+    --service-environment-file "${SERVICE_ENV_FILE}"
+  run_cutover_privileged "${NGINX_BIN}" -t
+}
+
+activate_openai_stable_origin_cutover() {
+  [[ "${STABLE_ORIGIN_CUTOVER}" = 1 ]] || return 0
+  # Recheck after the build, immediately before activating the staged edge.
+  run_cutover_privileged "${PROJECT_ROOT}/scripts/verify_openai_v1_mtls_edge.sh" \
+    --preflight --expected-mode observe --service-environment-file "${SERVICE_ENV_FILE}"
+  run_cutover_privileged "${NGINX_BIN}" -t
+  run_cutover_privileged "${SYSTEMCTL_BIN}" reload nginx
+  "${SYSTEMCTL_BIN}" is-active nginx
 }
 
 require_public_readiness_configuration() {
@@ -258,6 +300,10 @@ wait_for_public_readiness() {
 }
 
 require_explicit_coach_variant
+if [[ "${STABLE_ORIGIN_CUTOVER}" != 0 && "${STABLE_ORIGIN_CUTOVER}" != 1 ]]; then
+  echo "Abbruch: SKILLPILOT_OPENAI_STABLE_ORIGIN_CUTOVER muss 0 oder 1 sein." >&2
+  exit 1
+fi
 require_public_readiness_configuration
 ensure_restart_possible
 require_production_java
@@ -301,6 +347,7 @@ if [ "${VITE_SKILLPILOT_COACH_VARIANT}" = "openai-mcp" ]; then
     node \
     "${PROJECT_ROOT}/scripts/validate_openai_v1_runtime_config.mjs"
 fi
+prepare_openai_stable_origin_cutover
 
 echo "Prüfe unveränderten OpenAI-Plugin-V1-Release-/Draft-Snapshot..."
 node scripts/openai_plugin_release.mjs verify
@@ -406,6 +453,7 @@ else
 fi
 
 wait_for_public_readiness "${SMOKE_BASE_URL}"
+activate_openai_stable_origin_cutover
 
 echo "Prüfe die öffentlich ausgelieferte Claude-Direct-Install-Beta..."
 node scripts/claude_direct_install_beta_release.mjs \

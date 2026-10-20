@@ -44,7 +44,7 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 })
 class OpenAiDeNativeOAuthFlowIntegrationTest {
     static final String NATIVE = OpenAiDeProperties.OAuth.NativeCimd.CLIENT_ID;
-    static final String CALLBACK = "http://127.0.0.1:49271/callback/Su4_F3uWAhkS";
+    static final String CALLBACK = "http://127.0.0.1:49271/callback/7yTcOAOqrumX";
     static final String RESOURCE = OpenAiDeV1ContractMetadata.OAUTH_RESOURCE;
     static final String VERIFIER = "native-desktop-pkce-verifier-longer-than-forty-three-characters";
     static final String READ = OpenAiDeOAuthConfiguration.READ_SCOPE;
@@ -64,8 +64,9 @@ class OpenAiDeNativeOAuthFlowIntegrationTest {
         when(metadata.validRedirect(anyString())).thenAnswer(call -> structural.validRedirect(call.getArgument(0)));
     }
 
-    @Test void metadataAdvertisesBothProfilesAndOneUnchangedResource() throws Exception {
+    @Test void metadataAdvertisesBothProfilesAndOneNeutralResourceWithExistingIssuer() throws Exception {
         var as = json(get(OpenAiDeOAuthMetadataController.AUTHORIZATION_SERVER_WELL_KNOWN_PATH));
+        assertThat(as.path("issuer").asText()).isEqualTo("https://skillpilot.test/api/openai/v1");
         assertThat(as.path("token_endpoint_auth_methods_supported").toString()).isEqualTo("[\"client_secret_basic\",\"none\"]");
         assertThat(as.path("client_id_metadata_document_supported").asBoolean()).isTrue();
         assertThat(as.has("registration_endpoint")).isFalse();
@@ -122,7 +123,7 @@ class OpenAiDeNativeOAuthFlowIntegrationTest {
 
     @Test void nativeCallbacksDoNotAllowHostPathSchemeOrQueryChanges() throws Exception {
         for (String callback : List.of(CALLBACK.replace("127.0.0.1", "localhost"), CALLBACK.replace("http:", "https:"),
-                CALLBACK + "?redirect=https://evil.test", CALLBACK.replace("Su4_F3uWAhkS", "other"),
+                CALLBACK + "?redirect=https://evil.test", CALLBACK.replace("7yTcOAOqrumX", "other"),
                 CALLBACK.replace("127.0.0.1", "127.0.0.2"))) {
             var response = authorize(callback, "S256", RESOURCE, NATIVE);
             assertThat(response.statusCode()).as(callback).isEqualTo(400);
@@ -134,6 +135,14 @@ class OpenAiDeNativeOAuthFlowIntegrationTest {
         assertThat(authorize(CALLBACK, "plain", RESOURCE, NATIVE).statusCode()).isEqualTo(400);
         assertThat(authorize(CALLBACK, "S256", RESOURCE + "/", NATIVE).statusCode()).isEqualTo(400);
         assertThat(authorize(CALLBACK, "S256", "https://mcp-claude-v1.skillpilot.com/mcp", NATIVE).statusCode()).isEqualTo(400);
+        assertThat(authorize(CALLBACK, "S256", "https://mcp-coach-v1.skillpilot.com/mcp", NATIVE).statusCode()).isEqualTo(400);
+    }
+
+    @Test void previousDesktopClientCannotAuthorizeTheNeutralResource() throws Exception {
+        var response = authorize("http://127.0.0.1:49271/callback/Su4_F3uWAhkS", "S256", RESOURCE,
+                "https://chatgpt.com/oauth/codex/Su4_F3uWAhkS/client.json");
+        assertThat(response.statusCode()).isEqualTo(400);
+        assertThat(response.headers().firstValue("Location")).isEmpty();
     }
 
     @Test void resourceCannotChangeDuringCodeExchangeOrRefresh() throws Exception {
@@ -148,7 +157,7 @@ class OpenAiDeNativeOAuthFlowIntegrationTest {
     }
 
     @Test void unknownClientsAndConfidentialFallbackNeverBecomeNative() throws Exception {
-        assertThat(authorize(CALLBACK, "S256", RESOURCE, NATIVE.replace("Su4_F3uWAhkS", "foreign")).statusCode()).isEqualTo(400);
+        assertThat(authorize(CALLBACK, "S256", RESOURCE, NATIVE.replace("7yTcOAOqrumX", "foreign")).statusCode()).isEqualTo(400);
         var token = issue();
         var invalid = post(OpenAiDeOAuthConfiguration.TOKEN_ENDPOINT, Map.of("client_id", NATIVE, "grant_type", "refresh_token",
                 "refresh_token", token.path("refresh_token").asText(), "client_secret", "wrong", "resource", RESOURCE));
