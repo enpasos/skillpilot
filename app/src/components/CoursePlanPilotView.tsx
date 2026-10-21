@@ -49,6 +49,8 @@ import {
 import { ConfirmModal } from './ConfirmModal'
 import { CoursePlanLearningBook } from './CoursePlanLearningBook'
 import { CoursePlanTimeline } from './CoursePlanTimeline'
+import { CoursePlanTopicPicker } from './CoursePlanTopicPicker'
+import { normalizeCoursePlanTopicGoalIds, resolveCoursePlanTopicSelection } from '../utils/coursePlanTopicSelection'
 
 type CoursePlanBlockKind = TeacherCoursePlanBlock['kind']
 export type CoursePlanSection = 'plan' | 'preview' | 'teaching'
@@ -75,6 +77,7 @@ interface CoursePlanPilotViewProps {
 interface BlockDraft {
   kind: CoursePlanBlockKind
   goalId: string
+  goalIds: string[]
   title: string
   startDate: string
   endDate: string
@@ -98,6 +101,7 @@ const randomId = (prefix: string) => {
 const createDraft = (asOf: string): BlockDraft => ({
   kind: 'learning',
   goalId: '',
+  goalIds: [],
   title: '',
   startDate: asOf,
   endDate: addCoursePlanDays(asOf, 13) ?? asOf,
@@ -184,6 +188,7 @@ export const CoursePlanPilotView = ({
   const [draftBaseline, setDraftBaseline] = useState<string | null>(null)
   const [editingBlockId, setEditingBlockId] = useState<string | null>(null)
   const [showBlockForm, setShowBlockForm] = useState(false)
+  const [showTopicPicker, setShowTopicPicker] = useState(false)
   const [formError, setFormError] = useState('')
   const [pendingDeleteId, setPendingDeleteId] = useState<string | null>(null)
   const [pendingDraftAction, setPendingDraftAction] = useState<(() => void) | null>(null)
@@ -335,6 +340,19 @@ export const CoursePlanPilotView = ({
         || left.goal.title.localeCompare(right.goal.title, language === 'de' ? 'de-DE' : 'en-GB')
       ))
   }, [goals, landscapeBaseline, language, visibleChildrenByParent])
+  const topicGoals = useMemo(() => new Map([...goals].filter(([id]) => {
+    const resolution = resolveAtomicGoalDescendants(id, goals, visibleChildrenByParent)
+    return resolution.quality.status === 'complete' && resolution.atomicGoalIds.length > 0
+  })), [goals, visibleChildrenByParent])
+  const topicChildren = useMemo(() => new Map(
+    [...topicGoals.values()].map((goal) => [
+      goal.id,
+      (visibleChildrenByParent?.get(goal.id) ?? goal.contains).filter((id) => topicGoals.has(id)),
+    ]),
+  ), [topicGoals, visibleChildrenByParent])
+  const selectedTopics = useMemo(() => resolveCoursePlanTopicSelection(
+    draft.goalIds, topicGoals, topicChildren,
+  ), [draft.goalIds, topicGoals, topicChildren])
   const plannedGoalIds = useMemo(() => evaluation?.quality.status === 'complete' && evaluation.metrics
     ? new Set(evaluation.assignments.flatMap((assignment) => assignment.atomicGoalIds))
     : null, [evaluation])
@@ -670,12 +688,18 @@ export const CoursePlanPilotView = ({
     revise(plan.blocks, planLabelDraft.trim())
   }
 
-  const prepareNewBlock = (goalId = '') => guardDraftReplacement(() => {
+  const prepareNewBlock = (goalId = '', kind: CoursePlanBlockKind = 'learning') => guardDraftReplacement(() => {
     if (goalId && !plannableGoalOptions.some((option) => option.goal.id === goalId && option.count > 0)) return
     changeSection('plan')
     cancelPendingBlockSave()
     const initialDraft = createDraft(asOf)
-    const nextDraft = { ...initialDraft, goalId }
+    const nextDraft = {
+      ...initialDraft,
+      kind,
+      goalId,
+      title: kind === 'milestone' ? (language === 'de' ? 'Klausur' : 'Exam') : '',
+      endDate: kind === 'milestone' ? initialDraft.startDate : initialDraft.endDate,
+    }
     setDraft(nextDraft)
     setDraftBaseline(serializeDraft(initialDraft))
     setEditingBlockId(null)
@@ -683,6 +707,7 @@ export const CoursePlanPilotView = ({
     setGoalSearch('')
     setPendingDeleteId(null)
     setShowBlockForm(true)
+    setShowTopicPicker(kind === 'milestone')
   })
   const openNewBlock = () => prepareNewBlock()
 
@@ -693,6 +718,7 @@ export const CoursePlanPilotView = ({
       ? {
           kind: block.kind,
           goalId: block.goalId ?? '',
+          goalIds: [...(block.goalIds ?? (block.goalId ? [block.goalId] : []))],
           title: block.title,
           startDate: block.date,
           endDate: block.date,
@@ -700,6 +726,7 @@ export const CoursePlanPilotView = ({
       : {
           kind: block.kind,
           goalId: block.kind === 'learning' ? block.goalId : '',
+          goalIds: [],
           title: block.title ?? '',
           startDate: block.startDate,
           endDate: block.endDate,
@@ -711,6 +738,7 @@ export const CoursePlanPilotView = ({
     setGoalSearch('')
     setPendingDeleteId(null)
     setShowBlockForm(true)
+    setShowTopicPicker(false)
   })
 
   const saveBlock = async () => {
@@ -734,14 +762,13 @@ export const CoursePlanPilotView = ({
         return
       }
     } else if (draft.kind === 'milestone') {
-      if (draft.goalId) {
-        const resolution = resolveAtomicGoalDescendants(draft.goalId, goals, visibleChildrenByParent)
-        if (resolution.quality.status !== 'complete' || resolution.atomicGoalIds.length === 0) {
-          setFormError(copy.noPlannableGoals)
-          return
-        }
+      if (selectedTopics.invalidGoalIds.length > 0
+        || (draft.goalIds.length > 0 && selectedTopics.atomicGoalIds.length === 0)) {
+        setFormError(copy.noPlannableGoals)
+        setShowTopicPicker(true)
+        return
       }
-      if (!draft.title.trim() && !draft.goalId) {
+      if (!draft.title.trim() && draft.goalIds.length === 0) {
         setFormError(copy.missingTitle)
         return
       }
@@ -771,8 +798,8 @@ export const CoursePlanPilotView = ({
         : {
             id,
             kind: 'milestone',
-            title: draft.title.trim() || goals.get(draft.goalId)?.title || draft.goalId,
-            ...(draft.goalId ? { goalId: draft.goalId } : {}),
+            title: draft.title.trim() || draft.goalIds.map((id) => goals.get(id)?.title || id).join(', ').slice(0, 500),
+            goalIds: normalizeCoursePlanTopicGoalIds(draft.goalIds, topicGoals, topicChildren),
             date: draft.startDate,
           }
     const nextBlocks = editingBlockId
@@ -986,10 +1013,14 @@ export const CoursePlanPilotView = ({
                     setDraft((current) => ({
                       ...current,
                       kind,
-                      goalId: kind === 'buffer' ? '' : current.goalId,
+                      goalId: kind === 'buffer' ? '' : current.goalId || current.goalIds[0] || '',
+                      goalIds: kind === 'milestone' && current.goalIds.length === 0 && current.goalId
+                        ? [current.goalId]
+                        : current.goalIds,
                       title: kind === 'buffer' && !current.title ? copy.kindBuffer : current.title,
                       endDate: kind === 'milestone' ? current.startDate : current.endDate,
                     }))
+                    setShowTopicPicker(kind === 'milestone')
                     setFormError('')
                   }}
                   className="mt-2 min-h-11 w-full rounded-lg border border-border-color bg-chat-bg px-3 py-2 text-text-primary outline-none focus:border-sky-500"
@@ -1000,11 +1031,11 @@ export const CoursePlanPilotView = ({
                 </select>
               </label>
 
-              {draft.kind !== 'buffer' ? (
+              {draft.kind === 'learning' ? (
                 <div>
                   <label className="block">
                     <span className="text-sm font-medium text-text-primary">
-                      {copy.goalLabel}{draft.kind === 'milestone' ? ` (${language === 'de' ? 'optional' : 'optional'})` : ''}
+                      {copy.goalLabel}
                     </span>
                     <input
                       type="search"
@@ -1032,18 +1063,43 @@ export const CoursePlanPilotView = ({
                           disabled={draft.kind === 'learning' && Boolean(landscapeBaseline) && count === 0 && goal.id !== draft.goalId}
                         >
                           {goal.phase !== 'GLOBAL' ? `${goal.phase} · ` : ''}{goal.title} · {
-                            draft.kind === 'learning' && requiresLearnerBaseline && !landscapeBaseline
+                            requiresLearnerBaseline && !landscapeBaseline
                               ? copy.planningScopeOnSave
-                              : draft.kind === 'learning' && landscapeBaseline
+                              : landscapeBaseline
                                 ? language === 'de'
                                   ? `${count} von ${totalCount} Zielen bei Planerstellung offen`
                                   : `${count} of ${totalCount} goals open when the plan was created`
-                              : copy.learningGoalCount(draft.kind === 'milestone' ? totalCount : count)
+                              : copy.learningGoalCount(count)
                           }
                         </option>
                       ))}
                     </select>
                   </label>
+                </div>
+              ) : draft.kind === 'milestone' ? (
+                <div className="rounded-xl border border-sky-200 bg-sky-50/60 p-4 dark:border-sky-900/60 dark:bg-sky-950/20">
+                  <p className="text-sm font-semibold text-text-primary">{language === 'de' ? 'Klausurstoff' : 'Exam topics'}</p>
+                  <p className="mt-1 text-sm text-text-secondary">
+                    {draft.goalIds.length > 0
+                      ? copy.learningGoalCount(selectedTopics.atomicGoalIds.length)
+                      : language === 'de' ? 'Noch keine Themen ausgewählt' : 'No topics selected yet'}
+                  </p>
+                  {!showTopicPicker && draft.goalIds.length > 0 && (
+                    <ul className="mt-2 space-y-1 text-sm text-text-primary">
+                      {draft.goalIds.map((id) => <li key={id}>{goals.get(id)?.title ?? id}</li>)}
+                    </ul>
+                  )}
+                  <button
+                    type="button"
+                    aria-expanded={showTopicPicker}
+                    aria-controls="course-plan-topic-picker"
+                    onClick={() => setShowTopicPicker((current) => !current)}
+                    className="mt-3 min-h-11 rounded-lg border border-sky-300 bg-sidebar-bg px-3 py-2 text-sm font-semibold text-sky-700 hover:bg-sky-50 dark:text-sky-300 dark:hover:bg-sky-950/30"
+                  >
+                    {showTopicPicker
+                      ? language === 'de' ? 'Themenauswahl schließen' : 'Close topic selection'
+                      : language === 'de' ? 'Klausurstoff auswählen' : 'Select exam topics'}
+                  </button>
                 </div>
               ) : (
                 <label className="block">
@@ -1062,7 +1118,7 @@ export const CoursePlanPilotView = ({
                 <label className="block lg:col-span-2">
                   <span className="text-sm font-medium text-text-primary">
                     {copy.customTitleLabel} ({draft.kind === 'milestone'
-                      ? language === 'de' ? 'optional bei gewähltem Lernziel' : 'optional when a learning goal is selected'
+                      ? language === 'de' ? 'optional bei gewählten Themen' : 'optional when topics are selected'
                       : language === 'de' ? 'optional' : 'optional'})
                   </span>
                   <input
@@ -1107,6 +1163,21 @@ export const CoursePlanPilotView = ({
               )}
             </div>
 
+            {draft.kind === 'milestone' && showTopicPicker && (
+              <div id="course-plan-topic-picker" className="mt-5">
+                <CoursePlanTopicPicker
+                  goals={topicGoals}
+                  visibleChildrenByParent={topicChildren}
+                  selectedGoalIds={draft.goalIds}
+                  onChange={(goalIds) => {
+                    setDraft((current) => ({ ...current, goalIds }))
+                    setFormError('')
+                  }}
+                  language={language}
+                  disabled={savingBlock}
+                />
+              </div>
+            )}
             {formError && <p className="mt-4 text-sm font-medium text-rose-700 dark:text-rose-300" role="alert">{formError}</p>}
             <div className="mt-5 flex justify-end">
               <button
@@ -1309,7 +1380,10 @@ export const CoursePlanPilotView = ({
 
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div><h2 className="text-lg font-semibold text-text-primary">{language === 'de' ? 'Planabschnitte' : 'Plan sections'}</h2><p className="mt-1 text-sm text-text-secondary">{language === 'de' ? 'Was soll bis wann gelernt werden?' : 'What should be learned by when?'}</p></div>
-            <button type="button" onClick={openNewBlock} className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-sky-300 bg-sidebar-bg px-4 py-2 text-sm font-semibold text-sky-700 hover:bg-sky-50 dark:text-sky-300 dark:hover:bg-sky-950/30"><Plus size={18} />{copy.addBlock}</button>
+            <div className="flex flex-wrap gap-2">
+              <button type="button" onClick={() => prepareNewBlock('', 'milestone')} className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-sky-300 bg-sidebar-bg px-4 py-2 text-sm font-semibold text-sky-700 hover:bg-sky-50 dark:text-sky-300 dark:hover:bg-sky-950/30"><CalendarDays size={18} aria-hidden="true" />{language === 'de' ? 'Klausur planen' : 'Plan an exam'}</button>
+              <button type="button" onClick={openNewBlock} className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-sky-300 bg-sidebar-bg px-4 py-2 text-sm font-semibold text-sky-700 hover:bg-sky-50 dark:text-sky-300 dark:hover:bg-sky-950/30"><Plus size={18} />{copy.addBlock}</button>
+            </div>
           </div>
           {editingBlockId === null && blockForm}
           {!hasPlanBlocks ? (
@@ -1342,6 +1416,12 @@ export const CoursePlanPilotView = ({
             <section className="space-y-3" aria-label={language === 'de' ? 'Planabschnitte bearbeiten' : 'Edit plan sections'}>
               {sorted.map((block) => {
                 const assignment = assignmentByBlockId.get(block.id)
+                const milestoneGoalIds = block.kind === 'milestone'
+                  ? block.goalIds ?? (block.goalId ? [block.goalId] : [])
+                  : []
+                const milestoneScope = block.kind === 'milestone' && milestoneGoalIds.length > 0
+                  ? resolveCoursePlanTopicSelection(milestoneGoalIds, topicGoals, topicChildren)
+                  : null
                 const title = block.kind === 'learning' ? block.title || goals.get(block.goalId)?.title || block.goalId : block.title
                 const workdays = block.kind === 'milestone' ? 0 : countCoursePlanWorkdaysInclusive(block.startDate, block.endDate) ?? 0
                 return (
@@ -1352,7 +1432,10 @@ export const CoursePlanPilotView = ({
                         <h3 className="mt-1 break-words font-semibold text-text-primary">{title}</h3>
                         <p className="mt-1 text-sm text-text-secondary">{block.kind === 'learning'
                           ? assignment ? copy.learningGoalCount(assignment.atomicGoalIds.length) : copy.notCalculable
-                          : block.kind === 'buffer' ? `${workdays} ${language === 'de' ? 'geschützte Werktage' : 'protected weekdays'}` : copy.kindMilestone}</p>
+                          : block.kind === 'buffer' ? `${workdays} ${language === 'de' ? 'geschützte Werktage' : 'protected weekdays'}`
+                            : milestoneScope ? milestoneScope.invalidGoalIds.length > 0 ? copy.notCalculable : copy.learningGoalCount(milestoneScope.atomicGoalIds.length)
+                              : copy.kindMilestone}</p>
+                        {milestoneGoalIds.length > 0 && <p className="mt-1 text-sm text-text-secondary">{milestoneGoalIds.map((id) => goals.get(id)?.title ?? id).join(' · ')}</p>}
                         {assignment && assignment.duplicateAtomicGoalIds.length > 0 && <p className="mt-1 text-xs text-amber-800 dark:text-amber-200">{copy.duplicatedGoalCount(assignment.duplicateAtomicGoalIds.length)}</p>}
                       </div>
                       <div className="flex flex-wrap gap-2">

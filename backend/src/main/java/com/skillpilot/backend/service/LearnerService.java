@@ -2943,28 +2943,36 @@ public class LearnerService {
                     learner.getPersonalCurriculum());
             Map<String, List<String>> focusTargetIds = new LinkedHashMap<>();
             for (LearnerLearningPlanApi.Block block : effectiveBlocks) {
-                if (block == null || !"learning".equals(block.kind())) {
+                if (block == null) {
                     continue;
                 }
-                String focusGoalId = block.goalId();
-                if (focusGoalId == null || focusGoalId.isBlank()) {
-                    if (block.atomicGoalIds() != null) {
-                        for (String atomicGoalId : block.atomicGoalIds()) {
-                            focusTargetIds.put(atomicGoalId, List.of(atomicGoalId));
+                List<String> focusGoalIds;
+                if ("milestone".equals(block.kind()) && block.goalIds() != null) {
+                    focusGoalIds = block.goalIds();
+                } else if ("learning".equals(block.kind())) {
+                    String focusGoalId = block.goalId();
+                    if (focusGoalId == null || focusGoalId.isBlank()) {
+                        if (block.atomicGoalIds() != null) {
+                            for (String atomicGoalId : block.atomicGoalIds()) {
+                                focusTargetIds.put(atomicGoalId, List.of(atomicGoalId));
+                            }
                         }
+                        continue;
                     }
+                    focusGoalIds = List.of(focusGoalId);
+                } else {
                     continue;
                 }
-                List<String> resolvedTargets = resolveProjectedFocusTargetIds(
-                                focusGoalId,
-                                projection)
-                        .stream()
-                        .filter(projection.targetGoalIds()::contains)
-                        .filter(goalId -> landscapeId.equals(
-                                landscapeService.getLandscapeIdForGoal(goalId)))
-                        .sorted()
-                        .toList();
-                focusTargetIds.put(focusGoalId, resolvedTargets);
+                for (String focusGoalId : focusGoalIds) {
+                    List<String> resolvedTargets = resolveProjectedFocusTargetIds(focusGoalId, projection)
+                            .stream()
+                            .filter(projection.targetGoalIds()::contains)
+                            .filter(goalId -> landscapeId.equals(
+                                    landscapeService.getLandscapeIdForGoal(goalId)))
+                            .sorted()
+                            .toList();
+                    focusTargetIds.put(focusGoalId, resolvedTargets);
+                }
             }
             return computeLearningPlanFingerprint(
                     scope,
@@ -3104,6 +3112,12 @@ public class LearnerService {
                         updateLearningPlanDigest(digest, atomicGoalId);
                     }
                 }
+                if ("milestone".equals(block.kind()) && block.goalIds() != null) {
+                    for (String goalId : block.goalIds()) {
+                        updateLearningPlanDigest(digest, "milestone-goal");
+                        updateLearningPlanDigest(digest, goalId);
+                    }
+                }
             }
             return "sha256:" + java.util.HexFormat.of().formatHex(digest.digest());
         } catch (java.security.NoSuchAlgorithmException exception) {
@@ -3189,7 +3203,9 @@ public class LearnerService {
      * Validates authored section foci before they become learner-owned plan
      * state. A focus must resolve inside the current learner-facing target
      * projection, stay within the requested subject, and contain every
-     * materialized atomic goal of its learning block.
+     * materialized atomic goal of its learning block. Milestone topic roots
+     * obey the same projection and subject boundary, including already mastered
+     * targets, but never materialize scheduled learning work.
      */
     @Transactional(readOnly = true)
     public void validateLearningPlanBlockFoci(
@@ -3212,41 +3228,54 @@ public class LearnerService {
                 learner.getPersonalCurriculum());
 
         for (LearnerLearningPlanApi.Block block : blocks) {
+            if (block != null && "milestone".equals(block.kind()) && block.goalIds() != null) {
+                for (String goalId : block.goalIds()) {
+                    validateLearningPlanFocus(
+                            goalId, block.id(), List.of(), requestedLandscapeId, projection);
+                }
+                continue;
+            }
             if (block == null
                     || !"learning".equals(block.kind())
                     || block.goalId() == null
                     || block.goalId().isBlank()) {
                 continue;
             }
-            List<String> focusTargetIds = resolveProjectedFocusTargetIds(
-                    block.goalId(),
-                    projection);
-            if (focusTargetIds.isEmpty()) {
-                throw invalidLearningPlanFocus(block.id());
-            }
+            validateLearningPlanFocus(block.goalId(), block.id(),
+                    block.atomicGoalIds() == null ? List.of() : block.atomicGoalIds(),
+                    requestedLandscapeId, projection);
+        }
+    }
 
-            LinkedHashSet<String> focusedAtomicIds = new LinkedHashSet<>();
-            boolean crossesSubjectBoundary = false;
-            for (String targetGoalId : focusTargetIds) {
-                LearningGoal structuralGoal = projection.structuralGoals().get(targetGoalId);
-                if (!isCountedAtomicGoal(structuralGoal)) {
-                    continue;
-                }
-                String targetLandscapeId = landscapeService.getLandscapeIdForGoal(targetGoalId);
-                if (!requestedLandscapeId.equals(targetLandscapeId)) {
-                    crossesSubjectBoundary = true;
-                    continue;
-                }
-                focusedAtomicIds.add(targetGoalId);
+    private void validateLearningPlanFocus(
+            String goalId,
+            String blockId,
+            List<String> blockAtomicIds,
+            String requestedLandscapeId,
+            GoalProjection projection) {
+        List<String> focusTargetIds = resolveProjectedFocusTargetIds(goalId, projection);
+        if (focusTargetIds.isEmpty()) {
+            throw invalidLearningPlanFocus(blockId);
+        }
+
+        LinkedHashSet<String> focusedAtomicIds = new LinkedHashSet<>();
+        boolean crossesSubjectBoundary = false;
+        for (String targetGoalId : focusTargetIds) {
+            LearningGoal structuralGoal = projection.structuralGoals().get(targetGoalId);
+            if (!isCountedAtomicGoal(structuralGoal)) {
+                continue;
             }
-            List<String> blockAtomicIds = block.atomicGoalIds() == null
-                    ? Collections.emptyList()
-                    : block.atomicGoalIds();
-            if (crossesSubjectBoundary
-                    || focusedAtomicIds.isEmpty()
-                    || !focusedAtomicIds.containsAll(blockAtomicIds)) {
-                throw invalidLearningPlanFocus(block.id());
+            String targetLandscapeId = landscapeService.getLandscapeIdForGoal(targetGoalId);
+            if (!requestedLandscapeId.equals(targetLandscapeId)) {
+                crossesSubjectBoundary = true;
+                continue;
             }
+            focusedAtomicIds.add(targetGoalId);
+        }
+        if (crossesSubjectBoundary
+                || focusedAtomicIds.isEmpty()
+                || !focusedAtomicIds.containsAll(blockAtomicIds)) {
+            throw invalidLearningPlanFocus(blockId);
         }
     }
 

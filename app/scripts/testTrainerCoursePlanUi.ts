@@ -1,5 +1,5 @@
 import { learnerPlanStatus } from './fixtures/learnerPlanStatus'
-import { readFile } from 'node:fs/promises'
+import { mkdir, readFile } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
 
 import { chromium, type Browser, type Download, type Page } from 'playwright'
@@ -670,14 +670,39 @@ try {
   await editForm.getByRole('button', { name: 'Abbrechen', exact: true }).click()
   await page.setViewportSize({ width: 1280, height: 720 })
 
-  await page.getByRole('button', { name: 'Abschnitt hinzufügen', exact: true }).click()
+  await page.getByRole('button', { name: 'Klausur planen', exact: true }).click()
   const milestoneFormHeading = page.getByRole('heading', { name: 'Neuen Planabschnitt anlegen', exact: true })
   await milestoneFormHeading.waitFor()
   const milestoneForm = milestoneFormHeading.locator('..').locator('..')
-  await milestoneForm.getByRole('combobox').first().selectOption('milestone')
-  await milestoneForm.getByRole('combobox', { name: 'Lernziel oder Cluster' }).selectOption(clusterGoalId)
+  assert(await milestoneForm.getByRole('combobox').first().inputValue() === 'milestone',
+    'the exam entry opens a dated milestone directly')
+  const topicPicker = milestoneForm.getByTestId('course-plan-topic-picker')
+  await topicPicker.getByRole('checkbox', { name: 'Mechanik auswählen', exact: true }).check()
+  await topicPicker.getByRole('button', { name: 'Mechanik aufklappen', exact: true }).click()
+  await topicPicker.getByRole('checkbox', { name: 'Kräfte beschreiben auswählen', exact: true }).uncheck()
+  assert(await topicPicker.getByRole('checkbox', { name: 'Mechanik auswählen', exact: true }).evaluate((input) => (input as HTMLInputElement).indeterminate),
+    'deselecting a child leaves its parent partly selected')
+  await topicPicker.getByRole('checkbox', { name: 'Kräfte beschreiben auswählen', exact: true }).check()
+  await topicPicker.getByRole('searchbox', { name: 'Themen durchsuchen', exact: true }).fill('Kräfte')
+  assert(await topicPicker.getByRole('checkbox', { name: 'Mechanik auswählen', exact: true }).isDisabled(),
+    'search ancestors cannot select invisible siblings')
+  assert(await topicPicker.getByRole('button', { name: 'Bewegungen auswerten entfernen', exact: true }).count() === 1,
+    'search does not clear a selected topic outside the visible results')
+  await topicPicker.getByRole('searchbox', { name: 'Themen durchsuchen', exact: true }).fill('')
   await milestoneForm.getByLabel(/^Bezeichnung/u).fill('Mechanik-Aufgaben sicher bearbeiten')
   await milestoneForm.getByLabel('Fällig am', { exact: true }).fill(addDays(today, 20))
+  const examScreenshotDir = process.env.SKILLPILOT_EXAM_PLAN_SCREENSHOTS
+  if (examScreenshotDir) await mkdir(examScreenshotDir, { recursive: true })
+  for (const width of [1280, 390]) {
+    await page.setViewportSize({ width, height: 900 })
+    assert(await topicPicker.evaluate((element) => element.scrollWidth <= element.clientWidth),
+      `topic picker fits the ${width}px viewport without horizontal overflow`)
+    if (examScreenshotDir) {
+      await topicPicker.scrollIntoViewIfNeeded()
+      await page.screenshot({ path: `${examScreenshotDir}/topic-picker-${width}.png`, fullPage: true })
+    }
+  }
+  await page.setViewportSize({ width: 1280, height: 720 })
   await milestoneForm.getByRole('button', { name: 'Abschnitt speichern', exact: true }).click()
   await page.getByRole('heading', { name: 'Mechanik-Aufgaben sicher bearbeiten', exact: true }).waitFor()
   const milestoneBlock = page.getByTestId('course-plan-block').filter({
@@ -685,10 +710,11 @@ try {
   })
   await milestoneBlock.getByRole('button', { name: 'Bearbeiten', exact: true }).click()
   const savedMilestoneForm = page.getByRole('heading', { name: 'Planabschnitt bearbeiten', exact: true }).locator('..').locator('..')
-  assert(
-    await savedMilestoneForm.getByRole('combobox', { name: 'Lernziel oder Cluster' }).inputValue() === clusterGoalId,
-    'a saved milestone retains its concrete curriculum target',
-  )
+  await savedMilestoneForm.getByRole('button', { name: 'Klausurstoff auswählen', exact: true }).click()
+  const savedPicker = savedMilestoneForm.getByTestId('course-plan-topic-picker')
+  assert(await savedPicker.getByRole('button', { name: 'Kräfte beschreiben entfernen', exact: true }).count() === 1
+    && await savedPicker.getByRole('button', { name: 'Bewegungen auswerten entfernen', exact: true }).count() === 1,
+  'a saved milestone retains both selected topics')
   assert(await savedMilestoneForm.getByLabel('Fällig am', { exact: true }).inputValue() === addDays(today, 20),
     'the saved milestone retains its explicit due date')
   await savedMilestoneForm.getByRole('button', { name: 'Abbrechen', exact: true }).click()
@@ -1471,6 +1497,21 @@ try {
   assertJsonEqual(resavedPlan.blocks, historicalPlan.blocks, 'resaving keeps the existing clusters and dates')
   assertJsonEqual(resavedPlan.planningBaseline, historicalPlan.planningBaseline, 'resaving retains the historical planning capture')
   assert(learnerPlanWrites.length === 1, 'reading and locally resaving after an update never republishes the learner plan')
+  await personalizedPage.getByRole('button', { name: 'Klausur planen', exact: true }).click()
+  const projectedExamForm = personalizedPage.getByRole('heading', { name: 'Neuen Planabschnitt anlegen', exact: true })
+    .locator('..').locator('..')
+  const projectedPicker = projectedExamForm.getByTestId('course-plan-topic-picker')
+  await projectedPicker.getByRole('searchbox', { name: 'Themen durchsuchen', exact: true }).fill('Sekundarstufe II')
+  await projectedPicker.getByRole('checkbox', { name: 'Sekundarstufe II (GK + LK) auswählen', exact: true }).check()
+  await projectedExamForm.getByLabel(/^Bezeichnung/u).fill('Klausur im ausgewählten Kurs')
+  await projectedExamForm.getByRole('button', { name: 'Abschnitt speichern', exact: true }).click()
+  await projectedExamForm.waitFor({ state: 'detached' })
+  const savedExam = (await readPersonalizedPlan()).blocks.find((block) => block.title === 'Klausur im ausgewählten Kurs')
+  assert(savedExam?.kind === 'milestone' && Boolean(savedExam.goalIds?.length),
+    'the personal curriculum exam stores selected topic roots')
+  assert(savedExam.goalIds?.every((id) => !id.startsWith('composition:') && id !== prerequisiteOnlyGoalId),
+    'synthetic program containers become canonical roots and prerequisite-only goals stay excluded')
+  assert(learnerPlanWrites.length === 1, 'saving exam topics locally does not publish a learner plan')
   assert(
     personalizedBrowserErrors.length === 0,
     `focus-independent course-plan browser errors:\n${personalizedBrowserErrors.join('\n')}`,

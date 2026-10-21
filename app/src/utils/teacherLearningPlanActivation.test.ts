@@ -7,6 +7,7 @@ import {
   compareTeacherLearningPlanDraft,
   learnerPlanCopyMatchesServer,
   loadTeacherLearningPlanActivation,
+  loadTeacherLearningPlanActivationSubject,
   teacherLearningPlanActivationRequest,
   teacherLearningPlanSubjectsBlocked,
   teacherLearningPlanDraftsMatch,
@@ -61,6 +62,28 @@ assert.equal(
   true,
   'backend date normalization does not turn an equal plan into an unconfirmed activation',
 )
+
+const examTopicBlock = {
+  id: 'exam-topics', kind: 'milestone' as const, title: 'Klausur',
+  goalIds: ['earlier-focus', 'later-focus'], date: '2026-09-21',
+}
+const copyWithExamScope = { ...localCopy, blocks: [...localCopy.blocks, examTopicBlock] }
+const serverWithExamScope = { ...serverPlan, blocks: [...serverPlan.blocks, examTopicBlock] }
+assert.equal(learnerPlanCopyMatchesServer(copyWithExamScope, serverWithExamScope), true)
+assert.equal(learnerPlanCopyMatchesServer(copyWithExamScope, {
+  ...serverWithExamScope,
+  blocks: [...serverPlan.blocks, { ...examTopicBlock, goalIds: ['earlier-focus'] }],
+}), false, 'changing only the exam selection must require applying the updated plan')
+assert.equal(learnerPlanCopyMatchesServer(copyWithExamScope, {
+  ...serverWithExamScope,
+  blocks: [...serverPlan.blocks, { ...examTopicBlock, goalIds: undefined }],
+}), false, 'a backend response that loses topic roots never confirms activation')
+assert.equal(learnerPlanCopyMatchesServer({
+  ...copyWithExamScope, blocks: [...localCopy.blocks, { ...examTopicBlock, goalIds: [] }],
+}, {
+  ...serverWithExamScope,
+  blocks: [...serverPlan.blocks, { ...examTopicBlock, goalIds: [], goalId: 'ignored-legacy-target' }],
+}), true, 'an explicit empty list overrides a lingering legacy target consistently')
 
 assert.equal(
   learnerPlanCopyMatchesServer(localCopy, {
@@ -229,6 +252,34 @@ assert.deepEqual(compareTeacherLearningPlanDraft(titlelessPlan, localCopy, {
 }), { status: 'update-required', issue: null }, 'a date difference remains unapplied')
 assert.equal(JSON.stringify(titlelessPlan), unchangedLocalSnapshot,
   'status classification does not update local revision, baseline, history, or class metadata')
+
+const planWithExamScope = reviseTeacherCoursePlan(titlelessPlan, {
+  changedOn: '2026-09-04', recordedAt: '2026-09-04T08:04:00.000Z',
+  blocks: [...titlelessBlocks, examTopicBlock],
+})
+assert(planWithExamScope)
+assert.deepEqual(compareTeacherLearningPlanDraft(planWithExamScope, copyWithExamScope, serverWithExamScope),
+  { status: 'current', issue: null })
+assert.deepEqual(compareTeacherLearningPlanDraft(planWithExamScope, copyWithExamScope, {
+  ...serverWithExamScope,
+  blocks: [...serverPlan.blocks, { ...examTopicBlock, goalIds: ['earlier-focus'] }],
+}), { status: 'update-required', issue: null }, 'changing exam roots is an authored change')
+const serverOnlyExamSubject = await loadTeacherLearningPlanActivationSubject({
+  classSession: {
+    id: 'server-only-exam', name: 'Physik', landscapeId: serverPlan.landscapeId,
+    activeFilter: 'all', students: [],
+  },
+  landscapeId: serverPlan.landscapeId, label: 'Physik', landscapeEntries: [],
+  runtimeCatalogState: { mode: 'repository' }, serverPlan: serverWithExamScope,
+  serverAvailable: true, storage: { getItem: () => null },
+})
+assert.equal(serverOnlyExamSubject.status, 'cockpit-only')
+assert.deepEqual(serverOnlyExamSubject.copy?.blocks.at(-1), examTopicBlock,
+  'reusing an existing server plan preserves its exam topic selection')
+const storedExamCopy = serverOnlyExamSubject.copy?.blocks.at(-1)
+assert(storedExamCopy?.kind === 'milestone')
+assert.notEqual(storedExamCopy.goalIds, examTopicBlock.goalIds,
+  'reusing a server plan creates an independent topic-root array')
 
 const originalFetch = globalThis.fetch
 let scopeReadCount = 0

@@ -193,6 +193,76 @@ const staleMilestoneEvaluation = evaluateTeacherCoursePlan(
 assert.equal(staleMilestoneEvaluation.quality.status, 'invalid')
 assert.equal(staleMilestoneEvaluation.metrics, null)
 
+// Exam topic roots are persistent deadline metadata, independent of scheduled
+// work, prior mastery, and requires. The visible contains projection is binding.
+const examScopeRoots = ['projected-root', 'b']
+const examScopePlan = addBlocks(createPlan('exam-scope'), [{
+  id: 'exam-scope-block', kind: 'milestone', title: 'Klausur',
+  goalIds: examScopeRoots, date: '2026-08-21',
+}])
+examScopeRoots.push('unwanted-later-mutation')
+assert.deepEqual(examScopePlan.blocks[0], {
+  id: 'exam-scope-block', kind: 'milestone', title: 'Klausur',
+  goalIds: ['projected-root', 'b'], date: '2026-08-21',
+})
+const examScopeEvaluation = evaluateTeacherCoursePlan(
+  examScopePlan, projectedIndex, '2026-08-14', new Map([['projected-root', ['a', 'b']]]),
+)
+assert.notEqual(examScopeEvaluation.quality.status, 'invalid')
+assert.equal(examScopeEvaluation.metrics?.plannedGoalCount, 0)
+assert.deepEqual(examScopeEvaluation.assignments, [])
+assert.deepEqual(examScopeEvaluation.metrics?.nextMilestone?.goalIds, ['projected-root', 'b'])
+assert.equal(evaluateTeacherCoursePlan(examScopePlan, projectedIndex, '2026-08-14').quality.status, 'invalid')
+
+const examScopeBlock = examScopePlan.blocks[0]!
+assert.equal(examScopeBlock.kind, 'milestone')
+if (examScopeBlock.kind !== 'milestone') throw new Error('expected exam scope block')
+const precedencePlan = normalizeTeacherCoursePlan({
+  ...examScopePlan,
+  blocks: [{ ...examScopeBlock, goalId: 'missing-legacy-target', goalIds: [] }],
+}).plan
+assert(precedencePlan)
+assert.deepEqual(precedencePlan.blocks[0], {
+  id: examScopeBlock.id, kind: 'milestone', title: examScopeBlock.title,
+  goalIds: [], date: examScopeBlock.date,
+})
+assert.notEqual(evaluateTeacherCoursePlan(precedencePlan, projectedIndex, '2026-08-14').quality.status, 'invalid')
+for (const invalidGoalIds of [null, 'a', ['a', 'a'], ['a', ' a '], [''], ['__proto__'], [42],
+  Array.from({ length: 10_001 }, (_, index) => `topic-${index}`)]) {
+  assert.equal(normalizeTeacherCoursePlan({
+    ...examScopePlan, blocks: [{ ...examScopeBlock, goalIds: invalidGoalIds }],
+  }).plan, null, 'invalid or oversized topic root lists fail closed')
+}
+const tooManyRootsAcrossExams = ['first', 'second'].map((id) => ({
+  ...examScopeBlock, id, goalIds: Array.from({ length: 5_001 }, (_, index) => `topic-${index}`),
+}))
+assert.equal(normalizeTeacherCoursePlan({ ...examScopePlan, blocks: tooManyRootsAcrossExams }).plan, null)
+
+const changedExamScopePlan = addBlocks(examScopePlan, [{ ...examScopeBlock, goalIds: ['a'] }], '2026-08-02')
+const previousExamScope = changedExamScopePlan.revisionHistory.at(-1)?.blocks[0]
+assert(previousExamScope?.kind === 'milestone')
+assert.deepEqual(previousExamScope.goalIds, ['projected-root', 'b'])
+assert.notEqual(previousExamScope.goalIds, examScopeBlock.goalIds)
+const restoredExamScopePlan = requirePlan(undoLastTeacherCoursePlanRevision(changedExamScopePlan, {
+  changedOn: '2026-08-03', recordedAt: '2026-08-03T10:00:00.000Z',
+}))
+assert.deepEqual(restoredExamScopePlan.blocks[0], examScopeBlock)
+const examScopeStorage = new Map<string, string>()
+const examScopeStorageAdapter = {
+  getItem: (key: string) => examScopeStorage.get(key) ?? null,
+  setItem: (key: string, value: string) => { examScopeStorage.set(key, value) },
+}
+assert.equal(saveTeacherCoursePlan(restoredExamScopePlan, examScopeStorageAdapter).ok, true)
+assert.deepEqual(loadTeacherCoursePlan('exam-scope', examScopeStorageAdapter).plan, restoredExamScopePlan)
+const staleAdditionalRootPlan = addBlocks(createPlan('stale-additional-root'), [{
+  ...examScopeBlock, goalIds: ['root', 'goal-no-longer-in-scope'],
+}])
+assert.equal(evaluateTeacherCoursePlan(staleAdditionalRootPlan, fullGoalIndex, '2026-08-14').quality.status, 'invalid')
+const invisibleExamTopicPlan = addBlocks(createPlan('empty-exam-topic'), [{
+  ...examScopeBlock, goalIds: [roleFilteredCluster.id],
+}])
+assert.equal(evaluateTeacherCoursePlan(invisibleExamTopicPlan, roleFilteredIndex, '2026-08-14').quality.status, 'invalid')
+
 // Overlapping atoms belong exclusively to the chronologically first learning block.
 const overlapIndex = goalMap(
   uiGoal('early-root', ['g1', 'g2']),

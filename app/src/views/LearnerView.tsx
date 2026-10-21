@@ -3231,14 +3231,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     }
   }, [learnerDataManagementCopy.deleteMissing, learnerDataManagementCopy.deleteSuccess, onLogout, onNotify, skillpilotId])
 
-  const showLearningProgress = !isGuidedPersonalizationRequired && (
-    learningPlansLoadStatus !== 'ready'
-    || learningPlanLanguagePending
-    || (localizedLearningPlans?.status.subjects.length ?? 0) > 0
-    || (localizedLearningPlans?.plans.length ?? 0) > 0
-    || (localizedLearningPlans?.status.unavailablePlanCount ?? 0) > 0
-    || localizedLearningPlans?.followLearningPlans === true
-  )
+  const showLearningProgress = !isGuidedPersonalizationRequired
+    && (scopedLearningPlans?.followLearningPlans
+      ?? (learnerData?.skillpilotId === skillpilotId && learnerData?.followLearningPlans)) === true
   const activeGoalTitle = effectiveActiveGoalId ? goalIndexAll.get(effectiveActiveGoalId)?.title : undefined
   const showActiveGoalBanner = !isGuidedPersonalizationRequired
     && Boolean(skillpilotId)

@@ -121,6 +121,40 @@ assert.deepEqual(materialized.copy.blocks, [
   },
 ])
 
+const multiTopicPlan: TeacherCoursePlan = {
+  ...plan,
+  blocks: [...plan.blocks.slice(0, 2), {
+    id: 'exam-topics', kind: 'milestone', title: 'Klausur mit Themenauswahl',
+    goalId: 'ignored-legacy-id', goalIds: ['root', 'already-mastered'], date: '2026-09-15',
+  }],
+}
+const topicCopy = materializeLearnerLearningPlanCopy({
+  plan: multiTopicPlan, fallbackPlanLabel: 'Fallback', goals, visibleChildrenByParent: visibleChildren,
+})
+assert(topicCopy.ok)
+assert.equal(topicCopy.copy.atomicGoalCount, materialized.copy.atomicGoalCount,
+  'exam scope adds no scheduled work and retains already-mastered topics')
+assert.deepEqual(topicCopy.copy.blocks[2], {
+  id: 'exam-topics', kind: 'milestone', title: 'Klausur mit Themenauswahl',
+  goalIds: ['root', 'already-mastered'], date: '2026-09-15',
+})
+const sourceExam = multiTopicPlan.blocks[2]
+const copiedExam = topicCopy.copy.blocks[2]
+assert(sourceExam?.kind === 'milestone' && copiedExam?.kind === 'milestone')
+assert.notEqual(sourceExam.goalIds, copiedExam.goalIds, 'publication copies the selected roots')
+const unavailableExamPlan = { ...multiTopicPlan, blocks: [...multiTopicPlan.blocks.slice(0, 2), {
+  ...sourceExam, goalIds: ['root', 'outside-visible-scope'],
+}] }
+assert.deepEqual(materializeLearnerLearningPlanCopy({
+  plan: unavailableExamPlan, fallbackPlanLabel: 'Fallback', goals, visibleChildrenByParent: visibleChildren,
+}), { ok: false, blockId: 'exam-topics', goalId: 'outside-visible-scope' })
+const clearedExamCopy = materializeLearnerLearningPlanCopy({
+  plan: { ...multiTopicPlan, blocks: [...multiTopicPlan.blocks.slice(0, 2), { ...sourceExam, goalIds: [] }] },
+  fallbackPlanLabel: 'Fallback', goals, visibleChildrenByParent: visibleChildren,
+})
+assert(clearedExamCopy.ok)
+assert.deepEqual(clearedExamCopy.copy.blocks[2], { ...copiedExam, goalIds: [] })
+
 const prerequisiteGoals = new Map([
   goal('prerequisite-root', ['dependent', 'prerequisite-cluster']),
   {

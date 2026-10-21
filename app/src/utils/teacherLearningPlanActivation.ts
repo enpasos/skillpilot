@@ -353,7 +353,9 @@ const comparableBlock = (block: ComparableLearningPlanBlock) => {
     id: block.id,
     kind: block.kind,
     title: block.title,
-    ...(block.goalId ? { goalId: block.goalId } : {}),
+    ...(block.goalIds !== undefined
+      ? { goalIds: [...block.goalIds] }
+      : block.goalId ? { goalId: block.goalId } : {}),
     date: block.date,
   }
 }
@@ -481,7 +483,9 @@ const copyStoredServerPlan = (
       id: block.id,
       kind: block.kind,
       title: block.title,
-      ...(block.goalId ? { goalId: block.goalId } : {}),
+      ...(block.goalIds !== undefined
+        ? { goalIds: [...block.goalIds] }
+        : block.goalId ? { goalId: block.goalId } : {}),
       date: block.date,
     })
   }

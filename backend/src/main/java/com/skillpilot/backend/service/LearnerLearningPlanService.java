@@ -1450,6 +1450,7 @@ public class LearnerLearningPlanService {
         HashSet<String> blockIds = new HashSet<>();
         List<IndexedBlock> indexed = new ArrayList<>();
         int submittedAtoms = 0;
+        int submittedMilestoneGoals = 0;
 
         for (int index = 0; index < requested.size(); index++) {
             LearnerLearningPlanApi.Block raw = requested.get(index);
@@ -1520,15 +1521,28 @@ public class LearnerLearningPlanService {
                 }
                 case "milestone" -> {
                     LocalDate date = requireDate(raw.date(), "block.date");
+                    List<String> goalIds = null;
+                    if (raw.goalIds() != null) {
+                        submittedMilestoneGoals += raw.goalIds().size();
+                        if (submittedMilestoneGoals > MAX_ATOMIC_IDS) {
+                            throw badRequest("milestone goalIds exceeds the supported limit");
+                        }
+                        LinkedHashSet<String> distinctGoalIds = new LinkedHashSet<>();
+                        for (String rawGoalId : raw.goalIds()) {
+                            distinctGoalIds.add(requireText(rawGoalId, "block.goalIds entry", 255));
+                        }
+                        goalIds = List.copyOf(distinctGoalIds);
+                    }
                     normalized = new LearnerLearningPlanApi.Block(
                             id,
                             kind,
-                            optionalText(raw.goalId(), "block.goalId", 255),
+                            goalIds == null ? optionalText(raw.goalId(), "block.goalId", 255) : null,
                             requireText(raw.title(), "block.title", MAX_BLOCK_TITLE_LENGTH),
                             null,
                             null,
                             date,
-                            null);
+                            null,
+                            goalIds);
                     sortDate = date;
                     sortEndDate = date;
                 }
@@ -1886,7 +1900,7 @@ public class LearnerLearningPlanService {
                 .filter(block -> !block.date().isBefore(asOf))
                 .findFirst()
                 .map(block -> new LearnerLearningPlanApi.Milestone(
-                        block.id(), block.title(), block.goalId(), block.date()));
+                        block.id(), block.title(), block.goalId(), block.date(), block.goalIds()));
     }
 
     private LearnerLearningPlanApi.Buffer buffer(

@@ -59,6 +59,12 @@ export interface MilestoneCoursePlanBlock {
   title: string
   /** Optional curriculum target made concrete by this deadline. */
   goalId?: string
+  /**
+   * Selected curriculum roots, expanded only through the visible contains tree.
+   * When present (including []), replaces legacy goalId. This is deadline scope
+   * metadata and does not add learning work or change mastery.
+   */
+  goalIds?: string[]
   date: CoursePlanDate
 }
 
@@ -215,7 +221,7 @@ export interface TeacherCoursePlanMetrics {
   coverageStatusReason: string | null
   totalBufferWorkdays: number
   remainingBufferWorkdays: number
-  nextMilestone: { blockId: string; title: string; goalId?: string; date: CoursePlanDate } | null
+  nextMilestone: { blockId: string; title: string; goalId?: string; goalIds?: string[]; date: CoursePlanDate } | null
 }
 
 export type CoursePacingGaugeReason =

@@ -19,6 +19,10 @@ public final class LearnerLearningPlanApi {
     public record ErrorResponse(String errorCode) {
     }
 
+    /**
+     * Milestone goalIds record selected topic roots, not scheduled atomic work.
+     * An explicitly present list (including an empty list) replaces legacy goalId.
+     */
     @JsonInclude(JsonInclude.Include.NON_NULL)
     public record Block(
             String id,
@@ -28,7 +32,12 @@ public final class LearnerLearningPlanApi {
             @JsonFormat(shape = JsonFormat.Shape.STRING) LocalDate startDate,
             @JsonFormat(shape = JsonFormat.Shape.STRING) LocalDate endDate,
             @JsonFormat(shape = JsonFormat.Shape.STRING) LocalDate date,
-            List<String> atomicGoalIds) {
+            List<String> atomicGoalIds,
+            List<String> goalIds) {
+        public Block(String id, String kind, String goalId, String title,
+                LocalDate startDate, LocalDate endDate, LocalDate date, List<String> atomicGoalIds) {
+            this(id, kind, goalId, title, startDate, endDate, date, atomicGoalIds, null);
+        }
     }
 
     public record UpsertRequest(
@@ -70,7 +79,11 @@ public final class LearnerLearningPlanApi {
             String blockId,
             String title,
             String goalId,
-            @JsonFormat(shape = JsonFormat.Shape.STRING) LocalDate date) {
+            @JsonFormat(shape = JsonFormat.Shape.STRING) LocalDate date,
+            List<String> goalIds) {
+        public Milestone(String blockId, String title, String goalId, LocalDate date) {
+            this(blockId, title, goalId, date, null);
+        }
     }
 
     /** Read-only draft projection using the same status calculation as the live plan. */

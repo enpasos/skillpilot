@@ -245,13 +245,13 @@ try {
           ? { title: 'Solve linear equations', announcement: 'Your active learning goal: Solve linear equations' }
           : { title: 'Lineare Gleichungen lösen', announcement: 'Dein aktives Lernziel: Lineare Gleichungen lösen' },
         followLearningPlans, resumeAvailable: true,
-        subjects: !followLearningPlans ? [] : unavailableStatus ? subjects.map((entry) => ({ ...entry, evaluable: false, periodText: null, planStatusText: null, subjectLine: null, statusDirection: null, periodGauge: null, balanceGauge: null, canContinue: false })) : subjects, unavailablePlanCount: unavailableStatus ? 2 : 0,
+        subjects: unavailableStatus ? subjects.map((entry) => ({ ...entry, evaluable: false, periodText: null, planStatusText: null, subjectLine: null, statusDirection: null, periodGauge: null, balanceGauge: null, canContinue: false })) : subjects, unavailablePlanCount: unavailableStatus ? 2 : 0,
       }
       return json({
         asOf: '2026-09-04',
         followLearningPlans,
         status: omitStatus ? undefined : status,
-        plans: unavailableStatus || !followLearningPlans ? [] : [
+        plans: unavailableStatus ? [] : [
           plan('math-plan', 'math/sek-i', 'Mathematik bis Klasse 10', 'math-goal-1'),
           plan('physics-plan', 'physics/sek-ii', 'Physik Oberstufe', 'physics-goal-1'),
         ],
@@ -614,10 +614,19 @@ try {
   followLearningPlans = false
   await page.reload()
   await activeGoalBanner.getByText('Dein aktives Lernziel: Lineare Gleichungen lösen', { exact: true }).waitFor()
-  assert.equal(await overview.count(), 0)
-  assert.equal(await learningProgress.count(), 0,
-    'an active goal remains visible when plan mode is off and there are no subject plans')
   await selectedGoal.getByRole('heading', { name: 'Lineare Gleichungen lösen', exact: true }).waitFor()
+  for (const width of [1440, 390]) {
+    await page.setViewportSize({ width, height: 900 })
+    assert.equal(await overview.count(), 0,
+      'existing subject plans stay hidden when plan mode is off')
+    assert.equal(await learningProgress.count(), 0,
+      'the entire learning progress section stays hidden when plan mode is off')
+    assert.equal(await page.locator('.learner-cockpit-grid-with-progress').count(), 0,
+      'the hidden plan does not reserve a progress column')
+    assert.equal(await activeGoalBanner.isVisible(), true)
+    assert.equal(await selectedGoal.isVisible(), true)
+    if (screenshotDir) await page.screenshot({ path: `${screenshotDir}/plan-off-${width}.png`, fullPage: true })
+  }
 
   assert.equal(browserErrors.length, 0, `mobile LearnerView browser errors:\n${browserErrors.join('\n')}`)
   assert.deepEqual(unexpectedRequests, [], 'the full state already supplies focus; initial /planned must not be fetched')

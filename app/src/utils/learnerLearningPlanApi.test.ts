@@ -13,6 +13,7 @@ import {
   continueLearnerLearningPlan,
   getLearnerLearningPlan,
   getLearnerLearningPlans,
+  parseLearnerLearningPlanDetail,
   parseLearnerLearningPlansResponse,
   parseLearnerPlanStatus,
   parsePreviewLearnerLearningPlansResponse,
@@ -131,6 +132,41 @@ assert.equal(parsed.followLearningPlans, false)
 assert.equal(parsed.plans[0]?.currentBlock?.blockId, 'block-analysis')
 assert.equal(parsed.plans[0]?.nextMilestone?.date, '2026-09-25')
 assert.equal(parsed.plans[0]?.nextEligibleGoal?.goalId, 'analysis-1')
+const examTopicBlock = {
+  id: 'exam-topics', kind: 'milestone', title: 'Klausur',
+  goalId: 'legacy-root', goalIds: ['analysis-root', 'geometry-root'], date: '2026-09-25',
+}
+const parsedExamTopicPlan = parseLearnerLearningPlanDetail({
+  ...planDetail,
+  nextMilestone: { ...examTopicBlock, blockId: examTopicBlock.id },
+  blocks: [...planDetail.blocks, examTopicBlock],
+})
+assert.deepEqual(parsedExamTopicPlan.blocks.at(-1), {
+  id: examTopicBlock.id, kind: 'milestone', title: 'Klausur',
+  goalIds: ['analysis-root', 'geometry-root'], date: '2026-09-25',
+})
+assert.deepEqual(parsedExamTopicPlan.nextMilestone, {
+  blockId: examTopicBlock.id, title: 'Klausur',
+  goalIds: ['analysis-root', 'geometry-root'], date: '2026-09-25',
+})
+const clearedExamTopicPlan = parseLearnerLearningPlanDetail({
+  ...planDetail,
+  blocks: [{ ...examTopicBlock, goalIds: [] }],
+})
+assert.deepEqual(clearedExamTopicPlan.blocks[0], {
+  id: examTopicBlock.id, kind: 'milestone', title: 'Klausur', goalIds: [], date: '2026-09-25',
+})
+assert.deepEqual(parseLearnerLearningPlanDetail({
+  ...planDetail, blocks: [{ ...examTopicBlock, goalIds: undefined }],
+}).blocks[0], {
+  id: examTopicBlock.id, kind: 'milestone', title: 'Klausur', goalId: 'legacy-root', date: '2026-09-25',
+})
+for (const goalIds of ['analysis-root', ['a', 'a'], [''], ['x'.repeat(256)],
+  Array.from({ length: 10_001 }, (_, index) => `topic-${index}`)]) {
+  assert.throws(() => parseLearnerLearningPlanDetail({
+    ...planDetail, blocks: [{ ...examTopicBlock, goalIds }],
+  }), /block.goalIds/u)
+}
 assert.equal('metrics' in parsed.plans[0], false)
 assert.equal('pace' in parsed.plans[0], false)
 assert.equal('statusDirection' in parsed.status, false, 'there is no cross-subject balance')

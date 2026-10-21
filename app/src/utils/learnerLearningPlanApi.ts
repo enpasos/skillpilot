@@ -119,6 +119,18 @@ const parseStringList = (value: unknown, field: string): string[] => {
   return values
 }
 
+const parseMilestoneGoalIds = (value: unknown, field: string): string[] | undefined => {
+  if (value === null || value === undefined) return undefined
+  if (!Array.isArray(value) || value.length > 10_000) {
+    throw new Error(`Invalid learning-plan response: ${field}`)
+  }
+  const ids = parseStringList(value, field)
+  if (ids.some((id) => id.length > 255)) {
+    throw new Error(`Invalid learning-plan response: ${field}`)
+  }
+  return ids
+}
+
 const parseCurrentBlock = (value: unknown): LearnerLearningPlanCurrentBlock | null => {
   if (value === null || value === undefined) return null
   const source = asRecord(value, 'Invalid learning-plan response: currentBlock')
@@ -146,10 +158,11 @@ const parseMilestone = (value: unknown): LearnerLearningPlanMilestone | null => 
   if (value === null || value === undefined) return null
   const source = asRecord(value, 'Invalid learning-plan response: nextMilestone')
   const goalId = optionalString(source.goalId)
+  const goalIds = parseMilestoneGoalIds(source.goalIds, 'nextMilestone.goalIds')
   return {
     blockId: requiredString(source.blockId ?? source.id, 'nextMilestone.blockId'),
     title: requiredString(source.title, 'nextMilestone.title'),
-    ...(goalId ? { goalId } : {}),
+    ...(goalIds !== undefined ? { goalIds } : goalId ? { goalId } : {}),
     // `dueDate` is accepted as a forward-compatible alias while the contract
     // settles on the existing course-plan field name `date`.
     date: parseDate(source.date ?? source.dueDate, 'nextMilestone.date'),
@@ -406,11 +419,12 @@ const parsePlanBlock = (value: unknown): LearnerLearningPlanBlock => {
   const kind = requiredString(source.kind, 'block.kind')
   const goalId = optionalString(source.goalId)
   if (kind === 'milestone') {
+    const goalIds = parseMilestoneGoalIds(source.goalIds, 'block.goalIds')
     return {
       id,
       kind,
       title: requiredString(source.title, 'block.title'),
-      ...(goalId ? { goalId } : {}),
+      ...(goalIds !== undefined ? { goalIds } : goalId ? { goalId } : {}),
       date: parseDate(source.date ?? source.dueDate, 'block.date'),
     }
   }

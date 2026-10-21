@@ -637,6 +637,26 @@ class LearnerLearningPlanServiceIntegrationTest {
     }
 
     @Test
+    void milestoneTopicsPersistInDetailsAndSummaryWithoutChangingPlanWork() throws Exception {
+        var exam = new LearnerLearningPlanApi.Block("exam", "milestone", "legacy-topic", "Klausur",
+                null, null, TODAY.plusDays(7), null, List.of("topic-a", "atom-c"));
+        var created = service.upsert(LEARNER_ID, LANDSCAPE_ID,
+                new LearnerLearningPlanApi.UpsertRequest(0L, "Plan", List.of(
+                        learning("section", "2026-09-01", "2026-09-04", "atom-a"), exam)), TODAY);
+
+        var stored = planRepository.findById(created.planId()).orElseThrow();
+        var blocks = objectMapper.readTree(stored.getBlocksJson());
+        assertThat(blocks.get(1).get("goalIds").get(1).asText()).isEqualTo("atom-c");
+        assertThat(blocks.get(1).has("goalId")).isFalse();
+        var reloaded = service.getPlan(LEARNER_ID, LANDSCAPE_ID, TODAY);
+        assertThat(reloaded.blocks()).isEqualTo(created.blocks());
+        assertThat(reloaded.nextMilestone().goalIds()).containsExactly("topic-a", "atom-c");
+        assertThat(reloaded.nextMilestone().goalId()).isNull();
+        assertThat(LearnerLearningPlanService.scheduledAtomicGoalDueDatesForSchedule(reloaded.blocks()))
+                .containsOnlyKeys("atom-a");
+    }
+
+    @Test
     void summarySeparatesGoalsNewlyDueTodayAndPreviewsTheNextEligibleAtom() {
         learner.setFollowLearningPlans(true);
         learnerRepository.saveAndFlush(learner);

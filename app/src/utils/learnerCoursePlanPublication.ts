@@ -1,7 +1,7 @@
 import type { TeacherCoursePlan } from '../coursePlanTypes'
 import type { UiGoal } from '../goalTypes'
 import type { SaveLearnerLearningPlanBlock } from '../learnerLearningPlanTypes'
-import { assignAtomicGoalsToLearningBlocks } from './localTeacherCoursePlan'
+import { assignAtomicGoalsToLearningBlocks, resolveAtomicGoalDescendants } from './localTeacherCoursePlan'
 
 export interface LearnerLearningPlanCopy {
   planLabel: string
@@ -80,11 +80,21 @@ export function materializeLearnerLearningPlanCopy({
       })
       continue
     }
+    const milestoneGoalIds = block.goalIds ?? (block.goalId ? [block.goalId] : [])
+    for (const goalId of milestoneGoalIds) {
+      const resolution = resolveAtomicGoalDescendants(goalId, goals, visibleChildrenByParent)
+      if (resolution.quality.status !== 'complete'
+        || (block.goalIds !== undefined && resolution.atomicGoalIds.length === 0)) {
+        return { ok: false, blockId: block.id, goalId }
+      }
+    }
     blocks.push({
       id: block.id,
       kind: 'milestone',
       title: block.title,
-      ...(block.goalId ? { goalId: block.goalId } : {}),
+      ...(block.goalIds !== undefined
+        ? { goalIds: [...block.goalIds] }
+        : block.goalId ? { goalId: block.goalId } : {}),
       date: block.date,
     })
   }

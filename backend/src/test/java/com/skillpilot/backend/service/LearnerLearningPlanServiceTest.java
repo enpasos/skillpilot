@@ -35,6 +35,77 @@ import org.springframework.web.server.ResponseStatusException;
 class LearnerLearningPlanServiceTest {
 
     @Test
+    void milestoneTopicsNormalizeWithoutAddingScheduledWorkAndSurviveJsonRoundTrip() throws Exception {
+        var learning = learningBlock("learning", "2026-09-01", "2026-09-04", List.of("atom-a"));
+        var milestone = new LearnerLearningPlanApi.Block("exam", "milestone", "old-topic", "Klausur",
+                null, null, LocalDate.parse("2026-09-07"), List.of("not-scheduled"),
+                List.of(" topic-a ", "topic-b", "topic-a", "mastered-topic"));
+        var normalized = LearnerLearningPlanService.normalizeBlocks(
+                List.of(learning, milestone), singleGoalScope(), java.util.Set.of(), false);
+
+        assertThat(normalized.get(1).goalIds()).containsExactly("topic-a", "topic-b", "mastered-topic");
+        assertThat(normalized.get(1).goalId()).isNull();
+        assertThat(normalized.get(1).atomicGoalIds()).isNull();
+        assertThat(LearnerLearningPlanService.scheduledAtomicGoalDueDatesForSchedule(normalized))
+                .containsOnlyKeys("atom-a");
+        ObjectMapper mapper = new ObjectMapper().findAndRegisterModules();
+        var portable = new LearnerLearningPlanApi.PortablePlan("math", "Plan", normalized);
+        assertThat(mapper.readValue(mapper.writeValueAsString(portable), LearnerLearningPlanApi.PortablePlan.class))
+                .isEqualTo(portable);
+    }
+
+    @Test
+    void explicitEmptyMilestoneSelectionClearsLegacyGoalWhileAbsentListPreservesIt() throws Exception {
+        var mapper = new ObjectMapper().findAndRegisterModules();
+        var legacy = mapper.readValue("""
+                {"id":"exam","kind":"milestone","goalId":"old-topic","title":"Klausur","date":"2026-09-07"}
+                """, LearnerLearningPlanApi.Block.class);
+        var empty = new LearnerLearningPlanApi.Block("empty", "milestone", "old-topic", "Klausur",
+                null, null, legacy.date(), null, List.of());
+        var learning = learningBlock("learning", "2026-09-01", "2026-09-04", List.of("atom-a"));
+        var normalized = LearnerLearningPlanService.normalizeBlocks(
+                List.of(learning, legacy, empty), singleGoalScope(), java.util.Set.of(), false);
+
+        assertThat(normalized.get(1).goalId()).isEqualTo("old-topic");
+        assertThat(normalized.get(1).goalIds()).isNull();
+        assertThat(normalized.get(2).goalId()).isNull();
+        assertThat(normalized.get(2).goalIds()).isEmpty();
+        assertThat(mapper.readTree(mapper.writeValueAsString(normalized.get(2))).get("goalIds").isArray()).isTrue();
+    }
+
+    @Test
+    void milestoneTopicListsRejectBlankOversizedAndUnboundedReferences() {
+        var learning = learningBlock("learning", "2026-09-01", "2026-09-04", List.of("atom-a"));
+        for (List<String> goalIds : List.of(List.of(" "), List.of("x".repeat(256)),
+                java.util.Collections.nCopies(10_001, "topic-a"))) {
+            var milestone = new LearnerLearningPlanApi.Block("exam", "milestone", null, "Klausur",
+                    null, null, LocalDate.parse("2026-09-07"), null, goalIds);
+            assertThatThrownBy(() -> LearnerLearningPlanService.normalizeBlocks(
+                    List.of(learning, milestone), singleGoalScope(), java.util.Set.of(), false))
+                    .isInstanceOfSatisfying(ResponseStatusException.class,
+                            exception -> assertThat(exception.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST));
+        }
+    }
+
+    @Test
+    void nonMilestoneBlocksDiscardMilestoneOnlyReferences() {
+        var learning = new LearnerLearningPlanApi.Block("learning", "learning", "focus", "Abschnitt",
+                LocalDate.parse("2026-09-01"), LocalDate.parse("2026-09-04"), null,
+                List.of("atom-a"), List.of("unrelated-topic"));
+        var buffer = new LearnerLearningPlanApi.Block("buffer", "buffer", null, "Puffer",
+                LocalDate.parse("2026-09-07"), LocalDate.parse("2026-09-08"), null,
+                null, List.of("unrelated-topic"));
+        assertThat(LearnerLearningPlanService.normalizeBlocks(
+                List.of(learning, buffer), singleGoalScope(), java.util.Set.of(), false))
+                .allSatisfy(block -> assertThat(block.goalIds()).isNull());
+    }
+
+    private static LearnerPlanningScopeResponse singleGoalScope() {
+        return new LearnerPlanningScopeResponse("curriculum", "math", List.of("atom-a"), 1, 0,
+                List.of("atom-a"), Instant.parse("2026-09-01T00:00:00Z"));
+    }
+
+    @Test
     void previewUsesBerlinTodayAndDoesNotMutateState() {
         LearnerLearningPlanRepository plans = mock(LearnerLearningPlanRepository.class);
         LearnerService learners = mock(LearnerService.class);

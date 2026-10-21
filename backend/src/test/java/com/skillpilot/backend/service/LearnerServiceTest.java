@@ -600,6 +600,31 @@ public class LearnerServiceTest {
     }
 
     @Test
+    void milestoneTopicsAllowMasteredTargetsButRejectForeignAndUnknownRoots() {
+        selectCompletedCanonicalMathCurriculum();
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        masteryRepository.saveAndFlush(new Mastery(learner, CANONICAL_MATH_ORIENTATION_ID, 1.0));
+        var valid = new LearnerLearningPlanApi.Block("exam", "milestone", null, "Klausur",
+                null, null, LocalDate.parse("2026-09-30"), null,
+                List.of(COMPOSITION_HE_G9_MATH_ROOT_SCOPE_ID, CANONICAL_MATH_ORIENTATION_ID));
+
+        assertThatCode(() -> learnerService.validateLearningPlanBlockFoci(
+                learnerId, CANONICAL_MATH_LANDSCAPE_ID, List.of(valid))).doesNotThrowAnyException();
+        assertThat(learnerService.getPlanningScope(learnerId, CANONICAL_MATH_LANDSCAPE_ID)
+                .openAtomicGoalIds()).doesNotContain(CANONICAL_MATH_ORIENTATION_ID);
+
+        for (String invalidId : List.of(CANONICAL_PHYSICS_ROOT_SCOPE_ID, "unknown-topic")) {
+            var invalid = new LearnerLearningPlanApi.Block("exam", "milestone", null, "Klausur",
+                    null, null, valid.date(), null, List.of(CANONICAL_MATH_ORIENTATION_ID, invalidId));
+            assertThatThrownBy(() -> learnerService.validateLearningPlanBlockFoci(
+                    learnerId, CANONICAL_MATH_LANDSCAPE_ID, List.of(invalid)))
+                    .isInstanceOfSatisfying(ResponseStatusException.class, exception ->
+                            assertThat(exception.getStatusCode())
+                                    .isEqualTo(org.springframework.http.HttpStatus.BAD_REQUEST));
+        }
+    }
+
+    @Test
     void learningPlanActivationGuardPreservesAnotherUnmasteredActiveGoal() {
         selectCompletedCanonicalMathCurriculum();
         var scope = learnerService.getPlanningScope(learnerId, CANONICAL_MATH_LANDSCAPE_ID);
@@ -1752,6 +1777,26 @@ public class LearnerServiceTest {
                         List.of(block),
                         Map.of("focus", List.of("atom-b"))))
                 .isNotEqualTo(fingerprint);
+    }
+
+    @Test
+    void learningPlanFingerprintIncludesMilestoneTopicsAndPreservesLegacyDigestWithoutThem() {
+        var scope = new com.skillpilot.backend.api.LearnerPlanningScopeResponse("curriculum", "math",
+                List.of("atom-a"), 1, 0, List.of("atom-a"), Instant.parse("2026-09-01T00:00:00Z"));
+        Map<String, LearningGoal> goals = Map.of("atom-a", goal("atom-a", List.of(), List.of()));
+        var legacy = new LearnerLearningPlanApi.Block("exam", "milestone", null, "Klausur",
+                null, null, LocalDate.parse("2026-09-30"), null);
+        var empty = new LearnerLearningPlanApi.Block("exam", "milestone", null, "Klausur",
+                null, null, legacy.date(), null, List.of());
+        var selected = new LearnerLearningPlanApi.Block("exam", "milestone", null, "Klausur",
+                null, null, legacy.date(), null, List.of("atom-a"));
+        String legacyFingerprint = learnerService.computeLearningPlanFingerprint(scope, goals,
+                List.of(legacy), Map.of());
+
+        assertThat(learnerService.computeLearningPlanFingerprint(scope, goals, List.of(empty), Map.of()))
+                .isEqualTo(legacyFingerprint);
+        assertThat(learnerService.computeLearningPlanFingerprint(scope, goals, List.of(selected), Map.of()))
+                .isNotEqualTo(legacyFingerprint);
     }
 
     @Test

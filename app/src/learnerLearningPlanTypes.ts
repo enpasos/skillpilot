@@ -18,6 +18,8 @@ export interface LearnerLearningPlanMilestone {
   blockId: string
   title: string
   goalId?: string
+  /** Selected topic roots; when present, takes precedence over legacy goalId. */
+  goalIds?: string[]
   date: LearnerLearningPlanDate
 }
 
@@ -157,6 +159,8 @@ export interface LearnerLearningPlanMilestoneBlock {
   kind: 'milestone'
   title: string
   goalId?: string
+  /** Deadline scope only; it contributes no scheduled work. */
+  goalIds?: string[]
   date: LearnerLearningPlanDate
 }
 
@@ -192,6 +196,8 @@ export interface SaveLearnerLearningPlanMilestoneBlock {
   kind: 'milestone'
   title: string
   goalId?: string
+  /** Selected topic roots; when present (including []), replaces legacy goalId. */
+  goalIds?: string[]
   date: LearnerLearningPlanDate
 }
 

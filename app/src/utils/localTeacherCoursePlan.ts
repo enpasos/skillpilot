@@ -30,6 +30,7 @@ const MAX_BLOCKS = 2_000
 const MAX_EVENTS = 100_000
 const MAX_ATTESTATIONS = 10_000
 const MAX_BASELINE_GOALS = 100_000
+const MAX_MILESTONE_GOALS = 10_000
 const MAX_PREREQUISITE_SCHEDULE_WORKDAYS = 1_000
 const MAX_PREREQUISITE_SCHEDULE_OPERATIONS = 8_000_000
 const MAX_ID_LENGTH = 240
@@ -346,10 +347,23 @@ function normalizeBlock(value: unknown): TeacherCoursePlanBlock | null {
 
   if (value.kind === 'milestone') {
     const title = normalizedBoundedString(value.title, MAX_TITLE_LENGTH)
-    const goalId = value.goalId === undefined ? undefined : normalizedId(value.goalId)
+    const goalIds = value.goalIds === undefined
+      ? undefined
+      : Array.isArray(value.goalIds) && value.goalIds.length <= MAX_MILESTONE_GOALS
+        ? normalizeUniqueIds(value.goalIds)
+        : null
+    // An explicit list also represents clearing the selection. Never revive
+    // a legacy single target when the list is present.
+    const goalId = goalIds !== undefined || value.goalId === undefined
+      ? undefined
+      : normalizedId(value.goalId)
     const date = parseCoursePlanDate(value.date)?.value
-    if (!title || !date || goalId === null) return null
-    return { id, kind: 'milestone', title, ...(goalId ? { goalId } : {}), date }
+    if (!title || !date || goalId === null || goalIds === null) return null
+    return {
+      id, kind: 'milestone', title,
+      ...(goalIds !== undefined ? { goalIds } : goalId ? { goalId } : {}),
+      date,
+    }
   }
 
   if (value.kind !== 'learning' && value.kind !== 'buffer') return null
@@ -375,6 +389,10 @@ function normalizeBlocks(value: unknown): TeacherCoursePlanBlock[] | null {
   const blocks = value.map(normalizeBlock)
   if (blocks.some((block) => block === null)) return null
   const normalizedBlocks = blocks as TeacherCoursePlanBlock[]
+  const milestoneGoalCount = normalizedBlocks.reduce((count, block) => count + (
+    block.kind === 'milestone' ? block.goalIds?.length ?? 0 : 0
+  ), 0)
+  if (milestoneGoalCount > MAX_MILESTONE_GOALS) return null
   return hasDuplicateIds(normalizedBlocks) ? null : normalizedBlocks
 }
 
@@ -813,7 +831,9 @@ export function createTeacherCoursePlan(input: {
 function cloneCoursePlanBlocks(
   blocks: readonly TeacherCoursePlanBlock[],
 ): TeacherCoursePlanBlock[] {
-  return blocks.map((block) => ({ ...block }))
+  return blocks.map((block) => block.kind === 'milestone' && block.goalIds !== undefined
+    ? { ...block, goalIds: [...block.goalIds] }
+    : { ...block })
 }
 
 function snapshotCurrentPlanRevision(plan: TeacherCoursePlan): TeacherCoursePlanRevisionSnapshot {
@@ -2259,11 +2279,17 @@ export function evaluateTeacherCoursePlan(
   const normalized = normalizeTeacherCoursePlan(plan)
   if (!normalized.plan) return invalidEvaluation(asOf, normalized.quality)
   const milestoneGoalIssues = normalized.plan.blocks.flatMap((block): CoursePlanDataIssue[] => {
-    if (block.kind !== 'milestone' || !block.goalId) return []
-    const resolution = resolveAtomicGoalDescendants(block.goalId, goalIndex, visibleChildren)
-    return resolution.quality.status === 'complete'
-      ? []
-      : resolution.quality.issues.map((issue) => ({ ...issue, blockId: block.id }))
+    if (block.kind !== 'milestone') return []
+    const goalIds = block.goalIds ?? (block.goalId ? [block.goalId] : [])
+    return goalIds.flatMap((goalId) => {
+      const resolution = resolveAtomicGoalDescendants(goalId, goalIndex, visibleChildren)
+      if (resolution.quality.status !== 'complete') {
+        return resolution.quality.issues.map((issue) => ({ ...issue, blockId: block.id }))
+      }
+      return block.goalIds !== undefined && resolution.atomicGoalIds.length === 0
+        ? [{ code: 'CP-GOAL-EMPTY-CLUSTER', message: 'Selected topic has no visible atomic goals.', goalId, blockId: block.id }]
+        : []
+    })
   })
   if (milestoneGoalIssues.length > 0) {
     return invalidEvaluation(asOf, quality('invalid', milestoneGoalIssues))
@@ -2391,6 +2417,7 @@ export function evaluateTeacherCoursePlan(
           blockId: nextMilestoneBlock.id,
           title: nextMilestoneBlock.title,
           ...(nextMilestoneBlock.goalId ? { goalId: nextMilestoneBlock.goalId } : {}),
+          ...(nextMilestoneBlock.goalIds !== undefined ? { goalIds: [...nextMilestoneBlock.goalIds] } : {}),
           date: nextMilestoneBlock.date,
         }
       : null,
