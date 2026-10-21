@@ -1611,6 +1611,20 @@ class CompositionViewServiceTest {
                 });
                 Map<String, Object> stage = stages.getFirst();
                 List<Map<String, Object>> allNodes = flattenCompositionNodes(List.of(stage));
+                List<String> assessmentBranches = new ArrayList<>(List.of(
+                        "424b07df-bf66-5d7f-99f5-f28b32ad1f22", // E-Phase
+                        "549a427d-f10a-5537-990e-6fdd7466848b", // Q1
+                        "9dd7c596-a751-523c-acba-916f73e900a5", // Q2
+                        "b47a2a23-b56d-5433-9036-075d6bb7c782", // Q3
+                        "85bbad98-2f48-5d64-85c4-ab6cf67f24c2")); // Q4
+                assessmentBranches.addAll(("GK+LK".equals(profile) ? List.of("GK", "LK") : List.of(profile))
+                        .stream().map(exams::get).toList());
+                for (String branchId : assessmentBranches) {
+                    assertThat(allNodes).as(context + " expandable assessment branch " + branchId)
+                            .filteredOn(node -> branchId.equals(node.get("goalId")))
+                            .singleElement().satisfies(node -> assertThat(node)
+                                    .containsEntry("kind", "canonicalSubtree"));
+                }
                 Map<String, String> expectedParents = Map.of(
                         "physics-b034-transistor", "b034-preserved-rootNodes-0-children-13-children-6",
                         "physics-final-diode-sekii", "b034-preserved-rootNodes-0-children-13-children-6",

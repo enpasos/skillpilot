@@ -239,13 +239,26 @@ for (const profile of ['GK', 'LK'] as const) {
   assert.equal(structure(view, 'physics-final-diode-sekii').labelEn, 'Diodes')
   const exercises = structure(view, 'physics-b034-assessments')
   assert.equal(exercises.label, 'Übungen Q4')
-  for (const taskId of [...diodeTaskIds, ...previousQ4PracticeIds]) {
-    assert(exercises.children.some((node) => node.kind !== 'structure' && node.goalId === taskId),
-      `Assessment ${taskId} belongs in Q4 exercises, not the content branch.`)
-  }
 
   const projected = project(view)
   const goalById = new Map(projected.goals.map((goal) => [goal.id, goal]))
+  const projectedExercises = projected.goals.find((goal) => goal.extendedData?.compositionNodeId === exercises.id)
+  assert(projectedExercises, 'The authored Q4 exercise section must be materialized in the learner tree.')
+  const exerciseDescendants = new Set<string>()
+  const collectExercises = (id: string) => {
+    assert(!exerciseDescendants.has(id), `Q4 assessment ${id} must appear only once.`)
+    exerciseDescendants.add(id)
+    goalById.get(id)?.contains.forEach(collectExercises)
+  }
+  collectExercises(projectedExercises.id)
+  const { prerequisiteOnlyGoalIds } = collectCompositionProjectionRoleGoalIds(view.rootNodes,
+    new Map(canonicalPhysics.goals.map((goal) => [goal.id, goal])))
+  const allQ4TaskIds = canonicalPhysics.goals.find((goal) => goal.id === previousQ4PracticeIds[0])!.contains
+    .filter((id) => !prerequisiteOnlyGoalIds.has(id))
+  for (const taskId of [...allQ4TaskIds, ...diodeTaskIds, ...previousQ4PracticeIds]) {
+    assert(exerciseDescendants.has(taskId),
+      `Assessment ${taskId} must be reachable in Q4 exercises, including canonical subtree descendants.`)
+  }
   const root = projected.goals.find((goal) => goal.tags?.includes('root'))
   assert(root)
   assert.equal(root.title, 'Physik')
@@ -272,16 +285,26 @@ for (const profile of ['GK', 'LK'] as const) {
   oldDiodes.label = 'Dioden: belegte Quellenanteile'
   oldDiodes.labelEn = 'Diodes: Source-Supported Components'
   structure(regressed, 'physics-b034-assessments').label = 'Materialgestützte Prüfungsaufgaben'
+  // Reconstruct the old opaque Q4 collection plus separately placed task
+  // references. Current views expose the complete canonical collection once.
+  const oldQ4Collection = flatten(regressed.rootNodes).find((node) => (
+    node.kind !== 'structure' && node.goalId === previousQ4PracticeIds[0]
+  ))
+  assert(oldQ4Collection && (oldQ4Collection.kind === 'canonicalSubtree' || oldQ4Collection.kind === 'goalEntry'))
+  oldQ4Collection.kind = 'goalEntry'
   for (const taskId of diodeTaskIds) {
-    const task = flatten(regressed.rootNodes).find((node) => node.kind !== 'structure' && node.goalId === taskId)
-    assert(task)
-    assert(removeNode(regressed.rootNodes, task))
+    const task: CompositionViewNode = flatten(regressed.rootNodes)
+      .find((node) => node.kind !== 'structure' && node.goalId === taskId)
+      ?? { kind: 'goalEntry', goalId: taskId }
+    removeNode(regressed.rootNodes, task)
     oldDiodes.children.push(task)
   }
   for (const taskId of previousQ4PracticeIds) {
-    const task = flatten(regressed.rootNodes).find((node) => node.kind !== 'structure' && node.goalId === taskId)
-    assert(task && task.kind !== 'structure')
-    assert(removeNode(regressed.rootNodes, task))
+    const task: CompositionViewNode = flatten(regressed.rootNodes)
+      .find((node) => node.kind !== 'structure' && node.goalId === taskId)
+      ?? { kind: 'goalEntry', goalId: taskId }
+    assert(task.kind !== 'structure')
+    removeNode(regressed.rootNodes, task)
     if (taskId === '85bbad98-2f48-5d64-85c4-ab6cf67f24c2') task.displayLabel = 'Übungen'
     structure(regressed, 'physics-q4').children.push(task)
   }

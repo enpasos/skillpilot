@@ -21,6 +21,7 @@ import com.skillpilot.backend.repository.PlannedGoalRepository;
 import com.skillpilot.backend.service.CurriculaService;
 import com.skillpilot.backend.service.CanonicalPrerequisiteTestContext;
 import com.skillpilot.backend.landscape.LandscapeService;
+import com.skillpilot.backend.landscape.LearningGoal;
 import com.skillpilot.backend.service.LearnerService;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -595,7 +596,9 @@ public class LearnerControllerIntegrationTest {
                         CANONICAL_PHYSICS_ROOT_ID));
 
         assertThat(response.champion().masteredCount()).isEqualTo(1);
-        assertThat(response.champion().totalTopicGoals()).isEqualTo(187);
+        // Restore 39 existing HE-equivalent tasks: E 11, Q1 4, Q2 5,
+        // Q3 4, Q4 7 and Abitur 8. Their content and stable IDs are unchanged.
+        assertThat(response.champion().totalTopicGoals()).isEqualTo(226);
     }
 
     @Test
@@ -1363,6 +1366,93 @@ public class LearnerControllerIntegrationTest {
         }
         assertThat(landscapeIds).contains(CANONICAL_GYMNASIUM_ROOT_ID, CANONICAL_MATH_ID);
         assertThat(landscapeIds).doesNotContain(CANONICAL_PHYSICS_ID);
+    }
+
+    @Test
+    void hessianPhysicsAssessmentTasksRemainInThePersonalCurriculum() {
+        Map<String, LearningGoal> goals = landscapeService.getById(CANONICAL_PHYSICS_ID).getGoals().stream()
+                .collect(java.util.stream.Collectors.toMap(LearningGoal::getId, goal -> goal));
+        Map<String, String> examBranches = Map.of(
+                "GK", "61684ca7-b725-534f-944b-c7645cea1792",
+                "LK", "79028c45-90ae-57eb-8016-f5a96af18fa2");
+        List<String> sharedPracticeTasks = List.of(
+                "0432a422-401b-5134-bf08-05cfd8c7a366", // E: Messmethoden
+                "841edfdb-5e12-5a37-ab12-552a1d8e92ca", // Q1: Elektrostatik
+                "82feb329-c3bc-58ba-a5b0-6ccdf226dbeb", // Q2: Induktion
+                "22bdd29e-00d3-5d43-97d6-8b442b8bfc8c", // Q3: Fotoeffekt
+                "4daef009-6425-526a-8574-4fa75f28f946"); // Q4: Radioaktivitaet
+
+        for (String profile : List.of("GK", "LK", "GK+LK")) {
+            String personalCurriculum = canonicalGymnasiumSubjectPersonalCurriculum(
+                    CANONICAL_PHYSICS_ID, "DE-HE", "G9", profile, false, true);
+            Set<String> targets = learnerService.getFilteredAtomicGoalIds(
+                    CANONICAL_GYMNASIUM_ROOT_ID, personalCurriculum, CANONICAL_PHYSICS_ROOT_ID, false);
+            assertThat(targets).as(profile + " tasks from every phase")
+                    .containsAll(sharedPracticeTasks);
+            List<String> expectedTasks = new ArrayList<>(sharedPracticeTasks);
+            for (Map.Entry<String, String> branch : examBranches.entrySet()) {
+                LearningGoal offer = goals.get(branch.getValue());
+                assertThat(offer.getContains()).as(branch.getKey() + " sample exams").hasSize(2);
+                List<String> examTasks = new ArrayList<>();
+                for (String examId : offer.getContains()) {
+                    assertThat(goals.get(examId).getContains()).as(examId + " proposals A-D").hasSize(4);
+                    examTasks.addAll(goals.get(examId).getContains());
+                }
+                if ("GK+LK".equals(profile) || profile.equals(branch.getKey())) {
+                    assertThat(targets).as(profile + " accessible Abitur tasks").containsAll(examTasks);
+                    expectedTasks.addAll(examTasks);
+                } else {
+                    assertThat(targets).as(profile + " excludes the other Abitur course")
+                            .doesNotContainAnyElementsOf(examTasks);
+                }
+            }
+            assertThat(targets).as(profile + " folders are not atomic learning targets")
+                    .doesNotContain("424b07df-bf66-5d7f-99f5-f28b32ad1f22",
+                            "549a427d-f10a-5537-990e-6fdd7466848b",
+                            "9dd7c596-a751-523c-acba-916f73e900a5",
+                            "b47a2a23-b56d-5433-9036-075d6bb7c782",
+                            "85bbad98-2f48-5d64-85c4-ab6cf67f24c2",
+                            examBranches.get("GK"), examBranches.get("LK"));
+            for (String taskId : expectedTasks) {
+                LearningGoal task = goals.get(taskId);
+                assertThat(task.getExamData()).as(task.getTitle()).isNotNull();
+                assertThat(task.getExamData().getTaskContent()).as(task.getTitle() + " task").isNotBlank();
+                assertThat(task.getExamData().getSolutionContent()).as(task.getTitle() + " solution").isNotBlank();
+                assertThat(task.getExamData().getScoring()).as(task.getTitle() + " scoring").isNotNull();
+            }
+        }
+    }
+
+    @Test
+    void savedPhysicsQ4FocusStillResolvesAfterCrossStagePracticeRestoration() throws Exception {
+        String q4Root = "85bbad98-2f48-5d64-85c4-ab6cf67f24c2";
+        String radioactivityTask = "4daef009-6425-526a-8574-4fa75f28f946";
+        String sekOneDiodeTask = "c61b2a69-b5cd-5785-bb04-5d6bca53b218";
+        String personalCurriculum = canonicalGymnasiumSubjectPersonalCurriculum(
+                CANONICAL_PHYSICS_ID, "DE-BB", "G8", "GK", true, true);
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        learner.setPersonalCurriculum(personalCurriculum);
+        learnerRepository.save(learner);
+        plannedGoalRepository.save(new PlannedGoal(learner, q4Root));
+        masteryRepository.save(new Mastery(learner, sekOneDiodeTask, 1.0));
+
+        assertThat(learnerService.getFilteredAtomicGoalIds(
+                CANONICAL_GYMNASIUM_ROOT_ID, personalCurriculum, null, false))
+                .as("CrossStage retains both existing Sek-I and restored Q4 tasks")
+                .contains(sekOneDiodeTask, radioactivityTask);
+        assertThat(learnerService.getFilteredAtomicGoalIds(
+                CANONICAL_GYMNASIUM_ROOT_ID, personalCurriculum, q4Root, false))
+                .as("saved canonical Q4 focus still resolves its applicable tasks")
+                .contains(radioactivityTask);
+        HttpResponse<String> response = getRequest("/api/ui/learners/" + learnerId + "/state");
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
+        JsonNode planned = objectMapper.readTree(response.body()).path("goals").path("planned");
+        assertThat(planned).anySatisfy(goal -> assertThat(goal.path("id").asText()).isEqualTo(q4Root));
+        assertThat(plannedGoalRepository.findByLearner_SkillpilotId(learnerId))
+                .extracting(PlannedGoal::getGoalId).containsExactly(q4Root);
+        assertThat(masteryRepository.findById(new com.skillpilot.backend.domain.MasteryId(learnerId, sekOneDiodeTask)))
+                .get().satisfies(mastery -> assertThat(mastery.getValue()).isEqualTo(1.0));
     }
 
     @Test
