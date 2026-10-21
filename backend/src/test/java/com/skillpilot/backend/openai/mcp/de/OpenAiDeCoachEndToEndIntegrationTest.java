@@ -673,7 +673,10 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                                 OpenAiDeV1ContractMetadata.LEGACY_GOAL_VISUALIZATION_RESOURCE_URI),
                         OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256S
                                 .stream()
-                                .map(OpenAiDeV1ContractMetadata::goalVisualizationResourceUri))
+                                .map(OpenAiDeV1ContractMetadata::goalVisualizationResourceUri),
+                        OpenAiDeV1ContractMetadata.RETAINED_MEMORY_CARD_PRACTICE_ARTIFACT_SHA256S
+                                .stream()
+                                .map(OpenAiDeV1ContractMetadata::memoryCardPracticeResourceUri))
                 .flatMap(stream -> stream)
                 .toList();
         assertThat(result(resources).path("resources").valueStream()
@@ -721,6 +724,15 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 "resource-memory-practice",
                 OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_URI,
                 OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_ARTIFACT_SHA256);
+        for (String retainedSha256 :
+                OpenAiDeV1ContractMetadata.RETAINED_MEMORY_CARD_PRACTICE_ARTIFACT_SHA256S) {
+            assertResourceReadableOverAuthenticatedMcp(
+                    accessToken,
+                    applicationSubject,
+                    "resource-memory-retained-" + retainedResourceIndex++,
+                    OpenAiDeV1ContractMetadata.memoryCardPracticeResourceUri(retainedSha256),
+                    retainedSha256);
+        }
 
         Learner configuredLearner = learnerRepository
                 .findById(PERMANENT_SKILLPILOT_ID)

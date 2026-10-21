@@ -332,12 +332,16 @@ class OpenAiDeMcpTelemetryTest {
         OpenAiDeMcpTelemetry telemetry =
                 new OpenAiDeMcpTelemetry(registry, null, properties, "unit-test-privacy-hash-key");
         String activeUri = OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI;
-        List<String> retainedSha256s =
-                OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256S;
+        List<String> retainedSha256s = Stream.concat(
+                OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256S.stream(),
+                OpenAiDeV1ContractMetadata.RETAINED_MEMORY_CARD_PRACTICE_ARTIFACT_SHA256S.stream())
+                .toList();
         List<String> retainedUris = Stream.of(
                         Stream.of(OpenAiDeV1ContractMetadata.LEGACY_GOAL_VISUALIZATION_RESOURCE_URI),
-                        retainedSha256s.stream()
-                                .map(OpenAiDeV1ContractMetadata::goalVisualizationResourceUri))
+                        OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256S.stream()
+                                .map(OpenAiDeV1ContractMetadata::goalVisualizationResourceUri),
+                        OpenAiDeV1ContractMetadata.RETAINED_MEMORY_CARD_PRACTICE_ARTIFACT_SHA256S.stream()
+                                .map(OpenAiDeV1ContractMetadata::memoryCardPracticeResourceUri))
                 .flatMap(stream -> stream)
                 .toList();
         String untrustedUri = "ui://attacker/private-session-and-token";

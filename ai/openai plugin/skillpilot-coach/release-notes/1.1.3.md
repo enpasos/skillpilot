@@ -16,7 +16,11 @@ their earlier drafts and retained UI resources remain unchanged.
   including Voice. Keep the hidden image component eligible for delayed native
   delivery when the standard UI handshake fails first. A real image error
   still closes the component. Preserve the deployed `08030bd956b6…` resource
-  unchanged and bind the correction to the new `9c09821e96ab…` resource.
+  unchanged. The correction now uses the rebuilt `7cfc661b04b0…` resource;
+  the earlier `9c09821e96ab…` candidate remains readable with its original bytes.
+- Update the MCP TypeScript SDK to 1.32.1 after the dependency audits flagged
+  1.31.0. Rebuild both UI resources, retain their previously advertised bytes,
+  and bind only the rebuilt resources to the current tools.
 - Do not author solution-bearing suggested replies or next-message drafts.
   Known supplied answers need fresh independent evidence; never infer their
   origin merely from correctness or claim control of host-generated suggestions.

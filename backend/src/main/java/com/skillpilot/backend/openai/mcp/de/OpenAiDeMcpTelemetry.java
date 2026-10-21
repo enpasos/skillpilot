@@ -357,6 +357,11 @@ public final class OpenAiDeMcpTelemetry {
                     return new ResourceArtifact(fingerprint(sha256), RETAINED_ARTIFACT_ROLE);
                 }
             }
+            for (String sha256 : OpenAiDeV1ContractMetadata.RETAINED_MEMORY_CARD_PRACTICE_ARTIFACT_SHA256S) {
+                if (OpenAiDeV1ContractMetadata.memoryCardPracticeResourceUri(sha256).equals(resourceUri)) {
+                    return new ResourceArtifact(fingerprint(sha256), RETAINED_ARTIFACT_ROLE);
+                }
+            }
             return UNKNOWN;
         }
 

@@ -1,6 +1,6 @@
 {
   "contractMajor" : 1,
-  "contractSha256" : "cea709eaf2a3f0a4bf0877c332fdb0150e35c6537bdc866f908d20423a8b1b05",
+  "contractSha256" : "b17906c6697842048b7e54b3515ab8af97711344d046618ce8a1ebe14af37d53",
   "pluginIdentity" : "skillpilot-coach",
   "resources" : [ {
     "description" : "Displays the approved image for the active atomic learning goal.",
@@ -164,6 +164,29 @@
     "title" : "SkillPilot learning-goal image",
     "uri" : "ui://skillpilot/coach/v1/sha256-5564f42d0885bb8c12b1067a8d5db4e09986279ed513277021181a198dd20881/goal-visualization.html"
   }, {
+    "description" : "Displays the approved image for the active atomic learning goal.",
+    "icons" : [ ],
+    "meta" : {
+      "openai/widgetCSP" : {
+        "redirect_domains" : [ "https://skillpilot.com" ],
+        "resource_domains" : [ "https://skillpilot.com" ]
+      },
+      "openai/widgetDescription" : "Approved didactic visualisation for the active SkillPilot learning goal.",
+      "openai/widgetDomain" : "https://mcp-openai.skillpilot.com",
+      "openai/widgetPrefersBorder" : false,
+      "ui" : {
+        "csp" : {
+          "resourceDomains" : [ "https://skillpilot.com" ]
+        },
+        "domain" : "https://mcp-openai.skillpilot.com",
+        "prefersBorder" : false
+      }
+    },
+    "mimeType" : "text/html;profile=mcp-app",
+    "name" : "skillpilot-goal-visualization-v1-current",
+    "title" : "SkillPilot learning-goal image",
+    "uri" : "ui://skillpilot/coach/v1/sha256-7cfc661b04b03d33aa630e8040150509e5c4d1567c39e95aebacf3f7307e13f1/goal-visualization.html"
+  }, {
     "description" : "Interactive, private flashcard practice for the active memory goal.",
     "icons" : [ ],
     "meta" : {
@@ -184,6 +207,29 @@
     },
     "mimeType" : "text/html;profile=mcp-app",
     "name" : "skillpilot-memory-card-practice-v1-current",
+    "title" : "SkillPilot flashcard learning",
+    "uri" : "ui://skillpilot/coach/v1/sha256-7e1e4f1acbc61a9b50e620ebdf56f10c782517f6454edb1777a8d796832c2962/memory-card-practice.html"
+  }, {
+    "description" : "Interactive, private flashcard practice for the active memory goal.",
+    "icons" : [ ],
+    "meta" : {
+      "openai/widgetCSP" : {
+        "redirect_domains" : [ "https://skillpilot.com" ],
+        "resource_domains" : [ ]
+      },
+      "openai/widgetDescription" : "Interactive SkillPilot flashcard learning for the active memory goal.",
+      "openai/widgetDomain" : "https://mcp-openai.skillpilot.com",
+      "openai/widgetPrefersBorder" : true,
+      "ui" : {
+        "csp" : {
+          "redirectDomains" : [ "https://skillpilot.com" ]
+        },
+        "domain" : "https://mcp-openai.skillpilot.com",
+        "prefersBorder" : true
+      }
+    },
+    "mimeType" : "text/html;profile=mcp-app",
+    "name" : "skillpilot-memory-card-practice-v1-retained-8524ee20",
     "title" : "SkillPilot flashcard learning",
     "uri" : "ui://skillpilot/coach/v1/sha256-8524ee20837971227c35f1e16518d2b5bdbd60637fbec6beede9f2f4b29e4852/memory-card-practice.html"
   }, {
@@ -206,7 +252,7 @@
       }
     },
     "mimeType" : "text/html;profile=mcp-app",
-    "name" : "skillpilot-goal-visualization-v1-current",
+    "name" : "skillpilot-goal-visualization-v1-retained-9c09821e",
     "title" : "SkillPilot learning-goal image",
     "uri" : "ui://skillpilot/coach/v1/sha256-9c09821e96abadfccb08d07b62367d47963420c3a5cc51021ba801e2d6019fe4/goal-visualization.html"
   }, {
@@ -1724,13 +1770,13 @@
       "type" : "object"
     },
     "meta" : {
-      "openai/outputTemplate" : "ui://skillpilot/coach/v1/sha256-9c09821e96abadfccb08d07b62367d47963420c3a5cc51021ba801e2d6019fe4/goal-visualization.html",
+      "openai/outputTemplate" : "ui://skillpilot/coach/v1/sha256-7cfc661b04b03d33aa630e8040150509e5c4d1567c39e95aebacf3f7307e13f1/goal-visualization.html",
       "securitySchemes" : [ {
         "scopes" : [ "skillpilot.openai.v1.read" ],
         "type" : "oauth2"
       } ],
       "ui" : {
-        "resourceUri" : "ui://skillpilot/coach/v1/sha256-9c09821e96abadfccb08d07b62367d47963420c3a5cc51021ba801e2d6019fe4/goal-visualization.html"
+        "resourceUri" : "ui://skillpilot/coach/v1/sha256-7cfc661b04b03d33aa630e8040150509e5c4d1567c39e95aebacf3f7307e13f1/goal-visualization.html"
       }
     },
     "name" : "render_skillpilot_goal_visualization",
@@ -4025,13 +4071,13 @@
       "type" : "object"
     },
     "meta" : {
-      "openai/outputTemplate" : "ui://skillpilot/coach/v1/sha256-8524ee20837971227c35f1e16518d2b5bdbd60637fbec6beede9f2f4b29e4852/memory-card-practice.html",
+      "openai/outputTemplate" : "ui://skillpilot/coach/v1/sha256-7e1e4f1acbc61a9b50e620ebdf56f10c782517f6454edb1777a8d796832c2962/memory-card-practice.html",
       "securitySchemes" : [ {
         "scopes" : [ "skillpilot.openai.v1.read" ],
         "type" : "oauth2"
       } ],
       "ui" : {
-        "resourceUri" : "ui://skillpilot/coach/v1/sha256-8524ee20837971227c35f1e16518d2b5bdbd60637fbec6beede9f2f4b29e4852/memory-card-practice.html"
+        "resourceUri" : "ui://skillpilot/coach/v1/sha256-7e1e4f1acbc61a9b50e620ebdf56f10c782517f6454edb1777a8d796832c2962/memory-card-practice.html"
       }
     },
     "name" : "start_skillpilot_memory_practice",

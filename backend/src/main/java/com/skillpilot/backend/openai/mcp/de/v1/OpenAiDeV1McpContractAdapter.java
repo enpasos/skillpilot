@@ -138,12 +138,8 @@ public final class OpenAiDeV1McpContractAdapter {
             OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_URI);
     private static final List<GoalVisualizationUiResource> GOAL_VISUALIZATION_UI_RESOURCES =
             loadGoalVisualizationUiResources();
-    private static final MemoryPracticeUiResource MEMORY_PRACTICE_UI_RESOURCE =
-            loadMemoryPracticeWidget(
-                    "skillpilot-memory-card-practice-v1-current",
-                    OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_URI,
-                    OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_CLASSPATH,
-                    OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_ARTIFACT_SHA256);
+    private static final List<MemoryPracticeUiResource> MEMORY_PRACTICE_UI_RESOURCES =
+            loadMemoryPracticeUiResources();
     private static final String SERVER_INSTRUCTIONS = """
             You are the SkillPilot learning coach. After each new learner message, establish exactly one fresh full SkillPilot context before learner-facing SkillPilot coaching. One successful get_skillpilot_context satisfies this requirement for the whole assistant turn, including every subsequent tool call; never call it again until a new learner message, except for the single explicit reload allowed after a state conflict. A successful state-changing tool result that contains its full successor context also satisfies the requirement for the rest of that assistant turn because SkillPilot has already revalidated the session and canonical state; use that successor directly. Without either successful full result, provide no subject-matter communication. Treat the newest full result's structuredContent as the sole authority for the communication locale, configured curriculum and course profile, scope, active goal, mastery, frontier, task, recall, exam, progress, and next step. Never replace a missing or failed call with generic advice, an invented curriculum, or an invented learning path. A successful render_skillpilot_goal_visualization result is only a UI receipt and never replaces that full context.
 
@@ -863,9 +859,10 @@ public final class OpenAiDeV1McpContractAdapter {
         GOAL_VISUALIZATION_UI_RESOURCES.stream()
                 .map(uiResource -> goalVisualizationResourceSpecification(uiResource, meta))
                 .forEach(resources::add);
-        resources.add(memoryPracticeResourceSpecification(
-                MEMORY_PRACTICE_UI_RESOURCE,
-                memoryPracticeResourceMeta()));
+        Map<String, Object> memoryMeta = memoryPracticeResourceMeta();
+        MEMORY_PRACTICE_UI_RESOURCES.stream()
+                .map(uiResource -> memoryPracticeResourceSpecification(uiResource, memoryMeta))
+                .forEach(resources::add);
         return List.copyOf(resources);
     }
 
@@ -1043,6 +1040,28 @@ public final class OpenAiDeV1McpContractAdapter {
     }
 
     private record GoalVisualizationUiResource(String name, String uri, String html) {}
+
+    private static List<MemoryPracticeUiResource> loadMemoryPracticeUiResources() {
+        List<MemoryPracticeUiResource> resources = new ArrayList<>();
+        resources.add(loadMemoryPracticeWidget(
+                "skillpilot-memory-card-practice-v1-current",
+                OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_URI,
+                OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_CLASSPATH,
+                OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_ARTIFACT_SHA256));
+        for (String sha256 : OpenAiDeV1ContractMetadata.RETAINED_MEMORY_CARD_PRACTICE_ARTIFACT_SHA256S) {
+            resources.add(loadMemoryPracticeWidget(
+                    "skillpilot-memory-card-practice-v1-retained-" + sha256.substring(0, 8),
+                    OpenAiDeV1ContractMetadata.memoryCardPracticeResourceUri(sha256),
+                    OpenAiDeV1ContractMetadata.retainedMemoryCardPracticeResourceClasspath(sha256),
+                    sha256));
+        }
+        long distinctUris = resources.stream().map(MemoryPracticeUiResource::uri).distinct().count();
+        if (distinctUris != resources.size()) {
+            throw new IllegalStateException(
+                    "Duplicate SkillPilot memory-practice MCP UI resource URI: active and historical resources must remain distinct.");
+        }
+        return List.copyOf(resources);
+    }
 
     private static MemoryPracticeUiResource loadMemoryPracticeWidget(
             String name,

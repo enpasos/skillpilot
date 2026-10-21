@@ -88,8 +88,11 @@ class OpenAiDeCoachMcpContractTest {
             "45e1f58df32ef6cc194a7cdc6353bbd5bfc93ead407dd213cb5a64ff65b9faed",
             "157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c",
             "c890cf271307d815256450a2b20b27d57015a84e9f4e39c97532eaefc4e30c26",
-                "12762009bd8e00c392e06aefac685e17653f50a5e7efeb21f865429a9fab641e",
-                "08030bd956b68b816523f4971b6d18ab154eef01381882b01d7f1991cc643391");
+            "12762009bd8e00c392e06aefac685e17653f50a5e7efeb21f865429a9fab641e",
+            "08030bd956b68b816523f4971b6d18ab154eef01381882b01d7f1991cc643391",
+            "9c09821e96abadfccb08d07b62367d47963420c3a5cc51021ba801e2d6019fe4");
+    private static final List<String> HISTORICAL_MEMORY_CARD_PRACTICE_ARTIFACT_SHA256S = List.of(
+            "8524ee20837971227c35f1e16518d2b5bdbd60637fbec6beede9f2f4b29e4852");
     private static final String LEGACY_GOAL_VISUALIZATION_RESOURCE_URI =
             "ui://skillpilot/coach/v1/1.0.0/goal-visualization.html";
     private static final String LEGACY_GOAL_VISUALIZATION_ARTIFACT_SHA256 =
@@ -453,13 +456,17 @@ class OpenAiDeCoachMcpContractTest {
     void publishesActiveAndRetainedGoalVisualizationAndDedicatedMemoryPracticeResources() {
         assertThat(OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256S)
                 .containsExactlyElementsOf(HISTORICAL_GOAL_VISUALIZATION_ARTIFACT_SHA256S);
+        assertThat(OpenAiDeV1ContractMetadata.RETAINED_MEMORY_CARD_PRACTICE_ARTIFACT_SHA256S)
+                .containsExactlyElementsOf(HISTORICAL_MEMORY_CARD_PRACTICE_ARTIFACT_SHA256S);
         List<String> expectedResourceUris = Stream.of(
                         Stream.of(
                                 OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI,
                                 OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_URI,
                                 LEGACY_GOAL_VISUALIZATION_RESOURCE_URI),
                         HISTORICAL_GOAL_VISUALIZATION_ARTIFACT_SHA256S.stream()
-                                .map(OpenAiDeV1ContractMetadata::goalVisualizationResourceUri))
+                                .map(OpenAiDeV1ContractMetadata::goalVisualizationResourceUri),
+                        HISTORICAL_MEMORY_CARD_PRACTICE_ARTIFACT_SHA256S.stream()
+                                .map(OpenAiDeV1ContractMetadata::memoryCardPracticeResourceUri))
                 .flatMap(stream -> stream)
                 .toList();
 
@@ -471,7 +478,10 @@ class OpenAiDeCoachMcpContractTest {
                 : contract.resourceSpecifications()) {
             McpSchema.Resource resource = specification.resource();
             boolean memoryPractice = OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_URI
-                    .equals(resource.uri());
+                    .equals(resource.uri())
+                    || HISTORICAL_MEMORY_CARD_PRACTICE_ARTIFACT_SHA256S.stream()
+                            .map(OpenAiDeV1ContractMetadata::memoryCardPracticeResourceUri)
+                            .anyMatch(resource.uri()::equals);
             boolean prefersBorder = memoryPractice;
             assertThat(resource.mimeType())
                     .isEqualTo(OpenAiDeV1ContractMetadata.MCP_APP_RESOURCE_MIME_TYPE);
@@ -588,6 +598,34 @@ class OpenAiDeCoachMcpContractTest {
                         .timer()
                         .count())
                 .isEqualTo(1);
+    }
+
+    @Test
+    void keepsPreviousMemoryPracticeResourceByteExactAndPassive() {
+        for (String sha256 : HISTORICAL_MEMORY_CARD_PRACTICE_ARTIFACT_SHA256S) {
+            String retainedUri = OpenAiDeV1ContractMetadata.memoryCardPracticeResourceUri(sha256);
+            McpStatelessServerFeatures.SyncResourceSpecification retainedResource =
+                    contract.resourceSpecifications().stream()
+                            .filter(specification -> retainedUri.equals(specification.resource().uri()))
+                            .findFirst()
+                            .orElseThrow();
+            McpSchema.ReadResourceResult result = retainedResource.readHandler().apply(
+                    null, new McpSchema.ReadResourceRequest(retainedUri));
+            assertThat(result.contents()).singleElement().isInstanceOfSatisfying(
+                    McpSchema.TextResourceContents.class,
+                    contents -> assertThat(sha256(contents.text())).isEqualTo(sha256));
+            assertThat(contract.toolSpecifications()).allSatisfy(specification -> {
+                Object ui = specification.tool().meta().get("ui");
+                if (ui instanceof Map<?, ?> uiMeta) {
+                    assertThat(uiMeta.get("resourceUri")).isNotEqualTo(retainedUri);
+                }
+                assertThat(specification.tool().meta().get("openai/outputTemplate"))
+                        .isNotEqualTo(retainedUri);
+            });
+        }
+        assertThat(spec(OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE)
+                        .tool().meta().get("openai/outputTemplate"))
+                .isEqualTo(OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_URI);
     }
 
     @Test

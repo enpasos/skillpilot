@@ -125,6 +125,14 @@ const retainedGoalVisualizationArtifactSha256s = retainedArtifactDirectoryNames
       "goal-visualization.html",
     )))
   .map((directoryName) => directoryName.slice("sha256-".length));
+const retainedMemoryCardPracticeArtifactSha256s = retainedArtifactDirectoryNames
+  .filter((directoryName) =>
+    existsSync(resolve(
+      retainedGoalVisualizationRoot,
+      directoryName,
+      "memory-card-practice.html",
+    )))
+  .map((directoryName) => directoryName.slice("sha256-".length));
 assert.ok(
   retainedGoalVisualizationArtifactSha256s.length > 0,
   "At least one retained goal-visualization artifact must stay readable.",
@@ -142,6 +150,29 @@ for (const sha256 of retainedGoalVisualizationArtifactSha256s) {
     "Retained goal-visualization artifacts must remain byte-for-byte immutable.",
   );
 }
+for (const sha256 of retainedMemoryCardPracticeArtifactSha256s) {
+  const artifact = resolve(
+    retainedGoalVisualizationRoot,
+    `sha256-${sha256}`,
+    "memory-card-practice.html",
+  );
+  assert.equal(
+    createHash("sha256").update(readFileSync(artifact)).digest("hex"),
+    sha256,
+    "Retained memory-card-practice artifacts must remain byte-for-byte immutable.",
+  );
+}
+for (const [source, retainedSha256s, label] of [
+  [goalVisualizationWidgetSource, retainedGoalVisualizationArtifactSha256s, "goal-visualization"],
+  [memoryCardPracticeWidgetSource, retainedMemoryCardPracticeArtifactSha256s, "memory-card-practice"],
+]) {
+  const activeSha256 = createHash("sha256").update(readFileSync(source)).digest("hex");
+  assert.equal(
+    retainedSha256s.includes(activeSha256),
+    false,
+    `The active ${label} artifact must not also be retained.`,
+  );
+}
 const uiArtifactSource = (releasePath) => {
   if (releasePath === "ui/goal-visualization.html") {
     return goalVisualizationWidgetSource;
@@ -153,11 +184,11 @@ const uiArtifactSource = (releasePath) => {
     return legacyGoalVisualizationSource;
   }
   const retained =
-    /^ui\/retained\/(sha256-[0-9a-f]{64})\/goal-visualization\.html$/u.exec(
+    /^ui\/retained\/(sha256-[0-9a-f]{64})\/(goal-visualization|memory-card-practice)\.html$/u.exec(
       releasePath,
     );
   if (retained) {
-    return resolve(retainedGoalVisualizationRoot, retained[1], "goal-visualization.html");
+    return resolve(retainedGoalVisualizationRoot, retained[1], `${retained[2]}.html`);
   }
   return undefined;
 };

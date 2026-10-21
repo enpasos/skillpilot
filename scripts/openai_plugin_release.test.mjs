@@ -3,6 +3,7 @@ import { spawnSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import {
   chmodSync,
+  cpSync,
   mkdtempSync,
   mkdirSync,
   readFileSync,
@@ -11,7 +12,7 @@ import {
   writeFileSync,
 } from "node:fs";
 import { tmpdir } from "node:os";
-import { resolve } from "node:path";
+import { dirname, resolve } from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 import {
@@ -50,6 +51,56 @@ test("successor preparation preserves existing release archives", () => {
   const options = { repositoryRoot, pluginIdentity: "skillpilot-coach-v1", command: "prepare" };
   assert.doesNotThrow(() => assertOpenAiPluginReleaseMutationAllowed({ ...options, pluginVersion: "1.1.0" }));
   assert.throws(() => assertOpenAiPluginReleaseMutationAllowed({ ...options, pluginVersion: "1.0.0" }), /cannot be rewritten/u);
+});
+
+test("release preflight preserves memory resource hashes and rejects active retention", () => {
+  withTemporaryDirectory((root) => {
+    const write = (path, bytes) => {
+      const destination = resolve(root, path);
+      mkdirSync(dirname(destination), { recursive: true });
+      writeFileSync(destination, bytes);
+      return destination;
+    };
+    const script = write("scripts/openai_plugin_release.mjs", readFileSync(releaseScriptPath));
+    symlinkSync(resolve(repositoryRoot, "scripts/lib"), resolve(root, "scripts/lib"), "dir");
+    symlinkSync(resolve(repositoryRoot, "scripts/check_openai_plugin_review_freeze.mjs"),
+      resolve(root, "scripts/check_openai_plugin_review_freeze.mjs"));
+    write("ai/openai plugin/skillpilot-coach/.codex-plugin/plugin.json",
+      JSON.stringify({ version: "1.1.3" }));
+    write("ai/openai plugin/skillpilot-coach/release/line.json",
+      JSON.stringify({ pluginIdentity: "skillpilot-coach", contractMajor: 1 }));
+    write("contracts/openai/skillpilot-coach/release-index.json",
+      JSON.stringify({ ...unpublishedIndex(), pluginIdentity: "skillpilot-coach" }));
+
+    const resourceRoot = "backend/src/main/resources/openai";
+    const retainedRoot = `${resourceRoot}/retained/skillpilot/coach/v1`;
+    write(`${retainedRoot}/legacy-1.0.0/goal-visualization.html`,
+      readFileSync(resolve(repositoryRoot, retainedRoot, "legacy-1.0.0/goal-visualization.html")));
+    const retiredGoal = Buffer.from("<!doctype html><title>retired goal</title>");
+    const retiredGoalSha256 = createHash("sha256").update(retiredGoal).digest("hex");
+    write(`${retainedRoot}/sha256-${retiredGoalSha256}/goal-visualization.html`, retiredGoal);
+    write(`${resourceRoot}/skillpilot-goal-visualization-v1.html`,
+      "<!doctype html><title>current goal</title>");
+    const activeMemory = write(`${resourceRoot}/skillpilot-memory-card-practice-v1.html`,
+      "<!doctype html><title>current memory</title>");
+    const retiredMemory = Buffer.from("<!doctype html><title>retired memory</title>");
+    const retiredMemorySha256 = createHash("sha256").update(retiredMemory).digest("hex");
+    const retainedMemory = write(
+      `${retainedRoot}/sha256-${retiredMemorySha256}/memory-card-practice.html`, retiredMemory);
+    const preflight = () => {
+      const result = spawnSync(process.execPath, [script, "invalid-command"],
+        { cwd: root, encoding: "utf8", stdio: "pipe" });
+      assert.notEqual(result.status, 0);
+      return `${result.stdout}\n${result.stderr}`;
+    };
+
+    assert.match(preflight(), /Usage: node scripts\/openai_plugin_release\.mjs/u);
+    writeFileSync(retainedMemory, "<!doctype html><title>changed history</title>");
+    assert.match(preflight(), /Retained memory-card-practice artifacts must remain byte-for-byte immutable/u);
+    writeFileSync(retainedMemory, retiredMemory);
+    cpSync(retainedMemory, activeMemory);
+    assert.match(preflight(), /The active memory-card-practice artifact must not also be retained/u);
+  });
 });
 
 test("development authorization does not grant publication permission", () => {

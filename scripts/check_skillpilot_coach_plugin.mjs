@@ -67,6 +67,13 @@ const retainedGoalVisualizationArtifactSha256s = retainedArtifactDirectoryNames
     "goal-visualization.html",
   )))
   .map((directoryName) => directoryName.slice("sha256-".length));
+const retainedMemoryCardPracticeArtifactSha256s = retainedArtifactDirectoryNames
+  .filter((directoryName) => existsSync(resolve(
+    retainedGoalVisualizationRoot,
+    directoryName,
+    "memory-card-practice.html",
+  )))
+  .map((directoryName) => directoryName.slice("sha256-".length));
 assert.ok(
   retainedGoalVisualizationArtifactSha256s.length > 0,
   "At least one retained goal-visualization artifact must stay readable.",
@@ -88,6 +95,23 @@ assert.equal(
   retainedGoalVisualizationArtifactSha256s.includes(goalVisualizationArtifactSha256),
   false,
   "The active goal-visualization artifact must not also be retained.",
+);
+for (const sha256 of retainedMemoryCardPracticeArtifactSha256s) {
+  const artifact = resolve(
+    retainedGoalVisualizationRoot,
+    `sha256-${sha256}`,
+    "memory-card-practice.html",
+  );
+  assert.equal(
+    createHash("sha256").update(readFileSync(artifact)).digest("hex"),
+    sha256,
+    "Retained memory-card-practice artifacts must remain byte-for-byte immutable.",
+  );
+}
+assert.equal(
+  retainedMemoryCardPracticeArtifactSha256s.includes(memoryCardPracticeArtifactSha256),
+  false,
+  "The active memory-card-practice artifact must not also be retained.",
 );
 const skillRoot = resolve(pluginRoot, OPENAI_PLUGIN.skillPath);
 
@@ -548,6 +572,11 @@ const expectedUiResources = [
     mimeType: "text/html;profile=mcp-app",
     path: `ui/retained/sha256-${sha256}/goal-visualization.html`,
     uri: `ui://skillpilot/coach/v1/sha256-${sha256}/goal-visualization.html`,
+  })),
+  ...retainedMemoryCardPracticeArtifactSha256s.map((sha256) => ({
+    mimeType: "text/html;profile=mcp-app",
+    path: `ui/retained/sha256-${sha256}/memory-card-practice.html`,
+    uri: `ui://skillpilot/coach/v1/sha256-${sha256}/memory-card-practice.html`,
   })),
   {
     mimeType: "text/html;profile=mcp-app",
@@ -1699,6 +1728,11 @@ assert.deepEqual(
   javaStringList("RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256S").slice().sort(),
   retainedGoalVisualizationArtifactSha256s,
   "Every retained artifact must be declared, and every declared hash must exist.",
+);
+assert.deepEqual(
+  javaStringList("RETAINED_MEMORY_CARD_PRACTICE_ARTIFACT_SHA256S").slice().sort(),
+  retainedMemoryCardPracticeArtifactSha256s,
+  "Every retained memory-card artifact must be declared, and every declared hash must exist.",
 );
 assert.equal(
   javaConstant("GOAL_VISUALIZATION_ARTIFACT_SHA256"),
