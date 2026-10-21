@@ -985,6 +985,11 @@ const fermiExam = fermiAssessment.examData as {
 }
 assert.deepEqual(fermiAssessment.requires, [fermiGoalId])
 assert.deepEqual(fermiExam.coveredGoalIds, [fermiGoalId])
+assert.equal(
+  (fermiAssessment.extendedData as Record<string, unknown>)?.applicabilityFromRequires,
+  true,
+  'the Fermi assessment must derive applicability from its exact competency prerequisite',
+)
 assert.equal(fermiExam.reviewStatus, 'released')
 assert.equal(fermiExam.scoring.maxPoints, 16)
 assert.equal(fermiExam.scoring.steps.reduce((sum, step) => sum + step.points, 0), 16)
@@ -1500,11 +1505,9 @@ allPhysicsViewPaths.forEach((viewPath) => {
     collectRoadSafetyRefs(view.rootNodes)
     assert.deepEqual(directTargets, [ROAD_SAFETY_GOAL_ID], `${view.viewId}: one explicit road-safety target`)
   }
-  assert.equal(
-    visibleGoalIds.has(fermiAssessmentId),
-    visibleGoalIds.has(fermiGoalId),
-    `${view.viewId}: the Fermi assessment must follow exactly its competency's target scope`,
-  )
+  // Fermi target visibility is checked after learner course/jurisdiction
+  // filtering in testPhysicsAssessmentProjection; this preview retains the
+  // shared exercise collections before those filters are applied.
   const gravitationRootIsTarget = visibleGoalIds.has(GRAVITATION_ROOT_GOAL_ID)
   const authoredGravitationProjectionRoots = collectAuthoredPrerequisiteRoots(view.rootNodes)
     .filter(({ goalId }) => GRAVITATION_LK_ONLY_PROJECTION_ROOTS.some((root) => root.goalId === goalId))

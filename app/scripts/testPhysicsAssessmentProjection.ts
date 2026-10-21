@@ -32,6 +32,8 @@ const abiturRootIds = {
   GK: '61684ca7-b725-534f-944b-c7645cea1792',
   LK: '79028c45-90ae-57eb-8016-f5a96af18fa2',
 } as const
+const fermiGoalId = '658cf33d-a0c2-5d47-801a-3dbcd5cac074'
+const fermiAssessmentId = '71e8936b-fa8a-50dc-8c47-fca015b85ac5'
 const diodeSekIJurisdictions = new Set(['DE-BB', 'DE-BE', 'DE-HB', 'DE-HH', 'DE-MV', 'DE-NI', 'DE-NW', 'DE-SH'])
 const diodeTaskIds = [
   'c61b2a69-b5cd-5785-bb04-5d6bca53b218',
@@ -96,6 +98,7 @@ const collectDescendants = (
 }
 
 let viewCount = 0
+let fermiScopeViewCount = 0
 let practiceTaskPairs = 0
 let abiturTaskPairs = 0
 let preservedSekITaskPairs = 0
@@ -105,15 +108,6 @@ const jurisdictions = new Set<string>()
 for (const filename of readdirSync(viewDirectory).filter((name) => name.endsWith('.view.json')).sort()) {
   const view = JSON.parse(readFileSync(resolve(viewDirectory, filename), 'utf8')) as CompositionView
   const course = view.scope.courseProfile
-  if ((course !== 'GK' && course !== 'LK') || !['SekII', 'CrossStage'].includes(view.scope.stage ?? '')) continue
-  // Bavaria and Baden-Wuerttemberg author separate course structures; this
-  // independent scope list must not silently skip a broken or removed reference.
-  if (['DE-BY', 'DE-BW'].includes(view.scope.jurisdiction ?? '')) continue
-  const expectedRootIds = [...practiceRootIds, abiturRootIds[course]]
-  const preservedSekITasks = expectedSekITasks(view)
-  viewCount++
-  if (view.scope.jurisdiction) jurisdictions.add(view.scope.jurisdiction)
-
   const [projected] = normalizeLearnerProjectedEntries(applyCompositionViewProjection([canonical], view))
   assert(projected)
   const byId = new Map(projected.goals.map((goal) => [goal.id, goal]))
@@ -132,6 +126,25 @@ for (const filename of readdirSync(viewDirectory).filter((name) => name.endsWith
   }
   projected.goals.filter((goal) => goal.tags?.includes('root')).forEach((goal) => visit(goal.id))
   const { targetGoalIds, prerequisiteOnlyGoalIds } = collectCompositionProjectionRoleGoalIds(view.rootNodes, canonicalById)
+
+  // Composition previews retain shared exercise collections across courses.
+  // Check the assessment's exact target scope in the final learner tree,
+  // including its course/jurisdiction filters and prerequisite-only overrides.
+  assert.equal(
+    visible.has(fermiAssessmentId),
+    visible.has(fermiGoalId),
+    `${view.viewId}: the Fermi assessment must follow exactly its competency's target scope`,
+  )
+  fermiScopeViewCount++
+
+  if ((course !== 'GK' && course !== 'LK') || !['SekII', 'CrossStage'].includes(view.scope.stage ?? '')) continue
+  // Bavaria and Baden-Wuerttemberg author separate course structures; this
+  // independent scope list must not silently skip a broken or removed reference.
+  if (['DE-BY', 'DE-BW'].includes(view.scope.jurisdiction ?? '')) continue
+  const expectedRootIds = [...practiceRootIds, abiturRootIds[course]]
+  const preservedSekITasks = expectedSekITasks(view)
+  viewCount++
+  if (view.scope.jurisdiction) jurisdictions.add(view.scope.jurisdiction)
 
   for (const goalId of expectedPrerequisiteOnlyTasks(view)) {
     assert(prerequisiteOnlyGoalIds.has(goalId) && !targetGoalIds.has(goalId),
@@ -201,6 +214,7 @@ for (const filename of readdirSync(viewDirectory).filter((name) => name.endsWith
   }
 }
 assert.equal(viewCount, 60, 'Cover every existing GK/LK and SekII/CrossStage assessment-collection view.')
+assert.equal(fermiScopeViewCount, 69, 'Check exact Fermi assessment target visibility in every Physics composition view.')
 assert.equal(jurisdictions.size, 14, 'Cover all jurisdictions using these Physics assessment collections.')
 assert.equal(practiceTaskPairs, 3006, 'Restore the existing practice scope without silently adding or removing assessment targets.')
 assert.equal(abiturTaskPairs, 480, 'Every applicable view must expose both Abitur sample exams and all eight proposals.')
