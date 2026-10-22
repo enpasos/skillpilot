@@ -551,9 +551,12 @@ routes; it cannot prove that a narrower composition view retained every direct
 prerequisite. A reviewed view therefore has to include each direct prerequisite
 of every visible target either as another `target` or explicitly as
 `prerequisiteOnly`. Projection roles remain authored decisions and are never
-inferred from stage or graph position. At runtime, a missing direct canonical
-prerequisite fails closed and blocks the target; only omitted prerequisites
-inherited from transitional legacy clusters retain the compatibility behavior.
+inferred from stage or graph position. At runtime, a direct canonical
+prerequisite missing from the authored Level 2 composition fails closed and
+blocks the target; only omitted prerequisites inherited from transitional
+legacy clusters retain the compatibility behavior. This configuration check is
+distinct from Level 3 focus selection: a valid prerequisite outside the chosen
+focus is ignored in normal mode and checked globally only in strict mode.
 The Hessen Sek-II mathematics LK regression additionally proves complete direct
 prerequisite closure for that reviewed view.
 
@@ -803,6 +806,13 @@ This means:
 
 Optimistic evaluation uses the restricted relation (§11.3). Strict evaluation uses the full relation (§11.4). Filtering changes the evaluation scope, not the stored mastery set.
 
+A Level 3 focus may contain one or several selected roots. Its evaluation set
+is the union of those roots and their `contains` descendants, restricted to
+the committed Personal Curriculum's targets. The same restriction applies to
+ordinary topic focus and exam preparation. An explicitly authored
+`prerequisiteOnly` goal remains available for lookup and global strict checks;
+it is not added to the focus or counted as a learning target.
+
 This avoids making scoped availability depend on whether a prerequisite was authored directly on a child or inherited from a filtered-out ancestor.
 
 For any concrete filter realization, the induced graph
@@ -896,7 +906,7 @@ $$
 
 **How to read it:** Both panels use $M_A=\varnothing$. Kinematics, Velocity and Acceleration are in scope; Vectors is outside. Kinematics directly requires Vectors, and Acceleration directly requires Velocity. Through containment, Velocity and Acceleration inherit Kinematics’ requirement for Vectors. Every requires arrow points from a goal to what it requires. Solid arrows labelled requires are authored and dashed arrows labelled requires (inherited) are derived, regardless of colour. In the optimistic panel, the three orange arrows to Vectors are excluded from the scoped prerequisite check: Velocity is available, but Acceleration still requires Velocity. In the strict panel, these requirements are checked as well: neither atomic goal is available.
 
-**Scope note:** Neither mode changes stored mastery. Effective requirements are derived on the full graph before restriction (§11.2). This is an example of the abstract filter modes with a cluster-authored requirement. It does not override the separate reviewed composition-view contract in §8.5, which enforces missing direct canonical prerequisites.
+**Scope note:** Neither mode changes stored mastery. Effective requirements are derived on the full graph before restriction (§11.2). The same focus restriction applies to direct and inherited prerequisites, including reviewed composition views. The separate Level 2 validity check in §8.5 still rejects missing authored direct references; it does not make a valid outside-focus prerequisite block normal-mode entry.
 
 <!-- END SKILLPILOT-ILLUSTRATION: fig-07 -->
 

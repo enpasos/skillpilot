@@ -5955,15 +5955,8 @@ public class LearnerService {
         Set<String> followedScope = followedLearningScopeIds(learner, projection, null);
         if (followedScope != null && followedScope.isEmpty()) return List.of();
         Map<String, LearningGoal> allGoals = projection.visibleGoals();
-        Map<String, LearningGoal> prerequisiteLookupGoals = projection.compositionViewApplied()
-                ? projection.structuralGoals()
-                : allGoals;
-        Map<String, List<String>> effectiveRequires =
-                computeEffectiveRequires(prerequisiteLookupGoals);
         Map<String, Double> masteryMap = getMastery(skillpilotId);
         Map<String, Double> effectiveMastery = computeEffectiveMastery(allGoals, masteryMap);
-        Map<String, Double> effectivePrereqMastery =
-                computeEffectivePrereqMastery(prerequisiteLookupGoals, masteryMap);
 
         List<String> projectedFocusIds = resolveEffectiveProjectedFocusIds(
                 learner,
@@ -5971,14 +5964,10 @@ public class LearnerService {
         List<String> plannedIds = resolveProjectedTargetScopeIds(projectedFocusIds, projection);
         Set<String> scope = Collections.emptySet();
         if (!plannedIds.isEmpty()) {
-            boolean strictMode = Boolean.TRUE.equals(learner.getStrictMode());
-            Map<String, List<String>> scopeRequires = strictMode
-                    ? computeEffectiveRequires(projection.structuralGoals())
-                    : computeEffectiveRequires(allGoals);
             scope = computeScope(
                     plannedIds,
                     projection.structuralGoals(),
-                    scopeRequires);
+                    Collections.emptyMap());
             List<FrontierGoal> requiredOrientationGoals = getRequiredOrientationGoals(
                     learner,
                     projection,
@@ -6000,6 +5989,8 @@ public class LearnerService {
         GlobalAssessmentFocus globalAssessmentFocus = resolveGlobalAssessmentFocus(
                 projection.structuralGoals(),
                 projectedFocusIds);
+        FrontierPrerequisites prerequisites = frontierPrerequisites(
+                learner, projection, masteryMap, plannedIds.isEmpty() ? null : scope);
 
         List<String> frontier = new ArrayList<>();
         for (LearningGoal goal : allGoals.values()) {
@@ -6021,13 +6012,7 @@ public class LearnerService {
             }
 
             boolean prerequisitesMet = areFrontierPrerequisitesMastered(
-                    goal,
-                    projection,
-                    prerequisiteLookupGoals,
-                    effectiveRequires,
-                    effectivePrereqMastery,
-                    Boolean.TRUE.equals(learner.getStrictMode()),
-                    null);
+                    goal, projection, prerequisites);
 
             if (prerequisitesMet
                     && !isExamGoalUnavailableForHardCheck(goal)
@@ -6098,19 +6083,8 @@ public class LearnerService {
 
         Map<String, Double> masteryMap = getMastery(skillpilotId);
         Map<String, Double> effectiveMastery = computeEffectiveMastery(allFilteredGoals, masteryMap);
-        Map<String, List<String>> effectiveRequires = computeEffectiveRequires(allFilteredGoals);
-        Map<String, Double> effectivePrereqMastery =
-                computeEffectivePrereqMastery(allFilteredGoals, masteryMap);
-        boolean useStructuralPrerequisiteLookup =
-                strictMode || projection.compositionViewApplied();
-        Map<String, List<String>> globalEffectiveRequires = useStructuralPrerequisiteLookup
-                ? computeEffectiveRequires(allStructuralGoals)
-                : effectiveRequires;
-        Map<String, Double> globalEffectivePrereqMastery = useStructuralPrerequisiteLookup
-                ? computeEffectivePrereqMastery(allStructuralGoals, masteryMap)
-                : effectivePrereqMastery;
 
-        // Calculate Scope (Plan + Descendants + Prerequisites)
+        // The focus is the union of selected roots and their contains descendants.
         List<String> projectedFocusIds = prospectiveFocusGoalIds == null
                 ? resolveEffectiveProjectedFocusIds(learner, projection)
                 : resolveProjectedTargetFocusIds(prospectiveFocusGoalIds, projection);
@@ -6128,7 +6102,7 @@ public class LearnerService {
         Set<String> scope = computeScope(
                 plannedIds,
                 allStructuralGoals,
-                strictMode ? globalEffectiveRequires : effectiveRequires);
+                Collections.emptyMap());
 
         System.out.println("DEBUG_SKILLPILOT: getRichFrontier - Plan: " + plannedIds);
         System.out.println("DEBUG_SKILLPILOT: getRichFrontier - Scope Size: " + scope.size());
@@ -6164,6 +6138,8 @@ public class LearnerService {
                     .filter(goal -> followedScope == null || followedScope.contains(goal.id())).toList(), projection);
         }
 
+        FrontierPrerequisites prerequisites = frontierPrerequisites(
+                learner, projection, masteryMap, scope);
         List<FrontierGoal> frontier = new ArrayList<>();
 
         // Iterate FILTERED goals (what the user should see)
@@ -6187,14 +6163,7 @@ public class LearnerService {
             }
 
             boolean prerequisitesMet = areFrontierPrerequisitesMastered(
-                    goal,
-                    projection,
-                    useStructuralPrerequisiteLookup ? allStructuralGoals : allFilteredGoals,
-                    useStructuralPrerequisiteLookup ? globalEffectiveRequires : effectiveRequires,
-                    useStructuralPrerequisiteLookup ? globalEffectivePrereqMastery : effectivePrereqMastery,
-                    strictMode,
-                    !strictMode && !plannedIds.isEmpty() && !projection.compositionViewApplied()
-                            ? scope : null);
+                    goal, projection, prerequisites);
 
             if (isExamGoalUnavailableForHardCheck(goal)) {
                 continue;
@@ -6307,14 +6276,27 @@ public class LearnerService {
                         || "Motivation".equalsIgnoreCase(tag));
     }
 
+    /** One prerequisite policy for simple, rich and prospective plan frontiers. */
+    private FrontierPrerequisites frontierPrerequisites(
+            Learner learner, GoalProjection projection, Map<String, Double> mastery, Set<String> scope) {
+        boolean strictMode = Boolean.TRUE.equals(learner.getStrictMode());
+        Map<String, LearningGoal> lookup = projection.structuralGoals();
+        Set<String> prerequisiteScope = strictMode ? null : projection.targetGoalIds().stream()
+                .filter(id -> scope == null || scope.contains(id))
+                .collect(Collectors.toCollection(LinkedHashSet::new));
+        // Inherit on the structural graph first. Only the ensuing traversal is
+        // restricted to F, so an ancestor outside F may still author an internal edge.
+        return new FrontierPrerequisites(lookup, computeEffectiveRequires(lookup),
+                computeEffectivePrereqMastery(lookup, mastery, prerequisiteScope), strictMode, prerequisiteScope);
+    }
+
+    private record FrontierPrerequisites(Map<String, LearningGoal> lookup,
+            Map<String, List<String>> effectiveRequires, Map<String, Double> mastery,
+            boolean strictMode, Set<String> scope) { }
+
     private boolean areFrontierPrerequisitesMastered(
-            LearningGoal goal,
-            GoalProjection projection,
-            Map<String, LearningGoal> prerequisiteLookupGoals,
-            Map<String, List<String>> effectiveRequires,
-            Map<String, Double> effectivePrereqMastery,
-            boolean strictMode,
-            Set<String> legacyPrerequisiteScope) {
+            LearningGoal goal, GoalProjection projection, FrontierPrerequisites prerequisites) {
+        Map<String, LearningGoal> prerequisiteLookupGoals = prerequisites.lookup();
         ArrayDeque<LearningGoal> pending = new ArrayDeque<>();
         Set<String> checked = new HashSet<>();
         pending.add(goal);
@@ -6323,7 +6305,7 @@ public class LearnerService {
             if (!checked.add(owner.getId())) {
                 continue;
             }
-            List<String> requires = effectiveRequires.getOrDefault(owner.getId(), owner.getRequires());
+            List<String> requires = prerequisites.effectiveRequires().getOrDefault(owner.getId(), owner.getRequires());
             if (requires == null) {
                 continue;
             }
@@ -6332,7 +6314,7 @@ public class LearnerService {
                 boolean direct = isDirectRequirement(
                         owner, resolvedReqId == null ? reqId : resolvedReqId, prerequisiteLookupGoals);
                 if (resolvedReqId == null) {
-                    if (strictMode || (projection.compositionViewApplied() && direct)) {
+                    if (prerequisites.strictMode() || (projection.compositionViewApplied() && direct)) {
                         return false;
                     }
                     // Preserve optimistic unknown legacy compatibility requirements.
@@ -6348,10 +6330,12 @@ public class LearnerService {
                     // projection must not become hidden blockers at any chain depth.
                     continue;
                 }
-                if (legacyPrerequisiteScope != null && !legacyPrerequisiteScope.contains(resolvedReqId)) {
+                // Validate authored Level-2 references before applying the Level-3
+                // boundary. A valid edge leaving F is absent, including its whole chain.
+                if (prerequisites.scope() != null && !prerequisites.scope().contains(resolvedReqId)) {
                     continue;
                 }
-                if (effectivePrereqMastery.getOrDefault(resolvedReqId, 0.0) < 0.9) {
+                if (prerequisites.mastery().getOrDefault(resolvedReqId, 0.0) < 0.9) {
                     return false;
                 }
                 // Persisted mastery of an intermediate goal does not certify its
@@ -6854,6 +6838,48 @@ public class LearnerService {
             computeEffectivePrereqMastery(goalId, allGoals, masteryMap, cache, visiting);
         }
         return cache;
+    }
+
+    private Map<String, Double> computeEffectivePrereqMastery(Map<String, LearningGoal> allGoals,
+            Map<String, Double> masteryMap, Set<String> prerequisiteScope) {
+        if (prerequisiteScope == null) return computeEffectivePrereqMastery(allGoals, masteryMap);
+        Map<String, Double> cache = new HashMap<>();
+        Set<String> visiting = new HashSet<>();
+        for (String goalId : prerequisiteScope) {
+            computeScopedPrerequisiteMastery(goalId, allGoals, masteryMap, prerequisiteScope, cache, visiting);
+        }
+        cache.keySet().retainAll(prerequisiteScope);
+        return cache;
+    }
+
+    /** Atoms_F(C) = global contains descendants of C intersected with F. */
+    private double computeScopedPrerequisiteMastery(String goalId, Map<String, LearningGoal> allGoals,
+            Map<String, Double> masteryMap, Set<String> scope, Map<String, Double> cache, Set<String> visiting) {
+        Double cached = cache.get(goalId);
+        if (cached != null) return cached;
+        if (!visiting.add(goalId)) return 0.0;
+        LearningGoal goal = allGoals.get(goalId);
+        double effective = 1.0;
+        if (goal != null && goal.getContains() != null && !goal.getContains().isEmpty()) {
+            // Traverse global contains paths even through a non-target cluster;
+            // an explicitly targeted descendant can still belong to F.
+            List<String> children = goal.getContains().stream().map(ref -> resolveGoalRef(ref, allGoals))
+                    .filter(Objects::nonNull).toList();
+            // Preserve the existing global core/extension basis before intersecting
+            // with F, so optimistic evaluation never adds a stricter obligation.
+            boolean hasCoreChild = children.stream().anyMatch(id -> isCoreForPrereqs(allGoals.get(id)));
+            for (String childId : children) {
+                if (hasCoreChild && !isCoreForPrereqs(allGoals.get(childId))) continue;
+                effective = Math.min(effective, computeScopedPrerequisiteMastery(
+                        childId, allGoals, masteryMap, scope, cache, visiting));
+            }
+        } else if (scope.contains(goalId)) {
+            effective = masteryMap.getOrDefault(goalId, 0.0);
+        }
+        // No atomic descendant in F means no local obligation. No result is persisted.
+        visiting.remove(goalId);
+        cache.put(goalId, effective);
+        return effective;
     }
 
     private double computeEffectivePrereqMastery(String goalId, Map<String, LearningGoal> allGoals,

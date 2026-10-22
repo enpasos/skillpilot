@@ -263,7 +263,7 @@ This compile step must happen early enough that programmatic validation rules ca
 A compiled composition view distinguishes two runtime roles without changing the canonical skill graph:
 
 - `target`: a selectable learning target in this learner-facing scope
-- `prerequisiteOnly`: a supporting goal whose global mastery may block or unlock a target, but which is not itself selectable in this scope
+- `prerequisiteOnly`: a supporting goal whose global mastery is available for prerequisite evaluation, but which is not itself selectable in this scope
 
 The role is authored explicitly on `canonicalSubtree` and `goalEntry` references with
 `projectionRole: "target" | "prerequisiteOnly"`. If the field is omitted, the
@@ -294,7 +294,8 @@ The runtime contract is:
 - only targets may appear in learner navigation or as frontier candidates
 - only targets contribute to scope progress and scope completion
 - a prerequisite-only goal never becomes a frontier candidate in that view
-- the global mastery value of a prerequisite-only goal still blocks or unlocks dependent targets through the unchanged canonical `requires` edges
+- strict mode uses the global mastery of prerequisite-only goals to check dependent targets through the unchanged canonical `requires` edges
+- normal mode restricts those checks to the selected Level 3 focus; an outside prerequisite-only goal does not block entry, become selectable, or acquire mastery
 - targeted repetition of an earlier goal requires an explicit target reference or a separate reviewed repetition plan; it must not become selectable merely because it is an earlier-phase goal
 
 This distinction keeps bridge competencies available for sequencing while
@@ -305,8 +306,8 @@ For the reviewed Hessen Sek-II-LK mathematics projection:
 - the J9/J10 bridge goals are explicitly included as `prerequisiteOnly`
 - the five formula-sheet goals and the J7 chain are explicitly included as
   `prerequisiteOnly`: they are not frontier targets, but their existing global
-  mastery may still block or unlock genuine Sek-II targets that canonically
-  require them
+  mastery still participates in global strict checks of genuine Sek-II targets
+  that canonically require them
 - genuine Sek-II goals are explicitly included as targets
 - if an earlier goal should become selectable for targeted repetition, the view
   must promote it explicitly to `target` or use a separately reviewed repetition

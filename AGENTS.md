@@ -333,6 +333,14 @@ Interpretation rules:
   learning goals; Level 3 focus is only a temporary narrowing of that target
   universe, and a learner who wants a permanently narrower plan sets that focus
   explicitly in the Cockpit
+- A Level 3 focus is the union of its selected roots and their `contains`
+  descendants, restricted to Personal Curriculum targets. Normal mode checks
+  only the effective prerequisite relation inside this focus, including
+  scope-relative atomic satisfaction of prerequisite clusters. Requirements
+  outside the focus, including `prerequisiteOnly` goals, do not block entry or
+  become mastered. Explicit strict mode retains global prerequisite checks.
+  This applies equally to a single root and to multiple exam/topic roots;
+  invalid authored Level 2 references remain configuration errors.
 - Level 3 focus widening follows the single learner-facing `contains` path
   toward the root. The backend publishes strict supersets that add at least one
   unmastered target, nearest suitable ancestor first. It proposes widening only
@@ -521,7 +529,8 @@ and persistence rules.
 
 The **frontier** of a learner is the set of goals that are **good next candidates**:
 
-- All `requires` are mastered (or above a threshold).
+- All checked `requires` are mastered (or above a threshold): within the
+  selected focus in normal mode, globally in explicit strict mode.
 - The goal itself is not yet fully mastered.
 
 Formally, for mastery map `M` and threshold `τ` (e.g. `0.8` for “mastered”):
@@ -530,7 +539,7 @@ Formally, for mastery map `M` and threshold `τ` (e.g. `0.8` for “mastered”)
 Frontier F = {
   g ∈ Goals |
     M[g] < 1  AND
-    ∀ r ∈ g.requires: M[r] ≥ τ
+    ∀ r ∈ checkedRequires(g, focus, strictMode): M[r] ≥ τ
 }
 ````
 
@@ -1128,6 +1137,9 @@ activation preserves its full goal set as Level-3 focus rather than narrowing
 it to the active goal cursor. Multiple exam scopes are not unioned; the next
 active exam is the initial selection. Automatic handoff and date changes must
 not silently replace a running exam scope or add prerequisite goals.
+The selected exam roots use the ordinary Level 3 focus rules above. In normal
+mode an outside prerequisite must not turn this induced graph into an empty
+frontier; internal prerequisites still determine the next eligible goal.
 See `docs/concept/runtime-workflows/exam-preparation-planning.md`.
 
 Optional external learning materials belong to a separate content layer:

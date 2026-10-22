@@ -115,7 +115,40 @@ class ExamLearningScopeIntegrationTest {
     }
 
     @Test
-    void inactiveGeneralCourseAndSelectedExamExposeAllNineTopicsAndThreeTasksEvenWhenBlocked() throws Exception {
+    void ordinaryExamFocusStartsInsideAllTwelveSelectedGoalsWithoutOutsideMastery() {
+        assertThat(storedMastery()).isEmpty();
+        var activated = activate(List.of(inactiveGeneralCourse(), exam("exam", TODAY.plusDays(5), EXAM_ROOTS)));
+
+        assertThat(activated.activeGoalId()).isEqualTo(DIAGRAMS);
+        assertThat(storedFocus()).containsExactlyInAnyOrderElementsOf(EXAM_ROOTS);
+        var coach = learners.getCoachLearnerState(id());
+        assertThat(coach.activeGoal().id()).isEqualTo(DIAGRAMS);
+        assertThat(coach.frontier()).extracting(FrontierGoal::id).containsExactly(DIAGRAMS);
+        assertThat(learners.getFrontier(id())).containsExactly(DIAGRAMS);
+        assertThat(coach.goals().planned()).extracting(FrontierGoal::id)
+                .containsExactlyInAnyOrderElementsOf(EXAM_ROOTS);
+        assertThat(coach.goals().scope().total_atomic()).isEqualTo(12);
+        assertThat(coach.stateMachine().requiredAction()).isEqualTo("teachActiveGoal");
+        var status = physicsStatus();
+        assertThat(status.learningScope().goalIds()).containsExactlyInAnyOrderElementsOf(EXAM_ROOTS);
+        assertThat(status.learningScope().achievedGoalCount()).isZero();
+        assertThat(status.learningScope().progressText()).doesNotContain("Offene Voraussetzungen");
+        assertThat(status.periodGauge().target()).isZero();
+        assertThat(status.balanceGauge()).isNull();
+        assertThat(storedMastery()).isEmpty();
+
+        var next = coachTools.setMastery(id(), new MasteryUpdateRequest(Map.of(DIAGRAMS, 1.0), DIAGRAMS));
+        assertThat(next.status()).isEqualTo(CoachToolFacade.MasteryStatus.UPDATED);
+        assertThat(storedMastery()).containsExactlyEntriesOf(Map.of(DIAGRAMS, 1.0));
+        assertThat(storedFocus()).containsExactlyInAnyOrderElementsOf(EXAM_ROOTS);
+        assertThat(learners.getCoachLearnerState(id()).frontier()).extracting(FrontierGoal::id)
+                .contains(UNIFORM).doesNotContain(ACCELERATION);
+    }
+
+    @Test
+    void strictExamFocusKeepsOutsidePrerequisitesAndAllNineTopicsAndThreeTasks() throws Exception {
+        learner.setStrictMode(true);
+        learnerRepository.saveAndFlush(learner);
         List<String> selected = selected(EXAM_ROOTS);
         assertThat(selected).containsExactlyInAnyOrderElementsOf(EXAM_ROOTS);
         masteryRepository.saveAndFlush(new Mastery(learner, UNIFORM, 1.0));
@@ -160,7 +193,7 @@ class ExamLearningScopeIntegrationTest {
     @Test
     void milestoneWithoutPreparationStartsExplicitlyInsideItsSelectionWithoutCreatingDueWork() {
         List<String> targets = selected(EXAM_ROOTS);
-        preparePrerequisites(targets);
+        assertThat(storedMastery()).isEmpty();
         plans.upsert(id(), PHYSICS, new LearnerLearningPlanApi.UpsertRequest(0L, "Kinematik",
                 List.of(inactiveGeneralCourse(), exam("exam", TODAY.plusDays(5), EXAM_ROOTS))), TODAY);
         learner.setFollowLearningPlans(true);
@@ -262,8 +295,8 @@ class ExamLearningScopeIntegrationTest {
 
         var activated = plans.activatePlans(id(), new LearnerLearningPlanApi.ActivateRequest(TODAY,
                 List.of(new LearnerLearningPlanApi.ActivationPlan(PHYSICS, saved.revision(), "Neue Klausur", blocks))));
-        assertThat(activated.activeGoalId()).isNull();
-        assertThat(learnerRepository.findById(id()).orElseThrow().getActiveGoalId()).isNull();
+        assertThat(activated.activeGoalId()).isEqualTo(ACCELERATION);
+        assertThat(learnerRepository.findById(id()).orElseThrow().getActiveGoalId()).isEqualTo(ACCELERATION);
         assertThat(storedFocus()).containsExactly(ACCELERATION);
         assertThat(storedMastery()).isEqualTo(masteryBefore);
     }
@@ -322,6 +355,8 @@ class ExamLearningScopeIntegrationTest {
 
     @Test
     void blockedPhysicsExamDoesNotResumeAnOrdinaryMathPlanButAllowsAnExplicitSubjectSwitch() {
+        learner.setStrictMode(true);
+        learnerRepository.saveAndFlush(learner);
         var activated = activate(List.of(inactiveGeneralCourse(), exam("exam", TODAY.plusDays(5), EXAM_ROOTS)));
         assertThat(activated.activeGoalId()).isNull();
         String mathOrientation = "65365dce-f33f-49d8-9516-42f75883aa86";

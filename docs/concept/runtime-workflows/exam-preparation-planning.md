@@ -137,12 +137,22 @@ Lernergebnis ersetzt den laufenden Umfang nicht ungefragt durch den Stoff
 eines anderen Termins. Ein bereits laufendes Lernziel wird nicht durch bloßes
 Speichern oder eine Statusabfrage verdrängt.
 
-Die normalen Voraussetzungskontrollen gelten weiterhin. Eine offene
-Voraussetzung außerhalb des gewählten Umfangs ist eine fachliche Blockierung,
-kein leerer Lernplan und kein Abschluss. Sie erzeugt weder zusätzliche
-Fokusziele noch Beherrschung. Automatische Planfortsetzung bleibt an das
-datierte Pensum gebunden; ausdrückliches Weiterlernen kann weitere erreichbare
-Ziele innerhalb des gewählten Umfangs starten.
+Der Klausurfokus folgt denselben Regeln wie ein einzelner Themenfokus: Er ist
+die Vereinigung der ausgewählten Knoten und ihrer `contains`-Nachfahren innerhalb
+des persönlichen Zielumfangs. Im normalen Modus gelten die wirksamen
+Voraussetzungen innerhalb dieses Ausschnitts. Außerhalb liegende Grundlagen
+blockieren den Einstieg nicht und werden dadurch weder als beherrscht gewertet
+noch zum Fokus hinzugefügt. Interne Voraussetzungen bleiben erhalten: Im
+Kinematik-Beispiel beginnt der Weg bei „Bewegungen mit Diagrammen untersuchen“;
+die weiteren gewählten Ziele folgen entsprechend ihren Abhängigkeiten.
+
+Nur der ausdrücklich eingeschaltete Striktmodus prüft Voraussetzungen auch
+außerhalb des Fokus. Dort bleibt eine offene externe Voraussetzung eine
+fachliche Blockierung, kein leerer Plan und kein Abschluss. Fehlerhafte
+Lehrplanreferenzen bleiben in beiden Modi unzulässig. Automatische
+Planfortsetzung bleibt an das datierte Pensum gebunden; ausdrückliches
+Weiterlernen kann weitere erreichbare Ziele innerhalb des gewählten Umfangs
+starten.
 
 Ohne ausdrücklich gewählten Klausurstoff bleibt das bisherige freiwillige
 Weiterlernen im persönlichen Curriculum möglich. Die enge Klausurgrenze ist

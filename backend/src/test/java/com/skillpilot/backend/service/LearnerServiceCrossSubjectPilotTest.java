@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -1023,7 +1024,8 @@ class LearnerServiceCrossSubjectPilotTest {
     }
 
     @Test
-    void canonicalPhysicsPilotFrontierBlocksDiagramGoalUntilMathPrerequisitesAreMastered() {
+    void strictCanonicalPhysicsPilotFrontierBlocksDiagramGoalUntilMathPrerequisitesAreMastered() {
+        learner.setStrictMode(true);
         when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
                 .thenReturn(List.of(new Mastery(learner, LEGACY_PHYSICS_WHY_ID, 1.0)));
         learner.setPersonalCurriculum(CANONICAL_PHYSICS_GK_PERSONAL_CONFIG);
@@ -1033,6 +1035,34 @@ class LearnerServiceCrossSubjectPilotTest {
         assertThat(frontier)
                 .extracting(FrontierGoal::id)
                 .doesNotContain(CANONICAL_PHYSICS_DIAGRAMS_ID);
+    }
+
+    @Test
+    void normalCanonicalPhysicsFocusUnionStartsWithoutOutsidePrerequisitesAndKeepsInternalOrder() {
+        learner.setStrictMode(false);
+        learner.setPersonalCurriculum(CANONICAL_PHYSICS_GK_PERSONAL_CONFIG);
+        when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(
+                        new PlannedGoal(learner, CANONICAL_PHYSICS_DIAGRAMS_ID),
+                        new PlannedGoal(learner, CANONICAL_PHYSICS_UNIFORM_MOTION_ID)));
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID)).thenReturn(List.of());
+        LearnerService service = compositionAwareLearnerService();
+
+        UnifiedLearnerStateResponse state = service.getLearnerState(LEARNER_ID);
+
+        // The selected union is an induced graph: its diagram entry needs no
+        // outside motivation or Mathematics marker; uniform motion still waits
+        // for the unmastered diagram goal selected in that same union.
+        assertThat(state.frontier()).extracting(FrontierGoal::id)
+                .containsExactly(CANONICAL_PHYSICS_DIAGRAMS_ID);
+        assertThat(state.stateMachine().requiredAction()).isEqualTo("setActiveGoal");
+        assertThat(state.stateMachine().goalOptions()).extracting(FrontierGoal::id)
+                .containsExactly(CANONICAL_PHYSICS_DIAGRAMS_ID);
+        assertThat(service.getPlannedGoals(LEARNER_ID)).containsExactlyInAnyOrder(
+                CANONICAL_PHYSICS_DIAGRAMS_ID, CANONICAL_PHYSICS_UNIFORM_MOTION_ID);
+        assertThat(service.getMastery(LEARNER_ID)).isEmpty();
+        verify(masteryRepository, never()).save(any(Mastery.class));
+        verify(masteryRepository, never()).saveAll(any());
     }
 
     @Test
@@ -1060,6 +1090,9 @@ class LearnerServiceCrossSubjectPilotTest {
             String targetId,
             List<String> originallyStoredIds,
             Set<String> suppliedByLegacyProjection) {
+        // These migration checks deliberately exercise all global prerequisite
+        // gates. Ordinary focus follows only dependencies inside its selected graph.
+        learner.setStrictMode(true);
         when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID)).thenReturn(
                 originallyStoredIds.stream().map(id -> new Mastery(learner, id, 1.0)).toList());
         assertThat(service.getRichFrontier(LEARNER_ID)).extracting(FrontierGoal::id).doesNotContain(targetId);
