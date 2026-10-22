@@ -65,6 +65,8 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
 - [Tagesfortschritt: frühere Rechenweise (abgelöst)](runtime-workflows/daily-learning-progress.md)
   Abgelöst durch den einheitlichen Lernplanstatus; beschreibt die frühere Rechenweise.
 - [Kursplanung nach Curriculum-Updates](runtime-workflows/course-plan-update-continuity.md)
+- [Klausurstoff, Aufgabenabdeckung und Vorbereitung](runtime-workflows/exam-preparation-planning.md)
+  Themen- und Aufgabenpaketauswahl, ausdrückliche Ergänzung der Vorbereitung vor dem Klausurtermin und aktive oder inaktive Planabschnitte.
 - [Existing-Learner Teacher View by SkillPilot ID](runtime-workflows/existing-learner-teacher-view.md)
   Functionally read-only local teacher view over the normal learner endpoints,
   including local ID/personalization storage, encrypted class files, and the
