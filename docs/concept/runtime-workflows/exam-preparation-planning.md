@@ -2,8 +2,9 @@
 
 Die Kursplanung verbindet einen Klausurtermin mit ausdrücklich ausgewählten
 Themen und Aufgabenpaketen. Die Auswahl hat keine Prioritäten. Der Meilenstein
-beschreibt den Termin und seinen Stoff; erst Lernabschnitte erzeugen geplante
-Arbeit. Der Einstieg liegt unter **Kursplanung → Kurs öffnen → Planung**.
+beschreibt den Termin und seinen ausdrücklich gewählten Lernumfang. Erst
+datierte Lernabschnitte erzeugen ein Wochenpensum und eine zeitliche Bilanz.
+Der Einstieg liegt unter **Kursplanung → Kurs öffnen → Planung**.
 
 ## Drei verschiedene Aussagen
 
@@ -96,25 +97,56 @@ im persönlichen Lernplan wirksam.
 
 ## Lernstand und Lernfokus
 
-Enthält der übernommene Fachplan keine eingeplanten Lernziele, meldet der
-Backendstatus **Keine Lernziele eingeplant**. Er weist dafür weder eine
-Bilanzrichtung noch einen Planstand aus. Das Cockpit zeigt diesen Zustand
-kompakt ohne leere Tachos; ein aktiver Klausurtermin bleibt sichtbar. Der
-gesondert bezeichnete Lernstand im gesamten Fach zählt weiterhin die erreichten
-Ziele des persönlichen Curriculums. Das Deaktivieren von Planabschnitten
-verkleinert diesen Fachumfang nicht und ändert keine Lernergebnisse.
+Klausurstoff und Zeitplanung sind getrennte Mengen. Der Lernumfang einer
+aktiven Klausur enthält genau die sichtbaren atomaren Lernziele der gewählten
+Themen und Aufgabenpakete. Bereits erreichte Ziele bleiben im Umfang und im
+Fortschrittsnenner enthalten. Aufgabenabdeckung und Voraussetzungen erweitern
+diese Menge nicht. Die zeitliche Planung zählt weiterhin ausschließlich die
+festen Zuordnungen aktiver datierter Lernabschnitte.
+
+Auch ohne datierte Vorbereitung bleibt der ausdrücklich gewählte Klausurstoff
+lernbar. Der gemeinsame Backendstatus nennt den Fortschritt der
+Klausurvorbereitung und **Zeitplanung offen**. Das Cockpit zeigt den
+Gesamtfortschritt und eine aufklappbare Liste genau dieser Lernziele; es erfindet
+weder Wochenpensum noch Rückstand oder Bilanzskala. Nur ein tatsächlich leerer
+oder vollständig pausierter Plan ohne aktiven Klausurstoff bleibt kompakt ohne
+Fortschrittstachos.
+
+Der gesondert bezeichnete Lernstand im gesamten Fach zählt weiterhin die
+erreichten Ziele des persönlichen Curriculums. Das Deaktivieren von
+Planabschnitten verkleinert diesen Fachumfang nicht und ändert keine
+Lernergebnisse.
 
 Eine freie Woche innerhalb einer aktiven Lernplanung ist davon verschieden:
 Sie hat kein Wochenpensum, behält aber ihren auswertbaren Planstand. Ebenso
 bleiben die feste Planmenge und die gültige Skala nach Abschluss aller
 eingeplanten Ziele erhalten.
 
-Ein Klausurtermin allein setzt keinen Lernfokus. Nach Übernahme eines aktiven
-Vorbereitungsabschnitts wählt das Backend beim tatsächlichen Planstart das
-nächste zulässige Lernziel und passt den Fokus an. Bei mehreren Themenwurzeln
-kann dieser technische Fokus das nächste atomare Ziel sein; er beschreibt
-nicht den gesamten Klausurstoff. Ein bereits laufendes Lernziel wird nicht
-durch bloßes Speichern oder eine Statusabfrage verdrängt.
+Ein gemeinsamer Backendresolver bestimmt den Lernumfang für Anzeige,
+Planstart und Coach. Bei mehreren aktiven Klausurterminen wird zunächst der
+nächste Termin verwendet; gleiche Termine werden stabil nach Abschnitts-ID
+entschieden. Die Stoffmengen verschiedener Klausuren werden nicht vereinigt.
+Ohne Klausurstoff verwendet der Plan die ausdrücklich aktiven Lernabschnitte.
+
+Eine ausdrückliche Planaktivierung oder ein Planstart übernimmt den gesamten
+gewählten atomaren Klausurumfang als Fokus, auch wenn noch kein einzelnes Ziel
+startbar ist. Das aktive Lernziel ist nur der nächste Schritt innerhalb dieses
+Umfangs. Fortsetzungen dürfen ihn nicht auf dieses eine Ziel verengen oder um
+beliebige Fachziele erweitern. Ein Datumswechsel oder ein gespeichertes
+Lernergebnis ersetzt den laufenden Umfang nicht ungefragt durch den Stoff
+eines anderen Termins. Ein bereits laufendes Lernziel wird nicht durch bloßes
+Speichern oder eine Statusabfrage verdrängt.
+
+Die normalen Voraussetzungskontrollen gelten weiterhin. Eine offene
+Voraussetzung außerhalb des gewählten Umfangs ist eine fachliche Blockierung,
+kein leerer Lernplan und kein Abschluss. Sie erzeugt weder zusätzliche
+Fokusziele noch Beherrschung. Automatische Planfortsetzung bleibt an das
+datierte Pensum gebunden; ausdrückliches Weiterlernen kann weitere erreichbare
+Ziele innerhalb des gewählten Umfangs starten.
+
+Ohne ausdrücklich gewählten Klausurstoff bleibt das bisherige freiwillige
+Weiterlernen im persönlichen Curriculum möglich. Die enge Klausurgrenze ist
+kein allgemeines Verbot freier Themenwahl in gewöhnlichen Lernplänen.
 
 **Lernen starten** führt aus dem Cockpit unmittelbar zum Coach-Einstieg mit dem
 vorhandenen Profil. Die gespeicherte ID und Curriculum-Auswahl werden erneut

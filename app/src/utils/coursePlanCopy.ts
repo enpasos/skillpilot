@@ -23,6 +23,8 @@ export interface CoursePlanCopy {
   undoLastChange: string
   undoUnavailable: string
   savedLocally: string
+  applyChangesHint: string
+  milestoneScopeWithoutSchedule: string
   unsavedLocally: string
   saveFailed: string
   formTitleNew: string
@@ -127,6 +129,8 @@ const de: CoursePlanCopy = {
   undoLastChange: 'Letzte Planänderung rückgängig machen',
   undoUnavailable: 'Noch keine Planänderung zum Rückgängigmachen',
   savedLocally: 'Lokal gespeichert',
+  applyChangesHint: 'Für den Schüler anschließend „Änderungen übernehmen“ oder „Für Schüler aktivieren“ bestätigen.',
+  milestoneScopeWithoutSchedule: 'Klausurstoff ausgewählt · Zeitplanung offen',
   unsavedLocally: 'Nicht gespeicherte Änderungen',
   saveFailed: 'Der Kursplan konnte in diesem Browser nicht gespeichert werden.',
   formTitleNew: 'Neuen Planabschnitt anlegen',
@@ -135,7 +139,7 @@ const de: CoursePlanCopy = {
   kindLearning: 'Lernabschnitt',
   kindBuffer: 'Puffer',
   kindMilestone: 'Termin / Meilenstein',
-  milestonePlanningHint: 'Die Themenauswahl legt den Stoff für diesen Termin fest. Der Termin zählt nicht zusätzlich zum Soll. Plane die Vorbereitung als eigenen Lernabschnitt.',
+  milestonePlanningHint: 'Die ausgewählten Themen legen den Lernumfang für diesen Termin fest. Für Tages- oder Wochenziele plane die Vorbereitung als eigenen Lernabschnitt.',
   goalLabel: 'Lernziel oder Cluster',
   goalPlaceholder: 'Bitte auswählen …',
   customTitleLabel: 'Bezeichnung',
@@ -195,7 +199,7 @@ const de: CoursePlanCopy = {
   publishUnavailable: 'Der Plan kann nicht sicher bereitgestellt werden, weil er keine vollständig auflösbaren kanonischen atomaren Lernziele enthält.',
   publishDisabledUnsaved: 'Speichere oder verwirf zuerst die noch offenen Änderungen.',
   publishDisabledNotCalculable: 'Der Plan muss vollständig berechenbar sein, bevor er bereitgestellt werden kann.',
-  publishDisabledNoLearningGoals: 'Ergänze mindestens einen berechenbaren Lernabschnitt mit atomaren Lernzielen.',
+  publishDisabledNoLearningGoals: 'Wähle Klausurstoff oder ergänze einen berechenbaren Lernabschnitt mit atomaren Lernzielen.',
   publishNoOpenGoals: 'Der Plan enthält für dieses Fach keine noch offenen atomaren Lernziele, die im Cockpit bereitgestellt werden könnten.',
   publishConflict: 'Der Fachplan im Cockpit wurde inzwischen geändert. Nichts wurde überschrieben. Bitte prüfe den aktuellen Stand erneut.',
   publishFailed: 'Der Plan konnte nicht im Cockpit bereitgestellt werden.',
@@ -231,6 +235,8 @@ const en: CoursePlanCopy = {
   undoLastChange: 'Undo the last plan change',
   undoUnavailable: 'No plan change to undo yet',
   savedLocally: 'Saved locally',
+  applyChangesHint: 'Then confirm “Apply changes” or “Activate for learner” to apply the plan in the cockpit.',
+  milestoneScopeWithoutSchedule: 'Exam topics selected · schedule pending',
   unsavedLocally: 'Unsaved changes',
   saveFailed: 'The course plan could not be saved in this browser.',
   formTitleNew: 'Add a plan section',
@@ -239,7 +245,7 @@ const en: CoursePlanCopy = {
   kindLearning: 'Learning section',
   kindBuffer: 'Buffer',
   kindMilestone: 'Milestone / deadline',
-  milestonePlanningHint: 'The selected topics define the scope for this date. The deadline does not add scheduled work. Schedule preparation as a separate learning section.',
+  milestonePlanningHint: 'The selected topics define the learning scope for this date. Schedule preparation as a separate learning section to set daily or weekly targets.',
   goalLabel: 'Learning goal or cluster',
   goalPlaceholder: 'Please choose …',
   customTitleLabel: 'Label',
@@ -299,7 +305,7 @@ const en: CoursePlanCopy = {
   publishUnavailable: 'The plan cannot be made available safely because it contains no fully resolvable canonical atomic learning goals.',
   publishDisabledUnsaved: 'Save or discard the pending changes first.',
   publishDisabledNotCalculable: 'The plan must be fully calculable before it can be made available.',
-  publishDisabledNoLearningGoals: 'Add at least one calculable learning section with atomic learning goals.',
+  publishDisabledNoLearningGoals: 'Select exam topics or add a calculable learning section with atomic learning goals.',
   publishNoOpenGoals: 'The plan contains no remaining open atomic goals for this subject that could be made available in the cockpit.',
   publishConflict: 'The cockpit subject plan has changed in the meantime. Nothing was overwritten. Please check the current version again.',
   publishFailed: 'The plan could not be made available in the cockpit.',

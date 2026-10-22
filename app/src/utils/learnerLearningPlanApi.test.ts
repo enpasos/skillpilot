@@ -292,6 +292,32 @@ const emptySchedule = {
 assert.equal(parseSubjectUpdate(emptySchedule).statusDirection, null,
   'an evaluated empty schedule has no direction and retains global achievement')
 assert.equal(parseSubjectUpdate(emptySchedule).achievedGoalCount, 4)
+const examLearningScope = {
+  kind: 'exam', sourceBlockId: 'exam', title: 'Klausur Kinematik',
+  goalIds: ['vertical-throw', 'horizontal-throw', 'selected-task'],
+  achievedGoalCount: 1, targetGoalCount: 3, needlePosition: 1 / 3,
+  schedulingState: 'unscheduled', progressText: 'Klausurvorbereitung: 1 von 3 Lernzielen',
+}
+assert.deepEqual(parseSubjectUpdate({
+  ...emptySchedule, periodText: 'Zeitplanung offen', learningScope: examLearningScope,
+}).learningScope, examLearningScope, 'selected exam scope survives an empty dated schedule')
+assert.equal(parseSubjectUpdate({ learningScope: null }).learningScope, null)
+assert.equal(parseSubjectUpdate({}).learningScope, undefined, 'older responses remain supported')
+const summaryWithScope = parseLearnerLearningPlansResponse({
+  ...parsed, plans: [{ ...parsed.plans[0], learningScope: examLearningScope }],
+})
+assert.deepEqual(summaryWithScope.plans[0].learningScope, examLearningScope)
+for (const invalid of [
+  { ...examLearningScope, kind: 'unknown' },
+  { ...examLearningScope, schedulingState: 'unknown' },
+  { ...examLearningScope, goalIds: ['vertical-throw', 'vertical-throw', 'selected-task'] },
+  { ...examLearningScope, goalIds: [] },
+  { ...examLearningScope, targetGoalCount: 4 },
+  { ...examLearningScope, achievedGoalCount: 4 },
+  { ...examLearningScope, needlePosition: 1.2 },
+]) {
+  assert.throws(() => parseSubjectUpdate({ learningScope: invalid }), /learningScope/u)
+}
 assert.throws(() => parseSubjectUpdate({ ...emptySchedule, statusDirection: 'invalid' }), /evaluability/u,
   'unknown directions cannot masquerade as an empty schedule')
 assert.throws(() => parseSubjectUpdate({ ...emptySchedule,

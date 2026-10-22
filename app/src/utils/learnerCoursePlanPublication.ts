@@ -19,6 +19,16 @@ export type LearnerLearningPlanCopyResult =
   | { ok: true; copy: LearnerLearningPlanCopy }
   | { ok: false; blockId: string; goalId: string }
 
+/** Selected deadline scope remains usable even without a dated learning section. */
+export const hasActiveCoursePlanMilestoneScope = (blocks: readonly {
+  kind: string
+  active?: boolean
+  goalId?: string
+  goalIds?: readonly string[]
+}[]) => blocks.some((block) => block.kind === 'milestone'
+  && block.active !== false
+  && (block.goalIds ?? (block.goalId ? [block.goalId] : [])).length > 0)
+
 /**
  * Creates a subject-plan copy from the teacher-owned local draft. Learning
  * blocks use the immutable open-goal assignments captured by the teacher plan.

@@ -22,6 +22,7 @@ import {
   type TeacherLearningPlanActivationSubject,
 } from '../utils/teacherLearningPlanActivation'
 import { getExistingLearnerSubjectIds } from '../utils/existingLearnerClass'
+import { hasActiveCoursePlanMilestoneScope } from '../utils/learnerCoursePlanPublication'
 import { TrainerLearningPlanPreviewSummary } from './TrainerLearningPlanPreview'
 
 interface TrainerLearningPlanActivationProps {
@@ -57,6 +58,7 @@ const copyFor = (language: 'de' | 'en') => language === 'de'
       update: 'Änderungen übernehmen',
       curriculumReview: 'Curriculum geändert – Plan prüfen',
       current: 'Aktiv für den Schüler',
+      examScopeWithoutSchedule: 'Klausurstoff ausgewählt · Zeitplanung offen',
       preview: 'Schülervorschau',
       localOnly: 'Entwürfe nur auf diesem Gerät · erst nach Bestätigung beim Schüler wirksam',
       paused: 'Planbegleitetes Lernen ist derzeit ausgeschaltet.',
@@ -65,7 +67,7 @@ const copyFor = (language: 'de' | 'en') => language === 'de'
       unavailable: 'Der Cockpit-Stand konnte nicht zuverlässig geprüft werden. Die gemeinsame Aktivierung bleibt deshalb gesperrt.',
       scopeChanged: 'Beim Schüler gibt es weitere gültige Fachpläne, die in dieser Fächerauswahl fehlen. Prüfe das persönliche Curriculum und aktualisiere die Fächerauswahl, bevor du die gemeinsame Planung übernimmst.',
       confirmTitle: 'Diese Planung für den Schüler übernehmen?',
-      confirmBody: 'Die aufgeführten Fachpläne werden übernommen und planbegleitetes Lernen wird eingeschaltet. Ein laufendes zulässiges Lernziel bleibt erhalten; andernfalls wird ein geeignetes fälliges Ziel ausgewählt, sofern eines verfügbar ist.',
+      confirmBody: 'Die aufgeführten Fachpläne werden übernommen und planbegleitetes Lernen wird eingeschaltet. Ausgewählter Klausurstoff legt den Lernumfang fest; Tages- oder Wochenziele entstehen erst durch Lernabschnitte. Ein zulässiges Lernziel wird ausgewählt, sofern eines verfügbar ist.',
       cancel: 'Abbrechen',
       confirm: 'Planung jetzt übernehmen',
       saving: 'Wird wirksam gemacht …',
@@ -99,6 +101,7 @@ const copyFor = (language: 'de' | 'en') => language === 'de'
       update: 'Apply changes',
       curriculumReview: 'Curriculum changed – review plan',
       current: 'Active for learner',
+      examScopeWithoutSchedule: 'Exam topics selected · schedule pending',
       preview: 'Learner preview',
       localOnly: 'Drafts on this device only · applied to the learner after confirmation',
       paused: 'Plan-guided learning is currently switched off.',
@@ -107,7 +110,7 @@ const copyFor = (language: 'de' | 'en') => language === 'de'
       unavailable: 'The cockpit state could not be checked reliably, so shared activation remains unavailable.',
       scopeChanged: 'The learner has other valid subject plans missing from this subject selection. Check the personal curriculum and update the subject selection before applying the shared planning.',
       confirmTitle: 'Apply this planning for the learner?',
-      confirmBody: 'The listed subject plans will be applied and plan-guided learning will be enabled. An eligible goal already in progress is preserved; otherwise a suitable due goal is selected when available.',
+      confirmBody: 'The listed subject plans will be applied and plan-guided learning will be enabled. Selected exam topics define the learning scope; daily or weekly targets require learning sections. An eligible learning goal is selected when available.',
       cancel: 'Cancel',
       confirm: 'Apply planning now',
       saving: 'Activating …',
@@ -379,6 +382,11 @@ export const TrainerLearningPlanActivation = ({
       const selectedPlan = response.selectedLandscapeId
         ? responseByLandscape.get(response.selectedLandscapeId)
         : null
+      const selectedScopeGoalIds = selectedPlan?.learningScope === undefined
+        ? selectedPlan?.blocks.flatMap((block) => (
+          block.kind === 'learning' && block.active !== false ? block.atomicGoalIds ?? [] : []
+        )) ?? []
+        : selectedPlan.learningScope?.goalIds ?? []
       const responseSelectionIsCoherent = response.activeGoalId
         ? Boolean(
             response.selectedPlanId
@@ -386,10 +394,7 @@ export const TrainerLearningPlanActivation = ({
             && response.focusGoalId
             && selectedPlan
             && selectedPlan.planId === response.selectedPlanId
-            && selectedPlan.blocks.some((block) => (
-              block.kind === 'learning'
-              && block.atomicGoalIds?.includes(response.activeGoalId!)
-            )),
+            && selectedScopeGoalIds.includes(response.activeGoalId!),
           )
         : response.selectedPlanId === null
           && response.selectedLandscapeId === null
@@ -522,7 +527,12 @@ export const TrainerLearningPlanActivation = ({
                 aria-label={`${copy.edit}: ${subject.label}`}
                 aria-pressed={subject.landscapeId === classSession.landscapeId}
               >
-                <span className="min-w-0"><span className="block text-sm font-semibold">{subject.label}</span><span className="block text-xs">{subject.status === 'review-required' && subject.issue === 'server-plan-stale' ? copy.curriculumReview : copy.status[subject.status]}</span></span>
+                <span className="min-w-0">
+                  <span className="block text-sm font-semibold">{subject.label}</span>
+                  <span className="block text-xs">{subject.status === 'review-required' && subject.issue === 'server-plan-stale' ? copy.curriculumReview : copy.status[subject.status]}</span>
+                  {subject.copy?.atomicGoalCount === 0 && hasActiveCoursePlanMilestoneScope(subject.copy.blocks)
+                    && <span className="mt-1 block text-xs">{copy.examScopeWithoutSchedule}</span>}
+                </span>
                 <Pencil size={14} className="shrink-0" aria-hidden="true" />
               </button>
             </li>

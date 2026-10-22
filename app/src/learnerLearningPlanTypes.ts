@@ -53,6 +53,7 @@ export interface LearnerLearningPlanSummary {
   nextEligibleGoal: LearnerLearningPlanNextEligibleGoal | null
   continueReason: LearnerLearningPlanContinueReason
   canContinue: boolean
+  learningScope?: LearnerPlanLearningScope | null
 }
 
 export type LearnerPlanStatusDirection = 'on_track' | 'behind' | 'ahead'
@@ -72,6 +73,19 @@ export interface LearnerPlanBalanceGauge {
   needlePosition: number
   severeBehind: boolean
   strongAhead: boolean
+}
+
+/** The exact backend-selected scope, independent of dated work and the active goal cursor. */
+export interface LearnerPlanLearningScope {
+  kind: 'exam' | 'plan'
+  sourceBlockId: string | null
+  title: string
+  goalIds: string[]
+  achievedGoalCount: number
+  targetGoalCount: number
+  needlePosition: number
+  schedulingState: 'scheduled' | 'unscheduled'
+  progressText: string
 }
 
 /**
@@ -99,6 +113,8 @@ export interface LearnerPlanSubjectStatus {
   targetGoalCount?: number | null
   /** Backend-localized short balance wording for the dial; absent on older responses. */
   balanceDialText?: string | null
+  /** Selected exam or learning scope; absent on older responses. */
+  learningScope?: LearnerPlanLearningScope | null
   current: boolean
   canContinue: boolean
 }

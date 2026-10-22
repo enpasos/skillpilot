@@ -251,6 +251,30 @@ export const LearnerPlanTodayOverview = ({
                     } : undefined} />
                 </div>
               </div>
+              {subject.learningScope ? (
+                <div data-testid="learner-plan-learning-scope" className="mt-3 text-sm">
+                  <p className="font-medium text-text-primary">{subject.learningScope.title}</p>
+                  {planModeEnabled && !status.activeGoal && !subject.canContinue
+                    && subject.learningScope.achievedGoalCount < subject.learningScope.targetGoalCount ? (
+                      <p data-testid="learner-plan-scope-notice" className="mt-1 text-xs text-text-secondary" role="status">
+                        {subject.learningScope.progressText}
+                      </p>
+                    ) : null}
+                  <details className="mt-1">
+                    <summary className="cursor-pointer py-1 text-sky-700 dark:text-sky-300">
+                      {subject.learningScope.targetGoalCount}{' '}
+                      {language === 'de' ? 'ausgewählte Lernziele ansehen' : 'selected learning goals'}
+                    </summary>
+                    <ul className="mt-2 max-h-64 space-y-2 overflow-y-auto pl-4 text-text-secondary">
+                      {subject.learningScope.goalIds.map((goalId) => (
+                        <li key={goalId} data-goal-id={goalId}>
+                          {goalLabel(goalId) || (language === 'de' ? 'Lernzielbezeichnung nicht verfügbar' : 'Learning goal title unavailable')}
+                        </li>
+                      ))}
+                    </ul>
+                  </details>
+                </div>
+              ) : null}
               {subjectPlans.length > 0 ? (
                 <details className="group mt-1 text-sm">
                   <summary

@@ -15,6 +15,7 @@ import type {
   LearnerPlanStatusDirection,
   LearnerPlanBalanceGauge,
   LearnerPlanPeriodGauge,
+  LearnerPlanLearningScope,
   LearnerPlanSubjectStatus,
   PreviewLearnerLearningPlansResponse,
   ReconcileLearnerLearningPlansRequest,
@@ -228,6 +229,7 @@ export const parseLearnerLearningPlanSummary = (value: unknown): LearnerLearning
       : null,
     continueReason,
     canContinue,
+    ...(source.learningScope === undefined ? {} : { learningScope: parseLearningScope(source.learningScope) }),
   }
 }
 
@@ -313,6 +315,36 @@ const parseSubjectGoalCounts = (source: Record<string, unknown>): Pick<
   return { achievedGoalCount, targetGoalCount }
 }
 
+const parseLearningScope = (value: unknown): LearnerPlanLearningScope | null => {
+  if (value === null) return null
+  const source = asRecord(value, 'Invalid learning-plan status response: subject.learningScope')
+  if (source.kind !== 'exam' && source.kind !== 'plan') {
+    throw new Error('Invalid learning-plan status response: subject.learningScope.kind')
+  }
+  if (source.schedulingState !== 'scheduled' && source.schedulingState !== 'unscheduled') {
+    throw new Error('Invalid learning-plan status response: subject.learningScope.schedulingState')
+  }
+  const goalIds = parseStringList(source.goalIds, 'subject.learningScope.goalIds')
+  const achievedGoalCount = requiredInteger(source.achievedGoalCount, 'subject.learningScope.achievedGoalCount')
+  const targetGoalCount = requiredInteger(source.targetGoalCount, 'subject.learningScope.targetGoalCount')
+  if (goalIds.length === 0 || new Set(goalIds).size !== goalIds.length
+    || targetGoalCount !== goalIds.length || achievedGoalCount > targetGoalCount) {
+    throw new Error('Invalid learning-plan status response: subject.learningScope.goalCounts')
+  }
+  return {
+    kind: source.kind,
+    sourceBlockId: source.sourceBlockId === null ? null
+      : requiredString(source.sourceBlockId, 'subject.learningScope.sourceBlockId'),
+    title: requiredString(source.title, 'subject.learningScope.title'),
+    goalIds,
+    achievedGoalCount,
+    targetGoalCount,
+    needlePosition: needlePosition(source.needlePosition, 'subject.learningScope.needlePosition', 0, 1),
+    schedulingState: source.schedulingState,
+    progressText: requiredString(source.progressText, 'subject.learningScope.progressText'),
+  }
+}
+
 const parseLearnerPlanSubjectStatus = (value: unknown): LearnerPlanSubjectStatus => {
   const source = asRecord(value, 'Invalid learning-plan status response: subject')
   const evaluable = requiredBoolean(source.evaluable, 'subject.evaluable')
@@ -350,6 +382,7 @@ const parseLearnerPlanSubjectStatus = (value: unknown): LearnerPlanSubjectStatus
     periodGauge,
     balanceGauge,
     ...goalCounts,
+    ...(source.learningScope === undefined ? {} : { learningScope: parseLearningScope(source.learningScope) }),
     ...(hasBalanceDialText ? { balanceDialText } : {}),
     current: requiredBoolean(source.current, 'subject.current'),
     canContinue: requiredBoolean(source.canContinue, 'subject.canContinue'),

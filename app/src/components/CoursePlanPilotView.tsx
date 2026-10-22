@@ -35,6 +35,7 @@ import {
 } from '../utils/localTeacherCoursePlan'
 import { getCoursePlanCopy } from '../utils/coursePlanCopy'
 import {
+  hasActiveCoursePlanMilestoneScope,
   materializeLearnerLearningPlanCopy,
   type LearnerLearningPlanCopy,
 } from '../utils/learnerCoursePlanPublication'
@@ -310,6 +311,7 @@ export const CoursePlanPilotView = ({
     && evaluation.quality.status !== 'invalid'
     && evaluation.metrics
     && (evaluation.metrics.plannedGoalCount > 0
+      || hasActiveCoursePlanMilestoneScope(plan?.blocks ?? [])
       || plan?.blocks.some((block) => block.kind === 'learning' && block.active === false)),
   )
 
@@ -550,6 +552,7 @@ export const CoursePlanPilotView = ({
       return
     }
     if (materialized.copy.atomicGoalCount === 0
+      && !hasActiveCoursePlanMilestoneScope(materialized.copy.blocks)
       && !materialized.copy.blocks.some((block) => block.kind === 'learning' && block.active === false)) {
       setPublicationConfirmation(null)
       setPublicationMessage('')
@@ -1030,14 +1033,13 @@ export const CoursePlanPilotView = ({
     evaluation?.quality.issues.flatMap((issue) => issue.blockId ? [issue.blockId] : []) ?? [],
   )
   const hasPlanBlocks = plan.blocks.length > 0
-  const hasLearningGoals = (metrics?.plannedGoalCount ?? 0) > 0
   const publishDisabledReason = publicationState !== 'idle'
     ? ''
     : hasUnsavedDraft
       ? copy.publishDisabledUnsaved
       : calculationUnavailable
         ? copy.publishDisabledNotCalculable
-        : !hasLearningGoals
+        : !publicationPlanReady
           ? copy.publishDisabledNoLearningGoals
           : ''
   const sorted = sortedBlocks(plan.blocks)
@@ -1329,7 +1331,7 @@ export const CoursePlanPilotView = ({
         {sharedActivationPanel}
         <p role="status" data-testid="course-plan-save-status" className={`text-xs ${hasUnsavedDraft ? 'font-medium text-amber-800 dark:text-amber-200' : 'text-text-secondary'}`}>
           {hasUnsavedDraft ? copy.unsavedLocally : copy.savedLocally}
-          {sharedActivationAvailable && !hasUnsavedDraft && <span> · {language === 'de' ? 'Für den Schüler gelten nur übernommene Änderungen.' : 'Only applied changes affect the learner.'}</span>}
+          {sharedActivationAvailable && !hasUnsavedDraft && <span> · {copy.applyChangesHint}</span>}
         </p>
         {publicationConfirmation && (
           <section
@@ -1347,7 +1349,10 @@ export const CoursePlanPilotView = ({
                 : copy.publishNewBody}
             </p>
             <p className="mt-2 text-xs text-sky-800 dark:text-sky-200">
-              {copy.publishGoalCount(publicationConfirmation.copy.atomicGoalCount)}
+              {publicationConfirmation.copy.atomicGoalCount === 0
+                && hasActiveCoursePlanMilestoneScope(publicationConfirmation.copy.blocks)
+                ? copy.milestoneScopeWithoutSchedule
+                : copy.publishGoalCount(publicationConfirmation.copy.atomicGoalCount)}
               <span aria-hidden="true"> · </span>
               {publicationConfirmation.copy.blocks.length} {publicationConfirmation.copy.blocks.length === 1
                 ? language === 'de' ? 'Planblock' : 'plan block'

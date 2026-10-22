@@ -185,6 +185,55 @@ assert.doesNotMatch(unstructuredMarkup, /Aktueller Planabschnitt|Für heute ist 
 assert.doesNotMatch(unstructuredMarkup, /Nächster Termin|Kein weiterer Termin geplant/u)
 assert.doesNotMatch(unstructuredMarkup, />Puffer<|0 von 0 Werktagen/u)
 
+// Selecting an exam remains visible and learnable without inventing dated work.
+const examScope = {
+  kind: 'exam' as const, sourceBlockId: 'kinematics', title: 'Klausur Kinematik',
+  goalIds: ['vertical-throw', 'horizontal-throw', 'exam-task'],
+  achievedGoalCount: 1, targetGoalCount: 3, needlePosition: 1 / 3,
+  schedulingState: 'unscheduled' as const, progressText: 'Klausurvorbereitung: 1 von 3 Lernzielen',
+}
+const examScopeMarkup = renderToStaticMarkup(
+  <LearnerPlanTodayOverview
+    status={status([subject('physik', 'Physik', 'Zeitplanung offen', examScope.progressText, 'on_track', {
+      statusDirection: null, periodGauge: { completed: 0, target: 0, needlePosition: null }, balanceGauge: null,
+      achievedGoalCount: 18, targetGoalCount: 128, learningScope: examScope,
+    })])}
+    plans={[{ ...physics, currentBlock: null, learningScope: examScope }]}
+    language="de" planModeEnabled subjectLabel={() => 'Physik'}
+    goalLabel={(id) => new Map([
+      ['vertical-throw', 'Senkrechter Wurf'], ['horizontal-throw', 'Waagerechter Wurf'], ['exam-task', 'Gewähltes Aufgabenpaket'],
+    ]).get(id)} onSwitch={() => undefined}
+  />,
+)
+assert.match(examScopeMarkup, /learner-plan-scope-without-schedule/u)
+assert.match(examScopeMarkup, /Klausur: <span[^>]*>1 von 3<\/span>/u)
+assert.match(examScopeMarkup, /Zeitplanung offen/u)
+assert.match(examScopeMarkup, /data-needle-position="0\.3333333333333333"/u)
+assert.match(examScopeMarkup, /Lernstand im gesamten Fach: 18 von 128 Lernziele/u)
+assert.match(examScopeMarkup, /3 ausgewählte Lernziele ansehen/u)
+assert.deepEqual([...examScopeMarkup.matchAll(/data-goal-id="([^"]+)"/gu)].map((match) => match[1]), examScope.goalIds)
+assert.match(examScopeMarkup, /Senkrechter Wurf/u)
+assert.match(examScopeMarkup, /Waagerechter Wurf/u)
+assert.doesNotMatch(examScopeMarkup, /Keine Lernziele eingeplant|>im Plan<|Skala nicht verfügbar/u)
+assert.equal((examScopeMarkup.match(/data-testid="learner-plan-period-gauge"/gu) ?? []).length, 1)
+assert.equal((examScopeMarkup.match(/data-testid="learner-plan-balance-gauge"/gu) ?? []).length, 1)
+const blockedExamMarkup = renderToStaticMarkup(
+  <LearnerPlanTodayOverview
+    status={status([subject('physik', 'Physik', 'Zeitplanung offen', examScope.progressText, 'on_track', {
+      statusDirection: null, periodGauge: { completed: 0, target: 0, needlePosition: null }, balanceGauge: null,
+      canContinue: false, learningScope: { ...examScope,
+        progressText: 'Klausurvorbereitung: 1 von 3 · Offene Voraussetzungen: Weg-Zeit-Diagramme',
+      },
+    })])}
+    plans={[physics]} language="de" planModeEnabled subjectLabel={() => 'Physik'}
+    goalLabel={() => 'Ausgewähltes Lernziel'} onSwitch={() => undefined}
+  />,
+)
+assert.match(blockedExamMarkup, /data-testid="learner-plan-scope-notice"/u)
+assert.match(blockedExamMarkup, /Offene Voraussetzungen: Weg-Zeit-Diagramme/u)
+assert.match(blockedExamMarkup, /3 ausgewählte Lernziele ansehen/u)
+assert.doesNotMatch(blockedExamMarkup, /Keine Lernziele eingeplant|>im Plan</u)
+
 // A real buffer remains visible even after all of its workdays are used.
 const exhaustedBufferMarkup = renderToStaticMarkup(
   <LearnerPlanTodayOverview
@@ -339,7 +388,8 @@ const noScaleMarkup = renderToStaticMarkup(<LearnerPlanTodayOverview
 assert.match(noScaleMarkup, /Keine Lernziele eingeplant/u)
 assert.match(noScaleMarkup, /data-testid="learner-plan-unscheduled"/u)
 assert.match(noScaleMarkup, /Klausur Kinematik · 27\.10\.2026/u)
-assert.match(noScaleMarkup, /aktive Vorbereitungsabschnitt ins Lerncockpit übernommen/u)
+assert.doesNotMatch(noScaleMarkup, /Prüfe in der Kursplanung/u,
+  'the cockpit no longer sends the learner back to diagnose a missing preparation section')
 assert.doesNotMatch(noScaleMarkup, /noch keine Vorbereitung eingeplant/u,
   'an empty cockpit snapshot does not prove that the teacher has not planned preparation')
 assert.match(noScaleMarkup, /Lernstand im gesamten Fach/u)

@@ -372,7 +372,9 @@ const installApi = async (
 }
 
 /** A separate plan keeps preparation mutations independent of the legacy flows. */
-const verifyExamPreparationUi = async (browser: Browser, baseUrl: string, includeAdditional = true, exhaustHistory = false) => {
+const verifyExamPreparationUi = async (browser: Browser, baseUrl: string, {
+  includeAdditional = true, exhaustHistory = false, milestoneOnly = false,
+}: { includeAdditional?: boolean; exhaustHistory?: boolean; milestoneOnly?: boolean } = {}) => {
   const assessmentId = 'trainer-course-plan-assessment'
   const foundationId = 'trainer-course-plan-foundation'
   const uncoveredId = 'trainer-course-plan-uncovered'
@@ -426,7 +428,7 @@ const verifyExamPreparationUi = async (browser: Browser, baseUrl: string, includ
   })
   assert(createdPlan, 'the preparation fixture starts with a valid plan')
   let initialPlan = createdPlan
-  initialPlan.blocks = [{
+  initialPlan.blocks = milestoneOnly ? [] : [{
     id: 'general-learning', kind: 'learning', goalId: rootGoalId, title: broadTitle,
     startDate: today, endDate: addDays(today, 13),
   }]
@@ -515,9 +517,18 @@ const verifyExamPreparationUi = async (browser: Browser, baseUrl: string, includ
           period: { startDate: today, endDate: deadline }, currentBlock: null, nextMilestone: null,
           buffer: { totalWorkdays: 0, remainingWorkdays: 0 }, nextEligibleGoal: null,
           continueReason: 'no-open-due-frontier-goal', canContinue: false, blocks: plan.blocks,
+          ...(milestoneOnly ? { learningScope: {
+            kind: 'exam', sourceBlockId: plan.blocks.find((block) => block.kind === 'milestone')!.id,
+            title: examTitle, goalIds: [firstGoalId, uncoveredId, assessmentId],
+            achievedGoalCount: 0, targetGoalCount: 3, needlePosition: 0,
+            schedulingState: 'unscheduled', progressText: 'Klausurvorbereitung: 0 von 3 Lernzielen',
+          } } : {}),
         }
         await json({ asOf: body.asOf, followLearningPlans: true, plans: [activeServerPlan],
-          selectedPlanId: null, selectedLandscapeId: null, focusGoalId: null, activeGoalId: null, state: {} })
+          selectedPlanId: milestoneOnly ? landscapeId : null,
+          selectedLandscapeId: milestoneOnly ? landscapeId : null,
+          focusGoalId: milestoneOnly ? firstGoalId : null,
+          activeGoalId: milestoneOnly ? firstGoalId : null, state: {} })
       } else {
         throw new Error(`Unexpected preparation request: ${request.method()} ${pathname}`)
       }
@@ -530,26 +541,28 @@ const verifyExamPreparationUi = async (browser: Browser, baseUrl: string, includ
     }, preparationPlanId)
     await page.goto(`${baseUrl}/scripts/fixtures/trainerCoursePlanUi.html`)
     await page.getByRole('heading', { name: 'Planung für Physik LK', exact: true }).waitFor()
-    const broadBlock = page.getByTestId('course-plan-block').filter({
-      has: page.getByRole('heading', { name: broadTitle, exact: true }),
-    })
-    const activeSwitch = broadBlock.getByRole('switch', { name: `${broadTitle}: Aktiv`, exact: true })
-    assert(await activeSwitch.isChecked(), 'legacy sections without an active property remain active')
-    await activeSwitch.click()
-    assert(!(await activeSwitch.isChecked()), 'a section can be paused directly from its plan card')
-    const pausedPlan = await readPlan()
-    assert(pausedPlan.blocks[0]?.active === false, 'pausing is saved immediately as active:false')
-    assert(pausedPlan.blocks[0]?.kind === 'learning'
-      && pausedPlan.blocks[0].startDate === today
-      && pausedPlan.blocks[0].endDate === addDays(today, 13), 'pausing preserves the section dates')
-    // The isolated Vite server serves the fixture entry rather than SPA routes.
-    await page.goto(`${baseUrl}/scripts/fixtures/trainerCoursePlanUi.html`)
-    await page.getByRole('heading', { name: 'Planung für Physik LK', exact: true }).waitFor()
-    assert(!(await activeSwitch.isChecked()), 'the paused section remains paused after reload')
-    assert(await page.getByTestId('course-plan-timeline').getByText(/· Inaktiv$/u).count() > 0
-      && await page.getByTestId('course-plan-timeline').getByRole('button', { name: new RegExp(broadTitle, 'u') })
-        .getAttribute('data-active') === 'false',
-      'the inactive section remains visible on the timeline')
+    if (!milestoneOnly) {
+      const broadBlock = page.getByTestId('course-plan-block').filter({
+        has: page.getByRole('heading', { name: broadTitle, exact: true }),
+      })
+      const activeSwitch = broadBlock.getByRole('switch', { name: `${broadTitle}: Aktiv`, exact: true })
+      assert(await activeSwitch.isChecked(), 'legacy sections without an active property remain active')
+      await activeSwitch.click()
+      assert(!(await activeSwitch.isChecked()), 'a section can be paused directly from its plan card')
+      const pausedPlan = await readPlan()
+      assert(pausedPlan.blocks[0]?.active === false, 'pausing is saved immediately as active:false')
+      assert(pausedPlan.blocks[0]?.kind === 'learning'
+        && pausedPlan.blocks[0].startDate === today
+        && pausedPlan.blocks[0].endDate === addDays(today, 13), 'pausing preserves the section dates')
+      // The isolated Vite server serves the fixture entry rather than SPA routes.
+      await page.goto(`${baseUrl}/scripts/fixtures/trainerCoursePlanUi.html`)
+      await page.getByRole('heading', { name: 'Planung für Physik LK', exact: true }).waitFor()
+      assert(!(await activeSwitch.isChecked()), 'the paused section remains paused after reload')
+      assert(await page.getByTestId('course-plan-timeline').getByText(/· Inaktiv$/u).count() > 0
+        && await page.getByTestId('course-plan-timeline').getByRole('button', { name: new RegExp(broadTitle, 'u') })
+          .getAttribute('data-active') === 'false',
+        'the inactive section remains visible on the timeline')
+    }
 
     await page.getByRole('button', { name: 'Klausur planen', exact: true }).click()
     const form = page.getByRole('heading', { name: 'Neuen Planabschnitt anlegen', exact: true }).locator('..').locator('..')
@@ -586,6 +599,37 @@ const verifyExamPreparationUi = async (browser: Browser, baseUrl: string, includ
     const savedExam = beforePreview.blocks.find((block) => block.title === examTitle)
     assert(savedExam?.kind === 'milestone' && savedExam.goalIds?.includes(assessmentId),
       'the selected task is retained with the exam scope')
+    if (milestoneOnly) {
+      assert(beforePreview.blocks.length === 1 && beforePreview.blocks[0]?.kind === 'milestone',
+        'the exam-only regression has no dated or paused learning section')
+      const sharedPlanning = page.getByTestId('trainer-learning-plan-activation')
+      await sharedPlanning.getByText('Bereit zur Aktivierung', { exact: true }).waitFor()
+      await sharedPlanning.getByText('Klausurstoff ausgewählt · Zeitplanung offen', { exact: true }).waitFor()
+      await openPlanActions(page)
+      const publishSubject = page.getByRole('button', { name: 'Nur dieses Fach aktualisieren', exact: true })
+      assert(!(await publishSubject.isDisabled()), 'a selected exam scope also enables explicit subject publication')
+      await publishSubject.click()
+      const publication = page.getByTestId('course-plan-publication-confirmation')
+      await publication.getByText('Klausurstoff ausgewählt · Zeitplanung offen').waitFor()
+      assert(activationBodies.length === 0, 'opening subject publication does not activate exam topics')
+      await publication.getByRole('button', { name: 'Abbrechen', exact: true }).click()
+      await sharedPlanning.getByRole('button', { name: 'Für Schüler aktivieren', exact: true }).click()
+      const confirmation = page.getByTestId('trainer-learning-plan-activation-confirmation')
+      await confirmation.waitFor()
+      assert(activationBodies.length === 0, 'an exam-only preview never publishes automatically')
+      await confirmation.getByRole('button', { name: 'Planung jetzt übernehmen', exact: true }).click()
+      await sharedPlanning.getByText('1 Fachpläne sind gemeinsam wirksam. Ein zulässiges Lernziel ist ausgewählt.', { exact: true }).waitFor()
+      assert(activationBodies.length === 1, 'the selected exam scope activates exactly once after confirmation')
+      assertJsonEqual(activationBodies[0]!.plans[0]!.blocks, [savedExam],
+        'activation transfers the selected topics and tasks without manufacturing a preparation section')
+      assertJsonEqual(await readPlan(), beforePreview, 'activation does not change the local exam-only plan')
+      await page.goto(`${baseUrl}/scripts/fixtures/trainerCoursePlanUi.html`)
+      await sharedPlanning.getByRole('button', { name: 'Aktiv für den Schüler', exact: true }).waitFor()
+      await sharedPlanning.getByText('Klausurstoff ausgewählt · Zeitplanung offen', { exact: true }).waitFor()
+      assert(activationBodies.length === 1, 'reading an active exam-only plan does not activate it again')
+      assert(errors.length === 0, `exam-only activation browser errors:\n${errors.join('\n')}`)
+      return
+    }
     await examBlock.getByRole('button', { name: 'Vorbereitung vervollständigen', exact: true }).click()
     const preview = page.getByTestId('course-plan-preparation-preview')
     await preview.waitFor()
@@ -620,6 +664,8 @@ const verifyExamPreparationUi = async (browser: Browser, baseUrl: string, includ
       return
     }
     await preview.waitFor({ state: 'detached' })
+    if (!includeAdditional) await page.getByTestId('course-plan-save-status')
+      .getByText(/Für den Schüler anschließend „Änderungen übernehmen“ oder „Für Schüler aktivieren“ bestätigen/u).waitFor()
     const preparedPlan = await readPlan()
     assertJsonEqual(preparedPlan.planningBaseline, initialPlan.planningBaseline,
       'adding preparation preserves the established planning capture and its open-goal population')
@@ -1817,8 +1863,9 @@ try {
   assertJsonEqual(unexpectedLearnerWrites, [], 'planning UI navigation never invokes unrelated learner writes')
   await personalizedContext.close()
   await verifyExamPreparationUi(browser, server.baseUrl)
-  await verifyExamPreparationUi(browser, server.baseUrl, false)
-  await verifyExamPreparationUi(browser, server.baseUrl, false, true)
+  await verifyExamPreparationUi(browser, server.baseUrl, { includeAdditional: false })
+  await verifyExamPreparationUi(browser, server.baseUrl, { includeAdditional: false, exhaustHistory: true })
+  await verifyExamPreparationUi(browser, server.baseUrl, { includeAdditional: false, milestoneOnly: true })
   console.log('Trainer course-plan UI regression test passed.')
 } finally {
   await browser?.close()

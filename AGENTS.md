@@ -1120,6 +1120,14 @@ activating that plan. Unresolved assessment metadata and external prerequisites
 remain advisory; invalid selected roots, actual scheduling errors and the normal
 backend prerequisite/frontier checks remain enforced. Canonical cluster
 references may resolve to already-visible target atoms, never add hidden atoms.
+An active exam's explicitly selected visible atomic goals form a learnable
+scope even without a dated preparation section. Keep this scope separate from
+scheduled work: no invented quota, due date or balance. A shared backend
+resolver supplies the exact scope to Cockpit, plan transitions and coach;
+activation preserves its full goal set as Level-3 focus rather than narrowing
+it to the active goal cursor. Multiple exam scopes are not unioned; the next
+active exam is the initial selection. Automatic handoff and date changes must
+not silently replace a running exam scope or add prerequisite goals.
 See `docs/concept/runtime-workflows/exam-preparation-planning.md`.
 
 Optional external learning materials belong to a separate content layer:

@@ -20,6 +20,7 @@ type Sample = {
   statusDirection: LearnerPlanStatusDirection | null
   periodGauge: LearnerPlanPeriodGauge | null
   balanceGauge: LearnerPlanBalanceGauge | null
+  learningScope?: LearnerPlanSubjectStatus['learningScope']
 }
 
 type Example = {
@@ -67,6 +68,33 @@ const unscheduled: Sample = {
   periodText: 'Keine Lernziele eingeplant', planStatusText: 'Keine Lernziele eingeplant',
   balanceDialText: 'Keine Lernziele eingeplant', statusDirection: null,
   periodGauge: { completed: 0, target: 0, needlePosition: null }, balanceGauge: null,
+}
+
+const EXAM_GOALS = [
+  'Bewegungen mit Diagrammen untersuchen',
+  'Gleichförmige Bewegung und Geschwindigkeit',
+  'Durchschnitts- und Momentangeschwindigkeit unterscheiden',
+  'Gleichmäßig beschleunigte Bewegung und Beschleunigung',
+  'Freier Fall experimentell untersuchen',
+  'Modellierung und Idealisierung von Bewegungen',
+  'Physik im Straßenverkehr: Sicherheitsabstände bewerten',
+  'Bezugssysteme und Geschwindigkeitsüberlagerung',
+  'Waagerechten Wurf analysieren',
+  'Bewegungsanalyse und freier Fall',
+  'Senkrechter Wurf: Vorzeichen, Scheitelpunkt und Rückkehr',
+  'Waagerechter Wurf: Zwei Bewegungen, eine gemeinsame Zeit',
+]
+const examScope: Sample = {
+  ...unscheduled,
+  periodText: 'Zeitplanung offen',
+  planStatusText: 'Klausurvorbereitung: 2 von 12 Lernzielen',
+  balanceDialText: 'Klausurvorbereitung: 2 von 12 Lernzielen',
+  learningScope: {
+    kind: 'exam', sourceBlockId: 'kinematics-exam', title: 'Klausur Kinematik',
+    goalIds: EXAM_GOALS.map((_, i) => `kinematics-${i}`),
+    achievedGoalCount: 2, targetGoalCount: 12, needlePosition: 2 / 12,
+    schedulingState: 'unscheduled', progressText: 'Klausurvorbereitung: 2 von 12 Lernzielen',
+  },
 }
 
 const DAY_MATH = sample('Tagesziel 0 von 6', '1 im Rückstand', 'behind', 0, 6, 0,
@@ -152,6 +180,12 @@ const EXAMPLES: Example[] = [
     week: { math: unscheduled, physics: unscheduled },
   },
   {
+    key: 'exam-scope', label: 'Klausurstoff · Zeitplanung offen',
+    note: 'Der ausgewählte Klausurstoff ist lernbar. Sein Fortschritt zählt genau die gewählten Ziele; ohne Vorbereitungszeitraum entsteht kein Wochenpensum und kein Rückstand.',
+    day: { math: unscheduled, physics: examScope },
+    week: { math: unscheduled, physics: examScope },
+  },
+  {
     key: 'unavailable', label: 'Nicht auswertbar',
     note: 'Mathematik bleibt auswertbar. Für Physik fehlen in diesem Beispiel Plan- und Ergebnisdaten; die Scheiben zeigen Platzhalter und keine erfundene Bilanz.',
     day: { math: DAY_MATH, physics: unavailable },
@@ -211,6 +245,11 @@ const mockPlansFor = (language: PreviewLanguage, empty: boolean): LearnerLearnin
 
 const englishSample = (basis: 'DAY' | 'WEEK', value: Sample): Sample => {
   if (!value.periodGauge) return value
+  if (value.learningScope) return {
+    ...value, periodText: 'Schedule not set', planStatusText: 'Exam preparation: 2 of 12 learning goals',
+    balanceDialText: 'Exam preparation: 2 of 12 learning goals',
+    learningScope: { ...value.learningScope, title: 'Kinematics exam', progressText: 'Exam preparation: 2 of 12 learning goals' },
+  }
   if (value.statusDirection === null) return {
     ...value, periodText: 'No learning goals scheduled', planStatusText: 'No learning goals scheduled',
     balanceDialText: 'No learning goals scheduled',
@@ -252,8 +291,9 @@ const statusFor = (basis: 'DAY' | 'WEEK', example: Example, language: PreviewLan
       statusDirection: value.statusDirection,
       periodGauge: value.periodGauge,
       balanceGauge: value.balanceGauge,
+      ...(value.learningScope ? { learningScope: value.learningScope } : {}),
       current: subjectKey === 'physik',
-      canContinue: evaluable && value.balanceGauge !== null,
+      canContinue: evaluable && (value.balanceGauge !== null || Boolean(value.learningScope)),
     }
   })
   const unavailableCount = subjects.filter((subject) => !subject.evaluable).length
@@ -270,7 +310,10 @@ const statusFor = (basis: 'DAY' | 'WEEK', example: Example, language: PreviewLan
     evaluable: unavailableCount === 0,
     statusText: [...subjects.map((subject) => subject.subjectLine).filter(Boolean), ...(notice ? [notice] : [])].join('\n'),
     noticeText: notice,
-    activeGoal: language === 'de' ? {
+    activeGoal: example.key === 'exam-scope' ? {
+      title: EXAM_GOALS[0],
+      announcement: `${language === 'de' ? 'Dein aktives Lernziel' : 'Your active learning goal'}: ${EXAM_GOALS[0]}`,
+    } : language === 'de' ? {
       title: 'Masse von Körpern messen und vergleichen',
       announcement: 'Dein aktives Lernziel: Masse von Körpern messen und vergleichen',
     } : {
@@ -382,14 +425,14 @@ const Preview = () => {
             <div data-testid="preview-frame" className={'mx-auto transition-[max-width] duration-200 ' +
               (mobile ? 'max-w-[390px]' : 'max-w-[1600px]')}>
               <LearnerPlanTodayOverview
-                status={status} plans={mockPlansFor(language, example.key === 'unscheduled')} language={language} planModeEnabled
+                status={status} plans={mockPlansFor(language, example.key === 'unscheduled' || example.key === 'exam-scope')} language={language} planModeEnabled
                 subjectLabel={(id) => id.startsWith('math')
                   ? language === 'de' ? 'Mathematik' : 'Mathematics'
                   : language === 'de' ? 'Physik' : 'Physics'}
-                goalLabel={(id) => id === 'physics-mass'
+                goalLabel={(id) => id.startsWith('kinematics-') ? EXAM_GOALS[Number(id.slice('kinematics-'.length))] : id === 'physics-mass'
                   ? language === 'de' ? 'Masse von Körpern messen und vergleichen' : 'Measuring and comparing the mass of objects'
                   : language === 'de' ? 'Nächstes Lernziel' : 'Next learning goal'}
-                activeGoalId="physics-mass" activeLandscapeId="physics/sek-i"
+                activeGoalId={example.key === 'exam-scope' ? 'kinematics-0' : 'physics-mass'} activeLandscapeId="physics/sek-i"
                 onSwitch={() => setSettingsNotice(true)}
               />
             </div>

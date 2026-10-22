@@ -2,6 +2,7 @@ package com.skillpilot.backend.api;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.skillpilot.backend.service.learningplan.PeriodBasis;
 import com.skillpilot.backend.service.learningplan.PlanBalanceResult;
 import com.skillpilot.backend.service.learningplan.StatusDirection;
@@ -78,6 +79,19 @@ public record LearnerPlanTodayStatus(
             boolean strongAhead) {
     }
 
+    /** Exact selected atomic targets; their progress is independent of dated quotas. */
+    public record LearningScope(
+            String kind,
+            String sourceBlockId,
+            String title,
+            List<String> goalIds,
+            int achievedGoalCount,
+            int targetGoalCount,
+            double needlePosition,
+            String schedulingState,
+            String progressText) {
+    }
+
     /**
      * One subject, merged across every current plan of that subject.
      *
@@ -110,7 +124,18 @@ public record LearnerPlanTodayStatus(
             Integer achievedGoalCount,
             Integer targetGoalCount,
             String balanceDialText,
-            @JsonIgnore PlanBalanceResult balance) {
+            @JsonIgnore PlanBalanceResult balance,
+            @JsonInclude(JsonInclude.Include.NON_NULL) LearningScope learningScope) {
+
+        public SubjectStatus(List<String> landscapeIds, String subjectKey, String subjectLabel,
+                boolean evaluable, String periodText, String planStatusText, String subjectLine,
+                StatusDirection statusDirection, boolean current, boolean canContinue,
+                PeriodGauge periodGauge, BalanceGauge balanceGauge, Integer achievedGoalCount,
+                Integer targetGoalCount, String balanceDialText, PlanBalanceResult balance) {
+            this(landscapeIds, subjectKey, subjectLabel, evaluable, periodText, planStatusText,
+                    subjectLine, statusDirection, current, canContinue, periodGauge, balanceGauge,
+                    achievedGoalCount, targetGoalCount, balanceDialText, balance, null);
+        }
 
         /**
          * The one plan landscape backing this subject, or {@code null} when several do.

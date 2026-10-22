@@ -136,7 +136,14 @@ public final class LearnerLearningPlanApi {
             Buffer buffer,
             NextEligibleGoal nextEligibleGoal,
             String continueReason,
-            boolean canContinue) {
+            boolean canContinue,
+            @JsonInclude(JsonInclude.Include.NON_NULL) LearnerPlanTodayStatus.LearningScope learningScope) {
+        public PlanSummary(UUID planId, long revision, String landscapeId, String planLabel,
+                boolean stale, Period period, CurrentBlock currentBlock, Milestone nextMilestone,
+                Buffer buffer, NextEligibleGoal nextEligibleGoal, String continueReason, boolean canContinue) {
+            this(planId, revision, landscapeId, planLabel, stale, period, currentBlock, nextMilestone,
+                    buffer, nextEligibleGoal, continueReason, canContinue, null);
+        }
     }
 
     public record PlanDetail(
@@ -152,7 +159,15 @@ public final class LearnerLearningPlanApi {
             NextEligibleGoal nextEligibleGoal,
             String continueReason,
             boolean canContinue,
-            List<Block> blocks) {
+            List<Block> blocks,
+            @JsonInclude(JsonInclude.Include.NON_NULL) LearnerPlanTodayStatus.LearningScope learningScope) {
+        public PlanDetail(UUID planId, long revision, String landscapeId, String planLabel,
+                boolean stale, Period period, CurrentBlock currentBlock, Milestone nextMilestone,
+                Buffer buffer, NextEligibleGoal nextEligibleGoal, String continueReason, boolean canContinue,
+                List<Block> blocks) {
+            this(planId, revision, landscapeId, planLabel, stale, period, currentBlock, nextMilestone,
+                    buffer, nextEligibleGoal, continueReason, canContinue, blocks, null);
+        }
     }
 
     public record CollectionResponse(

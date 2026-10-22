@@ -13,7 +13,7 @@ import { isRepositoryGymnasiumFramework } from './curriculumDisplay'
 import { getExistingLearnerSubjectIds, selectExistingLearnerSubject } from './existingLearnerClass'
 import { goalMatchesFilters } from './goalFilters'
 import { applyGoalPlacementProjection } from './goalPlacementProjection'
-import { materializeLearnerLearningPlanCopy, type LearnerLearningPlanCopy } from './learnerCoursePlanPublication'
+import { hasActiveCoursePlanMilestoneScope, materializeLearnerLearningPlanCopy, type LearnerLearningPlanCopy } from './learnerCoursePlanPublication'
 import { loadTeacherCoursePlan, type StorageReader } from './localTeacherCoursePlan'
 import { goalMatchesGlobalStageScope } from './personalCurriculumStageScope'
 import {
@@ -498,7 +498,8 @@ const copyStoredServerPlan = (
       date: block.date,
     })
   }
-  if (atomicGoalIds.size === 0 && !blocks.some((block) => block.kind === 'learning' && block.active === false)) return null
+  if (atomicGoalIds.size === 0 && !hasActiveCoursePlanMilestoneScope(blocks)
+    && !blocks.some((block) => block.kind === 'learning' && block.active === false)) return null
   return {
     planLabel: serverPlan.planLabel ?? '',
     blocks,
@@ -613,6 +614,7 @@ export const loadTeacherLearningPlanActivationSubject = async ({
       visibleChildrenByParent: projection.visibleChildrenByParent,
     })
     if (!materialized.ok || (materialized.copy.atomicGoalCount === 0
+      && !hasActiveCoursePlanMilestoneScope(materialized.copy.blocks)
       && !loaded.plan.blocks.some((block) => block.kind === 'learning' && block.active === false))) {
       return {
         landscapeId,

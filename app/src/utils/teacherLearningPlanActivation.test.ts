@@ -3,6 +3,9 @@ import assert from 'node:assert/strict'
 
 import type { LearnerLearningPlanDetail } from '../learnerLearningPlanTypes'
 import type { LearnerLearningPlanCopy } from './learnerCoursePlanPublication'
+import type { LandscapeEntry } from '../hooks/useLandscapes'
+import { convertLearningGoal } from '../goalTypes'
+import { getTeacherCoursePlanStorageId } from './teacherCoursePlanContext'
 import {
   compareTeacherLearningPlanDraft,
   learnerPlanCopyMatchesServer,
@@ -280,6 +283,63 @@ const storedExamCopy = serverOnlyExamSubject.copy?.blocks.at(-1)
 assert(storedExamCopy?.kind === 'milestone')
 assert.notEqual(storedExamCopy.goalIds, examTopicBlock.goalIds,
   'reusing a server plan creates an independent topic-root array')
+
+const examOnlyServer: LearnerLearningPlanDetail = {
+  ...serverPlan, blocks: [examTopicBlock],
+  period: { startDate: examTopicBlock.date, endDate: examTopicBlock.date },
+}
+const examOnlySession = {
+  id: 'exam-only-class', name: 'Physik', landscapeId: serverPlan.landscapeId,
+  activeFilter: 'all', students: [],
+}
+const examOnlyStorageId = getTeacherCoursePlanStorageId(examOnlySession)
+const examOnlyPlan = createTeacherCoursePlan({
+  classId: examOnlyStorageId, createdOn: '2026-09-04', recordedAt: '2026-09-04T08:00:00.000Z',
+  schoolYearLabel: localCopy.planLabel,
+})
+assert(examOnlyPlan)
+const selectedExamPlan = reviseTeacherCoursePlan(examOnlyPlan, {
+  changedOn: '2026-09-04', recordedAt: '2026-09-04T08:01:00.000Z', blocks: [examTopicBlock],
+})
+assert(selectedExamPlan)
+assert.equal(saveTeacherCoursePlan(selectedExamPlan, storage).ok, true)
+const examOnlyEntries: LandscapeEntry[] = [{
+  meta: {
+    landscapeId: serverPlan.landscapeId, locale: 'de-DE', title: 'Physik', description: '',
+    frameworkId: 'flat-test', goals: [],
+  },
+  goals: examTopicBlock.goalIds.map((id) => convertLearningGoal({
+    id, title: id, description: id, requires: [], contains: [], weight: 1,
+    dimensionTags: { framework: 'flat-test', demandLevel: 'AB1', processCompetencies: [], guidingIdeas: [], phase: 'GLOBAL' },
+  }, { landscapeId: serverPlan.landscapeId })),
+}]
+const examOnlyContext = {
+  classSession: examOnlySession, landscapeId: serverPlan.landscapeId, label: 'Physik',
+  landscapeEntries: examOnlyEntries, runtimeCatalogState: { mode: 'repository' as const },
+  serverAvailable: true,
+}
+const examOnlyLocalSubject = await loadTeacherLearningPlanActivationSubject({
+  ...examOnlyContext, serverPlan: null, storage,
+})
+assert.equal(examOnlyLocalSubject.status, 'ready',
+  'selected exam topics are activatable without a dated or paused learning section')
+assert.equal(examOnlyLocalSubject.copy?.atomicGoalCount, 0,
+  'activating exam scope does not manufacture scheduled work')
+assert.deepEqual(teacherLearningPlanActivationRequest('2026-09-04', [examOnlyLocalSubject]).plans[0]?.blocks,
+  [examTopicBlock], 'milestone-only activation preserves the exact selected topics without generating preparation')
+const examOnlyStoredSubject = await loadTeacherLearningPlanActivationSubject({
+  ...examOnlyContext, serverPlan: examOnlyServer, storage: { getItem: () => null },
+})
+assert.equal(examOnlyStoredSubject.status, 'cockpit-only',
+  'a server-only exam scope stays replayable without a local preparation draft')
+assert.deepEqual(examOnlyStoredSubject.copy?.blocks, [examTopicBlock])
+for (const emptyExam of [{ ...examTopicBlock, active: false }, { ...examTopicBlock, goalIds: [] }]) {
+  const unavailableExamSubject = await loadTeacherLearningPlanActivationSubject({
+    ...examOnlyContext, serverPlan: { ...examOnlyServer, blocks: [emptyExam] }, storage: { getItem: () => null },
+  })
+  assert.equal(unavailableExamSubject.copy, null,
+    'an inactive or empty deadline is not an active learning scope')
+}
 
 assert.equal(learnerPlanCopyMatchesServer(localCopy, {
   ...serverPlan, blocks: serverPlan.blocks.map((block) => ({ ...block, active: true })),

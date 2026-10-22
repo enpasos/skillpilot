@@ -47,7 +47,7 @@ const Dial = ({
     <div
       data-testid={testId}
       data-needle-position={position ?? undefined}
-      className="flex h-full min-w-0 flex-col rounded-xl border border-border-color bg-input-bg/40 px-2 pb-1.5 pt-2 text-center"
+      className="flex h-full min-w-0 flex-col rounded-xl border border-border-color bg-input-bg/40 px-2 pb-1.5 pt-2 text-center [overflow-wrap:anywhere]"
     >
       <p className="min-h-7 text-sm font-semibold uppercase leading-4 tracking-wide text-text-secondary">{title}</p>
       <svg className="mx-auto mb-1 block h-auto w-full max-w-[156px]" viewBox="0 0 160 94" role="img" aria-label={description}>
@@ -101,15 +101,25 @@ export const LearnerPlanDailyProgress = ({ subject, language, periodBasis, showG
   const periodTitle = periodBasis === 'WEEK'
     ? (isGerman ? 'Diese Woche' : 'This week')
     : (isGerman ? 'Heute' : 'Today')
-  const balanceTitle = isGerman ? 'GESAMT' : 'OVERALL'
+  const scope = subject.learningScope
+  const balanceTitle = scope?.kind === 'exam'
+    ? (isGerman ? 'Klausur' : 'Exam')
+    : scope ? (isGerman ? 'Lernplan' : 'Learning plan') : (isGerman ? 'GESAMT' : 'OVERALL')
   const unavailable = isGerman ? 'Nicht auswertbar' : 'Unavailable'
-  const hasGoalProgress = subject.achievedGoalCount !== undefined || subject.targetGoalCount !== undefined
+  const counts = scope ?? subject
+  const hasGoalProgress = Boolean(scope) || subject.achievedGoalCount !== undefined || subject.targetGoalCount !== undefined
   const goalProgress = <span data-testid="learner-plan-achieved-goals" aria-live="polite" aria-atomic="true"
     className="normal-case tracking-normal text-text-primary">
-    {subject.achievedGoalCount == null || subject.targetGoalCount == null
+    {counts.achievedGoalCount == null || counts.targetGoalCount == null
       ? (isGerman ? 'nicht verfügbar' : 'unavailable')
-      : `${subject.achievedGoalCount} ${isGerman ? 'von' : 'of'} ${subject.targetGoalCount}`}
+      : `${counts.achievedGoalCount} ${isGerman ? 'von' : 'of'} ${counts.targetGoalCount}`}
   </span>
+  const wholeSubjectProgress = scope && subject.achievedGoalCount != null && subject.targetGoalCount != null
+    ? <p data-testid="learner-plan-whole-subject-progress" className="mt-3 text-xs text-text-secondary">
+      {isGerman ? 'Lernstand im gesamten Fach' : 'Progress across the whole subject'}:
+      {' '}{subject.achievedGoalCount} {isGerman ? 'von' : 'of'} {subject.targetGoalCount}
+      {' '}{isGerman ? 'Lernziele' : 'learning goals'}
+    </p> : null
   const balanceHeading = hasGoalProgress ? <>{balanceTitle}: {goalProgress}</> : balanceTitle
   const heading = (
     <div className="flex flex-wrap items-center gap-2">
@@ -145,9 +155,30 @@ export const LearnerPlanDailyProgress = ({ subject, language, periodBasis, showG
     </div>
   ) : null
 
-  // A missing balance scale on an evaluable, zero-quota subject means that
-  // there is no scheduled work anywhere in its plan, not merely this period.
-  if (subject.evaluable && subject.periodGauge?.target === 0 && subject.balanceGauge === null) {
+  // An exam selection remains a learning scope even before dates are planned.
+  // Its progress dial is distinct from a schedule balance: no invented backlog.
+  if (subject.evaluable && scope?.schedulingState === 'unscheduled' && showGauges) {
+    return <div className="learner-plan-progress" data-testid="learner-plan-scope-without-schedule">
+      <div className="learner-plan-progress-heading min-w-0">{heading}</div>
+      <div className="learner-plan-progress-dials mt-2 grid min-w-0 grid-cols-2 gap-2 sm:gap-3">
+        <Dial title={periodTitle} description={`${subject.subjectLabel}: ${subject.periodText}`}
+          position={null} range="period" needleTone="blue" testId="learner-plan-period-gauge">
+          <p className="mt-auto text-xs font-semibold leading-5 text-text-primary sm:text-sm">{subject.periodText}</p>
+        </Dial>
+        <Dial title={balanceHeading} description={`${subject.subjectLabel}: ${scope.progressText}`}
+          position={scope.needlePosition} range="period" needleTone="blue" testId="learner-plan-balance-gauge">
+          <p className="mt-auto text-sm font-semibold leading-5 text-text-primary">
+            {scope.achievedGoalCount} {isGerman ? 'von' : 'of'} {scope.targetGoalCount}
+            {' '}{isGerman ? 'Lernziele erreicht' : 'learning goals achieved'}
+          </p>
+        </Dial>
+      </div>
+      {wholeSubjectProgress}
+    </div>
+  }
+
+  // No selected scope and no dated work: keep a genuinely paused plan compact.
+  if (!scope && subject.evaluable && subject.periodGauge?.target === 0 && subject.balanceGauge === null) {
     return <div data-testid="learner-plan-unscheduled" className="min-w-0">
       {heading}
       <p className="mt-2 text-sm text-text-secondary">{subject.periodText}</p>
@@ -155,9 +186,6 @@ export const LearnerPlanDailyProgress = ({ subject, language, periodBasis, showG
         <p className="font-medium text-text-primary">
           {isGerman ? 'Nächster Termin' : 'Next milestone'}: {nextMilestone.title} · {formatLearnerLearningPlanDate(nextMilestone.date, language)}
         </p>
-        <p className="mt-1 text-text-secondary">{isGerman
-          ? 'Prüfe in der Kursplanung, ob der aktive Vorbereitungsabschnitt ins Lerncockpit übernommen wurde.'
-          : 'Check in course planning whether the active preparation section has been transferred to the learning cockpit.'}</p>
       </div> : null}
       {hasGoalProgress ? <p className="mt-3 border-t border-border-color pt-3 text-sm text-text-secondary">
         {isGerman ? 'Lernstand im gesamten Fach' : 'Progress across the whole subject'}: {goalProgress}
@@ -166,7 +194,7 @@ export const LearnerPlanDailyProgress = ({ subject, language, periodBasis, showG
     </div>
   }
 
-  if (!showGauges) return <div>{heading}<div className="mt-1">{statusLine}</div></div>
+  if (!showGauges) return <div>{heading}<div className="mt-1">{statusLine}</div>{wholeSubjectProgress}</div>
 
   if (!subject.evaluable || !subject.periodGauge) {
     return (
@@ -228,6 +256,7 @@ export const LearnerPlanDailyProgress = ({ subject, language, periodBasis, showG
           </Dial>
         </div>
       </div>
+      {wholeSubjectProgress}
     </div>
   )
 }

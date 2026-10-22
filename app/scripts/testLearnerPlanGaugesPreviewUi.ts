@@ -490,6 +490,46 @@ try {
   if (process.env.SKILLPILOT_ISSUE57_PREVIEW_SCREENSHOTS) {
     await frame.screenshot({ path: fileURLToPath(new URL('../../tmp/plan-unscheduled-mobile-en.png', import.meta.url)) })
   }
+
+  // Exact exam goals are a real scope even when all dated sections are paused.
+  await page.getByTestId('preview-case-exam-scope').click()
+  const examRow = frame.getByTestId('learner-plan-subject-physik')
+  await examRow.getByText('Schedule not set', { exact: true }).waitFor()
+  assert.equal(await examRow.getByTestId('learner-plan-scope-without-schedule').count(), 1)
+  assert.equal(await examRow.locator('[data-testid$="-gauge"]').count(), 2)
+  assert.equal(await examRow.getByTestId('learner-plan-achieved-goals').textContent(), '2 of 12')
+  assert.equal(await examRow.getByText('No learning goals scheduled', { exact: true }).count(), 0)
+  assert.equal(await examRow.getByTestId('learner-plan-period-gauge').getAttribute('data-needle-position'), null)
+  assert.equal(await examRow.getByTestId('learner-plan-balance-gauge').getAttribute('data-needle-position'), String(2 / 12))
+  assert.equal(await examRow.getByTestId('learner-plan-whole-subject-progress').textContent(),
+    'Progress across the whole subject: 18 of 128 learning goals')
+  await examRow.getByText('12 selected learning goals', { exact: true }).click()
+  assert.deepEqual(await examRow.getByTestId('learner-plan-learning-scope').locator('[data-goal-id]')
+    .evaluateAll((goals) => goals.map((goal) => goal.getAttribute('data-goal-id'))),
+  Array.from({ length: 12 }, (_, index) => `kinematics-${index}`))
+  await examRow.getByText('Senkrechter Wurf: Vorzeichen, Scheitelpunkt und Rückkehr', { exact: true }).waitFor()
+  await page.getByTestId('preview-language-de').click()
+  await examRow.getByText('Zeitplanung offen', { exact: true }).waitFor()
+  assert.equal(await examRow.getByText('Keine Lernziele eingeplant', { exact: true }).count(), 0)
+  const previousViewport = page.viewportSize()!
+  for (const width of [390, 320]) {
+    await page.setViewportSize({ width, height: 960 })
+    const layout = await examRow.evaluate((row) => {
+      const bounds = row.getBoundingClientRect()
+      return { left: bounds.left, right: bounds.right, dials: [...row.querySelectorAll('[data-testid$="-gauge"]')]
+        .map((dial) => { const box = dial.getBoundingClientRect(); return { width: box.width, right: box.right,
+          textFits: [...dial.querySelectorAll('p')].every((p) => p.scrollWidth <= p.clientWidth + 1) } }) }
+    })
+    assert.ok(layout.dials.every((dial) => dial.width >= 90 && dial.right <= layout.right + 1 && dial.textFits),
+      `${width}px: selected exam keeps two readable dials within its row: ${JSON.stringify(layout)}`)
+  }
+  if (process.env.SKILLPILOT_EXAM_SCOPE_SCREENSHOTS) {
+    await frame.screenshot({ path: fileURLToPath(new URL('../../tmp/plan-exam-scope-mobile-de.png', import.meta.url)) })
+  }
+  await page.setViewportSize(previousViewport)
+  if (process.env.SKILLPILOT_EXAM_SCOPE_SCREENSHOTS) {
+    await frame.screenshot({ path: fileURLToPath(new URL('../../tmp/plan-exam-scope-desktop-de.png', import.meta.url)) })
+  }
   await page.getByTestId('preview-language-de').click()
   await page.getByRole('button', { name: 'Flexibel', exact: true }).click()
   await page.getByTestId('preview-case-unavailable').click()

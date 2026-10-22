@@ -72,6 +72,7 @@ import com.skillpilot.backend.api.GoalSourceLink;
 import com.skillpilot.backend.api.LearnerGoals;
 import com.skillpilot.backend.api.LearnerPlanningScopeResponse;
 import com.skillpilot.backend.api.LearnerLearningPlanApi;
+import com.skillpilot.backend.service.learningplan.LearningPlanScopeResolver;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.api.MasteryUpdateResponse;
 import com.skillpilot.backend.api.LearnerDataDTO;
@@ -3247,6 +3248,125 @@ public class LearnerService {
         }
     }
 
+    /** Visible, subject-local atoms of an explicit selection, never its requires closure. */
+    @Transactional(readOnly = true)
+    public List<String> resolveLearningPlanGoalIds(
+            String skillpilotId, String landscapeId, List<String> roots) {
+        Learner learner = getLearner(skillpilotId);
+        GoalProjection projection = getGoalProjection(
+                learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
+        LinkedHashSet<String> atoms = new LinkedHashSet<>();
+        for (String root : roots) {
+            atoms.addAll(validateLearningPlanFocus(root, "selected-scope", landscapeId, projection));
+        }
+        return projection.targetGoalIds().stream().filter(atoms::contains).toList();
+    }
+
+    /** Stored focus, without defaulting or widening, for binding an ongoing exam. */
+    @Transactional(readOnly = true)
+    public List<String> getStoredLearningPlanFocus(String skillpilotId, String landscapeId) {
+        return getStoredPlannedGoals(skillpilotId).stream()
+                .filter(id -> landscapeId.equals(landscapeService.getLandscapeIdForGoal(id))).toList();
+    }
+
+    /** Names real missing requirements without enrolling or marking any of them. */
+    @Transactional(readOnly = true)
+    public String describeLearningPlanBlockage(String skillpilotId, List<String> selectedIds, String locale) {
+        Learner learner = getLearner(skillpilotId);
+        GoalProjection projection = getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
+        Map<String, Double> mastery = getMastery(skillpilotId);
+        Map<String, Double> prerequisiteMastery = computeEffectivePrereqMastery(projection.structuralGoals(), mastery);
+        Map<String, List<String>> requirements = computeEffectiveRequires(projection.structuralGoals());
+        LinkedHashSet<String> names = new LinkedHashSet<>();
+        boolean english = locale != null && locale.startsWith("en");
+        for (String id : selectedIds) {
+            if (mastery.getOrDefault(id, 0.0) >= PLANNING_SCOPE_MASTERY_THRESHOLD) continue;
+            for (String reference : requirements.getOrDefault(id, List.of())) {
+                String prerequisite = resolveGoalRef(reference, projection.structuralGoals());
+                if (prerequisite == null || selectedIds.contains(prerequisite)
+                        || prerequisiteMastery.getOrDefault(prerequisite, 0.0) >= PLANNING_SCOPE_MASTERY_THRESHOLD) continue;
+                LearningGoal goal = projection.structuralGoals().get(prerequisite);
+                if (goal != null) names.add(english && goal.getTitleEn() != null && !goal.getTitleEn().isBlank()
+                        ? goal.getTitleEn() : goal.getTitle());
+                if (names.size() >= 3) break;
+            }
+            if (names.size() >= 3) break;
+        }
+        return names.isEmpty()
+                ? (english ? "No reachable learning goal in the selected scope at present"
+                        : "Derzeit kein erreichbares Lernziel im ausgewählten Umfang")
+                : (english ? "Open prerequisites: " : "Offene Voraussetzungen: ") + String.join(", ", names);
+    }
+
+    /** Null means ordinary free learning; an empty set means a deliberately paused plan. */
+    private Set<String> followedLearningScopeIds(Learner learner, GoalProjection projection,
+            List<String> prospectiveFocusIds) {
+        List<LearnerLearningPlan> followed = currentFollowedLearningPlans(learner);
+        if (followed.isEmpty()) return null;
+        LinkedHashSet<String> atoms = new LinkedHashSet<>();
+        List<String> binding = prospectiveFocusIds == null
+                ? getStoredPlannedGoals(learner.getSkillpilotId()) : prospectiveFocusIds;
+        Set<String> plannedLandscapes = followed.stream().map(LearnerLearningPlan::getLandscapeId)
+                .collect(Collectors.toSet());
+        Set<String> requestedAtoms = projectedAtomicTargetIds(binding, projection);
+        Set<String> requestedLandscapes = requestedAtoms.stream()
+                .map(landscapeService::getLandscapeIdForGoal).filter(Objects::nonNull).collect(Collectors.toSet());
+        // Explicit learning in another subject without any time plan remains free.
+        if (!requestedAtoms.isEmpty() && requestedAtoms.stream()
+                .map(landscapeService::getLandscapeIdForGoal).filter(Objects::nonNull)
+                .noneMatch(plannedLandscapes::contains)) return null;
+        LocalDate asOf = LocalDate.now(learningPlanClock.withZone(LEARNING_PLAN_ZONE));
+        boolean hasExam = false;
+        boolean ordinaryLearning = false;
+        boolean unavailablePlan = false;
+        for (LearnerLearningPlan plan : followed) {
+            if (!requestedLandscapes.isEmpty() && !requestedLandscapes.contains(plan.getLandscapeId())) continue;
+            boolean explicitExam = false;
+            try {
+                List<LearnerLearningPlanApi.Block> blocks = readPortableLearningPlanBlocks(plan);
+                explicitExam = blocks.stream().anyMatch(block -> block.isActive() && "milestone".equals(block.kind())
+                        && block.goalIds() != null && !block.goalIds().isEmpty());
+                validateFollowedLearningPlanShape(blocks);
+                if (!Objects.equals(plan.getCurriculumId(), learner.getSelectedCurriculum())) {
+                    hasExam |= explicitExam;
+                    unavailablePlan |= !explicitExam;
+                    continue;
+                }
+                var scope = LearningPlanScopeResolver.resolve(blocks, asOf,
+                        roots -> resolveLearningPlanGoalIds(learner.getSkillpilotId(), plan.getLandscapeId(), roots),
+                        binding.stream().filter(id -> plan.getLandscapeId().equals(
+                                landscapeService.getLandscapeIdForGoal(id))).toList());
+                if ("exam".equals(scope.kind())) {
+                    hasExam = true;
+                    scope.goalIds().stream().filter(projection.targetGoalIds()::contains).forEach(atoms::add);
+                } else if (!scope.goalIds().isEmpty()) ordinaryLearning = true;
+            } catch (ResponseStatusException exception) {
+                if (exception.getStatusCode().is5xxServerError()) throw exception;
+                hasExam |= explicitExam;
+                unavailablePlan |= !explicitExam;
+            } catch (IllegalStateException | IllegalArgumentException exception) {
+                hasExam |= explicitExam;
+                unavailablePlan |= !explicitExam;
+            }
+        }
+        if (!hasExam && (ordinaryLearning || unavailablePlan)) return null;
+        return atoms;
+    }
+
+    /** The historical JSON boundary is explicit; internal programming errors are not fallback signals. */
+    private void validateFollowedLearningPlanShape(List<LearnerLearningPlanApi.Block> blocks) {
+        for (var block : blocks) {
+            if (block.kind() == null || !Set.of("learning", "buffer", "milestone").contains(block.kind())
+                    || ("milestone".equals(block.kind()) ? block.date() == null
+                            : block.startDate() == null || block.endDate() == null)
+                    || ("learning".equals(block.kind()) && (block.atomicGoalIds() == null
+                            || block.atomicGoalIds().stream().anyMatch(id -> id == null || id.isBlank())))
+                    || (block.goalIds() != null && block.goalIds().stream().anyMatch(id -> id == null || id.isBlank()))) {
+                throw new IllegalStateException("Stored learning-plan block has an invalid shape");
+            }
+        }
+    }
+
     private Set<String> validateLearningPlanFocus(
             String goalId,
             String blockId,
@@ -3860,6 +3980,8 @@ public class LearnerService {
         if (learner == null || projection == null) {
             return Collections.emptyList();
         }
+        Set<String> followedScope = followedLearningScopeIds(learner, projection, null);
+        if (followedScope != null) return List.copyOf(followedScope);
         List<String> projectedFocusIds = resolveProjectedTargetFocusIds(
                 getStoredPlannedGoals(learner.getSkillpilotId()),
                 projection);
@@ -5830,6 +5952,8 @@ public class LearnerService {
         }
 
         GoalProjection projection = getGoalProjection(curriculumId, learner.getPersonalCurriculum());
+        Set<String> followedScope = followedLearningScopeIds(learner, projection, null);
+        if (followedScope != null && followedScope.isEmpty()) return List.of();
         Map<String, LearningGoal> allGoals = projection.visibleGoals();
         Map<String, LearningGoal> prerequisiteLookupGoals = projection.compositionViewApplied()
                 ? projection.structuralGoals()
@@ -5867,6 +5991,7 @@ public class LearnerService {
                     scope);
             if (!requiredOrientationGoals.isEmpty()) {
                 return requiredOrientationGoals.stream()
+                        .filter(goal -> followedScope == null || followedScope.contains(goal.id()))
                         .map(FrontierGoal::id)
                         .distinct()
                         .toList();
@@ -5878,6 +6003,7 @@ public class LearnerService {
 
         List<String> frontier = new ArrayList<>();
         for (LearningGoal goal : allGoals.values()) {
+            if (followedScope != null && !followedScope.contains(goal.getId())) continue;
             if (!projection.targetGoalIds().contains(goal.getId())) {
                 continue;
             }
@@ -5965,6 +6091,8 @@ public class LearnerService {
         boolean strictMode = Boolean.TRUE.equals(learner.getStrictMode());
 
         GoalProjection projection = getGoalProjection(curriculumId, learner.getPersonalCurriculum());
+        Set<String> followedScope = followedLearningScopeIds(learner, projection, prospectiveFocusGoalIds);
+        if (followedScope != null && followedScope.isEmpty()) return List.of();
         Map<String, LearningGoal> allFilteredGoals = projection.visibleGoals();
         Map<String, LearningGoal> allStructuralGoals = projection.structuralGoals();
 
@@ -6010,6 +6138,7 @@ public class LearnerService {
         }
 
         if (scope.isEmpty()) {
+            if (followedScope != null) return List.of();
             // If the scope is empty (including stale stored IDs), publish the
             // initial choices. Composition views must expose their writable
             // roots; legacy projections retain their top-level modules.
@@ -6031,13 +6160,15 @@ public class LearnerService {
                 plannedIds,
                 scope);
         if (!requiredOrientationGoals.isEmpty()) {
-            return orderFrontierByProjection(requiredOrientationGoals, projection);
+            return orderFrontierByProjection(requiredOrientationGoals.stream()
+                    .filter(goal -> followedScope == null || followedScope.contains(goal.id())).toList(), projection);
         }
 
         List<FrontierGoal> frontier = new ArrayList<>();
 
         // Iterate FILTERED goals (what the user should see)
         for (LearningGoal goal : allFilteredGoals.values()) {
+            if (followedScope != null && !followedScope.contains(goal.getId())) continue;
             if (!projection.targetGoalIds().contains(goal.getId())) {
                 continue;
             }
@@ -7114,7 +7245,9 @@ public class LearnerService {
             GoalProjection focusProjection = getGoalProjection(
                     curriculumId,
                     learner.getPersonalCurriculum());
-            ensurePersistedDefaultProjectedFocus(learner, focusProjection);
+            if (followedLearningScopeIds(learner, focusProjection, null) == null) {
+                ensurePersistedDefaultProjectedFocus(learner, focusProjection);
+            }
         }
 
         Map<String, Double> mastery = getMastery(skillpilotId);
@@ -7159,6 +7292,8 @@ public class LearnerService {
         List<String> plannedScopeIds = resolveProjectedTargetScopeIds(
                 plannedIds,
                 goalProjection);
+        boolean exactFollowedScope = hasFollowedLearningPlans
+                && followedLearningScopeIds(learner, goalProjection, null) != null;
         List<FrontierGoal> plannedRich = new ArrayList<>();
 
         for (String pid : plannedIds) {
@@ -7206,13 +7341,14 @@ public class LearnerService {
                 && storedActiveGoalId.equals(activeGoalId);
         boolean activeGoalOutOfScope = activeGoalIsCurrentViewGoal
                 && activeGoalId != null
+                && !exactFollowedScope
                 && isGoalOutOfPlannedScope(activeGoalId, plannedScopeIds, structuralGoals, scope);
         GlobalAssessmentFocus globalAssessmentFocus = resolveGlobalAssessmentFocus(
                 structuralGoals,
                 plannedIds);
         boolean globalAssessmentFocusRemoved = isGlobalAssessmentGoalWithoutExplicitFocus(
                 activeGoalId,
-                globalAssessmentFocus);
+                globalAssessmentFocus) && !exactFollowedScope;
         if (activeGoalMastered
                 || activeGoalInvalidInView
                 || activeGoalOutOfScope
@@ -7376,6 +7512,7 @@ public class LearnerService {
 
         List<FrontierGoal> scopeExpansionOptions = Collections.emptyList();
         if (curriculumId != null && !personalizationRequired && activeGoal == null
+                && !exactFollowedScope
                 && scopeCompleted && !plannedScopeIds.isEmpty()) {
             scopeExpansionOptions = buildBroaderFocusOptions(
                     goalProjection,
@@ -7506,22 +7643,25 @@ public class LearnerService {
                 if (!subjectsWithOpenQuota.contains(subject)) {
                     continue;
                 }
+                var learningScope = LearningPlanScopeResolver.resolve(blocks, asOf,
+                        roots -> resolveLearningPlanGoalIds(learner.getSkillpilotId(), plan.getLandscapeId(), roots),
+                        getStoredLearningPlanFocus(learner.getSkillpilotId(), plan.getLandscapeId()));
+                Set<String> scopeIds = Set.copyOf(learningScope.goalIds());
+                Set<String> eligibleIds = learningScope.goalIds().isEmpty() ? Set.of()
+                        : getUncompactedRichFrontierForFocus(learner.getSkillpilotId(), learningScope.goalIds()).stream()
+                                .filter(goal -> "atomic".equals(goal.type()) && scopeIds.contains(goal.id()))
+                                .map(FrontierGoal::id).collect(Collectors.toSet());
                 Optional<LearnerLearningPlanService.DueGoal> selected =
                         LearnerLearningPlanService.firstEligibleDueGoal(
                                 blocks,
                                 periodEnd,
                                 mastery,
-                                focusGoalIds -> getUncompactedRichFrontierForFocus(
-                                                learner.getSkillpilotId(),
-                                                focusGoalIds)
-                                        .stream()
-                                        .filter(goal -> "atomic".equals(goal.type()))
-                                        .map(FrontierGoal::id)
-                                        .collect(Collectors.toSet()));
+                                ignored -> eligibleIds);
                 if (selected.isEmpty()) {
                     continue;
                 }
                 LearnerLearningPlanService.DueGoal dueGoal = selected.get();
+                if (!learningScope.goalIds().contains(dueGoal.atomicGoalId())) continue;
                 candidates.add(new LearningPlanHandoffCandidate(
                         plan.getId(),
                         plan.getLandscapeId(),
@@ -7530,7 +7670,8 @@ public class LearnerService {
                         dueGoal.blockStartDate(),
                         dueGoal.blockEndDate(),
                         anchorSubjects.contains(subject),
-                        dueGoal.scheduledDate()));
+                        dueGoal.scheduledDate(),
+                        "exam".equals(learningScope.kind()) ? learningScope.goalIds() : null));
             } catch (ResponseStatusException exception) {
                 if (exception.getStatusCode().is5xxServerError()) {
                     throw exception;
@@ -7584,11 +7725,13 @@ public class LearnerService {
             boolean publishEvent) {
         List<PlannedGoal> currentFocus = plannedGoalRepository
                 .findByLearner_SkillpilotId(learner.getSkillpilotId());
-        boolean focusAlreadySelected = currentFocus.size() == 1
-                && candidate.focusGoalId().equals(currentFocus.get(0).getGoalId());
+        List<String> selectedFocus = candidate.scopeGoalIds() == null
+                ? List.of(candidate.focusGoalId()) : candidate.scopeGoalIds();
+        boolean focusAlreadySelected = currentFocus.stream().map(PlannedGoal::getGoalId).collect(Collectors.toSet())
+                .equals(Set.copyOf(selectedFocus));
         if (!focusAlreadySelected) {
             plannedGoalRepository.deleteAll(currentFocus);
-            plannedGoalRepository.save(new PlannedGoal(learner, candidate.focusGoalId()));
+            for (String goalId : selectedFocus) plannedGoalRepository.save(new PlannedGoal(learner, goalId));
         }
         learner.setActiveGoalId(candidate.atomicGoalId());
         learner.setLearningState(LearningState.TEACHING);
@@ -7609,12 +7752,19 @@ public class LearnerService {
             LocalDate blockStartDate,
             LocalDate blockEndDate,
             boolean sameSubjectAsCompletedAnchor,
-            LocalDate scheduledDate) {
+            LocalDate scheduledDate,
+            List<String> scopeGoalIds) {
+        LearningPlanHandoffCandidate(UUID planId, String landscapeId, String focusGoalId,
+                String atomicGoalId, LocalDate blockStartDate, LocalDate blockEndDate,
+                boolean sameSubjectAsCompletedAnchor, LocalDate scheduledDate) {
+            this(planId, landscapeId, focusGoalId, atomicGoalId, blockStartDate, blockEndDate,
+                    sameSubjectAsCompletedAnchor, scheduledDate, null);
+        }
         LearningPlanHandoffCandidate(UUID planId, String landscapeId, String focusGoalId,
                 String atomicGoalId, LocalDate blockStartDate, LocalDate blockEndDate,
                 boolean sameSubjectAsCompletedAnchor) {
             this(planId, landscapeId, focusGoalId, atomicGoalId, blockStartDate, blockEndDate,
-                    sameSubjectAsCompletedAnchor, blockEndDate);
+                    sameSubjectAsCompletedAnchor, blockEndDate, null);
         }
     }
 
@@ -8410,20 +8560,31 @@ public class LearnerService {
             String activeGoalId,
             boolean publishEvent,
             String changeType) {
+        return applyLearningPlanScopeTransition(skillpilotId, enableFollowing, replaceActiveGoal,
+                focusGoalId == null || focusGoalId.isBlank() ? null : List.of(focusGoalId),
+                activeGoalId, publishEvent, changeType);
+    }
+
+    /** Keeps the complete selected scope separate from its one active learning cursor. */
+    @Transactional
+    public LearningPlanTransitionResult applyLearningPlanScopeTransition(
+            String skillpilotId, boolean enableFollowing, boolean replaceActiveGoal,
+            List<String> focusGoalIds, String activeGoalId, boolean publishEvent, String changeType) {
         Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
-        String normalizedFocusGoalId = focusGoalId == null || focusGoalId.isBlank()
-                ? null
-                : focusGoalId.trim();
+        List<String> normalizedFocusGoalIds = focusGoalIds == null ? null
+                : focusGoalIds.stream().filter(Objects::nonNull).map(String::trim)
+                        .filter(id -> !id.isBlank()).distinct().toList();
         String normalizedActiveGoalId = activeGoalId == null || activeGoalId.isBlank()
                 ? null
                 : activeGoalId.trim();
-        if (!replaceActiveGoal && (normalizedFocusGoalId != null || normalizedActiveGoalId != null)) {
+        if (!replaceActiveGoal && (normalizedFocusGoalIds != null || normalizedActiveGoalId != null)) {
             throw new ResponseStatusException(
                     org.springframework.http.HttpStatus.BAD_REQUEST,
                     "focusGoalId and activeGoalId require replaceActiveGoal");
         }
-        if (replaceActiveGoal && normalizedActiveGoalId != null && normalizedFocusGoalId == null) {
+        if (replaceActiveGoal && normalizedActiveGoalId != null
+                && (normalizedFocusGoalIds == null || normalizedFocusGoalIds.isEmpty())) {
             throw new ResponseStatusException(
                     org.springframework.http.HttpStatus.BAD_REQUEST,
                     "focusGoalId is required when activating a learning-plan goal");
@@ -8432,7 +8593,7 @@ public class LearnerService {
             assertPersonalizationCompleteForLearning(learner);
             boolean eligible = getUncompactedRichFrontierForFocus(
                             skillpilotId,
-                            List.of(normalizedFocusGoalId))
+                            normalizedFocusGoalIds)
                     .stream()
                     .filter(goal -> "atomic".equals(goal.type()))
                     .anyMatch(goal -> normalizedActiveGoalId.equals(goal.id()));
@@ -8449,14 +8610,16 @@ public class LearnerService {
             changed = true;
         }
         if (replaceActiveGoal) {
-            if (normalizedFocusGoalId != null) {
+            if (normalizedFocusGoalIds != null) {
                 List<PlannedGoal> currentFocus = plannedGoalRepository
                         .findByLearner_SkillpilotId(skillpilotId);
-                boolean focusAlreadySelected = currentFocus.size() == 1
-                        && normalizedFocusGoalId.equals(currentFocus.get(0).getGoalId());
+                boolean focusAlreadySelected = currentFocus.stream().map(PlannedGoal::getGoalId).collect(Collectors.toSet())
+                        .equals(Set.copyOf(normalizedFocusGoalIds));
                 if (!focusAlreadySelected) {
                     plannedGoalRepository.deleteAll(currentFocus);
-                    plannedGoalRepository.save(new PlannedGoal(learner, normalizedFocusGoalId));
+                    for (String id : normalizedFocusGoalIds) {
+                        plannedGoalRepository.save(new PlannedGoal(learner, id));
+                    }
                     changed = true;
                 }
             }

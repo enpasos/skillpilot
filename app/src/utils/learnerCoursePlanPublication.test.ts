@@ -142,6 +142,15 @@ const sourceExam = multiTopicPlan.blocks[2]
 const copiedExam = topicCopy.copy.blocks[2]
 assert(sourceExam?.kind === 'milestone' && copiedExam?.kind === 'milestone')
 assert.notEqual(sourceExam.goalIds, copiedExam.goalIds, 'publication copies the selected roots')
+const examOnlyCopy = materializeLearnerLearningPlanCopy({
+  plan: { ...multiTopicPlan, planningBaseline: undefined, blocks: [sourceExam] },
+  fallbackPlanLabel: 'Fallback', goals, visibleChildrenByParent: visibleChildren,
+})
+assert(examOnlyCopy.ok)
+assert.deepEqual(examOnlyCopy.copy.blocks, [copiedExam],
+  'selected exam scope can be published without creating dated learning work')
+assert.equal(examOnlyCopy.copy.atomicGoalCount, 0,
+  'exam topics do not acquire a daily or weekly quota through publication')
 const unavailableExamPlan = { ...multiTopicPlan, blocks: [...multiTopicPlan.blocks.slice(0, 2), {
   ...sourceExam, goalIds: ['root', 'outside-visible-scope'],
 }] }
