@@ -1195,12 +1195,15 @@ class ProjectionRoleLearnerServiceTest {
 
         assertThat(fixture.service().getPlannedGoals(LEARNER_ID))
                 .containsExactly(ROOT_CLUSTER_ID);
+        // The restored target root includes TARGET_ID, while its prerequisiteOnly
+        // requirement stays outside the normal focus and cannot block entry.
         assertThat(fixture.service().getRichFrontier(LEARNER_ID))
                 .extracting(FrontierGoal::id)
                 .containsExactlyInAnyOrder(
                         ROOT_CLUSTER_ID,
                         NESTED_CLUSTER_ID,
-                        OUTSIDE_TARGET_ID)
+                        OUTSIDE_TARGET_ID,
+                        TARGET_ID)
                 .doesNotContain(PREREQUISITE_ID, TRANSITIVE_PREREQUISITE_ID);
 
         var learnerState = fixture.service().getLearnerState(LEARNER_ID);
@@ -1212,8 +1215,13 @@ class ProjectionRoleLearnerServiceTest {
                 .containsExactlyInAnyOrder(
                         ROOT_CLUSTER_ID,
                         NESTED_CLUSTER_ID,
-                        OUTSIDE_TARGET_ID)
+                        OUTSIDE_TARGET_ID,
+                        TARGET_ID)
                 .doesNotContain(PREREQUISITE_ID, TRANSITIVE_PREREQUISITE_ID);
+
+        assertThat(fixture.service().getMastery(LEARNER_ID)).isEmpty();
+        verify(fixture.masteryRepository(), never()).save(any(Mastery.class));
+        verify(fixture.masteryRepository(), never()).saveAll(any());
 
         verify(fixture.plannedGoalRepository())
                 .deleteAll(org.mockito.ArgumentMatchers.<Iterable<PlannedGoal>>any());

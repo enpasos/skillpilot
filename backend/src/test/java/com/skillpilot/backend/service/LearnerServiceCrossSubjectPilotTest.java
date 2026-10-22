@@ -1047,6 +1047,7 @@ class LearnerServiceCrossSubjectPilotTest {
                         new PlannedGoal(learner, CANONICAL_PHYSICS_UNIFORM_MOTION_ID)));
         when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID)).thenReturn(List.of());
         LearnerService service = compositionAwareLearnerService();
+        Map<String, Double> masteryBefore = service.getMastery(LEARNER_ID);
 
         UnifiedLearnerStateResponse state = service.getLearnerState(LEARNER_ID);
 
@@ -1060,7 +1061,8 @@ class LearnerServiceCrossSubjectPilotTest {
                 .containsExactly(CANONICAL_PHYSICS_DIAGRAMS_ID);
         assertThat(service.getPlannedGoals(LEARNER_ID)).containsExactlyInAnyOrder(
                 CANONICAL_PHYSICS_DIAGRAMS_ID, CANONICAL_PHYSICS_UNIFORM_MOTION_ID);
-        assertThat(service.getMastery(LEARNER_ID)).isEmpty();
+        assertThat(service.getMastery(LEARNER_ID)).containsExactlyInAnyOrderEntriesOf(masteryBefore);
+        assertThat(service.getMastery(LEARNER_ID).values()).allSatisfy(value -> assertThat(value).isZero());
         verify(masteryRepository, never()).save(any(Mastery.class));
         verify(masteryRepository, never()).saveAll(any());
     }
