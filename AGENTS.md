@@ -1114,6 +1114,12 @@ record exam scope without scheduling additional work. Assessment coverage uses
 explicit `examData.coveredGoalIds`, never prerequisite closure. Preparation
 completion previews changes and separately discloses additional and out-of-scope
 foundations; it never silently widens the Personal Curriculum or writes mastery.
+Additional topics and foundations are optional and off by default. Declining
+them must not prevent preparing the selected topics and usable assessments or
+activating that plan. Unresolved assessment metadata and external prerequisites
+remain advisory; invalid selected roots, actual scheduling errors and the normal
+backend prerequisite/frontier checks remain enforced. Canonical cluster
+references may resolve to already-visible target atoms, never add hidden atoms.
 See `docs/concept/runtime-workflows/exam-preparation-planning.md`.
 
 Optional external learning materials belong to a separate content layer:

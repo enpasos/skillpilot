@@ -11,6 +11,8 @@ import { startViteTestServer } from './viteTestServer'
 import { CURRENT_TERMS_VERSION } from '../src/utils/legalTermsVersion'
 import { CoursePlanLearningBook } from '../src/components/CoursePlanLearningBook'
 import type { TeacherCoursePlan } from '../src/coursePlanTypes'
+import type { ActivateLearnerLearningPlansRequest } from '../src/learnerLearningPlanTypes'
+import type { ClassSession } from '../src/trainerTypes'
 import { convertLearningGoal } from '../src/goalTypes'
 import { GOAL_BOOK_PUBLICATION_REGISTRY, goalBookRoute } from '../src/utils/goalBookPublicationRegistry'
 import {
@@ -370,7 +372,7 @@ const installApi = async (
 }
 
 /** A separate plan keeps preparation mutations independent of the legacy flows. */
-const verifyExamPreparationUi = async (browser: Browser, baseUrl: string) => {
+const verifyExamPreparationUi = async (browser: Browser, baseUrl: string, includeAdditional = true) => {
   const assessmentId = 'trainer-course-plan-assessment'
   const foundationId = 'trainer-course-plan-foundation'
   const uncoveredId = 'trainer-course-plan-uncovered'
@@ -381,6 +383,16 @@ const verifyExamPreparationUi = async (browser: Browser, baseUrl: string) => {
   const examTitle = 'Klausur Mechanik'
   const today = localDateString()
   const deadline = addDays(today, 20)
+  const preparationSession: ClassSession = includeAdditional
+    ? { ...normalClassSession, students: [] }
+    : {
+        ...normalClassSession,
+        rootLandscapeId: landscapeId,
+        personalConfig: { [landscapeId]: { selected: true, filterId: 'LK' } },
+        students: [{ id: studentId, name: 'Alex', accessMode: 'learner-id' }],
+        source: 'existing-learner',
+      }
+  const preparationPlanId = getTeacherCoursePlanStorageId(preparationSession)
   const fixtureLandscape = {
     ...landscape,
     goals: [
@@ -408,7 +420,7 @@ const verifyExamPreparationUi = async (browser: Browser, baseUrl: string) => {
     ],
   }
   const initialPlan = createTeacherCoursePlan({
-    classId: normalCoursePlanId,
+    classId: preparationPlanId,
     createdOn: today,
     recordedAt: fixtureTime.toISOString(),
   })
@@ -417,6 +429,14 @@ const verifyExamPreparationUi = async (browser: Browser, baseUrl: string) => {
     id: 'general-learning', kind: 'learning', goalId: rootGoalId, title: broadTitle,
     startDate: today, endDate: addDays(today, 13),
   }]
+  const scopeIds = [firstGoalId, secondGoalId, foundationId, uncoveredId, assessmentId]
+  if (!includeAdditional) initialPlan.planningBaseline = {
+    source: 'learner-planning-landscape-v1',
+    curriculumId: landscapeId, landscapeId,
+    scopeAtomicGoalIds: scopeIds, openAtomicGoalIds: scopeIds,
+    totalAtomicGoalCount: scopeIds.length, masteredAtomicGoalCount: 0,
+    capturedAt: fixtureTime.toISOString(),
+  }
   const context = await browser.newContext({ locale: 'de-DE', timezoneId: 'Europe/Berlin' })
   try {
     await context.addInitScript((seed) => {
@@ -434,7 +454,7 @@ const verifyExamPreparationUi = async (browser: Browser, baseUrl: string) => {
       }))
     }, {
       termsVersion: CURRENT_TERMS_VERSION,
-      session: { ...normalClassSession, students: [] },
+      session: preparationSession,
       plan: initialPlan,
     })
     const page = await context.newPage()
@@ -442,12 +462,58 @@ const verifyExamPreparationUi = async (browser: Browser, baseUrl: string) => {
     const errors: string[] = []
     page.on('pageerror', (error) => errors.push(error.message))
     await installApi(page, [], { blocked: false, releases: [] }, fixtureLandscape)
+    const activationBodies: ActivateLearnerLearningPlansRequest[] = []
+    let activeServerPlan: Record<string, unknown> | null = null
+    if (!includeAdditional) await page.route(`**/api/ui/learners/${studentId}**`, async (route) => {
+      const request = route.request()
+      const pathname = new URL(request.url()).pathname
+      const json = async (body: unknown) => route.fulfill({
+        status: 200, contentType: 'application/json',
+        headers: { 'Cache-Control': 'no-store' }, body: JSON.stringify(body),
+      })
+      if (request.method() === 'GET' && pathname === `/api/ui/learners/${studentId}`) {
+        await json({ skillpilotId: studentId, selectedCurriculum: landscapeId,
+          personalCurriculum: JSON.stringify(preparationSession.personalConfig) })
+      } else if (request.method() === 'GET' && pathname.endsWith('/planning-scope')) {
+        await json({ ...initialPlan.planningBaseline, capturedAt: fixtureTime.toISOString() })
+      } else if (request.method() === 'GET' && pathname.endsWith('/learning-plans')) {
+        await json({ asOf: today, followLearningPlans: Boolean(activeServerPlan),
+          status: learnerPlanStatus(today, [landscapeId], { followLearningPlans: Boolean(activeServerPlan) }),
+          plans: activeServerPlan ? [activeServerPlan] : [] })
+      } else if (request.method() === 'GET' && pathname.endsWith('/learning-plans/by-landscape')) {
+        if (activeServerPlan) await json(activeServerPlan)
+        else await route.fulfill({ status: 404, body: '' })
+      } else if (request.method() === 'POST' && pathname.endsWith('/learning-plans/preview')) {
+        const body = request.postDataJSON() as ActivateLearnerLearningPlansRequest
+        await json({ asOf: body.asOf,
+          days: Array.from({ length: 7 }, (_, index) => {
+            const date = addDays(body.asOf, index)
+            return { date, status: learnerPlanStatus(date, [landscapeId]) }
+          }) })
+      } else if (request.method() === 'POST' && pathname.endsWith('/learning-plans/activate')) {
+        const body = request.postDataJSON() as ActivateLearnerLearningPlansRequest
+        activationBodies.push(body)
+        assert(body.plans.length === 1 && body.plans[0]?.expectedRevision === 0,
+          'the selected-only plan activates the exact fresh learner-plan revision')
+        const plan = body.plans[0]!
+        activeServerPlan = {
+          planId: landscapeId, revision: 1, landscapeId, planLabel: plan.planLabel, stale: false,
+          period: { startDate: today, endDate: deadline }, currentBlock: null, nextMilestone: null,
+          buffer: { totalWorkdays: 0, remainingWorkdays: 0 }, nextEligibleGoal: null,
+          continueReason: 'no-open-due-frontier-goal', canContinue: false, blocks: plan.blocks,
+        }
+        await json({ asOf: body.asOf, followLearningPlans: true, plans: [activeServerPlan],
+          selectedPlanId: null, selectedLandscapeId: null, focusGoalId: null, activeGoalId: null, state: {} })
+      } else {
+        throw new Error(`Unexpected preparation request: ${request.method()} ${pathname}`)
+      }
+    })
     const readPlan = () => page.evaluate((storageId) => {
       const store = JSON.parse(localStorage.getItem('skillpilot_teacher_course_plans_v1')!) as {
         plansByClassId: Record<string, TeacherCoursePlan>
       }
       return store.plansByClassId[storageId]!
-    }, normalCoursePlanId)
+    }, preparationPlanId)
     await page.goto(`${baseUrl}/scripts/fixtures/trainerCoursePlanUi.html`)
     await page.getByRole('heading', { name: 'Planung für Physik LK', exact: true }).waitFor()
     const broadBlock = page.getByTestId('course-plan-block').filter({
@@ -518,15 +584,16 @@ const verifyExamPreparationUi = async (browser: Browser, baseUrl: string) => {
       'preparation exposes additional foundations separately from task coverage')
     const acknowledge = preview.getByRole('checkbox', { name: 'Zusätzliche Themen und Grundlagen übernehmen', exact: true })
     const apply = preview.getByRole('button', { name: 'Vorbereitung übernehmen', exact: true })
-    assert(await apply.isDisabled(), 'extra material requires explicit acceptance before creating preparation')
-    await acknowledge.check()
+    assert(!(await acknowledge.isChecked()), 'additional topics and foundations are optional and initially unselected')
+    assert(!(await apply.isDisabled()), 'the selected preparation remains usable without accepting additional topics')
+    if (includeAdditional) await acknowledge.check()
     for (const width of [1280, 390]) {
       await page.setViewportSize({ width, height: 900 })
       assert(await preview.evaluate((element) => element.scrollWidth <= element.clientWidth),
         `preparation preview fits the ${width}px viewport`)
       if (screenshots) {
         await preview.scrollIntoViewIfNeeded()
-        await page.screenshot({ path: `${screenshots}/preparation-${width}.png`, fullPage: true })
+        await page.screenshot({ path: `${screenshots}/${includeAdditional ? 'preparation' : 'selected-only-preparation'}-${width}.png`, fullPage: true })
       }
     }
     await apply.click()
@@ -537,13 +604,37 @@ const verifyExamPreparationUi = async (browser: Browser, baseUrl: string) => {
       'acceptance creates an active learning section')
     assert(preparation.endDate === addDays(deadline, -1), 'the saved preparation ends before the exam')
     assertJsonEqual([...(preparation.goalIds ?? [])].sort(),
-      [firstGoalId, secondGoalId, uncoveredId, foundationId, assessmentId].sort(),
-      'the saved preparation contains the exact selected material, task coverage and accepted foundation')
+      (includeAdditional
+        ? [firstGoalId, secondGoalId, uncoveredId, foundationId, assessmentId]
+        : [firstGoalId, uncoveredId, assessmentId]).sort(),
+      'the saved preparation respects whether additional topics and foundations were explicitly selected')
+    assertJsonEqual(preparedPlan.blocks.find((block) => block.id === savedExam.id), savedExam,
+      'preparation does not widen or rewrite the explicit exam selection')
     assert(preparedPlan.blocks.find((block) => block.id === 'general-learning')?.active === false,
       'creating preparation does not reactivate the general plan')
     await page.goto(`${baseUrl}/scripts/fixtures/trainerCoursePlanUi.html`)
     await page.getByRole('heading', { name: `Vorbereitung: ${examTitle}`, exact: true }).waitFor()
     assertJsonEqual(await readPlan(), preparedPlan, 'the completed preparation survives reload without rewriting the plan')
+    if (!includeAdditional) {
+      const sharedPlanning = page.getByTestId('trainer-learning-plan-activation')
+      await sharedPlanning.getByText('Bereit zur Aktivierung', { exact: true }).waitFor()
+      const activate = sharedPlanning.getByRole('button', { name: 'Für Schüler aktivieren', exact: true })
+      assert(!(await activate.isDisabled()), 'the selected-only preparation enables activation for a linked learner')
+      await activate.click()
+      const confirmation = page.getByTestId('trainer-learning-plan-activation-confirmation')
+      await confirmation.waitFor()
+      assert(activationBodies.length === 0, 'the activation preview does not publish the learner plan')
+      await confirmation.getByRole('button', { name: 'Planung jetzt übernehmen', exact: true }).click()
+      await sharedPlanning.getByText('1 Fachpläne sind gemeinsam wirksam. Aktuell ist kein startbares Planziel verfügbar.', { exact: true }).waitFor()
+      assert(activationBodies.length === 1, 'explicit confirmation activates the selected-only preparation exactly once')
+      const learnerBlocks = activationBodies[0]!.plans[0]!.blocks
+      const activeLearning = learnerBlocks.flatMap((block) => block.kind === 'learning' && block.active !== false ? [block] : [])
+      assert(activeLearning.length === 1, 'the paused general plan is not reactivated by shared activation')
+      assertJsonEqual([...(activeLearning[0]!.atomicGoalIds ?? [])].sort(),
+        [firstGoalId, uncoveredId, assessmentId].sort(),
+        'activation sends only selected topics and the selected task, without suggested topics or foundations')
+      assert(!JSON.stringify(activationBodies).includes('"mastery"'), 'activation does not manufacture learner mastery')
+    }
     assert(errors.length === 0, `exam preparation browser errors:\n${errors.join('\n')}`)
   } finally {
     await context.close()
@@ -1702,6 +1793,7 @@ try {
   assertJsonEqual(unexpectedLearnerWrites, [], 'planning UI navigation never invokes unrelated learner writes')
   await personalizedContext.close()
   await verifyExamPreparationUi(browser, server.baseUrl)
+  await verifyExamPreparationUi(browser, server.baseUrl, false)
   console.log('Trainer course-plan UI regression test passed.')
 } finally {
   await browser?.close()

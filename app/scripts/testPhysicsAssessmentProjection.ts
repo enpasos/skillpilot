@@ -34,6 +34,10 @@ const abiturRootIds = {
 } as const
 const fermiGoalId = '658cf33d-a0c2-5d47-801a-3dbcd5cac074'
 const fermiAssessmentId = '71e8936b-fa8a-50dc-8c47-fca015b85ac5'
+const kinematicsAssessmentIds = [
+  '4ab1cf6d-b808-5b86-9291-85df0b9f2496',
+  '6ea3fb3c-abdc-568f-ab13-97c36dc274e4',
+]
 const diodeSekIJurisdictions = new Set(['DE-BB', 'DE-BE', 'DE-HB', 'DE-HH', 'DE-MV', 'DE-NI', 'DE-NW', 'DE-SH'])
 const diodeTaskIds = [
   'c61b2a69-b5cd-5785-bb04-5d6bca53b218',
@@ -104,6 +108,7 @@ let abiturTaskPairs = 0
 let preservedSekITaskPairs = 0
 let preservedPrerequisiteOnlyPairs = 0
 let filteredPrerequisiteOnlyPairs = 0
+let kinematicsTaskPairs = 0
 const jurisdictions = new Set<string>()
 for (const filename of readdirSync(viewDirectory).filter((name) => name.endsWith('.view.json')).sort()) {
   const view = JSON.parse(readFileSync(resolve(viewDirectory, filename), 'utf8')) as CompositionView
@@ -145,6 +150,16 @@ for (const filename of readdirSync(viewDirectory).filter((name) => name.endsWith
   const preservedSekITasks = expectedSekITasks(view)
   viewCount++
   if (view.scope.jurisdiction) jurisdictions.add(view.scope.jurisdiction)
+  for (const id of kinematicsAssessmentIds) {
+    assert(visible.has(id), `${view.viewId}: the reviewed vector-free kinematics task must remain reachable`)
+    assert(ancestorsById.get(id)?.includes(practiceRootIds[0]),
+      `${view.viewId}: kinematics assessments belong to the E-phase exercise collection`)
+    assert.equal(byId.get(id)?.examData?.reviewStatus, 'released')
+    assert.equal(byId.get(id)?.examData?.scoring.maxPoints, 36)
+    assert.deepEqual(byId.get(id)?.examData, canonicalById.get(id)?.examData,
+      `${view.viewId}: both language bodies and exact scoring must survive projection`)
+    kinematicsTaskPairs++
+  }
 
   for (const goalId of expectedPrerequisiteOnlyTasks(view)) {
     assert(prerequisiteOnlyGoalIds.has(goalId) && !targetGoalIds.has(goalId),
@@ -216,7 +231,8 @@ for (const filename of readdirSync(viewDirectory).filter((name) => name.endsWith
 assert.equal(viewCount, 60, 'Cover every existing GK/LK and SekII/CrossStage assessment-collection view.')
 assert.equal(fermiScopeViewCount, 69, 'Check exact Fermi assessment target visibility in every Physics composition view.')
 assert.equal(jurisdictions.size, 14, 'Cover all jurisdictions using these Physics assessment collections.')
-assert.equal(practiceTaskPairs, 3006, 'Restore the existing practice scope without silently adding or removing assessment targets.')
+assert.equal(kinematicsTaskPairs, 120, 'Both reviewed kinematics assessments must appear in all 60 shared GK/LK exercise views.')
+assert.equal(practiceTaskPairs, 3126, 'Preserve the existing 3006 practice placements and add exactly 120 reviewed kinematics placements.')
 assert.equal(abiturTaskPairs, 480, 'Every applicable view must expose both Abitur sample exams and all eight proposals.')
 assert.equal(preservedSekITaskPairs, 40, 'Preserve the established Sek-I task placement in every affected CrossStage view.')
 assert.equal(preservedPrerequisiteOnlyPairs, 161, 'Preserve every existing Q4 prerequisite-only role affected by explicit task references.')

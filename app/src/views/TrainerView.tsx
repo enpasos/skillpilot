@@ -943,6 +943,11 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     [coursePlanProjectedTrainerLandscapeEntries],
   )
   const { goalIndexAll: coursePlanGoalIndexAll } = useGoalIndex(coursePlanAllGoals)
+  // Reference metadata may name canonical clusters flattened by the Level-2
+  // view. Keep that lookup separate from the authoritative target projection.
+  const coursePlanReferenceGoals = useMemo(() => new Map(
+    landscapeEntries.flatMap((entry) => entry.goals).map((goal) => [goal.id, goal]),
+  ), [landscapeEntries])
   const coursePlanVisibleChildrenByParent = useMemo(
     () => matchedTrainerCompositionView ? buildDirectChildrenMap(coursePlanGoalIndexAll) : undefined,
     [coursePlanGoalIndexAll, matchedTrainerCompositionView],
@@ -2044,7 +2049,8 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
             classId={activeCoursePlanStorageId}
             classLabel={activeClass.name}
             goals={coursePlanGoalIndex}
-            prerequisiteGoals={coursePlanGoalIndexAll}
+            prerequisiteGoals={coursePlanReferenceGoals}
+            referenceGoals={coursePlanReferenceGoals}
             visibleChildrenByParent={coursePlanChildrenByParent}
             learnerId={activeCoursePlanLearnerId || undefined}
             landscapeId={activeClassIsExistingLearner ? activeClass.landscapeId : undefined}

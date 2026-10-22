@@ -64,6 +64,7 @@ interface CoursePlanPilotViewProps {
   goals: ReadonlyMap<string, UiGoal>
   visibleChildrenByParent?: ReadonlyMap<string, readonly string[]>
   prerequisiteGoals?: ReadonlyMap<string, UiGoal>
+  referenceGoals?: ReadonlyMap<string, UiGoal>
   learnerId?: string
   landscapeId?: string
   language: 'de' | 'en'
@@ -165,6 +166,7 @@ export const CoursePlanPilotView = ({
   goals,
   visibleChildrenByParent,
   prerequisiteGoals,
+  referenceGoals,
   learnerId,
   landscapeId,
   language,
@@ -364,8 +366,8 @@ export const CoursePlanPilotView = ({
   const selectedTopics = useMemo(() => resolveCoursePlanTopicSelection(
     draft.goalIds, topicGoals, topicChildren,
   ), [draft.goalIds, topicGoals, topicChildren])
-  const selectedTopicCoverage = useMemo(() => analyzeCoursePlanTaskCoverage(draft.goalIds, topicGoals, topicChildren),
-    [draft.goalIds, topicGoals, topicChildren])
+  const selectedTopicCoverage = useMemo(() => analyzeCoursePlanTaskCoverage(draft.goalIds, topicGoals, topicChildren, referenceGoals),
+    [draft.goalIds, topicGoals, topicChildren, referenceGoals])
   const plannedGoalIds = useMemo(() => evaluation?.quality.status === 'complete' && evaluation.metrics
     ? new Set(evaluation.assignments.flatMap((assignment) => assignment.atomicGoalIds))
     : null, [evaluation])
@@ -1221,6 +1223,7 @@ export const CoursePlanPilotView = ({
               <div id="course-plan-topic-picker" className="mt-5">
                 <CoursePlanTopicPicker
                   goals={topicGoals}
+                  referenceGoals={referenceGoals}
                   visibleChildrenByParent={topicChildren}
                   selectedGoalIds={draft.goalIds}
                   onChange={(goalIds) => {
@@ -1477,7 +1480,7 @@ export const CoursePlanPilotView = ({
                   ? resolveCoursePlanTopicSelection(milestoneGoalIds, topicGoals, topicChildren)
                   : null
                 const milestoneCoverage = block.kind === 'milestone'
-                  ? analyzeCoursePlanTaskCoverage(milestoneGoalIds, topicGoals, topicChildren) : null
+                  ? analyzeCoursePlanTaskCoverage(milestoneGoalIds, topicGoals, topicChildren, referenceGoals) : null
                 const title = block.kind === 'learning' ? block.title || goals.get(block.goalId)?.title || block.goalId : block.title
                 const workdays = block.kind === 'milestone' ? 0 : countCoursePlanWorkdaysInclusive(block.startDate, block.endDate) ?? 0
                 return (
@@ -1503,7 +1506,7 @@ export const CoursePlanPilotView = ({
                     </div>
                     {invalidBlockIds.has(block.id) && <p role="alert" className="mt-3 text-sm text-rose-700 dark:text-rose-300">{copy.blockNotCalculable}</p>}
                     {editingBlockId === block.id && <div className="mt-4">{blockForm}</div>}
-                    {block.kind === 'milestone' && block.active !== false && preparationState?.milestoneId === block.id && <div className="mt-4"><CoursePlanExamPreparationPreview key={block.id} plan={preparationState.baseline ? { ...plan, planningBaseline: preparationState.baseline } : plan} milestone={block} goals={topicGoals} prerequisiteGoals={prerequisiteGoals} visibleChildren={topicChildren} asOf={asOf} language={language} onClose={() => setPreparationState(null)} onApply={(blocks) => {
+                    {block.kind === 'milestone' && block.active !== false && preparationState?.milestoneId === block.id && <div className="mt-4"><CoursePlanExamPreparationPreview key={block.id} plan={preparationState.baseline ? { ...plan, planningBaseline: preparationState.baseline } : plan} milestone={block} goals={topicGoals} prerequisiteGoals={prerequisiteGoals} referenceGoals={referenceGoals} visibleChildren={topicChildren} asOf={asOf} language={language} onClose={() => setPreparationState(null)} onApply={(blocks) => {
                       if (revise(blocks, undefined, preparationState.baseline ?? plan.planningBaseline)) setPreparationState(null)
                     }} /></div>}
                     {assignment && assignment.atomicGoalIds.length > 0 && <details className="mt-3 border-t border-border-color pt-2"><summary className="min-h-10 cursor-pointer py-2 text-sm text-text-secondary">{language === 'de' ? 'Enthaltene Lernziele' : 'Included learning goals'}</summary><ul className="space-y-2 pb-2 text-sm text-text-primary">{assignment.atomicGoalIds.map((id) => <li key={id}>{goals.get(id)?.title ?? id}</li>)}</ul></details>}

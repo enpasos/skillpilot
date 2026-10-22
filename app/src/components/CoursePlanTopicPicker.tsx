@@ -14,6 +14,7 @@ import {
 
 export interface CoursePlanTopicPickerProps {
   goals: ReadonlyMap<string, UiGoal>
+  referenceGoals?: ReadonlyMap<string, UiGoal>
   visibleChildrenByParent?: ReadonlyMap<string, readonly string[]>
   selectedGoalIds: readonly string[]
   onChange: (goalIds: string[]) => void
@@ -36,7 +37,7 @@ function TopicCheckbox({ checked, mixed, disabled, label, onChange }: {
 }
 
 export function CoursePlanTopicPicker({
-  goals, visibleChildrenByParent, selectedGoalIds, onChange, language, disabled = false,
+  goals, referenceGoals, visibleChildrenByParent, selectedGoalIds, onChange, language, disabled = false,
 }: CoursePlanTopicPickerProps) {
   const prefix = useId()
   const de = language === 'de'
@@ -52,10 +53,10 @@ export function CoursePlanTopicPicker({
   const nodeResolutions = useMemo(() => new Map([...goals.keys()].map((id) => [
     id, resolveCoursePlanTopicSelection([id], goals, visibleChildrenByParent),
   ])), [goals, visibleChildrenByParent])
-  const tasks = useMemo(() => findCoursePlanMatchingTasks(selectedGoalIds, goals, visibleChildrenByParent),
-    [selectedGoalIds, goals, visibleChildrenByParent])
-  const coverage = useMemo(() => analyzeCoursePlanTaskCoverage(selectedGoalIds, goals, visibleChildrenByParent),
-    [selectedGoalIds, goals, visibleChildrenByParent])
+  const tasks = useMemo(() => findCoursePlanMatchingTasks(selectedGoalIds, goals, visibleChildrenByParent, referenceGoals),
+    [selectedGoalIds, goals, visibleChildrenByParent, referenceGoals])
+  const coverage = useMemo(() => analyzeCoursePlanTaskCoverage(selectedGoalIds, goals, visibleChildrenByParent, referenceGoals),
+    [selectedGoalIds, goals, visibleChildrenByParent, referenceGoals])
   const selectedTasks = new Set(coverage.taskGoalIds)
   const availableTasks = [...new Map([...tasks, ...coverage.taskGoalIds.flatMap((id) => goals.get(id) ?? [])]
     .map((goal) => [goal.id, goal])).values()]

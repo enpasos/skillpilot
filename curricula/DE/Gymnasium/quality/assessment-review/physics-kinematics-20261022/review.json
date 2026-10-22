@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "physics-kinematics-20261022-independent-ai",
+  "reviewedOn": "2026-10-22",
+  "reviewMethod": "independent-ai-counterreview",
+  "result": "accepted",
+  "humanApproval": false,
+  "author": {
+    "provider": "OpenAI",
+    "model": "gpt-6-astra",
+    "reasoningEffort": "ultra",
+    "agent": "/root/physics_kinematics_tasks_astra_ultra"
+  },
+  "reviewer": {
+    "provider": "OpenAI",
+    "agent": "/root/exam_preparation_ui_verification",
+    "mode": "independent-ai",
+    "authoredBodies": false
+  },
+  "additionalReview": {
+    "provider": "OpenAI",
+    "agent": "/root",
+    "mode": "independent-ai",
+    "scope": "German and English numerical calculations, signs, model limits and method-open rubric criteria 6.5 and 6.6",
+    "technicalCheck": {
+      "latexExpressions": 439,
+      "renderer": "KaTeX",
+      "throwOnError": true,
+      "result": "pass"
+    }
+  },
+  "limitations": [
+    "Machine review only; no human approval or learner trial.",
+    "Written model assessment does not establish practical experimental performance.",
+    "Released marks this authored task available locally; it is not official Hessen examination approval.",
+    "Passing the assessment does not automatically set mastery on covered content goals."
+  ],
+  "bodyHashContract": "sha256: followed by lowercase hexadecimal SHA-256 of the exact UTF-8 field string, including its whitespace.",
+  "semanticFingerprintContract": "semantic-kind-source-fingerprint-v1",
+  "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+  "parentGoalId": "424b07df-bf66-5d7f-99f5-f28b32ad1f22",
+  "unchangedOrdinaryContent": {
+    "semanticKind": "curricularAtomic",
+    "count": 478,
+    "goalFingerprintPairsSha256": "sha256:fb9eb916e2732e0e9e2173fd70b71889a3481699d6b56018d94ba7a4b8288acb"
+  },
+  "findings": [
+    {
+      "id": "physics-and-numerics",
+      "result": "pass",
+      "rationale": "Independently recalculated all event times, signs, speeds, heights, horizontal table entries and trajectory coefficient using constant-acceleration equations."
+    },
+    {
+      "id": "bilingual-and-scoring",
+      "result": "pass",
+      "rationale": "Full German and English task, solution and rubric review; six subtasks and 36 independent one-point criteria per task sum to 36, with passing threshold 22. Equivalent methods and consistent carry-forward are explicitly allowed."
+    },
+    {
+      "id": "vertical-method-choice",
+      "result": "corrected-and-accepted",
+      "rationale": "Criteria 6.5 and 6.6 now permit equivalent kinematic arguments for equal impact speed and different flight times; the illustrated 3-second return is not the only accepted method."
+    },
+    {
+      "id": "scope-and-air-resistance",
+      "result": "pass",
+      "rationale": "Signed scalar coordinates require no vector calculations or total-speed construction. Equal fall times are limited to the ideal model; air resistance may alter vertical motion but is not claimed to couple directions or change arrival order in every possible drag model."
+    },
+    {
+      "id": "honest-coverage",
+      "result": "pass",
+      "rationale": "Only assessed model competencies are mapped; no practical-experiment, free-fall experiment, horizontal-experiment or vector-superposition competency is certified. Requires describe entry knowledge and may differ from assessed coverage."
+    }
+  ],
+  "assessments": [
+    {
+      "goalId": "4ab1cf6d-b808-5b86-9291-85df0b9f2496",
+      "title": "Senkrechter Wurf: Vorzeichen, Scheitelpunkt und Rückkehr",
+      "reviewStatus": "released",
+      "sourceFingerprint": "sha256:f09aa89a40f4115c293794d4e4507dbb5561a979d689195007ef8b72aae536b0",
+      "bodyHashes": {
+        "taskContent": "sha256:05480ef02ccf6b662ec4a63d3ed7babdd990cced3166737ef6da3ae54aaba799",
+        "taskContentEn": "sha256:aebfb9320fd6e74b56bf3ca963a5ecb47164a90a57897d972c49b07bac2d6dcb",
+        "solutionContent": "sha256:a8e0b15f73699b1a671a2b16bdeac232b43613b5087b41695e816e8c27ecead5",
+        "solutionContentEn": "sha256:f9cfebacd1a0c76a8da88273a739dbd472217db894bc7d39a7e5107cb0c13f06"
+      },
+      "requires": [
+        "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+      ],
+      "coveredGoalIds": [
+        "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+      ],
+      "scoring": {
+        "maxPoints": 36,
+        "passingPoints": 22,
+        "criterionCount": 36,
+        "pointSum": 36
+      },
+      "mappingRationale": "Covers constant-acceleration model e4b38061 through signed y(t), v(t), a(t), three corresponding graphs, event times and upward/downward comparison. Requires only that model. The experimental free-fall competency is not claimed.",
+      "independentlyVerifiedValues": {
+        "apexSeconds": 1.5,
+        "apexMetres": 31.25,
+        "crossingSeconds": [
+          0.3819660112501051,
+          2.618033988749895
+        ],
+        "crossingVelocitiesMetresPerSecond": [
+          11.180339887498949,
+          -11.180339887498949
+        ],
+        "upwardImpactSeconds": 4,
+        "downwardImpactSeconds": 1,
+        "bothImpactVelocityMetresPerSecond": -25
+      }
+    },
+    {
+      "goalId": "6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
+      "title": "Waagerechter Wurf: Zwei Bewegungen, eine gemeinsame Zeit",
+      "reviewStatus": "released",
+      "sourceFingerprint": "sha256:ab97e1e3b76f3f254e80b4a58e2a627a201595b91596b975690cda207481e156",
+      "bodyHashes": {
+        "taskContent": "sha256:d4773b9ac0aaa396fbd07f5b8b8ce617a59d7439381f67c27ab0b7d68dc2ab0b",
+        "taskContentEn": "sha256:ca87b1b0078105d0bdeb3e292d97e44a276b848cc3a40a4a6a89fbf653f77730",
+        "solutionContent": "sha256:86cd5e9e2a04b06c3e354eb70dd82f5d808d75c61f293fda66d5c61e5716b5d0",
+        "solutionContentEn": "sha256:9d713cfbdb767f7808208c08d96f2f930ac8fd00ab027b80277dc72a06a15928"
+      },
+      "requires": [
+        "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+        "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd"
+      ],
+      "coveredGoalIds": [
+        "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+        "d6dc0e02-831d-4894-a61a-852bcc74f147"
+      ],
+      "scoring": {
+        "maxPoints": 36,
+        "passingPoints": 22,
+        "criterionCount": 36,
+        "pointSum": 36
+      },
+      "mappingRationale": "Requires constant-acceleration model e4b38061 and uniform-motion entry knowledge 971beafa; covers e4b38061 and modelling/idealization d6dc0e02 through scalar laws, graphs and explicit point-particle, uniform-field and drag-limit reasoning. Uniform motion, horizontal projection 89a8cf15 and free-fall 09029573 include practical experimental aspects not established here; vector-superposition 68c90ba6 is neither covered nor a prerequisite. Modelling d6dc0e02 is assessed, not an entry prerequisite, avoiding its unrelated friction branch.",
+      "independentlyVerifiedValues": {
+        "sharedImpactSeconds": 0.5,
+        "horizontalRangeMetres": 1,
+        "horizontalVelocityMetresPerSecond": 2,
+        "verticalImpactVelocityMetresPerSecond": -5,
+        "trajectoryQuadraticCoefficientPerMetre": 1.25,
+        "doubledHorizontalSpeedRangeMetres": 2
+      }
+    }
+  ]
+}

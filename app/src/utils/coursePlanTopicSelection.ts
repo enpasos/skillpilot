@@ -38,6 +38,63 @@ export function resolveCoursePlanTopicSelection(
   return { atomicGoalIds: [...atoms], invalidGoalIds: [...invalid] }
 }
 
+/**
+ * Resolve authored references through the current target projection. A canonical
+ * cluster omitted from that tree can still name its already-visible atoms; it
+ * cannot introduce a hidden atom or turn a prerequisite into task coverage.
+ */
+export function resolveCoursePlanReferencedTopics(
+  rootIds: readonly string[],
+  goals: ReadonlyMap<string, UiGoal>,
+  visibleChildren?: VisibleChildren,
+  referenceGoals?: ReadonlyMap<string, UiGoal>,
+): CoursePlanTopicSelection {
+  const atoms = new Set<string>()
+  const invalid = new Set<string>()
+  const cache = new Map<string, readonly string[] | null>()
+  const visiting = new Set<string>()
+  const resolveRefId = (id: string, lookup: ReadonlyMap<string, UiGoal> | undefined) => {
+    if (lookup?.has(id)) return id
+    const separator = id.indexOf(':')
+    if (separator >= 0 && lookup?.has(id.slice(separator + 1))) return id.slice(separator + 1)
+    return null
+  }
+  const resolve = (ref: string): readonly string[] | null => {
+    if (cache.has(ref)) return cache.get(ref)!
+    const visibleId = resolveRefId(ref, goals)
+    if (visibleId) {
+      const projected = resolveCoursePlanTopicSelection([visibleId], goals, visibleChildren)
+      const result = projected.invalidGoalIds.length === 0 ? projected.atomicGoalIds : null
+      cache.set(ref, result)
+      return result
+    }
+    const canonicalId = resolveRefId(ref, referenceGoals)
+    const canonical = canonicalId ? referenceGoals?.get(canonicalId) : undefined
+    // An unavailable canonical atom remains unavailable, even if its text is
+    // known. Only a structural cluster may serve as an alternate reference.
+    if (!canonical || canonical.type === 'atomic' || canonical.contains.length === 0
+      || visiting.has(canonical.id)) return null
+    visiting.add(canonical.id)
+    const resolved = new Set<string>()
+    let valid = true
+    for (const childId of canonical.contains) {
+      const childAtoms = resolve(childId)
+      if (!childAtoms) { valid = false; break }
+      childAtoms.forEach((id) => resolved.add(id))
+    }
+    visiting.delete(canonical.id)
+    const result = valid && resolved.size > 0 ? [...resolved] : null
+    cache.set(ref, result)
+    return result
+  }
+  for (const rootId of rootIds) {
+    const resolved = resolve(rootId)
+    if (resolved) resolved.forEach((id) => atoms.add(id))
+    else invalid.add(rootId)
+  }
+  return { atomicGoalIds: [...atoms], invalidGoalIds: [...invalid] }
+}
+
 function createResolutionLookup(
   goals: ReadonlyMap<string, UiGoal>,
   visibleChildren?: VisibleChildren,
@@ -206,6 +263,7 @@ export function findCoursePlanMatchingTasks(
   selectedGoalIds: readonly string[],
   goals: ReadonlyMap<string, UiGoal>,
   visibleChildren?: VisibleChildren,
+  referenceGoals?: ReadonlyMap<string, UiGoal>,
 ): UiGoal[] {
   const selected = new Set(resolveCoursePlanTopicSelection(selectedGoalIds, goals, visibleChildren).atomicGoalIds)
   const direct = new Set(selectedGoalIds)
@@ -214,7 +272,7 @@ export function findCoursePlanMatchingTasks(
     if (!exam || !isUsableCoursePlanTask(goal)) return false
     if (direct.has(goal.id) || selected.has(goal.id)) return true
     if (!exam.coveredGoalIds?.length) return false
-    const covered = resolveCoursePlanTopicSelection(exam.coveredGoalIds, goals, visibleChildren)
+    const covered = resolveCoursePlanReferencedTopics(exam.coveredGoalIds, goals, visibleChildren, referenceGoals)
     return covered.invalidGoalIds.length === 0 && covered.atomicGoalIds.length > 0
       && covered.atomicGoalIds.every((id) => selected.has(id))
   })
@@ -235,6 +293,7 @@ export function analyzeCoursePlanTaskCoverage(
   selectedGoalIds: readonly string[],
   goals: ReadonlyMap<string, UiGoal>,
   visibleChildren?: VisibleChildren,
+  referenceGoals?: ReadonlyMap<string, UiGoal>,
 ): CoursePlanTaskCoverage {
   const selection = resolveCoursePlanTopicSelection(selectedGoalIds, goals, visibleChildren)
   const topicGoalIds = selection.atomicGoalIds.filter((id) => !isCoursePlanAssessment(goals.get(id)!))
@@ -249,7 +308,7 @@ export function analyzeCoursePlanTaskCoverage(
       unknown.add(id)
       continue
     }
-    const resolution = resolveCoursePlanTopicSelection(refs, goals, visibleChildren)
+    const resolution = resolveCoursePlanReferencedTopics(refs, goals, visibleChildren, referenceGoals)
     resolution.invalidGoalIds.forEach((ref) => unavailable.add(ref))
     if (resolution.invalidGoalIds.length || resolution.atomicGoalIds.length === 0
       || resolution.atomicGoalIds.some((ref) => isCoursePlanAssessment(goals.get(ref)!))) unknown.add(id)

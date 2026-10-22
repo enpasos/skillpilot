@@ -1,6 +1,15 @@
 import assert from 'node:assert/strict'
+import { readFileSync } from 'node:fs'
 import type { MilestoneCoursePlanBlock, TeacherCoursePlan, TeacherCoursePlanBlock } from '../coursePlanTypes'
 import type { UiGoal } from '../goalTypes'
+import type { SkillLandscape } from '../landscapeTypes'
+import { normalizeLandscape } from '../hooks/useLandscapes'
+import { collectCompositionProjectionRoleGoalIds, type CompositionView } from './authoring/compositionViewAuthoring'
+import { applyCompositionViewProjection } from './compositionViewRuntime'
+import { CANONICAL_GYMNASIUM_ROOT_ID } from './curriculumDisplay'
+import { materializeLearnerLearningPlanCopy } from './learnerCoursePlanPublication'
+import { normalizeLearnerProjectedEntries } from './learnerTreeProjection'
+import { buildVisibleChildrenMap } from './treeProjectionRuntime'
 import {
   buildCoursePlanExamPreparationBlocks, coursePlanPreparationConsentKey,
   defaultCoursePlanPreparationEnd, previewCoursePlanExamPreparation,
@@ -41,14 +50,17 @@ function planWith(blocks: TeacherCoursePlanBlock[] = [milestone]): TeacherCourse
   return plan
 }
 const emptyPlan = planWith()
-const previewFor = (plan = emptyPlan, goalIndex = goals, exam = milestone, from = startDate, until = endDate) => (
-  previewCoursePlanExamPreparation({ plan, milestone: exam, goals: goalIndex, startDate: from, endDate: until })
+const previewFor = (plan = emptyPlan, goalIndex = goals, exam = milestone, from = startDate, until = endDate,
+  options: { includeSuggestions?: boolean; referenceGoals?: ReadonlyMap<string, UiGoal> } = {}) => (
+  previewCoursePlanExamPreparation({ plan, milestone: exam, goals: goalIndex, startDate: from, endDate: until,
+    includeSuggestions: options.includeSuggestions ?? true, referenceGoals: options.referenceGoals })
 )
 const build = (plan: TeacherCoursePlan, goalIndex = goals, exam = milestone, from = startDate, until = endDate,
-  options: { moveLaterGoals?: boolean; includeExternalFoundations?: boolean } = {}) => (
+  options: { moveLaterGoals?: boolean; includeSuggestions?: boolean; referenceGoals?: ReadonlyMap<string, UiGoal> } = {}) => (
   buildCoursePlanExamPreparationBlocks({
-    plan, milestone: exam, preview: previewFor(plan, goalIndex, exam, from, until), goals: goalIndex,
-    startDate: from, endDate: until, blockId: 'preparation', title: 'Vorbereitung', moveLaterGoals: false, ...options,
+    plan, milestone: exam, preview: previewFor(plan, goalIndex, exam, from, until, options), goals: goalIndex,
+    startDate: from, endDate: until, blockId: 'preparation', title: 'Vorbereitung',
+    moveLaterGoals: options.moveLaterGoals ?? false,
   })
 )
 
@@ -140,17 +152,18 @@ assert.equal(build(roundingPlan, roundingGoals, roundingExam, startDate, startDa
   'the builder must reject a plan that would push an already timely required goal behind the deadline')
 
 // Prerequisite-only external references stay outside the target universe and
-// coverage calculation. Acceptance acknowledges separate checking, never mastery.
+// coverage calculation. They remain visible advice without requiring a waiver.
 const externalGoals = new Map(goals)
 externalGoals.set('b', { ...goals.get('b')!, requires: ['math:linear-equations'] })
 const externalPreview = previewFor(emptyPlan, externalGoals)
 assert.deepEqual(externalPreview.externalFoundationGoalIds, ['math:linear-equations'])
 assert.deepEqual(externalPreview.unavailableGoalIds, [])
 assert(!externalPreview.requiredGoalIds.includes('math:linear-equations'))
-assert.equal(build(emptyPlan, externalGoals), null)
-const externalBlocks = build(emptyPlan, externalGoals, milestone, startDate, endDate, { includeExternalFoundations: true })
+const externalBlocks = build(emptyPlan, externalGoals)
 assert(externalBlocks)
-assert(!JSON.stringify(externalBlocks).includes('linear-equations'), 'external acknowledgement never schedules or masters external goals')
+assert(!JSON.stringify(externalBlocks).includes('linear-equations'), 'external advice never schedules or masters external goals')
+assert(build(emptyPlan, externalGoals, milestone, startDate, endDate, { includeSuggestions: false }),
+  'external foundations do not prevent preparing just the explicit selection')
 const qualifiedGoals = new Map(goals)
 qualifiedGoals.set('b', { ...goals.get('b')!, requires: ['physics:foundation'] })
 assert.deepEqual(previewFor(emptyPlan, qualifiedGoals).foundationGoalIds, ['foundation'])
@@ -160,21 +173,136 @@ outsideBaselineGoals.set('b', { ...goals.get('b')!, requires: ['external-atom'] 
 assert.deepEqual(previewFor(masteredPlan, outsideBaselineGoals).externalFoundationGoalIds, ['external-atom'],
   'an available goal outside the authoritative course target remains external')
 
-// Authored coverage errors remain hard blockers even when the same reference
-// also occurs as an external prerequisite. Requires are never task coverage.
+// Unknown assessment coverage and unavailable recommendation references stay
+// visible as limitations, but cannot override a learner's explicit selection.
 const missingCoverage = new Map(externalGoals)
 missingCoverage.set('selected-task', { ...task('selected-task', ['math:linear-equations']), requires: ['a'] })
 assert(previewFor(emptyPlan, missingCoverage).unavailableGoalIds.includes('math:linear-equations'))
-assert.equal(build(emptyPlan, missingCoverage, milestone, startDate, endDate, { includeExternalFoundations: true }), null)
+assert(build(emptyPlan, missingCoverage, milestone, startDate, endDate, { includeSuggestions: false }))
 const unknownTask = new Map(goals).set('selected-task', { ...task('selected-task'), requires: ['a', 'b'] })
 assert.deepEqual(previewFor(emptyPlan, unknownTask).coverage.unknownTaskIds, ['selected-task'])
-assert.equal(build(emptyPlan, unknownTask), null)
+assert(build(emptyPlan, unknownTask, milestone, startDate, endDate, { includeSuggestions: false }),
+  'a usable selected task remains preparable even without explicit coverage metadata')
 const cycleGoals = new Map(goals)
 cycleGoals.set('a', { ...goal('a'), requires: ['b'] })
 cycleGoals.set('b', { ...goal('b'), requires: ['a'] })
 const cyclePreview = previewFor(emptyPlan, cycleGoals)
 assert(cyclePreview.unavailableGoalIds.includes('a') && cyclePreview.unavailableGoalIds.includes('b'))
-assert.equal(build(emptyPlan, cycleGoals), null, 'cyclic prerequisites cannot produce a promise of complete preparation')
+assert(build(emptyPlan, cycleGoals, milestone, startDate, endDate, { includeSuggestions: false }),
+  'an unresolved cycle in optional additions cannot force those additions into the selected preparation')
+const selectedCycleExam = { ...milestone, goalIds: ['a', 'b', 'selected-task'] }
+assert.equal(build(planWith([selectedCycleExam]), cycleGoals, selectedCycleExam, startDate, endDate,
+  { includeSuggestions: false }), null, 'a real cycle inside the selected work remains a hard blocker')
+
+// The default path respects the selected topics. A suggestion is an addition
+// only after opting in; rejecting it cannot prevent creating preparation.
+const selectedGoals = new Map(goals).set('c', goal('c'))
+const selectedExam = { ...milestone, goalIds: ['a', 'c', 'selected-task'] }
+const selectedPlan = planWith([selectedExam])
+const selectedOnly = previewCoursePlanExamPreparation({
+  plan: selectedPlan, milestone: selectedExam, goals: selectedGoals, startDate, endDate,
+})
+assert.equal(selectedOnly.includeSuggestions, false)
+assert.deepEqual(new Set(selectedOnly.requiredGoalIds), new Set(['a', 'c', 'selected-task']))
+assert.deepEqual(selectedOnly.coverage.additionalGoalIds, ['b'])
+assert(selectedOnly.foundationGoalIds.includes('foundation'), 'optional foundations remain visible recommendations')
+assert(!selectedOnly.toPlanGoalIds.includes('b') && !selectedOnly.toPlanGoalIds.includes('foundation'))
+assert.deepEqual(selectedOnly.invalidSelectedGoalIds, [])
+const selectedBlocks = buildCoursePlanExamPreparationBlocks({
+  plan: selectedPlan, milestone: selectedExam, preview: selectedOnly, goals: selectedGoals,
+  startDate, endDate, blockId: 'selected-only', title: 'Gewählte Themen', moveLaterGoals: false,
+})
+assert(selectedBlocks, 'the unextended default selection can be adopted without consenting to extras')
+const selectedCopy = materializeLearnerLearningPlanCopy({
+  plan: { ...selectedPlan, blocks: selectedBlocks }, fallbackPlanLabel: 'Klausur', goals: selectedGoals,
+})
+assert(selectedCopy.ok)
+assert.deepEqual(new Set(selectedCopy.copy.blocks.filter((block) => block.kind === 'learning')
+  .flatMap((block) => block.atomicGoalIds ?? [])), new Set(['a', 'c', 'selected-task']))
+const withSuggestions = previewCoursePlanExamPreparation({
+  plan: selectedPlan, milestone: selectedExam, goals: selectedGoals, startDate, endDate, includeSuggestions: true,
+})
+assert.equal(withSuggestions.includeSuggestions, true)
+assert.deepEqual(new Set(withSuggestions.requiredGoalIds), new Set(['a', 'b', 'c', 'foundation', 'selected-task']))
+assert.notEqual(coursePlanPreparationConsentKey(selectedPlan, selectedExam, selectedOnly, startDate, endDate),
+  coursePlanPreparationConsentKey(selectedPlan, selectedExam, withSuggestions, startDate, endDate),
+  'opting in changes the preview identity even if previously mastered work hides a visible count difference')
+
+// A draft task cannot become scheduled assessment work. The selected content
+// can still be prepared, and the omitted task remains explicitly disclosed.
+const draftGoal = { ...task('draft-task', ['a']), examData: { ...task('draft-task', ['a']).examData!, reviewStatus: 'draft' } }
+const unusableGoal = { ...task('unusable-task', ['a']), examData: { ...task('unusable-task', ['a']).examData!, taskContent: '' } }
+for (const excluded of [draftGoal, unusableGoal]) {
+  const taskGoals = new Map(goals).set(excluded.id, excluded)
+  const taskExam = { ...milestone, goalIds: ['a', excluded.id] }
+  const taskPlan = planWith([taskExam])
+  const taskPreview = previewCoursePlanExamPreparation({ plan: taskPlan, milestone: taskExam,
+    goals: taskGoals, startDate, endDate })
+  assert.deepEqual(taskPreview.excludedTaskGoalIds, [excluded.id])
+  assert.deepEqual(taskPreview.requiredGoalIds, ['a'])
+  assert(!taskPreview.toPlanGoalIds.includes(excluded.id))
+  assert(buildCoursePlanExamPreparationBlocks({ plan: taskPlan, milestone: taskExam, preview: taskPreview,
+    goals: taskGoals, startDate, endDate, blockId: 'content-only', title: 'Inhalte', moveLaterGoals: false }),
+  'unusable assessment material does not block valid selected content')
+}
+const missingSelection = { ...milestone, goalIds: ['a', 'missing-selected-root'] }
+const missingPlan = planWith([missingSelection])
+assert(previewFor(missingPlan, goals, missingSelection, startDate, endDate, { includeSuggestions: false })
+  .invalidSelectedGoalIds.includes('missing-selected-root'))
+assert.equal(build(missingPlan, goals, missingSelection, startDate, endDate, { includeSuggestions: false }), null,
+  'an unavailable explicit selection remains invalid instead of silently disappearing')
+
+// The actual Hessen LK view references the canonical free-fall cluster and
+// its atoms redundantly in one task. The cluster is not a captured atom, and
+// declining suggested preparation must not strand the chosen assessment.
+const canonicalPhysics = normalizeLandscape(JSON.parse(readFileSync(new URL(
+  '../../../curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json', import.meta.url), 'utf8')) as SkillLandscape)
+assert(canonicalPhysics)
+const physicsReferences = new Map(canonicalPhysics.goals.map((entry) => [entry.id, entry]))
+const physicsView = JSON.parse(readFileSync(new URL(
+  '../../../curricula/DE/Gymnasium/composition-views/physik/de-he-sekii-lk.view.json', import.meta.url), 'utf8')) as CompositionView
+const [projectedPhysics] = normalizeLearnerProjectedEntries(applyCompositionViewProjection([canonicalPhysics], physicsView))
+assert(projectedPhysics)
+const projectedPhysicsGoals = new Map(projectedPhysics.goals.map((entry) => [entry.id, entry]))
+const physicsChildren = buildVisibleChildrenMap(projectedPhysicsGoals, undefined, {
+  [CANONICAL_GYMNASIUM_ROOT_ID]: { selected: true, stage: 'SekII' },
+  [canonicalPhysics.meta.landscapeId]: { selected: true, filterId: 'LK,DE-HE' },
+})
+const physicsRoles = collectCompositionProjectionRoleGoalIds(physicsView.rootNodes, physicsReferences)
+const physicsScope = [...physicsRoles.targetGoalIds].filter((id) => physicsReferences.get(id)?.type === 'atomic')
+const fallCluster = '230345f3-c360-4963-b390-ab94e3e2c864'
+const fallAtom = '09029573-864f-40ca-bf8a-cee7bf6dcb73'
+const fallAssessment = 'a9562b05-c54d-5635-9244-3f7dd24a8642'
+assert(!physicsScope.includes(fallCluster))
+assert(physicsScope.includes(fallAtom) && physicsScope.includes(fallAssessment))
+const physicsExam = { ...milestone, goalIds: [fallAtom, fallAssessment] }
+const physicsPlan: TeacherCoursePlan = { ...planWith([physicsExam]), planningBaseline: {
+  source: 'learner-planning-landscape-v1', curriculumId: CANONICAL_GYMNASIUM_ROOT_ID,
+  landscapeId: canonicalPhysics.meta.landscapeId, scopeAtomicGoalIds: physicsScope,
+  openAtomicGoalIds: [...physicsScope], totalAtomicGoalCount: physicsScope.length,
+  masteredAtomicGoalCount: 0, capturedAt: `${startDate}T09:00:00.000Z`,
+} }
+const physicsBefore = JSON.stringify(physicsPlan)
+const physicsPreview = previewCoursePlanExamPreparation({ plan: physicsPlan, milestone: physicsExam,
+  goals: projectedPhysicsGoals, referenceGoals: physicsReferences, visibleChildren: physicsChildren,
+  startDate, endDate })
+assert.deepEqual(new Set(physicsPreview.requiredGoalIds), new Set([fallAtom, fallAssessment]))
+assert.deepEqual(physicsPreview.invalidSelectedGoalIds, [])
+assert(!physicsPreview.unavailableGoalIds.includes(fallAtom)
+  && !physicsPreview.unavailableGoalIds.includes(fallAssessment), 'free fall and its assessment are not a dependency cycle')
+const physicsBlocks = buildCoursePlanExamPreparationBlocks({ plan: physicsPlan, milestone: physicsExam,
+  preview: physicsPreview, goals: projectedPhysicsGoals, visibleChildren: physicsChildren,
+  startDate, endDate, blockId: 'physics-preparation', title: 'Physikvorbereitung', moveLaterGoals: false })
+assert(physicsBlocks)
+const physicsCopy = materializeLearnerLearningPlanCopy({ plan: { ...physicsPlan, blocks: physicsBlocks },
+  fallbackPlanLabel: 'Kinematik', goals: projectedPhysicsGoals, visibleChildrenByParent: physicsChildren })
+assert(physicsCopy.ok, 'actual selected Hessen LK preparation can reach publication')
+const physicsCaptured = physicsCopy.copy.blocks.filter((block) => block.kind === 'learning')
+  .flatMap((block) => block.atomicGoalIds ?? [])
+assert.deepEqual(new Set(physicsCaptured), new Set([fallAtom, fallAssessment]))
+assert(physicsCaptured.every((id) => physicsScope.includes(id) && physicsReferences.get(id)?.type === 'atomic'))
+assert(!physicsCaptured.includes(fallCluster), 'a duplicate cluster reference never becomes captured atomic work')
+assert.equal(JSON.stringify(physicsPlan), physicsBefore, 'preparation does not change scope, baseline mastery or exam selection')
 
 assert.notEqual(coursePlanPreparationConsentKey(emptyPlan, milestone, basic, startDate, endDate),
   coursePlanPreparationConsentKey(emptyPlan, { ...milestone, goalIds: ['different-package'] }, basic, startDate, endDate),

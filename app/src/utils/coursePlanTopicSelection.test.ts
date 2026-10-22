@@ -1,11 +1,15 @@
 import assert from 'node:assert/strict'
+import { readFileSync } from 'node:fs'
 import type { UiGoal } from '../goalTypes'
+import { convertLearningGoal } from '../goalTypes'
+import type { SkillLandscape } from '../landscapeTypes'
 import {
   buildCoursePlanTopicTree,
   analyzeCoursePlanTaskCoverage,
   filterCoursePlanTopicTree,
   findCoursePlanMatchingTasks,
   normalizeCoursePlanTopicGoalIds,
+  resolveCoursePlanReferencedTopics,
   resolveCoursePlanTopicSelection,
   setCoursePlanTopicSelected,
 } from './coursePlanTopicSelection'
@@ -136,5 +140,72 @@ assert.deepEqual(analyzeCoursePlanTaskCoverage(['fall', 'selected-task', 'overla
   'Overlapping contains coverage counts each canonical content goal once')
 assert.deepEqual(analyzeCoursePlanTaskCoverage(['fall'], coverageGoals).uncoveredGoalIds, ['a', 'b'],
   'Available packages do not count as selected assessment coverage')
+
+// HE-LK places these two content atoms directly in the learner tree. The
+// published task also references their canonical parent, which is not visible.
+const canonicalPhysics = JSON.parse(readFileSync(new URL(
+  '../../../curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json', import.meta.url,
+), 'utf8')) as SkillLandscape
+const physicsReferences = new Map(canonicalPhysics.goals.map((entry) => {
+  const converted = convertLearningGoal(entry, { landscapeId: canonicalPhysics.landscapeId })
+  return [converted.id, converted] as const
+}))
+const kinematicsTaskIds = ['4ab1cf6d-b808-5b86-9291-85df0b9f2496', '6ea3fb3c-abdc-568f-ab13-97c36dc274e4']
+const kinematicsTopics = ['e4b38061-1f28-43ad-8371-a3e7c0e81856', 'd6dc0e02-831d-4894-a61a-852bcc74f147']
+const matchingKinematics = new Set(findCoursePlanMatchingTasks(kinematicsTopics, physicsReferences).map(({ id }) => id))
+assert(kinematicsTaskIds.every((id) => matchingKinematics.has(id)),
+  'both reviewed kinematics packages must be usable candidates in the course planner')
+assert.deepEqual(analyzeCoursePlanTaskCoverage([...kinematicsTopics, ...kinematicsTaskIds], physicsReferences).uncoveredGoalIds, [],
+  'the written kinematics packages cover their explicitly mapped model competencies')
+const freeFallClusterId = '230345f3-c360-4963-b390-ab94e3e2c864'
+const physicsTaskId = 'a9562b05-c54d-5635-9244-3f7dd24a8642'
+const physicsContentIds = [
+  'ce431132-dfc4-42c2-aff6-bd72035190f8', 'e4b38061-1f28-43ad-8371-a3e7c0e81856',
+  '09029573-864f-40ca-bf8a-cee7bf6dcb73', '4a2bf015-052b-4af0-aed7-324259fa1a8a',
+  'ac25ffe3-fd42-592d-a937-79cc13460313',
+]
+const physicsTargets = new Map([physicsTaskId, ...physicsContentIds].map((id) => [id, physicsReferences.get(id)!]))
+assert.equal(physicsTargets.has(freeFallClusterId), false)
+assert.equal(physicsReferences.get(physicsTaskId)?.examData?.coveredGoalIds?.length, 6)
+assert.deepEqual(analyzeCoursePlanTaskCoverage([physicsTaskId], physicsTargets).unknownTaskIds, [physicsTaskId],
+  'the projected tree alone cannot resolve an omitted canonical coverage wrapper')
+const physicsCoverage = analyzeCoursePlanTaskCoverage([physicsTaskId], physicsTargets, undefined, physicsReferences)
+assert.deepEqual(physicsCoverage.coveredGoalIds, physicsContentIds,
+  'six authored roots resolve to five unique, already-visible HE-LK content atoms')
+assert.deepEqual(physicsCoverage.unavailableGoalIds, [])
+assert.deepEqual(physicsCoverage.unknownTaskIds, [])
+assert.deepEqual(findCoursePlanMatchingTasks(physicsContentIds, physicsTargets, undefined, physicsReferences)
+  .map((task) => task.id), [physicsTaskId],
+  'matching assessment candidates resolve canonical wrappers through the same target-safe lookup')
+assert.deepEqual(resolveCoursePlanReferencedTopics([`physics:${freeFallClusterId}`], physicsTargets, undefined, physicsReferences), {
+  atomicGoalIds: ['e4b38061-1f28-43ad-8371-a3e7c0e81856', '09029573-864f-40ca-bf8a-cee7bf6dcb73'], invalidGoalIds: [],
+}, 'qualified references use the same canonical cluster while retaining visible target IDs')
+const partialOutsideReferences = new Map(physicsReferences)
+partialOutsideReferences.set('outside-course', goal('outside-course'))
+partialOutsideReferences.set(freeFallClusterId, {
+  ...physicsReferences.get(freeFallClusterId)!,
+  contains: [...physicsReferences.get(freeFallClusterId)!.contains, 'outside-course'],
+})
+assert.deepEqual(resolveCoursePlanReferencedTopics([freeFallClusterId], physicsTargets, undefined, partialOutsideReferences), {
+  atomicGoalIds: [], invalidGoalIds: [freeFallClusterId],
+}, 'one hidden atom invalidates the entire fallback reference instead of producing partial coverage')
+assert.deepEqual(analyzeCoursePlanTaskCoverage([physicsTaskId], physicsTargets, undefined, partialOutsideReferences).unknownTaskIds,
+  [physicsTaskId], 'a partially out-of-scope canonical cluster remains an unknown task mapping')
+assert.deepEqual(resolveCoursePlanReferencedTopics(['outside-course'], physicsTargets, undefined, partialOutsideReferences), {
+  atomicGoalIds: [], invalidGoalIds: ['outside-course'],
+}, 'known canonical text cannot promote an unavailable atom into the course target')
+assert(analyzeCoursePlanTaskCoverage([freeFallClusterId, physicsTaskId], physicsTargets, undefined, physicsReferences)
+  .unavailableGoalIds.includes(freeFallClusterId), 'fallback resolution does not make an invisible root selectable')
+
+const projectedReferences = index(goal('visible-root', ['a', 'hidden']), goal('hidden'),
+  goal('reference-wrapper', ['visible-root']), goal('cycle-left', ['cycle-right']), goal('cycle-right', ['cycle-left']))
+const projectedTargets = index(goal('visible-root', ['a', 'hidden']), { ...goal('a'), requires: ['outside'] })
+const projectedEdges = new Map([['visible-root', ['a']]])
+assert.deepEqual(resolveCoursePlanReferencedTopics(['visible-root', 'reference-wrapper'], projectedTargets, projectedEdges, projectedReferences), {
+  atomicGoalIds: ['a'], invalidGoalIds: [],
+}, 'visible cluster references always honor the authoritative projection and never add their hidden canonical siblings or requires')
+assert.deepEqual(resolveCoursePlanReferencedTopics(['cycle-left'], projectedTargets, projectedEdges, projectedReferences), {
+  atomicGoalIds: [], invalidGoalIds: ['cycle-left'],
+}, 'canonical reference cycles terminate and cannot create complete coverage')
 
 console.log('coursePlanTopicSelection tests passed')

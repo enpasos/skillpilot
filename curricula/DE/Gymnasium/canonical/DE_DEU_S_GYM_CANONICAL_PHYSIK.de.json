@@ -7025,7 +7025,9 @@
         "8a1d4093-9832-5010-b1ca-9d32d8c05afa",
         "6ba2e47f-7e88-5d30-8f1a-3f4b4f785ca1",
         "6d25344c-35d7-5853-925d-2bccbaf50630",
-        "7f83e25c-38f7-5ac2-8f9c-ec54eeef1026"
+        "7f83e25c-38f7-5ac2-8f9c-ec54eeef1026",
+        "4ab1cf6d-b808-5b86-9291-85df0b9f2496",
+        "6ea3fb3c-abdc-568f-ab13-97c36dc274e4"
       ],
       "requires": [],
       "dimensionTags": {
@@ -7052,6 +7054,7 @@
           "DE-BB",
           "DE-BE",
           "DE-BW",
+          "DE-BY",
           "DE-HB",
           "DE-HE",
           "DE-HH",
@@ -56443,6 +56446,534 @@
               "id": "s3",
               "points": 8,
               "description": "Linienverschiebung von Absorption getrennt; Schlussgrenzen und Zusatzprüfung.\nEN: Line shifts distinguished from absorption; conclusion limits and extra check."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "4ab1cf6d-b808-5b86-9291-85df0b9f2496",
+      "title": "Senkrechter Wurf: Vorzeichen, Scheitelpunkt und Rückkehr",
+      "titleEn": "Vertical projection: signs, highest point and return",
+      "description": "Die lernende Person kann einen senkrechten Aufwärts- und Abwärtswurf mit konsistenten Vorzeichen, Ereigniszeiten und Orts-, Geschwindigkeits- und Beschleunigungsdiagrammen selbstständig untersuchen und die Ergebnisse begründen. 36 BE.",
+      "descriptionEn": "The learner can independently analyse vertical upward and downward projection using consistent signs, event times and position, velocity and acceleration graphs, and justify the results. 36 marks.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+      ],
+      "type": "atomic",
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN",
+          "PK4_KOMMUNIZIEREN",
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "E",
+        "area": "Klausurtraining"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityFromRequires": true
+      },
+      "examData": {
+        "reviewStatus": "released",
+        "reviewNote": "Own authored assessment. Independent OpenAI AI counterreview of German and English tasks, solutions, scoring and conservative coverage accepted on 2026-10-22; exact reviewed bodies and mapping rationale are retained in curricula/DE/Gymnasium/quality/assessment-review/physics-kinematics-20261022/review.json. No human approval, experimental performance, official exam endorsement or automatic mastery of covered goals is claimed.",
+        "coveredGoalIds": [
+          "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+        ],
+        "coveredStrands": [
+          "LI_BEWEGUNG"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "taskContent": "## Senkrechter Wurf: Vorzeichen, Scheitelpunkt und Rückkehr\n\n**Umfang: 36 BE.** Eigenständiges Klausurmodul; ein Taschenrechner und eine Formelsammlung sind zulässig. Vektorrechnung ist nicht erforderlich.\n\nEin kleines Objekt wird im Modell von einer Plattform senkrecht nach oben geworfen. Beim Abwurf gilt $t=0$, die Höhe über der Auffangebene beträgt $y_0=20{,}0\\,\\mathrm m$, die Anfangsgeschwindigkeit $v_0=+15{,}0\\,\\mathrm{m/s}$. Die positive $y$-Richtung zeigt nach oben; $y=0$ ist die Auffangebene. Betrachten Sie das Objekt als Massepunkt, vernachlässigen Sie Luftwiderstand und verwenden Sie das homogene Schwerefeld mit dem gerundeten Modellwert $g=10{,}0\\,\\mathrm{m/s^2}$. Die Beschreibung gilt vom Abwurf bis unmittelbar vor dem ersten Auftreffen. Die Zahlen sind eigene didaktisch konstruierte Modelldaten.\n\n1. Geben Sie $y_0$, $v_0$ und die vorzeichenbehaftete Beschleunigung $a$ an. Stellen Sie die Gesetze $y(t)$ und $v(t)$ auf. Erklären Sie anhand der Vorzeichen, weshalb das Objekt zu Beginn langsamer wird, obwohl die Beschleunigung konstant ist. **(6 BE)**\n\n2. Bestimmen Sie Zeitpunkt und Höhe des Scheitelpunkts. Eine Schülerin behauptet: „Am höchsten Punkt ist das Objekt kurz in Ruhe, also ist dort auch seine Beschleunigung null.“ Beurteilen und begründen Sie diese Aussage. **(4 BE)**\n\n3. Eine Lichtschranke liegt in der Höhe $y=25{,}0\\,\\mathrm m$. Berechnen Sie alle Durchgangszeiten während des Flugs und die jeweilige vorzeichenbehaftete Geschwindigkeit. Ordnen Sie die beiden Ereignisse dem Aufstieg und dem Abstieg zu. **(6 BE)**\n\n4. Berechnen Sie den Auftreffzeitpunkt sowie Geschwindigkeit und Geschwindigkeitsbetrag unmittelbar davor. Erläutern Sie, welche Bedeutung die beiden rechnerischen Lösungen der Gleichung $y(t)=0$ für diesen Versuch haben, und geben Sie den physikalisch betrachteten Zeitbereich an. **(6 BE)**\n\n5. Skizzieren Sie für diesen Zeitbereich drei Diagramme: $y$ gegen $t$, $v$ gegen $t$ und $a$ gegen $t$. Beschriften Sie die Achsen mit Größen und Einheiten. Markieren Sie im Ortsdiagramm Abwurf, Scheitelpunkt und Auftreffen sowie im Geschwindigkeitsdiagramm die zugehörigen Geschwindigkeiten. Stellen Sie den Verlauf bis unmittelbar vor dem Auftreffen dar; der Stoß selbst gehört nicht zum Modell. **(8 BE)**\n\n6. In einem getrennten zweiten Versuch wird dasselbe Objekt von derselben Höhe mit dem Anfangsgeschwindigkeitsbetrag $15{,}0\\,\\mathrm{m/s}$ senkrecht **nach unten** geworfen. Die positive Richtung bleibt nach oben, die Uhr startet erneut beim Abwurf. Stellen Sie $y_\\mathrm{ab}(t)$ und $v_\\mathrm{ab}(t)$ auf und berechnen Sie Auftreffzeit und vorzeichenbehaftete Auftreffgeschwindigkeit. Begründen Sie mit dem Bewegungsverlauf, weshalb beide Versuche denselben Auftreffgeschwindigkeitsbetrag, aber verschiedene Flugzeiten liefern. **(6 BE)**",
+        "taskContentEn": "## Vertical projection: signs, highest point and return\n\n**Total: 36 marks.** Independent written-test module; a calculator and formula sheet may be used. No vector calculations are needed.\n\nIn the model, a small object is projected vertically upwards from a platform. At release, $t=0$, its height above the catching plane is $y_0=20.0\\,\\mathrm m$ and its initial velocity is $v_0=+15.0\\,\\mathrm{m/s}$. The positive $y$-direction is upwards; $y=0$ is the catching plane. Treat the object as a point particle, neglect air resistance and use a uniform gravitational field with the rounded model value $g=10.0\\,\\mathrm{m/s^2}$. The description applies from release until immediately before the first impact. These are original, constructed teaching data.\n\n1. State $y_0$, $v_0$ and the signed acceleration $a$. Formulate the equations $y(t)$ and $v(t)$. Use their signs to explain why the object initially slows down even though its acceleration is constant. **(6 marks)**\n\n2. Find the time and height of the highest point. A student claims: “At the highest point the object is momentarily at rest, so its acceleration must also be zero.” Evaluate and explain this claim. **(4 marks)**\n\n3. A light gate is at height $y=25.0\\,\\mathrm m$. Calculate every crossing time during the flight and the corresponding signed velocity. Identify the ascending and descending crossings. **(6 marks)**\n\n4. Calculate the impact time, signed velocity and speed immediately before impact. Explain what the two mathematical solutions of $y(t)=0$ mean for this experiment and specify the physically considered time interval. **(6 marks)**\n\n5. Sketch three graphs for this interval: $y$ against $t$, $v$ against $t$, and $a$ against $t$. Label axes with quantities and units. Mark release, the highest point and impact on the position graph and the corresponding velocities on the velocity graph. Show the motion until immediately before impact; the collision itself is outside the model. **(8 marks)**\n\n6. In a separate second trial, the same object is projected vertically **downwards** from the same height with initial speed $15.0\\,\\mathrm{m/s}$. The positive direction is still upwards and the clock starts again at release. Formulate $y_\\mathrm{down}(t)$ and $v_\\mathrm{down}(t)$ and calculate the impact time and signed impact velocity. Use the motion to explain why both trials produce the same impact speed but different flight times. **(6 marks)**",
+        "solutionContent": "1. Die Anfangsbedingungen sind $y_0=20{,}0\\,\\mathrm m$ und $v_0=+15{,}0\\,\\mathrm{m/s}$. Während des gesamten freien Flugs gilt $a=-g=-10{,}0\\,\\mathrm{m/s^2}$. Somit\n\n$$y(t)=20{,}0\\,\\mathrm m+(15{,}0\\,\\mathrm{m/s})t-\\tfrac12(10{,}0\\,\\mathrm{m/s^2})t^2,$$\n$$v(t)=15{,}0\\,\\mathrm{m/s}-(10{,}0\\,\\mathrm{m/s^2})t.$$\n\nZu Beginn ist $v>0$, aber $a<0$: Die Höhe wächst noch, während die positive Geschwindigkeit und damit ihr Betrag abnehmen. Negative Beschleunigung bedeutet nicht in jedem Bewegungsabschnitt eine Abnahme des Geschwindigkeitsbetrags.\n\n2. Aus $v(t_\\mathrm S)=0$ folgt $t_\\mathrm S=1{,}50\\,\\mathrm s$. Einsetzen ergibt $y_\\mathrm S=31{,}25\\,\\mathrm m$. Dort ist $v=0$, aber weiterhin $a=-10{,}0\\,\\mathrm{m/s^2}$. Die Geschwindigkeit ist nur in diesem Augenblick null und ändert sich weiter von positiv zu negativ; die Schwerkraftwirkung verschwindet am Scheitelpunkt nicht. „In Ruhe“ bezeichnet hier keine Ruhe über ein Zeitintervall.\n\n3. Mit Zahlenwerten in SI-Einheiten:\n\n$$25=20+15t-5t^2,\\qquad t^2-3t+1=0.$$\n$$t_1=\\frac{3-\\sqrt5}{2}\\,\\mathrm s\\approx0{,}382\\,\\mathrm s,\\qquad\nt_2=\\frac{3+\\sqrt5}{2}\\,\\mathrm s\\approx2{,}618\\,\\mathrm s.$$\n\nDie Geschwindigkeiten lauten $v_1=+5\\sqrt5\\,\\mathrm{m/s}\\approx+11{,}18\\,\\mathrm{m/s}$ und $v_2=-5\\sqrt5\\,\\mathrm{m/s}\\approx-11{,}18\\,\\mathrm{m/s}$. Der erste Durchgang erfolgt aufwärts, der zweite abwärts. Die gleichen Beträge sind mit der zeitlichen Symmetrie um $t_\\mathrm S$ vereinbar.\n\n4. $0=20+15t-5t^2$ liefert $t=4{,}00\\,\\mathrm s$ und $t=-1{,}00\\,\\mathrm s$. Nur $t_\\mathrm A=4{,}00\\,\\mathrm s$ liegt nach dem Abwurf. Die negative Lösung ist ein Schnittpunkt der mathematisch rückwärts verlängerten Parabel mit $y=0$; sie beschreibt keinen beobachteten Teil dieses Versuchs. Unmittelbar vor dem Auftreffen gilt $v=-25{,}0\\,\\mathrm{m/s}$ und damit $|v|=25{,}0\\,\\mathrm{m/s}$. Das Modell beschreibt $0\\leq t<4{,}00\\,\\mathrm s$; den Auftreffpunkt darf man als Grenzpunkt markieren. Es macht keine Aussage über die anschließende Bewegung.\n\n5. Das Ortsdiagramm ist eine nach unten geöffnete Parabel durch $(0\\,\\mathrm s,20{,}0\\,\\mathrm m)$, mit Scheitel $(1{,}50\\,\\mathrm s,31{,}25\\,\\mathrm m)$ und Grenzpunkt $(4{,}00\\,\\mathrm s,0\\,\\mathrm m)$. Seine Steigung ist zuerst positiv, am Scheitel null und danach negativ. Das Geschwindigkeitsdiagramm ist eine fallende Gerade durch $(0\\,\\mathrm s,+15{,}0\\,\\mathrm{m/s})$, $(1{,}50\\,\\mathrm s,0)$ und den Grenzwert $(4{,}00\\,\\mathrm s,-25{,}0\\,\\mathrm{m/s})$. Das Beschleunigungsdiagramm ist im gesamten Intervall eine waagerechte Linie bei $-10{,}0\\,\\mathrm{m/s^2}$, auch am Scheitelpunkt. Der Geschwindigkeitsgraph ist kein Graph des stets nichtnegativen Geschwindigkeitsbetrags.\n\n6. Der zweite Abwurf hat $v_0=-15{,}0\\,\\mathrm{m/s}$, weiterhin $a=-10{,}0\\,\\mathrm{m/s^2}$:\n\n$$y_\\mathrm{ab}(t)=20{,}0\\,\\mathrm m-(15{,}0\\,\\mathrm{m/s})t-\\tfrac12(10{,}0\\,\\mathrm{m/s^2})t^2,$$\n$$v_\\mathrm{ab}(t)=-15{,}0\\,\\mathrm{m/s}-(10{,}0\\,\\mathrm{m/s^2})t.$$\n\n$y_\\mathrm{ab}(t)=0$ ergibt als physikalische Lösung $t_\\mathrm{ab}=1{,}00\\,\\mathrm s$ und $v_\\mathrm{ab}=-25{,}0\\,\\mathrm{m/s}$. Beim Aufwärtswurf erreicht das Objekt nach $3{,}00\\,\\mathrm s$ erneut die Abwurfhöhe $20{,}0\\,\\mathrm m$, nun mit $v=-15{,}0\\,\\mathrm{m/s}$. Ab diesem Ereignis sind Höhe, Geschwindigkeit und Beschleunigung dieselben wie unmittelbar beim Abwärtswurf. Daher ist der restliche Flug identisch und dauert nochmals $1{,}00\\,\\mathrm s$: insgesamt $4{,}00\\,\\mathrm s$ statt $1{,}00\\,\\mathrm s$, aber in beiden Fällen derselbe Betrag $25{,}0\\,\\mathrm{m/s}$ beim Auftreffen.\n\n**Bewertungsgrundsätze:** Die Lösung ist ein möglicher Lösungsweg. Gleichwertige fachlich richtige Herleitungen und Darstellungen erhalten dieselben Punkte. Pro Kriterium wird höchstens 1 BE vergeben. Ein Rechenfehler wird an seiner Entstehungsstelle bewertet; rechnerisch und fachlich konsistente Folgeschritte mit dem eigenen Zwischenwert behalten ihre Methodenpunkte. Ein Folgefehler ersetzt keine eigenständige physikalische Begründung. Einheiten und Vorzeichen gehören zu den jeweils benannten Ergebnissen. Exakte Ergebnisse sowie sinnvoll auf zwei bis drei signifikante Stellen gerundete Werte sind gleichwertig; Zwischenwerte sollen nicht vorzeitig gerundet werden. Für die ausgewiesenen Dezimalergebnisse ist eine Abweichung von höchstens 1 % allein durch Rundung zulässig. Diagramme werden nach Verlauf, Achsenbeschriftung, Einheiten und den ausdrücklich verlangten Merkmalen bewertet, nicht nach zeichnerischer Perfektion. Die vorgegebene positive Richtung bleibt für die verlangten Endergebnisse verbindlich; eine intern umgekehrte Achse ist bei korrekter Rückübersetzung zulässig. Es werden keine zusätzlichen Aufgaben, Vektorrechnungen oder Energieargumente verlangt.\n\n### Bewertungsraster: je Kriterium 1 BE\n\n| Kriterium | Leistung | BE |\n| --- | --- | ---: |\n| 1.1 | Anfangshöhe $y_0=20{,}0\\,\\mathrm m$ korrekt angeben. | 1 |\n| 1.2 | Anfangsgeschwindigkeit $v_0=+15{,}0\\,\\mathrm{m/s}$ mit positivem Vorzeichen angeben. | 1 |\n| 1.3 | Während des Flugs $a=-10{,}0\\,\\mathrm{m/s^2}$ angeben. | 1 |\n| 1.4 | Vollständiges Zeit-Ort-Gesetz mit Anfangshöhe, linearem und negativem quadratischem Term aufstellen. | 1 |\n| 1.5 | Vollständiges Zeit-Geschwindigkeits-Gesetz aufstellen. | 1 |\n| 1.6 | Anfängliches Langsamerwerden aus $v>0$ und $a<0$ erklären. | 1 |\n| 2.1 | Aus $v=0$ den Scheitelzeitpunkt $1{,}50\\,\\mathrm s$ bestimmen. | 1 |\n| 2.2 | Scheitelhöhe $31{,}25\\,\\mathrm m$ bestimmen. | 1 |\n| 2.3 | Am Scheitel $v=0$ ausdrücklich von $a=-10{,}0\\,\\mathrm{m/s^2}$ unterscheiden. | 1 |\n| 2.4 | Beschleunigung als fortgesetzte Geschwindigkeitsänderung bzw. unveränderte Schwerkraftwirkung begründen; bloße Behauptung reicht nicht. | 1 |\n| 3.1 | Die Bedingung $y(t)=25{,}0\\,\\mathrm m$ als quadratische Gleichung ansetzen. | 1 |\n| 3.2 | Erste Durchgangszeit $0{,}382\\,\\mathrm s$ oder exakten äquivalenten Wert bestimmen. | 1 |\n| 3.3 | Zweite Durchgangszeit $2{,}618\\,\\mathrm s$ oder exakten äquivalenten Wert bestimmen. | 1 |\n| 3.4 | Erste Geschwindigkeit $+11{,}18\\,\\mathrm{m/s}$ bestimmen. | 1 |\n| 3.5 | Zweite Geschwindigkeit $-11{,}18\\,\\mathrm{m/s}$ bestimmen. | 1 |\n| 3.6 | Die erste Lösung dem Aufstieg und die zweite dem Abstieg zuordnen. | 1 |\n| 4.1 | Auftreffen durch $y(t)=0$ mit dem eigenen konsistenten Ortsgesetz ansetzen. | 1 |\n| 4.2 | Positive Nullstelle $t=4{,}00\\,\\mathrm s$ bestimmen. | 1 |\n| 4.3 | Negative Nullstelle $t=-1{,}00\\,\\mathrm s$ bestimmen. | 1 |\n| 4.4 | Negative Lösung als mathematische Rückverlängerung vor dem Abwurf erkennen und für das Versuchsgeschehen verwerfen. | 1 |\n| 4.5 | Vorzeichenbehaftete Auftreffgeschwindigkeit $-25{,}0\\,\\mathrm{m/s}$ und Betrag $25{,}0\\,\\mathrm{m/s}$ korrekt unterscheiden. | 1 |\n| 4.6 | Gültigkeit ab $t=0$ bis unmittelbar vor $4{,}00\\,\\mathrm s$ nennen; Stoß nicht weiter modellieren. | 1 |\n| 5.1 | Ortsgraph als nach unten geöffnete Parabel mit erst positiver, dann negativer Steigung darstellen. | 1 |\n| 5.2 | Abwurfpunkt $(0\\,\\mathrm s,20{,}0\\,\\mathrm m)$ markieren. | 1 |\n| 5.3 | Scheitelpunkt $(1{,}50\\,\\mathrm s,31{,}25\\,\\mathrm m)$ mit waagerechter Tangente darstellen. | 1 |\n| 5.4 | Auftreffgrenzpunkt $(4{,}00\\,\\mathrm s,0\\,\\mathrm m)$ markieren. | 1 |\n| 5.5 | Geschwindigkeitsgraph als durchgehend fallende Gerade über den positiven und negativen Bereich zeichnen. | 1 |\n| 5.6 | Im Geschwindigkeitsgraphen die Werte $+15$, $0$ und $-25\\,\\mathrm{m/s}$ zu den zugehörigen Zeiten korrekt markieren. | 1 |\n| 5.7 | Beschleunigungsgraph durchgehend bei $-10{,}0\\,\\mathrm{m/s^2}$, ohne Scheitel-Ausnahme, zeichnen. | 1 |\n| 5.8 | Alle drei Diagramme mit Größen, Einheiten und konsistenten Zeitachsen beschriften. | 1 |\n| 6.1 | Abwärtswurf-Ortsgesetz mit $y_0=20$, $v_0=-15$ und $a=-10$ in SI-Einheiten aufstellen. | 1 |\n| 6.2 | Abwärtswurf-Geschwindigkeitsgesetz $v_\\mathrm{ab}(t)=-15-10t$ in SI-Einheiten aufstellen. | 1 |\n| 6.3 | Physikalische Auftreffzeit des Abwärtswurfs $1{,}00\\,\\mathrm s$ bestimmen. | 1 |\n| 6.4 | Abwärtswurf-Auftreffgeschwindigkeit $-25{,}0\\,\\mathrm{m/s}$ bestimmen und gleichen Betrag erkennen. | 1 |\n| 6.5 | Gleichen Auftreffgeschwindigkeitsbetrag kinematisch begründen, etwa über die Rückkehr zur Abwurfhöhe mit $v=-15{,}0\\,\\mathrm{m/s}$ oder über $v^2-v_0^2=2a\\Delta y$. | 1 |\n| 6.6 | Flugzeitunterschied aus zusätzlichem Aufstieg und Rückkehr mit anschließend identischer Bewegung oder einer gleichwertigen kinematischen Begründung erklären. | 1 |",
+        "solutionContentEn": "1. The initial conditions are $y_0=20.0\\,\\mathrm m$ and $v_0=+15.0\\,\\mathrm{m/s}$. Throughout free flight, $a=-g=-10.0\\,\\mathrm{m/s^2}$. Hence\n\n$$y(t)=20.0\\,\\mathrm m+(15.0\\,\\mathrm{m/s})t-\\tfrac12(10.0\\,\\mathrm{m/s^2})t^2,$$\n$$v(t)=15.0\\,\\mathrm{m/s}-(10.0\\,\\mathrm{m/s^2})t.$$\n\nInitially $v>0$ but $a<0$: height still increases while the positive velocity and its magnitude decrease. Negative acceleration does not mean decreasing speed in every part of the motion.\n\n2. Setting $v(t_\\mathrm H)=0$ gives $t_\\mathrm H=1.50\\,\\mathrm s$. Substitution gives $y_\\mathrm H=31.25\\,\\mathrm m$. At that instant $v=0$, but $a$ remains $-10.0\\,\\mathrm{m/s^2}$. Velocity is zero only instantaneously and continues to change from positive to negative; gravity does not stop acting at the highest point. This is not rest over a time interval.\n\n3. Using numerical values in SI units:\n\n$$25=20+15t-5t^2,\\qquad t^2-3t+1=0.$$\n$$t_1=\\frac{3-\\sqrt5}{2}\\,\\mathrm s\\approx0.382\\,\\mathrm s,\\qquad\nt_2=\\frac{3+\\sqrt5}{2}\\,\\mathrm s\\approx2.618\\,\\mathrm s.$$\n\nThe velocities are $v_1=+5\\sqrt5\\,\\mathrm{m/s}\\approx+11.18\\,\\mathrm{m/s}$ and $v_2=-5\\sqrt5\\,\\mathrm{m/s}\\approx-11.18\\,\\mathrm{m/s}$. The first crossing is upwards, the second downwards. Equal speeds agree with time symmetry about $t_\\mathrm H$.\n\n4. $0=20+15t-5t^2$ gives $t=4.00\\,\\mathrm s$ and $t=-1.00\\,\\mathrm s$. Only $t_\\mathrm I=4.00\\,\\mathrm s$ occurs after release. The negative solution is an intersection of the mathematically extended parabola with $y=0$ before the chosen start; it does not describe an observed part of this trial. Immediately before impact, $v=-25.0\\,\\mathrm{m/s}$, so the speed is $|v|=25.0\\,\\mathrm{m/s}$. The model applies for $0\\leq t<4.00\\,\\mathrm s$; the impact point may be marked as a limiting endpoint. It does not describe subsequent motion.\n\n5. The position graph is a downward-opening parabola through $(0\\,\\mathrm s,20.0\\,\\mathrm m)$, with vertex $(1.50\\,\\mathrm s,31.25\\,\\mathrm m)$ and limiting endpoint $(4.00\\,\\mathrm s,0\\,\\mathrm m)$. Its slope is positive initially, zero at the highest point and negative thereafter. The velocity graph is a descending straight line through $(0\\,\\mathrm s,+15.0\\,\\mathrm{m/s})$, $(1.50\\,\\mathrm s,0)$ and the limiting value $(4.00\\,\\mathrm s,-25.0\\,\\mathrm{m/s})$. The acceleration graph is a horizontal line at $-10.0\\,\\mathrm{m/s^2}$ throughout the interval, including at the highest point. The velocity graph is not a graph of the always nonnegative speed.\n\n6. The second release has $v_0=-15.0\\,\\mathrm{m/s}$ and still $a=-10.0\\,\\mathrm{m/s^2}$:\n\n$$y_\\mathrm{down}(t)=20.0\\,\\mathrm m-(15.0\\,\\mathrm{m/s})t-\\tfrac12(10.0\\,\\mathrm{m/s^2})t^2,$$\n$$v_\\mathrm{down}(t)=-15.0\\,\\mathrm{m/s}-(10.0\\,\\mathrm{m/s^2})t.$$\n\nThe physical solution of $y_\\mathrm{down}(t)=0$ is $t_\\mathrm{down}=1.00\\,\\mathrm s$, with $v_\\mathrm{down}=-25.0\\,\\mathrm{m/s}$. In the upwards trial the object returns to its release height $20.0\\,\\mathrm m$ after $3.00\\,\\mathrm s$, now with $v=-15.0\\,\\mathrm{m/s}$. From that event onwards, height, velocity and acceleration match the initial conditions of the downwards trial. The remaining motion is therefore identical and lasts another $1.00\\,\\mathrm s$: a total of $4.00\\,\\mathrm s$ instead of $1.00\\,\\mathrm s$, but the same impact speed of $25.0\\,\\mathrm{m/s}$.\n\n**Marking principles:** The solution is one possible method. Equivalent physically correct derivations and representations receive the same credit. Award at most 1 mark per criterion. Penalize a calculation error where it first occurs; subsequent mathematically and physically consistent work using that intermediate result retains its method marks. Error carry-forward does not replace an independent physical explanation. Units and signs are part of the stated results. Exact answers and sensible rounding to two or three significant figures are equally acceptable; avoid premature rounding of intermediate values. A difference of at most 1% due solely to rounding is acceptable for the listed decimal answers. Assess graphs by shape, labelled axes, units and explicitly requested features, not artistic precision. Final answers must use the specified positive direction; an internally reversed axis is acceptable if results are correctly translated back. No extra tasks, vector calculations or energy arguments are required.\n\n### Marking rubric: 1 mark per criterion\n\n| Criterion | Evidence | Marks |\n| --- | --- | ---: |\n| 1.1 | State the correct initial height $y_0=20.0\\,\\mathrm m$. | 1 |\n| 1.2 | State $v_0=+15.0\\,\\mathrm{m/s}$ with a positive sign. | 1 |\n| 1.3 | State $a=-10.0\\,\\mathrm{m/s^2}$ during flight. | 1 |\n| 1.4 | Form the complete position equation with initial height, linear term and negative quadratic term. | 1 |\n| 1.5 | Form the complete velocity equation. | 1 |\n| 1.6 | Explain initial slowing from $v>0$ and $a<0$. | 1 |\n| 2.1 | Use $v=0$ to obtain the highest-point time $1.50\\,\\mathrm s$. | 1 |\n| 2.2 | Obtain the maximum height $31.25\\,\\mathrm m$. | 1 |\n| 2.3 | Explicitly distinguish $v=0$ from $a=-10.0\\,\\mathrm{m/s^2}$ at the highest point. | 1 |\n| 2.4 | Explain the continuing change in velocity or unchanged action of gravity; a bare assertion is insufficient. | 1 |\n| 3.1 | Set up the quadratic equation for $y(t)=25.0\\,\\mathrm m$. | 1 |\n| 3.2 | Obtain the first crossing time $0.382\\,\\mathrm s$ or its exact equivalent. | 1 |\n| 3.3 | Obtain the second crossing time $2.618\\,\\mathrm s$ or its exact equivalent. | 1 |\n| 3.4 | Obtain the first velocity $+11.18\\,\\mathrm{m/s}$. | 1 |\n| 3.5 | Obtain the second velocity $-11.18\\,\\mathrm{m/s}$. | 1 |\n| 3.6 | Identify the first crossing as ascending and the second as descending. | 1 |\n| 4.1 | Set up impact using $y(t)=0$ and the consistent position equation. | 1 |\n| 4.2 | Obtain the positive root $t=4.00\\,\\mathrm s$. | 1 |\n| 4.3 | Obtain the negative root $t=-1.00\\,\\mathrm s$. | 1 |\n| 4.4 | Recognize the negative root as a backward mathematical extension before release and reject it for this trial. | 1 |\n| 4.5 | Correctly distinguish impact velocity $-25.0\\,\\mathrm{m/s}$ and speed $25.0\\,\\mathrm{m/s}$. | 1 |\n| 4.6 | Specify validity from $t=0$ to immediately before $4.00\\,\\mathrm s$ without modelling the collision. | 1 |\n| 5.1 | Draw a downward-opening position parabola with positive then negative slope. | 1 |\n| 5.2 | Mark release at $(0\\,\\mathrm s,20.0\\,\\mathrm m)$. | 1 |\n| 5.3 | Mark the highest point $(1.50\\,\\mathrm s,31.25\\,\\mathrm m)$ with horizontal tangent. | 1 |\n| 5.4 | Mark the limiting impact point $(4.00\\,\\mathrm s,0\\,\\mathrm m)$. | 1 |\n| 5.5 | Draw velocity as one descending straight line spanning positive and negative values. | 1 |\n| 5.6 | Correctly mark velocity values $+15$, $0$ and $-25\\,\\mathrm{m/s}$ at their corresponding times. | 1 |\n| 5.7 | Draw acceleration at $-10.0\\,\\mathrm{m/s^2}$ throughout, with no exception at the highest point. | 1 |\n| 5.8 | Label all three graphs with quantities, units and consistent time axes. | 1 |\n| 6.1 | Form the downward position law with $y_0=20$, $v_0=-15$ and $a=-10$ in SI units. | 1 |\n| 6.2 | Form the downward velocity law $v_\\mathrm{down}(t)=-15-10t$ in SI units. | 1 |\n| 6.3 | Obtain the physical downward impact time $1.00\\,\\mathrm s$. | 1 |\n| 6.4 | Obtain downward impact velocity $-25.0\\,\\mathrm{m/s}$ and recognize the same speed. | 1 |\n| 6.5 | Justify the equal impact speed kinematically, for example through return to the release height with $v=-15.0\\,\\mathrm{m/s}$ or through $v^2-v_0^2=2a\\Delta y$. | 1 |\n| 6.6 | Explain the different flight times through the additional ascent and return followed by identical motion, or an equivalent kinematic argument. | 1 |",
+        "scoring": {
+          "maxPoints": 36,
+          "passingPoints": 22,
+          "steps": [
+            {
+              "id": "vertical-projection-signs-and-return-v1-1-1",
+              "points": 1,
+              "description": "DE: Anfangshöhe $y_0=20{,}0\\,\\mathrm m$ korrekt angeben. EN: State the correct initial height $y_0=20.0\\,\\mathrm m$."
+            },
+            {
+              "id": "vertical-projection-signs-and-return-v1-1-2",
+              "points": 1,
+              "description": "DE: Anfangsgeschwindigkeit $v_0=+15{,}0\\,\\mathrm{m/s}$ mit positivem Vorzeichen angeben. EN: State $v_0=+15.0\\,\\mathrm{m/s}$ with a positive sign."
+            },
+            {
+              "id": "vertical-projection-signs-and-return-v1-1-3",
+              "points": 1,
+              "description": "DE: Während des Flugs $a=-10{,}0\\,\\mathrm{m/s^2}$ angeben. EN: State $a=-10.0\\,\\mathrm{m/s^2}$ during flight."
+            },
+            {
+              "id": "vertical-projection-signs-and-return-v1-1-4",
+              "points": 1,
+              "description": "DE: Vollständiges Zeit-Ort-Gesetz mit Anfangshöhe, linearem und negativem quadratischem Term aufstellen. EN: Form the complete position equation with initial height, linear term and negative quadratic term."
+            },
+            {
+              "id": "vertical-projection-signs-and-return-v1-1-5",
+              "points": 1,
+              "description": "DE: Vollständiges Zeit-Geschwindigkeits-Gesetz aufstellen. EN: Form the complete velocity equation."
+            },
+            {
+              "id": "vertical-projection-signs-and-return-v1-1-6",
+              "points": 1,
+              "description": "DE: Anfängliches Langsamerwerden aus $v>0$ und $a<0$ erklären. EN: Explain initial slowing from $v>0$ and $a<0$."
+            },
+            {
+              "id": "vertical-projection-signs-and-return-v1-2-1",
+              "points": 1,
+              "description": "DE: Aus $v=0$ den Scheitelzeitpunkt $1{,}50\\,\\mathrm s$ bestimmen. EN: Use $v=0$ to obtain the highest-point time $1.50\\,\\mathrm s$."
+            },
+            {
+              "id": "vertical-projection-signs-and-return-v1-2-2",
+              "points": 1,
+              "description": "DE: Scheitelhöhe $31{,}25\\,\\mathrm m$ bestimmen. EN: Obtain the maximum height $31.25\\,\\mathrm m$."
+            },
+            {
+              "id": "vertical-projection-signs-and-return-v1-2-3",
+              "points": 1,
+              "description": "DE: Am Scheitel $v=0$ ausdrücklich von $a=-10{,}0\\,\\mathrm{m/s^2}$ unterscheiden. EN: Explicitly distinguish $v=0$ from $a=-10.0\\,\\mathrm{m/s^2}$ at the highest point."
+            },
+            {
+              "id": "vertical-projection-signs-and-return-v1-2-4",
+              "points": 1,
+              "description": "DE: Beschleunigung als fortgesetzte Geschwindigkeitsänderung bzw. unveränderte Schwerkraftwirkung begründen; bloße Behauptung reicht nicht. EN: Explain the continuing change in velocity or unchanged action of gravity; a bare assertion is insufficient."
+            },
+            {
+              "id": "vertical-projection-signs-and-return-v1-3-1",
+              "points": 1,
+              "description": "DE: Die Bedingung $y(t)=25{,}0\\,\\mathrm m$ als quadratische Gleichung ansetzen. EN: Set up the quadratic equation for $y(t)=25.0\\,\\mathrm m$."
+            },
+            {
+              "id": "vertical-projection-signs-and-return-v1-3-2",
+              "points": 1,
+              "description": "DE: Erste Durchgangszeit $0{,}382\\,\\mathrm s$ oder exakten äquivalenten Wert bestimmen. EN: Obtain the first crossing time $0.382\\,\\mathrm s$ or its exact equivalent."
+            },
+            {
+              "id": "vertical-projection-signs-and-return-v1-3-3",
+              "points": 1,
+              "description": "DE: Zweite Durchgangszeit $2{,}618\\,\\mathrm s$ oder exakten äquivalenten Wert bestimmen. EN: Obtain the second crossing time $2.618\\,\\mathrm s$ or its exact equivalent."
+            },
+            {
+              "id": "vertical-projection-signs-and-return-v1-3-4",
+              "points": 1,
+              "description": "DE: Erste Geschwindigkeit $+11{,}18\\,\\mathrm{m/s}$ bestimmen. EN: Obtain the first velocity $+11.18\\,\\mathrm{m/s}$."
+            },
+            {
+              "id": "vertical-projection-signs-and-return-v1-3-5",
+              "points": 1,
+              "description": "DE: Zweite Geschwindigkeit $-11{,}18\\,\\mathrm{m/s}$ bestimmen. EN: Obtain the second velocity $-11.18\\,\\mathrm{m/s}$."
+            },
+            {
+              "id": "vertical-projection-signs-and-return-v1-3-6",
+              "points": 1,
+              "description": "DE: Die erste Lösung dem Aufstieg und die zweite dem Abstieg zuordnen. EN: Identify the first crossing as ascending and the second as descending."
+            },
+            {
+              "id": "vertical-projection-signs-and-return-v1-4-1",
+              "points": 1,
+              "description": "DE: Auftreffen durch $y(t)=0$ mit dem eigenen konsistenten Ortsgesetz ansetzen. EN: Set up impact using $y(t)=0$ and the consistent position equation."
+            },
+            {
+              "id": "vertical-projection-signs-and-return-v1-4-2",
+              "points": 1,
+              "description": "DE: Positive Nullstelle $t=4{,}00\\,\\mathrm s$ bestimmen. EN: Obtain the positive root $t=4.00\\,\\mathrm s$."
+            },
+            {
+              "id": "vertical-projection-signs-and-return-v1-4-3",
+              "points": 1,
+              "description": "DE: Negative Nullstelle $t=-1{,}00\\,\\mathrm s$ bestimmen. EN: Obtain the negative root $t=-1.00\\,\\mathrm s$."
+            },
+            {
+              "id": "vertical-projection-signs-and-return-v1-4-4",
+              "points": 1,
+              "description": "DE: Negative Lösung als mathematische Rückverlängerung vor dem Abwurf erkennen und für das Versuchsgeschehen verwerfen. EN: Recognize the negative root as a backward mathematical extension before release and reject it for this trial."
+            },
+            {
+              "id": "vertical-projection-signs-and-return-v1-4-5",
+              "points": 1,
+              "description": "DE: Vorzeichenbehaftete Auftreffgeschwindigkeit $-25{,}0\\,\\mathrm{m/s}$ und Betrag $25{,}0\\,\\mathrm{m/s}$ korrekt unterscheiden. EN: Correctly distinguish impact velocity $-25.0\\,\\mathrm{m/s}$ and speed $25.0\\,\\mathrm{m/s}$."
+            },
+            {
+              "id": "vertical-projection-signs-and-return-v1-4-6",
+              "points": 1,
+              "description": "DE: Gültigkeit ab $t=0$ bis unmittelbar vor $4{,}00\\,\\mathrm s$ nennen; Stoß nicht weiter modellieren. EN: Specify validity from $t=0$ to immediately before $4.00\\,\\mathrm s$ without modelling the collision."
+            },
+            {
+              "id": "vertical-projection-signs-and-return-v1-5-1",
+              "points": 1,
+              "description": "DE: Ortsgraph als nach unten geöffnete Parabel mit erst positiver, dann negativer Steigung darstellen. EN: Draw a downward-opening position parabola with positive then negative slope."
+            },
+            {
+              "id": "vertical-projection-signs-and-return-v1-5-2",
+              "points": 1,
+              "description": "DE: Abwurfpunkt $(0\\,\\mathrm s,20{,}0\\,\\mathrm m)$ markieren. EN: Mark release at $(0\\,\\mathrm s,20.0\\,\\mathrm m)$."
+            },
+            {
+              "id": "vertical-projection-signs-and-return-v1-5-3",
+              "points": 1,
+              "description": "DE: Scheitelpunkt $(1{,}50\\,\\mathrm s,31{,}25\\,\\mathrm m)$ mit waagerechter Tangente darstellen. EN: Mark the highest point $(1.50\\,\\mathrm s,31.25\\,\\mathrm m)$ with horizontal tangent."
+            },
+            {
+              "id": "vertical-projection-signs-and-return-v1-5-4",
+              "points": 1,
+              "description": "DE: Auftreffgrenzpunkt $(4{,}00\\,\\mathrm s,0\\,\\mathrm m)$ markieren. EN: Mark the limiting impact point $(4.00\\,\\mathrm s,0\\,\\mathrm m)$."
+            },
+            {
+              "id": "vertical-projection-signs-and-return-v1-5-5",
+              "points": 1,
+              "description": "DE: Geschwindigkeitsgraph als durchgehend fallende Gerade über den positiven und negativen Bereich zeichnen. EN: Draw velocity as one descending straight line spanning positive and negative values."
+            },
+            {
+              "id": "vertical-projection-signs-and-return-v1-5-6",
+              "points": 1,
+              "description": "DE: Im Geschwindigkeitsgraphen die Werte $+15$, $0$ und $-25\\,\\mathrm{m/s}$ zu den zugehörigen Zeiten korrekt markieren. EN: Correctly mark velocity values $+15$, $0$ and $-25\\,\\mathrm{m/s}$ at their corresponding times."
+            },
+            {
+              "id": "vertical-projection-signs-and-return-v1-5-7",
+              "points": 1,
+              "description": "DE: Beschleunigungsgraph durchgehend bei $-10{,}0\\,\\mathrm{m/s^2}$, ohne Scheitel-Ausnahme, zeichnen. EN: Draw acceleration at $-10.0\\,\\mathrm{m/s^2}$ throughout, with no exception at the highest point."
+            },
+            {
+              "id": "vertical-projection-signs-and-return-v1-5-8",
+              "points": 1,
+              "description": "DE: Alle drei Diagramme mit Größen, Einheiten und konsistenten Zeitachsen beschriften. EN: Label all three graphs with quantities, units and consistent time axes."
+            },
+            {
+              "id": "vertical-projection-signs-and-return-v1-6-1",
+              "points": 1,
+              "description": "DE: Abwärtswurf-Ortsgesetz mit $y_0=20$, $v_0=-15$ und $a=-10$ in SI-Einheiten aufstellen. EN: Form the downward position law with $y_0=20$, $v_0=-15$ and $a=-10$ in SI units."
+            },
+            {
+              "id": "vertical-projection-signs-and-return-v1-6-2",
+              "points": 1,
+              "description": "DE: Abwärtswurf-Geschwindigkeitsgesetz $v_\\mathrm{ab}(t)=-15-10t$ in SI-Einheiten aufstellen. EN: Form the downward velocity law $v_\\mathrm{down}(t)=-15-10t$ in SI units."
+            },
+            {
+              "id": "vertical-projection-signs-and-return-v1-6-3",
+              "points": 1,
+              "description": "DE: Physikalische Auftreffzeit des Abwärtswurfs $1{,}00\\,\\mathrm s$ bestimmen. EN: Obtain the physical downward impact time $1.00\\,\\mathrm s$."
+            },
+            {
+              "id": "vertical-projection-signs-and-return-v1-6-4",
+              "points": 1,
+              "description": "DE: Abwärtswurf-Auftreffgeschwindigkeit $-25{,}0\\,\\mathrm{m/s}$ bestimmen und gleichen Betrag erkennen. EN: Obtain downward impact velocity $-25.0\\,\\mathrm{m/s}$ and recognize the same speed."
+            },
+            {
+              "id": "vertical-projection-signs-and-return-v1-6-5",
+              "points": 1,
+              "description": "DE: Gleichen Auftreffgeschwindigkeitsbetrag kinematisch begründen, etwa über die Rückkehr zur Abwurfhöhe mit $v=-15{,}0\\,\\mathrm{m/s}$ oder über $v^2-v_0^2=2a\\Delta y$. EN: Justify the equal impact speed kinematically, for example through return to the release height with $v=-15.0\\,\\mathrm{m/s}$ or through $v^2-v_0^2=2a\\Delta y$."
+            },
+            {
+              "id": "vertical-projection-signs-and-return-v1-6-6",
+              "points": 1,
+              "description": "DE: Flugzeitunterschied aus zusätzlichem Aufstieg und Rückkehr mit anschließend identischer Bewegung oder einer gleichwertigen kinematischen Begründung erklären. EN: Explain the different flight times through the additional ascent and return followed by identical motion, or an equivalent kinematic argument."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
+      "title": "Waagerechter Wurf: Zwei Bewegungen, eine gemeinsame Zeit",
+      "titleEn": "Horizontal projection: two motions, one shared time",
+      "description": "Die lernende Person kann den waagerechten Wurf in einer schriftlichen Modellprüfung ohne Vektorrechnung aus gleichförmiger horizontaler und gleichmäßig beschleunigter vertikaler Bewegung zusammensetzen, dieselbe Zeit in beiden Richtungen verwenden und Modellgrenzen begründen. 36 BE.",
+      "descriptionEn": "The learner can analyse horizontal projection in a written model-based assessment without vector calculations, combining uniform horizontal and uniformly accelerated vertical motion with one shared time and justifying the model's limits. 36 marks.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+        "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd"
+      ],
+      "type": "atomic",
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN",
+          "PK4_KOMMUNIZIEREN",
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "E",
+        "area": "Klausurtraining"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityFromRequires": true
+      },
+      "examData": {
+        "reviewStatus": "released",
+        "reviewNote": "Own authored assessment. Independent OpenAI AI counterreview of German and English tasks, solutions, scoring and conservative coverage accepted on 2026-10-22; exact reviewed bodies and mapping rationale are retained in curricula/DE/Gymnasium/quality/assessment-review/physics-kinematics-20261022/review.json. No human approval, experimental performance, official exam endorsement or automatic mastery of covered goals is claimed.",
+        "coveredGoalIds": [
+          "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+          "d6dc0e02-831d-4894-a61a-852bcc74f147"
+        ],
+        "coveredStrands": [
+          "LI_BEWEGUNG"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "taskContent": "## Waagerechter Wurf: Zwei Bewegungen, eine gemeinsame Zeit\n\n**Umfang: 36 BE.** Eigenständige schriftliche Modellprüfung; ein Taschenrechner und eine Formelsammlung sind zulässig. Alle Angaben zu $x$- und $y$-Bewegung sind einzelne vorzeichenbehaftete Größen. Vektorrechnung ist nicht erforderlich.\n\nZwei kleine Körper A und B starten gleichzeitig aus derselben Höhe $h=1{,}25\\,\\mathrm m$ über einer waagerechten Auffangebene. A wird ohne Anfangsgeschwindigkeit losgelassen. B erhält ausschließlich eine waagerechte Anfangsgeschwindigkeit nach rechts. Die Körper bewegen sich nebeneinander und beeinflussen sich nicht. Für beide gilt ab dem gemeinsamen Start $t=0$: $y_0=h$, $v_{y,0}=0$ und $x_0=0$; die $x$-Koordinate wird jeweils vom eigenen Startort gemessen. Die positive $x$-Richtung zeigt nach rechts, die positive $y$-Richtung nach oben; die Auffangebene liegt bei $y=0$.\n\nVerwenden Sie ein homogenes Schwerefeld mit dem gerundeten Modellwert $g=10{,}0\\,\\mathrm{m/s^2}$. Luftwiderstand wird zunächst vernachlässigt, die Körper werden als Massepunkte beschrieben. Die Tabelle enthält **eigene konstruierte Modelldaten**, keine im Rahmen dieser Prüfung tatsächlich erhobenen Messungen:\n\n| Gemeinsame Zeit $t$ in s | 0,00 | 0,10 | 0,20 | 0,30 | 0,40 |\n| --- | ---: | ---: | ---: | ---: | ---: |\n| Waagerechter Ort $x_B$ in m | 0,00 | 0,20 | 0,40 | 0,60 | 0,80 |\n| Höhe $y_B$ in m | 1,25 | 1,20 | 1,05 | 0,80 | 0,45 |\n| Höhe $y_A$ in m | 1,25 | 1,20 | 1,05 | 0,80 | 0,45 |\n\n1. Bestimmen Sie aus den waagerechten Daten die Geschwindigkeit von B und erläutern Sie Ihren Ansatz. Stellen Sie $x_B(t)$, $y_B(t)$, $v_{y,B}(t)$ und $a_{y,B}(t)$ auf. Prüfen Sie die Ortsgesetze am Tabellenpaar für $t=0{,}20\\,\\mathrm s$. **(6 BE)**\n\n2. Erklären Sie ohne Vektorrechnung, weshalb man den waagerechten Wurf im gegebenen Modell als Überlagerung zweier unabhängiger Teilbewegungen beschreiben darf. Gehen Sie auf die Richtung der Gewichtskraft, die Bewegungsarten in $x$ und $y$ und die gemeinsamen Anfangsbedingungen in $y$ ein. Beurteilen Sie die Aussage: „B braucht erst Zeit für die waagerechte Strecke und danach zusätzlich Zeit zum Fallen.“ **(6 BE)**\n\n3. Berechnen Sie den Auftreffzeitpunkt beider Körper, die Wurfweite von B sowie die waagerechte und die senkrechte Geschwindigkeit von B unmittelbar vor dem Auftreffen, jeweils mit Vorzeichen. Die Berechnung eines Gesamtgeschwindigkeitsbetrags ist nicht verlangt. **(6 BE)**\n\n4. Leiten Sie aus den beiden Ortsgesetzen von B eine Gleichung $y_B(x_B)$ ohne Zeitvariable her. Skizzieren Sie die Bahn im $x$-$y$-Diagramm mit Startpunkt, Auftreffpunkt und mindestens zwei weiteren Tabellenpunkten. In einer Wiederholung wird nur die waagerechte Anfangsgeschwindigkeit von B verdoppelt. Bestimmen und begründen Sie die neue Flugzeit und Wurfweite. **(6 BE)**\n\n5. Skizzieren Sie $y_B(t)$, $v_{y,B}(t)$ und $a_{y,B}(t)$ vom Start bis unmittelbar vor dem Auftreffen. Kennzeichnen Sie Anfangs- und Endwerte und beschriften Sie Größen und Einheiten. Stellen Sie dabei dar, wie eine anfangs verschwindende senkrechte Geschwindigkeit mit einer schon beim Start vorhandenen Beschleunigung vereinbar ist. **(6 BE)**\n\n6. Begründen Sie, wann die Beschreibung der Körper als Massepunkte für diese Ortsvorhersage sinnvoll ist, und erläutern Sie die Funktion der Annahmen „homogenes Schwerefeld“ und „vernachlässigbarer Luftwiderstand“. Beurteilen Sie anschließend die Behauptung: „Wenn Luftwiderstand berücksichtigt wird, ändern sich nur die waagerechten Werte; beide Körper kommen weiterhin zwangsläufig gleichzeitig an.“ Eine qualitative Begründung genügt; ein Widerstandsgesetz oder dessen Berechnung ist nicht verlangt. **(6 BE)**",
+        "taskContentEn": "## Horizontal projection: two motions, one shared time\n\n**Total: 36 marks.** Independent written model-based assessment; a calculator and formula sheet may be used. All $x$- and $y$-motion quantities are individual signed scalars. No vector calculations are needed.\n\nTwo small bodies A and B start simultaneously from the same height $h=1.25\\,\\mathrm m$ above a horizontal catching plane. A is released from rest. B is given an initial velocity solely horizontally to the right. The bodies move side by side without influencing each other. For both, from the shared start $t=0$, $y_0=h$, $v_{y,0}=0$ and $x_0=0$; each body's $x$-coordinate is measured from its own starting position. Positive $x$ is to the right, positive $y$ upwards, and the catching plane is at $y=0$.\n\nUse a uniform gravitational field with the rounded model value $g=10.0\\,\\mathrm{m/s^2}$. Initially neglect air resistance and model the bodies as point particles. The table contains **original constructed model data**, not measurements actually collected during this assessment:\n\n| Shared time $t$ in s | 0.00 | 0.10 | 0.20 | 0.30 | 0.40 |\n| --- | ---: | ---: | ---: | ---: | ---: |\n| Horizontal position $x_B$ in m | 0.00 | 0.20 | 0.40 | 0.60 | 0.80 |\n| Height $y_B$ in m | 1.25 | 1.20 | 1.05 | 0.80 | 0.45 |\n| Height $y_A$ in m | 1.25 | 1.20 | 1.05 | 0.80 | 0.45 |\n\n1. Determine B's horizontal velocity from the horizontal data and explain your method. Formulate $x_B(t)$, $y_B(t)$, $v_{y,B}(t)$ and $a_{y,B}(t)$. Check the position equations against the table entries at $t=0.20\\,\\mathrm s$. **(6 marks)**\n\n2. Without vector calculations, explain why horizontal projectile motion in this model can be described as the superposition of two independent motions. Address the direction of gravity, the types of motion in $x$ and $y$, and the shared initial conditions in $y$. Evaluate the statement: “B first needs time for the horizontal distance and then additional time to fall.” **(6 marks)**\n\n3. Calculate both bodies' impact time, B's horizontal range, and B's horizontal and vertical velocities immediately before impact, with their signs. You are not asked to calculate an overall speed. **(6 marks)**\n\n4. Use B's two position equations to derive $y_B(x_B)$ without a time variable. Sketch the trajectory in an $x$-$y$ graph, including the starting point, impact point and at least two further table points. In a repeated trial, only B's initial horizontal velocity is doubled. Determine and justify the new flight time and range. **(6 marks)**\n\n5. Sketch $y_B(t)$, $v_{y,B}(t)$ and $a_{y,B}(t)$ from release until immediately before impact. Mark initial and final values and label quantities and units. Show how an initially zero vertical velocity is consistent with acceleration already being present at release. **(6 marks)**\n\n6. Justify when treating the bodies as point particles is useful for predicting their positions, and explain the role of the assumptions “uniform gravitational field” and “negligible air resistance”. Then evaluate the claim: “Including air resistance changes only the horizontal values; both bodies must still arrive simultaneously.” A qualitative explanation is sufficient; no drag law or drag calculation is required. **(6 marks)**",
+        "solutionContent": "1. In gleichen Zeitabschnitten $\\Delta t=0{,}10\\,\\mathrm s$ nimmt $x_B$ jeweils um $\\Delta x_B=0{,}20\\,\\mathrm m$ zu. Damit ist $v_{x,B}=\\Delta x_B/\\Delta t=+2{,}00\\,\\mathrm{m/s}$ konstant. Im vorgegebenen Modell gelten\n\n$$x_B(t)=(2{,}00\\,\\mathrm{m/s})t,\\qquad y_B(t)=1{,}25\\,\\mathrm m-\\tfrac12(10{,}0\\,\\mathrm{m/s^2})t^2,$$\n$$v_{y,B}(t)=-(10{,}0\\,\\mathrm{m/s^2})t,\\qquad a_{y,B}(t)=-10{,}0\\,\\mathrm{m/s^2}.$$\n\nBei $t=0{,}20\\,\\mathrm s$ liefern die Ortsgesetze $x_B=0{,}40\\,\\mathrm m$ und $y_B=1{,}05\\,\\mathrm m$, passend zur Tabelle. Die endliche Tabelle allein beweist die Gültigkeit des Modells nicht für beliebige Zeiten; die Extrapolation benutzt die genannten Modellannahmen.\n\n2. Die Gewichtskraft wirkt ausschließlich nach unten, also in $y$-Richtung. Ohne Luftwiderstand gibt es in diesem Modell keinen Einfluss, der die waagerechte Geschwindigkeit nach dem Start verändert: Die $x$-Bewegung ist gleichförmig, $a_x=0$. Senkrecht ist $a_y=-g$ konstant; die $y$-Bewegung ist gleichmäßig beschleunigt. Die Gleichung für $y(t)$ enthält weder $x$ noch $v_x$. Beide Körper haben dieselbe Anfangshöhe und $v_{y,0}=0$; daher gilt $y_A(t)=y_B(t)$ für jede gemeinsame Flugzeit. Die Teilbewegungen finden gleichzeitig statt. Beide Ortsgesetze werden mit demselben seit dem Start verstrichenen $t$ ausgewertet; Zeiten für horizontale Bewegung und Fallen werden nicht addiert. „Unabhängig“ bedeutet nicht, dass getrennte Zeitabläufe vorliegen.\n\n3. Für beide Körper:\n\n$$0=h-\\tfrac12gt_\\mathrm F^2,\\qquad t_\\mathrm F=\\sqrt{\\frac{2h}{g}}=\\sqrt{\\frac{2\\cdot1{,}25\\,\\mathrm m}{10{,}0\\,\\mathrm{m/s^2}}}=0{,}500\\,\\mathrm s.$$\n\nDie Wurfweite von B ist $x_\\mathrm F=v_{x,B}t_\\mathrm F=1{,}00\\,\\mathrm m$. Unmittelbar vor dem Auftreffen gilt $v_{x,B}=+2{,}00\\,\\mathrm{m/s}$ und $v_{y,B}=-5{,}00\\,\\mathrm{m/s}$. A trifft zum selben Zeitpunkt ein; seine waagerechte Ortsänderung ist null. Bis zum Auftreffen sind hier Zeit, senkrechter Fallweg und senkrechte Geschwindigkeit gleich, die räumlichen Bahnen jedoch verschieden.\n\n4. Aus $t=x_B/v_{x,B}$ folgt\n\n$$y_B(x_B)=h-\\frac{g}{2v_{x,B}^2}x_B^2\n=1{,}25\\,\\mathrm m-(1{,}25\\,\\mathrm{m^{-1}})x_B^2.$$\n\nDie Bahn ist der fallende Ast einer nach unten geöffneten Parabel. Sie beginnt mit waagerechter Tangente bei $(0\\,\\mathrm m,1{,}25\\,\\mathrm m)$ und endet bei $(1{,}00\\,\\mathrm m,0\\,\\mathrm m)$. Weitere mögliche Punkte sind $(0{,}20\\,\\mathrm m,1{,}20\\,\\mathrm m)$, $(0{,}40\\,\\mathrm m,1{,}05\\,\\mathrm m)$, $(0{,}60\\,\\mathrm m,0{,}80\\,\\mathrm m)$ und $(0{,}80\\,\\mathrm m,0{,}45\\,\\mathrm m)$. Bei $v_{x,0}=4{,}00\\,\\mathrm{m/s}$ bleiben $h$, $v_{y,0}$ und $g$ unverändert. Deshalb bleibt die Flugzeit $0{,}500\\,\\mathrm s$, während sich die Wurfweite auf $2{,}00\\,\\mathrm m$ verdoppelt.\n\n5. $y_B(t)$ ist im betrachteten Bereich eine fallende, nach unten gekrümmte Parabel: Start $(0\\,\\mathrm s,1{,}25\\,\\mathrm m)$ mit waagerechter Tangente, Grenzpunkt $(0{,}500\\,\\mathrm s,0\\,\\mathrm m)$. $v_{y,B}(t)$ ist eine fallende Gerade von $(0\\,\\mathrm s,0)$ nach $(0{,}500\\,\\mathrm s,-5{,}00\\,\\mathrm{m/s})$. $a_{y,B}(t)$ liegt durchgehend bei $-10{,}0\\,\\mathrm{m/s^2}$. Insbesondere ist die Steigung des Geschwindigkeitsgraphen schon beim Start negativ, obwohl der Geschwindigkeitswert dort null ist. Eine verschwindende Anfangsgeschwindigkeit ist keine verschwindende Beschleunigung.\n\n6. Für die Vorhersage der Schwerpunktbahn darf man die Körper als Punkte behandeln, wenn ihre Ausdehnung gegenüber den betrachteten Längen klein ist und ihre Orientierung, Rotation und Verformung für diese Vorhersage keine Rolle spielen. Das homogene Feld liefert denselben konstanten Wert $-g$ im betrachteten Raum; dadurch darf das Modell gleichmäßiger Beschleunigung verwendet werden. Vernachlässigbarer Luftwiderstand ermöglicht die unveränderte waagerechte Geschwindigkeit und die reine Fallbeschleunigung in $y$.\n\nDie abschließende Behauptung ist nicht allgemein richtig: Luftwiderstand kann auch die senkrechte Bewegung beeinflussen. Außerdem kann sein senkrechter Einfluss von der gesamten Bewegung abhängen; dann kann eine unterschiedliche waagerechte Geschwindigkeit auch verschiedene senkrechte Bewegungsverläufe verursachen. Gleiche Fallzeiten sind unter beliebigem Luftwiderstand daher nicht gesichert. Daraus folgt aber auch nicht, dass in jedem denkbaren Widerstandsmodell unterschiedliche Fallzeiten entstehen oder welcher Körper stets zuerst ankommt; dafür wäre das konkrete Modell erforderlich. Eine qualitative Widerlegung der behaupteten Notwendigkeit genügt.\n\n**Bewertungsgrundsätze:** Die Lösung ist ein möglicher Lösungsweg. Gleichwertige fachlich richtige Herleitungen und Darstellungen erhalten dieselben Punkte. Pro Kriterium wird höchstens 1 BE vergeben. Ein Rechenfehler wird an seiner Entstehungsstelle bewertet; rechnerisch und fachlich konsistente Folgeschritte mit dem eigenen Zwischenwert behalten ihre Methodenpunkte. Ein Folgefehler ersetzt keine eigenständige physikalische Begründung. Einheiten und Vorzeichen gehören zu den jeweils benannten Ergebnissen. Exakte Ergebnisse sowie sinnvoll auf zwei bis drei signifikante Stellen gerundete Werte sind gleichwertig; Zwischenwerte sollen nicht vorzeitig gerundet werden. Für die ausgewiesenen Dezimalergebnisse ist eine Abweichung von höchstens 1 % allein durch Rundung zulässig. Diagramme werden nach Verlauf, Achsenbeschriftung, Einheiten und den ausdrücklich verlangten Merkmalen bewertet, nicht nach zeichnerischer Perfektion. Die vorgegebene positive Richtung bleibt für die verlangten Endergebnisse verbindlich; eine intern umgekehrte Achse ist bei korrekter Rückübersetzung zulässig. Es werden keine zusätzlichen Aufgaben, Vektorrechnungen oder Energieargumente verlangt.\n\n### Bewertungsraster: je Kriterium 1 BE\n\n| Kriterium | Leistung | BE |\n| --- | --- | ---: |\n| 1.1 | Konstantes $v_{x,B}=+2{,}00\\,\\mathrm{m/s}$ aus gleichen Ortszuwächsen je gleichem Zeitintervall begründen. | 1 |\n| 1.2 | Waagerechtes Ortsgesetz $x_B(t)=(2{,}00\\,\\mathrm{m/s})t$ angeben. | 1 |\n| 1.3 | Senkrechtes Ortsgesetz mit Anfangshöhe $1{,}25\\,\\mathrm m$, fehlendem linearem Term und negativem quadratischem Term aufstellen. | 1 |\n| 1.4 | Senkrechtes Geschwindigkeitsgesetz $v_{y,B}(t)=-(10{,}0\\,\\mathrm{m/s^2})t$ angeben. | 1 |\n| 1.5 | Konstantes $a_{y,B}=-10{,}0\\,\\mathrm{m/s^2}$ angeben. | 1 |\n| 1.6 | Beide Ortsgesetze bei $t=0{,}20\\,\\mathrm s$ anhand von $x_B=0{,}40\\,\\mathrm m$ und $y_B=1{,}05\\,\\mathrm m$ prüfen. | 1 |\n| 2.1 | Gewichtskraftwirkung ausschließlich nach unten in $y$-Richtung benennen. | 1 |\n| 2.2 | Gleichförmige $x$-Bewegung aus fehlender waagerechter Geschwindigkeitsänderung im Modell begründen. | 1 |\n| 2.3 | Gleichmäßig beschleunigte $y$-Bewegung auf konstantes $a_y=-g$ zurückführen. | 1 |\n| 2.4 | Gleiche $y$-Anfangsbedingungen beider Körper für gleiche senkrechte Bewegungsverläufe verwenden. | 1 |\n| 2.5 | Unabhängigkeit daran erläutern, dass im idealen $y$-Gesetz keine waagerechte Größe vorkommt, oder ein gleichwertiges fachliches Argument geben. | 1 |\n| 2.6 | Gleichzeitige Teilbewegungen mit gemeinsamem $t$ erklären und Addition getrennter Bewegungszeiten verwerfen. | 1 |\n| 3.1 | Auftreffbedingung $0=h-gt^2/2$ für beide Körper ansetzen. | 1 |\n| 3.2 | Gemeinsame physikalische Auftreffzeit $0{,}500\\,\\mathrm s$ bestimmen. | 1 |\n| 3.3 | Wurfweite aus derselben Zeit mit $x_F=v_x t_F$ ansetzen. | 1 |\n| 3.4 | Wurfweite $1{,}00\\,\\mathrm m$ bestimmen. | 1 |\n| 3.5 | Waagerechte Auftreffgeschwindigkeit $+2{,}00\\,\\mathrm{m/s}$ bestimmen. | 1 |\n| 3.6 | Senkrechte Auftreffgeschwindigkeit $-5{,}00\\,\\mathrm{m/s}$ bestimmen. | 1 |\n| 4.1 | Zeit durch $t=x_B/v_{x,B}$ aus den Ortsgesetzen eliminieren. | 1 |\n| 4.2 | Bahngleichung $y_B=1{,}25\\,\\mathrm m-(1{,}25\\,\\mathrm{m^{-1}})x_B^2$ korrekt bestimmen. | 1 |\n| 4.3 | Fallenden Parabelast mit waagerechter Anfangstangente und passend beschrifteten Ortsachsen zeichnen. | 1 |\n| 4.4 | Start-, Auftreff- und mindestens zwei weitere Tabellenpunkte in der Bahn korrekt markieren. | 1 |\n| 4.5 | Unveränderte Flugzeit $0{,}500\\,\\mathrm s$ bei doppeltem $v_x$ mit unveränderten senkrechten Anfangsbedingungen begründen. | 1 |\n| 4.6 | Neue Wurfweite $2{,}00\\,\\mathrm m$ aus doppeltem $v_x$ bei gleicher Zeit bestimmen. | 1 |\n| 5.1 | Ortsgraph als fallende, nach unten gekrümmte Parabel mit waagerechter Anfangstangente darstellen. | 1 |\n| 5.2 | Anfangshöhe $1{,}25\\,\\mathrm m$ und Endhöhe $0$ bei $0{,}500\\,\\mathrm s$ markieren. | 1 |\n| 5.3 | Geschwindigkeitsgraph als fallende Gerade mit Startwert $0$ und Endwert $-5{,}00\\,\\mathrm{m/s}$ zeichnen. | 1 |\n| 5.4 | Beschleunigungsgraph durchgehend bei $-10{,}0\\,\\mathrm{m/s^2}$, einschließlich Start, darstellen. | 1 |\n| 5.5 | Alle drei Diagramme mit Größen, Einheiten und konsistenten Zeitachsen beschriften. | 1 |\n| 5.6 | Vereinbarkeit von $v_y(0)=0$ und $a_y(0)=-g$ über bereits negative Steigung des Geschwindigkeitsgraphen oder gleichwertige Erklärung darstellen. | 1 |\n| 6.1 | Massepunktmodell als Beschreibung einer repräsentativen Schwerpunktposition begründen. | 1 |\n| 6.2 | Kleine Ausdehnung gegenüber relevanten Strecken und für die Bahn unwesentliche Orientierung/Rotation/Verformung als passende Bedingungen nennen. | 1 |\n| 6.3 | Homogenes Feld mit konstantem $g$ und deshalb gleichmäßiger senkrechter Beschleunigung verbinden. | 1 |\n| 6.4 | Vernachlässigbaren Luftwiderstand als Bedingung für konstantes $v_x$ und unveränderte Fallbeschleunigung erklären. | 1 |\n| 6.5 | Behauptung zurückweisen, Luftwiderstand ändere ausschließlich waagerechte Werte; möglichen senkrechten Einfluss erklären. | 1 |\n| 6.6 | Nicht garantierte Gleichzeitigkeit damit begründen, dass senkrechter Luftwiderstand von der Gesamtbewegung abhängen kann; kein pauschales Urteil verlangen, welcher Körper zuerst ankommt. | 1 |",
+        "solutionContentEn": "1. In equal intervals $\\Delta t=0.10\\,\\mathrm s$, $x_B$ increases by $\\Delta x_B=0.20\\,\\mathrm m$. Thus $v_{x,B}=\\Delta x_B/\\Delta t=+2.00\\,\\mathrm{m/s}$ is constant. In the stated model,\n\n$$x_B(t)=(2.00\\,\\mathrm{m/s})t,\\qquad y_B(t)=1.25\\,\\mathrm m-\\tfrac12(10.0\\,\\mathrm{m/s^2})t^2,$$\n$$v_{y,B}(t)=-(10.0\\,\\mathrm{m/s^2})t,\\qquad a_{y,B}(t)=-10.0\\,\\mathrm{m/s^2}.$$\n\nAt $t=0.20\\,\\mathrm s$, the equations give $x_B=0.40\\,\\mathrm m$ and $y_B=1.05\\,\\mathrm m$, agreeing with the table. The finite table alone does not establish the model for arbitrary times; extrapolation uses the stated assumptions.\n\n2. Gravity acts exclusively downwards, in the $y$-direction. Without air resistance there is no influence in this model that changes horizontal velocity after release: $x$-motion is uniform and $a_x=0$. Vertically, $a_y=-g$ is constant, so $y$-motion is uniformly accelerated. The equation for $y(t)$ contains neither $x$ nor $v_x$. Both bodies share their initial height and $v_{y,0}=0$, so $y_A(t)=y_B(t)$ at every shared flight time. The two motions occur simultaneously. Both position equations use the same elapsed time $t$ since release; horizontal-motion and falling times are not added. “Independent” does not mean separate time sequences.\n\n3. For both bodies,\n\n$$0=h-\\tfrac12gt_\\mathrm F^2,\\qquad t_\\mathrm F=\\sqrt{\\frac{2h}{g}}=\\sqrt{\\frac{2\\cdot1.25\\,\\mathrm m}{10.0\\,\\mathrm{m/s^2}}}=0.500\\,\\mathrm s.$$\n\nB's range is $x_\\mathrm F=v_{x,B}t_\\mathrm F=1.00\\,\\mathrm m$. Immediately before impact, $v_{x,B}=+2.00\\,\\mathrm{m/s}$ and $v_{y,B}=-5.00\\,\\mathrm{m/s}$. A arrives at the same time with zero horizontal displacement. Their flight times, vertical fall distances and vertical velocities are equal, but their spatial trajectories differ.\n\n4. From $t=x_B/v_{x,B}$,\n\n$$y_B(x_B)=h-\\frac{g}{2v_{x,B}^2}x_B^2\n=1.25\\,\\mathrm m-(1.25\\,\\mathrm{m^{-1}})x_B^2.$$\n\nThe trajectory is the descending branch of a downward-opening parabola. It starts with a horizontal tangent at $(0\\,\\mathrm m,1.25\\,\\mathrm m)$ and ends at $(1.00\\,\\mathrm m,0\\,\\mathrm m)$. Further suitable points are $(0.20\\,\\mathrm m,1.20\\,\\mathrm m)$, $(0.40\\,\\mathrm m,1.05\\,\\mathrm m)$, $(0.60\\,\\mathrm m,0.80\\,\\mathrm m)$ and $(0.80\\,\\mathrm m,0.45\\,\\mathrm m)$. With $v_{x,0}=4.00\\,\\mathrm{m/s}$, $h$, $v_{y,0}$ and $g$ are unchanged. The flight time therefore remains $0.500\\,\\mathrm s$ and the range doubles to $2.00\\,\\mathrm m$.\n\n5. Over the considered interval, $y_B(t)$ is a descending, downward-curving parabola: it starts at $(0\\,\\mathrm s,1.25\\,\\mathrm m)$ with horizontal tangent and has limiting endpoint $(0.500\\,\\mathrm s,0\\,\\mathrm m)$. $v_{y,B}(t)$ is a descending straight line from $(0\\,\\mathrm s,0)$ to $(0.500\\,\\mathrm s,-5.00\\,\\mathrm{m/s})$. $a_{y,B}(t)$ is $-10.0\\,\\mathrm{m/s^2}$ throughout. In particular, the slope of the velocity graph is already negative at release even though velocity is zero there. Zero initial velocity does not imply zero acceleration.\n\n6. For predicting the centre-of-mass trajectory, the bodies may be treated as points when their dimensions are small compared with relevant distances and their orientation, rotation and deformation do not affect this prediction. A uniform field provides the same constant value $-g$ throughout the region, allowing a constant-acceleration model. Negligible air resistance permits constant horizontal velocity and pure gravitational acceleration in $y$.\n\nThe final claim is not generally valid: air resistance may also affect vertical motion. Its vertical influence can depend on the overall motion, so different horizontal velocities may lead to different vertical motion histories. Equal fall times are therefore not guaranteed under arbitrary air resistance. This does not establish unequal times in every possible drag model or say which body must always arrive first; that would require the particular model. A qualitative refutation of the claimed necessity is sufficient.\n\n**Marking principles:** The solution is one possible method. Equivalent physically correct derivations and representations receive the same credit. Award at most 1 mark per criterion. Penalize a calculation error where it first occurs; subsequent mathematically and physically consistent work using that intermediate result retains its method marks. Error carry-forward does not replace an independent physical explanation. Units and signs are part of the stated results. Exact answers and sensible rounding to two or three significant figures are equally acceptable; avoid premature rounding of intermediate values. A difference of at most 1% due solely to rounding is acceptable for the listed decimal answers. Assess graphs by shape, labelled axes, units and explicitly requested features, not artistic precision. Final answers must use the specified positive direction; an internally reversed axis is acceptable if results are correctly translated back. No extra tasks, vector calculations or energy arguments are required.\n\n### Marking rubric: 1 mark per criterion\n\n| Criterion | Evidence | Marks |\n| --- | --- | ---: |\n| 1.1 | Justify constant $v_{x,B}=+2.00\\,\\mathrm{m/s}$ using equal displacements in equal time intervals. | 1 |\n| 1.2 | State $x_B(t)=(2.00\\,\\mathrm{m/s})t$. | 1 |\n| 1.3 | Form the vertical position law with initial height $1.25\\,\\mathrm m$, no linear term and a negative quadratic term. | 1 |\n| 1.4 | State $v_{y,B}(t)=-(10.0\\,\\mathrm{m/s^2})t$. | 1 |\n| 1.5 | State constant $a_{y,B}=-10.0\\,\\mathrm{m/s^2}$. | 1 |\n| 1.6 | Check both position equations at $t=0.20\\,\\mathrm s$ against $x_B=0.40\\,\\mathrm m$ and $y_B=1.05\\,\\mathrm m$. | 1 |\n| 2.1 | Identify gravity as acting only downwards in the $y$-direction. | 1 |\n| 2.2 | Explain uniform $x$-motion from the absence of horizontal velocity change in the model. | 1 |\n| 2.3 | Explain uniformly accelerated $y$-motion through constant $a_y=-g$. | 1 |\n| 2.4 | Use the identical vertical initial conditions to explain identical vertical motion histories. | 1 |\n| 2.5 | Explain independence through the absence of horizontal quantities from the ideal vertical law, or an equivalent physical argument. | 1 |\n| 2.6 | Explain simultaneous motions with one shared $t$ and reject adding separate motion times. | 1 |\n| 3.1 | Set up the impact condition $0=h-gt^2/2$ for both bodies. | 1 |\n| 3.2 | Obtain the shared physical impact time $0.500\\,\\mathrm s$. | 1 |\n| 3.3 | Use the same time in $x_F=v_x t_F$ to calculate range. | 1 |\n| 3.4 | Obtain the range $1.00\\,\\mathrm m$. | 1 |\n| 3.5 | Obtain horizontal impact velocity $+2.00\\,\\mathrm{m/s}$. | 1 |\n| 3.6 | Obtain vertical impact velocity $-5.00\\,\\mathrm{m/s}$. | 1 |\n| 4.1 | Eliminate time using $t=x_B/v_{x,B}$. | 1 |\n| 4.2 | Obtain $y_B=1.25\\,\\mathrm m-(1.25\\,\\mathrm{m^{-1}})x_B^2$. | 1 |\n| 4.3 | Draw the descending parabolic branch with a horizontal starting tangent and correctly labelled position axes. | 1 |\n| 4.4 | Correctly mark the starting and impact points and at least two further table points. | 1 |\n| 4.5 | Justify unchanged flight time $0.500\\,\\mathrm s$ at doubled $v_x$ through unchanged vertical initial conditions. | 1 |\n| 4.6 | Obtain the new range $2.00\\,\\mathrm m$ from doubled $v_x$ and unchanged flight time. | 1 |\n| 5.1 | Draw position as a descending downward-curving parabola with horizontal starting tangent. | 1 |\n| 5.2 | Mark initial height $1.25\\,\\mathrm m$ and final height $0$ at $0.500\\,\\mathrm s$. | 1 |\n| 5.3 | Draw velocity as a descending straight line from $0$ to $-5.00\\,\\mathrm{m/s}$. | 1 |\n| 5.4 | Draw acceleration at $-10.0\\,\\mathrm{m/s^2}$ throughout, including release. | 1 |\n| 5.5 | Label all three graphs with quantities, units and consistent time axes. | 1 |\n| 5.6 | Explain how $v_y(0)=0$ and $a_y(0)=-g$ coexist through the already negative velocity-graph slope or an equivalent explanation. | 1 |\n| 6.1 | Justify the point-particle model as representing the centre-of-mass position. | 1 |\n| 6.2 | State small size relative to relevant distances and unimportant orientation/rotation/deformation as suitable conditions. | 1 |\n| 6.3 | Link the uniform field to constant $g$ and hence constant vertical acceleration. | 1 |\n| 6.4 | Explain negligible drag as a condition for constant $v_x$ and unchanged gravitational fall acceleration. | 1 |\n| 6.5 | Reject the claim that drag changes only horizontal values and explain its possible vertical effect. | 1 |\n| 6.6 | Explain that equal arrival times are not guaranteed because vertical drag may depend on overall motion; do not require a universal ordering of arrival times. | 1 |",
+        "scoring": {
+          "maxPoints": 36,
+          "passingPoints": 22,
+          "steps": [
+            {
+              "id": "horizontal-projection-shared-time-v1-1-1",
+              "points": 1,
+              "description": "DE: Konstantes $v_{x,B}=+2{,}00\\,\\mathrm{m/s}$ aus gleichen Ortszuwächsen je gleichem Zeitintervall begründen. EN: Justify constant $v_{x,B}=+2.00\\,\\mathrm{m/s}$ using equal displacements in equal time intervals."
+            },
+            {
+              "id": "horizontal-projection-shared-time-v1-1-2",
+              "points": 1,
+              "description": "DE: Waagerechtes Ortsgesetz $x_B(t)=(2{,}00\\,\\mathrm{m/s})t$ angeben. EN: State $x_B(t)=(2.00\\,\\mathrm{m/s})t$."
+            },
+            {
+              "id": "horizontal-projection-shared-time-v1-1-3",
+              "points": 1,
+              "description": "DE: Senkrechtes Ortsgesetz mit Anfangshöhe $1{,}25\\,\\mathrm m$, fehlendem linearem Term und negativem quadratischem Term aufstellen. EN: Form the vertical position law with initial height $1.25\\,\\mathrm m$, no linear term and a negative quadratic term."
+            },
+            {
+              "id": "horizontal-projection-shared-time-v1-1-4",
+              "points": 1,
+              "description": "DE: Senkrechtes Geschwindigkeitsgesetz $v_{y,B}(t)=-(10{,}0\\,\\mathrm{m/s^2})t$ angeben. EN: State $v_{y,B}(t)=-(10.0\\,\\mathrm{m/s^2})t$."
+            },
+            {
+              "id": "horizontal-projection-shared-time-v1-1-5",
+              "points": 1,
+              "description": "DE: Konstantes $a_{y,B}=-10{,}0\\,\\mathrm{m/s^2}$ angeben. EN: State constant $a_{y,B}=-10.0\\,\\mathrm{m/s^2}$."
+            },
+            {
+              "id": "horizontal-projection-shared-time-v1-1-6",
+              "points": 1,
+              "description": "DE: Beide Ortsgesetze bei $t=0{,}20\\,\\mathrm s$ anhand von $x_B=0{,}40\\,\\mathrm m$ und $y_B=1{,}05\\,\\mathrm m$ prüfen. EN: Check both position equations at $t=0.20\\,\\mathrm s$ against $x_B=0.40\\,\\mathrm m$ and $y_B=1.05\\,\\mathrm m$."
+            },
+            {
+              "id": "horizontal-projection-shared-time-v1-2-1",
+              "points": 1,
+              "description": "DE: Gewichtskraftwirkung ausschließlich nach unten in $y$-Richtung benennen. EN: Identify gravity as acting only downwards in the $y$-direction."
+            },
+            {
+              "id": "horizontal-projection-shared-time-v1-2-2",
+              "points": 1,
+              "description": "DE: Gleichförmige $x$-Bewegung aus fehlender waagerechter Geschwindigkeitsänderung im Modell begründen. EN: Explain uniform $x$-motion from the absence of horizontal velocity change in the model."
+            },
+            {
+              "id": "horizontal-projection-shared-time-v1-2-3",
+              "points": 1,
+              "description": "DE: Gleichmäßig beschleunigte $y$-Bewegung auf konstantes $a_y=-g$ zurückführen. EN: Explain uniformly accelerated $y$-motion through constant $a_y=-g$."
+            },
+            {
+              "id": "horizontal-projection-shared-time-v1-2-4",
+              "points": 1,
+              "description": "DE: Gleiche $y$-Anfangsbedingungen beider Körper für gleiche senkrechte Bewegungsverläufe verwenden. EN: Use the identical vertical initial conditions to explain identical vertical motion histories."
+            },
+            {
+              "id": "horizontal-projection-shared-time-v1-2-5",
+              "points": 1,
+              "description": "DE: Unabhängigkeit daran erläutern, dass im idealen $y$-Gesetz keine waagerechte Größe vorkommt, oder ein gleichwertiges fachliches Argument geben. EN: Explain independence through the absence of horizontal quantities from the ideal vertical law, or an equivalent physical argument."
+            },
+            {
+              "id": "horizontal-projection-shared-time-v1-2-6",
+              "points": 1,
+              "description": "DE: Gleichzeitige Teilbewegungen mit gemeinsamem $t$ erklären und Addition getrennter Bewegungszeiten verwerfen. EN: Explain simultaneous motions with one shared $t$ and reject adding separate motion times."
+            },
+            {
+              "id": "horizontal-projection-shared-time-v1-3-1",
+              "points": 1,
+              "description": "DE: Auftreffbedingung $0=h-gt^2/2$ für beide Körper ansetzen. EN: Set up the impact condition $0=h-gt^2/2$ for both bodies."
+            },
+            {
+              "id": "horizontal-projection-shared-time-v1-3-2",
+              "points": 1,
+              "description": "DE: Gemeinsame physikalische Auftreffzeit $0{,}500\\,\\mathrm s$ bestimmen. EN: Obtain the shared physical impact time $0.500\\,\\mathrm s$."
+            },
+            {
+              "id": "horizontal-projection-shared-time-v1-3-3",
+              "points": 1,
+              "description": "DE: Wurfweite aus derselben Zeit mit $x_F=v_x t_F$ ansetzen. EN: Use the same time in $x_F=v_x t_F$ to calculate range."
+            },
+            {
+              "id": "horizontal-projection-shared-time-v1-3-4",
+              "points": 1,
+              "description": "DE: Wurfweite $1{,}00\\,\\mathrm m$ bestimmen. EN: Obtain the range $1.00\\,\\mathrm m$."
+            },
+            {
+              "id": "horizontal-projection-shared-time-v1-3-5",
+              "points": 1,
+              "description": "DE: Waagerechte Auftreffgeschwindigkeit $+2{,}00\\,\\mathrm{m/s}$ bestimmen. EN: Obtain horizontal impact velocity $+2.00\\,\\mathrm{m/s}$."
+            },
+            {
+              "id": "horizontal-projection-shared-time-v1-3-6",
+              "points": 1,
+              "description": "DE: Senkrechte Auftreffgeschwindigkeit $-5{,}00\\,\\mathrm{m/s}$ bestimmen. EN: Obtain vertical impact velocity $-5.00\\,\\mathrm{m/s}$."
+            },
+            {
+              "id": "horizontal-projection-shared-time-v1-4-1",
+              "points": 1,
+              "description": "DE: Zeit durch $t=x_B/v_{x,B}$ aus den Ortsgesetzen eliminieren. EN: Eliminate time using $t=x_B/v_{x,B}$."
+            },
+            {
+              "id": "horizontal-projection-shared-time-v1-4-2",
+              "points": 1,
+              "description": "DE: Bahngleichung $y_B=1{,}25\\,\\mathrm m-(1{,}25\\,\\mathrm{m^{-1}})x_B^2$ korrekt bestimmen. EN: Obtain $y_B=1.25\\,\\mathrm m-(1.25\\,\\mathrm{m^{-1}})x_B^2$."
+            },
+            {
+              "id": "horizontal-projection-shared-time-v1-4-3",
+              "points": 1,
+              "description": "DE: Fallenden Parabelast mit waagerechter Anfangstangente und passend beschrifteten Ortsachsen zeichnen. EN: Draw the descending parabolic branch with a horizontal starting tangent and correctly labelled position axes."
+            },
+            {
+              "id": "horizontal-projection-shared-time-v1-4-4",
+              "points": 1,
+              "description": "DE: Start-, Auftreff- und mindestens zwei weitere Tabellenpunkte in der Bahn korrekt markieren. EN: Correctly mark the starting and impact points and at least two further table points."
+            },
+            {
+              "id": "horizontal-projection-shared-time-v1-4-5",
+              "points": 1,
+              "description": "DE: Unveränderte Flugzeit $0{,}500\\,\\mathrm s$ bei doppeltem $v_x$ mit unveränderten senkrechten Anfangsbedingungen begründen. EN: Justify unchanged flight time $0.500\\,\\mathrm s$ at doubled $v_x$ through unchanged vertical initial conditions."
+            },
+            {
+              "id": "horizontal-projection-shared-time-v1-4-6",
+              "points": 1,
+              "description": "DE: Neue Wurfweite $2{,}00\\,\\mathrm m$ aus doppeltem $v_x$ bei gleicher Zeit bestimmen. EN: Obtain the new range $2.00\\,\\mathrm m$ from doubled $v_x$ and unchanged flight time."
+            },
+            {
+              "id": "horizontal-projection-shared-time-v1-5-1",
+              "points": 1,
+              "description": "DE: Ortsgraph als fallende, nach unten gekrümmte Parabel mit waagerechter Anfangstangente darstellen. EN: Draw position as a descending downward-curving parabola with horizontal starting tangent."
+            },
+            {
+              "id": "horizontal-projection-shared-time-v1-5-2",
+              "points": 1,
+              "description": "DE: Anfangshöhe $1{,}25\\,\\mathrm m$ und Endhöhe $0$ bei $0{,}500\\,\\mathrm s$ markieren. EN: Mark initial height $1.25\\,\\mathrm m$ and final height $0$ at $0.500\\,\\mathrm s$."
+            },
+            {
+              "id": "horizontal-projection-shared-time-v1-5-3",
+              "points": 1,
+              "description": "DE: Geschwindigkeitsgraph als fallende Gerade mit Startwert $0$ und Endwert $-5{,}00\\,\\mathrm{m/s}$ zeichnen. EN: Draw velocity as a descending straight line from $0$ to $-5.00\\,\\mathrm{m/s}$."
+            },
+            {
+              "id": "horizontal-projection-shared-time-v1-5-4",
+              "points": 1,
+              "description": "DE: Beschleunigungsgraph durchgehend bei $-10{,}0\\,\\mathrm{m/s^2}$, einschließlich Start, darstellen. EN: Draw acceleration at $-10.0\\,\\mathrm{m/s^2}$ throughout, including release."
+            },
+            {
+              "id": "horizontal-projection-shared-time-v1-5-5",
+              "points": 1,
+              "description": "DE: Alle drei Diagramme mit Größen, Einheiten und konsistenten Zeitachsen beschriften. EN: Label all three graphs with quantities, units and consistent time axes."
+            },
+            {
+              "id": "horizontal-projection-shared-time-v1-5-6",
+              "points": 1,
+              "description": "DE: Vereinbarkeit von $v_y(0)=0$ und $a_y(0)=-g$ über bereits negative Steigung des Geschwindigkeitsgraphen oder gleichwertige Erklärung darstellen. EN: Explain how $v_y(0)=0$ and $a_y(0)=-g$ coexist through the already negative velocity-graph slope or an equivalent explanation."
+            },
+            {
+              "id": "horizontal-projection-shared-time-v1-6-1",
+              "points": 1,
+              "description": "DE: Massepunktmodell als Beschreibung einer repräsentativen Schwerpunktposition begründen. EN: Justify the point-particle model as representing the centre-of-mass position."
+            },
+            {
+              "id": "horizontal-projection-shared-time-v1-6-2",
+              "points": 1,
+              "description": "DE: Kleine Ausdehnung gegenüber relevanten Strecken und für die Bahn unwesentliche Orientierung/Rotation/Verformung als passende Bedingungen nennen. EN: State small size relative to relevant distances and unimportant orientation/rotation/deformation as suitable conditions."
+            },
+            {
+              "id": "horizontal-projection-shared-time-v1-6-3",
+              "points": 1,
+              "description": "DE: Homogenes Feld mit konstantem $g$ und deshalb gleichmäßiger senkrechter Beschleunigung verbinden. EN: Link the uniform field to constant $g$ and hence constant vertical acceleration."
+            },
+            {
+              "id": "horizontal-projection-shared-time-v1-6-4",
+              "points": 1,
+              "description": "DE: Vernachlässigbaren Luftwiderstand als Bedingung für konstantes $v_x$ und unveränderte Fallbeschleunigung erklären. EN: Explain negligible drag as a condition for constant $v_x$ and unchanged gravitational fall acceleration."
+            },
+            {
+              "id": "horizontal-projection-shared-time-v1-6-5",
+              "points": 1,
+              "description": "DE: Behauptung zurückweisen, Luftwiderstand ändere ausschließlich waagerechte Werte; möglichen senkrechten Einfluss erklären. EN: Reject the claim that drag changes only horizontal values and explain its possible vertical effect."
+            },
+            {
+              "id": "horizontal-projection-shared-time-v1-6-6",
+              "points": 1,
+              "description": "DE: Nicht garantierte Gleichzeitigkeit damit begründen, dass senkrechter Luftwiderstand von der Gesamtbewegung abhängen kann; kein pauschales Urteil verlangen, welcher Körper zuerst ankommt. EN: Explain that equal arrival times are not guaranteed because vertical drag may depend on overall motion; do not require a universal ordering of arrival times."
             }
           ]
         }

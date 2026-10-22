@@ -22,7 +22,22 @@ Eine `requires`-Kante begründet Vorbereitung, keine geprüfte Leistung. Eine
 Zuordnung in den Metadaten ist außerdem kein neuer fachlicher Qualitätsnachweis.
 Die Oberfläche spricht deshalb von hinterlegter Themenzuordnung. Fehlende oder
 ungültige Aufgabeninhalte, Freigaben oder Zuordnungen begründen keine
-Vollständigkeitszusage und verhindern die automatische Übernahme.
+Vollständigkeitszusage. Nicht verfügbare Aufgaben werden ausgewiesen und nicht
+eingeplant; offene Metadaten verhindern die Planung gültiger ausgewählter
+Themen und verfügbarer Aufgaben nicht.
+
+Verweist die Aufgabenabdeckung auf einen kanonischen Cluster, den die
+Kursansicht in einzelne Ziele auflöst, darf die Referenz diese bereits sichtbaren
+Ziele zusammenfassen. Sie darf keine ausgeblendeten Ziele in den Kurs aufnehmen.
+
+Für die Kinematik ergänzen zwei einzeln auswählbare Aufgabenpakete unter
+**Physik → E-Phase → Übungen** das Angebot: **Senkrechter Wurf: Vorzeichen,
+Scheitelpunkt und Rückkehr** und **Waagerechter Wurf: Zwei Bewegungen, eine
+gemeinsame Zeit**. Beide enthalten sechs Teilaufgaben mit 36 BE, vollständige
+Lösungen und Bewertungsraster auf Deutsch und Englisch. Sie prüfen schriftlich
+Bewegungsgesetze, Diagramme und Begründungen ohne Vektorrechnung; praktische
+Experimentierkompetenz wird dadurch nicht nachgewiesen. Fachliche
+Voraussetzungen und tatsächlich geprüfte Lernziele werden getrennt zugeordnet.
 
 ## Vorbereitung vervollständigen
 
@@ -34,11 +49,16 @@ eingeplante und noch zu ergänzende Ziele, zusätzliche Grundlagen und offene
 Zuordnungen. Der Zeitraum endet vor dem Klausurtermin und enthält mindestens
 einen Werktag. Das Öffnen der Vorschau verändert keinen Plan.
 
-Zusätzliche Aufgabenthemen und Grundlagen müssen ausdrücklich übernommen
-werden. Außerhalb des aktuellen Kursumfangs liegende Voraussetzungen werden
-gesondert angezeigt und niemals stillschweigend zu Kurszielen. Ihre gesonderte
-Prüfung wird ausdrücklich bestätigt; die normale Backend-Frontier prüft ihre
-Beherrschung weiterhin. Ungeklärte Aufgabenabdeckung wird damit nicht umgangen.
+Standardmäßig wird nur die ausdrückliche Auswahl vorbereitet. Zusätzliche
+Aufgabenthemen und Grundlagen sind Vorschläge; eine optionale, zunächst
+ausgeschaltete Auswahl übernimmt sie. Ohne diese Ergänzungen bleibt die
+Vorbereitung übernehmbar und der Plan kann für den Lernenden aktiviert werden.
+Ausgewählte verfügbare Aufgaben bleiben enthalten, auch wenn sie zusätzliche
+Themen voraussetzen. Außerhalb des aktuellen Kursumfangs liegende
+Voraussetzungen werden gesondert angezeigt und niemals stillschweigend zu
+Kurszielen. Solche Hinweise brauchen keine Bestätigung. Die normale
+Backend-Frontier prüft die fachlichen Voraussetzungen beim Lernen weiterhin;
+eine Aktivierung garantiert deshalb kein sofort startbares Lernziel.
 
 **Vorbereitung übernehmen** erzeugt einen aktiven Lernabschnitt mit mehreren
 kanonischen Wurzeln. Neue Aufgabentreffer erweitern diese Auswahl nicht erneut.

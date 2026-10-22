@@ -561,15 +561,19 @@ const EXPECTED_JURISDICTIONS = [
   'DE-NI', 'DE-NW', 'DE-RP', 'DE-SH', 'DE-SL', 'DE-SN', 'DE-ST', 'DE-TH',
 ] as const
 
+const KINEMATICS_ASSESSMENT_IDS = new Set([
+  '4ab1cf6d-b808-5b86-9291-85df0b9f2496',
+  '6ea3fb3c-abdc-568f-ab13-97c36dc274e4',
+])
 const EXPECTED_COUNTS: SemanticKindLedger['counts'] = {
   curricularAtomic: 478,
   curricularArea: 112,
-  practiceAssessment: 162,
+  practiceAssessment: 164,
   programStructure: 1,
   memory: 5,
   runtimeSupport: 4,
   orientation: 2,
-  total: 764,
+  total: 766,
 }
 // Approved final diode/astronomy splits: exactly eight children replace three
 // mixed content leaves, and six new singleton-coverage assessment tasks are added.
@@ -1338,6 +1342,70 @@ ledger.decisions.forEach((decision) => {
 })
 assert.equal(decisionByGoalId.size, goalById.size, 'semantic-kind ledger must bind every Physics goal exactly once')
 assert.deepEqual(actualCounts, EXPECTED_COUNTS)
+const kinematicsReview = readJson<{
+  reviewMethod: string
+  result: string
+  humanApproval: boolean
+  assessments: Array<{
+    goalId: string; sourceFingerprint: string; bodyHashes: Record<string, string>
+    requires: string[]; coveredGoalIds: string[]
+  }>
+}>('curricula/DE/Gymnasium/quality/assessment-review/physics-kinematics-20261022/review.json')
+assert.equal(kinematicsReview.reviewMethod, 'independent-ai-counterreview')
+assert.equal(kinematicsReview.result, 'accepted')
+assert.equal(kinematicsReview.humanApproval, false, 'AI counterreview must never become human approval')
+assert.deepEqual(new Set(kinematicsReview.assessments.map(({ goalId }) => goalId)), KINEMATICS_ASSESSMENT_IDS)
+const kinematicsBodyFields = ['taskContent', 'taskContentEn', 'solutionContent', 'solutionContentEn'] as const
+const rawPhysicsAndMathGoals = new Map([...rawMathLandscape.goals, ...rawLandscape.goals]
+  .map((goal) => [String(goal.id), goal]))
+for (const reviewed of kinematicsReview.assessments) {
+  const goal = rawGoalById.get(reviewed.goalId)!
+  const exam = goal.examData as {
+    reviewStatus: string; coveredGoalIds: string[]; taskContent: string; taskContentEn: string
+    solutionContent: string; solutionContentEn: string
+    scoring: { maxPoints: number; passingPoints: number; steps: Array<{ id: string; points: number }> }
+  }
+  assert.equal(exam.reviewStatus, 'released')
+  assert.equal(decisionByGoalId.get(reviewed.goalId)?.semanticKind, 'practiceAssessment')
+  assert.equal(reviewed.sourceFingerprint, sourceFingerprint(goal, fingerprintContract), 'independent task review must bind current semantics')
+  assert.equal((goal.extendedData as Record<string, unknown>).applicabilityFromRequires, true)
+  for (const field of kinematicsBodyFields) {
+    assert(exam[field].trim().length > 500, `${reviewed.goalId}: missing complete bilingual ${field}`)
+    assert.equal(reviewed.bodyHashes[field], `sha256:${sha256(exam[field])}`, `${reviewed.goalId}: stale independent ${field} review`)
+  }
+  assert.deepEqual(goal.requires, reviewed.requires)
+  assert.deepEqual(exam.coveredGoalIds, reviewed.coveredGoalIds)
+  assert.equal(exam.scoring.maxPoints, 36)
+  assert.equal(exam.scoring.passingPoints, 22)
+  assert.equal(exam.scoring.steps.length, 36)
+  assert.equal(new Set(exam.scoring.steps.map(({ id }) => id)).size, 36)
+  assert(exam.scoring.steps.every(({ points }) => points === 1))
+  assert.equal(exam.scoring.steps.reduce((sum, { points }) => sum + points, 0), 36)
+  const prerequisiteIds = new Set<string>()
+  const pending = [...reviewed.requires]
+  while (pending.length) {
+    const id = normalizeGoalRef(pending.pop()!)
+    if (prerequisiteIds.has(id)) continue
+    prerequisiteIds.add(id)
+    const required = rawPhysicsAndMathGoals.get(id)
+    assert(required, `${reviewed.goalId}: missing prerequisite ${id}`)
+    pending.push(...(required.requires as string[] ?? []), ...(required.contains as string[] ?? []))
+  }
+  for (const id of prerequisiteIds) {
+    const required = rawPhysicsAndMathGoals.get(id)!
+    assert(!/vektor|newton|reibung/iu.test(String(required.title)),
+      `${reviewed.goalId}: vector-free kinematics must not require ${String(required.title)}`)
+  }
+  assert(!prerequisiteIds.has('d6dc0e02-831d-4894-a61a-852bcc74f147'), 'assessed model limits must not import an unrelated prerequisite branch')
+  assert(!exam.coveredGoalIds.includes('09029573-864f-40ca-bf8a-cee7bf6dcb73'), 'a written model task does not establish a free-fall experiment')
+  assert(!exam.coveredGoalIds.includes('89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2'), 'a written model task does not establish a horizontal-projection experiment')
+}
+assert.deepEqual(rawGoalById.get('4ab1cf6d-b808-5b86-9291-85df0b9f2496')?.requires,
+  ['e4b38061-1f28-43ad-8371-a3e7c0e81856'])
+assert.deepEqual(rawGoalById.get('6ea3fb3c-abdc-568f-ab13-97c36dc274e4')?.requires,
+  ['e4b38061-1f28-43ad-8371-a3e7c0e81856', '971beafa-6ba5-4c82-ac8b-7ebf66eec3dd'])
+assert.deepEqual((rawGoalById.get('6ea3fb3c-abdc-568f-ab13-97c36dc274e4')?.examData as { coveredGoalIds: string[] }).coveredGoalIds,
+  ['e4b38061-1f28-43ad-8371-a3e7c0e81856', 'd6dc0e02-831d-4894-a61a-852bcc74f147'])
 const incompleteBilingualAtomicGoals = ledger.decisions
   .filter(({ semanticKind }) => semanticKind === 'curricularAtomic')
   .flatMap(({ goalId }) => {

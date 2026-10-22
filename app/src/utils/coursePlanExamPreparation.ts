@@ -5,7 +5,8 @@ import {
   getLearningCoursePlanBlockGoalIds, isCoursePlanBlockActive, parseCoursePlanDate,
 } from './localTeacherCoursePlan'
 import {
-  analyzeCoursePlanTaskCoverage, isCoursePlanAssessment, resolveCoursePlanTopicSelection,
+  analyzeCoursePlanTaskCoverage, isCoursePlanAssessment, isUsableCoursePlanTask,
+  resolveCoursePlanReferencedTopics, resolveCoursePlanTopicSelection,
   setCoursePlanTopicSelected, type CoursePlanTaskCoverage,
 } from './coursePlanTopicSelection'
 
@@ -22,6 +23,7 @@ function resolveCoursePrerequisiteReference(ref: string, goals: ReadonlyMap<stri
 }
 
 export interface CoursePlanExamPreparation {
+  includeSuggestions: boolean
   coverage: CoursePlanTaskCoverage
   requiredGoalIds: string[]
   foundationGoalIds: string[]
@@ -31,6 +33,8 @@ export interface CoursePlanExamPreparation {
   timelyGoalIds: string[]
   toPlanGoalIds: string[]
   unavailableGoalIds: string[]
+  invalidSelectedGoalIds: string[]
+  excludedTaskGoalIds: string[]
   laterBlockIds: string[]
   validDates: boolean
   planEvaluable: boolean
@@ -47,28 +51,39 @@ export function coursePlanPreparationConsentKey(
   return JSON.stringify([
     plan.revision, milestone.id, milestone.date,
     milestone.goalIds ?? (milestone.goalId ? [milestone.goalId] : []),
-    startDate, endDate, preview.coverage, preview.requiredGoalIds,
+    startDate, endDate, preview.includeSuggestions, preview.coverage, preview.requiredGoalIds,
     preview.foundationGoalIds, preview.externalFoundationGoalIds,
     preview.toPlanGoalIds, preview.unavailableGoalIds, preview.laterBlockIds,
+    preview.invalidSelectedGoalIds, preview.excludedTaskGoalIds,
   ])
 }
 
 /** Read-only preview. Prerequisites describe preparation, never assessment coverage. */
 export function previewCoursePlanExamPreparation({
-  plan, milestone, goals, visibleChildren, startDate, endDate,
+  plan, milestone, goals, visibleChildren, startDate, endDate, includeSuggestions = false, referenceGoals,
 }: {
   plan: TeacherCoursePlan
   milestone: MilestoneCoursePlanBlock
   goals: ReadonlyMap<string, UiGoal>
   visibleChildren?: VisibleChildren
+  referenceGoals?: ReadonlyMap<string, UiGoal>
+  includeSuggestions?: boolean
   startDate: string
   endDate: string
 }): CoursePlanExamPreparation {
-  const coverage = analyzeCoursePlanTaskCoverage(milestone.goalIds ?? (milestone.goalId ? [milestone.goalId] : []), goals, visibleChildren)
+  const selectedRoots = milestone.goalIds ?? (milestone.goalId ? [milestone.goalId] : [])
+  const selection = resolveCoursePlanTopicSelection(selectedRoots, goals, visibleChildren)
+  const coverage = analyzeCoursePlanTaskCoverage(selectedRoots, goals, visibleChildren, referenceGoals)
   const scope = plan.planningBaseline ? new Set(plan.planningBaseline.scopeAtomicGoalIds) : null
   const open = plan.planningBaseline ? new Set(plan.planningBaseline.openAtomicGoalIds) : null
   const isMastered = (id: string) => Boolean(scope?.has(id) && !open?.has(id))
-  const required = new Set([...coverage.topicGoalIds, ...coverage.coveredGoalIds, ...coverage.taskGoalIds])
+  const usableTaskIds = coverage.taskGoalIds.filter((id) => isUsableCoursePlanTask(goals.get(id)!))
+  const selectedRequired = new Set([...coverage.topicGoalIds, ...usableTaskIds])
+  const invalidSelected = new Set(selection.invalidGoalIds)
+  selectedRequired.forEach((id) => { if (scope && !scope.has(id)) invalidSelected.add(id) })
+  // Discover recommendations separately. Declining them must preserve the
+  // learner's explicitly selected scope, including usable selected tasks.
+  const required = new Set([...selectedRequired, ...coverage.coveredGoalIds])
   const original = new Set(required)
   const unavailable = new Set(coverage.unavailableGoalIds)
   const external = new Set<string>()
@@ -87,13 +102,13 @@ export function previewCoursePlanExamPreparation({
     const refs = new Set([...goal.requires, ...(goal.effectiveRequires ?? []), ...(goal.inheritedRequires ?? [])])
     for (const ref of refs) {
       const courseRef = resolveCoursePrerequisiteReference(ref, goals)
-      if (!courseRef) {
+      const resolved = resolveCoursePlanReferencedTopics([courseRef ?? ref], goals, visibleChildren, referenceGoals)
+      if (!courseRef && resolved.invalidGoalIds.length > 0) {
         // The course projection deliberately excludes other subjects and
         // prerequisite-only goals. Their absence is not missing task coverage.
         external.add(ref)
         continue
       }
-      const resolved = resolveCoursePlanTopicSelection([courseRef], goals, visibleChildren)
       resolved.invalidGoalIds.forEach((missing) => unavailable.add(missing))
       for (const atom of resolved.atomicGoalIds) {
         if (scope && !scope.has(atom)) {
@@ -133,19 +148,22 @@ export function previewCoursePlanExamPreparation({
     && (countCoursePlanWorkdaysInclusive(startDate, endDate) ?? 0) > 0)
   const evaluation = validDates ? evaluateTeacherCoursePlan(plan, goals, endDate, visibleChildren) : null
   const timely = new Set(evaluation?.metrics?.dueGoalIds ?? [])
-  const requiredGoalIds = [...required].filter((id) => !unavailable.has(id))
+  const suggestedGoalIds = [...required].filter((id) => !unavailable.has(id))
+  const requiredGoalIds = [...new Set([...selectedRequired, ...(includeSuggestions ? suggestedGoalIds : [])])]
+    .filter((id) => !invalidSelected.has(id))
   const toPlanGoalIds = requiredGoalIds.filter((id) => !isMastered(id) && !timely.has(id))
   const toPlan = new Set(toPlanGoalIds)
   const laterBlockIds = plan.blocks.filter((block) => block.kind === 'learning' && isCoursePlanBlockActive(block)
     && resolveCoursePlanTopicSelection(getLearningCoursePlanBlockGoalIds(block), goals, visibleChildren)
       .atomicGoalIds.some((id) => toPlan.has(id))).map((block) => block.id)
   return {
-    coverage, requiredGoalIds,
-    foundationGoalIds: requiredGoalIds.filter((id) => !original.has(id)),
+    includeSuggestions, coverage, requiredGoalIds,
+    foundationGoalIds: suggestedGoalIds.filter((id) => !original.has(id)),
     externalFoundationGoalIds: [...external],
     masteredGoalIds: requiredGoalIds.filter(isMastered),
     timelyGoalIds: requiredGoalIds.filter((id) => !isMastered(id) && timely.has(id)),
-    toPlanGoalIds, unavailableGoalIds: [...unavailable], laterBlockIds,
+    toPlanGoalIds, unavailableGoalIds: [...unavailable], invalidSelectedGoalIds: [...invalidSelected],
+    excludedTaskGoalIds: coverage.taskGoalIds.filter((id) => !usableTaskIds.includes(id)), laterBlockIds,
     validDates, planEvaluable: Boolean(evaluation?.metrics && evaluation.quality.status !== 'invalid'),
   }
 }
@@ -153,7 +171,7 @@ export function previewCoursePlanExamPreparation({
 /** Apply only the previewed scope; new task matches never widen this preparation. */
 export function buildCoursePlanExamPreparationBlocks({
   plan, milestone, preview, goals, visibleChildren, startDate, endDate, blockId,
-  moveLaterGoals, includeExternalFoundations = false, title,
+  moveLaterGoals, title,
 }: {
   plan: TeacherCoursePlan
   milestone: MilestoneCoursePlanBlock
@@ -164,14 +182,10 @@ export function buildCoursePlanExamPreparationBlocks({
   endDate: string
   blockId: string
   moveLaterGoals: boolean
-  /** Acknowledges separate preparation; never changes external mastery. */
-  includeExternalFoundations?: boolean
   title: string
 }): TeacherCoursePlanBlock[] | null {
   if (!preview.validDates || !preview.planEvaluable || milestone.active === false
-    || preview.coverage.taskGoalIds.length === 0 || preview.coverage.unknownTaskIds.length > 0
-    || preview.unavailableGoalIds.length > 0 || preview.toPlanGoalIds.length === 0
-    || (preview.externalFoundationGoalIds.length > 0 && !includeExternalFoundations)
+    || preview.invalidSelectedGoalIds.length > 0 || preview.toPlanGoalIds.length === 0
     || (preview.laterBlockIds.length > 0 && !moveLaterGoals)) return null
   const moving = new Set(preview.toPlanGoalIds)
   const blocks = plan.blocks.map((block): TeacherCoursePlanBlock => {
