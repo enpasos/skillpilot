@@ -63,6 +63,12 @@ const unavailable: Sample = {
   periodGauge: null, balanceGauge: null,
 }
 
+const unscheduled: Sample = {
+  periodText: 'Keine Lernziele eingeplant', planStatusText: 'Keine Lernziele eingeplant',
+  balanceDialText: 'Keine Lernziele eingeplant', statusDirection: null,
+  periodGauge: { completed: 0, target: 0, needlePosition: null }, balanceGauge: null,
+}
+
 const DAY_MATH = sample('Tagesziel 0 von 6', '1 im Rückstand', 'behind', 0, 6, 0,
   balance(-1, 3, 6, -1 / 7))
 const DAY_PHYSICS = sample('Tagesziel 0 von 7', '13 im Rückstand', 'behind', 0, 7, 0,
@@ -140,6 +146,12 @@ const EXAMPLES: Example[] = [
     },
   },
   {
+    key: 'unscheduled', label: 'Nur Klausurtermin · nichts eingeplant',
+    note: 'Alle Lernabschnitte sind inaktiv. Der Klausurtermin bleibt sichtbar, erzeugt aber kein Pensum. Der Lernstand im gesamten Fach bleibt unabhängig davon erhalten.',
+    day: { math: unscheduled, physics: unscheduled },
+    week: { math: unscheduled, physics: unscheduled },
+  },
+  {
     key: 'unavailable', label: 'Nicht auswertbar',
     note: 'Mathematik bleibt auswertbar. Für Physik fehlen in diesem Beispiel Plan- und Ergebnisdaten; die Scheiben zeigen Platzhalter und keine erfundene Bilanz.',
     day: { math: DAY_MATH, physics: unavailable },
@@ -179,19 +191,30 @@ const MOCK_PLANS: LearnerLearningPlanSummary[] = [
 
 type PreviewLanguage = 'de' | 'en'
 
-const mockPlansFor = (language: PreviewLanguage): LearnerLearningPlanSummary[] => {
-  if (language === 'de') return MOCK_PLANS
-  return MOCK_PLANS.map((plan) => ({
+const mockPlansFor = (language: PreviewLanguage, empty: boolean): LearnerLearningPlanSummary[] => {
+  const localized = language === 'de' ? MOCK_PLANS : MOCK_PLANS.map((plan) => ({
     ...plan,
     planLabel: plan.landscapeId.startsWith('math') ? 'Mathematics' : 'Physics',
     currentBlock: plan.currentBlock
       ? { ...plan.currentBlock, title: 'Current learning section' }
       : null,
   }))
+  return empty ? localized.map((plan) => ({
+    ...plan, currentBlock: null, nextEligibleGoal: null, canContinue: false,
+    continueReason: 'no-open-due-frontier-goal',
+    buffer: { totalWorkdays: 0, remainingWorkdays: 0 },
+    nextMilestone: plan.landscapeId.startsWith('physics')
+      ? { blockId: 'kinematics-exam', title: language === 'de' ? 'Klausur Kinematik' : 'Kinematics exam', date: '2026-10-27' }
+      : null,
+  })) : localized
 }
 
 const englishSample = (basis: 'DAY' | 'WEEK', value: Sample): Sample => {
   if (!value.periodGauge) return value
+  if (value.statusDirection === null) return {
+    ...value, periodText: 'No learning goals scheduled', planStatusText: 'No learning goals scheduled',
+    balanceDialText: 'No learning goals scheduled',
+  }
   const { completed, target } = value.periodGauge
   const periodText = target === 0
     ? basis === 'DAY' ? 'No daily target today' : 'No weekly target this week'
@@ -224,12 +247,13 @@ const statusFor = (basis: 'DAY' | 'WEEK', example: Example, language: PreviewLan
       periodText: value.periodText,
       planStatusText: value.planStatusText,
       balanceDialText: value.balanceDialText,
-      subjectLine: evaluable ? subjectLabel + ': ' + value.periodText + ' · ' + value.planStatusText : null,
+      subjectLine: evaluable ? subjectLabel + ': ' + value.periodText
+        + (value.statusDirection === null ? '' : ' · ' + value.planStatusText) : null,
       statusDirection: value.statusDirection,
       periodGauge: value.periodGauge,
       balanceGauge: value.balanceGauge,
       current: subjectKey === 'physik',
-      canContinue: true,
+      canContinue: evaluable && value.balanceGauge !== null,
     }
   })
   const unavailableCount = subjects.filter((subject) => !subject.evaluable).length
@@ -358,7 +382,7 @@ const Preview = () => {
             <div data-testid="preview-frame" className={'mx-auto transition-[max-width] duration-200 ' +
               (mobile ? 'max-w-[390px]' : 'max-w-[1600px]')}>
               <LearnerPlanTodayOverview
-                status={status} plans={mockPlansFor(language)} language={language} planModeEnabled
+                status={status} plans={mockPlansFor(language, example.key === 'unscheduled')} language={language} planModeEnabled
                 subjectLabel={(id) => id.startsWith('math')
                   ? language === 'de' ? 'Mathematik' : 'Mathematics'
                   : language === 'de' ? 'Physik' : 'Physics'}

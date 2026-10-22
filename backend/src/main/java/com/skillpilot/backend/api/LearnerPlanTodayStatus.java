@@ -21,7 +21,9 @@ import java.util.List;
  * <p>Evaluability is its own state, never a flavour of "on track". A subject whose plan set
  * cannot be evaluated reliably carries no status direction and no status texts, while
  * {@link SubjectStatus#canContinue()} may still be true: the ability to keep learning is
- * independent of whether the plan status can be determined.</p>
+ * independent of whether the plan status can be determined. A valid, empty goal schedule
+ * remains evaluable, but likewise has no direction: its localized texts explicitly state
+ * that no learning goals are scheduled instead of interpreting a zero balance as on track.</p>
  */
 public record LearnerPlanTodayStatus(
         @JsonFormat(shape = JsonFormat.Shape.STRING) LocalDate asOf,
@@ -83,7 +85,10 @@ public record LearnerPlanTodayStatus(
      * Goals shared by several plans of the same subject count once, and the earliest valid
      * scheduled date wins. Both gauges are null when the subject is unevaluable. An evaluable
      * subject still has its period gauge when its quota is zero; its balance gauge is null
-     * only if no positive quota exists anywhere in that subject's schedule. The independent
+     * only if no positive quota exists anywhere in that subject's schedule. This empty
+     * schedule also has no status direction; its period gauge is zero of zero with no needle,
+     * and its texts name the missing scheduled goals. A week or day with no quota within a
+     * nonempty schedule retains the balance gauge and direction. The independent
      * achievement counts cover all current Level-2 atomic targets for this subject, including
      * goals mastered before the plan began. Both counts are null when that scope is unavailable.
      * {@code balanceDialText} is the compact Cockpit label; the full plan status wording remains

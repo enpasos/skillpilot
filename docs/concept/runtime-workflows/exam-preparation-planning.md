@@ -86,6 +86,28 @@ Lernercockpit übernommen werden, damit eine zuvor aktive Planung pausiert wird.
 Lokale Änderungen werden wie bisher erst durch die ausdrückliche Übernahme
 im persönlichen Lernplan wirksam.
 
+## Lernstand und Lernfokus
+
+Enthält der übernommene Fachplan keine eingeplanten Lernziele, meldet der
+Backendstatus **Keine Lernziele eingeplant**. Er weist dafür weder eine
+Bilanzrichtung noch einen Planstand aus. Das Cockpit zeigt diesen Zustand
+kompakt ohne leere Tachos; ein aktiver Klausurtermin bleibt sichtbar. Der
+gesondert bezeichnete Lernstand im gesamten Fach zählt weiterhin die erreichten
+Ziele des persönlichen Curriculums. Das Deaktivieren von Planabschnitten
+verkleinert diesen Fachumfang nicht und ändert keine Lernergebnisse.
+
+Eine freie Woche innerhalb einer aktiven Lernplanung ist davon verschieden:
+Sie hat kein Wochenpensum, behält aber ihren auswertbaren Planstand. Ebenso
+bleiben die feste Planmenge und die gültige Skala nach Abschluss aller
+eingeplanten Ziele erhalten.
+
+Ein Klausurtermin allein setzt keinen Lernfokus. Nach Übernahme eines aktiven
+Vorbereitungsabschnitts wählt das Backend beim tatsächlichen Planstart das
+nächste zulässige Lernziel und passt den Fokus an. Bei mehreren Themenwurzeln
+kann dieser technische Fokus das nächste atomare Ziel sein; er beschreibt
+nicht den gesamten Klausurstoff. Ein bereits laufendes Lernziel wird nicht
+durch bloßes Speichern oder eine Statusabfrage verdrängt.
+
 Die Klausurdiagnose und eine Übertragung einzelner Prüfungsleistungen auf
 fachliche Lernziele sind ein späterer Schritt. Dieses Paket schreibt keine
 Lernergebnisse und leitet aus einer Themenzuordnung keine Beherrschung ab.

@@ -322,16 +322,27 @@ const noTargetMarkup = renderToStaticMarkup(<LearnerPlanTodayOverview
 assert.match(noTargetMarkup, /Nichts geplant/u)
 assert.doesNotMatch(noTargetMarkup, /0 von 0|>0%</u)
 assert.match(noTargetMarkup, /data-testid="learner-plan-period-gauge"[^>]*>/u)
+assert.doesNotMatch(noTargetMarkup, /data-testid="learner-plan-unscheduled"/u,
+  'an empty current period still has a valid schedule and balance')
 
 const noScaleMarkup = renderToStaticMarkup(<LearnerPlanTodayOverview
-  status={status([subject('mathematik', 'Mathematik', 'Heute kein Tagesziel', 'im Plan', 'on_track', {
+  status={status([subject('mathematik', 'Mathematik', 'Keine Lernziele eingeplant', 'Keine Lernziele eingeplant', 'on_track', {
     periodGauge: { completed: 0, target: 0, needlePosition: null }, balanceGauge: null,
+    statusDirection: null, balanceDialText: 'Keine Lernziele eingeplant',
+    achievedGoalCount: 4, targetGoalCount: 916, canContinue: false,
   })])}
-  plans={[math]} language="de" planModeEnabled subjectLabel={() => 'Mathematik'} goalLabel={() => undefined}
+  plans={[{ ...math, currentBlock: null, nextEligibleGoal: null, canContinue: false,
+    nextMilestone: { blockId: 'exam', title: 'Klausur Kinematik', date: '2026-10-27' },
+  }]} language="de" planModeEnabled subjectLabel={() => 'Mathematik'} goalLabel={() => undefined}
   onSwitch={() => undefined}
 />)
-assert.match(noScaleMarkup, /Skala nicht verfügbar/u)
-assert.match(noScaleMarkup, /data-testid="learner-plan-balance-gauge"/u)
+assert.match(noScaleMarkup, /Keine Lernziele eingeplant/u)
+assert.match(noScaleMarkup, /data-testid="learner-plan-unscheduled"/u)
+assert.match(noScaleMarkup, /Klausur Kinematik · 27\.10\.2026/u)
+assert.match(noScaleMarkup, /noch keine Vorbereitung eingeplant/u)
+assert.match(noScaleMarkup, /Lernstand im gesamten Fach/u)
+assert.match(noScaleMarkup, />4 von 916</u, 'global achievement does not shrink to the inactive plan scope')
+assert.doesNotMatch(noScaleMarkup, /Skala nicht verfügbar|im Plan|learner-plan-(?:period|balance)-gauge|learner-plan-switch/u)
 
 const overshootMarkup = renderToStaticMarkup(<LearnerPlanTodayOverview
   status={status([subject('mathematik', 'Mathematik', 'Tagesziel erreicht', '17 Lernziele im Rückstand', 'behind', {
@@ -474,6 +485,19 @@ const englishNoScale = renderEnglishOverview(status([
 ], { language: 'en' }), [{ ...englishMath, nextEligibleGoal: null, canContinue: false }])
 assert.match(englishNoScale, /Scale unavailable</u)
 assert.doesNotMatch(englishNoScale, /Skala nicht verfügbar/u)
+
+const englishUnscheduled = renderEnglishOverview(status([
+  subject('mathematik', 'Mathematics', 'No learning goals scheduled', 'No learning goals scheduled', 'on_track', {
+    periodGauge: { completed: 0, target: 0, needlePosition: null }, balanceGauge: null,
+    statusDirection: null, balanceDialText: 'No learning goals scheduled',
+    achievedGoalCount: null, targetGoalCount: null, canContinue: false,
+  }),
+], { language: 'en' }), [{ ...englishMath, currentBlock: null, nextMilestone: null,
+  nextEligibleGoal: null, canContinue: false }])
+assert.match(englishUnscheduled, /No learning goals scheduled/u)
+assert.match(englishUnscheduled, /Progress across the whole subject/u)
+assert.match(englishUnscheduled, />unavailable</u, 'unknown global results must not become zero')
+assert.doesNotMatch(englishUnscheduled, /On track|Scale unavailable|No preparation|learner-plan-(?:period|balance)-gauge/u)
 
 const englishUnavailable = renderEnglishOverview(status([{
   ...unevaluable,

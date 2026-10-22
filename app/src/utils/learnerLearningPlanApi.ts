@@ -323,9 +323,12 @@ const parseLearnerPlanSubjectStatus = (value: unknown): LearnerPlanSubjectStatus
   const goalCounts = parseSubjectGoalCounts(source)
   const hasBalanceDialText = Object.prototype.hasOwnProperty.call(source, 'balanceDialText')
   const balanceDialText = nullableText(source.balanceDialText)
-  // Evaluability is its own state: an unevaluable subject must never arrive carrying a
-  // direction or a status line that would read like a valid balance.
-  if (evaluable !== (statusDirection !== null) || evaluable !== (subjectLine !== null)
+  // An evaluated empty schedule has text but no balance direction. Older
+  // responses may still carry their neutral direction for that empty set.
+  const emptySchedule = periodGauge?.target === 0 && balanceGauge === null
+  if ((evaluable && statusDirection === null && !(source.statusDirection === null && emptySchedule))
+    || (!evaluable && statusDirection !== null)
+    || evaluable !== (subjectLine !== null)
     || evaluable !== (nullableText(source.periodText) !== null)
     || evaluable !== (nullableText(source.planStatusText) !== null)
     || evaluable !== (periodGauge !== null)

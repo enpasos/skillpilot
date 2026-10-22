@@ -282,6 +282,25 @@ assert.equal(parseSubjectUpdate({
   balanceDialText: 'im Plan',
 }).balanceDialText, 'im Plan', 'zero scheduled quota still permits a localized balance label')
 
+const emptySchedule = {
+  periodText: 'Keine Lernziele eingeplant', planStatusText: 'Keine Lernziele eingeplant',
+  subjectLine: 'Mathematik: Keine Lernziele eingeplant', balanceDialText: 'Keine Lernziele eingeplant',
+  statusDirection: null,
+  periodGauge: { completed: 0, target: 0, needlePosition: null }, balanceGauge: null,
+  achievedGoalCount: 4, targetGoalCount: 916,
+}
+assert.equal(parseSubjectUpdate(emptySchedule).statusDirection, null,
+  'an evaluated empty schedule has no direction and retains global achievement')
+assert.equal(parseSubjectUpdate(emptySchedule).achievedGoalCount, 4)
+assert.throws(() => parseSubjectUpdate({ ...emptySchedule, statusDirection: 'invalid' }), /evaluability/u,
+  'unknown directions cannot masquerade as an empty schedule')
+assert.throws(() => parseSubjectUpdate({ ...emptySchedule,
+  periodGauge: { completed: 0, target: 2, needlePosition: 0 },
+}), /evaluability/u, 'a positive period target cannot lose its balance direction')
+assert.throws(() => parseSubjectUpdate({ ...emptySchedule,
+  balanceGauge: { net: 0, typicalAmount: 2, scaleLimit: 4, needlePosition: 0, severeBehind: false, strongAhead: false },
+}), /evaluability/u, 'a schedule with a balance scale must publish its direction even in a free week')
+
 assert.equal(formatLearnerLearningPlanDate('2026-09-01', 'de'), '01.09.2026')
 assert.equal(formatLearnerLearningPlanDate('2026-09-01', 'en'), '01/09/2026')
 assert.equal(

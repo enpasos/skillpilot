@@ -131,6 +131,14 @@ class UnifiedLearningPlanStatusFormatterTest {
     }
 
     @Test
+    void emptyScheduleIsNamedWithoutClaimingTheLearnerIsOnTrack() {
+        assertThat(UnifiedLearningPlanStatusFormatter.formatNoScheduledGoalsText("de-DE"))
+                .isEqualTo("Keine Lernziele eingeplant");
+        assertThat(UnifiedLearningPlanStatusFormatter.formatNoScheduledGoalsText("en-GB"))
+                .isEqualTo("No learning goals scheduled");
+    }
+
+    @Test
     void testUnavailableNotice() {
         assertThat(UnifiedLearningPlanStatusFormatter.formatUnavailableNotice(List.of("Physik"), "de"))
                 .isEqualTo("1 Fachplan nicht auswertbar (Physik).");

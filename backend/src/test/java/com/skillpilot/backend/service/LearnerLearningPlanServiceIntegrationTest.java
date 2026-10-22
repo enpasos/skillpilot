@@ -38,6 +38,7 @@ import java.util.UUID;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -161,32 +162,63 @@ class LearnerLearningPlanServiceIntegrationTest {
         verify(learnerService, never()).setActiveGoal(any(), any());
     }
 
-    @Test
-    void whollyInactivePlanHasNoQuotaMilestoneBufferCurrentBlockOrAutomaticContinuation() {
+    @ParameterizedTest
+    @CsvSource({ "de, false", "de, true", "en, false", "en, true" })
+    void inactiveLearningSectionsHaveNoBalanceEvenWithAnActiveMilestone(
+            String locale, boolean activeMilestone) throws Exception {
         learner.setFollowLearningPlans(true);
         var section = new LearnerLearningPlanApi.Block("inactive", "learning", "block-focus", "Oberstufe",
                 TODAY.minusDays(7), TODAY.plusDays(7), null, List.of("atom-a", "atom-b"), null, false);
         var buffer = new LearnerLearningPlanApi.Block("buffer", "buffer", null, "Puffer",
                 TODAY, TODAY.plusDays(7), null, null, null, false);
         var exam = new LearnerLearningPlanApi.Block("exam", "milestone", null, "Klausur",
-                null, null, TODAY.plusDays(7), null, List.of("topic-a"), false);
+                null, null, TODAY.plusDays(7), null, List.of("topic-a"), activeMilestone);
+        when(learnerService.getMastery(LEARNER_ID)).thenReturn(Map.of("atom-c", 1.0));
+        when(learnerService.getPersonalCurriculumAtomicTargetsByLandscape(LEARNER_ID))
+                .thenReturn(Map.of(LANDSCAPE_ID, List.of("atom-a", "atom-b", "atom-c")));
         when(learnerService.getPersonalCurriculumSubjectFrontier(LEARNER_ID, LANDSCAPE_ID))
                 .thenReturn(List.of(frontier("atom-a")));
         when(learnerService.getPersonalCurriculumSubjectIds(LEARNER_ID)).thenReturn(List.of(LANDSCAPE_ID));
         var created = service.upsert(LEARNER_ID, LANDSCAPE_ID,
                 new LearnerLearningPlanApi.UpsertRequest(0L, "Pausiert", List.of(section, buffer, exam)), TODAY);
-        assertThat(created.blocks()).hasSize(3).allSatisfy(block -> assertThat(block.isActive()).isFalse());
+        assertThat(created.blocks()).hasSize(3);
+        assertThat(created.blocks()).filteredOn(block -> !"milestone".equals(block.kind()))
+                .allSatisfy(block -> assertThat(block.isActive()).isFalse());
         assertThat(created.currentBlock()).isNull();
-        assertThat(created.nextMilestone()).isNull();
+        if (activeMilestone) {
+            assertThat(created.nextMilestone().blockId()).isEqualTo(exam.id());
+        } else {
+            assertThat(created.nextMilestone()).isNull();
+        }
         assertThat(created.buffer().totalWorkdays()).isZero();
         assertThat(created.buffer().remainingWorkdays()).isZero();
         assertThat(created.nextEligibleGoal()).isNull();
         assertThat(created.canContinue()).isFalse();
-        assertThat(created.period().startDate()).isEqualTo(section.startDate());
-        assertThat(created.period().endDate()).isEqualTo(section.endDate());
-        var status = service.getTodayStatus(LEARNER_ID, "de");
-        assertThat(status.subjects().getFirst().balance().offenesPeriodenpensum()).isZero();
-        assertThat(status.subjects().getFirst().balance().rueckstand()).isZero();
+        assertThat(created.period().startDate()).isEqualTo(activeMilestone ? exam.date() : section.startDate());
+        assertThat(created.period().endDate()).isEqualTo(activeMilestone ? exam.date() : section.endDate());
+        var status = service.getTodayStatus(LEARNER_ID, locale);
+        String emptyText = locale.equals("en") ? "No learning goals scheduled" : "Keine Lernziele eingeplant";
+        assertThat(status.evaluable()).isTrue();
+        assertThat(status.subjects()).singleElement().satisfies(subject -> {
+            assertThat(subject.evaluable()).isTrue();
+            assertThat(subject.statusDirection()).isNull();
+            assertThat(subject.periodText()).isEqualTo(emptyText);
+            assertThat(subject.planStatusText()).isEqualTo(emptyText);
+            assertThat(subject.balanceDialText()).isEqualTo(emptyText);
+            assertThat(subject.subjectLine()).isEqualTo(subject.subjectLabel() + ": " + emptyText);
+            assertThat(subject.periodGauge().completed()).isZero();
+            assertThat(subject.periodGauge().target()).isZero();
+            assertThat(subject.periodGauge().needlePosition()).isNull();
+            assertThat(subject.balanceGauge()).isNull();
+            assertThat(subject.balance().offenesPeriodenpensum()).isZero();
+            assertThat(subject.balance().rueckstand()).isZero();
+            assertThat(subject.achievedGoalCount()).isEqualTo(1);
+            assertThat(subject.targetGoalCount()).isEqualTo(3);
+        });
+        assertThat(status.statusText()).isEqualTo(status.subjects().getFirst().subjectLine());
+        var serialized = objectMapper.readTree(objectMapper.writeValueAsString(status));
+        assertThat(serialized.path("subjects").get(0).path("statusDirection").isNull()).isTrue();
+        assertThat(serialized.path("subjects").get(0).has("balance")).isFalse();
         assertThat(status.automaticResumeAvailable()).isFalse();
         assertThat(service.resumeExplicitly(LEARNER_ID, new LearnerLearningPlanApi.ReconcileRequest(TODAY))
                 .activeGoalId()).isNull();
@@ -2107,6 +2139,40 @@ class LearnerLearningPlanServiceIntegrationTest {
         // Changing the basis shifts the frame of reference, never the schedule or the progress.
         assertThat(service.getPlan(LEARNER_ID, LANDSCAPE_ID, TODAY).blocks()).isEqualTo(plan.blocks());
         verify(eventPublisher, never()).publishEvent(any());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = { "de", "en" })
+    void aFreeWeekKeepsTheBalanceOfFutureScheduledGoalsEvenAfterTheyAreMastered(String locale) {
+        learner.setLearningPlanPeriodBasis(
+                com.skillpilot.backend.service.learningplan.PeriodBasis.WEEK);
+        LocalDate future = TODAY.plusWeeks(1);
+        var created = service.upsert(LEARNER_ID, LANDSCAPE_ID, new LearnerLearningPlanApi.UpsertRequest(
+                0L, "Future learning", List.of(learning("future", future.toString(), future.toString(), "atom-a"))),
+                TODAY);
+
+        var status = service.getTodayStatus(LEARNER_ID, locale);
+        assertThat(status.subjects()).singleElement().satisfies(subject -> {
+            assertThat(subject.evaluable()).isTrue();
+            assertThat(subject.periodGauge().target()).isZero();
+            assertThat(subject.periodGauge().needlePosition()).isNull();
+            assertThat(subject.periodText()).isEqualTo(locale.equals("en")
+                    ? "No weekly target this week" : "Diese Woche kein Wochenziel");
+            assertThat(subject.planStatusText()).isEqualTo(locale.equals("en") ? "on track" : "im Plan");
+            assertThat(subject.statusDirection())
+                    .isEqualTo(com.skillpilot.backend.service.learningplan.StatusDirection.ON_TRACK);
+            assertThat(subject.balanceGauge().typicalAmount()).isEqualTo(1);
+            assertThat(subject.balanceGauge().net()).isZero();
+        });
+
+        // Mastery changes the balance, never the captured schedule or the existence of its scale.
+        when(learnerService.getMastery(LEARNER_ID)).thenReturn(Map.of("atom-a", 1.0));
+        var mastered = service.getTodayStatus(LEARNER_ID, locale).subjects().getFirst();
+        assertThat(mastered.statusDirection())
+                .isEqualTo(com.skillpilot.backend.service.learningplan.StatusDirection.AHEAD);
+        assertThat(mastered.balanceGauge().typicalAmount()).isEqualTo(1);
+        assertThat(mastered.balanceGauge().net()).isEqualTo(1);
+        assertThat(service.getPlan(LEARNER_ID, LANDSCAPE_ID, TODAY).blocks()).isEqualTo(created.blocks());
     }
 
     @Test

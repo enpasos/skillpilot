@@ -467,6 +467,31 @@ try {
     { mathematik: null, physik: null }, { mathematik: 'neutral', physik: 'red' })
   assert.equal(await frame.getByTestId('learner-plan-subject-mathematik')
     .getByTestId('learner-plan-period-gauge').getAttribute('data-needle-position'), null)
+
+  await page.getByTestId('preview-case-unscheduled').click()
+  assert.equal(await frame.getByTestId('learner-plan-unscheduled').count(), 2)
+  assert.equal(await frame.locator('[data-testid$="-gauge"]').count(), 0,
+    'fully inactive learning sections render no empty dials')
+  assert.equal(await frame.getByText('Keine Lernziele eingeplant', { exact: true }).count(), 2)
+  assert.equal(await frame.getByText('Lernstand im gesamten Fach', { exact: false }).count(), 2)
+  assert.equal(await frame.getByTestId('learner-plan-achieved-goals').allTextContents().then(
+    (values) => values.map((value) => value.trim()).join('|')), '10 von 364|18 von 128')
+  await frame.getByText('Nächster Termin: Klausur Kinematik · 27.10.2026', { exact: true }).waitFor()
+  assert.equal(await frame.getByTestId('learner-plan-switch').count(), 0)
+  assert.equal(await frame.getByText('im Plan', { exact: true }).count(), 0)
+  if (process.env.SKILLPILOT_ISSUE57_PREVIEW_SCREENSHOTS) {
+    await frame.screenshot({ path: fileURLToPath(new URL('../../tmp/plan-unscheduled-desktop-de.png', import.meta.url)) })
+  }
+  await page.getByTestId('preview-language-en').click()
+  assert.equal(await frame.getByText('No learning goals scheduled', { exact: true }).count(), 2)
+  await frame.getByText('Next milestone: Kinematics exam · 27/10/2026', { exact: true }).waitFor()
+  await page.getByTestId('preview-mobile').click()
+  assert.equal(await frame.getByTestId('learner-plan-unscheduled').count(), 2)
+  if (process.env.SKILLPILOT_ISSUE57_PREVIEW_SCREENSHOTS) {
+    await frame.screenshot({ path: fileURLToPath(new URL('../../tmp/plan-unscheduled-mobile-en.png', import.meta.url)) })
+  }
+  await page.getByTestId('preview-language-de').click()
+  await page.getByRole('button', { name: 'Flexibel', exact: true }).click()
   await page.getByTestId('preview-case-unavailable').click()
   assert.equal(await frame.getByTestId('learner-plan-gauges-unavailable').count(), 1)
   assert.equal(await frame.getByTestId('learner-plan-subject-physik').locator('[data-needle-position]').count(), 0)

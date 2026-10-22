@@ -77,7 +77,9 @@ export interface LearnerPlanBalanceGauge {
 /**
  * One subject, merged across every plan of that subject by the backend.
  *
- * An unevaluable subject carries no texts and no direction; `canContinue` stays
+ * An unevaluable subject carries no texts and no direction. An evaluated empty
+ * schedule has explanatory texts and a zero period gauge, but no balance direction.
+ * `canContinue` stays
  * independent of it, because being able to keep learning is not the same question
  * as whether the plan status can be determined.
  */

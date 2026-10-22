@@ -1,7 +1,8 @@
 import * as React from 'react'
 import { Repeat2 } from 'lucide-react'
-import type { LearnerPlanSubjectStatus } from '../learnerLearningPlanTypes'
+import type { LearnerLearningPlanMilestone, LearnerPlanSubjectStatus } from '../learnerLearningPlanTypes'
 import type { LabelLanguage } from '../utils/filterLabels'
+import { formatLearnerLearningPlanDate } from '../utils/learnerLearningPlanReadModel'
 
 const DIRECTION_CLASSES = {
   behind: 'bg-amber-100 text-amber-900 dark:bg-amber-950/40 dark:text-amber-100',
@@ -81,12 +82,13 @@ const Dial = ({
 }
 
 /** Displays one backend subject status and its two backend-scaled gauges. */
-export const LearnerPlanDailyProgress = ({ subject, language, periodBasis, showGauges, currentBadgeLabel, switchAction }: {
+export const LearnerPlanDailyProgress = ({ subject, language, periodBasis, showGauges, currentBadgeLabel, nextMilestone, switchAction }: {
   subject: LearnerPlanSubjectStatus
   language: LabelLanguage
   periodBasis: 'DAY' | 'WEEK'
   showGauges: boolean
   currentBadgeLabel: string
+  nextMilestone?: LearnerLearningPlanMilestone | null
   switchAction?: {
     accessibleLabel: string
     label: string
@@ -102,16 +104,13 @@ export const LearnerPlanDailyProgress = ({ subject, language, periodBasis, showG
   const balanceTitle = isGerman ? 'GESAMT' : 'OVERALL'
   const unavailable = isGerman ? 'Nicht auswertbar' : 'Unavailable'
   const hasGoalProgress = subject.achievedGoalCount !== undefined || subject.targetGoalCount !== undefined
-  const balanceHeading = hasGoalProgress ? (
-    <>
-      {balanceTitle}: <span data-testid="learner-plan-achieved-goals" aria-live="polite" aria-atomic="true"
-        className="normal-case tracking-normal text-text-primary">
-        {subject.achievedGoalCount == null || subject.targetGoalCount == null
-          ? (isGerman ? 'nicht verfügbar' : 'unavailable')
-          : `${subject.achievedGoalCount} ${isGerman ? 'von' : 'of'} ${subject.targetGoalCount}`}
-      </span>
-    </>
-  ) : balanceTitle
+  const goalProgress = <span data-testid="learner-plan-achieved-goals" aria-live="polite" aria-atomic="true"
+    className="normal-case tracking-normal text-text-primary">
+    {subject.achievedGoalCount == null || subject.targetGoalCount == null
+      ? (isGerman ? 'nicht verfügbar' : 'unavailable')
+      : `${subject.achievedGoalCount} ${isGerman ? 'von' : 'of'} ${subject.targetGoalCount}`}
+  </span>
+  const balanceHeading = hasGoalProgress ? <>{balanceTitle}: {goalProgress}</> : balanceTitle
   const heading = (
     <div className="flex flex-wrap items-center gap-2">
       <h3 className="font-semibold text-text-primary">{subject.subjectLabel}</h3>
@@ -145,6 +144,27 @@ export const LearnerPlanDailyProgress = ({ subject, language, periodBasis, showG
       ) : null}
     </div>
   ) : null
+
+  // A missing balance scale on an evaluable, zero-quota subject means that
+  // there is no scheduled work anywhere in its plan, not merely this period.
+  if (subject.evaluable && subject.periodGauge?.target === 0 && subject.balanceGauge === null) {
+    return <div data-testid="learner-plan-unscheduled" className="min-w-0">
+      {heading}
+      <p className="mt-2 text-sm text-text-secondary">{subject.periodText}</p>
+      {nextMilestone ? <div data-testid="learner-plan-unscheduled-milestone" className="mt-3 text-sm">
+        <p className="font-medium text-text-primary">
+          {isGerman ? 'Nächster Termin' : 'Next milestone'}: {nextMilestone.title} · {formatLearnerLearningPlanDate(nextMilestone.date, language)}
+        </p>
+        <p className="mt-1 text-text-secondary">{isGerman
+          ? 'Für diesen Termin ist noch keine Vorbereitung eingeplant.'
+          : 'No preparation has been scheduled for this milestone yet.'}</p>
+      </div> : null}
+      {hasGoalProgress ? <p className="mt-3 border-t border-border-color pt-3 text-sm text-text-secondary">
+        {isGerman ? 'Lernstand im gesamten Fach' : 'Progress across the whole subject'}: {goalProgress}
+        {' '}{isGerman ? 'Lernziele' : 'learning goals'}
+      </p> : null}
+    </div>
+  }
 
   if (!showGauges) return <div>{heading}<div className="mt-1">{statusLine}</div></div>
 

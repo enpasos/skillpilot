@@ -2367,23 +2367,31 @@ public class LearnerLearningPlanService {
             }
             PlanBalanceResult balance = calculateBalance(
                     plannedGoalIds, dueDates, periodStart, periodEnd, mastery, periodCompletions);
+            boolean hasScheduledGoals = !plannedGoalIds.isEmpty();
+            String periodText = hasScheduledGoals
+                    ? UnifiedLearningPlanStatusFormatter.formatPeriodText(periodBasis, balance, locale)
+                    : UnifiedLearningPlanStatusFormatter.formatNoScheduledGoalsText(locale);
+            String planStatusText = hasScheduledGoals
+                    ? UnifiedLearningPlanStatusFormatter.formatPlanStatusText(balance, locale)
+                    : periodText;
             return new LearnerPlanTodayStatus.SubjectStatus(
                     List.copyOf(landscapeIds),
                     subjectKey,
                     subjectLabel,
                     true,
-                    UnifiedLearningPlanStatusFormatter.formatPeriodText(periodBasis, balance, locale),
-                    UnifiedLearningPlanStatusFormatter.formatPlanStatusText(balance, locale),
-                    UnifiedLearningPlanStatusFormatter.formatSubjectLine(
-                            subjectLabel, periodBasis, balance, locale),
-                    balance.statusDirection(),
+                    periodText,
+                    planStatusText,
+                    hasScheduledGoals ? UnifiedLearningPlanStatusFormatter.formatSubjectLine(
+                            subjectLabel, periodBasis, balance, locale) : subjectLabel + ": " + periodText,
+                    hasScheduledGoals ? balance.statusDirection() : null,
                     current,
                     switchable,
                     periodGauge(balance),
                     balanceGauge(balance, dueDates, periodBasis),
                     achievement == null ? null : achievement.achievedGoalCount(),
                     achievement == null ? null : achievement.targetGoalCount(),
-                    UnifiedLearningPlanStatusFormatter.formatBalanceDialText(balance, locale),
+                    hasScheduledGoals ? UnifiedLearningPlanStatusFormatter.formatBalanceDialText(balance, locale)
+                            : planStatusText,
                     balance);
         }
     }

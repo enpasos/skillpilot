@@ -241,6 +241,7 @@ export const LearnerPlanTodayOverview = ({
                   <LearnerPlanDailyProgress subject={subject} language={language}
                     periodBasis={status.periodBasis} showGauges={planModeEnabled}
                     currentBadgeLabel={copy.currentSubjectBadge}
+                    nextMilestone={plan?.nextMilestone}
                     switchAction={canSwitch && plan ? {
                       accessibleLabel: isSwitching ? copy.switchBusy : copy.switchSubjectAction(subject.subjectLabel),
                       label: isSwitching ? copy.switchBadgeBusy : copy.switchBadgeAction,

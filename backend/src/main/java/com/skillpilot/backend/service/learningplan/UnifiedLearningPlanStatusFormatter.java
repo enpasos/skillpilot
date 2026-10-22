@@ -135,6 +135,11 @@ public final class UnifiedLearningPlanStatusFormatter {
         return isEnglish(locale) ? "No learning plan set up." : "Kein Lernplan eingerichtet.";
     }
 
+    /** A valid plan whose active sections schedule no goals has no meaningful balance. */
+    public static String formatNoScheduledGoalsText(String locale) {
+        return isEnglish(locale) ? "No learning goals scheduled" : "Keine Lernziele eingeplant";
+    }
+
     public static String formatUnavailableStatusNotice(String locale) {
         return isEnglish(locale)
                 ? "Learning plan status currently unavailable."
