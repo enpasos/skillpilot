@@ -14,6 +14,7 @@ import {
   type CoursePlanParseResult,
   type LearnerCoursePlanBaseline,
   type LearnerCoursePlanLandscapeBaseline,
+  type LearningCoursePlanBlock,
   type LearningBlockGoalAssignment,
   type LearningBlockMetrics,
   type TeacherCoursePlan,
@@ -344,6 +345,8 @@ function normalizeBlock(value: unknown): TeacherCoursePlanBlock | null {
   if (!isRecord(value)) return null
   const id = normalizedId(value.id)
   if (!id) return null
+  if (value.active !== undefined && typeof value.active !== 'boolean') return null
+  const activation = value.active === undefined ? {} : { active: value.active }
 
   if (value.kind === 'milestone') {
     const title = normalizedBoundedString(value.title, MAX_TITLE_LENGTH)
@@ -360,7 +363,7 @@ function normalizeBlock(value: unknown): TeacherCoursePlanBlock | null {
     const date = parseCoursePlanDate(value.date)?.value
     if (!title || !date || goalId === null || goalIds === null) return null
     return {
-      id, kind: 'milestone', title,
+      id, kind: 'milestone', title, ...activation,
       ...(goalIds !== undefined ? { goalIds } : goalId ? { goalId } : {}),
       date,
     }
@@ -372,16 +375,25 @@ function normalizeBlock(value: unknown): TeacherCoursePlanBlock | null {
   if (!startDate || !endDate || compareCoursePlanDates(startDate, endDate) === 1) return null
 
   if (value.kind === 'learning') {
-    const goalId = normalizedId(value.goalId)
+    const goalIds = value.goalIds === undefined
+      ? undefined
+      : Array.isArray(value.goalIds) && value.goalIds.length <= MAX_MILESTONE_GOALS
+        ? normalizeUniqueIds(value.goalIds, false)
+        : null
+    if (goalIds === null) return null
+    const goalId = goalIds?.[0] ?? normalizedId(value.goalId)
     const title = normalizedOptionalTitle(value.title)
     if (!goalId || title === null) return null
-    return title
-      ? { id, kind: 'learning', goalId, title, startDate, endDate }
-      : { id, kind: 'learning', goalId, startDate, endDate }
+    return {
+      id, kind: 'learning', ...activation, goalId,
+      ...(goalIds !== undefined ? { goalIds } : {}),
+      ...(title ? { title } : {}),
+      startDate, endDate,
+    }
   }
 
   const title = normalizedBoundedString(value.title, MAX_TITLE_LENGTH)
-  return title ? { id, kind: 'buffer', title, startDate, endDate } : null
+  return title ? { id, kind: 'buffer', ...activation, title, startDate, endDate } : null
 }
 
 function normalizeBlocks(value: unknown): TeacherCoursePlanBlock[] | null {
@@ -390,7 +402,7 @@ function normalizeBlocks(value: unknown): TeacherCoursePlanBlock[] | null {
   if (blocks.some((block) => block === null)) return null
   const normalizedBlocks = blocks as TeacherCoursePlanBlock[]
   const milestoneGoalCount = normalizedBlocks.reduce((count, block) => count + (
-    block.kind === 'milestone' ? block.goalIds?.length ?? 0 : 0
+    block.kind !== 'buffer' ? block.goalIds?.length ?? 0 : 0
   ), 0)
   if (milestoneGoalCount > MAX_MILESTONE_GOALS) return null
   return hasDuplicateIds(normalizedBlocks) ? null : normalizedBlocks
@@ -831,7 +843,7 @@ export function createTeacherCoursePlan(input: {
 function cloneCoursePlanBlocks(
   blocks: readonly TeacherCoursePlanBlock[],
 ): TeacherCoursePlanBlock[] {
-  return blocks.map((block) => block.kind === 'milestone' && block.goalIds !== undefined
+  return blocks.map((block) => block.kind !== 'buffer' && block.goalIds !== undefined
     ? { ...block, goalIds: [...block.goalIds] }
     : { ...block })
 }
@@ -1278,11 +1290,36 @@ function orderPlanAtomicGoalsByPrerequisites(
   return { atomicGoalIds: ordered, prerequisitesByDependent, quality: quality('complete') }
 }
 
+export function isCoursePlanBlockActive(block: { active?: boolean }): boolean {
+  return block.active !== false
+}
+
+export function getLearningCoursePlanBlockGoalIds(block: LearningCoursePlanBlock): readonly string[] {
+  return block.goalIds ?? [block.goalId]
+}
+
+export function resolveLearningCoursePlanBlockAtomicGoals(
+  block: LearningCoursePlanBlock,
+  goalIndex: ReadonlyMap<string, UiGoal>,
+  visibleChildren?: ReadonlyMap<string, readonly string[]>,
+): AtomicGoalResolution {
+  const resolutions = getLearningCoursePlanBlockGoalIds(block)
+    .map((goalId) => resolveAtomicGoalDescendants(goalId, goalIndex, visibleChildren))
+  return {
+    atomicGoalIds: [...new Set(resolutions.flatMap((entry) => entry.atomicGoalIds))],
+    quality: quality(
+      resolutions.some((entry) => entry.quality.status === 'invalid') ? 'invalid'
+        : resolutions.some((entry) => entry.quality.status !== 'complete') ? 'insufficient' : 'complete',
+      resolutions.flatMap((entry) => entry.quality.issues),
+    ),
+  }
+}
+
 function chronologicalLearningBlocks(plan: TeacherCoursePlan) {
   return plan.blocks
     .map((block, index) => ({ block, index }))
     .filter((entry): entry is { block: Extract<TeacherCoursePlanBlock, { kind: 'learning' }>; index: number } => (
-      entry.block.kind === 'learning'
+      entry.block.kind === 'learning' && isCoursePlanBlockActive(entry.block)
     ))
     .sort((left, right) => (
       left.block.startDate.localeCompare(right.block.startDate)
@@ -1979,7 +2016,7 @@ export function assignAtomicGoalsToLearningBlocks(
   // Obsolete snapshot atoms cannot invalidate a still-resolvable section;
   // missing section roots or current hierarchy edges remain explicit errors.
   for (const { block } of chronologicalLearningBlocks(normalized.plan)) {
-    const resolution = resolveAtomicGoalDescendants(block.goalId, goalIndex, visibleChildren)
+    const resolution = resolveLearningCoursePlanBlockAtomicGoals(block, goalIndex, visibleChildren)
     if (resolution.quality.status !== 'complete') {
       issues.push(...resolution.quality.issues.map((issue) => ({ ...issue, blockId: block.id })))
       assignments.push({
@@ -2279,7 +2316,7 @@ export function evaluateTeacherCoursePlan(
   const normalized = normalizeTeacherCoursePlan(plan)
   if (!normalized.plan) return invalidEvaluation(asOf, normalized.quality)
   const milestoneGoalIssues = normalized.plan.blocks.flatMap((block): CoursePlanDataIssue[] => {
-    if (block.kind !== 'milestone') return []
+    if (block.kind !== 'milestone' || !isCoursePlanBlockActive(block)) return []
     const goalIds = block.goalIds ?? (block.goalId ? [block.goalId] : [])
     return goalIds.flatMap((goalId) => {
       const resolution = resolveAtomicGoalDescendants(goalId, goalIndex, visibleChildren)
@@ -2330,6 +2367,7 @@ export function evaluateTeacherCoursePlan(
   const learningProgressByBlockId = cumulativeProgress.progressByBlockId
 
   for (const block of normalized.plan.blocks) {
+    if (!isCoursePlanBlockActive(block)) continue
     if (block.kind === 'learning') {
       const assignment = assignmentByBlockId.get(block.id)
       const progress = learningProgressByBlockId.get(block.id)
@@ -2391,7 +2429,7 @@ export function evaluateTeacherCoursePlan(
   )
   const nextMilestoneBlock = normalized.plan.blocks
     .filter((block): block is Extract<TeacherCoursePlanBlock, { kind: 'milestone' }> => (
-      block.kind === 'milestone' && block.date >= asOf
+      block.kind === 'milestone' && isCoursePlanBlockActive(block) && block.date >= asOf
     ))
     .sort((left, right) => left.date.localeCompare(right.date) || left.id.localeCompare(right.id))[0]
   const metrics: TeacherCoursePlanMetrics = {

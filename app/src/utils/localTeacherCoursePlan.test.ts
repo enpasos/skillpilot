@@ -1379,4 +1379,79 @@ assert.equal(undoLastTeacherCoursePlanRevision(boundedPlan, {
 }), null)
 assert.equal(JSON.stringify(boundedPlan.revisionHistory), serializedBoundedHistory)
 
+// Pausing precedes goal assignment: a broad old section cannot reserve work
+// from the active, multi-topic preparation, and paused dates create no demand.
+const preparationGoals = goalMap(
+  uiGoal('all-topics', ['g1', 'g2', 'g3']),
+  uiGoal('topic-a', ['canonical-hidden']),
+  uiGoal('topic-b', ['g2', 'g3']),
+  uiGoal('canonical-hidden'), uiGoal('g1'), uiGoal('g2'),
+  { ...uiGoal('g3'), requires: ['g1'] },
+)
+const preparationChildren = new Map<string, readonly string[]>([
+  ['topic-a', ['g3', 'g1']], ['topic-b', ['g2', 'g3']],
+])
+const pausedBroadBlock: TeacherCoursePlanBlock = {
+  id: 'general-course', kind: 'learning', active: false, goalId: 'all-topics',
+  startDate: '2026-08-03', endDate: '2026-12-31',
+}
+const preparationBlock: TeacherCoursePlanBlock = {
+  id: 'exam-preparation', kind: 'learning', active: true,
+  goalId: 'topic-a', goalIds: ['topic-a', 'topic-b'],
+  startDate: '2026-10-19', endDate: '2026-10-23',
+}
+const preparationPlan = addBlocks(createPlan('paused-course'), [
+  pausedBroadBlock, preparationBlock,
+  { id: 'paused-buffer', kind: 'buffer', active: false, title: 'Puffer',
+    startDate: '2026-10-19', endDate: '2026-10-23' },
+  { id: 'paused-exam', kind: 'milestone', active: false, title: 'Alte Klausur', date: '2026-10-22' },
+  { id: 'active-exam', kind: 'milestone', title: 'Klausur', date: '2026-10-27' },
+])
+const preparationAssignment = assignAtomicGoalsToLearningBlocks(preparationPlan, preparationGoals, preparationChildren)
+assert.equal(preparationAssignment.quality.status, 'complete')
+assert.equal(preparationAssignment.assignments.length, 1)
+assert.equal(preparationAssignment.assignments[0]?.blockId, preparationBlock.id)
+assert.deepEqual(new Set(preparationAssignment.assignments[0]?.atomicGoalIds), new Set(['g1', 'g2', 'g3']))
+assert.deepEqual(preparationAssignment.assignments[0]?.duplicateAtomicGoalIds, [])
+assert(preparationAssignment.assignments[0]!.atomicGoalIds.indexOf('g1')
+  < preparationAssignment.assignments[0]!.atomicGoalIds.indexOf('g3'), 'prerequisites are ordered across selected roots')
+const preparationMetrics = evaluateTeacherCoursePlan(preparationPlan, preparationGoals, '2026-10-22', preparationChildren)
+assert.equal(preparationMetrics.metrics?.plannedGoalCount, 3)
+assert.equal(preparationMetrics.metrics?.totalBufferWorkdays, 0)
+assert.equal(preparationMetrics.metrics?.nextMilestone?.blockId, 'active-exam')
+assert(!preparationMetrics.blocks.some((block) => block.blockId.startsWith('paused-')))
+
+const allPausedPlan = addBlocks(preparationPlan,
+  preparationPlan.blocks.map((block) => ({ ...block, active: false })), '2026-10-22')
+const allPausedMetrics = evaluateTeacherCoursePlan(allPausedPlan, preparationGoals, '2026-10-23', preparationChildren)
+assert.deepEqual(allPausedMetrics.assignments, [])
+assert.deepEqual(allPausedMetrics.blocks, [])
+assert.equal(allPausedMetrics.metrics?.plannedGoalCount, 0)
+assert.equal(allPausedMetrics.metrics?.expectedGoalEquivalent, 0)
+assert.deepEqual(allPausedMetrics.metrics?.dueGoalIds, [])
+assert.equal(allPausedMetrics.metrics?.nextMilestone, null)
+assert.equal(allPausedMetrics.metrics?.remainingBufferWorkdays, 0)
+
+const restoredPreparation = requirePlan(undoLastTeacherCoursePlanRevision(allPausedPlan, {
+  changedOn: '2026-10-22', recordedAt: '2026-10-22T10:00:00.000Z',
+}))
+assert.deepEqual(restoredPreparation.blocks, preparationPlan.blocks, 'undo restores activation and every selected root')
+const reactivatedPlan = addBlocks(allPausedPlan,
+  allPausedPlan.blocks.map((block) => ({ ...block, active: true })), '2026-10-23')
+assert.equal(assignAtomicGoalsToLearningBlocks(reactivatedPlan, preparationGoals, preparationChildren)
+  .assignments[0]?.blockId, 'general-course', 'reactivating restores chronological assignment')
+assert.equal(reactivatedPlan.blocks[0]?.kind === 'learning' && reactivatedPlan.blocks[0].startDate,
+  pausedBroadBlock.startDate, 'reactivating does not move dates')
+const preparationStorageItems = new Map<string, string>()
+const preparationStorage: StorageWriter = {
+  getItem: (key) => preparationStorageItems.get(key) ?? null,
+  setItem: (key, value) => { preparationStorageItems.set(key, value) },
+}
+assert(saveTeacherCoursePlan(allPausedPlan, preparationStorage).ok)
+assert.deepEqual(loadTeacherCoursePlan(allPausedPlan.classId, preparationStorage).plan, allPausedPlan)
+assert.deepEqual(normalizeTeacherCoursePlan(JSON.parse(JSON.stringify(allPausedPlan))).plan, allPausedPlan,
+  'export and import preserve paused multi-root sections and revision history')
+assert.equal(normalizeTeacherCoursePlan({ ...preparationPlan, blocks: [{ ...preparationBlock, goalIds: [] }] }).plan, null)
+assert.equal(normalizeTeacherCoursePlan({ ...preparationPlan, blocks: [{ ...preparationBlock, active: 'false' }] }).plan, null)
+
 console.log('Local teacher course-plan tests passed.')

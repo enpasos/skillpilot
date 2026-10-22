@@ -2044,6 +2044,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
             classId={activeCoursePlanStorageId}
             classLabel={activeClass.name}
             goals={coursePlanGoalIndex}
+            prerequisiteGoals={coursePlanGoalIndexAll}
             visibleChildrenByParent={coursePlanChildrenByParent}
             learnerId={activeCoursePlanLearnerId || undefined}
             landscapeId={activeClassIsExistingLearner ? activeClass.landscapeId : undefined}

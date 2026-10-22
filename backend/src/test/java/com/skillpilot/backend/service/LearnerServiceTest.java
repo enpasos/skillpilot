@@ -600,6 +600,49 @@ public class LearnerServiceTest {
     }
 
     @Test
+    void multiRootPreparationValidatesTheUnionAndRejectsOutsidersEvenWhenInactive() {
+        selectCompletedCanonicalMathCurriculum();
+        var atoms = learnerService.getPlanningScope(learnerId, CANONICAL_MATH_LANDSCAPE_ID).scopeAtomicGoalIds();
+        String first = atoms.get(0);
+        String second = atoms.get(1);
+        String outside = atoms.get(2);
+        var valid = new LearnerLearningPlanApi.Block("prep", "learning", first, "Vorbereitung",
+                LocalDate.parse("2026-09-01"), LocalDate.parse("2026-09-30"), null,
+                List.of(first, second), List.of(first, second), true);
+        assertThatCode(() -> learnerService.validateLearningPlanBlockFoci(
+                learnerId, CANONICAL_MATH_LANDSCAPE_ID, List.of(valid))).doesNotThrowAnyException();
+        for (Boolean active : List.of(true, false)) {
+            var outsider = new LearnerLearningPlanApi.Block(valid.id(), valid.kind(), first, valid.title(),
+                    valid.startDate(), valid.endDate(), null, List.of(first, outside), valid.goalIds(), active);
+            var foreignRoot = new LearnerLearningPlanApi.Block(valid.id(), valid.kind(), first, valid.title(),
+                    valid.startDate(), valid.endDate(), null, List.of(first),
+                    List.of(first, CANONICAL_PHYSICS_ROOT_SCOPE_ID), active);
+            for (var invalid : List.of(outsider, foreignRoot)) {
+                assertThatThrownBy(() -> learnerService.validateLearningPlanBlockFoci(
+                        learnerId, CANONICAL_MATH_LANDSCAPE_ID, List.of(invalid)))
+                        .isInstanceOfSatisfying(ResponseStatusException.class, exception ->
+                                assertThat(exception.getStatusCode()).isEqualTo(org.springframework.http.HttpStatus.BAD_REQUEST));
+            }
+        }
+    }
+
+    @Test
+    void inactiveBlocksDoNotCreatePrerequisiteOrderingConflictsOrLoseTheirContents() {
+        var inactive = new LearnerLearningPlanApi.Block("later-prerequisite", "learning", "topic-a", "Pausiert",
+                LocalDate.parse("2026-09-30"), LocalDate.parse("2026-09-30"), null,
+                List.of("atom-b", "atom-a"), List.of("topic-a", "topic-b"), false);
+        var active = new LearnerLearningPlanApi.Block("active", "learning", "topic-b", "Aktiv",
+                LocalDate.parse("2026-09-01"), LocalDate.parse("2026-09-01"), null,
+                List.of("atom-b"), List.of("topic-b"), true);
+        assertThat(learnerService.orderLearningPlanBlocksForPrerequisites(
+                List.of(active, inactive), Map.of("atom-b", List.of("atom-a"))))
+                .containsExactly(active, inactive);
+        assertThat(learnerService.orderLearningPlanBlocksForPrerequisites(
+                List.of(inactive), Map.of("atom-b", List.of("atom-a"))))
+                .containsExactly(inactive);
+    }
+
+    @Test
     void milestoneTopicsAllowMasteredTargetsButRejectForeignAndUnknownRoots() {
         selectCompletedCanonicalMathCurriculum();
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
@@ -1776,6 +1819,26 @@ public class LearnerServiceTest {
                         base,
                         List.of(block),
                         Map.of("focus", List.of("atom-b"))))
+                .isNotEqualTo(fingerprint);
+    }
+
+    @Test
+    void learningPlanFingerprintBindsActiveStateAndEveryPreparationRoot() {
+        var scope = new com.skillpilot.backend.api.LearnerPlanningScopeResponse("curriculum", "math",
+                List.of("atom-a", "atom-b"), 2, 0, List.of("atom-a", "atom-b"), Instant.parse("2026-09-01T00:00:00Z"));
+        Map<String, LearningGoal> goals = Map.of("atom-a", goal("atom-a", List.of(), List.of()),
+                "atom-b", goal("atom-b", List.of(), List.of()));
+        var prep = new LearnerLearningPlanApi.Block("prep", "learning", "atom-a", "Preparation",
+                LocalDate.parse("2026-09-01"), LocalDate.parse("2026-09-30"), null,
+                List.of("atom-a"), List.of("atom-a", "atom-b"));
+        var inactive = new LearnerLearningPlanApi.Block(prep.id(), prep.kind(), prep.goalId(), prep.title(),
+                prep.startDate(), prep.endDate(), null, prep.atomicGoalIds(), prep.goalIds(), false);
+        var oneRoot = new LearnerLearningPlanApi.Block(prep.id(), prep.kind(), prep.goalId(), prep.title(),
+                prep.startDate(), prep.endDate(), null, prep.atomicGoalIds(), List.of("atom-a"));
+        String fingerprint = learnerService.computeLearningPlanFingerprint(scope, goals, List.of(prep), Map.of());
+        assertThat(learnerService.computeLearningPlanFingerprint(scope, goals, List.of(inactive), Map.of()))
+                .isNotEqualTo(fingerprint);
+        assertThat(learnerService.computeLearningPlanFingerprint(scope, goals, List.of(oneRoot), Map.of()))
                 .isNotEqualTo(fingerprint);
     }
 

@@ -167,6 +167,28 @@ for (const goalIds of ['analysis-root', ['a', 'a'], [''], ['x'.repeat(256)],
     ...planDetail, blocks: [{ ...examTopicBlock, goalIds }],
   }), /block.goalIds/u)
 }
+const learningTopics = {
+  id: 'preparation', kind: 'learning', active: false, goalId: 'obsolete-legacy-root',
+  goalIds: ['analysis-root', 'geometry-root'], title: 'Vorbereitung',
+  startDate: '2026-09-01', endDate: '2026-09-18', atomicGoalIds: ['analysis-1', 'geometry-1'],
+}
+const parsedPausedPlan = parseLearnerLearningPlanDetail({
+  ...planDetail,
+  blocks: [learningTopics, { ...examTopicBlock, active: false }, {
+    id: 'paused-buffer', kind: 'buffer', title: 'Puffer', active: false,
+    startDate: '2026-09-19', endDate: '2026-09-24',
+  }],
+})
+assert.deepEqual(parsedPausedPlan.blocks[0], { ...learningTopics, goalId: 'analysis-root' })
+assert(parsedPausedPlan.blocks.every((block) => block.active === false), 'all block kinds preserve explicit inactivity')
+for (const goalIds of [[], ['root', 'root'], [''], 'root']) {
+  assert.throws(() => parseLearnerLearningPlanDetail({
+    ...planDetail, blocks: [{ ...learningTopics, goalIds }],
+  }), /block.goalIds/u)
+}
+assert.throws(() => parseLearnerLearningPlanDetail({
+  ...planDetail, blocks: [{ ...learningTopics, active: 'false' }],
+}), /block.active/u)
 assert.equal('metrics' in parsed.plans[0], false)
 assert.equal('pace' in parsed.plans[0], false)
 assert.equal('statusDirection' in parsed.status, false, 'there is no cross-subject balance')

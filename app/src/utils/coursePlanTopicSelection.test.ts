@@ -2,6 +2,7 @@ import assert from 'node:assert/strict'
 import type { UiGoal } from '../goalTypes'
 import {
   buildCoursePlanTopicTree,
+  analyzeCoursePlanTaskCoverage,
   filterCoursePlanTopicTree,
   findCoursePlanMatchingTasks,
   normalizeCoursePlanTopicGoalIds,
@@ -118,5 +119,22 @@ assert.deepEqual(findCoursePlanMatchingTasks(['no-coverage', 'draft-task'], task
 tasks.get('fall-task')!.examData!.taskContent = ' '
 tasks.get('legacy-task')!.examData!.scoring.maxPoints = 0
 assert.deepEqual(findCoursePlanMatchingTasks(['fall'], tasks), [], 'Empty task payloads or invalid scoring are not advertised as usable tasks')
+
+const coverageGoals = index(...treeGoals.values(),
+  { ...assessment('selected-task', ['a', 'b'], 'released'), requires: ['outside'] },
+  assessment('unknown-task'), assessment('unavailable-task', ['missing'], 'released'),
+  assessment('overlapping-task', ['fall', 'a'], 'released'), assessment('blocked-task', ['c'], 'draft'))
+assert.deepEqual(analyzeCoursePlanTaskCoverage(['a', 'c', 'selected-task'], coverageGoals), {
+  topicGoalIds: ['a', 'c'], taskGoalIds: ['selected-task'], coveredGoalIds: ['a', 'b'],
+  uncoveredGoalIds: ['c'], additionalGoalIds: ['b'], unknownTaskIds: [], unavailableGoalIds: [],
+}, 'Coverage compares both directions, counts assessments separately, and never calls a prerequisite assessed')
+const unknownCoverage = analyzeCoursePlanTaskCoverage(['unknown-task', 'unavailable-task', 'blocked-task'], coverageGoals)
+assert.deepEqual(unknownCoverage.unknownTaskIds, ['unknown-task', 'unavailable-task', 'blocked-task'])
+assert.deepEqual(unknownCoverage.coveredGoalIds, [])
+assert.deepEqual(unknownCoverage.unavailableGoalIds, ['missing'])
+assert.deepEqual(analyzeCoursePlanTaskCoverage(['fall', 'selected-task', 'overlapping-task'], coverageGoals).coveredGoalIds, ['a', 'b'],
+  'Overlapping contains coverage counts each canonical content goal once')
+assert.deepEqual(analyzeCoursePlanTaskCoverage(['fall'], coverageGoals).uncoveredGoalIds, ['a', 'b'],
+  'Available packages do not count as selected assessment coverage')
 
 console.log('coursePlanTopicSelection tests passed')

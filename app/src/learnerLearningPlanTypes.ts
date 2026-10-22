@@ -10,6 +10,7 @@ export interface LearnerLearningPlanCurrentBlock {
   kind: 'learning' | 'buffer'
   title: string
   goalId?: string
+  goalIds?: string[]
   startDate: LearnerLearningPlanDate
   endDate: LearnerLearningPlanDate
 }
@@ -138,7 +139,9 @@ export interface LearnerLearningPlansResponse {
 export interface LearnerLearningPlanLearningBlock {
   id: string
   kind: 'learning'
+  active?: boolean
   goalId?: string
+  goalIds?: string[]
   title?: string
   startDate: LearnerLearningPlanDate
   endDate: LearnerLearningPlanDate
@@ -149,6 +152,7 @@ export interface LearnerLearningPlanLearningBlock {
 export interface LearnerLearningPlanBufferBlock {
   id: string
   kind: 'buffer'
+  active?: boolean
   title: string
   startDate: LearnerLearningPlanDate
   endDate: LearnerLearningPlanDate
@@ -157,6 +161,7 @@ export interface LearnerLearningPlanBufferBlock {
 export interface LearnerLearningPlanMilestoneBlock {
   id: string
   kind: 'milestone'
+  active?: boolean
   title: string
   goalId?: string
   /** Deadline scope only; it contributes no scheduled work. */
@@ -176,7 +181,9 @@ export interface LearnerLearningPlanDetail extends LearnerLearningPlanSummary {
 export interface SaveLearnerLearningPlanLearningBlock {
   id: string
   kind: 'learning'
+  active?: boolean
   goalId?: string
+  goalIds?: string[]
   title?: string
   startDate: LearnerLearningPlanDate
   endDate: LearnerLearningPlanDate
@@ -186,6 +193,7 @@ export interface SaveLearnerLearningPlanLearningBlock {
 export interface SaveLearnerLearningPlanBufferBlock {
   id: string
   kind: 'buffer'
+  active?: boolean
   title: string
   startDate: LearnerLearningPlanDate
   endDate: LearnerLearningPlanDate
@@ -194,6 +202,7 @@ export interface SaveLearnerLearningPlanBufferBlock {
 export interface SaveLearnerLearningPlanMilestoneBlock {
   id: string
   kind: 'milestone'
+  active?: boolean
   title: string
   goalId?: string
   /** Selected topic roots; when present (including []), replaces legacy goalId. */

@@ -17,6 +17,7 @@ import {
   getTeacherCoursePlanStorageId,
   teacherCoursePlanStoragePrefixForClass,
 } from '../src/utils/teacherCoursePlanContext'
+import { createTeacherCoursePlan } from '../src/utils/localTeacherCoursePlan'
 
 function assert(condition: unknown, message: string): asserts condition {
   if (!condition) throw new Error(message)
@@ -305,6 +306,7 @@ const installApi = async (
   page: Page,
   learnerRequests: string[],
   learnerRequestGate: LearnerRequestGate,
+  fixtureLandscape = landscape,
 ) => {
   await page.route('**/api/ui/**', async (route) => {
     const pathname = new URL(route.request().url()).pathname
@@ -351,7 +353,7 @@ const installApi = async (
       await route.fulfill({
         status: 200,
         contentType: 'application/json',
-        body: JSON.stringify([landscape]),
+        body: JSON.stringify([fixtureLandscape]),
       })
       return
     }
@@ -359,12 +361,193 @@ const installApi = async (
       await route.fulfill({
         status: 200,
         contentType: 'application/json',
-        body: JSON.stringify({ summaries: [landscape] }),
+        body: JSON.stringify({ summaries: [fixtureLandscape] }),
       })
       return
     }
     await route.fulfill({ status: 404, body: '' })
   })
+}
+
+/** A separate plan keeps preparation mutations independent of the legacy flows. */
+const verifyExamPreparationUi = async (browser: Browser, baseUrl: string) => {
+  const assessmentId = 'trainer-course-plan-assessment'
+  const foundationId = 'trainer-course-plan-foundation'
+  const uncoveredId = 'trainer-course-plan-uncovered'
+  const assessmentTitle = 'Mechanik-Aufgabenpaket'
+  const foundationTitle = 'Einheiten sicher umrechnen'
+  const uncoveredTitle = 'Messunsicherheit beschreiben'
+  const broadTitle = 'Allgemeiner Physikplan'
+  const examTitle = 'Klausur Mechanik'
+  const today = localDateString()
+  const deadline = addDays(today, 20)
+  const fixtureLandscape = {
+    ...landscape,
+    goals: [
+      goal(rootGoalId, 'Physik', [clusterGoalId, foundationId, uncoveredId, assessmentId]),
+      goal(clusterGoalId, 'Mechanik', [firstGoalId, secondGoalId]),
+      goal(firstGoalId, 'Kräfte beschreiben'),
+      { ...goal(secondGoalId, 'Bewegungen auswerten'), requires: [foundationId] },
+      goal(foundationId, foundationTitle),
+      goal(uncoveredId, uncoveredTitle),
+      {
+        ...goal(assessmentId, assessmentTitle),
+        requires: [firstGoalId, secondGoalId],
+        examData: {
+          reviewStatus: 'released',
+          coveredGoalIds: [firstGoalId, secondGoalId],
+          taskContent: 'Beschreibe Kräfte und werte die Bewegungen aus.',
+          solutionContent: 'Die Kräfte und Bewegungen werden fachlich korrekt beschrieben.',
+          scoring: {
+            maxPoints: 10,
+            passingPoints: 7,
+            steps: [{ id: 'mechanics', points: 10, description: 'Kräfte und Bewegungen auswerten' }],
+          },
+        },
+      },
+    ],
+  }
+  const initialPlan = createTeacherCoursePlan({
+    classId: normalCoursePlanId,
+    createdOn: today,
+    recordedAt: fixtureTime.toISOString(),
+  })
+  assert(initialPlan, 'the preparation fixture starts with a valid plan')
+  initialPlan.blocks = [{
+    id: 'general-learning', kind: 'learning', goalId: rootGoalId, title: broadTitle,
+    startDate: today, endDate: addDays(today, 13),
+  }]
+  const context = await browser.newContext({ locale: 'de-DE', timezoneId: 'Europe/Berlin' })
+  try {
+    await context.addInitScript((seed) => {
+      if (sessionStorage.getItem('skillpilot_preparation_ui_seeded')) return
+      sessionStorage.setItem('skillpilot_preparation_ui_seeded', '1')
+      localStorage.setItem('skillpilot_lang', 'de')
+      localStorage.setItem('skillpilot_terms_accepted_version', seed.termsVersion)
+      localStorage.setItem('skillpilot_role', 'trainer')
+      localStorage.setItem('skillpilot_trainer_landscape', seed.session.landscapeId)
+      localStorage.setItem('skillpilot_active_class', seed.session.id)
+      localStorage.setItem('skillpilot_classes', JSON.stringify([seed.session]))
+      localStorage.setItem('skillpilot_test_trainer_course_plan_goal', seed.session.currentGoalId)
+      localStorage.setItem('skillpilot_teacher_course_plans_v1', JSON.stringify({
+        schemaVersion: 1, plansByClassId: { [seed.plan.classId]: seed.plan },
+      }))
+    }, {
+      termsVersion: CURRENT_TERMS_VERSION,
+      session: { ...normalClassSession, students: [] },
+      plan: initialPlan,
+    })
+    const page = await context.newPage()
+    await page.clock.install({ time: fixtureTime })
+    const errors: string[] = []
+    page.on('pageerror', (error) => errors.push(error.message))
+    await installApi(page, [], { blocked: false, releases: [] }, fixtureLandscape)
+    const readPlan = () => page.evaluate((storageId) => {
+      const store = JSON.parse(localStorage.getItem('skillpilot_teacher_course_plans_v1')!) as {
+        plansByClassId: Record<string, TeacherCoursePlan>
+      }
+      return store.plansByClassId[storageId]!
+    }, normalCoursePlanId)
+    await page.goto(`${baseUrl}/scripts/fixtures/trainerCoursePlanUi.html`)
+    await page.getByRole('heading', { name: 'Planung für Physik LK', exact: true }).waitFor()
+    const broadBlock = page.getByTestId('course-plan-block').filter({
+      has: page.getByRole('heading', { name: broadTitle, exact: true }),
+    })
+    const activeSwitch = broadBlock.getByRole('switch', { name: `${broadTitle}: Aktiv`, exact: true })
+    assert(await activeSwitch.isChecked(), 'legacy sections without an active property remain active')
+    await activeSwitch.click()
+    assert(!(await activeSwitch.isChecked()), 'a section can be paused directly from its plan card')
+    const pausedPlan = await readPlan()
+    assert(pausedPlan.blocks[0]?.active === false, 'pausing is saved immediately as active:false')
+    assert(pausedPlan.blocks[0]?.kind === 'learning'
+      && pausedPlan.blocks[0].startDate === today
+      && pausedPlan.blocks[0].endDate === addDays(today, 13), 'pausing preserves the section dates')
+    // The isolated Vite server serves the fixture entry rather than SPA routes.
+    await page.goto(`${baseUrl}/scripts/fixtures/trainerCoursePlanUi.html`)
+    await page.getByRole('heading', { name: 'Planung für Physik LK', exact: true }).waitFor()
+    assert(!(await activeSwitch.isChecked()), 'the paused section remains paused after reload')
+    assert(await page.getByTestId('course-plan-timeline').getByText(/· Inaktiv$/u).count() > 0
+      && await page.getByTestId('course-plan-timeline').getByRole('button', { name: new RegExp(broadTitle, 'u') })
+        .getAttribute('data-active') === 'false',
+      'the inactive section remains visible on the timeline')
+
+    await page.getByRole('button', { name: 'Klausur planen', exact: true }).click()
+    const form = page.getByRole('heading', { name: 'Neuen Planabschnitt anlegen', exact: true }).locator('..').locator('..')
+    const picker = form.getByTestId('course-plan-topic-picker')
+    await picker.getByRole('button', { name: 'Mechanik aufklappen', exact: true }).click()
+    await picker.getByRole('checkbox', { name: 'Kräfte beschreiben auswählen', exact: true }).check()
+    await picker.getByRole('checkbox', { name: `${uncoveredTitle} auswählen`, exact: true }).check()
+    await picker.getByRole('checkbox', { name: `${assessmentTitle} auswählen`, exact: true }).check()
+    assert(await picker.getByRole('checkbox', { name: `${assessmentTitle} als Aufgabenpaket auswählen`, exact: true }).isChecked(),
+      'the assessment package has one consistent selection in the tree and task panel')
+    const coverage = picker.getByTestId('course-plan-task-coverage')
+    await coverage.getByRole('heading', { name: 'Aufgabenabdeckung', exact: true }).waitFor()
+    assert((await coverage.innerText()).includes(uncoveredTitle), 'coverage identifies selected material without a matching task')
+    assert((await coverage.innerText()).includes('Bewegungen auswerten'), 'coverage identifies extra material required by the selected task')
+    assert(!(await coverage.innerText()).includes(foundationTitle), 'task coverage does not pretend a transitive prerequisite is assessed')
+    await form.getByLabel(/^Bezeichnung/u).fill(examTitle)
+    await form.getByLabel('Fällig am', { exact: true }).fill(deadline)
+    const screenshots = process.env.SKILLPILOT_EXAM_PREPARATION_SCREENSHOTS
+    if (screenshots) await mkdir(screenshots, { recursive: true })
+    for (const width of [1280, 390]) {
+      await page.setViewportSize({ width, height: 900 })
+      assert(await picker.evaluate((element) => element.scrollWidth <= element.clientWidth),
+        `assessment coverage fits the ${width}px viewport`)
+      if (screenshots) {
+        await coverage.scrollIntoViewIfNeeded()
+        await page.screenshot({ path: `${screenshots}/coverage-${width}.png`, fullPage: true })
+      }
+    }
+    await form.getByRole('button', { name: 'Abschnitt speichern', exact: true }).click()
+    const examBlock = page.getByTestId('course-plan-block').filter({
+      has: page.getByRole('heading', { name: examTitle, exact: true }),
+    })
+    const beforePreview = await readPlan()
+    const savedExam = beforePreview.blocks.find((block) => block.title === examTitle)
+    assert(savedExam?.kind === 'milestone' && savedExam.goalIds?.includes(assessmentId),
+      'the selected task is retained with the exam scope')
+    await examBlock.getByRole('button', { name: 'Vorbereitung vervollständigen', exact: true }).click()
+    const preview = page.getByTestId('course-plan-preparation-preview')
+    await preview.waitFor()
+    assertJsonEqual(await readPlan(), beforePreview, 'opening preparation is a read-only preview')
+    assert(await preview.getByLabel('Vorbereitung bis', { exact: true }).inputValue() === addDays(deadline, -1),
+      'the proposed preparation ends before the exam')
+    assert((await preview.innerText()).includes('Kräfte beschreiben'),
+      'an inactive general plan does not falsely cover the preparation')
+    assert((await preview.innerText()).includes(foundationTitle),
+      'preparation exposes additional foundations separately from task coverage')
+    const acknowledge = preview.getByRole('checkbox', { name: 'Zusätzliche Themen und Grundlagen übernehmen', exact: true })
+    const apply = preview.getByRole('button', { name: 'Vorbereitung übernehmen', exact: true })
+    assert(await apply.isDisabled(), 'extra material requires explicit acceptance before creating preparation')
+    await acknowledge.check()
+    for (const width of [1280, 390]) {
+      await page.setViewportSize({ width, height: 900 })
+      assert(await preview.evaluate((element) => element.scrollWidth <= element.clientWidth),
+        `preparation preview fits the ${width}px viewport`)
+      if (screenshots) {
+        await preview.scrollIntoViewIfNeeded()
+        await page.screenshot({ path: `${screenshots}/preparation-${width}.png`, fullPage: true })
+      }
+    }
+    await apply.click()
+    await preview.waitFor({ state: 'detached' })
+    const preparedPlan = await readPlan()
+    const preparation = preparedPlan.blocks.find((block) => block.title === `Vorbereitung: ${examTitle}`)
+    assert(preparation?.kind === 'learning' && preparation.active !== false,
+      'acceptance creates an active learning section')
+    assert(preparation.endDate === addDays(deadline, -1), 'the saved preparation ends before the exam')
+    assertJsonEqual([...(preparation.goalIds ?? [])].sort(),
+      [firstGoalId, secondGoalId, uncoveredId, foundationId, assessmentId].sort(),
+      'the saved preparation contains the exact selected material, task coverage and accepted foundation')
+    assert(preparedPlan.blocks.find((block) => block.id === 'general-learning')?.active === false,
+      'creating preparation does not reactivate the general plan')
+    await page.goto(`${baseUrl}/scripts/fixtures/trainerCoursePlanUi.html`)
+    await page.getByRole('heading', { name: `Vorbereitung: ${examTitle}`, exact: true }).waitFor()
+    assertJsonEqual(await readPlan(), preparedPlan, 'the completed preparation survives reload without rewriting the plan')
+    assert(errors.length === 0, `exam preparation browser errors:\n${errors.join('\n')}`)
+  } finally {
+    await context.close()
+  }
 }
 
 const readDownload = async (download: Download) => {
@@ -1518,6 +1701,7 @@ try {
   )
   assertJsonEqual(unexpectedLearnerWrites, [], 'planning UI navigation never invokes unrelated learner writes')
   await personalizedContext.close()
+  await verifyExamPreparationUi(browser, server.baseUrl)
   console.log('Trainer course-plan UI regression test passed.')
 } finally {
   await browser?.close()

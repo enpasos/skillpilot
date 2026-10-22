@@ -88,16 +88,71 @@ class LearnerLearningPlanServiceTest {
     }
 
     @Test
-    void nonMilestoneBlocksDiscardMilestoneOnlyReferences() {
+    void learningSectionsKeepSelectedRootsWhileBuffersDiscardThem() {
         var learning = new LearnerLearningPlanApi.Block("learning", "learning", "focus", "Abschnitt",
                 LocalDate.parse("2026-09-01"), LocalDate.parse("2026-09-04"), null,
                 List.of("atom-a"), List.of("unrelated-topic"));
         var buffer = new LearnerLearningPlanApi.Block("buffer", "buffer", null, "Puffer",
                 LocalDate.parse("2026-09-07"), LocalDate.parse("2026-09-08"), null,
                 null, List.of("unrelated-topic"));
-        assertThat(LearnerLearningPlanService.normalizeBlocks(
-                List.of(learning, buffer), singleGoalScope(), java.util.Set.of(), false))
-                .allSatisfy(block -> assertThat(block.goalIds()).isNull());
+        var normalized = LearnerLearningPlanService.normalizeBlocks(
+                List.of(learning, buffer), singleGoalScope(), java.util.Set.of(), false);
+        assertThat(normalized.getFirst().goalIds()).containsExactly("unrelated-topic");
+        assertThat(normalized.getFirst().goalId()).isEqualTo("unrelated-topic");
+        assertThat(normalized.getLast().goalIds()).isNull();
+    }
+
+    @Test
+    void inactiveSectionsRetainTheirAtomsWithoutStealingActiveWork() throws Exception {
+        var inactive = new LearnerLearningPlanApi.Block("broad", "learning", "all", "All",
+                LocalDate.parse("2026-09-01"), LocalDate.parse("2028-12-31"), null,
+                List.of("atom-a"), List.of("all"), false);
+        var active = learningBlock("exam-prep", "2026-09-04", "2026-09-04", List.of("atom-a"));
+        var blocks = LearnerLearningPlanService.normalizeBlocks(
+                List.of(inactive, active), singleGoalScope(), java.util.Set.of(), false);
+
+        assertThat(blocks.getFirst().atomicGoalIds()).containsExactly("atom-a");
+        assertThat(blocks.getLast().atomicGoalIds()).containsExactly("atom-a");
+        assertThat(LearnerLearningPlanService.scheduledAtomicGoalDueDatesForSchedule(blocks))
+                .containsExactly(Map.entry("atom-a", LocalDate.parse("2026-09-04")));
+        var mapper = new ObjectMapper().findAndRegisterModules();
+        String json = mapper.writeValueAsString(blocks.getFirst());
+        assertThat(mapper.readTree(json).get("active").asBoolean()).isFalse();
+        assertThat(mapper.readValue(json, LearnerLearningPlanApi.Block.class)).isEqualTo(blocks.getFirst());
+        assertThat(mapper.readTree(mapper.writeValueAsString(active)).has("active")).isFalse();
+        assertThat(active.isActive()).isTrue();
+    }
+
+    @Test
+    void whollyInactivePlansHaveNoDueWorkButStillRejectForeignAtoms() {
+        var inactive = new LearnerLearningPlanApi.Block("broad", "learning", null, "All",
+                LocalDate.parse("2026-09-01"), LocalDate.parse("2026-09-04"), null,
+                List.of("atom-a"), null, false);
+        var normalized = LearnerLearningPlanService.normalizeBlocks(
+                List.of(inactive), singleGoalScope(), java.util.Set.of(), false);
+        assertThat(LearnerLearningPlanService.scheduledAtomicGoalDueDatesForSchedule(normalized)).isEmpty();
+        assertThat(LearnerLearningPlanService.firstEligibleDueGoal(normalized, LocalDate.parse("2026-09-04"),
+                Map.of(), roots -> { throw new AssertionError("Inactive work must not query the frontier"); }))
+                .isEmpty();
+        var foreign = new LearnerLearningPlanApi.Block("foreign", "learning", null, "Foreign",
+                inactive.startDate(), inactive.endDate(), null, List.of("foreign-atom"), null, false);
+        assertThatThrownBy(() -> LearnerLearningPlanService.normalizeBlocks(
+                List.of(foreign), singleGoalScope(), java.util.Set.of(), false))
+                .isInstanceOf(ResponseStatusException.class);
+    }
+
+    @Test
+    void multiRootSectionQueriesUnionAndContinuesWithTheActualDueAtom() {
+        var block = new LearnerLearningPlanApi.Block("prep", "learning", "topic-a", "Preparation",
+                LocalDate.parse("2026-09-04"), LocalDate.parse("2026-09-04"), null,
+                List.of("atom-a", "atom-b"), List.of("topic-a", "topic-b"));
+        var due = LearnerLearningPlanService.firstEligibleDueGoal(List.of(block), block.endDate(),
+                Map.of("atom-a", 1.0), roots -> {
+                    assertThat(roots).containsExactly("topic-a", "topic-b");
+                    return java.util.Set.of("atom-b");
+                }).orElseThrow();
+        assertThat(due.atomicGoalId()).isEqualTo("atom-b");
+        assertThat(due.focusGoalId()).isEqualTo("atom-b");
     }
 
     private static LearnerPlanningScopeResponse singleGoalScope() {

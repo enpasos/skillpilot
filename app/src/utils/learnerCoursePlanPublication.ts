@@ -1,7 +1,13 @@
 import type { TeacherCoursePlan } from '../coursePlanTypes'
 import type { UiGoal } from '../goalTypes'
 import type { SaveLearnerLearningPlanBlock } from '../learnerLearningPlanTypes'
-import { assignAtomicGoalsToLearningBlocks, resolveAtomicGoalDescendants } from './localTeacherCoursePlan'
+import {
+  assignAtomicGoalsToLearningBlocks,
+  getLearningCoursePlanBlockGoalIds,
+  isCoursePlanBlockActive,
+  resolveAtomicGoalDescendants,
+  resolveLearningCoursePlanBlockAtomicGoals,
+} from './localTeacherCoursePlan'
 
 export interface LearnerLearningPlanCopy {
   planLabel: string
@@ -51,22 +57,43 @@ export function materializeLearnerLearningPlanCopy({
   )
 
   for (const block of plan.blocks) {
+    const activation = block.active === undefined ? {} : { active: block.active }
     if (block.kind === 'learning') {
       const assignment = assignmentByBlockId.get(block.id)
-      if (!assignment) {
+      const active = isCoursePlanBlockActive(block)
+      if (active && !assignment) {
         return { ok: false, blockId: block.id, goalId: block.goalId }
       }
-      if (assignment.atomicGoalIds.length === 0) continue
-      assignment.atomicGoalIds.forEach((goalId) => uniqueAtomicGoalIds.add(goalId))
-      const title = block.title?.trim() || goals.get(block.goalId)?.title?.trim()
+      // Paused work is retained independently of active deduplication. It must
+      // still resolve in the selected curriculum before publishing, but cannot
+      // reserve atoms or contribute to the active plan's work count.
+      const inactiveResolution = active ? null
+        : resolveLearningCoursePlanBlockAtomicGoals(block, goals, visibleChildrenByParent)
+      if (inactiveResolution && inactiveResolution.quality.status !== 'complete') {
+        return {
+          ok: false, blockId: block.id,
+          goalId: inactiveResolution.quality.issues[0]?.goalId ?? block.goalId,
+        }
+      }
+      const baselineOpen = plan.planningBaseline
+        ? new Set(plan.planningBaseline.openAtomicGoalIds) : null
+      const atomicGoalIds = active
+        ? assignment!.atomicGoalIds
+        : inactiveResolution!.atomicGoalIds.filter((goalId) => !baselineOpen || baselineOpen.has(goalId))
+      if (active && atomicGoalIds.length === 0) continue
+      if (active) atomicGoalIds.forEach((goalId) => uniqueAtomicGoalIds.add(goalId))
+      const goalId = getLearningCoursePlanBlockGoalIds(block)[0]!
+      const title = block.title?.trim() || goals.get(goalId)?.title?.trim()
       blocks.push({
         id: block.id,
         kind: 'learning',
-        goalId: block.goalId,
+        ...activation,
+        goalId,
+        ...(block.goalIds !== undefined ? { goalIds: [...block.goalIds] } : {}),
         ...(title ? { title } : {}),
         startDate: block.startDate,
         endDate: block.endDate,
-        atomicGoalIds: [...assignment.atomicGoalIds],
+        atomicGoalIds: [...atomicGoalIds],
       })
       continue
     }
@@ -74,6 +101,7 @@ export function materializeLearnerLearningPlanCopy({
       blocks.push({
         id: block.id,
         kind: 'buffer',
+        ...activation,
         title: block.title,
         startDate: block.startDate,
         endDate: block.endDate,
@@ -91,6 +119,7 @@ export function materializeLearnerLearningPlanCopy({
     blocks.push({
       id: block.id,
       kind: 'milestone',
+      ...activation,
       title: block.title,
       ...(block.goalIds !== undefined
         ? { goalIds: [...block.goalIds] }

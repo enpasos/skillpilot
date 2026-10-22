@@ -15,6 +15,8 @@ import type { UiGoal } from '../goalTypes'
 import type {
   TeacherCoursePlan,
   TeacherCoursePlanBlock,
+  LearnerCoursePlanLandscapeBaseline,
+  MilestoneCoursePlanBlock,
 } from '../coursePlanTypes'
 import type { ToastKind } from '../hooks/useToast'
 import {
@@ -50,7 +52,8 @@ import { ConfirmModal } from './ConfirmModal'
 import { CoursePlanLearningBook } from './CoursePlanLearningBook'
 import { CoursePlanTimeline } from './CoursePlanTimeline'
 import { CoursePlanTopicPicker } from './CoursePlanTopicPicker'
-import { normalizeCoursePlanTopicGoalIds, resolveCoursePlanTopicSelection } from '../utils/coursePlanTopicSelection'
+import { CoursePlanExamPreparationPreview } from './CoursePlanExamPreparationPreview'
+import { analyzeCoursePlanTaskCoverage, normalizeCoursePlanTopicGoalIds, resolveCoursePlanTopicSelection } from '../utils/coursePlanTopicSelection'
 
 type CoursePlanBlockKind = TeacherCoursePlanBlock['kind']
 export type CoursePlanSection = 'plan' | 'preview' | 'teaching'
@@ -60,6 +63,7 @@ interface CoursePlanPilotViewProps {
   classLabel: string
   goals: ReadonlyMap<string, UiGoal>
   visibleChildrenByParent?: ReadonlyMap<string, readonly string[]>
+  prerequisiteGoals?: ReadonlyMap<string, UiGoal>
   learnerId?: string
   landscapeId?: string
   language: 'de' | 'en'
@@ -81,6 +85,7 @@ interface BlockDraft {
   title: string
   startDate: string
   endDate: string
+  active: boolean
 }
 
 interface PlanPublicationConfirmation {
@@ -105,6 +110,7 @@ const createDraft = (asOf: string): BlockDraft => ({
   title: '',
   startDate: asOf,
   endDate: addCoursePlanDays(asOf, 13) ?? asOf,
+  active: true,
 })
 
 const serializeDraft = (draft: BlockDraft) => JSON.stringify(draft)
@@ -158,6 +164,7 @@ export const CoursePlanPilotView = ({
   classLabel,
   goals,
   visibleChildrenByParent,
+  prerequisiteGoals,
   learnerId,
   landscapeId,
   language,
@@ -196,6 +203,9 @@ export const CoursePlanPilotView = ({
   const [baselineLoadState, setBaselineLoadState] = useState<'idle' | 'loading' | 'error'>('idle')
   const [baselineRetry, setBaselineRetry] = useState(0)
   const [savingBlock, setSavingBlock] = useState(false)
+  const [preparationState, setPreparationState] = useState<{ milestoneId: string; baseline?: LearnerCoursePlanLandscapeBaseline } | null>(null)
+  const [preparationLoading, setPreparationLoading] = useState(false)
+  const preparationRequestRef = useRef<AbortController | null>(null)
   const [publicationState, setPublicationState] = useState<'idle' | 'checking' | 'saving'>('idle')
   const [publicationConfirmation, setPublicationConfirmation] = useState<PlanPublicationConfirmation | null>(null)
   const [publicationMessage, setPublicationMessage] = useState('')
@@ -297,7 +307,8 @@ export const CoursePlanPilotView = ({
     evaluation
     && evaluation.quality.status !== 'invalid'
     && evaluation.metrics
-    && evaluation.metrics.plannedGoalCount > 0,
+    && (evaluation.metrics.plannedGoalCount > 0
+      || plan?.blocks.some((block) => block.kind === 'learning' && block.active === false)),
   )
 
   useEffect(() => {
@@ -353,6 +364,8 @@ export const CoursePlanPilotView = ({
   const selectedTopics = useMemo(() => resolveCoursePlanTopicSelection(
     draft.goalIds, topicGoals, topicChildren,
   ), [draft.goalIds, topicGoals, topicChildren])
+  const selectedTopicCoverage = useMemo(() => analyzeCoursePlanTaskCoverage(draft.goalIds, topicGoals, topicChildren),
+    [draft.goalIds, topicGoals, topicChildren])
   const plannedGoalIds = useMemo(() => evaluation?.quality.status === 'complete' && evaluation.metrics
     ? new Set(evaluation.assignments.flatMap((assignment) => assignment.atomicGoalIds))
     : null, [evaluation])
@@ -447,6 +460,7 @@ export const CoursePlanPilotView = ({
   }, [asOf, baselineRetry, landscapeId, learnerId, needsLearnerBaseline, onLocalPlanChange, plan])
 
   useEffect(() => () => {
+    preparationRequestRef.current?.abort()
     saveBlockRequestRef.current.token += 1
     saveBlockRequestRef.current.controller?.abort()
     saveBlockRequestRef.current.controller = null
@@ -529,7 +543,8 @@ export const CoursePlanPilotView = ({
       onNotify?.('error', copy.publishUnavailable)
       return
     }
-    if (materialized.copy.atomicGoalCount === 0) {
+    if (materialized.copy.atomicGoalCount === 0
+      && !materialized.copy.blocks.some((block) => block.kind === 'learning' && block.active === false)) {
       setPublicationConfirmation(null)
       setPublicationMessage('')
       setPublicationError(copy.publishUnavailable)
@@ -722,14 +737,16 @@ export const CoursePlanPilotView = ({
           title: block.title,
           startDate: block.date,
           endDate: block.date,
+          active: block.active !== false,
         }
       : {
           kind: block.kind,
           goalId: block.kind === 'learning' ? block.goalId : '',
-          goalIds: [],
+          goalIds: block.kind === 'learning' ? [...(block.goalIds ?? [])] : [],
           title: block.title ?? '',
           startDate: block.startDate,
           endDate: block.endDate,
+          active: block.active !== false,
         }
     setDraft(nextDraft)
     setDraftBaseline(serializeDraft(nextDraft))
@@ -752,12 +769,12 @@ export const CoursePlanPilotView = ({
       return
     }
     if (draft.kind === 'learning') {
-      if (!draft.goalId) {
+      if (!draft.goalId && draft.goalIds.length === 0) {
         setFormError(copy.missingGoal)
         return
       }
-      const resolution = resolveAtomicGoalDescendants(draft.goalId, goals, visibleChildrenByParent)
-      if (resolution.quality.status !== 'complete' || resolution.atomicGoalIds.length === 0) {
+      const resolution = resolveCoursePlanTopicSelection(draft.goalIds.length ? draft.goalIds : [draft.goalId], goals, visibleChildrenByParent)
+      if (resolution.invalidGoalIds.length > 0 || resolution.atomicGoalIds.length === 0) {
         setFormError(copy.noPlannableGoals)
         return
       }
@@ -782,10 +799,12 @@ export const CoursePlanPilotView = ({
       ? {
           id,
           kind: 'learning',
-          goalId: draft.goalId,
+          goalId: draft.goalIds[0] ?? draft.goalId,
+          ...(draft.goalIds.length ? { goalIds: normalizeCoursePlanTopicGoalIds(draft.goalIds, topicGoals, topicChildren) } : {}),
           ...(draft.title.trim() ? { title: draft.title.trim() } : {}),
           startDate: draft.startDate,
           endDate: draft.endDate,
+          ...(draft.active ? {} : { active: false }),
         }
       : draft.kind === 'buffer'
         ? {
@@ -794,6 +813,7 @@ export const CoursePlanPilotView = ({
             title: draft.title.trim(),
             startDate: draft.startDate,
             endDate: draft.endDate,
+            ...(draft.active ? {} : { active: false }),
           }
         : {
             id,
@@ -801,6 +821,7 @@ export const CoursePlanPilotView = ({
             title: draft.title.trim() || draft.goalIds.map((id) => goals.get(id)?.title || id).join(', ').slice(0, 500),
             goalIds: normalizeCoursePlanTopicGoalIds(draft.goalIds, topicGoals, topicChildren),
             date: draft.startDate,
+            ...(draft.active ? {} : { active: false }),
           }
     const nextBlocks = editingBlockId
       ? plan.blocks.map((block) => block.id === editingBlockId ? nextBlock : block)
@@ -856,7 +877,7 @@ export const CoursePlanPilotView = ({
     const revised = plan.planningBaseline?.source === 'learner-planning-scope-v1' && planningBaseline
       ? migrateTeacherCoursePlanBaseline(plan, { ...revisionInput, planningBaseline })
       : reviseTeacherCoursePlan(plan, revisionInput)
-    if (planningBaseline && draft.kind === 'learning') {
+    if (planningBaseline && draft.kind === 'learning' && draft.active) {
       const validation = revised
         ? evaluateTeacherCoursePlan(revised, goals, asOf, visibleChildrenByParent)
         : null
@@ -878,6 +899,37 @@ export const CoursePlanPilotView = ({
       setGoalSearch('')
     }
   }
+
+  const openPreparation = (milestone: MilestoneCoursePlanBlock) => guardDraftReplacement(() => {
+    if (!plan) return
+    preparationRequestRef.current?.abort()
+    if (!learnerId || !landscapeId) {
+      setPreparationState({ milestoneId: milestone.id })
+      return
+    }
+    const controller = new AbortController()
+    preparationRequestRef.current = controller
+    const revision = plan.revision
+    setPreparationLoading(true)
+    void fetchLearnerPlanningScope({ learnerId, landscapeId, signal: controller.signal }).then((baseline) => {
+      if (controller.signal.aborted || planRef.current?.revision !== revision) return
+      setPreparationState({ milestoneId: milestone.id, baseline })
+    }).catch((error) => {
+      if (controller.signal.aborted) return
+      console.warn('Could not load preparation progress', error)
+      onNotify?.('error', copy.planningScopeLoadError)
+    }).finally(() => {
+      if (preparationRequestRef.current === controller) {
+        preparationRequestRef.current = null
+        setPreparationLoading(false)
+      }
+    })
+  })
+
+  const toggleBlockActive = (block: TeacherCoursePlanBlock) => guardDraftReplacement(() => {
+    if (!plan) return
+    revise(plan.blocks.map((entry) => entry.id === block.id ? { ...entry, active: block.active === false } : entry))
+  })
 
   const removeBlock = (blockId: string) => {
     if (!plan) return
@@ -1050,7 +1102,7 @@ export const CoursePlanPilotView = ({
                     <select
                       value={draft.goalId}
                       onChange={(event) => {
-                        setDraft((current) => ({ ...current, goalId: event.target.value }))
+                        setDraft((current) => ({ ...current, goalId: event.target.value, goalIds: [] }))
                         setFormError('')
                       }}
                       className="min-h-11 w-full rounded-lg border border-border-color bg-chat-bg px-3 py-2 text-text-primary outline-none focus:border-sky-500"
@@ -1081,7 +1133,7 @@ export const CoursePlanPilotView = ({
                   <p className="text-sm font-semibold text-text-primary">{language === 'de' ? 'Klausurstoff' : 'Exam topics'}</p>
                   <p className="mt-1 text-sm text-text-secondary">
                     {draft.goalIds.length > 0
-                      ? copy.learningGoalCount(selectedTopics.atomicGoalIds.length)
+                      ? `${selectedTopicCoverage.topicGoalIds.length} ${language === 'de' ? 'Lernthemen' : 'learning topics'} · ${selectedTopicCoverage.taskGoalIds.length} ${language === 'de' ? 'Aufgabenpakete' : 'assessment packages'}`
                       : language === 'de' ? 'Noch keine Themen ausgewählt' : 'No topics selected yet'}
                   </p>
                   {!showTopicPicker && draft.goalIds.length > 0 && (
@@ -1163,14 +1215,16 @@ export const CoursePlanPilotView = ({
               )}
             </div>
 
-            {draft.kind === 'milestone' && showTopicPicker && (
+            {draft.kind === 'learning' && draft.goalIds.length > 0 && <div className="mt-4 rounded-xl border border-sky-200 p-3 text-sm text-text-primary"><p>{language === 'de' ? 'Dieser Lernabschnitt enthält mehrere Themen:' : 'This section includes multiple topics:'}</p><ul className="mt-2 max-h-48 list-disc overflow-y-auto pl-5">{draft.goalIds.map((id) => <li key={id}>{goals.get(id)?.title ?? id}</li>)}</ul><button type="button" className="mt-2 min-h-11 text-sky-700 dark:text-sky-300" onClick={() => setShowTopicPicker((current) => !current)}>{language === 'de' ? 'Themenauswahl bearbeiten' : 'Edit topic selection'}</button></div>}
+            <label className="mt-4 flex min-h-11 cursor-pointer items-center gap-2 text-sm text-text-primary"><input type="checkbox" checked={draft.active} onChange={(event) => setDraft((current) => ({ ...current, active: event.target.checked }))} className="h-4 w-4 accent-sky-600" />{language === 'de' ? 'Abschnitt aktiv' : 'Section active'}</label>
+            {(draft.kind === 'milestone' || draft.kind === 'learning') && showTopicPicker && (
               <div id="course-plan-topic-picker" className="mt-5">
                 <CoursePlanTopicPicker
                   goals={topicGoals}
                   visibleChildrenByParent={topicChildren}
                   selectedGoalIds={draft.goalIds}
                   onChange={(goalIds) => {
-                    setDraft((current) => ({ ...current, goalIds }))
+                    setDraft((current) => ({ ...current, goalIds, ...(current.kind === 'learning' ? { goalId: goalIds[0] ?? '' } : {}) }))
                     setFormError('')
                   }}
                   language={language}
@@ -1422,29 +1476,36 @@ export const CoursePlanPilotView = ({
                 const milestoneScope = block.kind === 'milestone' && milestoneGoalIds.length > 0
                   ? resolveCoursePlanTopicSelection(milestoneGoalIds, topicGoals, topicChildren)
                   : null
+                const milestoneCoverage = block.kind === 'milestone'
+                  ? analyzeCoursePlanTaskCoverage(milestoneGoalIds, topicGoals, topicChildren) : null
                 const title = block.kind === 'learning' ? block.title || goals.get(block.goalId)?.title || block.goalId : block.title
                 const workdays = block.kind === 'milestone' ? 0 : countCoursePlanWorkdaysInclusive(block.startDate, block.endDate) ?? 0
                 return (
-                  <article key={block.id} className="rounded-xl border border-border-color bg-sidebar-bg p-4" data-testid="course-plan-block">
+                  <article key={block.id} className={`rounded-xl border border-border-color p-4 ${block.active === false ? 'bg-slate-100/60 dark:bg-slate-900/50' : 'bg-sidebar-bg'}`} data-testid="course-plan-block" data-active={block.active !== false}>
                     <div className="flex flex-wrap items-start justify-between gap-3">
                       <div className="min-w-0 flex-1 basis-56">
                         <p className="text-xs font-medium text-text-secondary">{block.kind === 'learning' ? copy.kindLearning : block.kind === 'buffer' ? copy.kindBuffer : copy.kindMilestone} · {formatDateRange(block, language)}</p>
                         <h3 className="mt-1 break-words font-semibold text-text-primary">{title}</h3>
-                        <p className="mt-1 text-sm text-text-secondary">{block.kind === 'learning'
+                        <p className="mt-1 text-sm text-text-secondary">{block.active === false ? language === 'de' ? 'Inaktiv · kein Soll und keine Lernsteuerung' : 'Inactive · excluded from targets and learning guidance' : block.kind === 'learning'
                           ? assignment ? copy.learningGoalCount(assignment.atomicGoalIds.length) : copy.notCalculable
                           : block.kind === 'buffer' ? `${workdays} ${language === 'de' ? 'geschützte Werktage' : 'protected weekdays'}`
-                            : milestoneScope ? milestoneScope.invalidGoalIds.length > 0 ? copy.notCalculable : copy.learningGoalCount(milestoneScope.atomicGoalIds.length)
+                            : milestoneScope ? milestoneScope.invalidGoalIds.length > 0 ? copy.notCalculable : `${milestoneCoverage!.topicGoalIds.length} ${language === 'de' ? 'Lernthemen' : 'learning topics'} · ${milestoneCoverage!.taskGoalIds.length} ${language === 'de' ? 'Aufgabenpakete' : 'assessment packages'}`
                               : copy.kindMilestone}</p>
                         {milestoneGoalIds.length > 0 && <p className="mt-1 text-sm text-text-secondary">{milestoneGoalIds.map((id) => goals.get(id)?.title ?? id).join(' · ')}</p>}
                         {assignment && assignment.duplicateAtomicGoalIds.length > 0 && <p className="mt-1 text-xs text-amber-800 dark:text-amber-200">{copy.duplicatedGoalCount(assignment.duplicateAtomicGoalIds.length)}</p>}
                       </div>
                       <div className="flex flex-wrap gap-2">
+                        <button type="button" role="switch" aria-checked={block.active !== false} aria-label={`${title}: ${language === 'de' ? 'Aktiv' : 'Active'}`} onClick={() => toggleBlockActive(block)} className={`inline-flex min-h-11 items-center gap-2 rounded-lg border px-3 py-2 text-sm ${block.active === false ? 'border-border-color text-text-secondary' : 'border-sky-300 text-sky-700 dark:text-sky-300'}`}><span aria-hidden="true" className={`h-3 w-3 rounded-full ${block.active === false ? 'bg-slate-400' : 'bg-sky-600'}`} />{block.active === false ? language === 'de' ? 'Inaktiv' : 'Inactive' : language === 'de' ? 'Aktiv' : 'Active'}</button>
+                        {block.kind === 'milestone' && block.active !== false && <button type="button" disabled={preparationLoading} onClick={() => openPreparation(block)} className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-sky-300 px-3 py-2 text-sm font-medium text-sky-700 disabled:opacity-50 dark:text-sky-300">{language === 'de' ? 'Vorbereitung vervollständigen' : 'Complete preparation'}</button>}
                         <button type="button" onClick={() => openEditBlock(block)} className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-border-color px-3 py-2 text-sm text-text-primary hover:bg-sky-50 dark:hover:bg-sky-950/30"><Pencil size={15} />{copy.edit}</button>
                         <button type="button" onClick={() => removeBlock(block.id)} className={`inline-flex min-h-11 items-center gap-2 rounded-lg border px-3 py-2 text-sm ${pendingDeleteId === block.id ? 'border-rose-600 bg-rose-600 text-white' : 'border-border-color text-text-secondary hover:border-rose-400'}`}><Trash2 size={15} />{pendingDeleteId === block.id ? copy.removeConfirm : copy.remove}</button>
                       </div>
                     </div>
                     {invalidBlockIds.has(block.id) && <p role="alert" className="mt-3 text-sm text-rose-700 dark:text-rose-300">{copy.blockNotCalculable}</p>}
                     {editingBlockId === block.id && <div className="mt-4">{blockForm}</div>}
+                    {block.kind === 'milestone' && block.active !== false && preparationState?.milestoneId === block.id && <div className="mt-4"><CoursePlanExamPreparationPreview key={block.id} plan={preparationState.baseline ? { ...plan, planningBaseline: preparationState.baseline } : plan} milestone={block} goals={topicGoals} prerequisiteGoals={prerequisiteGoals} visibleChildren={topicChildren} asOf={asOf} language={language} onClose={() => setPreparationState(null)} onApply={(blocks) => {
+                      if (revise(blocks, undefined, preparationState.baseline ?? plan.planningBaseline)) setPreparationState(null)
+                    }} /></div>}
                     {assignment && assignment.atomicGoalIds.length > 0 && <details className="mt-3 border-t border-border-color pt-2"><summary className="min-h-10 cursor-pointer py-2 text-sm text-text-secondary">{language === 'de' ? 'Enthaltene Lernziele' : 'Included learning goals'}</summary><ul className="space-y-2 pb-2 text-sm text-text-primary">{assignment.atomicGoalIds.map((id) => <li key={id}>{goals.get(id)?.title ?? id}</li>)}</ul></details>}
                   </article>
                 )

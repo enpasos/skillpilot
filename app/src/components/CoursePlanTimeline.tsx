@@ -75,21 +75,22 @@ export const CoursePlanTimeline = ({ blocks, goals, language, onEditBlock }: {
               <div key={block.id} className="space-y-1">
                 <p className="break-words text-sm text-text-primary">
                   <span className="font-medium">{title}</span>
-                  <span className="text-xs text-text-secondary"> · {c[block.kind]} · {range}</span>
+                  <span className="text-xs text-text-secondary"> · {c[block.kind]} · {range}{block.active === false ? language === 'de' ? ' · Inaktiv' : ' · Inactive' : ''}</span>
                 </p>
                 <button type="button" data-testid="course-plan-timeline-block"
                   data-start={start!.value} data-end={end!.value}
+                  data-active={block.active !== false}
                   aria-label={`${c.edit}: ${title} (${range})`}
                   onClick={() => onEditBlock(block)}
                   className="relative block min-h-11 w-full rounded-md bg-slate-100/70 text-left hover:bg-slate-200/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:bg-slate-800/40 dark:hover:bg-slate-800/80">
                   {block.kind === 'milestone' ? (
-                    <span aria-hidden="true" className="absolute inset-y-2 w-px bg-violet-600 dark:bg-violet-400"
+                    <span aria-hidden="true" className={`absolute inset-y-2 w-px ${block.active === false ? 'bg-slate-400' : 'bg-violet-600 dark:bg-violet-400'}`}
                       style={{ left: `clamp(8px, ${percent(start!.epochDay)}%, calc(100% - 8px))` }}>
-                      <span className="absolute top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rotate-45 bg-violet-600 dark:bg-violet-400" />
+                      <span className={`absolute top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rotate-45 ${block.active === false ? 'bg-slate-400' : 'bg-violet-600 dark:bg-violet-400'}`} />
                     </span>
                   ) : (
                     <span aria-hidden="true"
-                      className={`absolute inset-y-2 min-w-px rounded-sm ${block.kind === 'learning' ? 'bg-sky-600 dark:bg-sky-400' : 'bg-amber-500 dark:bg-amber-400'}`}
+                      className={`absolute inset-y-2 min-w-px rounded-sm ${block.active === false ? 'bg-slate-400 dark:bg-slate-600' : block.kind === 'learning' ? 'bg-sky-600 dark:bg-sky-400' : 'bg-amber-500 dark:bg-amber-400'}`}
                       style={{ left: `${percent(start!.epochDay)}%`, width: `${(end!.epochDay - start!.epochDay + 1) / days * 100}%` }} />
                   )}
                 </button>

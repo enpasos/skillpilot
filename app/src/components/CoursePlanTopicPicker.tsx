@@ -4,6 +4,7 @@ import type { UiGoal } from '../goalTypes'
 import { InlineMathText } from './InlineMathText'
 import {
   buildCoursePlanTopicTree,
+  analyzeCoursePlanTaskCoverage,
   filterCoursePlanTopicTree,
   findCoursePlanMatchingTasks,
   resolveCoursePlanTopicSelection,
@@ -53,6 +54,11 @@ export function CoursePlanTopicPicker({
   ])), [goals, visibleChildrenByParent])
   const tasks = useMemo(() => findCoursePlanMatchingTasks(selectedGoalIds, goals, visibleChildrenByParent),
     [selectedGoalIds, goals, visibleChildrenByParent])
+  const coverage = useMemo(() => analyzeCoursePlanTaskCoverage(selectedGoalIds, goals, visibleChildrenByParent),
+    [selectedGoalIds, goals, visibleChildrenByParent])
+  const selectedTasks = new Set(coverage.taskGoalIds)
+  const availableTasks = [...new Map([...tasks, ...coverage.taskGoalIds.flatMap((id) => goals.get(id) ?? [])]
+    .map((goal) => [goal.id, goal])).values()]
   const selectedRoots = [...new Set(selectedGoalIds)]
   const changeSelection = (id: string, selected: boolean) => onChange(setCoursePlanTopicSelected(
     selectedGoalIds, id, selected, goals, visibleChildrenByParent,
@@ -127,9 +133,10 @@ export function CoursePlanTopicPicker({
       <section className="rounded-2xl border border-sky-200 bg-sky-50/60 p-4 dark:border-sky-800 dark:bg-sky-950/20">
         <h3 id={`${prefix}-selection`} className="flex items-center gap-2 font-semibold text-slate-900 dark:text-slate-100"><ClipboardCheck size={19} className="text-sky-600 dark:text-sky-400" aria-hidden="true" />{de ? 'Deine Auswahl' : 'Your selection'}</h3>
         <p className="my-4 flex items-baseline gap-2 text-slate-700 dark:text-slate-200" aria-live="polite" aria-atomic="true">
-          <strong className="text-3xl font-semibold tabular-nums text-sky-700 dark:text-sky-300">{resolution.atomicGoalIds.length}</strong>
-          {de ? (resolution.atomicGoalIds.length === 1 ? 'Lernziel' : 'Lernziele') : (resolution.atomicGoalIds.length === 1 ? 'learning goal' : 'learning goals')}
+          <strong className="text-3xl font-semibold tabular-nums text-sky-700 dark:text-sky-300">{coverage.topicGoalIds.length}</strong>
+          {de ? (coverage.topicGoalIds.length === 1 ? 'Lernthema' : 'Lernthemen') : (coverage.topicGoalIds.length === 1 ? 'learning topic' : 'learning topics')}
         </p>
+        {coverage.taskGoalIds.length > 0 && <p className="mb-3 text-sm text-sky-800 dark:text-sky-300">{coverage.taskGoalIds.length} {de ? 'Aufgabenpakete ausgewählt' : 'selected assessment packages'}</p>}
         {selectedRoots.length > 0 ? <ul className="max-h-72 space-y-2 overflow-y-auto">{selectedRoots.map((id) => {
           const invalid = invalidIds.has(id)
           const title = goals.get(id)?.title ?? id
@@ -144,18 +151,33 @@ export function CoursePlanTopicPicker({
         <p className="mt-4 text-xs text-slate-500 dark:text-slate-400">{de ? 'Gemeinsame Lernziele werden nur einmal gezählt.' : 'Shared learning goals are counted once.'}</p>
         {resolution.atomicGoalIds.length > 0 && <details className="mt-3 border-t border-sky-100 pt-3 text-sm dark:border-sky-900">
           <summary className="cursor-pointer font-medium text-sky-800 dark:text-sky-300">{de ? 'Lernziele ansehen' : 'View learning goals'}</summary>
-          <ul className="mt-2 max-h-60 list-disc space-y-1 overflow-y-auto pl-5 text-slate-600 dark:text-slate-300">{resolution.atomicGoalIds.map((id) => <li className="break-words" key={id}><InlineMathText text={goals.get(id)?.title ?? id} /></li>)}</ul>
+          <ul className="mt-2 max-h-60 list-disc space-y-1 overflow-y-auto pl-5 text-slate-600 dark:text-slate-300">{coverage.topicGoalIds.map((id) => <li className="break-words" key={id}><InlineMathText text={goals.get(id)?.title ?? id} /></li>)}</ul>
         </details>}
       </section>
 
       <section className="rounded-2xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900" aria-labelledby={`${prefix}-tasks`}>
         <h3 id={`${prefix}-tasks`} className="flex items-center gap-2 font-semibold text-slate-900 dark:text-slate-100"><FileText size={18} className="text-sky-600 dark:text-sky-400" aria-hidden="true" />{de ? 'Passende Aufgaben' : 'Matching tasks'}</h3>
-        {tasks.length > 0 ? <details className="mt-3 text-sm">
-          <summary className="cursor-pointer font-medium text-sky-800 dark:text-sky-300">{tasks.length} {de ? (tasks.length === 1 ? 'Aufgabe ansehen' : 'Aufgaben ansehen') : (tasks.length === 1 ? 'task available' : 'tasks available')}</summary>
-          <ul className="mt-3 max-h-60 space-y-2 overflow-y-auto text-slate-600 dark:text-slate-300">{tasks.map((task) => <li key={task.id} className="break-words"><InlineMathText text={task.title} /></li>)}</ul>
+        {availableTasks.length > 0 ? <details className="mt-3 text-sm" open={coverage.taskGoalIds.length > 0}>
+          <summary className="cursor-pointer font-medium text-sky-800 dark:text-sky-300">{availableTasks.length} {de ? (availableTasks.length === 1 ? 'Aufgabe ansehen' : 'Aufgaben ansehen') : (availableTasks.length === 1 ? 'task available' : 'tasks available')}</summary>
+          <ul className="mt-3 max-h-60 space-y-2 overflow-y-auto text-slate-600 dark:text-slate-300">{availableTasks.map((task) => <li key={task.id} className="break-words"><label className="flex min-h-11 cursor-pointer items-start gap-2 py-2"><input type="checkbox" className="mt-1 h-4 w-4 shrink-0 accent-sky-600" disabled={disabled} checked={selectedTasks.has(task.id)} aria-label={`${task.title} ${de ? 'als Aufgabenpaket auswählen' : 'select assessment package'}`} onChange={(event) => changeSelection(task.id, event.target.checked)} /><InlineMathText text={task.title} /></label></li>)}</ul>
         </details> : <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">{de
           ? 'Für diese Auswahl sind keine passenden Aufgaben hinterlegt.'
           : 'No matching tasks are available for this selection.'}</p>}
+        <p className="mt-3 text-xs text-slate-500 dark:text-slate-400">{de ? 'Wähle die Aufgabenpakete aus, mit denen du dich vorbereiten möchtest. Weitere Pakete findest du im Themenbaum.' : 'Select the assessment packages for your preparation. Find additional packages in the topic tree.'}</p>
+      </section>
+
+      <section data-testid="course-plan-task-coverage" className="rounded-2xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900">
+        <h3 className="font-semibold text-slate-900 dark:text-slate-100">{de ? 'Aufgabenabdeckung' : 'Assessment coverage'}</h3>
+        {coverage.taskGoalIds.length === 0 ? <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">{de ? 'Wähle ein Aufgabenpaket aus, um seine Themenzuordnung zu vergleichen.' : 'Select an assessment package to compare its topic coverage.'}</p> : <>
+          <p className="mt-2 text-sm text-slate-700 dark:text-slate-200">{coverage.topicGoalIds.length - coverage.uncoveredGoalIds.length} / {coverage.topicGoalIds.length} {de ? 'ausgewählte Lernthemen zugeordnet' : 'selected topics mapped'}</p>
+          {[
+            { ids: coverage.uncoveredGoalIds, label: de ? 'Ohne Aufgabenabdeckung' : 'Not covered by selected tasks' },
+            { ids: coverage.additionalGoalIds, label: de ? 'Zusätzliche Themen der Aufgaben' : 'Additional assessment topics' },
+            { ids: coverage.unknownTaskIds, label: de ? 'Zuordnung noch ungeklärt' : 'Coverage not established' },
+            { ids: coverage.unavailableGoalIds, label: de ? 'Im Kurs nicht verfügbare Zuordnungen' : 'Mappings unavailable in this course' },
+          ].map(({ ids, label }) => <details key={label} className="mt-3 text-sm" open={ids.length > 0}><summary className={ids.length ? 'cursor-pointer font-medium text-amber-800 dark:text-amber-300' : 'cursor-pointer text-slate-500 dark:text-slate-400'}>{ids.length} {label}</summary>{ids.length > 0 && <ul className="mt-2 max-h-48 list-disc space-y-1 overflow-y-auto pl-5 text-slate-600 dark:text-slate-300">{ids.map((id) => <li key={id}><InlineMathText text={goals.get(id)?.title ?? id} /></li>)}</ul>}</details>)}
+          <p className="mt-3 text-xs text-slate-500 dark:text-slate-400">{de ? 'Gemäß der hinterlegten Themenzuordnung. Notwendige Grundlagen werden bei der Vorbereitung getrennt ausgewiesen.' : 'Based on the authored topic mapping. Required foundations are listed separately in preparation.'}</p>
+        </>}
       </section>
     </aside>
   </div>

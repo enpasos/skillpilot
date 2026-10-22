@@ -1104,6 +1104,18 @@ Reference:
 
 ### 10.2 Layer B – Individuelle Lernpfade & Mastery
 
+Course-plan sections have an optional `active` flag; omission means active for
+legacy documents. Inactive sections remain persisted and editable but are
+excluded before goal allocation/deduplication, scheduling, backlog and plan-led
+continuation. This never excludes goals from free learning or changes mastery.
+Learning sections may use `goalIds` for a union of canonical visible `contains`
+subtrees; an explicit list supersedes the legacy single `goalId`. Milestones
+record exam scope without scheduling additional work. Assessment coverage uses
+explicit `examData.coveredGoalIds`, never prerequisite closure. Preparation
+completion previews changes and separately discloses additional and out-of-scope
+foundations; it never silently widens the Personal Curriculum or writes mastery.
+See `docs/concept/runtime-workflows/exam-preparation-planning.md`.
+
 Optional external learning materials belong to a separate content layer:
 packages reference canonical goal IDs; canonical goals must not acquire provider
 or package dependencies. Learner package selection is persisted separately from

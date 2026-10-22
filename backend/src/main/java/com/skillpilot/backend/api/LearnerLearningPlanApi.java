@@ -2,6 +2,8 @@ package com.skillpilot.backend.api;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
@@ -20,8 +22,9 @@ public final class LearnerLearningPlanApi {
     }
 
     /**
-     * Milestone goalIds record selected topic roots, not scheduled atomic work.
+     * goalIds record the selected topic roots of a learning section or milestone.
      * An explicitly present list (including an empty list) replaces legacy goalId.
+     * Missing active retains the historical active behavior.
      */
     @JsonInclude(JsonInclude.Include.NON_NULL)
     public record Block(
@@ -33,10 +36,27 @@ public final class LearnerLearningPlanApi {
             @JsonFormat(shape = JsonFormat.Shape.STRING) LocalDate endDate,
             @JsonFormat(shape = JsonFormat.Shape.STRING) LocalDate date,
             List<String> atomicGoalIds,
-            List<String> goalIds) {
+            List<String> goalIds,
+            @JsonProperty("active") Boolean active) {
+        public Block(String id, String kind, String goalId, String title,
+                LocalDate startDate, LocalDate endDate, LocalDate date, List<String> atomicGoalIds,
+                List<String> goalIds) {
+            this(id, kind, goalId, title, startDate, endDate, date, atomicGoalIds, goalIds, null);
+        }
+
         public Block(String id, String kind, String goalId, String title,
                 LocalDate startDate, LocalDate endDate, LocalDate date, List<String> atomicGoalIds) {
-            this(id, kind, goalId, title, startDate, endDate, date, atomicGoalIds, null);
+            this(id, kind, goalId, title, startDate, endDate, date, atomicGoalIds, null, null);
+        }
+
+        @JsonIgnore
+        public boolean isActive() {
+            return !Boolean.FALSE.equals(active);
+        }
+
+        public List<String> focusGoalIds() {
+            return goalIds != null ? goalIds
+                    : goalId == null || goalId.isBlank() ? List.of() : List.of(goalId);
         }
     }
 

@@ -281,6 +281,49 @@ assert(storedExamCopy?.kind === 'milestone')
 assert.notEqual(storedExamCopy.goalIds, examTopicBlock.goalIds,
   'reusing a server plan creates an independent topic-root array')
 
+assert.equal(learnerPlanCopyMatchesServer(localCopy, {
+  ...serverPlan, blocks: serverPlan.blocks.map((block) => ({ ...block, active: true })),
+}), true, 'legacy omitted activation and explicit active have identical behavior')
+assert.equal(learnerPlanCopyMatchesServer(localCopy, {
+  ...serverPlan, blocks: serverPlan.blocks.map((block) => ({ ...block, active: false })),
+}), false, 'an activation response may not silently pause the requested work')
+const multiRootPausedCopy: LearnerLearningPlanCopy = {
+  ...localCopy, atomicGoalCount: 0,
+  blocks: localCopy.blocks.map((block) => block.kind === 'learning'
+    ? { ...block, active: false, goalIds: [block.goalId!, 'additional-topic'] } : block),
+}
+const multiRootPausedServer: LearnerLearningPlanDetail = { ...serverPlan, blocks: multiRootPausedCopy.blocks }
+assert.equal(learnerPlanCopyMatchesServer(multiRootPausedCopy, multiRootPausedServer), true)
+assert.equal(learnerPlanCopyMatchesServer(multiRootPausedCopy, {
+  ...multiRootPausedServer,
+  blocks: multiRootPausedServer.blocks.map((block) => block.kind === 'learning'
+    ? { ...block, goalIds: undefined } : block),
+}), false, 'a lost preparation root list cannot confirm activation')
+const pausedLocalPlan = reviseTeacherCoursePlan(titlelessPlan, {
+  changedOn: '2026-09-04', recordedAt: '2026-09-04T08:05:00.000Z',
+  blocks: titlelessBlocks.map((block) => ({ ...block, active: false })),
+})
+assert(pausedLocalPlan)
+const pausedLocalCopy: LearnerLearningPlanCopy = {
+  ...localCopy, atomicGoalCount: 0, blocks: localCopy.blocks.map((block) => ({ ...block, active: false })),
+}
+assert.deepEqual(compareTeacherLearningPlanDraft(pausedLocalPlan, pausedLocalCopy, serverPlan),
+  { status: 'update-required', issue: null }, 'pausing is a real authored plan update')
+const pausedServerOnlySubject = await loadTeacherLearningPlanActivationSubject({
+  classSession: {
+    id: 'server-only-paused', name: 'Physik', landscapeId: serverPlan.landscapeId,
+    activeFilter: 'all', students: [],
+  },
+  landscapeId: serverPlan.landscapeId, label: 'Physik', landscapeEntries: [],
+  runtimeCatalogState: { mode: 'repository' }, serverPlan: multiRootPausedServer,
+  serverAvailable: true, storage: { getItem: () => null },
+})
+assert.equal(pausedServerOnlySubject.status, 'cockpit-only', 'an intentionally paused subject remains replayable')
+assert.equal(pausedServerOnlySubject.copy?.atomicGoalCount, 0)
+assert.deepEqual(pausedServerOnlySubject.copy?.blocks, multiRootPausedCopy.blocks)
+assert.deepEqual(teacherLearningPlanActivationRequest('2026-09-04', [pausedServerOnlySubject]).plans[0]?.blocks,
+  multiRootPausedCopy.blocks, 'batch activation carries paused data and preparation roots unchanged')
+
 const originalFetch = globalThis.fetch
 let scopeReadCount = 0
 globalThis.fetch = (async () => {

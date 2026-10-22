@@ -333,7 +333,9 @@ const comparableBlock = (block: ComparableLearningPlanBlock) => {
     return {
       id: block.id,
       kind: block.kind,
+      active: block.active !== false,
       ...(block.goalId ? { goalId: block.goalId } : {}),
+      ...(block.goalIds !== undefined ? { goalIds: [...block.goalIds] } : {}),
       ...(block.title ? { title: block.title } : {}),
       startDate: block.startDate,
       endDate: block.endDate,
@@ -344,6 +346,7 @@ const comparableBlock = (block: ComparableLearningPlanBlock) => {
     return {
       id: block.id,
       kind: block.kind,
+      active: block.active !== false,
       title: block.title,
       startDate: block.startDate,
       endDate: block.endDate,
@@ -352,6 +355,7 @@ const comparableBlock = (block: ComparableLearningPlanBlock) => {
   return {
     id: block.id,
     kind: block.kind,
+    active: block.active !== false,
     title: block.title,
     ...(block.goalIds !== undefined
       ? { goalIds: [...block.goalIds] }
@@ -455,13 +459,16 @@ const copyStoredServerPlan = (
   const blocks: LearnerLearningPlanCopy['blocks'] = []
   const atomicGoalIds = new Set<string>()
   for (const block of serverPlan.blocks) {
+    const activation = block.active === undefined ? {} : { active: block.active }
     if (block.kind === 'learning') {
-      if (!block.atomicGoalIds || block.atomicGoalIds.length === 0) return null
-      block.atomicGoalIds.forEach((goalId) => atomicGoalIds.add(goalId))
+      if (!block.atomicGoalIds || (block.active !== false && block.atomicGoalIds.length === 0)) return null
+      if (block.active !== false) block.atomicGoalIds.forEach((goalId) => atomicGoalIds.add(goalId))
       blocks.push({
         id: block.id,
         kind: block.kind,
+        ...activation,
         ...(block.goalId ? { goalId: block.goalId } : {}),
+        ...(block.goalIds !== undefined ? { goalIds: [...block.goalIds] } : {}),
         ...(block.title ? { title: block.title } : {}),
         startDate: block.startDate,
         endDate: block.endDate,
@@ -473,6 +480,7 @@ const copyStoredServerPlan = (
       blocks.push({
         id: block.id,
         kind: block.kind,
+        ...activation,
         title: block.title,
         startDate: block.startDate,
         endDate: block.endDate,
@@ -482,6 +490,7 @@ const copyStoredServerPlan = (
     blocks.push({
       id: block.id,
       kind: block.kind,
+      ...activation,
       title: block.title,
       ...(block.goalIds !== undefined
         ? { goalIds: [...block.goalIds] }
@@ -489,7 +498,7 @@ const copyStoredServerPlan = (
       date: block.date,
     })
   }
-  if (atomicGoalIds.size === 0) return null
+  if (atomicGoalIds.size === 0 && !blocks.some((block) => block.kind === 'learning' && block.active === false)) return null
   return {
     planLabel: serverPlan.planLabel ?? '',
     blocks,
@@ -603,7 +612,8 @@ export const loadTeacherLearningPlanActivationSubject = async ({
       goals: projection.goals,
       visibleChildrenByParent: projection.visibleChildrenByParent,
     })
-    if (!materialized.ok || materialized.copy.atomicGoalCount === 0) {
+    if (!materialized.ok || (materialized.copy.atomicGoalCount === 0
+      && !loaded.plan.blocks.some((block) => block.kind === 'learning' && block.active === false))) {
       return {
         landscapeId,
         label,

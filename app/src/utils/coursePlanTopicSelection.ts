@@ -187,6 +187,20 @@ export function filterCoursePlanTopicTree(
   return tree.flatMap((node) => visit(node))
 }
 
+export function isCoursePlanAssessment(goal: UiGoal): boolean {
+  return Boolean(goal.examData) || goal.nodeKind === 'exam'
+}
+
+export function isUsableCoursePlanTask(goal: UiGoal): boolean {
+  const exam = goal.examData
+  if (!exam || (exam.reviewStatus !== undefined && exam.reviewStatus !== 'released')) return false
+  if (!exam.taskContent?.trim() || !exam.solutionContent?.trim()) return false
+  const scoring = exam.scoring
+  return Boolean(scoring && Number.isFinite(scoring.maxPoints) && scoring.maxPoints > 0
+    && Number.isFinite(scoring.passingPoints) && scoring.passingPoints >= 0
+    && scoring.passingPoints <= scoring.maxPoints && Array.isArray(scoring.steps) && scoring.steps.length > 0)
+}
+
 /** Authored assessments only. Coverage is explicit, never inferred from requires. */
 export function findCoursePlanMatchingTasks(
   selectedGoalIds: readonly string[],
@@ -197,16 +211,57 @@ export function findCoursePlanMatchingTasks(
   const direct = new Set(selectedGoalIds)
   return [...goals.values()].filter((goal) => {
     const exam = goal.examData
-    if (!exam || (exam.reviewStatus !== undefined && exam.reviewStatus !== 'released')) return false
-    if (!exam.taskContent?.trim() || !exam.solutionContent?.trim()) return false
-    const scoring = exam.scoring
-    if (!scoring || !Number.isFinite(scoring.maxPoints) || scoring.maxPoints <= 0
-      || !Number.isFinite(scoring.passingPoints) || scoring.passingPoints < 0
-      || scoring.passingPoints > scoring.maxPoints || !Array.isArray(scoring.steps) || scoring.steps.length === 0) return false
+    if (!exam || !isUsableCoursePlanTask(goal)) return false
     if (direct.has(goal.id) || selected.has(goal.id)) return true
     if (!exam.coveredGoalIds?.length) return false
     const covered = resolveCoursePlanTopicSelection(exam.coveredGoalIds, goals, visibleChildren)
     return covered.invalidGoalIds.length === 0 && covered.atomicGoalIds.length > 0
       && covered.atomicGoalIds.every((id) => selected.has(id))
   })
+}
+
+export interface CoursePlanTaskCoverage {
+  topicGoalIds: string[]
+  taskGoalIds: string[]
+  coveredGoalIds: string[]
+  uncoveredGoalIds: string[]
+  additionalGoalIds: string[]
+  unknownTaskIds: string[]
+  unavailableGoalIds: string[]
+}
+
+/** Compare both directions for the selected packages, without selecting new tasks. */
+export function analyzeCoursePlanTaskCoverage(
+  selectedGoalIds: readonly string[],
+  goals: ReadonlyMap<string, UiGoal>,
+  visibleChildren?: VisibleChildren,
+): CoursePlanTaskCoverage {
+  const selection = resolveCoursePlanTopicSelection(selectedGoalIds, goals, visibleChildren)
+  const topicGoalIds = selection.atomicGoalIds.filter((id) => !isCoursePlanAssessment(goals.get(id)!))
+  const taskGoalIds = selection.atomicGoalIds.filter((id) => isCoursePlanAssessment(goals.get(id)!))
+  const covered = new Set<string>()
+  const unknown = new Set<string>()
+  const unavailable = new Set(selection.invalidGoalIds)
+  for (const id of taskGoalIds) {
+    const task = goals.get(id)!
+    const refs = task.examData?.coveredGoalIds
+    if (!isUsableCoursePlanTask(task) || !refs?.length) {
+      unknown.add(id)
+      continue
+    }
+    const resolution = resolveCoursePlanTopicSelection(refs, goals, visibleChildren)
+    resolution.invalidGoalIds.forEach((ref) => unavailable.add(ref))
+    if (resolution.invalidGoalIds.length || resolution.atomicGoalIds.length === 0
+      || resolution.atomicGoalIds.some((ref) => isCoursePlanAssessment(goals.get(ref)!))) unknown.add(id)
+    resolution.atomicGoalIds.forEach((ref) => {
+      if (!isCoursePlanAssessment(goals.get(ref)!)) covered.add(ref)
+    })
+  }
+  const topics = new Set(topicGoalIds)
+  return {
+    topicGoalIds, taskGoalIds, coveredGoalIds: [...covered],
+    uncoveredGoalIds: topicGoalIds.filter((id) => !covered.has(id)),
+    additionalGoalIds: [...covered].filter((id) => !topics.has(id)),
+    unknownTaskIds: [...unknown], unavailableGoalIds: [...unavailable],
+  }
 }

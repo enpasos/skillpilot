@@ -140,6 +140,8 @@ const parseCurrentBlock = (value: unknown): LearnerLearningPlanCurrentBlock | nu
     throw new Error('Invalid learning-plan response: currentBlock.period')
   }
   const goalId = optionalString(source.goalId)
+  const goalIds = parseMilestoneGoalIds(source.goalIds, 'currentBlock.goalIds')
+  if (goalIds?.length === 0) throw new Error('Invalid learning-plan response: currentBlock.goalIds')
   const kind = requiredString(source.kind, 'currentBlock.kind')
   if (kind !== 'learning' && kind !== 'buffer') {
     throw new Error('Invalid learning-plan response: currentBlock.kind')
@@ -149,6 +151,7 @@ const parseCurrentBlock = (value: unknown): LearnerLearningPlanCurrentBlock | nu
     kind,
     title: requiredString(source.title, 'currentBlock.title'),
     ...(goalId ? { goalId } : {}),
+    ...(goalIds !== undefined ? { goalIds } : {}),
     startDate,
     endDate,
   }
@@ -418,11 +421,14 @@ const parsePlanBlock = (value: unknown): LearnerLearningPlanBlock => {
   const id = requiredString(source.id, 'block.id')
   const kind = requiredString(source.kind, 'block.kind')
   const goalId = optionalString(source.goalId)
+  const activation = source.active === undefined || source.active === null ? {}
+    : { active: requiredBoolean(source.active, 'block.active') }
   if (kind === 'milestone') {
     const goalIds = parseMilestoneGoalIds(source.goalIds, 'block.goalIds')
     return {
       id,
       kind,
+      ...activation,
       title: requiredString(source.title, 'block.title'),
       ...(goalIds !== undefined ? { goalIds } : goalId ? { goalId } : {}),
       date: parseDate(source.date ?? source.dueDate, 'block.date'),
@@ -433,11 +439,15 @@ const parsePlanBlock = (value: unknown): LearnerLearningPlanBlock => {
   if (startDate > endDate) throw new Error('Invalid learning-plan response: block.period')
   if (kind === 'learning') {
     const title = optionalString(source.title)
-    const learningGoalId = optionalString(source.goalId)
+    const goalIds = parseMilestoneGoalIds(source.goalIds, 'block.goalIds')
+    if (goalIds?.length === 0) throw new Error('Invalid learning-plan response: block.goalIds')
+    const learningGoalId = goalIds?.[0] ?? optionalString(source.goalId)
     return {
       id,
       kind,
+      ...activation,
       ...(learningGoalId ? { goalId: learningGoalId } : {}),
+      ...(goalIds !== undefined ? { goalIds } : {}),
       ...(title ? { title } : {}),
       startDate,
       endDate,
@@ -450,6 +460,7 @@ const parsePlanBlock = (value: unknown): LearnerLearningPlanBlock => {
     return {
       id,
       kind,
+      ...activation,
       title: requiredString(source.title, 'block.title'),
       startDate,
       endDate,

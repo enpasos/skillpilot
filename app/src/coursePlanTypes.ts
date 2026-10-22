@@ -39,7 +39,11 @@ export type LearnerCoursePlanBaseline =
 export interface LearningCoursePlanBlock {
   id: string
   kind: 'learning'
+  /** Omitted means active for existing plans. Dates and scope survive pausing. */
+  active?: boolean
   goalId: string
+  /** Selected canonical roots. A present, nonempty list replaces goalId. */
+  goalIds?: string[]
   title?: string
   startDate: CoursePlanDate
   endDate: CoursePlanDate
@@ -48,6 +52,7 @@ export interface LearningCoursePlanBlock {
 export interface BufferCoursePlanBlock {
   id: string
   kind: 'buffer'
+  active?: boolean
   title: string
   startDate: CoursePlanDate
   endDate: CoursePlanDate
@@ -56,6 +61,7 @@ export interface BufferCoursePlanBlock {
 export interface MilestoneCoursePlanBlock {
   id: string
   kind: 'milestone'
+  active?: boolean
   title: string
   /** Optional curriculum target made concrete by this deadline. */
   goalId?: string

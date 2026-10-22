@@ -250,3 +250,42 @@ assert.deepEqual(materializeLearnerLearningPlanCopy({
   blockId: 'invalid-learning-block',
   goalId: 'missing-goal',
 })
+
+const preparationRoots = ['root', 'still-open']
+const pausedAndPreparationPlan: TeacherCoursePlan = {
+  ...plan,
+  blocks: [
+    { ...plan.blocks[0]!, active: false },
+    { id: 'preparation', kind: 'learning', goalId: 'root', goalIds: preparationRoots,
+      title: 'Vorbereitung', active: true, startDate: '2026-09-01', endDate: '2026-09-11' },
+    { ...plan.blocks[1]!, active: false },
+    { ...plan.blocks[2]!, active: false },
+  ],
+}
+const pausedCopy = materializeLearnerLearningPlanCopy({
+  plan: pausedAndPreparationPlan, fallbackPlanLabel: 'Fallback', goals, visibleChildrenByParent: visibleChildren,
+})
+assert(pausedCopy.ok)
+assert.equal(pausedCopy.copy.atomicGoalCount, 1, 'paused sections do not count toward active work')
+const preservedPausedBlock = pausedCopy.copy.blocks[0]
+assert(preservedPausedBlock?.kind === 'learning')
+assert.equal(preservedPausedBlock.active, false)
+assert.deepEqual(preservedPausedBlock.atomicGoalIds, ['still-open'], 'paused work retains its atom IDs for reactivation')
+const copiedPreparation = pausedCopy.copy.blocks[1]
+assert(copiedPreparation?.kind === 'learning')
+assert.deepEqual(copiedPreparation.goalIds, preparationRoots)
+assert.notEqual(copiedPreparation.goalIds, preparationRoots)
+assert.deepEqual(copiedPreparation.atomicGoalIds, ['still-open'], 'paused broad section does not steal active preparation atoms')
+assert(pausedCopy.copy.blocks.every((block, index) => index === 1 ? block.active === true : block.active === false))
+const fullyPausedCopy = materializeLearnerLearningPlanCopy({
+  plan: { ...pausedAndPreparationPlan, blocks: pausedAndPreparationPlan.blocks.map((block) => ({ ...block, active: false })) },
+  fallbackPlanLabel: 'Fallback', goals, visibleChildrenByParent: visibleChildren,
+})
+assert(fullyPausedCopy.ok)
+assert.equal(fullyPausedCopy.copy.atomicGoalCount, 0)
+assert.equal(fullyPausedCopy.copy.blocks.length, 4, 'all-paused plans remain publishable without dropping sections')
+assert.deepEqual(materializeLearnerLearningPlanCopy({
+  plan: { ...invalidPlan, blocks: invalidPlan.blocks.map((block) => ({ ...block, active: false })) },
+  fallbackPlanLabel: 'Fallback', goals, visibleChildrenByParent: visibleChildren,
+}), { ok: false, blockId: 'invalid-learning-block', goalId: 'missing-goal' },
+'pausing does not bypass curriculum scope validation at publication')

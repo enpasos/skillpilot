@@ -123,6 +123,112 @@ class LearnerLearningPlanServiceIntegrationTest {
     }
 
     @Test
+    void inactiveGeneralPlanDoesNotConsumeExamPreparationAndReactivationUsesCurrentMastery() throws Exception {
+        learner.setFollowLearningPlans(true);
+        var broad = new LearnerLearningPlanApi.Block("broad", "learning", "block-focus", "Oberstufe",
+                LocalDate.parse("2026-09-01"), LocalDate.parse("2028-12-31"), null,
+                List.of("atom-a", "atom-b"), null, false);
+        var prep = learning("prep", "2026-09-04", "2026-09-04", "atom-a");
+        var created = service.upsert(LEARNER_ID, LANDSCAPE_ID,
+                new LearnerLearningPlanApi.UpsertRequest(0L, "Klausur", List.of(broad, prep)), TODAY);
+        assertThat(created.blocks().getFirst().atomicGoalIds()).containsExactly("atom-a", "atom-b");
+        assertThat(created.blocks().getLast().atomicGoalIds()).containsExactly("atom-a");
+        assertThat(created.currentBlock().blockId()).isEqualTo("prep");
+        assertThat(created.period().startDate()).isEqualTo(TODAY);
+        assertThat(created.period().endDate()).isEqualTo(TODAY);
+        assertThat(LearnerLearningPlanService.scheduledAtomicGoalDueDatesForSchedule(created.blocks()))
+                .containsExactly(Map.entry("atom-a", TODAY));
+        assertThat(service.getPlan(LEARNER_ID, LANDSCAPE_ID, TODAY).blocks()).isEqualTo(created.blocks());
+
+        // Retiring preparation and reactivating the original section keeps its
+        // dates and captured IDs, while live mastery affects the next suggestion.
+        when(learnerService.getMastery(LEARNER_ID)).thenReturn(Map.of("atom-a", 1.0));
+        when(learnerService.getPlanningScope(LEARNER_ID, LANDSCAPE_ID))
+                .thenReturn(scope(List.of("atom-a", "atom-b", "atom-c"), List.of("atom-b")));
+        when(learnerService.getUncompactedRichFrontierForFocus(LEARNER_ID, List.of("block-focus")))
+                .thenReturn(List.of(frontier("atom-b")));
+        var reactivated = new LearnerLearningPlanApi.Block(broad.id(), broad.kind(), broad.goalId(), broad.title(),
+                broad.startDate(), broad.endDate(), null, broad.atomicGoalIds(), broad.goalIds(), true);
+        var inactivePrep = new LearnerLearningPlanApi.Block(prep.id(), prep.kind(), prep.goalId(), prep.title(),
+                prep.startDate(), prep.endDate(), null, prep.atomicGoalIds(), null, false);
+        var updated = service.upsert(LEARNER_ID, LANDSCAPE_ID,
+                new LearnerLearningPlanApi.UpsertRequest(created.revision(), "Klausur", List.of(reactivated, inactivePrep)), TODAY);
+        assertThat(updated.blocks().getFirst().startDate()).isEqualTo(broad.startDate());
+        assertThat(updated.blocks().getFirst().endDate()).isEqualTo(broad.endDate());
+        assertThat(updated.blocks().getFirst().atomicGoalIds()).containsExactly("atom-a", "atom-b");
+        assertThat(updated.nextEligibleGoal().goalId()).isEqualTo("atom-b");
+        assertThat(learnerService.getMastery(LEARNER_ID)).containsEntry("atom-a", 1.0);
+        verify(learnerService, never()).setActiveGoal(any(), any());
+    }
+
+    @Test
+    void whollyInactivePlanHasNoQuotaMilestoneBufferCurrentBlockOrAutomaticContinuation() {
+        learner.setFollowLearningPlans(true);
+        var section = new LearnerLearningPlanApi.Block("inactive", "learning", "block-focus", "Oberstufe",
+                TODAY.minusDays(7), TODAY.plusDays(7), null, List.of("atom-a", "atom-b"), null, false);
+        var buffer = new LearnerLearningPlanApi.Block("buffer", "buffer", null, "Puffer",
+                TODAY, TODAY.plusDays(7), null, null, null, false);
+        var exam = new LearnerLearningPlanApi.Block("exam", "milestone", null, "Klausur",
+                null, null, TODAY.plusDays(7), null, List.of("topic-a"), false);
+        when(learnerService.getPersonalCurriculumSubjectFrontier(LEARNER_ID, LANDSCAPE_ID))
+                .thenReturn(List.of(frontier("atom-a")));
+        when(learnerService.getPersonalCurriculumSubjectIds(LEARNER_ID)).thenReturn(List.of(LANDSCAPE_ID));
+        var created = service.upsert(LEARNER_ID, LANDSCAPE_ID,
+                new LearnerLearningPlanApi.UpsertRequest(0L, "Pausiert", List.of(section, buffer, exam)), TODAY);
+        assertThat(created.blocks()).hasSize(3).allSatisfy(block -> assertThat(block.isActive()).isFalse());
+        assertThat(created.currentBlock()).isNull();
+        assertThat(created.nextMilestone()).isNull();
+        assertThat(created.buffer().totalWorkdays()).isZero();
+        assertThat(created.buffer().remainingWorkdays()).isZero();
+        assertThat(created.nextEligibleGoal()).isNull();
+        assertThat(created.canContinue()).isFalse();
+        assertThat(created.period().startDate()).isEqualTo(section.startDate());
+        assertThat(created.period().endDate()).isEqualTo(section.endDate());
+        var status = service.getTodayStatus(LEARNER_ID, "de");
+        assertThat(status.subjects().getFirst().balance().offenesPeriodenpensum()).isZero();
+        assertThat(status.subjects().getFirst().balance().rueckstand()).isZero();
+        assertThat(status.automaticResumeAvailable()).isFalse();
+        assertThat(service.resumeExplicitly(LEARNER_ID, new LearnerLearningPlanApi.ReconcileRequest(TODAY))
+                .activeGoalId()).isNull();
+        assertThat(service.getPlan(LEARNER_ID, LANDSCAPE_ID, TODAY).blocks()).isEqualTo(created.blocks());
+    }
+
+    @Test
+    void publishingInactiveSectionKeepsAnUnmasteredManualActiveGoal() {
+        learner.setActiveGoalId("atom-a");
+        var inactive = new LearnerLearningPlanApi.Block("section", "learning", "block-focus", "Pausiert",
+                TODAY, TODAY, null, List.of("atom-a"), null, false);
+        when(learnerService.applyLearningPlanTransition(LEARNER_ID, true, false,
+                null, null, false, "LEARNING_PLAN_PACKAGE_ACTIVATED"))
+                .thenReturn(new LearnerService.LearningPlanTransitionResult(true, mock(UnifiedLearnerStateResponse.class)));
+        var result = service.activatePlans(LEARNER_ID, new LearnerLearningPlanApi.ActivateRequest(TODAY,
+                List.of(new LearnerLearningPlanApi.ActivationPlan(LANDSCAPE_ID, 0L, "Pausiert", List.of(inactive)))));
+        assertThat(result.activeGoalId()).isNull();
+        assertThat(result.selectedPlanId()).isNull();
+        verify(learnerService).applyLearningPlanTransition(LEARNER_ID, true, false,
+                null, null, false, "LEARNING_PLAN_PACKAGE_ACTIVATED");
+        assertThat(learner.getActiveGoalId()).isEqualTo("atom-a");
+    }
+
+    @Test
+    void multiRootPreparationPersistsAndCanContinueOnItsSecondBranch() {
+        learner.setFollowLearningPlans(true);
+        when(learnerService.getUncompactedRichFrontierForFocus(LEARNER_ID, List.of("topic-a", "topic-b")))
+                .thenReturn(List.of(frontier("atom-b")));
+        var prep = new LearnerLearningPlanApi.Block("prep", "learning", "legacy-root", "Vorbereitung",
+                TODAY, TODAY, null, List.of("atom-a", "atom-b"), List.of("topic-a", "topic-b"), true);
+        var created = service.upsert(LEARNER_ID, LANDSCAPE_ID,
+                new LearnerLearningPlanApi.UpsertRequest(0L, "Klausur", List.of(prep)), TODAY);
+        assertThat(created.blocks().getFirst().goalIds()).containsExactly("topic-a", "topic-b");
+        assertThat(created.blocks().getFirst().goalId()).isEqualTo("topic-a");
+        assertThat(created.nextEligibleGoal().goalId()).isEqualTo("atom-b");
+        service.continuePlan(LEARNER_ID, created.planId(), new LearnerLearningPlanApi.ContinueRequest(created.revision(), TODAY));
+        verify(learnerService).setPlannedGoalsAndGetState(LEARNER_ID, Set.of("atom-b"));
+        verify(learnerService).setActiveGoal(LEARNER_ID, "atom-b");
+        assertThat(service.getPlan(LEARNER_ID, LANDSCAPE_ID, TODAY).blocks()).isEqualTo(created.blocks());
+    }
+
+    @Test
     void missingPeriodPreferenceDefaultsToTheCurrentWeekWithoutChangingAnExplicitDayChoice() {
         learner.setLearningPlanPeriodBasis(null);
         var plan = service.upsert(LEARNER_ID, LANDSCAPE_ID,

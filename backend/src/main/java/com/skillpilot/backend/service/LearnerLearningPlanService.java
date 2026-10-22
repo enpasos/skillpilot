@@ -697,12 +697,16 @@ public class LearnerLearningPlanService {
 
         Map<String, Double> mastery = learners.getMastery(skillpilotId);
         String previousActiveGoalId = learner.getActiveGoalId();
+        boolean preserveInactiveActiveGoal = previousActiveGoalId != null
+                && mastery.getOrDefault(previousActiveGoalId, 0.0) < MASTERY_THRESHOLD
+                && savedPlans.stream().anyMatch(plan -> inactiveOnlyAtomicIds(readBlocks(plan))
+                        .contains(previousActiveGoalId));
         Optional<PlanGoalCandidate> selected = findPreservedActiveCandidate(
                 skillpilotId,
                 savedPlans,
                 previousActiveGoalId,
                 mastery);
-        if (selected.isEmpty()) {
+        if (selected.isEmpty() && !preserveInactiveActiveGoal) {
             selected = firstCandidateAcrossPlans(skillpilotId, savedPlans, asOf, mastery, true);
         }
 
@@ -721,7 +725,7 @@ public class LearnerLearningPlanService {
             transition = learners.applyLearningPlanTransition(
                     skillpilotId,
                     true,
-                    true,
+                    !preserveInactiveActiveGoal,
                     null,
                     null,
                     false,
@@ -730,7 +734,7 @@ public class LearnerLearningPlanService {
 
         String effectiveActiveGoalId = selected
                 .map(candidate -> candidate.dueGoal().atomicGoalId())
-                .orElse(null);
+                .orElse(preserveInactiveActiveGoal ? previousActiveGoalId : null);
         List<LearnerLearningPlanApi.PlanDetail> details = savedPlans.stream()
                 .map(plan -> {
                     Evaluation evaluation = summarize(
@@ -755,7 +759,7 @@ public class LearnerLearningPlanService {
                 selectedCandidate == null ? null : selectedCandidate.plan().getId(),
                 selectedCandidate == null ? null : selectedCandidate.plan().getLandscapeId(),
                 selectedCandidate == null ? null : selectedCandidate.dueGoal().focusGoalId(),
-                effectiveActiveGoalId,
+                selectedCandidate == null ? null : selectedCandidate.dueGoal().atomicGoalId(),
                 transition.state());
     }
 
@@ -937,7 +941,8 @@ public class LearnerLearningPlanService {
         boolean parkedCompletedPointer = previousActiveGoalId != null && !previousActiveGoalId.isBlank();
         if (selected.isEmpty() && allowExtra) {
             for (String landscapeId : learners.getPersonalCurriculumSubjectIds(skillpilotId)) {
-                Optional<DueGoal> goal = firstPersonalCurriculumGoal(skillpilotId, landscapeId);
+                Optional<DueGoal> goal = firstPersonalCurriculumGoalForPlanContinuation(
+                        skillpilotId, landscapeId, currentPlans);
                 if (goal.isPresent()) {
                     return applyPersonalCurriculumContinuation(skillpilotId, landscapeId, goal.get(),
                             "LEARNING_PLAN_RECONCILED");
@@ -1060,7 +1065,7 @@ public class LearnerLearningPlanService {
         List<LearnerLearningPlanApi.Block> normalizedBlocks = normalizeBlocks(
                 requestedBlocks,
                 scope,
-                atomicIds(existingBlocks),
+                capturedAtomicIds(existingBlocks),
                 false);
         learners.validateLearningPlanBlockFoci(skillpilotId, landscapeId, normalizedBlocks);
         normalizedBlocks = learners.orderLearningPlanBlocksByPrerequisites(
@@ -1140,15 +1145,13 @@ public class LearnerLearningPlanService {
         List<PlanGoalCandidate> candidates = new ArrayList<>();
         for (LearnerLearningPlan plan : activatedPlans) {
             for (LearnerLearningPlanApi.Block block : readBlocks(plan)) {
-                if ("learning".equals(block.kind())
+                if (block.isActive() && "learning".equals(block.kind())
                         && block.atomicGoalIds() != null
                         && block.atomicGoalIds().contains(activeGoalId)) {
-                    String focusGoalId = block.goalId() == null || block.goalId().isBlank()
-                            ? activeGoalId
-                            : block.goalId();
+                    String focusGoalId = runtimeFocusGoalId(block, activeGoalId);
                     boolean remainsEligible = learners.getUncompactedRichFrontierForFocus(
                                     skillpilotId,
-                                    List.of(focusGoalId))
+                                    block.focusGoalIds().isEmpty() ? List.of(activeGoalId) : block.focusGoalIds())
                             .stream()
                             .filter(goal -> "atomic".equals(goal.type()))
                             .anyMatch(goal -> activeGoalId.equals(goal.id()));
@@ -1380,23 +1383,75 @@ public class LearnerLearningPlanService {
                 .findFirst().map(goal -> new DueGoal(goal.id(), goal.id(), null, null));
     }
 
+    private Optional<DueGoal> firstPersonalCurriculumGoalForPlanContinuation(
+            String skillpilotId, String landscapeId, List<LearnerLearningPlan> currentPlans) {
+        for (LearnerLearningPlan plan : currentPlans) {
+            if (!landscapeId.equals(plan.getLandscapeId())) continue;
+            final List<LearnerLearningPlanApi.Block> blocks;
+            try {
+                blocks = readBlocks(plan);
+            } catch (ResponseStatusException exception) {
+                if (exception.getStatusCode().is5xxServerError()) throw exception;
+                // An unreadable old plan cannot define an inactivity choice.
+                // Explicit personal-curriculum learning remains available.
+                return firstPersonalCurriculumGoal(skillpilotId, landscapeId);
+            }
+            boolean hasInactiveLearning = blocks.stream().anyMatch(block -> block != null
+                    && !block.isActive() && "learning".equals(block.kind()));
+            if (!hasInactiveLearning) return firstPersonalCurriculumGoal(skillpilotId, landscapeId);
+            if (blocks.stream().noneMatch(block -> block.isActive() && "learning".equals(block.kind()))) {
+                return Optional.empty();
+            }
+            Set<String> inactiveOnly = inactiveOnlyAtomicIds(blocks);
+            return learners.getPersonalCurriculumSubjectFrontier(skillpilotId, landscapeId).stream()
+                    .filter(goal -> "atomic".equals(goal.type()) && !inactiveOnly.contains(goal.id()))
+                    .findFirst().map(goal -> new DueGoal(goal.id(), goal.id(), null, null));
+        }
+        return firstPersonalCurriculumGoal(skillpilotId, landscapeId);
+    }
+
     /** A schedule orders explicit further learning; dates never deny it. */
     private Optional<DueGoal> firstExplicitContinuationGoal(
             String skillpilotId, String landscapeId, List<LearnerLearningPlanApi.Block> blocks,
             LocalDate asOf, Map<String, Double> mastery) {
+        if (blocks.stream().noneMatch(block -> block.isActive() && "learning".equals(block.kind()))) {
+            return Optional.empty();
+        }
         Optional<DueGoal> due = firstEligibleDueGoal(skillpilotId, blocks, asOf, mastery);
         if (due.isPresent()) {
             return due;
         }
         // Reuse the exact block-focus frontier with all scheduled slots exposed.
         // This changes selection only, never dates, quota counts or completion events.
-        LocalDate scheduleEnd = blocks.stream().filter(block -> "learning".equals(block.kind()))
+        LocalDate scheduleEnd = blocks.stream().filter(LearnerLearningPlanApi.Block::isActive)
+                .filter(block -> "learning".equals(block.kind()))
                 .map(LearnerLearningPlanApi.Block::endDate).max(LocalDate::compareTo).orElse(asOf);
         Optional<DueGoal> planned = firstEligibleDueGoal(skillpilotId, blocks, scheduleEnd, mastery);
         if (planned.isPresent()) {
             return planned;
         }
-        return firstPersonalCurriculumGoal(skillpilotId, landscapeId);
+        Set<String> inactiveOnly = inactiveOnlyAtomicIds(blocks);
+        return learners.getPersonalCurriculumSubjectFrontier(skillpilotId, landscapeId).stream()
+                .filter(goal -> "atomic".equals(goal.type()) && !inactiveOnly.contains(goal.id()))
+                .findFirst().map(goal -> new DueGoal(goal.id(), goal.id(), null, null));
+    }
+
+    private static String runtimeFocusGoalId(LearnerLearningPlanApi.Block block, String atomicGoalId) {
+        List<String> roots = block.focusGoalIds();
+        // A transition currently persists one focus root. An atomic focus is the
+        // exact safe continuation when a section spans independent topic branches.
+        return roots.size() == 1 ? roots.getFirst() : atomicGoalId;
+    }
+
+    private static Set<String> inactiveOnlyAtomicIds(List<LearnerLearningPlanApi.Block> blocks) {
+        LinkedHashSet<String> inactive = new LinkedHashSet<>();
+        for (LearnerLearningPlanApi.Block block : blocks) {
+            if (!block.isActive() && "learning".equals(block.kind()) && block.atomicGoalIds() != null) {
+                inactive.addAll(block.atomicGoalIds());
+            }
+        }
+        inactive.removeAll(atomicIds(blocks));
+        return Set.copyOf(inactive);
     }
 
     static Optional<DueGoal> firstEligibleDueGoal(
@@ -1414,11 +1469,11 @@ public class LearnerLearningPlanService {
                     .filter(goalId -> mastery.getOrDefault(goalId, 0.0) < MASTERY_THRESHOLD)
                     .toList();
             if (openDueInBlock.isEmpty()) continue;
-            if (block.goalId() != null && !block.goalId().isBlank()) {
-                Set<String> frontierIds = frontierIdsForFocus.apply(List.of(block.goalId()));
+            if (!block.focusGoalIds().isEmpty()) {
+                Set<String> frontierIds = frontierIdsForFocus.apply(block.focusGoalIds());
                 for (String goalId : openDueInBlock) {
                     if (frontierIds.contains(goalId)) candidates.add(new DueGoal(
-                            goalId, block.goalId(), block.startDate(), block.endDate(), dueDates.get(goalId)));
+                            goalId, runtimeFocusGoalId(block, goalId), block.startDate(), block.endDate(), dueDates.get(goalId)));
                 }
             } else {
                 for (String goalId : openDueInBlock) {
@@ -1450,7 +1505,7 @@ public class LearnerLearningPlanService {
         HashSet<String> blockIds = new HashSet<>();
         List<IndexedBlock> indexed = new ArrayList<>();
         int submittedAtoms = 0;
-        int submittedMilestoneGoals = 0;
+        int submittedRoots = 0;
 
         for (int index = 0; index < requested.size(); index++) {
             LearnerLearningPlanApi.Block raw = requested.get(index);
@@ -1485,21 +1540,28 @@ public class LearnerLearningPlanService {
                         String goalId = requireText(rawGoalId, "atomicGoalIds entry", 255);
                         if (!scopeIds.contains(goalId)) {
                             unknownIds.add(goalId);
-                        } else if (preserveAllScopeAtoms
+                        } else if (!raw.isActive() || preserveAllScopeAtoms
                                 || openIds.contains(goalId)
                                 || previouslyCaptured.contains(goalId)) {
                             atoms.add(goalId);
                         }
                     }
+                    submittedRoots += raw.goalIds() == null ? 0 : raw.goalIds().size();
+                    List<String> goalIds = normalizeGoalRoots(raw.goalIds(), submittedRoots);
+                    if (goalIds != null && goalIds.isEmpty()) {
+                        throw badRequest("learning block goalIds must not be empty");
+                    }
                     normalized = new LearnerLearningPlanApi.Block(
                             id,
                             kind,
-                            optionalText(raw.goalId(), "block.goalId", 255),
+                            goalIds == null ? optionalText(raw.goalId(), "block.goalId", 255) : goalIds.getFirst(),
                             optionalText(raw.title(), "block.title", MAX_BLOCK_TITLE_LENGTH),
                             start,
                             end,
                             null,
-                            List.copyOf(atoms));
+                            List.copyOf(new LinkedHashSet<>(atoms)),
+                            goalIds,
+                            raw.active());
                     sortDate = start;
                     sortEndDate = end;
                 }
@@ -1515,24 +1577,16 @@ public class LearnerLearningPlanService {
                             start,
                             end,
                             null,
-                            null);
+                            null,
+                            null,
+                            raw.active());
                     sortDate = start;
                     sortEndDate = end;
                 }
                 case "milestone" -> {
                     LocalDate date = requireDate(raw.date(), "block.date");
-                    List<String> goalIds = null;
-                    if (raw.goalIds() != null) {
-                        submittedMilestoneGoals += raw.goalIds().size();
-                        if (submittedMilestoneGoals > MAX_ATOMIC_IDS) {
-                            throw badRequest("milestone goalIds exceeds the supported limit");
-                        }
-                        LinkedHashSet<String> distinctGoalIds = new LinkedHashSet<>();
-                        for (String rawGoalId : raw.goalIds()) {
-                            distinctGoalIds.add(requireText(rawGoalId, "block.goalIds entry", 255));
-                        }
-                        goalIds = List.copyOf(distinctGoalIds);
-                    }
+                    submittedRoots += raw.goalIds() == null ? 0 : raw.goalIds().size();
+                    List<String> goalIds = normalizeGoalRoots(raw.goalIds(), submittedRoots);
                     normalized = new LearnerLearningPlanApi.Block(
                             id,
                             kind,
@@ -1542,7 +1596,8 @@ public class LearnerLearningPlanService {
                             null,
                             date,
                             null,
-                            goalIds);
+                            goalIds,
+                            raw.active());
                     sortDate = date;
                     sortEndDate = date;
                 }
@@ -1563,7 +1618,7 @@ public class LearnerLearningPlanService {
         List<LearnerLearningPlanApi.Block> normalized = new ArrayList<>();
         for (IndexedBlock entry : indexed) {
             LearnerLearningPlanApi.Block block = entry.block();
-            if (!"learning".equals(block.kind())) {
+            if (!block.isActive() || !"learning".equals(block.kind())) {
                 normalized.add(block);
                 continue;
             }
@@ -1578,12 +1633,24 @@ public class LearnerLearningPlanService {
                     block.startDate(),
                     block.endDate(),
                     null,
-                    deduplicated));
+                    deduplicated,
+                    block.goalIds(),
+                    block.active()));
         }
-        if (seenAtoms.isEmpty()) {
+        boolean allLearningInactive = indexed.stream().anyMatch(entry -> "learning".equals(entry.block().kind()))
+                && indexed.stream().noneMatch(entry -> "learning".equals(entry.block().kind()) && entry.block().isActive());
+        if (seenAtoms.isEmpty() && !allLearningInactive) {
             throw conflict("The plan contains no currently open atomic goals");
         }
         return List.copyOf(normalized);
+    }
+
+    private static List<String> normalizeGoalRoots(List<String> rawRoots, int submittedRoots) {
+        if (rawRoots == null) return null;
+        if (submittedRoots > MAX_ATOMIC_IDS) throw badRequest("block goalIds exceeds the supported limit");
+        LinkedHashSet<String> roots = new LinkedHashSet<>();
+        for (String root : rawRoots) roots.add(requireText(root, "block.goalIds entry", 255));
+        return List.copyOf(roots);
     }
 
     /**
@@ -1650,7 +1717,7 @@ public class LearnerLearningPlanService {
         List<IndexedBlock> indexedLearningBlocks = new ArrayList<>();
         for (int index = 0; index < blocks.size(); index++) {
             LearnerLearningPlanApi.Block block = blocks.get(index);
-            if ("learning".equals(block.kind()) && block.atomicGoalIds() != null) {
+            if (block.isActive() && "learning".equals(block.kind()) && block.atomicGoalIds() != null) {
                 indexedLearningBlocks.add(new IndexedBlock(
                         index,
                         block.startDate(),
@@ -1863,12 +1930,17 @@ public class LearnerLearningPlanService {
     }
 
     private LearnerLearningPlanApi.Period period(List<LearnerLearningPlanApi.Block> blocks) {
-        LocalDate start = blocks.stream()
+        List<LearnerLearningPlanApi.Block> activeBlocks = blocks.stream()
+                .filter(LearnerLearningPlanApi.Block::isActive).toList();
+        // A paused long-term section does not extend the current preparation.
+        // A wholly paused plan retains its dates for display and later editing.
+        List<LearnerLearningPlanApi.Block> datedBlocks = activeBlocks.isEmpty() ? blocks : activeBlocks;
+        LocalDate start = datedBlocks.stream()
                 .map(this::blockStart)
                 .filter(Objects::nonNull)
                 .min(LocalDate::compareTo)
                 .orElseThrow(() -> conflict("Learning plan has no dated blocks"));
-        LocalDate end = blocks.stream()
+        LocalDate end = datedBlocks.stream()
                 .map(this::blockEnd)
                 .filter(Objects::nonNull)
                 .max(LocalDate::compareTo)
@@ -1880,6 +1952,7 @@ public class LearnerLearningPlanService {
             List<LearnerLearningPlanApi.Block> blocks,
             LocalDate asOf) {
         return blocks.stream()
+                .filter(LearnerLearningPlanApi.Block::isActive)
                 .filter(block -> !"milestone".equals(block.kind()))
                 .filter(block -> !asOf.isBefore(block.startDate()) && !asOf.isAfter(block.endDate()))
                 .findFirst()
@@ -1896,6 +1969,7 @@ public class LearnerLearningPlanService {
             List<LearnerLearningPlanApi.Block> blocks,
             LocalDate asOf) {
         return blocks.stream()
+                .filter(LearnerLearningPlanApi.Block::isActive)
                 .filter(block -> "milestone".equals(block.kind()))
                 .filter(block -> !block.date().isBefore(asOf))
                 .findFirst()
@@ -1909,7 +1983,7 @@ public class LearnerLearningPlanService {
         int total = 0;
         int remaining = 0;
         for (LearnerLearningPlanApi.Block block : blocks) {
-            if (!"buffer".equals(block.kind())) {
+            if (!block.isActive() || !"buffer".equals(block.kind())) {
                 continue;
             }
             total += workdaysInclusive(block.startDate(), block.endDate());
@@ -1943,9 +2017,17 @@ public class LearnerLearningPlanService {
     private static Set<String> atomicIds(List<LearnerLearningPlanApi.Block> blocks) {
         LinkedHashSet<String> ids = new LinkedHashSet<>();
         for (LearnerLearningPlanApi.Block block : blocks) {
-            if (block.atomicGoalIds() != null) {
+            if (block.isActive() && block.atomicGoalIds() != null) {
                 ids.addAll(block.atomicGoalIds());
             }
+        }
+        return Set.copyOf(ids);
+    }
+
+    private static Set<String> capturedAtomicIds(List<LearnerLearningPlanApi.Block> blocks) {
+        LinkedHashSet<String> ids = new LinkedHashSet<>();
+        for (LearnerLearningPlanApi.Block block : blocks) {
+            if (block.atomicGoalIds() != null) ids.addAll(block.atomicGoalIds());
         }
         return Set.copyOf(ids);
     }

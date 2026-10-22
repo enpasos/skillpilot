@@ -25,6 +25,12 @@ führt weder ein zweites Planmodell noch eine neue zentrale Klassenverwaltung
 ein. Bestehende Planabschnitte, lokale Revisionen, Datumsprüfungen und die
 ausdrückliche Übernahme in persönliche Lernpläne werden wiederverwendet.
 
+Die anschließende [Klausurvorbereitung](../runtime-workflows/exam-preparation-planning.md)
+ergänzt die Gegenüberstellung von Klausurstoff und Aufgabenabdeckung, eine
+Vorschau zur Vervollständigung der Vorbereitung und einzeln deaktivierbare
+Planabschnitte. Mehrere Themen in einem Lernabschnitt bleiben kanonische
+Zielreferenzen; ein Klausurtermin erzeugt weiterhin keine zusätzliche Arbeit.
+
 ## Erste Ausbaustufe
 
 1. Im bestehenden Kurskontext ein Lernziel anhand seiner Beschreibung und der
