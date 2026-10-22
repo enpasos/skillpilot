@@ -339,7 +339,9 @@ const noScaleMarkup = renderToStaticMarkup(<LearnerPlanTodayOverview
 assert.match(noScaleMarkup, /Keine Lernziele eingeplant/u)
 assert.match(noScaleMarkup, /data-testid="learner-plan-unscheduled"/u)
 assert.match(noScaleMarkup, /Klausur Kinematik · 27\.10\.2026/u)
-assert.match(noScaleMarkup, /noch keine Vorbereitung eingeplant/u)
+assert.match(noScaleMarkup, /aktive Vorbereitungsabschnitt ins Lerncockpit übernommen/u)
+assert.doesNotMatch(noScaleMarkup, /noch keine Vorbereitung eingeplant/u,
+  'an empty cockpit snapshot does not prove that the teacher has not planned preparation')
 assert.match(noScaleMarkup, /Lernstand im gesamten Fach/u)
 assert.match(noScaleMarkup, />4 von 916</u, 'global achievement does not shrink to the inactive plan scope')
 assert.doesNotMatch(noScaleMarkup, /Skala nicht verfügbar|im Plan|learner-plan-(?:period|balance)-gauge|learner-plan-switch/u)

@@ -3429,7 +3429,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         onTouchCancel={() => { mobileEdgeTouchStart.current = null }}
       >
         <div className="mb-4 flex w-full justify-end">
-          <Link to="/" data-testid="learner-coach-start-link"
+          <Link to="/?start=coach" data-testid="learner-coach-start-link"
             title={t.startPage.login.coachProviderLabel}
             className="inline-flex min-h-11 items-center gap-2 rounded-full border border-sky-500 bg-sky-600 px-4 py-2 text-sm font-semibold text-white hover:bg-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500">
             <Send size={16} aria-hidden="true" />{t.startPage.cards.gpt.title}

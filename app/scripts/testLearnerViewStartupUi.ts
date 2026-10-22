@@ -252,11 +252,17 @@ try {
     await h.context.close()
   }
 
-  // Follow the ordinary Cockpit link and landing action, retaining the active
-  // learner while rechecking its saved curriculum before offering either coach.
-  {
-    const h = await open()
-    await waitReady(h.page, mathTitle)
+  const savedPlan: PersonalizationPlan = {
+    stage: 'COMPLETE', stageId: null, stageLabel: null, groupId: null, groupLabel: null,
+    groupInstanceId: null, minSelections: 0, maxSelections: 0, selectedCount: 0,
+    options: [], displayOptions: [], navigationOptions: [], currentSelectedOptions: [],
+    currentRewindId: null, completedDecisions: [], preservedDecisions: [], pendingDecisions: [],
+    canReopenMigratedPersonalization: false, problemCode: null,
+  }
+  const prepareCoachEntry = async (
+    h: Awaited<ReturnType<typeof open>>,
+    personalization: PersonalizationPlan = savedPlan,
+  ) => {
     await h.page.evaluate(({ learnerId, rootId, termsVersion }) => {
       localStorage.setItem('skillpilot_id', learnerId)
       localStorage.setItem('skillpilot_role', 'learner')
@@ -270,27 +276,32 @@ try {
         title: 'Gymnasium (DE)', schoolType: 'Gymnasium', qualityMaturity: 'M6',
       }] }),
     }))
-    const savedPlan: PersonalizationPlan = {
-      stage: 'COMPLETE', stageId: null, stageLabel: null, groupId: null, groupLabel: null,
-      groupInstanceId: null, minSelections: 0, maxSelections: 0, selectedCount: 0,
-      options: [], displayOptions: [], navigationOptions: [], currentSelectedOptions: [],
-      currentRewindId: null, completedDecisions: [], preservedDecisions: [], pendingDecisions: [],
-      canReopenMigratedPersonalization: false, problemCode: null,
-    }
     await h.page.route(`**/api/ui/learners/${learnerA}/personalization-plan`, (route) => route.fulfill({
-      status: 200, contentType: 'application/json', body: JSON.stringify(savedPlan),
+      status: 200, contentType: 'application/json', body: JSON.stringify(personalization),
     }))
+  }
+
+  // A single Cockpit click resumes the authoritative profile and reaches the
+  // provider choice without returning to the public landing or repeating setup.
+  {
+    const h = await open()
+    await waitReady(h.page, mathTitle)
+    await prepareCoachEntry(h)
+    const profileReadsBefore = h.requests.filter((request) => request.endpoint === 'profile').length
     await h.page.getByTestId('learner-coach-start-link').click()
-    await h.page.getByTestId('public-landing-action-learning').click()
-    assert.equal(await h.page.getByLabel('Deine SkillPilot-ID').inputValue(), learnerA,
-      'opening the ordinary learner start from the Cockpit preserves the active learner ID')
-    await h.page.getByRole('button', { name: 'Weiter zu Schritt 2: Curriculum wählen' }).click()
-    await h.page.getByRole('heading', { name: 'Los geht’s', exact: true }).waitFor()
-    await h.page.getByRole('heading', { name: 'Curriculum wählen' })
-      .locator('xpath=ancestor::section[1]').locator('p')
-      .filter({ hasText: 'Gymnasium (DE)' }).waitFor()
-    assert.equal(await h.page.getByLabel('Deine SkillPilot-ID').inputValue(), learnerA)
     const providerChoice = h.page.getByTestId('coach-provider-choice')
+    await providerChoice.waitFor()
+    assert.equal(h.requests.filter((request) => request.endpoint === 'profile').length, profileReadsBefore + 1,
+      'the direct coach entry verifies the existing profile with the server')
+    assert.equal(await h.page.getByTestId('public-landing-action-learning').count(), 0,
+      'the Cockpit start must not show the public landing again')
+    assert.equal(await h.page.getByLabel('Deine SkillPilot-ID').inputValue(), learnerA,
+      'direct coach entry preserves the current learner')
+    const curriculumStep = h.page.getByRole('heading', { name: 'Curriculum wählen' })
+      .locator('xpath=ancestor::section[1]')
+    await curriculumStep.locator('p').filter({ hasText: 'Gymnasium (DE)' }).waitFor()
+    assert.equal(await curriculumStep.getByRole('combobox').count(), 0,
+      'the previously completed curriculum step is compact after server verification')
     await providerChoice.getByRole('radio', { name: /ChatGPT Desktop/u }).check()
     await h.page.getByRole('button', { name: 'Lernen mit ChatGPT vorbereiten' }).waitFor()
     assert.deepEqual(await h.page.evaluate(() => ({
@@ -298,8 +309,59 @@ try {
       curriculum: localStorage.getItem('skillpilot_learner_landscape'),
     })), { id: learnerA, role: 'learner', curriculum: canonicalRoot },
     'the route preserves the existing profile and saved curriculum without logout or a replacement profile')
-    assert.deepEqual(h.unexpected, [], 'ordinary provider selection does not create a learner or launch a provider')
+    assert.deepEqual(h.unexpected, [], 'direct entry does not create a learner, rewrite the curriculum or launch a provider')
+
+    await h.page.getByLabel('Deine SkillPilot-ID').fill(learnerB)
+    await settledFrame(h.page)
+    assert.equal(await h.page.getByTestId('coach-provider-choice').count(), 0,
+      'changing the ID immediately invalidates the previously verified coach start')
+    assert.equal(h.requests.filter((request) => request.learnerId === learnerB).length, 0,
+      'an edited ID requires the ordinary explicit confirmation instead of automatic resume')
+    await h.page.getByLabel('Deine SkillPilot-ID').fill('')
+    assert.equal(await h.page.getByRole('button', { name: 'Weiter zu Schritt 2: Curriculum wählen' }).isDisabled(), true,
+      'a missing ID stays in the ordinary setup flow without a launchable old profile')
+    assert.equal(await h.page.getByTestId('coach-provider-choice').count(), 0)
     assert.deepEqual(h.errors, [])
+    await h.context.close()
+  }
+
+  // A failed resume cannot expose the previously loaded curriculum as verified.
+  {
+    const h = await open()
+    await waitReady(h.page, mathTitle)
+    await prepareCoachEntry(h)
+    h.replies[learnerA]!.profile = { status: 503, body: { error: 'Unavailable' } }
+    await h.page.getByTestId('learner-coach-start-link').click()
+    await h.page.getByText('Die SkillPilot-ID konnte gerade nicht geprüft werden. Bitte versuche es erneut.', { exact: true }).waitFor()
+    assert.equal(await h.page.getByTestId('coach-provider-choice').count(), 0,
+      'a failed authoritative resume never enables coach launch')
+    await h.page.getByRole('button', { name: 'Weiter zu Schritt 2: Curriculum wählen' }).waitFor()
+    assert.deepEqual(h.unexpected, [])
+    assert.deepEqual(h.errors, [])
+    await h.context.close()
+  }
+
+  // An unfinished saved Personal Curriculum stays in the existing setup flow.
+  {
+    const h = await open()
+    await waitReady(h.page, mathTitle)
+    await prepareCoachEntry(h, {
+      ...savedPlan, stage: 'SELECTION', stageId: 'subjects', stageLabel: 'Fächer auswählen',
+      groupId: 'subjects', groupLabel: 'Weitere Fächer wählen', groupInstanceId: 'subjects:root',
+      minSelections: 1, maxSelections: 1,
+      options: [{
+        optionId: 'physics', stageId: 'subjects', groupId: 'subjects', groupInstanceId: 'subjects:root',
+        landscapeId: physicsId, landscapeLabel: 'Physik', filterId: null, filterLabel: null,
+        scopeKey: null, scopeValue: null, scopeLabel: null, kind: 'VALUE',
+      }],
+    })
+    await h.page.getByTestId('learner-coach-start-link').click()
+    await h.page.getByText('Fächer auswählen', { exact: true }).first().waitFor()
+    assert.equal(await h.page.getByTestId('coach-provider-choice').count(), 0,
+      'an unfinished personal curriculum must be completed before coach start')
+    assert.deepEqual(h.unexpected, [])
+    assert.deepEqual(h.errors, [])
+    await h.context.close()
   }
 
   // Delay the two independent authoritative reads in both possible orders.
@@ -324,8 +386,8 @@ try {
     stateGate.resolve(state(learnerA))
     await waitReady(h.page, mathTitle)
     const coachStart = h.page.getByRole('link', { name: 'Lernen starten', exact: true })
-    assert.equal(await coachStart.getAttribute('href'), '/',
-      'the ordinary Cockpit start returns to first-party provider selection without launching a provider or logging out')
+    assert.equal(await coachStart.getAttribute('href'), '/?start=coach',
+      'the Cockpit start targets the existing learner coach entry without launching a provider or logging out')
     if (first === 'profile') await h.page.screenshot({ path: `${screenshotDir}ready.png` })
     await assertNoFalseSetup(h.page)
     assert.equal(h.requests.filter((r) => r.endpoint === 'profile').length, 1,

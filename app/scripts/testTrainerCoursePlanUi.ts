@@ -10,7 +10,7 @@ import { renderToStaticMarkup } from 'react-dom/server'
 import { startViteTestServer } from './viteTestServer'
 import { CURRENT_TERMS_VERSION } from '../src/utils/legalTermsVersion'
 import { CoursePlanLearningBook } from '../src/components/CoursePlanLearningBook'
-import type { TeacherCoursePlan } from '../src/coursePlanTypes'
+import { TEACHER_COURSE_PLAN_MAX_REVISION_HISTORY, type TeacherCoursePlan } from '../src/coursePlanTypes'
 import type { ActivateLearnerLearningPlansRequest } from '../src/learnerLearningPlanTypes'
 import type { ClassSession } from '../src/trainerTypes'
 import { convertLearningGoal } from '../src/goalTypes'
@@ -19,7 +19,7 @@ import {
   getTeacherCoursePlanStorageId,
   teacherCoursePlanStoragePrefixForClass,
 } from '../src/utils/teacherCoursePlanContext'
-import { createTeacherCoursePlan } from '../src/utils/localTeacherCoursePlan'
+import { createTeacherCoursePlan, reviseTeacherCoursePlan } from '../src/utils/localTeacherCoursePlan'
 
 function assert(condition: unknown, message: string): asserts condition {
   if (!condition) throw new Error(message)
@@ -372,7 +372,7 @@ const installApi = async (
 }
 
 /** A separate plan keeps preparation mutations independent of the legacy flows. */
-const verifyExamPreparationUi = async (browser: Browser, baseUrl: string, includeAdditional = true) => {
+const verifyExamPreparationUi = async (browser: Browser, baseUrl: string, includeAdditional = true, exhaustHistory = false) => {
   const assessmentId = 'trainer-course-plan-assessment'
   const foundationId = 'trainer-course-plan-foundation'
   const uncoveredId = 'trainer-course-plan-uncovered'
@@ -419,12 +419,13 @@ const verifyExamPreparationUi = async (browser: Browser, baseUrl: string, includ
       },
     ],
   }
-  const initialPlan = createTeacherCoursePlan({
+  const createdPlan = createTeacherCoursePlan({
     classId: preparationPlanId,
     createdOn: today,
     recordedAt: fixtureTime.toISOString(),
   })
-  assert(initialPlan, 'the preparation fixture starts with a valid plan')
+  assert(createdPlan, 'the preparation fixture starts with a valid plan')
+  let initialPlan = createdPlan
   initialPlan.blocks = [{
     id: 'general-learning', kind: 'learning', goalId: rootGoalId, title: broadTitle,
     startDate: today, endDate: addDays(today, 13),
@@ -436,6 +437,15 @@ const verifyExamPreparationUi = async (browser: Browser, baseUrl: string, includ
     scopeAtomicGoalIds: scopeIds, openAtomicGoalIds: scopeIds,
     totalAtomicGoalCount: scopeIds.length, masteredAtomicGoalCount: 0,
     capturedAt: fixtureTime.toISOString(),
+  }
+  if (exhaustHistory) {
+    for (let index = 0; index < TEACHER_COURSE_PLAN_MAX_REVISION_HISTORY - 2; index += 1) {
+      const revision = reviseTeacherCoursePlan(initialPlan, {
+        changedOn: today, recordedAt: fixtureTime.toISOString(),
+      })
+      assert(revision, 'the storage-limit fixture starts from valid revisions')
+      initialPlan = revision
+    }
   }
   const context = await browser.newContext({ locale: 'de-DE', timezoneId: 'Europe/Berlin' })
   try {
@@ -475,7 +485,11 @@ const verifyExamPreparationUi = async (browser: Browser, baseUrl: string, includ
         await json({ skillpilotId: studentId, selectedCurriculum: landscapeId,
           personalCurriculum: JSON.stringify(preparationSession.personalConfig) })
       } else if (request.method() === 'GET' && pathname.endsWith('/planning-scope')) {
-        await json({ ...initialPlan.planningBaseline, capturedAt: fixtureTime.toISOString() })
+        // A real planning-scope read always has a new timestamp. Replacing the
+        // plan's immutable capture would reject the revision instead of saving
+        // its preparation section.
+        await json({ ...initialPlan.planningBaseline,
+          capturedAt: new Date(fixtureTime.getTime() + 60_000).toISOString() })
       } else if (request.method() === 'GET' && pathname.endsWith('/learning-plans')) {
         await json({ asOf: today, followLearningPlans: Boolean(activeServerPlan),
           status: learnerPlanStatus(today, [landscapeId], { followLearningPlans: Boolean(activeServerPlan) }),
@@ -597,8 +611,18 @@ const verifyExamPreparationUi = async (browser: Browser, baseUrl: string, includ
       }
     }
     await apply.click()
+    if (exhaustHistory) {
+      await preview.getByRole('alert').filter({ hasText: 'Es wurde kein Lernabschnitt hinzugefügt.' }).waitFor()
+      assertJsonEqual(await readPlan(), beforePreview,
+        'a rejected preparation save keeps the stored plan and never pretends to add a learning section')
+      assert(activationBodies.length === 0, 'a failed local save does not activate a learner plan')
+      assert(errors.length === 0, `failed preparation save browser errors:\n${errors.join('\n')}`)
+      return
+    }
     await preview.waitFor({ state: 'detached' })
     const preparedPlan = await readPlan()
+    assertJsonEqual(preparedPlan.planningBaseline, initialPlan.planningBaseline,
+      'adding preparation preserves the established planning capture and its open-goal population')
     const preparation = preparedPlan.blocks.find((block) => block.title === `Vorbereitung: ${examTitle}`)
     assert(preparation?.kind === 'learning' && preparation.active !== false,
       'acceptance creates an active learning section')
@@ -1794,6 +1818,7 @@ try {
   await personalizedContext.close()
   await verifyExamPreparationUi(browser, server.baseUrl)
   await verifyExamPreparationUi(browser, server.baseUrl, false)
+  await verifyExamPreparationUi(browser, server.baseUrl, false, true)
   console.log('Trainer course-plan UI regression test passed.')
 } finally {
   await browser?.close()

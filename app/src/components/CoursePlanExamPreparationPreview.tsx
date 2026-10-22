@@ -17,7 +17,7 @@ export function CoursePlanExamPreparationPreview({ plan, milestone, goals, prere
   visibleChildren?: ReadonlyMap<string, readonly string[]>
   asOf: string
   language: 'de' | 'en'
-  onApply: (blocks: TeacherCoursePlanBlock[]) => void
+  onApply: (blocks: TeacherCoursePlanBlock[]) => boolean
   onClose: () => void
 }) {
   const de = language === 'de'
@@ -71,8 +71,8 @@ export function CoursePlanExamPreparationPreview({ plan, milestone, goals, prere
     {error && <p role="alert" className="mt-3 text-sm text-rose-700 dark:text-rose-300">{error}</p>}
     <div className="mt-4 flex flex-wrap justify-end gap-2"><button type="button" onClick={onClose} className="min-h-11 rounded-lg border border-border-color px-4 py-2 text-sm text-text-primary">{de ? 'Schließen' : 'Close'}</button><button type="button" disabled={blocked} onClick={() => {
       const blocks = buildCoursePlanExamPreparationBlocks({ plan, milestone, preview, goals, visibleChildren, startDate, endDate, blockId: `exam-preparation-${globalThis.crypto.randomUUID()}`, moveLaterGoals: acceptedMove === scopeKey, title: `${de ? 'Vorbereitung' : 'Preparation'}: ${milestone.title}` })
-      if (blocks) onApply(blocks)
-      else setError(de ? 'Die Vorbereitung kann in diesem Zeitraum nicht vollständig eingeplant werden. Prüfe Puffer und andere Abschnitte.' : 'Preparation cannot be fully scheduled in this period. Review buffers and other sections.')
+      if (!blocks) setError(de ? 'Die Vorbereitung kann in diesem Zeitraum nicht vollständig eingeplant werden. Prüfe Puffer und andere Abschnitte.' : 'Preparation cannot be fully scheduled in this period. Review buffers and other sections.')
+      else if (!onApply(blocks)) setError(de ? 'Die Vorbereitung konnte nicht gespeichert werden. Es wurde kein Lernabschnitt hinzugefügt. Prüfe den Kursplan und versuche es erneut.' : 'The preparation could not be saved. No learning section was added. Check the course plan and try again.')
     }} className="min-h-11 rounded-lg bg-sky-600 px-4 py-2 text-sm font-semibold text-white hover:bg-sky-500 disabled:cursor-not-allowed disabled:opacity-50">{de ? 'Vorbereitung übernehmen' : 'Apply preparation'}</button></div>
   </section>
 }

@@ -407,13 +407,17 @@ export const CoursePlanPilotView = ({
     planningBaseline = plan?.planningBaseline,
   ) => {
     if (!plan) return false
-    return persist(reviseTeacherCoursePlan(plan, {
+    const revisionInput = {
       blocks,
       ...(schoolYearLabel === undefined ? {} : { schoolYearLabel }),
       ...(planningBaseline ? { planningBaseline } : {}),
       changedOn: asOf,
       recordedAt: new Date().toISOString(),
-    }))
+    }
+    return persist(plan.planningBaseline?.source === 'learner-planning-scope-v1'
+      && planningBaseline?.source === 'learner-planning-landscape-v1'
+      ? migrateTeacherCoursePlanBaseline(plan, { ...revisionInput, planningBaseline })
+      : reviseTeacherCoursePlan(plan, revisionInput))
   }
 
   useEffect(() => {
@@ -905,7 +909,10 @@ export const CoursePlanPilotView = ({
   const openPreparation = (milestone: MilestoneCoursePlanBlock) => guardDraftReplacement(() => {
     if (!plan) return
     preparationRequestRef.current?.abort()
-    if (!learnerId || !landscapeId) {
+    // Reuse the plan's immutable capture, just as when saving a learning block.
+    // A fresh scope read carries a new capturedAt and cannot replace that basis.
+    if (plan.planningBaseline?.source === 'learner-planning-landscape-v1'
+      || !learnerId || !landscapeId) {
       setPreparationState({ milestoneId: milestone.id })
       return
     }
@@ -1507,7 +1514,9 @@ export const CoursePlanPilotView = ({
                     {invalidBlockIds.has(block.id) && <p role="alert" className="mt-3 text-sm text-rose-700 dark:text-rose-300">{copy.blockNotCalculable}</p>}
                     {editingBlockId === block.id && <div className="mt-4">{blockForm}</div>}
                     {block.kind === 'milestone' && block.active !== false && preparationState?.milestoneId === block.id && <div className="mt-4"><CoursePlanExamPreparationPreview key={block.id} plan={preparationState.baseline ? { ...plan, planningBaseline: preparationState.baseline } : plan} milestone={block} goals={topicGoals} prerequisiteGoals={prerequisiteGoals} referenceGoals={referenceGoals} visibleChildren={topicChildren} asOf={asOf} language={language} onClose={() => setPreparationState(null)} onApply={(blocks) => {
-                      if (revise(blocks, undefined, preparationState.baseline ?? plan.planningBaseline)) setPreparationState(null)
+                      const saved = revise(blocks, undefined, preparationState.baseline ?? plan.planningBaseline)
+                      if (saved) setPreparationState(null)
+                      return saved
                     }} /></div>}
                     {assignment && assignment.atomicGoalIds.length > 0 && <details className="mt-3 border-t border-border-color pt-2"><summary className="min-h-10 cursor-pointer py-2 text-sm text-text-secondary">{language === 'de' ? 'Enthaltene Lernziele' : 'Included learning goals'}</summary><ul className="space-y-2 pb-2 text-sm text-text-primary">{assignment.atomicGoalIds.map((id) => <li key={id}>{goals.get(id)?.title ?? id}</li>)}</ul></details>}
                   </article>

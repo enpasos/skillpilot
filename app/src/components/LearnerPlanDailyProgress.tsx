@@ -156,8 +156,8 @@ export const LearnerPlanDailyProgress = ({ subject, language, periodBasis, showG
           {isGerman ? 'Nächster Termin' : 'Next milestone'}: {nextMilestone.title} · {formatLearnerLearningPlanDate(nextMilestone.date, language)}
         </p>
         <p className="mt-1 text-text-secondary">{isGerman
-          ? 'Für diesen Termin ist noch keine Vorbereitung eingeplant.'
-          : 'No preparation has been scheduled for this milestone yet.'}</p>
+          ? 'Prüfe in der Kursplanung, ob der aktive Vorbereitungsabschnitt ins Lerncockpit übernommen wurde.'
+          : 'Check in course planning whether the active preparation section has been transferred to the learning cockpit.'}</p>
       </div> : null}
       {hasGoalProgress ? <p className="mt-3 border-t border-border-color pt-3 text-sm text-text-secondary">
         {isGerman ? 'Lernstand im gesamten Fach' : 'Progress across the whole subject'}: {goalProgress}

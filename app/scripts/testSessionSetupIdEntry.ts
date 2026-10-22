@@ -83,7 +83,7 @@ assert(
 
 assert(
   sessionSetupSource.includes(
-    'const checkLearner = async (id: string, markActivity = false): Promise<boolean>',
+    'const checkLearner = React.useCallback(async (id: string, markActivity = false): Promise<boolean>',
   )
     && sessionSetupSource.includes('if (markActivity) {')
     && sessionSetupSource.includes('await requestLearnerResume(fetch, apiBase, sanitizedId)'),

@@ -106,6 +106,11 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   const evaluatedCompletedSetupScopeRef = React.useRef('')
   // Use location (ensure import is added)
   const location = useLocation()
+  const isCoachEntry = new URLSearchParams(location.search).get('start') === 'coach'
+  const coachEntryLearnerIdRef = React.useRef(
+    isCoachEntry && role === 'learner' ? sanitizeSkillpilotId(skillpilotId) : '',
+  )
+  const coachStartStepRef = React.useRef<HTMLDivElement>(null)
   const [coachProvider, setCoachProvider] = useState<CoachProvider>(() => {
     const params = new URLSearchParams(location.search)
     if (params.get('coach') === 'gemini') return 'gemini'
@@ -149,7 +154,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   const [learnerDeleteError, setLearnerDeleteError] = useState<'missing' | 'failed' | null>(null)
 
   // Collapsible logic for Login form
-  const [showLogin, setShowLogin] = useState(false);
+  const [showLogin, setShowLogin] = useState(isCoachEntry);
   const [skillpilotIdFileStatus, setSkillpilotIdFileStatus] = useState<SkillpilotIdFileStatus>('idle')
   const [skillpilotIdFileDialogMode, setSkillpilotIdFileDialogMode] = useState<'save' | 'load' | null>(null)
   const [skillpilotIdFileDialogBusy, setSkillpilotIdFileDialogBusy] = useState(false)
@@ -177,6 +182,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     role === 'learner'
     && hasCheckedId
     && !!sanitizedLearnerId
+    && validatedLearnerId === sanitizedLearnerId
     && !!normalizedSelectedLearnerLandscapeId
     && normalizedSelectedLearnerLandscapeId === persistedLearnerLandscapeId
     && !curriculumSaving
@@ -513,7 +519,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     }
   }
 
-  const checkLearner = async (id: string, markActivity = false): Promise<boolean> => {
+  const checkLearner = React.useCallback(async (id: string, markActivity = false): Promise<boolean> => {
     const sanitizedId = sanitizeSkillpilotId(id)
     if (!sanitizedId) {
       curriculumSelectionRequestRef.current += 1
@@ -577,7 +583,38 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
       }
     }
     return checked && learnerCheckRequestRef.current === requestId
-  }
+  }, [t.startPage.login.idNotFound, t.startPage.login.learnerCheckFailed, t.startPage.login.resumeFailed])
+
+  React.useEffect(() => {
+    if (!isCoachEntry) return
+    setRole('learner')
+    setShowLogin(true)
+  }, [isCoachEntry, setRole])
+
+  React.useEffect(() => {
+    // The Cockpit entry resumes only the profile that was already present.
+    // Editing the ID returns to the ordinary explicit setup flow.
+    if (!isCoachEntry || !termsAccepted || role !== 'learner'
+      || !sanitizedLearnerId || sanitizedLearnerId !== coachEntryLearnerIdRef.current) return
+    let cancelled = false
+    setIdStepComplete(false)
+    void checkLearner(sanitizedLearnerId, true).then((checked) => {
+      if (!cancelled && checked) setIdStepComplete(true)
+    })
+    return () => {
+      cancelled = true
+      learnerCheckRequestRef.current += 1
+    }
+  }, [checkLearner, isCoachEntry, role, sanitizedLearnerId, termsAccepted])
+
+  React.useEffect(() => {
+    if (!isCoachEntry || !personalCurriculumReady || !compactCompletedSetup) return
+    const frame = window.requestAnimationFrame(() => {
+      coachStartStepRef.current?.scrollIntoView({ block: 'start' })
+      coachStartStepRef.current?.focus({ preventScroll: true })
+    })
+    return () => window.cancelAnimationFrame(frame)
+  }, [compactCompletedSetup, isCoachEntry, personalCurriculumReady])
 
   const persistLearnerStart = (effectiveId: string) => {
     const sanitizedId = sanitizeSkillpilotId(effectiveId)
@@ -1304,7 +1341,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                 )}
 
                 {termsAccepted && role === 'learner' && learnerSetupStepVisibility.start && (
-                  <div className="rounded-xl border border-border-color bg-white/70 p-4 shadow-sm animate-in fade-in slide-in-from-top-2 duration-300 dark:bg-slate-900/50">
+                  <div ref={coachStartStepRef} tabIndex={-1} className="rounded-xl border border-border-color bg-white/70 p-4 shadow-sm animate-in fade-in slide-in-from-top-2 duration-300 dark:bg-slate-900/50">
                     <div className="mb-4 flex items-start gap-3">
                       <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-sky-600 text-sm font-bold text-white">
                         4

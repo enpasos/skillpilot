@@ -42,8 +42,9 @@ Voraussetzungen und tatsächlich geprüfte Lernziele werden getrennt zugeordnet.
 ## Vorbereitung vervollständigen
 
 Am gespeicherten aktiven Klausurtermin öffnet **Vorbereitung vervollständigen**
-eine Vorschau. Für einen angeschlossenen Lernenden wird dessen Planungsbasis
-neu geladen. Ohne persönlichen Lernstand werden alle benötigten Ziele als
+eine Vorschau. Für einen angeschlossenen Lernenden verwendet sie die bereits
+gespeicherte Planungsbasis oder lädt sie, wenn noch keine vorhanden ist.
+Ohne persönlichen Lernstand werden alle benötigten Ziele als
 offen behandelt. Die Vorschau unterscheidet bereits beherrschte, rechtzeitig
 eingeplante und noch zu ergänzende Ziele, zusätzliche Grundlagen und offene
 Zuordnungen. Der Zeitraum endet vor dem Klausurtermin und enthält mindestens
@@ -68,6 +69,13 @@ vorgezogen, benennt die Vorschau alle betroffenen Abschnitte und verlangt eine
 ausdrückliche Zustimmung. Ein dadurch leerer Abschnitt bleibt inaktiv erhalten.
 Die resultierende Planung muss alle offenen Ziele des Vorschlags rechtzeitig
 fällig stellen; Puffer und gemeinsame Terminberechnung bleiben maßgeblich.
+
+Eine bereits gespeicherte persönliche Planungsbasis bleibt beim Ergänzen der
+Vorbereitung erhalten. Eine neue Zeitstempelaufnahme darf ihre unveränderliche
+Basis nicht ersetzen und dadurch das Speichern des Vorbereitungsabschnitts
+verhindern. Schlägt die Übernahme fehl, bleibt die Vorschau geöffnet und benennt
+den Fehler. Eine gespeicherte Vorbereitung wird anschließend wie andere
+Kursplanänderungen ausdrücklich ins Lerncockpit übernommen.
 
 ## Aktive und inaktive Abschnitte
 
@@ -107,6 +115,12 @@ nächste zulässige Lernziel und passt den Fokus an. Bei mehreren Themenwurzeln
 kann dieser technische Fokus das nächste atomare Ziel sein; er beschreibt
 nicht den gesamten Klausurstoff. Ein bereits laufendes Lernziel wird nicht
 durch bloßes Speichern oder eine Statusabfrage verdrängt.
+
+**Lernen starten** führt aus dem Cockpit unmittelbar zum Coach-Einstieg mit dem
+vorhandenen Profil. Die gespeicherte ID und Curriculum-Auswahl werden erneut
+serverseitig geprüft; eine fertige Konfiguration muss nicht nochmals manuell
+durchlaufen werden. Die Providerwahl und der ausdrückliche Start einer neuen
+Lernsession bleiben erforderlich.
 
 Die Klausurdiagnose und eine Übertragung einzelner Prüfungsleistungen auf
 fachliche Lernziele sind ein späterer Schritt. Dieses Paket schreibt keine
