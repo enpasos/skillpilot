@@ -92,7 +92,8 @@ class OpenAiDeCoachMcpContractTest {
             "08030bd956b68b816523f4971b6d18ab154eef01381882b01d7f1991cc643391",
             "9c09821e96abadfccb08d07b62367d47963420c3a5cc51021ba801e2d6019fe4");
     private static final List<String> HISTORICAL_MEMORY_CARD_PRACTICE_ARTIFACT_SHA256S = List.of(
-            "8524ee20837971227c35f1e16518d2b5bdbd60637fbec6beede9f2f4b29e4852");
+            "8524ee20837971227c35f1e16518d2b5bdbd60637fbec6beede9f2f4b29e4852",
+            "7e1e4f1acbc61a9b50e620ebdf56f10c782517f6454edb1777a8d796832c2962");
     private static final String LEGACY_GOAL_VISUALIZATION_RESOURCE_URI =
             "ui://skillpilot/coach/v1/1.0.0/goal-visualization.html";
     private static final String LEGACY_GOAL_VISUALIZATION_ARTIFACT_SHA256 =

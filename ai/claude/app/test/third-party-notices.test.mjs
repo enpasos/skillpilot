@@ -16,7 +16,7 @@ const expectedPackages = Object.freeze({
   "memory-card-practice.html": Object.freeze([
     "@modelcontextprotocol/ext-apps@1.7.4",
     "@modelcontextprotocol/sdk@1.32.1",
-    "katex@0.16.27",
+    "katex@0.18.2",
     "zod-to-json-schema@3.25.2",
     "zod@4.4.3"
   ])

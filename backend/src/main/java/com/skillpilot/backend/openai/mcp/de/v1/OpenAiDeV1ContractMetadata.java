@@ -50,7 +50,7 @@ public final class OpenAiDeV1ContractMetadata {
     public static final String LEGACY_GOAL_VISUALIZATION_RESOURCE_CLASSPATH =
             "/openai/retained/skillpilot/coach/v1/legacy-1.0.0/goal-visualization.html";
     public static final String MEMORY_CARD_PRACTICE_ARTIFACT_SHA256 =
-            "7e1e4f1acbc61a9b50e620ebdf56f10c782517f6454edb1777a8d796832c2962";
+            "3665591f88892a89ce22bec7076e7ed7727db8b9360b438f1e1345e9a01bf7cb";
     public static final String MEMORY_CARD_PRACTICE_RESOURCE_URI =
             "ui://skillpilot/coach/v1/sha256-"
                     + MEMORY_CARD_PRACTICE_ARTIFACT_SHA256
@@ -75,7 +75,8 @@ public final class OpenAiDeV1ContractMetadata {
             "9c09821e96abadfccb08d07b62367d47963420c3a5cc51021ba801e2d6019fe4");
     /** Previously advertised memory-practice resources, retained without tool bindings. */
     public static final List<String> RETAINED_MEMORY_CARD_PRACTICE_ARTIFACT_SHA256S = List.of(
-            "8524ee20837971227c35f1e16518d2b5bdbd60637fbec6beede9f2f4b29e4852");
+            "8524ee20837971227c35f1e16518d2b5bdbd60637fbec6beede9f2f4b29e4852",
+            "7e1e4f1acbc61a9b50e620ebdf56f10c782517f6454edb1777a8d796832c2962");
     /** Loopback-only transport target behind the dedicated V1 reverse proxy. */
     public static final String INTERNAL_MCP_PATH = "/internal/openai/v1/mcp";
     /** Loopback-only metadata target rewritten from the public path-specific URL. */

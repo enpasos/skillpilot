@@ -1898,6 +1898,11 @@ public class LearnerControllerIntegrationTest {
             List<String> testedTargetIds,
             Set<String> suppliedByLegacyProjection,
             String personalCurriculum) throws Exception {
+        // These migration cases deliberately verify global prerequisite evidence.
+        // Normal focus mode checks only prerequisites within the selected focus.
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setStrictMode(true);
+        learnerRepository.save(learner);
         // A mastered legacy predecessor does not certify its own prerequisites.
         // First preserve the real blocked state, then store the missing earlier
         // preparation explicitly so this test can isolate plan/mastery migration.

@@ -8,9 +8,9 @@ Kandidat: `1.1.3` · MCP-Endpunkt: `https://mcp-openai.skillpilot.com/mcp`
 
 Testsuite-SHA-256: `22869dabbd81509d241547a84966dcd18266f35c3d5286b234e3aee1afe412e2`
 
-Vertrags-SHA-256: `cb809530f8c98e20a52ca081b1770ce10a3b4745a1fb858524f833e9d3c1391a`
+Vertrags-SHA-256: `95d802c455d8a907d195e29eda5700b73226dadb24b6ed00003ae240324dce48`
 
-Paket-Snapshot-SHA-256: `dc685c487602f9937ed264e70c1e527ea4a0b5c2e55eaf4979978a90596fa1a2`
+Paket-Snapshot-SHA-256: `52afbdb28e68a27cf726d19d20de42f063d1feb42203dcf1dad33518aa73ba99`
 
 ## Vorbereitung
 
