@@ -300,9 +300,8 @@ const parseExternalReferences = (
       try {
         const url = new URL(candidate.canonicalUrl)
         const parameterKeys = [...url.searchParams.keys()]
-        // `landscapeId` records the reference's source landscape. The URL
-        // deliberately stays in the containing book context so its hash can
-        // resolve references that are not pages in the source landscape book.
+        // Cross-subject links resolve in the source landscape's book, matching
+        // the canonical URL emitted and checked by the publication pipeline.
         if (
           url.origin !== new URL(binding.atlasBaseUrl).origin
           || url.pathname !== new URL(binding.atlasBaseUrl).pathname
@@ -313,7 +312,7 @@ const parseExternalReferences = (
           || new Set(parameterKeys).size !== 2
           || !parameterKeys.includes('landscape')
           || !parameterKeys.includes('edition')
-          || url.searchParams.get('landscape') !== binding.landscapeId
+          || url.searchParams.get('landscape') !== (referenceLandscapeId ?? binding.landscapeId)
           || url.searchParams.get('edition') !== binding.edition
         ) return null
         canonicalUrl = url.href

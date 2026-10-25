@@ -229,6 +229,8 @@ physicsSource.externalLandscapes = [{
 const physicsPages = physicsModel.pages as Array<Record<string, unknown>>
 const externalPrerequisites = physicsPages[2].externalPrerequisites as Array<Record<string, unknown>>
 externalPrerequisites[0].landscapeId = MATHEMATICS_LANDSCAPE_ID
+externalPrerequisites[0].canonicalUrl =
+  `https://skillpilot.com/lernzielbuch?landscape=${MATHEMATICS_LANDSCAPE_ID}&edition=curricular-atomic-v1#goal-external-measurement-goal`
 const physicsFixture = `${JSON.stringify(physicsModel, null, 2)}\n`
 const physicsFixtureSha256 = `sha256:${createHash('sha256').update(physicsFixture).digest('hex')}`
 const additionalSubjectFixtures = [
@@ -1026,6 +1028,36 @@ try {
       && await page.getByRole('region', { name: 'Lernziele' }).getByRole('link').count() === 3,
     'browser Forward applies the same centralized clean subject state',
   )
+  await page.getByRole('region', { name: 'Lernziele' })
+    .getByRole('link', { name: /Flächeninhalte berechnen/u }).click()
+  await page.getByRole('heading', { name: 'Flächeninhalte berechnen' }).waitFor()
+  const mathPrerequisite = page.getByTestId('goal-book-page')
+    .getByRole('link', { name: /Längen sicher messen/u })
+  const mathPrerequisiteUrl = String(externalPrerequisites[0].canonicalUrl)
+  assert(
+    await mathPrerequisite.getAttribute('href') === mathPrerequisiteUrl
+      && await mathPrerequisite.getByText('Fachliche Herkunft: Mathematik', { exact: true }).count() === 1,
+    'physics loads with a source-bound mathematics prerequisite and links to the mathematics atlas',
+  )
+  // Keep the canonical link intact and serve its destination through the local
+  // fixture, so following it exercises subject selection without live requests.
+  await page.route(mathPrerequisiteUrl.split('#')[0], (route) => route.fulfill({
+    status: 302,
+    headers: { location: `${fixtureUrl}${new URL(mathPrerequisiteUrl).search}${new URL(mathPrerequisiteUrl).hash}` },
+  }), { times: 1 })
+  const mathRequestsBeforePrerequisite = mathModelRequests
+  await mathPrerequisite.click()
+  await page.getByRole('heading', { name: 'Lernzielbuch Mathematik – bundesweiter Atlas' }).waitFor()
+  await page.getByRole('heading', { name: 'Lernziel außerhalb dieser Ausgabe' }).waitFor()
+  assert(
+    mathModelRequests === mathRequestsBeforePrerequisite + 1
+      && new URL(page.url()).searchParams.get('landscape') === MATHEMATICS_LANDSCAPE_ID
+      && new URL(page.url()).hash === '#goal-external-measurement-goal'
+      && await page.getByTestId('goal-book-pdf').getAttribute('href') === PDF_PATH,
+    'following a physics mathematics prerequisite opens its mathematics book and preserves the exact goal destination',
+  )
+  await subjectNavigation.getByRole('link', { name: 'Physik', exact: true }).click()
+  await page.getByRole('heading', { name: 'Lernzielbuch Physik – bundesweiter Atlas' }).waitFor()
   await page.evaluate(() => {
     window.location.hash = '#goal-external-measurement-goal'
   })

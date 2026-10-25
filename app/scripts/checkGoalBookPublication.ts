@@ -20,6 +20,11 @@ import { buildGoalBookOriginalSources, goalBookOriginalSourceMappingPaths, seria
 import { checkGoalBookSourceAtlasInputs, readGoalBookSourceAtlasInputConfig, type GoalBookSourceAtlasInputConfig } from './goalBookSourceAtlasInputs'
 import { MAX_GOAL_BOOK_ORIGINAL_SOURCES_BYTES, parseGoalBookOriginalSources } from '../src/utils/goalBookOriginalSources'
 import {
+  assertGoalBookPublicationBinding,
+  parseGoalBookPublicationIndex as parseGoalBookRuntimePublicationIndex,
+  parseGoalBookRuntimeModel,
+} from '../src/utils/goalBookRuntime'
+import {
   DEFAULT_GOAL_BOOK_ID,
   GOAL_BOOK_PUBLICATION_REGISTRY,
   goalBookDefinitionById,
@@ -377,6 +382,17 @@ export const verifyPublishedGoalBook = async (
   if (!definition) fail(`book ${paths.bookId} is missing from the publication registry`)
   if (Buffer.byteLength(publishedModelRaw, 'utf8') > MAX_MODEL_BYTES) {
     fail('published BookModel exceeds the browser runtime size budget')
+  }
+  // Publication must pass the same consumer boundary as GoalBookView. The
+  // build schema alone cannot detect drift in the browser's stricter parser.
+  const runtimeIndex = parseGoalBookRuntimePublicationIndex(index)
+  const runtimePublication = runtimeIndex.books.find(({ bookId }) => bookId === paths.bookId)
+  if (!runtimePublication) fail(`registered book ${paths.bookId} is missing from the browser catalog`)
+  try {
+    const runtimeModel = parseGoalBookRuntimeModel(parseJson(publishedModelRaw, 'BookModel'))
+    assertGoalBookPublicationBinding(runtimePublication, runtimeModel)
+  } catch (error) {
+    fail(`BookModel is incompatible with the browser runtime: ${paths.bookId}: ${error instanceof Error ? error.message : String(error)}`)
   }
   const publishedModel = parseAndValidateGoalBookModel(publishedModelRaw)
   if (publishedModel.book.landscapeId !== definition.landscapeId) {

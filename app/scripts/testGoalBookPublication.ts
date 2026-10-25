@@ -271,6 +271,19 @@ try {
     'source changes cannot silently publish stale original-source links',
   )
 
+  const browserIncompatibleModel = structuredClone(verified.model)
+  browserIncompatibleModel.pages[0].description = 'x'.repeat(20_001)
+  const browserIncompatibleModelPath = join(temporaryDirectory, 'browser-incompatible.book-model.json')
+  await writeFile(browserIncompatibleModelPath, JSON.stringify(browserIncompatibleModel), 'utf8')
+  await assert.rejects(
+    verifyPublishedGoalBook({
+      ...defaultGoalBookPublicationPaths,
+      modelPath: browserIncompatibleModelPath,
+    }),
+    /BookModel is incompatible with the browser runtime/u,
+    'publication runs the actual browser parser before native model and artifact checks',
+  )
+
   const oversizedSourcesPath = join(temporaryDirectory, 'oversized.original-sources.json')
   await writeFile(oversizedSourcesPath, ' '.repeat(8 * 1024 * 1024 + 1), 'utf8')
   await assert.rejects(

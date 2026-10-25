@@ -293,6 +293,8 @@ const crossLandscapeFixture = fixture()
 }]
 ;(crossLandscapeFixture.pages[1].externalPrerequisites[0] as Record<string, unknown>)
   .landscapeId = 'external-mathematics'
+crossLandscapeFixture.pages[1].externalPrerequisites[0].canonicalUrl =
+  'https://skillpilot.com/lernzielbuch?landscape=external-mathematics&edition=curricular-atomic-v1#goal-external'
 const crossLandscapeModel = parseGoalBookRuntimeModel(crossLandscapeFixture)
 assert.equal(
   crossLandscapeModel.pages[1].externalPrerequisites[0].landscapeId,
@@ -301,9 +303,42 @@ assert.equal(
 )
 assert.equal(
   crossLandscapeModel.pages[1].externalPrerequisites[0].canonicalUrl,
-  'https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-external',
-  'the canonical URL resolves in the containing book context rather than pretending provenance is navigation',
+  'https://skillpilot.com/lernzielbuch?landscape=external-mathematics&edition=curricular-atomic-v1#goal-external',
+  'the canonical URL resolves in the referenced landscape, matching the publication model',
 )
+
+for (const relation of ['externalPrerequisites', 'externalReverseRequires'] as const) {
+  const reference = crossLandscapeFixture.pages[1].externalPrerequisites[0]
+  const relationFixture = {
+    ...crossLandscapeFixture,
+    pages: crossLandscapeFixture.pages.map((page, index) => index === 1 ? {
+      ...page,
+      externalPrerequisites: [],
+      externalReverseRequires: [],
+      [relation]: [reference],
+    } : page),
+  }
+  assert.equal(parseGoalBookRuntimeModel(relationFixture).pages[1][relation][0].canonicalUrl,
+    reference.canonicalUrl, `${relation} accepts the bound external landscape URL`)
+  for (const canonicalUrl of [
+    reference.canonicalUrl.replace('landscape=external-mathematics', `landscape=${model.book.landscapeId}`),
+    reference.canonicalUrl.replace('landscape=external-mathematics', 'landscape=unbound-landscape'),
+    reference.canonicalUrl.replace('edition=curricular-atomic-v1', 'edition=other-edition'),
+    reference.canonicalUrl.replace('#goal-external', '#goal-other'),
+    reference.canonicalUrl.replace('skillpilot.com', 'example.com'),
+    reference.canonicalUrl.replace('&edition=', '&landscape=external-mathematics&edition='),
+  ]) {
+    const invalid = {
+      ...relationFixture,
+      pages: relationFixture.pages.map((page, index) => index === 1 ? {
+        ...page,
+        [relation]: [{ ...reference, canonicalUrl }],
+      } : page),
+    }
+    assert.throws(() => parseGoalBookRuntimeModel(invalid), /nicht sicher gelesen/u,
+      `${relation} rejects URLs outside the exact source, edition and goal binding`)
+  }
+}
 
 const unboundExternalLandscape = fixture()
 ;(unboundExternalLandscape.pages[1].externalPrerequisites[0] as Record<string, unknown>)
