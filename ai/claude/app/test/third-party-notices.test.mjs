@@ -11,14 +11,14 @@ const expectedPackages = Object.freeze({
     "@modelcontextprotocol/ext-apps@1.7.4",
     "@modelcontextprotocol/sdk@1.32.1",
     "zod-to-json-schema@3.25.2",
-    "zod@4.4.3"
+    "zod@4.6.6"
   ]),
   "memory-card-practice.html": Object.freeze([
     "@modelcontextprotocol/ext-apps@1.7.4",
     "@modelcontextprotocol/sdk@1.32.1",
     "katex@0.18.2",
     "zod-to-json-schema@3.25.2",
-    "zod@4.4.3"
+    "zod@4.6.6"
   ])
 });
 

@@ -13,6 +13,8 @@ import {
 } from 'node:fs'
 import { basename, dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import Ajv2020 from 'ajv/dist/2020.js'
+import addFormats from 'ajv-formats'
 import {
   createFullStandalonePackagePlan,
   materializeFullStandalonePackage,
@@ -586,6 +588,34 @@ try {
   )
 
   const originalReview = readFixtureJson<JsonObject>(reviewRepositoryPath)
+  const nativeReview = structuredClone(originalReview)
+  ;(nativeReview.assetDecisions as JsonObject[])[0].provenanceClass = 'ai-assisted-repository-native'
+  writeJson(reviewRepositoryPath, nativeReview)
+  const nativePlan = createFullStandalonePackagePlan(fixturePlanOptions)
+  const nativeAsset = manifestFiles(nativePlan).find((file) => file.path === binaryArtifactPath)
+  assert.equal(nativeAsset?.provenanceClass, 'ai-assisted-repository-native',
+    'repository-native AI assistance remains explicit in the package manifest')
+  assert.equal(nativeAsset?.redistributionStatus, 'review-required')
+  assert.equal(nativeAsset?.licenseExpression, null)
+  assert.equal(nativePlan.publicationReady, false,
+    'recognizing native provenance does not approve redistribution or assign a license')
+  const ajv = new Ajv2020({ strict: false, allErrors: true })
+  addFormats(ajv)
+  const validateManifest = ajv.compile(JSON.parse(readFileSync(
+    resolve(realRepositoryRoot, 'contracts/curriculum-package/v1/package-manifest.schema.json'), 'utf8',
+  )))
+  assert.equal(validateManifest(nativePlan.manifest), true, ajv.errorsText(validateManifest.errors))
+  const invalidNativeManifest = structuredClone(nativePlan.manifest)
+  const invalidNativeAsset = (invalidNativeManifest.files as FullStandaloneManifestFile[])
+    .find((file) => file.path === binaryArtifactPath)!
+  invalidNativeAsset.redistributionStatus = 'allowed'
+  assert.equal(validateManifest(invalidNativeManifest), false,
+    'native provenance cannot bypass the license requirement for allowed redistribution')
+  invalidNativeAsset.redistributionStatus = 'review-required'
+  invalidNativeAsset.provenanceClass = 'unrecognized-provenance'
+  assert.equal(validateManifest(invalidNativeManifest), false,
+    'the provenance vocabulary remains closed')
+  writeJson(reviewRepositoryPath, originalReview)
   const forgedReview = structuredClone(originalReview)
   ;(forgedReview.summary as JsonObject).publicationReady = true
   writeJson(reviewRepositoryPath, forgedReview)

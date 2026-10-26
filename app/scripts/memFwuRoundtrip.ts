@@ -17,7 +17,7 @@ import {
 } from 'node:fs'
 import { basename, dirname, isAbsolute, relative, resolve, sep } from 'node:path'
 import { createInterface } from 'node:readline'
-import { fileURLToPath } from 'node:url'
+import { fileURLToPath, pathToFileURL } from 'node:url'
 
 type JsonValue =
   | null
@@ -260,7 +260,7 @@ const FWU_STATE_BY_JURISDICTION = new Map<string, string>([
   ['DE-BB', `${LP}LP_3000057`],
 ])
 
-const emptyCounts = (): SemanticCounts => ({
+export const emptyCounts = (): SemanticCounts => ({
   files: 0,
   textLines: 0,
   canonicalGoals: 0,
@@ -851,7 +851,7 @@ const semanticDeckIri = (archiveRoot: string, deckId: string, language: string |
 
 const semanticCardIri = (deck: string, cardId: string) => `${deck}/card/${idSegment(cardId)}`
 
-const writeProfile = (
+export const writeProfile = (
   profilePath: string,
   options: { includeCarrier?: boolean } = {},
 ) => {
@@ -1020,6 +1020,10 @@ sp:viewId a owl:DatatypeProperty ; rdfs:label "view id"@en .
 sp:scopeJson a owl:DatatypeProperty ; rdfs:label "composition view scope JSON"@en .
 sp:jurisdiction a owl:DatatypeProperty ; rdfs:label "jurisdiction"@en .
 sp:decision a owl:DatatypeProperty ; rdfs:label "review decision"@en .
+sp:reviewDecisionId a owl:DatatypeProperty ; rdfs:label "review decision id"@en .
+sp:rationale a owl:DatatypeProperty ; rdfs:label "review rationale"@en .
+sp:partialSourceEvidenceJson a owl:DatatypeProperty ; rdfs:label "partial source evidence JSON"@en .
+sp:withdrawnMappingsJson a owl:DatatypeProperty ; rdfs:label "withdrawn mappings JSON"@en .
 sp:topicCode a owl:DatatypeProperty ; rdfs:label "curricular topic code"@en .
 sp:reviewedAt a owl:DatatypeProperty ; rdfs:label "review timestamp"@en .
 sp:reviewer a owl:DatatypeProperty ; rdfs:label "reviewer"@en .
@@ -1068,6 +1072,7 @@ sp:targetGoalId a owl:DatatypeProperty ; rdfs:label "target goal id for external
 sp:targetSubject a owl:DatatypeProperty ; rdfs:label "target subject for external dependency"@en .
 sp:order a owl:DatatypeProperty ; rdfs:label "stable order"@en .
 sp:viewNodeKind a owl:DatatypeProperty ; rdfs:domain sp:CompositionNode ; rdfs:label "composition node kind"@en .
+sp:projectionRole a owl:DatatypeProperty ; rdfs:domain sp:CompositionNode ; rdfs:label "composition projection role"@en .
 sp:structureId a owl:DatatypeProperty ; rdfs:domain sp:CompositionNode ; rdfs:label "composition structure id"@en .
 sp:displayLabel a owl:DatatypeProperty ; rdfs:domain sp:CompositionNode ; rdfs:label "composition display label"@en .
 sp:quarantinedRecordJson a owl:DatatypeProperty ;
@@ -2043,6 +2048,7 @@ const walkViewNodes = (
     write(tripleLine(resource, `${RDF}type`, iri(`${SP}CompositionNode`)))
     write(tripleLine(resource, `${SP}order`, literal(index, `${XSD}integer`)))
     writeStringField(write, resource, `${SP}viewNodeKind`, data.kind)
+    writeStringField(write, resource, `${SP}projectionRole`, data.projectionRole)
     writeStringField(write, resource, `${SP}structureId`, data.id)
     writeStringField(write, resource, `${RDFS}label`, data.label, 'de')
     writeStringField(write, resource, `${SP}displayLabel`, data.displayLabel)
@@ -2057,7 +2063,7 @@ const walkViewNodes = (
   })
 }
 
-const writeViewSemantics = (
+export const writeViewSemantics = (
   write: (line: string) => void,
   archiveRoot: string,
   entries: ZipEntryRecord[],
@@ -2094,7 +2100,7 @@ const sourceGoalIdFromReviewDecision = (data: Record<string, JsonValue>) => (
   stringValue(data.sourceGoalId) ?? stringValue(data.legacyGoalId) ?? stringValue(data.reviewDecisionId)
 )
 
-const writeMappingSemantics = (
+export const writeMappingSemantics = (
   write: (line: string) => void,
   archiveRoot: string,
   entries: ZipEntryRecord[],
@@ -2144,6 +2150,9 @@ const writeMappingSemantics = (
           write(tripleLine(resource, `${SP}zipPath`, literal(entry.path)))
           writeStringField(write, resource, `${SP}jurisdiction`, jurisdiction)
           writeStringField(write, resource, `${SP}decision`, decisionData.decision)
+          writeStringField(write, resource, `${SP}reviewDecisionId`, decisionData.reviewDecisionId)
+          writeStringField(write, resource, `${SP}sourceSpan`, decisionData.sourceSpan)
+          writeStringField(write, resource, `${SP}rationale`, decisionData.rationale)
           writeStringField(write, resource, `${SP}topicCode`, decisionData.topicCode)
           writeStringField(write, resource, `${SP}matchType`, decisionData.matchType)
           writeStringField(write, resource, `${SP}courseLevelDecision`, decisionData.courseLevelDecision)
@@ -2151,6 +2160,8 @@ const writeMappingSemantics = (
           writeStringField(write, resource, `${SP}reviewedAt`, decisionData.reviewedAt)
           writeStringField(write, resource, `${SP}reviewer`, decisionData.reviewer)
           writeJsonField(write, resource, `${SP}evidenceJson`, decisionData.evidence)
+          writeJsonField(write, resource, `${SP}partialSourceEvidenceJson`, decisionData.partialSourceEvidence)
+          writeJsonField(write, resource, `${SP}withdrawnMappingsJson`, decisionData.withdrawnMappings)
           writeJsonField(write, resource, `${SP}suggestedCanonicalGapJson`, decisionData.suggestedCanonicalGap)
           if (sourceGoalId) {
             write(tripleLine(resource, `${SP}mapsSourceGoal`, iri(sourceGoalIri(archiveRoot, sourceGoalId))))
@@ -3736,8 +3747,10 @@ const run = async () => {
   }
 }
 
-run().catch((error: unknown) => {
-  const message = error instanceof Error ? error.message : String(error)
-  process.stderr.write(`${message}\n`)
-  process.exitCode = 1
-})
+if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
+  run().catch((error: unknown) => {
+    const message = error instanceof Error ? error.message : String(error)
+    process.stderr.write(`${message}\n`)
+    process.exitCode = 1
+  })
+}

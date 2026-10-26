@@ -267,3 +267,6 @@ curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-SL-exc
 # MCP snapshot UI artifacts retain their hash-bound renderer/SDK bytes.
 # Whitespace is validated through the artifact hashes, not authored formatting.
 contracts/drafts/openai/skillpilot-coach/*-SNAPSHOT/ui/** -text -whitespace
+# Previously advertised MCP resources keep their exact content-addressed bytes.
+backend/src/main/resources/openai/retained/skillpilot/coach/v1/sha256-*/*.html -text -whitespace
+backend/src/main/resources/claude-connector-v1/mcp-apps/retained/sha256-*/*.html -text -whitespace

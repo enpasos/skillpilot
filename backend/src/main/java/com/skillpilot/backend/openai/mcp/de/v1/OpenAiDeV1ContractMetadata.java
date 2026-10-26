@@ -31,7 +31,7 @@ public final class OpenAiDeV1ContractMetadata {
     public static final String PROTECTED_RESOURCE_METADATA_ENDPOINT =
             PUBLIC_MCP_ORIGIN + PROTECTED_RESOURCE_METADATA_PATH;
     public static final String GOAL_VISUALIZATION_ARTIFACT_SHA256 =
-            "7cfc661b04b03d33aa630e8040150509e5c4d1567c39e95aebacf3f7307e13f1";
+            "870ddad5824924198038515ba9b051b1956a797267e5a24490e0589f8ee0e408";
     public static final String GOAL_VISUALIZATION_RESOURCE_URI =
             "ui://skillpilot/coach/v1/sha256-"
                     + GOAL_VISUALIZATION_ARTIFACT_SHA256
@@ -50,7 +50,7 @@ public final class OpenAiDeV1ContractMetadata {
     public static final String LEGACY_GOAL_VISUALIZATION_RESOURCE_CLASSPATH =
             "/openai/retained/skillpilot/coach/v1/legacy-1.0.0/goal-visualization.html";
     public static final String MEMORY_CARD_PRACTICE_ARTIFACT_SHA256 =
-            "3665591f88892a89ce22bec7076e7ed7727db8b9360b438f1e1345e9a01bf7cb";
+            "aae01ed523f6268fd5948db66879176049e99140e7bda48d8891a425a89fe2eb";
     public static final String MEMORY_CARD_PRACTICE_RESOURCE_URI =
             "ui://skillpilot/coach/v1/sha256-"
                     + MEMORY_CARD_PRACTICE_ARTIFACT_SHA256
@@ -72,11 +72,13 @@ public final class OpenAiDeV1ContractMetadata {
             "c890cf271307d815256450a2b20b27d57015a84e9f4e39c97532eaefc4e30c26",
             "12762009bd8e00c392e06aefac685e17653f50a5e7efeb21f865429a9fab641e",
             "08030bd956b68b816523f4971b6d18ab154eef01381882b01d7f1991cc643391",
-            "9c09821e96abadfccb08d07b62367d47963420c3a5cc51021ba801e2d6019fe4");
+            "9c09821e96abadfccb08d07b62367d47963420c3a5cc51021ba801e2d6019fe4",
+            "7cfc661b04b03d33aa630e8040150509e5c4d1567c39e95aebacf3f7307e13f1");
     /** Previously advertised memory-practice resources, retained without tool bindings. */
     public static final List<String> RETAINED_MEMORY_CARD_PRACTICE_ARTIFACT_SHA256S = List.of(
             "8524ee20837971227c35f1e16518d2b5bdbd60637fbec6beede9f2f4b29e4852",
-            "7e1e4f1acbc61a9b50e620ebdf56f10c782517f6454edb1777a8d796832c2962");
+            "7e1e4f1acbc61a9b50e620ebdf56f10c782517f6454edb1777a8d796832c2962",
+            "3665591f88892a89ce22bec7076e7ed7727db8b9360b438f1e1345e9a01bf7cb");
     /** Loopback-only transport target behind the dedicated V1 reverse proxy. */
     public static final String INTERNAL_MCP_PATH = "/internal/openai/v1/mcp";
     /** Loopback-only metadata target rewritten from the public path-specific URL. */

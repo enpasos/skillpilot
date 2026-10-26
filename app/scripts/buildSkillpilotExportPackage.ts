@@ -1764,15 +1764,17 @@ const cardDeckIndexRecord = (absolutePath: string) => {
   }
 }
 
-const canonicalGoalIndex = (currentCanonicalPath: string) => {
+export type SubjectExportExternalGoalOwner = {
+  goalId: string
+  targetLandscapeId: string | null
+  targetFrameworkId: string | null
+  targetSubject: string | null
+  targetTitle: string | null
+}
+
+export const canonicalGoalIndex = (currentCanonicalPath: string) => {
   const canonicalDirectory = resolveRepoPath('curricula/DE/Gymnasium/canonical')
-  const index = new Map<string, {
-    goalId: string
-    targetLandscapeId: string | null
-    targetFrameworkId: string | null
-    targetSubject: string | null
-    targetTitle: string | null
-  }>()
+  const index = new Map<string, SubjectExportExternalGoalOwner>()
 
   walkFiles(canonicalDirectory)
     .filter((path) => extname(path).toLowerCase() === '.json')
@@ -1795,6 +1797,45 @@ const canonicalGoalIndex = (currentCanonicalPath: string) => {
     })
 
   return index
+}
+
+export const collectExternalCompositionGoalReferences = (
+  views: Array<{ path: string; data: JsonValue }>,
+  localGoalIds: ReadonlySet<string>,
+  externalIndex: ReadonlyMap<string, SubjectExportExternalGoalOwner>,
+  errors: string[],
+): JsonValue[] => {
+  const references: JsonValue[] = []
+  views.forEach(({ path, data }) => {
+    if (!isJsonObject(data)) return
+    const fromViewId = typeof data.viewId === 'string' ? data.viewId : data.id
+    const visit = (node: JsonValue) => {
+      if (!isJsonObject(node)) return
+      if (typeof node.goalId === 'string' && !localGoalIds.has(node.goalId)) {
+        const owner = externalIndex.get(node.goalId)
+        if (!owner || !owner.targetLandscapeId || !owner.targetSubject || !owner.targetTitle) {
+          errors.push(`Unresolved external composition reference from ${path} to ${node.goalId}`)
+        } else if (typeof fromViewId !== 'string'
+          || !['goalEntry', 'canonicalSubtree'].includes(String(node.kind))
+          || node.projectionRole !== 'prerequisiteOnly') {
+          errors.push(`External composition reference must be an explicit prerequisiteOnly goal in ${path}: ${node.goalId}`)
+        } else {
+          const { goalId, ...metadata } = owner
+          references.push({
+            fromViewId,
+            fromViewPath: path,
+            nodeKind: node.kind,
+            projectionRole: node.projectionRole,
+            targetGoalId: goalId,
+            ...metadata,
+          })
+        }
+      }
+      if (Array.isArray(node.children)) node.children.forEach(visit)
+    }
+    if (Array.isArray(data.rootNodes)) data.rootNodes.forEach(visit)
+  })
+  return references
 }
 
 const collectExternalGoalReferences = (
@@ -2277,6 +2318,13 @@ const main = () => {
   }
   const memoryCardReviewAudits = selectMemoryCardReviewAudits(canonicalLandscapeId, errors)
   const externalGoalReferences = collectExternalGoalReferences(canonicalPath, canonicalData, errors)
+  const externalViewGoalReferences = collectExternalCompositionGoalReferences(
+    compositionFiles.map((path) => ({ path: `data/views/${basename(path)}`, data: readJson(path) })),
+    new Set((Array.isArray(canonicalData.goals) ? canonicalData.goals : [])
+      .filter(isJsonObject).flatMap((goal) => typeof goal.id === 'string' ? [goal.id] : [])),
+    canonicalGoalIndex(canonicalPath),
+    errors,
+  )
   const sourceOriginalUrlIssues = sourceExtractionJsonFiles.flatMap(sourceExtractionOriginalUrlIssues)
   errors.push(...sourceOriginalUrlIssues)
   const sourceGoalReferences = sourceGoalReferenceIndex(sourceExtractionJsonFiles)
@@ -2358,8 +2406,9 @@ const main = () => {
     archiveRoot,
     'data/dependencies/external-goal-references.json',
     {
-      note: 'Cross-subject goal references used by this subject landscape. Target metadata is informational and points outside this subject package.',
+      note: 'Cross-subject graph and authored prerequisite-only composition references. Target metadata identifies canonical owners outside this subject package.',
       references: externalGoalReferences,
+      viewReferences: externalViewGoalReferences,
     },
     'external-dependencies',
     SKILLPILOT_DATA_LICENSE_CATEGORY,
@@ -2445,6 +2494,7 @@ const main = () => {
       mappingFiles: mappingFiles.length,
       provenanceFiles: provenanceFiles.length,
       externalGoalReferences: externalGoalReferences.length,
+      externalViewGoalReferences: externalViewGoalReferences.length,
       sourceExtractionFiles: sourceExtractionFiles.length,
       sourceExtractionJsonFiles: sourceExtractionJsonFiles.length,
       sourceGoalReferences: sourceGoalReferences.sourceGoalReferenceCount,

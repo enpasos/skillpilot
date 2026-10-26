@@ -167,7 +167,7 @@ TRUSTED_JSON_RELEASE_PROFILE = {
     "packagePath": "support/json/schemas/profiles/full-standalone-v1.profile.json",
     "mediaType": "application/json",
     "bytes": 16926,
-    "sha256": "00aaa154e43ea6440a745b53fdd089ae20a2eb89b4208016335fcb784ec2066c",
+    "sha256": "c60d23d57d319153f10d5567a2fb826fbe8d55e7b1e858e613fa1f57165ff721",
     "schemaTrustField": "trustedContractSchemas",
     "trustedSchemaCount": 22,
 }

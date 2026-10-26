@@ -11,7 +11,7 @@ import {
 } from 'node:fs'
 import { dirname, isAbsolute, relative, resolve, sep } from 'node:path'
 import { createInterface } from 'node:readline'
-import { fileURLToPath } from 'node:url'
+import { fileURLToPath, pathToFileURL } from 'node:url'
 
 type JsonValue =
   | null
@@ -327,6 +327,7 @@ const P = {
   landscapeId: `${SP}landscapeId`,
   hasCompositionChild: `${SP}hasCompositionChild`,
   viewNodeKind: `${SP}viewNodeKind`,
+  projectionRole: `${SP}projectionRole`,
   structureId: `${SP}structureId`,
   displayLabel: `${SP}displayLabel`,
   compositionGoal: `${SP}compositionGoal`,
@@ -359,6 +360,10 @@ const P = {
   matchType: `${SP}matchType`,
   jurisdiction: `${SP}jurisdiction`,
   decision: `${SP}decision`,
+  reviewDecisionId: `${SP}reviewDecisionId`,
+  rationale: `${SP}rationale`,
+  partialSourceEvidenceJson: `${SP}partialSourceEvidenceJson`,
+  withdrawnMappingsJson: `${SP}withdrawnMappingsJson`,
   reviewedAt: `${SP}reviewedAt`,
   reviewer: `${SP}reviewer`,
   schemaVersion: `${SP}schemaVersion`,
@@ -610,11 +615,11 @@ const isCarrierPredicate = (predicate: string) => (
   || predicate === `${SP}endsWithNewline`
 )
 
-const readRdfModel = async (rdfPath: string) => {
+export const readRdfModel = async (rdfPath: string) => {
   const model = emptyModel()
   const input = createReadStream(rdfPath)
   const digest = createHash('sha256')
-  input.on('data', (chunk: Buffer) => digest.update(chunk))
+  input.on('data', (chunk) => { digest.update(chunk) })
   const reader = createInterface({
     input,
     crlfDelay: Infinity,
@@ -1663,7 +1668,7 @@ const reconstructMappingFiles = (model: RdfModel) => {
   return mappingFiles
 }
 
-const reconstructMappings = (model: RdfModel) => {
+export const reconstructMappings = (model: RdfModel) => {
   const canonicalMappings: Record<string, JsonValue[]> = {}
   orderedResources(model, resourcesOfType(model, T.mappingRecord)).forEach((resource) => {
     const zipPath = lit(model, resource, P.zipPath) ?? 'unknown'
@@ -1683,6 +1688,9 @@ const reconstructMappings = (model: RdfModel) => {
     withString(decision, 'sourceGoalId', sourceGoal ? skillpilotId(model, sourceGoal) : undefined)
     decision.canonicalGoalIds = iris(model, resource, P.mapsCanonicalGoal).map((goal) => skillpilotId(model, goal))
     withString(decision, 'decision', lit(model, resource, P.decision))
+    withString(decision, 'reviewDecisionId', lit(model, resource, P.reviewDecisionId))
+    withString(decision, 'sourceSpan', lit(model, resource, P.sourceSpan))
+    withString(decision, 'rationale', lit(model, resource, P.rationale))
     withString(decision, 'topicCode', lit(model, resource, P.topicCode))
     withString(decision, 'matchType', lit(model, resource, P.matchType))
     withString(decision, 'courseLevelDecision', lit(model, resource, P.courseLevelDecision))
@@ -1690,6 +1698,8 @@ const reconstructMappings = (model: RdfModel) => {
     withString(decision, 'reviewedAt', lit(model, resource, P.reviewedAt))
     withString(decision, 'reviewer', lit(model, resource, P.reviewer))
     withJson(decision, 'evidence', json(lit(model, resource, P.evidenceJson)))
+    withJson(decision, 'partialSourceEvidence', json(lit(model, resource, P.partialSourceEvidenceJson)))
+    withJson(decision, 'withdrawnMappings', json(lit(model, resource, P.withdrawnMappingsJson)))
     withJson(decision, 'suggestedCanonicalGap', json(lit(model, resource, P.suggestedCanonicalGapJson)))
     reviewDecisions[zipPath] = [...(reviewDecisions[zipPath] ?? []), decision]
   })
@@ -1700,6 +1710,7 @@ const reconstructMappings = (model: RdfModel) => {
 const rebuildViewNode = (model: RdfModel, resource: string): JsonValue => {
   const node: Record<string, JsonValue> = {}
   withString(node, 'kind', lit(model, resource, P.viewNodeKind))
+  withString(node, 'projectionRole', lit(model, resource, P.projectionRole))
   withString(node, 'id', lit(model, resource, P.structureId))
   withString(node, 'label', lit(model, resource, P.label))
   withString(node, 'displayLabel', lit(model, resource, P.displayLabel))
@@ -1712,17 +1723,18 @@ const rebuildViewNode = (model: RdfModel, resource: string): JsonValue => {
   return node
 }
 
-const reconstructViews = (model: RdfModel) => {
+export const reconstructViews = (model: RdfModel) => {
   const views: Record<string, JsonValue> = {}
   orderedResources(model, resourcesOfType(model, T.compositionView)).forEach((resource) => {
     const zipPath = lit(model, resource, P.zipPath) ?? resource
-    views[zipPath] = {
-      viewId: lit(model, resource, P.viewId),
-      label: lit(model, resource, P.label),
-      landscapeId: lit(model, resource, P.landscapeId),
-      scope: json(lit(model, resource, P.scopeJson)),
+    const view: Record<string, JsonValue> = {
       rootNodes: orderedResources(model, iris(model, resource, P.hasCompositionChild)).map((node) => rebuildViewNode(model, node)),
     }
+    withString(view, 'viewId', lit(model, resource, P.viewId))
+    withString(view, 'label', lit(model, resource, P.label))
+    withString(view, 'landscapeId', lit(model, resource, P.landscapeId))
+    withJson(view, 'scope', json(lit(model, resource, P.scopeJson)))
+    views[zipPath] = view
   })
   return views
 }
@@ -3282,8 +3294,10 @@ const run = async () => {
   }
 }
 
-run().catch((error: unknown) => {
-  const message = error instanceof Error ? error.message : String(error)
-  process.stderr.write(`${message}\n`)
-  process.exitCode = 1
-})
+if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
+  run().catch((error: unknown) => {
+    const message = error instanceof Error ? error.message : String(error)
+    process.stderr.write(`${message}\n`)
+    process.exitCode = 1
+  })
+}

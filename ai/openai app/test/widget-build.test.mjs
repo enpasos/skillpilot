@@ -12,6 +12,11 @@ function assertInlineScriptParses(html, filename) {
   );
 }
 
+// Patched Zod 4.6.6 includes additional core, compiler, and locale code through
+// the official MCP SDK. Keep explicit budgets above the measured 531/524/816 kB.
+const PROTOCOL_WIDGET_MAX_BYTES = 600_000;
+const MEMORY_WIDGET_MAX_BYTES = 900_000;
+
 for (const locale of ["de", "en"]) {
   test(`${locale} widget is a self-contained MCP App document`, async () => {
     const html = await readFile(new URL(`../dist/${locale}/widget.html`, import.meta.url), "utf8");
@@ -30,7 +35,7 @@ for (const locale of ["de", "en"]) {
     assert.match(html, /MCP-Bridge|MCP bridge/);
     assertInlineScriptParses(html, `${locale}/widget.html`);
     assert.ok(
-      Buffer.byteLength(html) < 500_000,
+      Buffer.byteLength(html) < PROTOCOL_WIDGET_MAX_BYTES,
       "widget including the official MCP Apps protocol client should remain bounded"
     );
   });
@@ -137,7 +142,7 @@ test("goal visualization widget is self-contained and uses the standards-first M
     "widget must receive its image URL at runtime instead of hard-coding an external asset"
   );
   assert.ok(
-    Buffer.byteLength(html) < 450_000,
+    Buffer.byteLength(html) < PROTOCOL_WIDGET_MAX_BYTES,
     "widget including the official MCP Apps protocol client should remain bounded"
   );
 });
@@ -208,7 +213,7 @@ test("memory-card practice widget is private-data-safe, interactive, and embedde
     "widget must not hard-code external runtime assets"
   );
   assert.ok(
-    Buffer.byteLength(html) < 800_000,
+    Buffer.byteLength(html) < MEMORY_WIDGET_MAX_BYTES,
     "widget bundle including the self-contained KaTeX/MathML renderer must remain bounded"
   );
 });

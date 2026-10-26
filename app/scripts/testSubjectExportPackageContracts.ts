@@ -7,6 +7,8 @@ import {
   SKILLPILOT_LICENSE_SCOPE_PATH,
   buildPackageLicense,
   buildSubjectExportLicensePolicy,
+  canonicalGoalIndex,
+  collectExternalCompositionGoalReferences,
   licenseCategoryForRepoSource,
   sanitizeJsonForPackage,
   subjectExportLicenseEntries,
@@ -15,10 +17,25 @@ import {
   isKnownSubjectExportLicenseCategory,
   subjectExportLicenseIssues,
   unresolvedCompositionGoalReferences,
+  validateExternalCompositionGoalReferences,
 } from './validateSubjectExportPackages'
+import { SUBJECT_EXPORT_MEMORY_CARD_REVIEW_CONFIGS } from './runSubjectExportReleaseGate'
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const readJson = (path: string) => JSON.parse(readFileSync(resolve(repoRoot, path), 'utf8'))
+
+const activeMemoryReviews = readJson(
+  'curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json',
+).subjects as Array<{ landscapePath: string; memoryReviewConfigPath: string }>
+for (const subject of activeMemoryReviews) {
+  const landscapeId = readJson(subject.landscapePath).landscapeId
+  const matching = SUBJECT_EXPORT_MEMORY_CARD_REVIEW_CONFIGS.filter(
+    ({ configPath }) => readJson(configPath).landscapeId === landscapeId,
+  )
+  assert.equal(matching.length, 1, 'each export subject uses exactly one current memory review')
+  assert.equal(matching[0].configPath, subject.memoryReviewConfigPath,
+    'export release checks and report freshness follow the active evidence registry, preserving historical reviews')
+}
 
 const licensePolicy = buildSubjectExportLicensePolicy()
 assert.equal(licensePolicy.defaultSkillpilotDataLicense, 'CC-BY-4.0')
@@ -106,6 +123,8 @@ assert.equal(
 // typo. Cover nested views, direct entries and subtree roots, and keep missing
 // local/foreign IDs blocking even when another foreign goal is declared.
 const view: Parameters<typeof unresolvedCompositionGoalReferences>[0] = {
+  viewId: 'fixture-physics-view',
+  landscapeId: 'fixture-physics',
   rootNodes: [{ kind: 'structure', id: 'root', children: [
     { kind: 'goalEntry', goalId: 'local' },
     { kind: 'goalEntry', goalId: 'external-entry', projectionRole: 'prerequisiteOnly' },
@@ -123,6 +142,53 @@ assert.deepEqual(unresolvedCompositionGoalReferences(
 assert.deepEqual(unresolvedCompositionGoalReferences(
   { rootNodes: [{ kind: 'goalEntry', goalId: 'local-typo' }] }, local, external,
 ), ['local-typo'])
+
+const externalOwners = new Map([...external].map((goalId) => [goalId, {
+  goalId, targetLandscapeId: 'fixture-mathematics', targetFrameworkId: null,
+  targetSubject: 'Mathematik', targetTitle: goalId,
+}]))
+const fixtureViews = [{ path: 'data/views/fixture.view.json', data: view }]
+const compositionErrors: string[] = []
+const viewReferences = collectExternalCompositionGoalReferences(fixtureViews, local, externalOwners, compositionErrors)
+assert.deepEqual(compositionErrors, [])
+assert.equal(viewReferences.length, 2, 'explicit entries and subtree roots receive separate source-bound declarations')
+const validatedViewReferences = validateExternalCompositionGoalReferences(viewReferences, fixtureViews, local)
+assert.deepEqual(validatedViewReferences.issues, [])
+assert.deepEqual([...validatedViewReferences.byViewPath.get(fixtureViews[0].path) ?? []], [...external])
+for (const replacement of [
+  { fromViewId: 'another-view' },
+  { fromViewPath: 'data/views/another.view.json' },
+  { targetGoalId: 'unknown-goal' },
+  { targetLandscapeId: null },
+  { nodeKind: 'canonicalSubtree' },
+  { projectionRole: 'target' },
+]) {
+  const invalid = structuredClone(viewReferences)
+  Object.assign(invalid[0] as Record<string, unknown>, replacement)
+  assert(validateExternalCompositionGoalReferences(invalid, fixtureViews, local).issues.length > 0,
+    'invalid view ownership, goal, role and node-kind declarations must fail closed')
+}
+for (const conflictingNode of [
+  { kind: 'goalEntry', goalId: 'external-entry', projectionRole: 'target' },
+  { kind: 'canonicalSubtree', goalId: 'external-entry', projectionRole: 'prerequisiteOnly' },
+]) {
+  const conflictingView = {
+    ...view,
+    rootNodes: [...(Array.isArray(view.rootNodes) ? view.rootNodes : []), conflictingNode],
+  }
+  const checked = validateExternalCompositionGoalReferences(
+    viewReferences, [{ path: fixtureViews[0].path, data: conflictingView }], local,
+  )
+  assert(checked.issues.length > 0,
+    'one legitimate prerequisite occurrence cannot authorize a second target or undeclared node-kind occurrence')
+  assert.equal(checked.byViewPath.get(fixtureViews[0].path)?.has('external-entry'), false,
+    'a mixed external goal is excluded from the declared composition closure')
+}
+const unknownViewErrors: string[] = []
+collectExternalCompositionGoalReferences([{ path: 'data/views/unknown.view.json', data: {
+  viewId: 'unknown', rootNodes: [{ kind: 'goalEntry', goalId: 'unknown', projectionRole: 'prerequisiteOnly' }],
+} }], local, externalOwners, unknownViewErrors)
+assert.equal(unknownViewErrors.length, 1, 'unknown canonical owners cannot be declared as external prerequisites')
 
 // Exercise the current regressions with the actual production sanitizer and
 // view resolver. These checks only read the curricula; no QA state is written.
@@ -148,11 +214,24 @@ for (const id of declaredPhysicsDependencies) {
   assert(foreignGoalIds.has(id), `External Physics dependency must have a canonical owner: ${id}`)
 }
 const physicsViewDir = 'curricula/DE/Gymnasium/composition-views/physik'
+const physicsViews = readdirSync(resolve(repoRoot, physicsViewDir))
+  .filter((file) => file.endsWith('.view.json'))
+  .map((file) => ({ path: `data/views/${file}`, data: readJson(`${physicsViewDir}/${file}`) }))
+const physicsViewErrors: string[] = []
+const physicsViewReferences = collectExternalCompositionGoalReferences(
+  physicsViews, physicsIds, canonicalGoalIndex(resolve(repoRoot, `${canonicalDir}/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`)), physicsViewErrors,
+)
+assert.deepEqual(physicsViewErrors, [], 'all external Physics composition prerequisites have canonical owners')
+const validatedPhysicsViewReferences = validateExternalCompositionGoalReferences(physicsViewReferences, physicsViews, physicsIds)
+assert.deepEqual(validatedPhysicsViewReferences.issues, [])
+const bbViewPrerequisites = validatedPhysicsViewReferences.byViewPath.get('data/views/de-bb-gk.view.json')
+assert(bbViewPrerequisites?.has('09f47964-2cd0-410e-93ee-9632b582fc91'),
+  'the source-bound Mathematics function concept is retained even without a direct Physics prerequisite edge')
 let checkedViews = 0
-for (const file of readdirSync(resolve(repoRoot, physicsViewDir)).filter((file) => file.endsWith('.view.json'))) {
+for (const { path, data } of physicsViews) {
   assert.deepEqual(unresolvedCompositionGoalReferences(
-    readJson(`${physicsViewDir}/${file}`), physicsIds, declaredPhysicsDependencies,
-  ), [], `${file}: every composition reference must be local or declared external`)
+    data, physicsIds, new Set([...declaredPhysicsDependencies, ...(validatedPhysicsViewReferences.byViewPath.get(path) ?? [])]),
+  ), [], `${path}: every composition reference must be local or declared external`)
   checkedViews += 1
 }
 assert(checkedViews > 0)

@@ -898,6 +898,77 @@ export const unresolvedCompositionGoalReferences = (
   // universe. This does not make the package full-standalone-ready.
   .filter((goalId) => !localGoalIds.has(goalId) && !declaredExternalGoalIds.has(goalId))
 
+export const validateExternalCompositionGoalReferences = (
+  value: JsonValue | undefined,
+  views: Array<{ path: string; data: JsonValue }>,
+  localGoalIds: ReadonlySet<string>,
+) => {
+  const isJsonObject = (entry: JsonValue | undefined): entry is Record<string, JsonValue> => (
+    entry !== undefined && entry !== null && typeof entry === 'object' && !Array.isArray(entry)
+  )
+  const issues: string[] = []
+  const byViewPath = new Map<string, Set<string>>()
+  const declaredOccurrences = new Set<string>()
+  if (value === undefined) return { issues, byViewPath }
+  if (!Array.isArray(value)) return { issues: ['External composition references must be an array'], byViewPath }
+  const viewByPath = new Map(views.map((view) => [view.path, view.data]))
+  const keys = ['fromViewId', 'fromViewPath', 'nodeKind', 'projectionRole', 'targetGoalId',
+    'targetLandscapeId', 'targetFrameworkId', 'targetSubject', 'targetTitle']
+  value.forEach((reference) => {
+    if (!isJsonObject(reference)
+      || Object.keys(reference).length !== keys.length
+      || !Object.keys(reference).every((key) => keys.includes(key))
+      || !['fromViewId', 'fromViewPath', 'targetGoalId', 'targetLandscapeId', 'targetSubject', 'targetTitle']
+        .every((key) => typeof reference[key] === 'string' && String(reference[key]).trim().length > 0)
+      || !(reference.targetFrameworkId === null || typeof reference.targetFrameworkId === 'string')
+      || !['goalEntry', 'canonicalSubtree'].includes(String(reference.nodeKind))
+      || reference.projectionRole !== 'prerequisiteOnly'
+      || localGoalIds.has(String(reference.targetGoalId))) {
+      issues.push(`Malformed external composition reference: ${JSON.stringify(reference)}`)
+      return
+    }
+    const view = viewByPath.get(String(reference.fromViewPath))
+    let bound = false
+    const visit = (node: JsonValue) => {
+      if (!isJsonObject(node)) return
+      if (node.goalId === reference.targetGoalId && node.kind === reference.nodeKind
+        && node.projectionRole === reference.projectionRole) bound = true
+      if (Array.isArray(node.children)) node.children.forEach(visit)
+    }
+    if (isJsonObject(view)
+      && (view.viewId ?? view.id) === reference.fromViewId
+      && typeof view.landscapeId === 'string' && view.landscapeId.trim().length > 0
+      && view.landscapeId !== reference.targetLandscapeId
+      && Array.isArray(view.rootNodes)) view.rootNodes.forEach(visit)
+    if (!bound) {
+      issues.push(`External composition reference is not bound to its source view: ${reference.fromViewPath}: ${reference.targetGoalId}`)
+      return
+    }
+    const path = String(reference.fromViewPath)
+    const declared = byViewPath.get(path) ?? new Set<string>()
+    declared.add(String(reference.targetGoalId))
+    byViewPath.set(path, declared)
+    declaredOccurrences.add(JSON.stringify([path, reference.targetGoalId, reference.nodeKind, reference.projectionRole]))
+  })
+  views.forEach(({ path, data }) => {
+    const declared = byViewPath.get(path)
+    if (!declared || !isJsonObject(data)) return
+    const invalidGoalIds = new Set<string>()
+    const visit = (node: JsonValue) => {
+      if (!isJsonObject(node)) return
+      if (typeof node.goalId === 'string' && declared.has(node.goalId)
+        && !declaredOccurrences.has(JSON.stringify([path, node.goalId, node.kind, node.projectionRole]))) {
+        issues.push(`External composition occurrence has an undeclared node kind or projection role: ${path}: ${node.goalId}`)
+        invalidGoalIds.add(node.goalId)
+      }
+      if (Array.isArray(node.children)) node.children.forEach(visit)
+    }
+    if (Array.isArray(data.rootNodes)) data.rootNodes.forEach(visit)
+    invalidGoalIds.forEach((goalId) => declared.delete(goalId))
+  })
+  return { issues, byViewPath }
+}
+
 const collectCardRuntimePaths = (value: JsonValue): string[] => {
   if (Array.isArray(value)) {
     return value.flatMap(collectCardRuntimePaths)
@@ -1526,8 +1597,18 @@ const validatePackage = (zipPath: string, readinessDir: string): PackageValidati
 
     const goalIdSet = new Set(goalIds)
     const viewEntries = entries.filter((entry) => entry.startsWith(`${archiveRoot}/data/views/`) && entry.endsWith('.json'))
+    const externalViewReferences = validateExternalCompositionGoalReferences(
+      externalDependencies.viewReferences,
+      viewEntries.map((entry) => ({ path: entry.slice(archiveRoot.length + 1), data: readZipEntryJson(zipPath, entry) })),
+      goalIdSet,
+    )
+    check(checks, 'external-composition-references-file-valid', externalViewReferences.issues.length === 0,
+      externalViewReferences.issues.slice(0, 3).join(' | ') || 'source-bound external composition references')
     const viewUnknownRefs = viewEntries.flatMap((entry) => unresolvedCompositionGoalReferences(
-      readZipEntryJson(zipPath, entry), goalIdSet, declaredExternalGoalIds,
+      readZipEntryJson(zipPath, entry), goalIdSet, new Set([
+        ...declaredExternalGoalIds,
+        ...(externalViewReferences.byViewPath.get(entry.slice(archiveRoot.length + 1)) ?? []),
+      ]),
     )
       .map((goalId) => `${entry}: ${goalId}`))
     counts.compositionViews = viewEntries.length

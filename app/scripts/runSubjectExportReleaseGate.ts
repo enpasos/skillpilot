@@ -1,8 +1,8 @@
 import { execFileSync } from 'node:child_process'
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, relative, resolve, sep } from 'node:path'
-import { fileURLToPath } from 'node:url'
-import { discoverMemoryCardReviewConfigs } from './memoryCardReviewConfigDiscovery'
+import { fileURLToPath, pathToFileURL } from 'node:url'
+import { discoverActiveMemoryCardReviewConfigs } from './memoryCardReviewConfigDiscovery'
 
 type JsonValue =
   | null
@@ -43,12 +43,12 @@ const repoRelative = (absolutePath: string) => {
   return relativePath
 }
 
-const MEMORY_CARD_REVIEW_CONFIGS = discoverMemoryCardReviewConfigs()
+export const SUBJECT_EXPORT_MEMORY_CARD_REVIEW_CONFIGS = discoverActiveMemoryCardReviewConfigs()
 
 const QUALITY_STATUS_PATHS = [
   'docs/qa-ci/status/curriculum-quality-status.json',
   'docs/qa-ci/status/curriculum-quality-status.md',
-  ...MEMORY_CARD_REVIEW_CONFIGS.map((config) => config.reportPath),
+  ...SUBJECT_EXPORT_MEMORY_CARD_REVIEW_CONFIGS.map((config) => config.reportPath),
 ]
 
 const usage = () => `Usage:
@@ -298,7 +298,7 @@ const main = () => {
   const steps: StepResult[] = []
   const generatedAt = new Date().toISOString()
 
-  MEMORY_CARD_REVIEW_CONFIGS.forEach(({ configPath, reviewId }) => {
+  SUBJECT_EXPORT_MEMORY_CARD_REVIEW_CONFIGS.forEach(({ configPath, reviewId }) => {
     const reviewSlug = reviewId
     steps.push(runStep(`refresh-memory-card-review-report:${reviewSlug}`, 'npm', [
       'run',
@@ -385,10 +385,12 @@ const main = () => {
   process.stdout.write(stableJson(report as unknown as JsonValue))
 }
 
-try {
-  main()
-} catch (error) {
-  const message = error instanceof Error ? error.message : String(error)
-  process.stderr.write(`${message}\n`)
-  process.exitCode = 1
+if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
+  try {
+    main()
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error)
+    process.stderr.write(`${message}\n`)
+    process.exitCode = 1
+  }
 }
