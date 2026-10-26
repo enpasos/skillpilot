@@ -271,6 +271,24 @@ SkillPilot separates five layers that older skill landscapes still mix:
 
 An explicit structural container (year, semester, module, phase, track, exam section) forming a tree via `parentUnitId` with an explicit `order`. A program-tree node must correspond one-to-one to a declared program unit; a content goal must not be reused as a stand-in for a phase.
 
+### Curriculum level
+
+*DE: curriculares Level* — see [Curriculum Levels](skill-graph/curriculum-levels.md)
+and [Graph Definition §12](skill-graph/graph-definition.md#12-optional-curriculum-level-assignments)
+
+An ordered acquisition stage in a resolved educational context, named
+`CurriculumLevel` technically. Its targets must be reachable from the declared
+entry basis and earlier stages, allowing a suitable order within the stage;
+its estimated workload and reserve must fit the declared learning budget.
+A school year across subjects is one example. Workload feasibility is conditional
+on the stated reference learners, learning conditions, and estimation evidence.
+
+The assignment belongs to program structure and placements, not to a goal's
+global identity or difficulty field. It is distinct from the four levels of
+personalization. Level completion aggregates the applicable goal results; it
+does not add a blanket prerequisite for entering later levels. This is a
+conceptual planning contract, not a claim of an implemented level feature.
+
 ### Goal placement
 
 *DE: Zielplatzierung* — see [View Projection and Goal Placement](skill-graph/view-projection-and-goal-placement.md)
@@ -665,6 +683,9 @@ A report, status page, or dashboard file produced by a script. It carries a "do 
 | SkillPilot ID vs learning session | A permanent backend-only identity vs a fresh, opaque 24-hour key that travels to the provider. |
 | OAuth connection vs learning session | OAuth authorizes the app; the session selects the learner. |
 | `phase` vs program unit | `phase` is compatibility metadata; only an explicit program unit may become a structural node. |
+| Curriculum level vs personalization level | A planned acquisition stage with prerequisite and workload conditions vs one of the four scope/state layers. |
+| Curriculum level vs goal difficulty | A contextual placement in a learning path vs the demand of a particular goal; the existing `level` field is not a year assignment. |
+| Level completion vs goal availability | An aggregate milestone vs the applicable prerequisite/frontier check for an individual goal. |
 | QA scope vs learning route | A QA scope is a registered check profile, not a path a learner walks. |
 | CQR vs GVR rules | Content quality review vs structural graph validation. |
 | Curriculum vs skill graph | The normative external document vs the versioned operative model derived from it. |

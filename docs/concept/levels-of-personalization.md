@@ -4,6 +4,12 @@ This document describes how SkillPilot narrows from a curriculum catalog to
 individual mastery. Catalog navigation precedes the four personalization
 levels and must not be stored as learner scope.
 
+These four levels are distinct from [Curriculum Levels](skill-graph/curriculum-levels.md)
+(`CurriculumLevel`): ordered acquisition stages such as school years with
+prerequisite and workload conditions. Curriculum-level placement belongs to
+the resolved educational context; it does not introduce a fifth personalization
+level or replace individual mastery.
+
 ## Before Level 1: Catalog Navigation
 
 The learner first chooses a catalog area such as **school**,

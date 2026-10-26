@@ -13,6 +13,7 @@ Use related documents for narrower questions:
 - `docs/dev/skill-graph-minimal-schema-runtime-fallback-and-math-pilot.md`
 - `docs/concept/skill-graph/view-projection-and-goal-placement.md`
 - `docs/concept/skill-graph/graph-definition.md`
+- [Curriculum Levels](curriculum-levels.md): ordered learning stages with prerequisite and workload conditions
 
 It is motivated by one concrete pressure point in the current canonical Gymnasium work:
 
@@ -247,6 +248,42 @@ This means:
 - the canonical graph remains the shared content source of truth
 - the composition view becomes the explicit authoring surface for a learner-facing Bundesland or curriculum tree
 - validation can run on the compiled tree before any UI logic is involved
+
+## Curriculum levels across program units
+
+A [curriculum level](curriculum-levels.md) (`CurriculumLevel`) is an ordered
+acquisition stage within a defined program. It adds a planning contract to the
+program and placement layers: prerequisites must be available from the declared
+entry basis or no later than the same level, and the estimated workload must fit
+the declared learning budget. A school year or semester can be such a stage;
+several modules can form one stage together.
+
+This is an optional conceptual extension, with formal conditions in
+[Graph Definition §12](graph-definition.md#12-optional-curriculum-level-assignments).
+It introduces neither another goal type nor a sixth semantic layer. Existing
+year labels or program membership alone do not establish that either condition
+has been checked. No new serialized field or implemented validator is implied.
+
+A level plan binds its resolved scope, curriculum release, applicable composition
+or program projection, explicit entry assumptions, and workload assumptions.
+The same canonical goal may have different acquisition levels in different
+programs. Within one resolved plan, each acquisition target has one assigned
+level; later repetition, application, or assessment remains additional activity
+on the same goal. Declared entry assumptions never create learner mastery.
+
+The assignment belongs to contextual program planning. Do not repurpose the
+existing goal `level` difficulty metadata, `phase`, or the levels of
+personalization to store it. A reviewed composition view remains authoritative
+for the default learner-facing structure; level planning must reference that
+resolved structure instead of introducing a competing editable goal hierarchy.
+The [projection contract](view-projection-and-goal-placement.md#curriculum-levels-in-projected-views)
+specifies how to preserve goal identities and supporting prerequisites.
+
+Level completion is derived from the declared goal results and completion rule.
+It does not create a `requires` edge between program units, make all earlier
+targets prerequisites of all later targets, or add an availability gate. The
+existing personal-curriculum, focus, and frontier contracts continue to govern
+individual learning.
 
 ## Minimal target data structures
 
