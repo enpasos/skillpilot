@@ -8,6 +8,8 @@ This specification covers the skill graph itself. Projection contracts for user-
 
 Layering, migration strategy, and canonical rollout policy are specified separately in [General Goal System and Migration](general-goal-system-and-migration.md) and [Canonical Gymnasium Rollout Policy](canonical-gymnasium-rollout.md).
 
+Related planning scope: [Curriculum Levels](curriculum-levels.md) explains how bounded learning stages, including school years, organize canonical goals. The optional formal profile in §12 checks a resolved plan without changing base graph validity.
+
 > **Normative definition.** This document defines the skill graph’s semantics and validity requirements.
 >
 > **Implementation checks.** The currently enforced CI validator profile—including rollout severity levels and runtime rule identifiers—is documented in [Graph Validation Rules](../../qa-ci/graph-validation-rules.md). Legacy metadata such as `phase` may still exist in repositories, but it is not part of the canonical graph semantics unless explicitly specified below.
@@ -983,3 +985,114 @@ Special cases:
 
 - $S = G$ gives the fully pessimistic mode.
 - Choosing $S$ smaller than $G$ yields a relaxed pessimistic check that can be widened iteratively if needed.
+
+---
+
+## 12. Optional curriculum level assignments
+
+A **curriculum level** is a planned acquisition stage within a resolved curriculum context, with an explicit entry basis and learning budget. School years, semesters, and course stages are possible realizations. The rationale and examples are specified in [Curriculum Levels](curriculum-levels.md).
+
+**Status and scope.** This is a conceptual, optional planning profile over a graph valid under §10. Its requirements define what a plan would need to satisfy to claim level validity; they do not assert an implemented schema, validator, or runtime feature. The base graph-validity conditions remain unchanged. Higher-level composition contracts remain responsible for resolving cross-landscape identities and prerequisite facts before this profile is applied.
+
+Curriculum levels are distinct from the [levels of personalization](../levels-of-personalization.md). Their assignments belong to contextual program, placement, or composition metadata, not to canonical goal identity or authored `requires` edges.
+
+### 12.1 Plan scope and entry basis
+
+For a resolved plan $\pi$, define:
+
+- $T_\pi\subseteq A$: atomic goals whose acquisition is planned;
+- $B_\pi\subseteq A\setminus T_\pi$: explicitly assumed entry competencies;
+- $n_\pi\in\mathbb{N}_{>0}$: the number of levels;
+- $\ell_\pi:T_\pi\to\{1,\ldots,n_\pi\}$: the acquisition-level assignment.
+
+Define the level target sets and their prefixes:
+
+$$
+L_i=\{\,g\in T_\pi\mid\ell_\pi(g)=i\,\},\qquad
+L_{<i}=\bigcup_{j<i}L_j,\qquad
+L_{\leq i}=\bigcup_{j\leq i}L_j.
+$$
+
+Each target has exactly one acquisition level in this plan. The same canonical goal MAY have a different level in another plan. Later repetition or application is a separate planned activity; it does not create another goal identity or first acquisition.
+
+The entry basis is a declared planning assumption, not a learner-state update. Declaring $B_\pi$ MUST NOT mark goals as mastered. Unmet entry requirements need separate diagnosis and learning provision; their additional effort is not silently covered by the reference plan.
+
+### 12.2 Structural feasibility
+
+A level plan is **structurally feasible** iff each $L_i$ admits an enumeration $a_1,\ldots,a_m$ satisfying:
+
+$$
+a_j\in Frontier\!\left(
+B_\pi\cup L_{<i}\cup\{a_1,\ldots,a_{j-1}\}
+\right)
+\qquad(1\leq j\leq m).
+$$
+
+This completion witness uses the global satisfaction and frontier definitions of §9.1. It includes inherited requirements, transitive prerequisite chains, and the atomic descendants needed to satisfy required clusters. It introduces no additional authored dependency relation.
+
+Prerequisites within the same level are allowed; their acquisition must follow a feasible order. A target MUST NOT depend on an unplanned competency or on a target first assigned to a later level. A prerequisite outside the current level is permitted when supplied by the entry basis or earlier levels.
+
+For diagnostics, define the atomic requirements of a target:
+
+$$
+RequiredAtoms(g)=
+\bigcup_{\substack{p\in G\\(g,p)\in R_{\mathrm{effective}}^+}}
+Atoms(p).
+$$
+
+Structural feasibility implies the following prerequisite-closure condition:
+
+$$
+\forall g\in T_\pi:\quad
+RequiredAtoms(g)\subseteq B_\pi\cup L_{\leq\ell_\pi(g)}.
+$$
+
+Equivalently, the requirements of the planned targets in each cumulative level prefix stay within that prefix and the entry basis. This does not require reconstructing an acquisition history for the assumed entry competencies themselves.
+
+The closure diagnostic identifies two different failures:
+
+- a required atom outside $B_\pi\cup T_\pi$ is an unplanned prerequisite;
+- a required target $p$ with $\ell_\pi(p)>\ell_\pi(g)$ is a level-order conflict.
+
+Closure alone is not the completion witness: requirements inside one level can still prevent its completion, including through cluster satisfaction. Nor may validation use only the level-filtered optimistic relation (§11.3), which can omit precisely the outside requirements being checked.
+
+An implementation MAY check the witness by starting with $M=B_\pi\cup L_{<i}$ and repeatedly applying:
+
+$$
+M\leftarrow M\cup\bigl(L_i\cap Frontier(M)\bigr).
+$$
+
+The check succeeds iff its fixed point contains every target in $L_i$. This is a hypothetical validation state and MUST NOT modify stored learner mastery. In the canonical atomic prerequisite model, prerequisite closure together with the applicable DAG constraints supplies the usual within-level learning order.
+
+### 12.3 Workload feasibility
+
+A workload claim MUST state its reference learners, entry conditions, supported target or elective selection, available learning time, estimation method, and uncertainty. It MUST identify which acquisition, practice, assessment, repetition, and other planned activities it includes. Details and evidence expectations are described in [Curriculum Levels](curriculum-levels.md) and the [curriculum time-axis contract](../didactic/curriculum-time-axis-and-pacing.md), especially §§6–7.
+
+For each level, define in the same learning-time unit:
+
+- $Work_\pi(i;\Theta_\pi)\geq0$: estimated planned work under declared assumptions $\Theta_\pi$;
+- $Reserve_\pi(i)\geq0$: separately protected contingency time;
+- $Budget_\pi(i)>0$: available time after calendar exclusions.
+
+The workload-feasibility condition is:
+
+$$
+\forall i:\quad
+Work_\pi(i;\Theta_\pi)+Reserve_\pi(i)\leq Budget_\pi(i).
+$$
+
+Protected reserve MUST NOT also be counted as available time for the planned work. Activities already included in $Work_\pi$ MUST NOT consume the same reserve again. A zero reserve is permitted but must be disclosed as a planning assumption.
+
+Existing goal `Weight` values describe progress or assessment shares; they MUST NOT be reinterpreted as time or effort. Estimates use separate plan-local effort units with an explicit calibration to learning time. An uncalibrated goal count may describe volume but cannot substantiate time feasibility.
+
+A canonical atom MUST NOT be counted repeatedly as a new acquisition merely because several subjects or placements reference it. Genuine additional practice or application effort is included explicitly. A combined subject budget also needs a feasible allocation under any declared subject, timetable, or resource constraints; a total alone does not establish such an allocation.
+
+Workload feasibility is conditional on the declared assumptions and evidence, not a guarantee for every learner. Without a supported workload estimate, a plan MAY claim structural feasibility but MUST NOT claim workload feasibility or full level validity.
+
+### 12.4 Validity and progression boundaries
+
+A plan is valid under this optional profile iff it is structurally feasible and workload-feasible under its declared assumptions. Any validity claim MUST identify the plan, resolved curriculum scope, applicable graph or curriculum revision, and workload assumptions.
+
+Level validity does not add blanket dependencies between successive levels. Individual availability continues to follow the existing prerequisite semantics and selected runtime evaluation contract. Finishing a whole level is an aggregate plan result, not a prerequisite for every target in the next level.
+
+Level assignment, plan validation, or a presentation of completed levels MUST NOT copy, infer, reset, or otherwise alter learner mastery. The profile supplies planning constraints without changing the learner-state or scoped-evaluation contracts above.

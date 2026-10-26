@@ -13,6 +13,7 @@ Use related documents for adjacent concerns:
 - `docs/concept/skill-graph/general-goal-system-and-migration.md`
 - `docs/dev/skill-graph-minimal-schema-runtime-fallback-and-math-pilot.md`
 - `docs/concept/skill-graph/graph-definition.md`
+- [Curriculum Levels](curriculum-levels.md): the optional planning contract for ordered acquisition stages
 
 These related documents explain the layered model, the transition strategy, and the formal skill graph. This document answers a narrower question:
 
@@ -321,6 +322,49 @@ Compilation must not:
 - replace stable goal IDs
 
 The role assignment is therefore projection metadata only. Canonical goal identity, the canonical DAG, and learner mastery remain global and unchanged across composition views.
+
+## Curriculum levels in projected views
+
+The optional [curriculum-level concept](curriculum-levels.md) uses the same
+canonical goals and reviewed structural sources as the views above. This
+section describes its projection requirements; it does not claim that a
+level-specific schema, compiler, or runtime feature already exists.
+
+For a resolved level plan:
+
+1. Bind the curriculum release, participating subject scopes, and the applicable
+   composition-view or program-projection revisions. Use the reviewed composition
+   view where it is authoritative; otherwise use explicit program units and
+   placements. Level membership must be traceable to that source, not maintained
+   as a competing editable hierarchy or inferred from titles or `phase`.
+2. Resolve referenced structures to canonical atomic goal IDs. Each planned
+   acquisition has one level in this plan. Conflicting assignments need an
+   explicit reviewed resolution; secondary and assessment references do not
+   silently create additional acquisitions.
+3. Compose participating subjects by canonical identity. A mathematics goal may
+   be a `target` in Mathematics and `prerequisiteOnly` in Physics. Its acquisition
+   is counted once in the joint plan, while each subject view keeps its authored
+   role. Additional practice may require additional time without duplicating
+   the goal or its mastery.
+4. Retain access to the full effective prerequisites, including outside-view
+   goals and the atomic descendants of required clusters, for
+   [structural level validation](graph-definition.md#12-optional-curriculum-level-assignments).
+   A required atom must be accounted for by the explicit entry basis or a planned
+   acquisition no later than its dependent target. Missing foundations remain
+   visible planning gaps; hiding them or assigning `prerequisiteOnly` does not
+   satisfy this condition.
+
+Resolving prerequisites for validation does not promote them to learner-facing
+targets, widen the Personal Curriculum, or change a normal-mode frontier into a
+strict-mode frontier. Explicit learning provision for a missing foundation uses
+the applicable reviewed target or remediation-plan contract. The entry basis
+records an assumption, never a mastery write.
+
+A level may be rendered as a program stage, progress grouping, or building stage
+in the knowledge-house visualization. Its representation must preserve the
+default tree's single-occurrence and parent rules. A level label or completion
+badge neither reparents canonical content nor adds `requires` edges or an
+additional all-subject completion gate to the learner frontier.
 
 ## Default content tree contract
 

@@ -734,6 +734,34 @@ diese Planbasis nicht rückwirkend. Ausgegebene Soll-Zielzahlen werden auf ganze
 Ziele gerundet; Raten wie das Wochenkontingent werden höchstens mit einer
 Nachkommastelle dargestellt.
 
+### 6.1 Vergleichbarer Aufwand für curriculare Level
+
+Das [Konzept curricularer Level](../skill-graph/curriculum-levels.md)
+(`CurriculumLevel`) ergänzt diese Planung um voraussetzungskonsistente,
+budgetierte Etappen eines bestimmten Bildungsgangs. Ein curriculares Level
+ist keine Personalisierungsstufe wie „Level 2“ oder „Level 3“. Die folgenden
+Ergänzungen beschreiben ein Konzeptziel; sie behaupten keine bereits
+implementierte fachübergreifende Budgetprüfung oder automatische Freigabe.
+
+Planlokale Einheiten verschiedener Fachkurse sind ohne gemeinsame
+Kalibrierung weder direkt vergleichbar noch zu einem fachübergreifenden
+Pensum addierbar. Für dessen Budgetprüfung braucht es eine gemeinsame
+Aufwandseinheit, vorzugsweise Minuten, und eine nachvollziehbare Schätzung:
+
+- Referenzprofil der Lernenden und angenommener Einstiegsstand,
+- eindeutiger Zielumfang und berücksichtigte Lernaktivitäten,
+- Schätzmethode, Fassung und Evidenzstatus,
+- erwarteter Aufwand beziehungsweise Bandbreite samt Bewertungsregel.
+
+Der erstmalige Erwerb eines kanonischen Ziels zählt im Lernpfad einmal,
+auch wenn mehrere Fächer oder Platzierungen darauf verweisen. Wiederholung,
+Prüfung und zusätzliche Vorbereitung können weitere Zeit beanspruchen,
+ohne neue Zielerreichung zu erzeugen. Die Ein-Punkt-Näherung aus Abschnitt 6
+bleibt eine Fortschrittsgröße und belegt allein keine Bewältigbarkeit.
+Eine fachübergreifende Budgetprüfung führt auch keinen fachübergreifenden
+Lerntempo-Tacho oder Ausgleich von Fachrückständen ein; die bestehenden
+fachbezogenen Statusregeln bleiben maßgeblich.
+
 ## 7. Kapazität, Unterrichtswochen und Puffer
 
 ### 7.1 Keine rohe Kalenderwochenrechnung
@@ -827,6 +855,64 @@ Der Plan weist aus:
 Eine UI darf einen Startwert vorschlagen, aber keine Pufferquote als allgemein
 gültige pädagogische Norm festschreiben. Null Puffer ist zulässig, muss aber als
 bewusste, fragile Planung sichtbar sein.
+
+### 7.3 Gesamt- und Fachbudgets eines curricularen Levels
+
+Das Referenzpensum eines fachübergreifenden curricularen Levels wird gegen
+das Gesamtbudget und die verbindlichen Fachbudgets geprüft. Eine ausreichende
+Gesamtsumme gleicht ein überbuchtes Fachbudget nicht automatisch aus.
+Lernzeit außerhalb des Unterrichts zählt nur, wenn sie ausdrücklich geplant
+und im Referenzprofil ausgewiesen ist. Für jedes dieser Budgets gilt:
+
+```text
+geplanter Lernaufwand + geschützte Reserve <= verfügbare Kapazität
+```
+
+Der Lernaufwand umfasst die ausgewiesene Erarbeitung, Wiederholung, Prüfung
+und Vorbereitung. Dieselbe Minute darf weder mehreren Fächern vollständig
+zugerechnet noch zugleich als Inhalt und Reserve gebucht werden.
+Fachübergreifende Aktivitäten erhalten nachvollziehbare Zeitanteile; sie
+verdoppeln weder den Zielumfang noch die verfügbare Kapazität. Eine gemeinsame
+Reserve ersetzt einen Fachpuffer nur bei tatsächlich möglicher Umplanung.
+
+Das Budgetergebnis und die Belastbarkeit seiner Grundlage werden getrennt
+ausgewiesen. Fehlende Aufwandsdaten ergeben „noch nicht beurteilbar“.
+Die Schätzgrundlage kann etwa vorläufig geschätzt, fachlich geprüft oder
+mit passenden Lerndaten kalibriert sein; die jeweilige Aussage bleibt an
+Referenzprofil, Methode und Fassung gebunden. Auch ein rechnerisch passendes
+Referenzpensum ist keine Zusicherung für jede einzelne Person. Reserve und
+bewusst gewählte Nullreserve bleiben nach Abschnitt 7.2 sichtbar.
+
+Die Levelzuordnung ersetzt keinen konkreten Ablaufplan: Voraussetzungen
+innerhalb desselben Levels müssen vor ihrer Verwendung eingeplant sein.
+Die genauere zeitliche Prüfung richtet sich nach Abschnitt 5.3.
+
+### 7.4 Referenzpensum, persönliche Eingangslücken und Abschluss
+
+Das Referenzpensum gilt unter dem veröffentlichten Einstiegsprofil.
+Die persönliche Planung berücksichtigt dagegen den gespeicherten Lernstand:
+Bereits erreichte Ziele vermindern offene Arbeit; fehlende Eingangsvoraussetzungen
+werden als zusätzliche Vorbereitung oder mögliche `remediation` sichtbar.
+Solche Lücken können das persönliche Budget überschreiten, ohne die
+Referenzzuordnung rückwirkend ungültig zu machen. Ihre Einplanung folgt den
+bestehenden Auswahlregeln und erweitert weder Personal Curriculum noch Fokus
+automatisch. Ohne eingeplante Aufarbeitung bleibt der zusätzliche Bedarf
+ausgewiesen; er darf nicht als bereits beherrscht oder zeitlich gedeckt gelten.
+
+Ein eigener Levelumfang und seine ausdrückliche Abschlussregel sind von
+der vollständigen `target`-Menge des Personal Curriculum zu unterscheiden.
+Wahlregeln gelten nur für den deklarierten Levelumfang. Eine offiziell
+optionale Einordnung entfernt keine Ziele aus dem derzeit verbindlichen
+Personal Curriculum; die bestehenden interimistischen Auswahlregeln und
+dessen Fortschritts- und Abschlussumfang bleiben erhalten.
+
+Der Levelabschluss folgt der veröffentlichten, zieltypgerechten Regel auf
+Grundlage gespeicherter Ergebnisse. Termine, Unterrichtsdauer und verbrauchte
+Planungseinheiten erzeugen keinen Abschluss. Fehlende Ergebnisdaten bleiben
+nicht beurteilbar. Der Abschlussstatus erzeugt auch keine zusätzliche
+pauschale Frontier-Sperre: Erreichbare Ziele eines späteren Levels bleiben
+nach den geltenden scope- und modusabhängigen Voraussetzungen zugänglich,
+auch wenn in einem anderen Fach noch Ziele einer früheren Etappe offen sind.
 
 ## 8. Sollkurve und Wochenquote
 

@@ -20,8 +20,13 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
 
 ## Skill Graph
 
+- [Skill Graph Overview](skill-graph/index.md)
+  Entry point for graph semantics, curriculum structure, and supporting contracts.
 - [SkillPilot Skill Graph Specification](skill-graph/graph-definition.md)
   Core graph model and formal vocabulary.
+- [Curriculum Levels](skill-graph/curriculum-levels.md)
+  Contextual learning stages with prerequisite-consistent targets, feasible
+  workload, and a connection to the knowledge-building metaphor.
 - [General Goal System and Migration](skill-graph/general-goal-system-and-migration.md)
   Long-term goal-system split and migration direction.
 - [Node Types](skill-graph/node-types.md)

@@ -260,7 +260,7 @@ Each node is a **learning goal** (“Lernziel”). There are two “flavours”:
   Aggregations that group atomic goals (e.g. all goals in one Themenfeld, or all E1-Analysis basics).
 
 Atomic goals are what the student actually “masters”.  
-Cluster goals are for navigation, progress summaries, and as intermediate “levels” in the graph.
+Cluster goals are for navigation, progress summaries, and intermediate hierarchy layers.
 
 ### 2.2 Edges = relationships between goals
 
@@ -369,6 +369,38 @@ Reference:
 
 - `docs/concept/skill-graph/general-goal-system-and-migration.md`
 - `docs/dev/skill-graph-minimal-schema-runtime-fallback-and-math-pilot.md`
+
+### 2.4 Curriculum levels
+
+A **curriculum level** (`CurriculumLevel`; DE: *curriculares Level*) is a
+contextual acquisition stage, such as a cross-subject school year. It is
+distinct from personalization Levels 1–4, QA maturity, and the existing
+goal-difficulty field `level`.
+
+- Assign acquisition levels through the authoritative program/placement or
+  reviewed composition structure for a resolved scope and curriculum revision;
+  keep canonical goal identities and mastery stable.
+- Every required competency must be in the declared entry basis, an earlier
+  level, or the same level. Include inherited, indirect, cluster, and
+  cross-subject requirements; hidden or `prerequisiteOnly` goals must not
+  disappear from this structural check.
+- Same-level dependencies are allowed, but the complete level must be traversable
+  using the global frontier from the hypothetical entry state. This check does
+  not write mastery or change the normal/strict runtime mode.
+- Claim workload feasibility only with a documented reference profile and
+  effort estimate: work plus explicit reserve must fit the overall and binding
+  subject budgets. Existing `weight` values are not effort estimates; do not
+  add uncalibrated plan-local subject units as if they represented equal time.
+- Count shared acquisition once. Additional practice and preparation consume
+  explicit time. Diagnose personal entry gaps without silently widening scope.
+- Derive level completion from the declared target scope and goal-type results.
+  Do not add blanket `requires` between level containers or block an otherwise
+  available goal because another subject has unfinished earlier-level work.
+
+This is a conceptual optional planning profile, not a new enforced schema,
+validator, or runtime feature. Base graph validity remains independent of level
+planning. See `docs/concept/skill-graph/curriculum-levels.md` and Graph Definition
+§12; capacity details remain in `docs/concept/didactic/curriculum-time-axis-and-pacing.md`.
 
 ---
 
