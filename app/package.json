@@ -228,7 +228,7 @@
     "export:fwu-owl-package": "tsx scripts/buildFwuOwlCurriculumPackage.ts",
     "check:full-standalone-mathematik-plan": "tsx scripts/buildFullStandaloneCurriculumPackage.ts --release-root tmp/curriculum-release-model/mathematik-a --output-dir tmp/full-standalone-package --plan-only --expect-entry-count 1060 --expect-manifest-file-count 1058 --expect-binary-asset-count 836 --expect-content-digest sha256:ce49ec9492e14ae133bcda7bd831a9494b1d04c3376437f1863c057dfe5fa1ba",
     "export:subject-package": "tsx scripts/buildSkillpilotExportPackage.ts",
-    "test:subject-export-package-contracts": "tsx scripts/testSubjectExportPackageContracts.ts && tsx scripts/testSubjectExportSourceAndDeckInputs.ts && tsx scripts/testSubjectExportVisualizationMetadata.ts && tsx scripts/testSubjectExportSourceTrace.ts",
+    "test:subject-export-package-contracts": "tsx scripts/testSubjectExportPackageContracts.ts && tsx scripts/testSubjectExportSourceAndDeckInputs.ts && tsx scripts/testSubjectExportVisualizationMetadata.ts && tsx scripts/testSubjectExportSourceTrace.ts && tsx scripts/testSubjectExportRepositoryReferences.ts",
     "typecheck:subject-export-scripts": "tsc -p tsconfig.subject-export-scripts.json --pretty false",
     "export:subject-provenance-audit": "tsx scripts/buildSubjectProvenanceAuditPackage.ts",
     "export:subject-packages:validate": "tsx scripts/validateSubjectExportPackages.ts",

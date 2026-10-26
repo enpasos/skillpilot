@@ -918,6 +918,7 @@ const PACKAGE_INTERNAL_LINK_KEYS = new Set([
   'absolutePath',
   'filePath',
   'localPath',
+  'prospectiveNormalFile',
   'path',
   'repoPath',
   'repositoryPath',
@@ -985,6 +986,23 @@ const rewriteRepoLocalString = (value: string): string => {
   )
 }
 
+// Decks and review ledgers carry assessed payloads and provenance. Rewrite their
+// repository locators without applying the landscape/mapping field omissions.
+export const rewriteJsonRepositoryReferences = (value: JsonValue): JsonValue => {
+  if (typeof value === 'string') return rewriteRepoLocalString(value)
+  if (Array.isArray(value)) return value.map(rewriteJsonRepositoryReferences)
+  if (value && typeof value === 'object') {
+    return Object.fromEntries(Object.entries(value)
+      .map(([key, child]) => [key, rewriteJsonRepositoryReferences(child)]))
+  }
+  return value
+}
+
+const packageSourceLocator = (value: JsonValue | undefined): string | null => {
+  const locator = optionalString(value)
+  return locator === null ? null : rewriteRepoLocalString(locator)
+}
+
 const shouldOmitPackageJsonKey = (key: string, category: string) => {
   if (PACKAGE_INTERNAL_LINK_KEYS.has(key)) {
     return true
@@ -1025,11 +1043,14 @@ export const sanitizeJsonForPackage = (
   return value
 }
 
-const packageContentForRepoSource = (
+export const packageContentForRepoSource = (
   absolutePath: string,
   category: string,
   urlRewrites?: ReadonlyMap<string, string>,
 ) => {
+  if (category === 'card-deck' && extname(absolutePath).toLowerCase() === '.json') {
+    return Buffer.from(stableJson(rewriteJsonRepositoryReferences(readJson(absolutePath))), 'utf8')
+  }
   if (extname(absolutePath).toLowerCase() === '.json' && PACKAGE_JSON_CATEGORIES.has(category)) {
     return Buffer.from(stableJson(sanitizeJsonForPackage(readJson(absolutePath), category, undefined, urlRewrites)), 'utf8')
   }
@@ -1135,7 +1156,7 @@ export const sourceGoalReferenceIndexRecord = (absolutePath: string) => {
       passageId: passage.id as string,
       topicCode: optionalString(passage.topicCode),
       title: optionalString(passage.title),
-      sourceRef: optionalString(passage.sourceRef),
+      sourceRef: packageSourceLocator(passage.sourceRef),
       sourcePage: typeof passage.page === 'number' ? passage.page : null,
       sourceDocumentKey: optionalString(passage.sourceDocumentKey),
     }]))
@@ -1170,7 +1191,7 @@ export const sourceGoalReferenceIndexRecord = (absolutePath: string) => {
         sourceTextSha256: sha256(sourceText),
         sourceSpan: optionalString(goal.sourceSpan) ?? optionalString(goal.rawSourceSpan),
         parentBulletText: optionalString(goal.parentBulletText) ?? optionalString(goal.rawParentBulletText),
-        sourceRef: optionalString(goal.sourceRef) ?? passage?.sourceRef ?? null,
+        sourceRef: packageSourceLocator(goal.sourceRef) ?? passage?.sourceRef ?? null,
         sourcePage: typeof goal.sourcePage === 'number' ? goal.sourcePage : passage?.sourcePage ?? null,
         sourceLine: typeof goal.sourceLine === 'number' ? goal.sourceLine : null,
         sourceDocumentKey: document?.key ?? documentKey,
@@ -1686,12 +1707,19 @@ const memoryCardReviewPackagePaths = (audit: MemoryCardReviewAudit) => {
   }
 }
 
-const packageMemoryCardReviewReport = (
+export const packageMemoryCardReviewReport = (
   audit: MemoryCardReviewAudit,
   subjectSlug: string,
 ) => {
   const paths = memoryCardReviewPackagePaths(audit)
-  return readFileSync(audit.reportPath, 'utf8')
+  let report = readFileSync(audit.reportPath, 'utf8')
+  for (const [source, target] of [
+    [audit.configPath, paths.config],
+    [audit.reviewPath, paths.goalLedger],
+    [audit.cardReviewPath, paths.cardLedger],
+    [audit.reportPath, paths.report],
+  ]) report = report.replaceAll(repoRelative(source), target)
+  report = report
     .replace(
       'Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger. Die verbindlichen Prüfdaten bleiben die JSONL-Ledger; dieser Report wird daraus reproduzierbar erzeugt.',
       'Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger. Die paketbezogenen Prüfdaten liegen direkt neben diesem Report und werden reproduzierbar aus dem SkillPilot-Review erzeugt.',
@@ -1719,6 +1747,15 @@ const packageMemoryCardReviewReport = (
       /curricula\/DE\/Gymnasium\/composition-views\/[^`\s|)]+\/([^`\s|)]+\.view\.json)/gu,
       'data/views/$1',
     )
+  return rewriteRepoLocalString(report)
+}
+
+export const packageMemoryCardReviewLedger = (audit: MemoryCardReviewAudit, kind: 'goal' | 'card'): string => {
+  const source = kind === 'goal' ? audit.reviewPath : audit.cardReviewPath
+  return readFileSync(source, 'utf8').split(/\r?\n/u)
+    .filter((line) => line.trim().length > 0)
+    .map((line) => JSON.stringify(rewriteJsonRepositoryReferences(JSON.parse(line) as JsonValue)))
+    .join('\n') + '\n'
 }
 
 const addMemoryCardReviewAuditEntries = (
@@ -1743,14 +1780,14 @@ const addMemoryCardReviewAuditEntries = (
   addEntry(entriesByPath, generatedEntry(
     packageRoot,
     paths.goalLedger,
-    readFileSync(audit.reviewPath, 'utf8'),
+    packageMemoryCardReviewLedger(audit, 'goal'),
     category,
     licenseCategory,
   ))
   addEntry(entriesByPath, generatedEntry(
     packageRoot,
     paths.cardLedger,
-    readFileSync(audit.cardReviewPath, 'utf8'),
+    packageMemoryCardReviewLedger(audit, 'card'),
     category,
     licenseCategory,
   ))
