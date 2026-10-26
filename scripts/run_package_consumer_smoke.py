@@ -82,6 +82,7 @@ PINNED_HELPER_SHA256 = {
     "backend/src/main/resources/action-regression-openapi.yaml": "17f9f7283c13148d3d19fa7c041e56c67938cc3b4ffe3b621a0918d43d805f87",
     "backend/src/main/resources/action-regression-report.html": "a8531a620b3d923cfdc3b9f8839d99d9b60edf01795c33fd84b2572c06ae59fe",
     "backend/src/main/resources/claude-mcp-regression-report.html": "0237929c224ab7cf1e512cfedbb31e2401766d80a4b5e16bc937dcbf5b01addf",
+    "backend/src/main/resources/db/changelog/changes/030-add-oauth-client-security.yaml": "1e35e8063d2bb93423223f0d427935d9fdd616cccc705bfec235abc25d5823d9",
     "scripts/package_consumer_browser_smoke.cjs": "b328b8ab63f8df6143602a2b2fd71fcf88008b7c4de7e2f9845a1fb476081f6e",
     "scripts/package_consumer_runtime.init.gradle": "e084d70053a16a9a499a3cab7e807035d9179ee0f318f26318de798f096b470b",
     "scripts/package_consumer_sandbox_entry.py": "32c348c4912271f3773705477bd4f2d86ad332ed2a68a92498188f45879499d3",
@@ -92,6 +93,7 @@ BACKEND_CLASSPATH_RESOURCES = (
     "backend/src/main/resources/action-regression-openapi.yaml",
     "backend/src/main/resources/action-regression-report.html",
     "backend/src/main/resources/claude-mcp-regression-report.html",
+    "backend/src/main/resources/db/changelog/changes/030-add-oauth-client-security.yaml",
 )
 
 
@@ -916,7 +918,11 @@ def runtime_configuration() -> dict[str, Any]:
             "--spring.jpa.database-platform=org.hibernate.dialect.H2Dialect",
             "--spring.jpa.hibernate.ddl-auto=create-drop",
             "--spring.jpa.show-sql=false",
-            "--spring.liquibase.enabled=false",
+            # JPA creates the learner entities below, but OAuth's durable policy
+            # and assertion-replay tables are JDBC-only. Run the exact production
+            # migration before policy beans initialize, without repository data.
+            "--spring.liquibase.enabled=true",
+            "--spring.liquibase.change-log=classpath:db/changelog/changes/030-add-oauth-client-security.yaml",
             "--spring.security.oauth2.client.registration.github.client-id=consumer-smoke",
             "--spring.security.oauth2.client.registration.github.client-secret=consumer-smoke",
             "--skillpilot.security.signing-secret=consumer-smoke-not-production",
@@ -1467,6 +1473,13 @@ def validate_report(report: dict[str, Any]) -> None:
 
 def self_test() -> None:
     verify_pinned_helpers()
+
+    database_arguments = runtime_configuration()["applicationArguments"]
+    if "--spring.liquibase.enabled=true" not in database_arguments or (
+        "--spring.liquibase.change-log=classpath:db/changelog/changes/030-add-oauth-client-security.yaml"
+        not in database_arguments
+    ):
+        raise SmokeFailure("Hermetic H2 runtime must initialize the production OAuth security migration")
 
     browser_selector_self_test = run_command(
         [require_tool("node"), "scripts/package_consumer_browser_smoke.cjs", "--self-test"],
