@@ -1,7 +1,11 @@
 import { execFileSync } from 'node:child_process'
 import { existsSync } from 'node:fs'
 import { dirname, isAbsolute, relative, resolve, sep } from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { fileURLToPath, pathToFileURL } from 'node:url'
+import {
+  parseSubjectExportSourceReferences,
+  type SourceReferenceMatch,
+} from './subjectExportSourceReferences'
 
 type JsonValue =
   | null
@@ -14,6 +18,7 @@ type JsonValue =
 type CliOptions = {
   zipPath: string | null
   sourceGoalId: string | null
+  sourceArtifactPath: string | null
   canonicalGoalId: string | null
   limit: number
   format: 'markdown' | 'json'
@@ -21,6 +26,7 @@ type CliOptions = {
 }
 
 type SourceGoalEvidence = {
+  artifactPath: string | null
   extractionId: string
   sourceLandscapeId: string | null
   jurisdiction: string | null
@@ -76,6 +82,7 @@ const usage = () => `Usage:
 Options:
   --zip <path>                 Subject export ZIP inside this repository.
   --source-goal-id <id>        Source goal ID from data/mappings/*.review.json legacyGoalId/reviewDecisionId.
+  --source-artifact-path <path> Exact data/sources/... JSON path when an ID occurs in multiple authored source versions.
   --canonical-goal-id <id>     Canonical goal ID from a mapping entry or canonical landscape.
   --limit <n>                  Maximum mapping/source rows to print. Default: 20.
   --format <markdown|json>     Output format. Default: markdown.
@@ -86,6 +93,7 @@ const parseArgs = (argv: string[]): CliOptions => {
   const options: CliOptions = {
     zipPath: null,
     sourceGoalId: null,
+    sourceArtifactPath: null,
     canonicalGoalId: null,
     limit: 20,
     format: 'markdown',
@@ -114,6 +122,10 @@ const parseArgs = (argv: string[]): CliOptions => {
     }
     if (arg === '--source-goal-id') {
       options.sourceGoalId = readValue(arg)
+      continue
+    }
+    if (arg === '--source-artifact-path') {
+      options.sourceArtifactPath = readValue(arg)
       continue
     }
     if (arg === '--canonical-goal-id') {
@@ -182,11 +194,11 @@ const jsonObject = (value: JsonValue, context: string): Record<string, JsonValue
   return value
 }
 
-const optionalString = (value: JsonValue | undefined) => (
+const optionalString = (value: unknown) => (
   typeof value === 'string' && value.trim() ? value.trim() : null
 )
 
-const optionalNumber = (value: JsonValue | undefined) => (
+const optionalNumber = (value: unknown) => (
   typeof value === 'number' && Number.isFinite(value) ? value : null
 )
 
@@ -215,44 +227,75 @@ const sourceGoalIdFromMapping = (mapping: Record<string, JsonValue>) => (
     ?? optionalString(mapping.reviewDecisionId)
 )
 
-const buildSourceGoalIndex = (sourceGoalReferences: JsonValue) => {
-  const data = jsonObject(sourceGoalReferences, 'source-goal references')
-  const sources = Array.isArray(data.sources) ? data.sources.map((source) => jsonObject(source, 'source-goal reference source')) : []
-  const index = new Map<string, SourceGoalEvidence>()
+const sourceGoalEvidence = ({ source, goal, artifactPath }: SourceReferenceMatch): SourceGoalEvidence => ({
+  artifactPath,
+  extractionId: optionalString(source.extractionId) ?? '(unknown-extraction)',
+  sourceLandscapeId: optionalString(source.sourceLandscapeId),
+  jurisdiction: optionalString(source.jurisdiction),
+  subject: optionalString(source.subject),
+  stage: optionalString(source.stage),
+  sourceGoalId: String(goal.sourceGoalId),
+  title: optionalString(goal.title),
+  description: optionalString(goal.description),
+  topicCode: optionalString(goal.topicCode),
+  sourceText: typeof goal.sourceText === 'string' ? goal.sourceText : '',
+  sourceTextSha256: optionalString(goal.sourceTextSha256),
+  sourceSpan: optionalString(goal.sourceSpan),
+  parentBulletText: optionalString(goal.parentBulletText),
+  sourceRef: optionalString(goal.sourceRef),
+  sourcePage: optionalNumber(goal.sourcePage),
+  sourceLine: optionalNumber(goal.sourceLine),
+  sourceDocumentKey: optionalString(goal.sourceDocumentKey),
+  sourceDocumentTitle: optionalString(goal.sourceDocumentTitle),
+  sourceDocumentUrl: optionalString(goal.sourceDocumentUrl),
+  sourceDocumentLandingUrl: optionalString(goal.sourceDocumentLandingUrl),
+})
 
-  sources.forEach((source) => {
-    const sourceGoals = Array.isArray(source.sourceGoals)
-      ? source.sourceGoals.map((goal) => jsonObject(goal, 'source-goal reference'))
-      : []
-    sourceGoals.forEach((goal) => {
-      const sourceGoalId = optionalString(goal.sourceGoalId)
-      if (!sourceGoalId) return
-      index.set(sourceGoalId, {
-        extractionId: optionalString(source.extractionId) ?? '(unknown-extraction)',
-        sourceLandscapeId: optionalString(source.sourceLandscapeId),
-        jurisdiction: optionalString(source.jurisdiction),
-        subject: optionalString(source.subject),
-        stage: optionalString(source.stage),
-        sourceGoalId,
-        title: optionalString(goal.title),
-        description: optionalString(goal.description),
-        topicCode: optionalString(goal.topicCode),
-        sourceText: optionalString(goal.sourceText) ?? '',
-        sourceTextSha256: optionalString(goal.sourceTextSha256),
-        sourceSpan: optionalString(goal.sourceSpan),
-        parentBulletText: optionalString(goal.parentBulletText),
-        sourceRef: optionalString(goal.sourceRef),
-        sourcePage: optionalNumber(goal.sourcePage),
-        sourceLine: optionalNumber(goal.sourceLine),
-        sourceDocumentKey: optionalString(goal.sourceDocumentKey),
-        sourceDocumentTitle: optionalString(goal.sourceDocumentTitle),
-        sourceDocumentUrl: optionalString(goal.sourceDocumentUrl),
-        sourceDocumentLandingUrl: optionalString(goal.sourceDocumentLandingUrl),
-      })
+export const selectSourceTraceEvidence = (
+  sourceGoalReferences: unknown,
+  mappings: MappingEvidence[],
+  query: Pick<CliOptions, 'sourceGoalId' | 'sourceArtifactPath' | 'canonicalGoalId'>,
+  packagePaths: { artifactPaths?: ReadonlySet<string>; mappingPaths?: ReadonlySet<string> } = {},
+) => {
+  const parsed = parseSubjectExportSourceReferences(sourceGoalReferences, packagePaths)
+  if (parsed.issues.length > 0) throw new Error(`Invalid source-goal reference index: ${parsed.issues.join('; ')}`)
+  if (query.sourceArtifactPath && parsed.schemaVersion !== 2) {
+    throw new Error('--source-artifact-path requires a version 2 source-goal reference index')
+  }
+  if (query.sourceArtifactPath && !parsed.sources.some((source) => source.artifactPath === query.sourceArtifactPath)) {
+    throw new Error(`Unknown source artifact path: ${query.sourceArtifactPath}`)
+  }
+  const byId = new Map<string, SourceGoalEvidence[]>()
+  parsed.sources.forEach((source) => source.sourceGoals.forEach((goal) => {
+    const evidence = sourceGoalEvidence({ artifactPath: source.artifactPath, source, goal })
+    byId.set(evidence.sourceGoalId, [...(byId.get(evidence.sourceGoalId) ?? []), evidence])
+  }))
+  let selectedSourceGoals: SourceGoalEvidence[] = []
+  if (query.sourceGoalId) {
+    const candidates = byId.get(query.sourceGoalId) ?? []
+    if (!query.sourceArtifactPath && candidates.length > 1) {
+      throw new Error(`Ambiguous source goal ID ${query.sourceGoalId}; use --source-artifact-path with one of: ${candidates.map((goal) => goal.artifactPath).join(', ')}`)
+    }
+    selectedSourceGoals = candidates.filter((goal) => !query.sourceArtifactPath || goal.artifactPath === query.sourceArtifactPath)
+    if (query.sourceArtifactPath && selectedSourceGoals.length === 0) {
+      throw new Error(`No source goal ${query.sourceGoalId} in source artifact ${query.sourceArtifactPath}`)
+    }
+  }
+  const matchingMappings = mappings
+    .filter((mapping) => (!query.sourceGoalId || mapping.sourceGoalId === query.sourceGoalId)
+      && (!query.canonicalGoalId || mapping.canonicalGoalId === query.canonicalGoalId))
+    .flatMap((mapping) => {
+      const matches = mapping.sourceGoalId ? parsed.resolveMapping(mapping.mappingPath, mapping.sourceGoalId) : []
+      if (mapping.sourceGoalId && matches.length === 0) {
+        throw new Error(`Unresolved source goal ${mapping.sourceGoalId} in mapping ${mapping.mappingPath}`)
+      }
+      const selected = matches.filter((match) => !query.sourceArtifactPath || match.artifactPath === query.sourceArtifactPath)
+      if (query.sourceArtifactPath && selected.length === 0) return []
+      if (!query.sourceGoalId) selectedSourceGoals.push(...selected.map(sourceGoalEvidence))
+      return [{ ...mapping, sourceArtifactPaths: [...new Set(selected.map((match) => match.artifactPath))] }]
     })
-  })
-
-  return index
+  const sourceGoals = new Map(selectedSourceGoals.map((goal) => [JSON.stringify([goal.artifactPath, goal.sourceGoalId]), goal]))
+  return { sourceGoals: [...sourceGoals.values()], mappings: matchingMappings }
 }
 
 const buildCanonicalGoalIndex = (canonicalLandscape: JsonValue) => {
@@ -273,20 +316,26 @@ const buildCanonicalGoalIndex = (canonicalLandscape: JsonValue) => {
 
 const mappingEvidenceFromZip = (zipPath: string, mappingEntries: string[]) => mappingEntries.flatMap((entryPath) => {
   const data = jsonObject(readZipEntryJson(zipPath, entryPath), entryPath)
-  const mappings = Array.isArray(data.mappings) ? data.mappings.map((mapping) => jsonObject(mapping, `${entryPath}:mapping`)) : []
-  return mappings.map((mapping) => ({
-    mappingPath: entryPath.split('/').slice(1).join('/'),
-    reviewId: optionalString(data.reviewId),
-    sourceLandscapeId: optionalString(data.sourceLandscapeId),
-    targetLandscapeId: optionalString(data.targetLandscapeId),
-    legacyGoalId: optionalString(mapping.legacyGoalId),
-    reviewDecisionId: optionalString(mapping.reviewDecisionId),
-    sourceGoalId: sourceGoalIdFromMapping(mapping),
-    canonicalGoalId: optionalString(mapping.canonicalGoalId),
-    matchType: optionalString(mapping.matchType),
-    jurisdiction: optionalString(data.jurisdiction) ?? entryPath.match(/\/data\/mappings\/(DE-[A-Z]{2})\//u)?.[1] ?? null,
-    stage: optionalString(data.stage) ?? entryPath.match(/\/data\/mappings\/DE-[A-Z]{2}\/([^/]+)\//u)?.[1] ?? null,
-  } satisfies MappingEvidence))
+  const records = Array.isArray(data.decisions) ? data.decisions : Array.isArray(data.mappings) ? data.mappings : []
+  const mappings = records.map((mapping) => jsonObject(mapping, `${entryPath}:mapping`))
+  return mappings.flatMap((mapping) => {
+    const canonicalGoalId = optionalString(mapping.canonicalGoalId)
+    const canonicalGoalIds = canonicalGoalId ? [canonicalGoalId]
+      : Array.isArray(mapping.canonicalGoalIds) ? mapping.canonicalGoalIds.map(optionalString).filter((id): id is string => id !== null) : []
+    return (canonicalGoalIds.length > 0 ? canonicalGoalIds : [null]).map((targetId) => ({
+      mappingPath: entryPath.split('/').slice(1).join('/'),
+      reviewId: optionalString(data.reviewId),
+      sourceLandscapeId: optionalString(data.sourceLandscapeId),
+      targetLandscapeId: optionalString(data.targetLandscapeId),
+      legacyGoalId: optionalString(mapping.legacyGoalId),
+      reviewDecisionId: optionalString(mapping.reviewDecisionId),
+      sourceGoalId: sourceGoalIdFromMapping(mapping),
+      canonicalGoalId: targetId,
+      matchType: optionalString(mapping.matchType),
+      jurisdiction: optionalString(data.jurisdiction) ?? entryPath.match(/\/data\/mappings\/(DE-[A-Z]{2})\//u)?.[1] ?? null,
+      stage: optionalString(data.stage) ?? entryPath.match(/\/data\/mappings\/DE-[A-Z]{2}\/([^/]+)\//u)?.[1] ?? null,
+    } satisfies MappingEvidence))
+  })
 })
 
 const truncate = (value: string | null, maxLength = 360) => {
@@ -300,6 +349,7 @@ const buildMarkdown = (result: {
   zipPath: string
   archiveRoot: string
   sourceGoalId: string | null
+  sourceArtifactPath: string | null
   canonicalGoalId: string | null
   sourceGoals: SourceGoalEvidence[]
   mappings: MappingEvidence[]
@@ -313,6 +363,7 @@ const buildMarkdown = (result: {
 | Field | Value |
 | --- | --- |
 | Extraction | \`${sourceGoal.extractionId}\` |
+| Source artifact | ${sourceGoal.artifactPath ? `\`${sourceGoal.artifactPath}\`` : '(legacy globally unique ID)'} |
 | Jurisdiction | ${sourceGoal.jurisdiction ?? ''} |
 | Subject / stage | ${[sourceGoal.subject, sourceGoal.stage].filter(Boolean).join(' / ')} |
 | Topic | ${sourceGoal.topicCode ?? ''} |
@@ -346,6 +397,7 @@ Archive root: \`${result.archiveRoot}\`
 Query:
 
 - Source goal ID: ${result.sourceGoalId ? `\`${result.sourceGoalId}\`` : '-'}
+- Source artifact path: ${result.sourceArtifactPath ? `\`${result.sourceArtifactPath}\`` : '-'}
 - Canonical goal ID: ${result.canonicalGoalId ? `\`${result.canonicalGoalId}\`` : '-'}
 
 ## Source Evidence
@@ -403,27 +455,23 @@ const main = () => {
     throw new Error('Missing data/canonical/*.landscape.json')
   }
 
-  const sourceGoalIndex = buildSourceGoalIndex(readZipEntryJson(options.zipPath, sourceGoalReferencesPath))
   const canonicalGoalIndex = buildCanonicalGoalIndex(readZipEntryJson(options.zipPath, canonicalPath))
   const mappingEvidence = mappingEvidenceFromZip(options.zipPath, mappingEntries)
-  const matchingMappings = mappingEvidence.filter((mapping) => (
-    (options.sourceGoalId ? mapping.sourceGoalId === options.sourceGoalId : true)
-    && (options.canonicalGoalId ? mapping.canonicalGoalId === options.canonicalGoalId : true)
-  ))
-  const sourceGoalIds = new Set([
-    ...(options.sourceGoalId ? [options.sourceGoalId] : []),
-    ...matchingMappings.flatMap((mapping) => (mapping.sourceGoalId ? [mapping.sourceGoalId] : [])),
-  ])
+  const trace = selectSourceTraceEvidence(
+    readZipEntryJson(options.zipPath, sourceGoalReferencesPath),
+    mappingEvidence,
+    options,
+    {
+      artifactPaths: new Set(entries.map((entry) => entry.slice(archiveRoot.length + 1))),
+      mappingPaths: new Set(mappingEntries.map((entry) => entry.slice(archiveRoot.length + 1))),
+    },
+  )
+  const matchingMappings = trace.mappings
   const canonicalGoalIds = new Set([
     ...(options.canonicalGoalId ? [options.canonicalGoalId] : []),
     ...matchingMappings.flatMap((mapping) => (mapping.canonicalGoalId ? [mapping.canonicalGoalId] : [])),
   ])
-  const sourceGoals = [...sourceGoalIds]
-    .flatMap((sourceGoalId) => {
-      const evidence = sourceGoalIndex.get(sourceGoalId)
-      return evidence ? [evidence] : []
-    })
-    .slice(0, options.limit)
+  const sourceGoals = trace.sourceGoals.slice(0, options.limit)
   const canonicalGoals = [...canonicalGoalIds]
     .flatMap((canonicalGoalId) => {
       const goal = canonicalGoalIndex.get(canonicalGoalId)
@@ -436,6 +484,7 @@ const main = () => {
     archiveRoot,
     query: {
       sourceGoalId: options.sourceGoalId,
+      sourceArtifactPath: options.sourceArtifactPath,
       canonicalGoalId: options.canonicalGoalId,
     },
     sourceGoals,
@@ -457,6 +506,7 @@ const main = () => {
     zipPath: result.zipPath,
     archiveRoot,
     sourceGoalId: options.sourceGoalId,
+    sourceArtifactPath: options.sourceArtifactPath,
     canonicalGoalId: options.canonicalGoalId,
     sourceGoals,
     mappings: matchingMappings,
@@ -465,10 +515,12 @@ const main = () => {
   }))
 }
 
-try {
-  main()
-} catch (error) {
-  const message = error instanceof Error ? error.message : String(error)
-  process.stderr.write(`${message}\n`)
-  process.exitCode = 1
+if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
+  try {
+    main()
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error)
+    process.stderr.write(`${message}\n`)
+    process.exitCode = 1
+  }
 }

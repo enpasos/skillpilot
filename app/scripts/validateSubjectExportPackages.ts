@@ -3,6 +3,15 @@ import { createHash } from 'node:crypto'
 import { existsSync, lstatSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs'
 import { basename, dirname, isAbsolute, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import {
+  GOAL_VISUALIZATION_LINK_FIELDS,
+  parseSubjectExportVisualizationMetadata,
+} from './subjectExportVisualizationMetadata'
+import { parseSubjectExportSourceReferences } from './subjectExportSourceReferences'
+import {
+  isSubjectExportGoalVisualizationPath,
+  subjectExportGoalVisualizationPath,
+} from './subjectExportPackagePaths'
 
 type JsonValue =
   | null
@@ -651,18 +660,6 @@ const parseGoals = (canonicalData: JsonValue): GoalRecord[] => {
   })
 }
 
-const GOAL_VISUALIZATION_LINK_FIELDS = [
-  'skillpilotId',
-  'role',
-  'title',
-  'provider',
-  'description',
-  'altText',
-  'lang',
-  'license',
-  'reviewStatus',
-] as const
-
 type CanonicalGoalVisualizationRecord = Pick<GoalVisualizationAssetRecord,
   | 'goalId'
   | 'order'
@@ -679,9 +676,7 @@ type CanonicalGoalVisualizationRecord = Pick<GoalVisualizationAssetRecord,
   | 'reviewStatus'
 >
 
-const expectedGoalVisualizationPath = (subjectSlug: string, goalId: string, extension: string) => (
-  `assets/goal-visualizations/${subjectSlug}/${goalId}/${goalId}${extension}`
-)
+const expectedGoalVisualizationPath = subjectExportGoalVisualizationPath
 
 const safeGoalVisualizationPackagePath = (value: string) => {
   const segments = value.split('/')
@@ -714,23 +709,13 @@ const collectCanonicalGoalVisualizations = (canonicalData: JsonValue, subjectSlu
         issues.push(`${context}: resourceType must be image`)
         return
       }
-      const values: Record<string, string> = {}
-      let valid = true
-      GOAL_VISUALIZATION_LINK_FIELDS.forEach((field) => {
-        const value = link[field]
-        if (typeof value !== 'string' || value.trim().length === 0) {
-          issues.push(`${context}: missing non-empty ${field}`)
-          valid = false
-        } else {
-          values[field] = value
-        }
-      })
+      const values = parseSubjectExportVisualizationMetadata(link, context, issues)
       const publicUrl = typeof link.url === 'string' ? link.url : ''
       if (!publicUrl.startsWith('/') || publicUrl.startsWith('//')) {
         issues.push(`${context}: url must be root-relative`)
-        valid = false
+        return
       }
-      if (!valid) return
+      if (!values) return
       if (values.skillpilotId !== goalId) {
         issues.push(`${context}: skillpilotId must equal goal id`)
         return
@@ -754,7 +739,7 @@ const collectCanonicalGoalVisualizations = (canonicalData: JsonValue, subjectSlu
         return
       }
       const expectedPath = expectedGoalVisualizationPath(subjectSlug, goalId, extension)
-      if (packagePath !== expectedPath) {
+      if (!isSubjectExportGoalVisualizationPath(packagePath, subjectSlug, goalId, extension)) {
         issues.push(`${context}: expected /${expectedPath}, got ${publicUrl}`)
         return
       }
@@ -1274,16 +1259,19 @@ const validatePackage = (zipPath: string, readinessDir: string): PackageValidati
 
     const sourceGoalReferencesPath = packageEntryPath(archiveRoot, 'data/sources/source-goal-references.json')
     const sourceGoalReferences = jsonObject(readZipEntryJson(zipPath, sourceGoalReferencesPath), 'source-goal references')
+    const reviewMappingEntries = entries.filter((entry) => entry.startsWith(`${archiveRoot}/data/mappings/`) && entry.endsWith('.review.json'))
+    const sourceReferenceContract = parseSubjectExportSourceReferences(sourceGoalReferences, {
+      artifactPaths: new Set(manifestFiles.filter((file) => file.category === 'source-extraction' && entrySet.has(file.path))
+        .map((file) => file.path.slice(archiveRoot.length + 1))),
+      mappingPaths: new Set(reviewMappingEntries.map((entry) => entry.slice(archiveRoot.length + 1))),
+    })
     const sourceGoalReferenceSources = Array.isArray(sourceGoalReferences.sources) ? sourceGoalReferences.sources : []
     const sourceGoalReferenceRecords = sourceGoalReferenceSources.flatMap((source) => {
       const sourceData = jsonObject(source, 'source-goal reference source')
       const sourceGoals = Array.isArray(sourceData.sourceGoals) ? sourceData.sourceGoals : []
       return sourceGoals.map((goal) => jsonObject(goal, 'source-goal reference'))
     })
-    const sourceGoalIds = sourceGoalReferenceRecords
-      .flatMap((goal) => (typeof goal.sourceGoalId === 'string' && goal.sourceGoalId.trim() ? [goal.sourceGoalId.trim()] : []))
-    const duplicateSourceGoalIds = sourceGoalIds.filter((goalId, index) => sourceGoalIds.indexOf(goalId) !== index)
-    const sourceGoalIdSet = new Set(sourceGoalIds)
+    const duplicateSourceGoalIds = sourceReferenceContract.issues.filter((issue) => /Duplicate (?:legacy )?sourceGoalId/u.test(issue))
     const sourceGoalReferencesWithoutText = sourceGoalReferenceRecords
       .filter((goal) => typeof goal.sourceText !== 'string' || goal.sourceText.trim().length === 0)
       .map((goal) => String(goal.sourceGoalId ?? '(missing-id)'))
@@ -1304,6 +1292,8 @@ const validatePackage = (zipPath: string, readinessDir: string): PackageValidati
       duplicateSourceGoalIds.length === 0,
       duplicateSourceGoalIds.slice(0, 5).join(', ') || 'ok',
     )
+    check(checks, 'source-goal-reference-bindings-valid', sourceReferenceContract.issues.length === 0,
+      sourceReferenceContract.issues.slice(0, 5).join(' | ') || `source index version ${sourceReferenceContract.schemaVersion}`)
     check(
       checks,
       'source-goal-references-have-text-and-official-links',
@@ -1514,7 +1504,7 @@ const validatePackage = (zipPath: string, readinessDir: string): PackageValidati
         issues.push(`${visualizationKey(record)}: unsafe packagePath/publicUrl`)
       }
       const extension = record.mediaType === 'image/jpeg' ? '.jpg' : '.png'
-      if (record.packagePath !== expectedGoalVisualizationPath(subjectSlug, record.goalId, extension)) {
+      if (!isSubjectExportGoalVisualizationPath(record.packagePath, subjectSlug, record.goalId, extension)) {
         issues.push(`${visualizationKey(record)}: unexpected package path`)
       }
       if (record.skillpilotId !== record.goalId || record.role !== 'primary') {
@@ -1623,7 +1613,6 @@ const validatePackage = (zipPath: string, readinessDir: string): PackageValidati
     const missingStates = EXPECTED_DE_STATES.filter((state) => !mappingStates.includes(state))
     check(checks, 'all-de-state-mapping-lanes-present', missingStates.length === 0, missingStates.join(', ') || 'all 16 state lanes')
 
-    const reviewMappingEntries = entries.filter((entry) => entry.startsWith(`${archiveRoot}/data/mappings/`) && entry.endsWith('.review.json'))
     const reviewMappingSourceReferences = reviewMappingEntries.flatMap((entry) => {
       const mappingData = jsonObject(readZipEntryJson(zipPath, entry), 'review mapping')
       const mappings = Array.isArray(mappingData.mappings) ? mappingData.mappings : []
@@ -1634,7 +1623,9 @@ const validatePackage = (zipPath: string, readinessDir: string): PackageValidati
       })
     })
     const unresolvedReviewMappingSourceReferences = reviewMappingSourceReferences
-      .filter((reference) => !sourceGoalIdSet.has(reference.sourceGoalId))
+      .filter((reference) => sourceReferenceContract.resolveMapping(
+        reference.entry.slice(archiveRoot.length + 1), reference.sourceGoalId,
+      ).length === 0)
     counts.reviewMappingFiles = reviewMappingEntries.length
     counts.reviewMappingSourceReferences = reviewMappingSourceReferences.length
     counts.unresolvedReviewMappingSourceReferences = unresolvedReviewMappingSourceReferences.length

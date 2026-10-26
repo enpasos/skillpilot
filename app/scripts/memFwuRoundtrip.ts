@@ -18,6 +18,7 @@ import {
 import { basename, dirname, isAbsolute, relative, resolve, sep } from 'node:path'
 import { createInterface } from 'node:readline'
 import { fileURLToPath, pathToFileURL } from 'node:url'
+import { parseSubjectExportSourceReferences } from './subjectExportSourceReferences'
 
 type JsonValue =
   | null
@@ -813,7 +814,9 @@ const packageAssetIri = (archiveRoot: string, packagePath: string) => (
   `${packageIri(archiveRoot)}/asset/${idSegment(packagePath)}`
 )
 
-const sourceGoalIri = (archiveRoot: string, sourceGoalId: string) => `${packageIri(archiveRoot)}/source-goal/${idSegment(sourceGoalId)}`
+const sourceGoalIri = (archiveRoot: string, sourceGoalId: string, artifactPath?: string) => artifactPath
+  ? `${collectionIri(archiveRoot, artifactPath)}/source-goal/${idSegment(sourceGoalId)}`
+  : `${packageIri(archiveRoot)}/source-goal/${idSegment(sourceGoalId)}`
 
 const sourceDocumentIri = (archiveRoot: string, sourceKey: string) => `${packageIri(archiveRoot)}/source-document/${idSegment(sourceKey)}`
 
@@ -916,6 +919,8 @@ sp:MappingFile a owl:Class ; rdfs:label "Mapping file metadata"@en .
 sp:MappingRecord a owl:Class ; rdfs:label "Canonical curriculum mapping record"@en .
 sp:ReviewDecision a owl:Class ; rdfs:label "Reviewed source-to-canonical mapping decision"@en .
 sp:SourceCollection a owl:Class ; rdfs:label "Curriculum source extraction collection"@en .
+sp:MappingSourceBinding a owl:Class ; rdfs:label "Mapping source collection binding"@en .
+sp:MappingSourceMember a owl:Class ; rdfs:label "Ordered mapping source collection member"@en .
 sp:SourceDocument a owl:Class ; rdfs:subClassOf iao:IAO_0000030 ; rdfs:label "Official curriculum source document"@en .
 sp:SourceGoalReference a owl:Class ; rdfs:subClassOf lp:LP_0030065 ; rdfs:label "Source goal reference with official text span"@en .
 sp:GoalVisualizationReference a owl:Class ;
@@ -962,6 +967,9 @@ sp:hasCompositionView a owl:ObjectProperty ; rdfs:domain sp:SkillPilotPackage ; 
 sp:hasCompositionChild a owl:ObjectProperty ; rdfs:range sp:CompositionNode ; rdfs:label "has composition child"@en .
 sp:compositionGoal a owl:ObjectProperty ; rdfs:domain sp:CompositionNode ; rdfs:range sp:LearningGoal .
 sp:hasSourceCollection a owl:ObjectProperty ; rdfs:domain sp:SkillPilotPackage ; rdfs:range sp:SourceCollection .
+sp:hasMappingSourceBinding a owl:ObjectProperty ; rdfs:domain sp:SkillPilotPackage ; rdfs:range sp:MappingSourceBinding .
+sp:hasMappingSourceMember a owl:ObjectProperty ; rdfs:domain sp:MappingSourceBinding ; rdfs:range sp:MappingSourceMember .
+sp:boundSourceCollection a owl:ObjectProperty ; rdfs:domain sp:MappingSourceMember ; rdfs:range sp:SourceCollection .
 sp:hasSourceDocument a owl:ObjectProperty ; rdfs:domain sp:SourceCollection ; rdfs:range sp:SourceDocument .
 sp:hasSourceGoal a owl:ObjectProperty ; rdfs:domain sp:SourceCollection ; rdfs:range sp:SourceGoalReference .
 sp:hasCardDeck a owl:ObjectProperty ; rdfs:domain sp:SkillPilotPackage ; rdfs:range sp:CardDeck .
@@ -1028,6 +1036,10 @@ sp:topicCode a owl:DatatypeProperty ; rdfs:label "curricular topic code"@en .
 sp:reviewedAt a owl:DatatypeProperty ; rdfs:label "review timestamp"@en .
 sp:reviewer a owl:DatatypeProperty ; rdfs:label "reviewer"@en .
 sp:schemaVersion a owl:DatatypeProperty ; rdfs:label "schema version"@en .
+sp:sourceGoalReferenceSchemaVersion a owl:DatatypeProperty ; rdfs:label "source-goal reference index version"@en .
+sp:sourceGoalReferenceNote a owl:DatatypeProperty ; rdfs:label "source-goal reference index note"@en .
+sp:sourceArtifactPath a owl:DatatypeProperty ; rdfs:label "source extraction package artifact path"@en .
+sp:mappingPath a owl:DatatypeProperty ; rdfs:label "mapping package artifact path"@en .
 sp:version a owl:DatatypeProperty ; rdfs:label "version"@en .
 sp:generatedAt a owl:DatatypeProperty ; rdfs:label "generation timestamp"@en .
 sp:sourceExtractionId a owl:DatatypeProperty ; rdfs:label "source extraction id"@en .
@@ -2100,6 +2112,38 @@ const sourceGoalIdFromReviewDecision = (data: Record<string, JsonValue>) => (
   stringValue(data.sourceGoalId) ?? stringValue(data.legacyGoalId) ?? stringValue(data.reviewDecisionId)
 )
 
+const sourceCollectionIdentity = (source: Record<string, JsonValue>, version: 1 | 2) => {
+  const identity = stringValue(version === 2 ? source.artifactPath : source.extractionId)
+  if (!identity || (version === 2 && !isSafePackagePath(identity))) {
+    throw new Error(`Invalid source collection identity for source-goal index v${version}.`)
+  }
+  return identity
+}
+
+const sourceReferenceContext = (archiveRoot: string, entries: ZipEntryRecord[]) => {
+  const entry = entries.find((candidate) => candidate.path === `${archiveRoot}/data/sources/source-goal-references.json`)
+  if (!entry) return null
+  const data = jsonObject(JSON.parse(entryText(entry, 'source-goal references')) as JsonValue, 'source-goal references')
+  const packagePaths = entries.map((candidate) => candidate.path.slice(archiveRoot.length + 1))
+  const parsed = parseSubjectExportSourceReferences(data, {
+    artifactPaths: new Set(packagePaths),
+    mappingPaths: new Set(packagePaths.filter((path) => path.startsWith('data/mappings/') && path.endsWith('.review.json'))),
+  })
+  if (parsed.issues.length > 0 || parsed.schemaVersion === null) {
+    throw new Error(`Invalid source-goal reference index: ${parsed.issues.join(' | ')}`)
+  }
+  const version: 1 | 2 = parsed.schemaVersion === 2 ? 2 : 1
+  const sources = (data.sources as JsonValue[]).map((source) => jsonObject(source, 'source collection'))
+  const bindings = new Map<string, string[]>()
+  if (version === 2) {
+    for (const value of data.mappingSourceBindings as JsonValue[]) {
+      const binding = jsonObject(value, 'mapping source binding')
+      bindings.set(String(binding.mappingPath), stringArray(binding.sourceArtifactPaths))
+    }
+  }
+  return { version, sources, bindings, note: stringValue(data.note), resolveMapping: parsed.resolveMapping }
+}
+
 export const writeMappingSemantics = (
   write: (line: string) => void,
   archiveRoot: string,
@@ -2107,6 +2151,7 @@ export const writeMappingSemantics = (
   counts: SemanticCounts,
   options: { semanticIris?: boolean } = {},
 ) => {
+  const sourceContext = sourceReferenceContext(archiveRoot, entries)
   entries
     .filter((entry) => entry.path.startsWith(`${archiveRoot}/data/mappings/`) && entry.path.endsWith('.json'))
     .forEach((entry) => {
@@ -2164,7 +2209,19 @@ export const writeMappingSemantics = (
           writeJsonField(write, resource, `${SP}withdrawnMappingsJson`, decisionData.withdrawnMappings)
           writeJsonField(write, resource, `${SP}suggestedCanonicalGapJson`, decisionData.suggestedCanonicalGap)
           if (sourceGoalId) {
-            write(tripleLine(resource, `${SP}mapsSourceGoal`, iri(sourceGoalIri(archiveRoot, sourceGoalId))))
+            if (sourceContext?.version === 2) {
+              const mappingPath = entry.path.slice(archiveRoot.length + 1)
+              const matches = sourceContext.resolveMapping(mappingPath, sourceGoalId)
+              if (matches.length === 0) throw new Error(`Unresolved bound source goal ${mappingPath}: ${sourceGoalId}`)
+              for (const match of matches) {
+                if (!match.artifactPath) throw new Error(`Missing v2 source collection identity: ${mappingPath}`)
+                write(tripleLine(resource, `${SP}mapsSourceGoal`, iri(sourceGoalIri(
+                  archiveRoot, sourceGoalId, match.artifactPath,
+                ))))
+              }
+            } else {
+              write(tripleLine(resource, `${SP}mapsSourceGoal`, iri(sourceGoalIri(archiveRoot, sourceGoalId))))
+            }
           }
           stringArray(decisionData.canonicalGoalIds).forEach((goalId) => {
             write(tripleLine(resource, `${SP}mapsCanonicalGoal`, iri(goalIri(archiveRoot, goalId))))
@@ -2197,28 +2254,34 @@ export const writeMappingSemantics = (
     })
 }
 
-const writeSourceSemantics = (
+export const writeSourceSemantics = (
   write: (line: string) => void,
   archiveRoot: string,
   entries: ZipEntryRecord[],
   counts: SemanticCounts,
   options: { includeSourceIndexSummary?: boolean } = {},
 ) => {
-  const sourceReferencesEntry = findEntry(entries, archiveRoot, 'data/sources/source-goal-references.json')
-  const sourceReferences = jsonObject(JSON.parse(entryText(sourceReferencesEntry, 'source-goal references')) as JsonValue, 'source-goal references')
-  const sources = Array.isArray(sourceReferences.sources) ? sourceReferences.sources : []
+  const context = sourceReferenceContext(archiveRoot, entries)
+  if (!context) throw new Error('Missing source-goal reference index.')
+  const { version, sources } = context
+  write(tripleLine(packageIri(archiveRoot), `${RDF}type`, iri(`${SP}SkillPilotPackage`)))
+  writeNumberField(write, packageIri(archiveRoot), `${SP}sourceGoalReferenceSchemaVersion`, version)
+  writeStringField(write, packageIri(archiveRoot), `${SP}sourceGoalReferenceNote`, context.note ?? undefined)
 
-  sources.forEach((source) => {
+  sources.forEach((source, sourceIndex) => {
     const sourceData = jsonObject(source, 'source collection')
     const extractionId = stringValue(sourceData.extractionId)
     if (!extractionId) {
       return
     }
-    const collection = collectionIri(archiveRoot, extractionId)
+    const identity = sourceCollectionIdentity(sourceData, version)
+    const collection = collectionIri(archiveRoot, identity)
     counts.sourceCollections += 1
     write(tripleLine(packageIri(archiveRoot), `${SP}hasSourceCollection`, iri(collection)))
     write(tripleLine(collection, `${RDF}type`, iri(`${SP}SourceCollection`)))
     write(tripleLine(collection, `${SP}skillpilotId`, literal(extractionId)))
+    writeNumberField(write, collection, `${SP}order`, sourceIndex)
+    if (version === 2) writeStringField(write, collection, `${SP}sourceArtifactPath`, identity)
     writeStringField(write, collection, `${SP}jurisdiction`, sourceData.jurisdiction)
     writeStringField(write, collection, `${SP}sourceLandscapeId`, sourceData.sourceLandscapeId)
     writeStringField(write, collection, `${SP}stage`, sourceData.stage)
@@ -2233,7 +2296,7 @@ const writeSourceSemantics = (
     documents.forEach((document) => {
       const documentData = jsonObject(document, 'source document')
       const key = stringValue(documentData.key) ?? `${extractionId}-document-${counts.sourceDocuments}`
-      const documentResource = sourceDocumentIri(archiveRoot, `${extractionId}/${key}`)
+      const documentResource = sourceDocumentIri(archiveRoot, `${identity}/${key}`)
       counts.sourceDocuments += 1
       write(tripleLine(collection, `${SP}hasSourceDocument`, iri(documentResource)))
       write(tripleLine(documentResource, `${RDF}type`, iri(`${SP}SourceDocument`)))
@@ -2252,7 +2315,7 @@ const writeSourceSemantics = (
       if (!sourceGoalId) {
         return
       }
-      const resource = sourceGoalIri(archiveRoot, sourceGoalId)
+      const resource = sourceGoalIri(archiveRoot, sourceGoalId, version === 2 ? identity : undefined)
       const documentKey = stringValue(goalData.sourceDocumentKey)
       counts.sourceGoals += 1
       write(tripleLine(collection, `${SP}hasSourceGoal`, iri(resource)))
@@ -2260,7 +2323,7 @@ const writeSourceSemantics = (
       write(tripleLine(resource, `${RDF}type`, iri(`${SP}SourceGoalReference`)))
       write(tripleLine(resource, `${SP}skillpilotId`, literal(sourceGoalId)))
       if (documentKey) {
-        const documentResource = sourceDocumentIri(archiveRoot, `${extractionId}/${documentKey}`)
+        const documentResource = sourceDocumentIri(archiveRoot, `${identity}/${documentKey}`)
         write(tripleLine(resource, LP_REFERS_TO, iri(documentResource)))
         write(tripleLine(resource, `${DCTERMS}source`, iri(documentResource)))
       }
@@ -2292,6 +2355,21 @@ const writeSourceSemantics = (
       writeSafeSourceString(`${SP}phase`, goalData.phase)
       writeSafeSourceString(`${SP}courseLevel`, goalData.courseLevel)
       writeSafeSourceString(`${SP}category`, goalData.category)
+    })
+  })
+
+  ;[...context.bindings].forEach(([mappingPath, sourcePaths], index) => {
+    const binding = `${packageIri(archiveRoot)}/mapping-source-binding/${idSegment(mappingPath)}`
+    write(tripleLine(packageIri(archiveRoot), `${SP}hasMappingSourceBinding`, iri(binding)))
+    write(tripleLine(binding, `${RDF}type`, iri(`${SP}MappingSourceBinding`)))
+    writeStringField(write, binding, `${SP}mappingPath`, mappingPath)
+    writeNumberField(write, binding, `${SP}order`, index)
+    sourcePaths.forEach((sourcePath, sourceIndex) => {
+      const member = `${binding}/source/${sourceIndex}`
+      write(tripleLine(binding, `${SP}hasMappingSourceMember`, iri(member)))
+      write(tripleLine(member, `${RDF}type`, iri(`${SP}MappingSourceMember`)))
+      writeNumberField(write, member, `${SP}order`, sourceIndex)
+      write(tripleLine(member, `${SP}boundSourceCollection`, iri(collectionIri(archiveRoot, sourcePath))))
     })
   })
 

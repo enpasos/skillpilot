@@ -14,14 +14,22 @@ import {
 import { basename, dirname, extname, isAbsolute, join, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { crc32 } from 'node:zlib'
+import { parseSubjectExportVisualizationMetadata } from './subjectExportVisualizationMetadata'
+import { parseSubjectExportSourceReferences } from './subjectExportSourceReferences'
 import {
   defaultMemoryCardReviewConfigDir,
-  discoverMemoryCardReviewConfigs,
+  discoverActiveMemoryCardReviewConfigs,
 } from './memoryCardReviewConfigDiscovery'
 import {
   createDeterministicZip32,
   type DeterministicZip32Entry,
 } from './deterministicZip32'
+import {
+  legacySubjectExportGoalVisualizationPath,
+  subjectExportGoalVisualizationPath,
+  subjectExportMappingFileName,
+  subjectExportSourceArtifactFileName,
+} from './subjectExportPackagePaths'
 
 type JsonValue =
   | null
@@ -73,6 +81,7 @@ type GoalVisualizationAssetRecord = {
 
 type GoalVisualizationAsset = {
   record: GoalVisualizationAssetRecord
+  sourcePublicUrl: string
   sourcePath: string
   crc32: number
 }
@@ -372,19 +381,32 @@ const SOURCE_GOAL_REFERENCES_SCHEMA = {
   $id: 'https://skillpilot.local/schema/source-goal-references.schema.json',
   title: 'SkillPilot source-goal reference index',
   type: 'object',
-  required: ['schemaVersion', 'sourceGoalReferenceCount', 'sources'],
+  required: ['schemaVersion', 'sourceGoalReferenceCount', 'sources', 'mappingSourceBindings'],
   additionalProperties: true,
   properties: {
-    schemaVersion: { type: ['integer', 'string'] },
+    schemaVersion: { const: 2 },
     note: { type: 'string' },
     sourceGoalReferenceCount: { type: 'integer', minimum: 0 },
+    mappingSourceBindings: {
+      type: 'array',
+      items: {
+        type: 'object',
+        required: ['mappingPath', 'sourceArtifactPaths'],
+        additionalProperties: false,
+        properties: {
+          mappingPath: { type: 'string', pattern: '^data/mappings/.+\\.review\\.json$' },
+          sourceArtifactPaths: { type: 'array', minItems: 1, uniqueItems: true, items: { type: 'string', pattern: '^data/sources/.+\\.json$' } },
+        },
+      },
+    },
     sources: {
       type: 'array',
       items: {
         type: 'object',
-        required: ['extractionId', 'sourceGoals'],
+        required: ['artifactPath', 'extractionId', 'sourceGoals'],
         additionalProperties: true,
         properties: {
+          artifactPath: { type: 'string', pattern: '^data/sources/.+\\.json$' },
           extractionId: { type: 'string', minLength: 1 },
           sourceLandscapeId: { type: ['string', 'null'] },
           jurisdiction: { type: ['string', 'null'] },
@@ -670,15 +692,7 @@ const shortenStage = (stage: string) => stage
   .replace(/^lower-secondary$/u, 'lower')
   .replace(/^upper-secondary$/u, 'upper')
 
-const mappingPackageFileName = (fileName: string) => fileName
-  .replace(/lower_secondary/gu, 'lower')
-  .replace(/upper_secondary/gu, 'upper')
-  .replace(/source_extraction/gu, 'src')
-  .replace(/full_src/gu, 'fullsrc')
-  .replace(/to_canonical/gu, 'to')
-  .replace(/politics_economics/gu, 'powi')
-  .replace(/politik_wirtschaftslehre/gu, 'powi')
-  .replace(/wirtschaftswissenschaft/gu, 'wirtschaft')
+const mappingPackageFileName = subjectExportMappingFileName
 
 const packagePathForRepoSource = (sourcePath: string, category: string, subjectSlug: string) => {
   const fileName = basename(sourcePath)
@@ -700,13 +714,14 @@ const packagePathForRepoSource = (sourcePath: string, category: string, subjectS
   }
 
   if (category === 'source-extraction') {
+    const sourceFileName = subjectExportSourceArtifactFileName(sourcePath)
     const match = sourcePath.match(/^curricula\/DE\/Gymnasium\/input\/([^/]+)(?:\/([^/]+))?(?:\/source-extraction)?\/([^/]+)$/u)
     if (match) {
       const state = match[1]
       const stage = match[2] ? `${shortenStage(match[2])}/` : ''
-      return `data/sources/${state}/${stage}${match[3]}`
+      return `data/sources/${state}/${stage}${sourceFileName}`
     }
-    return `data/sources/${fileName}`
+    return `data/sources/${sourceFileName}`
   }
 
   if (category === 'card-deck') {
@@ -934,14 +949,21 @@ const PACKAGE_JSON_CATEGORIES = new Set([
 
 const packageCardPathFromRuntimePath = (value: string) => {
   const match = value.match(/^\/data\/([^/?#]+)$/u)
-  return match ? `data/cards/${match[1]}` : value
+  if (match) return `data/cards/${match[1]}`
+  if (value.startsWith('curricula/') || value.startsWith('app/public/data/')) {
+    return `data/cards/${basename(value)}`
+  }
+  return value
 }
 
 const rewriteRepoLocalString = (value: string): string => {
   const normalized = value.split('\\').join('/')
 
   if (normalized.startsWith('curricula/DE/Gymnasium/mapping/')) {
-    return packagePathForRepoSource(normalized, 'mapping', 'subject')
+    const suffixStart = normalized.search(/[?#]/u)
+    const sourcePath = suffixStart < 0 ? normalized : normalized.slice(0, suffixStart)
+    const suffix = suffixStart < 0 ? '' : normalized.slice(suffixStart)
+    return `${packagePathForRepoSource(sourcePath, 'mapping', 'subject')}${suffix}`
   }
 
   if (normalized.startsWith('app/public/data/')) {
@@ -977,8 +999,11 @@ export const sanitizeJsonForPackage = (
   value: JsonValue,
   category: string,
   parentKey?: string,
+  urlRewrites?: ReadonlyMap<string, string>,
 ): JsonValue => {
   if (typeof value === 'string') {
+    const packageUrl = urlRewrites?.get(value)
+    if (packageUrl !== undefined) return packageUrl
     if (parentKey === 'vocabularySource' || parentKey === 'vocabularySourceEn') {
       return packageCardPathFromRuntimePath(value)
     }
@@ -986,23 +1011,27 @@ export const sanitizeJsonForPackage = (
   }
 
   if (Array.isArray(value)) {
-    return value.map((child) => sanitizeJsonForPackage(child, category, parentKey))
+    return value.map((child) => sanitizeJsonForPackage(child, category, parentKey, urlRewrites))
   }
 
   if (value && typeof value === 'object') {
     return Object.fromEntries(
       Object.entries(value)
         .filter(([key]) => !shouldOmitPackageJsonKey(key, category))
-        .map(([key, child]) => [key, sanitizeJsonForPackage(child, category, key)]),
+        .map(([key, child]) => [key, sanitizeJsonForPackage(child, category, key, urlRewrites)]),
     )
   }
 
   return value
 }
 
-const packageContentForRepoSource = (absolutePath: string, category: string) => {
+const packageContentForRepoSource = (
+  absolutePath: string,
+  category: string,
+  urlRewrites?: ReadonlyMap<string, string>,
+) => {
   if (extname(absolutePath).toLowerCase() === '.json' && PACKAGE_JSON_CATEGORIES.has(category)) {
-    return Buffer.from(stableJson(sanitizeJsonForPackage(readJson(absolutePath), category)), 'utf8')
+    return Buffer.from(stableJson(sanitizeJsonForPackage(readJson(absolutePath), category, undefined, urlRewrites)), 'utf8')
   }
   return readFileSync(absolutePath)
 }
@@ -1093,7 +1122,7 @@ const sourceDocumentsByKey = (documents: JsonValue[]) => new Map(
     .map((document) => [document.key as string, document]),
 )
 
-const sourceGoalReferenceIndexRecord = (absolutePath: string) => {
+export const sourceGoalReferenceIndexRecord = (absolutePath: string) => {
   const data = jsonObject(readJson(absolutePath))
   const rawDocuments = sourceDocumentsFromExtraction(data)
   const documentRecords = rawDocuments.map(sourceDocumentRecord)
@@ -1113,6 +1142,7 @@ const sourceGoalReferenceIndexRecord = (absolutePath: string) => {
   const sourceGoals = Array.isArray(data.sourceGoals) ? data.sourceGoals.filter(isJsonObject) : []
 
   return {
+    artifactPath: packagePathForRepoSource(repoRelative(absolutePath), 'source-extraction', 'subject'),
     extractionId: optionalString(data.extractionId) ?? basename(absolutePath, '.source-extraction.json'),
     sourceLandscapeId: optionalString(data.sourceLandscapeId),
     jurisdiction: optionalString(data.jurisdiction),
@@ -1163,15 +1193,25 @@ const sourceGoalReferenceIndexRecord = (absolutePath: string) => {
   }
 }
 
-const sourceGoalReferenceIndex = (sourceExtractionJsonFiles: string[]) => {
+export const sourceGoalReferenceIndex = (sourceExtractionJsonFiles: string[], mappingFiles: string[] = []) => {
   const sources = sourceExtractionJsonFiles
     .map(sourceGoalReferenceIndexRecord)
-    .sort((left, right) => compareCodeUnits(left.extractionId, right.extractionId))
+    .sort((left, right) => compareCodeUnits(left.artifactPath, right.artifactPath))
   return {
-    schemaVersion: 1,
-    note: 'Source-goal reference index. Review mapping source IDs in data/mappings resolve here to official source documents, source text anchors, and source locators.',
+    schemaVersion: 2,
+    note: 'Source-goal identity is (artifactPath, sourceGoalId). Review mapping source IDs resolve only within their explicitly authored mappingSourceBindings; all matching source versions remain available.',
     sourceGoalReferenceCount: sources.reduce((sum, source) => sum + source.sourceGoals.length, 0),
     sources,
+    mappingSourceBindings: mappingFiles
+      .filter((file) => basename(file).endsWith('.review.json'))
+      .map((file) => ({
+        mappingPath: packagePathForRepoSource(repoRelative(file), 'mapping', 'subject'),
+        sourceArtifactPaths: [...new Set(collectSourceExtractionPaths(readJson(file))
+          .filter((path) => extname(path).toLowerCase() === '.json')
+          .map((path) => packagePathForRepoSource(repoRelative(resolveRepoPath(path)), 'source-extraction', 'subject')))]
+          .sort(compareCodeUnits),
+      }))
+      .sort((left, right) => compareCodeUnits(left.mappingPath, right.mappingPath)),
   }
 }
 
@@ -1181,7 +1221,7 @@ const sourceGoalIdFromMapping = (mapping: Record<string, JsonValue>) => (
     ?? optionalString(mapping.reviewDecisionId)
 )
 
-const reviewMappingSourceGoalReferences = (mappingFiles: string[]) => mappingFiles
+export const reviewMappingSourceGoalReferences = (mappingFiles: string[]) => mappingFiles
   .filter((file) => basename(file).endsWith('.review.json'))
   .flatMap((file) => {
     const mappingData = jsonObject(readJson(file))
@@ -1293,7 +1333,7 @@ const targetLandscapeIdFrom = (value: JsonValue): string | null => (
     : null
 )
 
-const selectMappingFiles = (mappingTokens: string[], targetLandscapeId?: string) => {
+export const selectMappingFiles = (mappingTokens: string[], targetLandscapeId?: string) => {
   const normalizedTokens = mappingTokens.map(normalizeToken)
   const mappingRoot = resolveRepoPath('curricula/DE/Gymnasium/mapping')
   const candidates = walkFiles(mappingRoot)
@@ -1348,7 +1388,7 @@ const collectSourceExtractionPaths = (value: JsonValue): string[] => {
   return paths
 }
 
-const selectSourceExtractionFiles = (mappingFiles: string[], warnings: string[], errors: string[]) => {
+export const selectSourceExtractionFiles = (mappingFiles: string[], warnings: string[], errors: string[]) => {
   const selected = new Set<string>()
 
   mappingFiles
@@ -1372,6 +1412,9 @@ const selectSourceExtractionFiles = (mappingFiles: string[], warnings: string[],
 
   return [...selected].sort((left, right) => compareCodeUnits(repoRelative(left), repoRelative(right)))
 }
+
+export const selectSourceExtractionJsonFiles = (selectedFiles: string[]) => selectedFiles
+  .filter((file) => extname(file).toLowerCase() === '.json')
 
 const collectCardRuntimePaths = (value: JsonValue): string[] => {
   const paths: string[] = []
@@ -1397,73 +1440,42 @@ const collectCardRuntimePaths = (value: JsonValue): string[] => {
   return [...new Set(paths)].sort(compareCodeUnits)
 }
 
-const selectCardDeckFiles = (canonicalData: JsonValue, errors: string[]) => {
+export const selectCardDeckFiles = (
+  canonicalData: JsonValue,
+  errors: string[],
+  searchDirectories = [
+    resolveRepoPath('app/public/data'),
+    resolveRepoPath('curricula/DE/Gymnasium/memory-decks'),
+    resolveRepoPath('curricula/DE/Gymnasium/input/HE/upper-secondary/source-json'),
+  ],
+) => {
   const runtimePaths = collectCardRuntimePaths(canonicalData)
   if (runtimePaths.length === 0) {
     return []
   }
 
-  const searchDirectories = [
-    resolveRepoPath('app/public/data'),
-    resolveRepoPath('curricula/DE/Gymnasium/memory-decks'),
-    resolveRepoPath('curricula/DE/Gymnasium/input/HE/upper-secondary/source-json'),
-  ]
-
   const selected = new Map<string, string>()
   runtimePaths.forEach((runtimePath) => {
     const fileName = basename(runtimePath)
-    const absolutePath = searchDirectories
-      .map((directory) => join(directory, fileName))
+    const repositorySource = !runtimePath.startsWith('/data/') && runtimePath.includes('/')
+    const candidates = repositorySource
+      ? [resolveRepoPath(runtimePath)]
+      : searchDirectories.map((directory) => join(directory, fileName))
+    const absolutePath = candidates
       .find((candidate) => existsSync(candidate) && statSync(candidate).isFile())
     if (!absolutePath) {
-      errors.push(`Missing card deck referenced by canonical landscape: ${fileName}`)
+      errors.push(`Missing card deck referenced by canonical landscape: ${runtimePath}`)
       return
     }
-    selected.set(fileName, absolutePath)
+    const previous = selected.get(fileName)
+    if (previous && sha256(readFileSync(previous)) !== sha256(readFileSync(absolutePath))) {
+      errors.push(`Conflicting card deck sources have the same package filename: ${fileName}`)
+      return
+    }
+    if (!previous) selected.set(fileName, absolutePath)
   })
 
   return [...selected.values()].sort((left, right) => compareCodeUnits(basename(left), basename(right)))
-}
-
-const GOAL_VISUALIZATION_LINK_FIELDS = [
-  'skillpilotId',
-  'role',
-  'title',
-  'provider',
-  'description',
-  'altText',
-  'lang',
-  'license',
-  'reviewStatus',
-] as const
-
-const requiredGoalVisualizationLinkFields = (
-  link: Record<string, JsonValue>,
-  context: string,
-  errors: string[],
-) => {
-  const values: Record<(typeof GOAL_VISUALIZATION_LINK_FIELDS)[number], string> = {
-    skillpilotId: '',
-    role: '',
-    title: '',
-    provider: '',
-    description: '',
-    altText: '',
-    lang: '',
-    license: '',
-    reviewStatus: '',
-  }
-  let valid = true
-  GOAL_VISUALIZATION_LINK_FIELDS.forEach((field) => {
-    const value = link[field]
-    if (typeof value !== 'string' || value.trim().length === 0) {
-      errors.push(`${context}: missing non-empty ${field}.`)
-      valid = false
-      return
-    }
-    values[field] = value
-  })
-  return valid ? values : null
 }
 
 const goalVisualizationMediaType = (extension: string, content: Buffer) => {
@@ -1485,7 +1497,7 @@ const goalVisualizationMediaType = (extension: string, content: Buffer) => {
   return null
 }
 
-const selectGoalVisualizationAssets = (
+export const selectGoalVisualizationAssets = (
   canonicalData: Record<string, JsonValue>,
   subjectSlug: string,
   errors: string[],
@@ -1509,7 +1521,7 @@ const selectGoalVisualizationAssets = (
         errors.push(`${context}: resourceType must be image.`)
         return
       }
-      const fields = requiredGoalVisualizationLinkFields(linkValue, context, errors)
+      const fields = parseSubjectExportVisualizationMetadata(linkValue, context, errors)
       const publicUrl = typeof linkValue.url === 'string' ? linkValue.url : ''
       if (!fields || !publicUrl) {
         if (!publicUrl) errors.push(`${context}: missing non-empty url.`)
@@ -1548,7 +1560,7 @@ const selectGoalVisualizationAssets = (
         errors.push(`${context}: only .jpg and .png assets are supported.`)
         return
       }
-      const expectedPackagePath = `assets/goal-visualizations/${subjectSlug}/${goalId}/${goalId}${extension}`
+      const expectedPackagePath = legacySubjectExportGoalVisualizationPath(subjectSlug, goalId, extension)
       if (packagePath !== expectedPackagePath) {
         errors.push(`${context}: url must be /${expectedPackagePath}.`)
         return
@@ -1582,13 +1594,14 @@ const selectGoalVisualizationAssets = (
 
       seenPackagePaths.add(packagePath)
       assets.push({
+        sourcePublicUrl: publicUrl,
         sourcePath: absoluteAssetPath,
         crc32: inspected.crc32,
         record: {
           goalId,
           order,
-          packagePath,
-          publicUrl,
+          packagePath: subjectExportGoalVisualizationPath(subjectSlug, goalId, extension),
+          publicUrl: `/${subjectExportGoalVisualizationPath(subjectSlug, goalId, extension)}`,
           mediaType,
           bytes: inspected.bytes,
           sha256: inspected.sha256,
@@ -1613,12 +1626,12 @@ type MemoryCardReviewAudit = {
 
 const memoryCardReviewPackageBase = (reviewId: string) => `metadata/quality/memory-card-review/${slugify(reviewId)}`
 
-const selectMemoryCardReviewAudits = (landscapeId: string | undefined, errors: string[]) => {
+export const selectMemoryCardReviewAudits = (landscapeId: string | undefined, errors: string[]) => {
   if (!landscapeId) {
     return [] as MemoryCardReviewAudit[]
   }
 
-  return discoverMemoryCardReviewConfigs(defaultMemoryCardReviewConfigDir, { allowEmpty: true })
+  return discoverActiveMemoryCardReviewConfigs(defaultMemoryCardReviewConfigDir)
     .flatMap((configPath): MemoryCardReviewAudit[] => {
       const absoluteConfigPath = resolveRepoPath(configPath.configPath)
       const config = jsonObject(readJson(absoluteConfigPath))
@@ -1909,9 +1922,10 @@ const addRepoFile = (
   absolutePath: string,
   category: string,
   subjectSlug: string,
+  urlRewrites?: ReadonlyMap<string, string>,
 ) => {
   const sourcePath = repoRelative(absolutePath)
-  const content = packageContentForRepoSource(absolutePath, category)
+  const content = packageContentForRepoSource(absolutePath, category, urlRewrites)
   addEntry(entriesByPath, {
     packagePath: `${packageRoot}/${packagePathForRepoSource(sourcePath, category, subjectSlug)}`,
     content,
@@ -1996,6 +2010,7 @@ This package is a reproducible release artifact for the SkillPilot Gymnasium kno
 - \`assets/goal-visualizations/\` contains exactly the image assets referenced by that index.
 - \`data/dependencies/external-goal-references.json\` declares cross-subject goal references outside this subject scope.
 - \`data/sources/source-index.json\` lists the referenced official source documents and URLs.
+- The collection \`artifactPath\` files below \`data/sources/\` contain collection metadata and counts. Source-goal text remains in the reference index.
 - \`data/sources/source-goal-references.json\` resolves review mapping source IDs to official source-goal text, source anchors, source locators, and document URLs.
 - \`metadata/quality/memory-card-review/\` contains package-local memory-card review reports and JSONL decision ledgers where configured.
 - \`schemas/\` contains the JSON schema files needed to interpret the exported data.
@@ -2010,7 +2025,7 @@ Official curriculum documents are referenced by stable URL in the source indexes
 
 ## Source Trace
 
-Review mapping entries in \`data/mappings/**/*.review.json\` use \`legacyGoalId\` and \`reviewDecisionId\` as source IDs. The same ID resolves as \`sourceGoalId\` in \`data/sources/source-goal-references.json\`.
+Review mapping entries in \`data/mappings/**/*.review.json\` use \`legacyGoalId\` and \`reviewDecisionId\` as source IDs. In \`data/sources/source-goal-references.json\`, version 2 identifies a source goal by \`(artifactPath, sourceGoalId)\`. Its \`mappingSourceBindings\` records the explicitly authored source collections for each mapping path. Resolve the ID only within those collections; overlapping source versions remain separate records.
 
 With the SkillPilot repository available, a single source ID can be traced from the ZIP:
 
@@ -2019,7 +2034,9 @@ cd app
 npm run export:subject-package:trace-source -- --zip ../tmp/exports/${params.packageId}.zip --source-goal-id <sourceGoalId>
 \`\`\`
 
-Without the repository tooling, inspect \`data/sources/source-goal-references.json\` and select the matching \`sourceGoalId\`; the record contains the official document URL, source text, source span, source locator, and source text hash.
+If an ID occurs in multiple source versions, add \`--source-artifact-path <data/sources/...json>\` to select the exact collection.
+
+Without the repository tooling, inspect \`mappingSourceBindings\` for the mapping path, then find the matching \`sourceGoalId\` in each declared collection \`artifactPath\`. Each record contains the official document URL, source text, source span, source locator, and source text hash. Do not merge differing source versions by bare ID.
 
 ## Reproduce
 
@@ -2154,17 +2171,18 @@ This package carries the complete source-trace bridge needed for mapping review:
 
 \`\`\`text
 data/mappings/*.review.json legacyGoalId/reviewDecisionId
-  -> data/sources/source-goal-references.json sourceGoalId
+  -> mappingSourceBindings[mappingPath].sourceArtifactPaths
+  -> sources[artifactPath].sourceGoals[sourceGoalId]
   -> sourceText/sourceSpan/sourceRef/sourcePage/sourceDocumentUrl/sourceTextSha256
 \`\`\`
 
-For each review mapping source ID, the package contains the matching source-goal reference record. The source-goal record carries the official document URL, source text anchor, source locator, and text checksum used for traceability.
+For each review mapping source ID, the package contains every matching record from its explicitly authored source collections. Version 2 uses the qualified identity \`(artifactPath, sourceGoalId)\`, preserving source versions even when their IDs overlap or their wording differs. Each record carries the official document URL, source text anchor, source locator, and text checksum used for traceability.
 
 ## Reviewer Workflow
 
 1. Open a review mapping file under \`data/mappings/\`.
 2. Read the mapping source ID from \`legacyGoalId\` or \`reviewDecisionId\`.
-3. Find the same value as \`sourceGoalId\` in \`data/sources/source-goal-references.json\`.
+3. Find the mapping path in \`mappingSourceBindings\`, then the same \`sourceGoalId\` within its declared \`sourceArtifactPaths\` in \`data/sources/source-goal-references.json\`.
 4. Compare the mapped canonical target with the referenced \`sourceText\`, \`sourceSpan\`, \`sourceRef\`, official document URL, and \`sourceTextSha256\`.
 
 ## Counts
@@ -2304,8 +2322,7 @@ const main = () => {
   const mappingFiles = selectMappingFiles(options.mappingTokens, canonicalLandscapeId)
   const provenanceFiles = selectProvenanceFiles()
   const sourceExtractionFiles = selectSourceExtractionFiles(mappingFiles, warnings, errors)
-  const sourceExtractionJsonFiles = sourceExtractionFiles
-    .filter((file) => basename(file).endsWith('.source-extraction.json'))
+  const sourceExtractionJsonFiles = selectSourceExtractionJsonFiles(sourceExtractionFiles)
   const cardDeckFiles = selectCardDeckFiles(canonicalData, errors)
   const goalVisualizationAssets = selectGoalVisualizationAssets(canonicalData, options.subjectSlug, errors)
   const oversizedGoalVisualizations = goalVisualizationAssets.filter((asset) => asset.record.bytes > MAX_GOAL_VISUALIZATION_BYTES)
@@ -2327,13 +2344,12 @@ const main = () => {
   )
   const sourceOriginalUrlIssues = sourceExtractionJsonFiles.flatMap(sourceExtractionOriginalUrlIssues)
   errors.push(...sourceOriginalUrlIssues)
-  const sourceGoalReferences = sourceGoalReferenceIndex(sourceExtractionJsonFiles)
-  const sourceGoalReferenceIds = new Set(sourceGoalReferences.sources
-    .flatMap((source) => source.sourceGoals)
-    .flatMap((goal) => (goal.sourceGoalId ? [goal.sourceGoalId] : [])))
+  const sourceGoalReferences = sourceGoalReferenceIndex(sourceExtractionJsonFiles, mappingFiles)
+  const sourceReferenceContract = parseSubjectExportSourceReferences(sourceGoalReferences)
+  errors.push(...sourceReferenceContract.issues)
   const reviewMappingReferences = reviewMappingSourceGoalReferences(mappingFiles)
   const unresolvedReviewMappingReferences = reviewMappingReferences
-    .filter((reference) => !sourceGoalReferenceIds.has(reference.sourceGoalId))
+    .filter((reference) => sourceReferenceContract.resolveMapping(reference.mappingPath, reference.sourceGoalId).length === 0)
   const sourceGoalReferenceUrlIssues = sourceGoalReferences.sources.flatMap((source) => source.sourceGoals
     .filter((goal) => !hasUsableOfficialSourceUrl(goal.sourceDocumentUrl))
     .map((goal) => `${source.extractionId}:${goal.sourceGoalId ?? '(missing-id)'}`))
@@ -2362,9 +2378,22 @@ const main = () => {
     errors.push(`No mapping files found for tokens: ${options.mappingTokens.join(', ')}`)
   }
 
-  addRepoFile(entriesByPath, archiveRoot, canonicalPath, 'canonical-landscape', options.subjectSlug)
+  const visualizationUrlRewrites = new Map(goalVisualizationAssets
+    .map(({ sourcePublicUrl, record }) => [sourcePublicUrl, record.publicUrl]))
+  addRepoFile(entriesByPath, archiveRoot, canonicalPath, 'canonical-landscape', options.subjectSlug, visualizationUrlRewrites)
   compositionFiles.forEach((file) => addRepoFile(entriesByPath, archiveRoot, file, 'composition-view', options.subjectSlug))
   mappingFiles.forEach((file) => addRepoFile(entriesByPath, archiveRoot, file, 'mapping', options.subjectSlug))
+  sourceExtractionJsonFiles.forEach((file) => addEntry(entriesByPath, generatedEntry(
+    archiveRoot,
+    packagePathForRepoSource(repoRelative(file), 'source-extraction', options.subjectSlug),
+    {
+      artifactType: 'source-collection-metadata',
+      note: 'Collection metadata and counts only. Source-goal text and qualified identities are preserved in data/sources/source-goal-references.json.',
+      ...sourceExtractionIndexRecord(file),
+    },
+    'source-extraction',
+    'official-source-provenance-only',
+  )))
   provenanceFiles.forEach((file) => addRepoFile(entriesByPath, archiveRoot, file, 'provenance', options.subjectSlug))
   cardDeckFiles.forEach((file) => addRepoFile(entriesByPath, archiveRoot, file, 'card-deck', options.subjectSlug))
   memoryCardReviewAudits.forEach((audit) => addMemoryCardReviewAuditEntries(entriesByPath, archiveRoot, audit, options.subjectSlug))

@@ -12,6 +12,7 @@ import {
 import { dirname, isAbsolute, relative, resolve, sep } from 'node:path'
 import { createInterface } from 'node:readline'
 import { fileURLToPath, pathToFileURL } from 'node:url'
+import { parseSubjectExportSourceReferences } from './subjectExportSourceReferences'
 
 type JsonValue =
   | null
@@ -367,6 +368,13 @@ const P = {
   reviewedAt: `${SP}reviewedAt`,
   reviewer: `${SP}reviewer`,
   schemaVersion: `${SP}schemaVersion`,
+  sourceGoalReferenceSchemaVersion: `${SP}sourceGoalReferenceSchemaVersion`,
+  sourceGoalReferenceNote: `${SP}sourceGoalReferenceNote`,
+  sourceArtifactPath: `${SP}sourceArtifactPath`,
+  hasMappingSourceBinding: `${SP}hasMappingSourceBinding`,
+  hasMappingSourceMember: `${SP}hasMappingSourceMember`,
+  boundSourceCollection: `${SP}boundSourceCollection`,
+  mappingPath: `${SP}mappingPath`,
   version: `${SP}version`,
   generatedAt: `${SP}generatedAt`,
   sourceExtractionId: `${SP}sourceExtractionId`,
@@ -409,6 +417,7 @@ const T = {
   compositionView: `${SP}CompositionView`,
   compositionNode: `${SP}CompositionNode`,
   sourceCollection: `${SP}SourceCollection`,
+  mappingSourceBinding: `${SP}MappingSourceBinding`,
   sourceDocument: `${SP}SourceDocument`,
   sourceGoalReference: `${SP}SourceGoalReference`,
   cardDeck: `${SP}CardDeck`,
@@ -1604,12 +1613,28 @@ const reconstructSourceGoal = (model: RdfModel, goal: string): Record<string, Js
   return base
 }
 
-const reconstructSourceGoalReferences = (model: RdfModel) => ({
-  note: 'Semantically reconstructed from RDF without using sp:textLine carrier triples.',
-  schemaVersion: 1,
-  sourceGoalReferenceCount: resourcesOfType(model, T.sourceGoalReference).length,
-  sources: orderedResources(model, resourcesOfType(model, T.sourceCollection)).map((collection) => ({
+const sourceIdentityLiteral = (model: RdfModel, resource: string, predicate: string) => {
+  const values = [...new Set(lits(model, resource, predicate))]
+  if (values.length > 1) throw new Error(`Ambiguous RDF source identity ${predicate}: ${resource}`)
+  return values[0]
+}
+
+export const reconstructSourceGoalReferences = (model: RdfModel) => {
+  const packages = resourcesOfType(model, T.skillPilotPackage)
+  const versions = packages.flatMap((resource) => {
+    const raw = sourceIdentityLiteral(model, resource, P.sourceGoalReferenceSchemaVersion)
+    if (raw === undefined) return []
+    const value = num(raw)
+    if (value !== 1 && value !== 2) throw new Error('Unsupported RDF source-goal reference index version.')
+    return [value]
+  })
+  if (versions.length > 1 || (versions.length === 1 && versions[0] !== 1 && versions[0] !== 2)) {
+    throw new Error('Ambiguous or unsupported RDF source-goal reference index version.')
+  }
+  const schemaVersion = versions[0] ?? 1
+  const sources = orderedResources(model, resourcesOfType(model, T.sourceCollection)).map((collection) => ({
     extractionId: lit(model, collection, P.skillpilotId),
+    ...(schemaVersion === 2 ? { artifactPath: sourceIdentityLiteral(model, collection, P.sourceArtifactPath) } : {}),
     jurisdiction: lit(model, collection, P.jurisdiction),
     sourceLandscapeId: lit(model, collection, P.sourceLandscapeId),
     stage: lit(model, collection, P.stage),
@@ -1624,8 +1649,35 @@ const reconstructSourceGoalReferences = (model: RdfModel) => ({
     })),
     sourceGoals: orderedResources(model, iris(model, collection, P.hasSourceGoal))
       .map((goal) => reconstructSourceGoal(model, goal)),
-  })),
-})
+  }))
+  const identities = new Set<string>()
+  for (const source of sources) {
+    const identity = schemaVersion === 2 ? source.artifactPath : source.extractionId
+    if (!identity || identities.has(identity)) throw new Error(`Duplicate or missing RDF source collection identity: ${identity}`)
+    identities.add(identity)
+  }
+  const mappingSourceBindings = orderedResources(model, resourcesOfType(model, T.mappingSourceBinding)).map((binding) => ({
+    mappingPath: sourceIdentityLiteral(model, binding, P.mappingPath),
+    sourceArtifactPaths: orderedResources(model, iris(model, binding, P.hasMappingSourceMember)).map((member) => {
+      const targets = iris(model, member, P.boundSourceCollection)
+      const artifactPath = targets.length === 1 ? sourceIdentityLiteral(model, targets[0], P.sourceArtifactPath) : undefined
+      if (!artifactPath || !identities.has(artifactPath)) throw new Error('Mapping source binding references an unknown RDF source collection.')
+      return artifactPath
+    }),
+  }))
+  if (schemaVersion === 1 && mappingSourceBindings.length > 0) throw new Error('Legacy source-goal index cannot carry v2 source bindings.')
+  const result = {
+    note: packages.map((resource) => lit(model, resource, P.sourceGoalReferenceNote)).find((value) => value !== undefined)
+      ?? 'Semantically reconstructed from RDF without using sp:textLine carrier triples.',
+    schemaVersion,
+    sourceGoalReferenceCount: resourcesOfType(model, T.sourceGoalReference).length,
+    sources,
+    ...(schemaVersion === 2 ? { mappingSourceBindings } : {}),
+  }
+  const parsed = parseSubjectExportSourceReferences(result)
+  if (parsed.issues.length > 0) throw new Error(`Invalid RDF source-goal index: ${parsed.issues.join(' | ')}`)
+  return result
+}
 
 const reconstructCardDecks = (model: RdfModel) => orderedResources(model, resourcesOfType(model, T.cardDeck)).map((deck) => ({
   zipPath: lit(model, deck, P.zipPath),
@@ -1669,6 +1721,17 @@ const reconstructMappingFiles = (model: RdfModel) => {
 }
 
 export const reconstructMappings = (model: RdfModel) => {
+  const sourceIndex = reconstructSourceGoalReferences(model)
+  const sourceReferences = parseSubjectExportSourceReferences(sourceIndex)
+  const sourceResourcesByArtifact = new Map<string, Map<string, string>>()
+  if (sourceIndex.schemaVersion === 2) {
+    for (const collection of resourcesOfType(model, T.sourceCollection)) {
+      const artifactPath = sourceIdentityLiteral(model, collection, P.sourceArtifactPath)
+      if (artifactPath) sourceResourcesByArtifact.set(artifactPath, new Map(
+        iris(model, collection, P.hasSourceGoal).map((goal) => [skillpilotId(model, goal), goal]),
+      ))
+    }
+  }
   const canonicalMappings: Record<string, JsonValue[]> = {}
   orderedResources(model, resourcesOfType(model, T.mappingRecord)).forEach((resource) => {
     const zipPath = lit(model, resource, P.zipPath) ?? 'unknown'
@@ -1683,7 +1746,23 @@ export const reconstructMappings = (model: RdfModel) => {
   const reviewDecisions: Record<string, JsonValue[]> = {}
   orderedResources(model, resourcesOfType(model, T.reviewDecision)).forEach((resource) => {
     const zipPath = lit(model, resource, P.zipPath) ?? 'unknown'
-    const sourceGoal = iris(model, resource, P.mapsSourceGoal)[0]
+    const sourceGoals = iris(model, resource, P.mapsSourceGoal)
+    const sourceIds = new Set(sourceGoals.map((goal) => skillpilotId(model, goal)))
+    if (sourceIds.size > 1) throw new Error(`RDF review decision references different source-goal IDs: ${zipPath}`)
+    const sourceGoal = sourceGoals[0]
+    if (sourceIndex.schemaVersion === 2) {
+      const mappingPath = zipPath.slice(zipPath.indexOf('/') + 1)
+      if (!sourceGoal) throw new Error(`Missing RDF source binding for mapping ${mappingPath}`)
+      const id = skillpilotId(model, sourceGoal)
+      const expected = new Set(sourceReferences.resolveMapping(mappingPath, id).flatMap((match) => {
+        const goal = match.artifactPath ? sourceResourcesByArtifact.get(match.artifactPath)?.get(id) : undefined
+        return goal ? [goal] : []
+      }))
+      const actual = new Set(sourceGoals)
+      if (expected.size === 0 || expected.size !== actual.size || [...actual].some((goal) => !expected.has(goal))) {
+        throw new Error(`RDF mapping source goals disagree with the authored collection binding: ${mappingPath}`)
+      }
+    }
     const decision: Record<string, JsonValue> = {}
     withString(decision, 'sourceGoalId', sourceGoal ? skillpilotId(model, sourceGoal) : undefined)
     decision.canonicalGoalIds = iris(model, resource, P.mapsCanonicalGoal).map((goal) => skillpilotId(model, goal))
@@ -2144,7 +2223,8 @@ const flattenSourceGoals = (value: JsonValue) => {
   return sources.flatMap((source) => {
     const sourceData = jsonObject(source, 'source-goal reference source')
     const goals = Array.isArray(sourceData.sourceGoals) ? sourceData.sourceGoals : []
-    return goals.map((goal) => jsonObject(goal, 'source-goal reference'))
+    const collectionIdentity = String(data.schemaVersion === 2 ? sourceData.artifactPath : sourceData.extractionId)
+    return goals.map((goal) => ({ collectionIdentity, goal: jsonObject(goal, 'source-goal reference') }))
   })
 }
 
@@ -2941,26 +3021,36 @@ const validateSemanticReconstruction = (params: {
   }
 
   const sourceOriginal = readZipJson(params.zipPath, packageEntryPath(archiveRoot, 'data/sources/source-goal-references.json'))
-  const originalSources = jsonObject(sourceOriginal, 'source-goal references').sources
-  const reconstructedSources = jsonObject(params.reconstruction.sourceGoalReferences, 'reconstructed source-goal references').sources
+  const originalSourceIndex = jsonObject(sourceOriginal, 'source-goal references')
+  const reconstructedSourceIndex = jsonObject(params.reconstruction.sourceGoalReferences, 'reconstructed source-goal references')
+  const originalSources = originalSourceIndex.sources
+  const reconstructedSources = reconstructedSourceIndex.sources
   const sourceCollectionIssues: string[] = []
+  for (const field of ['schemaVersion', 'sourceGoalReferenceCount', 'mappingSourceBindings']) {
+    compareJsonField(sourceCollectionIssues, `source-goal references.${field}`,
+      originalSourceIndex[field], reconstructedSourceIndex[field])
+  }
+  const collectionIdentity = (source: Record<string, JsonValue>) => String(
+    originalSourceIndex.schemaVersion === 2 ? source.artifactPath : source.extractionId,
+  )
   const reconstructedSourceById = asMap(
     (Array.isArray(reconstructedSources) ? reconstructedSources : []).map((source) => jsonObject(source, 'reconstructed source collection')),
-    (source) => String(source.extractionId),
+    collectionIdentity,
   )
   ;(Array.isArray(originalSources) ? originalSources : []).map((source) => jsonObject(source, 'source collection')).forEach((source) => {
-    const reconstructed = reconstructedSourceById.get(String(source.extractionId))
+    const identity = collectionIdentity(source)
+    const reconstructed = reconstructedSourceById.get(identity)
     if (!reconstructed) {
-      sourceCollectionIssues.push(`missing ${String(source.extractionId)}`)
+      sourceCollectionIssues.push(`missing ${identity}`)
       return
     }
-    ;['jurisdiction', 'sourceLandscapeId', 'stage', 'subject'].forEach((field) => {
-      compareJsonField(sourceCollectionIssues, `${String(source.extractionId)}.${field}`, source[field], reconstructed[field])
+    ;['artifactPath', 'extractionId', 'jurisdiction', 'sourceLandscapeId', 'stage', 'subject'].forEach((field) => {
+      compareJsonField(sourceCollectionIssues, `${identity}.${field}`, source[field], reconstructed[field])
     })
     const documents = Array.isArray(source.sourceDocuments) ? source.sourceDocuments as JsonValue[] : []
     const reconstructedDocuments = Array.isArray(reconstructed.sourceDocuments) ? reconstructed.sourceDocuments as JsonValue[] : []
     if (normalizeRecordSet(documents) !== normalizeRecordSet(reconstructedDocuments)) {
-      sourceCollectionIssues.push(`${String(source.extractionId)}.sourceDocuments`)
+      sourceCollectionIssues.push(`${identity}.sourceDocuments`)
     }
   })
   check(
@@ -2972,12 +3062,14 @@ const validateSemanticReconstruction = (params: {
 
   const sourceOriginalGoals = flattenSourceGoals(sourceOriginal)
   const sourceReconstructedGoals = flattenSourceGoals(params.reconstruction.sourceGoalReferences)
-  const sourceReconstructedById = asMap(sourceReconstructedGoals, (goal) => String(goal.sourceGoalId))
-  const sourceIssues = sourceOriginalGoals.flatMap((goal) => {
-    const reconstructed = sourceReconstructedById.get(String(goal.sourceGoalId))
-    if (!reconstructed) {
-      return [`missing ${String(goal.sourceGoalId)}`]
+  const sourceReconstructedById = asMap(sourceReconstructedGoals,
+    ({ collectionIdentity, goal }) => `${collectionIdentity}\u0000${String(goal.sourceGoalId)}`)
+  const sourceIssues = sourceOriginalGoals.flatMap(({ collectionIdentity, goal }) => {
+    const reconstructedRecord = sourceReconstructedById.get(`${collectionIdentity}\u0000${String(goal.sourceGoalId)}`)
+    if (!reconstructedRecord) {
+      return [`missing ${collectionIdentity}: ${String(goal.sourceGoalId)}`]
     }
+    const reconstructed = reconstructedRecord.goal
     const issues: string[] = []
     ;[
       'title',

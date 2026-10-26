@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict'
+import { createHash } from 'node:crypto'
 import { readFileSync, readdirSync } from 'node:fs'
-import { dirname, resolve } from 'node:path'
+import { basename, dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import {
   SKILLPILOT_DATA_LICENSE_CATEGORY,
@@ -11,6 +12,7 @@ import {
   collectExternalCompositionGoalReferences,
   licenseCategoryForRepoSource,
   sanitizeJsonForPackage,
+  selectGoalVisualizationAssets,
   subjectExportLicenseEntries,
 } from './buildSkillpilotExportPackage'
 import {
@@ -20,6 +22,13 @@ import {
   validateExternalCompositionGoalReferences,
 } from './validateSubjectExportPackages'
 import { SUBJECT_EXPORT_MEMORY_CARD_REVIEW_CONFIGS } from './runSubjectExportReleaseGate'
+import {
+  isSubjectExportGoalVisualizationPath,
+  legacySubjectExportGoalVisualizationPath,
+  subjectExportGoalVisualizationPath,
+  subjectExportMappingFileName,
+  subjectExportSourceArtifactFileName,
+} from './subjectExportPackagePaths'
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const readJson = (path: string) => JSON.parse(readFileSync(resolve(repoRoot, path), 'utf8'))
@@ -113,6 +122,59 @@ assert.equal(
 )
 const officialUrl = 'Original: https://example.org/curricula/DE/Gymnasium/curriculum.pdf'
 assert.equal(sanitizeJsonForPackage(officialUrl, 'canonical-landscape'), officialUrl, 'Official links must not be rewritten as repository paths')
+const longMappingSource = 'curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.q1-atomic-split-author-proposal-20261005-v1.q4-four-bounded-reviewed-20261013-v1.review.json'
+const compactMappingName = subjectExportMappingFileName(basename(longMappingSource))
+assert(compactMappingName.length <= 72 && compactMappingName.endsWith('.review.json'))
+assert.equal(subjectExportMappingFileName(basename(longMappingSource)), compactMappingName,
+  'long package filenames are deterministic and retain the review classifier')
+assert.notEqual(subjectExportMappingFileName(`${'same-prefix-'.repeat(20)}a.review.json`),
+  subjectExportMappingFileName(`${'same-prefix-'.repeat(20)}b.review.json`),
+  'truncated names retain distinct source identities through a content-independent path hash')
+assert.equal(sanitizeJsonForPackage(`${longMappingSource}#finding`, 'canonical-landscape'),
+  `data/mappings/DE-HE/upper/${compactMappingName}#finding`,
+  'internal mapping references use the exact shortened entry path and preserve fragments')
+assert(`skillpilot-de-gymnasium-chemie-v0.1.0/data/mappings/DE-HE/upper/${compactMappingName}`.length <= 180)
+const sourceArtifactName = subjectExportSourceArtifactFileName('curricula/DE/Gymnasium/input/DE-HE/upper/source.json')
+assert.equal(sourceArtifactName.length, 76)
+assert.equal(subjectExportSourceArtifactFileName('curricula\\DE\\Gymnasium\\input\\DE-HE\\upper\\source.json'), sourceArtifactName,
+  'source artifact identities normalize separators and remain independent of the checkout root')
+assert.notEqual(subjectExportSourceArtifactFileName('curricula/DE/Gymnasium/input/DE-BY/upper/source.json'), sourceArtifactName,
+  'identical source basenames from different authored collections retain different artifact identities')
+assert(`skillpilot-de-gymnasium-wirtschaftswissenschaften-v0.1.0/data/sources/DE-HE/upper/${sourceArtifactName}`.length <= 180)
+for (const unsafeSourcePath of ['/home/author/source.json', '../source.json', 'C:\\source.json']) {
+  assert.throws(() => subjectExportSourceArtifactFileName(unsafeSourcePath), /repository-relative/u)
+}
+
+const economics = readJson('curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json')
+const visualGoal = economics.goals.find((goal: { resourceLinks?: Array<{ type?: string }> }) =>
+  goal.resourceLinks?.some((link) => link.type === 'goal-visualization'))
+assert(visualGoal, 'the actual Economics landscape contains an active visualization')
+const visualInput = { goals: [visualGoal] }
+const originalVisualInput = JSON.stringify(visualInput)
+const visualizationErrors: string[] = []
+const [visualAsset] = selectGoalVisualizationAssets(visualInput, 'wirtschaftswissenschaften', visualizationErrors)
+assert.deepEqual(visualizationErrors, [])
+assert(visualAsset)
+assert.equal(visualAsset.record.packagePath,
+  subjectExportGoalVisualizationPath('wirtschaftswissenschaften', visualGoal.id, '.png'))
+assert(`skillpilot-de-gymnasium-wirtschaftswissenschaften-v0.1.0/${visualAsset.record.packagePath}`.length <= 180,
+  'the actual Economics visualization fits the unchanged Windows extraction-path limit')
+const sourceVisualBytes = readFileSync(visualAsset.sourcePath)
+assert.equal(visualAsset.record.bytes, sourceVisualBytes.length)
+assert.equal(visualAsset.record.sha256, createHash('sha256').update(sourceVisualBytes).digest('hex'),
+  'only the package path changes; the exact source asset remains hash-bound')
+const rewrittenVisual = sanitizeJsonForPackage(visualInput, 'canonical-landscape', undefined,
+  new Map([[visualAsset.sourcePublicUrl, visualAsset.record.publicUrl]])) as typeof visualInput
+assert.equal(rewrittenVisual.goals[0].resourceLinks[visualAsset.record.order].url, visualAsset.record.publicUrl,
+  'the copied canonical link and visualization index point to the same compact binary path')
+assert.equal(JSON.stringify(visualInput), originalVisualInput, 'source links and authored metadata remain unchanged')
+for (const path of [visualAsset.record.packagePath,
+  legacySubjectExportGoalVisualizationPath('wirtschaftswissenschaften', visualGoal.id, '.png')]) {
+  assert(isSubjectExportGoalVisualizationPath(path, 'wirtschaftswissenschaften', visualGoal.id, '.png'),
+    'validation recognizes the exact compact and historical deterministic layouts')
+}
+assert.equal(isSubjectExportGoalVisualizationPath(visualAsset.record.packagePath.replace('image.png', 'arbitrary.png'),
+  'wirtschaftswissenschaften', visualGoal.id, '.png'), false, 'unrecognized asset layouts remain invalid')
 assert.equal(
   sanitizeJsonForPackage('Unsupported asset: app/public/other.json', 'canonical-landscape'),
   'Unsupported asset: app/public/other.json',
