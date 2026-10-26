@@ -630,7 +630,10 @@ public final class PackageCompositionViewState {
         Set<ProjectionRole> roles = visibleGoalRoles.computeIfAbsent(
                 goalId,
                 ignored -> EnumSet.noneOf(ProjectionRole.class));
-        if (roles.add(projectionRole)) {
+        // Prerequisite-only references retain graph membership without adding a
+        // learner-visible placement. Their overlaps are resolved by the ordinary
+        // projection specificity rules, while duplicate targets remain invalid.
+        if (roles.add(projectionRole) || projectionRole == ProjectionRole.PREREQUISITE_ONLY) {
             return;
         }
         throw failure("Composition view exposes a goal more than once: "

@@ -3,7 +3,10 @@ package com.skillpilot.backend.curriculumpackage;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -330,6 +333,76 @@ class PackageCompositionViewStateTest {
         assertThat(state.viewsById()).containsKey(original.viewId());
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"goalEntry", "canonicalSubtree"})
+    void allowsOverlappingPrerequisiteReferencesWithoutAddingVisiblePlacements(String referenceKind) throws Exception {
+        CurriculumRuntimeSnapshot snapshot = load(
+                CurriculumPackageTestFixture.PackageSpec.packageSpec("alpha", 'a'));
+        CurriculumRuntimeSnapshot.ViewDescriptor original = snapshot.viewsById().get("view-alpha");
+        List<Map<String, String>> nodes = List.of(
+                Map.of("kind", "canonicalSubtree", "goalId", "goal-alpha", "projectionRole", "prerequisiteOnly"),
+                Map.of("kind", referenceKind, "goalId", "goal-alpha", "projectionRole", "prerequisiteOnly"),
+                Map.of("kind", "goalEntry", "goalId", "goal-alpha", "projectionRole", "target"));
+        String document = mapper.writeValueAsString(Map.of(
+                "viewId", original.viewId(),
+                "landscapeId", original.landscapeId(),
+                "scope", original.scope(),
+                "rootNodes", nodes));
+        CurriculumRuntimeSnapshot.ViewDescriptor view = new CurriculumRuntimeSnapshot.ViewDescriptor(
+                original.packageId(), original.viewId(), original.landscapeId(), original.language(),
+                original.scope(), original.artifact(), document);
+
+        PackageCompositionViewState state = PackageCompositionViewState.load(
+                copy(snapshot, Map.of(original.viewId(), view), snapshot.offeringsById()), mapper);
+
+        assertThat(state.resolveDefault(original.landscapeId()).document().get("rootNodes"))
+                .isEqualTo(nodes);
+    }
+
+    @Test
+    void loadsCurrentBrandenburgMathViewWithOverlappingPrerequisiteReferences() throws Exception {
+        CurriculumRuntimeSnapshot snapshot = load(
+                CurriculumPackageTestFixture.PackageSpec.packageSpec("alpha", 'a'));
+        String landscapeJson = Files.readString(Path.of(
+                "../curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json"));
+        String viewJson = Files.readString(Path.of(
+                "../curricula/DE/Gymnasium/composition-views/mathematik/de-bb-gk.view.json"));
+        var authoredView = mapper.readTree(viewJson);
+        String landscapeId = authoredView.get("landscapeId").asText();
+        String viewId = authoredView.get("viewId").asText();
+        Map<String, String> scope = mapper.convertValue(authoredView.get("scope"), new TypeReference<>() { });
+        var originalPackage = snapshot.packages().getFirst();
+        var descriptor = new CurriculumRuntimeSnapshot.PackageDescriptor(
+                originalPackage.packageId(), originalPackage.packageVersion(), originalPackage.releaseId(),
+                originalPackage.outerZipSha256(), originalPackage.manifestSha256(), originalPackage.contentDigest(),
+                originalPackage.closureDigest(), originalPackage.definitionIndexDigest(),
+                scope.entrySet().stream().map(entry -> new CurriculumRuntimeSnapshot.ScopeDimension(
+                        entry.getKey(), List.of(entry.getValue()), List.of())).toList(),
+                originalPackage.capabilities());
+        var originalLandscape = snapshot.landscapesById().get("landscape-alpha");
+        var landscape = new CurriculumRuntimeSnapshot.LandscapeDescriptor(
+                descriptor.packageId(), landscapeId, originalLandscape.role(), originalLandscape.locale(),
+                originalLandscape.frameworkId(), originalLandscape.subject(), originalLandscape.country(),
+                originalLandscape.region(), originalLandscape.schoolForm(), "offering-alpha", null,
+                originalLandscape.artifact(), landscapeJson);
+        var originalView = snapshot.viewsById().get("view-alpha");
+        var view = new CurriculumRuntimeSnapshot.ViewDescriptor(
+                descriptor.packageId(), viewId, landscapeId, originalView.language(), scope,
+                originalView.artifact(), viewJson);
+        var offering = new CurriculumRuntimeSnapshot.OfferingDescriptor(
+                descriptor.packageId(), "offering-alpha", landscapeId, scope, "single", null, List.of(viewId));
+        var candidate = new CurriculumRuntimeSnapshot(
+                snapshot.generationSha256(), List.of(descriptor), List.of(landscapeId), Map.of(landscapeId, landscape),
+                Map.of(viewId, view), Map.of("offering-alpha", offering), snapshot.decksByKey(), snapshot.resourcesById(),
+                snapshot.resourcesByPublicUrl(), snapshot.artifactsByKey(), snapshot.migrationAliasesJsonByPackageId(),
+                snapshot.definitionCount());
+
+        PackageCompositionViewState state = PackageCompositionViewState.load(candidate, mapper);
+
+        JsonNode resolvedView = mapper.valueToTree(state.resolveDefault(landscapeId).document());
+        assertThat(resolvedView).isEqualTo(authoredView);
+    }
+
     @Test
     void rejectsUnsupportedProjectionRole() throws Exception {
         CurriculumRuntimeSnapshot snapshot = load(
@@ -456,8 +529,9 @@ class PackageCompositionViewStateTest {
         assertThat(state.resolve("module-alpha", Map.of())).isNull();
     }
 
-    @Test
-    void rejectsDuplicateVisibleGoalsInAView() throws Exception {
+    @ParameterizedTest
+    @ValueSource(strings = {"goalEntry", "canonicalSubtree"})
+    void rejectsDuplicateVisibleGoalsInAView(String referenceKind) throws Exception {
         CurriculumRuntimeSnapshot snapshot = load(
                 CurriculumPackageTestFixture.PackageSpec.packageSpec("alpha", 'a'));
         CurriculumRuntimeSnapshot.ViewDescriptor original = snapshot.viewsById().get("view-alpha");
@@ -466,7 +540,7 @@ class PackageCompositionViewStateTest {
                 "landscapeId", "landscape-alpha",
                 "scope", original.scope(),
                 "rootNodes", List.of(
-                        Map.of("kind", "goalEntry", "goalId", "goal-alpha"),
+                        Map.of("kind", referenceKind, "goalId", "goal-alpha"),
                         Map.of("kind", "goalEntry", "goalId", "goal-alpha"))));
         CurriculumRuntimeSnapshot.ViewDescriptor invalid = new CurriculumRuntimeSnapshot.ViewDescriptor(
                 original.packageId(),
