@@ -9,8 +9,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -154,8 +156,8 @@ class PackageCompositionViewStateTest {
     }
 
     @ParameterizedTest
-    @ValueSource(booleans = {false, true})
-    void deduplicatesStrictlyContainedSiblingSubtreeAcrossCourseProfiles(boolean directGkExclusion) throws Exception {
+    @ValueSource(strings = {"subtree", "leaf", "excludedLeaf"})
+    void deduplicatesStrictlyContainedSiblingReferenceAcrossCourseProfiles(String gkReference) throws Exception {
         CurriculumPackageTestFixture.PackageSpec base =
                 CurriculumPackageTestFixture.PackageSpec.packageSpec("alpha", 'a');
         CurriculumPackageTestFixture.PackageSpec merge = new CurriculumPackageTestFixture.PackageSpec(
@@ -199,11 +201,13 @@ class PackageCompositionViewStateTest {
         Map<String, CurriculumRuntimeSnapshot.ViewDescriptor> views = new LinkedHashMap<>();
         for (CurriculumRuntimeSnapshot.ViewDescriptor descriptor : snapshot.viewsById().values()) {
             boolean isLk = descriptor.viewId().endsWith("secondary");
-            List<Map<String, Object>> references = directGkExclusion && !isLk
+            List<Map<String, Object>> references = "excludedLeaf".equals(gkReference) && !isLk
                     ? List.of(
                             Map.of("kind", "canonicalSubtree", "goalId", "broad-goal"),
                             Map.of("kind", "goalEntry", "goalId", "narrow-goal", "projectionRole", "prerequisiteOnly"))
-                    : List.of(Map.of("kind", "canonicalSubtree", "goalId", isLk ? "broad-goal" : "narrow-goal"));
+                    : List.of(Map.of(
+                            "kind", !isLk && "leaf".equals(gkReference) ? "goalEntry" : "canonicalSubtree",
+                            "goalId", isLk ? "broad-goal" : "narrow-goal"));
             String document = mapper.writeValueAsString(Map.of(
                     "viewId", descriptor.viewId(),
                     "landscapeId", descriptor.landscapeId(),
@@ -360,47 +364,91 @@ class PackageCompositionViewStateTest {
     }
 
     @Test
-    void loadsCurrentBrandenburgMathViewWithOverlappingPrerequisiteReferences() throws Exception {
+    void loadsAllCurrentMathViewsAndExactCourseProfileOfferings() throws Exception {
         CurriculumRuntimeSnapshot snapshot = load(
                 CurriculumPackageTestFixture.PackageSpec.packageSpec("alpha", 'a'));
-        String landscapeJson = Files.readString(Path.of(
-                "../curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json"));
-        String viewJson = Files.readString(Path.of(
-                "../curricula/DE/Gymnasium/composition-views/mathematik/de-bb-gk.view.json"));
-        var authoredView = mapper.readTree(viewJson);
-        String landscapeId = authoredView.get("landscapeId").asText();
-        String viewId = authoredView.get("viewId").asText();
-        Map<String, String> scope = mapper.convertValue(authoredView.get("scope"), new TypeReference<>() { });
+        Path curricula = Path.of("../curricula/DE/Gymnasium");
+        String landscapeJson = Files.readString(curricula.resolve(
+                "canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json"));
+        String landscapeId = mapper.readTree(landscapeJson).path("landscapeId").asText();
         var originalPackage = snapshot.packages().getFirst();
+        var originalView = snapshot.viewsById().get("view-alpha");
+        Map<String, CurriculumRuntimeSnapshot.ViewDescriptor> views = new LinkedHashMap<>();
+        Map<String, CurriculumRuntimeSnapshot.OfferingDescriptor> offerings = new LinkedHashMap<>();
+        Map<String, Set<String>> dimensionValues = new LinkedHashMap<>();
+        Map<Map<String, String>, Map<String, String>> profilePairs = new LinkedHashMap<>();
+        try (var files = Files.list(curricula.resolve("composition-views/mathematik"))) {
+            for (Path file : files.filter(path -> path.toString().endsWith(".view.json")).sorted().toList()) {
+                String document = Files.readString(file);
+                JsonNode authoredView = mapper.readTree(document);
+                String viewId = authoredView.path("viewId").asText();
+                Map<String, String> scope = mapper.convertValue(authoredView.get("scope"), new TypeReference<>() { });
+                assertThat(authoredView.path("landscapeId").asText()).isEqualTo(landscapeId);
+                views.put(viewId, new CurriculumRuntimeSnapshot.ViewDescriptor(
+                        originalPackage.packageId(), viewId, landscapeId, originalView.language(), scope,
+                        originalView.artifact(), document));
+                String offeringId = "single:" + viewId;
+                offerings.put(offeringId, new CurriculumRuntimeSnapshot.OfferingDescriptor(
+                        originalPackage.packageId(), offeringId, landscapeId, scope, "single", null, List.of(viewId)));
+                scope.forEach((key, value) -> dimensionValues.computeIfAbsent(
+                        key, ignored -> new LinkedHashSet<>()).add(value));
+                Map<String, String> commonScope = new LinkedHashMap<>(scope);
+                String profile = commonScope.remove("courseProfile");
+                if ("GK".equals(profile) || "LK".equals(profile)) {
+                    assertThat(profilePairs.computeIfAbsent(Map.copyOf(commonScope), ignored -> new LinkedHashMap<>())
+                            .put(profile, viewId)).as("Unique profile in %s", commonScope).isNull();
+                }
+            }
+        }
+        for (var pair : profilePairs.entrySet()) {
+            if (!pair.getValue().keySet().equals(Set.of("GK", "LK"))) {
+                continue;
+            }
+            Map<String, String> combinedScope = new LinkedHashMap<>(pair.getKey());
+            combinedScope.put("courseProfile", "GK+LK");
+            List<String> sourceViewIds = List.of(pair.getValue().get("GK"), pair.getValue().get("LK"));
+            String offeringId = "combined:" + sourceViewIds.getFirst();
+            offerings.put(offeringId, new CurriculumRuntimeSnapshot.OfferingDescriptor(
+                    originalPackage.packageId(), offeringId, landscapeId, combinedScope,
+                    "merge", "courseProfile", sourceViewIds));
+        }
+        dimensionValues.get("courseProfile").add("GK+LK");
         var descriptor = new CurriculumRuntimeSnapshot.PackageDescriptor(
                 originalPackage.packageId(), originalPackage.packageVersion(), originalPackage.releaseId(),
                 originalPackage.outerZipSha256(), originalPackage.manifestSha256(), originalPackage.contentDigest(),
                 originalPackage.closureDigest(), originalPackage.definitionIndexDigest(),
-                scope.entrySet().stream().map(entry -> new CurriculumRuntimeSnapshot.ScopeDimension(
-                        entry.getKey(), List.of(entry.getValue()), List.of())).toList(),
+                dimensionValues.entrySet().stream().map(entry -> new CurriculumRuntimeSnapshot.ScopeDimension(
+                        entry.getKey(), List.copyOf(entry.getValue()), "courseProfile".equals(entry.getKey())
+                                ? List.of(new CurriculumRuntimeSnapshot.ScopeComposite("GK+LK", List.of("GK", "LK")))
+                                : List.of())).toList(),
                 originalPackage.capabilities());
         var originalLandscape = snapshot.landscapesById().get("landscape-alpha");
         var landscape = new CurriculumRuntimeSnapshot.LandscapeDescriptor(
                 descriptor.packageId(), landscapeId, originalLandscape.role(), originalLandscape.locale(),
                 originalLandscape.frameworkId(), originalLandscape.subject(), originalLandscape.country(),
-                originalLandscape.region(), originalLandscape.schoolForm(), "offering-alpha", null,
+                originalLandscape.region(), originalLandscape.schoolForm(), offerings.keySet().iterator().next(), null,
                 originalLandscape.artifact(), landscapeJson);
-        var originalView = snapshot.viewsById().get("view-alpha");
-        var view = new CurriculumRuntimeSnapshot.ViewDescriptor(
-                descriptor.packageId(), viewId, landscapeId, originalView.language(), scope,
-                originalView.artifact(), viewJson);
-        var offering = new CurriculumRuntimeSnapshot.OfferingDescriptor(
-                descriptor.packageId(), "offering-alpha", landscapeId, scope, "single", null, List.of(viewId));
         var candidate = new CurriculumRuntimeSnapshot(
                 snapshot.generationSha256(), List.of(descriptor), List.of(landscapeId), Map.of(landscapeId, landscape),
-                Map.of(viewId, view), Map.of("offering-alpha", offering), snapshot.decksByKey(), snapshot.resourcesById(),
+                views, offerings, snapshot.decksByKey(), snapshot.resourcesById(),
                 snapshot.resourcesByPublicUrl(), snapshot.artifactsByKey(), snapshot.migrationAliasesJsonByPackageId(),
                 snapshot.definitionCount());
 
         PackageCompositionViewState state = PackageCompositionViewState.load(candidate, mapper);
 
-        JsonNode resolvedView = mapper.valueToTree(state.resolveDefault(landscapeId).document());
-        assertThat(resolvedView).isEqualTo(authoredView);
+        assertThat(state.viewsById()).hasSize(88);
+        assertThat(state.offeringsById()).hasSize(128);
+        for (var offering : offerings.values()) {
+            var resolved = state.resolveOffering(offering.offeringId());
+            assertThat(resolved).as(offering.offeringId())
+                    .isEqualTo(state.resolve(landscapeId, offering.scope()));
+            assertThat(resolved.sourceViewIds()).containsExactlyElementsOf(offering.viewIds());
+        }
+        for (var view : views.values()) {
+            JsonNode resolvedView = mapper.valueToTree(state.findViewDocumentById(view.viewId()));
+            assertThat(resolvedView)
+                    .as("Unchanged authored view %s", view.viewId()).isEqualTo(mapper.readTree(view.json()));
+        }
     }
 
     @Test

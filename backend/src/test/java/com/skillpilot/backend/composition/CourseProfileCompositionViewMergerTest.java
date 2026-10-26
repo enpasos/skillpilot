@@ -113,6 +113,9 @@ class CourseProfileCompositionViewMergerTest {
     void everyAuthoredExactGkLkPairPreservesItsResolvedUnionAndSourceDocuments() throws Exception {
         Path curricula = Path.of("../curricula/DE/Gymnasium");
         ObjectMapper mapper = new ObjectMapper();
+        String mathematicsLandscapeId = mapper.readTree(curricula.resolve(
+                "canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json").toFile())
+                .path("landscapeId").asText();
         Map<String, List<String>> graph = new LinkedHashMap<>();
         try (var files = Files.list(curricula.resolve("canonical"))) {
             for (Path file : files.filter(path -> path.toString().endsWith(".json")).sorted().toList()) {
@@ -147,6 +150,10 @@ class CourseProfileCompositionViewMergerTest {
             // jurisdiction/duration combination participates in this guard.
             assertThat(CourseProfileCompositionViewMerger.mergeViews(sources, graph))
                     .as(entry.getKey()).isNotEmpty();
+            if (entry.getKey().startsWith(mathematicsLandscapeId + "|")) {
+                assertThat(CourseProfileCompositionViewMerger.mergeViews(sources, graph, true))
+                        .as(entry.getKey() + " package subtree deduplication").isNotEmpty();
+            }
             assertThat(mapper.writeValueAsString(sources)).as(entry.getKey() + " source immutability")
                     .isEqualTo(before);
             checked++;
@@ -338,6 +345,40 @@ class CourseProfileCompositionViewMergerTest {
                 .hasMessageContaining("Conflicting overlapping goal references")
                 .hasMessageContaining("narrow-goal")
                 .hasMessageContaining("broad-goal");
+    }
+
+    @Test
+    void graphVerifiedDeduplicationRetainsBroaderPlacementAndPrunesNewlyEmptyWrappers() {
+        List<List<Map<String, Object>>> sources = List.of(
+                List.of(Map.of("kind", "structure", "id", "course-gk", "children", List.of(
+                        Map.of("kind", "structure", "id", "methods", "children", List.of(
+                                Map.of("kind", "goalEntry", "goalId", "leaf")))))),
+                List.of(Map.of("kind", "structure", "id", "course-lk", "children", List.of(
+                        Map.of("kind", "canonicalSubtree", "goalId", "broad")))));
+        Map<String, List<String>> graph = Map.of("broad", List.of("leaf"), "leaf", List.of());
+
+        List<Map<String, Object>> merged = CourseProfileCompositionViewMerger.mergeViews(sources, graph, true);
+
+        assertThat(merged).singleElement().satisfies(root -> {
+            assertThat(root).containsEntry("id", "course-gk-lk");
+            assertThat(root.get("children"))
+                    .isEqualTo(List.of(Map.of("kind", "canonicalSubtree", "goalId", "broad")));
+        });
+    }
+
+    @Test
+    void graphVerifiedDeduplicationKeepsDirectClusterEntriesOpaque() {
+        List<List<Map<String, Object>>> sources = List.of(
+                List.of(Map.of("kind", "goalEntry", "goalId", "cluster")),
+                List.of(Map.of("kind", "canonicalSubtree", "goalId", "broad")));
+        Map<String, List<String>> graph = Map.of(
+                "broad", List.of("cluster"),
+                "cluster", List.of("leaf"),
+                "leaf", List.of());
+
+        assertThatThrownBy(() -> CourseProfileCompositionViewMerger.mergeViews(sources, graph, true))
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessageContaining("Conflicting overlapping goal references");
     }
 
     @Test

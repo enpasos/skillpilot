@@ -53,6 +53,13 @@ public final class CourseProfileCompositionViewMerger {
         return mergeViews(sourceRoots, canonicalChildren, false);
     }
 
+    /**
+     * With subtree deduplication enabled, redundant references across the merged
+     * tree use the broader authored canonical subtree's placement. Roles and
+     * presentation must match. Leaf entries may be subsumed, but direct cluster
+     * entries remain opaque and cannot be removed. Newly empty wrappers are pruned.
+     * The resolved target union is verified before and after deduplication.
+     */
     public static List<Map<String, Object>> mergeViews(
             List<List<Map<String, Object>>> sourceRoots,
             Map<String, List<String>> canonicalChildren,
@@ -98,7 +105,7 @@ public final class CourseProfileCompositionViewMerger {
         List<Map<String, Object>> result = removeRedundantSubtrees
                 ? removeRedundantNestedReferences(merged,
                         (kind, id) -> "canonicalSubtree".equals(kind)
-                                ? graph.descendants(id) : Set.of(ProjectionGraph.localId(id)))
+                                ? graph.descendants(id) : Set.of(ProjectionGraph.localId(id)), true)
                 : merged;
         if (!graph.targets(result).equals(expectedTargets)) {
             throw new IllegalStateException("Subtree deduplication changes resolved course-profile target union");
@@ -278,7 +285,7 @@ public final class CourseProfileCompositionViewMerger {
             throw new IllegalArgumentException("goalCoverageResolver must not be null");
         }
         List<Map<String, Object>> merged = mergeSiblings(nodes, new MergeState());
-        return freeze(removeRedundantNestedReferences(merged, goalCoverageResolver));
+        return freeze(removeRedundantNestedReferences(merged, goalCoverageResolver, false));
     }
 
     private static List<Map<String, Object>> freeze(List<Map<String, Object>> nodes) {
@@ -289,15 +296,13 @@ public final class CourseProfileCompositionViewMerger {
 
     private static List<Map<String, Object>> removeRedundantNestedReferences(
             List<Map<String, Object>> nodes,
-            BiFunction<String, String, Set<String>> goalCoverageResolver) {
+            BiFunction<String, String, Set<String>> goalCoverageResolver,
+            boolean graphVerifiedTargetUnion) {
         List<GoalReference> references = new ArrayList<>();
-        for (Map<String, Object> node : nodes) {
-            String kind = text(node.get("kind"));
-            if (supportsProjectionRole(kind)) {
-                references.add(goalReference(node, goalCoverageResolver));
-            }
-        }
-        Set<Map<String, Object>> redundant = Collections.newSetFromMap(new IdentityHashMap<>());
+        collectGoalReferences(nodes, goalCoverageResolver, graphVerifiedTargetUnion, references);
+        Set<Map<String, Object>> redundant = graphVerifiedTargetUnion
+                ? new HashSet<>()
+                : Collections.newSetFromMap(new IdentityHashMap<>());
         for (int leftIndex = 0; leftIndex < references.size(); leftIndex += 1) {
             GoalReference left = references.get(leftIndex);
             for (int rightIndex = leftIndex + 1; rightIndex < references.size(); rightIndex += 1) {
@@ -321,13 +326,24 @@ public final class CourseProfileCompositionViewMerger {
 
                 GoalReference broader = leftStrictlyContainsRight ? left : right;
                 GoalReference narrower = leftStrictlyContainsRight ? right : left;
+                // A direct cluster entry is opaque, unlike its canonical subtree.
+                // Only a leaf entry has identical placement semantics, and only
+                // the graph-aware path proves the final resolved target union.
+                boolean redundantLeafEntry = graphVerifiedTargetUnion
+                        && "goalEntry".equals(narrower.kind())
+                        && narrower.goalIds().equals(goalCoverageResolver.apply(
+                                "canonicalSubtree", text(narrower.node().get("goalId"))));
                 if (!"canonicalSubtree".equals(broader.kind())
-                        || !"canonicalSubtree".equals(narrower.kind())
+                        || !("canonicalSubtree".equals(narrower.kind()) || redundantLeafEntry)
                         || !broader.presentationMetadata().equals(narrower.presentationMetadata())) {
                     throw overlapConflict(left, right);
                 }
                 redundant.add(narrower.node());
             }
+        }
+
+        if (graphVerifiedTargetUnion) {
+            return withoutRedundantReferences(nodes, redundant);
         }
 
         List<Map<String, Object>> retained = new ArrayList<>();
@@ -341,7 +357,42 @@ public final class CourseProfileCompositionViewMerger {
                 copy.put(
                         "children",
                         List.copyOf(removeRedundantNestedReferences(
-                                nodeMaps(node.get("children")), goalCoverageResolver)));
+                                nodeMaps(node.get("children")), goalCoverageResolver, graphVerifiedTargetUnion)));
+                retained.add(copy);
+            } else {
+                retained.add(node);
+            }
+        }
+        return retained;
+    }
+
+    private static void collectGoalReferences(
+            List<Map<String, Object>> nodes,
+            BiFunction<String, String, Set<String>> goalCoverageResolver,
+            boolean includeDescendants,
+            List<GoalReference> references) {
+        for (Map<String, Object> node : nodes) {
+            String kind = text(node.get("kind"));
+            if (supportsProjectionRole(kind)) {
+                references.add(goalReference(node, goalCoverageResolver));
+            } else if (includeDescendants && "structure".equals(kind)) {
+                collectGoalReferences(nodeMaps(node.get("children")), goalCoverageResolver, true, references);
+            }
+        }
+    }
+
+    private static List<Map<String, Object>> withoutRedundantReferences(
+            List<Map<String, Object>> nodes,
+            Set<Map<String, Object>> redundant) {
+        List<Map<String, Object>> retained = new ArrayList<>();
+        for (Map<String, Object> node : nodes) {
+            if (redundant.contains(node)) continue;
+            if ("structure".equals(node.get("kind"))) {
+                List<Map<String, Object>> original = nodeMaps(node.get("children"));
+                List<Map<String, Object>> children = withoutRedundantReferences(original, redundant);
+                if (!original.isEmpty() && children.isEmpty()) continue;
+                Map<String, Object> copy = new LinkedHashMap<>(node);
+                copy.put("children", List.copyOf(children));
                 retained.add(copy);
             } else {
                 retained.add(node);
