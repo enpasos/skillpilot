@@ -10,7 +10,7 @@ Layering, migration strategy, and canonical rollout policy are specified separat
 
 Related planning scope: [Curriculum Levels](curriculum-levels.md) explains how bounded learning stages, including school years, organize canonical goals. The optional formal profile in §12 checks a resolved plan without changing base graph validity.
 
-Related **proposed** learner-state overlay: [Assessment-Gated Completion and Prerequisite Discharge](assessment-gated-completion.md) formalises explicit evidence, context-scoped implicit work discharge, protected exam endpoints and a possible level-completion rule. It does **not** alter this document's current graph or frontier semantics.
+Related **proposed** learner-state overlay: [Assessment-Gated Completion and Prerequisite Discharge](assessment-gated-completion.md) defines a fixed level scope, qualifying assessment evidence and reviewed work waivers. Its canonical atomic demand relation serves that overlay only; it does **not** alter this document's current graph or frontier semantics.
 
 > **Normative definition.** This document defines the skill graph’s semantics and validity requirements.
 >

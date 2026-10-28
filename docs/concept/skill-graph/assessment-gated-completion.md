@@ -1,223 +1,424 @@
 # Assessment-Gated Completion and Prerequisite Discharge
 
-A learner who can already pass an assessment should not have to repeat each
-preceding learning step. This proposal separates **evidenced completion**
-from **derived discharge** of work no longer needed for remaining goals,
-while preserving explicitly passed, non-waivable level-end assessments.
+A learner who can demonstrate the required outcomes should be able to take
+the level's assessments directly and avoid unnecessary preparatory work.
+This proposal distinguishes **explicit completion**, **work waived for a
+particular level**, and **availability of the next learning goal**.
+A level can be completed through suitable assessment evidence without
+claiming that every preceding competence was independently demonstrated.
 
 > **Design proposal — not current runtime behaviour.**
-> This is a formally defined learner-state *overlay* on the
+> This optional completion profile builds on the
 > [Skill Graph](graph-definition.md) and [Curriculum Levels](curriculum-levels.md).
-> It does not modify authored graph edges, stored mastery, the normative
-> [frontier (§9)](graph-definition.md#9-learning-availability-and-progression),
-> or the current [exam access gate](node-types.md#requires-semantics).
-> Those contracts remain authoritative until a separate implementation and
-> migration decision. In particular, **implicit completion never fabricates mastery**.
+> It defines a derived learner-state overlay. Authored graph edges, stored
+> mastery, the [normal frontier](graph-definition.md#9-learning-availability-and-progression)
+> and the [current exam access gate](node-types.md#requires-semantics) remain
+> unchanged until a separate implementation and migration decision.
 
-## 1. Meanings and arrow direction
+## 1. Decisions and learner experience
 
-- **Explicitly completed:** appropriate, persisted success evidence for the
-  goal type; for an assessment, a graded, **passed** full submission.
-- **Implicitly done:** the ordinary learning step needs no separate work in
-  this particular resolved obligation context; **no independent mastery
-  evidence** is inferred for that node.
-- **Active demand:** a `requires` pair whose dependent is not completed.
-  This is **not** synonymous with an *unsatisfied* prerequisite: the required
-  goal might already have explicit mastery.
-- **Discharged demand:** a `requires` pair whose dependent goal is completed
-  explicitly or implicitly, so that dependent no longer needs the linked
-  prerequisite work.
+The proposed profile makes the following decisions:
 
-An arrow $B\to A$ means **B requires A**, exactly as in
-[Graph Definition §5](graph-definition.md#5-requires-relation). Successfully
-completing B discharges *its own* requirement $B\to A$, **not** a separate
-requirement $C\to A$ from another consumer.
+1. **A fixed level scope owns the completion claim.** Later-level goals and
+   unselected optional assessments do not block this level's completion.
+   Hiding a goal or changing the temporary learning focus never reduces its
+   obligations.
+2. **Every required assessment needs an explicit qualifying pass.** Optional
+   task banks and alternative assessment forms are not additional compulsory
+   exams. Existing required targets remain required until an authorised scope
+   rule explicitly resolves a choice.
+3. **Waivers require reviewed assessment evidence.** A prerequisite path is
+   not proof of assessment coverage. Ordinary goal completion can discharge
+   a demand, but cannot by itself authorise an assessment-based waiver.
+4. **Shared prerequisites stay open while a participating consumer needs them
+   directly or indirectly.** An enabled waiver takes effect only after every
+   such consumer is complete or itself legitimately waived.
+5. **Waived work never becomes global mastery.** A later learning context may
+   require a separate demonstration of that competence. The earlier level's
+   completion remains a claim about its own scope and evidence snapshot.
 
-## 2. Context and evidence
+The learner deliberately chooses either the normal learning route or a direct
+attempt at an eligible level assessment. A qualifying pass is saved before
+any waiver is derived. Failure offers targeted support and another suitable
+attempt; it does not remove existing success or create completion evidence.
 
-For one learner and fixed curriculum revision, resolve an obligation context
-$H=(V_H,R_H)$, including the participating target goals, their prerequisites,
-and **all dependents whose outstanding demand should count** for this context.
-Do not silently exclude a relevant consumer merely because a display filter
-or temporary Level-3 focus hides it. The context, its target scope, and the
-curriculum revision must be identified in any derived result.
+The interface distinguishes **completed with explicit evidence**, **separate
+work waived for this level**, and **still open**. It names any required
+assessment still to pass. It does not describe waived targets as individually
+mastered skills or merge them into the global mastery percentage.
 
-$V_H$ is a finite set of atomic progress goals. The directed, acyclic
-$R_H\subseteq V_H\times V_H$ is the *resolved atomic demand relation*, with
-arrows from **dependent to prerequisite**. In the canonical atomic-only case,
-it uses applicable direct/inherited `requires` facts. Where authors require
-clusters, expand their **conjunctive atomic requirements** consistently with
-[Graph Definition §9](graph-definition.md#9-learning-availability-and-progression):
-each required atom in $RequiredAtoms(a)$ from
-[§12.2](graph-definition.md#122-structural-feasibility) must be represented
-for the corresponding atomic dependent $a$. This may introduce transitive
-demand pairs; they are not newly authored edges. Resolve cross-landscape and
-cross-subject requirements first. A context with a cyclic or reflexive
-expanded relation is not eligible for this proposed profile.
+## 2. Resolve the level and its obligations
 
-Fix:
+For one learner, fix a curriculum revision, an applicable completion-profile
+revision, and the authoritative level placement and selection. Let $T_i$ be
+the full set of required atomic targets of level $i$. Resolve any authored
+elective choices before computing completion. Neither a display filter nor
+Level-3 focus is an input to this resolution.
 
-| Symbol | Meaning |
+Let $Q_i$ be **all required assessment goals in $T_i$**, with
+$\varnothing\ne Q_i\subseteq T_i$. Each must be passed explicitly. If the
+curriculum permits alternative endpoints, the applicable selection contract
+must resolve which endpoint is required; this proposal adds no new selector
+and silently removes no current target. Equivalent task forms for the same
+assessment endpoint do not create additional goal obligations.
+
+Include the prerequisites needed to interpret these targets, including
+inherited, cluster, cross-landscape, cross-subject and `prerequisiteOnly`
+requirements. Do not include an unrelated future consumer merely because it
+also needs one of these prerequisites. Such a consumer belongs to its own
+completion context. Preserve the distinction between $T_i$ and supporting
+prerequisites throughout; adding a prerequisite to the context never promotes
+it to a target.
+
+### One canonical atomic demand relation
+
+An arrow $B\to A$ means **B requires A**. The overlay counts **all direct and
+indirect atomic requirements**, so equivalent atomic and cluster
+representations do not produce different waiver results.
+
+First resolve the applicable graph and all references, before restricting it
+to this level. For its atomic goals $A$, expand
+[Graph Definition §12.2](graph-definition.md#122-structural-feasibility):
+
+$$
+F=\{(a,b)\in A\times A\mid b\in RequiredAtoms(a)\},
+\qquad D=F^+.
+$$
+
+Taking closure **after atomic expansion** matters: an atom inside a required
+cluster can have its own prerequisites. Reject missing references and any
+reflexive pair in $D$, which also detects a cyclic expanded requirement.
+Define the prerequisite-closed context and its demand relation by:
+
+$$
+\begin{aligned}
+V_H&=T_i\cup\{b\mid\exists t\in T_i:(t,b)\in D\},\\
+R_H&=D\cap(V_H\times V_H).
+\end{aligned}
+$$
+
+Write $H=(V_H,R_H)$ for this resolved obligation context.
+$R_H$ is a finite, irreflexive, transitive demand relation. Its pairs are
+derived dependency obligations, not additional authored edges. For example,
+$C\to B\to A$ resolves to $(C,B)$, $(B,A)$ **and $(C,A)$**. Even when B is
+explicitly complete, an open C still prevents a waiver of A. Omitting the
+indirect pair would waive A while the normal transitive frontier could still
+require it for C. Adding a redundant authored edge cannot change this result.
+
+This is a derived relation for work discharge. It neither edits the authored
+graph nor substitutes for the normative frontier. Equivalence here means
+identical resolved atomic prerequisite reachability; it does not assert that
+every cluster refactoring preserves all other runtime behaviour.
+
+The context identity binds the learner, curriculum and profile revisions,
+level, resolved choices, target roles and dependency resolution. An evidence
+snapshot identifies the particular calculation. Different subject views of
+the same canonical goal must not duplicate its identity or evidence.
+
+## 3. Evidence and permission to waive work
+
+Let $E\subseteq V_H$ contain goals with persisted explicit completion evidence
+accepted for this profile and snapshot. Ordinary, orientation and memory
+results retain their respective [goal-type semantics](node-types.md).
+For assessments, acceptance requires the qualifying evidence described below.
+An assumed entry basis, an opened exam, a failed submission or an unsupported
+mastery estimate never becomes a qualifying pass.
+
+Let $P\subseteq V_H$ contain **every assessment, orientation and memorisation
+goal**, together with any other goal that the applicable type or curriculum
+contract makes non-waivable. This profile introduces no exception for those
+types. Protection preserves an existing obligation; it does not create a new
+target or make every available practice assessment compulsory.
+
+### Reviewed waiver rules
+
+The profile declares a finite set of reviewed rules $(S_r,W_r)$:
+
+- $\varnothing\ne S_r\subseteq Q_i$ identifies the assessment passes required
+  together to enable the rule.
+- $W_r\subseteq V_H\setminus P$ identifies the ordinary atomic learning goals
+  whose separate work those passes justify waiving.
+- Every $v\in W_r$ must be a strict prerequisite of at least one supporting
+  assessment: $\exists q\in S_r:(q,v)\in R_H$.
+
+The simplest profile has **one rule**, with $S_r=Q_i$ and a reviewed set of
+waivable goals. Separate rules are useful only when independently sufficient
+assessment groups justify earlier waivers. These are conceptual policy
+inputs, not a new authored edge type or an implemented schema.
+
+A review must establish the substantive justification for each $W_r$ from
+the assessment tasks, [declared coverage](../runtime-workflows/exam-preparation-planning.md),
+rubrics and permitted conditions. `requires` reachability and
+`examData.coveredGoalIds` alone cannot establish that justification. A total
+passing score must not allow a critical required outcome to be compensated
+away: use reviewed minimum criteria where needed, or keep the affected target
+explicit-only. Practical performance, recall and other distinct outcomes
+cannot be replaced by an unrelated written result. The waiver claims adequate
+evidence for this completion policy, not independent proof of every atom.
+
+Only accepted **explicit evidence** enables a rule:
+
+$$
+W(E)=\bigcup_{r:\ S_r\subseteq E}W_r.
+$$
+
+Derived waivers never enable another rule by pretending to be assessment
+evidence. Explicitly completing an ordinary goal can remove its outstanding
+demands, but without an enabled rule its prerequisites acquire no waiver.
+Goals without a reviewed rule remain explicit-only. The strict-prerequisite
+condition excludes isolated targets from waiver eligibility.
+
+### Qualifying passes and repeated attempts
+
+A qualifying assessment pass must be traceable to the assessment endpoint,
+task form and content/rubric revision, the applicable pass criteria and
+conditions, an authorised evaluation, and successful persistence. Store only
+the evidence metadata necessary for that decision under the existing privacy
+contract; this concept does not authorise storing learner answers or chat.
+
+The [current exam workflow](node-types.md#scoring-and-mastery) permits unlimited
+same-task retries and reveals the solution after grading. For this profile,
+assess known solution exposure **before and during independent submission**.
+Showing the task alone is not solution exposure. Feedback supplied after a
+qualifying attempt does not retrospectively invalidate that pass.
+
+A later attempt at a form whose solution is already known remains practice.
+A qualifying retry needs a different, reviewed equivalent form; cosmetic
+rewording of the solved task is insufficient. Exposure handling uses recorded
+platform history and declared prior exposure. It cannot prove that a learner
+has never seen a public solution elsewhere; state this limit and do not claim
+proctored or identity-verified certification. An exhausted form pool leaves
+the qualifying route unavailable. Ordinary learning remains available, but
+cannot complete this profile until its required qualifying passes exist.
+
+Before enabling this profile, specify reliable form/exposure handling and
+equivalence review, with sufficient forms and a defined process to review and
+supply further forms. Show missing assessment availability as a provision
+gap, not learner failure. Unknown form or exposure provenance cannot silently
+be treated as qualifying. Minimal exposure metadata can support this
+requirement; it does not require saving failed scores or submissions, and
+does not alter the current no-success-write-on-failure rule.
+
+Existing passes retain their recorded meaning. They count for this profile
+only when their evidence meets its criteria or an explicit, reviewed
+compatibility decision establishes equivalence. A legacy scalar mastery value
+alone cannot do so. Do not invent a general expiry period; any requalification
+must follow a declared evidence or goal-type rule.
+
+## 4. Derive waived work with a least fixed point
+
+For fixed $H$, policy and evidence snapshot, define all participating goals
+that directly or indirectly require $v$:
+
+$$
+Consumers_H(v)=\{u\in V_H\mid(u,v)\in R_H\}.
+$$
+
+Starting only from accepted explicit results, add eligible work whose every
+incoming consumer is already complete or waived:
+
+$$
+\begin{aligned}
+X_0&:=E,\\
+X_{n+1}&:=X_n\cup
+\{v\in W(E)\mid Consumers_H(v)\subseteq X_n\},\\
+X_*&:=\bigcup_{n\geq0}X_n,\qquad I:=X_*\setminus E.
+\end{aligned}
+$$
+
+$I$ is the set of work waived **only in this context**. The iteration is
+monotone for fixed inputs and reaches its least fixed point after at most
+$|V_H\setminus E|$ rounds that add a goal. In particular,
+$I\cap P=\varnothing$. No empty-consumer shortcut can waive an unrelated goal,
+because every candidate is tied to an enabled, reviewed assessment rule.
+
+Because $R_H$ contains every resolved prerequisite path, a waived goal cannot
+be a prerequisite of any still-open goal in this context:
+
+$$
+v\in I\ \Longrightarrow\
+\{u\in V_H\mid(u,v)\in R_H\}\subseteq X_*.
+$$
+
+This prevents a waiver from removing work that an open target in the same
+profile still needs. Consumers in a different context remain a separate case.
+
+Demand status is also derived:
+
+$$
+Discharged_H=\{(u,v)\in R_H\mid u\in X_*\},
+\qquad Active_H=R_H\setminus Discharged_H.
+$$
+
+Completion of a consumer discharges its outgoing demands. When an ordinary
+goal becomes waived, its demands discharge in the next iteration. Propagation
+stops at an open consumer, an ineligible goal or a protected goal without
+explicit completion. Do not persist these statuses by editing graph edges.
+
+An **active demand** is not the same as an unsatisfied prerequisite. If C is
+open and A explicitly mastered, $C\to A$ is active even though A itself
+satisfies the ordinary mastery test. Conversely, $A\in I$ implies neither
+$A\in M_A$ nor $Sat(A,M_A)$. The fixed point never changes stored results.
+
+## 5. Worked examples and level completion
+
+B and C are required, protected assessments. Both require A; A requires D.
+The reviewed rule requires **both passes** before A or D is eligible for a
+waiver:
+
+$$
+\begin{aligned}
+R_H&=\{(B,A),(C,A),(A,D),(B,D),(C,D)\},\\
+T_i&=V_H=\{A,B,C,D\},\quad P=Q_i=\{B,C\},\\
+(S_r,W_r)&=(\{B,C\},\{A,D\}).
+\end{aligned}
+$$
+
+![Two stages showing the immediate prerequisite arrows; the calculation also includes B to D and C to D. With only B passed, the waiver rule is not enabled. With both B and C passed, the reviewed rule enables A and D; A is waived in round 1 and D in round 2. Neither result creates mastery.](assets/assessment-gated-completion.svg)
+
+The figure shows the immediate arrows for readability. The calculation also
+counts the indirect demands $B\to D$ and $C\to D$: D has three consumers,
+A, B and C, and becomes waived only after all three are done.
+
+| Explicit $E$ | Enabled $W(E)$ | Waived $I$ | Interpretation |
+| --- | --- | --- | --- |
+| $\varnothing$ | $\varnothing$ | $\varnothing$ | No passes and no waivers. |
+| $\{B\}$ | $\varnothing$ | $\varnothing$ | B's demands are discharged; C remains required. |
+| $\{B,C\}$ | $\{A,D\}$ | $\{A,D\}$ | A is waived in round 1, D in round 2. |
+| $\{A\}$ | $\varnothing$ | $\varnothing$ | A discharges its demand on D, but no assessment rule enables a waiver. |
+| $\{A,B,C\}$ | $\{A,D\}$ | $\{D\}$ | A keeps its explicit result; only D is waived. |
+
+If an additional **required target** Z in this level also requires D and
+remains open, D stays open after B and C pass. If Z belongs only to a later
+level, it is outside this context and does not block this level's waiver.
+If Z is an unrelated required target, it remains explicit-only. If D is a
+protected memory goal, it cannot occur in $W_r$ and needs its own explicit
+completion wherever it is a target.
+
+For this optional profile:
+
+$$
+Complete(i,H,E)\iff(Q_i\subseteq E)\land(T_i\subseteq X_*).
+$$
+
+All required assessments must pass, and every required target must be
+explicitly complete or legitimately waived. The assessment clause is written
+explicitly for clarity; it also follows from $Q_i\subseteq T_i\cap P$.
+Only targets count towards level completion and its denominator. Supporting
+prerequisites retain their role even when their separate work can be waived.
+
+**Passing the assessments alone is sufficient only for a profile that proves
+that claim.** Review the coverage and waiver rules, then evaluate the fixed
+point with $E=Q_i$. The claim holds exactly when $T_i\subseteq X_*$ in that
+case. If protected orientation, recall or other explicit-only targets remain,
+state them as additional completion conditions. This calculation validates
+the policy's consequences; it is not evidence of assessment quality.
+
+## 6. Direct assessment access and subsequent learning
+
+The proposed direct route allows the learner to deliberately attempt a
+required assessment in $Q_i$ even when didactic prerequisites keep it outside
+the normal frontier. Offer this route for every $q\in Q_i\setminus E$,
+including an endpoint whose ordinary mastery marker is already 1 but lacks
+qualifying evidence for this profile. Do not reset that earlier result to
+permit the new attempt. This explicit route changes assessment eligibility
+only; learner authorisation, resolved scope, assessment conditions and the
+requirement to grade and persist a qualifying full submission still apply.
+An attempt alone writes no completion or waiver. Failure preserves the
+current no-success-write rule and offers targeted remediation without
+silently enlarging the learner's selected scope.
+
+A failed persistence operation cannot enable a waiver or produce a claimed
+completion. A later successful retry of that write must remain one result
+for the same evaluated attempt, not a second assessment event.
+
+The normal learning route remains available. A level-completion result never
+adds blanket prerequisites between levels and never substitutes $X_*$ for
+the actual mastery set. In an explicitly active completion profile, pending
+target work is $T_i\setminus X_*$. Ordinary recommendations come from its
+intersection with the existing frontier; the direct assessment route is
+offered separately. Do not recommend waived work as unfinished work in this
+same profile. Voluntary review remains available. If pending ordinary work
+has no available goal, distinguish the learner's current focus restriction
+from missing prerequisite evidence. Offer appropriate support; any focus
+change follows the existing selection and continuation rules and needs
+learner acceptance. An empty frontier proves neither level completion nor
+permission to widen focus automatically. After completion, offer closing the
+level or moving to another profile, and wait for the learner's choice.
+
+For subsequent learning:
+
+1. Determine availability from real results under the existing normal/strict
+   and focus contracts.
+2. If an earlier waived competence is now a blocking requirement, explain
+   that its separate work was waived for the earlier level and that this new
+   learning goal still needs evidence. Preserve the earlier completion claim.
+3. Offer a targeted demonstration through the ordinary goal-type workflow or
+   suitable learning support. Persist mastery only from new appropriate
+   evidence, and wait for the learner's choice before starting that work.
+
+Where normal focus rules already permit entry, introduce no additional block
+because of this profile. A waiver must not be exported into another level,
+subject, plan or global frontier as mastery. A target can therefore contribute
+to a completed level while still lacking an individual global competence
+record; show the two claims with their named scopes.
+
+## 7. Recalculation and adoption requirements
+
+Keep a completion statement bound to its scope, profile, curriculum revision
+and accepted evidence snapshot. Adding a later-level consumer cannot rewrite
+that earlier claim. Changing a target selection, waiver rule, prerequisite
+revision or applicable evidence creates a new calculation; do not silently
+carry the old completion into new obligations. A historical completion and a
+current reassessment remain distinguishable, including for goal types whose
+current completion can change, such as memory.
+
+Within fixed scope and policy, $E\subseteq E'$ implies
+$X_*(E)\subseteq X_*(E')$: adding accepted evidence cannot reopen completed
+or waived work. A previously waived goal may instead become explicitly
+complete, so the set $I=X_*\setminus E$ itself need not grow. Across changed
+scopes, policies or withdrawn evidence, recompute instead of assuming
+monotonicity. Never use an earlier derived waiver as an explicit input to the
+next calculation. Explain which changed obligation or evidence rule leaves
+work open.
+
+A future implementation needs one authoritative backend resolver for the
+scope, accepted evidence, normalised demands and fixed point, with a
+consistent snapshot and a reviewable reason for each waiver. Learner views,
+coach tools and planning must consume that same result. Keep explicit and
+waived counts separate; a plan may remove waived work from its remaining
+schedule only through an explicit integration contract. Waivers create no
+goal-success events, learned-goal counts or weekly quota credit, and do not
+rewrite the fixed planning baseline or invent learning-time savings.
+
+The independent [structural feasibility and workload checks](curriculum-levels.md)
+remain mandatory for any claim made under those profiles. Direct exam access
+does not justify a cycle, a later-level prerequisite or an unsupported workload.
+Local mathematical checks do not establish task quality, reliable grading or
+learner benefit; these need reviewed assessments and learner trials.
+
+The minimum review matrix is:
+
+| Case | Required result |
 | --- | --- |
-| $E\subseteq V_H$ | Goals backed by appropriately **persisted explicit success**; opening or failing an exam never adds it to $E$. |
-| $P\subseteq V_H$ | **Protected** goals, including **every assessment** in the context. Orientation and memorisation remain non-waivable unless a separate goal-type contract permits a waiver. |
-| $W\subseteq V_H\setminus P$ | Eligible ordinary atomic learning goals whose work can be discharged. |
-| $Q_i\subseteq P$ | A **non-empty** set of **mandatory assessment endpoints** of level $i$, each requiring an explicit pass. |
-| $T_i\subseteq V_H$ | The level's full **required target set**, including its assessment endpoints, resolved from the authoritative curriculum scope. |
+| Only B passed; then B and C passed | No waiver, then A and D in successive rounds under the example rule. |
+| Only ordinary A completed | Its demand discharges, but D receives no assessment-based waiver. |
+| Protected or isolated required target | No derived completion; appropriate explicit evidence remains required. |
+| Open additional in-level consumer of D | D remains open even if its waiver rule is enabled. |
+| Later-level consumer; hidden in-level consumer | The former does not block this level; hiding the latter changes nothing. |
+| Optional exam or alternative form | No new target or compulsory pass merely because the task is available. |
+| Equivalent atomic, cluster and transitive representations | Same resolved atomic reachability produces the same $R_H$ and waiver result. |
+| Open C requires B, B requires A, and B is explicit | C's indirect demand keeps A open even if a separate assessment enables its waiver rule. |
+| Missing reference, reflexive or cyclic atomic expansion | Reject the profile calculation with an identified cause. |
+| Inadequate coverage or compensable critical outcome | No approved waiver rule for the affected target. |
+| Failed exam, known-solution retry or unqualified legacy result | No qualifying pass is manufactured. |
+| Ordinary exam mastery is 1 but its pass does not qualify | Permit a qualifying attempt without resetting the existing result. |
+| First qualifying pass followed by solution feedback | Preserve the pass; later same-form retries do not create fresh qualifying evidence. |
+| More accepted explicit evidence at fixed scope and policy | Completed-or-waived work stays complete; a waiver may become explicit completion. |
+| Active profile continuation | Recommend pending available targets, offer direct assessments separately, and never silently repeat waived work. |
+| Failed write, concurrent evidence change or replay | No optimistic waiver; use one consistent persisted snapshot and idempotent result. |
+| New context or later learning goal | Recalculate scoped work; preserve real mastery and historical claims. |
+| Every derived update | Explicit evidence, target roles and authored graph remain unchanged. |
 
-The evidence set $E$ is not derived from this algorithm. In particular,
-the plan's assumed **entry basis** in Graph Definition §12.1 does not
-write a learner's mastery, and a soft mastery estimate must not be
-silently promoted to a recorded pass. These are conceptual inputs, **not
-claims that corresponding schema fields already exist**.
-
-## 3. Least-fixed-point rule
-
-Let $R_H^+$ denote transitive prerequisite reachability. A candidate
-for implicit completion must be a *strict prerequisite* of a protected
-endpoint or of an explicitly completed goal:
-
-$$
-U=\{\,v\in V_H\mid
-\exists s\in P\cup E:\ (s,v)\in R_H^+\,\}.
-$$
-
-This relevance guard excludes unrelated isolated goals: the rule below
-must not declare every unreferenced goal implicitly done merely because
-its consumer set is empty.
-
-For any $v\in V_H$, define its incoming consumers (the sources of arrows
-**pointing to** $v$):
-
-$$
-Consumers_H(v)=\{\,u\in V_H\mid(u,v)\in R_H\,\}.
-$$
-
-Starting **only from explicit evidence**, iteratively add eligible goals
-whose every incoming consumer is already done:
-
-$$
-\begin{aligned}
-X_0 &:= E,\\
-X_{n+1} &:= X_n\ \cup\
-\left\{\,v\in U\cap W\ \middle|\
-Consumers_H(v)\subseteq X_n\,\right\},\\
-X_* &:= \bigcup_{n\geq 0}X_n,
-\qquad I:=X_*\setminus E.
-\end{aligned}
-$$
-
-$X_*$ is the **least fixed point starting from $E$**, not an arbitrarily
-chosen larger fixed point. The finite monotone iteration stabilises
-after at most $|V_H|$ strict additions. Acyclicity avoids cycles of
-mutual, self-justifying implicit completion. $I$ is **derived, scope-bound
-work discharge**, not explicit mastery.
-
-The status of each resolved demand pair is likewise derived:
-
-$$
-\begin{aligned}
-Discharged_H &= \{\,(u,v)\in R_H\mid u\in X_*\,\},\\
-Active_H &= R_H\setminus Discharged_H.
-\end{aligned}
-$$
-
-Completing a dependent discharges **all its outgoing demands**. Once
-a normal prerequisite becomes implicit, *its* outgoing demands discharge
-in the following round. Thus the effect propagates backwards along
-prerequisites, stopping wherever even one incoming consumer remains open,
-or a protected goal needs an explicit result. Do not mutate $R_H$ to
-persist these statuses.
-
-**Important distinction:** a still-open consumer C can have an *active
-demand* $C\to A$ even if A is already **explicitly mastered** and
-therefore satisfies C's normal entrance requirement. Completing C, not
-merely mastering A, discharges that demand. Likewise $A\in I$ does not
-imply $A\in M_A$ or $Sat(A,M_A)$ under the currently normative mastery
-semantics.
-
-## 4. Two exams and a shared prerequisite
-
-B and C are protected assessment endpoints. Both require A; A in turn
-requires D. All four nodes are atomic.
-
-![Two-stage diagram. Left: B has an explicit exam pass, C is open, and only B to A is discharged; A and D stay open. Right: B and C both pass explicitly, so A and then D become implicitly done. All arrows point from dependent to prerequisite.](assets/assessment-gated-completion.svg)
-
-For $R_H=\{(B,A),(C,A),(A,D)\}$, $P=Q_i=\{B,C\}$,
-$W=\{A,D\}$ and $T_i=\{A,B,C,D\}$:
-
-| Explicit $E$ | Implicit $I$ | Interpretation |
-| --- | --- | --- |
-| $\varnothing$ | $\varnothing$ | Both exams and all prerequisite work stay open. |
-| $\{B\}$ | $\varnothing$ | $B\to A$ discharged; $C\to A$ active, so A and D stay open. |
-| $\{B,C\}$ | $\{A,D\}$ | A becomes implicit in round 1; D in round 2. |
-| $\{A\}$ | $\{D\}$ | A discharges D's work, but both exams still need explicit passes. |
-
-If another **open** goal also requires D in this context, D stays open
-even when A becomes implicit. An unrelated, isolated ordinary goal Z
-is not in $U$ and does not acquire an implicit result. An unpassed
-protected exam cannot become done even if no arrows point to it.
-
-## 5. Assessment access and level completion
-
-**Proposed direct-exam route.** A learner may deliberately select an
-assessment endpoint even if prerequisites block it in the normal frontier.
-This is only **permission to attempt**, never a pass or an automatic
-learning-state write. On failure, preserve the current no-success-write
-rule and offer targeted prerequisite remediation; after grading a passed
-full submission, persist the pass before adding the endpoint to $E$.
-The ordinary prerequisite-aware route remains available.
-
-For the proposed **assessment-gated level profile**, require **both**
-explicit success on all mandatory assessments and completion/waiver of
-the *entire* resolved required target set:
-
-$$
-Complete(i,H)\iff
-(Q_i\subseteq E)\ \land\ (T_i\subseteq X_*).
-$$
-
-Passing all $Q_i$ is therefore **necessary but not automatically
-sufficient**. If the intention is that passing those assessments alone
-can finish a level, the assessment graph must actually cover every
-ordinary required target through its backward prerequisite cone, with
-no other still-active in-scope consumer blocking a waiver. This is a
-curriculum **coverage/design requirement**, not a theorem that arbitrary
-exams assess an entire level. A required non-waivable goal still needs
-its own appropriate explicit completion. A disconnected required
-target cannot disappear under the empty-consumers condition.
-
-An outcome such as "A implicitly done for this level" is **not global
-mastery**. The complete Personal Curriculum can have consumers outside
-this level; recompute in their context rather than exporting the level's
-waiver as a global result. Scope, target roles, evidence and the graph
-revision must remain distinguishable. Never delete or silently turn
-`prerequisiteOnly` goals into `target` goals.
-
-The level's existing [structural feasibility and workload checks](curriculum-levels.md)
-remain separate: bypassing an exam's entrance gate does not justify
-a circular dependency, a later-level prerequisite or an unreviewed
-reference workload.
-
-## 6. Adoption conditions and review cases
-
-A future backend implementation needs an explicit resolved context key,
-a reviewed goal-type protection and waiver policy, a consistent
-evidence snapshot, the least-fixed-point computation, and distinct UI
-language for **verified mastery** and **waived work**. The existing
-[frontier](graph-definition.md#9-learning-availability-and-progression)
-continues to use actual mastery until a separately specified runtime
-contract changes it; simply substituting $X_*$ for $M_A$ would be wrong.
-Nothing on this page announces a deployed exam bypass, persisted edge
-status, new API, enabled level schema or migration of learner data.
-
-The minimum review matrix covers: B passed while C remains open; B and C
-passed with two rounds of propagation; an unpassed protected exam; an
-explicitly mastered prerequisite; a second consumer of D; isolated
-required goals; context changes; inherited/cluster and cross-landscape
-requirements; rejection of cyclic expansions; and unchanged explicit
-evidence on every derived update.
-
-Related: [Node Types](node-types.md) defines the current exam pass and
-grading rule; [Graph Definition §12](graph-definition.md#12-optional-curriculum-level-assignments)
-defines the independent, optional level-planning validity profile.
+This document specifies a proposed policy. It announces no enabled level
+schema, deployed exam bypass, new API or migration of learner data.

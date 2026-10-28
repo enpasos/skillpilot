@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1440" height="806" viewBox="0 0 1440 806" role="img" aria-labelledby="diagram-title diagram-desc">
 <title id="diagram-title">Assessment-gated completion and shared prerequisites</title>
-<desc id="diagram-desc">In both panels requires arrows run B to A, C to A and A to D. Left panel: B exam passed, C exam open, and only the B to A demand is discharged. A and D stay open. Right: B and C exams passed, so A and then D become implicitly done. Exam endpoints never become implicitly done.</desc>
+<desc id="diagram-desc">Immediate arrows shown run B to A, C to A and A to D, from dependent to prerequisite. The calculation also counts indirect demands B to D and C to D. The reviewed rule requires qualifying passes on both B and C before work on A and D can be waived for this level. Left: only B passed, discharging its demands on A and D. The rule is not enabled; C still needs A and D, so both stay open. Right: both exams passed, enabling the rule; A is waived in round 1 and D in round 2. Exams always require explicit passes. Waived work creates no independent mastery evidence.</desc>
 <defs>
 <marker id="arrow-discharged" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#087b67"/></marker>
 <marker id="arrow-active" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#bd6b10"/></marker>
@@ -17,60 +17,60 @@
 .edge-label{font:700 13px system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 .explicit{fill:#d9f8ed;stroke:#087b67;stroke-width:2.3}
 .pending{fill:#fff1d6;stroke:#bd6b10;stroke-width:2.3}
-.implicit{fill:#def6fa;stroke:#0285a5;stroke-width:2.3}
+.waived{fill:#def6fa;stroke:#0285a5;stroke-width:2.3}
 .discharged{fill:none;stroke:#087b67;stroke-width:3.5;marker-end:url(#arrow-discharged)}
 .active{fill:none;stroke:#bd6b10;stroke-width:3.5;stroke-dasharray:9 6;marker-end:url(#arrow-active)}
 </style>
 </defs>
 <rect width="1440" height="806" fill="#f5f8fc"/>
-<text class="heading" x="40" y="54">When a passed exam discharges prerequisites</text>
-<text class="subtitle" x="40" y="87">Every arrow means “requires”: dependent → prerequisite. Level-end exams are protected from implicit completion.</text>
+<text class="heading" x="40" y="54">When qualifying exams waive separate learning work</text>
+<text class="subtitle" x="40" y="87">Immediate arrows shown: dependent → prerequisite. Calculation also includes indirect demands B → D and C → D.</text>
 <g>
 <rect x="32" y="117" width="674" height="523" rx="21" fill="#fff" stroke="#d7e1ec" stroke-width="1.7"/>
 <text class="paneltitle" x="60" y="160">1 · Only exam B passed</text>
-<text class="panelsub" x="60" y="188">Explicit: {B}   ·   Implicit: { }</text>
+<text class="panelsub" x="60" y="188">Explicit: {B}   ·   Waived: { }</text>
 <path class="discharged" d="M236 279 Q301 279 365 352"/>
 <path class="active" d="M236 455 Q304 455 365 385"/>
 <path class="active" d="M520 368 L570 368"/>
 <rect x="261" y="269" width="92" height="26" rx="13" fill="#e8fbf5"/><text class="edge-label" x="307" y="286" text-anchor="middle" fill="#087b67">discharged</text>
 <rect x="276" y="435" width="57" height="25" rx="12" fill="#fff7e9"/><text class="edge-label" x="304" y="451" text-anchor="middle" fill="#a65d0d">active</text>
 <rect class="explicit" x="74" y="235" width="162" height="88" rx="15"/>
-<text class="badge" x="91" y="257">EXAM · PROTECTED</text><text class="goal" x="91" y="285">B</text><text class="state" x="118" y="285">passed</text><text class="state" x="91" y="305">explicit evidence</text>
+<text class="badge" x="91" y="257">EXAM · PROTECTED</text><text class="goal" x="91" y="285">B</text><text class="state" x="118" y="285">passed</text><text class="state" x="91" y="305">qualifying pass</text>
 <rect class="pending" x="74" y="410" width="162" height="88" rx="15"/>
-<text class="badge" x="91" y="432">EXAM · PROTECTED</text><text class="goal" x="91" y="461">C</text><text class="state" x="118" y="461">not passed</text><text class="state" x="91" y="480">must pass explicitly</text>
+<text class="badge" x="91" y="432">EXAM · PROTECTED</text><text class="goal" x="91" y="461">C</text><text class="state" x="118" y="461">not passed</text><text class="state" x="91" y="480">explicit pass due</text>
 <rect class="pending" x="365" y="321" width="155" height="94" rx="16"/>
 <text class="goal" x="385" y="355">A</text><text class="state" x="385" y="382">still required</text><text class="state" x="385" y="402">by C</text>
 <rect class="pending" x="570" y="321" width="110" height="94" rx="16"/>
 <text class="goal" x="590" y="355">D</text><text class="state" x="590" y="382">still</text><text class="state" x="590" y="402">required</text>
 <rect x="60" y="546" width="618" height="61" rx="13" fill="#f5f8fc"/>
-<text class="hint" x="78" y="572">C → A is still active, so A stays open.</text>
-<text class="hint" x="78" y="594">Consequently, A → D also stays active.</text>
+<text class="hint" x="78" y="572">The waiver rule is not enabled: C still needs a pass.</text>
+<text class="hint" x="78" y="594">C → A, C → D and A → D remain active.</text>
 </g>
 <g transform="translate(698 0)">
 <rect x="32" y="117" width="674" height="523" rx="21" fill="#fff" stroke="#d7e1ec" stroke-width="1.7"/>
 <text class="paneltitle" x="60" y="160">2 · Both exams passed</text>
-<text class="panelsub" x="60" y="188">Explicit: {B, C}   ·   Implicit: {A, D}</text>
+<text class="panelsub" x="60" y="188">Explicit: {B, C}   ·   Waived: {A, D}</text>
 <path class="discharged" d="M236 279 Q301 279 365 352"/><path class="discharged" d="M236 455 Q304 455 365 385"/><path class="discharged" d="M520 368 L570 368"/>
 <rect x="261" y="269" width="92" height="26" rx="13" fill="#e8fbf5"/><text class="edge-label" x="307" y="286" text-anchor="middle" fill="#087b67">discharged</text>
 <rect x="261" y="435" width="92" height="26" rx="13" fill="#e8fbf5"/><text class="edge-label" x="307" y="452" text-anchor="middle" fill="#087b67">discharged</text>
 <rect class="explicit" x="74" y="235" width="162" height="88" rx="15"/>
-<text class="badge" x="91" y="257">EXAM · PROTECTED</text><text class="goal" x="91" y="285">B</text><text class="state" x="118" y="285">passed</text><text class="state" x="91" y="305">explicit evidence</text>
+<text class="badge" x="91" y="257">EXAM · PROTECTED</text><text class="goal" x="91" y="285">B</text><text class="state" x="118" y="285">passed</text><text class="state" x="91" y="305">qualifying pass</text>
 <rect class="explicit" x="74" y="410" width="162" height="88" rx="15"/>
-<text class="badge" x="91" y="432">EXAM · PROTECTED</text><text class="goal" x="91" y="461">C</text><text class="state" x="118" y="461">passed</text><text class="state" x="91" y="480">explicit evidence</text>
-<rect class="implicit" x="365" y="321" width="155" height="94" rx="16"/>
-<text class="goal" x="385" y="355">A</text><text class="state" x="385" y="382">implicit done</text><text class="state" x="385" y="402">round 1</text>
-<rect class="implicit" x="570" y="321" width="110" height="94" rx="16"/>
-<text class="goal" x="590" y="355">D</text><text class="state" x="590" y="382">implicit</text><text class="state" x="590" y="402">round 2</text>
+<text class="badge" x="91" y="432">EXAM · PROTECTED</text><text class="goal" x="91" y="461">C</text><text class="state" x="118" y="461">passed</text><text class="state" x="91" y="480">qualifying pass</text>
+<rect class="waived" x="365" y="321" width="155" height="94" rx="16"/>
+<text class="goal" x="385" y="355">A</text><text class="state" x="385" y="382">work waived</text><text class="state" x="385" y="402">round 1</text>
+<rect class="waived" x="570" y="321" width="110" height="94" rx="16"/>
+<text class="goal" x="590" y="355">D</text><text class="state" x="590" y="382">waived</text><text class="state" x="590" y="402">round 2</text>
 <rect x="60" y="546" width="618" height="61" rx="13" fill="#f5f8fc"/>
-<text class="hint" x="78" y="572">Both demands on A are discharged.</text>
-<text class="hint" x="78" y="594">A then discharges its demand on D — no new mastery.</text>
+<text class="hint" x="78" y="572">Both qualifying passes enable the reviewed waiver rule.</text>
+<text class="hint" x="78" y="594">A is waived, then D; global mastery stays unchanged.</text>
 </g>
 <rect x="32" y="664" width="1378" height="110" rx="19" fill="#fff" stroke="#d7e1ec" stroke-width="1.7"/>
 <text class="paneltitle" x="58" y="700">Legend</text>
 <rect class="explicit" x="171" y="683" width="32" height="23" rx="6"/><text class="legend" x="212" y="700">Explicit success</text>
-<rect class="implicit" x="394" y="683" width="32" height="23" rx="6"/><text class="legend" x="435" y="700">Implicit waiver</text>
+<rect class="waived" x="394" y="683" width="32" height="23" rx="6"/><text class="legend" x="435" y="700">Waived work</text>
 <rect class="pending" x="609" y="683" width="32" height="23" rx="6"/><text class="legend" x="650" y="700">Pending</text>
 <path class="discharged" d="M830 694 L890 694"/><text class="legend" x="909" y="700">Discharged demand</text>
 <path class="active" d="M1125 694 L1185 694"/><text class="legend" x="1204" y="700">Active demand</text>
-<text class="subtitle" x="58" y="747">“Implicit done” means waived work in this context, not independently verified mastery.</text>
+<text class="subtitle" x="58" y="747">Waivers require both qualifying passes and apply only to this level. No independent mastery is inferred.</text>
 </svg>

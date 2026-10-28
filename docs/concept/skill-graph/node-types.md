@@ -222,7 +222,7 @@ Follow the existing pattern: `field` (local language) and `fieldEn` (English). T
 - **Access control (current runtime):** `requires` is used to gate exam tasks until prerequisites are met.
 - **Remediation:** If the user fails, `requires` drives targeted review suggestions.
 
-> **Proposed extension, not live:** [Assessment-Gated Completion and Prerequisite Discharge](assessment-gated-completion.md) describes an explicit exam-attempt bypass and scoped, implicit discharge of preceding learning work *after* a pass. It is not a change to this access-control or grading contract.
+> **Proposed extension, not live:** [Assessment-Gated Completion and Prerequisite Discharge](assessment-gated-completion.md) specifies direct attempts at required level assessments and reviewed work waivers after qualifying passes. It requires suitable task forms and evidence handling before adoption; the current same-form retry workflow alone does not establish those stronger conditions. This proposal does not change this access-control or grading contract.
 
 ### Scoring and mastery
 
