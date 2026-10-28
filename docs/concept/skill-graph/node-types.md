@@ -219,8 +219,10 @@ Follow the existing pattern: `field` (local language) and `fieldEn` (English). T
 
 ### Requires semantics
 
-- **Access control:** `requires` is used to gate exam tasks until prerequisites are met.
+- **Access control (current runtime):** `requires` is used to gate exam tasks until prerequisites are met.
 - **Remediation:** If the user fails, `requires` drives targeted review suggestions.
+
+> **Proposed extension, not live:** [Assessment-Gated Completion and Prerequisite Discharge](assessment-gated-completion.md) describes an explicit exam-attempt bypass and scoped, implicit discharge of preceding learning work *after* a pass. It is not a change to this access-control or grading contract.
 
 ### Scoring and mastery
 
