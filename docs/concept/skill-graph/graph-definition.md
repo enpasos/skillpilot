@@ -10,6 +10,8 @@ Layering, migration strategy, and canonical rollout policy are specified separat
 
 Related planning scope: [Curriculum Levels](curriculum-levels.md) explains how bounded learning stages, including school years, organize canonical goals. The optional formal profile in §12 checks a resolved plan without changing base graph validity.
 
+Related **proposed** learner-state overlay: [Assessment-Gated Completion and Prerequisite Discharge](assessment-gated-completion.md) formalises explicit evidence, context-scoped implicit work discharge, protected exam endpoints and a possible level-completion rule. It does **not** alter this document's current graph or frontier semantics.
+
 > **Normative definition.** This document defines the skill graph’s semantics and validity requirements.
 >
 > **Implementation checks.** The currently enforced CI validator profile—including rollout severity levels and runtime rule identifiers—is documented in [Graph Validation Rules](../../qa-ci/graph-validation-rules.md). Legacy metadata such as `phase` may still exist in repositories, but it is not part of the canonical graph semantics unless explicitly specified below.
