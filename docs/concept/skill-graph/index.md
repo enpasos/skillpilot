@@ -8,6 +8,9 @@ learning stages. This section explains both the graph and the contracts around i
 
 - [Graph Definition](graph-definition.md): formal goals, relations, prerequisites,
   frontier, and graph-validity conditions.
+- [Assessment-Gated Completion and Prerequisite Discharge](assessment-gated-completion.md):
+  proposed, formally defined explicit/implicit completion, protected exam endpoints,
+  and context-scoped work discharge.
 - [Curriculum Levels](curriculum-levels.md): ordered learning stages with
   prerequisite-consistent targets and a feasible workload, including school
   years across subjects and the knowledge-building metaphor.

@@ -180,6 +180,8 @@ the reference curriculum's past definition.
 
 ## Level completion and individual availability
 
+> **Related proposed profile:** [Assessment-Gated Completion and Prerequisite Discharge](assessment-gated-completion.md) defines non-waivable level-end assessments and a separately derived, context-scoped waiver for learning work. This proposal does not change the currently implemented goal results, level completion, or exam access rules.
+
 A level declares its completion rule over an explicit required target set and
 any applicable, resolved selection rules. Completion is derived from the stored
 goal results using the appropriate goal-type semantics. A date, time spent, or
