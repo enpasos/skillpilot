@@ -25,8 +25,8 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
 - [SkillPilot Skill Graph Specification](skill-graph/graph-definition.md)
   Core graph model and formal vocabulary.
 - [Assessment-Gated Completion and Prerequisite Discharge](skill-graph/assessment-gated-completion.md)
-  Proposed level completion through qualifying assessments and reviewed work
-  waivers, with a fixed scope and unchanged global mastery.
+  Proposed level completion and work waivers calculated from existing mastery
+  and reviewed static rules, with a fixed scope and no additional stored goal results.
 - [Curriculum Levels](skill-graph/curriculum-levels.md)
   Contextual learning stages with prerequisite-consistent targets, feasible
   workload, and a connection to the knowledge-building metaphor.

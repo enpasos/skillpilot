@@ -122,10 +122,18 @@ prerequisites.
 
 ## Level 4: Mastery
 
-Mastery is the learner's durable progress on stable atomic goal IDs. It remains
-global across composition views and Level 2 or Level 3 changes. Cluster
-progress is derived from atomic descendants; it is not a separate scope-local
-mastery record.
+Mastery is the learner's single durable outcome on each stable atomic goal ID:
+**mastered or not mastered**. It remains global across composition views and
+Level 2 or Level 3 changes. There is no partly mastered state or additional
+profile-specific assessment qualification.
+
+Cluster and scope progress is the weighted share of mastered, unique atomic
+goals. A percentage describes that aggregate, not a degree of mastery for an
+individual goal. Clusters have no separately stored mastery record.
+Goal-type workflows determine the one outcome; card-level scheduling and
+recall data do not add another outcome to a memorization goal. Current numeric
+runtime discrepancies are identified in
+[Learning Workflow](runtime-workflows/learning-workflow.md#step-5-mastery-aggregation-and-feedback).
 
 ## Orthogonal planning axis: curriculum timeline
 

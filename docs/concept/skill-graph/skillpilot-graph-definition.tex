@@ -1,0 +1,195 @@
+% SPDX-License-Identifier: Apache-2.0
+% Technical reference; embedded didactic figures retain their own attribution.
+\documentclass[11pt,a4paper,parskip=half,headings=normal,numbers=noenddot]{scrartcl}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+\setsansfont{Latin Modern Sans}
+\setmonofont{Latin Modern Mono}[BoldFont=lmmonolt10-bold.otf]
+\usepackage[ngerman]{babel}
+\usepackage{microtype}
+\usepackage[a4paper,top=24mm,bottom=25mm,left=25mm,right=25mm]{geometry}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{graphicx,xcolor,booktabs,longtable,tabularx,array}
+\usepackage{enumitem,caption,float,placeins}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,fit,backgrounds,calc}
+\usepackage[most]{tcolorbox}
+\usepackage{scrlayer-scrpage}
+\usepackage{hyperref,bookmark}
+\definecolor{ink}{HTML}{193349}
+\definecolor{teal}{HTML}{087F8C}
+\definecolor{lightteal}{HTML}{EDF7F7}
+\definecolor{warm}{HTML}{A55F16}
+\definecolor{muted}{HTML}{536575}
+\hypersetup{colorlinks=true,linkcolor=ink,urlcolor=teal,citecolor=teal,
+ pdftitle={Die Graph-Definition von SkillPilot},
+ pdfauthor={SkillPilot / enpasos},
+ pdfsubject={Graphsemantik, curriculare Sichten, Lernzustand und prüfungsbasierter Abschluss},
+ pdfkeywords={SkillPilot, Skill Graph, Lernziele, Frontier, Assessment, Curriculum}}
+\setkomafont{disposition}{\normalfont\sffamily\bfseries\color{ink}}
+\setkomafont{pageheadfoot}{\normalfont\sffamily\small\color{muted}}
+\clearpairofpagestyles
+\ihead{SkillPilot · Graph-Definition}
+\ohead{\headmark}
+\automark{section}
+\cfoot{\pagemark}
+\setlength{\headheight}{17pt}
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{2}
+\setlist{nosep,leftmargin=*,topsep=4pt}
+\setlist[description]{style=nextline,leftmargin=0pt,labelwidth=0pt,labelindent=0pt}
+\captionsetup{font=small,labelfont=bf,skip=7pt}
+\renewcommand{\arraystretch}{1.18}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\renewcommand{\tabularxcolumn}[1]{>{\raggedright\arraybackslash}p{#1}}
+\setlength{\emergencystretch}{2em}
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Pow}{\mathcal{P}}
+\DeclareMathOperator{\Atoms}{Atoms}
+\DeclareMathOperator{\Sat}{Sat}
+\DeclareMathOperator{\Frontier}{Frontier}
+\DeclareMathOperator{\Anc}{Anc}
+\DeclareMathOperator{\Desc}{Desc}
+\DeclareMathOperator{\ReqAtoms}{RequiredAtoms}
+\DeclareMathOperator{\Pre}{Pre}
+\DeclareMathOperator{\Missing}{Missing}
+\DeclareMathOperator{\MissingAtoms}{MissingAtoms}
+\DeclareMathOperator{\Due}{Due}
+\DeclareMathOperator{\Verified}{Verified}
+\DeclareMathOperator{\Consumers}{Consumers}
+\DeclareMathOperator{\Complete}{Complete}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\Title}{Title}
+\DeclareMathOperator{\Weight}{Weight}
+\DeclareMathOperator{\ShortKey}{ShortKey}
+\DeclareMathOperator{\PhaseCompat}{PhaseCompat}
+\DeclareMathOperator{\Applicability}{Applicability}
+\DeclareMathOperator{\Work}{Work}
+\DeclareMathOperator{\Reserve}{Reserve}
+\DeclareMathOperator{\Budget}{Budget}
+\newcommand{\Discharged}{\mathrm{Discharged}}
+\newcommand{\Active}{\mathrm{Active}}
+\newcommand{\Score}{\mathit{score}}
+\newcommand{\Passed}{\mathit{passed}}
+\newcommand{\MaxPoints}{\mathit{maxPoints}}
+\newcommand{\PassingPoints}{\mathit{passingPoints}}
+\newcommand{\Reff}{R_{\mathrm{eff}}}
+\newcommand{\srcref}[2]{\href{https://github.com/enpasos/skillpilot/blob/main/#1}{#2}}
+\newtcolorbox{principle}[1]{breakable,colback=lightteal,colframe=teal,
+ boxrule=.5pt,arc=1mm,left=3mm,right=3mm,top=2mm,bottom=2mm,
+ title={#1},fonttitle=\sffamily\bfseries}
+\newcommand{\sourcefig}[4][.48\textheight]{%
+ \begin{figure}[H]\centering
+ \includegraphics[width=\linewidth,height=#1,keepaspectratio]{assets/graph-definition/#2}
+\caption[\csname title#4\endcsname]{#3}\label{#4}\end{figure}}
+\expandafter\def\csname titlefig:overview\endcsname{Ziele und zwei Kantenarten}
+\expandafter\def\csname titlefig:contains\endcsname{Direkte und indirekte Zugehörigkeit}
+\expandafter\def\csname titlefig:requires\endcsname{Direkte Voraussetzungen}
+\expandafter\def\csname titlefig:inheritance\endcsname{Vom Cluster geerbte Voraussetzungen}
+\expandafter\def\csname titlefig:cycles\endcsname{Effektive Zyklen durch Vererbung}
+\expandafter\def\csname titlefig:frontier\endcsname{Die nächsten verfügbaren Ziele}
+\expandafter\def\csname titlefig:filters\endcsname{Normalmodus und strikter Modus}
+\tikzset{goal/.style={draw=teal,fill=lightteal,rounded corners=2pt,
+ align=center,minimum height=10mm,font=\small,inner sep=5pt},
+ req/.style={-{Stealth[length=2mm]},thick,draw=teal},
+ grouping/.style={-{Stealth[length=2mm]},draw=muted},
+ info/.style={align=center,font=\small,text=muted}}
+
+\begin{document}
+\begin{titlepage}
+\vspace*{12mm}
+{\sffamily\large\color{teal} SKILLPILOT · TECHNISCHE REFERENZ\par}
+\vspace{14mm}
+{\sffamily\bfseries\fontsize{32}{37}\selectfont\color{ink}
+Die Graph-Definition\par von SkillPilot\par}
+\vspace{9mm}
+{\Large Struktur, Mathematik, curriculare Sichten\par und prüfungsbasierter Abschluss\par}
+\vspace{14mm}
+\begin{center}\begin{tikzpicture}[node distance=14mm]
+\node[goal,minimum width=39mm] (c) {Fachlicher Cluster};
+\node[goal,below left=14mm and 3mm of c,minimum width=32mm] (a) {Grundlage $a$};
+\node[goal,below right=14mm and 3mm of c,minimum width=32mm] (b) {Anwendung $b$};
+\draw[grouping] (c) -- node[left,font=\scriptsize] {contains} (a);
+\draw[grouping] (c) -- node[right,font=\scriptsize] {contains} (b);
+\draw[req] (b) -- node[above,font=\scriptsize] {requires} (a);
+\coordinate (basecenter) at ($(a.south)!0.5!(b.south)$);
+\node[info,anchor=north,text width=123mm] at ($(basecenter)+(0,-8mm)$)
+ {Gruppierung, Lernvoraussetzung und Abschlussnachweis\\sind unterschiedliche Aussagen.};
+\end{tikzpicture}\end{center}
+\vfill
+\begin{principle}{Geltung dieser Fassung}
+Deutsche Gesamtdarstellung der technischen Modellverträge, Stand
+\textbf{29. Oktober 2026}. Sie verbindet die normative Graph-Definition mit
+ihren angrenzenden Konzepten. Optionale Planungsprofile und der Vorschlag
+eines prüfungsbasierten Abschlusses sind als solche gekennzeichnet.
+Eine dokumentierte Regel ist kein Nachweis ihrer vollständigen Umsetzung.
+\end{principle}
+\vspace{6mm}
+{\small SkillPilot · enpasos -- Enterprise Patterns \& Solutions GmbH\par
+Technischer Text und Build-Werkzeuge: Apache-2.0.\par
+Didaktische Abbildungen: projektbezogene Inhaltslizenz CC BY 4.0; siehe Anhang.}
+\end{titlepage}
+
+\section*{Leserführung und Geltungsbereich}
+\markboth{Leserführung}{Leserführung}
+\addcontentsline{toc}{section}{Leserführung und Geltungsbereich}
+Ein SkillPilot-Graph beschreibt, \emph{was} gelernt werden kann und welche
+Voraussetzungen dabei gelten. Curriculare Sichten bestimmen, welche dieser
+stabilen Ziele für eine Person gelten. Der Lernzustand hält für jedes atomare
+Ziel fest, ob es geschafft ist. Planung verteilt Erwerb und Übung auf verfügbare Zeit. Ein
+Abschlussprofil berechnet schließlich aus Mastery und fachlichen Regeln,
+ob ein genau benannter Lernumfang abgeschlossen ist. Diese Aussagen dürfen sich aufeinander beziehen,
+aber nicht stillschweigend gegenseitig ersetzen.
+
+Diese Referenz ist für die deutschsprachige gemeinsame Prüfung und
+Weiterentwicklung des Modells bestimmt. Sie behandelt die Graph-Definition
+im weiteren Sinne: Identität, Kanten, Vererbung, Gültigkeit, Verfügbarkeit,
+Projektion, Zieltypen, Fortschritt, Zeitplanung, Abschluss, Quellen und
+Qualitätssicherung. Fachliche Lehrplaninhalte und konkrete Aufgabenbestände
+werden nicht vollständig abgedruckt. Die Beispiele sind Veranschaulichungen,
+keine als Curriculum freigegebenen Teilgraphen.
+
+\begin{center}\begin{tabularx}{\linewidth}{@{}P{35mm}X@{}}
+\toprule
+Status & Bedeutung in dieser Referenz \\
+\midrule
+Normativer Kern & Verbindliche mathematische Graphsemantik aus
+\code{graph-definition.md}; zusätzliche Profile können strengere Regeln setzen.\\
+Angrenzender Vertrag & Semantik von Projektion, Zieltypen, Quellen oder
+Lernablauf; Implementierungsstand ist jeweils gesondert zu prüfen.\\
+Optionales Profil & Curriculum-Level mit Struktur- und Zeitprüfung;
+konzeptionell definiert, kein behaupteter neuer produktiver Validator.\\
+Entwurf & Prüfungsbasierter Abschluss mit Freistellungen;
+keine bereits verfügbare Umgehung der Prüfungszugangssperre.\\
+\bottomrule
+\end{tabularx}\end{center}
+
+Die fachlichen Verträge im Repository bleiben die maßgeblichen
+Einzelquellen. Der Anhang ordnet alle Kapitel diesen Quellen zu und nennt
+beim Erstellen überprüfte Implementierungsabweichungen. Mathematische
+Beispiele, Bildunterschriften und Plausibilitätsprüfungen ersetzen weder
+fachliche Aufgabenreviews noch Untersuchungen mit Lernenden.
+
+\clearpage
+\ohead{Inhalt und Abbildungen}
+\tableofcontents
+\bigskip
+\listoffigures
+\clearpage
+\ohead{Formales Graphmodell}
+\input{latex/graph-core.tex}
+\clearpage
+\ohead{Curriculare Sichten und Lernzustand}
+\input{latex/graph-context.tex}
+\clearpage
+\ohead{Curriculare Planung}
+\input{latex/graph-planning.tex}
+\clearpage
+\ohead{Prüfungsbasierter Abschluss}
+\input{latex/graph-assessment.tex}
+\clearpage
+\ohead{Anhänge}
+\input{latex/graph-appendix.tex}
+\end{document}

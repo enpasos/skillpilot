@@ -154,6 +154,9 @@ A visible edge in a default tree must come from exactly one of these sources:
 - program edge from `parentUnitId`
 - placement edge from `goalPlacements`
 - competency edge from `competencyRefs`
+- explicit composition-view structure or an authored composition reference
+  attaching a canonical subtree root or a goal entry; edges within an expanded
+  canonical subtree still come from `contains`
 
 No default visible tree edge should exist only because runtime code guessed it.
 

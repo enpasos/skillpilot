@@ -332,11 +332,11 @@ Lern- und Steuerungszustand**:
 - Zuordnung zum SkillPilot-Lernenden,
 - gewähltes Curriculum und Personalisierung,
 - ausgewählter Lernzielbereich (Scope) und aktives Lernziel,
-- Mastery je Lernziel als Zahlenwert,
+- Mastery je Lernziel als einzige Ergebnisentscheidung: geschafft oder noch offen,
 - Lernkartenplanung und fällige Wiederholungen,
 - Verified-Recall-Ergebnis je Karte als bestanden oder nicht bestanden.
 
-Die Liste enthält bewusst beides: Ergebniswerte wie Mastery und
+Die Liste enthält bewusst beides: Ergebniszustände wie Mastery und
 **Steuerungszustand** wie Curriculum, Scope, aktives Lernziel und fällige
 Wiederholungen. Letzteres ist kein Lernerfolg im engeren Sinn, aber es ist
 strukturiert, schema-validiert und für die Fortsetzung des Lernens nötig.
@@ -353,10 +353,17 @@ Ebenso wichtig ist die Negativliste. SkillPilot Core speichert **nicht**:
 Diese Grenze ist keine Absicht für später, sondern der heutige Stand: Die
 schreibenden Werkzeuge der MCP-Oberfläche sind `setCurriculum`,
 `setPersonalization`, `setScope`, `setActiveGoal`, `setMastery` und
-`recordVerifiedRecallResult`. Sie nehmen ausschließlich Lernziel-IDs, einen
-Mastery-Zahlenwert und ein bestanden/nicht-bestanden entgegen. Es gibt kein
+`recordVerifiedRecallResult`. Die Zielergebnisentscheidung ist binär; bestehende
+numerische Mastery-Felder sind eine technische Kompatibilitätsdarstellung.
+Ein erfolgreicher Lernzielabschluss schreibt `1`, keinen graduellen Zwischenwert.
+Recall speichert bestanden/nicht bestanden pro Karte. Es gibt kein
 Werkzeug, das ein Bild, einen Anhang, eine Lösung oder einen Gesprächsausschnitt
 entgegennimmt.
+
+Der binäre Ergebnisvertrag ist noch nicht in allen API- und GUI-Pfaden
+durchgesetzt: Die [Implementierungsabweichungen im Lernablauf](runtime-workflows/learning-workflow.md#step-5-mastery-aggregation-and-feedback)
+benennen die weiterhin akzeptierten Zwischenwerte und Regler. Die Darstellung
+hier definiert keine Teilmastery und behauptet keine bereits erfolgte Migration.
 
 Eine einzige textuelle Abweichung besteht heute noch: `recordVerifiedRecallResult`
 nimmt eine kurze Rückmeldung entgegen, die als `lastFeedback` beim Kartenergebnis
@@ -561,7 +568,7 @@ Model Provider  (vision-fähiges Modell)
         ▼
 MCP Host
         │
-        │ setMastery(goalId, wert)
+        │ setMastery(goalId, 1)
         ▼
 SkillPilot Core
 ```
@@ -580,15 +587,20 @@ anderen Seite. Nur ein lokal betriebenes Vision-Modell würde das Bild im
 Verantwortungsbereich des Hosts halten; das ist der Ausnahme-, nicht der
 Regelfall.
 
-Was zurückgeschrieben wird, ist genau ein Mastery-Wert zu einem Lernziel:
+Ein erfolgreicher Abschluss schreibt genau den vorhandenen Mastery-Zustand
+des Lernziels. Schematisch, unabhängig von der konkreten Adapter-Signatur:
 
 ```json
 {
   "tool": "setMastery",
   "goalId": "<exakte Lernziel-ID>",
-  "mastery": 0.6
+  "mastery": 1.0
 }
 ```
+
+Ist das Ziel noch nicht geschafft, entsteht daraus kein Teil-Mastery-Wert.
+Eine fehlgeschlagene Prüfung lässt vorhandene Mastery unverändert. Auch ein
+Prüfungslernziel benötigt keinen zweiten Qualifikations- oder Belegstatus.
 
 Die inhaltliche Beobachtung — welche Aufgabe es war, welchen Fehler die lernende
 Person gemacht hat, wie sicher das Modell war — bleibt im Gespräch bei Host und

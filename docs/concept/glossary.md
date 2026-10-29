@@ -488,9 +488,16 @@ The unsatisfied effective prerequisites of a goal, split into gaps inside the fi
 
 ### Mastery
 
-*DE: Beherrschungsgrad* — see [Learning Workflow](runtime-workflows/learning-workflow.md)
+*DE: Beherrschung; Lernziel geschafft oder noch nicht geschafft* — see [Learning Workflow](runtime-workflows/learning-workflow.md#step-5-mastery-aggregation-and-feedback)
 
-Progress stored per atomic goal on a `0.0`–`1.0` scale. Cluster mastery is aggregated from contained descendants using goal weights; memorization mastery is derived from card state rather than set manually. Mastery belongs to goals, never to structure, and stays global across composition views.
+The single stored outcome for an atomic goal: **mastered or not mastered**.
+Numeric `0` and `1` can encode it; intermediate mastery degrees and additional
+assessment qualifications are not part of the outcome model. Mastery belongs
+to stable goal IDs and stays global across composition views. Cluster or scope
+progress is the weighted share of mastered, unique atomic goals, not a second
+stored result or partial mastery of one goal. Memorization mastery is determined
+by its card workflow. The linked workflow documents remaining discrepancies
+in the current numeric implementation.
 
 ### Curriculum timeline and pacing plan
 
@@ -519,8 +526,8 @@ goal `weight`, and baseline mastery does not create newly learned units.
 
 A dated commitment such as “complete the selected Mathematics Abitur tasks by
 15 March”. It separates subject-matter kind from deadline rigidity, the exact
-learning-goal workload used for pacing from the mastery or assessment evidence
-used for completion, and references explicit plan capacity. The milestone
+learning-goal workload used for pacing from completion derived from mastery,
+and references explicit plan capacity. The milestone
 drives the dated goal list, forecast and replanning but allocates no time and
 creates no mastery by itself.
 
@@ -531,7 +538,9 @@ creates no mastery by itself.
 
 A digest-bound, as-of read model that renders one plan revision as a textual
 course plan plus block-level planned progress, confirmed teaching coverage and
-a separately labelled, evidence-qualified mastery distribution. Operational
+a separately labelled distribution of mastered goals with input-data quality.
+That quality describes the available report inputs; it is not another
+qualification of a learner's stored mastery. Operational
 teacher drill-down and aggregate leadership summary use different server-side
 capability profiles; the snapshot is not a new source of plan or mastery data.
 
@@ -539,14 +548,15 @@ capability profiles; the snapshot is not a new source of plan or mastery data.
 
 *DE: Lerngeschwindigkeit* — see [Learning Velocity](didactic/learning-velocity.md)
 
-The observed rate of newly mastered atomic goals, counting a goal when mastery
-first reaches `0.9` or higher. The current narrow view groups raw goal counts by
-calendar week, but currently approximates achievement time from mutable
-mastery snapshots, does not itself validate atomic plan-capable entries, and
-does not yet provide the normative event evidence. A
-bound pacing plan instead compares newly achieved planning units per effective
-teaching week with its target curve. Neither form is a grading metric or a
-learner ranking.
+The observed rate of atomic goals becoming mastered. The current Cockpit chart
+counts recorded completions by calendar week, including orientation markers
+and renewed completions on later days; it is not necessarily a count of
+first-ever subject-matter achievements. Completion-event times describe the
+history of the one goal outcome and do not create a second outcome state.
+Current numeric thresholds are compatibility details, not partial mastery.
+A bound pacing plan instead compares newly achieved planning units per
+effective teaching week with its target curve. Neither form is a grading
+metric or a learner ranking.
 
 ### Autopilot
 

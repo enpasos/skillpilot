@@ -5,7 +5,7 @@ This document describes the runtime workflow for moving learner state between Sk
 ## Scope and goals
 
 Import/export is designed for **data portability** without breaking integrity:
-- **Included**: curriculum selection, enabled modules, mastery values, planned goals, provenance (copy sources), and client-side SRS state.
+- **Included**: curriculum selection, enabled modules, the existing mastery state, planned goals, provenance (copy sources), and client-side SRS state.
 - **Excluded**: personal identifiers; the target account keeps its own SkillPilot-ID.
 - **Guarantee**: the source profile is never modified by export.
 
@@ -27,8 +27,16 @@ Import/export is designed for **data portability** without breaking integrity:
 When importing into a target profile:
 - **Identity preservation**: the target keeps its own `skillpilotId`; the imported ID is ignored.
 - **Curriculum settings**: selected curriculum and enabled modules are overwritten by the import.
-- **Mastery**: imported mastery values update existing ones; untouched topics remain as-is.
+- **Mastery**: imported mastery updates the existing mastered/not-mastered
+  outcome; untouched topics remain as-is. Numeric legacy payloads are a
+  compatibility concern, not a second outcome or a partial-mastery model.
+  Imports add no separate assessment qualification or stored waiver state.
 - **Planned goals**: the planned goal list is replaced by the imported list.
+
+The current numeric storage/API discrepancies are listed in
+[Learning Workflow](learning-workflow.md#step-5-mastery-aggregation-and-feedback).
+This outcome contract does not itself normalize existing intermediate values
+or change signed import/export payloads.
 
 ## Provenance (chain of custody)
 
@@ -37,7 +45,7 @@ Every import appends the source SkillPilot-ID and timestamp to a **copySources**
 ## Integrity and signatures
 
 The server export payload is protected by an **HMAC-SHA256 signature**:
-- **Changing values** (e.g., a mastery score) invalidates the signature.
+- **Changing values** (e.g., the encoded mastery state) invalidates the signature.
 - **Reformatting JSON** (whitespace, key order) is safe because the signature is computed on parsed values.
 
 ## Versioned wrapper (client data)

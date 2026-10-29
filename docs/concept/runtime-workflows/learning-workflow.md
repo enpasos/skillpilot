@@ -132,7 +132,7 @@ Learning proceeds along the **frontier**: the set of sensible next goals.
 
 - A goal is frontier-eligible when:
   - the goal itself is not yet mastered
-  - all **effective** prerequisites are sufficiently mastered
+  - all **effective** prerequisites are mastered under their goal-type contracts
 - Effective prerequisites include:
   - the goal's direct `requires`
   - inherited `requires` from ancestor clusters via `contains`
@@ -156,13 +156,24 @@ Runtime loop:
 3. If the learner wants a non-frontier goal, trace the missing effective prerequisites and redirect to the blockers.
 
 ### Step 5: Mastery, Aggregation, and Feedback
-Progress is stored as **mastery** on atomic goals and aggregated upward for clusters.
+Each atomic goal has one authoritative outcome: **mastered or not mastered**.
+Mastery is the only stored individual goal outcome; a partial score, confidence
+estimate or separate assessment qualification is not another goal state.
 
-- Atomic mastery is tracked per goal UUID on a `0.0` to `1.0` scale.
+- Atomic mastery belongs to the stable goal UUID. Numeric `0` and `1` may encode
+  the binary outcome; an intermediate value such as `0.5` is not a third outcome.
 - Mastery remains global when the Personal Curriculum, composition view, focus,
   or active goal changes.
-- Cluster mastery is aggregated from contained descendants using goal weights.
-- Memorization/SRS goals are a special case.
+- Progress over a cluster or other selected scope is the weighted share of
+  mastered atomic goals in that scope, counting each atomic goal once. A 60%
+  progress display can mean six of ten equally weighted goals are mastered;
+  it does not mean that one goal is 60% mastered. A cluster has no separately
+  stored individual outcome.
+- The individual-goal interface presents achieved/not yet achieved. Grades or
+  rubric points can explain the current assessment, but its persisted outcome
+  is still mastery alone.
+- Memorization/SRS goals use their existing card workflow to determine this
+  same binary goal outcome.
   - Their mastery is derived from card state rather than manually set.
   - SRS scheduling shows whether cards are currently due.
   - Verified recall records whether each required card has been answered correctly in a learning-coach/GPT-led hard test.
@@ -176,6 +187,26 @@ Progress is stored as **mastery** on atomic goals and aggregated upward for clus
   - Verified Recall remains a separate learning-coach handoff. Neither the
     Cockpit nor the ordinary chat card component grades that strict recall or
     treats a practice rating as mastery evidence.
+
+The node types define how a goal is achieved. For example, an orientation
+goal's completion marker records the completed motivational interaction, not
+subject-matter competence. Card repetition schedules and verified-recall
+results are card-level process data, not additional outcome states for the
+memorization goal. The documented/current recall-condition discrepancy is
+listed in [Node Types](../skill-graph/node-types.md#due-and-mastery-semantics).
+
+**Implementation discrepancy (checked 29 October 2026).** The binary outcome
+contract above is not yet enforced throughout the current code.
+[Mastery.java](https://github.com/enpasos/skillpilot/blob/main/backend/src/main/java/com/skillpilot/backend/domain/Mastery.java)
+uses a `double` field;
+[LearnerService](https://github.com/enpasos/skillpilot/blob/main/backend/src/main/java/com/skillpilot/backend/service/LearnerService.java)
+accepts intermediate values between `0.0` and `1.0` and uses `0.9` thresholds
+in several decisions;
+[GoalCard](https://github.com/enpasos/skillpilot/blob/main/app/src/components/GoalCard.tsx)
+still exposes a slider and a 50% button in its editable non-orientation view.
+Those are implementation discrepancies to reconcile with the binary contract,
+not additional intended mastery states. This documentation correction does
+not migrate existing data or claim that those runtime paths have changed.
 
 When mastery changes:
 

@@ -398,14 +398,17 @@ Input:
 ```json
 {
   "goalId": "...",
-  "mastery": 0.0
+  "mastery": 1.0
 }
 ```
 
 Backend-Regeln:
 
 - genau ein Ziel pro Call
-- Wert zwischen `0.0` und `1.0`
+- erfolgreicher Abschluss setzt den vorhandenen Mastery-Zustand auf `1.0`;
+  keine graduellen Zwischenwerte und kein zusätzlicher Qualifikationsstatus
+- noch nicht geschafft erzeugt keinen Erfolgs-Write; ein Fehlversuch setzt
+  vorhandene Mastery nicht zurück
 - nur atomare Ziele
 - im Normalfall nur aktives Ziel
 - nach Write wird aktives Ziel geloescht und Frontier neu berechnet

@@ -274,7 +274,7 @@ We use exactly **two connection types**:
 
 2. `contains` – **is composed of / includes**  
    - `A.contains = [B, C]` means: A is a **higher-level bundle** of B and C.  
-   - If a learner truly masters A, we *usually* assume mastery of B and C.
+   - Cluster progress and satisfaction are derived from the atomic descendants. Completing a cluster never writes mastery back to its children.
 
 The overall structure is a **DAG (Directed Acyclic Graph)**:
 - `requires` should never form cycles.
@@ -467,12 +467,27 @@ Semantics (the “meaning”) of those fields is:
 
 ## 4. Mastery model
 
-The UI maintains a **mastery value per goal**:
+Mastery is the sole persisted learner-result state per learning goal. An
+assessment goal uses the same authoritative mastered/not-mastered decision as
+other goals; existing mastery must not need a second profile-specific pass,
+qualification record, or evidence-acceptance decision. Assessment-gated
+completion is a derived calculation over the graph, reviewed static completion
+rules and that mastery state. Work no longer required for a particular
+completion scope is calculated, never stored as a second goal result or written
+back as mastery. Assessment quality belongs to task/rubric authoring and the
+normal grading workflow. See
+`docs/concept/skill-graph/assessment-gated-completion.md`.
 
-- `mastery[goalId] ∈ [0, 1]`
-  - `0`   = no mastery (or not yet assessed),
-  - `0.5` = partly mastered / unsicher,
-  - `1`   = sicher beherrscht.
+The binding model has **one binary outcome per atomic goal**:
+
+- `mastery[goalId] ∈ {0, 1}`
+  - `0` = not mastered; this does not distinguish not attempted from not passed,
+  - `1` = mastered under the goal's completion contract.
+
+There is no partial mastery, confidence tier, or additional persisted pass
+status. A percentage describes progress over a set of goals: the weighted
+share of unique atomic goals that are mastered. Cluster progress is derived;
+it is not a separate learner result and must not create child mastery.
 
 For goals authoritatively classified as `semanticKind: "orientation"`, this
 numeric field is only a compatibility completion marker: `1` means that the
@@ -489,32 +504,31 @@ material; it must not test prior knowledge, terminology, calculations,
 details, correctness, transfer, recall, or exam performance. Do not expose a
 graded 0/50/100 mastery control for these nodes.
 
-This is currently:
+Goal types determine how this one outcome is reached. Orientation follows the
+interaction contract above. SRS/memorization goals (`srs-deck:*` /
+`memorization`) derive their goal outcome from card-level review data under the
+memory workflow; a coach must not manually assign it. Card scheduling and
+review data describe the learning process, not additional goal-result states.
 
-- set **manually via UI controls** (slider + quick buttons) **for non‑SRS goals**,
-- stored as the binary completion marker `1` for orientation goals only after
-  a meaningful answer to the tailored motivational follow-up or an explicit
-  wish to leave orientation, then a positive closure response from the coach
-  and a further learner answer agreeing to close; a bare label chosen from the
-  coach's possibilities is not sufficient,
-- **auto‑derived for SRS/memorization goals** (`srs-deck:*` / `memorization`):  
-  a memorization goal is treated as mastered **only if no cards are due today**,
-- aggregated per **filtered goal set** into:
-  - average mastery over core goals (weighted by `weight`),
-  - average mastery over extension goals.
+**Implementation boundary (29 October 2026):** the current API/storage still
+accept numeric intermediate values, and ordinary goal controls still expose a
+slider and a 50% option. These are implementation discrepancies, not the target
+model. The current prerequisite threshold and SRS aggregation discrepancies
+are documented in
+`docs/concept/runtime-workflows/learning-workflow.md`. This documentation
+correction does not migrate existing data or change runtime behavior.
 
 The intended use is:
 
-1. **Learner or teacher** set/adjust mastery for atomic goals.
-2. The app (or an agent) computes aggregated metrics.
+1. **Learner, teacher or coach** records whether an ordinary atomic goal is mastered under its completion contract.
+2. The backend computes aggregate progress from the binary atomic outcomes.
 3. A grading rule (not yet implemented) maps these to familiar school grades (1–6).
 
 When agents generate feedback or suggestions, they should:
 
-- Treat mastery values as **soft estimates**, not hard truth.
-- Prefer suggesting goals
-  - whose prerequisites are mastered,
-  - whose own mastery is clearly < 1.
+- Use the authoritative mastered/not-mastered result; do not invent degrees of mastery.
+- Suggest unmastered goals whose effective prerequisites are satisfied under
+  the selected normal or strict scope mode.
 
 For coach-led learning, finishing a task and mastering a goal are distinct.
 The coach makes its evidence decision privately when sufficient learner work
@@ -552,8 +566,8 @@ current content and respect a pause. Begin new content and render its image
 only after recognizable agreement to continue, such as “Alles klar, weiter”.
 At the actual end, offer a fitting close without assuming a next task. Small
 explanations and hints during an unfinished task do not need separate
-confirmation. Orientation and Verified Recall retain their separate completion
-and persistence rules.
+confirmation. Orientation and Verified Recall retain their goal-type workflows
+for reaching the same single binary goal outcome.
 
 ---
 
@@ -561,19 +575,25 @@ and persistence rules.
 
 The **frontier** of a learner is the set of goals that are **good next candidates**:
 
-- All checked `requires` are mastered (or above a threshold): within the
+- All checked `requires` are satisfied: within the
   selected focus in normal mode, globally in explicit strict mode.
-- The goal itself is not yet fully mastered.
+- The atomic goal itself is not yet mastered.
 
-Formally, for mastery map `M` and threshold `τ` (e.g. `0.8` for “mastered”):
+For the set `M_A` of mastered atomic goals:
 
 ```text
 Frontier F = {
-  g ∈ Goals |
-    M[g] < 1  AND
-    ∀ r ∈ checkedRequires(g, focus, strictMode): M[r] ≥ τ
+  g ∈ targetAtomicGoals(focus) \ M_A |
+    ∀ r ∈ checkedRequires(g, focus, strictMode):
+      satisfied(r, M_A, focus, strictMode)
 }
-````
+```
+
+For atomic prerequisites, satisfaction means mastery. For prerequisite clusters,
+it means mastery of all atomic descendants relevant to the selected mode. Normal
+mode restricts requirements and cluster satisfaction to the focus; strict mode
+checks them globally. See the complete definitions in
+`docs/concept/skill-graph/graph-definition.md`, §§9 and 11.
 
 Agents that recommend tasks should:
 
@@ -1197,11 +1217,11 @@ configuration-capability requirement; it does not publish or deploy an update.
 
 Layer B describes, for a fixed Layer‑A graph, the **state of a concrete learner** (or group):
 
-- For each learner ℓ and goal g:
-  - `mastery_ℓ[g] ∈ [0,1]` as in Section 4 (0, 0.5, 1 currently in the UI).
-- **SRS/memorization goals** are an exception:  
-  their mastery is **computed from the SRS state** (no cards due today)  
-  and **not** manually set by a learning coach or LLM.
+- For each learner ℓ and atomic goal g:
+  - `mastery_ℓ[g] ∈ {0,1}` as in Section 4: mastered or not mastered.
+- **SRS/memorization goals** use the same binary outcome, computed from
+  card-level review data under the memory workflow and **not** manually set
+  by a learning coach or LLM. The implementation boundary in Section 4 applies.
 - Optional:
   - history of visited goals, tasks, timestamps,
   - teacher comments / annotations,
@@ -1210,8 +1230,9 @@ Layer B describes, for a fixed Layer‑A graph, the **state of a concrete learne
 Navigation support on Layer B should:
 
 - Use the **Frontier** definition (Section 5) to propose “nächste sinnvolle Lernziele”:
-  - only suggest g if all `requires` are sufficiently mastered,
-  - prefer goals with low mastery and high weight.
+  - only suggest unmastered atomic goals with satisfied effective prerequisites
+    under the selected normal or strict scope mode,
+  - use weight or learner preferences to prioritize those available goals.
 - Allow both:
   - *guided* navigation (Lehrer:in wählt Ziele aus, Frontier dient als Check),
   - *self-directed* navigation (Lernende sehen Frontier + Kontext, wählen selbst).
@@ -1398,7 +1419,7 @@ To keep the architecture transparent and repo-friendly, we use simple JSON files
       "landscapeId": "hessen-math-upper-secondary",
       "mastery": {
         "math_go": 0.0,
-        "e_rate_avg": 0.8
+        "e_rate_avg": 1.0
       },
       "meta": {
         "lastUpdated": "2025-03-01T12:00:00Z"

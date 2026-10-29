@@ -131,9 +131,9 @@ Bei fachlichen Verständniszielen fragt der Coach nach Begründungen und Erklär
 
 Eine bearbeitete Aufgabe liefert Hinweise darauf, ob ein Lernziel verstanden wurde. Bei gewöhnlichen Lernzielen trifft der Coach anhand der geltenden Evidenzregeln eine Abschlussentscheidung; SkillPilot prüft und speichert die zulässige Zustandsänderung. Das Cockpit zeigt den gespeicherten Stand, der bei der Auswahl weiterer Lernziele berücksichtigt wird.
 
-Dieser Lernzustand heißt **Mastery**. Er gehört zu einzelnen Lernzielen; der Fortschritt größerer Themen wird daraus gewichtet zusammengefasst. Orientierung und Memorieren haben eigene Abschlussregeln (Abschnitt 3.3).
+Dieser Lernzustand heißt **Mastery**. Pro Lernziel gibt es genau eine Ergebnisentscheidung: geschafft oder noch nicht geschafft. Das gilt auch für Prüfungslernziele; ein bestandenes Ziel braucht keinen weiteren Qualifikationsnachweis. Prozentangaben für größere Themen fassen die geschafften Einzelziele gewichtet zusammen und sind keine Teilnoten einzelner Ziele. Orientierung und Memorieren haben eigene Abschlussregeln (Abschnitt 3.3).
 
-Der gespeicherte Lernzustand bleibt von vollständigen Dialogen und zusätzlichen Artefakten getrennt. Institutionen können weitere Nachweise ergänzen und entscheiden, welche Evidenz welche Konsequenz hat.
+Der gespeicherte Lernzustand bleibt von vollständigen Dialogen und zusätzlichen Artefakten getrennt. Institutionen können außerhalb dieses Lernzielzustands eigene Nachweise verlangen; daraus entsteht in SkillPilot kein zweiter Ergebnisstatus pro Lernziel.
 
 #### Kurze Wege für Feedback
 
@@ -153,7 +153,7 @@ Der Weg zum Lernziel hängt davon ab, was gelernt werden soll. SkillPilot verbin
 
 In einem Kontext wie „Mathematik, Jahrgangsstufe 7“ oder „Leistungskurs Physik, Hessen, Abiturvorbereitung“ verbinden **modellierte Lernrouten** diese Lernformen. Eine mögliche Route führt von Orientierung über angeleitetes Verstehen zur selbstständigen Anwendung. Notwendiges Memorieren kann parallel laufen. Die Voraussetzungen und der aktuelle Lernstand bestimmen den nächsten zulässigen Schritt; es gibt keinen starren Vier-Schritte-Ablauf. Ein schematisches Beispiel zeigt der Anhang.
 
-**Orientierung** macht den Sinn eines Themas und seine konkreten Möglichkeiten erfahrbar. Sie lädt zur persönlichen Auseinandersetzung ein und prüft kein Fachwissen. Die bloße Auswahl eines vorgeschlagenen Interesses startet zunächst die dazu passende Vertiefung. Ihr gesonderter Abschlussmarker bescheinigt eine abgeschlossene Orientierung, keine fachliche Beherrschung.
+**Orientierung** macht den Sinn eines Themas und seine konkreten Möglichkeiten erfahrbar. Sie lädt zur persönlichen Auseinandersetzung ein und prüft kein Fachwissen. Die bloße Auswahl eines vorgeschlagenen Interesses startet zunächst die dazu passende Vertiefung. Der vorhandene Mastery-Zustand bedeutet bei diesem Zieltyp abgeschlossene Orientierung, keine fachliche Beherrschung; ein zusätzlicher Abschlussmarker wird nicht gespeichert.
 
 Für notwendige Merkinhalte ergänzt **Spaced Repetition** die Arbeit mit Erklärungen und Aufgaben: Das Karteikartensystem (SRS) plant, wann Karten wiederholt werden, während der Skill-Graph die nächsten Lernziele bestimmt. Gewöhnliches Karteikartenüben verändert nur den Wiederholungsplan. Die Beherrschung eines Memorierziels wird aus dem serverseitigen Kartenstatus und dem gesonderten **Verified Recall**, einem Abruf ohne Hilfen, abgeleitet. Diese Trennung bleibt auch im Cockpit sichtbar.
 

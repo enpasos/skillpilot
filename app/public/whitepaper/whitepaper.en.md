@@ -131,9 +131,9 @@ For subject-specific understanding goals, the coach asks for reasoning and expla
 
 Work on a task provides evidence of whether a learning goal has been understood. For ordinary learning goals, the coach makes a completion decision under the applicable evidence rules; SkillPilot checks and stores the permitted state change. The Cockpit shows the recorded progress, which is taken into account when selecting further learning goals.
 
-This learning state is called **mastery**. It belongs to individual learning goals; progress in broader topics is calculated as a weighted aggregate. Orientation and memorization have their own completion rules (section 3.3).
+This learning state is called **mastery**. Each learning goal has one outcome: achieved or not yet achieved. Assessment goals follow the same rule; a passed goal needs no additional qualification. Percentages for broader topics are weighted aggregates of achieved goals, not partial grades for individual goals. Orientation and memorization have their own completion rules (section 3.3).
 
-The stored learning state remains separate from complete dialogues and additional artifacts. Institutions can add further evidence and decide which evidence has which consequences.
+The stored learning state remains separate from complete dialogues and additional artifacts. Institutions may require evidence outside this learning-goal state; this does not create a second outcome per goal in SkillPilot.
 
 #### A Short Path from Feedback to Improvement
 
@@ -153,7 +153,7 @@ The path to a learning goal depends on what needs to be learned. SkillPilot comb
 
 Within a context such as “Mathematics, Year 7” or “Advanced Physics Course, Hesse, Abitur Preparation,” **modeled learning routes** connect these forms of learning. One possible route leads from orientation through guided understanding to independent application. Necessary memorization can run in parallel. Prerequisites and the current learning state determine the next permitted step; there is no rigid four-step sequence. The appendix provides a schematic example.
 
-**Orientation** helps learners experience the purpose of a topic and the concrete possibilities it offers. It invites personal engagement and does not test subject knowledge. Merely selecting a suggested interest first starts the corresponding follow-up. Its separate completion marker records completed orientation, not subject mastery.
+**Orientation** helps learners experience the purpose of a topic and the concrete possibilities it offers. It invites personal engagement and does not test subject knowledge. Merely selecting a suggested interest first starts the corresponding follow-up. For this goal type, the existing mastery state means completed orientation, not subject mastery; no additional completion marker is stored.
 
 For content that needs to be memorized, **spaced repetition** complements work with explanations and tasks: the flashcard system (SRS) schedules when cards are reviewed, while the skill graph determines the next learning goals. Ordinary flashcard practice changes only the review schedule. Mastery of a memorization goal is derived from server-side card state and the separate **Verified Recall**, an unaided recall check. This distinction also remains visible in the Cockpit.
 

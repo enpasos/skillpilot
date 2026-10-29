@@ -1,0 +1,241 @@
+% SPDX-License-Identifier: Apache-2.0
+\appendix
+\section{Statusabgleich und Grenzen der Aussagen}
+\label{sec:implementation}
+Diese Fassung wurde am 29. Oktober 2026 gegen den lokalen Arbeitsstand
+auf Basis des Commits \code{8589c5e499cc} geprüft. Die begleitenden
+Dokumentationskorrekturen gehören zu dieser Lieferung; der Commitbezug
+allein enthält sie noch nicht. Die folgenden Befunde beziehen sich auf
+gelesene lokale Implementierungen, nicht auf eine verifizierte
+Produktivinstallation oder eine vollständige Konformitätsprüfung.
+
+\begin{longtable}{@{}P{32mm}P{116mm}@{}}
+\toprule
+Gegenstand & Geprüfter Unterschied und Konsequenz\\
+\midrule\endhead
+Clustererfüllung & Die normative Formel berücksichtigt alle atomaren
+Nachfahren. \code{LearnerService.computeEffectivePrereqMastery} und
+\code{computeScopedPrerequisiteMastery} bevorzugen dagegen rekursiv
+Kinder, die \code{isCoreForPrereqs} als Kern einstuft, sobald ein
+solches Kind existiert. Diese Einstufung verwendet dort fehlende Tags
+beziehungsweise \code{GK}-Tags, nicht einfach das Feld \code{core}.
+Beide Regeln sind nicht identisch.\\
+Binärer Zielzustand & Verbindlich ist geschafft oder noch nicht geschafft.
+Die aktuelle \code{Mastery}-Entität und der Schreibpfad akzeptieren noch
+numerische Zwischenwerte; \code{GoalCard} bietet einen Regler und
+0/50/100-Schaltflächen. Dienste verwenden teilweise die Schwelle
+$0{,}9$. Diese Stellen entsprechen nicht dem binären Sollmodell.
+Eine numerische Kodierung durch ausschließlich 0 und 1 wäre möglich;
+Zwischenwerte sind keine weiteren zulässigen Ergebniszustände.\\
+Gedächtnisabschluss & Der dokumentierte Zieltypvertrag fordert
+verifizierten Abruf und keine fälligen Karten. Backend und
+\code{useSrsMastery} verwenden derzeit allein den verifizierten Abruf
+aller erforderlichen Karten. Erneute Fälligkeit und erneute
+Fehlprüfung haben daher unterschiedliche Auswirkungen.\\
+Graphvalidierung & Die Spezifikation fordert lokale und transitive
+Minimalität. Der dokumentierte und gelesene Core-Validator weist keine
+vollständige entsprechende Minimalitätsprüfung aus. Ein grüner
+Strukturcheck ist deshalb kein vollständiger Konformitätsbeweis.\\
+Curriculare Level & Die mathematischen Machbarkeitsbedingungen sind ein
+optionales Konzeptprofil. Es wird kein produktiv aktivierter neuer
+Levelresolver oder Budgetvalidator behauptet.\\
+Prüfungsabschluss & Direkter Prüfzugang und Freistellungsfixpunkt sind
+ein Entwurf. Er verwendet vorhandene Mastery als einzige individuelle
+Ergebniseingabe; der heutige Ablauf berechnet daraus noch keinen
+solchen Umfangsabschluss.\\
+\bottomrule
+\end{longtable}
+
+Die Ausarbeitung ändert keinen dieser Laufzeitpfade. Eine Angleichung
+benötigt eine ausdrückliche Entscheidung zum beabsichtigten Verhalten,
+geeignete Regressionen und gegebenenfalls einen Umgang mit vorhandenen
+Lernergebnissen. Die Unterschiede als offene Modell-Implementierungsfragen
+zu benennen ist genauer, als sie durch eine stillschweigende neue Formel
+zu verdecken.
+
+\begin{center}\begin{minipage}{\linewidth}
+\paragraph{Prüfbare Codeanker.}
+\srcref{backend/src/main/java/com/skillpilot/backend/service/LearnerService.java}{LearnerService.java}:
+\begin{itemize}\small
+\item \code{isSrsMasteredByVerifiedRecall}
+\item \code{computeEffectivePrereqMastery}
+\item \code{computeScopedPrerequisiteMastery}
+\item \code{isCoreForPrereqs}
+\end{itemize}
+\srcref{app/src/hooks/useSrsMastery.ts}{useSrsMastery.ts};
+\srcref{app/scripts/validateGraph.ts}{validateGraph.ts};
+\srcref{backend/src/main/java/com/skillpilot/backend/domain/Mastery.java}{Mastery.java};
+\srcref{app/src/components/GoalCard.tsx}{GoalCard.tsx};
+\srcref{docs/qa-ci/graph-validation-rules.md}{Graph Validation Rules}.
+Die Links zeigen auf die weiterentwickelte Hauptlinie; für eine historische
+Prüfung ist zusätzlich der genannte Stand zu verwenden.
+\end{minipage}\end{center}
+
+\section{Prüfstrategie für den Abschlussentwurf}
+Das begleitende \code{latex/check-assessment-model.py} ist eine
+ausführbare mathematische Referenzprüfung mit ausschließlich
+Python-Standardbibliothek. Es liest keine Lernerdaten und verändert
+keinen Runtimezustand. Es ergänzt die allgemeinen Beweise durch
+systematische endliche Gegenbeispielsuche.
+
+\begin{center}\begin{tabularx}{\linewidth}{@{}P{40mm}X@{}}
+\toprule
+Prüfbereich & Geprüfte Aussage\\
+\midrule
+Konkrete Fälle & Geteilte Grundlagen, indirekte Verbraucher,
+unterstützende Nichtziele, spätere externe Verbraucher,
+geschützte Ziele, ungültige Referenzen und erreichbare Zyklen.\\
+Mastery als einzige Eingabe & Vorhandene Prüfungs-Mastery zählt;
+$E=M_A\cap V_H$; externe Mastery verändert den Kontext nicht;
+Freistellungen verändern keine Mastery und werden bei einer
+Mastery-Korrektur neu berechnet.\\
+Alle beschrifteten DAGs bis vier Knoten & Fixpunktgleichheit mit
+topologischer Berechnung; kleinster Fixpunkt; Rundengrenze;
+Schutz; keine offenen Verbraucher eines freigestellten Ziels;
+Monotonie bei wachsender Mastery-Menge.\\
+Regelverhalten bis drei Knoten & Nur Mastery der erforderlichen
+Prüfungsziele aktiviert geprüfte Regeln; zusätzliche Mastery erhält
+Abschluss oder Freistellung.\\
+Kontextgrenzen & Eine unabhängige atomare Expansionsschleife
+blockiert keine fremde lokale Berechnung; ein vom Ziel erreichbarer
+Zyklus wird abgelehnt.\\
+\bottomrule
+\end{tabularx}\end{center}
+
+Diese Prüfung enthält keine Modelle realer Aufgabenqualität,
+Benotungszuverlässigkeit, Identitätskontrolle oder pädagogischer Wirkung.
+Eine spätere Umsetzung muss zusätzlich konkurrierende Änderungen,
+idempotente Mastery-Speicherung, Rechte, korrigierte Mastery und
+übereinstimmende Anzeigen prüfen. Der Referenzalgorithmus
+ist kein neuer produktiver Service.
+
+\section{Begriffe und Symbole}
+\begin{longtable}{@{}P{36mm}P{112mm}@{}}
+\toprule
+Zeichen / Begriff & Bedeutung\\
+\midrule\endhead
+$G,A,K$ & Ziele, strukturelle Atome, Cluster.\\
+$C,R,\Reff$ & Enthaltensein, direkte Voraussetzungen,
+direkte plus geerbte Voraussetzungen.\\
+$X^+,X^{-1}$ & Nichtleere transitive Hülle und Umkehrrelation.\\
+$\Anc,\Desc$ & Vorfahren und Nachfahren; in der Quellspezifikation
+\code{Ancestors} und \code{Descendants}.\\
+$\Atoms(g)$ & Atomare Basis; bei einem Atom die einelementige Menge.\\
+$O,Z,E_{\mathrm{route}}$ & Orientierungsanker, autonome Endziele und
+explizite Routenausnahmen; $O,Z$ entsprechen dort $M,T$.\\
+$R_A$ & Direkte atomare Voraussetzungskanten $R\cap(A\times A)$.\\
+$M_A,m,\Sat$ & Geschaffte Atome, ihr binärer Indikator
+$m(a)\in\{0,1\}$ und daraus abgeleitete Erfüllung eines Ziels.\\
+$F,G_F$ & Filterprädikat und ausgewählter Zielbereich.\\
+$D,V_d$ & Filterdimensionen und Werte einer Dimension $d$.\\
+Frontier & Noch nicht erfüllte atomare Ziele mit erfüllten
+Voraussetzungen im gewählten Prüfmodus.\\
+Personal Curriculum & Verbindlicher längerfristiger persönlicher
+Zielumfang; Personalisierungslevel 2.\\
+Fokus & Vorübergehende Arbeitsauswahl im Personal Curriculum;
+Personalisierungslevel 3.\\
+$T_\pi,B_\pi,\ell_\pi$ & Zielmenge, Eintrittsbasis und Erwerbslevel
+eines curricularen Plans.\\
+$T_i,Q_i$ & Ziele und erforderliche Prüfungsziele eines Abschlussprofils.\\
+$F_{\mathrm{atom}},D_{\mathrm{atom}}$ & Atomar expandierte Anforderungen
+und deren transitive Hülle; im Abschluss-Quelldokument $F,D$.\\
+$H=(V_H,R_H)$ & Unter atomaren Voraussetzungen abgeschlossener
+Berechnungskontext mit transitiver Bedarfsrelation.\\
+$E,P$ & $E=M_A\cap V_H$: vorhandene Mastery im Kontext;
+$P$ enthält geschützte Ziele.\\
+$S_r,W_r,W(E)$ & Zu schaffende Prüfungsziele einer Regel, deren mögliche
+Freistellungen und aktuell aktivierte Freistellungsberechtigung.\\
+$X_*,I$ & Berechnete erledigte Arbeit durch Mastery oder Freistellung;
+$I=X_*\setminus E$ enthält nur Freistellungen. Keine zusätzlichen
+gespeicherten Ergebniszustände.\\
+M7 & Benannter maschineller Curriculum-QA-Reifegrad,
+kein menschlicher Wirksamkeitsnachweis.\\
+\bottomrule
+\end{longtable}
+
+\section{Quellenzuordnung und Abbildungen}
+Die Kapitel sind eine redaktionell zusammengeführte deutsche Darstellung
+der folgenden Repositoryquellen. Querverweise nennen die jeweilige
+fachliche Verantwortung; sie sind keine Behauptung, dass alle optionalen
+Konzepte bereits implementiert seien.
+
+\begin{longtable}{@{}P{38mm}P{110mm}@{}}
+\toprule
+Inhalt & Maßgebliche Quelle\\
+\midrule\endhead
+Formaler Kern und Filter &
+\srcref{docs/concept/skill-graph/graph-definition.md}{Graph Definition},
+Abschnitte 1--11.\\
+Schichten und Migration &
+\srcref{docs/concept/skill-graph/general-goal-system-and-migration.md}{General Goal System and Migration};
+\srcref{docs/concept/skill-graph/canonical-gymnasium-rollout.md}{Canonical Gymnasium Rollout}.\\
+Sichten und persönliche Auswahl &
+\srcref{docs/concept/skill-graph/view-projection-and-goal-placement.md}{View Projection and Goal Placement};
+\srcref{docs/concept/levels-of-personalization.md}{Levels of Personalization}.\\
+Zieltypen und Evidenz &
+\srcref{docs/concept/skill-graph/node-types.md}{Node Types};
+\srcref{AGENTS.md}{AGENTS.md, insbesondere Orientierung und Mastery}.\\
+Curriculare Planung &
+\srcref{docs/concept/skill-graph/graph-definition.md}{Graph Definition, Abschnitt 12};
+\srcref{docs/concept/skill-graph/curriculum-levels.md}{Curriculum Levels};
+\srcref{docs/concept/didactic/curriculum-time-axis-and-pacing.md}{Curriculum Time Axis and Pacing}.\\
+Prüfungsbasierter Abschluss &
+\srcref{docs/concept/skill-graph/assessment-gated-completion.md}{Assessment-Gated Completion};
+\srcref{docs/concept/runtime-workflows/exam-preparation-planning.md}{Exam Preparation Planning}.\\
+Herkunft und Materialien &
+\srcref{docs/concept/skill-graph/source-and-resource-links.md}{Source and Resource Links};
+\srcref{docs/concept/skill-graph/content-integration.md}{Content Integration};
+\srcref{docs/concept/skill-graph/human-readable-source-rationales.md}{Human-Readable Source Rationales}.\\
+Bilder und Zielbücher &
+\srcref{docs/concept/skill-graph/atomic-goal-visualizations.md}{Atomic Goal Visualizations};
+\srcref{docs/concept/skill-graph/learning-goal-book-and-evidence-review-pipeline.md}{Learning-Goal Book and Evidence-Review Pipeline}.\\
+Validierung und QA &
+\srcref{docs/qa-ci/graph-validation-rules.md}{Graph Validation Rules};
+\srcref{docs/qa-ci/curriculum-quality-maturity-and-routes.md}{Curriculum Quality Maturity and Routes};
+\srcref{docs/qa-ci/semantic-atomicity-review.md}{Semantic Atomicity Review}.\\
+Austausch und Rechte &
+\srcref{docs/concept/skill-graph/dual-curriculum-package-releases.md}{Dual Curriculum Package Releases};
+\srcref{docs/concept/skill-graph/mem-fwu-roundtrip-plan.md}{MEM/FWU Roundtrip Plan};
+\srcref{LICENSING.md}{LICENSING.md}.\\
+\bottomrule
+\end{longtable}
+
+Die sieben didaktischen Graphabbildungen stammen aus
+\href{https://github.com/enpasos/skillpilot/tree/main/docs/concept/skill-graph/assets/graph-definition}{SkillPilot: Graph Definition, Abbildungsbestand}
+und werden unverändert mit deutschen Erläuterungen verwendet.
+Die Diagramme auf dem Titelblatt sowie zu Levelplanung und Freistellung
+entstehen direkt in TikZ. Maßgeblich sind die Formeln und Bildlegenden;
+die Bilder behaupten keine zusätzlichen Kanten oder Anforderungen.
+
+Technischer Text, Formelspezifikation und Build-Werkzeuge stehen unter
+Apache-2.0; die didaktischen Illustrationen unter CC BY 4.0, soweit die
+entsprechenden Rechte vorliegen. Lizenztexte und Abgrenzung:
+\srcref{LICENSE}{LICENSE},
+\srcref{LICENSES/CC-BY-4.0.txt}{LICENSES/CC-BY-4.0.txt} und
+\srcref{LICENSING.md}{LICENSING.md}.
+Quellenhinweis für die Illustrationen: SkillPilot, enpasos -- Enterprise
+Patterns \& Solutions GmbH, Graph Definition, Fassung vom 29. Oktober 2026.
+Zusammenführung und deutsche Erläuterungen: diese Dokumentfassung.
+
+\section{Dokument bauen und prüfen}
+Die Hauptdatei \code{skillpilot-graph-definition.tex} bindet die Kapitel
+aus \code{latex/} und die PNG-Abbildungen aus
+\code{assets/graph-definition/} ein. Die neuen Diagramme sind TikZ-Vektorgrafiken.
+
+Vom Repositorywurzelverzeichnis aus:
+\begin{quote}\small\ttfamily
+python3 docs/concept/skill-graph/latex/build-document.py\par
+python3 docs/concept/skill-graph/latex/check-assessment-model.py
+\end{quote}
+Benötigt werden Python 3 und LuaLaTeX mit deutscher Sprachunterstützung
+und den Präambelpaketen. Hilfsdateien liegen unter
+\code{tmp/skill-graph-document/}, das PDF neben der Hauptdatei.
+Der Build löst Verweise in mehreren Läufen auf und bindet Eingabedateien
+und PDF durch SHA-256 im Build-Manifest samt Datum und Werkzeugversion.
+Über unterschiedliche TeX-Versionen hinweg ist Byteidentität nicht garantiert.
+
+Zum Abschluss gehören ein fehlerfreier LaTeX-Lauf, aufgelöste Verweise,
+die Prüfung auf überbreite beziehungsweise überhohe Boxen und eine
+visuelle Sichtung des erzeugten PDF. Die Formelprüfung ergänzt diese
+Dokumentprüfungen, ersetzt aber weder Runtime-Tests noch unabhängige
+fachliche und empirische Validierung.

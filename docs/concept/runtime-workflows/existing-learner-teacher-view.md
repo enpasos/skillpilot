@@ -97,7 +97,8 @@ read-only.
    `cache: no-store`. This endpoint derives the complete personalized Level-2
    target set for the requested subject landscape, independently of the
    learner's effective Level-3 focus, and uses the same atomic node rule and
-   mastery threshold as the Cockpit. It performs no write and never changes the
+   mastered/not-mastered decision as the Cockpit. The current numeric threshold
+   is a compatibility detail, not a separate grading scale. It performs no write and never changes the
    learner's planned goals. The current learner/subject progress panel reuses
    this read boundary independently of baseline capture; the original baseline
    is never substituted for current goal results.

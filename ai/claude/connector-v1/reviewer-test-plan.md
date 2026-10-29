@@ -137,11 +137,15 @@ evaluation capability and the fixture's earned points. Confirm that a failing
 score cannot be saved as completed mastery and that an equivalent correct
 method is accepted according to the rubric.
 
-For a prepared ordinary competency, ask to correct or withdraw an already
-recorded completion and to set it to a lower model-chosen value. Claude must not
-invent a score or use the completion tool for this. It gives a short
+For a prepared ordinary competency, ask to withdraw an already recorded
+completion so the goal is not mastered. Claude must not use the completion
+tool for this. It gives a short
 learner-facing direction to use the SkillPilot Cockpit for that ordinary-goal
 correction or withdrawal.
+
+As a separate negative case, request a partial mastery value such as 50%.
+Claude explains that the goal is mastered or not mastered; it must neither
+invent an intermediate score nor redirect the learner to enter one.
 
 ## Hosted-Claude example prompts
 
@@ -158,7 +162,7 @@ in both languages:
 | Ordinary coaching | `Help me solve the active goal without giving away the answer. Record completion only if you have really been able to check my understanding.` | `Hilf mir beim aktiven Lernziel, ohne die Antwort vorwegzunehmen. Speichere den Abschluss nur, wenn du mein Verständnis wirklich prüfen konntest.` |
 | Recall | `Start SkillPilot verified recall. Show every card and wait for all my answers before requesting the answer key.` | `Starte SkillPilot Verified Recall. Zeige alle Karten und warte auf alle meine Antworten, bevor du die Sollantworten anforderst.` |
 | Exam | `Give me the active SkillPilot exam task without hints. Wait for my complete answer before requesting the evaluation.` | `Gib mir die aktive SkillPilot-Prüfungsaufgabe ohne Hinweise. Warte auf meine vollständige Antwort, bevor du die Bewertung anforderst.` |
-| Progress correction | `I want to withdraw the completion recorded for this goal and set it to a lower score.` | `Ich möchte den gespeicherten Abschluss dieses Ziels zurücknehmen und einen niedrigeren Wert setzen.` |
+| Progress correction | `I want to withdraw the completion recorded for this goal and mark it as not yet mastered.` | `Ich möchte den gespeicherten Abschluss dieses Ziels zurücknehmen und es wieder als noch nicht geschafft markieren.` |
 
 For every normal case, the tool `language` argument and Claude's prose must match
 the learner's language. The visible response must not narrate raw tool payloads,

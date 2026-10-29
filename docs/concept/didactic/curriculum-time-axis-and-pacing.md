@@ -16,8 +16,17 @@ Der aktuelle Pilotvertrag steht in Abschnitt 19.1; den persönlichen
 Soll-Ist-Status regelt das
 [einheitliche Lernplanstatus-Konzept](unified-learning-plan-status.md).
 
-**Geltungsbereich:** first-party SkillPilot WebGUI und Backend; keine Änderung
-am eingefrorenen OpenAI-Coach-V1-Vertrag
+**Ergebnisgrenze vom 29. Oktober 2026:** Mastery ist der einzige gespeicherte
+Ergebniszustand pro Lernziel: geschafft oder noch offen. Das gilt auch für
+Prüfungsziele. Eine Planung liest diesen Zustand und kann Ereigniszeitpunkte
+für Verlaufsmetriken auswerten; sie führt keine eigene Bestehensprojektion,
+keinen qualifizierenden Zweitnachweis und keine gespeicherten Fehlversuche ein.
+Die frühere Anforderung an `AssessmentResultEvent` ist zurückgenommen.
+Fehlende Zeit- oder Berichtsdaten begrenzen die auswertbare Historie, nicht die
+Anerkennung vorhandener Mastery. Prozentwerte fassen mehrere Ziele zusammen.
+
+**Geltungsbereich:** first-party SkillPilot WebGUI und Backend; keine implizite
+Änderung veröffentlichter Providerverträge oder historischer Artefakte.
 
 ## 1. Ziel
 
@@ -141,8 +150,9 @@ einzelne lernende Person. Er enthält mindestens:
   Programmeinheit oder Composition-Teilbaum,
 - Referenz auf Curriculum, Composition View und Unterrichtskalender,
 - `scheduleStartDate` und endgültiges Planende des gemeinsamen Zeitrasters,
-- eine unveränderlich versionierte Mastery-Policy, zunächst
-  `mastery-threshold-0.9-v1`,
+- eine versionierte Interpretation des vorhandenen Mastery-Zustands;
+  `mastery-threshold-0.9-v1` bezeichnet ausschließlich die bisherige numerische
+  Kompatibilitätsauswertung, keine graduelle fachliche Mastery-Skala,
 - Status `draft`, `published` oder `retired`,
 - eine Folge unveränderlicher Revisionen.
 
@@ -268,8 +278,8 @@ Ein Meilenstein enthält:
 - bei einer Clusterreferenz die materialisierte Zielmenge samt Digest,
 - genau eine typisierte Erfüllungsregel:
   `allCurrentlyMastered(goalIds)`,
-  `atLeastNCurrentlyMastered(goalIds, n)` oder
-  `allAssessmentsPassed(assessmentIds)`,
+  `atLeastNCurrentlyMastered(goalIds, n)`;
+  bei Prüfungsmeilensteinen referenzieren diese Regeln die Prüfungslernziele,
 - die fachlichen Referenzen der Erfüllungsregel getrennt vom
   Vorbereitungsumfang,
 - konkrete `capacityAllocationIds`, die auf Kapazitätsscheiben mit
@@ -281,25 +291,26 @@ Ein Meilenstein enthält:
 
 Die Trennung ist wichtig: Beim Beispiel „Abituraufgaben Mathematik bis
 15. März 2027“ können die vorbereitenden Lernziele den allmählichen Fortschritt
-und das nötige Tempo bestimmen, während konkrete freigegebene Abituraufgaben
-über `AssessmentResultEvent`s den Abschluss des Meilensteins belegen.
+und das nötige Tempo bestimmen, während die Mastery der konkreten
+Prüfungslernziele den Abschluss des Meilensteins bestimmt.
 
 Der erste Vertrag beschränkt die zulässigen Kombinationen bewusst:
 
 - `kind: learning` verwendet eine Mastery-basierte Regel; deren Menge
   zulässiger Ziel-IDs ist im ersten Vertrag identisch mit
   `workloadGoalIds`.
-- `kind: assessment | exam` verwendet `allAssessmentsPassed`; jede
-  Assessment-ID ist versionsgebunden und über eine veröffentlichte
-  `assessmentGoalMapping` fachlich mit dem Vorbereitungsumfang verbunden. Der
-  Vorbereitungsumfang darf leer sein, dann existiert kein Tempo-Tacho.
+- `kind: assessment | exam` verwendet `allCurrentlyMastered` über die
+  Prüfungslernziele. Deren IDs sind über eine veröffentlichte
+  `assessmentGoalMapping` fachlich mit dem Vorbereitungsumfang verbunden.
+  Der Vorbereitungsumfang darf leer sein, dann existiert kein Tempo-Tacho.
 
 Für die erste Zeitplan-Version ist `assessmentId` die stabile kanonische ID des
-Exam-/Assessment-Ziels. `assessmentVersion` ist ein Digest seiner freigegebenen
-`examData` einschließlich des gebundenen Bewertungsrasters. Der Meilenstein
-bindet den akzeptierten Digest oder eine ausdrücklich veröffentlichte
-Kompatibilitätsregel; ein Erfolg auf einer fachlich veränderten alten Fassung
-erfüllt eine neue Fassung nicht automatisch.
+Exam-/Assessment-Ziels. Ein Inhaltsdigest seiner freigegebenen `examData`
+einschließlich Bewertungsraster beschreibt die geplante Aufgabe und ihre
+Autorenrevision. Er ist keine zusätzliche individuelle Erfolgsbedingung:
+Vorhandene Mastery dieser stabilen Ziel-ID zählt unmittelbar. Ein fachlich
+anderes Lernziel benötigt eine entsprechend überprüfte Zielmodellierung,
+nicht einen versteckten zweiten Bestehensstatus zur bisherigen Ziel-ID.
 
 Bei `atLeastNCurrentlyMastered` materialisiert jede `PlanAssignment` vor einer
 Tachoanzeige zusätzlich `activeWorkloadGoalIds`. Zuerst werden **alle** aktuell
@@ -353,12 +364,11 @@ Für Pufferscheiben gilt dabei revisionsweit die gemeinsame Exklusivitätsregel
 aus Abschnitt 4.4. Nach tatsächlicher Freigabe erzeugt die neue Revision die
 späteren Prognosen aus der verbleibenden Reserve neu.
 
-Mastery-basierte Regeln beschreiben den aktuellen Zustand: Fällt ein Ziel
-später wieder unter die gebundene Schwelle, kann ein zuvor erfüllter
-Meilenstein wieder offen werden. Ein akzeptierter Assessment-Erfolg bleibt
-dagegen bestehen, solange nach allen append-only Korrekturketten mindestens
-ein gültiger bestandener Versuch der gebundenen Version übrig ist; ein späterer
-nicht bestandener Versuch löscht ihn nicht stillschweigend.
+Alle Erfüllungsregeln lesen den aktuellen Mastery-Zustand. Wird eine Mastery
+fachlich zulässig zurückgenommen oder korrigiert, kann ein zuvor erfüllter
+Meilenstein wieder offen werden. Ein späterer gewöhnlicher Fehlversuch einer
+Prüfung nimmt vorhandene Mastery nicht zurück. Es existiert keine davon
+unabhängige Bestehensprojektion.
 
 Der Erfüllungsstatus wird pro `PlanAssignment` ausgewertet. Ein
 Klassenmeilenstein ist daher nicht pauschal „für die Klasse erledigt“, nur weil
@@ -421,8 +431,7 @@ Einzelwerte, sondern orthogonale Felder:
 - `scheduleState: noDeadline | notDue | overdue | completedOnTime |
   completedLate`,
 - `readinessState: ready | blocked` samt `blockedReasons`,
-- Datenqualität und gegebenenfalls `attemptState: notAttempted | attempted |
-  notPassed | passed`.
+- Datenqualität der für den Bericht verfügbaren Informationen.
 
 Für ein kompaktes Hauptlabel gilt deterministisch `done` vor `overdue` vor
 `blocked` vor `open`; die anderen Felder bleiben daneben sichtbar. Ein nach
@@ -434,8 +443,12 @@ sichtbar wird. `contextEnd` erzwingt immer `scheduleState: noDeadline`.
 Für primäre Lernziele folgen Completion und Readiness aus aktueller Mastery und
 den wirksamen Voraussetzungen. Für Wiederholung oder Remediation ist ein
 eigenes `PlanActivityEvent` nötig; bestehende Mastery und bloße Kursabdeckung
-beweisen diese persönliche Aktivität nicht. Für Assessments stammen Completion
-und Versuchszustand aus den occurrence-gebundenen `AssessmentResultEvent`s.
+beweisen diese persönliche Aktivität nicht. Für Assessments folgt das
+Lernzielergebnis ebenfalls ausschließlich aus Mastery. Ersttermin und
+Nachtermin bleiben Planungstermine, keine getrennten Ergebniszustände. Aus
+Mastery allein lässt sich weder der besuchte Termin noch ein Fehlversuch
+rekonstruieren; eine entsprechende historische Aussage bleibt ohne belastbare
+Prozessdaten unbekannt.
 
 Freie Checklistenpunkte ohne stabile fachliche Referenz sind als organisatorische
 Notizen möglich, zählen aber weder zur Sollkurve noch als erreichtes Lernziel.
@@ -478,7 +491,7 @@ Für Lerngeschwindigkeit reicht der aktuelle Mastery-Datensatz nicht aus. Ein
 append-only `MasteryEvent` hält mindestens fest:
 
 - Lernenden-ID und stabile Ziel-ID,
-- vorherigen und neuen Mastery-Wert,
+- vorherigen und neuen binären Mastery-Zustand,
 - Ereignistyp, Idempotenzschlüssel und gegebenenfalls Vorgängerereignis,
 - `occurredAt` und getrennt davon `recordedAt`,
 - Quelle, zum Beispiel first-party WebGUI, Import, Verified Recall oder eine
@@ -486,26 +499,29 @@ append-only `MasteryEvent` hält mindestens fest:
 - Import- und Vertrauenskennzeichnung,
 - optional die State-Version, die zur Änderung führte.
 
-Die Ereignisse speichern rohe Werte, nicht nur ein Ergebnis für eine gerade
-aktive Schwelle. Die an die Planrevision gebundene Mastery-Policy leitet daraus
-zwei verschiedene Zeitpunkte ab:
+Die Ereignisse protokollieren Übergänge des vorhandenen Zielergebnisses und
+erzeugen keinen zweiten Erfolgsstatus. Numerische Altereignisse bleiben als
+Kompatibilitätsdaten erhalten. Daraus können bei belastbarer Historie zwei
+verschiedene Zeitpunkte abgeleitet werden:
 
-- `firstEverAchievedAt`: erste gültige Überschreitung der gebundenen Schwelle
+- `firstEverAchievedAt`: erster gültiger Übergang zu Mastery
   in der gesamten Historie;
-- `firstQualifyingAtForAssignment`: erste gültige Überschreitung nach
+- `firstAchievedAtForAssignment`: erster gültiger Übergang zu Mastery nach
   `learningStartedAt` für ein Ziel, das nicht zur Baseline gehörte.
 
 War ein Ziel früher einmal erreicht, beim Planstart aber wieder offen, wird
-eine spätere Überschreitung als `recovered` statt `new` klassifiziert. Sie kann
+ein späterer erneuter Abschluss als `recovered` statt `new` klassifiziert. Er kann
 für diese Zuordnung einmal zum erreichten Planumfang zählen, wird aber in der
-Anzeige getrennt ausgewiesen. Eine weitere Herabstufung und erneute
-Überschreitung zählt nicht noch einmal. Der aktuelle Beherrschungsstand bleibt
+Anzeige getrennt ausgewiesen. Eine weitere Herabstufung mit erneutem
+Abschluss zählt nicht noch einmal. Der aktuelle Beherrschungsstand bleibt
 daneben separat sichtbar.
 
-Die erste Policy ist unveränderlich `mastery-threshold-0.9-v1`. Eine spätere
-Schwellenänderung braucht eine neue Policy und Planrevision; dieselben rohen
-Ereignisse werden nicht umgeschrieben, und historische Berichte verwenden
-weiter ihre damals gebundene Policy.
+Die bisherige numerische Interpretation `mastery-threshold-0.9-v1` bleibt für
+bereits gebundene Altdaten nachvollziehbar. Sie ist keine zusätzliche
+Bestehensanforderung eines Plans. Das fachliche Zielmodell kennt nur Mastery
+oder keine Mastery; Zeitpunkte und `new`/`recovered` klassifizieren den Verlauf,
+nicht die Gültigkeit des aktuellen Erfolgs. Historische Werte werden nicht
+umgeschrieben und aus fehlender Historie wird kein neuer Zeitpunkt erfunden.
 
 Eine fachliche Herabstufung nach neuer Evidenz (`LOSS_REASSESSMENT`) lässt die
 frühere Erreichung als historische Tatsache bestehen. Eine Datenkorrektur
@@ -515,13 +531,12 @@ Achievement-Kurven. Alle künftig für Planungsmetriken zugelassenen Writer
 müssen denselben zentralen, transaktionalen Mutation-/Eventpfad mit normierter
 Quelle und Idempotenz verwenden, **sobald der jeweilige Writer für diese neue
 Planungsfunktion ausdrücklich freigegeben ist**. Ein Quellenwert `coach` ist
-nur Provenienz und keine Implementierungsfreigabe. Der eingefrorene
-OpenAI-Coach V1 bleibt von dieser Migration ausgeschlossen; seine bestehenden
-Writes werden weder still umgebaut noch rückwirkend als
-`AssessmentResultEvent` umgedeutet. Solange keine autorisierte neue
-Vertragsversion existiert, gelten daraus stammende Zeitpunkte für den Tacho nur
-als entsprechend gekennzeichnete Legacy-Daten oder die belastbare
-Geschwindigkeitsanzeige bleibt für diesen Datenanteil aus.
+nur Provenienz und keine Implementierungsfreigabe. Bestehende Writes werden
+nicht rückwirkend als zeitlich präzise Ereignisse umgedeutet. Solange ein
+Schreibpfad keine belastbaren Verlaufsdaten liefert, bleiben seine vorhandenen
+Mastery-Ergebnisse gültig; lediglich die Geschwindigkeitsanzeige ist für diesen
+Datenanteil eingeschränkt. Providerverträge und historische veröffentlichte
+Artefakte behalten ihre eigenen Änderungs- und Abnahmegrenzen.
 
 Importiertes Vorwissen ohne belastbaren Originalzeitpunkt wird als Baseline
 behandelt und erzeugt keinen künstlichen Geschwindigkeitspeak am Importtag.
@@ -583,36 +598,25 @@ korrigierten Ereignisse geprüft wurden. Neue Coverage-Ereignisse oder
 Korrekturen nach diesem Watermark verlangen für eine wieder vollständige
 Prognose eine neue Attestierung; ältere Snapshots bleiben unverändert.
 
-### 4.9 `AssessmentResultEvent` — belastbarer Prüfungsnachweis
+### 4.9 Prüfungsabschluss aus vorhandener Mastery
 
-Eine Erfüllungsregel wie `allAssessmentsPassed` benötigt eine eigene
-append-only Evidenzspur. Ein `AssessmentResultEvent` enthält mindestens:
+Die frühere Planung eines separaten `AssessmentResultEvent` und einer
+unabhängigen Passed-Projektion ist abgelöst. Prüfungsziele verwenden denselben
+Ergebniszustand wie andere Lernziele. Ein erfolgreicher Prüfungsablauf schreibt
+Mastery; ein Fehlversuch lässt sie unverändert und speichert weder den
+fehlgeschlagenen Versuch noch dessen Punkte.
 
-- Ereignis-, Lernenden-, Assessment- und Versuchs-ID,
-- bei jedem geplanten Versuch zwingend `assignmentId`, den gebundenen
-  `assessmentOccurrenceKey` und `assessmentSlotId`; bei einem ausdrücklich
-  ungeplanten Versuch keine Occurrence-Bindung und höchstens optionalen
-  Kontext,
-- Ergebnis `passed` beziehungsweise `notPassed` und optional die fachlich
-  zulässige Rohbewertung,
-- `occurredAt` und getrennt `recordedAt`,
-- Quelle, Idempotenzschlüssel und die gebundene Assessment-Version,
-- bei Korrektur oder Widerruf den ersetzten Nachweis und eine Begründung.
+Eine Prüfungs-Meilensteinregel liest die Mastery der referenzierten
+Prüfungsziele unmittelbar. Sie verlangt keine Form-, Versions-, Termin- oder
+Beleganerkennung neben diesem Ergebnis. Assessment-Versionen beschreiben
+Autoreninhalte und Planrevisionen, keine individuellen Ergebnisvarianten.
 
-Der Writer prüft Occurrence und Slot gegen Assignment, Planrevision,
-Assessment-ID und -Version. Ein ausdrücklich ungeplanter Versuch trägt keine
-Occurrence-Bindung und darf keinen geplanten Slot still erledigen. Der Status
-einer konkreten Assessment-Occurrence berücksichtigt ausschließlich ihre
-gebundenen Versuche. Die übergreifende `passed`-Projektion für eine fachliche
-Erfüllungsregel kann dagegen alle nach deren Vertrag kompatiblen Versuche
-derselben gebundenen Assessment-Version berücksichtigen. Sie ist erfüllt,
-sobald mindestens ein gültiger bestandener Versuch vorliegt, bleibt über
-spätere nicht bestandene Versuche erhalten und wird erst wieder geöffnet, wenn
-nach ausdrücklichen Korrekturen oder Widerrufen kein gültiger bestandener
-Versuch der gebundenen Assessment-Version mehr übrig ist. Ein
-Assessment-Ergebnis
-verändert Mastery nicht automatisch; eine solche fachliche Wirkung bräuchte
-einen eigenen, bereits autorisierten Bewertungsworkflow.
+Mehrere geplante Termine für dasselbe Lernziel ändern dessen fachliche
+Identität nicht. Vorhandene Mastery erfüllt die Zielverpflichtung auch am
+Nachtermin; daraus folgt weder eine tatsächlich erfolgte Teilnahme noch eine
+historische Aussage über einen früheren Versuch. Zeitliche Planmetriken dürfen
+bestehende, belastbare Mastery-Ereigniszeitpunkte nutzen. Fehlende Zeitdaten
+begrenzen diese Metriken und erzeugen keinen zusätzlichen offenen Prüfstatus.
 
 ### 4.10 `PlanActivityEvent` — bestätigte Wiederholung oder Remediation
 
@@ -625,8 +629,8 @@ noch aus einem Klassen-`CoverageEvent` ableitbar. Ein persönliches append-only
 - `occurredAt`, `recordedAt`, Quelle und Idempotenzschlüssel,
 - bei Korrektur das ersetzte Ereignis und eine Begründung.
 
-Das Ereignis bestätigt nur die betreffende Planaktivität. Es verändert weder
-Mastery noch Assessment-Ergebnisse und zählt keine primären Planungseinheiten
+Das Ereignis bestätigt nur die betreffende Planaktivität. Es verändert keine
+Mastery und zählt keine primären Planungseinheiten
 ein zweites Mal.
 
 ## 5. Auflösung von Clustern in planbare Arbeit
@@ -951,19 +955,19 @@ Seien:
 - `G` die eindeutigen gezählten Atomziele des Plans,
 - `G_0` die beim persönlichen Lernstart bereits beherrschten Ziele,
 - `p_g` die planlokalen Einheiten eines Ziels,
-- `a_g` der Zeitpunkt seines ersten für diese Zuordnung qualifizierenden
-  Abschlusses nach Lernstart, klassifiziert als `new` oder `recovered`.
+- `a_g` der Zeitpunkt seines ersten Abschlusses nach Lernstart für ein Ziel
+  außerhalb der Baseline, klassifiziert als `new` oder `recovered`.
 
 Dann gilt:
 
 ```text
 B = Summe p_g für g in G_0
 
-A_qualifiziert(t)
+A_seit_start(t)
   = Summe p_g für g in (G ohne G_0), deren a_g <= t
 
 A(t)
-  = B + A_qualifiziert(t)
+  = B + A_seit_start(t)
 
 Q(t)
   = Summe p_g für aktuell weiterhin beherrschte g in G
@@ -983,7 +987,7 @@ Damit wird ein später Einstieg entweder bewusst gegen den laufenden
 Klassenstand oder gegen einen neu gestarteten persönlichen Plan gemessen.
 
 Zusätzlich wird der aktuelle Beherrschungsstand berechnet. Fällt ein früher
-erreichtes Ziel später unter die Schwelle, bleibt das historische Achievement
+erreichtes Ziel später wieder auf noch offen zurück, bleibt das historische Achievement
 erhalten, während die aktuelle Lücke sichtbar wird. Historischer Durchsatz und
 heutige Bereitschaft sind zwei verschiedene Aussagen.
 
@@ -998,7 +1002,7 @@ Der Wunsch „seit Lernstart“ wird als stabile Hauptkennzahl erfüllt:
 
 ```text
 v_ist_seit_start
-  = A_qualifiziert(heute)
+  = A_seit_start(heute)
     / W_zuordnung(learningStartedAt, heute)
 ```
 
@@ -1006,7 +1010,7 @@ Für Prognosen ist zusätzlich ein geglättetes jüngeres Fenster nötig:
 
 ```text
 v_ist_juengst
-  = qualifizierende Abschluss-Einheiten im Fenster
+  = seit Lernstart erreichte Abschluss-Einheiten im Fenster
     / W_zuordnung(Fensteranfang, Fensterende)
 ```
 
@@ -1089,10 +1093,10 @@ Für den gewählten Meilenstein `m` seien:
 
 - `G_m` dessen für diese Zuordnung materialisierte `activeWorkloadGoalIds`;
   ohne Alternativregel entspricht dies dem gebundenen Vorbereitungsumfang,
-- `G_m_open(t)` die Teilmenge daraus, die nach der aktuell gebundenen
-  Mastery-Policy noch nicht erfüllt ist,
+- `G_m_open(t)` die Teilmenge daraus, die laut aktuellem Mastery-Zustand
+  noch offen ist,
 - `P_m` die Summe der planlokalen Einheiten in `G_m`,
-- `Q_m(t)` die Einheiten der aktuell gemäß gebundener Mastery-Policy erfüllten
+- `Q_m(t)` die Einheiten der aktuell durch Mastery erfüllten
   Ziele aus `G_m`,
 - `C_m_rest(t, dueDate)` ausschließlich die noch bevorstehende
   Inhaltskapazität der verknüpften Kapazitätsscheiben, deren
@@ -1124,7 +1128,7 @@ v_soll_m_mit_puffer(t)
   = R_m(t) / W_m_mit_puffer(t)
 
 v_ist_m
-  = qualifizierende Abschluss-Einheiten aus G_m im Beobachtungsfenster
+  = seit Lernstart erreichte Abschluss-Einheiten aus G_m im Beobachtungsfenster
     / W_G_m(Fensteranfang, Fensterende)
 ```
 
@@ -1266,7 +1270,7 @@ Für jeden primären Zeitblock `b` seien:
 - `D_b(t)` die Einheiten aus `G_b`, die bis dahin durch gültige
   `CoverageEvent`s als behandelt bestätigt sind,
 - `Q_i,b(t)` bei vollständiger Evidenz die Einheiten aus `G_b`, die Lernender
-  `i` zu diesem Zeitpunkt nach der gebundenen Mastery-Policy aktuell
+  `i` zu diesem Zeitpunkt gemäß vorhandenem Mastery-Zustand aktuell
   beherrscht; bei unvollständiger Evidenz gilt stattdessen das Intervall aus
   Abschnitt 10.3,
 - `S_i,b(t)` der zuordnungsspezifische Sollwert derselben Zielmenge für diese
@@ -1469,8 +1473,8 @@ werden nicht künstlich in primäre Lernzielpunkte umgerechnet:
 - `revisit` und `remediation` zeigen die kursseitige Durchführung über das
   referenzierte Block-/Coverage-Ereignis und die persönliche Teilnahme über
   `PlanActivityEvent`s;
-- `assessment` zeigt geplanten Slot sowie zuordnungsspezifische
-  `AssessmentResultEvent`s und deren Datenabdeckung;
+- `assessment` zeigt geplanten Slot und die vorhandene Mastery der
+  Prüfungslernziele; Termin- oder Teilnahmehistorie wird daraus nicht erfunden;
 - `buffer` zeigt reservierte, freigegebene und verbleibende Kapazität, aber
   weder Coverage-Punkte noch Mastery.
 
@@ -1568,10 +1572,13 @@ Nachteilsausgleich. Der Klassenplan wird dabei nicht rückwirkend geändert. Der
 Bericht zeigt die Fallzahlen je Assignment-Modus sowie Roster- und
 Evidenz-Policy.
 
-Fehlende oder veraltete Evidenz ist `unknown`, nicht automatisch Mastery `0`.
-Eine versionierte Evidenz-Policy definiert je Lernendem und Block die Menge
-`K_i,b(t)` der Ziele mit verwertbarer aktueller Evidenz: akzeptierte Quellen,
-Höchstalter und zulässige State-Versionen. Daraus folgen ehrliche Grenzen:
+Fehlende oder veraltete Daten eines Berichts sind `unknown`, nicht automatisch
+Mastery `0`. Dies ist ein Verfügbarkeitsmerkmal des Berichts, kein dritter
+Lernzielzustand und keine zusätzliche Anerkennungsentscheidung. Eine
+versionierte Datenaktualitäts-Policy definiert je Lernendem und Block die Menge
+`K_i,b(t)` der Ziele mit verlässlich gelesenem aktuellem Mastery-Stand anhand
+von Abrufzeit, Zugriffsberechtigung und State-Version. Vorhandene Mastery läuft
+nicht durch ein Höchstalter des Berichts ab. Daraus folgen ehrliche Grenzen:
 
 ```text
 Q_minus_i,b(t)
@@ -2180,15 +2187,13 @@ Eine veröffentlichte Planrevision ist nur gültig, wenn:
 - Verliert ein Ziel seine aktuelle Mastery, öffnet sich ein
   Mastery-basierter Meilenstein wieder, ohne den historischen Durchsatz zu
   löschen.
-- Ein bestandener Assessment-Versuch erfüllt den zugehörigen Nachweis dauerhaft;
-  ein späterer Fehlversuch ändert das nicht. Eine Korrektur öffnet ihn erst,
-  wenn kein weiterer gültiger bestandener Versuch der gebundenen Version
-  übrig bleibt.
-- Bei derselben Assessment-ID und -Version in Erst- und Nachtermin markiert ein
-  `notPassed` am gebundenen Ersttermin nur diese Occurrence als „versucht, noch
-  nicht bestanden“; ein späteres `passed` am Nachtermin erledigt nur die zweite
-  Occurrence und kann zugleich die kompatible übergreifende Erfüllungsregel
-  erfüllen.
+- Ein bestandenes Prüfungslernziel besitzt Mastery. Ein späterer Fehlversuch
+  verändert sie nicht; eine fachlich zulässige Mastery-Korrektur führt zur
+  Neuberechnung derselben Meilensteinregel.
+- Bei derselben Assessment-ID in Erst- und Nachtermin gilt derselbe
+  Mastery-Zustand. Vorhandene Mastery erfüllt die fachliche Zielpflicht;
+  sie beweist nicht, welcher Termin besucht wurde. Fehlversuche und
+  terminbezogene Bestehenszustände werden nicht zusätzlich gespeichert.
 - Dasselbe Ziel kann mehrere datierte Occurrences mit verschiedenen Rollen
   besitzen, zählt aber nur einmal primär; „mindestens n aus m“ bleibt in der
   Anzeige eine Alternativengruppe.
@@ -2223,9 +2228,9 @@ Eine veröffentlichte Planrevision ist nur gültig, wenn:
   Wiedererfüllung nach Fälligkeit ergibt `completedLate`. Erfolgt der Verlust
   erst nach einem erfüllten Termin, bewahrt `currentlyReopened`
   `fulfilledAtDue: true`.
-- Wiederholungen werden nur durch `PlanActivityEvent`, Assessments nur durch
-  `AssessmentResultEvent` als persönlich erledigt markiert; Mastery oder
-  Kursabdeckung werden dafür nicht umgedeutet.
+- Wiederholungen können durch `PlanActivityEvent` als persönliche Aktivität
+  bestätigt werden; das ist kein weiterer Lernzielerfolg. Prüfungsziele
+  verwenden ausschließlich Mastery. Kursabdeckung ersetzt kein Zielergebnis.
 - Ein offener überfälliger Meilenstein bleibt vor einem späteren Termin der
   bindende Bezugspunkt; Gleichstände werden reproduzierbar aufgelöst.
 - Puffer ist als geplante, verbrauchte und verbleibende Kapazität sichtbar.
@@ -2286,9 +2291,9 @@ Zeitplanung:
 - es gibt derzeit keine persistente Assessment-Versuchs- und Ergebnisspur:
   weder nicht bestandene Exam-Versuche noch Versuchs-ID, Rohbewertung oder
   Assessment-Version werden dauerhaft gespeichert; ein bestandener
-  OpenAI-V1-Exam-Workflow persistiert lediglich Mastery. Damit sind
-  `allAssessmentsPassed` und historische Prüfungsnachweise neue Infrastruktur,
-  keine Projektion vorhandener Daten;
+  Exam-Workflow persistiert Mastery. Diese erfüllt auch Prüfungsmeilensteine;
+  eine zusätzliche Bestehens- oder Nachweisinfrastruktur ist nicht vorgesehen.
+  Historische Versuchsdaten lassen sich daraus nicht rekonstruieren;
 - Trainerklassendefinitionen einschließlich Klarnamen und Schülerzuordnung sind
   derzeit browserlokal; Mastery und Level-3-Fokus der verknüpften Lernenden
   liegen backendseitig pro Person. Es gibt noch kein Backend-Eigentums- und
@@ -2505,12 +2510,12 @@ Review-Freeze von selbst auf.
 - append-only `MasteryEvent`, eine stabile globale `firstEverAchievedAt`-
   Projektion und die reine Funktion für spätere zuordnungsbezogene
   Achievement-Projektionen ergänzen,
-- append-only `AssessmentResultEvent` und die korrigierbare, aber ansonsten
-  dauerhafte Passed-Projektion in einem neuen first-party Workflow ergänzen;
-  heutige Exam-Mastery wird nicht rückwirkend als Prüfungsnachweis behandelt,
-- first-party Writer und nur ausdrücklich freigegebene, versionierte
+- Prüfungsmeilensteine aus vorhandener Mastery berechnen; keine separate
+  AssessmentResult-/Passed-Projektion und keine gespeicherten Fehlversuche
+  ergänzen; ohne verlässliche Zeitdaten nur den aktuellen Zielabschluss zeigen,
+- first-party Writer und ausdrücklich freigegebene, versionierte
   Provider-Writer über einen zentralen Pfad transaktional und idempotent
-  protokollieren; der eingefrorene OpenAI V1 ist ausdrücklich ausgeschlossen,
+  protokollieren; bestehende Providerverträge und historische Artefakte beachten,
 - Import/Baseline/Korrektur unterscheiden,
 - `/history` und `ProgressPopover` von der heutigen Snapshot-Näherung auf die
   atomare Ereignisprojektion umstellen,
@@ -2522,7 +2527,7 @@ Review-Freeze von selbst auf.
 
 - Kalender, Plan, Revision, Blöcke, Meilensteine, Zuordnung und expliziten
   Puffer backend-authoritativ einführen,
-- `firstQualifyingAtForAssignment`, `BaselineAdjustment`, aktive
+- `firstAchievedAtForAssignment`, `BaselineAdjustment`, aktive
   Alternativauswahlen und `PlanActivityEvent` auf der nun vorhandenen
   Zuordnung materialisieren,
 - erst hinter der in Stufe 0 festgelegten Eigentums- und Capability-Grenze

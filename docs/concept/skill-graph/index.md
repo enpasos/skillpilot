@@ -6,11 +6,16 @@ learning stages. This section explains both the graph and the contracts around i
 
 ## Foundations
 
+- [Die Graph-Definition von SkillPilot (PDF)](skillpilot-graph-definition.pdf):
+  German technical compendium with the mathematics, diagrams, contextual
+  contracts, optional planning profiles and proposed assessment completion.
+  [LaTeX source](skillpilot-graph-definition.tex) and
+  [build manifest](skillpilot-graph-definition.build.json) accompany it.
 - [Graph Definition](graph-definition.md): formal goals, relations, prerequisites,
   frontier, and graph-validity conditions.
 - [Assessment-Gated Completion and Prerequisite Discharge](assessment-gated-completion.md):
-  proposed level completion through qualifying assessments, reviewed work
-  waivers and a fixed scope, without inferring global mastery.
+  proposed level completion and work waivers calculated from existing mastery,
+  reviewed static rules and a fixed scope, without additional stored goal results.
 - [Curriculum Levels](curriculum-levels.md): ordered learning stages with
   prerequisite-consistent targets and a feasible workload, including school
   years across subjects and the knowledge-building metaphor.
@@ -37,3 +42,24 @@ learning stages. This section explains both the graph and the contracts around i
 
 See the [Concept Documentation Index](../index.md) for didactic concepts and
 runtime workflows, and the [Glossary](../glossary.md) for shared terminology.
+
+## Build the German reference
+
+From the repository root, with LuaLaTeX, German language support and the
+standard packages named in the document preamble installed:
+
+```bash
+python3 docs/concept/skill-graph/latex/build-document.py
+python3 docs/concept/skill-graph/latex/check-assessment-model.py
+```
+
+The [build script](latex/build-document.py) keeps intermediate files under
+`tmp/skill-graph-document/` and writes the PDF and its input-hash manifest
+beside the main source. Its optional `--texmf` argument accepts a locally
+unpacked TeX package tree without changing system packages. Chapter sources
+are in `latex/`; the existing graph illustrations remain under
+`assets/graph-definition/`.
+
+The [mathematical reference check](latex/check-assessment-model.py) exercises
+the proposed fixed point and its boundary cases. It does not implement the
+runtime feature or establish assessment quality or learner benefit.

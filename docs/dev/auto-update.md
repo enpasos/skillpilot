@@ -1,7 +1,7 @@
 # Auto-Update Mechanism Architecture
 
 ## 1. Problem Statement
-The Learner GUI currently only updates data (e.g., Mastery scores, active goals) on page load or manual refresh. This leads to stale data and a disconnected user experience. Polling (e.g., every 5 seconds) is not a viable solution as it would significantly increase server load given the potential number of concurrent learners.
+The Learner GUI currently only updates data (e.g., Mastery states, active goals) on page load or manual refresh. This leads to stale data and a disconnected user experience. Polling (e.g., every 5 seconds) is not a viable solution as it would significantly increase server load given the potential number of concurrent learners.
 
 ## 2. Selected Solution: Server-Sent Events (SSE)
 

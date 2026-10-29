@@ -16,11 +16,20 @@ They are orthogonal to the structural atomic/cluster classification from `graph-
 
 | Type | Purpose | Typical content |
 | --- | --- | --- |
+| Orientation | Motivation and a meaningful entry into a subject | Concrete possibilities, interests, and an outlook on the following material |
 | Understanding | Conceptual or procedural understanding | "The learner can ..." goals |
 | Memorize | Spaced repetition recall | Facts, vocabulary, formulas |
 | Exam | Assessment tasks with scoring | Exam problems, Abitur tasks |
 
-Node-type-specific runtime state ultimately resolves to mastered/not-mastered status consumed by graph-level frontier semantics.
+Every atomic learning goal has the same single outcome contract: **mastered or
+not mastered**. Goal-type workflows determine when this outcome is reached;
+they do not introduce partial mastery or a second stored qualification. For
+orientation, the mastery marker means completion of the motivational
+interaction, not demonstrated subject-matter competence. For memorization,
+card-level process data determine the one goal outcome. Cluster progress is
+derived from unique atomic descendants and is not a separately stored outcome.
+Current numeric implementation discrepancies are documented in
+[Learning Workflow](../runtime-workflows/learning-workflow.md#step-5-mastery-aggregation-and-feedback).
 
 ## Cross-cutting metadata: applicability
 
@@ -61,6 +70,42 @@ Authoring note:
 - `applicability` is generated runtime metadata
 - reviewed authoring-side exceptions may live under `extendedData.applicabilityOverrides`
 
+## Orientation
+
+**Purpose:** An atomic didactic entry anchor that makes the following material
+meaningful through concrete possibilities and honest positive perspectives.
+Use the authoritative `semanticKind: "orientation"` classification where
+available; a title alone does not establish that classification.
+
+Orientation must not test prior knowledge, terminology, calculations, details,
+correctness, transfer, recall, or exam performance. An orientation anchor has no
+prerequisites and carries no exam, memory, example, or assessment metadata; the
+structural requirements are checked by `GVR-014` in the
+[graph-validator profile](../../qa-ci/graph-validation-rules.md).
+
+**Interaction and completion:**
+
+1. Show what the learner can understand, explore, shape, or do with the following
+   material and invite an interest, choice, personal connection, or question.
+2. A bare label selected or repeated from the offered possibilities starts a
+   tailored motivational follow-up. Connect that interest to concrete
+   possibilities and invite one low-pressure personal reaction, choice, or
+   question; the label alone does not complete orientation.
+3. After a meaningful response to that follow-up, or an explicit wish to leave
+   orientation, give a positive summary and separately offer to close.
+4. Store completion only after a further learner answer agrees to that closure.
+
+The existing numeric value `1` is a binary compatibility completion marker for
+this interaction. It does not certify subject-matter mastery, and the UI must
+not expose a graded 0/50/100 mastery control for orientation goals. This separate
+closure rule does not apply to ordinary content or exam goals, whose supported
+mastery decision is saved without an additional learner agreement.
+
+At a genuine zero-progress entry into a projected scope, unresolved orientation
+goals are the only selectable frontier goals. Existing learners with established
+subject progress are not reset to the orientation gate. See
+[Graph Definition, §8.5](graph-definition.md#85-didactic-route-coverage-motivation-to-autonomy).
+
 ## Understanding
 
 **Purpose:** Standard learning goals that describe conceptual or procedural understanding.
@@ -68,7 +113,7 @@ Authoring note:
 **Characteristics:**
 -   Covers the majority of existing goals in current landscapes.
 -   Described as assessable competencies (e.g., "The learner can ...").
--   Progress is tracked via mastery values and prerequisites (`requires`).
+-   Achievement is recorded as mastery or not mastery; prerequisites (`requires`) govern availability.
 -   Filtered visibility may additionally be constrained by compiled `applicability` metadata where a landscape uses scoped learner views.
 -   If no special fields are present, a goal is treated as an Understanding node by default.
 
@@ -88,6 +133,8 @@ Authoring note:
 ### State model
 
 Each card stores two related state lanes.
+These are process data for individual cards. They are not two independent
+mastery outcomes for the learning goal that contains the deck.
 
 The SRS practice lane stores:
 - `interval`: days until next review
@@ -121,6 +168,18 @@ Rules applied on each review:
 - Failing a hard recall test removes verified status for that card, schedules it back into practice, and keeps the memorization node incomplete until the card is passed in a later hard test.
 
 This keeps the node model simple: the card node remains the learning goal; the hard test is a validation aspect of that goal, not a separate graph node.
+
+**Implementation discrepancy (checked 29 October 2026).** The conditions above
+describe the documented contract. The current
+[backend](https://github.com/enpasos/skillpilot/blob/main/backend/src/main/java/com/skillpilot/backend/service/LearnerService.java)
+(`isSrsMasteredByVerifiedRecall`) and
+[frontend](https://github.com/enpasos/skillpilot/blob/main/app/src/hooks/useSrsMastery.ts)
+derive mastery from verified recall of all required cards alone; renewed SRS
+due status does not itself remove mastery. A failed recall retest can remove
+it. These are distinct semantics requiring an explicit reconciliation decision;
+the completion proposal must not assume that the current code implements both
+conditions above. This documentation review does not change learner state or
+the implementation.
 
 ### Flashcard practice and learning-coach/GPT-led hard recall
 
@@ -222,12 +281,14 @@ Follow the existing pattern: `field` (local language) and `fieldEn` (English). T
 - **Access control (current runtime):** `requires` is used to gate exam tasks until prerequisites are met.
 - **Remediation:** If the user fails, `requires` drives targeted review suggestions.
 
-> **Proposed extension, not live:** [Assessment-Gated Completion and Prerequisite Discharge](assessment-gated-completion.md) specifies direct attempts at required level assessments and reviewed work waivers after qualifying passes. It requires suitable task forms and evidence handling before adoption; the current same-form retry workflow alone does not establish those stronger conditions. This proposal does not change this access-control or grading contract.
+> **Proposed extension, not live:** [Assessment-Gated Completion and Prerequisite Discharge](assessment-gated-completion.md) specifies direct attempts at required level assessments and work waivers calculated from existing mastery and reviewed static rules. A passed assessment counts immediately through its mastery; there is no additional qualification record or profile-specific acceptance test. The proposal leaves this grading contract intact; its direct-access route and derived completion calculation require a separate runtime implementation.
 
 ### Scoring and mastery
 
 - **Pass/Fail:** `passed = (total >= scoring.passingPoints)`.
 - **Total points:** `total = min(sum(stepPointsAwarded), scoring.maxPoints)`.
+- **Goal outcome:** Rubric points support grading and feedback; they do not
+  create partial mastery or an additional stored result for the goal.
 - **Mastery update:** On pass, set mastery to `1.0` immediately after the final
   grading decision. On fail, leave mastery unchanged and do not persist the
   unsuccessful attempt or score. The learner state therefore does not

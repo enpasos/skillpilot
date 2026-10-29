@@ -1,0 +1,481 @@
+% SPDX-License-Identifier: Apache-2.0
+\section{Ziele, Identität und Beziehungen}
+\label{sec:core}
+\subsection{Das Grundobjekt}
+Der normative Kern ist ein endlicher gerichteter Graph
+\[
+ \mathcal G=(G,C,R),\qquad C,R\subseteq G\times G.
+\]
+$G$ ist die Menge der Lernziele. $C$ steht für \code{contains},
+$R$ für \code{requires}. Es gibt genau diese beiden \emph{ausdrücklich
+verfassten} Kantenarten im Zielgraphen. Abgeleitete Relationen, curriculare
+Platzierungen, Quellenzuordnungen und Nachweise sind andere Modellschichten.
+
+Ein Paar $(x,y)$ ist gerichtet. Für jede Relation $X$ bedeutet
+\[
+ X^{-1}=\{(y,x)\mid(x,y)\in X\}.
+\]
+$(x,y)\in X^+$ gilt genau dann, wenn ein nichtleerer gerichteter $X$-Pfad
+von $x$ nach $y$ führt. $X^+$ ist die transitive Hülle;
+Pfade der Länge null zählen nicht.
+Ein gerichteter Graph ist azyklisch genau dann, wenn
+$\forall g\in G:(g,g)\notin X^+$. Die Vereinigung $C\cup R$ ist
+\emph{nicht} die Relation, an der pauschal alle DAG-Bedingungen geprüft werden:
+Beide Kantenarten haben verschiedene Bedeutungen.
+
+\begin{principle}{Die Pfeilrichtung ist Teil der Definition}
+$p\xrightarrow{\texttt{contains}}c$: Der Cluster $p$ enthält das Ziel $c$.
+\quad
+$g\xrightarrow{\texttt{requires}}p$: Das Ziel $g$ benötigt $p$.
+Eine Lernablaufdarstellung zeigt dagegen $R^{-1}$: von der Voraussetzung
+zur darauf aufbauenden Kompetenz. Diese Umkehrung muss beschriftet sein.
+\end{principle}
+
+\sourcefig[.42\textheight]{01-skill-graph-overview.png}
+{Zwei Beziehungen in einem Graphen. Grau gruppiert, Blau zeigt auf
+Voraussetzungen. \emph{Velocity} benötigt \emph{Vectors};
+\emph{Newton's Second Law} benötigt sowohl \emph{Forces} als auch
+\emph{Acceleration}. Die Farben der Knoten sind hier keine Lernzustände.}
+{fig:overview}
+
+\subsection{Attribute und stabile Identität}
+Die normativen Basisattribute sind totale Abbildungen
+\[
+ \Id:G\to\mathrm{UUID},\qquad \Title:G\to\Sigma^*,\qquad
+ \Weight:G\to\R_{>0}.
+\]
+$\Id$ ist injektiv: Verschiedene Ziele haben verschiedene IDs.
+Die UUID bleibt über Platzierungen, Sprachfassungen und Ansichten hinweg
+die kanonische Identität. Kurze Buchstaben in diesem Dokument sind nur
+mathematische Bezeichner, keine Aussage zum serialisierten ID-Format.
+
+Ein optionaler $\ShortKey:G\rightharpoonup\Sigma^*$ ist innerhalb einer
+logischen Landschaft eindeutig. Mehrere Sprachdateien desselben Ziels
+dürfen dasselbe Paar aus ID und ShortKey wiederholen. Die Teilabbildung
+$\PhaseCompat:G\rightharpoonup P_{\mathrm{compat}}$ beschreibt dagegen
+Kompatibilitäts- oder Anzeigemetadaten, häufig im Feld \code{phase}.
+Sie definiert weder kanonische Identität noch die fachliche Lernreihenfolge.
+Weitere gebräuchliche Felder ordnet Tabelle~\ref{tab:attributes} ein.
+
+\begin{table}[H]\centering
+\begin{tabularx}{\linewidth}{@{}P{29mm}X@{}}
+\toprule
+Feld & Fachliche Bedeutung außerhalb des minimalen Kerns \\
+\midrule
+\code{description} & Verständlicher, überprüfbarer Zieltext; typischerweise
+\glqq Die lernende Person kann \ldots\grqq. Orientierung hat eine eigene Semantik.\\
+\code{area}, \code{tags} & Fachliche Einordnung und Metadaten; ein Tag ersetzt
+keine autoritative Entscheidung über Zieltyp oder Geltungsbereich.\\
+\code{level} & Schwierigkeit beziehungsweise Anforderungsbereich;
+kein curriculares Erwerbslevel und kein Personalisierungslevel.\\
+\code{core} & Kernziel versus Erweiterung im jeweiligen Vertrag;
+eine Erweiterung kann im gewählten Profil trotzdem verbindliches Ziel sein.\\
+\code{weight} & Anteil bei Fortschrittsaggregation; keine Zeitdauer,
+keine fachliche Nachweisstärke und keine Bestehenswahrscheinlichkeit.\\
+\code{examples} & Referenzen auf Beispiele oder Aufgaben;
+Vorhandensein beweist keine Aufgabenqualität oder Kompetenzbeherrschung.\\
+\code{resourceLinks} & Bestehendes Referenzfeld unter anderem für eigene
+Visualisierungen, offizielle Quellen und Altlinks. Neue optionale externe
+Lernmaterialien gehören nach aktuellem Vertrag in getrennte Inhaltspakete.\\
+\bottomrule
+\end{tabularx}
+\caption{Ergänzende Zielattribute und ihre begrenzte Bedeutung.}
+\label{tab:attributes}
+\end{table}
+
+\subsection{Atomare Ziele und Cluster}
+Die \emph{strukturelle} Klassifikation folgt allein aus $C$:
+\[
+ A=\{g\in G\mid\nexists c\in G:(g,c)\in C\},\qquad K=G\setminus A.
+\]
+Ein Blatt ist atomar, jeder andere Knoten ein Cluster. Ein Ziel kann mehrere
+Eltern haben: Der kanonische \code{contains}-Graph darf eine Polyhierarchie
+sein. Explizite Metadaten zur Klassifikation müssen dazu passen.
+
+Strukturelle Atomarität bedeutet nicht automatisch \emph{semantische}
+Atomarität. Ein Blatt mit fünf unabhängigen Teilkompetenzen bleibt formal
+ein Blatt, kann jedoch die Qualitätsprüfung verfehlen. Orientierung,
+Gedächtnisziele und Prüfungen sind besondere pädagogische Arten; sie sind
+keine zusätzlichen Strukturtypen und keine Programmabschnitte.
+
+\section{Containment, Voraussetzungen und Vererbung}
+\subsection{Hierarchie und atomare Basis}
+Für den endlichen azyklischen Containment-Graphen gelten
+\begin{align}
+ \Anc(g)&=\{a\in G\mid(a,g)\in C^+\},\\
+ \Desc(g)&=\{d\in G\mid(g,d)\in C^+\},\\
+ \Atoms(g)&=\begin{cases}\{g\},&g\in A,\\\Desc(g)\cap A,&g\in K.\end{cases}
+\end{align}
+Die Kurzformen $\Anc$ und $\Desc$ entsprechen den Bezeichnern
+\code{Ancestors} und \code{Descendants} der Quellspezifikation und ihrer Bilder.
+Jeder Cluster besitzt mindestens ein atomares Blatt: In einem endlichen
+azyklischen Graphen endet jeder hinreichend lange Pfad. Deshalb ist
+$\Atoms(g)$ für jedes Ziel nichtleer. Ein Knoten ohne Kinder ist atomar,
+kein leerer Cluster. Bei mehreren Pfaden zählt ein Atom in der Menge nur einmal.
+
+\sourcefig{02-contains-relation.png}
+{Direkte und indirekte Zugehörigkeit. Der türkis hervorgehobene Pfad besteht
+aus zwei vorhandenen \code{contains}-Kanten; er ist keine dritte Kantenart.
+\emph{Mechanics} ist deshalb auch Vorfahr von \emph{Velocity}.}
+{fig:contains}
+\FloatBarrier
+
+\subsection{Direkte Anforderungen sind konjunktiv}
+$(g,p)\in R$ bedeutet, dass $g$ die Voraussetzung $p$ hat. Mehrere
+ausgehende Kanten bedeuten \emph{alle} Voraussetzungen, keine Auswahl.
+Alternativen brauchen einen eigenen Auswahlvertrag außerhalb dieser Relation.
+Die Relation $R$ muss azyklisch sein.
+
+Als kanonisches Ziel der Modellierung wird $R\subseteq A\times A$
+bevorzugt. So liegt fachliche Sequenzierung auf den konkreten Kompetenzen.
+Eine am Cluster verfasste Voraussetzung ist stärker als eine summarische
+Darstellung: Sie gilt durch Vererbung für alle Nachfahren.
+
+\sourcefig{03-direct-requires.png}
+{Direkte Voraussetzungen. Auch der gebogene Pfeil ist eine direkte Kante.
+Die Kette von Beschleunigung über Geschwindigkeit zu Vektoren ergibt
+transitive Erreichbarkeit, keine Containment-Vererbung.}
+{fig:requires}
+\FloatBarrier
+
+\subsection{Effektive Anforderungen}
+Die effektive Relation entsteht aus eigenen und von Vorfahren geerbten
+direkten Anforderungen:
+\begin{equation}
+ (g,p)\in\Reff\iff
+ (g,p)\in R\ \lor\ \exists a\in\Anc(g):(a,p)\in R.
+ \label{eq:effective}
+\end{equation}
+Dabei sind
+\[
+ R_{\mathrm{inherited}}=\Reff\setminus R,\qquad
+ \Reff=R\cup R_{\mathrm{inherited}},\qquad
+ \Pre_{\mathrm{eff}}(g)=\{p\mid(g,p)\in\Reff\}.
+\]
+Mehrere Elternpfade addieren Anforderungen als Mengenvereinigung, ohne
+Mehrfachzählung. \emph{Vererbung} in \eqref{eq:effective} und
+\emph{transitive Hülle} $\Reff^+$ sind verschiedene Operationen.
+Die Anforderungen von Voraussetzungen werden durch Pfade geprüft,
+nicht durch ein neues Vererbungsprinzip.
+
+Sind alle direkten Anforderungen atomar verfasst, gilt $\Reff=R$:
+Containment-Vorfahren sind Cluster und tragen dann keine ausgehenden
+Anforderungen. Transitive Ketten bleiben trotzdem relevant.
+
+\sourcefig{04-effective-requires.png}
+{Eine Cluster-Anforderung wird vererbt. \emph{Vectors} liegt in diesem
+Beispiel außerhalb von \emph{Kinematics}. Würde es auch darin enthalten sein,
+erbte es die Anforderung an sich selbst. Durchgezogen heißt direkt verfasst,
+gestrichelt heißt geerbt.}
+{fig:inheritance}
+\FloatBarrier
+
+\section{Gültigkeit, Minimalität und Lernbarkeit}
+\label{sec:validity}
+\subsection{Verbindliche Bedingungen}
+Ein vollständiger Graph ist unter dem normativen Kern genau dann gültig,
+wenn die Attribut- und Identitätsbedingungen sowie die folgenden Bedingungen
+erfüllt sind:
+\begin{align}
+ &\forall g\in G:\ (g,g)\notin C^+,\quad (g,g)\notin R^+,
+                  \quad (g,g)\notin\Reff^+,\label{eq:acyclic}\\
+ &(g,p)\in R\Longrightarrow
+      \nexists a\in\Anc(g):(a,p)\in R.\label{eq:localmin}
+\end{align}
+Zusätzlich gilt \emph{transitive Minimalität}. Für jede direkte Kante
+$e=(g,p)\in R$ wird $R'=R\setminus\{e\}$ gebildet und die effektive
+Relation $\Reff'$ aus $C,R'$ vollständig neu berechnet. Gefordert ist
+\begin{equation}
+ (g,p)\notin(\Reff')^+.
+ \label{eq:transmin}
+\end{equation}
+Die direkte Kante muss also für die effektive Erreichbarkeit notwendig sein.
+Nur die sichtbare Kante aus $\Reff$ zu löschen wäre falsch: Mit ihr können
+auch von ihr abgeleitete Vererbungen entfallen.
+
+Die DAG-Bedingung für $R$ folgt bereits aus derjenigen für $\Reff$, weil
+$R\subseteq\Reff$. Sie bleibt als verständliche eigenständige
+Autorenprüfung aufgeführt. Unabhängig davon bleibt die Azyklizität von $C$
+erforderlich. Identitäten und Referenzen müssen auflösbar sein; unbekannte
+Knoten sind keine erfüllten Voraussetzungen.
+
+Auch lokale Minimalität~\eqref{eq:localmin} folgt bereits aus
+transitiver Minimalität~\eqref{eq:transmin}: Bei azyklischem $C$ ist jeder
+Vorfahr $a$ von $g$ verschieden von $g$. Eine redundante Kante $(g,p)$
+zu entfernen lässt daher die Vorfahrenkante $(a,p)$ bestehen;
+$(g,p)$ bliebe in $\Reff'$ und somit in $(\Reff')^+$.
+Die lokale Bedingung bleibt als einfach prüfbarer Autorenhinweis ausdrücklich genannt.
+
+\sourcefig{05-validity-and-cycles.png}
+{Direkte Azyklizität genügt nicht. Aus $A$ enthält $B$ und $A$ benötigt $X$
+folgt die geerbte Kante $B\to X$. Kommt $X\to B$ hinzu, entsteht der
+effektive Zyklus $B\to X\to B$.}
+{fig:cycles}
+\FloatBarrier
+
+\subsection{Zusatzprofile und Gegenbeispiele}
+Ein Baumprofil kann höchstens einen Elternknoten fordern:
+\[
+ \forall c\in G:\quad
+ \bigl|\{p\in G\mid(p,c)\in C\}\bigr|\leq1.
+\]
+Dies ist keine Grundbedingung der Polyhierarchie. Ebenso sind Anforderungen
+an eigene Vorfahren unerwünscht und in bestimmten Validatorprofilen
+verboten. Anforderungen an eigene Nachfahren erzeugen durch Vererbung sogar
+eine effektive Selbstabhängigkeit und scheitern bereits am DAG-Vertrag.
+
+\begin{principle}{Ein DAG ist noch kein Beweis der Lernbarkeit}
+Seien $G=\{k,a\}$, $C=\{(k,a)\}$ und $R=\{(a,k)\}$.
+Die direkten und effektiven Relationen sind azyklisch und minimal.
+Aber $\Atoms(k)=\{a\}$: Um $a$ zu beginnen, müsste $a$ schon erfüllt sein.
+Die globale Frontier aus leerem Lernzustand ist leer.
+Zusätzliche Verbote von Anforderungen an Vorfahren oder ein echter
+Abschlusszeuge decken diesen Fehler auf.
+\end{principle}
+
+Deshalb müssen drei Aussagen getrennt bleiben: Grundgraph gültig,
+gewählte Projektion gültig und Zielmenge aus einem deklarierten Eintrittszustand
+vollständig erlernbar. Ein grüner einzelner Validator beweist nicht
+automatisch alle drei Aussagen.
+
+\subsection{Didaktische Routen von Orientierung zu Autonomie}
+Seien $O\subseteq A$ die Orientierungsanker, $Z\subseteq A$ die
+Endziele selbstständiger Leistung und $E_{\mathrm{route}}\subseteq A$
+explizit ausgenommene Unterstützungsziele. Die direkte atomare Relation sei
+% O and Z avoid collisions with mastery and target sets.
+$R_A=R\cap(A\times A)$. Ohne Ausnahmeprofil gilt
+$E_{\mathrm{route}}=\varnothing$; Ausnahmen benötigen einen dokumentierten,
+maschinenlesbaren Auswahlvertrag. Ein Atom $a\in A\setminus E_{\mathrm{route}}$
+ist routenabgedeckt, wenn
+\begin{equation}
+ \begin{split}
+ \exists o\in O,\ z\in Z:\quad
+ &(a=o\ \lor\ (o,a)\in(R_A^{-1})^+)\\[-1mm]
+ {}\land\;&(a=z\ \lor\ (a,z)\in(R_A^{-1})^+).
+ \end{split}
+\end{equation}
+Die Mengen $O$ und $Z$ heißen in Abschnitt 8.5 der englischen
+Quellspezifikation $M$ und $T$. Die abweichenden Buchstaben vermeiden hier
+Verwechslungen mit $M_A$ sowie $T_\pi$ und $T_i$.
+Die Beschränkung auf $R_A$ verhindert, dass ein Cluster als versteckter
+Zwischenknoten einen atomaren Routennachweis liefert. Diese Formel ist
+ein Strukturkriterium, kein Beweis didaktischer Angemessenheit.
+
+Konkrete Routenprofile schränken zusätzlich die Schulstufe, erlaubte
+semantische Zielarten und die Reihenfolge ein: Orientierung am Einstieg,
+fachliches Lernen, bei Bedarf Gedächtnisunterstützung und eine selbstständige
+Leistung am Ende. Gedächtnisziele werden dadurch nicht überall Pflicht.
+Die Profilregeln \code{CQR-101}, \code{CQR-102}, \code{CQR-103} und
+\code{GVR-012}/\code{GVR-013} haben jeweils einen benannten Prüfumfang.
+Sie sind nicht als pauschale Zusicherung für jeden Graphen zu lesen.
+
+Eine Übersicht zwischen Clustern kann aus atomaren Routen abgeleitet werden.
+Beispielsweise bedeutet eine existenzielle Zusammenfassung $k_2\to k_1$:
+\[
+ \exists a\in\Atoms(k_2),\ b\in\Atoms(k_1):(a,b)\in R_A^+.
+\]
+Eine prozentuale Abdeckung braucht darüber hinaus einen erklärten Nenner.
+Solche Übersichten erzeugen keine neuen direkten Cluster-Anforderungen.
+
+\section{Lernzustand, Erfüllung und Fortschritt}
+\label{sec:state}
+\subsection{Erfüllung statt Rückschluss auf Voraussetzungen}
+Für die mathematische Progression sei $M_A\subseteq A$ die Menge der
+nach dem jeweiligen Zieltyp als erfüllt geltenden atomaren Ziele.
+Jedes atomare Lernziel hat genau einen binären Ergebniszustand:
+geschafft ($a\in M_A$) oder noch nicht geschafft ($a\notin M_A$).
+Teilweise Bearbeitung ist kein dritter Mastery-Zustand.
+Die Bezeichnung \glqq mastered set\grqq{} der Spezifikation ist eine
+Abstraktion: Bei Orientierung steht Mitgliedschaft für Abschluss, nicht
+für fachliche Beherrschung. Bei Gedächtnis- und Prüfungszielen gelten die
+jeweiligen besonderen Nachweisregeln.
+\begin{equation}
+ \Sat(g,M_A)\iff
+ \Atoms(g)\ne\varnothing\ \land\ \Atoms(g)\subseteq M_A.
+ \label{eq:sat}
+\end{equation}
+Eine bereits erfolgreiche Anwendung impliziert keine gespeicherte
+Beherrschung ihrer Voraussetzungen. $M_A$ wird nicht automatisch
+voraussetzungsabgeschlossen. Auch ein als erfüllt angezeigter Cluster
+berechtigt nicht zum pauschalen Schreiben von Nachweisen seiner Kinder.
+
+\subsection{Globale Frontier}
+Die Menge der nächsten verfügbaren atomaren Ziele lautet
+\begin{equation}
+ \Frontier(M_A)=\left\{g\in A\setminus M_A\;\middle|\;
+ \forall p\in G:\ (g,p)\in\Reff^+\Rightarrow\Sat(p,M_A)\right\}.
+ \label{eq:frontier}
+\end{equation}
+Sie fordert sämtliche transitiv erreichbaren Voraussetzungen. Ein teilweise
+bearbeitetes Ziel ist nicht schon deshalb erfüllt. Ein Cluster als
+Voraussetzung wird über seine atomare Basis geprüft.
+
+Für Navigation kann getrennt eine Clusterverfügbarkeit definiert werden:
+\begin{equation}
+ \begin{split}
+ \Frontier_K(M_A)=\{k\in K\mid&\ \Atoms(k)\ne\varnothing,
+ \ \neg\Sat(k,M_A),\\
+ &\forall p\in G:\ (k,p)\in\Reff^+\Rightarrow\Sat(p,M_A)\}.
+ \end{split}
+\end{equation}
+Sie ersetzt die atomare Lernfrontier nicht. Eine Oberfläche kann darüber
+hinaus verbindliche Zugangs- und Auswahlregeln anwenden, etwa den
+Orientierungseinstieg. Die mathematische Frontier ist deshalb nicht
+automatisch identisch mit jedem angezeigten UI-Menü.
+
+\sourcefig{06-available-next-goals.png}
+{Mit $M_A=\{\text{Vectors},\text{Forces}\}$ ist nur \emph{Velocity} als
+nächstes verfügbar. \emph{Acceleration} wartet auf \emph{Velocity};
+\emph{Newton's Second Law} zusätzlich auf \emph{Acceleration}.
+Die Cluster sind keine direkt auszuwählenden atomaren Lernschritte.}
+{fig:frontier}
+\FloatBarrier
+
+\subsection{Aggregation ohne Mehrfachzählung}
+Sei $S\subseteq A$ eine fest benannte Menge von Zielatomen,
+$w(a)>0$ ihr Fortschrittsgewicht und
+$m(a)=\mathbf{1}_{\{a\in M_A\}}\in\{0,1\}$ ihr binärer
+Mastery-Indikator. Der gewichtete Fortschritt ist
+\begin{equation}
+ P(S)=\frac{\sum_{a\in S}w(a)m(a)}{\sum_{a\in S}w(a)}\qquad(S\ne\varnothing).
+\end{equation}
+Für eine leere Zielmenge gibt es keinen solchen Quotienten; die Anzeige
+braucht \glqq keine Ziele im gewählten Umfang\grqq{} statt erfundener 100\,\%.
+Für mehrere Cluster wird $S$ als Vereinigung ihrer Zielatome gebildet.
+Cluster und Kinder dürfen nicht zusätzlich gemeinsam gezählt werden.
+Ein Fortschritt von beispielsweise 50\,\% bezeichnet einen Anteil
+geschaffter Ziele im Umfang, keine halbe Beherrschung eines einzelnen Ziels.
+
+Bei der Konvention $w(a)=1$ entspricht das Clustergewicht der Zahl seiner
+eindeutigen atomaren Nachfahren. Das ist eine zulässige konkrete
+Autorenkonvention, keine Forderung gleicher Gewichte für jede Domäne.
+Kern- und Erweiterungsanteile können getrennt ausgewiesen werden; der
+verbindliche Personal-Curriculum-Zielumfang entscheidet darüber, was zum
+Abschluss gehört. Eine aggregierte Zahl ist weder eine kalibrierte
+Wahrscheinlichkeit noch eine Schulnote. Ein Notenmodell bräuchte eine
+gesonderte, begründete Abbildung.
+
+\section{Filter, Fokus und globale Diagnose}
+\label{sec:filters}
+\subsection{Filter als Prädikat und kompilierte Anwendbarkeit}
+Ein Filter ist zunächst nur $F:G\to\{0,1\}$ mit
+$G_F=\{g\mid F(g)=1\}$. Für dimensionale Anwendbarkeit sei $D$
+die Dimensionsmenge und $V_d$ das Vokabular von Dimension $d$. Eine
+formal typisierte Menge partieller Zuordnungen ist
+\[
+ \mathcal V_D=\bigsqcup_{J\subseteq D}\prod_{d\in J}\Pow(V_d),\qquad
+ \Applicability:G\rightharpoonup\mathcal V_D.
+\]
+Die disjunkte Vereinigung hält den jeweiligen Definitionsbereich $J$ fest.
+Eine fehlende Dimension ist im allgemeinen Metadatenfilter uneingeschränkt;
+eine vorhandene Dimension mit leerer Wertemenge lässt dagegen keinen
+konkreten Auswahlwert zu. Nur die Abfrage \code{ALL} ignoriert auch diese
+Einschränkung. Die Bedeutung fehlender Metadaten ist keine
+Erlaubnis, eine ungeklärte persönliche Schulstufenauswahl als vollständig
+aufgelöst zu behandeln.
+
+Für eine aktive Auswahl $Q$ kann die Filterprüfung dimensionsweise erfolgen:
+\[
+ F_Q(g)=1\iff\bigwedge_{d\in D_{\mathrm{aktiv}}}
+ \left\{
+ \begin{array}{l}
+ Q(d)=\mathrm{ALL},\ \text{oder}\ g\notin\operatorname{dom}(\Applicability),\ \text{oder}\\
+ d\notin\operatorname{dom}(\Applicability(g)),\ \text{oder}\\
+ Q(d)\in \Applicability(g)(d).
+ \end{array}\right.
+\]
+Die Fälle werden nur ausgewertet, wenn die jeweilige Abbildung definiert
+ist. \code{ALL} ist ausschließlich ein Abfragewert und wird nicht als
+Geltungsbereich gespeichert. Explizite \code{applicabilityOverrides}
+dokumentieren begründete Ausnahmen; die Laufzeit verwendet weiterhin die
+kompilierte Anwendbarkeit. Eine Sichtbarkeitsentscheidung beweist noch keine
+Quellenabdeckung.
+
+\subsection{Erst global vererben, dann einschränken}
+Die induzierten Relationen sind
+\[
+ C_F=C\cap(G_F\times G_F),\quad R_F=R\cap(G_F\times G_F),\quad
+ \Reff|_F=\Reff\cap(G_F\times G_F).
+\]
+Die effektiven Voraussetzungen werden \emph{vor} der Filterung berechnet.
+Sonst könnte eine vom ausgeblendeten Vorfahren geerbte Anforderung
+verschwinden, obwohl Ziel und Voraussetzung beide im Fokus liegen.
+Die atomare Klassifikation wird ebenfalls nicht aus dem gefilterten Baum
+neu erfunden: $A_F=A\cap G_F$. Ein Cluster wird durch das Ausblenden
+seiner Kinder nicht zu einem neuen atomaren Ziel.
+
+\subsection{Normalmodus und strikter Modus}
+Im Normalmodus (\emph{optimistic}) gilt die relative Basis
+\[
+ \Atoms_F(g)=\Atoms(g)\cap G_F,\qquad
+ \Sat_F(g,M_A)\iff\Atoms_F(g)\subseteq M_A.
+\]
+Die leere relative Basis blockiert hier nicht. Das bescheinigt keine globale
+Kompetenz und verändert keinen gespeicherten Lernzustand. Die Frontier ist
+\begin{equation}
+ \begin{split}
+ \Frontier_{\mathrm{opt}}(M_A,F)=\{g\in A_F\setminus M_A\mid
+ \forall p\in G_F:\quad\\
+ (g,p)\in(\Reff|_F)^+\Rightarrow\Sat_F(p,M_A)\}.
+ \end{split}
+\end{equation}
+Im strikten Modus bleiben die Kandidaten im Fokus, die Anforderungen
+werden jedoch global geprüft:
+\begin{equation}
+ \Frontier_{\mathrm{strict}}(M_A,F)=
+ \{g\in A_F\setminus M_A\mid
+ \forall p\in G:\ (g,p)\in\Reff^+\Rightarrow\Sat(p,M_A)\}.
+\end{equation}
+Somit gilt für dieselben Eingaben
+\[
+ \Frontier_{\mathrm{strict}}(M_A,F)\subseteq
+ \Frontier_{\mathrm{opt}}(M_A,F).
+\]
+Jeder eingeschränkte Pfad ist ein globaler Pfad; globale Erfüllung impliziert
+die relative Erfüllung. Der umgekehrte Schluss gilt nicht.
+
+Auch \emph{Hülle und Einschränkung} sind nicht vertauschbar. Bei
+$g\to x\to p$ und $G_F=\{g,p\}$ existiert kein Pfad in
+$(\Reff|_F)^+$. Die globale Hülle enthält trotzdem $(g,p)$.
+Normalmodus schließt hier die über $x$ laufende Kette aus; strikter Modus
+behält sie bei. Das ist die definierte Scope-Semantik.
+
+\sourcefig{07-filter-modes.png}
+{Identischer Fokus, unterschiedlicher Prüfbereich. \emph{Vectors} liegt
+außerhalb; $M_A=\varnothing$. Normalmodus ignoriert die orange markierten
+Anforderungen und erlaubt \emph{Velocity}; strikter Modus lässt keines der
+beiden Atome zu. Die Bildverweise 11.3 und 11.4 nennen Abschnitte der
+englischen Quellspezifikation.}
+{fig:filters}
+\FloatBarrier
+
+\subsection{Fehlende Voraussetzungen und fehlende Atome}
+Die globale Diagnose trennt benötigte Knoten und noch offene Zielatome:
+\begin{align}
+ \Missing(g,M_A)&=\{p\in G\mid(g,p)\in\Reff^+\land\neg\Sat(p,M_A)\},\\
+ \MissingAtoms(g,M_A)&=
+ \left(\bigcup_{p\in \Missing(g,M_A)}\Atoms(p)\right)\setminus M_A.
+\end{align}
+Für beide Mengen $U$ gelten
+$U_{\mathrm{in}}=U\cap G_F$ und $U_{\mathrm{out}}=U\setminus G_F$.
+Liegt ein benötigter Cluster im Fokus, sein einziges Atom $b$ aber außerhalb,
+kann $\Missing_{\mathrm{out}}=\varnothing$ und dennoch
+$\MissingAtoms_{\mathrm{out}}=\{b\}$ gelten. Die Clusterliste allein
+verschweigt diese externe Kompetenzlücke.
+
+Die Diagnose folgt der globalen Relation. Sie ist weder die Blockerliste
+des Normalmodus noch eine Frontier und erzeugt keine Kanten.
+
+Ein optionaler Prüfbereich $S\subseteq G$ ergibt
+\begin{equation}
+ \Frontier_{S}(M_A,F)=\{g\in A_F\setminus M_A\mid
+ \forall p\in S:\ (g,p)\in\Reff^+\Rightarrow\Sat(p,M_A)\}.
+\end{equation}
+$S=G$ ergibt den strikten Modus, $S=G_F$ im Allgemeinen \emph{nicht} den
+Normalmodus: Pfade und Erfüllung bleiben global. Dieses abgeschwächte
+strikte Profil ist ein Modellvorschlag, keine aktivierte dritte Betriebsart.
+
+\noindent\small Quellen dieses Teils:
+\srcref{docs/concept/skill-graph/graph-definition.md}{Graph Definition};
+\srcref{docs/qa-ci/graph-validation-rules.md}{Graph Validation Rules};
+\srcref{AGENTS.md}{Projektkonventionen}.\normalsize

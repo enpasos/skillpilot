@@ -2,7 +2,7 @@
 
 > The current UI counts recorded completion events, not mutable mastery update
 > timestamps. The event can be a renewed completion on a later day, not necessarily
-> the first-ever threshold crossing; the history boundary does not itself validate that
+> the first-ever transition to mastered; the history boundary does not itself validate that
 > every counted entry is an atomic plan-capable goal. The target model for
 > dated curriculum planning, effective teaching weeks, buffers, baselines,
 > target pace and forecasts is defined in
@@ -26,14 +26,21 @@ at most once per day, not necessarily once in a lifetime.
 
 **Default definition:**
 -   **Atomic goals only:** Only leaf nodes count (no containers), to avoid inflation.
--   **Mastery threshold:** A goal is counted when mastery reaches **0.9** or higher.
+-   **Goal outcome:** A goal is either mastered or not mastered. Only a recorded
+    transition to mastered can contribute a new completion; there is no partial
+    goal credit.
 -   **Time basis:** Group by calendar week (ISO week).
 
 Formally, for week `w`:
 
 ```
-velocity(w) = | { g is atomic | mastery[g] >= 0.9 and achieved_at(g) in week w } |
+velocity(w) = | { g is atomic | mastered(g) and achieved_at(g) in week w } |
 ```
+
+The current implementation uses the numeric compatibility check `mastery >= 0.9`.
+That threshold interprets existing storage; it is not a pedagogical mastery
+scale or permission to award a partly mastered goal. Event timestamps describe
+when the existing outcome changed, not an additional success qualification.
 
 ## Interpretation
 - A stable sequence of non-zero weeks indicates consistent learning habits.
@@ -56,8 +63,8 @@ This is an example of presentation; UI specifics are intentionally flexible.
   the current event ledger deliberately excludes them and does not backfill history.
 - Learners with different time budgets are not directly comparable.
 - Context switches (new curriculum or new phase) may temporarily reduce velocity.
-- Mutable mastery timestamps are not sufficient evidence for a threshold
-  crossing. The current transactional completion ledger addresses that boundary;
+- Mutable mastery timestamps are not sufficient evidence for a transition to
+  mastered. The current transactional completion ledger addresses that boundary;
   broader pacing still needs stable assignment-specific achievement projections.
 - Calendar weeks do not represent teaching capacity: holidays, cancelled
   lessons and explicit buffers require an instructional calendar.

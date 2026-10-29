@@ -10,7 +10,7 @@ Layering, migration strategy, and canonical rollout policy are specified separat
 
 Related planning scope: [Curriculum Levels](curriculum-levels.md) explains how bounded learning stages, including school years, organize canonical goals. The optional formal profile in §12 checks a resolved plan without changing base graph validity.
 
-Related **proposed** learner-state overlay: [Assessment-Gated Completion and Prerequisite Discharge](assessment-gated-completion.md) defines a fixed level scope, qualifying assessment evidence and reviewed work waivers. Its canonical atomic demand relation serves that overlay only; it does **not** alter this document's current graph or frontier semantics.
+Related **proposed** completion calculation: [Assessment-Gated Completion and Prerequisite Discharge](assessment-gated-completion.md) derives level completion and work waivers from a fixed scope, reviewed static rules and existing mastery. Mastery remains the sole stored result per goal; an assessment needs no second qualification. The canonical atomic demand relation serves that calculation only; it does **not** alter this document's current graph or frontier semantics.
 
 > **Normative definition.** This document defines the skill graph’s semantics and validity requirements.
 >
@@ -97,8 +97,15 @@ Implementations MAY additionally expose optional cross-cutting metadata for scop
 One preferred structured form is a partial applicability mapping:
 
 $$
-Applicability: G \rightharpoonup \bigl(D \rightharpoonup \mathcal{P}(V_d)\bigr)
+\mathcal{A}_D = \bigsqcup_{S\subseteq D}\ \prod_{d\in S}\mathcal{P}(V_d),
+\qquad
+Applicability: G \rightharpoonup \mathcal{A}_D
 $$
+
+The disjoint union records the selected domain $S$ together with one allowed
+value set for each dimension $d\in S$. Thus an element $f\in\mathcal{A}_D$ is
+a partial dimensional assignment with $dom(f)=S$ and $f(d)\subseteq V_d$.
+An omitted dimension differs from a present dimension with an empty value set.
 
 Interpretation:
 
@@ -435,6 +442,12 @@ $$
 
 Interpretation: every edge in $R$ is necessary to preserve prerequisite reachability under the inheritance rules.
 
+With acyclic containment, this also implies local minimality (§7.2). A contains
+ancestor $a$ of $g$ differs from $g$, so removing $(g,p)$ leaves an ancestor's
+direct pair $(a,p)$ intact. If that pair exists, $(g,p)$ remains inherited in
+$R_{\mathrm{effective}}'$ and therefore in its transitive closure, contrary to
+§7.3. Local minimality remains listed separately as a simpler authoring check.
+
 ---
 
 ## 8. Recommended structural rules
@@ -502,15 +515,24 @@ $$
 
 If a profile uses a non-empty $E_{route}$, the identifying predicate MUST be machine-readable and documented by that profile.
 
-A didactic route is read in **learning-flow direction**, from prerequisite to dependent goal, using the inverse relation $R^{-1}$. Its arrows express “is a direct prerequisite for”, not `requires`.
+Restrict the authored prerequisite relation to atomic goals:
+
+$$
+R_A=R\cap(A\times A).
+$$
+
+A didactic route is read in **learning-flow direction**, from prerequisite to
+dependent goal, using the inverse relation $R_A^{-1}$. Its arrows express “is a
+direct prerequisite for”, not `requires`. Restricting before taking paths
+ensures that all intermediate goals are atomic as well.
 
 An atomic goal $a\in A\setminus E_{route}$ is **route-covered** iff:
 
 $$
 \exists m\in M,\ \exists t\in T:
-\big(a=m \lor (m,a)\in (R^{-1})^+\big)
+\big(a=m \lor (m,a)\in (R_A^{-1})^+\big)
 \ \land\
-\big(a=t \lor (a,t)\in (R^{-1})^+\big)
+\big(a=t \lor (a,t)\in (R_A^{-1})^+\big)
 $$
 
 Interpretation: every route-relevant atomic goal should lie on at least one didactic path that starts with motivation and ends in autonomous performance.
@@ -543,9 +565,17 @@ competency. Its purpose is to make the following material attractive and
 meaningful by showing concrete possibilities and honest positive perspectives.
 The learner may respond with an interest, preference, own connection, or a wish
 to continue; no response must demonstrate correct terminology, calculation,
-detail knowledge, transfer, recall, or exam performance. Runtime may store the
-existing numeric value `1` as a binary completion marker after such visible
-engagement, but must never present that marker as proven fachliche Mastery.
+detail knowledge, transfer, recall, or exam performance. Selecting or repeating
+one of the offered possibilities starts a tailored motivational follow-up; that
+label alone does not complete orientation. The coach connects the selected
+interest to concrete possibilities and invites one low-pressure personal
+reaction, choice, or question. After a meaningful response to that follow-up,
+or an explicit wish to leave orientation, the coach gives a positive summary
+and separately offers to close. Only a further learner answer agreeing to
+closure permits storing the existing numeric value `1` as a binary completion
+marker. It must never be presented as proven fachliche Mastery or through a
+graded 0/50/100 mastery control. See the full
+[orientation contract](node-types.md#orientation).
 
 Memory goals are optional support, not mandatory checkpoints. They are selected through the separate memory-review contract and may support a route where justified, but the hard route profile must not make every terminal performance depend on an SRS deck. In this rule, `curricularAtomic` denotes the ordinary reviewed subject goals: understanding, explaining, reasoning, applying, problem solving, and construction as appropriate. It does not claim that each route needs an additional node with a separately inferred "understanding" type. Such a type would require its own authored and reviewed semantic role rather than title-based inference. The runtime corollary is separate but consistent: at a genuine zero-progress entry into a projected scope, unresolved `orientation` goals are the only selectable frontier goals; existing learners with established subject progress are not reset to that entry gate.
 
@@ -625,6 +655,19 @@ $$
 
 This reflects the intended authoring model: atomic goals are mastered directly, while cluster satisfaction is derived from atomic mastery.
 
+Each atomic goal has exactly one outcome: **mastered or not mastered**, encoded
+by the indicator $m(a)=\mathbf{1}_{a\in M_A}\in\{0,1\}$. This applies equally
+to assessment goals. Goal-type workflows determine when mastery is reached;
+there is no partial mastery or second stored qualification. Orientation uses
+the same marker for completion of its motivational interaction, and memory
+goals derive their outcome from card-level process data.
+
+Progress percentages describe aggregates. For a nonempty set $U\subseteq A$
+with positive goal weights $w_a$, its progress is
+$\sum_{a\in U}w_a m(a)/\sum_{a\in U}w_a$. Each atomic goal is counted once,
+including when it occurs under multiple cluster parents. This calculation
+does not store another goal outcome or confer mastery on any descendant.
+
 ### 9.1 Available next goals
 
 Define the global **satisfaction predicate**:
@@ -639,6 +682,18 @@ Interpretation:
 
 - an atomic goal is satisfied iff it is in $M_A$,
 - a cluster goal is satisfied iff all of its atomic descendants are in $M_A$.
+
+**Implementation boundary (checked 29 October 2026).** This is the normative
+binary, set-based model. The current API/storage also accept numeric
+intermediate values, and ordinary goal controls expose a slider and a 50%
+option; these are implementation discrepancies. The current backend's `computeEffectivePrereqMastery` and
+`computeScopedPrerequisiteMastery` prefer children selected by `isCoreForPrereqs`
+when such children exist; prerequisite checks also use a numeric threshold
+of `0.9`. That implementation policy is not equivalent to requiring every
+atomic descendant under this definition. See the explicit comparison in
+[Die Graph-Definition von SkillPilot](skillpilot-graph-definition.pdf), Appendix A.
+This specification does not silently change that runtime policy or certify
+the implementation's full conformance.
 
 The normative learner frontier is defined on atomic goals:
 
@@ -710,7 +765,9 @@ Normatively, a filter is still just a predicate on goals.
 However, implementations MAY realize parts of that predicate via structured, goal-local metadata such as a generic compiled applicability field:
 
 $$
-Applicability: G \rightharpoonup \bigl(D \rightharpoonup \mathcal{P}(V_d)\bigr)
+Applicability: G \rightharpoonup \mathcal{A}_D,
+\qquad
+\mathcal{A}_D=\bigsqcup_{S\subseteq D}\ \prod_{d\in S}\mathcal{P}(V_d)
 $$
 
 where:
@@ -718,6 +775,8 @@ where:
 - $D$ is a set of filter dimensions (for example `jurisdiction`, `schoolForm`, `stage`, `durationModel`, `courseProfile`, ...)
 - $V_d$ is the value vocabulary for dimension $d$
 - $\mathcal{P}(V_d)$ is the set of allowed value sets for that dimension
+- the disjoint union keeps the domain $S$ of each partial dimensional assignment;
+  only dimensions in $S$ have an authored value set (§2.2)
 
 Interpretation:
 
@@ -744,7 +803,7 @@ The normative filter semantics in this document depend on the effective applicab
 Some repositories MAY additionally maintain an explicit auxiliary metadata field such as:
 
 $$
-ApplicabilityOverrides: G \rightharpoonup \bigl(D \rightharpoonup \mathcal{P}(V_d)\bigr)
+ApplicabilityOverrides: G \rightharpoonup \mathcal{A}_D
 $$
 
 Interpretation:
