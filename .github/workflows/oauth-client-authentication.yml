@@ -183,6 +183,24 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v6
+        with:
+          # Match the proven Gemini backend input closure. PostgreSQL security
+          # needs the real sources/migrations and publication history, not the
+          # curriculum review archive or raster library.
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /.github/actions/postgres-service/
+            /ai/
+            /backend/
+            /content/
+            /contracts/
+            /curricula/
+            !/curricula/DE/Gymnasium/quality/
+            !/curricula/DE/Gymnasium/visualizations/
+            /docs/qa-ci/status/curriculum-quality-status.json
+            /scripts/
       - name: Test disposable PostgreSQL setup and registry fallback
         run: python3 -m unittest discover -s .github/actions/postgres-service -p 'test_*.py' -v
       - name: Start disposable PostgreSQL 15
