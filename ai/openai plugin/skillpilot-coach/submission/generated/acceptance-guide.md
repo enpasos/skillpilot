@@ -6,7 +6,7 @@ Automatisch aus den aktuellen Einreichungsquellen erzeugt. Nicht hier bearbeiten
 
 Kandidat: `1.1.3` · MCP-Endpunkt: `https://mcp-openai.skillpilot.com/mcp`
 
-Testsuite-SHA-256: `22869dabbd81509d241547a84966dcd18266f35c3d5286b234e3aee1afe412e2`
+Testsuite-SHA-256: `3bf0555a40401e83ee00475b11f00aade7ad561e7ea238a92a84752835b43750`
 
 Vertrags-SHA-256: `7a67f74a595ec9259bb9b7491f3d1a1249f4b52603156b0be49c2ed5c9ef0006`
 
@@ -512,7 +512,7 @@ Verbotene Werkzeuge: keine zusätzlichen Verbote.
 - `backend/src/test/java/com/skillpilot/backend/service/LearningPlanDailyProgressTest.java` → `unrelatedGoalsAndRevokedMasteryReceiveNoCredit` (backend-contract)
 - `backend/src/test/java/com/skillpilot/backend/service/LearningPlanDailyProgressTest.java` → `masteredFuturePlanGoalsCountAsAdvanceWork` (backend-contract)
 - `backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java` → `unreadableSubjectLabelsDoNotRevokeBackendAuthorizedPersonalContinuation` (backend-contract)
-- `backend/src/test/java/com/skillpilot/backend/service/LearnerGoalCompletionIntegrationTest.java` → `partialWorkCompletionReplayAndResetKeepOneImmutableEvent` (backend-contract)
+- `backend/src/test/java/com/skillpilot/backend/service/LearnerGoalCompletionIntegrationTest.java` → `binaryCompletionReplayAndResetKeepOneImmutableEvent` (backend-contract)
 - `backend/src/test/java/com/skillpilot/backend/service/LearnerLearningPlanServiceIntegrationTest.java` → `completedQuotaStopsAutomaticReconcileButExplicitResumeAllowsExtraWork` (backend-contract)
 
 ## D2: Resume only an authoritative due candidate
