@@ -10,6 +10,7 @@ This page groups deployment-facing operational documentation.
 - [Lernzielbücher: Build und Git-Historienbereinigung](goal-book-build-and-history-cleanup.md)
 - [ChatGPT-App „SkillPilot Coach v1“: Deployment und Cutover](openai-mcp-coach-v1.md)
 - [SkillPilot Coach: dauerhafter OpenAI-Origin und koordinierter Cutover](openai-stable-origin.md)
+- [ChatGPT-Modernisierung: Übergabe vom 26. Oktober, geprüft am 30. Oktober 2026](chatgpt-plugin-modernisierung-uebergabe-2026-10-26.md)
 - [ChatGPT desktop plugin: native CIMD on the existing V1 endpoint](openai-native-cimd.md)
 - [OAuth-Clientauthentifizierung: profilweise Abnahme und Betrieb](oauth-client-authentication.md)
 - [OAuth: getrennte Hersteller-Arbeitspakete](oauth-provider-followups.md)
