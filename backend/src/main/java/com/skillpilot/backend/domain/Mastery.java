@@ -15,6 +15,13 @@ import java.time.Instant;
 @Entity
 @Table(name = "mastery")
 public class Mastery {
+    /** Read compatibility for historical values; new learner-result writes remain binary. */
+    public static final double LEGACY_MASTERED_THRESHOLD = 0.9;
+
+    public static boolean isMastered(Double value) {
+        return value != null && Double.isFinite(value) && value >= LEGACY_MASTERED_THRESHOLD;
+    }
+
 
     @EmbeddedId
     private MasteryId id;

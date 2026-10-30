@@ -35,6 +35,7 @@ SCHEMA_CATALOG_SCHEMA_ID = (
     "https://skillpilot.com/schemas/curriculum-package/v1/schema-catalog.schema.json"
 )
 PROFILE_ID = "full-standalone-v1"
+import curriculum_package_completion_contracts as completion_contracts
 JSONSCHEMA_VERSION = "4.26.0"
 CONSUMER_API_VERSION = "0.1.0"
 CONSUMER_FUNCTIONAL_CHECK_IDS = (
@@ -487,9 +488,10 @@ def validate_trusted_contract(
         },
         "profile",
     )
+    completion = profile.get("profileId") == completion_contracts.PROFILE_ID
     if (
         profile.get("profileFormatVersion") != 1
-        or profile.get("profileId") != PROFILE_ID
+        or profile.get("profileId") not in {PROFILE_ID, completion_contracts.PROFILE_ID}
     ):
         raise ContractDefinitionError(
             "Profile identity must be full-standalone-v1 with format version 1"
@@ -506,13 +508,15 @@ def validate_trusted_contract(
         )
 
     expected_trusted_schemas: list[dict[str, str]] = []
-    for schema_id, filename in NORMATIVE_SCHEMA_FILES:
-        trusted_path = schema_path.parent / filename
+    schema_files = [(schema_id, schema_path.parent / filename) for schema_id, filename in NORMATIVE_SCHEMA_FILES]
+    if completion:
+        schema_files.extend(completion_contracts.extra_schemas(profile_path.parent.parent))
+    for schema_id, trusted_path in schema_files:
         trusted_schema = expect_object(load_json(trusted_path), str(trusted_path))
         Draft202012Validator.check_schema(trusted_schema)
         if trusted_schema.get("$id") != schema_id:
             raise ContractDefinitionError(
-                f"Trusted schema {filename} has unexpected $id {trusted_schema.get('$id')!r}"
+                f"Trusted schema {trusted_path.name} has unexpected $id {trusted_schema.get('$id')!r}"
             )
         expected_trusted_schemas.append(
             {"id": schema_id, "sha256": file_sha256(trusted_path)}
@@ -543,7 +547,7 @@ def validate_trusted_contract(
     )
     if compatibility != {
         "packageFormatVersion": "1.0",
-        "runtimeContractVersion": "1.0",
+        "runtimeContractVersion": "1.1" if completion else "1.0",
         "variant": "json",
     }:
         raise ContractDefinitionError(
@@ -712,7 +716,7 @@ def validate_trusted_contract(
                 f"Role {role} needs semanticBinding and validationSchemaIds"
             )
         if len(validation_schema_ids) != len(set(validation_schema_ids)) or any(
-            not isinstance(schema_id, str) or schema_id not in NORMATIVE_SCHEMA_IDS
+            not isinstance(schema_id, str) or schema_id not in {item["id"] for item in expected_trusted_schemas}
             for schema_id in validation_schema_ids
         ):
             raise ContractDefinitionError(
@@ -720,7 +724,16 @@ def validate_trusted_contract(
             )
         roles[role] = rule
 
-    if set(roles) != set(ROLE_SEMANTIC_CONTRACTS):
+    semantic_roles = dict(ROLE_SEMANTIC_CONTRACTS)
+    if completion:
+        semantic_roles["runtime-catalog"] = (
+            ROLE_SEMANTIC_CONTRACTS["runtime-catalog"][0],
+            ROLE_SEMANTIC_CONTRACTS["runtime-catalog"][1],
+            (completion_contracts.CATALOG_SCHEMA_ID,),
+        )
+        semantic_roles.update({role: ("logical-artifact", (role,), (completion_contracts.ARTIFACT_SCHEMA_ID,))
+                               for role in completion_contracts.ROLES.values()})
+    if set(roles) != set(semantic_roles):
         raise ContractDefinitionError(
             "Profile role set differs from the closed DPK-005a artifact set"
         )
@@ -728,7 +741,7 @@ def validate_trusted_contract(
         kind,
         normalization_roles,
         validation_schema_ids,
-    ) in ROLE_SEMANTIC_CONTRACTS.items():
+    ) in semantic_roles.items():
         expected_binding = {"kind": kind}
         if kind == "logical-artifact":
             expected_binding["allowedNormalizationRoles"] = list(normalization_roles)
@@ -740,6 +753,10 @@ def validate_trusted_contract(
             raise ContractDefinitionError(
                 f"Role {role} validation-schema policy differs from the trusted contract"
             )
+        if completion and role in completion_contracts.ROLES.values() and (
+            roles[role]["minimum"] != 1 or roles[role]["runtimeRequired"] != "required"
+        ):
+            raise ContractDefinitionError("Completion roles must be runtime-required and nonempty")
 
     release_profile_rule = roles.get("release-profile")
     if release_profile_rule is None or (
@@ -1532,7 +1549,7 @@ def validate_manifest(
     diagnostics.extend(
         validate_contract_binding(
             "releaseProfile",
-            PROFILE_ID,
+            profile["profileId"],
             profile_hash,
             profile_bytes,
             "release-profile",
@@ -2761,12 +2778,15 @@ def parse_args() -> argparse.Namespace:
 def main() -> int:
     args = parse_args()
     contract_dir = args.contracts_dir.resolve()
-    schema_path = contract_dir / SCHEMA_FILENAME
-    profile_path = contract_dir / PROFILE_RELATIVE_PATH
+    base_dir = completion_contracts.base_directory(contract_dir)
+    schema_path = base_dir / SCHEMA_FILENAME
+    profile_path = completion_contracts.profile_path(contract_dir)
     trusted_schema_paths = {
-        binding_name: contract_dir / filename
+        binding_name: base_dir / filename
         for binding_name, (_schema_id, filename) in TRUSTED_SCHEMA_BINDINGS.items()
     }
+    if completion_contracts.extended_directory(contract_dir):
+        trusted_schema_paths["runtimeCatalogSchema"] = contract_dir / RUNTIME_CATALOG_SCHEMA_FILENAME
     try:
         try:
             installed_jsonschema_version = distribution_version("jsonschema")
@@ -2787,6 +2807,16 @@ def main() -> int:
             profile_path,
             trusted_schema_paths,
         )
+        if completion_contracts.extended_directory(contract_dir):
+            print("Assessment-completion runtime 1.1 schema/profile trust bindings passed; checking immutable V1 regression fixtures.")
+            contract_dir = base_dir
+            profile_path = contract_dir / PROFILE_RELATIVE_PATH
+            profile = expect_object(load_json(profile_path), str(profile_path))
+            trusted_schema_paths = {
+                binding_name: contract_dir / filename
+                for binding_name, (_schema_id, filename) in TRUSTED_SCHEMA_BINDINGS.items()
+            }
+            roles = validate_trusted_contract(schema, profile, schema_path, profile_path, trusted_schema_paths)
         trusted_schema_metadata = {
             binding_name: (
                 TRUSTED_SCHEMA_BINDINGS[binding_name][0],

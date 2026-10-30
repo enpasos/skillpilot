@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/curriculum-package/v1.1/runtime-catalog.schema.json",
+  "title": "Runtime catalog 1.1 with reviewed assessment completion",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "catalogVersion",
+    "runtimeContractVersion",
+    "releaseBinding",
+    "rootLandscapeIds",
+    "landscapes",
+    "scopeDimensions",
+    "views",
+    "offeredScopes",
+    "decks",
+    "resources",
+    "artifactIndexes",
+    "dependencyClosure",
+    "capabilities",
+    "completionArtifacts"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/curriculum-package/v1.1/runtime-catalog.schema.json"
+    },
+    "catalogVersion": {
+      "const": "1.1"
+    },
+    "runtimeContractVersion": {
+      "const": "1.1"
+    },
+    "releaseBinding": {
+      "$ref": "https://skillpilot.com/schemas/curriculum-package/v1/runtime-catalog.schema.json#/properties/releaseBinding"
+    },
+    "rootLandscapeIds": {
+      "$ref": "https://skillpilot.com/schemas/curriculum-package/v1/runtime-catalog.schema.json#/properties/rootLandscapeIds"
+    },
+    "landscapes": {
+      "$ref": "https://skillpilot.com/schemas/curriculum-package/v1/runtime-catalog.schema.json#/properties/landscapes"
+    },
+    "scopeDimensions": {
+      "$ref": "https://skillpilot.com/schemas/curriculum-package/v1/runtime-catalog.schema.json#/properties/scopeDimensions"
+    },
+    "views": {
+      "$ref": "https://skillpilot.com/schemas/curriculum-package/v1/runtime-catalog.schema.json#/properties/views"
+    },
+    "offeredScopes": {
+      "$ref": "https://skillpilot.com/schemas/curriculum-package/v1/runtime-catalog.schema.json#/properties/offeredScopes"
+    },
+    "decks": {
+      "$ref": "https://skillpilot.com/schemas/curriculum-package/v1/runtime-catalog.schema.json#/properties/decks"
+    },
+    "resources": {
+      "$ref": "https://skillpilot.com/schemas/curriculum-package/v1/runtime-catalog.schema.json#/properties/resources"
+    },
+    "artifactIndexes": {
+      "$ref": "https://skillpilot.com/schemas/curriculum-package/v1/runtime-catalog.schema.json#/properties/artifactIndexes"
+    },
+    "dependencyClosure": {
+      "$ref": "https://skillpilot.com/schemas/curriculum-package/v1/runtime-catalog.schema.json#/properties/dependencyClosure"
+    },
+    "capabilities": {
+      "type": "array",
+      "maxItems": 6,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "compositionViews",
+          "memoryCards",
+          "goalVisualizations",
+          "embeddedDependencies",
+          "examNodes",
+          "assessmentCompletionV1"
+        ]
+      },
+      "contains": {
+        "const": "assessmentCompletionV1"
+      }
+    },
+    "completionArtifacts": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 10000,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "kind",
+          "artifactPath"
+        ],
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "$ref": "https://skillpilot.com/schemas/curriculum-package/v1/runtime-catalog.schema.json#/$defs/id"
+              },
+              {
+                "$ref": "https://skillpilot.com/schemas/curriculum-package/v1/runtime-catalog.schema.json#/$defs/packageRelativePath"
+              }
+            ]
+          },
+          "kind": {
+            "enum": [
+              "profile",
+              "scope",
+              "review"
+            ]
+          },
+          "artifactPath": {
+            "$ref": "https://skillpilot.com/schemas/curriculum-package/v1/runtime-catalog.schema.json#/$defs/packageRelativePath"
+          }
+        }
+      }
+    }
+  }
+}

@@ -355,7 +355,11 @@ def validate_catalog(catalog: Any, validator: Draft202012Validator) -> list[Diag
             diagnostics.append(Diagnostic("RESOURCE_LANDSCAPE_UNKNOWN", f"/resources/{index}/landscapeId", "Resource owner landscape is unknown"))
 
     artifact_paths: list[str] = []
-    for collection in (landscapes, views, decks, resources):
+    completions = items(catalog.get("completionArtifacts"))
+    if completions:
+        add_duplicates(diagnostics, "DUPLICATE_COMPLETION_ID", "/completionArtifacts", [
+            (entry.get("kind"), entry.get("id")) for entry in completions])
+    for collection in (landscapes, views, decks, resources, completions):
         artifact_paths.extend(
             entry["artifactPath"]
             for entry in collection
@@ -384,6 +388,8 @@ def validate_catalog(catalog: Any, validator: Draft202012Validator) -> list[Diag
         "goalVisualizations": any(resource.get("resourceKind") == "goal-visualization" for resource in resources),
         "embeddedDependencies": any(landscape.get("role") == "embedded-fragment" for landscape in landscapes),
     }
+    if "completionArtifacts" in catalog or "assessmentCompletionV1" in capabilities:
+        expected_capabilities["assessmentCompletionV1"] = bool(completions)
     for capability, expected in expected_capabilities.items():
         if (capability in capabilities) != expected:
             diagnostics.append(Diagnostic("CAPABILITY_MISMATCH", "/capabilities", f"Capability {capability!r} must be {expected}"))
@@ -439,7 +445,14 @@ def validate_catalog_against_manifest(
     closure = catalog.get("dependencyClosure") if isinstance(catalog.get("dependencyClosure"), dict) else {}
     if isinstance(closure.get("path"), str): expected["dependency-closure"].add(closure["path"])
 
-    for role in sorted(CATALOG_MANIFEST_ROLES):
+    completion_roles = {"profile": "completion-profile", "scope": "completion-scope", "review": "completion-rule-review"}
+    completion_entries = items(catalog.get("completionArtifacts"))
+    for entry in completion_entries:
+        role = completion_roles.get(entry.get("kind"))
+        if role is not None and isinstance(entry.get("artifactPath"), str):
+            expected[role].add(entry["artifactPath"])
+    roles_to_check = CATALOG_MANIFEST_ROLES | (set(completion_roles.values()) if completion_entries else set())
+    for role in sorted(roles_to_check):
         paths = expected.get(role, set())
         actual = {record.get("path") for record in by_role.get(role, []) if isinstance(record.get("path"), str)}
         if actual != paths:

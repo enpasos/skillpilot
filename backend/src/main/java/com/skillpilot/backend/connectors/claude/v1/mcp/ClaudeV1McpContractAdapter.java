@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.ai.CoachToolFacade;
 import com.skillpilot.backend.api.ActiveGoalRequest;
 import com.skillpilot.backend.api.FrontierGoal;
+import com.skillpilot.backend.api.LevelCompletionResponse;
 import com.skillpilot.backend.api.LearnerLearningPlanApi;
 import com.skillpilot.backend.api.LearnerPlanTodayStatus;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
@@ -85,6 +86,9 @@ public class ClaudeV1McpContractAdapter {
     private static final String ARG_REVIEW_CAPABILITY = "reviewCapability";
     private static final String ARG_RATING = "rating";
     private static final String ARG_PASSED = "passed";
+    private static final String ARG_CHOICE = "choice";
+    private static final String ARG_RECEIPT_CAPABILITY = "receiptCapability";
+    static final String TOOL_CHOOSE_COMPLETION_ROUTE = "choose_skillpilot_completion_route";
 
     private static final String LANGUAGE_DE = "de";
     private static final String LANGUAGE_EN = "en";
@@ -199,7 +203,10 @@ public class ClaudeV1McpContractAdapter {
             Map.entry(ClaudeV1Contract.TOOL_RECORD_VERIFIED_RECALL_RESULTS, Set.of(
                     ARG_GRADING_CAPABILITY, ARG_RESULTS, ARG_EXPECTED_STATE_VERSION,
                     ARG_CLIENT_REQUEST_ID, ARG_LANGUAGE)),
-            Map.entry(ClaudeV1Contract.TOOL_GET_EXAM_EVALUATION, Set.of(ARG_GOAL_ID, ARG_LANGUAGE)));
+            Map.entry(ClaudeV1Contract.TOOL_GET_EXAM_EVALUATION, Set.of(ARG_GOAL_ID, ARG_LANGUAGE)),
+            Map.entry(TOOL_CHOOSE_COMPLETION_ROUTE, Set.of(
+                    ARG_CHOICE, ARG_EXPECTED_STATE_VERSION, ARG_CLIENT_REQUEST_ID, ARG_LANGUAGE)),
+            Map.entry(ClaudeV1CompletionContractRegistry.TOOL_CONFIRM, Set.of(ARG_RECEIPT_CAPABILITY, ARG_LANGUAGE)));
 
     private final CoachToolFacade coachToolFacade;
     private final ClaudeV1CoachContextProjector contextProjector;
@@ -208,6 +215,7 @@ public class ClaudeV1McpContractAdapter {
     private final ClaudeV1Telemetry telemetry;
     private final ClaudeV1Properties properties;
     private final ObjectMapper objectMapper;
+    private final boolean completionEnabled;
     private final ClaudeV1RateLimiter rateLimiter = new ClaudeV1RateLimiter();
     private final UiResource goalVisualizationUiResource;
     private final UiResource memoryPracticeUiResource;
@@ -230,6 +238,7 @@ public class ClaudeV1McpContractAdapter {
         this.telemetry = Objects.requireNonNull(telemetry, "telemetry");
         this.properties = Objects.requireNonNull(properties, "properties");
         this.objectMapper = Objects.requireNonNull(objectMapper, "objectMapper");
+        this.completionEnabled = coachToolFacade.supportsCompletionWorkflow();
         this.goalVisualizationUiResource = loadUiResource(
                 "skillpilot-claude-goal-visualization-v1",
                 "SkillPilot learning-goal image",
@@ -581,7 +590,29 @@ public class ClaudeV1McpContractAdapter {
                 until the learner explicitly chooses to.
 
                 Answer in the learner's language; pass "de" or "en" as the language argument.
-                """;
+                """ + (completionEnabled ? """
+
+                Assessment completion route: when context.levelCompletion is present, use its
+                exact backend statement and published choices. A profile completion is scoped work
+                completion, never new mastery. While that route owns navigation, do not resume a
+                regular learning plan or choose an ordinary focus/goal outside its choices. First
+                offer a fitting published choice and wait for the learner's explicit selection.
+                Then call choose_skillpilot_completion_route with that exact choice, the current
+                stateVersion and a fresh clientRequestId. The server binds direct assessments to
+                this authenticated session; never invent bypass flags or another pass record.
+                A failed assessment writes no result; offer support, retry or pause and use an
+                accepted neutral navigation choice. Unsupported sessions pause and direct the
+                learner to the Cockpit. A confirmed choice needs no second navigation consent.
+
+                When get_skillpilot_coach_context returns completionContract.status=pending,
+                silently call confirm_skillpilot_completion_contract with its exact receiptCapability
+                and the same learningSessionId, then reload get_skillpilot_coach_context. This is
+                a technical contract receipt, not a learner decision or a mastery write; ask no extra
+                learner confirmation and expose no tokens. Until the receipt succeeds and fresh context
+                is loaded, do not teach, evaluate or render images for the completion route. If this
+                tool is unavailable, keep the route paused and request a fresh supported coach start.
+                Never invent a receipt, fingerprint or claimed client version.
+                """ : "");
     }
 
     // ---------------------------------------------------------------- tool catalogue
@@ -866,6 +897,33 @@ public class ClaudeV1McpContractAdapter {
                 true,
                 this::getExamEvaluation));
 
+        if (completionEnabled) {
+            tools.add(tool(
+                    ClaudeV1CompletionContractRegistry.TOOL_CONFIRM,
+                    "Confirm SkillPilot Completion Contract",
+                    "Silently acknowledges the server-generated receiptCapability from the newest coach context. "
+                            + "Copies that opaque capability unchanged with the same learningSessionId, then reloads context. "
+                            + "Changes only session metadata, never learner choices, mastery or revision. "
+                            + "No additional learner consent, claimed version, fingerprint or score is accepted.",
+                    objectSchema(List.of(ARG_RECEIPT_CAPABILITY), Map.of(
+                            ARG_RECEIPT_CAPABILITY, Map.of("type", "string", "minLength", 1, "maxLength", 16384),
+                            ARG_LANGUAGE, languageSchema())),
+                    false, this::confirmCompletionContract));
+            tools.add(tool(
+                    TOOL_CHOOSE_COMPLETION_ROUTE,
+                    "Choose SkillPilot Completion Route",
+                    "Accepts exactly one choice copied from the newest context.levelCompletion.choices "
+                            + "after the learner explicitly selects it. Chooses a reviewed section, starts "
+                            + "its direct assessment in this authenticated session, requests support or "
+                            + "voluntary learning, pauses neutrally, or returns to regular learning. "
+                            + "Never send goal identifiers, prerequisite bypasses, answers, scores or failure status. "
+                            + "Returns the authoritative successor context; does not itself write mastery.",
+                    objectSchema(List.of(ARG_CHOICE, ARG_EXPECTED_STATE_VERSION, ARG_CLIENT_REQUEST_ID),
+                            Map.of(ARG_CHOICE, Map.of("type", "string", "minLength", 1, "maxLength", 512),
+                                    ARG_EXPECTED_STATE_VERSION, stateVersionSchema(),
+                                    ARG_CLIENT_REQUEST_ID, clientRequestIdSchema(), ARG_LANGUAGE, languageSchema())),
+                    false, this::chooseCompletionRoute));
+        }
         return List.copyOf(tools);
     }
 
@@ -885,7 +943,7 @@ public class ClaudeV1McpContractAdapter {
                 .annotations(McpSchema.ToolAnnotations.builder()
                         .title(title)
                         .readOnlyHint(readOnly)
-                        .destructiveHint(!readOnly)
+                        .destructiveHint(!readOnly && !ClaudeV1CompletionContractRegistry.TOOL_CONFIRM.equals(name))
                         .idempotentHint(true)
                         .openWorldHint(false)
                         .build())
@@ -1206,6 +1264,10 @@ public class ClaudeV1McpContractAdapter {
             success = !Boolean.TRUE.equals(result.isError());
             return result;
 
+        } catch (ClaudeV1SessionCoordinator.CompletionContractException e) {
+            return error(ClaudeV1ErrorCode.CONFLICT,
+                    "This completion route is paused. Reload coach context for a technical contract receipt "
+                            + "or start a fresh supported learning session from the Cockpit.");
         } catch (ClaudeV1SessionCoordinator.StaleStateException e) {
             return error(
                     ClaudeV1ErrorCode.STALE_STATE,
@@ -1242,12 +1304,46 @@ public class ClaudeV1McpContractAdapter {
 
     private Map<String, Object> getCoachContext(String connectionId, Map<String, Object> arguments) {
         language(arguments);
-        return sessionCoordinator.read(
+        return sessionCoordinator.readForCoachContext(
                 connectionId,
-                ctx -> contextProjector.projectContext(
+                ctx -> {
+                    if (ctx.completionContractRequired()) {
+                        Map<String, Object> response = new LinkedHashMap<>();
+                        response.put("stateVersion", ctx.stateVersion());
+                        response.put("language", ctx.communicationLocale());
+                        response.put("state", "completionContractPaused");
+                        if (completionEnabled && ctx.pendingCompletionBinding() != null) {
+                            response.put("completionContract", Map.of("status", "pending", ARG_RECEIPT_CAPABILITY,
+                                    capabilityService.mintCompletionContractCapability(connectionId, ctx.pendingCompletionBinding())));
+                            response.put("instruction", "Silently call confirm_skillpilot_completion_contract with the exact "
+                                    + "receiptCapability and this learningSessionId, then reload get_skillpilot_coach_context. "
+                                    + "No learner confirmation is needed. Do not teach, evaluate or render images yet.");
+                        } else {
+                            response.put("completionContract", Map.of("status", "unavailable"));
+                            response.put("instruction", "Keep this completion route paused. Start a fresh supported learning "
+                                    + "session from the Cockpit. Do not teach, evaluate or render images in this old session.");
+                        }
+                        return response;
+                    }
+                    Map<String, Object> response = new LinkedHashMap<>(contextProjector.projectContext(
                         ctx.skillpilotId(),
                         ctx.stateVersion(),
-                        ctx.communicationLocale())).value();
+                        ctx.communicationLocale()));
+                    // A fresh ordinary session may acknowledge the contract before choosing its
+                    // first section. Cached old clients can ignore this offer and keep learning
+                    // normally; only an active completion route requires the receipt to proceed.
+                    if (completionEnabled && ctx.pendingCompletionBinding() != null) {
+                        response.put("completionContract", Map.of("status", "pending", ARG_RECEIPT_CAPABILITY,
+                                capabilityService.mintCompletionContractCapability(connectionId, ctx.pendingCompletionBinding())));
+                    }
+                    return response;
+                }).value();
+    }
+
+    private Map<String, Object> confirmCompletionContract(String connectionId, Map<String, Object> arguments) {
+        language(arguments);
+        return sessionCoordinator.confirmCompletionContract(connectionId,
+                requiredString(arguments, ARG_RECEIPT_CAPABILITY)).value();
     }
 
     private UiPayload renderGoalVisualization(
@@ -1368,6 +1464,17 @@ public class ClaudeV1McpContractAdapter {
     private Map<String, Object> getNavigationOptions(String connectionId, Map<String, Object> arguments) {
         String language = language(arguments);
         return sessionCoordinator.read(connectionId, ctx -> {
+            if (completionEnabled) {
+                UnifiedLearnerStateResponse state = coachToolFacade.getLearnerState(ctx.skillpilotId());
+                if (state != null && ClaudeV1CompletionChoices.active(state.levelCompletion())) {
+                    Map<String, Object> response = new LinkedHashMap<>();
+                    response.put("stateVersion", ctx.stateVersion());
+                    response.put("language", ctx.communicationLocale());
+                    response.put("navigationOptions", List.of());
+                    response.put("levelCompletion", ClaudeV1CompletionChoices.project(state.levelCompletion(), ctx.communicationLocale()));
+                    return response;
+                }
+            }
             List<FrontierGoal> options = coachToolFacade.getScopeOptions(ctx.skillpilotId());
             List<FrontierGoal> projectedOptions = contextProjector.projectNavigationGoals(options);
             Map<String, Object> response = new LinkedHashMap<>();
@@ -1487,6 +1594,53 @@ public class ClaudeV1McpContractAdapter {
 
     // ---------------------------------------------------------------- write tools
 
+    private Map<String, Object> chooseCompletionRoute(String connectionId, Map<String, Object> arguments) {
+        String choiceLabel = requiredString(arguments, ARG_CHOICE);
+        if (choiceLabel.length() > 512) throw new ToolInputException("choice exceeds the permitted length.");
+        long expectedStateVersion = requiredStateVersion(arguments);
+        String clientRequestId = requiredClientRequestId(arguments);
+        language(arguments);
+        ClaudeV1SessionCoordinator.Outcome<Map<String, Object>> outcome = sessionCoordinator.mutate(
+                connectionId, TOOL_CHOOSE_COMPLETION_ROUTE, clientRequestId, expectedStateVersion, arguments,
+                ctx -> {
+                    if (!completionEnabled || !ClaudeV1CompletionChoices.supported()) {
+                        throw new ToolConflictException("Start a supported completion coach session from the Cockpit.");
+                    }
+                    UnifiedLearnerStateResponse state = coachToolFacade.getLearnerState(ctx.skillpilotId());
+                    LevelCompletionResponse completion = state == null ? null : state.levelCompletion();
+                    if (completion == null || completion.learnerRevision() != ctx.stateVersion()) {
+                        throw new ToolConflictException("Reload the current completion choices before selecting a route.");
+                    }
+                    List<ClaudeV1CompletionChoices.Choice> matches = ClaudeV1CompletionChoices.published(
+                            completion, ctx.communicationLocale()).stream()
+                            .filter(candidate -> candidate.label().equals(choiceLabel)).toList();
+                    if (matches.size() != 1) {
+                        throw new ToolInputException("choice must exactly match one currently published completion choice.");
+                    }
+                    try {
+                        coachToolFacade.chooseLevelCompletion(ctx.skillpilotId(), matches.getFirst().request(ctx.stateVersion()));
+                    } catch (ResponseStatusException e) {
+                        if (e.getStatusCode().value() == 400) throw new ToolInputException("This completion choice is not valid.");
+                        if (e.getStatusCode().value() == 409) throw new ToolConflictException("The completion route changed. Reload the context and choose again.");
+                        throw e;
+                    }
+                    long successorVersion = ctx.currentStateVersion();
+                    Map<String, Object> response = successResponse(successorVersion);
+                    response.put("context", contextProjector.projectContext(ctx.skillpilotId(), successorVersion, ctx.communicationLocale()));
+                    response.put("presentationInstruction", "Use the returned context as authoritative. This confirms the learner's navigation choice, not goal mastery. "
+                            + "If it starts the chosen goal or assessment, begin only that returned active goal, following its image presentation instruction; no second navigation consent is needed. "
+                            + "If paused or unavailable, respect the pause. Never invent a failure result, score or completion certificate.");
+                    return response;
+                });
+        return new LinkedHashMap<>(outcome.value());
+    }
+
+    private void requireRegularNavigation(UnifiedLearnerStateResponse state) {
+        if (completionEnabled && state != null && ClaudeV1CompletionChoices.active(state.levelCompletion())) {
+            throw new ToolConflictException("The completion route owns navigation. Reload context and use its published completion choices.");
+        }
+    }
+
     private Map<String, Object> resumeLearningPlan(
             String connectionId,
             Map<String, Object> arguments) {
@@ -1503,6 +1657,7 @@ public class ClaudeV1McpContractAdapter {
                 ctx -> {
                     UnifiedLearnerStateResponse currentState =
                             coachToolFacade.getLearnerState(ctx.skillpilotId());
+                    requireRegularNavigation(currentState);
                     if (activeGoal(currentState) != null) {
                         throw new ToolConflictException(
                                 "A learning goal is already active. Continue with the current coach context.");
@@ -1598,6 +1753,7 @@ public class ClaudeV1McpContractAdapter {
                 expectedStateVersion,
                 arguments,
                 ctx -> {
+                    if (completionEnabled) requireRegularNavigation(coachToolFacade.getLearnerState(ctx.skillpilotId()));
                     final LearnerLearningPlanApi.TransitionResponse transition;
                     try {
                         transition = coachToolFacade.switchLearningPlanSubject(
@@ -1678,6 +1834,7 @@ public class ClaudeV1McpContractAdapter {
                 expectedStateVersion,
                 arguments,
                 ctx -> {
+                    if (completionEnabled) requireRegularNavigation(coachToolFacade.getLearnerState(ctx.skillpilotId()));
                     List<FrontierGoal> currentOptions = coachToolFacade.getScopeOptions(ctx.skillpilotId());
                     List<FrontierGoal> projectedOptions = contextProjector.projectNavigationGoals(currentOptions);
                     boolean freshPublishedOption = projectedOptions.stream()
@@ -1715,6 +1872,7 @@ public class ClaudeV1McpContractAdapter {
                 arguments,
                 ctx -> {
                     UnifiedLearnerStateResponse currentState = coachToolFacade.getLearnerState(ctx.skillpilotId());
+                    requireRegularNavigation(currentState);
                     FrontierGoal currentActiveGoal = currentState == null ? null : currentState.activeGoal();
                     String displacedGoalId = currentActiveGoal == null ? null : currentActiveGoal.id();
 

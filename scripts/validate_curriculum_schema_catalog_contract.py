@@ -21,6 +21,8 @@ from jsonschema.exceptions import SchemaError
 from referencing import Registry, Resource
 from referencing.exceptions import NoSuchResource, Unresolvable
 
+import curriculum_package_completion_contracts as completion_contracts
+
 from validate_curriculum_package_contracts import (
     JSONSCHEMA_VERSION,
     ContractDefinitionError,
@@ -801,6 +803,11 @@ def validate_catalog_against_manifest(
     bindings = manifest.get("contractBindings")
     bindings = bindings if isinstance(bindings, dict) else {}
     for binding_name, (trusted_schema_id, _filename) in TRUSTED_SCHEMA_BINDINGS.items():
+        if (binding_name == "runtimeCatalogSchema"
+                and manifest.get("runtimeContractVersion") == "1.1"
+                and manifest.get("releaseProfile") == completion_contracts.PROFILE_ID
+                and completion_contracts.CATALOG_SCHEMA_ID in trusted_schema_bytes):
+            trusted_schema_id = completion_contracts.CATALOG_SCHEMA_ID
         trusted_bytes = trusted_schema_bytes[trusted_schema_id]
         matching = entries_by_id.get(trusted_schema_id, [])
         binding = bindings.get(binding_name)

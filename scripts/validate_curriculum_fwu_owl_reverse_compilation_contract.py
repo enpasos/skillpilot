@@ -755,6 +755,10 @@ def _strict_bound_json(opened: SecureFile, label: str) -> Any:
 
 
 def _schema_assert(value: Any, schema_path: Path, label: str) -> None:
+    if isinstance(value, dict) and value.get("$schema") == "https://skillpilot.com/schemas/curriculum-package/v1.1/fwu-owl-package-validation-report.schema.json" and schema_path == FWU_RECEIPT_SCHEMA_PATH:
+        schema_path = CONTRACT_ROOT.parent / "v1.1/fwu-owl-package-validation-report.schema.json"
+    if isinstance(value, dict) and value.get("runtimeContractVersion") == "1.1" and value.get("releaseProfile") == "fwu-owl-completion-v1" and schema_path == FWU_MANIFEST_SCHEMA_PATH:
+        schema_path = CONTRACT_ROOT.parent / "v1.1/fwu-owl-package-manifest.schema.json"
     schema = load_json(schema_path)
     validator = Draft202012Validator(schema)
     errors = sorted(

@@ -32,6 +32,21 @@ public class DeckResourceService {
     private volatile Map<String, Path> deckIndex = Collections.emptyMap();
     private volatile long deckIndexUpdatedAt = 0L;
     private volatile String indexedRoot = "";
+    private volatile Map<String, byte[]> pinnedDecks;
+
+    /** Keep deck bytes in the same immutable repository generation as landscapes and mappings. */
+    public void pinRuntimeGeneration() throws IOException {
+        if (packageResourceState != null) return;
+        synchronized (deckIndexLock) {
+            if (pinnedDecks != null) return;
+            Path root = Path.of(landscapeProperties.getDirectory()).toAbsolutePath().normalize();
+            Map<String, byte[]> bytes = new HashMap<>();
+            for (Map.Entry<String, Path> entry : buildDeckIndex(root, true).entrySet()) {
+                bytes.put(entry.getKey(), Files.readAllBytes(entry.getValue()));
+            }
+            pinnedDecks = Collections.unmodifiableMap(bytes);
+        }
+    }
 
     public DeckResourceService(LandscapeProperties landscapeProperties) {
         this.landscapeProperties = java.util.Objects.requireNonNull(landscapeProperties, "landscapeProperties");
@@ -68,6 +83,13 @@ public class DeckResourceService {
         String fileName = extractFileName(normalized);
         if (fileName == null || !DECK_FILENAME_PATTERN.matcher(fileName).matches()) {
             return null;
+        }
+        Map<String, byte[]> pinned = pinnedDecks;
+        if (pinned != null) {
+            byte[] bytes = pinned.get(fileName);
+            return bytes == null ? null : new ByteArrayResource(bytes.clone(), "pinned curriculum deck " + fileName) {
+                @Override public String getFilename() { return fileName; }
+            };
         }
 
         Optional<Path> curriculumDeck = resolveDeckFromCurricula(fileName);
@@ -146,6 +168,10 @@ public class DeckResourceService {
     }
 
     private Map<String, Path> buildDeckIndex(Path curriculaRoot) {
+        return buildDeckIndex(curriculaRoot, false);
+    }
+
+    private Map<String, Path> buildDeckIndex(Path curriculaRoot, boolean failOnReadError) {
         Map<String, Path> index = new HashMap<>();
         try {
             PrunedFileTree.files(curriculaRoot,
@@ -165,6 +191,7 @@ public class DeckResourceService {
                         }
                     });
         } catch (IOException e) {
+            if (failOnReadError) throw new IllegalStateException("Cannot pin unreadable curriculum decks", e);
             log.warn("Could not index deck files under {}", curriculaRoot, e);
         }
         return Map.copyOf(index);

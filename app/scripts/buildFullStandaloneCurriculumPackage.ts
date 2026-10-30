@@ -19,6 +19,9 @@ import {
 import { basename, dirname, isAbsolute, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { crc32 } from 'node:zlib'
+import { curriculumContractLocation } from './curriculumPackageContractPaths'
+import { completionContentLicenseDecision } from './curriculumPackageLicenses'
+import { assertPackageScratchPath, packageScratchRoot } from './curriculumPackageScratchRoot'
 import {
   createDeterministicZip32,
   type DeterministicZip32Entry,
@@ -267,6 +270,7 @@ export type FullStandalonePackagePlanOptions = {
 }
 
 export type MaterializeFullStandalonePackageOptions = {
+  scratchRoot?: string
   outputDirectory: string
   writeDirectory: boolean
   writeZip: boolean
@@ -644,6 +648,15 @@ const logicalArtifactPaths = (
     const item = objectValue(raw, `runtime catalog view ${indexValue}`)
     bind(stringValue(item.artifactPath, 'view artifactPath'), 'composition-view', stringValue(item.viewId, 'viewId'))
   })
+  if (runtimeCatalog.completionArtifacts !== undefined) {
+    arrayValue<JsonObject>(runtimeCatalog.completionArtifacts, 'runtime catalog completion artifacts').forEach((raw, indexValue) => {
+      const item = objectValue(raw, `runtime catalog completion artifact ${indexValue}`)
+      const kind = stringValue(item.kind, 'completion artifact kind')
+      const role = ({ profile: 'completion-profile', scope: 'completion-scope', review: 'completion-rule-review' } as Record<string, string>)[kind]
+        ?? fail(`Unknown completion artifact kind: ${kind}`)
+      bind(stringValue(item.artifactPath, 'completion artifact path'), role, stringValue(item.id, 'completion artifact id'))
+    })
+  }
 
   const artifactIndexes = objectValue(runtimeCatalog.artifactIndexes, 'runtime catalog artifactIndexes')
   const singletonPaths: Array<[string, string, string | undefined]> = [
@@ -980,6 +993,7 @@ const assertArchiveRoot = (archiveRoot: string) => {
 }
 
 const buildReadme = (params: {
+  releaseProfile: string
   releaseId: string
   packageId: string
   packageVersion: string
@@ -995,7 +1009,7 @@ This directory is the JSON runtime variant of \`${params.releaseId}\`.
 - Package version: \`${params.packageVersion}\`
 - Semantic content digest: \`${params.contentDigest}\`
 - Runtime entry point: \`data/runtime/catalog.json\`
-- Release profile: \`full-standalone-v1\`
+- Release profile: \`${params.releaseProfile}\`
 - Redistribution review ready: \`${params.publicationReady}\`
 - Open redistribution review items: \`${params.humanReviewItemCount}\`
 - Open source-text verification items: \`${params.sourceVerificationPendingCount}\`
@@ -1061,9 +1075,11 @@ export const createFullStandalonePackagePlan = (
   const profileRepositoryPath = options.fullStandaloneProfilePath ?? DEFAULT_PROFILE_PATH
   const profilePath = resolveRepositoryFile(repositoryRoot, profileRepositoryPath, 'full-standalone release profile')
   const profile = readJson<FullStandaloneProfile>(profilePath, 'full-standalone release profile')
-  if (profile.profileFormatVersion !== 1 || profile.profileId !== 'full-standalone-v1') fail('Unsupported full-standalone release profile identity.')
+  const completionProfile = profile.profileId === 'full-standalone-completion-v1'
+  if (profile.profileFormatVersion !== 1 || !['full-standalone-v1', 'full-standalone-completion-v1'].includes(profile.profileId)) fail('Unsupported full-standalone release profile identity.')
+  if (profile.compatibility.runtimeContractVersion !== (completionProfile ? '1.1' : '1.0')) fail('Release profile and runtime contract version differ.')
   if (profile.compatibility.variant !== 'json') fail('Full-standalone profile variant must be json.')
-  const expectedSchemaCount = options.expectedTrustedSchemaCount ?? 22
+  const expectedSchemaCount = options.expectedTrustedSchemaCount ?? (completionProfile ? 26 : 22)
   if (profile.trustedContractSchemas.length !== expectedSchemaCount) {
     fail(`Expected ${expectedSchemaCount} complete trusted schemas, profile declares ${profile.trustedContractSchemas.length}.`)
   }
@@ -1120,7 +1136,8 @@ export const createFullStandalonePackagePlan = (
   ) {
     fail('Release-model conformance identity does not match its pinned build profile.')
   }
-  if (contractDefinition.runtimeContractVersion !== profile.compatibility.runtimeContractVersion) {
+  if (contractDefinition.runtimeContractVersion !== (completionProfile ? '1.0' : profile.compatibility.runtimeContractVersion)
+    || runtimeCatalog.runtimeContractVersion !== profile.compatibility.runtimeContractVersion) {
     fail('Release model and package profile runtime contract versions differ.')
   }
 
@@ -1167,7 +1184,8 @@ export const createFullStandalonePackagePlan = (
         '--check',
         '--release-root', releaseRoot,
         '--ledger', reviewPath,
-        '--schema', resolve(repositoryRoot, 'contracts/curriculum-package/v1/package-redistribution-review.schema.json'),
+        ...(completionProfile ? ['--completion-candidate'] : []),
+        '--schema', resolve(repositoryRoot, `contracts/curriculum-package/${completionProfile ? 'v1.1' : 'v1'}/package-redistribution-review.schema.json`),
       ],
       'redistribution review checker',
     )
@@ -1274,11 +1292,13 @@ export const createFullStandalonePackagePlan = (
     if (logical) {
       const packageRole = logical.packageRole
       const role = requiredRole(packageRole)
-      const schemaId = schemaIdFromJsonFile(entry.sourcePath as string, path)
+      const schemaId = packageRole.startsWith('completion-')
+        ? 'https://skillpilot.com/schemas/curriculum-package/v1.1/completion-artifact.schema.json'
+        : schemaIdFromJsonFile(entry.sourcePath as string, path)
       attachManifestFile(
         entry,
         role,
-        classify(packageRole, path),
+        completionProfile ? completionContentLicenseDecision(packageRole, classify(packageRole, path), projectGrant) : classify(packageRole, path),
         { kind: 'logical-artifact', logicalId: logical.logicalId, normalizationRole: logical.normalizationRole },
         schemaId,
       )
@@ -1361,12 +1381,11 @@ export const createFullStandalonePackagePlan = (
   })
 
   const trustedSchemas = profile.trustedContractSchemas.map((binding) => {
-    const name = binding.id.split('/').at(-1)
-    if (!name) fail(`Trusted schema has an invalid ID: ${binding.id}`)
-    const sourcePath = resolveRepositoryFile(repositoryRoot, `contracts/curriculum-package/v1/${name}`, `trusted schema ${binding.id}`)
+    const location = curriculumContractLocation(binding.id)
+    const sourcePath = resolveRepositoryFile(repositoryRoot, location.sourcePath, `trusted schema ${binding.id}`)
     const integrity = fileIntegrity(sourcePath)
     if (integrity.sha256 !== binding.sha256) fail(`Trusted schema hash drift: ${binding.id}`)
-    return { ...binding, sourcePath, packagePath: `schemas/${name}`, integrity }
+    return { ...binding, sourcePath, packagePath: location.packagePath, integrity }
   })
   if (new Set(trustedSchemas.map((schema) => schema.id)).size !== trustedSchemas.length) fail('Trusted schema IDs are not unique.')
   if (new Set(trustedSchemas.map((schema) => schema.packagePath)).size !== trustedSchemas.length) fail('Trusted schema package paths are not unique.')
@@ -1447,7 +1466,7 @@ export const createFullStandalonePackagePlan = (
     fail('Package-local ontology or publication-evidence contract differs from release-model build-profile binding.')
   }
 
-  const packagedProfilePath = 'schemas/profiles/full-standalone-v1.profile.json'
+  const packagedProfilePath = `schemas/profiles/${profile.profileId}.profile.json`
   const packagedProfileEntry = sourceEntry(packagedProfilePath, profilePath)
   attachManifestFile(packagedProfileEntry, requiredRole('release-profile'), classify('release-profile', packagedProfilePath), { kind: 'excluded-generated' })
   addEntry(entries, packagedProfileEntry)
@@ -1496,6 +1515,7 @@ export const createFullStandalonePackagePlan = (
   }
 
   const readmeEntry = inlineEntry(README_PATH, buildReadme({
+    releaseProfile: profile.profileId,
     releaseId,
     packageId,
     packageVersion,
@@ -1569,7 +1589,7 @@ export const createFullStandalonePackagePlan = (
   const manifestFiles = inventoryEntries.map((entry) => entry.manifestFile as FullStandaloneManifestFile)
   const schemaById = new Map(trustedSchemas.map((schema) => [schema.id, schema]))
   const requiredSchemaBinding = (id: string) => schemaById.get(id) ?? fail(`Trusted schemas lack binding ${id}.`)
-  const runtimeCatalogSchema = requiredSchemaBinding('https://skillpilot.com/schemas/curriculum-package/v1/runtime-catalog.schema.json')
+  const runtimeCatalogSchema = requiredSchemaBinding(`https://skillpilot.com/schemas/curriculum-package/${completionProfile ? 'v1.1' : 'v1'}/runtime-catalog.schema.json`)
   const schemaCatalogSchema = requiredSchemaBinding('https://skillpilot.com/schemas/curriculum-package/v1/schema-catalog.schema.json')
   const manifestSchema = requiredSchemaBinding(profile.manifestSchema.id)
   if (manifestSchema.sha256 !== profile.manifestSchema.sha256) fail('Manifest schema binding differs between profile fields.')
@@ -1779,12 +1799,15 @@ export const materializeFullStandalonePackage = (
     fail('Materialization must request exactly one artifact: directory-only or ZIP-only.')
   }
   const repositoryRoot = resolve(options.repositoryRoot ?? defaultRepositoryRoot)
-  const repositoryTmp = resolve(repositoryRoot, 'tmp')
+  const repositoryTmp = packageScratchRoot(repositoryRoot, options.scratchRoot)
   const outputDirectory = resolve(repositoryRoot, options.outputDirectory)
-  if (!isStrictDescendant(repositoryTmp, outputDirectory)) fail(`Package output must be a strict descendant of ${repositoryTmp}.`)
-  assertNoSymlinkComponents(repositoryRoot, outputDirectory, true)
+  assertPackageScratchPath(repositoryTmp, outputDirectory)
+  if (options.scratchRoot && existsSync(resolve(outputDirectory, `${plan.archiveRoot}${options.writeZip ? '.zip' : ''}`))) {
+    fail('Explicit scratch output already exists; refusing to replace it.')
+  }
+  assertNoSymlinkComponents(options.scratchRoot ? repositoryTmp : repositoryRoot, outputDirectory, true)
   mkdirSync(outputDirectory, { recursive: true, mode: 0o755 })
-  assertNoSymlinkComponents(repositoryRoot, outputDirectory, false)
+  assertNoSymlinkComponents(options.scratchRoot ? repositoryTmp : repositoryRoot, outputDirectory, false)
   if (!lstatSync(outputDirectory).isDirectory()) fail(`Package output is not a directory: ${outputDirectory}`)
 
   const directoryPath = options.writeDirectory ? materializeDirectory(plan, outputDirectory) : null
@@ -1800,6 +1823,7 @@ export const materializeFullStandalonePackage = (
 type CliOptions = FullStandalonePackagePlanOptions & {
   outputDirectory: string
   mode: 'plan-only' | 'directory-only' | 'zip-only'
+  scratchRoot?: string
   expectedEntryCount?: number
   expectedManifestFileCount?: number
   expectedBinaryAssetCount?: number
@@ -1813,6 +1837,8 @@ const usage = () => `Usage:
     (--plan-only | --directory-only | --zip)
 
 Optional:
+  --package-profile <repository-relative-path>
+  --scratch-root <absolute-private-0700-directory>
   --archive-root <portable-segment>
   --supported-skillpilot-software ">=0.1.0 <1.0.0"
   --redistribution-review <repository-relative-path>
@@ -1834,6 +1860,8 @@ const parseCli = (args: string[]): CliOptions => {
   let releaseRoot: string | null = null
   let outputDirectory: string | null = null
   let archiveRoot: string | undefined
+  let fullStandaloneProfilePath: string | undefined
+  let scratchRoot: string | undefined
   let supportedSkillpilotSoftware: string | undefined
   let redistributionReviewPath: string | undefined
   let sourceVerificationReviewPath: string | undefined
@@ -1853,6 +1881,8 @@ const parseCli = (args: string[]): CliOptions => {
     const arg = args[index]
     if (arg === '--release-root') releaseRoot = valueFor(arg, index++)
     else if (arg === '--output-dir') outputDirectory = valueFor(arg, index++)
+    else if (arg === '--scratch-root') scratchRoot = valueFor(arg, index++)
+    else if (arg === '--package-profile') fullStandaloneProfilePath = valueFor(arg, index++)
     else if (arg === '--archive-root') archiveRoot = valueFor(arg, index++)
     else if (arg === '--supported-skillpilot-software') supportedSkillpilotSoftware = valueFor(arg, index++)
     else if (arg === '--redistribution-review') redistributionReviewPath = valueFor(arg, index++)
@@ -1883,6 +1913,8 @@ const parseCli = (args: string[]): CliOptions => {
     releaseRoot,
     outputDirectory,
     mode,
+    ...(scratchRoot ? { scratchRoot } : {}),
+    ...(fullStandaloneProfilePath ? { fullStandaloneProfilePath } : {}),
     ...(archiveRoot ? { archiveRoot } : {}),
     ...(supportedSkillpilotSoftware ? { supportedSkillpilotSoftware } : {}),
     ...(redistributionReviewPath ? { redistributionReviewPath } : {}),
@@ -1927,6 +1959,7 @@ const runCli = () => {
   if (options.mode !== 'plan-only') {
     const materialized = materializeFullStandalonePackage(plan, {
       outputDirectory: options.outputDirectory,
+      scratchRoot: options.scratchRoot,
       writeDirectory: options.mode === 'directory-only',
       writeZip: options.mode === 'zip-only',
     })

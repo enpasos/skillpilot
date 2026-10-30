@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/assessment-completion/v1/profile.schema.json",
+  "title": "Assessment completion profile",
+  "description": "Reviewed static curriculum policy. Scope targets are resolved from levelScopeRef by the authoritative runtime; learner results never belong in this artifact.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "id", "revision", "title", "levelScopeRef", "review", "rules"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "id": { "$ref": "#/$defs/identifier" },
+    "revision": { "$ref": "#/$defs/nonblank" },
+    "title": {
+      "type": "object",
+      "required": ["de", "en"],
+      "properties": {
+        "de": { "$ref": "#/$defs/nonblank" },
+        "en": { "$ref": "#/$defs/nonblank" }
+      },
+      "additionalProperties": { "$ref": "#/$defs/nonblank" }
+    },
+    "levelScopeRef": { "$ref": "#/$defs/nonblank" },
+    "applicability": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "minItems": 1,
+        "uniqueItems": true,
+        "items": { "$ref": "#/$defs/nonblank" }
+      }
+    },
+    "protectedGoalIds": { "$ref": "#/$defs/goalIds" },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reference", "scopeRevision", "taskRevision", "rubricRevision"],
+      "properties": {
+        "reference": { "$ref": "#/$defs/nonblank" },
+        "scopeRevision": { "$ref": "#/$defs/nonblank" },
+        "taskRevision": { "$ref": "#/$defs/nonblank" },
+        "rubricRevision": { "$ref": "#/$defs/nonblank" }
+      }
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["ruleId", "assessmentGoalIds", "waivableGoalIds", "rationale", "reviewRef"],
+        "properties": {
+          "ruleId": { "$ref": "#/$defs/identifier" },
+          "assessmentGoalIds": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": { "$ref": "#/$defs/nonblank" }
+          },
+          "waivableGoalIds": { "$ref": "#/$defs/goalIds" },
+          "rationale": { "$ref": "#/$defs/nonblank" },
+          "reviewRef": { "$ref": "#/$defs/nonblank" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "nonblank": { "type": "string", "minLength": 1, "pattern": "\\S" },
+    "identifier": { "type": "string", "minLength": 1, "maxLength": 160, "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$" },
+    "goalIds": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/nonblank" }
+    }
+  }
+}

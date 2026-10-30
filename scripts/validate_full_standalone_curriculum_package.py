@@ -38,6 +38,8 @@ from referencing.exceptions import NoSuchResource  # noqa: E402
 import validate_curriculum_package_contracts as package_contracts  # noqa: E402
 import validate_curriculum_runtime_catalog_contract as runtime_catalog_contracts  # noqa: E402
 import validate_curriculum_schema_catalog_contract as schema_catalog_contracts  # noqa: E402
+import curriculum_package_completion_contracts as completion_contracts  # noqa: E402
+import curriculum_completion_artifacts as completion_artifacts  # noqa: E402
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -659,8 +661,10 @@ def load_deterministic_render_authority() -> DeterministicRenderAuthority:
 def load_trusted_context(contract_dir: Path) -> TrustedContext:
     contract_dir = contract_dir.resolve()
     try:
-        profile_path = contract_dir / package_contracts.PROFILE_RELATIVE_PATH
-        manifest_schema_path = contract_dir / package_contracts.SCHEMA_FILENAME
+        extended = completion_contracts.extended_directory(contract_dir)
+        base_dir = completion_contracts.base_directory(contract_dir)
+        profile_path = completion_contracts.profile_path(contract_dir)
+        manifest_schema_path = base_dir / package_contracts.SCHEMA_FILENAME
         profile_bytes = profile_path.read_bytes()
         manifest_schema_bytes = manifest_schema_path.read_bytes()
         profile = object_value(parse_json_bytes(profile_bytes, str(profile_path)), str(profile_path))
@@ -669,9 +673,11 @@ def load_trusted_context(contract_dir: Path) -> TrustedContext:
             str(manifest_schema_path),
         )
         trusted_schema_paths = {
-            binding_name: contract_dir / filename
+            binding_name: base_dir / filename
             for binding_name, (_schema_id, filename) in package_contracts.TRUSTED_SCHEMA_BINDINGS.items()
         }
+        if extended:
+            trusted_schema_paths["runtimeCatalogSchema"] = contract_dir / "runtime-catalog.schema.json"
         roles = package_contracts.validate_trusted_contract(
             manifest_schema,
             profile,
@@ -681,8 +687,11 @@ def load_trusted_context(contract_dir: Path) -> TrustedContext:
         )
         trusted_schema_bytes: dict[str, bytes] = {}
         trusted_schema_documents: dict[str, dict[str, Any]] = {}
-        for schema_id, filename in package_contracts.NORMATIVE_SCHEMA_FILES:
-            path = contract_dir / filename
+        schema_files = [(schema_id, base_dir / filename)
+                        for schema_id, filename in package_contracts.NORMATIVE_SCHEMA_FILES]
+        if extended:
+            schema_files.extend(completion_contracts.extra_schemas(contract_dir))
+        for schema_id, path in schema_files:
             raw = path.read_bytes()
             document = object_value(parse_json_bytes(raw, str(path)), str(path))
             if document.get("$id") != schema_id:
@@ -691,11 +700,11 @@ def load_trusted_context(contract_dir: Path) -> TrustedContext:
             trusted_schema_documents[schema_id] = document
         trusted_schema_metadata = {
             binding_name: (
-                schema_id,
-                sha256_bytes(trusted_schema_bytes[schema_id]),
-                len(trusted_schema_bytes[schema_id]),
+                json.loads(path.read_bytes())["$id"],
+                sha256_bytes(path.read_bytes()),
+                path.stat().st_size,
             )
-            for binding_name, (schema_id, _filename) in package_contracts.TRUSTED_SCHEMA_BINDINGS.items()
+            for binding_name, path in trusted_schema_paths.items()
         }
         catalog_schema = trusted_schema_documents[schema_catalog_contracts.CATALOG_SCHEMA_ID]
         return TrustedContext(
@@ -3668,6 +3677,25 @@ def validate_hard_reference_closure(
     if not isinstance(closure, dict):
         collector.add("hardReferenceClosure", "CLOSURE_UNAVAILABLE", f"/{path}", "closure is unavailable")
         return
+    completion_documents = []
+    goals = {}
+    for record in manifest.get("files", []):
+        role = record.get("role")
+        artifact_path = record.get("path")
+        artifact = documents.values.get(artifact_path)
+        if role in completion_contracts.ROLES.values() and isinstance(artifact, dict):
+            completion_documents.append((role, artifact.get("id"), artifact_path, artifact))
+        elif role == "canonical-landscape" and isinstance(artifact, dict):
+            for goal in artifact.get("goals", []):
+                goal_id = goal.get("id")
+                if goal_id in goals and goals[goal_id] != goal:
+                    collector.add("hardReferenceClosure", "COMPLETION_GOAL_CONFLICT", f"/{artifact_path}", str(goal_id))
+                goals[goal_id] = goal
+    if completion_documents:
+        try:
+            completion_artifacts.validate_package_documents(completion_documents, goals)
+        except (KeyError, TypeError, ValueError) as error:
+            collector.add("hardReferenceClosure", "COMPLETION_CONTRACT_INVALID", "/data/completion", str(error))
     del logical_documents  # derivation intentionally starts from manifest-bound package artifacts
     try:
         expected = derive_expected_closure(
@@ -4859,7 +4887,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     try:
         trusted = load_trusted_context(args.contracts_dir)
         if args.self_test:
-            report = run_self_test(trusted, args.fixtures.resolve(), args.verbose)
+            baseline = load_trusted_context(completion_contracts.base_directory(args.contracts_dir)) if completion_contracts.extended_directory(args.contracts_dir) else trusted
+            report = run_self_test(baseline, args.fixtures.resolve(), args.verbose)
             exit_code = 0 if report["status"] == "passed" else 1
         else:
             report = validate_package(args.zip, trusted)

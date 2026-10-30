@@ -2080,6 +2080,21 @@ def run_self_test(
     )
 
 
+def select_completion_candidate() -> None:
+    """Use new static bindings without changing old reviews or approving content."""
+    global PROFILE_ID, TARGET_PROFILE_ID, TARGET_PROFILE_PATH, SCHEMA_ID, REVIEW_ID, CLASS_SPECS
+    if TARGET_PROFILE_ID == "full-standalone-completion-v1":
+        return
+    PROFILE_ID = "de-gymnasium-mathematik-completion-release-model-v1"
+    TARGET_PROFILE_ID = "full-standalone-completion-v1"
+    TARGET_PROFILE_PATH = "contracts/curriculum-package/v1.1/profiles/full-standalone-completion-v1.profile.json"
+    SCHEMA_ID = SCHEMA_ID.replace("/v1/", "/v1.1/")
+    REVIEW_ID = "de-gymnasium-mathematik-completion-v1"
+    CLASS_SPECS = tuple({**spec, "artifactRoles": spec["artifactRoles"] +
+                        (["completion-profile", "completion-scope", "completion-rule-review"] if spec["classId"] == "skillpilot-data" else [])}
+                        for spec in CLASS_SPECS)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     action = parser.add_mutually_exclusive_group(required=True)
@@ -2093,12 +2108,22 @@ def main() -> int:
         help="Compiled DPK-004 release-model directory",
     )
     parser.add_argument(
-        "--ledger", type=Path, default=DEFAULT_LEDGER, help="Review ledger path"
+        "--ledger", type=Path, default=None, help="Review ledger path (completion candidates use a separate default)"
     )
     parser.add_argument(
         "--schema", type=Path, default=DEFAULT_SCHEMA, help="Trusted review schema"
     )
+    parser.add_argument("--completion-candidate", action="store_true", help="bind the reviewed completion-capable runtime profile; no publication approval")
     args = parser.parse_args()
+    if args.ledger is None:
+        args.ledger = (DEFAULT_LEDGER.with_name("de-gymnasium-mathematik-completion-v1.review.json")
+                       if args.completion_candidate else DEFAULT_LEDGER)
+    if args.completion_candidate:
+        if args.ledger.resolve() == DEFAULT_LEDGER.resolve():
+            parser.error("Completion candidates must use a separate ledger; the existing V1 review is preserved")
+        select_completion_candidate()
+        if args.schema == DEFAULT_SCHEMA:
+            args.schema = CONTRACT_ROOT.parent / "v1.1/package-redistribution-review.schema.json"
 
     try:
         schema = require_object(read_json(args.schema), "redistribution review schema")

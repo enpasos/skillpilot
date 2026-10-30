@@ -263,6 +263,66 @@ SOURCE_CONTRACT_NAMES = (
 )
 
 
+
+# Selection is closed over repository-owned trust roots, never package-supplied policy.
+ACTIVE_PROFILE_ID = "fwu-owl-v1"
+# CLI validation selects one known policy at a time. Keep the original context
+# intact so test suites can validate both versions without leaking selection.
+_BASE_TRUST_ROOTS = {name: globals()[name] for name in (
+    "ACTIVE_PROFILE_ID", "PROFILE_PATH", "SCHEMAS", "APPLICATION_ONTOLOGY_PATH",
+    "FIELD_SEMANTICS_REGISTRY_PATH", "TRUSTED_JSON_RELEASE_PROFILE_PATH",
+    "APPLICATION_PROFILE_POLICY", "TRUSTED_JSON_RELEASE_PROFILE", "ROLE_POLICY",
+    "BOOTSTRAP_SCHEMA_SPECS", "GLOBAL_CONTRACT_SPECS", "EXPECTED_STATIC_BINDING_IDS",
+    "JSON_CONTRACT_SCHEMA_TARGETS", "SINGLETON_RELEASE_SUPPORT",
+)}
+
+def schema_location(schema_id: str) -> tuple[Path, str]:
+    prefixes = (
+        ("https://skillpilot.com/schemas/curriculum-package/v1/", CONTRACT_ROOT, "schemas/"),
+        ("https://skillpilot.com/schemas/curriculum-package/v1.1/", CONTRACT_ROOT.parent / "v1.1", "schemas/v1.1/"),
+        ("https://skillpilot.com/schemas/assessment-completion/v1/", REPO_ROOT / "contracts/assessment-completion/v1", "schemas/assessment-completion/"),
+    )
+    for prefix, root, package_prefix in prefixes:
+        if schema_id.startswith(prefix):
+            name = schema_id[len(prefix):]
+            if re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]*\.schema\.json", name):
+                return root / name, package_prefix + name
+    raise ValueError(f"Unsupported schema trust root: {schema_id}")
+
+def select_profile(profile_id: str) -> None:
+    global ACTIVE_PROFILE_ID, PROFILE_PATH, SCHEMAS, APPLICATION_ONTOLOGY_PATH
+    global FIELD_SEMANTICS_REGISTRY_PATH, TRUSTED_JSON_RELEASE_PROFILE_PATH
+    global APPLICATION_PROFILE_POLICY, TRUSTED_JSON_RELEASE_PROFILE, ROLE_POLICY
+    global BOOTSTRAP_SCHEMA_SPECS, GLOBAL_CONTRACT_SPECS, EXPECTED_STATIC_BINDING_IDS
+    global JSON_CONTRACT_SCHEMA_TARGETS, SINGLETON_RELEASE_SUPPORT
+    if profile_id not in {"fwu-owl-v1", "fwu-owl-completion-v1"}:
+        raise ValueError("Unsupported FWU trust-root selection")
+    if profile_id == ACTIVE_PROFILE_ID:
+        return
+    globals().update(_BASE_TRUST_ROOTS)
+    if profile_id == "fwu-owl-v1":
+        return
+    root = CONTRACT_ROOT.parent / "v1.1"
+    PROFILE_PATH = root / "profiles/fwu-owl-completion-v1.profile.json"
+    trusted = load_json(PROFILE_PATH)
+    if trusted.get("profileId") != profile_id:
+        raise ValueError("Repository completion FWU profile identity differs")
+    SCHEMAS = {key: root / path.name for key, path in SCHEMAS.items()}
+    APPLICATION_PROFILE_POLICY = trusted["applicationProfilePolicy"]
+    APPLICATION_ONTOLOGY_PATH = REPO_ROOT / APPLICATION_PROFILE_POLICY["sourcePath"]
+    TRUSTED_JSON_RELEASE_PROFILE = trusted["releaseSupportPolicy"]["trustedJsonReleaseProfile"]
+    TRUSTED_JSON_RELEASE_PROFILE_PATH = REPO_ROOT / TRUSTED_JSON_RELEASE_PROFILE["sourcePath"]
+    ROLE_POLICY = {rule["role"]: (rule["minimum"], rule["maximum"], set(rule["mediaTypes"]), set(rule["semanticBindingKinds"])) for rule in trusted["roles"]}
+    BOOTSTRAP_SCHEMA_SPECS = tuple((b["bindingName"], b["id"], REPO_ROOT / b["sourcePath"], b["packagePath"]) for b in trusted["contractPolicy"]["trustedBootstrapSchemas"])
+    GLOBAL_CONTRACT_SPECS = tuple((b["bindingName"], b["id"], REPO_ROOT / b["sourcePath"], b["packagePath"]) for b in trusted["contractPolicy"]["trustedGlobalContracts"])
+    registry = next(b for b in GLOBAL_CONTRACT_SPECS if b[0] == "fieldSemanticsRegistry")
+    FIELD_SEMANTICS_REGISTRY_PATH = registry[2]
+    EXPECTED_STATIC_BINDING_IDS = {**EXPECTED_STATIC_BINDING_IDS, **{b[0]: b[1] for b in (*BOOTSTRAP_SCHEMA_SPECS, *GLOBAL_CONTRACT_SPECS)}, "packageProfile": profile_id}
+    json_profile = load_json(TRUSTED_JSON_RELEASE_PROFILE_PATH)
+    JSON_CONTRACT_SCHEMA_TARGETS = tuple(schema_location(b["id"])[1] for b in json_profile["trustedContractSchemas"])
+    SINGLETON_RELEASE_SUPPORT = {**SINGLETON_RELEASE_SUPPORT, "json-release-profile": (TRUSTED_JSON_RELEASE_PROFILE["id"], TRUSTED_JSON_RELEASE_PROFILE["targetPath"], "application/json")}
+    ACTIVE_PROFILE_ID = profile_id
+
 @dataclass(frozen=True)
 class Diagnostic:
     code: str
@@ -367,14 +427,13 @@ def expected_schema_catalog(profile: dict[str, Any]) -> tuple[dict[str, Any], by
             if by_id[schema_id]["sha256"] != binding["sha256"]:
                 raise ValueError(f"conflicting trusted schema bytes for {schema_id}")
             continue
-        name = schema_id.rsplit("/", 1)[-1]
-        source_path = CONTRACT_ROOT / name
+        source_path, target_path = schema_location(schema_id)
         size, digest = byte_binding(source_path)
         if digest != binding["sha256"]:
             raise ValueError(f"trusted JSON schema hash drift for {schema_id}")
         by_id[schema_id] = {
             "id": schema_id,
-            "path": f"support/json/schemas/{name}",
+            "path": f"support/json/{target_path}",
             "dialect": "https://json-schema.org/draft/2020-12/schema",
             "bytes": size,
             "sha256": digest,
@@ -455,12 +514,11 @@ def validate_static_trust_roots() -> list[Diagnostic]:
     if TRUSTED_JSON_RELEASE_PROFILE_PATH.is_file():
         release_profile = load_json(TRUSTED_JSON_RELEASE_PROFILE_PATH)
         trusted = release_profile.get("trustedContractSchemas", []) if isinstance(release_profile, dict) else []
-        if release_profile.get("profileId") != "full-standalone-v1" or len(trusted) != 22:
+        if release_profile.get("profileId") != TRUSTED_JSON_RELEASE_PROFILE["id"] or len(trusted) != TRUSTED_JSON_RELEASE_PROFILE["trustedSchemaCount"]:
             diagnostics.append(Diagnostic("TRUST_ROOT_JSON_PROFILE", str(TRUSTED_JSON_RELEASE_PROFILE_PATH), "JSON release profile identity/schema trust set differs"))
         for index, binding in enumerate(trusted):
             schema_id = binding.get("id") if isinstance(binding, dict) else None
-            name = str(schema_id).rsplit("/", 1)[-1]
-            path = CONTRACT_ROOT / name
+            path, _target_path = schema_location(str(schema_id))
             if not path.is_file():
                 diagnostics.append(Diagnostic("TRUST_ROOT_JSON_SCHEMA", f"{TRUSTED_JSON_RELEASE_PROFILE_PATH}/{index}", "Trusted JSON schema is missing"))
                 continue
@@ -727,7 +785,7 @@ def validate_profile(profile: dict[str, Any]) -> list[Diagnostic]:
     if (
         schema_policy.get("construction") != "canonical-json-by-id-from-bootstrap-and-trusted-json-release-profile-v1"
         or schema_policy.get("bootstrapBindingNames") != [binding[0] for binding in BOOTSTRAP_SCHEMA_SPECS]
-        or schema_policy.get("expectedEntryCount") != 25
+        or schema_policy.get("expectedEntryCount") != len(set(b[1] for b in BOOTSTRAP_SCHEMA_SPECS) | {b["id"] for b in load_json(TRUSTED_JSON_RELEASE_PROFILE_PATH)["trustedContractSchemas"]})
     ):
         diagnostics.append(Diagnostic("PROFILE_SCHEMA_CATALOG_TRUST", "/schemaCatalogPolicy", "Schema catalog construction policy drift"))
     expected_semantic_policy = {
@@ -825,7 +883,7 @@ def validate_manifest(
         or source.get("contentDigest") != manifest.get("contentDigest")
         or source.get("runtimeContractVersion") != manifest.get("runtimeContractVersion")
         or source.get("supportedSkillpilotSoftware") != manifest.get("supportedSkillpilotSoftware")
-        or source.get("releaseProfile") != "full-standalone-v1"
+        or source.get("releaseProfile") != TRUSTED_JSON_RELEASE_PROFILE["id"]
         or source.get("releaseProfileBinding")
         != {
             "id": TRUSTED_JSON_RELEASE_PROFILE["id"],
@@ -867,7 +925,7 @@ def validate_manifest(
         "curriculumEdition": external_manifest.get("curriculumEdition"),
         "contentDigest": external_manifest.get("contentDigest"),
         "runtimeContractVersion": external_manifest.get("runtimeContractVersion"),
-        "releaseProfile": "full-standalone-v1",
+        "releaseProfile": TRUSTED_JSON_RELEASE_PROFILE["id"],
         "releaseProfileBinding": {
             "id": release_binding.get("id"),
             "path": release_binding.get("path"),
@@ -931,7 +989,7 @@ def validate_manifest(
         binding = bindings.get(name, {})
         if not binding_matches(path_index.get(binding.get("path")), binding, name):
             diagnostics.append(Diagnostic("MANIFEST_CONTRACT_BINDING", f"/contractBindings/{name}", "Binding is not backed by one exact file record"))
-    if bindings.get("fieldSemanticsRegistry", {}).get("id") != "skillpilot-fwu-field-semantics-v1":
+    if bindings.get("fieldSemanticsRegistry", {}).get("id") != EXPECTED_STATIC_BINDING_IDS["fieldSemanticsRegistry"]:
         diagnostics.append(Diagnostic("MANIFEST_REGISTRY_BINDING", "/contractBindings/fieldSemanticsRegistry", "Unexpected field registry"))
     for name, expected_id in EXPECTED_STATIC_BINDING_IDS.items():
         if bindings.get(name, {}).get("id") != expected_id:
@@ -949,8 +1007,8 @@ def validate_manifest(
             diagnostics.append(Diagnostic("MANIFEST_TRUST_ROOT_BINDING", f"/contractBindings/{name}", "Contract differs from its external repository trust root"))
     profile_bytes, profile_sha256 = byte_binding(PROFILE_PATH)
     if bindings.get("packageProfile") != {
-        "id": "fwu-owl-v1",
-        "path": "profiles/fwu-owl-v1.profile.json",
+        "id": ACTIVE_PROFILE_ID,
+        "path": f"profiles/{ACTIVE_PROFILE_ID}.profile.json",
         "bytes": profile_bytes,
         "sha256": profile_sha256,
     }:
@@ -996,7 +1054,7 @@ def validate_manifest(
         diagnostics.append(Diagnostic("MANIFEST_SEMANTIC_CONTENT_INDEX", "/semanticContentIndex", "Semantic content index is not backed by one exact inventory record"))
     if semantic_index.get("contentDigest") != manifest.get("contentDigest"):
         diagnostics.append(Diagnostic("MANIFEST_CONTENT_DIGEST", "/semanticContentIndex/contentDigest", "Content digest is not bound to the semantic content index"))
-    registry_entry_count = len(load_json(CONTRACT_ROOT / "profiles" / "skillpilot-fwu-field-semantics-v1.registry.json").get("entries", []))
+    registry_entry_count = len(load_json(FIELD_SEMANTICS_REGISTRY_PATH).get("entries", []))
     if semantic_index.get("fieldRegistryEntryCount") != registry_entry_count:
         diagnostics.append(Diagnostic("MANIFEST_FIELD_REGISTRY_COVERAGE", "/semanticContentIndex/fieldRegistryEntryCount", "Field registry inventory is incomplete or stale"))
 
@@ -1164,7 +1222,7 @@ def validate_manifest(
         ):
             diagnostics.append(Diagnostic("MANIFEST_RELEASE_SUPPORT", f"/releaseSupport/{index}", "Release-support record is not backed by one exact file record"))
         target = str(support.get("targetPath", ""))
-        if target.startswith(("data/canonical/", "data/views/", "data/cards/", "data/runtime/", "data/resources/", "data/mappings/", "data/sources/", "metadata/quality/")) or target == "metadata/semantic-content-index.json":
+        if target.startswith(("data/canonical/", "data/views/", "data/cards/", "data/runtime/", "data/resources/", "data/mappings/", "data/sources/", "metadata/quality/", "data/completion/")) or target == "metadata/semantic-content-index.json":
             diagnostics.append(Diagnostic("MANIFEST_HIDDEN_LOGICAL_JSON", f"/releaseSupport/{index}/targetPath", "Release support must not carry hidden logical JSON content"))
     support_types = Counter(item.get("supportType") for item in release_support)
     schema_targets = {item.get("targetPath") for item in release_support if item.get("supportType") == "json-contract-schema"}
@@ -1175,8 +1233,7 @@ def validate_manifest(
     trusted_by_target: dict[str, dict[str, Any]] = {}
     for binding in trusted_profile.get("trustedContractSchemas", []):
         schema_id = binding.get("id")
-        target = "schemas/" + str(schema_id).rsplit("/", 1)[-1]
-        local_path = CONTRACT_ROOT / Path(target).name
+        local_path, target = schema_location(str(schema_id))
         trusted_by_target[target] = {
             "sha256": binding.get("sha256"),
             "bytes": local_path.stat().st_size,
@@ -1185,7 +1242,7 @@ def validate_manifest(
         if support.get("supportType") != "json-contract-schema":
             continue
         expected = trusted_by_target.get(str(support.get("targetPath")))
-        expected_support_id = Path(str(support.get("targetPath"))).name.removesuffix(".schema.json")
+        expected_support_id = str(support.get("targetPath")).removeprefix("schemas/").replace("/", "-").removesuffix(".schema.json")
         if not expected or support.get("supportId") != expected_support_id or support.get("sha256") != expected["sha256"] or support.get("bytes") != expected["bytes"]:
             diagnostics.append(Diagnostic("MANIFEST_RELEASE_SUPPORT_TRUST", f"/releaseSupport/{index}", "Reverse schema differs from the externally trusted JSON release profile"))
     for support_type, expected in SINGLETON_RELEASE_SUPPORT.items():

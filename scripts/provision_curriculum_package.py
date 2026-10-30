@@ -29,6 +29,7 @@ from typing import Any, Callable, Iterable, Iterator, Mapping, Sequence
 sys.dont_write_bytecode = True
 
 from jsonschema import Draft202012Validator  # noqa: E402
+import curriculum_package_completion_contracts as completion_contracts  # noqa: E402
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -353,9 +354,14 @@ def trusted_json(path: Path, description: str) -> dict[str, Any]:
     )
 
 
-def load_profile() -> dict[str, Any]:
-    profile = trusted_json(PROFILE_PATH, "trusted package profile")
-    if profile.get("profileFormatVersion") != 1 or profile.get("profileId") != "full-standalone-v1":
+def load_profile(contract_dir: Path = CONTRACT_DIR) -> dict[str, Any]:
+    contract_dir = contract_dir.resolve()
+    if contract_dir not in {CONTRACT_DIR.resolve(), (CONTRACT_DIR.parent / "v1.1").resolve()}:
+        raise TrustFailure("Package contracts must select a software-pinned repository version")
+    profile_path = completion_contracts.profile_path(contract_dir)
+    profile = trusted_json(profile_path, "trusted package profile")
+    expected = completion_contracts.PROFILE_ID if completion_contracts.extended_directory(contract_dir) else "full-standalone-v1"
+    if profile.get("profileFormatVersion") != 1 or profile.get("profileId") != expected:
         raise TrustFailure("Unexpected trusted full-standalone package profile")
     limits = profile.get("archiveLimits")
     if not isinstance(limits, dict):
@@ -721,6 +727,7 @@ def run_finished_validator(
     *,
     timeout_seconds: int,
     validator_path: Path = VALIDATOR_PATH,
+    contracts_dir: Path | None = None,
 ) -> tuple[dict[str, Any], bytes]:
     report_path = layout.staging / f"validator-{os.getpid()}-{time.time_ns()}.json"
     command = [
@@ -732,6 +739,9 @@ def run_finished_validator(
         "--report",
         str(report_path),
     ]
+    if contracts_dir is not None:
+        # The selection comes from load_profile's closed software trust roots.
+        command.extend(["--contracts-dir", str(contracts_dir)])
     environment = os.environ.copy()
     environment["PYTHONDONTWRITEBYTECODE"] = "1"
     try:
@@ -1564,6 +1574,8 @@ def install_package(
             layout,
             timeout_seconds=timeout_seconds,
             validator_path=validator_path,
+            contracts_dir=(CONTRACT_DIR.parent / "v1.1")
+                if profile.get("profileId") == completion_contracts.PROFILE_ID else None,
         )
         assert_quarantine_unchanged(candidate, rehash=True)
         package_binding = validate_report_binding(
@@ -2137,6 +2149,10 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     store_argument(install_parser)
     install_parser.add_argument("--zip", type=Path, required=True)
     install_parser.add_argument(
+        "--contracts-dir", type=Path, default=CONTRACT_DIR,
+        help="software-pinned curriculum contract directory (v1 or optional completion v1.1)",
+    )
+    install_parser.add_argument(
         "--validator-timeout-seconds",
         type=int,
         default=DEFAULT_VALIDATOR_TIMEOUT_SECONDS,
@@ -2193,7 +2209,7 @@ def run(argv: Sequence[str] | None = None) -> int:
         return completed.returncode
     if args.command == "install" and not 1 <= args.validator_timeout_seconds <= 86_400:
         raise PackageRejected("--validator-timeout-seconds must be in 1..86400")
-    profile = load_profile()
+    profile = load_profile(getattr(args, "contracts_dir", CONTRACT_DIR))
     validators = load_operational_validators()
     layout = prepare_store(args.store)
     with exclusive_store_lock(layout):

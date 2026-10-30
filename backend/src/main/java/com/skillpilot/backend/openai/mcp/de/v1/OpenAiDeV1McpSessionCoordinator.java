@@ -99,7 +99,10 @@ public class OpenAiDeV1McpSessionCoordinator {
             Function<OpenAiDeV1SessionMetadata, McpSchema.CallToolResult> operation) {
         LockedSession locked = requireCurrentSession(learningSessionId);
         requireMinimumRemaining(locked);
-        McpSchema.CallToolResult result = operation.apply(metadata(locked));
+        McpSchema.CallToolResult result = com.skillpilot.backend.completion.CompletionCallContext.with(
+                new com.skillpilot.backend.completion.CompletionCallContext("openai",
+                        locked.session().getTokenHash(), locked.session().getExpiresAt(), false),
+                () -> operation.apply(metadata(locked)));
         McpSchema.CallToolResult completed = withCurrentMetadata(result, metadata(locked));
         if (completed != null && !Boolean.TRUE.equals(completed.isError())) {
             touchActivity(locked.learner());
@@ -152,7 +155,10 @@ public class OpenAiDeV1McpSessionCoordinator {
                     "expectedStateVersion does not match the current canonical learner-state revision.");
         }
 
-        McpSchema.CallToolResult result = operation.apply(metadata(locked));
+        McpSchema.CallToolResult result = com.skillpilot.backend.completion.CompletionCallContext.with(
+                new com.skillpilot.backend.completion.CompletionCallContext("openai",
+                        locked.session().getTokenHash(), locked.session().getExpiresAt(), false),
+                () -> operation.apply(metadata(locked)));
         if (result == null || Boolean.TRUE.equals(result.isError())) {
             throw new OpenAiDeV1SessionStateException(
                     OpenAiDeV1SessionStateException.Code.STATE_VERSION_CONFLICT,

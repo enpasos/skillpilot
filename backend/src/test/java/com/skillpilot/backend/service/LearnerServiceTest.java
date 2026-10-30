@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.skillpilot.backend.api.MasteryEntryDTO;
 import com.skillpilot.backend.ai.CoachStateProjection;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.ClientStateRequest;
@@ -251,6 +252,121 @@ public class LearnerServiceTest {
         var goals = plannedGoalRepository.findByLearner_SkillpilotId(learnerId);
         assertThat(goals).hasSize(1);
         assertThat(goals.get(0).getGoalId()).isEqualTo(COMPOSITION_J8_SCOPE_ID);
+    }
+
+    @Test
+    void publicPracticeSyncCannotCreateVerifiedRecall() {
+        var saved = learnerService.upsertClientState(learnerId, "recall-node",
+                new ClientStateRequest(Instant.parse("2099-01-01T00:00:00Z"), Map.of(
+                        "card-1", Map.of("interval", 1, "repetition", 1, "ef", 2.5,
+                                "nextReview", 42,
+                                "verifiedRecall", Map.of("status", "passed", "passedAt", "2026-01-01T00:00:00Z")))));
+
+        assertThat(learnerService.getClientState(learnerId, "recall-node").srsState())
+                .containsEntry("card-1", Map.of("id", "card-1", "interval", 1, "repetition", 1,
+                        "ef", 2.5, "nextReview", 42));
+        assertThat(saved.savedAt()).isBefore(Instant.parse("2099-01-01T00:00:00Z"));
+    }
+
+    @Test
+    void stalePracticeSyncCannotOverwriteRecallOrSchedulingWithANewerClientClock() {
+        Instant recordedAt = Instant.parse("2026-10-01T10:00:00Z");
+        Map<String, Object> server = Map.of("card-1", Map.of("id", "card-1", "interval", 6,
+                "nextReview", 10000, "verifiedRecall", Map.of("status", "passed", "passedAt", recordedAt.toString())));
+        seedTrustedSrsFixture(learnerId, "recall-node", new ClientStateRequest(recordedAt, server));
+        long before = learnerRepository.findById(learnerId).orElseThrow().getCoachStateRevision();
+
+        assertThatThrownBy(() -> learnerService.upsertClientState(learnerId, "recall-node",
+                new ClientStateRequest(Instant.parse("2099-01-01T00:00:00Z"),
+                        Map.of("card-1", Map.of("interval", 0, "nextReview", 0)),
+                        recordedAt.minusSeconds(1))))
+                .isInstanceOf(ResponseStatusException.class).hasMessageContaining("409");
+
+        assertThat(learnerService.getClientState(learnerId, "recall-node").srsState()).isEqualTo(server);
+        assertThat(learnerRepository.findById(learnerId).orElseThrow().getCoachStateRevision()).isEqualTo(before);
+    }
+
+    @Test
+    void currentPracticeSyncPreservesRecallIncludingAnOmittedVerifiedCard() {
+        Instant recordedAt = Instant.parse("2026-10-01T10:00:00Z");
+        Map<String, Object> verified = Map.of("status", "passed", "passedAt", recordedAt.toString());
+        seedTrustedSrsFixture(learnerId, "recall-node", new ClientStateRequest(recordedAt, Map.of(
+                "card-1", Map.of("id", "card-1", "nextReview", 100, "verifiedRecall", verified),
+                "card-2", Map.of("id", "card-2", "nextReview", 200, "verifiedRecall", verified))));
+
+        learnerService.upsertClientState(learnerId, "recall-node", new ClientStateRequest(null,
+                Map.of("card-1", Map.of("nextReview", 300, "verifiedRecall", Map.of("status", "failed"))),
+                learnerService.getClientState(learnerId, "recall-node").updatedAt()));
+        var state = learnerService.getClientState(learnerId, "recall-node").srsState();
+        assertThat(state.get("card-1")).isEqualTo(Map.of("id", "card-1", "nextReview", 300, "verifiedRecall", verified));
+        assertThat(state.get("card-2")).isEqualTo(Map.of("id", "card-2", "nextReview", 200, "verifiedRecall", verified));
+    }
+
+    @Test
+    void signedLearnerExportRestoresAuthoritativeCardStateAndRejectsTampering() {
+        Learner source = learnerService.createLearner();
+        Map<String, Object> cards = Map.of("card-1", Map.of("id", "card-1", "nextReview", 200,
+                "verifiedRecall", Map.of("status", "passed", "passedAt", "2026-10-01T10:00:00Z")));
+        seedTrustedSrsFixture(source.getSkillpilotId(), "recall-node", new ClientStateRequest(Instant.now(), cards));
+        var archive = learnerService.exportLearner(source.getSkillpilotId());
+        assertThat(archive.data().srsData().schemaVersion()).isEqualTo(1);
+        assertThat(archive.data().srsData().states()).containsEntry("recall-node", cards);
+        Learner target = learnerRepository.findById(learnerId).orElseThrow();
+        target.setCompletionWorkflow("{\"profileId\":\"private-navigation\"}");
+        learnerRepository.save(target);
+        learnerService.importLearner(learnerId, archive);
+        assertThat(learnerService.getClientState(learnerId, "recall-node").srsState()).isEqualTo(cards);
+        assertThat(learnerRepository.findById(learnerId).orElseThrow().getCompletionWorkflow()).isNull();
+
+        var data = archive.data();
+        var forged = new com.skillpilot.backend.api.LearnerDataDTO(data.learner(), data.mastery(), data.plannedGoals(),
+                data.copySources(), data.learningPlans(), new com.skillpilot.backend.api.PortableSrsData(1, Map.of()));
+        assertThatThrownBy(() -> learnerService.importLearner(learnerId,
+                new com.skillpilot.backend.api.SignedLearnerDataDTO(forged, archive.signature())))
+                .isInstanceOf(ResponseStatusException.class).hasMessageContaining("Invalid data signature");
+        assertThat(learnerService.getClientState(learnerId, "recall-node").srsState()).isEqualTo(cards);
+    }
+
+    @Test
+    void anOlderSignedCardBackupCannotEraseAnAlreadySavedRecallSuccess() {
+        Map<String, Object> verified = Map.of("status", "passed", "passedAt", "2026-10-01T10:00:00Z");
+        Map<String, Object> current = Map.of("card", Map.of("id", "card", "nextReview", 900, "verifiedRecall", verified));
+        seedTrustedSrsFixture(learnerId, "recall-node", new ClientStateRequest(Instant.now(), current));
+        var archived = new com.skillpilot.backend.api.LearnerDataDTO(null, Map.of(), null, Set.of(), null,
+                new com.skillpilot.backend.api.PortableSrsData(1, Map.of("recall-node", Map.of(
+                        "card", Map.of("id", "card", "nextReview", 0,
+                                "verifiedRecall", Map.of("status", "failed", "lastTestedAt", "2026-09-01T10:00:00Z"))))));
+        String signature = ReflectionTestUtils.invokeMethod(learnerService, "calculateSignature", archived);
+        learnerService.importLearner(learnerId, new com.skillpilot.backend.api.SignedLearnerDataDTO(archived, signature));
+        assertThat(learnerService.getClientState(learnerId, "recall-node").srsState()).isEqualTo(current);
+    }
+
+    @Test
+    void legacyArchiveWithUnrestorableRecallMasteryIsRejectedBeforeMutation() {
+        var legacy = new com.skillpilot.backend.api.LearnerDataDTO(null,
+                Map.of(SEK1_CORE_FORMULAS_FLASHCARDS_ID, new MasteryEntryDTO(1, Instant.now())),
+                List.of(), Set.of(), null);
+        String signature = ReflectionTestUtils.invokeMethod(learnerService, "calculateSignature", legacy);
+        long before = learnerRepository.findById(learnerId).orElseThrow().getCoachStateRevision();
+        assertThatThrownBy(() -> learnerService.importLearner(learnerId,
+                new com.skillpilot.backend.api.SignedLearnerDataDTO(legacy, signature)))
+                .isInstanceOf(ResponseStatusException.class).hasMessageContaining("without signed card state");
+        assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId)).isEmpty();
+        assertThat(learnerRepository.findById(learnerId).orElseThrow().getCoachStateRevision()).isEqualTo(before);
+    }
+
+    @Test
+    void unreadableStoredCardStateIsATechnicalFailure() {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learnerClientStateRepository.save(new com.skillpilot.backend.domain.LearnerClientState(
+                learner, "recall-node", "invalid-json", Instant.now()));
+        assertThatThrownBy(() -> learnerService.getClientState(learnerId, "recall-node"))
+                .isInstanceOf(com.skillpilot.backend.service.srs.SrsStateUnavailableException.class);
+        assertThatThrownBy(() -> learnerService.upsertClientState(learnerId, "recall-node",
+                new ClientStateRequest(null, Map.of(), learnerClientStateRepository.findById(
+                        new com.skillpilot.backend.domain.LearnerClientStateId(learnerId, "recall-node"))
+                        .orElseThrow().getClientStateUpdatedAt())))
+                .isInstanceOf(com.skillpilot.backend.service.srs.SrsStateUnavailableException.class);
     }
 
     @Test
@@ -1324,14 +1440,14 @@ public class LearnerServiceTest {
         learnerService.setPreferences(learnerId, "SEQUENTIAL", true, null, null, true);
         learnerService.setActiveGoal(learnerId, CANONICAL_CHOOSE_REPRESENTATION_ID);
 
-        var partial = learnerService.setMastery(
+        var unfinished = learnerService.setMastery(
                 learnerId,
                 new MasteryUpdateRequest(
-                        Map.of(CANONICAL_CHOOSE_REPRESENTATION_ID, 0.5),
+                        Map.of(CANONICAL_CHOOSE_REPRESENTATION_ID, 0.0),
                         CANONICAL_CHOOSE_REPRESENTATION_ID));
 
-        assertThat(partial.activeGoal()).isNotNull();
-        assertThat(partial.activeGoal().id())
+        assertThat(unfinished.activeGoal()).isNotNull();
+        assertThat(unfinished.activeGoal().id())
                 .isEqualTo(CANONICAL_CHOOSE_REPRESENTATION_ID);
         assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId())
                 .isEqualTo(CANONICAL_CHOOSE_REPRESENTATION_ID);
@@ -2925,7 +3041,7 @@ public class LearnerServiceTest {
                 "repetition", 3,
                 "ef", 2.2,
                 "nextReview", 0);
-        learnerService.upsertClientState(
+        seedTrustedSrsFixture(
                 learnerId,
                 SEK1_CORE_FORMULAS_FLASHCARDS_ID,
                 new ClientStateRequest(
@@ -3582,7 +3698,7 @@ public class LearnerServiceTest {
                         "verifiedRecall", Map.of(
                                 "status", "failed",
                                 "lastTestedAt", issuedAt.minusSeconds(60).toString()))));
-        learnerService.upsertClientState(
+        seedTrustedSrsFixture(
                 learnerId,
                 SEK1_CORE_FORMULAS_FLASHCARDS_ID,
                 new ClientStateRequest(issuedAt.minusSeconds(30), state));
@@ -3645,7 +3761,7 @@ public class LearnerServiceTest {
                 SEK1_CORE_FORMULAS_FLASHCARDS_ID,
                 20);
         String cardBlockedBeforeMidnight = completeDeck.cards().getFirst().cardId();
-        learnerService.upsertClientState(
+        seedTrustedSrsFixture(
                 learnerId,
                 SEK1_CORE_FORMULAS_FLASHCARDS_ID,
                 new ClientStateRequest(
@@ -4449,4 +4565,14 @@ public class LearnerServiceTest {
         return new FrontierGoal(id, id, "", "atomic", "exam", "Prerequisites met",
                 List.of(), List.of(), null, null, null, null);
     }
+    private void seedTrustedSrsFixture(String learnerId, String nodeId, ClientStateRequest request) {
+        try {
+            Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+            learnerClientStateRepository.save(new com.skillpilot.backend.domain.LearnerClientState(
+                    learner, nodeId, objectMapper.writeValueAsString(request.srsState()), request.updatedAt()));
+        } catch (java.io.IOException exception) {
+            throw new IllegalStateException(exception);
+        }
+    }
+
 }

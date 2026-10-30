@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto'
+import { addCompletionRdfAssertions } from './fwuOwlCompletionSemantics'
 import type { SourceLogicalArtifact, ValidatedSourceJsonPackage } from './fwuOwlPackageSource'
 import {
   FwuOwlFieldRegistry,
@@ -47,6 +48,9 @@ export const FWU_OWL_SEGMENT_ROUTING: Readonly<Record<string, FwuOwlSegmentId>> 
   'card-index': 'cards',
   'card-deck': 'cards',
   'resource-index': 'assets',
+  'completion-profile': 'runtime',
+  'completion-scope': 'runtime',
+  'completion-rule-review': 'runtime',
 })
 
 export type CompiledFwuOwlSegment = NTriplesSerialization & {
@@ -1187,7 +1191,9 @@ export const compileFwuOwlSemantics = (options: {
   packageProfile: JsonObject
 }): FwuOwlCompilationResult => {
   const registry = new FwuOwlFieldRegistry(options.registryValue)
-  if (registry.registryId !== 'skillpilot-fwu-field-semantics-v1' || registry.entries.length !== 456) {
+  const completionRegistry = registry.registryId === 'skillpilot-fwu-field-semantics-completion-v1'
+  if ((!completionRegistry && (registry.registryId !== 'skillpilot-fwu-field-semantics-v1' || registry.entries.length !== 456))
+      || (completionRegistry && registry.entries.length !== 473)) {
     fail(`Unsupported field registry ${registry.registryId} with ${registry.entries.length} entries.`)
   }
   const vocabulary = derivePackageVocabularyDeclarations(
@@ -1251,6 +1257,11 @@ export const compileFwuOwlSemantics = (options: {
         segmentTriples.add(match[1], match[2], iriObject(match[3]))
       })
     } else {
+      if (segmentId === 'runtime' && completionRegistry) addCompletionRdfAssertions(
+        orderedArtifacts.map(state => ({ role: state.artifact.normalizationRole,
+          rootIri: state.rootIri, document: state.document })),
+        context.goalIris, segmentTriples,
+      )
       orderedArtifacts.forEach((state) => {
         if (state.segmentId !== segmentId) return
         addManualArtifactSemantics(context, state, segmentTriples)

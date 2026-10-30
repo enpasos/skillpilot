@@ -40,7 +40,7 @@
     "test:session-setup-id-entry": "tsx scripts/testSessionSetupIdEntry.ts",
     "test:session-setup": "npm run test:session-setup-id-entry && tsx src/utils/sessionSetupStepVisibility.test.ts && tsx src/utils/sessionSetupCompletionPresentation.test.ts && tsx src/utils/curriculumQualityTrafficLight.test.ts && tsx scripts/testCurriculumQualityTrafficLightDrift.ts",
     "test:session-setup-ui": "tsx scripts/testSessionSetupCompletionUi.ts",
-    "test:learner-data-management": "tsx src/utils/learnerDataManagement.test.ts && tsx src/utils/learnerDataManagementCopy.test.ts && tsx scripts/testLearnerDataManagementUi.ts",
+    "test:learner-data-management": "tsx src/utils/learnerDataManagement.test.ts && tsx src/utils/learnerDataManagementCopy.test.ts && tsx scripts/testLearnerDataManagementUi.ts && tsx src/utils/srsPracticeSync.test.ts",
     "test:curriculum-quality-ui": "tsx scripts/testCurriculumQualityTrafficLightUi.ts && tsx scripts/testCurriculaQualityLayoutUi.ts",
     "test:personal-curriculum-stage-scope": "tsx src/utils/personalCurriculumStageScope.test.ts",
     "test:personal-curriculum-editor": "tsx src/utils/personalCurriculumOptionLabel.test.ts && tsx src/utils/courseProfileFilters.test.ts && npm run test:personal-curriculum-stage-scope && tsx scripts/testPersonalCurriculumEditorLabels.tsx && tsx src/utils/personalCurriculumEditorApi.test.ts",
@@ -256,7 +256,11 @@
     "apply:applicability": "tsx scripts/applyApplicability.ts",
     "mcp:server": "npm --prefix \"../ai/openai app\" run start",
     "test:math-distance-reflection-structure": "tsx scripts/testMathDistanceReflectionStructure.ts",
-    "test:math-pythagoras-structure": "tsx scripts/testMathPythagorasStructure.ts"
+    "test:math-pythagoras-structure": "tsx scripts/testMathPythagorasStructure.ts",
+    "check:assessment-completion-profiles": "tsx scripts/checkAssessmentCompletionProfiles.ts",
+    "test:assessment-completion-profiles": "tsx scripts/testAssessmentCompletionProfiles.ts",
+    "test:level-completion": "tsx src/utils/levelCompletionApi.test.ts && tsx scripts/testLevelCompletionUi.tsx",
+    "test:level-completion-browser": "tsx scripts/testLevelCompletionBrowser.ts"
   },
   "dependencies": {
     "@types/dagre": "^0.7.53",

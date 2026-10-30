@@ -30,6 +30,12 @@ public final class JsonCurriculumPackageLoader {
             "https://skillpilot.com/schemas/curriculum-package/v1/package-manifest.schema.json";
     private static final String RUNTIME_CATALOG_SCHEMA_ID =
             "https://skillpilot.com/schemas/curriculum-package/v1/runtime-catalog.schema.json";
+    private static final String COMPLETION_CATALOG_SCHEMA_ID =
+            "https://skillpilot.com/schemas/curriculum-package/v1.1/runtime-catalog.schema.json";
+    private static final String COMPLETION_ARTIFACT_SCHEMA_ID =
+            "https://skillpilot.com/schemas/curriculum-package/v1.1/completion-artifact.schema.json";
+    private static final String COMPLETION_RELEASE_PROFILE = "full-standalone-completion-v1";
+    private static final String COMPLETION_CAPABILITY = "assessmentCompletionV1";
     private static final String RELEASE_PROFILE = "full-standalone-v1";
     private static final String PACKAGE_FORMAT_VERSION = "1.0";
     private static final String RUNTIME_CONTRACT_VERSION = "1.0";
@@ -41,7 +47,7 @@ public final class JsonCurriculumPackageLoader {
             "memoryCards",
             "goalVisualizations",
             "embeddedDependencies",
-            "examNodes");
+            "examNodes", COMPLETION_CAPABILITY);
 
     private final CurriculumPackageProperties properties;
     private final CurriculumPackageRepository repository;
@@ -120,7 +126,7 @@ public final class JsonCurriculumPackageLoader {
             }
         }
 
-        return new CurriculumRuntimeSnapshot(
+        CurriculumRuntimeSnapshot snapshot = new CurriculumRuntimeSnapshot(
                 active.lockSha256(),
                 packageDescriptors,
                 rootLandscapeIds,
@@ -133,6 +139,14 @@ public final class JsonCurriculumPackageLoader {
                 artifacts,
                 aliases,
                 definitions.size());
+        if (packageDescriptors.stream().anyMatch(p -> p.capabilities().contains(COMPLETION_CAPABILITY))) {
+            try {
+                com.skillpilot.backend.completion.CompletionPackageCatalog.load(snapshot, objectMapper);
+            } catch (Exception e) {
+                throw failure("Invalid reviewed completion package: " + e.getMessage());
+            }
+        }
+        return snapshot;
     }
 
     private LoadedPackage loadPackage(InstalledCurriculumPackage installedPackage) {
@@ -147,8 +161,13 @@ public final class JsonCurriculumPackageLoader {
         JsonNode manifest = parseJson(manifestBytes, "package manifest " + lock.releaseId());
         requireExactText(manifest, "$schema", MANIFEST_SCHEMA_ID, "package manifest");
         requireExactText(manifest, "packageFormatVersion", PACKAGE_FORMAT_VERSION, "package manifest");
-        requireExactText(manifest, "runtimeContractVersion", RUNTIME_CONTRACT_VERSION, "package manifest");
-        requireExactText(manifest, "releaseProfile", RELEASE_PROFILE, "package manifest");
+        String runtimeVersion = requiredText(manifest, "runtimeContractVersion", "package manifest");
+        boolean completion = runtimeVersion.equals("1.1");
+        if (!completion && !runtimeVersion.equals(RUNTIME_CONTRACT_VERSION)) {
+            throw failure("Unsupported runtime contract version: " + runtimeVersion);
+        }
+        requireExactText(manifest, "releaseProfile",
+                completion ? COMPLETION_RELEASE_PROFILE : RELEASE_PROFILE, "package manifest");
         requireExactText(manifest, "variant", "json", "package manifest");
         requireExactText(manifest, "packageId", lock.packageId(), "package manifest");
         requireExactText(manifest, "packageVersion", lock.packageVersion(), "package manifest");
@@ -166,9 +185,10 @@ public final class JsonCurriculumPackageLoader {
                 buildArtifactInventory(installedPackage, files);
         ManifestFile catalogFile = exactlyOneRole(files, "runtime-catalog");
         JsonNode catalog = readJsonArtifact(installedPackage, catalogFile, verifiedPaths);
-        requireExactText(catalog, "$schema", RUNTIME_CATALOG_SCHEMA_ID, "runtime catalog");
-        requireExactText(catalog, "catalogVersion", "1.0", "runtime catalog");
-        requireExactText(catalog, "runtimeContractVersion", RUNTIME_CONTRACT_VERSION, "runtime catalog");
+        requireExactText(catalog, "$schema",
+                completion ? COMPLETION_CATALOG_SCHEMA_ID : RUNTIME_CATALOG_SCHEMA_ID, "runtime catalog");
+        requireExactText(catalog, "catalogVersion", completion ? "1.1" : "1.0", "runtime catalog");
+        requireExactText(catalog, "runtimeContractVersion", runtimeVersion, "runtime catalog");
         JsonNode releaseBinding = requiredObject(catalog, "releaseBinding", "runtime catalog");
         requireExactText(releaseBinding, "releaseId", lock.releaseId(), "runtime catalog releaseBinding");
         requireExactText(releaseBinding, "contentDigest", lock.contentDigest(), "runtime catalog releaseBinding");
@@ -181,6 +201,9 @@ public final class JsonCurriculumPackageLoader {
         }
         if (capabilities.contains("embeddedDependencies")) {
             throw failure("embeddedDependencies capability is not supported by the DPK-006a loader");
+        }
+        if (completion != capabilities.contains(COMPLETION_CAPABILITY)) {
+            throw failure("Assessment completion capability requires the exact runtime 1.1 release profile");
         }
 
         JsonNode indexes = requiredObject(catalog, "artifactIndexes", "runtime catalog");
@@ -229,6 +252,7 @@ public final class JsonCurriculumPackageLoader {
         Map<String, CurriculumRuntimeSnapshot.ResourceDescriptor> resources = loadResources(
                 installedPackage, catalog, resourceIndex, files);
         validateLocalCatalogBindings(landscapes, views, offerings, decks, resources);
+        validateCompletionArtifacts(installedPackage, catalog, files, artifacts, verifiedPaths, landscapes, completion);
 
         for (ManifestFile file : files.values()) {
             if (!verifiedPaths.contains(file.path())) {
@@ -263,6 +287,111 @@ public final class JsonCurriculumPackageLoader {
                 artifacts,
                 aliasesJson,
                 definitions);
+    }
+
+    private void validateCompletionArtifacts(
+            InstalledCurriculumPackage installed, JsonNode catalog, Map<String, ManifestFile> files,
+            Map<CurriculumRuntimeSnapshot.ArtifactKey, CurriculumRuntimeSnapshot.Artifact> artifacts,
+            Set<String> verified, Map<String, CurriculumRuntimeSnapshot.LandscapeDescriptor> landscapes,
+            boolean completion) {
+        Set<String> completionRoles = Set.of("completion-profile", "completion-scope", "completion-rule-review");
+        Set<String> inventory = new HashSet<>();
+        files.values().stream().filter(file -> completionRoles.contains(file.role())).forEach(file -> inventory.add(file.path()));
+        if (!completion) {
+            if (!inventory.isEmpty() || catalog.has("completionArtifacts")) {
+                throw failure("Runtime 1.0 cannot carry assessment completion artifacts");
+            }
+            return;
+        }
+        Set<String> goalIds = new HashSet<>();
+        for (var landscape : landscapes.values()) {
+            JsonNode definition = parseJson(landscape.json().getBytes(StandardCharsets.UTF_8), "completion landscape");
+            for (JsonNode goal : requiredArray(definition, "goals", "completion landscape")) {
+                goalIds.add(requiredText(goal, "id", "completion goal"));
+            }
+        }
+        Map<String, JsonNode> profileDefinitions = new LinkedHashMap<>();
+        Map<String, JsonNode> scopeDefinitions = new LinkedHashMap<>();
+        Set<String> reviewPaths = new HashSet<>();
+        Set<String> logicalIds = new HashSet<>();
+        Set<String> indexed = new HashSet<>();
+        JsonNode entries = requiredArray(catalog, "completionArtifacts", "runtime 1.1 catalog");
+        if (entries.isEmpty() || entries.size() > 10_000) throw failure("Completion artifact discovery is empty or too large");
+        for (JsonNode entry : entries) {
+            requireFieldSet(entry, Set.of("id", "kind", "artifactPath"), "completion discovery");
+            String id = requiredText(entry, "id", "completion discovery");
+            String kind = requiredText(entry, "kind", "completion discovery");
+            String path = requiredRelativePath(entry, "artifactPath", "completion discovery");
+            String role = switch (kind) {
+                case "profile" -> "completion-profile";
+                case "scope" -> "completion-scope";
+                case "review" -> "completion-rule-review";
+                default -> throw failure("Unknown completion artifact kind: " + kind);
+            };
+            if (!logicalIds.add(kind + ":" + id) || !indexed.add(path)) throw failure("Duplicate completion artifact identity or path");
+            ManifestFile file = requiredRole(files, path, role);
+            if (!"application/json".equals(file.mediaType()) || !file.runtimeRequired()
+                    || !"logical-artifact".equals(file.semanticBindingKind()) || !id.equals(file.logicalId())
+                    || !role.equals(file.normalizationRole()) || !COMPLETION_ARTIFACT_SCHEMA_ID.equals(file.validationSchemaId())) {
+                throw failure("Completion artifact has incompatible manifest or semantic bindings: " + path);
+            }
+            byte[] bytes = readArtifactBytes(installed, file, verified);
+            JsonNode wrapper = parseJson(bytes, "completion artifact " + path);
+            requireFieldSet(wrapper, Set.of("artifactFormatVersion", "artifactKind", "id", "definition"), "completion wrapper");
+            if (requiredNonNegativeLong(wrapper, "artifactFormatVersion", "completion wrapper") != 1) throw failure("Unsupported completion artifact version");
+            requireExactText(wrapper, "id", id, "completion wrapper");
+            requireExactText(wrapper, "artifactKind", kind, "completion wrapper");
+            JsonNode definition = requiredObject(wrapper, "definition", "completion wrapper");
+            if (kind.equals("review")) {
+                if (!id.equals(path)) throw failure("Completion review identity must equal its package-local artifact path");
+                requireFieldSet(definition, Set.of("mediaType", "content", "sha256"), "completion review");
+                String mediaType = requiredText(definition, "mediaType", "completion review");
+                if (!Set.of("text/markdown", "application/json").contains(mediaType)) throw failure("Unsupported completion review media type");
+                String content = requiredText(definition, "content", "completion review");
+                requireExactText(definition, "sha256", CurriculumPackageFileReader.sha256(content.getBytes(StandardCharsets.UTF_8)), "completion review");
+                if (mediaType.equals("application/json")) parseJson(content.getBytes(StandardCharsets.UTF_8), "completion review content");
+                reviewPaths.add(path);
+            } else {
+                requireExactText(definition, "id", id, "completion definition");
+                (kind.equals("profile") ? profileDefinitions : scopeDefinitions).put(id, definition);
+            }
+            artifacts.get(new CurriculumRuntimeSnapshot.ArtifactKey(installed.lockEntry().packageId(), path))
+                    .retainVerifiedContent(bytes);
+        }
+        if (!indexed.equals(inventory) || profileDefinitions.isEmpty() || scopeDefinitions.isEmpty() || reviewPaths.isEmpty()) {
+            throw failure("Completion discovery must exactly cover profiles, scopes and reviews in the manifest");
+        }
+        for (JsonNode scope : scopeDefinitions.values()) {
+            for (String goal : requiredUniqueTextList(scope, "targetRootIds", "completion scope")) {
+                if (!goalIds.contains(goal)) throw failure("Completion scope references an unknown goal: " + goal);
+            }
+        }
+        for (JsonNode profile : profileDefinitions.values()) {
+            if (!scopeDefinitions.containsKey(requiredText(profile, "levelScopeRef", "completion profile"))) {
+                throw failure("Completion profile references an unknown scope");
+            }
+            JsonNode review = requiredObject(profile, "review", "completion profile");
+            if (!reviewPaths.contains(requiredRelativePath(review, "reference", "completion profile review"))) {
+                throw failure("Completion profile references a missing package-local review");
+            }
+            if (profile.has("protectedGoalIds")) verifyCompletionGoalRefs(profile, "protectedGoalIds", goalIds);
+            for (JsonNode rule : requiredArray(profile, "rules", "completion profile")) {
+                verifyCompletionGoalRefs(rule, "assessmentGoalIds", goalIds);
+                verifyCompletionGoalRefs(rule, "waivableGoalIds", goalIds);
+            }
+        }
+    }
+
+    private static void verifyCompletionGoalRefs(JsonNode node, String field, Set<String> goals) {
+        for (String goal : requiredUniqueTextList(node, field, "completion policy")) {
+            if (!goals.contains(goal)) throw failure("Completion policy references an unknown goal: " + goal);
+        }
+    }
+
+    private static void requireFieldSet(JsonNode node, Set<String> fields, String context) {
+        Set<String> actual = new HashSet<>();
+        node.fieldNames().forEachRemaining(actual::add);
+        if (!actual.equals(fields)) throw failure(context + " has unexpected or missing fields");
     }
 
     private void validateLocalCatalogBindings(

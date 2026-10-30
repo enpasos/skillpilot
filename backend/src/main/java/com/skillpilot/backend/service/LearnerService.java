@@ -1,6 +1,10 @@
 package com.skillpilot.backend.service;
 
 import com.skillpilot.backend.api.MasteryUpdateRequest;
+import com.skillpilot.backend.api.LevelCompletionResponse;
+import com.skillpilot.backend.api.LevelCompletionActionRequest;
+import com.skillpilot.backend.api.CompletionAssessmentStart;
+import com.skillpilot.backend.completion.*;
 import com.skillpilot.backend.domain.CopySource;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.LearnerClientState;
@@ -67,6 +71,9 @@ import com.skillpilot.backend.api.CreateLearnerRequest;
 import com.skillpilot.backend.api.ClientStateRequest;
 import com.skillpilot.backend.api.ClientStateResponse;
 import com.skillpilot.backend.api.ClientStateSnapshot;
+import com.skillpilot.backend.api.PortableSrsData;
+import com.skillpilot.backend.service.srs.SrsPracticeStateGuard;
+import com.skillpilot.backend.service.srs.SrsStateUnavailableException;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.GoalSourceLink;
 import com.skillpilot.backend.api.LearnerGoals;
@@ -117,7 +124,7 @@ import org.springframework.core.io.Resource;
 public class LearnerService {
 
     private static final int MEMORY_PRACTICE_BATCH_LIMIT = 20;
-    private static final double PLANNING_SCOPE_MASTERY_THRESHOLD = 0.9;
+    private static final double PLANNING_SCOPE_MASTERY_THRESHOLD = Mastery.LEGACY_MASTERED_THRESHOLD;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(LearnerService.class);
     private static final ZoneId VERIFIED_RECALL_DAY_ZONE = ZoneId.of("Europe/Berlin");
@@ -151,6 +158,458 @@ public class LearnerService {
 
     @Autowired
     private LearnerGoalCompletionService goalCompletionService;
+
+    @Autowired(required = false)
+    private CompletionApplicationService completionApplicationService;
+
+    public boolean completionRouteOwnsNavigation(Learner learner) {
+        return CompletionNavigationPolicy.ownsNavigation(learner);
+    }
+
+    public boolean effectivePlanFollowing(Learner learner) {
+        return CompletionNavigationPolicy.followsPlans(learner);
+    }
+
+    public boolean supportsCompletionWorkflow() {
+        return completionApplicationService != null && completionApplicationService.catalog().available();
+    }
+
+    private CompletionWorkflowState completionWorkflow(Learner learner) {
+        if (!completionRouteOwnsNavigation(learner)) return null;
+        try {
+            return objectMapper.readValue(learner.getCompletionWorkflow(), CompletionWorkflowState.class);
+        } catch (Exception e) {
+            return null; // The route remains paused; malformed private state never opens a bypass.
+        }
+    }
+
+    private void saveCompletionWorkflow(Learner learner, CompletionWorkflowState state) {
+        try {
+            learner.setCompletionWorkflow(state == null ? null : objectMapper.writeValueAsString(state));
+        } catch (Exception e) {
+            throw new IllegalStateException("Cannot serialize completion navigation", e);
+        }
+    }
+
+    private String completionScopeDigest(Learner learner) {
+        try {
+            byte[] input = (String.valueOf(learner.getSelectedCurriculum()) + "\n"
+                    + String.valueOf(learner.getPersonalCurriculum())).getBytes(java.nio.charset.StandardCharsets.UTF_8);
+            return java.util.HexFormat.of().formatHex(java.security.MessageDigest.getInstance("SHA-256").digest(input));
+        } catch (java.security.NoSuchAlgorithmException e) { throw new IllegalStateException(e); }
+    }
+
+    private boolean completionWorkflowMatches(Learner learner, CompletionWorkflowState workflow) {
+        return workflow != null && completionApplicationService != null
+                && completionApplicationService.catalog().available()
+                && Objects.equals(workflow.curriculumId(), learner.getSelectedCurriculum())
+                && Objects.equals(workflow.personalCurriculumDigest(), completionScopeDigest(learner))
+                && Objects.equals(workflow.curriculumGeneration(), completionApplicationService.catalog().generation())
+                && completionApplicationService.catalog().profile(workflow.profileId()) != null
+                && Objects.equals(workflow.profileRevision(),
+                        completionApplicationService.catalog().profile(workflow.profileId()).revision());
+    }
+
+    private boolean currentDirectAssessmentBinding(Learner learner, CompletionWorkflowState workflow) {
+        if (!completionWorkflowMatches(learner, workflow) || workflow.directAssessment() == null
+                || !workflow.directAssessment().live(Instant.now())) return false;
+        try {
+            GoalProjection projection = getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
+            var compiled = completionApplicationService.compile(workflow.profileId(), learner.getSelectedCurriculum(),
+                    completionCanonicalGraph(learner.getSelectedCurriculum()), projection.targetGoalIds());
+            assertCompletionApplicability(learner, compiled);
+            return compiled.assessmentGoalIds().contains(workflow.directAssessment().goalId());
+        } catch (RuntimeException error) { return false; }
+    }
+
+    private boolean preservesDirectAssessment(Learner learner, String goalId) {
+        CompletionWorkflowState workflow = completionWorkflow(learner);
+        return currentDirectAssessmentBinding(learner, workflow)
+                && Objects.equals(goalId, workflow.directAssessment().goalId());
+    }
+
+    private boolean ownsDirectAssessment(CompletionCallContext call, CompletionWorkflowState workflow) {
+        return call != null && call.supported() && workflow != null && workflow.directAssessment() != null
+                && Objects.equals(call.provider(), workflow.directAssessment().provider())
+                && Objects.equals(call.sessionBinding(), workflow.directAssessment().sessionBinding());
+    }
+
+    /** Ownership is checked for actions, while ordinary cockpit reads may preserve the running goal. */
+    public void assertCompletionAssessmentOwner(String skillpilotId, String goalId) {
+        Learner learner = getLearner(skillpilotId);
+        CompletionWorkflowState workflow = completionWorkflow(learner);
+        if (workflow == null || workflow.directAssessment() == null) return;
+        CompletionCallContext context = CompletionCallContext.current();
+        if (!preservesDirectAssessment(learner, goalId) || context == null || !context.supported()
+                || !Objects.equals(context.provider(), workflow.directAssessment().provider())
+                || !Objects.equals(context.sessionBinding(), workflow.directAssessment().sessionBinding())) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
+                    "This assessment belongs to another or expired learning session. Start again deliberately.");
+        }
+    }
+
+    @org.springframework.beans.factory.annotation.Autowired
+    private CompletionCanonicalGraphResolver completionCanonicalGraphResolver;
+
+    private Map<String, LearningGoal> completionCanonicalGraph(String curriculumId) {
+        return completionApplicationService.canonicalGraph(curriculumId,
+                () -> completionCanonicalGraphResolver.load(curriculumId));
+    }
+
+    private record CompletionSnapshot(LevelCompletionResponse response,
+                                      CompiledCompletionProfile compiled, CompletionEvaluation evaluation) { }
+
+    private void assertCompletionApplicability(Learner learner, CompiledCompletionProfile compiled) {
+        if (compiled.profile().applicability().isEmpty()) return;
+        Set<String> subjects = compiled.targetGoalIds().stream().map(landscapeService::getLandscapeIdForGoal)
+                .collect(Collectors.toCollection(LinkedHashSet::new));
+        if (subjects.contains(null)) throw new CompletionApplicability.UnresolvedScopeException();
+        Map<String, Map<String, Object>> config = parsePersonalCurriculumConfig(learner.getPersonalCurriculum());
+        CompletionApplicability.requireMatches(compiled.profile().applicability(), subjects.stream()
+                .map(subject -> deriveCompositionScope(subject, config)).toList());
+    }
+
+    private CompletionSnapshot completionSnapshot(Learner learner, GoalProjection projection) {
+        if (completionApplicationService == null || (!completionApplicationService.catalog().enabled()
+                && !completionRouteOwnsNavigation(learner))) return null;
+        var catalog = completionApplicationService.catalog();
+        CompletionWorkflowState workflow = completionWorkflow(learner);
+        boolean routeOwnsNavigation = completionRouteOwnsNavigation(learner);
+        if (!routeOwnsNavigation && catalog.profiles().isEmpty()) return null;
+        List<LevelCompletionResponse.ProfileOption> options = new ArrayList<>();
+        Map<String, LearningGoal> graph = Map.of();
+        String graphProblem = null;
+        if (projection != null && catalog.available() && !catalog.profiles().isEmpty()) {
+            try {
+                graph = completionCanonicalGraph(learner.getSelectedCurriculum());
+            } catch (IllegalArgumentException e) {
+                graphProblem = "invalid";
+            } catch (RuntimeException e) {
+                graphProblem = "unavailable";
+            }
+        }
+        Set<String> targets = projection == null ? Set.of() : projection.targetGoalIds();
+        if (catalog.available() && graphProblem == null) {
+            for (var profile : catalog.profiles().values()) {
+                try {
+                    var candidate = completionApplicationService.compile(profile.id(), learner.getSelectedCurriculum(), graph, targets);
+                    assertCompletionApplicability(learner, candidate);
+                    options.add(new LevelCompletionResponse.ProfileOption(profile.id(), profile.title(),
+                            candidate.targetGoalIds().size(), candidate.assessmentGoalIds().size()));
+                } catch (CompletionApplicationService.PreparedContextUnavailableException | IllegalArgumentException e) {
+                    /* Unprepared or inapplicable profiles are never offered. */
+                }
+            }
+        }
+        if (!routeOwnsNavigation && options.isEmpty()) return null;
+        String status = "unresolved";
+        String notice = null;
+        CompiledCompletionProfile compiled = null;
+        CompletionEvaluation evaluation = null;
+        List<LevelCompletionResponse.Assessment> assessments = new ArrayList<>();
+        List<LevelCompletionResponse.Action> actions = new ArrayList<>();
+        boolean storedDirect = workflow != null && workflow.directAssessment() != null;
+        boolean directRunning = storedDirect && currentDirectAssessmentBinding(learner, workflow);
+        boolean invalidDirectBinding = storedDirect && !directRunning;
+        if (!catalog.available()) { status = "unavailable"; notice = "completion_generation_unavailable"; }
+        else if (graphProblem != null) { status = graphProblem; notice = "completion_profile_invalid"; }
+        else if (workflow == null && completionRouteOwnsNavigation(learner)) {
+            status = "invalid"; notice = "completion_workflow_invalid";
+        } else if (workflow != null && !completionWorkflowMatches(learner, workflow)) {
+            status = "notApplicable";
+            var currentProfile = catalog.profile(workflow.profileId());
+            if (!Objects.equals(workflow.curriculumGeneration(), catalog.generation())) notice = "completion_generation_changed";
+            else if (currentProfile == null || !Objects.equals(workflow.profileRevision(), currentProfile.revision())) {
+                notice = "completion_profile_changed";
+            } else notice = "completion_scope_changed";
+        } else if (workflow != null) {
+            try {
+                compiled = completionApplicationService.compile(workflow.profileId(), learner.getSelectedCurriculum(), graph, targets);
+                assertCompletionApplicability(learner, compiled);
+                Map<String, Double> storedMastery = new LinkedHashMap<>();
+                masteryRepository.findByLearner_SkillpilotId(learner.getSkillpilotId())
+                        .forEach(entry -> storedMastery.put(entry.getGoalKey(), entry.getValue()));
+                Map<String, LearningGoal> contextGoals = new LinkedHashMap<>();
+                for (String id : compiled.contextGoalIds()) contextGoals.put(id, graph.get(id));
+                Map<String, Double> mastery = new LinkedHashMap<>(applyCanonicalMasteryProjection(
+                        contextGoals, storedMastery, resolveProjectionStateFilterId(learner)));
+                resolveSrsMasterySnapshot(learner.getSkillpilotId(), compiled.contextGoalIds().stream()
+                        .map(graph::get).filter(Objects::nonNull).toList())
+                        .forEach((id, mastered) -> mastery.put(id, mastered ? 1.0 : 0.0));
+                evaluation = completionApplicationService.evaluate(compiled, mastery);
+                status = "valid";
+                CompletionCallContext call = CompletionCallContext.current();
+                boolean foreignOwner = storedDirect && call != null && !ownsDirectAssessment(call, workflow);
+                boolean compatible = !invalidDirectBinding && (call == null || (call.supported() && !foreignOwner));
+                if (invalidDirectBinding) notice = "completion_profile_invalid";
+                else if (call != null && !call.supported()) notice = "completion_coach_contract_unsupported";
+                else if (foreignOwner) notice = "completion_assessment_owned_elsewhere";
+                for (String id : compiled.assessmentGoalIds()) {
+                    LearningGoal goal = graph.get(id);
+                    boolean mastered = evaluation.masteredAssessmentGoalIds().contains(id);
+                    boolean available = compatible && !mastered && !directRunning
+                            && !isExamGoalUnavailableForHardCheck(goal);
+                    assessments.add(new LevelCompletionResponse.Assessment(id, completionTitle(goal), mastered,
+                            available, available || mastered ? null : invalidDirectBinding ? "assessment_context_unavailable"
+                                    : directRunning ? "assessment_running"
+                                    : compatible ? "assessment_task_unavailable" : "coach_contract_unsupported"));
+                }
+                if (compatible) {
+                    if (directRunning) actions.add(new LevelCompletionResponse.Action("retryAssessment",
+                            workflow.directAssessment().goalId(),
+                            Map.of("de", "Prüfung erneut versuchen", "en", "Try assessment again"), null));
+                    CompletionEvaluation evaluated = evaluation;
+                    Set<String> learnable = filterAtomicFrontier(getRichFrontier(learner.getSkillpilotId(), false))
+                            .stream().map(FrontierGoal::id).collect(Collectors.toCollection(LinkedHashSet::new));
+                    for (String id : compiled.contextGoalIds().stream().filter(learnable::contains)
+                            .filter(targets::contains)
+                            .filter(id -> !evaluated.masteredGoalIds().contains(id))
+                            .filter(id -> !evaluated.waivedGoalIds().contains(id)).limit(8).toList()) {
+                        if (compiled.assessmentGoalIds().contains(id)) continue;
+                        actions.add(new LevelCompletionResponse.Action("learnGoal", id,
+                                completionTitle(graph.get(id)), compiled.targetGoalIds().contains(id) ? "required" : "support"));
+                    }
+                    for (String id : evaluation.waivedGoalIds().stream().filter(compiled.targetGoalIds()::contains)
+                            .filter(targets::contains)
+                            .filter(learnable::contains).limit(8).toList()) {
+                        actions.add(new LevelCompletionResponse.Action("learnGoal", id,
+                                completionTitle(graph.get(id)), "voluntary"));
+                    }
+                    Set<String> focusedAtoms = projectedAtomicTargetIds(
+                            resolveEffectiveProjectedFocusIds(learner, projection), projection);
+                    Set<String> requiredAssessments = compiled.assessmentGoalIds();
+                    for (String id : evaluation.pendingTargetGoalIds().stream().filter(targets::contains)
+                            .filter(id -> !focusedAtoms.contains(id)).filter(id -> !requiredAssessments.contains(id))
+                            .sorted().limit(4).toList()) {
+                        var title = completionTitle(graph.get(id));
+                        actions.add(new LevelCompletionResponse.Action("includeTarget", id,
+                                Map.of("de", "Zum Lernfokus hinzufügen: " + title.get("de"),
+                                        "en", "Add to learning focus: " + title.get("en")), null));
+                    }
+                    if (!evaluation.complete() && actions.stream().noneMatch(action -> "learnGoal".equals(action.action()))) {
+                        // Preview once over the whole eligible support context. No focus or
+                        // result is changed by this read; the accepted choice adds only its
+                        // exact goal and retains every independent existing focus root.
+                        List<String> supportPreview = compiled.contextGoalIds().stream().filter(targets::contains).toList();
+                        Set<String> profileTargets = compiled.targetGoalIds();
+                        for (FrontierGoal goal : filterAtomicFrontier(getUncompactedRichFrontierForFocus(
+                                learner.getSkillpilotId(), supportPreview)).stream()
+                                .filter(goal -> !profileTargets.contains(goal.id()) && !focusedAtoms.contains(goal.id()))
+                                .filter(goal -> !evaluated.masteredGoalIds().contains(goal.id())
+                                        && !evaluated.waivedGoalIds().contains(goal.id()))
+                                .limit(4).toList()) {
+                            var title = completionTitle(graph.get(goal.id()));
+                            actions.add(new LevelCompletionResponse.Action("includeSupport", goal.id(),
+                                    Map.of("de", "Unterstützung starten: " + title.get("de"),
+                                            "en", "Start support: " + title.get("en")), "support"));
+                        }
+                    }
+                }
+            } catch (CompletionApplicability.UnresolvedScopeException e) {
+                status = "unresolved"; notice = "completion_scope_unresolved";
+            } catch (CompletionApplicationService.ScopeNotApplicableException e) {
+                status = "notApplicable"; notice = "completion_scope_changed";
+            } catch (IllegalArgumentException e) {
+                status = "invalid"; notice = "completion_profile_invalid";
+            } catch (RuntimeException e) {
+                status = "unavailable"; notice = "completion_mastery_unavailable";
+            }
+        }
+        if (!"valid".equals(status)) evaluation = null;
+        if (completionRouteOwnsNavigation(learner)
+                && (CompletionCallContext.current() == null || !storedDirect
+                    || ownsDirectAssessment(CompletionCallContext.current(), workflow))) {
+            if (workflow != null && !storedDirect && "valid".equals(status)
+                    && !"paused".equals(workflow.navigationIntent())) {
+                actions.add(new LevelCompletionResponse.Action("pauseProfile", null,
+                        Map.of("de", "Für heute beenden", "en", "Finish for today"), null));
+            }
+            actions.add(new LevelCompletionResponse.Action("leaveProfile", null,
+                    Map.of("de", "Zur normalen Lernansicht", "en", "Return to ordinary learning"), null));
+            if (storedDirect) actions.add(new LevelCompletionResponse.Action("endAssessment", null,
+                    Map.of("de", "Prüfung beenden und pausieren", "en", "End assessment and pause"), null));
+        }
+        var profile = workflow == null ? null : catalog.profile(workflow.profileId());
+        completionApplicationService.recordStatus(status);
+        String contextRef = workflow == null ? null : workflow.profileId() + ":" + workflow.profileRevision()
+                + ":" + catalog.generation() + ":" + learner.getCoachStateRevision();
+        LevelCompletionResponse response = new LevelCompletionResponse(status, contextRef,
+                workflow == null ? null : workflow.profileId(), profile == null ? null : profile.revision(),
+                catalog.generation(), learner.getCoachStateRevision(), profile == null ? null : profile.title(),
+                evaluation == null ? null : evaluation.complete(),
+                evaluation == null ? 0 : evaluation.masteredTargetCount(),
+                evaluation == null ? 0 : evaluation.waivedTargetCount(),
+                evaluation == null ? 0 : evaluation.pendingTargetCount(),
+                evaluation == null ? 0 : evaluation.targetCount(),
+                evaluation == null ? 0 : evaluation.masteredAssessmentCount(),
+                evaluation == null ? 0 : evaluation.requiredAssessmentCount(),
+                evaluation == null ? List.of() : evaluation.waivedGoalIds().stream()
+                        .filter(compiled.targetGoalIds()::contains).sorted().limit(100).toList(),
+                List.copyOf(assessments), List.copyOf(options), workflow == null ? null : workflow.navigationIntent(),
+                directRunning, notice, List.copyOf(actions));
+        return new CompletionSnapshot(CompletionResponseProjection.withExplanations(response, evaluation, graph), compiled, evaluation);
+    }
+
+    private Map<String, String> completionTitle(LearningGoal goal) {
+        return CompletionResponseProjection.titleFor(goal);
+    }
+
+    @Transactional
+    public UnifiedLearnerStateResponse chooseLevelCompletion(String skillpilotId, LevelCompletionActionRequest request) {
+        Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
+        if (request == null || request.expectedRevision() == null
+                || request.expectedRevision() != learner.getCoachStateRevision()) {
+            if (request != null && request.expectedRevision() != null) recordCompletionRevisionConflict();
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT, "Refresh the completion choices.");
+        }
+        long revisionBefore = learner.getCoachStateRevision();
+        CompletionWorkflowState existingWorkflow = completionWorkflow(learner);
+        if (CompletionCallContext.current() != null && existingWorkflow != null
+                && existingWorkflow.directAssessment() != null) {
+            boolean neutralExit = "leaveProfile".equals(request.action()) || "endAssessment".equals(request.action());
+            if (neutralExit) {
+                if (!ownsDirectAssessment(CompletionCallContext.current(), existingWorkflow)) {
+                    throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
+                            "This assessment belongs to another learning session.");
+                }
+            } else assertCompletionAssessmentOwner(skillpilotId, existingWorkflow.directAssessment().goalId());
+        }
+        GoalProjection currentProjection = getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
+        CompletionSnapshot offered = completionSnapshot(learner, currentProjection);
+        boolean published = offered != null && ("selectProfile".equals(request.action())
+                ? existingWorkflow == null && offered.response().profileOptions().stream()
+                    .anyMatch(option -> Objects.equals(option.profileId(), request.profileId()))
+                : offered.response().actions().stream().anyMatch(action ->
+                    Objects.equals(action.action(), request.action()) && Objects.equals(action.goalId(), request.goalId())
+                        && Objects.equals(action.intent(), request.intent())));
+        if (!published || "retryAssessment".equals(request.action())) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT, "Refresh the completion choices.");
+        }
+        if ("leaveProfile".equals(request.action())) {
+            CompletionWorkflowState old = completionWorkflow(learner);
+            if (old != null && old.directAssessment() != null) learner.setActiveGoalId(null);
+            saveCompletionWorkflow(learner, null);
+        } else if ("selectProfile".equals(request.action())) {
+            assertPersonalizationCompleteForLearning(learner);
+            if (request.profileId() == null || request.profileId().isBlank()) {
+                throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST, "profileId is required.");
+            }
+            GoalProjection projection = getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
+            if (completionApplicationService == null || !completionApplicationService.catalog().available()) {
+                throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT, "Completion is unavailable.");
+            }
+            var compiled = completionApplicationService.compile(request.profileId(), learner.getSelectedCurriculum(),
+                    completionCanonicalGraph(learner.getSelectedCurriculum()), projection.targetGoalIds());
+            assertCompletionApplicability(learner, compiled);
+            String currentGoalId = resolveGoalIdInVisibleGoals(learner.getActiveGoalId(), projection.visibleGoals(), false);
+            if (currentGoalId == null || !compiled.contextGoalIds().contains(currentGoalId)) {
+                // Selecting the profile deliberately leaves unrelated work. Existing
+                // work inside its context, including newly waived work, is retained.
+                currentGoalId = null;
+                learner.setActiveGoalId(null);
+                learner.setLearningState(LearningState.FRONTIER);
+            } else {
+                learner.setActiveGoalId(currentGoalId);
+            }
+            String intent = currentGoalId != null && !compiled.targetGoalIds().contains(currentGoalId) ? "support" : "required";
+            saveCompletionWorkflow(learner, new CompletionWorkflowState(compiled.profile().id(),
+                    compiled.profile().revision(), compiled.curriculumGeneration(), learner.getSelectedCurriculum(),
+                    completionScopeDigest(learner), intent, currentGoalId, null));
+        } else if ("endAssessment".equals(request.action()) || "pauseProfile".equals(request.action())) {
+            CompletionWorkflowState old = completionWorkflow(learner);
+            if (old == null) throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT, "No completion route.");
+            if (CompletionCallContext.current() != null && old.directAssessment() != null
+                    && !ownsDirectAssessment(CompletionCallContext.current(), old)) {
+                throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
+                        "This assessment belongs to another learning session.");
+            }
+            learner.setActiveGoalId(null); learner.setLearningState(LearningState.FRONTIER);
+            saveCompletionWorkflow(learner, old.withNavigation("paused", null));
+        } else if ("learnGoal".equals(request.action())) {
+            CompletionWorkflowState old = completionWorkflow(learner);
+            if (!completionWorkflowMatches(learner, old) || request.intent() == null
+                    || !Set.of("required", "support", "voluntary").contains(request.intent())) {
+                throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT, "Refresh the completion choices.");
+            }
+            GoalProjection projection = getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
+            var snapshot = completionSnapshot(learner, projection);
+            if (snapshot == null || snapshot.evaluation() == null
+                    || !snapshot.compiled().contextGoalIds().contains(request.goalId())
+                    || !projection.targetGoalIds().contains(request.goalId())
+                    || snapshot.response().actions().stream().noneMatch(action ->
+                        "learnGoal".equals(action.action()) && Objects.equals(action.goalId(), request.goalId())
+                            && Objects.equals(action.intent(), request.intent()))) {
+                throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT, "Goal is not available in this context.");
+            }
+            saveCompletionWorkflow(learner, old.withNavigation(request.intent(), request.goalId()));
+            setActiveGoal(skillpilotId, request.goalId());
+        } else if ("includeTarget".equals(request.action()) || "includeSupport".equals(request.action())) {
+            boolean support = "includeSupport".equals(request.action());
+            if (!completionWorkflowMatches(learner, existingWorkflow) || offered.evaluation() == null
+                    || (support ? !offered.compiled().contextGoalIds().contains(request.goalId())
+                        || offered.compiled().targetGoalIds().contains(request.goalId())
+                        || !"support".equals(request.intent())
+                        : !offered.evaluation().pendingTargetGoalIds().contains(request.goalId()))
+                    || !currentProjection.targetGoalIds().contains(request.goalId())) {
+                throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT, "Refresh the completion choices.");
+            }
+            Set<String> roots = plannedGoalRepository.findByLearner_SkillpilotId(skillpilotId).stream()
+                    .map(PlannedGoal::getGoalId).collect(Collectors.toCollection(LinkedHashSet::new));
+            if (roots.add(request.goalId())) plannedGoalRepository.save(new PlannedGoal(learner, request.goalId()));
+            if (existingWorkflow.directAssessment() != null) {
+                learner.setActiveGoalId(null); learner.setLearningState(LearningState.FRONTIER);
+            }
+            saveCompletionWorkflow(learner, existingWorkflow.withNavigation(support ? "support" : "required",
+                    support ? request.goalId() : learner.getActiveGoalId()));
+            if (support) setActiveGoal(skillpilotId, request.goalId());
+        } else throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST, "Unknown completion action.");
+        if (learner.getCoachStateRevision() == revisionBefore) advanceCoachStateRevision(learner);
+        eventPublisher.publishEvent(new LearnerStateChangedEvent(this, skillpilotId, "COMPLETION_NAVIGATION"));
+        return getLearnerState(skillpilotId);
+    }
+
+    private void recordCompletionRevisionConflict() {
+        if (completionApplicationService != null) completionApplicationService.recordRevisionConflict(
+                CompletionCallContext.current() == null ? CompletionTelemetry.RevisionConflictSource.UI
+                        : CompletionTelemetry.RevisionConflictSource.COACH);
+    }
+
+    /** Called by a trusted, newly issued provider session in the same locked transaction. */
+    @Transactional
+    public void startCompletionAssessment(String skillpilotId, CompletionAssessmentStart request,
+            String provider, String sessionBinding, Instant expiresAt) {
+        Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
+        CompletionWorkflowState workflow = completionWorkflow(learner);
+        if (request == null || request.expectedRevision() == null
+                || request.expectedRevision() != learner.getCoachStateRevision()
+                || !completionWorkflowMatches(learner, workflow)
+                || !Objects.equals(workflow.profileId(), request.profileId())
+                || !"claude".equals(provider) || sessionBinding == null || expiresAt == null || !expiresAt.isAfter(Instant.now())) {
+            if (request != null && request.expectedRevision() != null
+                    && request.expectedRevision() != learner.getCoachStateRevision()) recordCompletionRevisionConflict();
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT, "Refresh and deliberately choose the assessment again.");
+        }
+        GoalProjection projection = getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
+        CompletionSnapshot snapshot = completionSnapshot(learner, projection);
+        boolean publishedStart = snapshot != null && (Boolean.TRUE.equals(request.restartCurrent())
+                ? snapshot.response().actions().stream().anyMatch(action -> "retryAssessment".equals(action.action())
+                    && Objects.equals(action.goalId(), request.goalId()))
+                : snapshot.response().assessments().stream().anyMatch(assessment -> assessment.startAvailable()
+                    && Objects.equals(assessment.goalId(), request.goalId())));
+        if (!publishedStart || snapshot.evaluation() == null
+                || !snapshot.compiled().assessmentGoalIds().contains(request.goalId())
+                || snapshot.evaluation().masteredAssessmentGoalIds().contains(request.goalId())
+                || isExamGoalUnavailableForHardCheck(projection.visibleGoals().get(request.goalId()))) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT, "This assessment cannot be started.");
+        }
+        saveCompletionWorkflow(learner, workflow.withDirectAssessment(new CompletionWorkflowState.DirectAssessmentContext(
+                provider, sessionBinding, request.goalId(), expiresAt)));
+        learner.setActiveGoalId(request.goalId()); learner.setLearningState(LearningState.TEACHING);
+        advanceCoachStateRevision(learner);
+        eventPublisher.publishEvent(new LearnerStateChangedEvent(this, skillpilotId, "COMPLETION_ASSESSMENT_START"));
+    }
 
     @org.springframework.beans.factory.annotation.Autowired
     private ChampionPracticeFingerprint championPracticeFingerprint;
@@ -422,11 +881,20 @@ public class LearnerService {
     }
 
     private List<SrsCard> loadSrsDeckCards(LearningGoal goal, String vocabularySource) {
+        return loadSrsDeckCards(goal, vocabularySource, false);
+    }
+
+    private List<SrsCard> loadSrsDeckCards(LearningGoal goal, String vocabularySource, boolean strict) {
         if (goal == null || vocabularySource == null || vocabularySource.isBlank()) {
             return Collections.emptyList();
         }
         Resource resource = deckResourceService.resolveDeckResource(goal.getId(), vocabularySource);
+        return loadSrsDeckCards(resource, strict);
+    }
+
+    private List<SrsCard> loadSrsDeckCards(Resource resource, boolean strict) {
         if (resource == null || !resource.exists()) {
+            if (strict) throw new SrsStateUnavailableException("Required memorization deck is missing");
             return Collections.emptyList();
         }
         try (InputStream inputStream = resource.getInputStream()) {
@@ -436,20 +904,30 @@ public class LearnerService {
                     });
             Object cardsObj = data.get("cards");
             if (!(cardsObj instanceof List<?> cardsRaw)) {
+                if (strict) throw new SrsStateUnavailableException("Required memorization deck has no card list");
                 return Collections.emptyList();
             }
             List<SrsCard> cards = new ArrayList<>();
+            Set<String> identifiers = new HashSet<>();
             for (Object raw : cardsRaw) {
                 if (!(raw instanceof Map<?, ?> cardMap)) {
+                    if (strict) throw new SrsStateUnavailableException("Required memorization card is invalid");
                     continue;
                 }
                 Object idObj = cardMap.get("id");
-                if (idObj == null) {
+                if (idObj == null || String.valueOf(idObj).isBlank()) {
+                    if (strict) throw new SrsStateUnavailableException("Required memorization card identifier is missing");
                     continue;
                 }
                 String id = String.valueOf(idObj);
+                if (!identifiers.add(id) && strict) {
+                    throw new SrsStateUnavailableException("Required memorization card identifier is duplicated");
+                }
                 String front = stringValue(cardMap.get("front"));
                 String back = stringValue(cardMap.get("back"));
+                if (strict && (front == null || front.isBlank() || back == null || back.isBlank())) {
+                    throw new SrsStateUnavailableException("Required memorization card content is missing");
+                }
                 String category = stringValue(cardMap.get("category"));
                 Object tagsObj = cardMap.get("tags");
                 List<String> tags = null;
@@ -466,6 +944,7 @@ public class LearnerService {
             }
             return cards;
         } catch (Exception e) {
+            if (strict) throw new SrsStateUnavailableException("Required memorization deck is invalid", e);
             return Collections.emptyList();
         }
     }
@@ -474,20 +953,100 @@ public class LearnerService {
         return value instanceof String text ? text : null;
     }
 
-    private Map<String, Object> loadSrsState(String skillpilotId, String nodeId) {
+    private Map<String, Object> loadSrsStateStrict(String skillpilotId, String nodeId) {
         LearnerClientStateId id = new LearnerClientStateId(skillpilotId, nodeId);
         LearnerClientState stored = learnerClientStateRepository.findById(id).orElse(null);
-        if (stored == null || stored.getClientState() == null || stored.getClientState().isBlank()) {
+        return readStoredSrsState(stored);
+    }
+
+    private Map<String, Object> readStoredSrsState(LearnerClientState stored) {
+        if (stored == null) {
             return Collections.emptyMap();
         }
+        if (stored.getClientState() == null || stored.getClientState().isBlank()) {
+            throw new SrsStateUnavailableException("Stored SRS state is missing");
+        }
         try {
-            return objectMapper.readValue(
+            Map<String, Object> state = objectMapper.readValue(
                     stored.getClientState(),
                     new TypeReference<Map<String, Object>>() {
                     });
+            SrsPracticeStateGuard.validatePortable(Map.of(stored.getId().getNodeId(), state));
+            return state;
         } catch (Exception e) {
-            return Collections.emptyMap();
+            throw new SrsStateUnavailableException("Stored SRS state is invalid", e);
         }
+    }
+
+    private static final int SRS_STATE_QUERY_BATCH_SIZE = 500;
+    private record SrsGoalSnapshot(boolean mastered, boolean recallAvailable) { }
+
+    /** One call-local input snapshot shared by strict completion and tolerant normal projections. */
+    private Map<String, SrsGoalSnapshot> resolveSrsGoalSnapshots(
+            String skillpilotId, Collection<LearningGoal> goals, boolean strict) {
+        Map<String, LearningGoal> srsGoals = new LinkedHashMap<>();
+        if (goals != null) for (LearningGoal goal : goals) {
+            if (!isSrsGoal(goal)) continue;
+            if (goal.getId() == null || goal.getId().isBlank()) {
+                if (strict) throw new SrsStateUnavailableException("Memorization goal identifier is missing");
+                continue;
+            }
+            srsGoals.put(goal.getId(), goal);
+        }
+        if (srsGoals.isEmpty()) return Map.of();
+        Map<String, LearnerClientState> storedByGoal = new HashMap<>();
+        List<String> goalIds = List.copyOf(srsGoals.keySet());
+        try {
+            for (int from = 0; from < goalIds.size(); from += SRS_STATE_QUERY_BATCH_SIZE) {
+                learnerClientStateRepository.findByLearnerAndNodeIds(skillpilotId,
+                        goalIds.subList(from, Math.min(from + SRS_STATE_QUERY_BATCH_SIZE, goalIds.size())))
+                        .forEach(state -> storedByGoal.put(state.getId().getNodeId(), state));
+            }
+        } catch (RuntimeException error) {
+            if (strict) throw new SrsStateUnavailableException("Memorization state is unavailable", error);
+            return Map.of(); // Preserve existing normal mastery instead of fabricating an unsuccessful result.
+        }
+        // Resource equality identifies paths/classpath objects or actual package bytes;
+        // a shared source label alone must not conflate distinct package decks.
+        Map<Resource, List<SrsCard>> decks = new HashMap<>();
+        Map<Resource, SrsStateUnavailableException> deckFailures = new HashMap<>();
+        Map<String, SrsGoalSnapshot> result = new LinkedHashMap<>();
+        Instant now = Instant.now();
+        for (LearningGoal goal : srsGoals.values()) {
+            try {
+                String source = getVocabularySource(goal);
+                if (source == null || source.isBlank()) throw new SrsStateUnavailableException("Memorization deck reference is missing");
+                Resource resource = deckResourceService.resolveDeckResource(goal.getId(), source);
+                if (resource == null) throw new SrsStateUnavailableException("Required memorization deck is unavailable");
+                if (deckFailures.containsKey(resource)) throw deckFailures.get(resource);
+                if (!decks.containsKey(resource)) {
+                    try { decks.put(resource, loadSrsDeckCards(resource, true)); }
+                    catch (SrsStateUnavailableException error) { deckFailures.put(resource, error); throw error; }
+                }
+                List<SrsCard> required = filterSrsCards(goal, decks.get(resource));
+                if (required.isEmpty()) throw new SrsStateUnavailableException("Required memorization deck is empty for this goal");
+                Map<String, Object> state = readStoredSrsState(storedByGoal.get(goal.getId()));
+                result.put(goal.getId(), new SrsGoalSnapshot(isSrsMasteredByVerifiedRecall(required, state),
+                        summarizeVerifiedRecallDeck(required, state, now).eligibleCards() > 0));
+            } catch (RuntimeException error) {
+                if (strict) {
+                    if (error instanceof SrsStateUnavailableException unavailable) throw unavailable;
+                    throw new SrsStateUnavailableException("Memorization input is unavailable", error);
+                }
+                // Omit only the damaged goal. Normal projections retain its stored mastery.
+            }
+        }
+        return Collections.unmodifiableMap(result);
+    }
+
+    /** Complete SRS input for a completion snapshot; absence is not a technical failure. */
+    @Transactional(readOnly = true)
+    public Map<String, Boolean> resolveSrsMasterySnapshot(
+            String skillpilotId, Collection<LearningGoal> goals) {
+        Map<String, Boolean> result = new LinkedHashMap<>();
+        resolveSrsGoalSnapshots(skillpilotId, goals, true)
+                .forEach((id, snapshot) -> result.put(id, snapshot.mastered()));
+        return Collections.unmodifiableMap(result);
     }
 
     private boolean isSrsMasteredByVerifiedRecall(List<SrsCard> cards, Map<String, Object> srsState) {
@@ -578,164 +1137,46 @@ public class LearnerService {
     }
 
     private boolean hasVerifiedRecallEligibleCardsToday(String skillpilotId, LearningGoal goal) {
-        if (goal == null || !isSrsGoal(goal)) {
-            return false;
-        }
-        String source = getVocabularySource(goal);
-        if (source == null || source.isBlank()) {
-            return false;
-        }
-        List<SrsCard> cards = filterSrsCards(goal, loadSrsDeckCards(goal, source));
-        if (cards.isEmpty()) {
-            return false;
-        }
-        VerifiedRecallDeckStatus status = summarizeVerifiedRecallDeck(
-                cards,
-                loadSrsState(skillpilotId, goal.getId()),
-                Instant.now());
-        return status.eligibleCards() > 0;
+        if (goal == null || !isSrsGoal(goal)) return false;
+        SrsGoalSnapshot snapshot = resolveSrsGoalSnapshots(skillpilotId, List.of(goal), false).get(goal.getId());
+        return snapshot != null && snapshot.recallAvailable();
     }
 
     private List<FrontierGoal> filterVerifiedRecallAvailableMemoryGoals(
-            String skillpilotId,
-            List<FrontierGoal> goals) {
-        if (goals == null || goals.isEmpty()) {
-            return goals;
-        }
-        return goals.stream()
-                .filter(goal -> !isMemoryFrontierGoalUnavailableForVerifiedRecall(skillpilotId, goal))
-                .toList();
-    }
-
-    private boolean isMemoryFrontierGoalUnavailableForVerifiedRecall(String skillpilotId, FrontierGoal goal) {
-        if (!isMemoryFrontierGoal(goal)) {
-            return false;
-        }
-        LearningGoal definition = landscapeService.getGoalDefinition(goal.id());
-        return definition == null || isSrsGoalUnavailableForVerifiedRecall(skillpilotId, definition);
+            String skillpilotId, List<FrontierGoal> goals) {
+        if (goals == null || goals.isEmpty()) return goals;
+        List<LearningGoal> memoryGoals = goals.stream().filter(this::isMemoryFrontierGoal)
+                .map(goal -> landscapeService.getGoalDefinition(goal.id())).filter(Objects::nonNull).toList();
+        Map<String, SrsGoalSnapshot> snapshots = resolveSrsGoalSnapshots(skillpilotId, memoryGoals, false);
+        return goals.stream().filter(goal -> !isMemoryFrontierGoal(goal)
+                || snapshots.containsKey(goal.id()) && snapshots.get(goal.id()).recallAvailable()).toList();
     }
 
     private Map<String, Double> applySrsMasteryOverlay(String skillpilotId,
-            Map<String, LearningGoal> goals,
-            Map<String, Double> mastery) {
-        if (goals == null || goals.isEmpty()) {
-            return mastery;
-        }
+            Map<String, LearningGoal> goals, Map<String, Double> mastery) {
+        if (goals == null || goals.isEmpty()) return mastery;
+        Map<String, SrsGoalSnapshot> snapshots = resolveSrsGoalSnapshots(skillpilotId, goals.values(), false);
+        if (snapshots.isEmpty()) return mastery;
         Map<String, Double> result = new HashMap<>(mastery);
-        for (LearningGoal goal : goals.values()) {
-            if (!isSrsGoal(goal)) {
-                continue;
-            }
-            String source = getVocabularySource(goal);
-            if (source == null || source.isBlank()) {
-                continue;
-            }
-            List<SrsCard> cards = loadSrsDeckCards(goal, source);
-            if (cards.isEmpty()) {
-                result.put(goal.getId(), 0.0);
-                continue;
-            }
-            List<String> filterTags = getSrsFilterTags(goal);
-            List<SrsCard> filtered = cards;
-            if (!filterTags.isEmpty()) {
-                filtered = cards.stream()
-                        .filter(card -> card.tags != null
-                                && card.tags.stream().anyMatch(filterTags::contains))
-                        .collect(Collectors.toList());
-            }
-            if (filtered.isEmpty()) {
-                result.put(goal.getId(), 0.0);
-                continue;
-            }
-            Map<String, Object> srsState = loadSrsState(skillpilotId, goal.getId());
-            boolean verified = isSrsMasteredByVerifiedRecall(filtered, srsState);
-            result.put(goal.getId(), verified ? 1.0 : 0.0);
-        }
+        snapshots.forEach((id, snapshot) -> result.put(id, snapshot.mastered() ? 1.0 : 0.0));
         return result;
     }
 
-    /**
-     * Count how many SRS/flashcard goals in the given set are mastered by the user.
-     * Used by CurriculaService for champion mastery counting.
-     *
-     * @param skillpilotId the user's skillpilot ID
-     * @param goalIds      the set of goal IDs to check
-     * @return count of mastered SRS goals
-     */
+    /** Counts the existing authoritative card-derived outcomes without per-goal SQL/deck parsing. */
     public long countSrsMastery(String skillpilotId, Set<String> goalIds) {
-        if (skillpilotId == null || goalIds == null || goalIds.isEmpty()) {
-            return 0;
-        }
-        long count = 0;
-        for (String goalId : goalIds) {
-            LearningGoal goal = landscapeService.getGoalDefinition(goalId);
-            if (goal == null || !isSrsGoal(goal)) {
-                continue;
-            }
-            String source = getVocabularySource(goal);
-            if (source == null || source.isBlank()) {
-                continue;
-            }
-            List<SrsCard> cards = loadSrsDeckCards(goal, source);
-            if (cards.isEmpty()) {
-                continue;
-            }
-            List<String> filterTags = getSrsFilterTags(goal);
-            List<SrsCard> filtered = cards;
-            if (!filterTags.isEmpty()) {
-                filtered = cards.stream()
-                        .filter(card -> card.tags != null
-                                && card.tags.stream().anyMatch(filterTags::contains))
-                        .collect(Collectors.toList());
-            }
-            if (filtered.isEmpty()) {
-                continue;
-            }
-            Map<String, Object> srsState = loadSrsState(skillpilotId, goalId);
-            if (isSrsMasteredByVerifiedRecall(filtered, srsState)) {
-                count++;
-            }
-        }
-        return count;
+        if (skillpilotId == null || goalIds == null || goalIds.isEmpty()) return 0;
+        List<LearningGoal> goals = goalIds.stream().map(landscapeService::getGoalDefinition).filter(Objects::nonNull).toList();
+        return resolveSrsGoalSnapshots(skillpilotId, goals, false).values().stream().filter(SrsGoalSnapshot::mastered).count();
     }
 
     private Map<String, MasteryEntryDTO> applySrsMasteryOverlayWithTimestamps(String skillpilotId,
-            Map<String, LearningGoal> goals,
-            Map<String, MasteryEntryDTO> mastery) {
-        if (goals == null || goals.isEmpty()) {
-            return mastery;
-        }
+            Map<String, LearningGoal> goals, Map<String, MasteryEntryDTO> mastery) {
+        if (goals == null || goals.isEmpty()) return mastery;
+        Map<String, SrsGoalSnapshot> snapshots = resolveSrsGoalSnapshots(skillpilotId, goals.values(), false);
+        if (snapshots.isEmpty()) return mastery;
         Map<String, MasteryEntryDTO> result = new HashMap<>(mastery);
-        Instant nowInstant = Instant.now();
-        for (LearningGoal goal : goals.values()) {
-            if (!isSrsGoal(goal)) {
-                continue;
-            }
-            String source = getVocabularySource(goal);
-            if (source == null || source.isBlank()) {
-                continue;
-            }
-            List<SrsCard> cards = loadSrsDeckCards(goal, source);
-            if (cards.isEmpty()) {
-                result.put(goal.getId(), new MasteryEntryDTO(0.0, nowInstant));
-                continue;
-            }
-            List<String> filterTags = getSrsFilterTags(goal);
-            List<SrsCard> filtered = cards;
-            if (!filterTags.isEmpty()) {
-                filtered = cards.stream()
-                        .filter(card -> card.tags != null
-                                && card.tags.stream().anyMatch(filterTags::contains))
-                        .collect(Collectors.toList());
-            }
-            if (filtered.isEmpty()) {
-                result.put(goal.getId(), new MasteryEntryDTO(0.0, nowInstant));
-                continue;
-            }
-            Map<String, Object> srsState = loadSrsState(skillpilotId, goal.getId());
-            boolean verified = isSrsMasteredByVerifiedRecall(filtered, srsState);
-            result.put(goal.getId(), new MasteryEntryDTO(verified ? 1.0 : 0.0, nowInstant));
-        }
+        Instant now = Instant.now();
+        snapshots.forEach((id, snapshot) -> result.put(id, new MasteryEntryDTO(snapshot.mastered() ? 1.0 : 0.0, now)));
         return result;
     }
 
@@ -760,23 +1201,8 @@ public class LearnerService {
         LearnerClientStateId id = new LearnerClientStateId(skillpilotId, nodeId);
         LearnerClientState stored = learnerClientStateRepository.findById(id).orElse(null);
 
-        Map<String, Object> state = Collections.emptyMap();
-        Instant updatedAt = null;
-        if (stored != null && stored.getClientState() != null && !stored.getClientState().isBlank()) {
-            try {
-                state = objectMapper.readValue(
-                        stored.getClientState(),
-                        new TypeReference<Map<String, Object>>() {
-                        });
-                updatedAt = stored.getClientStateUpdatedAt();
-            } catch (Exception e) {
-                throw new ResponseStatusException(
-                        org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR,
-                        "Stored client state is invalid");
-            }
-        }
-
-        return new ClientStateSnapshot(updatedAt, state);
+        return new ClientStateSnapshot(
+                stored == null ? null : stored.getClientStateUpdatedAt(), readStoredSrsState(stored));
     }
 
     @Transactional
@@ -788,36 +1214,26 @@ public class LearnerService {
             return new ClientStateResponse("ok", Instant.now(), 0);
         }
 
-        Instant incomingAt = request.updatedAt() != null ? request.updatedAt() : Instant.now();
         LearnerClientStateId id = new LearnerClientStateId(skillpilotId, nodeId);
         LearnerClientState existing = learnerClientStateRepository.findById(id).orElse(null);
-        if (existing != null && existing.getClientStateUpdatedAt() != null
-                && request.updatedAt() != null && request.updatedAt().isBefore(existing.getClientStateUpdatedAt())) {
-            return new ClientStateResponse("ok", existing.getClientStateUpdatedAt(), 0);
+        Instant currentUpdatedAt = existing == null ? null : existing.getClientStateUpdatedAt();
+        if (!SrsPracticeStateGuard.matches(currentUpdatedAt, request.expectedUpdatedAt())) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
+                    "SRS state changed. Reload the current state before synchronizing practice.");
         }
-
-        String json = "{}";
-        int storedKeys = 0;
-        if (request.srsState() != null) {
-            try {
-                json = objectMapper.writeValueAsString(request.srsState());
-            } catch (Exception e) {
-                throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
-                        "Invalid client state payload");
-            }
-            storedKeys = request.srsState().size();
+        Map<String, Object> merged;
+        try {
+            merged = SrsPracticeStateGuard.mergePractice(readStoredSrsState(existing), request.srsState());
+        } catch (IllegalArgumentException exception) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "Invalid client state payload", exception);
         }
-
-        LearnerClientState record = existing != null
-                ? existing
-                : new LearnerClientState(learner, nodeId, json, incomingAt);
-        record.setClientState(json);
-        record.setClientStateUpdatedAt(incomingAt);
-        learnerClientStateRepository.save(record);
+        Instant savedAt = Instant.now().truncatedTo(java.time.temporal.ChronoUnit.MICROS);
+        persistVerifiedRecallBatchClientState(learner, nodeId, merged, savedAt);
         advanceCoachStateRevision(learner);
 
         eventPublisher.publishEvent(new LearnerStateChangedEvent(this, skillpilotId, "CLIENT_STATE_UPDATED", nodeId));
-        return new ClientStateResponse("ok", Instant.now(), storedKeys);
+        return new ClientStateResponse("ok", savedAt, merged.size());
     }
 
     @Transactional
@@ -1063,7 +1479,10 @@ public class LearnerService {
         applyVerifiedRecallScheduling(cardState, request.passed(), testedAt);
         nextState.put(card.id, cardState);
 
-        upsertClientState(skillpilotId, context.goal().getId(), new ClientStateRequest(testedAt, nextState));
+        persistVerifiedRecallBatchClientState(learner, context.goal().getId(), nextState, testedAt);
+        advanceCoachStateRevision(learner);
+        eventPublisher.publishEvent(new LearnerStateChangedEvent(
+                this, skillpilotId, "CLIENT_STATE_UPDATED", context.goal().getId()));
 
         VerifiedRecallContext updatedContext = new VerifiedRecallContext(
                 context.goal(),
@@ -1383,7 +1802,7 @@ public class LearnerService {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
                     "No cards match this memorization goal.");
         }
-        return new VerifiedRecallContext(goal, cards, loadSrsState(skillpilotId, goal.getId()));
+        return new VerifiedRecallContext(goal, cards, loadSrsStateStrict(skillpilotId, goal.getId()));
     }
 
     private LearningGoal requireActiveVisibleMemoryGoal(
@@ -2467,6 +2886,7 @@ public class LearnerService {
 
     @Transactional
     public MasteryUpdateResponse setMastery(String skillpilotId, MasteryUpdateRequest request) {
+        assertWritableLearningSession(skillpilotId);
         Map<String, Double> requestedMastery = request == null ? null : request.mastery();
         if (request == null || requestedMastery == null || requestedMastery.isEmpty()) {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
@@ -2501,6 +2921,10 @@ public class LearnerService {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
                     "mastery value must be between 0.0 and 1.0.");
         }
+        if (masteryEntry.getValue() != 0.0 && masteryEntry.getValue() != 1.0) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "Learning goals use binary mastery: 0 or 1.");
+        }
         String masteryEntryGoalId = mapGoalIdForVisibleGoals(masteryEntry.getKey(), visibleGoals, false);
         if ((requestedGoalId == null || requestedGoalId.isBlank()) && masteryEntryGoalId != null) {
             requestedGoalId = masteryEntryGoalId;
@@ -2519,6 +2943,7 @@ public class LearnerService {
         String effectiveGoalId = (activeGoalId != null && !activeGoalId.isBlank())
                 ? activeGoalId
                 : requestedGoalId;
+        assertCompletionAssessmentOwner(skillpilotId, effectiveGoalId);
 
         if (effectiveGoalId == null || effectiveGoalId.isBlank()) {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
@@ -2540,18 +2965,6 @@ public class LearnerService {
                 // is currently outside the frontier.
                 if (explicitCorrection) {
                     // continue with save flow
-                } else if (currentMastery >= 0.9) {
-                    UnifiedLearnerStateResponse state = getLearnerState(skillpilotId);
-                    return new MasteryUpdateResponse(
-                            true,
-                            effectiveGoalId,
-                            currentMastery,
-                            state.frontier(),
-                            state.nextAllowedActions(),
-                            state.learningState(),
-                            state.activeGoal(),
-                            state.stateMachine(),
-                            state.goals());
                 } else {
                     throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
                             "goalId must be an atomic goal from the current frontier.");
@@ -2560,6 +2973,11 @@ public class LearnerService {
         }
 
         double masteryValue = masteryEntry.getValue();
+        CompletionWorkflowState currentCompletion = completionWorkflow(learner);
+        if (currentCompletion != null && currentCompletion.directAssessment() != null && masteryValue != 1.0) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "An unsuccessful direct assessment leaves mastery unchanged; choose the next action instead.");
+        }
 
         // A composition-view goalEntry can intentionally project a canonical cluster as
         // one opaque learner-facing leaf. Validate the projected definition first so
@@ -2589,9 +3007,14 @@ public class LearnerService {
         // intentionally scoped to plan mode so the established default
         // Autopilot semantics stay unchanged when followLearningPlans=false.
         boolean completedGoal = masteryValue >= PLANNING_SCOPE_MASTERY_THRESHOLD;
-        if (!Boolean.TRUE.equals(learner.getFollowLearningPlans()) || completedGoal) {
+        if (!effectivePlanFollowing(learner) || completedGoal) {
             learner.setActiveGoalId(null);
             learner.setLearningState(LearningState.FRONTIER);
+        }
+        CompletionWorkflowState completionWorkflow = completionWorkflow(learner);
+        if (completedGoal && completionWorkflow != null && completionWorkflow.directAssessment() != null
+                && Objects.equals(effectiveGoalId, completionWorkflow.directAssessment().goalId())) {
+            saveCompletionWorkflow(learner, completionWorkflow.withNavigation("required", null));
         }
         advanceCoachStateRevision(learner);
 
@@ -2607,7 +3030,8 @@ public class LearnerService {
                 state.learningState(),
                 state.activeGoal(),
                 state.stateMachine(),
-                state.goals());
+                state.goals(),
+                state.levelCompletion());
     }
 
     @Transactional(readOnly = true)
@@ -4118,6 +4542,12 @@ public class LearnerService {
     public List<String> setPlannedGoals(String skillpilotId, Set<String> goalIds) {
         Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
+        // A deliberate focus choice ends the completion navigation route, not mastery.
+        if (completionRouteOwnsNavigation(learner)) {
+            CompletionWorkflowState old = completionWorkflow(learner);
+            if (old != null && old.directAssessment() != null) learner.setActiveGoalId(null);
+            saveCompletionWorkflow(learner, null);
+        }
 
         Set<String> targetIds = goalIds == null ? Collections.emptySet() : goalIds;
         Set<String> saneTargetIds = targetIds.stream()
@@ -4299,6 +4729,11 @@ public class LearnerService {
     }
 
     private void assertWritableLearningSession(Learner learner) {
+        CompletionCallContext call = CompletionCallContext.current();
+        if (completionRouteOwnsNavigation(learner) && call != null && !call.supported()) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
+                    "This coach session does not support the active completion route. Start a fresh supported session or leave the route in the cockpit.");
+        }
         if (!isReadOnlyCompatibilitySession(learner)) {
             return;
         }
@@ -4420,6 +4855,7 @@ public class LearnerService {
         boolean curriculumChanged = !Objects.equals(learner.getSelectedCurriculum(), effectiveCurriculumId);
         learner.setSelectedCurriculum(effectiveCurriculumId);
         if (curriculumChanged) {
+            saveCompletionWorkflow(learner, null);
             // Level 2 and Level 3a belong to the selected root. Level 4 mastery
             // remains global and is deliberately not touched here.
             learner.setPersonalCurriculum(null);
@@ -5496,7 +5932,7 @@ public class LearnerService {
         List<String> projectedScopeIds = resolveProjectedTargetScopeIds(
                 projectedFocusIds == null ? Collections.emptyList() : projectedFocusIds,
                 projection);
-        if (isGoalOutOfPlannedScope(
+        if (!preservesDirectAssessment(learner, projectedActiveGoalId) && isGoalOutOfPlannedScope(
                 projectedActiveGoalId,
                 projectedScopeIds,
                 projection.structuralGoals(),
@@ -5507,7 +5943,7 @@ public class LearnerService {
         GlobalAssessmentFocus globalAssessmentFocus = resolveGlobalAssessmentFocus(
                 projection.structuralGoals(),
                 projectedFocusIds == null ? Collections.emptyList() : projectedFocusIds);
-        if (isGlobalAssessmentGoalWithoutExplicitFocus(
+        if (!preservesDirectAssessment(learner, projectedActiveGoalId) && isGlobalAssessmentGoalWithoutExplicitFocus(
                 projectedActiveGoalId,
                 globalAssessmentFocus)) {
             return "ACTIVE_GOAL_CLEARED_ASSESSMENT_FOCUS";
@@ -5554,6 +5990,11 @@ public class LearnerService {
     private void persistPersonalCurriculum(Learner learner, Map<String, Object> finalConfig) {
         try {
             String json = objectMapper.writeValueAsString(finalConfig);
+            if (!Objects.equals(json, learner.getPersonalCurriculum()) && completionRouteOwnsNavigation(learner)) {
+                CompletionWorkflowState old = completionWorkflow(learner);
+                if (old != null && old.directAssessment() != null) learner.setActiveGoalId(null);
+                saveCompletionWorkflow(learner, null);
+            }
             learner.setPersonalCurriculum(json);
             advanceCoachStateRevision(learner);
         } catch (Exception e) {
@@ -6007,7 +6448,7 @@ public class LearnerService {
                 continue;
             }
             Double currentMastery = effectiveMastery.getOrDefault(goal.getId(), 0.0);
-            if (currentMastery >= 0.9) {
+            if (currentMastery >= PLANNING_SCOPE_MASTERY_THRESHOLD) {
                 continue; // Already mastered
             }
 
@@ -6158,7 +6599,7 @@ public class LearnerService {
                 continue;
             }
             Double currentMastery = effectiveMastery.getOrDefault(goal.getId(), 0.0);
-            if (currentMastery >= 0.9) {
+            if (currentMastery >= PLANNING_SCOPE_MASTERY_THRESHOLD) {
                 continue;
             }
 
@@ -6335,7 +6776,7 @@ public class LearnerService {
                 if (prerequisites.scope() != null && !prerequisites.scope().contains(resolvedReqId)) {
                     continue;
                 }
-                if (prerequisites.mastery().getOrDefault(resolvedReqId, 0.0) < 0.9) {
+                if (prerequisites.mastery().getOrDefault(resolvedReqId, 0.0) < PLANNING_SCOPE_MASTERY_THRESHOLD) {
                     return false;
                 }
                 // Persisted mastery of an intermediate goal does not certify its
@@ -6376,7 +6817,7 @@ public class LearnerService {
                 .filter(goal -> projection.targetGoalIds().contains(goal.getId()))
                 .filter(goal -> plannedIds.isEmpty() || scope.contains(goal.getId()))
                 .filter(LearnerService::isOrientationGoal)
-                .filter(goal -> effectiveMastery.getOrDefault(goal.getId(), 0.0) < 0.9)
+                .filter(goal -> effectiveMastery.getOrDefault(goal.getId(), 0.0) < PLANNING_SCOPE_MASTERY_THRESHOLD)
                 .map(goal -> toFrontierGoal(goal, "Orientation required", null))
                 .toList();
         if (unmasteredOrientationGoals.isEmpty()) {
@@ -6956,7 +7397,7 @@ public class LearnerService {
      * personalization migration, clears a stale active goal, or activates an
      * autopilot goal. Such changes require an explicitly versioned write tool.</p>
      */
-    @Transactional(readOnly = true)
+    @Transactional(readOnly = true, isolation = org.springframework.transaction.annotation.Isolation.REPEATABLE_READ)
     public UnifiedLearnerStateResponse getCoachLearnerState(String skillpilotId) {
         return getLearnerState(skillpilotId, null, false, true);
     }
@@ -7238,6 +7679,16 @@ public class LearnerService {
                         .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"))
                 : learnerRepository.findById(skillpilotId)
                         .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
+        CompletionWorkflowState navigationAtRead = completionWorkflow(learner);
+        if (allowSideEffects && navigationAtRead != null && navigationAtRead.directAssessment() != null
+                && !currentDirectAssessmentBinding(learner, navigationAtRead)) {
+            long beforeCleanup = learner.getCoachStateRevision();
+            if (learner.getActiveGoalId() != null) {
+                clearPersistedActiveGoal(learner, skillpilotId, "ACTIVE_GOAL_CLEARED_ASSESSMENT_BINDING", publishTransitionEvents);
+            }
+            saveCompletionWorkflow(learner, navigationAtRead.withNavigation("paused", null));
+            if (learner.getCoachStateRevision() == beforeCleanup) advanceCoachStateRevision(learner);
+        }
         if (allowSideEffects) {
             migrateCanonicalGymnasiumPreFlowPersonalizationIfNeeded(learner);
         }
@@ -7267,7 +7718,8 @@ public class LearnerService {
         // Level 3 is never intentionally empty once Level 2 is complete. Heal
         // older cockpit sessions before frontier calculation so every
         // downstream projection observes the same deterministic focus.
-        if (allowSideEffects && curriculumId != null && !curriculumId.isBlank()) {
+        if (allowSideEffects && !completionRouteOwnsNavigation(learner)
+                && curriculumId != null && !curriculumId.isBlank()) {
             GoalProjection focusProjection = getGoalProjection(
                     curriculumId,
                     learner.getPersonalCurriculum());
@@ -7276,8 +7728,12 @@ public class LearnerService {
             }
         }
 
+        GoalProjection completionProjection = curriculumId == null ? null
+                : getGoalProjection(curriculumId, learner.getPersonalCurriculum());
+        CompletionSnapshot completion = completionSnapshot(learner, completionProjection);
+        boolean completionOwnsNavigation = completionRouteOwnsNavigation(learner);
         Map<String, Double> mastery = getMastery(skillpilotId);
-        boolean followingLearningPlans = Boolean.TRUE.equals(learner.getFollowLearningPlans());
+        boolean followingLearningPlans = effectivePlanFollowing(learner);
         List<LearnerLearningPlan> followedLearningPlans = currentFollowedLearningPlans(learner);
         boolean hasFollowedLearningPlans = !followedLearningPlans.isEmpty();
         if (allowSideEffects
@@ -7293,7 +7749,8 @@ public class LearnerService {
         }
 
         List<FrontierGoal> frontier = getRichFrontier(skillpilotId);
-        List<FrontierGoal> frontierAtomic = filterAtomicFrontier(frontier);
+        List<FrontierGoal> frontierAtomic = completionRecommendations(filterAtomicFrontier(frontier), completion,
+                completionOwnsNavigation);
 
         // Build a map of all goals in the closure for quick lookup
         Map<String, LearningGoal> allGoals = new LinkedHashMap<>();
@@ -7309,7 +7766,8 @@ public class LearnerService {
                 && !sequentialAutopilotAnchorGoalId.isBlank()
                 && isSequentialLearningStrategy(learner)
                 && Boolean.TRUE.equals(learner.getAutoPilot())) {
-            sequentialAutopilotSearchAtomic = filterAtomicFrontier(getRichFrontier(skillpilotId, false));
+            sequentialAutopilotSearchAtomic = completionRecommendations(
+                    filterAtomicFrontier(getRichFrontier(skillpilotId, false)), completion, completionOwnsNavigation);
         }
 
         List<String> plannedIds = resolveEffectiveProjectedFocusIds(
@@ -7358,7 +7816,7 @@ public class LearnerService {
         String storedActiveGoalId = learner.getActiveGoalId();
         String activeGoalId = resolveGoalIdInVisibleGoals(storedActiveGoalId, allGoals, false);
         boolean activeGoalMastered = activeGoalId != null && !activeGoalId.isBlank()
-                && mastery.getOrDefault(activeGoalId, 0.0) >= 0.9;
+                && mastery.getOrDefault(activeGoalId, 0.0) >= PLANNING_SCOPE_MASTERY_THRESHOLD;
         boolean activeGoalInvalidInView = storedActiveGoalId != null
                 && !storedActiveGoalId.isBlank()
                 && activeGoalId == null;
@@ -7366,24 +7824,32 @@ public class LearnerService {
                 && !storedActiveGoalId.isBlank()
                 && storedActiveGoalId.equals(activeGoalId);
         boolean activeGoalOutOfScope = activeGoalIsCurrentViewGoal
+                && !preservesDirectAssessment(learner, activeGoalId)
                 && activeGoalId != null
                 && !exactFollowedScope
                 && isGoalOutOfPlannedScope(activeGoalId, plannedScopeIds, structuralGoals, scope);
         GlobalAssessmentFocus globalAssessmentFocus = resolveGlobalAssessmentFocus(
                 structuralGoals,
                 plannedIds);
-        boolean globalAssessmentFocusRemoved = isGlobalAssessmentGoalWithoutExplicitFocus(
+        boolean activeGoalOutOfCompletionContext = completionOwnsNavigation && completion != null
+                && completion.compiled() != null && activeGoalId != null
+                && !completion.compiled().contextGoalIds().contains(activeGoalId);
+        boolean globalAssessmentFocusRemoved = !preservesDirectAssessment(learner, activeGoalId)
+                && isGlobalAssessmentGoalWithoutExplicitFocus(
                 activeGoalId,
                 globalAssessmentFocus) && !exactFollowedScope;
         if (activeGoalMastered
                 || activeGoalInvalidInView
                 || activeGoalOutOfScope
+                || activeGoalOutOfCompletionContext
                 || globalAssessmentFocusRemoved) {
             if (allowSideEffects) {
                 clearPersistedActiveGoal(
                         learner,
                         skillpilotId,
-                        activeGoalInvalidInView
+                        activeGoalOutOfCompletionContext
+                                ? "ACTIVE_GOAL_CLEARED_OUTSIDE_COMPLETION_CONTEXT"
+                                : activeGoalInvalidInView
                                 ? "ACTIVE_GOAL_CLEARED_INVALID_VIEW"
                                 : globalAssessmentFocusRemoved
                                         ? "ACTIVE_GOAL_CLEARED_ASSESSMENT_FOCUS"
@@ -7391,6 +7857,10 @@ public class LearnerService {
                                         ? "ACTIVE_GOAL_CLEARED_OUT_OF_SCOPE"
                                         : "ACTIVE_GOAL_CLEARED_STALE",
                         publishTransitionEvents);
+                if (activeGoalOutOfCompletionContext) {
+                    CompletionWorkflowState old = completionWorkflow(learner);
+                    if (old != null) saveCompletionWorkflow(learner, old.withNavigation("required", null));
+                }
             }
             activeGoalId = null;
             activeGoalMastered = false;
@@ -7498,7 +7968,7 @@ public class LearnerService {
                     publishTransitionEvents);
         }
         activeGoalMastered = activeGoalId != null && !activeGoalId.isBlank()
-                && mastery.getOrDefault(activeGoalId, 0.0) >= 0.9;
+                && mastery.getOrDefault(activeGoalId, 0.0) >= PLANNING_SCOPE_MASTERY_THRESHOLD;
 
         FrontierGoal activeGoal = resolveActiveGoal(activeGoalId, allGoals);
         boolean activeGoalIsMemory = isMemoryFrontierGoal(activeGoal);
@@ -7537,7 +8007,7 @@ public class LearnerService {
         }
 
         List<FrontierGoal> scopeExpansionOptions = Collections.emptyList();
-        if (curriculumId != null && !personalizationRequired && activeGoal == null
+        if (curriculumId != null && !completionOwnsNavigation && !personalizationRequired && activeGoal == null
                 && !exactFollowedScope
                 && scopeCompleted && !plannedScopeIds.isEmpty()) {
             scopeExpansionOptions = buildBroaderFocusOptions(
@@ -7546,7 +8016,28 @@ public class LearnerService {
                     mastery);
         }
 
-        StateMachineInfo stateMachine = buildStateMachineInfo(curriculumId, frontierAtomic, activeGoal,
+        CompletionWorkflowState projectedNavigation = completionWorkflow(learner);
+        CompletionCallContext call = CompletionCallContext.current();
+        boolean invalidDirect = projectedNavigation != null && projectedNavigation.directAssessment() != null
+                && !preservesDirectAssessment(learner, projectedNavigation.directAssessment().goalId());
+        boolean blockedCoach = completionOwnsNavigation && call != null
+                && (!call.supported() || completion == null || completion.evaluation() == null
+                    || (projectedNavigation != null && projectedNavigation.directAssessment() != null
+                        && !ownsDirectAssessment(call, projectedNavigation)));
+        if (invalidDirect || blockedCoach) {
+            // Hide protected teaching state without clearing another session's persisted work.
+            activeGoal = null;
+            activeGoalMastered = false;
+            learningState = LearningState.FRONTIER;
+            nextAllowedActions.clear();
+            frontierAtomic = List.of();
+        }
+        if (completionOwnsNavigation) nextAllowedActions.remove("setActiveGoal");
+        StateMachineInfo stateMachine = invalidDirect || blockedCoach
+                ? new StateMachineInfo("completionPaused", "completionUnavailable", List.of(), List.of(), null)
+                : completionOwnsNavigation && activeGoal == null
+                    ? new StateMachineInfo("levelCompletion", "chooseCompletionRoute", List.of(), List.of(), null)
+                : buildStateMachineInfo(curriculumId, frontierAtomic, activeGoal,
                 activeGoalMastered, learningState, personalizationRequired, scopeExpansionOptions);
 
         /*
@@ -7558,18 +8049,45 @@ public class LearnerService {
          * frontier until personalization is complete.
          */
         List<FrontierGoal> projectedFrontier =
-                personalizationRequired ? Collections.emptyList() : frontier;
+                personalizationRequired || invalidDirect || blockedCoach ? Collections.emptyList() : frontier;
+        if (completionOwnsNavigation) {
+            CompletionWorkflowState navigation = completionWorkflow(learner);
+            CompletionSnapshot routeSnapshot = completion;
+            boolean selected = navigation != null && navigation.directAssessment() == null
+                    && navigation.navigationIntent() != null && Set.of("required", "support", "voluntary").contains(navigation.navigationIntent())
+                    && routeSnapshot != null && routeSnapshot.evaluation() != null;
+            projectedFrontier = !selected ? List.of() : projectedFrontier.stream()
+                    .filter(goal -> routeSnapshot.compiled().contextGoalIds().contains(goal.id()))
+                    .filter(goal -> Objects.equals(navigation.currentGoalId(), goal.id()))
+                    .filter(goal -> "voluntary".equals(navigation.navigationIntent())
+                            || !routeSnapshot.evaluation().waivedGoalIds().contains(goal.id()))
+                    .toList();
+        }
 
+        if (completion != null && completion.response().learnerRevision() != learner.getCoachStateRevision()) {
+            completion = completionSnapshot(learner, goalProjection);
+        }
         return new UnifiedLearnerStateResponse(learner.getSkillpilotId(), curriculumSummary, projectedFrontier,
                 new LearnerGoals(plannedRich, focusStats.mastered_atomic(), focusStats.total_atomic(),
                         personalizedStats, scopeStats, scopeCompleted),
                 nextAllowedActions, activeFilters,
-                learner.getCopySources(), learningState.name(), activeGoal, stateMachine);
+                learner.getCopySources(), learningState.name(), activeGoal, stateMachine,
+                completion == null ? null : completion.response());
+    }
+
+    private List<FrontierGoal> completionRecommendations(List<FrontierGoal> normal,
+            CompletionSnapshot snapshot, boolean routeOwnsNavigation) {
+        if (!routeOwnsNavigation) return normal;
+        if (snapshot == null || snapshot.evaluation() == null || snapshot.evaluation().complete()
+                || "paused".equals(snapshot.response().navigationIntent())
+                || "completion_coach_contract_unsupported".equals(snapshot.response().notice())) return List.of();
+        if ("completion_assessment_owned_elsewhere".equals(snapshot.response().notice())) return List.of();
+        return normal.stream().filter(g -> snapshot.evaluation().pendingTargetGoalIds().contains(g.id())).toList();
     }
 
     private List<LearnerLearningPlan> currentFollowedLearningPlans(Learner learner) {
         if (learnerLearningPlanRepository == null
-                || !Boolean.TRUE.equals(learner.getFollowLearningPlans())) {
+                || !effectivePlanFollowing(learner)) {
             return Collections.emptyList();
         }
         return learnerLearningPlanRepository
@@ -7822,6 +8340,8 @@ public class LearnerService {
             String sequentialAutopilotAnchorGoalId,
             Map<String, LearningGoal> structuralGoals,
             boolean publishEvent) {
+        CompletionWorkflowState workflow = completionWorkflow(learner);
+        if (workflow != null && "paused".equals(workflow.navigationIntent())) return activeGoalId;
         if (!Boolean.TRUE.equals(learner.getAutoPilot())) {
             return activeGoalId;
         }
@@ -7832,7 +8352,7 @@ public class LearnerService {
             return activeGoalId;
         }
 
-        FrontierGoal nextGoal = chooseAutopilotFrontierGoal(
+        FrontierGoal nextGoal = completionRouteOwnsNavigation(learner) ? frontierAtomic.get(0) : chooseAutopilotFrontierGoal(
                 learner,
                 frontierAtomic,
                 sequentialAutopilotSearchAtomic,
@@ -8237,7 +8757,7 @@ public class LearnerService {
             }
             boolean addsUnmasteredTarget = candidateTargetAtoms.stream()
                     .filter(goalId -> !currentTargetAtoms.contains(goalId))
-                    .anyMatch(goalId -> effectiveMastery.getOrDefault(goalId, 0.0) < 0.9);
+                    .anyMatch(goalId -> effectiveMastery.getOrDefault(goalId, 0.0) < PLANNING_SCOPE_MASTERY_THRESHOLD);
             if (!addsUnmasteredTarget) {
                 continue;
             }
@@ -8464,7 +8984,7 @@ public class LearnerService {
                 continue;
             }
             total++;
-            if (mastery.getOrDefault(g.getId(), 0.0) >= 0.9) {
+            if (mastery.getOrDefault(g.getId(), 0.0) >= PLANNING_SCOPE_MASTERY_THRESHOLD) {
                 mastered++;
             }
         }
@@ -8528,6 +9048,7 @@ public class LearnerService {
     public void setActiveGoal(String skillpilotId, String goalId) {
         Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
+        assertWritableLearningSession(learner);
         if (goalId == null || goalId.isBlank()) {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
                     "goalId must not be empty.");
@@ -8542,6 +9063,24 @@ public class LearnerService {
         if (effectiveGoalId == null || effectiveGoalId.isBlank()) {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
                     "goalId must be an atomic goal from the current frontier.");
+        }
+        CompletionWorkflowState workflow = completionWorkflow(learner);
+        if (workflow != null) {
+            if (workflow.directAssessment() != null) {
+                throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
+                        "End the current direct assessment before choosing another goal.");
+            }
+            GoalProjection projection = getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
+            CompletionSnapshot snapshot = completionSnapshot(learner, projection);
+            boolean selectedChoice = Objects.equals(workflow.currentGoalId(), effectiveGoalId)
+                    && workflow.navigationIntent() != null && Set.of("required", "support", "voluntary").contains(workflow.navigationIntent());
+            boolean voluntaryChoice = selectedChoice && "voluntary".equals(workflow.navigationIntent());
+            if (snapshot == null || snapshot.evaluation() == null || !selectedChoice
+                    || !snapshot.compiled().contextGoalIds().contains(effectiveGoalId)
+                    || (!voluntaryChoice && snapshot.evaluation().waivedGoalIds().contains(effectiveGoalId))) {
+                throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
+                        "Choose the goal explicitly from the current completion route.");
+            }
         }
         if (isExamGoalUnavailableForHardCheck(visibleGoals.get(effectiveGoalId))) {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
@@ -11476,7 +12015,7 @@ public class LearnerService {
         return new ArrayList<>(options.values());
     }
 
-    @Transactional(readOnly = true)
+    @Transactional(readOnly = true, isolation = org.springframework.transaction.annotation.Isolation.REPEATABLE_READ)
     public SignedLearnerDataDTO exportLearner(String skillpilotId) {
         Learner learner = getLearner(skillpilotId);
         Map<String, MasteryEntryDTO> mastery = getMasteryWithTimestamps(skillpilotId);
@@ -11614,9 +12153,79 @@ public class LearnerService {
                 mastery,
                 plannedGoals,
                 learner.getCopySources(),
-                learningPlans);
+                learningPlans,
+                exportPortableSrsData(learner.getSkillpilotId()));
         String signature = calculateSignature(data);
         return new SignedLearnerDataDTO(data, signature);
+    }
+
+    private PortableSrsData exportPortableSrsData(String skillpilotId) {
+        Map<String, Map<String, Object>> states = new LinkedHashMap<>();
+        learnerClientStateRepository.findByLearner_SkillpilotId(skillpilotId).stream()
+                .sorted(Comparator.comparing(state -> state.getId().getNodeId()))
+                .forEach(state -> states.put(state.getId().getNodeId(), readStoredSrsState(state)));
+        return new PortableSrsData(1, states);
+    }
+
+    private Map<String, Map<String, Object>> validatePortableSrsImport(LearnerDataDTO data) {
+        PortableSrsData portable = data.srsData();
+        if (portable != null) {
+            if (portable.schemaVersion() != 1) {
+                throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
+                        "Unsupported signed SRS archive version");
+            }
+            try {
+                SrsPracticeStateGuard.validatePortable(portable.states());
+            } catch (IllegalArgumentException exception) {
+                throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
+                        "Invalid signed SRS archive", exception);
+            }
+        }
+        if (data.mastery() != null) {
+            for (var entry : data.mastery().entrySet()) {
+                if (entry.getValue() == null || entry.getValue().value() < PLANNING_SCOPE_MASTERY_THRESHOLD) {
+                    continue;
+                }
+                LearningGoal goal = landscapeService.getGoalDefinition(entry.getKey());
+                if (goal == null && entry.getKey() != null && entry.getKey().contains(":")) {
+                    goal = landscapeService.getGoalDefinition(entry.getKey().substring(entry.getKey().indexOf(':') + 1));
+                }
+                if (goal != null && isSrsGoal(goal)
+                        && (portable == null || !portable.states().containsKey(goal.getId()))) {
+                    throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
+                            "This archive cannot safely restore memorization progress without signed card state. "
+                                    + "Create a new export from the original learner before importing.");
+                }
+            }
+        }
+        return portable == null ? Map.of() : portable.states();
+    }
+
+    private Map<String, Map<String, Object>> preparePortableSrsRestore(
+            Learner learner, Map<String, Map<String, Object>> states) {
+        Map<String, Map<String, Object>> prepared = new LinkedHashMap<>();
+        for (var entry : states.entrySet()) {
+            Map<String, Object> current = loadSrsStateStrict(learner.getSkillpilotId(), entry.getKey());
+            Map<String, Object> merged = new LinkedHashMap<>(current);
+            merged.putAll(entry.getValue());
+            // Restoring an older valid backup must not erase success already in this account.
+            current.forEach((cardId, raw) -> {
+                if (raw instanceof Map<?, ?> old && isVerifiedRecallPassed(old.get("verifiedRecall"))) {
+                    Object replacement = merged.get(cardId);
+                    if (!(replacement instanceof Map<?, ?> next)
+                            || !isVerifiedRecallPassed(next.get("verifiedRecall"))) {
+                        merged.put(cardId, raw);
+                    }
+                }
+            });
+            prepared.put(entry.getKey(), merged);
+        }
+        return prepared;
+    }
+
+    private void restorePortableSrsData(Learner learner, Map<String, Map<String, Object>> states) {
+        Instant restoredAt = Instant.now().truncatedTo(java.time.temporal.ChronoUnit.MICROS);
+        states.forEach((goalId, state) -> persistVerifiedRecallBatchClientState(learner, goalId, state, restoredAt));
     }
 
     private List<LearnerLearningPlanApi.PortablePlan> exportPersonalLearningPlans(
@@ -11651,16 +12260,25 @@ public class LearnerService {
 
     @Transactional
     public void importLearner(String skillpilotId, SignedLearnerDataDTO signedData) {
+        if (signedData == null || signedData.data() == null || signedData.signature() == null) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "Signed learner archive is required");
+        }
         // distinct verification logic
         String calculatedSignature = calculateSignature(signedData.data());
-        if (!calculatedSignature.equals(signedData.signature())) {
+        if (!java.security.MessageDigest.isEqual(
+                calculatedSignature.getBytes(StandardCharsets.UTF_8),
+                signedData.signature().getBytes(StandardCharsets.UTF_8))) {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
                     "Invalid data signature. Data may have been tampered with.");
         }
 
         LearnerDataDTO data = signedData.data();
+        // Validate the entire card restoration contract before the first mutation.
+        Map<String, Map<String, Object>> importedSrs = validatePortableSrsImport(data);
         Learner existing = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
+        Map<String, Map<String, Object>> restoredSrs = preparePortableSrsRestore(existing, importedSrs);
         // ... rest of logic
 
         // Provenance / Chain of Custody
@@ -11723,6 +12341,10 @@ public class LearnerService {
         }
 
         // Restore Planned Goals
+        restorePortableSrsData(existing, restoredSrs);
+        // Navigation bindings must not authorize an imported goal during revalidation.
+        // All signature, format and restorable-state checks have already completed.
+        existing.setCompletionWorkflow(null);
         restoreImportedPlannedGoals(existing, data.plannedGoals());
         restoreImportedPersonalLearningPlans(existing, data.learningPlans());
     }

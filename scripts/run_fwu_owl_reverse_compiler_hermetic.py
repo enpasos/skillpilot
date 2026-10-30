@@ -2180,6 +2180,15 @@ def validate_reconstructed_package(
         "--report",
         str(receipt_path),
     ]
+    # Select only the known external trust root. Package metadata never supplies
+    # arbitrary validator policy; the independent validator checks the pair.
+    with output.duplicate() as handle, zipfile.ZipFile(handle, "r", allowZip64=False) as archive:
+        manifests = [item for item in archive.infolist() if item.filename.endswith("/metadata/manifest.json")]
+        if len(manifests) != 1 or manifests[0].file_size > 67_108_864:
+            raise InvalidInput("reconstructed package lacks one bounded manifest")
+        manifest = load_json_bytes(archive.read(manifests[0]), "reconstructed package manifest")
+    if isinstance(manifest, dict) and manifest.get("runtimeContractVersion") == "1.1" and manifest.get("releaseProfile") == "full-standalone-completion-v1":
+        command.extend(["--contracts-dir", str(REPO_ROOT / "contracts/curriculum-package/v1.1")])
     try:
         result = subprocess.run(
             command,

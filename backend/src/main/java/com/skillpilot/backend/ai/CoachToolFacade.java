@@ -155,7 +155,54 @@ public class CoachToolFacade {
 
     public UnifiedLearnerStateResponse getLearnerState(String skillpilotId) {
         learnerService.assertActiveLearnerRouteAccess(skillpilotId);
-        return learnerService.getCoachLearnerState(skillpilotId);
+        if (com.skillpilot.backend.completion.CompletionCallContext.current() != null) {
+            return completionAwareCoachState(skillpilotId);
+        }
+        return com.skillpilot.backend.completion.CompletionCallContext.with(
+                new com.skillpilot.backend.completion.CompletionCallContext("legacy", "unsupported", null, false),
+                () -> completionAwareCoachState(skillpilotId));
+    }
+
+    private UnifiedLearnerStateResponse completionAwareCoachState(String skillpilotId) {
+        UnifiedLearnerStateResponse state = learnerService.getCoachLearnerState(skillpilotId);
+        var call = com.skillpilot.backend.completion.CompletionCallContext.current();
+        if (state.levelCompletion() != null && state.levelCompletion().profileId() != null
+                && call != null && !call.supported() && !"claude".equals(call.provider())) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT,
+                    "The selected completion route requires a supported coach session. Pause learning and return to the Cockpit to start that session or deliberately leave the route.");
+        }
+        return state;
+    }
+
+    private void requireOrdinaryNavigation(String skillpilotId) {
+        if (learnerService.completionRouteOwnsNavigation(learnerService.getLearner(skillpilotId))) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT,
+                    "The completion route owns navigation. Use its current published choices or deliberately leave it in the Cockpit.");
+        }
+    }
+
+    public boolean supportsCompletionWorkflow() {
+        return learnerService.supportsCompletionWorkflow();
+    }
+
+    /** Provider adapters resolve an exact published choice before calling this boundary. */
+    public UnifiedLearnerStateResponse chooseLevelCompletion(String skillpilotId,
+            com.skillpilot.backend.api.LevelCompletionActionRequest request) {
+        learnerService.assertWritableLearningSession(skillpilotId);
+        com.skillpilot.backend.completion.CompletionCallContext call =
+                com.skillpilot.backend.completion.CompletionCallContext.current();
+        if (call == null || !call.supported()) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Start a supported completion coach session.");
+        }
+        if ("startAssessment".equals(request.action()) || "retryAssessment".equals(request.action())) {
+            learnerService.startCompletionAssessment(skillpilotId,
+                    new com.skillpilot.backend.api.CompletionAssessmentStart(
+                            request.profileId(), request.goalId(), request.expectedRevision(),
+                            "retryAssessment".equals(request.action())),
+                    call.provider(), call.sessionBinding(), call.expiresAt());
+            return learnerService.getCoachLearnerState(skillpilotId);
+        }
+        return learnerService.chooseLevelCompletion(skillpilotId, request);
     }
 
     @Autowired(required = false)
@@ -402,7 +449,9 @@ public class CoachToolFacade {
         String skillpilotId = chatSessionService.resolveSkillpilotIdWithoutActivity(sessionToken);
         activeSessionActivity.set(new SessionActivityScope(sessionToken, skillpilotId));
         try {
-            return learnerLifecycle.withActivity(skillpilotId, operation, successfulResult);
+            return com.skillpilot.backend.completion.CompletionCallContext.with(
+                    new com.skillpilot.backend.completion.CompletionCallContext("legacy", "unsupported", null, false),
+                    () -> learnerLifecycle.withActivity(skillpilotId, operation, successfulResult));
         } finally {
             activeSessionActivity.remove();
         }
@@ -426,6 +475,7 @@ public class CoachToolFacade {
     /** Complete frontier used for authored transitions, never for compact UI rendering. */
     public List<FrontierGoal> getUncompactedFrontier(String skillpilotId) {
         learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+        requireOrdinaryNavigation(skillpilotId);
         return learnerService.getUncompactedRichFrontier(skillpilotId);
     }
 
@@ -444,16 +494,19 @@ public class CoachToolFacade {
     /** Read-only personalized scope roots for authenticated, ID-based coach adapters. */
     public List<FrontierGoal> getScopeOptions(String skillpilotId) {
         learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+        requireOrdinaryNavigation(skillpilotId);
         return learnerService.getScopeNavigationOptions(skillpilotId);
     }
 
     public UnifiedLearnerStateResponse setScope(String skillpilotId, ScopeRequest request) {
         learnerService.assertWritableLearningSession(skillpilotId);
+        requireOrdinaryNavigation(skillpilotId);
         return learnerService.setScope(skillpilotId, request.goalIds());
     }
 
     public UnifiedLearnerStateResponse setActiveGoal(String skillpilotId, ActiveGoalRequest request) {
         learnerService.assertWritableLearningSession(skillpilotId);
+        requireOrdinaryNavigation(skillpilotId);
         UnifiedLearnerStateResponse state = learnerService.getCoachLearnerState(skillpilotId);
         String requiredAction = state.stateMachine() != null ? state.stateMachine().requiredAction() : null;
         boolean redirect = Boolean.TRUE.equals(request.redirect());
@@ -486,6 +539,8 @@ public class CoachToolFacade {
             return MasteryResult.badRequest(validationError);
         }
         MasteryUpdateRequest effectiveRequest = normalizeMasteryRequest(request);
+        learnerService.assertCompletionAssessmentOwner(skillpilotId,
+                extractGoalIdFromMasteryRequest(effectiveRequest));
 
         UnifiedLearnerStateResponse state = learnerService.getCoachLearnerState(skillpilotId);
         String requiredAction = state.stateMachine() != null ? state.stateMachine().requiredAction() : null;
@@ -610,6 +665,7 @@ public class CoachToolFacade {
         if (request == null || request.goalId() == null || request.goalId().isBlank()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "goalId must not be empty.");
         }
+        learnerService.assertCompletionAssessmentOwner(skillpilotId, request.goalId());
         FrontierGoal active = activeGoal(state);
         if (active == null || !request.goalId().equals(active.id()) || !isExamGoal(active)
                 || !coachStateProjection.isExamReadyForHardCheck(active)) {
@@ -948,7 +1004,8 @@ public class CoachToolFacade {
                 Set.of(),
                 state.learningState(),
                 state.activeGoal(),
-                state.stateMachine());
+                state.stateMachine(),
+                state.levelCompletion());
     }
 
     private VerifiedRecallPromptResponse withoutSkillpilotId(VerifiedRecallPromptResponse response) {

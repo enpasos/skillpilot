@@ -1,9 +1,11 @@
 import { sanitizeSkillpilotId } from '../../utils/skillpilotId'
+import type { CompletionAssessmentStart } from '../../utils/levelCompletionApi'
 
 export interface ClaudeV1StartInput {
   skillpilotId: string
   language: string
   client?: 'web-start'
+  completionAssessment?: CompletionAssessmentStart
 }
 
 export interface ClaudeV1StartResponse {
@@ -133,6 +135,7 @@ export const requestClaudeV1Start = async (
       body: JSON.stringify({
         communicationLocale: normalizeConversationLanguage(input.language),
         client: input.client ?? 'web-start',
+        completionAssessment: input.completionAssessment,
       }),
     },
   )

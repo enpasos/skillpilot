@@ -82,6 +82,15 @@ public class LearnerUiController {
         return learnerService.getLearnerState(skillpilotId);
     }
 
+    @PostMapping("/{skillpilotId}/level-completion/actions")
+    public ResponseEntity<UnifiedLearnerStateResponse> chooseLevelCompletion(
+            @PathVariable String skillpilotId,
+            @RequestBody com.skillpilot.backend.api.LevelCompletionActionRequest request) {
+        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+        return ResponseEntity.ok().cacheControl(CacheControl.noStore())
+                .body(learnerService.chooseLevelCompletion(skillpilotId, request));
+    }
+
     @GetMapping("/{skillpilotId}/planning-scope")
     @Operation(
             summary = "Get a read-only atomic planning scope snapshot",

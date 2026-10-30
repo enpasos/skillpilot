@@ -148,37 +148,17 @@ export function useSrsMastery(
 
       const storageKey = `srs_state_${skillpilotId}_${goal.id}`
       const lastSyncKey = `srs_state_last_sync_${skillpilotId}_${goal.id}`
-      let srsState: Record<string, SrsReviewState> = {}
-      try {
-        const stored = localStorage.getItem(storageKey)
-        if (stored) srsState = JSON.parse(stored)
-      } catch {
-        srsState = {}
-      }
-
       const snapshot = await loadClientState(goal.id)
       if (runId !== runRef.current) return
-      const serverState = snapshot?.srsState
-      if (serverState && Object.keys(serverState).length > 0) {
-        const serverUpdatedAt = snapshot.updatedAt ? Date.parse(snapshot.updatedAt) : 0
-        const localLast = localStorage.getItem(lastSyncKey)
-        const localLastAt = localLast ? Date.parse(localLast) : 0
-        if (
-          Object.keys(srsState).length === 0
-          || !serverUpdatedAt
-          || !localLastAt
-          || serverUpdatedAt > localLastAt
-        ) {
-          srsState = serverState
-          try {
-            localStorage.setItem(storageKey, JSON.stringify(serverState))
-            if (snapshot?.updatedAt) {
-              localStorage.setItem(lastSyncKey, String(snapshot.updatedAt))
-            }
-          } catch {
-            // Ignore local persistence errors; mastery can still be computed from the server snapshot.
-          }
-        }
+      if (!snapshot?.srsState) continue
+      const srsState = snapshot.srsState
+      // Recall is authoritative server state; a newer browser clock cannot certify it.
+      try {
+        localStorage.setItem(storageKey, JSON.stringify(srsState))
+        if (snapshot.updatedAt) localStorage.setItem(lastSyncKey, snapshot.updatedAt)
+        else localStorage.removeItem(lastSyncKey)
+      } catch {
+        // The current server snapshot remains usable without a browser mirror.
       }
 
       let dueCount = 0

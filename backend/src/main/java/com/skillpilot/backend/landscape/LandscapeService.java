@@ -119,6 +119,18 @@ public class LandscapeService {
     private volatile long lastReloadCheck = 0L;
     private final Object reloadLock = new Object();
     private static final long RELOAD_CHECK_INTERVAL_MS = 2000L;
+    private volatile boolean runtimeGenerationPinned;
+
+    public void pinRuntimeGeneration() {
+        if (packageBacked) return;
+        synchronized (reloadLock) {
+            if (runtimeGenerationPinned) return;
+            // A pin is a generation boundary, not a throttled freshness hint. In
+            // particular, data changed within the two-second interval must be read.
+            loadLandscapes(true);
+            runtimeGenerationPinned = true;
+        }
+    }
 
     public LandscapeService(LandscapeProperties properties, ObjectMapper objectMapper) {
         this(properties, objectMapper, new GoalMappingService(properties, objectMapper));
@@ -695,6 +707,10 @@ public class LandscapeService {
     }
 
     private void loadLandscapes() {
+        loadLandscapes(false);
+    }
+
+    private void loadLandscapes(boolean failOnCriticalParseError) {
         Path dir = Path.of(properties.getDirectory()).toAbsolutePath().normalize();
         if (!Files.isDirectory(dir)) {
             log.warn("Landscape directory does not exist: {}", dir);
@@ -804,6 +820,9 @@ public class LandscapeService {
                 }
             }
         } catch (Exception e) {
+            if (failOnCriticalParseError) {
+                throw new IllegalStateException("Cannot pin unreadable landscape inputs", e);
+            }
             log.error("Failed to list landscapes in {}", dir, e);
         }
 
@@ -812,6 +831,9 @@ public class LandscapeService {
             maxLastModified = archivedSourceMaxLastModified;
         }
 
+        if (criticalParseError && failOnCriticalParseError) {
+            throw new IllegalStateException("Cannot pin a curriculum with critical landscape parse errors");
+        }
         if (criticalParseError && !cachedLandscapes.isEmpty()) {
             log.warn("Critical landscape parse errors detected. Keeping previous cache with {} landscapes and {} goals.",
                     cachedLandscapes.size(), goalIdToLandscapeId.size());
@@ -1820,7 +1842,7 @@ public class LandscapeService {
     }
 
     private void ensureFresh() {
-        if (packageBacked) {
+        if (packageBacked || runtimeGenerationPinned) {
             return;
         }
         long now = System.currentTimeMillis();
@@ -1834,6 +1856,7 @@ public class LandscapeService {
             return;
         }
         synchronized (reloadLock) {
+            if (runtimeGenerationPinned) return;
             if (latest <= lastLoadedFingerprint) {
                 return;
             }

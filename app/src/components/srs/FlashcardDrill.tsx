@@ -11,6 +11,7 @@ import {
 } from './srsLogic'
 import { FlashcardFlipCard } from './FlashcardFlipCard'
 import { interpolateTemplate } from '../../utils/interpolateTemplate'
+import { SRS_STATE_RELOADED_EVENT, type SrsPracticeSnapshot, type SrsStateReloaded } from '../../utils/srsPracticeSync'
 import {
     FLASHCARD_PRACTICE_QUALITY,
     getAdjacentFlashcardIndex,
@@ -25,7 +26,7 @@ interface FlashcardDrillProps {
     filterTags?: string[]
     goalId: string
     readOnly?: boolean
-    onSync?: (goalId: string) => Promise<boolean>
+    onSync?: (goalId: string, snapshot?: SrsPracticeSnapshot, onSaved?: (updatedAt: string) => void) => Promise<boolean>
     reloadSignal?: number
     onStateChange?: (state: {
         goalId: string
@@ -185,6 +186,23 @@ export function FlashcardDrill({
     })
 
     const [error, setError] = useState<string | null>(null)
+    const serverUpdatedAtRef = useRef<string | null>(null)
+
+    useEffect(() => {
+        const onReload = (event: Event) => {
+            const detail = (event as CustomEvent<SrsStateReloaded>).detail
+            if (detail.goalId !== goalId) return
+            serverUpdatedAtRef.current = detail.expectedUpdatedAt
+            latestStateRef.current = detail.srsState as Record<string, ReviewItem>
+            setSrsState(detail.srsState as Record<string, ReviewItem>)
+            pendingSyncRef.current = false
+            setError(language === 'de'
+                ? 'Dein Lernstand wurde inzwischen geändert. Die aktuellen Lernkartendaten sind jetzt geladen.'
+                : 'Your progress changed in another session. The current flashcard data has been loaded.')
+        }
+        window.addEventListener(SRS_STATE_RELOADED_EVENT, onReload)
+        return () => window.removeEventListener(SRS_STATE_RELOADED_EVENT, onReload)
+    }, [goalId, language])
 
     useEffect(() => {
         latestStateRef.current = srsState
@@ -204,7 +222,10 @@ export function FlashcardDrill({
 
                 const syncingGeneration = syncGenerationRef.current
                 try {
-                    const ok = await sync(goalId)
+                    const ok = await sync(goalId, {
+                        srsState: latestStateRef.current,
+                        expectedUpdatedAt: serverUpdatedAtRef.current,
+                    }, updatedAt => { serverUpdatedAtRef.current = updatedAt })
                     if (!ok) break
                     if (syncGenerationRef.current === syncingGeneration) {
                         pendingSyncRef.current = false
@@ -228,24 +249,28 @@ export function FlashcardDrill({
             : `/api/ui/learners/${skillPilotId}/client-state/${goalId}`
         const payload = JSON.stringify({
             updatedAt: new Date().toISOString(),
-            srsState: latestStateRef.current
+            srsState: latestStateRef.current,
+            expectedUpdatedAt: serverUpdatedAtRef.current,
         })
-
-        if (navigator.sendBeacon) {
-            const blob = new Blob([payload], { type: 'application/json' })
-            navigator.sendBeacon(url, blob)
-            pendingSyncRef.current = false
-            return
-        }
+        const syncingGeneration = syncGenerationRef.current
 
         try {
-            fetch(url, {
+            void fetch(url, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: payload,
                 keepalive: true
+            }).then(async response => {
+                if (!response.ok) return
+                const saved = await response.json()
+                if (typeof saved.savedAt === 'string') {
+                    serverUpdatedAtRef.current = saved.savedAt
+                    localStorage.setItem(`srs_state_last_sync_${skillPilotId}_${goalId}`, saved.savedAt)
+                }
+                if (syncGenerationRef.current === syncingGeneration) pendingSyncRef.current = false
+            }).catch(() => {
+                // Keep pending work for the next foreground synchronization.
             })
-            pendingSyncRef.current = false
         } catch (e) {
             console.warn('Background sync failed', e)
         }
@@ -312,21 +337,18 @@ export function FlashcardDrill({
                     const res = await fetch(syncUrl)
                     if (res.ok) {
                         const payload = await res.json()
-                        if (payload && payload.srsState && Object.keys(payload.srsState).length > 0) {
-                            const updatedAt = payload.updatedAt ? Date.parse(payload.updatedAt) : 0
-                            const localLast = localStorage.getItem(lastSyncKey)
-                            const localLastAt = localLast ? Date.parse(localLast) : 0
-                            if (!updatedAt || !localLastAt || updatedAt > localLastAt) {
-                                const storageKey = `srs_state_${skillPilotId}_${goalId}`
-                                localStorage.setItem(storageKey, JSON.stringify(payload.srsState))
-                                if (payload.updatedAt) {
-                                    localStorage.setItem(lastSyncKey, String(payload.updatedAt))
-                                }
-                            }
+                        if (payload && payload.srsState) {
+                            serverUpdatedAtRef.current = payload.updatedAt ?? null
+                            const storageKey = `srs_state_${skillPilotId}_${goalId}`
+                            localStorage.setItem(storageKey, JSON.stringify(payload.srsState))
+                            if (payload.updatedAt) localStorage.setItem(lastSyncKey, String(payload.updatedAt))
+                            else localStorage.removeItem(lastSyncKey)
                         }
+                    } else {
+                        throw new Error('Current flashcard state could not be loaded')
                     }
                 } catch (e) {
-                    console.warn('Client-state restore error', e)
+                    throw new Error('Current flashcard state could not be loaded', { cause: e })
                 }
 
                 // Load State Dynamically using goalId (User Request)

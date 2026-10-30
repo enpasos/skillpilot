@@ -15,7 +15,7 @@ import org.springframework.stereotype.Repository;
 public class ClaudeV1LearningSessionRepository {
 
     private static final String COLUMNS =
-            "token_hash, learner_id, started_at, expires_at, communication_locale, state_version";
+            "token_hash, learner_id, started_at, expires_at, communication_locale, state_version, completion_contract";
 
     private final JdbcOperations jdbc;
 
@@ -25,13 +25,13 @@ public class ClaudeV1LearningSessionRepository {
 
     public void insert(ClaudeV1LearningSession session) {
         jdbc.update(
-                "INSERT INTO claude_v1_learning_session (" + COLUMNS + ") VALUES (?, ?, ?, ?, ?, ?)",
+                "INSERT INTO claude_v1_learning_session (" + COLUMNS + ") VALUES (?, ?, ?, ?, ?, ?, ?)",
                 session.tokenHash(),
                 session.learnerId(),
                 Timestamp.from(session.startedAt()),
                 Timestamp.from(session.expiresAt()),
                 session.communicationLocale(),
-                session.stateVersion());
+                session.stateVersion(), session.completionContract());
     }
 
     public Optional<ClaudeV1LearningSession> findByTokenHashForUpdate(String tokenHash) {
@@ -70,6 +70,12 @@ public class ClaudeV1LearningSessionRepository {
                 tokenHash);
     }
 
+    /** Caller holds the canonical learner and session locks; this changes no learner result/revision. */
+    public void updateCompletionContract(String tokenHash, String stamp) {
+        jdbc.update("UPDATE claude_v1_learning_session SET completion_contract = ? WHERE token_hash = ?",
+                stamp, tokenHash);
+    }
+
     public int deleteExpired(Instant now) {
         return jdbc.update(
                 "DELETE FROM claude_v1_learning_session WHERE expires_at <= ?",
@@ -83,6 +89,6 @@ public class ClaudeV1LearningSessionRepository {
                 rs.getObject("started_at", java.time.OffsetDateTime.class).toInstant(),
                 rs.getObject("expires_at", java.time.OffsetDateTime.class).toInstant(),
                 rs.getString("communication_locale"),
-                rs.getLong("state_version"));
+                rs.getLong("state_version"), rs.getString("completion_contract"));
     }
 }

@@ -21,8 +21,9 @@ public class ClaudeV1McpServerConfiguration {
     public SkillPilotStatelessMcpServerFactory.Registration claudeV1McpServerRegistration(
             SkillPilotStatelessMcpServerFactory serverFactory,
             ClaudeV1McpContractAdapter contract,
-            ClaudeV1Properties properties) {
-        return serverFactory.create(
+            ClaudeV1Properties properties,
+            ClaudeV1CompletionContractRegistry completionContract) {
+        var registration = serverFactory.create(
                 ClaudeV1Contract.INTERNAL_MCP_PATH,
                 properties.getServerName(),
                 properties.getServerVersion(),
@@ -30,6 +31,9 @@ public class ClaudeV1McpServerConfiguration {
                 properties.getRequestTimeout(),
                 contract.toolSpecifications(),
                 contract.resourceSpecifications());
+        completionContract.register(contract.serverInstructions(),
+                contract.toolSpecifications().stream().map(specification -> specification.tool()).toList());
+        return registration;
     }
 
     @Bean(name = "claudeV1McpRouterFunction")

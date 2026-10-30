@@ -7,6 +7,7 @@ import type { TreeStructureMode } from '../components/CompetenceTree'
 import { PersonalCurriculumSetup } from '../components/PersonalCurriculumSetup'
 import { LearnerPlanTodayOverview } from '../components/LearnerPlanTodayOverview'
 import { LearnerActiveGoalBanner } from '../components/LearnerActiveGoalBanner'
+import { LevelCompletionCard } from '../components/LevelCompletionCard'
 import { Settings, Database, Menu, X, Target, Send, Check, MoveRight, BookOpen, ClipboardCheck, PanelLeftClose, PanelLeftOpen } from 'lucide-react'
 import { InfoModal } from '../components/InfoModal'
 import { LogoutButton } from '../components/LogoutButton'
@@ -19,6 +20,7 @@ import { FlashcardDrill } from '../components/srs/FlashcardDrill'
 import { ProgressPopover } from '../components/ProgressPopover'
 import { InlineMathText } from '../components/InlineMathText'
 import { useLanguage } from '../contexts/LanguageContext'
+import { hasUnsignedLegacySrsData, SRS_STATE_RELOADED_EVENT, type SrsPracticeSnapshot } from '../utils/srsPracticeSync'
 import { isMastered } from '../goalUiUtils'
 import { useSrsMastery } from '../hooks/useSrsMastery'
 import { useFlashcardSetStatus } from '../hooks/useFlashcardSetStatus'
@@ -44,6 +46,7 @@ import type { ToastKind } from '../hooks/useToast'
 import { queueToastForNextLoad } from '../hooks/useToast'
 import { dispatchLearnerUiRefresh } from '../utils/learnerUiEvents'
 import { createSynchronousInFlightGuard } from '../utils/synchronousInFlightGuard'
+import { buildCompletionRouteStartHref, parseLevelCompletion, requestLevelCompletionAction, type CompletionActionInput, type LevelCompletion } from '../utils/levelCompletionApi'
 import {
   beginLatestRequest,
   invalidateLatestRequest,
@@ -161,6 +164,7 @@ type LearnerStateRefreshResult = {
 }
 
 type LearnerStatePayload = {
+  levelCompletion?: unknown
   activeGoal?: { id?: string } | null
   frontier?: FrontierGoal[]
   stateMachine?: {
@@ -392,6 +396,11 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const [frontierOptions, setFrontierOptions] = useState<FrontierGoal[]>([])
   const [stateActiveGoalId, setStateActiveGoalId] = useState<string | null>(null)
   const [stateRequiredAction, setStateRequiredAction] = useState<string | null>(null)
+  const [completionSnapshot, setCompletionSnapshot] = useState<{ scopeKey: string; data: LevelCompletion | null } | null>(null)
+  const [completionActionBusy, setCompletionActionBusy] = useState(false)
+  const [completionActionError, setCompletionActionError] = useState<string | null>(null)
+  const completionActionInFlightRef = useRef(createSynchronousInFlightGuard())
+  const levelCompletion = completionSnapshot?.scopeKey === learnerStateScopeKey ? completionSnapshot.data : null
   const [learnerStateLoadState, setLearnerStateLoadState] = useState<{
     scopeKey: string
     status: LearnerStateLoadStatus
@@ -1541,6 +1550,10 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     invalidateLatestRequest(learningPlansRequestSequenceRef)
     invalidateLatestRequest(learningPlanContinueRequestSequenceRef)
     setStateRequiredAction(null)
+    setCompletionSnapshot(null)
+    setCompletionActionBusy(false)
+    setCompletionActionError(null)
+    completionActionInFlightRef.current = createSynchronousInFlightGuard()
     learningPlanTransitionInFlightRef.current = createSynchronousInFlightGuard()
     learningPlanReconcileAttemptedKeyRef.current = null
     pendingPlanGoalFocusRef.current = null
@@ -1579,6 +1592,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     data: LearnerStatePayload,
     requestScopeKey: string,
   ): LearnerStateRefreshResult => {
+    const completion = parseLevelCompletion(data.levelCompletion)
     const backendActiveGoalId = data.activeGoal?.id ?? data.stateMachine?.activeGoal?.id ?? null
     if (data.frontier && Array.isArray(data.frontier)) {
       setFrontierOptions(data.frontier)
@@ -1598,6 +1612,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     setStateActiveGoalId(backendActiveGoalId)
     setLearnerData(prev => prev ? { ...prev, activeGoalId: backendActiveGoalId ?? undefined } : prev)
     setStateRequiredAction(data.stateMachine?.requiredAction ?? null)
+    setCompletionSnapshot({ scopeKey: requestScopeKey, data: completion })
     // Store backend-computed stats for consistency with GPT
     if (data.goals) {
       setBackendStats({
@@ -1721,6 +1736,35 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     }
     // The status text is formulated in the display language, so a language switch reloads it.
   }, [learnerStateScopeKey, localizedLanguage, skillpilotId])
+
+  const handleCompletionAction = useCallback(async (action: CompletionActionInput) => {
+    if (!levelCompletion || learnerStateLoadStatus !== 'ready') return
+    const guard = completionActionInFlightRef.current
+    if (!guard.tryStart()) return
+    const requestScopeKey = learnerStateScopeKey
+    setCompletionActionBusy(true)
+    setCompletionActionError(null)
+    invalidateLatestRequest(learnerStateRequestSequenceRef)
+    try {
+      const response = await requestLevelCompletionAction(skillpilotId, action, levelCompletion.learnerRevision)
+      if (currentLearnerStateScopeKeyRef.current !== requestScopeKey) return
+      if (!isLearnerStatePayload(response)) throw new Error('Invalid completion state')
+      invalidateLatestRequest(learnerStateRequestSequenceRef)
+      const result = applyLearnerStatePayload(response, requestScopeKey)
+      if (action.action === 'learnGoal' && result.activeGoalId) onSelectGoal(result.activeGoalId)
+      await refreshLearningPlans()
+      onRefresh?.()
+    } catch {
+      if (currentLearnerStateScopeKeyRef.current !== requestScopeKey) return
+      setCompletionActionError(localizedLanguage === 'en'
+        ? 'Your choice could not be confirmed. Reload the current state and choose again.'
+        : 'Deine Auswahl konnte nicht bestätigt werden. Lade den aktuellen Stand und wähle erneut.')
+      await refreshState(true)
+    } finally {
+      guard.finish()
+      if (currentLearnerStateScopeKeyRef.current === requestScopeKey) setCompletionActionBusy(false)
+    }
+  }, [applyLearnerStatePayload, learnerStateLoadStatus, learnerStateScopeKey, levelCompletion, localizedLanguage, onRefresh, onSelectGoal, refreshLearningPlans, refreshState, skillpilotId])
 
   useEffect(() => {
     if (!skillpilotId) return
@@ -2821,71 +2865,11 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       if (res.ok) {
         const serverData = await res.json()
 
-        // V2 Export: Collect Local SRS State
-        const clientData: Record<string, unknown> = { srsState: {} }
-        const prefix = `srs_state_${skillpilotId}_`
-
-        try {
-          for (let i = 0; i < localStorage.length; i++) {
-            const key = localStorage.key(i)
-            if (key && key.startsWith(prefix)) {
-              // Save full key-value pair. We will parse the key on import to handle ID changes.
-              const val = localStorage.getItem(key)
-              if (val) (clientData.srsState as Record<string, unknown>)[key] = JSON.parse(val)
-            }
-          }
-        } catch (e) {
-          console.warn("Error collecting local stats for export", e)
-        }
-
-        const parseTimestamp = (value: unknown) => {
-          if (!value) return 0
-          const numeric = Number(value)
-          if (Number.isFinite(numeric)) return numeric
-          const parsed = Date.parse(String(value))
-          return Number.isFinite(parsed) ? parsed : 0
-        }
-
-        // Merge in server-stored SRS state (important for multi-device exports)
-        try {
-          const srsNodes = srsGoals.filter((goal) => goal.tags?.some((tag) => tag.startsWith('srs-deck')))
-          await Promise.all(
-            srsNodes.map(async (goal) => {
-              const nodeId = goal.id
-              const syncUrl = apiBase
-                ? `${apiBase}/api/ui/learners/${skillpilotId}/client-state/${nodeId}`
-                : `/api/ui/learners/${skillpilotId}/client-state/${nodeId}`
-              try {
-                const stateRes = await fetch(syncUrl)
-                if (!stateRes.ok) return
-                const payload = await stateRes.json()
-                const serverState = payload?.srsState
-                if (!serverState || Object.keys(serverState).length === 0) return
-
-                const lastSyncKey = `srs_state_last_sync_${skillpilotId}_${nodeId}`
-                const localLast = localStorage.getItem(lastSyncKey)
-                const localLastAt = parseTimestamp(localLast)
-                const serverUpdatedAt = parseTimestamp(payload?.updatedAt)
-
-                const storageKey = `srs_state_${skillpilotId}_${nodeId}`
-                const existing = (clientData.srsState as Record<string, unknown>)[storageKey]
-                if (!existing || serverUpdatedAt > localLastAt) {
-                  (clientData.srsState as Record<string, unknown>)[storageKey] = serverState
-                }
-              } catch (err) {
-                console.warn('Error fetching server SRS state for export', err)
-              }
-            })
-          )
-        } catch (e) {
-          console.warn('Error merging server SRS state for export', e)
-        }
-
+        // Card process data is part of the server's versioned, signed archive.
         const exportPayload = {
-          version: "2.0",
+          version: '3.0',
           exportedAt: new Date().toISOString(),
           serverExport: serverData,
-          clientData: clientData
         }
 
         downloadJsonPayload(exportPayload, 'learner_data')
@@ -2899,54 +2883,50 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       console.error("Export error", e)
       onNotify?.('error', t.notifications.learnerExportFailed)
     }
-  }, [downloadJsonPayload, onNotify, skillpilotId, srsGoals, t.notifications.learnerExportFailed, t.notifications.learnerExported])
+  }, [downloadJsonPayload, onNotify, skillpilotId, t.notifications.learnerExportFailed, t.notifications.learnerExported])
 
-  const syncClientData = useCallback(async (nodeId: string): Promise<boolean> => {
+  const syncClientData = useCallback(async (
+    nodeId: string,
+    snapshot?: SrsPracticeSnapshot,
+    onSaved?: (updatedAt: string) => void,
+  ): Promise<boolean> => {
     if (!skillpilotId || !nodeId) return false
     const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
     const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/client-state/${nodeId}` : `/api/ui/learners/${skillpilotId}/client-state/${nodeId}`
     const lastSyncKey = `srs_state_last_sync_${skillpilotId}_${nodeId}`
     const storageKey = `srs_state_${skillpilotId}_${nodeId}`
-
-    let srsState: Record<string, unknown> = {}
     try {
-      const stored = localStorage.getItem(storageKey)
-      if (stored) srsState = JSON.parse(stored)
-    } catch (e) {
-      console.warn("Error collecting local SRS state for sync", e)
-    }
-
-    try {
+      // A caller without a bound practice snapshot only refreshes the mirror.
+      // It cannot promote a stale local map to the latest server revision.
+      if (!snapshot) return (await fetch(url, { cache: 'no-store' })).ok
       const res = await fetch(url, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          updatedAt: new Date().toISOString(),
-          srsState
-        })
+        body: JSON.stringify(snapshot),
       })
-
       if (res.ok) {
-        try {
-          const data = await res.json()
-          if (data && data.savedAt) {
-            localStorage.setItem(lastSyncKey, String(data.savedAt))
-          } else {
-            localStorage.setItem(lastSyncKey, new Date().toISOString())
-          }
-        } catch {
-          localStorage.setItem(lastSyncKey, new Date().toISOString())
-        }
+        const data = await res.json()
+        if (typeof data.savedAt !== 'string') return false
+        localStorage.setItem(lastSyncKey, data.savedAt)
+        onSaved?.(data.savedAt)
         return true
       }
-      if (res.status === 404) {
-        console.warn('Client-state sync endpoint not available on backend.')
-        return false
+      if (res.status === 409) {
+        const current = await fetch(url, { cache: 'no-store' })
+        if (current.ok) {
+          const payload = await current.json()
+          localStorage.setItem(storageKey, JSON.stringify(payload.srsState))
+          if (payload.updatedAt) localStorage.setItem(lastSyncKey, payload.updatedAt)
+          else localStorage.removeItem(lastSyncKey)
+          window.dispatchEvent(new CustomEvent(SRS_STATE_RELOADED_EVENT, {
+            detail: { goalId: nodeId, srsState: payload.srsState, expectedUpdatedAt: payload.updatedAt ?? null },
+          }))
+        }
       }
-      console.warn('Client-state sync failed', res.status, res.statusText)
+      console.warn('Client-state sync failed', res.status)
       return false
-    } catch (e) {
-      console.warn('Client-state sync error', e)
+    } catch (error) {
+      console.warn('Client-state sync error', error)
       return false
     }
   }, [skillpilotId])
@@ -2992,15 +2972,20 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       try {
         const json = JSON.parse(e.target?.result as string);
 
-        // V2 Import: Unwrap if Wrapper exists
-        let payloadToSend: unknown = json;
-        let clientDataToRestore: unknown = null;
-
-        if (json.serverExport && json.clientData) {
-          console.log("Detected V2 Export Wrapper")
-          payloadToSend = json.serverExport;
-          clientDataToRestore = json.clientData as Record<string, unknown>;
+        if (hasUnsignedLegacySrsData(json)) {
+          const message = language === 'de'
+            ? 'Diese ältere Sicherung kann die Lernkartenerfolge nicht zuverlässig wiederherstellen. Bitte erstelle beim ursprünglichen Lernstand eine neue Sicherung und importiere diese.'
+            : 'This older backup cannot reliably restore flashcard achievements. Please create a new backup from the original learner and import that file.'
+          if (onNotify) onNotify('error', message)
+          else {
+            setModalMessage(message)
+            setModalTitle(learnerViewCopy.importValidationFailedTitle)
+            setModalType('error')
+            setIsModalOpen(true)
+          }
+          return
         }
+        const payloadToSend: unknown = json.serverExport ?? json
 
         const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
         const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/import` : `/api/ui/learners/${skillpilotId}/import`
@@ -3012,81 +2997,17 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         });
 
         if (res.ok) {
-          let localRestoreComplete = true
-          // Restore Local Data (SRS State) if present
-          if (clientDataToRestore && (clientDataToRestore as Record<string, unknown>).srsState) {
-            try {
-              console.log("Restoring SRS State...")
-              const srsState = (clientDataToRestore as Record<string, unknown>).srsState as Record<string, unknown>
-              let restoreCount = 0;
-              const goalStateMap = new Map<string, Record<string, unknown>>();
-
-              // Regex to parse old keys: srs_state_{OLD_ID}_{GOAL_ID}
-              // We assume ID does not contain underscores (UUIDs are hyphens).
-              // But just in case, we split by first 3 parts: srs, state, id.
-              // safer: match /^srs_state_([^_]+)_(.+)$/
-              const keyPattern = /^srs_state_([^_]+)_(.+)$/
-
-              Object.entries(srsState).forEach(([oldKey, value]) => {
-                const match = oldKey.match(keyPattern)
-                if (match) {
-                  // match[1] is old ID (ignored, we use current `skillpilotId`)
-                  const goalId = match[2]
-
-                  // Construct new key for CURRENT user
-                  const newKey = `srs_state_${skillpilotId}_${goalId}`
-
-                  localStorage.setItem(newKey, JSON.stringify(value))
-                  if (value && typeof value === 'object') {
-                    goalStateMap.set(goalId, value as Record<string, unknown>)
-                  }
-                  restoreCount++;
-                }
-              })
-              console.log(`Restored ${restoreCount} SRS state entries.`)
-
-              // Persist restored SRS state to backend for memory nodes
-              const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-              const persisted = await Promise.all(
-                Array.from(goalStateMap.entries()).map(async ([goalId, state]) => {
-                  const syncUrl = apiBase
-                    ? `${apiBase}/api/ui/learners/${skillpilotId}/client-state/${goalId}`
-                    : `/api/ui/learners/${skillpilotId}/client-state/${goalId}`
-                  try {
-                    const res = await fetch(syncUrl, {
-                      method: 'PUT',
-                      headers: { 'Content-Type': 'application/json' },
-                      body: JSON.stringify({
-                        updatedAt: new Date().toISOString(),
-                        srsState: state
-                      })
-                    })
-                    if (res.ok) {
-                      const lastSyncKey = `srs_state_last_sync_${skillpilotId}_${goalId}`
-                      localStorage.setItem(lastSyncKey, new Date().toISOString())
-                      return true
-                    }
-                    console.warn('Failed to persist imported SRS state', res.status)
-                    return false
-                  } catch (err) {
-                    console.warn('Failed to persist imported SRS state', err)
-                    return false
-                  }
-                })
-              )
-              localRestoreComplete = persisted.every(Boolean)
-            } catch (err) {
-              console.error("Error restoring local state", err)
-              localRestoreComplete = false
-            }
+          // A successful server import restores signed card data atomically.
+          // Remove stale browser mirrors; the next load obtains authoritative state.
+          const statePrefix = `srs_state_${skillpilotId}_`
+          const syncPrefix = `srs_state_last_sync_${skillpilotId}_`
+          const obsoleteKeys: string[] = []
+          for (let index = 0; index < localStorage.length; index++) {
+            const key = localStorage.key(index)
+            if (key?.startsWith(statePrefix) || key?.startsWith(syncPrefix)) obsoleteKeys.push(key)
           }
-
-          queueToastForNextLoad(
-            localRestoreComplete ? 'success' : 'error',
-            localRestoreComplete
-              ? t.notifications.learnerImported
-              : t.notifications.learnerImportPartial,
-          )
+          obsoleteKeys.forEach(key => localStorage.removeItem(key))
+          queueToastForNextLoad('success', t.notifications.learnerImported)
           // Keep the reload for now because import may replace learner context,
           // selected curriculum, and local mirrored state across the app.
           window.location.reload();
@@ -3139,6 +3060,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     // Reset input so same file can be selected again if needed
     event.currentTarget.value = '';
   }, [
+    language,
     skillpilotId,
     learnerViewCopy.importErrorTitle,
     learnerViewCopy.importFailedTitle,
@@ -3146,7 +3068,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     learnerViewCopy.importValidationFailedTitle,
     onNotify,
     t.notifications.learnerImported,
-    t.notifications.learnerImportPartial,
     t.notifications.learnerImportFailed,
     t.notifications.learnerImportSystemFailed,
     t.notifications.learnerImportValidationFailed,
@@ -3232,6 +3153,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   }, [learnerDataManagementCopy.deleteMissing, learnerDataManagementCopy.deleteSuccess, onLogout, onNotify, skillpilotId])
 
   const showLearningProgress = !isGuidedPersonalizationRequired
+    && !levelCompletion?.profileId
     && (scopedLearningPlans?.followLearningPlans
       ?? (learnerData?.skillpilotId === skillpilotId && learnerData?.followLearningPlans)) === true
   const activeGoalTitle = effectiveActiveGoalId ? goalIndexAll.get(effectiveActiveGoalId)?.title : undefined
@@ -3428,8 +3350,21 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         onTouchEnd={finishMobileEdgeSwipe}
         onTouchCancel={() => { mobileEdgeTouchStart.current = null }}
       >
+        {levelCompletion && (!isGuidedPersonalizationRequired || learnerStateLoadStatus === 'error') ? (
+          <LevelCompletionCard
+            key={`${learnerStateScopeKey}:${levelCompletion.profileId ?? 'selection'}`}
+            completion={levelCompletion}
+            language={localizedLanguage}
+            stale={learnerStateLoadStatus !== 'ready'}
+            busy={completionActionBusy}
+            error={completionActionError}
+            learningPlanPaused={learnerData?.followLearningPlans === true && Boolean(scopedLearningPlans?.plans.length)}
+            onAction={(action) => { void handleCompletionAction(action) }}
+            onRetry={() => { void refreshState(true) }}
+          />
+        ) : null}
         <div className="mb-4 flex w-full justify-end">
-          <Link to="/?start=coach" data-testid="learner-coach-start-link"
+          <Link to={buildCompletionRouteStartHref(levelCompletion?.profileId)} data-testid="learner-coach-start-link"
             title={t.startPage.login.coachProviderLabel}
             className="inline-flex min-h-11 items-center gap-2 rounded-full border border-sky-500 bg-sky-600 px-4 py-2 text-sm font-semibold text-white hover:bg-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500">
             <Send size={16} aria-hidden="true" />{t.startPage.cards.gpt.title}
@@ -3676,6 +3611,13 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                     />
                   )}
 
+                {levelCompletion?.calculationStatus === 'valid' && levelCompletion.waivedTargetGoalIds.includes(currentGoal.id) ? (
+                  <p data-testid="level-completion-goal-context" className="mt-3 text-sm text-text-secondary">
+                    {localizedLanguage === 'en'
+                      ? 'Preparation for this goal is no longer required for the selected section. You can still choose to study it.'
+                      : 'Für den gewählten Abschnitt ist die Vorbereitung zu diesem Lernziel nicht mehr erforderlich. Du kannst es freiwillig weiterlernen.'}
+                  </p>
+                ) : null}
                 <GoalAdditionalMaterials
                   skillpilotId={skillpilotId}
                   goalId={currentGoal.id}

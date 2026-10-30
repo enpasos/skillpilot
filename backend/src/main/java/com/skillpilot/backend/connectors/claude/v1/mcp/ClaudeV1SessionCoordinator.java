@@ -14,6 +14,8 @@ import com.skillpilot.backend.connectors.claude.v1.session.ClaudeV1LearningSessi
 import com.skillpilot.backend.connectors.claude.v1.session.ClaudeV1LearningSessionRepository;
 import com.skillpilot.backend.connectors.claude.v1.session.ClaudeV1SessionTokenCodec;
 import com.skillpilot.backend.domain.Learner;
+import com.skillpilot.backend.completion.CompletionNavigationPolicy;
+import com.skillpilot.backend.completion.CompletionTelemetry;
 import com.skillpilot.backend.repository.LearnerRepository;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -58,11 +60,17 @@ public class ClaudeV1SessionCoordinator {
         }
     }
 
+    public static class CompletionContractException extends RuntimeException {
+        CompletionContractException() { super("The current completion contract needs a fresh session receipt."); }
+    }
+
     public record ReadContext(
             String sessionBinding,
             String skillpilotId,
             long stateVersion,
-            String communicationLocale) {
+            String communicationLocale,
+            boolean completionContractRequired,
+            String pendingCompletionBinding) {
     }
 
     public static final class MutateContext {
@@ -115,6 +123,11 @@ public class ClaudeV1SessionCoordinator {
             Learner learner) {
     }
 
+    private com.skillpilot.backend.completion.CompletionCallContext completionContext(LockedSession locked) {
+        return new com.skillpilot.backend.completion.CompletionCallContext("claude", locked.tokenHash(),
+                locked.session().expiresAt(), completionContract.isConfirmed(locked.session().completionContract()));
+    }
+
     private final LearnerRepository learners;
     private final ClaudeV1LearningSessionRepository sessions;
     private final ClaudeV1IdempotencyRepository idempotency;
@@ -122,6 +135,10 @@ public class ClaudeV1SessionCoordinator {
     private final ClaudeV1Properties properties;
     private final ObjectMapper objectMapper;
     private final ObjectMapper canonicalObjectMapper;
+    private final ClaudeV1CompletionContractRegistry completionContract;
+    private final ClaudeV1CapabilityService capabilities;
+    @org.springframework.beans.factory.annotation.Autowired(required = false)
+    private CompletionTelemetry completionTelemetry = CompletionTelemetry.noop();
 
     public ClaudeV1SessionCoordinator(
             LearnerRepository learners,
@@ -129,29 +146,76 @@ public class ClaudeV1SessionCoordinator {
             ClaudeV1IdempotencyRepository idempotency,
             ClaudeV1SessionTokenCodec tokenCodec,
             ClaudeV1Properties properties,
-            ObjectMapper objectMapper) {
+            ObjectMapper objectMapper,
+            ClaudeV1CompletionContractRegistry completionContract,
+            ClaudeV1CapabilityService capabilities) {
         this.learners = Objects.requireNonNull(learners, "learners");
         this.sessions = Objects.requireNonNull(sessions, "sessions");
         this.idempotency = Objects.requireNonNull(idempotency, "idempotency");
         this.tokenCodec = Objects.requireNonNull(tokenCodec, "tokenCodec");
         this.properties = Objects.requireNonNull(properties, "properties");
         this.objectMapper = Objects.requireNonNull(objectMapper, "objectMapper");
+        this.completionContract = Objects.requireNonNull(completionContract, "completionContract");
+        this.capabilities = Objects.requireNonNull(capabilities, "capabilities");
         this.canonicalObjectMapper = objectMapper.copy()
                 .enable(SerializationFeature.ORDER_MAP_ENTRIES_BY_KEYS);
     }
 
     @Transactional
     public <T> Outcome<T> read(String learningSessionId, Function<ReadContext, T> operation) {
+        return readInternal(learningSessionId, operation, false);
+    }
+
+    /** Only the context endpoint can expose the technical receipt while the profile route is paused. */
+    @Transactional
+    public <T> Outcome<T> readForCoachContext(String learningSessionId, Function<ReadContext, T> operation) {
+        return readInternal(learningSessionId, operation, true);
+    }
+
+    private <T> Outcome<T> readInternal(String learningSessionId, Function<ReadContext, T> operation,
+            boolean allowContractOffer) {
         LockedSession locked = requireCurrentSession(learningSessionId);
         Learner learner = locked.learner();
+        if (!allowContractOffer) requireCompletionContract(locked, false);
         long stateVersion = learner.getCoachStateRevision();
         return new Outcome<>(
-                operation.apply(new ReadContext(
+                com.skillpilot.backend.completion.CompletionCallContext.with(
+                        completionContext(locked), () -> operation.apply(new ReadContext(
                         locked.tokenHash(),
                         learner.getSkillpilotId(),
                         stateVersion,
-                        locked.session().communicationLocale())),
+                        locked.session().communicationLocale(),
+                        CompletionNavigationPolicy.ownsNavigation(learner)
+                                && !completionContract.isConfirmed(locked.session().completionContract()),
+                        completionContract.isPending(locked.session().completionContract())
+                                ? completionContract.bindingDigest() : null))),
                 stateVersion);
+    }
+
+    /** Idempotent session metadata, deliberately outside the learner-write/revision/replay protocol. */
+    @Transactional
+    public Outcome<Map<String, Object>> confirmCompletionContract(String learningSessionId, String receiptCapability) {
+        LockedSession locked = requireCurrentSession(learningSessionId);
+        String stamp = locked.session().completionContract();
+        if (!completionContract.isPending(stamp) && !completionContract.isConfirmed(stamp)) {
+            throw new CompletionContractException();
+        }
+        capabilities.verifyCompletionContractCapability(receiptCapability, learningSessionId,
+                completionContract.bindingDigest());
+        if (completionContract.isPending(stamp)) {
+            sessions.updateCompletionContract(locked.tokenHash(), completionContract.confirmedStamp());
+        }
+        long revision = locked.learner().getCoachStateRevision();
+        return new Outcome<>(Map.of("confirmed", true, "stateVersion", revision,
+                "instruction", "Reload get_skillpilot_coach_context silently before any teaching or action. "
+                        + "This technical receipt does not select a goal or record mastery."), revision);
+    }
+
+    private void requireCompletionContract(LockedSession locked, boolean completionAction) {
+        if ((completionAction || CompletionNavigationPolicy.ownsNavigation(locked.learner()))
+                && !completionContract.isConfirmed(locked.session().completionContract())) {
+            throw new CompletionContractException();
+        }
     }
 
     @Transactional
@@ -170,6 +234,8 @@ public class ClaudeV1SessionCoordinator {
         }
 
         LockedSession locked = requireCurrentSession(learningSessionId);
+        // Check before an exact replay as its stored response may contain completion for an old generation.
+        requireCompletionContract(locked, ClaudeV1McpContractAdapter.TOOL_CHOOSE_COMPLETION_ROUTE.equals(toolName));
         String tokenHash = locked.tokenHash();
         Learner learner = locked.learner();
         String requestHash = sha256Hex(serializePayload(Map.of(
@@ -187,20 +253,24 @@ public class ClaudeV1SessionCoordinator {
                 throw new IdempotencyConflictException();
             }
             if (versionBefore != record.stateVersion()) {
+                recordCompletionRevisionConflict(learner, toolName);
                 throw new StaleStateException(record.stateVersion(), versionBefore);
             }
             return new Outcome<>(deserializeResult(record.responsePayload()), record.stateVersion());
         }
         if (expectedStateVersion != versionBefore) {
+            recordCompletionRevisionConflict(learner, toolName);
             throw new StaleStateException(expectedStateVersion, versionBefore);
         }
 
-        Map<String, Object> result = operation.apply(new MutateContext(
+        MutateContext context = new MutateContext(
                 tokenHash,
                 learner.getSkillpilotId(),
                 versionBefore,
                 locked.session().communicationLocale(),
-                () -> currentStateVersion(learner.getSkillpilotId())));
+                () -> currentStateVersion(learner.getSkillpilotId()));
+        Map<String, Object> result = com.skillpilot.backend.completion.CompletionCallContext.with(
+                completionContext(locked), () -> operation.apply(context));
 
         long versionAfter = currentStateVersion(learner.getSkillpilotId());
         if (versionAfter <= versionBefore) {
@@ -223,6 +293,13 @@ public class ClaudeV1SessionCoordinator {
                 now,
                 replayExpiresAt(toolName, now, locked.session().expiresAt())));
         return new Outcome<>(result, versionAfter);
+    }
+
+    private void recordCompletionRevisionConflict(Learner learner, String toolName) {
+        if (CompletionNavigationPolicy.ownsNavigation(learner)
+                || ClaudeV1McpContractAdapter.TOOL_CHOOSE_COMPLETION_ROUTE.equals(toolName)) {
+            completionTelemetry.recordRevisionConflict(CompletionTelemetry.RevisionConflictSource.COACH);
+        }
     }
 
     private LockedSession requireCurrentSession(String learningSessionId) {

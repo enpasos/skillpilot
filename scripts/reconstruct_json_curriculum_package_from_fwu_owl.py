@@ -30,6 +30,137 @@ from dataclasses import dataclass, field
 from pathlib import Path, PurePosixPath
 from typing import Any, BinaryIO
 
+from urllib.parse import quote
+
+# Completion semantics are kept in this stdlib-only compiler so the existing
+# isolated reverse runner needs no extra file or authoring checkout.
+SP = "https://skillpilot.de/ns/roundtrip#"
+RDF_TYPE = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+XSD_STRING = "http://www.w3.org/2001/XMLSchema#string"
+CLASSES = ("CompletionProfile", "CompletionScope", "CompletionWaiverRule", "CompletionRuleReview", "CompletionReviewBinding")
+OBJECT_PROPERTIES = ("hasCompletionTarget", "hasCompletionScope", "hasCompletionRule", "requiresMasteredAssessment",
+                     "waivesPreparationGoal", "completionProtectedGoal", "hasCompletionRuleReview", "hasCompletionReviewBinding")
+DATA_PROPERTIES = ("completionRuleIdentifier", "completionScopeRevision", "completionTaskRevision", "completionRubricRevision", "completionReviewContentSha256")
+
+
+def identifier(value: Any, label: str) -> str:
+    if not isinstance(value, str) or not value:
+        raise ValueError(f"{label} must be a non-empty identifier")
+    return value
+
+
+def identifiers(value: Any, label: str) -> list[str]:
+    if not isinstance(value, list) or any(not isinstance(v, str) or not v for v in value) or len(set(value)) != len(value):
+        raise ValueError(f"{label} must be a unique identifier list")
+    return value
+
+
+def completion_assertions(artifacts: Iterable[tuple[str, str, dict[str, Any]]], base_iri: str) -> set[tuple[str, str, int, str, str, str]]:
+    records = list(artifacts)
+    selected = [(role, root, doc) for role, root, doc in records if role.startswith("completion-")]
+    identities: dict[tuple[str, str], str] = {}
+    goal_ids: set[str] = set()
+    for role, root, doc in records:
+        if role == "canonical-landscape":
+            goal_ids.update(identifier(goal.get("id"), "canonical goal") for goal in doc.get("goals", []))
+        if role.startswith("completion-"):
+            key = (role, identifier(doc.get("id"), "completion artifact id"))
+            if key in identities:
+                raise ValueError("Duplicate completion artifact identity")
+            identities[key] = root
+    result: set[tuple[str, str, int, str, str, str]] = set()
+
+    def iri(subject: str, predicate: str, target: str) -> None:
+        result.add((subject, SP + predicate, 1, target, "", ""))
+
+    def literal(subject: str, predicate: str, value: str) -> None:
+        result.add((subject, SP + predicate, 0, identifier(value, predicate), "", XSD_STRING))
+
+    def rdf_type(subject: str, name: str) -> None:
+        result.add((subject, RDF_TYPE, 1, SP + name, "", ""))
+
+    def ref(role: str, value: Any) -> str:
+        key = (role, identifier(value, role))
+        if key not in identities:
+            raise ValueError(f"Unresolved completion artifact reference {key}")
+        return identities[key]
+
+    def goal(value: str) -> str:
+        if value not in goal_ids:
+            raise ValueError(f"Unresolved completion goal {value}")
+        return base_iri + "/goal/" + quote(value, safe="~!*'()")
+
+    for role, root, doc in selected:
+        definition = doc.get("definition")
+        if not isinstance(definition, dict):
+            raise ValueError("Completion definition must be an object")
+        if role == "completion-scope":
+            rdf_type(root, "CompletionScope")
+            for value in identifiers(definition.get("targetRootIds"), "completion target roots"):
+                iri(root, "hasCompletionTarget", goal(value))
+        elif role == "completion-rule-review":
+            rdf_type(root, "CompletionRuleReview")
+            literal(root, "completionReviewContentSha256", definition.get("sha256"))
+        elif role == "completion-profile":
+            rdf_type(root, "CompletionProfile")
+            iri(root, "hasCompletionScope", ref("completion-scope", definition.get("levelScopeRef")))
+            for value in identifiers(definition.get("protectedGoalIds", []), "completion protected goals"):
+                iri(root, "completionProtectedGoal", goal(value))
+            review = definition.get("review")
+            if not isinstance(review, dict):
+                raise ValueError("Missing completion review binding")
+            binding = root + "/review-binding"
+            rdf_type(binding, "CompletionReviewBinding")
+            iri(root, "hasCompletionReviewBinding", binding)
+            iri(binding, "hasCompletionRuleReview", ref("completion-rule-review", review.get("reference")))
+            for field, predicate in (("scopeRevision", "completionScopeRevision"), ("taskRevision", "completionTaskRevision"), ("rubricRevision", "completionRubricRevision")):
+                literal(binding, predicate, review.get(field))
+            rules = definition.get("rules")
+            if not isinstance(rules, list):
+                raise ValueError("Completion rules must be an array")
+            ids: set[str] = set()
+            for rule in rules:
+                rule_id = identifier(rule.get("ruleId"), "completion rule id")
+                if rule_id in ids:
+                    raise ValueError("Duplicate completion rule id")
+                ids.add(rule_id)
+                resource = root + "/rule/" + quote(rule_id, safe="~!*'()")
+                rdf_type(resource, "CompletionWaiverRule")
+                iri(root, "hasCompletionRule", resource)
+                literal(resource, "completionRuleIdentifier", rule_id)
+                assessments = identifiers(rule.get("assessmentGoalIds"), "completion assessment group")
+                if not assessments:
+                    raise ValueError("Empty completion assessment group")
+                for value in assessments:
+                    iri(resource, "requiresMasteredAssessment", goal(value))
+                for value in identifiers(rule.get("waivableGoalIds"), "completion waivable goals"):
+                    iri(resource, "waivesPreparationGoal", goal(value))
+                iri(resource, "hasCompletionRuleReview", ref("completion-rule-review", rule.get("reviewRef")))
+        else:
+            raise ValueError(f"Unknown completion role {role}")
+    return result
+
+
+def validate_completion_assertions(store: Any, artifacts: Iterable[tuple[str, str, dict[str, Any]]], base_iri: str) -> None:
+    expected = completion_assertions(artifacts, base_iri)
+    predicates = [SP + value for value in (*OBJECT_PROPERTIES, *DATA_PROPERTIES)]
+    classes = [SP + value for value in CLASSES]
+    actual = store.connection.execute(
+        "SELECT s,p,k,o,lang,dt FROM triples WHERE p IN (" + ",".join("?" for _ in predicates) + ")"
+        + " OR (p=? AND k=1 AND o IN (" + ",".join("?" for _ in classes) + "))",
+        (*predicates, RDF_TYPE, *classes),
+    )
+    remaining = expected.copy()
+    unexpected = 0
+    for row in actual:
+        if row in expected:
+            remaining.discard(row)
+        else:
+            unexpected += 1
+    if remaining or unexpected:
+        raise ValueError(f"Completion RDF assertions differ from reconstructed policy ({len(remaining)} missing, {unexpected} unexpected)")
+
+
 
 REVERSE_COMPILER_ID = "skillpilot-fwu-owl-reverse-compiler-v1"
 REVERSE_COMPILER_VERSION = "1.0.0"
@@ -37,6 +168,18 @@ SUPPORTED_REGISTRY_ID = "skillpilot-fwu-field-semantics-v1"
 SUPPORTED_REGISTRY_VERSION = "1.2.0"
 SUPPORTED_REGISTRY_SHA256 = "2e536c3f8d63e2acf45690375ace69ec0c6a6e92787bc8a16957b80120c4ca48"
 EXPECTED_REGISTRY_ENTRIES = 456
+# Explicit immutable carrier trust roots; package-provided hashes cannot extend this set.
+SUPPORTED_REGISTRIES = {
+    SUPPORTED_REGISTRY_SHA256: (SUPPORTED_REGISTRY_ID, SUPPORTED_REGISTRY_VERSION, 456),
+    "d19497f0b18b0c7733dcaf6f5dc63590352814c2d764c858b333751b5af25e9d": (SUPPORTED_REGISTRY_ID, SUPPORTED_REGISTRY_VERSION, 456),
+    "41841c69b6dc4fc973d9814ae529de5dace1ad3c00bd2aa73ae09d2dd8654754": ("skillpilot-fwu-field-semantics-completion-v1", "1.1.0", 473),
+}
+COMPLETION_GENERATED_FIELDS = frozenset({
+    "runtime.completion.completionartifacts", "runtime.completion.completionartifacts-item",
+    "runtime.completion.completionartifacts-item.id", "runtime.completion.completionartifacts-item.kind",
+    "runtime.completion.completionartifacts-item.artifactpath",
+})
+COMPLETION_ROLES = {"completion-profile": "profile", "completion-scope": "scope", "completion-rule-review": "review"}
 
 RDF = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 XSD = "http://www.w3.org/2001/XMLSchema#"
@@ -383,17 +526,19 @@ class RegistryEntry:
 
 class Registry:
     def __init__(self, raw: bytes) -> None:
-        if sha256_bytes(raw) != SUPPORTED_REGISTRY_SHA256:
-            fail("embedded field registry is not the compiler-pinned v1 registry")
+        self.sha256 = sha256_bytes(raw)
+        expected = SUPPORTED_REGISTRIES.get(self.sha256)
+        if expected is None:
+            fail("embedded field registry is not a compiler-pinned registry")
         try:
             value = require_object(json.loads(raw), "field registry")
         except (UnicodeError, json.JSONDecodeError) as error:
             raise ReverseCompilerError("embedded field registry is not strict JSON") from error
         entries = require_list(value.get("entries"), "field registry entries")
         if (
-            value.get("registryId") != SUPPORTED_REGISTRY_ID
-            or value.get("version") != SUPPORTED_REGISTRY_VERSION
-            or len(entries) != EXPECTED_REGISTRY_ENTRIES
+            value.get("registryId") != expected[0]
+            or value.get("version") != expected[1]
+            or len(entries) != expected[2]
         ):
             fail("embedded field registry identity/count is unsupported")
         self.value = value
@@ -410,7 +555,7 @@ class Registry:
                 fail(f"duplicate registry entry ID: {entry_id}")
             ids.add(entry_id)
             entry = RegistryEntry(data, decode_pointer(require_string(data.get("pathPattern"), entry_id)))
-            if not entry.pattern or entry.pattern[-1] in {"*", "**"}:
+            if not entry.pattern or (entry.pattern[-1] in {"*", "**"} and entry.strategy != "excluded-generated"):
                 fail(f"registry entry lacks a literal terminal field: {entry_id}")
             self.by_role[entry.role].append(entry)
         self.generated_ids = frozenset(
@@ -469,6 +614,11 @@ class Artifact:
     document: dict[str, Any] = field(default_factory=dict)
     subjects: dict[tuple[str, ...], str] = field(default_factory=dict)
     attempted: set[tuple[tuple[str, ...], str]] = field(default_factory=set)
+
+    @property
+    def key(self) -> str:
+        # The released semantic contract identifies an artifact by role AND ID.
+        return self.role + "\0" + self.logical_id
 
 
 def literal_value(term: Term, entry: RegistryEntry) -> Any:
@@ -987,7 +1137,12 @@ class ArtifactReconstructor:
             for entry in self.registry.children(artifact.role, parent):
                 if entry.strategy == "excluded-generated" or entry.pattern[-1] in record:
                     continue
-                if entry.data.get("cardinality", {}).get("presence") == "required":
+                # The pinned V1 registry overstates this optional compiled-schema
+                # field. Preserve its bytes; the exact normalized oracle below
+                # still detects omission whenever the source actually had a flow.
+                schema_optional_legacy_flow = (artifact.role == "canonical-landscape"
+                                               and entry.entry_id == "landscape.personalization-flow")
+                if entry.data.get("cardinality", {}).get("presence") == "required" and not schema_optional_legacy_flow:
                     missing.append(entry.entry_id + "@/" + "/".join(parent))
         if missing:
             fail(f"required RDF fields are missing in {artifact.logical_id}: {', '.join(missing[:12])}")
@@ -1133,7 +1288,7 @@ class FwuPackage:
             raise ReverseCompilerError("FWU-OWL manifest is not strict JSON") from error
         if (
             self.manifest.get("variant") != "fwu-owl"
-            or self.manifest.get("releaseProfile") != "fwu-owl-v1"
+            or (self.manifest.get("releaseProfile"), self.manifest.get("runtimeContractVersion")) not in {("fwu-owl-v1", "1.0"), ("fwu-owl-completion-v1", "1.1")}
             or self.manifest.get("archiveRoot") != self.root
             or self.manifest.get("releaseId")
             != f"{self.manifest.get('packageId')}@{self.manifest.get('packageVersion')}"
@@ -1219,9 +1374,10 @@ def load_artifacts(package: FwuPackage, semantic_index: dict[str, Any]) -> list[
         logical_id = require_string(record.get("logicalId"), "logicalId")
         index_role = require_string(record.get("role"), "logical artifact role")
         role = ROLE_ALIASES.get(index_role, index_role)
-        if logical_id in ids:
-            fail(f"duplicate logical ID in semantic index: {logical_id}")
-        ids.add(logical_id)
+        identity = role + "\0" + logical_id
+        if identity in ids:
+            fail(f"duplicate logical artifact identity in semantic index: {role}:{logical_id}")
+        ids.add(identity)
         if role == "canonical-landscape":
             root = base + "/landscape/" + js_uri_component(logical_id)
         elif role == "composition-view":
@@ -1250,7 +1406,7 @@ def load_artifacts(package: FwuPackage, semantic_index: dict[str, Any]) -> list[
                 root,
             )
         )
-    return sorted(result, key=lambda item: item.logical_id)
+    return sorted(result, key=lambda item: (item.role, item.logical_id))
 
 
 def reconstruct_normalized(
@@ -1293,7 +1449,11 @@ def reconstruct_normalized(
         # Source-goal membership triples are indexed before mappings are
         # reconstructed; artifact order itself remains deterministic.
         for artifact in artifacts:
-            result[artifact.logical_id] = compiler.reconstruct(artifact)
+            result[artifact.key] = compiler.reconstruct(artifact)
+        try:
+            validate_completion_assertions(store, ((a.role, a.root_iri, result[a.key]) for a in artifacts), base)
+        except ValueError as error:
+            raise ReverseCompilerError(str(error)) from error
         return result
     finally:
         store.close()
@@ -1306,34 +1466,41 @@ def derive_artifact_paths(
     closure_artifact = next((item for item in artifacts if item.role == "dependency-closure"), None)
     if closure_artifact is None:
         fail("dependency closure artifact is missing")
-    closure = normalized[closure_artifact.logical_id]
+    closure = normalized[closure_artifact.key]
     paths: dict[str, str] = {}
     for value in require_list(closure.get("definitions"), "closure definitions"):
         binding = require_object(require_object(value, "definition").get("artifactBinding"), "artifact binding")
         logical_id = require_string(binding.get("logicalId"), "artifact binding logicalId")
+        logical_id = require_string(binding.get("role"), "artifact binding role") + "\0" + logical_id
         path = safe_package_path(require_string(binding.get("path"), "artifact binding path"))
         if logical_id in paths and paths[logical_id] != path:
             fail(f"conflicting artifact paths for {logical_id}")
         paths[logical_id] = path
-    artifact_ids = {item.logical_id for item in artifacts}
+    artifact_ids = {item.key for item in artifacts}
     expected_closure_ids = {
-        item.logical_id for item in artifacts if item.role not in SINGLETON_PATHS
+        item.key for item in artifacts if item.role not in SINGLETON_PATHS and item.role not in COMPLETION_ROLES
     }
     if not expected_closure_ids.issubset(paths):
         fail("dependency closure does not recover every non-singleton logical artifact path")
-    artifacts_by_id = {item.logical_id: item for item in artifacts}
+    artifacts_by_id = {item.key: item for item in artifacts}
     for logical_id in set(paths) - expected_closure_ids:
         artifact = artifacts_by_id.get(logical_id)
         singleton = None if artifact is None else SINGLETON_PATHS.get(artifact.role)
         if singleton is None or paths[logical_id] != singleton:
             fail("dependency closure contains an invalid singleton logical artifact path")
     for artifact in artifacts:
-        if artifact.logical_id in paths:
+        if artifact.key in paths:
             continue
         singleton = SINGLETON_PATHS.get(artifact.role)
+        if artifact.role in COMPLETION_ROLES:
+            wrapper = normalized[artifact.key]
+            identity = require_string(wrapper.get("id"), "completion wrapper ID")
+            kind = COMPLETION_ROLES[artifact.role]
+            singleton = identity if kind == "review" else f"data/completion/{kind}s/{identity}.json"
+            safe_package_path(singleton)
         if singleton is None:
             fail(f"no released artifact path for {artifact.logical_id}")
-        paths[artifact.logical_id] = singleton
+        paths[artifact.key] = singleton
     if len(paths) != len(artifacts) or set(paths) != artifact_ids:
         fail("logical artifact path recovery is incomplete")
     if len(set(paths.values())) != len(paths):
@@ -1393,21 +1560,23 @@ def populate_generated_fields(
     paths: Mapping[str, str],
     definition_profile: Mapping[str, Any],
 ) -> dict[str, dict[str, Any]]:
-    if registry.generated_ids != frozenset(GENERATED_FIELD_RECIPES):
+    completion = package.manifest.get("runtimeContractVersion") == "1.1"
+    expected_generated = frozenset(GENERATED_FIELD_RECIPES) | (COMPLETION_GENERATED_FIELDS if completion else frozenset())
+    if registry.generated_ids != expected_generated:
         fail("generated-field compatibility table does not exactly cover the pinned registry")
     documents = {logical_id: copy.deepcopy(value) for logical_id, value in normalized.items()}
     content_digest = require_string(package.manifest.get("contentDigest"), "content digest")
     if not CONTENT_DIGEST_RE.fullmatch(content_digest):
         fail("FWU-OWL content digest is invalid")
     closure_artifact = artifact_by_role(artifacts, "dependency-closure")
-    closure = documents[closure_artifact.logical_id]
+    closure = documents[closure_artifact.key]
     definition_digest = definition_index_digest(closure, definition_profile)
     closure["$schema"] = SCHEMA_IDS["dependency-closure"]
     closure["closureFormatVersion"] = "1.0"
     closure["definitionIndexDigest"] = definition_digest
     require_object(closure.get("releaseBinding"), "closure releaseBinding")["contentDigest"] = content_digest
     closure["closureDigest"] = generated_document_digest(
-        normalized[closure_artifact.logical_id], definition_profile, "closureDigest"
+        normalized[closure_artifact.key], definition_profile, "closureDigest"
     )
 
     schemas_and_versions = {
@@ -1439,16 +1608,16 @@ def populate_generated_fields(
     for artifact in artifacts:
         if artifact.role in schemas_and_versions:
             schema_field, schema_id, version_field = schemas_and_versions[artifact.role]
-            documents[artifact.logical_id][schema_field] = schema_id
-            documents[artifact.logical_id][version_field] = "1.0"
+            documents[artifact.key][schema_field] = schema_id
+            documents[artifact.key][version_field] = "1.0"
 
     migration_artifact = artifact_by_role(artifacts, "migration-aliases")
-    migration = documents[migration_artifact.logical_id]
+    migration = documents[migration_artifact.key]
     current = require_object(migration.get("currentRelease"), "migration currentRelease")
     current["contentDigest"] = content_digest
     current["definitionIndexDigest"] = definition_digest
     migration["migrationDigest"] = generated_document_digest(
-        normalized[migration_artifact.logical_id], definition_profile, "migrationDigest"
+        normalized[migration_artifact.key], definition_profile, "migrationDigest"
     )
 
     binary_by_id: dict[str, str] = {}
@@ -1466,7 +1635,7 @@ def populate_generated_fields(
         fail("FWU manifest binary sidecars differ from the semantic index binding")
 
     resource_artifact = artifact_by_role(artifacts, "resource-index")
-    resource_index = documents[resource_artifact.logical_id]
+    resource_index = documents[resource_artifact.key]
     assign_resource_artifact_paths(
         require_list(resource_index.get("resources"), "resources"),
         binary_by_id,
@@ -1477,23 +1646,30 @@ def populate_generated_fields(
     view_path: dict[str, str] = {}
     landscape_path: dict[str, str] = {}
     for artifact in artifacts:
-        document = documents[artifact.logical_id]
+        document = documents[artifact.key]
         if artifact.role == "card-deck":
-            deck_path[(require_string(document.get("deckId"), "deckId"), require_string(document.get("language"), "deck language"))] = paths[artifact.logical_id]
+            deck_path[(require_string(document.get("deckId"), "deckId"), require_string(document.get("language"), "deck language"))] = paths[artifact.key]
         elif artifact.role == "composition-view":
-            view_path[require_string(document.get("viewId"), "viewId")] = paths[artifact.logical_id]
+            view_path[require_string(document.get("viewId"), "viewId")] = paths[artifact.key]
         elif artifact.role == "canonical-landscape":
-            landscape_path[require_string(document.get("landscapeId"), "landscapeId")] = paths[artifact.logical_id]
+            landscape_path[require_string(document.get("landscapeId"), "landscapeId")] = paths[artifact.key]
 
-    card_index = documents[artifact_by_role(artifacts, "card-index").logical_id]
+    card_index = documents[artifact_by_role(artifacts, "card-index").key]
     for deck in map(require_object, require_list(card_index.get("decks"), "card index decks"), ["deck"] * len(card_index.get("decks", []))):
         key = (require_string(deck.get("deckId"), "deckId"), require_string(deck.get("language"), "deck language"))
         deck["artifactPath"] = deck_path[key]
-    view_index = documents[artifact_by_role(artifacts, "composition-view-index").logical_id]
+    view_index = documents[artifact_by_role(artifacts, "composition-view-index").key]
     for view in map(require_object, require_list(view_index.get("views"), "view index views"), ["view"] * len(view_index.get("views", []))):
         view["artifactPath"] = view_path[require_string(view.get("viewId"), "viewId")]
 
-    runtime = documents[artifact_by_role(artifacts, "runtime-catalog").logical_id]
+    runtime = documents[artifact_by_role(artifacts, "runtime-catalog").key]
+    if completion:
+        runtime["$schema"] = "https://skillpilot.com/schemas/curriculum-package/v1.1/runtime-catalog.schema.json"
+        runtime["catalogVersion"] = "1.1"
+        runtime["completionArtifacts"] = sorted([
+            {"id": documents[a.key]["id"], "kind": COMPLETION_ROLES[a.role], "artifactPath": paths[a.key]}
+            for a in artifacts if a.role in COMPLETION_ROLES
+        ], key=lambda value: (value["kind"], value["id"]))
     require_object(runtime.get("artifactIndexes"), "artifact indexes").update(
         {
             "cardsPath": SINGLETON_PATHS["card-index"],
@@ -1518,7 +1694,7 @@ def populate_generated_fields(
         "runtime resource",
     )
 
-    official = documents[artifact_by_role(artifacts, "official-source-index").logical_id]
+    official = documents[artifact_by_role(artifacts, "official-source-index").key]
     official_collections = require_list(official.get("collections"), "official collections")
     official["sourceCollectionCount"] = len(official_collections)
     official["sourceDocumentCount"] = sum(len(require_list(require_object(item, "collection").get("documents"), "documents")) for item in official_collections)
@@ -1526,7 +1702,7 @@ def populate_generated_fields(
         collection = require_object(item, "official collection")
         collection["documentCount"] = len(require_list(collection.get("documents"), "documents"))
 
-    source_goal = documents[artifact_by_role(artifacts, "source-goal-reference-index").logical_id]
+    source_goal = documents[artifact_by_role(artifacts, "source-goal-reference-index").key]
     source_collections = require_list(source_goal.get("collections"), "source collections")
     source_goal["sourceCollectionCount"] = len(source_collections)
     source_goal["sourceGoalCount"] = sum(len(require_list(require_object(item, "collection").get("sourceGoals"), "source goals")) for item in source_collections)
@@ -1544,7 +1720,7 @@ def populate_generated_fields(
             if isinstance(lineage, dict) and isinstance(lineage.get("splitFromSourceGoalId"), str):
                 lineage["splitPartCount"] = groups[lineage["splitFromSourceGoalId"]]
 
-    mappings = documents[artifact_by_role(artifacts, "source-to-canonical-mappings").logical_id]
+    mappings = documents[artifact_by_role(artifacts, "source-to-canonical-mappings").key]
     mapping_collections = require_list(mappings.get("collections"), "mapping collections")
     mappings["mappingCollectionCount"] = len(mapping_collections)
     mappings["mappingEdgeCount"] = sum(len(require_list(require_object(item, "collection").get("edges"), "edges")) for item in mapping_collections)
@@ -1552,7 +1728,7 @@ def populate_generated_fields(
         collection = require_object(item, "mapping collection")
         collection["mappingEdgeCount"] = len(require_list(collection.get("edges"), "edges"))
 
-    quality = documents[artifact_by_role(artifacts, "release-quality-evidence").logical_id]
+    quality = documents[artifact_by_role(artifacts, "release-quality-evidence").key]
     lanes = require_object(quality.get("lanes"), "quality lanes")
     semantic_lane = require_object(lanes.get("semanticAtomicity"), "semanticAtomicity")
     semantic_decisions = require_list(semantic_lane.get("decisions"), "semantic decisions")
@@ -1598,7 +1774,7 @@ def reconstruct(package: FwuPackage, temporary: Path) -> Reconstruction:
         raise ReverseCompilerError("semantic-content index is not strict JSON") from error
     if (
         semantic_index.get("contentDigest") != package.manifest.get("contentDigest")
-        or semantic_index.get("fieldSemanticsRegistry", {}).get("sha256") != SUPPORTED_REGISTRY_SHA256
+        or semantic_index.get("fieldSemanticsRegistry", {}).get("sha256") != registry.sha256
         or len(require_list(semantic_index.get("binaryResources"), "binary resources"))
         != package.manifest.get("semanticContentIndex", {}).get("binaryResourceCount")
     ):
@@ -1642,6 +1818,7 @@ LOGICAL_SCHEMA_BY_ROLE = {
     "quality-evidence": SCHEMA_IDS["release-quality-evidence"],
     "resource-index": SCHEMA_IDS["resource-index"],
     "runtime-catalog": SCHEMA_IDS["runtime-catalog"],
+    **{role: "https://skillpilot.com/schemas/curriculum-package/v1.1/completion-artifact.schema.json" for role in COMPLETION_ROLES},
     "source-goal-reference-index": SCHEMA_IDS["source-goal-reference-index"],
     "source-index": SCHEMA_IDS["official-source-index"],
 }
@@ -1657,6 +1834,7 @@ LOGICAL_PROVENANCE_BY_ROLE = {
     "quality-evidence": "generated-metadata",
     "resource-index": "generated-metadata",
     "runtime-catalog": "generated-metadata",
+    **{role: "skillpilot-authored" for role in COMPLETION_ROLES},
     "source-goal-reference-index": "official-source-metadata",
     "source-index": "official-source-metadata",
 }
@@ -1670,6 +1848,7 @@ RUNTIME_LOGICAL_ROLES = {
     "migration-aliases",
     "resource-index",
     "runtime-catalog",
+    *COMPLETION_ROLES,
 }
 SEMANTIC_CONTRACT_SCHEMA_IDS = {
     "semanticNormalForm": "https://skillpilot.com/schemas/curriculum-package/v1/semantic-normalization-profile.schema.json",
@@ -1819,7 +1998,7 @@ def read_support_payloads(
 
 def build_readme(reconstruction: Reconstruction, support_payloads: Mapping[str, bytes]) -> bytes:
     landscape = reconstruction.documents[
-        artifact_by_role(reconstruction.artifacts, "canonical-landscape").logical_id
+        artifact_by_role(reconstruction.artifacts, "canonical-landscape").key
     ]
     redistribution = require_object(
         json.loads(support_payloads["metadata/provenance/redistribution-review.json"]),
@@ -1840,7 +2019,7 @@ def build_readme(reconstruction: Reconstruction, support_payloads: Mapping[str, 
         f"- Package version: `{package['packageVersion']}`\n"
         f"- Semantic content digest: `{package['contentDigest']}`\n"
         "- Runtime entry point: `data/runtime/catalog.json`\n"
-        "- Release profile: `full-standalone-v1`\n"
+        f"- Release profile: `{package['sourceJsonPackage']['releaseProfile']}`\n"
         f"- Redistribution review ready: `{str(bool(redistribution_summary.get('publicationReady'))).lower()}`\n"
         f"- Open redistribution review items: `{redistribution_summary.get('humanReviewItemCount')}`\n"
         f"- Open source-text verification items: `{source_summary.get('pendingHumanReviewCount')}`\n\n"
@@ -1868,6 +2047,89 @@ class PackagePlan:
     checksums_raw: bytes
 
 
+def recover_license_documents(package: FwuPackage, payloads: dict[str, bytes], records: list[dict[str, Any]]) -> list[dict[str, str]]:
+    fwu_license_documents = require_list(package.manifest.get("licenseDocuments"), "FWU licenses")
+    if not fwu_license_documents:
+        fail("FWU package must expose its license documents")
+    license_documents: list[dict[str, str]] = []
+    seen_licenses: set[str] = set()
+    file_records = {record["path"]: record for record in package.manifest["files"]}
+    for value in fwu_license_documents:
+        binding = require_object(value, "license binding")
+        license_id = require_string(binding.get("licenseId"), "license ID")
+        if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9.+-]*", license_id) or license_id in seen_licenses:
+            fail("FWU license identity is unsafe or duplicated")
+        seen_licenses.add(license_id)
+        source_path = safe_package_path(require_string(binding.get("path"), "license path"))
+        raw = package.read(source_path)
+        source_record = require_object(file_records.get(source_path), "license file record")
+        if (source_record.get("role") != "license" or source_record.get("licenseExpression") != license_id
+                or source_record.get("sha256") != sha256_bytes(raw) or source_record.get("bytes") != len(raw)):
+            fail("FWU license bytes do not match their bound identity")
+        target = "LICENSE" if license_id == "Apache-2.0" else f"LICENSES/{license_id}.txt"
+        payloads[target] = raw
+        records.append(excluded_record(
+            target, "license", "text/plain", raw, runtime_required=False,
+            license_expression=license_id, provenance="software-contract" if license_id == "Apache-2.0" else "third-party",
+            redistribution="allowed",
+        ))
+        license_documents.append({"licenseId": license_id, "path": target})
+
+    return license_documents
+
+
+def completion_content_license(role: str, review: Mapping[str, Any], path: str = "") -> tuple[str | None, str]:
+    """Retain prior decisions; apply the existing owner grant only to own policy."""
+    if role not in COMPLETION_ROLES:
+        # Retain existing grants; do not manufacture clearance for another role.
+        classes = [require_object(item, "redistribution class") for item in require_list(review.get("classDecisions", []), "redistribution classes")]
+        owners = [item for item in classes if role in require_list(item.get("artifactRoles"), "class artifact roles")]
+        overrides = []
+        for value in require_list(review.get("pathClassificationOverrides", []), "redistribution path overrides"):
+            override = require_object(value, "redistribution path override")
+            if override.get("role") == role and path.startswith(require_string(override.get("pathPrefix"), "override prefix")):
+                overrides.append(override)
+        if overrides:
+            overrides.sort(key=lambda item: len(item["pathPrefix"]), reverse=True)
+            if len(overrides) > 1 and len(overrides[0]["pathPrefix"]) == len(overrides[1]["pathPrefix"]):
+                fail("Ambiguous preserved redistribution path override")
+            owners = [item for item in classes if item.get("classId") == overrides[0].get("classId")]
+        if len(owners) > 1:
+            fail("Ambiguous preserved redistribution class")
+        if not owners:
+            return None, "review-required"
+        decision = owners[0]
+        if decision.get("redistributionStatus") == "prohibited":
+            fail("Preserved redistribution decision prohibits the logical artifact")
+        if decision.get("redistributionStatus") != "allowed":
+            return None, "review-required"
+        expression = require_string(decision.get("licenseExpression"), "preserved license expression")
+        evidence = decision.get("reviewEvidence")
+        has_evidence = isinstance(evidence, list) and bool(evidence)
+        if (decision.get("decisionStatus") == "automatic-allowed" and expression == "Apache-2.0"
+                and decision.get("reviewer") is None and decision.get("reviewedAt") is None and has_evidence):
+            return expression, "allowed"
+        if (decision.get("decisionStatus") == "human-approved"
+                and isinstance(decision.get("reviewer"), str) and decision["reviewer"].strip()
+                and isinstance(decision.get("reviewedAt"), str) and decision["reviewedAt"].strip() and has_evidence):
+            return expression, "allowed"
+        fail("Preserved allowed redistribution decision is incomplete")
+    grant = require_object(review.get("projectLicenseGrant"), "project license grant")
+    owners = [item for item in require_list(review.get("classDecisions"), "redistribution classes")
+              if isinstance(item, dict) and role in item.get("artifactRoles", [])]
+    if (len(owners) != 1 or owners[0].get("provenanceClass") != "skillpilot-authored"
+            or owners[0].get("redistributionStatus") == "prohibited"
+            or grant.get("contentLicenseExpression") != "CC-BY-4.0"
+            or grant.get("scope") != "skillpilot-owned-contributions"
+            or grant.get("decisionAuthority") != "project-owner"
+            or grant.get("doesNotClearRedistribution") is not True):
+        fail("Completion content lacks its preserved owner license grant/classification")
+    policy = require_string(grant.get("policyText"), "license scope policy")
+    if grant.get("policySha256") != "sha256:" + sha256_bytes(policy.encode("utf-8")):
+        fail("Preserved project license policy hash differs")
+    return "CC-BY-4.0", "allowed"
+
+
 def build_package_plan(reconstruction: Reconstruction) -> PackagePlan:
     package = reconstruction.package
     source_binding = require_object(package.manifest.get("sourceJsonPackage"), "source JSON binding")
@@ -1876,21 +2138,23 @@ def build_package_plan(reconstruction: Reconstruction) -> PackagePlan:
         fail("FWU sourceJsonPackage.file is not one portable *.json.zip name")
     archive_root = source_file[:-4]
     payloads, records, schema_payloads = read_support_payloads(reconstruction)
+    redistribution_review = require_object(json.loads(payloads["metadata/provenance/redistribution-review.json"]), "redistribution review")
 
     for artifact in reconstruction.artifacts:
-        path = reconstruction.artifact_paths[artifact.logical_id]
-        raw = canonical_pretty(reconstruction.documents[artifact.logical_id])
+        path = reconstruction.artifact_paths[artifact.key]
+        raw = canonical_pretty(reconstruction.documents[artifact.key])
         payloads[path] = raw
+        content_license, content_redistribution = completion_content_license(artifact.index_role, redistribution_review, path)
         record: dict[str, Any] = {
             "path": path,
             "role": artifact.index_role,
             "mediaType": "application/json",
             **integrity(raw),
             "runtimeRequired": artifact.index_role in RUNTIME_LOGICAL_ROLES,
-            "validationSchemaId": LOGICAL_SCHEMA_BY_ROLE[artifact.index_role],
-            "licenseExpression": None,
+            "validationSchemaId": ("https://skillpilot.com/schemas/curriculum-package/v1.1/runtime-catalog.schema.json" if artifact.index_role == "runtime-catalog" and package.manifest["runtimeContractVersion"] == "1.1" else LOGICAL_SCHEMA_BY_ROLE[artifact.index_role]),
+            "licenseExpression": content_license,
             "provenanceClass": LOGICAL_PROVENANCE_BY_ROLE[artifact.index_role],
-            "redistributionStatus": "review-required",
+            "redistributionStatus": content_redistribution,
             "semanticBinding": {
                 "kind": "logical-artifact",
                 "logicalId": artifact.logical_id,
@@ -1923,26 +2187,7 @@ def build_package_plan(reconstruction: Reconstruction) -> PackagePlan:
             )
         )
 
-    license_documents = require_list(package.manifest.get("licenseDocuments"), "FWU licenses")
-    if len(license_documents) != 1:
-        fail("FWU package must expose exactly one root license")
-    license_id = require_string(require_object(license_documents[0], "license").get("licenseId"), "license ID")
-    fwu_license_bindings = require_list(package.manifest.get("licenseDocuments"), "licenses")
-    fwu_license_path = require_string(require_object(fwu_license_bindings[0], "license").get("path"), "license path")
-    license_raw = package.read(fwu_license_path)
-    payloads["LICENSE"] = license_raw
-    records.append(
-        excluded_record(
-            "LICENSE",
-            "license",
-            "text/plain",
-            license_raw,
-            runtime_required=False,
-            license_expression=license_id,
-            provenance="software-contract",
-            redistribution="allowed",
-        )
-    )
+    license_documents = recover_license_documents(package, payloads, records)
 
     payloads["metadata/semantic-content-index.json"] = reconstruction.semantic_index_raw
     records.append(
@@ -2016,7 +2261,7 @@ def build_package_plan(reconstruction: Reconstruction) -> PackagePlan:
     contract_bindings: dict[str, dict[str, str]] = {}
     schema_bindings = {
         "manifestSchema": "schemas/package-manifest.schema.json",
-        "runtimeCatalogSchema": "schemas/runtime-catalog.schema.json",
+        "runtimeCatalogSchema": ("schemas/v1.1/runtime-catalog.schema.json" if package.manifest["runtimeContractVersion"] == "1.1" else "schemas/runtime-catalog.schema.json"),
         "schemaCatalogSchema": "schemas/schema-catalog.schema.json",
     }
     for name, path in schema_bindings.items():
@@ -2031,7 +2276,7 @@ def build_package_plan(reconstruction: Reconstruction) -> PackagePlan:
         "source release profile path",
     )
     contract_bindings["releaseProfile"] = {
-        "id": "full-standalone-v1",
+        "id": require_string(source_binding.get("releaseProfile"), "source release profile"),
         "path": release_profile_path,
         "sha256": sha256_bytes(payloads[release_profile_path]),
     }
@@ -2050,7 +2295,7 @@ def build_package_plan(reconstruction: Reconstruction) -> PackagePlan:
         "$schema": "https://skillpilot.com/schemas/curriculum-package/v1/package-manifest.schema.json",
         "packageFormatVersion": "1.0",
         "runtimeContractVersion": require_string(package.manifest.get("runtimeContractVersion"), "runtime contract"),
-        "releaseProfile": "full-standalone-v1",
+        "releaseProfile": require_string(source_binding.get("releaseProfile"), "source release profile"),
         "variant": "json",
         "releaseId": require_string(package.manifest.get("releaseId"), "releaseId"),
         "packageId": require_string(package.manifest.get("packageId"), "packageId"),
@@ -2061,7 +2306,7 @@ def build_package_plan(reconstruction: Reconstruction) -> PackagePlan:
         "supportedSkillpilotSoftware": require_string(
             source_binding.get("supportedSkillpilotSoftware"), "supported SkillPilot software"
         ),
-        "licenseDocuments": [{"licenseId": license_id, "path": "LICENSE"}],
+        "licenseDocuments": license_documents,
         "contractBindings": contract_bindings,
         "files": records,
     }
@@ -2177,9 +2422,9 @@ def output_report(
             "contentDigest": reconstruction.package.manifest["contentDigest"],
         },
         "registry": {
-            "id": SUPPORTED_REGISTRY_ID,
-            "version": SUPPORTED_REGISTRY_VERSION,
-            "sha256": SUPPORTED_REGISTRY_SHA256,
+            "id": reconstruction.registry.value["registryId"],
+            "version": reconstruction.registry.value["version"],
+            "sha256": reconstruction.registry.sha256,
             "entryCount": len(
                 require_list(reconstruction.registry.value.get("entries"), "registry entries")
             ),
@@ -2303,12 +2548,14 @@ def self_test() -> None:
             {
                 "artifactBinding": {
                     "logicalId": "fixture:deck",
+                    "role": "card-deck",
                     "path": "data/cards/decks/fixture.json",
                 }
             },
             {
                 "artifactBinding": {
                     "logicalId": "fixture:resources",
+                    "role": "resource-index",
                     "path": SINGLETON_PATHS["resource-index"],
                 }
             },
@@ -2316,21 +2563,21 @@ def self_test() -> None:
     }
     fixture_paths = derive_artifact_paths(
         fixture_artifacts,
-        {"fixture:closure": fixture_closure},
+        {"dependency-closure\0fixture:closure": fixture_closure},
     )
     check(
         fixture_paths
         == {
-            "fixture:closure": SINGLETON_PATHS["dependency-closure"],
-            "fixture:deck": "data/cards/decks/fixture.json",
-            "fixture:resources": SINGLETON_PATHS["resource-index"],
+            "dependency-closure\0fixture:closure": SINGLETON_PATHS["dependency-closure"],
+            "card-deck\0fixture:deck": "data/cards/decks/fixture.json",
+            "resource-index\0fixture:resources": SINGLETON_PATHS["resource-index"],
         },
         "closure accepts an exact redundant singleton binding",
     )
     invalid_closure = copy.deepcopy(fixture_closure)
     invalid_closure["definitions"][1]["artifactBinding"]["path"] = "data/resources/wrong.json"
     try:
-        derive_artifact_paths(fixture_artifacts, {"fixture:closure": invalid_closure})
+        derive_artifact_paths(fixture_artifacts, {"dependency-closure\0fixture:closure": invalid_closure})
     except ReverseCompilerError:
         checks += 1
     else:

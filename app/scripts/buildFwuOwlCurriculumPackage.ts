@@ -8,10 +8,11 @@ import {
   renameSync,
   rmSync,
 } from 'node:fs'
-import { basename, dirname, relative, resolve, sep } from 'node:path'
+import { basename, dirname, resolve } from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import Ajv2020 from 'ajv/dist/2020.js'
 import addFormats from 'ajv-formats'
+import { assertPackageScratchPath, packageScratchRoot } from './curriculumPackageScratchRoot'
 import {
   createDeterministicZip32,
   type DeterministicZip32Entry,
@@ -214,6 +215,7 @@ export type FwuOwlManifestFile = {
     | 'fwu-core-pinned-copy'
     | 'official-source-metadata'
     | 'ai-generated-curated'
+    | 'ai-assisted-repository-native'
     | 'user-provided-generated-claim'
     | 'third-party'
     | 'generated-package-metadata'
@@ -291,12 +293,14 @@ export type FwuOwlPackagePair = {
 }
 
 export type BuildFwuOwlPackagePairOptions = Omit<CreateFwuOwlPackagePlanOptions, 'source'> & {
+  scratchRoot?: string
   source: ValidatedSourceJsonPackage
   outputDirectory: string
 }
 
 const scriptDir = dirname(fileURLToPath(import.meta.url))
 const DEFAULT_PACKAGE_PROFILE = 'contracts/curriculum-package/v1/profiles/fwu-owl-v1.profile.json'
+const COMPLETION_PACKAGE_PROFILE = 'contracts/curriculum-package/v1.1/profiles/fwu-owl-completion-v1.profile.json'
 const DEFAULT_CORE_CHECKOUT = 'tmp/lehrplan-ontologie'
 const DEFAULT_WORK_DIRECTORY = 'tmp/fwu-owl-package-builder-work'
 const DEFAULT_OUTPUT_DIRECTORY = 'tmp/curriculum-release-model/fwu-owl-package'
@@ -412,6 +416,7 @@ const mappedProvenance = (value: string): FwuOwlManifestFile['provenanceClass'] 
   if (value === 'generated-metadata') return 'generated-package-metadata'
   if (value === 'official-source-metadata') return 'official-source-metadata'
   if (value === 'ai-generated-curated') return 'ai-generated-curated'
+  if (value === 'ai-assisted-repository-native') return value
   if (value === 'user-provided-generated-claim') return 'user-provided-generated-claim'
   if (value === 'third-party') return 'third-party'
   return fail(`Cannot map source provenance class into FWU-OWL v1: ${value}`)
@@ -490,7 +495,7 @@ const sourceRecordByPath = (source: ValidatedSourceJsonPackage, path: string) =>
 const validatePackageProfile = (profile: FwuOwlPackageProfile) => {
   if (
     profile.profileFormatVersion !== 1
-    || profile.profileId !== 'fwu-owl-v1'
+    || !['fwu-owl-v1', 'fwu-owl-completion-v1'].includes(profile.profileId)
     || profile.compatibility.packageFormatVersion !== '1.0'
     || profile.compatibility.variant !== 'fwu-owl'
     || profile.rdfPolicy.segmentOrder.join('\n') !== FWU_OWL_SEGMENT_ORDER.join('\n')
@@ -718,12 +723,14 @@ export const createFwuOwlCurriculumPackagePlan = (
 ): FwuOwlPackagePlan => {
   assertSourceZipIntegrity(options.source, 'before FWU-OWL plan construction')
   const repositoryRoot = resolve(options.repositoryRoot ?? defaultRepositoryRoot)
-  const packageProfileRepositoryPath = options.packageProfilePath ?? DEFAULT_PACKAGE_PROFILE
+  const completion = options.source.manifest.releaseProfile === 'full-standalone-completion-v1'
+  const canonicalProfile = completion ? COMPLETION_PACKAGE_PROFILE : DEFAULT_PACKAGE_PROFILE
+  const packageProfileRepositoryPath = options.packageProfilePath ?? canonicalProfile
   const packageProfilePath = absoluteRepositoryPath(repositoryRoot, packageProfileRepositoryPath, 'FWU-OWL package profile')
   const packageProfileIntegrity = fileIntegrity(packageProfilePath)
   const canonicalPackageProfilePath = absoluteRepositoryPath(
     repositoryRoot,
-    DEFAULT_PACKAGE_PROFILE,
+    canonicalProfile,
     'canonical FWU-OWL package profile',
   )
   const canonicalPackageProfileIntegrity = fileIntegrity(canonicalPackageProfilePath)
@@ -733,7 +740,7 @@ export const createFwuOwlCurriculumPackagePlan = (
   ) fail('FWU-OWL package profile differs from the repository trust root.')
   const packageProfileSchemaPath = absoluteRepositoryPath(
     repositoryRoot,
-    'contracts/curriculum-package/v1/fwu-owl-package-profile.schema.json',
+    `contracts/curriculum-package/${completion ? 'v1.1' : 'v1'}/fwu-owl-package-profile.schema.json`,
     'FWU-OWL package-profile schema',
   )
   const profileDocument = readJson<JsonObject>(packageProfilePath, 'FWU-OWL package profile')
@@ -758,7 +765,7 @@ export const createFwuOwlCurriculumPackagePlan = (
     )
   }
 
-  const packageProfilePackagePath = 'profiles/fwu-owl-v1.profile.json'
+  const packageProfilePackagePath = `profiles/${profile.profileId}.profile.json`
   entries.addSource(
     packageProfilePackagePath,
     packageProfilePath,
@@ -1254,24 +1261,24 @@ export const createFwuOwlCurriculumPackagePlan = (
   return plan
 }
 
-const assertOutputBelowRepositoryTmp = (repositoryRoot: string, outputPath: string) => {
-  const tmpRoot = resolve(repositoryRoot, 'tmp')
-  const rel = relative(tmpRoot, resolve(outputPath))
-  if (rel === '..' || rel.startsWith(`..${sep}`) || resolve(rel) === rel) {
-    fail(`FWU-OWL output must remain below ${tmpRoot}: ${outputPath}`)
-  }
-  assertNoSymlinkComponents(repositoryRoot, resolve(outputPath), true)
+const assertOutputBelowRepositoryTmp = (repositoryRoot: string, outputPath: string, scratchRoot?: string) => {
+  const tmpRoot = packageScratchRoot(repositoryRoot, scratchRoot)
+  assertPackageScratchPath(tmpRoot, outputPath)
+  assertNoSymlinkComponents(scratchRoot ? tmpRoot : repositoryRoot, resolve(outputPath), true)
+  return scratchRoot ? tmpRoot : repositoryRoot
 }
 
 export const materializeFwuOwlCurriculumPackage = (
   plan: FwuOwlPackagePlan,
   outputPath: string,
   repositoryRoot = defaultRepositoryRoot,
+  scratchRoot?: string,
 ): MaterializedFwuOwlPackage => {
   const resolvedOutput = resolve(outputPath)
-  assertOutputBelowRepositoryTmp(resolve(repositoryRoot), resolvedOutput)
+  const outputBase = assertOutputBelowRepositoryTmp(resolve(repositoryRoot), resolvedOutput, scratchRoot)
+  if (scratchRoot && existsSync(resolvedOutput)) fail('Explicit scratch output already exists; refusing to replace it.')
   mkdirSync(dirname(resolvedOutput), { recursive: true, mode: 0o700 })
-  assertNoSymlinkComponents(resolve(repositoryRoot), dirname(resolvedOutput), false)
+  assertNoSymlinkComponents(outputBase, dirname(resolvedOutput), false)
   const zipEntries: DeterministicZip32Entry[] = plan.entries.map((entry) => ({
     packagePath: `${plan.archiveRoot}/${entry.relativePath}`,
     ...(entry.content ? { content: entry.content } : { sourcePath: entry.sourcePath as string }),
@@ -1300,9 +1307,10 @@ export const buildFwuOwlCurriculumPackagePair = (
 ): FwuOwlPackagePair => {
   const repositoryRoot = resolve(options.repositoryRoot ?? defaultRepositoryRoot)
   const outputDirectory = resolve(options.outputDirectory)
-  assertOutputBelowRepositoryTmp(repositoryRoot, outputDirectory)
+  const outputBase = assertOutputBelowRepositoryTmp(repositoryRoot, outputDirectory, options.scratchRoot)
+  if (options.scratchRoot && existsSync(outputDirectory)) fail('Explicit scratch output already exists; refusing to replace it.')
   mkdirSync(dirname(outputDirectory), { recursive: true, mode: 0o700 })
-  assertNoSymlinkComponents(repositoryRoot, dirname(outputDirectory), false)
+  assertNoSymlinkComponents(outputBase, dirname(outputDirectory), false)
   const priorOutput = existsSync(outputDirectory) ? lstatSync(outputDirectory) : null
   if (priorOutput) {
     if (!priorOutput.isDirectory() || priorOutput.isSymbolicLink()) {
@@ -1319,7 +1327,7 @@ export const buildFwuOwlCurriculumPackagePair = (
     assertSourceZipIntegrity(options.source, 'before FWU-OWL double build')
     let primaryPlan: FwuOwlPackagePlan | null = createFwuOwlCurriculumPackagePlan(options)
     const primaryStagePath = resolve(stagingDirectory, `${primaryPlan.archiveRoot}.zip`)
-    const primaryStage = materializeFwuOwlCurriculumPackage(primaryPlan, primaryStagePath, repositoryRoot)
+    const primaryStage = materializeFwuOwlCurriculumPackage(primaryPlan, primaryStagePath, repositoryRoot, options.scratchRoot)
     const primarySummary = {
       archiveRoot: primaryPlan.archiveRoot,
       sourceDateEpoch: primaryPlan.sourceDateEpoch,
@@ -1356,7 +1364,7 @@ export const buildFwuOwlCurriculumPackagePair = (
       'reproducibility-peer',
       `${peerPlan.archiveRoot}.zip`,
     )
-    const peerStage = materializeFwuOwlCurriculumPackage(peerPlan, peerStagePath, repositoryRoot)
+    const peerStage = materializeFwuOwlCurriculumPackage(peerPlan, peerStagePath, repositoryRoot, options.scratchRoot)
     const byteIdentical = primaryStage.bytes === peerStage.bytes && primaryStage.sha256 === peerStage.sha256
     if (!byteIdentical || primaryStage.manifestSha256 !== peerStage.manifestSha256) {
       fail('FWU-OWL primary and reproducibility-peer builds are not byte-identical.')
@@ -1416,10 +1424,12 @@ export const buildFwuOwlCurriculumPackagePair = (
 type CliOptions = {
   sourceJson: string
   sourceRoot?: string
+  sourceContractsDirectory?: string
+  scratchRoot?: string
   workDirectory: string
   outputDirectory: string
   coreCheckout: string
-  packageProfilePath: string
+  packageProfilePath?: string
   archiveRoot?: string
   sourceDateEpoch: number
   expectedManifestFileCount?: number
@@ -1437,6 +1447,8 @@ const usage = `Usage:
 
 Options:
   --source-root <dir>                    Already validated/extracted archive root.
+  --scratch-root <dir>                   Private physical 0700 directory on another local filesystem.
+  --source-contracts-dir <dir>           JSON trust root (v1.1 for completion packages).
   --work-directory <dir>                 Temporary source-validation directory.
   --output-directory <dir>               Primary and reproducibility-peer output.
   --core-checkout <dir>                  Pinned lehrplan-ontologie checkout.
@@ -1475,7 +1487,7 @@ const parseCli = (args: string[]): CliOptions => {
   }
   const sourceJson = values.get('--source-json') ?? fail('--source-json is required.')
   const known = new Set([
-    '--source-json', '--source-root', '--work-directory', '--output-directory', '--core-checkout',
+    '--source-json', '--source-root', '--source-contracts-dir', '--scratch-root', '--work-directory', '--output-directory', '--core-checkout',
     '--package-profile', '--archive-root', '--source-date-epoch', '--expect-manifest-file-count',
     '--expect-entry-count', '--expect-binary-resource-count', '--expect-release-support-count',
     '--expect-logical-artifact-count', '--expect-content-digest', '--expect-fallback-area-count',
@@ -1487,11 +1499,13 @@ const parseCli = (args: string[]): CliOptions => {
   }
   return {
     sourceJson,
+    sourceContractsDirectory: values.get('--source-contracts-dir'),
+    scratchRoot: values.get('--scratch-root'),
     ...(values.has('--source-root') ? { sourceRoot: values.get('--source-root') as string } : {}),
     workDirectory: values.get('--work-directory') ?? DEFAULT_WORK_DIRECTORY,
     outputDirectory: values.get('--output-directory') ?? DEFAULT_OUTPUT_DIRECTORY,
     coreCheckout: values.get('--core-checkout') ?? DEFAULT_CORE_CHECKOUT,
-    packageProfilePath: values.get('--package-profile') ?? DEFAULT_PACKAGE_PROFILE,
+    packageProfilePath: values.get('--package-profile'),
     ...(values.has('--archive-root') ? { archiveRoot: values.get('--archive-root') as string } : {}),
     sourceDateEpoch: optionalInteger('--source-date-epoch') ?? FIXED_MINIMUM_ZIP_EPOCH,
     expectedManifestFileCount: optionalInteger('--expect-manifest-file-count'),
@@ -1509,11 +1523,14 @@ const main = () => {
   const repositoryRoot = resolve(scriptDir, '../..')
   const prepared = prepareValidatedSourceJsonPackage(resolve(repositoryRoot, cli.sourceJson), {
     workDirectory: resolve(repositoryRoot, cli.workDirectory),
+    contractsDirectory: cli.sourceContractsDirectory,
+    scratchRoot: cli.scratchRoot,
     ...(cli.sourceRoot ? { sourceRoot: resolve(repositoryRoot, cli.sourceRoot) } : {}),
   })
   try {
     const result = buildFwuOwlCurriculumPackagePair({
       source: prepared.source,
+      scratchRoot: cli.scratchRoot,
       repositoryRoot,
       outputDirectory: resolve(repositoryRoot, cli.outputDirectory),
       coreCheckout: cli.coreCheckout,

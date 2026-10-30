@@ -174,6 +174,12 @@ skillpilot:
           protected-resource-metadata: https://mcp-openai.skillpilot.com/.well-known/oauth-protected-resource/mcp
           access-token-ttl: ${SKILLPILOT_OPENAI_OAUTH_ACCESS_TOKEN_TTL:PT1H}
           refresh-token-ttl: ${SKILLPILOT_OPENAI_OAUTH_REFRESH_TOKEN_TTL:P30D}
+  completion:
+    enabled: ${SKILLPILOT_COMPLETION_ENABLED:false}
+    enabled-profile-ids: ${SKILLPILOT_COMPLETION_ENABLED_PROFILE_IDS:}
+    # Static pilot base is warmed before readiness, outside learner transactions.
+    # Package consumers set their actual selected base (Math: 68a8ac50-f5f5-4e24-8aa9-5e408ca01ced).
+    warmup-curriculum-ids: ${SKILLPILOT_COMPLETION_WARMUP_CURRICULUM_IDS:a0e13c56-c25f-4742-9272-3a1a603ee52e,68a8ac50-f5f5-4e24-8aa9-5e408ca01ced}
   curriculum:
     source: ${SKILLPILOT_CURRICULUM_SOURCE:repository}
     consumer-version: ${SKILLPILOT_CURRICULUM_CONSUMER_VERSION:0.1.0}

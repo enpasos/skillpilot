@@ -153,6 +153,9 @@ public final class CurriculumRuntimeSnapshot {
         private final String licenseExpression;
         private final String provenanceClass;
         private final String redistributionStatus;
+        // Populated exactly once by the loader before this snapshot is published.
+        // Only small static completion documents are retained; image assets are not.
+        private volatile byte[] retainedContent;
 
         Artifact(
                 InstalledCurriculumPackage installedPackage,
@@ -209,6 +212,25 @@ public final class CurriculumRuntimeSnapshot {
 
         public long bytes() {
             return bytes;
+        }
+
+        void retainVerifiedContent(byte[] content) {
+            if (content.length != bytes || !CurriculumPackageFileReader.sha256(content).equals(sha256)) {
+                throw new CurriculumPackageException("Completion artifact bytes do not match their manifest binding");
+            }
+            if (retainedContent != null) {
+                throw new IllegalStateException("Completion artifact has already been retained");
+            }
+            retainedContent = content.clone();
+        }
+
+        /** Verified immutable bytes retained during generation loading, never a filesystem reread. */
+        public byte[] contentBytes() {
+            byte[] content = retainedContent;
+            if (content == null) {
+                throw new IllegalStateException("Artifact has no retained completion payload: " + relativePath);
+            }
+            return content.clone();
         }
 
         public String sha256() {

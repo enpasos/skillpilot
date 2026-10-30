@@ -61,6 +61,19 @@ public class GoalMappingService {
         this.cachedByLegacyGoalId = Collections.unmodifiableMap(uniqueMappings);
     }
 
+    private volatile boolean runtimeGenerationPinned;
+
+    public void pinRuntimeGeneration() {
+        if (packageBacked) return;
+        synchronized (reloadLock) {
+            if (runtimeGenerationPinned) return;
+            // Pin from the current files even when the normal reload interval has
+            // not elapsed. The catalog verifies these inputs before publishing.
+            loadMappings();
+            runtimeGenerationPinned = true;
+        }
+    }
+
     public List<ResolvedGoalMapping> getAllMappings() {
         ensureFresh();
         return cachedMappings;
@@ -93,7 +106,7 @@ public class GoalMappingService {
     }
 
     private void ensureFresh() {
-        if (packageBacked) {
+        if (packageBacked || runtimeGenerationPinned) {
             return;
         }
         long now = System.currentTimeMillis();
@@ -101,6 +114,7 @@ public class GoalMappingService {
             return;
         }
         synchronized (reloadLock) {
+            if (runtimeGenerationPinned) return;
             now = System.currentTimeMillis();
             if (now - lastReloadCheck < RELOAD_CHECK_INTERVAL_MS) {
                 return;

@@ -28,6 +28,7 @@ import zipfile
 from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path, PurePosixPath
+from types import SimpleNamespace
 from typing import Any, BinaryIO, Iterable, Mapping, Sequence
 
 from jsonschema import Draft202012Validator
@@ -1194,13 +1195,15 @@ class Validation:
     def profile_contract(self) -> str:
         assert self.archive is not None and self.manifest is not None
         local_raw = self.trusted["profileRaw"]
-        embedded = self.archive.read("profiles/fwu-owl-v1.profile.json", int(self.trusted["profile"]["archiveLimits"]["jsonEntryBytes"]))
+        profile_id = self.trusted["profile"]["profileId"]
+        profile_path = f"profiles/{profile_id}.profile.json"
+        embedded = self.archive.read(profile_path, int(self.trusted["profile"]["archiveLimits"]["jsonEntryBytes"]))
         if embedded != local_raw:
             raise InvalidPackage("embedded package profile differs from the repository trust root")
         embedded_value = loads_strict(embedded)
         require_schema(self.trusted["profileSchema"], embedded_value, "package profile")
         binding = get_binding_file(self.manifest, "packageProfile")
-        if not binding_matches(binding, embedded, "profiles/fwu-owl-v1.profile.json") or binding.get("id") != "fwu-owl-v1":
+        if not binding_matches(binding, embedded, profile_path) or binding.get("id") != profile_id:
             raise InvalidPackage("manifest packageProfile binding does not bind the trusted bytes")
         compatibility = self.trusted["profile"]["compatibility"]
         for field in ("packageFormatVersion", "variant"):
@@ -1262,6 +1265,8 @@ class Validation:
             before = pinned.sha256
             source_size = pinned.size
             command = [sys.executable, str(FULL_STANDALONE_VALIDATOR), "--zip", str(source), "--json"]
+            if self.trusted["profile"]["profileId"] == "fwu-owl-completion-v1":
+                command.extend(["--contracts-dir", str(CONTRACT_ROOT.parent / "v1.1")])
             try:
                 result = subprocess.run(command, cwd=REPO_ROOT, stdin=subprocess.DEVNULL, capture_output=True, text=True, timeout=3600, check=False)
             except (OSError, subprocess.TimeoutExpired) as error:
@@ -1502,6 +1507,25 @@ class Validation:
         undeclared = sorted(term for term in all_terms if term.startswith(SP) and term not in expected)
         if undeclared:
             raise InvalidPackage(f"used application terms are undeclared: {undeclared[:10]}")
+        # Verify the lossless anchor AND all independent completion graph assertions.
+        # Use the already pinned, security-checked archive rather than reopening its path.
+        if self.trusted["profile"]["profileId"] == "fwu-owl-completion-v1":
+            reverse = importlib.import_module("scripts.reconstruct_json_curriculum_package_from_fwu_owl")
+            carrier = SimpleNamespace(manifest=self.manifest, read=self.archive.read, open=self.archive.open)
+            try:
+                with tempfile.TemporaryDirectory(prefix="completion-rdf-proof-", dir=self.args.work_dir) as temporary:
+                    reconstruction = reverse.reconstruct(carrier, Path(temporary))
+                    completion = importlib.import_module("scripts.curriculum_completion_artifacts")
+                    documents = reconstruction.documents
+                    completion_documents = [
+                        (a.index_role, a.logical_id, reconstruction.artifact_paths[a.key], documents[a.key])
+                        for a in reconstruction.artifacts if a.role in reverse.COMPLETION_ROLES
+                    ]
+                    goals = {goal["id"]: goal for a in reconstruction.artifacts if a.role == "canonical-landscape"
+                             for goal in documents[a.key]["goals"]}
+                    completion.validate_package_documents(completion_documents, goals)
+            except (reverse.ReverseCompilerError, ValueError) as error:
+                raise InvalidPackage(str(error)) from error
         self._segment_paths = [item["path"] for item in segments]
         self._rdf_total = total
         self.counts["rdfSegments"] = len(segments)
@@ -1945,7 +1969,7 @@ class Validation:
             "manifestSha256": self.entry_hashes.get(MANIFEST_REL, (0, None))[1],
         }
         report = {
-            "$schema": "https://skillpilot.com/schemas/curriculum-package/v1/fwu-owl-package-validation-report.schema.json",
+            "$schema": self.trusted["profile"]["compatibility"]["validationReportSchemaId"],
             "reportFormatVersion": 1, "validatorId": "skillpilot-fwu-owl-package-validator-v1", "status": status,
             "input": input_value, "package": self.package_binding(), "counts": self.counts,
             "gates": [self.gates[gate] for gate in GATES], "ontologyEvidence": self.ontology,
@@ -1965,7 +1989,13 @@ class Validation:
         return report
 
 
-def load_trust() -> dict[str, Any]:
+def load_trust(profile_id: str = "fwu-owl-v1") -> dict[str, Any]:
+    global PROFILE_PATH, MANIFEST_SCHEMA_PATH, PROFILE_SCHEMA_PATH, REPORT_SCHEMA_PATH
+    contract_audit.select_profile(profile_id)
+    PROFILE_PATH = contract_audit.PROFILE_PATH
+    MANIFEST_SCHEMA_PATH = contract_audit.SCHEMAS["manifest"]
+    PROFILE_SCHEMA_PATH = contract_audit.SCHEMAS["profile"]
+    REPORT_SCHEMA_PATH = contract_audit.SCHEMAS["validationReport"]
     profile_raw = PROFILE_PATH.read_bytes()
     profile = load_trusted_json(PROFILE_PATH)
     manifest_schema = load_trusted_json(MANIFEST_SCHEMA_PATH)
@@ -2257,6 +2287,7 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     mode = parser.add_mutually_exclusive_group(required=True)
     mode.add_argument("--zip", type=Path, help="finished *.fwu-owl.zip")
     mode.add_argument("--self-test", action="store_true", help="run bounded adversarial tests")
+    parser.add_argument("--profile", choices=("fwu-owl-v1", "fwu-owl-completion-v1"), default="fwu-owl-v1", help="repository FWU trust root")
     parser.add_argument("--source-json", type=Path, help="independent full-standalone JSON source ZIP")
     parser.add_argument("--reproducibility-peer", type=Path, help="byte-identical independent second FWU build")
     parser.add_argument("--robot-jar", type=Path, help="pinned ROBOT JAR")
@@ -2283,7 +2314,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         ensure_output_directory(args.report.parent, "validation report parent")
         args.work_dir = ensure_output_directory(args.work_dir, "ontology work root")
         args.evidence_dir = create_fresh_output_directory(args.evidence_dir, "evidence root")
-        trusted = load_trust()
+        trusted = load_trust(args.profile)
         report = Validation(args, trusted).validate()
         rendered = (json.dumps(report, ensure_ascii=False, sort_keys=True, indent=2) + "\n").encode("utf-8")
         atomic_write(args.report, rendered)

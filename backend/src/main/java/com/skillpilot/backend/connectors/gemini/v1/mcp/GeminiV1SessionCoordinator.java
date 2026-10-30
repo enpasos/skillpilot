@@ -149,11 +149,13 @@ public class GeminiV1SessionCoordinator {
         Learner learner = locked.learner();
         long stateVersion = learner.getCoachStateRevision();
         return new Outcome<>(
-                operation.apply(new ReadContext(
+                com.skillpilot.backend.completion.CompletionCallContext.with(
+                        new com.skillpilot.backend.completion.CompletionCallContext("gemini", locked.tokenHash(),
+                                locked.session().expiresAt(), false), () -> operation.apply(new ReadContext(
                         locked.tokenHash(),
                         learner.getSkillpilotId(),
                         stateVersion,
-                        locked.session().communicationLocale())),
+                        locked.session().communicationLocale()))),
                 stateVersion);
     }
 
@@ -198,12 +200,15 @@ public class GeminiV1SessionCoordinator {
             throw new StaleStateException(expectedStateVersion, versionBefore);
         }
 
-        Map<String, Object> result = operation.apply(new MutateContext(
+        MutateContext context = new MutateContext(
                 tokenHash,
                 learner.getSkillpilotId(),
                 versionBefore,
                 locked.session().communicationLocale(),
-                () -> currentStateVersion(learner.getSkillpilotId())));
+                () -> currentStateVersion(learner.getSkillpilotId()));
+        Map<String, Object> result = com.skillpilot.backend.completion.CompletionCallContext.with(
+                new com.skillpilot.backend.completion.CompletionCallContext("gemini", locked.tokenHash(),
+                        locked.session().expiresAt(), false), () -> operation.apply(context));
 
         long versionAfter = currentStateVersion(learner.getSkillpilotId());
         if (versionAfter <= versionBefore) {

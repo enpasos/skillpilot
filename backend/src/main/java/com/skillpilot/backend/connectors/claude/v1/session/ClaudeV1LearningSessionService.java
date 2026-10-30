@@ -1,6 +1,7 @@
 package com.skillpilot.backend.connectors.claude.v1.session;
 
 import com.skillpilot.backend.connectors.claude.v1.ConditionalOnClaudeV1Enabled;
+import com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionContractRegistry;
 import com.skillpilot.backend.connectors.claude.v1.web.ClaudeV1CoachStartRequest;
 import com.skillpilot.backend.connectors.claude.v1.web.ClaudeV1LaunchResponse;
 import com.skillpilot.backend.domain.Learner;
@@ -28,16 +29,19 @@ public class ClaudeV1LearningSessionService {
     private final ClaudeV1SessionTokenCodec tokenCodec;
     private final LearnerRepository learners;
     private final LearnerService learnerService;
+    private final ClaudeV1CompletionContractRegistry completionContract;
 
     public ClaudeV1LearningSessionService(
             ClaudeV1LearningSessionRepository sessions,
             ClaudeV1SessionTokenCodec tokenCodec,
             LearnerRepository learners,
-            LearnerService learnerService) {
+            LearnerService learnerService,
+            ClaudeV1CompletionContractRegistry completionContract) {
         this.sessions = Objects.requireNonNull(sessions, "sessions");
         this.tokenCodec = Objects.requireNonNull(tokenCodec, "tokenCodec");
         this.learners = Objects.requireNonNull(learners, "learners");
         this.learnerService = Objects.requireNonNull(learnerService, "learnerService");
+        this.completionContract = Objects.requireNonNull(completionContract, "completionContract");
     }
 
     @Transactional
@@ -61,18 +65,26 @@ public class ClaudeV1LearningSessionService {
         Instant startedAt = Instant.now().truncatedTo(java.time.temporal.ChronoUnit.MICROS);
         String learningSessionId = tokenCodec.issue();
         Instant expiresAt = startedAt.plus(SESSION_TTL);
+        boolean completionRoute = learnerService.completionRouteOwnsNavigation(learner);
+        if (request.completionAssessment() != null) {
+            learnerService.startCompletionAssessment(skillpilotId, request.completionAssessment(),
+                    "claude", tokenCodec.hash(learningSessionId), expiresAt);
+        }
         sessions.insert(new ClaudeV1LearningSession(
                 tokenCodec.hash(learningSessionId),
                 learner.getSkillpilotId(),
                 startedAt,
                 expiresAt,
                 locale,
-                learner.getCoachStateRevision()));
+                learner.getCoachStateRevision(), learnerService.supportsCompletionWorkflow() ? completionContract.pendingStamp() : null));
         learner.setLastActivityAt(startedAt);
         learners.save(learner);
 
         return new ClaudeV1LaunchResponse(
-                launchPrompt(locale, learningSessionId),
+                launchPrompt(locale, learningSessionId) + (completionRoute
+                        ? "\n\nUse the current level-completion context and its published choices. "
+                          + "Waived preparation is not mastery. Ask for consent before switching goals."
+                        : ""),
                 CLAUDE_WEB_URL,
                 learningSessionId,
                 expiresAt);

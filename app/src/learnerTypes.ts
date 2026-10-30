@@ -79,6 +79,7 @@ export interface GoalStats {
 }
 
 export interface UnifiedLearnerStateResponse {
+  levelCompletion?: import('./utils/levelCompletionApi').LevelCompletion | null;
   skillpilotId: string;
   curriculum: { landscapeId: string; title: string };
   frontier: FrontierGoal[];

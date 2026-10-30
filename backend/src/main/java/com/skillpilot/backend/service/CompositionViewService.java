@@ -903,6 +903,14 @@ public class CompositionViewService {
     private record CourseProfileMatch(boolean fallback, int preferenceRank) {
     }
 
+    /** Reuses authoritative scope-value compatibility without selecting or inferring a view. */
+    public static boolean matchesResolvedScopeValue(String dimension, String required, String resolved) {
+        if (!StringUtils.hasText(required) || !StringUtils.hasText(resolved)) return false;
+        if (STAGE_KEY.equals(dimension)) return matchStageScope(required, resolved) != StageMatch.NONE;
+        if (COURSE_PROFILE_KEY.equals(dimension)) return matchCourseProfileScope(required, resolved) != null;
+        return normalizeValue(required).equals(normalizeValue(resolved));
+    }
+
     private static StageMatch matchStageScope(String viewStage, String requestedStage) {
         String normalizedViewStage = normalizeValue(viewStage);
         String normalizedRequestedStage = normalizeValue(requestedStage);

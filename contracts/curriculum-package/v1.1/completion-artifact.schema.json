@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/curriculum-package/v1.1/completion-artifact.schema.json",
+  "title": "Static reviewed assessment completion artifact",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "artifactFormatVersion",
+    "artifactKind",
+    "id",
+    "definition"
+  ],
+  "properties": {
+    "artifactFormatVersion": {
+      "const": 1
+    },
+    "artifactKind": {
+      "enum": [
+        "profile",
+        "scope",
+        "review"
+      ]
+    },
+    "id": {
+      "anyOf": [
+        {
+          "$ref": "https://skillpilot.com/schemas/curriculum-package/v1/runtime-catalog.schema.json#/$defs/id"
+        },
+        {
+          "$ref": "https://skillpilot.com/schemas/curriculum-package/v1/runtime-catalog.schema.json#/$defs/packageRelativePath"
+        }
+      ]
+    },
+    "definition": {
+      "type": "object"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "artifactKind": {
+            "const": "profile"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "definition": {
+            "$ref": "https://skillpilot.com/schemas/assessment-completion/v1/profile.schema.json"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "artifactKind": {
+            "const": "scope"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "definition": {
+            "$ref": "https://skillpilot.com/schemas/assessment-completion/v1/scope.schema.json"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "artifactKind": {
+            "const": "review"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "definition": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "mediaType",
+              "content",
+              "sha256"
+            ],
+            "properties": {
+              "mediaType": {
+                "enum": [
+                  "text/markdown",
+                  "application/json"
+                ]
+              },
+              "content": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1048576
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

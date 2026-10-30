@@ -1,0 +1,353 @@
+name: Assessment completion
+
+on:
+  workflow_dispatch:
+    inputs:
+      benchmark:
+        description: Record compiler/evaluator performance on this runner (no hard timing gate)
+        type: boolean
+        default: false
+  pull_request:
+    paths:
+      - 'backend/**'
+      - 'app/**'
+      - 'curricula/**'
+      - 'contracts/assessment-completion/**'
+      - 'contracts/curriculum-package/**'
+      - 'scripts/*curriculum_package*'
+      - 'scripts/*completion*'
+      - 'docs/dev/assessment-gated-completion-implementation-plan.md'
+      - '.github/workflows/assessment-completion.yml'
+      - '.github/actions/postgres-service/**'
+      - '.github/actions/ubuntu-apt/**'
+      - '.java-version'
+      - '.corretto-version'
+      - '.nvmrc'
+  push:
+    branches: [main]
+    paths:
+      - 'backend/**'
+      - 'app/**'
+      - 'curricula/**'
+      - 'contracts/assessment-completion/**'
+      - 'contracts/curriculum-package/**'
+      - 'scripts/*curriculum_package*'
+      - 'scripts/*completion*'
+      - 'docs/dev/assessment-gated-completion-implementation-plan.md'
+      - '.github/workflows/assessment-completion.yml'
+      - '.github/actions/postgres-service/**'
+      - '.github/actions/ubuntu-apt/**'
+      - '.java-version'
+      - '.corretto-version'
+      - '.nvmrc'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: assessment-completion-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  authoring-and-ui:
+    name: Completion profiles, shared fixtures and Cockpit
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          # Keep the reviewed completion rules while omitting unrelated raster
+          # and historical QA archives from these code/fixture-based checks.
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /.github/
+            /app/
+            /contracts/
+            /LICENSES/
+            /curricula/
+            !/curricula/DE/Gymnasium/quality/
+            !/curricula/DE/Gymnasium/visualizations/
+            /curricula/DE/Gymnasium/quality/assessment-completion/
+            /scripts/
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+      - run: npm ci
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - name: Install pinned package and RDF validation dependencies
+        run: python -m pip install -r ../scripts/curriculum_fwu_owl_validation_requirements.txt
+      - name: Validate profile/scope authoring and the shared semantic fixture corpus
+        run: |
+          npm run check:assessment-completion-profiles
+          npm run test:assessment-completion-profiles
+      - name: Validate package completion contracts and independent FWU reconstruction
+        run: |
+          python3 ../scripts/test_assessment_completion_package.py
+          npm run test:fwu-owl-package-builder
+      - name: Check TypeScript, state parsing, binary goals and public practice synchronization
+        run: |
+          npx --no-install tsc -b --pretty false
+          npm run test:level-completion
+          npx --no-install tsx src/utils/srsPracticeSync.test.ts
+          npm run test:session-setup-id-entry
+      - name: Use Ubuntu package sources
+        uses: ./.github/actions/ubuntu-apt
+      - name: Install pinned Chromium
+        timeout-minutes: 10
+        run: npx --no-install playwright install --with-deps chromium
+      - name: Test real browser navigation, revision conflicts and keyboard interaction
+        run: npm run test:level-completion-browser
+      - name: Retain browser evidence
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: assessment-completion-browser-${{ github.sha }}-${{ github.run_id }}
+          path: tmp/level-completion-browser/
+          if-no-files-found: warn
+          retention-days: 14
+
+  backend-and-postgres:
+    name: Completion core, HTTP browser, sessions and PostgreSQL snapshots
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /.github/
+            /ai/
+            /app/
+            /backend/
+            /content/
+            /contracts/
+            /curricula/
+            !/curricula/DE/Gymnasium/quality/
+            !/curricula/DE/Gymnasium/visualizations/
+            /curricula/DE/Gymnasium/quality/assessment-completion/
+            /docs/qa-ci/status/curriculum-quality-status.json
+            /scripts/
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+      - name: Install browser-test dependencies
+        working-directory: app
+        run: npm ci
+      - name: Use Ubuntu package sources
+        uses: ./.github/actions/ubuntu-apt
+      - name: Install pinned Chromium for real backend browser integration
+        working-directory: app
+        timeout-minutes: 10
+        run: npx --no-install playwright install --with-deps chromium
+      - uses: actions/setup-java@v5
+        with:
+          distribution: corretto
+          java-version-file: .java-version
+      - name: Use exact production Corretto build
+        run: |
+          set -euo pipefail
+          corretto_version="$(tr -d '[:space:]' < .corretto-version)"
+          install_dir="${RUNNER_TEMP}/amazon-corretto-${corretto_version}"
+          archive="${RUNNER_TEMP}/amazon-corretto-${corretto_version}-linux-x64.tar.gz"
+          curl -fsSL "https://corretto.aws/downloads/resources/${corretto_version}/amazon-corretto-${corretto_version}-linux-x64.tar.gz" -o "${archive}"
+          mkdir -p "${install_dir}"
+          tar -xzf "${archive}" --strip-components=1 -C "${install_dir}"
+          echo "JAVA_HOME=${install_dir}" >> "${GITHUB_ENV}"
+          echo "${install_dir}/bin" >> "${GITHUB_PATH}"
+          "${install_dir}/bin/java" -version
+      - uses: gradle/actions/setup-gradle@v4
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - name: Start digest-pinned disposable PostgreSQL 15
+        timeout-minutes: 10
+        uses: ./.github/actions/postgres-service
+        with:
+          database: skillpilot_completion_test
+      - name: Create the restricted synthetic completion-test database login
+        run: |
+          docker exec -i skillpilot-ci-postgres psql -v ON_ERROR_STOP=1 -U postgres -d skillpilot_completion_test <<'SQL'
+          CREATE ROLE completion_test LOGIN PASSWORD 'completion-test-only';
+          GRANT CONNECT, CREATE, TEMPORARY ON DATABASE skillpilot_completion_test TO completion_test;
+          SQL
+      - name: Test compiler, real workflow, recall integrity and PostgreSQL transactions
+        working-directory: backend
+        env:
+          SKILLPILOT_TEST_POSTGRES_URL: jdbc:postgresql://127.0.0.1:5432/skillpilot_completion_test
+          SKILLPILOT_TEST_POSTGRES_USER: completion_test
+          SKILLPILOT_TEST_POSTGRES_PASSWORD: completion-test-only
+          SKILLPILOT_COMPLETION_BACKEND_BROWSER: 'true'
+        run: >-
+          ./gradlew test --console=plain --rerun-tasks
+          --tests 'com.skillpilot.backend.completion.CompletionCoreTest'
+          --tests 'com.skillpilot.backend.completion.CompletionApplicationServiceTest'
+          --tests 'com.skillpilot.backend.completion.CompletionCatalogTest'
+          --tests 'com.skillpilot.backend.completion.CompletionApplicabilityTest'
+          --tests 'com.skillpilot.backend.completion.CompletionTelemetryTest'
+          --tests 'com.skillpilot.backend.completion.CompletionResponseProjectionTest'
+          --tests 'com.skillpilot.backend.completion.CompletionWarmupRunnerTest'
+          --tests 'com.skillpilot.backend.curriculumpackage.CompletionPackageLoaderTest'
+          --tests 'com.skillpilot.backend.service.AssessmentCompletionIntegrationTest'
+          --tests 'com.skillpilot.backend.service.AssessmentCompletionSrsIntegrationTest'
+          --tests 'com.skillpilot.backend.service.SrsMasteryBatchQueryTest'
+          --tests 'com.skillpilot.backend.service.AssessmentCompletionPostgresIntegrationTest'
+          --tests 'com.skillpilot.backend.service.AssessmentCompletionRestartIntegrationTest'
+          --tests 'com.skillpilot.backend.service.AssessmentCompletionBackendBrowserIntegrationTest'
+          --tests 'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionProjectionTest'
+          --tests 'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest'
+          --tests 'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionContractRegistryTest'
+          --tests 'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionReceiptCapabilityTest'
+          --tests 'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CapabilityServiceTest'
+          --tests 'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionContractReceiptIntegrationTest'
+          --tests 'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1McpContractTest'
+          --tests 'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1SessionCoordinatorTest'
+          --tests 'com.skillpilot.backend.service.srs.SrsPracticeStateGuardTest'
+          --tests 'com.skillpilot.backend.service.LearnerServiceTest.*PracticeSync*'
+          --tests 'com.skillpilot.backend.service.LearnerServiceTest.signedLearnerExportRestoresAuthoritativeCardStateAndRejectsTampering'
+          --tests 'com.skillpilot.backend.service.LearnerServiceTest.anOlderSignedCardBackupCannotEraseAnAlreadySavedRecallSuccess'
+          --tests 'com.skillpilot.backend.service.LearnerServiceTest.legacyArchiveWithUnrestorableRecallMasteryIsRejectedBeforeMutation'
+          --tests 'com.skillpilot.backend.service.LearnerServiceTest.unreadableStoredCardStateIsATechnicalFailure'
+      - name: Require executed integration evidence, including every PostgreSQL contract
+        if: always()
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import xml.etree.ElementTree as ET
+
+          required = {
+              'com.skillpilot.backend.completion.CompletionCoreTest': 20,
+              'com.skillpilot.backend.completion.CompletionApplicationServiceTest': 6,
+              'com.skillpilot.backend.completion.CompletionCatalogTest': 9,
+              'com.skillpilot.backend.completion.CompletionApplicabilityTest': 3,
+              'com.skillpilot.backend.completion.CompletionTelemetryTest': 4,
+              'com.skillpilot.backend.completion.CompletionResponseProjectionTest': 2,
+              'com.skillpilot.backend.completion.CompletionWarmupRunnerTest': 8,
+              'com.skillpilot.backend.curriculumpackage.CompletionPackageLoaderTest': 1,
+              'com.skillpilot.backend.service.AssessmentCompletionIntegrationTest': 35,
+              'com.skillpilot.backend.service.AssessmentCompletionSrsIntegrationTest': 7,
+              'com.skillpilot.backend.service.SrsMasteryBatchQueryTest': 6,
+              'com.skillpilot.backend.service.AssessmentCompletionPostgresIntegrationTest': 4,
+              'com.skillpilot.backend.service.AssessmentCompletionRestartIntegrationTest': 1,
+              'com.skillpilot.backend.service.AssessmentCompletionBackendBrowserIntegrationTest': 3,
+              'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionProjectionTest': 4,
+              'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest': 1,
+              'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionContractRegistryTest': 5,
+              'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionReceiptCapabilityTest': 2,
+              'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CapabilityServiceTest': 16,
+              'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionContractReceiptIntegrationTest': 11,
+              'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1McpContractTest': 28,
+              'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1SessionCoordinatorTest': 18,
+              'com.skillpilot.backend.service.srs.SrsPracticeStateGuardTest': 6,
+              'com.skillpilot.backend.service.LearnerServiceTest': 7,
+          }
+          for name, minimum in required.items():
+              path = Path('backend/build/test-results/test') / f'TEST-{name}.xml'
+              if not path.is_file():
+                  raise SystemExit(f'Missing required report: {name}')
+              suite = ET.parse(path).getroot()
+              cases = suite.findall('testcase')
+              if suite.get('name') != name or len(cases) < minimum or len(cases) != int(suite.get('tests', '0')):
+                  raise SystemExit(f'Incomplete or misidentified report: {name}')
+              if any(int(suite.get(field, '0')) for field in ('skipped', 'failures', 'errors')):
+                  raise SystemExit(f'Skipped or failed suite: {name}')
+              if any(suite.findall(f'.//{tag}') for tag in ('skipped', 'failure', 'error')):
+                  raise SystemExit(f'Skipped or failed test case: {name}')
+              print(f'{name}: {len(cases)} executed tests, no skips or failures')
+          PY
+      - name: Stop disposable PostgreSQL
+        if: always()
+        uses: ./.github/actions/postgres-service
+        with:
+          command: stop
+          database: skillpilot_completion_test
+      - name: Retain Java and PostgreSQL evidence
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: assessment-completion-backend-${{ github.sha }}-${{ github.run_id }}
+          path: |
+            backend/build/test-results/test/TEST-*.xml
+            backend/build/reports/tests/test/
+            tmp/level-completion-backend-browser/
+            tmp/assessment-completion-restart/
+          if-no-files-found: error
+          retention-days: 30
+
+  benchmark:
+    name: Optional completion performance measurements
+    if: github.event_name == 'workflow_dispatch' && inputs.benchmark
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /ai/
+            /backend/
+            /contracts/
+            /curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json
+            /curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json
+      - uses: actions/setup-java@v5
+        with:
+          distribution: corretto
+          java-version-file: .java-version
+      - name: Use exact production Corretto build
+        run: |
+          set -euo pipefail
+          corretto_version="$(tr -d '[:space:]' < .corretto-version)"
+          install_dir="${RUNNER_TEMP}/amazon-corretto-${corretto_version}"
+          archive="${RUNNER_TEMP}/amazon-corretto-${corretto_version}-linux-x64.tar.gz"
+          curl -fsSL "https://corretto.aws/downloads/resources/${corretto_version}/amazon-corretto-${corretto_version}-linux-x64.tar.gz" -o "${archive}"
+          mkdir -p "${install_dir}"
+          tar -xzf "${archive}" --strip-components=1 -C "${install_dir}"
+          echo "JAVA_HOME=${install_dir}" >> "${GITHUB_ENV}"
+          echo "${install_dir}/bin" >> "${GITHUB_PATH}"
+          "${install_dir}/bin/java" -version
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Measure deterministic DAGs and concurrent first compilation
+        working-directory: backend
+        env:
+          SKILLPILOT_COMPLETION_BENCHMARK: 'true'
+        # Pure algorithm measurements require no runtime assets or database.
+        run: >-
+          ./gradlew test --console=plain --rerun-tasks
+          --tests 'com.skillpilot.backend.completion.CompletionPerformanceTest'
+          -x processResources -x generateClaudePluginPublication
+      - name: Require complete benchmark evidence
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path('backend/build/reports/assessment-completion/benchmark.json').read_text())
+          assert len(report['datasets']) == 13
+          assert any(case['atomicContextNodes'] == 10000 and case['expandedEdges'] == 100000 for case in report['datasets'])
+          assert report['sameKeyConcurrentFirstAccess']['oneSharedResultInstance'] is True
+          assert all('p95Ms' in case['warmNoMastery'] for case in report['datasets'])
+          print('Performance measurements recorded; timing budgets are informational on this runner.')
+          PY
+      - name: Retain hardware, JDK, latency, heap and concurrency measurements
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: assessment-completion-performance-${{ github.sha }}-${{ github.run_id }}
+          path: |
+            backend/build/reports/assessment-completion/benchmark.json
+            backend/build/test-results/test/TEST-com.skillpilot.backend.completion.CompletionPerformanceTest.xml
+          if-no-files-found: error
+          retention-days: 30

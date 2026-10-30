@@ -1,5 +1,7 @@
 import { createHash } from 'node:crypto'
+import { execFileSync } from 'node:child_process'
 import {
+  chmodSync,
   mkdirSync,
   mkdtempSync,
   readFileSync,
@@ -9,6 +11,9 @@ import {
 } from 'node:fs'
 import { resolve } from 'node:path'
 import { isDeepStrictEqual } from 'node:util'
+import { assertPackageScratchPath, packageScratchRoot } from './curriculumPackageScratchRoot'
+import { materializeFwuOwlCurriculumPackage, type FwuOwlPackagePlan } from './buildFwuOwlCurriculumPackage'
+import { completionContentLicenseDecision } from './curriculumPackageLicenses'
 import {
   FwuOwlFieldRegistry,
   canonicalJsonText,
@@ -496,6 +501,7 @@ const landscapeDocument: JsonObject = {
   landscapeId: 'fixture-landscape',
   locale: 'de',
   title: 'Deterministische Testlandschaft',
+  description: 'Synthetische Ziele für die unabhängige RDF-Rekonstruktion.',
   goals: [
     {
       id: 'area',
@@ -751,6 +757,9 @@ const testSemanticCompiler = () => {
       'canonical-landscape',
       'card-deck',
       'card-index',
+      'completion-profile',
+      'completion-rule-review',
+      'completion-scope',
       'composition-view',
       'composition-view-index',
       'dependency-closure',
@@ -1014,11 +1023,129 @@ const testSemanticCompiler = () => {
   )
 }
 
+
+const testCompletionSemantics = () => {
+  const completionRegistryPath = resolve(repositoryRoot, 'contracts/curriculum-package/v1.1/profiles/skillpilot-fwu-field-semantics-completion-v1.registry.json')
+  const value = readJsonObject(completionRegistryPath)
+  const registry = new FwuOwlFieldRegistry(value)
+  assertEqual((value.entries as JsonValue[]).slice(0, 456), registryValue.entries, 'The original 456 V1 registry entries changed')
+  const profile = readJsonObject(resolve(repositoryRoot, 'contracts/curriculum-package/v1.1/profiles/fwu-owl-completion-v1.profile.json'))
+  const reviewId = 'data/completion/reviews/synthetic.json'
+  const completionDocuments: { role: string; logicalId: string; document: JsonObject }[] = [
+    { role: 'completion-scope', logicalId: 'shared-completion-id', document: {
+      artifactFormatVersion: 1, artifactKind: 'scope', id: 'fixture-scope',
+      definition: { schemaVersion: 1, id: 'fixture-scope', revision: '1', title: { de: 'Test', en: 'Test' }, targetRootIds: ['area', 'atom-unscoped'] },
+    } },
+    { role: 'completion-rule-review', logicalId: 'fixture-review', document: {
+      artifactFormatVersion: 1, artifactKind: 'review', id: reviewId,
+      definition: { mediaType: 'text/markdown', content: 'Synthetic test only.\n', sha256: sha256('Synthetic test only.\n') },
+    } },
+    { role: 'completion-profile', logicalId: 'shared-completion-id', document: {
+      artifactFormatVersion: 1, artifactKind: 'profile', id: 'fixture-profile',
+      definition: { schemaVersion: 1, id: 'fixture-profile', revision: '1', title: { de: 'Test', en: 'Test' },
+        levelScopeRef: 'fixture-scope', protectedGoalIds: ['atom-unscoped'],
+        review: { reference: reviewId, scopeRevision: 'scope-1', taskRevision: 'task-1', rubricRevision: 'rubric-1' },
+        rules: [{ ruleId: 'synthetic', assessmentGoalIds: ['atom-unscoped'], waivableGoalIds: ['atom-parented'],
+          rationale: 'Synthetic test only.', reviewRef: reviewId }],
+      },
+    } },
+  ]
+  const artifacts = [...semanticDocuments, ...completionDocuments].map(({ role, logicalId, document }) =>
+    logicalArtifact(registry, role, role === 'canonical-landscape' ? String(document.landscapeId) : logicalId, document))
+  const source = sourceFixture(artifacts)
+  source.manifest.runtimeContractVersion = '1.1'
+  source.manifest.releaseProfile = 'full-standalone-completion-v1'
+  const compiled = compileFwuOwlSemantics({ source, registryValue: value, curriculumProfile, packageProfile: profile })
+  assertEqual(compiled.fieldRegistryEntryCount, 473, 'Completion registry is not fully covered')
+  const runtime = compiled.segments.runtime.content.toString('utf8')
+  for (const predicate of ['hasCompletionTarget', 'hasCompletionScope', 'requiresMasteredAssessment', 'waivesPreparationGoal', 'completionProtectedGoal', 'completionScopeRevision', 'completionTaskRevision', 'completionRubricRevision', 'hasCompletionRuleReview']) {
+    assert(runtime.includes(`#${predicate}>`), `Completion relation missing: ${predicate}`)
+  }
+  const directory = mkdtempSync(resolve(repositoryRoot, 'tmp/fwu-completion-test-'))
+  try {
+    const withFlow = artifacts.map(a => a.normalizationRole !== 'canonical-landscape' ? a : logicalArtifact(registry, a.normalizationRole, a.logicalId, {
+      ...(a.document as JsonObject), personalizationFlow: { version: '1', stages: [{ id: 'stage', order: 0, label: 'Test', groups: [
+        { id: 'subjects', order: 0, label: 'Test', minSelections: 1, maxSelections: 1,
+          source: { kind: 'landscapes', landscapeIds: ['fixture-landscape'] } },
+      ] }] },
+    }))
+    const withFlowCompilation = compileFwuOwlSemantics({ source: { ...source, logicalArtifacts: withFlow }, registryValue: value, curriculumProfile, packageProfile: profile })
+    const flowLandscape = withFlow.find(a => a.normalizationRole === 'canonical-landscape')!
+    const fixture = { releaseId: source.manifest.releaseId,
+      optionalFlow: { logicalId: flowLandscape.logicalId, normalizedBytes: flowLandscape.normalizedBytes,
+        normalizedSha256: flowLandscape.normalizedSha256,
+        document: registry.normalizeAndCover('canonical-landscape', flowLandscape.document as JsonValue, { retainDetails: false }).normalized,
+        segments: Object.fromEntries(FWU_OWL_SEGMENT_ORDER.map(id => [id, withFlowCompilation.segments[id].content.toString('utf8')])),
+      },
+      artifacts: artifacts.map(a => ({ role: a.normalizationRole, logicalId: a.logicalId,
+        normalizedBytes: a.normalizedBytes, normalizedSha256: a.normalizedSha256,
+        document: registry.normalizeAndCover(a.normalizationRole, a.document as JsonValue, { retainDetails: false }).normalized })),
+      segments: Object.fromEntries(FWU_OWL_SEGMENT_ORDER.map(id => [id, compiled.segments[id].content.toString('utf8')])),
+    }
+    const fixturePath = resolve(directory, 'fixture.json')
+    writeFileSync(fixturePath, JSON.stringify(fixture))
+    process.stdout.write(execFileSync('python3', [resolve(repositoryRoot, 'scripts/test_assessment_completion_fwu.py'), fixturePath], { cwd: repositoryRoot, encoding: 'utf8' }))
+  } finally { rmSync(directory, { recursive: true, force: true }) }
+  const bad = structuredClone(artifacts)
+  const badProfile = bad.find(a => a.normalizationRole === 'completion-profile')!
+  const changed = badProfile.document as JsonObject
+  ;((changed.definition as JsonObject).rules as JsonObject[])[0].assessmentGoalIds = ['missing-goal']
+  const normalized = compactCanonicalJsonBytes(registry.normalizeAndCover('completion-profile', changed, { retainDetails: false }).normalized)
+  badProfile.normalizedBytes = normalized.length
+  badProfile.normalizedSha256 = sha256(normalized)
+  expectThrows(() => compileFwuOwlSemantics({ source: sourceFixture(bad), registryValue: value, curriculumProfile, packageProfile: profile }), /Unresolved completion goal reference/u, 'Compiler accepted a dangling completion goal')
+}
+
+const testScratchRoot = () => {
+  assertEqual(packageScratchRoot(repositoryRoot), resolve(repositoryRoot, 'tmp'), 'Default scratch root changed')
+  const root = mkdtempSync(resolve(repositoryRoot, 'tmp/fwu-private-scratch-'))
+  try {
+    assertEqual(packageScratchRoot(repositoryRoot, root), root, 'Private scratch root refused')
+    assertPackageScratchPath(root, resolve(root, 'output/package.zip'))
+    expectThrows(() => assertPackageScratchPath(root, resolve(root, '../escape')), /strict descendant/u, 'Scratch traversal accepted')
+    expectThrows(() => assertPackageScratchPath(root, root), /strict descendant/u, 'Scratch root replacement accepted')
+    const real = resolve(root, 'physical')
+    mkdirSync(real, { mode: 0o700 })
+    mkdirSync(resolve(real, 'child'), { mode: 0o700 })
+    const link = resolve(root, 'symlink')
+    symlinkSync(real, link, 'dir')
+    expectThrows(() => packageScratchRoot(repositoryRoot, link), /symlink/u, 'Symlink scratch root accepted')
+    expectThrows(() => packageScratchRoot(repositoryRoot, `${link}/child`), /exist without symlink/u, 'Symlink scratch parent accepted')
+    expectThrows(() => assertPackageScratchPath(root, resolve(link, 'package.zip')), /Symlink/u, 'Symlink output parent accepted')
+    const dangling = resolve(root, 'dangling')
+    symlinkSync(resolve(root, 'absent'), dangling)
+    expectThrows(() => assertPackageScratchPath(root, dangling), /Symlink/u, 'Dangling output symlink accepted')
+    chmodSync(root, 0o755)
+    expectThrows(() => packageScratchRoot(repositoryRoot, root), /private owner-controlled/u, 'Shared scratch root accepted')
+    chmodSync(root, 0o700)
+    const existing = resolve(root, 'foreign.zip')
+    writeFileSync(existing, 'preserve existing bytes')
+    expectThrows(() => materializeFwuOwlCurriculumPackage({} as FwuOwlPackagePlan, existing, repositoryRoot, root), /refusing to replace/u, 'Scratch mode overwrote an existing target')
+    assertEqual(readFileSync(existing, 'utf8'), 'preserve existing bytes', 'Existing target changed')
+  } finally { rmSync(root, { recursive: true, force: true }) }
+}
+
+const testCompletionContentLicenses = () => {
+  const pending = { licenseExpression: null, provenanceClass: 'skillpilot-authored', redistributionStatus: 'review-required' } as const
+  const grant = { contentLicenseExpression: 'CC-BY-4.0', scope: 'skillpilot-owned-contributions' }
+  for (const role of ['completion-profile', 'completion-scope', 'completion-rule-review']) {
+    assertEqual(completionContentLicenseDecision(role, pending, grant), { licenseExpression: 'CC-BY-4.0', provenanceClass: 'skillpilot-authored', redistributionStatus: 'allowed' }, 'Own completion license lost')
+    expectThrows(() => completionContentLicenseDecision(role, { ...pending, provenanceClass: 'third-party' }, grant), /owner license grant/u, 'Third-party content was relicensed')
+    expectThrows(() => completionContentLicenseDecision(role, { ...pending, redistributionStatus: 'prohibited' }, grant), /owner license grant/u, 'A prohibited artifact was cleared')
+    expectThrows(() => completionContentLicenseDecision(role, pending, { ...grant, scope: 'all-material' }), /owner license grant/u, 'A broad license grant was accepted')
+  }
+  assertEqual(pending.licenseExpression, null, 'Open review record was changed')
+  assertEqual(completionContentLicenseDecision('source-index', pending, grant), pending, 'An existing source role was relicensed')
+}
+
 const tests: readonly [name: string, run: () => void][] = [
   ['field registry', testFieldRegistry],
   ['N-Triples and declarations', testNTriples],
   ['source path and integrity guards', testSourceGuards],
+  ['private scratch filesystem guards', testScratchRoot],
+  ['scoped completion content licenses', testCompletionContentLicenses],
   ['semantic compiler', testSemanticCompiler],
+  ['completion JSON and structural RDF roundtrip', testCompletionSemantics],
 ]
 
 for (const [name, run] of tests) {

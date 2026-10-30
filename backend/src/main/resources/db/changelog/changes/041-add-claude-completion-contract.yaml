@@ -1,0 +1,15 @@
+databaseChangeLog:
+  - changeSet:
+      id: 041-add-claude-completion-contract
+      author: skillpilot
+      changes:
+        - addColumn:
+            tableName: claude_v1_learning_session
+            columns:
+              - column:
+                  name: completion_contract
+                  type: VARCHAR(96)
+      rollback:
+        - dropColumn:
+            tableName: claude_v1_learning_session
+            columnName: completion_contract

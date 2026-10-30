@@ -6,6 +6,8 @@ This page is the entry point for developer-facing SkillPilot documentation. Keep
 
 - [Umsetzungsplan: Assessment-gated Completion](assessment-gated-completion-implementation-plan.md)
   Backend-Berechnung, Cockpit- und Coach-UX, Performance sowie schrittweise Abnahme des vorgeschlagenen Abschlussprofils.
+- [Assessment-gated Completion: technischer Pilot](assessment-gated-completion-pilot.md)
+  Implementierter lokaler Pilot, Aktivierung, private Navigation und reproduzierbare Prüfpfade.
 - [Dual Curriculum Package Implementation Status](dual-curriculum-package-implementation-status.md)
   Current checkpoint, quality evidence, and remaining roadmap for paired JSON-runtime and FWU-ontology releases.
 - [Documentation Guidelines](documentation-guidelines.md)

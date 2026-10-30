@@ -462,13 +462,14 @@ export const GoalCard: React.FC<GoalCardProps> = ({
 
   // Detect if Atomic Goal (no children)
   const isAtomic = !goal.contains || goal.contains.length === 0
+  const isMemoryGoal = goal.nodeKind === 'memory' || (goal.tags ?? []).some((tag) => tag === 'memorization' || tag.startsWith('srs-deck:'))
   const semanticKind = goal.semanticKind?.trim().toLowerCase()
   const isOrientationGoal = semanticKind
     ? semanticKind === 'orientation'
     : goal.tags?.some(tag => ['orientation', 'motivation'].includes(tag.trim().toLowerCase())) === true
   const mastered = isMastered(masteryValue)
-  const complete = isCompleteMastery(masteryValue)
-  const hasProgress = masteryValue > 0
+  const complete = isAtomic ? mastered : isCompleteMastery(masteryValue)
+  const hasProgress = !isAtomic && masteryValue > 0
   const canSetActive = Boolean(!readOnly && onSetActive && isAtomic && !mastered && (isFrontier || isActive))
   const activeActionLabel = isActive
     ? copy.activeActionReveal
@@ -1017,40 +1018,24 @@ export const GoalCard: React.FC<GoalCardProps> = ({
             )
           )}
 
-          {!readOnly && onMasteryChange && !isOrientationGoal && (
-            <div className="flex items-center gap-3">
-              <input
-                type="range"
-                min={0}
-                max={100}
-                step={10}
-                value={Math.round(masteryValue * 100)}
-                onChange={(event) => handleChange(goal.id, Number(event.target.value) / 100)}
-                className="w-full accent-sky-400"
-              />
-              <div className="flex gap-1">
+          {!readOnly && onMasteryChange && isAtomic && !isOrientationGoal && !isMemoryGoal && (
+            <div role="group" aria-label={localizedLanguage === 'en' ? 'Learning goal result' : 'Lernzielergebnis'} className="flex flex-wrap gap-2">
                 <button
                   type="button"
                   onClick={() => handleChange(goal.id, 0)}
-                  className="rounded-full border border-border-color px-2 py-1 text-[11px] hover:border-text-secondary text-text-secondary"
+                  aria-pressed={!mastered}
+                  className="min-h-10 rounded-full border border-border-color px-3 py-2 text-sm hover:border-text-secondary text-text-secondary"
                 >
-                  0%
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleChange(goal.id, 0.5)}
-                  className="rounded-full border border-border-color px-2 py-1 text-[11px] hover:border-text-secondary text-text-secondary"
-                >
-                  50%
+                  {localizedLanguage === 'en' ? 'Not yet achieved' : 'Noch nicht geschafft'}
                 </button>
                 <button
                   type="button"
                   onClick={() => handleChange(goal.id, 1)}
-                  className="rounded-full border border-border-color px-2 py-1 text-[11px] hover:border-text-secondary text-text-secondary"
+                  aria-pressed={mastered}
+                  className="min-h-10 rounded-full border border-border-color px-3 py-2 text-sm hover:border-text-secondary text-text-secondary"
                 >
-                  100%
+                  {localizedLanguage === 'en' ? 'Achieved' : 'Geschafft'}
                 </button>
-              </div>
             </div>
           )}
         </div>

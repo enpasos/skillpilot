@@ -31,6 +31,8 @@ from pathlib import Path
 from typing import Any, Callable, Iterable, Iterator, Mapping, Sequence
 
 from jsonschema import Draft202012Validator, FormatChecker
+import curriculum_completion_artifacts as completion_artifacts
+import curriculum_package_completion_contracts as completion_contracts
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -1060,7 +1062,12 @@ def schema_validator(path: Path) -> Draft202012Validator:
 
 
 def validate_schema(value: Any, schema_name: str, context: str) -> None:
-    validator = schema_validator(SCHEMA_FILES[schema_name])
+    if schema_name == "runtime-catalog" and isinstance(value, dict) and value.get("$schema") == completion_contracts.CATALOG_SCHEMA_ID:
+        validator = completion_artifacts.validators(REPO_ROOT)[completion_contracts.CATALOG_SCHEMA_ID]
+    elif schema_name == "build-profile" and isinstance(value, dict) and "completion" in value:
+        validator = schema_validator(CONTRACT_ROOT.parent / "v1.1/release-model-build-profile.schema.json")
+    else:
+        validator = schema_validator(SCHEMA_FILES[schema_name])
     errors = sorted(
         validator.iter_errors(value),
         key=lambda item: tuple(str(part) for part in item.absolute_path),
@@ -3058,6 +3065,10 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
     if expected_semantic_counts.get("total") != len(goals):
         raise CompilationError("Semantic-kind total does not match goals")
 
+    if "completion" in profile:
+        compiled_landscape = completion_artifacts.canonicalize_exported_target_sets(
+            REPO_ROOT, profile["completion"], source_landscape, compiled_landscape, normalizer, canonical_json_bytes)
+        goals = compiled_landscape["goals"]
     validate_schema(compiled_landscape, "compiled-landscape", "compiled Mathematik landscape")
     assert_program_unit_hierarchy_acyclic(compiled_landscape.get("programUnits", []))
 
@@ -3287,6 +3298,14 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
             raise CompilationError(f"Publication artifact schema mismatch for {role}")
         validate_schema(value, schema_name, f"publication artifact {role}")
         write_json(output_root, output_path, value)
+
+    completion_documents: list[tuple[str, str, str, Any]] = []
+    completion_inputs: list[dict[str, Any]] = []
+    if "completion" in profile:
+        completion_documents, completion_inputs = completion_artifacts.compile_documents(
+            REPO_ROOT, profile["completion"], source_landscape, compiled_landscape)
+        for _role, _identity, relative_path, document in completion_documents:
+            write_json(output_root, relative_path, document)
 
     copied_assessment_sources: list[dict[str, Any]] = []
     for source, target in sorted(assessment_sources.items()):
@@ -3737,9 +3756,9 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
     default_view_id = profile["compositionViews"]["defaultViewId"]
     default_offering_id = f"offering.{default_view_id}"
     runtime_catalog = {
-        "$schema": SCHEMA_IDS["runtime-catalog"],
-        "catalogVersion": "1.0",
-        "runtimeContractVersion": profile["contracts"]["runtimeContractVersion"],
+        "$schema": completion_contracts.CATALOG_SCHEMA_ID if completion_documents else SCHEMA_IDS["runtime-catalog"],
+        "catalogVersion": "1.1" if completion_documents else "1.0",
+        "runtimeContractVersion": "1.1" if completion_documents else profile["contracts"]["runtimeContractVersion"],
         "releaseBinding": {"releaseId": release_id, "contentDigest": ZERO_DIGEST},
         "rootLandscapeIds": [landscape_id],
         "landscapes": [
@@ -3811,6 +3830,12 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
             "examNodes",
         ],
     }
+    if completion_documents:
+        runtime_catalog["capabilities"].append(completion_contracts.CAPABILITY)
+        runtime_catalog["completionArtifacts"] = [
+            {"id": logical_id, "kind": document["artifactKind"], "artifactPath": path}
+            for _role, logical_id, path, document in completion_documents
+        ]
     validate_schema(runtime_catalog, "runtime-catalog", "runtime catalog")
     write_json(output_root, runtime_catalog_path, runtime_catalog)
 
@@ -3831,6 +3856,7 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
         for output_path, deck in compiled_decks
     )
     logical_documents.extend(publication_logical_documents)
+    logical_documents.extend(completion_documents)
     logical_records: list[dict[str, Any]] = []
     normalized_payloads: dict[tuple[str, str], bytes] = {}
     for role, logical_id, _path, value in logical_documents:
@@ -3868,7 +3894,7 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
     if (
         len(publication_logical_documents)
         != expected_content_counts["addedLogicalArtifacts"]
-        or len(logical_records) != expected_content_counts["totalLogicalArtifacts"]
+        or len(logical_records) != expected_content_counts["totalLogicalArtifacts"] + len(completion_documents)
         or len(binary_records) != expected_content_counts["binaryResources"]
     ):
         raise CompilationError(
@@ -3969,6 +3995,7 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
             "official-source-index",
             "source-goal-reference-index",
             "release-quality-evidence",
+            *completion_contracts.ROLES.values(),
         }:
             continue
         coverage_entries.append(
@@ -4016,6 +4043,8 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
         "assessmentSources": copied_assessment_sources,
         "pathRelocations": sorted(relocation_records, key=lambda item: (item["goalId"], item["field"])),
     }
+    if completion_documents:
+        build_inputs["completionArtifacts"] = completion_inputs
     write_json(output_root, "metadata/build-inputs.json", build_inputs)
 
     summary = {

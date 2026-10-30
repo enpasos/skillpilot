@@ -71,7 +71,8 @@ public final class CoachStateProjection {
                 Set.of(),
                 state.learningState(),
                 activeGoal,
-                preparedStateMachine);
+                preparedStateMachine,
+                state.levelCompletion());
     }
 
     public MasteryUpdateResponse project(MasteryUpdateResponse update) {
@@ -88,7 +89,8 @@ public final class CoachStateProjection {
                 Set.of(),
                 update.learningState(),
                 update.activeGoal(),
-                update.stateMachine()));
+                update.stateMachine(),
+                update.levelCompletion()));
         return new MasteryUpdateResponse(
                 update.saved(),
                 update.savedGoalId(),
@@ -98,7 +100,8 @@ public final class CoachStateProjection {
                 projected.learningState(),
                 projected.activeGoal(),
                 projected.stateMachine(),
-                projected.goals());
+                projected.goals(),
+                projected.levelCompletion());
     }
 
     public List<FrontierGoal> projectNavigationGoals(List<FrontierGoal> goals) {

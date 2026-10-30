@@ -38,6 +38,7 @@ public class ClaudeV1CapabilityService {
     private static final String KIND_RECALL_GRADING = "RECALL_GRADING";
     private static final String KIND_EXAM_EVALUATION = "EXAM_EVAL";
     private static final String KIND_MEMORY_PRACTICE_REVIEW = "MEMORY_REVIEW";
+    private static final String KIND_COMPLETION_RECEIPT = "COMPLETION_CONTRACT";
     private static final String FIELD_SEPARATOR = "|";
     private static final String CARD_SEPARATOR = ",";
     private static final int MAX_CAPABILITY_CHARACTERS = 16_384;
@@ -205,6 +206,22 @@ public class ClaudeV1CapabilityService {
                 Long.toString(stateVersion),
                 Long.toString(expiresAt.toEpochMilli()));
         return encryptAndEncode(payload);
+    }
+
+    /** Technical receipt only: no goal, grade or learner-state mutation is authorized. */
+    public String mintCompletionContractCapability(String learningSessionId, String bindingDigest) {
+        requireBindingValue(bindingDigest, "completion contract");
+        return encryptAndEncode(String.join(FIELD_SEPARATOR, KIND_COMPLETION_RECEIPT,
+                sessionBinding(learningSessionId), bindingDigest,
+                Long.toString(capabilityExpiresAt(learningSessionId).toEpochMilli())));
+    }
+
+    public void verifyCompletionContractCapability(String capability, String learningSessionId, String bindingDigest) {
+        requireBindingValue(bindingDigest, "completion contract");
+        String[] parts = verifyAndSplit(capability, KIND_COMPLETION_RECEIPT, 4);
+        requireNotExpired(parseInstant(parts[3]));
+        requireBinding(sessionBinding(learningSessionId), parts[1], "learning session");
+        requireBinding(bindingDigest, parts[2], "completion contract and curriculum generation");
     }
 
     /**

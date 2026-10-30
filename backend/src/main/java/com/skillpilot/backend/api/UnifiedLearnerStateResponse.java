@@ -15,5 +15,14 @@ public record UnifiedLearnerStateResponse(
         Set<CopySource> copySources,
         String learningState,
         FrontierGoal activeGoal,
-        StateMachineInfo stateMachine) {
+        StateMachineInfo stateMachine,
+        @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
+        LevelCompletionResponse levelCompletion) {
+    public UnifiedLearnerStateResponse(String skillpilotId, LandscapeSummary curriculum,
+            List<FrontierGoal> frontier, LearnerGoals goals, List<String> nextAllowedActions,
+            List<String> activeFilters, Set<CopySource> copySources, String learningState,
+            FrontierGoal activeGoal, StateMachineInfo stateMachine) {
+        this(skillpilotId, curriculum, frontier, goals, nextAllowedActions, activeFilters,
+                copySources, learningState, activeGoal, stateMachine, null);
+    }
 }

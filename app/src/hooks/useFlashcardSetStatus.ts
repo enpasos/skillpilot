@@ -99,44 +99,24 @@ export function useFlashcardSetStatus(
 
         const storageKey = `srs_state_${skillpilotId}_${goal.id}`
         const lastSyncKey = `srs_state_last_sync_${skillpilotId}_${goal.id}`
-        let srsState: Record<string, SrsReviewState> = {}
-        try {
-          const stored = localStorage.getItem(storageKey)
-          if (stored) srsState = JSON.parse(stored)
-        } catch {
-          srsState = {}
-        }
-
         const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
         const syncUrl = apiBase
           ? `${apiBase}/api/ui/learners/${skillpilotId}/client-state/${goal.id}`
           : `/api/ui/learners/${skillpilotId}/client-state/${goal.id}`
-        try {
-          const stateResponse = await fetch(syncUrl, { cache: 'no-store' })
-          if (stateResponse.ok) {
-            const snapshot = await stateResponse.json() as ClientStateSnapshot
-            const serverState = snapshot?.srsState
-            if (serverState && Object.keys(serverState).length > 0) {
-              const serverUpdatedAt = snapshot.updatedAt ? Date.parse(snapshot.updatedAt) : 0
-              const localLast = localStorage.getItem(lastSyncKey)
-              const localLastAt = localLast ? Date.parse(localLast) : 0
-              if (
-                Object.keys(srsState).length === 0
-                || !serverUpdatedAt
-                || !localLastAt
-                || serverUpdatedAt > localLastAt
-              ) {
-                srsState = serverState
-                localStorage.setItem(storageKey, JSON.stringify(serverState))
-                if (snapshot.updatedAt) {
-                  localStorage.setItem(lastSyncKey, String(snapshot.updatedAt))
-                }
-              }
-            }
-          }
-        } catch {
-          // Local state is still useful when server state cannot be loaded.
+        const stateResponse = await fetch(syncUrl, { cache: 'no-store' })
+        if (!stateResponse.ok) {
+          if (!cancelled) setStatus(null)
+          return
         }
+        const snapshot = await stateResponse.json() as ClientStateSnapshot
+        if (!snapshot.srsState) {
+          if (!cancelled) setStatus(null)
+          return
+        }
+        const srsState = snapshot.srsState
+        localStorage.setItem(storageKey, JSON.stringify(srsState))
+        if (snapshot.updatedAt) localStorage.setItem(lastSyncKey, snapshot.updatedAt)
+        else localStorage.removeItem(lastSyncKey)
 
         const now = Date.now()
         let due = 0

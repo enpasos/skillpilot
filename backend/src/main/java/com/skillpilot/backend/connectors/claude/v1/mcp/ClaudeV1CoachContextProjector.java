@@ -5,6 +5,7 @@ import com.skillpilot.backend.ai.CoachToolFacade;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.GoalSourceLink;
 import com.skillpilot.backend.api.LearnerGoals;
+import com.skillpilot.backend.api.LevelCompletionResponse;
 import com.skillpilot.backend.api.LearnerPlanTodayStatus;
 import com.skillpilot.backend.service.learningplan.UnifiedLearningPlanStatusFormatter;
 import com.skillpilot.backend.api.MasteryUpdateResponse;
@@ -120,7 +121,8 @@ public class ClaudeV1CoachContextProjector {
                 Set.of(),
                 projectedUpdate.learningState(),
                 projectedUpdate.activeGoal(),
-                projectedUpdate.stateMachine());
+                projectedUpdate.stateMachine(),
+                projectedUpdate.levelCompletion());
         return projectContext(skillpilotId, stateVersion, language, projectedState, true);
     }
 
@@ -131,15 +133,26 @@ public class ClaudeV1CoachContextProjector {
             UnifiedLearnerStateResponse projectedState,
             boolean suppressCompetingFrontier) {
         Map<String, Object> context = new LinkedHashMap<>();
-        FrontierGoal activeGoal = projectedState.activeGoal();
+        LevelCompletionResponse completion = projectedState.levelCompletion();
+        boolean completionRoute = ClaudeV1CompletionChoices.active(completion);
+        boolean unsupportedCompletion = completionRoute && !ClaudeV1CompletionChoices.supported();
+        FrontierGoal activeGoal = unsupportedCompletion ? null : projectedState.activeGoal();
         context.put("stateVersion", stateVersion);
         context.put("language", language);
+        if (completion != null) context.put("levelCompletion", ClaudeV1CompletionChoices.project(completion, language));
         if (activeGoal != null && "atomic".equals(activeGoal.type())
                 && !ClaudeV1McpContractAdapter.isMemoryGoal(activeGoal)) {
             context.put("toolPreparationInstruction", TOOL_PREPARATION_INSTRUCTION);
         }
         Map<String, Object> dailyPlan = projectLearningPlanToday(
                 coachToolFacade.getLearningPlanTodayStatus(skillpilotId, language), activeGoal != null, language);
+        if (completionRoute) {
+            dailyPlan = new LinkedHashMap<>(dailyPlan);
+            dailyPlan.put("followLearningPlans", false);
+            dailyPlan.put("resumeAvailable", false);
+            dailyPlan.put("guidance", Map.of("state", "unavailable", "instruction",
+                    "The selected completion route owns navigation. Use only levelCompletion choices; do not resume the regular plan."));
+        }
         context.put("learningPlanToday", dailyPlan);
         boolean guidedPlan = Boolean.TRUE.equals(dailyPlan.get("followLearningPlans"));
         context.put("curriculum", projectCurriculum(projectedState.curriculum()));
@@ -168,6 +181,10 @@ public class ClaudeV1CoachContextProjector {
             context.put("stateMachine", Map.of(
                     "state", "learningPlan",
                     "requiredAction", guidance.get("state")));
+        }
+        if (completionRoute && activeGoal == null) {
+            context.put("stateMachine", Map.of("state", "levelCompletion", "requiredAction",
+                    unsupportedCompletion ? "completionUnavailable" : "chooseCompletionRoute"));
         }
 
         context.put("activeGoal", formatGoal(activeGoal));
@@ -208,7 +225,7 @@ public class ClaudeV1CoachContextProjector {
 
         List<FrontierGoal> frontier = projectedState.frontier();
         String activeGoalId = activeGoal == null ? null : activeGoal.id();
-        context.put("frontier", frontier == null || guidedPlan
+        context.put("frontier", frontier == null || guidedPlan || completionRoute
                 || (suppressCompetingFrontier && activeGoalId != null)
                 ? List.of()
                 : frontier.stream()

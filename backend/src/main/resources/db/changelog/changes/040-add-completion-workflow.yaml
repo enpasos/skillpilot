@@ -1,0 +1,15 @@
+databaseChangeLog:
+  - changeSet:
+      id: 040-add-completion-workflow
+      author: skillpilot
+      changes:
+        - addColumn:
+            tableName: learner
+            columns:
+              - column:
+                  name: completion_workflow
+                  type: TEXT
+      rollback:
+        - dropColumn:
+            tableName: learner
+            columnName: completion_workflow

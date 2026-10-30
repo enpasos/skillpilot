@@ -510,13 +510,14 @@ interaction contract above. SRS/memorization goals (`srs-deck:*` /
 memory workflow; a coach must not manually assign it. Card scheduling and
 review data describe the learning process, not additional goal-result states.
 
-**Implementation boundary (29 October 2026):** the current API/storage still
-accept numeric intermediate values, and ordinary goal controls still expose a
-slider and a 50% option. These are implementation discrepancies, not the target
-model. The current prerequisite threshold and SRS aggregation discrepancies
-are documented in
-`docs/concept/runtime-workflows/learning-workflow.md`. This documentation
-correction does not migrate existing data or change runtime behavior.
+**Implementation status (30 October 2026):** new general mastery writes enforce
+`0` or `1`, and ordinary atomic goal controls offer binary choices. Historical
+numeric rows remain readable through the shared legacy threshold `>= 0.9`;
+this does not introduce partial outcomes or round existing database values.
+The technical completion pilot, protected card synchronization and import
+boundaries are documented in `docs/dev/assessment-gated-completion-pilot.md`.
+Goal-type workflow details remain in
+`docs/concept/runtime-workflows/learning-workflow.md`.
 
 The intended use is:
 

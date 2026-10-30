@@ -16,6 +16,8 @@ import {
 import { basename, dirname, isAbsolute, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { crc32 } from 'node:zlib'
+import { curriculumContractLocation } from './curriculumPackageContractPaths'
+import { assertPackageScratchPath, packageScratchRoot } from './curriculumPackageScratchRoot'
 
 export type JsonValue = null | boolean | number | string | JsonValue[] | JsonObject
 export type JsonObject = { [key: string]: JsonValue }
@@ -109,6 +111,7 @@ export type SourceBinaryResource = {
   provenanceClass:
     | 'skillpilot-authored-deterministic-render'
     | 'ai-generated-curated'
+    | 'ai-assisted-repository-native'
     | 'user-provided-generated-claim'
     | 'third-party'
   redistributionStatus: 'allowed' | 'review-required' | 'prohibited'
@@ -335,13 +338,14 @@ const mediaTypeForSupport = (value: string): SourceReleaseSupport['mediaType'] =
   return fail(`Unsupported release-support media type: ${value}`)
 }
 
-const supportIdForSchema = (targetPath: string) => basename(targetPath).replace(/\.schema\.json$/u, '')
+const supportIdForSchema = (targetPath: string) => targetPath.replace(/^schemas\//u, '').replace(/\//gu, '-').replace(/\.schema\.json$/u, '')
 
 const assertSourceManifest = (manifest: SourceManifest) => {
+  const completion = manifest.releaseProfile === 'full-standalone-completion-v1'
   if (
     manifest.packageFormatVersion !== '1.0'
-    || manifest.runtimeContractVersion !== '1.0'
-    || manifest.releaseProfile !== 'full-standalone-v1'
+    || manifest.runtimeContractVersion !== (completion ? '1.1' : '1.0')
+    || !['full-standalone-v1', 'full-standalone-completion-v1'].includes(manifest.releaseProfile)
     || manifest.variant !== 'json'
     || manifest.releaseId !== `${manifest.packageId}@${manifest.packageVersion}`
     || !CONTENT_DIGEST_PATTERN.test(manifest.contentDigest)
@@ -400,16 +404,19 @@ const loadSourceFromRoot = (
   const semanticContentIndex = readJson<SemanticContentIndex>(semanticContentIndexPath, 'source semantic-content-index')
   if (
     semanticContentIndex.contentDigest !== manifest.contentDigest
-    || semanticContentIndex.fieldSemanticsRegistry.id !== 'skillpilot-fwu-field-semantics-v1'
+    || semanticContentIndex.fieldSemanticsRegistry.id !== (manifest.releaseProfile === 'full-standalone-completion-v1'
+      ? 'skillpilot-fwu-field-semantics-completion-v1' : 'skillpilot-fwu-field-semantics-v1')
+    || semanticContentIndex.fieldSemanticsRegistry.id !== manifest.contractBindings.fieldSemanticsRegistry?.id
+    || semanticContentIndex.fieldSemanticsRegistry.sha256 !== manifest.contractBindings.fieldSemanticsRegistry?.sha256
   ) fail('Source semantic-content-index identity differs from the manifest.')
 
-  const logicalById = new Map(semanticContentIndex.logicalArtifacts.map((record) => [record.logicalId, record]))
+  const logicalById = new Map(semanticContentIndex.logicalArtifacts.map((record) => [`${record.role}\0${record.logicalId}`, record]))
   const logicalArtifacts = manifest.files
     .filter((record): record is SourceManifestFile & {
       semanticBinding: Extract<SourceSemanticBinding, { kind: 'logical-artifact' }>
     } => record.semanticBinding.kind === 'logical-artifact')
     .map((record): SourceLogicalArtifact => {
-      const indexRecord = logicalById.get(record.semanticBinding.logicalId)
+      const indexRecord = logicalById.get(`${record.role}\0${record.semanticBinding.logicalId}`)
         ?? fail(`Logical source artifact is absent from semantic-content-index: ${record.semanticBinding.logicalId}`)
       const sourcePath = verifyFileRecord(rootPath, record)
       return {
@@ -467,6 +474,7 @@ const loadSourceFromRoot = (
       if (
         record.provenanceClass !== 'skillpilot-authored-deterministic-render'
         && record.provenanceClass !== 'ai-generated-curated'
+        && record.provenanceClass !== 'ai-assisted-repository-native'
         && record.provenanceClass !== 'user-provided-generated-claim'
         && record.provenanceClass !== 'third-party'
       ) fail(`Unsupported binary provenance class: ${record.provenanceClass}`)
@@ -499,13 +507,13 @@ const loadSourceFromRoot = (
     ?? fail('Source JSON release-profile binding lacks a file record.')
   const releaseProfileDocument = readJson<JsonObject>(sourceFilePath(rootPath, releaseBinding.path), 'source JSON release profile')
   const trustedContractSchemas = releaseProfileDocument.trustedContractSchemas
-  if (releaseProfileDocument.profileId !== 'full-standalone-v1' || !Array.isArray(trustedContractSchemas)) {
-    fail('Source JSON release profile is not full-standalone-v1.')
+  if (releaseProfileDocument.profileId !== manifest.releaseProfile || !Array.isArray(trustedContractSchemas)) {
+    fail('Source JSON release profile differs from the manifest.')
   }
   const releaseSupport: SourceReleaseSupport[] = (trustedContractSchemas as JsonValue[]).map((value, index) => {
     const binding = jsonObject(value, `trusted source JSON schema ${index}`)
     if (typeof binding.id !== 'string' || typeof binding.sha256 !== 'string') fail('Source JSON schema binding is malformed.')
-    const targetPath = `schemas/${(binding.id as string).split('/').at(-1)}`
+    const targetPath = curriculumContractLocation(binding.id as string).packagePath
     const record = recordByPath.get(targetPath) ?? fail(`Source JSON schema file record is missing: ${targetPath}`)
     if (record.sha256 !== binding.sha256 || record.role !== 'schema') fail(`Source JSON schema trust binding differs: ${targetPath}`)
     return {
@@ -522,10 +530,11 @@ const loadSourceFromRoot = (
       redistributionStatus: record.redistributionStatus === 'allowed' ? 'allowed' : 'review-required',
     }
   })
-  if (releaseSupport.length !== 22) fail(`Source JSON release profile must bind exactly 22 schemas, got ${releaseSupport.length}.`)
+  const expectedSchemaCount = manifest.releaseProfile === 'full-standalone-completion-v1' ? 26 : 22
+  if (releaseSupport.length !== expectedSchemaCount) fail(`Source JSON release profile must bind exactly ${expectedSchemaCount} schemas, got ${releaseSupport.length}.`)
   releaseSupport.push({
     supportType: 'json-release-profile',
-    supportId: 'full-standalone-v1',
+    supportId: manifest.releaseProfile,
     targetPath: releaseBinding.path,
     path: `support/json/${releaseBinding.path}`,
     sourcePath: verifyFileRecord(rootPath, releaseProfileRecord),
@@ -625,14 +634,15 @@ export const prepareValidatedSourceJsonPackage = (
     workDirectory: string
     sourceRoot?: string
     validatorPath?: string
+    contractsDirectory?: string
+    scratchRoot?: string
   },
 ): PreparedSourceJsonPackage => {
   const resolvedZip = resolve(zipPath)
   const workDirectory = resolve(options.workDirectory)
-  if (!isStrictDescendant(resolve(repositoryRoot, 'tmp'), workDirectory)) {
-    fail(`Source preparation work directory must be below ${resolve(repositoryRoot, 'tmp')}.`)
-  }
-  assertNoSymlinkComponents(repositoryRoot, workDirectory, true)
+  const scratchBase = packageScratchRoot(repositoryRoot, options.scratchRoot)
+  assertPackageScratchPath(scratchBase, workDirectory)
+  assertNoSymlinkComponents(options.scratchRoot ? scratchBase : repositoryRoot, workDirectory, true)
   mkdirSync(workDirectory, { recursive: true, mode: 0o700 })
   const zipBefore = fileIntegrity(resolvedZip)
   const token = `${process.pid}-${randomBytes(12).toString('hex')}`
@@ -645,12 +655,13 @@ export const prepareValidatedSourceJsonPackage = (
       '-B', validatorPath,
       '--zip', resolvedZip,
       '--report', validationReportPath,
+      ...(options.contractsDirectory ? ['--contracts-dir', resolve(repositoryRoot, options.contractsDirectory)] : []),
     ], { cwd: repositoryRoot, stdio: ['ignore', 'pipe', 'pipe'], maxBuffer: 16 * 1024 * 1024 })
     const validationReport = readJson<JsonObject>(validationReportPath, 'source JSON validation report')
     let rootPath: string
     if (options.sourceRoot) {
       rootPath = resolve(options.sourceRoot)
-      assertNoSymlinkComponents(repositoryRoot, rootPath, false)
+      assertNoSymlinkComponents(options.scratchRoot ? scratchBase : repositoryRoot, rootPath, false)
     } else {
       mkdirSync(stagePath, { recursive: false, mode: 0o700 })
       ownsStage = true

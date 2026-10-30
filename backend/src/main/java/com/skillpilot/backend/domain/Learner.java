@@ -83,6 +83,21 @@ public class Learner {
     @Column(name = "coach_state_revision", nullable = false)
     private long coachStateRevision;
 
+    /** Server-private, ephemeral completion navigation; excluded from portable backups. */
+    @JsonIgnore
+    @Column(name = "completion_workflow", columnDefinition = "TEXT")
+    private String completionWorkflow;
+
+    @JsonIgnore
+    public String getCompletionWorkflow() {
+        return completionWorkflow;
+    }
+
+    @JsonIgnore
+    public void setCompletionWorkflow(String completionWorkflow) {
+        this.completionWorkflow = completionWorkflow;
+    }
+
     @jakarta.persistence.ElementCollection(fetch = jakarta.persistence.FetchType.EAGER)
     @jakarta.persistence.CollectionTable(name = "learner_copy_sources", joinColumns = @jakarta.persistence.JoinColumn(name = "learner_id"))
     private java.util.Set<CopySource> copySources = new java.util.HashSet<>();

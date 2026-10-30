@@ -1,5 +1,8 @@
 # Umsetzungsplan: Assessment-gated Completion
 
+Aktueller Implementierungs- und Betriebsstand:
+[technischer Pilot](assessment-gated-completion-pilot.md).
+
 Stand: 30. Oktober 2026. Grundlage ist der Code bei `8aee10595` und das
 [fachliche Konzept](../concept/skill-graph/assessment-gated-completion.md).
 Dieses Dokument beschreibt die empfohlene Implementierung einschließlich

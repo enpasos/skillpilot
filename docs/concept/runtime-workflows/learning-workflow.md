@@ -195,18 +195,20 @@ results are card-level process data, not additional outcome states for the
 memorization goal. The documented/current recall-condition discrepancy is
 listed in [Node Types](../skill-graph/node-types.md#due-and-mastery-semantics).
 
-**Implementation discrepancy (checked 29 October 2026).** The binary outcome
-contract above is not yet enforced throughout the current code.
+**Implementation status (checked 30 October 2026).** New general mastery writes
+and ordinary atomic goal controls enforce the binary outcome contract.
 [Mastery.java](https://github.com/enpasos/skillpilot/blob/main/backend/src/main/java/com/skillpilot/backend/domain/Mastery.java)
-uses a `double` field;
+retains its `double` storage field for historical compatibility;
 [LearnerService](https://github.com/enpasos/skillpilot/blob/main/backend/src/main/java/com/skillpilot/backend/service/LearnerService.java)
-accepts intermediate values between `0.0` and `1.0` and uses `0.9` thresholds
-in several decisions;
+accepts only `0.0` or `1.0` for new general mastery updates;
 [GoalCard](https://github.com/enpasos/skillpilot/blob/main/app/src/components/GoalCard.tsx)
-still exposes a slider and a 50% button in its editable non-orientation view.
-Those are implementation discrepancies to reconcile with the binary contract,
-not additional intended mastery states. This documentation correction does
-not migrate existing data or claim that those runtime paths have changed.
+offers binary choices for editable ordinary atomic goals. Historical numeric
+rows use the shared `>= 0.9` read threshold without acquiring an additional
+outcome tier or being rounded in the database. Card synchronization cannot
+create verified recall, and signed imports preserve authoritative card results.
+The [technical completion pilot](../../dev/assessment-gated-completion-pilot.md)
+documents the implementation and its local evidence; productive activation and
+real-host acceptance remain separate steps.
 
 When mastery changes:
 

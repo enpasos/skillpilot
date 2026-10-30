@@ -1,0 +1,1869 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Synthetic compiler/evaluator conformance only. No fixture represents a reviewed production waiver rule.",
+  "cases": [
+    {
+      "id": "chain-waived-after-pass",
+      "curriculumGeneration": "fixture-generation",
+      "graph": [
+        {
+          "id": "Q",
+          "title": "Q",
+          "type": "atomic",
+          "nodeKind": "exam",
+          "requires": [
+            "B"
+          ],
+          "contains": []
+        },
+        {
+          "id": "B",
+          "title": "B",
+          "type": "atomic",
+          "nodeKind": "tutor",
+          "requires": [
+            "A"
+          ],
+          "contains": []
+        },
+        {
+          "id": "A",
+          "title": "A",
+          "type": "atomic",
+          "nodeKind": "tutor",
+          "requires": [],
+          "contains": []
+        }
+      ],
+      "targetGoalIds": [
+        "Q",
+        "B",
+        "A"
+      ],
+      "level2TargetGoalIds": [
+        "Q",
+        "B",
+        "A"
+      ],
+      "profile": {
+        "schemaVersion": 1,
+        "id": "fixture-profile",
+        "revision": "fixture-v1",
+        "title": {
+          "de": "Synthetischer Testabschnitt",
+          "en": "Synthetic test scope"
+        },
+        "levelScopeRef": "fixture-scope",
+        "review": {
+          "reference": "synthetic-fixture-only",
+          "scopeRevision": "fixture-scope-v1",
+          "taskRevision": "fixture-task-v1",
+          "rubricRevision": "fixture-rubric-v1"
+        },
+        "rules": [
+          {
+            "ruleId": "waive-preparation",
+            "assessmentGoalIds": [
+              "Q"
+            ],
+            "waivableGoalIds": [
+              "A",
+              "B"
+            ],
+            "rationale": "Synthetic policy for a mathematical fixture only; not an approved curriculum rule.",
+            "reviewRef": "synthetic-fixture-only"
+          }
+        ]
+      },
+      "masteredGoalIds": [
+        "Q"
+      ],
+      "expected": {
+        "waivedGoalIds": [
+          "A",
+          "B"
+        ],
+        "pendingTargetGoalIds": [],
+        "complete": true
+      }
+    },
+    {
+      "id": "open-intermediate-consumer-blocks",
+      "curriculumGeneration": "fixture-generation",
+      "graph": [
+        {
+          "id": "Q",
+          "title": "Q",
+          "type": "atomic",
+          "nodeKind": "exam",
+          "requires": [
+            "B"
+          ],
+          "contains": []
+        },
+        {
+          "id": "B",
+          "title": "B",
+          "type": "atomic",
+          "nodeKind": "tutor",
+          "requires": [
+            "A"
+          ],
+          "contains": []
+        },
+        {
+          "id": "A",
+          "title": "A",
+          "type": "atomic",
+          "nodeKind": "tutor",
+          "requires": [],
+          "contains": []
+        }
+      ],
+      "targetGoalIds": [
+        "Q",
+        "B",
+        "A"
+      ],
+      "level2TargetGoalIds": [
+        "Q",
+        "B",
+        "A"
+      ],
+      "profile": {
+        "schemaVersion": 1,
+        "id": "fixture-profile",
+        "revision": "fixture-v1",
+        "title": {
+          "de": "Synthetischer Testabschnitt",
+          "en": "Synthetic test scope"
+        },
+        "levelScopeRef": "fixture-scope",
+        "review": {
+          "reference": "synthetic-fixture-only",
+          "scopeRevision": "fixture-scope-v1",
+          "taskRevision": "fixture-task-v1",
+          "rubricRevision": "fixture-rubric-v1"
+        },
+        "rules": [
+          {
+            "ruleId": "waive-preparation",
+            "assessmentGoalIds": [
+              "Q"
+            ],
+            "waivableGoalIds": [
+              "A"
+            ],
+            "rationale": "Synthetic policy for a mathematical fixture only; not an approved curriculum rule.",
+            "reviewRef": "synthetic-fixture-only"
+          }
+        ]
+      },
+      "masteredGoalIds": [
+        "Q"
+      ],
+      "expected": {
+        "waivedGoalIds": [],
+        "pendingTargetGoalIds": [
+          "A",
+          "B"
+        ],
+        "complete": false
+      }
+    },
+    {
+      "id": "mastered-intermediate-does-not-hide-open-consumer",
+      "curriculumGeneration": "fixture-generation",
+      "graph": [
+        {
+          "id": "Q",
+          "title": "Q",
+          "type": "atomic",
+          "nodeKind": "exam",
+          "requires": [
+            "A"
+          ],
+          "contains": []
+        },
+        {
+          "id": "C",
+          "title": "C",
+          "type": "atomic",
+          "nodeKind": "tutor",
+          "requires": [
+            "B"
+          ],
+          "contains": []
+        },
+        {
+          "id": "B",
+          "title": "B",
+          "type": "atomic",
+          "nodeKind": "tutor",
+          "requires": [
+            "A"
+          ],
+          "contains": []
+        },
+        {
+          "id": "A",
+          "title": "A",
+          "type": "atomic",
+          "nodeKind": "tutor",
+          "requires": [],
+          "contains": []
+        }
+      ],
+      "targetGoalIds": [
+        "Q",
+        "C",
+        "B",
+        "A"
+      ],
+      "level2TargetGoalIds": [
+        "Q",
+        "C",
+        "B",
+        "A"
+      ],
+      "profile": {
+        "schemaVersion": 1,
+        "id": "fixture-profile",
+        "revision": "fixture-v1",
+        "title": {
+          "de": "Synthetischer Testabschnitt",
+          "en": "Synthetic test scope"
+        },
+        "levelScopeRef": "fixture-scope",
+        "review": {
+          "reference": "synthetic-fixture-only",
+          "scopeRevision": "fixture-scope-v1",
+          "taskRevision": "fixture-task-v1",
+          "rubricRevision": "fixture-rubric-v1"
+        },
+        "rules": [
+          {
+            "ruleId": "waive-preparation",
+            "assessmentGoalIds": [
+              "Q"
+            ],
+            "waivableGoalIds": [
+              "A"
+            ],
+            "rationale": "Synthetic policy for a mathematical fixture only; not an approved curriculum rule.",
+            "reviewRef": "synthetic-fixture-only"
+          }
+        ]
+      },
+      "masteredGoalIds": [
+        "Q",
+        "B"
+      ],
+      "expected": {
+        "waivedGoalIds": [],
+        "pendingTargetGoalIds": [
+          "A",
+          "C"
+        ],
+        "complete": false
+      }
+    },
+    {
+      "id": "supporting-intermediate-remains-support",
+      "curriculumGeneration": "fixture-generation",
+      "graph": [
+        {
+          "id": "Q",
+          "title": "Q",
+          "type": "atomic",
+          "nodeKind": "exam",
+          "requires": [
+            "B"
+          ],
+          "contains": []
+        },
+        {
+          "id": "B",
+          "title": "B",
+          "type": "atomic",
+          "nodeKind": "tutor",
+          "requires": [
+            "A"
+          ],
+          "contains": []
+        },
+        {
+          "id": "A",
+          "title": "A",
+          "type": "atomic",
+          "nodeKind": "tutor",
+          "requires": [],
+          "contains": []
+        }
+      ],
+      "targetGoalIds": [
+        "Q",
+        "A"
+      ],
+      "level2TargetGoalIds": [
+        "Q",
+        "A"
+      ],
+      "profile": {
+        "schemaVersion": 1,
+        "id": "fixture-profile",
+        "revision": "fixture-v1",
+        "title": {
+          "de": "Synthetischer Testabschnitt",
+          "en": "Synthetic test scope"
+        },
+        "levelScopeRef": "fixture-scope",
+        "review": {
+          "reference": "synthetic-fixture-only",
+          "scopeRevision": "fixture-scope-v1",
+          "taskRevision": "fixture-task-v1",
+          "rubricRevision": "fixture-rubric-v1"
+        },
+        "rules": [
+          {
+            "ruleId": "waive-preparation",
+            "assessmentGoalIds": [
+              "Q"
+            ],
+            "waivableGoalIds": [
+              "A"
+            ],
+            "rationale": "Synthetic policy for a mathematical fixture only; not an approved curriculum rule.",
+            "reviewRef": "synthetic-fixture-only"
+          }
+        ]
+      },
+      "masteredGoalIds": [
+        "Q"
+      ],
+      "expected": {
+        "waivedGoalIds": [],
+        "pendingTargetGoalIds": [
+          "A"
+        ],
+        "complete": false
+      }
+    },
+    {
+      "id": "protected-support-not-a-new-target",
+      "curriculumGeneration": "fixture-generation",
+      "graph": [
+        {
+          "id": "Q",
+          "title": "Q",
+          "type": "atomic",
+          "nodeKind": "exam",
+          "requires": [
+            "A"
+          ],
+          "contains": []
+        },
+        {
+          "id": "A",
+          "title": "A",
+          "type": "atomic",
+          "nodeKind": "tutor",
+          "requires": [
+            "M"
+          ],
+          "contains": []
+        },
+        {
+          "id": "M",
+          "title": "M",
+          "type": "atomic",
+          "nodeKind": "memory",
+          "requires": [],
+          "contains": [],
+          "tags": [
+            "memorization"
+          ]
+        }
+      ],
+      "targetGoalIds": [
+        "Q",
+        "A"
+      ],
+      "level2TargetGoalIds": [
+        "Q",
+        "A"
+      ],
+      "profile": {
+        "schemaVersion": 1,
+        "id": "fixture-profile",
+        "revision": "fixture-v1",
+        "title": {
+          "de": "Synthetischer Testabschnitt",
+          "en": "Synthetic test scope"
+        },
+        "levelScopeRef": "fixture-scope",
+        "review": {
+          "reference": "synthetic-fixture-only",
+          "scopeRevision": "fixture-scope-v1",
+          "taskRevision": "fixture-task-v1",
+          "rubricRevision": "fixture-rubric-v1"
+        },
+        "rules": [
+          {
+            "ruleId": "waive-preparation",
+            "assessmentGoalIds": [
+              "Q"
+            ],
+            "waivableGoalIds": [
+              "A"
+            ],
+            "rationale": "Synthetic policy for a mathematical fixture only; not an approved curriculum rule.",
+            "reviewRef": "synthetic-fixture-only"
+          }
+        ]
+      },
+      "masteredGoalIds": [
+        "Q"
+      ],
+      "expected": {
+        "waivedGoalIds": [
+          "A"
+        ],
+        "pendingTargetGoalIds": [],
+        "complete": true
+      }
+    },
+    {
+      "id": "shared-prerequisite-awaits-second-exam",
+      "curriculumGeneration": "fixture-generation",
+      "graph": [
+        {
+          "id": "Q",
+          "title": "Q",
+          "type": "atomic",
+          "nodeKind": "exam",
+          "requires": [
+            "A"
+          ],
+          "contains": []
+        },
+        {
+          "id": "Q2",
+          "title": "Q2",
+          "type": "atomic",
+          "nodeKind": "exam",
+          "requires": [
+            "A"
+          ],
+          "contains": []
+        },
+        {
+          "id": "A",
+          "title": "A",
+          "type": "atomic",
+          "nodeKind": "tutor",
+          "requires": [],
+          "contains": []
+        }
+      ],
+      "targetGoalIds": [
+        "Q",
+        "Q2",
+        "A"
+      ],
+      "level2TargetGoalIds": [
+        "Q",
+        "Q2",
+        "A"
+      ],
+      "profile": {
+        "schemaVersion": 1,
+        "id": "fixture-profile",
+        "revision": "fixture-v1",
+        "title": {
+          "de": "Synthetischer Testabschnitt",
+          "en": "Synthetic test scope"
+        },
+        "levelScopeRef": "fixture-scope",
+        "review": {
+          "reference": "synthetic-fixture-only",
+          "scopeRevision": "fixture-scope-v1",
+          "taskRevision": "fixture-task-v1",
+          "rubricRevision": "fixture-rubric-v1"
+        },
+        "rules": [
+          {
+            "ruleId": "waive-preparation",
+            "assessmentGoalIds": [
+              "Q"
+            ],
+            "waivableGoalIds": [
+              "A"
+            ],
+            "rationale": "Synthetic policy for a mathematical fixture only; not an approved curriculum rule.",
+            "reviewRef": "synthetic-fixture-only"
+          }
+        ]
+      },
+      "masteredGoalIds": [
+        "Q"
+      ],
+      "expected": {
+        "waivedGoalIds": [],
+        "pendingTargetGoalIds": [
+          "A",
+          "Q2"
+        ],
+        "complete": false
+      }
+    },
+    {
+      "id": "shared-prerequisite-both-consumers-done",
+      "curriculumGeneration": "fixture-generation",
+      "graph": [
+        {
+          "id": "Q",
+          "title": "Q",
+          "type": "atomic",
+          "nodeKind": "exam",
+          "requires": [
+            "A"
+          ],
+          "contains": []
+        },
+        {
+          "id": "Q2",
+          "title": "Q2",
+          "type": "atomic",
+          "nodeKind": "exam",
+          "requires": [
+            "A"
+          ],
+          "contains": []
+        },
+        {
+          "id": "A",
+          "title": "A",
+          "type": "atomic",
+          "nodeKind": "tutor",
+          "requires": [],
+          "contains": []
+        }
+      ],
+      "targetGoalIds": [
+        "Q",
+        "Q2",
+        "A"
+      ],
+      "level2TargetGoalIds": [
+        "Q",
+        "Q2",
+        "A"
+      ],
+      "profile": {
+        "schemaVersion": 1,
+        "id": "fixture-profile",
+        "revision": "fixture-v1",
+        "title": {
+          "de": "Synthetischer Testabschnitt",
+          "en": "Synthetic test scope"
+        },
+        "levelScopeRef": "fixture-scope",
+        "review": {
+          "reference": "synthetic-fixture-only",
+          "scopeRevision": "fixture-scope-v1",
+          "taskRevision": "fixture-task-v1",
+          "rubricRevision": "fixture-rubric-v1"
+        },
+        "rules": [
+          {
+            "ruleId": "waive-preparation",
+            "assessmentGoalIds": [
+              "Q"
+            ],
+            "waivableGoalIds": [
+              "A"
+            ],
+            "rationale": "Synthetic policy for a mathematical fixture only; not an approved curriculum rule.",
+            "reviewRef": "synthetic-fixture-only"
+          }
+        ]
+      },
+      "masteredGoalIds": [
+        "Q",
+        "Q2"
+      ],
+      "expected": {
+        "waivedGoalIds": [
+          "A"
+        ],
+        "pendingTargetGoalIds": [],
+        "complete": true
+      }
+    },
+    {
+      "id": "ordinary-mastery-never-enables-rule",
+      "curriculumGeneration": "fixture-generation",
+      "graph": [
+        {
+          "id": "Q",
+          "title": "Q",
+          "type": "atomic",
+          "nodeKind": "exam",
+          "requires": [
+            "P"
+          ],
+          "contains": []
+        },
+        {
+          "id": "P",
+          "title": "P",
+          "type": "atomic",
+          "nodeKind": "tutor",
+          "requires": [
+            "A"
+          ],
+          "contains": []
+        },
+        {
+          "id": "A",
+          "title": "A",
+          "type": "atomic",
+          "nodeKind": "tutor",
+          "requires": [],
+          "contains": []
+        }
+      ],
+      "targetGoalIds": [
+        "Q",
+        "P",
+        "A"
+      ],
+      "level2TargetGoalIds": [
+        "Q",
+        "P",
+        "A"
+      ],
+      "profile": {
+        "schemaVersion": 1,
+        "id": "fixture-profile",
+        "revision": "fixture-v1",
+        "title": {
+          "de": "Synthetischer Testabschnitt",
+          "en": "Synthetic test scope"
+        },
+        "levelScopeRef": "fixture-scope",
+        "review": {
+          "reference": "synthetic-fixture-only",
+          "scopeRevision": "fixture-scope-v1",
+          "taskRevision": "fixture-task-v1",
+          "rubricRevision": "fixture-rubric-v1"
+        },
+        "rules": [
+          {
+            "ruleId": "waive-preparation",
+            "assessmentGoalIds": [
+              "Q"
+            ],
+            "waivableGoalIds": [
+              "A"
+            ],
+            "rationale": "Synthetic policy for a mathematical fixture only; not an approved curriculum rule.",
+            "reviewRef": "synthetic-fixture-only"
+          }
+        ]
+      },
+      "masteredGoalIds": [
+        "P"
+      ],
+      "expected": {
+        "waivedGoalIds": [],
+        "pendingTargetGoalIds": [
+          "A",
+          "Q"
+        ],
+        "complete": false
+      }
+    },
+    {
+      "id": "existing-mastery-counts-without-qualification",
+      "curriculumGeneration": "fixture-generation",
+      "graph": [
+        {
+          "id": "Q",
+          "title": "Q",
+          "type": "atomic",
+          "nodeKind": "exam",
+          "requires": [
+            "B"
+          ],
+          "contains": []
+        },
+        {
+          "id": "B",
+          "title": "B",
+          "type": "atomic",
+          "nodeKind": "tutor",
+          "requires": [
+            "A"
+          ],
+          "contains": []
+        },
+        {
+          "id": "A",
+          "title": "A",
+          "type": "atomic",
+          "nodeKind": "tutor",
+          "requires": [],
+          "contains": []
+        }
+      ],
+      "targetGoalIds": [
+        "Q",
+        "B",
+        "A"
+      ],
+      "level2TargetGoalIds": [
+        "Q",
+        "B",
+        "A"
+      ],
+      "profile": {
+        "schemaVersion": 1,
+        "id": "fixture-profile",
+        "revision": "fixture-v1",
+        "title": {
+          "de": "Synthetischer Testabschnitt",
+          "en": "Synthetic test scope"
+        },
+        "levelScopeRef": "fixture-scope",
+        "review": {
+          "reference": "synthetic-fixture-only",
+          "scopeRevision": "fixture-scope-v1",
+          "taskRevision": "fixture-task-v1",
+          "rubricRevision": "fixture-rubric-v1"
+        },
+        "rules": [
+          {
+            "ruleId": "waive-preparation",
+            "assessmentGoalIds": [
+              "Q"
+            ],
+            "waivableGoalIds": [
+              "A",
+              "B"
+            ],
+            "rationale": "Synthetic policy for a mathematical fixture only; not an approved curriculum rule.",
+            "reviewRef": "synthetic-fixture-only"
+          }
+        ]
+      },
+      "masteredGoalIds": [
+        "Q",
+        "A",
+        "B"
+      ],
+      "expected": {
+        "waivedGoalIds": [],
+        "pendingTargetGoalIds": [],
+        "complete": true
+      }
+    },
+    {
+      "id": "inherited-cluster-requires",
+      "curriculumGeneration": "fixture-generation",
+      "graph": [
+        {
+          "id": "K",
+          "title": "K",
+          "type": "cluster",
+          "nodeKind": "tutor",
+          "requires": [
+            "A"
+          ],
+          "contains": [
+            "Q"
+          ]
+        },
+        {
+          "id": "Q",
+          "title": "Q",
+          "type": "atomic",
+          "nodeKind": "exam",
+          "requires": [],
+          "contains": []
+        },
+        {
+          "id": "A",
+          "title": "A",
+          "type": "atomic",
+          "nodeKind": "tutor",
+          "requires": [],
+          "contains": []
+        }
+      ],
+      "targetGoalIds": [
+        "Q",
+        "A"
+      ],
+      "level2TargetGoalIds": [
+        "Q",
+        "A"
+      ],
+      "profile": {
+        "schemaVersion": 1,
+        "id": "fixture-profile",
+        "revision": "fixture-v1",
+        "title": {
+          "de": "Synthetischer Testabschnitt",
+          "en": "Synthetic test scope"
+        },
+        "levelScopeRef": "fixture-scope",
+        "review": {
+          "reference": "synthetic-fixture-only",
+          "scopeRevision": "fixture-scope-v1",
+          "taskRevision": "fixture-task-v1",
+          "rubricRevision": "fixture-rubric-v1"
+        },
+        "rules": [
+          {
+            "ruleId": "waive-preparation",
+            "assessmentGoalIds": [
+              "Q"
+            ],
+            "waivableGoalIds": [
+              "A"
+            ],
+            "rationale": "Synthetic policy for a mathematical fixture only; not an approved curriculum rule.",
+            "reviewRef": "synthetic-fixture-only"
+          }
+        ]
+      },
+      "masteredGoalIds": [
+        "Q"
+      ],
+      "expected": {
+        "waivedGoalIds": [
+          "A"
+        ],
+        "pendingTargetGoalIds": [],
+        "complete": true
+      }
+    },
+    {
+      "id": "required-cluster-expands-gk-and-lk",
+      "curriculumGeneration": "fixture-generation",
+      "graph": [
+        {
+          "id": "Q",
+          "title": "Q",
+          "type": "atomic",
+          "nodeKind": "exam",
+          "requires": [
+            "K"
+          ],
+          "contains": []
+        },
+        {
+          "id": "K",
+          "title": "K",
+          "type": "cluster",
+          "nodeKind": "tutor",
+          "requires": [],
+          "contains": [
+            "A",
+            "B"
+          ]
+        },
+        {
+          "id": "A",
+          "title": "A",
+          "type": "atomic",
+          "nodeKind": "tutor",
+          "requires": [],
+          "contains": [],
+          "tags": [
+            "GK"
+          ]
+        },
+        {
+          "id": "B",
+          "title": "B",
+          "type": "atomic",
+          "nodeKind": "tutor",
+          "requires": [],
+          "contains": [],
+          "tags": [
+            "LK"
+          ]
+        }
+      ],
+      "targetGoalIds": [
+        "Q",
+        "A",
+        "B"
+      ],
+      "level2TargetGoalIds": [
+        "Q",
+        "A",
+        "B"
+      ],
+      "profile": {
+        "schemaVersion": 1,
+        "id": "fixture-profile",
+        "revision": "fixture-v1",
+        "title": {
+          "de": "Synthetischer Testabschnitt",
+          "en": "Synthetic test scope"
+        },
+        "levelScopeRef": "fixture-scope",
+        "review": {
+          "reference": "synthetic-fixture-only",
+          "scopeRevision": "fixture-scope-v1",
+          "taskRevision": "fixture-task-v1",
+          "rubricRevision": "fixture-rubric-v1"
+        },
+        "rules": [
+          {
+            "ruleId": "waive-preparation",
+            "assessmentGoalIds": [
+              "Q"
+            ],
+            "waivableGoalIds": [
+              "A",
+              "B"
+            ],
+            "rationale": "Synthetic policy for a mathematical fixture only; not an approved curriculum rule.",
+            "reviewRef": "synthetic-fixture-only"
+          }
+        ]
+      },
+      "masteredGoalIds": [
+        "Q"
+      ],
+      "expected": {
+        "waivedGoalIds": [
+          "A",
+          "B"
+        ],
+        "pendingTargetGoalIds": [],
+        "complete": true
+      }
+    },
+    {
+      "id": "hidden-support-and-unrelated-future-consumer",
+      "curriculumGeneration": "fixture-generation",
+      "graph": [
+        {
+          "id": "Q",
+          "title": "Q",
+          "type": "atomic",
+          "nodeKind": "exam",
+          "requires": [
+            "A"
+          ],
+          "contains": []
+        },
+        {
+          "id": "A",
+          "title": "A",
+          "type": "atomic",
+          "nodeKind": "tutor",
+          "requires": [],
+          "contains": []
+        },
+        {
+          "id": "FUTURE",
+          "title": "FUTURE",
+          "type": "atomic",
+          "nodeKind": "tutor",
+          "requires": [
+            "A"
+          ],
+          "contains": []
+        }
+      ],
+      "targetGoalIds": [
+        "Q"
+      ],
+      "level2TargetGoalIds": [
+        "Q"
+      ],
+      "profile": {
+        "schemaVersion": 1,
+        "id": "fixture-profile",
+        "revision": "fixture-v1",
+        "title": {
+          "de": "Synthetischer Testabschnitt",
+          "en": "Synthetic test scope"
+        },
+        "levelScopeRef": "fixture-scope",
+        "review": {
+          "reference": "synthetic-fixture-only",
+          "scopeRevision": "fixture-scope-v1",
+          "taskRevision": "fixture-task-v1",
+          "rubricRevision": "fixture-rubric-v1"
+        },
+        "rules": [
+          {
+            "ruleId": "waive-preparation",
+            "assessmentGoalIds": [
+              "Q"
+            ],
+            "waivableGoalIds": [
+              "A"
+            ],
+            "rationale": "Synthetic policy for a mathematical fixture only; not an approved curriculum rule.",
+            "reviewRef": "synthetic-fixture-only"
+          }
+        ]
+      },
+      "masteredGoalIds": [
+        "Q"
+      ],
+      "expected": {
+        "waivedGoalIds": [
+          "A"
+        ],
+        "pendingTargetGoalIds": [],
+        "complete": true
+      }
+    },
+    {
+      "id": "orientation-protection-remains-an-obligation",
+      "curriculumGeneration": "fixture-generation",
+      "graph": [
+        {
+          "id": "Q",
+          "title": "Q",
+          "type": "atomic",
+          "nodeKind": "exam",
+          "requires": [],
+          "contains": []
+        },
+        {
+          "id": "O",
+          "title": "O",
+          "type": "atomic",
+          "nodeKind": "tutor",
+          "requires": [],
+          "contains": [],
+          "semanticKind": "orientation"
+        }
+      ],
+      "targetGoalIds": [
+        "Q",
+        "O"
+      ],
+      "level2TargetGoalIds": [
+        "Q",
+        "O"
+      ],
+      "profile": {
+        "schemaVersion": 1,
+        "id": "fixture-profile",
+        "revision": "fixture-v1",
+        "title": {
+          "de": "Synthetischer Testabschnitt",
+          "en": "Synthetic test scope"
+        },
+        "levelScopeRef": "fixture-scope",
+        "review": {
+          "reference": "synthetic-fixture-only",
+          "scopeRevision": "fixture-scope-v1",
+          "taskRevision": "fixture-task-v1",
+          "rubricRevision": "fixture-rubric-v1"
+        },
+        "rules": []
+      },
+      "masteredGoalIds": [
+        "Q"
+      ],
+      "expected": {
+        "waivedGoalIds": [],
+        "pendingTargetGoalIds": [
+          "O"
+        ],
+        "complete": false
+      }
+    },
+    {
+      "id": "empty-rule-list-is-legal",
+      "curriculumGeneration": "fixture-generation",
+      "graph": [
+        {
+          "id": "Q",
+          "title": "Q",
+          "type": "atomic",
+          "nodeKind": "exam",
+          "requires": [],
+          "contains": []
+        }
+      ],
+      "targetGoalIds": [
+        "Q"
+      ],
+      "level2TargetGoalIds": [
+        "Q"
+      ],
+      "profile": {
+        "schemaVersion": 1,
+        "id": "fixture-profile",
+        "revision": "fixture-v1",
+        "title": {
+          "de": "Synthetischer Testabschnitt",
+          "en": "Synthetic test scope"
+        },
+        "levelScopeRef": "fixture-scope",
+        "review": {
+          "reference": "synthetic-fixture-only",
+          "scopeRevision": "fixture-scope-v1",
+          "taskRevision": "fixture-task-v1",
+          "rubricRevision": "fixture-rubric-v1"
+        },
+        "rules": []
+      },
+      "masteredGoalIds": [
+        "Q"
+      ],
+      "expected": {
+        "waivedGoalIds": [],
+        "pendingTargetGoalIds": [],
+        "complete": true
+      }
+    },
+    {
+      "id": "empty-waiver-set-is-legal",
+      "curriculumGeneration": "fixture-generation",
+      "graph": [
+        {
+          "id": "Q",
+          "title": "Q",
+          "type": "atomic",
+          "nodeKind": "exam",
+          "requires": [],
+          "contains": []
+        }
+      ],
+      "targetGoalIds": [
+        "Q"
+      ],
+      "level2TargetGoalIds": [
+        "Q"
+      ],
+      "profile": {
+        "schemaVersion": 1,
+        "id": "fixture-profile",
+        "revision": "fixture-v1",
+        "title": {
+          "de": "Synthetischer Testabschnitt",
+          "en": "Synthetic test scope"
+        },
+        "levelScopeRef": "fixture-scope",
+        "review": {
+          "reference": "synthetic-fixture-only",
+          "scopeRevision": "fixture-scope-v1",
+          "taskRevision": "fixture-task-v1",
+          "rubricRevision": "fixture-rubric-v1"
+        },
+        "rules": [
+          {
+            "ruleId": "waive-preparation",
+            "assessmentGoalIds": [
+              "Q"
+            ],
+            "waivableGoalIds": [],
+            "rationale": "Synthetic policy for a mathematical fixture only; not an approved curriculum rule.",
+            "reviewRef": "synthetic-fixture-only"
+          }
+        ]
+      },
+      "masteredGoalIds": [
+        "Q"
+      ],
+      "expected": {
+        "waivedGoalIds": [],
+        "pendingTargetGoalIds": [],
+        "complete": true
+      }
+    },
+    {
+      "id": "missing-reference-rejected",
+      "curriculumGeneration": "fixture-generation",
+      "graph": [
+        {
+          "id": "Q",
+          "title": "Q",
+          "type": "atomic",
+          "nodeKind": "exam",
+          "requires": [
+            "MISSING"
+          ],
+          "contains": []
+        }
+      ],
+      "targetGoalIds": [
+        "Q"
+      ],
+      "level2TargetGoalIds": [
+        "Q"
+      ],
+      "profile": {
+        "schemaVersion": 1,
+        "id": "fixture-profile",
+        "revision": "fixture-v1",
+        "title": {
+          "de": "Synthetischer Testabschnitt",
+          "en": "Synthetic test scope"
+        },
+        "levelScopeRef": "fixture-scope",
+        "review": {
+          "reference": "synthetic-fixture-only",
+          "scopeRevision": "fixture-scope-v1",
+          "taskRevision": "fixture-task-v1",
+          "rubricRevision": "fixture-rubric-v1"
+        },
+        "rules": []
+      },
+      "masteredGoalIds": [],
+      "expectedError": "MISSING_REFERENCE"
+    },
+    {
+      "id": "contains-cycle-rejected",
+      "curriculumGeneration": "fixture-generation",
+      "graph": [
+        {
+          "id": "Q",
+          "title": "Q",
+          "type": "atomic",
+          "nodeKind": "exam",
+          "requires": [
+            "K"
+          ],
+          "contains": []
+        },
+        {
+          "id": "K",
+          "title": "K",
+          "type": "cluster",
+          "nodeKind": "tutor",
+          "requires": [],
+          "contains": [
+            "L"
+          ]
+        },
+        {
+          "id": "L",
+          "title": "L",
+          "type": "cluster",
+          "nodeKind": "tutor",
+          "requires": [],
+          "contains": [
+            "K"
+          ]
+        }
+      ],
+      "targetGoalIds": [
+        "Q"
+      ],
+      "level2TargetGoalIds": [
+        "Q"
+      ],
+      "profile": {
+        "schemaVersion": 1,
+        "id": "fixture-profile",
+        "revision": "fixture-v1",
+        "title": {
+          "de": "Synthetischer Testabschnitt",
+          "en": "Synthetic test scope"
+        },
+        "levelScopeRef": "fixture-scope",
+        "review": {
+          "reference": "synthetic-fixture-only",
+          "scopeRevision": "fixture-scope-v1",
+          "taskRevision": "fixture-task-v1",
+          "rubricRevision": "fixture-rubric-v1"
+        },
+        "rules": []
+      },
+      "masteredGoalIds": [],
+      "expectedError": "CONTAINS_CYCLE"
+    },
+    {
+      "id": "raw-requires-cycle-rejected",
+      "curriculumGeneration": "fixture-generation",
+      "graph": [
+        {
+          "id": "Q",
+          "title": "Q",
+          "type": "atomic",
+          "nodeKind": "exam",
+          "requires": [
+            "A"
+          ],
+          "contains": []
+        },
+        {
+          "id": "A",
+          "title": "A",
+          "type": "atomic",
+          "nodeKind": "tutor",
+          "requires": [
+            "Q"
+          ],
+          "contains": []
+        }
+      ],
+      "targetGoalIds": [
+        "Q"
+      ],
+      "level2TargetGoalIds": [
+        "Q"
+      ],
+      "profile": {
+        "schemaVersion": 1,
+        "id": "fixture-profile",
+        "revision": "fixture-v1",
+        "title": {
+          "de": "Synthetischer Testabschnitt",
+          "en": "Synthetic test scope"
+        },
+        "levelScopeRef": "fixture-scope",
+        "review": {
+          "reference": "synthetic-fixture-only",
+          "scopeRevision": "fixture-scope-v1",
+          "taskRevision": "fixture-task-v1",
+          "rubricRevision": "fixture-rubric-v1"
+        },
+        "rules": []
+      },
+      "masteredGoalIds": [],
+      "expectedError": "REQUIRES_CYCLE"
+    },
+    {
+      "id": "reachable-expanded-self-dependency-rejected",
+      "curriculumGeneration": "fixture-generation",
+      "graph": [
+        {
+          "id": "Q",
+          "title": "Q",
+          "type": "atomic",
+          "nodeKind": "exam",
+          "requires": [
+            "A"
+          ],
+          "contains": []
+        },
+        {
+          "id": "A",
+          "title": "A",
+          "type": "atomic",
+          "nodeKind": "tutor",
+          "requires": [
+            "K"
+          ],
+          "contains": []
+        },
+        {
+          "id": "K",
+          "title": "K",
+          "type": "cluster",
+          "nodeKind": "tutor",
+          "requires": [],
+          "contains": [
+            "A"
+          ]
+        }
+      ],
+      "targetGoalIds": [
+        "Q"
+      ],
+      "level2TargetGoalIds": [
+        "Q"
+      ],
+      "profile": {
+        "schemaVersion": 1,
+        "id": "fixture-profile",
+        "revision": "fixture-v1",
+        "title": {
+          "de": "Synthetischer Testabschnitt",
+          "en": "Synthetic test scope"
+        },
+        "levelScopeRef": "fixture-scope",
+        "review": {
+          "reference": "synthetic-fixture-only",
+          "scopeRevision": "fixture-scope-v1",
+          "taskRevision": "fixture-task-v1",
+          "rubricRevision": "fixture-rubric-v1"
+        },
+        "rules": []
+      },
+      "masteredGoalIds": [],
+      "expectedError": "ATOMIC_CYCLE"
+    },
+    {
+      "id": "unreachable-expansion-defect-does-not-contaminate",
+      "curriculumGeneration": "fixture-generation",
+      "graph": [
+        {
+          "id": "Q",
+          "title": "Q",
+          "type": "atomic",
+          "nodeKind": "exam",
+          "requires": [
+            "P"
+          ],
+          "contains": []
+        },
+        {
+          "id": "P",
+          "title": "P",
+          "type": "atomic",
+          "nodeKind": "tutor",
+          "requires": [],
+          "contains": []
+        },
+        {
+          "id": "A",
+          "title": "A",
+          "type": "atomic",
+          "nodeKind": "tutor",
+          "requires": [
+            "K"
+          ],
+          "contains": []
+        },
+        {
+          "id": "K",
+          "title": "K",
+          "type": "cluster",
+          "nodeKind": "tutor",
+          "requires": [],
+          "contains": [
+            "A"
+          ]
+        }
+      ],
+      "targetGoalIds": [
+        "Q",
+        "P"
+      ],
+      "level2TargetGoalIds": [
+        "Q",
+        "P"
+      ],
+      "profile": {
+        "schemaVersion": 1,
+        "id": "fixture-profile",
+        "revision": "fixture-v1",
+        "title": {
+          "de": "Synthetischer Testabschnitt",
+          "en": "Synthetic test scope"
+        },
+        "levelScopeRef": "fixture-scope",
+        "review": {
+          "reference": "synthetic-fixture-only",
+          "scopeRevision": "fixture-scope-v1",
+          "taskRevision": "fixture-task-v1",
+          "rubricRevision": "fixture-rubric-v1"
+        },
+        "rules": []
+      },
+      "masteredGoalIds": [
+        "Q"
+      ],
+      "expected": {
+        "waivedGoalIds": [],
+        "pendingTargetGoalIds": [
+          "P"
+        ],
+        "complete": false
+      }
+    },
+    {
+      "id": "protected-goal-cannot-be-waived",
+      "curriculumGeneration": "fixture-generation",
+      "graph": [
+        {
+          "id": "Q",
+          "title": "Q",
+          "type": "atomic",
+          "nodeKind": "exam",
+          "requires": [
+            "A"
+          ],
+          "contains": []
+        },
+        {
+          "id": "A",
+          "title": "A",
+          "type": "atomic",
+          "nodeKind": "tutor",
+          "requires": [],
+          "contains": [],
+          "semanticKind": "orientation"
+        }
+      ],
+      "targetGoalIds": [
+        "Q",
+        "A"
+      ],
+      "level2TargetGoalIds": [
+        "Q",
+        "A"
+      ],
+      "profile": {
+        "schemaVersion": 1,
+        "id": "fixture-profile",
+        "revision": "fixture-v1",
+        "title": {
+          "de": "Synthetischer Testabschnitt",
+          "en": "Synthetic test scope"
+        },
+        "levelScopeRef": "fixture-scope",
+        "review": {
+          "reference": "synthetic-fixture-only",
+          "scopeRevision": "fixture-scope-v1",
+          "taskRevision": "fixture-task-v1",
+          "rubricRevision": "fixture-rubric-v1"
+        },
+        "rules": [
+          {
+            "ruleId": "waive-preparation",
+            "assessmentGoalIds": [
+              "Q"
+            ],
+            "waivableGoalIds": [
+              "A"
+            ],
+            "rationale": "Synthetic policy for a mathematical fixture only; not an approved curriculum rule.",
+            "reviewRef": "synthetic-fixture-only"
+          }
+        ]
+      },
+      "masteredGoalIds": [
+        "Q"
+      ],
+      "expectedError": "PROTECTED_GOAL"
+    },
+    {
+      "id": "waiver-must-be-an-assessment-prerequisite",
+      "curriculumGeneration": "fixture-generation",
+      "graph": [
+        {
+          "id": "Q",
+          "title": "Q",
+          "type": "atomic",
+          "nodeKind": "exam",
+          "requires": [],
+          "contains": []
+        },
+        {
+          "id": "A",
+          "title": "A",
+          "type": "atomic",
+          "nodeKind": "tutor",
+          "requires": [],
+          "contains": []
+        }
+      ],
+      "targetGoalIds": [
+        "Q",
+        "A"
+      ],
+      "level2TargetGoalIds": [
+        "Q",
+        "A"
+      ],
+      "profile": {
+        "schemaVersion": 1,
+        "id": "fixture-profile",
+        "revision": "fixture-v1",
+        "title": {
+          "de": "Synthetischer Testabschnitt",
+          "en": "Synthetic test scope"
+        },
+        "levelScopeRef": "fixture-scope",
+        "review": {
+          "reference": "synthetic-fixture-only",
+          "scopeRevision": "fixture-scope-v1",
+          "taskRevision": "fixture-task-v1",
+          "rubricRevision": "fixture-rubric-v1"
+        },
+        "rules": [
+          {
+            "ruleId": "waive-preparation",
+            "assessmentGoalIds": [
+              "Q"
+            ],
+            "waivableGoalIds": [
+              "A"
+            ],
+            "rationale": "Synthetic policy for a mathematical fixture only; not an approved curriculum rule.",
+            "reviewRef": "synthetic-fixture-only"
+          }
+        ]
+      },
+      "masteredGoalIds": [
+        "Q"
+      ],
+      "expectedError": "RULE_NOT_PREREQUISITE"
+    },
+    {
+      "id": "rule-assessment-must-be-required",
+      "curriculumGeneration": "fixture-generation",
+      "graph": [
+        {
+          "id": "Q",
+          "title": "Q",
+          "type": "atomic",
+          "nodeKind": "exam",
+          "requires": [],
+          "contains": []
+        },
+        {
+          "id": "Q2",
+          "title": "Q2",
+          "type": "atomic",
+          "nodeKind": "exam",
+          "requires": [
+            "A"
+          ],
+          "contains": []
+        },
+        {
+          "id": "A",
+          "title": "A",
+          "type": "atomic",
+          "nodeKind": "tutor",
+          "requires": [],
+          "contains": []
+        }
+      ],
+      "targetGoalIds": [
+        "Q",
+        "A"
+      ],
+      "level2TargetGoalIds": [
+        "Q",
+        "A"
+      ],
+      "profile": {
+        "schemaVersion": 1,
+        "id": "fixture-profile",
+        "revision": "fixture-v1",
+        "title": {
+          "de": "Synthetischer Testabschnitt",
+          "en": "Synthetic test scope"
+        },
+        "levelScopeRef": "fixture-scope",
+        "review": {
+          "reference": "synthetic-fixture-only",
+          "scopeRevision": "fixture-scope-v1",
+          "taskRevision": "fixture-task-v1",
+          "rubricRevision": "fixture-rubric-v1"
+        },
+        "rules": [
+          {
+            "ruleId": "waive-preparation",
+            "assessmentGoalIds": [
+              "Q2"
+            ],
+            "waivableGoalIds": [
+              "A"
+            ],
+            "rationale": "Synthetic policy for a mathematical fixture only; not an approved curriculum rule.",
+            "reviewRef": "synthetic-fixture-only"
+          }
+        ]
+      },
+      "masteredGoalIds": [],
+      "expectedError": "INVALID_RULE"
+    },
+    {
+      "id": "foreign-target-is-not-silently-removed",
+      "curriculumGeneration": "fixture-generation",
+      "graph": [
+        {
+          "id": "Q",
+          "title": "Q",
+          "type": "atomic",
+          "nodeKind": "exam",
+          "requires": [
+            "A"
+          ],
+          "contains": []
+        },
+        {
+          "id": "A",
+          "title": "A",
+          "type": "atomic",
+          "nodeKind": "tutor",
+          "requires": [],
+          "contains": []
+        }
+      ],
+      "targetGoalIds": [
+        "Q",
+        "A"
+      ],
+      "level2TargetGoalIds": [
+        "Q"
+      ],
+      "profile": {
+        "schemaVersion": 1,
+        "id": "fixture-profile",
+        "revision": "fixture-v1",
+        "title": {
+          "de": "Synthetischer Testabschnitt",
+          "en": "Synthetic test scope"
+        },
+        "levelScopeRef": "fixture-scope",
+        "review": {
+          "reference": "synthetic-fixture-only",
+          "scopeRevision": "fixture-scope-v1",
+          "taskRevision": "fixture-task-v1",
+          "rubricRevision": "fixture-rubric-v1"
+        },
+        "rules": [
+          {
+            "ruleId": "waive-preparation",
+            "assessmentGoalIds": [
+              "Q"
+            ],
+            "waivableGoalIds": [
+              "A"
+            ],
+            "rationale": "Synthetic policy for a mathematical fixture only; not an approved curriculum rule.",
+            "reviewRef": "synthetic-fixture-only"
+          }
+        ]
+      },
+      "masteredGoalIds": [],
+      "expectedError": "FOREIGN_TARGET"
+    },
+    {
+      "id": "scope-without-assessment-is-not-applicable",
+      "curriculumGeneration": "fixture-generation",
+      "graph": [
+        {
+          "id": "A",
+          "title": "A",
+          "type": "atomic",
+          "nodeKind": "tutor",
+          "requires": [],
+          "contains": []
+        }
+      ],
+      "targetGoalIds": [
+        "A"
+      ],
+      "level2TargetGoalIds": [
+        "A"
+      ],
+      "profile": {
+        "schemaVersion": 1,
+        "id": "fixture-profile",
+        "revision": "fixture-v1",
+        "title": {
+          "de": "Synthetischer Testabschnitt",
+          "en": "Synthetic test scope"
+        },
+        "levelScopeRef": "fixture-scope",
+        "review": {
+          "reference": "synthetic-fixture-only",
+          "scopeRevision": "fixture-scope-v1",
+          "taskRevision": "fixture-task-v1",
+          "rubricRevision": "fixture-rubric-v1"
+        },
+        "rules": []
+      },
+      "masteredGoalIds": [],
+      "expectedError": "NO_REQUIRED_ASSESSMENT"
+    },
+    {
+      "id": "empty-scope-is-not-complete",
+      "curriculumGeneration": "fixture-generation",
+      "graph": [
+        {
+          "id": "Q",
+          "title": "Q",
+          "type": "atomic",
+          "nodeKind": "exam",
+          "requires": [],
+          "contains": []
+        }
+      ],
+      "targetGoalIds": [],
+      "level2TargetGoalIds": [],
+      "profile": {
+        "schemaVersion": 1,
+        "id": "fixture-profile",
+        "revision": "fixture-v1",
+        "title": {
+          "de": "Synthetischer Testabschnitt",
+          "en": "Synthetic test scope"
+        },
+        "levelScopeRef": "fixture-scope",
+        "review": {
+          "reference": "synthetic-fixture-only",
+          "scopeRevision": "fixture-scope-v1",
+          "taskRevision": "fixture-task-v1",
+          "rubricRevision": "fixture-rubric-v1"
+        },
+        "rules": []
+      },
+      "masteredGoalIds": [],
+      "expectedError": "EMPTY_SCOPE"
+    },
+    {
+      "id": "cluster-is-not-an-atomic-target",
+      "curriculumGeneration": "fixture-generation",
+      "graph": [
+        {
+          "id": "Q",
+          "title": "Q",
+          "type": "atomic",
+          "nodeKind": "exam",
+          "requires": [],
+          "contains": []
+        },
+        {
+          "id": "K",
+          "title": "K",
+          "type": "cluster",
+          "nodeKind": "tutor",
+          "requires": [],
+          "contains": [
+            "Q"
+          ]
+        }
+      ],
+      "targetGoalIds": [
+        "K"
+      ],
+      "level2TargetGoalIds": [
+        "K"
+      ],
+      "profile": {
+        "schemaVersion": 1,
+        "id": "fixture-profile",
+        "revision": "fixture-v1",
+        "title": {
+          "de": "Synthetischer Testabschnitt",
+          "en": "Synthetic test scope"
+        },
+        "levelScopeRef": "fixture-scope",
+        "review": {
+          "reference": "synthetic-fixture-only",
+          "scopeRevision": "fixture-scope-v1",
+          "taskRevision": "fixture-task-v1",
+          "rubricRevision": "fixture-rubric-v1"
+        },
+        "rules": []
+      },
+      "masteredGoalIds": [],
+      "expectedError": "TARGET_NOT_ATOMIC"
+    }
+  ]
+}

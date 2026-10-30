@@ -1,5 +1,6 @@
 import { sanitizeSkillpilotId } from './skillpilotId'
 import { requestClaudeV1Start } from '../coachVariants/claudeV1/request'
+import type { CompletionAssessmentStart } from './levelCompletionApi'
 
 export interface ClaudeCoachStartInput {
   skillpilotId: string
@@ -7,6 +8,7 @@ export interface ClaudeCoachStartInput {
   selectedCurriculum?: string
   promptContext?: string
   client?: string
+  completionAssessment?: CompletionAssessmentStart
 }
 
 export interface ClaudePluginSetupStartResponse {
@@ -49,6 +51,7 @@ export const requestClaudeLaunch = async (
     skillpilotId: requireSkillpilotId(input.skillpilotId),
     language: input.language,
     client: 'web-start',
+    completionAssessment: input.completionAssessment,
   })
   return {
     prompt: response.prompt,

@@ -55,6 +55,7 @@ import {
   SKILLPILOT_ID_FILE_NAME,
 } from '../utils/skillpilotIdFile'
 import { sanitizeSkillpilotId } from '../utils/skillpilotId'
+import { readCompletionAssessmentStart } from '../utils/levelCompletionApi'
 import {
   clearDeletedLearnerBrowserState,
   LearnerDataApiError,
@@ -107,16 +108,26 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   // Use location (ensure import is added)
   const location = useLocation()
   const isCoachEntry = new URLSearchParams(location.search).get('start') === 'coach'
+  const completionChoice = React.useMemo(() => {
+    try { return { intent: readCompletionAssessmentStart(location.search), invalid: false } }
+    catch { return { intent: null, invalid: true } }
+  }, [location.search])
+  const completionChoiceRequested = completionChoice.intent !== null || completionChoice.invalid
+  const completionRouteRequested = completionChoiceRequested || new URLSearchParams(location.search).has('completionRoute')
   const coachEntryLearnerIdRef = React.useRef(
     isCoachEntry && role === 'learner' ? sanitizeSkillpilotId(skillpilotId) : '',
   )
   const coachStartStepRef = React.useRef<HTMLDivElement>(null)
   const [coachProvider, setCoachProvider] = useState<CoachProvider>(() => {
     const params = new URLSearchParams(location.search)
+    if (params.has('completionProfile') || params.has('completionGoal') || params.has('completionRevision') || params.has('completionRoute')) return 'claude'
     if (params.get('coach') === 'gemini') return 'gemini'
     return params.get('coach') === 'chatgpt-desktop' || params.get('chatgptTest') === '1'
       ? 'chatgpt-desktop' : 'claude'
   })
+  React.useEffect(() => {
+    if (completionRouteRequested && coachProvider !== 'claude') setCoachProvider('claude')
+  }, [coachProvider, completionRouteRequested])
 
   React.useEffect(() => {
     const params = new URLSearchParams(location.search)
@@ -173,7 +184,9 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   const [termsStorageFailed, setTermsStorageFailed] = useState(false)
   const [claudeActionState, setClaudeActionState] = useState<ClaudeActionState>('idle')
   const [claudeInstallFallbackUrl, setClaudeInstallFallbackUrl] = useState<string | null>(null)
+  const [completionLaunchFailed, setCompletionLaunchFailed] = useState(false)
   const claudeActionRequestRef = React.useRef(0)
+  const claudeLaunchInFlightRef = React.useRef(createSynchronousInFlightGuard())
   const claudeActionLoading = claudeActionState === 'opening-setup'
     || claudeActionState === 'launching'
   const sanitizedLearnerId = sanitizeSkillpilotId(skillpilotId)
@@ -199,6 +212,8 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   const coachLaunchScope = JSON.stringify([
     coachProvider, sanitizedLearnerId, normalizedSelectedLearnerLandscapeId,
     language, personalCurriculumReady, personalCurriculumEditor.plan?.completedDecisions,
+    completionChoice,
+    completionRouteRequested,
   ])
   const coachLaunchRevisionRef = React.useRef(0)
   React.useLayoutEffect(() => {
@@ -207,6 +222,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   }, [coachLaunchScope])
 
   const chooseCoachProvider = (provider: CoachProvider) => {
+    if (completionRouteRequested && provider !== 'claude') return
     claudeActionRequestRef.current += 1
     setClaudeActionState('idle')
     setClaudeInstallFallbackUrl(null)
@@ -810,6 +826,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
 
   const prepareChatGptDesktopStart = async () => {
     if (coachProvider !== 'chatgpt-desktop' || !personalCurriculumReady) return null
+    if (completionRouteRequested) return null
     const effectiveId = sanitizeSkillpilotId(skillpilotId)
     const eligibilityLanguage = language.startsWith('en') ? 'en' : 'de'
     if (!effectiveId || !confirmOpenAiMcpEligibility(eligibilityLanguage, effectiveId)) return null
@@ -826,6 +843,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
 
   const prepareGeminiStart = async () => {
     if (coachProvider !== 'gemini' || !personalCurriculumReady) return null
+    if (completionRouteRequested) return null
     const effectiveId = sanitizeSkillpilotId(skillpilotId)
     if (!effectiveId || !persistLearnerStart(effectiveId)) return null
     const launchRevision = coachLaunchRevisionRef.current
@@ -835,6 +853,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
 
   const getClaudeStartContext = () => {
     if (coachProvider !== 'claude' || !personalCurriculumReady) return null
+    if (completionChoice.invalid) return null
     const effectiveId = sanitizeSkillpilotId(skillpilotId)
     if (!effectiveId) return null
     const normalizedLandscapeId = persistLearnerStart(effectiveId)
@@ -894,13 +913,17 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   const handleLaunchClaude = async () => {
     const context = getClaudeStartContext()
     if (!context) return
+    const launchGuard = claudeLaunchInFlightRef.current
+    if (!launchGuard.tryStart()) return
     const requestVersion = ++claudeActionRequestRef.current
 
     setClaudeActionState('launching')
+    setCompletionLaunchFailed(false)
     setClaudeInstallFallbackUrl(null)
     const claudeWindow = window.open('', '_blank')
     if (!claudeWindow) {
       setClaudeActionState('failed')
+      launchGuard.finish()
       return
     }
     try {
@@ -909,6 +932,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
         language,
         selectedCurriculum: context.normalizedLandscapeId,
         client: 'web-start',
+        completionAssessment: completionChoice.intent ?? undefined,
       })
       if (coachLaunchRevisionRef.current !== context.launchRevision
         || claudeActionRequestRef.current !== requestVersion) {
@@ -924,9 +948,12 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
       setClaudeActionState('launched')
     } catch {
       claudeWindow?.close()
+      if (completionChoiceRequested) setCompletionLaunchFailed(true)
       if (claudeActionRequestRef.current === requestVersion) {
         setClaudeActionState(coachLaunchRevisionRef.current === context.launchRevision ? 'failed' : 'idle')
       }
+    } finally {
+      launchGuard.finish()
     }
   }
 
@@ -1375,6 +1402,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                             <label key={provider} className={`flex min-h-11 cursor-pointer items-center gap-2 rounded-lg border px-3 py-2 text-sm ${coachProvider === provider ? 'border-sky-500 bg-sky-50 dark:bg-sky-950/30' : 'border-border-color'}`}>
                               <input type="radio" name="coach-provider" value={provider}
                                 checked={coachProvider === provider}
+                                disabled={completionRouteRequested && provider !== 'claude'}
                                 onChange={() => chooseCoachProvider(provider)} />
                               <span>{title}</span>
                               <span className="ml-auto rounded-full bg-slate-200 px-2 py-0.5 text-[10px] font-bold uppercase dark:bg-slate-700">
@@ -1384,6 +1412,21 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                           ))}
                         </div>
                       </fieldset>
+                      {completionRouteRequested ? (
+                        <p data-testid="completion-assessment-launch-notice" role={completionChoice.invalid || completionLaunchFailed ? 'alert' : 'status'} className="rounded-xl border border-sky-300 p-3 text-sm text-text-secondary dark:border-sky-900/60">
+                          {completionChoice.invalid || completionLaunchFailed
+                            ? (language === 'en'
+                              ? 'This assessment choice could not be confirmed. Return to the Cockpit, reload your current state and select the assessment again.'
+                              : 'Diese Prüfungsauswahl konnte nicht bestätigt werden. Kehre ins Cockpit zurück, lade den aktuellen Stand und wähle die Prüfung erneut.')
+                            : completionChoiceRequested
+                              ? (language === 'en'
+                                ? 'You are starting the selected assessment directly. This learning route currently supports Claude. Your assessment starts only after you choose to start learning.'
+                                : 'Du startest die gewählte Prüfung direkt. Dieser Lernweg unterstützt derzeit Claude. Deine Prüfung beginnt erst, wenn du Lernen starten wählst.')
+                              : (language === 'en'
+                                ? 'You are working on completing your selected learning section. This learning route currently supports Claude.'
+                                : 'Du arbeitest am Abschluss deines gewählten Lernabschnitts. Dieser Lernweg unterstützt derzeit Claude.')}
+                        </p>
+                      ) : null}
                       {coachProvider === 'claude' && (
                       <div
                         data-testid="claude-v1-start-options"
@@ -1459,7 +1502,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                               data-testid="claude-plugin-start"
                               type="button"
                               onClick={handleLaunchClaude}
-                              disabled={!personalCurriculumReady || claudeActionLoading}
+                              disabled={!personalCurriculumReady || claudeActionLoading || completionChoice.invalid}
                               className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-violet-600 bg-violet-600 px-3 py-2 text-xs font-semibold text-white transition-colors hover:border-violet-500 hover:bg-violet-500 disabled:cursor-not-allowed disabled:opacity-50"
                             >
                               <Bot size={14} />

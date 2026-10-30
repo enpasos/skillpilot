@@ -144,7 +144,7 @@ public class LearnerLearningPlanService {
         // passes its chosen language. There is no separate learner-language setting.
         String effectiveLocale = normalizeLocale(communicationLocale);
 
-        boolean enabled = Boolean.TRUE.equals(learner.getFollowLearningPlans());
+        boolean enabled = com.skillpilot.backend.completion.CompletionNavigationPolicy.followsPlans(learner);
         String activeGoalId = learner.getActiveGoalId();
         Map<String, Double> mastery = snapshot == null
                 ? learners.getMastery(skillpilotId) : snapshot.mastery();
@@ -522,7 +522,7 @@ public class LearnerLearningPlanService {
         learners.acquireLearningPlanMutationLock(skillpilotId);
         LocalDate asOf = asOf(requestedAsOf);
         Learner learner = learners.getLearner(skillpilotId);
-        boolean enabled = Boolean.TRUE.equals(learner.getFollowLearningPlans());
+        boolean enabled = com.skillpilot.backend.completion.CompletionNavigationPolicy.followsPlans(learner);
         List<LearnerLearningPlan> storedPlans = plans
                 .findByLearner_SkillpilotIdOrderByLandscapeIdAsc(skillpilotId);
         LearnerPlanTodayStatus status = calculateStatus(
@@ -564,7 +564,7 @@ public class LearnerLearningPlanService {
                     skillpilotId,
                     plan,
                     asOf(requestedAsOf),
-                    Boolean.TRUE.equals(learner.getFollowLearningPlans()),
+                    com.skillpilot.backend.completion.CompletionNavigationPolicy.followsPlans(learner),
                     learner.getActiveGoalId());
             return detail(evaluation.summary(), evaluation.blocks());
         } catch (IllegalStateException | NullPointerException exception) {
@@ -604,7 +604,7 @@ public class LearnerLearningPlanService {
                 skillpilotId,
                 saved,
                 asOf(requestedAsOf),
-                Boolean.TRUE.equals(learner.getFollowLearningPlans()),
+                com.skillpilot.backend.completion.CompletionNavigationPolicy.followsPlans(learner),
                 learner.getActiveGoalId());
         return detail(evaluation.summary(), evaluation.blocks());
     }
@@ -859,7 +859,7 @@ public class LearnerLearningPlanService {
 
         learners.acquireLearningPlanMutationLock(skillpilotId);
         Learner learner = learners.getLearner(skillpilotId);
-        if (!Boolean.TRUE.equals(learner.getFollowLearningPlans())) {
+        if (!com.skillpilot.backend.completion.CompletionNavigationPolicy.followsPlans(learner)) {
             throw conflict("Following learning plans is not enabled for this learner");
         }
         LearnerLearningPlan plan = requireCurrentPlan(skillpilotId, planId, expectedRevision);
@@ -906,7 +906,7 @@ public class LearnerLearningPlanService {
     public LearnerLearningPlanApi.TransitionResponse switchPersonalCurriculumSubject(
             String skillpilotId, String landscapeId) {
         learners.acquireLearningPlanMutationLock(skillpilotId);
-        if (!Boolean.TRUE.equals(learners.getLearner(skillpilotId).getFollowLearningPlans())
+        if (!com.skillpilot.backend.completion.CompletionNavigationPolicy.followsPlans(learners.getLearner(skillpilotId))
                 || !learners.getPersonalCurriculumSubjectIds(skillpilotId).contains(landscapeId)) {
             throw conflict("Subject is not in the current personal curriculum");
         }
@@ -937,7 +937,7 @@ public class LearnerLearningPlanService {
         String previousActiveGoalId = learner.getActiveGoalId();
         Map<String, Double> mastery = learners.getMastery(skillpilotId);
 
-        if (!Boolean.TRUE.equals(learner.getFollowLearningPlans())
+        if (!com.skillpilot.backend.completion.CompletionNavigationPolicy.followsPlans(learner)
                 || (previousActiveGoalId != null
                         && !previousActiveGoalId.isBlank()
                         && mastery.getOrDefault(previousActiveGoalId, 0.0) < MASTERY_THRESHOLD)) {
@@ -1041,7 +1041,7 @@ public class LearnerLearningPlanService {
         }
         learners.acquireLearningPlanMutationLock(skillpilotId);
         Learner learner = learners.getLearner(skillpilotId);
-        if (!Boolean.TRUE.equals(learner.getFollowLearningPlans())) {
+        if (!com.skillpilot.backend.completion.CompletionNavigationPolicy.followsPlans(learner)) {
             throw conflict("Following learning plans is not enabled for this learner");
         }
 

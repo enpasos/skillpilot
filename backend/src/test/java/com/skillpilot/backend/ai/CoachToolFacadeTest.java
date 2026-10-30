@@ -24,6 +24,7 @@ import com.skillpilot.backend.api.VerifiedRecallBatchResultResponse;
 import com.skillpilot.backend.api.VerifiedRecallResultRequest;
 import com.skillpilot.backend.api.VerifiedRecallResultResponse;
 import com.skillpilot.backend.domain.CopySource;
+import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.content.ContentMaterialResolver;
 import com.skillpilot.backend.landscape.ExamData;
 import com.skillpilot.backend.landscape.LandscapeSummary;
@@ -46,6 +47,7 @@ import org.springframework.web.server.ResponseStatusException;
 class CoachToolFacadeTest {
 
     private LearnerService learnerService;
+    private Learner ordinaryLearner;
     private ChatSessionService chatSessionService;
     private LearnerLifecycleService learnerLifecycle;
     private CoachToolFacade facade;
@@ -53,6 +55,10 @@ class CoachToolFacadeTest {
     @BeforeEach
     void setUp() {
         learnerService = mock(LearnerService.class);
+        ordinaryLearner = new Learner();
+        ordinaryLearner.setSkillpilotId("learner-1");
+        when(learnerService.getLearner("learner-1")).thenReturn(ordinaryLearner);
+        when(learnerService.completionRouteOwnsNavigation(ordinaryLearner)).thenCallRealMethod();
         chatSessionService = mock(ChatSessionService.class);
         learnerLifecycle = mock(LearnerLifecycleService.class);
         org.mockito.Mockito.doAnswer(invocation -> {
@@ -118,6 +124,8 @@ class CoachToolFacadeTest {
         ordered.verify(chatSessionService).resolveSkillpilotIdWithoutActivity(sessionToken);
         ordered.verify(learnerService).assertActiveLearnerRouteAccess(skillpilotId);
         ordered.verify(learnerService).assertWritableLearningSession(skillpilotId);
+        ordered.verify(learnerService).getLearner(skillpilotId);
+        ordered.verify(learnerService).completionRouteOwnsNavigation(ordinaryLearner);
         ordered.verify(learnerService).getCoachLearnerState(skillpilotId);
         ordered.verify(learnerService).setActiveGoal(skillpilotId, goalId);
         ordered.verify(learnerService).getCoachLearnerState(skillpilotId);
@@ -139,6 +147,8 @@ class CoachToolFacadeTest {
         assertThat(result).isSameAs(currentState);
         InOrder ordered = inOrder(learnerService);
         ordered.verify(learnerService).assertWritableLearningSession(skillpilotId);
+        ordered.verify(learnerService).getLearner(skillpilotId);
+        ordered.verify(learnerService).completionRouteOwnsNavigation(ordinaryLearner);
         ordered.verify(learnerService).getCoachLearnerState(skillpilotId);
         ordered.verify(learnerService).setActiveGoal(skillpilotId, successor.id());
         ordered.verify(learnerService).getCoachLearnerState(skillpilotId);
@@ -182,6 +192,8 @@ class CoachToolFacadeTest {
 
         verify(learnerService, org.mockito.Mockito.times(2)).assertActiveLearnerRouteAccess(skillpilotId);
         verify(learnerService).getAvailableBaseCurricula(false);
+        verify(learnerService).getLearner(skillpilotId);
+        verify(learnerService).completionRouteOwnsNavigation(ordinaryLearner);
         verify(learnerService).getScopeNavigationOptions(skillpilotId);
         verifyNoMoreInteractions(chatSessionService, learnerService);
     }
@@ -227,6 +239,7 @@ class CoachToolFacadeTest {
         assertThat(requestCaptor.getValue().goalId()).isEqualTo(goalId);
         assertThat(requestCaptor.getValue().mastery()).containsExactlyEntriesOf(Map.of(goalId, 1.0));
         verify(learnerService).assertWritableLearningSession(skillpilotId);
+        verify(learnerService).assertCompletionAssessmentOwner(skillpilotId, goalId);
         verify(learnerService).getCoachLearnerState(skillpilotId);
         verifyNoMoreInteractions(chatSessionService, learnerService);
     }
@@ -249,6 +262,7 @@ class CoachToolFacadeTest {
         verify(chatSessionService).resolveSkillpilotIdWithoutActivity(sessionToken);
         verify(learnerService).assertActiveLearnerRouteAccess(skillpilotId);
         verify(learnerService).assertWritableLearningSession(skillpilotId);
+        verify(learnerService).assertCompletionAssessmentOwner(skillpilotId, "goal-1");
         verify(learnerService).getCoachLearnerState(skillpilotId);
         verifyNoMoreInteractions(chatSessionService, learnerService);
     }
@@ -443,6 +457,7 @@ class CoachToolFacadeTest {
         });
         verify(learnerService).assertActiveLearnerRouteAccess(skillpilotId);
         verify(learnerService).getCoachLearnerState(skillpilotId);
+        verify(learnerService).assertCompletionAssessmentOwner(skillpilotId, examGoal.id());
         verifyNoMoreInteractions(chatSessionService, learnerService);
     }
 
@@ -464,6 +479,7 @@ class CoachToolFacadeTest {
         ordered.verify(chatSessionService).resolveSkillpilotIdWithoutActivity(sessionToken);
         ordered.verify(learnerService).assertActiveLearnerRouteAccess(skillpilotId);
         ordered.verify(learnerService).getCoachLearnerState(skillpilotId);
+        ordered.verify(learnerService).assertCompletionAssessmentOwner(skillpilotId, examGoal.id());
         verifyNoMoreInteractions(chatSessionService, learnerService);
     }
 

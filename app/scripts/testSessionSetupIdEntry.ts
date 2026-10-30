@@ -175,15 +175,16 @@ assert(
 )
 
 assert(
-  learnerViewSource.includes('let localRestoreComplete = true')
-    && learnerViewSource.includes('localRestoreComplete = persisted.every(Boolean)')
-    && learnerViewSource.includes('t.notifications.learnerImportPartial'),
-  'a partial local flashcard restore is not reported as a complete backup import',
+  learnerViewSource.indexOf('hasUnsignedLegacySrsData(json)')
+    < learnerViewSource.indexOf('const payloadToSend: unknown = json.serverExport ?? json')
+    && !learnerViewSource.includes('clientDataToRestore')
+    && learnerViewSource.includes('queueToastForNextLoad(\'success\', t.notifications.learnerImported)'),
+  'legacy flashcard archives are checked before the atomic server import; no unsigned follow-up restore can report partial success',
 )
 assert(
-  germanLocaleSource.includes('Die signierten serverseitigen Lerndaten wurden importiert')
-    && englishLocaleSource.includes('The signed server-side learner data was imported'),
-  'partial import outcomes are explained consistently in German and English',
+  learnerViewSource.includes('Diese ältere Sicherung kann die Lernkartenerfolge nicht zuverlässig wiederherstellen')
+    && learnerViewSource.includes('This older backup cannot reliably restore flashcard achievements'),
+  'an unrestorable legacy flashcard archive has an explanation in German and English',
 )
 
 console.log('fresh SkillPilot ID entry tests passed')

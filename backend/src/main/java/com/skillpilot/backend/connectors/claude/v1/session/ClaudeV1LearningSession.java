@@ -9,6 +9,11 @@ public record ClaudeV1LearningSession(
         Instant startedAt,
         Instant expiresAt,
         String communicationLocale,
-        long stateVersion) {
+        long stateVersion,
+        String completionContract) {
+    public ClaudeV1LearningSession(String tokenHash, String learnerId, Instant startedAt,
+            Instant expiresAt, String communicationLocale, long stateVersion) {
+        this(tokenHash, learnerId, startedAt, expiresAt, communicationLocale, stateVersion, null);
+    }
 }
 
