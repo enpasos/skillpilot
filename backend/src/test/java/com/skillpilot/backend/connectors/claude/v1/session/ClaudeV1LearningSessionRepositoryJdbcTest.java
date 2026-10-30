@@ -27,13 +27,14 @@ class ClaudeV1LearningSessionRepositoryJdbcTest {
 
         verify(jdbc).update(
                 "INSERT INTO claude_v1_learning_session (token_hash, learner_id, started_at, "
-                        + "expires_at, communication_locale, state_version) VALUES (?, ?, ?, ?, ?, ?)",
+                        + "expires_at, communication_locale, state_version, completion_contract) VALUES (?, ?, ?, ?, ?, ?, ?)",
                 "token-hash",
                 "learner-id",
                 Timestamp.from(startedAt),
                 Timestamp.from(expiresAt),
                 "de",
-                17L);
+                17L,
+                null);
     }
 
     @Test

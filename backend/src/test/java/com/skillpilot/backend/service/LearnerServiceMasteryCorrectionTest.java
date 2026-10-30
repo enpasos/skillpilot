@@ -5,11 +5,11 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
-import com.skillpilot.backend.api.MasteryUpdateResponse;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.LearningState;
 import com.skillpilot.backend.domain.Mastery;
@@ -25,7 +25,10 @@ import java.util.Map;
 import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
 class LearnerServiceMasteryCorrectionTest {
@@ -93,16 +96,30 @@ class LearnerServiceMasteryCorrectionTest {
         verify(masteryRepository).save(existingMastery);
     }
 
-    @Test
-    void setMastery_confirmsAlreadyMasteredGoalOutsideFrontierWithoutAmbiguousStateOnlyResponse() {
-        MasteryUpdateResponse response = learnerService.setMastery(
-                LEARNER_ID,
-                new MasteryUpdateRequest(Map.of(GOAL_ID, 1.0), GOAL_ID));
+    @ParameterizedTest
+    @ValueSource(doubles = {1.0, 0.95, 0.9})
+    void setMastery_rejectsNewRequestOutsideFrontierEvenWhenMasteryAlreadyExists(double storedMastery) {
+        existingMastery.setValue(storedMastery);
+        long revision = learner.getCoachStateRevision();
 
-        assertThat(response.saved()).isTrue();
-        assertThat(response.savedGoalId()).isEqualTo(GOAL_ID);
-        assertThat(response.savedMastery()).isEqualTo(1.0);
+        // Only a coordinator's matching request identity can replay a success.
+        // Existing mastery, including legacy values, cannot authorize a new write.
+        assertThatThrownBy(() -> learnerService.setMastery(
+                LEARNER_ID,
+                new MasteryUpdateRequest(Map.of(GOAL_ID, 1.0), GOAL_ID)))
+                .isInstanceOfSatisfying(ResponseStatusException.class, exception -> {
+                    assertThat(exception.getStatusCode()).isEqualTo(HttpStatus.CONFLICT);
+                    assertThat(exception.getReason()).contains("current frontier");
+                });
+
+        assertThat(learnerService.getMastery(LEARNER_ID)).containsEntry(GOAL_ID, storedMastery);
+        assertThat(existingMastery.getValue()).isEqualTo(storedMastery);
+        assertThat(learner.getActiveGoalId()).isNull();
+        assertThat(learner.getLearningState()).isEqualTo(LearningState.FRONTIER);
+        assertThat(learner.getCoachStateRevision()).isEqualTo(revision);
         verify(masteryRepository, never()).save(any(Mastery.class));
+        verify(learnerRepository, never()).save(any(Learner.class));
+        verifyNoInteractions(eventPublisher);
     }
 
     @Test

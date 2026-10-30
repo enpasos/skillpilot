@@ -28,6 +28,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.transaction.TestTransaction;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
 
 @SpringBootTest
 @ActiveProfiles("test")
@@ -62,10 +63,10 @@ class LearnerGoalCompletionIntegrationTest {
     }
 
     @Test
-    void partialWorkCompletionReplayAndResetKeepOneImmutableEvent() {
-        writeMastery(0.5);
+    void binaryCompletionReplayAndResetKeepOneImmutableEvent() {
+        writeMastery(0.0);
         assertThat(service.getGoalCompletionsOnDate(learnerId, DAY)).isEmpty();
-        writeMastery(0.9);
+        writeMastery(1.0);
         assertThat(service.getGoalCompletionsOnDate(learnerId, DAY)).containsExactly(Map.entry(GOAL, FIRST));
 
         setTime(FIRST.plusSeconds(600));
@@ -82,6 +83,19 @@ class LearnerGoalCompletionIntegrationTest {
         writeMastery(1.0);
         assertThat(service.getGoalCompletionsOnDate(learnerId, DAY)).containsExactly(Map.entry(GOAL, FIRST));
         assertThat(completions.findByLearner_SkillpilotIdOrderByOccurredAtDesc(learnerId)).hasSize(1);
+    }
+
+    @Test
+    void fractionalWritesCannotCreateMasteryOrCompletionCredit() {
+        for (double value : new double[] {0.5, 0.9, 0.95}) {
+            assertThatThrownBy(() -> writeMastery(value))
+                    .isInstanceOfSatisfying(ResponseStatusException.class, exception -> {
+                        assertThat(exception.getStatusCode().value()).isEqualTo(400);
+                        assertThat(exception.getReason()).isEqualTo("Learning goals use binary mastery: 0 or 1.");
+                    });
+            assertThat(mastery.findById(new MasteryId(learnerId, GOAL))).isEmpty();
+            assertThat(completions.findByLearner_SkillpilotIdOrderByOccurredAtDesc(learnerId)).isEmpty();
+        }
     }
 
     @Test

@@ -28,6 +28,7 @@ import com.skillpilot.backend.api.VerifiedRecallPromptResponse;
 import com.skillpilot.backend.api.VerifiedRecallResultRequest;
 import com.skillpilot.backend.api.VerifiedRecallResultResponse;
 import com.skillpilot.backend.api.VerifiedRecallStartRequest;
+import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.landscape.ExamData;
 import com.skillpilot.backend.landscape.LandscapeSummary;
 import com.skillpilot.backend.service.ChatSessionService;
@@ -52,12 +53,17 @@ import java.util.function.Supplier;
 class LearnerAiControllerTest {
 
     private LearnerService learnerService;
+    private Learner ordinaryLearner;
     private ChatSessionService chatSessionService;
     private LearnerAiController controller;
 
     @BeforeEach
     void setUp() {
         learnerService = mock(LearnerService.class);
+        ordinaryLearner = new Learner();
+        ordinaryLearner.setSkillpilotId("learner-1");
+        when(learnerService.getLearner("learner-1")).thenReturn(ordinaryLearner);
+        when(learnerService.completionRouteOwnsNavigation(ordinaryLearner)).thenCallRealMethod();
         chatSessionService = mock(ChatSessionService.class);
         LearnerLifecycleService learnerLifecycle = mock(LearnerLifecycleService.class);
         org.mockito.Mockito.doAnswer(invocation -> {
@@ -136,6 +142,8 @@ class LearnerAiControllerTest {
 
         InOrder ordered = inOrder(learnerService);
         ordered.verify(learnerService).assertWritableLearningSession(skillpilotId);
+        ordered.verify(learnerService).getLearner(skillpilotId);
+        ordered.verify(learnerService).completionRouteOwnsNavigation(ordinaryLearner);
         ordered.verify(learnerService).getCoachLearnerState(skillpilotId);
         ordered.verify(learnerService).setActiveGoal(skillpilotId, nextGoalId);
         ordered.verify(learnerService).getCoachLearnerState(skillpilotId);
@@ -171,6 +179,7 @@ class LearnerAiControllerTest {
 
         InOrder ordered = inOrder(learnerService);
         ordered.verify(learnerService).assertWritableLearningSession(skillpilotId);
+        ordered.verify(learnerService).assertCompletionAssessmentOwner(skillpilotId, goalId);
         ordered.verify(learnerService).getCoachLearnerState(skillpilotId);
         ordered.verify(learnerService).setActiveGoal(skillpilotId, goalId);
         ordered.verify(learnerService).getCoachLearnerState(skillpilotId);
@@ -220,6 +229,7 @@ class LearnerAiControllerTest {
         assertThat(body.savedMastery()).isEqualTo(1.0);
 
         verify(learnerService).assertWritableLearningSession(skillpilotId);
+        verify(learnerService).assertCompletionAssessmentOwner(skillpilotId, goalId);
         verify(learnerService).getCoachLearnerState(skillpilotId);
         verify(learnerService).setMastery(eq(skillpilotId), any(MasteryUpdateRequest.class));
         verifyNoMoreInteractions(learnerService);
@@ -278,6 +288,7 @@ class LearnerAiControllerTest {
         assertThat(body.stateMachine().requiredAction()).isEqualTo("teachActiveGoal");
 
         verify(learnerService).assertWritableLearningSession(skillpilotId);
+        verify(learnerService).assertCompletionAssessmentOwner(skillpilotId, currentGoalId);
         verify(learnerService).getCoachLearnerState(skillpilotId);
         verify(learnerService).setMastery(eq(skillpilotId), any(MasteryUpdateRequest.class));
         verifyNoMoreInteractions(learnerService);
