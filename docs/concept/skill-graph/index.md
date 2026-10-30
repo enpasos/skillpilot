@@ -16,6 +16,9 @@ learning stages. This section explains both the graph and the contracts around i
 - [Assessment-Gated Completion and Prerequisite Discharge](assessment-gated-completion.md):
   proposed level completion and work waivers calculated from existing mastery,
   reviewed static rules and a fixed scope, without additional stored goal results.
+  [Umsetzungsplan](../../dev/assessment-gated-completion-implementation-plan.md):
+  implementation design for the backend, Cockpit and learning coach, including
+  performance, consistency and staged acceptance.
 - [Curriculum Levels](curriculum-levels.md): ordered learning stages with
   prerequisite-consistent targets and a feasible workload, including school
   years across subjects and the knowledge-building metaphor.
