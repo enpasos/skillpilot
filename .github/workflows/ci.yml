@@ -180,6 +180,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          # Claude validation needs its complete release history and backend
+          # resources, but not the multi-gigabyte curriculum/media checkout.
+          sparse-checkout: |
+            .github/workflows
+            ai/claude
+            backend
+            scripts
       - name: Use Node.js
         uses: actions/setup-node@v6
         with:

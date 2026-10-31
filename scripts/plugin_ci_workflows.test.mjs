@@ -141,6 +141,40 @@ test('Claude package and publication validation remains independent', () => {
   ]) assert(marketplace.includes(command), `Marketplace check missing: ${command}`)
 })
 
+test('Claude checkout retains release verification inputs without unrelated curriculum media', () => {
+  const job = ci.split('\n  claude-connector-v1-ci:\n')[1]?.split(/\n  [\w-]+:/u)[0]
+  assert.ok(job, 'Missing Claude CI job')
+  const patterns = job.match(/          sparse-checkout: \|\n((?:            .+\n)+)/u)?.[1]
+    .trim().split('\n').map(line => line.trim())
+  assert.ok(patterns?.length, 'Claude checkout must stay bounded before dependency installation')
+  const includes = (path) => patterns.some(prefix => path === prefix || path.startsWith(`${prefix}/`))
+  for (const path of [
+    'ai/claude/app',
+    'ai/claude/connector-v1',
+    'ai/claude/plugin/skillpilot-coach-v1/release/history',
+    'backend/build.gradle.kts',
+    'backend/src/main/resources/claude-connector-v1',
+    'backend/src/main/resources/claude-plugin-publication',
+    'scripts/claude_direct_install_beta_release.test.mjs',
+    'scripts/check_claude_plugin_v1_release.mjs',
+    'scripts/generate_claude_plugin_publication.mjs',
+    'scripts/deploy.sh',
+  ]) assert.ok(includes(path), `Missing Claude verification input: ${path}`)
+  for (const path of ['curricula', 'app/public', 'qa-artifacts']) {
+    assert.equal(includes(path), false, `Unrelated large checkout: ${path}`)
+  }
+  for (const command of [
+    'npm --prefix ai/claude/app test',
+    'npm --prefix ai/claude/app audit --audit-level=moderate',
+    'git diff --exit-code --',
+    'node --test ai/claude/plugin/skillpilot-coach-v1/check-package.test.mjs',
+    'node --test ai/claude/plugin/skillpilot-coach-v1/build-package.test.mjs',
+    'node --test scripts/claude_direct_install_beta_release.test.mjs',
+    'node scripts/claude_direct_install_beta_release.mjs verify',
+  ]) assert.ok(job.includes(command), `Missing Claude gate: ${command}`)
+  assert.doesNotMatch(job, /continue-on-error/u)
+})
+
 test('CI retains reproducible non-secret submission worksheets and ZIP after validation and audit', () => {
   const upload = ci.match(/      - name: Retain checked OpenAI submission worksheets\n([\s\S]*?)(?=\n  [\w-]+:)/u)?.[1]
   assert.ok(upload, 'Missing prepared submission artifact')
