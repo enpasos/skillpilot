@@ -45,7 +45,7 @@ class CompletionPackageLoaderTest {
         GoalMappingService mappings = mock(GoalMappingService.class);
         DeckResourceService decks = mock(DeckResourceService.class);
         var catalog = new CompletionProfileCatalog(properties, mapper, landscapes, mappings, decks,
-                true, PROFILE, "package", snapshots);
+                true, "", "package", snapshots);
         assertThat(catalog.available()).isTrue();
         assertThat(catalog.generation()).isEqualTo(snapshot.generationSha256());
         assertThat(catalog.profiles()).containsOnlyKeys(PROFILE);

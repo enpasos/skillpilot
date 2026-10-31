@@ -69,14 +69,18 @@ class ClaudeV1McpContractTest {
     }
 
     @Test
-    void publishesExactlyTheFourteenApprovedTools() {
+    void publishesTheFourteenCoreToolsAndTheTwoCompletionToolsByDefault() {
         List<McpStatelessServerFeatures.SyncToolSpecification> tools = contractAdapter.toolSpecifications();
-        assertEquals(14, tools.size());
+        assertEquals(16, tools.size());
 
         Set<String> published = tools.stream()
                 .map(specification -> specification.tool().name())
                 .collect(Collectors.toSet());
-        assertEquals(Set.copyOf(ClaudeV1Contract.ALL_TOOL_NAMES), published);
+        Set<String> expected = new LinkedHashSet<>(ClaudeV1Contract.ALL_TOOL_NAMES);
+        assertEquals(14, expected.size());
+        expected.add(ClaudeV1CompletionContractRegistry.TOOL_CONFIRM);
+        expected.add(ClaudeV1McpContractAdapter.TOOL_CHOOSE_COMPLETION_ROUTE);
+        assertEquals(expected, published);
 
         // Level 2 configuration remains out of scope for Claude v1.
         assertFalse(published.contains("set_skillpilot_curriculum"));
@@ -110,7 +114,8 @@ class ClaudeV1McpContractTest {
             boolean expectedReadOnly = ClaudeV1Contract.READ_TOOL_NAMES.contains(tool.name());
             assertEquals(expectedReadOnly, annotations.readOnlyHint(), () -> "readOnlyHint: " + tool.name());
             boolean expectedDestructive = !expectedReadOnly
-                    && !ClaudeV1Contract.TOOL_REVIEW_MEMORY_PRACTICE_CARD.equals(tool.name());
+                    && !ClaudeV1Contract.TOOL_REVIEW_MEMORY_PRACTICE_CARD.equals(tool.name())
+                    && !ClaudeV1CompletionContractRegistry.TOOL_CONFIRM.equals(tool.name());
             assertEquals(expectedDestructive, annotations.destructiveHint(), () -> "destructiveHint: " + tool.name());
             assertEquals(Boolean.TRUE, annotations.idempotentHint(), () -> "idempotentHint: " + tool.name());
             assertEquals(Boolean.FALSE, annotations.openWorldHint(), () -> "openWorldHint: " + tool.name());
@@ -145,7 +150,7 @@ class ClaudeV1McpContractTest {
     }
 
     @Test
-    void readAndWriteToolSetsCoverTheWholeCatalogue() {
+    void readAndWriteToolSetsCoverTheUnchangedCoreCatalogue() {
         Set<String> classified = new java.util.HashSet<>(ClaudeV1Contract.READ_TOOL_NAMES);
         classified.addAll(ClaudeV1Contract.WRITE_TOOL_NAMES);
         assertEquals(Set.copyOf(ClaudeV1Contract.ALL_TOOL_NAMES), classified);

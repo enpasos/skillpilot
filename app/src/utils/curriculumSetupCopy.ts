@@ -33,9 +33,14 @@ export interface PersonalCurriculumSetupCopy extends SharedCurriculumSetupCopy {
   periodBasisWeek: string
   strictModeTitle: string
   strictModeDescription: string
+  useAssessmentShortcutsTitle: string
+  useAssessmentShortcutsDescription: string
+  assessmentShortcutAttemptEnds: string
   showGoalVisualizationsInChatTitle: string
   showGoalVisualizationsInChatDescription: string
   savePending: string
+  saveFailed: string
+  saveCommittedReloadFailed: string
   doneAction: string
   compatibility: CompatibilitySetupCopy
 }
@@ -106,9 +111,14 @@ export const getPersonalCurriculumSetupCopy = (
         periodBasisWeek: '1 Woche',
         strictModeTitle: 'Strict Mode aktivieren',
         strictModeDescription: 'Prüft alle Voraussetzungen global, auch außerhalb deines aktuellen Fokus.',
+        useAssessmentShortcutsTitle: 'Abkürzungen durch bestandene Prüfungen nutzen',
+        useAssessmentShortcutsDescription: 'Ermöglicht direkte Prüfungsversuche und lässt passende Vorbereitung für einen Lernabschnitt nach bestandener Prüfung entfallen. Ausgeschaltet bearbeitest du die Lernziele regulär. Dein gespeicherter Lernstand bleibt unverändert.',
+        assessmentShortcutAttemptEnds: 'Beim Speichern beendest du den laufenden direkten Prüfungsversuch. Dein Lernstand bleibt unverändert.',
         showGoalVisualizationsInChatTitle: 'Lernzielbilder im Chat anzeigen',
         showGoalVisualizationsInChatDescription: 'Zeigt verfügbare Bilder zu atomaren Lernzielen direkt im Chat.',
         savePending: 'Speichert...',
+        saveFailed: 'Deine Einstellungen konnten nicht gespeichert werden. Bitte versuche es erneut.',
+        saveCommittedReloadFailed: 'Deine Einstellungen wurden gespeichert. Die aktuelle Ansicht konnte nicht vollständig geladen werden. Mit „Fertig“ kannst du das Laden erneut versuchen.',
         doneAction: 'Fertig',
         compatibility: {
           title: 'Kompatibilitätsansichten',
@@ -136,9 +146,14 @@ export const getPersonalCurriculumSetupCopy = (
         periodBasisWeek: '1 week',
         strictModeTitle: 'Enable strict mode',
         strictModeDescription: 'Checks all prerequisites globally, even outside your current focus.',
+        useAssessmentShortcutsTitle: 'Use shortcuts through passed assessments',
+        useAssessmentShortcutsDescription: 'Allows direct assessment attempts and waives eligible preparation for a learning section after an assessment is passed. When disabled, you work through goals normally. Your saved learning progress stays unchanged.',
+        assessmentShortcutAttemptEnds: 'Saving ends the current direct assessment attempt. Your learning progress stays unchanged.',
         showGoalVisualizationsInChatTitle: 'Show learning-goal images in chat',
         showGoalVisualizationsInChatDescription: 'Displays available images for atomic learning goals directly in chat.',
         savePending: 'Saving...',
+        saveFailed: 'Your settings could not be saved. Please try again.',
+        saveCommittedReloadFailed: 'Your settings were saved. The current view could not be fully reloaded. Select “Done” to retry loading.',
         doneAction: 'Done',
         compatibility: {
           title: 'Compatibility Views',

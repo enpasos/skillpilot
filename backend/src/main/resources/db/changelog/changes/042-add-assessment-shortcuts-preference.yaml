@@ -1,0 +1,18 @@
+databaseChangeLog:
+  - changeSet:
+      id: 042-add-assessment-shortcuts-preference
+      author: skillpilot
+      changes:
+        - addColumn:
+            tableName: learner
+            columns:
+              - column:
+                  name: use_assessment_shortcuts
+                  type: BOOLEAN
+                  defaultValueBoolean: true
+                  constraints:
+                    nullable: false
+      rollback:
+        - dropColumn:
+            tableName: learner
+            columnName: use_assessment_shortcuts

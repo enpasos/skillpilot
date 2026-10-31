@@ -327,6 +327,42 @@ public class LearnerServiceTest {
         assertThat(learnerService.getClientState(learnerId, "recall-node").srsState()).isEqualTo(cards);
     }
 
+    abstract static class PreAssessmentShortcutLearnerJson {
+        @com.fasterxml.jackson.annotation.JsonIgnore
+        abstract Boolean getUseAssessmentShortcuts();
+    }
+
+    @Test
+    void legacyAssessmentShortcutArchiveSignatureSurvivesAndExplicitOptOutRoundTrips() throws Exception {
+        Learner source = learnerService.createLearner();
+        var exported = learnerService.exportLearner(source.getSkillpilotId());
+        // Independently reproduce the old format: the property did not exist at all.
+        ObjectMapper oldMapper = objectMapper.copy().addMixIn(Learner.class, PreAssessmentShortcutLearnerJson.class);
+        String oldPayload = oldMapper.writeValueAsString(exported.data());
+        assertThat(oldPayload).doesNotContain("useAssessmentShortcuts");
+        String secret = (String) ReflectionTestUtils.getField(learnerService, "signingSecret");
+        javax.crypto.Mac mac = javax.crypto.Mac.getInstance("HmacSHA256");
+        mac.init(new javax.crypto.spec.SecretKeySpec(secret.getBytes(java.nio.charset.StandardCharsets.UTF_8), "HmacSHA256"));
+        String oldSignature = java.util.HexFormat.of().formatHex(mac.doFinal(oldPayload.getBytes(java.nio.charset.StandardCharsets.UTF_8)));
+        var imported = objectMapper.readValue(oldPayload, com.skillpilot.backend.api.LearnerDataDTO.class);
+        learnerService.importLearner(learnerId, new com.skillpilot.backend.api.SignedLearnerDataDTO(imported, oldSignature));
+        assertThat(learnerService.getLearner(learnerId).getUseAssessmentShortcuts()).isTrue();
+
+        learnerService.setPreferences(source.getSkillpilotId(), null, null, null, null, null, null, false);
+        var disabledExport = learnerService.exportLearner(source.getSkillpilotId());
+        String disabledJson = objectMapper.writeValueAsString(disabledExport);
+        assertThat(disabledJson).contains("\"useAssessmentShortcuts\":false");
+        var disabledRoundTrip = objectMapper.readValue(disabledJson, com.skillpilot.backend.api.SignedLearnerDataDTO.class);
+        learnerService.importLearner(learnerId, disabledRoundTrip);
+        assertThat(learnerService.getLearner(learnerId).getUseAssessmentShortcuts()).isFalse();
+        // Tampering with the opt-out is still detected; compatibility never weakens signatures.
+        var tampered = objectMapper.readValue(disabledJson.replace("\"useAssessmentShortcuts\":false", "\"useAssessmentShortcuts\":true"),
+                com.skillpilot.backend.api.SignedLearnerDataDTO.class);
+        assertThatThrownBy(() -> learnerService.importLearner(learnerId, tampered))
+                .isInstanceOf(ResponseStatusException.class).hasMessageContaining("Invalid data signature");
+        assertThat(learnerService.getLearner(learnerId).getUseAssessmentShortcuts()).isFalse();
+    }
+
     @Test
     void anOlderSignedCardBackupCannotEraseAnAlreadySavedRecallSuccess() {
         Map<String, Object> verified = Map.of("status", "passed", "passedAt", "2026-10-01T10:00:00Z");

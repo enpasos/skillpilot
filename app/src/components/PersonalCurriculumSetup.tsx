@@ -24,6 +24,7 @@ import {
 } from '../utils/filterLabels'
 import { normalizeJurisdictionCode } from '../utils/jurisdictionMetadata'
 import { getPersonalCurriculumSetupCopy } from '../utils/curriculumSetupCopy'
+import { PreferencesReloadError, type PersonalCurriculumPreferences } from '../utils/personalCurriculumPreferences'
 import {
     PersonalCurriculumEditor,
 } from './PersonalCurriculumEditor'
@@ -48,15 +49,6 @@ interface PersonalCurriculumConfig {
     }
 }
 
-interface PersonalCurriculumPreferences {
-    strategy: 'RANDOM' | 'SEQUENTIAL'
-    autoPilot: boolean
-    followLearningPlans: boolean
-    /** Day or week basis for the plan status; stored per SkillPilot-ID, never per client. */
-    learningPlanPeriodBasis: 'DAY' | 'WEEK'
-    strictMode: boolean
-    showGoalVisualizationsInChat: boolean
-}
 
 const isCompatibilityOnlyLandscape = (landscape: LandscapeSummary) =>
     isCompatibilityOnlyCurriculum(landscape.landscapeId, landscape.compatibilityOnly)
@@ -84,6 +76,8 @@ interface PersonalCurriculumSetupProps {
     initialFollowLearningPlans?: boolean
     initialPeriodBasis?: 'DAY' | 'WEEK'
     initialStrictMode?: boolean
+    initialUseAssessmentShortcuts?: boolean
+    directAssessmentRunning?: boolean
     initialShowGoalVisualizationsInChat?: boolean
     personalizationEditor?: PersonalCurriculumEditorProps
     /** Separate optional settings; saving these must not rewrite the curriculum. */
@@ -105,12 +99,16 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     initialFollowLearningPlans = false,
     initialPeriodBasis = 'WEEK',
     initialStrictMode = false,
+    initialUseAssessmentShortcuts = true,
+    directAssessmentRunning = false,
     initialShowGoalVisualizationsInChat = true,
     personalizationEditor,
     materialSettings,
     materialSettingsBusy = false,
 }) => {
     const titleId = React.useId()
+    const shortcutDescriptionId = React.useId()
+    const shortcutAttemptHintId = React.useId()
     const { language } = useLanguage()
     const localizedLanguage = language === 'en' ? 'en' : 'de'
     const setupCopy = getPersonalCurriculumSetupCopy(localizedLanguage)
@@ -188,11 +186,14 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     const [followLearningPlans, setFollowLearningPlans] = useState<boolean>(initialFollowLearningPlans)
     const [periodBasis, setPeriodBasis] = useState<'DAY' | 'WEEK'>(initialPeriodBasis)
     const [strictMode, setStrictMode] = useState<boolean>(initialStrictMode)
+    const [useAssessmentShortcuts, setUseAssessmentShortcuts] = useState(initialUseAssessmentShortcuts)
     const [showGoalVisualizationsInChat, setShowGoalVisualizationsInChat] = useState<boolean>(
         initialShowGoalVisualizationsInChat,
     )
     const [expanded, setExpanded] = useState<Set<string>>(new Set(initialExpanded))
     const [isApplying, setIsApplying] = useState(false)
+    const [applyError, setApplyError] = useState<string | null>(null)
+    const dirtyPreferences = React.useRef(new Set<keyof PersonalCurriculumPreferences>())
     const stageScopeOptions = React.useMemo(
         () => getGlobalStageScopeOptions(localizedLanguage),
         [localizedLanguage],
@@ -205,12 +206,22 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     const [showCompatibilityChildren, setShowCompatibilityChildren] = useState(shouldAutoRevealCompatibility)
 
     React.useEffect(() => {
-        setStrategy(initialStrategy)
-        setAutoPilot(initialAutoPilot)
-        setFollowLearningPlans(initialFollowLearningPlans)
-        setPeriodBasis(initialPeriodBasis)
-        setStrictMode(initialStrictMode)
-        setShowGoalVisualizationsInChat(initialShowGoalVisualizationsInChat)
+        if (!isOpen) dirtyPreferences.current.clear()
+        // Another tab may update saved preferences while this dialog is open.
+        // Refresh untouched fields without discarding the learner's own edits.
+        const sync = <T,>(key: keyof PersonalCurriculumPreferences, saved: T, set: React.Dispatch<React.SetStateAction<T>>) => {
+            set(current => {
+                if (current === saved) dirtyPreferences.current.delete(key)
+                return dirtyPreferences.current.has(key) ? current : saved
+            })
+        }
+        sync('strategy', initialStrategy, setStrategy)
+        sync('autoPilot', initialAutoPilot, setAutoPilot)
+        sync('followLearningPlans', initialFollowLearningPlans, setFollowLearningPlans)
+        sync('learningPlanPeriodBasis', initialPeriodBasis, setPeriodBasis)
+        sync('strictMode', initialStrictMode, setStrictMode)
+        sync('useAssessmentShortcuts', initialUseAssessmentShortcuts, setUseAssessmentShortcuts)
+        sync('showGoalVisualizationsInChat', initialShowGoalVisualizationsInChat, setShowGoalVisualizationsInChat)
     }, [
         initialAutoPilot,
         initialFollowLearningPlans,
@@ -218,31 +229,42 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
         initialShowGoalVisualizationsInChat,
         initialStrategy,
         initialStrictMode,
+        initialUseAssessmentShortcuts,
         isOpen,
     ])
 
-    const handleStrategyChange = (newStrategy: 'RANDOM' | 'SEQUENTIAL') => {
-        setStrategy(newStrategy)
+    const markPreference = (key: keyof PersonalCurriculumPreferences, changed: boolean) => {
+        if (changed) dirtyPreferences.current.add(key)
+        else dirtyPreferences.current.delete(key)
+        setApplyError(null)
     }
-
-    const handleAutoPilotChange = (newAutoPilot: boolean) => {
-        setAutoPilot(newAutoPilot)
+    const handleStrategyChange = (value: 'RANDOM' | 'SEQUENTIAL') => {
+        markPreference('strategy', value !== initialStrategy)
+        setStrategy(value)
     }
-
-    const handleFollowLearningPlansChange = (follow: boolean) => {
-        setFollowLearningPlans(follow)
+    const handleAutoPilotChange = (value: boolean) => {
+        markPreference('autoPilot', value !== initialAutoPilot)
+        setAutoPilot(value)
     }
-
-    const handlePeriodBasisChange = (basis: 'DAY' | 'WEEK') => {
-        setPeriodBasis(basis)
+    const handleFollowLearningPlansChange = (value: boolean) => {
+        markPreference('followLearningPlans', value !== initialFollowLearningPlans)
+        setFollowLearningPlans(value)
     }
-
-    const handleStrictModeChange = (newStrictMode: boolean) => {
-        setStrictMode(newStrictMode)
+    const handlePeriodBasisChange = (value: 'DAY' | 'WEEK') => {
+        markPreference('learningPlanPeriodBasis', value !== initialPeriodBasis)
+        setPeriodBasis(value)
     }
-
-    const handleShowGoalVisualizationsInChatChange = (show: boolean) => {
-        setShowGoalVisualizationsInChat(show)
+    const handleStrictModeChange = (value: boolean) => {
+        markPreference('strictMode', value !== initialStrictMode)
+        setStrictMode(value)
+    }
+    const handleUseAssessmentShortcutsChange = (value: boolean) => {
+        markPreference('useAssessmentShortcuts', value !== initialUseAssessmentShortcuts)
+        setUseAssessmentShortcuts(value)
+    }
+    const handleShowGoalVisualizationsInChatChange = (value: boolean) => {
+        markPreference('showGoalVisualizationsInChat', value !== initialShowGoalVisualizationsInChat)
+        setShowGoalVisualizationsInChat(value)
     }
 
     const toggleSelection = (landscapeId: string, isRoot: boolean) => {
@@ -461,6 +483,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                 return
             }
             setIsApplying(true)
+            setApplyError(null)
             try {
                 await onPreferencesApply({
                     strategy,
@@ -468,9 +491,12 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                     followLearningPlans,
                     learningPlanPeriodBasis: periodBasis,
                     strictMode,
+                    useAssessmentShortcuts,
                     showGoalVisualizationsInChat,
                 })
                 onClose()
+            } catch (error) {
+                setApplyError(error instanceof PreferencesReloadError ? setupCopy.saveCommittedReloadFailed : setupCopy.saveFailed)
             } finally {
                 setIsApplying(false)
             }
@@ -483,6 +509,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
         }
 
         setIsApplying(true)
+        setApplyError(null)
         try {
             await onApply(normalizeDurationScopes(config), {
                 strategy,
@@ -490,9 +517,12 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                 followLearningPlans,
                 learningPlanPeriodBasis: periodBasis,
                 strictMode,
+                useAssessmentShortcuts,
                 showGoalVisualizationsInChat,
             })
             onClose()
+        } catch (error) {
+            setApplyError(error instanceof PreferencesReloadError ? setupCopy.saveCommittedReloadFailed : setupCopy.saveFailed)
         } finally {
             setIsApplying(false)
         }
@@ -868,6 +898,26 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                                 <label className="flex items-center gap-2 cursor-pointer">
                                     <input
                                         type="checkbox"
+                                        checked={useAssessmentShortcuts}
+                                        onChange={(e) => handleUseAssessmentShortcutsChange(e.target.checked)}
+                                        aria-label={setupCopy.useAssessmentShortcutsTitle}
+                                        aria-describedby={directAssessmentRunning && !useAssessmentShortcuts
+                                            ? `${shortcutDescriptionId} ${shortcutAttemptHintId}`
+                                            : shortcutDescriptionId}
+                                        className="w-4 h-4 rounded text-sky-600 focus:ring-sky-500 border-gray-300 bg-white dark:bg-slate-800 dark:border-slate-600"
+                                    />
+                                    <div>
+                                        <span className="text-sm font-medium text-text-primary">{setupCopy.useAssessmentShortcutsTitle}</span>
+                                        <p id={shortcutDescriptionId} className="text-xs text-text-secondary">{setupCopy.useAssessmentShortcutsDescription}</p>
+                                        {directAssessmentRunning && !useAssessmentShortcuts ? (
+                                            <p id={shortcutAttemptHintId} className="mt-1 text-xs text-amber-700 dark:text-amber-300" role="status">{setupCopy.assessmentShortcutAttemptEnds}</p>
+                                        ) : null}
+                                    </div>
+                                </label>
+
+                                <label className="flex items-center gap-2 cursor-pointer">
+                                    <input
+                                        type="checkbox"
                                         checked={showGoalVisualizationsInChat}
                                         onChange={(e) => handleShowGoalVisualizationsInChatChange(e.target.checked)}
                                         className="w-4 h-4 rounded text-sky-600 focus:ring-sky-500 border-gray-300 bg-white dark:bg-slate-800 dark:border-slate-600"
@@ -892,6 +942,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                     )}
                 </div>
 
+                {applyError ? <p role="alert" className="px-6 pb-3 text-sm text-red-700 dark:text-red-300">{applyError}</p> : null}
                 <div className="p-6 border-t border-border-color bg-sidebar-bg/50 rounded-b-2xl flex justify-end">
                     <button
                         onClick={() => {

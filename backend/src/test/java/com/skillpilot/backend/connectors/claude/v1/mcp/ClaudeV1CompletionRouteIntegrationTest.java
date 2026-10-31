@@ -35,8 +35,6 @@ import org.springframework.test.context.ActiveProfiles;
 @SpringBootTest(properties = {
         ClaudeV1TestProperties.ENABLED, ClaudeV1TestProperties.SIGNING_SECRET,
         ClaudeV1TestProperties.CAPABILITY_SECRET, ClaudeV1TestProperties.BETA_DISABLED,
-        "skillpilot.completion.enabled=true",
-        "skillpilot.completion.enabled-profile-ids=math-dot-product-projection",
         "spring.datasource.url=jdbc:h2:mem:completion-mcp;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;NON_KEYWORDS=VALUE"
 })
 @ActiveProfiles("test")
@@ -129,6 +127,52 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId)).singleElement()
                 .satisfies(m -> { assertThat(m.getGoalKey()).isEqualTo(EXAM); assertThat(m.getValue()).isEqualTo(1.0); });
         assertThat(learners.getLearnerState(learnerId).levelCompletion().waivedTargetCount()).isEqualTo(1);
+    }
+
+    @Test void cockpitOptOutInvalidatesAlreadyIssuedExamAndRouteCapabilities() throws Exception {
+        var pending = context();
+        successful(ClaudeV1CompletionContractRegistry.TOOL_CONFIRM,
+                Map.of("receiptCapability", map(pending, "completionContract").get("receiptCapability")));
+        String start = choice(context(), "Prüfung direkt versuchen: ");
+        successful(ClaudeV1McpContractAdapter.TOOL_CHOOSE_COMPLETION_ROUTE,
+                writeArgs("start-before-opt-out", version(), Map.of("choice", start)));
+        var evaluation = successful(ClaudeV1Contract.TOOL_GET_EXAM_EVALUATION, Map.of("goalId", EXAM));
+        String oldRoute = choice(context(), "Prüfung erneut versuchen");
+        long before = version();
+        learners.setPreferences(learnerId, null, null, null, null, null, null, false);
+        assertThat(version()).isGreaterThan(before);
+        assertThat(context()).doesNotContainKey("levelCompletion");
+        assertThat(call(ClaudeV1Contract.TOOL_SET_MASTERY, writeArgs("stale-grade-after-opt-out", before,
+                Map.of("goalId", EXAM, "evaluationCapability", evaluation.get("evaluationCapability"), "earnedPoints", 10.0))).isError()).isTrue();
+        assertThat(call(ClaudeV1Contract.TOOL_SET_MASTERY, writeArgs("old-evaluation-new-version", version(),
+                Map.of("goalId", EXAM, "evaluationCapability", evaluation.get("evaluationCapability"), "earnedPoints", 10.0))).isError()).isTrue();
+        assertThat(call(ClaudeV1McpContractAdapter.TOOL_CHOOSE_COMPLETION_ROUTE,
+                writeArgs("old-route-after-opt-out", version(), Map.of("choice", oldRoute))).isError()).isTrue();
+        assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId)).isEmpty();
+        assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId()).isNull();
+        learners.setPreferences(learnerId, null, null, null, null, null, null, true);
+        var learner = learnerRepository.findById(learnerId).orElseThrow();
+        assertThat(learner.getCompletionWorkflow()).isNull();
+        learners.chooseLevelCompletion(learnerId, new LevelCompletionActionRequest(
+                "selectProfile", PROFILE, null, null, learner.getCoachStateRevision()));
+        assertThat(choice(context(), "Prüfung direkt versuchen: ")).isNotBlank();
+        assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId)).isEmpty();
+    }
+
+    @Test void aSessionStartedWhileOptedOutCanUseFreshChoicesAfterReEnabling() throws Exception {
+        learners.setPreferences(learnerId, null, null, null, null, null, null, false);
+        session = sessions.createFirstPartyLaunch(learnerId, new ClaudeV1CoachStartRequest("de", "web-start")).learningSessionId();
+        authenticate();
+        assertThat(context()).doesNotContainKey("levelCompletion");
+        learners.setPreferences(learnerId, null, null, null, null, null, null, true);
+        var learner = learnerRepository.findById(learnerId).orElseThrow();
+        learners.chooseLevelCompletion(learnerId, new LevelCompletionActionRequest(
+                "selectProfile", PROFILE, null, null, learner.getCoachStateRevision()));
+        var pending = context();
+        successful(ClaudeV1CompletionContractRegistry.TOOL_CONFIRM,
+                Map.of("receiptCapability", map(pending, "completionContract").get("receiptCapability")));
+        assertThat(choice(context(), "Prüfung direkt versuchen: ")).isNotBlank();
+        assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId)).isEmpty();
     }
 
     private void authenticate() {

@@ -6,7 +6,7 @@ import com.skillpilot.backend.domain.Learner;
 public final class CompletionNavigationPolicy {
     private CompletionNavigationPolicy() { }
     public static boolean ownsNavigation(Learner learner) {
-        return learner != null && learner.getCompletionWorkflow() != null
+        return learner != null && learner.getUseAssessmentShortcuts() && learner.getCompletionWorkflow() != null
                 && !learner.getCompletionWorkflow().isBlank();
     }
     public static boolean followsPlans(Learner learner) {

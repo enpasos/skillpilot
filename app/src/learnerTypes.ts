@@ -24,6 +24,7 @@ export interface Learner {
   followLearningPlans?: boolean;
   learningPlanPeriodBasis?: 'DAY' | 'WEEK';
   strictMode?: boolean;
+  useAssessmentShortcuts?: boolean;
   showGoalVisualizationsInChat?: boolean;
   copySources: CopySource[];
   activeGoalId?: string;

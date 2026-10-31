@@ -5,7 +5,9 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoInteractions;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.anyCollection;
 
 import com.skillpilot.backend.landscape.LearningGoal;
 import java.util.LinkedHashMap;
@@ -15,6 +17,21 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 class CompletionWarmupRunnerTest {
+    @Test
+    void emptyConfigurationDiscoversAndWarmsMatchingCurrentBases() {
+        Fixture fixture = fixture("pilot");
+        var application = new CompletionApplicationService(fixture.catalog());
+        var resolver = mock(CompletionCanonicalGraphResolver.class);
+        when(resolver.discoverCurriculumIds(anyCollection())).thenReturn(List.of("subject", "combined"));
+        when(resolver.load("subject")).thenReturn(fixture.graph());
+        when(resolver.load("combined")).thenReturn(fixture.graph());
+        new CompletionWarmupRunner(application, resolver, " ").run(null);
+        assertThat(application.compile("pilot", "subject", Map.of(), fixture.graph().keySet()).targetGoalIds()).hasSize(2);
+        assertThat(application.compile("pilot", "combined", Map.of(), fixture.graph().keySet()).targetGoalIds()).hasSize(2);
+        verify(resolver).discoverCurriculumIds(fixture.catalog().profiles().values().stream()
+                .map(profile -> fixture.catalog().scope(profile.levelScopeRef())).toList());
+    }
+
     @Test
     void warmsThePinnedGraphAndStaticProfileBeforeAnyLearnerCall() {
         Fixture fixture = fixture("pilot");
@@ -89,7 +106,7 @@ class CompletionWarmupRunnerTest {
     }
 
     @Test
-    void missingConfigurationAndUnavailableGenerationFailBeforeReadiness() {
+    void missingMatchingCurriculumAndUnavailableGenerationFailBeforeReadiness() {
         Fixture fixture = fixture("pilot");
         var resolver = mock(CompletionCanonicalGraphResolver.class);
         assertThatThrownBy(() -> new CompletionWarmupRunner(new CompletionApplicationService(fixture.catalog()), resolver, " ").run(null))
@@ -100,7 +117,8 @@ class CompletionWarmupRunnerTest {
         when(unavailable.available()).thenReturn(false);
         assertThatThrownBy(() -> new CompletionWarmupRunner(new CompletionApplicationService(unavailable), resolver, "base").run(null))
                 .isInstanceOf(IllegalStateException.class).hasMessageContaining("unavailable curriculum generation");
-        verifyNoInteractions(resolver);
+        verify(resolver).discoverCurriculumIds(anyCollection());
+        verifyNoMoreInteractions(resolver);
     }
 
     @Test

@@ -136,14 +136,39 @@ gemeistert. Diese Unterscheidungen sind durch echte Integrationsfälle geprüft.
 
 ## Aktivierung und Betrieb
 
-Die Funktion ist standardmäßig ausgeschaltet. Die Profil-Allowlist ist leer.
-Für einen internen Repository-Pilot werden ausdrücklich gesetzt:
+Die Funktion ist standardmäßig verfügbar. Es müssen keine Completion-Variablen
+zum Einschalten gesetzt werden. Die geprüften Profile werden geladen; passende
+aktuelle Lehrplanbasen werden im Repository- und Paketmodus automatisch ermittelt.
+Lehrpläne ohne solche Regeln bieten keine Abkürzung an. Das aktuelle fachlich
+freigegebene Angebot bleibt **Skalarprodukt und orthogonale Projektion**; die
+Standardeinstellung erzeugt keine zusätzlichen Abdeckungsbehauptungen.
 
-```sh
-SKILLPILOT_COMPLETION_ENABLED=true
-SKILLPILOT_COMPLETION_ENABLED_PROFILE_IDS=math-dot-product-projection
-SKILLPILOT_COMPLETION_WARMUP_CURRICULUM_IDS=a0e13c56-c25f-4742-9272-3a1a603ee52e,68a8ac50-f5f5-4e24-8aa9-5e408ca01ced
-```
+Im Cockpit unter **Konfiguration → Lerneinstellungen** ist
+**„Abkürzungen durch bestandene Prüfungen nutzen“** standardmäßig ausgewählt.
+Die Einstellung gilt pro SkillPilot-ID und wird mit den anderen Einstellungen
+gespeichert. Erst das Speichern wirkt auf Cockpit und Lerncoach. Die Auswahl
+eines Lernabschnitts bleibt eine bewusste Lernentscheidung, keine technische
+Freischaltung.
+
+Abschalten beendet die gewählte Abschlussroute und einen gegebenenfalls laufenden
+Prüfungsdirektstart. Der Hinweis neben der Einstellung erklärt diese Wirkung.
+Bereits gespeicherte Mastery, reguläre aktive Lernziele, Lernfokus und persönliche
+Planpräferenz bleiben erhalten; normale Prüfungen mit erfüllten Voraussetzungen
+bleiben nutzbar. Wiedereinschalten bietet aktuelle Abschnitte erneut an und stellt
+keine alte Prüfungssitzung wieder her. `useAssessmentShortcuts` ist eine
+Lernpräferenz, kein zusätzlicher Ergebniszustand eines Lernziels. Bestehende IDs
+und ältere Sicherungen erhalten den Standardwert `true`; ein gespeichertes
+`false` bleibt beim Export und Import erhalten.
+
+Für den Betrieb bleiben optionale Einschränkungen erhalten:
+
+- `SKILLPILOT_COMPLETION_ENABLED=false` schaltet die Funktion serverweit ab.
+- `SKILLPILOT_COMPLETION_ENABLED_PROFILE_IDS` beschränkt bei einer nichtleeren
+  Liste das Angebot auf diese geprüften Profile. Leer bedeutet alle geprüften
+  Profile innerhalb der unten beschriebenen Kapazitätsgrenzen.
+- `SKILLPILOT_COMPLETION_WARMUP_CURRICULUM_IDS` beschränkt bei einer nichtleeren
+  Liste die vorzubereitenden Basen. Leer verwendet die automatische Ermittlung.
+  Bestehende explizite Werte bleiben wirksam; sie sind keine Voraussetzung mehr.
 
 Die statischen Kontexte werden vor Readiness vorkompiliert, außerhalb einer
 Lernendentransaktion. Ein fehlerhafter oder nicht im Cache haltbarer konfigurierter
@@ -154,8 +179,9 @@ vorbereiteter Cacheeintrag wird vor Loader beziehungsweise Compiler abgewiesen;
 ein Lernendenrequest kann dadurch keine kalte Kompilierung unter seiner Sperre
 auslösen. Die persönlichen Level-2-Zielmengen bleiben variabel.
 Cache-Schlüssel binden Generation, Profil-/Scope-Revision, kanonische Basis
-und Auflösungssemantik. Der technische Pilot erlaubt ausdrücklich höchstens ein
-aktiviertes Profil und eine erforderliche Prüfung je kompiliertem Profil.
+und Auflösungssemantik. Die aktuelle Laufzeitkapazität erlaubt ausdrücklich
+höchstens ein freigegebenes Profil und eine erforderliche Prüfung je
+kompiliertem Profil. Die standardmäßige Verfügbarkeit ändert diese Grenze nicht.
 Eine Überschreitung bricht vor Readiness mit Diagnose ab, statt Listen still
 abzuschneiden. Compiler und portabler Datenvertrag behalten ihre allgemeinere
 Semantik. Eine spätere Mehrprofil- oder Großprüfungsfreigabe braucht begrenztes
@@ -392,9 +418,6 @@ export POSTGRES_HOST=127.0.0.1 POSTGRES_PORT=55432
 export POSTGRES_DB=skillpilot_completion_dev POSTGRES_USER=skillpilot
 export POSTGRES_PASSWORD=skillpilot-local-only
 export GITHUB_CLIENT_ID=local-unused GITHUB_CLIENT_SECRET=local-unused
-export SKILLPILOT_COMPLETION_ENABLED=true
-export SKILLPILOT_COMPLETION_ENABLED_PROFILE_IDS=math-dot-product-projection
-export SKILLPILOT_COMPLETION_WARMUP_CURRICULUM_IDS=a0e13c56-c25f-4742-9272-3a1a603ee52e,68a8ac50-f5f5-4e24-8aa9-5e408ca01ced
 export SKILLPILOT_CLAUDE_ENABLED=false
 export SKILLPILOT_CLAUDE_CONNECTOR_V1_ENABLED=true
 export SKILLPILOT_CLAUDE_CONNECTOR_V1_SIGNING_SECRET="$(openssl rand -hex 32)"
@@ -464,9 +487,10 @@ Prüfung.“** Den Knopf **„Skalarprodukt und orthogonale Projektion“** wäh
 Erwartung bei der neuen ID: **0 von 2 Lernzielen geschafft**, **0 von 1
 Prüfungen geschafft**, kein Erlass, Abschnitt noch offen. Die technische ID des
 Profils lautet `math-dot-product-projection`; sie muss nicht eingegeben werden.
-Fehlt die Karte, zuerst Backend-Schalter/Allowlist, abgeschlossene
-Personalisierung und die beiden sichtbaren Ziel-IDs prüfen, statt Mastery zu
-verändern.
+Fehlt die Karte, zuerst die gespeicherte Cockpit-Einstellung für Abkürzungen,
+abgeschlossene Personalisierung und die beiden sichtbaren Ziel-IDs prüfen.
+Anschließend gegebenenfalls explizite serverweite Abschaltungen oder
+Einschränkungen prüfen, statt Mastery zu verändern.
 
 ### Direktstart, Erfolg und Misserfolg
 
@@ -522,6 +546,24 @@ gescrollt werden. Den übergeordneten
 Baumzweig schließen: Er muss geschlossen bleiben, bis eine neue Navigation
 oder ein ausdrückliches Anzeigen des Ziels ihn wieder öffnet. Nach Verlassen
 des Abschlussprofils darf der abschnittsbezogene Hinweis nicht weiter erscheinen.
+
+Die Einstellung zusätzlich prüfen:
+
+1. **Konfiguration → Lerneinstellungen** öffnen und **„Abkürzungen durch
+   bestandene Prüfungen nutzen“** abwählen. Vor dem Speichern oder nach Abbrechen
+   bleibt der aktuelle Ablauf unverändert.
+2. Speichern: Abschlusskarte und blaue Abschnittssymbole verschwinden. Die
+   bestandene Prüfung und alle Mastery-Zähler bleiben erhalten. Nach Reload
+   bleibt die Einstellung ausgeschaltet; normale Lernziele und regulär
+   zugängliche Prüfungen bleiben nutzbar.
+3. Wieder einschalten und speichern: Der Abschnitt wird erneut angeboten,
+   aber keine Prüfung automatisch gestartet. Nach bewusster Abschnittsauswahl
+   wird die vorhandene Mastery wieder für den Abschluss ausgewertet.
+4. Bei einer zweiten Test-ID während eines Direktversuchs abschalten: Der
+   Dialog weist auf das Beenden hin. Nach Speichern darf eine alte Coach-Aktion
+   diesen Versuch nicht mehr bewerten oder fortsetzen. Bereits vor dem
+   Abschalten gespeicherte Ergebnisse bleiben erhalten. Für den folgenden
+   Nichtbestehenslauf wieder einschalten und den Abschnitt erneut auswählen.
 
 Den nicht erfolgreichen Verlauf mit der zweiten frischen ID durchführen. Eine
 nicht ausreichende Bearbeitung darf keinen Mastery-Write und keinen zusätzlichen

@@ -333,7 +333,8 @@ public class LearnerUiController {
                 request.strictMode(),
                 request.showGoalVisualizationsInChat(),
                 request.followLearningPlans(),
-                request.learningPlanPeriodBasis()));
+                request.learningPlanPeriodBasis(),
+                request.useAssessmentShortcuts()));
     }
 
     @PutMapping("/{skillpilotId}/personal-curriculum")

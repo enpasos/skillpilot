@@ -88,7 +88,17 @@ class LearnerUiControllerPersonalizationTest {
                 null,
                 false,
                 true,
+                null,
                 null);
+        verifyNoMoreInteractions(learnerService);
+    }
+
+    @Test
+    void preferencesForwardExplicitShortcutOptOutAndPreserveOmittedFields() throws Exception {
+        var request = new com.fasterxml.jackson.databind.ObjectMapper().readValue(
+                "{\"useAssessmentShortcuts\":false}", PreferencesRequest.class);
+        controller.updatePreferences(LEARNER_ID, request);
+        verify(learnerService).setPreferences(LEARNER_ID, null, null, null, null, null, null, false);
         verifyNoMoreInteractions(learnerService);
     }
 

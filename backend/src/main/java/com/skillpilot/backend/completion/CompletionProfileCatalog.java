@@ -34,7 +34,7 @@ import com.skillpilot.backend.curriculumpackage.CurriculumRuntimeSnapshotProvide
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-/** Immutable, allowlisted authoring generation. No per-learner results are cached. */
+/** Immutable reviewed authoring generation, optionally restricted by an operator allowlist. */
 @Component
 public class CompletionProfileCatalog {
     private final boolean enabled;
@@ -49,7 +49,7 @@ public class CompletionProfileCatalog {
     public CompletionProfileCatalog(
             LandscapeProperties properties, ObjectMapper objectMapper,
             LandscapeService landscapes, GoalMappingService mappings, DeckResourceService decks,
-            @Value("${skillpilot.completion.enabled:false}") boolean enabled,
+            @Value("${skillpilot.completion.enabled:true}") boolean enabled,
             @Value("${skillpilot.completion.enabled-profile-ids:}") String allowedProfiles,
             @Value("${skillpilot.curriculum.source:repository}") String source,
             ObjectProvider<CurriculumRuntimeSnapshotProvider> packageSnapshots) {
@@ -72,7 +72,7 @@ public class CompletionProfileCatalog {
                 if (!allowed.keySet().containsAll(selected)) {
                     throw new IllegalArgumentException("Unknown allowlisted packaged completion profile");
                 }
-                allowed.keySet().retainAll(selected);
+                if (!selected.isEmpty()) allowed.keySet().retainAll(selected);
                 profiles = Collections.unmodifiableMap(allowed);
                 scopes = documents.scopes();
                 stamps = Map.of();
@@ -102,7 +102,13 @@ public class CompletionProfileCatalog {
             if (!loadedProfiles.keySet().containsAll(allowed)) {
                 throw new IllegalArgumentException("Unknown allowlisted completion profile");
             }
-            loadedProfiles.keySet().retainAll(allowed);
+            if (!allowed.isEmpty()) loadedProfiles.keySet().retainAll(allowed);
+            if (loadedProfiles.isEmpty()) {
+                // Default availability must not pin ordinary curricula without completion content.
+                profiles = Map.of(); scopes = Map.of(); stamps = Map.of(); generation = "no-completion-profiles";
+                available = false;
+                return;
+            }
             Map<String, JsonNode> goalInputs = goalInputs(captured, strictMapper);
             for (CompletionProfileDefinition definition : loadedProfiles.values()) {
                 CompletionScopeDefinition scope = loadedScopes.get(definition.levelScopeRef());

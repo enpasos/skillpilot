@@ -3,6 +3,15 @@
 Aktueller Implementierungs- und Betriebsstand:
 [technischer Pilot](assessment-gated-completion-pilot.md).
 
+Ergänzende Produktentscheidung vom 31. Oktober 2026: Fachlich geprüfte
+Prüfungsabkürzungen sind ohne technische Freischaltung standardmäßig verfügbar.
+Lernende können sie bei den übrigen Cockpit-Einstellungen pro SkillPilot-ID
+abschalten (`useAssessmentShortcuts`, Standard `true`). Diese Präferenz steuert
+Cockpit und Coach gemeinsam; Mastery bleibt der einzige gespeicherte
+Lernziel-Ergebniszustand. Die Auswahl eines konkreten Lernabschnitts bleibt
+bewusst. Fachliche Reviewbindungen und die dokumentierten Laufzeitkapazitäten
+werden durch die Standardaktivierung nicht erweitert.
+
 Stand: 30. Oktober 2026. Grundlage ist der Code bei `8aee10595` und das
 [fachliche Konzept](../concept/skill-graph/assessment-gated-completion.md).
 Dieses Dokument beschreibt die empfohlene Implementierung einschließlich

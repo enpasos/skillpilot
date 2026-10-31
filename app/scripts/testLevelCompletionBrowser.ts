@@ -31,7 +31,7 @@ const selected = (revision: number, running = false): LevelCompletion => ({
     { action: 'leaveProfile', title: { de: 'Zur regulären Lernansicht', en: 'Return to regular learning' } },
   ],
 })
-const state = (completion: LevelCompletion) => ({
+const state = (completion: LevelCompletion | null) => ({
   activeGoal: { id: 'math-upper' }, frontier: [],
   goals: { planned: [{ id: 'math-upper' }], mastered_count: 0, total_count: 4, personalized: { mastered_atomic: 0, total_atomic: 4 } },
   stateMachine: { activeGoal: { id: 'math-upper' }, goalOptions: [], requiredAction: null },
@@ -59,20 +59,27 @@ const server = await startViteTestServer(appRoot, 'scripts/fixtures/learnerViewS
 let browser: Browser | null = null
 try {
   browser = await chromium.launch({ headless: true, args: ['--disable-background-networking', '--disable-dev-shm-usage', '--disable-gpu', '--no-sandbox'] })
-  const open = async (initial: LevelCompletion, mobile = false, completionTree = false) => {
+  const open = async (initial: LevelCompletion, mobile = false, completionTree = false,
+    options: { shortcutPreference?: boolean; language?: 'de' | 'en' } = {}) => {
     const context = await browser!.newContext({ viewport: mobile ? { width: 390, height: 844 } : { width: 1280, height: 900 }, hasTouch: mobile, locale: 'de-DE' })
-    await context.addInitScript(({ learner, rootId, termsVersion }) => {
-      localStorage.setItem('skillpilot_lang', 'de')
+    await context.addInitScript(({ learner, rootId, termsVersion, language }) => {
+      localStorage.setItem('skillpilot_lang', language)
       localStorage.setItem('skillpilot_theme', 'light')
       localStorage.setItem('skillpilot_id', learner)
       localStorage.setItem('skillpilot_role', 'learner')
       localStorage.setItem('skillpilot_learner_landscape', rootId)
       localStorage.setItem('skillpilot_terms_accepted_version', termsVersion)
-    }, { learner, rootId, termsVersion: CURRENT_TERMS_VERSION })
+    }, { learner, rootId, termsVersion: CURRENT_TERMS_VERSION, language: options.language ?? 'de' })
     const page = await context.newPage()
     const errors: string[] = []
     const writes: { path: string; body: Record<string, unknown> }[] = []
-    let completion = initial
+    let completion: LevelCompletion | null = options.shortcutPreference === false ? null : initial
+    let storedProfile = { ...profile, ...(options.shortcutPreference === undefined ? {} : { useAssessmentShortcuts: options.shortcutPreference }) }
+    let automaticPreferenceSse = false
+    let preferencesFailOnce = false
+    let profileFailOnce = false
+    let profileBarrierOnce: Promise<void> | null = null
+    let preferencesBarrier: Promise<void> | null = null
     let stateUnavailable = false
     page.on('pageerror', (error) => errors.push(error.message))
     await page.route('**/api/**', async (route) => {
@@ -80,18 +87,53 @@ try {
       const path = new URL(request.url()).pathname
       const json = (body: unknown, status = 200) => route.fulfill({ status, contentType: 'application/json', body: JSON.stringify(body) })
       if (path === '/api/ui/curriculum-catalog') return json({ catalogApiVersion: '1.2', generationSha256: '0'.repeat(64), packages: [], rootLandscapeIds: [], landscapes: [], views: [], offerings: [], decks: [], resources: [], sourceEvidence: [] })
-      if (path === `/api/ui/learners/${learner}`) return json(profile)
+      if (path === `/api/ui/learners/${learner}`) {
+        const snapshot = { ...storedProfile }
+        if (profileBarrierOnce) {
+          const barrier = profileBarrierOnce
+          profileBarrierOnce = null
+          await barrier
+        }
+        if (profileFailOnce) {
+          profileFailOnce = false
+          return json({ error: 'profile-reload-failed' }, 503)
+        }
+        return json(snapshot)
+      }
+      if (path === '/api/ui/learners/fixture-learner-b') return json({ ...profile, skillpilotId: 'fixture-learner-b', useAssessmentShortcuts: false })
+      if (path === '/api/ui/learners/fixture-learner-b/state') return json(state(null))
+      if (path === '/api/ui/learners/fixture-learner-b/personalization-plan') return json(savedPlan)
+      if (request.method() === 'PUT' && path.endsWith('/preferences')) {
+        const body = request.postDataJSON() as Record<string, unknown>
+        writes.push({ path, body })
+        if (preferencesBarrier) await preferencesBarrier
+        if (preferencesFailOnce) {
+          preferencesFailOnce = false
+          return json({ error: 'preferences-save-failed' }, 503)
+        }
+        if (body.useAssessmentShortcuts !== undefined) assert.equal(typeof body.useAssessmentShortcuts, 'boolean')
+        const previouslyEnabled = storedProfile.useAssessmentShortcuts ?? true
+        storedProfile = { ...storedProfile, ...body }
+        if ((storedProfile.useAssessmentShortcuts ?? true) !== previouslyEnabled) {
+          completion = storedProfile.useAssessmentShortcuts ? unselected((completion?.learnerRevision ?? initial.learnerRevision) + 1) : null
+        }
+        if (automaticPreferenceSse) {
+          await page.evaluate(learnerId => window.dispatchEvent(new CustomEvent('learner-startup-fixture-sse', { detail: { learnerId, type: 'PREFERENCES_CHANGED' } })), learner)
+        }
+        return route.fulfill({ status: 200, body: '' })
+      }
       if (path === `/api/ui/learners/${learner}/state`) {
         const payload = state(completion)
         if (completionTree) payload.goals = { ...payload.goals, mastered_count: 1, total_count: 5, personalized: { mastered_atomic: 1, total_atomic: 5 } }
         return stateUnavailable ? json({}, 503) : json(payload)
       }
-      if (path === `/api/ui/learners/${learner}/resume`) return json({ lastActivityAt: '2026-09-09T08:00:00Z', scheduledDeletionAt: '2027-03-09T08:00:00Z' })
+      if (path === `/api/ui/learners/${learner}/resume` || path === '/api/ui/learners/fixture-learner-b/resume') return json({ lastActivityAt: '2026-09-09T08:00:00Z', scheduledDeletionAt: '2027-03-09T08:00:00Z' })
       if (path === '/api/ui/landscapes') return json({ summaries: [{ curriculumId: rootId, filename: 'canonical-gymnasium.json', country: 'DE', region: 'DE', type: 'GYMNASIUM', level: 'Sekundarstufe', subject: 'Gymnasium', locale: 'de-DE', title: 'Gymnasium (DE)', schoolType: 'Gymnasium', qualityMaturity: 'M6' }] })
       if (path === `/api/ui/learners/${learner}/personalization-plan`) return json(savedPlan)
       if (request.method() === 'POST' && path.endsWith('/level-completion/actions')) {
         const body = request.postDataJSON() as Record<string, unknown>
         writes.push({ path, body })
+        assert.ok(completion)
         assert.equal(body.expectedRevision, completion.learnerRevision)
         completion = body.action === 'selectProfile' ? selected(completion.learnerRevision + 1) : unselected(completion.learnerRevision + 1)
         return json(state(completion))
@@ -104,8 +146,27 @@ try {
       return json({}, 404)
     })
     await page.goto(`${server.baseUrl}/scripts/fixtures/learnerViewStartupUi.html${completionTree ? '?completionTree=1' : ''}`)
-    await page.getByTestId('level-completion-card').waitFor()
-    return { page, context, writes, errors, unavailable: () => { stateUnavailable = true }, update: (next: LevelCompletion) => { completion = next } }
+    if (options.shortcutPreference === false) await page.getByTestId('learner-current-goal').waitFor()
+    else await page.getByTestId('level-completion-card').waitFor()
+    return { page, context, writes, errors, unavailable: () => { stateUnavailable = true }, update: (next: LevelCompletion) => { completion = next },
+      autoPreferenceSse: () => { automaticPreferenceSse = true },
+      failPreferencesOnce: () => { preferencesFailOnce = true },
+      failProfileOnce: () => { profileFailOnce = true },
+      remoteShortcuts: (enabled: boolean) => {
+        storedProfile = { ...storedProfile, useAssessmentShortcuts: enabled }
+        completion = enabled ? unselected((completion?.learnerRevision ?? initial.learnerRevision) + 1) : null
+      },
+      holdProfileOnce: () => {
+        let release!: () => void
+        profileBarrierOnce = new Promise<void>((resolve) => { release = resolve })
+        return release
+      },
+      holdPreferenceSave: () => {
+        let release!: () => void
+        preferencesBarrier = new Promise<void>((resolve) => { release = resolve })
+        return () => { preferencesBarrier = null; release() }
+      },
+    }
   }
 
   {
@@ -410,6 +471,220 @@ try {
     await tooltip.waitFor({ state: 'detached' })
     assert.equal(await waiver.evaluate((element) => element === document.activeElement), true, 'Escape retains trigger focus')
     assert.equal(h.writes.length, 0, 'reading and scrolling the tooltip never writes learner state')
+    assert.deepEqual(h.errors, [])
+    await h.context.close()
+  }
+  {
+    const completed: LevelCompletion = {
+      ...selected(30), complete: true, masteredTargetCount: 1, waivedTargetCount: 1, pendingTargetCount: 0,
+      masteredAssessmentCount: 1, waivedTargetGoalIds: ['math-upper'],
+      assessments: [{ goalId: 'math-exam', title: { de: 'Skalarprodukt prüfen' }, mastered: true, startAvailable: false }],
+      waiverDetails: [{ goalId: 'math-upper', title: { de: 'Ableitungen für Wachstumsmodelle deuten' }, ruleId: 'rule',
+        assessments: [{ goalId: 'math-exam', title: { de: 'Skalarprodukt prüfen' } }], assessmentCount: 1 }],
+    }
+    const h = await open(completed, false, true)
+    const dialog = h.page.getByRole('dialog', { name: 'Mein Lehrplan', exact: true })
+    const choice = dialog.getByRole('checkbox', { name: 'Abkürzungen durch bestandene Prüfungen nutzen', exact: true })
+    const waiver = h.page.getByTestId('completion-tree-waiver')
+    const card = h.page.getByTestId('level-completion-card')
+    const openSettings = async () => {
+      await h.page.getByRole('button', { name: 'Einstellungen öffnen', exact: true }).click()
+      await choice.waitFor()
+    }
+    await openSettings()
+    assert.equal(await choice.isChecked(), true, 'profiles without a legacy preference default to enabled shortcuts')
+    await choice.uncheck()
+    assert.equal(await waiver.count(), 1, 'an unsaved setting cannot alter authoritative waivers')
+    assert.equal(h.writes.length, 0)
+    await dialog.getByRole('button', { name: 'Einstellungen schließen', exact: true }).click()
+    await openSettings()
+    assert.equal(await choice.isChecked(), true, 'closing without saving restores the persisted setting')
+
+    await choice.uncheck()
+    h.failPreferencesOnce()
+    await dialog.getByRole('button', { name: 'Fertig', exact: true }).click()
+    await dialog.getByRole('alert').getByText('Deine Einstellungen konnten nicht gespeichert werden.', { exact: false }).waitFor()
+    assert.equal(await choice.isChecked(), false, 'a failed save preserves the draft for retry')
+    assert.equal(await waiver.count(), 1, 'a rejected save does not change the active completion projection')
+    const release = h.holdPreferenceSave()
+    await dialog.getByRole('button', { name: 'Fertig', exact: true }).click()
+    await dialog.getByRole('button', { name: 'Speichert...', exact: true }).waitFor()
+    assert.equal(await waiver.count(), 1, 'pending preference writes do not locally remove waivers')
+    release()
+    await dialog.waitFor({ state: 'detached' })
+    await card.waitFor({ state: 'detached' })
+    await waiver.waitFor({ state: 'detached' })
+    assert.equal(await h.page.locator('[data-goal-id="math-exam"] svg.lucide-check').count(), 1,
+      'disabling shortcuts leaves actual assessment mastery visible')
+
+    await h.page.reload()
+    await h.page.getByTestId('learner-current-goal').waitFor()
+    await openSettings()
+    assert.equal(await choice.isChecked(), false, 'the saved false preference survives a fresh profile fetch and page reload')
+    await choice.check()
+    assert.equal(await card.count(), 0, 'an unsaved enable choice does not fabricate completion options')
+    await dialog.getByRole('button', { name: 'Einstellungen schließen', exact: true }).click()
+    await openSettings()
+    assert.equal(await choice.isChecked(), false)
+    await choice.check()
+    await dialog.getByRole('button', { name: 'Fertig', exact: true }).click()
+    await dialog.waitFor({ state: 'detached' })
+    await card.getByRole('button', { name: title.de, exact: true }).waitFor()
+    assert.equal(await waiver.count(), 0, 'enabling restores backend options without silently reselecting a profile')
+    await openSettings()
+    assert.equal(await choice.isChecked(), true, 'the restored preference is rehydrated from the saved profile')
+    await dialog.getByRole('button', { name: 'Einstellungen schließen', exact: true }).click()
+    assert.deepEqual(h.writes.map(({ path, body }) => ({ preferences: path.endsWith('/preferences'), shortcuts: body.useAssessmentShortcuts })), [
+      { preferences: true, shortcuts: false }, { preferences: true, shortcuts: false }, { preferences: true, shortcuts: true },
+    ], 'only explicit save/retry actions update preferences; no mastery or scope writes occur')
+    assert.deepEqual(h.errors, [])
+    await h.context.close()
+  }
+  {
+    const h = await open(selected(60))
+    const dialog = h.page.getByRole('dialog', { name: 'Mein Lehrplan', exact: true })
+    const choice = dialog.getByRole('checkbox', { name: 'Abkürzungen durch bestandene Prüfungen nutzen', exact: true })
+    const strict = dialog.getByRole('checkbox', { name: /^Strict Mode aktivieren/ })
+    await h.page.getByRole('button', { name: 'Einstellungen öffnen', exact: true }).click()
+    await strict.uncheck()
+    h.remoteShortcuts(false)
+    const refreshed = h.page.waitForEvent('console', { predicate: message => message.text().includes('[SSE] ✅ Preferences refresh complete') })
+    await h.page.evaluate((learnerId) => {
+      // The immediately preceding generic event exercises the refresh throttle.
+      window.dispatchEvent(new CustomEvent('learner-startup-fixture-sse', { detail: { learnerId, type: 'ACTIVE_GOAL_CHANGED' } }))
+      window.dispatchEvent(new CustomEvent('learner-startup-fixture-sse', { detail: { learnerId, type: 'PREFERENCES_CHANGED' } }))
+    }, learner)
+    await refreshed
+    await h.page.waitForFunction(() => !document.querySelector<HTMLInputElement>('[aria-label="Abkürzungen durch bestandene Prüfungen nutzen"]')?.checked)
+    assert.equal(await choice.isChecked(), false, 'an untouched field follows another tab despite an in-flight generic SSE refresh')
+    assert.equal(await strict.isChecked(), false, "the learner's independent unsaved edit survives profile refresh")
+    assert.equal(h.writes.length, 0, 'receiving saved preferences never writes them back')
+    await dialog.getByRole('button', { name: 'Fertig', exact: true }).click()
+    await dialog.waitFor({ state: 'detached' })
+    assert.deepEqual(h.writes.map(write => write.body), [{ strictMode: false }], 'saving an unrelated dirty field cannot re-enable shortcuts')
+    await h.page.getByTestId('level-completion-card').waitFor({ state: 'detached' })
+    await h.page.getByRole('button', { name: 'Einstellungen öffnen', exact: true }).click()
+    assert.equal(await choice.isChecked(), false)
+    // The user's own changed flag is retained through an unrelated profile refresh.
+    await choice.check()
+    const again = h.page.waitForEvent('console', { predicate: message => message.text().includes('[SSE] ✅ Preferences refresh complete') })
+    await h.page.evaluate(learnerId => window.dispatchEvent(new CustomEvent('learner-startup-fixture-sse', { detail: { learnerId, type: 'PREFERENCES_CHANGED' } })), learner)
+    await again
+    assert.equal(await choice.isChecked(), true, 'an explicitly changed shortcut draft survives a same-value saved profile refresh')
+    await dialog.getByRole('button', { name: 'Einstellungen schließen', exact: true }).click()
+    assert.deepEqual(h.errors, [])
+    await h.context.close()
+  }
+  {
+    const h = await open(selected(70))
+    await h.page.getByRole('button', { name: 'Einstellungen öffnen', exact: true }).click()
+    const dialog = h.page.getByRole('dialog', { name: 'Mein Lehrplan', exact: true })
+    await dialog.getByRole('checkbox', { name: /^Strict Mode aktivieren/ }).uncheck()
+    // Even a missed SSE event must not make an unchanged local checkbox write true.
+    h.remoteShortcuts(false)
+    await dialog.getByRole('button', { name: 'Fertig', exact: true }).click()
+    await dialog.waitFor({ state: 'detached' })
+    assert.deepEqual(h.writes.map(write => write.body), [{ strictMode: false }])
+    await h.page.getByRole('button', { name: 'Einstellungen öffnen', exact: true }).click()
+    assert.equal(await dialog.getByRole('checkbox', { name: 'Abkürzungen durch bestandene Prüfungen nutzen', exact: true }).isChecked(), false,
+      'the final profile reload retains a concurrent opt-out even if its SSE was missed')
+    assert.deepEqual(h.errors, [])
+    await h.context.close()
+  }
+  {
+    const completed: LevelCompletion = {
+      ...selected(80), complete: true, masteredTargetCount: 1, waivedTargetCount: 1, pendingTargetCount: 0,
+      masteredAssessmentCount: 1, waivedTargetGoalIds: ['math-upper'],
+      assessments: [{ goalId: 'math-exam', title: { de: 'Skalarprodukt prüfen' }, mastered: true, startAvailable: false }],
+      waiverDetails: [{ goalId: 'math-upper', title: { de: 'Ableitungen für Wachstumsmodelle deuten' }, ruleId: 'rule',
+        assessments: [{ goalId: 'math-exam', title: { de: 'Skalarprodukt prüfen' } }], assessmentCount: 1 }],
+    }
+    const h = await open(completed, false, true)
+    await h.page.getByTestId('completion-tree-waiver').waitFor()
+    await h.page.getByRole('button', { name: 'Einstellungen öffnen', exact: true }).click()
+    const dialog = h.page.getByRole('dialog', { name: 'Mein Lehrplan', exact: true })
+    const choice = dialog.getByRole('checkbox', { name: 'Abkürzungen durch bestandene Prüfungen nutzen', exact: true })
+    await choice.uncheck()
+    h.failProfileOnce()
+    await dialog.getByRole('button', { name: 'Fertig', exact: true }).click()
+    await dialog.getByRole('alert').getByText('Deine Einstellungen wurden gespeichert.', { exact: false }).waitFor()
+    await h.page.getByTestId('completion-tree-waiver').waitFor({ state: 'detached' })
+    await h.page.getByTestId('level-completion-card').waitFor({ state: 'detached' })
+    assert.equal(await choice.isChecked(), false, 'a profile reload failure does not imply rollback of an accepted setting')
+    await dialog.getByRole('button', { name: 'Fertig', exact: true }).click()
+    await dialog.waitFor({ state: 'detached' })
+    assert.deepEqual(h.writes.map(write => write.body), [{ useAssessmentShortcuts: false }],
+      'retry after a successful write only reloads; it does not repeat the preference mutation')
+    assert.equal(await h.page.locator('[data-goal-id="math-exam"] svg.lucide-check').count(), 1)
+    assert.deepEqual(h.errors, [])
+    await h.context.close()
+  }
+  {
+    const h = await open(selected(85))
+    h.autoPreferenceSse()
+    await h.page.getByRole('button', { name: 'Einstellungen öffnen', exact: true }).click()
+    const dialog = h.page.getByRole('dialog', { name: 'Mein Lehrplan', exact: true })
+    const choice = dialog.getByRole('checkbox', { name: 'Abkürzungen durch bestandene Prüfungen nutzen', exact: true })
+    await choice.uncheck()
+    const release = h.holdProfileOnce()
+    const reloadStarted = h.page.waitForRequest(request => new URL(request.url()).pathname === `/api/ui/learners/${learner}`)
+    await dialog.getByRole('button', { name: 'Fertig', exact: true }).click()
+    await reloadStarted
+    // A second tab commits while the first post-save profile snapshot is held.
+    // Its event is coalesced, then drained by another authoritative reload.
+    h.remoteShortcuts(true)
+    await h.page.evaluate(learnerId => window.dispatchEvent(new CustomEvent('learner-startup-fixture-sse', { detail: { learnerId, type: 'PREFERENCES_CHANGED' } })), learner)
+    release()
+    await dialog.waitFor({ state: 'detached' })
+    await h.page.getByTestId('level-completion-card').getByRole('button', { name: title.de, exact: true }).waitFor()
+    await h.page.getByRole('button', { name: 'Einstellungen öffnen', exact: true }).click()
+    assert.equal(await choice.isChecked(), true, 'a concurrent remote save is reflected after the pending reload completes')
+    assert.equal(await dialog.getByRole('alert').count(), 0, 'the backend save event does not cause a spurious reload error')
+    assert.deepEqual(h.writes.map(write => write.body), [{ useAssessmentShortcuts: false }])
+    assert.deepEqual(h.errors, [])
+    await h.context.close()
+  }
+  {
+    const h = await open(selected(90))
+    const release = h.holdProfileOnce()
+    const requested = h.page.waitForRequest(request => new URL(request.url()).pathname === `/api/ui/learners/${learner}`)
+    await h.page.evaluate(learnerId => window.dispatchEvent(new CustomEvent('learner-startup-fixture-sse', { detail: { learnerId, type: 'PREFERENCES_CHANGED' } })), learner)
+    await requested
+    await h.page.getByTestId('fixture-switch-learner').click()
+    await h.page.getByRole('button', { name: 'Einstellungen öffnen', exact: true }).click()
+    const choice = h.page.getByRole('checkbox', { name: 'Abkürzungen durch bestandene Prüfungen nutzen', exact: true })
+    await choice.waitFor()
+    assert.equal(await choice.isChecked(), false)
+    const oldRefresh = h.page.waitForEvent('console', { predicate: message => message.text().includes('[SSE] ✅ Preferences refresh complete') })
+    release()
+    await oldRefresh
+    assert.equal(await choice.isChecked(), false, 'a delayed preference profile for the previous learner cannot change the new learner')
+    assert.equal(h.writes.length, 0)
+    assert.deepEqual(h.errors, [])
+    await h.context.close()
+  }
+  {
+    const h = await open(selected(40, true))
+    await h.page.getByRole('button', { name: 'Einstellungen öffnen', exact: true }).click()
+    const dialog = h.page.getByRole('dialog', { name: 'Mein Lehrplan', exact: true })
+    await dialog.getByRole('checkbox', { name: 'Abkürzungen durch bestandene Prüfungen nutzen', exact: true }).uncheck()
+    await dialog.getByRole('status').getByText('Beim Speichern beendest du den laufenden direkten Prüfungsversuch.', { exact: false }).waitFor()
+    await dialog.getByRole('button', { name: 'Einstellungen schließen', exact: true }).click()
+    await h.page.getByTestId('level-completion-card').getByText('Eine Prüfung läuft in deinem Lerncoach.', { exact: true }).waitFor()
+    assert.equal(h.writes.length, 0, 'cancelling the setting preserves the running assessment')
+    assert.deepEqual(h.errors, [])
+    await h.context.close()
+  }
+  {
+    const h = await open(unselected(50), false, false, { shortcutPreference: false, language: 'en' })
+    await h.page.getByRole('button', { name: 'Open settings', exact: true }).click()
+    const dialog = h.page.getByRole('dialog', { name: 'My Curriculum', exact: true })
+    const choice = dialog.getByRole('checkbox', { name: 'Use shortcuts through passed assessments', exact: true })
+    await choice.waitFor()
+    assert.equal(await choice.isChecked(), false, 'an explicit false preference is respected on first English startup')
+    await dialog.getByText('Your saved learning progress stays unchanged.', { exact: false }).waitFor()
+    await dialog.getByRole('button', { name: 'Close settings', exact: true }).click()
+    assert.equal(h.writes.length, 0)
     assert.deepEqual(h.errors, [])
     await h.context.close()
   }

@@ -4,8 +4,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.landscape.LandscapeService;
 import com.skillpilot.backend.landscape.LearningGoal;
 import java.util.LinkedHashMap;
+import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import org.springframework.stereotype.Component;
 
 /** Loads the pinned, unfiltered definition universe, independently of learner scope or transactions. */
@@ -17,6 +20,22 @@ public final class CompletionCanonicalGraphResolver {
     public CompletionCanonicalGraphResolver(LandscapeService landscapes, ObjectMapper mapper) {
         this.landscapes = landscapes;
         this.mapper = mapper;
+    }
+
+    /** Discover only current bases containing a complete reviewed scope; no learner data or graph copies. */
+    public List<String> discoverCurriculumIds(Collection<CompletionScopeDefinition> scopes) {
+        Set<String> candidates = new LinkedHashSet<>();
+        for (var landscape : landscapes.getAll()) {
+            String id = landscape.getLandscapeId();
+            if (landscapes.isCompatibilityOnlyLandscape(id) || landscapes.isLegacyHiddenByDefaultLandscape(id)) continue;
+            Set<String> goals = new LinkedHashSet<>();
+            for (var member : landscapes.getClosure(id)) {
+                if (member.getGoals() != null) member.getGoals().forEach(goal -> goals.add(goal.getId()));
+            }
+            if (scopes.stream().anyMatch(scope -> !scope.targetRootIds().isEmpty()
+                    && goals.containsAll(scope.targetRootIds()))) candidates.add(id);
+        }
+        return candidates.stream().sorted().toList();
     }
 
     public Map<String, LearningGoal> load(String curriculumId) {

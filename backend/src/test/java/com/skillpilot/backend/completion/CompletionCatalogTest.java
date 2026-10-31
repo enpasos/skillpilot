@@ -28,6 +28,36 @@ class CompletionCatalogTest {
     private final ObjectMapper mapper = new ObjectMapper();
 
     @Test
+    void emptyOperatorAllowlistPublishesReviewedProfilesWithoutOptIn() throws Exception {
+        Fixture f = fixture();
+        var catalog = new CompletionProfileCatalog(f.properties(), mapper,
+                mock(LandscapeService.class), mock(GoalMappingService.class), mock(DeckResourceService.class),
+                true, " ", "repository");
+        assertThat(catalog.profiles()).containsOnlyKeys("pilot");
+        assertThat(catalog.available()).isTrue();
+        // Default availability never bypasses the existing authoring review.
+        f.goals().getFirst().put("description", "Changed without review");
+        f.writeGraph();
+        assertThatThrownBy(() -> new CompletionProfileCatalog(f.properties(), mapper,
+                mock(LandscapeService.class), mock(GoalMappingService.class), mock(DeckResourceService.class),
+                true, "", "repository")).isInstanceOf(IllegalStateException.class);
+    }
+
+    @Test
+    void curriculumWithoutCompletionProfilesRemainsUsableByDefault() throws Exception {
+        Fixture f = fixture();
+        Files.delete(f.profile());
+        var landscapes = mock(LandscapeService.class);
+        var mappings = mock(GoalMappingService.class);
+        var decks = mock(DeckResourceService.class);
+        var catalog = new CompletionProfileCatalog(f.properties(), mapper,
+                landscapes, mappings, decks,
+                true, "", "repository");
+        assertThat(catalog.profiles()).isEmpty();
+        verifyNoInteractions(landscapes, mappings, decks);
+    }
+
+    @Test
     void disabledAndMissingPackageSnapshotDoNotReadRepositoryOrPinAdapters() {
         LandscapeProperties properties = new LandscapeProperties();
         properties.setDirectory(temporary.resolve("missing").toString());

@@ -5,6 +5,8 @@ import { useTranslation } from '../hooks/useTranslation'
 import { CompetenceTree } from '../components/CompetenceTree'
 import type { TreeStructureMode } from '../components/CompetenceTree'
 import { PersonalCurriculumSetup } from '../components/PersonalCurriculumSetup'
+import { learnerPreferences, PreferencesReloadError, type PersonalCurriculumPreferences } from '../utils/personalCurriculumPreferences'
+import { getPersonalCurriculumSetupCopy } from '../utils/curriculumSetupCopy'
 import { LearnerPlanTodayOverview } from '../components/LearnerPlanTodayOverview'
 import { LearnerActiveGoalBanner } from '../components/LearnerActiveGoalBanner'
 import { LevelCompletionCard } from '../components/LevelCompletionCard'
@@ -141,14 +143,6 @@ type PersonalCurriculumConfig = Record<string, {
   durationModel?: string
   stage?: string
 }>
-type PersonalCurriculumPreferences = {
-  strategy: 'RANDOM' | 'SEQUENTIAL'
-  autoPilot: boolean
-  followLearningPlans: boolean
-  learningPlanPeriodBasis: 'DAY' | 'WEEK'
-  strictMode: boolean
-  showGoalVisualizationsInChat: boolean
-}
 type LearnerStateLoadStatus = 'loading' | 'ready' | 'error'
 
 const cleanLearningPlanSubjectLabel = (title: string) => title
@@ -493,6 +487,14 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const reportedLoadErrorsRef = useRef<Set<string>>(new Set())
   const learnerStateRequestSequenceRef = useRef(0)
   const personalCurriculumRefreshSequenceRef = useRef(0)
+  const preferencesRefreshSequenceRef = useRef(0)
+  const preferencesReloadRequiredScopeRef = useRef<string | null>(null)
+  const preferenceSaveRefreshRef = useRef<{ scopeKey: string; pendingEvent: boolean; receivedEvent: boolean } | null>(null)
+  const savedPreferencesSnapshotRef = useRef<{
+    scopeKey: string
+    sequence: number
+    preferences: Partial<ReturnType<typeof learnerPreferences>>
+  } | null>(null)
   const learningPlansRequestSequenceRef = useRef(0)
   const learningPlansRefreshInFlightRef = useRef(false)
   const learningPlanContinueRequestSequenceRef = useRef(0)
@@ -1561,6 +1563,10 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   useEffect(() => {
     invalidateLatestRequest(learnerStateRequestSequenceRef)
     invalidateLatestRequest(personalCurriculumRefreshSequenceRef)
+    invalidateLatestRequest(preferencesRefreshSequenceRef)
+    preferencesReloadRequiredScopeRef.current = null
+    preferenceSaveRefreshRef.current = null
+    savedPreferencesSnapshotRef.current = null
     invalidateLatestRequest(learningPlansRequestSequenceRef)
     invalidateLatestRequest(learningPlanContinueRequestSequenceRef)
     setStateRequiredAction(null)
@@ -1751,6 +1757,51 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     // The status text is formulated in the display language, so a language switch reloads it.
   }, [learnerStateScopeKey, localizedLanguage, skillpilotId])
 
+  const applySavedPreferences = useCallback((
+    preferences: Partial<ReturnType<typeof learnerPreferences>>,
+    requestScopeKey: string,
+    sequence: number,
+  ) => {
+    if (currentLearnerStateScopeKeyRef.current !== requestScopeKey) return
+    const previous = savedPreferencesSnapshotRef.current
+    savedPreferencesSnapshotRef.current = {
+      scopeKey: requestScopeKey,
+      sequence,
+      preferences: { ...(previous?.scopeKey === requestScopeKey ? previous.preferences : {}), ...preferences },
+    }
+    setLearnerData(current => current?.skillpilotId === skillpilotId ? { ...current, ...preferences } : current)
+  }, [skillpilotId])
+
+  const refreshPreferences = useCallback(async (): Promise<boolean> => {
+    if (!skillpilotId) return true
+    const sequence = beginLatestRequest(preferencesRefreshSequenceRef)
+    const requestScopeKey = learnerStateScopeKey
+    try {
+      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+      const response = await fetch(`${apiBase}/api/ui/learners/${skillpilotId}`, { cache: 'no-store' })
+      if (!response.ok) throw new Error(`preferences-refresh-failed:${response.status}`)
+      const saved = await response.json() as Learner
+      if (saved.skillpilotId !== skillpilotId) throw new Error('preferences-refresh-scope-mismatch')
+      if (!isLatestRequestForScope(preferencesRefreshSequenceRef, sequence,
+        currentLearnerStateScopeKeyRef.current, requestScopeKey)) return false
+      applySavedPreferences(learnerPreferences(saved), requestScopeKey, sequence)
+      return true
+    } catch (error) {
+      console.warn('Failed to reload learner preferences', error)
+      return false
+    }
+  }, [applySavedPreferences, learnerStateScopeKey, skillpilotId])
+
+  // A full profile request can predate a newer preference event or accepted save.
+  // Retain those newer fields while still completing curriculum hydration.
+  const applyLoadedProfile = useCallback((data: Learner, requestScopeKey: string, preferenceSequenceAtStart: number) => {
+    if (currentLearnerStateScopeKeyRef.current !== requestScopeKey) return
+    const latest = savedPreferencesSnapshotRef.current
+    setLearnerData(latest?.scopeKey === requestScopeKey && latest.sequence > preferenceSequenceAtStart
+      ? { ...data, ...latest.preferences }
+      : data)
+  }, [])
+
   const handleCompletionAction = useCallback(async (action: CompletionActionInput) => {
     if (!levelCompletion || learnerStateLoadStatus !== 'ready') return
     const guard = completionActionInFlightRef.current
@@ -1817,6 +1868,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   ): Promise<PersonalCurriculumConfig | null> => {
     if (!skillpilotId || !usesGuidedPersonalCurriculumEditor) return null
     const refreshSequence = beginLatestRequest(personalCurriculumRefreshSequenceRef)
+    const preferenceSequenceAtStart = preferencesRefreshSequenceRef.current
     const requestScopeKey = learnerStateScopeKey
     guidedPersonalizationRefreshInFlightRef.current += 1
     setGuidedPersonalizationRefreshing(true)
@@ -1839,7 +1891,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       const data = await response.json()
       if (!isCurrentRefresh()) return null
       const refreshedConfig = readPersonalCurriculumConfig(data.personalCurriculum)
-      setLearnerData(data)
+      applyLoadedProfile(data, requestScopeKey, preferenceSequenceAtStart)
       setPersonalConfig(refreshedConfig)
       setIsPersonalConfigHydrating(false)
       setPersonalConfigLoadState({
@@ -1880,6 +1932,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       }
     }
   }, [
+    applyLoadedProfile,
     landscapeId,
     learnerStateScopeKey,
     onLandscapeChange,
@@ -1940,6 +1993,20 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   ])
 
   const handleSseUpdate = useCallback(async (payload?: { type?: string; nodeId?: string }) => {
+    if (payload?.type === 'PREFERENCES_CHANGED') {
+      const saving = preferenceSaveRefreshRef.current
+      if (saving?.scopeKey === learnerStateScopeKey) {
+        saving.pendingEvent = true
+        saving.receivedEvent = true
+        return
+      }
+      // Preference changes must not be dropped by the generic SSE throttle or
+      // an in-flight refresh: a remote opt-out changes the completion context.
+      await Promise.all([refreshPreferences(), refreshState(true), refreshLearningPlans(), onRefresh?.()])
+      dispatchLearnerUiRefresh({ skillpilotId, reason: payload.type, targets: ['all'] })
+      console.log('[SSE] ✅ Preferences refresh complete')
+      return
+    }
     if (payload?.type === 'CLIENT_STATE_UPDATED' && payload?.nodeId) {
       setSrsMasteryTick(c => c + 1)
       dispatchLearnerUiRefresh({
@@ -1959,6 +2026,12 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       forceActiveGoalRevealRef.current = true
     }
 
+    const saving = preferenceSaveRefreshRef.current
+    if (saving?.scopeKey === learnerStateScopeKey) {
+      saving.pendingEvent = true
+      saving.receivedEvent = true
+      return
+    }
     const now = Date.now()
     if (fullRefreshInFlightRef.current) return
     if (!forceActiveGoalReveal && now - lastFullRefreshAtRef.current < 800) return
@@ -1983,7 +2056,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     } finally {
       fullRefreshInFlightRef.current = false
     }
-  }, [refreshState, refreshLearningPlans, onRefresh, currentGoal?.id, skillpilotId])
+  }, [learnerStateScopeKey, refreshPreferences, refreshState, refreshLearningPlans, onRefresh, currentGoal?.id, skillpilotId])
 
   useEffect(() => {
     if (!campaignContext) return
@@ -2425,6 +2498,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     }
 
     const refreshSequence = beginLatestRequest(personalCurriculumRefreshSequenceRef)
+    const preferenceSequenceAtStart = preferencesRefreshSequenceRef.current
     const isCurrentRefresh = () => (
       !cancelled
       && isLatestRequestForScope(
@@ -2446,7 +2520,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         const res = await fetch(url)
         if (res.ok) {
           const data = await res.json()
-          if (isCurrentRefresh()) setLearnerData(data)
+          if (isCurrentRefresh()) applyLoadedProfile(data, learnerStateScopeKey, preferenceSequenceAtStart)
           if (rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID) {
             if (isCurrentRefresh()) {
               setPersonalConfig(readPersonalCurriculumConfig(data.personalCurriculum))
@@ -2507,6 +2581,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       cancelled = true
     }
   }, [
+    applyLoadedProfile,
     availableLandscapes,
     clearReportedLoadError,
     learnerStateScopeKey,
@@ -2759,17 +2834,19 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     preferences: PersonalCurriculumPreferences,
   ) => {
     const configChanged = !personalCurriculumConfigsEqual(newConfig, personalConfig)
-    const preferencesChanged =
-      (learnerData?.learningStrategy ?? 'SEQUENTIAL') !== preferences.strategy
-      || (learnerData?.autoPilot ?? true) !== preferences.autoPilot
-      || (learnerData?.followLearningPlans ?? false) !== preferences.followLearningPlans
-      || (learnerData?.learningPlanPeriodBasis ?? 'WEEK') !== preferences.learningPlanPeriodBasis
-      || (learnerData?.strictMode ?? false) !== preferences.strictMode
-      || (learnerData?.showGoalVisualizationsInChat ?? true) !== preferences.showGoalVisualizationsInChat
+    const savedPreferences = learnerPreferences(learnerData)
+    const { strategy, ...otherPreferences } = preferences
+    const requestedPreferences = { learningStrategy: strategy, ...otherPreferences }
+    // Optional API fields preserve values changed in another tab, including
+    // when its SSE event has not arrived before this save.
+    const changes = Object.fromEntries(Object.entries(requestedPreferences).filter(
+      ([key, value]) => savedPreferences[key as keyof typeof savedPreferences] !== value,
+    )) as Partial<typeof savedPreferences>
+    const preferencesChanged = Object.keys(changes).length > 0
+    const requestScopeKey = learnerStateScopeKey
+    const retryReload = preferencesReloadRequiredScopeRef.current === requestScopeKey
 
-    if (!configChanged && !preferencesChanged) {
-      return
-    }
+    if (!configChanged && !preferencesChanged && !retryReload) return
 
     if (!skillpilotId) {
       if (configChanged) {
@@ -2783,90 +2860,104 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           followLearningPlans: preferences.followLearningPlans,
           learningPlanPeriodBasis: preferences.learningPlanPeriodBasis,
           strictMode: preferences.strictMode,
+          useAssessmentShortcuts: preferences.useAssessmentShortcuts,
           showGoalVisualizationsInChat: preferences.showGoalVisualizationsInChat,
         } : prev)
       }
       return
     }
 
+    let preferencesCommitted = retryReload
+    const saving = { scopeKey: requestScopeKey, pendingEvent: false, receivedEvent: false }
+    if (preferencesChanged || retryReload) preferenceSaveRefreshRef.current = saving
     try {
       const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
 
       if (configChanged) {
-        const configUrl = apiBase
-          ? `${apiBase}/api/ui/learners/${skillpilotId}/personal-curriculum`
-          : `/api/ui/learners/${skillpilotId}/personal-curriculum`
-        const configRes = await fetch(configUrl, {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(newConfig)
+        const configRes = await fetch(`${apiBase}/api/ui/learners/${skillpilotId}/personal-curriculum`, {
+          method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(newConfig),
         })
-        if (!configRes.ok) {
-          throw new Error(`personal-curriculum-save-failed:${configRes.status}`)
-        }
+        if (!configRes.ok) throw new Error(`personal-curriculum-save-failed:${configRes.status}`)
+        if (currentLearnerStateScopeKeyRef.current !== requestScopeKey) return
+        setPersonalConfig(newConfig)
       }
 
       if (preferencesChanged) {
-        const preferencesUrl = apiBase
-          ? `${apiBase}/api/ui/learners/${skillpilotId}/preferences`
-          : `/api/ui/learners/${skillpilotId}/preferences`
-        const preferencesRes = await fetch(preferencesUrl, {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            learningStrategy: preferences.strategy,
-            autoPilot: preferences.autoPilot,
-            followLearningPlans: preferences.followLearningPlans,
-            learningPlanPeriodBasis: preferences.learningPlanPeriodBasis,
-            strictMode: preferences.strictMode,
-            showGoalVisualizationsInChat: preferences.showGoalVisualizationsInChat,
-          })
+        const preferencesRes = await fetch(`${apiBase}/api/ui/learners/${skillpilotId}/preferences`, {
+          method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(changes),
         })
-        if (!preferencesRes.ok) {
-          throw new Error(`preferences-save-failed:${preferencesRes.status}`)
-        }
+        if (!preferencesRes.ok) throw new Error(`preferences-save-failed:${preferencesRes.status}`)
+        if (currentLearnerStateScopeKeyRef.current !== requestScopeKey) return
+        preferencesCommitted = true
+        preferencesReloadRequiredScopeRef.current = requestScopeKey
+        // The endpoint returns an empty response. Only after its successful
+        // write may the accepted fields replace the saved checkbox values.
+        applySavedPreferences(changes, requestScopeKey, beginLatestRequest(preferencesRefreshSequenceRef))
       }
 
       if (configChanged) {
-        setPersonalConfig(newConfig)
         onScopeDataRefresh?.()
         if (rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID && landscapeId !== CANONICAL_GYMNASIUM_ROOT_ID) {
           onLandscapeChange?.(CANONICAL_GYMNASIUM_ROOT_ID)
         }
       }
-      if (preferencesChanged) {
-        setLearnerData(prev => prev ? {
-          ...prev,
-          learningStrategy: preferences.strategy,
-          autoPilot: preferences.autoPilot,
-          followLearningPlans: preferences.followLearningPlans,
-          learningPlanPeriodBasis: preferences.learningPlanPeriodBasis,
-          strictMode: preferences.strictMode,
-          showGoalVisualizationsInChat: preferences.showGoalVisualizationsInChat,
-        } : prev)
-      }
 
-      await Promise.all([
-        refreshState(true),
-        refreshLearningPlans(),
-      ])
-    } catch (e) {
-      console.warn('Failed to apply personal curriculum setup', e)
-      if (configChanged) {
-        onNotify?.('error', t.notifications.personalCurriculumSaveFailed)
+      // Independently refresh state even if the profile reload fails. Stale
+      // waiver annotations must disappear after an accepted opt-out.
+      let profileReloaded: boolean
+      let refreshedState: LearnerStateRefreshResult | null
+      do {
+        // Coalesce events received during the write, and repeat if another tab
+        // commits during this reload. Its event must not supersede our requests
+        // and turn a successful save into a spurious reload error.
+        saving.pendingEvent = false
+        ;[profileReloaded, refreshedState] = await Promise.all([
+          preferencesCommitted ? refreshPreferences() : Promise.resolve(true),
+          refreshState(true),
+          refreshLearningPlans(),
+          onRefresh?.(),
+        ])
+        if (currentLearnerStateScopeKeyRef.current !== requestScopeKey) return
+      } while (saving.pendingEvent)
+      if (saving.receivedEvent) dispatchLearnerUiRefresh({ skillpilotId, reason: 'FULL_REFRESH', targets: ['all'] })
+      if (preferencesCommitted && (!profileReloaded || !refreshedState)) throw new PreferencesReloadError()
+      preferencesReloadRequiredScopeRef.current = null
+    } catch (error) {
+      if (currentLearnerStateScopeKeyRef.current !== requestScopeKey) return
+      console.warn('Failed to apply personal curriculum setup', error)
+      if (error instanceof PreferencesReloadError) {
+        onNotify?.('error', getPersonalCurriculumSetupCopy(localizedLanguage).saveCommittedReloadFailed)
       } else {
-        onNotify?.('error', t.notifications.preferencesSaveFailed)
+        onNotify?.('error', configChanged ? t.notifications.personalCurriculumSaveFailed : t.notifications.preferencesSaveFailed)
       }
-      throw e
+      throw error
+    } finally {
+      if (preferenceSaveRefreshRef.current === saving) {
+        preferenceSaveRefreshRef.current = null
+        // A failed write can coincide with a real remote change. Preserve its
+        // refresh even though this local save could not reach the reload step.
+        if (saving.pendingEvent) {
+          void Promise.all([refreshPreferences(), refreshState(true), refreshLearningPlans(), onRefresh?.()]).then(() => {
+            if (currentLearnerStateScopeKeyRef.current === requestScopeKey) {
+              dispatchLearnerUiRefresh({ skillpilotId, reason: 'FULL_REFRESH', targets: ['all'] })
+            }
+          })
+        }
+      }
     }
   }, [
+    applySavedPreferences,
     learnerData,
+    learnerStateScopeKey,
     landscapeId,
+    localizedLanguage,
     onNotify,
+    onRefresh,
     onLandscapeChange,
     onScopeDataRefresh,
     personalConfig,
     refreshLearningPlans,
+    refreshPreferences,
     refreshState,
     rootLandscapeId,
     skillpilotId,
@@ -3819,6 +3910,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         initialFollowLearningPlans={learnerData?.followLearningPlans}
         initialPeriodBasis={learnerData?.learningPlanPeriodBasis}
         initialStrictMode={learnerData?.strictMode}
+        initialUseAssessmentShortcuts={learnerData?.useAssessmentShortcuts}
+        directAssessmentRunning={levelCompletion?.directAssessmentRunning === true}
         initialShowGoalVisualizationsInChat={learnerData?.showGoalVisualizationsInChat}
         materialSettingsBusy={materialSelectionSaving}
         materialSettings={!isGuidedPersonalizationRequired && guidedPersonalizationGateReason !== 'scopeLoading' ? (

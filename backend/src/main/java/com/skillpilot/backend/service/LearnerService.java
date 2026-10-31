@@ -270,6 +270,7 @@ public class LearnerService {
     }
 
     private CompletionSnapshot completionSnapshot(Learner learner, GoalProjection projection) {
+        if (!learner.getUseAssessmentShortcuts()) return null;
         if (completionApplicationService == null || (!completionApplicationService.catalog().enabled()
                 && !completionRouteOwnsNavigation(learner))) return null;
         var catalog = completionApplicationService.catalog();
@@ -4673,9 +4674,36 @@ public class LearnerService {
     public void setPreferences(String skillpilotId, String learningStrategy, Boolean autoPilot, Boolean strictMode,
             Boolean showGoalVisualizationsInChat, Boolean followLearningPlans,
             com.skillpilot.backend.service.learningplan.PeriodBasis learningPlanPeriodBasis) {
+        setPreferences(skillpilotId, learningStrategy, autoPilot, strictMode,
+                showGoalVisualizationsInChat, followLearningPlans, learningPlanPeriodBasis, null);
+    }
+
+    @Transactional
+    public void setPreferences(String skillpilotId, String learningStrategy, Boolean autoPilot, Boolean strictMode,
+            Boolean showGoalVisualizationsInChat, Boolean followLearningPlans,
+            com.skillpilot.backend.service.learningplan.PeriodBasis learningPlanPeriodBasis,
+            Boolean useAssessmentShortcuts) {
+        if (useAssessmentShortcuts != null && CompletionCallContext.current() != null) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.FORBIDDEN,
+                    "Assessment shortcut preferences are changed in the cockpit.");
+        }
         Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
         boolean coachStateChanged = false;
+        if (useAssessmentShortcuts != null && !Objects.equals(learner.getUseAssessmentShortcuts(), useAssessmentShortcuts)) {
+            if (!useAssessmentShortcuts) {
+                CompletionWorkflowState previous = completionWorkflow(learner);
+                if ((previous != null && previous.directAssessment() != null)
+                        || (previous == null && learner.getCompletionWorkflow() != null)) {
+                    learner.setActiveGoalId(null);
+                    learner.setLearningState(LearningState.FRONTIER);
+                }
+                // Re-enabling later offers fresh choices; it never restores an old bypass.
+                saveCompletionWorkflow(learner, null);
+            }
+            learner.setUseAssessmentShortcuts(useAssessmentShortcuts);
+            coachStateChanged = true;
+        }
         if (learningStrategy != null) {
             coachStateChanged |= !Objects.equals(learner.getLearningStrategy(), learningStrategy);
             learner.setLearningStrategy(learningStrategy);
@@ -4708,6 +4736,7 @@ public class LearnerService {
         }
         if (coachStateChanged) {
             advanceCoachStateRevision(learner);
+            eventPublisher.publishEvent(new LearnerStateChangedEvent(this, skillpilotId, "PREFERENCES_CHANGED"));
         }
     }
 
@@ -12314,6 +12343,7 @@ public class LearnerService {
             existing.setPersonalCurriculum(data.learner().getPersonalCurriculum());
             existing.setShowGoalVisualizationsInChat(
                     !Boolean.FALSE.equals(data.learner().getShowGoalVisualizationsInChat()));
+            existing.setUseAssessmentShortcuts(data.learner().getUseAssessmentShortcuts());
             existing.setFollowLearningPlans(
                     Boolean.TRUE.equals(data.learner().getFollowLearningPlans()));
             if (data.learner().getClientState() != null) {

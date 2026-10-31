@@ -67,6 +67,9 @@ public class Learner {
     @Column(name = "show_goal_visualizations_in_chat", nullable = false)
     private Boolean showGoalVisualizationsInChat = true;
 
+    @Column(name = "use_assessment_shortcuts", nullable = false)
+    private Boolean useAssessmentShortcuts = true;
+
     @Column(name = "follow_learning_plans", nullable = false)
     private Boolean followLearningPlans = false;
 
@@ -206,6 +209,24 @@ public class Learner {
         this.showGoalVisualizationsInChat = showGoalVisualizationsInChat;
     }
 
+    // Omit the enabled default so signed learner archives predating this preference
+    // retain their exact serialized shape. An explicit opt-out is always included.
+    @com.fasterxml.jackson.annotation.JsonInclude(
+            value = com.fasterxml.jackson.annotation.JsonInclude.Include.CUSTOM,
+            valueFilter = AssessmentShortcutsEnabledFilter.class)
+    public Boolean getUseAssessmentShortcuts() {
+        return !Boolean.FALSE.equals(useAssessmentShortcuts);
+    }
+
+    public void setUseAssessmentShortcuts(Boolean useAssessmentShortcuts) {
+        this.useAssessmentShortcuts = useAssessmentShortcuts;
+    }
+
+    public static final class AssessmentShortcutsEnabledFilter {
+        @Override public boolean equals(Object value) { return Boolean.TRUE.equals(value); }
+        @Override public int hashCode() { return Boolean.TRUE.hashCode(); }
+    }
+
     @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_DEFAULT)
     public Boolean getFollowLearningPlans() {
         return Boolean.TRUE.equals(followLearningPlans);
@@ -259,6 +280,9 @@ public class Learner {
         }
         if (this.showGoalVisualizationsInChat == null) {
             this.showGoalVisualizationsInChat = true;
+        }
+        if (this.useAssessmentShortcuts == null) {
+            this.useAssessmentShortcuts = true;
         }
         if (this.followLearningPlans == null) {
             this.followLearningPlans = false;

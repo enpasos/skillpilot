@@ -87,6 +87,103 @@ class AssessmentCompletionIntegrationTest {
         learner = learnerRepository.findById(id).orElseThrow();
     }
 
+    @Test void shortcutsDefaultOnAndAnOptOutGatesChoicesWithoutChangingOrdinaryMastery() {
+        assertThat(learner.getUseAssessmentShortcuts()).isTrue();
+        assertThat(learners.getLearnerState(learner.getSkillpilotId()).levelCompletion()).isNotNull();
+        learners.setPreferences(learner.getSkillpilotId(), null, null, null, null, null, null, false);
+        assertThat(learners.getLearnerState(learner.getSkillpilotId()).levelCompletion()).isNull();
+        assertThatThrownBy(this::select).isInstanceOf(ResponseStatusException.class);
+        learners.setPreferences(learner.getSkillpilotId(), null, false, null);
+        assertThat(learner.getUseAssessmentShortcuts()).isFalse(); // Old clients omit the new choice.
+        assertThat(masteryRepository.findByLearner_SkillpilotId(learner.getSkillpilotId())).isEmpty();
+        learners.setPreferences(learner.getSkillpilotId(), null, null, null, null, null, null, true);
+        assertThat(learner.getCompletionWorkflow()).isNull();
+        assertThat(learners.getLearnerState(learner.getSkillpilotId()).levelCompletion().profileOptions())
+                .extracting(LevelCompletionResponse.ProfileOption::profileId).contains(PROFILE);
+    }
+
+    @Test void disablingShortcutsEndsDirectAssessmentAndRejectsOldActionsAndGrading() {
+        select();
+        learner.setStrictMode(true);
+        learner.setFollowLearningPlans(true);
+        learners.startCompletionAssessment(learner.getSkillpilotId(),
+                new CompletionAssessmentStart(PROFILE, EXAM, learner.getCoachStateRevision()),
+                "claude", "owner-hash", Instant.now().plusSeconds(600));
+        nextRequestTransaction(true);
+        long previousRevision = learner.getCoachStateRevision();
+        learners.setPreferences(learner.getSkillpilotId(), null, null, null, null, null, null, false);
+        assertThat(learner.getCoachStateRevision()).isGreaterThan(previousRevision);
+        assertThat(learner.getCompletionWorkflow()).isNull();
+        assertThat(learner.getActiveGoalId()).isNull();
+        assertThat(learner.getLearningState()).isEqualTo(LearningState.FRONTIER);
+        assertThat(learner.getFollowLearningPlans()).isTrue();
+        assertThat(learners.effectivePlanFollowing(learner)).isTrue();
+        assertThat(learners.getLearnerState(learner.getSkillpilotId()).levelCompletion()).isNull();
+        assertThatThrownBy(() -> learners.startCompletionAssessment(learner.getSkillpilotId(),
+                new CompletionAssessmentStart(PROFILE, EXAM, previousRevision),
+                "claude", "owner-hash", Instant.now().plusSeconds(600))).isInstanceOf(ResponseStatusException.class);
+        assertThatThrownBy(() -> CompletionCallContext.with(new CompletionCallContext(
+                "claude", "owner-hash", Instant.now().plusSeconds(600), true),
+                () -> learners.setMastery(learner.getSkillpilotId(), new MasteryUpdateRequest(Map.of(EXAM, 1.0), EXAM))))
+                .isInstanceOf(ResponseStatusException.class);
+        assertThat(masteryRepository.findByLearner_SkillpilotId(learner.getSkillpilotId())).isEmpty();
+        assertThat(focus.findByLearner_SkillpilotId(learner.getSkillpilotId())).extracting(PlannedGoal::getGoalId)
+                .containsExactly(PREPARATION);
+    }
+
+    @Test void aPassCommittedBeforeDisablingKeepsItsSingleBinaryResult() {
+        select();
+        learners.startCompletionAssessment(learner.getSkillpilotId(),
+                new CompletionAssessmentStart(PROFILE, EXAM, learner.getCoachStateRevision()),
+                "claude", "owner-hash", Instant.now().plusSeconds(600));
+        CompletionCallContext.with(new CompletionCallContext("claude", "owner-hash", Instant.now().plusSeconds(600), true),
+                () -> learners.setMastery(learner.getSkillpilotId(), new MasteryUpdateRequest(Map.of(EXAM, 1.0), EXAM)));
+        nextRequestTransaction(true);
+        learners.setPreferences(learner.getSkillpilotId(), null, null, null, null, null, null, false);
+        assertThat(masteryRepository.findByLearner_SkillpilotId(learner.getSkillpilotId())).singleElement()
+                .satisfies(m -> { assertThat(m.getGoalKey()).isEqualTo(EXAM); assertThat(m.getValue()).isEqualTo(1); });
+        assertThat(learners.getLearnerState(learner.getSkillpilotId()).levelCompletion()).isNull();
+    }
+
+    @Test void disabledShortcutsStillAllowAnOrdinaryPrerequisiteSatisfiedExam() {
+        learners.setPreferences(learner.getSkillpilotId(), null, false, false, null, null, null, false);
+        learners.setPlannedGoals(learner.getSkillpilotId(), Set.of(PREPARATION, EXAM));
+        masteryRepository.saveAndFlush(new Mastery(learner, PREPARATION, 1.0));
+        assertThat(learners.getFrontier(learner.getSkillpilotId())).contains(EXAM);
+        learners.setActiveGoal(learner.getSkillpilotId(), EXAM);
+        learners.setMastery(learner.getSkillpilotId(), new MasteryUpdateRequest(Map.of(EXAM, 1.0), EXAM));
+        assertThat(masteryRepository.findByLearner_SkillpilotId(learner.getSkillpilotId()))
+                .extracting(Mastery::getGoalKey).containsExactlyInAnyOrder(PREPARATION, EXAM);
+        assertThat(learner.getUseAssessmentShortcuts()).isFalse();
+        assertThat(learner.getCompletionWorkflow()).isNull();
+    }
+
+    @Test void shortcutPreferenceHttpRoundTripPreservesAnOmittedChoice() throws Exception {
+        var mvc = org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup(ui)
+                .setMessageConverters(new org.springframework.http.converter.json.MappingJackson2HttpMessageConverter(mapper)).build();
+        for (String payload : List.of("{\"useAssessmentShortcuts\":false}", "{\"autoPilot\":false}")) {
+            mvc.perform(org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put(
+                    "/api/ui/learners/{id}/preferences", learner.getSkillpilotId())
+                    .contentType(org.springframework.http.MediaType.APPLICATION_JSON).content(payload))
+                    .andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.status().isOk());
+            mvc.perform(org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get(
+                    "/api/ui/learners/{id}", learner.getSkillpilotId()))
+                    .andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.status().isOk())
+                    .andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath("$.useAssessmentShortcuts").value(false));
+            assertThat(learners.getLearnerState(learner.getSkillpilotId()).levelCompletion()).isNull();
+        }
+        assertThat(masteryRepository.findByLearner_SkillpilotId(learner.getSkillpilotId())).isEmpty();
+    }
+
+    @Test void coachCannotChangeTheCockpitShortcutPreference() {
+        assertThatThrownBy(() -> CompletionCallContext.with(new CompletionCallContext(
+                "claude", "owner-hash", Instant.now().plusSeconds(600), true), () -> {
+                    learners.setPreferences(learner.getSkillpilotId(), null, null, null, null, null, null, false);
+                    return null;
+                })).isInstanceOf(ResponseStatusException.class).hasMessageContaining("403");
+        assertThat(learner.getUseAssessmentShortcuts()).isTrue();
+    }
+
     @Test void existingAssessmentMasteryCompletesOnlyThisScopeWithoutCreatingPreparationMastery() {
         masteryRepository.saveAndFlush(new Mastery(learner, EXAM, 1.0));
         var state = select();

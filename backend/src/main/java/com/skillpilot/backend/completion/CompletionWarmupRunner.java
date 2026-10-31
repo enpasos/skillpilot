@@ -17,13 +17,10 @@ import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-/** Warms configured static bases before readiness, independently of learner transactions. */
+/** Warms discovered or explicitly restricted static bases before readiness, outside learner transactions. */
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public final class CompletionWarmupRunner implements ApplicationRunner {
-    public static final String DEFAULT_PILOT_CURRICULUM_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
-    public static final String DEFAULT_PILOT_CURRICULUM_IDS = DEFAULT_PILOT_CURRICULUM_ID
-            + ",68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
     private static final Logger LOG = LoggerFactory.getLogger(CompletionWarmupRunner.class);
     private final CompletionApplicationService application;
     private final CompletionCanonicalGraphResolver resolver;
@@ -31,7 +28,7 @@ public final class CompletionWarmupRunner implements ApplicationRunner {
     private String warmedGeneration;
 
     public CompletionWarmupRunner(CompletionApplicationService application, CompletionCanonicalGraphResolver resolver,
-            @Value("${skillpilot.completion.warmup-curriculum-ids:" + DEFAULT_PILOT_CURRICULUM_IDS + "}") String ids) {
+            @Value("${skillpilot.completion.warmup-curriculum-ids:}") String ids) {
         this.application = application;
         this.resolver = resolver;
         Set<String> unique = new LinkedHashSet<>();
@@ -50,14 +47,18 @@ public final class CompletionWarmupRunner implements ApplicationRunner {
         }
         String generation = catalog.generation();
         if (generation.equals(warmedGeneration)) return;
-        if (curriculumIds.isEmpty()) {
-            throw new IllegalStateException("Enabled completion profiles require explicit warmup-curriculum-ids");
+        List<String> bases = curriculumIds.isEmpty()
+                ? resolver.discoverCurriculumIds(catalog.profiles().values().stream()
+                    .map(profile -> catalog.scope(profile.levelScopeRef())).toList())
+                : curriculumIds;
+        if (bases.isEmpty()) {
+            throw new IllegalStateException("No current curriculum contains a complete enabled completion scope; check profiles or warmup-curriculum-ids");
         }
         long started = System.nanoTime();
         Set<String> warmedProfiles = new LinkedHashSet<>();
         Map<String, Set<String>> expectedContexts = new LinkedHashMap<>();
         int contexts = 0;
-        for (String baseId : curriculumIds) {
+        for (String baseId : bases) {
             Map<String, LearningGoal> graph;
             try {
                 graph = application.canonicalGraph(baseId, () -> resolver.load(baseId));
@@ -112,6 +113,6 @@ public final class CompletionWarmupRunner implements ApplicationRunner {
         }
         warmedGeneration = generation;
         LOG.info("Warmed {} completion contexts across {} curriculum bases for generation {} in {} ms",
-                contexts, curriculumIds.size(), generation, TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - started));
+                contexts, bases.size(), generation, TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - started));
     }
 }
