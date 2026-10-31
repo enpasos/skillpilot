@@ -289,6 +289,16 @@ Frühere Pilotbenchmarks belegen ihre damalige Konfiguration. Die allgemeine
 Auswertung und größere Discovery-Antworten benötigen eigene aktuelle Messungen;
 alte p95- und Payloadwerte sind keine Freigabe für den neuen Umfang.
 
+Der lokale HTTP-Regressionslauf vom 31. Oktober 2026 mit 916 Zielen und
+139 Prüfungen misst nach drei Warmups jeweils 30 Abrufe: Median rund 535 ms
+für die lesende Übersicht und 549 ms für den gewählten Gesamtabschnitt,
+p95 rund 616 bzw. 651 ms. Die Completion-Projektion umfasst 175.890 JSON-Bytes;
+das Fixture-Budget beträgt 256 KiB. Dies ist eine Beobachtung mit lokalem
+H2 und Corretto 25, keine Produktionskapazitäts- oder Host-Abnahme.
+Der Browsertest schreibt die Messbedingungen und Einzelwerte nach
+`tmp/level-completion-backend-browser/http-performance.json`; CI bewahrt
+diesen Bericht als Testartefakt auf.
+
 ## 9. Prüfmatrix und Abschlusskriterien
 
 Die Abnahme prüft die Regeln unabhängig von der Implementierung:

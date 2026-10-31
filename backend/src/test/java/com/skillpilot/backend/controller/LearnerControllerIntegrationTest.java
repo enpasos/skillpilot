@@ -744,7 +744,12 @@ public class LearnerControllerIntegrationTest {
                         LEGACY_BAYERN_PHYSICS_MOMENTUM_CONSERVATION_ID),
                 List.of(CANONICAL_PHYSICS_SIMPLE_COLLISIONS_ID, CANONICAL_PHYSICS_INELASTIC_COLLISIONS_ID),
                 Set.of("91c49019-ea51-4ce5-a919-c91c45b25e83", "839ecc8f-3a60-418b-bc92-64bfeef33824"),
-                CANONICAL_PHYSICS_HE_CROSS_STAGE_GK_PERSONAL_CONFIG);
+                CANONICAL_PHYSICS_HE_CROSS_STAGE_GK_PERSONAL_CONFIG,
+                // Inelastic collisions needs exactly the two mastered mapped
+                // predecessors. Simple collisions still has another direct,
+                // unmastered requirement; earlier ancestors of the mastered
+                // predecessors no longer block either route on their own.
+                Set.of(CANONICAL_PHYSICS_INELASTIC_COLLISIONS_ID));
 
         JsonNode root = objectMapper.readTree(responseBody);
         JsonNode planned = root.path("goals").path("planned");
@@ -1898,20 +1903,37 @@ public class LearnerControllerIntegrationTest {
             List<String> testedTargetIds,
             Set<String> suppliedByLegacyProjection,
             String personalCurriculum) throws Exception {
+        return getPreparedLearnerStateBody(plannedIds, originallyStoredIds, testedTargetIds,
+                suppliedByLegacyProjection, personalCurriculum, Set.of());
+    }
+
+    private String getPreparedLearnerStateBody(
+            List<String> plannedIds,
+            List<String> originallyStoredIds,
+            List<String> testedTargetIds,
+            Set<String> suppliedByLegacyProjection,
+            String personalCurriculum,
+            Set<String> initiallyAvailableTargets) throws Exception {
         // These migration cases deliberately verify global prerequisite evidence.
         // Normal focus mode checks only prerequisites within the selected focus.
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         learner.setStrictMode(true);
         learnerRepository.save(learner);
-        // A mastered legacy predecessor does not certify its own prerequisites.
-        // First preserve the real blocked state, then store the missing earlier
-        // preparation explicitly so this test can isolate plan/mastery migration.
-        JsonNode blocked = objectMapper.readTree(getLearnerStateBody(
+        // A mastered legacy predecessor ends its own preparation demand without
+        // certifying that preparation. Other direct requirements still block.
+        // Preserve the exact initial availability before adding missing preparation.
+        JsonNode initial = objectMapper.readTree(getLearnerStateBody(
                 plannedIds, originallyStoredIds, personalCurriculum));
-        assertThat(jsonIds(blocked.path("frontier"))).doesNotContainAnyElementsOf(testedTargetIds);
-        assertThat(learnerService.getMastery(learnerId)).containsAllEntriesOf(
+        assertThat(jsonIds(initial.path("frontier")).stream().filter(testedTargetIds::contains).toList())
+                .containsExactlyInAnyOrderElementsOf(initiallyAvailableTargets);
+        Map<String, Double> projectedMastery = learnerService.getMastery(learnerId);
+        assertThat(projectedMastery).containsAllEntriesOf(
                 suppliedByLegacyProjection.stream().collect(java.util.stream.Collectors.toMap(
                         id -> id, id -> 1.0)));
+        for (String target : testedTargetIds) {
+            assertThat(projectedMastery.getOrDefault(target, 0.0))
+                    .as("Availability does not write mastery for %s", target).isZero();
+        }
         List<String> preparedIds = CanonicalPrerequisiteTestContext.withStoredPrerequisites(
                 landscapeService, testedTargetIds, originallyStoredIds, suppliedByLegacyProjection);
         assertThat(preparedIds).doesNotContainAnyElementsOf(testedTargetIds);

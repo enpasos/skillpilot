@@ -5,8 +5,8 @@ Dokument beschreibt jetzt die **allgemeine lokale Bedarfsberechnung**, die
 Cockpit-Bedienung und die Plan-IST-Integration. Grundlage sind der
 [aktuelle Umsetzungsplan](assessment-gated-completion-implementation-plan.md)
 und das [fachliche Konzept](../concept/skill-graph/assessment-gated-completion.md).
-Die abschließenden Gesamtprüfungen laufen; dieses Dokument behauptet weder
-entfernten CI-Erfolg noch Deployment oder beobachtete Coach-Host-Abnahme.
+Prüfnachweise gelten jeweils für den konkret geprüften Commit. Lokale Checks
+belegen weder ein Deployment noch eine tatsächliche Coach-Host-Abnahme.
 
 ## Umfang und Ergebnisprinzip
 

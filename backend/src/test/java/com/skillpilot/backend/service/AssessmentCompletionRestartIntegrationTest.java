@@ -181,15 +181,28 @@ class AssessmentCompletionRestartIntegrationTest {
                 String freshSession = b.sessions().createFirstPartyLaunch(learnerId,
                         new ClaudeV1CoachStartRequest("de", "web-start")).learningSessionId();
                 b.confirm(freshSession);
-                var examSection = b.service().getCoachLearnerState(learnerId).levelCompletion().profileOptions().stream()
-                        .filter(option -> !PROFILE.equals(option.profileId()))
-                        .filter(option -> option.assessments().stream().anyMatch(assessment -> EXAM.equals(assessment.goalId())))
+                // This isolated canonical curriculum deliberately has no composition
+                // views. A named subsection is not required for its automatic scope.
+                // Use an actual fresh published choice to prove the new session can
+                // navigate, while retaining the already passed assessment unchanged.
+                var overview = b.service().getCoachLearnerState(learnerId).levelCompletion();
+                assertThat(overview.profileId()).isEqualTo(PROFILE);
+                assertThat(overview.masteredAssessmentCount()).isEqualTo(1);
+                assertThat(overview.directAssessmentRunning()).isFalse();
+                String chooseAssessment = ((List<?>) map(b.context(freshSession), "levelCompletion").get("choices")).stream()
+                        .map(String::valueOf).filter(choice -> choice.startsWith("Prüfung direkt versuchen: "))
                         .findFirst().orElseThrow();
-                String chooseProfile = "Abschnitt wählen: " + examSection.title().get("de");
-                assertThat(((List<?>) map(b.context(freshSession), "levelCompletion").get("choices")).stream()
-                        .map(String::valueOf).toList())
-                        .contains(chooseProfile);
-                var selected = b.successful(freshSession, CHOOSE, b.writeArgs(learnerId, Map.of("choice", chooseProfile)));
+                var nextAssessment = overview.assessments().stream()
+                        .filter(assessment -> chooseAssessment.equals("Prüfung direkt versuchen: " + assessment.title().get("de")))
+                        .findFirst().orElseThrow();
+                assertThat(nextAssessment.mastered()).isFalse();
+                assertThat(nextAssessment.startAvailable()).isTrue();
+                assertThat(nextAssessment.goalId()).isNotEqualTo(EXAM);
+                long beforeFreshStart = b.version(learnerId);
+                var selected = b.successful(freshSession, CHOOSE,
+                        b.writeArgs(learnerId, Map.of("choice", chooseAssessment)));
+                assertThat(b.version(learnerId)).isEqualTo(beforeFreshStart + 1);
+                assertThat(map(map(selected, "context"), "activeGoal")).containsEntry("id", nextAssessment.goalId());
                 assertThat(map(map(selected, "context"), "levelCompletion")).containsEntry("complete", false);
                 var current = b.service().getCoachLearnerState(learnerId).levelCompletion();
                 assertThat(current.calculationStatus()).isEqualTo("valid");
@@ -199,6 +212,7 @@ class AssessmentCompletionRestartIntegrationTest {
                 assertThat(current.masteredTargetCount()).isEqualTo(1);
                 assertThat(current.masteredAssessmentCount()).isEqualTo(1);
                 assertThat(current.requiredAssessmentCount()).isGreaterThan(1);
+                assertThat(current.directAssessmentRunning()).isTrue();
                 assertThat(b.service().getMastery(learnerId).getOrDefault(PREPARATION, 0.0)).isZero();
                 b.assertMasteryAndFocus(learnerId, true);
                 b.assertPrivate(learnerId, freshSession);
